@@ -2,20 +2,20 @@ package com.tencent.mobileqq.vashealth;
 
 import android.content.Context;
 import android.hardware.SensorManager;
-import bbui;
+import bbuw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class SportManager$1
   implements Runnable
 {
-  public SportManager$1(bbui parambbui) {}
+  public SportManager$1(bbuw parambbuw) {}
   
   public void run()
   {
-    if (bbui.a == null) {
-      bbui.a = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
+    if (bbuw.a == null) {
+      bbuw.a = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
     }
-    bbui.a();
+    bbuw.a();
   }
 }
 

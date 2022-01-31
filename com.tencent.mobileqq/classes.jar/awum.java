@@ -1,34 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class awum
-  extends awur
+public final class awum
+  extends ThreadPoolExecutor
 {
-  public awum(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
+  public awum(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
   {
-    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
+    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
   }
   
-  public awof a(List<awog> paramList, String paramString)
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    return null;
-  }
-  
-  public List<awof> a(awvg paramawvg)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (paramawvg.jdField_a_of_type_AndroidOsBundle == null) {
-      paramawvg.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if ((paramRunnable instanceof FutureTask)) {}
+    try
+    {
+      ((FutureTask)paramRunnable).get();
+      return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramawvg = new awnv(paramawvg.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new awnn(paramawvg));
-    localArrayList.add(paramawvg);
-    awvx.a(0);
-    return localArrayList;
+    catch (ExecutionException paramRunnable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      return;
+    }
+    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
   }
 }
 

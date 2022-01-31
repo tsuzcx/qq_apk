@@ -1,38 +1,57 @@
-import android.view.MotionEvent;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.nearby.smooth.ItemLoader;
+import com.tencent.widget.AbsListView;
 
-class atxp
-  implements View.OnTouchListener
+public final class atxp
 {
-  private atxp(atxn paramatxn) {}
+  int jdField_a_of_type_Int;
+  final Handler jdField_a_of_type_AndroidOsHandler;
+  atxo jdField_a_of_type_Atxo;
+  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  void a()
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    int i = paramMotionEvent.getAction();
-    Object localObject = this.a;
-    boolean bool1 = bool3;
-    if (i != 1) {
-      if (i != 3) {
-        break label105;
-      }
-    }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  void a(View paramView1, View paramView2, int paramInt)
+  {
+    this.jdField_a_of_type_Atxo.a();
+    ListAdapter localListAdapter = this.jdField_a_of_type_Atxo.a();
+    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
+    for (boolean bool = true;; bool = false)
     {
-      ((atxn)localObject).b = bool1;
-      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
-        this.a.a();
-      }
-      localObject = this.a.jdField_a_of_type_Atxm.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+      return;
     }
+  }
+  
+  void a(atxo paramatxo)
+  {
+    this.jdField_a_of_type_Atxo = paramatxo;
+    if (this.jdField_a_of_type_Atxo != null)
+    {
+      paramatxo = this.jdField_a_of_type_Atxo.a();
+      paramatxo.setOnScrollListener(new atxs(this, null));
+      paramatxo.setOnTouchListener(new atxr(this, null));
+      paramatxo.setOnItemSelectedListener(new atxt(this, null));
+    }
+  }
+  
+  void b()
+  {
+    if (this.jdField_a_of_type_Atxo == null) {
+      throw new IllegalStateException("Cannot cancel requests with no managed view");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Atxo.a());
   }
 }
 

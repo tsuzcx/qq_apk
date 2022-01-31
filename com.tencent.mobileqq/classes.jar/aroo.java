@@ -1,66 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aroo
-  implements IMiniMsgUnreadCallback
+  extends BroadcastReceiver
 {
   public aroo(UiApiPlugin paramUiApiPlugin) {}
   
-  public void destroy() {}
-  
-  public void hide() {}
-  
-  public void hideUnread()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadHide", true);
-      this.a.a("UnRead", localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
-  }
-  
-  public boolean show(int paramInt)
-  {
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    try
-    {
-      paramBundle = new JSONObject();
-      this.a.a("backFromMiniAIO", paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
-    }
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadC", paramInt);
-      localJSONObject.put("unReadHide", paramBoolean);
-      this.a.a("updateUnreadCount", localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
+      Iterator localIterator = UiApiPlugin.a.iterator();
+      while (localIterator.hasNext())
+      {
+        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
+        if (localUiApiPlugin != null) {
+          localUiApiPlugin.a(paramContext, paramIntent);
+        }
       }
-      return;
     }
-    catch (Exception localException) {}
   }
 }
 

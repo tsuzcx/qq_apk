@@ -2,17 +2,17 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import android.util.Log;
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 
 public class DesktopCardEntity
-  extends aukm
+  extends auko
 {
   public static final String TAG = "MiniAppCardEntity";
-  @auma
+  @aumc
   public String cardId;
   public byte[] data;
   public int moduleType;

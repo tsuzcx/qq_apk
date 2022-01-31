@@ -1,37 +1,39 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
 
-public final class acfe
-  extends FlingGestureHandler
+public class acfe
+  extends atzx
 {
-  private WeakReference<TextPreviewActivity> b;
+  public acfe(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  private acfe(TextPreviewActivity paramTextPreviewActivity)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
-  }
-  
-  public void flingLToR()
-  {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
+    TextPreviewTranslateActivity.b(this.a);
+    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
+    {
+      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+      return;
+    }
+    String str2 = this.a.getResources().getString(2131699266);
+    String str1 = str2;
+    if (paramTranslateResult != null)
+    {
+      if (TextUtils.isEmpty(paramTranslateResult.e)) {
+        break label92;
       }
+      str1 = paramTranslateResult.e;
     }
     for (;;)
     {
-      if (i == 0) {
-        super.flingLToR();
-      }
+      bcql.a(this.a, 1, str1, 0).a();
       return;
-      i = 0;
-      continue;
-      i = 0;
+      label92:
+      str1 = str2;
+      if (paramTranslateResult.a()) {
+        str1 = this.a.getResources().getString(2131699245);
+      }
     }
   }
 }

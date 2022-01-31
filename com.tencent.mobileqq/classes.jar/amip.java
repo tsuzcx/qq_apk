@@ -1,49 +1,46 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONObject;
 
 public class amip
+  extends ayrp
 {
-  public static Drawable a(String paramString)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    String[] arrayOfString1 = paramString.split("&");
-    paramString = "";
-    int m = arrayOfString1.length;
-    int i = 0;
-    int j = 1;
-    if (i < m)
+    String str;
+    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
     {
-      String[] arrayOfString2 = arrayOfString1[i].split("=");
-      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
-      for (;;)
+      try
       {
-        try
-        {
-          k = Integer.parseInt(arrayOfString2[1]);
-          i += 1;
-          j = k;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
-          k = j;
+        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
+        localObject = naj.a(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
+        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
           continue;
         }
-        int k = j;
-        if (localNumberFormatException[0].equals("uin"))
+        localObject = naj.a((HttpResponse)localObject);
+        localObject = new JSONObject((String)localObject);
+        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
         {
-          paramString = localNumberFormatException[1];
-          k = j;
+          localObject = ((JSONObject)localObject).getString("thumbUrl");
+          paramDownloadParams.url = new URL((String)localObject);
+          paramDownloadParams.urlStr = ((String)localObject);
+          localObject = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+          return localObject;
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     }
-    return a(paramString, j);
-  }
-  
-  public static Drawable a(String paramString, int paramInt)
-  {
-    return baxt.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
   }
 }
 

@@ -1,19 +1,15 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.WebCallHandler;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
 
-final class arip
-  implements amah
+class arip
+  implements CustomizedWebView
 {
-  public void a(int paramInt1, int paramInt2)
+  arip(arik paramarik) {}
+  
+  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
   {
-    if (paramInt1 == arii.a)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("action.now.jump");
-      localIntent.putExtra("jump_action", paramInt2);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
-    }
+    arjj.a().a(paramBundle);
   }
 }
 

@@ -1,29 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
-class aegd
-  implements URLDrawable.URLDrawableListener
+public class aegd
+  implements aptw
 {
-  aegd(aegc paramaegc, String paramString) {}
+  public aegd(AIOFileVideoData paramAIOFileVideoData, Context paramContext, agqv paramagqv) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
+      this.jdField_a_of_type_Agqv.b();
+      this.jdField_a_of_type_Agqv.f();
     }
-    aegc.a(this.jdField_a_of_type_Aegc).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
+  
+  public void b() {}
 }
 
 

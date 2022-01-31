@@ -3,23 +3,23 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import rje;
-import rjs;
-import rnm;
+import rjb;
+import rjp;
+import rnj;
 
 public class FastWebActivity$33$2
   implements Runnable
 {
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (FastWebActivity.a(this.jdField_a_of_type_Rje.a) == null) || (!this.jdField_a_of_type_JavaLangString.equals(FastWebActivity.a(this.jdField_a_of_type_Rje.a).innerUniqueID)))
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (FastWebActivity.a(this.jdField_a_of_type_Rjb.a) == null) || (!this.jdField_a_of_type_JavaLangString.equals(FastWebActivity.a(this.jdField_a_of_type_Rjb.a).innerUniqueID)))
     {
-      QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, "get article topic info fail, msg not match !");
+      QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, "get article topic info fail, msg not match !");
       return;
     }
-    rnm.a(this.jdField_a_of_type_Boolean, FastWebActivity.a(this.jdField_a_of_type_Rje.a), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, FastWebActivity.a(this.jdField_a_of_type_Rje.a));
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).notifyDataSetChanged();
-    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, "get article topic info success! notify ui bindData");
+    rnj.a(this.jdField_a_of_type_Boolean, FastWebActivity.a(this.jdField_a_of_type_Rjb.a), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, FastWebActivity.a(this.jdField_a_of_type_Rjb.a));
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).notifyDataSetChanged();
+    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, "get article topic info success! notify ui bindData");
   }
 }
 

@@ -1,16 +1,18 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.biz.PoiMapActivity;
 
 public class mwq
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public mwq(PoiMapActivity paramPoiMapActivity) {}
+  public mwq(PoiMapActivity paramPoiMapActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.setText("");
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

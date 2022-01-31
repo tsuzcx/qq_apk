@@ -1,23 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
 
-public class apic
-  implements AdapterView.OnItemClickListener
+public abstract interface apic
 {
-  public apic(FileBrowserActivity paramFileBrowserActivity) {}
+  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    this.a.a.b();
-    ((bbjh)paramAdapterView).a.a.onClick(paramView);
-  }
+  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void ay_();
 }
 
 

@@ -1,13 +1,15 @@
 import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
 public class afrb
-  extends aume
+  extends akat
 {
   private afrb(FriendFragment paramFriendFragment) {}
   
-  protected void a(boolean paramBoolean)
+  protected void f()
   {
-    FriendFragment.a(this.a);
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
 }
 

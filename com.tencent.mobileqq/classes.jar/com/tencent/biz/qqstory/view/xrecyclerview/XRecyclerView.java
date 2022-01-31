@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
-import wde;
-import wef;
+import wdb;
+import wec;
 
 public class XRecyclerView
   extends FrameLayout
 {
   private RecyclerViewWithHeaderFooter jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter;
-  private wde jdField_a_of_type_Wde;
+  private wdb jdField_a_of_type_Wdb;
   
   public XRecyclerView(Context paramContext)
   {
@@ -36,14 +36,14 @@ public class XRecyclerView
   private void a()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_Wde = new wde(localLoadMoreLayout, getContext());
+    this.jdField_a_of_type_Wdb = new wdb(localLoadMoreLayout, getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.a(localLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new wef(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new wec(this));
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)LayoutInflater.from(paramContext).inflate(2131561346, this).findViewById(2131375517));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)LayoutInflater.from(paramContext).inflate(2131561345, this).findViewById(2131375519));
     a();
   }
 }

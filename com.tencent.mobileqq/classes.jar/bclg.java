@@ -1,55 +1,60 @@
-import android.graphics.Point;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public class bclg
-  extends BaseAdapter
+final class bclg
+  implements bcju
 {
-  private int jdField_a_of_type_Int;
-  
-  public bclg(DraggableGridView paramDraggableGridView, int paramInt)
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
+    float f1 = 0.0F;
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
     }
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(localView, this.jdField_a_of_type_Int, paramInt);
-    paramView = new bcle(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
-    localView.setOnClickListener(paramView);
-    localView.setOnLongClickListener(paramView);
-    if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
-      localView.setVisibility(0);
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if (i == j)
+    {
+      f1 = paramInt2 / j;
+      localMatrix.setScale(f1, f1);
+      return localMatrix;
     }
-    return localView;
+    float f2;
+    if ((i <= paramInt1) || (j <= paramInt2))
+    {
+      f2 = paramInt1 - i;
+      f1 = paramInt2 - j;
+      if (f1 < 0.0F) {}
+      for (f1 *= 0.1F;; f1 *= 0.5F)
+      {
+        localMatrix.postTranslate((int)(f2 * 0.5F + 0.5F), (int)(f1 + 0.5F));
+        break;
+      }
+    }
+    float f3;
+    if (i * paramInt2 > paramInt1 * j)
+    {
+      f3 = paramInt2 / j;
+      f2 = (paramInt1 - i * f3) * 0.5F;
+    }
+    for (;;)
+    {
+      localMatrix.setScale(f3, f3);
+      localMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
+      break;
+      f3 = paramInt1 / i;
+      f1 = (paramInt2 - j) * f3;
+      if (f1 < 0.0F)
+      {
+        f2 = 0.0F;
+        f1 *= 0.1F;
+      }
+      else
+      {
+        f2 = 0.0F;
+        f1 *= 0.5F;
+      }
+    }
   }
 }
 

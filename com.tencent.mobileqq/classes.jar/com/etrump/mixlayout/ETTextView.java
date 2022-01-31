@@ -1,11 +1,11 @@
 package com.etrump.mixlayout;
 
-import actn;
-import adyu;
-import aecg;
-import ajwe;
-import ambh;
-import amcz;
+import actj;
+import adys;
+import aece;
+import ajwc;
+import ambg;
+import amcy;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -32,11 +32,11 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import ayla;
+import aylc;
 import b;
-import bbrb;
-import bbrc;
-import bcjb;
+import bbrp;
+import bbrq;
+import bcjp;
 import c;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
@@ -191,33 +191,33 @@ public class ETTextView
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
-    ambh localambh;
+    ambg localambg;
     Object localObject;
     Resources localResources;
     boolean bool;
     if (this.mLayout.a(paramInt1, paramInt2) != null)
     {
-      localambh = (ambh)getTag(2131363708);
-      localObject = (ChatMessage)getTag(2131364153);
+      localambg = (ambg)getTag(2131363707);
+      localObject = (ChatMessage)getTag(2131364152);
       localResources = getResources();
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
       localObject = getBackground();
-      if ((localObject == null) || (!(localObject instanceof amcz))) {
+      if ((localObject == null) || (!(localObject instanceof amcy))) {
         break label82;
       }
-      ((amcz)localObject).jdField_a_of_type_Boolean = true;
+      ((amcy)localObject).jdField_a_of_type_Boolean = true;
     }
     label82:
-    while ((localObject == null) || (localambh == null)) {
+    while ((localObject == null) || (localambg == null)) {
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130848928;; paramInt1 = 2130848752)
+    for (paramInt1 = 2130848934;; paramInt1 = 2130848758)
     {
-      localambh.a(this, localResources.getDrawable(paramInt1));
+      localambg.a(this, localResources.getDrawable(paramInt1));
       return;
     }
   }
@@ -447,7 +447,7 @@ public class ETTextView
   {
     if (!this.hasComputeComplexScript)
     {
-      this.hasComplexScript = ayla.b(getText().toString());
+      this.hasComplexScript = aylc.b(getText().toString());
       this.hasComputeComplexScript = true;
     }
     return (this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
@@ -471,22 +471,22 @@ public class ETTextView
       if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
       {
         localObject1 = ((ChatFragment)localObject1).a().a;
-        localObject1 = actn.a((ListView)localObject1, actn.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
+        localObject1 = actj.a((ListView)localObject1, actj.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
         Object localObject2;
-        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof aecg)))
+        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof aece)))
         {
-          localObject2 = (aecg)((View)localObject1).getTag();
-          if ((((aecg)localObject2).d == null) || (((aecg)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131298865))) {}
+          localObject2 = (aece)((View)localObject1).getTag();
+          if ((((aece)localObject2).d == null) || (((aece)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131298865))) {}
         }
         else
         {
           do
           {
             return true;
-            if ((localObject1 == null) || (!(actn.a((View)localObject1) instanceof adyu))) {
+            if ((localObject1 == null) || (!(actj.a((View)localObject1) instanceof adys))) {
               break;
             }
-            localObject2 = (adyu)actn.a((View)localObject1);
+            localObject2 = (adys)actj.a((View)localObject1);
           } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131298865));
         }
       }
@@ -709,8 +709,8 @@ public class ETTextView
         this.mLayout.jdField_a_of_type_Long = -1L;
         if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
         {
-          bbrc.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-          bbrb.a("individual_v2_font_measure_error", "font_measure_error");
+          bbrq.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
+          bbrp.a("individual_v2_font_measure_error", "font_measure_error");
           mReportError = true;
         }
         super.onMeasure(paramInt1, paramInt2);
@@ -797,7 +797,7 @@ public class ETTextView
         if (this.mLayout.jdField_b_of_type_Boolean)
         {
           f1 = ho.c;
-          if (ajwe.a() == 18.0F) {
+          if (ajwc.a() == 18.0F) {
             f1 = ho.e;
           }
           ((ETFont)localObject2).setSize(f1 * getTextSize());

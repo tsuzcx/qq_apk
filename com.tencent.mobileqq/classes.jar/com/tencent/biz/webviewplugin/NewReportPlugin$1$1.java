@@ -1,24 +1,24 @@
 package com.tencent.biz.webviewplugin;
 
-import ajyc;
-import bcpq;
-import bcpw;
+import ajya;
+import bcqf;
+import bcql;
 import com.tencent.qphone.base.util.QLog;
-import xkr;
+import xko;
 
 public class NewReportPlugin$1$1
   implements Runnable
 {
-  public NewReportPlugin$1$1(xkr paramxkr) {}
+  public NewReportPlugin$1$1(xko paramxko) {}
   
   public void run()
   {
     try
     {
-      if (this.this$0.jdField_a_of_type_Bcpq.isShowing()) {
-        this.this$0.jdField_a_of_type_Bcpq.dismiss();
+      if (this.this$0.jdField_a_of_type_Bcqf.isShowing()) {
+        this.this$0.jdField_a_of_type_Bcqf.dismiss();
       }
-      bcpw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, ajyc.a(2131707558), 0).a();
+      bcql.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, ajya.a(2131707569), 0).a();
       return;
     }
     catch (Exception localException)

@@ -1,26 +1,44 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class bjpv
-  extends AnimatorListenerAdapter
+class bjpv
+  implements GestureDetector.OnGestureListener
 {
-  public bjpv(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  private bjpv(bjpq parambjpq) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  140ms translate end");
-    }
-    this.a.a.d = 4;
+    return true;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
+    paramMotionEvent2.getX();
+    paramMotionEvent1.getX();
+    paramMotionEvent1.getX();
+    paramMotionEvent2.getX();
+    paramFloat1 = paramMotionEvent2.getY();
+    float f = paramMotionEvent1.getY();
+    paramMotionEvent1.getY();
+    paramMotionEvent2.getY();
+    if ((paramFloat1 - f > 120) && (Math.abs(paramFloat2) > 20)) {
+      this.a.l();
+    }
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return true;
   }
 }
 

@@ -32,19 +32,19 @@ public class MoreCommentPanel
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562250, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370410));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370408));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562249, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370409));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370407));
     if (this.jdField_a_of_type_Boolean)
     {
       setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166715));
-      setBackgroundResource(2130848253);
+      setBackgroundResource(2130848259);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165277));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848251);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848257);
       return;
     }
     setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165758));
-    setBackgroundResource(2130848252);
+    setBackgroundResource(2130848258);
   }
   
   public void setHintText(CharSequence paramCharSequence)

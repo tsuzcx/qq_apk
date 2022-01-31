@@ -1,44 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import android.net.Uri;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ort
-  extends avpl
+  implements sid
 {
   public ort(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if (!"kandian_num_red_pnt_buffer".equals(paramString)) {}
-    while ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramString = ((NumRedMsg.NumMsgBusi)paramList.get(paramList.size() - 1)).str_ext.get();
-    if (!TextUtils.isEmpty(paramString))
+    paramUri = BaseActivity.sTopActivity;
+    if (paramUri != null) {}
+    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
     {
-      paramList = KandianMsgBoxRedPntInfo.createFromJSON(paramString);
-      if ((paramList == null) || (paramList.mMsgCnt <= 0) || ((KandianMergeManager.a(this.a) != null) && (paramList.mSeq <= KandianMergeManager.a(this.a).mSeq)))
-      {
-        QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.a(this.a), "new : ", paramList });
-        return;
-      }
-      if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 0) == 2) {
-        break label183;
-      }
-      this.a.a(paramList);
-    }
-    for (;;)
-    {
-      QLog.d("KandianMergeManager", 1, "handlerRedPntCenterNotify | num red pnt buffer : " + paramString);
+      axqy.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, vym.c(BaseApplicationImpl.getContext()));
       return;
-      label183:
-      osj.a().j(1);
     }
   }
 }

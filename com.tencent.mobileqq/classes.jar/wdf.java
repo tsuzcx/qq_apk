@@ -1,14 +1,57 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class wdf
-  implements View.OnClickListener
+public class wdf
+  implements bfub
 {
-  wdf(wde paramwde) {}
+  private CopyOnWriteArraySet<bfub> a = new CopyOnWriteArraySet();
   
-  public void onClick(View paramView)
+  public wdf(bfub parambfub)
   {
-    this.a.b(true);
+    if (parambfub != null) {
+      this.a.add(parambfub);
+    }
+  }
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bfub)localIterator.next()).a(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
+    {
+      bfub localbfub = (bfub)localIterator.next();
+      if ((bool) || (localbfub.a(paramInt, paramView, paramListView))) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
+    }
+    return bool;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bfub)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bfub)localIterator.next()).c(paramInt, paramView, paramListView);
+    }
   }
 }
 

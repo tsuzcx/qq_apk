@@ -1,88 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommonBottomData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
 
-class rkp
-  extends rkj
-  implements View.OnClickListener
+public class rkp
+  implements rkh
 {
-  private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363359);
-  private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363373);
-  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364506);
-  
-  public rkp(rkn paramrkn, View paramView, BaseData paramBaseData)
+  public int a(BaseData paramBaseData)
   {
-    super(paramView, paramBaseData);
-    this.d.setOnClickListener(this);
+    return 11;
   }
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    int i = 0;
-    paramBaseData1 = (CommonBottomData)paramBaseData2;
-    if ((paramBaseData1.p == 14) && (paramBaseData1.b))
-    {
-      this.d.setVisibility(0);
-      if (!paramBaseData1.a) {
-        break label148;
-      }
-      this.c.setVisibility(0);
-      if (paramBaseData2.p != 14) {
-        break label123;
-      }
-      this.c.getLayoutParams().height = bawz.a(this.c.getContext(), 6.0F);
-      label78:
-      paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-      if (paramBaseData2.p != 14) {
-        break label160;
-      }
-    }
-    for (;;)
-    {
-      paramBaseData1.rightMargin = i;
-      paramBaseData1.leftMargin = i;
-      return;
-      this.d.setVisibility(8);
-      break;
-      label123:
-      this.c.getLayoutParams().height = bawz.a(this.c.getContext(), 10.0F);
-      break label78;
-      label148:
-      this.c.setVisibility(8);
-      break label78;
-      label160:
-      i = bawz.a(this.b.getContext(), 12.0F);
-    }
+    return new rkq(LayoutInflater.from(paramContext).inflate(2131559914, paramViewGroup, false), paramBaseData);
   }
   
-  public void onClick(View paramView)
+  public boolean a(BaseData paramBaseData)
   {
-    ArticleInfo localArticleInfo;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.p == 14)
-    {
-      paramView = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
-      if ((paramView != null) && ((paramView instanceof FastWebActivity))) {
-        ((FastWebActivity)paramView).a();
-      }
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
-      i = (int)localArticleInfo.mChannelID;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
-        break label84;
-      }
-    }
-    label84:
-    for (paramView = "2";; paramView = "1")
-    {
-      rnr.a(localArticleInfo, "0X800900A", onk.a(localArticleInfo, i, paramView));
-      return;
-    }
+    return paramBaseData.p == 11;
   }
 }
 

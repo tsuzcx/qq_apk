@@ -1,21 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bins
-  extends RecyclerView.ViewHolder
+class bins
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  bins(binq parambinq) {}
   
-  public bins(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
-    this.b = ((ImageView)paramView.findViewById(2131368057));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366265));
+    paramCompoundButton = binq.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
   }
 }
 

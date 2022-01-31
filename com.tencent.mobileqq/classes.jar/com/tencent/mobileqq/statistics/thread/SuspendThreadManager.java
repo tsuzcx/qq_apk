@@ -4,8 +4,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.HandlerThread;
 import android.os.Message;
-import axnv;
-import axuc;
+import axnx;
+import axue;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class SuspendThreadManager
   private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = 20L;
   private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static axuc jdField_a_of_type_Axuc;
+  private static axue jdField_a_of_type_Axue;
   private static volatile SuspendThreadManager jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager;
   private static ArrayList<Thread> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private static boolean jdField_a_of_type_Boolean;
@@ -31,7 +31,7 @@ public class SuspendThreadManager
   {
     jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(paramString);
     jdField_a_of_type_AndroidOsHandlerThread.start();
-    jdField_a_of_type_Axuc = new axuc(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    jdField_a_of_type_Axue = new axue(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   }
   
   public static SuspendThreadManager a()
@@ -192,9 +192,9 @@ public class SuspendThreadManager
   
   public void a()
   {
-    if ((!this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Axuc != null) && (jdField_a_of_type_AndroidOsHandlerThread != null))
+    if ((!this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Axue != null) && (jdField_a_of_type_AndroidOsHandlerThread != null))
     {
-      jdField_a_of_type_Axuc.obtainMessage(1).sendToTarget();
+      jdField_a_of_type_Axue.obtainMessage(1).sendToTarget();
       this.jdField_c_of_type_Boolean = true;
     }
   }
@@ -207,15 +207,15 @@ public class SuspendThreadManager
     Message localMessage = Message.obtain();
     localMessage.what = 2;
     localMessage.obj = Boolean.valueOf(paramBoolean);
-    jdField_a_of_type_Axuc.sendMessage(localMessage);
+    jdField_a_of_type_Axue.sendMessage(localMessage);
     localMessage = Message.obtain();
     localMessage.what = 4;
-    jdField_a_of_type_Axuc.sendMessageDelayed(localMessage, jdField_a_of_type_Long);
+    jdField_a_of_type_Axue.sendMessageDelayed(localMessage, jdField_a_of_type_Long);
   }
   
   public void b()
   {
-    Object localObject = axnv.a();
+    Object localObject = axnx.a();
     int i = ((SharedPreferences)localObject).getInt("suspendCrashCount", 0);
     localObject = ((SharedPreferences)localObject).edit();
     i += 1;
@@ -232,12 +232,12 @@ public class SuspendThreadManager
     if (!jdField_a_of_type_Boolean) {
       return;
     }
-    if (jdField_a_of_type_Axuc.hasMessages(4)) {
-      jdField_a_of_type_Axuc.removeMessages(4);
+    if (jdField_a_of_type_Axue.hasMessages(4)) {
+      jdField_a_of_type_Axue.removeMessages(4);
     }
     Message localMessage = Message.obtain();
     localMessage.what = 3;
-    jdField_a_of_type_Axuc.sendMessage(localMessage);
+    jdField_a_of_type_Axue.sendMessage(localMessage);
   }
 }
 

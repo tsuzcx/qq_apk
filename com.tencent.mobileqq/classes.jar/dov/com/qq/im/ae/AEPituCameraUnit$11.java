@@ -1,25 +1,25 @@
 package dov.com.qq.im.ae;
 
 import android.app.Activity;
-import biim;
-import bizs;
-import bjqu;
+import bijd;
+import bjaj;
+import bjrl;
 
 public class AEPituCameraUnit$11
   implements Runnable
 {
-  public AEPituCameraUnit$11(biim parambiim) {}
+  public AEPituCameraUnit$11(bijd parambijd) {}
   
   public void run()
   {
-    Activity localActivity = biim.a(this.this$0).a();
+    Activity localActivity = bijd.a(this.this$0).a();
     if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
-    if (biim.a(this.this$0) == null) {
-      biim.a(this.this$0, new bizs(localActivity));
+    if (bijd.a(this.this$0) == null) {
+      bijd.a(this.this$0, new bjaj(localActivity));
     }
-    biim.a(this.this$0).a(new AEPituCameraUnit.11.1(this));
+    bijd.a(this.this$0).a(new AEPituCameraUnit.11.1(this));
   }
 }
 

@@ -1,28 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
 public class atxu
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public atxu(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public atxu(AutoScrollImageView paramAutoScrollImageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
-    {
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
-    }
+    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

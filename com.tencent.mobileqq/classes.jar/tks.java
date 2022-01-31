@@ -1,69 +1,71 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class tks
-  implements IEventReceiver
+public final class tks
+  extends QQUIEventReceiver<tkp, tdr>
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private tkt jdField_a_of_type_Tkt;
-  private tku jdField_a_of_type_Tku;
-  private tkv jdField_a_of_type_Tkv;
-  
-  public tks(QQAppInterface paramQQAppInterface)
+  public tks(@NonNull tkp paramtkp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
+    super(paramtkp);
   }
   
-  private void b()
+  private void b(tkp paramtkp, tdr paramtdr)
   {
-    this.jdField_a_of_type_Tku = new tku(this);
-    this.jdField_a_of_type_Tkv = new tkv(this);
-    ste.a().registerSubscriber(this.jdField_a_of_type_Tku);
-    ste.a().registerSubscriber(this.jdField_a_of_type_Tkv);
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Tkt);
+    Object localObject = ((tfy)tkp.a(paramtkp).getManager(251)).a().a(3, "");
+    if ((localObject != null) && (paramtdr.b.equals(((tff)localObject).e))) {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.TAG, 2, "onEvent: invoked. Message: guideInfo: " + localObject);
+      }
     }
-    if (this.jdField_a_of_type_Tkt != null) {
-      this.jdField_a_of_type_Tkt.a();
+    tff localtff;
+    do
+    {
+      return;
+      localObject = (stc)tkp.a(paramtkp).getManager(197);
+      localtff = ((stc)localObject).b(paramtdr.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.TAG, 2, "syncHaloReadStatus: invoked. Message: haloNodeInfo: " + localtff + "\nmanager: " + localObject);
+      }
+    } while (localtff == null);
+    int i = localtff.a.size() - 1;
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        tfx localtfx = (tfx)localtff.a.get(i);
+        if ((localtfx.jdField_a_of_type_Long == paramtdr.jdField_a_of_type_Long) && (!localtfx.jdField_a_of_type_Boolean))
+        {
+          localtfx.jdField_a_of_type_Boolean = true;
+          localtff.b -= 1;
+        }
+      }
+      else
+      {
+        ((stc)localObject).c(localtff);
+        ((stc)localObject).b(localtff);
+        paramtkp = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2(this, paramtkp);
+        ThreadManager.getUIHandler().post(paramtkp);
+        return;
+      }
+      i -= 1;
     }
   }
   
-  public void a()
+  public void a(@NonNull tkp paramtkp, @NonNull tdr paramtdr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
-    }
-    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Tku);
-    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Tkv);
-    this.jdField_a_of_type_Tkt = null;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    ThreadManager.post(new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1(this, paramtkp, paramtdr), 8, null, true);
   }
   
-  public void a(tkt paramtkt)
+  public Class acceptEventClass()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramtkt);
-    }
-    this.jdField_a_of_type_Tkt = paramtkt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return tdr.class;
   }
 }
 

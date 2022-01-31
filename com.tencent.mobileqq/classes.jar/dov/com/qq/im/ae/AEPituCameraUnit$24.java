@@ -4,24 +4,24 @@ import android.os.Handler;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
-import biim;
+import bijd;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 public class AEPituCameraUnit$24
   implements Runnable
 {
-  public AEPituCameraUnit$24(biim parambiim, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
+  public AEPituCameraUnit$24(bijd parambijd, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
   
   public void run()
   {
-    if (biim.a(this.this$0) == null)
+    if (bijd.a(this.this$0) == null)
     {
-      ViewStub localViewStub = (ViewStub)biim.a(this.this$0).findViewById(2131376592);
-      biim.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2131362548));
+      ViewStub localViewStub = (ViewStub)bijd.a(this.this$0).findViewById(2131376594);
+      bijd.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2131362547));
     }
-    biim.a(this.this$0).postDelayed(biim.a(this.this$0), this.a.getTotalDuration());
-    biim.a(this.this$0).setVisibility(0);
-    biim.a(this.this$0).setImageDrawable(this.a);
+    bijd.a(this.this$0).postDelayed(bijd.a(this.this$0), this.a.getTotalDuration());
+    bijd.a(this.this$0).setVisibility(0);
+    bijd.a(this.this$0).setImageDrawable(this.a);
     this.a.start();
   }
 }

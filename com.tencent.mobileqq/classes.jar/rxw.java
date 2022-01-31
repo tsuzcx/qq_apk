@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class rxw
-  implements View.OnClickListener
+  implements axof
 {
-  public rxw(BridgeModule paramBridgeModule, String paramString) {}
+  public rxw(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("timestamp", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
-      return;
-    }
-    catch (JSONException paramView) {}
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.saveImagePermission(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
   }
 }
 

@@ -1,34 +1,40 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+
 public class lpf
 {
-  private short jdField_a_of_type_Short;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private short b;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public lpf(short paramShort1, short paramShort2, byte[] paramArrayOfByte)
+  public static lpf a()
   {
-    this.jdField_a_of_type_Short = paramShort1;
-    this.b = paramShort2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    lkz locallkz = lgj.a(BaseApplicationImpl.getContext());
+    if (!locallkz.a())
+    {
+      lpf locallpf = new lpf();
+      if (locallpf.a(locallkz)) {}
+      return locallpf;
+    }
+    return null;
   }
   
-  public int a()
+  public boolean a(lkz paramlkz)
   {
-    return b() + 4;
-  }
-  
-  public short a()
-  {
-    return this.jdField_a_of_type_Short;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public short b()
-  {
-    return this.b;
+    try
+    {
+      this.jdField_a_of_type_Int = paramlkz.a("OpenGLBlowUp/IsOpen", 0);
+      this.b = paramlkz.a("OpenGLBlowUp/width", 0);
+      this.c = paramlkz.a("OpenGLBlowUp/level", 0);
+      this.jdField_a_of_type_JavaLangString = paramlkz.a("OpenGLBlowUp/versionname", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      }
+      return true;
+    }
+    catch (Exception paramlkz) {}
+    return false;
   }
 }
 

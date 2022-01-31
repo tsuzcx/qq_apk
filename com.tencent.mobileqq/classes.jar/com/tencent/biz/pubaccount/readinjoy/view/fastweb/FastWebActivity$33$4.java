@@ -3,23 +3,23 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import rje;
-import rjs;
+import rjb;
+import rjp;
 
 public class FastWebActivity$33$4
   implements Runnable
 {
-  public FastWebActivity$33$4(rje paramrje, int paramInt) {}
+  public FastWebActivity$33$4(rjb paramrjb, int paramInt) {}
   
   public void run()
   {
-    if (FastWebActivity.a(this.jdField_a_of_type_Rje.a) == null) {
+    if (FastWebActivity.a(this.jdField_a_of_type_Rjb.a) == null) {
       return;
     }
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).a(FastWebActivity.a(this.jdField_a_of_type_Rje.a).jdField_a_of_type_Int);
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).notifyDataSetChanged();
-    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, " handleLikeCntInfoResp likeCnt : " + FastWebActivity.a(this.jdField_a_of_type_Rje.a).jdField_a_of_type_Int);
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).a(FastWebActivity.a(this.jdField_a_of_type_Rjb.a).jdField_a_of_type_Int);
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).notifyDataSetChanged();
+    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, " handleLikeCntInfoResp likeCnt : " + FastWebActivity.a(this.jdField_a_of_type_Rjb.a).jdField_a_of_type_Int);
   }
 }
 

@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import mqq.app.AppRuntime;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.provider.ContactsContract.RawContacts;
 
-public class anes
+class anes
 {
-  public SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
+  public static final String[] a = { "_id", "sourceid", "contact_id" };
+  public static final String[] b = { "sync1", "sync2", "sync3" };
+  
+  public static final Uri a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAppRuntime != null)
-    {
-      localObject1 = localObject2;
-      if ((paramAppRuntime instanceof QQAppInterface))
-      {
-        paramAppRuntime = (QQAppInterface)paramAppRuntime;
-        if (!paramBoolean) {
-          break label41;
-        }
-        localObject1 = paramAppRuntime.b(paramString);
-      }
-    }
-    return localObject1;
-    label41:
-    return paramAppRuntime.a(paramString);
+    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", anem.b()).build();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anes
  * JD-Core Version:    0.7.0.1
  */

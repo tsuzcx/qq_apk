@@ -1,50 +1,36 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
-import java.util.concurrent.Executor;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bjnj
-  extends bjno
+  implements bjnn
 {
-  private static volatile bjnj jdField_a_of_type_Bjnj;
-  @NonNull
-  private static final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new bjnk();
-  @NonNull
-  private static final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new bjnl();
-  @NonNull
-  private bjno jdField_a_of_type_Bjno = this.jdField_b_of_type_Bjno;
-  @NonNull
-  private bjno jdField_b_of_type_Bjno = new bjnm();
+  private final bjnm[] a;
   
-  @NonNull
-  public static bjnj a()
+  bjnj(bjnm[] paramArrayOfbjnm)
   {
-    if (jdField_a_of_type_Bjnj != null) {
-      return jdField_a_of_type_Bjnj;
-    }
-    try
+    this.a = paramArrayOfbjnm;
+  }
+  
+  public void a(bjns parambjns, bjnp parambjnp)
+  {
+    int j = 0;
+    bjnu localbjnu = new bjnu();
+    bjnm[] arrayOfbjnm = this.a;
+    int k = arrayOfbjnm.length;
+    int i = 0;
+    while (i < k)
     {
-      if (jdField_a_of_type_Bjnj == null) {
-        jdField_a_of_type_Bjnj = new bjnj();
-      }
-      return jdField_a_of_type_Bjnj;
+      arrayOfbjnm[i].a(parambjns, parambjnp, false, localbjnu);
+      i += 1;
     }
-    finally {}
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_Bjno.a(paramRunnable);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Bjno.a();
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_Bjno.b(paramRunnable);
+    arrayOfbjnm = this.a;
+    k = arrayOfbjnm.length;
+    i = j;
+    while (i < k)
+    {
+      arrayOfbjnm[i].a(parambjns, parambjnp, true, localbjnu);
+      i += 1;
+    }
   }
 }
 

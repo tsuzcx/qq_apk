@@ -1,31 +1,13 @@
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class bbch
-  extends bbcg
+final class bbch
+  implements MediaPlayer.OnCompletionListener
 {
-  public String b;
-  public List<Integer> b;
-  public String c;
-  public List<Integer> c;
-  public String d;
-  public List<Integer> d;
-  
-  public bbcg a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    bbcg localbbcg = new bbcg();
-    localbbcg.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbbcg.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
-    localbbcg.jdField_a_of_type_Int = 1;
-    return localbbcg;
-  }
-  
-  public bbcg b()
-  {
-    bbcg localbbcg = new bbcg();
-    localbbcg.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localbbcg.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
-    localbbcg.jdField_a_of_type_Int = 2;
-    return localbbcg;
+    paramMediaPlayer.release();
+    bbcf.a = null;
   }
 }
 

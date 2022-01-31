@@ -1,6 +1,14 @@
-public abstract interface bbcn
+final class bbcn
+  implements bcay
 {
-  public abstract void a(String paramString);
+  bbcn(aqyf paramaqyf) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
+    }
+  }
 }
 
 

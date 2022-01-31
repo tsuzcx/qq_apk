@@ -1,25 +1,17 @@
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.richstatus.SignatureFontView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class awdi
-  extends hl
+  implements DialogInterface.OnClickListener
 {
-  public awdi(SignatureFontView paramSignatureFontView) {}
+  public awdi(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public void a(ChatMessage paramChatMessage, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((SignatureFontView.a(this.a) < 0) || (SignatureFontView.b(this.a) < SignatureFontView.a(this.a)))
-    {
-      this.a.a.shouldStartAnimation = true;
-      this.a.a.startAnimation(false, false);
-      if (SignatureFontView.a(this.a) > 0) {
-        SignatureFontView.c(this.a);
-      }
-    }
+    SignatureEditFragment.a(this.a, 8589934618L, null);
+    paramDialogInterface.dismiss();
   }
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

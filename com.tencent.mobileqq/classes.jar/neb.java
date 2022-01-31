@@ -1,16 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class neb
+class neb
   implements View.OnClickListener
 {
-  public neb(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, nmv paramnmv) {}
+  neb(nea paramnea) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
-    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).D();
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (paramView = "02";; paramView = "01")
+    {
+      nol.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(nea.a(this.a)), "", "", false);
+      return;
+    }
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.open.downloadnew;
 
-import bdht;
-import bdkp;
-import bdkx;
+import bdii;
+import bdle;
+import bdlm;
 
 public class DownloadManager$20
   implements Runnable
 {
-  public DownloadManager$20(bdkp parambdkp, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$20(bdle parambdle, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      bdht.c("DownloadManager_", this.a.e + " begin getApkCode ......");
-      bdkp.a(this.this$0).a(this.a.e, this.a.b, bdkp.a(this.this$0));
+      bdii.c("DownloadManager_", this.a.e + " begin getApkCode ......");
+      bdle.a(this.this$0).a(this.a.e, this.a.b, bdle.a(this.this$0));
       return;
     }
     catch (Exception localException)
     {
-      bdht.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bdii.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

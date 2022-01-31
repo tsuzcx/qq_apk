@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zyz;
+import zyw;
+import zyx;
+import zyy;
 import zza;
-import zzb;
-import zzd;
+import zzg;
+import zzh;
+import zzi;
 import zzj;
 import zzk;
-import zzl;
-import zzm;
-import zzn;
 
 public class UpdateManager
 {
@@ -34,28 +34,28 @@ public class UpdateManager
   
   public static void a()
   {
-    Object localObject1 = zzd.a(jdField_a_of_type_AndroidContentContext);
+    Object localObject1 = zza.a(jdField_a_of_type_AndroidContentContext);
     Common.a(true);
-    Object localObject2 = ((zzd)localObject1).a();
+    Object localObject2 = ((zza)localObject1).a();
     localObject1 = new ArrayList();
     localObject2 = ((ArrayList)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      zzk localzzk = (zzk)((Iterator)localObject2).next();
-      if ((localzzk.g.equals("UPDATED")) || (localzzk.g.equals("DISABLED"))) {
-        ((ArrayList)localObject1).add(localzzk);
+      zzh localzzh = (zzh)((Iterator)localObject2).next();
+      if ((localzzh.g.equals("UPDATED")) || (localzzh.g.equals("DISABLED"))) {
+        ((ArrayList)localObject1).add(localzzh);
       }
     }
     if ((!a((ArrayList)localObject1)) || (!b((ArrayList)localObject1))) {
-      zyz.a("KingKongUpdateManager", "Do Install updates failed");
+      zyw.a("KingKongUpdateManager", "Do Install updates failed");
     }
     for (;;)
     {
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        a((zzk)((Iterator)localObject1).next());
+        a((zzh)((Iterator)localObject1).next());
       }
-      zyz.a("KingKongUpdateManager", "Install updates success!");
+      zyw.a("KingKongUpdateManager", "Install updates success!");
     }
   }
   
@@ -63,9 +63,9 @@ public class UpdateManager
   {
     jdField_a_of_type_AndroidContentContext = paramContext;
     jdField_a_of_type_JavaLangString = Common.a();
-    b = zzb.b();
-    zza.jdField_a_of_type_JavaLangString += b;
-    zza.c = zza.c + b + ".apk";
+    b = zyy.b();
+    zyx.jdField_a_of_type_JavaLangString += b;
+    zyx.c = zyx.c + b + ".apk";
     jdField_a_of_type_ComTencentKingkongUpdateManager$UpdateThread = new UpdateManager.UpdateThread();
     jdField_a_of_type_ComTencentKingkongUpdateManager$UpdateThread.start();
   }
@@ -79,17 +79,17 @@ public class UpdateManager
       if ((jdField_a_of_type_ComTencentKingkongUpdateManager$UpdateThread != null) && (UpdateManager.UpdateThread.a(jdField_a_of_type_ComTencentKingkongUpdateManager$UpdateThread) != null)) {
         break;
       }
-      zyz.a("KingKongUpdateManager", "System or Update Thread not ready yet");
+      zyw.a("KingKongUpdateManager", "System or Update Thread not ready yet");
       Common.SetContext(paramContext);
       Common.b();
     } while (!Common.a.a());
     try
     {
-      paramJSONObject = zzk.a(new JSONObject(paramJSONObject.toString()));
-      paramContext = zzd.a(paramContext);
+      paramJSONObject = zzh.a(new JSONObject(paramJSONObject.toString()));
+      paramContext = zza.a(paramContext);
       if (a(paramContext, paramJSONObject, paramBoolean))
       {
-        zyz.a("KingKongUpdateManager", "--> Updating patch : " + paramJSONObject);
+        zyw.a("KingKongUpdateManager", "--> Updating patch : " + paramJSONObject);
         paramContext.a(paramJSONObject);
       }
       Common.a.a();
@@ -99,7 +99,7 @@ public class UpdateManager
     {
       for (;;)
       {
-        zyz.a("KingKongUpdateManager", "Update Exception : " + paramContext);
+        zyw.a("KingKongUpdateManager", "Update Exception : " + paramContext);
       }
     }
     paramContext = paramJSONObject.toString();
@@ -118,7 +118,7 @@ public class UpdateManager
       if (!TextUtils.isEmpty(paramString))
       {
         JSONObject localJSONObject = new JSONObject(paramString);
-        zyz.a("PatchLogTag", "KingKongUpdateManager Update get DPC config=" + paramString);
+        zyw.a("PatchLogTag", "KingKongUpdateManager Update get DPC config=" + paramString);
         if (localJSONObject != null) {
           a(BaseApplicationImpl.sApplication, localJSONObject, false);
         }
@@ -129,79 +129,79 @@ public class UpdateManager
     {
       for (;;)
       {
-        zyz.a("PatchLogTag", "KingKongUpdateManager Update get DPC config exception=" + localJSONException);
+        zyw.a("PatchLogTag", "KingKongUpdateManager Update get DPC config exception=" + localJSONException);
         Object localObject = null;
       }
     }
   }
   
-  public static void a(zzk paramzzk)
+  public static void a(zzh paramzzh)
   {
-    Object localObject = paramzzk.jdField_a_of_type_JavaLangString;
-    paramzzk = paramzzk.f;
-    zyz.a("KingKongUpdateManager", "Clear update patch files " + (String)localObject);
-    paramzzk = zzj.b((String)localObject, paramzzk).iterator();
-    while (paramzzk.hasNext())
+    Object localObject = paramzzh.jdField_a_of_type_JavaLangString;
+    paramzzh = paramzzh.f;
+    zyw.a("KingKongUpdateManager", "Clear update patch files " + (String)localObject);
+    paramzzh = zzg.b((String)localObject, paramzzh).iterator();
+    while (paramzzh.hasNext())
     {
-      String str = Common.a((String)paramzzk.next());
+      String str = Common.a((String)paramzzh.next());
       File localFile = new File(str);
       if ((localFile.exists()) && (!localFile.delete())) {
-        zyz.a("KingKongUpdateManager", "Delete file failed " + str);
+        zyw.a("KingKongUpdateManager", "Delete file failed " + str);
       }
     }
-    paramzzk = Common.a((String)localObject + ".apk");
-    localObject = new File(paramzzk);
+    paramzzh = Common.a((String)localObject + ".apk");
+    localObject = new File(paramzzh);
     if (!((File)localObject).exists()) {}
     while (((File)localObject).delete()) {
       return;
     }
-    zyz.a("KingKongUpdateManager", "Delete file failed " + paramzzk);
+    zyw.a("KingKongUpdateManager", "Delete file failed " + paramzzh);
   }
   
-  public static void a(zzk paramzzk, boolean paramBoolean)
+  public static void a(zzh paramzzh, boolean paramBoolean)
   {
-    zzd localzzd = zzd.a(jdField_a_of_type_AndroidContentContext);
-    String str = paramzzk.jdField_a_of_type_JavaLangString;
-    if (a(localzzd, paramzzk, paramBoolean))
+    zza localzza = zza.a(jdField_a_of_type_AndroidContentContext);
+    String str = paramzzh.jdField_a_of_type_JavaLangString;
+    if (a(localzza, paramzzh, paramBoolean))
     {
-      zyz.a("KingKongUpdateManager", "--> Updating patch : " + paramzzk);
-      localzzd.a(paramzzk);
-      if ("DISABLED".equals(paramzzk.g)) {
-        localzzd.a(paramzzk);
+      zyw.a("KingKongUpdateManager", "--> Updating patch : " + paramzzh);
+      localzza.a(paramzzh);
+      if ("DISABLED".equals(paramzzh.g)) {
+        localzza.a(paramzzh);
       }
     }
     else
     {
       return;
     }
-    if (!a(paramzzk))
+    if (!a(paramzzh))
     {
-      localzzd.a(paramzzk);
-      a(paramzzk);
-      zyz.a("KingKongUpdateManager", "--> Download patch exception : " + str);
+      localzza.a(paramzzh);
+      a(paramzzh);
+      zyw.a("KingKongUpdateManager", "--> Download patch exception : " + str);
       return;
     }
-    if ((!b(paramzzk)) || (zzj.b(jdField_a_of_type_JavaLangString, paramzzk) == null))
+    if ((!b(paramzzh)) || (zzg.b(jdField_a_of_type_JavaLangString, paramzzh) == null))
     {
-      zyz.a("KingKongUpdateManager", "--> Update got damaged patch, disable " + str);
-      paramzzk.g = "DISABLED";
-      localzzd.a(paramzzk);
+      zyw.a("KingKongUpdateManager", "--> Update got damaged patch, disable " + str);
+      paramzzh.g = "DISABLED";
+      localzza.a(paramzzh);
       return;
     }
-    paramzzk.g = "UPDATED";
-    localzzd.a(paramzzk);
-    zyz.a("KingKongUpdateManager", "--> Updated " + str);
+    paramzzh.g = "UPDATED";
+    localzza.a(paramzzh);
+    zyw.a("KingKongUpdateManager", "--> Updated " + str);
   }
   
   public static boolean a()
   {
-    if (!zzm.a(jdField_a_of_type_AndroidContentContext).equals(zzm.b(jdField_a_of_type_AndroidContentContext))) {
+    if (!zzj.a(jdField_a_of_type_AndroidContentContext).equals(zzj.b(jdField_a_of_type_AndroidContentContext))) {
       return false;
     }
-    Iterator localIterator = zzd.a(jdField_a_of_type_AndroidContentContext).a().iterator();
+    Iterator localIterator = zza.a(jdField_a_of_type_AndroidContentContext).a().iterator();
     while (localIterator.hasNext())
     {
-      String str = ((zzk)localIterator.next()).g;
+      String str = ((zzh)localIterator.next()).g;
       if ((str.equals("DISABLED")) || (str.equals("UPDATED"))) {
         return true;
       }
@@ -209,134 +209,134 @@ public class UpdateManager
     return false;
   }
   
-  private static boolean a(ArrayList<zzk> paramArrayList)
+  private static boolean a(ArrayList<zzh> paramArrayList)
   {
-    zyz.a("KingKongUpdateManager", "Removing obsoleted patches");
-    zzd localzzd = zzd.a(jdField_a_of_type_AndroidContentContext);
+    zyw.a("KingKongUpdateManager", "Removing obsoleted patches");
+    zza localzza = zza.a(jdField_a_of_type_AndroidContentContext);
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      zzk localzzk = (zzk)paramArrayList.next();
-      String str = localzzk.jdField_a_of_type_JavaLangString;
-      b(localzzk);
+      zzh localzzh = (zzh)paramArrayList.next();
+      String str = localzzh.jdField_a_of_type_JavaLangString;
+      b(localzzh);
       Common.a(str);
-      localzzd.a(str);
+      localzza.a(str);
     }
     return true;
   }
   
-  public static boolean a(zzd paramzzd, zzk paramzzk, boolean paramBoolean)
+  public static boolean a(zza paramzza, zzh paramzzh, boolean paramBoolean)
   {
-    if ((paramzzd == null) || (paramzzk == null)) {
+    if ((paramzza == null) || (paramzzh == null)) {
       return false;
     }
-    zzk localzzk = paramzzd.a(paramzzk.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder1 = zzm.a();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("Check update : ").append(" forceUpdate " + paramBoolean).append(", enabled " + paramzzk.a()).append(", support " + paramzzk.b());
+    zzh localzzh = paramzza.a(paramzzh.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder1 = zzj.a();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("Check update : ").append(" forceUpdate " + paramBoolean).append(", enabled " + paramzzh.a()).append(", support " + paramzzh.b());
     StringBuilder localStringBuilder3 = new StringBuilder().append(", old version ");
-    if (localzzk == null)
+    if (localzzh == null)
     {
-      paramzzd = "None";
-      localStringBuilder2.append(paramzzd).append(", new version " + paramzzk.b);
-      if ((!paramBoolean) && (paramzzk.a()) && (paramzzk.b()) && (localzzk != null) && (localzzk.b.equals(paramzzk.b))) {
+      paramzza = "None";
+      localStringBuilder2.append(paramzza).append(", new version " + paramzzh.b);
+      if ((!paramBoolean) && (paramzzh.a()) && (paramzzh.b()) && (localzzh != null) && (localzzh.b.equals(paramzzh.b))) {
         break label409;
       }
-      if ((paramzzk.a()) && (paramzzk.b())) {
+      if ((paramzzh.a()) && (paramzzh.b())) {
         break label314;
       }
-      if (localzzk != null)
+      if (localzzh != null)
       {
-        zyz.a("KingKongUpdateManager", "close old patch : " + localzzk.jdField_a_of_type_JavaLangString + " , " + localzzk.b);
-        Common.a(2084, localzzk.jdField_a_of_type_JavaLangString, localzzk.b);
+        zyw.a("KingKongUpdateManager", "close old patch : " + localzzh.jdField_a_of_type_JavaLangString + " , " + localzzh.b);
+        Common.a(2084, localzzh.jdField_a_of_type_JavaLangString, localzzh.b);
       }
     }
-    for (paramzzk.g = "DISABLED";; paramzzk.g = "UPDATING")
+    for (paramzzh.g = "DISABLED";; paramzzh.g = "UPDATING")
     {
-      zyz.a("KingKongUpdateManager", " --> Passed");
+      zyw.a("KingKongUpdateManager", " --> Passed");
       return true;
-      paramzzd = localzzk.b;
+      paramzza = localzzh.b;
       break;
       label314:
-      if ((localzzk != null) && (!localzzk.b.equals(paramzzk.b))) {
-        zyz.a("KingKongUpdateManager", "upgrade patch : from " + localzzk.jdField_a_of_type_JavaLangString + " , " + localzzk.b + " to " + paramzzk.jdField_a_of_type_JavaLangString + " , " + paramzzk.b);
+      if ((localzzh != null) && (!localzzh.b.equals(paramzzh.b))) {
+        zyw.a("KingKongUpdateManager", "upgrade patch : from " + localzzh.jdField_a_of_type_JavaLangString + " , " + localzzh.b + " to " + paramzzh.jdField_a_of_type_JavaLangString + " , " + paramzzh.b);
       }
     }
     label409:
-    zyz.a("KingKongUpdateManager", " --> Refused");
+    zyw.a("KingKongUpdateManager", " --> Refused");
     return false;
   }
   
-  private static boolean a(zzj paramzzj)
+  private static boolean a(zzg paramzzg)
   {
-    return paramzzj.a();
+    return paramzzg.a();
   }
   
-  public static boolean a(zzk paramzzk)
+  public static boolean a(zzh paramzzh)
   {
-    String str1 = paramzzk.e;
-    String str2 = Common.a(paramzzk.jdField_a_of_type_JavaLangString + ".apk");
-    if (!zzm.c(str1, str2)) {}
-    while (!zzm.a(str2, "30820254308201bda00302010202044c5eafe7300d06092a864886f70d01010b0500305d310b300906035504061302434e310b3009060355040813024744310b300906035504071302535a3110300e060355040a130754656e63656e743110300e060355040b130754656e63656e743110300e0603550403130754656e63656e74301e170d3134313033313038333935345a170d3135313033313038333935345a305d310b300906035504061302434e310b3009060355040813024744310b300906035504071302535a3110300e060355040a130754656e63656e743110300e060355040b130754656e63656e743110300e0603550403130754656e63656e7430819f300d06092a864886f70d010101050003818d0030818902818100b293a98fe569b7f9ba099e041c25038d8230e6fcbcee332499723e7d3c635795f6f8c04cdb25683080390119c4e5575bdf9d94b1969caeae09927ee38eb8e3ad9a5003a3dcc9055196341a50f5b06a6ec6e8c415ea8e42dee8d8838096022c3b54b299aafe3d2f934b65864506b379210382f826103476087d47c5191fb00e4b0203010001a321301f301d0603551d0e04160414b049af36c79e57278b3fda5ff8b1152ede6c83ca300d06092a864886f70d01010b0500038181003820e8817688a08d8bfef1cc3c5e7fe3343fa5786db96680d55a6d89145498fa1ae7f2de349e9deecd8ae9499e95a870f5810a1d9d81662f41ff29c23c0ddb51878b6926943fd5771d0e3dc463a7f0deb881355df3a45a206508ae5bc2c818038b0cd8fff3f52aeac3c70464c886917c67bc391fdae70a79fe02b9657190e6d4")) {
+    String str1 = paramzzh.e;
+    String str2 = Common.a(paramzzh.jdField_a_of_type_JavaLangString + ".apk");
+    if (!zzj.c(str1, str2)) {}
+    while (!zzj.a(str2, "30820254308201bda00302010202044c5eafe7300d06092a864886f70d01010b0500305d310b300906035504061302434e310b3009060355040813024744310b300906035504071302535a3110300e060355040a130754656e63656e743110300e060355040b130754656e63656e743110300e0603550403130754656e63656e74301e170d3134313033313038333935345a170d3135313033313038333935345a305d310b300906035504061302434e310b3009060355040813024744310b300906035504071302535a3110300e060355040a130754656e63656e743110300e060355040b130754656e63656e743110300e0603550403130754656e63656e7430819f300d06092a864886f70d010101050003818d0030818902818100b293a98fe569b7f9ba099e041c25038d8230e6fcbcee332499723e7d3c635795f6f8c04cdb25683080390119c4e5575bdf9d94b1969caeae09927ee38eb8e3ad9a5003a3dcc9055196341a50f5b06a6ec6e8c415ea8e42dee8d8838096022c3b54b299aafe3d2f934b65864506b379210382f826103476087d47c5191fb00e4b0203010001a321301f301d0603551d0e04160414b049af36c79e57278b3fda5ff8b1152ede6c83ca300d06092a864886f70d01010b0500038181003820e8817688a08d8bfef1cc3c5e7fe3343fa5786db96680d55a6d89145498fa1ae7f2de349e9deecd8ae9499e95a870f5810a1d9d81662f41ff29c23c0ddb51878b6926943fd5771d0e3dc463a7f0deb881355df3a45a206508ae5bc2c818038b0cd8fff3f52aeac3c70464c886917c67bc391fdae70a79fe02b9657190e6d4")) {
       return false;
     }
-    Common.a(2085, paramzzk.jdField_a_of_type_JavaLangString, paramzzk.b);
+    Common.a(2085, paramzzh.jdField_a_of_type_JavaLangString, paramzzh.b);
     return true;
   }
   
   public static void b()
   {
-    Iterator localIterator = zzd.a(jdField_a_of_type_AndroidContentContext).a().iterator();
+    Iterator localIterator = zza.a(jdField_a_of_type_AndroidContentContext).a().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (zzk)localIterator.next();
-      if (((zzk)localObject).g.equals("UPDATING"))
+      Object localObject = (zzh)localIterator.next();
+      if (((zzh)localObject).g.equals("UPDATING"))
       {
-        zyz.a("KingKongUpdateManager", "Continue udpating " + ((zzk)localObject).jdField_a_of_type_JavaLangString);
-        localObject = ((zzk)localObject).a();
+        zyw.a("KingKongUpdateManager", "Continue udpating " + ((zzh)localObject).jdField_a_of_type_JavaLangString);
+        localObject = ((zzh)localObject).a();
         a(jdField_a_of_type_AndroidContentContext, (JSONObject)localObject, true);
       }
     }
   }
   
-  public static void b(zzk paramzzk)
+  public static void b(zzh paramzzh)
   {
-    String str = paramzzk.jdField_a_of_type_JavaLangString;
-    paramzzk = paramzzk.f;
-    zyz.a("KingKongUpdateManager", "Clear update patch files " + str);
-    paramzzk = zzj.b(str, paramzzk).iterator();
-    while (paramzzk.hasNext())
+    String str = paramzzh.jdField_a_of_type_JavaLangString;
+    paramzzh = paramzzh.f;
+    zyw.a("KingKongUpdateManager", "Clear update patch files " + str);
+    paramzzh = zzg.b(str, paramzzh).iterator();
+    while (paramzzh.hasNext())
     {
-      str = Common.b((String)paramzzk.next());
+      str = Common.b((String)paramzzh.next());
       File localFile = new File(str);
       if ((localFile.exists()) && (!localFile.delete())) {
-        zyz.a("KingKongUpdateManager", "Delete file failed " + str);
+        zyw.a("KingKongUpdateManager", "Delete file failed " + str);
       }
     }
   }
   
   public static boolean b()
   {
-    return zzm.a(jdField_a_of_type_AndroidContentContext).equals(zzm.b(jdField_a_of_type_AndroidContentContext));
+    return zzj.a(jdField_a_of_type_AndroidContentContext).equals(zzj.b(jdField_a_of_type_AndroidContentContext));
   }
   
-  private static boolean b(ArrayList<zzk> paramArrayList)
+  private static boolean b(ArrayList<zzh> paramArrayList)
   {
-    zyz.a("KingKongUpdateManager", "Installing updated patches");
-    zzd localzzd = zzd.a(jdField_a_of_type_AndroidContentContext);
+    zyw.a("KingKongUpdateManager", "Installing updated patches");
+    zza localzza = zza.a(jdField_a_of_type_AndroidContentContext);
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      zzk localzzk = (zzk)paramArrayList.next();
-      Object localObject = localzzk.g;
-      String str1 = localzzk.jdField_a_of_type_JavaLangString;
+      zzh localzzh = (zzh)paramArrayList.next();
+      Object localObject = localzzh.g;
+      String str1 = localzzh.jdField_a_of_type_JavaLangString;
       if (((String)localObject).equals("DISABLED"))
       {
-        zyz.a("KingKongUpdateManager", "Removed " + str1);
+        zyw.a("KingKongUpdateManager", "Removed " + str1);
       }
       else
       {
-        zyz.a("KingKongUpdateManager", "--> Installing " + str1);
-        localObject = zzj.a(str1, localzzk.f);
+        zyw.a("KingKongUpdateManager", "--> Installing " + str1);
+        localObject = zzg.a(str1, localzzh.f);
         if ((localObject != null) && (((ArrayList)localObject).size() > 0))
         {
           localObject = ((ArrayList)localObject).iterator();
@@ -345,45 +345,45 @@ public class UpdateManager
             String str3 = (String)((Iterator)localObject).next();
             String str2 = Common.a(str3);
             str3 = Common.b(str3);
-            if (!zzm.b(str3, str2))
+            if (!zzj.b(str3, str2))
             {
-              zyz.a("KingKongUpdateManager", "Install patch failed : " + str1 + ", " + str3 + " <-- " + str2);
-              localzzk.g = "UPDATING";
-              localzzd.a(localzzk);
+              zyw.a("KingKongUpdateManager", "Install patch failed : " + str1 + ", " + str3 + " <-- " + str2);
+              localzzh.g = "UPDATING";
+              localzza.a(localzzh);
               return false;
             }
           }
         }
-        localObject = zzj.b(jdField_a_of_type_JavaLangString, localzzk);
-        if ((localObject == null) || (!a((zzj)localObject))) {
-          zyz.a("KingKongUpdateManager", "Init patch failed " + str1);
+        localObject = zzg.b(jdField_a_of_type_JavaLangString, localzzh);
+        if ((localObject == null) || (!a((zzg)localObject))) {
+          zyw.a("KingKongUpdateManager", "Init patch failed " + str1);
         }
-        localzzk.g = "READY";
-        localzzd.a(localzzk);
-        zyz.a("KingKongUpdateManager", "Installed " + str1);
+        localzzh.g = "READY";
+        localzza.a(localzzh);
+        zyw.a("KingKongUpdateManager", "Installed " + str1);
       }
     }
     return true;
   }
   
-  private static boolean b(zzk paramzzk)
+  private static boolean b(zzh paramzzh)
   {
-    String str1 = paramzzk.jdField_a_of_type_JavaLangString;
-    paramzzk = zzj.a(str1, paramzzk.f);
-    if ((paramzzk == null) || (paramzzk.size() == 0))
+    String str1 = paramzzh.jdField_a_of_type_JavaLangString;
+    paramzzh = zzg.a(str1, paramzzh.f);
+    if ((paramzzh == null) || (paramzzh.size() == 0))
     {
-      zyz.a("KingKongUpdateManager", "Empty file list in " + str1);
+      zyw.a("KingKongUpdateManager", "Empty file list in " + str1);
       return false;
     }
     int i = 0;
     for (;;)
     {
-      if (i >= paramzzk.size()) {
+      if (i >= paramzzh.size()) {
         break label115;
       }
-      String str2 = (String)paramzzk.get(i);
+      String str2 = (String)paramzzh.get(i);
       String str3 = Common.a(str2);
-      if (!zzm.a(Common.a(str1 + ".apk"), str2, str3)) {
+      if (!zzj.a(Common.a(str1 + ".apk"), str2, str3)) {
         break;
       }
       i += 1;

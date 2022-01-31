@@ -4,7 +4,7 @@ import java.util.Comparator;
 class akoy
   implements Comparator<MessageRecord>
 {
-  akoy(akow paramakow) {}
+  akoy(akov paramakov) {}
   
   public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {

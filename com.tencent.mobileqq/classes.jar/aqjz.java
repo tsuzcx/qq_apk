@@ -1,73 +1,71 @@
-import appoint.define.appoint_define.Elem;
-import appoint.define.appoint_define.Face;
-import appoint.define.appoint_define.RichText;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
 public class aqjz
+  implements TextWatcher
 {
-  public static String a(appoint_define.RichText paramRichText)
+  public int a;
+  public CharSequence a;
+  public boolean a;
+  int b = -1;
+  int c = -1;
+  
+  public aqjz(BlockableEditTextView paramBlockableEditTextView)
   {
-    if (paramRichText == null) {
-      return "";
-    }
-    if (paramRichText.rpt_msg_elems.has()) {}
-    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramRichText.iterator();
-    label135:
-    label196:
-    label199:
-    label201:
-    label204:
-    while (localIterator.hasNext())
-    {
-      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
-      if (localElem != null)
-      {
-        if (localElem.str_content.has())
-        {
-          paramRichText = localElem.str_content.get();
-          label106:
-          localStringBuilder.append(paramRichText);
-          if (!localElem.msg_face_info.has()) {
-            break label196;
-          }
-          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
-          if (paramRichText == null) {
-            break label199;
-          }
-          if (!paramRichText.uint32_index.has()) {
-            break label201;
-          }
-        }
-        for (int i = paramRichText.uint32_index.get();; i = -1)
-        {
-          if ((i < 0) || (i >= axas.b.length)) {
-            break label204;
-          }
-          localStringBuilder.append('\024');
-          localStringBuilder.append((char)axas.b[i]);
-          break;
-          paramRichText = "";
-          break label106;
-          paramRichText = null;
-          break label135;
-          break;
-        }
-      }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FreshNewsUtil", 4, "getStringFromRichText, result=" + localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaLangCharSequence = "";
   }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
+    while (this.jdField_a_of_type_Int >= 0) {
+      return;
+    }
+    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
+    do
+    {
+      Editable localEditable;
+      aqka[] arrayOfaqka;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_Int = 0;
+          } while (paramInt3 == paramInt2);
+          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
+        } while (localEditable == null);
+        arrayOfaqka = (aqka[])localEditable.getSpans(paramInt1, paramInt1, aqka.class);
+      } while ((arrayOfaqka == null) || (arrayOfaqka.length <= 0));
+      this.b = localEditable.getSpanStart(arrayOfaqka[0]);
+      this.c = localEditable.getSpanEnd(arrayOfaqka[0]);
+    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
+    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

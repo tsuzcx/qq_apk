@@ -1,81 +1,83 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.open.model.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bczf
-  implements baho
+  extends bdno
 {
-  public bczf(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public bczf(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
     }
-    do
+    QQAppInterface localQQAppInterface;
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      for (;;)
-      {
-        return;
-        if (paramJSONObject != null) {
-          try
-          {
-            paramJSONObject = (JSONObject)paramJSONObject.get("data");
-            if (paramJSONObject != null)
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("key");
-              if (paramJSONObject != null)
-              {
-                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                paramBundle = (String)paramJSONObject.get("retMsg");
-                if (paramInt != 0) {
-                  break label336;
-                }
-                if (this.a.jdField_a_of_type_Xnz == null)
-                {
-                  this.a.jdField_a_of_type_Xnz = new xnz(this.a);
-                  this.a.jdField_a_of_type_Xnz.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690481));
-                  this.a.jdField_a_of_type_Xnz.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690480, new Object[] { this.a.e }), this.a);
-                  this.a.jdField_a_of_type_Xnz.a(this.a);
-                }
-                if (!this.a.jdField_a_of_type_Xnz.isShowing()) {
-                  this.a.jdField_a_of_type_Xnz.show();
-                }
-                axqw.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                  return;
-                }
-              }
-            }
-          }
-          catch (Exception paramJSONObject)
-          {
-            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131720466));
-          }
-        }
+      AuthorityControlFragment.a(this.a).b(paramList);
+      AuthorityControlFragment.a(this.a).a();
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
-    return;
-    label336:
-    paramJSONObject = this.a.getActivity().getResources().getString(2131720466);
-    switch (paramInt)
+      int i = paramList.size();
+      paramList = String.format(ajya.a(2131700800), new Object[] { Integer.valueOf(i) });
+      bcql.a(AuthorityControlFragment.a(this.a), 2, paramList, 0).a();
+      localQQAppInterface = AuthorityControlFragment.a(this.a);
+      if (!paramBoolean) {
+        break label207;
+      }
+    }
+    label207:
+    for (paramList = "0";; paramList = "1")
     {
+      axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009E1D", "0X8009E1D", 0, 0, paramList, "", "", "");
+      return;
+      bcql.a(AuthorityControlFragment.a(this.a), 1, ajya.a(2131700804), 0).a();
+      break;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onGetAuthorizeAppList: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    if (paramBoolean)
+    {
+      paramString = paramList;
+      if (paramList == null) {
+        paramString = new ArrayList();
+      }
+      AuthorityControlFragment.a(this.a).a(paramString);
+      AuthorityControlFragment.a(this.a, new ArrayList(paramString));
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
+      }
     }
     for (;;)
     {
-      BindGroupConfirmActivity.a(this.a, paramJSONObject);
-      break;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131720469);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131720468);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131720464);
+      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      if ((AuthorityControlFragment.a(this.a).isShowing()) && (!this.a.isRemoving())) {}
+      try
+      {
+        AuthorityControlFragment.a(this.a).dismiss();
+        label148:
+        AuthorityControlFragment.a(this.a, paramBoolean);
+        return;
+        AuthorityControlFragment.a(this.a).setVisibility(0);
+        this.a.setRightButton(2131690284, this.a);
+        continue;
+        AuthorityControlFragment.a(this.a);
+      }
+      catch (Throwable paramList)
+      {
+        break label148;
+      }
     }
   }
 }

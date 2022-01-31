@@ -1,27 +1,29 @@
 import android.view.View;
-import com.tencent.ark.ArkViewImplement.InputCallback;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
+import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
 import java.lang.ref.WeakReference;
 
 public class yzw
-  implements ArkViewImplement.InputCallback
+  implements View.OnClickListener
 {
-  public yzw(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void onFocusChanged(View paramView, boolean paramBoolean)
+  public yzw(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView, String paramString1, String paramString2, String paramString3)
   {
-    GdtCanvasFormComponentView.a(this.a, paramBoolean);
-    if ((paramBoolean) || (GdtCanvasFormComponentView.a(this.a) == null) || (GdtCanvasFormComponentView.b(this.a).get() == null)) {
-      return;
-    }
-    ((zag)GdtCanvasFormComponentView.c(this.a).get()).setPageViewTopMargin(0);
+    this.c = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString3;
   }
   
-  public void onHideMenu(View paramView) {}
-  
-  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onClick(View paramView)
+  {
+    if ((GdtCanvasPictureComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView) != null) && (GdtCanvasPictureComponentView.b(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView).get() != null)) {
+      ((zad)GdtCanvasPictureComponentView.c(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView).get()).a(this.c, GdtCanvasPictureComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView).id, this.jdField_a_of_type_JavaLangString, this.b);
+    }
+  }
 }
 
 

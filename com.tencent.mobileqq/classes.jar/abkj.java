@@ -1,21 +1,30 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class abkj
-  implements ViewSwitcher.ViewFactory
+  extends atzq
 {
   public abkj(Leba paramLeba) {}
   
-  public View makeView()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
+    }
+    if (QLog.isColorLevel())
+    {
+      if ((paramLong >>> 17 & 1L) != 0L) {
+        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
+      }
+      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+    }
+    if (paramBoolean1)
+    {
+      Leba.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
+    }
   }
 }
 

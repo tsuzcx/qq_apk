@@ -1,36 +1,27 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import android.text.Spanned;
+import java.util.Comparator;
 
 public class qgp
-  extends qgq
+  implements Comparator<Object>
 {
-  public qgp(@NonNull Context paramContext, int paramInt)
+  private Spanned a;
+  
+  public qgp(Spanned paramSpanned)
   {
-    super(paramContext, paramInt);
+    this.a = paramSpanned;
   }
   
-  public boolean a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    return getCount() == 5;
-  }
-  
-  public boolean a(@NonNull TagInfo paramTagInfo)
-  {
-    int i = getCount();
-    super.a(paramTagInfo);
-    return i != getCount();
-  }
-  
-  @NonNull
-  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramView.setSelected(true);
-    return paramView;
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i > j) {
+      return 1;
+    }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
   }
 }
 

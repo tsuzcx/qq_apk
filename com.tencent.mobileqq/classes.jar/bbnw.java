@@ -1,23 +1,111 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayDeque;
 
-class bbnw
-  extends GridLayoutManager.SpanSizeLookup
+public class bbnw
+  extends aywn
 {
-  bbnw(bbnv parambbnv) {}
+  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  bboa jdField_a_of_type_Bboa = new bboa(this);
+  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bbnx(this);
+  private ArrayDeque<bbny> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public int getSpanSize(int paramInt)
+  public bbnw(ImageView paramImageView)
   {
-    int i = 3;
-    switch (this.a.getItemViewType(paramInt))
-    {
-    default: 
-      i = 1;
-    case 1: 
-    case 2: 
-    case 4: 
-      return i;
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    if ((paramImageView instanceof URLImageView)) {
+      ((URLImageView)paramImageView).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
     }
-    return 1;
+  }
+  
+  private Drawable a()
+  {
+    Object localObject = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    if (localDrawable != null)
+    {
+      localObject = localDrawable;
+      if ((localDrawable instanceof URLDrawable)) {
+        localObject = ((URLDrawable)localDrawable).getCurrDrawable();
+      }
+      return localObject;
+    }
+    return localObject;
+  }
+  
+  private void b()
+  {
+    Object localObject = (bbny)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
+    if (localObject == null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      localObject = ((bbny)localObject).a(a());
+      if (((URLDrawable)localObject).getStatus() == 1)
+      {
+        b();
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    } while ((this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView));
+    ((URLDrawable)localObject).setURLDrawableListener(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(bbny parambbny)
+  {
+    this.jdField_a_of_type_JavaUtilArrayDeque.add(parambbny);
+    if (this.jdField_a_of_type_Boolean) {
+      b();
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    a(new bbnz(paramString, paramInt));
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("ApngQueuePlayer", 1, "onLoadFialed: ", paramThrowable);
+    b();
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage();
+    if (paramURLDrawable.mFrameCount <= 1)
+    {
+      b();
+      return;
+    }
+    if ((paramURLDrawable.apngLoop > 0) && (paramURLDrawable.currentApngLoop >= paramURLDrawable.apngLoop)) {
+      paramURLDrawable.replay();
+    }
+    if (paramURLDrawable.apngLoop != 0)
+    {
+      this.jdField_a_of_type_Bboa.a(paramURLDrawable);
+      return;
+    }
+    b();
   }
 }
 

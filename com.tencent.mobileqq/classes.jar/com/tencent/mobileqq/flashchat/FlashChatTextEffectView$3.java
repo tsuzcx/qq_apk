@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.flashchat;
 
-import apzb;
+import apzd;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 final class FlashChatTextEffectView$3
   implements Runnable
 {
-  FlashChatTextEffectView$3(apzb paramapzb) {}
+  FlashChatTextEffectView$3(apzd paramapzd) {}
   
   public void run()
   {

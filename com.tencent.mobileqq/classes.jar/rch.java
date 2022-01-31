@@ -1,16 +1,18 @@
-import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
 public class rch
+  extends osm
 {
-  public static rui a(Context paramContext, String paramString1, String paramString2)
+  public rch(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    paramContext = new rui(paramContext, 2131755791);
-    paramContext.setContentView(2131562314);
-    paramContext.setTitle(null);
-    paramContext.setMessage(paramString1);
-    paramContext.a(paramString2);
-    paramContext.setCanceledOnTouchOutside(true);
-    return paramContext;
+    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    ReadInJoyFastWebBottomSocialView.a(this.a, paramBoolean, paramLong, paramInt, paramString);
   }
 }
 

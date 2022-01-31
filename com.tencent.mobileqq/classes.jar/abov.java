@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abov
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
   public abov(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a();
+    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
+      this.a.finish();
+    }
   }
 }
 

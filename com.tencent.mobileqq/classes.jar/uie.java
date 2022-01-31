@@ -1,24 +1,26 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class uie
-  implements bfoq
+  implements DialogInterface.OnClickListener
 {
-  uie(uhz paramuhz, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bfol parambfol) {}
+  uie(uhw paramuhw, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
+    case 0: 
+    default: 
       return;
-      uhz.a(this.jdField_a_of_type_Uhz, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
+    svl.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    vei.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

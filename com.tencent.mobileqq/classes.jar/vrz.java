@@ -1,89 +1,126 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tribe.async.async.JobContext;
+import java.io.IOException;
 
 public class vrz
-  extends vrw
+  extends vsn<vsa, vsa>
 {
-  private boolean c;
-  
-  public vrz(Context paramContext, String paramString, int paramInt)
+  protected void a(JobContext paramJobContext, vsa paramvsa)
   {
-    super(paramContext, paramString, paramInt);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561317, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131363975);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131363970);
-    TextView localTextView = (TextView)paramView.findViewById(2131363972);
-    paramView = paramView.findViewById(2131363966);
-    localTextView.setText(this.jdField_a_of_type_JavaLangString);
-    switch (this.jdField_a_of_type_Int)
+    paramJobContext = null;
+    if (paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath == null)
     {
-    case 10002: 
-    case 10003: 
-    default: 
-      if (this.jdField_a_of_type_Boolean) {
-        localImageView1.setVisibility(0);
-      }
-      break;
+      super.notifyError(new ErrorMessage(-1, "DoodleRotateSegment error, you must merger everything first"));
+      return;
+    }
+    String str2 = paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath;
+    String str1 = paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath;
+    if ((str1 == null) && (str2 == null))
+    {
+      super.notifyResult(paramvsa);
+      return;
+    }
+    int i = paramvsa.jdField_a_of_type_Vsg.c;
+    int j = paramvsa.jdField_a_of_type_Int;
+    if ((j == 2) || (j == 3) || (j == 5) || (j == 101) || (j == 104) || (j == 6)) {
+      if (str2 == null) {}
     }
     for (;;)
     {
-      if (!this.c) {
-        break label177;
+      boolean bool1;
+      boolean bool2;
+      try
+      {
+        Bitmap localBitmap = vxv.a(str2, null);
+        paramJobContext = localBitmap;
+        j = 1;
+        if ((paramJobContext != null) || (str1 == null)) {
+          break label269;
+        }
+        j = 0;
       }
-      paramInt = -2170912;
-      QQStoryContext.a();
-      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-        paramInt = -16444373;
+      catch (Throwable localThrowable)
+      {
+        try
+        {
+          localBitmap = BitmapFactory.decodeFile(str1);
+          paramJobContext = localBitmap;
+          if (paramJobContext == null) {
+            break label316;
+          }
+          if (i == 270)
+          {
+            i = 90;
+            paramJobContext = vsb.a(paramJobContext, i);
+            if (paramJobContext == null) {
+              break label338;
+            }
+            if (j == 0) {
+              break label295;
+            }
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          ved.c("Q.qqstory.publish.edit.DoodleRotateSegment", "decodeFile failed", localOutOfMemoryError);
+        }
+        try
+        {
+          vxv.a(paramJobContext, str2, null);
+          bool1 = true;
+          bool2 = bool1;
+          if (!bool1)
+          {
+            bool2 = bool1;
+            if (str1 != null) {
+              bool2 = vxv.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str1);
+            }
+          }
+          paramJobContext.recycle();
+          if ((paramJobContext != null) && (!bool2)) {
+            break label301;
+          }
+          super.notifyResult(paramvsa);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          ved.c("Q.qqstory.publish.edit.DoodleRotateSegment", "serializeBitmapToFile failed", localIOException);
+        }
+        localThrowable = localThrowable;
+        ved.c("Q.qqstory.publish.edit.DoodleRotateSegment", "unSerializeBitmapFromFile failed", localThrowable);
       }
-      paramView.setBackgroundColor(paramInt);
-      paramView.setVisibility(0);
-      return;
-      localImageView2.setImageResource(2130845798);
-      break;
-      localImageView2.setImageResource(2130845794);
-      break;
-      localImageView2.setImageResource(2130845797);
-      break;
-      localImageView1.setVisibility(4);
+      continue;
+      label269:
+      continue;
+      if (i == 90)
+      {
+        i = -90;
+        continue;
+        label295:
+        bool1 = false;
+        continue;
+        label301:
+        super.notifyError(new ErrorMessage(-1, "bitmap compress failed"));
+        return;
+        label316:
+        super.notifyError(new BitmapError("Q.qqstory.publish.edit.DoodleRotateSegment", 6));
+        return;
+        super.notifyResult(paramvsa);
+        return;
+        label338:
+        bool2 = false;
+      }
+      else
+      {
+        i = 0;
+      }
     }
-    label177:
-    paramView.setVisibility(4);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
   }
 }
 

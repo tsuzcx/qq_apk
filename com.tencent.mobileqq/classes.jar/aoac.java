@@ -1,6 +1,14 @@
-public abstract interface aoac
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.Emoticon;
+
+class aoac
 {
-  public abstract void a(int paramInt);
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
 }
 
 

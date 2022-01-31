@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.report;
 
-import beyo;
+import bezf;
 
 public final class MiniAppReportManager2$3
   implements Runnable
 {
   public void run()
   {
-    beyo.a().c();
+    bezf.a().c();
   }
 }
 

@@ -1,16 +1,20 @@
 final class aglz
-  extends aglx
+  extends aglv
 {
   public boolean a(String paramString)
   {
     if (!super.a(paramString)) {}
-    String[] arrayOfString;
     do
     {
       return false;
-      arrayOfString = agmo.a(paramString);
-    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmo.a(arrayOfString[1]))) || (agmo.b(paramString))));
+      paramString = agmm.a(paramString);
+    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmm.a(paramString[1])));
     return true;
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.util;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.statistics.Reporting;
 
 public class PAReportInfo
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public String actionName;

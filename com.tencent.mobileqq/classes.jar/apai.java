@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 import java.lang.ref.WeakReference;
 
 class apai
-  implements DialogInterface.OnClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  apai(apad paramapad) {}
+  apai(apah paramapah) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_Aplh != null) {
-      this.a.jdField_a_of_type_Aplh.a(false);
+    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
+    paramTVK_IMediaPlayer = ajya.a(2131704597);
+    paramString = (apaf)this.a.a.get();
+    if (paramString != null) {
+      paramString.a(paramInt2, paramTVK_IMediaPlayer);
     }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      paramDialogInterface = (apab)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramDialogInterface != null) {
-        paramDialogInterface.aC_();
-      }
-    }
+    return false;
   }
 }
 

@@ -1,92 +1,45 @@
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupExtraEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.io.File;
-import java.util.List;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class aslq
 {
-  private aslr a;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public aslq(String paramString)
+  public aslq(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    this.a = new aslr(paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (Build.VERSION.SDK_INT >= 16)) {
-      SQLiteDatabase.deleteDatabase(paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public int a()
   {
-    return this.a.a("msg");
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
   }
   
   public String a()
   {
-    return this.a.name;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public List<MsgBackupExtraEntity> a()
+  public String b()
   {
-    return this.a.a();
+    return this.b;
   }
   
-  public List<MsgBackupResEntity> a(int paramInt1, int paramInt2)
+  public String toString()
   {
-    return this.a.b(paramInt1, paramInt2);
-  }
-  
-  public List<MsgBackupMsgEntity> a(long paramLong, int paramInt)
-  {
-    return this.a.a(paramLong, paramInt);
-  }
-  
-  public List<MsgBackupResEntity> a(long paramLong1, long paramLong2)
-  {
-    return this.a.a(paramLong1, paramLong2);
-  }
-  
-  public void a()
-  {
-    if (this.a.isOpen()) {
-      this.a.close();
-    }
-  }
-  
-  public void a(List<MsgBackupMsgEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.a.b(paramList);
-  }
-  
-  public int b()
-  {
-    return this.a.b("res");
-  }
-  
-  public void b(List<MsgBackupResEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.a.c(paramList);
-  }
-  
-  public void c(List<MsgBackupExtraEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.a.a(paramList);
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
+    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

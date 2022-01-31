@@ -7,7 +7,7 @@ import com.tencent.smtt.export.external.interfaces.JsResult;
 class nki
   implements DialogInterface.OnClickListener
 {
-  nki(nke paramnke, JsResult paramJsResult, Context paramContext) {}
+  nki(nkb paramnkb, JsResult paramJsResult, Context paramContext) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

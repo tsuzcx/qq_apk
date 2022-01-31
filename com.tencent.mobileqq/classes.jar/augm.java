@@ -1,33 +1,64 @@
-import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class augm
-  implements akyx
+  implements akys
 {
-  augm(augj paramaugj, AppInterface paramAppInterface) {}
+  augm(augl paramaugl, String paramString, AppInterface paramAppInterface) {}
   
-  public void a() {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(PromotionConfigInfo paramPromotionConfigInfo)
   {
-    akyo localakyo = this.jdField_a_of_type_Augj.a();
-    if ((localakyo == null) || (!TextUtils.equals(paramString, localakyo.jdField_a_of_type_JavaLangString))) {
+    boolean bool = false;
+    QLog.w(augl.jdField_a_of_type_JavaLangString, 1, "getRes, promotionConfigInfo[" + paramPromotionConfigInfo + "], activityID[" + this.jdField_a_of_type_JavaLangString + "], isDestroyed[" + augl.a(this.jdField_a_of_type_Augl) + "]");
+    if (augl.a(this.jdField_a_of_type_Augl)) {
       return;
     }
-    if (paramInt1 < this.jdField_a_of_type_Augj.jdField_a_of_type_ArrayOfInt.length) {
-      this.jdField_a_of_type_Augj.jdField_a_of_type_ArrayOfInt[paramInt1] = paramInt2;
-    }
-    if ((paramInt2 >= 0) && (paramInt2 <= 99))
+    Object localObject = null;
+    akyn localakyn;
+    String str;
+    if (paramPromotionConfigInfo != null)
     {
-      augj.a(this.jdField_a_of_type_Augj, "onDownloadProgress", true);
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label324;
+      }
+      localakyn = paramPromotionConfigInfo.getItem(this.jdField_a_of_type_JavaLangString);
+      str = augl.a(this.jdField_a_of_type_Augl).getCurrentAccountUin();
+      int i = allt.a(str + "AR_PROMOTION_ENTRY_SHOWONCE");
+      int j = bbmd.b(str);
+      if ((j != allt.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION")) || (j == 0))
+      {
+        allt.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION", j);
+        i = 0;
+      }
+      if ((!paramPromotionConfigInfo.showOnce) || (i == 0)) {
+        allt.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 0);
+      }
+      if (!paramPromotionConfigInfo.showOnce) {
+        break label333;
+      }
+      if (i != 0) {}
+    }
+    label324:
+    label333:
+    for (bool = true;; bool = true)
+    {
+      augl.a(this.jdField_a_of_type_Augl).a(bool, paramPromotionConfigInfo.showInTopView);
+      localObject = localakyn;
+      if (bool)
+      {
+        localObject = localakyn;
+        if (paramPromotionConfigInfo.showOnce)
+        {
+          allt.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 1);
+          localObject = localakyn;
+        }
+      }
+      augl.a(this.jdField_a_of_type_Augl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localObject);
       return;
+      localakyn = paramPromotionConfigInfo.getActivityItem();
+      break;
     }
-    QLog.w(augj.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[" + paramInt1 + "], progress[" + paramInt2 + "]");
-    if ((paramInt2 == 100) && (paramInt1 == 0)) {
-      augj.a(this.jdField_a_of_type_Augj, "onDownloadProgress", this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
-    augj.a(this.jdField_a_of_type_Augj, "onDownloadProgress2", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
   }
 }
 

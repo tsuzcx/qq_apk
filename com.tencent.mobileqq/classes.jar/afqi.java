@@ -1,35 +1,15 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 
 class afqi
-  extends ViewPager.SimpleOnPageChangeListener
+  implements afsw
 {
-  afqi(afqe paramafqe) {}
+  afqi(afqc paramafqc) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramInt == 1) {
-      afqe.a(this.a, afqe.a(this.a).getCurrentItem());
+    if (afqc.a(this.a) != null) {
+      afqc.a(this.a).a(paramInt1, paramInt2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageScrollStateChanged mOccurSwitchAccountChangeTab:" + afqe.b(this.a) + "  mPageChangedByIndicator:" + afqe.a(this.a));
-    }
-    if (afqe.a(this.a)) {
-      afqe.b(this.a, false);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    afqe.a(this.a, paramInt);
-    if (!afqe.a(this.a)) {
-      axqw.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "mViewPager onPageSelected mOccurSwitchAccountChangeTab:" + afqe.b(this.a) + " mPageChangedByIndicator:" + afqe.a(this.a));
-    }
-    afqe.a(this.a, false);
   }
 }
 

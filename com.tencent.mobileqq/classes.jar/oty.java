@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 
 public class oty
-  implements View.OnTouchListener
+  extends osm
 {
   public oty(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    return true;
+    if (paramTopBannerInfo.mChannelId == 2000000000) {
+      this.a.a(paramTopBannerInfo);
+    }
   }
 }
 

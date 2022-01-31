@@ -1,185 +1,143 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class rpe
+  implements rpf
 {
-  protected static final Comparator<byte[]> a;
-  private int jdField_a_of_type_Int;
-  private List<byte[]> jdField_a_of_type_JavaUtilList = new ArrayList(64);
-  private final int b;
+  static int jdField_a_of_type_Int;
+  static int b;
+  public Drawable a;
+  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
+  private String jdField_a_of_type_JavaLangString = "zimage.DrawableController";
+  rpd jdField_a_of_type_Rpd;
+  rph jdField_a_of_type_Rph;
+  spa jdField_a_of_type_Spa;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  static
+  public rpe(Drawable paramDrawable, ZImageView paramZImageView)
   {
-    jdField_a_of_type_JavaUtilComparator = new rpf();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView = paramZImageView;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + ".v" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.hashCode());
   }
   
-  public rpe(int paramInt)
+  public rph a()
   {
-    this.b = paramInt;
+    return this.jdField_a_of_type_Rph;
   }
   
-  private void b()
+  public void a(Drawable paramDrawable)
   {
-    try
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    if (this.jdField_a_of_type_Rph != null) {
+      a("setPlaceHolder");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(paramDrawable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Rph != null) {
+      this.jdField_a_of_type_Rph.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      rpn.a(this.jdField_a_of_type_JavaLangString, "detachFromWindow " + paramString + " " + this.jdField_a_of_type_Rph + " " + this.jdField_a_of_type_Rpd);
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.getDrawable() instanceof rpo))) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    if (this.jdField_a_of_type_Rpd != null)
     {
-      if (this.jdField_a_of_type_Int > this.b)
-      {
-        byte[] arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_JavaUtilList.remove(arrayOfByte);
-        this.jdField_a_of_type_Int -= arrayOfByte.length;
-      }
+      this.jdField_a_of_type_Rpd.a();
+      this.jdField_a_of_type_Rpd = null;
+    }
+    if (this.jdField_a_of_type_Rph != null)
+    {
+      rpg.a().a(this.jdField_a_of_type_Rph, "reset");
+      this.jdField_a_of_type_Rph = null;
+    }
+  }
+  
+  public void a(rph paramrph)
+  {
+    bfwu.a("DrawableController.setImageRequest");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a()) {
+      paramrph.c = 1;
+    }
+    jdField_a_of_type_Int += 1;
+    a("resetUrl");
+    rpd localrpd = rpg.a().a(paramrph);
+    if (localrpd == null)
+    {
+      this.jdField_a_of_type_Rph = paramrph;
+      rpg.a().a(this.jdField_a_of_type_Rph, this);
+    }
+    for (;;)
+    {
+      bfwu.a();
+      return;
+      b += 1;
+      a(paramrph, localrpd, false, "setImageRequest");
+    }
+  }
+  
+  public void a(rph paramrph, int paramInt)
+  {
+    if (this.jdField_a_of_type_Spa != null) {
+      this.jdField_a_of_type_Spa.a(paramrph.jdField_a_of_type_JavaNetURL, paramInt);
+    }
+  }
+  
+  public void a(rph paramrph, Throwable paramThrowable)
+  {
+    if (this.jdField_a_of_type_Spa != null) {
+      this.jdField_a_of_type_Spa.a(paramrph.jdField_a_of_type_JavaNetURL, paramThrowable);
+    }
+  }
+  
+  public void a(rph paramrph, rpd paramrpd)
+  {
+    if ((paramrph.equals(this.jdField_a_of_type_Rph)) && (paramrpd.a() != null))
+    {
+      a(paramrph, paramrpd, true, "onSuccess");
       return;
     }
-    finally {}
+    paramrpd.a();
   }
   
-  public void a()
+  void a(rph paramrph, rpd paramrpd, boolean paramBoolean, String paramString)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
+    this.jdField_a_of_type_Rph = paramrph;
+    if (QLog.isColorLevel()) {
+      rpn.a(this.jdField_a_of_type_JavaLangString, "attachImage " + paramString + " " + this.jdField_a_of_type_Rph + " " + paramrpd + " total:" + jdField_a_of_type_Int + " cache:" + b);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (this.jdField_a_of_type_Rpd != null) {
+      this.jdField_a_of_type_Rpd.a();
+    }
+    this.jdField_a_of_type_Rpd = paramrpd;
+    paramString = new rpo(this.jdField_a_of_type_Rpd.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setImageDrawable(paramString, paramBoolean);
+    if (this.jdField_a_of_type_Spa != null) {
+      this.jdField_a_of_type_Spa.a(paramrph.jdField_a_of_type_JavaNetURL, paramrpd);
     }
   }
   
-  /* Error */
-  public void a(byte[] paramArrayOfByte)
+  public void a(spa paramspa)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +16 -> 19
-    //   6: aload_1
-    //   7: arraylength
-    //   8: istore_2
-    //   9: aload_0
-    //   10: getfield 31	rpe:b	I
-    //   13: istore_3
-    //   14: iload_2
-    //   15: iload_3
-    //   16: if_icmple +6 -> 22
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 29	rpe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   26: aload_1
-    //   27: getstatic 20	rpe:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
-    //   30: invokestatic 55	java/util/Collections:binarySearch	(Ljava/util/List;Ljava/lang/Object;Ljava/util/Comparator;)I
-    //   33: istore_3
-    //   34: iload_3
-    //   35: istore_2
-    //   36: iload_3
-    //   37: ifge +8 -> 45
-    //   40: iload_3
-    //   41: ineg
-    //   42: iconst_1
-    //   43: isub
-    //   44: istore_2
-    //   45: aload_0
-    //   46: getfield 29	rpe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   49: iload_2
-    //   50: aload_1
-    //   51: invokeinterface 59 3 0
-    //   56: aload_0
-    //   57: aload_0
-    //   58: getfield 33	rpe:jdField_a_of_type_Int	I
-    //   61: aload_1
-    //   62: arraylength
-    //   63: iadd
-    //   64: putfield 33	rpe:jdField_a_of_type_Int	I
-    //   67: aload_0
-    //   68: invokespecial 61	rpe:b	()V
-    //   71: goto -52 -> 19
-    //   74: astore_1
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	rpe
-    //   0	79	1	paramArrayOfByte	byte[]
-    //   8	42	2	i	int
-    //   13	28	3	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   6	14	74	finally
-    //   22	34	74	finally
-    //   45	71	74	finally
+    this.jdField_a_of_type_Spa = paramspa;
   }
   
-  /* Error */
-  public byte[] a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iconst_0
-    //   3: istore_2
-    //   4: iload_2
-    //   5: aload_0
-    //   6: getfield 29	rpe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   9: invokeinterface 66 1 0
-    //   14: if_icmpge +56 -> 70
-    //   17: aload_0
-    //   18: getfield 29	rpe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   21: iload_2
-    //   22: invokeinterface 39 2 0
-    //   27: checkcast 41	[B
-    //   30: astore_3
-    //   31: aload_3
-    //   32: arraylength
-    //   33: iload_1
-    //   34: if_icmplt +29 -> 63
-    //   37: aload_0
-    //   38: aload_0
-    //   39: getfield 33	rpe:jdField_a_of_type_Int	I
-    //   42: aload_3
-    //   43: arraylength
-    //   44: isub
-    //   45: putfield 33	rpe:jdField_a_of_type_Int	I
-    //   48: aload_0
-    //   49: getfield 29	rpe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   52: iload_2
-    //   53: invokeinterface 68 2 0
-    //   58: pop
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload_3
-    //   62: areturn
-    //   63: iload_2
-    //   64: iconst_1
-    //   65: iadd
-    //   66: istore_2
-    //   67: goto -63 -> 4
-    //   70: iload_1
-    //   71: newarray byte
-    //   73: astore_3
-    //   74: goto -15 -> 59
-    //   77: astore_3
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_3
-    //   81: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	rpe
-    //   0	82	1	paramInt	int
-    //   3	64	2	i	int
-    //   30	44	3	arrayOfByte	byte[]
-    //   77	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	59	77	finally
-    //   70	74	77	finally
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      rpn.a(this.jdField_a_of_type_JavaLangString, "attachToWindow " + paramString + " " + this.jdField_a_of_type_Rph);
+    }
   }
 }
 

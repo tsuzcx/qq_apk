@@ -1,6 +1,14 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 public abstract interface ohj
+  extends View.OnClickListener, ohg
 {
-  public abstract void a();
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void onClick(View paramView);
 }
 
 

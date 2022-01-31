@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bbdj;
+import bbdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,19 +28,19 @@ class MiniAppDesktopAdapter$5
     String str = ApkgManager.getApkgFolderPath(this.val$miniAppInfo);
     if (new File(str).exists())
     {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
       QLog.d("MiniAppDesktopAdapter", 1, "clear apkgFile. " + this.val$miniAppInfo.appId);
     }
     str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$miniAppInfo.appId);
     if (new File(str).exists())
     {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
       QLog.d("MiniAppDesktopAdapter", 1, "clear cacheFile. " + this.val$miniAppInfo.appId);
     }
     str = Storage.getCacheDir(this.val$baseActivity.getCacheDir().getAbsolutePath(), (String)localObject, this.val$miniAppInfo.appId);
     if (new File(str).exists())
     {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
       QLog.d("MiniAppDesktopAdapter", 1, "clear storageFile. " + this.val$miniAppInfo.appId);
     }
     if (BaseApplicationImpl.getApplication().getSharedPreferences(this.val$miniAppInfo.appId + "_" + (String)localObject, 4).edit().clear().commit()) {

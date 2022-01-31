@@ -1,26 +1,11 @@
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+
 public class sxq
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
-  
-  static
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Boolean = false;
-    b = false;
-    c = false;
-    jdField_a_of_type_Int = 725;
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return true;
+    return syj.a(paramQQStoryAutoPlayView, paramMotionEvent);
   }
 }
 

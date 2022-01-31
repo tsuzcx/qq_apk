@@ -1,30 +1,41 @@
 import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class adrn
-  extends ClickableSpan
+  implements bfph
 {
-  adrn(adqy paramadqy) {}
+  adrn(adrl paramadrl, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
     {
-      paramView = bfol.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131720351);
-      paramView.c(2131690596);
-      paramView.a(new adro(this));
-      paramView.a(new adrp(this, paramView));
-      paramView.show();
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    default: 
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    String str;
+    if (this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
+    {
+      str = this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      paramView = null;
+    }
+    for (;;)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adrl.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, null);
+      str = ChatActivityUtils.a(this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      axqy.b(this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
+      axqy.b(this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+      return;
+      paramView = this.jdField_a_of_type_Adrl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      str = null;
+    }
   }
 }
 

@@ -1,48 +1,63 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjjw
-  implements bjdh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public bjjw(MusicProviderView paramMusicProviderView) {}
+  public bjjw(AdvancedProviderView paramAdvancedProviderView, TextView paramTextView, View paramView1, View paramView2, QIMProviderContainerView paramQIMProviderContainerView, View paramView3) {}
   
-  public void a()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Bfnk.sendEmptyMessage(2);
+    if (this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a != null)
+    {
+      this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a.c(paramInt);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+    }
   }
   
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bjkh);
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(false);
     }
-    if (this.a.jdField_a_of_type_Bjkh != null)
+    int j = 300;
+    int i = j;
+    if (AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null)
     {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Bjkh.a(true);
+      i = j;
+      if (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())
+      {
+        AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
+        i = 0;
       }
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Bjkh.a(false);
+    this.b.setAlpha(1.0F);
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 0.0F));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setStartOffset(i);
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
   }
   
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(true);
     }
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.b(paramSeekBar.getProgress());
+    if ((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null) && (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())) {
+      AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
+    }
+    this.b.setAlpha(1.0F);
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 1.0F));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration(((1.0F - AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
   }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

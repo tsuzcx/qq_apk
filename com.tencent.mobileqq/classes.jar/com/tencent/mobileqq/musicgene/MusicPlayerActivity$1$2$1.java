@@ -2,25 +2,25 @@ package com.tencent.mobileqq.musicgene;
 
 import android.os.Message;
 import android.view.View;
-import aswk;
 import aswm;
-import asww;
-import axqw;
+import aswo;
+import aswy;
+import axqy;
 
 public class MusicPlayerActivity$1$2$1
   implements Runnable
 {
-  public MusicPlayerActivity$1$2$1(aswm paramaswm) {}
+  public MusicPlayerActivity$1$2$1(aswo paramaswo) {}
   
   public void run()
   {
-    axqw.b(this.a.jdField_a_of_type_Aswk.a.app, "CliOper", "", "", "0X800682D", "0X800682D", 0, 0, "", "", "", "");
-    asww.a(this.a.jdField_a_of_type_Aswk.a, "http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
+    axqy.b(this.a.jdField_a_of_type_Aswm.a.app, "CliOper", "", "", "0X800682D", "0X800682D", 0, 0, "", "", "", "");
+    aswy.a(this.a.jdField_a_of_type_Aswm.a, "http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
     Object localObject = this.a.jdField_a_of_type_AndroidViewView.getTag();
     if ((localObject instanceof Integer)) {}
     for (int i = ((Integer)localObject).intValue();; i = -1)
     {
-      Message.obtain(MusicPlayerActivity.a(this.a.jdField_a_of_type_Aswk.a), 54, 2131694478, i, this.a.jdField_a_of_type_AndroidViewView).sendToTarget();
+      Message.obtain(MusicPlayerActivity.a(this.a.jdField_a_of_type_Aswm.a), 54, 2131694479, i, this.a.jdField_a_of_type_AndroidViewView).sendToTarget();
       return;
     }
   }

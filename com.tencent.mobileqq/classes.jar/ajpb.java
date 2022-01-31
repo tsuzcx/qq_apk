@@ -1,53 +1,23 @@
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.1;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1;
+import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1.1.1;
 
 public class ajpb
-  extends bbqu
-  implements aive
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private WeakReference<ajfs> jdField_a_of_type_JavaLangRefWeakReference;
+  public ajpb(ApolloFavViewBinder.1 param1) {}
   
-  public ajpb(ajfs paramajfs, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramajfs);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloFavViewBinder.1.1.1(this), 300L);
   }
   
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
-    }
-    ThreadManager.post(new ApolloDrawerInfoViewListener.2(this, paramBoolean, paramObject), 5, null, true);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-    {
-      ajes localajes = ((ajfs)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
-      if (localajes != null) {
-        localajes.a(ajfj.a(paramInt), null, paramString);
-      }
-    }
-  }
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
-    }
-    ThreadManager.post(new ApolloDrawerInfoViewListener.1(this), 8, null, true);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

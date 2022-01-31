@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class axzm
-  implements ayad
 {
-  axzm(axzl paramaxzl, CountdownTextView paramCountdownTextView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  ImageView b = null;
   
-  public void a()
-  {
-    this.jdField_a_of_type_Axzl.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Axzl.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzl.a(this.jdField_a_of_type_Axzl, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzl.a(this.jdField_a_of_type_Axzl, paramLong));
-    this.jdField_a_of_type_Axzl.jdField_d_of_type_Long = paramLong;
-  }
+  axzm(axzl paramaxzl) {}
 }
 
 

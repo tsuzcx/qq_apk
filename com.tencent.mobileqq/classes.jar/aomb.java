@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class aomb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aomb(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public aomb(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void onClick(View paramView)
-  {
-    bazo.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

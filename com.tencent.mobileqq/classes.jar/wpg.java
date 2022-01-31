@@ -1,18 +1,6 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-
-class wpg
-  extends GridLayoutManager.SpanSizeLookup
+public abstract interface wpg
 {
-  wpg(wpf paramwpf) {}
-  
-  public int getSpanSize(int paramInt)
-  {
-    wpc localwpc = this.a.b(paramInt);
-    if (localwpc != null) {
-      return localwpc.a(localwpc.b(paramInt));
-    }
-    return 1;
-  }
+  public abstract void a(String paramString, wpf paramwpf);
 }
 
 

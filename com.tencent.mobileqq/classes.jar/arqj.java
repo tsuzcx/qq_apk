@@ -1,116 +1,133 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
+import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import mqq.app.AppRuntime;
+import com.tencent.widget.ThemeImageView;
 
 public class arqj
 {
-  private static arqj jdField_a_of_type_Arqj;
-  public static boolean a;
-  private arqk jdField_a_of_type_Arqk;
+  public View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public LebaRoundLayout a;
+  private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
   
-  static
+  public arqj(Context paramContext, LayoutInflater paramLayoutInflater)
   {
-    jdField_a_of_type_Boolean = true;
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560818, null);
+    this.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaRoundLayout = ((LebaRoundLayout)paramLayoutInflater.findViewById(2131375528));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131369083));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramLayoutInflater.findViewById(2131368595));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bfwr.c);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378265));
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(paramContext, paramLayoutInflater).a(17).b(16).e(28).a();
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
   }
   
-  public static arqj a()
+  private void a(TextView paramTextView, String paramString)
   {
-    if (jdField_a_of_type_Arqj == null) {
-      jdField_a_of_type_Arqj = new arqj();
-    }
-    return jdField_a_of_type_Arqj;
-  }
-  
-  public static URLDrawable a(String paramString, int paramInt1, int paramInt2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new anou(-10065297, 100, 100);
-    localURLDrawableOptions.mFailedDrawable = new anou(-10065297, 100, 100);
-    localURLDrawableOptions.mRequestHeight = paramInt2;
-    localURLDrawableOptions.mRequestWidth = paramInt1;
-    return URLDrawable.getDrawable(new File(paramString), localURLDrawableOptions);
-  }
-  
-  public static URLDrawable a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt3, QQLiveDrawable.OnStateListener paramOnStateListener, URLDrawable paramURLDrawable)
-  {
-    QQLiveDrawable.QQLiveDrawableParams localQQLiveDrawableParams = new QQLiveDrawable.QQLiveDrawableParams();
-    localQQLiveDrawableParams.mPreviewWidth = paramInt1;
-    localQQLiveDrawableParams.mPreviewHeight = paramInt2;
-    localQQLiveDrawableParams.mDataSourceType = 3;
-    localQQLiveDrawableParams.mDataSource = paramString1;
-    localQQLiveDrawableParams.mLoopback = paramBoolean1;
-    localQQLiveDrawableParams.mMute = paramBoolean2;
-    localQQLiveDrawableParams.mPlayPause = paramBoolean3;
-    localQQLiveDrawableParams.mStartPosi = paramInt3;
-    localQQLiveDrawableParams.mPlayType = 2;
-    localQQLiveDrawableParams.mListener = paramOnStateListener;
-    localQQLiveDrawableParams.msgUniseq = paramLong;
-    localQQLiveDrawableParams.mCoverUrl = ShortVideoUtils.a(paramString2).toString();
-    localQQLiveDrawableParams.mCoverLoadingDrawable = new anou(-10065297, 100, 100);
-    localQQLiveDrawableParams.mReportTag = "bus_type_aio_light_bubble";
-    paramString1 = URLDrawable.URLDrawableOptions.obtain();
-    paramString1.mExtraInfo = localQQLiveDrawableParams;
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL().getPath().equals(paramString2))) {}
-    for (paramString1.mLoadingDrawable = paramURLDrawable;; paramString1.mLoadingDrawable = new anou(-10065297, 100, 100))
+    try
     {
-      paramString1.mRequestWidth = paramInt1;
-      paramString1.mRequestHeight = paramInt2;
-      return URLDrawable.getDrawable(adzh.a(paramLong), paramString1);
+      QLog.i("LebaTableViewHolder", 1, paramString + " thread:" + Thread.currentThread().getId() + " v:" + paramTextView.getVisibility() + " w:" + paramTextView.getWidth() + " h:" + paramTextView.getHeight() + " x:" + paramTextView.getX() + " y:" + paramTextView.getY() + " colors:" + paramTextView.getTextColors() + " text:" + paramTextView.getText());
+      return;
+    }
+    catch (Exception paramTextView)
+    {
+      QLog.i("LebaTableViewHolder", 1, "", paramTextView);
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public void a(@NonNull arqk paramarqk)
   {
-    ChatMessage localChatMessage = MediaPlayerManager.a(paramQQAppInterface).a();
-    if (((localChatMessage == paramChatMessage) || (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == paramChatMessage.uniseq))) && (((MessageForLightVideo)paramChatMessage).videoStatus == 1)) {}
-    for (boolean bool = true;; bool = false)
+    anec localanec = paramarqk.jdField_a_of_type_Anec;
+    Context localContext = paramarqk.jdField_a_of_type_AndroidContentContext;
+    Drawable localDrawable = paramarqk.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    int i = paramarqk.jdField_a_of_type_Int;
+    QQAppInterface localQQAppInterface = paramarqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    arqd localarqd = paramarqk.jdField_a_of_type_Arqd;
+    boolean bool = paramarqk.jdField_a_of_type_Boolean;
+    int j = paramarqk.b;
+    if (bool) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130840180);
+    }
+    while ((localanec == null) || (localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null))
     {
-      if (bool) {
-        MediaPlayerManager.a(paramQQAppInterface).a(true);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+      this.jdField_a_of_type_AndroidViewView.setEnabled(false);
+      this.jdField_a_of_type_ComTencentWidgetThemeImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (AppSetting.d) {
+        baww.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, "", Button.class.getName());
       }
-      return bool;
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b();
+      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130839132);
     }
-  }
-  
-  public void a(arqk paramarqk)
-  {
-    this.jdField_a_of_type_Arqk = paramarqk;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoPlayMgr", 2, "switchEarOrLoudspeaker:" + paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setOnClickListener(paramarqk.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setVisibility(0);
+    if (!TextUtils.isEmpty(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strGridIconUrl))
+    {
+      paramarqk = URLDrawable.URLDrawableOptions.obtain();
+      paramarqk.mRequestWidth = actj.a(32.0F, localContext.getResources());
+      paramarqk.mRequestHeight = paramarqk.mRequestWidth;
+      paramarqk.mLoadingDrawable = localDrawable;
+      paramarqk.mFailedDrawable = localDrawable;
+      paramarqk = URLDrawable.getDrawable(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strGridIconUrl, paramarqk);
+      paramarqk.setTargetDensity(i);
+      if (paramarqk.getStatus() == 2) {
+        paramarqk.restartDownload();
+      }
+      this.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageDrawable(paramarqk);
+      label265:
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (!TextUtils.isEmpty(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName)) {
+        break label442;
+      }
     }
-    jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Arqk != null) {
-      this.jdField_a_of_type_Arqk.a(paramBoolean);
+    label442:
+    for (paramarqk = "";; paramarqk = localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramarqk);
+      if (TextUtils.isEmpty(localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName)) {
+        a(this.jdField_a_of_type_AndroidWidgetTextView, " tvName.setText:" + paramarqk + " index:" + j);
+      }
+      if (AppSetting.d) {
+        baww.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, paramarqk, Button.class.getName());
+      }
+      if (localarqd == null) {
+        break;
+      }
+      paramarqk = new arpu();
+      paramarqk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = localQQAppInterface;
+      paramarqk.jdField_a_of_type_AndroidContentContext = localContext;
+      paramarqk.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
+      paramarqk.jdField_a_of_type_Long = localanec.jdField_a_of_type_Long;
+      paramarqk.jdField_a_of_type_JavaLangString = localanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName;
+      localarqd.a(paramarqk);
+      return;
+      this.jdField_a_of_type_ComTencentWidgetThemeImageView.setImageDrawable(localDrawable);
+      break label265;
     }
-  }
-  
-  public boolean a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return MediaPlayerManager.a((QQAppInterface)localAppRuntime).b();
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     arqj
  * JD-Core Version:    0.7.0.1
  */

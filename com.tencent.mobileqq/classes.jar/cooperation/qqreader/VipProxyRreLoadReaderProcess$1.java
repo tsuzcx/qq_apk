@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import bgtx;
+import bguo;
 import com.tencent.common.app.BaseApplicationImpl;
-import mze;
+import mzb;
 
 public class VipProxyRreLoadReaderProcess$1
   implements Runnable
@@ -11,7 +11,7 @@ public class VipProxyRreLoadReaderProcess$1
   
   public void run()
   {
-    mze.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bgtx(this));
+    mzb.b("354", BaseApplicationImpl.getApplication().getRuntime(), true, new bguo(this));
   }
 }
 

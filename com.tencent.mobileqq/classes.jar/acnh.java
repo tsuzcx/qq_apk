@@ -1,19 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public class acnh
-  implements View.OnTouchListener
+class acnh
+  implements DialogInterface.OnClickListener
 {
-  public acnh(TroopTransferActivity paramTroopTransferActivity) {}
+  acnh(acnf paramacnf, bbgu parambbgu) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    axqy.b(this.jdField_a_of_type_Acnf.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Acnf.a.a, "", "", "");
+    this.jdField_a_of_type_Bbgu.cancel();
   }
 }
 

@@ -1,12 +1,21 @@
-public abstract interface asut
+import android.content.Context;
+
+public class asut
 {
-  public abstract void a();
+  public static void a(Context paramContext)
+  {
+    bcql.a(paramContext, paramContext.getString(2131718834), 0).a();
+  }
   
-  public abstract void a(asuq paramasuq);
+  public static void b(Context paramContext)
+  {
+    bcql.a(paramContext, paramContext.getString(2131718829), 0).a();
+  }
   
-  public abstract void a(asuq paramasuq, int paramInt);
-  
-  public abstract void b(asuq paramasuq);
+  public static void c(Context paramContext)
+  {
+    bcql.a(paramContext, paramContext.getString(2131718846), 0).a();
+  }
 }
 
 

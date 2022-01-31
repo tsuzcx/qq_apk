@@ -2,7 +2,7 @@ package com.tencent.biz.common.offline;
 
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import mzs;
+import mzp;
 
 class BidDownloader$4
   implements Runnable
@@ -11,7 +11,7 @@ class BidDownloader$4
   
   public void run()
   {
-    int i = BidDownloader.jdField_a_of_type_Mzs.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c);
+    int i = BidDownloader.jdField_a_of_type_Mzp.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c);
     if (QLog.isColorLevel()) {
       QLog.i(BidDownloader.d, 2, "state = " + i);
     }

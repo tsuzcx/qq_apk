@@ -1,11 +1,8 @@
-public abstract class wra<T>
+public class wra
 {
-  public long a;
-  public boolean a = true;
-  
-  public abstract void a();
-  
-  public abstract void a(wrg<T> paramwrg);
+  public static String a = "Initialed";
+  public static String b = "Loading";
+  public static String c = "Done";
 }
 
 

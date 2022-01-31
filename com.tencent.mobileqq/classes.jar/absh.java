@@ -1,22 +1,23 @@
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
 public class absh
-  implements QQPermissionCallback
+  extends akat
 {
-  public absh(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
+  public absh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
-    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
-    this.b.g();
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
+    }
   }
 }
 

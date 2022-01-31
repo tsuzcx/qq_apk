@@ -1,22 +1,21 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-class vhc
-  extends vju
+public class vhc
+  implements Animation.AnimationListener
 {
-  public Bitmap a;
-  public Bitmap b;
+  public vhc(EditVideoGuide paramEditVideoGuide) {}
   
-  public vhc(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    this.a.g();
+    this.a.a.a(0);
   }
   
-  public vhc(vju paramvju, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramvju.jdField_c_of_type_Int, paramvju.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,24 +1,14 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View.OnClickListener;
-
-public abstract class awey
-  extends ClickableSpan
-  implements View.OnClickListener
+public class awey
 {
-  private int a;
+  public String a;
+  public String b;
   
-  public awey(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public awey() {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public awey(String paramString1, String paramString2)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.a);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

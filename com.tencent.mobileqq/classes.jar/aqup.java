@@ -1,14 +1,30 @@
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public abstract interface aqup
+public class aqup
+  implements Observer
 {
-  public abstract void a();
+  protected void a() {}
   
-  public abstract void a(List<aquo> paramList);
+  protected void b() {}
   
-  public abstract void b();
+  protected void c() {}
   
-  public abstract void b(List<aquo> paramList);
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    case 1: 
+      a();
+      return;
+    case 2: 
+      b();
+      return;
+    }
+    c();
+  }
 }
 
 

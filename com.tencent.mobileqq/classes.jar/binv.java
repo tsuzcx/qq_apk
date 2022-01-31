@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class binv
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  binv(binu parambinu) {}
+  binv(binq parambinq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    paramCompoundButton = binq.d(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

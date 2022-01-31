@@ -1,23 +1,25 @@
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import android.util.Property;
 
-public class bknz
-  extends RecyclerView.OnScrollListener
+class bknz
+  extends Property<bknw, Float>
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public bknz(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  bknz(bknw parambknw, Class paramClass, String paramString)
   {
-    if ((paramInt == 1) && (!this.jdField_a_of_type_Boolean))
-    {
-      if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity() != null)) {
-        vel.a("video_edit_new", "swap_albumbar", this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity().getIntent(), new String[0]);
-      }
-      this.jdField_a_of_type_Boolean = true;
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bknw parambknw)
+  {
+    if (parambknw != null) {
+      return Float.valueOf(bknw.a(parambknw));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bknw parambknw, Float paramFloat)
+  {
+    if (parambknw != null) {
+      bknw.a(parambknw, paramFloat.floatValue());
     }
   }
 }

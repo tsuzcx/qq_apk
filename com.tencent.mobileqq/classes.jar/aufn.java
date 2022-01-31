@@ -1,20 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aufn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  aufn(aufh paramaufh) {}
+  aufn(aufj paramaufj, aufy paramaufy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (aufh.a(this.a) != null)
-    {
-      aufh.a(this.a).setAlpha(f);
-      aufh.a(this.a).setTranslationY((1.0F - f) * actn.a(25.0F, aufh.a(this.a)));
-    }
+    aufj.a(this.jdField_a_of_type_Aufj).removeMessages(101);
+    aufj.a(this.jdField_a_of_type_Aufj).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Aufy.a.a();
   }
 }
 

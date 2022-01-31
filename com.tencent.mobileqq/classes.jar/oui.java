@@ -1,23 +1,13 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.mobileqq.widget.AutoFitTextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
 public class oui
-  implements bcji
+  implements osk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
+  public oui(ReadInJoyDailyFragment paramReadInJoyDailyFragment, int paramInt) {}
   
-  public oui(oug paramoug) {}
-  
-  public int a()
+  public void a(osm paramosm)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - bawz.a(oug.a(this.jdField_a_of_type_Oug), 10.0F);
+    paramosm.h(this.jdField_a_of_type_Int);
   }
 }
 

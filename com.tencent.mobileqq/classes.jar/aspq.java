@@ -1,19 +1,31 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.widget.AbsListView;
 
 public class aspq
-  implements View.OnLayoutChangeListener
+  implements bfos
 {
-  public aspq(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public aspq(MultiAIOItemFragment paramMultiAIOItemFragment, bfos parambfos) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
+    this.jdField_a_of_type_Bfos.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_a_of_type_Bfos.onScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
-      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
+      paramAbsListView = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+      if ((paramAbsListView != null) && (paramAbsListView.a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) && (!this.jdField_a_of_type_Boolean))
+      {
+        MultiAIOFragment.a("0X8009F80", 0);
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
   }
 }

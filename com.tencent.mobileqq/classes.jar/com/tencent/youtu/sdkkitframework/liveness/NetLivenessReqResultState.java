@@ -5,6 +5,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
+import android.os.Environment;
 import android.util.Base64;
 import com.tencent.youtu.sdkkitframework.common.YtLogger;
 import com.tencent.youtu.sdkkitframework.framework.YtFSM;
@@ -418,7 +419,7 @@ public class NetLivenessReqResultState
     ((NetLivenessReqResultState.ActionReflectReq2)localObject3).session_id = UUID.randomUUID().toString();
     try
     {
-      localObject4 = new FileInputStream(new File("/sdcard/test.mp4"));
+      localObject4 = new FileInputStream(new File(Environment.getExternalStorageDirectory().getPath() + "/test.mp4"));
       YtLogger.d(TAG, "encode video size:" + ((FileInputStream)localObject4).available());
       if (((FileInputStream)localObject4).available() != 0) {
         localObject1 = new byte[((FileInputStream)localObject4).available()];
@@ -464,7 +465,7 @@ public class NetLivenessReqResultState
             try
             {
               localObject4 = BitmapFactory.decodeByteArray((byte[])localObject5, 0, ((ByteArrayOutputStream)localObject4).size());
-              localObject5 = new FileOutputStream(new File("/sdcard/bestbmp" + i + ".jpg"));
+              localObject5 = new FileOutputStream(new File(Environment.getExternalStorageDirectory().getPath() + "/bestbmp" + i + ".jpg"));
               ((Bitmap)localObject4).compress(Bitmap.CompressFormat.JPEG, 95, (OutputStream)localObject5);
               ((OutputStream)localObject5).flush();
               ((OutputStream)localObject5).close();

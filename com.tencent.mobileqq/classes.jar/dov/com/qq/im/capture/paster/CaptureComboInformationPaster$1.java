@@ -1,16 +1,16 @@
 package dov.com.qq.im.capture.paster;
 
-import bjcd;
-import bjej;
+import bjcu;
+import bjfa;
 
 public class CaptureComboInformationPaster$1
   implements Runnable
 {
-  public CaptureComboInformationPaster$1(bjej parambjej, bjcd parambjcd) {}
+  public CaptureComboInformationPaster$1(bjfa parambjfa, bjcu parambjcu) {}
   
   public void run()
   {
-    bjej.a(this.this$0, bjej.a(this.this$0), this.a);
+    bjfa.a(this.this$0, bjfa.a(this.this$0), this.a);
   }
 }
 

@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.IBaseRecognizer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.6.1;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class bigz
-  implements IBaseRecognizer
+  implements Animation.AnimationListener
 {
-  bigz(bigs parambigs) {}
+  public bigz(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void OnInitResultCallback(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "init recoginzer result =" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.6.1(this));
+    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

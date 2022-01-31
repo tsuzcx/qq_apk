@@ -1,12 +1,13 @@
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 public class acvp
-  implements ahbt
+  implements ahbr
 {
-  public acvp(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
+  public acvp(CustomizeStrategyFactory.ThemeCustomizeStrategy.1 param1) {}
   
   public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
@@ -14,9 +15,9 @@ public class acvp
     if (paramInt == 0) {}
     try
     {
-      this.a.a.resPath = paramPathResult;
+      this.a.a.background = paramPathResult;
       if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
+        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
       }
       CustomizeStrategyFactory.a().a(this.a.a);
       return;

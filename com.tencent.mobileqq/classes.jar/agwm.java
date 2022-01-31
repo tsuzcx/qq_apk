@@ -1,17 +1,29 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class agwm
-  extends bbwf
+class agwm
+  implements ThreadExcutor.IThreadListener
 {
-  agwm(agwl paramagwl) {}
+  agwm(agwj paramagwj, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    super.onDone(parambbwg);
-    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambbwg));
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      bbwu localbbwu = new bbwu(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbbwu.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Agwj.a != null) {
+        this.jdField_a_of_type_Agwj.a.a(localbbwu, agwj.a(this.jdField_a_of_type_Agwj), null);
+      }
+    }
   }
+  
+  public void onPreRun() {}
 }
 
 

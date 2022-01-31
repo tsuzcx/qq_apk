@@ -1,8 +1,16 @@
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public abstract interface bcnd
+class bcnd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void setMotionView(View paramView, int paramInt);
+  bcnd(bcnc parambcnc) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    bcnc.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidateSelf();
+  }
 }
 
 

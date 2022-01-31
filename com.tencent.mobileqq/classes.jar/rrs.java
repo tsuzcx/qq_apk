@@ -1,6 +1,16 @@
-public abstract interface rrs
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+
+public class rrs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public rrs(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidate();
+  }
 }
 
 

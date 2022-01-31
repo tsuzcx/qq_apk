@@ -1,28 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ahvd
-  implements wxw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ahvd(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
+  public ahvd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e();
-      localIntent.putExtras(paramBundle);
-      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("photo_path", this.b);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e();
-    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, ajyc.a(2131707459), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e());
+    NewFlowCameraActivity.a(this.a, paramBoolean);
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajoe;
+import ajoc;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bbjp;
+import bbkd;
 
 final class ApolloGameUtil$17
   implements Runnable
 {
-  ApolloGameUtil$17(Context paramContext, String paramString, ajoe paramajoe, Intent paramIntent, Bitmap paramBitmap) {}
+  ApolloGameUtil$17(Context paramContext, String paramString, ajoc paramajoc, Intent paramIntent, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (bbjp.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString }))
+    if (bbkd.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString }))
     {
       ApolloGameUtil.a(2);
-      if (this.jdField_a_of_type_Ajoe != null) {
-        this.jdField_a_of_type_Ajoe.a(2);
+      if (this.jdField_a_of_type_Ajoc != null) {
+        this.jdField_a_of_type_Ajoc.a(2);
       }
     }
     label130:
@@ -32,13 +32,13 @@ final class ApolloGameUtil$17
           {
             ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
             Thread.sleep(1000L);
-            if (!bbjp.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString })) {
+            if (!bbkd.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_JavaLangString })) {
               break label130;
             }
             ApolloGameUtil.a(0);
-            if (this.jdField_a_of_type_Ajoe != null)
+            if (this.jdField_a_of_type_Ajoc != null)
             {
-              this.jdField_a_of_type_Ajoe.a(0);
+              this.jdField_a_of_type_Ajoc.a(0);
               return;
             }
           }
@@ -47,12 +47,12 @@ final class ApolloGameUtil$17
             ApolloGameUtil.a(4);
           }
         }
-      } while (this.jdField_a_of_type_Ajoe == null);
-      this.jdField_a_of_type_Ajoe.a(4);
+      } while (this.jdField_a_of_type_Ajoc == null);
+      this.jdField_a_of_type_Ajoc.a(4);
       return;
       ApolloGameUtil.a(3);
-    } while (this.jdField_a_of_type_Ajoe == null);
-    this.jdField_a_of_type_Ajoe.a(3);
+    } while (this.jdField_a_of_type_Ajoc == null);
+    this.jdField_a_of_type_Ajoc.a(3);
   }
 }
 

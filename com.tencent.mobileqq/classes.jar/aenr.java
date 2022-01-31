@@ -1,38 +1,46 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class aenr
-  implements OnCompositionLoadedListener
+class aenr
+  extends akat
 {
-  public aenr(ConfessChatPie.3 param3) {}
+  aenr(aenm paramaenm) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3)
   {
-    int i = actn.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = actn.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
-    if (paramLottieComposition == null)
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) || (paramInt3 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
     {
-      QLog.e(this.a.this$0.jdField_a_of_type_JavaLangString, 1, "onCompositionLoaded lottieComposition is null");
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError_confess err uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " topicId " + paramInt3);
+      }
       return;
     }
-    Object localObject = paramLottieComposition.getBounds();
-    float f1 = i / ((Rect)localObject).width();
-    float f2 = j / ((Rect)localObject).height();
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).setScale(f1, f2);
-    ((LottieDrawable)localObject).loop(false);
-    aeno.a(this.a.this$0, (LottieDrawable)localObject);
-    aeno.a(this.a.this$0).addAnimatorListener(new aens(this));
-    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError_confess uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2 + " topicId " + paramInt3);
+    }
+    this.a.e(196608);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2)
+  {
+    if ((paramString == null) || (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onSendResult_confess err uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onSendResult_confess uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+    }
+    this.a.u = true;
+    this.a.a(262144, null, paramLong);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.e(65536);
   }
 }
 

@@ -1,29 +1,32 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import cooperation.qzone.LbsDataV2;
+import cooperation.qzone.util.QZLog;
 
-public class axcm
-  extends MSFServlet
+final class axcm
+  extends akui
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  axcm(String paramString, boolean paramBoolean)
   {
-    if (paramIntent == null) {
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
+    long l1 = System.currentTimeMillis();
+    long l2 = axcl.a();
+    bhlg.a(paramInt, this.businessId, l1 - l2);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    {
+      axcl.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + axcl.a());
+    }
+    for (;;)
+    {
+      axcl.a(paramInt);
       return;
+      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
     }
-    long l = paramIntent.getLongExtra("timestamp", 0L);
-    byte[] arrayOfByte = new bgyq(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
-    paramPacket.putSendData(paramIntent);
-    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
   }
 }
 

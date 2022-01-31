@@ -1,21 +1,27 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.List;
 
 public class acam
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public acam(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public acam(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.getActivity().finish();
+    paramAdapterView = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramAdapterView);
+    }
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acam
  * JD-Core Version:    0.7.0.1
  */

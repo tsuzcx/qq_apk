@@ -21,30 +21,30 @@ import cooperation.liveroom.LiveRoomHelper;
 import cooperation.liveroom.LiveRoomPluginInstaller;
 import cooperation.liveroom.LiveRoomPluginLoader;
 import java.util.ArrayList;
-import onk;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osm;
+import osj;
+import ovz;
+import owa;
+import owb;
 import owc;
-import owd;
-import owe;
-import owf;
+import rwy;
 import rxb;
-import rxe;
-import rys;
-import sae;
+import ryp;
+import sab;
 
 public class ReadInJoyViolaChannelFragment
   extends ReadInJoyBaseFragment
 {
-  private static owf jdField_a_of_type_Owf;
+  private static owc jdField_a_of_type_Owc;
   protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
   protected ViewGroup a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ViolaBaseView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView;
   protected String a;
-  private rxe jdField_a_of_type_Rxe;
+  private rxb jdField_a_of_type_Rxb;
   protected String b;
   private String c;
   
@@ -68,15 +68,15 @@ public class ReadInJoyViolaChannelFragment
   private void a()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(getActivity());
-    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379242)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
-    if (this.jdField_a_of_type_Rxe.a()) {
-      this.jdField_a_of_type_Rxe.d();
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379247)).addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    if (this.jdField_a_of_type_Rxb.a()) {
+      this.jdField_a_of_type_Rxb.d();
     }
     b();
-    this.jdField_a_of_type_Rxe.a(this.jdField_a_of_type_AndroidViewViewGroup, new owc(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new owd(this));
+    this.jdField_a_of_type_Rxb.a(this.jdField_a_of_type_AndroidViewViewGroup, new ovz(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(new owa(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setPageStartTime(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.c, this, new sae(this.c, new JSONObject(), rxb.a(this.c), 1));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.c, this, new sab(this.c, new JSONObject(), rwy.a(this.c), 1));
   }
   
   public static void a(int paramInt, String paramString)
@@ -85,13 +85,13 @@ public class ReadInJoyViolaChannelFragment
     do
     {
       return;
-      if (jdField_a_of_type_Owf == null) {
-        jdField_a_of_type_Owf = new owf(null);
+      if (jdField_a_of_type_Owc == null) {
+        jdField_a_of_type_Owc = new owc(null);
       }
-      jdField_a_of_type_Owf.jdField_a_of_type_Int = paramInt;
-      jdField_a_of_type_Owf.jdField_a_of_type_JavaLangString = new String(Base64.decode(paramString, 0));
+      jdField_a_of_type_Owc.jdField_a_of_type_Int = paramInt;
+      jdField_a_of_type_Owc.jdField_a_of_type_JavaLangString = new String(Base64.decode(paramString, 0));
     } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyViolaChannelFragment", 2, "saveGuidingJumpPendingInfo, channelId: " + paramInt + ", url: " + jdField_a_of_type_Owf.jdField_a_of_type_JavaLangString);
+    QLog.d("ReadInJoyViolaChannelFragment", 2, "saveGuidingJumpPendingInfo, channelId: " + paramInt + ", url: " + jdField_a_of_type_Owc.jdField_a_of_type_JavaLangString);
   }
   
   private void b()
@@ -103,18 +103,18 @@ public class ReadInJoyViolaChannelFragment
   
   private void b(int paramInt)
   {
-    if (jdField_a_of_type_Owf == null) {
+    if (jdField_a_of_type_Owc == null) {
       return;
     }
-    if (paramInt == jdField_a_of_type_Owf.jdField_a_of_type_Int)
+    if (paramInt == jdField_a_of_type_Owc.jdField_a_of_type_Int)
     {
-      this.c = jdField_a_of_type_Owf.jdField_a_of_type_JavaLangString;
+      this.c = jdField_a_of_type_Owc.jdField_a_of_type_JavaLangString;
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyViolaChannelFragment", 2, "replaceViolaUrl, channelId: " + paramInt + ", url: " + jdField_a_of_type_Owf.jdField_a_of_type_JavaLangString);
+        QLog.d("ReadInJoyViolaChannelFragment", 2, "replaceViolaUrl, channelId: " + paramInt + ", url: " + jdField_a_of_type_Owc.jdField_a_of_type_JavaLangString);
       }
     }
-    jdField_a_of_type_Owf.jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Owf.jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Owc.jdField_a_of_type_Int = -1;
+    jdField_a_of_type_Owc.jdField_a_of_type_JavaLangString = null;
   }
   
   private void c()
@@ -130,7 +130,7 @@ public class ReadInJoyViolaChannelFragment
       QLog.d("ReadInJoyViolaChannelFragment", 2, "reload viola Page mChannelName :" + this.jdField_a_of_type_JavaLangString + "; mChannelId :" + this.jdField_a_of_type_Int);
     }
     b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new owe(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(new owb(this));
   }
   
   public int a()
@@ -142,7 +142,7 @@ public class ReadInJoyViolaChannelFragment
   {
     super.a(paramInt);
     if ((paramInt == 5) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.b())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(rys.a(2).toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(ryp.a(2).toString());
     }
   }
   
@@ -162,7 +162,7 @@ public class ReadInJoyViolaChannelFragment
     }
     for (;;)
     {
-      osm.a().a(3, null);
+      osj.a().a(3, null);
       return;
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
         a();
@@ -233,7 +233,7 @@ public class ReadInJoyViolaChannelFragment
         Object localObject;
         continue;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(rys.a(1).toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(ryp.a(1).toString());
       return;
       localObject = "NULL";
     }
@@ -295,11 +295,11 @@ public class ReadInJoyViolaChannelFragment
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558457, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372592));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372594));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
-    this.jdField_a_of_type_Rxe = new rxe(this);
-    if ((!getUserVisibleHint()) && (onk.l())) {}
+    this.jdField_a_of_type_Rxb = new rxb(this);
+    if ((!getUserVisibleHint()) && (onh.l())) {}
     for (;;)
     {
       return this.jdField_a_of_type_AndroidViewViewGroup;
@@ -362,7 +362,7 @@ public class ReadInJoyViolaChannelFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityStart();
     }
-    osm.a().a(3, null);
+    osj.a().a(3, null);
   }
   
   public void onStop()

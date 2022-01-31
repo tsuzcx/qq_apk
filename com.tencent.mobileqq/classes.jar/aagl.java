@@ -1,28 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class aagl
-  implements TextWatcher
+  implements bcqh
 {
-  public aagl(AddAccountActivity paramAddAccountActivity) {}
+  public aagl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.a != null) {
-        this.a.a.setVisibility(0);
-      }
-    }
-    while ((this.a.a == null) || (!this.a.a.isShown())) {
-      return;
-    }
-    this.a.a.setVisibility(8);
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

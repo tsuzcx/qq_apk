@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
 
-class xpr
-  implements View.OnClickListener
+public abstract interface xpr
 {
-  xpr(xpn paramxpn) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.j();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Activity paramActivity, xpf paramxpf);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
 }
 
 

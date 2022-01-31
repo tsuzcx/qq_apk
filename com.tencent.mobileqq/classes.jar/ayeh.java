@@ -1,55 +1,16 @@
-public class ayeh
-  implements ajtg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class ayeh
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt) {}
+  ayeh(bbgu parambbgu) {}
   
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 2);
-                a((String)paramObject[0], (String)paramObject[1]);
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 4);
-            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
   }
 }
 

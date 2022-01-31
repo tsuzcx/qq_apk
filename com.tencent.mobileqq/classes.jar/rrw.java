@@ -1,24 +1,56 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class rrw
-  extends AnimatorListenerAdapter
+public abstract class rrw<T>
+  extends BaseAdapter
+  implements rry
 {
-  public rrw(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, View paramView) {}
+  private int jdField_a_of_type_Int;
+  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a(T paramT)
   {
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, false);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, this.jdField_a_of_type_AndroidViewView);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramT, Integer.valueOf(i));
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected void a(List<T> paramList)
   {
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, true);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
+    }
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
+    }
+    Object localObject = getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
   }
 }
 

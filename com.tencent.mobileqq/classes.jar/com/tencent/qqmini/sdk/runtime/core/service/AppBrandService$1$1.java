@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.runtime.core.service;
 
-import besl;
-import bfcp;
-import bfcq;
+import betc;
+import bfdg;
+import bfdh;
 
 public class AppBrandService$1$1
   implements Runnable
 {
-  public AppBrandService$1$1(bfcq parambfcq) {}
+  public AppBrandService$1$1(bfdh parambfdh) {}
   
   public void run()
   {
     try
     {
-      this.a.jdField_a_of_type_Bfcp.a(this.a.jdField_a_of_type_AndroidContentContext);
+      this.a.jdField_a_of_type_Bfdg.a(this.a.jdField_a_of_type_AndroidContentContext);
       return;
     }
     catch (Throwable localThrowable)
     {
-      besl.d("AppBrandService", "onCoreInitFinished exception in thread --> " + this.a.jdField_a_of_type_Bfcp.a, localThrowable);
-      this.a.jdField_a_of_type_Bfcp.a(this.a.jdField_a_of_type_Bfcp.c);
+      betc.d("AppBrandService", "onCoreInitFinished exception in thread --> " + this.a.jdField_a_of_type_Bfdg.a, localThrowable);
+      this.a.jdField_a_of_type_Bfdg.a(this.a.jdField_a_of_type_Bfdg.c);
     }
   }
 }

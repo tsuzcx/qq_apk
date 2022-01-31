@@ -1,19 +1,23 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import java.util.Comparator;
 
-public class aimg
+final class aimg
+  implements Comparator<String>
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
-  
-  public aimg(aimf paramaimf) {}
+  public int a(String paramString1, String paramString2)
+  {
+    if ("★".equals(paramString2)) {}
+    do
+    {
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
+      }
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
+  }
 }
 
 

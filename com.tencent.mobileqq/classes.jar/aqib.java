@@ -1,24 +1,80 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqib
-  implements TouchWebView.OnScrollChangedListener
+  extends askw
 {
-  public aqib(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public aqib(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (paramInt4 > paramInt2) {
-      if (paramInt2 == 0) {
-        this.a.a.b();
-      }
+    if (paramBoolean) {
+      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
     }
-    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
+    for (;;)
+    {
+      super.a(paramBoolean);
       return;
+      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
     }
-    this.a.a.a();
+  }
+  
+  public void a(boolean paramBoolean, asma paramasma)
+  {
+    if (paramBoolean)
+    {
+      MsgBackupSettingFragment.a(this.a, paramasma);
+      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramasma);
+      return;
+      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && ((paramObject instanceof aslu)))
+    {
+      MsgBackupSettingFragment.a = (aslu)paramObject;
+      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramObject);
+      return;
+      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
+    }
+    for (;;)
+    {
+      super.b(paramBoolean);
+      return;
+      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      MsgBackupSettingFragment.a(this.a, (aslq)paramObject);
+      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
+    }
+    for (;;)
+    {
+      super.b(paramBoolean, paramObject);
+      return;
+      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
+    }
   }
 }
 

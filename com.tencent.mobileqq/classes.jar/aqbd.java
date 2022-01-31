@@ -1,43 +1,20 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
 
 class aqbd
-  implements DialogInterface.OnClickListener
+  implements alpb
 {
   aqbd(aqbc paramaqbc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ForwardOption.ForwardBaseOption", 2, "qbShowShareResultDialog back");
-      }
-      if (!this.a.a.isFinishing()) {
-        aqbc.a(this.a).dismiss();
-      }
+    if (!paramBoolean) {
       this.a.a.finish();
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "-->qbShowShareResultDialog--stay");
-    }
-    this.a.a.finish();
-    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
-    paramDialogInterface.addFlags(335544320);
-    this.a.a.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqbd
  * JD-Core Version:    0.7.0.1
  */

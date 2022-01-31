@@ -1,23 +1,20 @@
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ajjs
-  implements ajie
+  implements BusinessObserver
 {
-  ajjs(ajjf paramajjf, File paramFile, String paramString) {}
+  ajjs(ajjr paramajjr, AppInterface paramAppInterface) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + ajyc.a(2131700499));
-        return;
-      }
-      this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + ajyc.a(2131700475));
-      return;
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Ajjr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloSSOConfig", 2, "checkRequestSendSSO, type:" + paramInt + "isSuccess:" + paramBoolean + "onReceive use:" + (System.currentTimeMillis() - l));
     }
-    this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + ajyc.a(2131700496));
   }
 }
 

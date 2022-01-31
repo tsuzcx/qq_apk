@@ -1,16 +1,19 @@
-public class bdch
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import org.json.JSONObject;
+
+class bdch
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  String a;
-  public boolean a;
-  String b;
+  bdch(bdcf parambdcf, preAuth.PreAuthResponse paramPreAuthResponse, JSONObject paramJSONObject) {}
   
-  public bdch(long paramLong, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bdcf.a.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

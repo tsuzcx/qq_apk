@@ -1,19 +1,14 @@
-public class bexr
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bexr
+  implements View.OnClickListener
 {
-  private bexr a;
-  public boolean a;
+  bexr(bexp parambexp) {}
   
-  public bexr a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Bexr;
-  }
-  
-  public void a(bexr parambexr, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramBoolean)) {
-      throw new RuntimeException("WTF");
-    }
-    this.jdField_a_of_type_Bexr = parambexr;
+    bexp.a(this.a);
   }
 }
 

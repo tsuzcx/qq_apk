@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bbev;
+import bbfj;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.Request;
@@ -97,7 +97,7 @@ public class RequestPlugin$MiniAppWebsocketListener
         localObject3 = new JSONObject();
         ((JSONObject)localObject3).put("socketTaskId", this.currSocketId);
         ((JSONObject)localObject3).put("state", "error");
-        if ((bbev.b(BaseApplicationImpl.getContext()) != 0) && (bbev.b(BaseApplicationImpl.getContext()) != -1)) {
+        if ((bbfj.b(BaseApplicationImpl.getContext()) != 0) && (bbfj.b(BaseApplicationImpl.getContext()) != -1)) {
           break label473;
         }
         localObject1 = "network is down";

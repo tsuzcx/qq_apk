@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhet;
+import bhfk;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PhotoParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoParam> CREATOR = new bhet();
+  public static final Parcelable.Creator<PhotoParam> CREATOR = new bhfk();
   public int a;
   public long a;
   public String a;

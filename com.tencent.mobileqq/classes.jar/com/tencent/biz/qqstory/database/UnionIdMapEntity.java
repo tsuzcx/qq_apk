@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class UnionIdMapEntity
-  extends aukm
+  extends auko
 {
   public String qq;
-  @auma
+  @aumc
   public String unionId;
   
   public static String selectionQQ()

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ackz;
+import ackv;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
@@ -8,7 +8,7 @@ import android.widget.RelativeLayout.LayoutParams;
 public class TroopMemberListActivity$AnimationEndClearListener$1
   implements Runnable
 {
-  public TroopMemberListActivity$AnimationEndClearListener$1(ackz paramackz) {}
+  public TroopMemberListActivity$AnimationEndClearListener$1(ackv paramackv) {}
   
   public void run()
   {
@@ -35,9 +35,9 @@ public class TroopMemberListActivity$AnimationEndClearListener$1
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.a.jdField_a_of_type_AndroidViewView.setTag("left");
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130848614);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130848620);
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130848613);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130848619);
       continue;
       this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       continue;

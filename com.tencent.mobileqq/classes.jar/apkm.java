@@ -1,39 +1,86 @@
-import android.app.Activity;
-import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract interface apkm
+public abstract class apkm
+  implements apkt
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int = 0;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public abstract RelativeLayout a();
+  static apkt a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  {
+    return new apke(paramQQAppInterface, paramFileManagerEntity);
+  }
   
-  public abstract QQAppInterface a();
+  static apkt a(QQAppInterface paramQQAppInterface, WeiYunFileInfo paramWeiYunFileInfo)
+  {
+    return new apkh(paramQQAppInterface, paramWeiYunFileInfo);
+  }
   
-  public abstract ForwardFileInfo a();
+  static apkt a(FileInfo paramFileInfo)
+  {
+    return new apkf(paramFileInfo);
+  }
   
-  public abstract void a();
+  static apkt b(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  {
+    return new apkg(paramQQAppInterface, paramFileManagerEntity);
+  }
   
-  public abstract void a(int paramInt);
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void b();
+  public boolean a()
+  {
+    return this.c;
+  }
   
-  public abstract boolean b();
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
   
-  public abstract boolean c();
+  public String f()
+  {
+    return "";
+  }
   
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
-  
-  public abstract Activity getActivity();
+  public String i()
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (c() > 0L)
+    {
+      str1 = str2;
+      if (c() != 3) {
+        if ((e() == null) || (e().length() <= 0)) {
+          break label92;
+        }
+      }
+    }
+    label92:
+    for (int i = 1;; i = 0)
+    {
+      str1 = str2;
+      if (i == 0) {
+        str1 = "" + BaseApplicationImpl.getContext().getString(2131692476) + apug.a(c(), b());
+      }
+      return str1;
+    }
+  }
 }
 
 

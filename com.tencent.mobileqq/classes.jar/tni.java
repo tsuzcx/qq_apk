@@ -1,24 +1,53 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tni
-  extends syp
+  extends sys<tot>
 {
-  public List<uvs> a = new ArrayList();
+  private static final String a = sxm.a("StorySvc.get_weather");
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public tni(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
+  public tni(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
-    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspGroupStoryFeedIdList.hasNext())
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public syn a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
+    try
     {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
-      this.a.add(new uvs(localFeedSeqInfo));
+      localRspGetWeather.mergeFrom(paramArrayOfByte);
+      return new tot(localRspGetWeather);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
+    localReqGetWeather.coordinate.set(this.c);
+    localReqGetWeather.longitude.set(this.d);
+    localReqGetWeather.latitude.set(this.e);
+    return localReqGetWeather.toByteArray();
   }
 }
 

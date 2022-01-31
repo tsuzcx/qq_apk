@@ -1,30 +1,28 @@
-import com.tencent.widget.AuthorizationItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class bfpn
+class bfpn
+  implements DialogInterface.OnDismissListener
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  private WeakReference<DialogInterface.OnDismissListener> a;
   
-  public bfpn(String paramString1, String paramString2, int paramInt)
+  public bfpn(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramOnDismissListener);
   }
   
-  public static bfpn a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return AuthorizationItem.d;
-    case 0: 
-      return AuthorizationItem.a;
-    case 1: 
-      return AuthorizationItem.b;
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
     }
-    return AuthorizationItem.c;
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
   }
 }
 

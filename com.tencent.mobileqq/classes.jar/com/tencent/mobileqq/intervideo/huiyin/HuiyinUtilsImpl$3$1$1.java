@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.intervideo.huiyin;
 
-import arhk;
-import arhl;
+import arhm;
+import arhn;
 
 public class HuiyinUtilsImpl$3$1$1
   implements Runnable
 {
-  public HuiyinUtilsImpl$3$1$1(arhl paramarhl) {}
+  public HuiyinUtilsImpl$3$1$1(arhn paramarhn) {}
   
   public void run()
   {

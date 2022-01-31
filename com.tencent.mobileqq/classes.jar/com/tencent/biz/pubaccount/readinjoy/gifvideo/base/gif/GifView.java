@@ -18,9 +18,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicLong;
-import omu;
-import ows;
-import owt;
+import omr;
+import owp;
+import owq;
 
 public class GifView
   extends FrameLayout
@@ -60,7 +60,7 @@ public class GifView
   private static Drawable a()
   {
     if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841300);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841297);
     }
     return jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
@@ -75,8 +75,8 @@ public class GifView
     long l = System.currentTimeMillis();
     AtomicLong localAtomicLong3 = new AtomicLong(l);
     AtomicLong localAtomicLong4 = new AtomicLong(0L);
-    paramURLDrawable.setDownloadListener(new ows(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
-    paramURLDrawable.setURLDrawableListener(new owt(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
+    paramURLDrawable.setDownloadListener(new owp(this, localAtomicLong3, localAtomicLong1, l, localAtomicLong2, localAtomicLong4, paramURLDrawable));
+    paramURLDrawable.setURLDrawableListener(new owq(this, l, localAtomicLong3, localAtomicLong1, localAtomicLong4, localAtomicLong2, paramURLDrawable));
   }
   
   private boolean b()
@@ -161,7 +161,7 @@ public class GifView
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) {}
     try
     {
-      omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_b_of_type_JavaLangString), getContext());
+      omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_b_of_type_JavaLangString), getContext());
       d();
       return;
     }

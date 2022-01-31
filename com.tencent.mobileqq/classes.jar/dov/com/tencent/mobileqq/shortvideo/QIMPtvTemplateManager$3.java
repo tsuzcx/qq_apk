@@ -1,21 +1,21 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import axlc;
-import bbev;
-import bkyy;
+import axle;
+import bbfj;
+import bkzp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class QIMPtvTemplateManager$3
   implements Runnable
 {
-  public QIMPtvTemplateManager$3(bkyy parambkyy) {}
+  public QIMPtvTemplateManager$3(bkzp parambkzp) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = axlc.c();
-    boolean bool2 = bbev.d(BaseApplication.getContext());
+    boolean bool1 = axle.c();
+    boolean bool2 = bbfj.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }

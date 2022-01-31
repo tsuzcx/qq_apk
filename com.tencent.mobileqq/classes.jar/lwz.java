@@ -1,12 +1,15 @@
-import android.os.IInterface;
-import com.tencent.av.service.LBSInfo;
+import android.graphics.Bitmap;
 
-public abstract interface lwz
-  extends IInterface
+class lwz
+  implements lxr
 {
-  public abstract void a(int paramInt, String paramString);
+  lwz(lwy paramlwy, String paramString, Bitmap paramBitmap) {}
   
-  public abstract void a(boolean paramBoolean, LBSInfo paramLBSInfo);
+  public void a(lxq paramlxq)
+  {
+    paramlxq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramlxq.a();
+  }
 }
 
 

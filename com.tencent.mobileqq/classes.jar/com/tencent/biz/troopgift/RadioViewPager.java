@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import xca;
+import xbx;
 
 public class RadioViewPager
   extends RelativeLayout
@@ -92,7 +92,7 @@ public class RadioViewPager
     {
       localTextView.setVisibility(i);
       if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-        this.c.setOnClickListener(new xca(this, paramContext, paramString));
+        this.c.setOnClickListener(new xbx(this, paramContext, paramString));
       }
       return;
       i = 8;

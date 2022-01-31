@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akzj;
+import akzi;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -90,7 +90,7 @@ public class ARVideoRecordButtonView
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new akzj(this));
+    localValueAnimator.addUpdateListener(new akzi(this));
     localValueAnimator.start();
   }
   

@@ -1,61 +1,17 @@
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.view.View.OnClickListener;
 import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class vxb
+class vxb
+  implements View.OnClickListener
 {
-  public View a;
-  public View b;
+  vxb(vxa paramvxa) {}
   
-  public vxb(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131369200);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
-    float f = 0.0F;
-    if (localIterator.hasNext())
-    {
-      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if ((vyb.b(paramTroopStoryItemInfo.publishTime)) || (vyb.d(paramTroopStoryItemInfo.publishTime)))
-        {
-          f = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
-        }
-        else
-        {
-          f = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
-          continue;
-          f = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-          continue;
-          f = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
-          continue;
-          f = vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-        }
-      }
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
     }
-    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
-    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-    if (i <= 0)
-    {
-      paramTroopStoryItemInfo.height = 0;
-      this.b.setLayoutParams(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    paramTroopStoryItemInfo.height = i;
-    this.b.setLayoutParams(paramTroopStoryItemInfo);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

@@ -1,25 +1,16 @@
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.2;
-import com.tencent.mobileqq.data.MessageRecord;
 
 public class rea
-  implements osb
+  extends oyd
 {
-  public rea(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  public rea(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.2(this));
+    super(paramString);
   }
   
-  public void b(MessageRecord paramMessageRecord)
+  public void a(oxx paramoxx)
   {
-    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.1(this));
+    this.jdField_a_of_type_JavaLangObject = paramoxx.a();
   }
 }
 

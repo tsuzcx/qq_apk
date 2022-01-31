@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.doc.jsp;
 
-import annu;
+import annz;
 
 public class VoiceInputHelper$1
   implements Runnable
 {
-  public VoiceInputHelper$1(annu paramannu) {}
+  public VoiceInputHelper$1(annz paramannz) {}
   
   public void run()
   {
-    annu.a(this.this$0);
+    annz.a(this.this$0);
   }
 }
 

@@ -1,36 +1,22 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class ahvc
-  extends akup
+  implements bfph
 {
-  public ahvc(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahvc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    switch (paramInt)
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (NewFlowCameraActivity.a(this.a) != null) {
-        NewFlowCameraActivity.d(this.a);
-      }
-    }
-    do
-    {
+    default: 
       return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
+    NewFlowCameraActivity.e(this.a);
+    this.a.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

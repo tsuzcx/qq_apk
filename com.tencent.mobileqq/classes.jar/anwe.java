@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.data.EmoticonResp;
+import java.lang.ref.WeakReference;
 
-public abstract interface anwe
+public class anwe
 {
-  public abstract void a(EmoticonPackage paramEmoticonPackage);
+  WeakReference<ajvn> a;
   
-  public abstract void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2);
+  public anwe(anvx paramanvx, ajvn paramajvn)
+  {
+    this.a = new WeakReference(paramajvn);
+  }
   
-  public abstract void b(EmoticonPackage paramEmoticonPackage);
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
 }
 
 

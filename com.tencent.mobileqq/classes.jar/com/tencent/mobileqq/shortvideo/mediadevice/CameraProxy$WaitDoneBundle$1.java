@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import axij;
+import axil;
 
 public class CameraProxy$WaitDoneBundle$1
   implements Runnable
 {
-  public CameraProxy$WaitDoneBundle$1(axij paramaxij) {}
+  public CameraProxy$WaitDoneBundle$1(axil paramaxil) {}
   
   public void run()
   {

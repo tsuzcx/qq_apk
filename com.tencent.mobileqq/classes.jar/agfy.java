@@ -1,113 +1,104 @@
-import android.content.Context;
-import android.support.v4.util.ArraySet;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class agfy
-  extends acut
 {
-  public final String a;
+  private static final agfy jdField_a_of_type_Agfy = new agfy();
+  private Map<String, List<WeakReference<agfv>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public agfy(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  private int a(List<WeakReference<agfv>> paramList, agfv paramagfv)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
-    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
-    this.jdField_a_of_type_Adtg = new agfz(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
-    this.jdField_a_of_type_Acuu = null;
-  }
-  
-  public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
-  {
-    long l1 = 0L;
-    paramInt = 0;
-    paramCharSequence = null;
-    ChatMessage localChatMessage;
-    boolean bool1;
-    if (paramInt < paramList.size())
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localChatMessage = (ChatMessage)paramList.get(paramInt);
-      boolean bool2 = axas.b(localChatMessage.msgtype);
-      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.b) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.b) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L))))
+      paramList = paramList.iterator();
+      int i = 0;
+      while (paramList.hasNext())
       {
-        bool1 = true;
-        label165:
-        localChatMessage.mNeedTimeStamp = bool1;
-        if (localChatMessage.mNeedTimeStamp)
-        {
-          long l2 = localChatMessage.time;
-          l1 = l2;
-          if (localChatMessage.time < this.b)
-          {
-            acyl.a(localChatMessage);
-            l1 = l2;
-          }
+        agfv localagfv = (agfv)((WeakReference)paramList.next()).get();
+        if ((localagfv != null) && (localagfv == paramagfv)) {
+          return i;
         }
-        if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
-          break label362;
-        }
-        paramCharSequence = localChatMessage;
+        i += 1;
       }
     }
-    label362:
-    for (;;)
+    return -1;
+  }
+  
+  public static agfy a()
+  {
+    return jdField_a_of_type_Agfy;
+  }
+  
+  public void a(int paramInt, String paramString, agfv paramagfv)
+  {
+    try
     {
-      if (paramInt != paramList.size() - 1) {
-        localChatMessage.isFlowMessage = false;
+      String str = akpx.a(paramString, paramInt);
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramString = localList;
+      if (localList == null)
+      {
+        paramString = new ArrayList(2);
+        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
       }
-      paramInt += 1;
-      break;
-      bool1 = false;
-      break label165;
-      if (paramList.size() > 0) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
+      if (a(paramString, paramagfv) < 0) {
+        paramString.add(new WeakReference(paramagfv));
       }
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      QLog.d("MiniPie.MiniChatAdapter", 1, "list addr = " + paramList.hashCode() + ",size = " + paramList.size());
-      super.notifyDataSetChanged();
       return;
     }
+    finally {}
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a(int paramInt, String paramString)
   {
-    ((agfz)this.jdField_a_of_type_Adtg).a(paramBoolean);
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    if ((paramView != null) && ((paramView instanceof agfw)))
+    for (;;)
     {
-      paramViewGroup = (agfw)paramView;
-      paramViewGroup.setIsShieldTouchForItem(true);
-      paramViewGroup.setFrom(((agfz)this.jdField_a_of_type_Adtg).a);
-      if ((paramView instanceof BaseChatItemLayout)) {
-        ((BaseChatItemLayout)paramView).c();
+      try
+      {
+        paramString = akpx.a(paramString, paramInt);
+        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if ((paramString != null) && (paramString.size() > 0))
+        {
+          paramString = paramString.iterator();
+          if (paramString.hasNext())
+          {
+            if ((agfv)((WeakReference)paramString.next()).get() == null) {
+              continue;
+            }
+            bool = true;
+            if (QLog.isColorLevel()) {
+              QLog.d(aghk.a, 2, "hasOtherInstance -->" + bool);
+            }
+            return bool;
+          }
+        }
       }
+      finally {}
+      boolean bool = false;
     }
-    return paramView;
   }
   
-  public String toString()
+  public void b(int paramInt, String paramString, agfv paramagfv)
   {
-    return "list.addr = " + this.jdField_a_of_type_JavaUtilList.hashCode();
+    try
+    {
+      paramString = akpx.a(paramString, paramInt);
+      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0) && (paramagfv != null))
+      {
+        paramInt = a(paramString, paramagfv);
+        if (paramInt >= 0) {
+          paramString.remove(paramInt);
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 

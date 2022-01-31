@@ -1,11 +1,17 @@
-import com.tencent.oskplayer.util.Singleton;
-
 class xil
-  extends Singleton<xij>
+  implements xim
 {
-  protected xij a()
+  xil(xij paramxij) {}
+  
+  public void a(xer paramxer)
   {
-    return new xij(null);
+    int i = paramxer.a();
+    if ((xij.a(this.a)) && (i == 100))
+    {
+      this.a.a(true);
+      return;
+    }
+    this.a.a(false);
   }
 }
 

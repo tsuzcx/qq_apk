@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aovy;
-import aozi;
-import apsx;
-import apue;
-import awzw;
+import aowc;
+import aozm;
+import aptb;
+import apug;
+import awzy;
 import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,19 +13,19 @@ import java.io.UnsupportedEncodingException;
 public class FileManagerRSWorker$9
   implements Runnable
 {
-  public FileManagerRSWorker$9(aozi paramaozi) {}
+  public FileManagerRSWorker$9(aozm paramaozm) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + awzw.a());
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + awzy.a());
     }
-    apsx localapsx = new apsx();
-    localapsx.jdField_a_of_type_JavaLangString = this.this$0.e;
-    localapsx.jdField_a_of_type_Long = this.this$0.d;
-    this.this$0.jdField_a_of_type_ArrayOfByte = apue.d(this.this$0.jdField_b_of_type_JavaLangString);
-    this.this$0.jdField_b_of_type_ArrayOfByte = apue.a(this.this$0.jdField_b_of_type_JavaLangString);
-    this.this$0.c = apue.c(this.this$0.jdField_b_of_type_JavaLangString);
+    aptb localaptb = new aptb();
+    localaptb.jdField_a_of_type_JavaLangString = this.this$0.e;
+    localaptb.jdField_a_of_type_Long = this.this$0.d;
+    this.this$0.jdField_a_of_type_ArrayOfByte = apug.d(this.this$0.jdField_b_of_type_JavaLangString);
+    this.this$0.jdField_b_of_type_ArrayOfByte = apug.a(this.this$0.jdField_b_of_type_JavaLangString);
+    this.this$0.c = apug.c(this.this$0.jdField_b_of_type_JavaLangString);
     if ((this.this$0.jdField_a_of_type_ArrayOfByte == null) || (this.this$0.jdField_b_of_type_ArrayOfByte == null) || (this.this$0.c == null))
     {
       this.this$0.a(null, 0);
@@ -33,14 +33,14 @@ public class FileManagerRSWorker$9
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSha3 = HexUtil.bytes2HexStr(this.this$0.c);
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(this.this$0.jdField_a_of_type_ArrayOfByte);
-    localapsx.c = this.this$0.jdField_a_of_type_ArrayOfByte;
-    localapsx.d = this.this$0.jdField_b_of_type_ArrayOfByte;
-    localapsx.e = this.this$0.c;
+    localaptb.c = this.this$0.jdField_a_of_type_ArrayOfByte;
+    localaptb.d = this.this$0.jdField_b_of_type_ArrayOfByte;
+    localaptb.e = this.this$0.c;
     try
     {
-      localapsx.jdField_b_of_type_ArrayOfByte = apue.a(this.this$0.jdField_b_of_type_JavaLangString).getBytes("utf-8");
-      localapsx.jdField_a_of_type_ArrayOfByte = this.this$0.jdField_b_of_type_JavaLangString.getBytes("utf-8");
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localapsx, aozi.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      localaptb.jdField_b_of_type_ArrayOfByte = apug.a(this.this$0.jdField_b_of_type_JavaLangString).getBytes("utf-8");
+      localaptb.jdField_a_of_type_ArrayOfByte = this.this$0.jdField_b_of_type_JavaLangString.getBytes("utf-8");
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localaptb, aozm.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)

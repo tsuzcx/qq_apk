@@ -1,26 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class abeq
-  implements agjx
+  implements DialogInterface.OnClickListener
 {
-  abeq(abel paramabel) {}
+  abeq(abep paramabep) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      bcpw.a(this.a.a.getApplicationContext(), 1, ajyc.a(2131704890), 0).a();
-      return;
-    }
-    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
-    paramContext.putExtra("fromKeyForContactBind", 5);
-    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
-    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
-    this.a.a.startActivity(paramContext);
+    paramDialogInterface.dismiss();
   }
 }
 

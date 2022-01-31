@@ -1,16 +1,30 @@
-import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class azib
-  implements azif
+  implements bcww
 {
-  public azib(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  public azib(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a(BaseResp paramBaseResp)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bcwh);
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bcql.a(BaseApplicationImpl.getContext(), 2, 2131719487, 1).a();
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      bcql.a(BaseApplicationImpl.getContext(), 2, 2131719506, 1).a();
+    }
   }
 }
 

@@ -1,45 +1,63 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class anjq
-  extends SQLiteCursor
+public class anjq
+  extends DefaultHandler
 {
-  anjq(anjp paramanjp, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  MessageForTroopFee a;
+  public String a;
+  
+  public anjq()
   {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public byte[] getBlob(int paramInt)
+  public MessageForTroopFee a()
   {
-    byte[] arrayOfByte2 = super.getBlob(paramInt);
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (this.a.a.isNeedEncry()) {
-      arrayOfByte1 = SecurityUtile.a(arrayOfByte2);
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
     }
-    return arrayOfByte1;
+    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
   }
   
-  public String getString(int paramInt)
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    String str2 = super.getString(paramInt);
-    String str1 = str2;
-    if (this.a.a.isNeedEncry()) {}
-    try
+    if (paramString3.equals("msg"))
     {
-      str1 = SecurityUtile.b(str2);
-      return str1;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
     }
-    catch (Exception localException) {}
-    return str2;
+    do
+    {
+      return;
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+      if (paramString3.equals("summary"))
+      {
+        this.jdField_a_of_type_JavaLangString = "summary";
+        return;
+      }
+    } while (!paramString3.equals("source"));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjq
  * JD-Core Version:    0.7.0.1
  */

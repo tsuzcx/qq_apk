@@ -1,26 +1,34 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aaqh
-  implements TopGestureLayout.InterceptTouchEventListener
+  implements View.OnClickListener
 {
-  public aaqh(ChatFragment paramChatFragment) {}
+  public aaqh(ChatHistory paramChatHistory) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramMotionEvent);
+    if (this.a.d < this.a.c)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838766);
+      paramView = this.a;
+      paramView.d += 1;
+      if (this.a.d >= this.a.c)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848549);
+      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aarf.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
-  }
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
-    }
-    return true;
   }
 }
 

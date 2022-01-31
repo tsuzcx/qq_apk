@@ -5,48 +5,30 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URL;
 
-public abstract class aewf
-  implements aewh
+public abstract interface aewf
+  extends aewe
 {
-  private boolean a;
+  public abstract URLDrawable.URLDrawableOptions a();
   
-  public URLDrawable.URLDrawableOptions a()
-  {
-    return URLDrawable.URLDrawableOptions.obtain();
-  }
+  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
   
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
-    }
-    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-  }
+  public abstract String a();
   
-  public String a()
-  {
-    return null;
-  }
+  public abstract URL a();
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    this.a = true;
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface);
   
-  public boolean a()
-  {
-    return true;
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
   
-  public boolean b()
-  {
-    return this.a;
-  }
+  public abstract boolean a();
   
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
 }
 
 

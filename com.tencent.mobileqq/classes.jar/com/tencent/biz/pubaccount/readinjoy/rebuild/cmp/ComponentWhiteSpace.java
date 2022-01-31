@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import pvb;
+import puy;
 
 public class ComponentWhiteSpace
   extends ComponentDivider

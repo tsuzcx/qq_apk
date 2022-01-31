@@ -1,22 +1,22 @@
 package cooperation.qqreader.host.colornote;
 
-import amgo;
+import amgn;
 import android.content.Context;
 import android.content.ContextWrapper;
-import bgvp;
+import bgwg;
 
 public class ReaderColorNoteController
 {
-  private amgo a;
+  private amgn a;
   
   public ReaderColorNoteController(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = new amgo(paramContext, paramBoolean1, paramBoolean2);
+    this.a = new amgn(paramContext, paramBoolean1, paramBoolean2);
   }
   
   public static void setCustomNightMode(Context paramContext, boolean paramBoolean)
   {
-    amgo.a(paramContext, paramBoolean);
+    amgn.a(paramContext, paramBoolean);
   }
   
   public void addHistoryNote()
@@ -26,7 +26,7 @@ public class ReaderColorNoteController
   
   public void attachToActivity(ContextWrapper paramContextWrapper)
   {
-    paramContextWrapper = bgvp.a(paramContextWrapper);
+    paramContextWrapper = bgwg.a(paramContextWrapper);
     if (paramContextWrapper != null) {
       this.a.a(paramContextWrapper);
     }

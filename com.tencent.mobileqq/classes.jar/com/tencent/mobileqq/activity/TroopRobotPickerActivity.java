@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
+import acma;
+import acmb;
+import acmc;
+import acmd;
 import acme;
-import acmf;
-import acmg;
-import acmh;
-import acmi;
-import ajty;
-import ajyc;
+import ajtw;
+import ajya;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -16,8 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import bcpw;
-import bfol;
+import bcql;
+import bfpc;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,10 +35,10 @@ public class TroopRobotPickerActivity
 {
   public static String a;
   public static final String[] a;
-  ajty jdField_a_of_type_Ajty;
+  ajtw jdField_a_of_type_Ajtw;
   public ProgressDialog a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bfol jdField_a_of_type_Bfol;
+  bfpc jdField_a_of_type_Bfpc;
   public TroopRobotPickerActivity.RobotPickerData a;
   IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
   JSONObject jdField_a_of_type_OrgJsonJSONObject;
@@ -71,13 +71,13 @@ public class TroopRobotPickerActivity
     if (i == 3) {
       b();
     }
-    this.jdField_a_of_type_Bfol = bfol.c(this);
-    Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bfol.findViewById(2131361923);
+    this.jdField_a_of_type_Bfpc = bfpc.c(this);
+    Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bfpc.findViewById(2131361922);
     ((DispatchActionMoveScrollView)localObject).getChildAt(0).setOnClickListener(null);
     ((DispatchActionMoveScrollView)localObject).a = true;
     ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this).inflate(2131560805, null));
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new acmi(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData));
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this).inflate(2131560804, null));
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new acme(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData));
     this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setBackgroundColor(-1118221);
     if (i == 2)
     {
@@ -86,15 +86,15 @@ public class TroopRobotPickerActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new acmg(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData, this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, this.jdField_a_of_type_Bfol));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new acmc(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData, this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, this.jdField_a_of_type_Bfpc));
       if (Build.VERSION.SDK_INT >= 11) {
-        this.jdField_a_of_type_Bfol.getWindow().setFlags(16777216, 16777216);
+        this.jdField_a_of_type_Bfpc.getWindow().setFlags(16777216, 16777216);
       }
-      this.jdField_a_of_type_Bfol.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      this.jdField_a_of_type_Bfol.setOnDismissListener(new acmh(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData));
+      this.jdField_a_of_type_Bfpc.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
+      this.jdField_a_of_type_Bfpc.setOnDismissListener(new acmd(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData));
       try
       {
-        this.jdField_a_of_type_Bfol.show();
+        this.jdField_a_of_type_Bfpc.show();
         return;
         if (i == 1)
         {
@@ -108,17 +108,17 @@ public class TroopRobotPickerActivity
             this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(i, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[i]);
             i += 1;
           }
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131375793));
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131375795));
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry != null) {}
           for (localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name;; localObject = "中国")
           {
             this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-            this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new acme(this));
+            this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new acma(this));
             if (!AppSetting.d) {
               break;
             }
-            this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(ajyc.a(2131715743) + (String)localObject + ajyc.a(2131715745));
+            this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(ajya.a(2131715754) + (String)localObject + ajya.a(2131715756));
             break;
           }
         }
@@ -194,7 +194,7 @@ public class TroopRobotPickerActivity
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = this.jdField_a_of_type_Ajty.a(paramString);
+      paramString = this.jdField_a_of_type_Ajtw.a(paramString);
       this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry = paramString;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry != null)
       {
@@ -226,7 +226,7 @@ public class TroopRobotPickerActivity
       if ((!TextUtils.isEmpty(str)) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode)))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode = str;
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry = this.jdField_a_of_type_Ajty.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry = this.jdField_a_of_type_Ajtw.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
         if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry != null)
         {
           i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.getColumnNember();
@@ -234,8 +234,8 @@ public class TroopRobotPickerActivity
             break label183;
           }
           a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
-          if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing())) {
-            this.jdField_a_of_type_Bfol.dismiss();
+          if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing())) {
+            this.jdField_a_of_type_Bfpc.dismiss();
           }
         }
       }
@@ -246,12 +246,12 @@ public class TroopRobotPickerActivity
       return;
       label183:
       a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
-      if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing()))
+      if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing()))
       {
         if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView == null) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2131560805, null));
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2131560804, null));
         }
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new acmi(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData));
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new acme(this, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData));
         i = 0;
         while (i < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount)
         {
@@ -264,7 +264,7 @@ public class TroopRobotPickerActivity
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name);
         if (AppSetting.d) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(ajyc.a(2131715753) + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name + ajyc.a(2131715756));
+          this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(ajya.a(2131715764) + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name + ajya.a(2131715767));
         }
       }
     }
@@ -274,7 +274,7 @@ public class TroopRobotPickerActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this);
-    this.jdField_a_of_type_AndroidAppProgressDialog.setMessage(ajyc.a(2131715750));
+    this.jdField_a_of_type_AndroidAppProgressDialog.setMessage(ajya.a(2131715761));
     this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = new TroopRobotPickerActivity.RobotPickerData();
     try
     {
@@ -304,7 +304,7 @@ public class TroopRobotPickerActivity
           if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 0)
           {
             finish();
-            bcpw.a(this, ajyc.a(2131715749), 1).a();
+            bcql.a(this, ajya.a(2131715760), 1).a();
             return false;
           }
         }
@@ -313,13 +313,13 @@ public class TroopRobotPickerActivity
           paramBundle.printStackTrace();
           for (;;)
           {
-            this.jdField_a_of_type_Ajty = ((ajty)this.app.getManager(59));
+            this.jdField_a_of_type_Ajtw = ((ajtw)this.app.getManager(59));
             if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType != 3) {
               break;
             }
             this.jdField_a_of_type_AndroidAppProgressDialog.show();
-            this.jdField_a_of_type_Ajty.c(new acmf(this));
-            this.jdField_a_of_type_Ajty.a(this.jdField_a_of_type_Ajty.a(), true);
+            this.jdField_a_of_type_Ajtw.c(new acmb(this));
+            this.jdField_a_of_type_Ajtw.a(this.jdField_a_of_type_Ajtw.a(), true);
             return false;
             if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
             {
@@ -354,16 +354,16 @@ public class TroopRobotPickerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ajty != null) {
-      this.jdField_a_of_type_Ajty.b(this);
+    if (this.jdField_a_of_type_Ajtw != null) {
+      this.jdField_a_of_type_Ajtw.b(this);
     }
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    if (this.jdField_a_of_type_Ajty != null) {
-      this.jdField_a_of_type_Ajty.a(this);
+    if (this.jdField_a_of_type_Ajtw != null) {
+      this.jdField_a_of_type_Ajtw.a(this);
     }
   }
 }

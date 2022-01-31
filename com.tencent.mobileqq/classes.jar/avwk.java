@@ -1,50 +1,12 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
-
-public class avwk
-  extends Handler
+public abstract interface avwk
 {
-  public avwk(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void a()
-  {
-    if (LiteTcpConnection.a(this.a) != null) {
-      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
-    }
-  }
+  public abstract void a(avwl paramavwl);
   
-  public void b()
-  {
-    avwk localavwk = LiteTcpConnection.a(this.a);
-    if (localavwk != null) {
-      localavwk.sendEmptyMessage(2);
-    }
-  }
+  public abstract void b();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
-  }
+  public abstract void c();
 }
 
 

@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import awhl;
-import awog;
-import awop;
-import bbcl;
-import bgpf;
-import bgxy;
-import bgyf;
+import awhn;
+import awoi;
+import awor;
+import bbcz;
+import bgpw;
+import bgyp;
+import bgyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -18,8 +18,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
-import nut;
-import sxp;
+import nuq;
+import sxm;
 
 public class LebaSearchTransparentJumpActivity
   extends IphoneTitleBarActivity
@@ -40,12 +40,12 @@ public class LebaSearchTransparentJumpActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    awhl localawhl = (awhl)this.app.getManager(222);
-    if (localawhl.jdField_a_of_type_Awog != null) {
-      localawhl.jdField_a_of_type_Awog = null;
+    awhn localawhn = (awhn)this.app.getManager(222);
+    if (localawhn.jdField_a_of_type_Awoi != null) {
+      localawhn.jdField_a_of_type_Awoi = null;
     }
-    if (localawhl.jdField_a_of_type_Awop != null) {
-      localawhl.jdField_a_of_type_Awop = null;
+    if (localawhn.jdField_a_of_type_Awor != null) {
+      localawhn.jdField_a_of_type_Awor = null;
     }
   }
   
@@ -61,7 +61,7 @@ public class LebaSearchTransparentJumpActivity
     {
       finish();
       return;
-      sxp.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
+      sxm.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
       continue;
       QWalletHelper.launchQWalletAct(this, this.app, true, false);
       continue;
@@ -70,23 +70,23 @@ public class LebaSearchTransparentJumpActivity
       ((Intent)localObject1).putExtra("refer", "schemeActiveFeeds");
       QzonePluginProxyActivity.a((Intent)localObject1, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
       ((Intent)localObject1).addFlags(805306368);
-      bgxy.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
+      bgyp.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
       ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690572));
-      bgpf.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
+      bgpw.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
-      bgyf localbgyf = bgyf.a();
+      bgyw localbgyw = bgyw.a();
       try
       {
         long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-        localbgyf.a = String.valueOf(l);
+        localbgyw.a = String.valueOf(l);
         String str = this.app.getCurrentNickname();
         localObject1 = str;
         if (TextUtils.isEmpty(str)) {
-          localObject1 = bbcl.h(this.app, String.valueOf(l));
+          localObject1 = bbcz.h(this.app, String.valueOf(l));
         }
-        localbgyf.b = ((String)localObject1);
-        bgxy.b(this, localbgyf, Long.valueOf(l), 0, false, -1);
+        localbgyw.b = ((String)localObject1);
+        bgyp.b(this, localbgyw, Long.valueOf(l), 0, false, -1);
       }
       catch (Exception localException1)
       {
@@ -94,7 +94,7 @@ public class LebaSearchTransparentJumpActivity
         return;
       }
       int i = localException1.getIntExtra("tab_tab_index", 0);
-      nut.a(this.app, this, 1, i);
+      nuq.a(this.app, this, 1, i);
       continue;
       Object localObject2 = new Intent(this, PhoneUnityBindInfoActivity.class);
       ((Intent)localObject2).putExtra("kSrouce", 18);
@@ -108,11 +108,11 @@ public class LebaSearchTransparentJumpActivity
       try
       {
         i = Integer.valueOf(localObject2[1]).intValue();
-        localObject2 = ((awhl)this.app.getManager(222)).jdField_a_of_type_Awog;
+        localObject2 = ((awhn)this.app.getManager(222)).jdField_a_of_type_Awoi;
         if (localObject2 != null)
         {
-          this.a.setTag(2131379209, Integer.valueOf(i));
-          ((awog)localObject2).a(this.a);
+          this.a.setTag(2131379214, Integer.valueOf(i));
+          ((awoi)localObject2).a(this.a);
         }
       }
       catch (Exception localException2)
@@ -129,7 +129,7 @@ public class LebaSearchTransparentJumpActivity
         QLog.d("kueenie", 2, "result model is null");
       }
       continue;
-      ((awhl)this.app.getManager(222)).jdField_a_of_type_Awop.a(this.a);
+      ((awhn)this.app.getManager(222)).jdField_a_of_type_Awor.a(this.a);
     }
   }
 }

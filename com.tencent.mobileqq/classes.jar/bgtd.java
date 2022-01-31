@@ -1,38 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bgtd
-  extends OnPluginInstallListener.Stub
+public class bgtd
+  implements EIPCResultCallback
 {
-  bgtd(bgtc parambgtc, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
+  public bgtd(QQPimGetTipsInfoIPC.GetContactTipsRunnable paramGetContactTipsRunnable) {}
   
-  public void onInstallBegin(String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    bgvo.d("QRPluginManager", "launchPlugin onInstallBegin: pluginId = " + paramString);
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    bgvo.e("QRPluginManager", "launchPlugin onInstallDownloadProgress: pluginId = " + paramString + ", offset = " + paramInt1 + ", total = " + paramInt2);
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    bgvo.a("QRPluginManager", "launchPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
-    bgtc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    bgvo.c("QRPluginManager", "launchPlugin onInstallFinish, pluginId = " + paramString);
-    bgtc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-    bgtc.a(this.jdField_a_of_type_Bgtc, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i(bgta.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+    }
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = paramEIPCResult.data.getParcelable(bgta.n);
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
+        this.a.this$0.a = paramEIPCResult;
+        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgtd
  * JD-Core Version:    0.7.0.1
  */

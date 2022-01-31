@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import aclj;
+import aclf;
 import android.os.Handler;
 import android.os.Message;
-import basm;
-import basn;
+import bata;
+import batb;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopRequestActivity$11$1
   implements Runnable
 {
-  public TroopRequestActivity$11$1(aclj paramaclj, TroopInfo paramTroopInfo) {}
+  public TroopRequestActivity$11$1(aclf paramaclf, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    basm localbasm = basn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Aclj.a, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
-    if (localbasm != null)
+    bata localbata = batb.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Aclf.a, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
+    if (localbata != null)
     {
       Message localMessage = new Message();
       localMessage.what = 2;
-      localMessage.obj = localbasm.a();
-      this.jdField_a_of_type_Aclj.a.a.sendMessage(localMessage);
+      localMessage.obj = localbata.a();
+      this.jdField_a_of_type_Aclf.a.a.sendMessage(localMessage);
     }
   }
 }

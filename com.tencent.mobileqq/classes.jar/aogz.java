@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class aogz
-  extends akfl
+  implements DialogInterface.OnClickListener
 {
-  public aogz(ExtendFriendFragment paramExtendFriendFragment) {}
+  public aogz(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendFragment", 2, "RedpointObserver  onDataChange");
-    }
-    ExtendFriendFragment.b(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -7,15 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class awwt
-  implements awwo
+  implements awwq
 {
   protected View a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private List<awwp> jdField_a_of_type_JavaUtilList;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private List<awwr> jdField_a_of_type_JavaUtilList;
   
   public awwt(ViewGroup paramViewGroup, int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370397));
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369348));
   }
@@ -35,14 +37,14 @@ public class awwt
     return a();
   }
   
-  public List<awwp> a()
+  public List<awwr> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public TextView b()
   {
-    return null;
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

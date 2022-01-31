@@ -1,35 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
-import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
-
-public class alfm
-  extends Handler
+public abstract interface alfm
 {
-  public alfm(alfk paramalfk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      alkv.a().a(new ARCamera.ARCameraHandler.1(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
-      return;
-    case 101: 
-      alkv.a().a(new ARCamera.ARCameraHandler.2(this));
-      return;
-    }
-    alkv.a().a(new ARCamera.ARCameraHandler.3(this));
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

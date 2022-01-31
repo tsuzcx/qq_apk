@@ -1,18 +1,36 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.view.View;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 class adyp
 {
-  int jdField_a_of_type_Int;
-  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  private Map<Integer, LinkedList<View>> a = new HashMap();
   
-  public adyp(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
+  View a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    if (localLinkedList == null) {
+      return null;
+    }
+    return (View)localLinkedList.poll();
+  }
+  
+  void a()
+  {
+    this.a.clear();
+  }
+  
+  void a(int paramInt, View paramView)
+  {
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
+    }
+    localLinkedList1.add(paramView);
   }
 }
 

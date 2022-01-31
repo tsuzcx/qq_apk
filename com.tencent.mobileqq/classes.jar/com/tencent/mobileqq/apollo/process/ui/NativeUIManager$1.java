@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.ui;
 
-import ajae;
-import ajea;
+import ajac;
+import ajdy;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 public class NativeUIManager$1
   extends IApolloRunnableTask
 {
-  public NativeUIManager$1(ajea paramajea, ApolloSurfaceView paramApolloSurfaceView, String paramString1, String paramString2) {}
+  public NativeUIManager$1(ajdy paramajdy, ApolloSurfaceView paramApolloSurfaceView, String paramString1, String paramString2) {}
   
   public String a()
   {
@@ -20,7 +20,7 @@ public class NativeUIManager$1
   {
     if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
     {
-      ApolloCmdChannel localApolloCmdChannel = ajae.a();
+      ApolloCmdChannel localApolloCmdChannel = ajac.a();
       if (localApolloCmdChannel != null) {
         localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRuntimeState(), 0, this.jdField_a_of_type_JavaLangString, this.b);
       }

@@ -1,32 +1,27 @@
-import android.os.Bundle;
-import android.widget.EditText;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class qez
-  extends osp
+  implements spa
 {
   public qez(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void a(int paramInt, qbm paramqbm)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, rpd paramrpd)
   {
-    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
-    {
-      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramqbm.h);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramqbm.g);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramqbm.jdField_d_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramqbm.f);
-      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramqbm.jdField_a_of_type_Long);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramqbm.c);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramqbm.jdField_b_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramqbm.e);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramqbm.jdField_d_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramqbm.jdField_a_of_type_Int + "");
-      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramqbm.jdField_a_of_type_JavaLangString + "#");
-      ReadInJoyDeliverVideoActivity.a(this.a, paramqbm.jdField_b_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a, true);
-      ReadInJoyDeliverVideoActivity.a(this.a, paramqbm.h);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
     }
+    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramrpd.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
+    }
+    this.a.setRightViewTextDisable(1);
   }
 }
 

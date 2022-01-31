@@ -1,22 +1,40 @@
-import android.os.Looper;
-import android.os.MessageQueue;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aatu
-  implements View.OnLayoutChangeListener
+  implements bfph
 {
-  private boolean jdField_a_of_type_Boolean;
+  public aatu(ChatSettingForTroop paramChatSettingForTroop, bfpc parambfpc) {}
   
-  public aatu(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      Looper.myQueue().addIdleHandler(new aatv(this));
-      this.jdField_a_of_type_Boolean = true;
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcqi == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcqi = new bcqi(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    paramView = (akhp)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+    if ((bbfj.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getApp().getApplicationContext())) && (paramView != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcqi.b(0, 2131692213, 0);
+      paramView.k(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    }
+    for (;;)
+    {
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bfpc.cancel();
+      return;
+      if (paramView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcqi.b(2, 2131694673, 1500);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcqi.b(2, 2131692212, 1500);
+      }
     }
   }
 }

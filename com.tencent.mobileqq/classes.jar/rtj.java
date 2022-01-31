@@ -1,6 +1,6 @@
 public abstract interface rtj
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

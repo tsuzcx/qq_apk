@@ -1,7 +1,7 @@
 package com.dataline.activities;
 
 import android.graphics.Bitmap;
-import bawu;
+import baxi;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import ds;
 import java.io.File;
@@ -20,7 +20,7 @@ final class LiteActivity$15
     do
     {
       return;
-      localBitmap = bawu.a(this.jdField_a_of_type_JavaLangString);
+      localBitmap = baxi.a(this.jdField_a_of_type_JavaLangString);
     } while (this.jdField_a_of_type_Ds == null);
     this.jdField_a_of_type_Ds.a(localBitmap, false);
   }

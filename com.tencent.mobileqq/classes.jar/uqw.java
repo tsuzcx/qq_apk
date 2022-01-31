@@ -1,14 +1,24 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-
-public class uqw
-  extends wdh
+class uqw
+  implements urb
 {
-  public uqw(StoryDetailFragment paramStoryDetailFragment) {}
+  uqw(uqv paramuqv) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.a.d();
-    return true;
+    if (uqv.a(this.a) == null) {
+      return;
+    }
+    if (paramInt == 1) {
+      uqv.a(this.a);
+    }
+    for (;;)
+    {
+      this.a.h();
+      return;
+      if (paramInt == 2) {
+        uqv.b(this.a);
+      }
+    }
   }
 }
 

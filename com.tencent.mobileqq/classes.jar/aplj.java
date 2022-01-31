@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-public class aplj
-  extends apli
+public abstract interface aplj
 {
-  public aplj(apkp paramapkp)
-  {
-    super(paramapkp);
-  }
-  
-  public boolean a(String paramString)
-  {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {
-      return false;
-    }
-    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
-  }
+  public abstract void a(apnc paramapnc);
 }
 
 

@@ -1,4 +1,7 @@
-public class bfuy {}
+public abstract interface bfuy
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

@@ -1,14 +1,28 @@
-class txl
-  extends ssp<twv>
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+
+public class txl
+  extends Subscriber.SingleEventSubscriberNoRefect<tla>
 {
-  txl(txk paramtxk) {}
+  txh a;
   
-  public void a(twv paramtwv)
+  public txl(@NonNull txh paramtxh)
   {
-    paramtwv.a(new txm(this));
+    this.a = paramtxh;
   }
   
-  public void c() {}
+  protected void a(@NonNull tla paramtla)
+  {
+    if (paramtla.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramtla.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tla.class;
+  }
 }
 
 

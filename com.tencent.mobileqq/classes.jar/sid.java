@@ -1,8 +1,8 @@
-import android.view.View;
+import android.net.Uri;
 
-public class sid
+public abstract interface sid
 {
-  private View a;
+  public abstract void a(Uri paramUri, String paramString, int paramInt);
 }
 
 

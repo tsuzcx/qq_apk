@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import java.util.ArrayList;
 import java.util.List;
-import rkd;
+import rka;
 
 public class RelatedSearchData
   extends BaseData
 {
   public String a;
-  public List<rkd> a;
+  public List<rka> a;
   
   public RelatedSearchData(FastWebArticleInfo paramFastWebArticleInfo)
   {

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahyr;
-import ahzb;
+import ahyp;
+import ahyz;
 
 public class RDBaseDataManager$4
   implements Runnable
 {
-  public RDBaseDataManager$4(ahzb paramahzb, ahyr paramahyr, long paramLong1, long paramLong2) {}
+  public RDBaseDataManager$4(ahyz paramahyz, ahyp paramahyp, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    this.this$0.c(this.jdField_a_of_type_Ahyr.a, (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b));
+    this.this$0.c(this.jdField_a_of_type_Ahyp.a, (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b));
   }
 }
 

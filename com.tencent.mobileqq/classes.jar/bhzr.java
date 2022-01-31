@@ -1,48 +1,40 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.io.File;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 class bhzr
-  extends ahms
+  extends QzoneExternalRequest
 {
-  private bhzr(bhzp parambhzp) {}
+  bhzr(bhzq parambhzq, Intent paramIntent) {}
   
-  public void a(boolean paramBoolean)
+  public String getCmdString()
   {
-    super.a(paramBoolean);
-    if ((paramBoolean) && (apvb.a(this.c)))
-    {
-      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-      File localFile = new File(this.c);
-      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
-      if (localFile.exists()) {
-        apvb.a(localFile);
-      }
-      this.c = str;
-      if (QZLog.isColorLevel()) {
-        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
-      }
-    }
+    return "SweetQzoneService.getPairState";
   }
   
-  public boolean a()
+  public JceStruct getReq()
   {
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.f))) {}
-    String str;
-    Object localObject;
-    do
+    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      do
-      {
-        return false;
-        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.f.hashCode()));
-        localObject = new File(str);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      localObject = ((File)localObject).listFiles();
-    } while ((localObject == null) || (localObject.length <= 0));
-    this.c = str;
-    return true;
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l;
+      localsweet_req_comm.uin = l;
+      localsweet_req_comm.loveuin = 0L;
+      localsweet_req_comm.qua = bgyi.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+    }
+    return localsweet_pair_check_req;
+  }
+  
+  public String uniKey()
+  {
+    return "getPairState";
   }
 }
 

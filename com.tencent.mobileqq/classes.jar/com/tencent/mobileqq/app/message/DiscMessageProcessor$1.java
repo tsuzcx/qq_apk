@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.message;
 
 import OnlinePushPack.MsgInfo;
-import akpj;
+import akpi;
 import android.text.TextUtils;
 import android.util.Pair;
-import bbcl;
+import bbcz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class DiscMessageProcessor$1
   implements Runnable
 {
-  public DiscMessageProcessor$1(akpj paramakpj, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
+  public DiscMessageProcessor$1(akpi paramakpi, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class DiscMessageProcessor$1
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.DiscMsgPc.discuss", 2, "coptype 9 server showName empty");
           }
-          str1 = bbcl.c(this.this$0.a, String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
+          str1 = bbcz.c(this.this$0.a, String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
         }
         if (i == 0) {
           localStringBuilder.append(str1);
@@ -51,7 +51,7 @@ public class DiscMessageProcessor$1
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.DiscMsgPc.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
       }
-      akpj.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
+      akpi.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
     }
   }
 }

@@ -1,27 +1,27 @@
 package com.tencent.open.downloadnew;
 
-import bdht;
-import bdki;
-import bdkp;
-import bdkw;
+import bdii;
+import bdkx;
+import bdle;
+import bdll;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DownloadApi$6
   implements Runnable
 {
-  public DownloadApi$6(String paramString, bdkw parambdkw) {}
+  public DownloadApi$6(String paramString, bdll parambdll) {}
   
   public void run()
   {
-    bdht.a(bdki.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
+    bdii.a(bdkx.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
     try
     {
       new ArrayList();
-      List localList = bdkp.a().b(this.jdField_a_of_type_JavaLangString);
-      bdht.a(bdki.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_Bdkw != null) {
-        this.jdField_a_of_type_Bdkw.a(localList);
+      List localList = bdle.a().b(this.jdField_a_of_type_JavaLangString);
+      bdii.a(bdkx.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
+      if (this.jdField_a_of_type_Bdll != null) {
+        this.jdField_a_of_type_Bdll.a(localList);
       }
       return;
     }
@@ -29,9 +29,9 @@ public final class DownloadApi$6
     {
       do
       {
-        bdht.c(bdki.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_Bdkw == null);
-      this.jdField_a_of_type_Bdkw.a(-1, localException.getMessage());
+        bdii.c(bdkx.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
+      } while (this.jdField_a_of_type_Bdll == null);
+      this.jdField_a_of_type_Bdll.a(-1, localException.getMessage());
     }
   }
 }

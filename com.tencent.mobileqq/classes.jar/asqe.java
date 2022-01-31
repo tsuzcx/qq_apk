@@ -1,12 +1,21 @@
-import android.view.animation.Interpolator;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public final class asqe
-  implements Interpolator
+class asqe
+  extends AsyncTask<Void, Void, Void>
 {
-  public float getInterpolation(float paramFloat)
+  asqe(asqd paramasqd) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    paramVarArgs = asqd.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    }
+    asqd.a(this.a).clear();
+    return null;
   }
 }
 

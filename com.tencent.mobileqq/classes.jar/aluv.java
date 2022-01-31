@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class aluv
-  implements alwn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public boolean needProcess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
-    }
-    return true;
-  }
+  public aluv(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void process(JSONObject paramJSONObject, alwo paramalwo, Object paramObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
+    if (paramBoolean)
+    {
+      AboutActivity.a(5);
+      if (!this.a.b().equals("close")) {
+        this.a.b();
+      }
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
+      ArkAppCenter.a(true);
+      return;
     }
-    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramalwo, paramObject), 20000L);
+    AboutActivity.a(0);
+    this.a.c();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
+    ArkAppCenter.a(false);
   }
 }
 

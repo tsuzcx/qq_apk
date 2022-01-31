@@ -1,52 +1,17 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class bhat
+class bhat
 {
-  public final int a;
-  public final long a;
-  public String a;
-  public final int b;
-  public final long b;
-  public final int c;
-  public final long c;
-  public final int d;
-  public final long d;
-  public final long e;
-  public final long f;
+  DownloadRequest jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest;
+  Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  Downloader.DownloadListener jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
   
-  private bhat(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
-    }
-    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
-    {
-      this.jdField_a_of_type_JavaLangString = null;
-      return;
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getLong();
-    }
-  }
+  bhat(bhar parambhar) {}
 }
 
 

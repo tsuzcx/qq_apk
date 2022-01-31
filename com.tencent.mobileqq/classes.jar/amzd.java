@@ -1,56 +1,75 @@
 import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amzd
-  extends amyi<amzc>
+  extends amyp<QVipBigClubSVIP9Config>
 {
+  public static QVipBigClubSVIP9Config c()
+  {
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)ampl.a().a(427);
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
+    if (localQVipBigClubSVIP9Config2 == null) {
+      localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
+    }
+    return localQVipBigClubSVIP9Config1;
+  }
+  
   public int a()
   {
-    return 465;
+    return 427;
   }
   
   @NonNull
-  public amzc a()
+  public QVipBigClubSVIP9Config a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
-    }
-    return new amzc();
+    return new QVipBigClubSVIP9Config();
   }
   
   @NonNull
-  public amzc a(@NonNull ampi[] paramArrayOfampi)
+  public QVipBigClubSVIP9Config a(amph[] paramArrayOfamph)
   {
-    amzc localamzc = new amzc();
+    boolean bool = true;
+    localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
+    paramArrayOfamph = paramArrayOfamph[0].a;
     try
     {
-      localamzc.a = new JSONObject(paramArrayOfampi[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localamzc.a);
+      if (!TextUtils.isEmpty(paramArrayOfamph))
+      {
+        paramArrayOfamph = new JSONObject(paramArrayOfamph);
+        if (paramArrayOfamph.optInt("enable", 1) != 1) {
+          break label93;
+        }
       }
-      return localamzc;
+      for (;;)
+      {
+        localQVipBigClubSVIP9Config.mIsEnable = bool;
+        localQVipBigClubSVIP9Config.mAPngIconUrl = paramArrayOfamph.optString("apng_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrl);
+        localQVipBigClubSVIP9Config.mAPngIconUrlNew_Gray = paramArrayOfamph.optString("apng_gray_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrlNew_Gray);
+        localQVipBigClubSVIP9Config.mVipIconSettingsUrl = paramArrayOfamph.optString("vipicon_setting_url_pattern", localQVipBigClubSVIP9Config.mVipIconSettingsUrl);
+        return localQVipBigClubSVIP9Config;
+        label93:
+        bool = false;
+      }
+      return localQVipBigClubSVIP9Config;
     }
-    catch (JSONException paramArrayOfampi)
+    catch (JSONException paramArrayOfamph)
     {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfampi);
+      ved.e("QVipBigTroopExpiredProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfamph.getMessage());
     }
-    return localamzc;
   }
   
-  public Class<amzc> a()
+  public Class<QVipBigClubSVIP9Config> a()
   {
-    return amzc.class;
+    return QVipBigClubSVIP9Config.class;
   }
   
   @NonNull
-  public amzc b()
+  public QVipBigClubSVIP9Config b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new amzc();
+    return new QVipBigClubSVIP9Config();
   }
 }
 

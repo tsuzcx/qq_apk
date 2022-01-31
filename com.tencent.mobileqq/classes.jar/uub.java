@@ -1,16 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.Comparator;
 
 public class uub
+  implements Comparator<VideoCollectionItem>
 {
-  public static boolean a(QQUserUIItem paramQQUserUIItem)
+  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
   {
-    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
+    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (vxy.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
+      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
+    }
+    do
+    {
+      return -1;
+      return 1;
+      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
+        return 1;
+      }
+    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
+    return 0;
   }
 }
 

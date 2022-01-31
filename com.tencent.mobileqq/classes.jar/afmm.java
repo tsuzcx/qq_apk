@@ -1,34 +1,109 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface afmm
+public class afmm
+  extends ajvj
 {
-  public abstract Activity a();
+  private afmm(DiscussionView paramDiscussionView) {}
   
-  public abstract View a();
+  protected void a()
+  {
+    this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+  }
   
-  public abstract aqbc a();
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.i();
+    }
+    this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (paramBoolean)
+      {
+        DiscussionView.a(this.a).a(0);
+        this.a.a(100, 800L);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
+    this.a.b(2131719799);
+  }
   
-  public abstract bfmt a();
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    }
+  }
   
-  public abstract QQAppInterface a();
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    }
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    }
+  }
   
-  public abstract void a(Runnable paramRunnable);
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+  }
   
-  public abstract void a(String paramString);
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+  }
   
-  public abstract boolean a();
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    }
+  }
   
-  public abstract View b();
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    }
+  }
   
-  public abstract boolean b();
+  protected void b()
+  {
+    this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+  }
   
-  public abstract View c();
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+  }
   
-  public abstract View d();
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_Aimm.notifyDataSetChanged();
+    }
+  }
 }
 
 

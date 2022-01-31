@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import android.util.Base64;
 import android.util.Log;
-import besl;
+import betc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
@@ -41,7 +41,7 @@ public class HttpServer
   {
     try
     {
-      besl.a("HttpServer", "getSignature(). original request = " + paramString);
+      betc.a("HttpServer", "getSignature(). original request = " + paramString);
       paramString = hmacSHA256(paramString, getPlatformKey());
       if (paramString == null) {
         return null;
@@ -57,7 +57,7 @@ public class HttpServer
         }
       }
       paramString = URLEncoder.encode(paramString, "UTF-8");
-      besl.a("HttpServer", "getSignature(). signature = " + paramString);
+      betc.a("HttpServer", "getSignature(). signature = " + paramString);
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)

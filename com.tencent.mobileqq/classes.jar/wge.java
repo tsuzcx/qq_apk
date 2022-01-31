@@ -1,53 +1,37 @@
+import android.os.CountDownTimer;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class wge
-  implements bcwh
+  extends CountDownTimer
 {
-  public wge(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public wge(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    String str1;
-    label53:
-    String str3;
-    int i;
-    if (this.a.jdField_c_of_type_Int == 2)
-    {
-      if (this.a.h != 2) {
-        break label159;
-      }
-      str1 = "qr_wechat";
-      str3 = this.a.jdField_c_of_type_JavaLangString;
-      i = this.a.a;
-      if (paramBaseResp.errCode != 0) {
-        break label165;
-      }
-    }
-    label159:
-    label165:
-    for (String str2 = "0";; str2 = "1")
-    {
-      bbbb.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
-      switch (paramBaseResp.errCode)
-      {
-      case -1: 
-      default: 
-        wim.a(1, 2131719476);
-        this.a.a(false);
-        return;
-        str1 = "qr_circle";
-        break label53;
-      }
-    }
-    wim.a(2, 2131719495);
-    this.a.a(true);
-    return;
-    this.a.a(false);
+    super(paramLong1, paramLong2);
   }
+  
+  public void onFinish()
+  {
+    QRDisplayActivity.a(this.a, true);
+    if (QRDisplayActivity.a(this.a) == null)
+    {
+      QRDisplayActivity.b(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 4, "enter longclick");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (QRDisplayActivity.a(this.a) == null);
+      QRDisplayActivity.c(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 

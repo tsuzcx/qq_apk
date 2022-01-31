@@ -2,15 +2,33 @@ import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiService;
 
 class wyp
-  implements bcaz
+  implements ncl
 {
-  wyp(wym paramwym, int paramInt, String paramString) {}
+  wyp(wyj paramwyj, Bundle paramBundle, int paramInt) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wym.a.a(144, paramBundle);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
+    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
+    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Wyj.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
+        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+    this.jdField_a_of_type_Wyj.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

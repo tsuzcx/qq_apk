@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.facetoface;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import aong;
+import aonl;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 
@@ -29,9 +29,9 @@ public class Face2FaceFriendDetailView
     this.b = findViewById(2131366826);
     this.e = findViewById(2131366769);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.e.setPadding(actn.a(10.0F, this.e.getResources()), actn.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), actn.a(10.0F, this.e.getResources()), actn.a(15.0F, this.e.getResources()));
+      this.e.setPadding(actj.a(10.0F, this.e.getResources()), actj.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), actj.a(10.0F, this.e.getResources()), actj.a(15.0F, this.e.getResources()));
     }
-    this.e.setOnClickListener(new aong(this));
+    this.e.setOnClickListener(new aonl(this));
   }
   
   public void a(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, String paramString, HashMap<String, String> paramHashMap, View.OnClickListener paramOnClickListener)

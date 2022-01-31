@@ -1,32 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class snv
-  extends akwt
+public class snv
 {
-  snv(snq paramsnq) {}
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-    }
-    this.a.a = true;
-    snq.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    snq.a(this.a, 2131695568);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public ZImageView a;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
 }
 
 

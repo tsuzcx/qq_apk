@@ -1,13 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import bdht;
-import bdkp;
+import bdii;
+import bdle;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManager$12
   implements Runnable
 {
-  public DownloadManager$12(bdkp parambdkp, String paramString) {}
+  public DownloadManager$12(bdle parambdle, String paramString) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class DownloadManager$12
     }
     catch (Exception localException)
     {
-      bdht.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bdii.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

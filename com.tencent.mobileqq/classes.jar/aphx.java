@@ -1,82 +1,69 @@
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class aphx
+  extends aphy
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
-  private final boolean jdField_a_of_type_Boolean;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
-  private final List<ExcitingTransferHostInfo> b;
+  final byte[] a;
+  final byte[] b;
   
-  public aphx(List<ExcitingTransferHostInfo> paramList1, List<ExcitingTransferHostInfo> paramList2, boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
+  public aphx(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ExcitingTransferHostInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    this.a = paramArrayOfByte5;
+    this.b = paramArrayOfByte6;
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString == null))
+    if (!super.a()) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ExcitingTransfer.SvrInfo<FileAssistant>", 2, "support https but mstrSSLName is null");
-      }
+      do
+      {
+        do
+        {
+          return false;
+          if ((b() != null) && (b().length != 0)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBuf10MMdd5 is err");
+        return false;
+        if ((this.a != null) && (this.a.length != 0)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
       return false;
-    }
+      if ((this.b != null) && (this.b.length != 0)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
+    return false;
     return true;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public List<ExcitingTransferHostInfo> b()
-  {
-    return this.b;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   @NonNull
   public String toString()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    ExcitingTransferHostInfo localExcitingTransferHostInfo;
-    for (Object localObject = "IPV4:"; localIterator.hasNext(); localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ") {
-      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
-    }
-    localObject = (String)localObject + " -- IPV6:";
-    localIterator = this.b.iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" uuid:");
+    if (this.a != null)
     {
-      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
-      localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ";
+      str = HexUtil.bytes2HexStr(this.a);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
+      if (this.b == null) {
+        break label76;
+      }
     }
-    localObject = new StringBuilder().append((String)localObject).append(" strSSLCName:").append(this.jdField_a_of_type_JavaLangString).append(" bSupportHttps:").append(this.jdField_a_of_type_Boolean).append(" busniEx len:");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i;
+    label76:
+    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
+    {
+      return str;
+      str = "";
+      break;
     }
   }
 }

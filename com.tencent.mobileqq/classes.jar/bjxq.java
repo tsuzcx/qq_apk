@@ -1,71 +1,20 @@
 import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class bjxq
-  extends bjwu
+class bjxq
+  extends SimpleJob<Object>
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  public bjxq(@NonNull bjww parambjww)
+  bjxq(bjxn parambjxn, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    super(parambjww);
+    super(paramString1);
   }
   
-  public void a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.a();
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bjww.a.a("shareGroupId");
-    this.b = this.jdField_a_of_type_Bjww.a.a("shareGroupName");
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bjww.a.a("ignorePersonalPublish", false);
-    veg.a("EditVideoShareGroup", "shareGroupId=%s, shareGroupName=%s, ignorePersonalPublish=%s", this.jdField_a_of_type_JavaLangString, this.b, Boolean.valueOf(this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131376004));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bjxr(this));
-    if (this.jdField_a_of_type_JavaLangString == null)
-    {
-      veg.e("EditVideoShareGroup", "shareGroupId should not be null");
-      a().a(0, null, 0, 0);
-    }
-  }
-  
-  public void a(int paramInt, @NonNull bkkm parambkkm)
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    synchronized (this.jdField_a_of_type_Bjww)
-    {
-      qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-      byte[] arrayOfByte = parambkkm.a.spreadGroupBytes;
-      if (arrayOfByte != null) {}
-      try
-      {
-        localVideoSpreadGroupList.mergeFrom(parambkkm.a.spreadGroupBytes);
-        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-        localVideoSpreadGroupList.visibility_sharegroup_type.set(2);
-        localVideoSpreadGroupList.setHasFlag(true);
-        parambkkm.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
-        veg.d("EditVideoShareGroup", "editVideoPrePublish fragment index = %d, share-group %s %s", new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.b });
-        parambkkm.a.putExtra("ignorePersonalPublish", Boolean.valueOf(this.jdField_a_of_type_Boolean));
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          veg.c("EditVideoShareGroup", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
-        }
-      }
-    }
+    vei.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

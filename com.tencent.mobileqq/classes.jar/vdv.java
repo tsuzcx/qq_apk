@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class vdv
-  implements View.OnClickListener
+public abstract interface vdv
 {
-  vdv(vdu paramvdu) {}
+  public abstract void O_();
   
-  public void onClick(View paramView)
-  {
-    vdu.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (vdu.a(this.a) != null) {
-      vdu.a(this.a).f();
-    }
-  }
+  public abstract void a(vve paramvve);
+  
+  public abstract void f();
+  
+  public abstract void h();
 }
 
 

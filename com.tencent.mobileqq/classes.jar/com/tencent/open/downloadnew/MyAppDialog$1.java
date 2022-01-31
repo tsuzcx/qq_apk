@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bdht;
-import bdlq;
+import bdii;
+import bdmf;
 
 public class MyAppDialog$1
   implements Runnable
 {
-  public MyAppDialog$1(bdlq parambdlq, int paramInt1, int paramInt2) {}
+  public MyAppDialog$1(bdmf parambdmf, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 100;
     int i = this.a;
-    bdht.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
+    bdii.c("MyAppApi", "updateView--progress--" + i + " state = " + this.b);
     Object localObject = this.this$0.getContext().getResources();
     switch (this.b)
     {

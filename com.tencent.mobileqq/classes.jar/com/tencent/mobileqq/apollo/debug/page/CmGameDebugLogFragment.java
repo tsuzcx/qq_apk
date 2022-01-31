@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import aiwu;
-import aixc;
-import ajae;
+import aiws;
+import aixa;
+import ajac;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bawz;
+import baxn;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,17 +27,17 @@ public class CmGameDebugLogFragment
   TabLayoutCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat;
   ViewPagerCompat jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat;
   private CmGameDebugLogPagerAdapter jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter;
-  private List<aixc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<aixa> jdField_a_of_type_JavaUtilList = new ArrayList();
   TextView b;
   
-  private aixc a(int paramInt)
+  private aixa a(int paramInt)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      aixc localaixc = (aixc)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localaixc.a() == paramInt) {
-        return localaixc;
+      aixa localaixa = (aixa)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localaixa.a() == paramInt) {
+        return localaixa;
       }
       i += 1;
     }
@@ -48,20 +48,20 @@ public class CmGameDebugLogFragment
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < aiwu.b.length)
+    while (i < aiws.b.length)
     {
-      aixc localaixc = a(getActivity(), i);
-      this.jdField_a_of_type_JavaUtilList.add(localaixc);
-      localArrayList.add(aiwu.b[i]);
+      aixa localaixa = a(getActivity(), i);
+      this.jdField_a_of_type_JavaUtilList.add(localaixa);
+      localArrayList.add(aiws.b[i]);
       i += 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter = new CmGameDebugLogPagerAdapter(this.jdField_a_of_type_JavaUtilList, localArrayList);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat.setAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloDebugLogCmGameDebugLogPagerAdapter);
   }
   
-  public aixc a(Context paramContext, int paramInt)
+  public aixa a(Context paramContext, int paramInt)
   {
-    return new aixc(paramContext, paramInt);
+    return new aixa(paramContext, paramInt);
   }
   
   public void a(int paramInt)
@@ -71,17 +71,17 @@ public class CmGameDebugLogFragment
       paramInt = 0;
       while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
       {
-        ((aixc)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(true);
+        ((aixa)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(true);
         paramInt += 1;
       }
     }
-    aixc localaixc = a(paramInt);
-    if (localaixc != null) {
-      localaixc.a(false);
+    aixa localaixa = a(paramInt);
+    if (localaixa != null) {
+      localaixa.a(false);
     }
-    localaixc = a(0);
-    if (localaixc != null) {
-      localaixc.a(false);
+    localaixa = a(0);
+    if (localaixa != null) {
+      localaixa.a(false);
     }
   }
   
@@ -90,11 +90,11 @@ public class CmGameDebugLogFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131364312: 
+    case 2131364311: 
       do
       {
         return;
-        paramView = ajae.a();
+        paramView = ajac.a();
       } while (paramView == null);
       paramView.a(true);
       return;
@@ -110,14 +110,14 @@ public class CmGameDebugLogFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(2131558794, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramLayoutInflater.findViewById(2131364316));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramLayoutInflater.findViewById(2131364317));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364312));
-    this.b = ((TextView)paramLayoutInflater.findViewById(2131364313));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = ((TabLayoutCompat)paramLayoutInflater.findViewById(2131364315));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat = ((ViewPagerCompat)paramLayoutInflater.findViewById(2131364316));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364311));
+    this.b = ((TextView)paramLayoutInflater.findViewById(2131364312));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setTabTextColors(-16777216, -16777216);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(bawz.a(BaseApplicationImpl.getApplication(), 1.0F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorHeight(baxn.a(BaseApplicationImpl.getApplication(), 1.0F));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setSelectedTabIndicatorColor(Color.parseColor("#6090e3"));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.setupWithViewPager(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetViewPagerCompat);
     b();

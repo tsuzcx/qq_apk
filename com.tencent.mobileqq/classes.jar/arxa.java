@@ -1,40 +1,27 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class arxa
-  implements TextWatcher
+  implements View.OnTouchListener
 {
-  public arxa(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
+  public arxa(LocationPickFragment paramLocationPickFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramEditable.length() > 0)
+    if (1 == paramMotionEvent.getAction())
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(0);
-      this.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramEditable = paramEditable.toString().trim();
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
+      if (!LocationPickFragment.a(this.a).b())
+      {
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
       }
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
+      axqy.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
+    return false;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

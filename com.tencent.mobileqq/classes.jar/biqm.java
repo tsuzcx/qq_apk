@@ -1,28 +1,15 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
 class biqm
-  implements biqy
+  implements View.OnTouchListener
 {
-  biqm(biqk parambiqk, biqy parambiqy) {}
+  biqm(biqk parambiqk) {}
   
-  public void a(biqn parambiqn, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Biqy != null) {
-      this.jdField_a_of_type_Biqy.a(parambiqn, paramInt);
-    }
-  }
-  
-  public void a(biqn parambiqn, boolean paramBoolean)
-  {
-    biqn localbiqn = biqk.a(this.jdField_a_of_type_Biqk, parambiqn);
-    if (localbiqn != null) {
-      localbiqn.d = biqk.a(parambiqn);
-    }
-    if (this.jdField_a_of_type_Biqy != null)
-    {
-      this.jdField_a_of_type_Biqy.a(parambiqn, paramBoolean);
-      if (localbiqn != null) {
-        bizq.b("AEMaterialManager", "【END】onDownloadFinish :" + localbiqn.a);
-      }
-    }
+    return true;
   }
 }
 

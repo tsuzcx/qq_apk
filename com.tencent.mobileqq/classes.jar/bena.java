@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqmini.sdk.core.widget.TabBar;
-
-public class bena
-  implements View.OnClickListener
+public abstract interface bena
 {
-  public bena(TabBar paramTabBar, int paramInt, berx paramberx) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar) != null) {
-      TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Berx.a, this.jdField_a_of_type_Berx.b);
-    }
-  }
+  public abstract void b();
 }
 
 

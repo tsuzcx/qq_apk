@@ -1,84 +1,68 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class xfx
-  extends ampb<xfw>
 {
-  private void a(String paramString1, String paramString2)
+  private String a = "0";
+  private String b = "1";
+  private String c = xfo.c;
+  private String d = "1";
+  private String e = "1";
+  
+  public static xfx a(String paramString)
   {
-    QLog.d("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate() apply new widget config");
-    if (!TextUtils.isEmpty(paramString2))
+    xfx localxfx = new xfx();
+    try
     {
-      xfr.a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(true));
-      xfr.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", paramString1);
-      xfr.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", paramString2);
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
+      {
+        localxfx.a = paramString.optString("subscribe_entrance_enable", "0");
+        localxfx.b = paramString.optString("is_open_sharing", "1");
+        localxfx.c = paramString.optString("subscribe_account_title", xfo.c);
+        localxfx.d = paramString.optString("newfollowlist", "1");
+        localxfx.e = paramString.optString("subscribe_publish_entrance_enable", "1");
+      }
+      return localxfx;
     }
-  }
-  
-  public int a()
-  {
-    return 474;
-  }
-  
-  public Class<xfw> a()
-  {
-    return xfw.class;
-  }
-  
-  @NonNull
-  public xfw a(int paramInt)
-  {
-    return new xfw();
-  }
-  
-  @Nullable
-  public xfw a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    catch (JSONException paramString)
     {
-      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      xfw localxfw = xfw.a(paramArrayOfampi[0].a);
-      if (localxfw == null)
+      for (;;)
       {
-        QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed error!");
-        return null;
+        paramString.printStackTrace();
+        paramString = null;
       }
-      String str = (String)xfr.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", "");
-      if ((!TextUtils.isEmpty(localxfw.b())) && (!localxfw.b().equals(str)))
-      {
-        xgj.a().a(localxfw);
-        a(localxfw.b(), paramArrayOfampi[0].a);
-      }
-      return localxfw;
-    }
-    QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed conf content is null!");
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(xfw paramxfw)
-  {
-    if (paramxfw != null) {
-      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate:" + paramxfw.toString());
     }
   }
   
-  public int b()
+  public String a()
   {
-    return 0;
+    return this.a;
   }
   
-  public boolean b()
+  public String b()
   {
-    return false;
+    return this.b;
   }
   
-  public boolean c()
+  public String c()
   {
-    return true;
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String toString()
+  {
+    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
   }
 }
 

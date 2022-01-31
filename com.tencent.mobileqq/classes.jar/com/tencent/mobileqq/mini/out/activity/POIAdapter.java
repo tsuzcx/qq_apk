@@ -77,10 +77,10 @@ public class POIAdapter
     if (paramView == null)
     {
       paramViewGroup = new POIAdapter.PoiItemViewHolder();
-      paramView = this.mInflater.inflate(2131561566, null);
+      paramView = this.mInflater.inflate(2131561565, null);
       paramViewGroup.nameTextView = ((TextView)paramView.findViewById(2131370660));
-      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131362129));
-      paramViewGroup.chooseView = paramView.findViewById(2131375797);
+      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131362128));
+      paramViewGroup.chooseView = paramView.findViewById(2131375799);
       paramViewGroup.chooseView.setVisibility(4);
       paramViewGroup.detailView = paramView;
       paramView.setTag(paramViewGroup);

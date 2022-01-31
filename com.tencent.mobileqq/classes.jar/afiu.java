@@ -1,12 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+
 public class afiu
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public afiu(String paramString1, String paramString2)
+  protected afiu(afir paramafir) {}
+  
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    if (afir.a(this.jdField_a_of_type_Afir) != null) {
+      afir.a(this.jdField_a_of_type_Afir).a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

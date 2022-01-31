@@ -1,16 +1,32 @@
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
 public class aqwt
-  implements asko<List<FontBubble>>
+  extends akfy
 {
-  public aqwt(FontBubblePanelView paramFontBubblePanelView) {}
+  private WeakReference<BaseChatPie> a;
   
-  public void a(List<FontBubble> paramList)
+  public aqwt(BaseChatPie paramBaseChatPie)
   {
-    FontBubblePanelView.a(this.a, paramList);
-    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+    this.a = new WeakReference(paramBaseChatPie);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      aqwp.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
+    }
+  }
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      aqwp.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
+    }
   }
 }
 

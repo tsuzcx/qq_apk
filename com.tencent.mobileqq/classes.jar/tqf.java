@@ -1,67 +1,93 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 
-public class tqf
-  extends tqi
+public abstract class tqf
+  extends tqh
 {
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  private final int[] a;
-  private int c;
-  private String k;
-  private String l;
+  protected int a;
+  protected boolean a;
+  protected int b = -1;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h = QQStoryContext.a().b();
+  protected String i;
+  protected String j;
   
-  static
+  public tqf()
   {
-    jdField_a_of_type_JavaLangString = "src_type=internal&version=1&uin=%s&usertype=%s&unionid=%s&fromId=%s&storysharefrom=%s" + sxp.a(2131699674);
-    b = "mqqapi://qstory/infoCard?" + jdField_a_of_type_JavaLangString;
-    jdField_c_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?" + jdField_a_of_type_JavaLangString + "&actionnamekey=3&one_page=0";
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public tqf(QQUserUIItem paramQQUserUIItem)
+  public final void a(trl paramtrl)
   {
-    this.k = paramQQUserUIItem.qq;
-    this.i = paramQQUserUIItem.headUrl;
-    int i;
-    if (paramQQUserUIItem.isVip)
-    {
-      i = 1;
-      this.jdField_c_of_type_Int = i;
-      this.l = paramQQUserUIItem.uid;
-      this.d = (paramQQUserUIItem.nickName + ajyc.a(2131705749) + ssi.jdField_a_of_type_JavaLangString);
-      this.f = ("[" + ssi.jdField_a_of_type_JavaLangString + ajyc.a(2131705752) + paramQQUserUIItem.nickName + ajyc.a(2131705755) + ssi.jdField_a_of_type_JavaLangString);
-      this.g = (paramQQUserUIItem.nickName + ajyc.a(2131705754) + ssi.jdField_a_of_type_JavaLangString + ajyc.a(2131705748) + ssi.jdField_a_of_type_JavaLangString + ajyc.a(2131705751) + sxp.a(2131699671) + ajyc.a(2131705750));
-      if (paramQQUserUIItem.videoCount > 0) {
-        break label331;
-      }
-    }
-    label331:
-    for (this.e = "0个小视频";; this.e = (paramQQUserUIItem.videoCount + ajyc.a(2131705753)))
-    {
-      this.j = ("#" + ssi.jdField_a_of_type_JavaLangString + "# " + this.d + "（" + this.e + "）");
-      this.jdField_a_of_type_Int = 102;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 13, 14, 15, 16, 17, 18 };
-      return;
-      i = 0;
-      break;
-    }
+    super.a(paramtrl);
+    paramtrl.jdField_a_of_type_JavaLangString = a(6);
+    a(paramtrl);
   }
   
-  protected String a(int paramInt)
+  protected void a(trm paramtrm) {}
+  
+  public void a(trn paramtrn)
   {
-    if (paramInt == 1) {
-      return String.format(b, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
+    super.a(paramtrn);
+    paramtrn.b = 1;
+    paramtrn.m = this.g;
+    paramtrn.jdField_d_of_type_JavaLangString = this.f;
+    paramtrn.l = this.e;
+    paramtrn.k = this.jdField_d_of_type_JavaLangString;
+    paramtrn.jdField_a_of_type_JavaLangString = this.i;
+    paramtrn.h = a(1);
+    if (this.jdField_a_of_type_Int != -1) {
+      paramtrn.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
     }
-    return String.format(jdField_c_of_type_JavaLangString, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
+    if (this.b != -1) {
+      paramtrn.e = this.b;
+    }
+    a(paramtrn);
   }
   
-  protected void a(trp paramtrp)
+  public void a(tro paramtro)
+  {
+    super.a(paramtro);
+    paramtro.c = this.jdField_d_of_type_JavaLangString;
+    paramtro.jdField_d_of_type_JavaLangString = this.e;
+    paramtro.jdField_a_of_type_JavaLangString = this.i;
+    paramtro.e = a(2);
+    a(paramtro);
+  }
+  
+  public void a(trp paramtrp)
   {
     super.a(paramtrp);
-    if ((paramtrp != null) && ((paramtrp instanceof trq))) {
-      ((trq)paramtrp).jdField_a_of_type_JavaLangString = (tsa.b(this.i) + "#private_share_cache");
-    }
+    paramtrp.jdField_a_of_type_JavaLangString = this.j;
+    paramtrp.e = this.i;
+    paramtrp.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramtrp.jdField_d_of_type_JavaLangString = trx.a(this.i);
+    paramtrp.c = a(5);
+    a(paramtrp);
+  }
+  
+  public void a(trq paramtrq)
+  {
+    super.a(paramtrq);
+    paramtrq.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramtrq.c = this.e;
+    paramtrq.jdField_d_of_type_JavaLangString = a(3);
+    paramtrq.e = this.i;
+    paramtrq.b = true;
+    a(paramtrq);
+  }
+  
+  public void b(trq paramtrq)
+  {
+    super.b(paramtrq);
+    paramtrq.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramtrq.c = this.e;
+    paramtrq.jdField_d_of_type_JavaLangString = a(4);
+    paramtrq.e = this.i;
+    paramtrq.b = true;
+    a(paramtrq);
   }
 }
 

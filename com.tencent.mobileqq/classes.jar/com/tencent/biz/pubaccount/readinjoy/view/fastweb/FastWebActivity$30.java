@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import ogq;
+import ogn;
 
 class FastWebActivity$30
   implements Runnable

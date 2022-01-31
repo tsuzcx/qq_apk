@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArAwardInfo;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
 public final class alko
-  implements Parcelable.Creator<ArAwardInfo>
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public ArAwardInfo a(Parcel paramParcel)
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    return new ArAwardInfo(paramParcel);
+    return new ArDefaultSetting(paramParcel);
   }
   
-  public ArAwardInfo[] a(int paramInt)
+  public ArDefaultSetting[] a(int paramInt)
   {
-    return new ArAwardInfo[paramInt];
+    return new ArDefaultSetting[paramInt];
   }
 }
 

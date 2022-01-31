@@ -5,7 +5,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import bhvp;
+import bhwg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppContentProvider;
 import mqq.app.AppRuntime;
@@ -21,7 +21,7 @@ public class ReadInJoyDataProvider
   public static final Uri d = Uri.parse(jdField_a_of_type_JavaLangString + "recent_data");
   public static final Uri e = Uri.parse(jdField_a_of_type_JavaLangString + "common_records");
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
-  private bhvp jdField_a_of_type_Bhvp;
+  private bhwg jdField_a_of_type_Bhwg;
   
   static
   {
@@ -57,15 +57,15 @@ public class ReadInJoyDataProvider
     } while (!QLog.isColorLevel());
     QLog.d("ReadInJoyDataProvider", 2, "getDBHelper, uin not equal, uri=" + paramUri.getPath() + ", current account=" + localAppRuntime.getAccount());
     return null;
-    if ((this.jdField_a_of_type_Bhvp == null) || (!this.jdField_a_of_type_Bhvp.jdField_a_of_type_JavaLangString.equals(str2)))
+    if ((this.jdField_a_of_type_Bhwg == null) || (!this.jdField_a_of_type_Bhwg.jdField_a_of_type_JavaLangString.equals(str2)))
     {
-      this.jdField_a_of_type_Bhvp = new bhvp(this, localAppRuntime.getApplication().getApplicationContext(), str1);
-      this.jdField_a_of_type_Bhvp.jdField_a_of_type_JavaLangString = str2;
+      this.jdField_a_of_type_Bhwg = new bhwg(this, localAppRuntime.getApplication().getApplicationContext(), str1);
+      this.jdField_a_of_type_Bhwg.jdField_a_of_type_JavaLangString = str2;
     }
     if (paramBoolean) {
-      return this.jdField_a_of_type_Bhvp.getReadableDatabase();
+      return this.jdField_a_of_type_Bhwg.getReadableDatabase();
     }
-    return this.jdField_a_of_type_Bhvp.getWritableDatabase();
+    return this.jdField_a_of_type_Bhwg.getWritableDatabase();
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)

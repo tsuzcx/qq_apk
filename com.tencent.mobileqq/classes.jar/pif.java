@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class pif
-  implements View.OnClickListener
+public class pif
+  implements ViewBase.OnClickListener
 {
-  pif(pid parampid, int paramInt, rap paramrap, pax parampax) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void onClick(View paramView)
+  public pif(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (this.jdField_a_of_type_Int == 120) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Rap.a(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.c, "kandian feed click");
-    }
-    rbu localrbu;
-    do
-    {
-      return;
-      localrbu = this.jdField_a_of_type_Rap.a();
-    } while (localrbu == null);
-    localrbu.a(paramView, this.jdField_a_of_type_Pax.a(), 2);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    pjb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

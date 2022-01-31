@@ -1,23 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nwg
-  implements bfoq
+  implements myy
 {
-  public nwg(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, bfol parambfol) {}
+  public nwg(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      osj.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

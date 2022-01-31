@@ -1,17 +1,24 @@
-import android.view.View;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFloatWindowDragLayout;
 
-class qnh
-  extends URLDrawableDownListener.Adapter
+public class qnh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qnh(qng paramqng) {}
+  public qnh(VideoFeedsFloatWindowDragLayout paramVideoFeedsFloatWindowDragLayout, int paramInt1, int paramInt2) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout.getLayoutParams();
+    int i = this.jdField_a_of_type_Int;
+    localLayoutParams.x = (((Point)paramValueAnimator.getAnimatedValue()).x + i);
+    i = this.b;
+    localLayoutParams.y = (((Point)paramValueAnimator.getAnimatedValue()).y + i);
+    if (VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout) != null) {
+      VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout).a();
+    }
   }
 }
 

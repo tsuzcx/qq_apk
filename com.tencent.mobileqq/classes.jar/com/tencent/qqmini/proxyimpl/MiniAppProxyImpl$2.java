@@ -1,11 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amgo;
+import amgn;
 import android.os.Handler.Callback;
 import android.os.Message;
-import besi;
-import besl;
-import bfgs;
+import besz;
+import betc;
+import bfhj;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
@@ -17,8 +17,8 @@ class MiniAppProxyImpl$2
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage == null) {
-      if (besl.a()) {
-        besl.d("MiniAppProxyImpl", "handleMessage error, msg is null.");
+      if (betc.a()) {
+        betc.d("MiniAppProxyImpl", "handleMessage error, msg is null.");
       }
     }
     label445:
@@ -35,7 +35,7 @@ class MiniAppProxyImpl$2
               return false;
               if (MiniAppProxyImpl.access$000(this.this$0) == null)
               {
-                besl.d("MiniAppProxyImpl", "handleMessage error, MiniAppContext is null.");
+                betc.d("MiniAppProxyImpl", "handleMessage error, MiniAppContext is null.");
                 return false;
               }
               switch (paramMessage.what)
@@ -69,7 +69,7 @@ class MiniAppProxyImpl$2
             }
             for (;;)
             {
-              bfgs.a(MiniAppProxyImpl.access$000(this.this$0).a());
+              bfhj.a(MiniAppProxyImpl.access$000(this.this$0).a());
               return false;
               this.this$0.setEnableDebug(MiniAppProxyImpl.access$000(this.this$0).a().appId, true);
             }

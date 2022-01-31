@@ -1,86 +1,33 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.Gift;
-import java.util.List;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
-public class aqrx
-  extends aqru
+class aqrx
+  implements View.OnClickListener
 {
-  public LinearLayout a;
-  public ImageView[] a;
-  public LinearLayout[] a;
-  public TextView[] a;
-  public TextView d;
+  aqrx(aqrw paramaqrw, FeedsItemData paramFeedsItemData) {}
   
-  public aqrx(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramView, paramViewGroup);
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559083, paramViewGroup, false);
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
-    }
-    this.d = ((TextView)paramContext.findViewById(2131378198));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131368962));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[4];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout = new LinearLayout[4];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)paramContext.findViewById(2131367966));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramContext.findViewById(2131378192));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[0] = ((LinearLayout)paramContext.findViewById(2131368958));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)paramContext.findViewById(2131367967));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramContext.findViewById(2131378193));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[1] = ((LinearLayout)paramContext.findViewById(2131368959));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)paramContext.findViewById(2131367968));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramContext.findViewById(2131378194));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[2] = ((LinearLayout)paramContext.findViewById(2131368960));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)paramContext.findViewById(2131367969));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)paramContext.findViewById(2131378195));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[3] = ((LinearLayout)paramContext.findViewById(2131368961));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    super.a(paramFeedsItemData);
-    this.d.setText(paramFeedsItemData.title);
-    int i;
-    if ((paramFeedsItemData.giftList != null) && (paramFeedsItemData.giftList.size() > 0))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      i = 0;
-      label45:
-      if (i >= 4) {
-        return;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aqrw.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
       }
-      if (i >= paramFeedsItemData.giftList.size()) {
-        break label176;
-      }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[i].setVisibility(0);
-      FeedsItemData.Gift localGift = (FeedsItemData.Gift)paramFeedsItemData.giftList.get(i);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(localGift.text);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130839282);
-      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130839282);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable(URLDrawable.getDrawable(localGift.picture, localURLDrawableOptions));
     }
-    for (;;)
+    while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId))
     {
-      i += 1;
-      break label45;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      break;
-      label176:
-      this.jdField_a_of_type_ArrayOfAndroidWidgetLinearLayout[i].setVisibility(8);
+      return;
+      paramView = new Intent(this.jdField_a_of_type_Aqrw.a, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
+      this.jdField_a_of_type_Aqrw.a.startActivity(paramView);
+      return;
     }
+    aqsv.a(this.jdField_a_of_type_Aqrw.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId);
   }
 }
 

@@ -1,15 +1,20 @@
 import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-public abstract class smk<MSG extends smd, INFO extends sme>
+public class smk
+  extends smh<sma, WSPushStrategyInfo>
 {
-  MSG a;
-  
-  public smk(MSG paramMSG)
+  public smk(sma paramsma)
   {
-    this.a = paramMSG;
+    super(paramsma);
   }
   
-  public abstract boolean a(Context paramContext, INFO paramINFO);
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    WSRecommendFragment.a(paramContext);
+    return true;
+  }
 }
 
 

@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 
-class alzg
-  implements DialogInterface.OnClickListener
+public class alzg
+  implements bfph
 {
-  alzg(alzf paramalzf) {}
+  public alzg(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a("DynamicAvatarRecordActivity");
+    this.a.finish();
   }
 }
 

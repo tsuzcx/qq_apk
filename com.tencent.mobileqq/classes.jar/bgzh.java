@@ -1,39 +1,49 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import PUSHAPI.PushRsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-class bgzh
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public class bgzh
+  extends QzoneExternalRequest
 {
-  bgzh(bgzg parambgzg) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long b;
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public bgzh(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
-      }
-      if ((!bgzg.a(this.a)) && (bgzg.a(this.a) != null))
-      {
-        if (bgzg.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bgzg.a(this.a, bgzg.a(this.a).getInt(paramString, 0));
-        }
-        if (bgzg.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bgzg.c(this.a, bgzg.a(this.a).getString(paramString, null));
-        }
-        if (bgzg.d(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bgzg.e(this.a, bgzg.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + bgzg.a(this.a) + " personlizedYellowVipUrl = " + bgzg.a(this.a));
-        }
-      }
-      bgzg.a(this.a, false);
-    }
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong1);
+    super.setRefer(paramString1);
+    this.jdField_a_of_type_Long = paramLong2;
+    this.b = paramLong3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.needCompress = false;
+  }
+  
+  public String getCmdString()
+  {
+    return "wns.pushrsp";
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    PushRsp localPushRsp = new PushRsp();
+    localPushRsp.ptime = this.jdField_a_of_type_Long;
+    localPushRsp.is_bgd = 0;
+    localPushRsp.sUID = "<JIEHEBAN>";
+    localPushRsp.flag = this.b;
+    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
+    return bggm.a(localPushRsp);
+  }
+  
+  public JceStruct getReq()
+  {
+    return null;
+  }
+  
+  public String uniKey()
+  {
+    return "wns.pushrsp";
   }
 }
 

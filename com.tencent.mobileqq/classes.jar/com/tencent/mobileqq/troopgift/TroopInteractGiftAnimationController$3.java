@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troopgift;
 
-import barx;
+import basl;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
 
 public class TroopInteractGiftAnimationController$3
   implements Runnable
 {
-  public TroopInteractGiftAnimationController$3(barx parambarx, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
+  public TroopInteractGiftAnimationController$3(basl parambasl, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
   public void run()
   {

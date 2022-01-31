@@ -1,36 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public class afct
-  implements View.OnClickListener
 {
-  public afct(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  long jdField_a_of_type_Long;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  CharSequence jdField_b_of_type_JavaLangCharSequence;
   
-  public void onClick(View paramView)
+  public afct(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
   {
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {}
-    int i;
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public CharSequence a()
+  {
+    if (this.jdField_b_of_type_JavaLangCharSequence == null)
     {
-      do
-      {
-        return;
-        i = ((Integer)paramView).intValue();
-      } while ((i < 0) || (this.a.jdField_a_of_type_Afcw == null));
-      paramView = this.a.getActivity();
-    } while (paramView == null);
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-    MessageRecord localMessageRecord = ((afcv)this.a.jdField_a_of_type_Afcw.getItem(i)).a;
-    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
-    if (QLog.isColorLevel()) {
-      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+      this.jdField_b_of_type_JavaLangCharSequence = bbkp.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
     }
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+    return this.jdField_b_of_type_JavaLangCharSequence;
   }
 }
 

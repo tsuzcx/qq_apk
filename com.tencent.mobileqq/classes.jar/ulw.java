@@ -1,21 +1,48 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
 import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class ulw
-  extends tpk
+public class ulw
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tlo>
 {
-  ulw(ulv paramulv) {}
-  
-  public void a()
+  public ulw(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super.a();
-    ulv.a(this.a).jdField_a_of_type_Tpe = null;
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void a(int paramInt)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tlo paramtlo)
   {
-    super.a(paramInt);
-    vel.a("share_story", "day_suc", 0, paramInt, new String[] { ulv.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    if (!paramQQStoryShareGroupProfileActivity.g) {}
+    umj localumj;
+    Object localObject1;
+    do
+    {
+      return;
+      Object localObject2 = null;
+      localumj = paramQQStoryShareGroupProfileActivity.a.a;
+      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (HotSortVideoEntry)localIterator.next();
+      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramtlo.a));
+    } while (localObject1 == null);
+    ((HotSortVideoEntry)localObject1).viewCount += 1;
+    ((tcg)tcz.a(25)).a((HotSortVideoEntry)localObject1);
+    localumj.a((HotSortVideoEntry)localObject1);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tlo.class;
   }
 }
 

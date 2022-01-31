@@ -1,16 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
 public class aogv
   implements DialogInterface.OnClickListener
 {
-  public aogv(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  public aogv(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
   }
 }
 

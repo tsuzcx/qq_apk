@@ -1,74 +1,39 @@
-import android.view.MotionEvent;
-import java.math.BigDecimal;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class vjm
+  implements View.OnClickListener
 {
-  public float a;
-  private float b;
-  private float c;
+  protected long a;
+  protected View a;
+  public vjn a;
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public vjm(vjn paramvjn, View paramView)
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((i == 1) && (paramBoolean)) {
-      switch (j)
-      {
-      }
+    this.jdField_a_of_type_Vjn = paramvjn;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
+  }
+  
+  private boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
     }
-    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
-    {
-      do
-      {
-        return false;
-        this.c = this.a;
-        return false;
-        if (paramMotionEvent.getY() >= this.a)
-        {
-          this.c = this.a;
-          return false;
-        }
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      } while (i == 0);
-      axhp.a().b(i);
-      this.c = paramMotionEvent.getY();
-      return false;
-    }
-    veg.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
-    }
-    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 2: 
-        f1 = vjr.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (i != 0)
-        {
-          veg.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
-          axhp.a().b(i);
-          this.b = f1;
-        }
-        return true;
-        f4 = paramMotionEvent.getX(1);
-        f2 = paramMotionEvent.getY(1);
-        f3 = paramMotionEvent.getX(2);
-      }
-    }
-    this.b = vjr.a(f4, f2, f3, f1);
+    this.jdField_a_of_type_Long = l1;
     return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!a())
+    {
+      vei.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Vjn.a();
+    }
+    ayvp.g();
   }
 }
 

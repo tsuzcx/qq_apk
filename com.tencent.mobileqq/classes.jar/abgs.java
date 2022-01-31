@@ -1,18 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abgs
-  extends amdl
+  implements DialogInterface.OnClickListener
 {
   public abgs(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      amdk localamdk = (amdk)this.a.app.getManager(112);
-      this.a.a = localamdk.a(paramString);
+    axqy.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
+    if (bbfj.d(this.a)) {
+      FriendProfileMoreInfoActivity.b(this.a);
     }
+    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
   }
 }
 

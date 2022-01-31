@@ -1,103 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.ProcessTDFileScheduler.1;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class ayfw
+class ayfw
+  implements AdapterView.OnItemClickListener
 {
-  public static ayfw a;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentLinkedQueue<MessageRecord> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private bcvg jdField_a_of_type_Bcvg;
+  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  private WeakReference<QQBrowserActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<WebView> b;
   
-  private ayfw(QQAppInterface paramQQAppInterface)
+  ayfw(QQBrowserActivity paramQQBrowserActivity, WebView paramWebView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bcvg parambcvg)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQBrowserActivity);
+    this.b = new WeakReference(paramWebView);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    this.jdField_a_of_type_Bcvg = parambcvg;
   }
   
-  public static ayfw a(QQAppInterface paramQQAppInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (jdField_a_of_type_Ayfw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ayfw == null) {
-        jdField_a_of_type_Ayfw = new ayfw(paramQQAppInterface);
-      }
-      return jdField_a_of_type_Ayfw;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localQQAppInterface == null) || (localQQAppInterface.a.a() != 1));
-    ThreadManager.postImmediately(new TeamWorkUtils.ProcessTDFileScheduler.1(this, localQQAppInterface), null, true);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {}
-    label190:
+    QLog.w("TeamWorkShareActionSheetBuilder", 1, "inner on item click");
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {}
     do
     {
       do
       {
-        for (;;)
-        {
-          return;
-          Object localObject1;
-          if ((paramMessageRecord instanceof MessageForStructing))
-          {
-            localObject1 = (MessageForStructing)paramMessageRecord;
-            if ((((MessageForStructing)localObject1).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject1).structingMsg.mMsgUrl)) && (apef.a(((MessageForStructing)localObject1).structingMsg.mMsgUrl))) {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
-            }
-          }
-          else
-          {
-            if (!(paramMessageRecord instanceof MessageForArkApp)) {
-              break label190;
-            }
-            localObject1 = (MessageForArkApp)paramMessageRecord;
-            Object localObject2 = ((MessageForArkApp)localObject1).ark_app_message.metaList;
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              try
-              {
-                localObject2 = new JSONObject(new JSONObject((String)localObject2).getString(((MessageForArkApp)localObject1).ark_app_message.appView));
-                localObject1 = ((JSONObject)localObject2).optString("appid");
-                localObject2 = ((JSONObject)localObject2).optString("qqdocurl");
-                if (((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(String.valueOf(ayfv.a)))) || ((!TextUtils.isEmpty((CharSequence)localObject2)) && (apef.a((String)localObject2))))
-                {
-                  this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
-                  return;
-                }
-              }
-              catch (JSONException paramMessageRecord) {}
-            }
-          }
+        return;
+        paramAdapterView = ((bbjv)paramAdapterView).a;
+        if (this.jdField_a_of_type_Bcvg != null) {
+          this.jdField_a_of_type_Bcvg.a(paramAdapterView, null);
         }
-      } while (!QLog.isColorLevel());
-      QLog.e(ayeb.i, 2, paramMessageRecord.getMessage());
+      } while (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null);
+      QLog.w("TeamWorkShareActionSheetBuilder", 1, "info exist");
+    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
+    QLog.w("TeamWorkShareActionSheetBuilder", 1, "from online preview");
+    paramInt = paramAdapterView.c;
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 9) || (paramInt == 10))
+    {
+      paramAdapterView = (WebView)this.b.get();
+      if (paramAdapterView == null) {
+        break label233;
+      }
+    }
+    label233:
+    for (paramAdapterView = paramAdapterView.getUrl();; paramAdapterView = "")
+    {
+      ayfx.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, paramAdapterView, "0X8009F34");
+      paramAdapterView = (QQBrowserActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramAdapterView == null) {
+        break;
+      }
+      if (paramInt == 1)
+      {
+        ayfx.a(paramAdapterView.getIntent(), "0X800A16F");
+        return;
+      }
+      if ((paramInt == 2) || (paramInt == 9) || (paramInt == 10) || (paramInt == 3) || (paramInt == 12))
+      {
+        ayfx.a(paramAdapterView.getIntent(), "0X800A16E");
+        return;
+      }
+      if (paramInt == 6)
+      {
+        ayfx.a(paramAdapterView.getIntent(), "0X800A170");
+        return;
+      }
+      if (paramInt != 5) {
+        break;
+      }
+      ayfx.a(paramAdapterView.getIntent(), "0X800A171");
       return;
-    } while ((!(paramMessageRecord instanceof MessageForText)) || (!apef.a(((MessageForText)paramMessageRecord).msg)));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+    }
   }
 }
 

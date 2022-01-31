@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import java.util.concurrent.Callable;
 
-class aret
-  implements arkg
+final class aret
+  implements Callable<arej>
 {
-  aret(ares paramares) {}
+  aret(Context paramContext, String paramString) {}
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public arej a()
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    ares.a(this.a, paramNewTogetherRoomMessageData, 1);
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    ares.a(this.a, paramNewTogetherRoomMessageData, 3);
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
-    ares.a(this.a, paramNewTogetherRoomMessageData, 2);
+    return ares.b(this.jdField_a_of_type_AndroidContentContext, "Now", this.jdField_a_of_type_JavaLangString);
   }
 }
 

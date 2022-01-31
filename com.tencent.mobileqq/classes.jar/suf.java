@@ -1,43 +1,62 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class suf
-  implements suk
+  implements aysc
 {
-  private suf(suc paramsuc) {}
+  suf(sue paramsue) {}
   
-  public void a(sul paramsul)
+  public void onResp(aysz paramaysz)
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    axeg localaxeg = axdo.a(2, 2);
-    MessageForShortVideo localMessageForShortVideo = paramsul.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    axdr localaxdr = localMessageForShortVideo.getDownloadInfo(localaxeg.b);
-    if (paramsul.jdField_a_of_type_Int == 2)
+    if (paramaysz.jdField_a_of_type_Int == 3) {}
+    sui localsui;
+    do
     {
-      localaxdr.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
-      localaxdr.a(localMessageForShortVideo.istroop, 1);
-    }
-    for (;;)
+      do
+      {
+        return;
+        localObject = ((ayrx)paramaysz.jdField_a_of_type_Aysy).a();
+      } while ((localObject == null) || (!(localObject instanceof sui)));
+      localsui = (sui)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((sui)localObject).jdField_a_of_type_JavaLangString);
+      localsui.jdField_b_of_type_Long = (System.currentTimeMillis() - localsui.jdField_a_of_type_Long);
+    } while (localsui.jdField_a_of_type_Sub == null);
+    Object localObject = localsui.jdField_a_of_type_Sub;
+    if (paramaysz.jdField_a_of_type_Int == 0) {}
+    for (paramaysz = new ErrorMessage(0, "");; paramaysz = new ErrorMessage(paramaysz.b, paramaysz.jdField_a_of_type_JavaLangString))
     {
-      localaxeg.a(localaxdr);
-      localaxeg.a(new sug(this, paramsul.jdField_a_of_type_JavaLangString));
-      axdo.a(localaxeg, localQQAppInterface);
-      veg.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramsul }));
+      ((sub)localObject).a(localsui, paramaysz);
       return;
-      localaxdr.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
-      localaxdr.a(localMessageForShortVideo.istroop, 0);
     }
   }
   
-  public boolean a()
+  public void onUpdateProgeress(aysy arg1, long paramLong1, long paramLong2)
   {
-    return true;
+    ??? = ???.a();
+    if ((??? != null) && ((??? instanceof sui)))
+    {
+      sui localsui = (sui)???;
+      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      synchronized (PreloadDownloader.a)
+      {
+        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
+          {
+            sum localsum = (sum)((WeakReference)localIterator.next()).get();
+            if (localsum != null) {
+              localsum.a(localsui.jdField_b_of_type_JavaLangString, localsui.jdField_a_of_type_Int, i, localsui);
+            }
+          }
+        }
+      }
+    }
   }
-  
-  public void b(sul paramsul) {}
 }
 
 

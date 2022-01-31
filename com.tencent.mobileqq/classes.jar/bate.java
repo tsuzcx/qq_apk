@@ -1,38 +1,108 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopEffectPic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class bate
-  extends auom
+public class bate
+  extends DefaultHandler
 {
-  bate(batd parambatd, aunl paramaunl, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
+  protected bata a;
+  protected String a;
+  protected ArrayList<bata> a;
+  protected boolean a;
+  protected bata b;
   
-  public void a(int paramInt, aunu paramaunu)
+  public bate(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
-    }
-    paramaunu = new File(this.jdField_a_of_type_Aunl.c());
-    bagr localbagr = (bagr)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a.getManager(223);
-    if ((paramaunu.exists()) && (localbagr != null))
-    {
-      localbagr.a = 1;
-      localbagr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
-      localbagr.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
-      localbagr.f();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public bata a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
+    return this.jdField_a_of_type_Bata;
+  }
+  
+  public ArrayList<bata> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  
+  public void endDocument() {}
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.b != null) {
+      this.b = this.b.jdField_a_of_type_Bata;
+    }
+  }
+  
+  public void startDocument() {}
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    paramString3 = null;
+    int j = paramAttributes.getLength();
+    int i = 0;
+    paramString1 = null;
+    String str2;
+    String str1;
+    if (i < j)
+    {
+      str2 = paramAttributes.getLocalName(i);
+      str1 = paramAttributes.getValue(str2);
+      if ("id".equals(str2)) {
+        paramString1 = str1;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break;
+      if ("value".equals(str2))
+      {
+        paramString3 = str1;
+        continue;
+        if (("0".equals(paramString1)) || (paramString1 == null)) {}
+        for (;;)
+        {
+          return;
+          paramAttributes = this.b;
+          if (paramString2.startsWith("L"))
+          {
+            paramString2 = paramString2.substring(1);
+            try
+            {
+              i = Integer.parseInt(paramString2);
+              if (i != 0)
+              {
+                paramString2 = new bata(i, paramString1, paramString3);
+                this.b = paramString2;
+                if (paramString2.a(paramAttributes))
+                {
+                  paramAttributes.a(this.b);
+                  if ((this.jdField_a_of_type_Boolean) || (!String.valueOf(this.jdField_a_of_type_JavaLangString).equals(paramString1))) {
+                    continue;
+                  }
+                  this.jdField_a_of_type_Boolean = true;
+                  this.jdField_a_of_type_Bata = paramString2;
+                }
+              }
+            }
+            catch (NumberFormatException paramString2)
+            {
+              for (;;)
+              {
+                paramString2.printStackTrace();
+                i = 0;
+                continue;
+                this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

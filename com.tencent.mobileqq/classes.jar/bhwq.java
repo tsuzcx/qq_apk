@@ -1,193 +1,76 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bhwq
-  implements axme
+public abstract class bhwq
+  extends Binder
+  implements bhwp
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  Throwable jdField_a_of_type_JavaLangThrowable;
-  final int b;
-  
-  bhwq(String paramString, int paramInt1, int paramInt2)
+  public bhwq()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt2 > 0) {}
-    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
+    attachInterface(this, "cooperation.smartdevice.ipc.ISmartDeviceService");
+  }
+  
+  public static bhwp a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
+    if ((localIInterface != null) && ((localIInterface instanceof bhwp))) {
+      return (bhwp)localIInterface;
+    }
+    return new bhwr(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    String str1 = null;
+    Object localObject = null;
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_JavaLangThrowable = null;
-      if (paramString != null) {
-        break;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.smartdevice.ipc.ISmartDeviceService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
+      str1 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {
+        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      throw new IllegalArgumentException("null == outputFilePath");
+      paramParcel1 = a(str1, (Bundle)localObject);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
     }
+    paramParcel1.enforceInterface("cooperation.smartdevice.ipc.ISmartDeviceService");
+    String str2 = paramParcel1.readString();
+    localObject = str1;
+    if (paramParcel1.readInt() != 0) {
+      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    }
+    a(str2, (Bundle)localObject);
+    paramParcel2.writeNoException();
+    return true;
   }
-  
-  public axmf a(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    axmf localaxmf = new axmf();
-    int k;
-    Object localObject;
-    if (paramInt1 <= paramInt2)
-    {
-      k = paramInt2;
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      localaxmf.jdField_a_of_type_JavaIoFile = ((File)localObject);
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
-      if ((localObject == null) || (((String)localObject).length() <= 0)) {
-        break label431;
-      }
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject == null) || (localObject.length <= 4)) {
-        break label431;
-      }
-    }
-    label431:
-    for (;;)
-    {
-      try
-      {
-        i = Integer.valueOf(localObject[1]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        paramInt1 = 0;
-        paramInt2 = 0;
-        i = 0;
-      }
-      try
-      {
-        paramInt2 = Integer.valueOf(localObject[2]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        for (;;)
-        {
-          label344:
-          int n;
-          paramInt1 = 0;
-          paramInt2 = 0;
-        }
-      }
-      try
-      {
-        paramInt1 = Integer.valueOf(localObject[3]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException3)
-      {
-        paramInt1 = 0;
-        break label344;
-      }
-      try
-      {
-        m = Integer.valueOf(localObject[4]).intValue();
-        j = i;
-        i = paramInt2;
-        paramInt2 = m;
-        m = j;
-        if (j <= 0) {
-          m = 640;
-        }
-        j = i;
-        if (i <= 0) {
-          j = 384;
-        }
-        i = paramInt1;
-        if (paramInt1 <= 0) {
-          i = 768;
-        }
-        paramInt1 = paramInt2;
-        if (paramInt2 <= 0) {
-          paramInt1 = 30;
-        }
-        localaxmf.jdField_a_of_type_Float = (m / k);
-        localaxmf.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * localaxmf.jdField_a_of_type_Float * localaxmf.jdField_a_of_type_Float + 0.5F));
-        if (localaxmf.jdField_a_of_type_Int <= i * 1024) {
-          break label382;
-        }
-        localaxmf.jdField_a_of_type_Int = (i * 1024);
-        paramInt2 = paramInt1;
-        if (this.jdField_b_of_type_Int <= paramInt1) {
-          paramInt2 = this.jdField_b_of_type_Int;
-        }
-        localaxmf.jdField_b_of_type_Int = paramInt2;
-        localaxmf.jdField_b_of_type_Boolean = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localaxmf.jdField_b_of_type_Boolean);
-        }
-        return localaxmf;
-      }
-      catch (NumberFormatException localNumberFormatException4)
-      {
-        break label344;
-      }
-      k = paramInt1;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopHomeworkHelper", 2, "getEncodeConfig -> get DpcConfig Erro", localNumberFormatException1);
-      }
-      n = 0;
-      int j = paramInt2;
-      int m = i;
-      paramInt2 = n;
-      i = j;
-      j = m;
-      continue;
-      label382:
-      if (localaxmf.jdField_a_of_type_Int < j * 1024)
-      {
-        localaxmf.jdField_a_of_type_Int = (j * 1024);
-        continue;
-        paramInt2 = 0;
-        paramInt1 = 0;
-        j = 0;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onSuccessed");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
-    }
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onFailed");
-    }
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
-  }
-  
-  public void b() {}
 }
 
 

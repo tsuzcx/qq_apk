@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.report;
 
-import beyo;
+import bezf;
 
 public class MiniProgramReporter$7
   implements Runnable
 {
-  public MiniProgramReporter$7(beyo parambeyo) {}
+  public MiniProgramReporter$7(bezf parambezf) {}
   
   public void run()
   {
-    beyo.b(this.this$0);
-    beyo.c(this.this$0);
+    bezf.b(this.this$0);
+    bezf.c(this.this$0);
   }
 }
 

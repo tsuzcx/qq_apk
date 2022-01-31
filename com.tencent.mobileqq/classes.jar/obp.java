@@ -1,55 +1,68 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.List;
+import android.app.Activity;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
-class obp
-  extends BaseAdapter
+public class obp
 {
-  obp(obm paramobm) {}
+  @Nullable
+  private obq a;
   
-  public int getCount()
+  public void a()
   {
-    return obm.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return obm.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559945, null);
-      paramViewGroup = new obq(this.a);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378370));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368530));
-      paramView.setTag(paramViewGroup);
+    if (this.a != null) {
+      this.a.a();
     }
-    for (;;)
+  }
+  
+  public void a(Activity paramActivity, ListView paramListView)
+  {
+    if ((oat.a().a() == 1) && (oat.c()))
     {
-      GiftServiceBean localGiftServiceBean = (GiftServiceBean)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGiftServiceBean.t);
-      if (obm.a(this.a) != paramInt) {
-        break;
+      str = oat.a().a();
+      i = oat.a().b();
+      if (i != 1) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      String str;
+      int i;
+      return;
+      if (apvd.a(str))
+      {
+        this.a = new obq(paramActivity, paramListView, str);
+        this.a.a(i);
+        paramActivity = oat.a().a();
+        if (paramActivity != null) {
+          nzn.b(paramActivity, true, "no error");
+        }
+        oat.a().a = this;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842334);
-      return paramView;
-      paramViewGroup = (obq)paramView.getTag();
+      for (;;)
+      {
+        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + oat.a().d());
+        oat.a().a();
+        return;
+        oat.a().a(3);
+        paramActivity = oat.a().a();
+        if (paramActivity != null) {
+          nzn.b(paramActivity, false, "apng not exit");
+        }
+      }
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842335);
-    return paramView;
+    QLog.i("KandianAdPandentMask", 2, "status: " + oat.a().a() + " Aladdin: " + oat.c());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null) {
+      this.a.b(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (obq.a(this.a));
   }
 }
 

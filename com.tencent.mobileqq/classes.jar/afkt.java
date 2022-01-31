@@ -6,63 +6,64 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.ThemeImageView;
 
 public class afkt
-  extends afjv
+  extends afjt
   implements View.OnClickListener
 {
-  private boolean a;
-  
-  public afkt(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
+  public afkt(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
   {
-    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
+    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
   }
   
   public View a(int paramInt, View paramView)
   {
-    afku localafku;
+    View localView;
     Object localObject;
     if ((paramView == null) || (!(paramView.getTag() instanceof afku)))
     {
-      localafku = new afku();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560919, null);
-      localafku.a = ((LinearLayout)paramView.findViewById(2131364677));
-      localafku.b = ((LinearLayout)paramView.findViewById(2131364672));
-      localObject = (ThemeImageView)paramView.findViewById(2131365663);
+      paramView = new afku();
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560919, null);
+      localObject = new Rect();
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865) - bbll.a(80.0F));
+      paramView.a = ((Button)localView.findViewById(2131367245));
+      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+        paramView.a.setBackgroundResource(2130839048);
+      }
+      localObject = (ThemeImageView)localView.findViewById(2131367242);
       ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bfwa.b);
-      paramView.setTag(localafku);
+      ((ThemeImageView)localObject).setMaskShape(bfwr.b);
+      localView.setTag(paramView);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
+      localObject = paramView;
     }
     for (;;)
     {
-      paramView.setOnClickListener(this);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      paramInt = ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865) - bbkx.a(80.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      a(paramView, paramInt);
-      localafku.a.setVisibility(8);
-      localafku.b.setVisibility(0);
-      return paramView;
-      localafku = (afku)paramView.getTag();
+      ((afku)localObject).a.setOnClickListener(this);
+      return localView;
+      localObject = (afku)paramView.getTag();
+      localView = paramView;
     }
-    a(paramView, paramInt);
-    localafku.a.setVisibility(0);
-    localafku.b.setVisibility(8);
-    return paramView;
   }
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
+    if (bbfj.d(this.jdField_a_of_type_AndroidContentContext))
+    {
+      paramView = (afry)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
+      if (paramView != null) {
+        paramView.b(true);
+      }
+      return;
+    }
+    bcql.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692321), 0).a();
   }
-  
-  public void onClick(View paramView) {}
 }
 
 

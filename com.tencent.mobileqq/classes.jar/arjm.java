@@ -1,21 +1,21 @@
-import android.content.Intent;
 import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.qqinterface.CommonCallback;
 
 class arjm
-  implements arem
+  implements ndi
 {
-  arjm(arjl paramarjl, arei paramarei, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  arjm(arjj paramarjj, ndh paramndh, CommonCallback paramCommonCallback) {}
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    paramString = new Bundle(this.jdField_a_of_type_Arei.a().a.getExtras());
+    this.jdField_a_of_type_Arjj.a.a(this.jdField_a_of_type_Ndh.a(), this.jdField_a_of_type_Ndh.a(), paramLong, 0);
     Bundle localBundle = new Bundle();
-    localBundle.putBundle("data", paramString);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    localBundle.putBoolean("isOnline", paramBoolean);
+    localBundle.putString("videoUrl", paramString1);
+    localBundle.putString("vid", paramString2);
+    localBundle.putLong("timeConsume", paramLong);
+    localBundle.putString("mqqApi", paramString3);
+    this.jdField_a_of_type_ComTencentQqinterfaceCommonCallback.onResult(localBundle);
   }
 }
 

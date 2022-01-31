@@ -1,6 +1,6 @@
 public abstract interface avvj
 {
-  public abstract void a(String paramString);
+  public abstract void a();
 }
 
 

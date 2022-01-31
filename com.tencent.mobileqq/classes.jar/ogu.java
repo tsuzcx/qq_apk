@@ -1,26 +1,16 @@
-import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class ogu
-  implements ohp
+  implements okf
 {
-  public ogu(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public ogu(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, okf paramokf) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (ReadInJoyCommentListFragment.a(this.a) != null) {
-      ReadInJoyCommentListFragment.a(this.a).a();
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    if (this.jdField_a_of_type_Okf != null) {
+      this.jdField_a_of_type_Okf.a(paramInt);
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.a(false, null, null);
   }
 }
 

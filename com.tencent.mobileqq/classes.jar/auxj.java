@@ -1,11 +1,6 @@
-public class auxj
+public abstract interface auxj
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a(auxk paramauxk);
 }
 
 

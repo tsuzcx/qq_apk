@@ -1,124 +1,101 @@
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.graphics.Canvas;
+import android.os.SystemClock;
+import android.view.View;
 import com.tribe.async.async.JobContext;
-import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 public class vsc
-  extends vsq<vsd, vsd>
+  extends vsn<vsa, vsa>
 {
-  protected void a(JobContext paramJobContext, vsd paramvsd)
+  public final String a;
+  public final WeakReference<ver> a;
+  private boolean a;
+  
+  public vsc(ver paramver, String paramString)
   {
-    paramJobContext = null;
-    if (paramvsd.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath == null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramver);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public vsc(ver paramver, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramver);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  private Bitmap a(vsa paramvsa, Bitmap paramBitmap)
+  {
+    try
     {
-      super.notifyError(new ErrorMessage(-1, "DoodleRotateSegment error, you must merger everything first"));
-      return;
+      paramvsa = paramvsa.a();
+      ved.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view = %s", paramvsa);
+      if (paramvsa == null)
+      {
+        ved.e("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view has been recycled.");
+        return null;
+      }
+      paramBitmap = Bitmap.createBitmap(paramBitmap);
+      float f1 = paramBitmap.getWidth();
+      float f2 = paramBitmap.getHeight();
+      float f3 = paramvsa.getWidth();
+      float f4 = paramvsa.getHeight();
+      Canvas localCanvas = new Canvas(paramBitmap);
+      localCanvas.scale(f1 / f3, f2 / f4);
+      paramvsa.draw(localCanvas);
+      return paramBitmap;
     }
-    String str2 = paramvsd.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath;
-    String str1 = paramvsd.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath;
-    if ((str1 == null) && (str2 == null))
+    catch (OutOfMemoryError paramvsa)
     {
-      super.notifyResult(paramvsd);
-      return;
+      ved.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "create filterBitmap error : %s", paramvsa);
     }
-    int i = paramvsd.jdField_a_of_type_Vsj.c;
-    int j = paramvsd.jdField_a_of_type_Int;
-    if ((j == 2) || (j == 3) || (j == 5) || (j == 101) || (j == 104) || (j == 6)) {
-      if (str2 == null) {}
+    return null;
+  }
+  
+  protected void a(JobContext paramJobContext, vsa paramvsa)
+  {
+    long l = SystemClock.uptimeMillis();
+    paramJobContext = this.jdField_a_of_type_JavaLangString;
+    if (paramJobContext == null) {
+      paramJobContext = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.b, ".png");
     }
     for (;;)
     {
-      boolean bool1;
-      boolean bool2;
-      try
+      Object localObject = (ver)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localObject != null) && (!((ver)localObject).b()))
       {
-        Bitmap localBitmap = vxy.a(str2, null);
-        paramJobContext = localBitmap;
-        j = 1;
-        if ((paramJobContext != null) || (str1 == null)) {
-          break label269;
+        localObject = ((ver)localObject).a();
+        if (localObject != null)
+        {
+          paramvsa.jdField_a_of_type_Vse.b = ((Bitmap)localObject);
+          paramvsa.jdField_a_of_type_Boolean = true;
+          Bitmap localBitmap = a(paramvsa, (Bitmap)localObject);
+          if (localBitmap == null) {
+            break label234;
+          }
+          ved.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap success %s", Integer.valueOf(System.identityHashCode(localBitmap)));
+          localObject = localBitmap;
         }
-        j = 0;
       }
-      catch (Throwable localThrowable)
+      for (;;)
       {
-        try
+        if (this.jdField_a_of_type_Boolean)
         {
-          localBitmap = BitmapFactory.decodeFile(str1);
-          paramJobContext = localBitmap;
-          if (paramJobContext == null) {
-            break label316;
-          }
-          if (i == 270)
-          {
-            i = 90;
-            paramJobContext = vse.a(paramJobContext, i);
-            if (paramJobContext == null) {
-              break label338;
-            }
-            if (j == 0) {
-              break label295;
-            }
+          boolean bool = vxv.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
+          paramvsa.jdField_a_of_type_Boolean = bool;
+          paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
+          if (!bool) {
+            ved.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "Save doodle bitmap to " + paramJobContext + " failed! error code = " + bool);
           }
         }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          veg.c("Q.qqstory.publish.edit.DoodleRotateSegment", "decodeFile failed", localOutOfMemoryError);
-        }
-        try
-        {
-          vxy.a(paramJobContext, str2, null);
-          bool1 = true;
-          bool2 = bool1;
-          if (!bool1)
-          {
-            bool2 = bool1;
-            if (str1 != null) {
-              bool2 = vxy.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str1);
-            }
-          }
-          paramJobContext.recycle();
-          if ((paramJobContext != null) && (!bool2)) {
-            break label301;
-          }
-          super.notifyResult(paramvsd);
-          return;
-        }
-        catch (IOException localIOException)
-        {
-          veg.c("Q.qqstory.publish.edit.DoodleRotateSegment", "serializeBitmapToFile failed", localIOException);
-        }
-        localThrowable = localThrowable;
-        veg.c("Q.qqstory.publish.edit.DoodleRotateSegment", "unSerializeBitmapFromFile failed", localThrowable);
-      }
-      continue;
-      label269:
-      continue;
-      if (i == 90)
-      {
-        i = -90;
-        continue;
-        label295:
-        bool1 = false;
-        continue;
-        label301:
-        super.notifyError(new ErrorMessage(-1, "bitmap compress failed"));
+        ved.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "GenerateEditPicDoodleSegment" + paramvsa.jdField_a_of_type_Boolean + " cost " + (SystemClock.uptimeMillis() - l));
+        super.notifyResult(paramvsa);
         return;
-        label316:
-        super.notifyError(new BitmapError("Q.qqstory.publish.edit.DoodleRotateSegment", 6));
-        return;
-        super.notifyResult(paramvsd);
-        return;
-        label338:
-        bool2 = false;
-      }
-      else
-      {
-        i = 0;
+        label234:
+        ved.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
       }
     }
   }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import bagr;
+import bahf;
 
 class BaseChatPie$96
   implements Runnable
 {
-  BaseChatPie$96(BaseChatPie paramBaseChatPie, bagr parambagr, boolean paramBoolean) {}
+  BaseChatPie$96(BaseChatPie paramBaseChatPie, bahf parambahf, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bagr.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Bahf.a(this.jdField_a_of_type_Boolean);
   }
 }
 

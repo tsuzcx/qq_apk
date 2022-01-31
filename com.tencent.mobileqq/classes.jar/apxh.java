@@ -1,44 +1,82 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 
-class apxh
-  implements View.OnClickListener
+public class apxh
 {
-  apxh(apxg paramapxg) {}
+  public static final int[] a;
+  protected Context a;
+  protected Bundle a;
+  protected QQAppInterface a;
+  protected QFileSendBottomView a;
+  protected boolean a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (!this.a.a) {
-      return;
+    jdField_a_of_type_ArrayOfInt = new int[] { 1, 5 };
+  }
+  
+  public apxh(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView = paramQFileSendBottomView;
+  }
+  
+  public static apxh a(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("qfile_search_param_exparams_busi_type");
+    paramBundle.getInt("qfile_search_param_exparams_peer_type");
+    if (i == 1) {
+      paramQQAppInterface = new apqo(paramQQAppInterface, paramContext, paramQFileSendBottomView);
     }
-    int i = 4;
-    if (apxg.a(this.a) == 1)
-    {
-      i = 2;
-      if (!apxg.a(this.a).equals(ajsf.z)) {
-        break label131;
-      }
-      i = 3;
-    }
-    label131:
     for (;;)
     {
-      long l = apeh.b();
-      axqw.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
-      if (apxg.a(this.a) == 1)
-      {
-        apxg.a(this.a);
-        return;
-        if (apxg.a(this.a) != 0) {
-          break;
-        }
-        i = 1;
-        break;
+      paramQQAppInterface.a(paramBundle);
+      return paramQQAppInterface;
+      if (i == 5) {
+        paramQQAppInterface = new apql(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+      } else {
+        paramQQAppInterface = new apxi(paramQQAppInterface, paramContext, paramQFileSendBottomView);
       }
-      apxg.b(this.a);
+    }
+  }
+  
+  public void a() {}
+  
+  protected void a(int paramInt, Intent paramIntent)
+  {
+    if (paramIntent != null) {}
+    for (paramIntent = new Intent(paramIntent);; paramIntent = new Intent())
+    {
+      paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      localActivity.setResult(paramInt, paramIntent);
+      localActivity.finish();
       return;
     }
   }
+  
+  protected void a(Intent paramIntent)
+  {
+    a(-1, paramIntent);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b() {}
 }
 
 

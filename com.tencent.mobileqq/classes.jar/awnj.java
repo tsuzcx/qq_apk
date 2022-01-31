@@ -1,25 +1,21 @@
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import java.util.List;
 
 public class awnj
-  implements awof
+  implements awoh
 {
-  private afgx jdField_a_of_type_Afgx;
+  private afgv jdField_a_of_type_Afgv;
   private String jdField_a_of_type_JavaLangString;
-  private List<awog> jdField_a_of_type_JavaUtilList;
+  private List<awoi> jdField_a_of_type_JavaUtilList;
   
-  public awnj(afgx paramafgx, List<awog> paramList, String paramString)
+  public awnj(afgv paramafgv, List<awoi> paramList, String paramString)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Afgx = paramafgx;
+    this.jdField_a_of_type_Afgv = paramafgv;
   }
   
   public int a()
@@ -29,30 +25,22 @@ public class awnj
   
   public String a()
   {
-    if (UniteSearchActivity.d == 12) {
-      return ajyc.a(2131705344) + sfh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
-    }
-    return ajyc.a(2131705343);
+    return ajya.a(2131705352);
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View paramView)
   {
-    awvy.a(this.jdField_a_of_type_JavaLangString, 90, 0, paramView);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
     Intent localIntent = new Intent();
-    localIntent.putExtra("from_key", 2);
     localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("from_key", 0);
     localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    localIntent.putExtra("jump_src_key", 0);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Afgx);
-    paramView = paramView.getContext();
-    if ((paramView != null) && ((paramView instanceof BaseActivity))) {
-      noo.a(((BaseActivity)paramView).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D22", "0X8005D22", 0, 0, "0", "1", this.jdField_a_of_type_JavaLangString, "", false);
-    }
+    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Afgv);
   }
   
   public String b()

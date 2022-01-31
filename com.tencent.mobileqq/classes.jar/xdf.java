@@ -1,29 +1,17 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.biz.troopgift.TroopGiftPanel;
 
 class xdf
-  implements ActionMode.Callback
+  implements DialogInterface.OnShowListener
 {
-  xdf(xde paramxde, TroopGiftPanel paramTroopGiftPanel) {}
+  xdf(xdb paramxdb) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 

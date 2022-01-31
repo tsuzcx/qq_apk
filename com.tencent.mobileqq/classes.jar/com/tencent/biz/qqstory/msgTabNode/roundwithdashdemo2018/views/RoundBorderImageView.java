@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views;
 
-import actn;
+import actj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,7 +31,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
-import veg;
+import ved;
 
 @SuppressLint({"AppCompatCustomView"})
 public class RoundBorderImageView
@@ -60,15 +60,15 @@ public class RoundBorderImageView
   public boolean c;
   public int d;
   private boolean d;
-  private int jdField_e_of_type_Int = actn.a(8.0F, getResources());
+  private int jdField_e_of_type_Int = actj.a(8.0F, getResources());
   private boolean jdField_e_of_type_Boolean = true;
-  private int jdField_f_of_type_Int = actn.a(1.5F, getResources());
+  private int jdField_f_of_type_Int = actj.a(1.5F, getResources());
   private boolean jdField_f_of_type_Boolean;
   private int g = 9;
   private int h = 5;
   private int i = -16776961;
   private int j = -7829368;
-  private int k = actn.a(3.0F, getResources());
+  private int k = actj.a(3.0F, getResources());
   
   static
   {
@@ -89,7 +89,7 @@ public class RoundBorderImageView
   public RoundBorderImageView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = actn.a(8.0F, getResources());
+    this.jdField_a_of_type_Int = actj.a(8.0F, getResources());
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = true;
@@ -169,7 +169,7 @@ public class RoundBorderImageView
     Path localPath = new Path();
     localPath.addRoundRect(localRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CW);
     this.jdField_c_of_type_Float = new PathMeasure(localPath, true).getLength();
-    veg.b("RoundBorderImageView", "width=%d, height=%d, hLength=%f, vLength=%f, roundLength=%f, mStrokeWidth=%d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(this.jdField_f_of_type_Int) });
+    ved.b("RoundBorderImageView", "width=%d, height=%d, hLength=%f, vLength=%f, roundLength=%f, mStrokeWidth=%d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(this.jdField_f_of_type_Int) });
     localRectF = new RectF(getPaddingLeft(), getPaddingTop(), m - getPaddingRight(), n - getPaddingBottom());
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
@@ -177,11 +177,11 @@ public class RoundBorderImageView
     if (this.jdField_c_of_type_Float > 0.0F)
     {
       this.jdField_b_of_type_Int = ((int)Math.floor(this.jdField_c_of_type_Float * 1.0F / (this.k * 2)));
-      veg.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count = %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
+      ved.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count = %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
       return;
     }
     this.jdField_b_of_type_Int = 1;
-    veg.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count fallback to %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
+    ved.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count fallback to %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
   }
   
   float a()
@@ -200,7 +200,7 @@ public class RoundBorderImageView
   
   public void a(float paramFloat)
   {
-    int m = actn.a(paramFloat, getResources());
+    int m = actj.a(paramFloat, getResources());
     if (m != this.jdField_f_of_type_Int)
     {
       this.jdField_f_of_type_Int = m;
@@ -292,8 +292,8 @@ public class RoundBorderImageView
     {
       float f2 = (float)Math.floor(this.jdField_c_of_type_Float * 0.5D / this.g);
       f1 = f2;
-      if (f2 < this.jdField_f_of_type_Int + actn.a(1.0F, getResources())) {
-        f1 = this.jdField_f_of_type_Int + actn.a(1.0F, getResources());
+      if (f2 < this.jdField_f_of_type_Int + actj.a(1.0F, getResources())) {
+        f1 = this.jdField_f_of_type_Int + actj.a(1.0F, getResources());
       }
       f2 = a();
       d1 = this.jdField_c_of_type_Float / this.g - f1;
@@ -367,21 +367,21 @@ public class RoundBorderImageView
       }
     }
     this.jdField_b_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(arrayOfFloat, f1);
-    veg.a("RoundBorderImageView", "buildDashes length (%d), %s, %s, hash:%d", Integer.valueOf(arrayOfFloat.length), this.jdField_a_of_type_AndroidGraphicsDashPathEffect, this.jdField_b_of_type_AndroidGraphicsDashPathEffect, Integer.valueOf(hashCode()));
+    ved.a("RoundBorderImageView", "buildDashes length (%d), %s, %s, hash:%d", Integer.valueOf(arrayOfFloat.length), this.jdField_a_of_type_AndroidGraphicsDashPathEffect, this.jdField_b_of_type_AndroidGraphicsDashPathEffect, Integer.valueOf(hashCode()));
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
     if (this.jdField_c_of_type_Boolean) {
-      veg.a("RoundBorderImageView", "[DEBUG] before invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ved.a("RoundBorderImageView", "[DEBUG] before invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     if (a(paramDrawable)) {
-      veg.b("RoundBorderImageView", "[PATCH] PATCH for vivo");
+      ved.b("RoundBorderImageView", "[PATCH] PATCH for vivo");
     }
     for (;;)
     {
       if (this.jdField_c_of_type_Boolean) {
-        veg.a("RoundBorderImageView", "[DEBUG] after invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+        ved.a("RoundBorderImageView", "[DEBUG] after invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
       }
       paramDrawable = getDrawable();
       if (((paramDrawable instanceof URLDrawable)) && ((((URLDrawable)paramDrawable).getCurrDrawable() instanceof GifDrawable)) && ((Build.MODEL.equalsIgnoreCase("MI 8")) || (Build.MODEL.equalsIgnoreCase("VIVO NEX A")) || (Build.MODEL.equalsIgnoreCase("PACM00")) || (Build.MODEL.equalsIgnoreCase("PAFM00")))) {
@@ -416,7 +416,7 @@ public class RoundBorderImageView
   public void requestLayout()
   {
     if (this.jdField_c_of_type_Boolean) {
-      veg.a("RoundBorderImageView", "[DEBUG] requestLayout %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ved.a("RoundBorderImageView", "[DEBUG] requestLayout %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     super.requestLayout();
   }
@@ -446,11 +446,11 @@ public class RoundBorderImageView
   public void setImageDrawable(@Nullable Drawable paramDrawable)
   {
     if ((this.jdField_c_of_type_Boolean) && (paramDrawable != null)) {
-      veg.a("RoundBorderImageView", "[DEBUG] before set %d %d type %s matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ved.a("RoundBorderImageView", "[DEBUG] before set %d %d type %s matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     super.setImageDrawable(paramDrawable);
     if ((this.jdField_c_of_type_Boolean) && (paramDrawable != null)) {
-      veg.a("RoundBorderImageView", "[DEBUG] after set %d %d type %s, matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ved.a("RoundBorderImageView", "[DEBUG] after set %d %d type %s, matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
   }
   

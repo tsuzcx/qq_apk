@@ -1,35 +1,26 @@
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class alih
-  implements aljb
+public abstract interface alih
 {
-  alih(alie paramalie, alii paramalii, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Alii != null) {
-      this.jdField_a_of_type_Alii.f();
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Alii != null) {
-      this.jdField_a_of_type_Alii.c(paramInt);
-    }
-  }
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Alii != null) {}
-  }
+  public abstract void b(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Alii != null) {
-      this.jdField_a_of_type_Alii.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
-  }
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

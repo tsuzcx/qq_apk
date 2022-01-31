@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import mqq.os.MqqHandler;
-import sbc;
+import saz;
 
 class ServiceAccountFolderActivity$2
   implements Runnable
 {
-  ServiceAccountFolderActivity$2(ServiceAccountFolderActivity paramServiceAccountFolderActivity, sbc paramsbc) {}
+  ServiceAccountFolderActivity$2(ServiceAccountFolderActivity paramServiceAccountFolderActivity, saz paramsaz) {}
   
   public void run()
   {

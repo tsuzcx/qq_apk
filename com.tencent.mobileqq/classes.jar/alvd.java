@@ -1,16 +1,15 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class alvd
-  implements bfoq
+public class alvd
+  implements View.OnClickListener
 {
-  alvd(alvb paramalvb, bfol parambfol) {}
+  public alvd(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Alvb.a.e();
-    this.jdField_a_of_type_Alvb.a.b(ajyc.a(2131700684));
-    this.jdField_a_of_type_Bfol.dismiss();
+    ArkIDESettingFragment.a(this.a, 0);
   }
 }
 

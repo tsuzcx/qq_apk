@@ -1,184 +1,61 @@
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.BannerManager.37.1;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.ADView;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ahlk
+public class ahlk
   implements View.OnClickListener
 {
-  ahlk(ahkf paramahkf) {}
+  ahlk(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    int j;
-    Intent localIntent;
-    if (ahkf.a(this.a) != null)
+    ahkd.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + ahkd.a(this.a).app.getAccount(), false).commit();
+    paramView = ahkd.a(this.a)[21];
+    ADView localADView;
+    if ((paramView != null) && (paramView.a != null))
     {
-      paramView = ahkf.a(this.a).app;
-      if (paramView == null) {
-        break label1094;
-      }
-      j = paramView.a().e();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "initMultiVideoBar-->SessionType");
-      }
-      if ((j != 1) && (j != 2)) {
-        break label521;
-      }
-      localIntent = new Intent(ahkf.a(this.a).getApplicationContext(), AVActivity.class);
-      if (paramView.a().f() != 1011) {
-        break label97;
+      localADView = (ADView)paramView.a.findViewById(2131362147);
+      if (localADView == null) {
+        break label292;
       }
     }
-    label97:
-    long l;
-    label521:
-    int k;
-    int m;
-    do
+    label292:
+    for (paramView = localADView.a(0);; paramView = null)
     {
+      if (paramView != null)
+      {
+        int j = paramView.getChildCount();
+        LinkedList localLinkedList = new LinkedList();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = paramView.getChildAt(i);
+          if (localView != null) {
+            localLinkedList.add((axuj)localView.getTag());
+          }
+          i += 1;
+        }
+        ThreadManager.getFileThreadHandler().post(new BannerManager.37.1(this, j, localLinkedList));
+        if (localADView != null) {
+          localADView.h();
+        }
+      }
+      this.a.a(21, 0);
+      this.a.a(-1, null);
+      this.a.e = false;
+      axqy.b(ahkd.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
+      axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
       return;
-      paramView = null;
-      break;
-      if ((paramView.c()) && (paramView.a().f() != 1) && (paramView.a().f() != 3000) && (paramView.a().g()) && (paramView.a().f()) && (paramView.a().f() != 1011) && (paramView.a().f() != 21))
-      {
-        localIntent = new Intent(ahkf.a(this.a), VideoInviteActivity.class);
-        localIntent.addFlags(268435456);
-        localIntent.putExtra("uinType", paramView.a().f());
-        localIntent.putExtra("peerUin", paramView.a().c());
-        localIntent.putExtra("extraUin", paramView.a().d());
-        if (j == 1)
-        {
-          bool = true;
-          localIntent.putExtra("isAudioMode", bool);
-          ahkf.a(this.a).startActivity(localIntent);
-          ahkf.a(this.a).overridePendingTransition(2130772132, 0);
-        }
-      }
-      for (;;)
-      {
-        axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 1, 0, "", "", "", "");
-        return;
-        bool = false;
-        break;
-        localIntent.addFlags(262144);
-        localIntent.addFlags(268435456);
-        if (paramView.a().b(paramView.a().c()))
-        {
-          localIntent.putExtra("sessionType", 3);
-          localIntent.putExtra("GroupId", paramView.a().c());
-          localIntent.putExtra("isDoubleVideoMeeting", true);
-          ahkf.a(this.a).startActivity(localIntent);
-          ahkf.a(this.a).overridePendingTransition(2130772132, 0);
-          axqw.b(paramView, "CliOper", "", "", "0X800520A", "0X800520A", 0, 0, "", "", "", "");
-        }
-        else
-        {
-          localIntent.putExtra("sessionType", j);
-          localIntent.putExtra("uin", paramView.a().c());
-          ahkf.a(this.a).startActivity(localIntent);
-          ahkf.a(this.a).overridePendingTransition(2130772132, 0);
-          axqw.b(paramView, "CliOper", "", "", "Two_call", "Two_call_full", 0, 0, "1", "", "", "");
-        }
-      }
-      l = ahkf.a(this.a).app.a().b();
-      k = ahkf.a(this.a).app.a().a();
-      if ((l == 0L) && (ahkf.a(this.a).app.a().b() <= 0)) {
-        break label1077;
-      }
-      m = paramView.a().b(l);
-      if (ahkf.a(this.a).app.a().b() <= 0) {
-        break label650;
-      }
-    } while ((paramView.a().c() == 1) || (paramView.a().c() == 3) || (!QLog.isColorLevel()));
-    QLog.e("MultiVideoBar", 2, "status error");
-    return;
-    label650:
-    label665:
-    int i;
-    if (m == 2)
-    {
-      localIntent = new Intent();
-      if (paramView.a().a(k, l) <= 0L) {
-        break label898;
-      }
-      if (!paramView.a().a(k, l)) {
-        break label893;
-      }
-      i = 2;
-    }
-    for (;;)
-    {
-      localIntent.addFlags(262144);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("GroupId", String.valueOf(l));
-      localIntent.putExtra("Type", i);
-      localIntent.putExtra("sessionType", j);
-      localIntent.putExtra("uinType", muf.c(k));
-      localIntent.putExtra("MultiAVType", m);
-      if (m != 2) {
-        break label988;
-      }
-      if (paramView.a().d(String.valueOf(l)) != 14) {
-        break label903;
-      }
-      ((arfe)paramView.getManager(236)).a(ahkf.a(this.a), paramView.getCurrentAccountUin(), String.valueOf(l), "2", "openRoom");
-      label823:
-      ahkf.a(this.a).overridePendingTransition(2130772132, 0);
-      if (k != 2) {
-        break label1003;
-      }
-      axqw.b(paramView, "CliOper", "", "", "Multi_call", "Msgtab_back", 0, 0, "", "", "", "");
-      break;
-      localIntent = new Intent(ahkf.a(this.a).getApplicationContext(), AVActivity.class);
-      break label665;
-      label893:
-      i = 1;
-      continue;
-      label898:
-      i = 0;
-    }
-    label903:
-    TroopManager localTroopManager = (TroopManager)paramView.getManager(52);
-    if ((localTroopManager != null) && (localTroopManager.b(l + "") == null)) {}
-    for (boolean bool = false;; bool = true)
-    {
-      localIntent.putExtra("troopmember", bool);
-      localIntent.putExtra("Fromwhere", "SmallScreen");
-      bgjy.a(paramView, ahkf.a(this.a), localIntent, 1);
-      break label823;
-      label988:
-      ahkf.a(this.a).startActivity(localIntent);
-      break label823;
-      label1003:
-      if (k != 1) {
-        break;
-      }
-      if (paramView.a().b(l) == 10)
-      {
-        axqw.b(paramView, "CliOper", "", "", "0X8005931", "0X8005931", 0, 0, "", "", "", "");
-        break;
-      }
-      axqw.b(paramView, "CliOper", "", "", "0X80046D8", "0X80046D8", 0, 0, "", "", "", "");
-      break;
-      label1077:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("MultiVideoBar", 2, "status error");
-      break;
-      label1094:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("MultiVideoBar", 2, "app is null");
-      break;
     }
   }
 }

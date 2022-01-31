@@ -1,36 +1,28 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-
 class arwm
-  implements View.OnClickListener
+  implements arwi
 {
-  arwm(arwh paramarwh, Activity paramActivity, EditText paramEditText) {}
+  arwm(arwj paramarwj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
-    }
-    arwh.a(this.jdField_a_of_type_Arwh).setClickable(false);
-    arwh.a(this.jdField_a_of_type_Arwh).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840253));
-    arwh.a(this.jdField_a_of_type_Arwh).a(true);
-    arwh.a(this.jdField_a_of_type_Arwh, arwh.a(this.jdField_a_of_type_Arwh).a());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    }
-    for (;;)
+    switch (paramInt)
     {
-      axqw.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+    default: 
       return;
-      this.jdField_a_of_type_Arwh.a("");
+    case 0: 
+      arwj.b(this.a);
+      return;
+    case 1: 
+      arwj.c(this.a);
+      return;
+    case 2: 
+      arwj.a(this.a);
+      return;
+    case 3: 
+      arwj.d(this.a);
+      return;
     }
+    arwj.e(this.a);
   }
 }
 

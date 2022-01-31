@@ -1,21 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.av.ui.QavPanel;
 
 public class lod
-  extends lfv
+  implements DialogInterface.OnClickListener
 {
   public lod(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lom> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
+    mqw.e(false, false);
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface.dismiss();
+      if ((this.a.a != null) && (this.a.a.a != null)) {
+        this.a.a.a.b();
+      }
     }
-    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
   }
 }
 

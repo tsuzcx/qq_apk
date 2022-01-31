@@ -1,14 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.minigame.ui.GameUIProxy;
 
-class bexa
-  implements View.OnClickListener
+public class bexa
+  implements bexj
 {
-  bexa(bewy parambewy) {}
+  public bexa(GameUIProxy paramGameUIProxy) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    bewy.a(this.a);
+    betc.d("UIProxy", "home pressed!");
+    beqf.a().a(2053, new Object[0]);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
+  {
+    betc.d("UIProxy", "rencent task to front!");
+    beqf.a().a(2053, new Object[0]);
+  }
+  
+  public void c()
+  {
+    betc.d("UIProxy", "screen off");
+    beqf.a().a(2053, new Object[0]);
   }
 }
 

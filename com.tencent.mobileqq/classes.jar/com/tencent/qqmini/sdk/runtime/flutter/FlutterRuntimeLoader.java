@@ -1,31 +1,31 @@
 package com.tencent.qqmini.sdk.runtime.flutter;
 
 import android.content.Context;
-import bepv;
-import bepw;
-import besl;
-import bfdf;
-import bfdj;
-import bfdl;
-import bfdn;
-import bfdo;
-import bfdp;
-import bfds;
-import bfdu;
-import bfer;
+import beqm;
+import beqn;
+import betc;
+import bfdw;
+import bfea;
+import bfec;
+import bfee;
+import bfef;
+import bfeg;
+import bfej;
+import bfel;
+import bffi;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class FlutterRuntimeLoader
-  extends bepv
+  extends beqm
 {
-  public static final bepw<FlutterRuntimeLoader> CREATOR = new bfdf();
+  public static final beqn<FlutterRuntimeLoader> CREATOR = new bfdw();
   public static final String TAG = "FlutterRuntimeLoader";
-  private bfdj apkgLoadTask;
-  private bfdl baselibLoadTask;
-  private bfdn preloadFlagTask;
-  public bfdo runtimeCreateTask;
-  private bfdp runtimeInitTask;
-  public bfds serviceInitTask;
+  private bfea apkgLoadTask;
+  private bfec baselibLoadTask;
+  private bfee preloadFlagTask;
+  public bfef runtimeCreateTask;
+  private bfeg runtimeInitTask;
+  public bfej serviceInitTask;
   
   public FlutterRuntimeLoader(Context paramContext)
   {
@@ -33,20 +33,20 @@ public class FlutterRuntimeLoader
     getAppStateManager().c = true;
   }
   
-  public bfer[] createTasks()
+  public bffi[] createTasks()
   {
     Context localContext = this.mContext;
-    this.runtimeCreateTask = new bfdo(localContext, this);
+    this.runtimeCreateTask = new bfef(localContext, this);
     this.runtimeCreateTask.a(true);
-    this.runtimeInitTask = new bfdp(localContext, this);
+    this.runtimeInitTask = new bfeg(localContext, this);
     this.runtimeInitTask.a(true);
-    this.baselibLoadTask = new bfdl(localContext, this);
-    this.apkgLoadTask = new bfdj(localContext, this);
+    this.baselibLoadTask = new bfec(localContext, this);
+    this.apkgLoadTask = new bfea(localContext, this);
     this.apkgLoadTask.a(true);
-    this.serviceInitTask = new bfdu(localContext, this);
-    this.preloadFlagTask = new bfdn(localContext, this);
+    this.serviceInitTask = new bfel(localContext, this);
+    this.preloadFlagTask = new bfee(localContext, this);
     this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.baselibLoadTask).a(this.runtimeCreateTask))).a(this.apkgLoadTask);
-    return new bfer[] { this.runtimeInitTask };
+    return new bffi[] { this.runtimeInitTask };
   }
   
   public boolean dismissLoadingAfterLoaded()
@@ -60,32 +60,32 @@ public class FlutterRuntimeLoader
     this.apkgLoadTask.a(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bfer parambfer)
+  public void onTaskDone(bffi parambffi)
   {
-    if (parambfer == null) {
+    if (parambffi == null) {
       return;
     }
-    besl.a("FlutterRuntimeLoader", "onTaskDone " + parambfer);
-    if (!parambfer.d())
+    betc.a("FlutterRuntimeLoader", "onTaskDone " + parambffi);
+    if (!parambffi.d())
     {
       notifyRuntimeEvent(12, new Object[0]);
-      onRuntimeLoadResult(parambfer.jdField_a_of_type_Int, parambfer.jdField_a_of_type_JavaLangString);
+      onRuntimeLoadResult(parambffi.jdField_a_of_type_Int, parambffi.jdField_a_of_type_JavaLangString);
       return;
     }
-    if (parambfer == this.preloadFlagTask) {
+    if (parambffi == this.preloadFlagTask) {
       notifyRuntimeEvent(3, new Object[0]);
     }
     for (;;)
     {
-      super.onTaskDone(parambfer);
+      super.onTaskDone(parambffi);
       return;
-      if (parambfer == this.runtimeCreateTask)
+      if (parambffi == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.d()) {
           this.mRuntime = this.runtimeCreateTask.a();
         }
       }
-      else if (parambfer == this.runtimeInitTask)
+      else if (parambffi == this.runtimeInitTask)
       {
         if (this.runtimeInitTask.d())
         {
@@ -94,7 +94,7 @@ public class FlutterRuntimeLoader
         }
         this.mIsRunning = false;
       }
-      else if ((parambfer == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
+      else if ((parambffi == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
       {
         this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.a();
       }

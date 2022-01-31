@@ -1,18 +1,6 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.qphone.base.util.QLog;
-
-class anek
-  implements AccountManagerCallback<Boolean>
+public class anek
 {
-  anek(aneh paramaneh) {}
-  
-  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
-    }
-  }
+  public static String a = "true";
 }
 
 

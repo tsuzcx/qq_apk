@@ -1,105 +1,23 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.util.SparseArray;
 
-public abstract class ubc
-  extends uak
+public final class ubc
+  extends SparseArray<int[]>
 {
-  public int a;
-  @NonNull
-  public final View a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public uav a;
-  protected ubd a;
-  protected boolean a;
-  public int b;
-  private final String b;
-  protected boolean b;
-  
-  public ubc(@NonNull ViewGroup paramViewGroup)
+  public ubc()
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-  }
-  
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public ubc a(Class<? extends ubc> paramClass)
-  {
-    if (this.jdField_a_of_type_Ubd != null) {
-      return this.jdField_a_of_type_Ubd.b(paramClass);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    veg.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull uav paramuav, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Uav = paramuav;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
-  }
-  
-  void a(ubd paramubd)
-  {
-    this.jdField_a_of_type_Ubd = paramubd;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      b(this.jdField_b_of_type_Boolean);
-      return;
-    }
-    veg.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
-  }
-  
-  protected void b() {}
-  
-  protected void b(boolean paramBoolean)
-  {
-    veg.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Uav = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String toString()
-  {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Uav + '}';
+    put(0, new int[] { 1, 7 });
+    put(1, new int[] { 0, 2 });
+    put(2, new int[] { 0, 3 });
+    put(3, new int[] { 0, 4 });
+    put(4, new int[] { 0, 5 });
+    put(5, new int[] { 0, 6 });
+    put(6, new int[] { 0, 7 });
+    put(7, new int[] { 0, 8 });
+    put(8, new int[] { 0, 9 });
+    put(9, new int[] { 0, 10, 12 });
+    put(10, new int[] { 0, 11, 12 });
+    put(11, new int[] { 0, 9, 12 });
+    put(12, new int[] { 0, 7 });
   }
 }
 

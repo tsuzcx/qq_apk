@@ -1,41 +1,25 @@
-public class bkcp
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+
+class bkcp
+  implements View.OnClickListener
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  bkcp(bkcm parambkcm) {}
   
-  public bkcp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void onClick(View paramView)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public static boolean a(bkcp parambkcp1, bkcp parambkcp2)
-  {
-    return Float.compare(parambkcp1.d, parambkcp2.d) != 0;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public void a(bkcp parambkcp)
-  {
-    this.c *= parambkcp.c;
-    this.a -= parambkcp.a;
-    this.b -= parambkcp.b;
-  }
-  
-  public String toString()
-  {
-    return "CropHomeing{x=" + this.a + ", y=" + this.b + ", scale=" + this.c + ", rotate=" + this.d + '}';
+    if (this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem != null)
+    {
+      bkcm.a(this.a, false);
+      this.a.a = this.a.jdField_b_of_type_DovComQqImCaptureTextDynamicTextItem;
+      this.a.a.a(bkcm.a(this.a), this.a.jdField_b_of_type_JavaLangString);
+      this.a.a.c(this.a.i);
+      if ((this.a.a instanceof bjij)) {
+        ((bjij)this.a.a).a(this.a.h);
+      }
+      this.a.a(false);
+    }
   }
 }
 

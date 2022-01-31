@@ -1,24 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anyu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public anyu(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
+  public anyu(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent().requestLayout();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,17 +1,42 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import mqq.manager.Manager;
 
 public class auyq
-  implements bbkq<Rect>
+  implements Manager
 {
-  public auyq(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public auyq(QQAppInterface paramQQAppInterface) {}
   
-  public void a(bbkk<Rect> parambbkk, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  private void b(QQAppInterface paramQQAppInterface, auym paramauym)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    bhbo localbhbo = new bhbo();
+    if (paramauym != null)
+    {
+      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramauym, null, null, localbhbo, localbhbo);
+      return;
+    }
+    paramauym = new auyr(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramauym, null, null, localbhbo, localbhbo);
   }
+  
+  public void a(QQAppInterface paramQQAppInterface, auym paramauym)
+  {
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramauym);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, auyn paramauyn, auym paramauym)
+  {
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramauym);
+    }
+    paramauyn.a();
+  }
+  
+  public void onDestroy() {}
 }
 
 

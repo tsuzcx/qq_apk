@@ -1,19 +1,13 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class nev
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ImageView b;
-  TextView b;
-  public ImageView c;
-  TextView c;
-  public ImageView d;
-  
-  nev(ned paramned) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
 }
 
 

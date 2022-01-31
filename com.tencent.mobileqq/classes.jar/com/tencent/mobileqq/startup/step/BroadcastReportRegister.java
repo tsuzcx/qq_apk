@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import axnx;
+import axnz;
 import mqq.app.MobileQQ;
 
 public class BroadcastReportRegister
@@ -8,7 +8,7 @@ public class BroadcastReportRegister
 {
   protected boolean doStep()
   {
-    MobileQQ.sMobileQQ.registerAppCallbacks(new axnx(this));
+    MobileQQ.sMobileQQ.registerAppCallbacks(new axnz(this));
     this.mDirector = null;
     return true;
   }

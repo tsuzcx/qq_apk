@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.text.TextUtils;
-import bhdu;
+import bhel;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -271,7 +271,7 @@ public class GameInfoManager
     this.miniGamePkg = paramMiniGamePkg;
     try
     {
-      bhdu.a(getMiniAppSimpleInfo());
+      bhel.a(getMiniAppSimpleInfo());
       return;
     }
     catch (Throwable paramMiniGamePkg)

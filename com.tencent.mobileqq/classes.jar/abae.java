@@ -1,19 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
 
-public class abae
-  extends ajxl
+class abae
+  implements DialogInterface.OnClickListener
 {
-  public abae(EditInfoActivity paramEditInfoActivity) {}
+  abae(abac paramabac) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.f.equals(paramString1)) {}
-    while (!this.a.j) {
-      return;
-    }
-    this.a.j = false;
-    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 

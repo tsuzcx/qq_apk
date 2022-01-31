@@ -1,27 +1,18 @@
-import android.view.View;
-
 public class mco
-  extends mcl
 {
-  private View a;
-  public String b;
-  public boolean b;
+  public long a;
+  public String a;
+  public long b;
   
-  public mco(int paramInt, View paramView)
+  public mco()
   {
-    super(paramInt);
-    this.a = paramView;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public mco(View paramView)
+  public boolean a()
   {
-    super(0);
-    this.a = paramView;
-  }
-  
-  public View a()
-  {
-    return this.a;
+    long l = System.currentTimeMillis();
+    return this.jdField_a_of_type_Long + this.b > l;
   }
 }
 

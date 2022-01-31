@@ -1,64 +1,20 @@
 import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ahqi
-  extends ahpv
+  extends ahpz
 {
-  public ahqi(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697700);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  public int c;
   
-  public void a(byte[] paramArrayOfByte)
+  public ahqi(Context paramContext, int paramInt)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Azmk == null) {
-        this.jdField_a_of_type_Azmk = new azmk();
-      }
-      this.jdField_a_of_type_Azmk.a(paramArrayOfByte.getString("messageNavInfo"));
+    this.c = paramInt;
+    if (paramInt == 0) {
+      this.a = "";
+    }
+    while (paramInt != 1) {
       return;
     }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Azmk != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmk.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.a = ajya.a(2131715692);
   }
 }
 

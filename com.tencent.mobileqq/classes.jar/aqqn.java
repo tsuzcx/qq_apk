@@ -1,16 +1,15 @@
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aqqn
+class aqqn
+  implements DialogInterface.OnDismissListener
 {
-  public ImageSwitcher a;
-  public ImageView a;
-  public TextView a;
-  public aqtf a;
-  public ImageSwitcher b;
-  public ImageView b;
-  public TextView b;
+  aqqn(aqqm paramaqqm) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    aqql.a(this.a.a).dismiss();
+  }
 }
 
 

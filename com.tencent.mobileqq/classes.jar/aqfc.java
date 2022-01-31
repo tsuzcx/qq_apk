@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
 
 class aqfc
-  implements aqbw
+  implements View.OnClickListener
 {
   aqfc(aqfb paramaqfb) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((aqfm)this.a.a.getManager(350)).a().a(null);
-    this.a.x();
-    this.a.a();
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {
+      return;
+    }
+    paramView = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
+    if (QLog.isColorLevel()) {
+      QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + paramView);
+    }
+    Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+    localIntent.putExtra("param_force_internal_browser", true);
+    localIntent.putExtra("reqType", 7);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("url", paramView);
+    acqv.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, paramView);
+    this.a.a.D();
   }
 }
 

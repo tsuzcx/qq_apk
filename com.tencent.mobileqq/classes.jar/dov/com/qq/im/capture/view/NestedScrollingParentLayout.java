@@ -8,9 +8,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import bjjo;
-import bjkc;
-import bjkd;
+import bjkf;
+import bjkt;
+import bjku;
 import com.tencent.qphone.base.util.QLog;
 
 public class NestedScrollingParentLayout
@@ -18,14 +18,14 @@ public class NestedScrollingParentLayout
 {
   private double jdField_a_of_type_Double;
   private int jdField_a_of_type_Int = -1;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bjkc(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bjkt(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bjjo jdField_a_of_type_Bjjo;
+  private bjkf jdField_a_of_type_Bjkf;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
-  private RecyclerView.OnScrollListener jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bjkd(this);
+  private RecyclerView.OnScrollListener jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bjku(this);
   private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bjjo jdField_b_of_type_Bjjo;
+  private bjkf jdField_b_of_type_Bjkf;
   private RecyclerView c;
   
   public NestedScrollingParentLayout(Context paramContext)
@@ -112,12 +112,12 @@ public class NestedScrollingParentLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setTwoRecyclerView(RecyclerView paramRecyclerView1, RecyclerView paramRecyclerView2, bjjo parambjjo1, bjjo parambjjo2)
+  public void setTwoRecyclerView(RecyclerView paramRecyclerView1, RecyclerView paramRecyclerView2, bjkf parambjkf1, bjkf parambjkf2)
   {
     this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView1;
     this.c = paramRecyclerView2;
-    this.jdField_a_of_type_Bjjo = parambjjo1;
-    this.jdField_b_of_type_Bjjo = parambjjo2;
+    this.jdField_a_of_type_Bjkf = parambjkf1;
+    this.jdField_b_of_type_Bjkf = parambjkf2;
     this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.c.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
   }

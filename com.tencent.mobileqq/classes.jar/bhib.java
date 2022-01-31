@@ -1,15 +1,35 @@
-import android.os.IInterface;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
 
-public abstract interface bhib
-  extends IInterface
+public class bhib
+  extends Handler
 {
-  public abstract void a(String paramString);
+  public bhib(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(String paramString, float paramFloat, long paramLong);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(String paramString);
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
+    {
+      if (PanoramaLoadingBall.a(this.a)) {
+        PanoramaLoadingBall.a(this.a, 60.0F);
+      }
+      if (PanoramaLoadingBall.a(this.a) == 0) {
+        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
+  }
 }
 
 

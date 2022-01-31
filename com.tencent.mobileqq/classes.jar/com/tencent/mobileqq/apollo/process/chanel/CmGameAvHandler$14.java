@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajae;
-import ajbc;
-import ajku;
-import ajmu;
+import ajac;
+import ajba;
+import ajks;
+import ajms;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -11,14 +11,14 @@ import com.tencent.qphone.base.util.QLog;
 public class CmGameAvHandler$14
   implements Runnable
 {
-  public CmGameAvHandler$14(ajbc paramajbc, int paramInt1, int paramInt2) {}
+  public CmGameAvHandler$14(ajba paramajba, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + ajmu.af + ", ApolloConstant.sGameAVSoMd5=" + ajmu.ag);
-    ajku.a().a(this.this$0.a);
-    ajku.a().a(0, ajmu.af, ajmu.ag);
-    ajku.a().a(BaseApplicationImpl.getContext(), ajae.a().getCurrentAccountUin(), "" + this.a, "" + this.b);
+    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + ajms.af + ", ApolloConstant.sGameAVSoMd5=" + ajms.ag);
+    ajks.a().a(this.this$0.a);
+    ajks.a().a(0, ajms.af, ajms.ag);
+    ajks.a().a(BaseApplicationImpl.getContext(), ajac.a().getCurrentAccountUin(), "" + this.a, "" + this.b);
   }
 }
 

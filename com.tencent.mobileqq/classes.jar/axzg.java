@@ -1,33 +1,81 @@
-import android.graphics.Color;
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import org.xmlpull.v1.XmlSerializer;
 
 public class axzg
-  extends axup
+  extends axzj
 {
-  String ai;
+  private String ai;
   
   public axzg()
   {
-    this(null);
+    this.a = "price";
   }
   
   public axzg(String paramString)
   {
-    super(paramString, "remark");
+    this();
+    this.Y = paramString;
+  }
+  
+  public axzg(String paramString1, String paramString2)
+  {
+    this(paramString1);
+    this.ai = paramString2;
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    {
+      paramContext = (LinearLayout)paramView;
+      ((TextView)paramContext.findViewById(2131378291)).setText(this.Y);
+      ((TextView)paramContext.findViewById(2131378293)).setText(this.ai);
+      return paramContext;
+    }
+    paramView = new LinearLayout(paramContext);
+    paramView.setOrientation(0);
+    paramBundle = new TextView(paramContext);
+    paramBundle.setId(2131378291);
+    paramBundle.setText(this.Y);
+    paramBundle.setTextColor(-65536);
+    paramBundle.setTextSize(14.0F);
+    paramBundle.setSingleLine();
+    paramBundle.setEllipsize(a());
+    paramBundle.setGravity(3);
+    paramContext = new TextView(paramContext);
+    paramContext.setId(2131378293);
+    paramContext.setText(this.ai);
+    paramContext.setSingleLine();
+    paramContext.setEllipsize(a());
+    paramContext.setTextSize(10.0F);
+    paramContext.setTextColor(-65536);
+    paramContext.setGravity(80);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
+    localLayoutParams.setMargins(5, 0, 0, 0);
+    paramContext.setLayoutParams(localLayoutParams);
+    paramView.addView(paramBundle);
+    paramView.addView(paramContext);
+    paramView.setTag(this);
+    return paramView;
   }
   
   public String a()
   {
-    return "Remark";
+    return "Price";
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.ai = paramObjectInput.readUTF();
+    this.ai = axau.a(paramObjectInput.readUTF(), false);
   }
   
   public void a(ObjectOutput paramObjectOutput)
@@ -43,44 +91,22 @@ public class axzg
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    super.a(paramXmlSerializer);
+    paramXmlSerializer.startTag(null, "price");
     if (!TextUtils.isEmpty(this.ai)) {
-      paramXmlSerializer.attribute(null, "url", this.ai);
+      paramXmlSerializer.attribute(null, "unit", this.ai);
     }
+    paramXmlSerializer.text(this.Y);
+    paramXmlSerializer.endTag(null, "price");
   }
   
-  public boolean a(axwe paramaxwe)
+  public boolean a(axwg paramaxwg)
   {
-    if (paramaxwe == null) {
+    if (paramaxwg == null) {
       return true;
     }
-    this.ai = paramaxwe.a("bgColor");
-    return super.a(paramaxwe);
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2131378319;
-  }
-  
-  public int e()
-  {
-    return Color.rgb(128, 128, 128);
-  }
-  
-  public int f()
-  {
-    return 24;
-  }
-  
-  public String g()
-  {
-    return this.ai;
+    this.ai = axau.a(paramaxwg.a("unit"), false);
+    this.Y = axau.a(axva.a(paramaxwg), false);
+    return true;
   }
 }
 

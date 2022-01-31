@@ -1,12 +1,18 @@
-public abstract interface xdl
+import com.tencent.biz.troopplugin.PluginJumpManager;
+
+class xdl
+  implements myz
 {
-  public abstract void a();
+  xdl(xdk paramxdk) {}
   
-  public abstract void b();
+  public void loaded(int paramInt, String paramString)
+  {
+    this.a.a.loadConfigFromFile();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xdl
  * JD-Core Version:    0.7.0.1
  */

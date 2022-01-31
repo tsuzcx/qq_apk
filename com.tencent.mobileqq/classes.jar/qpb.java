@@ -1,25 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
 
-final class qpb
-  implements Animation.AnimationListener
+public abstract interface qpb
 {
-  qpb(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
-    {
-      this.a.clearAnimation();
-      this.a.setVisibility(8);
-      this.a.setTag(-1, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

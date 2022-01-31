@@ -1,47 +1,48 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.maxvideo.mediadevice.AVCodec;
 
-@TargetApi(14)
 public class axir
-  extends PreviewContext
-  implements TextureView.SurfaceTextureListener, axie
 {
-  public axir(axhx paramaxhx, int paramInt1, int paramInt2)
+  public static axir a;
+  public static String a;
+  private axgm a;
+  
+  static
   {
-    super(paramaxhx, paramInt1, paramInt2);
+    jdField_a_of_type_Axir = new axir();
   }
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  private axir()
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public static axir a()
   {
-    this.mCamera.a();
-    this.mCamera.a(0, paramInt1, paramInt2);
-    this.mCamera.a(paramSurfaceTexture, null, this, true);
+    return jdField_a_of_type_Axir;
   }
   
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  public axgm a()
   {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+    if (this.jdField_a_of_type_Axgm == null) {
+      this.jdField_a_of_type_Axgm = new axgm(40, axim.c);
     }
-    return true;
+    return this.jdField_a_of_type_Axgm;
   }
   
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
+  public axgp a()
+  {
+    return axgp.a();
+  }
   
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public AVCodec a()
+  {
+    return AVCodec.get();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Axgm = null;
+  }
 }
 
 

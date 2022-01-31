@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadinjoyNativeArticleAdDownloadView.1;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadinjoyNativeArticleAdDownloadView.1.1;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class odh
-  implements obl
+  implements ViewBase.IBuilder
 {
-  public odh(ReadinjoyNativeArticleAdDownloadView.1.1 param1) {}
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a.a.this$0.a(true, true);
+    return new odd(paramVafContext);
   }
 }
 

@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
+import android.view.animation.Interpolator;
 
-class bcmg
-  implements View.OnClickListener
+public class bcmg
+  implements Interpolator
 {
-  bcmg(bcmf parambcmf, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bcmf.a.dismiss();
-    }
+    return (float)(1.0D - Math.pow(1.0F - paramFloat, 4.0D));
   }
 }
 

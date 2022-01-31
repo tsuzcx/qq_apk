@@ -1,41 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class abun
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public abun(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public abun(QQLSActivity paramQQLSActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
-    {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
+    if (paramMotionEvent.getAction() == 0) {
+      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
       {
-        paramContext = new Intent();
-        paramIntent = new Bundle();
-        paramIntent.putInt("ret", 204);
-        paramIntent.putString("errMsg", armp.a);
-        paramContext.putExtra("data", paramIntent);
-        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
-        QQIdentiferLegacy.a(this.a).finish();
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "singlelist  click doble");
+        }
+        if (QQLSActivity.a(this.a) != null)
+        {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+          QQLSActivity.a(this.a, true);
+        }
+        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
       }
     }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    for (;;)
     {
-      int i;
-      return;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "singlelist  click once");
+      }
+      if (QQLSActivity.a(this.a)) {
+        QQLSActivity.b(this.a).setText(2131699104);
+      }
+      for (;;)
+      {
+        paramView = QQLSActivity.a(this.a).obtainMessage(5);
+        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+        break;
+        QQLSActivity.b(this.a).setText(2131699103);
+      }
+      if (paramMotionEvent.getAction() == 1) {
+        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
+      }
     }
-    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
-    QQIdentiferLegacy.a(this.a).finish();
   }
 }
 

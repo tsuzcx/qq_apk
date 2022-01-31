@@ -1,14 +1,14 @@
 final class ote
-  implements oti
+  implements otf
 {
   public void l()
   {
-    ota.a().a(null, false);
+    shu.a(2, true, System.currentTimeMillis(), 0, 0, false);
   }
   
   public void m()
   {
-    ota.a().a(false);
+    shu.a(2, false, ota.d, 0, 0, false);
   }
 }
 

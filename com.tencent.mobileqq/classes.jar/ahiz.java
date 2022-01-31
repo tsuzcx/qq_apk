@@ -1,27 +1,18 @@
-import java.io.File;
-import java.util.Comparator;
+import Wallet.ReportHBGameRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 final class ahiz
-  implements Comparator<File>
+  implements BusinessObserver
 {
-  private int a(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
-    {
-      int i = paramString.lastIndexOf('.');
-      if (i == -1) {
-        return Integer.parseInt(paramString);
-      }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
+    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
     }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
   }
 }
 

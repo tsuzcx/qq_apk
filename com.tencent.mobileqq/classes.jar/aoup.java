@@ -1,8 +1,17 @@
-abstract interface aoup
+class aoup
+  extends aowr
 {
-  public abstract void a(int paramInt, String paramString);
+  aoup(aouo paramaouo, aout paramaout) {}
   
-  public abstract void a(String paramString);
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aout.a(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Aout.a(paramInt, paramString1);
+  }
 }
 
 

@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
-import lys;
+import lyn;
 
 public class ShareChat$SharePanel$4
   extends ResultReceiver
 {
-  public ShareChat$SharePanel$4(lys paramlys, Handler paramHandler, long paramLong, int paramInt)
+  public ShareChat$SharePanel$4(lyn paramlyn, Handler paramHandler, long paramLong, int paramInt)
   {
     super(paramHandler);
   }
@@ -17,7 +17,7 @@ public class ShareChat$SharePanel$4
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     QLog.w("ShareChat", 1, "startTroop2DCode.PARAM_ActivityResultReceiver, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-    this.jdField_a_of_type_Lys.a(5, this.jdField_a_of_type_Int, 3);
+    this.jdField_a_of_type_Lyn.a(5, this.jdField_a_of_type_Int, 3);
   }
 }
 

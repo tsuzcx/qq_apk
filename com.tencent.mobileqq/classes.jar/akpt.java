@@ -1,68 +1,103 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akpt
 {
-  private static boolean a;
-  private static boolean b;
+  private static ConcurrentHashMap<String, akpt> d = new ConcurrentHashMap();
+  private MsgLruCache a;
+  protected ConcurrentHashMap<String, Object> a;
+  private ConcurrentHashMap<String, List<MessageRecord>> b = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<MessageRecord>> c = new ConcurrentHashMap();
   
-  public static void a(MessageRecord paramMessageRecord)
+  private akpt()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("param_FailCode", String.valueOf(paramMessageRecord.istroop));
-    axrl.a(BaseApplication.getContext()).a(null, "actInvalidMessageRecord", false, 0L, 0L, localHashMap, "");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache = new MsgLruCache();
   }
   
-  public static void a(String paramString)
+  public static akpt a(String paramString)
   {
-    if (!a)
+    String str = paramString;
+    if (paramString == null)
     {
-      a = true;
-      c("reportSaveInvalidUserError");
-      axps.a(new RuntimeException(), paramString);
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if ((paramInt == 1008) && (paramQQAppInterface != null))
-    {
-      paramQQAppInterface = ((ajxn)paramQQAppInterface.getManager(51)).c(paramString);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
-        return true;
+      paramString = "null";
+      str = paramString;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MsgPool", 2, "getPoolInstance curUin is null");
+        str = paramString;
       }
     }
-    return false;
+    paramString = (akpt)d.get(str);
+    if (paramString == null) {
+      synchronized (d)
+      {
+        if (!d.containsKey(str))
+        {
+          paramString = new akpt();
+          d.put(str, paramString);
+          return paramString;
+        }
+        paramString = (akpt)d.get(str);
+      }
+    }
+    return paramString;
   }
   
-  public static void b(String paramString)
+  public static void a(String arg0)
   {
-    if (!b)
+    String str = ???;
+    if (??? == null)
     {
-      b = true;
-      c("reportInvalidRefredshLastMsg");
-      axps.a(new RuntimeException(), paramString);
+      ??? = "null";
+      str = ???;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MsgPool", 2, "getPoolInstance curUin is null");
+        str = ???;
+      }
+    }
+    synchronized (d)
+    {
+      if (d.containsKey(str)) {
+        ((akpt)d.remove(str)).a().destroy();
+      }
+      return;
     }
   }
   
-  public static void c(String paramString)
+  public MsgLruCache a()
   {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    int j = arrayOfStackTraceElement.length;
-    int i = 0;
-    while (i < j)
+    return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
+  }
+  
+  public Object a(String arg1, int paramInt)
+  {
+    String str = akpx.a(???, paramInt);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {}
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
-      i += 1;
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new Object());
+      }
+      return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
     }
-    QLog.i(paramString, 1, localStringBuilder.toString());
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> a()
+  {
+    if (akry.a) {
+      return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
+    }
+    return this.b;
+  }
+  
+  public ConcurrentHashMap<String, List<MessageRecord>> b()
+  {
+    return this.c;
   }
 }
 

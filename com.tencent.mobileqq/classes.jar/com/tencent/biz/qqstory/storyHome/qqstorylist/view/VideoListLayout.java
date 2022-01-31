@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfwd;
+import bfwu;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
-import vzo;
+import vzl;
 
 public class VideoListLayout
   extends ViewGroup
@@ -61,47 +61,47 @@ public class VideoListLayout
   
   private void a()
   {
-    this.jdField_b_of_type_Int = vzo.a(getContext(), 15.0F);
+    this.jdField_b_of_type_Int = vzl.a(getContext(), 15.0F);
     this.c = this.jdField_b_of_type_Int;
-    this.j = vzo.a(getContext(), 2.0F);
+    this.j = vzl.a(getContext(), 2.0F);
     this.f = getContext().getResources().getDimensionPixelSize(2131298319);
-    this.g = vzo.a(getContext(), 10.0F);
-    this.d = vzo.a(getContext(), 205.0F);
-    this.e = vzo.a(getContext(), 332.0F);
-    this.jdField_a_of_type_Int = vzo.a(getContext(), 252.0F);
-    this.h = vzo.a(getContext(), 10.0F);
-    this.i = vzo.a(getContext(), 2.0F);
-    this.k = vzo.a(getContext(), 7.0F);
-    this.m = vzo.a(getContext(), 10.0F);
-    this.l = vzo.a(getContext(), 3.0F);
+    this.g = vzl.a(getContext(), 10.0F);
+    this.d = vzl.a(getContext(), 205.0F);
+    this.e = vzl.a(getContext(), 332.0F);
+    this.jdField_a_of_type_Int = vzl.a(getContext(), 252.0F);
+    this.h = vzl.a(getContext(), 10.0F);
+    this.i = vzl.a(getContext(), 2.0F);
+    this.k = vzl.a(getContext(), 7.0F);
+    this.m = vzl.a(getContext(), 10.0F);
+    this.l = vzl.a(getContext(), 3.0F);
   }
   
   private void b()
   {
-    bfwd.a("VideoListLayout.init");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561243, this, false));
+    bfwu.a("VideoListLayout.init");
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561242, this, false));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845834);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845840);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     addView(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561251, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561250, this, false));
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryNickNameView = ((StoryNickNameView)LayoutInflater.from(getContext()).inflate(2131561251, this, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryNickNameView = ((StoryNickNameView)LayoutInflater.from(getContext()).inflate(2131561250, this, false));
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryNickNameView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)LayoutInflater.from(getContext()).inflate(2131561246, this, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)LayoutInflater.from(getContext()).inflate(2131561245, this, false));
     addView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)LayoutInflater.from(getContext()).inflate(2131561253, this, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)LayoutInflater.from(getContext()).inflate(2131561252, this, false));
     addView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView);
-    bfwd.a();
+    bfwu.a();
   }
   
   public LinearLayout a()
   {
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561238, this, false));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561237, this, false));
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -291,7 +291,7 @@ public class VideoListLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bfwd.a("VideoListLayout.onLayout");
+    bfwu.a("VideoListLayout.onLayout");
     try
     {
       a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -303,13 +303,13 @@ public class VideoListLayout
     }
     finally
     {
-      bfwd.a();
+      bfwu.a();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bfwd.a("VideoListLayout.onMeasure");
+    bfwu.a("VideoListLayout.onMeasure");
     try
     {
       a(paramInt1, paramInt2);
@@ -321,7 +321,7 @@ public class VideoListLayout
     }
     finally
     {
-      bfwd.a();
+      bfwu.a();
     }
   }
   
@@ -336,7 +336,7 @@ public class VideoListLayout
     }
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561238, this, false));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561237, this, false));
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);

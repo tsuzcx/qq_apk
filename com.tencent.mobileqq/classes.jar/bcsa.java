@@ -1,22 +1,20 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.VoteView;
-import com.tencent.mobileqq.widget.VoteView.1;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class bcsa
   implements View.OnClickListener
 {
-  public bcsa(VoteView.1 param1) {}
+  public bcsa(TabBarView paramTabBarView, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.this$0.getContext(), QQBrowserActivity.class);
-    String str = bbpp.a(this.a.this$0.getContext(), "praise", "");
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.this$0.getContext(), str, 536870912L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "1", null);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

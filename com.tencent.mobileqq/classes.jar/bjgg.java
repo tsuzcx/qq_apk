@@ -1,20 +1,19 @@
-import android.graphics.RectF;
-import android.text.TextPaint;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public abstract class bjgg
+class bjgg
+  implements TextWatcher
 {
-  protected int a;
-  protected RectF a;
-  protected TextPaint a;
-  protected int b;
+  bjgg(bjgd parambjgd) {}
   
-  public bjgg(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+    bjgd.a(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

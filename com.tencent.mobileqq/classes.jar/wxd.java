@@ -1,50 +1,22 @@
 import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class wxd
-  implements TVK_SDKMgr.OnLogListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public wxd(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public wxd(TribeVideoPlugin paramTribeVideoPlugin, wxl paramwxl) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    {
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, wxl.a(this.jdField_a_of_type_Wxl));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = wxl.a(this.jdField_a_of_type_Wxl);
+      paramTVK_IMediaPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
   }
 }
 

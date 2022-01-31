@@ -1,80 +1,99 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class apef
+class apef
+  extends QIPCModule
 {
-  public static int a;
-  public static final String a;
-  public static boolean a;
-  public static final char[] a;
-  public static final String[] a;
-  public static int b;
-  public static final String b;
-  public static final char[] b;
-  public static int c;
-  public static int d;
-  public static int e;
-  
-  static
+  public apef(apee paramapee, String paramString)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    c = 3;
-    d = 4;
-    e = 5;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ".doc|.docx|.wps|.pages|", ".xls|.xlsx|.et|.numbers|" };
-    jdField_a_of_type_ArrayOfChar = new char[] { '…' };
-    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
-    jdField_b_of_type_ArrayOfChar = new char[] { '‥' };
-    jdField_b_of_type_JavaLangString = new String(jdField_b_of_type_ArrayOfChar);
+    super(paramString);
   }
   
-  public static final boolean a(String paramString)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    bdii.c("WeiyunDownloadServiceIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    if (paramBundle == null)
+    {
+      localObject = null;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        apee.a = (String)localObject;
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localQQAppInterface = apee.a(this.a);
+        if (localQQAppInterface != null) {
+          break label103;
+        }
+        bdii.c("WeiyunDownloadServiceIPC", "onCall action but appInterface is null");
+      }
     }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(doc|sheet|slide|form/edit|form/fill)/.*", paramString);
-  }
-  
-  public static final boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    label103:
+    do
+    {
+      do
+      {
+        return null;
+        localObject = paramBundle.getString("process");
+        break;
+        if (((!"WeiyunDownloadServiceIPC_Action__Download".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Resume".equals(paramString))) || (paramBundle == null)) {
+          break label394;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : start weiyunDownload");
+        }
+        localObject = (String)paramBundle.get("file_id");
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          bdii.c("WeiyunDownloadServiceIPC", "onCall action but file_id is null");
+          return null;
+        }
+        FileManagerEntity localFileManagerEntity = localQQAppInterface.a().c((String)localObject);
+        localObject = localFileManagerEntity;
+        if (localFileManagerEntity != null) {
+          break label213;
+        }
+      } while ("WeiyunDownloadServiceIPC_Action__Resume".equals(paramString));
+      localObject = apug.a(paramBundle);
+      localQQAppInterface.a().b((FileManagerEntity)localObject);
+      paramString = (String)paramBundle.get("downloadId");
+      ((FileManagerEntity)localObject).nOpType = 50;
+      ((FileManagerEntity)localObject).cloudType = 2;
+      ((FileManagerEntity)localObject).miniAppDownloadId = paramString;
+      apee.a(this.a).put(paramString, Long.valueOf(((FileManagerEntity)localObject).nSessionId));
+      if (apug.b(((FileManagerEntity)localObject).getFilePath()))
+      {
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putString("filePath", ((FileManagerEntity)localObject).getFilePath());
+        QIPCServerHelper.getInstance().callClient(apee.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Suc", paramString, null);
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putInt("retCode", 1);
+        paramString.putString("retMsg", "");
+        QIPCServerHelper.getInstance().callClient(apee.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", paramString, null);
+        return null;
+      }
+      localQQAppInterface.a().a((FileManagerEntity)localObject);
+      localQQAppInterface.a().a(((FileManagerEntity)localObject).nSessionId);
+      return null;
+    } while (((!"WeiyunDownloadServiceIPC_Action__Cancel".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Pause".equals(paramString))) || (paramBundle == null));
+    label213:
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : end weiyunDownload");
     }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(doc)/.*", paramString);
-  }
-  
-  public static final boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(sheet)/.*", paramString);
-  }
-  
-  public static final boolean d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(slide)/.*", paramString);
-  }
-  
-  public static final boolean e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(form/edit|form/fill)/.*", paramString);
-  }
-  
-  public static final boolean f(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(pdf)/.*", paramString);
+    label394:
+    paramString = paramBundle.getString("downloadId");
+    localQQAppInterface.a().a(((Long)apee.a(this.a).get(paramString)).longValue());
+    return null;
   }
 }
 

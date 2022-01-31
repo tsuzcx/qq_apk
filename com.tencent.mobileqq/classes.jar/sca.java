@@ -1,12 +1,22 @@
 import android.view.ViewGroup;
-import java.util.ArrayList;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-class sca
+public class sca
 {
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  private sca(sbx paramsbx) {}
+  public sca(sbz paramsbz) {}
 }
 
 

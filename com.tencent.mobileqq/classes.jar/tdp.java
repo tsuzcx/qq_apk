@@ -1,38 +1,33 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
 
 class tdp
-  implements syt<tmc, toa>
+  implements syq<tni, tot>
 {
-  tdp(tdo paramtdo, tej paramtej, boolean paramBoolean, long paramLong) {}
+  tdp(tdn paramtdn) {}
   
-  public void a(tmc arg1, toa paramtoa, ErrorMessage paramErrorMessage)
+  public void a(@NonNull tni paramtni, @Nullable tot paramtot, @NonNull ErrorMessage paramErrorMessage)
   {
-    long l = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess())
+    ved.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtot != null))
     {
-      ??? = paramtoa.a;
-      if (???.size() > 0)
-      {
-        ??? = (QQUserUIItem)???.get(0);
-        ??? = this.jdField_a_of_type_Tdo.a(???);
-        this.jdField_a_of_type_Tej.a = ???.qq;
-        this.jdField_a_of_type_Tej.b = ???.uid;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          ??? = (tcv)tdc.a(10);
-          ???.b("qqstory_my_uin", this.jdField_a_of_type_Tej.a);
-          ???.b("qqstory_my_union_id", this.jdField_a_of_type_Tej.b);
-        }
-      }
-      veg.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_Tej, Long.valueOf(l - this.jdField_a_of_type_Long) });
+      ved.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramtot.b));
+      this.a.jdField_a_of_type_JavaLangObject = new tdq(paramtot.b, paramtot.a);
+      ved.c("WeatherDataProvider", "update local weather data.");
+      paramtni = (tcs)tcz.a(10);
+      paramtni.b("edit_video_weather_filter_data", Integer.valueOf(paramtot.b));
+      paramtni.b("edit_video_weather_desc", paramtot.a);
+      tdn.a(this.a, System.currentTimeMillis() + 14400000L);
+      paramtni.b("edit_video_weather_expiry_time", Long.valueOf(tdn.a(this.a)));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    synchronized (this.jdField_a_of_type_Tej)
+    for (;;)
     {
-      this.jdField_a_of_type_Tej.notifyAll();
+      this.a.jdField_a_of_type_Boolean = false;
       return;
-      veg.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
+      ved.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramtni });
+      this.a.a(false, null);
     }
   }
 }

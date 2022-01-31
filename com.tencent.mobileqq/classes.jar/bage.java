@@ -1,23 +1,19 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bage
-  implements baxl
+public class bage
+  implements View.OnClickListener
 {
-  bage(bagc parambagc) {}
+  public bage(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((paramBitmap != null) && (bagc.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
-      }
-      if (!TextUtils.isEmpty(paramString)) {
-        bagc.a(this.a).b(paramString);
-      }
+    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    VisitorTroopCardFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
   }
 }
 

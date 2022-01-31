@@ -1,8 +1,13 @@
 public class odm
 {
-  public static final odm a = new odm();
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  private static Integer jdField_a_of_type_JavaLangInteger;
   
-  public void a() {}
+  public static void a()
+  {
+    jdField_a_of_type_JavaLangBoolean = null;
+    jdField_a_of_type_JavaLangInteger = null;
+  }
 }
 
 

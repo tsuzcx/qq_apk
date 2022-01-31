@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo;
 
-import ajof;
-import ajoi;
+import ajod;
+import ajog;
 
 final class ApolloRender$8
   implements Runnable
 {
-  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, ajof paramajof) {}
+  ApolloRender$8(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, ajod paramajod) {}
   
   public void run()
   {
-    ajoi.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajof);
+    ajog.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajod);
   }
 }
 

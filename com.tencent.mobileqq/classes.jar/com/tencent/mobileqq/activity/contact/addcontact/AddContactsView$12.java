@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
-import bbkx;
+import bbll;
 import com.tencent.mobileqq.widget.FormMutiItem;
 import com.tencent.qphone.base.util.QLog;
 
@@ -29,10 +29,10 @@ class AddContactsView$12
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-        int i = bbkx.a(16.0F);
+        int i = bbll.a(16.0F);
         int j = -localView.getMeasuredHeight();
         int k = this.this$0.i.getMeasuredHeight();
-        int m = bbkx.a(24.0F);
+        int m = bbll.a(24.0F);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.i, i, j - k + m);
         return;
       }

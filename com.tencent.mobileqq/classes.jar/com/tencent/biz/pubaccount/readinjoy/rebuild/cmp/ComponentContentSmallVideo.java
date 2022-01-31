@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pax;
-import pyp;
+import pau;
+import pym;
 
 public class ComponentContentSmallVideo
   extends ComponentContentSmall
@@ -37,22 +37,22 @@ public class ComponentContentSmallVideo
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131365421));
+    this.a = ((TextView)paramView.findViewById(2131365420));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = ((pax)paramObject).a();
+      paramObject = ((pau)paramObject).a();
       if (paramObject != null) {}
     }
     else
     {
       return;
     }
-    this.a.setText(pyp.a(paramObject.mVideoDuration));
+    this.a.setText(pym.a(paramObject.mVideoDuration));
   }
   
   public void b()

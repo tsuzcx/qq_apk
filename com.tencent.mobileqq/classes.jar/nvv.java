@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nvv
-  implements View.OnClickListener
+  implements myy
 {
-  public nvv(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public nvv(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((this.a.a instanceof nth)) {
-      ((nth)this.a.a).n();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

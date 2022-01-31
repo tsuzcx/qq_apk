@@ -2,8 +2,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.view.View;
 import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
 
 public class avvp
   implements Animator.AnimatorListener
@@ -14,18 +12,7 @@ public class avvp
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c.setVisibility(8);
-    paramAnimator = ProviderContainerView.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.a();
-    }
-    if (ProviderContainerView.a(this.a) != null)
-    {
-      paramAnimator = ProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((avvr)paramAnimator.next()).a();
-      }
-    }
+    this.a.c.setVisibility(0);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -33,7 +20,7 @@ public class avvp
   public void onAnimationStart(Animator paramAnimator)
   {
     if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).b();
+      ProviderContainerView.a(this.a).a();
     }
   }
 }

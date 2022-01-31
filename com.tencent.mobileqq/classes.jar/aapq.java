@@ -1,19 +1,25 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.net.Uri;
 
 public final class aapq
-  implements bcjx
+  implements DialogInterface.OnClickListener
 {
-  public aapq(Context paramContext) {}
+  public aapq(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    if (paramInt == 1)
+    {
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 

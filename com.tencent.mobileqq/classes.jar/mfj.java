@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
 public class mfj
   implements DialogInterface.OnClickListener
 {
-  public mfj(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
+  public mfj(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.k(this.jdField_a_of_type_Long);
+    QLog.w(this.a.c, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
   }
 }
 

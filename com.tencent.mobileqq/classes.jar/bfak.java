@@ -1,26 +1,19 @@
 import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StCurrChannelInfo;
-import NS_MINI_INTERFACE.INTERFACE.StUseUserAppReq;
-import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketRsp;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import org.json.JSONObject;
 
 public class bfak
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StUseUserAppReq a = new INTERFACE.StUseUserAppReq();
+  private INTERFACE.StGetTCBTicketReq a = new INTERFACE.StGetTCBTicketReq();
   
-  public bfak(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public bfak(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
   {
-    this.a.appId.set(paramString1);
-    this.a.verType.set(paramInt1);
-    this.a.source.set(paramInt2);
-    paramString1 = new INTERFACE.StCurrChannelInfo();
-    paramString1.refer.set(paramString2);
-    paramString1.via.set(paramString3);
-    this.a.channelInfo.set(paramString1);
+    this.a.appid.set(paramString1);
+    this.a.envId.set(paramString2);
     if (paramStCommonExt != null) {
       this.a.extInfo.set(paramStCommonExt);
     }
@@ -28,7 +21,7 @@ public class bfak
   
   protected String a()
   {
-    return "mini_app_userapp";
+    return "mini_app_info";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -36,28 +29,25 @@ public class bfak
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StUseUserAppRsp localStUseUserAppRsp = new INTERFACE.StUseUserAppRsp();
+    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
     try
     {
-      localStUseUserAppRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStUseUserAppRsp != null)
+      localStGetTCBTicketRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetTCBTicketRsp != null)
       {
-        if (localStUseUserAppRsp.extInfo != null)
-        {
-          paramArrayOfByte = new JSONObject();
-          paramArrayOfByte.put("ext", localStUseUserAppRsp.extInfo.get());
-          return paramArrayOfByte;
-        }
-        besl.a("UseUserAppRequest", "onResponse fail.extInfo = null");
-        return null;
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("ticket", localStGetTCBTicketRsp.ticket.get());
+        paramArrayOfByte.put("createTime", localStGetTCBTicketRsp.createTime.get());
+        paramArrayOfByte.put("period", localStGetTCBTicketRsp.period.get());
+        return paramArrayOfByte;
       }
+      betc.a("GetTcbTicketRequest", "onResponse fail.rsp = null");
+      return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("UseUserAppRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      betc.a("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
     }
-    besl.a("UseUserAppRequest", "onResponse fail.rsp = null");
     return null;
   }
   
@@ -68,7 +58,7 @@ public class bfak
   
   protected String b()
   {
-    return "UseUserApp";
+    return "GetTCBTicket";
   }
 }
 

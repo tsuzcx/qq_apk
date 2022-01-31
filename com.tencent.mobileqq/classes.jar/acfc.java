@@ -1,17 +1,55 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfc
-  implements amdi
+  extends bbwt
 {
-  public acfc(TextPreviewActivity paramTextPreviewActivity) {}
-  
-  public void a(amdj paramamdj)
+  public acfc(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_Amdj = paramamdj;
-    if (this.a.i != 0) {
-      paramamdj.a(this.a.i);
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bbwu parambbwu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwu);
     }
-    this.a.i = paramamdj.a(1, this.a.e, 3, this.a.jdField_a_of_type_Amdg);
+    super.onCancel(parambbwu);
+  }
+  
+  public void onDone(bbwu parambbwu)
+  {
+    super.onDone(parambbwu);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwu);
+    }
+    if (parambbwu.b()) {}
+    do
+    {
+      return;
+      if (parambbwu.a() == -1)
+      {
+        parambbwu = new Message();
+        parambbwu.what = 17;
+        TextPreviewSettingActivity.a(this.a).sendMessage(parambbwu);
+        return;
+      }
+      parambbwu = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
+    } while (parambbwu == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambbwu;
+    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bbwu parambbwu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwu);
+    }
+    return super.onStart(parambbwu);
   }
 }
 

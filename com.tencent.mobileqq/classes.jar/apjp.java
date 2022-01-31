@@ -1,26 +1,47 @@
-import java.util.HashMap;
+import android.os.Message;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
 public final class apjp
-  implements ayrz
+  implements Debugger.IDebugCallback
 {
-  public void a(aysw paramaysw, aysx paramaysx)
+  private final WeakReference<TdsDebugView> a;
+  
+  private apjp(TdsDebugView paramTdsDebugView)
   {
-    if ((paramaysw == null) || (paramaysx == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramaysw instanceof ayrv));
-      paramaysw = (ayrv)paramaysw;
-      paramaysw.jdField_a_of_type_Long += paramaysx.c;
-      paramaysx.c = 0L;
-      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
-      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
-      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
-    } while (!paramaysx.contains("range="));
-    paramaysx = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
-    paramaysw.jdField_a_of_type_JavaLangString = (paramaysx + "range=" + paramaysw.jdField_a_of_type_Long);
+    this.a = new WeakReference(paramTdsDebugView);
+  }
+  
+  public void onCleanCache(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
+    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
+  }
+  
+  public void onCleanPlugin(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
+    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
+  }
+  
+  public void onUpgradePlugin(String paramString, int paramInt)
+  {
+    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
+    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
   }
 }
 

@@ -4,18 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
-import aope;
-import aopf;
-import aopg;
-import aoph;
-import aouj;
-import aozc;
-import apen;
-import apqg;
-import apue;
-import bahp;
-import bbct;
-import bfng;
+import aopj;
+import aopk;
+import aopl;
+import aopm;
+import aoun;
+import aozg;
+import aper;
+import apqk;
+import apug;
+import baid;
+import bbdh;
+import bfnx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,9 +26,9 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import xap;
-import xba;
-import xbi;
+import xam;
+import xax;
+import xbf;
 
 public class TroopFileZipPreviewActivity
   extends IphoneTitleBarActivity
@@ -36,12 +36,12 @@ public class TroopFileZipPreviewActivity
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
-  private aouj jdField_a_of_type_Aouj = new aoph(this);
+  private aoun jdField_a_of_type_Aoun = new aopm(this);
   ForwardFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo;
   public XListView a;
   public String a;
-  public List<apqg> a;
-  public xbi a;
+  public List<apqk> a;
+  public xbf a;
   public short a;
   public boolean a;
   int b;
@@ -60,14 +60,14 @@ public class TroopFileZipPreviewActivity
     this.jdField_a_of_type_Short = 0;
   }
   
-  private xba a(FileManagerEntity paramFileManagerEntity)
+  private xax a(FileManagerEntity paramFileManagerEntity)
   {
-    return new aopf(this, paramFileManagerEntity);
+    return new aopk(this, paramFileManagerEntity);
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString6, short paramShort, xba paramxba)
+  private void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString6, short paramShort, xax paramxax)
   {
-    String str = "http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + bfng.a(paramString4) + "&";
+    String str = "http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + bfnx.a(paramString4) + "&";
     ArrayList localArrayList = new ArrayList();
     boolean bool;
     if (paramFileManagerEntity.getCloudType() == 2)
@@ -81,9 +81,9 @@ public class TroopFileZipPreviewActivity
     label232:
     for (;;)
     {
-      paramString1 = new bahp(str, "GET", new aopg(this, localArrayList, paramString4, paramFileManagerEntity, bool, paramString5, paramBoolean, paramString6, paramString1, paramShort, paramString3, paramInt, paramString2, paramxba), 1000, null);
+      paramString1 = new baid(str, "GET", new aopl(this, localArrayList, paramString4, paramFileManagerEntity, bool, paramString5, paramBoolean, paramString6, paramString1, paramShort, paramString3, paramInt, paramString2, paramxax), 1000, null);
       paramString2 = new Bundle();
-      paramString2.putString("version", bbct.c());
+      paramString2.putString("version", bbdh.c());
       paramString2.putString("Cookie", paramString5);
       paramString3 = new HashMap();
       paramString3.put("BUNDLE", paramString2);
@@ -138,14 +138,14 @@ public class TroopFileZipPreviewActivity
       finish();
       return false;
     }
-    this.jdField_b_of_type_Int = apue.b(paramBundle);
+    this.jdField_b_of_type_Int = apug.b(paramBundle);
     if (this.jdField_a_of_type_Long != 0L) {
-      xap.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, a(paramBundle));
+      xam.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, a(paramBundle));
     }
     for (;;)
     {
       startTitleProgress();
-      super.setRightButton(2131690832, new aope(this, paramBundle));
+      super.setRightButton(2131690832, new aopj(this, paramBundle));
       return true;
       a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, this.jdField_a_of_type_Boolean, this.f, this.jdField_a_of_type_Short, a(paramBundle));
     }
@@ -154,15 +154,15 @@ public class TroopFileZipPreviewActivity
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Aouj != null) {
-      ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().deleteObserver(this.jdField_a_of_type_Aouj);
+    if (this.jdField_a_of_type_Aoun != null) {
+      ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().deleteObserver(this.jdField_a_of_type_Aoun);
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().addObserver(this.jdField_a_of_type_Aouj);
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().addObserver(this.jdField_a_of_type_Aoun);
   }
 }
 

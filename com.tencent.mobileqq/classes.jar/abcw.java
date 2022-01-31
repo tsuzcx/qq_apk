@@ -1,14 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
-class abcw
-  implements View.OnClickListener
+public class abcw
+  extends ajsy
 {
-  abcw(abcu paramabcu) {}
+  public abcw(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    abcu.a(this.a).a(paramView);
+    if (paramInt2 == 0)
+    {
+      this.a.a();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
+    }
+    label47:
+    while (!this.a.isResumed())
+    {
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131704849), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131704848), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694928);
+    }
+    bcql.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

@@ -1,14 +1,14 @@
 class ojg
-  extends ojq
+  extends ojn
 {
-  ojg(oio paramoio, int paramInt)
+  ojg(oil paramoil)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentCreate(false, null, null, this.jdField_a_of_type_Int);
+    paramojq.onCommentListLoad(1, true, this.a.c(), oil.c(this.a), 6, 6);
   }
 }
 

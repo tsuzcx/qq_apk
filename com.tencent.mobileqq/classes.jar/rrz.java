@@ -1,56 +1,21 @@
-import android.widget.BaseAdapter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public abstract class rrz<T>
-  extends BaseAdapter
-  implements rsb
+public class rrz
+  implements rsi
 {
   private int jdField_a_of_type_Int;
-  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int b;
   
-  protected void a(T paramT)
+  public rrz(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localHashMap.put(paramT, Integer.valueOf(i));
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  protected void a(List<T> paramList)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramList.next());
-    }
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
-      return -1L;
-    }
-    Object localObject = getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
-    }
-    return paramInt;
-  }
-  
-  public final boolean hasStableIds()
-  {
-    return true;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rsa(this, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView), paramInt1, paramInt2));
   }
 }
 

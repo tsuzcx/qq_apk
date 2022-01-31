@@ -1,17 +1,9 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class obz
-  implements View.OnClickListener
+public class obz
 {
-  obz(oby paramoby) {}
-  
-  public void onClick(View paramView)
-  {
-    oau.a(oby.a(this.a), 1000, null);
-    sht.a((Activity)oby.a(this.a), oby.a(this.a), oby.a(this.a).a(), oby.a(this.a).e(), false, oat.b(oby.a(this.a)), new nyc());
-  }
+  public float a = 1.0F;
+  public int a;
+  public int b;
+  public int c;
 }
 
 

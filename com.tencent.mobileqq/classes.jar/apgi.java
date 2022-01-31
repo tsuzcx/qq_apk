@@ -1,271 +1,251 @@
 import android.content.Context;
-import android.text.SpannableStringBuilder;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.ArrayList;
-import java.util.UUID;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.1;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.2;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.3;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.5;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchReqBody;
+import tencent.im.cs.cmd0x383.cmd0x383.ReqBody;
 
 public class apgi
-  implements awog
+  implements awiv, awuu<apgm>
 {
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  protected ajsy a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private azta jdField_a_of_type_Azta;
+  private apfq jdField_a_of_type_Apfq;
+  private awiq jdField_a_of_type_Awiq;
+  private awuv<apgm> jdField_a_of_type_Awuv;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
+  private String jdField_a_of_type_JavaLangString = "";
+  public List<Long> a;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 1;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<awii> jdField_b_of_type_JavaUtilList;
+  private boolean jdField_b_of_type_Boolean;
+  private List<aztc> jdField_c_of_type_JavaUtilList;
+  private boolean jdField_c_of_type_Boolean;
+  private volatile boolean d = true;
   
-  public apgi(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, azta paramazta)
+  public apgi(QQAppInterface paramQQAppInterface, Context paramContext, long paramLong, int paramInt, apfq paramapfq)
   {
+    this.jdField_a_of_type_Ajsy = new apgj(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Azta = paramazta;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Apfq = paramapfq;
   }
   
-  private void a()
+  private void a(QQAppInterface paramQQAppInterface, long paramLong, List<Long> paramList, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Azta == null) {
+    for (;;)
+    {
+      try
+      {
+        QLog.i("TroopFileSearchEngine<QFile>", 4, "doReqTroopFileSearch.");
+        boolean bool = this.d;
+        if (!bool) {
+          return;
+        }
+        if (TextUtils.isEmpty(paramString1))
+        {
+          QLog.d("TroopFileSearchEngine<QFile>", 1, "doReqTroopFileSearch err marchWord is null--------------");
+          continue;
+        }
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+      }
+      finally {}
+      this.d = false;
+      Object localObject = new cmd0x383.ApplyFileSearchReqBody();
+      ((cmd0x383.ApplyFileSearchReqBody)localObject).bytes_key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
+      if (paramList != null) {
+        ((cmd0x383.ApplyFileSearchReqBody)localObject).uint64_uin_list.set(paramList);
+      }
+      if (!TextUtils.isEmpty(paramString2)) {
+        ((cmd0x383.ApplyFileSearchReqBody)localObject).bytes_sync_cookie.set(ByteStringMicro.copyFromUtf8(paramString2));
+      }
+      ((cmd0x383.ApplyFileSearchReqBody)localObject).uint32_count.set(20);
+      paramList = new cmd0x383.ReqBody();
+      paramList.uint64_groupcode.set(paramLong);
+      paramList.uint32_app_id.set(3);
+      paramList.msg_file_search_req_body.set((MessageMicro)localObject);
+      paramList.setHasFlag(true);
+      localObject = new Bundle();
+      ((Bundle)localObject).putLong("troopUin", paramLong);
+      ((Bundle)localObject).putString("reqKeyword", paramString1);
+      ((ajsx)paramQQAppInterface.a(22)).a("GroupFileAppSvr.GetFileSearch", paramList.toByteArray(), (Bundle)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileSearchEngine<QFile>", 4, "doReqTroopFileSearch troopUin = " + paramLong + ", marchWord = " + paramString1 + ", cookie = " + paramString2);
+      }
+    }
+  }
+  
+  private void a(boolean paramBoolean, List<aztc> paramList)
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new TroopFileSearchEngine.3(this, paramBoolean, paramList));
+  }
+  
+  private void b(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        QLog.i("TroopFileSearchEngine<QFile>", 4, "execSearch. keyWord[" + paramString + "]");
+        boolean bool = this.jdField_b_of_type_Boolean;
+        if (bool) {
+          return;
+        }
+        if (this.jdField_b_of_type_JavaUtilList == null)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          QLog.i("TroopFileSearchEngine<QFile>", 4, "execSearch. friend set is null. wait");
+          continue;
+        }
+        if (this.jdField_a_of_type_Awiq == null) {
+          break label96;
+        }
+      }
+      finally {}
+      this.jdField_a_of_type_Awiq.cancel(true);
+      this.jdField_a_of_type_Awiq = null;
+      label96:
+      QLog.i("TroopFileSearchEngine<QFile>", 4, "execSearch. success.");
+      this.jdField_a_of_type_Awiq = new awiq(paramString, paramString, this.jdField_b_of_type_JavaUtilList, this);
+      this.jdField_a_of_type_Awiq.a();
+    }
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.d = true;
+    if (this.jdField_c_of_type_JavaUtilList != null)
+    {
+      this.jdField_c_of_type_JavaUtilList.clear();
+      this.jdField_c_of_type_JavaUtilList = null;
+    }
+  }
+  
+  private void g()
+  {
+    ThreadManagerV2.executeOnSubThread(new TroopFileSearchEngine.2(this));
+  }
+  
+  public List<apgm> a(awvi paramawvi)
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("TroopFileSearchEngine<QFile>", 4, "init. get contact info.");
+    }
+    g();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, List<? extends awij> paramList)
+  {
+    QLog.i("TroopFileSearchEngine<QFile>", 4, "onSearchFinish. search contact with keyWord finish.");
+    ThreadManagerV2.getUIHandlerV2().post(new TroopFileSearchEngine.5(this, paramInt, paramList));
+  }
+  
+  public void a(awvi paramawvi, awuv<apgm> paramawuv)
+  {
+    if ((paramawvi == null) || (paramawvi.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramawvi.jdField_a_of_type_JavaLangString.trim()))) {
       return;
     }
-    Object localObject4 = "";
-    long l1 = this.jdField_a_of_type_Azta.jdField_a_of_type_Long;
-    long l2 = this.jdField_a_of_type_Azta.jdField_b_of_type_Long;
-    long l3 = this.jdField_a_of_type_Azta.jdField_c_of_type_Long;
-    azpg localazpg = this.jdField_a_of_type_Azta.jdField_a_of_type_Azpg;
-    Object localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(String.valueOf(l1), String.valueOf(l2));
-    int i;
-    Object localObject2;
-    label107:
-    Object localObject3;
-    if ((localObject1 != null) && (bbcl.a(((TroopMemberInfo)localObject1).troopnick, String.valueOf(l3))))
+    if (this.jdField_a_of_type_Awuv == null) {
+      this.jdField_a_of_type_Awuv = paramawuv;
+    }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new TroopFileSearchEngine.1(this), 800L);
+  }
+  
+  public void a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(this.jdField_b_of_type_JavaLangString)))
     {
-      i = 1;
-      if (i == 0) {
-        break label444;
-      }
-      localObject2 = ((TroopMemberInfo)localObject1).troopnick;
-      if (this.jdField_a_of_type_Azta.jdField_c_of_type_Long <= 0L) {
-        break label593;
-      }
-      localObject3 = String.valueOf(this.jdField_a_of_type_Azta.jdField_c_of_type_Long);
-      localObject4 = aztb.a();
-      localObject1 = ((aztb)localObject4).a((String)localObject3);
-      if (localObject1 == null) {
-        break label450;
-      }
-      i = aztb.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.jdField_a_of_type_Azta.jdField_c_of_type_JavaLangString, ((awhj)localObject1).jdField_c_of_type_JavaLangString, ((awhj)localObject1).d, this.jdField_a_of_type_Azta.d, ((awhj)localObject1).jdField_a_of_type_JavaLangString, ((awhj)localObject1).jdField_b_of_type_JavaLangString);
-      localObject1 = aztb.a((String)localObject2, this.jdField_a_of_type_Azta.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Azta.d, i);
-      label216:
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label515;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Azta.jdField_c_of_type_JavaLangString)) {
-        break label503;
-      }
-      localObject1 = this.jdField_a_of_type_Azta.d;
-      label246:
-      localObject3 = "";
-      localObject2 = localObject1;
-      localObject1 = localObject3;
+      QLog.i("TroopFileSearchEngine<QFile>", 1, "loadMoreSearchData. keyword is not match keyWord[" + paramString + "] lastKeyWord[" + this.jdField_b_of_type_JavaLangString + "]");
+      return;
     }
-    for (;;)
+    if (!this.d)
     {
-      label258:
-      localObject3 = localObject2;
-      if ((this.jdField_a_of_type_Azta.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_Azta.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        localObject2 = (String)this.jdField_a_of_type_Azta.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if ((TextUtils.isEmpty(localazpg.jdField_c_of_type_JavaLangString)) || (!localazpg.jdField_c_of_type_JavaLangString.toLowerCase().contains(((String)localObject2).toLowerCase()))) {}
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaLangCharSequence = localazpg.jdField_c_of_type_JavaLangString;
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaLangCharSequence = awvy.a(localazpg.jdField_c_of_type_JavaLangString, (String)localObject2);
-        }
-        localObject2 = localazpg.a();
-        localObject4 = localazpg.l;
-        Object localObject5 = new SpannableStringBuilder();
-        ((SpannableStringBuilder)localObject5).append((CharSequence)localObject4).append("  ");
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          ((SpannableStringBuilder)localObject5).append(awvy.a((String)localObject3, (String)localObject1)).append("  ");
-        }
-        for (;;)
-        {
-          ((SpannableStringBuilder)localObject5).append((CharSequence)localObject2);
-          this.b = ((CharSequence)localObject5);
-          return;
-          i = 0;
-          break;
-          label444:
-          localObject2 = null;
-          break label107;
-          label450:
-          i = aztb.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.jdField_a_of_type_Azta.jdField_c_of_type_JavaLangString, null, null, this.jdField_a_of_type_Azta.d, null, null);
-          localObject1 = aztb.a((String)localObject2, this.jdField_a_of_type_Azta.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Azta.d, i);
-          break label216;
-          label503:
-          localObject1 = this.jdField_a_of_type_Azta.jdField_c_of_type_JavaLangString;
-          break label246;
-          label515:
-          if ((i == 1) || (i == 4) || (i == 7))
-          {
-            localObject3 = this.jdField_a_of_type_JavaLangString;
-            localObject2 = localObject1;
-            localObject1 = localObject3;
-            break label258;
-          }
-          if ((i != 5) && (i != 6) && (i != 2) && (i != 3)) {
-            break label738;
-          }
-          localObject3 = ((aztb)localObject4).a(this.jdField_a_of_type_JavaLangString, (String)localObject3);
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-          break label258;
-          label593:
-          if (i != 0) {}
-          for (;;)
-          {
-            localObject3 = localObject2;
-            localObject1 = localObject4;
-            if (this.jdField_a_of_type_Azta.jdField_a_of_type_JavaUtilArrayList == null) {
-              break;
-            }
-            localObject3 = localObject2;
-            localObject1 = localObject4;
-            if (this.jdField_a_of_type_Azta.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-              break;
-            }
-            localObject5 = (String)this.jdField_a_of_type_Azta.jdField_a_of_type_JavaUtilArrayList.get(0);
-            localObject3 = localObject2;
-            localObject1 = localObject4;
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              break;
-            }
-            localObject3 = localObject2;
-            localObject1 = localObject4;
-            if (!((String)localObject2).toLowerCase().contains(((String)localObject5).toLowerCase())) {
-              break;
-            }
-            localObject1 = localObject5;
-            localObject3 = localObject2;
-            break;
-            localObject2 = this.jdField_a_of_type_Azta.jdField_b_of_type_JavaLangString;
-          }
-          ((SpannableStringBuilder)localObject5).append((CharSequence)localObject3).append("  ");
-        }
-        localObject2 = "";
-      }
-      label738:
-      localObject2 = localObject1;
-      localObject1 = "";
+      QLog.i("TroopFileSearchEngine<QFile>", 1, "loadMoreSearchData. but last search is not finish.");
+      return;
+    }
+    QLog.i("TroopFileSearchEngine<QFile>", 1, "loadMoreSearchData. but last search is not finish. keyWord[" + paramString + "] lastKeyWord[" + this.jdField_b_of_type_JavaLangString + "]");
+    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
+      return this.jdField_c_of_type_Boolean;
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("TroopFileSearchEngine<QFile>", 4, "cancel.");
+    }
+    f();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Ajsy != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajsy);
     }
   }
   
-  public int a()
+  public void d()
   {
-    return 0;
+    if (this.jdField_a_of_type_Ajsy != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajsy);
+    }
   }
   
-  public CharSequence a()
+  public void e()
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView)
-  {
-    Object localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azta.jdField_a_of_type_Long);
-    azpg localazpg = this.jdField_a_of_type_Azta.jdField_a_of_type_Azpg;
-    azqt localazqt = ((TroopFileTransferManager)localObject).a(localazpg.jdField_b_of_type_JavaLangString);
-    localObject = localazqt;
-    if (localazqt == null)
+    if (this.jdField_a_of_type_Ajsy != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajsy);
+    }
+    if (this.jdField_b_of_type_JavaUtilList != null)
     {
-      localObject = bakj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azta.jdField_a_of_type_Long, localazpg.jdField_a_of_type_JavaUtilUUID.toString(), localazpg.jdField_b_of_type_JavaLangString, localazpg.jdField_c_of_type_JavaLangString, localazpg.jdField_a_of_type_Long, localazpg.jdField_a_of_type_Int);
-      ((azqt)localObject).jdField_c_of_type_JavaLangString = localazpg.j;
-      ((azqt)localObject).d = localazpg.k;
-      ((azqt)localObject).jdField_b_of_type_JavaLangString = localazpg.i;
+      this.jdField_b_of_type_JavaUtilList.clear();
+      this.jdField_b_of_type_JavaUtilList = null;
     }
-    if ((localObject != null) && (((azqt)localObject).jdField_c_of_type_Long == 0L)) {
-      ((azqt)localObject).jdField_c_of_type_Long = localazpg.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Awiq != null) {
+      this.jdField_a_of_type_Awiq.cancel(true);
     }
-    paramView = apvk.a(paramView.findViewById(2131366211), localazpg.jdField_c_of_type_JavaLangString);
-    apvk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, null, null, this.jdField_a_of_type_Azta.jdField_a_of_type_Long, (azqt)localObject, localazpg.e, localazpg.jdField_c_of_type_Int, 2, 4, paramView, false, false);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    String str = "";
-    Object localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azta.jdField_a_of_type_Long);
-    azpg localazpg = this.jdField_a_of_type_Azta.jdField_a_of_type_Azpg;
-    azqt localazqt = ((TroopFileTransferManager)localObject).a(localazpg.jdField_b_of_type_JavaLangString);
-    if (localazqt != null) {
-      str = localazqt.jdField_b_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      localObject = str;
-      if (!bbdj.b(str)) {
-        localObject = this.jdField_a_of_type_Azta.jdField_a_of_type_Azpg.i;
-      }
-      return localObject;
-      ((TroopFileTransferManager)localObject).a(localazpg.jdField_a_of_type_JavaUtilUUID, 128);
-    }
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_Azta.jdField_a_of_type_Azpg != null) {
-      return this.jdField_a_of_type_Azta.jdField_a_of_type_Azpg.jdField_c_of_type_JavaLangString;
-    }
-    return "";
   }
 }
 

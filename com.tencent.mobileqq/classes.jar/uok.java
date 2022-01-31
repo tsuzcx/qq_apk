@@ -1,23 +1,8 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-
-class uok
-  implements uon
+public abstract interface uok
 {
-  uok(uoj paramuoj, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  public abstract void a();
   
-  public void a()
-  {
-    veg.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    uoj.a(this.jdField_a_of_type_Uoj, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void b()
-  {
-    veg.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    uoj.a(this.jdField_a_of_type_Uoj).finish();
-    uoj.a(this.jdField_a_of_type_Uoj).overridePendingTransition(0, 0);
-  }
+  public abstract void b();
 }
 
 

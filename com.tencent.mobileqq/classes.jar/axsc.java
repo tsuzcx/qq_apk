@@ -1,19 +1,28 @@
-public class axsc
-  extends axsb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
+
+public final class axsc
+  implements Parcelable.Creator<UEC.UECItem>
 {
-  public long c = 0L;
-  boolean e = false;
-  public int j = 80;
-  public int k = 70;
-  public int l = 5;
-  public int m;
-  
-  public axsc(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public UEC.UECItem a(Parcel paramParcel)
   {
-    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
-    this.l = (paramInt1 % 1000);
-    this.k = (paramInt1 / 1000 % 1000);
-    this.j = (paramInt1 / 1000 / 1000 % 1000);
+    UEC.UECItem localUECItem = new UEC.UECItem();
+    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
+    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.c = paramParcel.readString();
+    localUECItem.d = paramParcel.readString();
+    localUECItem.e = paramParcel.readString();
+    localUECItem.f = paramParcel.readString();
+    return localUECItem;
+  }
+  
+  public UEC.UECItem[] a(int paramInt)
+  {
+    return new UEC.UECItem[paramInt];
   }
 }
 

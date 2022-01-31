@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import ajyc;
-import akup;
+import ajya;
+import akuo;
 import android.graphics.Color;
-import bbgg;
+import bbgu;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class MapActivity$2
-  extends akup
+  extends akuo
 {
   MapActivity$2(MapActivity paramMapActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5)
   {
@@ -40,7 +40,7 @@ class MapActivity$2
       }
       return;
     }
-    this.this$0.dialog.setTitle(ajyc.a(2131706448)).setMessage(ajyc.a(2131706444)).setPositiveButton(ajyc.a(2131706446), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(ajyc.a(2131706445), Color.parseColor("#000000"), new MapActivity.2.1(this));
+    this.this$0.dialog.setTitle(ajya.a(2131706459)).setMessage(ajya.a(2131706455)).setPositiveButton(ajya.a(2131706457), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(ajya.a(2131706456), Color.parseColor("#000000"), new MapActivity.2.1(this));
     this.this$0.dialog.show();
   }
 }

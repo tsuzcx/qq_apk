@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import ajyc;
+import ajya;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -25,7 +25,7 @@ class PayJsPlugin$5
       try
       {
         paramJSONObject.put("resultCode", -1);
-        PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$event, null, ajyc.a(2131707902));
+        PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$event, null, ajya.a(2131707913));
         return;
       }
       catch (JSONException paramJSONObject)

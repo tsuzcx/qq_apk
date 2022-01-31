@@ -3,8 +3,8 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.support.v4.app.FragmentActivity;
-import bawu;
-import bbdr;
+import baxi;
+import bbef;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
@@ -30,9 +30,9 @@ class CreateVirtualAccountFragment$5
           localObject2 = new File(this.a);
           localObject1 = new BitmapFactory.Options();
           localObject2 = new BufferedInputStream(new FileInputStream((File)localObject2));
-          ((BitmapFactory.Options)localObject1).inSampleSize = ((int)bbdr.a((InputStream)localObject2, CreateVirtualAccountFragment.a(this.this$0).getWidth(), CreateVirtualAccountFragment.a(this.this$0).getHeight()));
+          ((BitmapFactory.Options)localObject1).inSampleSize = ((int)bbef.a((InputStream)localObject2, CreateVirtualAccountFragment.a(this.this$0).getWidth(), CreateVirtualAccountFragment.a(this.this$0).getHeight()));
           ((BufferedInputStream)localObject2).close();
-          localObject1 = bawu.a(this.a, (BitmapFactory.Options)localObject1);
+          localObject1 = baxi.a(this.a, (BitmapFactory.Options)localObject1);
           localObject2 = localObject1;
           if (localObject1 != null) {}
           localObject2 = localObject1;

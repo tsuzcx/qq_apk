@@ -1,58 +1,74 @@
-import android.os.Binder;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
 
-public abstract class ales
-  extends Binder
-  implements aler
+class ales
+  implements aleq
 {
-  public ales()
+  private IBinder a;
+  
+  ales(IBinder paramIBinder)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    this.a = paramIBinder;
   }
   
-  public static aler a(IBinder paramIBinder)
+  public void a()
   {
-    if (paramIBinder == null) {
-      return null;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aler))) {
-      return (aler)localIInterface;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    return new alet(paramIBinder);
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
   public IBinder asBinder()
   {
-    return this;
+    return this.a;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void b()
   {
-    switch (paramInt1)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      b();
-      paramParcel2.writeNoException();
-      return true;
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

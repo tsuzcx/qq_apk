@@ -1,269 +1,260 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import com.tencent.crmqq.structmsg.StructMsg.GetCRMMenuResponse;
+import com.tencent.crmqq.structmsg.StructMsg.RetInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.1;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQMenuEntity;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aoej
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public static int d = 4;
+  private static aoej jdField_a_of_type_Aoej;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private double jdField_a_of_type_Double;
+  private long jdField_a_of_type_Long;
+  public akuo a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aoei jdField_a_of_type_Aoei = new aoei();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected Runnable a;
+  private ArrayList<aoel> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private double jdField_b_of_type_Double;
+  private long jdField_b_of_type_Long = 1800000L;
   
-  private static Intent a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
+  private aoej(QQAppInterface paramQQAppInterface)
   {
-    if (paramActivity == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
+    this.jdField_a_of_type_JavaLangRunnable = new EnterpriseQQManager.1(this);
+    this.jdField_a_of_type_Akuo = new aoek(this, 4, true, true, 0L, false, false, "EnterpriseQQManager");
+    if (paramQQAppInterface != null) {
+      a(paramQQAppInterface);
+    }
+  }
+  
+  public static aoej a(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_Aoej == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Aoej == null) {
+        jdField_a_of_type_Aoej = new aoej(paramQQAppInterface);
+      }
+      return jdField_a_of_type_Aoej;
+    }
+  }
+  
+  private static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, StructMsg.ButtonInfo paramButtonInfo)
+  {
+    paramButtonInfo = new StringBuilder(paramButtonInfo.url.get());
+    if (paramButtonInfo.indexOf("?") < 0) {
+      paramButtonInfo.append("?");
+    }
+    for (;;)
+    {
+      paramButtonInfo.append("uin=" + paramQQAppInterface.getCurrentAccountUin());
+      paramButtonInfo.append("&puin=" + paramString);
+      Intent localIntent = new Intent(paramContext, PublicAccountBrowser.class);
+      localIntent.putExtra("url", paramButtonInfo.toString());
+      localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("puin", paramString);
+      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131690572));
+      if (paramString.equalsIgnoreCase("2632129500")) {
+        localIntent.putExtra("hide_operation_bar", true);
+      }
+      paramContext.startActivity(localIntent);
+      return;
+      if (paramButtonInfo.indexOf("?") < paramButtonInfo.length() - 1) {
+        if (paramButtonInfo.indexOf("&") < 0) {
+          paramButtonInfo.append("&");
+        } else if (paramButtonInfo.lastIndexOf("&") < paramButtonInfo.length() - 1) {
+          paramButtonInfo.append("&");
+        }
       }
     }
+  }
+  
+  public List<StructMsg.ButtonInfo> a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_Aoei != null) {
+      return this.jdField_a_of_type_Aoei.a(paramString);
+    }
+    return null;
+  }
+  
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString1)))
+    {
+      paramContext = (ajvp)paramQQAppInterface.a(21);
+      if (paramContext != null) {
+        paramContext.a(paramString1, paramString2, 1, paramBoolean, paramDouble1, paramDouble2);
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Aoei == null) {
+      this.jdField_a_of_type_Aoei = new aoei();
+    }
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(EnterpriseQQMenuEntity.class);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0)) {
+        paramQQAppInterface = paramQQAppInterface.iterator();
+      }
+    }
+    for (;;)
+    {
+      EnterpriseQQMenuEntity localEnterpriseQQMenuEntity;
+      StructMsg.GetCRMMenuResponse localGetCRMMenuResponse;
+      if (paramQQAppInterface.hasNext())
+      {
+        localEnterpriseQQMenuEntity = (EnterpriseQQMenuEntity)paramQQAppInterface.next();
+        if (localEnterpriseQQMenuEntity == null) {
+          continue;
+        }
+        localGetCRMMenuResponse = new StructMsg.GetCRMMenuResponse();
+      }
+      try
+      {
+        localGetCRMMenuResponse.mergeFrom(localEnterpriseQQMenuEntity.data);
+        label95:
+        if (!localGetCRMMenuResponse.ret_info.has()) {
+          continue;
+        }
+        this.jdField_a_of_type_Aoei.a(localEnterpriseQQMenuEntity.uin, localGetCRMMenuResponse.button_info.get(), localEnterpriseQQMenuEntity.seqno, localEnterpriseQQMenuEntity.savedDateTime);
+        continue;
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label95;
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, StructMsg.GetCRMMenuResponse paramGetCRMMenuResponse)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    long l;
     do
     {
-      return null;
-      if (paramAppInterface != null) {
-        break;
+      return;
+      if (this.jdField_a_of_type_Aoei == null) {
+        this.jdField_a_of_type_Aoei = new aoei();
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
-    return null;
-    String str = paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = a(a(paramInt), paramAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + paramAppInterface);
-    }
-    paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
-    paramActivity.putExtra("portraitOnly", true);
-    paramActivity.putExtra("url", paramAppInterface);
-    paramActivity.putExtra("uin", str);
-    paramActivity.putExtra("hide_operation_bar", true);
-    paramActivity.putExtra("hide_more_button", true);
-    return paramActivity;
-  }
-  
-  private static String a(int paramInt)
-  {
-    Object localObject = aoen.a().a();
-    if ((localObject != null) && (((String)localObject).length() > 0)) {
-      if (!((String)localObject).startsWith("http")) {}
-    }
-    for (;;)
-    {
-      localObject = new StringBuilder((String)localObject);
-      ((StringBuilder)localObject).append("?");
-      ((StringBuilder)localObject).append("type=" + Integer.toString(paramInt));
-      ((StringBuilder)localObject).append("&plat=1");
-      ((StringBuilder)localObject).append("&app=1");
-      ((StringBuilder)localObject).append("&version=8.2.8.4440");
-      ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-      ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-      return ((StringBuilder)localObject).toString();
-      localObject = "http://" + (String)localObject;
-      continue;
-      localObject = "https://aq.qq.com/cn2/manage/mobile_h5/mobile_index";
-    }
-  }
-  
-  private static String a(String paramString, AppInterface paramAppInterface)
-  {
-    Object localObject = null;
-    String str = null;
-    if (paramString == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "handlePhoneContact url is null");
-      }
-    }
-    for (;;)
-    {
-      return paramString;
-      if (paramAppInterface != null)
+      l = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Aoei.a(paramString) != paramInt) && (paramGetCRMMenuResponse != null))
       {
-        paramAppInterface = (askl)paramAppInterface.getManager(11);
-        if (paramAppInterface != null)
+        List localList = paramGetCRMMenuResponse.button_info.get();
+        paramGetCRMMenuResponse = new EnterpriseQQMenuEntity(paramString, paramGetCRMMenuResponse, paramInt, l);
+        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+        EnterpriseQQMenuEntity localEnterpriseQQMenuEntity = (EnterpriseQQMenuEntity)paramQQAppInterface.a(EnterpriseQQMenuEntity.class, paramString);
+        if (localEnterpriseQQMenuEntity != null)
         {
-          paramAppInterface = paramAppInterface.a();
-          if (paramAppInterface == null)
-          {
-            if (!QLog.isColorLevel()) {
-              break label250;
-            }
-            QLog.d("EquipLockWebEntrance", 2, "mgr can't find stat");
-            paramAppInterface = null;
-          }
-        }
-      }
-      while ((str != null) && (str.length() > 0) && (paramAppInterface != null) && (paramAppInterface.length() > 0))
-      {
-        paramString = new StringBuilder(paramString);
-        paramString.append("&area=" + str);
-        paramString.append("&mob=" + paramAppInterface);
-        return paramString.toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("EquipLockWebEntrance", 2, "mgr find stat, nationCode=" + paramAppInterface.nationCode + " no.=" + paramAppInterface.mobileNo);
-        }
-        str = paramAppInterface.nationCode;
-        paramAppInterface = paramAppInterface.mobileNo;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("EquipLockWebEntrance", 2, "mgr is null");
+          localEnterpriseQQMenuEntity.data = ((byte[])paramGetCRMMenuResponse.data.clone());
+          localEnterpriseQQMenuEntity.savedDateTime = paramGetCRMMenuResponse.savedDateTime;
+          localEnterpriseQQMenuEntity.seqno = paramGetCRMMenuResponse.seqno;
+          paramQQAppInterface.a(localEnterpriseQQMenuEntity);
         }
         for (;;)
         {
-          str = null;
-          paramAppInterface = localObject;
-          break;
-          if (QLog.isColorLevel()) {
-            QLog.d("EquipLockWebEntrance", 2, "getEntranceIntent:app is null");
-          }
+          this.jdField_a_of_type_Aoei.a(paramString, localList, paramInt, l);
+          return;
+          paramQQAppInterface.a(paramGetCRMMenuResponse);
         }
-        label250:
-        paramAppInterface = null;
+      }
+    } while (paramGetCRMMenuResponse == null);
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramGetCRMMenuResponse = (EnterpriseQQMenuEntity)paramQQAppInterface.a(EnterpriseQQMenuEntity.class, paramString);
+    if (paramGetCRMMenuResponse != null)
+    {
+      paramGetCRMMenuResponse.savedDateTime = l;
+      paramQQAppInterface.a(paramGetCRMMenuResponse);
+    }
+    this.jdField_a_of_type_Aoei.a(paramString, l);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l = 0L;
+      if (this.jdField_a_of_type_Aoei != null) {
+        l = this.jdField_a_of_type_Aoei.a(paramString);
+      }
+      if ((paramBoolean) || ((!paramBoolean) && (System.currentTimeMillis() - l > 43200000L)))
+      {
+        paramQQAppInterface = (ajvp)paramQQAppInterface.a(21);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.a(paramString);
+        }
       }
     }
   }
   
-  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
+  public void a(String arg1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2, StructMsg.ButtonInfo paramButtonInfo)
   {
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "enter actCaller is null");
-      }
-      return;
-    }
-    paramAppInterface = a(paramActivity, paramAppInterface, paramInt);
-    try
-    {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, false, -1);
-      return;
-    }
-    catch (SecurityException paramActivity) {}
-  }
-  
-  public static void a(Activity paramActivity, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramActivity == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "enterForResult actCaller is null");
+    if (paramButtonInfo == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("EnterpriseQQManager", 2, "buttoninfo is null.");
       }
     }
+    int i;
     do
     {
       return;
-      if (paramAppInterface != null) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("EquipLockWebEntrance", 4, "enterForResult app is null");
-    return;
-    paramAppInterface = a(paramActivity, paramAppInterface, paramInt1);
-    if (paramString != null) {
-      paramAppInterface.putExtra("tag", paramString);
-    }
-    paramAppInterface.putExtra("needResult", true);
-    try
-    {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, paramAppInterface, true, paramInt2);
-      return;
-    }
-    catch (SecurityException paramActivity) {}
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool = true;
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
-      }
-      return;
-    }
-    String str = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
-    }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("subAccountUin", paramString2);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    if ((paramString1 != null) && (!paramString1.equals(paramString2))) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool);
-      }
-      localIntent.putExtra("isSubaccount", bool);
-      localIntent.putExtra("avoidLoginWeb", bool);
-      try
+      switch (paramButtonInfo.type.get())
       {
-        VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, false, -1);
+      default: 
+        return;
+      case 1: 
+        if (paramButtonInfo.is_need_lbs.get())
+        {
+          if ((System.currentTimeMillis() - this.jdField_a_of_type_Long < this.jdField_b_of_type_Long) && (this.jdField_a_of_type_Double != 0.0D) && (this.jdField_b_of_type_Double != 0.0D))
+          {
+            a(paramContext, paramQQAppInterface, paramString2, ???, true, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
+            return;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+          this.jdField_a_of_type_AndroidContentContext = paramContext;
+          paramContext = new aoel(this);
+          paramContext.a = paramString2;
+          paramContext.b = ???;
+          synchronized (jdField_b_of_type_ArrayOfByte)
+          {
+            this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+            ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 8, null, true);
+            return;
+          }
+        }
+        a(paramContext, paramQQAppInterface, paramString2, ???, false, 0.0D, 0.0D);
+        return;
+      case 2: 
+        a(paramContext, paramQQAppInterface, paramString2, paramButtonInfo);
         return;
       }
-      catch (SecurityException paramActivity)
-      {
-        return;
-      }
-      bool = false;
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
-  {
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "subaccountEnter actCaller is null");
-      }
-      return;
-    }
-    String str = a(paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "AuthDevUgAct url=" + str);
-    }
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("subAccountUin", paramString2);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString1 != null)
-    {
-      bool1 = bool2;
-      if (!paramString1.equals(paramString2)) {
-        bool1 = true;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebEntrance", 2, "globalEnter currentUin=" + paramString1 + " reqUin=" + paramString2 + " isSubaccount=" + bool1);
-    }
-    localIntent.putExtra("isSubaccount", bool1);
-    localIntent.putExtra("avoidLoginWeb", bool1);
-    if (paramString3 != null) {
-      localIntent.putExtra("tag", paramString3);
-    }
-    localIntent.putExtra("needResult", true);
-    try
-    {
-      VasWebviewUtil.openQQBrowserActivity(paramActivity, "", 16384L, localIntent, true, paramInt2);
-      return;
-    }
-    catch (SecurityException paramActivity) {}
+      i = paramButtonInfo.event_id.get();
+    } while ((i == 1) || (i == 2) || (i == 3) || (i != 4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoej
  * JD-Core Version:    0.7.0.1
  */

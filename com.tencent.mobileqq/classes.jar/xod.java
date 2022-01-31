@@ -1,23 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.TabLayout;
+import java.io.PrintStream;
 
-class xod
-  implements View.OnClickListener
+public class xod
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xod(xoc paramxoc, DialogInterface.OnClickListener paramOnClickListener) {}
+  public xod(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xoc, -2);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    System.out.println("value = " + f);
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int - this.b)
+    {
+      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
+      if (paramValueAnimator != null) {
+        paramValueAnimator.setTranslationX(this.d * f);
+      }
+      i += 1;
     }
-    this.jdField_a_of_type_Xoc.dismiss();
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xod
  * JD-Core Version:    0.7.0.1
  */

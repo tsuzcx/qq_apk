@@ -1,69 +1,46 @@
-import android.app.Activity;
+import android.content.Intent;
 
 public class aqly
 {
-  public aqmj a(int paramInt, aqne paramaqne)
+  public long a;
+  private aqlz a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  
+  public aqly(aqlz paramaqlz)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new aqmo();
-    case 3: 
-      return new aqmn();
-    case 2: 
-      return new aqms();
-    }
-    return new aqmp();
+    this.jdField_a_of_type_Aqlz = paramaqlz;
   }
   
-  public aqne a(int paramInt)
+  public void a(Intent paramIntent)
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_Aqlz != null)
     {
-    default: 
-      return null;
-    case 1: 
-      return new aqnh();
-    case 3: 
-      return new aqnf();
-    case 2: 
-      return new aqnm();
-    }
-    return new aqnk();
-  }
-  
-  public aqol a(Activity paramActivity, int paramInt, aqne paramaqne)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      if ((paramaqne instanceof aqnh)) {
-        return new aqox(paramActivity, (aqnh)paramaqne);
+      long l2 = System.currentTimeMillis();
+      this.jdField_a_of_type_Aqlz.a();
+      long l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Long = (l1 - l2);
+      this.jdField_a_of_type_Aqlz.a(paramIntent);
+      l2 = System.currentTimeMillis();
+      this.b = (l2 - l1);
+      this.jdField_a_of_type_Aqlz.a(null);
+      l1 = System.currentTimeMillis();
+      this.c = (l1 - l2);
+      this.jdField_a_of_type_Aqlz.b();
+      l2 = System.currentTimeMillis();
+      this.d = (l2 - l1);
+      this.jdField_a_of_type_Aqlz.c();
+      this.e = (System.currentTimeMillis() - l2);
+      if (aqmd.a().a().a())
+      {
+        paramIntent = "buildParamsTime : " + this.jdField_a_of_type_Long + ", buildPresenterTime " + this.b + ", buildViewTime " + this.c + ", buildModelTime " + this.d + ", buildCompleteTime " + this.e;
+        aqmd.a().a().a("GalleryDirector", 4, paramIntent);
       }
-      aqmb.a().a().a("MVPFactory", 4, "createView type is PIC, presenter is error!");
-      return null;
-    case 3: 
-      if ((paramaqne instanceof aqnf)) {
-        return new aqor(paramActivity, (aqnf)paramaqne);
-      }
-      aqmb.a().a().a("MVPFactory", 4, "createView type is FILE_PIC, presenter is error!");
-      return null;
-    case 2: 
-      if ((paramaqne instanceof aqnm)) {
-        return new aqpr(paramActivity, (aqnm)paramaqne);
-      }
-      aqmb.a().a().a("MVPFactory", 4, "createView type is VIDEO, presenter is error!");
-      return null;
+      return;
     }
-    if ((paramaqne instanceof aqnk)) {
-      return new aqpn(paramActivity, (aqnk)paramaqne);
-    }
-    aqmb.a().a().a("MVPFactory", 4, "createView type is FILE_VIDEO, presenter is error!");
-    return null;
+    aqmd.a().a().a("GalleryDirector", 4, "Gallery builder is null!");
   }
 }
 

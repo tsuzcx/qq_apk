@@ -1,6 +1,20 @@
-public abstract interface ajop
+import java.io.File;
+import java.util.Comparator;
+
+public final class ajop
+  implements Comparator<File>
 {
-  public abstract void a(int paramInt);
+  public int a(File paramFile1, File paramFile2)
+  {
+    if ((paramFile1.exists()) && (paramFile2.exists()))
+    {
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -1,57 +1,87 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amyz
-  extends amyi<amyy>
+  extends amyp<QQLevelIconConfig>
 {
-  public static amyy c()
+  public static QQLevelIconConfig c()
   {
-    return (amyy)ampm.a().a(412);
+    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)ampl.a().a(542);
+    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
+    if (localQQLevelIconConfig2 == null) {
+      localQQLevelIconConfig1 = new QQLevelIconConfig();
+    }
+    return localQQLevelIconConfig1;
   }
   
   public int a()
   {
-    return 412;
+    return 542;
   }
   
   @NonNull
-  public amyy a()
+  public QQLevelIconConfig a()
   {
-    return new amyy();
+    return new QQLevelIconConfig();
   }
   
   @NonNull
-  public amyy a(ampi[] paramArrayOfampi)
+  public QQLevelIconConfig a(amph[] paramArrayOfamph)
   {
-    boolean bool = true;
-    localamyy = new amyy();
-    try
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLevelIconProcessor", 1, paramArrayOfamph[0].a);
+    }
+    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    for (;;)
     {
-      if (new JSONObject(paramArrayOfampi[0].a).optInt("allow_edit_color_nick", 1) == 1) {}
-      for (;;)
+      try
       {
-        localamyy.a = bool;
-        return localamyy;
-        bool = false;
+        if (!TextUtils.isEmpty(paramArrayOfamph))
+        {
+          paramArrayOfamph = new JSONObject(paramArrayOfamph);
+          if (paramArrayOfamph.optInt("newguideswitch", 1) != 1) {
+            continue;
+          }
+          bool1 = true;
+          localQQLevelIconConfig.mIsEnableGuide = bool1;
+          bool1 = bool2;
+          if (paramArrayOfamph.optInt("rushfeeswitch", 1) == 1) {
+            bool1 = true;
+          }
+          localQQLevelIconConfig.mIsNotifyPayment = bool1;
+          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfamph.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
+          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfamph.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
+        }
       }
-      return localamyy;
-    }
-    catch (JSONException paramArrayOfampi)
-    {
-      veg.e("QVipColorNickProcessor", "QVipColorNickProcessor onParsed exception :" + paramArrayOfampi.getMessage());
+      catch (JSONException paramArrayOfamph)
+      {
+        boolean bool1;
+        ved.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfamph.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
+      }
+      return localQQLevelIconConfig;
+      bool1 = false;
     }
   }
   
-  public Class<amyy> a()
+  public Class<QQLevelIconConfig> a()
   {
-    return amyy.class;
+    return QQLevelIconConfig.class;
   }
   
   @NonNull
-  public amyy b()
+  public QQLevelIconConfig b()
   {
-    return new amyy();
+    return new QQLevelIconConfig();
   }
 }
 

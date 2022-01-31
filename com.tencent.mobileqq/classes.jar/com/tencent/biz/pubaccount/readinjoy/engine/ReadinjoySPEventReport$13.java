@@ -4,8 +4,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import ota;
-import sgj;
+import osx;
+import sgg;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$13
@@ -18,7 +18,7 @@ public final class ReadinjoySPEventReport$13
     oidb_cmd0x80a.AttributeList localAttributeList1;
     oidb_cmd0x80a.AttributeList localAttributeList2;
     PBStringField localPBStringField;
-    if (ota.b(7))
+    if (osx.b(7))
     {
       localAttributeList1 = new oidb_cmd0x80a.AttributeList();
       localAttributeList1.att_id.set(1);
@@ -39,7 +39,7 @@ public final class ReadinjoySPEventReport$13
       localObject = new ArrayList();
       ((List)localObject).add(localAttributeList1);
       ((List)localObject).add(localAttributeList2);
-      sgj.a(7, (List)localObject);
+      sgg.a(7, (List)localObject);
       return;
     }
   }

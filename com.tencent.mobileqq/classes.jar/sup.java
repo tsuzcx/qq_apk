@@ -1,19 +1,24 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
 
-public abstract interface sup
+public class sup
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, sul paramsul);
+  public int a;
+  public final long a;
+  public final String a;
+  public boolean a;
+  public String b = "";
   
-  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul);
+  public sup(String paramString)
+  {
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
   
-  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul);
-  
-  public abstract void a(String paramString, int paramInt, sul paramsul);
-  
-  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul);
-  
-  public abstract void b(String paramString, int paramInt, sul paramsul);
+  public ErrorMessage a()
+  {
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
+  }
 }
 
 

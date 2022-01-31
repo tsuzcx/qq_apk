@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atpi;
-import aukn;
-import auko;
+import atpk;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyProfileDisplayPanel$25
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$25(atpi paramatpi) {}
+  public NearbyProfileDisplayPanel$25(atpk paramatpk) {}
   
   public void run()
   {
-    aukn localaukn = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-    if (localaukn != null)
+    aukp localaukp = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
+    if (localaukp != null)
     {
-      localaukn.a(atpi.a(this.this$0));
-      localaukn.a();
+      localaukp.a(atpk.a(this.this$0));
+      localaukp.a();
     }
   }
 }

@@ -1,64 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bghc
-  extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public bghc(VipComicJumpActivity paramVipComicJumpActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bghc(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    paramContext = paramIntent.getStringExtra("pluginsdk_launchReceiver");
-    String str = paramIntent.getAction();
-    if (((!TextUtils.isEmpty(str)) && ("com.tencent.mobileqq.PreLoadComicProcess".equals(str))) || ((paramContext != null) && (paramContext.equals("com.qqcomic.app.VipPreloadComicProcess")))) {
-      if (!this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "do handle launch activity in receiver.");
-        }
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bfnk.removeMessages(1000);
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = true;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c = false;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bgha);
-      }
-    }
-    while ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("comic_plugin.apk")))
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "skip handle launch activity in receiver.");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.b = paramIntent.getStringExtra("pluginsdk_extraInfo");
-    if ((this.b != null) && ("success".equals(this.b))) {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bgha, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.finish();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQComicDebug", 2, "launch activity finish, leave jump activity.");
-      return;
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bgha, -2);
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive mExtraInfo: " + this.b);
-      }
-    }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4);
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(paramInt + "preload_switch" + paramString, -1);
+    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload" + paramString, false);
+    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload_data" + paramString, false);
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt(paramInt + "mem_limit" + paramString, 256);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramInt + "ext1" + paramString, "");
   }
 }
 

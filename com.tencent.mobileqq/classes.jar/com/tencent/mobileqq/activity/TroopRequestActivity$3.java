@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import basm;
-import basn;
+import bata;
+import batb;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,10 +14,10 @@ class TroopRequestActivity$3
   
   public void run()
   {
-    basm localbasm = basn.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
-    if (localbasm != null)
+    bata localbata = batb.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
+    if (localbata != null)
     {
-      this.this$0.i = localbasm.a();
+      this.this$0.i = localbata.a();
       ThreadManager.getUIHandler().post(new TroopRequestActivity.3.1(this));
     }
   }

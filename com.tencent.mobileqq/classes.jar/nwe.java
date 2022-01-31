@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
 
 public class nwe
-  extends osp
+  implements View.OnClickListener
 {
-  public nwe(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  public nwe(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
   
-  public void a_(List<sdd> paramList)
+  public void onClick(View paramView)
   {
-    this.a.a(paramList);
+    this.a.onBackEvent();
   }
 }
 

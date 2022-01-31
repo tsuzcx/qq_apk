@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
-class binw
-  implements DialogInterface.OnClickListener
+public class binw
+  implements EIPCResultCallback
 {
-  binw(binu parambinu, biqn parambiqn) {}
+  binw(binq parambinq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    binu.a(this.jdField_a_of_type_Binu, this.jdField_a_of_type_Biqn);
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
   }
 }
 

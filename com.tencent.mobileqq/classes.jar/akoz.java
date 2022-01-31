@@ -4,11 +4,11 @@ import java.util.Comparator;
 class akoz
   implements Comparator<MessageRecord>
 {
-  akoz(akow paramakow) {}
+  akoz(akov paramakov) {}
   
   public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
   }
 }
 

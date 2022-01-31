@@ -1,37 +1,53 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class bcbu
-  implements View.OnLayoutChangeListener
+public class bcbu
 {
-  bcbu(bcbq parambcbq, View paramView) {}
+  public long a;
+  private bcbx a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public bcbu(bcbx parambcbx)
   {
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidGraphicsRect);
-    paramInt2 = this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidGraphicsRect.left;
-    paramInt4 = this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidGraphicsRect.top;
-    if ((this.jdField_a_of_type_Bcbq.jdField_c_of_type_Int != paramInt2) || (this.jdField_a_of_type_Bcbq.d != paramInt4))
-    {
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Bcbq.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Bcbq.jdField_c_of_type_Int = paramInt2;
-      this.jdField_a_of_type_Bcbq.d = paramInt4;
+    this.jdField_a_of_type_Bcbx = parambcbx;
+  }
+  
+  public void a(Bundle paramBundle, AppInterface paramAppInterface, Intent paramIntent)
+  {
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_init_webview_plugin", true))) {
+      this.jdField_a_of_type_Bcbx.preInitWebviewPlugin();
     }
-    paramInt1 = paramInt3 - paramInt1;
-    if (paramInt1 != paramInt7 - paramInt5)
-    {
-      paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if ((paramView.leftMargin > paramInt1 / 2) && (this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView != null) && (8 == this.jdField_a_of_type_Bcbq.jdField_c_of_type_AndroidViewView.getVisibility()))
-      {
-        paramView.leftMargin = (paramInt1 - this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getWidth());
-        this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.setLayoutParams(paramView);
-      }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_get_key", true))) {
+      WebAccelerateHelper.getInstance().preGetKey(paramIntent, paramAppInterface);
     }
-    this.jdField_a_of_type_Bcbq.jdField_a_of_type_Int = paramInt1;
+    long l2 = System.currentTimeMillis();
+    this.jdField_a_of_type_Bcbx.buildLayout();
+    long l1 = System.currentTimeMillis();
+    this.b = (l1 - l2);
+    this.jdField_a_of_type_Bcbx.buildContentView(paramBundle);
+    l2 = System.currentTimeMillis();
+    this.e = (l2 - l1);
+    this.jdField_a_of_type_Bcbx.buildTitleBar();
+    l1 = System.currentTimeMillis();
+    this.c = (l1 - l2);
+    this.jdField_a_of_type_Bcbx.buildBottomBar();
+    l2 = System.currentTimeMillis();
+    this.d = (l2 - l1);
+    this.jdField_a_of_type_Bcbx.buildWebView(paramAppInterface);
+    l1 = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = (l1 - l2);
+    this.jdField_a_of_type_Bcbx.buildData();
+    this.f = (System.currentTimeMillis() - l1);
+    if (QLog.isColorLevel()) {
+      QLog.i("WebViewDirector", 2, "buildLayoutTime : " + this.b + ", buildContentTime " + this.e + ", buildTitleTime " + this.c + ", buildWebViewTime " + this.jdField_a_of_type_Long + ", buildBottomTime " + this.d + ", buildDataTime " + this.f);
+    }
   }
 }
 

@@ -1,68 +1,91 @@
-import android.graphics.Bitmap;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aycx
-  extends aycw
-  implements aybd<SpriteNativeView>
+  extends aycy
+  implements aybe<aycy>
 {
-  private Bitmap a;
-  protected ImageView a;
+  public List<ayba> b = new ArrayList();
   
   public aycx(SpriteNativeView paramSpriteNativeView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
-    this.jdField_a_of_type_AndroidWidgetImageView = a();
+    this.a = paramSpriteNativeView;
   }
   
-  protected ImageView a()
+  public <N extends ayba> N a(String paramString)
   {
-    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+    int i = 0;
+    while (i < this.b.size())
+    {
+      aycy localaycy = (aycy)this.b.get(i);
+      if (paramString.equals(localaycy.jdField_a_of_type_JavaLangString)) {
+        return localaycy;
+      }
+      if ((localaycy instanceof aycx)) {
+        return ((aycx)localaycy).a(paramString);
+      }
+      i += 1;
+    }
+    return null;
   }
   
-  public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
+  public List<ayba> a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+    return this.b;
+  }
+  
+  public void a()
+  {
+    super.a();
+    int i = 0;
+    while (i < this.b.size())
+    {
+      ((aycy)this.b.get(i)).a();
+      i += 1;
+    }
+    this.b.clear();
+  }
+  
+  public void a(aycy paramaycy)
+  {
+    if (paramaycy.jdField_a_of_type_Aybe == null)
+    {
+      this.b.add(paramaycy);
+      paramaycy.jdField_a_of_type_Aybe = this;
+      paramaycy.d();
+      return;
+    }
+    new RuntimeException("the node had another parent");
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((ayba)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((ayba)localIterator.next()).c();
+    }
   }
   
   public boolean c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
     boolean bool = super.c();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    int i = 0;
+    while (i < this.b.size())
     {
-      a(this.jdField_a_of_type_Aybf);
-      float f1 = this.jdField_a_of_type_Aybf.a;
-      float f2 = b();
-      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      float f4 = this.f;
-      float f5 = this.jdField_a_of_type_Aybf.b;
-      float f6 = b();
-      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
+      bool |= ((aycy)this.b.get(i)).c();
+      i += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
-    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
     return bool;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
 }
 

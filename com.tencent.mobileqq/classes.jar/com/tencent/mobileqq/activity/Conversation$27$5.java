@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aawi;
-import ahmx;
+import aawe;
+import ahmv;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Conversation$27$5
   implements Runnable
 {
-  public Conversation$27$5(aawi paramaawi, ArrayList paramArrayList) {}
+  public Conversation$27$5(aawe paramaawe, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aawi.a.a != null)
+    if (this.jdField_a_of_type_Aawe.a.a != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.jdField_a_of_type_Aawi.a.a.a(str, true);
+        this.jdField_a_of_type_Aawe.a.a.a(str, true);
       }
     }
   }

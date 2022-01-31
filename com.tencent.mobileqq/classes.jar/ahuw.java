@@ -1,24 +1,28 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
 public class ahuw
-  implements ahvx
+  implements ahxd
 {
-  public ahuw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public ahuw(NewFlowCameraActivity.21.1.1 param1) {}
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public void a(int paramInt)
   {
-    if (this.a.r == 10011)
+    if (paramInt == 0)
     {
-      NewFlowCameraActivity.a(this.a, paramString1);
+      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
+      if (this.a.a.a.this$0.d.getVisibility() == 0)
+      {
+        this.a.a.a.this$0.d.setVisibility(8);
+        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+      }
       return;
     }
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
-    }
-    this.a.i(true);
-    bcpw.a(this.a, ajyc.a(2131707477), 0).a();
+    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
+    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
   }
 }
 

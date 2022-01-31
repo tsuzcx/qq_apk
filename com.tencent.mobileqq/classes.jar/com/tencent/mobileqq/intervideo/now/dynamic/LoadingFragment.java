@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import arhz;
-import arii;
-import arjb;
-import arjc;
+import arib;
+import arik;
+import arjd;
+import arje;
 import com.tencent.common.app.AppInterface;
 import com.tencent.intervideo.nowproxy.Global;
 import com.tencent.intervideo.nowproxy.NowLive;
@@ -28,8 +28,8 @@ public class LoadingFragment
   extends IphoneTitleBarFragment
 {
   static View jdField_a_of_type_AndroidViewView;
-  arii jdField_a_of_type_Arii;
-  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new arjb(this);
+  arik jdField_a_of_type_Arik;
+  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new arjd(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public static void a(Context paramContext, Bundle paramBundle, View paramView)
@@ -73,12 +73,12 @@ public class LoadingFragment
         paramLayoutInflater.addView(jdField_a_of_type_AndroidViewView, paramViewGroup);
       }
     }
-    this.jdField_a_of_type_Arii.a.a.a();
+    this.jdField_a_of_type_Arik.a.a.a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131560875;
+    return 2131560874;
   }
   
   public void init(Bundle paramBundle)
@@ -89,7 +89,7 @@ public class LoadingFragment
     for (paramBundle = null; (paramBundle instanceof QQAppInterface); paramBundle = paramBundle.getAppInterface())
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-      this.jdField_a_of_type_Arii = ((arii)paramBundle.getManager(306));
+      this.jdField_a_of_type_Arik = ((arik)paramBundle.getManager(306));
       Global.addNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
       return;
     }
@@ -105,7 +105,7 @@ public class LoadingFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Arii != null) {
+    if (this.jdField_a_of_type_Arik != null) {
       Global.removeNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
     }
     jdField_a_of_type_AndroidViewView = null;

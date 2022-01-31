@@ -1,129 +1,98 @@
+import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.1;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
 
 public class biry
-  extends bjof
 {
-  private bjoa<List<biqs>> jdField_a_of_type_Bjoa = new bjoa();
-  private Map<String, biqq> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private bjoa<biqv> b = new bjoa();
-  private bjoa<String> c = new bjoa();
-  private bjoa<String> d = new bjoa();
+  private static boolean jdField_a_of_type_Boolean;
+  private final int jdField_a_of_type_Int = 0;
+  private final String jdField_a_of_type_JavaLangString = "AEFontManager";
+  private HashMap<String, Typeface> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1 };
+  private final int b = 1;
   
-  private void c()
+  public static biry a()
   {
-    Object localObject1 = biqd.a();
-    if ((localObject1 == null) || (((GetCategoryMaterialRsp)localObject1).Categories == null)) {}
-    for (;;)
+    if (!jdField_a_of_type_Boolean)
     {
-      return;
-      Object localObject2 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
-      do
+      bisa.a().a();
+      jdField_a_of_type_Boolean = true;
+    }
+    return bisa.a();
+  }
+  
+  private void b(@NonNull String paramString, @NonNull Typeface paramTypeface)
+  {
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int j = arrayOfInt.length;
+    int i = 0;
+    if (i < j)
+    {
+      switch (arrayOfInt[i])
       {
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localObject1 = (MetaCategory)((Iterator)localObject2).next();
-      } while (!((MetaCategory)localObject1).name.equals(ajyc.a(2131700003)));
-      while ((localObject1 != null) && (((MetaCategory)localObject1).materials != null))
+      }
+      for (;;)
       {
-        localObject2 = new ArrayList();
-        localObject1 = ((MetaCategory)localObject1).materials.iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          MetaMaterial localMetaMaterial = (MetaMaterial)((Iterator)localObject1).next();
-          biqs localbiqs = new biqs();
-          localbiqs.jdField_a_of_type_JavaLangString = localMetaMaterial.id;
-          localbiqs.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = localMetaMaterial;
-          if (biqo.a().a(localMetaMaterial)) {}
-          for (int i = 2;; i = 0)
-          {
-            localbiqs.jdField_a_of_type_Int = i;
-            ((List)localObject2).add(localbiqs);
-            break;
-          }
-        }
-        this.jdField_a_of_type_Bjoa.a(localObject2);
-        return;
-        localObject1 = null;
+        i += 1;
+        break;
+        LogicDataManager.getInstance().putTypeface(paramString, paramTypeface);
       }
     }
   }
   
-  public bjoa<List<biqs>> a()
+  @NonNull
+  public Typeface a(@Nullable String paramString)
   {
-    return this.jdField_a_of_type_Bjoa;
+    if (paramString != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null) {
+        return Typeface.DEFAULT;
+      }
+      return (Typeface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return Typeface.DEFAULT;
   }
   
   public void a()
   {
-    this.c.a(this.c.a());
+    a("jianqiaohei.ttf", FeatureManager.getResourceDir());
   }
   
-  public void a(biim parambiim)
+  public void a(@Nullable String paramString, @Nullable Typeface paramTypeface)
   {
-    ThreadManager.getSubThreadHandler().post(new AEVideoStoryGIFTplViewModel.1(this));
-    biqd.a().a(parambiim, new birz(this));
-  }
-  
-  public void a(biqs parambiqs)
-  {
-    bisa localbisa = new bisa(this);
-    this.jdField_a_of_type_JavaUtilMap.put(parambiqs.jdField_a_of_type_JavaLangString, localbisa);
-    biqo.a().a(bizu.a(), parambiqs.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, localbisa);
-  }
-  
-  public bjoa<biqv> b()
-  {
-    return this.b;
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public void b(@Nullable biqs parambiqs)
-  {
-    if (parambiqs != null)
-    {
-      parambiqs = biqo.a().a(parambiqs.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-      this.c.a(parambiqs);
+    if ((paramString == null) || (paramTypeface == null)) {
       return;
     }
-    this.c.a(null);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramTypeface);
+    b(paramString, paramTypeface);
   }
   
-  public bjoa<String> c()
+  public void a(@Nullable String paramString1, @Nullable String paramString2)
   {
-    return this.c;
-  }
-  
-  public void c(@Nullable biqs parambiqs)
-  {
-    if (parambiqs != null)
-    {
-      parambiqs = (String)parambiqs.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename");
-      this.d.a(parambiqs);
-      return;
+    Object localObject = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      localObject = FeatureManager.getResourceDir();
     }
-    this.d.a(null);
-  }
-  
-  public bjoa<String> d()
-  {
-    return this.d;
+    paramString2 = new File((String)localObject, paramString1);
+    localObject = Typeface.DEFAULT;
+    if (paramString2.exists()) {
+      try
+      {
+        a(paramString1, Typeface.createFromFile(paramString2));
+        return;
+      }
+      catch (RuntimeException paramString1)
+      {
+        bjah.d("AEFontManager", "【ERROR】Typeface.createFromFile");
+        return;
+      }
+    }
+    bjah.a("AEFontManager", "文件不存在" + paramString2.getAbsolutePath());
   }
 }
 

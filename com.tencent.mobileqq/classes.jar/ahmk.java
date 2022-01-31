@@ -1,13 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import android.view.animation.Interpolator;
 
 public class ahmk
-  implements View.OnClickListener
+  implements Interpolator
 {
-  public ahmk(DrawerFrame paramDrawerFrame) {}
-  
-  public void onClick(View paramView) {}
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
+  }
 }
 
 

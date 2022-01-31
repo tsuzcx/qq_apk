@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import beug;
-import beuh;
-import beuj;
+import beux;
+import beuy;
+import beva;
 
 public class GameRuntime$2$1
   implements Runnable
 {
-  public GameRuntime$2$1(beuj parambeuj) {}
+  public GameRuntime$2$1(beva parambeva) {}
   
   public void run()
   {
-    beuh.a(this.a.a).c();
+    beuy.a(this.a.a).c();
   }
 }
 

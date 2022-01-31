@@ -1,55 +1,29 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.content.Intent;
 
-public abstract interface apkp
+public class apkp
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
   
-  public abstract long a();
+  public apkp a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
+    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
+    this.c = paramIntent.getIntExtra("enterfrom", 0);
+    return this;
+  }
   
-  public abstract FileManagerEntity a();
-  
-  public abstract WeiYunFileInfo a();
-  
-  public abstract String a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract int c();
-  
-  public abstract long c();
-  
-  public abstract String c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract int e();
-  
-  public abstract String e();
-  
-  public abstract String f();
-  
-  public abstract String g();
-  
-  public abstract String h();
-  
-  public abstract String i();
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

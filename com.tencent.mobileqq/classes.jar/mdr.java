@@ -1,44 +1,24 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-class mdr
-  implements View.OnClickListener
+public class mdr
+  implements View.OnTouchListener
 {
-  mdr(mdq parammdq) {}
+  public mdr(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 0;
-    paramView = (mdt)paramView.getTag();
-    if (mdq.a(this.a) == null) {
-      return;
-    }
-    axqw.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(paramView.jdField_a_of_type_Long));
-    }
-    mdq.a(this.a).getCurrentAccountUin();
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
-    localIntent.putExtra("memberUin", String.valueOf(paramView.jdField_a_of_type_Long));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      i = 1000;
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      localIntent.putExtra("uinType", i);
-      localIntent.setPackage(mdq.a(this.a).getApplication().getPackageName());
-      mdq.a(this.a).getApp().sendBroadcast(localIntent);
-      return;
-      if (this.a.jdField_a_of_type_Int == 2) {
-        i = 1004;
-      }
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

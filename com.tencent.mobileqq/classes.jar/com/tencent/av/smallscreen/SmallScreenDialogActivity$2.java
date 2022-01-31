@@ -1,15 +1,15 @@
 package com.tencent.av.smallscreen;
 
-import bbgg;
+import bbgu;
 
 class SmallScreenDialogActivity$2
   implements Runnable
 {
-  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bbgg parambbgg) {}
+  SmallScreenDialogActivity$2(SmallScreenDialogActivity paramSmallScreenDialogActivity, String paramString, bbgu parambbgu) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bbgg);
+    this.this$0.a(this.jdField_a_of_type_JavaLangString + "_dealy", this.jdField_a_of_type_Bbgu);
   }
 }
 

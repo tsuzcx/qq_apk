@@ -1,19 +1,10 @@
-import android.view.View;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
 
-public class ajrg
+public abstract interface ajrg
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
   
-  public ajrg(View paramView, int paramInt1, String paramString, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
+  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
 }
 
 

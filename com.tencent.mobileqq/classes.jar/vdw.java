@@ -1,16 +1,27 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 class vdw
-  implements View.OnClickListener
 {
-  vdw(vdu paramvdu) {}
+  public TextView a;
   
-  public void onClick(View paramView)
+  public vdw(View paramView)
   {
-    if (vdu.a(this.a) != null) {
-      vdu.a(this.a).O_();
+    this.a = ((TextView)paramView.findViewById(2131376835));
+  }
+  
+  public void a(vve paramvve, vdv paramvdv)
+  {
+    if (TextUtils.isEmpty(paramvve.a))
+    {
+      this.a.setVisibility(8);
+      return;
     }
+    this.a.setVisibility(0);
+    this.a.setText(vdr.a(paramvve));
+    vdr.a(this.a);
+    this.a.setOnClickListener(new vdx(this, paramvdv, paramvve));
   }
 }
 

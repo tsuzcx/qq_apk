@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class afgj
-  extends ajxl
 {
-  public afgj(SearchBaseFragment paramSearchBaseFragment) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
-      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
-    }
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public AccountSearchPb.record a;
+  public String a;
+  public boolean a = true;
+  public int b;
+  public TextView b;
+  public String b;
+  public int c;
+  public TextView c;
+  public TextView d;
 }
 
 

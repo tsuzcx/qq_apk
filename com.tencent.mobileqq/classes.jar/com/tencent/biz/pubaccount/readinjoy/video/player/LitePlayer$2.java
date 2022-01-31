@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import qyp;
+import qym;
 
 public class LitePlayer$2
   implements Runnable
 {
-  public LitePlayer$2(qyp paramqyp, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, long paramLong, int paramInt2) {}
+  public LitePlayer$2(qym paramqym, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, long paramLong, int paramInt2) {}
   
   public void run()
   {

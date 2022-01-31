@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.structmsg;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import axum;
-import axus;
-import axwe;
+import axuo;
+import axuu;
+import axwg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,46 +32,46 @@ public class StructMsgSubImageVideo
     super(paramBundle);
   }
   
-  public StructMsgSubImageVideo(axwe paramaxwe)
+  public StructMsgSubImageVideo(axwg paramaxwg)
   {
-    super(paramaxwe);
-    if (paramaxwe.a == null) {}
+    super(paramaxwg);
+    if (paramaxwg.a == null) {}
     for (;;)
     {
       return;
-      Iterator localIterator = paramaxwe.a.iterator();
+      Iterator localIterator = paramaxwg.a.iterator();
       while (localIterator.hasNext())
       {
-        paramaxwe = (axwe)localIterator.next();
+        paramaxwg = (axwg)localIterator.next();
         Object localObject;
-        if ((paramaxwe == null) || (!"item".equals(paramaxwe.b)))
+        if ((paramaxwg == null) || (!"item".equals(paramaxwg.b)))
         {
           localObject = new StringBuilder().append("StructMsgSubImageVideo: null or wrong node ");
-          if (paramaxwe == null) {}
-          for (paramaxwe = "null";; paramaxwe = paramaxwe.b)
+          if (paramaxwg == null) {}
+          for (paramaxwg = "null";; paramaxwg = paramaxwg.b)
           {
-            Log.i("StructMsgSubImageVideo", paramaxwe);
+            Log.i("StructMsgSubImageVideo", paramaxwg);
             break;
           }
         }
-        if ((paramaxwe.a == null) || (paramaxwe.a.isEmpty()))
+        if ((paramaxwg.a == null) || (paramaxwg.a.isEmpty()))
         {
           Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: no child in node");
         }
         else
         {
-          localObject = paramaxwe.a("apptype");
+          localObject = paramaxwg.a("apptype");
           if (!"10".equals(localObject))
           {
             Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong app type " + (String)localObject);
           }
           else
           {
-            localObject = paramaxwe.a("type");
+            localObject = paramaxwg.a("type");
             if ("0".equals(localObject)) {
-              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(paramaxwe);
+              this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(paramaxwg);
             } else if ("1".equals(localObject)) {
-              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(paramaxwe);
+              this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(paramaxwg);
             } else {
               Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong type " + (String)localObject);
             }
@@ -117,7 +117,7 @@ public class StructMsgSubImageVideo
   
   public String getSourceName()
   {
-    return ajyc.a(2131714614);
+    return ajya.a(2131714625);
   }
   
   public View getSourceView(Context paramContext, View paramView)
@@ -160,24 +160,24 @@ public class StructMsgSubImageVideo
   
   protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    axum localaxum = new axum(this, new axus());
+    axuo localaxuo = new axuo(this, new axuu());
     try
     {
-      localaxum.setOutput(paramByteArrayOutputStream, paramString);
-      localaxum.startDocument(paramString, Boolean.valueOf(true));
-      localaxum.startTag(null, "msg");
-      localaxum.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localaxum.attribute(null, "flag", String.valueOf(this.mFlag));
-      localaxum.attribute(null, "brief", this.mMsgBrief);
+      localaxuo.setOutput(paramByteArrayOutputStream, paramString);
+      localaxuo.startDocument(paramString, Boolean.valueOf(true));
+      localaxuo.startTag(null, "msg");
+      localaxuo.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localaxuo.attribute(null, "flag", String.valueOf(this.mFlag));
+      localaxuo.attribute(null, "brief", this.mMsgBrief);
       if (this.videoItem != null) {
-        this.videoItem.toXml(localaxum);
+        this.videoItem.toXml(localaxuo);
       }
       if (this.imageItem != null) {
-        this.imageItem.toXml(localaxum);
+        this.imageItem.toXml(localaxuo);
       }
-      localaxum.endTag(null, "msg");
-      localaxum.endDocument();
-      localaxum.flush();
+      localaxuo.endTag(null, "msg");
+      localaxuo.endDocument();
+      localaxuo.flush();
       return;
     }
     catch (IOException paramByteArrayOutputStream)

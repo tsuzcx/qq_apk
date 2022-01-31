@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.support.annotation.NonNull;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
 
-class bkcf
-  implements View.OnSystemUiVisibilityChangeListener
+public class bkcf
+  extends ssh
 {
-  bkcf(bkbv parambkbv) {}
+  public final int a;
+  public final long a;
+  @NonNull
+  public final DoodleEmojiItem a;
+  public final boolean a;
+  public final long b;
+  public boolean b;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public bkcf(@NonNull DoodleEmojiItem paramDoodleEmojiItem, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    if ((paramInt & 0x4) == 0)
-    {
-      veg.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(bkbv.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(bkbv.a(this.a), 1500L);
-      return;
-    }
-    veg.b("EditTextDialog", "onStatusBarHide");
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

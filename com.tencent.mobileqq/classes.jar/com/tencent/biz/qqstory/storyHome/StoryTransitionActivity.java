@@ -15,33 +15,33 @@ import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import ndh;
+import nde;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ssv;
-import tcq;
-import tcv;
-import tdc;
-import uoi;
-import uos;
-import uxw;
-import veg;
-import vwm;
+import sss;
+import tcn;
+import tcs;
+import tcz;
+import uof;
+import uop;
+import uxt;
+import ved;
+import vwj;
 
 public class StoryTransitionActivity
   extends QQStoryBaseActivity
 {
   private int jdField_a_of_type_Int;
-  private uxw jdField_a_of_type_Uxw;
+  private uxt jdField_a_of_type_Uxt;
   
   public static final Intent a(Context paramContext)
   {
     if (QLog.isColorLevel()) {
-      QLog.w("zivonchen", 2, "getMainIntent() isNowTabAdded = " + ndh.c);
+      QLog.w("zivonchen", 2, "getMainIntent() isNowTabAdded = " + nde.c);
     }
-    if (ndh.c)
+    if (nde.c)
     {
-      ((tcq)tdc.a(18)).a();
+      ((tcn)tcz.a(18)).a();
       paramContext = new Intent(paramContext, SplashActivity.class);
       paramContext.putExtra("fragment_id", 1);
       paramContext.putExtra("tab_index", MainFragment.g);
@@ -55,20 +55,20 @@ public class StoryTransitionActivity
     return paramContext;
   }
   
-  private uxw a(@NonNull String paramString)
+  private uxt a(@NonNull String paramString)
   {
     try
     {
       paramString = getClassLoader().loadClass(paramString);
-      if ((uxw.class.isAssignableFrom(paramString)) && (uxw.class != paramString))
+      if ((uxt.class.isAssignableFrom(paramString)) && (uxt.class != paramString))
       {
-        paramString = (uxw)paramString.newInstance();
+        paramString = (uxt)paramString.newInstance();
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      veg.c("StoryTransitionActivity", "createTargetObjectByName error", paramString);
+      ved.c("StoryTransitionActivity", "createTargetObjectByName error", paramString);
     }
     return null;
   }
@@ -99,7 +99,7 @@ public class StoryTransitionActivity
     if ((paramInt >= 0) && (!(paramContext instanceof Activity))) {
       throw new IllegalArgumentException("context should be an instance of Activity");
     }
-    veg.a("StoryTransitionActivity", "startAsProxy %s", paramString);
+    ved.a("StoryTransitionActivity", "startAsProxy %s", paramString);
     Intent localIntent = new Intent(paramContext, StoryTransitionActivity.class);
     localIntent.putExtra("jump_action", 5);
     localIntent.putExtra("target_name", paramString);
@@ -124,14 +124,14 @@ public class StoryTransitionActivity
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    vwm localvwm = vwm.a();
-    if (localvwm.a())
+    vwj localvwj = vwj.a();
+    if (localvwj.a())
     {
       paramString1 = new Bundle();
       paramString1.putInt("entrance_type", paramInt);
       paramString1.putString("story_default_label", getIntent().getStringExtra("story_default_label"));
       paramString1.putString("video_tag_info", paramString2);
-      localvwm.a(this, paramString1);
+      localvwj.a(this, paramString1);
       overridePendingTransition(2130772217, 2130772038);
       return true;
     }
@@ -140,7 +140,7 @@ public class StoryTransitionActivity
     if ((!paramBoolean2) || (ShortVideoUtils.a(this.app)))
     {
       bool = true;
-      paramString2 = new uoi(this.app).a(this, paramBoolean1, bool);
+      paramString2 = new uof(this.app).a(this, paramBoolean1, bool);
       paramString2.putExtra("entrance_type", paramInt);
       if (paramString1 != null) {
         paramString2.putExtra("launch_take_video_view_extra_value_key", paramString1);
@@ -158,7 +158,7 @@ public class StoryTransitionActivity
     }
     for (;;)
     {
-      veg.b("StoryTransitionActivity", "launchNewVideoTakeActivity end");
+      ved.b("StoryTransitionActivity", "launchNewVideoTakeActivity end");
       return true;
       bool = false;
       break;
@@ -172,14 +172,14 @@ public class StoryTransitionActivity
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    vwm localvwm = vwm.a();
-    if (localvwm.a())
+    vwj localvwj = vwj.a();
+    if (localvwj.a())
     {
       paramString1 = new Bundle();
       paramString1.putInt("entrance_type", paramInt1);
       paramString1.putString("story_default_label", getIntent().getStringExtra("story_default_label"));
       paramString1.putString("video_tag_info", paramString2);
-      localvwm.a(this, paramString1, paramInt2);
+      localvwj.a(this, paramString1, paramInt2);
       overridePendingTransition(2130772217, 2130772038);
       return true;
     }
@@ -188,7 +188,7 @@ public class StoryTransitionActivity
     if ((!paramBoolean2) || (ShortVideoUtils.a(this.app)))
     {
       bool = true;
-      paramString2 = new uoi(this.app).a(this, paramBoolean1, bool);
+      paramString2 = new uof(this.app).a(this, paramBoolean1, bool);
       paramString2.putExtra("entrance_type", paramInt1);
       if (paramString1 != null) {
         paramString2.putExtra("launch_take_video_view_extra_value_key", paramString1);
@@ -198,7 +198,7 @@ public class StoryTransitionActivity
       }
       paramString2.putExtra("start_time", l);
       paramString2.putExtra("story_default_label", getIntent().getStringExtra("story_default_label"));
-      paramString1 = (tcv)tdc.a(10);
+      paramString1 = (tcs)tcz.a(10);
       startActivityForResult(paramString2, paramInt2);
       if (!paramBoolean2) {
         break label219;
@@ -207,7 +207,7 @@ public class StoryTransitionActivity
     }
     for (;;)
     {
-      veg.b("StoryTransitionActivity", "launchNewVideoTakeActivity end");
+      ved.b("StoryTransitionActivity", "launchNewVideoTakeActivity end");
       return true;
       bool = false;
       break;
@@ -222,9 +222,9 @@ public class StoryTransitionActivity
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    uxw localuxw = this.jdField_a_of_type_Uxw;
-    if (localuxw != null) {
-      localuxw.a(paramInt1, paramInt2, paramIntent);
+    uxt localuxt = this.jdField_a_of_type_Uxt;
+    if (localuxt != null) {
+      localuxt.a(paramInt1, paramInt2, paramIntent);
     }
     switch (paramInt1)
     {
@@ -252,7 +252,7 @@ public class StoryTransitionActivity
     super.doOnCreate(paramBundle);
     if (this.app == null)
     {
-      veg.b("StoryTransitionActivity", "StoryTransitionActivity app is null!!!!!!");
+      ved.b("StoryTransitionActivity", "StoryTransitionActivity app is null!!!!!!");
       finish();
       return false;
     }
@@ -273,7 +273,7 @@ public class StoryTransitionActivity
         {
           for (;;)
           {
-            veg.a("StoryTransitionActivity", "parse tag json error, json:%s, error:%s", paramBundle, localJSONException);
+            ved.a("StoryTransitionActivity", "parse tag json error, json:%s, error:%s", paramBundle, localJSONException);
           }
         }
         a(false, true, i, null, getIntent().getStringExtra("video_tag"), 1882323);
@@ -287,7 +287,7 @@ public class StoryTransitionActivity
       continue;
       if (2 == j)
       {
-        Bosses.get().postJob(new uos(this, "StoryTransitionActivity"));
+        Bosses.get().postJob(new uop(this, "StoryTransitionActivity"));
         finish();
       }
       else if (3 == j)
@@ -297,8 +297,8 @@ public class StoryTransitionActivity
       }
       else if (4 == j)
       {
-        veg.b("StoryTransitionActivity", "update story config from server.");
-        ((ssv)((QQAppInterface)getAppInterface()).a(98)).d();
+        ved.b("StoryTransitionActivity", "update story config from server.");
+        ((sss)((QQAppInterface)getAppInterface()).a(98)).d();
         finish();
       }
       else
@@ -307,43 +307,43 @@ public class StoryTransitionActivity
         if (5 == j)
         {
           localObject = getIntent().getStringExtra("target_name");
-          veg.a("StoryTransitionActivity", "ACTION_START_AS_PROXY  target = %s", localObject);
+          ved.a("StoryTransitionActivity", "ACTION_START_AS_PROXY  target = %s", localObject);
           if (localObject != null) {
-            this.jdField_a_of_type_Uxw = a((String)localObject);
+            this.jdField_a_of_type_Uxt = a((String)localObject);
           }
-          if (this.jdField_a_of_type_Uxw == null)
+          if (this.jdField_a_of_type_Uxt == null)
           {
-            veg.e("StoryTransitionActivity", "can not create TransitionCode object");
+            ved.e("StoryTransitionActivity", "can not create TransitionCode object");
             finish();
           }
           else
           {
-            this.jdField_a_of_type_Uxw.a(this);
-            this.jdField_a_of_type_Uxw.a(paramBundle, getIntent().getBundleExtra("target_args"));
+            this.jdField_a_of_type_Uxt.a(this);
+            this.jdField_a_of_type_Uxt.a(paramBundle, getIntent().getBundleExtra("target_args"));
           }
         }
         else if (6 == j)
         {
           this.jdField_a_of_type_Int = getIntent().getIntExtra("web_target_type", 0);
-          paramBundle = vwm.a();
+          paramBundle = vwj.a();
           localObject = new Bundle();
           ((Bundle)localObject).putBoolean("resource_need_all_wait", true);
           ((Bundle)localObject).putInt("entrance_type", 104);
           paramBundle.a(this, (Bundle)localObject, 100);
           overridePendingTransition(2130772217, 2130772038);
-          veg.c("StoryTransitionActivity", "web to story  dealType:" + this.jdField_a_of_type_Int);
+          ved.c("StoryTransitionActivity", "web to story  dealType:" + this.jdField_a_of_type_Int);
         }
         else if (7 == j)
         {
           paramBundle = getIntent().getExtras();
           paramBundle.putBoolean("resource_need_all_wait", true);
-          vwm.a().a(this, paramBundle, 11000);
+          vwj.a().a(this, paramBundle, 11000);
           overridePendingTransition(2130772217, 2130772038);
           finish();
         }
         else
         {
-          veg.b("StoryTransitionActivity", "StoryTransitionActivity unknow jumpAction is " + j);
+          ved.b("StoryTransitionActivity", "StoryTransitionActivity unknow jumpAction is " + j);
           finish();
         }
       }
@@ -353,30 +353,30 @@ public class StoryTransitionActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    uxw localuxw = this.jdField_a_of_type_Uxw;
-    if (localuxw != null)
+    uxt localuxt = this.jdField_a_of_type_Uxt;
+    if (localuxt != null)
     {
-      localuxw.a();
-      localuxw.d();
-      this.jdField_a_of_type_Uxw = null;
+      localuxt.a();
+      localuxt.d();
+      this.jdField_a_of_type_Uxt = null;
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    uxw localuxw = this.jdField_a_of_type_Uxw;
-    if (localuxw != null) {
-      localuxw.c();
+    uxt localuxt = this.jdField_a_of_type_Uxt;
+    if (localuxt != null) {
+      localuxt.c();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    uxw localuxw = this.jdField_a_of_type_Uxw;
-    if (localuxw != null) {
-      localuxw.b();
+    uxt localuxt = this.jdField_a_of_type_Uxt;
+    if (localuxt != null) {
+      localuxt.b();
     }
   }
 }

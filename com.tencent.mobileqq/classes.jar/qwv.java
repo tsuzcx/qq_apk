@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
-public final class qwv
-  implements Parcelable.Creator<DiscoveryBannerInfo>
+public class qwv
+  extends AnimatorListenerAdapter
 {
-  public DiscoveryBannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryBannerInfo(paramParcel);
-  }
+  public qwv(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
   
-  public DiscoveryBannerInfo[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new DiscoveryBannerInfo[paramInt];
+    HorizontalRefreshLayout.a(this.a, 0.0F);
   }
 }
 

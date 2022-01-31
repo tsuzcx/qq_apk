@@ -1,17 +1,49 @@
-public class aymm
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+class aymm
+  extends Handler
 {
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public boolean a(int paramInt)
+  aymm(ayml paramayml, Looper paramLooper)
   {
-    return false;
+    super(paramLooper);
   }
   
-  public boolean a(aymh paramaymh)
+  public void handleMessage(Message paramMessage)
   {
-    return false;
+    Activity localActivity;
+    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+    {
+      localActivity = null;
+      if (localActivity != null) {
+        break label75;
+      }
+      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
+    }
+    label75:
+    do
+    {
+      return;
+      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      break;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())));
+    this.a.jdField_a_of_type_Bcqf = new bcqf(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
+    this.a.jdField_a_of_type_Bcqf.setCancelable(true);
+    this.a.jdField_a_of_type_Bcqf.c(2131719980);
+    this.a.jdField_a_of_type_Bcqf.show();
+    return;
+    this.a.c();
+    bcql.a(localActivity, ajya.a(2131714934), 4000).a();
   }
 }
 

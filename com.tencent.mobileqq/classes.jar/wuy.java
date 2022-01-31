@@ -1,52 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
 
 class wuy
-  extends shb
+  implements DialogInterface.OnDismissListener
 {
-  wuy(wuu paramwuu) {}
+  wuy(wux paramwux) {}
   
-  protected boolean a(Integer paramInteger)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((wuu.a(this.a) == null) || (wuu.a(this.a) == null)) {
-      return false;
-    }
-    switch (paramInteger.intValue())
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramInteger);
-      wuu.a(this.a);
-      if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
-      {
-        xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
-        continue;
-        wuu.b(this.a);
-        if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
-        {
-          xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
-          continue;
-          wuu.a(this.a, 0);
-          if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
-          {
-            xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
-            continue;
-            wuu.a(this.a, 1);
-            if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null))
-            {
-              xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
-              continue;
-              wuu.c(this.a);
-              if ((wuu.a(this.a) != null) && (wuu.a(this.a).a() != null)) {
-                xhe.a(wuu.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, wuu.a(this.a).f(), wuu.a(this.a).c() });
-              }
-            }
-          }
-        }
-      }
-    }
+    wpt.a().a(new SharePanelShowStateEvent(false));
   }
 }
 

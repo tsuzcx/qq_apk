@@ -1,8 +1,23 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 
-public abstract interface acad
+public class acad
+  extends ajxj
 {
-  public abstract void a(View paramView, int paramInt);
+  public acad(SearchFriendListActivity paramSearchFriendListActivity) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
 }
 
 

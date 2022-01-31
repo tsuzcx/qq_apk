@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import java.util.Comparator;
-
-class akds
-  implements Comparator<QIMNotifyAddFriend>
+public abstract interface akds
 {
-  akds(akdr paramakdr) {}
-  
-  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
-  {
-    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
-  }
+  public abstract void a();
 }
 
 

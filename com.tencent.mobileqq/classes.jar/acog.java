@@ -1,19 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acog
-  extends aimv
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  int jdField_b_of_type_Int;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public acog(UpgradeActivity paramUpgradeActivity) {}
   
-  private acog(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    UpgradeActivity.a(this.a);
+    this.a.finish();
+  }
 }
 
 

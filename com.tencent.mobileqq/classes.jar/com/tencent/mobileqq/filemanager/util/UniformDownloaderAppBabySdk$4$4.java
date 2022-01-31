@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apwo;
-import apwp;
+import apwq;
+import apwr;
 
 public class UniformDownloaderAppBabySdk$4$4
   implements Runnable
 {
-  public UniformDownloaderAppBabySdk$4$4(apwp paramapwp) {}
+  public UniformDownloaderAppBabySdk$4$4(apwr paramapwr) {}
   
   public void run()
   {
-    apwo.c(this.a.a);
-    apwo.a(this.a.a);
+    apwq.c(this.a.a);
+    apwq.a(this.a.a);
   }
 }
 

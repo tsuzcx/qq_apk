@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afaz;
+import afax;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 public class BlessManager$1
   implements Runnable
 {
-  public BlessManager$1(afaz paramafaz) {}
+  public BlessManager$1(afax paramafax) {}
   
   public void run()
   {
-    afaz.a(this.this$0, true);
+    afax.a(this.this$0, true);
     if (QLog.isColorLevel()) {
       QLog.d("BlessManager", 2, "mCheckMultiConfigRunnable");
     }
-    Set localSet = afaz.a(this.this$0);
+    Set localSet = afax.a(this.this$0);
     if ((localSet != null) && (localSet.size() > 0)) {
       this.this$0.a(localSet);
     }
-    afaz.a(this.this$0, false);
+    afax.a(this.this$0, false);
   }
 }
 

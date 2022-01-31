@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import org.json.JSONObject;
 
 public class TracePointsData
-  extends aukm
+  extends auko
 {
   public static final String TABLE_NAME = "TracePointsData";
   public int accuracy;
@@ -15,7 +15,7 @@ public class TracePointsData
   public float speed;
   public long startTime;
   public int steps;
-  @auma
+  @aumc
   public long time;
   
   public JSONObject toJson()

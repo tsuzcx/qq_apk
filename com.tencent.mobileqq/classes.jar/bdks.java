@@ -1,34 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bdks
-  implements DialogInterface.OnClickListener
 {
-  public bdks(DownloadManager.17 param17) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(String paramString, int paramInt, long paramLong)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdkm.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdkm.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
+    return a(paramLong).getInt(paramString, paramInt);
+  }
+  
+  public static SharedPreferences a()
+  {
+    int i = Build.VERSION.SDK_INT;
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    if (i > 10) {}
+    for (i = 4;; i = 0) {
+      return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
+  }
+  
+  public static SharedPreferences a(long paramLong)
+  {
+    if (paramLong == 0L) {
+      return a();
     }
+    String str = bdik.b(String.valueOf(paramLong)) + "_" + "preference";
+    return BaseApplication.getContext().getSharedPreferences(str, 0);
+  }
+  
+  public static void a(String paramString, int paramInt, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = a(paramLong).edit();
+    localEditor.putInt(paramString, paramInt);
+    localEditor.commit();
   }
 }
 

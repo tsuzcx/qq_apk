@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class awuy
-  implements awut
+  implements Comparator<awon>
 {
-  public awuy(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  public awuy(MiniProgramSearchEngine paramMiniProgramSearchEngine) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public int a(awon paramawon1, awon paramawon2)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    awvy.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
-  }
-  
-  public void a(List paramList, awvh paramawvh)
-  {
-    a(paramList, paramawvh.a);
+    int i = paramawon2.a[2] - paramawon1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = paramawon1.a[0] - paramawon2.a[0];
+      i = j;
+    } while (j != 0);
+    paramawon1 = paramawon1.c().substring(paramawon1.a[0] + paramawon1.a[1]);
+    paramawon2 = paramawon2.c().substring(paramawon2.a[0] + paramawon2.a[1]);
+    return ChnToSpell.a(paramawon1, 2).compareTo(ChnToSpell.a(paramawon2, 2));
   }
 }
 

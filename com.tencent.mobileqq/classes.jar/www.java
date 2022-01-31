@@ -1,8 +1,8 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-
-public abstract interface www
+public class www
 {
-  public abstract void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed);
+  public float a;
+  public int a;
+  public CharSequence a;
 }
 
 

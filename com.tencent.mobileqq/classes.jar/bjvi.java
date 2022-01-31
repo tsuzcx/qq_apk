@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import android.view.View.OnClickListener;
 
 class bjvi
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  bjvi(bjvc parambjvc) {}
+  bjvi(bjve parambjve) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return this.a.a.a(paramMotionEvent);
+    this.a.a.a(34);
   }
 }
 

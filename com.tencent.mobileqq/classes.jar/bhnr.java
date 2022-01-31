@@ -1,707 +1,385 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.ExifInterface;
-import android.text.TextUtils;
-import android.util.LruCache;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
+import com.tencent.ditto.utils.ClassLoadUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.pfc.opencv.QzoneVision;
-import cooperation.qzone.util.GifAntishakeModule.1;
-import cooperation.qzone.util.GifAntishakeModule.2;
-import java.io.File;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.stickynote.QzoneStickyNoteManager.1;
+import cooperation.qzone.stickynote.QzoneStickyNoteManager.2;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.QZLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class bhnr
+  implements bfos
 {
-  public static int a;
-  public static bhnr a;
-  public static String a;
-  private static ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  private static boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static int jdField_c_of_type_Int = 16;
-  private static int jdField_d_of_type_Int;
-  private float jdField_a_of_type_Float = Float.parseFloat(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMinSimilarity", "0.6"));
-  private long jdField_a_of_type_Long = Long.parseLong(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxGroupShootTime", "60000"));
-  private bhns jdField_a_of_type_Bhns;
-  private long jdField_b_of_type_Long = Long.parseLong(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxFrameShootTime", "3000"));
-  private String jdField_b_of_type_JavaLangString = ajsf.aV + "/tencent/Qzone/AntishakeGif/";
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private Class jdField_a_of_type_JavaLangClass;
+  private ClassLoader jdField_a_of_type_JavaLangClassLoader;
+  private Object jdField_a_of_type_JavaLangObject;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private Object jdField_b_of_type_JavaLangObject;
   private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString = ".nomedia";
+  private int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
-  private boolean f;
+  private boolean d = true;
   
-  static
+  private int a()
   {
-    jdField_a_of_type_JavaLangString = "GIFANTISHAKEMODULE_STATUS";
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(bbct.b(), bbct.b() + 5, 200L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
-    a();
+    return this.jdField_c_of_type_Int - 2;
   }
   
-  public bhnr()
+  private Class a()
   {
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeNeedToCheckShootTime", 0) == 1)
-    {
-      bool1 = true;
-      this.jdField_c_of_type_Boolean = bool1;
-      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeNeedToCheckSimilarity", 1) != 1) {
-        break label173;
-      }
-    }
-    label173:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.jdField_d_of_type_Boolean = bool1;
-      bool1 = bool2;
-      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeUseDHash", 1) == 1) {
-        bool1 = true;
-      }
-      this.e = bool1;
-      this.f = true;
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public static int a(String paramString1, String paramString2)
-  {
-    int j = 0;
-    int k;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramString1.length() != paramString2.length()))
-    {
-      k = jdField_c_of_type_Int;
-      return k;
-    }
-    for (int i = 0;; i = k)
-    {
-      k = i;
-      if (j >= paramString1.length()) {
-        break;
-      }
-      k = i;
-      if (paramString1.charAt(j) != paramString2.charAt(j)) {
-        k = i + 1;
-      }
-      j += 1;
-    }
-  }
-  
-  public static long a(String paramString)
-  {
-    Object localObject = null;
-    try
-    {
-      paramString = new ExifInterface(paramString);
-      l2 = 0L;
-      l1 = l2;
-      if (paramString != null)
-      {
-        paramString.getAttribute("DateTime");
-        paramString = paramString.getAttribute("DateTime");
-        l1 = l2;
-        if (paramString != null) {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      try
-      {
-        long l2;
-        SimpleDateFormat localSimpleDateFormat;
-        paramString = localSimpleDateFormat.parse(paramString);
-        long l1 = l2;
-        if (paramString != null) {
-          l1 = paramString.getTime();
-        }
-        return l1;
-        paramString = paramString;
-        paramString.printStackTrace();
-        paramString = null;
-      }
-      catch (ParseException paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          paramString = localObject;
-        }
-      }
-    }
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap)
-  {
-    paramBitmap.getHeight();
-    paramBitmap.getWidth();
-    Bitmap localBitmap = Bitmap.createBitmap(9, 8, Bitmap.Config.RGB_565);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    ColorMatrix localColorMatrix = new ColorMatrix();
-    localColorMatrix.setSaturation(0.0F);
-    localPaint.setColorFilter(new ColorMatrixColorFilter(localColorMatrix));
-    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
-    return localBitmap;
-  }
-  
-  public static bhnr a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bhnr == null) {
-        jdField_a_of_type_Bhnr = new bhnr();
-      }
-      bhnr localbhnr = jdField_a_of_type_Bhnr;
-      return localbhnr;
-    }
-    finally {}
-  }
-  
-  private String a()
-  {
-    File localFile;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      localFile = new File(bbuv.a(this.jdField_b_of_type_JavaLangString));
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      localFile = new File(bbuv.a(this.jdField_b_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString));
-      if (localFile.exists()) {}
+    if (this.jdField_a_of_type_JavaLangClass != null) {
+      return this.jdField_a_of_type_JavaLangClass;
     }
     try
     {
-      localFile.createNewFile();
-      return this.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaLangClass = ClassLoadUtils.load(this.jdField_a_of_type_JavaLangClassLoader, "com.qzone.homepage.ui.activity.FriendProfileCardAdapterConverter");
+      return this.jdField_a_of_type_JavaLangClass;
     }
-    catch (IOException localIOException)
+    catch (Exception localException)
     {
       for (;;)
       {
-        QLog.e("QzoneVision", 1, "getAntishakeGifFilePath: create .nomedia file fail");
+        QLog.w("QzoneStickyNoteManager", 4, "getConverterClass failed: " + localException.getMessage());
       }
     }
   }
   
-  public static String a(Bitmap paramBitmap)
+  private Object a()
   {
-    Object localObject = "";
-    int i;
-    int j;
-    boolean bool;
-    for (;;)
-    {
-      try
-      {
-        paramBitmap = a(Bitmap.createScaledBitmap(paramBitmap, 9, 8, true));
-        localArrayList = new ArrayList();
-        i = 0;
-      }
-      catch (Throwable paramBitmap)
-      {
-        ArrayList localArrayList;
-        label58:
-        localObject = "";
-        QLog.e("QzoneVision", 1, "getDhash failed t:", paramBitmap);
-      }
-      if (j >= 8) {
-        break label236;
-      }
-      if (paramBitmap.getPixel(j, i) <= paramBitmap.getPixel(j + 1, i)) {
-        break label230;
-      }
-      bool = true;
-      localArrayList.add(Boolean.valueOf(bool));
-      j += 1;
+    if (this.jdField_b_of_type_JavaLangObject != null) {
+      return this.jdField_b_of_type_JavaLangObject;
     }
-    label214:
-    label230:
-    label236:
-    label241:
-    for (;;)
+    try
     {
-      System.gc();
-      int m = localArrayList.size();
-      int k = 0;
-      i = 0;
-      paramBitmap = (Bitmap)localObject;
-      localObject = paramBitmap;
-      if (k < m) {
-        if (!((Boolean)localArrayList.get(k)).booleanValue()) {
-          break label214;
-        }
-      }
-      for (j = (k % 8 ^ 0x2) + i;; j = i)
-      {
-        i = j;
-        localObject = paramBitmap;
-        if (k % 8 == 7)
-        {
-          localObject = String.format("%s%s", new Object[] { paramBitmap, String.format("%02x", new Object[] { Integer.valueOf(j) }) });
-          i = 0;
-        }
-        k += 1;
-        paramBitmap = (Bitmap)localObject;
-        break;
-        return localObject;
-      }
+      Class localClass = ClassLoadUtils.load(this.jdField_a_of_type_JavaLangClassLoader, "com.qzone.homepage.ui.activity.FriendProfileCardAdapterConverter$LoadCallback");
+      ClassLoader localClassLoader = this.jdField_a_of_type_JavaLangClassLoader;
+      bhns localbhns = new bhns(this);
+      this.jdField_b_of_type_JavaLangObject = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, localbhns);
+      return this.jdField_b_of_type_JavaLangObject;
+    }
+    catch (Throwable localThrowable)
+    {
       for (;;)
       {
-        if (i >= 8) {
-          break label241;
-        }
-        j = 0;
-        break;
+        QLog.w("QzoneStickyNoteManager", 1, "getLocalCallback failed: " + localThrowable.getMessage());
+      }
+    }
+  }
+  
+  private Object a(ListView paramListView)
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangClassLoader == null) {
+      return null;
+    }
+    try
+    {
+      Constructor localConstructor = a().getConstructor(new Class[] { Activity.class, ListView.class, Long.TYPE, Boolean.TYPE });
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin())) {}
+      for (;;)
+      {
+        paramListView = localConstructor.newInstance(new Object[] { this.jdField_a_of_type_AndroidAppActivity, paramListView, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(bool) });
+        return paramListView;
         bool = false;
-        break label58;
-        i += 1;
       }
+      return null;
+    }
+    catch (Exception paramListView)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "newConverter failed: " + paramListView.getMessage());
     }
   }
   
-  public static void a()
+  private void a(int paramInt, boolean paramBoolean)
   {
-    if (!jdField_a_of_type_Boolean)
-    {
-      if ((QzoneVision.b()) && (a().a())) {
-        jdField_a_of_type_Boolean = QzoneVision.a();
-      }
+    QZLog.d("QzoneStickyNoteManager", 4, "onLoad " + this.jdField_a_of_type_Int + ", hasMore: " + paramBoolean);
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_Int = 0;
     }
-    else {
+    this.jdField_c_of_type_Boolean = true;
+    this.d = paramBoolean;
+  }
+  
+  private void a(ListAdapter paramListAdapter)
+  {
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetListView != null) && (paramListAdapter != null))
+    {
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(paramListAdapter);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      this.jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  private void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bhns != null) {
-      this.jdField_a_of_type_Bhns.a(paramInt);
-    }
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < 10) {
-      return true;
-    }
-    if ((paramInt2 == 10) && (this.f) && (paramInt1 > 2))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "用掉了唯一一次10的机会");
-      }
-      this.f = false;
-      return true;
+      a().getDeclaredMethod("onScrollStateChanged", new Class[] { AbsListView.class, Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramAbsListView, Integer.valueOf(paramInt) });
+      return;
     }
-    return false;
+    catch (Exception paramAbsListView)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "onScrollStateChangedProxy failed: " + paramAbsListView.getMessage());
+    }
   }
   
-  public int a()
+  private void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxFrameNum", 5);
-  }
-  
-  public Boolean a(ArrayList<Bitmap> paramArrayList)
-  {
-    long l = System.currentTimeMillis();
-    if (!jdField_a_of_type_Boolean)
-    {
-      a();
-      if (!jdField_a_of_type_Boolean) {
-        return Boolean.valueOf(false);
-      }
-    }
-    if ((paramArrayList == null) || (paramArrayList.size() < 2) || (paramArrayList.get(0) == null)) {
-      return Boolean.valueOf(false);
-    }
-    int j = paramArrayList.size() - 1;
-    CountDownLatch localCountDownLatch = new CountDownLatch(j);
-    boolean[] arrayOfBoolean = new boolean[paramArrayList.size()];
-    arrayOfBoolean[0] = true;
-    Bitmap localBitmap = (Bitmap)paramArrayList.get(0);
-    this.f = true;
-    int i = 1;
-    while (i < paramArrayList.size())
-    {
-      jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new GifAntishakeModule.2(this, paramArrayList, i, localCountDownLatch, localBitmap, j + 1, arrayOfBoolean));
-      i += 1;
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
     try
     {
-      localCountDownLatch.await();
-      i = 0;
-      if (i < paramArrayList.size()) {
-        if (arrayOfBoolean[i] == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneVision", 2, "总共用时:" + (System.currentTimeMillis() - l));
-          }
-          return Boolean.valueOf(false);
-        }
-      }
+      a().getDeclaredMethod("onScroll", new Class[] { AbsListView.class, Integer.TYPE, Integer.TYPE, Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramAbsListView, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      return;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Exception paramAbsListView)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "总共用时:" + (System.currentTimeMillis() - l));
-      }
+      QLog.w("QzoneStickyNoteManager", 4, "onScrollProxy failed: " + paramAbsListView.getMessage());
     }
-    return Boolean.valueOf(true);
   }
   
-  public ArrayList<String> a(ArrayList<Bitmap> paramArrayList)
+  private void a(String paramString)
   {
-    if (!jdField_a_of_type_Boolean)
-    {
-      a();
-      if (!jdField_a_of_type_Boolean) {
-        return null;
-      }
-    }
-    if ((paramArrayList == null) || ((paramArrayList != null) && (paramArrayList.size() < 2))) {
-      return null;
-    }
-    LocalMultiProcConfig.putInt(jdField_a_of_type_JavaLangString, jdField_b_of_type_Int);
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVision", 2, "startantishake at " + l1);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int j = paramArrayList.size();
-    if (j < 2) {
-      return null;
-    }
-    Bitmap localBitmap1 = (Bitmap)paramArrayList.get(0);
-    int k = localBitmap1.getWidth();
-    int m = localBitmap1.getHeight();
-    String[] arrayOfString = new String[j];
-    int n = k / 10;
-    int i1 = m / 10;
-    Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1, n, i1, localBitmap1.getWidth() - n * 2, localBitmap1.getHeight() - i1 * 2);
-    Object localObject = PhotoUtils.a(a(), ".IMG0", ".jpg");
-    File localFile = new File((String)localObject);
     try
     {
-      bbdr.a(localBitmap2, localFile);
-      arrayOfString[0] = localObject;
-      jdField_d_of_type_Int = 1;
-      a(jdField_d_of_type_Int);
-      localObject = new CountDownLatch(j - 1);
-      i = 1;
-      while (i < j)
-      {
-        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new GifAntishakeModule.1(this, i, k, m, paramArrayList, localBitmap1, n, i1, arrayOfString, (CountDownLatch)localObject));
-        i += 1;
-      }
+      a().getDeclaredMethod("onLifecycle", new Class[] { String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramString });
+      return;
     }
-    catch (IOException localIOException)
+    catch (Exception paramString)
     {
-      int i;
+      QLog.w("QzoneStickyNoteManager", 4, "onLifecycle failed: " + paramString.getMessage());
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    QZLog.d("QzoneStickyNoteManager", 4, "onLoadFinish " + paramBoolean);
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  private void d()
+  {
+    QLog.i("QzoneStickyNoteManager", 1, "tryLoadMore");
+    if ((this.d) && (this.jdField_a_of_type_Int != 2) && (this.jdField_b_of_type_Int == 0))
+    {
+      this.jdField_a_of_type_Int = 2;
+      e();
+    }
+  }
+  
+  private void e()
+  {
+    QLog.i("QzoneStickyNoteManager", 1, "loadMore");
+    Object localObject = a();
+    if (localObject == null)
+    {
+      QLog.e("QzoneStickyNoteManager", 1, "loadMore exit due to null callback");
+      return;
+    }
+    try
+    {
+      a().getDeclaredMethod("loadMore", new Class[] { Object.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { localObject });
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneStickyNoteManager", 1, "loadMore failed: " + localException.getMessage());
+    }
+  }
+  
+  public BaseAdapter a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
+      return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    }
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetBaseAdapter = ((BaseAdapter)a().getDeclaredMethod("getAdapter", new Class[0]).invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]));
+      return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        localIOException.printStackTrace();
-      }
-      try
-      {
-        ((CountDownLatch)localObject).await();
-        i = 0;
-        while (i < j)
-        {
-          if (arrayOfString[i] != null) {
-            localArrayList.add(arrayOfString[i]);
-          }
-          i += 1;
-        }
-      }
-      catch (InterruptedException paramArrayList)
-      {
-        for (;;)
-        {
-          paramArrayList.printStackTrace();
-        }
-        jdField_d_of_type_Int = 0;
-        long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneVision", 2, "endantishake at " + l2 + ", cost " + (l2 - l1) / 1000L + "s");
-        }
-        System.gc();
-        this.jdField_a_of_type_Bhns = null;
-        LocalMultiProcConfig.putInt(jdField_a_of_type_JavaLangString, jdField_a_of_type_Int);
+        QLog.w("QzoneStickyNoteManager", 4, "getAdapter failed: " + localException.getMessage());
       }
     }
-    return localArrayList;
   }
   
-  public void a(bhns parambhns)
+  public void a()
   {
-    this.jdField_a_of_type_Bhns = parambhns;
-  }
-  
-  public boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeSwitch", 1) == 1;
-  }
-  
-  public boolean a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return false;
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetListView != null)) {
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(new bfxx(null));
     }
-    String str = ajsf.aV + "/tencent/Qzone/AlbumAutoVConvGif/";
-    if (((String)paramArrayList.get(0)).startsWith(str))
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    QZLog.d("QzoneStickyNoteManager", 4, "onActivityResult " + paramInt1 + ", " + paramInt2 + ", " + paramIntent);
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "checkFolder false:来自视频转GIF文件夹");
-      }
-      return false;
+      a().getDeclaredMethod("onActivityResult", new Class[] { Integer.TYPE, Integer.TYPE, Intent.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramIntent });
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVision", 2, "checkFolder true");
+    catch (Exception paramIntent)
+    {
+      QLog.w("QzoneStickyNoteManager", 4, "onActivityResult failed: " + paramIntent.getMessage());
     }
-    return true;
   }
   
-  public boolean a(ArrayList<String> paramArrayList, LruCache<Integer, BitmapDrawable> paramLruCache)
+  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView)
   {
-    boolean bool1 = true;
-    boolean bool4 = false;
-    boolean bool3 = false;
+    if ((paramActivity == null) || (paramQQAppInterface == null)) {
+      QLog.w("QzoneStickyNoteManager", 1, "init failed due to null parameter");
+    }
+    boolean bool1;
     boolean bool2;
-    if (!jdField_a_of_type_Boolean)
-    {
-      a();
-      if (!jdField_a_of_type_Boolean) {
-        bool2 = bool3;
-      }
-    }
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return bool2;
-                      if (LocalMultiProcConfig.getInt(jdField_a_of_type_JavaLangString, jdField_a_of_type_Int) != jdField_b_of_type_Int) {
-                        break;
-                      }
-                      bool2 = bool3;
-                    } while (!QLog.isColorLevel());
-                    QLog.d("QzoneVision", 2, "本地记录防抖正在进行或者没有正常结束 以后就不防抖了");
-                    return false;
-                    bool2 = bool3;
-                  } while (paramArrayList == null);
-                  bool2 = bool3;
-                } while (paramArrayList.size() < 2);
-                bool2 = bool3;
-              } while (paramLruCache == null);
-              bool2 = bool3;
-            } while (paramLruCache.size() < 2);
-            bool2 = bool3;
-          } while (!a());
-          bool2 = bool3;
-        } while (paramArrayList.size() > a());
-        bool2 = bool3;
-      } while (!bgxy.d());
-      bool2 = bool3;
-    } while (!a(paramArrayList));
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVision", 2, "DeviceInfoUtil.getMemoryClass() = " + bbct.f() / 1048576L + "M, DeviceInfoUtil.getSystemAvaialbeMemory() = " + bbct.e() / 1048576L + "M");
-    }
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean))
-    {
-      bool1 = bool4;
-      if (b(paramArrayList))
+        return;
+        this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+        this.jdField_a_of_type_AndroidViewView = paramView;
+      } while (!bhby.b());
+      this.jdField_a_of_type_JavaLangClassLoader = QzonePluginProxyActivity.a();
+      paramView = new StringBuilder().append("tryLoadQzonePlugin: loader = ");
+      if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
+      for (bool1 = true;; bool1 = false)
       {
-        paramArrayList = new ArrayList();
-        if (paramLruCache == null) {
-          break label580;
-        }
-      }
-    }
-    label427:
-    label575:
-    label580:
-    for (int i = paramLruCache.size();; i = 0)
-    {
-      int j = 0;
-      for (;;)
-      {
-        if (j < i) {
-          if ((paramLruCache != null) && (paramLruCache.get(Integer.valueOf(j)) != null))
-          {
-            paramArrayList.add(((BitmapDrawable)paramLruCache.get(Integer.valueOf(j))).getBitmap());
-            j += 1;
-          }
-          else
-          {
-            bool2 = bool3;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("QzoneVision", 2, "suitableForAntishake false:mMemoryCache == null || mMemoryCache.get(i) == null");
-            return false;
-          }
-        }
-      }
-      bool1 = bool4;
-      if (a(paramArrayList).booleanValue()) {
-        bool1 = true;
-      }
-      for (;;)
-      {
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
+        QLog.i("QzoneStickyNoteManager", 1, bool1);
+        if (this.jdField_a_of_type_JavaLangClassLoader != null) {
           break;
         }
-        QLog.d("QzoneVision", 2, "suitableForAntishake " + bool1);
-        return bool1;
-        if ((!this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {
-          break label427;
-        }
-        bool1 = bool4;
-        if (b(paramArrayList)) {
-          bool1 = true;
-        }
+        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneStickyNoteManager.1(this, paramActivity, paramQQAppInterface, paramListView, paramCard));
+        return;
       }
-      if ((!this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean))
+      bool1 = bhby.a(paramActivity, paramQQAppInterface);
+      bool2 = bhby.b(paramActivity, paramQQAppInterface);
+    } while ((!bool1) || (!bool2));
+    a(paramQQAppInterface, paramActivity, paramListView, paramCard);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, ListView paramListView, Card paramCard)
+  {
+    if ((paramQQAppInterface == null) || (paramActivity == null) || (paramCard == null)) {}
+    for (;;)
+    {
+      return;
+      try
       {
-        paramArrayList = new ArrayList();
-        if (paramLruCache == null) {
-          break label575;
+        l = Long.parseLong(paramCard.uin);
+        QZLog.i("QzoneStickyNoteManager", "attach: " + this.jdField_a_of_type_Boolean + ", " + l);
+        if ((l <= 0L) || (this.jdField_a_of_type_Boolean)) {
+          continue;
         }
+        if (this.jdField_a_of_type_JavaLangClassLoader == null) {
+          this.jdField_a_of_type_JavaLangClassLoader = QzonePluginProxyActivity.a();
+        }
+        if (paramQQAppInterface != bhby.a()) {
+          bhby.a(paramActivity, paramQQAppInterface);
+        }
+        this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_AndroidOsHandler.post(new QzoneStickyNoteManager.2(this, paramListView, paramCard));
+        return;
       }
-      for (i = paramLruCache.size();; i = 0)
+      catch (Exception localException)
       {
-        j = 0;
         for (;;)
         {
-          if (j < i)
-          {
-            BitmapDrawable localBitmapDrawable = (BitmapDrawable)paramLruCache.get(Integer.valueOf(j));
-            if (localBitmapDrawable != null)
-            {
-              paramArrayList.add(localBitmapDrawable.getBitmap());
-              j += 1;
-            }
-            else
-            {
-              bool2 = bool3;
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("QzoneVision", 2, "suitableForAntishake false:mMemoryCache == null || mMemoryCache.get(i) == null");
-              return false;
-            }
-          }
-        }
-        if (a(paramArrayList).booleanValue()) {}
-        for (;;)
-        {
-          break;
-          bool1 = bool4;
-          if (this.jdField_c_of_type_Boolean) {
-            break;
-          }
-          bool1 = bool4;
-          if (this.jdField_d_of_type_Boolean) {
-            break;
-          }
-          bool1 = true;
-          break;
-          bool1 = false;
+          localException.printStackTrace();
+          long l = 0L;
         }
       }
     }
   }
   
-  public boolean b(ArrayList<String> paramArrayList)
+  public void a(Card paramCard)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (this.jdField_a_of_type_JavaLangClassLoader == null) {
+      return;
+    }
+    try
     {
-      a();
-      if (!jdField_a_of_type_Boolean) {
-        return false;
-      }
+      a().getDeclaredMethod("updateFriendProfileCard", new Class[] { Card.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramCard });
+      return;
     }
-    if ((paramArrayList == null) || (paramArrayList.size() < 2))
+    catch (Exception paramCard)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "checkShootTimeForAntishake false:filePath == null || filePath.size() < 2 || !mNativeLibLoaded");
-      }
-      return false;
+      QLog.w("QzoneStickyNoteManager", 4, "updateFriendProfileCard failed: " + paramCard.getMessage());
     }
-    int j = paramArrayList.size();
-    long l = a((String)paramArrayList.get(0));
-    if (l == 0L)
+  }
+  
+  public void b()
+  {
+    a("onResume");
+  }
+  
+  public void c()
+  {
+    a("onDestroy");
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangObject = null;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_c_of_type_Int = paramInt3;
+    a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "checkShootTimeForAntishake false:firstFrameTime == 0");
-      }
-      return false;
-    }
-    if ((a((String)paramArrayList.get(j - 1)) - l > this.jdField_a_of_type_Long) || (a((String)paramArrayList.get(j - 1)) - a((String)paramArrayList.get(0)) < 0L)) {
-      return false;
-    }
-    int i = 1;
-    while (i < j) {
-      if (a((String)paramArrayList.get(i)) - l < this.jdField_b_of_type_Long)
+      if (this.jdField_c_of_type_Boolean)
       {
-        l = a((String)paramArrayList.get(i));
-        i += 1;
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+        this.jdField_c_of_type_Boolean = false;
       }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneVision", 2, "checkShootTimeForAntishake false:getExifShootTime(filePath.get(i)) - last >= antishakeMaxFrameGapTime");
-        }
-        return false;
+      if (paramAbsListView.getLastVisiblePosition() >= a()) {
+        d();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVision", 2, "checkShootTimeForAntishake true");
-    }
-    return true;
+    a(paramAbsListView, paramInt);
   }
 }
 

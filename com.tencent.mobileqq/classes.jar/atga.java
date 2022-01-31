@@ -1,53 +1,101 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import java.util.List;
 
-class atga
-  implements ServiceConnection
+public class atga
 {
-  atga(atfz paramatfz) {}
+  protected void a() {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void a(int paramInt, String paramString) {}
+  
+  protected void a(int paramInt, String paramString, Bitmap paramBitmap) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "onServiceConnected");
-    }
-    this.a.jdField_a_of_type_Atfu = atfv.a(paramIBinder);
-    try
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_Atfu.a(this.a.jdField_a_of_type_Atgc);
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
-      }
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
+    default: 
+    case 4118: 
+    case 4131: 
+      do
       {
-        if (QLog.isDevelopLevel()) {
-          paramComponentName.printStackTrace();
+        do
+        {
+          return;
+        } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+        a((List)paramVarArgs[0], (List)paramVarArgs[1]);
+        return;
+      } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+      a(((Integer)paramVarArgs[0]).intValue(), ((Boolean)paramVarArgs[1]).booleanValue());
+      return;
+    case 4113: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+      return;
+    case 4114: 
+      b(((Boolean)paramVarArgs[0]).booleanValue(), (List)paramVarArgs[1]);
+      return;
+    case 4115: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+      return;
+    case 4116: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), null);
+      return;
+    case 4159: 
+      b();
+      return;
+    case 4161: 
+      try
+      {
+        a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1], (Bitmap)paramVarArgs[2]);
+        return;
+      }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+    case 4162: 
+      try
+      {
+        if (((Integer)paramVarArgs[0]).intValue() == 0)
+        {
+          a(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+          return;
         }
       }
+      catch (Exception paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      b(((Integer)paramVarArgs[0]).intValue(), (String)paramVarArgs[1]);
+      return;
+    }
+    try
+    {
+      a();
+      return;
+    }
+    catch (Exception paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
     }
   }
   
-  public void onServiceDisconnected(ComponentName arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "onServiceDisconnected");
-    }
-    synchronized (atfz.a(this.a))
-    {
-      this.a.jdField_a_of_type_Atfu = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
-      }
-      return;
-    }
-  }
+  public void a(List<String> paramList1, List<String> paramList2) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  protected void b() {}
+  
+  protected void b(int paramInt, String paramString) {}
+  
+  public void b(boolean paramBoolean, List<Long> paramList) {}
 }
 
 

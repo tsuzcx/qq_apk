@@ -1,39 +1,62 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class baix
+  extends Observable
+  implements Manager
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, mxm parammxm)
+  protected aukp a;
+  protected QQAppInterface a;
+  protected ConcurrentHashMap<String, TroopAioTopADInfo> a;
+  
+  public baix(QQAppInterface paramQQAppInterface)
   {
-    if (paramLong <= 0L) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+        }
+        return;
+      }
+      finally {}
     }
-    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.2.8,3,4440");
-    localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.seqno.set(0);
-    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    mxi.a(paramQQAppInterface, parammxm, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, mxm parammxm, Bundle paramBundle)
+  public TroopAioTopADInfo a(String paramString)
   {
-    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
-    localFollowRequest.luin.set(paramLong);
-    localFollowRequest.ext.set("0");
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    mxi.a(paramQQAppInterface, parammxm, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
-    noo.a(paramQQAppInterface, "" + paramLong, 0);
+    return (TroopAioTopADInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_Aukp.a(TroopAioTopADInfo.class, paramString);
+    } while (paramString == null);
+    this.jdField_a_of_type_Aukp.b(paramString);
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a())) {
+      this.jdField_a_of_type_Aukp.a();
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
   }
 }
 

@@ -1,96 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class bajx
-  extends xbc
+  extends ajsy
 {
-  public bajx(TroopFileTransferManager paramTroopFileTransferManager) {}
+  int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private bajw jdField_a_of_type_Bajw;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public bajx(Context paramContext, long paramLong, QQAppInterface paramQQAppInterface)
   {
-    long l = paramBundle.getLong("troopUin");
-    try
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public bajx(Context paramContext, bajw parambajw, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Bajw = parambajw;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  protected void b(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bajv))) {}
+    Context localContext;
+    long l1;
+    do
     {
-      paramString1 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
-      if (paramString1 == null)
+      return;
+      paramObject = (bajv)paramObject;
+      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      long l2 = this.jdField_a_of_type_Long;
+      l1 = l2;
+      if (l2 == 0L)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
-        }
-        return;
-      }
-      paramString3 = paramBundle.getString("itemKey");
-      if (paramString3 == null) {
-        return;
-      }
-      paramBundle = UUID.fromString(paramString3);
-      try
-      {
-        paramString2 = (TroopFileTransferManager.Item)paramString1.a.get(paramBundle);
-        if (paramString2 == null)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("TroopFileTransferManager", 4, "bad item key" + paramString3);
-          }
-          return;
+        l1 = l2;
+        if (this.jdField_a_of_type_Bajw != null) {
+          l1 = this.jdField_a_of_type_Bajw.a();
         }
       }
-      finally {}
-    }
-    finally {}
-    if (paramBoolean)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
-      }
-      if (paramString2.BusId == 25) {
-        label445:
-        for (;;)
-        {
-          try
-          {
-            bici.a(paramInt1);
-            if (paramInt1 == 0)
-            {
-              this.a.b.remove(paramBundle);
-              if (this.a.b.size() != 0) {
-                break label330;
-              }
-              paramString3 = new bajh(paramString2.FileName, this.a.e, 5, 604);
-              this.a.a(paramString2, 5, paramString3);
-              return;
-            }
-          }
-          finally {}
-          this.a.b.put(paramBundle, Integer.valueOf(paramInt1));
-          continue;
-          label330:
-          paramString3 = this.a.b.keySet().iterator();
-          do
-          {
-            if (!paramString3.hasNext()) {
-              break;
-            }
-            paramBundle = (UUID)paramString3.next();
-          } while (((Integer)this.a.b.get(paramBundle)).intValue() != 2147483647);
-          for (paramInt1 = 0;; paramInt1 = 1)
-          {
-            if (paramInt1 == 0) {
-              break label445;
-            }
-            paramString3 = new bajh(paramString2.FileName, this.a.e, 5, 605);
-            this.a.a(paramString2, 5, paramString3);
-            break;
-          }
-        }
-      }
-    }
+    } while (localContext == null);
+    bajt.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
   }
 }
 

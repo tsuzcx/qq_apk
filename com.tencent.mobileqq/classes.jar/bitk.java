@@ -1,20 +1,41 @@
-import dov.com.qq.im.BaseVMPeakActivity;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Set;
 
-public class bitk
-  implements bive
+class bitk
+  implements View.OnClickListener
 {
-  bitk(bitj parambitj) {}
+  bitk(bitj parambitj, bita parambita, int paramInt, bitp parambitp) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      bitj.a(this.a, paramString);
+    boolean bool;
+    if (this.jdField_a_of_type_Bita.jdField_a_of_type_Int == 13)
+    {
+      if (this.jdField_a_of_type_Bita.a()) {
+        break label73;
+      }
+      bool = true;
+      if (!bool) {
+        break label78;
+      }
+      bitj.a(this.jdField_a_of_type_Bitj).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      bitj.a(this.jdField_a_of_type_Bitj, true);
     }
-    ((bisj)bitj.a(this.a).get(paramInt)).c = paramString;
-    ((bisj)bitj.a(this.a).get(paramInt)).a = 13;
-    bitj.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
+    for (;;)
+    {
+      this.jdField_a_of_type_Bita.a(bool);
+      this.jdField_a_of_type_Bitp.a(bool);
+      return;
+      label73:
+      bool = false;
+      break;
+      label78:
+      bitj.a(this.jdField_a_of_type_Bitj).remove(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (bitj.a(this.jdField_a_of_type_Bitj).size() < 1) {
+        bitj.a(this.jdField_a_of_type_Bitj, false);
+      }
+    }
   }
 }
 

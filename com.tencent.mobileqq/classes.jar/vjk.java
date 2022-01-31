@@ -1,31 +1,27 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class vjk
-  extends vju
+  implements Animator.AnimatorListener
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  public vjk(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public vjk(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
   }
   
-  public vjk a(Bitmap paramBitmap)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new vjk(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
   }
   
-  public String toString()
-  {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

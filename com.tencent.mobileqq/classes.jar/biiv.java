@@ -1,20 +1,9 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import java.io.File;
 
-class biiv
-  extends GestureDetector.SimpleOnGestureListener
+public class biiv
 {
-  private biiv(biim parambiim) {}
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if ((biim.a(this.a) != bivx.c) && (System.currentTimeMillis() - biim.a(this.a) > 5000L))
-    {
-      biim.a(this.a).a(196614, new Object[0]);
-      biim.a(this.a, System.currentTimeMillis());
-      this.a.d(0);
-    }
-  }
+  public static final String a = biio.d() + "/app_lib/qq_filter" + File.separator;
+  public static final String b = a + "final_ptu_res_file" + File.separator;
 }
 
 

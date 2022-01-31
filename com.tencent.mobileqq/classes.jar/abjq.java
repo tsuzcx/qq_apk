@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class abjq
-  extends ajxl
+  extends BroadcastReceiver
 {
-  public abjq(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public abjq(JumpActivity paramJumpActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
+    if (!this.a.isFinishing())
     {
-      paramString = ((ajxn)this.a.app.getManager(51)).e(this.a.a + "");
-      if (paramString != null)
-      {
-        this.a.e = paramString.name;
-        JoinDiscussionActivity.a(this.a);
-      }
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abjq
  * JD-Core Version:    0.7.0.1
  */

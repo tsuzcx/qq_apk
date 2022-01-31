@@ -1,15 +1,14 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-
-final class ayjz
-  extends Editable.Factory
+public class ayjz
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public int a;
+  public String a;
+  public int b;
+  
+  ayjz(String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramCharSequence instanceof ayjy)) {
-      return (Editable)paramCharSequence;
-    }
-    return new ayjy(paramCharSequence, 32);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

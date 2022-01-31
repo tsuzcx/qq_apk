@@ -1,11 +1,16 @@
 class aete
-  implements mzb
+  implements bfxm
 {
-  aete(aerv paramaerv) {}
+  aete(aert paramaert) {}
   
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  public void a()
+  {
+    if ((!this.a.al) && (this.a.am))
+    {
+      this.a.al = true;
+      sgu.a("SUBSCRIPT_AIO_COST", null);
+    }
+  }
 }
 
 

@@ -1,21 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
 
 public class aaje
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public aaje(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    apzd.a(this.a.app).a(paramBoolean, this.a.app);
-    if (paramBoolean)
-    {
-      axqw.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
-      return;
-    }
-    axqw.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("start_from", 2);
+    ColorNoteSettingFragment.a(paramView.getContext(), ColorNoteSettingFragment.class, localBundle);
   }
 }
 

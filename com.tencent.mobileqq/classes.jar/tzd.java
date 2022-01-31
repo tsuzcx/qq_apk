@@ -1,28 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-final class tzd
-  extends AnimatorListenerAdapter
+class tzd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  tzd(Animator.AnimatorListener paramAnimatorListener) {}
+  tzd(tzc paramtzc) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.onAnimationCancel(paramAnimator);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    veg.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
-    this.a.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.a.onAnimationStart(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      return;
+    }
+    this.a.a.setImageResource(2130849558);
   }
 }
 

@@ -8,9 +8,9 @@ class puk
   
   public void onClick(View paramView)
   {
-    paramView = this.a.jdField_a_of_type_Rap.a();
+    paramView = this.a.jdField_a_of_type_Ram.a();
     if (paramView != null) {
-      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

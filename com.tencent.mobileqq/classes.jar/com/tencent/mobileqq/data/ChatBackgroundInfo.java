@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import java.io.Serializable;
 
 public class ChatBackgroundInfo
-  extends aukm
+  extends auko
   implements Serializable
 {
   public static final int COMPLETED = 0;
@@ -15,7 +15,7 @@ public class ChatBackgroundInfo
   public static final String THUMBURL = "thumbUrl";
   public static final String URL = "url";
   private static final long serialVersionUID = 1L;
-  @auma
+  @aumc
   public String id;
   public String name;
   public String thumbUrl;

@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class okd
-  implements View.OnClickListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  okd(okc paramokc, oii paramoii, Context paramContext) {}
+  okd(okb paramokb) {}
   
-  public void onClick(View paramView)
+  public void onFound(ViewBase paramViewBase)
   {
-    QLog.d(okc.a(this.jdField_a_of_type_Okc), 1, "getBottomGuideView : " + okc.b(this.jdField_a_of_type_Okc));
-    okc.a(this.jdField_a_of_type_Okc, "0X8009FEA", this.jdField_a_of_type_Oii.a);
-    onk.a(this.jdField_a_of_type_AndroidContentContext, okc.b(this.jdField_a_of_type_Okc));
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
+      return;
+    }
+    paramViewBase.setOnClickListener(new oke(this));
   }
 }
 

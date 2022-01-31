@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class adqn
-  extends VasQuickUpdateManager.CallBacker
+class adqn
+  implements adnx
 {
-  adqn(adqg paramadqg) {}
+  adqn(adqe paramadqe, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a()
   {
-    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Adqq.b == adqe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqe.a instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Adqq.c.setVisibility(0);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
-      }
-      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
+      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      actj.a -= 1;
+      return;
+      this.jdField_a_of_type_Adqq.c.setVisibility(8);
     }
   }
 }

@@ -1,163 +1,509 @@
-import android.view.View;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkTipsManager.4;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.widget.TipsBar;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import org.json.JSONObject;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
+import java.util.Iterator;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class alub
 {
-  public static int a;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-  public static int b = 3;
-  public static int c = 1;
-  public static int d = 3;
-  public static int e = 3;
-  public static int f = 10;
-  public static int g = 1;
-  private alra jdField_a_of_type_Alra;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  protected WeakReference<QQAppInterface> a;
+  private static volatile alub jdField_a_of_type_Alub;
+  private long jdField_a_of_type_Long = -1L;
+  private akat jdField_a_of_type_Akat = new aluc(this);
+  private alug jdField_a_of_type_Alug;
+  private WeakReference<adli> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
+  private WeakReference<BaseChatPie> b;
+  private WeakReference<QQAppInterface> c;
   
-  static
+  public static alub a()
   {
-    jdField_a_of_type_Int = 5;
-  }
-  
-  public alub(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-    }
-    ArkAppCenter.b(false);
-  }
-  
-  public static boolean a(Node paramNode, JSONObject paramJSONObject)
-  {
-    boolean bool = true;
-    if (paramNode == null) {
-      bool = false;
-    }
-    for (;;)
+    if (jdField_a_of_type_Alub == null) {}
+    try
     {
-      return bool;
-      try
-      {
-        String str = paramNode.getNodeName();
-        NodeList localNodeList = paramNode.getChildNodes();
-        JSONObject localJSONObject = new JSONObject();
-        int i = 0;
-        int k;
-        for (int j = 0;; j = k)
-        {
-          if (i < localNodeList.getLength())
-          {
-            Node localNode = localNodeList.item(i);
-            if ((localNode instanceof Element))
-            {
-              a(localNode, localJSONObject);
-              k = 1;
-            }
-            else
-            {
-              k = j;
-              if ((localNode instanceof Text))
-              {
-                paramJSONObject.put(str, paramNode.getFirstChild().getNodeValue());
-                k = j;
-              }
-            }
-          }
-          else
-          {
-            if (j == 0) {
-              break;
-            }
-            paramJSONObject.put(str, localJSONObject);
-            return true;
-          }
-          i += 1;
-        }
-        return false;
+      if (jdField_a_of_type_Alub == null) {
+        jdField_a_of_type_Alub = new alub();
       }
-      catch (Exception paramNode) {}
+      return jdField_a_of_type_Alub;
+    }
+    finally {}
+  }
+  
+  public static String a(MessageForArkApp paramMessageForArkApp)
+  {
+    if ((paramMessageForArkApp == null) || (paramMessageForArkApp.ark_app_message == null) || (TextUtils.isEmpty(paramMessageForArkApp.ark_app_message.appDesc))) {
+      paramMessageForArkApp = "";
+    }
+    String str;
+    do
+    {
+      return paramMessageForArkApp;
+      str = paramMessageForArkApp.ark_app_message.appDesc;
+      paramMessageForArkApp = str;
+    } while (str.length() <= 4);
+    return str.substring(0, 4);
+  }
+  
+  private void a(Bitmap paramBitmap, Context paramContext)
+  {
+    if ((this.jdField_a_of_type_Alug != null) && (paramContext != null))
+    {
+      paramBitmap = new BitmapDrawable(paramContext.getResources(), paramBitmap);
+      if (this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangRefWeakReference != null)
+      {
+        paramContext = (TipsBar)this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramContext != null) {
+          paramContext.setTipsIcon(paramBitmap);
+        }
+        axqy.a((QQAppInterface)this.c.get(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 4, 0, "", "", "", "");
+      }
+      if (this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangRefWeakReference != null)
+      {
+        paramContext = (aexj)this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangRefWeakReference.get();
+        if (paramContext != null) {
+          paramContext.a(paramBitmap);
+        }
+      }
     }
   }
   
-  public View a()
+  private void a(MessageForArkApp paramMessageForArkApp)
   {
-    if (this.jdField_a_of_type_Alra != null) {
-      return this.jdField_a_of_type_Alra.a();
+    if (paramMessageForArkApp != null)
+    {
+      if (paramMessageForArkApp.arkContainer != null) {
+        paramMessageForArkApp.arkContainer.a();
+      }
+      if (paramMessageForArkApp.mExtendMsgArkAppList != null)
+      {
+        Iterator localIterator = paramMessageForArkApp.mExtendMsgArkAppList.iterator();
+        while (localIterator.hasNext())
+        {
+          MessageForArkApp localMessageForArkApp = (MessageForArkApp)localIterator.next();
+          if ((localMessageForArkApp != null) && (localMessageForArkApp.arkContainer != null)) {
+            localMessageForArkApp.arkContainer.a();
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkTipsManager", 2, "msg container has attached:" + paramMessageForArkApp.uniseq + ",c=" + paramMessageForArkApp.arkContainer);
+      }
+    }
+  }
+  
+  private void a(MessageForArkApp paramMessageForArkApp, boolean paramBoolean)
+  {
+    if (paramMessageForArkApp != null)
+    {
+      if (paramMessageForArkApp.arkContainer != null)
+      {
+        paramMessageForArkApp.arkContainer.b();
+        if (paramBoolean) {
+          paramMessageForArkApp.arkContainer.doOnEvent(2);
+        }
+      }
+      if (paramMessageForArkApp.mExtendMsgArkAppList != null)
+      {
+        Iterator localIterator = paramMessageForArkApp.mExtendMsgArkAppList.iterator();
+        while (localIterator.hasNext())
+        {
+          MessageForArkApp localMessageForArkApp = (MessageForArkApp)localIterator.next();
+          if ((localMessageForArkApp != null) && (localMessageForArkApp.arkContainer != null))
+          {
+            localMessageForArkApp.arkContainer.b();
+            localMessageForArkApp.arkContainer.doOnEvent(2);
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkTipsManager", 2, "msg container has dettached:" + paramMessageForArkApp.uniseq + ",destroy:" + paramBoolean + ",c=" + paramMessageForArkApp.arkContainer);
+      }
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    boolean bool2 = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("showMainTip : ref null= :");
+      if (this.c != null) {
+        break label130;
+      }
+      bool1 = true;
+      localObject = ((StringBuilder)localObject).append(bool1).append(", isHide=");
+      if (paramString != null) {
+        break label135;
+      }
+    }
+    label130:
+    label135:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      QLog.d("ArkTipsManager", 2, bool1);
+      if (this.c != null)
+      {
+        localObject = (QQAppInterface)this.c.get();
+        if (localObject != null)
+        {
+          localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
+          Message localMessage = new Message();
+          localMessage.what = 1052;
+          localMessage.obj = paramString;
+          ((MqqHandler)localObject).sendMessage(localMessage);
+        }
+      }
+      return;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Alug != null) && (this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString.equals(paramString1)) && (this.jdField_b_of_type_JavaLangRefWeakReference != null))
+    {
+      paramString1 = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+      if (paramString1 != null)
+      {
+        paramString1 = paramString1.a(paramString2, this.jdField_a_of_type_Alug.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramString1);
+      }
+    }
+  }
+  
+  private void d()
+  {
+    a(null);
+  }
+  
+  public adli a()
+  {
+    if (this.jdField_a_of_type_Alug == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Alug.jdField_a_of_type_Adli;
+  }
+  
+  public MessageForArkApp a()
+  {
+    if (this.jdField_a_of_type_Alug != null) {
+      return this.jdField_a_of_type_Alug.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
     }
     return null;
   }
   
-  BaseChatPie a()
+  public TipsBar a(Context paramContext)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+    TipsBar localTipsBar = new TipsBar(paramContext);
+    alug localalug = this.jdField_a_of_type_Alug;
+    if ((localalug != null) && (localalug.jdField_b_of_type_JavaLangString != null))
+    {
+      localalug.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localTipsBar);
+      localTipsBar.setTipsText(localalug.jdField_b_of_type_JavaLangString);
+    }
+    a(paramContext);
+    return localTipsBar;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Alra != null) {
-      this.jdField_a_of_type_Alra.a();
+    if ((this.jdField_a_of_type_Alug != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Alug.d)) && (this.c != null))
+    {
+      altc.a((QQAppInterface)this.c.get(), this.jdField_a_of_type_Alug.d, "AIOStatusBarClick", 0, 0, 0L, 0L, 0L, "", "");
+      axqy.a((QQAppInterface)this.c.get(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 4, 0, "", "", "", "");
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Alra != null)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      if ((paramInt2 == 22) || (paramInt1 != 22)) {
-        break label27;
+      localStringBuilder = new StringBuilder().append("useq=").append(paramLong);
+      if (this.jdField_a_of_type_Alug != null) {
+        break label66;
       }
-      this.jdField_a_of_type_Alra.a();
     }
-    label27:
-    while ((paramInt2 != 22) || (paramInt1 == 22)) {
+    label66:
+    for (String str = "";; str = "<>" + this.jdField_a_of_type_Alug.jdField_a_of_type_Adli + "," + this.jdField_a_of_type_Alug.jdField_b_of_type_Long)
+    {
+      QLog.d("ArkTipsManager", 2, str);
+      ArkAppCenter.a().postToMainThread(new ArkTipsManager.4(this, paramLong));
       return;
     }
-    this.jdField_a_of_type_Alra.b();
   }
   
-  public void a(List<alsb> paramList, int paramInt)
+  public void a(adli paramadli, SessionInfo paramSessionInfo, MessageForArkApp paramMessageForArkApp, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null)
+    if ((paramSessionInfo == null) || (paramMessageForArkApp == null)) {}
+    long l1;
+    long l2;
+    label92:
+    String str1;
+    Object localObject;
+    boolean bool;
+    do
+    {
+      return;
+      if ((paramMessageForArkApp.istroop == 1) || (paramMessageForArkApp.istroop == 3000)) {}
+      for (l1 = paramMessageForArkApp.shmsgseq;; l1 = paramMessageForArkApp.time)
+      {
+        l2 = paramMessageForArkApp.uniseq;
+        if (l2 != this.jdField_a_of_type_Long) {
+          break label92;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("ArkTipsManager", 2, "showTip deleting:" + l2);
+        return;
+      }
+      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("showTip sessUin:").append(str1).append(",first Show ? ");
+        if (this.jdField_a_of_type_Alug != null) {
+          break;
+        }
+        bool = true;
+        QLog.i("ArkTipsManager", 2, bool + ", msg=" + paramString);
+      }
+    } while (str1 == null);
+    String str2 = paramSessionInfo.d;
+    this.c = new WeakReference(paramQQAppInterface);
+    if (paramMessageForArkApp.ark_app_message != null)
+    {
+      localObject = paramMessageForArkApp.ark_app_message.appName;
+      label207:
+      if (this.jdField_a_of_type_Alug != null) {
+        break label376;
+      }
+      this.jdField_a_of_type_Alug = new alug(paramadli, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
+    }
+    label376:
+    while ((this.jdField_a_of_type_Alug.jdField_a_of_type_Adli == paramadli) && (l1 == this.jdField_a_of_type_Alug.jdField_a_of_type_Long))
+    {
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.addObserver(this.jdField_a_of_type_Akat);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkTipsManager", 2, "showTip view:" + paramadli + "msgID ? " + l1);
+      }
+      a(paramMessageForArkApp);
+      this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangString = paramString;
+      a(paramString);
+      a(str1, paramString);
+      if (paramMessageForArkApp.ark_app_message != null) {
+        altc.a(paramQQAppInterface, paramMessageForArkApp.ark_app_message.appName, "AIOStatusBarShow", 0, 0, 0L, 0L, 0L, "", "");
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      bool = false;
+      break;
+      localObject = "";
+      break label207;
+    }
+    if ((this.jdField_a_of_type_Alug.jdField_a_of_type_Adli != paramadli) && (this.jdField_a_of_type_Alug.jdField_a_of_type_Adli != null))
+    {
+      if (str1.equals(this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString)) {
+        break label474;
+      }
+      a(this.jdField_a_of_type_Alug.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Alug.a(paramadli, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
+      break;
+      label474:
+      a(this.jdField_a_of_type_Alug.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, false);
+    }
+  }
+  
+  public void a(adlj paramadlj, SessionInfo paramSessionInfo, String paramString)
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Alug == null) || (paramString == null) || (paramadlj != this.jdField_a_of_type_Alug.jdField_a_of_type_Adli)) {
+      break label29;
+    }
+    label29:
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() == paramadlj)) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("updateCurrentTip : sessionInfo:");
+      if (paramSessionInfo != null) {
+        break label186;
+      }
+    }
+    label186:
+    for (String str = "";; str = paramSessionInfo.jdField_a_of_type_JavaLangString)
+    {
+      QLog.d("ArkTipsManager", 2, str + ",tar:" + this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString + ",c=" + paramadlj);
+      this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangString = paramString;
+      a(paramString);
+      if ((paramSessionInfo == null) || (paramSessionInfo.jdField_a_of_type_JavaLangString == null) || (!paramSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString)) || (paramSessionInfo.jdField_a_of_type_Int != this.jdField_a_of_type_Alug.jdField_a_of_type_Int)) {
+        break;
+      }
+      a(this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString, paramString);
+      return;
+    }
+  }
+  
+  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_a_of_type_Alug == null) || (paramActivity == null) || (paramQQAppInterface == null)) {
+      return;
+    }
+    int i = this.jdField_a_of_type_Alug.jdField_a_of_type_Int;
+    String str1 = this.jdField_a_of_type_Alug.jdField_a_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_Alug.c;
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("need_jump_to_msg", true);
+    localBundle.putLong("searched_timeorseq", this.jdField_a_of_type_Alug.jdField_a_of_type_Long);
+    ahpd.a(paramActivity, paramQQAppInterface, str1, i, str2, false, localBundle);
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Alug == null) {
+      return;
+    }
+    String str1 = this.jdField_a_of_type_Alug.d;
+    String str2 = this.jdField_a_of_type_Alug.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView;
+    if (ArkAppMgr.getInstance().getAppPathByNameFromLocal(str1, str2, null, false) != null)
+    {
+      ArkAppCacheMgr.getAppIcon(str1, new alud(this, paramContext));
+      return;
+    }
+    ArkAppMgr.getInstance().getAppPathByName(str1, str2, "0.0.0.1", null, new alue(this, str1, paramContext));
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    if (this.jdField_a_of_type_Alug != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkRecommendController", 2, "showAppPanel.mChatPie is null");
+        QLog.d("ArkTipsManager", 2, "onEnterAIO");
       }
+      a(paramBaseChatPie.a(), this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangString);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if (paramQQAppInterface == null) {}
+    while (QQAppInterface.isAppOnForeground(paramQQAppInterface.getApp())) {
       return;
     }
-    if (this.jdField_a_of_type_Alra == null) {
-      this.jdField_a_of_type_Alra = new alra(a());
+    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+    NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
+    Intent localIntent = new Intent();
+    localIntent.putExtra("param_notifyid", 239);
+    localBuilder.setSmallIcon(2130841012).setWhen(System.currentTimeMillis()).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(PendingIntent.getActivity(paramQQAppInterface.getApp(), 0, localIntent, 0));
+    paramQQAppInterface = localBuilder.build();
+    paramQQAppInterface.flags = 16;
+    localQQNotificationManager.notify("ArkTipsManager", 239, paramQQAppInterface);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Alug == null) {}
+    while (this.jdField_a_of_type_Alug.jdField_b_of_type_Long != paramLong) {
+      return false;
     }
-    this.jdField_a_of_type_Alra.a();
-    this.jdField_a_of_type_Alra.a(paramList, paramInt, null);
+    return true;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Alra != null)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Alra.c();
-      this.jdField_a_of_type_Alra = null;
+      localObject = new StringBuilder().append("hideTips : mCurrentTip :");
+      if (this.jdField_a_of_type_Alug != null) {
+        break label131;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
+    label131:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("ArkTipsManager", 2, bool);
+      if (this.jdField_a_of_type_Alug != null)
+      {
+        if (this.c != null)
+        {
+          localObject = (QQAppInterface)this.c.get();
+          if (localObject != null) {
+            ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Akat);
+          }
+        }
+        this.jdField_a_of_type_Alug = null;
+        if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
+        {
+          localObject = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+          if (localObject != null) {
+            ((BaseChatPie)localObject).a(null, -1L);
+          }
+        }
+        d();
+        this.jdField_a_of_type_Boolean = false;
+        this.c = null;
+      }
+      return;
+    }
+  }
+  
+  public void b(BaseChatPie paramBaseChatPie)
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() == paramBaseChatPie))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkTipsManager", 2, "onExitAIO");
+      }
+      this.jdField_b_of_type_JavaLangRefWeakReference = null;
+    }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Alug != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkTipsManager", 2, "onEnterConversation");
+      }
+      a(this.jdField_a_of_type_Alug.jdField_b_of_type_JavaLangString);
+    }
   }
 }
 

@@ -1,27 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
 
 public class tzs
-  extends QQUIEventReceiver<tzr, tzw>
+  implements ucs
 {
-  public tzs(@NonNull tzr paramtzr)
+  public final ViewPager.PageTransformer a;
+  
+  public tzs(ViewPager.PageTransformer paramPageTransformer)
   {
-    super(paramtzr);
+    this.a = paramPageTransformer;
   }
   
-  public void a(@NonNull tzr paramtzr, @NonNull tzw paramtzw)
+  public void a(View paramView, float paramFloat)
   {
-    if (paramtzw.a.isSuccess())
-    {
-      veg.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramtzw.toString());
-      paramtzr.e();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tzw.class;
+    this.a.transformPage(paramView, paramFloat);
   }
 }
 

@@ -1,11 +1,11 @@
 class attu
-  implements bfos
+  implements bfpj
 {
-  attu(atte paramatte) {}
+  attu(attg paramattg) {}
   
   public void onDismiss()
   {
-    atte.a(this.a, this.a.c, false);
+    attg.a(this.a, this.a.b, false);
   }
 }
 

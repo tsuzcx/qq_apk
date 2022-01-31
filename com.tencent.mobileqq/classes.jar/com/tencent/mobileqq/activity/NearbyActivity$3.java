@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abns;
-import arhh;
-import arhi;
+import abno;
+import arhj;
+import arhk;
 
 public class NearbyActivity$3
   implements Runnable
@@ -12,7 +12,7 @@ public class NearbyActivity$3
   public void run()
   {
     if (this.this$0.b != null) {
-      arhh.a.a(this.this$0.a, new abns(this));
+      arhj.a.a(this.this$0.a, new abno(this));
     }
   }
 }

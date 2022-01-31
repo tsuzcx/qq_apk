@@ -1,16 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
 
 public class ovr
-  extends AnimatorListenerAdapter
+  implements bcka
 {
   public ovr(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    if (ReadInJoySelfFragment.a(this.a))
+    {
+      ReadInJoySelfFragment.a(this.a, false);
+      sgu.a("self_tab_cost", null);
+      sgu.a = 4;
+      sgu.a("KANDIAN_FEEDS_COST", null);
+    }
   }
 }
 

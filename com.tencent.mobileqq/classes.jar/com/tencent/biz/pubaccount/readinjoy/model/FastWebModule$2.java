@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pai;
-import rss;
+import paf;
+import rsp;
 
 public class FastWebModule$2
   implements Runnable
 {
-  public FastWebModule$2(pai parampai, rss paramrss, boolean paramBoolean, int paramInt, String paramString) {}
+  public FastWebModule$2(paf parampaf, rsp paramrsp, boolean paramBoolean, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Rss.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Rsp.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

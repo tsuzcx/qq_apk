@@ -1,73 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amvk
-  extends ampb<amvj>
 {
-  public int a()
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+  
+  public amvk()
   {
-    return 546;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  @NonNull
-  public amvj a(int paramInt)
+  public static amvk a(String paramString)
   {
-    return new amvj();
-  }
-  
-  @Nullable
-  public amvj a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    amvk localamvk = new amvk();
+    try
     {
-      amvj localamvj = amvj.a(paramArrayOfampi[0].a);
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localamvk.jdField_a_of_type_JavaLangString = localJSONObject.optString("kQQPASearchDiscoverPageUrl");
+      localamvk.b = localJSONObject.optString("kQQPASearchListTitleIconUrl");
+      localamvk.c = localJSONObject.optString("kQQPAClickAssociationalWordWebUrl");
+      localamvk.jdField_a_of_type_Int = localJSONObject.optInt("kQQPAClickAssociationalWordToWebSearch", 1);
       if (QLog.isColorLevel()) {
-        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, new Object[] { "loadConfig292Data json = ", paramString });
       }
-      return localamvj;
+      localamvk.d = localJSONObject.optString("kQQPASearchJumpUrl", "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). readinjoy_search_jump_url=" + localamvk.d + ", discoveryPageUrl = " + localamvk.jdField_a_of_type_JavaLangString);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
+    catch (Exception paramString)
+    {
+      do
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadInjoySearchJumpurlConfBean", 2, "loadPublicAccountCenterUrlConfig error", paramString);
+        }
+        localamvk.d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+      } while (!QLog.isColorLevel());
+      QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). use the default url. exception=" + paramString.getStackTrace());
     }
-    return null;
+    return localamvk;
+    return localamvk;
   }
   
-  public Class<amvj> a()
+  public String toString()
   {
-    return amvj.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amvj paramamvj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramamvj.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "kQQPASearchDiscoverPageUrl = " + this.jdField_a_of_type_JavaLangString + "kQQPASearchListTitleIconUrl = " + this.b + "kQQPAClickAssociationalWordWebUrl = " + this.c + "kQQPAClickAssociationalWordToWebSearch = " + this.jdField_a_of_type_Int + "kQQPASearchJumpUrl = " + this.d;
   }
 }
 

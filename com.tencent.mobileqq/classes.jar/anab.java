@@ -1,97 +1,56 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class anab
-  extends amyi<SSOErrorInfoMapConfig>
+  extends amyp<anaa>
 {
-  public static SSOErrorInfoMapConfig c()
-  {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)ampm.a().a(477);
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
-    if (localSSOErrorInfoMapConfig2 == null) {
-      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
-    }
-    return localSSOErrorInfoMapConfig1;
-  }
-  
   public int a()
   {
-    return 477;
+    return 26;
   }
   
   @NonNull
-  public SSOErrorInfoMapConfig a()
+  public anaa a()
   {
-    return new SSOErrorInfoMapConfig();
-  }
-  
-  @NonNull
-  public SSOErrorInfoMapConfig a(ampi[] paramArrayOfampi)
-  {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    for (;;)
-    {
-      String str1;
-      amzz localamzz;
-      String str2;
-      anaa localanaa;
-      try
-      {
-        if (!TextUtils.isEmpty(paramArrayOfampi))
-        {
-          paramArrayOfampi = new JSONObject(paramArrayOfampi);
-          Iterator localIterator1 = paramArrayOfampi.keys();
-          if (localIterator1.hasNext())
-          {
-            str1 = (String)localIterator1.next();
-            JSONObject localJSONObject1 = paramArrayOfampi.optJSONObject(str1);
-            Iterator localIterator2 = localJSONObject1.keys();
-            localamzz = new amzz();
-            if (!localIterator2.hasNext()) {
-              break label220;
-            }
-            str2 = (String)localIterator2.next();
-            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
-            Iterator localIterator3 = localJSONObject2.keys();
-            localanaa = new anaa();
-            if (!localIterator3.hasNext()) {
-              break label204;
-            }
-            String str3 = (String)localIterator3.next();
-            String str4 = localJSONObject2.optString(str3);
-            localanaa.a.put(str3, str4);
-            continue;
-          }
-        }
-        return localSSOErrorInfoMapConfig;
-      }
-      catch (JSONException paramArrayOfampi)
-      {
-        veg.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfampi.getMessage());
-      }
-      label204:
-      localamzz.a.put(str2, localanaa);
-      continue;
-      label220:
-      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localamzz);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ajts localajts = (ajts)localQQAppInterface.a(16);
+    if (localajts != null) {
+      localajts.a(localQQAppInterface.getApplication().getApplicationContext());
     }
-  }
-  
-  public Class<SSOErrorInfoMapConfig> a()
-  {
-    return SSOErrorInfoMapConfig.class;
+    return new anaa();
   }
   
   @NonNull
-  public SSOErrorInfoMapConfig b()
+  public anaa a(amph[] paramArrayOfamph)
   {
-    return new SSOErrorInfoMapConfig();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    ajts localajts = (ajts)localQQAppInterface.a(16);
+    if (localajts != null) {
+      localajts.a(localQQAppInterface, paramArrayOfamph[0].a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfamph[0]);
+    }
+    return new anaa();
+  }
+  
+  public Class<anaa> a()
+  {
+    return anaa.class;
+  }
+  
+  @NonNull
+  public anaa b()
+  {
+    return new anaa();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

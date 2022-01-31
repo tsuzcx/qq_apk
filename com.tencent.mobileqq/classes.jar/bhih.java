@@ -1,65 +1,49 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.plugin.PluginIntent;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bhih
-  implements ServiceConnection
+  extends MSFServlet
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
-  
-  public bhih(bhig parambhig, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
-  {
-    do
+    if ((paramIntent != null) && ((paramIntent instanceof PluginIntent)))
     {
-      try
-      {
-        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
-        if (QLog.isColorLevel()) {
-          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
-        }
-        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
+      bhiv localbhiv = ((PluginIntent)paramIntent).a();
+      if (localbhiv != null) {
+        localbhiv.a(paramIntent, paramFromServiceMsg);
       }
-      catch (Exception localException)
-      {
-        synchronized (bhig.a(this.jdField_a_of_type_Bhig))
-        {
-          do
-          {
-            paramIBinder = (bhih)bhig.a(this.jdField_a_of_type_Bhig).poll();
-            if (paramIBinder == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("QZonePluginManger", 2, "continue process");
-            }
-            bhig.a(this.jdField_a_of_type_Bhig, paramIBinder, 300);
-            return;
-            localException = localException;
-          } while (!QLog.isColorLevel());
-          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
-        }
-      }
-      bhig.a(this.jdField_a_of_type_Bhig, false);
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "queue empty");
+    }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
+    Object localObject = null;
+    if ((paramIntent instanceof PluginIntent))
+    {
+      localObject = ((PluginIntent)paramIntent).a;
+      paramIntent = ((PluginIntent)paramIntent).b;
     }
-    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
+    for (;;)
+    {
+      bhif localbhif = new bhif(getAppRuntime().getLongAccountUin(), (ArrayList)localObject, paramIntent);
+      localObject = localbhif.encode();
+      paramIntent = (Intent)localObject;
+      if (localObject == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localbhif.uniKey());
+      paramPacket.putSendData(paramIntent);
+      return;
+      localbhif = null;
+      paramIntent = (Intent)localObject;
+      localObject = localbhif;
+    }
   }
 }
 

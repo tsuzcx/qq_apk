@@ -1,92 +1,26 @@
-import android.os.IBinder;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
 
-class bepf
-  implements bepd
+public class bepf
+  implements Animation.AnimationListener
 {
-  private IBinder a;
+  private final View a;
   
-  bepf(IBinder paramIBinder)
+  private bepf(BarrageView paramBarrageView, View paramView)
   {
-    this.a = paramIBinder;
+    this.a = paramView;
   }
   
-  /* Error */
-  public void a(boolean paramBoolean, android.os.Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   10: astore 5
-    //   12: aload 4
-    //   14: ldc 25
-    //   16: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   19: iload_1
-    //   20: ifeq +58 -> 78
-    //   23: aload 4
-    //   25: iload_3
-    //   26: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: ifnull +53 -> 83
-    //   33: aload 4
-    //   35: iconst_1
-    //   36: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   39: aload_2
-    //   40: aload 4
-    //   42: iconst_0
-    //   43: invokevirtual 39	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   46: aload_0
-    //   47: getfield 15	bepf:a	Landroid/os/IBinder;
-    //   50: iconst_1
-    //   51: aload 4
-    //   53: aload 5
-    //   55: iconst_0
-    //   56: invokeinterface 45 5 0
-    //   61: pop
-    //   62: aload 5
-    //   64: invokevirtual 48	android/os/Parcel:readException	()V
-    //   67: aload 5
-    //   69: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   72: aload 4
-    //   74: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   77: return
-    //   78: iconst_0
-    //   79: istore_3
-    //   80: goto -57 -> 23
-    //   83: aload 4
-    //   85: iconst_0
-    //   86: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   89: goto -43 -> 46
-    //   92: astore_2
-    //   93: aload 5
-    //   95: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   98: aload 4
-    //   100: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   103: aload_2
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	bepf
-    //   0	105	1	paramBoolean	boolean
-    //   0	105	2	paramBundle	android.os.Bundle
-    //   1	79	3	i	int
-    //   5	94	4	localParcel1	android.os.Parcel
-    //   10	84	5	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	92	finally
-    //   23	29	92	finally
-    //   33	46	92	finally
-    //   46	67	92	finally
-    //   83	89	92	finally
+    this.b.removeView(this.a);
   }
   
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

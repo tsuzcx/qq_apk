@@ -1,18 +1,20 @@
 import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
 import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
 import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class afgv
 {
   public int a;
-  public AccountSearchPb.ResultItem a;
   public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
   public String a;
+  public List<String> a;
+  public boolean a;
   public int b;
-  public String b;
+  public List<AccountSearchPb.record> b;
+  public boolean b;
   public int c;
-  public String c;
+  public List<AccountSearchPb.ResultItem> c;
 }
 
 

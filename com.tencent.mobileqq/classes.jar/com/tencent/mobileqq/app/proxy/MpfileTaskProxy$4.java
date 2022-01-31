@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aktc;
+import aktb;
 import com.dataline.mpfile.MpfileTaskRecord;
 import gn;
 
 public class MpfileTaskProxy$4
   implements Runnable
 {
-  public MpfileTaskProxy$4(aktc paramaktc, MpfileTaskRecord paramMpfileTaskRecord, gn paramgn) {}
+  public MpfileTaskProxy$4(aktb paramaktb, MpfileTaskRecord paramMpfileTaskRecord, gn paramgn) {}
   
   public void run()
   {

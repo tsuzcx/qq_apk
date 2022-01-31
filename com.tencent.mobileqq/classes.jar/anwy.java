@@ -1,20 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
 class anwy
-  implements DialogInterface.OnDismissListener
+  extends anwl
 {
   anwy(anwx paramanwx) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
-    }
-    this.a.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    super.a(paramEmoticonPackage, paramInt, paramBundle);
+    if ((paramEmoticonPackage != null) && (paramInt == 0))
+    {
+      paramBundle = paramBundle.getBundle("jsonReqParams");
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt(anwx.jdField_a_of_type_JavaLangString);
+        paramBundle = paramBundle.getString(anwx.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
+        }
+        boolean bool = this.a.jdField_a_of_type_Anxc.a(paramInt);
+        if (bool) {
+          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
+        }
+      }
     }
   }
 }

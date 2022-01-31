@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abke;
-import abkf;
-import abkg;
+import abka;
+import abkb;
+import abkc;
 import android.app.Dialog;
 import android.os.Bundle;
-import atbg;
-import bawy;
-import bcpw;
+import atbi;
+import baxm;
+import bcql;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
@@ -20,7 +20,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return atbg.a(getAppInterface().getAccount());
+    return atbi.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -30,8 +30,8 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new abke(this, paramRunnable);
-    this.b = bawy.a(this, 2131692090, a(), 2131691902, 2131691899, new abkf(this), new abkg(this));
+    paramRunnable = new abka(this, paramRunnable);
+    this.b = baxm.a(this, 2131692090, a(), 2131691902, 2131691899, new abkb(this), new abkc(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
@@ -49,7 +49,7 @@ public class LbsBaseActivity
   public void a(int paramInt, String paramString)
   {
     if (isResume()) {
-      bcpw.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+      bcql.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
     }
   }
   
@@ -60,15 +60,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	zzs:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	zzp:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	zzs:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	zzp:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	zzs:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	zzp:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:

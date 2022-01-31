@@ -1,7 +1,4 @@
-public abstract interface auji
-{
-  public abstract void a(aujh paramaujh1, aujh paramaujh2);
-}
+class auji {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

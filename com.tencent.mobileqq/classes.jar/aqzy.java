@@ -1,8 +1,6 @@
 public abstract interface aqzy
 {
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void a(int paramInt);
 }
 
 

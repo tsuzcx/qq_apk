@@ -1,48 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
-import mqq.app.AppRuntime;
-
-public abstract class apzg
+public class apzg
 {
-  public static int a;
-  public static int b = 2;
-  private String a;
+  public int a;
+  public long a;
+  public String a;
+  public long b = 1000L;
+  public String b;
   
-  static
+  public apzg()
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public apzg(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public AppRuntime a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
-    }
-  }
-  
-  public String b()
-  {
-    AppRuntime localAppRuntime = a();
-    if (localAppRuntime != null) {
-      return localAppRuntime.getAccount();
-    }
-    return "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 1000L;
   }
 }
 

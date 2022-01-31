@@ -1,10 +1,15 @@
-public abstract interface bhgr
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+
+public class bhgr
+  implements ModuleDownloadListener
 {
-  public abstract void a();
+  public void onDownloadCanceled(String paramString) {}
   
-  public abstract void a(float paramFloat);
+  public void onDownloadFailed(String paramString) {}
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString) {}
 }
 
 

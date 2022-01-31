@@ -1,20 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-class addp
-  implements DialogInterface.OnClickListener
+public class addp
+  implements addg
 {
-  addp(addo paramaddo) {}
+  public addp(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramDoodleData == null) {
+      return false;
     }
-    DoodlePanel.a(this.a.a, false);
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = addf.a(paramDoodleData.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleData)
+    {
+      break label33;
+    }
+  }
+  
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  {
+    if (paramDoodleHeader == null) {
+      return false;
+    }
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = addf.a(paramDoodleHeader.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleHeader)
+    {
+      break label33;
+    }
   }
 }
 

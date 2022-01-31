@@ -1,32 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import java.util.HashMap;
 
-public class wft
+class wft
   implements View.OnClickListener
 {
-  public wft(QRCardActivity paramQRCardActivity) {}
+  wft(wfr paramwfr) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {
-      if (((Integer)localObject).intValue() != 0) {
-        break label101;
-      }
-    }
-    label101:
-    for (String str = (String)((TextView)paramView.findViewById(2131364692)).getText();; str = null)
-    {
-      if (((Integer)localObject).intValue() == 1)
-      {
-        this.a.a((String)this.a.a.d.get(this.a.h));
-        return;
-      }
-      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
-      return;
+    paramView = (TextView)this.a.a.findViewById(2131364691);
+    if ((paramView.getText() instanceof String)) {
+      this.a.a((String)paramView.getText());
     }
   }
 }

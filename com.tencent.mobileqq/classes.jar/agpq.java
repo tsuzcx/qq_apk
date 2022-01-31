@@ -1,27 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class agpq
-  extends mxm
+  implements DialogInterface.OnKeyListener
 {
-  agpq(agpn paramagpn) {}
+  agpq(agpl paramagpl) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((agpn.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
-    }
-    this.a.d();
-    if (agpn.a(this.a) != null) {
-      agpn.a(this.a).removeCallbacks(agpn.b(this.a));
-    }
-    if (paramInt == 16)
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      this.a.e();
-      return;
+      this.a.a.dismiss();
+      agpl.a(this.a, agpl.a(this.a), true, Long.valueOf(agpl.b(this.a)).longValue(), true);
     }
-    agpn.a(this.a, agpn.a(this.a));
+    return false;
   }
 }
 

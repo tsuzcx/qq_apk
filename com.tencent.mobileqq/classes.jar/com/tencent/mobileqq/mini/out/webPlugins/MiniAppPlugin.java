@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
-import anql;
-import anqp;
-import anvl;
-import bcdb;
+import anqq;
+import anqu;
+import anvq;
+import bcdp;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -30,7 +30,7 @@ public class MiniAppPlugin
   private static final String URL_PREFIX_HTTP_MINIAPP_HEAD_URL_1 = "http://www.mqqapi.com//microapp/open?";
   private static final String URL_PREFIX_HTTP_MINIAPP_REAL_HEAD_URL = "http://mqqapi//microapp/open?";
   private static final int canOpenApp = QzoneConfig.getInstance().getConfig("qqminiapp", "miniapp_able2show", 1);
-  private anql remoteRespObserver = new MiniAppPlugin.3(this);
+  private anqq remoteRespObserver = new MiniAppPlugin.3(this);
   
   public MiniAppPlugin()
   {
@@ -187,7 +187,7 @@ public class MiniAppPlugin
       paramVarArgs.putString("miniapp_appid", paramJsBridgeListener);
       paramVarArgs.putString("miniapp_type", paramString2);
       paramVarArgs.putString("miniapp_via", paramString3);
-      sendRemoteReq(anqp.a("ipc_start_miniapp", paramString1, this.remoteRespObserver.key, paramVarArgs), false, false);
+      sendRemoteReq(anqu.a("ipc_start_miniapp", paramString1, this.remoteRespObserver.key, paramVarArgs), false, false);
       return true;
       if (paramString3.equals("canOpenApp")) {
         try
@@ -242,30 +242,30 @@ public class MiniAppPlugin
   public void onCreate()
   {
     super.onCreate();
-    anvl.a().a(this.remoteRespObserver);
+    anvq.a().a(this.remoteRespObserver);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    anvl.a().b(this.remoteRespObserver);
+    anvq.a().b(this.remoteRespObserver);
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!anvl.a().a())
+    if (!anvq.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(this.mRuntime.a().getApplicationContext(), ajyc.a(2131706829), 0).show();
+        Toast.makeText(this.mRuntime.a().getApplicationContext(), ajya.a(2131706840), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      anvl.a().b(paramBundle);
+      anvq.a().b(paramBundle);
       return;
     }
-    anvl.a().a(paramBundle);
+    anvq.a().a(paramBundle);
   }
 }
 

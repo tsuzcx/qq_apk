@@ -1,12 +1,16 @@
-public abstract interface apth
+import android.app.Activity;
+
+class apth
+  implements bbws
 {
-  public abstract void a();
+  apth(aptd paramaptd, Activity paramActivity, int paramInt) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void callback(int paramInt)
+  {
+    if ((paramInt == 1) || (paramInt == 2)) {
+      aptd.a(this.jdField_a_of_type_Aptd, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

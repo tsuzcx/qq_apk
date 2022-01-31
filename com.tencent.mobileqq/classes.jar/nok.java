@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class nok
-  implements DialogInterface.OnClickListener
+public abstract interface nok
 {
-  nok(nnx paramnnx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.biz.pubaccount.readinjoy.config.beans.SneakyParams;
-import sip;
+import sim;
 
 public class SneakyCallback$5
   implements Runnable
 {
-  public SneakyCallback$5(sip paramsip, SneakyParams paramSneakyParams, int paramInt) {}
+  public SneakyCallback$5(sim paramsim, SneakyParams paramSneakyParams, int paramInt) {}
   
   public void run()
   {
-    sip.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyConfigBeansSneakyParams, this.jdField_a_of_type_Int);
+    sim.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyConfigBeansSneakyParams, this.jdField_a_of_type_Int);
   }
 }
 

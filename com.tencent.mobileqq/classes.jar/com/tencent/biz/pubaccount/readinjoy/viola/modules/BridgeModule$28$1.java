@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import java.io.File;
-import rya;
+import rxx;
 
 public class BridgeModule$28$1
   implements Runnable
 {
-  public BridgeModule$28$1(rya paramrya, File paramFile) {}
+  public BridgeModule$28$1(rxx paramrxx, File paramFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Rya.a.shareImageToAIOInner(this.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Rxx.a.shareImageToAIOInner(this.jdField_a_of_type_JavaIoFile);
   }
 }
 

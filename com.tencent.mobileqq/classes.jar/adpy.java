@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class adpy
-  implements ayvy
+  extends acuj
 {
-  public adpy(FlashPicItemBuilder paramFlashPicItemBuilder) {}
-  
-  public void a(ArrayList<MessageRecord> paramArrayList)
-  {
-    this.a.b();
-  }
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public FlashPicItemBuilder.FlashPicAIOThumbView a;
+  public BubbleImageView a;
+  public boolean a;
+  public boolean b;
 }
 
 

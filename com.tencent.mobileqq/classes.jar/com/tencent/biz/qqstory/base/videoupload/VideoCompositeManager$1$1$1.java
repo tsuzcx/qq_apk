@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import swn;
-import swo;
-import swp;
+import swk;
+import swl;
+import swm;
 
 public class VideoCompositeManager$1$1$1
   implements Runnable
 {
-  public VideoCompositeManager$1$1$1(swp paramswp, int paramInt, String paramString1, String paramString2) {}
+  public VideoCompositeManager$1$1$1(swm paramswm, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Swp.jdField_a_of_type_Swo.jdField_a_of_type_Swn.a(this.jdField_a_of_type_Swp.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Swp.jdField_a_of_type_Swo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Swp.jdField_a_of_type_Swo.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Swm.jdField_a_of_type_Swl.jdField_a_of_type_Swk.a(this.jdField_a_of_type_Swm.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Swm.jdField_a_of_type_Swl.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Swm.jdField_a_of_type_Swl.jdField_a_of_type_Long);
   }
 }
 

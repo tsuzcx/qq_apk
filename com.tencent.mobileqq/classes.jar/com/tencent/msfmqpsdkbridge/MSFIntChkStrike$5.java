@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.text.TextUtils;
-import apue;
+import apug;
 
 class MSFIntChkStrike$5
   extends BroadcastReceiver
@@ -46,7 +46,7 @@ class MSFIntChkStrike$5
         localCursor.close();
       }
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        apue.a(paramContext, (String)localObject);
+        apug.a(paramContext, (String)localObject);
       }
       return;
     }

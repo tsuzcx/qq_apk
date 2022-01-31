@@ -1,59 +1,28 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.HashMap;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
-class qvl
-  extends ayvz
+public class qvl
+  extends PhoneStateListener
 {
   qvl(qvk paramqvk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    Object localObject = (ayqm)paramMessage.obj;
-    if ((localObject == null) || ((((ayqm)localObject).jdField_b_of_type_Int != 24) && (((ayqm)localObject).jdField_b_of_type_Int != 32))) {}
-    while ((((ayqm)localObject).jdField_b_of_type_Int == 24) && (((ayqm)localObject).c != 54)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
     }
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    case 1001: 
-    case 1002: 
-    case 1004: 
-    case 1005: 
-    case 2001: 
-    case 2003: 
     default: 
       return;
-    }
-    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((ayqm)localObject).jdField_b_of_type_Long));
-    paramMessage.putLong("uniseq", ((ayqm)localObject).jdField_b_of_type_Long);
-    paramMessage.putString("pic_server_id", ((ayqm)localObject).i);
-    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
-    try
-    {
-      localRspStoryVideo.mergeFrom(((ayqm)localObject).a);
-      if (localRspStoryVideo.retcode.get() == 0)
-      {
-        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramMessage.putString("cdn_url", (String)localObject);
-        }
-      }
-      label214:
-      this.a.a.a(83, paramMessage);
+    case 1: 
+      this.a.d(true);
+      return;
+    case 2: 
+      this.a.d(true);
       return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      break label214;
-    }
+    this.a.c();
   }
 }
 

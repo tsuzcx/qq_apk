@@ -1,30 +1,79 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import org.json.JSONObject;
 
-public class yxd
-  implements View.OnClickListener
+class yxd
+  implements yxe
 {
-  public yxd(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
-  
-  public void onClick(View paramView)
+  private int a(int paramInt)
   {
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    if (paramInt == 0) {
+      return 1;
+    }
+    if (paramInt == 1) {
+      return 0;
+    }
+    if (paramInt == 2) {
+      return 8;
+    }
+    return -2147483648;
+  }
+  
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  {
+    Object localObject = null;
+    if (paramywk != null) {}
+    GdtHandler.Options localOptions;
+    for (Activity localActivity = paramywk.a();; localActivity = null)
     {
-      paramView = "loading ad data";
-      yss localyss = new yss();
-      localyss.a = GdtInterstitialFragmentForJS.a(this.a);
-      GdtInterstitialFragmentForJS.a(this.a, new ysq(localyss, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
-      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
+      localOptions = new GdtHandler.Options();
+      boolean bool = GdtHandler.a(localOptions, paramVarArgs[0]);
+      if ((paramywk != null) && (localActivity != null) && (bool)) {
+        break;
+      }
+      yxp.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
     for (;;)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
-      return;
-      paramView = "load ad data error";
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        yxp.b("GdtInterstitialJsCallHandler", paramVarArgs.toString());
+        int i = a(paramVarArgs.getJSONObject("options").optInt("orientation"));
+        paramVarArgs = paramywk.a().getIntent();
+        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
+        {
+          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+          localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+          paramVarArgs = new GdtInterstitialParams();
+          paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
+          paramVarArgs.jdField_a_of_type_Int = i;
+          paramVarArgs.jdField_a_of_type_Boolean = true;
+          GdtInterstitialFragment.a(localActivity, paramVarArgs);
+          paramywk.callJs(paramString, null);
+          paramString = localObject;
+          if (paramywk != null) {
+            paramString = paramywk.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          return true;
+        }
+      }
+      catch (Throwable paramywk)
+      {
+        yxp.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error", paramywk);
+        return true;
+      }
+      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
   }
 }

@@ -1,17 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
 class adoq
-  extends actr
+  implements DialogInterface.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
-  TextView e;
+  adoq(adop paramadop, MessageForDeviceText paramMessageForDeviceText) {}
   
-  adoq(adon paramadon) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ((yer)this.jdField_a_of_type_Adop.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Adop.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adop.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adop.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+  }
 }
 
 

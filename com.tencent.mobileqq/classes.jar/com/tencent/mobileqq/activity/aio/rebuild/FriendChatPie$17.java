@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeoo;
+import aeom;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class FriendChatPie$17
   implements Runnable
 {
-  public FriendChatPie$17(aeoo paramaeoo) {}
+  public FriendChatPie$17(aeom paramaeom) {}
   
   public void run()
   {

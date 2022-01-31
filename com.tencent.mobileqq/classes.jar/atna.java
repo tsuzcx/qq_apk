@@ -1,10 +1,8 @@
 class atna
 {
-  public String a;
-  public String b;
-  public String c;
+  public int a;
   
-  private atna(atlu paramatlu) {}
+  private atna(atlw paramatlw) {}
 }
 
 

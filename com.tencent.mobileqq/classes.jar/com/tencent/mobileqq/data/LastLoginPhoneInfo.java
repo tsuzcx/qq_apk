@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class LastLoginPhoneInfo
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public String unifiedCode;
   
   public String toString()

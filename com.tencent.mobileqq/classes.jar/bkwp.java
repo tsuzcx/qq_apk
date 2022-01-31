@@ -1,4 +1,4 @@
-public class bkwp {}
+public abstract interface bkwp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

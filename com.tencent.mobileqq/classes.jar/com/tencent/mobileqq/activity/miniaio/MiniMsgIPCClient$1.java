@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import arkt;
+import arkv;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniMsgIPCClient$1
@@ -10,7 +10,7 @@ class MiniMsgIPCClient$1
   
   public void run()
   {
-    arkt.a().a(BaseApplicationImpl.getContext());
+    arkv.a().a(BaseApplicationImpl.getContext());
   }
 }
 

@@ -22,12 +22,12 @@ import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.av.ui.AVActivity.AnimationTrigger;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lcl;
-import lgf;
+import lcg;
+import lga;
+import mmv;
+import mmw;
+import mmx;
 import mmy;
-import mmz;
-import mna;
-import mnb;
 
 public class EffectFilterTextPager
   extends EffectCycleViewPager
@@ -48,7 +48,7 @@ public class EffectFilterTextPager
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
     setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new mmy(this);
+    this.jdField_a_of_type_AndroidOsHandler = new mmv(this);
     setOnTouchListener(this);
     this.jdField_a_of_type_Int = -1;
   }
@@ -56,7 +56,7 @@ public class EffectFilterTextPager
   void a()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    lcl.c("EffectFilterTextPager", "showPromotionText ");
+    lcg.c("EffectFilterTextPager", "showPromotionText ");
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -68,7 +68,7 @@ public class EffectFilterTextPager
   
   public void a(int paramInt)
   {
-    lcl.c("EffectFilterTextPager", "dispearPromotionText view:");
+    lcg.c("EffectFilterTextPager", "dispearPromotionText view:");
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramInt);
@@ -96,11 +96,11 @@ public class EffectFilterTextPager
     for (int i = 2131297538;; i = 2131297537)
     {
       float f2 = getContext().getResources().getDimension(i);
-      lcl.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
+      lcg.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131372248);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131372250);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -115,12 +115,12 @@ public class EffectFilterTextPager
   public void b()
   {
     View localView = a();
-    lcl.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
+    lcg.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
     if ((localView != null) && (localView.getVisibility() == 0))
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(450L);
-      localAlphaAnimation.setAnimationListener(new mna(this, localView));
+      localAlphaAnimation.setAnimationListener(new mmx(this, localView));
       localView.startAnimation(localAlphaAnimation);
     }
   }
@@ -203,9 +203,9 @@ public class EffectFilterTextPager
     setCurrentItem(i + 1, false);
   }
   
-  public void setOnFilterListenner(mnb parammnb)
+  public void setOnFilterListenner(mmy parammmy)
   {
-    setOnPageChangeListener(new mmz(this, parammnb));
+    setOnPageChangeListener(new mmw(this, parammmy));
   }
   
   public void setVisibility(int paramInt)

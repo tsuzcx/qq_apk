@@ -1,44 +1,32 @@
-import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetGroupCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetGroupCloudStorageRsp;
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bfab
-  extends bfad
+  extends bfau
 {
-  private CloudStorage.StModifyFriendInteractiveStorageReq a = new CloudStorage.StModifyFriendInteractiveStorageReq();
+  private CloudStorage.StGetGroupCloudStorageReq a = new CloudStorage.StGetGroupCloudStorageReq();
   
-  public bfab(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap)
+  public bfab(String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    if (paramStCommonExt != null) {
-      this.a.ext.set(paramStCommonExt);
-    }
-    this.a.appid.set(paramString1);
-    this.a.toUser.set(paramString2);
-    this.a.shareId.set(paramString3);
-    this.a.opNum.set(paramInt);
-    this.a.operation.set(paramString4);
-    paramStCommonExt = paramHashMap.entrySet().iterator();
-    while (paramStCommonExt.hasNext())
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      paramString1 = (Map.Entry)paramStCommonExt.next();
-      paramString2 = new CloudStorage.StKVData();
-      paramString2.key.set((String)paramString1.getKey());
-      paramString2.value.set((String)paramString1.getValue());
-      this.a.KVDataList.add(paramString2);
+      String str = paramArrayOfString[i];
+      this.a.keyList.add(str);
+      i += 1;
     }
+    this.a.appid.set(paramString2);
+    this.a.shareTicket.set(paramString1);
   }
   
   protected String a()
@@ -51,39 +39,72 @@ public class bfab
     if (paramArrayOfByte == null) {
       return null;
     }
-    CloudStorage.StModifyFriendInteractiveStorageRsp localStModifyFriendInteractiveStorageRsp = new CloudStorage.StModifyFriendInteractiveStorageRsp();
-    try
+    Object localObject1 = new CloudStorage.StGetGroupCloudStorageRsp();
+    for (;;)
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStModifyFriendInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStModifyFriendInteractiveStorageRsp != null)
+      JSONObject localJSONObject1;
+      try
       {
+        ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
+        if (localObject1 == null) {
+          break label330;
+        }
+        Object localObject2 = ((CloudStorage.StGetGroupCloudStorageRsp)localObject1).data.get();
+        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
+          break label339;
+        }
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStModifyFriendInteractiveStorageRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+        localObject1 = new JSONArray();
+        localObject2 = ((List)localObject2).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        Object localObject3 = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
+        localJSONObject1 = new JSONObject();
+        localJSONObject1.put("avatarUrl", ((CloudStorage.StUserGameData)localObject3).avatarUrl.get());
+        localJSONObject1.put("nickname", ((CloudStorage.StUserGameData)localObject3).nickname.get());
+        localJSONObject1.put("openid", ((CloudStorage.StUserGameData)localObject3).openid.get());
+        if ((((CloudStorage.StUserGameData)localObject3).KVDataList != null) && (((CloudStorage.StUserGameData)localObject3).KVDataList.size() > 0))
+        {
+          Object localObject4 = ((CloudStorage.StUserGameData)localObject3).KVDataList.get();
+          localObject3 = new JSONArray();
+          localObject4 = ((List)localObject4).iterator();
+          if (((Iterator)localObject4).hasNext())
+          {
+            CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject4).next();
+            JSONObject localJSONObject2 = new JSONObject();
+            localJSONObject2.put("key", localStKVData.key.get());
+            localJSONObject2.put("value", localStKVData.value.get());
+            ((JSONArray)localObject3).put(localJSONObject2);
+            continue;
+          }
+          localJSONObject1.put("KVDataList", localObject3);
+        }
       }
-      besl.a("ModifyFriendInteractiveStorageRequest", "onResponse fail.rsp = null");
-      return null;
+      catch (Exception paramArrayOfByte)
+      {
+        betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+        return null;
+      }
+      ((JSONArray)localObject1).put(localJSONObject1);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      besl.a("ModifyFriendInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
-    }
+    paramArrayOfByte.put("data", localObject1);
+    return paramArrayOfByte;
+    label330:
+    betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
+    return null;
+    label339:
     return null;
   }
   
-  protected byte[] a()
+  public byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "ModifyFriendInteractiveStorage";
+    return "GetGroupCloudStorage";
   }
 }
 

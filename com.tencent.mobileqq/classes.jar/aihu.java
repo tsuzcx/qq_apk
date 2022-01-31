@@ -1,19 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class aihu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aihu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aihu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,23 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
 public class arrw
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public arrw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public arrw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, arss paramarss) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
-    {
-      ListenTogetherOverlayFragment.a(this.a, true);
-      return;
+    this.jdField_a_of_type_Arss.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
-    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 

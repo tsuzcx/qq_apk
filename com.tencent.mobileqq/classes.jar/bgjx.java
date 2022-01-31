@@ -1,20 +1,193 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.TMG.channel.AVChannelManager;
+import com.tencent.TMG.logger.AVLoggerChooser;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVContext.StartParam;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam;
+import com.tencent.TMG.sdk.AVRoomMulti.EnterParam.Builder;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.av.sig.QAVAuthBuffer;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgjx
-  extends FlingGestureHandler
 {
-  boolean a = true;
+  private static bgjx jdField_a_of_type_Bgjx;
+  private static String b = "LimixiuAVManager";
+  private Context jdField_a_of_type_AndroidContentContext;
+  bgjz jdField_a_of_type_Bgjz = null;
+  bgka jdField_a_of_type_Bgka = null;
+  bgkb jdField_a_of_type_Bgkb = null;
+  AVContext jdField_a_of_type_ComTencentTMGSdkAVContext = null;
+  private AVRoomMulti.EventListener jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener = new bgjy(this);
+  String jdField_a_of_type_JavaLangString = null;
   
-  public bgjx(Activity paramActivity)
+  private bgjx(Context paramContext)
   {
-    super(paramActivity);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = "user";
   }
   
-  public void flingLToR()
+  public static bgjx a(Context paramContext)
   {
-    if (this.a) {
-      super.flingLToR();
+    if (jdField_a_of_type_Bgjx == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgjx == null) {
+        jdField_a_of_type_Bgjx = new bgjx(paramContext);
+      }
+      return jdField_a_of_type_Bgjx;
+    }
+    finally {}
+  }
+  
+  private AVContext.StartParam a()
+  {
+    bgjp localbgjp = new bgjp();
+    localbgjp.sdkAppId = Integer.parseInt(this.jdField_a_of_type_Bgjz.jdField_a_of_type_JavaLangString);
+    localbgjp.accountType = this.jdField_a_of_type_Bgjz.b;
+    localbgjp.appIdAt3rd = this.jdField_a_of_type_Bgjz.jdField_a_of_type_JavaLangString;
+    localbgjp.identifier = this.jdField_a_of_type_Bgjz.c;
+    localbgjp.engineCtrlType = 2;
+    localbgjp.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Bgjz.f).intValue();
+    localbgjp.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_Bgjz.g).longValue();
+    QLog.i("AVManager", 1, "getStartParams|param.sdkAppId=" + localbgjp.sdkAppId + ", param.accountType=" + localbgjp.accountType + ", param.appIdAt3rd=" + localbgjp.appIdAt3rd + ", param.identifier=" + localbgjp.identifier + ", param.engineCtrlType=" + localbgjp.engineCtrlType + ", param.nGameID=" + localbgjp.jdField_a_of_type_Int + ", param.lGameRoomID=" + localbgjp.jdField_a_of_type_Long);
+    return localbgjp;
+  }
+  
+  private AVRoomMulti.EnterParam a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    byte[] arrayOfByte = QAVAuthBuffer.a().genAuthBuffer(Integer.parseInt(this.jdField_a_of_type_Bgjz.jdField_a_of_type_JavaLangString), Integer.parseInt(paramString), this.jdField_a_of_type_Bgjz.c, Integer.parseInt(this.jdField_a_of_type_Bgjz.b), this.jdField_a_of_type_Bgjz.d, 1800, -1);
+    return new AVRoomMulti.EnterParam.Builder(Integer.parseInt(paramString)).auth(-1L, arrayOfByte).avControlRole("user").autoCreateRoom(true).videoRecvMode(0).screenRecvMode(0).isEnableMic(paramBoolean1).isEnableSpeaker(paramBoolean2).isEnableHwEnc(true).isEnableHwDec(true).build();
+  }
+  
+  public int a()
+  {
+    int i = 1003;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      i = this.jdField_a_of_type_ComTencentTMGSdkAVContext.exitRoom();
+    }
+    QLog.i("AVManager", 1, "exitRoom|ret=" + i);
+    return i;
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(bgjz parambgjz)
+  {
+    this.jdField_a_of_type_Bgjz = parambgjz;
+  }
+  
+  public void a(bgkb parambgkb)
+  {
+    this.jdField_a_of_type_Bgkb = parambgkb;
+  }
+  
+  public void a(AVCallback paramAVCallback)
+  {
+    int i = 0;
+    AVChannelManager.setIMChannelType(1);
+    com.tencent.TMG.utils.SoUtil.customLibPath = bgke.a();
+    AVLoggerChooser.setUseImsdk(false);
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext = AVContext.createInstance(this.jdField_a_of_type_AndroidContentContext, false);
+    }
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null) {
+      if (AVContext.getSoExtractError() != 0) {
+        i = AVContext.getSoExtractError();
+      }
+    }
+    for (;;)
+    {
+      QLog.i("AVManager", 1, "startContext|ret=" + i);
+      if (i != 0) {
+        paramAVCallback.onComplete(i, "internal error.");
+      }
+      return;
+      i = 1101;
+      continue;
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.setAppVersion(this.jdField_a_of_type_Bgjz.e);
+      this.jdField_a_of_type_ComTencentTMGSdkAVContext.start(a(), null, paramAVCallback);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt, bgka parambgka)
+  {
+    QLog.i("AVManager", 1, "enterRoom.");
+    this.jdField_a_of_type_Bgka = parambgka;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext == null)
+    {
+      Log.e("AVManager", "enterRoom| enter room faild, because of context not started.");
+      if (this.jdField_a_of_type_Bgka != null) {
+        this.jdField_a_of_type_Bgka.a(1101, "context not started.");
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().startTRAEService();
+    QLog.e("AVManager", 1, "enterRoom| try enter room implement!!!!!!!!!");
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext.enterRoom(this.jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener, a(paramString, paramBoolean1, paramBoolean2, paramInt));
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableMicCompleteCallback paramEnableMicCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableMic(paramBoolean, paramEnableMicCompleteCallback);
+    }
+  }
+  
+  public void a(boolean paramBoolean, AVAudioCtrl.EnableSpeakerCompleteCallback paramEnableSpeakerCompleteCallback)
+  {
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {
+      localAVAudioCtrl.enableSpeaker(paramBoolean, paramEnableSpeakerCompleteCallback);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {}
+    for (int i = localAVAudioCtrl.getMicState();; i = 0)
+    {
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = false;
+    AVAudioCtrl localAVAudioCtrl = null;
+    if (this.jdField_a_of_type_ComTencentTMGSdkAVContext != null) {
+      localAVAudioCtrl = this.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl();
+    }
+    if (localAVAudioCtrl != null) {}
+    for (int i = localAVAudioCtrl.getSpeakerState();; i = 0)
+    {
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
     }
   }
 }

@@ -3,21 +3,27 @@ public class aslx
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   
-  public aslv a()
-  {
-    return new aslv(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
-  }
-  
-  public aslx a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aslx a(String paramString)
+  private aslx(String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
+    localStringBuilder.append(",sig:").append(this.jdField_a_of_type_JavaLangString).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

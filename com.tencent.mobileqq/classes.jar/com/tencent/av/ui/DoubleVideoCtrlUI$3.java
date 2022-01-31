@@ -1,9 +1,9 @@
 package com.tencent.av.ui;
 
-import axqw;
+import axqy;
 import com.tencent.av.VideoController;
-import lgf;
-import mat;
+import lga;
+import mao;
 
 class DoubleVideoCtrlUI$3
   implements Runnable
@@ -14,8 +14,8 @@ class DoubleVideoCtrlUI$3
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j()))
     {
-      mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
-      axqw.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
+      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
+      axqy.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
     }
   }
 }

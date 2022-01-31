@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import akwb;
+import akwa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForApollo;
@@ -16,7 +16,7 @@ final class ApolloUtil$1
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed = true;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.isPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = akwb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = akwa.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData);
       return;
     }

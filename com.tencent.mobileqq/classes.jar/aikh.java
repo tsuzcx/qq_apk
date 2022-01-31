@@ -1,28 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-class aikh
-  implements MediaPlayer.OnCompletionListener
+public class aikh
+  implements akrr
 {
-  aikh(aikd paramaikd, int paramInt, String paramString) {}
+  public aikh(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a()
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
-    try
+    if (QLog.isColorLevel())
     {
-      paramMediaPlayer = new JSONObject();
-      paramMediaPlayer.put("code", 1);
-      this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-      return;
+      QLog.d("SessionClearFragment", 2, "onLoadStart");
+      this.a.a();
     }
-    catch (JSONException paramMediaPlayer)
-    {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
+  }
+  
+  public void a(List<akrl> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onLoadFinish");
     }
+    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 

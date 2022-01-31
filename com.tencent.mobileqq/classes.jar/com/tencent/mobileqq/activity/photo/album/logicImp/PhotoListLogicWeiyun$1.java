@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agur;
+import agup;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class PhotoListLogicWeiyun$1
   implements Runnable
 {
-  public PhotoListLogicWeiyun$1(agur paramagur, NewPhotoListActivity paramNewPhotoListActivity) {}
+  public PhotoListLogicWeiyun$1(agup paramagup, NewPhotoListActivity paramNewPhotoListActivity) {}
   
   public void run()
   {

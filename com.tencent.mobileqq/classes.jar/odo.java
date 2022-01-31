@@ -1,56 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class odo
 {
-  private JSONObject a = new JSONObject();
-  
-  public String a()
+  public static int a()
   {
-    return this.a.toString();
+    return ((Integer)bhvy.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
   }
   
-  public odo a()
+  public static void a()
   {
-    try
-    {
-      this.a.put("network", olg.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-      this.a.put("version", npx.a);
-      this.a.put("os", "1");
-      this.a.put("uin", onk.a());
-      this.a.put("city", olg.b());
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
+    bhvy.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bhvy.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
   }
   
-  public odo a(int paramInt)
+  public static int b()
   {
-    int i = 0;
-    if (paramInt == 41516) {
-      i = 3;
-    }
-    for (;;)
-    {
-      try
-      {
-        this.a.put("source", i);
-        return this;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if (paramInt == 41522) {
-        i = 16;
-      }
-    }
-    return this;
+    return ((Integer)bhvy.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 

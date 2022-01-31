@@ -1,23 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.QZoneShareActivity;
+import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class bhlo
-  implements View.OnClickListener
+  extends bgyk
 {
-  public bhlo(QZoneShareActivity paramQZoneShareActivity) {}
+  public JceStruct a;
   
-  public void onClick(View paramView)
+  public bhlo(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    bhan.a().a(QZoneShareActivity.a, paramView);
-    this.a.a(false);
-    paramView = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-    paramView.putExtra("param_only_friends", true);
-    paramView.putExtra("param_min", 1);
-    this.a.startActivityForResult(paramView, 1000);
+    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
+    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
+    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
+    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
+    this.a = localCLIENT_NBP_REPORT_REQ;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.nbpClientReport";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "nbpClientReport";
   }
 }
 

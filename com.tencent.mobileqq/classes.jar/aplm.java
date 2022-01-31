@@ -1,22 +1,179 @@
-import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.image.JpegExifReader;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
+import java.net.URL;
 
-class aplm
-  extends aowe
+public class aplm
+  implements apnc
 {
-  aplm(apll paramapll, apab paramapab) {}
+  protected int a;
+  protected apkt a;
+  protected String a;
+  protected int b;
+  protected String b;
+  protected int c;
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public aplm(apkt paramapkt)
   {
-    QLog.i("VideoForC2C<QFile>", 2, "[" + this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay]  ID[" + paramLong2 + "]onUpdateGetOfflineDownloadInfo");
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
-      this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+    this.jdField_a_of_type_Apkt = paramapkt;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.c = -1;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public apkt a()
+  {
+    return this.jdField_a_of_type_Apkt;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public URL a()
+  {
+    String str = this.jdField_a_of_type_Apkt.f();
+    if (TextUtils.isEmpty(str))
+    {
+      str = this.jdField_a_of_type_Apkt.h();
+      if (str == null)
+      {
+        a(1);
+        return null;
+      }
+      this.jdField_a_of_type_Int = 2;
     }
-    apue.a(this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Apll.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new apln(this, paramLong1, paramBoolean, paramString3, paramString2, paramShort, paramString4));
+    while (apvd.b(str)) {
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        return AsyncImageView.a(str);
+        this.jdField_a_of_type_Int = 1;
+      }
+      else
+      {
+        return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
+      }
+    }
+    a(1);
+    return null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Apkt.a(paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (this.jdField_a_of_type_Apkt == null) {}
+    FileManagerEntity localFileManagerEntity;
+    do
+    {
+      return false;
+      localFileManagerEntity = this.jdField_a_of_type_Apkt.a();
+    } while (localFileManagerEntity == null);
+    if (localFileManagerEntity.isZipInnerFile)
+    {
+      if (localFileManagerEntity.status == 2) {}
+      for (;;)
+      {
+        return bool1;
+        bool1 = false;
+      }
+    }
+    if (this.jdField_b_of_type_Int == 1) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((this.jdField_a_of_type_Apkt.a() != null) && (this.jdField_a_of_type_Apkt.a().isZipInnerFile)) {
+      return paramString.equalsIgnoreCase(String.valueOf(this.jdField_a_of_type_Apkt.a()));
+    }
+    return (paramString.equalsIgnoreCase(this.jdField_a_of_type_Apkt.c())) || (paramString.equalsIgnoreCase(this.jdField_a_of_type_Apkt.e()));
+  }
+  
+  public int b()
+  {
+    if (this.c == -1) {}
+    try
+    {
+      String str = this.jdField_a_of_type_Apkt.f();
+      if (apvd.b(str))
+      {
+        this.c = JpegExifReader.readOrientation(str);
+        return this.c;
+      }
+      return 1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        this.c = 0;
+      }
+    }
+  }
+  
+  public String b()
+  {
+    String str2 = this.jdField_a_of_type_Apkt.f();
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (!str2.equals("")) {}
+    }
+    else
+    {
+      str1 = this.jdField_a_of_type_Apkt.h();
+      if (str1 != null) {
+        break label44;
+      }
+      str1 = "";
+    }
+    return str1;
+    label44:
+    this.jdField_a_of_type_Int = 2;
+    return str1;
+  }
+  
+  public void b(String paramString)
+  {
+    if (apvd.b(paramString)) {
+      this.jdField_b_of_type_JavaLangString = paramString;
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("DefaultImageInfo", 2, "setImageOriginPath error  : can not find origin file [path] =  " + paramString);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Apkt.b() < apei.c();
   }
 }
 

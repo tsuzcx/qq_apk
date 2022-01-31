@@ -1,22 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 class ahmb
   implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private ahma jdField_a_of_type_Ahma;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public ahmb(int paramInt, MqqHandler paramMqqHandler)
+  ahmb(ahma paramahma, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Ahma = paramahma;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ahma.jdField_a_of_type_JavaLangString + " on close");
+    }
+    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
+    paramView.obj = this.jdField_a_of_type_Ahma;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
+    this.jdField_a_of_type_Ahma.jdField_a_of_type_Ahly.onClose();
   }
 }
 

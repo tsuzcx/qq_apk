@@ -2,25 +2,24 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
 
 public class bjpx
   extends AnimatorListenerAdapter
 {
-  public bjpx(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bjpx(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  170ms end");
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
     }
-    this.a.c.setImageResource(2130843623);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView begin");
     }
   }
 }

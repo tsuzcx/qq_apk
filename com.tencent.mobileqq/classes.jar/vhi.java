@@ -1,14 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
-class vhi
-  implements View.OnClickListener
+public class vhi
+  extends Handler
 {
-  vhi(vhg paramvhg) {}
+  public vhi(EditVideoMusic paramEditVideoMusic) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.b();
   }
 }
 

@@ -1,190 +1,180 @@
 import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import android.text.style.ForegroundColorSpan;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class oal
 {
-  public static int a(ProteusBannerBigPicItemData paramProteusBannerBigPicItemData)
+  private static String a(String paramString)
   {
-    if (b(paramProteusBannerBigPicItemData)) {
-      return 28;
-    }
-    if (a(paramProteusBannerBigPicItemData)) {
-      return 25;
-    }
-    if (paramProteusBannerBigPicItemData.a) {
-      return 26;
-    }
-    return 10;
-  }
-  
-  public static int a(ProteusBannerTriplePicItemData paramProteusBannerTriplePicItemData)
-  {
-    if (a(paramProteusBannerTriplePicItemData)) {
-      return 30;
-    }
-    return 27;
-  }
-  
-  public static int a(ProteusBannerVideoItemData paramProteusBannerVideoItemData)
-  {
-    if (a(paramProteusBannerVideoItemData)) {
-      return 29;
-    }
-    return 15;
-  }
-  
-  public static int a(ProteusInnerData paramProteusInnerData)
-  {
-    int i = 20;
-    if (a(paramProteusInnerData)) {
-      i = 24;
-    }
-    do
+    String str = "0";
+    try
     {
-      return i;
-      if (paramProteusInnerData.a()) {
-        return 21;
+      if (!TextUtils.isEmpty(paramString)) {
+        str = String.format("%.3f", new Object[] { Float.valueOf((float)Long.parseLong(paramString) * 1.0F / 1048576.0F) });
       }
-    } while (!paramProteusInnerData.b());
-    return 20;
+      return str;
+    }
+    catch (Exception paramString) {}
+    return "0";
   }
   
-  public static void a(Context paramContext, AdData paramAdData)
+  public static void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener, SpannableStringBuilder paramSpannableStringBuilder, String paramString1, String paramString2, String paramString3)
   {
-    if (a(paramAdData))
+    bbgu localbbgu = new bbgu(paramContext, 2131755791);
+    localbbgu.setContentView(2131558883);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localbbgu.getMessageTextView().getLayoutParams();
+    localLayoutParams.leftMargin = actj.a(30.0F, paramContext.getResources());
+    localLayoutParams.rightMargin = actj.a(30.0F, paramContext.getResources());
+    localLayoutParams.width = -1;
+    localbbgu.getMessageTextView().setLayoutParams(localLayoutParams);
+    localbbgu.setMessage(paramSpannableStringBuilder);
+    localbbgu.setTitle(paramString1);
+    localbbgu.setPositiveButton(paramString2, new oan(paramOnClickListener));
+    localbbgu.setNegativeButton(paramString3, new oao());
+    localbbgu.show();
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if ((paramAdData == null) || (paramAdData.a == null)) {
+      return;
+    }
+    bbgu localbbgu = new bbgu(paramContext, 2131755791);
+    localbbgu.setContentView(2131558883);
+    paramContext = ajya.a(2131712863);
+    if (!TextUtils.isEmpty(paramAdData.a.t)) {
+      paramContext = paramAdData.a.t;
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramContext);
+    String str3 = ajya.a(2131712859);
+    String str4 = "#E06F00";
+    String str2 = str4;
+    String str1 = str3;
+    if (!TextUtils.isEmpty(paramAdData.a.u))
     {
-      String str1 = paramAdData.jdField_a_of_type_Nxz.m;
-      if (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_Nxz.n)) {
-        str1 = paramAdData.jdField_a_of_type_Nxz.n;
-      }
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1))
+      str2 = str4;
+      str1 = str3;
+      if (!TextUtils.isEmpty(paramAdData.a.v))
       {
-        str2 = str1;
-        if (!TextUtils.isEmpty(paramAdData.m)) {
-          str2 = paramAdData.m;
+        str1 = paramAdData.a.u;
+        str2 = paramAdData.a.v;
+      }
+    }
+    if (paramContext.contains(str1))
+    {
+      int i = paramContext.indexOf(str1);
+      int j = str1.length();
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str2)), i, j + i, 33);
+    }
+    localbbgu.setMessage(localSpannableStringBuilder);
+    paramContext = ajya.a(2131712937);
+    if (!TextUtils.isEmpty(paramAdData.a.w)) {
+      paramContext = paramAdData.a.w;
+    }
+    localbbgu.setTitle(paramContext);
+    localbbgu.setPositiveButton(ajya.a(2131713078), new oam(paramOnClickListener));
+    localbbgu.show();
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData, boolean paramBoolean1, boolean paramBoolean2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if ((paramAdData == null) || (paramAdData.a == null)) {
+      return;
+    }
+    String str1;
+    SpannableStringBuilder localSpannableStringBuilder;
+    String str2;
+    if (!paramBoolean1)
+    {
+      str1 = ajya.a(2131712953);
+      if (!a(paramAdData.a.q).equals("0")) {
+        str1 = String.format(ajya.a(2131712822), new Object[] { a(paramAdData.a.q) });
+      }
+      if (!TextUtils.isEmpty(paramAdData.a.s)) {
+        str1 = paramAdData.a.s;
+      }
+      localSpannableStringBuilder = new SpannableStringBuilder(str1);
+      if (!paramBoolean2)
+      {
+        String str4 = ajya.a(2131713080);
+        String str5 = "#E06F00";
+        String str3 = str5;
+        str2 = str4;
+        if (!TextUtils.isEmpty(paramAdData.a.u))
+        {
+          str3 = str5;
+          str2 = str4;
+          if (!TextUtils.isEmpty(paramAdData.a.v))
+          {
+            str2 = paramAdData.a.u;
+            str3 = paramAdData.a.v;
+          }
+        }
+        if (str1.contains(str2))
+        {
+          int i = str1.indexOf(str2);
+          int j = str2.length();
+          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str3)), i, j + i, 33);
         }
       }
-      onk.e(paramContext, sht.a(str2));
+      str1 = ajya.a(2131713077);
+      if (paramBoolean2) {
+        str1 = ajya.a(2131713048);
+      }
+      if (TextUtils.isEmpty(paramAdData.a.w)) {
+        break label363;
+      }
+      str1 = paramAdData.a.w;
     }
-  }
-  
-  public static void a(Context paramContext, AdData paramAdData, int paramInt)
-  {
-    if (paramAdData == null) {
-      return;
-    }
-    sht.a(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
-    paramContext = (QQAppInterface)onk.a();
-    nmf.a(new nyg().a(paramContext).a(BaseApplication.getContext()).a(nmf.J).b(nmf.K).a(oav.a(paramAdData)).d(paramInt).d(nmf.a(paramAdData)).a());
-  }
-  
-  public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt)
-  {
-    try
-    {
-      View localView = ((pmh)paramViewBase).getNativeView();
-      a(paramContext, paramViewBase, paramString, paramInt, localView.getWidth(), localView.getHeight());
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("FastWeqAdUtils", 2, "loadImage error " + paramContext.getMessage());
-    }
-  }
-  
-  public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    try
-    {
-      paramViewBase = (pmh)paramViewBase;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mRequestHeight = paramInt3;
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setTag(bavi.b(paramInt2, paramInt3, actn.a(paramInt1, paramContext.getResources())));
-      paramString.setDecodeHandler(bavi.i);
-      paramViewBase.setImageDrawable(paramString, true);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("FastWeqAdUtils", 2, "loadImage error " + paramContext.getMessage());
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    sht.a(paramContext);
-    if (!TextUtils.isEmpty(paramString2)) {}
+    label363:
     for (;;)
     {
-      onk.e(paramContext, sht.a(paramString2));
-      return;
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramString2 = paramString3;
-      } else {
-        paramString2 = paramString1;
+      str2 = ajya.a(2131712739);
+      if (bbfr.a(BaseApplicationImpl.getContext(), paramAdData.a.b)) {
+        str2 = ajya.a(2131712884);
+      }
+      if (paramBoolean2) {}
+      for (paramAdData = ajya.a(2131713008);; paramAdData = ajya.a(2131712713))
+      {
+        a(paramContext, paramOnClickListener, localSpannableStringBuilder, str1, str2, paramAdData);
+        return;
+        str1 = ajya.a(2131712931);
+        if (TextUtils.isEmpty(paramAdData.a.t)) {
+          break;
+        }
+        str1 = paramAdData.a.t;
+        break;
       }
     }
   }
   
-  public static boolean a(AdData paramAdData)
+  public static void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    return (paramAdData != null) && (paramAdData.jdField_a_of_type_Nxz != null) && (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_Nxz.b));
-  }
-  
-  public static void b(Context paramContext, AdData paramAdData)
-  {
-    if (paramAdData == null) {
-      return;
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(ajya.a(2131712823));
+    String str2 = ajya.a(2131712981);
+    String str1 = ajya.a(2131712738);
+    if (bbfr.a(BaseApplicationImpl.getContext(), paramString)) {
+      str1 = ajya.a(2131713017);
     }
-    sht.a(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
-    paramContext = (QQAppInterface)onk.a();
-    nmf.a(new nyg().a(paramContext).a(BaseApplication.getContext()).a(nmf.J).b(nmf.K).a(oav.a(paramAdData)).d(nmf.a(paramAdData)).a());
+    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str2, str1, ajya.a(2131713131));
   }
   
-  public static boolean b(AdData paramAdData)
+  public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    return (paramAdData != null) && (paramAdData.jdField_a_of_type_Nyh != null) && (5001 == paramAdData.jdField_a_of_type_Nyh.g);
-  }
-  
-  public static boolean c(AdData paramAdData)
-  {
-    return (a(paramAdData)) && ("3".equals(paramAdData.jdField_a_of_type_Nxz.x));
-  }
-  
-  public static boolean d(AdData paramAdData)
-  {
-    return (a(paramAdData)) && ("1".equals(paramAdData.jdField_a_of_type_Nxz.x));
-  }
-  
-  public static boolean e(AdData paramAdData)
-  {
-    return (a(paramAdData)) && ("2".equals(paramAdData.jdField_a_of_type_Nxz.x));
-  }
-  
-  public static boolean f(AdData paramAdData)
-  {
-    if (paramAdData == null) {}
-    while ((TextUtils.isEmpty(paramAdData.K)) || (!paramAdData.c) || (!oat.d(paramAdData))) {
-      return false;
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(String.format(ajya.a(2131712995), new Object[] { a(paramString1) }));
+    String str = ajya.a(2131712900);
+    paramString1 = ajya.a(2131713144);
+    if (bbfr.a(BaseApplicationImpl.getContext(), paramString2)) {
+      paramString1 = ajya.a(2131713112);
     }
-    return true;
+    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str, paramString1, ajya.a(2131712870));
   }
 }
 

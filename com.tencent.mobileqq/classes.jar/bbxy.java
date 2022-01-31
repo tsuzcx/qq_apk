@@ -1,34 +1,22 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
 
 class bbxy
-  extends MqqHandler
+  extends MQLruCache<String, Object>
 {
-  bbxy(bbxx parambbxx) {}
-  
-  public void handleMessage(Message paramMessage)
+  bbxy(bbxx parambbxx, int paramInt)
   {
-    switch (paramMessage.what)
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Bitmap)))
     {
-    default: 
-    case 104: 
-      do
-      {
-        return;
-        paramMessage = (String)paramMessage.obj;
-        if ((this.a.jdField_a_of_type_Avpw != null) && (!TextUtils.isEmpty(paramMessage)))
-        {
-          this.a.jdField_a_of_type_Avpw.a(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(bbxx.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
-      return;
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
     }
-    bbxx.a(this.a).finish();
+    return super.sizeOfObj(paramString, paramObject);
   }
 }
 

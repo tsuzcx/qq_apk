@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.teamwork;
 
-import ayfr;
+import ayft;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class TeamWorkShareActionSheetBuilder$4
   implements Runnable
 {
-  public TeamWorkShareActionSheetBuilder$4(ayfr paramayfr) {}
+  public TeamWorkShareActionSheetBuilder$4(ayft paramayft) {}
   
   public void run()
   {
-    if (this.this$0.a.getWidth() < ayfr.a(this.this$0)) {
+    if (this.this$0.a.getWidth() < ayft.a(this.this$0)) {
       this.this$0.a.setMove(true);
     }
-    while (this.this$0.b.getWidth() < ayfr.b(this.this$0))
+    while (this.this$0.b.getWidth() < ayft.b(this.this$0))
     {
       this.this$0.b.setMove(true);
       return;

@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import besi;
-import bffj;
-import bffl;
+import besz;
+import bfga;
+import bfgc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.ui.MoreItem;
 import cooperation.vip.pb.TianShuAccess.AdItem;
@@ -46,9 +46,9 @@ public abstract class MiniAppProxy
   
   public abstract int getLoginType();
   
-  public abstract bffl getMoreItemSelectedListener();
+  public abstract bfgc getMoreItemSelectedListener();
   
-  public abstract List<MoreItem> getMoreItems(bffj parambffj);
+  public abstract List<MoreItem> getMoreItems(bfga parambfga);
   
   public abstract String getNickName();
   
@@ -72,9 +72,9 @@ public abstract class MiniAppProxy
   
   public abstract void notifyMiniAppInfo(MiniAppInfo paramMiniAppInfo);
   
-  public abstract boolean onCapsuleButtonCloseClick(besi parambesi);
+  public abstract boolean onCapsuleButtonCloseClick(besz parambesz);
   
-  public abstract boolean onCapsuleButtonMoreClick(besi parambesi);
+  public abstract boolean onCapsuleButtonMoreClick(besz parambesz);
   
   public abstract boolean openChoosePhotoActivity(Activity paramActivity, int paramInt, MiniAppProxy.IChoosePhotoListner paramIChoosePhotoListner);
   

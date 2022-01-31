@@ -1,26 +1,27 @@
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.List;
 
 class ajjo
-  implements aiuf
+  implements ajic
 {
-  ajjo(ajjn paramajjn, String paramString) {}
+  ajjo(ajjd paramajjd, File paramFile, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    }
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Ajjn.jdField_a_of_type_JavaIoFile.exists())
+      if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        this.jdField_a_of_type_Ajjn.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Ajjn.jdField_a_of_type_Int + ajyc.a(2131700489));
+        this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 0, paramInt1 + ajya.a(2131700512));
         return;
       }
-      this.jdField_a_of_type_Ajjn.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Ajjn.jdField_a_of_type_Int + ajyc.a(2131700500));
+      this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + ajya.a(2131700488));
       return;
     }
-    this.jdField_a_of_type_Ajjn.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Ajjn.jdField_a_of_type_Int + ajyc.a(2131700497));
+    this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + ajya.a(2131700506));
   }
 }
 

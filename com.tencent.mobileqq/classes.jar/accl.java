@@ -1,20 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import com.tencent.image.URLImageView;
 
 class accl
-  extends RecyclerView.ViewHolder
+  extends AccessibilityDelegateCompat
 {
-  View jdField_a_of_type_AndroidViewView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  URLImageView b;
+  accl(accj paramaccj) {}
   
-  public accl(acck paramacck, View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367906));
-    this.b = ((URLImageView)paramView.findViewById(2131367921));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369487);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(false);
   }
 }
 

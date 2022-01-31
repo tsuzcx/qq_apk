@@ -1,22 +1,24 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-class adqq
-  implements URLDrawable.URLDrawableListener
+public class adqq
+  extends acuj
 {
-  adqq(adqg paramadqg, StateListDrawable paramStateListDrawable) {}
+  float jdField_a_of_type_Float;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  UnlimitedBladeWorks jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  ImageView b;
+  public View c;
+  ImageView c;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
-  }
+  public adqq(adqe paramadqe) {}
 }
 
 

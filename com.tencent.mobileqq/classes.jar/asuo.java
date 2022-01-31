@@ -1,24 +1,15 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class asuo
+class asuo
+  implements DialogInterface.OnKeyListener
 {
-  public static HashMap<Integer, String> a = new HashMap();
+  asuo(asun paramasun) {}
   
-  static
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131718822));
-    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131718820));
-    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131719734));
-    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131691305));
-    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131718817));
-    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131718834));
-    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131718821));
-  }
-  
-  public static String a(int paramInt)
-  {
-    return (String)a.get(Integer.valueOf(paramInt));
+    return paramInt == 4;
   }
 }
 

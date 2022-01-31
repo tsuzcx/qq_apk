@@ -1,10 +1,8 @@
 public abstract interface vos
 {
-  public abstract void a();
+  public abstract void a(vlo paramvlo, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
+  public abstract void a(vou paramvou);
 }
 
 

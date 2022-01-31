@@ -1,15 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mgi
-  implements View.OnClickListener
+  extends bbgu
 {
-  public mgi(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
-  
-  public void onClick(View paramView)
+  public mgi(Context paramContext, int paramInt)
   {
-    this.a.a(paramView);
+    super(paramContext, paramInt);
+  }
+  
+  public static bbgu a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    paramContext = new mgi(paramContext, 2131755791);
+    paramContext.setContentView(2131558906);
+    paramContext.setTitle(paramString1);
+    paramContext.setMessage(paramString2);
+    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
+    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
+    if (!paramBoolean) {
+      dismiss();
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajsf;
+import ajsd;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import awjp;
+import awjr;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -75,7 +75,7 @@ public class ContactSearchComponentActivity
     ArrayList localArrayList = new ArrayList();
     if ((i == 7) || (i == 6) || (i == 23))
     {
-      localArrayList.add(ajsf.aC);
+      localArrayList.add(ajsd.aC);
       return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
     }
     return super.a();
@@ -85,7 +85,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131375702).setOnTouchListener(new awjp(this));
+    findViewById(2131375704).setOnTouchListener(new awjr(this));
     return true;
   }
   

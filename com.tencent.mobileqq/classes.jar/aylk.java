@@ -1,8 +1,23 @@
-public abstract interface aylk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+final class aylk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onCancel();
+  aylk(aylm paramaylm) {}
   
-  public abstract void onConfirm();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aylh.a("0X800A5CB");
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
+    }
+    aylh.a(false);
+    if (this.a != null) {
+      this.a.onConfirm();
+    }
+  }
 }
 
 

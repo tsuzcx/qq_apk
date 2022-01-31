@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bawz;
+import baxn;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
+import ung;
 import unj;
 import unm;
-import unp;
-import uuf;
+import uuc;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
   extends HorizontalListView
 {
   int a;
-  public unj a;
-  public unp a;
+  public ung a;
+  public unm a;
   int b;
   
   public StoryPickerHorizontalListView(Context paramContext)
@@ -38,22 +38,22 @@ public class StoryPickerHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bawz.a(paramContext, 105.0F);
-    this.jdField_a_of_type_Unj = new unj(getContext());
-    super.setAdapter(this.jdField_a_of_type_Unj);
-    super.setOnItemClickListener(this.jdField_a_of_type_Unj);
-    super.setOnScrollStateChangedListener(new unm(this));
+    this.b = baxn.a(paramContext, 105.0F);
+    this.jdField_a_of_type_Ung = new ung(getContext());
+    super.setAdapter(this.jdField_a_of_type_Ung);
+    super.setOnItemClickListener(this.jdField_a_of_type_Ung);
+    super.setOnScrollStateChangedListener(new unj(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Unj;
+    return this.jdField_a_of_type_Ung;
   }
   
-  public void setData(List<uuf> paramList, String paramString)
+  public void setData(List<uuc> paramList, String paramString)
   {
-    this.jdField_a_of_type_Unj.a(paramList, paramString);
+    this.jdField_a_of_type_Ung.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,9 +63,9 @@ public class StoryPickerHorizontalListView
     setOverScrollMode(1);
   }
   
-  public void setOnHorizontalScrollListener(unp paramunp)
+  public void setOnHorizontalScrollListener(unm paramunm)
   {
-    this.jdField_a_of_type_Unp = paramunp;
+    this.jdField_a_of_type_Unm = paramunm;
   }
 }
 

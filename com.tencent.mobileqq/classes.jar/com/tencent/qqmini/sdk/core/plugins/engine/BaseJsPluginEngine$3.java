@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import behl;
-import beka;
+import beic;
+import bekr;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class BaseJsPluginEngine$3
   implements AsyncResult
 {
-  BaseJsPluginEngine$3(BaseJsPluginEngine paramBaseJsPluginEngine, beka parambeka) {}
+  BaseJsPluginEngine$3(BaseJsPluginEngine paramBaseJsPluginEngine, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -20,11 +20,11 @@ class BaseJsPluginEngine$3
     }
     if ((paramBoolean) && (!"0".equals(str)))
     {
-      paramJSONObject = behl.a().a("scope.getPhoneNumber");
+      paramJSONObject = beic.a().a("scope.getPhoneNumber");
       if (paramJSONObject != null)
       {
         paramJSONObject.c = str;
-        behl.a().a("scope.getPhoneNumber", paramJSONObject);
+        beic.a().a("scope.getPhoneNumber", paramJSONObject);
         BaseJsPluginEngine.access$400(this.this$0, this.val$req);
       }
       return;

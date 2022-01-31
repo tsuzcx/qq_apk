@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager;
 
-import ayrv;
-import ayry;
+import ayrx;
+import aysa;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectConfigBase$NetReqRunnable
   implements Runnable
 {
-  final ayrv a;
+  final ayrx a;
   
-  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, ayrv paramayrv)
+  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, ayrx paramayrx)
   {
-    this.a = paramayrv;
+    this.a = paramayrx;
   }
   
   public void run()

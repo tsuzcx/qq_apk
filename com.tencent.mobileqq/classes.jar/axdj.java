@@ -1,48 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class axdj
+public abstract interface axdj
 {
-  int a;
-  int b;
-  int c;
-  int d;
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
   
-  public static axdj a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("showDetail");
-      if (paramString.length() < 0)
-      {
-        JSONObject localJSONObject = paramString.getJSONObject(0);
-        axdj localaxdj = new axdj();
-        String str = localJSONObject.optString("name");
-        if ("photo".equals(str))
-        {
-          localaxdj.c = localJSONObject.optInt("showRed", 0);
-          localaxdj.d = localJSONObject.optInt("version", 0);
-          return localaxdj;
-        }
-        paramString = localaxdj;
-        if (!"gif".equals(str)) {
-          return paramString;
-        }
-        localaxdj.a = localJSONObject.optInt("showRed", 0);
-        localaxdj.b = localJSONObject.optInt("version", 0);
-        return localaxdj;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
-      }
-      paramString = null;
-    }
-    return paramString;
-  }
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
 }
 
 

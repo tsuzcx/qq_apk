@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.utils;
 
-import akwf;
-import akwp;
+import akwe;
+import akwo;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,10 +12,10 @@ import com.tencent.widget.VerticalGallery;
 
 public class TimeWheelPanel
   extends LinearLayout
-  implements akwf
+  implements akwe
 {
   public int a;
-  private akwp jdField_a_of_type_Akwp;
+  private akwo jdField_a_of_type_Akwo;
   private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -53,14 +53,14 @@ public class TimeWheelPanel
     if ((this.jdField_a_of_type_AndroidViewLayoutInflater == null) || (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null))
     {
       this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560666, this);
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131364930));
+      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560665, this);
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131364929));
       this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131367660));
-      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131370337));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364931));
+      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131370336));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364930));
       this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367661));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370338));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365694));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370337));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365693));
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
@@ -128,8 +128,8 @@ public class TimeWheelPanel
     this.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     this.jdField_c_of_type_Int = this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     setValues(false);
-    if (this.jdField_a_of_type_Akwp != null) {
-      this.jdField_a_of_type_Akwp.a(paramNumberWheelView, paramVerticalGallery);
+    if (this.jdField_a_of_type_Akwo != null) {
+      this.jdField_a_of_type_Akwo.a(paramNumberWheelView, paramVerticalGallery);
     }
   }
   
@@ -163,9 +163,9 @@ public class TimeWheelPanel
     }
   }
   
-  public void setScrollerStateListener(akwp paramakwp)
+  public void setScrollerStateListener(akwo paramakwo)
   {
-    this.jdField_a_of_type_Akwp = paramakwp;
+    this.jdField_a_of_type_Akwo = paramakwo;
   }
   
   public void setValues(boolean paramBoolean)
@@ -188,7 +188,7 @@ public class TimeWheelPanel
   public void setViewVisibility(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 0) {
-      findViewById(2131364926).setVisibility(paramInt2);
+      findViewById(2131364925).setVisibility(paramInt2);
     }
     do
     {
@@ -200,7 +200,7 @@ public class TimeWheelPanel
       }
       if (paramInt1 == 2)
       {
-        findViewById(2131370334).setVisibility(paramInt2);
+        findViewById(2131370333).setVisibility(paramInt2);
         return;
       }
     } while (paramInt1 != 3);

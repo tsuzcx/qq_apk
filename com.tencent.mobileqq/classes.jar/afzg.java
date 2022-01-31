@@ -1,27 +1,17 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class afzg
+public class afzg
   implements View.OnClickListener
 {
-  afzg(afzf paramafzf) {}
+  public afzg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691961);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.d.setVisibility(8);
-    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368429));
-    this.a.a.d.setVisibility(0);
-    this.a.a.d.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Agaw != null) {
-      this.a.a.jdField_a_of_type_Agaw.a();
-    }
+    this.a.u();
+    new axrc(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.c }).a();
   }
 }
 

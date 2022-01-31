@@ -1,11 +1,46 @@
-public class bfdw
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader;
+
+public final class bfdw
+  implements beqn<FlutterRuntimeLoader>
 {
-  public static com.tencent.smtt.sdk.ValueCallback a(android.webkit.ValueCallback paramValueCallback)
+  public FlutterRuntimeLoader a(Context paramContext, Bundle paramBundle)
   {
-    if (paramValueCallback != null) {
-      return new bfdx(paramValueCallback);
+    return new FlutterRuntimeLoader(paramContext);
+  }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public boolean a(Bundle paramBundle)
+  {
+    if ((beku.a != null) && (!TextUtils.isEmpty(beku.a.getNativeLibDir()))) {}
+    for (int i = 1; i != 0; i = 0) {
+      return true;
     }
-    return null;
+    if (paramBundle != null) {
+      try
+      {
+        paramBundle = (String)paramBundle.get("tissuenativelibdir");
+        if (beku.a == null) {
+          beku.a = new bfdx(this, paramBundle);
+        }
+        boolean bool = TextUtils.isEmpty(beku.a.getNativeLibDir());
+        if (!bool) {}
+        for (bool = true;; bool = false) {
+          return bool;
+        }
+        return false;
+      }
+      catch (Throwable paramBundle) {}
+    }
+  }
+  
+  public boolean a(MiniAppInfo paramMiniAppInfo)
+  {
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode());
   }
 }
 

@@ -1,40 +1,49 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
 public class urd
-  extends ssy
+  extends ste<uqv, uwe>
 {
-  public String a;
-  private ure a;
-  
-  public urd(String paramString, @NonNull ure paramure)
+  public urd(uqv paramuqv)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ure = paramure;
+    super(paramuqv);
   }
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(@NonNull uqv paramuqv, @NonNull uwe paramuwe)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPushMsg.d))
+    if ((paramuwe.jdField_a_of_type_Int == 2) || (!paramuwe.jdField_a_of_type_JavaLangString.equals(uqv.a(paramuqv))) || (uqv.a(paramuqv) == null))
     {
-      veg.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, this.jdField_a_of_type_JavaLangString);
+      ved.b(this.TAG, "ignore this video cookie change event. %s.", paramuwe.toString());
       return;
     }
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    if (!uqv.a(paramuqv).c())
     {
-      veg.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-      this.jdField_a_of_type_Ure.a(1);
+      ved.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramuwe.toString() });
       return;
     }
-    if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
+    paramuwe = uqv.a(paramuqv).a(uqv.a(paramuqv), uqv.a(paramuqv).a().mVideoPullType);
+    if (paramuwe == null)
     {
-      veg.a("DetailFeedPushObserver", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
-      this.jdField_a_of_type_Ure.a(2);
+      ved.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { uqv.a(paramuqv), Integer.valueOf(uqv.a(paramuqv).a().mVideoPullType) });
       return;
     }
-    this.jdField_a_of_type_Ure.a(0);
+    ved.a(this.TAG, "receive video cookie change event. %s.", paramuwe.toString());
+    uqv.a(paramuqv).a().updateVideoInfo(paramuwe);
+    uqv.a(paramuqv).a(paramuwe.mVideoItemList, true);
+    if (uqv.a(paramuqv) != null) {
+      uqv.a(paramuqv).a(paramuwe.mVideoPullType, paramuwe.mVideoNextCookie, paramuwe.mVideoSeq);
+    }
+    uqv.a(paramuqv).c();
   }
+  
+  public Class acceptEventClass()
+  {
+    return uwe.class;
+  }
+  
+  public void b(@NonNull uqv paramuqv, @NonNull uwe paramuwe) {}
 }
 
 

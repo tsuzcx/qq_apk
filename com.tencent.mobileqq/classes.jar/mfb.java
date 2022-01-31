@@ -1,17 +1,34 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class mfb
-  implements View.OnLayoutChangeListener
+public class mfb
+  implements AdapterView.OnItemClickListener
 {
-  mfb(mfa parammfa) {}
+  public mfb(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MemberPagerAdapter", 2, String.format("view : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
+    if (this.a.jdField_a_of_type_Mru == null) {}
+    do
+    {
+      return;
+      paramAdapterView = (mez)paramView.getTag();
+      if (paramAdapterView != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
+    return;
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)))
+    {
+      this.a.jdField_a_of_type_Mru.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, true);
+      return;
     }
+    this.a.jdField_a_of_type_Mru.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, false);
   }
 }
 

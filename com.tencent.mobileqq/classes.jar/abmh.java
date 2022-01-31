@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
 public class abmh
-  implements abmq
+  extends MqqHandler
 {
-  public abmh(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public abmh(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    LoginPhoneNumActivity.a(this.a);
-  }
-  
-  public void b()
-  {
-    LoginPhoneNumActivity.a(this.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

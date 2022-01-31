@@ -1,168 +1,38 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 
-public class aobr
-  extends BaseAdapter
-  implements AdapterView.OnItemClickListener
+class aobr
+  implements askq<EmoticonPackage>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private aobt jdField_a_of_type_Aobt;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  aobr(aobp paramaobp, QQAppInterface paramQQAppInterface, int paramInt, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public aobr(Context paramContext, aobt paramaobt)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aobt = paramaobt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846920);
-    this.jdField_a_of_type_Int = actn.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-  }
-  
-  public static URL a(String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
-    localStringBuilder.append("://");
-    localStringBuilder.append(paramString1);
-    if (paramString2 != null)
+    int i = ascl.a(this.jdField_a_of_type_Aobp.a.magicValue);
+    if ((-1 != i) && (paramEmoticonPackage != null))
     {
-      localStringBuilder.append("#");
-      localStringBuilder.append(paramString2);
+      paramEmoticonPackage.rscType = i;
+      ((askf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramEmoticonPackage);
     }
-    try
+    paramEmoticonPackage = "rscType?" + i + ";value=" + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Aobp.a.magicValue = paramEmoticonPackage;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + paramEmoticonPackage);
+    }
+    ascr localascr = asdj.a(this.jdField_a_of_type_Aobp.a, 0);
+    if ((localascr != null) && (!localascr.c))
     {
-      paramString1 = new URL(localStringBuilder.toString());
-      return paramString1;
+      aanz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobp.a);
+      return;
     }
-    catch (MalformedURLException paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreviewThumbAdapter", 2, paramString1.getMessage(), paramString1);
-      }
-    }
-    return null;
-  }
-  
-  public LocalMediaInfo a(String paramString)
-  {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.mMediaType = 0;
-    localLocalMediaInfo.path = paramString;
-    localLocalMediaInfo.thumbWidth = this.jdField_a_of_type_Int;
-    localLocalMediaInfo.thumbHeight = this.jdField_a_of_type_Int;
-    return localLocalMediaInfo;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView == null)
-    {
-      paramView = new aobs(this);
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559397, paramViewGroup, false);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject1).findViewById(2131377244));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131377242));
-      ((View)localObject1).setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = (View)localObject1;
-    }
-    Object localObject2;
-    for (;;)
-    {
-      localObject2 = a(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break;
-      }
-      return paramView;
-      paramViewGroup = (aobs)paramView.getTag();
-    }
-    if (((String)localObject2).equals(this.jdField_a_of_type_JavaLangString)) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    for (;;)
-    {
-      localObject1 = a((String)localObject2);
-      localObject2 = a((String)localObject2, "DEFAULT");
-      URLDrawable localURLDrawable = paramViewGroup.jdField_a_of_type_ComTencentImageURLDrawable;
-      if ((localURLDrawable != null) && (localURLDrawable.getURL().toString().equals(((URL)localObject2).toString()))) {
-        break;
-      }
-      localObject2 = aywk.a((URL)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((URLDrawable)localObject2).setTag(localObject1);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject2);
-      return paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_Aobt != null) {
-      this.jdField_a_of_type_Aobt.a(paramInt);
-    }
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_Aobp.a, new aobs(this, paramEmoticonPackage));
   }
 }
 

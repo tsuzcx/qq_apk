@@ -1,106 +1,208 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class leg
-  extends leq
+class leg
+  extends akat
 {
-  public static final String a = ;
+  leg(lee paramlee) {}
   
-  public static void a(String paramString, long paramLong)
+  protected void a(String paramString)
   {
+    if (QLog.isColorLevel()) {
+      QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin 同意添加好友失败 :" + paramString);
+    }
+    long l2 = aydc.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      QLog.d("VideoUtils", 1, String.format("requestPartialWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
-      PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
-      if (localPowerManager != null) {
-        localPowerManager.newWakeLock(1, paramString).acquire(paramLong);
+      l1 = Long.parseLong(paramString);
+      if (aydc.a().a(Long.valueOf(l1)) != null)
+      {
+        super.a(paramString);
+        return;
       }
-      return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception localException)
     {
-      QLog.d(paramString, 1, "requestPartialWakeLock fail.", localThrowable);
+      for (;;)
+      {
+        localException.printStackTrace();
+        l1 = l2;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError structMsg = null");
+        }
+      }
     }
   }
   
-  public static final boolean a()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
+    if (QLog.isColorLevel()) {
+      QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 issuc" + paramBoolean + ",logStr=" + paramString1 + ";actionType=" + paramInt1 + ";msgDetail=" + paramString2 + ";resultCode=" + paramInt2 + ";respType=" + paramInt3 + ";msgFail=" + paramString3 + ";msgInvalidDecided=" + paramString4 + ";remarkRet=" + paramInt4);
+    }
+    long l2 = aydc.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      structmsg.StructMsg localStructMsg = aydc.a().a(Long.valueOf(l1));
+      if (localStructMsg != null)
+      {
+        l1 = localStructMsg.req_uin.get();
+        if (QLog.isColorLevel()) {
+          QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调  uin=" + String.valueOf(l1));
+        }
+        super.a(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        l1 = l2;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin structMsg = null");
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin, isSuccess=" + paramBoolean + ", uin" + paramString);
+    }
+    super.a(paramBoolean, paramString, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.bengin");
+    }
+    if (paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i(lee.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.success");
+      }
+    }
     for (;;)
     {
-      int j;
+      Object localObject;
+      int i;
       try
       {
-        boolean bool = LocalMultiProcConfig.getBool("is_qzone_live_launch", false);
-        QLog.d("VideoUtils", 1, "isQzoneLiveExist, isRunning=" + bool);
-        if (!bool) {
-          return false;
+        new ArrayList();
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(ajsd.M, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin mDataList size=" + ((List)localObject).size());
         }
-        int i = -2;
-        List localList = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-        if (localList != null)
+        i = ((List)localObject).size() - 1;
+        if (i >= 0)
         {
-          j = 0;
-          if (j < localList.size())
-          {
-            if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)localList.get(j)).processName))
-            {
-              i = ((ActivityManager.RunningAppProcessInfo)localList.get(j)).pid;
-              break label184;
-            }
+          MessageForSystemMsg localMessageForSystemMsg = (MessageForSystemMsg)((List)localObject).get(i);
+          if (localMessageForSystemMsg == null) {
+            return;
           }
-          else
+          if (QLog.isColorLevel())
           {
-            j = LocalMultiProcConfig.getInt("qzone_live_process_id", -1);
-            QLog.d("VideoUtils", 1, "isQzoneLiveExist, processId=" + i + ", id=" + j);
-            if (i == j)
-            {
-              bool = true;
-              return bool;
-            }
-            bool = false;
-            continue;
+            QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "msg_type=" + localMessageForSystemMsg.structMsg.msg_type.get() + ", source id" + localMessageForSystemMsg.structMsg.msg.src_id.get() + "senderuin" + localMessageForSystemMsg.senderuin);
+            QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin " + localMessageForSystemMsg.senderuin + " 请求加好友");
           }
+          if ((localMessageForSystemMsg.structMsg.msg.src_id.get() == 3023) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 2023) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 3025) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 2025)) {
+            break label358;
+          }
+          if (!QLog.isColorLevel()) {
+            break label659;
+          }
+          QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "no av talk src id");
         }
       }
       catch (Exception localException)
       {
-        QLog.e("VideoUtils", 1, localException, new Object[0]);
-        return false;
+        localException.printStackTrace();
       }
-      return false;
-      label184:
-      j += 1;
-    }
-  }
-  
-  public static void b(String paramString, long paramLong)
-  {
-    try
-    {
-      QLog.d("VideoUtils", 1, String.format("requestScreenBrightWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
-      PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
-      if (localPowerManager != null) {
-        localPowerManager.newWakeLock(805306378, paramString).acquire(paramLong);
+      label358:
+      int j;
+      for (;;)
+      {
+        super.a(paramBoolean1, paramBoolean2, paramList);
+        return;
+        if (localException.structMsg.msg_type.get() != 1) {
+          break label716;
+        }
+        String str = localException.senderuin;
+        j = localException.structMsg.msg.sub_type.get();
+        if (!QLog.isColorLevel()) {
+          break label660;
+        }
+        QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "systemMsg subType : " + j);
+        break label660;
+        if (this.a.a(str) == 4)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "already fiend :" + str);
+          return;
+        }
+        if (this.a.a(str) == 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(lee.jdField_a_of_type_JavaLangString, 2, "recv add friend request when had send request, accept it automatically :" + str);
+          }
+          this.a.c(str);
+          return;
+        }
+        if (!this.a.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+        {
+          localObject = new leh(this.a);
+          this.a.jdField_a_of_type_JavaUtilHashMap.put(str, localObject);
+        }
+        lee.a(this.a, str, 2);
+        this.a.a(localException.senderuin);
+        return;
+        if (this.a.a(str) != 2) {
+          break;
+        }
+        lee.a(this.a, str, 0);
+        this.a.a(localException.senderuin);
+        return;
+        if ((paramBoolean2) && (QLog.isColorLevel())) {
+          QLog.e(lee.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin bTimeout");
+        }
       }
+      label659:
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.d(paramString, 1, "requestScreenBrightWakeLock fail.", localThrowable);
+      label660:
+      switch (j)
+      {
+      }
+      label716:
+      i -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     leg
  * JD-Core Version:    0.7.0.1
  */

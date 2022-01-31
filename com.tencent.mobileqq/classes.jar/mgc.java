@@ -1,19 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
-class mgc
+public class mgc
   implements View.OnClickListener
 {
-  mgc(mga parammga) {}
+  public mgc(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
-    }
-    axqw.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
+    bbgg.c();
+    axqy.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
+    this.a.d(10);
   }
 }
 

@@ -1,37 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import java.lang.ref.WeakReference;
 
 public class avol
-  implements aumy
+  implements View.OnLongClickListener
 {
   private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public avol(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  private avol(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
     this.a = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(aumz paramaumz)
+  public boolean onLongClick(View paramView)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
     }
-    switch (paramaumz.a)
-    {
-    default: 
-      return;
-    case -1: 
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
+    bfpc localbfpc = bfpc.a(paramView.getActivity());
+    localbfpc.b(2131691303);
+    localbfpc.c(2131690596);
+    localbfpc.a(new avom(this, paramView, localbfpc));
+    localbfpc.show();
+    return true;
   }
 }
 

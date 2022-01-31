@@ -3,7 +3,7 @@ package com.tencent.mobileqq.microapp.appbrand.page;
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.os.Build.VERSION;
-import bcbg;
+import bcbu;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.smtt.sdk.WebSettings;
@@ -13,7 +13,7 @@ public class ProgressWebView
   extends TouchWebView
 {
   public int htmlId;
-  public bcbg mWebViewDirector;
+  public bcbu mWebViewDirector;
   
   public ProgressWebView(Context paramContext)
   {
@@ -57,7 +57,7 @@ public class ProgressWebView
         BaseActivity localBaseActivity = (BaseActivity)((MutableContextWrapper)paramContext).getBaseContext();
         if (localBaseActivity != null)
         {
-          this.mWebViewDirector = new bcbg(new ProgressWebView.MiniAppWebviewBuilder(paramContext, localBaseActivity, localBaseActivity.getAppInterface(), this));
+          this.mWebViewDirector = new bcbu(new ProgressWebView.MiniAppWebviewBuilder(paramContext, localBaseActivity, localBaseActivity.getAppInterface(), this));
           this.mWebViewDirector.a(null, localBaseActivity.app, localBaseActivity.getIntent());
         }
         return;

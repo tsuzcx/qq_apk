@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
 import android.text.TextUtils;
-import ayvv;
-import aywa;
+import ayvx;
+import aywc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class NearbyVideoUtils$3
@@ -14,11 +14,11 @@ public final class NearbyVideoUtils$3
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      aywa localaywa = new aywa();
-      localaywa.a = true;
-      localaywa.i = this.jdField_a_of_type_JavaLangString;
-      localaywa.b = 64;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywa);
+      aywc localaywc = new aywc();
+      localaywc.a = true;
+      localaywc.i = this.jdField_a_of_type_JavaLangString;
+      localaywc.b = 64;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywc);
     }
   }
 }

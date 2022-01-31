@@ -1,6 +1,16 @@
-public abstract interface bcwl
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.wifisdk.TMSDKCustomConfig.IToast;
+
+final class bcwl
+  implements TMSDKCustomConfig.IToast
 {
-  public abstract bcws a(String paramString);
+  public void showToast(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      bcql.a(paramContext, paramCharSequence, paramInt).a();
+    }
+  }
 }
 
 

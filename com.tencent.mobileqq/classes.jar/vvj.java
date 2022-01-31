@@ -1,6 +1,17 @@
-public abstract interface vvj
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+
+public class vvj
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public vvj(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    HorizontalSelectColorLayout.a(this.a, paramInt);
+  }
 }
 
 

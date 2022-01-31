@@ -1,13 +1,10 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
 
-class atno
-  extends RecyclerView.ViewHolder
+public final class atno
 {
-  public atno(View paramView)
-  {
-    super(paramView);
-  }
+  String jdField_a_of_type_JavaLangString;
+  
+  private atno(TopicLabelListView paramTopicLabelListView) {}
 }
 
 

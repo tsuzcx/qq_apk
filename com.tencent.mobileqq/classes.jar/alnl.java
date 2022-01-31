@@ -1,13 +1,13 @@
 import com.tencent.ark.ark.VariantWrapper;
 
 class alnl
-  implements alov
+  implements alow
 {
-  alnl(alnk paramalnk, long paramLong) {}
+  alnl(alnj paramalnj, long paramLong) {}
   
   public void a(long paramLong)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnk.a.a(paramLong);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnj.a.a(paramLong);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }
@@ -15,7 +15,7 @@ class alnl
   
   public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    alnh.a(this.jdField_a_of_type_Alnk.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
+    alng.a(this.jdField_a_of_type_Alnj.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.core.plugins.engine;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import org.json.JSONObject;
@@ -23,7 +23,7 @@ class BaseJsPluginEngine$4
       {
         Object localObject1 = paramJSONObject.getJSONObject("userInfo");
         paramJSONObject = ((JSONObject)localObject1).getString("nickName");
-        besl.d("JsPluginEngine[AuthGuard]", "call getUserInfo failed. " + Log.getStackTraceString(localThrowable1));
+        betc.d("JsPluginEngine[AuthGuard]", "call getUserInfo failed. " + Log.getStackTraceString(localThrowable1));
       }
       catch (Throwable localThrowable1)
       {
@@ -44,7 +44,7 @@ class BaseJsPluginEngine$4
       label53:
       localObject2 = localObject3;
       continue;
-      besl.a("JsPluginEngine[AuthGuard]", "call getUserInfo failed. ");
+      betc.a("JsPluginEngine[AuthGuard]", "call getUserInfo failed. ");
       paramJSONObject = null;
       localObject2 = localObject3;
     }

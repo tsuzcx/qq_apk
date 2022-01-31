@@ -1,10 +1,27 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class arzk
+  implements INetInfoHandler
 {
-  long jdField_a_of_type_Long;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  long b;
+  arzk(arzi paramarzi) {}
+  
+  public void onNetMobile2None()
+  {
+    arzi.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    arzi.a(this.a);
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import ajyc;
+import ajya;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -15,7 +15,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QWalletPayProgressDialog
   extends Dialog
 {
-  private String mMessage = ajyc.a(2131711440);
+  private String mMessage = ajya.a(2131711451);
   private TextView mTextView;
   
   public QWalletPayProgressDialog(Context paramContext)
@@ -39,7 +39,7 @@ public class QWalletPayProgressDialog
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131370038));
+      this.mTextView = ((TextView)super.findViewById(2131370037));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);

@@ -1,12 +1,13 @@
-import java.util.Comparator;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-class bfge
-  implements Comparator<String>
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bfge
 {
-  public int a(String paramString1, String paramString2)
-  {
-    return paramString1.compareTo(paramString2);
-  }
+  String a();
 }
 
 

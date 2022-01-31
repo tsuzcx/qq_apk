@@ -1,39 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
 class ajci
-  extends BroadcastReceiver
+  implements ajon
 {
-  ajci(ajch paramajch) {}
+  ajci(ajcf paramajcf) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    if (ajch.a(this.a) == null) {}
-    do
-    {
-      do
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    ajom.b(ajcf.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!ajcf.c(this.a)))
       {
-        return;
-        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
-        {
-          if (ajch.a(this.a))
-          {
-            ajch.a(this.a).runRenderTask(ajch.a(this.a));
-            return;
-          }
-          ajch.a(this.a);
-          return;
-        }
-      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
-      if (!ajch.a(this.a)) {
-        break;
+        ajcf.a(this.a, true);
+        ajcf.c(this.a);
       }
-    } while (ajch.a(this.a) == null);
-    ajch.a(this.a).runRenderTask(ajch.b(this.a));
-    return;
-    ajch.b(this.a);
+    }
+    while (localActivity == null) {
+      return;
+    }
+    localActivity.finish();
   }
 }
 

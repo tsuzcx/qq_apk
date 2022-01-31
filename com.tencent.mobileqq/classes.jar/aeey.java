@@ -1,26 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
+import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class aeey
-  implements ValueAnimator.AnimatorUpdateListener
+  implements adnx
 {
   public aeey(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
     {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
-      return;
-      paramValueAnimator.leftMargin = i;
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
+      }
     }
   }
 }

@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
 public class nvz
-  implements mzb
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public nvz(ReadInJoyFeedsActivity.1 param1) {}
+  private WeakReference<ntd> a;
   
-  public void loaded(String paramString, int paramInt)
+  public nvz(ntd paramntd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
-    }
+    this.a = new WeakReference(paramntd);
   }
   
-  public void progress(int paramInt) {}
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ntd)this.a.get()).a(true);
+    }
+    return false;
+  }
 }
 
 

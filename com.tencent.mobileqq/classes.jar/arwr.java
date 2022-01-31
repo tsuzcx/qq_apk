@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import mqq.app.QQPermissionCallback;
 
 public class arwr
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public arwr(LocationPickFragment paramLocationPickFragment) {}
+  public arwr(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (LocationPickFragment.a(this.a).b())
-    {
-      LocationPickFragment.a(this.a).b();
-      return;
+    paramArrayOfString = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (paramArrayOfString != null) {
+      paramArrayOfString.setOnDismissListener(new arws(this));
     }
-    LocationPickFragment.a(this.a).a();
+    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
+    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
+    paramArrayOfInt = arus.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abdi;
+import abde;
 
 public class ForwardTroopListFragment$MyTroopObserver$1
   implements Runnable
 {
-  public ForwardTroopListFragment$MyTroopObserver$1(abdi paramabdi) {}
+  public ForwardTroopListFragment$MyTroopObserver$1(abde paramabde) {}
   
   public void run()
   {

@@ -1,139 +1,202 @@
 import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager.1;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public abstract class pyz
+public class pyz
   implements Manager
 {
-  protected aukn a;
-  protected bbwl a;
+  public static volatile boolean b;
+  protected int a;
+  protected long a;
+  protected bbwz a;
   protected AppInterface a;
-  protected ArrayList<bbwf> a;
+  protected String a;
+  protected ArrayList<pzb> a;
   protected HashMap<String, String> a;
-  protected ConcurrentHashMap<String, String> a;
+  protected boolean a;
+  protected int b;
+  private int c = -1;
+  
+  static
+  {
+    jdField_b_of_type_Boolean = true;
+  }
   
   public pyz(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bbwl = ((bbwi)paramAppInterface.getManager(47)).a(1);
-    this.jdField_a_of_type_Aukn = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Bbwz = ((bbww)paramAppInterface.getManager(47)).a(1);
   }
   
-  public String a(String paramString)
+  public static RefreshData b(Context paramContext, int paramInt)
   {
-    String str2 = bbuv.a(ajsf.aW + ".readInjoy/resource/");
-    String str1 = str2;
-    if (!TextUtils.isEmpty(paramString)) {
-      str1 = str2 + paramString + "/";
-    }
-    return str1;
-  }
-  
-  public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
-  
-  public void a(bbwf parambbwf)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambbwf);
-  }
-  
-  public void a(String paramString, bbwg parambbwg) {}
-  
-  public void a(String paramString, BaseResData paramBaseResData) {}
-  
-  public void a(String[] paramArrayOfString) {}
-  
-  public abstract boolean a(String paramString, BaseResData paramBaseResData);
-  
-  public boolean a(String paramString, BaseResData paramBaseResData, int paramInt)
-  {
-    boolean bool = false;
-    Object localObject = paramBaseResData.id;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide: id = " + (String)localObject);
-    }
-    String str = b(paramString, (String)localObject);
-    if (aybq.a(new File(str)))
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("readinjoy", 4, "isAnimationPackageValid");
+      localObject = (pyz)((AppRuntime)localObject).getManager(270);
+      if (localObject != null) {
+        return ((pyz)localObject).a(paramContext, paramInt);
       }
-      bool = true;
     }
-    do
+    return null;
+  }
+  
+  private void b(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    pzx.a(this.jdField_a_of_type_JavaLangString, paramLong);
+    paramInt1 = 0;
+    while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      do
+      ((pzb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      paramInt1 += 1;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public RefreshData a(Context paramContext, int paramInt)
+  {
+    RefreshData localRefreshData = null;
+    paramContext = bbkb.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    if (paramContext != null) {}
+    for (;;)
+    {
+      try
       {
-        return bool;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString + "_" + (String)localObject) == null) {
-          break;
+        paramContext = new JSONObject(paramContext);
+        if (paramContext != null) {
+          localRefreshData = new RefreshData(paramContext);
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("readinjoy", 4, "mDownloadingRes _");
-      return false;
-      if (!(paramBaseResData instanceof MaterialData)) {
-        bbdj.a(str);
+        return localRefreshData;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString + "_" + (String)localObject, paramBaseResData.url);
-      str = str + ".zip";
-      File localFile = new File(str);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("resId", (String)localObject);
-      localBundle.putString("prefix", paramString);
-      localObject = new bbwg(paramBaseResData.url, localFile);
-      ((bbwg)localObject).b = paramInt;
-      ((bbwg)localObject).d = 60L;
-      this.jdField_a_of_type_Bbwl.a((bbwg)localObject, new pza(this, str, paramBaseResData, paramString), localBundle);
-    } while (!QLog.isColorLevel());
-    QLog.d("readinjoy", 4, "startDownload");
+      catch (Exception paramContext)
+      {
+        paramContext = null;
+        continue;
+      }
+      paramContext = null;
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      b(paramInt1, paramString, paramLong, paramInt2);
+      return;
+    }
+    ThreadManager.getUIHandler().post(new ReadInJoyRefreshManager.1(this, paramInt1, paramString, paramLong, paramInt2));
+  }
+  
+  public void a(pzb parampzb)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parampzb)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parampzb);
+      }
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (a() == 1) && (pzx.b() == 1);
+  }
+  
+  public boolean a(RefreshData paramRefreshData, int paramInt)
+  {
+    return a(paramRefreshData, 0, paramInt);
+  }
+  
+  public boolean a(RefreshData paramRefreshData, int paramInt1, int paramInt2)
+  {
+    Object localObject = paramRefreshData.id;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes start id = " + (String)localObject);
+    }
+    String str = pzx.a((String)localObject);
+    if (pzx.a((String)localObject)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.get("refresh_" + (String)localObject) != null) {
+      return false;
+    }
+    bbdx.a(str);
+    this.jdField_a_of_type_JavaUtilHashMap.put("refresh_" + (String)localObject, paramRefreshData.url);
+    str = str + ".zip";
+    File localFile = new File(str);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("refreshId", (String)localObject);
+    localObject = new bbwu(paramRefreshData.url, localFile);
+    ((bbwu)localObject).jdField_b_of_type_Int = paramInt1;
+    ((bbwu)localObject).d = 60L;
+    ((bbwu)localObject).m = true;
+    this.jdField_a_of_type_Bbwz.a((bbwu)localObject, new pza(this, str, paramRefreshData, paramInt2), localBundle);
     return false;
   }
   
-  public String b(String paramString1, String paramString2)
+  public void b(pzb parampzb)
   {
-    String str = a(paramString1);
-    paramString1 = str;
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1 = str + paramString2 + "/";
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parampzb);
+      return;
     }
-    return paramString1;
   }
   
-  public void b()
+  public boolean b()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b(bbwf parambbwf)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(parambbwf);
-  }
-  
-  public abstract void b(String paramString, BaseResData paramBaseResData);
-  
-  public abstract boolean b(String paramString, BaseResData paramBaseResData);
-  
-  public boolean c(String paramString, BaseResData paramBaseResData)
-  {
-    return a(paramString, paramBaseResData, 0);
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Aukn.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Boolean = false;
   }
 }
 

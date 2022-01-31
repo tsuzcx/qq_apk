@@ -1,17 +1,15 @@
-class bdus
-  extends bduv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qidian.QidianProfileCardActivity;
+
+public class bdus
+  implements DialogInterface.OnClickListener
 {
-  bdus(bdur parambdur) {}
+  public bdus(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      bdur.a(this.a);
-      return;
-    }
-    bdur.b(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

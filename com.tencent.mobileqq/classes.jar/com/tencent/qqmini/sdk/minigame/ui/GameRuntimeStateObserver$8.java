@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import bewi;
+import bewz;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class GameRuntimeStateObserver$8
   implements Runnable
 {
-  public GameRuntimeStateObserver$8(bewi parambewi) {}
+  public GameRuntimeStateObserver$8(bewz parambewz) {}
   
   public void run()
   {
-    bewi.a(this.this$0).a();
-    if ((bewi.a(this.this$0) != null) && (bewi.a(this.this$0).launchParam != null)) {
-      MiniGameAdBannerPopup.a(bewi.a(this.this$0), bewi.a(this.this$0).appId, bewi.a(this.this$0).launchParam.a);
+    bewz.a(this.this$0).a();
+    if ((bewz.a(this.this$0) != null) && (bewz.a(this.this$0).launchParam != null)) {
+      MiniGameAdBannerPopup.a(bewz.a(this.this$0), bewz.a(this.this$0).appId, bewz.a(this.this$0).launchParam.a);
     }
   }
 }

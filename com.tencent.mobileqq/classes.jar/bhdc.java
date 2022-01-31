@@ -1,8 +1,9 @@
-import cooperation.qzone.event.ExoticEventPool;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class bhdc
+public abstract interface bhdc
 {
-  private static final ExoticEventPool a = new ExoticEventPool(null);
+  public abstract void a(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

@@ -1,18 +1,12 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-public class aqsz
-  implements View.OnClickListener
+public abstract interface aqsz
 {
-  public aqsz(ImgHeaderView paramImgHeaderView, Activity paramActivity, MessageRecord paramMessageRecord) {}
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
   
-  public void onClick(View paramView)
-  {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-  }
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity);
 }
 
 

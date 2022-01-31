@@ -1,58 +1,37 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class asuy
-  implements axee
+  implements apso
 {
-  asuy(asuu paramasuu, long paramLong, asup paramasup, String paramString, int paramInt1, int paramInt2) {}
+  asuy(asuw paramasuw, apsn paramapsn) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadVideo id = " + this.jdField_a_of_type_Long + ", result =" + paramInt);
-    }
-    if (this.jdField_a_of_type_Asup.jdField_a_of_type_Axeg.a != null)
+    Message localMessage = asuw.a(this.jdField_a_of_type_Asuw).obtainMessage(1);
+    asus localasus = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Apsn.a());
+    if (localasus != null)
     {
-      String str = ShortVideoUtils.a(this.jdField_a_of_type_Asup.jdField_a_of_type_Axeg.a, "mp4");
-      asuq localasuq = this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_JavaLangString);
-      if ((localasuq != null) && (!localasuq.jdField_a_of_type_Boolean))
-      {
-        localasuq.jdField_a_of_type_Int = paramInt;
-        localasuq.jdField_a_of_type_Asup.jdField_a_of_type_Int = 3;
-        if (paramInt == 0) {
-          i = 1;
-        }
-        localasuq.jdField_a_of_type_Asvh = new asvh(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, i, str, false);
-        this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_JavaLangString, localasuq);
-        this.jdField_a_of_type_Asuu.a(localasuq.jdField_a_of_type_Asup, 0, 0, "");
-      }
+      localasus.jdField_a_of_type_Int = 0;
+      localMessage.obj = localasus;
+      asuw.a(this.jdField_a_of_type_Asuw).sendMessage(localMessage);
     }
   }
   
-  public void b(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_Asuu.a != null) && (this.jdField_a_of_type_Asup.jdField_a_of_type_Axeg.a != null)) {
-      this.jdField_a_of_type_Asuu.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, this.jdField_a_of_type_Asup.jdField_a_of_type_Axeg.a.videoFileSize, true);
+    if (QLog.isColorLevel()) {
+      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
     }
-    asuq localasuq;
-    if (this.jdField_a_of_type_Asup.jdField_a_of_type_Axeg != null)
+    asus localasus = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Apsn.a());
+    if (localasus != null)
     {
-      localasuq = this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_JavaLangString);
-      if ((localasuq != null) && (!localasuq.jdField_a_of_type_Boolean))
-      {
-        localasuq.c = paramInt;
-        this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_JavaLangString, localasuq);
-        if (!asuu.a(this.jdField_a_of_type_Asuu)) {
-          break label136;
-        }
-        asuu.a(this.jdField_a_of_type_Asuu, localasuq, localasuq.c);
-      }
+      localasus.jdField_a_of_type_Int = -1;
+      localasus.b = paramInt;
+      localasus.jdField_a_of_type_JavaLangString = paramString;
+      asuw.a(this.jdField_a_of_type_Asuw, localasus);
     }
-    return;
-    label136:
-    asuu.b(this.jdField_a_of_type_Asuu, localasuq, paramInt);
   }
 }
 

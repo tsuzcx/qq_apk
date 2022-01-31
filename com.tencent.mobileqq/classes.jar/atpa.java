@@ -1,24 +1,22 @@
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class atpa
-  implements aqha
+  implements ajua
 {
   public atpa(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    bfmv localbfmv = bfmv.b;
-    if ((localbfmv != null) && (localbfmv.a()))
+    if ((paramBoolean) && (paramInt == 2))
     {
-      if (!localbfmv.a(1)) {
-        localbfmv.b(1);
+      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
+        break label41;
       }
-      if ((!localbfmv.a(8)) && (localbfmv.a(5))) {
-        localbfmv.b(8);
-      }
-      if ((!localbfmv.a(9)) && (localbfmv.a(6))) {
-        localbfmv.b(9);
-      }
+      NearbyPeopleProfileActivity.a(this.a).d();
+    }
+    label41:
+    while (NearbyPeopleProfileActivity.a(this.a) == null) {
+      return;
     }
   }
 }

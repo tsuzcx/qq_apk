@@ -1,16 +1,11 @@
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import java.util.List;
 
-public abstract interface aizh
+public class aizh
 {
-  public abstract void a(MsfSocketInputBuffer paramMsfSocketInputBuffer);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract byte[] a();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public int a;
+  public List<String> a;
+  public int b;
+  public int c;
 }
 
 

@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import axmt;
-import bbjw;
-import bcbg;
+import axmv;
+import bbkk;
+import bcbu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -22,12 +22,12 @@ import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import nrk;
+import nrh;
+import nrs;
 import nrv;
-import nry;
-import nrz;
-import nsa;
-import onk;
+import nrw;
+import nrx;
+import onh;
 
 public class EcshopNewPageFragment
   extends PublicBaseFragment
@@ -37,14 +37,14 @@ public class EcshopNewPageFragment
   private View jdField_a_of_type_AndroidViewView;
   private EcshopWebview jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview;
   private String jdField_a_of_type_JavaLangString;
-  private nsa jdField_a_of_type_Nsa;
+  private nrx jdField_a_of_type_Nrx;
   
   private void a()
   {
-    this.jdField_a_of_type_Nsa = new nry(this, getActivity(), getActivity(), nrk.a(), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
-    this.jdField_a_of_type_Nsa.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new bcbg(this.jdField_a_of_type_Nsa).a(null, nrk.a(), null);
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = ((EcshopWebview)this.jdField_a_of_type_Nsa.getWebView());
+    this.jdField_a_of_type_Nrx = new nrv(this, getActivity(), getActivity(), nrh.a(), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
+    this.jdField_a_of_type_Nrx.setmTimeBeforeLoadUrl(System.currentTimeMillis());
+    new bcbu(this.jdField_a_of_type_Nrx).a(null, nrh.a(), null);
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = ((EcshopWebview)this.jdField_a_of_type_Nrx.getWebView());
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.setWillNotCacheDrawing(false);
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.setDrawingCacheEnabled(true);
   }
@@ -52,7 +52,7 @@ public class EcshopNewPageFragment
   public static void a(Activity paramActivity, boolean paramBoolean, SystemBarCompact paramSystemBarCompact)
   {
     if ((paramActivity == null) || (paramSystemBarCompact == null)) {}
-    while (!ThemeUtil.isNowThemeIsNight(onk.a(), false, null)) {
+    while (!ThemeUtil.isNowThemeIsNight(onh.a(), false, null)) {
       return;
     }
     if ((paramBoolean) && (ImmersiveUtils.isSupporImmersive() == 1))
@@ -65,24 +65,24 @@ public class EcshopNewPageFragment
   
   private void a(View paramView)
   {
-    paramView = (CustomTabView)paramView.findViewById(2131364874);
-    paramView.a(nrv.a());
+    paramView = (CustomTabView)paramView.findViewById(2131364873);
+    paramView.a(nrs.a());
     paramView.a(this.jdField_a_of_type_Int);
   }
   
   private void b(View paramView)
   {
-    paramView = (NavBarCommon)paramView.findViewById(2131375327);
+    paramView = (NavBarCommon)paramView.findViewById(2131375329);
     paramView.setTitle(getResources().getString(2131691960));
     Object localObject = (ImageView)paramView.findViewById(2131368742);
-    paramView.setRightImage(getResources().getDrawable(2130849067));
-    ((ImageView)localObject).setImageResource(2130849539);
-    paramView.setOnItemSelectListener(new nrz(this));
-    if (axmt.a()) {
+    paramView.setRightImage(getResources().getDrawable(2130849073));
+    ((ImageView)localObject).setImageResource(2130849548);
+    paramView.setOnItemSelectListener(new nrw(this));
+    if (axmv.a()) {
       paramView.a(true);
     }
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = EcshopWebview.a(this.jdField_a_of_type_AndroidViewView.getContext());
-    localObject = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364698);
+    localObject = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364697);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.getParent() instanceof ViewGroup)) {
       ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview);
     }
@@ -127,7 +127,7 @@ public class EcshopNewPageFragment
     if (QLog.isColorLevel()) {
       QLog.i("EcshopNewPageFragment", 2, "[onCreateView]");
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561492, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561491, paramViewGroup, false);
     b(this.jdField_a_of_type_AndroidViewView);
     a();
     a(this.jdField_a_of_type_AndroidViewView);
@@ -135,7 +135,7 @@ public class EcshopNewPageFragment
     {
       getActivity().getIntent().getStringExtra("url");
       label62:
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview != null) && (!bbjw.a(this.jdField_a_of_type_JavaLangString))) {
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview != null) && (!bbkk.a(this.jdField_a_of_type_JavaLangString))) {
         this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview.loadUrl(this.jdField_a_of_type_JavaLangString);
       }
       return this.jdField_a_of_type_AndroidViewView;
@@ -152,8 +152,8 @@ public class EcshopNewPageFragment
       QLog.i("EcshopNewPageFragment", 2, "[onDestroy]");
     }
     super.onDestroy();
-    if (this.jdField_a_of_type_Nsa != null) {
-      this.jdField_a_of_type_Nsa.c();
+    if (this.jdField_a_of_type_Nrx != null) {
+      this.jdField_a_of_type_Nrx.c();
     }
   }
   
@@ -163,13 +163,13 @@ public class EcshopNewPageFragment
       QLog.i("EcshopNewPageFragment", 2, "[onPause]");
     }
     super.onPause();
-    if (this.jdField_a_of_type_Nsa != null) {
-      this.jdField_a_of_type_Nsa.b();
+    if (this.jdField_a_of_type_Nrx != null) {
+      this.jdField_a_of_type_Nrx.b();
     }
     if (QLog.isColorLevel()) {
       QLog.i("Ecshop", 2, "report stay page time tabid is" + this.jdField_a_of_type_Int);
     }
-    nrk.a(null, "gouwu.aio.stay", this.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long + "");
+    nrh.a(null, "gouwu.aio.stay", this.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long + "");
   }
   
   public void onResume()
@@ -179,10 +179,10 @@ public class EcshopNewPageFragment
     }
     this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
     super.onResume();
-    if (this.jdField_a_of_type_Nsa != null) {
-      this.jdField_a_of_type_Nsa.a();
+    if (this.jdField_a_of_type_Nrx != null) {
+      this.jdField_a_of_type_Nrx.a();
     }
-    a(getActivity(), true, onk.a(getActivity()));
+    a(getActivity(), true, onh.a(getActivity()));
   }
 }
 

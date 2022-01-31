@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
-class aosq
-  implements View.OnClickListener
+public class aosq
+  implements DialogInterface.OnClickListener
 {
-  aosq(aosp paramaosp) {}
+  public aosq(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = apue.a((FileInfo)((aosr)paramView.getTag()).a);
-    localObject = new apoe(aosp.a(this.a).app, aosp.a(this.a), (FileManagerEntity)localObject, 10000);
-    localObject = new apog(aosp.a(this.a), (apoj)localObject);
-    ((apog)localObject).a(8);
-    ((apog)localObject).a(xpx.a(paramView));
-    ((apog)localObject).a();
+    QfileLocalFileAppTabView.a(this.a.a.this$0);
+    this.a.a.this$0.c(true);
   }
 }
 

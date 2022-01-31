@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-
 public class azxs
-  implements bfot
 {
-  public azxs(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public int a;
+  public Object a;
   
-  public void ak_()
+  public azxs(int paramInt, Object paramObject)
   {
-    this.a.a.a();
-    this.a.i();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.search.rich;
 
-import awti;
+import awtk;
 
 public class RichNodeController$1
   implements Runnable
 {
-  public RichNodeController$1(awti paramawti) {}
+  public RichNodeController$1(awtk paramawtk) {}
   
   public void run()
   {
-    if (awti.a(this.this$0) == 0) {
-      awti.a(this.this$0, false);
+    if (awtk.a(this.this$0) == 0) {
+      awtk.a(this.this$0, false);
     }
   }
 }

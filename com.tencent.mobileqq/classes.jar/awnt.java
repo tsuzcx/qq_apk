@@ -1,23 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.search.activity.MessageSearchActivity;
+import com.tencent.mobileqq.search.activity.ContactSearchActivity;
 import java.util.List;
 
 public class awnt
-  implements awof
+  implements awoh
 {
-  public static final String a;
-  private List<awog> a;
-  private String b;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  public List<awoi> a;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131705387);
-  }
-  
-  public awnt(List<awog> paramList, String paramString)
+  public awnt(List<awoi> paramList, String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public int a()
@@ -27,23 +23,23 @@ public class awnt
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return ajya.a(2131705384);
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View paramView)
   {
-    awvy.a(this.b, 40, 0, paramView);
-    MessageSearchActivity.a(paramView.getContext(), this.b);
+    ContactSearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 197437, true);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 20, 0, paramView);
   }
   
   public String b()
   {
-    return this.b;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

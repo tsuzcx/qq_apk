@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class std
-  implements ThreadExcutor.IThreadListener
+  extends ajxj
 {
-  std(stc paramstc, Runnable paramRunnable) {}
+  std(stc paramstc) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  protected void onAddFriend(String paramString)
   {
-    stc.a(this.jdField_a_of_type_Stc).decrementAndGet();
-    veg.b(stc.a(this.jdField_a_of_type_Stc), "threshold after running current task is " + stc.a(this.jdField_a_of_type_Stc).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      veg.b(stc.a(this.jdField_a_of_type_Stc), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
     }
-  }
-  
-  public void onPreRun()
-  {
-    stc.a(this.jdField_a_of_type_Stc).incrementAndGet();
-    veg.a(stc.a(this.jdField_a_of_type_Stc), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      veg.b(stc.a(this.jdField_a_of_type_Stc), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    try
+    {
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
     }
   }
 }

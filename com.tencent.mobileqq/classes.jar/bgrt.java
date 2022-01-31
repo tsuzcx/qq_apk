@@ -1,10 +1,23 @@
 import android.os.Bundle;
-import android.os.IInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-public abstract interface bgrt
-  extends IInterface
+public class bgrt
+  extends amgq
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public bgrt(LocationDetailActivity paramLocationDetailActivity) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  {
+    super.onAddColorNote(paramBundle, paramBoolean);
+    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
+    if (this.a.v)
+    {
+      axqy.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
+      return;
+    }
+    axqy.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
+  }
 }
 
 

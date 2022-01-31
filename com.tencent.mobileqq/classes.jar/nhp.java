@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nhp
-  implements DialogInterface.OnDismissListener
+  implements neq
 {
   public nhp(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.o = false;
+    this.a.a(this.a.a);
   }
 }
 

@@ -1,33 +1,27 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.List;
 
 class ajjp
-  implements aiuf
+  implements ajic
 {
-  ajjp(ajjf paramajjf, String paramString, File paramFile, int paramInt) {}
+  ajjp(ajjd paramajjd, int paramInt, File paramFile, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    paramString1 = ajjf.a(this.jdField_a_of_type_JavaLangString);
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
     }
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        this.jdField_a_of_type_Ajjf.a(paramString1, 0, this.jdField_a_of_type_Int + ajyc.a(2131700486));
+        this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + ajya.a(2131700493));
         return;
       }
-      this.jdField_a_of_type_Ajjf.a(paramString1, 2, this.jdField_a_of_type_Int + ajyc.a(2131700485));
+      this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + ajya.a(2131700492));
       return;
     }
-    this.jdField_a_of_type_Ajjf.a(paramString1, 2, this.jdField_a_of_type_Int + ajyc.a(2131700480));
+    this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + ajya.a(2131700514));
   }
 }
 

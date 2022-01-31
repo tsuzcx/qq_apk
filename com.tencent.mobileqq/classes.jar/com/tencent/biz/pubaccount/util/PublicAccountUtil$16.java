@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.net.Uri;
-import noo;
+import nol;
 
 public final class PublicAccountUtil$16
   implements Runnable
@@ -19,8 +19,8 @@ public final class PublicAccountUtil$16
         if (this.jdField_a_of_type_Int == 0)
         {
           i = 100;
-          noo.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
-          noo.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
+          nol.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
+          nol.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
           return;
         }
       }

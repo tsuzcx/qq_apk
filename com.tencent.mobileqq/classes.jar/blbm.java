@@ -1,23 +1,42 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
+import com.tencent.maxvideo.mediadevice.AVCodec;
 
 public class blbm
 {
-  public static String a(Context paramContext)
+  public static blbm a;
+  public static String a;
+  private blao a;
+  
+  static
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
+    jdField_a_of_type_Blbm = new blbm();
   }
   
-  public static String b(Context paramContext)
+  private blbm()
   {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  }
+  
+  public static blbm a()
+  {
+    return jdField_a_of_type_Blbm;
+  }
+  
+  public blao a()
+  {
+    if (this.jdField_a_of_type_Blao == null) {
+      this.jdField_a_of_type_Blao = new blao(40, axim.c);
+    }
+    return this.jdField_a_of_type_Blao;
+  }
+  
+  public blaq a()
+  {
+    return blaq.a();
+  }
+  
+  public AVCodec a()
+  {
+    return AVCodec.get();
   }
 }
 

@@ -1,6 +1,21 @@
-public abstract interface ruw
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+
+public class ruw
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(int paramInt);
+  public ruw(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
+  }
 }
 
 

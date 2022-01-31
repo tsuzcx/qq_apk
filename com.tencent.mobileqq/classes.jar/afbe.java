@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afbe
-  implements DialogInterface.OnClickListener
+public class afbe
+  implements Cloneable
 {
-  afbe(afbc paramafbc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public String a;
+  public String b;
 }
 
 

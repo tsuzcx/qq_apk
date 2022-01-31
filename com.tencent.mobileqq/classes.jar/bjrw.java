@@ -1,76 +1,107 @@
-import android.graphics.PointF;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bjrw
-  implements vle
+public class bjrw
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = actn.a(18.0F, bjrh.a(this.jdField_a_of_type_Bjrh).getResources());
+  private int jdField_a_of_type_Int;
+  private List<tbn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int b;
   
-  bjrw(bjrh parambjrh) {}
-  
-  public void a()
+  public bjrw(List<tbn> paramList)
   {
-    bjrh.e(this.jdField_a_of_type_Bjrh);
-    bjrh.a(this.jdField_a_of_type_Bjrh, true);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public void a(float paramFloat)
+  private void a(int paramInt, View paramView)
   {
-    if (paramFloat == 1.0F)
-    {
-      vls localvls = ((vld)bjrh.a(this.jdField_a_of_type_Bjrh).a("TextLayer")).a();
-      localvls.b = this.jdField_a_of_type_Int;
-      bjrh.a(this.jdField_a_of_type_Bjrh).a(localvls);
+    tbn localtbn = a(paramInt);
+    TextView localTextView = (TextView)paramView.findViewById(2131376956);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131376946);
+    View localView = paramView.findViewById(2131376954);
+    ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131376951);
+    localTextView.setText(localtbn.b);
+    if (this.b == 0) {
+      this.b = vzl.a(paramView.getContext(), 60.0F);
     }
-  }
-  
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
-  {
-    vky localvky = (vky)bjrh.a(this.jdField_a_of_type_Bjrh).a("GuideLineLayer");
-    if (localvky != null) {
-      localvky.a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
-    }
-  }
-  
-  public boolean a(vlf paramvlf)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bjrh.a(this.jdField_a_of_type_Bjrh) != null)
+    vzl.a(localImageView, localtbn.h, this.b, this.b, paramView.getContext().getResources().getDrawable(2130845853), null);
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-      bool1 = bool2;
-      if (paramvlf != null)
-      {
-        bjrh.a(this.jdField_a_of_type_Bjrh).setVisibility(0);
-        if (bjrh.a(this.jdField_a_of_type_Bjrh).a.b())
-        {
-          Object localObject = bjrh.a(this.jdField_a_of_type_Bjrh).a.a();
-          ((vps)localObject).d = false;
-          if ((localObject instanceof vlf))
-          {
-            localObject = (vld)bjrh.a(this.jdField_a_of_type_Bjrh).a("TextLayer");
-            if (localObject != null) {
-              ((vld)localObject).d();
-            }
-          }
-        }
-        bjrh.a(this.jdField_a_of_type_Bjrh).a.a(paramvlf);
-        paramvlf.d = true;
-        bjrh.a(this.jdField_a_of_type_Bjrh).requestLayout();
-        bool1 = true;
+      paramInt = 1;
+      if (paramInt == 0) {
+        break label186;
       }
+      localView.setVisibility(0);
+      paramView.setContentDescription(ajya.a(2131714890) + localtbn.b + "’");
     }
-    return bool1;
+    for (;;)
+    {
+      if (localtbn.c) {
+        break label233;
+      }
+      localProgressBar.setVisibility(0);
+      localTextView.setVisibility(8);
+      return;
+      paramInt = 0;
+      break;
+      label186:
+      localView.setVisibility(8);
+      paramView.setContentDescription(ajya.a(2131714891) + localtbn.b + ajya.a(2131714889));
+    }
+    label233:
+    localProgressBar.setVisibility(8);
+    localTextView.setVisibility(0);
   }
   
-  public void b()
+  public int a()
   {
-    bjrh.a(this.jdField_a_of_type_Bjrh, "");
-    bjrh.b(this.jdField_a_of_type_Bjrh).setVisibility(0);
-    bjrh.c(this.jdField_a_of_type_Bjrh, false);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public tbn a(int paramInt)
+  {
+    return (tbn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == this.jdField_a_of_type_Int) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560569, paramViewGroup, false);
+      localView.setFocusable(true);
+    }
+    a(paramInt, localView);
+    return localView;
   }
 }
 

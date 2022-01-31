@@ -1,6 +1,14 @@
-public abstract interface bkdx
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public class bkdx
+  implements bkoy
 {
-  public abstract void c(boolean paramBoolean);
+  public bkdx(DoodleLayout paramDoodleLayout) {}
+  
+  public void a()
+  {
+    this.a.g();
+  }
 }
 
 

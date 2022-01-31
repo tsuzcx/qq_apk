@@ -1,19 +1,16 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
+import mqq.manager.TicketManager;
 
-class behg
-  implements AsyncResult
+public class behg
 {
-  behg(behf parambehf) {}
-  
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public static String a(AppInterface paramAppInterface)
   {
-    besl.d("AuthState", "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
+    return ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     behg
  * JD-Core Version:    0.7.0.1
  */

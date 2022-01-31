@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class auhr
-  extends AccountObserver
+  implements Observer
 {
-  auhr(auhi paramauhi) {}
+  auhr(auhk paramauhk) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if ((paramBoolean1) && (auhi.a(this.a) != null)) {
-      auhi.a(this.a).a(paramStatus);
+    if ((auhk.a(this.a) == null) || (auhk.a(this.a).isFinishing()) || (auhk.a(this.a) == null)) {
+      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
     }
-    if (!paramBoolean2) {
-      return;
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanel", 2, "update");
+        }
+      } while (!(paramObject instanceof String[]));
+      paramObservable = (String[])paramObject;
+    } while ((paramObservable.length != 2) || (!ajsd.x.equals(paramObservable[0])));
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "update() -> before update");
     }
-    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean1, paramStatus));
+    auhk.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
   }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong) {}
 }
 
 

@@ -1,5 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class abyf
@@ -10,6 +11,7 @@ public class abyf
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
   }
 }
 

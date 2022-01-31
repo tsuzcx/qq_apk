@@ -1,30 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
 public class aivm
-  extends ahmx
+  implements Comparator<aivp>
 {
-  public aivm(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ahmq paramahmq, int paramInt)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramahmq, paramInt);
-  }
+  public aivm(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  public int a(aivp paramaivp1, aivp paramaivp2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
-  }
-  
-  public void b(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
-      notifyDataSetChanged();
-    }
+    return paramaivp1.a() - paramaivp2.a();
   }
 }
 

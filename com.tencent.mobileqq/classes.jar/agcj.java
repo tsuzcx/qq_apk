@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class agcj
-  extends ajuh
+  implements agce
 {
-  agcj(agch paramagch) {}
+  agcj(agcf paramagcf) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void a()
   {
-    agch.a(this.a, paramUpgradeDetailWrapper);
-    this.a.e();
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+  }
+  
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    boolean bool = true;
+    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    localObject = osx.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((osx)localObject).b(bool);
+      return;
+      bool = false;
+    }
   }
 }
 

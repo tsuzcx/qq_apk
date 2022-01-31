@@ -1,14 +1,17 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class xci
+  implements AdapterView.OnItemClickListener
 {
-  public String a;
-  public String b;
+  public xci(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public xci(JSONObject paramJSONObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramJSONObject.optString("icon");
-    this.b = paramJSONObject.optString("jumpUrl");
+    this.a.onTabSelected(0, paramInt);
+    paramView.setSelected(true);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ria;
+import rhx;
 
 public class SlideActiveAnimController$4$1
   implements Runnable
 {
-  public SlideActiveAnimController$4$1(ria paramria) {}
+  public SlideActiveAnimController$4$1(rhx paramrhx) {}
   
   public void run()
   {

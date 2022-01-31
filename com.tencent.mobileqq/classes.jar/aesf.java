@@ -1,14 +1,15 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aesf
-  implements nom
+  implements DialogInterface.OnDismissListener
 {
-  aesf(aese paramaese) {}
+  aesf(aert paramaert) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aerv.b(this.a.a, false);
-    this.a.a.a.sendEmptyMessage(1);
+    this.a.ah = false;
+    axqy.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 

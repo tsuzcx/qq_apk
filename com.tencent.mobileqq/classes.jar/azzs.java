@@ -1,13 +1,41 @@
+import android.os.CountDownTimer;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.qphone.base.util.QLog;
+
 public class azzs
+  extends CountDownTimer
 {
-  @bazc(a="type")
-  public int a;
-  @bazc(a="title")
-  public String a;
-  @bazc(a="content_text")
-  public String b;
-  @bazc(a="kid")
-  public String c;
+  public azzs(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  {
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.b())
+    {
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+      {
+        bbgu localbbgu = bbdj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697702).setNegativeButton(2131697736, new azzu(this)).setPositiveButton(2131697728, new azzt(this));
+        localbbgu.setCancelable(false);
+        localbbgu.show();
+      }
+    }
+  }
+  
+  public void onTick(long paramLong)
+  {
+    int i = (int)(paramLong / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
+    }
+    if (i == 5) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697694);
+    }
+  }
 }
 
 

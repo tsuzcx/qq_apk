@@ -1,17 +1,14 @@
-import android.os.Handler;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import mqq.app.AppRuntime.Status;
 
 public class ajwt
-  extends apyr
+  implements auic
 {
   public ajwt(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void a()
+  public void a(AppRuntime.Status paramStatus)
   {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
-    }
-    this.a.a.sendEmptyMessage(17);
+    this.a.v();
   }
 }
 

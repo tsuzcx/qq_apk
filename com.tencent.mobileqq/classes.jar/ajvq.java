@@ -1,7 +1,22 @@
 public class ajvq
-  implements ajtg
+  implements ajte
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    }
+    b(paramBoolean, paramObject);
+  }
 }
 
 

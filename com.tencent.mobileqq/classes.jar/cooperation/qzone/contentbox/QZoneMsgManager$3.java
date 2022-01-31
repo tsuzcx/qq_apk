@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
@@ -11,10 +11,10 @@ public class QZoneMsgManager$3
 {
   public void run()
   {
-    aukn localaukn = this.a.getEntityManagerFactory().createEntityManager();
+    aukp localaukp = this.a.getEntityManagerFactory().createEntityManager();
     try
     {
-      localaukn.a(QZoneMsgEntityNew.class);
+      localaukp.a(QZoneMsgEntityNew.class);
       return;
     }
     catch (Throwable localThrowable)
@@ -24,8 +24,8 @@ public class QZoneMsgManager$3
     }
     finally
     {
-      if (localaukn != null) {
-        localaukn.a();
+      if (localaukp != null) {
+        localaukp.a();
       }
     }
   }

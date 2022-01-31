@@ -1,52 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class aaga
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public aaga(AccountManageActivity paramAccountManageActivity) {}
+  public aaga(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    switch (paramView.getId())
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText) || (true != paramBoolean))
     {
-    default: 
-    case 2131376641: 
       do
       {
         return;
-        localObject = null;
-        if ((paramView.getTag() instanceof String)) {
-          localObject = String.valueOf(paramView.getTag());
-        }
-        if ("0X8004001".equals(localObject))
-        {
-          axqw.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a, SubAccountUgActivity.class);
-          paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-          this.a.startActivity(paramView);
-          return;
-        }
-      } while (!"0X8004456".equals(localObject));
-      axqw.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
-      paramView = new Intent(this.a, SubAccountBindActivity.class);
-      paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-      this.a.startActivity(paramView);
-      bbcp.a().a(this.a.app.getCurrentAccountUin(), true);
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
-    ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    paramView.getContext().startActivity((Intent)localObject);
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
   }
 }
 

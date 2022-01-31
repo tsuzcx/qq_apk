@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
 import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class awdv
-  implements DialogInterface.OnClickListener
+  extends Editable.Factory
 {
   public awdv(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    axqw.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 2, 0, "0", "0", "", "");
+    if ((paramCharSequence instanceof ayku)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ayku(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
   }
 }
 

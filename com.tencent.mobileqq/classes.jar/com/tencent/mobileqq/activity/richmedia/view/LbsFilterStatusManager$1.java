@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import aibf;
+import aibd;
 
 public class LbsFilterStatusManager$1
   implements Runnable
 {
-  public LbsFilterStatusManager$1(aibf paramaibf, int paramInt, boolean paramBoolean) {}
+  public LbsFilterStatusManager$1(aibd paramaibd, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    aibf.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    aibd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,8 +1,33 @@
-public abstract interface biek
+public class biek
+  implements Cloneable
 {
-  public abstract void a(String paramString, long paramLong, float paramFloat);
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt);
+  private biek(biei parambiei, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
+  
+  public biek a()
+  {
+    try
+    {
+      biek localbiek = (biek)super.clone();
+      return localbiek;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
+  }
 }
 
 

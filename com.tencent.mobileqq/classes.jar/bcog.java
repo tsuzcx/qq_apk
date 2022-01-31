@@ -1,20 +1,13 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import com.tencent.mobileqq.widget.ParticipleBottomMenuView;
 
-class bcog
-  implements View.OnKeyListener
+public class bcog
+  implements bcol
 {
-  bcog(bcof parambcof) {}
+  public bcog(ParticipleBottomMenuView paramParticipleBottomMenuView) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    if (paramInt == 4)
-    {
-      bcof.a(this.a);
-      return true;
-    }
-    return false;
+    this.a.a();
   }
 }
 

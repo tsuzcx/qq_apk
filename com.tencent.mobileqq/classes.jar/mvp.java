@@ -1,21 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.graphics.drawable.Drawable;
 
 public class mvp
-  implements Animation.AnimationListener
 {
-  public mvp(StageEffectView.5.1 param1) {}
+  public Drawable a;
+  public final String a;
+  public mvg a;
+  public String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean equals(Object paramObject)
   {
-    this.a.a.a.a(true);
+    return ((paramObject instanceof mvp)) && (((mvp)paramObject).a.equals(this.a));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

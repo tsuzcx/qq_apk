@@ -1,16 +1,41 @@
-import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import dov.com.qq.im.capture.data.TransitionCategoryItem;
 
-public abstract interface bjbn
+public class bjbn
 {
-  public abstract void a(bjbz parambjbz);
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public abstract void a(bjbz parambjbz, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bjcc parambjcc, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bjcj parambjcj, boolean paramBoolean, int paramInt, Bundle paramBundle);
-  
-  public abstract void a(bkqp parambkqp);
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem != null))
+    {
+      if (!paramBoolean) {
+        break label45;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843608);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843642);
+    return;
+    label45:
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843639);
+  }
 }
 
 

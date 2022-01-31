@@ -1,61 +1,139 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 public class bjje
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public bjje(AdvancedProviderView paramAdvancedProviderView, TextView paramTextView, View paramView1, View paramView2, QIMProviderContainerView paramQIMProviderContainerView, View paramView3) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public bjjh a(String paramString)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a != null)
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a.b(paramInt);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(false);
-    }
-    int j = 300;
-    int i = j;
-    if (AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null)
-    {
-      i = j;
-      if (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())
-      {
-        AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
-        i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip TextUtils.isEmpty(config) return");
       }
+      return null;
     }
-    this.b.setAlpha(1.0F);
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 0.0F));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setStartOffset(i);
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramString);
+        if (!((JSONObject)localObject).has("pendantMD5")) {
+          break label142;
+        }
+        paramString = ((JSONObject)localObject).getString("pendantMD5");
+        if (!((JSONObject)localObject).has("pendantUrl")) {
+          break label136;
+        }
+        str = ((JSONObject)localObject).getString("pendantUrl");
+        if (!((JSONObject)localObject).has("pendantName")) {
+          break label130;
+        }
+        localObject = ((JSONObject)localObject).getString("pendantName");
+        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str)))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.w("ConfigSimplifier_PTV", 2, "zipMd5 or zipUrl empty return!");
+          return null;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      paramString = new bjjh((String)localObject, str, paramString);
+      return paramString;
+      label130:
+      Object localObject = "";
+      continue;
+      label136:
+      String str = "";
+      continue;
+      label142:
+      paramString = "";
+    }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public bjjh a(String paramString1, String paramString2, String paramString3, bjjg parambjjg)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(true);
+    bjjh localbjjh = a(paramString1);
+    if (localbjjh == null) {
+      paramString1 = null;
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a(paramSeekBar.getProgress());
-    if ((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null) && (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())) {
-      AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
-    }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 1.0F));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration(((1.0F - AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
+    do
+    {
+      for (;;)
+      {
+        return paramString1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ConfigSimplifier_PTV", 2, "parseConfigZip md5=" + localbjjh.jdField_c_of_type_JavaLangString + " url=" + localbjjh.b + " name=" + localbjjh.jdField_a_of_type_JavaLangString);
+        }
+        try
+        {
+          paramString1 = paramString2 + File.separator;
+          String str = paramString2 + File.separator + localbjjh.jdField_a_of_type_JavaLangString;
+          File localFile = new File(paramString2, paramString3);
+          if (localFile.exists())
+          {
+            localFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip file.delete()");
+            }
+          }
+          localObject = new File(str);
+          if (((File)localObject).exists())
+          {
+            ((File)localObject).delete();
+            if (QLog.isColorLevel()) {
+              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip filejson.delete()");
+            }
+          }
+          localObject = new ayrx();
+          ((ayrx)localObject).jdField_a_of_type_Aysc = new bjjf(this, paramString2, paramString3, localbjjh, paramString1, str, parambjjg);
+          ((ayrx)localObject).jdField_a_of_type_JavaLangString = localbjjh.b;
+          ((ayrx)localObject).jdField_a_of_type_Int = 0;
+          ((ayrx)localObject).jdField_c_of_type_JavaLangString = localFile.getPath();
+          ((ayrx)localObject).jdField_c_of_type_Int = bbfj.a(ayta.a().a());
+        }
+        catch (Exception paramString2)
+        {
+          try
+          {
+            Object localObject;
+            paramString1 = BaseApplicationImpl.getApplication().getRuntime();
+            if (QQAppInterface.class.isInstance(paramString1))
+            {
+              ((QQAppInterface)paramString1).getNetEngine(0).a((aysy)localObject);
+              paramString1 = localbjjh;
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.i("ConfigSimplifier", 2, "startDownloadFilterConfigZip, url: " + localbjjh.b);
+              return localbjjh;
+            }
+            paramString1 = localbjjh;
+            if (bjal.a() == null) {
+              continue;
+            }
+            bjal.a().getNetEngine(0).a((aysy)localObject);
+            return localbjjh;
+          }
+          catch (Exception paramString1) {}
+          paramString2 = paramString2;
+          paramString1 = localbjjh;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    paramString2.printStackTrace();
+    return localbjjh;
+    return localbjjh;
   }
 }
 

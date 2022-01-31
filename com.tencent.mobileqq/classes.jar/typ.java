@@ -1,50 +1,32 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.lang.ref.WeakReference;
 
 public class typ
-  extends wcr
+  implements upy
 {
-  public static final String KEY = "EmptyPlaceHolderSegment";
-  private final int jdField_a_of_type_Int;
-  private vas jdField_a_of_type_Vas;
+  private WeakReference<tyo> a;
   
-  public typ(Context paramContext, int paramInt)
+  public typ(tyo paramtyo)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramtyo);
   }
   
-  public int a()
+  public void a(String paramString, int paramInt)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
-  {
-    return paramvas.a();
-  }
-  
-  public String a()
-  {
-    return "EmptyPlaceHolderSegment";
-  }
-  
-  public vas a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
-    if (QQStoryContext.a()) {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
-    }
-    for (;;)
+    ved.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    tyo localtyo = (tyo)this.a.get();
+    if ((localtyo == null) || (paramInt == 1002) || (paramInt == 1003)) {}
+    do
     {
-      this.jdField_a_of_type_Vas = new vas(paramViewGroup);
-      return this.jdField_a_of_type_Vas;
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165473));
+      return;
+      sxm.a(tyo.a(localtyo), 12, paramString);
+    } while ((localtyo.a == null) || (localtyo.a.a == null));
+    paramInt = vei.a(localtyo.a.a);
+    if (localtyo.a.a.getOwner().isMe()) {}
+    for (paramString = "1";; paramString = "2")
+    {
+      vei.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, vei.a(4444), "", localtyo.a.a.feedId });
+      return;
     }
   }
 }

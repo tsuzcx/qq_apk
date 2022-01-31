@@ -1,203 +1,48 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager.1;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.ReqBody;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class pzc
-  implements Manager
+  extends ajtb
 {
-  public static volatile boolean b;
-  protected int a;
-  protected long a;
-  protected bbwl a;
-  protected AppInterface a;
-  protected String a;
-  protected ArrayList<pze> a;
-  protected HashMap<String, String> a;
-  protected boolean a;
-  protected int b;
-  private int c = -1;
-  
-  static
+  public pzc(QQAppInterface paramQQAppInterface)
   {
-    jdField_b_of_type_Boolean = true;
+    super(paramQQAppInterface);
   }
   
-  public pzc(AppInterface paramAppInterface)
+  public void a(SkinData paramSkinData, GuideData paramGuideData1, RefreshData paramRefreshData, GuideData paramGuideData2, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bbwl = ((bbwi)paramAppInterface.getManager(47)).a(1);
-  }
-  
-  public static RefreshData b(Context paramContext, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (pzc)((AppRuntime)localObject).getManager(270);
-      if (localObject != null) {
-        return ((pzc)localObject).a(paramContext, paramInt);
-      }
+    paramGuideData1 = new oidb_0x5bd.ReqBody();
+    paramGuideData1.uint64_uin.set(this.app.getLongAccountUin(), true);
+    paramGuideData1.uint32_source.set(paramInt);
+    if (paramSkinData != null) {
+      paramGuideData1.msg_current_skin_info.set(paramSkinData.toBody(), true);
     }
-    return null;
-  }
-  
-  private void b(int paramInt1, String paramString, long paramLong, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    qaa.a(this.jdField_a_of_type_JavaLangString, paramLong);
-    paramInt1 = 0;
-    while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((pze)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      paramInt1 += 1;
+    if (paramRefreshData != null) {
+      paramGuideData1.msg_current_refresh_info.set(paramRefreshData.toRefreshInfoBody(), true);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public RefreshData a(Context paramContext, int paramInt)
-  {
-    RefreshData localRefreshData = null;
-    paramContext = bbjn.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
-    if (paramContext != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        if (paramContext != null) {
-          localRefreshData = new RefreshData(paramContext);
-        }
-        return localRefreshData;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext = null;
-        continue;
-      }
-      paramContext = null;
+    if (paramGuideData2 != null) {
+      paramGuideData1.msg_current_guide_info.set(paramGuideData2.toBody(), true);
     }
+    mxf.a(this.app, new pzd(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
   }
   
-  public String a()
+  protected Class<? extends ajte> observerClass()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return pze.class;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      b(paramInt1, paramString, paramLong, paramInt2);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new ReadInJoyRefreshManager.1(this, paramInt1, paramString, paramLong, paramInt2));
-  }
-  
-  public void a(pze parampze)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parampze)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parampze);
-      }
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (a() == 1) && (qaa.b() == 1);
-  }
-  
-  public boolean a(RefreshData paramRefreshData, int paramInt)
-  {
-    return a(paramRefreshData, 0, paramInt);
-  }
-  
-  public boolean a(RefreshData paramRefreshData, int paramInt1, int paramInt2)
-  {
-    Object localObject = paramRefreshData.id;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes start id = " + (String)localObject);
-    }
-    String str = qaa.a((String)localObject);
-    if (qaa.a((String)localObject)) {
-      return true;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.get("refresh_" + (String)localObject) != null) {
-      return false;
-    }
-    bbdj.a(str);
-    this.jdField_a_of_type_JavaUtilHashMap.put("refresh_" + (String)localObject, paramRefreshData.url);
-    str = str + ".zip";
-    File localFile = new File(str);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("refreshId", (String)localObject);
-    localObject = new bbwg(paramRefreshData.url, localFile);
-    ((bbwg)localObject).jdField_b_of_type_Int = paramInt1;
-    ((bbwg)localObject).d = 60L;
-    ((bbwg)localObject).m = true;
-    this.jdField_a_of_type_Bbwl.a((bbwg)localObject, new pzd(this, str, paramRefreshData, paramInt2), localBundle);
-    return false;
-  }
-  
-  public void b(pze parampze)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parampze);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Boolean = false;
-  }
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

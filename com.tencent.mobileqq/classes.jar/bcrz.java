@@ -1,29 +1,43 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.TabBarView;
 
-final class bcrz
-  implements Animation.AnimationListener
+public class bcrz
+  extends Handler
 {
-  bcrz(View paramView1, View paramView2) {}
+  public bcrz(TabBarView paramTabBarView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    paramAnimation = new bcqm(this.a);
-    paramAnimation.setDuration(bcry.a());
-    paramAnimation.setFillAfter(true);
-    this.a.startAnimation(paramAnimation);
-    this.a.setVisibility(0);
-    this.b.clearAnimation();
-    this.b.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.clearAnimation();
-    this.a.setVisibility(4);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a = 0.0F;
+      paramMessage = this.a;
+      paramMessage.a = ((float)(paramMessage.a + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (this.a.a < 1.0F)
+      {
+        paramMessage = this.a;
+        paramMessage.a = ((float)(paramMessage.a + 0.1D));
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    TabBarView.a(this.a, this.a.o, this.a.n);
+    this.a.a = 1.0F;
+    TabBarView.b(this.a, this.a.o, this.a.n);
+    this.a.o = this.a.n;
+    this.a.invalidate();
+    TabBarView.a(this.a);
   }
 }
 

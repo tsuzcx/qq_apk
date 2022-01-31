@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
 public class aavk
-  implements DialogInterface.OnClickListener
+  extends FlingGestureHandler
 {
-  public aavk(ContactBindedActivity paramContactBindedActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aavk(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    ContactBindedActivity.a(this.a, null);
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (!this.a.a) {
+      super.flingLToR();
+    }
   }
 }
 

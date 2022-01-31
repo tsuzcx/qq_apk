@@ -1,26 +1,30 @@
 import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Message;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.10.1;
-import com.tencent.av.ui.AVActivity.10.2;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class mbb
-  extends bbyz
+  extends Handler
 {
   public mbb(AVActivity paramAVActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+      return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.10.2(this));
+    long l = mtj.a(paramMessage.obj);
+    this.a.a(l, "handleMessage", true);
+    if (this.a.jdField_a_of_type_Min != null) {
+      this.a.jdField_a_of_type_Min.n();
     }
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(this.a.jdField_a_of_type_Min.a);
+    }
+    this.a.g(-1031L);
   }
 }
 

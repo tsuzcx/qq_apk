@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import ajyc;
+import ajya;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import teg;
+import ted;
 
 public class HotRecommendOwner
   extends BaseUIItem
-  implements teg
+  implements ted
 {
-  public String mName = ajyc.a(2131705609);
+  public String mName = ajya.a(2131705620);
   public long mRecommendId;
   
   public String getName()

@@ -1,35 +1,30 @@
-import NS_MINI_INTERFACE.INTERFACE.StAddressInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
-import NS_MINI_INTERFACE.INTERFACE.StGetProfileReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetProfileRsp;
-import android.text.TextUtils;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdReq;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
 public class bezp
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetProfileReq a = new INTERFACE.StGetProfileReq();
+  private MiniAppMidasPay.StMiniCheckOfferIdReq a = new MiniAppMidasPay.StMiniCheckOfferIdReq();
   
-  public bezp(String paramString1, boolean paramBoolean, String paramString2)
+  public bezp(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
   {
-    this.a.appid.set(paramString1);
-    paramString1 = this.a.withCredentials;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramString1.set(i);
-      if (!TextUtils.isEmpty(paramString2)) {
-        this.a.lang.set(paramString2);
-      }
-      return;
+    this.a.appId.set(paramString1);
+    this.a.offerId.set(paramString2);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
   }
   
   protected String a()
   {
-    return "mini_user_info";
+    return "mini_app_pay";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -37,56 +32,40 @@ public class bezp
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetProfileRsp localStGetProfileRsp = new INTERFACE.StGetProfileRsp();
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    MiniAppMidasPay.StMiniCheckOfferIdRsp localStMiniCheckOfferIdRsp = new MiniAppMidasPay.StMiniCheckOfferIdRsp();
     try
     {
-      localStGetProfileRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetProfileRsp != null)
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStMiniCheckOfferIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStMiniCheckOfferIdRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        if (localStGetProfileRsp.user != null)
-        {
-          paramArrayOfByte.put("nickName", localStGetProfileRsp.user.nick.get());
-          paramArrayOfByte.put("avatarUrl", localStGetProfileRsp.user.avatar.get());
-          paramArrayOfByte.put("gender", localStGetProfileRsp.user.gender.get());
-          paramArrayOfByte.put("language", localStGetProfileRsp.user.language.get());
-          if (localStGetProfileRsp.user.address != null)
-          {
-            paramArrayOfByte.put("province", localStGetProfileRsp.user.address.province.get());
-            paramArrayOfByte.put("city", localStGetProfileRsp.user.address.city.get());
-            paramArrayOfByte.put("country", localStGetProfileRsp.user.address.country.get());
-          }
-        }
-        localJSONObject2.put("rawData", localStGetProfileRsp.rawData.get());
-        localJSONObject2.put("signature", localStGetProfileRsp.signature.get());
-        localJSONObject2.put("encryptedData", localStGetProfileRsp.encryptedData.get());
-        localJSONObject2.put("iv", localStGetProfileRsp.iv.get());
-        localJSONObject2.put("userInfo", paramArrayOfByte);
-        localJSONObject1.put("data", localStGetProfileRsp.rawData.get());
-        localJSONObject1.put("signature", localStGetProfileRsp.signature.get());
-        localJSONObject2.put("data", localJSONObject1.toString());
-        return localJSONObject2;
+        paramArrayOfByte.put("result", localStMiniCheckOfferIdRsp.result.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        paramArrayOfByte.put("ext", localStMiniCheckOfferIdRsp.extInfo);
+        paramArrayOfByte.put("firstRefer", localStMiniCheckOfferIdRsp.firstRefer);
+        paramArrayOfByte.put("firstVia", localStMiniCheckOfferIdRsp.firstVia);
+        return paramArrayOfByte;
       }
-      besl.a("GetProfileRequest", "onResponse fail.rsp = null");
+      betc.a("CheckOfferIdRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetProfileRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("CheckOfferIdRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  protected byte[] a()
+  public byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "GetProfile";
+    return "MiniCheckOfferId";
   }
 }
 

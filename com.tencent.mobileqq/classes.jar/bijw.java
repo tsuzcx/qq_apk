@@ -1,13 +1,10 @@
-class bijw
-  extends bjbq
+public abstract interface bijw
 {
-  bijw(biju parambiju) {}
+  public abstract void a(boolean paramBoolean, String paramString);
   
-  public void a()
-  {
-    super.a();
-    this.a.j();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

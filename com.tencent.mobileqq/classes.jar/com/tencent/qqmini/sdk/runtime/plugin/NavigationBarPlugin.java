@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import begz;
-import bejs;
-import beka;
+import behq;
+import bekj;
+import bekr;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class NavigationBarPlugin
@@ -13,9 +13,9 @@ public class NavigationBarPlugin
   public static final String SET_NAV_BAR_TITLE = "setNavigationBarTitle";
   public static final String SHOW_NAVBAR_LOADING = "showNavigationBarLoading";
   
-  public void doInterceptJsEvent(beka parambeka)
+  public void doInterceptJsEvent(bekr parambekr)
   {
-    this.mMiniAppContext.a(bejs.a(parambeka, 0));
+    this.mMiniAppContext.a(bekj.a(parambekr, 0));
   }
 }
 

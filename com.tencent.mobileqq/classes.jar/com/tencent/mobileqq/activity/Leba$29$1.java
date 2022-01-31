@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abkq;
-import arpq;
+import abkm;
+import arps;
 
 public class Leba$29$1
   implements Runnable
 {
-  public Leba$29$1(abkq paramabkq) {}
+  public Leba$29$1(abkm paramabkm) {}
   
   public void run()
   {

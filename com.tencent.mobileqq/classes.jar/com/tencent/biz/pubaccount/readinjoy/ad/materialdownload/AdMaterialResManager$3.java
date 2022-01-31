@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.materialdownload;
 
 import android.text.TextUtils;
-import bbjn;
+import bbkb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nzq;
+import nzn;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class AdMaterialResManager$3
   implements Runnable
 {
-  public AdMaterialResManager$3(nzq paramnzq, String paramString) {}
+  public AdMaterialResManager$3(nzn paramnzn, String paramString) {}
   
   public void run()
   {
@@ -28,14 +28,14 @@ public class AdMaterialResManager$3
       int i;
       try
       {
-        if ((nzq.a(this.this$0) == null) || (nzq.b(this.this$0).getApp() == null) || (nzq.c(this.this$0).getCurrentAccountUin() == null)) {
+        if ((nzn.a(this.this$0) == null) || (nzn.b(this.this$0).getApp() == null) || (nzn.c(this.this$0).getCurrentAccountUin() == null)) {
           break;
         }
-        bbjn.D(nzq.d(this.this$0).getApp(), nzq.e(this.this$0).getCurrentAccountUin());
+        bbkb.D(nzn.d(this.this$0).getApp(), nzn.e(this.this$0).getCurrentAccountUin());
         ArrayList localArrayList = new ArrayList();
         Object localObject = new JSONObject(this.a);
-        bbjn.U(nzq.f(this.this$0).getApp(), nzq.g(this.this$0).getCurrentAccountUin(), ((JSONObject)localObject).optInt("is_preview"));
-        nzn.a = ((JSONObject)localObject).optLong("req_interval");
+        bbkb.U(nzn.f(this.this$0).getApp(), nzn.g(this.this$0).getCurrentAccountUin(), ((JSONObject)localObject).optInt("is_preview"));
+        nzk.a = ((JSONObject)localObject).optLong("req_interval");
         localObject = ((JSONObject)localObject).optJSONArray("res_list");
         i = 0;
         if (i >= ((JSONArray)localObject).length()) {
@@ -58,7 +58,7 @@ public class AdMaterialResManager$3
       if (QLog.isColorLevel()) {
         QLog.d("AdMaterialResManager", 2, "preload ad_material result size" + localException.size());
       }
-      nzq.a(this.this$0, localException);
+      nzn.a(this.this$0, localException);
       return;
       i += 1;
     }

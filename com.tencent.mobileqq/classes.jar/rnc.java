@@ -1,34 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import mqq.app.MobileQQ;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class rnc
-  implements bcwh
+public final class rnc
+  implements onn
 {
-  rnc(rnb paramrnb, ArticleInfo paramArticleInfo, int paramInt) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if ((rnb.a(this.jdField_a_of_type_Rnb) == null) || (!rnb.a(this.jdField_a_of_type_Rnb).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      wim.b(1, 2131719476);
-      bool = false;
-    }
-    for (;;)
-    {
-      paramBaseResp = (AppInterface)onk.a();
-      rnr.a(paramBaseResp.getApplication().getApplicationContext(), paramBaseResp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, -1, false, bool);
-      return;
-      wim.b(2, 2131719495);
-      continue;
-      bool = false;
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
+      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
     }
   }
 }

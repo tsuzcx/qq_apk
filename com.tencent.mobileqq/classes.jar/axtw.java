@@ -1,37 +1,87 @@
 public class axtw
-  extends axtt
+  extends axtv
 {
   public double a;
   public int a;
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
-  public String w = "";
-  public String x = "";
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
+  public String w;
+  public String x;
   
   public axtw()
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.b = "";
     this.c = "";
+    this.e = "0";
     this.d = "";
+    this.f = "";
+    this.g = "";
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_Double = 0.0D;
+    this.h = "";
+    this.i = "";
+    this.j = "";
+    this.k = "";
+    this.l = "";
+    this.m = "";
+    this.n = "";
+    this.o = "";
+    this.p = "";
+    this.q = "";
+    this.r = "";
+    this.s = "";
+    this.t = "";
+    this.u = "";
+    this.v = "";
+    this.w = "";
+    this.x = "";
+  }
+  
+  public axtw(axtw paramaxtw)
+  {
+    this.jdField_a_of_type_JavaLangString = paramaxtw.jdField_a_of_type_JavaLangString;
+    this.b = paramaxtw.b;
+    this.c = paramaxtw.c;
+    this.e = paramaxtw.e;
+    this.d = paramaxtw.d;
+    this.f = paramaxtw.f;
+    this.g = paramaxtw.g;
+    this.jdField_a_of_type_Int = paramaxtw.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Double = paramaxtw.jdField_a_of_type_Double;
+    this.h = paramaxtw.h;
+    this.i = paramaxtw.i;
+    this.j = paramaxtw.j;
+    this.k = paramaxtw.k;
+    this.l = paramaxtw.l;
+    this.m = paramaxtw.m;
+    this.n = paramaxtw.n;
+    this.o = paramaxtw.o;
+    this.p = paramaxtw.p;
+    this.q = paramaxtw.q;
+    this.r = paramaxtw.r;
+    this.s = paramaxtw.s;
+    this.t = paramaxtw.t;
+    this.u = paramaxtw.u;
+    this.v = paramaxtw.v;
+    this.w = paramaxtw.w;
+    this.x = paramaxtw.x;
   }
   
   public String a(int paramInt)

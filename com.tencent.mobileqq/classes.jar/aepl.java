@@ -1,19 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.qphone.base.util.QLog;
 
 class aepl
-  implements DialogInterface.OnClickListener
+  extends bcje
 {
-  aepl(aepg paramaepg, boolean paramBoolean, bcir parambcir) {}
+  aepl(aepe paramaepe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Aepg.ab = true;
-    aepg.d(this.jdField_a_of_type_Aepg, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Aepg.aa = true;
-    if ((this.jdField_a_of_type_Bcir.a()) && (!this.jdField_a_of_type_Bcir.b())) {
-      axqw.b(this.jdField_a_of_type_Aepg.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDownLoadedPluginResult result = " + paramInt);
     }
+    if (paramInt == 0) {
+      this.a.bw();
+    }
+    do
+    {
+      return;
+      bcql.a(this.a.a(), ajya.a(2131705111), 0).a();
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+    }
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bcjg == null)) {}
+    bcjf localbcjf;
+    do
+    {
+      return;
+      localbcjf = this.a.jdField_a_of_type_Bcjg.a();
+    } while (localbcjf == null);
+    localbcjf.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 

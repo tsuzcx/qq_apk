@@ -1,15 +1,15 @@
 package com.tencent.mezs;
 
-import zzp;
+import zzm;
 
 public class a$1
   extends Thread
 {
-  public a$1(zzp paramzzp) {}
+  public a$1(zzm paramzzm) {}
   
   public void run()
   {
-    zzp.a(this.this$0);
+    zzm.a(this.this$0);
   }
 }
 

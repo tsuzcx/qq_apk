@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
 
 class aqcf
-  implements DialogInterface.OnClickListener
+  implements aqwb
 {
-  aqcf(aqce paramaqce) {}
+  aqcf(aqcc paramaqcc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(Uri paramUri) {}
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    this.a.a = aqcc.a(this.a, paramString2, paramLong);
+  }
 }
 
 

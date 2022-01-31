@@ -1,12 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface rca
+public class rca
+  implements rac
 {
-  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
+  public rca(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  public abstract void b();
+  public void a(Bundle paramBundle)
+  {
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, str);
+    qee.b(paramBundle);
+  }
   
-  public abstract void b(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
+  public void a(String paramString, Bundle paramBundle)
+  {
+    paramString = this.a.a();
+    Intent localIntent;
+    if ((paramBundle != null) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.putExtras(paramBundle);
+      localIntent.setClass(paramString, KandianVideoUploadService.class);
+    }
+    try
+    {
+      paramString.startService(localIntent);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
+    }
+  }
 }
 
 

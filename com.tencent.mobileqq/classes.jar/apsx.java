@@ -1,13 +1,8 @@
 public class apsx
 {
-  public int a;
-  public long a;
-  public String a = "";
-  public byte[] a;
-  public byte[] b;
-  public byte[] c;
-  public byte[] d;
-  public byte[] e;
+  public apsu a;
+  public apsv a;
+  public apsw a;
 }
 
 

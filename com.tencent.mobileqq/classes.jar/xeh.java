@@ -1,62 +1,45 @@
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
 
 public class xeh
+  implements bfub
 {
-  protected Context a;
-  protected Drawable a;
-  protected View a;
-  protected WindowManager a;
-  protected PopupWindow a;
+  public xeh(RefreshView paramRefreshView) {}
   
-  public xeh(Context paramContext)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new xei(this));
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new IllegalStateException("setContentView was not called with a view to display.");
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_Int == 2)
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      this.a.jdField_a_of_type_Xea.ao_();
       return;
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    this.a.jdField_a_of_type_Xea.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.a(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_Xea.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_Xea.b(0L);
     }
   }
   
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  public void c(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-  }
-  
-  public void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
+    this.a.a();
   }
 }
 

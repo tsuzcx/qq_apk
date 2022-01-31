@@ -1,26 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.ResultReceiver;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 class yva
-  implements ywd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  yva(yuz paramyuz) {}
+  yva(yuw paramyuw, ViewGroup paramViewGroup, View paramView) {}
   
-  public Activity a()
+  public void onGlobalLayout()
   {
-    return yuz.a(this.a);
-  }
-  
-  public void a()
-  {
-    this.a.dismiss();
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    yuz.a(this.a).a().resultReceiver.send(paramInt, paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    yxp.a("GdtMotiveVideoDialog", "onGlobalLayout: l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
+    yxp.a("GdtMotiveVideoDialog", "onGlobalLayout: " + this.jdField_a_of_type_AndroidViewView);
   }
 }
 

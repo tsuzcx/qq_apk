@@ -1,14 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import msf.registerproxy.register_proxy.DiscussList;
-import msf.registerproxy.register_proxy.GroupList;
+import com.tencent.mobileqq.app.MessageHandler;
 
 public class axab
 {
-  public List<register_proxy.GroupList> a;
-  public ConcurrentHashMap<String, ArrayList<String>> a;
-  public List<register_proxy.DiscussList> b;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  
+  public axab(awzy paramawzy, String paramString, int paramInt, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Int = MessageHandler.e;
+  }
 }
 
 

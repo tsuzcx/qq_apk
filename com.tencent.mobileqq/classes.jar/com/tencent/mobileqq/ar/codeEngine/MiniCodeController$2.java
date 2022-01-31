@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aljj;
-import aljv;
+import alji;
+import alju;
 
 public class MiniCodeController$2
   implements Runnable
 {
-  public MiniCodeController$2(aljj paramaljj) {}
+  public MiniCodeController$2(alji paramalji) {}
   
   public void run()
   {
-    long l1 = aljv.a("report_tag_detect_supporttype", 0L);
+    long l1 = alju.a("report_tag_detect_supporttype", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 86400000L)
     {
-      aljv.b(aljj.a(this.this$0), -1);
-      aljv.a("report_tag_detect_supporttype", l2);
+      alju.b(alji.a(this.this$0), -1);
+      alju.a("report_tag_detect_supporttype", l2);
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import akch;
+import akcg;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhoneContactManagerImp$2$1
   implements Runnable
 {
-  public PhoneContactManagerImp$2$1(akch paramakch) {}
+  public PhoneContactManagerImp$2$1(akcg paramakcg) {}
   
   public void run()
   {

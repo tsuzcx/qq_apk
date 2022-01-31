@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
 class bjwm
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  bjwm(bjwk parambjwk) {}
+  bjwm(bjwl parambjwl) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.a(0);
+    bjwl.a(this.a).sendEmptyMessageDelayed(1, 1500L);
   }
 }
 

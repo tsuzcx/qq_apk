@@ -1,24 +1,74 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aoas
-  implements Animation.AnimationListener
 {
-  public aoas(FastImagePreviewLayout paramFastImagePreviewLayout) {}
+  private static aoas jdField_a_of_type_Aoas;
+  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static aoas a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
+    if (jdField_a_of_type_Aoas == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aoas == null) {
+        jdField_a_of_type_Aoas = new aoas();
+      }
+      return jdField_a_of_type_Aoas;
     }
-    this.a.removeAllViews();
+    finally {}
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public EmotionPanelListView a(Context paramContext)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (QLog.isColorLevel()) {
+        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      return paramContext;
+    }
+    return new EmotionPanelListView(paramContext);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      Log.d("EmotionPanelListViewPool", "destory");
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+  }
+  
+  public void a(EmotionPanelListView paramEmotionPanelListView)
+  {
+    if (paramEmotionPanelListView == null) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
+      }
+      while (QLog.isColorLevel())
+      {
+        Log.d("EmotionPanelListViewPool", "relase listview");
+        return;
+        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
+          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
+        }
+      }
+    }
+  }
 }
 
 

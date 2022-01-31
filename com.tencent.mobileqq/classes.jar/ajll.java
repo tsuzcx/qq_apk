@@ -1,136 +1,74 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
 
-public class ajll
+class ajll
+  implements aysc
 {
-  private static ajll jdField_a_of_type_Ajll;
-  ajlk jdField_a_of_type_Ajlk;
-  ajlm jdField_a_of_type_Ajlm = new ajlm();
-  ajlo jdField_a_of_type_Ajlo;
+  ajll(ajlk paramajlk, String paramString, ajli paramajli) {}
   
-  static ajll a()
+  public void onResp(aysz paramaysz)
   {
-    if (jdField_a_of_type_Ajll == null) {
-      jdField_a_of_type_Ajll = new ajll();
+    ayrx localayrx = (ayrx)paramaysz.jdField_a_of_type_Aysy;
+    if (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ayrx == localayrx) {
+      this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ayrx = null;
     }
-    return jdField_a_of_type_Ajll;
-  }
-  
-  static SharedPreferences a()
-  {
-    return BaseApplication.getContext().getSharedPreferences("config_qq.android.tmg_opensdk", 4);
-  }
-  
-  public static String a()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
-      }
-      localObject = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrx.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysz.jdField_a_of_type_Int), Integer.valueOf(paramaysz.c), this.jdField_a_of_type_JavaLangString }));
     }
-    String str;
-    File localFile;
-    do
+    if (paramaysz.jdField_a_of_type_Int == 0)
     {
-      return localObject;
-      str = ((File)localObject).getParent() + "/txlib/tmg/";
-      localFile = new File(str);
-      localObject = str;
-    } while (localFile.exists());
-    localFile.mkdirs();
-    return str;
-  }
-  
-  public static String a(ajlk paramajlk)
-  {
-    return a() + "tmg_sdk_" + paramajlk.a + "_" + paramajlk.b + ".zip";
-  }
-  
-  public static void a()
-  {
-    ArrayList localArrayList = bbdj.a(a());
-    if (localArrayList != null)
-    {
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
-        i += 1;
-      }
-    }
-  }
-  
-  static void a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putString("tmg_opensdk_download_md5", paramString);
-    localEditor.commit();
-  }
-  
-  static String b()
-  {
-    return a().getString("tmg_opensdk_download_md5", null);
-  }
-  
-  public static boolean b(ajlk paramajlk)
-  {
-    String str1 = paramajlk.b;
-    paramajlk = a(paramajlk);
-    String str2 = b();
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
+      paramaysz = new File(localayrx.c);
+      if (!paramaysz.exists()) {}
     }
     do
     {
-      return false;
-      if (bbdj.a(paramajlk)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramajlk }));
-    return false;
-    a();
-    return true;
-  }
-  
-  boolean a(ajlk paramajlk)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      for (;;)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        try
+        {
+          paramaysz = paramaysz.getParent();
+          bbdx.a(localayrx.c, paramaysz, false);
+          ajlj.a(this.jdField_a_of_type_Ajli.b);
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          if (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm != null)
+          {
+            this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(100);
+            this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(0, "Download Complete!!!");
+          }
+          this.jdField_a_of_type_Ajlk.jdField_a_of_type_Boolean = false;
+          return;
         }
-        return false;
+        catch (Exception paramaysz)
+        {
+          paramaysz.printStackTrace();
+        }
+        int i = 0;
       }
-    }
-    else if (QLog.isDevelopLevel()) {
-      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
-    }
-    this.jdField_a_of_type_Ajlk = paramajlk;
-    return this.jdField_a_of_type_Ajlm.a(paramajlk, this.jdField_a_of_type_Ajlo);
+    } while (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm == null);
+    this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(2, "");
   }
   
-  boolean a(ajlk paramajlk, ajlo paramajlo)
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Ajlo = paramajlo;
-    return a(paramajlk);
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm != null) {
+        this.jdField_a_of_type_Ajlk.jdField_a_of_type_Ajlm.a(i);
+      }
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
 }
 

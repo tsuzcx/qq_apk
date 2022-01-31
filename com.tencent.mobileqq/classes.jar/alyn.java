@@ -1,97 +1,40 @@
-import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
+import android.os.Environment;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-public final class alyn
+public class alyn
 {
-  private static alyn a;
-  private static alyn b;
-  private static alyn c;
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  public static String a = "";
+  public static String b = "";
+  public static String c = "";
   
   static
   {
-    jdField_a_of_type_Alyn = new alyn();
-    jdField_b_of_type_Alyn = new alyn();
-    jdField_c_of_type_Alyn = new alyn();
-  }
-  
-  public alyn a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramFloat4;
-    return this;
-  }
-  
-  public alyn a(Matrix4 paramMatrix4)
-  {
-    paramMatrix4 = paramMatrix4.val;
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramMatrix4[0];
-    float f3 = this.jdField_b_of_type_Float;
-    float f4 = paramMatrix4[4];
-    float f5 = this.jdField_c_of_type_Float;
-    float f6 = paramMatrix4[8];
-    float f7 = this.d;
-    float f8 = paramMatrix4[12];
-    float f9 = this.jdField_a_of_type_Float;
-    float f10 = paramMatrix4[1];
-    float f11 = this.jdField_b_of_type_Float;
-    float f12 = paramMatrix4[5];
-    float f13 = this.jdField_c_of_type_Float;
-    float f14 = paramMatrix4[9];
-    float f15 = this.d;
-    float f16 = paramMatrix4[13];
-    float f17 = this.jdField_a_of_type_Float;
-    float f18 = paramMatrix4[2];
-    float f19 = this.jdField_b_of_type_Float;
-    float f20 = paramMatrix4[6];
-    float f21 = this.jdField_c_of_type_Float;
-    float f22 = paramMatrix4[10];
-    float f23 = this.d;
-    float f24 = paramMatrix4[14];
-    float f25 = this.jdField_a_of_type_Float;
-    float f26 = paramMatrix4[3];
-    float f27 = this.jdField_b_of_type_Float;
-    float f28 = paramMatrix4[7];
-    float f29 = this.jdField_c_of_type_Float;
-    float f30 = paramMatrix4[11];
-    float f31 = this.d;
-    return a(f1 * f2 + f3 * f4 + f5 * f6 + f7 * f8, f9 * f10 + f11 * f12 + f13 * f14 + f15 * f16, f17 * f18 + f19 * f20 + f21 * f22 + f23 * f24, paramMatrix4[15] * f31 + (f25 * f26 + f27 * f28 + f29 * f30));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    int i = 0;
+    try
     {
-      return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (alyn)paramObject;
-      if (Float.floatToIntBits(this.jdField_a_of_type_Float) != Float.floatToIntBits(paramObject.jdField_a_of_type_Float)) {
-        return false;
-      }
-      if (Float.floatToIntBits(this.jdField_b_of_type_Float) != Float.floatToIntBits(paramObject.jdField_b_of_type_Float)) {
-        return false;
-      }
-      if (Float.floatToIntBits(this.jdField_c_of_type_Float) != Float.floatToIntBits(paramObject.jdField_c_of_type_Float)) {
-        return false;
-      }
-    } while (Float.floatToIntBits(this.d) == Float.floatToIntBits(paramObject.d));
-    return false;
+      boolean bool = "mounted".equals(Environment.getExternalStorageState());
+      i = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      label28:
+      File localFile;
+      break label28;
+    }
+    if (i != 0) {}
+    for (localFile = new File(ajsd.aW);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    {
+      b = new File(localFile, "AR_MAP").getAbsolutePath();
+      a = new File(localFile, "res_precover").getAbsolutePath();
+      c = new File(b, "preload_map").getAbsolutePath();
+      return;
+    }
   }
   
-  public int hashCode()
+  public static String a()
   {
-    return (((Float.floatToIntBits(this.jdField_a_of_type_Float) + 31) * 31 + Float.floatToIntBits(this.jdField_b_of_type_Float)) * 31 + Float.floatToIntBits(this.jdField_c_of_type_Float)) * 31 + Float.floatToIntBits(this.d);
+    return b;
   }
 }
 

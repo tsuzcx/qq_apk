@@ -1,84 +1,40 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-public class aqqh
-  extends RecyclerView.ViewHolder
+class aqqh
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  public ImageView a;
-  public TextView a;
-  private aqqa jdField_a_of_type_Aqqa;
-  private FeedsItemData jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData;
-  public CornerImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  aqqh(aqqc paramaqqc, String paramString1, String paramString2) {}
   
-  public aqqh(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
-    this.b = ((TextView)paramView.findViewById(2131362885));
-    this.c = ((TextView)paramView.findViewById(2131370992));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131367906));
-    this.d = ((TextView)paramView.findViewById(2131366923));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365269));
-  }
-  
-  public void a(aqqa paramaqqa, FeedsItemData paramFeedsItemData, int paramInt)
-  {
-    this.jdField_a_of_type_Aqqa = paramaqqa;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData = paramFeedsItemData;
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.miniType == 1)
+    paramView = new HashMap();
+    yoa.a(paramView, this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(10), "1");
+    paramView.put(Integer.valueOf(12), this.b);
+    Intent localIntent = new Intent(aqqc.a(this.jdField_a_of_type_Aqqc), QQBrowserActivity.class);
+    if (TextUtils.isEmpty(this.b))
     {
-      this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
+      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuezq");
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.title);
-      this.b.setText(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.authorName);
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageURL(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.coverImgUrl);
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(actn.a(4.0F, this.itemView.getResources()));
-        this.d.setText(this.jdField_a_of_type_Aqqa.a().gameName);
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Aqqa.a().gameName)) && (this.jdField_a_of_type_Aqqa.a().gameName.length() > 8))
-        {
-          this.c.setVisibility(4);
-          this.itemView.setOnClickListener(new aqqi(this));
-          return;
-          if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.miniType == 2)
-          {
-            this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 0.0F, 0.0F, 8.0F, 8.0F));
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            continue;
-          }
-          this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 8.0F, 8.0F, 0.0F, 0.0F));
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-      }
-      catch (Exception paramaqqa)
-      {
-        for (;;)
-        {
-          QLog.e("QQGamePubFeedsAdapter", 1, paramaqqa, new Object[0]);
-        }
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum > 10000) {}
-    for (paramaqqa = Math.round(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum / 10000.0F * 10.0F) / 10.0F + ajyc.a(2131710321);; paramaqqa = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum + ajyc.a(2131710309))
-    {
-      this.c.setText(paramaqqa);
-      break;
+      yoa.a(ajac.a(), "769", "205711", this.jdField_a_of_type_Aqqc.a().gameAppId, "76905", "1", "160", paramView);
+      aqqc.a(this.jdField_a_of_type_Aqqc).startActivity(localIntent);
+      aqqc.a(this.jdField_a_of_type_Aqqc).dismiss();
+      return;
+      localIntent.putExtra("url", this.b);
+      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuebl");
     }
   }
 }

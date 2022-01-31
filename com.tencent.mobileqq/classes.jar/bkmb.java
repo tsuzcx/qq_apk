@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bkmb
-  implements View.OnLayoutChangeListener
+class bkmb
+  extends Handler
 {
-  public bkmb(SlideBottomPanel paramSlideBottomPanel) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  bkmb(bkma parambkma, Looper paramLooper)
   {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1000)
+    {
+      paramMessage = (String)paramMessage.obj;
+      this.a.a(paramMessage);
+    }
+    while ((paramMessage.what != 1002) || (this.a.a == null)) {
+      return;
+    }
+    this.a.a.a();
   }
 }
 

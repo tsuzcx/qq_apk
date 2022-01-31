@@ -2,21 +2,21 @@ package com.tencent.biz.qqstory.base.preload;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.Map;
-import sul;
-import svb;
+import sui;
+import suy;
 
 public class StorySingleFileDownloader$4
   implements Runnable
 {
-  public StorySingleFileDownloader$4(svb paramsvb, sul paramsul, ErrorMessage paramErrorMessage) {}
+  public StorySingleFileDownloader$4(suy paramsuy, sui paramsui, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    if (!svb.a(this.this$0).containsKey(this.jdField_a_of_type_Sul.a)) {
+    if (!suy.a(this.this$0).containsKey(this.jdField_a_of_type_Sui.a)) {
       return;
     }
-    svb.a(this.this$0).remove(this.jdField_a_of_type_Sul.a);
-    svb.a(this.this$0, this.jdField_a_of_type_Sul, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    suy.a(this.this$0).remove(this.jdField_a_of_type_Sui.a);
+    suy.a(this.this$0, this.jdField_a_of_type_Sui, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

@@ -9,7 +9,7 @@ public class abzr
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.a);
+    this.a.a(this.a.c);
   }
 }
 

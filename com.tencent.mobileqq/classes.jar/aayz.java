@@ -1,71 +1,77 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.os.Message;
+import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aayz
-  implements CompoundButton.OnCheckedChangeListener
+  extends MqqHandler
 {
   public aayz(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (AppSetting.d)
+    switch (paramMessage.what)
     {
-      paramCompoundButton = this.a.getString(2131691876);
-      DiscussionInfoCardActivity.a(this.a).setContentDescription(paramCompoundButton);
     }
-    paramCompoundButton = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
-    int i = paramCompoundButton.flag;
-    label171:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    label424:
+    do
     {
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag | 0x1));
-      if (i != paramCompoundButton.flag)
+      do
       {
-        byte b = (byte)(paramCompoundButton.flag & 0x1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + paramCompoundButton.flag + " flag:" + b);
+        do
+        {
+          return;
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramMessage);
+          this.a.finish();
+          return;
+        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+        DiscussionInfoCardActivity.a(this.a).dismiss();
+        return;
+        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
+            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+          }
         }
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, paramCompoundButton.flag);
-        if (!paramBoolean) {
-          break label341;
+        else
+        {
+          paramMessage = (ArrayList)paramMessage.obj;
+          int i = paramMessage.size();
+          DiscussionInfoCardActivity.a(this.a).setText(ajya.a(2131703352) + i + ajya.a(2131703353));
+          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+          DiscussionInfoCardActivity.a(this.a, paramMessage);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
+            break label424;
+          }
+          DiscussionInfoCardActivity.a(this.a, new aaza(this.a));
+          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
         }
-        paramCompoundButton = "msg_open";
-        bbbb.a("Grp_Dis_set", "Dis_info", paramCompoundButton, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), bbbb.a(this.a.app, this.a.a) });
-      }
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label347;
-      }
-      paramCompoundButton = "1";
-      label231:
-      axqw.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, paramCompoundButton, "", "", "");
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label353;
-      }
-    }
-    label341:
-    label347:
-    label353:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      axqw.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, paramCompoundButton, "", "", "");
-      axqw.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
-      return;
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag & 0xFFFFFFFE));
-      break;
-      paramCompoundButton = "msg_close";
-      break label171;
-      paramCompoundButton = "0";
-      break label231;
-    }
+        for (;;)
+        {
+          removeMessages(0);
+          return;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694453));
+          if (!AppSetting.d) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(ajya.a(2131703358) + this.a.getString(2131694453) + ajya.a(2131703350));
+          break;
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      } while (DiscussionInfoCardActivity.a(this.a) != 0);
+      paramMessage = (String)paramMessage.obj;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+    this.a.finish();
   }
 }
 

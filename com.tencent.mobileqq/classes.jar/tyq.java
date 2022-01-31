@@ -1,78 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 public class tyq
-  extends wcr
+  implements View.OnTouchListener
 {
-  public static final String KEY = "PlayerCommentEmptySegment";
-  private View jdField_a_of_type_AndroidViewView;
-  private tyf jdField_a_of_type_Tyf;
-  public ups a;
-  private boolean b = true;
-  
-  public tyq(Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramContext);
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_a_of_type_Tyf == null) || (this.jdField_a_of_type_Tyf.a());
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Ups == null) || (this.jdField_a_of_type_Ups.a(b()).size() == 0))) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
-  {
-    if (this.b) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
+    Object localObject = ((TextView)paramView).getText();
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+    paramView = (TextView)paramView;
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
     {
-      return paramvas.a();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      paramMotionEvent = paramView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramView);
+        }
+        return true;
+      }
     }
-  }
-  
-  public String a()
-  {
-    return "PlayerCommentEmptySegment";
-  }
-  
-  public vas a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561328, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131369513);
-    if (QQStoryContext.a()) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
-    }
-    return new vas(paramViewGroup);
-  }
-  
-  public void a(tyf paramtyf)
-  {
-    this.jdField_a_of_type_Tyf = paramtyf;
-  }
-  
-  public void a(ups paramups)
-  {
-    this.jdField_a_of_type_Ups = paramups;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+    return false;
   }
 }
 

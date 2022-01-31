@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import addc;
-import ahec;
-import aheg;
-import ahfa;
-import ahiy;
+import adcz;
+import ahea;
+import ahee;
+import ahey;
+import ahiw;
 import com.tencent.qphone.base.util.QLog;
 
 public class DrawClassifier$3
   implements Runnable
 {
-  public DrawClassifier$3(ahec paramahec, aheg paramaheg, addc paramaddc) {}
+  public DrawClassifier$3(ahea paramahea, ahee paramahee, adcz paramadcz) {}
   
   public void run()
   {
     try
     {
-      if (!ahec.a(this.this$0))
+      if (!ahea.a(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.e("DrawClassifier", 2, "not init ok or already close to recog");
         }
-        if (this.jdField_a_of_type_Aheg != null) {
-          this.jdField_a_of_type_Aheg.a(false);
+        if (this.jdField_a_of_type_Ahee != null) {
+          this.jdField_a_of_type_Ahee.a(false);
         }
       }
       long l = System.currentTimeMillis();
-      boolean bool = ahec.a(this.this$0).a(this.jdField_a_of_type_Addc, ahec.b(this.this$0), this.this$0.a, ahec.a(this.this$0));
-      if (this.jdField_a_of_type_Aheg != null) {
-        this.jdField_a_of_type_Aheg.a(bool);
+      boolean bool = ahea.a(this.this$0).a(this.jdField_a_of_type_Adcz, ahea.b(this.this$0), this.this$0.a, ahea.a(this.this$0));
+      if (this.jdField_a_of_type_Ahee != null) {
+        this.jdField_a_of_type_Ahee.a(bool);
       }
       if (QLog.isColorLevel()) {
         QLog.i("DrawClassifier", 2, "recognize cost:" + (System.currentTimeMillis() - l));
@@ -40,11 +40,11 @@ public class DrawClassifier$3
       do
       {
         if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "recognition throwable:" + ahiy.a(localThrowable));
+          QLog.e("DrawClassifier", 2, "recognition throwable:" + ahiw.a(localThrowable));
         }
         localThrowable.printStackTrace();
-      } while (this.jdField_a_of_type_Aheg == null);
-      this.jdField_a_of_type_Aheg.a(false);
+      } while (this.jdField_a_of_type_Ahee == null);
+      this.jdField_a_of_type_Ahee.a(false);
     }
   }
 }

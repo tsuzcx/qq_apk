@@ -1,15 +1,33 @@
-import dov.com.qq.im.capture.data.FilterCategory;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bkqq
+class bkqq
+  implements View.OnClickListener
 {
-  public QIMFilterCategoryItem a;
-  public ArrayList<FilterCategory> a = new ArrayList();
-  public QIMFilterCategoryItem b;
-  public ArrayList<FilterCategory> b = new ArrayList();
-  public ArrayList<QIMFilterCategoryItem> c = new ArrayList();
-  public ArrayList<QIMFilterCategoryItem> d = new ArrayList();
+  bkqq(bkqp parambkqp) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!bkqp.a(this.a).f)
+    {
+      bkqp.a(this.a);
+      return;
+    }
+    if (bkqp.a(this.a).p)
+    {
+      bdis.a().a(2131718271);
+      bkqp.a(this.a).p = false;
+      bkqp.a(this.a).setSelected(false);
+      bkqp.a(this.a).m = false;
+      bkqp.a(this.a).d(3008);
+      return;
+    }
+    bdis.a().a(2131718273);
+    bkqp.a(this.a).p = true;
+    bkqp.a(this.a).setSelected(true);
+    bkqp.a(this.a).m = true;
+    bkqp.a(this.a).d(3007);
+  }
 }
 
 

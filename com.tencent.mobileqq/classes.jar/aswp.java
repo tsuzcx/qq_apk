@@ -1,20 +1,56 @@
-import android.os.Bundle;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
 public class aswp
-  implements aswa
+  implements ServiceConnection
 {
   public aswp(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
-    Bundle localBundle = new Bundle();
-    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
-    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
-    paramString.setData(localBundle);
-    paramString.sendToTarget();
+    MusicPlayerActivity.a(this.a, asvo.a(paramIBinder));
+    try
+    {
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
+      {
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (asww)MusicPlayerActivity.b().get(str), paramIBinder);
+        }
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
+        }
+      }
+      return;
+    }
+    catch (Exception paramComponentName) {}
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
+    {
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      return;
+    }
+    catch (RemoteException paramComponentName) {}
   }
 }
 

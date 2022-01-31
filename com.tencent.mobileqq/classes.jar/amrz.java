@@ -1,105 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amrz
-  extends ampb<amsa>
 {
-  public static boolean a;
-  private static boolean b;
+  private boolean a;
   
-  public static boolean e()
+  public static amrz a(String paramString)
   {
-    if (b) {
-      return a;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    b = true;
-    a = f();
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean f()
-  {
-    amsa localamsa2 = (amsa)ampm.a().a(531);
-    amsa localamsa1 = localamsa2;
-    if (localamsa2 == null)
+    try
     {
-      localamsa2 = new amsa();
-      localamsa1 = localamsa2;
-      if (QLog.isColorLevel())
+      amrz localamrz = new amrz();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
       {
-        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
-        localamsa1 = localamsa2;
+        localamrz.a = bool;
+        return localamrz;
+        bool = false;
       }
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localamsa1);
-    }
-    return localamsa1.a();
-  }
-  
-  public int a()
-  {
-    return 531;
-  }
-  
-  @NonNull
-  public amsa a(int paramInt)
-  {
-    return new amsa();
-  }
-  
-  @Nullable
-  public amsa a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfampi[0].a);
-      }
-      return amsa.a(paramArrayOfampi[0].a);
-    }
-    return new amsa();
-  }
-  
-  public Class<amsa> a()
-  {
-    return amsa.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amsa paramamsa)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramamsa);
-    }
-    if (paramamsa != null) {
-      a = paramamsa.a();
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
     }
   }
   
   public boolean a()
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 

@@ -1,34 +1,6 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
-
-public class bekt
+public abstract interface bekt
 {
-  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
-  {
-    switch (paramInt)
-    {
-    case -4: 
-    default: 
-    case -5: 
-      try
-      {
-        paramJSONObject.put("errMsg", "unknown reason");
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        besl.d("MiniappHttpUtil", "fillErrMsg", paramString);
-        return;
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "abort";; paramString = paramString + ":fail abort")
-      {
-        paramJSONObject.put("errMsg", paramString);
-        return;
-      }
-    }
-    paramJSONObject.put("errMsg", "request protocol error");
-  }
+  public abstract String getNativeLibDir();
 }
 
 

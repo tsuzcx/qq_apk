@@ -1,51 +1,19 @@
-import android.text.TextUtils;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
 
 public class auaw
-  implements ActionMode.Callback
+  extends aqna
 {
-  public auaw(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
+  public auaw(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  protected void a(boolean paramBoolean, aqnd paramaqnd)
   {
-    if (paramMenuItem.getItemId() == 2131371005)
-    {
-      paramActionMode = auab.a(this.jdField_a_of_type_AndroidWidgetEditText);
-      if (TextUtils.isEmpty(paramActionMode)) {
-        bcpw.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, ajyc.a(2131707817), 0).a();
-      }
+    if (!OCRResultFragmentNew.a(this.a)) {
+      return;
     }
-    else
-    {
-      return false;
-    }
-    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode = paramActionMode.getMenuInflater();
-    if (paramActionMode != null) {
-      paramActionMode.inflate(2131623940, paramMenu);
-    }
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    OCRResultFragmentNew.b(this.a, false);
+    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramaqnd));
   }
 }
 

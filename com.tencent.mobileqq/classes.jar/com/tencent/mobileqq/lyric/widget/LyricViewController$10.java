@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import asbt;
+import asbv;
 
 public class LyricViewController$10
   implements Runnable
 {
-  public LyricViewController$10(asbt paramasbt) {}
+  public LyricViewController$10(asbv paramasbv) {}
   
   public void run()
   {
-    asbt.a(this.this$0).a(this.this$0.a.a());
+    asbv.a(this.this$0).a(this.this$0.a.a());
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
-import acsq;
+import acsm;
 import android.os.Bundle;
 import mqq.observer.BusinessObserver;
 
 public class QQReminderServlet$1
   implements Runnable
 {
-  public QQReminderServlet$1(acsq paramacsq, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public QQReminderServlet$1(acsm paramacsm, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {

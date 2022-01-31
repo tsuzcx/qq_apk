@@ -1,28 +1,33 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+
 public class akud
-  implements ajtg
+  extends osm
+  implements ory, orz, osa
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public void a() {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      if (!paramBoolean) {
-        break;
-      }
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
-    return;
-    a(false, false, -1);
+    c();
   }
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  {
+    c();
+  }
+  
+  public void b()
+  {
+    c();
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    c();
+  }
+  
+  public void c() {}
 }
 
 

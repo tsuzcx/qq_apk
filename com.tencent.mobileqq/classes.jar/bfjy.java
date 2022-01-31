@@ -1,43 +1,14 @@
-public class bfjy
+class bfjy
 {
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    int i;
-    if (a(paramString)) {
-      i = paramString.length() - 1;
-    }
-    for (;;)
-    {
-      if ((i < 0) || (paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/'))
-      {
-        str = paramString.substring(i + 1);
-        return str;
-      }
-      i -= 1;
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    int j = paramString.length();
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if ((paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/')) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
+  public int a;
+  public bfkj a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 

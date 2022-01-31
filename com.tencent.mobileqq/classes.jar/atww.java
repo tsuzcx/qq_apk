@@ -1,9 +1,8 @@
 public class atww
   extends atwx
 {
-  public int a;
   public String a;
-  public int b;
+  public String b;
 }
 
 

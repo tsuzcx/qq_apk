@@ -1,30 +1,31 @@
-import android.animation.TypeEvaluator;
+import android.annotation.SuppressLint;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeProvider;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
 
-final class wfd
-  implements TypeEvaluator<wfc>
+@SuppressLint({"NewApi"})
+public class wfd
+  extends View.AccessibilityDelegate
 {
-  private wfc a;
+  private View jdField_a_of_type_AndroidViewView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
+  private wfe jdField_a_of_type_Wfe;
   
-  public wfc a(float paramFloat, wfc paramwfc1, wfc paramwfc2)
+  public wfd(View paramView, wfe paramwfe)
   {
-    float f1 = paramwfc1.a + (paramwfc2.a - paramwfc1.a) * paramFloat;
-    float f2 = paramwfc1.b + (paramwfc2.b - paramwfc1.b) * paramFloat;
-    paramFloat = paramwfc1.c + (paramwfc2.c - paramwfc1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new wfc(f1, f2, paramFloat);
-    }
-    for (;;)
-    {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Wfe = paramwfe;
+  }
+  
+  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
+  {
+    return new wff(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfd
  * JD-Core Version:    0.7.0.1
  */

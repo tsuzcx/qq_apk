@@ -1,128 +1,72 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import mqq.app.AppRuntime;
+import java.util.List;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspBody;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspItem;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.RspBody;
 
-public class ozc
+class ozc
+  extends mxg
 {
-  private long a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    do
-    {
-      return -1L;
-      localObject = bhvh.a((AppRuntime)localObject, true, true);
-    } while (localObject == null);
-    return ((SharedPreferences)localObject).getLong("event_simple_g_info_" + ozd.a(paramString), -1L);
-  }
+  ozc(ozb paramozb, oze paramoze) {}
   
-  private String a(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramString == null) {
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d(ozb.a, 2, "getAtlasFavoriteStatus onResult, errorCode=" + paramInt);
     }
-    return bfkp.a(paramString);
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = bhvh.a((AppRuntime)localObject, true, true);
-    } while (localObject == null);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("event_simple_g_info_" + ozd.a(paramString), paramLong);
-    bhvh.a((SharedPreferences.Editor)localObject, true);
-  }
-  
-  private void a(String paramString, TroopInfo paramTroopInfo)
-  {
-    if (paramTroopInfo == null) {}
-    while ((paramTroopInfo.timeSec == a(paramTroopInfo.troopuin)) && (!ozb.a().a)) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(b("g_ui"), b(a(paramTroopInfo.troopuin)));
-    localHashMap.put(b("g_code"), b(a(paramTroopInfo.troopcode)));
-    localHashMap.put(b("g_oui"), b(a(paramTroopInfo.troopowneruin)));
-    localHashMap.put(b("g_name"), b(paramTroopInfo.troopname));
-    localHashMap.put(b("g_mem"), b(paramTroopInfo.troopmemo));
-    localHashMap.put(b("g_ind"), b(paramTroopInfo.fingertroopmemo));
-    localHashMap.put(b("g_create_time"), b(paramTroopInfo.troopCreateTime + ""));
-    localHashMap.put(b("g_mem_num"), b(paramTroopInfo.wMemberNum + ""));
-    localHashMap.put(b("g_adm"), b(c(paramTroopInfo.Administrator)));
-    localHashMap.put(b("g_class"), b(paramTroopInfo.mGroupClassExtText));
-    localHashMap.put(b("g_grade"), b(paramTroopInfo.nTroopGrade + ""));
-    localHashMap.put(b("g_type"), b(paramTroopInfo.troopTypeExt + ""));
-    axrl.a(null).a(paramString, "event_simple_g_info", false, 1000L, 1000L, localHashMap, null);
-    a(paramTroopInfo.troopuin, paramTroopInfo.timeSec);
-  }
-  
-  private String b(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    return Base64.encodeToString(paramString.getBytes(), 3);
-  }
-  
-  private String c(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramString = paramString.split("\\|");
-    int i = 0;
-    while (i < paramString.length)
-    {
-      if (!TextUtils.isEmpty(paramString[i])) {
-        localStringBuilder.append(a(paramString[i])).append('^');
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
+    if ((paramInt != -1) && (paramArrayOfByte != null)) {}
     for (;;)
     {
-      return;
-      Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
-      if (localObject != null)
+      ArrayList localArrayList;
+      try
       {
-        localObject = ((TroopManager)localObject).a();
-        if (localObject != null)
+        paramBundle = new oidb_0xb40.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = ((oidb_0xb40.CheckFavoriteRspBody)paramBundle.msg_check_favorite_rsp.get()).rpt_msg_rsp_items.get().iterator();
+        if (paramArrayOfByte.hasNext())
         {
-          paramQQAppInterface = paramQQAppInterface.c();
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          Object localObject = (oidb_0xb40.CheckFavoriteRspItem)paramArrayOfByte.next();
+          paramBundle = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_rowkey.get().toStringUtf8();
+          if (((oidb_0xb40.CheckFavoriteRspItem)localObject).uint32_result.get() == 1)
           {
-            a(paramQQAppInterface, (TroopInfo)((Iterator)localObject).next());
-            try
-            {
-              Thread.sleep(1000L);
+            bool = true;
+            localArrayList = new ArrayList();
+            if (!bool) {
+              break label242;
             }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
+            localObject = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_cid_list.get().iterator();
+            if (!((Iterator)localObject).hasNext()) {
+              break label242;
             }
+            localArrayList.add(((ByteStringMicro)((Iterator)localObject).next()).toStringUtf8());
+            continue;
           }
         }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (this.jdField_a_of_type_Oze != null) {
+          this.jdField_a_of_type_Oze.a(false, null, false, null);
+        }
+        QLog.e(ozb.a, 1, "getAtlasFavoriteStatus onResult(), exception=" + paramArrayOfByte.toString());
+      }
+      boolean bool = false;
+      continue;
+      label242:
+      if (this.jdField_a_of_type_Oze != null) {
+        this.jdField_a_of_type_Oze.a(true, paramBundle, bool, localArrayList);
       }
     }
   }

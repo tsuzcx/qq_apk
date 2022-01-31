@@ -1,17 +1,44 @@
-import android.view.MotionEvent;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 class agfh
-  implements View.OnTouchListener
+  implements TextWatcher
 {
-  agfh(agfg paramagfg) {}
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  agfh(agfe paramagfe) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    agfg.a(this.a, paramView);
-    return false;
+    paramEditable = paramEditable.toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
+    {
+      this.jdField_a_of_type_JavaLangString = "";
+      agfe.a(this.jdField_a_of_type_Agfe).a();
+      agfe.a(this.jdField_a_of_type_Agfe).setVisibility(8);
+      agfe.a(this.jdField_a_of_type_Agfe).setVisibility(8);
+      agfe.a(this.jdField_a_of_type_Agfe).setVisibility(8);
+    }
+    while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "afterTextChanged, mLastKeyword = " + this.jdField_a_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.jdField_a_of_type_JavaLangString = paramEditable;
+    agfe.a(this.jdField_a_of_type_Agfe).setVisibility(0);
+    this.jdField_a_of_type_Agfe.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

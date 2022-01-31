@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="md5")
 public class StickerRecCacheEntity
-  extends aukm
+  extends auko
 {
   public String filePath;
   public long lastTime;

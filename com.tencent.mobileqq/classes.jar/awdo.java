@@ -1,14 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-public final class awdo
-  implements anyg
+public class awdo
+  implements hr
 {
-  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
+  public awdo(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aoak(7, 7, null));
-    return localArrayList;
+    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
   }
 }
 

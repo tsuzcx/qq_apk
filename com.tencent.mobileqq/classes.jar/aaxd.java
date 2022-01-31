@@ -1,26 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-class aaxd
-  implements DialogInterface.OnClickListener
+public class aaxd
+  extends AccountObserver
 {
-  aaxd(aaxc paramaaxc) {}
+  public aaxd(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    if (this.a.a.a() != null)
+    if (this.a.a != null)
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
+      }
+      this.a.a.a.sendEmptyMessage(18);
     }
-    paramDialogInterface.dismiss();
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
+    }
+    this.a.a.a.sendEmptyMessage(18);
   }
 }
 

@@ -1,14 +1,18 @@
-public abstract interface bhrg
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+
+class bhrg
+  implements bhaf
 {
-  public abstract String a();
+  bhrg(bhrf parambhrf, String paramString) {}
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void j();
-  
-  public abstract void setBannerHeight(int paramInt);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhrf.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
+      this.jdField_a_of_type_Bhrf.a.callJs(str);
+    }
+  }
 }
 
 

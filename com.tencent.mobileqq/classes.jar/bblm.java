@@ -1,97 +1,28 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class bblm
+public final class bblm
+  implements DialogInterface.OnClickListener
 {
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
-    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
-    {
-      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
-      localDataOutputStream.write(paramArrayOfByte);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      label76:
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte = paramArrayOfByte;
-      paramArrayOfByte.printStackTrace();
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException1)
-      {
-        break label76;
-      }
-    }
-  }
+  public bblm(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
   
-  public static byte[] b(byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
-    try
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
-      label72:
-      return paramArrayOfByte;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", String.format(aexl.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
+      paramDialogInterface.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
     }
-    catch (Exception localException1)
+    for (;;)
     {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException5) {}
-      localException1 = localException1;
-      paramArrayOfByte = null;
-      localException1.printStackTrace();
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException2)
-      {
-        return paramArrayOfByte;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException3)
-      {
-        break label72;
-      }
+      axqy.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
+      return;
+      akig.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
     }
   }
 }

@@ -1,15 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import dov.com.qq.im.BaseVMPeakActivity;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1.1;
+import java.util.List;
 
-class biub
-  implements View.OnTouchListener
+public class biub
+  implements bivv
 {
   biub(biua parambiua) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, String paramString)
   {
-    return true;
+    if (paramInt == 0) {
+      biua.a(this.a, paramString);
+    }
+    ((bita)biua.a(this.a).get(paramInt)).c = paramString;
+    ((bita)biua.a(this.a).get(paramInt)).a = 13;
+    biua.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
   }
 }
 

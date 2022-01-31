@@ -1,33 +1,8 @@
-import QC.UniBusiSimpleItemDetail;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class auya
-  implements View.OnClickListener
+public abstract interface auya
 {
-  auya(auxz paramauxz, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    if ((auxz.a(this.jdField_a_of_type_Auxz) == 5) && (auxz.a(this.jdField_a_of_type_Auxz) != null) && (!((StickyNotePublishFragment)auxz.a(this.jdField_a_of_type_Auxz)).a()))
-    {
-      bcpw.a(auxz.a(this.jdField_a_of_type_Auxz), ajyc.a(2131715130), 0).a();
-      return;
-    }
-    auxz.a(this.jdField_a_of_type_Auxz, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
-    if (9 == auxz.a(this.jdField_a_of_type_Auxz)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", paramView);
-      this.jdField_a_of_type_Auxz.notifyDataSetChanged();
-      auxz.a(this.jdField_a_of_type_Auxz, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
-      auxz.a(this.jdField_a_of_type_Auxz, true);
-      this.jdField_a_of_type_Auxz.a(auxz.a(this.jdField_a_of_type_Auxz), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Auxz.a);
-      return;
-    }
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

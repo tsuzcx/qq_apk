@@ -1,25 +1,6 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
-
-public class beoh
-  implements View.OnTouchListener
+public abstract interface beoh
 {
-  public beoh(VideoGestureRelativeLayout paramVideoGestureRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 1) && (VideoGestureRelativeLayout.a(this.a)))
-    {
-      if (VideoGestureRelativeLayout.a(this.a) != null) {
-        VideoGestureRelativeLayout.a(this.a).d(paramMotionEvent);
-      }
-      VideoGestureRelativeLayout.a(this.a, false);
-    }
-    return VideoGestureRelativeLayout.a(this.a).onTouchEvent(paramMotionEvent);
-  }
+  public abstract void a();
 }
 
 

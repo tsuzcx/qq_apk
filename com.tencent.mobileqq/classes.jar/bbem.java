@@ -1,72 +1,57 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.ROMUtil;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class bbem
+class bbem
+  implements unt
 {
-  public static Intent a(Context paramContext)
-  {
-    if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
-      return d(paramContext);
-    }
-    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
-      return c(paramContext);
-    }
-    return b(paramContext);
-  }
+  bbem(bbeg parambbeg) {}
   
-  public static Intent b(Context paramContext)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    Intent localIntent;
-    if (Build.VERSION.SDK_INT >= 26)
+    paramString = vwj.a();
+    String str1 = ((Activity)this.a.a).getIntent().getStringExtra("from_type");
+    paramInt = ((Activity)this.a.a).getIntent().getIntExtra("capture_intent_mode", -1);
+    int i = ((Activity)this.a.a).getIntent().getIntExtra("firsttab", -1);
+    int j = ((Activity)this.a.a).getIntent().getIntExtra("secondtab", -1);
+    String str2 = ((Activity)this.a.a).getIntent().getStringExtra("itemid");
+    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("story_game_id");
+    int k = ((Activity)this.a.a).getIntent().getIntExtra("key_finish_jump_to_page", 1);
+    String str4 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
+    String str5 = ((Activity)this.a.a).getIntent().getStringExtra("story_capture_album_id");
+    Bundle localBundle = new Bundle();
+    if (TextUtils.equals(str1, "msgTab"))
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("android.provider.extra.APP_PACKAGE", paramContext.getPackageName());
-      localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      localBundle.putInt("entrance_type", 103);
+      localBundle.putInt("key_finish_jump_to_page", k);
+      if (!TextUtils.isEmpty(str4)) {
+        localBundle.putString("web_dispatch_event", str4);
+      }
+      if (paramInt == -1) {
+        break label322;
+      }
+      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, str3, str5, true, 20000);
     }
-    if (Build.VERSION.SDK_INT >= 21)
+    for (;;)
     {
-      localIntent = new Intent();
-      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-      localIntent.putExtra("app_package", paramContext.getPackageName());
-      localIntent.putExtra("app_uid", paramContext.getApplicationInfo().uid);
-      return localIntent;
+      ved.c("Q.qqstory.publish.JumpAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
+      return;
+      if (TextUtils.equals(str1, "msgTabNew"))
+      {
+        localBundle.putInt("entrance_type", 119);
+        break;
+      }
+      localBundle.putInt("entrance_type", 15);
+      break;
+      label322:
+      paramString.a((Activity)this.a.a, localBundle, 20000);
     }
-    if (Build.VERSION.SDK_INT >= 19) {
-      return c(paramContext);
-    }
-    return c(paramContext);
-  }
-  
-  public static Intent c(Context paramContext)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
-    return localIntent;
-  }
-  
-  public static Intent d(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT < 21) {
-      return c(paramContext);
-    }
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
-    localIntent.putExtra("appName", paramContext.getResources().getString(paramContext.getApplicationInfo().labelRes));
-    localIntent.putExtra("packageName", paramContext.getPackageName());
-    return localIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbem
  * JD-Core Version:    0.7.0.1
  */

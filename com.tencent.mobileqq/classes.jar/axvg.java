@@ -1,68 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class axvg
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public axvg(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, Resources paramResources, PopupWindow paramPopupWindow) {}
+  public axvg(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxj paramacxj) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int k;
-    int m;
-    try
-    {
-      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362551);
-      if (localViewGroup == null) {
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        arrayOfInt1 = null;
-      }
-      int[] arrayOfInt2 = new int[2];
-      arrayOfInt1.getLocationOnScreen(arrayOfInt2);
-      int i = arrayOfInt2[1];
-      int j = arrayOfInt1.getHeight();
-      int[] arrayOfInt1 = new int[2];
-      paramView.getLocationOnScreen(arrayOfInt1);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX = arrayOfInt1[0];
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY = arrayOfInt1[1];
-      k = actn.a(106.0F, this.jdField_a_of_type_AndroidContentResResources);
-      m = paramView.getHeight();
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - i + m + k <= j) {
-        break label257;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846189));
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - k);
-    for (;;)
-    {
-      ((nqx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-      paramView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramView.alpha = 0.5F;
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramView);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new axvh(this));
-      return;
-      label257:
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846188));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY + m);
-    }
+    return this.jdField_a_of_type_Acxj.onTouch(paramView, paramMotionEvent);
   }
 }
 

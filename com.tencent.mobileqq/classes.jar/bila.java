@@ -1,15 +1,51 @@
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 class bila
-  implements bjob<bivx>
+  implements bjos<Boolean>
 {
-  bila(biku parambiku) {}
+  bila(bikt parambikt) {}
   
-  public void a(@Nullable bivx parambivx)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (parambivx == bivx.b) {
-      biku.a(this.a);
-    }
+    if (paramBoolean == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean.booleanValue()) {
+          break label200;
+        }
+        if (bikt.a(this.a).a())
+        {
+          bikt.c(this.a).setVisibility(0);
+          bikt.a(this.a).setVisibility(8);
+          bikt.a(this.a).setVisibility(8);
+          bikt.a(this.a).setEntryPresent(false);
+          return;
+        }
+        if (!bikt.a(this.a).b()) {
+          break;
+        }
+        bikt.c(this.a).setVisibility(0);
+        bikt.a(this.a).setVisibility(0);
+        bikt.a(this.a).setEntryPresent(true);
+      } while (!bikt.b(this.a));
+      bikt.a(this.a).setVisibility(0);
+      return;
+    } while (!bikt.a(this.a).c());
+    bikt.c(this.a).setVisibility(0);
+    bikt.a(this.a).setVisibility(8);
+    bikt.a(this.a).setVisibility(8);
+    bikt.a(this.a).setEntryPresent(false);
+    return;
+    label200:
+    bikt.a(this.a).setVisibility(8);
+    bikt.a(this.a).setVisibility(8);
   }
 }
 

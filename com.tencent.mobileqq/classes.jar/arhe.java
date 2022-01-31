@@ -1,16 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 class arhe
-  extends Handler
+  implements arhs
 {
-  arhe(arhb paramarhb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  arhe(arhd paramarhd) {}
   
-  public void handleMessage(Message paramMessage) {}
+  public void a(int paramInt)
+  {
+    this.a.a(this.a.d, paramInt);
+  }
 }
 
 

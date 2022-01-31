@@ -1,26 +1,65 @@
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Callable;
 
-final class awis
-  implements Comparator<awih>
+class awis
+  implements Callable<List<awij>>
 {
-  public int a(awih paramawih1, awih paramawih2)
+  awis(awiq paramawiq, int paramInt1, int paramInt2) {}
+  
+  public List<awij> a()
   {
-    long l1 = paramawih1.c();
-    long l2 = paramawih2.c();
-    if (l1 < l2) {}
-    do
+    Object localObject = awiq.a(this.jdField_a_of_type_Awiq).subList(this.jdField_a_of_type_Int, this.b);
+    ArrayList localArrayList = new ArrayList();
+    awij localawij;
+    if (localObject != null)
     {
-      return 1;
-      if (l1 > l2) {
-        return -1;
+      localObject = ((List)localObject).iterator();
+      if (((Iterator)localObject).hasNext())
+      {
+        localawij = (awij)((Iterator)localObject).next();
+        if (!this.jdField_a_of_type_Awiq.isCancelled()) {
+          break label141;
+        }
       }
-      l1 = paramawih1.b();
-      l2 = paramawih2.b();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
+      if (!awiq.a(this.jdField_a_of_type_Awiq).equals(awiq.b(this.jdField_a_of_type_Awiq))) {
+        localObject = localArrayList.iterator();
+      }
     }
-    return 0;
+    for (;;)
+    {
+      if (((Iterator)localObject).hasNext())
+      {
+        localawij = (awij)((Iterator)localObject).next();
+        if (!this.jdField_a_of_type_Awiq.isCancelled()) {}
+      }
+      else
+      {
+        return localArrayList;
+        label141:
+        localawij.a(awiq.a(this.jdField_a_of_type_Awiq));
+        if (localawij.c() == -9223372036854775808L) {
+          break;
+        }
+        int i = localArrayList.indexOf(localawij);
+        if (-1 == i)
+        {
+          localArrayList.add(localawij);
+          break;
+        }
+        if (((awij)localArrayList.get(i)).c() >= localawij.c()) {
+          break;
+        }
+        localArrayList.set(i, localawij);
+        break;
+      }
+      long l = localawij.c();
+      localawij.a(awiq.b(this.jdField_a_of_type_Awiq));
+      if (localawij.c() == -9223372036854775808L) {
+        localawij.a(l);
+      }
+    }
   }
 }
 

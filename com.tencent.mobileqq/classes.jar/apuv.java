@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface apuv
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void onClick(View paramView);
 }
 
 

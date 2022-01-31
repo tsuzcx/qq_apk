@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import behd;
-import beyu;
+import behu;
+import bezl;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,7 +14,7 @@ class JsPluginEngine$1
   
   public void run()
   {
-    Object localObject1 = behd.a;
+    Object localObject1 = behu.a;
     Object localObject2 = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
     if (localObject2 != null)
     {
@@ -26,7 +26,7 @@ class JsPluginEngine$1
     for (;;)
     {
       if ((localObject1 != null) && (((List)localObject1).contains(this.val$eventName))) {
-        beyu.a(this.val$miniAppInfo, this.val$eventName);
+        bezl.a(this.val$miniAppInfo, this.val$eventName);
       }
       return;
     }

@@ -20,15 +20,16 @@ final class bawd
         paramDownloadParams = paramBitmap;
       } while (!(localObject instanceof int[]));
       paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
+    } while (((int[])localObject).length != 2);
     paramDownloadParams = (int[])localObject;
-    if (paramDownloadParams[0] == 0) {
-      paramDownloadParams[0] = paramBitmap.getWidth();
+    float f2 = bbdh.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
     }
-    if (paramDownloadParams[1] == 0) {
-      paramDownloadParams[1] = paramBitmap.getHeight();
-    }
-    return bbdr.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    return bbef.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

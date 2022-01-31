@@ -1,42 +1,22 @@
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.qphone.base.util.QLog;
+
 public class vkf
+  implements bcww
 {
-  private static volatile vkf jdField_a_of_type_Vkf;
-  private vkg jdField_a_of_type_Vkg;
-  
-  public static vkf a()
+  public void a(BaseResp paramBaseResp)
   {
-    if (jdField_a_of_type_Vkf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Vkf == null) {
-        jdField_a_of_type_Vkf = new vkf();
-      }
-      return jdField_a_of_type_Vkf;
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Vkg = null;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Vkg != null) {
-      this.jdField_a_of_type_Vkg.a(paramString1, paramString2);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-  }
-  
-  public void a(vkg paramvkg)
-  {
-    this.jdField_a_of_type_Vkg = paramvkg;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Vkg != null) {
-      this.jdField_a_of_type_Vkg.U_();
+    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
+      this.jdField_a_of_type_Vke.a.runOnUiThread(new PKVideoSharer.2.1(this));
     }
   }
 }

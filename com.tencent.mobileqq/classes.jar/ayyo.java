@@ -1,13 +1,4 @@
-public class ayyo
-  extends ayyy
-{
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-}
+public abstract interface ayyo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

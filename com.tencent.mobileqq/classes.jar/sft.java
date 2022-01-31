@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
 class sft
-  implements View.OnClickListener
+  implements wxt
 {
-  sft(sfn paramsfn, int paramInt1, int paramInt2, String paramString) {}
+  sft(sfk paramsfk) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Sfn.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Sfn.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Sfn.a.dismiss();
+    if (this.a.a != null) {
+      this.a.k();
+    }
   }
 }
 

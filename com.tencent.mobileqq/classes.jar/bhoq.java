@@ -1,42 +1,20 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-public class bhoq
+final class bhoq
+  implements QQPermissionCallback
 {
-  private static Field a;
+  bhoq(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
   
-  private static void a(Throwable paramThrowable)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      if (a == null) {
-        a = Throwable.class.getDeclaredField("detailMessage");
-      }
-      a.setAccessible(true);
-      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
-      return;
-    }
-    catch (Throwable paramThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
-    }
+    bbdj.b(bhoo.a(this.jdField_a_of_type_AndroidAppActivity));
   }
   
-  public static final void a(Throwable paramThrowable, String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramThrowable == null) {
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = Log.getStackTraceString(paramThrowable);
-    }
-    a(paramThrowable);
-    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
-    axps.a(paramThrowable, str);
+    bhoo.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

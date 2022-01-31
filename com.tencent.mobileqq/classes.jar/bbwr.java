@@ -1,26 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import dualsim.common.IPhoneInfoBridge;
-
 public class bbwr
-  implements IPhoneInfoBridge
 {
-  public bbwr(KCWraperV2.1 param1) {}
+  public int a;
+  public String a;
   
-  public String a(String paramString)
+  public bbwr()
   {
-    if ("imei".equals(paramString)) {
-      return bfmw.a("a4bd32");
-    }
-    if ("imsi".equals(paramString)) {
-      return bfmw.b("a4bd32");
-    }
-    return "";
-  }
-  
-  public boolean isAllow(String paramString)
-  {
-    return !TextUtils.isEmpty(a(paramString));
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

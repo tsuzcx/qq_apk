@@ -3,7 +3,7 @@ package cooperation.liveroom;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
-import nam;
+import naj;
 
 final class LiveRoomHelper$1
   implements Runnable
@@ -15,7 +15,7 @@ final class LiveRoomHelper$1
     try
     {
       String str = "http://lme.gamefeeds.qq.com/LmeProxyCgi?data=" + URLEncoder.encode(new StringBuilder().append("{\"module\":\"LME.ReportChannelSvr.ReportChannelObj\",\"method\":\"SdkPluginReport\",\"param\":{\"req\":{\"report\":").append(this.val$reportStr).append("}}}").toString());
-      nam.a(BaseApplicationImpl.getApplication(), str, "GET", null, null);
+      naj.a(BaseApplicationImpl.getApplication(), str, "GET", null, null);
       return;
     }
     catch (Exception localException)

@@ -1,29 +1,16 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import java.util.List;
 
 public class qgj
-  implements View.OnTouchListener
+  extends osm
 {
-  public qgj(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  public qgj(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void c(List<TagInfo> paramList)
   {
-    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
-    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
-    {
-      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
-      if (paramMotionEvent.getRawX() >= f)
-      {
-        ReadInJoyVideoSearchTagFragment.a(this.a);
-        return true;
-      }
-    }
-    return false;
+    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
+    osj.a().b(this);
   }
 }
 

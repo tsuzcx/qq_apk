@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class EmoticonTab
-  extends aukm
+  extends auko
 {
   public boolean aioHave;
-  @auma
+  @aumc
   public String epId;
   public boolean kandianHave;
 }

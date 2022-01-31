@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class aosv
-  implements Comparator<FileManagerEntity>
+  implements Cloneable
 {
-  public aosv(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
   
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
-  {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
-    }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
-  }
+  public aosv(aost paramaost) {}
 }
 
 

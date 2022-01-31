@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.sdk;
 
-import ahiq;
+import ahio;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -59,7 +59,7 @@ public class MiniAppLauncher
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        ahiq.a(paramLaunchParam, null);
+        ahio.a(paramLaunchParam, null);
         return true;
       }
     }

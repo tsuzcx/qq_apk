@@ -1,17 +1,27 @@
+import android.view.View;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+
 class aeqn
-  implements xdl
+  implements bfub
 {
-  aeqn(aeqd paramaeqd) {}
+  aeqn(aeqb paramaeqb) {}
   
-  public void a()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.a.a(false, false, 4);
+    aeqb.a(this.a).setPullType(0);
+    aeqb.a(this.a).c(aeqb.i);
+    aeqb.a(this.a, 0, this.a.a.a());
   }
   
-  public void b()
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.a.a();
+    return false;
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

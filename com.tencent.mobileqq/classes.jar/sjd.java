@@ -1,34 +1,44 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import org.json.JSONObject;
 
 class sjd
-  implements URLDrawable.URLDrawableListener
+  implements aabi
 {
-  sjd(sjb paramsjb, String paramString, ImageView paramImageView) {}
+  sjd(sjc paramsjc) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    sne.c("813", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841262);
+    snb.d("WSQQConnectAuthManager", "getOpenIdAndAccessToken onFailure: " + paramInt + " , " + paramString);
+    sjc.a(this.a, false);
+    if (paramInt == 1) {
+      sjc.a(this.a);
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onPermission(int paramInt)
   {
-    sne.d("813", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841262);
+    snb.b("WSQQConnectAuthManager", "getOpenIdAndAccessToken onPermission: " + paramInt);
+    sjc.a(this.a, false);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    sjc.a(this.a);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    sne.a("813", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+    sjc.a(this.a, false);
+    if (paramJSONObject != null)
+    {
+      snb.b("WSQQConnectAuthManager", "getOpenIdAndAccessToken onSuccess: " + paramJSONObject.toString());
+      sjc.a(this.a, paramJSONObject);
+    }
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    sjb.a(this.jdField_a_of_type_Sjb, paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetImageView);
-    skt.b(3);
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

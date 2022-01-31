@@ -1,15 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class ayjg
-  implements View.OnClickListener
 {
-  ayjg(ayjf paramayjf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

@@ -1,49 +1,189 @@
-import GIFT_MALL_PROTOCOL.doufu_piece_req;
-import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
+import com.tencent.upload.uinterface.IUploadEnv;
+import com.tencent.upload.uinterface.IUploadSoLoader;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.Native;
+import cooperation.qzone.util.QZLog;
 
-public class bhbo
-  extends QzoneExternalRequest
+public final class bhbo
+  implements IUploadEnv, IUploadSoLoader
 {
-  private doufu_piece_req a;
+  bhbq jdField_a_of_type_Bhbq = new bhbq();
+  private volatile boolean jdField_a_of_type_Boolean = true;
   
-  public bhbo(long paramLong, Map<String, String> paramMap)
+  public bhbo()
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new doufu_piece_req(paramLong, paramMap);
+    this.jdField_a_of_type_Bhbq.a();
   }
   
-  public static doufu_piece_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  public static int a(int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    if (!a(paramInt)) {
+      return 1;
     }
-    do
+    try
     {
-      return paramArrayOfByte;
-      paramArrayOfInt = (doufu_piece_rsp)decode(paramArrayOfByte, "getDofuPieceInfo", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+      paramInt = com.tencent.upload.network.NetworkState.getNetworkStackType();
+      return paramInt;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      QZLog.e("UploadEnv", "getIpStack error", localUnsatisfiedLinkError);
+    }
+    return 1;
   }
   
-  public String getCmdString()
+  private static NetworkInfo a(Context paramContext)
   {
-    return "QzoneNewService.getDofuPieceInfo";
+    try
+    {
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (localNetworkInfo == null) {}
+      for (paramContext = "getActiveNetworkInfo null";; paramContext = localNetworkInfo.toString())
+      {
+        QLog.d("UploadEnv", 1, paramContext);
+        return localNetworkInfo;
+      }
+      return null;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.d("UploadEnv", 1, "fail to get active network info " + paramContext.toString());
+    }
   }
   
-  public JceStruct getReq()
+  public static boolean a(int paramInt)
   {
-    return this.a;
+    int i = QzoneConfig.getInstance().getConfig("QzoneUploadSetting", "UploadEnableV6RouteForAll", 7);
+    if (paramInt != 1) {
+      QZLog.d("UploadEnv", 1, "enableV6Switch:" + (i >> paramInt & 0x1) + " type:" + paramInt);
+    }
+    return (i >> paramInt & 0x1) == 1;
   }
   
-  public String uniKey()
+  public static boolean a(Context paramContext)
   {
-    return "getDofuPieceInfo";
+    paramContext = a(paramContext);
+    return (paramContext != null) && (paramContext.isConnected());
+  }
+  
+  public String getApnName()
+  {
+    return cooperation.qzone.util.NetworkState.getAPN();
+  }
+  
+  public String getBSSID()
+  {
+    return bbdh.b(BaseApplication.getContext());
+  }
+  
+  public int getBatchControlCount()
+  {
+    return 8;
+  }
+  
+  public int getCurrentNetworkCategory()
+  {
+    switch ()
+    {
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 4: 
+      return 6;
+    case 5: 
+      return 7;
+    case 3: 
+      return 2;
+    }
+    return 3;
+  }
+  
+  public int getFileConcurrentCount()
+  {
+    return 3;
+  }
+  
+  public int getMobileOperatorCategory()
+  {
+    switch ()
+    {
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    }
+    return 3;
+  }
+  
+  public String getProviderName()
+  {
+    return cooperation.qzone.util.NetworkState.getProviderName();
+  }
+  
+  public String getSDKPrivatePath(String paramString)
+  {
+    return bbvj.a(paramString);
+  }
+  
+  public String getSoVersion()
+  {
+    return "v1.3";
+  }
+  
+  public int getSocketCount()
+  {
+    return 2;
+  }
+  
+  public boolean isAvailable()
+  {
+    boolean bool = cooperation.qzone.util.NetworkState.isNetSupport();
+    this.jdField_a_of_type_Boolean = a(BaseApplication.getContext());
+    QLog.d("upload2:", 2, "msf network isAvailable:" + bool + " observer:" + this.jdField_a_of_type_Boolean);
+    return (bool) && (this.jdField_a_of_type_Boolean);
+  }
+  
+  public boolean isMobile()
+  {
+    return cooperation.qzone.util.NetworkState.isMobile();
+  }
+  
+  public boolean isWap()
+  {
+    return cooperation.qzone.util.NetworkState.isWap();
+  }
+  
+  public boolean isWifi()
+  {
+    return cooperation.qzone.util.NetworkState.isWifiConn();
+  }
+  
+  public boolean loadLibrary(String paramString)
+  {
+    boolean bool = this.jdField_a_of_type_Bhbq.a(paramString);
+    QLog.d("UploadEnv", 1, "useDownloadedSo " + bool);
+    if (bool) {
+      return true;
+    }
+    QLog.d("UploadEnv", 1, "loadLibrary " + paramString);
+    return Native.a(paramString, BaseApplication.getContext());
+  }
+  
+  public void registerNetworkStateObserver(UploadConfiguration.NetworkStateObserver paramNetworkStateObserver)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "registerNetworkStateObserver");
+    }
+    cooperation.qzone.util.NetworkState.addListener(new bhbp(this, paramNetworkStateObserver));
   }
 }
 

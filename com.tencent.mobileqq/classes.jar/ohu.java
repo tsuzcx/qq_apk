@@ -1,20 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import java.util.List;
+import android.view.View;
 
-public class ohu
-  implements ojs
+class ohu
+  implements bfph
 {
-  public ohu(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  ohu(ohs paramohs, oif paramoif, bfpc parambfpc) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oii> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
-  
-  public void onCommentStateError(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 1002) {
-      ReadInJoySecondCommentListFragment.a(this.a, true);
+    switch (paramInt)
+    {
     }
-    if (paramInt == 1003) {
-      wim.a(1, 2131718358);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.jdField_a_of_type_Ohs.a().a(this.jdField_a_of_type_Oif, this.jdField_a_of_type_Ohs.c);
+      this.jdField_a_of_type_Ohs.notifyDataSetChanged();
     }
   }
 }

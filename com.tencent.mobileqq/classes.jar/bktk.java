@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.12;
 
 public class bktk
   implements DialogInterface.OnClickListener
 {
-  public bktk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bktk(ShortVideoPlayActivity.12 param12) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.this$0.s();
   }
 }
 

@@ -1,37 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 
 public class ahah
-  implements agwp
+  implements AnimationView.MyAnimationListener
 {
   public ahah(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void a()
-  {
-    ThemeHbFragment.a(this.a, null);
-  }
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
   
-  public void a(Object paramObject)
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
+  
+  public void onAnimationStart(AnimationView paramAnimationView)
   {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
+    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
+      ThemeHbFragment.a(this.a).removeViewAt(0);
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
-      }
-    } while (!(paramObject instanceof Drawable));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
-    }
-    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

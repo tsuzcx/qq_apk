@@ -1,21 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class absy
-  implements Handler.Callback
+  extends atzn
 {
   public absy(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.c();
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
     }
   }
 }

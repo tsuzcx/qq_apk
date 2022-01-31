@@ -1,52 +1,71 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.HashSet;
-
 public class tfb
 {
-  final int jdField_a_of_type_Int;
-  public final Bundle a;
-  String jdField_a_of_type_JavaLangString = "";
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = true;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public tfb(int paramInt)
+  public tfb(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public static tfb a()
+  public boolean equals(Object paramObject)
   {
-    return new tfb(20);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      a();
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (tfb)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.c != null)
+    {
+      bool1 = bool2;
+      if (this.c.equals(paramObject.c)) {}
+    }
+    for (boolean bool1 = false;; bool1 = bool2)
+    {
+      return bool1;
+      if (paramObject.c != null) {
+        break;
+      }
     }
   }
   
-  public boolean a()
+  public int hashCode()
   {
-    return this.jdField_a_of_type_Boolean;
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.c != null) {}
+    for (int i = this.c.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
   }
   
-  public boolean b()
+  public String toString()
   {
-    return this.jdField_b_of_type_Boolean;
+    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
   }
 }
 

@@ -1,59 +1,20 @@
-import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnClickListener;
 
-public class aggf
-  implements adih
+class aggf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private adgd jdField_a_of_type_Adgd;
-  private aggy jdField_a_of_type_Aggy;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  aggf(agge paramagge) {}
   
-  aggf(aggy paramaggy)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Aggy = paramaggy;
-  }
-  
-  private ListView a()
-  {
-    return this.jdField_a_of_type_Aggy.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    if (agge.a(this.a) != null)
     {
-    default: 
-    case 2: 
-    case 4: 
-    case 17: 
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_Adgd = new adgd();
-          return;
-        } while (this.b);
-        this.b = true;
-        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Adgd.b(this.jdField_a_of_type_Aggy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-      return;
+      agge.a(this.a).onClick(agge.a(this.a));
+      return true;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Adgd = null;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 4, 11, 17, 10 };
+    return false;
   }
 }
 

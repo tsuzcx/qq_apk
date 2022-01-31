@@ -1,18 +1,29 @@
-import android.text.TextUtils;
+import android.os.Build.VERSION;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class nsh
   implements View.OnClickListener
 {
-  nsh(nsf paramnsf, String paramString) {}
+  nsh(nsc paramnsc) {}
   
   public void onClick(View paramView)
   {
-    if ((nsf.a(this.jdField_a_of_type_Nsf) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      onk.a(nsf.a(this.jdField_a_of_type_Nsf).getContext(), this.jdField_a_of_type_JavaLangString);
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
+    paramView = (BaseActivity)paramView.getContext();
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (paramView.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION"))
+      {
+        nsc.a(this.a, true);
+        return;
+      }
+      paramView.requestPermissions(new nsi(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
     }
+    nsc.a(this.a, 5);
   }
 }
 

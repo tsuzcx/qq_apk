@@ -1,236 +1,78 @@
-import android.text.TextUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amsj
+  extends ampa<amsi>
 {
-  public String A = "";
-  public String B = "";
-  public String C = "";
-  public String D = "";
-  public String E = "";
-  public String F = "";
-  public String G = "";
-  public String H = "";
-  public String I = "";
-  public String J = "";
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
-  public String w = "";
-  public String x = "";
-  public String y = "";
-  public String z = "";
-  
-  public amsj()
+  @NonNull
+  public static amsi a()
   {
-    this.jdField_a_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083";
-    this.jdField_b_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 80;
-    this.jdField_b_of_type_Int = 100;
-    this.jdField_c_of_type_Int = 80;
+    amsi localamsi2 = (amsi)ampl.a().a(455);
+    amsi localamsi1 = localamsi2;
+    if (localamsi2 == null) {
+      localamsi1 = new amsi();
+    }
+    return localamsi1;
   }
   
-  public static amsj a(String paramString)
+  public int a()
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    return 455;
+  }
+  
+  @NonNull
+  public amsi a(int paramInt)
+  {
+    return new amsi();
+  }
+  
+  @Nullable
+  public amsi a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      amsj localamsj = new amsj();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("isUpgradeOpen", 0) == 1) {}
-      for (;;)
-      {
-        localamsj.jdField_a_of_type_Boolean = bool;
-        localamsj.jdField_a_of_type_JavaLangString = paramString.optString("managePageURL", "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083");
-        if (TextUtils.isEmpty(localamsj.jdField_a_of_type_JavaLangString)) {
-          localamsj.jdField_a_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/list?_wv=83886083";
-        }
-        localamsj.jdField_b_of_type_JavaLangString = paramString.optString("bindPageURL", "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083");
-        if (TextUtils.isEmpty(localamsj.jdField_b_of_type_JavaLangString)) {
-          localamsj.jdField_b_of_type_JavaLangString = "https://ti.qq.com/hybrid-h5/intimate/launch?_wv=83886083";
-        }
-        Object localObject;
-        JSONArray localJSONArray;
-        if (paramString.has("bgImg"))
-        {
-          localObject = paramString.optJSONObject("bgImg");
-          if ((localObject != null) && (((JSONObject)localObject).has("relationNo")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationNo");
-            if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-              localamsj.jdField_c_of_type_JavaLangString = localJSONArray.getString(0);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localamsj.d = localJSONArray.getString(0);
-              localamsj.e = localJSONArray.getString(1);
-              localamsj.f = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localamsj.g = localJSONArray.getString(0);
-              localamsj.h = localJSONArray.getString(1);
-              localamsj.i = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
-          {
-            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
-            {
-              localamsj.j = ((JSONArray)localObject).getString(0);
-              localamsj.k = ((JSONArray)localObject).getString(1);
-              localamsj.l = ((JSONArray)localObject).getString(2);
-            }
-          }
-        }
-        if (paramString.has("darkBgImg"))
-        {
-          localObject = paramString.optJSONObject("darkBgImg");
-          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localamsj.m = localJSONArray.getString(0);
-              localamsj.n = localJSONArray.getString(1);
-              localamsj.o = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localamsj.p = localJSONArray.getString(0);
-              localamsj.q = localJSONArray.getString(1);
-              localamsj.r = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
-          {
-            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
-            {
-              localamsj.s = ((JSONArray)localObject).getString(0);
-              localamsj.t = ((JSONArray)localObject).getString(1);
-              localamsj.u = ((JSONArray)localObject).getString(2);
-            }
-          }
-        }
-        if (paramString.has("shareImg"))
-        {
-          localObject = paramString.optJSONObject("shareImg");
-          if ((localObject != null) && (((JSONObject)localObject).has("relationNo")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationNo");
-            if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-              localamsj.v = localJSONArray.getString(0);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationGuimi")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationGuimi");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localamsj.w = localJSONArray.getString(0);
-              localamsj.x = localJSONArray.getString(1);
-              localamsj.y = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationJiyou")))
-          {
-            localJSONArray = ((JSONObject)localObject).optJSONArray("relationJiyou");
-            if ((localJSONArray != null) && (localJSONArray.length() > 2))
-            {
-              localamsj.z = localJSONArray.getString(0);
-              localamsj.A = localJSONArray.getString(1);
-              localamsj.B = localJSONArray.getString(2);
-            }
-          }
-          if ((localObject != null) && (((JSONObject)localObject).has("relationLover")))
-          {
-            localObject = ((JSONObject)localObject).optJSONArray("relationLover");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 2))
-            {
-              localamsj.C = ((JSONArray)localObject).getString(0);
-              localamsj.D = ((JSONArray)localObject).getString(1);
-              localamsj.E = ((JSONArray)localObject).getString(2);
-            }
-          }
-        }
-        if (paramString.has("scoreAnimation")) {
-          localamsj.H = paramString.optString("scoreAnimation");
-        }
-        if (paramString.has("scoreAnimationMd5")) {
-          localamsj.I = paramString.optString("scoreAnimationMd5");
-        }
-        if (paramString.has("scoreRuleURL")) {
-          localamsj.J = paramString.optString("scoreRuleURL");
-        }
-        if (paramString.has("scoreDisplayIntimateMin")) {
-          localamsj.jdField_a_of_type_Int = paramString.optInt("scoreDisplayIntimateMin");
-        }
-        if (paramString.has("scoreDisplayFriendMin")) {
-          localamsj.jdField_b_of_type_Int = paramString.optInt("scoreDisplayFriendMin");
-        }
-        if (paramString.has("scoreDisplayFriendMin818")) {
-          localamsj.jdField_c_of_type_Int = paramString.optInt("scoreDisplayFriendMin818");
-        }
-        localamsj.F = paramString.optString("gifNormalUrl");
-        localamsj.G = paramString.optString("gifNightUrl");
-        return localamsj;
-        bool = false;
+      amsi localamsi = amsi.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      return null;
+      return localamsi;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    return new amsi();
+  }
+  
+  public Class<amsi> a()
+  {
+    return amsi.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
     }
   }
   
-  public String toString()
+  public void a(amsi paramamsi)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FriendIntimateRelationshipBean isUpgradeOpen:").append(this.jdField_a_of_type_Boolean).append(" managePageURL:").append(this.jdField_a_of_type_JavaLangString).append(" bindPageURL:").append(this.jdField_b_of_type_JavaLangString).append(" relationNoBgUrl:").append(this.jdField_c_of_type_JavaLangString).append(" relationGuimiBg0Url:").append(this.d).append(" relationGuimiBg1Url:").append(this.e).append(" relationGuimiBg2Url:").append(this.f).append(" relationJiyouBg0Url:").append(this.g).append(" relationJiyouBg1Url:").append(this.h).append(" relationJiyouBg2Url:").append(this.i).append(" relationLoverBg0Url:").append(this.j).append(" relationLoverBg1Url:").append(this.k).append(" relationLoverBg2Url:").append(this.l).append(" relationGuimiDarkBg0Url:").append(this.m).append(" relationGuimiDarkBg1Url:").append(this.n).append(" relationGuimiDarkBg2Url:").append(this.o).append(" relationJiyouDarkBg0Url:").append(this.p).append(" relationJiyouDarkBg1Url:").append(this.q).append(" relationJiyouDarkBg2Url:").append(this.r).append(" relationLoverDarkBg0Url:").append(this.s).append(" relationLoverDarkBg1Url:").append(this.t).append(" relationLoverDarkBg2Url:").append(this.u).append(" relationNoShareUrl:").append(this.v).append(" relationGuimiShare0Url:").append(this.w).append(" relationGuimiShare1Url:").append(this.x).append(" relationGuimiShare2Url:").append(this.y).append(" relationJiyouShare0Url:").append(this.z).append(" relationJiyouShare1Url:").append(this.A).append(" relationJiyouShare2Url:").append(this.B).append(" relationLoverShare0Url:").append(this.C).append(" relationLoverShare1Url:").append(this.D).append(" relationLoverShare2Url:").append(this.E).append(" gifNormalUrl:").append(this.F).append(" gifNightUrl:").append(this.G);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramamsi);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

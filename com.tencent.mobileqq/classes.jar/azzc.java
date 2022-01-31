@@ -1,20 +1,16 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class azzc
-  extends CountDownTimer
+  implements View.OnClickListener
 {
-  public azzc(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
-  {
-    super(paramLong1, paramLong2);
-  }
+  public azzc(ReciteFragment paramReciteFragment) {}
   
-  public void onFinish()
+  public void onClick(View paramView)
   {
-    ReciteRecordLayout.a(this.a);
+    this.a.m();
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 

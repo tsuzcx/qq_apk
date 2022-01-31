@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
+import ajya;
 import android.text.TextUtils;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
@@ -14,7 +14,7 @@ public class MessageForTroopPobing
   
   public static String buildCompatibleText()
   {
-    return ajyc.a(2131706611);
+    return ajya.a(2131706622);
   }
   
   public void doParse()
@@ -32,7 +32,7 @@ public class MessageForTroopPobing
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return ajyc.a(2131706570);
+      return ajya.a(2131706581);
     }
     return this.msg;
   }

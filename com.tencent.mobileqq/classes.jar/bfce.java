@@ -1,39 +1,14 @@
-import com.qflutter.log.qflutter_log.QflutterLogPlugin.Log;
-
-class bfce
-  implements QflutterLogPlugin.Log
+public abstract interface bfce
 {
-  bfce(bfca parambfca) {}
+  public abstract String a(String paramString1, String paramString2, behp parambehp, int paramInt);
   
-  public void d(String paramString)
-  {
-    besl.a("miniapp-TISSUE", paramString);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void e(String paramString)
-  {
-    besl.d("miniapp-TISSUE", paramString);
-  }
+  public abstract void b(String paramString1, String paramString2, int paramInt);
   
-  public int getLogLevel()
-  {
-    return 5;
-  }
+  public abstract void c(String paramString1, String paramString2, int paramInt);
   
-  public void i(String paramString)
-  {
-    besl.b("miniapp-TISSUE", paramString);
-  }
-  
-  public void v(String paramString)
-  {
-    besl.a("miniapp-TISSUE", paramString);
-  }
-  
-  public void w(String paramString)
-  {
-    besl.c("miniapp-TISSUE", paramString);
-  }
+  public abstract void d(String paramString1, String paramString2, int paramInt);
 }
 
 

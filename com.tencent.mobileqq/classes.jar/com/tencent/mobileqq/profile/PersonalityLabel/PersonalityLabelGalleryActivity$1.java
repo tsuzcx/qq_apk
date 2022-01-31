@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.content.res.Resources;
-import bbev;
+import bbfj;
 
 public class PersonalityLabelGalleryActivity$1
   implements Runnable
@@ -14,10 +14,10 @@ public class PersonalityLabelGalleryActivity$1
     if (!this.this$0.isFinishing())
     {
       this.this$0.a(this.a, false);
-      if (bbev.d(this.this$0)) {
+      if (bbfj.d(this.this$0)) {
         break label101;
       }
-      PersonalityLabelGalleryActivity.a(this.this$0, this.this$0.getResources().getString(2131694607));
+      PersonalityLabelGalleryActivity.a(this.this$0, this.this$0.getResources().getString(2131694608));
       if ((this.a == null) || (this.a.getSize() <= 0)) {
         break label91;
       }

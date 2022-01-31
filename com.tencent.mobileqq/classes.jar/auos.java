@@ -1,301 +1,208 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.os.Build;
+import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.image.SafeBitmapFactory;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public abstract class auos
+public class auos
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f;
-  public static int g = 960;
-  public static int h = 960;
-  public static int i = 960;
-  public static int j = 960;
-  CompressInfo a;
-  protected String a;
-  protected int k;
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131691009);
+  private static List<String> jdField_a_of_type_JavaUtilList;
   
-  static
+  public static int a(int paramInt)
   {
-    jdField_a_of_type_Int = 80;
-    b = 70;
-    c = 80;
-    d = 960;
-    e = 1920;
-    jdField_f_of_type_Int = 960;
+    switch (paramInt)
+    {
+    case 0: 
+    case 1: 
+    default: 
+      return 0;
+    }
+    return 2;
   }
   
-  auos(CompressInfo paramCompressInfo)
+  private static auou a(CompressInfo paramCompressInfo)
   {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    if ((paramCompressInfo == null) || (TextUtils.isEmpty(paramCompressInfo.c))) {
-      throw new IllegalArgumentException("info == null || TextUtils.isEmpty(info.srcPath)");
+    if (paramCompressInfo != null) {}
+    switch (paramCompressInfo.jdField_f_of_type_Int)
+    {
+    default: 
+      return null;
+    case 0: 
+      if (paramCompressInfo.jdField_a_of_type_Int == 1035) {
+        return new auoz(paramCompressInfo);
+      }
+      if (paramCompressInfo.jdField_a_of_type_Int == 1036) {
+        return new auow(paramCompressInfo);
+      }
+      return new auoy(paramCompressInfo);
+    case 1: 
+      return new auox(paramCompressInfo);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = paramCompressInfo;
-    int m = a(paramCompressInfo);
-    this.k = m;
-    if (m == -1) {
-      throw new IllegalArgumentException("create PicQuality is Fail");
-    }
+    return new auov(paramCompressInfo);
   }
   
-  private int a(String paramString1, String paramString2, boolean paramBoolean)
+  private static void a(CompressInfo paramCompressInfo, boolean paramBoolean)
   {
-    int m = 1;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (!bbdj.b(paramString1))) {
-      aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " sampleCompress()", " infilePath is empty, or outfilePath is empty, or file does not exist. infilePath:" + paramString1 + " outfilePath:" + paramString2);
+    if ((paramCompressInfo == null) || (TextUtils.isEmpty(paramCompressInfo.c)) || (TextUtils.isEmpty(paramCompressInfo.jdField_e_of_type_JavaLangString))) {
+      aung.b("CompressOperator", " checkAndLog()", "info == null || TextUtils.isEmpty(info.srcPath) || TextUtils.isEmpty(info.destPath)");
     }
-    BitmapFactory.Options localOptions;
+    long l1;
+    long l2;
     do
     {
-      return 0;
-      localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = false;
-      localOptions.inSampleSize = 2;
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      try
+      do
       {
-        Bitmap localBitmap3 = SafeBitmapFactory.decodeFile(paramString1, localOptions);
-        Bitmap localBitmap1 = localBitmap3;
-        if (localBitmap3 != null) {
+        return;
+        aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", paramCompressInfo.toString());
+        if (!paramCompressInfo.jdField_a_of_type_Boolean) {
           break;
         }
-        aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " sampleCompress()", " bm == null, maybe is broken");
-        return 0;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(true);
-        aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " sampleCompress()", " decodeFile OutOfMemoryError, sampleCnt:" + 1 + " oomKeepCompress:" + paramBoolean);
-      }
-    } while (!paramBoolean);
-    localOptions.inSampleSize = 4;
-    for (;;)
+      } while (paramBoolean);
+      l1 = aupa.a(paramCompressInfo.c);
+      l2 = aupa.a(paramCompressInfo.jdField_e_of_type_JavaLangString);
+      aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "src File size:" + l1);
+      aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "dest File size:" + l2);
+    } while ((l1 <= 0L) || (l2 <= l1));
+    if (agvn.c(paramCompressInfo.c))
     {
-      try
-      {
-        Bitmap localBitmap2 = SafeBitmapFactory.decodeFile(paramString1, localOptions);
-        m = 2;
-        paramBoolean = auoy.a(paramString2, localBitmap2, a(), this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
-        if (localBitmap2 != null) {
-          localBitmap2.recycle();
-        }
-        if (paramBoolean) {
-          return m;
-        }
-      }
-      catch (OutOfMemoryError paramString1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(false);
-        paramString1.printStackTrace();
-        aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " sampleCompress()", " oomKeepCompress decodeFile OutOfMemoryError, sampleCnt:" + 2);
-        return 0;
-      }
-      m = 0;
+      aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "src is incompatible ,keep compress file");
+      return;
     }
-  }
-  
-  protected int a()
-  {
-    int m;
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.g == 2) {
-      m = 100;
-    }
-    for (;;)
+    if (l1 > 1024L)
     {
-      aune.a(this.jdField_a_of_type_JavaLangString, "getCompressQuality", "compressQuality = " + m);
-      return m;
-      switch (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.h)
-      {
-      case 2: 
-      case 3: 
-      default: 
-        m = b;
-        break;
-      case 1: 
-        m = jdField_a_of_type_Int;
-        break;
-      case 4: 
-        m = c;
+      bbdx.b(paramCompressInfo.c);
+      aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", jdField_a_of_type_JavaLangString);
+      paramCompressInfo.jdField_f_of_type_JavaLangString = ("CompressOperator" + paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()" + jdField_a_of_type_JavaLangString);
+      bbdx.d(paramCompressInfo.jdField_e_of_type_JavaLangString);
+      if (jdField_a_of_type_JavaUtilList == null) {
+        jdField_a_of_type_JavaUtilList = new ArrayList();
       }
+      if (!jdField_a_of_type_JavaUtilList.contains(paramBoolean + paramCompressInfo.c)) {
+        jdField_a_of_type_JavaUtilList.add(paramBoolean + paramCompressInfo.c);
+      }
+      paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+      aung.b("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", " destSize > srcSize, info.destPath = info.srcPath");
+      return;
     }
+    aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "src length is too small");
+    paramBoolean = "MI 6".equals(Build.MODEL);
+    axrn.a(BaseApplication.getContext()).a(null, "SendPicSrcProblem", paramBoolean, 0L, l1, null, "");
+    return;
+    paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+    aung.b("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "info.isSuccess = false, info.destPath = info.srcPath");
   }
   
-  protected abstract int a(CompressInfo paramCompressInfo);
-  
-  final boolean a()
+  public static boolean a(CompressInfo paramCompressInfo)
   {
-    if (this.k == 2) {
-      return c();
+    boolean bool1;
+    if (paramCompressInfo == null) {
+      bool1 = false;
     }
-    return d();
-  }
-  
-  final int b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.h == 1) {
-      return 20971520;
-    }
-    return 4194304;
-  }
-  
-  final boolean b()
-  {
+    long l1;
     boolean bool2;
-    if (!bbdj.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c))
+    do
     {
-      aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " startThumbnail()", " src file does not exist");
-      bool2 = false;
-    }
-    for (;;)
-    {
-      return bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString == null)
+      return bool1;
+      aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " CompressOperator.start()", "processName = " + BaseApplicationImpl.sApplication.getQQProcessName() + ",srcPath = " + paramCompressInfo.c);
+      l1 = System.currentTimeMillis();
+      int i = aabg.a().a(0, 1, 1, Process.myTid(), 2000, 203, 128L, Process.myTid(), "sendPic", true);
+      bool2 = a(paramCompressInfo, false);
+      long l2 = System.currentTimeMillis();
+      paramCompressInfo = null;
+      if (aabg.a().a())
       {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString))
-        {
-          aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " startThumbnail()", " destPath is empty");
-          return false;
-        }
+        paramCompressInfo = new HashMap();
+        paramCompressInfo.put("hcState", String.valueOf(aabg.a().a()));
+        paramCompressInfo.put("model", Build.MODEL);
       }
-      if ((bbdj.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Boolean))
+      axrn.a(BaseApplication.getContext()).a(null, "AIOPicCompress", bool2, l2 - l1, 0L, paramCompressInfo, "");
+      if (i != 0) {
+        aabg.a().a(i);
+      }
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("CompressOperator", 2, "pic compress cost=" + (System.currentTimeMillis() - l1));
+    return bool2;
+  }
+  
+  private static boolean a(CompressInfo paramCompressInfo, boolean paramBoolean)
+  {
+    if ((paramCompressInfo == null) || (!bbdx.b(paramCompressInfo.c)))
+    {
+      aung.b("CompressOperator", " startImpl()", "info == null || TextUtils.isEmpty(info.srcPath)");
+      return false;
+    }
+    Object localObject;
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.contains(paramBoolean + paramCompressInfo.c)))
+    {
+      aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " startImpl()", jdField_a_of_type_JavaLangString);
+      paramCompressInfo.jdField_f_of_type_JavaLangString = ("CompressOperator" + paramCompressInfo.jdField_a_of_type_JavaLangString + " startImpl()" + jdField_a_of_type_JavaLangString);
+      paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramCompressInfo.jdField_e_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+      paramCompressInfo.d = ((BitmapFactory.Options)localObject).outWidth;
+      paramCompressInfo.jdField_e_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
+      return true;
+    }
+    paramCompressInfo.h = bbfj.b(BaseApplication.getContext());
+    if (aupa.a(paramCompressInfo.c))
+    {
+      paramCompressInfo.jdField_f_of_type_Int = 2;
+      if (QLog.isColorLevel()) {
+        aung.a("CompressOperator", " startImpl()", "info:" + paramCompressInfo);
+      }
+      localObject = a(paramCompressInfo);
+      if (!paramBoolean) {
+        break label341;
+      }
+    }
+    label341:
+    for (boolean bool = ((auou)localObject).b();; bool = ((auou)localObject).a())
+    {
+      paramCompressInfo.jdField_a_of_type_Boolean = bool;
+      a(paramCompressInfo, paramBoolean);
+      if (paramCompressInfo.jdField_e_of_type_JavaLangString != null)
       {
-        aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " startThumbnail()", " destPath exist. return true");
-        return true;
+        localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       }
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Int == 2) {}
-        for (bool1 = auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.d, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_ComTencentMobileqqDataThumbWidthHeightDP);; bool1 = auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.d, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_ComTencentMobileqqDataThumbWidthHeightDP))
-        {
-          bool2 = bool1;
-          if (bool1) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-          aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " startThumbnail()", " compressAIOThumbnail is failed");
-          return bool1;
-        }
+        bbef.a(paramCompressInfo.jdField_e_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        paramCompressInfo.d = ((BitmapFactory.Options)localObject).outWidth;
+        paramCompressInfo.jdField_e_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
+        return paramCompressInfo.jdField_a_of_type_Boolean;
       }
-      catch (Exception localException)
+      catch (OutOfMemoryError paramCompressInfo) {}
+      if (PhotoUtils.a(paramCompressInfo.c))
       {
-        for (;;)
-        {
-          localException.printStackTrace();
-          aune.b(this.jdField_a_of_type_JavaLangString, "startThumbnail()", localException.getMessage());
-          boolean bool1 = false;
-        }
+        paramCompressInfo.jdField_f_of_type_Int = 1;
+        break;
       }
+      paramCompressInfo.jdField_f_of_type_Int = 0;
+      break;
     }
+    return false;
   }
   
-  final boolean c()
+  public static boolean b(CompressInfo paramCompressInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.g == 2) {
-      if (auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c) <= ayxc.a())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c;
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + ajyc.a(2131708165));
-        aune.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", ajyc.a(2131708164));
-        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Int != 2) {
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_Boolean = true;
-        }
-      }
+    if (paramCompressInfo == null) {
+      return false;
     }
-    for (;;)
-    {
-      return true;
-      aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", ajyc.a(2131708169));
-      continue;
-      int m = b();
-      if (auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c) > m)
-      {
-        aune.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", " src file size > max, file size:" + auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c) + " max:" + m);
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.g);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString))
-        {
-          aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", " destPath is empty");
-          return false;
-        }
-        if (bbdj.b(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString))
-        {
-          aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", " destPath exist. return true");
-          return true;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.i = 0;
-        int n = a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, true);
-        if (n != 0)
-        {
-          Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-          ((CompressInfo)localObject1).i = (n + ((CompressInfo)localObject1).i);
-          if (auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString) > m)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.i >= 2)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(false);
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress() 面积是原来的1/16，不能再小了fileSize:" + auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString) + " max:" + m);
-              aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", " 面积是原来的1/16，不能再小了fileSize:" + auoy.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString) + " max:" + m);
-              bbdj.d(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-              return false;
-            }
-            Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString;
-            localObject1 = (String)localObject2 + "_second";
-            this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-            n = a((String)localObject2, (String)localObject1, false);
-            bbdj.d((String)localObject2);
-            if (n != 0)
-            {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-              ((CompressInfo)localObject2).i = (n + ((CompressInfo)localObject2).i);
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = ((String)localObject1);
-              if (auoy.a((String)localObject1) > m)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a(false);
-                this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()" + ajyc.a(2131708170) + auoy.a((String)localObject1) + " max:" + m);
-                aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", ajyc.a(2131708171) + auoy.a((String)localObject1) + " max:" + m);
-                bbdj.d(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
-                this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-                return false;
-              }
-            }
-            else
-            {
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-              this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()" + ajyc.a(2131708168));
-              aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", ajyc.a(2131708166));
-              return false;
-            }
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = "";
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress() sampleCompress failed");
-          aune.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", " sampleCompress failed");
-          return false;
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c;
-        this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + ajyc.a(2131708172));
-        aune.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString + " commonCompress()", ajyc.a(2131708167));
-        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_f_of_type_Int != 2) {
-          this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_Boolean = true;
-        }
-      }
-    }
+    aung.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " startThumbnail()", "");
+    return a(paramCompressInfo, true);
   }
-  
-  protected abstract boolean d();
 }
 
 

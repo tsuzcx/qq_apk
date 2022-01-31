@@ -1,15 +1,15 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import nna;
+import nmx;
 
 class PublicAccountImageCollectionPreloadManager$3
   implements Runnable
 {
-  PublicAccountImageCollectionPreloadManager$3(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, nna paramnna, String paramString) {}
+  PublicAccountImageCollectionPreloadManager$3(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, nmx paramnmx, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nna.a(this.jdField_a_of_type_JavaLangString, "", 0, 1);
+    this.jdField_a_of_type_Nmx.a(this.jdField_a_of_type_JavaLangString, "", 0, 1);
   }
 }
 

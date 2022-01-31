@@ -1,60 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anbd
-  extends ampb<anbc>
 {
-  public static anbc a()
-  {
-    return (anbc)ampm.a().a(334);
-  }
+  private String jdField_a_of_type_JavaLangString = ajya.a(2131714846);
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String b = "";
   
-  public int a()
+  public static anbd a(amph[] paramArrayOfamph)
   {
-    return 334;
-  }
-  
-  @NonNull
-  public anbc a(int paramInt)
-  {
-    return new anbc();
-  }
-  
-  @Nullable
-  public anbc a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anbc.a(paramArrayOfampi);
+    int i = 0;
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
+    anbd localanbd = new anbd();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
+      JSONArray localJSONArray = paramArrayOfamph.getJSONArray("suffix");
+      while (i < localJSONArray.length())
+      {
+        localanbd.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
+        i += 1;
+      }
+      localanbd.jdField_a_of_type_JavaLangString = paramArrayOfamph.getString("title");
+      localanbd.b = paramArrayOfamph.getString("desc");
+      return localanbd;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      paramArrayOfamph.printStackTrace();
+    }
+    return localanbd;
   }
   
-  public Class<anbc> a()
+  public String a()
   {
-    return anbc.class;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(int paramInt)
+  public List<String> a()
   {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anbc paramanbc) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 

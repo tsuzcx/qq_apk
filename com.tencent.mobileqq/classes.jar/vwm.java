@@ -1,346 +1,55 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.util.AndroidRuntimeException;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.1;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher.2;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vwm
+  extends myw
 {
-  private Bundle a(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public boolean a;
+  
+  public vwm(Context paramContext, String paramString)
   {
-    paramBundle.putInt("capture_intent_mode", paramInt2);
-    if ((paramInt2 == 0) || (paramInt2 == 1))
-    {
-      paramBundle.putInt("cameraDirection", paramInt1);
-      paramBundle.putInt("firsttab", paramInt3);
-      paramBundle.putInt("secondtab", paramInt4);
-      paramBundle.putString("itemid", paramString1);
-      paramBundle.putBoolean("qim_camera_open_specific", paramBoolean);
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_troop_dynamic";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
     for (;;)
     {
-      veg.c("Q.qqstory.publish.StoryPublishLauncher", "initLaunchArgs captureMode=%s, tabType=%d, category=%d, itemId=%s, openSpecific=%b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, Boolean.valueOf(paramBoolean) });
-      return paramBundle;
-      if (paramInt2 == 3) {
-        paramBundle.putString("story_capture_album_id", paramString3);
-      }
-    }
-  }
-  
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    throw new AndroidRuntimeException("mobile qq main process only");
-  }
-  
-  public static vwm a()
-  {
-    return new vwm();
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    int i = axlc.a(BaseApplicationImpl.getContext());
-    HashMap localHashMap;
-    if (i != 0)
-    {
-      ThreadManager.excute(new StoryPublishLauncher.1(this, paramBoolean), 128, null, false);
-      if ((paramBoolean) && (i == 1))
+      try
       {
-        i = 1;
-        localHashMap = new HashMap();
-        if (!paramBoolean) {
-          break label185;
+        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
+          break label56;
         }
-        str = "1";
-        label55:
-        localHashMap.put("videoSoUsable", str);
-        if (i == 0) {
-          break label191;
-        }
-        str = "1";
-        label71:
-        localHashMap.put("videoAndFilterReady", str);
-        axrl.a(BaseApplication.getContext()).a("", "actShortVideoSoDownload", true, 0L, 0L, localHashMap, "");
+        this.a = bool;
+        return;
       }
-    }
-    else
-    {
-      i = axef.a(BaseApplicationImpl.getContext());
-      if (i != 0)
-      {
-        ThreadManager.excute(new StoryPublishLauncher.2(this), 128, null, false);
-        localHashMap = new HashMap();
-        if (i != 1) {
-          break label197;
-        }
-      }
-    }
-    label185:
-    label191:
-    label197:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("ptuSoReady", str);
-      axrl.a(BaseApplication.getContext()).a("", "actShortVideoPtuSoDownload", true, 0L, 0L, localHashMap, "");
-      QQStoryContext.a().b();
-      return;
-      i = 0;
-      break;
-      str = "0";
-      break label55;
-      str = "0";
-      break label71;
-    }
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    boolean bool = false;
-    if (!avtc.a())
-    {
-      veg.b("Q.qqstory.publish.StoryPublishLauncher", "checkApiVersionDialog false");
-      bbcv.a(paramContext, 230).setMessage(ajyc.a(2131714552)).setPositiveButton(2131694793, new vwn(this)).show();
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    return (blca.b(a())) && (axlc.a(BaseApplicationImpl.getContext()) != 2);
-  }
-  
-  public static boolean c()
-  {
-    return axlc.a(a(), BaseApplicationImpl.getContext());
-  }
-  
-  public Intent a(Activity paramActivity, Bundle paramBundle)
-  {
-    paramActivity = new Intent(paramActivity, PhotoListActivity.class);
-    paramActivity.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0);
-    paramActivity.putExtra("from_qqstory", true);
-    paramActivity.putExtra("ALBUM_NAME", bbbi.l);
-    paramActivity.putExtra("ALBUM_ID", "$RecentAlbumId");
-    paramActivity.putExtra("video_refer", "qqstory");
-    paramActivity.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
-    paramActivity.putExtra("PhotoConst.IS_SINGLE_DERECTBACK_MODE", true);
-    paramActivity.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    paramActivity.putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", LocalVideoSelectActivity.class.getName());
-    paramActivity.putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    paramActivity.putExtra("bundle_extra", paramBundle);
-    return paramActivity;
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle, int paramInt)
-  {
-    if (a().c())
-    {
-      bizq.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719576】");
-      bcpw.a(paramActivity, 0, 2131719576, 0).a();
-    }
-    while (a(paramActivity)) {
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    boolean bool;
-    if (localBundle.getInt("entrance_type") == 104)
-    {
-      bool = blca.a(a());
-      a(localBundle);
-      biqz.a().a(true);
-      if (!bool) {
-        break label124;
-      }
-      bizq.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
-      QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt);
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      bool = b();
-      break;
-      label124:
-      bizq.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
-      CaptureQmcfSoDownloadActivity.a(paramActivity, bihg.class.getName(), localBundle, paramInt, localBundle.getBoolean("resource_need_all_wait", false));
-    }
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt5)
-  {
-    a(paramActivity, a(paramBundle, paramInt1, paramInt2, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramBoolean), paramInt5);
-  }
-  
-  public void a(Context paramContext, Bundle paramBundle)
-  {
-    if (a().c())
-    {
-      bizq.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719576】");
-      bcpw.a(paramContext, 0, 2131719576, 0).a();
-    }
-    while (a(paramContext)) {
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    boolean bool;
-    if (localBundle.getInt("entrance_type") == 104)
-    {
-      bool = blca.a(a());
-      a(localBundle);
-      biqz.a().a(true);
-      if (!bool) {
-        break label119;
-      }
-      bizq.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
-      QIMCameraCaptureActivity.a(paramContext, localBundle);
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      bool = b();
-      break;
-      label119:
-      bizq.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
-      CaptureQmcfSoDownloadActivity.a(paramContext, bihg.class.getName(), localBundle, localBundle.getBoolean("resource_need_all_wait", false));
-    }
-  }
-  
-  public void a(@NonNull Bundle paramBundle)
-  {
-    if (!paramBundle.containsKey("entrance_type")) {
-      veg.b("Q.qqstory.publish.StoryPublishLauncher", "do not has entrance type", new Throwable());
-    }
-    if (!paramBundle.containsKey("edit_video_type")) {
-      paramBundle.putInt("edit_video_type", 10002);
-    }
-    if (!paramBundle.containsKey("ability_flag")) {
-      paramBundle.putInt("ability_flag", 1);
-    }
-    if (!paramBundle.containsKey("enable_multi_fragment"))
-    {
-      paramBundle.putBoolean("enable_multi_fragment", true);
-      if (!paramBundle.containsKey("capture_max_duration")) {
-        paramBundle.putLong("capture_max_duration", 60000L);
-      }
-    }
-    if (!paramBundle.containsKey("capture_max_duration")) {
-      paramBundle.putLong("capture_max_duration", 10000L);
-    }
-    paramBundle.putBoolean("camera_peak_is_alive", bihe.a(BaseApplicationImpl.getContext()));
-  }
-  
-  @Deprecated
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(Activity paramActivity, Bundle paramBundle, int paramInt)
-  {
-    boolean bool2 = true;
-    if (a().c())
-    {
-      bcpw.a(paramActivity, 0, 2131719576, 0).a();
-      bool2 = false;
-      return bool2;
-    }
-    if (a(paramActivity)) {
-      return false;
-    }
-    boolean bool1;
-    if ((paramBundle != null) && (paramBundle.getInt("entrance_type") == 104))
-    {
-      bool1 = blca.a(a());
-      label65:
-      veg.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(bool1), Boolean.valueOf(c()));
-      QQStoryContext.a().b();
-      if (paramBundle != null) {
-        break label136;
-      }
-      paramBundle = new Bundle();
-    }
-    label136:
-    for (;;)
-    {
-      a(paramBundle);
-      if (bool1) {
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
         break;
       }
-      CaptureQmcfSoDownloadActivity.a(paramActivity, bihg.class.getName(), paramBundle, paramInt, true, true);
-      return false;
-      bool1 = b();
-      break label65;
+      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
     }
   }
   
-  public void b(Activity paramActivity, Bundle paramBundle, int paramInt)
+  public String b()
   {
-    veg.b("Q.qqstory.publish.StoryPublishLauncher", "launchAlbumThenEditThenPublishForResult");
-    vwo.a("Q.qqstory.publish.StoryPublishLauncher", paramBundle);
-    if (a(paramActivity)) {
-      return;
-    }
-    boolean bool = b();
-    veg.a("Q.qqstory.publish.StoryPublishLauncher", "videoSoUsable=%s", Boolean.valueOf(bool));
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    if (bool)
-    {
-      paramActivity.startActivityForResult(a(paramActivity, localBundle), paramInt);
-      return;
-    }
-    a(paramActivity, localBundle, paramInt);
-  }
-  
-  public void b(Context paramContext, Bundle paramBundle)
-  {
-    if (a().c())
-    {
-      bizq.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719576】");
-      bcpw.a(paramContext, 0, 2131719576, 0).a();
-      QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: isVideoChatting");
-      return;
-    }
-    if (a(paramContext))
-    {
-      QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: not support short video");
-      return;
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    a(localBundle);
-    QIMCameraCaptureActivity.a(paramContext, localBundle);
+    return "key_for_troop_dynamic_version";
   }
 }
 

@@ -1,36 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
 class vmv
-  implements View.OnTouchListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private vmv(vmq paramvmq) {}
   
-  vmv(vmt paramvmt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onGlobalLayout()
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int i = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom();
+    if (this.a.c < 0)
     {
-    default: 
-    case 0: 
-    case 2: 
+      this.a.c = i;
+      this.a.jdField_a_of_type_Vmu.a();
+    }
+    do
+    {
       do
       {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    return this.jdField_a_of_type_Boolean;
+        return;
+      } while (this.a.c - i <= this.a.b);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.c = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    } while (this.a.jdField_a_of_type_Vmu == null);
+    this.a.jdField_a_of_type_Vmu.a(true, null);
+    this.a.jdField_a_of_type_Vmu.a(this.a.a());
   }
 }
 

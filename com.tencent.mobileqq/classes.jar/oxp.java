@@ -1,6 +1,18 @@
-public abstract interface oxp
+class oxp
+  implements onx
 {
-  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
+  oxp(oxo paramoxo, oxm paramoxm) {}
+  
+  public void a(ooa paramooa)
+  {
+    if ((this.jdField_a_of_type_Oxm != null) && (paramooa != null))
+    {
+      oxm localoxm = this.jdField_a_of_type_Oxm;
+      String str = paramooa.b;
+      paramooa = paramooa.a;
+      localoxm.a(new String[] { str }, new String[] { paramooa });
+    }
+  }
 }
 
 

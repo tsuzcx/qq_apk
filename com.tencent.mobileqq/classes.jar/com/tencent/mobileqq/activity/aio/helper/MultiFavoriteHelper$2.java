@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import adin;
-import bcpw;
+import adil;
+import bcql;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MultiFavoriteHelper$2
   implements Runnable
 {
-  public MultiFavoriteHelper$2(adin paramadin) {}
+  public MultiFavoriteHelper$2(adil paramadil) {}
   
   public void run()
   {
-    bcpw.a(adin.a(this.this$0).getApp(), 2131692326, 0).b(adin.a(this.this$0).a());
+    bcql.a(adil.a(this.this$0).getApp(), 2131692326, 0).b(adil.a(this.this$0).a());
   }
 }
 

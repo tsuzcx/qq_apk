@@ -1,37 +1,10 @@
-import android.graphics.Bitmap;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tribe.async.reactive.Stream;
 
-class ukp
-  extends SimpleObserver<Bitmap>
+abstract interface ukp<T>
 {
-  ukp(uko paramuko) {}
-  
-  public void a(Bitmap paramBitmap)
-  {
-    super.onNext(paramBitmap);
-    ukm.b(uko.a(this.a), "onNext, oldResult=%s, newResult=%s", uko.a(this.a), paramBitmap);
-    uko.a(this.a, paramBitmap);
-    uko.a(this.a, true);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    ukm.a(uko.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ukm.c(uko.a(this.a), "onError, oldError=%s, newError=%s", uko.a(this.a), paramError);
-    uko.a(this.a, paramError);
-    uko.a(this.a, SystemClock.uptimeMillis());
-    uko.a(this.a, false);
-  }
+  @NonNull
+  public abstract Stream<T> a(ukl paramukl);
 }
 
 

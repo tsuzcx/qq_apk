@@ -1,19 +1,168 @@
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class teo
 {
-  @vym(a="oa_task_id")
+  @vyj(a="type")
   public int a;
-  @vym(a="bg_url")
+  @vyj(a="linkUrl")
   public String a;
-  @vym(a="is_comp_able")
-  public boolean a;
-  @vym(a="comp_vid")
+  @vyj(a="capture")
+  public tek a;
+  @vyj(a="comp")
+  public tel a;
+  @vyj(a="gameinfo")
+  public tem a;
+  @vyj(a="game")
+  public ten a;
+  @vyj(a="videoShare")
+  public tep a;
+  @vyj(a="parseState")
+  public int b;
+  @vyj(a="title")
   public String b;
-  @vym(a="icon_url")
+  @vyj(a="body")
   public String c;
+  @vyj(a="picUrl")
+  public String d;
+  @vyj(a="app")
+  public String e;
   
-  public String toString()
+  @Nullable
+  public static teo a(String paramString)
   {
-    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = (teo)JsonORM.a(new JSONObject(paramString), teo.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public static teo a(String paramString1, String paramString2, String paramString3, @Nullable String paramString4, @Nullable String paramString5)
+  {
+    teo localteo = new teo();
+    localteo.jdField_a_of_type_JavaLangString = paramString1;
+    localteo.jdField_b_of_type_JavaLangString = paramString2;
+    localteo.c = paramString3;
+    localteo.d = paramString4;
+    localteo.e = paramString5;
+    localteo.jdField_a_of_type_Int = 1;
+    localteo.jdField_b_of_type_Int = 2;
+    return localteo;
+  }
+  
+  public static teo a(String paramString1, boolean paramBoolean, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    teo localteo = new teo();
+    localteo.jdField_a_of_type_JavaLangString = paramString1;
+    localteo.d = paramString2;
+    localteo.e = paramString3;
+    if (paramBoolean) {}
+    for (localteo.jdField_b_of_type_Int = 0;; localteo.jdField_b_of_type_Int = 2)
+    {
+      localteo.jdField_a_of_type_Int = 1;
+      return localteo;
+    }
+  }
+  
+  public String a()
+  {
+    String str3 = this.jdField_a_of_type_JavaLangString;
+    String str2 = str3;
+    if (bbft.d.matcher(str3).find())
+    {
+      String str1 = null;
+      int i = str3.lastIndexOf("#");
+      if (i > 0) {
+        str1 = str3.substring(i);
+      }
+      str3 = URLUtil.guessUrl(str3);
+      str2 = str3;
+      if (str1 != null) {
+        return str3 + str1;
+      }
+    }
+    return str2;
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    try
+    {
+      Object localObject = JsonORM.a(this);
+      if (paramBoolean) {
+        ((JSONObject)localObject).remove("parseState");
+      }
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JsonORM.JsonParseException localJsonParseException)
+    {
+      ved.b("Q.qqstory.tag", "VideoLinkInfo", localJsonParseException);
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_Tep != null);
+  }
+  
+  public String b()
+  {
+    String str1;
+    String str2;
+    label30:
+    String str3;
+    if (this.jdField_b_of_type_JavaLangString != null)
+    {
+      str1 = this.jdField_b_of_type_JavaLangString.trim();
+      if (this.c == null) {
+        break label57;
+      }
+      str2 = this.c.trim();
+      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
+        break label63;
+      }
+      str3 = this.jdField_a_of_type_JavaLangString;
+    }
+    label57:
+    label63:
+    do
+    {
+      return str3;
+      str1 = "";
+      break;
+      str2 = "";
+      break label30;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
+        return String.format("%s-%s", new Object[] { str1, str2 });
+      }
+      str3 = str1;
+    } while (!TextUtils.isEmpty(str1));
+    return str2;
   }
 }
 

@@ -1,23 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class njq
-  extends AnimatorListenerAdapter
+class njq
+  extends Handler
 {
-  public njq(AdControlView paramAdControlView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  njq(njp paramnjp, Looper paramLooper)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.b = false;
+    super(paramLooper);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.b = false;
-    this.a.setVisibility(4);
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 

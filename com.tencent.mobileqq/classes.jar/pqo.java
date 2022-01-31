@@ -1,7 +1,6 @@
-public class pqo
-{
-  private static final pqm a = new pqm(null);
-}
+public abstract interface pqo
+  extends pqp
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

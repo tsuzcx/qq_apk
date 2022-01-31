@@ -1,50 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mea
-  implements View.OnClickListener
+class mea
+  implements lrz
 {
-  public mea(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, bfol parambfol) {}
+  mea(mdz parammdz, VideoAppInterface paramVideoAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-        axqw.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
-      }
+    mdz.c(this.jdField_a_of_type_Mdz);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = mdz.a(paramInt4);
+    if (QLog.isColorLevel()) {
+      QLog.w(mdz.a(this.jdField_a_of_type_Mdz), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Mdz.u + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Mdz.v + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Mdz.t + "->" + paramInt3 + "], rotation[" + mdz.a(this.jdField_a_of_type_Mdz) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Mdz.c() + "]");
     }
-    for (;;)
+    if ((!this.jdField_a_of_type_Mdz.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    }
+    this.jdField_a_of_type_Mdz.u = paramInt1;
+    this.jdField_a_of_type_Mdz.v = paramInt2;
+    this.jdField_a_of_type_Mdz.t = paramInt3;
+    this.jdField_a_of_type_Mdz.i = i;
+    if (paramInt4 != -1) {
+      mdz.a(this.jdField_a_of_type_Mdz, i);
+    }
+    mdz.d(this.jdField_a_of_type_Mdz);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
-        bool = true;
-      }
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().b("OnClick", bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
-      try
-      {
-        this.jdField_a_of_type_Bfol.dismiss();
-        return;
-      }
-      catch (Throwable paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
-      {
-        axqw.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
-        continue;
-        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
-          axqw.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
-        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
-          axqw.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
-        }
-      }
+      String str = this.jdField_a_of_type_Mdz.b();
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
     }
+  }
+  
+  public void b()
+  {
+    mdz.b(this.jdField_a_of_type_Mdz);
+  }
+  
+  public void c()
+  {
+    mdz.a(this.jdField_a_of_type_Mdz);
   }
 }
 

@@ -1,20 +1,56 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class atpd
-  implements View.OnClickListener
+  extends Handler
 {
   public atpd(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    switch (paramMessage.what)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+    default: 
+    case 101: 
+    case 100: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a();
+          bfnm localbfnm = bfnm.b;
+          if ((localbfnm != null) && (localbfnm.a())) {
+            localbfnm.b(5);
+          }
+        } while (paramMessage.obj == null);
+        paramMessage = (NearbyPeopleCard)paramMessage.obj;
+        this.a.b = true;
+        this.a.a(paramMessage, true, false);
+        return;
+      } while (NearbyPeopleProfileActivity.a(this.a) == null);
+      NearbyPeopleProfileActivity.a(this.a).b();
+      return;
+    case 102: 
+      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 202: 
+      NearbyPeopleProfileActivity.a(this.a).a(true);
+      this.a.a.sendEmptyMessageDelayed(203, 1500L);
+      return;
+    case 203: 
+      NearbyPeopleProfileActivity.a(this.a).a(false);
+      return;
+    case 204: 
+      this.a.a(this.a.getString(2131694564));
+      return;
+    case 207: 
+      this.a.a(ajya.a(2131707249));
+      return;
     }
+    this.a.a();
   }
 }
 

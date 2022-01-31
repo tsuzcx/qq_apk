@@ -1,16 +1,14 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acqk
-  extends bfmg
+class acqk
+  implements DialogInterface.OnClickListener
 {
-  public acqk(VisitorsActivity paramVisitorsActivity) {}
+  acqk(acqj paramacqj) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    paramDialogInterface.dismiss();
   }
 }
 

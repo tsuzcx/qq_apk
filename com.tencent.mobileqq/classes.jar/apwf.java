@@ -1,6 +1,19 @@
-public abstract interface apwf
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.3.1;
+
+public final class apwf
+  implements apwh
 {
-  public abstract void a(String paramString);
+  apwf(String paramString1, String paramString2) {}
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new UniformDownloadUtil.3.1(this));
+  }
 }
 
 

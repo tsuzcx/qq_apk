@@ -1,6 +1,17 @@
-public abstract interface rcx
+import com.tencent.widget.AbsListView;
+
+class rcx
+  extends oyd
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  rcx(rcv paramrcv, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramString);
+  }
+  
+  public void a(oxx paramoxx)
+  {
+    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+  }
 }
 
 

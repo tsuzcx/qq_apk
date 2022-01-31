@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
 class atpn
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  atpn(atpi paramatpi) {}
+  atpn(atpk paramatpk) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramView = asyr.a(this.a.a, this.a.a.app.getAccount(), 2);
-    if (paramView != null)
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable instanceof RegionDrawable))
     {
-      paramView.f = "13";
-      paramView.g = atpi.a(this.a).uin;
-      atyb localatyb = new atyb(this.a.a);
-      localatyb.a(paramView);
-      localatyb.show();
+      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
+      atpk.a(this.a).setImageBitmap(paramURLDrawable);
+      atpk.a(this.a).setVisibility(0);
     }
   }
 }

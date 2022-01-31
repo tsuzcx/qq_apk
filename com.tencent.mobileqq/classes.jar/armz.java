@@ -1,42 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 import org.json.JSONObject;
 
 public class armz
-  extends WebViewPlugin
+  implements QQPermissionCallback
 {
-  public static final String a = armz.class.getSimpleName();
+  public armz(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, AppActivity paramAppActivity) {}
   
-  public armz()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.mPluginNameSpace = "MixSearchWeb";
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bbdj.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return false;
-    }
-    if (!"MixSearchWeb".equals(paramString2)) {
-      return false;
-    }
-    if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        QLog.e(a, 1, "handleJsRequest: e = " + paramJsBridgeListener);
-      }
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
   }
 }
 

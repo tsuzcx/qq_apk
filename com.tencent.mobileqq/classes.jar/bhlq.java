@@ -1,49 +1,250 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareData;
 import java.util.ArrayList;
-import java.util.Map;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bhlq
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static int a(EditText paramEditText, ArrayList<ResultRecord> paramArrayList, List<bhlp> paramList, int paramInt)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    int i;
+    if (paramArrayList == null)
     {
-      QLog.e("QzoneShare.QzoneShareServlet", 1, "QzoneShareServlet onReceive success.");
-      return;
+      i = paramInt;
+      return i;
     }
-    QLog.e("QzoneShare.QzoneShareServlet", 1, "QzoneShareServlet onReceive fail.");
+    paramArrayList = paramArrayList.iterator();
+    for (;;)
+    {
+      label15:
+      i = paramInt;
+      if (!paramArrayList.hasNext()) {
+        break;
+      }
+      Object localObject = (ResultRecord)paramArrayList.next();
+      bhlp localbhlp = new bhlp();
+      if (!TextUtils.isEmpty(((ResultRecord)localObject).b)) {}
+      for (localbhlp.jdField_a_of_type_JavaLangString = ((ResultRecord)localObject).b;; localbhlp.jdField_a_of_type_JavaLangString = ((ResultRecord)localObject).jdField_a_of_type_JavaLangString) {
+        try
+        {
+          long l = Long.valueOf(((ResultRecord)localObject).jdField_a_of_type_JavaLangString).longValue();
+          localbhlp.jdField_a_of_type_Long = l;
+          if ((localbhlp.jdField_a_of_type_JavaLangString == null) || (localbhlp.jdField_a_of_type_Long == 0L)) {
+            break label15;
+          }
+          i = paramInt;
+          if (paramList == null) {
+            break;
+          }
+          paramList.add(localbhlp);
+          localObject = "@" + localbhlp.jdField_a_of_type_JavaLangString + " ";
+          i = paramInt;
+          if (paramInt < ((String)localObject).length()) {
+            i = ((String)localObject).length();
+          }
+          a((String)localObject, paramEditText.getSelectionStart(), paramEditText);
+          paramInt = i;
+        }
+        catch (NumberFormatException localNumberFormatException) {}
+      }
+    }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static int a(CharSequence paramCharSequence, int paramInt1, int paramInt2, List<bhlp> paramList, int paramInt3, int paramInt4, String paramString)
   {
-    paramIntent = paramIntent.getExtras();
-    Object localObject1 = (QZoneShareData)paramIntent.get("sharedata");
-    long l = ((QZoneShareData)localObject1).jdField_a_of_type_Long;
-    Object localObject2 = ((QZoneShareData)localObject1).e;
-    String str1 = ((QZoneShareData)localObject1).jdField_b_of_type_JavaLangString;
-    String str2 = ((QZoneShareData)localObject1).c;
-    String str3 = ((QZoneShareData)localObject1).d;
-    String str4 = ((QZoneShareData)localObject1).g;
-    ArrayList localArrayList = ((QZoneShareData)localObject1).jdField_a_of_type_JavaUtilArrayList;
-    int i = ((QZoneShareData)localObject1).jdField_a_of_type_Int;
-    Map localMap = ((QZoneShareData)localObject1).jdField_a_of_type_JavaUtilMap;
-    String str5 = paramIntent.getString("reason");
-    localObject2 = new bhlp((String)localObject2, str3, 2020014, paramIntent.getLong("uin"), str1, str2, str5, localArrayList, l, str4, i, localMap, ((QZoneShareData)localObject1).jdField_b_of_type_JavaUtilMap);
-    localObject1 = ((bhlp)localObject2).encode();
-    paramIntent = (Intent)localObject1;
-    if (localObject1 == null) {
-      paramIntent = new byte[4];
+    if ((paramCharSequence == null) || (paramCharSequence.length() <= 1)) {
+      return -1;
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + ((bhlp)localObject2).uniKey());
-    paramPacket.putSendData(paramIntent);
+    int j;
+    int i;
+    if (paramCharSequence.length() > paramInt1)
+    {
+      j = paramInt1 - 1;
+      i = 1;
+    }
+    for (;;)
+    {
+      if ((j < 0) || (i > paramInt2)) {
+        break label112;
+      }
+      if ((paramCharSequence.charAt(j) == '@') && (a(paramCharSequence.toString().substring(j, paramInt1), false, paramList, paramInt3, paramInt4, paramString)))
+      {
+        return j;
+        paramInt1 = paramCharSequence.length();
+        break;
+      }
+      j -= 1;
+      i += 1;
+    }
+    label112:
+    return -1;
+  }
+  
+  public static SystemEmoticonPanel a(Context paramContext, EditText paramEditText)
+  {
+    try
+    {
+      paramContext = new SystemEmoticonPanel(paramContext, new bhlr(paramEditText));
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.e("QZoneShareActivity", 1, paramContext.getStackTrace());
+    }
+    return null;
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    if (paramEditText != null)
+    {
+      if ((paramEditText.getText() instanceof ayku))
+      {
+        ayku localayku = (ayku)paramEditText.getText();
+        if (localayku != null) {
+          return localayku.a();
+        }
+      }
+      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
+        return paramEditText.getEditableText().toString();
+      }
+    }
+    return null;
+  }
+  
+  public static String a(EditText paramEditText, List<bhlp> paramList)
+  {
+    if (paramEditText != null)
+    {
+      paramEditText = a(paramEditText);
+      if (!TextUtils.isEmpty(paramEditText)) {
+        return a(paramEditText, paramList).replaceAll(ajya.a(2131705799), ajya.a(2131705803)).replaceAll(ajya.a(2131705800), "/MM");
+      }
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      String str = Pattern.compile(paramString1, 16).matcher(paramString2).replaceFirst(paramString3);
+      return str;
+    }
+    catch (Exception localException) {}
+    return b(paramString2, paramString1, paramString3);
+  }
+  
+  public static String a(String paramString, List<bhlp> paramList)
+  {
+    return b(paramString, paramList);
+  }
+  
+  public static void a(String paramString, int paramInt, EditText paramEditText)
+  {
+    if ((paramEditText == null) || (TextUtils.isEmpty(paramString)) || (paramInt < 0)) {
+      return;
+    }
+    Editable localEditable = aykz.c.newEditable(paramEditText.getText());
+    localEditable.insert(paramInt, paramString);
+    try
+    {
+      paramEditText.setText(localEditable);
+      paramEditText.setSelection(paramString.length() + paramInt);
+      return;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      for (;;)
+      {
+        localEditable.append(" ");
+        paramEditText.setText(localEditable);
+      }
+    }
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    return (paramInt1 != -1) && (paramInt2 != -1) && (paramString != null) && (paramString.length() > 0);
+  }
+  
+  public static boolean a(String paramString1, boolean paramBoolean, List<bhlp> paramList, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (((a(paramInt1, paramInt2, paramString2)) || (!paramBoolean)) && (paramList != null))
+    {
+      paramInt2 = paramList.size();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        paramString2 = (bhlp)paramList.get(paramInt1);
+        if ((paramString2 != null) && (paramString2.jdField_a_of_type_JavaLangString != null) && (paramString1 != null) && ((paramString1.equalsIgnoreCase("@" + paramString2.jdField_a_of_type_JavaLangString)) || (paramString1.equalsIgnoreCase("@" + paramString2.jdField_a_of_type_JavaLangString + " "))))
+        {
+          if (paramBoolean) {
+            paramList.remove(paramInt1);
+          }
+          return true;
+        }
+        paramInt1 += 1;
+      }
+    }
+    return false;
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    int i = paramString1.indexOf(paramString2, 0);
+    if (i == -1) {
+      return paramString1;
+    }
+    paramString1 = new StringBuilder(paramString1);
+    paramString1.replace(i, paramString2.length() + i, paramString3);
+    return paramString1.toString();
+  }
+  
+  public static String b(String paramString, List<bhlp> paramList)
+  {
+    String str;
+    if (paramString == null) {
+      str = null;
+    }
+    do
+    {
+      do
+      {
+        return str;
+        str = paramString;
+      } while (paramList == null);
+      str = paramString;
+    } while (paramList.size() == 0);
+    Iterator localIterator = paramList.iterator();
+    for (;;)
+    {
+      str = paramString;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      bhlp localbhlp = (bhlp)localIterator.next();
+      str = localbhlp.jdField_a_of_type_JavaLangString;
+      paramList = str;
+      if (str == null) {
+        paramList = localbhlp.jdField_a_of_type_Long + "";
+      }
+      paramList = paramList.replace("%", "%25").replace(",", "%2C").replace("}", "%7D");
+      paramList = "@{uin:" + localbhlp.jdField_a_of_type_Long + ",nick:" + paramList + "}";
+      str = "@" + localbhlp.jdField_a_of_type_JavaLangString;
+      if ((!TextUtils.isEmpty(localbhlp.jdField_a_of_type_JavaLangString)) && (paramString.contains(str))) {
+        paramString = a(str, paramString, paramList);
+      }
+    }
   }
 }
 

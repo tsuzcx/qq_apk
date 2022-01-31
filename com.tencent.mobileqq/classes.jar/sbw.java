@@ -1,28 +1,26 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class sbw
-  implements mzb
 {
-  public sbw(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  Button jdField_c_of_type_AndroidWidgetButton;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  Button d;
   
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
-    }
-    this.a.app.getApplication();
-    int i = bbev.a(MobileQQ.getContext());
-    paramString = new HashMap();
-    paramString.put("network", "" + i);
-    paramString.put("status_code", "" + paramInt);
-    axrl.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
-  }
-  
-  public void progress(int paramInt) {}
+  public sbw(sbu paramsbu) {}
 }
 
 

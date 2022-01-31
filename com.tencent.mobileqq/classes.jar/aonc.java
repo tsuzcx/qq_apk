@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Interpolator;
 
-public abstract interface aonc
+class aonc
+  implements Interpolator
 {
-  public abstract QQAppInterface a();
+  aonc(aomx paramaomx) {}
   
-  public abstract void a();
-  
-  public abstract void a(aonh paramaonh);
-  
-  public abstract boolean a(aonh paramaonh, int paramInt);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public float getInterpolation(float paramFloat)
+  {
+    if (paramFloat == 0.0F) {
+      return 0.0F;
+    }
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
+    }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
+  }
 }
 
 

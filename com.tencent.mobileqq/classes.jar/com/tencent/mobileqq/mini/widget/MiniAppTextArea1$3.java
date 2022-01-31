@@ -9,7 +9,7 @@ class MiniAppTextArea1$3
   
   public void onGlobalLayout()
   {
-    MiniAppTextArea1.access$900(this.this$0);
+    MiniAppTextArea1.access$1000(this.this$0);
   }
 }
 

@@ -10,15 +10,15 @@ import android.view.ViewParent;
 import com.tencent.widget.HorizontalListView;
 import java.util.HashMap;
 import java.util.Map;
-import xog;
-import xoh;
-import xoi;
+import xod;
+import xoe;
+import xof;
 
 public class TabLayout
   extends HorizontalListView
 {
   private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private xoi jdField_a_of_type_Xoi;
+  private xof jdField_a_of_type_Xof;
   private boolean jdField_a_of_type_Boolean;
   private Map<Integer, Integer> b = new HashMap();
   
@@ -65,8 +65,8 @@ public class TabLayout
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Xoi != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Xoi.notifyDataSetChanged();
+    if ((this.jdField_a_of_type_Xof != null) && (!this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Xof.notifyDataSetChanged();
     }
   }
   
@@ -99,8 +99,8 @@ public class TabLayout
       }
       Object localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).setDuration(500L);
-      ((ValueAnimator)localObject).addUpdateListener(new xog(this, paramInt1, paramInt2, m, n, localView, j));
-      ((ValueAnimator)localObject).addListener(new xoh(this, paramAnimatorListener));
+      ((ValueAnimator)localObject).addUpdateListener(new xod(this, paramInt1, paramInt2, m, n, localView, j));
+      ((ValueAnimator)localObject).addListener(new xoe(this, paramAnimatorListener));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -123,11 +123,11 @@ public class TabLayout
     }
   }
   
-  public void setAdapter(xoi paramxoi)
+  public void setAdapter(xof paramxof)
   {
-    super.setAdapter(paramxoi);
-    this.jdField_a_of_type_Xoi = paramxoi;
-    this.jdField_a_of_type_Xoi.a(this);
+    super.setAdapter(paramxof);
+    this.jdField_a_of_type_Xof = paramxof;
+    this.jdField_a_of_type_Xof.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)

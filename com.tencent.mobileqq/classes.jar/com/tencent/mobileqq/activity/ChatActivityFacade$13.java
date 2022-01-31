@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import asts;
+import astu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -17,7 +17,7 @@ public final class ChatActivityFacade$13
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        ((asts)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        ((astu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
         return;
       }
       if (this.b)

@@ -1,8 +1,8 @@
 package com.etrump.mixlayout;
 
 import android.view.View;
-import aykr;
-import bcjc;
+import aykt;
+import bcjq;
 import com.tencent.qphone.base.util.QLog;
 import ha;
 
@@ -21,11 +21,11 @@ public class ETTextView$1
         if (this.this$0.isUsingHYFont())
         {
           Object localObject = this.this$0.mLayout.a(this.this$0.mEmojiX, this.this$0.mEmojiY);
-          if ((localObject instanceof aykr))
+          if ((localObject instanceof aykt))
           {
-            localObject = (aykr)localObject;
-            this.this$0.mClickEpId = ((aykr)localObject).e;
-            this.this$0.mClickcEId = ((aykr)localObject).f;
+            localObject = (aykt)localObject;
+            this.this$0.mClickEpId = ((aykt)localObject).e;
+            this.this$0.mClickcEId = ((aykt)localObject).f;
             if (QLog.isColorLevel()) {
               QLog.d("ETTextView", 2, "click span: " + this.this$0.mClickEpId);
             }

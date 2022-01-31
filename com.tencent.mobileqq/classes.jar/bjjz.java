@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.annotation.TargetApi;
 import android.view.View;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.animation.Transformation;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjjz
-  implements DialogInterface.OnClickListener
+  implements bble<Float>
 {
-  public bjjz(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  public bjjz(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(11)
+  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Bjkh.k();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.onItemClick(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    }
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
   }
 }
 

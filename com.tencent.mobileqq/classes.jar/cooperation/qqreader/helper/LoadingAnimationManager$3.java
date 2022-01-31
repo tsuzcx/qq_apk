@@ -1,15 +1,15 @@
 package cooperation.qqreader.helper;
 
-import bgtz;
+import bguq;
 
 public class LoadingAnimationManager$3
   implements Runnable
 {
-  public LoadingAnimationManager$3(bgtz parambgtz) {}
+  public LoadingAnimationManager$3(bguq parambguq) {}
   
   public void run()
   {
-    bgtz.a(this.this$0);
+    bguq.a(this.this$0);
   }
 }
 

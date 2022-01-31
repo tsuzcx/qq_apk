@@ -1,18 +1,37 @@
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class agqm
-  implements QQPermissionCallback
+  extends akil
 {
-  agqm(agql paramagql) {}
+  agqm(agqi paramagqi) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    bbcv.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!bbbr.a(paramString1, this.a.jdField_a_of_type_JavaLangString)));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+      }
+    } while (paramInt1 != 0);
+    this.a.a(true);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    agqk.a(this.a.a);
+    if (!bbbr.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController", 2, String.format("onCmdTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+    }
+    this.a.a(true);
   }
 }
 

@@ -1,64 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.ArrayList;
 
 public class anlq
-  extends BaseAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public anlq(DataReportViewer paramDataReportViewer) {}
   
-  public int getCount()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.a.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131559422, paramViewGroup, false);
-      paramViewGroup = new anlr(this.a, paramView);
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      ReportData localReportData = (ReportData)this.a.a.get(paramInt);
-      paramViewGroup.a.setText(localReportData.table);
-      paramViewGroup.b.setText(localReportData.mainAction);
-      paramViewGroup.c.setText(localReportData.subAction);
-      paramViewGroup.d.setText(localReportData.actionName);
-      paramViewGroup.e.setText(String.valueOf(localReportData.opType));
-      paramViewGroup.f.setText(String.valueOf(localReportData.result));
-      paramViewGroup.g.setText(localReportData.r2);
-      paramViewGroup.h.setText(localReportData.r3);
-      paramViewGroup.i.setText(localReportData.r4);
-      paramViewGroup.j.setText(localReportData.r5);
-      if (!localReportData.isLightBlueBg) {
-        break;
-      }
-      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166439));
-      return paramView;
-      paramViewGroup = (anlr)paramView.getTag();
-    }
-    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167134));
-    return paramView;
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

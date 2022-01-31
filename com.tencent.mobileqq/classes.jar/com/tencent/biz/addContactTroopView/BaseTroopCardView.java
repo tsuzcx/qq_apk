@@ -1,6 +1,6 @@
 package com.tencent.biz.addContactTroopView;
 
-import affk;
+import affi;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class BaseTroopCardView
   extends RelativeLayout
 {
-  protected affk a;
+  protected affi a;
   protected Context a;
   protected QQAppInterface a;
   

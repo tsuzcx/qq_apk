@@ -1,25 +1,12 @@
-import java.util.concurrent.Callable;
-
-class behz
-  implements Callable<Void>
+public class behz
 {
-  behz(behy parambehy) {}
+  public int a;
+  public String a;
   
-  public Void a()
+  public behz(String paramString, int paramInt)
   {
-    synchronized (this.a)
-    {
-      if (behy.a(this.a) == null) {
-        return null;
-      }
-      behy.a(this.a);
-      if (behy.a(this.a))
-      {
-        behy.b(this.a);
-        behy.a(this.a, 0);
-      }
-      return null;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

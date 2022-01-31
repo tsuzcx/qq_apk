@@ -1,11 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class aebj
-  implements bfuh
+  implements DialogInterface.OnClickListener
 {
   public aebj(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

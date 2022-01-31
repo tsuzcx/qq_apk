@@ -1,26 +1,44 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-class aoex
-  implements ayrz
+public class aoex
 {
-  aoex(aoev paramaoev) {}
+  public int a;
+  public String a;
+  public HashMap<String, aoey> a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public List<String> b = new ArrayList();
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k = 2;
+  public String k;
+  public int l = 50;
+  public String l;
+  public int m = 1;
+  public String m;
   
-  public void a(aysw paramaysw, aysx paramaysx)
+  public aoex()
   {
-    if ((paramaysw != null) && (paramaysx != null) && ((paramaysw instanceof ayrv)))
-    {
-      paramaysw = (ayrv)paramaysw;
-      paramaysw.jdField_a_of_type_Long += paramaysx.c;
-      paramaysx.c = 0L;
-      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
-      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
-      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
-      if (paramaysx.contains("range="))
-      {
-        paramaysx = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
-        paramaysw.jdField_a_of_type_JavaLangString = (paramaysx + "range=" + paramaysw.jdField_a_of_type_Long);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 

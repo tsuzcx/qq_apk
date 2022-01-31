@@ -1,21 +1,20 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class aafr
-  implements DialogInterface.OnDismissListener
+  extends AccountObserver
 {
   public aafr(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
-      ((Dialog)paramDialogInterface).setOnDismissListener(null);
-    }
-    if (paramDialogInterface == this.a.c) {
-      this.a.c = null;
-    }
+    AccountManageActivity.b(this.a);
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    AccountManageActivity.b(this.a);
   }
 }
 

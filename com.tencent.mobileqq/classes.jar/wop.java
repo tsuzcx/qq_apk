@@ -1,6 +1,10 @@
+import android.view.View;
+
 public abstract interface wop
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(View paramView, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void b(View paramView, int paramInt1, int paramInt2, Object paramObject);
 }
 
 

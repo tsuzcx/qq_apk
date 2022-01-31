@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.PressDarkImageButton;
 
-public final class bjsr
-  implements Parcelable.Creator<EditLocalVideoSource>
+class bjsr
+  implements View.OnClickListener
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  bjsr(bjsq parambjsq) {}
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new EditLocalVideoSource[paramInt];
+    if (bjsq.a(this.a))
+    {
+      bjsq.a(this.a, false);
+      bjsq.a(this.a).setChecked(false);
+      return;
+    }
+    bjsq.a(this.a, true);
+    bjsq.a(this.a).setChecked(true);
   }
 }
 

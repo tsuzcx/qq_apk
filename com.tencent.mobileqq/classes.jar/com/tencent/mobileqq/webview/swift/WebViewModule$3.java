@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bccv;
+import bcdj;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 
 public class WebViewModule$3
   implements Runnable
 {
-  public WebViewModule$3(bccv parambccv, String paramString) {}
+  public WebViewModule$3(bcdj parambcdj, String paramString) {}
   
   public void run()
   {

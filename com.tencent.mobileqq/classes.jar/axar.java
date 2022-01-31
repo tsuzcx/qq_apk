@@ -1,39 +1,48 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.av.service.AVPbInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class axar
-  extends xop
+final class axar
+  implements lxr
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "MessageSvc", "TransService", "StreamSvr", "ADMsgSvc", "VideoSvc", "VideoCCSvc", "OnlinePush", "KQQGroupPic", "AccostSvc", "SecretFileSvc", "MultiVideo" };
-  private axaf jdField_a_of_type_Axaf = new axaf();
-  private axaj jdField_a_of_type_Axaj = new axaj();
+  axar(byte[] paramArrayOfByte, long paramLong1, MessageHandler paramMessageHandler, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
   
-  public axar(QQAppInterface paramQQAppInterface)
+  public void a(lxq paramlxq)
   {
-    this.jdField_a_of_type_Axaj.a(paramQQAppInterface);
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return this.jdField_a_of_type_Axaf.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Axaj = null;
-    this.jdField_a_of_type_Axaf = null;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Axaj.a(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    AVPbInfo localAVPbInfo = paramlxq.a(this.jdField_a_of_type_ArrayOfByte);
+    if (localAVPbInfo != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("decodeC2CMsgPkg_QCall", 2, "ret, bindId:" + localAVPbInfo.bindId + ", bindIdType:" + localAVPbInfo.bindIdType + ", phoneNum:" + localAVPbInfo.phoneNum);
+      }
+      if ((!llw.c()) || (!llw.d())) {
+        if (QLog.isColorLevel()) {
+          QLog.d("decodeC2CMsgPkg_QCall", 2, "Discard video message cause device not support");
+        }
+      }
+    }
+    for (;;)
+    {
+      paramlxq.a();
+      return;
+      if (this.jdField_a_of_type_Long >= 60L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("decodeC2CMsgPkg_QCall", 2, "Discard video message because of time out " + this.jdField_a_of_type_Long + " s");
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("decodeC2CMsgPkg_QCall", 2, "===========handleSharpVideoMessageResp 1234========");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.c, (int)this.d, this.jdField_a_of_type_Boolean);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("decodeC2CMsgPkg_QCall", 2, "ret, decode failed!");
+        }
+      }
+    }
   }
 }
 

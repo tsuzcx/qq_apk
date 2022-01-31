@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajgp;
-import ajgq;
+import ajgn;
+import ajgo;
 
 public class CmShowTest$1$1
   implements Runnable
 {
-  public CmShowTest$1$1(ajgq paramajgq) {}
+  public CmShowTest$1$1(ajgo paramajgo) {}
   
   public void run()
   {
-    ajgp.a(this.this$0.a);
+    ajgn.a(this.this$0.a);
   }
 }
 

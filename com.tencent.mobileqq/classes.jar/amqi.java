@@ -1,58 +1,78 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class amqi
-  extends ampb<amqh>
+  extends ampa<amqj>
 {
-  public static void b()
-  {
-    amqh localamqh = (amqh)ampm.a().a(430);
-    amqh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localamqh);
-  }
-  
   public int a()
   {
-    return 430;
+    return 597;
   }
   
   @NonNull
-  public amqh a(int paramInt)
+  public amqj a(int paramInt)
   {
-    return new amqh();
+    return new amqj();
   }
   
   @Nullable
-  public amqh a(ampi[] paramArrayOfampi)
+  public amqj a(amph[] paramArrayOfamph)
   {
-    return amqh.a(paramArrayOfampi);
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
+    {
+      amqj localamqj = amqj.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localamqj;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
+    }
+    ahjx.a(true);
+    return null;
   }
   
-  public Class<amqh> a()
+  public Class<amqj> a()
   {
-    return amqh.class;
+    return amqj.class;
   }
   
   public void a(int paramInt)
   {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+    ahjx.a(true);
   }
   
-  public void a(amqh paramamqh)
+  public void a(amqj paramamqj)
   {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    amqh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramamqh);
+    if (paramamqj == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramamqj.toString());
+    }
+    ahjx.a(true);
   }
   
   public boolean a()
   {
-    return true;
+    return false;
   }
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
+    }
+    ahjx.a(true);
     return 0;
   }
   

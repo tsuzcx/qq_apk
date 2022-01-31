@@ -1,20 +1,22 @@
+import android.os.Handler;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
 
 public class ahxi
-  implements vrd
+  implements tbz<tbu>
 {
   public ahxi(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public void a() {}
-  
-  public void a(vrn paramvrn)
+  public void a(boolean paramBoolean, tbu paramtbu)
   {
-    this.a.b(paramvrn);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    ved.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
+    if ((paramBoolean) && (paramtbu != null))
+    {
+      ved.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramtbu);
+      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramtbu));
+      return;
+    }
+    ved.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
   }
 }
 

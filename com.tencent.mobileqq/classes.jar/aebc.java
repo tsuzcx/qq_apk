@@ -1,16 +1,18 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class aebc
-  extends StructingMsgItemBuilder
+  implements View.OnClickListener
 {
-  public aebc(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public aebc(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    paramView = ((aert)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
+    ((aert)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
   }
 }
 

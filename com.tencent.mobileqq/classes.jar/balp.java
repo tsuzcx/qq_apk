@@ -1,13 +1,38 @@
-public class balp
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
+
+class balp
+  extends mxi
 {
-  public int a;
-  public String a;
+  balp(balh parambalh, balg parambalg) {}
   
-  balp(String paramString, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      }
+      if (this.jdField_a_of_type_Balg != null) {
+        this.jdField_a_of_type_Balg.a(paramInt, "sso request error or callback is null.");
+      }
+    }
+    do
+    {
+      return;
+      paramBundle = new cmd0x9e9.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        this.jdField_a_of_type_Balg.a(paramBundle.int64_total_point.get() / 100L);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
   }
 }
 

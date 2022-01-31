@@ -1,27 +1,43 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.mobileqq.widget.ScrollerRunnable.4;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bcrm
-  extends AccessibilityDelegateCompat
+  implements Animator.AnimatorListener
 {
-  public bcrm(TabBarView paramTabBarView) {}
+  public bcrm(ScrollerRunnable.4 param4) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
+    if (this.a.a.getParent() != null)
     {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+      this.a.a.clearAnimation();
+      if (QLog.isColorLevel()) {
+        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
+    }
+    if ((azni.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.obtainMessage(50).sendToTarget();
     }
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
+    }
   }
 }
 

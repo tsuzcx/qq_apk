@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import bbbr;
+import bbcf;
 
 class MediaPlayerManager$2
   implements Runnable
@@ -11,7 +11,7 @@ class MediaPlayerManager$2
   {
     try
     {
-      bbbr.a(2131230731, 1, MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0));
+      bbcf.a(2131230731, 1, MediaPlayerManager.a(this.this$0), MediaPlayerManager.a(this.this$0));
       return;
     }
     catch (Throwable localThrowable) {}

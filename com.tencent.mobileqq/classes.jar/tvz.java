@@ -1,44 +1,205 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.FeedBasePlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-class tvz
-  implements twq
+public abstract class tvz<INFO extends FeedBasePlayInfo>
+  extends twq
 {
-  tvz(tvy paramtvy) {}
+  private static List<StoryVideoItem> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  final INFO jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo;
+  public uvt a;
   
-  public void a()
+  public tvz(INFO paramINFO)
   {
-    tvy.a(this.a, this.a.a.a(tvy.a(this.a), 5));
-    List localList = tvy.a(this.a).a;
-    if ((tvy.a(this.a) == null) && (localList.size() > 0)) {
-      tvy.a(this.a, ((twp)localList.get(0)).a);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo = paramINFO;
+    vxp.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo);
+  }
+  
+  private static int b(twa paramtwa, FeedBasePlayInfo paramFeedBasePlayInfo)
+  {
+    int i = 0;
+    int j = 0;
+    if (paramtwa.a == null) {
+      return j;
     }
-    label193:
+    j = paramtwa.a.b;
+    if (j == -1) {
+      if (!vxy.a(paramtwa.a.c)) {}
+    }
     for (;;)
     {
-      tvy.a(this.a).a(tvy.a(this.a), "");
-      veg.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { tvy.a(this.a) });
-      return;
-      int i = 0;
+      j = i;
+      if (!paramFeedBasePlayInfo.mForcePlayVidFromOld2New) {
+        break;
+      }
+      j = i;
+      if (!paramtwa.equals(new twa(paramFeedBasePlayInfo.mFeedFeedId, null))) {
+        break;
+      }
+      return 1;
+      i = 1;
+      continue;
+      i = j;
+    }
+  }
+  
+  @NonNull
+  static List<twl> b(List<uvp> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      uvp localuvp = (uvp)paramList.next();
+      if (localuvp.jdField_a_of_type_Boolean) {
+        localArrayList.add(new twa(localuvp.jdField_a_of_type_JavaLangString, localuvp));
+      } else {
+        ved.d("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "ignore feed:%s for not playable", new Object[] { localuvp.jdField_a_of_type_JavaLangString });
+      }
+    }
+    return localArrayList;
+  }
+  
+  @NonNull
+  private static twm b(List<StoryVideoItem> paramList, String paramString, twa paramtwa)
+  {
+    ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.get(i);
+      String str = localStoryVideoItem.mVid;
+      localArrayList.add(str);
+      if (!TextUtils.isEmpty(localStoryVideoItem.mAttachedFeedId)) {
+        localHashMap.put(str, localStoryVideoItem.mAttachedFeedId);
+      }
       for (;;)
       {
-        if (i >= localList.size()) {
-          break label193;
-        }
-        if (((twp)localList.get(i)).a.equals(tvy.a(this.a)))
-        {
-          i -= 1;
-          if (i < 0) {
-            break;
-          }
-          tvy.a(this.a, ((twp)localList.get(i)).a);
-          break;
-        }
         i += 1;
+        break;
+        localHashMap.put(str, paramString);
+      }
+    }
+    paramList = new twm(paramtwa);
+    paramList.jdField_a_of_type_JavaUtilList = localArrayList;
+    paramList.jdField_a_of_type_JavaUtilMap = localHashMap;
+    ved.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "return group=%s vid %d, list %s", paramtwa, Integer.valueOf(localArrayList.size()), localArrayList);
+    return paramList;
+  }
+  
+  public List<tws> a(List<twl> paramList)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new twb((twa)paramList.next(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo));
+    }
+    return localArrayList;
+  }
+  
+  public two a()
+  {
+    Object localObject4 = null;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId)) {}
+    for (twa localtwa = new twa(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId, a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId));; localtwa = null)
+    {
+      Object localObject5 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mStartVid;
+      Object localObject3 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mStartVideoFeedId;
+      Object localObject2 = localObject3;
+      Object localObject1 = localObject5;
+      if (TextUtils.isEmpty((CharSequence)localObject5))
+      {
+        localObject2 = localObject3;
+        localObject1 = localObject5;
+        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mForcePlayVidFromOld2New)
+        {
+          FeedVideoInfo localFeedVideoInfo = ((uwd)tcz.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId, 1);
+          localObject2 = localObject3;
+          localObject1 = localObject5;
+          if (localFeedVideoInfo != null)
+          {
+            localObject5 = ((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mVid;
+            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+              break label359;
+            }
+            if (TextUtils.isEmpty(((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mAttachedFeedId)) {
+              break label348;
+            }
+            localObject1 = ((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mAttachedFeedId;
+          }
+        }
+      }
+      for (;;)
+      {
+        ved.d("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "fast start vid:%s feedId:%s", new Object[] { localObject5, localObject1 });
+        localObject2 = localObject1;
+        localObject1 = localObject5;
+        localObject3 = localObject4;
+        if (localtwa != null)
+        {
+          localObject3 = localObject4;
+          if (localtwa.a != null)
+          {
+            int i = b(localtwa, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo);
+            localObject5 = ((uwd)tcz.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId, i);
+            localObject3 = localObject4;
+            if (localObject5 != null)
+            {
+              localObject3 = localObject4;
+              if (((FeedVideoInfo)localObject5).mIsVideoEnd)
+              {
+                localObject3 = localObject4;
+                if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mForceNotUseVidCache)
+                {
+                  localObject3 = b(((FeedVideoInfo)localObject5).mVideoItemList, ((FeedVideoInfo)localObject5).feedId, localtwa);
+                  ved.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "fast start hit group info cache %s", localObject3);
+                }
+              }
+            }
+          }
+        }
+        localObject1 = new two(localtwa, (String)localObject1, localObject2);
+        ((two)localObject1).a = ((twm)localObject3);
+        return localObject1;
+        label348:
+        localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId;
+        continue;
+        label359:
+        localObject1 = localObject3;
       }
     }
   }
   
-  public void a(two paramtwo, String paramString, boolean paramBoolean) {}
+  public uvp a(String paramString)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, twr paramtwr)
+  {
+    if (this.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Int += 1;
+      a(bool, paramInt, paramtwr);
+      return;
+    }
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, twr paramtwr);
+  
+  public void b() {}
 }
 
 

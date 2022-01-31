@@ -1,83 +1,25 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tzl
-  extends tzk
+  extends QQUIEventReceiver<tzj, tkm>
 {
-  protected Map<String, tzk> a = new HashMap();
-  
-  public tzl(@NonNull ViewGroup paramViewGroup)
+  public tzl(@NonNull tzj paramtzj)
   {
-    super(paramViewGroup);
+    super(paramtzj);
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public void a(@NonNull tzj paramtzj, @NonNull tkm paramtkm)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561391, paramViewGroup, false);
-  }
-  
-  public void a(int paramInt, twp paramtwp, @NonNull ArrayList<uav> paramArrayList)
-  {
-    super.a(paramInt, paramtwp, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzk)localIterator.next()).a(paramInt, paramtwp, paramArrayList);
+    ved.b("InteractWidgetPageHolder", "receive poll info event.");
+    if (paramtzj.d()) {
+      paramtzj.a(paramtzj.jdField_a_of_type_Int, paramtzj.b, paramtzj.jdField_a_of_type_Uas, paramtzj.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
     }
   }
   
-  public void a(@NonNull tzk paramtzk)
+  public Class acceptEventClass()
   {
-    this.a.put(paramtzk.getClass().getName(), paramtzk);
-  }
-  
-  public void a(tzl paramtzl)
-  {
-    super.a(paramtzl);
-    paramtzl = this.a.values().iterator();
-    while (paramtzl.hasNext()) {
-      ((tzk)paramtzl.next()).a(this);
-    }
-  }
-  
-  public void a(uaj paramuaj)
-  {
-    super.a(paramuaj);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzk)localIterator.next()).a(paramuaj);
-    }
-  }
-  
-  @Nullable
-  public tzk b(Class<? extends tzk> paramClass)
-  {
-    return (tzk)this.a.get(paramClass.getName());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzk)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((tzk)localIterator.next()).c();
-    }
+    return tkm.class;
   }
 }
 

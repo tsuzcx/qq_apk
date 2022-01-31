@@ -1,50 +1,173 @@
-import UserGrowth.stGlobalConfig;
-import UserGrowth.stPopWindowsConfig;
+import NS_KING_PUBLIC.stAuth;
 import android.app.Activity;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import java.net.URLDecoder;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-class sjc
-  implements snn
+public class sjc
 {
-  sjc(sjb paramsjb, Context paramContext) {}
+  private static int jdField_a_of_type_Int;
+  private static volatile sjc jdField_a_of_type_Sjc;
+  private aabl jdField_a_of_type_Aabl;
+  private Map<Long, sje> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void a(String paramString, int paramInt)
+  private sjc()
   {
-    sng.a(sjb.a(this.jdField_a_of_type_Sjb), "biz_src_jc_gzh_weishi", paramString, 1, sjb.a(this.jdField_a_of_type_Sjb).link_strategy_type, sjb.a(this.jdField_a_of_type_Sjb));
-    smq.a(114, sjb.b(this.jdField_a_of_type_Sjb), sjb.c(this.jdField_a_of_type_Sjb), this.jdField_a_of_type_Sjb.a.windowsid);
-    sms.c(114, this.jdField_a_of_type_Sjb.a.type, this.jdField_a_of_type_Sjb.a.windowsid);
-    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000003, this.jdField_a_of_type_Sjb.a.windowsid);
+    a();
   }
   
-  public void b(String paramString, int paramInt)
+  private Activity a()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    Activity localActivity = null;
+    if (SplashActivity.a != null) {
+      localActivity = (Activity)SplashActivity.a.get();
+    }
+    Object localObject = localActivity;
+    if (localActivity == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    return localObject;
+  }
+  
+  public static sjc a()
+  {
+    if (jdField_a_of_type_Sjc == null) {}
+    try
     {
-      paramString = URLDecoder.decode(paramString);
-      onk.e(sjb.a(this.jdField_a_of_type_Sjb), paramString);
-      sne.a("weishi-813", "阻断rich弹窗:" + paramString);
-      smq.a(140, sjb.b(this.jdField_a_of_type_Sjb), sjb.c(this.jdField_a_of_type_Sjb), this.jdField_a_of_type_Sjb.a.windowsid);
-      sms.c(140, this.jdField_a_of_type_Sjb.a.type, this.jdField_a_of_type_Sjb.a.windowsid);
-      WSPublicAccReport.getInstance().reportClickRichBlockPop(1000004, this.jdField_a_of_type_Sjb.a.windowsid);
+      if (jdField_a_of_type_Sjc == null) {
+        jdField_a_of_type_Sjc = new sjc();
+      }
+      return jdField_a_of_type_Sjc;
+    }
+    finally {}
+  }
+  
+  private sje a()
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      return (sje)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(snf.a()));
+    }
+    return null;
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    jdField_a_of_type_Int = 0;
+    String str = paramJSONObject.optString("openid");
+    paramJSONObject = paramJSONObject.optString("access_token");
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramJSONObject))) {
+      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(snf.a()), new sje(str, paramJSONObject));
+    }
+    str = bfnt.a(str, snf.a());
+    paramJSONObject = bfnt.a(paramJSONObject, snf.a());
+    LocalMultiProcConfig.putString4Uin("key_qq_connect_open_id", str, snf.a());
+    LocalMultiProcConfig.putString4Uin("key_qq_connect_access_token", paramJSONObject, snf.a());
+    LocalMultiProcConfig.putLong4Uin("key_qq_connect_auth_time", System.currentTimeMillis(), snf.a());
+  }
+  
+  private boolean a()
+  {
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        long l1 = snf.a();
+        Object localObject1 = this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l1));
+        if (localObject1 != null) {
+          return bool;
+        }
+        long l2 = System.currentTimeMillis();
+        long l3 = LocalMultiProcConfig.getLong4Uin("key_qq_connect_auth_time", 0L, l1);
+        snb.b("WSQQConnectAuthManager", "now qq connect auth time diff (sec) = " + (l2 - l3) / 1000L);
+        if (l2 - l3 > 1728000000L)
+        {
+          bool = false;
+        }
+        else
+        {
+          localObject1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_open_id", "", l1);
+          String str1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_access_token", "", l1);
+          String str2 = bfnt.b((String)localObject1, snf.a());
+          String str3 = bfnt.b(str1, snf.a());
+          snb.b("weishi-828", "use sp openId and accessToken encrypted:" + (String)localObject1 + " , " + str1 + ", decrypt:" + str2 + " , " + str3);
+          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
+            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(snf.a()), new sje(str2, str3));
+          } else {
+            bool = false;
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  private void c()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      aabq.a();
+      this.jdField_a_of_type_Aabl = aabq.a(a(), 6, String.valueOf(1101083114));
+      if (this.jdField_a_of_type_Aabl != null) {
+        this.jdField_a_of_type_Aabl.a("loginSilent", null, new sjd(this));
+      }
+    }
+  }
+  
+  private void d()
+  {
+    jdField_a_of_type_Int += 1;
+    snb.b("WSQQConnectAuthManager", "authRetry: " + jdField_a_of_type_Int);
+    if (jdField_a_of_type_Int >= 3)
+    {
+      jdField_a_of_type_Int = 0;
       return;
     }
-    sne.c("weishi-813", "阻断rich弹窗:context 不是Activity");
+    c();
   }
   
-  public void c(String paramString, int paramInt)
+  @NotNull
+  public stAuth a(String paramString1, String paramString2)
   {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = sjb.a(this.jdField_a_of_type_Sjb).link_strategy_type;
-    localWSDownloadParams.mEventId = 401;
-    localWSDownloadParams.mTestId = sms.b();
-    localWSDownloadParams.mScheme = paramString;
-    skq.a((Activity)sjb.a(this.jdField_a_of_type_Sjb), localWSDownloadParams, false);
-    sms.c(115, this.jdField_a_of_type_Sjb.a.type, this.jdField_a_of_type_Sjb.a.windowsid);
-    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000002, this.jdField_a_of_type_Sjb.a.windowsid);
+    sje localsje = a();
+    if (localsje != null)
+    {
+      snb.b("weishi-828", "use memory openId and accessToken" + localsje.a + " , " + localsje.b);
+      return new stAuth(1, localsje.a, localsje.b);
+    }
+    if (a())
+    {
+      localsje = a();
+      if (localsje != null)
+      {
+        snb.b("weishi-828", "use memory openId and accessToken" + localsje.a + " , " + localsje.b);
+        return new stAuth(1, localsje.a, localsje.b);
+      }
+    }
+    snb.b("weishi-828", "未获取到openId和accessToken，使用了兜底方案");
+    c();
+    return new stAuth(2, paramString1, paramString2);
+  }
+  
+  public void a()
+  {
+    if (!a()) {
+      c();
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    c();
   }
 }
 

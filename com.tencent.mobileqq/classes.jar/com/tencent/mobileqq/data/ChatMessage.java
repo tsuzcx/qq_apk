@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aulx;
+import aulz;
 
 public abstract class ChatMessage
   extends MessageRecord
@@ -28,7 +28,7 @@ public abstract class ChatMessage
   public boolean mNeedGrayTips;
   public boolean mNeedTimeStamp;
   public boolean mPendantAnimatable;
-  @aulx
+  @aulz
   private int mViewHeight;
   
   protected abstract void doParse();

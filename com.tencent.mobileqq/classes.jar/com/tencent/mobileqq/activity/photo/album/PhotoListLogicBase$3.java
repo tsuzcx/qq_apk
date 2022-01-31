@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agsj;
+import agsh;
 import mqq.util.WeakReference;
 
 public class PhotoListLogicBase$3
   implements Runnable
 {
-  public PhotoListLogicBase$3(agsj paramagsj) {}
+  public PhotoListLogicBase$3(agsh paramagsh) {}
   
   public void run()
   {

@@ -1,4 +1,5 @@
 public class ayud
+  extends ayuf
 {
   private int a = 480000;
   private int b = 9;

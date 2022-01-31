@@ -1,362 +1,727 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.script.SpriteTaskHandler.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.apollo.script.SpriteUtil.1;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Apollo3DMessage;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajfh
-  implements ajfk, ajfo
 {
-  private static int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ajfb jdField_a_of_type_Ajfb;
-  private ajfq jdField_a_of_type_Ajfq;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SpriteTaskHandler.1(this);
-  private BlockingDeque<SpriteTaskParam> jdField_a_of_type_JavaUtilConcurrentBlockingDeque;
-  private CopyOnWriteArrayList<SpriteTaskParam> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  private int jdField_b_of_type_Int;
-  private CopyOnWriteArrayList<ajfp> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private static int a;
   
-  public ajfh(ajfb paramajfb, ajfq paramajfq)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteTaskHandler", 2, "SpriteTaskHandler constructor.");
-    }
-    this.jdField_a_of_type_Ajfb = paramajfb;
-    this.jdField_a_of_type_Ajfq = paramajfq;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque = new LinkedBlockingDeque(50);
     jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  public SpriteTaskParam a()
+  public static int a()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      return null;
-    }
-    return (SpriteTaskParam)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
+    return (int)(bbdh.i() * 4L / 3L);
   }
   
-  public SpriteTaskParam a(int paramInt)
+  public static int a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    switch (paramInt)
     {
-      SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
-      if (localSpriteTaskParam.jdField_a_of_type_Int == paramInt) {
-        return localSpriteTaskParam;
-      }
+    case 8: 
+    default: 
+      return 0;
+    case 7: 
+      return 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteTaskHandler", 2, "[findTask], task NOT found in queue");
-    }
-    return null;
+    return 2;
   }
   
-  public SpriteTaskParam a(long paramLong)
+  public static int a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      return null;
+    if ((paramInt1 == 0) || (8 == paramInt1)) {
+      paramInt2 = ApolloUtil.b(208.0F, paramString, paramInt3);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
-      if (localSpriteTaskParam.jdField_a_of_type_Long == paramLong) {
-        return localSpriteTaskParam;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteTaskHandler", 2, "[findTaskByTaskId], task NOT found in queue");
-    }
-    return null;
-  }
-  
-  public SpriteTaskParam a(long paramLong, int paramInt)
-  {
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      localObject = null;
-    }
-    SpriteTaskParam localSpriteTaskParam;
     do
     {
-      return localObject;
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
       do
       {
-        if (!((Iterator)localObject).hasNext()) {
+        return paramInt2;
+        if (3 == paramInt1) {
+          return 32;
+        }
+        if (6 != paramInt1) {
           break;
         }
-        localSpriteTaskParam = (SpriteTaskParam)((Iterator)localObject).next();
-      } while ((localSpriteTaskParam == null) || (localSpriteTaskParam.jdField_a_of_type_Long != paramLong) || (paramInt != 2));
-      localObject = localSpriteTaskParam;
-    } while (!QLog.isColorLevel());
-    QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[stopTask], msgId:", Long.valueOf(paramLong), ",taskId:", Integer.valueOf(localSpriteTaskParam.jdField_a_of_type_Int) });
-    return localSpriteTaskParam;
-    return null;
+        paramInt2 = 33;
+      } while (paramInt3 != 2);
+      return 75;
+      if (7 == paramInt1)
+      {
+        if (paramInt3 != 2) {
+          break;
+        }
+        return 74;
+      }
+    } while (9 == paramInt1);
+    QLog.d("cmshow_scripted_SpriteUtil", 1, new Object[] { "Other bubble type, NOT Handle, bubbleType:", Integer.valueOf(paramInt1), ", bubbleId:", Integer.valueOf(32) });
+    return 32;
   }
   
-  public void a()
+  public static int a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, boolean paramBoolean3)
+  {
+    int i = 26;
+    paramInt2 = 0;
+    if (paramBoolean1)
+    {
+      if (!paramBoolean2) {
+        break label89;
+      }
+      if (paramBoolean3) {
+        paramInt2 = 81;
+      }
+    }
+    else if (!paramBoolean1)
+    {
+      if (!paramBoolean2) {
+        break label101;
+      }
+      if (!paramBoolean3) {
+        break label95;
+      }
+      paramInt2 = 84;
+    }
+    for (;;)
+    {
+      if (ApolloUtil.d(paramInt1, paramInt2)) {
+        return paramInt2;
+      }
+      QLog.w("cmshow_scripted_SpriteUtil", 1, "nick bubble not exist, id:" + paramInt2);
+      paramInt1 = i;
+      if (paramBoolean1) {
+        paramInt1 = 25;
+      }
+      return paramInt1;
+      paramInt2 = 82;
+      break;
+      label89:
+      paramInt2 = 25;
+      break;
+      label95:
+      paramInt2 = 83;
+      continue;
+      label101:
+      paramInt2 = 26;
+    }
+    return paramInt2;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    return airx.b(paramQQAppInterface);
+  }
+  
+  public static aivv a(String paramString1, QQAppInterface paramQQAppInterface, int paramInt, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramString1 = new JSONObject(paramString1);
+        int j = paramString1.optInt("isNeedRemark");
+        JSONArray localJSONArray1 = paramString1.optJSONArray("uins");
+        paramString1 = new JSONObject();
+        JSONArray localJSONArray2 = new JSONArray();
+        int i = 0;
+        if (i < localJSONArray1.length())
+        {
+          JSONObject localJSONObject = new JSONObject();
+          String str1 = localJSONArray1.optString(i);
+          if (j == 0)
+          {
+            bool = true;
+            String str2 = a(paramQQAppInterface, paramInt, str1, paramString2, bool);
+            localJSONObject.put("uin", str1);
+            localJSONObject.put("nickname", str2);
+            localJSONArray2.put(localJSONObject);
+            i += 1;
+          }
+        }
+        else
+        {
+          paramString1.put("nicknames", localJSONArray2);
+          paramQQAppInterface = new aivv();
+          paramQQAppInterface.jdField_b_of_type_Boolean = true;
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString1.toString();
+          return paramQQAppInterface;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("cmshow_scripted_SpriteUtil", 1, paramString1, new Object[0]);
+        return null;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public static ajeq a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return (ajeq)((ajfe)paramQQAppInterface.getManager(249)).a().a(0);
+  }
+  
+  public static ajew a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return null;
+      paramQQAppInterface = a(paramQQAppInterface);
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static ajez a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return ((ajfe)paramQQAppInterface.getManager(249)).a();
+  }
+  
+  public static ajfa a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return ((ajfe)paramQQAppInterface.getManager(249)).a();
+  }
+  
+  public static ajfe a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return (ajfe)paramQQAppInterface.getManager(249);
+  }
+  
+  public static ApolloActionData a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    return ((ajmu)paramQQAppInterface.getManager(155)).c(paramInt);
+  }
+  
+  public static MessageForApollo a(String paramString, ajez paramajez)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (paramajez.a() == null) {
+          return null;
+        }
+        JSONObject localJSONObject = new JSONObject(new JSONObject(paramString).optString("basicMsg"));
+        Object localObject = new ApolloMessage();
+        ((ApolloMessage)localObject).id = localJSONObject.optInt("id");
+        paramString = localJSONObject.optString("name");
+        if (!TextUtils.isEmpty(paramString)) {
+          ((ApolloMessage)localObject).name = bbco.decode(paramString.getBytes("utf-8"), 0);
+        }
+        ((ApolloMessage)localObject).flag = localJSONObject.optInt("flag");
+        ((ApolloMessage)localObject).peer_status = localJSONObject.optInt("peerStatus");
+        ((ApolloMessage)localObject).sender_status = localJSONObject.optInt("senderStatus");
+        ((ApolloMessage)localObject).peer_ts = localJSONObject.optLong("peerTS");
+        ((ApolloMessage)localObject).sender_ts = localJSONObject.optLong("senderTS");
+        ((ApolloMessage)localObject).peer_uin = localJSONObject.optLong("peerUin");
+        paramString = localJSONObject.optString("atText");
+        if (!paramString.isEmpty()) {
+          ((ApolloMessage)localObject).text = bbco.decode(paramString.getBytes("utf-8"), 0);
+        }
+        paramString = localJSONObject.optJSONObject("extraStr");
+        localJSONObject = localJSONObject.optJSONObject("extendJson");
+        if (paramString == null)
+        {
+          paramString = new JSONObject();
+          if (localJSONObject != null) {
+            paramString.put("extendJson", localJSONObject);
+          }
+          ((ApolloMessage)localObject).extStr = paramString.toString();
+          paramajez = axas.a(paramajez.a(), paramajez.a().a.jdField_a_of_type_JavaLangString, paramajez.a().a.jdField_b_of_type_JavaLangString, paramajez.jdField_a_of_type_Int, (ApolloMessage)localObject);
+          paramajez.inputText = paramString.optString("inputText");
+          paramajez.audioId = paramString.optInt("audioID");
+          if (paramString.has("audioStartTime")) {
+            paramajez.audioStartTime = ((float)paramString.optDouble("audioStartTime"));
+          }
+          paramajez.actionType = paramString.optInt("actionType");
+          if (localJSONObject != null) {
+            paramajez.extendJson = localJSONObject.toString();
+          }
+          if (paramString.has("mApollo3DMessage"))
+          {
+            paramString = paramString.getJSONObject("mApollo3DMessage");
+            localObject = new Apollo3DMessage();
+            ((Apollo3DMessage)localObject).setMessageWithJSONObject(paramString);
+            paramajez.mApollo3DMessage = ((Apollo3DMessage)localObject);
+          }
+          return paramajez;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmshow_scripted_SpriteUtil", 1, paramString, new Object[0]);
+        return null;
+      }
+    }
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteTaskHandler", 2, "[clear]");
+      QLog.d("cmshow_scripted_SpriteUtil", 2, new Object[] { "[getSpriteName], uin:", paramString1, ",sessionType:", Integer.valueOf(paramInt), ",groupUin:", paramString2, ",isNeedRemark:", Boolean.valueOf(paramBoolean) });
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)))
+    {
+      paramString1 = "";
+      return paramString1;
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
-      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    if (("-1".equals(paramString1)) || ("-2".equals(paramString1))) {
+      return "";
     }
-    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Ajfb != null)) {
-      VipUtils.a(this.jdField_a_of_type_Ajfb.a(), "cmshow", "Apollo", "play_times", ApolloUtil.b(this.jdField_a_of_type_Ajfb.jdField_a_of_type_Int), 0, new String[] { Integer.toString(this.jdField_b_of_type_Int), this.jdField_a_of_type_Ajfb.jdField_a_of_type_JavaLangString });
+    String str = "";
+    if (-1 == paramInt) {
+      paramString2 = bbcz.c(paramQQAppInterface, paramString1, true);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.clear();
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      QLog.w("cmshow_scripted_SpriteTaskHandler", 1, "[removeTask], fail. NO task. taskId:" + paramInt);
-    }
+    label253:
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[removeTask], total task num:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), ",taskId:", Integer.valueOf(paramInt) });
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
+      for (;;)
       {
-        SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
-        if (localSpriteTaskParam.jdField_a_of_type_Int == paramInt)
+        paramQQAppInterface = paramString2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          paramQQAppInterface = paramString2.replace("\\", "").replace("'", "").replace("\"", "");
+        }
+        if (TextUtils.isEmpty(paramQQAppInterface)) {
+          break;
+        }
+        return paramQQAppInterface;
+        if ((paramInt != 1) && (paramInt != 3000)) {
+          break label272;
+        }
+        if (paramBoolean) {}
+        for (str = bbcz.f(paramQQAppInterface, paramString2, paramString1);; str = bbcz.e(paramQQAppInterface, paramString2, paramString1))
         {
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localSpriteTaskParam);
-          return;
+          if (!TextUtils.isEmpty(str))
+          {
+            paramString2 = str;
+            if (!str.equals(paramString1)) {
+              break;
+            }
+          }
+          paramString2 = ((ajxl)paramQQAppInterface.getManager(51)).e(paramString1);
+          if (paramString2 == null) {
+            break label253;
+          }
+          paramString2 = paramString2.name;
+          break;
         }
+        ((FriendListHandler)paramQQAppInterface.a(1)).a(paramString1, false);
+        paramString2 = str;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("cmshow_scripted_SpriteTaskHandler", 2, "[removeTask], task NOT found in queue");
-  }
-  
-  public void a(ajfp paramajfp)
-  {
-    if ((paramajfp != null) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null))
+      paramString2 = str;
+    } while (paramInt != 0);
+    label272:
+    if (paramBoolean) {}
+    for (str = bbcz.p(paramQQAppInterface, paramString1);; str = bbcz.c(paramQQAppInterface, paramString1, true))
     {
-      if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramajfp)) {
-        QLog.w("cmshow_scripted_SpriteTaskHandler", 1, "[addActionCallback], repeat callback.");
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramajfp);
-  }
-  
-  public void a(SpriteTaskParam paramSpriteTaskParam)
-  {
-    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_Ajfb == null)) {
-      QLog.w("cmshow_scripted_SpriteTaskHandler", 1, "[addTask], fail. null param");
-    }
-    do
-    {
-      return;
-      if ((1 == this.jdField_a_of_type_Ajfb.d) && (paramSpriteTaskParam.g != 1))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, paramSpriteTaskParam);
-        if ((this.jdField_a_of_type_Ajfq instanceof SpriteUIHandler)) {
-          ((SpriteUIHandler)this.jdField_a_of_type_Ajfq).a(false, true, null);
-        }
-        localObject1 = this.jdField_a_of_type_Ajfb.a();
-        localObject2 = Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Ajfb.jdField_a_of_type_Int));
-        if (paramSpriteTaskParam.g == 2) {}
-        for (paramSpriteTaskParam = "1";; paramSpriteTaskParam = "2")
-        {
-          VipUtils.a((AppInterface)localObject1, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { localObject2, paramSpriteTaskParam });
-          return;
-        }
-      }
-      if (!a(paramSpriteTaskParam)) {
+      paramString2 = str;
+      if (!paramString1.equals(str)) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("cmshow_scripted_SpriteTaskHandler", 2, "[addTask], same task. discard it.");
-    return;
-    Object localObject1 = a(paramSpriteTaskParam.jdField_a_of_type_Long, paramSpriteTaskParam.g);
-    if (localObject1 == null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.offerLast(paramSpriteTaskParam);
-      long l = System.currentTimeMillis();
-      if ((l - this.jdField_a_of_type_Long > 500L) || (!a()))
-      {
-        paramSpriteTaskParam = (SpriteTaskParam)this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.pollLast();
-        this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.clear();
-        this.jdField_a_of_type_Long = l;
-        if (paramSpriteTaskParam == null) {
-          QLog.e("cmshow_scripted_SpriteTaskHandler", 1, "[addTask] poll task from deque failed");
-        }
-      }
-      else
-      {
-        ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-        return;
-      }
-      paramSpriteTaskParam.jdField_b_of_type_Int = 1;
-      i = jdField_a_of_type_Int + 1;
-      jdField_a_of_type_Int = i;
-      paramSpriteTaskParam.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, paramSpriteTaskParam);
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[addTask], size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), ",taskId:", Integer.valueOf(paramSpriteTaskParam.jdField_a_of_type_Int) });
-      }
-      b((SpriteTaskParam)localObject1);
-      return;
-    }
-    ((SpriteTaskParam)localObject1).jdField_b_of_type_Int = 5;
-    Object localObject2 = this.jdField_a_of_type_Ajfb.a();
-    int i = ApolloUtil.b(this.jdField_a_of_type_Ajfb.jdField_a_of_type_Int);
-    String str = Integer.toString(paramSpriteTaskParam.f);
-    if (paramSpriteTaskParam.jdField_a_of_type_Boolean) {}
-    for (paramSpriteTaskParam = "0";; paramSpriteTaskParam = "1")
-    {
-      VipUtils.a((AppInterface)localObject2, "cmshow", "Apollo", "msg_paly_stop", i, 0, new String[] { str, paramSpriteTaskParam });
+      ((FriendListHandler)paramQQAppInterface.a(1)).a(paramString1, false);
+      paramString2 = str;
       break;
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public static String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[onStartAction], taskId:", Integer.valueOf(paramInt) });
+    String str = "";
+    if (paramString != null) {
+      str = Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
     }
-    paramString = a(paramInt);
-    if (paramString == null) {
-      return;
-    }
-    paramString.jdField_b_of_type_Int = 3;
-    if (this.jdField_a_of_type_Ajfq != null) {
-      this.jdField_a_of_type_Ajfq.a(paramString, paramString.jdField_a_of_type_Long);
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ajfp localajfp = (ajfp)localIterator.next();
-      if (localajfp != null) {
-        localajfp.a(paramString, paramString.jdField_a_of_type_Long);
-      }
-    }
-    this.jdField_b_of_type_Int += 1;
+    return str;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public static void a(int paramInt, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[onCompleteAction], taskId:", Integer.valueOf(paramInt1), ",type:", Integer.valueOf(paramInt2) });
-    }
-    paramString = a(paramInt1);
-    if (paramString == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Ajfq != null) {
-      this.jdField_a_of_type_Ajfq.a(paramString, paramString.jdField_a_of_type_Long, paramInt2);
-    }
-    paramString.jdField_b_of_type_Int = 6;
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    if (BaseApplicationImpl.sProcessId != 1) {}
+    Object localObject;
+    do
     {
-      ajfp localajfp = (ajfp)localIterator.next();
-      if (localajfp != null) {
-        localajfp.a(paramString, paramString.jdField_a_of_type_Long, paramInt2);
-      }
+      do
+      {
+        return;
+        localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+      } while ((localObject == null) || (!(localObject instanceof QQAppInterface)));
+      localObject = a((QQAppInterface)localObject);
+    } while (localObject == null);
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = -100;
     }
-    a(paramInt1);
+    ((ajfe)localObject).a(i, paramVarArgs);
   }
   
-  public boolean a()
+  public static void a(ajez paramajez, List<SpriteTaskParam> paramList)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    if ((paramajez == null) || (paramList == null) || (paramList.size() == 0)) {}
+    do
     {
-      SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
-      if ((localSpriteTaskParam != null) && (localSpriteTaskParam.jdField_b_of_type_Int == 3)) {
-        return true;
-      }
+      return;
+      paramajez = a(paramajez.a());
+    } while (paramajez == null);
+    paramajez.a().a(paramList);
+  }
+  
+  public static void a(ajfq paramajfq, int paramInt, ApolloActionData paramApolloActionData)
+  {
+    if (paramajfq == null) {
+      return;
     }
+    SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
+    localSpriteTaskParam.f = paramApolloActionData.actionId;
+    localSpriteTaskParam.k = paramInt;
+    localSpriteTaskParam.jdField_c_of_type_Int = paramApolloActionData.actionType;
+    localSpriteTaskParam.g = 5;
+    localSpriteTaskParam.e = 0;
+    localSpriteTaskParam.jdField_a_of_type_Long = 1000000L;
+    localSpriteTaskParam.jdField_a_of_type_Boolean = true;
+    localSpriteTaskParam.jdField_b_of_type_Boolean = false;
+    paramApolloActionData = paramajfq.a();
+    if ((paramApolloActionData != null) && (paramApolloActionData.a() != null)) {
+      localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(paramApolloActionData.jdField_b_of_type_JavaLangString);
+    }
+    paramajfq.a().a(localSpriteTaskParam);
+  }
+  
+  public static void a(ajfq paramajfq, String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramajfq == null) || (paramajfq.a() == null)) {
+      return;
+    }
+    ajeq localajeq = paramajfq.a();
+    paramajfq.a().a(paramInt1);
+    paramajfq = paramajfq.a();
+    int i = 1;
+    if (paramajfq != null) {
+      i = airx.a(paramajfq, paramajfq.c());
+    }
+    localajeq.a("", paramString, a(paramInt1, paramInt2, paramString, i));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = a(paramQQAppInterface);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam)
+  {
+    if ((paramSpriteTaskParam == null) || (paramQQAppInterface == null)) {}
+    ajez localajez;
+    int k;
+    label71:
+    do
+    {
+      do
+      {
+        return;
+        localajez = a(paramQQAppInterface);
+      } while (localajez == null);
+      k = localajez.jdField_a_of_type_Int;
+      if ((1 == k) || (3000 == k))
+      {
+        i = 0;
+        int j;
+        if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString))
+        {
+          if (paramSpriteTaskParam.jdField_b_of_type_Boolean) {
+            i = 2;
+          }
+        }
+        else
+        {
+          if (!paramSpriteTaskParam.jdField_a_of_type_Boolean) {
+            break label161;
+          }
+          j = 0;
+          k = ApolloUtil.b(k);
+          str = Integer.toString(paramSpriteTaskParam.f);
+          if (paramSpriteTaskParam.e != 0) {
+            break label166;
+          }
+        }
+        for (paramSpriteTaskParam = "0";; paramSpriteTaskParam = "1")
+        {
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_msg_clk", j, k, new String[] { str, paramSpriteTaskParam, String.valueOf(i), String.valueOf(System.currentTimeMillis() / 1000L), localajez.jdField_a_of_type_JavaLangString });
+          return;
+          i = 1;
+          break;
+          j = 1;
+          break label71;
+        }
+      }
+    } while (k != 0);
+    label161:
+    label166:
+    String str = "0";
+    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {
+      str = "1";
+    }
+    if (paramSpriteTaskParam.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 1)
+    {
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "msg_clk", i, 0, new String[] { Integer.toString(paramSpriteTaskParam.f), str, "", String.valueOf(System.currentTimeMillis() / 1000L), localajez.jdField_a_of_type_JavaLangString });
+      return;
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = a(paramQQAppInterface);
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return true;
+      if (-1 == paramQQAppInterface.d) {
+        paramQQAppInterface.b();
+      }
+    } while (paramQQAppInterface.d == 1);
     return false;
   }
   
-  public boolean a(long paramLong)
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {}
-    SpriteTaskParam localSpriteTaskParam;
-    do
+    if ((paramInt == 1) || (paramInt == 3000))
     {
+      HotChatManager localHotChatManager = (HotChatManager)paramQQAppInterface.getManager(60);
+      if ((localHotChatManager != null) && (localHotChatManager.b(paramString)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support hot chat right now.");
+        }
+        return false;
+      }
+    }
+    if ((paramInt == 1) && (TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support isQidianPrivateTroop now.");
+      }
       return false;
-      localSpriteTaskParam = a(paramLong);
-    } while ((localSpriteTaskParam == null) || (localSpriteTaskParam.jdField_b_of_type_Int != 3));
+    }
+    if ((paramInt == 0) && (bbbr.b(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support isBabyQUin now.");
+      }
+      return false;
+    }
+    if ((paramInt != 1) && (paramInt != 0) && ((paramInt != 3000) || (airx.c("discuss") != 1)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support, not friend or troop or discussion.");
+      }
+      return false;
+    }
     return true;
   }
   
-  public boolean a(SpriteTaskParam paramSpriteTaskParam)
+  public static boolean a(String paramString, SpriteTaskParam paramSpriteTaskParam, ajez paramajez, boolean paramBoolean)
   {
-    if (paramSpriteTaskParam == null) {
-      return false;
+    boolean bool2 = true;
+    boolean bool1;
+    if ((TextUtils.isEmpty(paramString)) || (paramajez == null) || (paramajez.a() == null)) {
+      bool1 = false;
     }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    label111:
+    do
     {
-      SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
-      if ((localSpriteTaskParam != null) && (localSpriteTaskParam.jdField_a_of_type_Long == paramSpriteTaskParam.jdField_a_of_type_Long) && (localSpriteTaskParam.g != 2) && (localSpriteTaskParam.g != 3)) {
-        return true;
+      do
+      {
+        do
+        {
+          return bool1;
+          paramajez = paramajez.a().getCurrentAccountUin();
+          if ((TextUtils.isEmpty(paramSpriteTaskParam.jdField_b_of_type_JavaLangString)) || (paramSpriteTaskParam.jdField_b_of_type_JavaLangString.length() <= 4)) {
+            break label111;
+          }
+          if ((!paramString.equals(paramSpriteTaskParam.jdField_b_of_type_JavaLangString)) || (!paramString.equals(paramajez))) {
+            break;
+          }
+          bool1 = bool2;
+        } while (!paramString.equals(paramSpriteTaskParam.jdField_a_of_type_JavaLangString));
+        if (!paramString.equals(paramSpriteTaskParam.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (paramBoolean);
+      return false;
+      if (TextUtils.isEmpty(paramSpriteTaskParam.jdField_a_of_type_JavaLangString)) {
+        break;
       }
-    }
+      bool1 = bool2;
+    } while (paramString.equals(paramajez));
+    return false;
     return false;
   }
   
-  public boolean b(SpriteTaskParam paramSpriteTaskParam)
+  public static int b()
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Ajfb == null) || (!this.jdField_a_of_type_Ajfb.c()))
+    return (int)bbdh.i();
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
     {
-      QLog.w("cmshow_scripted_SpriteTaskHandler", 1, "surfaceview is NOT ready.");
-      bool = false;
+    case 0: 
+    default: 
+      return 1;
+    case 1: 
+      return 2;
+    case 2: 
+      return 3;
     }
-    SpriteTaskParam localSpriteTaskParam;
+    return 113;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
     do
     {
-      return bool;
-      localSpriteTaskParam = paramSpriteTaskParam;
-      if (paramSpriteTaskParam == null) {
-        localSpriteTaskParam = a();
-      }
-      if ((localSpriteTaskParam == null) || (localSpriteTaskParam.jdField_b_of_type_Int == 2)) {
+      ajez localajez;
+      SharedPreferences localSharedPreferences;
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localajez = a(paramQQAppInterface);
+          } while (localajez == null);
+          localSharedPreferences = localajez.jdField_a_of_type_AndroidContentSharedPreferences;
+        } while (localSharedPreferences == null);
+        i = localSharedPreferences.getInt("audio_tips_times" + localajez.jdField_b_of_type_JavaLangString, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d("cmshow_scripted_SpriteUtil", 2, "totalTimes:" + i);
+        }
+      } while (3 == i);
+      localSharedPreferences.edit().putInt("audio_tips_times" + localajez.jdField_b_of_type_JavaLangString, i + 1).commit();
+      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.post(new SpriteUtil.1());
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = a(paramQQAppInterface);
+    return (paramQQAppInterface == null) || (paramQQAppInterface.b());
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    int i = b(0);
+    if (!c(paramQQAppInterface))
+    {
+      ajlo.a(i, 10, 102, new Object[] { "not meet basic case" });
+      QLog.i("cmshow_scripted_SpriteUtil", 1, "not meet basic case.");
+    }
+    do
+    {
+      do
+      {
         return false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[execSpriteTask], taskId:", Integer.valueOf(localSpriteTaskParam.jdField_a_of_type_Int), ",actionId:", Integer.valueOf(localSpriteTaskParam.f) });
-      }
-    } while (localSpriteTaskParam.jdField_a_of_type_Ajfl == null);
-    localSpriteTaskParam.jdField_a_of_type_Ajfl.b(localSpriteTaskParam);
+        if (1 != ajki.a(paramQQAppInterface.c(), paramQQAppInterface))
+        {
+          ajlo.a(i, 10, 101, new Object[] { "cmshow switch NOT opend" });
+          QLog.i("cmshow_scripted_SpriteUtil", 1, "cmshow switch NOT opend.");
+          return false;
+        }
+        if (!myb.a().a(paramString)) {
+          break;
+        }
+        ajlo.a(i, 10, 104, new Object[] { "aio anonymous" });
+      } while (!QLog.isColorLevel());
+      QLog.d("cmshow_scripted_SpriteUtil", 2, "aio anonymous.");
+      return false;
+    } while ((!a(paramQQAppInterface, paramInt, paramString)) || (b(paramQQAppInterface)));
+    paramQQAppInterface = new SessionInfo();
+    paramQQAppInterface.jdField_a_of_type_Int = paramInt;
+    paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString;
+    return true;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (airx.a(BaseApplicationImpl.getContext())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmshow_scripted_SpriteUtil", 2, "NOT allowed to use cmshow.");
+      return false;
+    } while (!ApolloEngine.a());
+    return true;
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    if (!c(paramQQAppInterface))
+    {
+      QLog.i("cmshow_scripted_SpriteUtil", 1, "not meet basic case.");
+      return false;
+    }
+    if (1 != ajki.a(paramQQAppInterface.c(), paramQQAppInterface))
+    {
+      QLog.i("cmshow_scripted_SpriteUtil", 1, "cmshow switch NOT opend.");
+      return false;
+    }
     return true;
   }
 }

@@ -1,38 +1,45 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
 
 public class baym
+  implements bayk
 {
-  public static String a(Context paramContext)
+  public String a;
+  
+  baym(bayj parambayj, bayh parambayh)
   {
-    if (paramContext == null) {}
-    do
-    {
-      return null;
-      paramContext = paramContext.getFilesDir();
-    } while (paramContext == null);
-    return paramContext.getParent() + "/lib/";
+    if ((parambayh != null) && (parambayh.a != null)) {
+      this.jdField_a_of_type_JavaLangString = parambayh.a.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public static void a(String paramString)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if ((paramString != null) && ((paramString.contains("NativeGifFactory")) || (paramString.contains("NativeGifIndex8")) || (paramString.contains("libkIndexGif")) || (paramString.contains("libskia"))))
+    int i;
+    if (GroupIconHelper.a(paramString)) {
+      i = 1001;
+    }
+    for (String str = GroupIconHelper.b(paramString);; str = paramString)
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("GifSoLoader", 2, String.format("Crash in libkIndexGif support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
+      if (paramBoolean2) {
+        this.jdField_a_of_type_Bayj.a(paramBoolean1, i, str, this.jdField_a_of_type_Bayj.a);
       }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + i);
+        }
+        return;
+        this.jdField_a_of_type_Bayj.a(paramBoolean1, i, str, null);
+      }
+      i = 101;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baym
  * JD-Core Version:    0.7.0.1
  */

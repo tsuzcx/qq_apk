@@ -1,40 +1,23 @@
-import android.graphics.Canvas;
-import com.tencent.av.doodle.MySurfaceView;
-import com.tencent.common.app.BaseApplicationImpl;
+import java.io.BufferedReader;
 
 public class lmo
-  extends lmn
 {
-  private lmp a;
+  boolean a;
+  boolean b;
   
-  public lmo(int paramInt)
+  public void a(BufferedReader paramBufferedReader)
   {
-    this.jdField_a_of_type_Lmp = new lmp();
-    a(paramInt);
+    if (!this.b)
+    {
+      this.a = lml.a(paramBufferedReader, "active");
+      return;
+    }
+    this.a = true;
   }
   
-  private void a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Lmp.a(BaseApplicationImpl.getApplication(), 2131230735, paramInt);
-    this.jdField_a_of_type_Lmp.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
-  }
-  
-  public void a() {}
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Lmp.a((float)paramLong / 1000.0F);
-  }
-  
-  public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Lmp.a(paramCanvas);
-  }
-  
-  public void c(float paramFloat1, float paramFloat2)
-  {
-    super.c(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Lmp.a(null);
+    this.b = paramBoolean;
   }
 }
 

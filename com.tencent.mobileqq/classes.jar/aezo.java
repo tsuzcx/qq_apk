@@ -1,25 +1,14 @@
-import mqq.os.MqqHandler;
+import android.os.MessageQueue.IdleHandler;
 
 class aezo
-  implements anob
+  implements MessageQueue.IdleHandler
 {
-  aezo(aezn paramaezn, MqqHandler paramMqqHandler) {}
+  aezo(aezl paramaezl) {}
   
-  public void a(int paramInt)
+  public boolean queueIdle()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
+    this.a.b();
+    return false;
   }
 }
 

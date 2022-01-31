@@ -1,54 +1,96 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.view.View;
+import android.widget.CompoundButton;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.util.WeakReference;
 
-public class agsc
+public abstract class agsc
+  implements agmi
 {
-  public static int a;
-  public static Map<String, LocalMediaInfo> a;
-  public long a;
-  public aglx a;
-  public LocalMediaInfo a;
-  public String a;
-  public HashMap<LocalMediaInfo, LocalMediaInfo> a;
-  public HashSet<String> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public HashSet<String> b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public boolean h;
-  public boolean i = true;
-  public boolean j;
-  public boolean k;
+  protected static volatile agsc a;
+  public agrz a;
+  public agsa a;
+  agsd jdField_a_of_type_Agsd = null;
+  agse jdField_a_of_type_Agse = null;
+  agsf jdField_a_of_type_Agsf = null;
+  agsg jdField_a_of_type_Agsg = null;
+  public WeakReference<NewPhotoListActivity> a;
   
-  static
+  protected agsc(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramNewPhotoListActivity);
+    this.jdField_a_of_type_Agrz = agrz.a(paramNewPhotoListActivity.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    paramNewPhotoListActivity.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
+    this.jdField_a_of_type_Agrz.a();
+    this.jdField_a_of_type_Agsa = new agsa();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListActivity", 2, "PhotoListLogic new，activity = " + paramNewPhotoListActivity + ",PhotoCommonData = " + this.jdField_a_of_type_Agrz);
+    }
   }
   
-  public agsc()
+  abstract String a(LocalMediaInfo paramLocalMediaInfo);
+  
+  protected abstract List<LocalMediaInfo> a();
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Intent paramIntent);
+  
+  protected abstract void a(Message paramMessage);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, Bundle paramBundle, int paramInt, Intent paramIntent);
+  
+  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean);
+  
+  public void a(boolean paramBoolean) {}
+  
+  abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  abstract void a(boolean paramBoolean, Intent paramIntent);
+  
+  protected abstract boolean a();
+  
+  abstract boolean a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean);
+  
+  abstract boolean a(List<LocalMediaInfo> paramList);
+  
+  public void b()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListActivity", 2, "PhotoListLogic close，activity = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_Agrz);
+    }
+    this.jdField_a_of_type_Agrz.b();
+    jdField_a_of_type_Agsc = null;
   }
+  
+  public abstract void b(Intent paramIntent);
+  
+  public abstract void b(View paramView);
+  
+  public abstract void c();
+  
+  abstract void c(Intent paramIntent);
+  
+  public abstract void c(View paramView);
+  
+  abstract void d();
+  
+  public abstract void d(Intent paramIntent);
+  
+  public abstract void e();
+  
+  public abstract void e(Intent paramIntent);
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

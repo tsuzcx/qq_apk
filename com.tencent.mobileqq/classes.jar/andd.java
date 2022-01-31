@@ -3,30 +3,36 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public final class andd
-  extends ampb<andc>
+  extends ampa<andc>
 {
-  public static void b()
+  public static andc a()
   {
-    QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
-    andc.a(false, (andc)ampm.a().a(482));
+    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
+    return (andc)ampl.a().a(559);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    andc localandc = a();
+    return (localandc != null) && (localandc.a()) && (localandc.a(paramString));
   }
   
   public int a()
   {
-    return 482;
+    return 559;
   }
   
   @NonNull
   public andc a(int paramInt)
   {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
     return new andc();
   }
   
   @Nullable
-  public andc a(ampi[] paramArrayOfampi)
+  public andc a(amph[] paramArrayOfamph)
   {
-    return andc.a(paramArrayOfampi);
+    return andc.a(paramArrayOfamph);
   }
   
   public Class<andc> a()
@@ -36,18 +42,17 @@ public final class andd
   
   public void a(int paramInt)
   {
-    QLog.e("TdsReaderView_TdsReaderConfigProcessor", 1, "onReqFailed: " + paramInt);
+    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
   }
   
   public void a(andc paramandc)
   {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "onUpdate");
-    andc.a(true, paramandc);
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
   }
   
   public boolean a()
   {
-    return false;
+    return true;
   }
   
   public int b()
@@ -57,7 +62,7 @@ public final class andd
   
   public boolean b()
   {
-    return true;
+    return false;
   }
   
   public boolean c()

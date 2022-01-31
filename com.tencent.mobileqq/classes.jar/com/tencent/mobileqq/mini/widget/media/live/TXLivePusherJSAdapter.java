@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import bhnv;
+import bhom;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
@@ -544,12 +544,12 @@ public class TXLivePusherJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean, Object paramObject)
   {
-    bhnv.a(paramObject, "disableLog", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(paramObject, "disableLog", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_setVisibility(int paramInt, Object paramObject)
   {
-    bhnv.a(paramObject, "setVisibility", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(paramObject, "setVisibility", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public TXJSAdapterError enterBackground(boolean paramBoolean)

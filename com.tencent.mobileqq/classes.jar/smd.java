@@ -1,41 +1,18 @@
 import android.os.Parcel;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
 
-public class smd
+public final class smd
+  implements Parcelable.Creator<WSPushOpModel>
 {
-  public String mMsgData;
-  public String mPushId;
-  
-  protected smd(Parcel paramParcel)
+  public WSPushOpModel a(Parcel paramParcel)
   {
-    this.mPushId = paramParcel.readString();
-    this.mMsgData = paramParcel.readString();
+    return new WSPushOpModel(paramParcel);
   }
   
-  protected smd(String paramString)
+  public WSPushOpModel[] a(int paramInt)
   {
-    this.mMsgData = paramString;
-    try
-    {
-      parseJson(new JSONObject(paramString));
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      sne.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
-    }
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject)
-  {
-    this.mPushId = paramJSONObject.optString("pushid");
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.mPushId);
-    paramParcel.writeString(this.mMsgData);
+    return new WSPushOpModel[paramInt];
   }
 }
 

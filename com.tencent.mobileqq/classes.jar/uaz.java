@@ -1,43 +1,105 @@
-import android.os.SystemClock;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-class uaz
-  implements AbsListView.OnScrollListener
+public abstract class uaz
+  extends uah
 {
-  uaz(uax paramuax) {}
+  public int a;
+  @NonNull
+  public final View a;
+  public StoryPlayerGroupHolder a;
+  public String a;
+  public uas a;
+  protected uba a;
+  protected boolean a;
+  public int b;
+  private final String b;
+  protected boolean b;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public uaz(@NonNull ViewGroup paramViewGroup)
   {
-    if (SystemClock.uptimeMillis() - uax.a(this.a) < 500L) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        uax.a(this.a, SystemClock.uptimeMillis());
-      } while (!(this.a.jdField_a_of_type_Two instanceof txc));
-      i = paramInt1 + paramInt2;
-      ((txc)this.a.jdField_a_of_type_Two).a = i;
-    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
-    this.a.jdField_a_of_type_Tzl.a();
-    veg.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Two.toString());
+    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected abstract View a(ViewGroup paramViewGroup);
+  
+  public uaz a(Class<? extends uaz> paramClass)
   {
-    if (paramInt == 0) {
-      uax.a(this.a, false);
+    if (this.jdField_a_of_type_Uba != null) {
+      return this.jdField_a_of_type_Uba.b(paramClass);
     }
-    for (;;)
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    ved.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull uas paramuas, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Uas = paramuas;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
+  }
+  
+  void a(uba paramuba)
+  {
+    this.jdField_a_of_type_Uba = paramuba;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
-      if ((paramInt == 0) && (uax.a(this.a))) {
-        this.a.d();
-      }
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      b(this.jdField_b_of_type_Boolean);
       return;
-      uax.a(this.a, true);
     }
+    ved.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
+  }
+  
+  protected void b() {}
+  
+  protected void b(boolean paramBoolean)
+  {
+    ved.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Uas = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String toString()
+  {
+    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Uas + '}';
   }
 }
 

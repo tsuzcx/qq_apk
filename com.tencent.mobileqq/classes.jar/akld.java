@@ -1,33 +1,86 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
+import QC.HamletCheck;
+import QC.UniBusinessCheckItem;
+import QC.UniLoginCheckRsp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class akld
-  implements ajvb
+  implements ajte
 {
-  public void a(boolean paramBoolean)
+  private WeakReference<QQAppInterface> a;
+  
+  public akld(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean) {
-      paramBoolean = axrl.a(3);
-    }
+    this.a = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null) {}
     for (;;)
     {
-      try
-      {
-        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
-        if (paramBoolean) {
-          continue;
-        }
-        bbdj.d(akfv.a);
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
-        continue;
-      }
-      DeviceProfileManager.b(this);
       return;
-      bbdj.a(akfv.a);
+      if ((paramObject instanceof UniLoginCheckRsp))
+      {
+        bbtq.a(localQQAppInterface).a(((UniLoginCheckRsp)paramObject).stKeyWord);
+        paramObject = (UniLoginCheckRsp)paramObject;
+        if (paramObject.ret != 0) {
+          break;
+        }
+        ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(63);
+        localChatBackgroundManager.a();
+        localChatBackgroundManager.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("QQInitHandler", 2, "bg and effect id clear");
+        }
+        Iterator localIterator = paramObject.stHamletList.iterator();
+        while (localIterator.hasNext())
+        {
+          HamletCheck localHamletCheck = (HamletCheck)localIterator.next();
+          if ((localHamletCheck.itemlist != null) && (localHamletCheck.itemlist.size() > 0))
+          {
+            int i = -1;
+            paramInt = -1;
+            paramObject = localHamletCheck.itemlist.iterator();
+            Object localObject;
+            while (paramObject.hasNext())
+            {
+              localObject = (UniBusinessCheckItem)paramObject.next();
+              if (((UniBusinessCheckItem)localObject).appid == 8) {
+                i = ((UniBusinessCheckItem)localObject).itemid;
+              } else if (((UniBusinessCheckItem)localObject).appid == 35) {
+                paramInt = ((UniBusinessCheckItem)localObject).itemid;
+              }
+            }
+            if (i >= 0)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("QQInitHandler", 2, "bgId:" + i + " effectId:" + paramInt);
+              }
+              localObject = String.valueOf(localHamletCheck.uid);
+              paramObject = localObject;
+              if (localQQAppInterface.getAccount().equals(localObject))
+              {
+                paramObject = localObject;
+                if (localHamletCheck.locationtype == 1) {
+                  paramObject = null;
+                }
+              }
+              if ((!"99".equals(String.valueOf(i))) || (paramInt > 0)) {
+                localChatBackgroundManager.a(i, paramInt, paramObject, "chatbgAuth", ChatBackgroundAuth.a(localHamletCheck.locationtype));
+              }
+            }
+          }
+        }
+      }
     }
+    QLog.e("QQInitHandler", 1, "onResponse: ret:" + paramObject.ret + " errmsg:" + paramObject.errmsg);
   }
 }
 

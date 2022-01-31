@@ -1,61 +1,27 @@
-import android.view.View;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class unx
-  implements uoh
+public final class unx
+  implements URLDrawable.URLDrawableListener
 {
-  public unx(QQStoryMainActivity paramQQStoryMainActivity) {}
+  public unx(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public View a()
-  {
-    return QQStoryMainActivity.a(this.a);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public ImageView a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.startTitleProgress();
-      return;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
-    this.a.stopTitleProgress();
   }
   
-  public void b() {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QQStoryMainActivity.a(this.a, ssi.a, ajyc.a(2131710946));
-      return;
-    }
-    a(ssi.a);
-  }
-  
-  public void c() {}
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

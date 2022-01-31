@@ -1,15 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aajq
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public aajq(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.b();
+    int j = 1;
+    if (!paramCompoundButton.isPressed()) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramCompoundButton = "open_storyset";
+      vei.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
+      paramCompoundButton = new Integer[5];
+      paramCompoundButton[0] = Integer.valueOf(1);
+      if (!paramBoolean) {
+        break label106;
+      }
+    }
+    label106:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton[3] = Integer.valueOf(i);
+      this.a.app.a().a(paramCompoundButton);
+      paramCompoundButton = (sss)this.a.app.a(98);
+      i = j;
+      if (paramBoolean) {
+        i = 2;
+      }
+      paramCompoundButton.a(i);
+      return;
+      paramCompoundButton = "close_storyset";
+      break;
+    }
   }
 }
 

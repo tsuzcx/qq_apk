@@ -1,36 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class udu
-  implements TVK_SDKMgr.OnLogListener
+  implements ufj
 {
-  public int d(String paramString1, String paramString2)
-  {
-    veg.b(paramString1, paramString2);
-    return 0;
-  }
+  public udu(TextureVideoView paramTextureVideoView) {}
   
-  public int e(String paramString1, String paramString2)
+  public void a(ufh paramufh)
   {
-    veg.e(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    veg.c(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    veg.b(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    veg.d(paramString1, paramString2);
-    return 0;
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if (this.a.jdField_a_of_type_Ufj != null) {
+      this.a.jdField_a_of_type_Ufj.a(this.a.jdField_a_of_type_Ufh);
+    }
   }
 }
 

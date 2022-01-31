@@ -1,31 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import Wallet.AcsMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
 public class acrz
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public acrz(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
+  public acrz(ReminderListFragment paramReminderListFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2002)
-    {
-      if (paramBoolean) {}
-      try
-      {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
-      }
-      this.a.b(3, "system error");
-      return;
+    paramView = (AcsMsg)paramView.getTag();
+    ReminderListFragment.a(this.a, paramView);
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
     }
   }
 }

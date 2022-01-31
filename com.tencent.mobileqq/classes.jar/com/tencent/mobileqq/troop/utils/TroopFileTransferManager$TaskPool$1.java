@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bakg;
+import baku;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TroopFileTransferManager$TaskPool$1
   implements Runnable
 {
-  public TroopFileTransferManager$TaskPool$1(bakg parambakg) {}
+  public TroopFileTransferManager$TaskPool$1(baku parambaku) {}
   
   public void run()
   {

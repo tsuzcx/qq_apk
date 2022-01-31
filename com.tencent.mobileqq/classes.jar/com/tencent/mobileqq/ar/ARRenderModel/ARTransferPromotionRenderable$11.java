@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akyb;
-import akyf;
-import alaf;
-import alam;
-import alao;
+import akya;
+import akye;
+import alae;
+import alal;
+import alan;
 
 public class ARTransferPromotionRenderable$11
   implements Runnable
 {
-  public ARTransferPromotionRenderable$11(alam paramalam) {}
+  public ARTransferPromotionRenderable$11(alal paramalal) {}
   
   public void run()
   {
-    if (alam.a(this.this$0) == 6)
+    if (alal.a(this.this$0) == 6)
     {
-      if ((alam.a(this.this$0) != null) && (!alam.a(this.this$0).a.booleanValue())) {
-        alam.a(this.this$0).b(0, 1);
+      if ((alal.a(this.this$0) != null) && (!alal.a(this.this$0).a.booleanValue())) {
+        alal.a(this.this$0).b(0, 1);
       }
-      if (((alam.a(this.this$0).a() != 0) && (alam.c(this.this$0))) || (alam.a(this.this$0).a.booleanValue())) {
+      if (((alal.a(this.this$0).a() != 0) && (alal.c(this.this$0))) || (alal.a(this.this$0).a.booleanValue())) {
         break label124;
       }
       this.this$0.a();
     }
     for (;;)
     {
-      if (alam.a(this.this$0) == null) {
-        alam.a(this.this$0, new akyb());
+      if (alal.a(this.this$0) == null) {
+        alal.a(this.this$0, new akya());
       }
       return;
       label124:
-      if (!alam.a(this.this$0).a.booleanValue()) {
-        alam.a(this.this$0).c(1);
+      if (!alal.a(this.this$0).a.booleanValue()) {
+        alal.a(this.this$0).c(1);
       }
     }
   }

@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public final class bere
-  implements Parcelable.Creator<MiniAppBaseInfo>
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bere
 {
-  public MiniAppBaseInfo a(Parcel paramParcel)
-  {
-    return new MiniAppBaseInfo(paramParcel);
-  }
-  
-  public MiniAppBaseInfo[] a(int paramInt)
-  {
-    return new MiniAppBaseInfo[paramInt];
-  }
+  String a();
 }
 
 

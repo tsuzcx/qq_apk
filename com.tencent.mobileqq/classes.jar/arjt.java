@@ -1,35 +1,89 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2.1.1;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arjt
-  implements EnterCallback
+  extends arfy
+  implements wxt
 {
-  public arjt(ODLoadingActivity.2 param2) {}
+  private String c;
   
-  public void onCloseLoadingView()
+  public arjt()
   {
-    ODLoadingActivity.a(this.a.this$0);
-    this.a.this$0.finish();
-    ODLoadingActivity.a(this.a.this$0).opType("onCloseLoadingView").report();
-    argi.b("33669909");
+    this.mPluginNameSpace = "odapp";
   }
   
-  public void onEnterComplete()
+  public void a(Bundle paramBundle)
   {
-    ODLoadingActivity.a(this.a.this$0).opType("onEnterComplete").report();
-    argi.b("33669911");
+    if (paramBundle == null) {}
+    while ((!"onOpenRoomResult".equals(paramBundle.getString("method"))) || (this.c == null)) {
+      return;
+    }
+    int i = paramBundle.getInt("code", 0);
+    paramBundle = new JSONObject();
+    try
+    {
+      paramBundle.put("code", i);
+      callJs(this.c, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
-  public void onShowLoadingView(View paramView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    ODLoadingActivity.a(this.a.this$0, paramView);
-    this.a.this$0.runOnUiThread(new ODLoadingActivity.2.1.1(this));
-    ODLoadingActivity.a(this.a.this$0).opType("onShowLoadingView").report();
-    argi.b("33669908");
+    if (!"odapp".equals(paramString2)) {}
+    label129:
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("XProxy|ODAppJSPlugin", 2, "handleJsRequest: url = " + paramString1 + ", pkgName = " + paramString2 + ", method = " + paramString3 + ", args = " + paramVarArgs);
+      }
+      if ((TextUtils.equals(paramString3, "open")) || (TextUtils.equals(paramString3, "cancelPage")))
+      {
+        super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+        return false;
+      }
+      paramString2 = "";
+      paramString1 = "";
+      paramJsBridgeListener = null;
+      try
+      {
+        localObject = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener = (JsBridgeListener)localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject;
+        break label129;
+        int j = 0;
+        int i = 0;
+        paramJsBridgeListener = paramString2;
+        continue;
+      }
+      if (paramJsBridgeListener == null) {
+        break;
+      }
+      localObject = paramJsBridgeListener.optString("callback");
+      i = paramJsBridgeListener.optInt("roomid");
+      paramString2 = paramJsBridgeListener.optString("vasname");
+      paramString1 = paramJsBridgeListener.optString("userdata");
+      j = paramJsBridgeListener.optInt("fromid");
+      this.c = ((String)localObject);
+      paramJsBridgeListener = paramString2;
+    } while ((!"odOpenRoom".equals(paramString3)) || (paramVarArgs.length != 1));
+    this.a.a(0, i, paramJsBridgeListener, paramString1, j);
+    return true;
   }
 }
 

@@ -1,22 +1,18 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class adqz
-  implements View.OnClickListener
+  implements apuv
 {
-  adqz(adqy paramadqy, long paramLong) {}
+  adqz(adqw paramadqw) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_Adqy.a.a);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    abtu.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    paramView = bbdj.a(this.a.a, 230);
+    paramView.setTitle(2131691555);
+    paramView.setMessage(2131691556);
+    paramView.setNegativeButton(2131690596, new adra(this, paramView));
+    paramView.setPositiveButton(2131694794, new adrb(this));
+    paramView.show();
   }
 }
 

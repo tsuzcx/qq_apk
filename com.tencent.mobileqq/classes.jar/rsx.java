@@ -1,22 +1,87 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import java.util.ArrayList;
+import java.util.List;
 
-public class rsx
-  extends AnimatorListenerAdapter
+public abstract class rsx
+  extends rsw
 {
-  public rsx(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  protected int a;
+  protected Context a;
+  protected ArrayList<Object> a;
+  private rsy a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected rsx(Context paramContext, int paramInt)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    b(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  private void b(List<?> paramList)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+    a(paramList);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<Object> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < getCount())
+    {
+      if (this.jdField_a_of_type_Rsy != null) {
+        this.jdField_a_of_type_Rsy.a(paramInt1, paramInt2);
+      }
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_JavaUtilArrayList, paramInt1, paramInt2);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    a(paramObject);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramObject);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  public void c(Object paramObject)
+  {
+    a(paramObject);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    notifyDataSetChanged();
+  }
+  
+  public void d(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.remove(paramObject);
+    b(paramObject);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
 }
 

@@ -1,29 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import java.util.ArrayList;
 
 public class abby
-  implements ainf
+  extends akil
 {
-  public abby(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public abby(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(View paramView)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    if (ForwardFriendListActivity.a(this.a))
-    {
-      ForwardFriendListActivity.b(this.a, paramView);
-      return;
+    if (paramBoolean1) {
+      ForwardRecentActivity.f(this.a);
     }
-    ForwardFriendListActivity.c(this.a, paramView);
   }
   
-  public boolean a(String paramString, int paramInt)
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
   {
-    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.f(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abby
  * JD-Core Version:    0.7.0.1
  */

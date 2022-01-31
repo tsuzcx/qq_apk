@@ -1,10 +1,17 @@
-import com.tencent.image.URLDrawable;
+import android.content.Intent;
+import android.view.ViewGroup;
 
 public abstract interface aqlz
 {
-  public abstract void a(int paramInt, URLDrawable paramURLDrawable);
+  public abstract void a();
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(ViewGroup paramViewGroup);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

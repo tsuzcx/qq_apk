@@ -1,9 +1,19 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
 
-public abstract interface ucu
+public final class ucu
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public XViewPager.SavedState[] a(int paramInt)
+  {
+    return new XViewPager.SavedState[paramInt];
+  }
 }
 
 

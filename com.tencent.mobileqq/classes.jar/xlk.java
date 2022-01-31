@@ -1,56 +1,151 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.manager.TicketManager;
 
-class xlk
-  implements naq
+public class xlk
+  extends WebViewPlugin
 {
-  xlk(xle paramxle) {}
+  private mvs a;
   
-  public void a()
+  public xlk()
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
+    this.mPluginNameSpace = getClass().getSimpleName();
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    Object localObject2 = null;
+    if (((!"http".equals(paramString2)) && (!"https".equals(paramString2))) || (TextUtils.isEmpty(paramString1))) {}
+    long l;
+    do
+    {
+      do
+      {
+        return false;
+        l = System.currentTimeMillis();
+        if (QLog.isColorLevel()) {
+          QLog.d("PtloginPlugin", 2, "handleSchemaRequest, originUrl=" + paramString1);
+        }
+      } while (this.a == null);
+      paramString2 = this.a.a("ptlogin2");
+    } while ((paramString2 == null) || (paramString2.isEmpty()));
+    Object localObject3 = this.mRuntime.a();
+    paramString2 = paramString2.iterator();
+    Object localObject1;
+    int i;
     for (;;)
     {
-      return;
-      bcci localbcci = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localbcci != null) && ((localbcci instanceof bchj)) && (((bchj)localbcci).b() != localObject))
+      if (paramString2.hasNext())
       {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
+        localObject1 = (String)paramString2.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1).append("/jump?");
+        if (paramString1.startsWith(localStringBuilder.toString())) {
+          if (paramString1.contains("clientuin=$UIN$"))
           {
-            localbcci = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localbcci instanceof bchv))
-            {
-              ((WebView)localObject).loadUrl(((bchv)localbcci).b());
-              return;
+            paramString2 = paramString1.replace("clientuin=$UIN$", "clientuin=" + ((AppInterface)localObject3).getAccount());
+            i = 1;
+            label207:
+            if (!paramString1.contains("clientkey=$KEY$")) {
+              break label440;
             }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
+            localObject1 = (TicketManager)((AppInterface)localObject3).getManager(2);
+            if (localObject1 != null) {
+              break label423;
+            }
+            localObject1 = null;
+            label235:
+            localObject3 = new StringBuilder().append("clientkey=");
+            localObject2 = localObject1;
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              localObject2 = "";
+            }
+            localObject1 = paramString2.replace("clientkey=$KEY$", (String)localObject2);
+            i = 1;
+            label285:
+            if (!paramString1.contains("keyindex=$KEYINDEX$")) {
+              break label542;
+            }
+            paramString2 = ((String)localObject1).replace("keyindex=$KEYINDEX$", "keyindex=19");
+            i = 1;
           }
         }
       }
     }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PtloginPlugin", 2, "handleSchemaRequest, replacePtloginUrl, duration=" + (System.currentTimeMillis() - l));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PtloginPlugin", 2, "handleSchemaRequest, load replaced url");
+        }
+        paramString1 = this.mRuntime.a();
+        if (paramString1 != null) {
+          paramString1.loadUrlOriginal(paramString2);
+        }
+        return true;
+        if (!paramString1.contains("clientuin=$UIN")) {
+          break label607;
+        }
+        paramString2 = paramString1.replace("clientuin=$UIN", "clientuin=" + ((AppInterface)localObject3).getAccount());
+        i = 1;
+        break label207;
+        label423:
+        localObject1 = ((TicketManager)localObject1).getStweb(((AppInterface)localObject3).getAccount());
+        break label235;
+        label440:
+        localObject1 = paramString2;
+        if (!paramString1.contains("clientkey=$KEY")) {
+          break label285;
+        }
+        localObject1 = (TicketManager)((AppInterface)localObject3).getManager(2);
+        if (localObject1 == null) {}
+        for (localObject1 = localObject2;; localObject1 = ((TicketManager)localObject1).getStweb(((AppInterface)localObject3).getAccount()))
+        {
+          localObject3 = new StringBuilder().append("clientkey=");
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            localObject2 = "";
+          }
+          localObject1 = paramString2.replace("clientkey=$KEY", (String)localObject2);
+          i = 1;
+          break;
+        }
+        label542:
+        paramString2 = (String)localObject1;
+        if (!paramString1.contains("keyindex=$KEYINDEX")) {
+          continue;
+        }
+        paramString2 = ((String)localObject1).replace("keyindex=$KEYINDEX", "keyindex=19");
+        i = 1;
+        continue;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PtloginPlugin", 2, "handleSchemaRequest, not replaced, duration=" + (System.currentTimeMillis() - l));
+      return false;
+      label607:
+      i = 0;
+      paramString2 = paramString1;
+      break label207;
+      i = 0;
+      paramString2 = paramString1;
+    }
   }
   
-  public void loaded(String paramString, int paramInt)
+  public void onCreate()
   {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
-  }
-  
-  public void progress(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+    super.onCreate();
+    this.a = mvs.a();
   }
 }
 

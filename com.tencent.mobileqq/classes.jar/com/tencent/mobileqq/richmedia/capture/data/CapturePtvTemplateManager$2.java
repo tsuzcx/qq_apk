@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import avrt;
-import bbdj;
+import avrv;
+import bbdx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -12,7 +12,7 @@ public final class CapturePtvTemplateManager$2
   
   public void run()
   {
-    bbdj.a(avrt.a.getPath() + File.separator, this.a, this.b);
+    bbdx.a(avrv.a.getPath() + File.separator, this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("CapturePtvTemplateManager", 2, "save Config to file finish.");
     }

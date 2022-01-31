@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.managers;
 
 import android.text.TextUtils;
-import asef;
-import axqw;
+import aseh;
+import axqy;
 
 public class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$CUOpenCardClickableSpan$1(asef paramasef) {}
+  public CUOpenCardGuideMng$CUOpenCardClickableSpan$1(aseh paramaseh) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        axqw.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+        axqy.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       }
       return;
       if (this.this$0.a == 2) {

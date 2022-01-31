@@ -1,65 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class opu
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a = "ViolaPicSerPreloadHandler";
-  public static String b = "viola_service_instance";
+  public opu(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  public static boolean a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return ((Boolean)bhvh.a(b, Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = ooi.a(paramString);
-    Object localObject = localMap.keySet();
-    for (;;)
-    {
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          String str2 = (String)((Iterator)localObject).next();
-          String str1 = (String)localMap.get(str2);
-          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
-            continue;
-          }
-          str2 = b;
-          if (Integer.parseInt(str1) == 1)
-          {
-            bool = true;
-            bhvh.a(str2, Boolean.valueOf(bool));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
-      }
-      boolean bool = false;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
     }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bhvh.a(b, Boolean.valueOf(false));
   }
 }
 

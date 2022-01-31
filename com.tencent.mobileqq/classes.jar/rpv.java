@@ -1,46 +1,37 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
-
 public class rpv
-  implements ComplementFileStringLoader
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private rqc jdField_a_of_type_Rqc;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public rpv(Context paramContext, String paramString)
+  public rpv(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Rqc = new rqc(paramContext, paramString);
+    this.a = paramString;
   }
   
-  public String loadFileAsString(String paramString)
+  public void a(String paramString)
   {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
-    try
+    this.d = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    do
     {
-      InputStream localInputStream = this.jdField_a_of_type_Rqc.a(paramString);
-      Object localObject = localInputStream;
-      if (localInputStream == null) {
-        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      return true;
+      if ((paramObject instanceof rpv)) {
+        return false;
       }
-      localObject = rqm.a((InputStream)localObject);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-    }
-    return null;
+      paramObject = (rpv)paramObject;
+    } while ((this.b != null) && (this.b.equals(paramObject.b)) && (this.c != null) && (this.c.equals(paramObject.c)));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return " bid :" + this.b + " localPath:" + this.c + "  ";
   }
 }
 

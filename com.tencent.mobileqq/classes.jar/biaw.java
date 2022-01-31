@@ -1,9 +1,6 @@
 public class biaw
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public static final String a = biaw.class.getName();
 }
 
 

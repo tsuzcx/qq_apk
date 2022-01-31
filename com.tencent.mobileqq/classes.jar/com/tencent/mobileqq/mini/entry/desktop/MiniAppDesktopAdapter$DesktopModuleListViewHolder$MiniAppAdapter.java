@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import bbkx;
+import bbll;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
@@ -75,7 +75,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public boolean isMoveToDeleteArea(int paramInt1, int paramInt2)
   {
-    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3500(this.this$1.this$0).getBottom() - bbkx.a(60.0F);
+    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3500(this.this$1.this$0).getBottom() - bbll.a(60.0F);
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -85,7 +85,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public MiniAppDesktopAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3300(this.this$1.this$0)).inflate(2131561975, paramViewGroup, false));
+    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3300(this.this$1.this$0)).inflate(2131561974, paramViewGroup, false));
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -145,7 +145,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
           }
           else
           {
-            i = bbkx.a(30.0F) + paramInt1;
+            i = bbll.a(30.0F) + paramInt1;
             continue;
           }
           Object localObject1 = (DesktopAppInfo)this.mData.get(this.mDragIndex);

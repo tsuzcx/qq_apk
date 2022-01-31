@@ -1,34 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
-
 class qmk
-  implements Animation.AnimationListener
+  extends osm
 {
   qmk(qmj paramqmj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if ((qls.a(this.a.c) == qmj.a(this.a)) && (qls.a(this.a.c) != null)) {
-      qls.a(this.a.c).a(qmj.a(this.a));
-    }
+    qmj.a(this.a, paramBoolean, paramInt, paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
   {
-    if ((qmj.a(this.a).a != null) && (qmj.a(this.a).a.a != null))
-    {
-      boolean bool = qmj.a(this.a).a.a.l;
-      if (qmj.a(this.a).l != null) {
-        qmj.a(this.a).l.setImageDrawable(qls.a(this.a.c, this.a.a(bool)));
-      }
-    }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    qmj.a(this.a, paramBoolean, paramLong, paramInt, paramString);
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

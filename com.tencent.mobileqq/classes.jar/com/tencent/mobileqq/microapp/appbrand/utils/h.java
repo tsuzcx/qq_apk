@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import bbjw;
+import bbkk;
 
 final class h
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ final class h
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (bbjw.a(paramContext)) {}
+    if (bbkk.a(paramContext)) {}
     do
     {
       return;

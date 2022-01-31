@@ -1,51 +1,162 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Properties;
 
 public class avtp
 {
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private avtr jdField_a_of_type_Avtr;
-  private avts jdField_a_of_type_Avts;
-  private boolean jdField_a_of_type_Boolean;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static int b;
   
-  public static avtp a()
+  private static String a()
   {
-    return avtt.a();
+    if (jdField_a_of_type_Int % 180 == 0) {
+      return "0";
+    }
+    return "1";
   }
   
-  public int a(Context paramContext, avts paramavts)
+  public static void a()
   {
-    QLog.d("MicroMsg.LightSensor", 1, "SensorShower start");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("MicroMsg.LightSensor", 1, "[SensorShower.start] light sensor has started");
-      return 2;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getApplicationContext().getSystemService("sensor"));
-    paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(5);
-    if (paramContext != null)
-    {
-      this.jdField_a_of_type_Avtr = new avtr(this, null);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Avtr, paramContext, 3);
-      this.jdField_a_of_type_Avts = paramavts;
-      return 0;
-    }
-    QLog.e("MicroMsg.LightSensor", 1, "[SensorShower.start] System do not have lightSensor");
-    return 1;
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Int = 90;
+    b = 2;
+    jdField_a_of_type_Long = 0L;
   }
   
-  public void a()
+  public static void a(int paramInt, String paramString)
   {
-    QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop");
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidHardwareSensorManager == null))
+    try
     {
-      QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop mHasStarted is false or mSensorShower is null");
+      long l = awah.a(paramString);
+      if (l == 0L) {}
+      for (float f = -1.0F;; f = paramInt * 1000.0F / (float)l)
+      {
+        axrn.a(BaseApplication.getContext()).a(null, "capture_video_fps", false, f, 0L, null, "");
+        return;
+      }
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Avtr);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static void a(Activity paramActivity, int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt2 == -1)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            ahtz.a("", "0X80072C5", b(), jdField_a_of_type_JavaLangString, "", "");
+            return;
+          }
+          ahtz.a("", "0X80072C4", b());
+          return;
+        }
+      } while (paramInt2 != 0);
+      if (jdField_a_of_type_Boolean)
+      {
+        ahtz.b("", "0X80072C6");
+        return;
+      }
+      ahtz.b("", "0X80072C7");
+      return;
+      if (paramInt2 == -1)
+      {
+        paramActivity = new Properties();
+        paramActivity.setProperty("shortvideo_duration", String.valueOf(jdField_a_of_type_Long));
+        paramActivity.setProperty("shortvideo_rotation", a());
+        paramActivity.setProperty("shortvideo_camera", b());
+        if (!jdField_a_of_type_Boolean)
+        {
+          ahtz.a("", "0X8006A16", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+          ahwu.a("shortvideo_send_noeffects", paramActivity);
+          return;
+        }
+        ahtz.a("", "0X8006A19", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+        ahwu.a("shortvideo_send_effects", paramActivity);
+        return;
+      }
+    } while (paramInt2 != 0);
+    if (jdField_a_of_type_Boolean)
+    {
+      ahtz.b("", "0X8006A1B");
+      return;
+    }
+    ahtz.b("", "0X8006A17");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      ahtz.a("", "0X8007BB7", str);
+      return;
+    }
+  }
+  
+  private static String b()
+  {
+    if (b == 1) {
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      ahtz.a("", "0X80072C3", b(), jdField_a_of_type_JavaLangString, "", "");
+      return;
+    }
+    ahtz.a("", "0X80072C2", b());
+  }
+  
+  public static void c()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      ahtz.a("", "0X8006A18", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ahtz.a("", "0X8006A13", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+  }
+  
+  public static void d()
+  {
+    ahtz.b("", "0X80072C1");
+  }
+  
+  public static void e()
+  {
+    ahtz.b("", "0X8006A12");
+  }
+  
+  public static void f()
+  {
+    ahtz.b("", "0X8006A15");
+    ahwu.a("shortvideo_rotate_camera", null);
+  }
+  
+  public static void g()
+  {
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
   }
 }
 

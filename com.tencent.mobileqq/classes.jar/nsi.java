@@ -1,23 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class nsi
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  nsi(nsf paramnsf) {}
+  nsi(nsh paramnsh, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
-    localIntent.putExtra("uin", String.valueOf(3434959637L));
-    localIntent.putExtra("uintype", 1008);
-    localIntent.putExtra("source", 121);
-    paramView.startActivity(localIntent);
-    noo.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    nsc.a(this.jdField_a_of_type_Nsh.a, 5);
   }
 }
 

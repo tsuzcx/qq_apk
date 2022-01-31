@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
-import aunx;
+import aunz;
 import eipc.EIPCResult;
 
 public class PicShareToWX$2$1
   implements Runnable
 {
-  public PicShareToWX$2$1(aunx paramaunx, EIPCResult paramEIPCResult) {}
+  public PicShareToWX$2$1(aunz paramaunz, EIPCResult paramEIPCResult) {}
   
   public void run()
   {

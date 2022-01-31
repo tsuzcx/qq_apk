@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import ucc;
-import uce;
-import ucj;
+import ubz;
+import ucb;
+import ucg;
 
 class VideoViewVideoHolder$VideoPrepareSegment$2$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class VideoViewVideoHolder$VideoPrepareSegment$2$1$1
   
   public void run()
   {
-    VideoViewVideoHolder.a(this.a.jdField_a_of_type_Uce.a.a).a(this.a.jdField_a_of_type_Uce.a.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_JavaIoFile, true);
+    VideoViewVideoHolder.a(this.a.jdField_a_of_type_Ucb.a.a).a(this.a.jdField_a_of_type_Ucb.a.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_JavaIoFile, true);
   }
 }
 

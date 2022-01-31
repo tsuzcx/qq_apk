@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ayvv;
-import bizu;
+import ayvx;
+import bjal;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
@@ -14,7 +14,7 @@ class FavEmoSingleSend$1
   public void run()
   {
     QLog.e("FavEmoSingleSend", 1, "doStep, upload not complete");
-    ((QQAppInterface)bizu.a()).a().a(FavEmoSingleSend.a(this.this$0));
+    ((QQAppInterface)bjal.a()).a().a(FavEmoSingleSend.a(this.this$0));
     this.this$0.a("failed", 0, 4, 0);
     synchronized (FavEmoSingleSend.a(this.this$0))
     {

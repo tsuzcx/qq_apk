@@ -1,4 +1,18 @@
-// INTERNAL ERROR //
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+
+public class alnb
+  implements alnc
+{
+  public alnb(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
+  
+  public void a(int paramInt)
+  {
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
+    }
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     alnb

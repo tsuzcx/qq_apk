@@ -1,25 +1,18 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
-
-public class aqkc
-  implements URLDrawableHandler
+public abstract interface aqkc
 {
-  public aqkc(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
+  public abstract String a();
   
-  public void doCancel() {}
+  public abstract void a(int paramInt);
   
-  public boolean isCancelled()
-  {
-    return false;
-  }
+  public abstract void a(String paramString);
   
-  public void onFileDownloadFailed(int paramInt) {}
+  public abstract void aS_();
   
-  public void onFileDownloadStarted() {}
+  public abstract String b();
   
-  public void onFileDownloadSucceed(long paramLong) {}
+  public abstract void b();
   
-  public void publishProgress(int paramInt) {}
+  public abstract void b(String paramString);
 }
 
 

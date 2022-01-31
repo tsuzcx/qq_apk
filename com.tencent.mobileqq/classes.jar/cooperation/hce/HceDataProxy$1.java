@@ -1,11 +1,11 @@
 package cooperation.hce;
 
-import akuj;
+import akui;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 final class HceDataProxy$1
-  extends akuj
+  extends akui
 {
   HceDataProxy$1(String paramString, HceDataProxy.GetLocationListener paramGetLocationListener)
   {

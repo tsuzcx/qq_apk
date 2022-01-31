@@ -1,39 +1,27 @@
-import android.graphics.Point;
-
-public final class anhs
+public class anhs
 {
-  public float a;
-  public final int a;
-  public final long a;
-  public final Point a;
-  public float b;
+  private long a;
+  private long b;
   
-  public anhs(long paramLong, Point paramPoint, int paramInt)
+  public anhs(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong;
+    this.a = this.b;
   }
   
-  public float a()
+  public long a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsPoint.x - this.jdField_a_of_type_Float;
+    return this.b;
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public anhs a()
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    return new anhs(this.b);
   }
   
-  public float b()
+  public void a(float paramFloat)
   {
-    return this.jdField_a_of_type_AndroidGraphicsPoint.y - this.b;
-  }
-  
-  public String toString()
-  {
-    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
+    this.b = (((float)this.b * paramFloat));
   }
 }
 

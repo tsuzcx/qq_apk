@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahhj;
-import ahht;
+import ahhh;
+import ahhr;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,9 +20,9 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aywk;
-import bbjw;
-import bkur;
+import aywm;
+import bbkk;
+import bkvi;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
@@ -33,7 +33,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SpringHbFullScreenVideoFragment
   extends PublicBaseFragment
-  implements ahht, View.OnClickListener
+  implements ahhr, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
@@ -186,7 +186,7 @@ public class SpringHbFullScreenVideoFragment
       localObject = (ViewGroup)localWindow.getDecorView();
       ((ViewGroup)localObject).setSystemUiVisibility(3846);
       if (Build.VERSION.SDK_INT >= 19) {
-        ((ViewGroup)localObject).setOnSystemUiVisibilityChangeListener(new ahhj(this, (ViewGroup)localObject));
+        ((ViewGroup)localObject).setOnSystemUiVisibilityChangeListener(new ahhh(this, (ViewGroup)localObject));
       }
       localWindow.setSoftInputMode(17);
       paramActivity.overridePendingTransition(0, 0);
@@ -222,7 +222,7 @@ public class SpringHbFullScreenVideoFragment
       this.jdField_b_of_type_Int = paramBundle.getIntExtra("showSkip", 0);
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("fadeInOut", 0);
       localObject = paramBundle.getStringExtra("bgImguUrl");
-      if (bbjw.a((String)localObject)) {
+      if (bbkk.a((String)localObject)) {
         break label344;
       }
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -234,8 +234,8 @@ public class SpringHbFullScreenVideoFragment
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_AndroidWidgetImageView.getHeight();
         localURLDrawableOptions.mRequestWidth = this.jdField_b_of_type_AndroidWidgetImageView.getWidth();
-        localURLDrawableOptions.mLoadingDrawable = aywk.a;
-        localURLDrawableOptions.mFailedDrawable = aywk.a;
+        localURLDrawableOptions.mLoadingDrawable = aywm.a;
+        localURLDrawableOptions.mFailedDrawable = aywm.a;
         localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
         if (localObject != null)
         {
@@ -251,7 +251,7 @@ public class SpringHbFullScreenVideoFragment
       paramBundle = paramBundle.getStringExtra("bgColor");
       j = -16777216;
       i = j;
-      if (!bbjw.a(paramBundle))
+      if (!bbkk.a(paramBundle))
       {
         localObject = paramBundle.trim();
         paramBundle = (Bundle)localObject;
@@ -301,11 +301,11 @@ public class SpringHbFullScreenVideoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramBundle = getActivity();
-    bkur.a(paramBundle);
-    if (bkur.b()) {
-      bkur.c(paramBundle);
+    bkvi.a(paramBundle);
+    if (bkvi.b()) {
+      bkvi.c(paramBundle);
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131562614, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131562613, paramViewGroup, false);
     paramLayoutInflater = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366861);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView = new SpringHbVideoView(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView.setLoop(false);

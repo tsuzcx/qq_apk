@@ -3,51 +3,89 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class amry
-  extends ampb<amrx>
+  extends ampa<amrz>
 {
-  public static amrx a()
+  public static boolean a;
+  private static boolean b;
+  
+  public static boolean e()
   {
-    return (amrx)ampm.a().a(452);
+    if (b) {
+      return a;
+    }
+    b = true;
+    a = f();
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
+    }
+    return a;
+  }
+  
+  private static boolean f()
+  {
+    amrz localamrz2 = (amrz)ampl.a().a(531);
+    amrz localamrz1 = localamrz2;
+    if (localamrz2 == null)
+    {
+      localamrz2 = new amrz();
+      localamrz1 = localamrz2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
+        localamrz1 = localamrz2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localamrz1);
+    }
+    return localamrz1.a();
   }
   
   public int a()
   {
-    return 452;
+    return 531;
   }
   
   @NonNull
-  public amrx a(int paramInt)
+  public amrz a(int paramInt)
   {
-    return new amrx().b("0");
+    return new amrz();
   }
   
   @Nullable
-  public amrx a(ampi[] paramArrayOfampi)
+  public amrz a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      amrx localamrx = amrx.a(paramArrayOfampi[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfamph[0].a);
       }
-      return localamrx;
+      return amrz.a(paramArrayOfamph[0].a);
     }
-    return null;
+    return new amrz();
   }
   
-  public Class<amrx> a()
+  public Class<amrz> a()
   {
-    return amrx.class;
+    return amrz.class;
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(amrz paramamrz)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramamrz);
+    }
+    if (paramamrz != null) {
+      a = paramamrz.a();
     }
   }
   
-  public void a(amrx paramamrx) {}
+  public boolean a()
+  {
+    return false;
+  }
   
   public int b()
   {

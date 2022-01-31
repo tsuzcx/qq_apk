@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-
-public final class ajfi
-  implements Parcelable.Creator<SpriteTaskParam>
+public abstract interface ajfi
 {
-  public SpriteTaskParam a(Parcel paramParcel)
-  {
-    return new SpriteTaskParam(paramParcel);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public SpriteTaskParam[] a(int paramInt)
-  {
-    return new SpriteTaskParam[paramInt];
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

@@ -1,14 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
 class wbx
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  wbx(wbu paramwbu) {}
+  wbx(wbw paramwbw) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
+    }
   }
 }
 

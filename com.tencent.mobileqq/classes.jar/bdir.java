@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
-
 public abstract interface bdir
 {
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public abstract void a();
+  
+  public abstract void a(String paramString, byte[] paramArrayOfByte);
 }
 
 

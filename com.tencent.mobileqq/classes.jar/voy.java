@@ -1,13 +1,8 @@
-public class voy
+public abstract interface voy
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,14 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-class oic
-  implements DialogInterface.OnClickListener
+public class oic
 {
-  oic(oia paramoia) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View a(ohs paramohs, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramDialogInterface.dismiss();
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = paramohs.a().inflate(2131559847, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378383));
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
+      }
+      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131379181);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b = localView.findViewById(2131379167);
+      this.b.setVisibility(0);
+    }
+    localView.setTag(this);
+    return localView;
+  }
+  
+  public void a(ohs paramohs, int paramInt)
+  {
+    if (paramohs == null) {
+      return;
+    }
+    oif localoif = (oif)paramohs.getItem(paramInt);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = ajya.a(2131712719);
+    if (localoif.a != null) {}
+    for (paramohs = String.valueOf(paramohs.a().a(localoif.a.commentId));; paramohs = "")
+    {
+      localSpannableStringBuilder.append(str + " ");
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#262626")), 0, str.length(), 34);
+      localSpannableStringBuilder.append(paramohs);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#737373")), str.length(), localSpannableStringBuilder.length(), 34);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      return;
+    }
   }
 }
 

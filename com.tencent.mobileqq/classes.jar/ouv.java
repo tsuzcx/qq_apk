@@ -1,29 +1,38 @@
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public class ouv
-  extends oux
+  implements qzn
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ChannelCoverInfo a;
+  public String a;
+  private boolean a;
+  public String b;
   
-  ouv(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  public ouv(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2)
   {
-    super(paramReadInJoyPicWaterFallFragment, paramView);
-    this.b = ((URLImageView)paramView.findViewById(2131364784));
-    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362526));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
-    actn.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361946));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
-    paramView.setOnClickListener(new ouw(this, paramReadInJoyPicWaterFallFragment));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.minigame.task;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
-import bevm;
-import bfjx;
+import bewd;
+import bfko;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -73,7 +73,7 @@ public class GameEngineLoadTask
   private int mEngineLoadResult = -1;
   private GameEngineWrapper mGameEngine = new GameEngineWrapper();
   private GameLoadManager.GameLoadListener mGameLoadListener;
-  private bevm mInspectorAgentWrapper;
+  private bewd mInspectorAgentWrapper;
   private int upgradeEngineRequestCount;
   
   private GameEngineLoadTask(Context paramContext)
@@ -101,7 +101,7 @@ public class GameEngineLoadTask
         }
         try
         {
-          String str4 = bfjx.a((File)localObject);
+          String str4 = bfko.a((File)localObject);
           localObject = str4;
           if (str4 == null) {
             localObject = "";
@@ -241,7 +241,7 @@ public class GameEngineLoadTask
         }
         long l = System.currentTimeMillis();
         GameLog.getInstance().i("EngineLoadTask", "[MiniEng] initEngine");
-        this.mInspectorAgentWrapper = new bevm();
+        this.mInspectorAgentWrapper = new bewd();
         i = ((ITTEngine)localObject1).initEngine(this.mContext, null, this.mInspectorAgentWrapper);
         if (i != 0)
         {
@@ -425,7 +425,7 @@ public class GameEngineLoadTask
     return this.mGameEngine;
   }
   
-  public bevm getInspectorAgentWrapper()
+  public bewd getInspectorAgentWrapper()
   {
     return this.mInspectorAgentWrapper;
   }
@@ -482,7 +482,7 @@ public class GameEngineLoadTask
               onTaskSucceed();
               return;
             }
-            onTaskFailed(this.mEngineLoadResult, ajyc.a(2131705047));
+            onTaskFailed(this.mEngineLoadResult, ajya.a(2131705058));
             return;
           }
           if (isGameSatisfy(paramBundle, this.appConfig))
@@ -502,7 +502,7 @@ public class GameEngineLoadTask
             }
             MiniProgramLpReportDC04239.reportPageView(this.appConfig, "1", null, "load_fail", "load_baselib_fail");
             MiniAppReportManager2.reportPageView("2launch_fail", "load_baselib_fail", null, this.appConfig);
-            onTaskFailed(this.mEngineLoadResult, ajyc.a(2131705047));
+            onTaskFailed(this.mEngineLoadResult, ajya.a(2131705058));
             return;
           }
           if ((this.appConfig != null) && (this.appConfig.config != null) && (!TextUtils.isEmpty(this.appConfig.config.appId))) {
@@ -524,16 +524,16 @@ public class GameEngineLoadTask
           if (this.installEngineRequestCount >= 2)
           {
             GameLog.getInstance().i("EngineLoadTask", "[MiniEng]installEngineRequestCount reaches max 2");
-            onTaskFailed(103, ajyc.a(2131705046));
+            onTaskFailed(103, ajya.a(2131705057));
             return;
           }
           sendCommand(3, new Bundle());
           return;
           GameLog.getInstance().i("EngineLoadTask", "[MiniEng] getInstalledEngineList gameEngineList is null");
-          onTaskFailed(102, ajyc.a(2131705045));
+          onTaskFailed(102, ajya.a(2131705056));
           return;
           GameLog.getInstance().i("EngineLoadTask", "[MiniEng] getInstalledEngineList data is null");
-          onTaskFailed(102, ajyc.a(2131705048));
+          onTaskFailed(102, ajya.a(2131705059));
           return;
           if (paramInt == 52)
           {

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
+import afhx;
 import afhz;
-import afib;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class Face2FaceAddContactPresenter$3
   implements Runnable
 {
-  public Face2FaceAddContactPresenter$3(afhz paramafhz, String paramString1, String paramString2) {}
+  public Face2FaceAddContactPresenter$3(afhx paramafhx, String paramString1, String paramString2) {}
   
   public void run()
   {
-    SosoInterface.a(new afib(this, 0, true, false, 60000L, false, false, "Face2FaceAddContactPresenter"));
+    SosoInterface.a(new afhz(this, 0, true, false, 60000L, false, false, "Face2FaceAddContactPresenter"));
   }
 }
 

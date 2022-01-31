@@ -1,11 +1,11 @@
-import cooperation.qzone.statistic.access.concept.Collector;
-
-final class bhmq
-  extends bhmp
+public class bhmq
 {
-  public boolean a(Collector paramCollector)
+  public static bhmn a(String paramString, int paramInt)
   {
-    return true;
+    if (paramInt >= 24) {
+      return new bhmr();
+    }
+    return new bhmp();
   }
 }
 

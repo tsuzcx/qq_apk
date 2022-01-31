@@ -1,34 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
 class mhl
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  mhl(mhf parammhf) {}
+  mhl(mhj parammhj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mhf.a(this.a, false);
-    if (paramInt == 1)
+    if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      axqw.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.c();
-      if (!muf.a(mhf.a(this.a))) {
-        mhf.a(this.a).a(mhf.a(this.a));
+      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.clearAnimation();
+      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.a.f);
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.a.jdField_g_of_type_AndroidViewAnimationAnimation);
       }
     }
-    while (paramInt != 0)
+    if (this.a.jdField_a_of_type_AndroidViewView != null)
     {
-      return;
-      mhf.a(this.a).b(mhf.a(this.a));
-      return;
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+      }
     }
-    mhf.a(this.a, mhf.a(this.a).a().v);
+    if (this.a.b != null)
+    {
+      this.a.b.clearAnimation();
+      if (this.a.b.getVisibility() == 0) {
+        this.a.b.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_c_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_c_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_c_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_c_of_type_AndroidViewView.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_d_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_d_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_d_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_e_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_e_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_e_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_g_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_g_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_g_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_g_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq = true;
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

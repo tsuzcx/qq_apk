@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class DownloadingUrlEntry
-  extends aukm
+  extends auko
 {
   public int bIsDownloadCompleted = 0;
   public int compressLevel;
   public int fileType;
-  @auma
+  @aumc
   public String key;
   public long updatedMs;
   public String url;

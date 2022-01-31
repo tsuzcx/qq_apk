@@ -1,22 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
+import java.util.Observable;
+import java.util.Observer;
+import mqq.util.WeakReference;
 
 class mmo
-  implements Animation.AnimationListener
+  implements Observer
 {
-  mmo(mmn parammmn) {}
+  private final WeakReference<mmk> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  mmo(mmk parammmk)
   {
-    if (mmn.a(this.a) != null) {
-      mmn.a(this.a).setVisibility(8);
-    }
+    this.a = new WeakReference(parammmk);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = (Object[])paramObject;
+    switch (((Integer)paramObservable[0]).intValue())
+    {
+    }
+    do
+    {
+      return;
+      paramObject = (mmk)this.a.get();
+    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
+    paramObject.a();
+  }
 }
 
 

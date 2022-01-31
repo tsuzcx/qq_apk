@@ -1,35 +1,39 @@
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
 import java.util.List;
 
 class amis
-  implements View.OnClickListener
+  implements amjf
 {
-  amis(amir paramamir, HistoryFormItem paramHistoryFormItem) {}
+  amis(amiq paramamiq, HistoryFormItem paramHistoryFormItem) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt, boolean paramBoolean)
   {
-    ColorNote localColorNote = (ColorNote)amir.a(this.jdField_a_of_type_Amir).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
-    Bundle localBundle = new Bundle();
-    if (amir.a(this.jdField_a_of_type_Amir) == 17104896) {
-      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
-        localBundle.putBoolean("isFromFavourite", true);
-      }
+    amgo localamgo = new amgo();
+    ColorNote localColorNote2;
+    if ((amgr.a()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a())) {
+      localColorNote2 = (ColorNote)amiq.a(this.jdField_a_of_type_Amiq).get(paramInt);
     }
-    for (;;)
+    try
     {
-      amgo.a(paramView.getContext(), localColorNote, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      ColorNote localColorNote1 = (ColorNote)localColorNote2.clone();
+      if (localColorNote1 != null)
+      {
+        localColorNote1.setType(0);
+        localamgo.a(localColorNote1.parseBundle());
       }
-      axqw.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", amhi.b(amir.a(this.jdField_a_of_type_Amir)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.setEnable(false);
+      amiq.a(this.jdField_a_of_type_Amiq, localColorNote2, paramInt);
+      bcql.a(paramView.getContext(), 2, ajya.a(2131690876), 500).a();
       return;
-      if (amir.a(this.jdField_a_of_type_Amir) == 16908289) {
-        localBundle.putBoolean("history_note", true);
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+        Object localObject = null;
       }
     }
   }

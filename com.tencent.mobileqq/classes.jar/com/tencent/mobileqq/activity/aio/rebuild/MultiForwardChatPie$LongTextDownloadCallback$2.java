@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerb;
-import aerj;
+import aeqz;
+import aerh;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MultiForwardChatPie$LongTextDownloadCallback$2
   implements Runnable
 {
-  public MultiForwardChatPie$LongTextDownloadCallback$2(aerj paramaerj, aerb paramaerb) {}
+  public MultiForwardChatPie$LongTextDownloadCallback$2(aerh paramaerh, aeqz paramaeqz) {}
   
   public void run()
   {
-    aerb.a(this.a).setVisibility(0);
-    aerb.a(this.a).setText(2131698466);
+    aeqz.a(this.a).setVisibility(0);
+    aeqz.a(this.a).setText(2131698476);
     this.a.e.setText(this.a.h);
     this.a.E();
   }

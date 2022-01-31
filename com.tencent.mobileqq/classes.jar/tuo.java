@@ -1,15 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class tuo
-  extends AnimatorListenerAdapter
+public class tuo
+  extends QQUIEventReceiver<StoryPlayerActivity, tun>
 {
-  tuo(tun paramtun) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public tuo(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.a.a = false;
+    super(paramStoryPlayerActivity);
+  }
+  
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull tun paramtun)
+  {
+    paramStoryPlayerActivity.b = paramtun.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tun.class;
   }
 }
 

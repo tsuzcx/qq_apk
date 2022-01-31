@@ -1,14 +1,38 @@
-final class oth
-  implements oti
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
+class oth
+  extends BroadcastReceiver
 {
-  public void l()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    shx.a(2, true, System.currentTimeMillis(), 0, 0, false);
-  }
-  
-  public void m()
-  {
-    shx.a(2, false, otd.d, 0, 0, false);
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
+        osx.e(false);
+        return;
+      }
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
+        osx.e(true);
+        return;
+      }
+      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
+      {
+        osx.c(false);
+        osx.o();
+        return;
+      }
+    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
+    osx.d(false);
+    osx.o();
   }
 }
 

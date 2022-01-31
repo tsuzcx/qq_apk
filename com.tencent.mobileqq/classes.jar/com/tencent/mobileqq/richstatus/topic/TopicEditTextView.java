@@ -10,10 +10,10 @@ import android.view.ActionMode.Callback;
 import android.view.ContextMenu;
 import android.view.MotionEvent;
 import android.widget.EditText;
-import awfs;
-import awfv;
-import awfw;
+import awfu;
+import awfx;
 import awfy;
+import awga;
 import com.tencent.qphone.base.util.QLog;
 
 public class TopicEditTextView
@@ -23,15 +23,15 @@ public class TopicEditTextView
   public static Editable.Factory a;
   int jdField_a_of_type_Int;
   private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new awfw(this);
-  awfs jdField_a_of_type_Awfs;
+  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new awfy(this);
+  awfu jdField_a_of_type_Awfu;
   boolean jdField_a_of_type_Boolean;
   int b;
   public boolean b;
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new awfv();
+    jdField_a_of_type_AndroidTextEditable$Factory = new awfx();
   }
   
   public TopicEditTextView(Context paramContext)
@@ -66,11 +66,11 @@ public class TopicEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    awfs[] arrayOfawfs = (awfs[])getEditableText().getSpans(i, j, awfs.class);
-    if ((arrayOfawfs != null) && (arrayOfawfs.length > 0) && ((arrayOfawfs[0] instanceof awfs)))
+    awfu[] arrayOfawfu = (awfu[])getEditableText().getSpans(i, j, awfu.class);
+    if ((arrayOfawfu != null) && (arrayOfawfu.length > 0) && ((arrayOfawfu[0] instanceof awfu)))
     {
-      i = getEditableText().getSpanEnd(arrayOfawfs[0]);
-      j = getEditableText().getSpanStart(arrayOfawfs[0]);
+      i = getEditableText().getSpanEnd(arrayOfawfu[0]);
+      j = getEditableText().getSpanStart(arrayOfawfu[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -90,12 +90,12 @@ public class TopicEditTextView
     {
       return;
       if (QLog.isColorLevel()) {
-        QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_Awfs, paramEditable }));
+        QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_Awfu, paramEditable }));
       }
-      if (this.jdField_a_of_type_Awfs != null)
+      if (this.jdField_a_of_type_Awfu != null)
       {
-        int i = paramEditable.getSpanStart(this.jdField_a_of_type_Awfs);
-        int j = paramEditable.getSpanEnd(this.jdField_a_of_type_Awfs);
+        int i = paramEditable.getSpanStart(this.jdField_a_of_type_Awfu);
+        int j = paramEditable.getSpanEnd(this.jdField_a_of_type_Awfu);
         if ((i >= 0) && (j > i))
         {
           this.jdField_b_of_type_Boolean = true;
@@ -121,17 +121,17 @@ public class TopicEditTextView
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Awfs = null;
+    this.jdField_a_of_type_Awfu = null;
     if ((paramCharSequence instanceof Spannable))
     {
       Spannable localSpannable = (Spannable)paramCharSequence;
-      awfs localawfs = awfy.a(localSpannable, paramInt1);
-      if (localawfs != null)
+      awfu localawfu = awga.a(localSpannable, paramInt1);
+      if (localawfu != null)
       {
-        int i = localSpannable.getSpanStart(localawfs);
-        int j = localSpannable.getSpanEnd(localawfs);
+        int i = localSpannable.getSpanStart(localawfu);
+        int j = localSpannable.getSpanEnd(localawfu);
         if ((j >= 0) && (j >= i) && (paramInt2 > paramInt3)) {
-          this.jdField_a_of_type_Awfs = localawfs;
+          this.jdField_a_of_type_Awfu = localawfu;
         }
       }
     }
@@ -142,7 +142,7 @@ public class TopicEditTextView
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt3;
       if (QLog.isColorLevel()) {
-        QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Awfs, paramCharSequence }));
+        QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Awfu, paramCharSequence }));
       }
       if (this.jdField_a_of_type_AndroidTextTextWatcher == null) {
         break;
@@ -169,14 +169,14 @@ public class TopicEditTextView
     {
       do
       {
-        awfs[] arrayOfawfs;
+        awfu[] arrayOfawfu;
         do
         {
           return;
-          arrayOfawfs = (awfs[])getEditableText().getSpans(paramInt1, paramInt2, awfs.class);
-        } while ((arrayOfawfs == null) || (arrayOfawfs.length <= 0));
-        i = getEditableText().getSpanEnd(arrayOfawfs[0]);
-        j = getEditableText().getSpanStart(arrayOfawfs[0]);
+          arrayOfawfu = (awfu[])getEditableText().getSpans(paramInt1, paramInt2, awfu.class);
+        } while ((arrayOfawfu == null) || (arrayOfawfu.length <= 0));
+        i = getEditableText().getSpanEnd(arrayOfawfu[0]);
+        j = getEditableText().getSpanStart(arrayOfawfu[0]);
       } while ((i <= j) || (j < 0));
       if ((paramInt1 == j) && (paramInt2 == i))
       {

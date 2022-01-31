@@ -1,6 +1,23 @@
-public abstract interface qvz
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+
+class qvz
+  implements Animation.AnimationListener
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  qvz(qvx paramqvx) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = (ImageView)qvx.a(this.a).findViewById(2131378755);
+    ImageView localImageView = (ImageView)qvx.a(this.a).findViewById(2131378756);
+    qvx.a(this.a, localImageView, paramAnimation, 100L, 240L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric;
 
-import pnr;
-import poa;
-import pob;
+import pno;
+import pnx;
+import pny;
 
 public class RvPolymericContainer$10
   implements Runnable
 {
-  public RvPolymericContainer$10(pnr parampnr, long paramLong) {}
+  public RvPolymericContainer$10(pno parampno, long paramLong) {}
   
   public void run()
   {
-    if ((pnr.a(this.this$0).a() > 1) && (pnr.a(this.this$0) != null)) {
-      pnr.a(this.this$0).a(this.a);
+    if ((pno.a(this.this$0).a() > 1) && (pno.a(this.this$0) != null)) {
+      pno.a(this.this$0).a(this.a);
     }
   }
 }

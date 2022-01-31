@@ -13,14 +13,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import apzv;
-import apzw;
 import apzx;
-import aqae;
+import apzy;
+import apzz;
 import aqag;
-import aqan;
-import aqao;
-import bcpw;
+import aqai;
+import aqap;
+import aqaq;
+import bcql;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
 import com.qflutter.qflutter_skin_engine.QFlutterSkinEngine;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class QFlutterContainerFragment
   extends PublicBaseFragment
-  implements apzx, aqae
+  implements apzz, aqag
 {
   private long jdField_a_of_type_Long;
   private View jdField_a_of_type_AndroidViewView;
@@ -65,8 +65,8 @@ public class QFlutterContainerFragment
     if (localObject1 == null) {
       localObject2 = new HashMap();
     }
-    localObject1 = new apzv().a(str).a((Map)localObject2).a();
-    ((QFlutterFragment)localObject1).a(new apzw(this));
+    localObject1 = new apzx().a(str).a((Map)localObject2).a();
+    ((QFlutterFragment)localObject1).a(new apzy(this));
     getChildFragmentManager().beginTransaction().add(2131366662, (Fragment)localObject1).commitAllowingStateLoss();
   }
   
@@ -90,8 +90,8 @@ public class QFlutterContainerFragment
     }
     for (;;)
     {
-      aqao.a(l1 - l2, l3, l4 - l5, bool2, bool1, this.jdField_a_of_type_Boolean);
-      aqan.a().a(this.jdField_d_of_type_Boolean);
+      aqaq.a(l1 - l2, l3, l4 - l5, bool2, bool1, this.jdField_a_of_type_Boolean);
+      aqap.a().a(this.jdField_d_of_type_Boolean);
       return;
       label121:
       bool1 = false;
@@ -110,10 +110,10 @@ public class QFlutterContainerFragment
     for (;;)
     {
       if (this.jdField_d_of_type_Boolean) {
-        aqao.a(paramInt, l, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean);
+        aqaq.a(paramInt, l, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean);
       }
       return;
-      bcpw.a(getActivity(), 1, 2131693973, 1).a();
+      bcql.a(getActivity(), 1, 2131693974, 1).a();
       getActivity().finish();
     }
   }
@@ -123,7 +123,7 @@ public class QFlutterContainerFragment
     long l = System.currentTimeMillis() - this.jdField_c_of_type_Long;
     QLog.d("QFlutter.fragment", 1, String.format("onLaunchFinish, isSuccess: %s, cost: %s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l) }));
     if (this.jdField_d_of_type_Boolean) {
-      aqao.a(paramBoolean, l);
+      aqaq.a(paramBoolean, l);
     }
   }
   
@@ -136,7 +136,7 @@ public class QFlutterContainerFragment
       this.jdField_c_of_type_Long = System.currentTimeMillis();
       this.jdField_b_of_type_Boolean = paramBoolean2;
       this.jdField_c_of_type_Boolean = paramBoolean3;
-      aqao.a(paramBoolean1, l, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean);
+      aqaq.a(paramBoolean1, l, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean);
     }
   }
   
@@ -153,7 +153,7 @@ public class QFlutterContainerFragment
     QFlutterSkinEngine.get().setCurrentThemeId(ThemeUtil.getCurrentThemeId());
     this.jdField_a_of_type_AndroidViewViewGroup = new RelativeLayout(getActivity());
     this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130838514);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131560515, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131560514, null);
     paramLayoutInflater = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView, paramLayoutInflater);
     return this.jdField_a_of_type_AndroidViewViewGroup;
@@ -162,14 +162,14 @@ public class QFlutterContainerFragment
   public void onDestroy()
   {
     super.onDestroy();
-    aqag.b(this);
-    aqan.a().a(this.jdField_d_of_type_Boolean, this.e);
+    aqai.b(this);
+    aqap.a().a(this.jdField_d_of_type_Boolean, this.e);
   }
   
   public void onPause()
   {
     super.onPause();
-    aqan.a().b();
+    aqap.a().b();
   }
   
   public void onPostThemeChanged()
@@ -185,11 +185,11 @@ public class QFlutterContainerFragment
     this.jdField_a_of_type_Long = paramView.getLongExtra("click_millis", 0L);
     this.jdField_a_of_type_Boolean = paramView.getBooleanExtra("process_exist", false);
     this.jdField_b_of_type_Long = System.currentTimeMillis();
-    if (aqag.a == 0) {
+    if (aqai.a == 0) {
       this.jdField_d_of_type_Boolean = true;
     }
-    aqan.a().a();
-    aqag.c(this);
+    aqap.a().a();
+    aqai.c(this);
   }
 }
 

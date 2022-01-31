@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
 import android.graphics.Bitmap;
-import bdid;
-import bgxy;
+import bdis;
+import bgyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,14 +15,14 @@ public final class QZoneHelper$3
   {
     try
     {
-      bgxy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+      bgyp.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       QLog.e("QZoneHelper", 2, "createAlbumShortCut error! exception e = " + localException.getMessage());
-      bdid.a().a(2131690102);
+      bdis.a().a(2131690102);
     }
   }
 }

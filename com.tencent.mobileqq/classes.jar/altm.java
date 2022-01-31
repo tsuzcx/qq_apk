@@ -1,12 +1,35 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
 public class altm
 {
-  public int a;
-  public String a;
+  java.lang.ref.WeakReference<QQAppInterface> a;
   
-  public altm()
+  public altm(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2, ajte paramajte)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
+    }
+    return ((altf)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramajte);
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, ajte paramajte)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
+    }
+    return ((altf)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramajte);
   }
 }
 

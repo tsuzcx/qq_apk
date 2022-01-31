@@ -1,16 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class awdj
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public awdj(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public awdj(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return SignatureHistoryFragment.a(this.a, paramView, false);
+    paramDialogInterface.dismiss();
+    awek.a().a(awek.a().b);
+    this.a.getActivity().finish();
   }
 }
 

@@ -1,32 +1,64 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class asgj
-  implements EIPCOnGetConnectionListener
+public class asgj
+  extends QIPCModule
 {
-  asgj(asgh paramasgh) {}
+  public static boolean a;
+  private String a;
+  private boolean b;
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  private asgj()
   {
-    if (paramEIPCConnection != null) {
-      asgh.a(this.a, paramEIPCConnection.procName);
-    }
-    asgh.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
+    super("MediaFocusModuleClient");
+    b();
+  }
+  
+  public static asgj a()
+  {
+    return asgm.a();
+  }
+  
+  public static void a()
+  {
+    asgj localasgj = a();
+    if (!jdField_a_of_type_Boolean)
+    {
+      QIPCClientHelper.getInstance().register(localasgj);
+      jdField_a_of_type_Boolean = true;
     }
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  private void b()
   {
-    if (paramEIPCConnection != null) {
-      asgh.a(this.a, paramEIPCConnection.procName);
-    }
-    asgh.a(this.a, false);
+    QIPCClientHelper.getInstance().getClient().connect(new asgk(this));
+    QIPCClientHelper.getInstance().getClient().addListener(new asgl(this));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
+      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
     }
+    Bundle localBundle = new Bundle();
+    if ("actionCheckItemExist".equals(paramString))
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
+      boolean bool = false;
+      if (paramString != null) {
+        bool = asgn.a().a(paramString.a(), paramString.b());
+      }
+      localBundle.putBoolean("isItemExist", bool);
+      localBundle.putBoolean("isConnected", this.b);
+      localBundle.putParcelable("focusItem", paramString);
+    }
+    return EIPCResult.createSuccessResult(localBundle);
   }
 }
 

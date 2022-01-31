@@ -2,9 +2,9 @@ public abstract interface ahdz
 {
   public abstract void a();
   
-  public abstract void a(int paramInt);
-  
   public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

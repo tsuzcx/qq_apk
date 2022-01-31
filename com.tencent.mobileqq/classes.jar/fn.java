@@ -3,13 +3,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 class fn
-  implements aput
+  implements apuv
 {
   fn(fk paramfk, DataLineMsgRecord paramDataLineMsgRecord) {}
   
   public void onClick(View paramView)
   {
-    ((ayhh)this.jdField_a_of_type_Fk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(305)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext);
+    ((ayhj)this.jdField_a_of_type_Fk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(305)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext);
   }
 }
 

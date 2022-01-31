@@ -1,18 +1,62 @@
-import android.text.TextUtils;
-import android.webkit.ValueCallback;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
-class bfaw
-  implements ValueCallback
+public class bfaw
+  extends bfau
 {
-  bfaw(bfav parambfav) {}
+  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
   
-  public void onReceiveValue(Object paramObject)
+  public bfaw(String[] paramArrayOfString, String paramString)
   {
-    if ((!TextUtils.isEmpty(bfav.a(this.a))) && (bfav.a(this.a).contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this.a.a);
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      this.a.keyList.add(str);
+      i += 1;
     }
-    this.a.a.a(bfau.a);
+    this.a.appid.set(paramString);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
+    try
+    {
+      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStRemoveUserCloudStorageRsp != null) {
+        return new JSONObject();
+      }
+      betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "RemoveUserCloudStorage";
   }
 }
 

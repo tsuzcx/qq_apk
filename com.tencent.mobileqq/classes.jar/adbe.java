@@ -7,7 +7,7 @@ class adbe
   public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
     }
     if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
       return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);

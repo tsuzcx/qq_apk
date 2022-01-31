@@ -1,6 +1,6 @@
 public abstract interface aycb
 {
-  public abstract void a();
+  public abstract void a(aybe paramaybe);
 }
 
 

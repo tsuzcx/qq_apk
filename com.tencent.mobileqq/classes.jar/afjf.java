@@ -1,11 +1,39 @@
+import android.content.Context;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-public abstract interface afjf
+public class afjf
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public afjf(Context paramContext, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  public static afjf a(Context paramContext, View paramView)
+  {
+    return new afjf(paramContext, paramView);
+  }
+  
+  public static afjf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return new afjf(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
 }
 
 

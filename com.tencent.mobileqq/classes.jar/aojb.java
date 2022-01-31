@@ -1,26 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-
-public class aojb
-  implements View.OnTouchListener
+public abstract interface aojb
 {
-  public aojb(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  public abstract long a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
 }
 
 

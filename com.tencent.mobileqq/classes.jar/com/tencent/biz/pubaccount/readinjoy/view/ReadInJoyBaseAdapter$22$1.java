@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.util.Pair;
-import osj;
-import rap;
-import rba;
+import osg;
+import ram;
+import rax;
 
 public class ReadInJoyBaseAdapter$22$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$22$1(rba paramrba, Pair paramPair) {}
+  public ReadInJoyBaseAdapter$22$1(rax paramrax, Pair paramPair) {}
   
   public void run()
   {
-    osj.a().a(this.jdField_a_of_type_Rba.a.c, 3, ((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), null);
+    osg.a().a(this.jdField_a_of_type_Rax.a.c, 3, ((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), null);
   }
 }
 

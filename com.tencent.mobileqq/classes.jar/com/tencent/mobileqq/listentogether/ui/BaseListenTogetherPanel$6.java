@@ -4,33 +4,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import artw;
-import arua;
-import bbkx;
+import arty;
+import aruc;
+import bbll;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseListenTogetherPanel$6
   implements Runnable
 {
-  public BaseListenTogetherPanel$6(artw paramartw) {}
+  public BaseListenTogetherPanel$6(arty paramarty) {}
   
   public void run()
   {
     try
     {
-      View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("layout_inflater")).inflate(2131560622, this.this$0.jdField_a_of_type_AndroidViewViewGroup, false);
+      View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("layout_inflater")).inflate(2131560621, this.this$0.jdField_a_of_type_AndroidViewViewGroup, false);
       localView.measure(0, 0);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-      localView.setOnClickListener(new arua(this));
+      localView.setOnClickListener(new aruc(this));
       if (this.this$0.jdField_a_of_type_AndroidViewViewGroup != null) {}
-      for (int i = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getWidth();; i = bbkx.a())
+      for (int i = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getWidth();; i = bbll.a())
       {
         int j = localView.getMeasuredWidth();
-        int k = bbkx.a(52.0F);
+        int k = bbll.a(52.0F);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout, i - j - k, 0);
         return;
       }

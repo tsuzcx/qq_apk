@@ -1,19 +1,19 @@
 package com.tencent.open.base;
 
 import android.widget.Toast;
-import bcxm;
-import bdid;
+import bcyb;
+import bdis;
 
 public class ToastUtil$2
   implements Runnable
 {
-  public ToastUtil$2(bdid parambdid, int paramInt1, int paramInt2) {}
+  public ToastUtil$2(bdis parambdis, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     if (this.this$0.a == null)
     {
-      this.this$0.a = Toast.makeText(bcxm.a().a(), this.a, this.b);
+      this.this$0.a = Toast.makeText(bcyb.a().a(), this.a, this.b);
       this.this$0.a.show();
       return;
     }

@@ -1,6 +1,16 @@
-public abstract interface bkrp
+public class bkrp
 {
-  public abstract void a();
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  
+  public String toString()
+  {
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+  }
 }
 
 

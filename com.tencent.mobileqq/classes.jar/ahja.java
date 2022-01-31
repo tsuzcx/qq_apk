@@ -1,21 +1,37 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
 final class ahja
-  extends ClickableSpan
+  implements View.OnTouchListener
 {
-  ahja(ahjd paramahjd, String paramString) {}
+  private float b = 1.0F;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Ahjd.a(this.jdField_a_of_type_JavaLangString);
-  }
+  ahja(float paramFloat) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.b = paramView.getAlpha();
+      paramView.setAlpha(this.a);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        paramView.setAlpha(this.b);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!ahiw.a(paramView, i, j)) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 

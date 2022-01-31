@@ -1,15 +1,15 @@
 package com.tencent.qidian;
 
-import bdto;
+import bduf;
 
 public class QidianManager$1
   implements Runnable
 {
-  public QidianManager$1(bdto parambdto) {}
+  public QidianManager$1(bduf parambduf) {}
   
   public void run()
   {
-    bdto.a(this.this$0);
+    bduf.a(this.this$0);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import ajcd;
-import ajch;
+import ajcb;
+import ajcf;
 
 public class CmGameLauncher$9
   implements Runnable
 {
-  public CmGameLauncher$9(ajch paramajch, String paramString, boolean paramBoolean) {}
+  public CmGameLauncher$9(ajcf paramajcf, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    ajch.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, ajch.a(this.this$0), this.jdField_a_of_type_Boolean);
-    ajch.b(this.this$0, false);
+    ajcf.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, ajcf.a(this.this$0), this.jdField_a_of_type_Boolean);
+    ajcf.b(this.this$0, false);
   }
 }
 

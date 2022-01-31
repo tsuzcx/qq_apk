@@ -1,15 +1,28 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
-public abstract interface bkjv
+public class bkjv
 {
-  public abstract void a(int paramInt, Bitmap paramBitmap);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
+  {
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
+    {
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
 }
 
 

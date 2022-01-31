@@ -1,58 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-class baaf
-  implements mzb
+public class baaf
+  implements View.OnClickListener
 {
-  baaf(baae parambaae) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void loaded(String paramString, int paramInt)
+  protected baaf(baad parambaad) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+    if (this.jdField_a_of_type_Baad.a != null) {
+      this.jdField_a_of_type_Baad.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    if (paramInt == 0) {}
-    while (baae.a(baae.a(this.a), baae.b(this.a)))
-    {
-      do
-      {
-        String str;
-        try
-        {
-          paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-          str = paramString.optString("url");
-          paramInt = paramString.optInt("filesize");
-          if ((str != null) && (str.endsWith("patch")))
-          {
-            bbdj.a(mzk.a(baae.a(this.a)) + baae.a(this.a));
-            baae.a(this.a);
-            return;
-          }
-        }
-        catch (Exception paramString)
-        {
-          do
-          {
-            paramString.printStackTrace();
-          } while (baae.a(baae.a(this.a), baae.b(this.a)));
-          baae.b(this.a);
-          return;
-        }
-        if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-        {
-          baae.a(this.a, paramString);
-          return;
-        }
-      } while (baae.a(baae.a(this.a), baae.b(this.a)));
-      baae.b(this.a);
-      return;
-    }
-    baae.b(this.a);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

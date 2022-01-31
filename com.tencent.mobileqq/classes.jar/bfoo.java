@@ -1,45 +1,35 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import java.util.HashSet;
+import android.widget.ListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.FastScroller;
 
-class bfoo
-  implements View.OnClickListener
+public class bfoo
+  extends AdapterView<ListAdapter>.bfps
 {
-  bfoo(bfol parambfol) {}
-  
-  public void onClick(View paramView)
+  public bfoo(AbsListView paramAbsListView)
   {
-    int i = paramView.getId();
-    Object localObject;
-    if ((bfol.a(this.a)) && ((bfol.a(this.a) == null) || (!bfol.a(this.a).contains(Integer.valueOf(i)))) && (bfol.b(this.a) != -1) && (i != bfol.b(this.a)))
-    {
-      localObject = (View)bfol.a(this.a).get(bfol.b(this.a));
-      ((View)localObject).findViewById(2131361915).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131361914);
-      bfol.a(this.a, (TextView)localObject, false);
-      localObject = (View)bfol.a(this.a).get(i);
-      ((View)localObject).findViewById(2131361915).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131361914);
-      bfol.a(this.a, (TextView)localObject, true);
-      bfol.a(this.a, i);
+    super(paramAbsListView);
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
     }
-    if (bfol.a(this.a) != null) {
-      bfol.a(this.a).OnClick(paramView, i);
-    }
-    if (bfol.a(this.a) != null)
-    {
-      localObject = (TextView)paramView.findViewById(2131361914);
-      if ((localObject != null) && ((localObject instanceof TextView))) {
-        bfol.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
-      }
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfoo
  * JD-Core Version:    0.7.0.1
  */

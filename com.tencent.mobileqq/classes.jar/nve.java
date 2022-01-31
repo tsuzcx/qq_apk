@@ -1,29 +1,17 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nve
-  implements bfoq
+  implements View.OnClickListener
 {
   public nve(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a) {
-      return;
-    }
-    this.a.a = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      this.a.j();
-      this.a.finish();
-      continue;
-      this.a.k();
-    }
+    this.a.m = true;
+    ReadInJoyBaseDeliverActivity.a(this.a);
+    this.a.a();
   }
 }
 

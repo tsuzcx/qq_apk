@@ -1,7 +1,6 @@
-public class apux
+public abstract interface apux
 {
-  public int a;
-  public int b;
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aieu;
+import aies;
 
 public class SelectMemberBuddyListAdapter$1
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$1(aieu paramaieu) {}
+  public SelectMemberBuddyListAdapter$1(aies paramaies) {}
   
   public void run()
   {

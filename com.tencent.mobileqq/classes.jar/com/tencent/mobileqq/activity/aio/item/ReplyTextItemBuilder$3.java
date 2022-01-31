@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adys;
+import adyq;
 import android.content.Context;
-import anie;
+import anij;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -14,12 +14,12 @@ import mqq.os.MqqHandler;
 public final class ReplyTextItemBuilder$3
   implements Runnable
 {
-  public ReplyTextItemBuilder$3(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, adys paramadys, Context paramContext, ChatThumbView paramChatThumbView) {}
+  public ReplyTextItemBuilder$3(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, adyq paramadyq, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof anie)) {}
-    for (Object localObject = ((anie)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).getSourceMsgInfo();; localObject = null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof anij)) {}
+    for (Object localObject = ((anij)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).getSourceMsgInfo();; localObject = null)
     {
       if (localObject == null) {
         return;

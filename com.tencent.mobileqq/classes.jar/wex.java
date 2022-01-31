@@ -1,16 +1,16 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-public class wex
+class wex
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public wex(RotateCircleImageView paramRotateCircleImageView) {}
+  wex(wew paramwew, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    paramValueAnimator = (wez)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 

@@ -1,16 +1,15 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-
-class bikf
-  implements bjob<String>
+public class bikf
 {
-  bikf(bikc parambikc) {}
+  private static bikg a;
   
-  public void a(@Nullable String paramString)
+  public static bikg a()
   {
-    if (bikc.a(this.a) == bivx.c) {
-      bikc.a(this.a).setMaterial(paramString);
-    }
+    return a;
+  }
+  
+  public static void a(bikg parambikg)
+  {
+    a = parambikg;
   }
 }
 

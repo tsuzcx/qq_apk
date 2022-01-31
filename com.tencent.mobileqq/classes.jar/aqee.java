@@ -1,16 +1,23 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aqee
-  extends GridLayoutManager.SpanSizeLookup
+  extends RecyclerView.OnScrollListener
 {
-  aqee(aqed paramaqed) {}
+  aqee(aqeb paramaqeb) {}
   
-  public int getSpanSize(int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.getItemViewType(paramInt) == aqdz.b) {
-      return 5;
+    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      aqeb.a(this.a).c();
     }
-    return 1;
+    while (!aqeb.a(this.a).a()) {
+      return;
+    }
+    aqeb.a(this.a).b();
+    aqeb.a(this.a).notifyDataSetChanged();
   }
 }
 

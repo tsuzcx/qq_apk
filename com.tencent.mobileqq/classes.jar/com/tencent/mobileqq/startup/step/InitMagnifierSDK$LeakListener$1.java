@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajyc;
-import axoh;
-import bcpw;
+import ajya;
+import axoj;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class InitMagnifierSDK$LeakListener$1
   implements Runnable
 {
-  public InitMagnifierSDK$LeakListener$1(axoh paramaxoh, String paramString) {}
+  public InitMagnifierSDK$LeakListener$1(axoj paramaxoj, String paramString) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.sApplication, this.a + ajyc.a(2131705784), 2000).a();
+    bcql.a(BaseApplicationImpl.sApplication, this.a + ajya.a(2131705795), 2000).a();
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.R.styleable;
-import muf;
+import muc;
 
 public class HorizontalBallLoadingView
   extends MetaballView
@@ -30,7 +30,7 @@ public class HorizontalBallLoadingView
   
   protected int a()
   {
-    return (int)(muf.a(getContext(), 6.0F) * this.a);
+    return (int)(muc.a(getContext(), 6.0F) * this.a);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -42,7 +42,7 @@ public class HorizontalBallLoadingView
   
   protected int b()
   {
-    return (int)(muf.a(getContext(), 10.0F) * this.a);
+    return (int)(muc.a(getContext(), 10.0F) * this.a);
   }
 }
 

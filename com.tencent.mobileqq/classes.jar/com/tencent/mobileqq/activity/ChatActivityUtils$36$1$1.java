@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aapo;
-import aver;
+import aapk;
+import avet;
 
 class ChatActivityUtils$36$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class ChatActivityUtils$36$1$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_Aver.a(1, this.a.this$0.jdField_a_of_type_Long, "", "");
+    this.a.this$0.jdField_a_of_type_Avet.a(1, this.a.this$0.jdField_a_of_type_Long, "", "");
   }
 }
 

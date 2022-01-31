@@ -1,24 +1,25 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
 
-public class anuw
-  implements ajkr
+class anuw
+  implements ajic
 {
-  public anuw(MessengerService.IncomingHandler.30 param30) {}
+  anuw(anuq paramanuq, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a(long paramLong, String paramString)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
+    paramString = new Bundle();
+    if (paramBoolean)
     {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      paramString.putInt("apollo_result", 0);
+      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
+    paramString.putInt("apollo_result", 1);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

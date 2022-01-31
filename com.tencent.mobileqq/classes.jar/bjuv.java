@@ -1,36 +1,118 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.2;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.util.LruCache;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bjuv
-  implements ModuleDownloadListener
+  extends BaseAdapter
 {
-  bjuv(bjun parambjun) {}
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  List<vjy> jdField_a_of_type_JavaUtilList;
+  int b;
+  public int c = -1;
   
-  public void onDownloadCanceled(String paramString)
+  public bjuv(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadCanceled " + paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = bkik.a(this.jdField_a_of_type_AndroidContentContext, 120.0F);
+    this.b = bkik.a(this.jdField_a_of_type_AndroidContentContext, 90.0F);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
   }
   
-  public void onDownloadFailed(String paramString)
+  public vjy a(int paramInt)
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadFailed " + paramString);
-    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
-      this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.2(this));
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (vjy)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a(List<vjy> paramList)
   {
-    if (!paramString.equals("cyber_clink_version_2.jar")) {}
-    while ((this.a.a == null) || (this.a.a.getActivity() == null)) {
-      return;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    vjy localvjy = new vjy();
+    this.jdField_a_of_type_JavaUtilList.add(localvjy);
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c = 0;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView1;
+    if (paramView == null)
+    {
+      paramViewGroup = new bjuw(this);
+      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559193, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131377245));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131375818);
+      localView1.setTag(paramViewGroup);
     }
-    this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.1(this));
+    vjy localvjy;
+    for (;;)
+    {
+      localvjy = a(paramInt);
+      if (localvjy != null) {
+        break;
+      }
+      return localView1;
+      paramViewGroup = (bjuw)paramView.getTag();
+      localView1 = paramView;
+    }
+    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localvjy.jdField_a_of_type_Int + localvjy.b);
+    View localView2 = paramView;
+    if (paramView == null)
+    {
+      if (paramInt != 0) {
+        break label249;
+      }
+      paramView = baxi.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841054, this.b, this.jdField_a_of_type_Int);
+      localView2 = paramView;
+      if (paramView != null)
+      {
+        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localvjy.jdField_a_of_type_Int + localvjy.b, paramView);
+        localView2 = paramView;
+      }
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
+    if (paramInt == 0) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131703827));
+    }
+    for (;;)
+    {
+      if (paramInt != this.c) {
+        break label305;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return localView1;
+      label249:
+      paramView = baxi.a(localvjy.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      break;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131703930) + localvjy.c);
+    }
+    label305:
+    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    return localView1;
   }
 }
 

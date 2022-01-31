@@ -1,16 +1,14 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class tuq
-  implements Dispatcher.Event
+class tuq
+  extends AnimatorListenerAdapter
 {
-  public final AnimationParam a;
-  public final String a;
+  tuq(tup paramtup) {}
   
-  public tuq(AnimationParam paramAnimationParam, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super.onAnimationEnd(paramAnimator);
   }
 }
 

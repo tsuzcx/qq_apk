@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.app.Activity;
-import bbcv;
-import bbgg;
-import bcpw;
+import bbdj;
+import bbgu;
+import bcql;
 
 class ShareUtils$6$1
   implements Runnable
@@ -14,10 +14,10 @@ class ShareUtils$6$1
   {
     if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
     {
-      bbcv.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719480), this.val$finalErrMsg, new ShareUtils.6.1.1(this), null).show();
+      bbdj.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719491), this.val$finalErrMsg, new ShareUtils.6.1.1(this), null).show();
       return;
     }
-    bcpw.a(this.this$0.val$activity, 1, 2131694282, 1).a();
+    bcql.a(this.this$0.val$activity, 1, 2131694283, 1).a();
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class MiniAppEntity
-  extends aukm
+  extends auko
 {
   public static final String TAG = "MiniAppEntity";
-  @auma
+  @aumc
   public String appId;
   public byte[] appInfo;
   public String name;

@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
 public class acmb
-  implements View.OnClickListener
+  implements ajua
 {
-  public acmb(TroopRequestActivity paramTroopRequestActivity) {}
+  public acmb(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.g();
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
   }
 }
 

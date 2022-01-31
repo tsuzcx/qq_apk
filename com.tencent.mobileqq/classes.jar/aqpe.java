@@ -1,17 +1,33 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
+import java.io.File;
 
 class aqpe
-  implements EIPCResultCallback
+  implements bfph
 {
-  aqpe(aqpd paramaqpd) {}
+  aqpe(aqoz paramaqoz, bfpc parambfpc, AIOPicData paramAIOPicData, File paramFile) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (-102 == paramEIPCResult.code) {
-      this.a.a.a.finish();
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
     }
+    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Aqoz.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

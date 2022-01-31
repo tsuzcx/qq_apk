@@ -1,11 +1,24 @@
 import android.util.Pair;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface arux
+class arux
+  implements arvd
 {
-  public abstract Pair<aruk, LocationRoom.Venue> a();
+  arux(arus paramarus, int paramInt, String paramString) {}
   
-  public abstract void a(aruk paramaruk, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2);
+  public Pair<Integer, String> a()
+  {
+    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public aruk a()
+  {
+    if (arus.a(this.jdField_a_of_type_Arus) == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
+    }
+    return new aruk(this.jdField_a_of_type_Arus.app.c(), arus.a(this.jdField_a_of_type_Arus), arus.a(this.jdField_a_of_type_Arus));
+  }
 }
 
 

@@ -1,33 +1,34 @@
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
 public class aycw
-  extends ayay
+  extends aycz
+  implements aybd
 {
-  protected aybf a;
-  protected SpriteNativeView a;
+  protected String b;
   
-  public aycw()
+  public aycw(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    this.jdField_a_of_type_Aybf = new aybf(0.0F, 0.0F);
+    super(paramSpriteNativeView);
+    this.b = paramString;
   }
   
-  public aybe<aycw> a()
+  protected ImageView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
+    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public boolean c()
+  public String a()
   {
-    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
-    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
-    return b();
+    return this.b;
   }
   
-  public void d() {}
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+  }
 }
 
 

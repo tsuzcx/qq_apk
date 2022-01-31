@@ -1,57 +1,165 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Choreographer;
+import android.view.Choreographer.FrameCallback;
+import com.tencent.mobileqq.util.FPSCalculator.2;
+import com.tencent.mobileqq.util.FPSCalculator.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
-class baxq
-  extends ajvl
+@TargetApi(16)
+public class baxq
 {
-  private baxq(baxo parambaxo) {}
+  private static volatile baxq jdField_a_of_type_Baxq;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Choreographer.FrameCallback jdField_a_of_type_AndroidViewChoreographer$FrameCallback;
+  private Choreographer jdField_a_of_type_AndroidViewChoreographer;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Runnable jdField_a_of_type_JavaLangRunnable = new FPSCalculator.2(this);
+  private Vector<baxs> jdField_a_of_type_JavaUtilVector = new Vector();
+  private boolean jdField_a_of_type_Boolean;
+  private Runnable b = new FPSCalculator.3(this);
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  private static long a(long paramLong)
   {
-    if (baxo.a(this.a) == null) {
+    return TimeUnit.NANOSECONDS.toMillis(paramLong);
+  }
+  
+  public static baxq a()
+  {
+    if (jdField_a_of_type_Baxq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Baxq == null) {
+        jdField_a_of_type_Baxq = new baxq();
+      }
+      return jdField_a_of_type_Baxq;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.d("FPSCalculator", 2, "FPSCalculator is enable");
       return;
     }
-    String str;
-    int i;
-    if (this.a.jdField_a_of_type_Baxn != null)
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("FPSCalculator", 2, "FPSCalculator set enable = true");
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    if (Build.VERSION.SDK_INT > 16)
     {
-      if (!GroupIconHelper.a(paramString)) {
-        break label223;
+      if (this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback == null) {
+        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new baxr(this);
       }
-      str = GroupIconHelper.b(paramString);
-      i = 1001;
+      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FPSCalculator", 2, "build version is not support ");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.b, 500L);
+  }
+  
+  private void a(long paramLong)
+  {
+    paramLong = a(paramLong);
+    if (this.jdField_a_of_type_Long <= 0L) {
+      this.jdField_a_of_type_Long = paramLong;
     }
     for (;;)
     {
-      paramString = this.a.a(i, paramString, 0, (byte)3);
-      if ((paramBoolean1) && (paramString != null)) {
-        if (i != 1001) {
-          break label185;
-        }
+      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
+      return;
+      long l = paramLong - this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Int += 1;
+      if (l <= 500L) {
+        continue;
       }
-      for (;;)
+      double d = this.jdField_a_of_type_Int * 1000 / l;
+      this.jdField_a_of_type_Long = paramLong;
+      this.jdField_a_of_type_Int = 0;
+      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      int i = 0;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.FaceDecoderImpl", 2, "====faceDecoderImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + str + ",type: " + i + ",style: " + -1);
+        while (i < this.jdField_a_of_type_JavaUtilVector.size())
+        {
+          ((baxs)this.jdField_a_of_type_JavaUtilVector.get(i)).onInfo(this.jdField_a_of_type_Long, d);
+          i += 1;
         }
-        if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (this.a.b >= this.a.jdField_a_of_type_Int)) {
-          break;
-        }
-        this.a.e();
-        return;
-        label185:
-        this.a.jdField_a_of_type_Baxn.onDecodeTaskCompleted(this.a.b + this.a.jdField_a_of_type_JavaUtilLinkedList.size(), i, str, paramString);
       }
-      label223:
-      i = 101;
-      str = paramString;
+      finally {}
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (Build.VERSION.SDK_INT < 16) {
+        break label82;
+      }
+      if (this.jdField_a_of_type_AndroidViewChoreographer != null)
+      {
+        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
+        if (QLog.isColorLevel()) {
+          QLog.d("FPSCalculator", 2, "removeFrameCallback ");
+        }
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      QLog.d("FPSCalculator", 2, "FPSCalculator set enable = false");
+      return;
+      label82:
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+    }
+  }
+  
+  public void a(baxs parambaxs)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (!this.jdField_a_of_type_JavaUtilVector.contains(parambaxs)) {
+        this.jdField_a_of_type_JavaUtilVector.add(parambaxs);
+      }
+      if (this.jdField_a_of_type_JavaUtilVector.size() > 0) {
+        a();
+      }
+      return;
+    }
+  }
+  
+  public void b(baxs parambaxs)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilVector.contains(parambaxs)) {
+        this.jdField_a_of_type_JavaUtilVector.remove(parambaxs);
+      }
+      if (this.jdField_a_of_type_JavaUtilVector.size() <= 0) {
+        b();
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baxq
  * JD-Core Version:    0.7.0.1
  */

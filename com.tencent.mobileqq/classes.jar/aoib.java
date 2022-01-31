@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
-public class aoib
-  implements aokx
+public final class aoib
+  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
 {
-  public aoib(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
-  
-  public void a(String paramString, int paramInt)
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+  }
+  
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  {
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
   }
 }
 

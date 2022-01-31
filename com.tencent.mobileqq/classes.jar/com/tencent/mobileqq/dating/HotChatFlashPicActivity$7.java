@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import bbdj;
+import bbdx;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,7 +20,7 @@ class HotChatFlashPicActivity$7
         QLog.d("Q.hotchat", 2, "delete, thumb  :" + localFile.getPath());
       }
     }
-    bbdj.d(HotChatFlashPicActivity.b(this.this$0));
+    bbdx.d(HotChatFlashPicActivity.b(this.this$0));
     if (QLog.isColorLevel()) {
       QLog.d("Q.hotchat", 2, "delete :" + HotChatFlashPicActivity.b(this.this$0));
     }

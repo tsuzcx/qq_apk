@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pxo
-  implements DialogInterface.OnDismissListener
+  implements pbx
 {
   public pxo(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (paramInt == 1)) {
+      osg.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
+    }
+  }
 }
 
 

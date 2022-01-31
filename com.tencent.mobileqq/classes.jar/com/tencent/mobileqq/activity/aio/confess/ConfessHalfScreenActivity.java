@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import adcq;
+import adcn;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -35,7 +35,7 @@ public class ConfessHalfScreenActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawableResource(2131167087);
-    paramBundle = findViewById(2131363419);
+    paramBundle = findViewById(2131363418);
     if (paramBundle != null) {
       paramBundle.setBackgroundResource(2131167087);
     }
@@ -48,7 +48,7 @@ public class ConfessHalfScreenActivity
       finish();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adcq(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adcn(this);
     }
     try
     {

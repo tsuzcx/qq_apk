@@ -1,6 +1,19 @@
-public abstract interface tvt
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+
+class tvt
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString);
+  tvt(tvs paramtvs, tvr paramtvr) {}
+  
+  public void onClick(View paramView)
+  {
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Tvs.jdField_a_of_type_Tvr.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Tvs.jdField_a_of_type_Tvr.a).a(tvs.a(this.jdField_a_of_type_Tvs));
+    }
+    vei.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", tvs.a(this.jdField_a_of_type_Tvs) });
+  }
 }
 
 

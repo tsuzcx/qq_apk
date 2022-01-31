@@ -1,9 +1,12 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView.1.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.CustomImgView;
 
 public class aknr
   implements View.OnClickListener
@@ -12,19 +15,35 @@ public class aknr
   
   public void onClick(View paramView)
   {
-    AIOIceBreakView.a(this.a).u(24);
-    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
-    if (AIOIceBreakView.a(this.a).a.a != 1044) {
-      if (AIOIceBreakView.a(this.a).a.a != 0) {
-        break label126;
+    int i = 1;
+    QLog.i("IceBreak.HotPic", 2, "onClick.");
+    URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
+    paramView = (aewf)paramView.getTag();
+    if ((localURLImageView.getDrawable() instanceof URLDrawable))
+    {
+      if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
+        AIOIceBreakView.a(this.a, paramView);
       }
     }
-    label126:
-    for (int i = 1;; i = 2)
+    else if (AIOIceBreakView.a(this.a).a.a != 1044) {
+      if (AIOIceBreakView.a(this.a).a.a != 0) {
+        break label167;
+      }
+    }
+    for (;;)
     {
-      axqw.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
-      axqw.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
+      axqy.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CB", "0X800A4CB", i, 0, "", "", "", "");
+      if (AIOIceBreakView.a(this.a) != null) {
+        AIOIceBreakView.a(this.a).a(localURLImageView);
+      }
       return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
+      break;
+      label167:
+      i = 2;
     }
   }
 }

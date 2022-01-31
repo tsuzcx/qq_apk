@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import afwi;
-import ajfa;
-import aulz;
+import afwg;
+import ajey;
+import aumb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -12,20 +12,20 @@ import com.tencent.qphone.base.util.QLog;
 public class ChatHistoryBubbleListFragment$5$1
   implements Runnable
 {
-  public ChatHistoryBubbleListFragment$5$1(afwi paramafwi) {}
+  public ChatHistoryBubbleListFragment$5$1(afwg paramafwg) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("chatHistory.troop.msgList", 2, "do delete uniseq=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq + ",id=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
     }
-    aulz localaulz = (aulz)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.getManager(201);
-    if (localaulz != null) {
-      localaulz.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    aumb localaumb = (aumb)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.getManager(201);
+    if (localaumb != null) {
+      localaumb.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
     }
     this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
     if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo)) {
-      ajfa.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a, "chat_history_start_del_msg");
+      ajey.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBubbleListFragment.a, "chat_history_start_del_msg");
     }
   }
 }

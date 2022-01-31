@@ -1,20 +1,20 @@
 package cooperation.vip.ar.controller;
 
-import bdsm;
-import bdsn;
-import bhxy;
+import bdtd;
+import bdte;
+import bhyp;
 
 public class VipQGThreeController$1
   implements Runnable
 {
-  public VipQGThreeController$1(bhxy parambhxy) {}
+  public VipQGThreeController$1(bhyp parambhyp) {}
   
   public void run()
   {
-    if (bdsn.a("VipQGThreeController load QG So")) {
-      bhxy.a(this.this$0).a();
+    if (bdte.a("VipQGThreeController load QG So")) {
+      bhyp.a(this.this$0).a();
     }
-    bdsn.a("1018", true, bhxy.a(this.this$0));
+    bdte.a("1018", true, bhyp.a(this.this$0));
   }
 }
 

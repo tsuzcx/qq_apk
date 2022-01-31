@@ -1,75 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtPreLoader.1;
-import com.tencent.gdtad.aditem.GdtPreLoader.2;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public final class ysx
 {
-  private static volatile ysx a;
+  private int a = -2147483648;
   
-  public static ysx a()
+  public ysx(int paramInt)
   {
-    if (a == null) {}
-    try
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    switch (a())
     {
-      if (a == null) {
-        a = new ysx();
-      }
-      return a;
+    default: 
+      return null;
+    case 0: 
+      return "Success";
+    case 1: 
+      return "Internal Error";
+    case 2: 
+      return "Ad was re-loaded too frequently";
+    case 3: 
+      return "Network Error";
+    case 4: 
+      return "Invalid Request";
+    case 5: 
+      return "No Fill";
+    case 6: 
+      return "Server Error";
     }
-    finally {}
-  }
-  
-  private void b(GdtAd paramGdtAd)
-  {
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (TextUtils.isEmpty(paramGdtAd.getCanvas()))) {}
-    for (;;)
-    {
-      return;
-      int i = paramGdtAd.getDestType();
-      int j = paramGdtAd.getProductType();
-      if (((i == 4) && (j == 1000)) || (paramGdtAd.isAppXiJing()) || (paramGdtAd.isAppXiJingDefault())) {}
-      for (i = 1; i != 0; i = 0) {
-        try
-        {
-          Object localObject = new JSONObject(paramGdtAd.getCanvas());
-          String str = ((JSONObject)localObject).optString("canvas_json_key");
-          localObject = ((JSONObject)localObject).optString("canvas_json_url");
-          if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject))) {
-            break label138;
-          }
-          yyr.a().a(paramGdtAd, str, (String)localObject);
-          return;
-        }
-        catch (JSONException paramGdtAd)
-        {
-          yxs.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error", paramGdtAd);
-          return;
-        }
-      }
-    }
-    label138:
-    yxs.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error");
-  }
-  
-  private void c(GdtAd paramGdtAd)
-  {
-    yxs.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: ad = [" + paramGdtAd + "]");
-    if (!paramGdtAd.isVideoSplice()) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.2(this, paramGdtAd));
-  }
-  
-  public void a(GdtAd paramGdtAd)
-  {
-    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.1(this, paramGdtAd));
-    c(paramGdtAd);
-    b(paramGdtAd);
+    return "Display Format Mismatch";
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import accb;
+import acbx;
 import java.util.ArrayList;
 
 class ShieldFriendsListActivity$1$1

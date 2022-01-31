@@ -1,34 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.XListView;
 
 public class aijf
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public aijf(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public aijf(SpecailCareListActivity paramSpecailCareListActivity, aijx paramaijx, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      bcpw.a(BaseApplication.getContext(), 1, 2131694609, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (this.a.jdField_a_of_type_Bcpq == null) {
-        this.a.jdField_a_of_type_Bcpq = new bcpq(this.a, this.a.getTitleBarHeight());
-      }
-      this.a.jdField_a_of_type_Bcpq.c(2131699484);
-    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bcpq.isShowing()));
-    this.a.jdField_a_of_type_Bcpq.show();
+    this.jdField_a_of_type_Aijx.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(10);
+    paramAnimation.addRule(1, 2131367679);
+    paramAnimation.setMargins(0, (int)(22.0F * SpecailCareListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(23.0F * SpecailCareListActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) + this.jdField_a_of_type_Int), 0);
+    this.jdField_a_of_type_Aijx.a.setLayoutParams(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

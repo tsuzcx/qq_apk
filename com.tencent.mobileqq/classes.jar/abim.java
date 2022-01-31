@@ -1,23 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.AdapterView;
-import java.util.List;
 
 public class abim
-  implements bfpc
+  implements DialogInterface.OnClickListener
 {
   public abim(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
-      return;
-    }
-    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
-    GroupManagerActivity.a(this.a, bbcv.a(this.a, 2131693223, 2131693227, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 1);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

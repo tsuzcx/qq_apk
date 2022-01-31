@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pfc
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  pfc(pfb parampfb, pax parampax) {}
+  pfc(pfb parampfb, Container paramContainer, pau parampau, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    rap.a(this.jdField_a_of_type_Pax.a(), 0, 1);
+    pfb.a(this.jdField_a_of_type_Pfb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pau, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pau.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 

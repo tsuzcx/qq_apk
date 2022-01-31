@@ -2,39 +2,39 @@ package com.tencent.biz.pubaccount.weishi_new.cache;
 
 import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
-import sjy;
-import sni;
+import sjv;
+import snf;
 
 public class WeiShiCacheManager$3
   implements Runnable
 {
-  public WeiShiCacheManager$3(sjy paramsjy, ArrayList paramArrayList, int paramInt) {}
+  public WeiShiCacheManager$3(sjv paramsjv, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= sjy.a(this.this$0))
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= sjv.a(this.this$0))
     {
       int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > sjy.a(this.this$0)) {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > sjv.a(this.this$0)) {
         i = this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int;
       }
       for (;;)
       {
-        int j = i - sjy.a(this.this$0);
+        int j = i - sjv.a(this.this$0);
         while (j < i)
         {
           localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(j));
           j += 1;
         }
         if (this.jdField_a_of_type_JavaUtilArrayList.size() - this.jdField_a_of_type_Int > 0) {
-          i = sjy.a(this.this$0);
+          i = sjv.a(this.this$0);
         }
       }
     }
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    if (sjy.a(this.this$0, localArrayList, sjy.a(this.this$0))) {
-      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", sni.c());
+    if (sjv.a(this.this$0, localArrayList, sjv.a(this.this$0))) {
+      LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", snf.c());
     }
   }
 }

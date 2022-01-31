@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import pbm;
+import pbj;
 
 public class ReadInJoyUserInfoRepository$1
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$1(pbm parampbm, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInJoyUserInfoRepository$1(pbj parampbj, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    if (pbm.a(this.this$0) != null) {
-      pbm.a(this.this$0).a(this.a);
+    if (pbj.a(this.this$0) != null) {
+      pbj.a(this.this$0).a(this.a);
     }
   }
 }

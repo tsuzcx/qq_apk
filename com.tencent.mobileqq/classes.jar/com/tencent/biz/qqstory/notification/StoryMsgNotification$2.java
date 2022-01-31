@@ -3,22 +3,22 @@ package com.tencent.biz.qqstory.notification;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import tsg;
+import tsd;
 
 public class StoryMsgNotification$2
   implements Runnable
 {
-  public StoryMsgNotification$2(tsg paramtsg) {}
+  public StoryMsgNotification$2(tsd paramtsd) {}
   
   public void run()
   {
-    tsg.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    tsd.jdField_a_of_type_AndroidUtilSparseArray.clear();
     QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-    int j = tsg.jdField_a_of_type_AndroidUtilSparseIntArray.size();
+    int j = tsd.jdField_a_of_type_AndroidUtilSparseIntArray.size();
     int i = 0;
     while (i < j)
     {
-      localQQNotificationManager.cancel("StoryMsgNotification", tsg.jdField_a_of_type_AndroidUtilSparseIntArray.get(tsg.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
+      localQQNotificationManager.cancel("StoryMsgNotification", tsd.jdField_a_of_type_AndroidUtilSparseIntArray.get(tsd.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
       i += 1;
     }
   }

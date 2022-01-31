@@ -1,110 +1,92 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.RspBody;
 
-public class aacu
-  extends aabq
+class aacu
+  extends mxj
 {
-  protected bbjc a;
+  aacu(aacs paramaacs, aabi paramaabi) {}
   
-  private void a(JSONObject paramJSONObject, @NonNull aabm paramaabm)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramJSONObject = this.jdField_a_of_type_Aabp.a();
-    if ((paramJSONObject instanceof BaseActivity)) {}
-    for (int i = ((BaseActivity)paramJSONObject).getTitleBarHeight();; i = 0)
-    {
-      paramaabm = new aacv(this, i, paramaabm);
-      if (this.jdField_a_of_type_Bbjc == null)
-      {
-        this.jdField_a_of_type_Bbjc = new bbjc(paramJSONObject);
-        this.jdField_a_of_type_Bbjc.a(paramJSONObject.getString(2131719497));
-        this.jdField_a_of_type_Bbjc.a(a(paramJSONObject));
-      }
-      this.jdField_a_of_type_Bbjc.a(paramaabm);
-      try
-      {
-        this.jdField_a_of_type_Bbjc.a();
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("DoraemonApi.ShareModule", 2, "actionSheet.show failed!", paramJSONObject);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(aacs.jdField_a_of_type_JavaLangString, 2, "onResult appid=" + aacs.a(this.jdField_a_of_type_Aacs).jdField_a_of_type_JavaLangString + ", openid=" + this.jdField_a_of_type_Aacs.jdField_a_of_type_Aacv.jdField_a_of_type_JavaLangString + ", openkey=" + this.jdField_a_of_type_Aacs.jdField_a_of_type_Aacv.b + ", code=" + paramInt);
     }
-  }
-  
-  public static List<bbje>[] a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    bbje localbbje = new bbje();
-    localbbje.a = paramContext.getString(2131696695);
-    localbbje.jdField_b_of_type_Int = 2130838754;
-    localbbje.jdField_b_of_type_Boolean = true;
-    localbbje.c = 2;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.a = paramContext.getString(2131696708);
-    localbbje.jdField_b_of_type_Int = 2130838755;
-    localbbje.jdField_b_of_type_Boolean = true;
-    localbbje.c = 3;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.a = paramContext.getString(2131696715);
-    localbbje.jdField_b_of_type_Int = 2130838758;
-    localbbje.c = 9;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.a = paramContext.getString(2131696698);
-    localbbje.jdField_b_of_type_Int = 2130838752;
-    localbbje.c = 10;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    return (List[])new ArrayList[] { localArrayList, new ArrayList() };
-  }
-  
-  private void b(JSONObject paramJSONObject, @NonNull aabm paramaabm)
-  {
-    int i = paramJSONObject.optInt("shareChanel", 0);
-    Activity localActivity = this.jdField_a_of_type_Aabp.a();
-    if (!bbev.g(BaseApplicationImpl.getContext()))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      aaet.a(paramaabm, -1, "net work not available");
+      aaep.a(this.jdField_a_of_type_Aabi, paramInt, "getappfriends result error, try again");
       return;
     }
-    Intent localIntent = new Intent(localActivity, TroopCreateLogicActivity.class);
-    localIntent.putExtra("type", 8);
-    localIntent.putExtra("chanelId", i);
-    localIntent.putExtra("params", paramJSONObject.toString());
-    localActivity.startActivity(localIntent);
-    aaet.a(paramaabm, aabo.a);
-  }
-  
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabm paramaabm)
-  {
-    switch (paramInt)
+    paramBundle = new Oidb_0xb6e.RspBody();
+    try
     {
-    case 28: 
-    case 29: 
-    default: 
-      return false;
-    case 30: 
-      a(paramJSONObject, paramaabm);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = paramBundle;
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramBundle)
     {
-      return true;
-      b(paramJSONObject, paramaabm);
+      JSONArray localJSONArray;
+      for (;;)
+      {
+        paramArrayOfByte = null;
+        paramBundle.printStackTrace();
+      }
+      try
+      {
+        paramBundle.put("appfriends", localJSONArray);
+        aaep.a(this.jdField_a_of_type_Aabi, paramBundle);
+        return;
+      }
+      catch (JSONException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(aacs.jdField_a_of_type_JavaLangString, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+          }
+        }
+      }
+      aaep.a(this.jdField_a_of_type_Aabi, -1, "parse result error, try again");
+    }
+    if (paramArrayOfByte != null)
+    {
+      paramBundle = new JSONObject();
+      localJSONArray = new JSONArray();
+      paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
+      while (paramArrayOfByte.hasNext())
+      {
+        Object localObject = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
+        String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject).openid.get();
+        String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject).nick.get().toStringUtf8();
+        localObject = ((Oidb_0xb6e.AppFriendsInfo)localObject).figure_url_qq.get();
+        if (!TextUtils.isEmpty(str1))
+        {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("openid", str1.toUpperCase());
+            localJSONObject.put("nickName", str2);
+            localJSONObject.put("avatarUrl", localObject);
+            localJSONArray.put(localJSONObject);
+          }
+          catch (JSONException localJSONException) {}
+          if (QLog.isColorLevel()) {
+            QLog.e(aacs.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+          }
+        }
+      }
     }
   }
 }

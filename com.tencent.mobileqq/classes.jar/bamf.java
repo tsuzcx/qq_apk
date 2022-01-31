@@ -1,6 +1,19 @@
-public abstract interface bamf
+public class bamf
 {
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
 }
 
 

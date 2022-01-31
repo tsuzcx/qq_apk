@@ -1,13 +1,22 @@
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-class whh
-  extends whl
+public class whh
+  implements Handler.Callback
 {
-  whh(whg paramwhg) {}
+  public whh(ScannerActivity paramScannerActivity) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    ScannerActivity.a(this.a.a).b();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

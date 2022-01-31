@@ -1,50 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
 class bguz
-  extends bgur
+  implements ReaderJsCallback
 {
   bguz(bguy parambguy) {}
   
-  public void b(@NonNull bgus parambgus)
+  public void onCallback(String paramString1, String paramString2)
   {
-    int i = 1;
-    for (;;)
-    {
-      try
-      {
-        parambgus = parambgus.a();
-        bgvo.c("ReaderShadowGrayManager", "onReceiveDataOnSubThread: jsonResult:" + parambgus);
-        if (parambgus == null) {
-          break;
-        }
-        if (parambgus.length() == 0) {
-          return;
-        }
-        if ((parambgus.getInt("ret") == 0) && (parambgus.getJSONObject("data").getBoolean("isGrayUser")))
-        {
-          bool = true;
-          bguy.a(true);
-          parambgus = bguy.a().edit();
-          if (!bool) {
-            break label140;
-          }
-          parambgus.putInt("KEY_SHADOW_GRAY", i).apply();
-          bgvo.c("ReaderShadowGrayManager", "onReceiveDataOnSubThread: result=" + bool);
-          return;
-        }
-      }
-      catch (Exception parambgus)
-      {
-        bgvo.a("ReaderShadowGrayManager", "onReceiveDataOnSubThread: Exception happened ---> ", parambgus);
-        return;
-      }
-      boolean bool = false;
-      continue;
-      label140:
-      i = 0;
+    if (!TextUtils.isEmpty(paramString1)) {
+      bguy.a(this.a, paramString1, new String[] { paramString2 });
+    }
+  }
+  
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
+  {
+    if (paramReaderBaseWebViewPlugin != null) {
+      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, bguy.a(this.a));
     }
   }
 }

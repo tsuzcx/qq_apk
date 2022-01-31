@@ -1,20 +1,116 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.EGLContext;
+import android.opengl.Matrix;
+import android.support.annotation.NonNull;
+import android.view.Surface;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
-public class avxx
-  implements avyc
+public final class avxx
+  implements SurfaceTexture.OnFrameAvailableListener, avyg
 {
-  public avxx(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private avyh jdField_a_of_type_Avyh;
+  private avyy jdField_a_of_type_Avyy;
+  private avyz jdField_a_of_type_Avyz;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private int b;
+  private int c;
   
-  public GLSurfaceView.EGLConfigChooser a()
+  public avxx(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    return new avyd(this.a, true);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Avyy = new avyy(paramEGLContext, 1);
+    this.jdField_a_of_type_Avyz = new avyz(this.jdField_a_of_type_Avyy);
+    this.jdField_a_of_type_Avyz.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Avyz.b();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.c = avyi.a(36197);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.c);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_Avyh = new avyh(this.jdField_a_of_type_Int, this.b);
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
   }
   
-  public GLSurfaceView.EGLContextFactory a()
+  public Surface a()
   {
-    return new avxy(this);
+    return this.jdField_a_of_type_AndroidViewSurface;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Avyy != null)
+    {
+      this.jdField_a_of_type_Avyy.a();
+      this.jdField_a_of_type_Avyy = null;
+    }
+    if (this.jdField_a_of_type_Avyz != null)
+    {
+      this.jdField_a_of_type_Avyz.a();
+      this.jdField_a_of_type_Avyz = null;
+    }
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+    this.jdField_a_of_type_Avyh.b();
+    this.jdField_a_of_type_Avyh = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+  }
+  
+  public void a(@NonNull avxs paramavxs, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    paramavxs.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
+    this.jdField_a_of_type_Avyh.a(paramavxs.a());
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.c, null, null);
+    this.jdField_a_of_type_Avyh.a();
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      for (;;)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait();
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new RuntimeException("frame wait timed out");
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_Boolean = false;
+    avyi.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+  }
+  
+  public void onFrameAvailable(SurfaceTexture arg1)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 

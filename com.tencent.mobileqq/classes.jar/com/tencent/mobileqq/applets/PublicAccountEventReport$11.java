@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.applets;
 
-import bhzv;
-import bhzw;
+import biam;
+import bian;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import mqq.app.AppRuntime;
@@ -13,25 +13,25 @@ public final class PublicAccountEventReport$11
   
   public void run()
   {
-    bhzw localbhzw = new bhzw();
+    bian localbian = new bian();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     String str = "";
     if (localAppRuntime != null) {
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbhzw.jdField_e_of_type_JavaLangString = "vab_push";
-    localbhzw.jdField_f_of_type_JavaLangString = "vab_push";
-    localbhzw.b = (str + "_" + l);
-    localbhzw.jdField_a_of_type_Int = 1;
-    localbhzw.g = this.jdField_a_of_type_JavaLangString;
-    localbhzw.h = "";
-    localbhzw.jdField_a_of_type_Long = l;
-    localbhzw.d = this.jdField_a_of_type_Int;
-    localbhzw.k = Integer.toString(this.b);
-    localbhzw.jdField_e_of_type_Int = 1;
-    localbhzw.jdField_f_of_type_Int = 1;
-    bhzv.a().a(localbhzw);
+    localbian.jdField_e_of_type_JavaLangString = "vab_push";
+    localbian.jdField_f_of_type_JavaLangString = "vab_push";
+    localbian.b = (str + "_" + l);
+    localbian.jdField_a_of_type_Int = 1;
+    localbian.g = this.jdField_a_of_type_JavaLangString;
+    localbian.h = "";
+    localbian.jdField_a_of_type_Long = l;
+    localbian.d = this.jdField_a_of_type_Int;
+    localbian.k = Integer.toString(this.b);
+    localbian.jdField_e_of_type_Int = 1;
+    localbian.jdField_f_of_type_Int = 1;
+    biam.a().a(localbian);
   }
 }
 

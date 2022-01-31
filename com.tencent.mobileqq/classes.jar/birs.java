@@ -1,38 +1,8 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import java.util.Iterator;
-import java.util.List;
-
-class birs
-  implements bjob<biqv>
+public abstract interface birs
 {
-  birs(birn parambirn) {}
+  public abstract void a(int paramInt, long paramLong1, long paramLong2);
   
-  public void a(@Nullable biqv parambiqv)
-  {
-    if (parambiqv == null) {
-      return;
-    }
-    biqs localbiqs;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        localIterator = birn.a(this.a).iterator();
-      } while (!localIterator.hasNext());
-      localbiqs = (biqs)localIterator.next();
-      if (!localbiqs.jdField_a_of_type_JavaLangString.equals(parambiqv.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
-        break;
-      }
-      if (localbiqs.jdField_a_of_type_Int != parambiqv.jdField_a_of_type_Int)
-      {
-        localbiqs.jdField_a_of_type_Int = parambiqv.jdField_a_of_type_Int;
-        birn.a(this.a).notifyItemChanged(birn.a(this.a).indexOf(localbiqs) + 1);
-      }
-    } while ((localbiqs.jdField_a_of_type_Int != 2) || (!localbiqs.jdField_a_of_type_JavaLangString.equals(birn.a(this.a))));
-    birn.a(this.a).b(localbiqs);
-  }
+  public abstract void a(int paramInt1, boolean paramBoolean, int paramInt2);
 }
 
 

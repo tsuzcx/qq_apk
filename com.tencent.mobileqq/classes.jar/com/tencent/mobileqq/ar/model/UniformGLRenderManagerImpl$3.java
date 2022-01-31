@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.model;
 
-import alad;
-import allh;
+import alac;
+import allg;
 import android.opengl.GLES20;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.qphone.base.util.QLog;
@@ -12,35 +12,35 @@ import java.util.Map;
 public class UniformGLRenderManagerImpl$3
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$3(allh paramallh) {}
+  public UniformGLRenderManagerImpl$3(allg paramallg) {}
   
   public void run()
   {
-    if (allh.a(this.this$0)) {
+    if (allg.a(this.this$0)) {
       QLog.i("AREngine_UniformGLRenderManagerImpl", 1, "stopModelRender. has been refused");
     }
     do
     {
       return;
-      if (this.this$0.jdField_a_of_type_Alad != null)
+      if (this.this$0.jdField_a_of_type_Alac != null)
       {
-        this.this$0.jdField_a_of_type_JavaUtilMap.remove(this.this$0.jdField_a_of_type_Alad.c());
-        this.this$0.jdField_a_of_type_Alad.f();
-        this.this$0.jdField_a_of_type_Alad = null;
+        this.this$0.jdField_a_of_type_JavaUtilMap.remove(this.this$0.jdField_a_of_type_Alac.c());
+        this.this$0.jdField_a_of_type_Alac.f();
+        this.this$0.jdField_a_of_type_Alac = null;
       }
-      if (allh.a(this.this$0) != null)
+      if (allg.a(this.this$0) != null)
       {
-        GLES20.glDeleteTextures(1, new int[] { allh.a(this.this$0).getTexId() }, 0);
-        allh.a(this.this$0).destroy();
-        allh.a(this.this$0, null);
+        GLES20.glDeleteTextures(1, new int[] { allg.a(this.this$0).getTexId() }, 0);
+        allg.a(this.this$0).destroy();
+        allg.a(this.this$0, null);
       }
-      if (allh.a(this.this$0) != null)
+      if (allg.a(this.this$0) != null)
       {
-        allh.a(this.this$0).release();
-        allh.a(this.this$0, null);
+        allg.a(this.this$0).release();
+        allg.a(this.this$0, null);
       }
-    } while (allh.a(this.this$0) == null);
-    allh.a(this.this$0).d();
+    } while (allg.a(this.this$0) == null);
+    allg.a(this.this$0).d();
   }
 }
 

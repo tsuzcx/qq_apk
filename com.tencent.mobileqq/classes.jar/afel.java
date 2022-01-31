@@ -1,32 +1,17 @@
-import android.widget.RelativeLayout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.SwipListView;
 
-public class afel
-  implements aiod
+class afel
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afel(AddContactsView paramAddContactsView) {}
+  afel(afek paramafek) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
-    }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
-    }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 

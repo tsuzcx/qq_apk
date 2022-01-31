@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app.message;
 
-import akpv;
-import aulz;
+import akpu;
+import aumb;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class MsgProxy$1
   implements Runnable
 {
-  public MsgProxy$1(akpv paramakpv, aulz paramaulz, String paramString, int paramInt) {}
+  public MsgProxy$1(akpu paramakpu, aumb paramaumb, String paramString, int paramInt) {}
   
   public void run()
   {
     try
     {
-      if (this.jdField_a_of_type_Aulz != null) {
-        this.jdField_a_of_type_Aulz.a(MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
+      if (this.jdField_a_of_type_Aumb != null) {
+        this.jdField_a_of_type_Aumb.a(MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
       }
       return;
     }

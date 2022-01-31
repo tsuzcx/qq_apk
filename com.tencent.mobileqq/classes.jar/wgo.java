@@ -1,43 +1,104 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class wgo
-  implements wfl
+  extends WtloginObserver
 {
-  public int a;
-  public String a;
-  public WeakReference<QRDisplayActivity> a;
+  public wgo(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QRDisplayActivity localQRDisplayActivity;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    paramArrayOfByte1 = null;
+    paramString = paramArrayOfByte1;
+    if (paramInt == 0)
     {
-      do
-      {
-        return;
-        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQRDisplayActivity == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+      paramString = paramArrayOfByte1;
+      if (paramWUserSigInfo != null) {
+        paramString = WtloginHelper.getLoginTlvValue(paramWUserSigInfo, 54);
       }
-    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
-    if (!paramBoolean)
-    {
-      localQRDisplayActivity.g();
+    }
+    paramArrayOfByte1 = new Message();
+    paramWUserSigInfo = new Bundle();
+    paramWUserSigInfo.putInt("ret", paramInt);
+    paramWUserSigInfo.putByteArray("errMsg", paramArrayOfByte2);
+    if (paramString != null) {
+      paramWUserSigInfo.putByteArray("devInfo", paramString);
+    }
+    paramArrayOfByte1.setData(paramWUserSigInfo);
+    paramArrayOfByte1.what = 2;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayOfByte1);
+  }
+  
+  public void OnException(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnException e=" + paramString);
+    }
+    paramString = new Message();
+    paramString.what = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginAuthActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (this.a.isFinishing()) {
       return;
     }
-    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = wim.a(paramString, -1);
-    if (paramString != null)
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    paramErrMsg = null;
+    paramString = paramErrMsg;
+    if (paramArrayList != null)
     {
-      localQRDisplayActivity.a = paramString;
-      localQRDisplayActivity.f();
-      return;
+      paramString = paramErrMsg;
+      if (paramArrayList.size() > 0)
+      {
+        paramString = new ByteArrayOutputStream();
+        int i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size()) {
+            try
+            {
+              paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
+              i += 1;
+            }
+            catch (Throwable paramErrMsg)
+            {
+              for (;;)
+              {
+                paramErrMsg.printStackTrace();
+              }
+            }
+          }
+        }
+        paramString = paramString.toByteArray();
+      }
     }
-    localQRDisplayActivity.g();
+    paramArrayList = new Message();
+    paramErrMsg = new Bundle();
+    paramErrMsg.putInt("ret", paramInt);
+    paramErrMsg.putByteArray("tlv", paramString);
+    paramErrMsg.putByteArray("appName", paramArrayOfByte1);
+    paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
+    paramArrayList.setData(paramErrMsg);
+    paramArrayList.what = 1;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayList);
   }
 }
 

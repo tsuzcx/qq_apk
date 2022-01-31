@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abql;
-import abqm;
+import abqh;
+import abqi;
 import android.content.Intent;
 import android.os.Bundle;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class OverloadTipsActivity
   extends BaseActivity
 {
-  private bbgg a;
+  private bbgu a;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -29,11 +29,11 @@ public class OverloadTipsActivity
         this.a.dismiss();
       }
       this.a = null;
-      this.a = bbcv.a(this, 230);
+      this.a = bbdj.a(this, 230);
       this.a.setContentView(2131558883);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694937, new abql(this));
+      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694938, new abqh(this));
       this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new abqm(this));
+      this.a.setOnKeyListener(new abqi(this));
       this.a.show();
       return false;
     }

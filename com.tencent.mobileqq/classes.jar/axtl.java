@@ -1,126 +1,121 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.statistics.fdcount.FdTrie.1;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class axtl
 {
-  static final List<String> jdField_a_of_type_JavaUtilList = new FdTrie.1(10);
-  private axtk jdField_a_of_type_Axtk = new axtk();
-  private HashMap<axtk, String> jdField_a_of_type_JavaUtilHashMap = new HashMap(100);
-  private HashMap<axtk, String> b = new HashMap(jdField_a_of_type_JavaUtilList.size());
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private TreeMap<axtm, String> jdField_a_of_type_JavaUtilTreeMap;
   
-  static String a(String paramString)
+  private String a()
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nBusiness\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
-      String str = (String)localIterator.next();
-      if ((paramString != null) && (paramString.contains(str))) {
-        return str;
-      }
+      localObject = (Map.Entry)localIterator.next();
+      if (i < 20) {}
     }
-    return null;
-  }
-  
-  private static List<String> a(String paramString)
-  {
-    paramString = paramString.split("/");
-    ArrayList localArrayList = new ArrayList(paramString.length);
-    localArrayList.addAll(Arrays.asList(paramString));
-    return localArrayList;
-  }
-  
-  private void a(axtk paramaxtk, String paramString)
-  {
-    if (paramaxtk == null) {
-      return;
-    }
-    Object localObject = a(paramString);
-    if (localObject != null) {
-      this.b.put(paramaxtk, localObject);
-    }
-    localObject = paramaxtk.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    axtk localaxtk;
-    do
+    else
     {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-      localaxtk = (axtk)((Iterator)localObject).next();
-    } while ((localaxtk == null) || (localaxtk.a()));
-    for (int i = 0;; i = 1)
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((axtm)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
+    Object localObject = new ArrayList(((axtm)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
+    Collections.sort((List)localObject);
+    localObject = ((List)localObject).iterator();
+    int j = 0;
+    for (;;)
     {
-      if ((i != 0) && (!paramaxtk.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+      axtm localaxtm;
+      if (((Iterator)localObject).hasNext())
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramaxtk, paramString);
-        return;
-      }
-      localObject = paramaxtk.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      label117:
-      while (((Iterator)localObject).hasNext())
-      {
-        localaxtk = (axtk)((Iterator)localObject).next();
-        if (localaxtk != null) {
-          if (paramString == null) {
-            break label186;
-          }
+        localaxtm = (axtm)((Iterator)localObject).next();
+        if (j >= 5) {
+          localStringBuilder.append("\t\t").append("…").append("\n");
         }
-      }
-      label186:
-      for (paramaxtk = paramString + "/" + localaxtk.jdField_a_of_type_JavaLangString;; paramaxtk = localaxtk.jdField_a_of_type_JavaLangString)
-      {
-        a(localaxtk, paramaxtk);
-        break label117;
-        break;
-      }
-    }
-  }
-  
-  private void b(axtk paramaxtk, String paramString)
-  {
-    Iterator localIterator = a(paramString).iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      paramString = paramaxtk.a(str);
-      if (paramString != null)
-      {
-        paramString.jdField_a_of_type_Int += 1;
-        paramaxtk = paramString;
       }
       else
       {
-        paramString = new axtk(str);
-        paramString.jdField_a_of_type_Int = 1;
-        paramaxtk.jdField_a_of_type_JavaUtilHashMap.put(paramString.jdField_a_of_type_JavaLangString, paramString);
-        paramaxtk = paramString;
+        i += 1;
+        break;
+      }
+      j += 1;
+      localStringBuilder.append("\t\t").append(localaxtm.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localaxtm.jdField_a_of_type_Int).append(")").append("\n");
+    }
+  }
+  
+  private void a(axtn paramaxtn)
+  {
+    paramaxtn.a();
+    c(paramaxtn);
+    b(paramaxtn);
+  }
+  
+  private String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nSystem\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private void b(axtn paramaxtn)
+  {
+    Object localObject = paramaxtn.a();
+    paramaxtn = new HashMap(20);
+    localObject = ((HashMap)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      String str = (String)localEntry.getValue();
+      if (axtn.a(str) == null) {
+        paramaxtn.put(localEntry.getKey(), str);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(paramaxtn);
+  }
+  
+  private void c(axtn paramaxtn)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
+    paramaxtn = paramaxtn.b().entrySet().iterator();
+    while (paramaxtn.hasNext())
+    {
+      Object localObject = (Map.Entry)paramaxtn.next();
+      axtm localaxtm = (axtm)((Map.Entry)localObject).getKey();
+      localObject = (String)((Map.Entry)localObject).getValue();
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localaxtm.jdField_a_of_type_Int));
+      }
+      else
+      {
+        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        Map localMap = this.jdField_a_of_type_JavaUtilMap;
+        int i = localInteger.intValue();
+        localMap.put(localObject, Integer.valueOf(localaxtm.jdField_a_of_type_Int + i));
       }
     }
   }
   
-  public HashMap<axtk, String> a()
+  public String a(axtn paramaxtn)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_Axtk, null);
-  }
-  
-  public void a(@NonNull String paramString)
-  {
-    b(this.jdField_a_of_type_Axtk, paramString);
-  }
-  
-  public HashMap<axtk, String> b()
-  {
-    return this.b;
+    a(paramaxtn);
+    return a() + b();
   }
 }
 

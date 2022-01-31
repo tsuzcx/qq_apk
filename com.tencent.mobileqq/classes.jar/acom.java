@@ -1,16 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
 public class acom
   implements DialogInterface.OnClickListener
 {
-  public acom(UpgradeActivity paramUpgradeActivity) {}
+  public acom(UpgradeActivity paramUpgradeActivity, bbfk parambbfk, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UpgradeActivity.b(this.a);
-    this.a.finish();
+    this.jdField_a_of_type_Bbfk.d();
+    bbjm.c(true);
+    bbjm.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, akuz.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
   }
 }
 

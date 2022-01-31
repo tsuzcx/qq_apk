@@ -1,296 +1,559 @@
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.webso.HttpRequestPackage;
-import com.tencent.mobileqq.webview.webso.HybridWebReporter;
-import com.tencent.mobileqq.webview.webso.WebSoServlet;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
 import org.json.JSONObject;
-import wns_proxy.EnumHttpMethod;
-import wns_proxy.HttpReq;
-import wns_proxy.HttpRsp;
 
 public class bcgq
-  implements BusinessObserver
 {
-  private static volatile bcgq jdField_a_of_type_Bcgq;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, bcgs> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static bcgq a()
+  public static Bundle a()
   {
-    if (jdField_a_of_type_Bcgq == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((bcgs.jdField_a_of_type_Boolean) || (bcgs.b))
     {
-      if (jdField_a_of_type_Bcgq == null) {
-        jdField_a_of_type_Bcgq = new bcgq();
+      StringBuilder localStringBuilder = new StringBuilder("_tcvassp_0_=");
+      if ((bcgs.jdField_a_of_type_Int != -1) && (bcgs.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+      {
+        localStringBuilder.append(bcgs.jdField_a_of_type_Int);
+        if (bcgs.b) {}
+        for (Object localObject = "shp";; localObject = "webp")
+        {
+          localStringBuilder.append((String)localObject);
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("argument", localStringBuilder.toString());
+          ((Bundle)localObject).putStringArrayList("domains", bcgs.jdField_a_of_type_JavaUtilArrayList);
+          if (QLog.isColorLevel())
+          {
+            QLog.i("SwiftWebViewUtils", 2, "getCDNExtensionData, arg: " + localStringBuilder.toString());
+            QLog.i("SwiftWebViewUtils", 2, "getCDNExtensionData, domainList: " + TextUtils.join(", ", bcgs.jdField_a_of_type_JavaUtilArrayList));
+          }
+          return localObject;
+        }
       }
-      return jdField_a_of_type_Bcgq;
+      if (QLog.isColorLevel()) {
+        QLog.w("SwiftWebViewUtils", 2, "CdnCacheConfig did not parse!!!");
+      }
+    }
+    return null;
+  }
+  
+  public static Bundle a(WebViewFragment paramWebViewFragment, Intent paramIntent)
+  {
+    Bundle localBundle = new Bundle();
+    Object localObject = Uri.parse(paramWebViewFragment.h);
+    paramIntent = localBundle;
+    if (localObject != null)
+    {
+      localObject = ((Uri)localObject).getHost();
+      paramIntent = localBundle;
+      if (Build.VERSION.SDK_INT >= 19) {
+        if (!sgg.d((String)localObject))
+        {
+          paramIntent = localBundle;
+          if (!"buluo.qq.com".equalsIgnoreCase((String)localObject)) {}
+        }
+        else
+        {
+          paramWebViewFragment.a.evaluateJavascript("document.querySelector(\"meta[itemprop='name']\").getAttribute('content')", new bcgr(paramWebViewFragment));
+          paramIntent = null;
+        }
+      }
+    }
+    return paramIntent;
+  }
+  
+  public static WebResourceResponse a()
+  {
+    WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
+    Map localMap = localWebResourceResponse.getResponseHeaders();
+    Object localObject = localMap;
+    if (localMap == null) {
+      localObject = new HashMap();
+    }
+    ((Map)localObject).put("cache-control", "must-revalidate，no-store");
+    localWebResourceResponse.setResponseHeaders((Map)localObject);
+    return localWebResourceResponse;
+  }
+  
+  public static String a(Intent paramIntent)
+  {
+    Object localObject = "";
+    if (paramIntent != null)
+    {
+      String str = paramIntent.getStringExtra("url");
+      localObject = str;
+      if (TextUtils.isEmpty(str))
+      {
+        paramIntent = paramIntent.getStringExtra("key_params_qq");
+        localObject = paramIntent;
+        if (paramIntent == null) {
+          localObject = "";
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  public static String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("url:");
+    if ((paramString != null) && (paramString.length() > 512)) {
+      localStringBuilder.append(paramString.substring(0, 512));
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append(paramString);
     }
   }
   
-  private bcgs a(String paramString)
+  public static String a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    bcgs localbcgs = new bcgs();
-    localbcgs.jdField_a_of_type_JavaLangString = paramString;
-    localbcgs.jdField_a_of_type_Int = 4;
-    localbcgs.jdField_c_of_type_Int = 10006;
-    return localbcgs;
+    int i = 1;
+    String str1;
+    String str2;
+    label62:
+    int j;
+    int k;
+    label106:
+    Object localObject;
+    switch (naj.a())
+    {
+    case 0: 
+    default: 
+      str1 = "";
+      str2 = "";
+      if (WebpSoLoader.b())
+      {
+        str2 = " WebP/0.3.1";
+        if (!TextUtils.isEmpty(str2)) {
+          bcgs.jdField_a_of_type_Boolean = true;
+        }
+        bcgs.b = paramBoolean;
+        j = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+        k = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
+        if (!axmv.b()) {
+          break label351;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = paramString1;
+        if (paramString1 == null) {
+          localObject = "";
+        }
+        localObject = localStringBuilder.append((String)localObject).append(" ").append(bgyp.a());
+        if (!TextUtils.isEmpty(paramString2)) {
+          break label356;
+        }
+      }
+      break;
+    }
+    label351:
+    label356:
+    for (paramString1 = "";; paramString1 = " " + paramString2)
+    {
+      return paramString1 + " QQ/" + "8.3.0" + "." + "4480" + str1 + str2 + " Pixel/" + j + " StatusBarHeight/" + k + " SimpleUISwitch/" + i + " QQTheme/" + ThemeUtil.getCurrentThemeId();
+      str1 = " NetType/UNKNOWN";
+      break;
+      str1 = " NetType/WIFI";
+      break;
+      str1 = " NetType/2G";
+      break;
+      str1 = " NetType/3G";
+      break;
+      str1 = " NetType/4G";
+      break;
+      localObject = WebpSoLoader.a();
+      if (paramBoolean)
+      {
+        str2 = " WebP/0.3.0";
+        break label62;
+      }
+      if (localObject == null) {
+        break label62;
+      }
+      str2 = String.format(" WebP/%d.%d.%d", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]), Integer.valueOf(localObject[2]) });
+      break label62;
+      i = 0;
+      break label106;
+    }
   }
   
-  private void a(Handler paramHandler, bcgs parambcgs)
+  public static void a()
   {
-    Message localMessage = paramHandler.obtainMessage(204);
-    localMessage.obj = parambcgs;
-    paramHandler.sendMessage(localMessage);
-  }
-  
-  private void a(bcgs parambcgs)
-  {
-    Handler localHandler;
-    if ((parambcgs != null) && (parambcgs.jdField_a_of_type_AndroidOsHandler != null))
-    {
-      localHandler = parambcgs.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler != null) {}
-    }
-    else
-    {
-      return;
-    }
-    a(localHandler, parambcgs);
-    HybridWebReporter.a().a(parambcgs.jdField_a_of_type_Bcgo);
-  }
-  
-  private void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("key_uni_key");
-    String str2 = paramBundle.getString("url");
-    if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1))) {
-      return;
-    }
-    bcgs localbcgs = (bcgs)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str1);
-    if (localbcgs == null)
-    {
-      QLog.e("WebSoCgiService", 1, "get webso state fail, unikey=" + str1 + ",map size=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-      a(paramBoolean, paramBundle, a(str1));
-      return;
-    }
-    localbcgs.jdField_a_of_type_Int = 2;
-    localbcgs.jdField_c_of_type_Int = 0;
-    a(paramBoolean, paramBundle, localbcgs);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str1);
-    QLog.i("WebSoCgiService", 1, "onGetHttpData success(" + paramBoolean + "), url:" + str2 + " ,map size=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-  }
-  
-  private void a(boolean paramBoolean, Bundle paramBundle, bcgs parambcgs)
-  {
-    if (parambcgs.jdField_a_of_type_Bcgo == null)
-    {
-      parambcgs.jdField_a_of_type_Bcgo = new bcgo();
-      parambcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-      parambcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_JavaLangString = parambcgs.jdField_b_of_type_JavaLangString;
-      parambcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_Boolean = true;
-    }
-    if (!paramBoolean) {
-      parambcgs.jdField_a_of_type_Bcgo.jdField_f_of_type_Int = 1;
-    }
-    parambcgs.jdField_a_of_type_Bcgo.e = paramBundle.getString("key_user_ip");
-    parambcgs.jdField_a_of_type_Bcgo.h = paramBundle.getString("key_dns_result");
-    parambcgs.jdField_a_of_type_Bcgo.jdField_f_of_type_JavaLangString = paramBundle.getString("key_server_ip");
-    parambcgs.jdField_a_of_type_Bcgo.g = paramBundle.getString("key_server_port");
-    parambcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_Int = paramBundle.getInt("key_time_cost");
-    parambcgs.jdField_a_of_type_Bcgo.jdField_b_of_type_Int = paramBundle.getInt("rsp_code");
-    parambcgs.jdField_a_of_type_Bcgo.jdField_c_of_type_Int = 0;
-    parambcgs.jdField_a_of_type_Bcgo.i = paramBundle.getString("key_detail_info");
-    if (!paramBoolean)
-    {
-      parambcgs.jdField_c_of_type_Int = paramBundle.getInt("rsp_code", 10002);
-      parambcgs.jdField_f_of_type_JavaLangString = paramBundle.getString("rsp_message");
-      a(parambcgs);
-      QLog.w("WebSoCgiService", 1, "state=" + parambcgs);
-    }
+    int j = 0;
+    if ((bcgs.jdField_a_of_type_JavaUtilArrayList.size() != 0) && (bcgs.jdField_a_of_type_Int != -1)) {}
     Object localObject1;
-    int i;
     do
     {
       return;
-      localObject1 = (HttpRsp)paramBundle.getSerializable("rsp_data");
-      paramBundle = null;
-      if (localObject1 != null) {
-        paramBundle = new bcgn((HttpRsp)localObject1);
+      localObject1 = new File(BaseApplicationImpl.getContext().getFilesDir(), bboe.e.jdField_a_of_type_JavaLangString);
+      if (((File)localObject1).exists()) {
+        break;
       }
-      if (localObject1 == null)
-      {
-        parambcgs.jdField_c_of_type_Int = 10002;
-        parambcgs.jdField_f_of_type_JavaLangString = "rsp is null";
-        a(parambcgs);
-        QLog.w("WebSoCgiService", 1, "state=" + parambcgs);
-        return;
-      }
-      localObject1 = ((HttpRsp)localObject1).rspinfo;
-      i = ((String)localObject1).indexOf("\r\n\r\n");
-      paramBundle = paramBundle.d;
-    } while (i < 1);
-    String[] arrayOfString1 = ((String)localObject1).substring(0, i - 1).split("\r\n");
-    int j = arrayOfString1.length;
-    if (j >= 1)
+    } while (!QLog.isColorLevel());
+    QLog.e("SwiftWebViewUtils", 2, "no WebviewCrashReport.json exists!");
+    return;
+    for (;;)
     {
-      Object localObject2 = arrayOfString1[0].split(" ");
-      if (localObject2.length >= 2) {}
+      int i;
+      String[] arrayOfString;
       try
       {
-        parambcgs.jdField_b_of_type_Int = Integer.valueOf(localObject2[1].trim()).intValue();
-        parambcgs.jdField_a_of_type_Bcgo.d = localObject2[1].trim();
-        localObject2 = new JSONObject();
-        i = 1;
-        if (i < j)
-        {
-          arrayOfString2 = arrayOfString1[i].split(":");
-          if (arrayOfString2.length <= 1) {}
+        localObject1 = bbdx.a((File)localObject1);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break;
         }
-      }
-      catch (Exception localException)
-      {
-        try
+        localObject1 = new JSONObject((String)localObject1);
+        if ((!((JSONObject)localObject1).has("group_domain")) || (!((JSONObject)localObject1).has("group_strategy"))) {
+          break label520;
+        }
+        Object localObject2 = ((JSONObject)localObject1).getString("group_domain");
+        localObject1 = ((JSONObject)localObject1).getString("group_strategy");
+        if (QLog.isColorLevel()) {
+          QLog.i("SwiftWebViewUtils", 2, "cdnCacheConfig, domain: " + (String)localObject2 + ", strategys: " + (String)localObject1);
+        }
+        localObject2 = ((String)localObject2).replace("[", "").replace("]", "").replace("\"", "").split(",");
+        if (localObject2.length > 0)
         {
-          for (;;)
+          bcgs.jdField_a_of_type_JavaUtilArrayList.clear();
+          k = localObject2.length;
+          i = 0;
+          if (i < k)
           {
-            String[] arrayOfString2;
-            ((JSONObject)localObject2).put(arrayOfString2[0].trim(), arrayOfString2[1].trim());
+            arrayOfString = localObject2[i];
+            bcgs.jdField_a_of_type_JavaUtilArrayList.add(arrayOfString.trim());
             i += 1;
-          }
-          localException = localException;
-          localException.printStackTrace();
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
+            continue;
           }
         }
-        parambcgs.jdField_c_of_type_JavaLangString = localException.toString();
+        int k = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+        localObject1 = ((String)localObject1).substring(1, ((String)localObject1).length() - 1).split("\\],\\[");
+        if (localObject1.length <= 0) {
+          break;
+        }
+        bcgs.jdField_a_of_type_Int = -1;
+        int m = localObject1.length;
+        i = j;
+        if (i >= m) {
+          break;
+        }
+        localObject2 = localObject1[i].replace("[", "").replace("]", "").replace("\"", "");
+        arrayOfString = ((String)localObject2).split(",");
+        if (QLog.isColorLevel()) {
+          QLog.i("SwiftWebViewUtils", 2, "stragegy: " + (String)localObject2);
+        }
+        if (arrayOfString.length != 3) {
+          break label502;
+        }
+        j = Integer.parseInt(arrayOfString[0].trim());
+        int n = Integer.parseInt(arrayOfString[1].trim());
+        if ((k < j) || (k > n)) {
+          break label536;
+        }
+        i = Integer.parseInt(arrayOfString[2]);
+        bcgs.jdField_a_of_type_Int = i;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("SwiftWebViewUtils", 2, "hit stragegy, target cdn size: " + i + ", stragegy: " + (String)localObject2);
+        return;
       }
-    }
-    parambcgs.jdField_c_of_type_Int = 0;
-    parambcgs.d = paramBundle;
-    long l1 = System.currentTimeMillis();
-    long l2 = parambcgs.jdField_a_of_type_Long;
-    QLog.i("WebSoCgiService", 1, "wnscgi@ before send rsp msg,total cost " + (l1 - l2) + " ms");
-    a(parambcgs);
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.w("WebSoCgiService", 1, "html body empty, rspinfo is: " + (String)localObject1);
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SwiftWebViewUtils", 2, "", localException);
       return;
+      label502:
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SwiftWebViewUtils", 2, Arrays.toString(arrayOfString));
+      return;
+      label520:
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("SwiftWebViewUtils", 2, "no cdnCacheConfig!");
+      return;
+      label536:
+      i += 1;
     }
-    QLog.i("WebSoCgiService", 1, "succ htmlBody len=" + paramBundle.length());
   }
   
-  public boolean a(bcgr parambcgr, Handler paramHandler)
+  public static void a(Intent paramIntent)
   {
-    return a(parambcgr, paramHandler, SwiftBrowserCookieMonster.c(parambcgr.jdField_a_of_type_JavaLangString));
+    if (paramIntent == null) {}
+    String str;
+    do
+    {
+      return;
+      str = paramIntent.getStringExtra("banner_webViewUrl");
+    } while (str.contains("minAIOFromMsgList"));
+    paramIntent.putExtra("banner_webViewUrl", str + "&minAIOFromMsgList=1");
   }
   
-  public boolean a(bcgr parambcgr, Handler paramHandler, String paramString)
+  public static void a(WebView paramWebView, String paramString)
   {
-    if ((parambcgr == null) || (TextUtils.isEmpty(parambcgr.jdField_a_of_type_JavaLangString)))
+    if ((paramWebView != null) && (paramWebView.getX5WebViewExtension() != null))
     {
-      QLog.w("WebSoCgiService", 2, "startCgiRequest param invalid, cgiInfo=" + parambcgr);
-      return false;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("address", paramString);
+      paramWebView.getX5WebViewExtension().invokeMiscMethod("setHttpSystemProxy", localBundle);
     }
-    if (!bbev.g(BaseApplicationImpl.getContext()))
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplication.getContext().getSharedPreferences("webview_report_config", 0).getBoolean("hide_back_text", false);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      QLog.w("WebSoCgiService", 2, "startCgiRequest isNetworkAvailable false ,cgiInfo=" + parambcgr);
-      return false;
-    }
-    String str1 = String.valueOf(Math.random()) + String.valueOf(System.currentTimeMillis());
-    if (QLog.isColorLevel()) {
-      QLog.i("WebSoCgiService", 2, "wnscgi@ startCgiRequest running cgiInfo=" + parambcgr + ",uniKey=" + str1);
-    }
-    bcgs localbcgs = new bcgs();
-    localbcgs.jdField_a_of_type_JavaLangString = str1;
-    localbcgs.jdField_b_of_type_JavaLangString = parambcgr.jdField_a_of_type_JavaLangString;
-    localbcgs.jdField_a_of_type_Boolean = parambcgr.jdField_a_of_type_Boolean;
-    localbcgs.jdField_a_of_type_Int = 1;
-    localbcgs.e = parambcgr.jdField_f_of_type_JavaLangString;
-    localbcgs.jdField_a_of_type_JavaLangObject = parambcgr.jdField_a_of_type_JavaLangObject;
-    localbcgs.jdField_a_of_type_Bcgo = new bcgo();
-    localbcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_Long = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    localbcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_JavaLangString = parambcgr.jdField_a_of_type_JavaLangString;
-    localbcgs.jdField_a_of_type_Bcgo.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, localbcgs);
-    long l1 = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    String str3 = bgxr.a();
-    String str2 = bche.a();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("method", parambcgr.jdField_b_of_type_JavaLangString.toUpperCase());
-      localJSONObject.put("entity_body", parambcgr.d);
-      localJSONObject.put("if_None_Match", "");
-      localJSONObject.put("content_type", parambcgr.e);
-      localJSONObject.put("uri", parambcgr.jdField_a_of_type_JavaLangString);
-      if (parambcgr.jdField_b_of_type_JavaLangString.equalsIgnoreCase("GET"))
+      do
       {
-        if (!TextUtils.isEmpty(parambcgr.d))
-        {
-          if (!parambcgr.jdField_a_of_type_JavaLangString.contains("?")) {
-            break label705;
-          }
-          localJSONObject.put("uri", parambcgr.jdField_a_of_type_JavaLangString + "&" + parambcgr.d);
-        }
-        for (;;)
-        {
-          localJSONObject.put("cookie", paramString + "; qua=" + str3 + "; ");
-          localJSONObject.put("no_Chunked", "true");
-          localJSONObject.put("accept_Encoding", "identity");
-          paramString = new HttpRequestPackage(str2, localJSONObject);
-          paramString.addHeader(parambcgr.jdField_c_of_type_JavaLangString);
-          paramString = new HttpReq(EnumHttpMethod.convert("e" + paramString.method).value(), paramString.getHeaderString(), paramString.getBodyString(), paramString.host);
-          localbcgs.jdField_a_of_type_AndroidOsHandler = paramHandler;
-          paramHandler = new NewIntent(BaseApplicationImpl.getContext(), WebSoServlet.class);
-          WebSoServlet.a(paramHandler, l1, parambcgr.jdField_a_of_type_JavaLangString, paramString, "", parambcgr.jdField_a_of_type_Int, 1101, str1, bcgq.class);
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            BaseApplicationImpl.getApplication().getRuntime().registObserver(this);
-            this.jdField_a_of_type_Boolean = true;
-          }
-          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramHandler);
-          l1 = System.currentTimeMillis();
-          long l2 = localbcgs.jdField_a_of_type_Long;
-          QLog.i("WebSoCgiService", 1, "wnscgi@ after start servlet,total cost " + (l1 - l2) + " ms");
-          return true;
-          label705:
-          localJSONObject.put("uri", parambcgr.jdField_a_of_type_JavaLangString + "?" + parambcgr.d);
-        }
+        return false;
+        paramString = Uri.parse(paramString);
+      } while (!paramString.isHierarchical());
+      paramString = paramString.getQueryParameter("_tbs_xv");
+    } while ((TextUtils.isEmpty(paramString)) || (1L != (Long.parseLong(paramString) & 1L)));
+    return true;
+  }
+  
+  public static boolean a(JSONObject paramJSONObject, String paramString)
+  {
+    int i = 0;
+    boolean bool1 = false;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool2 = bool1;
+    if (localObject != null)
+    {
+      if (!((AppRuntime)localObject).isLogin()) {
+        bool2 = bool1;
       }
     }
-    catch (Exception paramString)
+    else {
+      return bool2;
+    }
+    String str = paramJSONObject.optString("platformId", "");
+    if ((!"0".equals(str)) && (!"2".equals(str)))
     {
+      QLog.e("SwiftWebViewUtils", 1, "not support Android! " + paramJSONObject.toString());
+      return false;
+    }
+    label127:
+    int j;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(paramJSONObject.optString("business", ""))))
+    {
+      bool2 = true;
+      bool1 = bool2;
+      if (bool2)
+      {
+        bool1 = bool2;
+        if (paramJSONObject.has("minVersion"))
+        {
+          paramString = paramJSONObject.optString("minVersion");
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            bool1 = bool2;
+            if (!bbqd.a(paramString, "8.3.0.4480")) {
+              bool1 = false;
+            }
+          }
+        }
+      }
+      bool2 = bool1;
+      if (bool1)
+      {
+        bool2 = bool1;
+        if (paramJSONObject.has("maxVersion"))
+        {
+          paramString = paramJSONObject.optString("maxVersion");
+          bool2 = bool1;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            bool2 = bool1;
+            if (!bbqd.a("8.3.0.4480", paramString)) {
+              bool2 = false;
+            }
+          }
+        }
+      }
+      bool1 = bool2;
+      if (!bool2) {
+        break label503;
+      }
+      paramString = ((AppRuntime)localObject).getAccount();
+      int m = paramJSONObject.optInt("startIndex");
+      int k = paramJSONObject.optInt("endIndex");
+      if (m < k) {
+        break label506;
+      }
+      j = paramString.length();
+      if ((j < m) || (j < k)) {
+        break label506;
+      }
+      m = j - m;
+      k = j - k;
+      if ((m >= j) || (k >= j) || (m > k)) {
+        break label506;
+      }
+      long l1 = Long.parseLong(paramString.substring(m, k + 1));
+      long l2 = paramJSONObject.optLong("min");
+      long l3 = paramJSONObject.optLong("max");
+      if ((l1 < l2) || (l1 > l3)) {
+        break label506;
+      }
+    }
+    label429:
+    label503:
+    label506:
+    for (bool2 = true;; bool2 = false)
+    {
+      bool1 = bool2;
+      if (!bool2)
+      {
+        localObject = paramJSONObject.optString("uinWhiteList");
+        bool1 = bool2;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = ((String)localObject).split(";");
+          j = localObject.length;
+          bool1 = bool2;
+          if (i < j) {
+            if (paramString.equals(localObject[i])) {
+              bool1 = true;
+            }
+          }
+        }
+      }
       for (;;)
       {
-        paramString.printStackTrace();
-        continue;
-        if (!TextUtils.isEmpty(parambcgr.d)) {
-          localJSONObject.put("content_length", parambcgr.d.length());
+        bool2 = bool1;
+        if (bool1) {
+          break;
         }
+        QLog.e("SwiftWebViewUtils", 1, "Config is not valid: " + paramJSONObject);
+        return bool1;
+        bool2 = false;
+        break label127;
+        i += 1;
+        break label429;
       }
     }
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static String b(String paramString)
   {
-    if (paramInt == 1101) {
-      a(paramBoolean, paramBundle);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i = paramString.indexOf(":");
+      if (i > 0) {
+        return paramString.substring(0, i).toLowerCase();
+      }
+    }
+    return "";
+  }
+  
+  public static void b()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("x5_proxy_setting", 4);
+    bcgt.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("http_proxy_address", "");
+    bcgt.jdField_a_of_type_Boolean = localSharedPreferences.contains("need_set_proxy");
+    localSharedPreferences.edit().remove("need_set_proxy").apply();
+  }
+  
+  public static boolean b()
+  {
+    int i = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[14].intValue();
+    QLog.d("SwiftWebViewUtils", 1, "isSupportPreRend: " + i);
+    return i == 1;
+  }
+  
+  public static String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("Dalvik/");
+    localStringBuilder.append(System.getProperty("java.vm.version"));
+    localStringBuilder.append(" (Linux; U; Android ");
+    String str = Build.VERSION.RELEASE;
+    if (str.length() > 0) {}
+    for (;;)
+    {
+      localStringBuilder.append(str);
+      if ("REL".equals(Build.VERSION.CODENAME))
+      {
+        str = Build.MODEL;
+        if (str.length() > 0)
+        {
+          localStringBuilder.append("; ");
+          localStringBuilder.append(str);
+        }
+      }
+      str = Build.ID;
+      if (str.length() > 0)
+      {
+        localStringBuilder.append(" Build/");
+        localStringBuilder.append(str);
+      }
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(")");
+      return localStringBuilder.toString();
+      str = "1.0";
+    }
+  }
+  
+  public static String d(String paramString)
+  {
+    int i = 50;
+    int k;
+    int j;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      k = paramString.indexOf(":");
+      if (k > 0)
+      {
+        j = (paramString + "?#").indexOf("?");
+        if (j <= 50) {
+          break label81;
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((k + 3 < paramString.length()) && (i >= 0)) {
+        return paramString.substring(k + 3, i);
+      }
+      return "";
+      label81:
+      i = j;
     }
   }
 }

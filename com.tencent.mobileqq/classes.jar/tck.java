@@ -1,8 +1,9 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
+
 public abstract interface tck
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract void a(List<StoryVideoItem> paramList, boolean paramBoolean);
 }
 
 

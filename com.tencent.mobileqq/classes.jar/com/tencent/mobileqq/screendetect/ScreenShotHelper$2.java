@@ -21,7 +21,7 @@ public final class ScreenShotHelper$2
       if (!((Activity)localObject).hasWindowFocus()) {
         break label60;
       }
-      localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131375638);
+      localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131375640);
       if (localObject != null) {
         ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView((View)localObject);
       }

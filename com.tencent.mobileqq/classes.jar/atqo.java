@@ -1,26 +1,67 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
 
 class atqo
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  atqo(atpi paramatpi, String paramString) {}
+  atqo(atpk paramatpk) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Atpi.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Atpi.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atpi.a.j)) {}
-    for (paramView = "1";; paramView = "2")
+    if (QLog.isColorLevel()) {
+      atbr.a("onPageSelected", new Object[] { Integer.valueOf(paramInt) });
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    Object localObject = (NearbyBaseFragment)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("android:switcher:2131379344:" + paramInt);
+    if (localObject != null) {
+      ((NearbyBaseFragment)localObject).aT_();
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
     {
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Atpi.a.startActivity(localIntent);
-      axqw.b(this.jdField_a_of_type_Atpi.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Atpi.a.l = true;
+      if (paramInt == 0) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+    }
+    else
+    {
+      if (paramInt != 0) {
+        break label289;
+      }
+      localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
+        break label283;
+      }
+    }
+    label283:
+    for (localObject = "1";; localObject = "2")
+    {
+      localaxrc.a(new String[] { localObject }).a();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("exp_pub").e(atpk.a(this.a).uin);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+      for (localObject = "1";; localObject = "2")
+      {
+        localaxrc.a(new String[] { localObject }).a();
+        break;
+      }
+    }
+    label289:
+    axrc localaxrc = new axrc(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp").e(atpk.a(this.a).uin);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localaxrc.a(new String[] { localObject }).a();
       return;
     }
   }

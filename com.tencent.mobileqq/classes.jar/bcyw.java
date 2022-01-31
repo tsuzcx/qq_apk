@@ -1,20 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.4.1;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import org.json.JSONObject;
 
-public class bcyw
+class bcyw
   implements DialogInterface.OnClickListener
 {
-  public bcyw(BindGroupActivity.4.1 param1) {}
+  bcyw(bcyu parambcyu, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
-    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bcyu.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

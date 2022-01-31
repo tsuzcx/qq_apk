@@ -1,23 +1,65 @@
-import android.text.Spannable;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-final class bafi
-  implements Comparator<bafh>
+public class bafi
+  extends ampa<bafj>
 {
-  bafi(Spannable paramSpannable) {}
-  
-  public int a(bafh parambafh1, bafh parambafh2)
+  public static bafj a()
   {
-    int i = 0;
-    int j = this.a.getSpanStart(parambafh1);
-    int k = this.a.getSpanStart(parambafh2);
-    if (j < k) {
-      i = -1;
+    bafj localbafj = (bafj)ampl.a().a(547);
+    if (QLog.isColorLevel()) {
+      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localbafj);
     }
-    while (j <= k) {
-      return i;
+    return localbafj;
+  }
+  
+  public int a()
+  {
+    return 547;
+  }
+  
+  @NonNull
+  public bafj a(int paramInt)
+  {
+    return new bafj();
+  }
+  
+  @Nullable
+  public bafj a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      return null;
     }
-    return 1;
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfamph);
+    }
+    return bafj.a(paramArrayOfamph);
+  }
+  
+  public Class<bafj> a()
+  {
+    return bafj.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(bafj parambafj) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

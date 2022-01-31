@@ -1,19 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
 
 public class aixf
-  extends RecyclerView.ViewHolder
+  implements CompoundButton.OnCheckedChangeListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aixf(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public aixf(aixe paramaixe, View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramView);
-    if (paramView == aixe.a(paramaixe)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364314));
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
   }
 }
 

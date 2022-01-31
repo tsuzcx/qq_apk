@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qud;
+import qua;
 
 public class VideoPluginInstall$1
   implements Runnable
 {
-  public VideoPluginInstall$1(qud paramqud) {}
+  public VideoPluginInstall$1(qua paramqua) {}
   
   public void run()
   {
-    qud.a(this.this$0);
+    qua.a(this.this$0);
   }
 }
 

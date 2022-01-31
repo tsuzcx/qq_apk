@@ -1,4 +1,31 @@
-public class bcso {}
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class bcso
+  implements Animation.AnimationListener
+{
+  bcso(View paramView1, View paramView2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = new bcrb(this.a);
+    paramAnimation.setDuration(bcsn.a());
+    paramAnimation.setFillAfter(true);
+    this.a.startAnimation(paramAnimation);
+    this.a.setVisibility(0);
+    this.b.clearAnimation();
+    this.b.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.clearAnimation();
+    this.a.setVisibility(4);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

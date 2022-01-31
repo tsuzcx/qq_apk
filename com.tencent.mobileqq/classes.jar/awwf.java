@@ -1,14 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class awwf
-  implements DialogInterface.OnClickListener
+public abstract interface awwf
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    com.tencent.mobileqq.search.util.VADHelper.c = false;
-    paramDialogInterface.dismiss();
-  }
+  public abstract void onSoftKeyboardClosed();
+  
+  public abstract void onSoftKeyboardOpened(int paramInt);
 }
 
 

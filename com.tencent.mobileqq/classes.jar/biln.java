@@ -1,24 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
 class biln
-  implements Animator.AnimatorListener
+  implements Animation.AnimationListener
 {
-  biln(bilj parambilj) {}
+  biln(bill parambill) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
-    }
+    bill.b(this.a).setVisibility(8);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

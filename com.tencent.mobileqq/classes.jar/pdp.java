@@ -1,316 +1,77 @@
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.URL;
 import org.json.JSONObject;
 
 public class pdp
 {
-  JSONObject a = new JSONObject();
-  
-  public pdp A(BaseArticleInfo paramBaseArticleInfo)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    pen.N(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp B(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.O(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp C(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.a(this.a, paramBaseArticleInfo);
-    return this;
-  }
-  
-  public pdp D(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.R(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp E(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mChannelID == 0L)) {
-      return this;
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject;
+    int i;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_article_double_image", localJSONObject2);
+      localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      pek.a(paramBaseArticleInfo, localJSONObject1, true, "3");
+      if (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label277;
+      }
+      pek.d(paramBaseArticleInfo, localJSONObject1);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_view_AdDownloadView", localObject);
+      if (!TextUtils.isEmpty(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg))
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
+        localObject = URLDrawable.getDrawable(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg, (URLDrawable.URLDrawableOptions)localObject);
+        if (localObject != null) {
+          ((URLDrawable)localObject).startDownload();
+        }
+      }
+      if (new JSONObject(((AdvertisementInfo)paramBaseArticleInfo).mAdExtInfo).optInt("is_video_new") != 1) {
+        break label260;
+      }
+      i = 1;
     }
-    pen.a(this.a);
-    return this;
-  }
-  
-  public pdp F(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.v(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp G(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.S(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp H(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.T(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp I(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.V(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp J(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.W(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp K(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.X(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp L(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.U(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp M(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.z(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp N(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.A(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp O(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.L(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp P(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.ad(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp Q(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.aj(paramBaseArticleInfo, this.a);
-    pen.ae(paramBaseArticleInfo, this.a);
-    pen.af(paramBaseArticleInfo, this.a);
-    pen.ag(paramBaseArticleInfo, this.a);
-    pen.ah(paramBaseArticleInfo, this.a);
-    pen.ai(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public JSONObject a()
-  {
-    return this.a;
-  }
-  
-  public pdp a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    J(paramBaseArticleInfo);
-    K(paramBaseArticleInfo);
-    return this;
-  }
-  
-  public pdp a(BaseArticleInfo paramBaseArticleInfo, long paramLong)
-  {
-    pen.a(paramBaseArticleInfo, this.a, Long.valueOf(paramLong));
-    return this;
-  }
-  
-  public pdp a(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    pen.a(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public pdp a(String paramString)
-  {
-    this.a.put("style_ID", paramString);
-    return this;
-  }
-  
-  public pdp a(String paramString, Object paramObject)
-  {
-    this.a.put(paramString, paramObject);
-    return this;
-  }
-  
-  public pdp b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.q(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp b(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    pen.b(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public pdp c(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.x(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp c(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    pen.c(paramBaseArticleInfo, this.a, paramString);
-    return this;
-  }
-  
-  public pdp d(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.r(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp e(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.s(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp f(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.t(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp g(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.u(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp h(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.P(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp i(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.Q(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp j(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.j(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp k(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.k(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp l(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.l(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp m(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.G(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp n(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.E(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp o(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.H(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp p(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.I(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp q(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.F(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp r(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.m(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp s(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.n(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp t(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.o(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp u(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.p(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp v(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.C(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp w(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.D(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp x(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.J(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp y(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.K(paramBaseArticleInfo, this.a);
-    return this;
-  }
-  
-  public pdp z(BaseArticleInfo paramBaseArticleInfo)
-  {
-    pen.M(paramBaseArticleInfo, this.a);
-    return this;
+    for (;;)
+    {
+      label210:
+      pek.m(paramBaseArticleInfo, localJSONObject1);
+      pek.e(paramBaseArticleInfo, localJSONObject1);
+      pek.c(paramBaseArticleInfo, localJSONObject1);
+      oar.b(paramBaseArticleInfo, localJSONObject1);
+      oar.a(paramBaseArticleInfo, localJSONObject1);
+      if (i != 0) {
+        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell_new_division");
+      }
+      for (;;)
+      {
+        pek.a(localJSONObject1, paramBaseArticleInfo);
+        return localJSONObject1;
+        localObject = null;
+        break;
+        label260:
+        i = 0;
+        break label210;
+        localJSONObject1.put("style_ID", "ReadInjoy_ad_large_cell");
+      }
+      label277:
+      i = 0;
+    }
   }
 }
 

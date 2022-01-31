@@ -1,8 +1,6 @@
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-
 public abstract interface biyr
 {
-  public abstract void a(NodeItem paramNodeItem);
+  public abstract void a(String paramString);
 }
 
 

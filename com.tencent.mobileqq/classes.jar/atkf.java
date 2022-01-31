@@ -1,17 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
 public class atkf
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public atkf(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
+  public atkf(StuffContainerView paramStuffContainerView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
   }
 }
 

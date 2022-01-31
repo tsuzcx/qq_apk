@@ -1,14 +1,19 @@
-import com.tencent.qqmini.sdk.minigame.utils.TTHandleThread;
-import java.util.concurrent.Executor;
+import org.json.JSONObject;
 
-class bewa
-  implements Executor
+public class bewa
 {
-  bewa(bevy parambevy) {}
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b = null;
+  public String c = null;
+  public String d = null;
   
-  public void execute(Runnable paramRunnable)
+  bewa(bevz parambevz)
   {
-    TTHandleThread.a().a(paramRunnable);
+    this.jdField_a_of_type_Int = 1001;
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 

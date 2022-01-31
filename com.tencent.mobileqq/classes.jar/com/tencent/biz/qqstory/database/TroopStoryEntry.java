@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
+import auko;
 import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
 public class TroopStoryEntry
-  extends aukm
+  extends auko
 {
   public static final int ITEM_TYPE_DAY = 1;
   public static final int ITEM_TYPE_VIDEO = 2;

@@ -1,29 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
-class aggt
-  implements Animation.AnimationListener
+public class aggt
+  implements DialogInterface.OnCancelListener
 {
-  aggt(aggs paramaggs, Activity paramActivity) {}
+  public aggt(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_Aggs.a.a.getCount() == 1) && (!MiniMsgTabFragment.a(this.jdField_a_of_type_Aggs.a)))
-    {
-      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Aggs.a);
-      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Aggs.a));
-      paramAnimation.putExtra("clickID", -1);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    MiniMsgTabFragment.a(this.a, -1, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

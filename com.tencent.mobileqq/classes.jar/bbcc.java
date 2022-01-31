@@ -1,228 +1,199 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Layout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuLayout;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.mobileqq.data.AppShareIDConfigInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import msf.msgcomm.msg_comm.PluginInfo;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class bbcc
 {
-  public static boolean a;
+  public static final AppShareID a = new AppShareID();
   
-  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bblr parambblr, View.OnClickListener paramOnClickListener)
+  public static long a(long paramLong)
   {
-    return a(paramBubblePopupWindow, paramContext, parambblr, paramOnClickListener, false);
+    return a(b(paramLong));
   }
   
-  public static View a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bblr parambblr, View.OnClickListener paramOnClickListener, boolean paramBoolean)
+  public static long a(String paramString)
   {
-    int i;
-    int n;
-    int j;
-    label21:
-    int k;
-    if (paramBoolean)
+    long l = Long.parseLong(paramString.substring(2), 16);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
+    localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    localByteBuffer.putLong(l);
+    localByteBuffer.flip();
+    localByteBuffer.order(ByteOrder.BIG_ENDIAN);
+    l = localByteBuffer.getLong();
+    if (QLog.isColorLevel()) {
+      QLog.d("share_appid", 2, paramString + " change to ShareID =" + (l >>> 32));
+    }
+    return l >>> 32;
+  }
+  
+  public static AppShareID a(msg_comm.PluginInfo paramPluginInfo)
+  {
+    AppShareID localAppShareID = new AppShareID();
+    localAppShareID.uiResID = paramPluginInfo.res_id.get();
+    localAppShareID.strPkgName = paramPluginInfo.pkg_name.get();
+    localAppShareID.uiNewVer = paramPluginInfo.new_ver.get();
+    localAppShareID.sResType = ((short)paramPluginInfo.res_type.get());
+    localAppShareID.sLanType = ((short)paramPluginInfo.lan_type.get());
+    localAppShareID.sPriority = ((short)paramPluginInfo.priority.get());
+    localAppShareID.strResName = paramPluginInfo.res_name.get();
+    localAppShareID.strResDesc = paramPluginInfo.res_desc.get();
+    localAppShareID.strResURL_big = paramPluginInfo.res_url_big.get();
+    localAppShareID.strResURL_small = paramPluginInfo.res_url_small.get();
+    paramPluginInfo = a(paramPluginInfo.res_conf.get());
+    if (paramPluginInfo != null)
     {
-      i = 8;
-      int m = 1;
-      n = parambblr.a();
-      j = 0;
-      k = m;
-      if (j < n)
-      {
-        if (parambblr.a(j).b() != 0) {
-          break label182;
-        }
-        k = 0;
-      }
-      if (!paramBoolean) {
-        break label191;
-      }
-      if (QQCustomMenuNoIconLayout.jdField_a_of_type_Int == 0)
-      {
-        localObject = paramContext.getResources();
-        QQCustomMenuNoIconLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-        QQCustomMenuNoIconLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-        QQCustomMenuNoIconLayout.c = actn.a(QQCustomMenuNoIconLayout.c, (Resources)localObject);
-        QQCustomMenuNoIconLayout.f = actn.a(QQCustomMenuNoIconLayout.f, (Resources)localObject);
-      }
+      localAppShareID.officalwebsite = paramPluginInfo.officalwebsite;
+      localAppShareID.appstorelink = paramPluginInfo.appstorelink;
+      localAppShareID.messagetail = paramPluginInfo.messagetail;
+      localAppShareID.bundleid = paramPluginInfo.bundleid;
+      localAppShareID.sourceUrl = paramPluginInfo.sourceUrl;
+    }
+    localAppShareID.updateTime = System.currentTimeMillis();
+    return localAppShareID;
+  }
+  
+  public static AppShareID a(GetResourceRespInfo paramGetResourceRespInfo)
+  {
+    AppShareID localAppShareID = new AppShareID();
+    localAppShareID.uiResID = paramGetResourceRespInfo.uiResID;
+    localAppShareID.strPkgName = paramGetResourceRespInfo.strPkgName;
+    localAppShareID.uiNewVer = paramGetResourceRespInfo.uiNewVer;
+    localAppShareID.sResType = paramGetResourceRespInfo.sResType;
+    localAppShareID.sLanType = paramGetResourceRespInfo.sLanType;
+    localAppShareID.sPriority = paramGetResourceRespInfo.sPriority;
+    localAppShareID.strResName = paramGetResourceRespInfo.strResName;
+    localAppShareID.strResDesc = paramGetResourceRespInfo.strResDesc;
+    localAppShareID.strResURL_big = paramGetResourceRespInfo.strResURL_big;
+    localAppShareID.strResURL_small = paramGetResourceRespInfo.strResURL_small;
+    paramGetResourceRespInfo = a(paramGetResourceRespInfo.strResConf);
+    if (paramGetResourceRespInfo != null)
+    {
+      localAppShareID.officalwebsite = paramGetResourceRespInfo.officalwebsite;
+      localAppShareID.appstorelink = paramGetResourceRespInfo.appstorelink;
+      localAppShareID.messagetail = paramGetResourceRespInfo.messagetail;
+      localAppShareID.bundleid = paramGetResourceRespInfo.bundleid;
+      localAppShareID.sourceUrl = paramGetResourceRespInfo.sourceUrl;
+    }
+    localAppShareID.updateTime = System.currentTimeMillis();
+    return localAppShareID;
+  }
+  
+  public static AppShareIDConfigInfo a(String paramString)
+  {
+    Object localObject;
+    if ((paramString == null) || ("".equals(paramString)))
+    {
+      localObject = null;
+      return localObject;
     }
     for (;;)
     {
-      if ((paramBoolean) || (k == 0) || (QQCustomMenuImageLayout.jdField_a_of_type_Int < 480)) {
-        break label281;
-      }
-      paramContext = new QQCustomMenuImageLayout(paramContext);
-      paramContext.setGravity(17);
-      paramContext.setPadding(QQCustomMenuImageLayout.c, 0, 0, 0);
-      paramContext.setPopup(paramBubblePopupWindow);
-      paramContext.setMenu(parambblr);
-      paramContext.setMenuIconClickListener(paramOnClickListener);
-      paramContext.a();
-      return paramContext;
-      i = 6;
-      break;
-      label182:
-      j += 1;
-      break label21;
-      label191:
-      if (QQCustomMenuImageLayout.jdField_a_of_type_Int == 0)
+      AppShareIDConfigInfo localAppShareIDConfigInfo;
+      int i;
+      Node localNode;
+      try
       {
-        localObject = paramContext.getResources();
-        QQCustomMenuImageLayout.jdField_a_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-        QQCustomMenuImageLayout.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-        QQCustomMenuImageLayout.c = actn.a(QQCustomMenuImageLayout.c, (Resources)localObject);
-        QQCustomMenuImageLayout.d = actn.a(QQCustomMenuImageLayout.d, (Resources)localObject);
-        QQCustomMenuImageLayout.e = actn.a(QQCustomMenuImageLayout.e, (Resources)localObject);
-        QQCustomMenuImageLayout.f = (QQCustomMenuImageLayout.jdField_a_of_type_Int - actn.a(36.0F, (Resources)localObject)) / i;
+        NodeList localNodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + paramString).getBytes())).getDocumentElement().getChildNodes();
+        localAppShareIDConfigInfo = new AppShareIDConfigInfo();
+        i = 0;
+        localObject = localAppShareIDConfigInfo;
+        if (i >= localNodeList.getLength()) {
+          break;
+        }
+        if (localNodeList.item(i).getNodeType() != 1) {
+          break label300;
+        }
+        localObject = localNodeList.item(i);
+        localNode = ((Node)localObject).getFirstChild();
+        if (localNode == null) {
+          break label300;
+        }
+        if ("officalwebsite".equals(((Node)localObject).getNodeName())) {
+          localAppShareIDConfigInfo.officalwebsite = localNode.getNodeValue();
+        } else if ("androidlink".equals(((Node)localObject).getNodeName())) {
+          localAppShareIDConfigInfo.appstorelink = localNode.getNodeValue();
+        }
       }
-    }
-    label281:
-    if (paramBoolean)
-    {
-      paramContext = new QQCustomMenuNoIconLayout(paramContext);
-      paramContext.setGravity(17);
-      paramContext.setPadding(0, 0, 0, 0);
-      paramContext.setPopup(paramBubblePopupWindow);
-      paramContext.setMenu(parambblr);
-      paramContext.setMenuIconClickListener(paramOnClickListener);
-      paramContext.a();
-      return paramContext;
-    }
-    Object localObject = new QQCustomMenuLayout(paramContext);
-    ((QQCustomMenuLayout)localObject).setGravity(17);
-    a(paramBubblePopupWindow, paramContext, parambblr, paramOnClickListener, (QQCustomMenuLayout)localObject, n);
-    return localObject;
-  }
-  
-  private static QQCustomMenuLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, bblr parambblr, View.OnClickListener paramOnClickListener, QQCustomMenuLayout paramQQCustomMenuLayout, int paramInt)
-  {
-    int i = 0;
-    while (i < paramInt)
-    {
-      Object localObject = parambblr.a(i);
-      bbcd localbbcd = new bbcd(paramContext, paramBubblePopupWindow);
-      localbbcd.setText(((bblt)localObject).a());
-      localbbcd.setTextSize(13.0F);
-      Resources localResources = paramContext.getResources();
-      TextPaint localTextPaint = new TextPaint(1);
-      localTextPaint.density = localResources.getDisplayMetrics().density;
-      int k = (int)Layout.getDesiredWidth(((bblt)localObject).a(), localTextPaint);
-      int j = 5;
-      if (localTextPaint.density >= 2.0F) {
-        j = 10;
-      }
-      j = (int)(j * localTextPaint.density);
-      localbbcd.setMinimumWidth(j * 2 + k);
-      localbbcd.setPadding(j, 0, j, 0);
-      localbbcd.setContentDescription(((bblt)localObject).a());
-      localbbcd.setId(((bblt)localObject).a());
-      localbbcd.setTextColor(-1);
-      localbbcd.setBackgroundDrawable(null);
-      localbbcd.setIncludeFontPadding(true);
-      localbbcd.setOnClickListener(paramOnClickListener);
-      localbbcd.setGravity(17);
-      paramQQCustomMenuLayout.addView(localbbcd, new LinearLayout.LayoutParams(-2, -2, 1.0F));
-      if (i != paramInt - 1)
+      catch (Exception localException)
       {
-        localObject = new ImageView(paramContext);
-        ((ImageView)localObject).setBackgroundResource(2130838592);
-        paramQQCustomMenuLayout.addView((View)localObject, -2, -2);
+        QLog.w("share_appid", 2, "parser from xml is error,xmlStr:" + paramString);
+        return null;
       }
+      if ("messagetail".equals(localException.getNodeName())) {
+        localAppShareIDConfigInfo.messagetail = localNode.getNodeValue();
+      } else if ("bundleid".equals(localException.getNodeName())) {
+        localAppShareIDConfigInfo.bundleid = localNode.getNodeValue();
+      } else if ("sourceUrl".equals(localException.getNodeName())) {
+        localAppShareIDConfigInfo.sourceUrl = localNode.getNodeValue();
+      }
+      label300:
       i += 1;
     }
-    paramQQCustomMenuLayout.a();
-    return paramQQCustomMenuLayout;
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, bblr parambblr, View.OnClickListener paramOnClickListener)
+  public static String a(long paramLong)
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambblr, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(false);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.e(false);
-    localBubblePopupWindow.g(paramInt3);
-    localBubblePopupWindow.a(0);
-    localBubblePopupWindow.b(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
+    Object localObject = ByteBuffer.allocate(4);
+    ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
+    ((ByteBuffer)localObject).putInt((int)paramLong);
+    ((ByteBuffer)localObject).flip();
+    ((ByteBuffer)localObject).order(ByteOrder.BIG_ENDIAN);
+    localObject = new StringBuffer(Integer.toHexString(((ByteBuffer)localObject).getInt()));
+    int j = ((StringBuffer)localObject).length();
+    int i = 0;
+    while (i < 8 - j)
+    {
+      ((StringBuffer)localObject).insert(0, "0");
+      i += 1;
+    }
+    ((StringBuffer)localObject).insert(0, "QQ");
+    return ((StringBuffer)localObject).toString().toUpperCase();
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bblr parambblr)
+  public static long b(long paramLong)
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambblr, null));
-    localBubblePopupWindow.a(null);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(false);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
+    return b(a(paramLong));
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bblr parambblr, View.OnClickListener paramOnClickListener)
+  public static long b(String paramString)
   {
-    return a(paramView, paramInt1, paramInt2, parambblr, paramOnClickListener, false);
+    long l1 = Long.parseLong(paramString.substring(2), 16);
+    long l2 = mzw.b(l1);
+    if (l2 != 0L) {
+      return l2;
+    }
+    return l1;
   }
   
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bblr parambblr, View.OnClickListener paramOnClickListener, bfps parambfps)
+  public static String b(long paramLong)
   {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambblr, paramOnClickListener));
-    localBubblePopupWindow.a(parambfps);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, bblr parambblr, View.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambblr, paramOnClickListener, paramBoolean));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2, paramBoolean);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, bblr parambblr, View.OnClickListener paramOnClickListener)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambblr, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
-    return localBubblePopupWindow;
-  }
-  
-  public static BubblePopupWindow a(View paramView, bblr parambblr, View.OnClickListener paramOnClickListener, bfps parambfps)
-  {
-    BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), parambblr, paramOnClickListener));
-    localBubblePopupWindow.a(parambfps);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
-    return localBubblePopupWindow;
+    long l = mzw.a(paramLong);
+    if (l != 0L) {
+      paramLong = l;
+    }
+    String str = Integer.toHexString((int)paramLong);
+    StringBuffer localStringBuffer = new StringBuffer(str);
+    int i = 0;
+    while (i < 8 - str.length())
+    {
+      localStringBuffer.insert(0, "0");
+      i += 1;
+    }
+    localStringBuffer.insert(0, "QQ");
+    return localStringBuffer.toString().toUpperCase();
   }
 }
 

@@ -1,45 +1,18 @@
-public class axhk
+public abstract interface axhk
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
-  public long a(float paramFloat)
-  {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
-    }
-    return paramLong * 1000L;
-  }
+  public abstract void a(String paramString, int paramInt, long paramLong);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
+  public abstract void b();
   
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c();
 }
 
 

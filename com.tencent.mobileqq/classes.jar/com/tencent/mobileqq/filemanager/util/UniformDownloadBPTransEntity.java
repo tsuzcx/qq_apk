@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mUrl")
 public class UniformDownloadBPTransEntity
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public String mFileName;
   public String mFilePath;
   public long mFileSize = 0L;
   public String mTempPath;
-  @auma
+  @aumc
   public String mUrl;
   
   public static String tableName()

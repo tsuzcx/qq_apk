@@ -1,30 +1,30 @@
-import android.view.MotionEvent;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class azlc
-  implements View.OnTouchListener
+  implements View.OnKeyListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
   public azlc(NewTroopContactView paramNewTroopContactView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    if (paramInt == 67)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
+      }
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
     for (;;)
     {
       return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Azlf.a();
       }
     }
   }

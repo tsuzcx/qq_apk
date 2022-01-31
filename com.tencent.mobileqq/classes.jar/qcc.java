@@ -1,13 +1,19 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
 
-public class qcc
-  implements Cloneable
+public final class qcc
+  implements Parcelable.Creator<SimpleChannelInfo>
 {
-  public int a;
-  public long a;
-  public List<Long> a;
-  public int b;
-  public long b;
+  public SimpleChannelInfo a(Parcel paramParcel)
+  {
+    return new SimpleChannelInfo(paramParcel);
+  }
+  
+  public SimpleChannelInfo[] a(int paramInt)
+  {
+    return new SimpleChannelInfo[paramInt];
+  }
 }
 
 

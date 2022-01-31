@@ -1,22 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-
-final class bbda
-  implements DialogInterface.OnClickListener
+public class bbda
 {
-  bbda(Activity paramActivity) {}
+  public String a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bbda(String paramString, boolean paramBoolean)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

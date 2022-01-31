@@ -1,15 +1,15 @@
 package com.tencent.qqprotect.qsec;
 
-import bfjc;
+import bfjt;
 
 public class QSecLibMgr$3
   implements Runnable
 {
-  public QSecLibMgr$3(bfjc parambfjc) {}
+  public QSecLibMgr$3(bfjt parambfjt) {}
   
   public void run()
   {
-    bfjc.d(this.this$0);
+    bfjt.d(this.this$0);
   }
 }
 

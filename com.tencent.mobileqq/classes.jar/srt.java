@@ -1,8 +1,30 @@
-public abstract interface srt
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+class srt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(sqb paramsqb);
+  srt(srs paramsrs) {}
   
-  public abstract void b(sqb paramsqb);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      srs.a(this.a);
+      if (srs.a(this.a)) {
+        vei.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
+      }
+    }
+    for (;;)
+    {
+      srs.a(this.a, paramBoolean);
+      return;
+      srs.b(this.a);
+      if (srs.a(this.a)) {
+        vei.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
+      }
+    }
+  }
 }
 
 

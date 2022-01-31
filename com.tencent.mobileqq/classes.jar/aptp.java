@@ -1,61 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.HexUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.settings.FileAssistantBannerSetting.1;
-import com.tencent.mobileqq.filemanager.settings.FileAssistantBannerSetting.2;
-import com.tencent.mobileqq.filemanager.settings.FileAssistantBannerSetting.3;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
 
 public class aptp
-  implements Manager
+  implements aptl
 {
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  aptp(apto paramapto) {}
   
-  public aptp(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.executeOnSubThread(new FileAssistantBannerSetting.1(this));
-  }
-  
-  public void a(anbg paramanbg)
-  {
-    if (paramanbg == null) {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
+    aptm.a(this.a.a.this$0);
+    apue.a("0X8005BE2");
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.this$0.b = false;
       return;
     }
-    ThreadManager.executeOnSubThread(new FileAssistantBannerSetting.2(this, paramanbg));
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    anbg localanbg = anbh.a();
-    if (localanbg == null) {}
-    do
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
+    aptm.a(this.a.a.this$0);
+    synchronized (BaseApplicationImpl.getContext())
     {
-      do
-      {
-        return false;
-      } while ((this.jdField_a_of_type_Long != 0L) && (awzw.a() - this.jdField_a_of_type_Long > localanbg.a() * 3600));
-      String str1 = apue.a(localanbg.e());
-      String str2 = HexUtil.bytes2HexStr(apue.d(localanbg.e()));
-      if ((str2 == null) || (!str2.equalsIgnoreCase(str1))) {
-        break;
-      }
-      QLog.i("FileAssistantBannerSetting", 1, "pic check is OK!");
-    } while ((TextUtils.isEmpty(localanbg.c())) && (TextUtils.isEmpty(localanbg.d())));
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = awzw.a();
-      ThreadManager.executeOnSubThread(new FileAssistantBannerSetting.3(this));
+      this.a.a.this$0.b = false;
+      return;
     }
-    return true;
-    a(localanbg);
-    return false;
   }
   
-  public void onDestroy() {}
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public abstract interface aime
+public class aime
 {
-  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  
+  public aime(aimd paramaimd) {}
 }
 
 

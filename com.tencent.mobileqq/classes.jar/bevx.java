@@ -1,6 +1,13 @@
-public abstract interface bevx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class bevx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

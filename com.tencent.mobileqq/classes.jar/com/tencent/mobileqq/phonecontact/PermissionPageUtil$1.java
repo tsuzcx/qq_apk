@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.phonecontact;
 
 import android.os.Build;
-import aumh;
+import aumj;
 
 public class PermissionPageUtil$1
   implements Runnable
 {
-  public PermissionPageUtil$1(aumh paramaumh) {}
+  public PermissionPageUtil$1(aumj paramaumj) {}
   
   public void run()
   {
     String str = null;
     if ("Xiaomi".equals(Build.MANUFACTURER)) {
-      str = aumh.a();
+      str = aumj.a();
     }
-    aumh.a(String.format("PermissionPageUtil init [%s, %s]", new Object[] { Build.MANUFACTURER, str }));
+    aumj.a(String.format("PermissionPageUtil init [%s, %s]", new Object[] { Build.MANUFACTURER, str }));
   }
 }
 

@@ -1,20 +1,35 @@
-public class asvh
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
+
+class asvh
+  implements axeg
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
+  asvh(asuw paramasuw, asur paramasur, String paramString) {}
   
-  public asvh(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.jdField_a_of_type_Asur.a != null) && (this.jdField_a_of_type_Asur.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Asur.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    }
+    this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Asur, paramInt, 0, "");
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Asur.a != null) && (this.jdField_a_of_type_Asur.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
+      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Asur.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    }
+    if (this.jdField_a_of_type_Asur.a != null)
+    {
+      String str = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Asur.a.jdField_a_of_type_Axdt);
+      asus localasus = this.jdField_a_of_type_Asuw.a(str);
+      if ((localasus != null) && (!localasus.a))
+      {
+        localasus.c = paramInt;
+        this.jdField_a_of_type_Asuw.a(str, localasus);
+        asuw.a(this.jdField_a_of_type_Asuw, localasus, localasus.c);
+      }
+    }
   }
 }
 

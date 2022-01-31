@@ -2,33 +2,30 @@ import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiService;
 
 class wys
-  implements nco
+  implements ajyw
 {
-  wys(wym paramwym, Bundle paramBundle, int paramInt) {}
+  wys(wyj paramwyj, Bundle paramBundle) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(ajzb paramajzb)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
-    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+    Bundle localBundle = new Bundle();
+    ajzb localajzb = paramajzb;
+    if (paramajzb == null) {
+      localajzb = this.jdField_a_of_type_Wyj.a.a.jdField_a_of_type_Ajyx.a(this.jdField_a_of_type_Wyj.a.a.jdField_a_of_type_JavaLangString, 1, ajyv.a());
+    }
+    if (localajzb != null)
+    {
+      localBundle.putString("url", localajzb.b);
+      localBundle.putString("content", localajzb.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Wym.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-      }
+      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
+      this.jdField_a_of_type_Wyj.a.a(101, localBundle);
+      return false;
+      localBundle.putString("url", "");
+      localBundle.putString("content", "");
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    this.jdField_a_of_type_Wym.a.a(79, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

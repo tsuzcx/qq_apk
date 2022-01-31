@@ -3,14 +3,14 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bbgu;
+import bbhi;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import org.json.JSONObject;
 
 class VasCommonJsPlugin$4
   implements DialogInterface.OnKeyListener
 {
-  VasCommonJsPlugin$4(VasCommonJsPlugin paramVasCommonJsPlugin, bbgu parambbgu, JsBridgeListener paramJsBridgeListener) {}
+  VasCommonJsPlugin$4(VasCommonJsPlugin paramVasCommonJsPlugin, bbhi parambbhi, JsBridgeListener paramJsBridgeListener) {}
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {

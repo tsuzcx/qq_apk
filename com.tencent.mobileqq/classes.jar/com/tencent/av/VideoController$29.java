@@ -3,9 +3,9 @@ package com.tencent.av;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import lgf;
-import mss;
-import muf;
+import lga;
+import msp;
+import muc;
 
 class VideoController$29
   implements Runnable
@@ -23,8 +23,8 @@ class VideoController$29
       l %= 60L;
       if (l % 30L == 0L)
       {
-        String str = muf.a(this.this$0.a());
-        mss.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().c, this.this$0.a().d, str);
+        String str = muc.a(this.this$0.a());
+        msp.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().c, this.this$0.a().d, str);
         if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackground_Stop) && (l % 10L == 0L)) {
           QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "chattingTimerRunnale -->updateNotification() sessionId = " + this.this$0.a().c);
         }

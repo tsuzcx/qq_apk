@@ -17,7 +17,7 @@ import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.security.MessageDigest;
 import mqq.app.MobileQQ;
-import zzo;
+import zzl;
 
 class SecClientInfoTask$1
   implements Runnable
@@ -44,7 +44,7 @@ class SecClientInfoTask$1
         localObject3 = new ClientInfoA.EnvParamPacket();
         ((ClientInfoA.EnvParamPacket)localObject3).u32_platform.set(1);
         ((ClientInfoA.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("8.2.8.4440");
+        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("8.3.0.4480");
         ((ClientInfoA.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a());
         ((ClientInfoA.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
         ((ClientInfoA.EnvParamPacket)localObject3).str_uin.set(str);
@@ -76,7 +76,7 @@ class SecClientInfoTask$1
       {
         if (!SecClientInfoTask.a())
         {
-          SecClientInfoTask.a(zzo.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
+          SecClientInfoTask.a(zzl.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
           SecClientInfoTask.a(true);
         }
         if ((SecClientInfoTask.a() != null) && (SecClientInfoTask.a().length() > 0)) {

@@ -1,25 +1,22 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.launcher.model.EntryModel;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.FirstPageInfo;
 
-public class bers
+public final class bers
+  implements Parcelable.Creator<FirstPageInfo>
 {
-  public int a;
-  public Activity a;
-  public EntryModel a;
-  public MiniAppInfo a;
-  public ShareChatModel a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public FirstPageInfo a(Parcel paramParcel)
+  {
+    FirstPageInfo localFirstPageInfo = new FirstPageInfo();
+    localFirstPageInfo.a = paramParcel.readString();
+    localFirstPageInfo.b = paramParcel.readString();
+    return localFirstPageInfo;
+  }
+  
+  public FirstPageInfo[] a(int paramInt)
+  {
+    return new FirstPageInfo[paramInt];
+  }
 }
 
 

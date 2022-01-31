@@ -3,16 +3,37 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aghj
-  extends aggy
+  extends aggw
 {
   public aghj(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    this.e = true;
+    super.g();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
   protected void y()
   {
-    this.a = "MiniPieForNearby";
+    this.a = "MiniPieForTroop";
   }
 }
 

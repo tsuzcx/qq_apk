@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
 
 public class wgs
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public wgs(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  public wgs(QRLoginBaseActivity paramQRLoginBaseActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
     this.a.finish();
   }

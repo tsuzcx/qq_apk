@@ -1,29 +1,29 @@
 package cooperation.qzone;
 
 import android.view.View;
-import bgzl;
-import bgzn;
-import bgzo;
-import bgzp;
+import bhac;
+import bhae;
+import bhaf;
+import bhag;
 import com.tencent.image.URLDrawable;
 import java.util.List;
 
 public class QzoneGiftFullScreenViewController$3$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$2(bgzn parambgzn) {}
+  public QzoneGiftFullScreenViewController$3$2(bhae parambhae) {}
   
   public void run()
   {
     URLDrawable.resume();
-    ((View)this.a.jdField_a_of_type_Bgzl.a).setBackgroundColor(0);
-    bgzl.a(this.a.jdField_a_of_type_Bgzl);
-    this.a.jdField_a_of_type_Bgzo.a();
-    if (bgzl.a(this.a.jdField_a_of_type_Bgzl).size() > 0)
+    ((View)this.a.jdField_a_of_type_Bhac.a).setBackgroundColor(0);
+    bhac.a(this.a.jdField_a_of_type_Bhac);
+    this.a.jdField_a_of_type_Bhaf.a();
+    if (bhac.a(this.a.jdField_a_of_type_Bhac).size() > 0)
     {
-      bgzp localbgzp = (bgzp)bgzl.a(this.a.jdField_a_of_type_Bgzl).get(0);
-      this.a.jdField_a_of_type_Bgzl.a(localbgzp.jdField_a_of_type_JavaLangString, localbgzp.b, localbgzp.jdField_a_of_type_Boolean, localbgzp.jdField_a_of_type_Bgzo);
-      bgzl.a(this.a.jdField_a_of_type_Bgzl).remove(localbgzp);
+      bhag localbhag = (bhag)bhac.a(this.a.jdField_a_of_type_Bhac).get(0);
+      this.a.jdField_a_of_type_Bhac.a(localbhag.jdField_a_of_type_JavaLangString, localbhag.b, localbhag.jdField_a_of_type_Boolean, localbhag.jdField_a_of_type_Bhaf);
+      bhac.a(this.a.jdField_a_of_type_Bhac).remove(localbhag);
     }
   }
 }

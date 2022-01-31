@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bjsn;
+import bjte;
 
 public class EditLocalVideoPlayer$3
   implements Runnable
 {
-  public EditLocalVideoPlayer$3(bjsn parambjsn) {}
+  public EditLocalVideoPlayer$3(bjte parambjte) {}
   
   public void run()
   {

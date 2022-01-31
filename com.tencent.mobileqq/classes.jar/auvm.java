@@ -1,17 +1,10 @@
-import java.util.ArrayList;
-
 public class auvm
 {
-  public int a;
   public long a;
-  public String a;
-  public ArrayList<auvk> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public auvk a;
+  public String a = "";
+  public long b;
+  public auvk b;
 }
 
 

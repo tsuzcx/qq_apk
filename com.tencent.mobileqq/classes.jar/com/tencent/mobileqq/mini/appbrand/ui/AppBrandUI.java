@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import amgo;
+import amgn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -112,7 +112,7 @@ public class AppBrandUI
     return this.mAppUIProxy;
   }
   
-  public amgo getColorNoteController()
+  public amgn getColorNoteController()
   {
     IAppUIProxy localIAppUIProxy = getAppUIProxy();
     if ((localIAppUIProxy instanceof AppUIProxy)) {

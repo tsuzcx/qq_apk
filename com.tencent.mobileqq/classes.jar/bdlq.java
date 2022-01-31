@@ -1,155 +1,41 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
-import android.view.Window;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.MyAppDialog.1;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Map;
 
-public class bdlq
-  extends Dialog
+class bdlq
+  extends ajuf
 {
-  public ProgressBar a;
-  TextView a;
-  protected final WeakReference<Activity> a;
-  TextView b;
-  public TextView c;
-  TextView d;
-  public TextView e;
+  private bdlq(bdlo parambdlo) {}
   
-  public bdlq(Activity paramActivity)
+  protected void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    requestWindowFeature(1);
-    paramActivity = new ColorDrawable();
-    paramActivity.setAlpha(0);
-    getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2131559472);
-  }
-  
-  public Activity a()
-  {
-    Activity localActivity2 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity1 = localActivity2;
-    if (localActivity2 == null) {
-      localActivity1 = null;
-    }
-    return localActivity1;
-  }
-  
-  public bdlq a(int paramInt)
-  {
-    this.b.setTextColor(paramInt);
-    return this;
-  }
-  
-  public bdlq a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.c.setVisibility(8);
-      return this;
-    }
-    this.c.setText(paramInt1);
-    this.c.setTextColor(paramInt2);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bdls(this, paramOnClickListener, paramInt1, paramBoolean));
-    return this;
-  }
-  
-  public bdlq a(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.c.setVisibility(8);
-      return this;
-    }
-    this.c.setText(paramInt);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bdlr(this, paramOnClickListener, paramInt, paramBoolean));
-    return this;
-  }
-  
-  public bdlq a(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-    return this;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new MyAppDialog.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable(paramDrawable);
-  }
-  
-  public bdlq b(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.d.setVisibility(8);
-      return this;
-    }
-    this.d.setText(paramInt1);
-    this.d.setTextColor(paramInt2);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bdlu(this, paramOnClickListener, paramInt1, paramBoolean));
-    return this;
-  }
-  
-  public bdlq b(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.d.setVisibility(8);
-      return this;
-    }
-    this.d.setText(paramInt);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bdlt(this, paramOnClickListener, paramInt, paramBoolean));
-    return this;
-  }
-  
-  public bdlq b(String paramString)
-  {
-    if (paramString != null) {
-      this.b.setText(paramString);
-    }
-    return this;
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
+    bdii.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
+    if (paramString2 == null) {
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365151));
-    this.b = ((TextView)findViewById(2131365147));
-    this.c = ((TextView)findViewById(2131365136));
-    this.c.getPaint().setFakeBoldText(true);
-    this.d = ((TextView)findViewById(2131365142));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371995));
-    this.e = ((TextView)findViewById(2131372021));
+    Bundle localBundle = (Bundle)bdlo.a(this.a).get(paramString2);
+    if (localBundle == null)
+    {
+      bdii.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
+      return;
+    }
+    int i = localBundle.getInt("CallbackId");
+    paramString2 = new Bundle();
+    paramString2.putString("PackageName", localBundle.getString("PackageName"));
+    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
+    if (paramBoolean)
+    {
+      paramString2.putBoolean("IsSuccess", true);
+      paramString2.putString("Code", paramString1);
+    }
+    for (;;)
+    {
+      bdii.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
+      bdlo.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
+      return;
+      paramString2.putBoolean("IsSuccess", false);
+    }
   }
 }
 

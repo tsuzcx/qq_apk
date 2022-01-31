@@ -1,22 +1,22 @@
 import android.os.AsyncTask;
 
 final class eq
-  implements aptu
+  implements aptw
 {
-  eq(AsyncTask paramAsyncTask, int paramInt, aptu paramaptu) {}
+  eq(AsyncTask paramAsyncTask, int paramInt, aptw paramaptw) {}
   
   public void a()
   {
     this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_Aptu != null) {
-      this.jdField_a_of_type_Aptu.a();
+    if (this.jdField_a_of_type_Aptw != null) {
+      this.jdField_a_of_type_Aptw.a();
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Aptu != null) {
-      this.jdField_a_of_type_Aptu.b();
+    if (this.jdField_a_of_type_Aptw != null) {
+      this.jdField_a_of_type_Aptw.b();
     }
   }
 }

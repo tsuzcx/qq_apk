@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import ohe;
-import oju;
+import ohb;
+import ojr;
 
 public class ReadInJoyCommentPBModule$1
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$1(oju paramoju) {}
+  public ReadInJoyCommentPBModule$1(ojr paramojr) {}
   
   public void run()
   {
-    oju.a(this.this$0).a(1001);
+    ojr.a(this.this$0).a(1001);
   }
 }
 

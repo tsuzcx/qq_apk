@@ -1,4 +1,7 @@
-public class bkre {}
+public abstract interface bkre
+{
+  public abstract void a(boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

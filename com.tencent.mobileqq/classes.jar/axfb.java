@@ -1,11 +1,14 @@
-public abstract class axfb
-  implements axez
+import java.util.ArrayList;
+
+public abstract interface axfb
 {
-  public void a(int paramInt) {}
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt, axes paramaxes) {}
+  public abstract void a(int paramInt, axeu paramaxeu);
   
-  public void b(int paramInt, axes paramaxes) {}
+  public abstract void a(int paramInt, ArrayList<axeu> paramArrayList);
+  
+  public abstract void b(int paramInt, axeu paramaxeu);
 }
 
 

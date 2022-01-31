@@ -1,6 +1,8 @@
 public abstract interface aycf
 {
-  public abstract void a(ayck paramayck);
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

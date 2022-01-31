@@ -1,7 +1,7 @@
 package com.tencent.kingkong;
 
-import zyz;
-import zzb;
+import zyw;
+import zyy;
 
 final class Common$1
   implements Runnable
@@ -9,7 +9,7 @@ final class Common$1
   public void run()
   {
     ReportUtil.a(2088, 0, 0, "");
-    zyz.a("KingKongCommon", "QQ Login " + zzb.o());
+    zyw.a("KingKongCommon", "QQ Login " + zyy.o());
   }
 }
 

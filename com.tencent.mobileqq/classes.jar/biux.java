@@ -1,14 +1,22 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.app.Dialog;
+import android.app.FragmentManager;
 
 class biux
-  implements FilenameFilter
+  implements biwa
 {
-  biux(biuw parambiuw) {}
+  biux(biur parambiur, String paramString) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a()
   {
-    return paramString.startsWith("frame");
+    biur.a(this.jdField_a_of_type_Biur).dismiss();
+    this.jdField_a_of_type_Biur.getFragmentManager().popBackStack();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Biur.a.a(this.jdField_a_of_type_JavaLangString, paramString);
+    biur.a(this.jdField_a_of_type_Biur).dismiss();
+    this.jdField_a_of_type_Biur.getFragmentManager().popBackStack();
   }
 }
 

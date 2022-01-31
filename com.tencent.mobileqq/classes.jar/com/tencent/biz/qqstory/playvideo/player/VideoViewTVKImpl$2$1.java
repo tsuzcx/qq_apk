@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import udd;
-import uei;
+import uda;
+import uef;
 
 public class VideoViewTVKImpl$2$1
   implements Runnable
 {
-  public VideoViewTVKImpl$2$1(uei paramuei, udd paramudd) {}
+  public VideoViewTVKImpl$2$1(uef paramuef, uda paramuda) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Udd.a(this.jdField_a_of_type_Uei.a);
+    this.jdField_a_of_type_Uda.a(this.jdField_a_of_type_Uef.a);
   }
 }
 

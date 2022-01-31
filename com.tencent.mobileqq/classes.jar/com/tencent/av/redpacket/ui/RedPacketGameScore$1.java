@@ -1,11 +1,11 @@
 package com.tencent.av.redpacket.ui;
 
-import lvq;
+import lvl;
 
 public class RedPacketGameScore$1
   implements Runnable
 {
-  public RedPacketGameScore$1(lvq paramlvq) {}
+  public RedPacketGameScore$1(lvl paramlvl) {}
   
   public void run()
   {

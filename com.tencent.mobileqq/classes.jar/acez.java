@@ -1,50 +1,55 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class acez
-  extends Handler
+  extends bbwt
 {
-  public acez(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
+  public acez(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    super(paramLooper);
+    super(paramString1, paramString2);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel(bbwu parambbwu)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 100: 
-    case 16: 
-    case 18: 
-    case 19: 
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(bckk.a());
-          return;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Ho.a(this.a.e));
-          return;
-        } while (!(paramMessage.obj instanceof Drawable));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
-        return;
-      } while (!(paramMessage.obj instanceof Bitmap));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwu);
     }
-    this.a.a();
+    super.onCancel(parambbwu);
+  }
+  
+  public void onDone(bbwu parambbwu)
+  {
+    super.onDone(parambbwu);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwu);
+    }
+    if (parambbwu.b()) {}
+    do
+    {
+      return;
+      if (parambbwu.a() == -1)
+      {
+        parambbwu = new Message();
+        parambbwu.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambbwu);
+        return;
+      }
+      parambbwu = this.a.jdField_a_of_type_Ho.a(this.a.e);
+    } while (parambbwu == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambbwu;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bbwu parambbwu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwu);
+    }
+    return super.onStart(parambbwu);
   }
 }
 

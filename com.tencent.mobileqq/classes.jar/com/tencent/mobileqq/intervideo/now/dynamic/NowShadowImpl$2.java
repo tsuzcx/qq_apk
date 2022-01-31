@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
-import ajyc;
-import arjf;
-import bcpw;
+import ajya;
+import arjh;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class NowShadowImpl$2
   implements Runnable
 {
-  public NowShadowImpl$2(arjf paramarjf) {}
+  public NowShadowImpl$2(arjh paramarjh) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131707672), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131707683), 0).a();
   }
 }
 

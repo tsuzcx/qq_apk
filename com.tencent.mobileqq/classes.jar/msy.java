@@ -1,102 +1,161 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.av.utils.QQFrameByFrameAnimation.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class msy
 {
-  public int a;
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView = null;
-  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
-  public msx a;
-  public int[] a;
-  public int b = 0;
-  public int c = 0;
-  public int d = 0;
+  protected static aysb a;
   
-  public msy()
+  static
   {
-    this.jdField_a_of_type_Msx = null;
-    this.jdField_a_of_type_Int = 300;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    jdField_a_of_type_Aysb = new mta();
   }
   
-  public void a()
+  public static long a(String paramString)
   {
-    this.c += 1;
-    int i;
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    long[] arrayOfLong = new long[4];
+    paramString = paramString.split("\\.");
+    int k = paramString.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
     {
-      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
-      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
-        break label67;
-      }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+      arrayOfLong[j] = Long.parseLong(paramString[i]);
+      j += 1;
+      i += 1;
     }
-    label67:
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
+    return (arrayOfLong[0] << 24) + (arrayOfLong[1] << 16) + (arrayOfLong[2] << 8) + arrayOfLong[3];
+  }
+  
+  public static String a()
+  {
+    String str = EffectConfigBase.a(270, EffectConfigBase.c).getString("scoreInfos", null);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreManager", 2, "getScoreInfos:" + str);
+    }
+    return str;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    b(paramQQAppInterface, paramString1, paramString2);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString == null) {
+      lcg.c("ScoreManager", "saveAVChatInfosForScore error ");
+    }
+    do
+    {
       return;
+      if (lct.a(270) != 0) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ScoreManager", 1, "saveAVChatInfosForScore, 没有配置, infos[" + paramString + "]");
+    return;
+    SharedPreferences.Editor localEditor = EffectConfigBase.a(270, EffectConfigBase.c).edit();
+    localEditor.putString("scoreInfos", paramString);
+    localEditor.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, mtb parammtb)
+  {
+    paramQQAppInterface = paramQQAppInterface.getNetEngine(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreManager", 2, "requestToDownload");
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
-    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+    if (parammtb == null) {
+      return false;
+    }
+    msz localmsz = new msz(parammtb);
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_Aysc = localmsz;
+    localayrx.jdField_a_of_type_JavaLangString = parammtb.jdField_a_of_type_JavaLangString;
+    localayrx.jdField_a_of_type_Int = 0;
+    localayrx.c = parammtb.c;
+    localayrx.e = 1;
+    localayrx.jdField_a_of_type_Aysb = jdField_a_of_type_Aysb;
+    paramQQAppInterface.a(localayrx);
+    parammtb.jdField_a_of_type_Ayrx = localayrx;
+    if (QLog.isColorLevel()) {
+      QLog.i("ScoreManager", 1, "submitDownloadTask. url = " + parammtb.jdField_a_of_type_JavaLangString);
+    }
+    return true;
   }
   
-  public void a(int paramInt)
+  static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(msx parammsx)
-  {
-    this.jdField_a_of_type_Msx = parammsx;
-  }
-  
-  public void a(int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    if (!TextUtils.isEmpty(paramString1))
     {
-      this.c = 0;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
-      }
-      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
-      {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
-        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Msx != null) {
-        this.jdField_a_of_type_Msx.d();
-      }
+      lcg.c("ScoreManager", "parse config: " + paramString1 + ", curUin : " + paramString2);
+      paramString2 = bbkb.e(paramString2);
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_Msx != null) {
-      this.jdField_a_of_type_Msx.a();
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new JSONObject(paramString1);
+        int i;
+        if (((JSONObject)localObject).has("scoreSwitch"))
+        {
+          i = ((JSONObject)localObject).getInt("scoreSwitch");
+          paramString2.edit().putInt("qav_score_switch", i).commit();
+        }
+        if (((JSONObject)localObject).has("scoreTime"))
+        {
+          i = ((JSONObject)localObject).getInt("scoreTime");
+          paramString2.edit().putInt("qav_score_time", i).commit();
+        }
+        if (((JSONObject)localObject).has("scoreRate"))
+        {
+          i = ((JSONObject)localObject).getInt("scoreRate");
+          paramString2.edit().putInt("qav_score_rate", i).commit();
+        }
+        if (!((JSONObject)localObject).has("scoreIconUrl")) {
+          break label393;
+        }
+        paramString1 = ((JSONObject)localObject).getString("scoreIconUrl");
+        paramString2 = "";
+        if (((JSONObject)localObject).has("scoreIconMd5")) {
+          paramString2 = ((JSONObject)localObject).getString("scoreIconMd5");
+        }
+        if ((paramString1 != null) && (!paramString1.isEmpty()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("ScoreManager", 2, "parse|down load icons!");
+          }
+          localObject = new mtb();
+          ((mtb)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((mtb)localObject).c = (mrs.b() + ((mtb)localObject).jdField_a_of_type_JavaLangString.substring(((mtb)localObject).jdField_a_of_type_JavaLangString.lastIndexOf(".")));
+          ((mtb)localObject).b = paramString2;
+          a(paramQQAppInterface, (mtb)localObject);
+        }
+        return;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        lcg.c("ScoreManager", "parse exception: " + paramQQAppInterface.toString());
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("ScoreManager", 2, "parse exception: " + paramQQAppInterface.toString());
+        return;
+      }
+      lcg.c("ScoreManager", "parse|config is empty!");
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ScoreManager", 2, "parse|config is empty!");
+        return;
+        label393:
+        paramString1 = "";
+      }
     }
   }
 }

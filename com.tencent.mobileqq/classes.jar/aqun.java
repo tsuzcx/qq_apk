@@ -1,29 +1,12 @@
-import java.util.Observable;
-import java.util.Observer;
-
 public class aqun
-  implements Observer
 {
-  protected void a() {}
+  public int a;
+  public String a;
   
-  protected void b() {}
-  
-  protected void c() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public aqun(aqui paramaqui, int paramInt, String paramString)
   {
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-      b();
-      return;
-    }
-    c();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

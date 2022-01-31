@@ -1,26 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.util.Pair;
-
-public class bdtd
-  extends Handler
+public abstract class bdtd
 {
-  public bdtd(bdtc parambdtc, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  long a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (Pair)paramMessage.obj;
-    bdtc.a(this.a, bdtc.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

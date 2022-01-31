@@ -1,15 +1,8 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.view.View;
 
 public abstract interface tbf
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(MessageMicro paramMessageMicro);
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public abstract void b(View paramView, int paramInt);
 }
 
 

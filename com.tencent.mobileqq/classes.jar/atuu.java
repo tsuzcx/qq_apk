@@ -1,65 +1,38 @@
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class atuu
-  implements bfoq
+  implements View.OnClickListener
 {
-  atuu(atur paramatur, atuy paramatuy, atwv paramatwv, bfol parambfol) {}
+  atuu(atut paramatut, Context paramContext, atwx paramatwx, atva paramatva) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    String str1 = this.jdField_a_of_type_Atwx.h;
+    String str2 = this.jdField_a_of_type_Atwx.i;
+    Object localObject = this.jdField_a_of_type_Atwx.k;
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-    default: 
-      return;
-    }
-    ativ localativ = new ativ().h("data_card").i("feed_inform").d("2").a(this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuy)).b(this.jdField_a_of_type_Atwv.c).c(String.valueOf(this.jdField_a_of_type_Atur.a(this.jdField_a_of_type_Atuy)));
-    if (this.jdField_a_of_type_Atur.jdField_a_of_type_Boolean)
-    {
-      paramView = "1";
-      localativ.e(paramView).b(this.jdField_a_of_type_Atur.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_Atwv.e)) || (!(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))) {
-        break label341;
+      paramView = this.jdField_a_of_type_Atwx.j;
+      localIntent.putExtra("url", String.format("http://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str2, str1, paramView, localObject }));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      localObject = new axrc(this.jdField_a_of_type_Atut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(this.jdField_a_of_type_Atva.jdField_a_of_type_Atwx.e));
+      if (!this.jdField_a_of_type_Atut.jdField_a_of_type_Boolean) {
+        break label210;
       }
-      paramView = new bazp();
-      if (!(this.jdField_a_of_type_Atwv instanceof atws)) {
-        break label231;
-      }
-      paramView.b(((atws)this.jdField_a_of_type_Atwv).b);
-      label172:
-      paramView.a(this.jdField_a_of_type_Atwv.n);
-      paramView = paramView.a();
-      bazo.a((BaseActivity)this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext, 0L, this.jdField_a_of_type_Atwv.e, null, 20006, "", paramView);
     }
-    for (;;)
+    label210:
+    for (paramView = "1";; paramView = "2")
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      ((axrc)localObject).a(new String[] { paramView, "", "", this.jdField_a_of_type_Atva.jdField_a_of_type_Atwx.c }).a();
       return;
-      paramView = "2";
+      paramView = (View)localObject;
       break;
-      label231:
-      if ((this.jdField_a_of_type_Atwv instanceof atwu))
-      {
-        paramView.d(((atwu)this.jdField_a_of_type_Atwv).b).b(((atwu)this.jdField_a_of_type_Atwv).a);
-        break label172;
-      }
-      if ((this.jdField_a_of_type_Atwv instanceof atww))
-      {
-        paramView.b(((atww)this.jdField_a_of_type_Atwv).a);
-        break label172;
-      }
-      if ((this.jdField_a_of_type_Atwv instanceof atwy))
-      {
-        paramView.b(((atwy)this.jdField_a_of_type_Atwv).a);
-        break label172;
-      }
-      if (!(this.jdField_a_of_type_Atwv instanceof atwz)) {
-        break label172;
-      }
-      break label172;
-      label341:
-      bcpw.a(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext, 2, ajyc.a(2131701024), 0).a();
     }
   }
 }

@@ -1,23 +1,25 @@
-import android.support.annotation.Nullable;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class biox
-  implements bjob<Boolean>
+public class biox
+  implements Animator.AnimatorListener
 {
-  biox(bior parambior) {}
+  public biox(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bior localbior = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bior.a(localbior, bool);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel closed");
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

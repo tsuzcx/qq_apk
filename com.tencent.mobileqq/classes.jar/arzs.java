@@ -1,8 +1,15 @@
-public abstract class arzs
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class arzs
+  implements View.OnClickListener
 {
-  public abstract void a();
+  arzs(arzn paramarzn, arzc paramarzc) {}
   
-  public abstract void a(aruk paramaruk);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Arzc.b();
+  }
 }
 
 

@@ -1,19 +1,23 @@
 public class sqx
+  extends sqv
 {
-  public static int a(int paramInt)
+  public int d = -1;
+  public int e = -1;
+  
+  public sqx() {}
+  
+  public sqx(spi paramspi)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 5: 
-    case 6: 
-    default: 
-      return 6;
-    case 4: 
-      return 10;
-    }
-    return 10;
+    super(paramspi);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("TreeGatherConfig =[");
+    localStringBuilder.append(" mStartGatherLevel=").append(this.d);
+    localStringBuilder.append(" mEndGatherLevel=").append(this.e);
+    localStringBuilder.append("] ");
+    return localStringBuilder.toString() + super.toString();
   }
 }
 

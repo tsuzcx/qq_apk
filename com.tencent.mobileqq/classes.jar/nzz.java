@@ -1,63 +1,61 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class nzz
-  implements bfsq
+public class nzz
 {
-  nzz(nzy paramnzy, int paramInt, VideoInfo paramVideoInfo) {}
-  
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    int i = 0;
-    if (paramInt == this.jdField_a_of_type_Int)
+    try
     {
-      bcpw.a(nzy.a(this.jdField_a_of_type_Nzy), 0, 2131695526, 0).a();
-      nzy.a(this.jdField_a_of_type_Nzy).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label349;
+      if (paramAdData.a == null) {
+        return paramJSONObject;
       }
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_game_cell");
+      if (!TextUtils.isEmpty(paramAdData.J)) {
+        paramJSONObject.put("id_game_small_img", new JSONObject());
+      }
+      if (!TextUtils.isEmpty(paramAdData.q))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.k))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.k);
+        paramJSONObject.put("id_tv_title", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.l))
+      {
+        localObject = sfa.a(paramAdData.l, 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("image_url", ((URL)localObject).toString());
+        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
+      }
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject);
+      }
+      paramJSONObject.put("id_game_operate_area", new JSONObject());
+      paramJSONObject.put("id_separator", new JSONObject());
+      paramJSONObject.put("id_ad_title", new JSONObject());
+      paramJSONObject.put("id_ad_title_rl", new JSONObject());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("innerGameModel", paramAdData);
+      paramJSONObject.put("id_view_AdDownloadView", localObject);
+      return paramJSONObject;
     }
-    label346:
-    label349:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    catch (JSONException paramAdData)
     {
-      paramView = "";
-      paramInt = i;
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label346;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
-          paramArrayList = nmf.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(nzy.a(this.jdField_a_of_type_Nzy))) {
-            nmf.a(new nyg().a(nzy.a(this.jdField_a_of_type_Nzy)).a(nmf.c).b(nmf.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-          }
-        }
-        else
-        {
-          return;
-        }
-        nmf.a(new nyg().a(nzy.a(this.jdField_a_of_type_Nzy)).a(nmf.c).b(nmf.N).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-        return;
-      }
+      paramAdData.printStackTrace();
     }
+    return paramJSONObject;
   }
 }
 

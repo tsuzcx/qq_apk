@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
 public class ovo
-  implements ruo
+  extends AnimatorListenerAdapter
 {
-  public ovo(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
+  public ovo(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoySelectPositionFragment.a(this.a, paramString);
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
   }
 }
 

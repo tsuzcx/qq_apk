@@ -22,30 +22,30 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ListAdapter;
-import bbkx;
-import bfob;
-import bfpc;
+import bbll;
+import bfos;
+import bfpt;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import rrq;
+import rrr;
+import rrs;
 import rrt;
 import rru;
 import rrv;
-import rrw;
 import rrx;
 import rry;
-import rsa;
+import rrz;
 import rsb;
-import rsc;
+import rsd;
 import rse;
+import rsf;
 import rsg;
 import rsh;
 import rsi;
-import rsj;
-import rsk;
-import rsl;
 
 public class ReadInJoyDynamicGridView
   extends GridView
@@ -55,18 +55,18 @@ public class ReadInJoyDynamicGridView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
   private View jdField_a_of_type_AndroidViewView;
-  private bfob jdField_a_of_type_Bfob;
-  private bfpc jdField_a_of_type_Bfpc;
+  private bfos jdField_a_of_type_Bfos;
+  private bfpt jdField_a_of_type_Bfpt;
   private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private rsd jdField_a_of_type_Rsd;
+  private rse jdField_a_of_type_Rse;
+  private rsf jdField_a_of_type_Rsf;
   private rsg jdField_a_of_type_Rsg;
-  private rsh jdField_a_of_type_Rsh;
-  private rsi jdField_a_of_type_Rsi;
-  private rsj jdField_a_of_type_Rsj;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private bfob jdField_b_of_type_Bfob = new rry(this);
-  private bfpc jdField_b_of_type_Bfpc = new rrt(this);
+  private bfos jdField_b_of_type_Bfos = new rrv(this);
+  private bfpt jdField_b_of_type_Bfpt = new rrq(this);
   private boolean jdField_b_of_type_Boolean;
   private int c = -1;
   private int jdField_d_of_type_Int = -1;
@@ -180,15 +180,15 @@ public class ReadInJoyDynamicGridView
     return paramView;
   }
   
-  private rsb a()
+  private rry a()
   {
-    return (rsb)a();
+    return (rry)a();
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Rsg != null) {
-      this.jdField_a_of_type_Rsg.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Rsd != null) {
+      this.jdField_a_of_type_Rsd.a(paramInt1, paramInt2);
     }
     a().b(paramInt1, paramInt2);
   }
@@ -210,10 +210,10 @@ public class ReadInJoyDynamicGridView
   @TargetApi(11)
   private void a(View paramView)
   {
-    Object localObject = new rru(this);
+    Object localObject = new rrr(this);
     localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, "bounds", (TypeEvaluator)localObject, new Object[] { this.jdField_a_of_type_AndroidGraphicsRect });
-    ((ObjectAnimator)localObject).addUpdateListener(new rrv(this));
-    ((ObjectAnimator)localObject).addListener(new rrw(this, paramView));
+    ((ObjectAnimator)localObject).addUpdateListener(new rrs(this));
+    ((ObjectAnimator)localObject).addListener(new rrt(this, paramView));
     ((ObjectAnimator)localObject).start();
   }
   
@@ -245,20 +245,20 @@ public class ReadInJoyDynamicGridView
     if (localView != null)
     {
       this.jdField_a_of_type_Long = a().getItemId(paramInt);
-      if (this.jdField_a_of_type_Rsj != null) {
-        this.jdField_a_of_type_Rsj.a(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Rsg != null) {
+        this.jdField_a_of_type_Rsg.a(localView, paramInt, this.jdField_a_of_type_Long);
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = a(localView);
-      if (this.jdField_a_of_type_Rsj != null) {
-        this.jdField_a_of_type_Rsj.b(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Rsg != null) {
+        this.jdField_a_of_type_Rsg.b(localView, paramInt, this.jdField_a_of_type_Long);
       }
       if (c()) {
         localView.setVisibility(4);
       }
       this.jdField_a_of_type_Boolean = true;
       a(this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Rsg != null) {
-        this.jdField_a_of_type_Rsg.a(paramInt);
+      if (this.jdField_a_of_type_Rsd != null) {
+        this.jdField_a_of_type_Rsd.a(paramInt);
       }
     }
   }
@@ -319,7 +319,7 @@ public class ReadInJoyDynamicGridView
     ((AnimatorSet)localObject).playTogether(localLinkedList);
     ((AnimatorSet)localObject).setDuration(300L);
     ((AnimatorSet)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((AnimatorSet)localObject).addListener(new rrx(this));
+    ((AnimatorSet)localObject).addListener(new rru(this));
     ((AnimatorSet)localObject).start();
   }
   
@@ -468,7 +468,7 @@ public class ReadInJoyDynamicGridView
         i1 = getPositionForView(this.jdField_a_of_type_AndroidViewView);
         i2 = getPositionForView((View)localObject);
         localObject = a();
-        if ((i2 == -1) || (!((rsb)localObject).a(i1)) || (!((rsb)localObject).a(i2)) || (i2 < this.k)) {
+        if ((i2 == -1) || (!((rry)localObject).a(i1)) || (!((rry)localObject).a(i2)) || (i2 < this.k)) {
           a(this.jdField_a_of_type_Long);
         }
       }
@@ -480,17 +480,17 @@ public class ReadInJoyDynamicGridView
       this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
       this.c = this.jdField_f_of_type_Int;
       if ((c()) && (b())) {
-        localObject = new rsc(this, n, m);
+        localObject = new rrz(this, n, m);
       }
       for (;;)
       {
         a(this.jdField_a_of_type_Long);
-        ((rsl)localObject).a(i1, i2);
+        ((rsi)localObject).a(i1, i2);
         return;
         if (b()) {
-          localObject = new rsk(this, n, m);
+          localObject = new rsh(this, n, m);
         } else {
-          localObject = new rse(this, n, m);
+          localObject = new rsb(this, n, m);
         }
       }
       label620:
@@ -544,8 +544,8 @@ public class ReadInJoyDynamicGridView
   {
     this.jdField_e_of_type_Boolean = false;
     requestDisallowInterceptTouchEvent(false);
-    if (this.jdField_a_of_type_Rsi != null) {
-      this.jdField_a_of_type_Rsi.a(false);
+    if (this.jdField_a_of_type_Rsf != null) {
+      this.jdField_a_of_type_Rsf.a(false);
     }
   }
   
@@ -560,48 +560,48 @@ public class ReadInJoyDynamicGridView
       if (paramInt != -1) {
         b(paramInt);
       }
-    } while (this.jdField_a_of_type_Rsi == null);
-    this.jdField_a_of_type_Rsi.a(true);
+    } while (this.jdField_a_of_type_Rsf == null);
+    this.jdField_a_of_type_Rsf.a(true);
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
     Object localObject;
     if ((c()) && (b())) {
-      localObject = new rsc(this, 0, 0);
+      localObject = new rrz(this, 0, 0);
     }
     for (;;)
     {
-      if ((a() instanceof rsa)) {
-        ((rsa)a()).a(0, paramObject);
+      if ((a() instanceof rrx)) {
+        ((rrx)a()).a(0, paramObject);
       }
-      ((rsl)localObject).a(paramInt1 + 1, paramInt2);
+      ((rsi)localObject).a(paramInt1 + 1, paramInt2);
       return;
       if (b()) {
-        localObject = new rsk(this, 0, 0);
+        localObject = new rsh(this, 0, 0);
       } else {
-        localObject = new rse(this, 0, 0);
+        localObject = new rsb(this, 0, 0);
       }
     }
   }
   
   public void a(Context paramContext)
   {
-    super.setOnScrollListener(this.jdField_b_of_type_Bfob);
+    super.setOnScrollListener(this.jdField_b_of_type_Bfos);
     paramContext = paramContext.getResources().getDisplayMetrics();
     this.jdField_i_of_type_Int = ((int)(8.0F * paramContext.density + 0.5F));
     this.jdField_g_of_type_Int = ((int)(paramContext.density * 16.0F + 0.5F));
     setNumColumns(4);
-    setHorizontalSpacing(bbkx.a(0.0F));
-    setVerticalSpacing(bbkx.a(0.0F));
+    setHorizontalSpacing(bbll.a(0.0F));
+    setVerticalSpacing(bbll.a(0.0F));
     setSelector(17170445);
     setClipChildren(false);
   }
   
   public void a(Object paramObject)
   {
-    if ((a() instanceof rsa)) {
-      ((rsa)a()).b(paramObject);
+    if ((a() instanceof rrx)) {
+      ((rrx)a()).b(paramObject);
     }
   }
   
@@ -617,17 +617,17 @@ public class ReadInJoyDynamicGridView
     }
     Object localObject;
     if ((c()) && (b())) {
-      localObject = new rsc(this, 0, 0);
+      localObject = new rrz(this, 0, 0);
     }
     for (;;)
     {
       a().b(paramInt1);
-      ((rsl)localObject).a(paramInt1, paramInt2);
+      ((rsi)localObject).a(paramInt1, paramInt2);
       return true;
       if (b()) {
-        localObject = new rsk(this, 0, 0);
+        localObject = new rsh(this, 0, 0);
       } else {
-        localObject = new rse(this, 0, 0);
+        localObject = new rsb(this, 0, 0);
       }
     }
   }
@@ -718,14 +718,14 @@ public class ReadInJoyDynamicGridView
             b();
             return false;
             c();
-            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Rsh != null))
+            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Rse != null))
             {
-              this.jdField_a_of_type_Rsh.a();
+              this.jdField_a_of_type_Rse.a();
               continue;
               e();
-              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Rsh != null))
+              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Rse != null))
               {
-                this.jdField_a_of_type_Rsh.a();
+                this.jdField_a_of_type_Rse.a();
                 continue;
                 if (paramMotionEvent.getPointerId((paramMotionEvent.getAction() & 0xFF00) >> 8) == this.jdField_h_of_type_Int) {
                   c();
@@ -758,35 +758,35 @@ public class ReadInJoyDynamicGridView
     this.k = paramInt;
   }
   
-  public void setOnDragListener(rsg paramrsg)
+  public void setOnDragListener(rsd paramrsd)
+  {
+    this.jdField_a_of_type_Rsd = paramrsd;
+  }
+  
+  public void setOnDropListener(rse paramrse)
+  {
+    this.jdField_a_of_type_Rse = paramrse;
+  }
+  
+  public void setOnEditModeChangeListener(rsf paramrsf)
+  {
+    this.jdField_a_of_type_Rsf = paramrsf;
+  }
+  
+  public void setOnItemClickListener(bfpt parambfpt)
+  {
+    this.jdField_a_of_type_Bfpt = parambfpt;
+    super.setOnItemClickListener(this.jdField_b_of_type_Bfpt);
+  }
+  
+  public void setOnScrollListener(bfos parambfos)
+  {
+    this.jdField_a_of_type_Bfos = parambfos;
+  }
+  
+  public void setOnSelectedItemBitmapCreationListener(rsg paramrsg)
   {
     this.jdField_a_of_type_Rsg = paramrsg;
-  }
-  
-  public void setOnDropListener(rsh paramrsh)
-  {
-    this.jdField_a_of_type_Rsh = paramrsh;
-  }
-  
-  public void setOnEditModeChangeListener(rsi paramrsi)
-  {
-    this.jdField_a_of_type_Rsi = paramrsi;
-  }
-  
-  public void setOnItemClickListener(bfpc parambfpc)
-  {
-    this.jdField_a_of_type_Bfpc = parambfpc;
-    super.setOnItemClickListener(this.jdField_b_of_type_Bfpc);
-  }
-  
-  public void setOnScrollListener(bfob parambfob)
-  {
-    this.jdField_a_of_type_Bfob = parambfob;
-  }
-  
-  public void setOnSelectedItemBitmapCreationListener(rsj paramrsj)
-  {
-    this.jdField_a_of_type_Rsj = paramrsj;
   }
 }
 

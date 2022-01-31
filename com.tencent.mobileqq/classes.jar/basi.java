@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-
-public class basi
-  implements aycb
+class basi
+  implements aybj
 {
-  public basi(TroopInteractGiftAnimationController.1.1 param1) {}
+  basi(bash parambash) {}
   
   public void a()
   {
-    this.a.a.this$0.a();
-    if (this.a.a.jdField_a_of_type_Aycb != null) {
-      this.a.a.jdField_a_of_type_Aycb.a();
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    this.a.a.this$0.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.this$0.a, true);
   }
 }
 

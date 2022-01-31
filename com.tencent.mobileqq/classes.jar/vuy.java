@@ -1,50 +1,40 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
-class vuy
-  implements avzk
+public class vuy
+  extends syr<tnd, toq>
 {
-  vuy(vux paramvux, vuq paramvuq) {}
+  vuy(vux paramvux) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void a(@NonNull tnd paramtnd, @Nullable toq paramtoq, @NonNull ErrorMessage paramErrorMessage)
   {
-    synchronized (vux.a(this.jdField_a_of_type_Vux))
+    ved.b("EditVideoTagPresenter", "refresh onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtoq != null))
     {
-      this.jdField_a_of_type_Vuq.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
+      ved.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramtoq.toString());
+      paramtnd = paramtoq.jdField_a_of_type_JavaUtilList;
+      if (paramtnd.contains(vux.a(this.a)))
+      {
+        int i = paramtnd.indexOf(vux.a(this.a));
+        vux.a(this.a, (vvd)paramtnd.get(i));
+        vux.a(this.a).clear();
+        vux.a(this.a).addAll(paramtnd);
+        vux.a(this.a, paramtoq.jdField_a_of_type_JavaLangString);
+        vux.a(this.a, paramtoq.b);
+        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
       }
-      vux.a(this.jdField_a_of_type_Vux).notifyAll();
-      return;
     }
-  }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    synchronized (vux.a(this.jdField_a_of_type_Vux))
+    for (;;)
     {
-      this.jdField_a_of_type_Vuq.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      vux.a(this.jdField_a_of_type_Vux).notifyAll();
+      vux.a(this.a).a(paramErrorMessage.errorCode, vux.a(this.a), this.a.a());
       return;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Vuq != null) && (!this.jdField_a_of_type_Vuq.d) && (!this.jdField_a_of_type_Vuq.b))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Vuq.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Vuq + "  mCanceled : " + this.jdField_a_of_type_Vuq.b);
-      }
-      this.jdField_a_of_type_Vux.b(this.jdField_a_of_type_Vuq);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Vuq.b);
-      }
+      vux.a(this.a, null);
+      break;
+      ved.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

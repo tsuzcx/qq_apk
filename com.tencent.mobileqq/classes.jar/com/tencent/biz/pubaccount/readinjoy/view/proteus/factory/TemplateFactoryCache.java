@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.factory;
 
 import android.content.Context;
-import bhvh;
+import bhvy;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,16 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import rpr;
 import rpu;
-import rpx;
-import rpy;
-import rpz;
-import rqm;
+import rpv;
+import rpw;
+import rqj;
 
 public class TemplateFactoryCache
-  extends QQHashMap<String, rpz>
+  extends QQHashMap<String, rpw>
 {
-  private volatile rpx mStyleConfigHelper = new rpx();
+  private volatile rpu mStyleConfigHelper = new rpu();
   
   public TemplateFactoryCache()
   {
@@ -42,16 +42,16 @@ public class TemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bhvh.o()) {
+    if (!bhvy.o()) {
       clear();
     }
   }
   
-  public rpz get(String paramString)
+  public rpw get(String paramString)
   {
     try
     {
-      paramString = (rpz)super.get(paramString);
+      paramString = (rpw)super.get(paramString);
       return paramString;
     }
     finally
@@ -61,16 +61,16 @@ public class TemplateFactoryCache
     }
   }
   
-  public rpu getAutoCreate(Context paramContext, String paramString)
+  public rpr getAutoCreate(Context paramContext, String paramString)
   {
-    rpz localrpz = get(paramString);
-    if ((localrpz != null) && (localrpz.a != null))
+    rpw localrpw = get(paramString);
+    if ((localrpw != null) && (localrpw.a != null))
     {
-      paramContext = rqm.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
-      if ((paramContext != null) && (localrpz.a.a().equals(paramContext.a())) && (localrpz.a.getTemplateId() != paramContext.getTemplateId())) {
+      paramContext = rqj.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
+      if ((paramContext != null) && (localrpw.a.a().equals(paramContext.a())) && (localrpw.a.getTemplateId() != paramContext.getTemplateId())) {
         return paramContext;
       }
-      return localrpz.a;
+      return localrpw.a;
     }
     paramContext = this.mStyleConfigHelper.a(paramContext, paramString);
     if ((paramContext != null) && (paramContext.a != null))
@@ -82,11 +82,11 @@ public class TemplateFactoryCache
     return null;
   }
   
-  public rpz put(String paramString, rpz paramrpz)
+  public rpw put(String paramString, rpw paramrpw)
   {
     try
     {
-      paramString = (rpz)super.put(paramString, paramrpz);
+      paramString = (rpw)super.put(paramString, paramrpw);
       return paramString;
     }
     finally
@@ -96,11 +96,11 @@ public class TemplateFactoryCache
     }
   }
   
-  public rpz remove(String paramString)
+  public rpw remove(String paramString)
   {
     try
     {
-      paramString = (rpz)super.remove(paramString);
+      paramString = (rpw)super.remove(paramString);
       return paramString;
     }
     finally
@@ -113,14 +113,14 @@ public class TemplateFactoryCache
   public void reset()
   {
     Object localObject1 = this.mStyleConfigHelper;
-    rpx localrpx = new rpx();
-    Object localObject2 = ((rpx)localObject1).a();
+    rpu localrpu = new rpu();
+    Object localObject2 = ((rpu)localObject1).a();
     localObject1 = new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!((rpy)localEntry.getValue()).equals(localrpx.a((String)localEntry.getKey()))) {
+      if (!((rpv)localEntry.getValue()).equals(localrpu.a((String)localEntry.getKey()))) {
         ((List)localObject1).add(localEntry.getKey());
       }
     }
@@ -128,8 +128,8 @@ public class TemplateFactoryCache
     while (((Iterator)localObject1).hasNext()) {
       remove((String)((Iterator)localObject1).next());
     }
-    QLog.d("TemplateFactory", 2, "reset: " + localrpx);
-    this.mStyleConfigHelper = localrpx;
+    QLog.d("TemplateFactory", 2, "reset: " + localrpu);
+    this.mStyleConfigHelper = localrpu;
   }
 }
 

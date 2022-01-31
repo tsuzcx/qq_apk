@@ -12,12 +12,12 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
-import lgf;
-import lnv;
-import lnw;
-import lnx;
+import lga;
+import lnq;
+import lnr;
+import lns;
 import mqq.app.BaseActivity;
-import muf;
+import muc;
 
 public abstract class BaseGaInvite
   extends BaseActivity
@@ -31,8 +31,8 @@ public abstract class BaseGaInvite
   BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
   public String a;
   Timer jdField_a_of_type_JavaUtilTimer = null;
-  lnw jdField_a_of_type_Lnw = new lnv(this);
-  lnx jdField_a_of_type_Lnx = new lnx(this);
+  lnr jdField_a_of_type_Lnr = new lnq(this);
+  lns jdField_a_of_type_Lns = new lns(this);
   public long[] a;
   public int b;
   public long b;
@@ -68,9 +68,9 @@ public abstract class BaseGaInvite
     if (paramTextView != null)
     {
       float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297234);
-      str = muf.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
+      str = muc.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
     }
-    paramTextView = paramVideoAppInterface.getApp().getString(2131695819);
+    paramTextView = paramVideoAppInterface.getApp().getString(2131695820);
     int i = paramVideoAppInterface.a(paramInt, paramString2);
     paramInt = i;
     if (i == 0) {
@@ -93,10 +93,10 @@ public abstract class BaseGaInvite
       this.jdField_a_of_type_JavaUtilTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (this.jdField_a_of_type_Lnx != null)
+    if (this.jdField_a_of_type_Lns != null)
     {
-      this.jdField_a_of_type_Lnx.removeMessages(0);
-      this.jdField_a_of_type_Lnx = null;
+      this.jdField_a_of_type_Lns.removeMessages(0);
+      this.jdField_a_of_type_Lns = null;
     }
   }
   
@@ -123,7 +123,7 @@ public abstract class BaseGaInvite
       this.jdField_b_of_type_Long = paramIntent.getLongExtra("friendUin", 0L);
       this.jdField_b_of_type_Int = paramIntent.getIntExtra("relationType", this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ArrayOfLong = paramIntent.getLongArrayExtra("memberList");
-      i = muf.c(this.jdField_b_of_type_Int);
+      i = muc.c(this.jdField_b_of_type_Int);
     } while (i == this.jdField_a_of_type_Int);
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "processIntent, mUinType与mRelationType不匹配，mRelationType[" + this.jdField_b_of_type_Int + "], uinTpye[" + i + "], mUinType[" + this.jdField_a_of_type_Int + "]");
   }
@@ -145,7 +145,7 @@ public abstract class BaseGaInvite
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lnw);
+      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lnr);
       this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable.a(paramString);
       return;
       label121:

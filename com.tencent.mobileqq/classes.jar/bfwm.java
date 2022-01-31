@@ -1,44 +1,18 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.widget.WaveView;
+import java.util.Formatter;
 
-public class bfwm
-  implements Handler.Callback
+public final class bfwm
+  implements bfwn
 {
-  public bfwm(WaveView paramWaveView) {}
+  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
+  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
   
-  public boolean handleMessage(Message paramMessage)
+  public String a(int paramInt)
   {
-    if (paramMessage == null) {
-      return false;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).removeMessages(1002);
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      WaveView.a(this.a).removeMessages(1001);
-      WaveView.a(this.a).removeMessages(1002);
-    }
+    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
+    return this.jdField_a_of_type_JavaUtilFormatter.toString();
   }
 }
 

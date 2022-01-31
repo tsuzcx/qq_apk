@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
-import yxs;
+import yxp;
 
 public class GdtVideoCeilingScrollVIew
   extends ScrollView
@@ -26,25 +26,25 @@ public class GdtVideoCeilingScrollVIew
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    yxs.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
+    yxp.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    yxs.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
+    yxp.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
     return false;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    yxs.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
+    yxp.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    yxs.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
+    yxp.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
     return false;
   }
 }

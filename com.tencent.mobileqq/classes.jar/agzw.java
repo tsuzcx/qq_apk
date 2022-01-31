@@ -1,14 +1,21 @@
-import android.widget.Button;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class agzw
-  extends ahac
+  implements agwn
 {
   public agzw(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
   }
 }
 

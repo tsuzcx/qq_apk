@@ -1,9 +1,9 @@
 package com.tencent.open.appcommon.now.download.local;
 
-import bdfv;
-import bdge;
-import bdgf;
 import bdgk;
+import bdgt;
+import bdgu;
+import bdgz;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,38 +12,38 @@ import java.util.Map;
 public class DownloadCallbackNativeImpl$1
   implements Runnable
 {
-  public DownloadCallbackNativeImpl$1(bdge parambdge, int paramInt) {}
+  public DownloadCallbackNativeImpl$1(bdgt parambdgt, int paramInt) {}
   
   public void run()
   {
     Iterator localIterator;
     if ((this.a == 4) || (this.a == 3) || (this.a == 2)) {
-      localIterator = bdge.a(this.this$0).values().iterator();
+      localIterator = bdgt.a(this.this$0).values().iterator();
     }
     while (localIterator.hasNext())
     {
-      bdgk localbdgk = (bdgk)localIterator.next();
-      DownloadInfo localDownloadInfo = bdfv.a().a(localbdgk.a);
+      bdgz localbdgz = (bdgz)localIterator.next();
+      DownloadInfo localDownloadInfo = bdgk.a().a(localbdgz.a);
       if (localDownloadInfo != null) {
         if (localDownloadInfo.a() == 2)
         {
-          if (localbdgk.b) {
-            bdgf.a().a(localbdgk.a);
+          if (localbdgz.b) {
+            bdgu.a().a(localbdgz.a);
           }
         }
-        else if ((localDownloadInfo.a() == 3) && (!localbdgk.b) && (!localbdgk.c))
+        else if ((localDownloadInfo.a() == 3) && (!localbdgz.b) && (!localbdgz.c))
         {
-          bdgf.a().a(null, localbdgk);
+          bdgu.a().a(null, localbdgz);
           continue;
           if (this.a == 1)
           {
-            localIterator = bdge.a(this.this$0).values().iterator();
+            localIterator = bdgt.a(this.this$0).values().iterator();
             while (localIterator.hasNext())
             {
-              localbdgk = (bdgk)localIterator.next();
-              localDownloadInfo = bdfv.a().a(localbdgk.a);
-              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbdgk.c)) {
-                bdgf.a().a(null, localbdgk);
+              localbdgz = (bdgz)localIterator.next();
+              localDownloadInfo = bdgk.a().a(localbdgz.a);
+              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbdgz.c)) {
+                bdgu.a().a(null, localbdgz);
               }
             }
           }

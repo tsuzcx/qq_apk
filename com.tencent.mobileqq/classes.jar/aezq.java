@@ -1,14 +1,11 @@
-import android.os.MessageQueue.IdleHandler;
-
 class aezq
-  implements MessageQueue.IdleHandler
+  implements bfso
 {
-  aezq(aezn paramaezn) {}
+  aezq(aezl paramaezl) {}
   
-  public boolean queueIdle()
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.b();
-    return false;
+    if (paramInt == 4097) {}
   }
 }
 

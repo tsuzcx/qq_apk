@@ -1,37 +1,14 @@
-import android.content.ContentValues;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aksw
+  extends aksy
 {
-  public int a;
-  public akte a;
-  public ContentValues a;
-  public aukm a;
-  public String a;
-  public String[] a;
-  public int b;
-  public String b;
-  public String c;
-  
-  public aksw(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, akte paramakte)
+  public aksw(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidContentContentValues = paramContentValues;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Akte = paramakte;
-  }
-  
-  public aksw(String paramString1, int paramInt1, String paramString2, aukm paramaukm, int paramInt2, akte paramakte)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Aukm = paramaukm;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Akte = paramakte;
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(1);
   }
 }
 

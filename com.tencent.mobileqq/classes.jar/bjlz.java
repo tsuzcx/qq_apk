@@ -1,46 +1,23 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.TransitionProviderView;
 
 public class bjlz
-  implements wam
+  extends bjdv
 {
-  public bjlz(CropVideoActivity paramCropVideoActivity) {}
+  public bjlz(TransitionProviderView paramTransitionProviderView) {}
   
-  public void onFailure(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
-    }
-    this.a.a.sendEmptyMessage(4);
-  }
+  public void a(int paramInt) {}
   
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
-    }
-    this.a.a.sendEmptyMessage(3);
-  }
+  public void a(String paramString) {}
   
-  public void onProgress(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
-    }
-  }
+  public void a(String paramString, int paramInt) {}
   
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
-    }
-  }
+  public void a(String paramString, boolean paramBoolean) {}
   
-  public void onSuccess(String paramString)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
+      this.a.jdField_a_of_type_Bfob.sendEmptyMessage(1);
     }
   }
 }

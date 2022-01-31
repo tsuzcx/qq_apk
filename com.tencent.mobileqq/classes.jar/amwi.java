@@ -1,53 +1,67 @@
+import android.graphics.Color;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class amwi
 {
-  public amxb a;
+  public int a;
+  public ArrayList<aynk> a;
   public boolean a;
   
   public amwi()
   {
-    this.jdField_a_of_type_Amxb = new amxb();
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
   }
   
   public static amwi a(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      try
+    }
+    try
+    {
+      amwi localamwi = new amwi();
+      paramString = new JSONObject(paramString);
+      localamwi.jdField_a_of_type_Boolean = paramString.optBoolean("showEntrance", false);
+      localamwi.jdField_a_of_type_Int = paramString.optInt("bannerInterval", 10);
+      paramString = paramString.optJSONArray("array");
+      if (paramString != null)
       {
-        amwi localamwi = new amwi();
-        paramString = new JSONObject(paramString);
-        localamwi.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
-        paramString = paramString.optJSONObject("watchTogether");
-        if (paramString != null)
+        int i = 0;
+        while (i < paramString.length())
         {
-          amxb localamxb = new amxb();
-          localamxb.a(paramString.optInt("version"));
-          localamxb.b(paramString.optInt("jumpType"));
-          localamxb.a(paramString.optString("jumpUrl"));
-          localamxb.b(paramString.optString("jumpExtensionInfo"));
-          localamwi.jdField_a_of_type_Amxb = localamxb;
+          JSONObject localJSONObject = (JSONObject)paramString.get(i);
+          aynk localaynk = new aynk();
+          localaynk.jdField_b_of_type_Int = localJSONObject.optInt("id");
+          localaynk.jdField_c_of_type_Int = localJSONObject.optInt("order");
+          localaynk.a = localJSONObject.optString("title");
+          localaynk.jdField_b_of_type_JavaLangString = localJSONObject.optString("subTitle");
+          localaynk.d = Color.parseColor(localJSONObject.optString("bgColor"));
+          localaynk.jdField_c_of_type_JavaLangString = localJSONObject.optString("imageUrl");
+          localamwi.jdField_a_of_type_JavaUtilArrayList.add(localaynk);
+          i += 1;
         }
-        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localamwi.toString());
-        return localamwi;
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      Collections.sort(localamwi.jdField_a_of_type_JavaUtilArrayList, new amwj());
+      QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localamwi.toString());
+      return localamwi;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      }
+    }
     return null;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
-    if (this.jdField_a_of_type_Amxb == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_Amxb.toString()) {
-      return str + '}';
-    }
+    return 50;
   }
 }
 

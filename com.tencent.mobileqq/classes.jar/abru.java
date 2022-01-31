@@ -1,56 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class abru
-  extends akgf
+  extends abrw
 {
-  public abru(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
+  public abru(PortraitImageview paramPortraitImageview) {}
   
-  public void a(int paramInt, String paramString)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    if (paramInt == 39)
-    {
-      axqw.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-      bbcv.a(this.a, 230, this.a.getString(2131695006), this.a.getString(2131695005), null, this.a.getString(2131692139), new abrv(this), null).show();
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = this.a.getString(2131695004);
-    }
-    bcpw.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    String str;
-    if (paramInt == 36) {
-      str = this.a.getString(2131695010);
-    }
-    for (;;)
-    {
-      bcpw.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-      return;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131695009);
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
       }
     }
+    return false;
   }
 }
 

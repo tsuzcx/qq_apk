@@ -1,63 +1,43 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class aauz
-  implements CompoundButton.OnCheckedChangeListener
+  implements bhxc
 {
   public aauz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
-      paramCompoundButton.setTag(Boolean.FALSE);
-    }
-    label20:
-    int i;
-    do
+    int i = 0;
+    boolean bool;
+    Object localObject;
+    if (paramInt == 0)
     {
-      do
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localObject != null) {
+        if (!bool) {
+          break label88;
+        }
+      }
+    }
+    label88:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      if (localObject != null)
       {
-        break label20;
-        do
-        {
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      } while (i == -1);
-      if (!paramBoolean) {
-        break;
+        paramInt = i;
+        if (bool) {
+          paramInt = 3;
+        }
+        ((FormSimpleItem)localObject).setBgType(paramInt);
       }
-    } while (i != 1);
-    ChatSettingForTroop.a(this.a, 4);
-    label74:
-    if (ChatSettingForTroop.a(this.a) != null) {
-      ChatSettingForTroop.d(this.a);
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean)
-    {
-      paramCompoundButton = "msg_open";
-      label107:
-      axqw.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", paramCompoundButton, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      if (!paramBoolean) {
-        break label209;
-      }
-    }
-    label209:
-    for (paramCompoundButton = "msg_open";; paramCompoundButton = "msg_close")
-    {
-      bbbb.a("Grp_msg", "grpData_admin", paramCompoundButton, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bbbb.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
       return;
-      if (i == 1) {
-        break;
-      }
-      ChatSettingForTroop.a(this.a, 1);
-      break label74;
-      paramCompoundButton = "msg_close";
-      break label107;
     }
   }
 }

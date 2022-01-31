@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bafl;
-import bagc;
-import bagg;
+import bafz;
+import bagq;
+import bagu;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class VisitorTroopCardPresenter$5$1
   implements Runnable
 {
-  public VisitorTroopCardPresenter$5$1(bagg parambagg, boolean paramBoolean) {}
+  public VisitorTroopCardPresenter$5$1(bagu parambagu, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      bagc.a(this.jdField_a_of_type_Bagg.a).b(bagc.a(this.jdField_a_of_type_Bagg.a).troopUin);
+      bagq.a(this.jdField_a_of_type_Bagu.a).b(bagq.a(this.jdField_a_of_type_Bagu.a).troopUin);
       return;
     }
-    bagc.a(this.jdField_a_of_type_Bagg.a).a();
+    bagq.a(this.jdField_a_of_type_Bagu.a).a();
   }
 }
 

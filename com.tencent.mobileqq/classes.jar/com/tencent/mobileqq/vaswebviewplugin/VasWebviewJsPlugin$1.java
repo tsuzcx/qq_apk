@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import anql;
+import anqq;
 
 class VasWebviewJsPlugin$1
-  extends anql
+  extends anqq
 {
   VasWebviewJsPlugin$1(VasWebviewJsPlugin paramVasWebviewJsPlugin) {}
   

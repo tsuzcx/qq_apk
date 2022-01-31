@@ -1,24 +1,15 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bgrp
-  extends bcpq
+  implements View.OnClickListener
 {
-  public bgrp(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public bgrp(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void onBackPressed()
+  public void onClick(View paramView)
   {
-    if (this.a.a) {
-      super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    this.a.onBackPressed();
   }
 }
 

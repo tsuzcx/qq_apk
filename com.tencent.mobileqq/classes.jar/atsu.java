@@ -1,40 +1,37 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 class atsu
-  implements amnf
+  implements View.OnLongClickListener
 {
-  atsu(atsa paramatsa, IphonePickerView paramIphonePickerView, bfol parambfol) {}
+  atsu(atsc paramatsc) {}
   
-  public void a()
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing()))
-    {
-      atsa.a(this.jdField_a_of_type_Atsa, this.jdField_a_of_type_Atsa.c, false);
-      this.jdField_a_of_type_Bfol.dismiss();
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new attf(this.a, paramView), paramView, 0);
+    localObject = atsc.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    atsc.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
     {
+      this.a.a.removeView(paramView);
+      this.a.a.addView(atsc.a(this.a), i);
+      return true;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Atsa.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
-      return;
-      this.jdField_a_of_type_Atsa.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Atsa.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Atsa.g = paramInt2;
-    }
+    paramView.setVisibility(4);
+    return true;
   }
 }
 

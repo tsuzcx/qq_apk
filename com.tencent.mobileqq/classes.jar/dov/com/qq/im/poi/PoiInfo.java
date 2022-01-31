@@ -3,12 +3,12 @@ package dov.com.qq.im.poi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjop;
+import bjpg;
 
 public class PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PoiInfo> CREATOR = new bjop();
+  public static final Parcelable.Creator<PoiInfo> CREATOR = new bjpg();
   public int a;
   public long a;
   public String a;

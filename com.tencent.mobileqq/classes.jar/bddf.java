@@ -1,15 +1,15 @@
-import android.text.Editable;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class bddf
-  implements Comparator<Friend>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  bddf(bdde parambdde, Editable paramEditable) {}
+  bddf(bdde parambdde, bdah parambdah) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    this.jdField_a_of_type_Bdah.b = paramBoolean;
+    this.jdField_a_of_type_Bdde.notifyDataSetChanged();
   }
 }
 

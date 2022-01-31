@@ -1,43 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
 
 public class anyq
-  extends anta<CustomEmotionData>
+  implements View.OnClickListener
 {
   public anyq(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "upload_finish");
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
+    {
+      this.a.b = l;
+      paramView = new Bundle();
+      paramView.putInt("AECAMERA_MODE", 202);
+      paramView.putInt("VIDEO_STORY_FROM_TYPE", birt.i.a());
+      birx.a((BaseActivity)this.a.a, 120, paramView);
+      axqy.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "download_finish");
-    }
-    this.a.p();
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    this.a.p();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((anss)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(103)).b(this.a.jdField_a_of_type_Anta);
-    }
-    this.a.p();
   }
 }
 

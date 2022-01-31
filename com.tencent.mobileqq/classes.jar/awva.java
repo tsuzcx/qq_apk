@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class awva
-  extends awts
+  implements awuv
 {
-  private Comparator<awoc> a = new awvb(this);
+  public awva(NetSearchEngine paramNetSearchEngine, List paramList) {}
   
-  public awva(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public void a(List paramList) {}
+  
+  public void a(List paramList, int paramInt)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    awwa.a();
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
   }
   
-  public Comparator<awoc> a()
+  public void a(List paramList, awvj paramawvj)
   {
-    return this.a;
+    a(paramList, paramawvj.a);
   }
 }
 

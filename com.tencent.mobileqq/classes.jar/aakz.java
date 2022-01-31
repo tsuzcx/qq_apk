@@ -1,51 +1,96 @@
 import QQService.DeviceItemDes;
 import QQService.SvcDevLoginInfo;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AuthDevActivity;
 import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.Arrays;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aakz
-  implements bfoq
+  extends akge
 {
-  public aakz(AuthDevActivity paramAuthDevActivity, String paramString1, long paramLong, String paramString2, int paramInt, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2) {}
+  public aakz(AuthDevActivity paramAuthDevActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(int paramInt, Bundle paramBundle)
   {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBundle == null) {
+      return;
+    }
+    paramInt = paramBundle.getInt("cmd", 1);
+    int i = paramBundle.getInt("opt", 2);
+    int j = paramBundle.getInt("ret", -1);
+    paramBundle = (String)paramBundle.get("wording");
+    FormSwitchItem localFormSwitchItem;
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      if ((AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
-      {
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
-        AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
-      }
+    default: 
       return;
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, AuthDevRenameActivity.class);
-      paramView.putExtra(AuthDevRenameActivity.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra(AuthDevRenameActivity.c, this.jdField_a_of_type_Long);
-      paramView.putExtra(AuthDevRenameActivity.d, AppSetting.a());
-      paramView.putExtra(AuthDevRenameActivity.e, NetConnInfoCenter.GUID);
-      paramView.putExtra(AuthDevRenameActivity.f, this.jdField_b_of_type_JavaLangString);
-      paramView.putExtra(AuthDevRenameActivity.g, ((SvcDevLoginInfo)AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).get(this.jdField_a_of_type_Int)).strDeviceTypeInfo);
-      paramView.putExtra(AuthDevRenameActivity.h, ((SvcDevLoginInfo)AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).get(this.jdField_a_of_type_Int)).stDeviceItemDes.vecItemDes);
-      paramView.putExtra(AuthDevRenameActivity.i, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.startActivity(paramView);
-      continue;
-      try
+    case 1: 
+      if (j == 0)
       {
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Long);
+        AuthDevActivity.a(this.a).setVisibility(0);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+        localFormSwitchItem = AuthDevActivity.a(this.a);
+        if (i == 1) {}
+        for (;;)
+        {
+          localFormSwitchItem.setChecked(bool1);
+          AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+          AuthDevActivity.b(this.a).setVisibility(0);
+          AuthDevActivity.b(this.a).setText(paramBundle);
+          return;
+          bool1 = false;
+        }
       }
-      catch (Throwable paramView)
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    if (j == 0)
+    {
+      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = AuthDevActivity.a(this.a);
+      if (i == 1) {}
+      for (bool1 = bool2;; bool1 = false)
       {
-        paramView.printStackTrace();
+        localFormSwitchItem.setChecked(bool1);
+        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+        AuthDevActivity.b(this.a).setText(paramBundle);
+        return;
+      }
+    }
+    AuthDevActivity.a(this.a).setVisibility(8);
+    AuthDevActivity.b(this.a).setVisibility(8);
+    bcql.a(this.a, paramBundle, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  {
+    if ((paramBoolean) && (AuthDevActivity.a(this.a) != null) && (paramInt >= 0) && (paramInt < AuthDevActivity.a(this.a).size()))
+    {
+      Object localObject = (SvcDevLoginInfo)AuthDevActivity.a(this.a).get(paramInt);
+      if (Arrays.equals(((SvcDevLoginInfo)localObject).stDeviceItemDes.vecItemDes, paramArrayOfByte))
+      {
+        ((SvcDevLoginInfo)localObject).strDeviceName = paramString;
+        AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      }
+      localObject = this.a.app.getHandler(LoginInfoActivity.class);
+      if (localObject != null)
+      {
+        localObject = ((MqqHandler)localObject).obtainMessage(1);
+        Bundle localBundle = new Bundle();
+        localBundle.putString(AuthDevRenameActivity.f, paramString);
+        localBundle.putByteArray(AuthDevRenameActivity.h, paramArrayOfByte);
+        ((Message)localObject).setData(localBundle);
+        ((Message)localObject).sendToTarget();
       }
     }
   }

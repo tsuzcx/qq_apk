@@ -1,35 +1,95 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class mqt
-  extends Dialog
 {
-  public mqt(Context paramContext, boolean paramBoolean) {}
-  
-  void a()
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    super.getWindow().setGravity(17);
-    super.setContentView(2131559593);
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    float f = paramInt;
+    localPaint.setAntiAlias(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-12434878);
+    localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    return localBitmap;
   }
   
-  public void a(View paramView, boolean paramBoolean)
+  public static Drawable a(Context paramContext, int paramInt)
   {
-    if (paramBoolean) {
-      b();
+    BitmapDrawable localBitmapDrawable = null;
+    int i = muc.a(paramContext);
+    int j = muc.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
     }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372529);
-    localFrameLayout.setOnClickListener(new mqu(this));
-    if (paramView != null) {
-      localFrameLayout.addView(paramView);
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
+      {
+        try
+        {
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
     }
+    return null;
   }
   
-  void b()
+  public static Drawable b(Context paramContext, int paramInt)
   {
-    findViewById(2131372528).setOnClickListener(new mqv(this));
+    BitmapDrawable localBitmapDrawable = null;
+    int i = muc.a(paramContext);
+    int j = muc.b(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("BitmapTools", 2, "screenWidth = " + i + " # screenHeight =" + j);
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    if (i <= 480) {}
+    for (localOptions.inSampleSize = 4;; localOptions.inSampleSize = 2) {
+      do
+      {
+        try
+        {
+          localOptions.inScaled = false;
+          localBitmapDrawable = new BitmapDrawable(paramContext.getResources(), BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions));
+          return localBitmapDrawable;
+        }
+        catch (OutOfMemoryError paramContext)
+        {
+          return null;
+        }
+        catch (Exception paramContext) {}
+      } while (i > 720);
+    }
+    return null;
   }
 }
 

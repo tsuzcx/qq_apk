@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticon;
 
-import anvp;
+import anvu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class EPRecommendTask$1
   implements Runnable
 {
-  public EPRecommendTask$1(anvp paramanvp) {}
+  public EPRecommendTask$1(anvu paramanvu) {}
   
   public void run()
   {

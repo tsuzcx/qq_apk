@@ -1,6 +1,12 @@
-public abstract interface rju
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class rju
+  implements View.OnClickListener
 {
-  public abstract void a();
+  rju(rjt paramrjt) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

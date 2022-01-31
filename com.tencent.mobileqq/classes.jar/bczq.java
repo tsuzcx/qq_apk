@@ -1,19 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardContainer;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class bczq
-  extends AnimatorListenerAdapter
+  extends aimt
 {
-  public bczq(CardContainer paramCardContainer, ImageView paramImageView) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
-  }
+  public TextView a;
+  public TroopInfo a;
+  public TextView b;
 }
 
 

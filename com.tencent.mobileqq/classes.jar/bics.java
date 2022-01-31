@@ -1,77 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class bics
-  implements bidp<WeiyunPB.QqSdkFileUploadMsgRsp>
+  implements EIPCOnGetConnectionListener
 {
-  bics(bicq parambicq, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  bics(bicr parambicr) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
+    if (paramEIPCConnection != null) {
+      bicr.a(this.a, paramEIPCConnection.procName);
+    }
+    bicr.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
+    }
   }
   
-  public void a(WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    if (paramQqSdkFileUploadMsgRsp == null)
-    {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, ajyc.a(2131715073));
-      return;
+    if (paramEIPCConnection != null) {
+      bicr.a(this.a, paramEIPCConnection.procName);
     }
-    Object localObject1 = paramQqSdkFileUploadMsgRsp.pdir_key.get();
-    Object localObject3 = paramQqSdkFileUploadMsgRsp.ppdir_key.get();
-    Object localObject2;
-    label57:
-    boolean bool;
-    String str;
-    if (localObject1 == null)
-    {
-      localObject1 = null;
-      if (localObject3 != null) {
-        break label240;
-      }
-      localObject2 = null;
-      if ((localObject1 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = ((String)localObject1);
-      }
-      if ((localObject3 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = ((String)localObject2);
-      }
-      bicy.a((String)localObject2, (String)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
-      bool = paramQqSdkFileUploadMsgRsp.file_exist.get();
-      localObject3 = paramQqSdkFileUploadMsgRsp.file_id.get();
-      str = paramQqSdkFileUploadMsgRsp.server_name.get();
-      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
-        break label250;
-      }
-    }
-    label240:
-    label250:
-    for (localObject1 = paramQqSdkFileUploadMsgRsp.inside_upload_ip.get();; localObject1 = paramQqSdkFileUploadMsgRsp.outside_upload_ip.get())
-    {
-      ((UploadFile)localObject2).setServerInfo(bool, (String)localObject3, str, (String)localObject1, paramQqSdkFileUploadMsgRsp.server_port.get(), Utils.bytes2HexStr(paramQqSdkFileUploadMsgRsp.check_key.get().toByteArray()).toLowerCase(), paramQqSdkFileUploadMsgRsp.channel_count.get(), Integer.toString(paramQqSdkFileUploadMsgRsp.file_version.get()));
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-      return;
-      localObject1 = bifn.a((ByteStringMicro)localObject1);
-      break;
-      localObject2 = bifn.a((ByteStringMicro)localObject3);
-      break label57;
+    bicr.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bics
  * JD-Core Version:    0.7.0.1
  */

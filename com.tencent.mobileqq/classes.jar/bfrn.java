@@ -1,10 +1,19 @@
-public class bfrn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+
+public final class bfrn
+  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
+  {
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
+  }
+  
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  {
+    return new ExpandableListConnector.GroupMetadata[paramInt];
+  }
 }
 
 

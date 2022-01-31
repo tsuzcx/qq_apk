@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
-public abstract class apwx
-  implements View.OnClickListener
+public abstract interface apwx
 {
-  private long a;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public abstract void a(View paramView);
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
   
-  public void b(View paramView) {}
-  
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.a >= 500L)
-    {
-      a(paramView);
-      this.a = l;
-      return;
-    }
-    b(paramView);
-  }
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
 }
 
 

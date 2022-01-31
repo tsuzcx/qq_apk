@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.widget.media.live;
 
 import android.content.Context;
-import bhnv;
+import bhom;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -14,7 +14,7 @@ public class WXLivePusherReflect
   
   public static boolean isPushing(Object paramObject)
   {
-    paramObject = (Boolean)bhnv.a(paramObject, "isPushing", false, null, new Object[0]);
+    paramObject = (Boolean)bhom.a(paramObject, "isPushing", false, null, new Object[0]);
     if (paramObject != null) {
       return paramObject.booleanValue();
     }
@@ -23,40 +23,40 @@ public class WXLivePusherReflect
   
   public static Object newInstance(Context paramContext)
   {
-    return bhnv.a("com.tencent.rtmp.WXLivePusher", bhnv.a(new Class[] { Context.class }), new Object[] { paramContext });
+    return bhom.a("com.tencent.rtmp.WXLivePusher", bhom.a(new Class[] { Context.class }), new Object[] { paramContext });
   }
   
   public static boolean pauseBGM(Object paramObject)
   {
-    paramObject = bhnv.a(paramObject, "pauseBGM", false, null, new Object[0]);
+    paramObject = bhom.a(paramObject, "pauseBGM", false, null, new Object[0]);
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void pausePusher(Object paramObject)
   {
-    bhnv.a(paramObject, "pausePusher", false, null, new Object[0]);
+    bhom.a(paramObject, "pausePusher", false, null, new Object[0]);
   }
   
   public static boolean playBGM(String paramString, Object paramObject)
   {
-    paramString = bhnv.a(paramObject, "playBGM", false, bhnv.a(new Class[] { String.class }), new Object[] { paramString });
+    paramString = bhom.a(paramObject, "playBGM", false, bhom.a(new Class[] { String.class }), new Object[] { paramString });
     return ((paramString instanceof Boolean)) && (((Boolean)paramString).booleanValue());
   }
   
   public static boolean resumeBGM(Object paramObject)
   {
-    paramObject = bhnv.a(paramObject, "resumeBGM", false, null, new Object[0]);
+    paramObject = bhom.a(paramObject, "resumeBGM", false, null, new Object[0]);
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void resumePusher(Object paramObject)
   {
-    bhnv.a(paramObject, "resumePusher", false, null, new Object[0]);
+    bhom.a(paramObject, "resumePusher", false, null, new Object[0]);
   }
   
   public static boolean sendMessageEx(byte[] paramArrayOfByte, Object paramObject)
   {
-    paramArrayOfByte = (Boolean)bhnv.a(paramObject, "sendMessageEx", false, bhnv.a(new Class[] { [B.class }), new Object[] { paramArrayOfByte });
+    paramArrayOfByte = (Boolean)bhom.a(paramObject, "sendMessageEx", false, bhom.a(new Class[] { [B.class }), new Object[] { paramArrayOfByte });
     if (paramArrayOfByte != null) {
       return paramArrayOfByte.booleanValue();
     }
@@ -67,7 +67,7 @@ public class WXLivePusherReflect
   {
     try
     {
-      bhnv.a(paramObject2, "setBGMNofify", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify") }), new Object[] { paramObject1 });
+      bhom.a(paramObject2, "setBGMNofify", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -78,25 +78,25 @@ public class WXLivePusherReflect
   
   public static void setBGMPosition(int paramInt, Object paramObject)
   {
-    bhnv.a(paramObject, "setBGMPosition", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(paramObject, "setBGMPosition", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static boolean setBGMVolume(float paramFloat, Object paramObject)
   {
-    paramObject = bhnv.a(paramObject, "setBGMVolume", false, bhnv.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    paramObject = bhom.a(paramObject, "setBGMVolume", false, bhom.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void setBeautyFilter(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
   {
-    bhnv.a(paramObject, "setBeautyFilter", false, bhnv.a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    bhom.a(paramObject, "setBeautyFilter", false, bhom.a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
   }
   
   public static void setConfig(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bhnv.a(paramObject2, "setConfig", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePushConfig") }), new Object[] { paramObject1 });
+      bhom.a(paramObject2, "setConfig", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePushConfig") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -108,23 +108,23 @@ public class WXLivePusherReflect
   public static void setEnableCamera(JSONObject paramJSONObject, Object paramObject1, Object paramObject2)
   {
     if ((paramJSONObject != null) && (paramJSONObject.optBoolean("enable-camera", true))) {
-      bhnv.a(paramObject1, "startCameraPreview", false, bhnv.a(new Class[] { paramObject2.getClass() }), new Object[] { paramObject2 });
+      bhom.a(paramObject1, "startCameraPreview", false, bhom.a(new Class[] { paramObject2.getClass() }), new Object[] { paramObject2 });
     }
   }
   
   public static void setLocalVideoMirrorType(int paramInt, Object paramObject)
   {
-    bhnv.a(paramObject, "setLocalVideoMirrorType", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(paramObject, "setLocalVideoMirrorType", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static void setMicVolume(float paramFloat, Object paramObject)
   {
-    bhnv.a(paramObject, "setMicVolume", false, bhnv.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bhom.a(paramObject, "setMicVolume", false, bhom.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   public static void setMirror(boolean paramBoolean, Object paramObject)
   {
-    bhnv.a(paramObject, "setMirror", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bhom.a(paramObject, "setMirror", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void setMode(JSONObject paramJSONObject, Object paramObject)
@@ -141,9 +141,9 @@ public class WXLivePusherReflect
     }
     for (;;)
     {
-      paramJSONObject = bhnv.a("com.tencent.rtmp.TXLiveConstants", paramJSONObject);
+      paramJSONObject = bhom.a("com.tencent.rtmp.TXLiveConstants", paramJSONObject);
       if ((paramJSONObject instanceof Integer)) {
-        bhnv.a(paramObject, "setVideoQuality", false, bhnv.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { paramJSONObject, Boolean.valueOf(true), Boolean.valueOf(true) });
+        bhom.a(paramObject, "setVideoQuality", false, bhom.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { paramJSONObject, Boolean.valueOf(true), Boolean.valueOf(true) });
       }
       return;
       label98:
@@ -159,14 +159,14 @@ public class WXLivePusherReflect
   
   public static void setMuted(boolean paramBoolean, Object paramObject)
   {
-    bhnv.a(paramObject, "setMute", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bhom.a(paramObject, "setMute", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void setPushListener(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bhnv.a(paramObject2, "setPushListener", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePushListener") }), new Object[] { paramObject1 });
+      bhom.a(paramObject2, "setPushListener", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePushListener") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -177,34 +177,34 @@ public class WXLivePusherReflect
   
   public static void setPusherUrl(String paramString, Object paramObject)
   {
-    bhnv.a(paramObject, "setPusherUrl", false, bhnv.a(new Class[] { String.class }), new Object[] { paramString });
+    bhom.a(paramObject, "setPusherUrl", false, bhom.a(new Class[] { String.class }), new Object[] { paramString });
   }
   
   public static void setRenderRotation(int paramInt, Object paramObject)
   {
-    bhnv.a(paramObject, "setRenderRotation", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(paramObject, "setRenderRotation", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static void setReverb(int paramInt, Object paramObject)
   {
-    bhnv.a(paramObject, "setReverb", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(paramObject, "setReverb", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   public static void setVideoQuality(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    bhnv.a(paramObject, "setVideoQuality", false, bhnv.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    bhom.a(paramObject, "setVideoQuality", false, bhom.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
   }
   
   public static void showDebugLog(boolean paramBoolean, Object paramObject)
   {
-    bhnv.a(paramObject, "showDebugLog", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bhom.a(paramObject, "showDebugLog", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void snapshot(Object paramObject1, Object paramObject2)
   {
     try
     {
-      bhnv.a(paramObject2, "snapshot", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener") }), new Object[] { paramObject1 });
+      bhom.a(paramObject2, "snapshot", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener") }), new Object[] { paramObject1 });
       return;
     }
     catch (ClassNotFoundException paramObject1)
@@ -215,17 +215,17 @@ public class WXLivePusherReflect
   
   public static void startAudioRecord(Object paramObject)
   {
-    bhnv.a(paramObject, "startAudioRecord", false, null, new Object[0]);
+    bhom.a(paramObject, "startAudioRecord", false, null, new Object[0]);
   }
   
   public static void startCameraPreview(Object paramObject1, Object paramObject2)
   {
-    bhnv.a(paramObject2, "startCameraPreview", false, bhnv.a(new Class[] { paramObject1.getClass() }), new Object[] { paramObject1 });
+    bhom.a(paramObject2, "startCameraPreview", false, bhom.a(new Class[] { paramObject1.getClass() }), new Object[] { paramObject1 });
   }
   
   public static int startDumpAudioData(String paramString, Object paramObject)
   {
-    paramString = (Integer)bhnv.a(paramObject, "startDumpAudioData", false, bhnv.a(new Class[] { String.class }), new Object[] { paramString });
+    paramString = (Integer)bhom.a(paramObject, "startDumpAudioData", false, bhom.a(new Class[] { String.class }), new Object[] { paramString });
     if (paramString != null) {
       return paramString.intValue();
     }
@@ -234,39 +234,39 @@ public class WXLivePusherReflect
   
   public static boolean startPusher(String paramString, Object paramObject)
   {
-    paramString = bhnv.a(paramObject, "startPusher", false, bhnv.a(new Class[] { String.class }), new Object[] { paramString });
+    paramString = bhom.a(paramObject, "startPusher", false, bhom.a(new Class[] { String.class }), new Object[] { paramString });
     return ((paramString instanceof Integer)) && (((Integer)paramString).intValue() == 0);
   }
   
   public static void stopAudioRecord(Object paramObject)
   {
-    bhnv.a(paramObject, "stopAudioRecord", false, null, new Object[0]);
+    bhom.a(paramObject, "stopAudioRecord", false, null, new Object[0]);
   }
   
   public static boolean stopBGM(Object paramObject)
   {
-    paramObject = bhnv.a(paramObject, "stopBGM", false, null, new Object[0]);
+    paramObject = bhom.a(paramObject, "stopBGM", false, null, new Object[0]);
     return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
   }
   
   public static void stopCameraPreview(boolean paramBoolean, Object paramObject)
   {
-    bhnv.a(paramObject, "stopCameraPreview", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    bhom.a(paramObject, "stopCameraPreview", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
   }
   
   public static void stopDumpAudioData(Object paramObject)
   {
-    bhnv.a(paramObject, "stopDumpAudioData", false, null, new Object[0]);
+    bhom.a(paramObject, "stopDumpAudioData", false, null, new Object[0]);
   }
   
   public static void stopPusher(Object paramObject)
   {
-    bhnv.a(paramObject, "stopPusher", false, null, new Object[0]);
+    bhom.a(paramObject, "stopPusher", false, null, new Object[0]);
   }
   
   public static void switchCamera(Object paramObject)
   {
-    bhnv.a(paramObject, "switchCamera", false, null, new Object[0]);
+    bhom.a(paramObject, "switchCamera", false, null, new Object[0]);
   }
   
   public static void toggleTorch(Object paramObject)
@@ -276,7 +276,7 @@ public class WXLivePusherReflect
   
   public static boolean turnOnFlashLight(boolean paramBoolean, Object paramObject)
   {
-    paramObject = (Boolean)bhnv.a(paramObject, "turnOnFlashLight", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    paramObject = (Boolean)bhom.a(paramObject, "turnOnFlashLight", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramObject != null) {
       return paramObject.booleanValue();
     }

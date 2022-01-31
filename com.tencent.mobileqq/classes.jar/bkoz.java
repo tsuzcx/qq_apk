@@ -1,38 +1,101 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import java.util.ArrayList;
 
-class bkoz
-  extends akup
+public class bkoz
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = -1;
+  int jdField_a_of_type_Int = -1;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<bkpe> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public bkoz(bkow parambkow, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
+  public bkoz(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ArrayList<bkpe> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bkpe localbkpe = (bkpe)getItem(paramInt);
+    if (paramView == null)
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      bkpa localbkpa = new bkpa(this);
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b)
+      {
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559000, paramViewGroup, false);
+        localbkpa.b = ((ImageView)paramView.findViewById(2131368375));
+        localbkpa.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368320));
+        localbkpa.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368319));
+        paramView.setTag(localbkpa);
+        paramViewGroup = localbkpa;
+        label100:
+        if (Build.VERSION.SDK_INT < 21) {
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbkpe.a);
+        if (paramInt != this.jdField_a_of_type_Int) {
+          break label224;
+        }
+        if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
+          break label202;
+        }
+        paramViewGroup.b.setVisibility(0);
       }
-      bkow.a(this.jdField_a_of_type_Bkow, d1, d2, this.jdField_a_of_type_Int);
     }
-    do
+    for (;;)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      if (localbkpe.b != null) {
+        paramView.setContentDescription(localbkpe.b);
       }
-    } while ((bkow.a(this.jdField_a_of_type_Bkow) == null) || (!bkow.a(this.jdField_a_of_type_Bkow).hasMessages(this.jdField_a_of_type_Int)));
-    bkow.a(this.jdField_a_of_type_Bkow, false, null, this.jdField_a_of_type_Int);
+      return paramView;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558999, paramViewGroup, false);
+      break;
+      paramViewGroup = (bkpa)paramView.getTag();
+      break label100;
+      label202:
+      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130844267));
+      continue;
+      label224:
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.b) {
+        paramViewGroup.b.setVisibility(4);
+      } else {
+        paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
+      }
+    }
   }
 }
 

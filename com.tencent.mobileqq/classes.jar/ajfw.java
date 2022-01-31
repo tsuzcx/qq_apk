@@ -1,5 +1,4 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -7,20 +6,28 @@ import eipc.EIPCResultCallback;
 public final class ajfw
   implements EIPCResultCallback
 {
-  public ajfw(String paramString1, String paramString2, ajgb paramajgb) {}
+  public ajfw(ajfy paramajfy) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("selfUinStatus");
-    int j = paramEIPCResult.getInt("friendUinStatus");
-    ajfu.a(this.jdField_a_of_type_JavaLangString, i);
-    ajfu.a(this.b, j);
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(true);
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    ajfy localajfy;
+    if (this.a != null)
+    {
+      localajfy = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
     }
-    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
+    for (;;)
+    {
+      localajfy.a(bool);
+      return;
+      label82:
+      bool = false;
+    }
   }
 }
 

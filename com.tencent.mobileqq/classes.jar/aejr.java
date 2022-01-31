@@ -1,6 +1,17 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+
 public class aejr
+  extends RecyclerView.OnScrollListener
 {
-  public int a;
+  public aejr(PhotoListPanel paramPhotoListPanel) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.l = paramInt;
+  }
 }
 
 

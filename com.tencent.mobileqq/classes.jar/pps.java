@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSAllInOneJump;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadFeeds;
 import com.tencent.qphone.base.util.QLog;
 
 public class pps
-  implements IPTSAllInOneJump
+  implements IPTSLoadFeeds
 {
-  public final String a = "PTSAllInOneJumpModule";
+  private final String jdField_a_of_type_JavaLangString = "PTSLoadFeedsModule";
+  private ppb jdField_a_of_type_Ppb = new ppt(this);
   
-  public void allInOneJump(String paramString)
+  public pps()
   {
-    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
-    if (BaseActivity.sTopActivity != null) {
-      onk.a(BaseActivity.sTopActivity, paramString);
+    ppa.a().a(this.jdField_a_of_type_Ppb);
+  }
+  
+  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
+  {
+    osl localosl = (osl)((QQAppInterface)onh.a()).getManager(163);
+    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
+    if (localosl != null) {
+      localosl.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
     }
   }
 }

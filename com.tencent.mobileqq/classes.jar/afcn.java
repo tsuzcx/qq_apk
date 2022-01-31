@@ -1,18 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class afcn
-  implements bfoq
+public abstract interface afcn
 {
-  public afcn(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
-    if (this.jdField_a_of_type_Bfol.isShowing()) {
-      this.jdField_a_of_type_Bfol.dismiss();
-    }
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

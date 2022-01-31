@@ -1,23 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class aomh
   implements View.OnClickListener
 {
-  public aomh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
+  public aomh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    paramView = new AlphaAnimation(1.0F, 0.0F);
-    paramView.setDuration(500L);
-    paramView.setAnimationListener(new aomi(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
+    if (bbfj.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    {
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
+      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
+      paramView.what = 2;
+      paramView.arg1 = 2;
+      paramView.obj = this.jdField_a_of_type_JavaLangString;
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
+      axqy.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
+      return;
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692271);
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
 }
 

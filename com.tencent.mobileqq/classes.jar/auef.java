@@ -1,53 +1,90 @@
-import android.graphics.Matrix;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 
 public class auef
-  implements auee
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, auek
 {
-  public void a(Matrix paramMatrix) {}
+  private GestureController a;
   
-  public void a(MotionEvent paramMotionEvent) {}
+  public auef(GestureController paramGestureController)
+  {
+    this.a = paramGestureController;
+  }
   
-  public void a(ScaleGestureDetector paramScaleGestureDetector) {}
+  public void a(auej paramauej)
+  {
+    this.a.a(paramauej);
+  }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public boolean a(auej paramauej)
+  {
+    return this.a.b(paramauej);
+  }
+  
+  public boolean b(auej paramauej)
+  {
+    return this.a.a(paramauej);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     return false;
   }
   
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return false;
+    return this.a.e(paramMotionEvent);
   }
   
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    return false;
+    return this.a.b(paramMotionEvent);
   }
   
-  public void b(MotionEvent paramMotionEvent) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return false;
+    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
-  public boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    return false;
+    this.a.b(paramMotionEvent);
   }
   
-  public boolean b(ScaleGestureDetector paramScaleGestureDetector)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    return false;
+    return this.a.b(paramScaleGestureDetector);
   }
   
-  public void c(MotionEvent paramMotionEvent) {}
-  
-  public boolean c(MotionEvent paramMotionEvent)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    return false;
+    return this.a.a(paramScaleGestureDetector);
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.a.a(paramScaleGestureDetector);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return this.a.d(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return this.a.c(paramMotionEvent);
   }
 }
 

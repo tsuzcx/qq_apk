@@ -1,25 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.4.1;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.2.1;
 
 public class atub
-  implements View.OnClickListener
+  extends asyu
 {
   public atub(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void onClick(View paramView)
+  public void a(asyv paramasyv)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
-    this.a.a.startActivity(paramView);
-    NearbyProfileFragment.a(this.a, null);
-    ThreadManager.post(new NearbyProfileFragment.4.1(this), 5, null, false);
-    axqw.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    ThreadManager.post(new NearbyProfileFragment.2.1(this, paramasyv), 8, null, false);
+    this.a.a = paramasyv;
+    this.a.a(paramasyv);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpl;
+import afpj;
 
 public class ContactsDeviceAdapter$4
   implements Runnable
 {
-  public ContactsDeviceAdapter$4(afpl paramafpl) {}
+  public ContactsDeviceAdapter$4(afpj paramafpj) {}
   
   public void run()
   {

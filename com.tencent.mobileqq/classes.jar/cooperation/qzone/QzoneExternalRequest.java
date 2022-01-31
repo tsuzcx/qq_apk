@@ -2,10 +2,10 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
-import bblm;
-import bgxq;
-import bgxr;
-import bhoi;
+import bbma;
+import bgyh;
+import bgyi;
+import bhoz;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -26,29 +26,29 @@ public abstract class QzoneExternalRequest
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString)
   {
-    return bhoi.a(paramArrayOfByte, paramString);
+    return bhoz.a(paramArrayOfByte, paramString);
   }
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
-    return bhoi.a(paramArrayOfByte, paramString, paramArrayOfInt);
+    return bhoz.a(paramArrayOfByte, paramString, paramArrayOfInt);
   }
   
   protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt, String[] paramArrayOfString)
   {
-    return bhoi.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
+    return bhoz.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
   }
   
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = bgxr.a();
+    Object localObject2 = bgyi.a();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bblm.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return bbma.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }
@@ -62,7 +62,7 @@ public abstract class QzoneExternalRequest
   
   public String getDeviceInfo()
   {
-    return bgxq.a().c();
+    return bgyh.a().c();
   }
   
   public String getDeviceTail()

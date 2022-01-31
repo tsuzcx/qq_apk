@@ -1,17 +1,12 @@
-class vma
-  implements tey
+import java.io.File;
+import java.io.FilenameFilter;
+
+final class vma
+  implements FilenameFilter
 {
-  vma(vlv paramvlv, vmi paramvmi) {}
-  
-  public void a(boolean paramBoolean, teu paramteu)
+  public boolean accept(File paramFile, String paramString)
   {
-    veg.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramteu != null))
-    {
-      this.jdField_a_of_type_Vlv.a(paramteu.b, paramteu.a, this.jdField_a_of_type_Vmi);
-      return;
-    }
-    veg.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
 }
 

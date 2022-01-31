@@ -1,25 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahlw
   implements View.OnClickListener
 {
-  ahlw(ahkf paramahkf, int paramInt) {}
+  ahlw(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (BaseActivity.sTopActivity != null) {
-      asle.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    if (ahkd.a(this.a).app != null)
     {
-      asle.m();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-      }
+      ((ajti)ahkd.a(this.a).app.a(2)).b(0, "", "not_disturb_from_conversation");
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8009EBA", "0X8009EBA", 0, 1, "", "", "", "");
     }
   }
 }

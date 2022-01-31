@@ -1,18 +1,13 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
 
 public class rev
-  extends ajxl
+  implements bfxm
 {
   public rev(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a()
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
-    }
+    this.a.a(new rew(this, "onListViewDrawFinished"));
   }
 }
 

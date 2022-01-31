@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ajyc;
+import ajya;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aywk;
+import aywm;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -29,15 +29,15 @@ class EmojiRedPackPreviewFragment$5
         this.this$0.sendBtn.setVisibility(0);
         this.this$0.viewOpenAnim.setVisibility(0);
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = aywk.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywk.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = aywm.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywm.a;
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
         localObject = URLDrawable.getFileDrawable(this.val$gifPath, (URLDrawable.URLDrawableOptions)localObject);
         this.this$0.previewImg.setImageDrawable((Drawable)localObject);
         AbstractGifImage.resumeAll();
         return;
       }
-      this.this$0.tips.setText(ajyc.a(2131704016));
+      this.this$0.tips.setText(ajya.a(2131704027));
       this.this$0.reCaptureBtn.setVisibility(0);
       this.this$0.numberProbar.setVisibility(8);
       this.this$0.sendBtn.setVisibility(8);

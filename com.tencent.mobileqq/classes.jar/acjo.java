@@ -1,30 +1,22 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.List;
 
 public class acjo
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public acjo(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    vxs.a(this.a.jdField_a_of_type_Acla);
-    vxs.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    if (paramMotionEvent.getAction() == 1)
     {
-      paramView.add(((acky)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    return true;
   }
 }
 

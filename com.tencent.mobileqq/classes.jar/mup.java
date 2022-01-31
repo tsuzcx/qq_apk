@@ -1,40 +1,87 @@
-import java.util.HashMap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.config.HwServlet;
+import com.tencent.mobileqq.highway.openup.SessionInfo;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.UUID;
 
-public class mup
+public abstract class mup
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public muq a;
-  public int b;
-  public int c = 60000;
+  private final int jdField_a_of_type_Int;
+  protected AppInterface a;
+  final String jdField_a_of_type_JavaLangString;
   
-  public mup()
+  protected mup(AppInterface paramAppInterface, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 5000;
+    this.jdField_a_of_type_JavaLangString = ("FileUpload_" + paramInt + "_" + paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public String toString()
+  public static void a(AppInterface paramAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
-    if (this.jdField_a_of_type_Muq != null)
-    {
-      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_Boolean);
-      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_Long);
-      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_Int);
-      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Muq.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Muq.jdField_b_of_type_Int);
-      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Muq.jdField_b_of_type_Long).append("ms");
+    if (paramAppInterface != null) {
+      paramAppInterface.getHwEngine().preConnect();
     }
-    for (;;)
+  }
+  
+  public static byte[] a(String paramString, AppInterface paramAppInterface)
+  {
+    try
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append(",mResult = null");
+      String str = paramAppInterface.getCurrentAccountUin();
+      if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
+      {
+        int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
+        paramString = new byte[i];
+        System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, paramString, 0, i);
+        return paramString;
+      }
+      HwServlet.getConfig(paramAppInterface, str);
+      QLog.w(paramString, 1, "getSig, fail");
+      return null;
     }
+    finally {}
+  }
+  
+  protected boolean a(String paramString, mur parammur)
+  {
+    long l = new File(paramString).length();
+    String str = alet.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (l == 0L)
+    {
+      parammur.a(-10001, str, "", null);
+      return false;
+    }
+    Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if ((localObject == null) || (localObject.length == 0))
+    {
+      parammur.a(-10003, str, "", null);
+      return false;
+    }
+    byte[] arrayOfByte = alet.a(paramString);
+    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+    {
+      parammur.a(-10002, str, "", null);
+      return false;
+    }
+    muq localmuq = new muq(this, str, l, arrayOfByte, parammur);
+    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
+    localCommFileExtReq.uint32_action_type.set(0);
+    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
+    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, localmuq, localCommFileExtReq.toByteArray());
+    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
+    if (i != 0) {
+      parammur.a(i, str, "", null);
+    }
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestToUpload, localFile[" + paramString + "], sessionId[" + str + "]");
+    return i == 0;
   }
 }
 

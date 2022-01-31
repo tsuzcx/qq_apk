@@ -1,26 +1,45 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bgyl
-  implements URLDrawable.URLDrawableListener
+  extends bgyk
 {
-  public bgyl(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  newest_feeds_req a = new newest_feeds_req();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bgyl(long paramLong, Map<Long, Long> paramMap)
   {
-    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
+    this.a.cmd = 4;
+    this.a.login_uin = paramLong;
+    this.a.strQua = bgyi.a();
+    this.a.mapUinTimes = new HashMap();
+    this.a.mapUinTimes.putAll(paramMap);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int a()
   {
-    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
+    return 1000;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getMsgNewestFeeds";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return String.format("reqetuest ,cmd:%d,loginUin;%d,qua;%s,mapUintimes:%s ", new Object[] { Integer.valueOf(this.a.cmd), Long.valueOf(this.a.login_uin), this.a.strQua, String.valueOf(this.a.mapUinTimes) });
+  }
+  
+  public String uniKey()
+  {
+    return "getMsgNewestFeeds";
   }
 }
 

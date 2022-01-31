@@ -1,40 +1,15 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bgnr
-  implements ServiceConnection
+  implements DialogInterface.OnClickListener
 {
-  bgnr(bgnq parambgnq) {}
+  bgnr(bgnk parambgnk, whr paramwhr) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    bgnq.a(this.a, bgmr.a(paramIBinder));
-    bgnq.a(this.a, false);
-    bgnq.a(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      bgnq.a(this.a).getApplication().unbindService(bgnq.a(this.a));
-      bgnq.a(this.a, null);
-      bgnq.a(this.a, false);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Whr.a();
+    paramDialogInterface.dismiss();
   }
 }
 

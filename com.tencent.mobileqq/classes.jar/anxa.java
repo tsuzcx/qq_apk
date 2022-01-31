@@ -1,62 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public class anxa
+class anxa
+  implements askq<EmoticonPackage>
 {
-  private float jdField_a_of_type_Float;
-  private final bbwg jdField_a_of_type_Bbwg;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+  anxa(anwx paramanwx, aobp paramaobp) {}
   
-  public anxa(String paramString, bbwg parambbwg)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bbwg = parambbwg;
-  }
-  
-  public float a()
-  {
-    if (this.jdField_a_of_type_Bbwg != null) {
-      return this.jdField_a_of_type_Bbwg.jdField_a_of_type_Float;
-    }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Bundle a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Bbwg != null) {
-      return this.jdField_a_of_type_Bbwg.a();
-    }
-    return (Bundle)((bbqs)paramQQAppInterface.getManager(235)).a.a.get(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_Bbwg != null) {
-      this.jdField_a_of_type_Bbwg.a(true);
-    }
-    String str;
-    do
+    boolean bool;
+    if (paramEmoticonPackage != null)
     {
+      this.jdField_a_of_type_Aobp.j = paramEmoticonPackage.type;
+      aobp localaobp = this.jdField_a_of_type_Aobp;
+      if (paramEmoticonPackage.isAPNG == 2)
+      {
+        bool = true;
+        localaobp.c = bool;
+      }
+    }
+    for (;;)
+    {
+      anwx.a(this.jdField_a_of_type_Anwx).a(this.jdField_a_of_type_Aobp);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_Aobp.j);
+      }
       return;
-      str = "bqmall.android.h5magic." + this.jdField_a_of_type_JavaLangString + ".zip";
-      paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.cancelDwonloadItem(1004L, str);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      bool = false;
+      break;
+      this.jdField_a_of_type_Aobp.j = 3;
+    }
   }
 }
 

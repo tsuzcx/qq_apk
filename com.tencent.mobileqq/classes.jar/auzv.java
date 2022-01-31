@@ -1,26 +1,47 @@
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.view.View;
-import android.view.animation.Transformation;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class auzv
-  implements bbkq<Float>
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public auzv(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
+  public auzv(ProfileTagView paramProfileTagView) {}
   
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
-    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getWidth();
-    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getHeight();
-    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
-    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    }
+    this.a.d = true;
+    paramFloat1 = paramFloat2;
+    if (paramMotionEvent1 != null)
+    {
+      paramFloat1 = paramFloat2;
+      if (paramMotionEvent2 != null) {
+        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
+    }
+    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
+    {
+      if ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Boolean)) {
+        if (this.a.a())
+        {
+          this.a.f();
+          this.a.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.b(null);
+        }
+      }
+      while ((paramFloat1 >= 0.0F) || (this.a.jdField_a_of_type_Boolean)) {
+        return true;
+      }
+      this.a.a();
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface amim
 {
-  public abstract void a(amib paramamib, int paramInt, boolean paramBoolean);
+  public abstract void a();
 }
 
 

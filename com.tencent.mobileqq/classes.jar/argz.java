@@ -1,39 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class argz
-  extends Handler
+  implements View.OnClickListener
 {
-  argz(argq paramargq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  argz(argx paramargx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (argq.a(this.a).getVisibility() != 0) {}
-    int i;
-    do
-    {
-      return;
-      i = paramMessage.arg1;
-    } while ((i < argq.b(this.a)) || (i > 100));
-    argq.b(this.a, i);
-    argq.a(this.a).setProgress(argq.b(this.a));
-    paramMessage = Message.obtain();
-    if (argq.b(this.a) >= 90) {
-      i += 1;
-    }
-    for (;;)
-    {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-      i += 4;
-    }
+    args.a(this.a.a, false);
   }
 }
 

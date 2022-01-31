@@ -1,18 +1,13 @@
-import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AdapterView;
 
 public class rdu
-  extends oyg
+  implements bfxm
 {
-  public rdu(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super(paramString);
-  }
+  public rdu(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(oya paramoya)
+  public void a()
   {
-    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    this.a.a(new rdv(this, "onListViewDrawFinished"));
   }
 }
 

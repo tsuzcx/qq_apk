@@ -1,225 +1,284 @@
-import MAAccessClient.AccessReq;
-import MAAccessClient.AccessRsp;
-import MAAccessClient.CheckSinglePkgSigReq;
-import MAAccessClient.GetSinglePkgSigReq;
+import MQQ.GuanjiaReportReq;
+import MQQ.GuanjiaReportRsp;
+import MQQ.PrivExtV2Req;
+import MQQ.PrivExtV2Rsp;
+import QC.UniGetRsp;
+import QC.UniSetRsp;
+import VIP.GetCustomOnlineStatusReq;
+import VIP.GetCustomOnlineStatusRsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NamePlateCfgInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import protocol.KQQConfig.GetResourceReq;
-import protocol.KQQConfig.GetResourceResp;
-import protocol.KQQConfig.SDKUpgradeReq;
-import protocol.KQQConfig.SDKUpgradeRes;
-import protocol.KQQConfig.UpgradeInfo;
+import mqq.app.AppRuntime;
 
 public class awyy
-  extends xop
+  extends xom
 {
-  private static final String[] a = { "ConfigServantObj", "ConfigService", "MAAControl", "ResourceConfig" };
+  private static final String[] a = { "ClubInfoSvc", "VipCustom", "QCUniBusinessLogic" };
   
-  private AccessReq a(byte[] paramArrayOfByte)
+  private long a(String paramString)
   {
-    AccessReq localAccessReq = new AccessReq();
-    localAccessReq.gray = 0;
-    String str2 = bbct.a();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
+    {
+      long l = bbxj.a((QQAppInterface)localAppRuntime, "name_plate_config_version", 0L);
+      if (TextUtils.isEmpty(NamePlateCfgInfo.getVipNamePlateCfgInfo((QQAppInterface)localAppRuntime, paramString))) {
+        return 0L;
+      }
+      return l;
     }
-    localAccessReq.imei = str1;
-    str2 = bbct.k();
-    str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localAccessReq.manufacture = str1;
-    str2 = bbct.i();
-    str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localAccessReq.mode = str1;
-    str2 = bbct.j();
-    str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    localAccessReq.rom = str1;
-    localAccessReq.body = paramArrayOfByte;
-    localAccessReq.platform = 1;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("UpgradeController", 4, "createAccessReq:\nimei:" + localAccessReq.imei + "\ngray:" + localAccessReq.gray);
-    }
-    return localAccessReq;
+    return 0L;
   }
   
-  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString)
+  private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
   {
-    return (AccessRsp)a(paramFromServiceMsg.getWupBuffer(), paramString, new AccessRsp());
-  }
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return (GetResourceResp)a(paramFromServiceMsg.getWupBuffer(), "res", new GetResourceResp());
+    if (paramFromServiceMsg == null) {
+      return null;
+    }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = paramToServiceMsg.getByClass("rsp", paramT);
+      return paramToServiceMsg;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.e("VIPService", 1, "decodeWUP: ", paramToServiceMsg);
+    }
+    return null;
   }
   
   private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    paramUniPacket.setServantName("ConfigServantObj");
-    paramUniPacket.setFuncName("ClientReq");
-    paramUniPacket.put("iCmdType", Integer.valueOf(1));
-    SDKUpgradeReq localSDKUpgradeReq = new SDKUpgradeReq();
-    localSDKUpgradeReq.cProtocolVer = 1;
-    localSDKUpgradeReq.iActionType = paramToServiceMsg.extraData.getInt("iActionType");
-    localSDKUpgradeReq.iWidth = paramToServiceMsg.extraData.getInt("iWidth");
-    localSDKUpgradeReq.iHeight = paramToServiceMsg.extraData.getInt("iHeight");
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "Get Config: " + localSDKUpgradeReq.iActionType + localSDKUpgradeReq.iActionType + ", " + localSDKUpgradeReq.iWidth + ", " + localSDKUpgradeReq.iHeight);
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramToServiceMsg.getUin());
-    localSDKUpgradeReq.vUin = localArrayList;
-    localSDKUpgradeReq.bSdkUpdateFlag = false;
-    localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(AppSetting.a()));
-    localSDKUpgradeReq.vAppid = localArrayList;
-    paramUniPacket.put("SDKUpgradeReq", localSDKUpgradeReq);
-    paramToServiceMsg.setTimeout(20000L);
-    return true;
-  }
-  
-  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (SDKUpgradeRes)a(paramFromServiceMsg.getWupBuffer(), "SDKUpgradeRes", new SDKUpgradeRes());
-    if (QLog.isColorLevel())
+    paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
+    paramUniPacket.setFuncName("queryPrivInfoExtV2");
+    String str3 = paramToServiceMsg.extraData.getString(akjn.a);
+    Object localObject = paramToServiceMsg.extraData.getString(akjn.c);
+    long l1 = paramToServiceMsg.extraData.getLong(akjn.l);
+    boolean bool3 = bbrg.a();
+    boolean bool1 = false;
+    boolean bool2 = false;
+    PrivExtV2Req localPrivExtV2Req = new PrivExtV2Req();
+    localPrivExtV2Req.sUin = str3;
+    localPrivExtV2Req.sKey = ((String)localObject);
+    localPrivExtV2Req.iGetType = 0;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + str3, 4);
+    String str4 = bbwq.a(0, BaseApplicationImpl.getContext());
+    localObject = bbwq.a(1, BaseApplicationImpl.getContext());
+    String str2 = localSharedPreferences.getString("imsiOne", "");
+    String str1 = localSharedPreferences.getString("imsiTwo", "");
+    long l2 = localSharedPreferences.getLong("kingCardLastRequest", 0L);
+    long l3 = localSharedPreferences.getInt("kingCardRequestInterval", 0);
+    long l4 = System.currentTimeMillis() / 1000L;
+    localPrivExtV2Req.lastVisitTime = l1;
+    localPrivExtV2Req.iItemCfgVer = a(str3);
+    if (!TextUtils.isEmpty(str4))
     {
-      QLog.d("UpgradeController", 2, "Get Upgrade Config Resp: " + paramToServiceMsg);
-      if (paramToServiceMsg != null)
-      {
-        if ((paramToServiceMsg.vUpgradeInfo != null) && (paramToServiceMsg.vUpgradeInfo.size() > 0)) {
-          break label83;
-        }
-        QLog.d("UpgradeController", 2, "Not vUpgradeInfo");
+      localPrivExtV2Req.sImsi1 = str4;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label551;
       }
     }
-    return paramToServiceMsg;
-    label83:
-    paramFromServiceMsg = (UpgradeInfo)paramToServiceMsg.vUpgradeInfo.get(0);
-    QLog.d("UpgradeController", 2, "Get UpgradeInfo: " + paramFromServiceMsg);
-    QLog.d("UpgradeController", 2, "iAppid: " + paramFromServiceMsg.iAppid);
-    QLog.d("UpgradeController", 2, "bAppType: " + paramFromServiceMsg.bAppType);
-    QLog.d("UpgradeController", 2, "iUpgradeType: " + paramFromServiceMsg.iUpgradeType);
-    QLog.d("UpgradeController", 2, "iUpgradeSdkId: " + paramFromServiceMsg.iUpgradeSdkId);
-    QLog.d("UpgradeController", 2, "strTitle: " + paramFromServiceMsg.strTitle);
-    QLog.d("UpgradeController", 2, "strUpgradeDesc: " + paramFromServiceMsg.strUpgradeDesc);
-    QLog.d("UpgradeController", 2, "strUrl: " + paramFromServiceMsg.strUrl);
-    QLog.d("UpgradeController", 2, "iActionType=0: " + paramFromServiceMsg.iActionType);
-    QLog.d("UpgradeController", 2, "bNewSwitch: " + paramFromServiceMsg.bNewSwitch);
-    QLog.d("UpgradeController", 2, "iNewTimeStamp: " + paramFromServiceMsg.iNewTimeStamp);
-    QLog.d("UpgradeController", 2, "strUpgradePageUrl: " + paramFromServiceMsg.strUpgradePageUrl);
-    QLog.d("UpgradeController", 2, "iIncrementUpgrade: " + paramFromServiceMsg.iIncrementUpgrade);
-    QLog.d("UpgradeController", 2, "iTipsType: " + paramFromServiceMsg.iTipsType);
-    QLog.d("UpgradeController", 2, "strBannerPicUrl: " + paramFromServiceMsg.strBannerPicUrl);
-    QLog.d("UpgradeController", 2, "strNewUpgradeDescURL: " + paramFromServiceMsg.strNewUpgradeDescURL);
-    QLog.d("UpgradeController", 2, "iDisplayDay: " + paramFromServiceMsg.iDisplayDay);
-    QLog.d("UpgradeController", 2, "iTipsWaitDay: " + paramFromServiceMsg.iTipsWaitDay);
-    QLog.d("UpgradeController", 2, "strProgressName: " + paramFromServiceMsg.strProgressName);
-    QLog.d("UpgradeController", 2, "strNewTipsDescURL: " + paramFromServiceMsg.strNewTipsDescURL);
-    QLog.d("UpgradeController", 2, "strNewSoftwareURL: " + paramFromServiceMsg.strNewSoftwareURL);
-    QLog.d("UpgradeController", 2, "bGray: " + paramFromServiceMsg.bGray);
-    return paramToServiceMsg;
-  }
-  
-  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("ConfigServantObj");
-    paramUniPacket.setFuncName("GetResourceReq");
-    ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("getResourceReqInfos");
-    GetResourceReq localGetResourceReq = new GetResourceReq();
-    if ((localArrayList != null) && (localArrayList.size() > 0))
+    for (;;)
     {
-      localGetResourceReq.vecResReqInfo = localArrayList;
-      localGetResourceReq.sLanCodeType = 1;
+      for (;;)
+      {
+        localPrivExtV2Req.sImsi2 = ((String)localObject);
+        int k = localSharedPreferences.getInt("kingCardSdk", -1);
+        if ((!bool3) || (k < 0)) {
+          break label558;
+        }
+        localPrivExtV2Req.sImsi2 = "";
+        localPrivExtV2Req.sImsi1 = "";
+        localPrivExtV2Req.iWkOrderState1 = k;
+        localPrivExtV2Req.iToastVer = localSharedPreferences.getInt("toast_version", 0);
+        localPrivExtV2Req.iPopupVer = localSharedPreferences.getInt("popup_version_v2", 0);
+        localPrivExtV2Req.pullPayRuleCfgTime = bbxj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "last_pull_pay_rule", 0L);
+        localPrivExtV2Req.clientLangugeId = 0;
+        QLog.e("VIPService", 1, "handleGetVipInfoReq, pullPayRuleCfgTime=" + localPrivExtV2Req.pullPayRuleCfgTime);
+        if (QLog.isColorLevel()) {
+          QLog.i("VIPService", 2, "handleGetVipInfoReq, iPopupVer: " + localPrivExtV2Req.iPopupVer + " iToastVer:" + localPrivExtV2Req.iToastVer + " canUseTMS:" + bool3 + " sdkCardStatus:" + k + ", send sim1: " + bool1 + ", send sim2:" + bool2);
+        }
+        paramToServiceMsg.extraData.putBoolean(akjn.h, bool1);
+        paramToServiceMsg.extraData.putBoolean(akjn.i, bool2);
+        paramUniPacket.put("req", localPrivExtV2Req);
+        return true;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localPrivExtV2Req.sImsi1 = ((String)localObject);
+          localObject = null;
+          break;
+        }
+        try
+        {
+          localPrivExtV2Req.sImsi1 = bfnn.b("a4bd32");
+        }
+        catch (Exception localException)
+        {
+          QLog.e("VIPService", 1, "handleGetVipInfoReq", localException);
+        }
+      }
+      break;
+      label551:
+      localObject = "";
     }
-    paramUniPacket.put("req", localGetResourceReq);
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDownloadTrace", 2, "encode request,servantName is:ConfigServantObj,funcName is:GetResourceReq,AppSeq is:" + paramToServiceMsg.getAppSeq());
+    label558:
+    if ((TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
+      localPrivExtV2Req.iGetType = 1;
     }
-    return true;
-  }
-  
-  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("ConfigServantObj");
-    paramUniPacket.setFuncName("GetResourceReq");
-    CheckSinglePkgSigReq localCheckSinglePkgSigReq = new CheckSinglePkgSigReq();
-    localCheckSinglePkgSigReq.pkgName = BaseApplicationImpl.sApplication.getPackageName();
-    String str2 = paramToServiceMsg.extraData.getString("ac");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    int j = 0;
+    int i;
+    if (((!TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (!localPrivExtV2Req.sImsi1.equals(str2))) || (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)))
+    {
+      localObject = localSharedPreferences.edit();
+      ((SharedPreferences.Editor)localObject).putString("imsiOne", "");
+      ((SharedPreferences.Editor)localObject).putInt("kingCard", -1);
+      ((SharedPreferences.Editor)localObject).commit();
+      i = 1;
+      label667:
+      if (((TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) || (localPrivExtV2Req.sImsi2.equals(str1))) && (!TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
+        break label920;
+      }
+      localObject = localSharedPreferences.edit();
+      ((SharedPreferences.Editor)localObject).putString("imsiTwo", "");
+      ((SharedPreferences.Editor)localObject).putInt("kingCard2", -1);
+      ((SharedPreferences.Editor)localObject).commit();
+      j = 1;
+      label746:
+      if (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) {
+        break label947;
+      }
+      bool1 = true;
+      label760:
+      if (TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) {
+        break label953;
+      }
     }
-    localCheckSinglePkgSigReq.pkgSig = str1;
-    localCheckSinglePkgSigReq.versionCode = anet.a(BaseApplicationImpl.sApplication);
-    localCheckSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
-    localCheckSinglePkgSigReq.sysVer = bbct.a();
-    paramToServiceMsg = localCheckSinglePkgSigReq.toByteArray();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("UpgradeController", 4, "CheckSinglePkgSigReq:\nversionCode:" + localCheckSinglePkgSigReq.versionCode);
+    label920:
+    label947:
+    label953:
+    for (bool2 = true;; bool2 = false)
+    {
+      if (bool1) {
+        paramToServiceMsg.extraData.putString(akjn.j, localPrivExtV2Req.sImsi1);
+      }
+      if (bool2) {
+        paramToServiceMsg.extraData.putString(akjn.k, localPrivExtV2Req.sImsi2);
+      }
+      localPrivExtV2Req.iWkOrderState1 = localSharedPreferences.getInt("kingCard", -1);
+      localPrivExtV2Req.iWkOrderState2 = localSharedPreferences.getInt("kingCard2", -1);
+      if (j != 0)
+      {
+        localObject = localSharedPreferences.edit();
+        ((SharedPreferences.Editor)localObject).putInt("toast_version", 0);
+        ((SharedPreferences.Editor)localObject).putInt("popup_version_v2", 0);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      break;
+      i = j;
+      if (l4 - l2 >= l3) {
+        break label667;
+      }
+      localPrivExtV2Req.sImsi1 = "";
+      i = j;
+      break label667;
+      j = i;
+      if (l4 - l2 >= l3) {
+        break label746;
+      }
+      localPrivExtV2Req.sImsi2 = "";
+      j = i;
+      break label746;
+      bool1 = false;
+      break label760;
     }
-    paramUniPacket.put("MAAControl.CheckSinglePkgSig", a(paramToServiceMsg));
-    return true;
-  }
-  
-  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    paramUniPacket.setServantName("ConfigServantObj");
-    paramUniPacket.setFuncName("GetResourceReq");
-    GetSinglePkgSigReq localGetSinglePkgSigReq = new GetSinglePkgSigReq();
-    localGetSinglePkgSigReq.pkgName = paramToServiceMsg.extraData.getString("pn");
-    localGetSinglePkgSigReq.versionCode = paramToServiceMsg.extraData.getInt("vc");
-    localGetSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
-    localGetSinglePkgSigReq.sysVer = paramToServiceMsg.extraData.getInt("sv");
-    paramUniPacket.put("MAAControl.GetSinglePkgSig", a(localGetSinglePkgSigReq.toByteArray()));
-    return true;
   }
   
   public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("ResourceConfig.GetResourceReq".equals(str)) {
-      return b(paramToServiceMsg, paramFromServiceMsg);
+    if ("ClubInfoSvc.queryPrivExt".equals(paramToServiceMsg.getServiceCmd())) {
+      return a(paramToServiceMsg, paramFromServiceMsg, new PrivExtV2Rsp());
     }
-    if ("ConfigService.ClientReq".equals(str)) {
-      return c(paramToServiceMsg, paramFromServiceMsg);
+    if ("ClubInfoSvc.guanjiaReport".equals(paramToServiceMsg.getServiceCmd())) {
+      return a(paramToServiceMsg, paramFromServiceMsg, new GuanjiaReportRsp());
     }
-    if ("MAAControl.CheckSinglePkgSig".equals(str)) {
-      return a(paramToServiceMsg, paramFromServiceMsg, str);
+    if ("VipCustom.GetCustomOnlineStatus".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "decode");
+      }
+      return a(paramToServiceMsg, paramFromServiceMsg, new GetCustomOnlineStatusRsp());
     }
-    if ("MAAControl.GetSinglePkgSig".equals(str)) {
-      return a(paramToServiceMsg, paramFromServiceMsg, str);
+    if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd())) {
+      return a(paramToServiceMsg, paramFromServiceMsg, new UniSetRsp());
+    }
+    if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd())) {
+      return a(paramToServiceMsg, paramFromServiceMsg, new UniGetRsp());
     }
     return null;
   }
   
   public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("ConfigService.ClientReq".equals(str)) {
-      return b(paramToServiceMsg, paramUniPacket);
+    boolean bool = true;
+    if ("ClubInfoSvc.queryPrivExt".equals(paramToServiceMsg.getServiceCmd())) {
+      bool = b(paramToServiceMsg, paramUniPacket);
     }
-    if ("ResourceConfig.GetResourceReq".equals(str)) {
-      return c(paramToServiceMsg, paramUniPacket);
+    do
+    {
+      return bool;
+      if ("ClubInfoSvc.guanjiaReport".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
+        paramUniPacket.setFuncName("guanjiaDoReport");
+        localObject = paramToServiceMsg.extraData.getString(akjn.a);
+        GuanjiaReportReq localGuanjiaReportReq = new GuanjiaReportReq();
+        localGuanjiaReportReq.sPkgName = "mobileQQ";
+        localGuanjiaReportReq.uin = Long.parseLong((String)localObject);
+        localGuanjiaReportReq.iImplat = 109;
+        localGuanjiaReportReq.sPhoneNum = paramToServiceMsg.extraData.getString(akjn.d);
+        localGuanjiaReportReq.bKingCard = paramToServiceMsg.extraData.getBoolean(akjn.e);
+        localGuanjiaReportReq.iCardType = paramToServiceMsg.extraData.getInt(akjn.f);
+        localGuanjiaReportReq.iCardStatus = paramToServiceMsg.extraData.getInt(akjn.g);
+        localGuanjiaReportReq.bReportFlag = false;
+        paramUniPacket.put("req", localGuanjiaReportReq);
+        return true;
+      }
+      if (!"VipCustom.GetCustomOnlineStatus".equals(paramToServiceMsg.getServiceCmd())) {
+        break;
+      }
+      paramUniPacket.setServantName("VIP.CustomOnlineStatusServer.CustomOnlineStatusObj");
+      paramUniPacket.setFuncName("GetCustomOnlineStatus");
+      Object localObject = new GetCustomOnlineStatusReq();
+      ((GetCustomOnlineStatusReq)localObject).lUin = paramToServiceMsg.extraData.getLong(akjn.m);
+      ((GetCustomOnlineStatusReq)localObject).sIMei = paramToServiceMsg.extraData.getString(akjn.n);
+      paramUniPacket.put("req", localObject);
+    } while (!QLog.isDevelopLevel());
+    QLog.d("CustomOnlineStatusManager", 4, "encodeReqMsg");
+    return true;
+    if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
+      paramUniPacket.setFuncName("uniSet");
+      paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
+      return true;
     }
-    if ("MAAControl.CheckSinglePkgSig".equals(str)) {
-      return d(paramToServiceMsg, paramUniPacket);
-    }
-    if ("MAAControl.GetSinglePkgSig".equals(str)) {
-      return e(paramToServiceMsg, paramUniPacket);
+    if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
+      paramUniPacket.setFuncName("uniGet");
+      paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
+      return true;
     }
     return false;
   }

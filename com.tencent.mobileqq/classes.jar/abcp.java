@@ -1,47 +1,35 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abcp
-  implements View.OnClickListener
 {
-  public abcp(ForwardRecentActivity paramForwardRecentActivity, DeviceInfo paramDeviceInfo, ForwardRecentItemView paramForwardRecentItemView, ResultRecord paramResultRecord, Resources paramResources, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static void a()
   {
-    if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity))
-    {
-      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din), 9501))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.a(false);
-        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din), 9501);
-      }
-      while (!ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.a(true);
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  {
+    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
       return;
     }
-    if (!bbev.g(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity))
-    {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, ajyc.a(2131704775), 1000).b(this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131298865));
-      return;
-    }
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din));
-    paramView.putInt("uintype", 9501);
-    paramView.putString("uinname", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.a(aqas.j.intValue(), paramView);
+    bgyp.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcp
  * JD-Core Version:    0.7.0.1
  */

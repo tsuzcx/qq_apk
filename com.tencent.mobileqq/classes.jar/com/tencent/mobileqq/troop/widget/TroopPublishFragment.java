@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import aqka;
+import aqkc;
 import com.tencent.mobileqq.fragment.BaseFragment;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements aqka
+  implements aqkc
 {
   public String a()
   {

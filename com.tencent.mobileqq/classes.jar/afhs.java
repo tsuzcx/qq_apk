@@ -1,23 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
-class afhs
-  extends RecyclerView.ViewHolder
+public class afhs
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  public afhs(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  public afhs(afhp paramafhp, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131375527));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
+    int i = Face2FaceAddContactFragment.a(this.a).length();
+    if (i >= 4) {
+      return;
+    }
+    Face2FaceAddContactFragment.a(this.a, paramView, i);
+    i = Face2FaceAddContactFragment.a(this.a).length();
+    Face2FaceAddContactFragment.a(this.a, i);
+    Face2FaceAddContactFragment.b(this.a, i);
   }
 }
 

@@ -1,20 +1,17 @@
 public class qcq
-  implements Cloneable
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  private qcr jdField_a_of_type_Qcr = new qcr(0L);
+  private qcs jdField_a_of_type_Qcs = new qcs("");
+  private qct jdField_a_of_type_Qct = new qct("");
   
-  public qcq a()
+  public void a(qcr paramqcr)
   {
-    try
-    {
-      qcq localqcq = (qcq)super.clone();
-      return localqcq;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    this.jdField_a_of_type_Qcr = paramqcr;
+  }
+  
+  public void a(qcs paramqcs)
+  {
+    this.jdField_a_of_type_Qcs = paramqcs;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import android.graphics.Bitmap;
 import java.util.Map;
-import sdv;
+import sds;
 
 class GalleryShareHelper$3$1
   implements Runnable
@@ -12,7 +12,7 @@ class GalleryShareHelper$3$1
   public void run()
   {
     Bitmap localBitmap = (Bitmap)this.a.jdField_a_of_type_JavaUtilMap.remove("image");
-    this.a.this$0.a(sdv.b(this.a.this$0), sdv.c(this.a.this$0), sdv.a(this.a.this$0), localBitmap, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Shf);
+    this.a.this$0.a(sds.b(this.a.this$0), sds.c(this.a.this$0), sds.a(this.a.this$0), localBitmap, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Shc);
   }
 }
 

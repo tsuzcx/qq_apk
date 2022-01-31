@@ -1,25 +1,24 @@
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ahkq
   implements View.OnClickListener
 {
-  ahkq(ahkf paramahkf) {}
+  ahkq(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    this.a.a(-1, null);
+    if (akuz.a().a() == 4)
     {
-    default: 
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuy.b(), akuz.b(), akuz.a(), "1");
+      akuz.a().a(ahkd.a(this.a));
       return;
     }
-    paramView = new Bundle();
-    paramView.putBoolean("string_from", false);
-    paramView.putBoolean("string_uin", true);
-    paramView.putLong("device_din", 0L);
-    paramView.putInt("sTitleID", 0);
-    bgoq.a(ahkf.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
+    axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuy.b(), akuz.b(), akuz.a(), "1");
+    UpgradeDetailActivity.a(ahkd.a(this.a), akuz.a().a(), true, true, true);
   }
 }
 

@@ -1,18 +1,25 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class aikl
-  implements alxk
+  implements View.OnClickListener
 {
   public aikl(SessionClearFragment paramSessionClearFragment) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (SessionClearFragment.a(this.a) == 0)
+    {
+      SessionClearFragment.a(this.a).setText(ajya.a(2131713853));
+      SessionClearFragment.a(this.a, 1);
+      SessionClearFragment.a(this.a).b();
+      return;
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    SessionClearFragment.a(this.a).setText(ajya.a(2131713851));
+    SessionClearFragment.a(this.a, 0);
+    SessionClearFragment.a(this.a).c();
   }
 }
 

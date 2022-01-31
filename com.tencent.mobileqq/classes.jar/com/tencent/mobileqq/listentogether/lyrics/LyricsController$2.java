@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import arsq;
+import arss;
 import com.tencent.qphone.base.util.QLog;
 
 public class LyricsController$2
   implements Runnable
 {
-  public LyricsController$2(arsq paramarsq) {}
+  public LyricsController$2(arss paramarss) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("LyricsController", 2, "mDelayUpdateLyricsFloatWindowRunnable isForeground: " + this.this$0.jdField_a_of_type_Boolean + " mFloatParams:" + this.this$0.jdField_a_of_type_Arso);
+      QLog.i("LyricsController", 2, "mDelayUpdateLyricsFloatWindowRunnable isForeground: " + this.this$0.jdField_a_of_type_Boolean + " mFloatParams:" + this.this$0.jdField_a_of_type_Arsq);
     }
-    arsq.a(this.this$0);
+    arss.a(this.this$0);
   }
 }
 

@@ -1,32 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-final class bbku
-  implements Handler.Callback
+public class bbku
 {
-  public boolean handleMessage(Message paramMessage)
+  public static void a(Activity paramActivity, long paramLong)
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
     }
-    for (;;)
-    {
-      return true;
-      bcpw.a(localQQAppInterface.getApplication(), ajyc.a(2131716047), 0).a();
-      continue;
-      bcpw.a(localQQAppInterface.getApplication(), ajyc.a(2131716046), 0).a();
-      continue;
-      bcpw.a(localQQAppInterface.getApplication(), ajyc.a(2131716045), 0).a();
-      continue;
-      bcpw.a(localQQAppInterface.getApplication(), ajyc.a(2131716048), 0).a();
-    }
+    aqfd.a(paramActivity, false, "shareToTroopBar", paramLong);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    axqy.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
   }
 }
 

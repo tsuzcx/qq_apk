@@ -1,395 +1,175 @@
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
-import com.tencent.mobileqq.data.MessageForBlessPTV;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import java.util.concurrent.atomic.AtomicLong;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bkpb
-  extends AsyncTask<Void, Void, Integer>
+  implements bkpd
 {
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bihq jdField_a_of_type_Bihq;
-  private bkpc jdField_a_of_type_Bkpc;
-  private blbt jdField_a_of_type_Blbt = new blbt();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
-  private String e;
+  private AppInterface a;
+  public boolean a;
+  public boolean b;
   
-  public bkpb(bkpc parambkpc, boolean paramBoolean1, boolean paramBoolean2, bihq parambihq)
+  public bkpb(AppInterface paramAppInterface, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Bkpc = parambkpc;
-    this.jdField_a_of_type_Long = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
-    this.jdField_e_of_type_JavaLangString = ("MediaCodecSendTask_[mSessionId=" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Bihq = parambihq;
+    this.b = paramBoolean2;
   }
   
-  private int a()
+  public void a(@NonNull ArrayList<bkpe> paramArrayList, @NonNull Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bkpc.jdField_a_of_type_JavaLangString;
-    a("cacheDir=" + this.jdField_a_of_type_JavaLangString, null);
-    if (!bbdj.b(this.jdField_a_of_type_Bkpc.jdField_c_of_type_JavaLangString))
-    {
-      a("video file empty! path=" + this.jdField_a_of_type_Bkpc.jdField_c_of_type_JavaLangString, null);
-      return -300;
+    Object localObject7 = null;
+    bkpe localbkpe1 = null;
+    if (QLog.isColorLevel()) {
+      QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke");
     }
-    if (!bbdj.b(this.jdField_a_of_type_Bkpc.jdField_f_of_type_JavaLangString))
+    Object localObject1;
+    if (this.jdField_a_of_type_Boolean)
     {
-      a("thumb file empty! path=" + this.jdField_a_of_type_Bkpc.jdField_f_of_type_JavaLangString, null);
-      return -301;
+      localObject1 = new bkpe(paramContext.getResources().getDrawable(2130845883), 1, 0);
+      ((bkpe)localObject1).jdField_b_of_type_JavaLangString = ajya.a(2131702437);
+      paramArrayList.add(localObject1);
     }
-    Intent localIntent = this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.getIntent();
-    this.jdField_b_of_type_Int = localIntent.getIntExtra("param_entrance", 0);
-    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("bless_ptv_mp4_path");
-    this.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("fake_id");
-    int i = blbs.a(this.jdField_a_of_type_Bkpc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Blbt);
-    if (i != 0)
+    Object localObject2;
+    Object localObject3;
+    bkpe localbkpe2;
+    Object localObject6;
+    Object localObject5;
+    bkpe localbkpe3;
+    Object localObject4;
+    int i;
+    if (this.b)
     {
-      a("MediaMetadataUtils: errcode=" + i, null);
-      return i;
-    }
-    i = this.jdField_a_of_type_Blbt.a[3];
-    this.jdField_a_of_type_Int = (((int)bklh.a(this.jdField_a_of_type_Bkpc.jdField_l_of_type_Int, i) + 500) / 1000);
-    if ((this.jdField_a_of_type_Bkpc.jdField_c_of_type_Int <= 0) || (this.jdField_a_of_type_Bkpc.jdField_d_of_type_Int <= 0))
-    {
-      i = this.jdField_a_of_type_Blbt.a[2];
-      this.jdField_a_of_type_Bkpc.jdField_c_of_type_Int = this.jdField_a_of_type_Blbt.a[0];
-      this.jdField_a_of_type_Bkpc.jdField_d_of_type_Int = this.jdField_a_of_type_Blbt.a[1];
-      if ((i == 90) || (i == 270))
+      boolean bool = axle.e();
+      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (bool))
       {
-        this.jdField_a_of_type_Bkpc.jdField_c_of_type_Int = this.jdField_a_of_type_Bkpc.jdField_d_of_type_Int;
-        this.jdField_a_of_type_Bkpc.jdField_d_of_type_Int = this.jdField_a_of_type_Blbt.a[0];
-      }
-    }
-    return b();
-  }
-  
-  private void a()
-  {
-    a("cancleProgressDailog", null);
-    try
-    {
-      if (this.jdField_a_of_type_AndroidAppProgressDialog != null)
-      {
-        this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
-        this.jdField_a_of_type_AndroidAppProgressDialog = null;
-      }
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  private void a(Context paramContext, int paramInt)
-  {
-    a("showProgressDialog", null);
-    try
-    {
-      if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
-        a();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-        if (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131755791);
-        this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
-        this.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559386);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557));
-      }
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      a("showProgressDialog", paramContext);
-    }
-  }
-  
-  private void a(String paramString, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel())
-    {
-      if (paramThrowable != null) {
-        QLog.d(this.jdField_e_of_type_JavaLangString, 2, "[@] " + paramString, paramThrowable);
-      }
-    }
-    else {
-      return;
-    }
-    QLog.d(this.jdField_e_of_type_JavaLangString, 2, "[@] " + paramString);
-  }
-  
-  /* Error */
-  private int b()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   4: getfield 98	bkpc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   7: aload_0
-    //   8: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   11: getfield 231	bkpc:jdField_a_of_type_Double	D
-    //   14: aload_0
-    //   15: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   18: getfield 233	bkpc:jdField_b_of_type_Double	D
-    //   21: invokestatic 238	bbdr:a	(Ljava/lang/String;DD)Z
-    //   24: pop
-    //   25: new 240	java/io/File
-    //   28: dup
-    //   29: aload_0
-    //   30: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   33: getfield 98	bkpc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   36: invokespecial 243	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: astore_2
-    //   40: new 245	java/io/FileInputStream
-    //   43: dup
-    //   44: aload_0
-    //   45: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   48: getfield 98	bkpc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   51: invokespecial 246	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   54: astore_1
-    //   55: aload_0
-    //   56: aload_1
-    //   57: aload_2
-    //   58: invokevirtual 249	java/io/File:length	()J
-    //   61: invokestatic 255	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   64: invokestatic 261	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   67: putfield 263	bkpb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   70: aload_1
-    //   71: ifnull +7 -> 78
-    //   74: aload_1
-    //   75: invokevirtual 266	java/io/FileInputStream:close	()V
-    //   78: aload_0
-    //   79: getfield 263	bkpb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   82: invokestatic 272	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   85: ifeq +23 -> 108
-    //   88: aload_0
-    //   89: ldc_w 274
-    //   92: aconst_null
-    //   93: invokespecial 86	bkpb:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   96: sipush -302
-    //   99: ireturn
-    //   100: astore_1
-    //   101: aload_1
-    //   102: invokevirtual 277	java/io/IOException:printStackTrace	()V
-    //   105: goto -27 -> 78
-    //   108: aload_0
-    //   109: getfield 263	bkpb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   112: ldc_w 279
-    //   115: invokestatic 284	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   118: astore_1
-    //   119: aload_0
-    //   120: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   123: getfield 98	bkpc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   126: aload_1
-    //   127: invokestatic 287	bbdj:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   130: ifeq +13 -> 143
-    //   133: aload_0
-    //   134: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   137: aload_1
-    //   138: putfield 98	bkpc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   141: iconst_0
-    //   142: ireturn
-    //   143: aload_1
-    //   144: invokestatic 93	bbdj:b	(Ljava/lang/String;)Z
-    //   147: ifne -6 -> 141
-    //   150: aload_0
-    //   151: new 53	java/lang/StringBuilder
-    //   154: dup
-    //   155: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   158: ldc_w 289
-    //   161: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: aload_0
-    //   165: getfield 45	bkpb:jdField_a_of_type_Bkpc	Lbkpc;
-    //   168: getfield 98	bkpc:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   171: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: ldc_w 291
-    //   177: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: aload_1
-    //   181: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: aconst_null
-    //   188: invokespecial 86	bkpb:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   191: sipush -301
-    //   194: ireturn
-    //   195: astore_1
-    //   196: aconst_null
-    //   197: astore_1
-    //   198: goto -128 -> 70
-    //   201: astore_2
-    //   202: goto -132 -> 70
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	205	0	this	bkpb
-    //   54	21	1	localFileInputStream	java.io.FileInputStream
-    //   100	2	1	localIOException	java.io.IOException
-    //   118	63	1	str	String
-    //   195	1	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   197	1	1	localObject	java.lang.Object
-    //   39	19	2	localFile	java.io.File
-    //   201	1	2	localFileNotFoundException2	java.io.FileNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   74	78	100	java/io/IOException
-    //   40	55	195	java/io/FileNotFoundException
-    //   55	70	201	java/io/FileNotFoundException
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    long l = System.currentTimeMillis();
-    int i = a();
-    if (i != 0) {
-      return Integer.valueOf(i);
-    }
-    a("doInBackground total:time=" + (System.currentTimeMillis() - l) / 1000.0D, null);
-    return Integer.valueOf(0);
-  }
-  
-  void a(Intent paramIntent)
-  {
-    paramIntent.putExtra("mediacodec_encode_enable", true);
-    paramIntent.putExtra("file_video_source_dir", this.jdField_a_of_type_JavaLangString);
-    paramIntent.putExtra("thumbfile_send_path", this.jdField_a_of_type_Bkpc.jdField_f_of_type_JavaLangString);
-    paramIntent.putExtra("thumbfile_send_width", this.jdField_a_of_type_Bkpc.jdField_c_of_type_Int);
-    paramIntent.putExtra("thumbfile_send_height", this.jdField_a_of_type_Bkpc.jdField_d_of_type_Int);
-    paramIntent.putExtra("thumbfile_md5", this.jdField_b_of_type_JavaLangString);
-    paramIntent.putExtra("file_send_duration", this.jdField_a_of_type_Int);
-    paramIntent.putExtra("video_mood_content", this.jdField_a_of_type_Bkpc.jdField_g_of_type_JavaLangString);
-    paramIntent.putExtra("video_mood_priv", this.jdField_a_of_type_Bkpc.jdField_e_of_type_Int);
-    paramIntent.putExtra("video_mood_privUinList", this.jdField_a_of_type_Bkpc.jdField_a_of_type_JavaUtilArrayList);
-    paramIntent.putExtra("enable_edit_video", this.jdField_a_of_type_Bkpc.jdField_a_of_type_Boolean);
-    paramIntent.putExtra("video_topic_id", this.jdField_a_of_type_Bkpc.jdField_i_of_type_JavaLangString);
-    paramIntent.putExtra("video_topic_sync_qzone", this.jdField_a_of_type_Bkpc.jdField_b_of_type_Boolean);
-    paramIntent.putExtra("video_new_fake_vid", this.jdField_a_of_type_Bkpc.jdField_j_of_type_JavaLangString);
-    paramIntent.putExtra("video_sync_to_story", this.jdField_a_of_type_Bkpc.jdField_c_of_type_Boolean);
-    paramIntent.putExtra("extra_key_font_id", this.jdField_a_of_type_Bkpc.jdField_f_of_type_Int);
-    paramIntent.putExtra("extra_key_font_format_type", this.jdField_a_of_type_Bkpc.jdField_g_of_type_Int);
-    paramIntent.putExtra("extra_key_font_url", this.jdField_a_of_type_Bkpc.jdField_h_of_type_JavaLangString);
-    paramIntent.putExtra("sv_encode_max_bitrate", axik.r);
-    paramIntent.putExtra("sv_encode_min_bitrate", axik.s);
-    if ((this.jdField_a_of_type_Bkpc.jdField_i_of_type_Int > 0) && (this.jdField_a_of_type_Bkpc.jdField_h_of_type_Int > 0)) {
-      blbi.a("sv_filter_mediacodec_fps", this.jdField_a_of_type_Bkpc.jdField_h_of_type_Int * 1000 / this.jdField_a_of_type_Bkpc.jdField_i_of_type_Int);
-    }
-    paramIntent.putExtra("dynamic_text", this.jdField_a_of_type_Bkpc.jdField_k_of_type_JavaLangString);
-    String str = this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("forward_source_to_qzone");
-    if (!TextUtils.isEmpty(str)) {
-      paramIntent.putExtra("forward_source_to_qzone", str);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bkpc.jdField_l_of_type_JavaLangString)) {
-      paramIntent.putExtra("widgetinfo", this.jdField_a_of_type_Bkpc.jdField_l_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    int j = 0;
-    a();
-    if (((this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity)) || ((this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity instanceof EditVideoActivity))) {}
-    for (int i = 0;; i = 1)
-    {
-      if (paramInteger.intValue() == 0)
-      {
-        paramInteger = new Intent();
-        a(paramInteger);
-        if (this.jdField_a_of_type_Bkpc.jdField_a_of_type_Ahuc != null)
+        localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
+        if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
         {
-          this.jdField_a_of_type_Bkpc.jdField_a_of_type_Ahuc.a(this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity, paramInteger);
-          if (i != 0) {
-            this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.finish();
+          Iterator localIterator = ((ArrayList)localObject1).iterator();
+          localObject2 = null;
+          localObject3 = null;
+          localbkpe2 = null;
+          localObject1 = null;
+          do
+          {
+            localObject7 = localbkpe1;
+            localObject6 = localObject2;
+            localObject5 = localObject3;
+            localbkpe3 = localbkpe2;
+            localObject4 = localObject1;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject4 = (PtvTemplateManager.DoodleInfo)localIterator.next();
+          } while (("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName)) && (Build.VERSION.SDK_INT < 18));
+          i = Integer.valueOf(((PtvTemplateManager.DoodleInfo)localObject4).doodleId).intValue();
+          if ("doodle_image_family".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
+          {
+            localObject4 = new bkpe(paramContext.getResources().getDrawable(2130844247), 2, i);
+            ((bkpe)localObject4).jdField_b_of_type_JavaLangString = ajya.a(2131702436);
+            localObject2 = localObject3;
+            localObject3 = localObject1;
+            localObject1 = localObject4;
           }
-          this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity = null;
-          return;
         }
-        paramInteger.putExtra("uin", this.jdField_a_of_type_Bkpc.jdField_d_of_type_JavaLangString);
-        paramInteger.putExtra("uintype", this.jdField_a_of_type_Bkpc.jdField_b_of_type_Int);
-        paramInteger.putExtra("troop_uin", this.jdField_a_of_type_Bkpc.jdField_e_of_type_JavaLangString);
-        paramInteger.putExtra("file_send_business_type", 2);
-        a("onPostExecute(), MediaCodecSendTask is to start  SendVideoActivity,mVideoCacheDir = " + this.jdField_a_of_type_JavaLangString, null);
-        paramInteger.putExtra("ab_test_send_btn_click_time", this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.getIntent().getLongExtra("ab_test_send_btn_click_time", 0L));
-        paramInteger.putExtra("video_send_aio_key_is_qim", this.jdField_a_of_type_Bkpc.jdField_d_of_type_Boolean);
+      }
+    }
+    for (;;)
+    {
+      localObject4 = localObject3;
+      localObject3 = localObject2;
+      localObject2 = localObject1;
+      localObject1 = localObject4;
+      break;
+      if ("doodle_image_mouth".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
+      {
+        localbkpe1 = new bkpe(paramContext.getResources().getDrawable(2130844248), 2, i);
+        localbkpe1.jdField_b_of_type_JavaLangString = ajya.a(2131702435);
+        localObject4 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+        localObject3 = localObject4;
+      }
+      else if ("doodle_image_xin".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
+      {
+        localObject4 = new bkpe(paramContext.getResources().getDrawable(2130844249), 2, i);
+        ((bkpe)localObject4).jdField_b_of_type_JavaLangString = ajya.a(2131702438);
+        localObject3 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject4;
+      }
+      else if ("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
+      {
+        localObject4 = new bkpe(paramContext.getResources().getDrawable(2130844246), 2, i);
+        ((bkpe)localObject4).jdField_b_of_type_JavaLangString = ajya.a(2131702433);
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+        localObject3 = localObject4;
+      }
+      else if ("doodle_fireworks".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
+      {
+        localbkpe2 = new bkpe(paramContext.getResources().getDrawable(2130844245), 2, i);
+        localbkpe2.jdField_b_of_type_JavaLangString = ajya.a(2131702434);
+        localObject4 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+        localObject3 = localObject4;
+        continue;
         if (QLog.isColorLevel()) {
-          QLog.d("MediaCodecSendTask", 2, "ISQIM MediaCodecSendTask#onPostExecute, isQIM = " + this.jdField_a_of_type_Bkpc.jdField_d_of_type_Boolean);
+          QLog.d("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke doodleInfo is NUll !");
         }
-        paramInteger.putExtra("param_key_redbag_type", this.jdField_a_of_type_Bkpc.jdField_j_of_type_Int);
-        paramInteger.putExtra("special_video_type", this.jdField_a_of_type_Bkpc.jdField_k_of_type_Int);
-        if ((this.jdField_a_of_type_Bkpc.jdField_d_of_type_JavaLangString != null) && (this.jdField_a_of_type_Bkpc.jdField_d_of_type_JavaLangString.equals(MessageForBlessPTV.BLESS_REQ_UIN)))
+        localObject6 = null;
+        localObject5 = null;
+        localbkpe3 = null;
+        localObject4 = null;
+        i = 0;
+        while (i < bkpe.jdField_b_of_type_ArrayOfInt.length)
         {
-          paramInteger.putExtra("bless_ptv_mp4_path", this.jdField_c_of_type_JavaLangString);
-          paramInteger.setClass(this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity, BlessSelectMemberActivity.class);
-          paramInteger.putExtra("param_type", 9003);
-          paramInteger.putExtra("param_only_friends", true);
-          paramInteger.putExtra("param_donot_need_contacts", true);
-          paramInteger.putExtra("param_title", this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.getString(2131690514));
-          paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.getString(2131691035));
-          paramInteger.putExtra("param_exit_animation", 1);
-          paramInteger.putExtra("param_entrance", this.jdField_b_of_type_Int);
-          paramInteger.putExtra("param_blesstype", 2);
-          paramInteger.putExtra("encode_type", 1);
-          paramInteger.putExtra("fake_id", this.jdField_d_of_type_JavaLangString);
-          this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramInteger, 10007);
-          i = j;
-          j = i;
-          label488:
-          if (this.jdField_a_of_type_Bihq == null) {
-            break label629;
+          paramArrayList.add(new bkpe(paramContext.getResources().getDrawable(bkpe.jdField_b_of_type_ArrayOfInt[i]), 0, bkpe.a[i]));
+          i += 1;
+        }
+        if (localObject4 != null) {
+          paramArrayList.add(localObject4);
+        }
+        if (localbkpe3 != null) {
+          paramArrayList.add(localbkpe3);
+        }
+        if (localObject5 != null) {
+          paramArrayList.add(localObject5);
+        }
+        if (localObject6 != null) {
+          paramArrayList.add(localObject6);
+        }
+        if (localObject7 != null) {
+          paramArrayList.add(localObject7);
+        }
+        for (;;)
+        {
+          return;
+          i = 0;
+          while (i < bkpe.a.length)
+          {
+            paramArrayList.add(new bkpe(paramContext.getResources().getDrawable(bkpe.jdField_b_of_type_ArrayOfInt[i]), 0, bkpe.a[i]));
+            i += 1;
           }
-          this.jdField_a_of_type_Bihq.a();
         }
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity = null;
-        return;
-        paramInteger.setClass(this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity, SendVideoActivity.class);
-        paramInteger.putExtra("src_edited", this.jdField_b_of_type_Boolean);
-        this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.startActivity(paramInteger);
-        break;
-        bcpw.a(this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity, ajyc.a(2131706491), 0).b(this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298865));
-        j = i;
-        if (!QLog.isColorLevel()) {
-          break label488;
-        }
-        QLog.d(this.jdField_e_of_type_JavaLangString, 2, "" + paramInteger);
-        j = i;
-        break label488;
-        label629:
-        if (j != 0) {
-          this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity.finish();
-        }
+        localObject4 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+        localObject3 = localObject4;
       }
     }
-  }
-  
-  protected void onPreExecute()
-  {
-    a(this.jdField_a_of_type_Bkpc.jdField_a_of_type_AndroidAppActivity, 2131695125);
   }
 }
 

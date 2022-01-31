@@ -1,98 +1,88 @@
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.webkit.MimeTypeMap;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import java.io.File;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
 
-public final class bdng
+public class bdng
 {
-  public static Intent a(Context paramContext, File paramFile)
+  public static String a(String paramString)
   {
-    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
-      return null;
-    }
-    String str = paramFile.getName().toLowerCase().trim();
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.addFlags(268435456);
-    if (a(str, paramContext.getResources().getStringArray(2130968625))) {
-      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
-    }
-    for (;;)
+    bdii.b("CommonUtils_", "genExistedAPKFileNameByUrl url = " + paramString);
+    Object localObject2 = null;
+    if (paramString.contains(".apk"))
     {
-      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
-      return localIntent;
-      if (a(str, paramContext.getResources().getStringArray(2130968631)))
-      {
-        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
+      localObject2 = paramString.trim().substring(paramString.lastIndexOf("/") + 1).trim();
+      localObject1 = localObject2;
+      if (((String)localObject2).contains("?")) {
+        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("?"));
       }
-      else if (a(str, paramContext.getResources().getStringArray(2130968622)))
+      localObject2 = localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("oneshot", 0);
-        localIntent.putExtra("configchange", 0);
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
+        paramString = c(b((String)localObject1));
+        bdii.b("CommonUtils_", "genExistedAPKFileNameByUrl  fileName = " + paramString);
+        return paramString;
       }
-      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
-      {
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("oneshot", 0);
-        localIntent.putExtra("configchange", 0);
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
+    }
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject2 = GlobalUtil.calcMD5AsString(paramString);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = Integer.toString(Math.abs(paramString.hashCode()));
       }
-      else if (a(str, paramContext.getResources().getStringArray(2130968629)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968623)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
-      }
-      else
-      {
-        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
-        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
-      }
+      localObject1 = (String)localObject1 + ".apk";
+    }
+    bdii.b("CommonUtils_", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
+    return localObject1;
+  }
+  
+  public static void a(ImageView paramImageView, String paramString)
+  {
+    try
+    {
+      paramString = new URL(paramString);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = 234;
+      localURLDrawableOptions.mRequestWidth = 234;
+      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130841351);
+      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130841351);
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      paramString.setAutoDownload(true);
+      paramString.setURLDrawableListener(new bdnh(paramImageView));
+      paramString.startDownload();
+      paramImageView.setImageDrawable(paramString);
+      return;
+    }
+    catch (MalformedURLException paramImageView)
+    {
+      paramImageView.printStackTrace();
     }
   }
   
-  public static boolean a(String paramString, String[] paramArrayOfString)
+  public static boolean a()
   {
-    boolean bool2 = false;
-    int j = paramArrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramString.endsWith(paramArrayOfString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
+    return bdlr.a().b();
+  }
+  
+  private static String b(String paramString)
+  {
+    if (paramString != null) {
+      return URLDecoder.decode(paramString);
     }
+    return "";
+  }
+  
+  private static String c(String paramString)
+  {
+    return paramString.replace("?", "_").replace("*", "_").replace(" ", "_").replace("$", "_").replace("&", "_").replace("@", "_").replace("#", "_").replace("<", "_").replace(">", "_").replace("|", "_").replace(":", "_").replace("/", "_").replace("\\", "_").replace("\"", "_");
   }
 }
 

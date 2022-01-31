@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amgk
-  extends akim
 {
-  public amgk(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
+  int a = -1;
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static amgk a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MessageNotificationSettingFragment", 2, "onOIDB0XA80_0_Ret: invoked.  isSuccess : " + paramBoolean + " op: " + paramInt1 + " type: " + Integer.toHexString(paramInt2));
-    }
-    if (paramBoolean) {
-      MessageNotificationSettingFragment.a(this.a).a(paramString1, paramInt1, paramInt2);
-    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        amgk localamgk = new amgk();
+        localamgk.a = new JSONObject(paramString).getInt("maxcount");
+        amhe.a = localamgk.a;
+        if (QLog.isColorLevel()) {
+          QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed maxcount " + localamgk.a);
+        }
+        return localamgk;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed erro " + paramString.toString());
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.a;
   }
 }
 

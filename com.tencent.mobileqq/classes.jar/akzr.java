@@ -1,39 +1,54 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-class akzr
-  implements View.OnTouchListener
+public class akzr
 {
-  akzr(akzq paramakzq) {}
+  private int jdField_a_of_type_Int;
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public akzr(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.jdField_a_of_type_JavaIoBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = 0;
+    if ((this.c != 8) && (this.c != 16)) {
+      throw new RuntimeException(String.format("bit deepth must be 8 or 16, current is %s", new Object[] { Integer.valueOf(this.c) }));
     }
-    do
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
+    try
     {
-      do
-      {
-        return true;
-        akzq.a(this.a).setAlpha(0.5F);
-        return true;
-        akzq.a(this.a).setAlpha(1.0F);
-        if (!akzq.a(this.a))
-        {
-          akzh.a(true);
-          akzq.a(this.a, true);
-        }
-        akzq.a(this.a).setVisibility(8);
-        akzq.a(this.a).clearAnimation();
-      } while (akzq.a(this.a) == null);
-      akzq.a(this.a).g();
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
-    return true;
+      this.jdField_a_of_type_JavaIoBufferedInputStream.close();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public byte[] a(long paramLong)
+  {
+    int i = (int)(this.jdField_a_of_type_Int * paramLong / 1000L) * this.b * (this.c / 8);
+    byte[] arrayOfByte1 = new byte[i];
+    byte[] arrayOfByte2 = new byte[i];
+    i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(arrayOfByte1, this.d, i);
+    if (i != -1) {
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
+    }
+    QLog.d("AudioGenerator", 4, String.format("read index:%s, len: %s", new Object[] { Integer.valueOf(this.e), Integer.valueOf(i) }));
+    return arrayOfByte2;
   }
 }
 

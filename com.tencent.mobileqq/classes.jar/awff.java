@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface awff
 {
-  public abstract void a(String paramString);
+  public abstract void a(int paramInt, View paramView);
 }
 
 

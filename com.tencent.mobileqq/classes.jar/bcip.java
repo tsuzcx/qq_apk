@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-
-public class bcip
-  extends akim
+public abstract interface bcip
 {
-  public bcip(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-  }
+  public abstract void a();
 }
 
 

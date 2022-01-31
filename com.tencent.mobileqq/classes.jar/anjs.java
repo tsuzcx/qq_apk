@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.QQPhotoInfo;
+import com.tencent.mobileqq.data.PrecoverResource;
 
 public final class anjs
-  implements Parcelable.Creator<QQPhotoInfo>
+  implements Parcelable.Creator<PrecoverResource>
 {
-  public QQPhotoInfo a(Parcel paramParcel)
+  public PrecoverResource a(Parcel paramParcel)
   {
-    return new QQPhotoInfo(paramParcel, null);
+    return new PrecoverResource(paramParcel);
   }
   
-  public QQPhotoInfo[] a(int paramInt)
+  public PrecoverResource[] a(int paramInt)
   {
-    return new QQPhotoInfo[paramInt];
+    return new PrecoverResource[paramInt];
   }
 }
 

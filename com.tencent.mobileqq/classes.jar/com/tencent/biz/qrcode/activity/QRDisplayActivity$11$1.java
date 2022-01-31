@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import wim;
+import wij;
 
 class QRDisplayActivity$11$1
   implements Runnable
@@ -12,7 +12,7 @@ class QRDisplayActivity$11$1
     if (this.a.this$0.isFinishing()) {
       return;
     }
-    wim.a(1, 2131696769);
+    wij.a(1, 2131696770);
   }
 }
 

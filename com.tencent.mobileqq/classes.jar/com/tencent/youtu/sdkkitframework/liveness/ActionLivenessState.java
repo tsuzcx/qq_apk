@@ -2,6 +2,7 @@ package com.tencent.youtu.sdkkitframework.liveness;
 
 import android.content.Context;
 import android.graphics.YuvImage;
+import android.os.Environment;
 import com.tencent.youtu.sdkkitframework.common.FileUtils;
 import com.tencent.youtu.sdkkitframework.common.YtLogger;
 import com.tencent.youtu.sdkkitframework.common.YtVideoEncoder;
@@ -38,7 +39,7 @@ public class ActionLivenessState
   private int continuousDetectCount = 0;
   private int currentRotateState;
   private YTFaceTrack.FaceStatus[] faceStatus;
-  private String innerMp4Path = "/sdcard/temp.mp4";
+  private String innerMp4Path = Environment.getExternalStorageDirectory().getPath() + "/temp.mp4";
   private boolean isActionFinished = false;
   private boolean isLoadResourceOnline = false;
   private boolean needLocalConfig = false;

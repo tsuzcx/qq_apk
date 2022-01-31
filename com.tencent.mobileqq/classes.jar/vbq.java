@@ -1,18 +1,24 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vbq
-  extends uyl
+public class vbq
+  extends QQUIEventReceiver<vba, tcd>
 {
-  vbq(vbd paramvbd) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public vbq(@NonNull vba paramvba)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    super(paramvba);
+  }
+  
+  public void a(@NonNull vba paramvba, @NonNull tcd paramtcd)
+  {
+    if (paramtcd.a) {
+      vba.d(paramvba);
     }
-    this.a.l();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tcd.class;
   }
 }
 

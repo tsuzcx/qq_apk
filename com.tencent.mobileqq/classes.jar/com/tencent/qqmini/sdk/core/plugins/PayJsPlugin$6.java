@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
 import org.json.JSONException;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 class PayJsPlugin$6
   implements PayProxy.IPayResultCallBack
 {
-  PayJsPlugin$6(PayJsPlugin paramPayJsPlugin, beka parambeka) {}
+  PayJsPlugin$6(PayJsPlugin paramPayJsPlugin, bekr parambekr) {}
   
   public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
@@ -24,7 +24,7 @@ class PayJsPlugin$6
       }
       for (;;)
       {
-        besl.b("PayJsPlugin", "handleMidasMonthCardPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        betc.b("PayJsPlugin", "handleMidasMonthCardPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
         return;
         if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
         {
@@ -45,7 +45,7 @@ class PayJsPlugin$6
   
   public void payNeedLogin()
   {
-    besl.d("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
+    betc.d("PayJsPlugin", "handleMidasMonthCardPay payNeedLogin");
     PayJsPlugin.access$200(this.this$0, this.val$req, null, "payNeedLogin");
   }
 }

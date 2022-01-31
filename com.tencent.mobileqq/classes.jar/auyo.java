@@ -1,42 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.upload.uinterface.IUploadService;
-import com.tencent.upload.uinterface.UploadServiceBuilder;
-import mqq.manager.Manager;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
 
-public class auyo
-  implements Manager
+class auyo
+  implements IUploadTaskCallback
 {
-  public auyo(QQAppInterface paramQQAppInterface) {}
+  auyo(auyn paramauyn) {}
   
-  private void b(QQAppInterface paramQQAppInterface, auyk paramauyk)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    bhax localbhax = new bhax();
-    if (paramauyk != null)
+    this.a.f = 1002;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramString;
+    this.a.a(1002, new Object[0]);
+  }
+  
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  {
+    if (this.a.f != paramInt)
     {
-      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramauyk, null, null, localbhax, localbhax);
-      return;
+      this.a.f = paramInt;
+      this.a.a(this.a.f, new Object[0]);
     }
-    paramauyk = new auyp(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramauyk, null, null, localbhax, localbhax);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, auyk paramauyk)
+  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
   {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, paramauyk);
-    }
+    this.a.f = 1001;
+    this.a.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.a(1001, new Object[0]);
   }
-  
-  public void a(QQAppInterface paramQQAppInterface, auyl paramauyl, auyk paramauyk)
-  {
-    if (!UploadServiceBuilder.getInstance().isInitialized()) {
-      b(paramQQAppInterface, paramauyk);
-    }
-    paramauyl.a();
-  }
-  
-  public void onDestroy() {}
 }
 
 

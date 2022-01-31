@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import akai;
-import bdey;
+import akag;
+import bdfn;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -9,7 +9,7 @@ import com.tencent.mfsdk.reporter.ReporterMachine;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xov;
+import xos;
 
 final class InitMagnifierSDK$1
   implements Runnable
@@ -27,13 +27,13 @@ final class InitMagnifierSDK$1
         localJSONObject2.put("vcname", this.jdField_a_of_type_JavaLangString);
         localJSONObject2.put("singleMemory", String.valueOf(this.jdField_a_of_type_Long));
         localJSONObject2.put("threshold", String.valueOf(this.jdField_b_of_type_Long));
-        if (akai.a().a.a) {}
+        if (akag.a().a.a) {}
         for (Object localObject = "1";; localObject = "0")
         {
           localJSONObject2.put("clearFlag", localObject);
           localObject = new JSONObject();
           ((JSONObject)localObject).put("p_id", MagnifierSDK.a());
-          ((JSONObject)localObject).put("processname", bdey.r());
+          ((JSONObject)localObject).put("processname", bdfn.r());
           ((JSONObject)localObject).put("plugin", String.valueOf(9));
           localJSONObject1.put("minidumpdata", localJSONObject2);
           localJSONObject1.put("clientinfo", localObject);

@@ -13,18 +13,22 @@ public class lfs
   public lfs(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lft(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lfu(paramVideoAppInterface, null);
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a()
   {
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qav.notify.accept");
+    localIntentFilter.addAction("com.tencent.qav.notify.refuse");
+    localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
     if (QLog.isColorLevel()) {
-      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
+      QLog.i("QAVNotifyActionMonitor", 2, "register");
     }
   }
   
@@ -34,6 +38,9 @@ public class lfs
     {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       this.jdField_a_of_type_Boolean = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "unRegister");
     }
   }
 }

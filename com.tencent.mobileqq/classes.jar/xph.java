@@ -1,13 +1,20 @@
-import android.app.Activity;
-import com.tencent.widget.AdapterView;
+import android.view.animation.Animation;
 
-public abstract class xph
+class xph
+  extends bfmx
 {
-  public abstract void a(int paramInt);
+  xph(xpf paramxpf) {}
   
-  public abstract void a(Activity paramActivity, xpi paramxpi, int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.a().b();
+    this.a.a.a().a();
+  }
   
-  public abstract void a(AdapterView paramAdapterView, int paramInt);
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.a().c();
+  }
 }
 
 

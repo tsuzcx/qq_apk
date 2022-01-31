@@ -1,75 +1,31 @@
+import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.HashMap;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.RspBody;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.SelfCardInfo;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import cooperation.troop.NearbyVideoChatProxyActivity;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
 
-public class aszy
-  implements BusinessObserver
+class aszy
+  implements wxt
 {
-  public aszy(NearbyJsInterface paramNearbyJsInterface, String paramString, boolean paramBoolean) {}
+  aszy(aszx paramaszx, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(Bundle paramBundle)
   {
-    paramInt = 1;
-    int i = 0;
-    Object localObject;
-    if ((paramBoolean) && (paramBundle != null))
+    if (paramBundle.getBoolean("isOtherTypeChatting", false))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new oidb_sso.OIDBSSOPkg();
-      }
+      paramBundle = bbdj.a(this.jdField_a_of_type_Aszx.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), 230);
+      paramBundle.setMessage(this.jdField_a_of_type_Aszx.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131696182));
+      paramBundle.setNegativeButton(ajya.a(2131707203), new aszz(this));
+      paramBundle.show();
+      return;
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-        if ((paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()) && (paramBundle.bytes_bodybuffer.get() != null))
-        {
-          localObject = new oidb_0x8c1.RspBody();
-          ((oidb_0x8c1.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          paramBundle = (oidb_0x8c1.SelfCardInfo)((oidb_0x8c1.RspBody)localObject).msg_card_info.get();
-          if (!paramBundle.int32_friend_flag.has()) {
-            break label257;
-          }
-          if (paramBundle.int32_friend_flag.get() != 1) {
-            continue;
-          }
-          break label264;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_Wxu.a(paramBundle.bytes_xml_msg.get().toByteArray(), String.valueOf(paramBundle.uint64_uin.get()), 2, paramInt);
-          paramBundle = new atab(String.valueOf(paramBundle.uint64_uin.get()), paramBundle.int32_direction_flag.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(this.jdField_a_of_type_JavaLangString), paramBundle);
-          if (this.jdField_a_of_type_Boolean) {
-            NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, paramBundle);
-          }
-        }
-        return;
-        paramInt = 0;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramInt = 1001;
-      continue;
-      label257:
-      paramInt = 1001;
-      continue;
-      label264:
-      if (paramInt != 0) {
-        paramInt = i;
-      }
-    }
+    wxr.a();
+    paramBundle = new oidb_0x8dd.SelfInfo();
+    paramBundle.uint32_gender.set(this.jdField_a_of_type_Aszx.jdField_a_of_type_Int);
+    paramBundle.uint32_charm_level.set(this.jdField_a_of_type_Aszx.b);
+    paramBundle.uint32_age.set(this.jdField_a_of_type_Aszx.c);
+    NearbyVideoChatProxyActivity.a(this.jdField_a_of_type_Aszx.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), this.jdField_a_of_type_Aszx.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), null, this.jdField_a_of_type_JavaLangString, paramBundle, 0);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import apfa;
-import awut;
-import awvg;
+import apfe;
+import awuv;
+import awvi;
 import java.util.ArrayList;
 import java.util.List;
 
 class ChatFileManagerSearchEngine$SearchRunnable
   implements Runnable
 {
-  awut<apfa> jdField_a_of_type_Awut;
-  awvg jdField_a_of_type_Awvg;
+  awuv<apfe> jdField_a_of_type_Awuv;
+  awvi jdField_a_of_type_Awvi;
   
   private ChatFileManagerSearchEngine$SearchRunnable(ChatFileManagerSearchEngine paramChatFileManagerSearchEngine) {}
   
@@ -18,18 +18,18 @@ class ChatFileManagerSearchEngine$SearchRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Awvg == null)
+      if (this.jdField_a_of_type_Awvi == null)
       {
-        this.jdField_a_of_type_Awut.a(new ArrayList(), 6);
+        this.jdField_a_of_type_Awuv.a(new ArrayList(), 6);
         return;
       }
-      awvg localawvg = this.jdField_a_of_type_Awvg;
-      String str = this.jdField_a_of_type_Awvg.a;
-      List localList = this.this$0.a(localawvg);
+      awvi localawvi = this.jdField_a_of_type_Awvi;
+      String str = this.jdField_a_of_type_Awvi.a;
+      List localList = this.this$0.a(localawvi);
       try
       {
-        if ((this.jdField_a_of_type_Awut != null) && (localawvg == this.jdField_a_of_type_Awvg) && (str.equals(this.jdField_a_of_type_Awvg.a))) {
-          this.jdField_a_of_type_Awut.a(localList, 1);
+        if ((this.jdField_a_of_type_Awuv != null) && (localawvi == this.jdField_a_of_type_Awvi) && (str.equals(this.jdField_a_of_type_Awvi.a))) {
+          this.jdField_a_of_type_Awuv.a(localList, 1);
         }
         return;
       }

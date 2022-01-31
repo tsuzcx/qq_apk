@@ -1,35 +1,24 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmr
-  extends syv<tol>
+  extends sym
 {
-  private static final String a = sxp.a("StorySvc.video_music_get");
+  public List<uvp> a = new ArrayList();
   
-  public String a()
+  public tmr(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
   {
-    return a;
-  }
-  
-  public tol a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
-    try
+    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
+    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspProfileStoryFeedIdList.hasNext())
     {
-      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
-      return new tol(localRspGetMusicListConfig);
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
+      this.a.add(new uvp(localFeedSeqInfo));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 

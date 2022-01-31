@@ -1,118 +1,66 @@
-import android.content.Context;
-import android.view.SurfaceHolder;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import cooperation.troop_homework.outer.TroopHWRecordArrangeActivity;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhyb
+  extends Handler
 {
-  private Object a = bhnv.a("com.tencent.tar.TarInterface", null, new Object[0]);
+  public bhyb(TroopHWRecordArrangeActivity paramTroopHWRecordArrangeActivity) {}
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = bhnv.a(this.a, "getConfigWith", false, null, new Object[0]);
-    if ((localObject instanceof Integer)) {
-      return ((Integer)localObject).intValue();
-    }
-    return -1;
-  }
-  
-  public int a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean)
-  {
-    paramSurfaceHolder = bhnv.a(this.a, "onDrawFrame", false, a(new Class[] { SurfaceHolder.class, Boolean.TYPE }), new Object[] { paramSurfaceHolder, Boolean.valueOf(paramBoolean) });
-    if ((paramSurfaceHolder instanceof Integer)) {
-      return ((Integer)paramSurfaceHolder).intValue();
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    bhnv.a(this.a, "onResume", false, null, new Object[0]);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    bhnv.a(this.a, "setTrackingPoint", false, a(new Class[] { Float.TYPE, Float.TYPE }), new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    bhnv.a(this.a, "onSurfaceChanged", false, a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    bhnv.a(this.a, "init", false, a(new Class[] { Context.class, Integer.TYPE }), new Object[] { paramContext, Integer.valueOf(paramInt) });
-  }
-  
-  public float[] a()
-  {
-    Object localObject = bhnv.a(this.a, "getModelMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
-  }
-  
-  public Class[] a(Class... paramVarArgs)
-  {
-    Class[] arrayOfClass = new Class[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
+    switch (paramMessage.what)
     {
-      arrayOfClass[i] = paramVarArgs[i];
-      i += 1;
+    default: 
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_Boolean = true;
+      return;
+    case 101: 
+      this.a.setResult(0);
+      this.a.finish();
+      return;
     }
-    return arrayOfClass;
-  }
-  
-  public int b()
-  {
-    Object localObject = bhnv.a(this.a, "getConfigHeight", false, null, new Object[0]);
-    if ((localObject instanceof Integer)) {
-      return ((Integer)localObject).intValue();
+    paramMessage = paramMessage.obj.toString();
+    Object localObject = new File(paramMessage);
+    long l;
+    if (((File)localObject).exists()) {
+      l = ((File)localObject).length();
     }
-    return -1;
-  }
-  
-  public void b()
-  {
-    bhnv.a(this.a, "onStop", false, null, new Object[0]);
-  }
-  
-  public float[] b()
-  {
-    Object localObject = bhnv.a(this.a, "getViewMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      paramMessage = new JSONObject();
+      try
+      {
+        paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
+        paramMessage.put("type", "record");
+        paramMessage.put("state", "stop");
+        paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
+        paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("jscallback", paramMessage.toString());
+        ((Intent)localObject).putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+        this.a.setResult(-1, (Intent)localObject);
+        this.a.finish();
+        return;
+        l = 0L;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
     }
-    return null;
-  }
-  
-  public void c()
-  {
-    bhnv.a(this.a, "onDestroy", false, null, new Object[0]);
-  }
-  
-  public float[] c()
-  {
-    Object localObject = bhnv.a(this.a, "getProjectionMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
-  }
-  
-  public void d()
-  {
-    bhnv.a(this.a, "onSurfaceCreated", false, null, new Object[0]);
-  }
-  
-  public float[] d()
-  {
-    Object localObject = bhnv.a(this.a, "getScaleMatrix", false, null, new Object[0]);
-    if ((localObject instanceof float[])) {
-      return (float[])localObject;
-    }
-    return null;
   }
 }
 

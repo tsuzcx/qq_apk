@@ -10,8 +10,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import xzu;
-import ygb;
+import xzr;
+import yfy;
 
 public class QFindBLEScanMgr$NotifyReceiver
   extends BroadcastReceiver
@@ -33,7 +33,7 @@ public class QFindBLEScanMgr$NotifyReceiver
         if (!paramIntent.hasNext()) {
           break;
         }
-        paramContext = (ygb)paramIntent.next();
+        paramContext = (yfy)paramIntent.next();
       } while (paramContext.c != i);
     }
     for (;;)
@@ -52,7 +52,7 @@ public class QFindBLEScanMgr$NotifyReceiver
           {
             return;
             paramContext = JNIEngineLite.packVerifyReq((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
-            xzu.a().a(i, paramContext);
+            xzr.a().a(i, paramContext);
           } while (!QLog.isColorLevel());
           QLog.i("QFindBLE", 2, "QFindBLEScanMgr GATT_SERVICES_DISCOVERED bleId " + i);
           return;
@@ -69,7 +69,7 @@ public class QFindBLEScanMgr$NotifyReceiver
             if (!localIterator.hasNext()) {
               break;
             }
-            paramContext = (ygb)localIterator.next();
+            paramContext = (yfy)localIterator.next();
           } while (paramContext.c != i);
           if (paramContext != null) {
             break;
@@ -87,14 +87,14 @@ public class QFindBLEScanMgr$NotifyReceiver
           paramIntent = "" + paramContext.jdField_a_of_type_Int + "|" + paramContext.a();
           paramContext.jdField_a_of_type_Boolean = true;
           paramContext.jdField_b_of_type_Boolean = false;
-          paramIntent = (ygb)this.a.a.put(paramIntent, paramContext);
+          paramIntent = (yfy)this.a.a.put(paramIntent, paramContext);
           if (QLog.isColorLevel()) {
             QLog.i("QFindBLE", 2, "QFindBLEScanMgr onDeviceVerifyRsp old bleId " + paramIntent.c + " ; reported = " + paramIntent.jdField_a_of_type_Boolean);
           }
         }
         for (;;)
         {
-          xzu.a().a(paramContext.a());
+          xzr.a().a(paramContext.a());
           return;
           if (QLog.isColorLevel()) {
             QLog.i("QFindBLE", 2, "QFindBLEScanMgr onDeviceVerifyRsp report already bleId " + i + " ; reported = " + paramContext.jdField_a_of_type_Boolean);
@@ -108,7 +108,7 @@ public class QFindBLEScanMgr$NotifyReceiver
         if (!paramIntent.hasNext()) {
           break;
         }
-        paramContext = (ygb)paramIntent.next();
+        paramContext = (yfy)paramIntent.next();
       } while (paramContext.c != i);
       for (;;)
       {
@@ -129,7 +129,7 @@ public class QFindBLEScanMgr$NotifyReceiver
           paramIntent = "" + paramContext.jdField_a_of_type_Int + "|" + paramContext.a();
           paramContext.jdField_a_of_type_Boolean = true;
           paramContext.jdField_b_of_type_Boolean = false;
-          paramContext = (ygb)this.a.a.put(paramIntent, paramContext);
+          paramContext = (yfy)this.a.a.put(paramIntent, paramContext);
           if (!QLog.isColorLevel()) {
             break;
           }

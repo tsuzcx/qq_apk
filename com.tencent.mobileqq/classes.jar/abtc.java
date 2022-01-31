@@ -1,16 +1,21 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abtc
-  extends atzl
+  implements View.OnTouchListener
 {
   public abtc(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.a();
+      nol.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
     }
+    return true;
   }
 }
 

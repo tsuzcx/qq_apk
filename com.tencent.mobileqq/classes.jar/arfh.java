@@ -1,17 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class arfh
-  implements EnterCallback
+class arfh
+  implements mrm
 {
-  public arfh(GroupVideoManager.3 param3) {}
+  arfh(arfg paramarfg, String paramString) {}
   
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
+    }
+    mrf.a().a();
+    if (paramInt == 1)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("roomCodeType", 1);
+      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
+      arfg.a(this.jdField_a_of_type_Arfg, localBundle, 1001L);
+    }
+  }
 }
 
 

@@ -4,19 +4,19 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.widget.SquareImageView;
-import roh;
-import roj;
+import roe;
+import rog;
 
 public class ReadInJoyDiandianHeaderController$OnCommunityItemListener$1
   implements Runnable
 {
-  public ReadInJoyDiandianHeaderController$OnCommunityItemListener$1(roj paramroj, View paramView) {}
+  public ReadInJoyDiandianHeaderController$OnCommunityItemListener$1(rog paramrog, View paramView) {}
   
   public void run()
   {
-    roh localroh = (roh)this.jdField_a_of_type_AndroidViewView.getTag();
-    localroh.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
-    localroh.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    roe localroe = (roe)this.jdField_a_of_type_AndroidViewView.getTag();
+    localroe.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
+    localroe.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

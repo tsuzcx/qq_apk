@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
 
 public class bkus
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bjxn
 {
-  public bkus(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public bkus(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void c()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    super.c();
+    if ((EditWebDanceMachineVideoActivity.a(this.a)) || (EditWebDanceMachineVideoActivity.b(this.a)))
+    {
+      axty localaxty = new axty();
+      localaxty.d = "0X800903D";
+      axqu.a(null, localaxty);
+    }
   }
 }
 

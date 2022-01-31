@@ -1,23 +1,54 @@
-class pke
-  extends osp
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
+public class pke
+  extends ViewBase
 {
-  pke(pkd parampkd) {}
+  private NativeGridImageView a;
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public pke(VafContext paramVafContext)
   {
-    pkd.a(this.a, paramBoolean, paramInt, paramString);
+    super(paramVafContext);
+    this.a = new NativeGridImageView(paramVafContext.getContext());
   }
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  public void a(ArticleInfo paramArticleInfo)
   {
-    pkd.a(this.a, paramBoolean, paramLong, paramInt, paramString);
+    this.a.a(paramArticleInfo);
   }
   
-  public void m()
+  public int getComMeasuredHeight()
   {
-    if (pkd.a(this.a) == 2) {
-      pkd.a(this.a, true);
-    }
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.a(this);
   }
 }
 

@@ -1,14 +1,6 @@
-import android.graphics.Bitmap;
-
 public abstract interface vod
 {
   public abstract void a();
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(voe paramvoe);
 }
 
 

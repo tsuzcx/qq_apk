@@ -1,39 +1,34 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
-public class aghl
-  extends aggy
+class aghl
+  extends akat
 {
-  public aghl(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  aghl(aghk paramaghk) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
+    if (aghk.a(this.a) != null) {
+      aghk.a(this.a).a(paramString1);
+    }
   }
   
-  protected boolean b()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    return true;
+    a(paramBoolean, paramString, paramLong, null);
   }
   
-  protected void g()
+  protected void a(boolean paramBoolean, String paramString, long paramLong, akaq paramakaq)
   {
-    this.e = true;
-    super.g();
+    if (aghk.a(this.a) != null) {
+      aghk.a(this.a).a(paramString);
+    }
   }
   
-  protected void u()
+  public void b(String paramString)
   {
-    super.u();
-  }
-  
-  protected void v()
-  {
-    super.v();
-  }
-  
-  protected void y()
-  {
-    this.a = "MiniPieForTroop";
+    if (aghk.a(this.a) != null) {
+      aghk.a(this.a).a(paramString);
+    }
   }
 }
 

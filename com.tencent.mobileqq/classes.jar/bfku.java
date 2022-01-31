@@ -1,85 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class bfku
-  implements bfle
 {
-  public bfku(AudioDeviceInterface paramAudioDeviceInterface) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public void a(int paramInt)
+  bfku()
   {
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
-    }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 4;
   }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
-  {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
-    }
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfku
  * JD-Core Version:    0.7.0.1
  */

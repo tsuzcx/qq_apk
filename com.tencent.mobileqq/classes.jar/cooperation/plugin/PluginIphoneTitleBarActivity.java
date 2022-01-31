@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bglp;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -33,7 +33,7 @@ public class PluginIphoneTitleBarActivity
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   protected float b;
   protected ViewGroup b;
-  protected View.OnClickListener c = new bglp(this);
+  protected View.OnClickListener c = new bgmg(this);
   public RelativeLayout e;
   public ImageView f;
   protected TextView h;
@@ -63,7 +63,7 @@ public class PluginIphoneTitleBarActivity
   {
     this.j = ((TextView)findViewById(2131368457));
     this.f = ((ImageView)findViewById(2131368441));
-    this.l = ((TextView)findViewById(2131378031));
+    this.l = ((TextView)findViewById(2131378036));
     f(this.j);
     f(this.f);
     return this.j;
@@ -84,10 +84,10 @@ public class PluginIphoneTitleBarActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130849032));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130849038));
     if (this.h == null)
     {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131375327));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131375329));
       f(this.jdField_b_of_type_AndroidViewViewGroup);
       b();
       c();
@@ -304,7 +304,7 @@ public class PluginIphoneTitleBarActivity
               this.e.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
             }
             localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131375327);
+            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131375329);
             this.e.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
             this.mContentView = ((View)localObject2);
             super.setContentView(this.e);

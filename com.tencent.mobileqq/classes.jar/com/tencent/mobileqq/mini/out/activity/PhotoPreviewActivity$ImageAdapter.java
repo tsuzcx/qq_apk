@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import agpe;
-import ajyc;
+import agpc;
+import ajya;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import aywk;
+import aywm;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 class PhotoPreviewActivity$ImageAdapter
   extends BaseAdapter
-  implements agpe
+  implements agpc
 {
   SparseArray<URLDrawable> mActiveDrawable = new SparseArray();
   URLDrawable mRawDrawable;
@@ -64,7 +64,7 @@ class PhotoPreviewActivity$ImageAdapter
     }
     for (;;)
     {
-      paramView.setContentDescription(ajyc.a(2131708138) + paramInt);
+      paramView.setContentDescription(ajya.a(2131708149) + paramInt);
       return paramView;
       if (!TextUtils.isEmpty(str))
       {
@@ -73,7 +73,7 @@ class PhotoPreviewActivity$ImageAdapter
         paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
         paramViewGroup.mRequestWidth = i;
         paramViewGroup.mRequestHeight = j;
-        paramViewGroup.mLoadingDrawable = aywk.a;
+        paramViewGroup.mLoadingDrawable = aywm.a;
         paramViewGroup = URLDrawable.getDrawable(str, paramViewGroup);
         switch (paramViewGroup.getStatus())
         {
@@ -129,7 +129,7 @@ class PhotoPreviewActivity$ImageAdapter
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
       localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
-      localURLDrawableOptions.mLoadingDrawable = aywk.a;
+      localURLDrawableOptions.mLoadingDrawable = aywm.a;
       paramView = URLDrawable.getDrawable(paramView, localURLDrawableOptions);
       paramView.setTag(Integer.valueOf(1));
       paramView.startDownload();

@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoRsp;
 import android.os.Handler;
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONException;
@@ -12,13 +12,13 @@ import org.json.JSONObject;
 class DataJsPlugin$12
   implements AsyncResult
 {
-  DataJsPlugin$12(DataJsPlugin paramDataJsPlugin, beka parambeka, Handler paramHandler) {}
+  DataJsPlugin$12(DataJsPlugin paramDataJsPlugin, bekr parambekr, Handler paramHandler) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      besl.a("DataJsPlugin", "call getGroupShareInfo  ret:" + paramJSONObject.toString());
+      betc.a("DataJsPlugin", "call getGroupShareInfo  ret:" + paramJSONObject.toString());
       for (;;)
       {
         try
@@ -27,7 +27,7 @@ class DataJsPlugin$12
           int i = paramJSONObject.getInt("resultCode");
           String str1 = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).encryptedData.get();
           String str2 = ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).iv.get();
-          besl.a("DataJsPlugin", "getGroupShareInfo receive resultCode= " + i + " encryptedData=" + str1 + " iv=" + str2);
+          betc.a("DataJsPlugin", "getGroupShareInfo receive resultCode= " + i + " encryptedData=" + str1 + " iv=" + str2);
           localObject = new JSONObject();
           ((JSONObject)localObject).putOpt("encryptedData", str1);
           ((JSONObject)localObject).putOpt("iv", str2);
@@ -37,7 +37,7 @@ class DataJsPlugin$12
             try
             {
               paramJSONObject.put("data", localObject);
-              besl.a("DataJsPlugin", "call getGroupShareInfo： " + paramJSONObject.toString());
+              betc.a("DataJsPlugin", "call getGroupShareInfo： " + paramJSONObject.toString());
               this.val$req.a(paramJSONObject);
               if (this.val$getShareInfoHandler == null) {
                 break;
@@ -55,13 +55,13 @@ class DataJsPlugin$12
         }
         catch (Exception paramJSONObject)
         {
-          besl.d("DataJsPlugin", "call getGroupShareInfo failed ");
+          betc.d("DataJsPlugin", "call getGroupShareInfo failed ");
           this.val$req.b();
           return;
         }
       }
     }
-    besl.d("DataJsPlugin", "call getGroupShareInfo failed ");
+    betc.d("DataJsPlugin", "call getGroupShareInfo failed ");
     this.val$req.b();
   }
 }

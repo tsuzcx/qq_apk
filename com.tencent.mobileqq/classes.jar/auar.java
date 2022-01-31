@@ -1,25 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.util.List;
 
 public class auar
-  extends ayle
+  implements audy
 {
   public auar(OCRResultActivity paramOCRResultActivity) {}
   
-  protected void a(boolean paramBoolean, List<String> paramList)
+  public void a(int paramInt, audz paramaudz)
   {
-    super.a(paramBoolean, paramList);
-    OCRResultActivity.c(this.a);
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    if ((paramaudz != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramaudz.b)))
     {
-      this.a.a.setParticipleItems(paramList);
-      this.a.a.a();
-      OCRResultActivity.d(this.a);
-      return;
+      OCRResultActivity.c(this.a, paramaudz.b);
+      OCRResultActivity.a(this.a, false);
     }
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131707823), 0).a();
   }
 }
 

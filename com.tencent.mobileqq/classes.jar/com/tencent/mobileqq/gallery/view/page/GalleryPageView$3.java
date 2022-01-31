@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.gallery.view.page;
 
 import android.widget.TextView;
-import aqoo;
+import aqoq;
 
 public class GalleryPageView$3
   implements Runnable
 {
-  public GalleryPageView$3(aqoo paramaqoo) {}
+  public GalleryPageView$3(aqoq paramaqoq) {}
   
   public void run()
   {

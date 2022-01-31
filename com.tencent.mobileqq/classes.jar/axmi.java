@@ -1,10 +1,10 @@
+import java.io.File;
+
 public abstract interface axmi
 {
-  public abstract void W_();
+  public abstract boolean a();
   
-  public abstract void f();
-  
-  public abstract void g();
+  public abstract boolean a(File paramFile, axmg paramaxmg, boolean paramBoolean);
 }
 
 

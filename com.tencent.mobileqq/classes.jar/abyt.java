@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abyt
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public abyt(RegisterNewBaseActivity.2 param2) {}
+  public abyt(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.finish();
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

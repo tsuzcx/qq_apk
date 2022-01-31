@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-
-class osk
-  implements qeg<TabChannelCoverInfo>
+public abstract interface osk
 {
-  osk(osj paramosj, int paramInt) {}
-  
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
-  {
-    return paramTabChannelCoverInfo.mChannelCoverId == this.jdField_a_of_type_Int;
-  }
+  public abstract void a(osm paramosm);
 }
 
 

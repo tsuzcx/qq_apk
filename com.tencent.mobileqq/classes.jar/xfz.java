@@ -1,69 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class xfz
-  extends ampb<xfy>
 {
-  public int a()
-  {
-    return 595;
-  }
+  String a = "";
   
-  public Class<xfy> a()
+  public static xfz a(String paramString)
   {
-    return xfy.class;
-  }
-  
-  @NonNull
-  public xfy a(int paramInt)
-  {
-    return new xfy();
-  }
-  
-  @Nullable
-  public xfy a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if (TextUtils.isEmpty(paramString))
     {
-      xfy localxfy = xfy.a(paramArrayOfampi[0].a);
-      a(localxfy);
-      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      return localxfy;
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.videostory.capture", 2, "config TextUtils.isEmpty(config) return");
+      }
+      return null;
     }
-    return null;
+    xfz localxfz = new xfz();
+    localxfz.a(paramString);
+    return localxfz;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(xfy paramxfy)
+  public void a(String paramString)
   {
-    QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate ");
-    if (paramxfy != null)
-    {
-      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate " + paramxfy.toString());
-      xfr.a().a("sticky_note_publish_entrance_config", paramxfy.a());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.a = paramString;
   }
 }
 

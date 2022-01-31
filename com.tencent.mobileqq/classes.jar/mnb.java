@@ -1,6 +1,10 @@
 public abstract interface mnb
 {
-  public abstract void a(long paramLong, int paramInt, String paramString);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 

@@ -1,181 +1,70 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
 
-class adzx
-  extends AsyncTask<Void, Void, Integer>
+public class adzx
 {
-  MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  public static int a;
+  public static boolean a;
+  public static int b;
+  public static boolean b;
   
-  public adzx(QQAppInterface paramQQAppInterface, Context paramContext, MessageForShortVideo paramMessageForShortVideo)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Int = 15;
+    jdField_b_of_type_Int = 20;
   }
   
-  protected Integer a(Void... paramVarArgs)
+  public static void a()
   {
-    paramVarArgs = null;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return Integer.valueOf(7);
-    }
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
-      return Integer.valueOf(7);
-    }
-    MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    if (bbdj.b(localMessageForShortVideo.videoFileName))
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
     {
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
       if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoPTVItemBuilder", 2, "mr.videoFileName is not null...");
+        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
       }
-      return Integer.valueOf(5);
-    }
-    bben.a();
-    localObject = new EncodeThread((Context)localObject, new adzw(Looper.getMainLooper()), localMessageForShortVideo.mVideoFileSourceDir, null, null);
-    ((EncodeThread)localObject).run();
-    String str2 = ((EncodeThread)localObject).jdField_a_of_type_JavaLangString;
-    bben.a("ShortVideoPTVItemBuilder", "EncodeThread");
-    if (!bbdj.b(str2)) {
-      return Integer.valueOf(8);
-    }
-    localObject = new File(str2);
-    long l = ((File)localObject).length();
-    if (l == 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoPTVItemBuilder", 2, "mVideoSize = 0");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label211;
       }
-      return Integer.valueOf(8);
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
     }
     try
     {
-      localObject = new FileInputStream((File)localObject);
-      if (localObject != null)
+      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
+      label93:
+      if (!TextUtils.isEmpty(localObject[1])) {
+        jdField_b_of_type_Boolean = localObject[1].equals("1");
+      }
+      if (!TextUtils.isEmpty(localObject[2])) {}
+      for (;;)
       {
-        localObject = HexUtil.bytes2HexStr(MD5.toMD5Byte((InputStream)localObject, l));
-        paramVarArgs = (Void[])localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        try
         {
+          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+          jdField_a_of_type_Boolean = true;
           if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoPTVItemBuilder", 2, "processThumb: mVideoMd5 is empty, " + (String)localObject);
+            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
           }
-          return Integer.valueOf(5);
+          return;
         }
-      }
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-      if (0 != 0)
-      {
-        str1 = HexUtil.bytes2HexStr(MD5.toMD5Byte(null, l));
-        paramVarArgs = str1;
-        if (TextUtils.isEmpty(str1))
+        catch (Exception localException1)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoPTVItemBuilder", 2, "processThumb: mVideoMd5 is empty, " + str1);
-          }
-          return Integer.valueOf(5);
+          jdField_a_of_type_Int = 15;
+          continue;
         }
+        label211:
+        jdField_b_of_type_Boolean = true;
+        jdField_a_of_type_Int = 15;
       }
     }
-    finally
+    catch (Exception localException2)
     {
-      String str1;
-      if (0 != 0)
-      {
-        str1 = HexUtil.bytes2HexStr(MD5.toMD5Byte(null, l));
-        if (TextUtils.isEmpty(str1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ShortVideoPTVItemBuilder", 2, "processThumb: mVideoMd5 is empty, " + str1);
-          }
-          return Integer.valueOf(5);
-        }
-      }
+      break label93;
     }
-    this.jdField_a_of_type_JavaLangString = paramVarArgs;
-    this.jdField_b_of_type_JavaLangString = str2;
-    localMessageForShortVideo.videoFileSize = ((int)l);
-    if (bbdj.b(localMessageForShortVideo.mThumbFilePath))
-    {
-      paramVarArgs = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
-      if (!paramVarArgs.equals(localMessageForShortVideo.mThumbFilePath))
-      {
-        if (!bbdj.c(paramVarArgs, localMessageForShortVideo.mThumbFilePath)) {
-          return Integer.valueOf(5);
-        }
-        localMessageForShortVideo.mThumbFilePath = paramVarArgs;
-      }
-    }
-    return Integer.valueOf(1);
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    switch (paramInteger.intValue())
-    {
-    }
-    do
-    {
-      do
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ShortVideoPTVItemBuilder", 2, "Error code " + paramInteger);
-        }
-        return;
-      } while (this.jdField_b_of_type_JavaLangRefWeakReference == null);
-      paramInteger = (QQAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (paramInteger != null)
-      {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-        ((MessageForShortVideo)localObject1).md5 = this.jdField_a_of_type_JavaLangString;
-        Object localObject2 = ShortVideoUtils.a((MessageForShortVideo)localObject1, "mp4");
-        if (!this.jdField_b_of_type_JavaLangString.equals(localObject2))
-        {
-          bbdj.c(this.jdField_b_of_type_JavaLangString, (String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.i("ShortVideoPTVItemBuilder", 2, "onPostExecute destVideoPath " + (String)localObject2);
-          }
-        }
-        ((MessageForShortVideo)localObject1).videoFileName = ((String)localObject2);
-        ((MessageForShortVideo)localObject1).serial();
-        paramInteger.a().a(((MessageForShortVideo)localObject1).frienduin, ((MessageForShortVideo)localObject1).istroop, ((MessageForShortVideo)localObject1).uniseq, ((MessageForShortVideo)localObject1).msgData);
-        localObject2 = axdo.a(0, 3);
-        localObject1 = axdo.a(localObject1, (axeg)localObject2);
-        ((axew)localObject1).a = false;
-        ((axeg)localObject2).a((axew)localObject1);
-        axdo.a((axeg)localObject2, paramInteger);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ShortVideoPTVItemBuilder", 2, "QQAppInterface is null...");
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
   }
 }
 

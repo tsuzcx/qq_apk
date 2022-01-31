@@ -1,42 +1,28 @@
-import android.support.annotation.IdRes;
-import java.util.HashMap;
-import java.util.Map;
+import mqq.os.MqqHandler;
 
-public class ahke
+class ahke
+  implements asko
 {
-  private static final Map<String, Integer> a;
-  public static int[] a;
+  ahke(ahkd paramahkd) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130838179, 2130838170, 2130838172, 2130838180, 2130838348, 2130840924, 2130838181, 2130838169, 2130838174, 2130838171, 2130838168, 2130838175, 2130838176, 2130838177, 2130838178 };
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
-    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
+    ahkd.a(this.a).removeMessages(11);
+    ahkd.a(this.a).sendEmptyMessageDelayed(11, 1000L);
   }
   
-  @IdRes
-  public static int a(int paramInt)
-  {
-    return jdField_a_of_type_ArrayOfInt[paramInt];
-  }
+  public void a(long paramLong) {}
   
-  public static int a(String paramString)
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
   {
-    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      if (!sgj.d(paramString)) {
-        break label37;
-      }
-    }
-    label37:
-    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
-      return localInteger1.intValue();
+    if ((paramInt & 0x1) != 0)
+    {
+      ahkd.a(this.a).removeMessages(11);
+      ahkd.a(this.a).sendEmptyMessageDelayed(11, 1000L);
     }
   }
 }

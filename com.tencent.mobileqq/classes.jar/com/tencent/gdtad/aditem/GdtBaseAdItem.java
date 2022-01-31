@@ -7,12 +7,12 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import cooperation.qzone.util.QZLog;
 import org.json.JSONObject;
-import ysu;
+import ysr;
 
 public class GdtBaseAdItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new ysu();
+  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new ysr();
   public Bundle a;
   public Class a;
   public String a;

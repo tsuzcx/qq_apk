@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qls;
-import qmm;
+import qlp;
+import qmj;
 
 public class VideoFeedsAdapter$ShortVideoItemDelegate$10
   implements Runnable
 {
-  public VideoFeedsAdapter$ShortVideoItemDelegate$10(qmm paramqmm) {}
+  public VideoFeedsAdapter$ShortVideoItemDelegate$10(qmj paramqmj) {}
   
   public void run()
   {
-    this.a.a(qls.a(this.a.a), false);
+    this.a.a(qlp.a(this.a.a), false);
   }
 }
 

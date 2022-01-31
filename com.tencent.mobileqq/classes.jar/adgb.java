@@ -1,129 +1,169 @@
-import android.content.Context;
-import android.text.Spannable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil.1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Set;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
-public class adgb
+abstract class adgb
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  String jdField_a_of_type_JavaLangString;
+  HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  Set<Long> jdField_a_of_type_JavaUtilSet;
+  Set<Long> b;
   
-  private static String a(MessageRecord paramMessageRecord)
+  long a(Set<Long> paramSet)
   {
-    if ((paramMessageRecord instanceof MessageForText))
+    if ((paramSet != null) && (paramSet.size() > 0))
     {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if ((paramMessageRecord.sb instanceof ayki)) {
-        return ((ayki)paramMessageRecord.sb).d;
-      }
-      if ((paramMessageRecord.sb instanceof Spannable)) {
-        return paramMessageRecord.sb.toString();
-      }
-    }
-    else
-    {
-      if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-        return paramMessageRecord.msg;
-      }
-      if ((paramMessageRecord instanceof MessageForReplyText)) {
-        return ((MessageForReplyText)paramMessageRecord).getSummaryMsg();
-      }
-    }
-    return "";
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, int paramInt)
-  {
-    a(paramContext, paramQQAppInterface, paramMessageRecord, paramInt, "");
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, int paramInt, String paramString)
-  {
-    if (a(paramContext, paramMessageRecord))
-    {
-      paramContext = a(paramMessageRecord);
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData reportContent : " + paramContext + ", reportConfig -> " + jdField_a_of_type_JavaUtilHashMap);
-      }
-      if (!a(paramQQAppInterface))
+      paramSet = paramSet.toArray();
+      if ((paramSet != null) && (paramSet.length > 0))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData load config from QConfigManager");
+        paramSet = paramSet[0];
+        if ((paramSet instanceof Long)) {
+          return ((Long)paramSet).longValue();
         }
-        paramMessageRecord = new WeakReference(paramQQAppInterface);
-        ThreadManager.getFileThreadHandler().post(new ECommerceDataReportUtil.1(paramQQAppInterface, paramMessageRecord, paramContext, paramInt, paramString));
       }
     }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData hit cache");
-    }
-    b(paramQQAppInterface, paramContext, paramInt, paramString);
+    return 0L;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, int paramInt)
+  adgb a(SessionInfo paramSessionInfo, String paramString, List<Long> paramList, int paramInt)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a(null, paramQQAppInterface, (ChatMessage)paramList.next(), paramInt);
-      }
-    }
-  }
-  
-  private static boolean a(Context paramContext, MessageRecord paramMessageRecord)
-  {
-    if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForReplyText))) {}
-    for (boolean bool = true;; bool = false)
-    {
+      this.jdField_a_of_type_JavaUtilSet = new HashSet(paramList);
+      this.b = new HashSet(paramList);
       if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportUtil", 2, "isMessageNeedReport : need -> " + bool + "， message -> " + a(paramMessageRecord));
+        QLog.d("ForwardOrderManager", 2, "Forward order onPreForward mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", mChatMsgListBefore.size() -> " + this.b.size() + ", ForwardID -> " + paramInt);
       }
-      return bool;
+    }
+    return this;
+  }
+  
+  void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "ForwardOrder onDestroy forward id -> " + this.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.jdField_a_of_type_JavaUtilSet = null;
+    }
+    if (this.b != null)
+    {
+      this.b.clear();
+      this.b = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
     }
   }
   
-  private static boolean a(QQAppInterface paramQQAppInterface)
+  void a(long paramLong)
   {
-    return (jdField_a_of_type_JavaUtilHashMap != null) && (!jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOrderManager", 2, "ForwardOrder msgIDToSend id -> " + paramLong);
+    }
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "ForwardOrder mChatMsgListAfter add id -> " + paramLong);
+      }
+    }
+    if (this.b != null)
+    {
+      this.b.add(Long.valueOf(paramLong));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "ForwardOrder mChatMsgListBefore add id -> " + paramLong);
+      }
+    }
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
+  abstract void a(long paramLong1, long paramLong2);
+  
+  void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    Object localObject = jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
+    try
     {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      String str = (String)localEntry.getKey();
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.contains(str))) {
-        if ((paramInt != 5) || ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(str))))
+      if ((this.b != null) && (this.b.size() > 0))
+      {
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext()) {
+          if (((Long)localIterator.next()).longValue() == paramLong) {
+            localIterator.remove();
+          }
+        }
+        if ((this.b.size() <= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
         {
-          localObject = (String)localEntry.getValue();
-          axqw.b(paramQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, paramInt, 0, "", "", "", "");
-          if (QLog.isColorLevel()) {
-            QLog.d("ECommerceDataReportUtil", 2, "checkAndReport : doReport key -> " + str + ", type => " + paramInt + ", reportTag -> " + (String)localObject + "， clickUrl -> " + paramString2 + ", content -> " + paramString1);
+          paramQQAppInterface = aanz.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaLangString = "";
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+            this.jdField_a_of_type_Long = paramQQAppInterface[0];
           }
         }
       }
+      return;
+    }
+    finally {}
+  }
+  
+  abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
+  
+  boolean a(long paramLong, Set<Long> paramSet)
+  {
+    if (paramSet != null) {}
+    try
+    {
+      if (!paramSet.isEmpty())
+      {
+        paramSet = paramSet.iterator();
+        while (paramSet.hasNext()) {
+          if (((Long)paramSet.next()).longValue() == paramLong) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    finally {}
+  }
+  
+  abstract boolean a(long paramLong, boolean paramBoolean);
+  
+  abstract boolean a(QQAppInterface paramQQAppInterface, long paramLong);
+  
+  void b(long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(paramLong1))))
+    {
+      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong1));
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong2));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOrderManager", 2, "Forward order replaceOriginChatMsg mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", mChatMsgListAfter remove uniSeq -> " + paramLong1 + ", mChatMsgListAfter add uniSeq -> " + paramLong2 + ", ForwardID -> " + this.jdField_a_of_type_Int);
+      }
+    }
+    if ((this.b != null) && (this.b.size() > 0) && (this.b.contains(Long.valueOf(paramLong1))))
+    {
+      this.b.remove(Long.valueOf(paramLong1));
+      this.b.add(Long.valueOf(paramLong2));
     }
   }
 }

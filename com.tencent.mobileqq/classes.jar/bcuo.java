@@ -1,23 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
 
-public class bcuo
-  implements ValueAnimator.AnimatorUpdateListener
+class bcuo
+  implements bcuf
 {
-  public bcuo(QUSHalfScreenFloatView paramQUSHalfScreenFloatView, View paramView) {}
+  bcuo(bcun parambcun) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
-    {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.b - this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.j));
-      }
-    }
+    this.a.a(true, new View[] { this.a.a });
+  }
+  
+  public void b()
+  {
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    arkv.a().a(2);
   }
 }
 

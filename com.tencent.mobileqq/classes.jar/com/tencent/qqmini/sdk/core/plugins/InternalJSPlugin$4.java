@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begz;
-import beka;
-import besl;
+import behq;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class InternalJSPlugin$4
   implements AsyncResult
 {
-  InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, String paramString1, beka parambeka, String paramString2, String paramString3) {}
+  InternalJSPlugin$4(InternalJSPlugin paramInternalJSPlugin, String paramString1, bekr parambekr, String paramString2, String paramString3) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -24,7 +24,7 @@ class InternalJSPlugin$4
       return;
     }
     this.val$req.a("jump check failed.");
-    besl.c("InternalJSPlugin", String.format("jump native app check failed, appid:%s, packageName:%s", new Object[] { this.val$appConnectId, this.val$packageName }));
+    betc.c("InternalJSPlugin", String.format("jump native app check failed, appid:%s, packageName:%s", new Object[] { this.val$appConnectId, this.val$packageName }));
   }
 }
 

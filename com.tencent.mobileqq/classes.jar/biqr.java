@@ -1,58 +1,122 @@
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaSdkInfo;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class biqr
+  extends xom
 {
-  private String a;
-  private String b;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "CameraModuleSvc" };
+  public static final HashMap<String, String> b = new HashMap();
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public biqr(@Nullable String paramString1, @Nullable String paramString2)
+  public biqr(AppInterface paramAppInterface)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  @Nullable
-  public String a()
+  private String a(String paramString)
   {
-    return this.a;
+    return bjaa.a().a(paramString, "", 4);
   }
   
-  @Nullable
-  public String b()
+  private ArrayList<MetaSdkInfo> a()
   {
-    return this.b;
+    ArrayList localArrayList = new ArrayList();
+    MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
+    localMetaSdkInfo.sdk = 0;
+    localMetaSdkInfo.sdkVersion = AEModule.getVersion(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp());
+    localArrayList.add(localMetaSdkInfo);
+    return localArrayList;
   }
   
-  public boolean equals(@Nullable Object paramObject)
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    if ((paramObject != null) && (!(paramObject instanceof biqr))) {}
-    do
-    {
-      return false;
-      paramObject = (biqr)paramObject;
-    } while ((bbjw.a(this.a)) || (bbjw.a(this.b)) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
+    paramToServiceMsg = new GetCameraConfigReq();
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetCameraConfig");
+    paramUniPacket.put("CameraModuleSvc.GetCameraConfig", paramToServiceMsg);
     return true;
   }
   
-  public int hashCode()
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    int j = 0;
-    int i;
-    if (this.b == null)
-    {
-      i = 0;
-      if (this.a != null) {
-        break label40;
-      }
+    GetCategoryMaterialReq localGetCategoryMaterialReq = new GetCategoryMaterialReq();
+    localGetCategoryMaterialReq.ServiceId = paramToServiceMsg.extraData.getString("ServiceId");
+    localGetCategoryMaterialReq.ETag = a("CameraModuleSvc.GetCompressedCategoryMaterial" + localGetCategoryMaterialReq.ServiceId);
+    localGetCategoryMaterialReq.SdkInfos = a();
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetCompressedCategoryMaterial");
+    paramUniPacket.put("CameraModuleSvc.GetCompressedCategoryMaterial", localGetCategoryMaterialReq);
+    return true;
+  }
+  
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = new GetPlayShowCatMatTreeReq();
+    paramToServiceMsg.ETag = a("CameraModuleSvc.GetPlayShowCatMatTree");
+    paramToServiceMsg.MqVersion = "8.3.0";
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetPlayShowCatMatTree");
+    paramUniPacket.put("CameraModuleSvc.GetPlayShowCatMatTree", paramToServiceMsg);
+    return true;
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCameraConfig", new GetCameraConfigRsp());
     }
-    for (;;)
-    {
-      return (i + 527) * 31 + j;
-      i = this.b.hashCode();
-      break;
-      label40:
-      j = this.a.hashCode();
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
+      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCompressedCategoryMaterial", new GetCategoryMaterialRsp());
     }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
+      return b(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetPlayShowCatMatTree", new GetPlayShowCatMatTreeRsp());
+    }
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) {
+      return c(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public final <T> T b(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    biqz localbiqz = new biqz(true);
+    try
+    {
+      localbiqz.setEncodeName("utf-8");
+      localbiqz.decode(paramArrayOfByte);
+      return localbiqz.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
   }
 }
 

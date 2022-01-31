@@ -1,44 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import tencent.im.oidb.oidb_0x87a.RspBody;
 
 final class arck
-  implements EIPCResultCallback
+  extends atzp
 {
-  arck(arcl paramarcl) {}
+  arck(Activity paramActivity, String paramString, Runnable paramRunnable) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    String str = null;
-    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
-    FaceDetectForThirdPartyManager.AppConf localAppConf;
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      str = ajyc.a(2131714514);
-      localAppConf = null;
+    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
+    if (paramInt == 89) {
+      bcql.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131699021), 0).a();
     }
-    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
+    for (;;)
     {
-      this.a.a(paramEIPCResult.code, str);
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
       return;
-      if (paramEIPCResult.data != null)
-      {
-        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
-        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
-      }
-      else
-      {
-        str = ajyc.a(2131714514);
-        localAppConf = null;
-        continue;
-        str = ajyc.a(2131692278);
-        localAppConf = null;
-      }
+      bcql.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
     }
-    this.a.a(localAppConf);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
+    localIntent.putExtra("k_from", "f_SetFaceData");
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
+    {
+      localIntent.putExtra("phone_num", paramRspBody);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
+      return;
+    }
   }
 }
 

@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class aamp
-  implements DialogInterface.OnClickListener
+class aamp
+  implements amcj
 {
-  public aamp(BaseChatPie paramBaseChatPie) {}
+  aamp(aamo paramaamo, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Aamo.a.a.setOnMeasureListener(null);
+    this.jdField_a_of_type_Aamo.a.a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
   }
 }
 

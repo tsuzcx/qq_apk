@@ -1,56 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class aasz
-  implements View.OnClickListener
+public class aasz
+  extends ajto
 {
-  aasz(aasy paramaasy) {}
+  public aasz(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if ((paramView.getTag() instanceof String)) {
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
+        {
+          String str = bbcz.a(this.a.app, ChatSettingActivity.b(this.a));
+          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
+            ChatSettingActivity.c(this.a, str);
+          }
+        }
+        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
+        }
+      }
       return;
     }
-    Object localObject1 = (ChatMessage)((aimg)paramView.getTag()).a;
-    if (this.a.a()) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a((ChatMessage)localObject1)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b((ChatMessage)localObject1);
-      }
-    }
-    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg))) {
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Aimf.notifyDataSetChanged();
-        return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a()) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a((ChatMessage)localObject1);
-      }
-    }
-    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-    Object localObject2;
-    if ((localObject1 instanceof StructMsgForGeneralShare))
+  }
+  
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
     {
-      localObject2 = (StructMsgForGeneralShare)localObject1;
-      axvk localaxvk = new axvk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (StructMsgForGeneralShare)localObject2);
-      StructMsgForGeneralShare.onClickEvent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localaxvk);
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
     }
-    for (;;)
+  }
+  
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
     {
-      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
-      break;
-      if ((localObject1 instanceof StructMsgForAudioShare))
-      {
-        localObject2 = (StructMsgForAudioShare)localObject1;
-        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
-      }
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
     }
   }
 }

@@ -1,11 +1,7 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class almu
   implements View.OnClickListener
@@ -14,21 +10,43 @@ public class almu
   
   public void onClick(View paramView)
   {
-    this.a.findViewById(2131368631).setAlpha(1.0F);
-    ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.a.jdField_a_of_type_AndroidContentContext;
-    String str = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    if (!TextUtils.isEmpty(localScanTorchActivity.a)) {}
-    for (paramView = localScanTorchActivity.a;; paramView = str)
+    boolean bool2 = false;
+    if (QRScanEntryView.a(this.a))
     {
-      Intent localIntent = new Intent(localScanTorchActivity, QRDisplayActivity.class);
-      localIntent.putExtra("from", "ScannerActivity");
-      localIntent.putExtra("title", localScanTorchActivity.getString(2131717241));
-      localIntent.putExtra("nick", paramView);
-      localIntent.putExtra("uin", str);
-      localIntent.putExtra("type", 1);
-      localScanTorchActivity.startActivity(localIntent);
-      return;
+      paramView = alku.a();
+      if (!QRScanEntryView.b(this.a))
+      {
+        bool1 = true;
+        if (paramView.a(bool1))
+        {
+          paramView = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label118;
+          }
+          bool1 = true;
+          QRScanEntryView.a(paramView, bool1);
+          paramView = (alkz)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          paramView.a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
+      }
     }
+    label118:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+      }
+    }
+    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
   }
 }
 

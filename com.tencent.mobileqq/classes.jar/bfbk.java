@@ -1,35 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import io.flutter.view.FlutterNativeView;
 
-public abstract interface bfbk
-  extends behb
+public class bfbk
+  extends bfbi
 {
-  public abstract View a();
+  private FlutterNativeView a;
   
-  public abstract void a();
+  public void a(bfdt parambfdt)
+  {
+    super.a(parambfdt);
+    parambfdt = new bfcr(this, this.jdField_a_of_type_Bfbj);
+    parambfdt.a(null);
+    this.jdField_a_of_type_Bfcb = parambfdt;
+    parambfdt.a(this.jdField_a_of_type_IoFlutterViewFlutterNativeView);
+  }
   
-  public abstract void a(Activity paramActivity);
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void setApkgInfo(bejy parambejy);
+  public void a(FlutterNativeView paramFlutterNativeView)
+  {
+    this.jdField_a_of_type_IoFlutterViewFlutterNativeView = paramFlutterNativeView;
+  }
 }
 
 

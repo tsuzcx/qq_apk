@@ -1,51 +1,52 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-class aofs
-  implements Handler.Callback
+public class aofs
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  aofs(aofr paramaofr) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aojb jdField_a_of_type_Aojb;
   
-  public boolean handleMessage(Message paramMessage)
+  public aofs(View paramView, aojb paramaojb)
   {
-    switch (paramMessage.what)
+    super(paramView);
+    this.jdField_a_of_type_Aojb = paramaojb;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378507));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(aokw.a);
+  }
+  
+  public void a(aofs paramaofs, aogm paramaogm)
+  {
+    String str = "";
+    boolean bool = false;
+    switch (paramaogm.mFooterType)
     {
     default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
-      {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
-      }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      paramMessage = (String)this.a.b.get(this.a.b.size() - 1);
-      Drawable localDrawable = bbdr.a(true);
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        baxt.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-      return false;
+      paramaogm = str;
     }
-    paramMessage = (aofo)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
+    for (;;)
     {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
+      paramaofs.jdField_a_of_type_AndroidWidgetTextView.setText(paramaogm);
+      paramaofs.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      return;
+      paramaogm = ajya.a(2131704718);
+      continue;
+      paramaogm = ajya.a(2131704720);
+      bool = true;
+      continue;
+      paramaogm = ajya.a(2131704719);
     }
-    this.a.a(paramMessage);
-    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Aojb != null) {
+      this.jdField_a_of_type_Aojb.b();
+    }
   }
 }
 

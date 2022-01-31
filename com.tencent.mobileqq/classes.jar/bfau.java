@@ -1,90 +1,109 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.webkit.ValueCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import NS_QWEB_PROTOCAL.PROTOCAL.StAuthInfo;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
 public abstract class bfau
-  extends bfay<Integer, Integer>
 {
-  public static final Integer a;
-  public static final Integer b = Integer.valueOf(2);
-  protected Handler a;
-  private List<bfax> a;
+  private static volatile AtomicInteger a;
+  public int a;
   
   static
   {
-    jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public bfau()
+  private String c()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    String str = beut.a().a();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
+    Random localRandom = new Random();
+    localRandom.setSeed(System.currentTimeMillis());
+    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    return localStringBuilder.toString();
   }
   
-  public void a(bfax parambfax)
+  protected abstract String a();
+  
+  public abstract JSONObject a(byte[] paramArrayOfByte);
+  
+  protected abstract byte[] a();
+  
+  protected byte[] a(byte[] paramArrayOfByte)
   {
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambfax)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambfax);
-      }
-      return;
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localStQWebRsp.busiBuff.get().toByteArray();
+      return paramArrayOfByte;
     }
-    finally
+    catch (Exception paramArrayOfByte)
     {
-      parambfax = finally;
-      throw parambfax;
+      betc.a("ProtoBufRequest", "decode fail.", paramArrayOfByte);
     }
+    return null;
   }
   
-  public void a(bfaz parambfaz)
+  protected abstract String b();
+  
+  public byte[] b()
   {
-    bfaz localbfaz = a();
-    super.a(parambfaz);
-    if (parambfaz != localbfaz) {
-      a(localbfaz, parambfaz);
+    Object localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    localStQWebReq.Seq.set(this.jdField_a_of_type_Int);
+    localStQWebReq.traceid.set(c());
+    if (bfhk.a() != null) {
+      localStQWebReq.qua.set(bfhk.a());
     }
+    if (((MiniAppProxy)localObject).getDeviceInfo() != null) {
+      localStQWebReq.deviceInfo.set(((MiniAppProxy)localObject).getDeviceInfo());
+    }
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    localStQWebReq.Module.set(a());
+    localStQWebReq.Cmdname.set(b());
+    localObject = new PROTOCAL.StAuthInfo();
+    if (beut.a().a() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).uin.set(beut.a().a());
+    }
+    if (beut.a().a() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).sig.set(ByteStringMicro.copyFrom(beut.a().a()));
+    }
+    ((PROTOCAL.StAuthInfo)localObject).type.set(beut.a().a());
+    if (beut.a().e() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).platform.set(beut.a().e());
+    }
+    if (beut.a().c() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).openid.set(beut.a().c());
+    }
+    if (beut.a().f() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).appid.set(beut.a().f());
+    }
+    if (beut.a().d() != null) {
+      ((PROTOCAL.StAuthInfo)localObject).sessionkey.set(ByteStringMicro.copyFrom(beut.a().d().getBytes()));
+    }
+    localStQWebReq.loginSig.set((MessageMicro)localObject);
+    return localStQWebReq.toByteArray();
   }
   
-  protected void a(bfaz parambfaz1, bfaz parambfaz2)
+  public String toString()
   {
-    try
-    {
-      parambfaz1 = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (parambfaz1.hasNext())
-      {
-        parambfaz2 = (bfax)parambfaz1.next();
-        if (parambfaz2 != null) {
-          parambfaz2.a();
-        }
-      }
-    }
-    finally {}
+    return "ProtoBufRequest{seqNo=" + this.jdField_a_of_type_Int + ",CmdName=" + b() + '}';
   }
-  
-  public void a(Integer paramInteger)
-  {
-    Object localObject = a();
-    if ((localObject instanceof bfav))
-    {
-      localObject = (bfav)localObject;
-      if ((bfav.a((bfav)localObject) != null) && (jdField_a_of_type_JavaLangInteger == paramInteger)) {
-        a(bfav.a((bfav)localObject));
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        super.a(paramInteger);
-      }
-      return;
-    }
-  }
-  
-  public abstract void a(String paramString1, ValueCallback paramValueCallback, String paramString2);
 }
 
 

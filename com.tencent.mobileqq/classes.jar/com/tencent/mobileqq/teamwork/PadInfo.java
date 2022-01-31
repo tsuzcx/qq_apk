@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.teamwork;
 
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PadInfo
-  extends aukm
+  extends auko
 {
   public static final int TYPE_DOC = 1;
   public static final int TYPE_FORM = 3;
@@ -37,10 +37,10 @@ public class PadInfo
   public String lastViewerNick;
   public long lastViewerUin;
   public long lastshardTime;
-  @aulx
+  @aulz
   private List<TimDocSSOMsg.UinRightInfo> mUins = new ArrayList();
   public String padId;
-  @auma
+  @aumc
   public String pad_url;
   public boolean pinInAllList;
   public boolean pinedFlag;

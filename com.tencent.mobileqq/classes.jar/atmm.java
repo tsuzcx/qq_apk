@@ -1,22 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class atmm
-  implements View.OnTouchListener
+  implements bfpj
 {
-  atmm(atlu paramatlu) {}
+  atmm(atlw paramatlw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131369179).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131369179).setAlpha(1.0F);
-    }
+    this.a.b = false;
   }
 }
 

@@ -1,19 +1,33 @@
-import java.lang.ref.WeakReference;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-class bbra<E>
-  extends WeakReference<bbqy<E>>
-  implements bbqy<E>
+final class bbra
+  implements URLDrawable.URLDrawableListener
 {
-  public bbra(bbqy<E> parambbqy)
+  bbra(int[] paramArrayOfInt) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(parambbqy);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
+    }
   }
   
-  public void a(E paramE, Object paramObject)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    bbqy localbbqy = (bbqy)get();
-    if (localbbqy != null) {
-      localbbqy.a(paramE, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
+    }
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
+      ApngImage.playByTag(this.a[0]);
     }
   }
 }

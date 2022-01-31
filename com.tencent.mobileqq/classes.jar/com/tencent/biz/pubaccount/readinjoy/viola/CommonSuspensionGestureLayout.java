@@ -31,8 +31,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Scroller;
 import android.widget.TextView;
-import axli;
-import bbkx;
+import axlk;
+import bbll;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -41,17 +41,17 @@ import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.dom.style.CornerViewOutlineProvider;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import noo;
+import nol;
 import org.json.JSONObject;
+import rvo;
+import rvp;
+import rvq;
 import rvr;
 import rvs;
 import rvt;
 import rvu;
 import rvv;
 import rvw;
-import rvx;
-import rvy;
-import rvz;
 
 public class CommonSuspensionGestureLayout
   extends FrameLayout
@@ -80,8 +80,8 @@ public class CommonSuspensionGestureLayout
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   Scroller jdField_a_of_type_AndroidWidgetScroller;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  private rvy jdField_a_of_type_Rvy;
-  private rvz jdField_a_of_type_Rvz;
+  private rvv jdField_a_of_type_Rvv;
+  private rvw jdField_a_of_type_Rvw;
   private boolean jdField_a_of_type_Boolean = true;
   float jdField_b_of_type_Float;
   private View jdField_b_of_type_AndroidViewView;
@@ -142,8 +142,8 @@ public class CommonSuspensionGestureLayout
     h();
     i();
     j();
-    setOnClickListener(new rvr(this));
-    addOnLayoutChangeListener(new rvu(this));
+    setOnClickListener(new rvo(this));
+    addOnLayoutChangeListener(new rvr(this));
   }
   
   public static int a(Activity paramActivity)
@@ -168,7 +168,7 @@ public class CommonSuspensionGestureLayout
     }
     int i1 = this.jdField_a_of_type_AndroidViewView.getScrollX();
     int i2 = this.jdField_a_of_type_AndroidViewView.getScrollY();
-    if ((!this.jdField_a_of_type_Rvy.a()) && (((i2 > 0) && (i2 < jdField_h_of_type_Int)) || (i2 >= jdField_h_of_type_Int)))
+    if ((!this.jdField_a_of_type_Rvv.a()) && (((i2 > 0) && (i2 < jdField_h_of_type_Int)) || (i2 >= jdField_h_of_type_Int)))
     {
       this.jdField_i_of_type_Int = jdField_f_of_type_Int;
       this.jdField_a_of_type_AndroidViewView.scrollTo(0, 0);
@@ -178,17 +178,17 @@ public class CommonSuspensionGestureLayout
     if ((i2 < 0) && (i2 > -jdField_g_of_type_Int))
     {
       this.jdField_i_of_type_Int = jdField_b_of_type_Int;
-      if ((!d()) || (this.jdField_e_of_type_Float <= 0.0F) || (!this.jdField_a_of_type_Rvy.a()) || (paramBoolean)) {
+      if ((!d()) || (this.jdField_e_of_type_Float <= 0.0F) || (!this.jdField_a_of_type_Rvv.a()) || (paramBoolean)) {
         break label272;
       }
       this.jdField_i_of_type_Int = jdField_f_of_type_Int;
-      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -bbkx.b(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -bbll.b(this.jdField_j_of_type_Int));
       o();
       postInvalidate();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Rvz.a(this.jdField_i_of_type_Int);
+      this.jdField_a_of_type_Rvw.a(this.jdField_i_of_type_Int);
       return;
       if (i2 <= -jdField_g_of_type_Int)
       {
@@ -216,11 +216,11 @@ public class CommonSuspensionGestureLayout
     if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, bbkx.b(20.0F)));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, bbll.b(20.0F)));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(this.l);
       View localView = new View(getContext());
       int i1 = Color.parseColor("#FFB0B3BF");
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(bbkx.b(60.0F), bbkx.b(4.0F));
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(bbll.b(60.0F), bbll.b(4.0F));
       localLayoutParams.gravity = 17;
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setCornerRadius(66.0F);
@@ -270,7 +270,7 @@ public class CommonSuspensionGestureLayout
     if (paramBoolean) {}
     for (this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(paramView, View.ALPHA, new float[] { 0.0F, 1.0F });; this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(paramView, View.ALPHA, new float[] { 1.0F, 0.0F }))
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new rvx(this, paramView));
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new rvu(this, paramView));
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(250L);
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
@@ -309,9 +309,9 @@ public class CommonSuspensionGestureLayout
   {
     try
     {
-      if (axli.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+      if (axlk.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
       {
-        i1 = axli.d(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
+        i1 = axlk.d(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
         QLog.d("CommonSuspensionGestureLayout", 1, "getNavigationBarHeight " + i1 + ",isNavShow:" + a(this.jdField_a_of_type_AndroidAppActivity) + ",getHeight():" + getHeight() + ",build name:" + Build.MANUFACTURER + "，build module:" + Build.MODEL + ",getContentHeight:" + a(this.jdField_a_of_type_AndroidAppActivity) + ",screenHeight:" + DisplayUtil.getScreenHeight(this.jdField_a_of_type_AndroidAppActivity));
         i2 = i1;
         if (i1 != 0)
@@ -390,7 +390,7 @@ public class CommonSuspensionGestureLayout
   {
     if ((Build.VERSION.SDK_INT >= 21) && (this.jdField_k_of_type_Int != 0))
     {
-      paramView.setOutlineProvider(new CornerViewOutlineProvider(bbkx.b(this.jdField_k_of_type_Int), FlexConvertUtils.getScreenHeight(getContext()) - bbkx.b(this.jdField_j_of_type_Int), 1));
+      paramView.setOutlineProvider(new CornerViewOutlineProvider(bbll.b(this.jdField_k_of_type_Int), FlexConvertUtils.getScreenHeight(getContext()) - bbll.b(this.jdField_j_of_type_Int), 1));
       paramView.setClipToOutline(true);
     }
   }
@@ -415,7 +415,7 @@ public class CommonSuspensionGestureLayout
         localException.printStackTrace();
       }
     }
-    noo.a(null, null, "0X800A9B8", "0X800A9B8", 0, 0, "", "", "", localJSONObject.toString(), false);
+    nol.a(null, null, "0X800A9B8", "0X800A9B8", 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   private boolean d()
@@ -444,37 +444,37 @@ public class CommonSuspensionGestureLayout
       {
         if (this.jdField_c_of_type_Boolean)
         {
-          a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, false);
+          a(0, -bbll.b(this.jdField_j_of_type_Int), 200, false);
           o();
           return;
         }
         a(i1, 1);
         return;
       }
-      if (((i1 > jdField_h_of_type_Int) || (f1 < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (f1 < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_Rvy.a()))
+      if (((i1 > jdField_h_of_type_Int) || (f1 < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (f1 < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_Rvv.a()))
       {
         c(i1);
         return;
       }
-      if (this.jdField_a_of_type_Rvy.a()) {
-        if ((this.q < 0) && (this.q > -bbkx.b(this.jdField_j_of_type_Int))) {
-          if (this.q <= -bbkx.b(this.jdField_j_of_type_Int)) {}
+      if (this.jdField_a_of_type_Rvv.a()) {
+        if ((this.q < 0) && (this.q > -bbll.b(this.jdField_j_of_type_Int))) {
+          if (this.q <= -bbll.b(this.jdField_j_of_type_Int)) {}
         }
       }
       for (;;)
       {
         this.jdField_i_of_type_Int = jdField_a_of_type_Int;
-        this.jdField_a_of_type_Rvz.a(this.jdField_i_of_type_Int);
+        this.jdField_a_of_type_Rvw.a(this.jdField_i_of_type_Int);
         return;
-        a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, false);
+        a(0, -bbll.b(this.jdField_j_of_type_Int), 200, false);
         o();
         continue;
-        if ((this.q == 0) && (i1 < -bbkx.b(this.jdField_j_of_type_Int)))
+        if ((this.q == 0) && (i1 < -bbll.b(this.jdField_j_of_type_Int)))
         {
-          a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, false);
+          a(0, -bbll.b(this.jdField_j_of_type_Int), 200, false);
           o();
           continue;
-          a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, true);
+          a(0, -bbll.b(this.jdField_j_of_type_Int), 200, true);
         }
       }
     }
@@ -483,14 +483,14 @@ public class CommonSuspensionGestureLayout
       a(i1, 1);
       return;
     }
-    if (((i1 > jdField_h_of_type_Int) || (f1 < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (f1 < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_Rvy.a()))
+    if (((i1 > jdField_h_of_type_Int) || (f1 < -6500.0F)) && (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (f1 < 100.0F) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 200L) && (this.jdField_e_of_type_Float < 0.0F) && (this.jdField_a_of_type_Rvv.a()))
     {
       c(i1);
       return;
     }
-    a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, true);
+    a(0, -bbll.b(this.jdField_j_of_type_Int), 200, true);
     this.jdField_i_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_Rvz.a(this.jdField_i_of_type_Int);
+    this.jdField_a_of_type_Rvw.a(this.jdField_i_of_type_Int);
   }
   
   private void h()
@@ -507,27 +507,27 @@ public class CommonSuspensionGestureLayout
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
       Object localObject1 = new FrameLayout.LayoutParams(-2, -2);
-      ((FrameLayout.LayoutParams)localObject1).setMargins(0, bbkx.b(40.0F), 0, 0);
+      ((FrameLayout.LayoutParams)localObject1).setMargins(0, bbll.b(40.0F), 0, 0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848483);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848489);
       localObject1 = new TextView(getContext());
       Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(bbkx.b(12.0F), 0, 0, 0);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(bbll.b(12.0F), 0, 0, 0);
       ((LinearLayout.LayoutParams)localObject2).gravity = 16;
       ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((TextView)localObject1).setTextSize(2, 14.0F);
       ((TextView)localObject1).setText("返回");
       localObject2 = new ImageView(getContext());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.setMargins(bbkx.b(6.0F), 0, 0, 0);
+      localLayoutParams.setMargins(bbll.b(6.0F), 0, 0, 0);
       localLayoutParams.gravity = 16;
       ((ImageView)localObject2).setLayoutParams(localLayoutParams);
-      ((ImageView)localObject2).setBackgroundResource(2130848482);
+      ((ImageView)localObject2).setBackgroundResource(2130848488);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject2);
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new rvs(this));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new rvp(this));
     }
   }
   
@@ -538,7 +538,7 @@ public class CommonSuspensionGestureLayout
       this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(getContext(), 2130772066));
       this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setDuration(200L);
       this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new rvt(this));
+      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new rvq(this));
     }
   }
   
@@ -600,7 +600,7 @@ public class CommonSuspensionGestureLayout
         localException.printStackTrace();
       }
     }
-    noo.a(null, null, "0X800A9B6", "0X800A9B6", 0, 0, "", "", "", localJSONObject.toString(), false);
+    nol.a(null, null, "0X800A9B6", "0X800A9B6", 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   private void q()
@@ -622,7 +622,7 @@ public class CommonSuspensionGestureLayout
         localException.printStackTrace();
       }
     }
-    noo.a(null, null, "0X800A9B7", "0X800A9B7", 0, 0, "", "", "", localJSONObject.toString(), false);
+    nol.a(null, null, "0X800A9B7", "0X800A9B7", 0, 0, "", "", "", localJSONObject.toString(), false);
   }
   
   public int a()
@@ -647,13 +647,13 @@ public class CommonSuspensionGestureLayout
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Rvz.a(true, paramInt1);
+      this.jdField_a_of_type_Rvw.a(true, paramInt1);
       return;
     }
     if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == null) {
       this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getContext(), 2130772001));
     }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new rvv(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new rvs(this, paramInt1, paramInt2));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
@@ -710,8 +710,8 @@ public class CommonSuspensionGestureLayout
       this.jdField_a_of_type_AndroidViewView = paramBaseActivity;
       a(paramBaseActivity);
       addView(paramBaseActivity);
-      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -bbkx.b(this.jdField_j_of_type_Int));
-      this.q = (-bbkx.b(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_AndroidViewView.scrollTo(0, -bbll.b(this.jdField_j_of_type_Int));
+      this.q = (-bbll.b(this.jdField_j_of_type_Int));
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(this.l);
     }
     c(this.jdField_b_of_type_AndroidViewView);
@@ -730,8 +730,8 @@ public class CommonSuspensionGestureLayout
       return;
     }
     b(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Rvz != null) {
-      this.jdField_a_of_type_Rvz.a();
+    if (this.jdField_a_of_type_Rvw != null) {
+      this.jdField_a_of_type_Rvw.a();
     }
     p();
   }
@@ -744,12 +744,12 @@ public class CommonSuspensionGestureLayout
   public boolean a(float paramFloat, MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CommonSuspensionGestureLayout", 2, "test isAllowedInterceptTouchEvent,positionState:" + this.jdField_a_of_type_Rvy.a() + ",deltaY:" + paramFloat + ",event:" + paramMotionEvent.getAction());
+      QLog.d("CommonSuspensionGestureLayout", 2, "test isAllowedInterceptTouchEvent,positionState:" + this.jdField_a_of_type_Rvv.a() + ",deltaY:" + paramFloat + ",event:" + paramMotionEvent.getAction());
     }
-    if ((this.jdField_a_of_type_Rvy != null) && (paramMotionEvent.getAction() != 0))
+    if ((this.jdField_a_of_type_Rvv != null) && (paramMotionEvent.getAction() != 0))
     {
-      int i1 = this.jdField_a_of_type_Rvy.a();
-      this.jdField_a_of_type_Rvz.b(i1);
+      int i1 = this.jdField_a_of_type_Rvv.a();
+      this.jdField_a_of_type_Rvw.b(i1);
       if ((i1 == 1) && (paramFloat > 5.0F)) {
         this.jdField_a_of_type_Long = 0L;
       }
@@ -762,7 +762,7 @@ public class CommonSuspensionGestureLayout
       } while (this.jdField_a_of_type_Long != 0L);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       return true;
-      if ((!this.jdField_a_of_type_Rvy.a()) && (paramFloat < -10.0F))
+      if ((!this.jdField_a_of_type_Rvv.a()) && (paramFloat < -10.0F))
       {
         this.jdField_a_of_type_Long = 0L;
         return true;
@@ -788,7 +788,7 @@ public class CommonSuspensionGestureLayout
       {
         i2 = i1;
         if (this.jdField_j_of_type_Int > 0) {
-          i2 = i1 + bbkx.b(this.jdField_j_of_type_Int);
+          i2 = i1 + bbll.b(this.jdField_j_of_type_Int);
         }
       }
       this.jdField_b_of_type_AndroidViewView.setPadding(0, 0, 0, i2);
@@ -824,13 +824,13 @@ public class CommonSuspensionGestureLayout
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Rvz.a(false, paramInt);
+      this.jdField_a_of_type_Rvw.a(false, paramInt);
       return;
     }
     if (this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == null) {
       this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getContext(), 2130772134));
     }
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new rvw(this, paramInt));
+    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new rvt(this, paramInt));
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
@@ -854,7 +854,7 @@ public class CommonSuspensionGestureLayout
       if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
       {
         if (!this.jdField_b_of_type_Boolean) {
-          if (Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) >= bbkx.b(this.jdField_j_of_type_Int)) {}
+          if (Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) >= bbll.b(this.jdField_j_of_type_Int)) {}
         }
         for (;;)
         {
@@ -896,14 +896,14 @@ public class CommonSuspensionGestureLayout
       this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
     }
     this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    if (!this.jdField_a_of_type_Rvy.a())
+    if (!this.jdField_a_of_type_Rvv.a())
     {
       if ((paramMotionEvent.getAction() != 0) && (paramMotionEvent.getAction() != 2))
       {
         this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
         f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(0);
-        if ((this.jdField_a_of_type_AndroidViewView.getScrollY() != -bbkx.b(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
-          a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, false);
+        if ((this.jdField_a_of_type_AndroidViewView.getScrollY() != -bbll.b(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
+          a(0, -bbll.b(this.jdField_j_of_type_Int), 200, false);
         }
       }
       return super.dispatchTouchEvent(paramMotionEvent);
@@ -982,7 +982,7 @@ public class CommonSuspensionGestureLayout
     this.jdField_b_of_type_Boolean = this.jdField_k_of_type_Boolean;
     if (!this.jdField_b_of_type_Boolean)
     {
-      a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, false);
+      a(0, -bbll.b(this.jdField_j_of_type_Int), 200, false);
       o();
     }
   }
@@ -1016,7 +1016,7 @@ public class CommonSuspensionGestureLayout
     if ((this.jdField_a_of_type_AndroidViewView == null) || (paramMotionEvent.getAction() == 0)) {
       return false;
     }
-    if ((this.jdField_a_of_type_AndroidViewView.getScrollY() < 0) && (paramMotionEvent.getRawY() <= Math.abs(this.jdField_a_of_type_AndroidViewView.getScrollY())) && (this.jdField_a_of_type_AndroidViewView.getScrollY() >= -bbkx.b(this.jdField_j_of_type_Int))) {
+    if ((this.jdField_a_of_type_AndroidViewView.getScrollY() < 0) && (paramMotionEvent.getRawY() <= Math.abs(this.jdField_a_of_type_AndroidViewView.getScrollY())) && (this.jdField_a_of_type_AndroidViewView.getScrollY() >= -bbll.b(this.jdField_j_of_type_Int))) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
@@ -1034,8 +1034,8 @@ public class CommonSuspensionGestureLayout
       default: 
         this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
         f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(0);
-        if ((!this.jdField_a_of_type_Rvy.a()) && (this.jdField_a_of_type_AndroidViewView.getScrollY() != -bbkx.b(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
-          a(0, -bbkx.b(this.jdField_j_of_type_Int), 200, false);
+        if ((!this.jdField_a_of_type_Rvv.a()) && (this.jdField_a_of_type_AndroidViewView.getScrollY() != -bbll.b(this.jdField_j_of_type_Int)) && (f1 < 0.0F)) {
+          a(0, -bbll.b(this.jdField_j_of_type_Int), 200, false);
         }
         break;
       }
@@ -1046,7 +1046,7 @@ public class CommonSuspensionGestureLayout
       f1 = 0.0F;
       break;
       int i1 = (int)(this.jdField_a_of_type_AndroidViewView.getScrollY() - f1);
-      if (this.jdField_a_of_type_Rvy.a()) {
+      if (this.jdField_a_of_type_Rvv.a()) {
         a(0, i1, 0, false);
       }
       for (;;)
@@ -1090,9 +1090,9 @@ public class CommonSuspensionGestureLayout
     this.jdField_j_of_type_Int = paramInt;
   }
   
-  public void setContentScrollListener(rvy paramrvy)
+  public void setContentScrollListener(rvv paramrvv)
   {
-    this.jdField_a_of_type_Rvy = paramrvy;
+    this.jdField_a_of_type_Rvv = paramrvv;
   }
   
   public void setIsAutoSuctionTop(boolean paramBoolean)
@@ -1147,12 +1147,12 @@ public class CommonSuspensionGestureLayout
   
   public void setTitleBarHeight(int paramInt)
   {
-    this.n = bbkx.b(paramInt);
+    this.n = bbll.b(paramInt);
   }
   
-  public void setViolaGestureListener(rvz paramrvz)
+  public void setViolaGestureListener(rvw paramrvw)
   {
-    this.jdField_a_of_type_Rvz = paramrvz;
+    this.jdField_a_of_type_Rvw = paramrvw;
   }
 }
 

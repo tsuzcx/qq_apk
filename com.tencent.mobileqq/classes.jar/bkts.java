@@ -1,38 +1,115 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
 import mqq.os.MqqHandler;
 
 public class bkts
-  implements SurfaceHolder.Callback
+  implements bfph
 {
-  public bkts(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bkts(ShortVideoPlayActivity paramShortVideoPlayActivity, bfpc parambfpc, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.h + ",mSavedPlayState : " + this.a.a(this.a.i));
-    }
-    if ((this.a.i == 1) && (this.a.h > 0))
+    this.jdField_a_of_type_Bfpc.dismiss();
+    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+    if (paramView != null)
     {
-      this.a.a(this.a.h);
-      this.a.h = 0;
-      this.a.i = 0;
+      if (!paramView.equals(this.jdField_a_of_type_JavaLangString)) {
+        break label174;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPlayActivity", 2, "click menu to forward shortVideo......");
+      }
+      paramView = this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity;
+      Bundle localBundle = ShortVideoPlayActivity.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity).getExtras();
+      localBundle.putInt("forward_type", 21);
+      localBundle.putBoolean("forward_need_sendmsg", true);
+      localBundle.putString("forward_thumb", ShortVideoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.h, "jpg"));
+      localBundle.putString("file_send_path", this.b);
+      Intent localIntent = new Intent();
+      localIntent.putExtras(localBundle);
+      aqbe.a(paramView, localIntent);
+      if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Int != 0) {
+        ShortVideoPlayActivity.c(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity);
+      }
+      axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X80052CC", "0X80052CC", 0, 0, "", "2", "", "");
     }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    label174:
+    do
+    {
+      return;
+      if (paramView.equals(this.c))
+      {
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          bcql.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_a_of_type_AndroidContentContext, 0, 2131719553, 0).b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
+          return;
+        }
+        ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.d, this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.g + ".mp4", false));
+        if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d == 0)
+        {
+          axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "1", "", "");
+          this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+        }
+        for (;;)
+        {
+          new avwu(BaseApplication.getContext()).a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, 2002, this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.e, this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.j);
+          return;
+          if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d == 3000)
+          {
+            axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "2", "", "");
+            this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+          }
+          else if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d == 1)
+          {
+            axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "3", "", "");
+            this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+          }
+          else
+          {
+            axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "4", "", "");
+            this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+          }
+        }
+      }
+    } while (!paramView.equals(this.e));
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      bcql.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_a_of_type_AndroidContentContext, 0, 2131719553, 0).b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
+      return;
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    paramView = new Intent("android.intent.action.VIEW");
+    paramView.setDataAndType(Uri.parse("file://" + this.d), "video/*");
+    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.startActivity(paramView);
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d == 0)
+    {
+      axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "1", "", "");
+      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+      return;
     }
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d == 3000)
+    {
+      axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "2", "", "");
+      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+      return;
+    }
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.d == 1)
+    {
+      axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "3", "", "");
+      this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
+      return;
+    }
+    axqy.b(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "4", "", "");
+    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.jdField_b_of_type_Boolean = true;
   }
 }
 

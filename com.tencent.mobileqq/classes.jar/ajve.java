@@ -1,9 +1,9 @@
 public class ajve
-  implements ajvf<String>
+  implements ajvd<Integer>
 {
-  public String a(String paramString)
+  public Integer a(String paramString)
   {
-    return paramString;
+    return Integer.decode(paramString);
   }
 }
 

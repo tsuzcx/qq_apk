@@ -1,6 +1,6 @@
 public abstract interface adfe
 {
-  public abstract void a(adfd paramadfd);
+  public abstract void a();
 }
 
 

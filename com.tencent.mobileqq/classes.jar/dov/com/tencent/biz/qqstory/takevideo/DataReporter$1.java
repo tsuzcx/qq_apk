@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.util.Log;
-import axqs;
-import axtu;
+import axqu;
+import axtw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -20,8 +20,8 @@ class DataReporter$1
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        axtu localaxtu = (axtu)localIterator.next();
-        axqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaxtu);
+        axtw localaxtw = (axtw)localIterator.next();
+        axqu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaxtw);
       }
       return;
     }

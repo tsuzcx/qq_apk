@@ -1,53 +1,66 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
 class vik
-  implements tfa
+  extends SimpleObserver<vsa>
 {
-  vik(vii paramvii, String paramString) {}
+  vik(vij paramvij, vsa paramvsa) {}
   
-  public void a(int paramInt, tfb paramtfb, List<TroopBarPOI> paramList)
+  public void a(vsa paramvsa)
   {
-    this.jdField_a_of_type_Vii.jdField_a_of_type_Tfb = paramtfb;
-    if (!this.jdField_a_of_type_Vii.isValidate()) {
-      return;
-    }
-    if (paramInt == 0) {
-      if (paramtfb.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
+    super.onNext(paramvsa);
+    this.jdField_a_of_type_Vij.a(5);
+    paramvsa = this.jdField_a_of_type_Vsa.a;
+    ved.b("EditVideoSave", "publishParam = " + paramvsa);
+    Intent localIntent;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_Vij.jdField_a_of_type_Vix.getActivity() != null)
     {
-      this.jdField_a_of_type_Vii.d.setVisibility(0);
-      this.jdField_a_of_type_Vii.a(bool);
-      if (this.jdField_a_of_type_Vii.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_Vii.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      localIntent = this.jdField_a_of_type_Vij.jdField_a_of_type_Vix.getActivity().getIntent();
+      if (localIntent == null) {
+        break label212;
       }
-      if (this.jdField_a_of_type_Vii.jdField_a_of_type_Tfb.b()) {
-        this.jdField_a_of_type_Vii.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Vii.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_Vii.jdField_a_of_type_Vsa != null)
-      {
-        this.jdField_a_of_type_Vii.jdField_a_of_type_Vsa.a(this.jdField_a_of_type_Vii.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_Vii.jdField_a_of_type_Vsa.notifyDataSetChanged();
-        if (this.jdField_a_of_type_Vii.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_Vii.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_Vii.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      vel.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
     }
+    for (;;)
+    {
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Vij.jdField_a_of_type_Vix.a(), paramvsa.b, i, j, this.jdField_a_of_type_Vij.jdField_a_of_type_Vhm.a.a());
+      vij.a(this.jdField_a_of_type_Vij, paramvsa.b);
+      this.jdField_a_of_type_Vij.jdField_a_of_type_Vix.getActivity().startActivityForResult(localIntent, 111);
+      this.jdField_a_of_type_Vij.jdField_a_of_type_Int = 5;
+      this.jdField_a_of_type_Vij.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Vij.b = ((int)(7000.0D / paramvsa.a * 4.0D));
+      this.jdField_a_of_type_Vij.f();
+      return;
+      label212:
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    ved.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_Vij.jdField_a_of_type_Vhm.a(0);
+    this.jdField_a_of_type_Vij.g();
+    bcql.a(this.jdField_a_of_type_Vij.jdField_a_of_type_Vix.a(), ajya.a(2131703840), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ved.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_Vij.jdField_a_of_type_Vhm.a(0);
+    bcql.a(this.jdField_a_of_type_Vij.jdField_a_of_type_Vix.a(), 1, ajya.a(2131703775) + paramError, 0).a();
+    this.jdField_a_of_type_Vij.g();
   }
 }
 

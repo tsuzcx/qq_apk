@@ -1,53 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import org.json.JSONObject;
 
 public class bdbv
-  extends URLDrawableDownListener.Adapter
+  implements DialogInterface.OnClickListener
 {
-  public bdbv(OpenCardContainer paramOpenCardContainer) {}
+  public bdbv(OpenAuthorityFragment paramOpenAuthorityFragment, int paramInt, JSONObject paramJSONObject) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    OpenCardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

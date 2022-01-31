@@ -1,12 +1,13 @@
-class biiu
-  implements avss
+import java.io.File;
+
+public class biiu
 {
-  biiu(biim parambiim) {}
-  
-  public void a()
-  {
-    bijj.a().e();
-  }
+  public static final String a = biir.a + File.separator + "camera";
+  public static final String b = biir.a + File.separator + "sv_config_resources" + File.separator;
+  public static final String c = a + File.separator + "capture";
+  public static final String d = a + File.separator + "material_zip_download";
+  public static final String e = a + File.separator + "material_usable";
+  public static final String f = a + File.separator + "material_config";
 }
 
 

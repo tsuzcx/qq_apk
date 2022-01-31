@@ -1,41 +1,57 @@
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
 
 class xlh
-  implements mzb
+  implements nan
 {
-  xlh(xle paramxle, JsBridgeListener paramJsBridgeListener) {}
+  xlh(xlb paramxlb) {}
+  
+  public void a()
+  {
+    Object localObject = this.a.mRuntime.a();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      bccw localbccw = this.a.mRuntime.a(this.a.mRuntime.a());
+      if ((localbccw != null) && ((localbccw instanceof bchx)) && (((bchx)localbccw).b() != localObject))
+      {
+        localObject = this.a.mRuntime.a();
+        if (localObject != null) {
+          try
+          {
+            localbccw = this.a.mRuntime.a(this.a.mRuntime.a());
+            if ((localbccw instanceof bcij))
+            {
+              ((WebView)localObject).loadUrl(((bcij)localbccw).b());
+              return;
+            }
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
+    }
+  }
   
   public void loaded(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject();
-        paramString.put("retcode", -1);
-        paramString.put("msg", "error");
-        this.jdField_a_of_type_Xle.callJs(this.jdField_a_of_type_Xle.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
-        return;
-      }
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 121;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_Xle.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    paramString = this.a.a.obtainMessage();
+    paramString.arg1 = 5;
+    paramString.arg2 = paramInt;
+    this.a.a.sendMessage(paramString);
   }
   
-  public void progress(int paramInt) {}
+  public void progress(int paramInt)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.arg1 = 4;
+    localMessage.arg2 = paramInt;
+    this.a.a.sendMessage(localMessage);
+  }
 }
 
 

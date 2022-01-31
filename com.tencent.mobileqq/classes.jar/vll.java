@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
 public class vll
-  implements vlm
 {
-  public void a(List<vlj> paramList, DoodleView paramDoodleView)
+  public int a;
+  public vlj a;
+  public int b;
+  
+  private vll(vln paramvln)
   {
-    vkp localvkp = new vkp(paramDoodleView);
-    vkz localvkz = new vkz(paramDoodleView);
-    paramDoodleView = new vld(paramDoodleView);
-    paramList.add(localvkp);
-    paramList.add(localvkz);
-    paramList.add(paramDoodleView);
+    this.jdField_a_of_type_Vlj = vln.a(paramvln);
+    this.jdField_a_of_type_Int = vln.a(paramvln);
+    this.b = vln.b(paramvln);
+  }
+  
+  public String toString()
+  {
+    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Vlj + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
   }
 }
 

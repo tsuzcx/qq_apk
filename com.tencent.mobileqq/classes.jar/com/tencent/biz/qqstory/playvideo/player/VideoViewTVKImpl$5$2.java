@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import udh;
-import ueg;
-import uel;
+import ude;
+import ued;
+import uei;
 
 public class VideoViewTVKImpl$5$2
   implements Runnable
 {
-  public VideoViewTVKImpl$5$2(uel paramuel) {}
+  public VideoViewTVKImpl$5$2(uei paramuei) {}
   
   public void run()
   {

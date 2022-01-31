@@ -18,32 +18,32 @@ import android.widget.ListView;
 import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import java.util.ArrayList;
+import osj;
 import osm;
-import osp;
+import qgb;
+import qgc;
+import qgd;
 import qge;
 import qgf;
 import qgg;
-import qgh;
-import qgi;
-import qgj;
-import qgr;
+import qgo;
 
 public class ReadInJoyVideoSearchTagFragment
   extends PublicBaseFragment
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new qgf(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new qgc(this);
   private ArrayAdapter<TagInfo> jdField_a_of_type_AndroidWidgetArrayAdapter;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  osp jdField_a_of_type_Osp = new qge(this);
+  osm jdField_a_of_type_Osm = new qgb(this);
   
   private void a()
   {
-    getView().setOnClickListener(new qgg(this));
+    getView().setOnClickListener(new qgd(this));
   }
   
   private void b()
   {
-    getView().findViewById(2131363753).setOnClickListener(new qgh(this));
+    getView().findViewById(2131363752).setOnClickListener(new qge(this));
   }
   
   private void c()
@@ -54,14 +54,14 @@ public class ReadInJoyVideoSearchTagFragment
     localListView.setEmptyView(localView);
     this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560038, new ArrayList());
     localListView.setAdapter(this.jdField_a_of_type_AndroidWidgetArrayAdapter);
-    localListView.setOnItemClickListener(new qgi(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
+    localListView.setOnItemClickListener(new qgf(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131376873));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new qgj(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131376875));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new qgg(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -92,7 +92,7 @@ public class ReadInJoyVideoSearchTagFragment
   public void onDestroy()
   {
     super.onDestroy();
-    osm.a().b(this.jdField_a_of_type_Osp);
+    osj.a().b(this.jdField_a_of_type_Osm);
   }
   
   public void onFinish()
@@ -104,12 +104,12 @@ public class ReadInJoyVideoSearchTagFragment
   public void onResume()
   {
     super.onResume();
-    qgr.a(this);
+    qgo.a(this);
     d();
     c();
     b();
     a();
-    osm.a().a(this.jdField_a_of_type_Osp);
+    osj.a().a(this.jdField_a_of_type_Osm);
   }
 }
 

@@ -1,30 +1,17 @@
-import NS_USER_ACTION_REPORT.UserCommReport;
+import java.io.File;
+import java.io.FileFilter;
 
 class bhee
+  implements FileFilter
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  bhee(bheb parambheb) {}
   
-  public UserCommReport a()
+  public boolean accept(File paramFile)
   {
-    UserCommReport localUserCommReport = new UserCommReport();
-    localUserCommReport.uin = this.jdField_a_of_type_Long;
-    localUserCommReport.platform = "AND";
-    localUserCommReport.client_type = "SQ";
-    localUserCommReport.network_type = this.jdField_a_of_type_JavaLangString;
-    return localUserCommReport;
-  }
-  
-  public bhee a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public bhee a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    paramFile = paramFile.getName();
+    boolean bool1 = paramFile.endsWith(".ftf");
+    boolean bool2 = paramFile.endsWith(".ttf");
+    return (bool1) || (bool2);
   }
 }
 

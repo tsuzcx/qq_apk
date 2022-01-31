@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode;
 
-import ajsf;
+import ajsd;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 import android.view.WindowManager;
-import bbay;
+import bbbm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wff;
+import wfc;
 
 public class CodeMaskManager
 {
@@ -39,9 +39,9 @@ public class CodeMaskManager
   
   static
   {
-    if (bbay.a())
+    if (bbbm.a())
     {
-      jdField_a_of_type_JavaLangString = ajsf.aW + "qbiz/qrcode/";
+      jdField_a_of_type_JavaLangString = ajsd.aW + "qbiz/qrcode/";
       return;
     }
   }
@@ -148,7 +148,7 @@ public class CodeMaskManager
     //   48: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: astore 6
     //   53: aload 6
-    //   55: invokestatic 182	ayog:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 182	ayoi:c	(Ljava/lang/String;)Ljava/lang/String;
     //   58: astore 7
     //   60: new 184	java/io/FileInputStream
     //   63: dup
@@ -201,7 +201,7 @@ public class CodeMaskManager
     //   152: ldc 209
     //   154: aconst_null
     //   155: aconst_null
-    //   156: invokestatic 214	nam:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
+    //   156: invokestatic 214	naj:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
     //   159: astore_2
     //   160: aload_2
     //   161: ifnull +11 -> 172
@@ -216,7 +216,7 @@ public class CodeMaskManager
     //   176: new 160	java/io/IOException
     //   179: dup
     //   180: ldc 219
-    //   182: invokestatic 224	ajyc:a	(I)Ljava/lang/String;
+    //   182: invokestatic 224	ajya:a	(I)Ljava/lang/String;
     //   185: invokespecial 225	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   188: athrow
     //   189: astore 5
@@ -382,7 +382,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130842649);
+      localBundle.putInt("qrbkgRes", 2130842650);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -509,9 +509,9 @@ public class CodeMaskManager
     //   0: iconst_0
     //   1: istore_3
     //   2: aconst_null
-    //   3: astore 5
+    //   3: astore 6
     //   5: aconst_null
-    //   6: astore 6
+    //   6: astore 5
     //   8: aload_2
     //   9: ifnull +90 -> 99
     //   12: new 58	java/io/File
@@ -568,7 +568,7 @@ public class CodeMaskManager
     //   112: iconst_0
     //   113: ireturn
     //   114: astore_1
-    //   115: aload 6
+    //   115: aload 5
     //   117: astore_1
     //   118: aload_1
     //   119: ifnull -22 -> 97
@@ -580,7 +580,7 @@ public class CodeMaskManager
     //   129: iconst_0
     //   130: ireturn
     //   131: astore_1
-    //   132: aload 5
+    //   132: aload 6
     //   134: astore_2
     //   135: aload_2
     //   136: ifnull +7 -> 143
@@ -608,9 +608,9 @@ public class CodeMaskManager
     //   0	166	2	paramArrayOfByte	byte[]
     //   1	97	3	bool1	boolean
     //   81	14	4	bool2	boolean
-    //   3	130	5	localObject1	Object
+    //   6	110	5	localObject1	Object
     //   152	5	5	localObject2	Object
-    //   6	110	6	localObject3	Object
+    //   3	130	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
     //   103	111	111	java/io/IOException
@@ -670,7 +670,7 @@ public class CodeMaskManager
     this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void a(wff paramwff, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(wfc paramwfc, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -693,7 +693,7 @@ public class CodeMaskManager
       for (;;)
       {
         this.jdField_a_of_type_AndroidOsBundle.putInt("type", 1);
-        paramwff.a(a(this.jdField_a_of_type_AndroidOsBundle));
+        paramwfc.a(a(this.jdField_a_of_type_AndroidOsBundle));
         return;
         label150:
         if (paramInt == 1) {
@@ -714,12 +714,12 @@ public class CodeMaskManager
     Object localObject = (Bundle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (((Bundle)localObject).getInt("type") == 1)
     {
-      paramwff.a(a((Bundle)localObject));
+      paramwfc.a(a((Bundle)localObject));
       b();
       return;
     }
-    localObject = new CodeMaskManager.PrepareBundleTask(this, paramwff, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramwff), 10000L);
+    localObject = new CodeMaskManager.PrepareBundleTask(this, paramwfc, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramwfc), 10000L);
     ((CodeMaskManager.PrepareBundleTask)localObject).start();
   }
 }

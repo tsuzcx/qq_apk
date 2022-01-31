@@ -1,525 +1,704 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.QShareUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.QShareUtils.2;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaInstance;
-import java.lang.ref.WeakReference;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ryj
 {
-  public static final String a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, ArrayList<ryl>> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
+  public static String a;
+  private bcqf jdField_a_of_type_Bcqf;
+  private bcww jdField_a_of_type_Bcww;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
   private String b;
-  private String c;
   
   static
   {
-    jdField_a_of_type_JavaLangString = BridgeModule.TAG + ".event";
+    jdField_a_of_type_JavaLangString = "QShareUtils";
   }
   
-  public ryj(BridgeModule paramBridgeModule)
+  public ryj()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBridgeModule);
+    this.jdField_a_of_type_JavaUtilMap.put("kandian", Integer.valueOf(1));
+    this.jdField_a_of_type_JavaUtilMap.put("qq_friend", Integer.valueOf(2));
+    this.jdField_a_of_type_JavaUtilMap.put("qzone", Integer.valueOf(3));
+    this.jdField_a_of_type_JavaUtilMap.put("we_chat", Integer.valueOf(4));
+    this.jdField_a_of_type_JavaUtilMap.put("we_chat_circle", Integer.valueOf(5));
+    this.jdField_a_of_type_JavaUtilMap.put("we_bo", Integer.valueOf(6));
+    this.jdField_a_of_type_JavaUtilMap.put("qq_browser", Integer.valueOf(7));
+    this.jdField_a_of_type_JavaUtilMap.put("sys_browser", Integer.valueOf(8));
+    this.jdField_a_of_type_JavaUtilMap.put("screen_shot", Integer.valueOf(9));
+    this.jdField_a_of_type_JavaUtilMap.put("set_font", Integer.valueOf(10));
+    this.jdField_a_of_type_JavaUtilMap.put("add_favourite", Integer.valueOf(12));
+    this.jdField_a_of_type_JavaUtilMap.put("send_pc", Integer.valueOf(13));
+    this.jdField_a_of_type_JavaUtilMap.put("copy_link", Integer.valueOf(14));
+    this.jdField_a_of_type_JavaUtilMap.put("report", Integer.valueOf(20));
+    this.jdField_a_of_type_JavaUtilMap.put("dis_like", Integer.valueOf(15));
+    this.jdField_a_of_type_JavaUtilMap.put("not_care", Integer.valueOf(19));
+    this.jdField_a_of_type_JavaUtilMap.put("add_friend", Integer.valueOf(17));
+    this.jdField_a_of_type_JavaUtilMap.put("open_aio", Integer.valueOf(16));
+    this.jdField_a_of_type_JavaUtilMap.put("open_more_info", Integer.valueOf(21));
+    this.jdField_a_of_type_JavaUtilMap.put("remove_fans", Integer.valueOf(18));
+    this.jdField_a_of_type_JavaUtilMap.put("personal_c2c", Integer.valueOf(22));
+    this.jdField_a_of_type_JavaUtilMap.put("unfollow", Integer.valueOf(23));
+    this.jdField_a_of_type_JavaUtilMap.put("save_picture", Integer.valueOf(11));
   }
   
-  private String a()
+  private void a(Activity paramActivity)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      BridgeModule localBridgeModule = (BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localBridgeModule.getViolaInstance() != null) && (localBridgeModule.getViolaInstance().getFragment() != null) && ((localBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment))) {
-        return ((ViolaFragment)localBridgeModule.getViolaInstance().getFragment()).a();
-      }
+    if (this.jdField_a_of_type_Bcqf == null) {
+      this.jdField_a_of_type_Bcqf = new bcqf(paramActivity);
     }
-    return "https://qq.com";
   }
   
-  private void a(String paramString1, String paramString2)
+  private void a(JSONObject paramJSONObject, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).invokeErrorCallJS(paramString1, paramString2);
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+    if (this.jdField_a_of_type_Bcww != null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+    this.jdField_a_of_type_Bcww = new ryk(this);
+    WXShareHelper.a().a(this.jdField_a_of_type_Bcww);
+  }
+  
+  public static List<Integer>[] a(boolean paramBoolean, Set<String> paramSet)
+  {
+    if (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    if ((!paramSet.contains("menuItem:share:kandian")) && (!paramSet.contains("menuItem:share:diandian")) && (paramBoolean)) {
+      localArrayList1.add(Integer.valueOf(1));
+    }
+    if (!paramSet.contains("menuItem:share:qq")) {
+      localArrayList1.add(Integer.valueOf(2));
+    }
+    if (!paramSet.contains("menuItem:share:QZone")) {
+      localArrayList1.add(Integer.valueOf(3));
+    }
+    if (!paramSet.contains("menuItem:share:appMessage")) {
+      localArrayList1.add(Integer.valueOf(4));
+    }
+    if (!paramSet.contains("menuItem:share:timeline")) {
+      localArrayList1.add(Integer.valueOf(5));
+    }
+    if (!paramSet.contains("menuItem:share:sinaWeibo")) {
+      localArrayList1.add(Integer.valueOf(6));
+    }
+    if (!paramSet.contains("menuItem:openWithQQBrowser")) {
+      localArrayList1.add(Integer.valueOf(7));
+    }
+    if (!paramSet.contains("menuItem:openWithSafari")) {
+      localArrayList1.add(Integer.valueOf(8));
+    }
+    ArrayList localArrayList2 = new ArrayList();
+    if (!paramSet.contains("menuItem:screenShotShare")) {
+      localArrayList2.add(Integer.valueOf(9));
+    }
+    if (!paramSet.contains("menuItem:copyUrl")) {
+      localArrayList2.add(Integer.valueOf(14));
+    }
+    if (!paramSet.contains("menuItem:exposeArticle")) {
+      localArrayList2.add(Integer.valueOf(20));
+    }
+    Collections.sort(localArrayList2);
+    return new List[] { localArrayList1, localArrayList2 };
+  }
+  
+  public String a(int paramInt)
+  {
+    Object localObject1 = "other";
+    Object localObject2 = localObject1;
+    if (this.jdField_a_of_type_JavaUtilMap.containsValue(Integer.valueOf(paramInt)))
     {
-      localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      localArrayList.add(new ryl(this, paramString2, paramString3));
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localArrayList);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new ryl(this, paramString2, paramString3));
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localArrayList);
-  }
-  
-  private void a(String paramString, JSONObject paramJSONObject)
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).invokeCallJS(paramString, paramJSONObject);
-    }
-  }
-  
-  private String b()
-  {
-    if (this.c == null) {
-      this.c = (String.valueOf(System.currentTimeMillis()) + String.valueOf((int)(Math.random() * 1000000.0D)));
-    }
-    return this.c;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      c();
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  private void b(String paramString1, String paramString2, String paramString3)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {}
-    ArrayList localArrayList;
-    do
-    {
-      do
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      localObject2 = localObject1;
+      if (localIterator.hasNext())
       {
-        return;
-      } while (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1));
-      localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        ryl localryl = (ryl)localArrayList.get(i);
-        if ((localryl.jdField_a_of_type_JavaLangString.equals(paramString2)) && (localryl.b.equals(paramString3))) {
-          localArrayList.remove(localryl);
+        localObject2 = (String)localIterator.next();
+        if (paramInt != ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject2)).intValue()) {
+          break label87;
         }
-        i += 1;
+        localObject1 = localObject2;
       }
-    } while (localArrayList.size() <= 0);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localArrayList);
+    }
+    label87:
+    for (;;)
+    {
+      break;
+      return localObject2;
+    }
   }
   
-  private String c()
+  public List<rym> a()
   {
-    if (!TextUtils.isEmpty(this.b)) {
-      return Uri.parse(this.b).getHost();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new rym("kandian", 1, false));
+    localArrayList.add(new rym("qq_friend", 2, false));
+    localArrayList.add(new rym("qzone", 3, false));
+    localArrayList.add(new rym("we_chat", 4, false));
+    localArrayList.add(new rym("we_chat_circle", 5, false));
+    localArrayList.add(new rym("we_bo", 6, false));
+    localArrayList.add(new rym("qq_browser", 7, false));
+    localArrayList.add(new rym("sys_browser", 8, false));
+    return localArrayList;
+  }
+  
+  public List<rym> a(JSONArray paramJSONArray, JSONObject paramJSONObject)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (localArrayList != null) {}
+    for (;;)
+    {
+      int i;
+      Object localObject2;
+      int k;
+      try
+      {
+        int j = paramJSONArray.length();
+        i = 0;
+        if (i < j)
+        {
+          Object localObject1 = paramJSONArray.get(i);
+          if ((localObject1 instanceof String))
+          {
+            localObject2 = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+            if (localObject2 != null) {
+              localArrayList.add(new rym((String)localObject1, ((Integer)localObject2).intValue(), false));
+            }
+          }
+          else if ((localObject1 instanceof JSONObject))
+          {
+            localObject1 = (JSONObject)localObject1;
+            localObject2 = ((JSONObject)localObject1).optString("name");
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (this.jdField_a_of_type_JavaUtilMap.get(localObject2) != null))
+            {
+              k = ((JSONObject)localObject1).optInt("webHandle", 0);
+              if ("save_picture".equals(localObject2))
+              {
+                m = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject2)).intValue();
+                if (k == 1)
+                {
+                  bool = true;
+                  localArrayList.add(new ryn((String)localObject2, m, bool, paramJSONObject.optString("saveImageUrl")));
+                }
+              }
+            }
+          }
+        }
+      }
+      catch (JSONException paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+      }
+      return localArrayList;
+      boolean bool = false;
+      continue;
+      int m = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject2)).intValue();
+      if (k == 1) {}
+      for (bool = true;; bool = false)
+      {
+        localArrayList.add(new rym((String)localObject2, m, bool));
+        break;
+      }
+      i += 1;
+    }
+  }
+  
+  public rym a(List<rym> paramList1, List<rym> paramList2, int paramInt)
+  {
+    paramList1 = paramList1.iterator();
+    while (paramList1.hasNext())
+    {
+      rym localrym = (rym)paramList1.next();
+      if (localrym.a == paramInt) {
+        return localrym;
+      }
+    }
+    paramList1 = paramList2.iterator();
+    while (paramList1.hasNext())
+    {
+      paramList2 = (rym)paramList1.next();
+      if (paramList2.a == paramInt) {
+        return paramList2;
+      }
     }
     return null;
   }
   
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ryk(this);
-  }
-  
   public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
+    WXShareHelper.a().b(this.jdField_a_of_type_Bcww);
+  }
+  
+  void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isWebCompShare", true);
+    localIntent.setClass(paramActivity.getApplicationContext(), ForwardRecentActivity.class);
+    localIntent.putExtra("key_flag_from_plugin", true);
+    String str = paramString1;
+    if (paramString1 != null)
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        ArrayList localArrayList = (ArrayList)localIterator.next();
-        if ((localArrayList != null) && (localArrayList.size() > 0)) {
-          localArrayList.clear();
-        }
+      str = paramString1;
+      if (paramString1.length() > 45) {
+        str = paramString1.substring(0, 45) + "…";
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
     }
-  }
-  
-  /* Error */
-  protected void a(android.content.Context paramContext, Intent paramIntent)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: iconst_0
-    //   4: istore_3
-    //   5: aload_2
-    //   6: ifnonnull +4 -> 10
-    //   9: return
-    //   10: aload_2
-    //   11: ldc 229
-    //   13: iconst_1
-    //   14: invokevirtual 235	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   17: ifeq -8 -> 9
-    //   20: aload_2
-    //   21: ldc 237
-    //   23: invokevirtual 241	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   26: astore_1
-    //   27: aload_1
-    //   28: ifnull +14 -> 42
-    //   31: aload_1
-    //   32: aload_0
-    //   33: invokespecial 243	ryj:b	()Ljava/lang/String;
-    //   36: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   39: ifne -30 -> 9
-    //   42: aload_2
-    //   43: ldc 245
-    //   45: invokevirtual 241	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   48: astore 7
-    //   50: aload 7
-    //   52: invokestatic 81	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   55: ifne -46 -> 9
-    //   58: aload_2
-    //   59: ldc 247
-    //   61: invokevirtual 241	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   64: astore_1
-    //   65: aload_1
-    //   66: ifnull +207 -> 273
-    //   69: new 249	org/json/JSONObject
-    //   72: dup
-    //   73: aload_1
-    //   74: invokespecial 251	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   77: astore_1
-    //   78: aload_2
-    //   79: ldc 253
-    //   81: invokevirtual 257	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   84: astore 8
-    //   86: aload 8
-    //   88: ifnull -79 -> 9
-    //   91: aload_2
-    //   92: ldc_w 259
-    //   95: invokevirtual 241	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   98: astore 6
-    //   100: aload 5
-    //   102: astore_2
-    //   103: aload 6
-    //   105: ifnull +13 -> 118
-    //   108: new 249	org/json/JSONObject
-    //   111: dup
-    //   112: aload 6
-    //   114: invokespecial 251	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   117: astore_2
-    //   118: aload_0
-    //   119: invokespecial 261	ryj:c	()Ljava/lang/String;
-    //   122: astore 9
-    //   124: invokestatic 266	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   127: ifeq +80 -> 207
-    //   130: getstatic 38	ryj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   133: astore 10
-    //   135: aload_0
-    //   136: getfield 48	ryj:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   139: ifnull +107 -> 246
-    //   142: aload_0
-    //   143: getfield 48	ryj:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   146: invokevirtual 267	java/lang/Object:toString	()Ljava/lang/String;
-    //   149: astore 5
-    //   151: aload_1
-    //   152: ifnull +102 -> 254
-    //   155: aload_1
-    //   156: invokevirtual 268	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   159: astore 6
-    //   161: aload 10
-    //   163: iconst_2
-    //   164: ldc_w 270
-    //   167: iconst_5
-    //   168: anewarray 4	java/lang/Object
-    //   171: dup
-    //   172: iconst_0
-    //   173: aload 5
-    //   175: aastore
-    //   176: dup
-    //   177: iconst_1
-    //   178: aload 7
-    //   180: aastore
-    //   181: dup
-    //   182: iconst_2
-    //   183: aload 6
-    //   185: aastore
-    //   186: dup
-    //   187: iconst_3
-    //   188: ldc_w 272
-    //   191: aload 8
-    //   193: invokestatic 276	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
-    //   196: aastore
-    //   197: dup
-    //   198: iconst_4
-    //   199: aload_2
-    //   200: aastore
-    //   201: invokestatic 280	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   204: invokestatic 284	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   207: aload 8
-    //   209: invokevirtual 170	java/util/ArrayList:size	()I
-    //   212: istore 4
-    //   214: iload_3
-    //   215: iload 4
-    //   217: if_icmpge -208 -> 9
-    //   220: aload 8
-    //   222: iload_3
-    //   223: invokevirtual 173	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   226: checkcast 120	java/lang/String
-    //   229: aload 9
-    //   231: invokestatic 289	mvv:b	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   234: ifeq +28 -> 262
-    //   237: aload_0
-    //   238: aload 7
-    //   240: aload_1
-    //   241: aload_2
-    //   242: invokevirtual 292	ryj:a	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
-    //   245: return
-    //   246: ldc_w 294
-    //   249: astore 5
-    //   251: goto -100 -> 151
-    //   254: ldc_w 294
-    //   257: astore 6
-    //   259: goto -98 -> 161
-    //   262: iload_3
-    //   263: iconst_1
-    //   264: iadd
-    //   265: istore_3
-    //   266: goto -52 -> 214
-    //   269: astore_1
-    //   270: return
-    //   271: astore_1
-    //   272: return
-    //   273: aconst_null
-    //   274: astore_1
-    //   275: goto -197 -> 78
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	278	0	this	ryj
-    //   0	278	1	paramContext	android.content.Context
-    //   0	278	2	paramIntent	Intent
-    //   4	262	3	i	int
-    //   212	6	4	j	int
-    //   1	249	5	str1	String
-    //   98	160	6	str2	String
-    //   48	191	7	str3	String
-    //   84	137	8	localArrayList	ArrayList
-    //   122	108	9	str4	String
-    //   133	29	10	str5	String
-    // Exception table:
-    //   from	to	target	type
-    //   108	118	269	org/json/JSONException
-    //   69	78	271	org/json/JSONException
-  }
-  
-  protected void a(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    ArrayList localArrayList;
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      localArrayList = null;
+    paramString1 = paramString2;
+    if (paramString2 != null)
+    {
+      paramString1 = paramString2;
+      if (paramString2.length() > 60) {
+        paramString1 = paramString2.substring(0, 60) + "…";
+      }
     }
+    int i = paramInt;
+    if (paramInt <= 0) {
+      i = 13;
+    }
+    localIntent.putExtra("pluginName", "web_share");
+    localIntent.putExtra("title", str);
+    localIntent.putExtra("desc", paramString1);
+    localIntent.putExtra("detail_url", paramString3);
+    localIntent.putExtra("shareQQType", i);
+    localIntent.putExtra("forward_type", 1001);
+    localIntent.putExtra("req_share_id", paramJSONObject.optLong("app_id", -1L));
+    localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
+    localIntent.putExtra("image_url_remote", paramString4);
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696698, new Object[] { str }));
+    localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
+    if (paramJSONObject.has("contentAction")) {
+      localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
+    }
+    if (paramJSONObject.has("actionData")) {
+      localIntent.putExtra("struct_share_key_content_action_DATA", paramJSONObject.getString("actionData"));
+    }
+    if (paramJSONObject.has("sourceAction")) {
+      localIntent.putExtra("struct_share_key_source_action", paramJSONObject.getString("sourceAction"));
+    }
+    if (paramJSONObject.has("isShareFlag")) {
+      localIntent.putExtra("is_share_flag", Integer.parseInt(paramJSONObject.getString("isShareFlag")));
+    }
+    if (paramJSONObject.has("srcActionData")) {
+      localIntent.putExtra("struct_share_key_source_action_data", paramJSONObject.getString("srcActionData"));
+    }
+    if (paramJSONObject.has("appName")) {
+      localIntent.putExtra("app_name", paramJSONObject.getString("appName"));
+    }
+    if (paramJSONObject.has("source_name")) {
+      localIntent.putExtra("app_name", paramJSONObject.getString("source_name"));
+    }
+    if (paramJSONObject.has("sourceName")) {
+      localIntent.putExtra("app_name", paramJSONObject.getString("sourceName"));
+    }
+    if ("audio".equals(paramString5))
+    {
+      paramInt = 2;
+      localIntent.putExtra("audio_url", paramString6);
+    }
+    boolean bool;
+    long l;
     for (;;)
     {
-      if ((localArrayList != null) && (localArrayList.size() > 0))
+      localIntent.putExtra("req_type", paramInt);
+      localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
+      bool = paramJSONObject.optBoolean("back", true);
+      if (paramJSONObject.has("k_back")) {
+        bool = paramJSONObject.getBoolean("k_back");
+      }
+      localIntent.putExtra("k_back", bool);
+      if (paramJSONObject.has("serviceID")) {
+        localIntent.putExtra("new_share_service_id", paramJSONObject.getString("serviceID"));
+      }
+      l = paramJSONObject.optLong("appid", 0L);
+      if (l <= 0L) {
+        break;
+      }
+      paramJSONObject = (AppInterface)onh.a();
+      if (paramJSONObject != null)
       {
-        int i = 0;
-        label26:
-        if (i < localArrayList.size())
+        a(paramActivity);
+        if (!this.jdField_a_of_type_Bcqf.isShowing())
         {
-          String str = ((ryl)localArrayList.get(i)).b;
-          JSONObject localJSONObject = new JSONObject();
-          try
-          {
-            localJSONObject.put("event", paramString);
-            localJSONObject.put("data", paramJSONObject1);
-            localJSONObject.put("source", paramJSONObject2);
-            a(str, localJSONObject);
-            i += 1;
-            break label26;
-            localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+          this.jdField_a_of_type_Bcqf.c(2131694100);
+          this.jdField_a_of_type_Bcqf.show();
+        }
+        localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
+        xmq.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new ryl(this, localIntent, paramActivity));
+      }
+      return;
+      i = paramJSONObject.optInt("req_type", 1);
+      paramInt = i;
+      if (i == 2)
+      {
+        localIntent.putExtra("audio_url", paramJSONObject.getString("audio_url"));
+        paramInt = i;
+      }
+    }
+    a(paramActivity);
+    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
+    {
+      l = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "dialog dimiss time :" + l);
+      }
+      this.jdField_a_of_type_Bcqf.dismiss();
+    }
+    paramString1 = paramJSONObject.optString("puin", null);
+    if (paramString1 == null) {
+      paramString1 = paramJSONObject.optString("oaUin");
+    }
+    label1037:
+    label1047:
+    label1057:
+    label1627:
+    label1760:
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        paramString2 = (AppInterface)onh.a();
+        paramString2 = paramString2.getEntityManagerFactory(paramString2.getAccount()).createEntityManager();
+        paramString5 = (AccountDetail)paramString2.a(AccountDetail.class, paramString1);
+        paramString2.a();
+        paramString4 = paramJSONObject.optString("src_action", "");
+        paramString2 = null;
+        if (TextUtils.isEmpty(paramString4)) {
+          if (paramString5 == null) {
+            break label1767;
           }
-          catch (JSONException localJSONException)
+        }
+      }
+      label998:
+      label1767:
+      for (paramString2 = paramString5.name;; paramString2 = null)
+      {
+        paramString3 = paramString2;
+        if (TextUtils.isEmpty(paramString2))
+        {
+          paramString3 = paramString2;
+          if (paramJSONObject.has("sourceName")) {
+            paramString3 = paramJSONObject.optString("sourceName");
+          }
+        }
+        paramString2 = paramString3;
+        if (TextUtils.isEmpty(paramString3)) {
+          paramString2 = paramString1;
+        }
+        for (;;)
+        {
+          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131699654)))
           {
+            bool = paramString2.equalsIgnoreCase(paramActivity.getString(2131699654));
+            if (bool)
+            {
+              paramString3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
+              if (!bool) {
+                break label1263;
+              }
+              paramString4 = "mqqapi://readinjoy/open?src_type=internal&version=1";
+              if (!bool) {
+                break label1271;
+              }
+              paramString5 = "http://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/kandian.png";
+              localIntent.putExtra("source_puin", paramString1);
+              localIntent.putExtra("struct_share_key_source_action", "plugin");
+              localIntent.putExtra("struct_share_key_source_a_action_data", paramString3);
+              localIntent.putExtra("struct_share_key_source_i_action_data", paramString4);
+              localIntent.putExtra("struct_share_key_content_a_action_DATA", paramString3);
+              localIntent.putExtra("struct_share_key_source_icon", paramString5);
+              localIntent.putExtra("app_name", paramString2);
+              label1134:
+              paramJSONObject = paramJSONObject.optString("src_iconUrl", "");
+              if (!TextUtils.isEmpty(paramJSONObject)) {
+                break label1726;
+              }
+              localIntent.putExtra("struct_share_key_source_icon", "http://url.cn/JS8oE7");
+            }
+          }
+          for (;;)
+          {
+            paramJSONObject = axva.a(localIntent.getExtras());
+            if (paramJSONObject != null) {
+              break label1739;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "build struct msg fail");
+            return;
+            if (paramJSONObject.has("sourceName")) {
+              paramString2 = paramJSONObject.optString("sourceName");
+            }
+            paramString3 = paramString2;
+            if (TextUtils.isEmpty(paramString2))
+            {
+              paramString3 = paramString2;
+              if (paramString5 != null) {
+                paramString3 = paramString5.name;
+              }
+            }
+            if (!TextUtils.isEmpty(paramString3)) {
+              break label1760;
+            }
+            paramString2 = paramString1;
+            break label998;
+            paramString3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&from=recent";
+            break label1037;
+            label1263:
+            paramString4 = "mqqapi://readinjoy/open?src_type=internal&version=1&from=recent";
+            break label1047;
+            label1271:
+            paramString5 = "http://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/dingyuehao.png";
+            break label1057;
+            paramString3 = paramJSONObject.optString("src_iconUrl", "");
+            paramString5 = paramJSONObject.optString("src_actionData", "");
+            paramString6 = paramJSONObject.optString("src_a_actionData", "");
+            str = paramJSONObject.optString("src_i_actionData", "");
+            if ((TextUtils.isEmpty(paramString4)) || (("web".equals(paramString4)) && ((TextUtils.isEmpty(paramString3)) || (paramString3.contains("webcard.mp.qq.com")))) || ((!"web".equals(paramString4)) && (TextUtils.isEmpty(paramString5)) && ((TextUtils.isEmpty(paramString6)) || (TextUtils.isEmpty(str)))))
+            {
+              paramString3 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { paramString1 });
+              paramString4 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { paramString1 });
+              localIntent.putExtra("struct_share_key_source_action", "plugin");
+              localIntent.putExtra("struct_share_key_source_a_action_data", paramString3);
+              localIntent.putExtra("struct_share_key_source_i_action_data", paramString4);
+            }
             for (;;)
             {
-              QLog.e(jdField_a_of_type_JavaLangString, 1, localJSONException.getMessage(), localJSONException);
+              localIntent.putExtra("source_puin", paramString1);
+              localIntent.putExtra("app_name", paramString2);
+              paramString1 = paramJSONObject.optString("src_iconUrl", "");
+              if (!TextUtils.isEmpty(paramString1)) {
+                break label1627;
+              }
+              localIntent.putExtra("struct_share_key_source_icon", "http://url.cn/JS8oE7");
+              break;
+              localIntent.putExtra("struct_share_key_source_action", paramString4);
+              if ("web".equals(paramString4))
+              {
+                localIntent.putExtra("struct_share_key_source_url", paramString3);
+                localIntent.putExtra("source_url", paramString3);
+              }
+              else
+              {
+                if (!TextUtils.isEmpty(paramString5)) {
+                  localIntent.putExtra("struct_share_key_source_action_data", paramString5);
+                }
+                if (!TextUtils.isEmpty(paramString6)) {
+                  localIntent.putExtra("struct_share_key_source_a_action_data", paramString6);
+                }
+                if (!TextUtils.isEmpty(str)) {
+                  localIntent.putExtra("struct_share_key_source_i_action_data", str);
+                }
+              }
             }
+            localIntent.putExtra("struct_share_key_source_icon", paramString1);
+            break label1134;
+            if (paramJSONObject.has("source_name"))
+            {
+              paramString1 = paramJSONObject.optString("source_name");
+              localIntent.putExtra("app_name", paramString1);
+              if ((!"手Q阅读".equals(paramString1)) || (!paramJSONObject.has("srcIconUrl"))) {
+                break label1134;
+              }
+              localIntent.putExtra("struct_share_key_source_icon", paramJSONObject.optString("srcIconUrl"));
+              break label1134;
+            }
+            localIntent.putExtra("app_name", paramActivity.getString(2131696714));
+            break label1134;
+            localIntent.putExtra("struct_share_key_source_icon", paramJSONObject);
           }
+          localIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
+          paramActivity.startActivityForResult(localIntent, 1);
+          return;
+          paramString2 = paramString3;
         }
       }
     }
   }
   
-  public void a(JSONObject paramJSONObject, String paramString)
+  public void a(JSONObject paramJSONObject, int paramInt, Activity paramActivity)
   {
-    String str = paramJSONObject.optString("event", paramJSONObject.optString("eventName", ""));
-    this.b = a();
-    if (TextUtils.isEmpty(this.b))
+    Object localObject2 = (AppInterface)onh.a();
+    String str2;
+    String str3;
+    String str1;
+    Object localObject1;
+    Object localObject3;
+    int i;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "source url is null");
+      paramJSONObject.optString("source_name", "QQ浏览器");
+      str2 = paramJSONObject.optString("title");
+      str3 = paramJSONObject.optString("desc");
+      str1 = paramJSONObject.optString("share_url");
+      localObject1 = paramJSONObject.optString("image_url");
+      localObject3 = paramJSONObject.optString("flash_url");
+      i = paramJSONObject.optInt("shareQQType", 13);
+      if (paramInt == 2)
+      {
+        a(paramActivity, paramJSONObject, str2, str3, str1, (String)localObject1, "news", (String)localObject3, i);
+        return;
       }
-      a(paramString, "source url is null");
+      if (paramInt == 3)
+      {
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putString("title", str2);
+        ((Bundle)localObject3).putString("desc", str3);
+        ((Bundle)localObject3).putString("detail_url", str1);
+        ((Bundle)localObject3).putString("from", "qq");
+        ((Bundle)localObject3).putString("default_text", paramJSONObject.optString("default_text"));
+        paramJSONObject = new ArrayList(1);
+        paramJSONObject.add(localObject1);
+        ((Bundle)localObject3).putStringArrayList("image_url", paramJSONObject);
+        ((Bundle)localObject3).putLong("req_share_id", 0L);
+        ((Bundle)localObject3).putInt("iUrlInfoFrm", 1);
+        ((Bundle)localObject3).putLong("share_begin_time", bcfh.b);
+        if (bgzl.a((QQAppInterface)localObject2, paramActivity.getApplicationContext(), (Bundle)localObject3, null, 1)) {
+          break label787;
+        }
+        wij.a(1, 2131689512);
+        return;
+      }
     }
-    do
+    catch (Exception paramJSONObject)
     {
+      paramJSONObject.printStackTrace();
       return;
-      if (TextUtils.isEmpty(str))
+    }
+    int j;
+    if ((paramInt == 4) || (paramInt == 5))
+    {
+      localObject3 = new HashMap(1);
+      i = -1;
+      if (paramInt != 4) {
+        break label788;
+      }
+      j = 3;
+      if (!WXShareHelper.a().a()) {
+        i = 2131720917;
+      }
+      while (i != -1)
+      {
+        wij.a(0, i);
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131720918;
+        }
+      }
+      if ((paramJSONObject.optInt("WXShareToMiniProgram") != 1) || (paramInt != 4)) {
+        break label794;
+      }
+    }
+    label787:
+    label788:
+    label794:
+    for (boolean bool = true;; bool = false)
+    {
+      String str4 = paramJSONObject.optString("WXSharePath");
+      if (TextUtils.isEmpty(paramJSONObject.optString("WXShareMiniProgramSourceID"))) {}
+      for (paramActivity = "gh_eaa1f0b1626b";; paramActivity = paramJSONObject.optString("WXShareMiniProgramSourceID"))
+      {
+        a(paramJSONObject, j);
+        paramJSONObject = new QShareUtils.1(this, (Map)localObject3, bool, str2, str3, str1, str4, paramActivity, paramInt);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break;
+        }
+        paramJSONObject.run();
+        return;
+      }
+      ThreadManager.post(new QShareUtils.2(this, (String)localObject1, bool, (Map)localObject3, (AppInterface)localObject2, paramJSONObject), 8, null, false);
+      return;
+      if (paramInt == 6)
       {
         if (QLog.isColorLevel()) {
-          QLog.w(jdField_a_of_type_JavaLangString, 2, "event name is null");
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start!");
         }
-        a(paramString, "event name is null");
-        return;
-      }
-      b();
-    } while ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-    a(str, paramJSONObject.optString("identifier", ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getInstanceId()), paramString);
-  }
-  
-  public void b(JSONObject paramJSONObject, String paramString)
-  {
-    String str = paramJSONObject.optString("event", paramJSONObject.optString("eventName", ""));
-    if (TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "event name is null");
-      }
-      a(paramString, "event name is null");
-      return;
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      b(str, paramJSONObject.optString("identifier", ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getInstanceId()), paramString);
-    }
-    a(paramString, new JSONObject());
-  }
-  
-  public void c(JSONObject paramJSONObject, String paramString)
-  {
-    int i = 0;
-    int k = 1;
-    String str1 = paramJSONObject.optString("event", paramJSONObject.optString("eventName", ""));
-    Object localObject2 = a();
-    if (TextUtils.isEmpty(str1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "event name is null");
-      }
-      a(paramString, "event name is null");
-      return;
-    }
-    JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
-    if (localJSONObject != null) {}
-    for (Object localObject1 = localJSONObject.toString(); (!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).length() >= 460800L); localObject1 = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "param data is over size");
-      }
-      a(paramString, "param data is over size");
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramJSONObject = paramJSONObject.optJSONObject("options");
-        localObject1 = new ArrayList();
-        if (paramJSONObject == null) {
-          break label515;
-        }
-        boolean bool2 = paramJSONObject.optBoolean("echo", true);
-        boolean bool3 = paramJSONObject.optBoolean("broadcast", true);
-        paramJSONObject = paramJSONObject.optJSONArray("domains");
-        bool1 = bool3;
-        k = bool2;
-        if (paramJSONObject != null)
+        if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1)))
         {
-          int j = paramJSONObject.length();
-          bool1 = bool3;
-          k = bool2;
-          if (i < j)
-          {
-            localObject3 = paramJSONObject.optString(i);
-            if (TextUtils.isEmpty((CharSequence)localObject3)) {
-              break label508;
-            }
-            ((ArrayList)localObject1).add(localObject3);
-            break label508;
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
           }
-        }
-        Object localObject3 = new JSONObject();
-        ((JSONObject)localObject3).put("url", localObject2);
-        if ((((ArrayList)localObject1).size() == 0) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-        {
-          paramJSONObject = Uri.parse((String)localObject2);
-          if (paramJSONObject.isHierarchical()) {
-            ((ArrayList)localObject1).add(paramJSONObject.getHost());
-          }
-        }
-        localObject2 = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-        ((Intent)localObject2).putExtra("broadcast", bool1);
-        ((Intent)localObject2).putExtra("unique", b());
-        ((Intent)localObject2).putExtra("event", str1);
-        if (localJSONObject != null) {
-          ((Intent)localObject2).putExtra("data", localJSONObject.toString());
-        }
-        ((Intent)localObject2).putStringArrayListExtra("domains", (ArrayList)localObject1);
-        ((Intent)localObject2).putExtra("source", ((JSONObject)localObject3).toString());
-        if (QLog.isColorLevel())
-        {
-          String str2 = jdField_a_of_type_JavaLangString;
-          String str3 = this.jdField_a_of_type_JavaLangRefWeakReference.toString();
-          if (localJSONObject != null)
-          {
-            paramJSONObject = localJSONObject.toString();
-            QLog.d(str2, 2, String.format("send event broadcast, pluginReference: %s, event: %s, data: %s, domains: %s, source: %s", new Object[] { str3, str1, paramJSONObject, TextUtils.join(",", (Iterable)localObject1), localObject3 }));
-          }
-        }
-        else
-        {
-          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
-          if (k != 0) {}
-          a(paramString, new JSONObject());
+          bcql.a(BaseActivity.sTopActivity, 0, 2131719487, 0).b(BaseActivity.sTopActivity.getResources().getDimensionPixelSize(2131298865));
           return;
         }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:false");
+        }
+        try
+        {
+          paramJSONObject = URLEncoder.encode(str2, "UTF-8");
+          paramJSONObject = "http://v.t.sina.com.cn/share/share.php?" + "title=" + paramJSONObject;
+          localObject2 = URLEncoder.encode(str1, "UTF-8");
+          paramJSONObject = paramJSONObject + "&url=" + (String)localObject2;
+          localObject1 = URLEncoder.encode((String)localObject1, "UTF-8");
+          paramJSONObject = paramJSONObject + "&pic=" + (String)localObject1;
+          paramJSONObject = paramJSONObject + "&_wv=3";
+          localObject1 = new Intent(paramActivity, QQBrowserActivity.class);
+          ((Intent)localObject1).putExtra("url", paramJSONObject);
+          paramActivity.startActivity((Intent)localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start webview!");
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina end!");
+            return;
+          }
+        }
+        catch (Exception paramJSONObject)
+        {
+          for (;;)
+          {
+            paramJSONObject = paramJSONObject;
+            bcql.a(BaseApplication.getContext(), 0, 2131719487, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+            paramJSONObject.printStackTrace();
+          }
+        }
+        finally {}
       }
-      catch (JSONException paramJSONObject)
-      {
-        a(paramString, paramJSONObject.getMessage());
-        return;
-      }
-      paramJSONObject = "NULL";
-      continue;
-      label508:
-      i += 1;
-      continue;
-      label515:
-      boolean bool1 = true;
+      return;
+      j = 4;
+      break;
     }
+  }
+  
+  public List<rym> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new rym("screen_shot", 9, false));
+    localArrayList.add(new rym("set_font", 10, false));
+    localArrayList.add(new rym("add_favourite", 12, false));
+    localArrayList.add(new rym("send_pc", 13, false));
+    localArrayList.add(new rym("copy_link", 14, false));
+    localArrayList.add(new rym("report", 20, false));
+    return localArrayList;
   }
 }
 

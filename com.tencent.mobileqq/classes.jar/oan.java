@@ -1,16 +1,15 @@
-public class oan
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class oan
+  implements DialogInterface.OnClickListener
 {
-  public static boolean a(int paramInt)
+  oan(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!olq.a()) {
-      return false;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
   }
 }
 

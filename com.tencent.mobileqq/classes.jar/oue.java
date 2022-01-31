@@ -2,23 +2,21 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 class oue
   implements ViewTreeObserver.OnPreDrawListener
 {
-  oue(oud paramoud, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
+  oue(oud paramoud) {}
   
   public boolean onPreDraw()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
-    Object localObject2 = new int[2];
-    ((View)localObject1).getLocationOnScreen((int[])localObject2);
-    localObject2 = this.jdField_a_of_type_Oud.a.a(oud.a(this.jdField_a_of_type_Oud), (int[])localObject2);
-    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
-    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131374760);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131374760, null);
+    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
+    Object localObject = new int[2];
+    localView.getLocationOnScreen((int[])localObject);
+    localObject = this.a.a.a(oud.a(this.a), (int[])localObject);
+    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
+    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(oud.a(this.a));
     return false;
   }
 }

@@ -1,18 +1,13 @@
 class bfdm
-  implements besd
+  implements besu
 {
-  bfdm(bfdl parambfdl) {}
+  bfdm(bfdk parambfdk) {}
   
-  public void a(int paramInt, String paramString, besc parambesc)
+  public void a(int paramInt, String paramString, best parambest)
   {
-    beyr.a(beyn.a(), 11, "0");
-    if ((paramInt == 0) && (parambesc != null) && (parambesc.a()))
-    {
-      bfdl.a(this.a, parambesc);
-      this.a.c();
-      return;
+    if ((paramInt == 0) && (parambest != null)) {
+      this.a.a(parambest.b, parambest.h);
     }
-    this.a.f();
   }
 }
 

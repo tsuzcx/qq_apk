@@ -1,6 +1,6 @@
 package cooperation.qqpim;
 
-import ajyc;
+import ajya;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -10,13 +10,13 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.Window;
-import bcpq;
-import bcpw;
-import bfmt;
-import bgsh;
-import bgsi;
-import bgsj;
-import bgsq;
+import bcqf;
+import bcql;
+import bfnk;
+import bgsy;
+import bgsz;
+import bgta;
+import bgth;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,9 +28,9 @@ public class QQPimBridgeActivity
   implements Handler.Callback
 {
   public static long a;
-  private bcpq jdField_a_of_type_Bcpq;
-  private bfmt jdField_a_of_type_Bfmt;
-  bgsq jdField_a_of_type_Bgsq = new bgsi(this);
+  private bcqf jdField_a_of_type_Bcqf;
+  private bfnk jdField_a_of_type_Bfnk;
+  bgth jdField_a_of_type_Bgth = new bgsz(this);
   private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
   
   public static boolean a(Context paramContext)
@@ -60,16 +60,16 @@ public class QQPimBridgeActivity
       finish();
       return true;
     }
-    this.jdField_a_of_type_Bfmt = new bfmt(this);
+    this.jdField_a_of_type_Bfnk = new bfnk(this);
     jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bcpq = new bcpq(this, super.getResources().getDimensionPixelSize(2131298865));
-    this.jdField_a_of_type_Bcpq.a(ajyc.a(2131710617));
-    this.jdField_a_of_type_Bcpq.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bcpq.setOnDismissListener(new bgsh(this));
+    this.jdField_a_of_type_Bcqf = new bcqf(this, super.getResources().getDimensionPixelSize(2131298865));
+    this.jdField_a_of_type_Bcqf.a(ajya.a(2131710628));
+    this.jdField_a_of_type_Bcqf.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bcqf.setOnDismissListener(new bgsy(this));
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bgsq);
+    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bgth);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
     return true;
   }
@@ -77,10 +77,10 @@ public class QQPimBridgeActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
+    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
     {
-      this.jdField_a_of_type_Bcpq.dismiss();
-      this.jdField_a_of_type_Bcpq = null;
+      this.jdField_a_of_type_Bcqf.dismiss();
+      this.jdField_a_of_type_Bcqf = null;
     }
     sTopActivity = null;
   }
@@ -102,44 +102,44 @@ public class QQPimBridgeActivity
           do
           {
             return false;
-          } while ((isFinishing()) || (this.jdField_a_of_type_Bcpq == null));
-          this.jdField_a_of_type_Bcpq.a(ajyc.a(2131710619));
-          this.jdField_a_of_type_Bcpq.show();
+          } while ((isFinishing()) || (this.jdField_a_of_type_Bcqf == null));
+          this.jdField_a_of_type_Bcqf.a(ajya.a(2131710630));
+          this.jdField_a_of_type_Bcqf.show();
           return false;
         } while (isFinishing());
         int i = paramMessage.arg1;
         int j = super.getResources().getDimensionPixelSize(2131298865);
-        paramMessage = ajyc.a(2131710620);
+        paramMessage = ajya.a(2131710631);
         if (-4 == i) {
-          paramMessage = ajyc.a(2131710621);
+          paramMessage = ajya.a(2131710632);
         }
         for (;;)
         {
-          bcpw.a(this.app.getApp(), 1, paramMessage, 0).b(j);
+          bcql.a(this.app.getApp(), 1, paramMessage, 0).b(j);
           finish();
           return false;
           if ((-5 == i) || (-1 == i) || (-3 == i) || (-2 == i)) {
-            paramMessage = ajyc.a(2131710616);
+            paramMessage = ajya.a(2131710627);
           } else if (-6 == i) {
-            paramMessage = ajyc.a(2131710618);
+            paramMessage = ajya.a(2131710629);
           }
         }
       } while (isFinishing());
       localBundle = getIntent().getExtras();
-      if (bgsj.i.equals(localBundle.getString(bgsj.o)))
+      if (bgta.i.equals(localBundle.getString(bgta.o)))
       {
         paramMessage = localObject1;
         if (!a(getApplicationContext())) {
-          paramMessage = this.jdField_a_of_type_Bcpq;
+          paramMessage = this.jdField_a_of_type_Bcqf;
         }
         QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
         finish();
         return false;
       }
-    } while (!bgsj.j.equals(localBundle.getString(bgsj.o)));
+    } while (!bgta.j.equals(localBundle.getString(bgta.o)));
     paramMessage = localObject2;
     if (!a(getApplicationContext())) {
-      paramMessage = this.jdField_a_of_type_Bcpq;
+      paramMessage = this.jdField_a_of_type_Bcqf;
     }
     QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
     finish();

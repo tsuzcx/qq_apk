@@ -1,69 +1,55 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.SharedMemWriteFile;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class axlh
+public final class axlh
+  implements aysc
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  public CameraFilterGLView.SharedMemWriteFile a;
-  public ByteBuffer a;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public axlh(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString) {}
   
-  public axlh(int paramInt)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = 0;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = paramInt1 * paramInt2 * paramInt3;
-    if ((this.jdField_a_of_type_Boolean) && (this.b == i) && (this.jdField_a_of_type_JavaNioByteBuffer != null)) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    try
+    if (paramaysz.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Long = PtvFilterUtils.getNativePtrIndex(paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Long == 0L) {
-        return false;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-    {
-      for (;;)
+      paramaysz = paramaysz.jdField_a_of_type_Aysy;
+      if (new File(paramaysz.c).exists())
       {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaNioByteBuffer = PtvFilterUtils.allocateSharedMem(this.jdField_a_of_type_Long);
-        if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-          return false;
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-      {
-        for (;;)
+        str = RecentDanceConfigMgr.a(paramaysz.c);
+        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
         {
-          this.jdField_a_of_type_JavaNioByteBuffer = null;
+          bbdx.d(paramaysz.c);
+          bbdx.d(this.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
+          }
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.b = i;
       }
+      while (!QLog.isColorLevel())
+      {
+        String str;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
+        }
+        bbdx.c(paramaysz.c, this.jdField_a_of_type_JavaLangString);
+        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + paramaysz.c);
+      return;
     }
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + paramaysz.jdField_a_of_type_Int);
+    }
+    bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
+    }
   }
 }
 

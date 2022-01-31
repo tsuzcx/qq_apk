@@ -1,17 +1,6 @@
-public class yoq
+public abstract interface yoq
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "-1";
-  public int c;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "0";
+  public abstract void a(int paramInt, String paramString);
 }
 
 

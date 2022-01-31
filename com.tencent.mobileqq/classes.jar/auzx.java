@@ -1,47 +1,26 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
+import android.graphics.Matrix;
+import android.graphics.PointF;
 import android.view.View;
 import android.view.animation.Transformation;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.profile.view.ProfileTagView;
 import com.tencent.mobileqq.widget.RatioLayout;
 
 public class auzx
-  implements bbkq<Integer>
+  implements bble<Float>
 {
-  public auzx(ProfileTagView paramProfileTagView) {}
+  public auzx(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
   
-  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    paramTransformation = this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getLayoutParams();
-    if (paramTransformation != null)
-    {
-      paramTransformation.height = paramInteger.intValue();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.setLayoutParams(paramTransformation);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramInteger = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
-        if ((paramInteger != null) && (paramInteger.getChildCount() > 0))
-        {
-          paramInteger = paramInteger.getChildAt(0);
-          if (paramInteger != null)
-          {
-            paramInteger = paramInteger.getBackground();
-            if ((paramInteger instanceof BitmapDrawable))
-            {
-              int j = (int)(255.0F * paramFloat);
-              int i = j;
-              if (parambbkk == this.a.jdField_a_of_type_Bbkk) {
-                i = 255 - j;
-              }
-              paramInteger.setAlpha(i);
-            }
-          }
-        }
-      }
-    }
+    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getWidth();
+    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getHeight();
+    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
+    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
   }
 }
 

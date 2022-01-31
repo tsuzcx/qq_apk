@@ -1,55 +1,72 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amse
-  extends ampb<amsd>
+  extends ampa<amsf>
 {
+  public static int a = 16777216;
+  public static int b = 10240;
+  
   public int a()
   {
-    return 453;
+    return 561;
   }
   
   @NonNull
-  public amsd a(int paramInt)
+  public amsf a(int paramInt)
   {
-    return new amsd();
+    amsf localamsf = new amsf();
+    localamsf.a = a;
+    localamsf.b = b;
+    return localamsf;
   }
   
   @Nullable
-  public amsd a(ampi[] paramArrayOfampi)
+  public amsf a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      amsd localamsd = amsd.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfampi[0].a);
-      }
-      return localamsd;
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      return new amsf();
     }
-    return new amsd();
-  }
-  
-  public Class<amsd> a()
-  {
-    return amsd.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amsd paramamsd)
-  {
-    bbjn.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramamsd.a());
+    paramArrayOfamph = paramArrayOfamph[0].a;
     if (QLog.isColorLevel()) {
-      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramamsd);
+      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfamph);
+    }
+    amsf localamsf = new amsf();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramArrayOfamph);
+      localamsf.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
+      localamsf.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
+      return localamsf;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfamph);
+      localamsf.a = a;
+      localamsf.b = b;
+    }
+    return localamsf;
+  }
+  
+  public Class a()
+  {
+    return amsf.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FavLocalEmoticonsProcessor", 2, "onReqFailed");
     }
   }
   
-  public boolean a()
+  public void a(amsf paramamsf)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavLocalEmoticonsProcessor", 2, "onUpdate");
+    }
   }
   
   public int b()

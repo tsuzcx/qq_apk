@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class ajdi
-  implements DialogInterface.OnClickListener
+class ajdi
+  implements ajnm
 {
-  public ajdi(CmGameSubRscHandler.2 param2) {}
+  ajdi(ajdf paramajdf, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(null);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
+      }
+      ApolloCmdChannel localApolloCmdChannel = ajac.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("result", paramInt);
+        localApolloCmdChannel.callbackFromRequest(ajdf.a(this.jdField_a_of_type_Ajdf), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
     }
   }
 }

@@ -1,6 +1,19 @@
-public abstract interface muu
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
+
+public class muu
+  extends QQAVImageFilterGroup
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
+  public muu()
+  {
+    super(null);
+    int i = 0;
+    while (i < 3)
+    {
+      addFilter(new QQAVImageGaussianBlurFilter());
+      i += 1;
+    }
+  }
 }
 
 

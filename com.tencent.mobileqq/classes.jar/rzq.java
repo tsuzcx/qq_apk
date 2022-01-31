@@ -1,46 +1,112 @@
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
+import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaEnvironment;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rzq
-  implements osv
+  implements bdje
 {
-  public rzq(ViolaBaseView paramViolaBaseView, int paramInt) {}
+  public rzq(ViolaBaseView paramViolaBaseView, boolean paramBoolean) {}
   
-  public void onError(int paramInt)
+  public void a(Exception paramException)
   {
-    if (this.jdField_a_of_type_Int == ViolaBaseView.b())
+    String str2;
+    String str1;
+    if ((paramException instanceof ConnectTimeoutException))
     {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, System.currentTimeMillis());
-      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+      str2 = bdjm.e;
+      str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
     }
     for (;;)
     {
-      QLog.e(ViolaBaseView.a(), 2, "loadSoIfNeed error,code=" + paramInt + ",isActivityDestroy:" + ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView));
+      if (QLog.isColorLevel()) {
+        QLog.d(ViolaBaseView.a(), 2, "viola request cgi has error:" + str2 + ",e:" + paramException.getMessage());
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, str1);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
       return;
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 100);
-    }
-  }
-  
-  public void onFinish(int paramInt)
-  {
-    if (paramInt == ost.g) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_EXIT);
-    }
-    for (;;)
-    {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
-      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
-      return;
-      if (this.jdField_a_of_type_Int == ViolaBaseView.b())
+      if ((paramException instanceof SocketTimeoutException))
       {
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_NET);
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)));
+        str2 = bdjm.f;
+        str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_TIMEOUT;
+      }
+      else if ((paramException instanceof MalformedURLException))
+      {
+        str2 = "访问url有误!";
+        str1 = ViolaEnvironment.CHANGE_ERROR_URL;
+      }
+      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+      {
+        str2 = "Http返回码异常!";
+        str1 = ViolaEnvironment.CHANGE_ERROR_HTTP_CODE;
+      }
+      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+      {
+        str2 = bdjm.g;
+        str1 = ViolaEnvironment.CHANGE_ERROR_CONNECT_UNAVALIABLE;
+      }
+      else if ((paramException instanceof JSONException))
+      {
+        str2 = bdjm.b;
+        str1 = ViolaEnvironment.CHANGE_ERROR_DATA;
+      }
+      else if ((paramException instanceof IOException))
+      {
+        str2 = bdjm.a;
+        str1 = ViolaEnvironment.CHANGE_ERROR_IO;
       }
       else
       {
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_END_OFFLINE);
-        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_SO, Long.toString(System.currentTimeMillis() - ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)));
+        str2 = bdjm.d;
+        str1 = ViolaEnvironment.CHANGE_ERROR_UNKNOW;
+      }
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ViolaBaseView.a(), 2, "change cgi result:" + paramJSONObject.toString());
+    }
+    try
+    {
+      if ((paramJSONObject.getInt("retCode") == 0) && (paramJSONObject.getString("retMsg").equals("success")) && (!TextUtils.isEmpty(paramJSONObject.getJSONObject("retObj").getString("fileUrl"))))
+      {
+        ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramJSONObject.getJSONObject("retObj").getString("fileUrl"));
+        if (this.jdField_a_of_type_Boolean) {
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_END);
+        }
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+        ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_DATA);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_ERROR_UNKNOW);
+      }
+      ViolaBaseView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      ViolaBaseView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel()) {
+        QLog.e(ViolaBaseView.a(), 2, "change cgi exception:" + paramJSONObject.getMessage());
       }
     }
   }

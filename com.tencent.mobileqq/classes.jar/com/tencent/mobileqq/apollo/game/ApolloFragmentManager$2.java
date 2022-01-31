@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aixs;
+import aixq;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ApolloFragmentManager$2
   implements Runnable
 {
-  public ApolloFragmentManager$2(aixs paramaixs, ApolloFragment paramApolloFragment) {}
+  public ApolloFragmentManager$2(aixq paramaixq, ApolloFragment paramApolloFragment) {}
   
   public void run()
   {
-    ((ApolloGameActivity)aixs.a(this.this$0)).a(this.a.a());
+    ((ApolloGameActivity)aixq.a(this.this$0)).a(this.a.a());
   }
 }
 

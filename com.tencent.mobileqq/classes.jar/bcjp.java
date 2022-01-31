@@ -1,26 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.view.View;
 
-public class bcjp
-  extends Handler
+public abstract interface bcjp
 {
-  public bcjp(CircleProgressBar paramCircleProgressBar) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
-  }
+  public abstract void a(View paramView);
 }
 
 

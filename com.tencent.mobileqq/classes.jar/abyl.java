@@ -1,26 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class abyl
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public abyl(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public abyl(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131720648);
-    }
-    this.a.a(paramMessage, 1);
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, true);
+    RegisterChooseLoginActivity.a(this.a, true);
+    axqy.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    axqy.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
+    axqy.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
   }
 }
 

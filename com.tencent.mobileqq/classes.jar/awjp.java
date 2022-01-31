@@ -1,25 +1,15 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 
 public class awjp
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public awjp(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
+  public awjp(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-    }
-    return false;
+    this.a.a();
   }
 }
 

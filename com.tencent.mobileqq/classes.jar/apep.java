@@ -1,85 +1,58 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-
 public class apep
 {
   public int a;
-  public long a;
-  public final String a;
+  public String a;
   public boolean a;
-  public long b;
-  public final String b;
-  public long c;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
   public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  String m = null;
+  public boolean c = false;
+  public int d;
+  public int e;
+  public int f;
   
-  public apep(String paramString)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "FilePreviewDataReporter<FileAssistant>";
-    this.jdField_b_of_type_JavaLangString = "actFilePreview";
-    this.m = paramString;
-  }
-  
-  private HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    if (!bbev.d(BaseApplication.getContext()))
+    switch (paramInt)
     {
-      this.jdField_e_of_type_JavaLangString = String.valueOf(9004);
-      this.i += "_NotNetWork";
+    case 1: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    case 21: 
+    case 22: 
+    default: 
+      return 2131692427;
+    case 2: 
+      return 2131692495;
+    case 3: 
+      return 2131692418;
+    case 4: 
+      return 2131692398;
+    case 5: 
+      return 2131692435;
+    case 6: 
+      return 2131692441;
+    case 7: 
+      return 2131692426;
+    case 8: 
+      return 2131692453;
+    case 11: 
+      return 2131692452;
+    case 9: 
+      return 2131692439;
+    case 10: 
+      return 2131692438;
     }
-    localHashMap.put("param_serverip", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_uuid", String.valueOf(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_e_of_type_JavaLangString));
-    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_url", String.valueOf(this.jdField_f_of_type_JavaLangString));
-    localHashMap.put("param_key", String.valueOf(this.g));
-    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_errMsg", String.valueOf(this.i));
-    localHashMap.put("param_fileName", String.valueOf(this.h));
-    localHashMap.put("param_fileExt", String.valueOf(this.j));
-    localHashMap.put("param_source", String.valueOf(this.k));
-    localHashMap.put("param_stage", String.valueOf(this.l));
-    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
-    this.i = "";
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    HashMap localHashMap = a();
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
-      localStringBuilder.append("strReportUin[" + this.m + "],");
-      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
-      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
-      }
-      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
-    }
-    axrl.a(BaseApplication.getContext()).a(this.m, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
+    return 2131692414;
   }
 }
 

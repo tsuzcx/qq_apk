@@ -1,16 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class vek
-  extends syq
+  implements DialogInterface.OnKeyListener
 {
-  public vek(qqstory_service.RspMonitorValue paramRspMonitorValue)
-  {
-    super(paramRspMonitorValue.result);
-  }
+  public vek(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public String toString()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+    if (paramInt == 84) {
+      return true;
+    }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 

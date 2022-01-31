@@ -1,39 +1,47 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class mkk
+class mkk
   extends BroadcastReceiver
 {
-  public mkk(VideoInviteActivity paramVideoInviteActivity) {}
+  mkk(mkj parammkj) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
+    long l;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      l = mtj.a(paramIntent);
+      if (!paramContext.equals("tencent.video.invite.accept")) {
+        break label32;
+      }
+      this.a.a(l);
     }
-    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
-      this.a.h();
-    }
+    label32:
     do
     {
       return;
-      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
+      if (paramContext.equals("tencent.video.invite.refuse"))
       {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
-        this.a.e();
+        this.a.b(l);
         return;
       }
-      if ("android.intent.action.USER_PRESENT".equals(str))
+      if (paramContext.equals("tencent.video.invite.gaaccept"))
       {
-        this.a.a("ACTION_USER_PRESENT");
+        this.a.d(l);
         return;
       }
-    } while (this.a.jdField_a_of_type_Mkq == null);
-    this.a.jdField_a_of_type_Mkq.a(paramContext, str, paramIntent);
+      if (paramContext.equals("tencent.video.invite.gaignore"))
+      {
+        this.a.c(l);
+        return;
+      }
+    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
+    this.a.b();
   }
 }
 

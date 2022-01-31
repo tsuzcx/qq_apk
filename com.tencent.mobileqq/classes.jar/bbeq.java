@@ -1,74 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbeq
+class bbeq
+  implements View.OnClickListener
 {
-  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
+  bbeq(bbeg parambbeg) {}
   
-  public static final bbeq a()
+  public void onClick(View paramView)
   {
-    return bbes.a();
-  }
-  
-  public MessageProgressView.RefreshProgressRunnable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.a.isEmpty()) {
-      return null;
+    if ((bbeg.a(this.a) != null) && (bbeg.a(this.a).isShowing())) {
+      bbeg.a(this.a).dismiss();
     }
-    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext()) {
-      a((String)localIterator.next());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-      if (localRefreshProgressRunnable != null) {
-        localRefreshProgressRunnable.a();
-      }
-    }
-    try
-    {
-      this.a.remove(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.put(paramString, paramRefreshProgressRunnable);
-    }
+    bbeg.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbeq
  * JD-Core Version:    0.7.0.1
  */

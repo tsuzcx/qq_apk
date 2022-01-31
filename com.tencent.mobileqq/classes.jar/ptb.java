@@ -1,17 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class ptb
-  implements View.OnClickListener
+public class ptb
+  extends pqq
 {
-  ptb(pta parampta) {}
-  
-  public void onClick(View paramView)
+  public ptb(Context paramContext, baxy parambaxy, ram paramram)
   {
-    paramView = this.a.jdField_a_of_type_Rap.a();
-    if (paramView != null) {
-      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public pqq d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(actj.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentBig))) {
+      localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pqp);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pqq e()
+  {
+    return null;
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq o()
+  {
+    super.o();
+    return this;
   }
 }
 

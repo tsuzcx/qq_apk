@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nvd;
+import nva;
 
 public class ReadInJoyBaseDeliverActivity$11$1
   implements Runnable
 {
-  public ReadInJoyBaseDeliverActivity$11$1(nvd paramnvd) {}
+  public ReadInJoyBaseDeliverActivity$11$1(nva paramnva) {}
   
   public void run()
   {

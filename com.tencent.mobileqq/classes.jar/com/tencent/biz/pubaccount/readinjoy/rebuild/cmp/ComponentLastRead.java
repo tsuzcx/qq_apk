@@ -13,19 +13,19 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import oox;
-import pax;
-import pqs;
-import prb;
-import pvb;
-import pyd;
+import oou;
+import pau;
+import pqp;
+import pqy;
+import puy;
+import pya;
 
 public class ComponentLastRead
   extends LinearLayout
-  implements pqs
+  implements pqp
 {
   private Container a;
-  public pvb a;
+  public puy a;
   
   public ComponentLastRead(Context paramContext)
   {
@@ -45,7 +45,7 @@ public class ComponentLastRead
     b(paramContext);
   }
   
-  private void a(pax parampax)
+  private void a(pau parampau)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {}
     do
@@ -61,25 +61,25 @@ public class ComponentLastRead
             do
             {
               return;
-              i = parampax.e();
-            } while ((i != 0) && (!oox.c(i)));
-            parampax = parampax.a();
-          } while (parampax == null);
-          localObject = parampax.getTemplateFactory();
+              i = parampau.e();
+            } while ((i != 0) && (!oou.c(i)));
+            parampau = parampau.a();
+          } while (parampau == null);
+          localObject = parampau.getTemplateFactory();
         } while ((localObject == null) || (!((BaseTemplateFactory)localObject).hasTemplate("ReadInjoy_last_read_cell")));
         localObject = ((BaseTemplateFactory)localObject).getTemplate("ReadInjoy_last_read_cell");
       } while (localObject == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = parampax.getViewFactory().inflate(parampax, (TemplateBean)localObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = parampau.getViewFactory().inflate(parampau, (TemplateBean)localObject);
     } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null);
     removeAllViews();
-    parampax = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
-    parampax = new RelativeLayout.LayoutParams(parampax.mLayoutWidth, parampax.mLayoutHeight);
-    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, parampax);
+    parampau = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    parampau = new RelativeLayout.LayoutParams(parampau.mLayoutWidth, parampau.mLayoutHeight);
+    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, parampau);
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Pvb = new pvb();
+    this.jdField_a_of_type_Puy = new puy();
     a(paramContext);
     a();
   }
@@ -94,15 +94,15 @@ public class ComponentLastRead
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      this.jdField_a_of_type_Pvb.a((pax)paramObject);
+      this.jdField_a_of_type_Puy.a((pau)paramObject);
       b();
-      a((pax)paramObject);
-      if (this.jdField_a_of_type_Pvb.a.g())
+      a((pau)paramObject);
+      if (this.jdField_a_of_type_Puy.a.g())
       {
         setVisibility(0);
-        setOnClickListener(new pyd(this));
+        setOnClickListener(new pya(this));
         ThreadManager.executeOnSubThread(new ComponentLastRead.2(this));
       }
     }
@@ -113,9 +113,9 @@ public class ComponentLastRead
     setVisibility(8);
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
-    this.jdField_a_of_type_Pvb.a(paramprb);
+    this.jdField_a_of_type_Puy.a(parampqy);
   }
   
   public void b() {}

@@ -1,15 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class azdq
-  implements bfpc
+class azdq
+  implements DialogInterface.OnDismissListener
 {
-  public azdq(MediaPreviewActivity paramMediaPreviewActivity) {}
+  azdq(azdn paramazdn) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.onBackPressed();
+    azdn.a(this.a);
   }
 }
 

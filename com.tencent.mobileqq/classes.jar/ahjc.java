@@ -1,38 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-final class ahjc
-  implements View.OnTouchListener
+public class ahjc
 {
-  private float b = 1.0F;
-  
-  ahjc(float paramFloat) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.b = paramView.getAlpha();
-      paramView.setAlpha(this.a);
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        paramView.setAlpha(this.b);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!ahiy.a(paramView, i, j)) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
-  }
+  public static final String a = ;
+  public static final String b = a + ".tmp/";
+  public static final String c = QWalletHelper.getQWalletInternalPath();
+  public static final String d = c + ".tmp/";
+  public static final String e = d + "topay_recommends";
+  public static final String f = d + "group_available_list_";
 }
 
 

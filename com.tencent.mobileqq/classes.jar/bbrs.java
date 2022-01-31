@@ -1,88 +1,83 @@
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.SystemClock;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.util.List;
 
-public final class bbrs
+public class bbrs
 {
-  public static String a(AppRuntime paramAppRuntime, String paramString)
+  private static int a = 57600;
+  private static int b = -1;
+  
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUserData", 2, "get, key=" + paramString);
-    }
-    if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramString))) {
-      QLog.d("VasUserData", 1, "get, app and key MUST NOT be null, context=" + paramAppRuntime + ", key=" + paramString);
-    }
-    do
+    double d2 = -1.0D;
+    int i;
+    double d1;
+    if (a > 0)
     {
-      Context localContext;
-      do
+      i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      d1 = d2;
+      if (i > a) {
+        d1 = Math.sqrt(a / i);
+      }
+    }
+    while (d1 <= 0.0D)
+    {
+      return paramBitmap;
+      d1 = d2;
+      if (b > 0)
       {
-        return localObject1;
-        localContext = paramAppRuntime.getApplication().getApplicationContext();
-      } while (localContext == null);
-      paramAppRuntime = Uri.parse("content://qq.friendlist/individuationUserData/" + paramAppRuntime.getAccount());
-      paramString = localContext.getContentResolver().query(paramAppRuntime, null, "key=?", new String[] { paramString }, null);
-      paramAppRuntime = localObject2;
-      if (paramString != null)
-      {
-        paramAppRuntime = localObject2;
-        if (paramString.moveToFirst()) {
-          paramAppRuntime = paramString.getString(paramString.getColumnIndex("value"));
+        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        d1 = d2;
+        if (i > b) {
+          d1 = b / i;
         }
       }
-      if (paramString != null) {
-        paramString.close();
-      }
-      localObject1 = paramAppRuntime;
-    } while (!QLog.isColorLevel());
-    QLog.d("VasUserData", 2, "[Performance] get, duration=" + (SystemClock.uptimeMillis() - l));
-    return paramAppRuntime;
+    }
+    try
+    {
+      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+      return paramBitmap;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      QLog.e("VasPalette", 1, "scaleBitmapDown failed.", paramBitmap);
+    }
+    return null;
   }
   
-  public static boolean a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  public static List<bbrt> a(Bitmap paramBitmap)
   {
-    boolean bool = true;
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUserData", 2, "set, key=" + paramString1 + ", value=" + paramString2);
-    }
-    if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramString1))) {
-      QLog.d("VasUserData", 1, "get, app and key MUST NOT be null, context=" + paramAppRuntime + ", key=" + paramString1);
-    }
-    Context localContext;
-    do
+    if (paramBitmap != null)
     {
-      return false;
-      localContext = paramAppRuntime.getApplication().getApplicationContext();
-    } while (localContext == null);
-    Uri localUri = Uri.parse("content://qq.friendlist/individuationUserData/" + paramAppRuntime.getAccount());
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("key", paramString1);
-    paramAppRuntime = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramAppRuntime = "";
+      paramBitmap = a(paramBitmap);
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      {
+        bbrv localbbrv = new bbrv();
+        try
+        {
+          localbbrv.a(a(paramBitmap), 16);
+          paramBitmap.recycle();
+          return localbbrv.a();
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
+          }
+        }
+      }
     }
-    localContentValues.put("value", paramAppRuntime);
-    int i = localContext.getContentResolver().update(localUri, localContentValues, null, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUserData", 2, "[Performance] set, duration=" + (SystemClock.uptimeMillis() - l) + ", result=" + i);
-    }
-    if (i >= 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return null;
+  }
+  
+  private static int[] a(Bitmap paramBitmap)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[i * j];
+    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
+    return arrayOfInt;
   }
 }
 

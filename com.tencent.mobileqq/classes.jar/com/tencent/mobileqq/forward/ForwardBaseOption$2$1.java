@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
-import aqbc;
-import aqbg;
+import aqbe;
+import aqbi;
 
 public class ForwardBaseOption$2$1
   implements Runnable
 {
-  public ForwardBaseOption$2$1(aqbg paramaqbg) {}
+  public ForwardBaseOption$2$1(aqbi paramaqbi) {}
   
   public void run()
   {
-    aqbc.a(this.a.a);
+    aqbe.a(this.a.a);
   }
 }
 

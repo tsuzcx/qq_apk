@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bfwc;
+import bfwt;
 import com.tencent.qphone.base.util.QLog;
 
 public class TipsLinearLayout
@@ -14,7 +14,7 @@ public class TipsLinearLayout
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private bfwc jdField_a_of_type_Bfwc;
+  private bfwt jdField_a_of_type_Bfwt;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean = true;
@@ -69,7 +69,7 @@ public class TipsLinearLayout
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bfwc == null) {
+    if (this.jdField_a_of_type_Bfwt == null) {
       return;
     }
     if (this.jdField_b_of_type_Int == 1)
@@ -77,13 +77,13 @@ public class TipsLinearLayout
       if (QLog.isColorLevel()) {
         QLog.d("TipsLinearLayout", 2, "ANIM_IN end.");
       }
-      this.jdField_a_of_type_Bfwc.a();
+      this.jdField_a_of_type_Bfwt.a();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TipsLinearLayout", 2, "ANIM_OUT end.");
     }
-    this.jdField_a_of_type_Bfwc.b();
+    this.jdField_a_of_type_Bfwt.b();
   }
   
   public void a()
@@ -145,9 +145,9 @@ public class TipsLinearLayout
     super.onDraw(paramCanvas);
   }
   
-  public void setmTipsLayoutAnimListener(bfwc parambfwc)
+  public void setmTipsLayoutAnimListener(bfwt parambfwt)
   {
-    this.jdField_a_of_type_Bfwc = parambfwc;
+    this.jdField_a_of_type_Bfwt = parambfwt;
   }
 }
 

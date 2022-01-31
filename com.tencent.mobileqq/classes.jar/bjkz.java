@@ -1,6 +1,17 @@
-public abstract interface bjkz
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
+
+public class bjkz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt);
+  public bjkz(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c();
+  }
 }
 
 

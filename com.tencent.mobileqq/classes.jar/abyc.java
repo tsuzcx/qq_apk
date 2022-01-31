@@ -1,30 +1,21 @@
-import android.os.Message;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class abyc
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public abyc(RegisterActivity paramRegisterActivity) {}
+  public abyc(RegisterActivity paramRegisterActivity, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
   }
 }
 

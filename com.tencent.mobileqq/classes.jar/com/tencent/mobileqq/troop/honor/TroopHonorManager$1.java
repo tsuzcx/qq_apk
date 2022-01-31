@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.honor;
 
-import ampm;
-import bacv;
-import badd;
+import ampl;
+import badj;
+import badr;
 
 public class TroopHonorManager$1
   implements Runnable
 {
-  public TroopHonorManager$1(bacv parambacv) {}
+  public TroopHonorManager$1(badj parambadj) {}
   
   public void run()
   {
-    badd localbadd = (badd)ampm.a().a(544);
-    this.this$0.a(localbadd, true);
+    badr localbadr = (badr)ampl.a().a(544);
+    this.this$0.a(localbadr, true);
   }
 }
 

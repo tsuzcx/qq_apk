@@ -1,44 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class aewp
-  implements URLDrawable.URLDrawableListener
 {
-  aewp(aewn paramaewn) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    aewn.a(this.a).remove(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    aewn.a(this.a, paramURLDrawable);
-    aewn.a(this.a).remove(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = aewn.a(this.a);
-    aewn.a(this.a, paramURLDrawable, l1 - l2);
-    aewn.a(this.a, true);
-    aewn.a(this.a).remove(paramURLDrawable);
-    this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
-    }
-  }
+  aewf jdField_a_of_type_Aewf;
+  Animator jdField_a_of_type_AndroidAnimationAnimator;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
 }
 
 

@@ -1,14 +1,39 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface vui
+class vui
+  implements avzm
 {
-  public abstract void a();
+  vui(vuh paramvuh) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a() {}
   
-  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  public void a(String paramString)
+  {
+    synchronized (vuh.a(this.a))
+    {
+      vuh.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(vuh.a, 2, "onEncodeFinish, filePath= " + paramString);
+      }
+      vuh.a(this.a).notifyAll();
+      return;
+    }
+  }
   
-  public abstract void a(String paramString);
+  public void a_(int paramInt, Throwable arg2)
+  {
+    synchronized (vuh.a(this.a))
+    {
+      vuh.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(vuh.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      vuh.a(this.a).notifyAll();
+      return;
+    }
+  }
+  
+  public void b() {}
 }
 
 

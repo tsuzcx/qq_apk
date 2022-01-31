@@ -1,12 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import org.json.JSONObject;
 
-class ankz
-  implements DialogInterface.OnClickListener
+public abstract class ankz
 {
-  ankz(ankx paramankx) {}
+  public String a;
+  public boolean a = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
 }
 
 

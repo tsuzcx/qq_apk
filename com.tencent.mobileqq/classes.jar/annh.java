@@ -1,180 +1,139 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.support.v4.app.NotificationCompat.Builder;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemVoteData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.MCardNotificationLike;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class annh
+  implements Handler.Callback
 {
-  RecentItemVoteData jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  public long a;
+  private ajxj a;
+  protected aukp a;
+  public QQAppInterface a;
+  public Set<String> a;
+  protected ConcurrentHashMap<String, String> a;
+  public MqqHandler a;
+  public boolean a;
   
   public annh(QQAppInterface paramQQAppInterface)
   {
+    this.jdField_a_of_type_Ajxj = new anni(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
+    this.jdField_a_of_type_JavaUtilSet = new HashSet(20);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bbdc(ThreadManager.getSubThreadLooper(), this);
   }
   
-  private Intent a(Context paramContext)
+  public static String a(int paramInt1, int paramInt2, String paramString)
   {
-    String str = String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10002&from_type=0&mode=2&source_id=1001&uid=%s&PUSH_CONTENT=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName });
-    paramContext = new Intent(paramContext, JumpActivity.class);
-    paramContext.setData(Uri.parse(str));
-    return paramContext;
-  }
-  
-  private void c()
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    boolean bool = bbio.a(localBaseApplication);
-    Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop) || (bool))
-    {
-      Object localObject2 = bawu.a(localBaseApplication.getResources(), 2130844495);
-      localObject1 = new NotificationCompat.Builder(localBaseApplication).setContentTitle(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName).setWhen(System.currentTimeMillis());
-      if (localObject2 != null) {
-        ((NotificationCompat.Builder)localObject1).setLargeIcon((Bitmap)localObject2);
-      }
-      if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130844495);
-      }
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        localObject2 = new RemoteViews(localBaseApplication.getPackageName(), 2131560721);
-        ((NotificationCompat.Builder)localObject1).setContent((RemoteViews)localObject2);
-        ((RemoteViews)localObject2).setCharSequence(2131377350, "setText", this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName);
-        ((RemoteViews)localObject2).setCharSequence(2131377263, "setText", bbkb.a(System.currentTimeMillis(), true, "yyyy-MM-dd"));
-      }
-      localObject2 = a(localBaseApplication);
-      ((Intent)localObject2).putExtra("param_notifyid", 240);
-      ((NotificationCompat.Builder)localObject1).setContentIntent(PendingIntent.getActivity(localBaseApplication, 0, (Intent)localObject2, 134217728));
-      localObject1 = ((NotificationCompat.Builder)localObject1).build();
-      ((Notification)localObject1).flags |= 0x10;
-      ((Notification)localObject1).defaults |= 0x1;
-      ((Notification)localObject1).defaults |= 0x4;
-      ((Notification)localObject1).icon = 2130844495;
-      localObject2 = QQNotificationManager.getInstance();
-      if (localObject2 != null)
-      {
-        ((QQNotificationManager)localObject2).cancel("nearby_like_notification_tag", 240);
-        ((QQNotificationManager)localObject2).notify("nearby_like_notification_tag", 240, (Notification)localObject1);
-      }
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80053CD", "0X80053CD", 0, 0, "", "", "", "");
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    if (paramInt1 == 4) {
+      localStringBuilder.append("troop_").append(paramString);
     }
-    if (bool)
+    for (;;)
     {
-      localObject1 = (aseq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(72);
-      if (SettingCloneUtil.readValue(localBaseApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localBaseApplication.getString(2131694019), "qqsetting_lock_screen_whenexit_key", true))
+      return localStringBuilder.toString();
+      if (paramInt1 == 32) {
+        localStringBuilder.append("stranger_").append(paramInt2).append("_").append(paramString);
+      } else if (paramInt1 == 16) {
+        localStringBuilder.append("qcall_").append(paramInt2).append("_").append(paramString);
+      } else {
+        localStringBuilder.append(paramString);
+      }
+    }
+  }
+  
+  public static String a(int paramInt, String paramString, byte paramByte1, byte paramByte2)
+  {
+    return MsfSdkUtils.insertMtype("QQHeadIcon", paramString + String.valueOf(640));
+  }
+  
+  private void a(String paramString)
+  {
+    localSet = this.jdField_a_of_type_JavaUtilSet;
+    if (paramString == null) {}
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "videochatting start lsActivity from appinterface VoteEventMgr.notifyVoteEvent");
+        this.jdField_a_of_type_JavaUtilSet.clear();
+        if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxj);
+          this.jdField_a_of_type_Boolean = false;
         }
-        ((aseq)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ajsf.af, 1012, false, asem.a(ajsf.af, 1012, null));
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyObservers(a());
+      finally {}
+      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
     }
   }
   
-  public int a()
+  public String a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData == null) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public RecentBaseData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData;
-  }
-  
-  public MessageForText a(RecentBaseData paramRecentBaseData)
-  {
-    paramRecentBaseData = (RecentItemVoteData)paramRecentBaseData;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
+    if ((TextUtils.isEmpty(paramString)) || ((paramInt != 200) && (paramInt != 202) && (paramInt != 204)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)axaq.a(-1000));
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 1012;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = ajsf.ab;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = ajsf.ab;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = paramRecentBaseData.mTitleName;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = paramRecentBaseData.time;
+      anml.a("StrangerHdHeadUrlFetcher", new Object[] { "uinOrMobileNum is null or empty" });
+      return "";
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(paramRecentBaseData.mTitleName))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = paramRecentBaseData.mTitleName;
+    String str2 = a(32, paramInt, paramString);
+    String str1 = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+    if (TextUtils.isEmpty(str1))
+    {
+      ??? = (Setting)this.jdField_a_of_type_Aukp.a(Setting.class, str2);
+      if ((??? != null) && (!TextUtils.isEmpty(((Setting)???).url)))
+      {
+        str1 = a(32, ((Setting)???).url, ((Setting)???).bHeadType, ((Setting)???).bFaceFlags);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, str1);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != paramRecentBaseData.time) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = paramRecentBaseData.time;
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      {
+        this.jdField_a_of_type_JavaUtilSet.remove(str2);
+        ThreadManager.post(new StrangerHdHeadUrlFetcher.1(this, paramString, paramInt, paramBoolean, str2), 8, null, false);
+        return str1;
+      }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData = null;
-    BaseApplicationImpl.getContext();
-    QQNotificationManager.getInstance().cancel("nearby_like_notification_tag", 240);
-  }
-  
-  public void a(SubMsgType0x6f.MCardNotificationLike paramMCardNotificationLike)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramMCardNotificationLike != null)
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
     {
-      str1 = str2;
-      if (paramMCardNotificationLike.str_wording.has()) {
-        str1 = paramMCardNotificationLike.str_wording.get();
-      }
-    }
-    if (TextUtils.isEmpty(str1)) {}
-    long l;
-    do
-    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxj);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       return;
-      l = awzw.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData == null)
-      {
-        paramMCardNotificationLike = new RecentUser(ajsf.af, 1012);
-        paramMCardNotificationLike.msgType = 1012;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData = new RecentItemVoteData(paramMCardNotificationLike);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(str1, l);
-        c();
-        return;
-      }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.mTitleName.equals(str1)) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.time == l));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.a(str1, l);
-    c();
+    }
   }
   
-  public void b()
+  public boolean handleMessage(Message paramMessage)
   {
-    BaseApplicationImpl.getContext();
-    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-    if (localQQNotificationManager != null) {
-      localQQNotificationManager.cancel("nearby_like_notification_tag", 240);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      long l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if ((l < 0L) || (l > 60000L)) {
+        a(null);
+      } else if (!this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageAtTime(1, 60000L);
+      }
     }
   }
 }

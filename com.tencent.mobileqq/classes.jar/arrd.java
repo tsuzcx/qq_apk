@@ -1,37 +1,27 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class arrd
-  implements Handler.Callback
+  extends ajxj
 {
   public arrd(ListenTogetherManager paramListenTogetherManager) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
     {
-    default: 
-      return true;
-    }
-    paramMessage = this.a.a();
-    if (paramMessage != null)
-    {
-      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
-      paramMessage.c = SystemClock.elapsedRealtime();
-      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
-      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, arqq.a().a);
-      return true;
-      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+      String str = arrn.a(2, String.valueOf(paramObject));
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        arqq.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(2, String.valueOf(paramObject), false);
+      }
     }
   }
 }

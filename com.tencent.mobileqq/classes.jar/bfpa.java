@@ -1,23 +1,23 @@
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-public class bfpa
-  implements ContextMenu.ContextMenuInfo
+public final class bfpa
+  implements Parcelable.Creator<AbsSpinner.SavedState>
 {
-  public int a;
-  public long a;
-  public View a;
-  
-  public bfpa(View paramView, int paramInt, long paramLong)
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    return new AbsSpinner.SavedState(paramParcel, null);
+  }
+  
+  public AbsSpinner.SavedState[] a(int paramInt)
+  {
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpa
  * JD-Core Version:    0.7.0.1
  */

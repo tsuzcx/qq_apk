@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ReportedBanner
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public long cid;
   public long endtime;
   public String md5;

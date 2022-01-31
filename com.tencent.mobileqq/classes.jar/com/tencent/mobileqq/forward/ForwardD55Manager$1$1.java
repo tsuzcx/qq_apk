@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.forward;
 
-import aqaq;
-import aqbu;
-import aqbv;
+import aqas;
+import aqbw;
+import aqbx;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class ForwardD55Manager$1$1
   implements Runnable
 {
-  public ForwardD55Manager$1$1(aqbv paramaqbv, byte[] paramArrayOfByte, int paramInt) {}
+  public ForwardD55Manager$1$1(aqbx paramaqbx, byte[] paramArrayOfByte, int paramInt) {}
   
   public void run()
   {
-    aqaq localaqaq = new aqaq();
+    aqas localaqas = new aqas();
     oidb_0xd55.RspBody localRspBody = ForwardUtils.a(this.jdField_a_of_type_ArrayOfByte);
     if (localRspBody != null) {
-      aqaq.a(localRspBody, this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaLangString, localaqaq);
+      aqas.a(localRspBody, this.jdField_a_of_type_Aqbx.jdField_a_of_type_JavaLangString, localaqas);
     }
-    aqbu.a(this.jdField_a_of_type_Aqbv.jdField_a_of_type_Aqbu, this.jdField_a_of_type_Int);
-    aqbu.a(this.jdField_a_of_type_Aqbv.jdField_a_of_type_Aqbu, localaqaq);
-    this.jdField_a_of_type_Aqbv.jdField_a_of_type_Aqbu.a(this.jdField_a_of_type_Aqbv.jdField_a_of_type_Long, localaqaq);
+    aqbw.a(this.jdField_a_of_type_Aqbx.jdField_a_of_type_Aqbw, this.jdField_a_of_type_Int);
+    aqbw.a(this.jdField_a_of_type_Aqbx.jdField_a_of_type_Aqbw, localaqas);
+    this.jdField_a_of_type_Aqbx.jdField_a_of_type_Aqbw.a(this.jdField_a_of_type_Aqbx.jdField_a_of_type_Long, localaqas);
   }
 }
 

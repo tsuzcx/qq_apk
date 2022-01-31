@@ -1,125 +1,60 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebView;
 
-class bccx
-  extends bcfv
+public abstract interface bccx
 {
-  bccx(bccv parambccv, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract Object a(String paramString, Bundle paramBundle);
   
-  public int a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WebViewModule", 2, "TASK_ID_BROWSER_ACTIVITY_RUN_ONCE.");
-    }
-    long l;
-    boolean bool7;
-    boolean bool8;
-    boolean bool9;
-    boolean bool10;
-    boolean bool6;
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      l = System.currentTimeMillis();
-      bool7 = false;
-      bool8 = false;
-      bool9 = false;
-      bool10 = false;
-      bool6 = false;
-      bool2 = bool6;
-      bool3 = bool7;
-      bool4 = bool8;
-      bool5 = bool9;
-    }
-    for (;;)
-    {
-      try
-      {
-        Object localObject = Class.forName("android.webkit.WebViewCore");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        Field localField = ((Class)localObject).getDeclaredField("sWebCoreHandler");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localField.setAccessible(true);
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = (Handler)localField.get(localObject);
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
-        }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = ((Handler)localObject).getLooper();
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
-        }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        bool1 = bool10;
-        if (((Looper)localObject).getThread().getState() != Thread.State.WAITING) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        bool1 = bool2;
-        localClassNotFoundException.printStackTrace();
-        continue;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        bool1 = bool3;
-        localNoSuchFieldException.printStackTrace();
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        bool1 = bool4;
-        localIllegalAccessException.printStackTrace();
-        continue;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        boolean bool1 = bool5;
-        localClassCastException.printStackTrace();
-        continue;
-        if (!bool1) {
-          continue;
-        }
-        int i = 0;
-        continue;
-      }
-      bool2 = bool1;
-      bool3 = bool1;
-      bool4 = bool1;
-      bool5 = bool1;
-      axqw.b(null, "P_CliOper", "BizTechReport", "", "web", "webcore_wait", 0, 1, i, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("WebViewModule", 2, "check if WebViewCordThread is waiting: " + bool1 + ", cost: " + (System.currentTimeMillis() - l));
-      }
-      return 1;
-      i = 1;
-    }
-  }
+  public abstract String a();
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback);
+  
+  public abstract void a(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2);
+  
+  public abstract void a(WebView paramWebView, int paramInt);
+  
+  public abstract void a(WebView paramWebView, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(WebView paramWebView, SslError paramSslError);
+  
+  public abstract void a(WebView paramWebView, String paramString);
+  
+  public abstract void a(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback);
+  
+  public abstract boolean a(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams);
+  
+  public abstract boolean a(WebView paramWebView, String paramString);
+  
+  public abstract boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult);
+  
+  public abstract View b();
+  
+  public abstract void b(WebView paramWebView, String paramString);
+  
+  public abstract void b(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract boolean b(WebView paramWebView, String paramString);
+  
+  public abstract boolean c(WebView paramWebView, String paramString);
+  
+  public abstract void v();
 }
 
 

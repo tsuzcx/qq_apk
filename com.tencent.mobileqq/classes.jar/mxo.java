@@ -1,8 +1,4 @@
-public abstract interface mxo
-{
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mxo

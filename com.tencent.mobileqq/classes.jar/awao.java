@@ -1,17 +1,37 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
 
-class awao
-  extends akav
+public class awao
 {
-  awao(awan paramawan) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  akat jdField_a_of_type_Akat;
+  awar jdField_a_of_type_Awar;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public boolean a()
   {
-    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty()) && ((paramList.get(0) instanceof MessageForShortVideo))) {
-      aegr.a((MessageRecord)paramList.get(0));
-    }
+    return (this.a != null) && (this.b == 1);
+  }
+  
+  public boolean b()
+  {
+    return (this.a != null) && (this.b >= 2);
+  }
+  
+  public boolean c()
+  {
+    return (this.a != null) && (this.c == 3);
+  }
+  
+  public boolean d()
+  {
+    return (this.a != null) && (this.c >= 4);
   }
 }
 

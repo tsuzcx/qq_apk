@@ -1,20 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class azar
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public azar(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
+  public azar(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

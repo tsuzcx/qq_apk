@@ -1,13 +1,37 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
 
-public final class bgvl
+public class bgvl
 {
-  private static SharedPreferences b(Context paramContext)
+  private static bgvl a;
+  
+  public static bgvl a()
   {
-    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    try
+    {
+      if (a == null) {
+        a = new bgvl();
+      }
+      bgvl localbgvl = a;
+      return localbgvl;
+    }
+    finally {}
+  }
+  
+  public boolean a(String paramString, Bundle paramBundle)
+  {
+    if (!bgtw.a().a())
+    {
+      bgwf.d("ReaderInterfacePlugin", "plugin is not Ready, launch it");
+      bgtw.a().a();
+    }
+    ReaderInterfacePluginProxy localReaderInterfacePluginProxy;
+    do
+    {
+      return false;
+      localReaderInterfacePluginProxy = bgtw.a().a();
+    } while (localReaderInterfacePluginProxy == null);
+    return localReaderInterfacePluginProxy.handleEvent(paramString, paramBundle);
   }
 }
 

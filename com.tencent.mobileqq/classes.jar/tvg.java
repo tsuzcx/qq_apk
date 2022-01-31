@@ -1,46 +1,66 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.TextureView;
+import android.view.View;
+import android.view.ViewGroup;
 
-final class tvg
-  extends tth
+public class tvg
 {
-  tvg(String paramString1, String paramString2, int paramInt, Context paramContext) {}
-  
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public static TextureView a(View paramView)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    if ((paramView instanceof ViewGroup))
     {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
       {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        tvf.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
-        return;
+        TextureView localTextureView = a(paramView.getChildAt(i));
+        if (localTextureView != null) {
+          return localTextureView;
+        }
+        i += 1;
       }
     }
-    if (paramInt == 10100)
-    {
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryWarningActivity.class);
-      paramString.putExtra("tipsResource", ajyc.a(2131714543));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
-      return;
+    if ((paramView instanceof TextureView)) {
+      return (TextureView)paramView;
     }
-    if (!TextUtils.isEmpty(paramString))
+    return null;
+  }
+  
+  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
     {
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
-      return;
+      vxp.a(false, "bitmap is not ARGB_8888");
+      return false;
     }
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, ajyc.a(2131714544) + paramInt, 0).a();
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int m = j / paramInt1;
+    int n = k / paramInt1;
+    paramInt1 = 0;
+    for (;;)
+    {
+      if (paramInt1 >= j) {
+        break label118;
+      }
+      int i = 0;
+      for (;;)
+      {
+        if (i >= k) {
+          break label110;
+        }
+        int i1 = paramBitmap.getPixel(paramInt1, i);
+        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
+          break;
+        }
+        i += n;
+      }
+      label110:
+      paramInt1 += m;
+    }
+    label118:
+    return true;
   }
 }
 

@@ -1,28 +1,21 @@
-import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
 
 public class achv
-  extends mxm
+  implements URLDrawable.URLDrawableListener
 {
   public achv(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
-    }
+    TroopInfoActivity.b(this.a);
   }
 }
 

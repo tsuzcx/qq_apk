@@ -1,60 +1,75 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.widget.AbsListView;
+import android.os.Build.VERSION;
 
-@SuppressLint({"NewApi"})
-public class bfnz
-  implements bfny
+public final class bfnz
 {
-  private bfny jdField_a_of_type_Bfny;
-  
-  public bfnz(AbsListView paramAbsListView) {}
-  
-  public void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean)
+  public static boolean a()
   {
-    this.jdField_a_of_type_Bfny.a(paramActionMode, paramInt, paramLong, paramBoolean);
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.getCheckedItemCount() == 0) {
-      paramActionMode.finish();
-    }
+    return Build.VERSION.SDK_INT >= 7;
   }
   
-  public void a(bfny parambfny)
+  public static boolean b()
   {
-    this.jdField_a_of_type_Bfny = parambfny;
+    return Build.VERSION.SDK_INT >= 8;
   }
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public static boolean c()
   {
-    return this.jdField_a_of_type_Bfny.onActionItemClicked(paramActionMode, paramMenuItem);
+    return Build.VERSION.SDK_INT >= 9;
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public static boolean d()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Bfny.onCreateActionMode(paramActionMode, paramMenu))
-    {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(false);
-      bool = true;
-    }
-    return bool;
+    return Build.VERSION.SDK_INT >= 14;
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode)
+  public static boolean e()
   {
-    this.jdField_a_of_type_Bfny.onDestroyActionMode(paramActionMode);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mChoiceActionMode = null;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.clearChoices();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.rememberSyncState();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.requestLayout();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(true);
+    return Build.VERSION.SDK_INT >= 11;
   }
   
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public static boolean f()
   {
-    return this.jdField_a_of_type_Bfny.onPrepareActionMode(paramActionMode, paramMenu);
+    return Build.VERSION.SDK_INT >= 13;
+  }
+  
+  public static boolean g()
+  {
+    return Build.VERSION.SDK_INT >= 16;
+  }
+  
+  public static boolean h()
+  {
+    return Build.VERSION.SDK_INT >= 17;
+  }
+  
+  public static boolean i()
+  {
+    return Build.VERSION.SDK_INT >= 18;
+  }
+  
+  public static boolean j()
+  {
+    return Build.VERSION.SDK_INT >= 19;
+  }
+  
+  public static boolean k()
+  {
+    return Build.VERSION.SDK_INT >= 21;
+  }
+  
+  public static boolean l()
+  {
+    return Build.VERSION.SDK_INT >= 23;
+  }
+  
+  public static boolean m()
+  {
+    return Build.VERSION.SDK_INT >= 24;
+  }
+  
+  public static boolean n()
+  {
+    return Build.VERSION.SDK_INT >= 26;
   }
 }
 

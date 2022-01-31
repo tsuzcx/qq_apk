@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
-import aqdb;
-import bfmr;
+import aqdd;
+import bfni;
 
 public class ForwardNewVersionDialog$7
   implements Runnable
 {
-  public ForwardNewVersionDialog$7(aqdb paramaqdb) {}
+  public ForwardNewVersionDialog$7(aqdd paramaqdd) {}
   
   public void run()
   {
-    bfmr.a(aqdb.a(this.this$0));
+    bfni.a(aqdd.a(this.this$0));
   }
 }
 

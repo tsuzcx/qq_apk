@@ -1,14 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class aqpi
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  aqpi(aqox paramaqox) {}
+  aqpi(aqoz paramaqoz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    aqmb.a().a().a("AIOGalleryPicView", 4, "showSaveFileTips cancel");
+    if (this.a.d) {
+      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    }
   }
 }
 

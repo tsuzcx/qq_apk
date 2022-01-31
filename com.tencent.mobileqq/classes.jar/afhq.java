@@ -1,32 +1,23 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class afhq
-  implements baxl
+  extends RecyclerView.ViewHolder
 {
-  afhq(afhp paramafhp) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public afhq(afhn paramafhn, View paramView)
   {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramInt2 = afhp.a(this.a).getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        Object localObject = afhp.a(this.a).getChildViewHolder(afhp.a(this.a).getChildAt(paramInt1));
-        if ((localObject instanceof afhr))
-        {
-          localObject = (afhr)localObject;
-          if (((afhr)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-            ((afhr)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131375529));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
   }
 }
 

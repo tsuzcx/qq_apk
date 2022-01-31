@@ -1,6 +1,6 @@
 public abstract interface angr
 {
-  public abstract angu a();
+  public abstract void a(anga paramanga);
 }
 
 

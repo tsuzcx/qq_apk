@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import afwy;
-import akay;
+import afww;
+import akaw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -15,7 +15,7 @@ import mqq.os.MqqHandler;
 public class ChatHistoryC2CDateFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CDateFragment$3$1(afwy paramafwy) {}
+  public ChatHistoryC2CDateFragment$3$1(afww paramafww) {}
   
   public void run()
   {

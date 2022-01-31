@@ -1,47 +1,27 @@
-import android.util.Log;
-import java.io.Writer;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 
-public class aiuz
-  extends Writer
+public abstract interface aiuz
+  extends aivw
 {
-  private StringBuilder a = new StringBuilder();
+  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
   
-  private void a()
-  {
-    if (this.a.length() > 0)
-    {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
+  public abstract int getHeight();
   
-  public void close()
-  {
-    a();
-  }
+  public abstract int getInitHeight();
   
-  public void flush()
-  {
-    a();
-  }
+  public abstract long getLuaState();
   
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
-    }
-  }
+  public abstract aitk getRenderImpl();
+  
+  public abstract int getWidth();
+  
+  public abstract ApolloRenderDriver getWorker();
+  
+  public abstract void removeAllApolloBarrages(boolean paramBoolean);
+  
+  public abstract void setBubbleType(int paramInt);
+  
+  public abstract void setVisibility(int paramInt);
 }
 
 

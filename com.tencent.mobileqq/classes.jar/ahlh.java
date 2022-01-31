@@ -1,56 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
 
 class ahlh
   implements View.OnClickListener
 {
-  ahlh(ahkf paramahkf, Bundle paramBundle) {}
+  ahlh(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (ahkf.a(this.jdField_a_of_type_Ahkf) != null)
-    {
-      paramView = ahkf.a(this.jdField_a_of_type_Ahkf).obtainMessage(30);
-      ahkf.a(this.jdField_a_of_type_Ahkf).sendMessageDelayed(paramView, 2500L);
+    if (akuz.a().a() == 4) {
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuy.b(), akuz.b(), akuz.a(), "0");
     }
-    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
+    for (;;)
     {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(ahkf.a(this.jdField_a_of_type_Ahkf).getApplicationContext(), paramView);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.putExtra("url", str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        paramView.putExtra("force_no_reload", true);
-        ahkf.a(this.jdField_a_of_type_Ahkf).startActivity(paramView);
-      }
-      axqw.a(ahkf.a(this.jdField_a_of_type_Ahkf).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
+      this.a.a(14, 0);
+      this.a.a(-1, null);
       return;
-    }
-    catch (ClassNotFoundException paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
-      }
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuy.b(), akuz.b(), akuz.a(), "0");
     }
   }
 }

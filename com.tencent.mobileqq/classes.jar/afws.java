@@ -1,14 +1,23 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class afws
-  implements agby
+  implements DialogInterface.OnDismissListener
 {
   public afws(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a(paramMotionEvent);
+    paramDialogInterface = (agdv)paramDialogInterface;
+    paramDialogInterface.a();
+    int i = paramDialogInterface.a();
+    paramDialogInterface = (akaw)this.a.a.getManager(92);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
+    }
   }
 }
 

@@ -1,46 +1,15 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class bcev
-  implements bbah<String>
+  implements View.OnTouchListener
 {
-  bcev(bcet parambcet) {}
+  bcev(bceu parambceu) {}
   
-  public String a(Bitmap paramBitmap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = WebViewFragment.d + System.currentTimeMillis() + ".jpg";
-    asjm.a(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
-    return str;
-  }
-  
-  public void a(Exception paramException)
-  {
-    QLog.e("SwiftBrowserShareMenuHandler", 1, "onScreenShotError , error is " + paramException.getMessage());
-    if (this.a.a.a() == null)
-    {
-      QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot onScreenShotError, activity is null");
-      return;
-    }
-    bcpw.a(this.a.a.a(), 2131719038, 0).a();
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.a.a.a() == null)
-    {
-      QLog.e("SwiftBrowserShareMenuHandler", 1, "screen long shot error, activity is null");
-      return;
-    }
-    paramBitmap = new Intent();
-    paramBitmap.putExtra("public_fragment_window_feature", 1);
-    paramBitmap.putExtra("screen_path", paramString);
-    paramBitmap.putExtra("is_web_screen_long_shot", true);
-    abtu.a(this.a.a.a(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
+    return true;
   }
 }
 

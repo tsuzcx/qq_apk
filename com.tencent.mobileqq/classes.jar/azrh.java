@@ -1,74 +1,71 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.qun.group_effect.group_effect.EffectInfo;
-import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
-import tencent.qun.group_effect.group_effect_commu.TGetMyEffectRsp0x2;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class azrh
 {
-  public int a;
-  public String a;
-  public ConcurrentHashMap<String, azri> a;
-  public int b;
+  public azrj a;
+  private Comparator<azrl> a;
+  public Vector<azrl> a;
+  public AtomicBoolean a;
+  public boolean a;
   
   public azrh()
   {
-    this.jdField_a_of_type_Int = 600;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_JavaUtilComparator = new azri(this);
   }
   
-  public group_effect_commu.TGetMyEffectRsp0x2 a()
+  public void a(String paramString)
   {
-    group_effect_commu.TGetMyEffectRsp0x2 localTGetMyEffectRsp0x2 = new group_effect_commu.TGetMyEffectRsp0x2();
-    localTGetMyEffectRsp0x2.query_interval.set(this.jdField_a_of_type_Int);
-    localTGetMyEffectRsp0x2.global_effect_id.set(this.b);
-    new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
+    int i = 0;
+    for (;;)
     {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((azri)((Map.Entry)localIterator.next()).getValue()).a());
-      }
-      localTGetMyEffectRsp0x2.rpt_userconfig.set(localArrayList);
-    }
-    return localTGetMyEffectRsp0x2;
-  }
-  
-  public void a(group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2)
-  {
-    this.jdField_a_of_type_Int = paramTGetMyEffectRsp0x2.query_interval.get();
-    this.b = paramTGetMyEffectRsp0x2.global_effect_id.get();
-    Object localObject = (group_effect.EffectInfo)paramTGetMyEffectRsp0x2.st_global_effectinfo.get();
-    if (localObject != null) {
-      this.jdField_a_of_type_JavaLangString = ((group_effect.EffectInfo)localObject).name.get();
-    }
-    if ((paramTGetMyEffectRsp0x2.rpt_userconfig.has()) && (paramTGetMyEffectRsp0x2.rpt_userconfig.size() > 0))
-    {
-      paramTGetMyEffectRsp0x2 = paramTGetMyEffectRsp0x2.rpt_userconfig.get();
-      int i = 0;
-      while (i < paramTGetMyEffectRsp0x2.size())
+      try
       {
-        localObject = (group_effect_commu.TEffectDetail)paramTGetMyEffectRsp0x2.get(i);
-        azri localazri = new azri();
-        localazri.a((group_effect_commu.TEffectDetail)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB rpt_userconfig index = " + i + " detail = " + localazri.toString());
+        paramString = new JSONObject(paramString);
+        Object localObject = paramString.optJSONArray("effectSwitch");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
+          {
+            bool = true;
+            this.jdField_a_of_type_Boolean = bool;
+          }
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localazri.a + "", localazri);
-        i += 1;
+        else
+        {
+          paramString = paramString.optJSONArray("grayMsgList");
+          if ((paramString != null) && (paramString.length() > 0))
+          {
+            if (i < paramString.length())
+            {
+              localObject = paramString.getJSONObject(i);
+              azrl localazrl = new azrl();
+              localazrl.a((JSONObject)localObject);
+              this.jdField_a_of_type_JavaUtilVector.add(localazrl);
+              i += 1;
+              continue;
+            }
+            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
+          }
+          return;
+        }
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB nextReqTime = " + this.jdField_a_of_type_Int + " global_effectId = " + this.b + " global_effectName = " + this.jdField_a_of_type_JavaLangString + " individual effect size = " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      catch (Exception paramString)
+      {
+        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
+        return;
+      }
+      boolean bool = false;
     }
   }
 }

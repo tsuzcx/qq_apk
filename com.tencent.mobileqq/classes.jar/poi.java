@@ -1,18 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class poi
-  extends EventCallback
+public abstract interface poi
 {
-  poi(pob parampob) {}
-  
-  public void onPagerChange(int paramInt)
-  {
-    pob.b(paramInt);
-    if ((pob.b() != null) && (!pob.b().contains(Integer.valueOf(paramInt)))) {
-      pob.b().add(Integer.valueOf(paramInt));
-    }
-  }
+  public abstract void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean);
 }
 
 

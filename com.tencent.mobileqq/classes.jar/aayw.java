@@ -1,22 +1,42 @@
-import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aayw
-  implements bfoq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aayw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bfol parambfol) {}
+  public aayw(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bfol.dismiss();
-    switch (paramInt)
+    if (AppSetting.d)
     {
-    default: 
-      return;
+      paramCompoundButton = this.a.getString(2131693201);
+      DiscussionInfoCardActivity.b(this.a).setContentDescription(paramCompoundButton);
     }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
+    boolean bool = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
+    paramCompoundButton = DiscussionInfoCardActivity.a(this.a);
+    Object localObject = this.a.a;
+    if (!bool)
+    {
+      paramBoolean = true;
+      paramCompoundButton.a((DiscussionInfo)localObject, paramBoolean);
+      localObject = new axrc(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
+      if (!bool) {
+        break label128;
+      }
+    }
+    label128:
+    for (paramCompoundButton = "Clk_unstick";; paramCompoundButton = "Clk_stick")
+    {
+      ((axrc)localObject).d(paramCompoundButton).a();
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
 }
 

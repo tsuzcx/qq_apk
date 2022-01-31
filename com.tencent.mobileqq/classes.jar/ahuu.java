@@ -1,42 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.ar.FramePerformanceMonitor;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahuu
-  implements alct
+  implements ahvv
 {
-  public ahuu(NewFlowCameraActivity paramNewFlowCameraActivity, SharedPreferences paramSharedPreferences) {}
+  public ahuu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(alcv paramalcv)
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    long l = paramalcv.jdField_a_of_type_ArrayOfLong[((int)(paramalcv.jdField_a_of_type_ArrayOfLong.length * NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)))];
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicAdjustment", 2, "onDataRefresh: datatype=" + NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) + " monitedValue=" + l);
-    }
-    if (paramalcv.jdField_a_of_type_Int >= 100)
+    if (this.a.r == 10011)
     {
-      if (l > NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
-      {
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, true, paramalcv);
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
-      }
-    }
-    else {
+      NewFlowCameraActivity.a(this.a, paramString1);
       return;
     }
-    if (l < NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+    if (paramBoolean)
     {
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false, paramalcv);
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+      NewFlowCameraActivity.b(this.a, paramString1);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicAdjustment", 2, "Finished. Frame count = " + paramalcv.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("SVDNAdjustment_quality_down_mark", 1).putInt("SVDNAdjustment_quality_up_mark", 1).commit();
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+    this.a.i(true);
+    bcql.a(this.a, ajya.a(2131707488), 0).a();
   }
 }
 

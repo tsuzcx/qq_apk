@@ -1,46 +1,30 @@
 import android.graphics.Bitmap;
 
 public class vjh
-  extends vju
+  extends vjr
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public String a;
-  public boolean a;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  public vjh(int paramInt, Bitmap paramBitmap)
+  public vjh(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
   {
     super(paramInt, paramBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
   }
   
   public vjh a(Bitmap paramBitmap)
   {
-    paramBitmap = new vjh(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    this.jdField_a_of_type_Boolean = false;
-    return paramBitmap;
+    return new vjh(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
   }
   
   public String toString()
   {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
+    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
   }
 }
 

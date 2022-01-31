@@ -4,11 +4,12 @@ import android.view.View.OnClickListener;
 class ngr
   implements View.OnClickListener
 {
-  ngr(ngq paramngq) {}
+  ngr(nfr paramnfr, nms paramnms) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.a(this.a.a.a);
+    nfr.a(this.jdField_a_of_type_Nfr);
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.a);
   }
 }
 

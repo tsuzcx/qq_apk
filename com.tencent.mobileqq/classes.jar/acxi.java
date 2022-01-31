@@ -1,27 +1,61 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
 
 public class acxi
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnClickListener
 {
-  public acxi(MediaPlayerManager paramMediaPlayerManager) {}
+  private long a;
+  public SessionInfo a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    bbbr.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
-    }
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
+    Object localObject;
+    MessageForPic localMessageForPic;
+    URLDrawable localURLDrawable;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Long = l;
+          localObject = (URLImageView)paramView;
+          localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131364123);
+          localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
+        } while (localURLDrawable == null);
+        switch (localURLDrawable.getStatus())
+        {
+        default: 
+          return;
+        }
+      } while (localURLDrawable.isDownloadStarted());
+      localURLDrawable.startDownload();
+      return;
+      localObject = PicDownloadExplicitError.getFailedTip(localURLDrawable);
+      if (localObject != null)
+      {
+        bcql.a(paramView.getContext(), (CharSequence)localObject, 0).a();
+        return;
+      }
+    } while (!bbdx.a(paramView.getContext()));
+    localURLDrawable.restartDownload();
+    return;
+    if (advs.a(localMessageForPic))
+    {
+      AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, xpu.a(paramView));
       return;
     }
-    MediaPlayerManager.a(this.a, null);
-    this.a.e();
+    localMessageForPic.isInMixedMsg = true;
+    advs.a(tsr.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
   }
 }
 

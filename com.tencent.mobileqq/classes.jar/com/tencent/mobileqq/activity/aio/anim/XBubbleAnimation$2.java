@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aczw;
+import aczt;
 
 public class XBubbleAnimation$2
   implements Runnable
 {
-  public XBubbleAnimation$2(aczw paramaczw) {}
+  public XBubbleAnimation$2(aczt paramaczt) {}
   
   public void run()
   {

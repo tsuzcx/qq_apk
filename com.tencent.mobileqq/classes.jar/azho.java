@@ -1,11 +1,10 @@
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
 import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import java.io.File;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class azho
   extends Handler
@@ -14,33 +13,76 @@ public class azho
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (this.a.isFinishing()) {}
+    do
     {
-    default: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            switch (paramMessage.what)
+            {
+            case 1002: 
+            case 1007: 
+            default: 
+              return;
+            case 1001: 
+              this.a.a(false);
+              if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
+                this.a.jdField_a_of_type_Bcqf.dismiss();
+              }
+              bcql.a(this.a, 2131696567, 1).b(this.a.getTitleBarHeight());
+            }
+          } while (!(paramMessage.obj instanceof String));
+          paramMessage = (String)paramMessage.obj;
+          try
+          {
+            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
+            return;
+          }
+          catch (UnsupportedOperationException paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopBar", 2, paramMessage.toString());
+        return;
+        if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
+          this.a.jdField_a_of_type_Bcqf.dismiss();
+        }
+        this.a.a(false);
+        this.a.a();
+        return;
+        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
+        }
+      } while ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing()));
+      this.a.a();
       return;
-    case 3: 
-      TroopBarReplyActivity.b(this.a, false);
-      return;
-    }
-    paramMessage = paramMessage.obj.toString();
-    File localFile = new File(paramMessage);
-    if (localFile.exists()) {}
-    for (long l = localFile.length();; l = 0L)
-    {
-      TroopBarReplyActivity.b(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
-      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
-      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-      TroopBarReplyActivity.a(this.a, 0);
-      if (!this.a.k) {
-        break;
+      this.a.a(false);
+      if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
+        this.a.jdField_a_of_type_Bcqf.dismiss();
       }
-      bair.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
+      bcql.a(this.a, 2131696545, 1).b(this.a.getTitleBarHeight());
+      return;
+      if ((paramMessage.obj instanceof String))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+    return;
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
+    {
+      this.a.requestPermissions(new azhp(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
       return;
     }
+    TroopBarReplyActivity.a(this.a, 4);
   }
 }
 

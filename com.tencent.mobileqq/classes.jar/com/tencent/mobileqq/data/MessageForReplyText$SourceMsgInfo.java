@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aslu;
+import aslw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -70,7 +70,7 @@ public class MessageForReplyText$SourceMsgInfo
     do
     {
       return;
-      paramQQAppInterface = aslu.a(paramQQAppInterface, paramMessageRecord);
+      paramQQAppInterface = aslw.a(paramQQAppInterface, paramMessageRecord);
     } while (paramQQAppInterface == null);
     setSourceMsgByte(paramQQAppInterface);
     setUniSeq(paramMessageRecord.uniseq, false);
@@ -107,7 +107,7 @@ public class MessageForReplyText$SourceMsgInfo
     if (this.mSourceMessageByte == null) {
       return null;
     }
-    return aslu.a(paramQQAppInterface, this.mSourceMessageByte);
+    return aslw.a(paramQQAppInterface, this.mSourceMessageByte);
   }
 }
 

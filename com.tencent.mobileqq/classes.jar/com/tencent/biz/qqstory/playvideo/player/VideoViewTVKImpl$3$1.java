@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import udf;
+import udc;
+import ued;
 import ueg;
-import uej;
 
 public class VideoViewTVKImpl$3$1
   implements Runnable
 {
-  public VideoViewTVKImpl$3$1(uej paramuej, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  public VideoViewTVKImpl$3$1(ueg paramueg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Uej.a.a != null) {
-      this.jdField_a_of_type_Uej.a.a.a(this.jdField_a_of_type_Uej.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    if (this.jdField_a_of_type_Ueg.a.a != null) {
+      this.jdField_a_of_type_Ueg.a.a.a(this.jdField_a_of_type_Ueg.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
     }
   }
 }

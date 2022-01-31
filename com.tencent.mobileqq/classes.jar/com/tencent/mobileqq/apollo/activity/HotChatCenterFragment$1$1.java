@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import aivh;
+import aivf;
 
 public class HotChatCenterFragment$1$1
   implements Runnable
 {
-  public HotChatCenterFragment$1$1(aivh paramaivh, String paramString) {}
+  public HotChatCenterFragment$1$1(aivf paramaivf, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aivh.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aivf.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

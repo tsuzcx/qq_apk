@@ -1,22 +1,14 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
 class qpj
-  extends ajxl
+  implements rwf
 {
-  qpj(qpg paramqpg, QQAppInterface paramQQAppInterface) {}
+  qpj(qpi paramqpi, Bundle paramBundle) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
-      localBundle.putString("VALUE_USER_NICK_NAME", bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
-      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
-    }
+    onh.a(qpi.a(this.jdField_a_of_type_Qpi), qpi.a(this.jdField_a_of_type_Qpi).a, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

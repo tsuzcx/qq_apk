@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.model;
 
-import alkz;
+import alky;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$27
   implements Runnable
 {
-  public QQARSession$27(alkz paramalkz) {}
+  public QQARSession$27(alky paramalky) {}
   
   public void run()
   {
-    if ((this.this$0.a != 2) || (!alkz.a(this.this$0)))
+    if ((this.this$0.a != 2) || (!alky.a(this.this$0)))
     {
       QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
       return;
@@ -18,12 +18,12 @@ public class QQARSession$27
     if (this.this$0.d())
     {
       this.this$0.l();
-      alkz.c(this.this$0, 0L);
-      alkz.a(this.this$0, null);
-      alkz.b(this.this$0, null);
+      alky.c(this.this$0, 0L);
+      alky.a(this.this$0, null);
+      alky.b(this.this$0, null);
     }
     this.this$0.a(5L);
-    alkz.d(this.this$0);
+    alky.d(this.this$0);
     this.this$0.b = false;
   }
 }

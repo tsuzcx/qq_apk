@@ -1,75 +1,682 @@
 import android.annotation.TargetApi;
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.graphics.SurfaceTexture;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.params.StreamConfigurationMap;
+import android.util.Size;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Laxhu;>;
 
 @TargetApi(21)
 public class axgf
-  extends CameraCaptureSession.CaptureCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
-  
-  public axgf(Camera2Control paramCamera2Control)
+  public static int a(CameraCharacteristics paramCameraCharacteristics, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
+    int i = paramInt;
+    if (paramInt == -1) {
+      i = 0;
+    }
+    paramInt = (i + 45) / 90 * 90;
+    i = ((Integer)paramCameraCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION)).intValue();
+    paramCameraCharacteristics = (Integer)paramCameraCharacteristics.get(CameraCharacteristics.LENS_FACING);
+    if ((paramCameraCharacteristics != null) && (paramCameraCharacteristics.intValue() == 0)) {
+      return (i - paramInt + 360) % 360;
+    }
+    return (i + paramInt) % 360;
   }
   
-  private void a(CaptureResult paramCaptureResult)
+  @TargetApi(21)
+  private static axhu a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, axfz paramaxfz)
   {
-    switch (this.jdField_a_of_type_Int)
+    if (paramaxfz != null) {}
+    Object localObject2;
+    for (;;)
     {
-    }
-    do
-    {
-      do
+      ArrayList localArrayList;
+      float f2;
+      try
       {
-        Integer localInteger;
-        do
+        if (!paramaxfz.a())
         {
-          do
-          {
-            return;
-            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-            axgd.a(1, "[Camera2]process afState:" + localInteger);
-            if (localInteger != null) {
-              break;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-          return;
-        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
-        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
-        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
+          a(2, "[Camera2]getPictureSize camera2Info null!");
+          return null;
+        }
+        Object localObject1 = (StreamConfigurationMap)paramaxfz.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+        if (localObject1 == null)
+        {
+          a(2, "[Camera2]getPictureSize map null!");
+          return null;
+        }
+        paramaxfz = new axhu();
+        localObject2 = ((StreamConfigurationMap)localObject1).getOutputSizes(256);
+        if ((localObject2 == null) || (localObject2.length <= 0))
+        {
+          a(2, "[Camera2]getPictureSize outPutSizes null!");
+          return null;
+        }
+        localObject1 = new ArrayList();
+        int j = localObject2.length;
+        int i = 0;
+        if (i < j)
+        {
+          localArrayList = localObject2[i];
+          ((List)localObject1).add(new axhu(localArrayList.getWidth(), localArrayList.getHeight()));
+          i += 1;
+          continue;
+        }
+        localObject2 = new axhu();
+        f1 = 10000.0F;
+        i = Math.min(paramInt1, paramInt2);
+        paramInt1 = Math.max(paramInt1, paramInt2);
+        float f3 = paramInt1 / i;
+        localArrayList = new ArrayList();
+        Iterator localIterator = ((List)localObject1).iterator();
+        if (localIterator.hasNext())
+        {
+          axhu localaxhu = (axhu)localIterator.next();
+          a(1, "[Camera2] setPictureSize[list]: width=" + localaxhu.a + " height=" + localaxhu.b + " w/h=" + localaxhu.a / localaxhu.b);
+          float f4 = localaxhu.a / localaxhu.b;
+          if (Math.abs(f4 - f3) <= axhr.a) {
+            localArrayList.add(localaxhu);
+          }
+          f2 = f1;
+          if (localaxhu.a < paramInt1) {
+            break label685;
+          }
+          f2 = f1;
+          if (f1 <= Math.abs(f4 - f3)) {
+            break label685;
+          }
+          f2 = Math.abs(f4 - f3);
+          ((axhu)localObject2).a = localaxhu.a;
+          ((axhu)localObject2).b = localaxhu.b;
+          break label685;
+        }
+        if ((localArrayList.isEmpty()) && (((axhu)localObject2).a >= paramInt1))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("Camera2Control", 2, "[Camera2]getPictureSize: width=" + ((axhu)localObject2).a + " height=" + ((axhu)localObject2).b + " w/h=" + ((axhu)localObject2).a / ((axhu)localObject2).b);
           break;
         }
-        this.jdField_a_of_type_Int = 4;
-        axgd.a(1, "[Camera2]process aeState:" + paramCaptureResult);
-      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+        if ((localArrayList.isEmpty()) && (((List)localObject1).size() > 0))
+        {
+          paramaxfz.a = ((axhu)((List)localObject1).get(0)).a;
+          paramaxfz.b = ((axhu)((List)localObject1).get(0)).b;
+          return paramaxfz;
+        }
+        if (localArrayList.isEmpty()) {
+          return null;
+        }
+        if (paramInt5 == -1)
+        {
+          localObject1 = localArrayList.iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (axhu)((Iterator)localObject1).next();
+            if (paramaxfz.a >= ((axhu)localObject2).a) {
+              continue;
+            }
+            paramaxfz.a = ((axhu)localObject2).a;
+            paramaxfz.b = ((axhu)localObject2).b;
+            continue;
+          }
+          if (paramaxfz.a != 0) {
+            break label682;
+          }
+        }
+      }
+      catch (Exception paramaxfz)
+      {
+        a(2, "[Camera2]getPictureSize" + paramaxfz);
+        return null;
+      }
+      for (;;)
+      {
+        return null;
+        paramaxfz = a(paramInt3, paramInt4, paramInt5, localArrayList);
+      }
+      label682:
+      return paramaxfz;
+      label685:
+      float f1 = f2;
+    }
+    return localObject2;
+  }
+  
+  public static axhu a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, axfz paramaxfz)
+  {
+    int j = 0;
+    if (paramaxfz != null) {}
+    try
+    {
+      if (!paramaxfz.a())
+      {
+        a(2, "[Camera2]getPreviewSizeV2 camera2Info: " + paramaxfz);
+        return null;
+      }
+      localObject1 = (StreamConfigurationMap)paramaxfz.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+      paramaxfz = new ArrayList();
+      localObject1 = ((StreamConfigurationMap)localObject1).getOutputSizes(SurfaceTexture.class);
+      int k = localObject1.length;
+      int i = 0;
+      while (i < k)
+      {
+        Object localObject2 = localObject1[i];
+        paramaxfz.add(new axhu(localObject2.getWidth(), localObject2.getHeight()));
+        i += 1;
+      }
+      if (paramaxfz.size() > 0)
+      {
+        i = 0;
+        while (i < paramaxfz.size())
+        {
+          a(1, "[Camera2] getPreviewSizeV2 sizeGuaranteeOK[list]: width=" + ((axhu)paramaxfz.get(i)).a + " height=" + ((axhu)paramaxfz.get(i)).b + " w/h=" + ((axhu)paramaxfz.get(i)).a / ((axhu)paramaxfz.get(i)).b);
+          i += 1;
+        }
+      }
+      localObject1 = a(paramaxfz, paramInt1, paramInt2);
+      if (localObject1 != null)
+      {
+        paramaxfz = (axfz)localObject1;
+        if (!QLog.isColorLevel()) {
+          break label417;
+        }
+        QLog.i("Camera2Control", 2, "[Camera2] getPreviewSizeV2 sizeGuaranteeOK: DEFAULT resolution os OK. size:" + ((axhu)localObject1).toString());
+        return localObject1;
+      }
+    }
+    catch (Exception paramaxfz)
+    {
+      a(2, "[Camera2] getPreviewSizeV2 exception!");
+      return null;
+    }
+    Object localObject1 = a(paramaxfz, 960, 720);
+    if (localObject1 != null)
+    {
+      paramaxfz = (axfz)localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Camera2Control", 2, "[Camera2] getPreviewSizeV2 sizeGuaranteeOK: 640*480 resolution os OK.");
+        return localObject1;
+      }
+    }
+    else
+    {
+      localObject1 = a(paramaxfz, paramInt1, paramInt2, paramInt3, paramInt4);
+      paramaxfz = (axfz)localObject1;
+      if (paramBoolean) {
+        if (localObject1 == null)
+        {
+          paramInt3 = 0;
+          break label420;
+        }
+      }
+    }
+    for (;;)
+    {
+      ahvx.a(4, paramInt1, paramInt2, paramInt3, paramInt4);
+      return localObject1;
+      paramInt3 = ((axhu)localObject1).a;
+      label417:
+      label420:
+      while (localObject1 != null)
+      {
+        paramInt4 = ((axhu)localObject1).b;
+        break;
+        return paramaxfz;
+      }
+      paramInt4 = j;
+    }
+  }
+  
+  private static axhu a(int paramInt1, int paramInt2, int paramInt3, List<axhu> paramList)
+  {
+    paramInt3 = Math.max(paramInt1 * paramInt3, paramInt2 * paramInt3);
+    if (QLog.isColorLevel()) {
+      QLog.i("Camera2Control", 2, "setParamsPictureSize targetWidth " + paramInt3);
+    }
+    axhu localaxhu1 = new axhu(0, 0);
+    paramList = paramList.iterator();
+    paramInt1 = 2147483647;
+    if (paramList.hasNext())
+    {
+      axhu localaxhu2 = (axhu)paramList.next();
+      paramInt2 = Math.abs(localaxhu2.a - paramInt3);
+      if (paramInt1 <= paramInt2) {
+        break label126;
+      }
+      localaxhu1.a = localaxhu2.a;
+      localaxhu1.b = localaxhu2.b;
+      paramInt1 = paramInt2;
+    }
+    label126:
+    for (;;)
+    {
+      break;
+      return localaxhu1;
+    }
+  }
+  
+  private static axhu a(List<axhu> paramList, int paramInt1, int paramInt2)
+  {
+    int j = -1;
+    if (QLog.isColorLevel()) {
+      QLog.i("Camera2Control", 2, "[Camera2] getHighVersionPreviewSize[wantedPreviewSize]: width=" + paramInt1 + "  height=" + paramInt2);
+    }
+    axhu localaxhu1 = new axhu();
+    int i = j;
+    if (paramList != null)
+    {
+      i = j;
+      if (!paramList.isEmpty())
+      {
+        paramList = paramList.iterator();
+        i = -1;
+        if (paramList.hasNext())
+        {
+          axhu localaxhu2 = (axhu)paramList.next();
+          if ((localaxhu2 == null) || (localaxhu2.b != paramInt2) || (localaxhu2.a < paramInt1) || ((i >= 0) && (localaxhu2.a > i))) {
+            break label235;
+          }
+          i = localaxhu2.a;
+        }
+      }
+    }
+    label235:
+    for (;;)
+    {
+      break;
+      if (i > 0)
+      {
+        localaxhu1.b = paramInt2;
+        localaxhu1.a = i;
+        if (localaxhu1.a / 4 == localaxhu1.b / 3)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Camera2Control", 2, "[Camera2] getHighVersionPreviewSize[4:3]...");
+          }
+          return localaxhu1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("Camera2Control", 2, "[Camera2] getHighVersionPreviewSize: RATIO_MUST_EQUAL cSize:" + localaxhu1.toString());
+        }
+        return localaxhu1;
+      }
+      return null;
+    }
+  }
+  
+  private static axhu a(List<axhu> paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    double d = paramInt4 / paramInt3;
+    if (QLog.isColorLevel()) {
+      QLog.i("Camera2Control", 2, "[Camera2] getPreviewSize[self-adaption] physicRatio=" + d);
+    }
+    axhu localaxhu1 = new axhu();
+    Iterator localIterator;
+    long l1;
+    axhu localaxhu2;
+    long l2;
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      localIterator = paramList.iterator();
+      l1 = 9223372036854775807L;
+      if (localIterator.hasNext())
+      {
+        localaxhu2 = (axhu)localIterator.next();
+        if ((localaxhu2 != null) && (localaxhu2.a >= paramInt1) && (localaxhu2.b >= paramInt2) && (localaxhu2.a / localaxhu2.b >= d))
+        {
+          l2 = localaxhu2.a * localaxhu2.b;
+          if (l2 < l1)
+          {
+            localaxhu1.a = localaxhu2.a;
+            localaxhu1.b = localaxhu2.b;
+            l1 = l2;
+          }
+        }
+        for (;;)
+        {
+          break;
+          if ((l2 == l1) && (localaxhu2.a < localaxhu1.a))
+          {
+            localaxhu1.a = localaxhu2.a;
+            localaxhu1.b = localaxhu2.b;
+          }
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Camera2Control", 2, "[Camera2] getPreviewSize[self-adaption] have no resolution >= (w*h)");
+    }
+    if (((localaxhu1.a <= 0) || (localaxhu1.b <= 0)) && (paramList != null) && (!paramList.isEmpty()))
+    {
+      localIterator = paramList.iterator();
+      l1 = 0L;
+      if (localIterator.hasNext())
+      {
+        localaxhu2 = (axhu)localIterator.next();
+        if ((localaxhu2 != null) && (localaxhu2.a / localaxhu2.b >= d))
+        {
+          l2 = localaxhu2.a * localaxhu2.b;
+          if (l2 > l1)
+          {
+            localaxhu1.a = localaxhu2.a;
+            localaxhu1.b = localaxhu2.b;
+            l1 = l2;
+          }
+        }
+        for (;;)
+        {
+          break;
+          if ((l2 == l1) && (localaxhu2.a < localaxhu1.a))
+          {
+            localaxhu1.a = localaxhu2.a;
+            localaxhu1.b = localaxhu2.b;
+          }
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Camera2Control", 2, "[Camera2] getPreviewSize[self-adaption] cSize.width=" + localaxhu1.a + "  cSize.height=" + localaxhu1.b);
+    }
+    if ((localaxhu1.a > 0) && (localaxhu1.b > 0)) {
+      return localaxhu1;
+    }
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramList.get(0) != null))
+    {
+      localaxhu1.a = ((axhu)paramList.get(0)).a;
+      localaxhu1.b = ((axhu)paramList.get(0)).b;
+      return localaxhu1;
+    }
+    return null;
+  }
+  
+  private static axhu a(List<axhu> paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Camera2Control", 2, "[@] getHighVersionPreviewSizeV3[wantedPreviewSize]: width=" + paramInt1 + "  height=" + paramInt2);
+    }
+    float f3 = paramInt1 / paramInt2;
+    Object localObject2 = new ArrayList();
+    Object localObject1 = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      paramList = paramList.iterator();
+    }
+    label234:
+    label874:
+    label877:
+    label880:
+    label881:
+    for (;;)
+    {
+      axhu localaxhu;
+      int i;
+      int j;
+      if (paramList.hasNext())
+      {
+        localaxhu = (axhu)paramList.next();
+        if (localaxhu == null) {
+          continue;
+        }
+        i = Math.max(localaxhu.a, localaxhu.b);
+        j = Math.min(localaxhu.a, localaxhu.b);
+        if ((localaxhu.b != paramInt2) || (i != paramInt1)) {
+          break label347;
+        }
+        ((List)localObject1).add(new axhu(paramInt1, paramInt2));
+        if (QLog.isColorLevel()) {
+          QLog.i("Camera2Control", 2, "[@] getHighVersionPreviewSizeV3 first: width=" + paramInt1 + "  height=" + paramInt2);
+        }
+      }
+      float f1;
+      float f2;
+      if (((List)localObject1).size() == 0)
+      {
+        paramList = ((List)localObject2).iterator();
+        f1 = 10000.0F;
+        if (paramList.hasNext())
+        {
+          localaxhu = (axhu)paramList.next();
+          if (localaxhu == null) {
+            break label880;
+          }
+          paramInt1 = Math.max(localaxhu.a, localaxhu.b);
+          paramInt2 = Math.min(localaxhu.a, localaxhu.b);
+          f2 = paramInt1 / paramInt2;
+          if (Math.abs(f3 - f2) < axhr.a) {
+            ((List)localObject1).add(localaxhu);
+          }
+          if (Math.abs(f3 - f2) >= f1) {
+            break label880;
+          }
+          f1 = Math.abs(f3 - f2);
+        }
+      }
+      for (;;)
+      {
+        break label234;
+        if ((i <= paramInt5) || (i >= paramInt3) || (j <= paramInt6) || (j >= paramInt4)) {
+          break label881;
+        }
+        ((List)localObject2).add(new axhu(i, j));
+        break;
+        f2 = f1;
+        if (QLog.isColorLevel())
+        {
+          f2 = f1;
+          if (localObject1 != null)
+          {
+            paramInt1 = 0;
+            for (;;)
+            {
+              f2 = f1;
+              if (paramInt1 >= ((List)localObject1).size()) {
+                break;
+              }
+              QLog.i("Camera2Control", 2, "[@] getHighVersionPreviewSizeV3 secend: width=" + ((axhu)((List)localObject1).get(paramInt1)).a + " height=" + ((axhu)((List)localObject1).get(paramInt1)).b + " w/h=" + ((axhu)((List)localObject1).get(paramInt1)).a / ((axhu)((List)localObject1).get(paramInt1)).b);
+              paramInt1 += 1;
+            }
+            f2 = 10000.0F;
+          }
+        }
+        if (((List)localObject1).size() == 0)
+        {
+          paramList = ((List)localObject2).iterator();
+          while (paramList.hasNext())
+          {
+            localObject2 = (axhu)paramList.next();
+            if (localObject2 != null)
+            {
+              paramInt1 = Math.max(((axhu)localObject2).a, ((axhu)localObject2).b);
+              paramInt2 = Math.min(((axhu)localObject2).a, ((axhu)localObject2).b);
+              if (Math.abs(Math.abs(f3 - paramInt1 / paramInt2) - f2) < axhr.a) {
+                ((List)localObject1).add(localObject2);
+              }
+            }
+          }
+          if ((QLog.isColorLevel()) && (localObject1 != null))
+          {
+            paramInt1 = 0;
+            while (paramInt1 < ((List)localObject1).size())
+            {
+              QLog.i("Camera2Control", 2, "[@] getHighVersionPreviewSizeV3 third: width=" + ((axhu)((List)localObject1).get(paramInt1)).a + " height=" + ((axhu)((List)localObject1).get(paramInt1)).b + " w/h=" + ((axhu)((List)localObject1).get(paramInt1)).a / ((axhu)((List)localObject1).get(paramInt1)).b);
+              paramInt1 += 1;
+            }
+          }
+        }
+        if (((List)localObject1).size() > 0)
+        {
+          paramList = (axhu)((List)localObject1).get(0);
+          localObject2 = ((List)localObject1).iterator();
+          localObject1 = paramList;
+          if (!((Iterator)localObject2).hasNext()) {
+            break label874;
+          }
+          localObject1 = (axhu)((Iterator)localObject2).next();
+          if ((localObject1 == null) || (((axhu)localObject1).a * ((axhu)localObject1).b <= paramList.a * paramList.b)) {
+            break label877;
+          }
+          paramList = (List<axhu>)localObject1;
+        }
+        for (;;)
+        {
+          break;
+          localObject1 = null;
+          return localObject1;
+        }
+      }
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt == 1) {
+      QLog.w("Camera2Control", 1, paramString);
+    }
+    while (paramInt != 2) {
       return;
-      axgd.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+    }
+    QLog.e("Camera2Control", 1, paramString);
   }
   
-  public void a(int paramInt)
+  public static axhu[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, axfz paramaxfz)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    a(1, "[Camera2] getPreviewAndPictureSizeV2 wanted size=" + paramInt1 + " " + paramInt2 + " cliped=" + paramInt3 + " " + paramInt4);
+    axhu[] arrayOfaxhu = new axhu[2];
+    axhu localaxhu = a(paramInt1, paramInt2, paramInt3, paramInt4, true, paramaxfz);
+    if (localaxhu != null)
+    {
+      arrayOfaxhu[0] = localaxhu;
+      a(1, "[Camera2] getPreviewAndPictureSizeV2 sizeGuarantee way2 preview=" + localaxhu.a + " " + localaxhu.b);
+      paramaxfz = a(localaxhu.a, localaxhu.b, paramInt3, paramInt4, 1, paramaxfz);
+      arrayOfaxhu[1] = paramaxfz;
+      if (paramaxfz != null) {
+        a(1, "[Camera2] getPreviewAndPictureSizeV2 sizeGuarantee way2 picture=" + paramaxfz.a + " " + paramaxfz.b);
+      }
+    }
+    return arrayOfaxhu;
   }
   
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  @TargetApi(21)
+  private static axhu b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, axfz paramaxfz)
   {
-    a(paramTotalCaptureResult);
+    if (paramaxfz != null) {}
+    try
+    {
+      if (!paramaxfz.a())
+      {
+        a(2, "[Camera2]getPreviewSizeV3 camera2Info: " + paramaxfz);
+        return null;
+      }
+      Object localObject1 = (StreamConfigurationMap)paramaxfz.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+      paramaxfz = new ArrayList();
+      localObject1 = ((StreamConfigurationMap)localObject1).getOutputSizes(SurfaceTexture.class);
+      if (localObject1 == null) {
+        return null;
+      }
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        paramaxfz.add(new axhu(localObject2.getWidth(), localObject2.getHeight()));
+        i += 1;
+      }
+      if (paramaxfz.size() > 0)
+      {
+        i = 0;
+        while (i < paramaxfz.size())
+        {
+          a(1, "[Camera2] getPreviewSizeV3 sizeGuaranteeOK[list]: width=" + ((axhu)paramaxfz.get(i)).a + " height=" + ((axhu)paramaxfz.get(i)).b + " w/h=" + ((axhu)paramaxfz.get(i)).a / ((axhu)paramaxfz.get(i)).b);
+          i += 1;
+        }
+      }
+      localObject1 = a(paramaxfz, paramInt1, paramInt2, 2600, 1500, 1700, 1000);
+      if (localObject1 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Camera2Control", 2, "[Camera2] getPreviewSizeV3 SizeGuaranteeOK: DEFAULT resolution os OK. size:" + localObject1);
+        }
+        if (paramBoolean) {
+          ahvx.a(2, paramInt1, paramInt2, ((axhu)localObject1).a, ((axhu)localObject1).b);
+        }
+      }
+      else
+      {
+        localObject1 = a(paramaxfz, paramInt1, paramInt2, 2600, 1500, 1000, 700);
+        if (localObject1 != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Camera2Control", 2, "[Camera2] getPreviewSizeV3 SizeGuaranteeOK: 640*480 resolution os OK. size:" + localObject1);
+          }
+          if (!paramBoolean) {
+            break label519;
+          }
+          ahvx.a(3, paramInt1, paramInt2, ((axhu)localObject1).a, ((axhu)localObject1).b);
+          break label519;
+        }
+        paramaxfz = a(paramaxfz, paramInt1, paramInt2, paramInt3, paramInt4);
+        if (paramBoolean)
+        {
+          if (paramaxfz != null) {
+            break label495;
+          }
+          paramInt3 = 0;
+          break label522;
+        }
+      }
+      for (;;)
+      {
+        ahvx.a(4, paramInt1, paramInt2, paramInt3, paramInt4);
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Camera2Control", 2, "[Camera2] getPreviewSizeGuaranteeOK: getPreviewSize. size:" + paramaxfz);
+          return paramaxfz;
+          label495:
+          paramInt3 = paramaxfz.a;
+        }
+        label519:
+        label522:
+        while (paramaxfz != null)
+        {
+          paramInt4 = paramaxfz.b;
+          break;
+          return paramaxfz;
+          return localObject1;
+          return localObject1;
+        }
+        paramInt4 = 0;
+      }
+      return null;
+    }
+    catch (Exception paramaxfz) {}
   }
   
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
+  public static axhu[] b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, axfz paramaxfz)
   {
-    a(paramCaptureResult);
+    a(1, "[Camera2] getPreviewAndPictureSizeV3 wanted size=" + paramInt1 + " " + paramInt2 + " cliped=" + paramInt3 + " " + paramInt4);
+    if (paramaxfz == null)
+    {
+      a(2, "[Camera2] getPreviewAndPictureSizeV3 camera2Info:" + paramaxfz);
+      return null;
+    }
+    axhu[] arrayOfaxhu = new axhu[2];
+    axhu localaxhu = b(paramInt1, paramInt2, paramInt3, paramInt4, true, paramaxfz);
+    if (localaxhu != null)
+    {
+      arrayOfaxhu[0] = localaxhu;
+      a(1, "[@] getPreviewAndPictureSizeV3 sizeGuarantee way2 preview=" + localaxhu.a + " " + localaxhu.b);
+      paramaxfz = a(localaxhu.a, localaxhu.b, paramInt3, paramInt4, 1, paramaxfz);
+      arrayOfaxhu[1] = paramaxfz;
+      if (paramaxfz != null) {
+        a(1, "[@] getPreviewAndPictureSizeV3 sizeGuarantee way2 picture=" + paramaxfz.a + " " + paramaxfz.b);
+      }
+    }
+    return arrayOfaxhu;
   }
 }
 

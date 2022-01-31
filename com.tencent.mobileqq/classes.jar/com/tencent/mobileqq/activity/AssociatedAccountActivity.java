@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
+import aaju;
+import aajv;
+import aajw;
+import aajx;
 import aajy;
 import aajz;
 import aaka;
 import aakb;
 import aakc;
-import aakd;
-import aake;
-import aakf;
-import aakg;
-import ailf;
-import ajsf;
-import ajxl;
-import akav;
-import akhc;
+import aild;
+import ajsd;
+import ajxj;
+import akat;
+import akhb;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -21,18 +21,18 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import ayam;
-import ayan;
 import ayao;
-import ayav;
+import ayap;
+import ayaq;
 import ayax;
-import bbbj;
-import bbcl;
-import bbcv;
-import bbgg;
-import bfol;
-import bfoy;
-import bftk;
+import ayaz;
+import bbbx;
+import bbcz;
+import bbdj;
+import bbgu;
+import bfpc;
+import bfpp;
+import bfub;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -59,12 +59,12 @@ public class AssociatedAccountActivity
 {
   public int a;
   public long a;
-  public ailf a;
-  private ajxl jdField_a_of_type_Ajxl = new aaka(this);
-  private akav jdField_a_of_type_Akav = new aakc(this);
-  private akhc jdField_a_of_type_Akhc = new aakb(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aajz(this);
-  private bftk jdField_a_of_type_Bftk = new aakd(this);
+  public aild a;
+  private ajxj jdField_a_of_type_Ajxj = new aajw(this);
+  private akat jdField_a_of_type_Akat = new aajy(this);
+  private akhb jdField_a_of_type_Akhb = new aajx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aajv(this);
+  private bfub jdField_a_of_type_Bfub = new aajz(this);
   public PullRefreshHeader a;
   public SlideDetectListView a;
   public String a;
@@ -74,7 +74,7 @@ public class AssociatedAccountActivity
   public int b;
   public ArrayList<SimpleAccount> b;
   public boolean b;
-  public ArrayList<ayam> c;
+  public ArrayList<ayao> c;
   public boolean c;
   public boolean d;
   public boolean e = true;
@@ -87,26 +87,26 @@ public class AssociatedAccountActivity
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler();
   }
   
-  private void a(ayax paramayax)
+  private void a(ayaz paramayaz)
   {
     if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0))
     {
-      paramayax = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+      paramayaz = this.jdField_c_of_type_JavaUtilArrayList.iterator();
       int i = 0;
-      while (paramayax.hasNext())
+      while (paramayaz.hasNext())
       {
-        Object localObject = (ayam)paramayax.next();
-        if ((localObject != null) && (((ayam)localObject).jdField_a_of_type_Int == 5) && (((ayam)localObject).jdField_a_of_type_JavaLangObject != null))
+        Object localObject = (ayao)paramayaz.next();
+        if ((localObject != null) && (((ayao)localObject).jdField_a_of_type_Int == 5) && (((ayao)localObject).jdField_a_of_type_JavaLangObject != null))
         {
-          localObject = ((ArrayList)((ayam)localObject).jdField_a_of_type_JavaLangObject).iterator();
+          localObject = ((ArrayList)((ayao)localObject).jdField_a_of_type_JavaLangObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            ayam localayam = (ayam)((Iterator)localObject).next();
-            SimpleAccount localSimpleAccount = (SimpleAccount)localayam.jdField_a_of_type_JavaLangObject;
-            int j = ayao.a(this.app, localSimpleAccount.getUin());
-            if (localayam.jdField_d_of_type_Int != j)
+            ayao localayao = (ayao)((Iterator)localObject).next();
+            SimpleAccount localSimpleAccount = (SimpleAccount)localayao.jdField_a_of_type_JavaLangObject;
+            int j = ayaq.a(this.app, localSimpleAccount.getUin());
+            if (localayao.jdField_d_of_type_Int != j)
             {
-              localayam.jdField_d_of_type_Int = j;
+              localayao.jdField_d_of_type_Int = j;
               i = 1;
             }
           }
@@ -117,7 +117,7 @@ public class AssociatedAccountActivity
         if (QLog.isColorLevel()) {
           QLog.d("AssociatedAccountActivity", 2, "updateThirdQQUnread changed");
         }
-        this.jdField_a_of_type_Ailf.notifyDataSetChanged();
+        this.jdField_a_of_type_Aild.notifyDataSetChanged();
       }
     }
   }
@@ -157,8 +157,8 @@ public class AssociatedAccountActivity
         this.d = true;
         sendBroadcast(new Intent("before_account_change"));
         this.app.switchAccount((SimpleAccount)localObject1, null);
-        ayan.a(this.app, this);
-        bbbj.b();
+        ayap.a(this.app, this);
+        bbbx.b();
         return;
       }
       c();
@@ -201,19 +201,19 @@ public class AssociatedAccountActivity
       this.jdField_a_of_type_Int = 0;
       this.jdField_c_of_type_Boolean = false;
     }
-    ayav localayav = (ayav)this.app.getManager(61);
+    ayax localayax = (ayax)this.app.getManager(61);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
       SubAccountInfo localSubAccountInfo = (SubAccountInfo)localIterator.next();
-      if (localayav != null)
+      if (localayax != null)
       {
         if (paramBoolean1) {
-          localayav.b(localSubAccountInfo.subuin);
+          localayax.b(localSubAccountInfo.subuin);
         }
-        localayav.f(localSubAccountInfo.subuin);
+        localayax.f(localSubAccountInfo.subuin);
       }
-      ayao.a(this.app, localSubAccountInfo.subuin, false);
+      ayaq.a(this.app, localSubAccountInfo.subuin, false);
       if (this.jdField_b_of_type_Boolean) {
         this.jdField_a_of_type_Int += 1;
       }
@@ -240,7 +240,7 @@ public class AssociatedAccountActivity
       }
       return;
       label319:
-      paramBoolean1 = ayao.a(this.app, false);
+      paramBoolean1 = ayaq.a(this.app, false);
       if ((this.jdField_b_of_type_Boolean) && (paramBoolean1)) {
         this.jdField_a_of_type_Int += 1;
       }
@@ -254,52 +254,52 @@ public class AssociatedAccountActivity
   {
     int j;
     int i;
-    ayam localayam;
+    ayao localayao;
     Object localObject3;
     Object localObject2;
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_Ailf != null))
+    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_Aild != null))
     {
       localObject1 = null;
       j = 0;
       i = 0;
       if (j < this.jdField_c_of_type_JavaUtilArrayList.size())
       {
-        localayam = (ayam)this.jdField_c_of_type_JavaUtilArrayList.get(j);
+        localayao = (ayao)this.jdField_c_of_type_JavaUtilArrayList.get(j);
         localObject3 = localObject1;
-        if (localayam.jdField_a_of_type_Int != 2) {
+        if (localayao.jdField_a_of_type_Int != 2) {
           break label240;
         }
         localObject3 = localObject1;
-        if (localayam.jdField_a_of_type_JavaLangObject == null) {
+        if (localayao.jdField_a_of_type_JavaLangObject == null) {
           break label240;
         }
         localObject3 = localObject1;
-        if (!(localayam.jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)) {
+        if (!(localayao.jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)) {
           break label240;
         }
         localObject2 = localObject1;
         if (localObject1 == null) {
-          localObject2 = (ayav)this.app.getManager(61);
+          localObject2 = (ayax)this.app.getManager(61);
         }
         localObject3 = localObject2;
         if (localObject2 == null) {
           break label240;
         }
-        int k = ((ayav)localObject2).a(((SubAccountInfo)localayam.jdField_a_of_type_JavaLangObject).subuin);
-        if ((k != 1) || (localayam.e == 0))
+        int k = ((ayax)localObject2).a(((SubAccountInfo)localayao.jdField_a_of_type_JavaLangObject).subuin);
+        if ((k != 1) || (localayao.e == 0))
         {
           localObject3 = localObject2;
           if (k == 1) {
             break label240;
           }
           localObject3 = localObject2;
-          if (localayam.e != 0) {
+          if (localayao.e != 0) {
             break label240;
           }
         }
         if (k == 1)
         {
-          localayam.e = 0;
+          localayao.e = 0;
           label206:
           i = 1;
         }
@@ -310,10 +310,10 @@ public class AssociatedAccountActivity
     {
       j += 1;
       break;
-      localayam.e = 1;
+      localayao.e = 1;
       break label206;
       if (i != 0) {
-        this.jdField_a_of_type_Ailf.notifyDataSetChanged();
+        this.jdField_a_of_type_Aild.notifyDataSetChanged();
       }
       return;
     }
@@ -325,12 +325,12 @@ public class AssociatedAccountActivity
       QLog.d("AssociatedAccountActivity", 2, "cleanMessagesUnread");
     }
     if (((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) || (this.g)) {
-      ayao.c(this.app);
+      ayaq.c(this.app);
     }
     QQAppInterface localQQAppInterface;
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      this.app.a().c(ajsf.x, 7000);
+      this.app.a().c(ajsd.x, 7000);
       localQQAppInterface = this.app;
       if ((!paramBoolean) && (this.jdField_b_of_type_Int <= 0)) {
         break label105;
@@ -339,7 +339,7 @@ public class AssociatedAccountActivity
     label105:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      ayao.a(localQQAppInterface, paramBoolean, null);
+      ayaq.a(localQQAppInterface, paramBoolean, null);
       return;
     }
   }
@@ -388,15 +388,15 @@ public class AssociatedAccountActivity
     if (QLog.isColorLevel()) {
       QLog.d("AssociatedAccountActivity", 2, "showSettingDialog underTwo = " + paramBoolean);
     }
-    bfol localbfol = (bfol)bfoy.a(this, null);
+    bfpc localbfpc = (bfpc)bfpp.a(this, null);
     if (paramBoolean) {
-      localbfol.a(getResources().getString(2131719813), 5);
+      localbfpc.a(getResources().getString(2131719824), 5);
     }
-    localbfol.a(getResources().getString(2131720623), 5);
-    localbfol.a(getResources().getString(2131719817), 5);
-    localbfol.c(2131690596);
-    localbfol.a(new aakg(this, paramBoolean, localbfol));
-    localbfol.show();
+    localbfpc.a(getResources().getString(2131720634), 5);
+    localbfpc.a(getResources().getString(2131719828), 5);
+    localbfpc.c(2131690596);
+    localbfpc.a(new aakc(this, paramBoolean, localbfpc));
+    localbfpc.show();
   }
   
   private void f()
@@ -405,24 +405,24 @@ public class AssociatedAccountActivity
       QLog.d("AssociatedAccountActivity", 2, "initUI");
     }
     if (this.g) {
-      setTitle(2131719815);
+      setTitle(2131719826);
     }
     for (;;)
     {
       TextView localTextView = this.rightViewText;
       localTextView.setVisibility(0);
-      localTextView.setText(2131719816);
-      localTextView.setOnClickListener(new aajy(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131376635));
+      localTextView.setText(2131719827);
+      localTextView.setOnClickListener(new aaju(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131376637));
       if (AppSetting.d) {
-        localTextView.setContentDescription(getText(2131719816));
+        localTextView.setContentDescription(getText(2131719827));
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559459, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollListener(this.jdField_a_of_type_Bftk);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollListener(this.jdField_a_of_type_Bfub);
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setBackgroundResource(2130838514);
       return;
-      setTitle(2131719812);
+      setTitle(2131719823);
     }
   }
   
@@ -432,8 +432,8 @@ public class AssociatedAccountActivity
       QLog.d("AssociatedAccountActivity", 2, "initData");
     }
     this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Ailf = new ailf(this.app, this.jdField_c_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Ailf);
+    this.jdField_a_of_type_Aild = new aild(this.app, this.jdField_c_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Aild);
     i();
     j();
   }
@@ -441,10 +441,10 @@ public class AssociatedAccountActivity
   private void h()
   {
     this.jdField_b_of_type_Int = 0;
-    ayav localayav = (ayav)this.app.getManager(61);
+    ayax localayax = (ayax)this.app.getManager(61);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
-      if (localayav.c(((SubAccountInfo)localIterator.next()).subuin) > 0) {
+      if (localayax.c(((SubAccountInfo)localIterator.next()).subuin) > 0) {
         this.jdField_b_of_type_Int += 1;
       }
     }
@@ -466,8 +466,8 @@ public class AssociatedAccountActivity
     if (this.jdField_a_of_type_JavaUtilArrayList == null)
     {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      localObject1 = (ayav)this.app.getManager(61);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(((ayav)localObject1).b());
+      localObject1 = (ayax)this.app.getManager(61);
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(((ayax)localObject1).b());
       if (QLog.isColorLevel()) {
         QLog.d("AssociatedAccountActivity", 2, "loadAccountList mSubAccountList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
       }
@@ -557,7 +557,7 @@ public class AssociatedAccountActivity
     Object localObject6;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      localObject3 = (ayav)this.app.getManager(61);
+      localObject3 = (ayax)this.app.getManager(61);
       int n = this.jdField_a_of_type_JavaUtilArrayList.size();
       localObject4 = new ArrayList();
       localObject1 = this.app.getApplication().getAllAccounts();
@@ -576,21 +576,21 @@ public class AssociatedAccountActivity
           }
           else
           {
-            localObject5 = new ayam();
-            ((ayam)localObject5).jdField_a_of_type_Int = 2;
-            localObject2 = bbcl.c(this.app, localSubAccountInfo.subuin, true);
+            localObject5 = new ayao();
+            ((ayao)localObject5).jdField_a_of_type_Int = 2;
+            localObject2 = bbcz.c(this.app, localSubAccountInfo.subuin, true);
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
               localObject1 = localSubAccountInfo.subuin;
             }
-            ((ayam)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
-            ((ayam)localObject5).jdField_c_of_type_JavaLangString = localSubAccountInfo.subuin;
-            ((ayam)localObject5).jdField_a_of_type_JavaLangObject = localSubAccountInfo;
-            ((ayam)localObject5).jdField_b_of_type_JavaLangString = "";
+            ((ayao)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
+            ((ayao)localObject5).jdField_c_of_type_JavaLangString = localSubAccountInfo.subuin;
+            ((ayao)localObject5).jdField_a_of_type_JavaLangObject = localSubAccountInfo;
+            ((ayao)localObject5).jdField_b_of_type_JavaLangString = "";
             localObject1 = null;
             if (localSubAccountInfo.status != 1)
             {
-              ((ayam)localObject5).e = 1;
+              ((ayao)localObject5).e = 1;
               localObject2 = ((List)localObject4).iterator();
               do
               {
@@ -609,10 +609,10 @@ public class AssociatedAccountActivity
       int k;
       if (j != 0)
       {
-        ((ayam)localObject5).jdField_a_of_type_Boolean = true;
-        ((ayam)localObject5).jdField_b_of_type_Int = 0;
+        ((ayao)localObject5).jdField_a_of_type_Boolean = true;
+        ((ayao)localObject5).jdField_b_of_type_Int = 0;
         if (AppSetting.d) {
-          ((ayam)localObject5).jdField_d_of_type_JavaLangString = getString(2131719826, new Object[] { ((ayam)localObject5).jdField_a_of_type_JavaLangString });
+          ((ayao)localObject5).jdField_d_of_type_JavaLangString = getString(2131719837, new Object[] { ((ayao)localObject5).jdField_a_of_type_JavaLangString });
         }
         localArrayList.add(localObject5);
         if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
@@ -625,7 +625,7 @@ public class AssociatedAccountActivity
         if (k <= 0) {
           break;
         }
-        localObject2 = ayao.a(this.app, localSubAccountInfo.subuin);
+        localObject2 = ayaq.a(this.app, localSubAccountInfo.subuin);
         if (k <= 5) {
           break label1183;
         }
@@ -640,112 +640,112 @@ public class AssociatedAccountActivity
         if (m < k)
         {
           localObject5 = (SubAccountMessage)((List)localObject1).get(m);
-          localObject6 = new ayam();
-          ((ayam)localObject6).jdField_a_of_type_Int = 3;
+          localObject6 = new ayao();
+          ((ayao)localObject6).jdField_a_of_type_Int = 3;
           if (m == k - 1) {}
-          for (((ayam)localObject6).jdField_b_of_type_Int = 2;; ((ayam)localObject6).jdField_b_of_type_Int = 1)
+          for (((ayao)localObject6).jdField_b_of_type_Int = 2;; ((ayao)localObject6).jdField_b_of_type_Int = 1)
           {
             if ((localObject2 != null) && (((ArrayList)localObject2).contains(((SubAccountMessage)localObject5).senderuin))) {
-              ((ayam)localObject6).jdField_c_of_type_Int = 2;
+              ((ayao)localObject6).jdField_c_of_type_Int = 2;
             }
             if (m == 0) {
-              ((ayam)localObject6).jdField_b_of_type_Boolean = true;
+              ((ayao)localObject6).jdField_b_of_type_Boolean = true;
             }
-            ((ayam)localObject6).jdField_a_of_type_JavaLangObject = localObject5;
+            ((ayao)localObject6).jdField_a_of_type_JavaLangObject = localObject5;
             localArrayList.add(localObject6);
             m += 1;
             break label439;
-            ((ayam)localObject5).jdField_a_of_type_Boolean = false;
+            ((ayao)localObject5).jdField_a_of_type_Boolean = false;
             break;
-            ((ayam)localObject5).e = 0;
-            localObject1 = ((ayav)localObject3).a(localSubAccountInfo.subuin);
+            ((ayao)localObject5).e = 0;
+            localObject1 = ((ayax)localObject3).a(localSubAccountInfo.subuin);
             break;
           }
         }
         if (j == 0) {
           break;
         }
-        localObject1 = new ayam();
-        ((ayam)localObject1).jdField_a_of_type_Int = 1;
-        ((ayam)localObject1).jdField_b_of_type_Int = 3;
-        ((ayam)localObject1).jdField_a_of_type_JavaLangObject = localSubAccountInfo;
+        localObject1 = new ayao();
+        ((ayao)localObject1).jdField_a_of_type_Int = 1;
+        ((ayao)localObject1).jdField_b_of_type_Int = 3;
+        ((ayao)localObject1).jdField_a_of_type_JavaLangObject = localSubAccountInfo;
         localArrayList.add(localObject1);
         break;
         label629:
         if (QLog.isColorLevel()) {
           QLog.d("AssociatedAccountActivity", 2, "loadItemDataList subaccount no msg");
         }
-        boolean bool = ((ayam)localObject5).jdField_a_of_type_Boolean;
-        localObject1 = new ayam();
-        ((ayam)localObject1).jdField_a_of_type_Int = 7;
-        ((ayam)localObject1).jdField_b_of_type_Boolean = true;
-        ((ayam)localObject1).jdField_b_of_type_Int = 3;
-        ((ayam)localObject1).jdField_a_of_type_JavaLangObject = localSubAccountInfo;
-        ((ayam)localObject1).jdField_a_of_type_Boolean = bool;
+        boolean bool = ((ayao)localObject5).jdField_a_of_type_Boolean;
+        localObject1 = new ayao();
+        ((ayao)localObject1).jdField_a_of_type_Int = 7;
+        ((ayao)localObject1).jdField_b_of_type_Boolean = true;
+        ((ayao)localObject1).jdField_b_of_type_Int = 3;
+        ((ayao)localObject1).jdField_a_of_type_JavaLangObject = localSubAccountInfo;
+        ((ayao)localObject1).jdField_a_of_type_Boolean = bool;
         localArrayList.add(localObject1);
         break;
-        localObject1 = new ayam();
-        ((ayam)localObject1).jdField_a_of_type_Int = 4;
-        ((ayam)localObject1).jdField_b_of_type_Int = 3;
-        ((ayam)localObject1).jdField_a_of_type_JavaLangString = getResources().getString(2131719813);
-        ((ayam)localObject1).jdField_c_of_type_JavaLangString = getResources().getString(2131719814);
+        localObject1 = new ayao();
+        ((ayao)localObject1).jdField_a_of_type_Int = 4;
+        ((ayao)localObject1).jdField_b_of_type_Int = 3;
+        ((ayao)localObject1).jdField_a_of_type_JavaLangString = getResources().getString(2131719824);
+        ((ayao)localObject1).jdField_c_of_type_JavaLangString = getResources().getString(2131719825);
         if (AppSetting.d)
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(((ayam)localObject1).jdField_a_of_type_JavaLangString).append(",");
-          ((StringBuilder)localObject2).append(((ayam)localObject1).jdField_c_of_type_JavaLangString);
-          ((ayam)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+          ((StringBuilder)localObject2).append(((ayao)localObject1).jdField_a_of_type_JavaLangString).append(",");
+          ((StringBuilder)localObject2).append(((ayao)localObject1).jdField_c_of_type_JavaLangString);
+          ((ayao)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
         }
         localArrayList.add(localObject1);
         if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
         {
-          localObject1 = new ayam();
-          ((ayam)localObject1).jdField_a_of_type_Int = 0;
-          ((ayam)localObject1).jdField_b_of_type_Int = 0;
+          localObject1 = new ayao();
+          ((ayao)localObject1).jdField_a_of_type_Int = 0;
+          ((ayao)localObject1).jdField_b_of_type_Int = 0;
           localArrayList.add(localObject1);
-          localObject1 = new ayam();
-          ((ayam)localObject1).jdField_a_of_type_Int = 5;
-          ((ayam)localObject1).jdField_b_of_type_Int = 3;
+          localObject1 = new ayao();
+          ((ayao)localObject1).jdField_a_of_type_Int = 5;
+          ((ayao)localObject1).jdField_b_of_type_Int = 3;
           localObject2 = new ArrayList();
           j = this.jdField_b_of_type_JavaUtilArrayList.size();
           i = 0;
           if (i < j)
           {
             localObject4 = (SimpleAccount)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-            localObject3 = new ayam();
-            ((ayam)localObject3).jdField_a_of_type_Int = 6;
-            ((ayam)localObject3).jdField_a_of_type_JavaLangString = ayao.a(this.app, (SimpleAccount)localObject4);
-            ((ayam)localObject3).jdField_d_of_type_Int = ayao.a(this.app, ((SimpleAccount)localObject4).getUin());
-            ((ayam)localObject3).jdField_a_of_type_JavaLangObject = localObject4;
+            localObject3 = new ayao();
+            ((ayao)localObject3).jdField_a_of_type_Int = 6;
+            ((ayao)localObject3).jdField_a_of_type_JavaLangString = ayaq.a(this.app, (SimpleAccount)localObject4);
+            ((ayao)localObject3).jdField_d_of_type_Int = ayaq.a(this.app, ((SimpleAccount)localObject4).getUin());
+            ((ayao)localObject3).jdField_a_of_type_JavaLangObject = localObject4;
             if (AppSetting.d)
             {
               localObject4 = new StringBuilder();
-              ((StringBuilder)localObject4).append(((ayam)localObject3).jdField_a_of_type_JavaLangString).append(",");
-              if (((ayam)localObject3).jdField_d_of_type_Int != 0) {
+              ((StringBuilder)localObject4).append(((ayao)localObject3).jdField_a_of_type_JavaLangString).append(",");
+              if (((ayao)localObject3).jdField_d_of_type_Int != 0) {
                 break label1032;
               }
             }
             for (;;)
             {
-              ((ayam)localObject3).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject4).toString();
+              ((ayao)localObject3).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject4).toString();
               ((ArrayList)localObject2).add(localObject3);
               i += 1;
               break;
-              if (((ayam)localObject3).jdField_d_of_type_Int == 1) {
+              if (((ayao)localObject3).jdField_d_of_type_Int == 1) {
                 ((StringBuilder)localObject4).append("有一条未读");
-              } else if (((ayam)localObject3).jdField_d_of_type_Int == 2) {
+              } else if (((ayao)localObject3).jdField_d_of_type_Int == 2) {
                 ((StringBuilder)localObject4).append("有两条未读");
-              } else if (((ayam)localObject3).jdField_d_of_type_Int > 0) {
-                ((StringBuilder)localObject4).append("有").append(((ayam)localObject3).jdField_d_of_type_Int).append("条未读,");
+              } else if (((ayao)localObject3).jdField_d_of_type_Int > 0) {
+                ((StringBuilder)localObject4).append("有").append(((ayao)localObject3).jdField_d_of_type_Int).append("条未读,");
               }
             }
           }
-          ((ayam)localObject1).jdField_a_of_type_JavaLangObject = localObject2;
+          ((ayao)localObject1).jdField_a_of_type_JavaLangObject = localObject2;
           localArrayList.add(localObject1);
         }
         this.jdField_c_of_type_JavaUtilArrayList.clear();
         this.jdField_c_of_type_JavaUtilArrayList.addAll(localArrayList);
-        this.jdField_a_of_type_Ailf.notifyDataSetChanged();
+        this.jdField_a_of_type_Aild.notifyDataSetChanged();
         if (this.g) {
           if (this.leftView != null) {
             this.leftView.setText("");
@@ -770,10 +770,10 @@ public class AssociatedAccountActivity
       return;
     }
     d();
-    bbgg localbbgg = bbcv.a(this, 230).setTitle(getString(2131719852)).setMessage(getString(2131719851));
-    localbbgg.setPositiveButton(2131691035, new aakf(this));
-    localbbgg.setCancelable(true);
-    localbbgg.show();
+    bbgu localbbgu = bbdj.a(this, 230).setTitle(getString(2131719863)).setMessage(getString(2131719862));
+    localbbgu.setPositiveButton(2131691035, new aakb(this));
+    localbbgu.setCancelable(true);
+    localbbgu.show();
   }
   
   private void l()
@@ -796,9 +796,9 @@ public class AssociatedAccountActivity
       QLog.d("AssociatedAccountActivity", 2, "bindNewSubAccount currentUin=" + this.app.c());
     }
     Object localObject1 = new ArrayList();
-    Object localObject2 = (ayav)this.app.getManager(61);
+    Object localObject2 = (ayax)this.app.getManager(61);
     if (localObject2 != null) {
-      ((List)localObject1).addAll(((ayav)localObject2).a());
+      ((List)localObject1).addAll(((ayax)localObject2).a());
     }
     if (QLog.isColorLevel()) {
       QLog.d("AssociatedAccountActivity", 2, "bindNewSubAccount binded = " + ((List)localObject1).size());
@@ -832,19 +832,19 @@ public class AssociatedAccountActivity
       localIntent.putExtra("fromWhere", (String)localObject1);
       startActivity(localIntent);
       return;
-      ayao.a(this.app, this);
+      ayaq.a(this.app, this);
       return;
     }
   }
   
   private void n()
   {
-    bfol localbfol = (bfol)bfoy.a(getActivity(), null);
-    localbfol.a(2131720624);
-    localbfol.a(2131694793, 3);
-    localbfol.c(2131690596);
-    localbfol.a(new aake(this, localbfol));
-    localbfol.show();
+    bfpc localbfpc = (bfpc)bfpp.a(getActivity(), null);
+    localbfpc.a(2131720635);
+    localbfpc.a(2131694794, 3);
+    localbfpc.c(2131690596);
+    localbfpc.a(new aaka(this, localbfpc));
+    localbfpc.show();
   }
   
   void a()
@@ -872,7 +872,7 @@ public class AssociatedAccountActivity
       } while (paramInt2 != -1);
       finish();
       return;
-      bool = ayao.d(this.app);
+      bool = ayaq.d(this.app);
     } while ((paramInt2 != -1) && (this.f == bool));
     this.f = bool;
     a(true);
@@ -881,26 +881,26 @@ public class AssociatedAccountActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562465);
+    super.setContentView(2131562464);
     if (QLog.isColorLevel()) {
       QLog.d("AssociatedAccountActivity", 2, "doOnCreate");
     }
-    this.e = ayao.b(this.app, true);
-    this.f = ayao.d(this.app);
+    this.e = ayaq.b(this.app, true);
+    this.f = ayaq.d(this.app);
     if ((getIntent() != null) && (TextUtils.equals(getIntent().getStringExtra("fromWhere"), AccountManageActivity.class.getSimpleName()))) {
       this.g = true;
     }
     f();
     g();
-    addObserver(this.jdField_a_of_type_Ajxl);
-    addObserver(this.jdField_a_of_type_Akhc);
-    addObserver(this.jdField_a_of_type_Akav);
+    addObserver(this.jdField_a_of_type_Ajxj);
+    addObserver(this.jdField_a_of_type_Akhb);
+    addObserver(this.jdField_a_of_type_Akat);
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     this.app.a().addObserver(this);
     sendBroadcast(new Intent("before_account_change"));
-    ayan.b(this.app);
-    ayan.a(this.app);
-    ayan.c(this.app);
+    ayap.b(this.app);
+    ayap.a(this.app);
+    ayap.c(this.app);
     if (a()) {
       a(false, false);
     }
@@ -914,9 +914,9 @@ public class AssociatedAccountActivity
     if (QLog.isColorLevel()) {
       QLog.d("AssociatedAccountActivity", 2, "doOnDestroy");
     }
-    removeObserver(this.jdField_a_of_type_Ajxl);
-    removeObserver(this.jdField_a_of_type_Akhc);
-    removeObserver(this.jdField_a_of_type_Akav);
+    removeObserver(this.jdField_a_of_type_Ajxj);
+    removeObserver(this.jdField_a_of_type_Akhb);
+    removeObserver(this.jdField_a_of_type_Akat);
     this.app.removeHandler(getClass());
     if (this.app.a() != null) {
       this.app.a().deleteObserver(this);
@@ -958,10 +958,10 @@ public class AssociatedAccountActivity
       QLog.d("AssociatedAccountActivity", 2, "onAccountChanged() mClick2Switch=" + this.d);
     }
     super.onAccountChanged();
-    axbr.jdField_a_of_type_Int = 0;
-    removeObserver(this.jdField_a_of_type_Ajxl);
-    removeObserver(this.jdField_a_of_type_Akav);
-    removeObserver(this.jdField_a_of_type_Akhc);
+    axbt.jdField_a_of_type_Int = 0;
+    removeObserver(this.jdField_a_of_type_Ajxj);
+    removeObserver(this.jdField_a_of_type_Akat);
+    removeObserver(this.jdField_a_of_type_Akhb);
     if ((this.app != null) && (this.app.a() != null)) {
       this.app.a().deleteObserver(this);
     }
@@ -971,7 +971,7 @@ public class AssociatedAccountActivity
       this.app.removeHandler(getClass());
       this.app.getApplication().refreAccountList();
     }
-    ayan.b(this.app, this);
+    ayap.b(this.app, this);
     c();
     this.jdField_a_of_type_JavaLangString = null;
     Intent localIntent = new Intent(this, SplashActivity.class);
@@ -1023,7 +1023,7 @@ public class AssociatedAccountActivity
         return;
       } while (!(paramObject instanceof String[]));
       paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!ajsf.x.equals(paramObservable[0])));
+    } while ((paramObservable.length != 2) || (!ajsd.x.equals(paramObservable[0])));
     runOnUiThread(new AssociatedAccountActivity.16(this));
   }
 }

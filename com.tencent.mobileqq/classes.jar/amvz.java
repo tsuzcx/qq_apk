@@ -1,68 +1,94 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amvz
-  extends ampb<amwa>
 {
-  public int a()
+  private amwa[] a = new amwa[0];
+  
+  public static amvz a(String paramString)
   {
-    return 551;
+    int i = 0;
+    amvz localamvz = new amvz();
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
+      }
+    }
+    for (;;)
+    {
+      return localamvz;
+      try
+      {
+        paramString = new JSONObject(paramString).getJSONArray("array");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          localamvz.a = new amwa[paramString.length()];
+          while (i < paramString.length())
+          {
+            amwa localamwa = amwa.a(paramString.getJSONObject(i));
+            localamvz.a[i] = localamwa;
+            i += 1;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localamvz);
+            return localamvz;
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return localamvz;
   }
   
-  @NonNull
   public amwa a(int paramInt)
   {
-    return new amwa();
-  }
-  
-  @Nullable
-  public amwa a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
-      return amwa.a(paramArrayOfampi[0].a);
+    Object localObject;
+    if ((this.a == null) || (this.a.length <= 0))
+    {
+      localObject = null;
+      return localObject;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
+    amwa[] arrayOfamwa = this.a;
+    int j = arrayOfamwa.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label64;
+      }
+      amwa localamwa = arrayOfamwa[i];
+      localObject = localamwa;
+      if (localamwa.a == paramInt) {
+        break;
+      }
+      i += 1;
     }
+    label64:
     return null;
   }
   
-  public Class<amwa> a()
+  public String toString()
   {
-    return amwa.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
+    if ((this.a != null) && (this.a.length > 0))
+    {
+      amwa[] arrayOfamwa = this.a;
+      int j = arrayOfamwa.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(arrayOfamwa[i]).append(" ");
+        i += 1;
+      }
     }
-  }
-  
-  public void a(amwa paramamwa)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramamwa.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return localStringBuilder.toString();
   }
 }
 

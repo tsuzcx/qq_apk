@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.media.MediaPlayer;
-import ayco;
+import aycq;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoSprite$1$1
   implements Runnable
 {
-  public VideoSprite$1$1(ayco paramayco) {}
+  public VideoSprite$1$1(aycq paramaycq) {}
   
   public void run()
   {

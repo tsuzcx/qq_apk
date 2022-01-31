@@ -1,54 +1,16 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.text.TextUtils;
 
-public class arfa
-  implements arfk
+class arfa
+  implements arfm
 {
-  public arfa(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  arfa(arez paramarez, String paramString) {}
   
   public void a(boolean paramBoolean)
   {
-    int k = 1;
-    IVPluginDataReporter localIVPluginDataReporter;
-    int j;
-    if (!bbev.a(GroupVideoLoadingFragment.a(this.a)))
+    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label80;
-      }
-      GroupVideoLoadingFragment.a(this.a, false);
-      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
-      if (!paramBoolean) {
-        break label111;
-      }
-      j = 1;
-      label50:
-      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
-      if (i == 0) {
-        break label116;
-      }
-    }
-    label80:
-    label111:
-    label116:
-    for (int i = k;; i = 0)
-    {
-      localIVPluginDataReporter.opResult(i).report();
-      return;
-      i = 0;
-      break;
-      if (i != 0) {
-        GroupVideoLoadingFragment.a(this.a, true);
-      }
-      for (;;)
-      {
-        argi.b("2880338");
-        break;
-        GroupVideoLoadingFragment.a(this.a, false);
-      }
-      j = 0;
-      break label50;
+      arez.a(this.jdField_a_of_type_Arez).c(2131695921);
+      arez.a(this.jdField_a_of_type_Arez).show();
     }
   }
 }

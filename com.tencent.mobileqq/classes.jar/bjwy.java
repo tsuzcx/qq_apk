@@ -1,21 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-class bjwy
-  extends SimpleJob<Object>
+public class bjwy
+  implements Animation.AnimationListener
 {
-  bjwy(bjww parambjww, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  public bjwy(EditVideoGuide paramEditVideoGuide) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramString1);
+    this.a.j();
+    this.a.a.a(0);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    vel.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

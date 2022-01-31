@@ -1,36 +1,40 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class ngh
-  implements View.OnClickListener
+  extends ajxj
 {
-  ngh(nfu paramnfu, int paramInt) {}
+  ngh(nfr paramnfr) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Nfu.d)
-    {
-      this.jdField_a_of_type_Nfu.e = true;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        axqw.b(this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_num", 0, 0, "", "", "", this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-        paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qun2pub.html?_wv=1027&scode=" + this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString;
-      }
-    }
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
+    label134:
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "jumpTo:" + paramView);
-      }
-      nfu.c(this.jdField_a_of_type_Nfu, paramView);
       return;
-      axqw.b(this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-      paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&power=1&scode=" + this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString;
-      continue;
-      axqw.b(this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-      paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&scode=" + this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString;
+      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label134;
+        }
+        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
+        {
+          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
+          return;
+        }
+        i += 1;
+      }
     }
   }
 }

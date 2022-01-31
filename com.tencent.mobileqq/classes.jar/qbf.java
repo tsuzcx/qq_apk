@@ -1,43 +1,40 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.KdLiveInfo;
 
 public class qbf
 {
-  public List<qbg> a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public static qbf a(articlesummary.HotWordInfo paramHotWordInfo)
+  public static qbf a(articlesummary.KdLiveInfo paramKdLiveInfo)
   {
     qbf localqbf = new qbf();
-    if (paramHotWordInfo.rpt_hot_word_item.has())
-    {
-      localqbf.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
-      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
-      while (paramHotWordInfo.hasNext())
-      {
-        qbg localqbg = qbg.a((articlesummary.HotWordItem)paramHotWordInfo.next());
-        localqbf.a.add(localqbg);
-      }
-    }
+    localqbf.jdField_a_of_type_Int = paramKdLiveInfo.uint32_style_type.get();
+    localqbf.jdField_a_of_type_JavaLangString = paramKdLiveInfo.bytes_status_bg_url.get().toStringUtf8();
+    localqbf.b = paramKdLiveInfo.bytes_status_icon_url.get().toStringUtf8();
+    localqbf.c = paramKdLiveInfo.bytes_status_text.get().toStringUtf8();
+    localqbf.d = paramKdLiveInfo.bytes_hot_icon_url.get().toStringUtf8();
+    localqbf.e = paramKdLiveInfo.bytes_hot_text.get().toStringUtf8();
+    localqbf.f = paramKdLiveInfo.bytes_title_jump_url.get().toStringUtf8();
+    localqbf.g = paramKdLiveInfo.bytes_report_common_data.get().toStringUtf8();
     return localqbf;
   }
   
-  public byte[] a()
+  @NonNull
+  public String toString()
   {
-    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
-    if (this.a.size() > 0)
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((qbg)localIterator.next()).a());
-      }
-      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
-    }
-    return localHotWordInfo.toByteArray();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\n").append("style=").append(this.jdField_a_of_type_Int).append("\n").append("statusBgUrl=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("statusIconUrl=").append(this.b).append("\n").append("statusText=").append(this.c).append("\n").append("hotIconUrl=").append(this.d).append("\n").append("hotText=").append(this.e).append("\n").append("titleJumpUrl=").append(this.f).append("\n").append("reportCommonData=").append(this.g).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,18 +1,30 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.widget.AuthorizationItem;
 
-public class bfqe
-  implements AdapterView.OnItemClickListener
+public final class bfqe
 {
-  public bfqe(DynamicGridView paramDynamicGridView) {}
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bfqe(String paramString1, String paramString2, int paramInt)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
-      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bfqe a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
     }
+    return AuthorizationItem.c;
   }
 }
 

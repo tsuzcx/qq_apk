@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import agdi;
+import agdg;
 import android.os.Bundle;
 import android.os.Message;
-import bbdn;
-import bfmt;
+import bbeb;
+import bfnk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class BaseMessageResultAdapter$1
   implements Runnable
 {
-  public BaseMessageResultAdapter$1(agdi paramagdi, String paramString, int paramInt, long paramLong) {}
+  public BaseMessageResultAdapter$1(agdg paramagdg, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
     boolean bool = true;
     if (QLog.isColorLevel()) {
-      QLog.i(agdi.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+      QLog.i(agdg.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
     }
     ??? = null;
     Object localObject2;
@@ -28,11 +28,11 @@ public class BaseMessageResultAdapter$1
     if (this.jdField_a_of_type_Int == 1)
     {
       ??? = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      bbdn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      bbeb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
       localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
-        QLog.i(agdi.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
+        QLog.i(agdg.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
       }
     }
     for (;;)
@@ -44,12 +44,12 @@ public class BaseMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localagdi = this.this$0;
+          localagdg = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            localagdi.jdField_a_of_type_Boolean = bool;
+            localagdg.jdField_a_of_type_Boolean = bool;
             this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.this$0.jdField_a_of_type_Bfmt.obtainMessage(2, localObject2);
+            localObject2 = this.this$0.jdField_a_of_type_Bfnk.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -72,13 +72,13 @@ public class BaseMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        agdi localagdi = this.this$0;
+        agdg localagdg = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          localagdi.jdField_a_of_type_Boolean = bool;
+          localagdg.jdField_a_of_type_Boolean = bool;
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.this$0.jdField_a_of_type_Bfmt.obtainMessage(2, localObject2);
+          localObject2 = this.this$0.jdField_a_of_type_Bfnk.obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);

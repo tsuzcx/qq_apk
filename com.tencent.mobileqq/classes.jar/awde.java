@@ -10,8 +10,8 @@ public class awde
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_know", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
     paramDialogInterface.dismiss();
+    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_choose", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

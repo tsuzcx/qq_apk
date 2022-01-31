@@ -1,86 +1,104 @@
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class aofd
-  extends RecyclerView.ViewHolder
-  implements View.OnTouchListener
+class aofd
+  implements ayxr
 {
-  private int jdField_a_of_type_Int;
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aoiw jdField_a_of_type_Aoiw;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private int b;
+  aofd(aofa paramaofa) {}
   
-  public aofd(View paramView, RecyclerView paramRecyclerView, int paramInt1, aoiw paramaoiw, int paramInt2)
+  public void a(ayxq paramayxq)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367679));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377030));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Aoiw = paramaoiw;
-    paramView.setOnTouchListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("onPreDownloadStart url=%s", new Object[] { paramayxq.a.jdField_a_of_type_JavaLangString }));
+    }
   }
   
-  public void a(aofd paramaofd, aogh paramaogh, int paramInt)
+  public void onResp(aysz paramaysz)
   {
-    paramaogh = paramaofd.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    paramaogh.height = (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight() - this.jdField_a_of_type_Int);
-    if ((paramaogh instanceof RecyclerView.LayoutParams)) {
-      ((RecyclerView.LayoutParams)paramaogh).topMargin = this.jdField_a_of_type_Int;
+    int i = 1;
+    Object localObject = ((ayrx)paramaysz.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(paramaysz.jdField_a_of_type_Int) }));
     }
-    paramaogh = URLDrawable.URLDrawableOptions.obtain();
-    paramaogh.mLoadingDrawable = aywk.a;
-    paramaogh.mFailedDrawable = aywk.a;
-    paramaogh = aokl.a("expand_square_blank.png");
-    if (new File(paramaogh).exists())
+    switch (paramaysz.jdField_a_of_type_Int)
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      paramaogh = aokl.a(paramaogh, localOptions);
-      paramaofd.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramaogh));
     }
-    if (paramInt == 1) {
-      if (this.b == 0) {
-        paramInt = 2131698939;
-      }
-    }
-    for (;;)
+    label277:
+    label282:
+    label303:
+    label308:
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
       return;
-      paramInt = 2131698935;
-      continue;
-      if (this.b == 0) {
-        paramInt = 2131698938;
-      } else {
-        paramInt = 2131698934;
+      if (aofa.a(this.a) != null) {
+        aofa.a(this.a).a((String)localObject, paramaysz.jdField_a_of_type_Long);
       }
-    }
+      paramaysz = (ayrx)paramaysz.jdField_a_of_type_Aysy;
+      boolean bool2 = aofa.a(this.a, paramaysz.c, aofa.a(this.a));
+      boolean bool1;
+      if (bool2)
+      {
+        localObject = new File(aofa.a());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        boolean bool4 = aofa.b(this.a, paramaysz.c, aofa.a());
+        boolean bool3 = aofa.a(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ExtendFriendResourceDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3) }));
+        }
+        if (aofa.a(this.a) != null)
+        {
+          paramaysz = aofa.a(this.a);
+          if ((bool4) && (bool3))
+          {
+            bool1 = true;
+            paramaysz.a(bool1);
+          }
+        }
+        else
+        {
+          paramaysz = aokp.a();
+          if ((!bool4) || (!bool3)) {
+            break label303;
+          }
+          bool1 = true;
+          if (bool3) {
+            break label308;
+          }
+          paramaysz.b(bool1, i);
+        }
+      }
+      for (;;)
+      {
+        aokp.a().a(bool2, 0);
+        return;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label277;
+        i = 0;
+        break label282;
+        if (QLog.isColorLevel()) {
+          QLog.e("ExtendFriendResourceDownloader", 2, "onResp ResultOk file check invalid.");
+        }
+        aofa.a(this.a, paramaysz.c);
+        if (aofa.a(this.a) != null) {
+          aofa.a(this.a).a(false);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("ExtendFriendResourceDownloader", 2, "download fail " + paramaysz.jdField_a_of_type_JavaLangString);
+      }
+    } while (aofa.a(this.a) == null);
+    aofa.a(this.a).a((String)localObject, -1L);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    if ((this.jdField_a_of_type_Aoiw != null) && (paramMotionEvent.getAction() == 0)) {
-      this.jdField_a_of_type_Aoiw.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloader", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((ayrx)paramaysy).jdField_a_of_type_JavaLangString, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
     }
-    return false;
   }
 }
 

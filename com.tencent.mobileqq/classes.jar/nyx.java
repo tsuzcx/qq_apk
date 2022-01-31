@@ -1,107 +1,98 @@
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 import org.json.JSONObject;
 
-class nyx
-  extends rkj
+public class nyx
+  implements rkh, rkj
 {
-  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private rmq jdField_a_of_type_Rmq = new rmq();
   
-  public nyx(nyw paramnyw, View paramView, BaseData paramBaseData)
+  public int a(BaseData paramBaseData)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
+      i = oai.a((ProteusBannerTriplePicItemData)paramBaseData);
     }
+    return i;
   }
   
-  private void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    paramJSONObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView();
-    ViewFactory.findClickableViewListener(paramJSONObject, new nyy(this, paramBaseData, paramContext, paramJSONObject));
-  }
-  
-  private void a(Container paramContainer, ProteusItemData paramProteusItemData)
-  {
-    if (paramContainer != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
     {
-      ViewBase localViewBase = paramContainer.getVirtualView();
-      Object localObject = localViewBase.findViewBaseByName("id_view_AdDownloadView");
-      if ((localObject != null) && ((localObject instanceof odg)))
-      {
-        localObject = (odg)localObject;
-        ((odg)localObject).a(false);
-        ((odg)localObject).b(false);
-        ((odg)localObject).a(null, true);
-      }
-      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (oal.a((AdData)paramProteusItemData)))
-      {
-        localViewBase = localViewBase.findViewBaseByName("id_game_small_img");
-        if ((localViewBase != null) && ((localViewBase instanceof pmh)) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).J)))
-        {
-          int i = actn.a(40.0F, paramContainer.getContext().getResources());
-          oal.a(paramContainer.getContext(), localViewBase, ((AdData)paramProteusItemData).J, 10, i, i);
-        }
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pol();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
     }
-  }
-  
-  private void a(ViewBase paramViewBase)
-  {
-    if (paramViewBase == null) {}
-    do
-    {
-      return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_view_AdDownloadView");
-    } while ((paramViewBase == null) || (!(paramViewBase instanceof odg)));
-    ((odg)paramViewBase).a(false);
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    TemplateBean localTemplateBean;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramBaseData2 instanceof ProteusItemData));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
-      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-    } while (localTemplateBean == null);
-    if ((paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerBigPicItemData))) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
     }
-    if (paramBaseData1 != paramBaseData2) {}
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+    paramBaseData = null;
     try
     {
-      localTemplateBean.getViewBean().bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, localTemplateBean.getViewDataBinding());
-      olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-      a(paramBaseData2, nyw.a(this.jdField_a_of_type_Nyw), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b);
-      this.jdField_a_of_type_AndroidViewView.setTag(2131362034, paramBaseData2);
-      return;
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      paramBaseData = paramViewGroup;
+      olo.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramBaseData = paramViewGroup;
+      str = localProteusItemData.b.toString();
+      paramBaseData = paramViewGroup;
     }
-    catch (Exception paramBaseData1)
+    catch (Exception paramViewGroup)
     {
       for (;;)
       {
-        paramBaseData1.printStackTrace();
+        boolean bool;
+        String str = "error!! msg=" + paramViewGroup.toString();
       }
     }
+    bool = false;
+    paramViewGroup = paramBaseData;
+    if (paramBaseData == null)
+    {
+      paramViewGroup = new View(paramContext);
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebFastProteusViewAdBannerTriplePicCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+    }
+    return new nyy(this, paramViewGroup, localProteusItemData);
   }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData != null) && (paramBaseData.p == 24);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rmq.a();
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Rmq.b();
+  }
+  
+  public void e() {}
 }
 
 

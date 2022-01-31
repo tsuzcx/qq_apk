@@ -1,24 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SplashActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdk
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public acdk(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public acdk(SplashActivity.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QQSettingCleanActivity.a(this.a);
-    axqw.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    }
+    this.a.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acdk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,137 +1,166 @@
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultPageView.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class aude
-  extends aucy
+  implements aucz
 {
-  public static final Paint a;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  View jdField_a_of_type_AndroidViewView = null;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public auco a;
+  aucw jdField_a_of_type_Aucw;
+  audf jdField_a_of_type_Audf;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  BaseOCRTextSearchFragment jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment;
+  public XListView a;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
   
-  static
+  public aude(auco paramauco, SearchResultFragment paramSearchResultFragment)
   {
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_Auco = paramauco;
+    this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment = paramSearchResultFragment;
+    this.jdField_a_of_type_Aucw = new aucw(paramauco.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, aucu paramaucu, aucw paramaucw)
+  private void a(String paramString1, String paramString2)
   {
-    Context localContext = paramViewGroup.getContext();
-    OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = (OCRTextSearchInfo.SougouSearchInfo)paramaucw.jdField_a_of_type_JavaLangObject;
-    paramInt = 1;
-    if (paramView != null)
+    Intent localIntent = new Intent(this.jdField_a_of_type_Auco.a(), QQBrowserActivity.class);
+    localIntent.putExtra("uin", paramString1);
+    localIntent.putExtra("url", paramString2);
+    localIntent.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_Auco.a().startActivity(localIntent);
+  }
+  
+  public View a(Context paramContext, audf paramaudf)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      paramaucu = (aucw)paramView.getTag();
-      if ((paramaucu.jdField_a_of_type_Int == paramaucw.jdField_a_of_type_Int) && (paramaucu.b == paramaucw.b))
-      {
-        paramaucu = (audg)paramView.getTag(-1);
-        paramInt = 0;
-      }
+      paramContext = LayoutInflater.from(paramContext).inflate(2131560929, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramContext.findViewById(2131375735));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131376819));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131370876));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment.a);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369481));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_AndroidViewView = paramContext;
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aucw);
+    }
+    a(paramaudf);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a() {}
+  
+  protected void a(int paramInt)
+  {
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      Object localObject;
-      if (paramInt == 0)
-      {
-        localObject = paramaucu;
-        if (paramaucu != null) {}
-      }
-      else
-      {
-        localObject = new audg(this);
-        paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2131560932, paramViewGroup, false);
-        ((audg)localObject).jdField_a_of_type_AndroidViewViewGroup = paramView;
-        ((audg)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
-        ((audg)localObject).b = ((TextView)paramView.findViewById(2131361813));
-        ((audg)localObject).c = ((TextView)paramView.findViewById(2131376336));
-        ((audg)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367776));
-        paramView.setTag(-1, localObject);
-      }
-      a((audg)localObject, localSougouSearchInfo);
-      paramView.setTag(paramaucw);
-      return paramView;
-      paramaucu = null;
+      this.jdField_a_of_type_Auco.a(null);
+      return;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696290);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699254);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public void a(aucy paramaucy)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    if (paramaucy == null) {
+      return;
+    }
+    if ((paramaucy.b == 2049) && (paramaucy.jdField_a_of_type_Int == 0))
+    {
+      paramaucy = (OCRTextSearchInfo.SougouSearchInfo)paramaucy.jdField_a_of_type_JavaLangObject;
+      if ((paramaucy != null) && (!TextUtils.isEmpty(paramaucy.jumpURL))) {
+        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramaucy.jumpURL);
+      }
+    }
+    axqy.b(null, "dc00898", "", "", "0X80082E9", "0X80082E9", 0, 0, "", "", "", "");
   }
   
-  void a(audg paramaudg, OCRTextSearchInfo.SougouSearchInfo paramSougouSearchInfo)
+  protected void a(audf paramaudf)
   {
-    Object localObject = new aucn(paramSougouSearchInfo.titleKeyWords, null);
-    if (!TextUtils.isEmpty(paramSougouSearchInfo.title))
+    if (this.d) {
+      return;
+    }
+    this.d = true;
+    this.jdField_a_of_type_Audf = paramaudf;
+    if ((this.jdField_a_of_type_Audf.b == 0) && (this.jdField_a_of_type_Audf.a != null))
     {
-      localObject = ((aucn)localObject).a(paramSougouSearchInfo.title, true);
-      if (localObject != null) {
-        paramaudg.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.ocr.SearchResultFragment", 2, "results: " + this.jdField_a_of_type_Audf.a.size());
+      }
+      List localList = this.jdField_a_of_type_Audf.a;
+      if (localList.size() != 0) {
+        this.jdField_a_of_type_Aucw.a(this.jdField_a_of_type_Audf, localList, false, false);
       }
     }
-    localObject = new aucn(paramSougouSearchInfo.abstractStrKeyWords, null);
-    if (!TextUtils.isEmpty(paramSougouSearchInfo.abstractStr))
+    else
     {
-      localObject = ((aucn)localObject).a(aucn.a(paramSougouSearchInfo.abstractStr));
-      paramaudg.b.setText((CharSequence)localObject);
+      b();
+      a(paramaudf.b);
+      return;
     }
-    try
-    {
-      if (TextUtils.isEmpty(paramSougouSearchInfo.summaryPic)) {
-        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(paramSougouSearchInfo.sourceFrom)) {
-          break label306;
-        }
-        paramaudg.c.setVisibility(8);
-        return;
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = actn.a(80.0F, BaseApplicationImpl.sApplication.getResources());
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = actn.a(60.0F, BaseApplicationImpl.sApplication.getResources());
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        localObject = URLDrawable.getDrawable(paramSougouSearchInfo.summaryPic, (URLDrawable.URLDrawableOptions)localObject);
-        if ((localObject == null) || (((URLDrawable)localObject).getStatus() != 2)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem image fail," + paramSougouSearchInfo);
-        }
-        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setTag(paramSougouSearchInfo.summaryPic);
-      }
+    a(-1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = false;
+    this.jdField_a_of_type_Int = 0;
+    this.c = false;
+    this.b = false;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Aucw != null) {
+      this.jdField_a_of_type_Aucw.a();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem", localException);
-        }
-        localException.printStackTrace();
-        continue;
-        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        localException.setURLDrawableListener(new audf(this));
-        paramaudg.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localException);
-      }
-      label306:
-      paramaudg.c.setVisibility(0);
-      paramaudg.c.setText(paramSougouSearchInfo.sourceFrom);
-    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SearchResultPageView.1(this), 50L);
   }
 }
 

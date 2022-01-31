@@ -1,50 +1,95 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.widget.AuthorizationItem;
+import android.view.View;
+import com.tencent.gdtad.views.GdtViewStatus.1;
+import java.lang.ref.WeakReference;
 
 public class yzd
 {
-  public int a;
-  public final String a;
-  public final String b;
-  public final String c;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<yze> b;
   
-  private yzd(String paramString1, String paramString2, String paramString3)
+  public yzd(WeakReference<View> paramWeakReference, WeakReference<yze> paramWeakReference1)
   {
-    this(paramString1, paramString2, paramString3, 0);
+    this(paramWeakReference, paramWeakReference1, 0.0F);
   }
   
-  private yzd(String paramString1, String paramString2, String paramString3, int paramInt)
+  public yzd(WeakReference<View> paramWeakReference, WeakReference<yze> paramWeakReference1, float paramFloat)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.b = paramWeakReference1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  private static yzd b()
+  private void a(boolean paramBoolean)
   {
-    return new yzd("", "", "", 1);
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
-      return this.jdField_a_of_type_JavaLangString;
+    if ((this.b.get() == null) || (paramBoolean == this.jdField_a_of_type_Boolean)) {
+      return;
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
-      return this.b;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ((yze)this.b.get()).a();
+      return;
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
-      return this.c;
-    }
-    return "";
+    ((yze)this.b.get()).b();
   }
   
-  @NonNull
-  public String toString()
+  public void a()
   {
-    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
+    this.jdField_a_of_type_Int = 3;
+    d();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 1;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtViewStatus.1(this), 500L);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 2;
+    d();
+  }
+  
+  public void d()
+  {
+    boolean bool2 = this.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      a(bool2);
+      return;
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        this.jdField_a_of_type_Boolean = false;
+      }
+      else if (this.jdField_a_of_type_Int == 1)
+      {
+        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+        {
+          if (yzb.a((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()) > this.jdField_a_of_type_Float) {}
+          for (boolean bool1 = true;; bool1 = false)
+          {
+            this.jdField_a_of_type_Boolean = bool1;
+            break;
+          }
+        }
+        this.jdField_a_of_type_Boolean = false;
+      }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
   }
 }
 

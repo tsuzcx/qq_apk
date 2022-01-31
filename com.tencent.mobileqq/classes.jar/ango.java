@@ -1,6 +1,6 @@
 public abstract interface ango
 {
-  public abstract long a();
+  public abstract anga a(angj paramangj, int paramInt);
 }
 
 

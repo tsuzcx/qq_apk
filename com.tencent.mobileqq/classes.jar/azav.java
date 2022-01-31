@@ -1,51 +1,21 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public class azav
-  implements BusinessObserver
+  implements Animation.AnimationListener
 {
   public azav(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str = "";
-    paramInt = -1;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        int i = localWebSsoResponseBody.ret.get();
-        paramInt = i;
-        paramBundle = str;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(9992) });
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
-      }
-      return;
-      paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(9991) });
-      continue;
-      paramBundle = localContext.getString(2131696569, new Object[] { Integer.valueOf(9992) });
-    }
+    this.a.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

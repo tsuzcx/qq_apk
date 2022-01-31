@@ -1,16 +1,14 @@
-import java.util.Comparator;
-
-final class sdm
-  implements Comparator<sdr>
+class sdm
 {
-  public int a(sdr paramsdr1, sdr paramsdr2)
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  
+  public sdm(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = paramsdr1.a - paramsdr2.a;
-    int i = j;
-    if (j == 0) {
-      i = paramsdr1.b - paramsdr2.b;
-    }
-    return i;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

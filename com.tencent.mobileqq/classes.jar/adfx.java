@@ -1,93 +1,41 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-public class adfx
-  extends adfs
+public final class adfx
 {
-  private asrl jdField_a_of_type_Asrl;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public adfx(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-  }
+  public HashMap<String, String> a = new HashMap();
   
   private void a(String paramString)
   {
-    if (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString)) {
-      c(false);
-    }
-  }
-  
-  private void l()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    adjp localadjp = (adjp)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(31);
-    if (localadjp != null) {
-      localadjp.e();
-    }
-    aefu.e();
-  }
-  
-  protected View a()
-  {
-    this.jdField_a_of_type_Asrl = new adfy(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    if (this.jdField_a_of_type_Asrl.a() == null) {}
-    return this.jdField_a_of_type_Asrl.a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Asrl != null) {
-      this.jdField_a_of_type_Asrl.b();
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-  }
-  
-  public boolean b()
-  {
-    if ((this.jdField_a_of_type_Asrl != null) && (a()))
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Asrl.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerStartOpen", new Object[0]));
-    }
-    if (this.jdField_a_of_type_Asrl != null) {
-      this.jdField_a_of_type_Asrl.a();
-    }
-    l();
-  }
-  
-  public void h()
-  {
-    super.h();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerClosed", new Object[0]));
-    }
-    if (this.jdField_a_of_type_Asrl != null) {
-      this.jdField_a_of_type_Asrl.c();
-    }
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_Asrl != null)
-    {
-      this.jdField_a_of_type_Asrl.d();
-      this.jdField_a_of_type_Asrl = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str1))
+          {
+            String str2 = paramString.optString(str1, "");
+            if (!TextUtils.isEmpty(str2)) {
+              this.a.put(str1, str2);
+            }
+          }
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
   }
 }

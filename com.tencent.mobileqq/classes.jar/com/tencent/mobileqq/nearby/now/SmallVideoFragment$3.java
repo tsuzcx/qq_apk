@@ -2,25 +2,25 @@ package com.tencent.mobileqq.nearby.now;
 
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import aszd;
-import ativ;
-import axra;
+import aszf;
+import atix;
+import axrc;
 
 class SmallVideoFragment$3
   implements Runnable
 {
-  SmallVideoFragment$3(SmallVideoFragment paramSmallVideoFragment, long paramLong, aszd paramaszd) {}
+  SmallVideoFragment$3(SmallVideoFragment paramSmallVideoFragment, long paramLong, aszf paramaszf) {}
   
   public void run()
   {
-    axra localaxra = new axra(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_time").e(ativ.d);
+    axrc localaxrc = new axrc(SmallVideoFragment.a(this.this$0).app).a("dc00899").b("grp_lbs").c("video").d("playpage_time").e(atix.d);
     String str2 = this.jdField_a_of_type_Long + "";
-    int i = this.jdField_a_of_type_Aszd.b();
-    String str3 = ativ.a;
-    if (TextUtils.equals(ativ.a, "2")) {}
-    for (String str1 = ativ.c;; str1 = "")
+    int i = this.jdField_a_of_type_Aszf.b();
+    String str3 = atix.a;
+    if (TextUtils.equals(atix.a, "2")) {}
+    for (String str1 = atix.c;; str1 = "")
     {
-      localaxra.a(new String[] { str2, String.valueOf(i), str3, str1 }).a();
+      localaxrc.a(new String[] { str2, String.valueOf(i), str3, str1 }).a();
       return;
     }
   }

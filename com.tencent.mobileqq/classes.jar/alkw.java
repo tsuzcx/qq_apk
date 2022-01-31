@@ -1,8 +1,6 @@
-public abstract interface alkw
+class alkw
 {
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  private static final alku a = new alku(null);
 }
 
 

@@ -12,8 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import wkm;
-import wkn;
+import wkj;
+import wkk;
 
 public abstract class BaseWidgetView<T>
   extends FrameLayout
@@ -23,7 +23,7 @@ public abstract class BaseWidgetView<T>
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private T jdField_a_of_type_JavaLangObject;
   private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, wkn> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<Integer, wkk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int b;
   
   public BaseWidgetView(@NonNull Context paramContext)
@@ -61,17 +61,17 @@ public abstract class BaseWidgetView<T>
     for (;;)
     {
       if (a() != null) {
-        a().setOnClickListener(new wkm(this));
+        a().setOnClickListener(new wkj(this));
       }
       return;
       a(paramContext, this);
     }
   }
   
-  private void a(View paramView, wkn paramwkn)
+  private void a(View paramView, wkk paramwkk)
   {
     if (paramView != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramwkn);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramwkk);
     }
   }
   
@@ -133,7 +133,7 @@ public abstract class BaseWidgetView<T>
   public void b(View paramView)
   {
     if ((paramView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId())) != null)) {
-      ((wkn)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
+      ((wkk)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
     }
   }
   
@@ -158,14 +158,14 @@ public abstract class BaseWidgetView<T>
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
   }
   
-  public void setPreClickListener(View paramView, wkn paramwkn)
+  public void setPreClickListener(View paramView, wkk paramwkk)
   {
-    a(paramView, paramwkn);
+    a(paramView, paramwkk);
   }
   
-  public void setPreClickListener(wkn paramwkn)
+  public void setPreClickListener(wkk paramwkk)
   {
-    a(a(), paramwkn);
+    a(a(), paramwkk);
   }
   
   public void setViewType(int paramInt)

@@ -1,18 +1,18 @@
 package com.tencent.av.ui.redbag;
 
 import com.tencent.qphone.base.util.QLog;
-import mpl;
+import mpi;
 
 public class GetRedBag$2
   implements Runnable
 {
-  public GetRedBag$2(mpl parammpl, int paramInt) {}
+  public GetRedBag$2(mpi parammpi, int paramInt) {}
   
   public void run()
   {
     this.this$0.a = null;
     QLog.w(this.this$0.i, 1, "getRedBag还没回包，超时结束, resultCode[" + this.a + "]");
-    mpl.a(this.this$0, this.a, null);
+    mpi.a(this.this$0, this.a, null);
   }
 }
 

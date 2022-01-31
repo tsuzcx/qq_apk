@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,14 +15,14 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import axds;
-import bcpw;
-import bizu;
-import bjov;
-import bjql;
-import bjqt;
-import bjqu;
-import bjqv;
+import axdu;
+import bcql;
+import bjal;
+import bjpm;
+import bjrc;
+import bjrk;
+import bjrl;
+import bjrm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.FlowActivity;
@@ -30,9 +30,9 @@ import dov.com.tencent.mobileqq.activity.richmedia.FlowActivity;
 @TargetApi(14)
 public class PtvCameraCaptureActivity
   extends FlowActivity
-  implements bjqt, bjqu
+  implements bjrk, bjrl
 {
-  bjqv a;
+  bjrm a;
   private boolean b;
   
   public static Intent a(Context paramContext, String paramString, Bundle paramBundle)
@@ -60,7 +60,7 @@ public class PtvCameraCaptureActivity
   
   public static void a(LWMotionEvent paramLWMotionEvent)
   {
-    bjov.a(paramLWMotionEvent);
+    bjpm.a(paramLWMotionEvent);
   }
   
   public static void b() {}
@@ -86,7 +86,7 @@ public class PtvCameraCaptureActivity
   
   public AppInterface a()
   {
-    return bizu.a();
+    return bjal.a();
   }
   
   public void a()
@@ -116,12 +116,12 @@ public class PtvCameraCaptureActivity
       ((RelativeLayout.LayoutParams)localObject2).addRule(2, paramViewGroup.getId());
       localObject1 = new RelativeLayout(this);
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bjqv.a());
+      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bjrm.a());
       localObject2 = (ViewGroup)a(2131366472);
       if (this.b)
       {
         ImageView localImageView = new ImageView(this);
-        localImageView.setImageResource(2130843770);
+        localImageView.setImageResource(2130843771);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         localLayoutParams.addRule(2, paramViewGroup.getId());
         localImageView.setLayoutParams(localLayoutParams);
@@ -140,18 +140,18 @@ public class PtvCameraCaptureActivity
   public void finish()
   {
     super.finish();
-    this.jdField_a_of_type_Bjqv.s();
+    this.jdField_a_of_type_Bjrm.s();
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Bjqv.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Bjrm.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    this.jdField_a_of_type_Bjqv.a();
+    this.jdField_a_of_type_Bjrm.a();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -161,13 +161,13 @@ public class PtvCameraCaptureActivity
     this.ad = false;
     this.b = getIntent().getBooleanExtra("flow_camera_show_panel", false);
     String str = getIntent().getStringExtra("LIGHT_ARG_FRAGMENT_CLASS");
-    bjov.a(this, str, getIntent().getBooleanExtra("flow_camera_download_light", false));
-    this.jdField_a_of_type_Bjqv = bjov.a(str, this, this);
+    bjpm.a(this, str, getIntent().getBooleanExtra("flow_camera_download_light", false));
+    this.jdField_a_of_type_Bjrm = bjpm.a(str, this, this);
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bjqv.a(paramBundle);
+    this.jdField_a_of_type_Bjrm.a(paramBundle);
     if (g())
     {
-      bcpw.a(this, ajyc.a(2131708726), 0).a();
+      bcql.a(this, ajya.a(2131708737), 0).a();
       finish();
     }
     do
@@ -176,42 +176,42 @@ public class PtvCameraCaptureActivity
       long l1 = System.currentTimeMillis();
       long l2 = getIntent().getLongExtra("ACTIVITY_START_TIME", l1);
       QLog.i("PtvCameraCaptureActivity", 2, "start cost:" + (l1 - l2) + " ms");
-      axds.a("sv_light_cost_time_ui", l1 - l2);
-    } while (!(this.jdField_a_of_type_Bjqv instanceof bjql));
-    bjov.b((bjql)this.jdField_a_of_type_Bjqv);
+      axdu.a("sv_light_cost_time_ui", l1 - l2);
+    } while (!(this.jdField_a_of_type_Bjrm instanceof bjrc));
+    bjpm.b((bjrc)this.jdField_a_of_type_Bjrm);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bjqv.e();
-    if ((this.jdField_a_of_type_Bjqv instanceof bjql)) {
-      bjov.a((bjql)this.jdField_a_of_type_Bjqv);
+    this.jdField_a_of_type_Bjrm.e();
+    if ((this.jdField_a_of_type_Bjrm instanceof bjrc)) {
+      bjpm.a((bjrc)this.jdField_a_of_type_Bjrm);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    return this.jdField_a_of_type_Bjqv.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
+    return this.jdField_a_of_type_Bjrm.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
   }
   
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     getIntent().putExtras(paramIntent);
-    this.jdField_a_of_type_Bjqv.a(paramIntent);
+    this.jdField_a_of_type_Bjrm.a(paramIntent);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bjqv.d();
+    this.jdField_a_of_type_Bjrm.d();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bjqv.f();
+    this.jdField_a_of_type_Bjrm.f();
     if (QLog.isColorLevel()) {
       QLog.i("PtvCameraCaptureActivity", 2, "onResume");
     }
@@ -220,24 +220,24 @@ public class PtvCameraCaptureActivity
   protected void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    this.jdField_a_of_type_Bjqv.b(paramBundle);
+    this.jdField_a_of_type_Bjrm.b(paramBundle);
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Bjqv.p();
+    this.jdField_a_of_type_Bjrm.p();
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Bjqv.t();
+    this.jdField_a_of_type_Bjrm.t();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Bjqv.a(paramMotionEvent, b(paramMotionEvent));
+    return this.jdField_a_of_type_Bjrm.a(paramMotionEvent, b(paramMotionEvent));
   }
 }
 

@@ -1,29 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 final class atin
-  implements bcwh
+  implements URLDrawable.URLDrawableListener
 {
-  atin(String paramString, atis paramatis) {}
+  atin(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, atiu paramatiu) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Atis != null) {
-        this.jdField_a_of_type_Atis.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Atis == null) {
-      return;
-    }
-    this.jdField_a_of_type_Atis.a(false);
+    ved.c("ShortVideoShareUtil", "onLoadCanceled --");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    atij.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Atiu);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    ved.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = atij.a(paramURLDrawable);
+    atij.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Atiu);
   }
 }
 

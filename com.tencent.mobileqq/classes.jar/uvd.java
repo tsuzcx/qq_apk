@@ -1,58 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uvd
-  extends bfvn
-  implements View.OnClickListener, View.OnLongClickListener
+  extends QQUIEventReceiver<StoryMessageListActivity, tdj>
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
-  String jdField_a_of_type_JavaLangString;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
-  
-  public uvd(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
+  public uvd(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362939));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131377245));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370809));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364438));
-    this.c = ((TextView)paramView.findViewById(2131370916));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369186);
-    this.d = ((TextView)paramView.findViewById(2131377292));
-    this.e = ((TextView)paramView.findViewById(2131378905));
-    this.f = ((TextView)paramView.findViewById(2131378906));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369200);
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
+    super(paramStoryMessageListActivity);
   }
   
-  public void a(int paramInt)
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull tdj paramtdj)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramtdj.a.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
+      }
+      paramStoryMessageListActivity.g();
+    }
   }
   
-  public void onClick(View paramView)
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    return tdj.class;
   }
 }
 

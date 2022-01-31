@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -62,13 +62,13 @@ public class DownloaderProxyDefault$DownloadTask
       i = localHttpURLConnection.getResponseCode();
       if (this.mAbort)
       {
-        besl.b("DefaultDownloader", this.mUrl + " aborted");
+        betc.b("DefaultDownloader", this.mUrl + " aborted");
         throw new DownloadException(-3, "aborted by outside");
       }
     }
     catch (Throwable paramString)
     {
-      besl.d("DefaultDownloader", "unknown err", paramString);
+      betc.d("DefaultDownloader", "unknown err", paramString);
       throw new DownloadException(-100, paramString.getMessage());
     }
     paramString = localHttpURLConnection;
@@ -79,7 +79,7 @@ public class DownloaderProxyDefault$DownloadTask
       localHttpURLConnection.disconnect();
       if (this.redirectCount > 30)
       {
-        besl.d("DefaultDownloader", "url: " + this.mUrl + "server redirects connection to many times");
+        betc.d("DefaultDownloader", "url: " + this.mUrl + "server redirects connection to many times");
         throw new DownloadException(-4, "url: " + this.mUrl + "server redirects connection to many times");
       }
       paramString = getRealConnection(localHttpURLConnection.getHeaderField("Location"));
@@ -196,7 +196,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   229: ldc 123
     //   231: ldc 253
     //   233: aload 4
-    //   235: invokestatic 148	besl:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   235: invokestatic 148	betc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   238: aload_0
     //   239: getfield 26	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:this$0	Lcom/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault;
     //   242: getfield 259	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault:taskMap	Ljava/util/concurrent/ConcurrentHashMap;

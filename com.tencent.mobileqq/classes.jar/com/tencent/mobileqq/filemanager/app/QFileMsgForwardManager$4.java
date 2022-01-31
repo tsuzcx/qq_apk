@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aowt;
-import aoxq;
+import aowx;
+import aoxu;
 import java.util.HashMap;
 
 public class QFileMsgForwardManager$4
@@ -9,14 +9,14 @@ public class QFileMsgForwardManager$4
 {
   public void run()
   {
-    aoxq localaoxq = null;
-    if (aowt.a(this.this$0).containsKey(Long.valueOf(this.a))) {
-      localaoxq = (aoxq)aowt.a(this.this$0).get(Long.valueOf(this.a));
+    aoxu localaoxu = null;
+    if (aowx.a(this.this$0).containsKey(Long.valueOf(this.a))) {
+      localaoxu = (aoxu)aowx.a(this.this$0).get(Long.valueOf(this.a));
     }
-    if (localaoxq != null)
+    if (localaoxu != null)
     {
-      localaoxq.b();
-      localaoxq.d();
+      localaoxu.b();
+      localaoxu.d();
     }
   }
 }

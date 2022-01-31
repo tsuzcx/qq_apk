@@ -1,45 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
 
 public class awly
-  extends awlx
 {
-  private int a;
-  
-  public awly(List<awog> paramList, String paramString, int paramInt)
+  public static awlu a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    super(paramList, paramString);
-    this.jdField_a_of_type_Int = paramInt;
+    return new awmb(paramQQAppInterface);
   }
   
-  public int a()
+  public static awlw a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
   {
-    return awil.a("fts_native_chathistory_maxnum", 3);
+    return new awmh(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
   }
   
-  public String a()
+  public static awvi a(int paramInt, String paramString, FTSEntity paramFTSEntity)
   {
-    return ajyc.a(2131704948);
+    paramString = new awvi(paramString);
+    paramFTSEntity = (FTSMessage)paramFTSEntity;
+    paramString.a = new Bundle();
+    paramString.a.putLong("uin", paramFTSEntity.uin);
+    paramString.a.putInt("uinType", paramFTSEntity.istroop);
+    return paramString;
   }
   
-  public void a(View paramView)
+  public static String a(Context paramContext, int paramInt)
   {
-    awvy.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
-    if ((paramView.getContext() instanceof UniteSearchActivity))
-    {
-      awvy.a("all_result", "more_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString });
-      awso.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4F", 0, 0, null, null);
+    return paramContext.getString(2131719090);
+  }
+  
+  public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
+  {
+    String str = paramString;
+    if (paramString.length() > 13) {
+      str = paramString.substring(0, 10) + "…";
     }
-    bbmb.d = -1;
-    bbmb.f = 0;
-    bbmb.g = -1;
-    bbmb.h = -1;
-    bbmb.i = -1;
-    bbmb.j = -1;
-    bbma.a(paramView);
-    FTSEntitySearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, 1);
+    return paramContext.getString(2131719089, new Object[] { Integer.valueOf(paramInt1), str });
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    return ajya.a(2131704958);
   }
 }
 

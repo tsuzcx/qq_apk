@@ -1,6 +1,20 @@
-public abstract interface aiso
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+
+public class aiso
+  implements Manager
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public static String a = "ApolloNativeSSOReqMgr";
+  
+  public aiso(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

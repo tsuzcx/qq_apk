@@ -1,18 +1,21 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nbs
-  implements wxw
+  extends Handler
 {
-  public nbs(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public nbs(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void a(Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("state");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
     }
+    while (paramMessage.what != 291) {
+      return;
+    }
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 

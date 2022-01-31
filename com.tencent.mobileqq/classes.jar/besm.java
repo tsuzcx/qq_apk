@@ -1,42 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.SubPkgInfo;
 
-public class besm
+public final class besm
+  implements Parcelable.Creator<SubPkgInfo>
 {
-  public static final String a = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/minigame/";
-  public static final String b = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini/";
-  
-  public static String a(MiniAppInfo paramMiniAppInfo)
+  public SubPkgInfo a(Parcel paramParcel)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return "";
-    }
-    if (paramMiniAppInfo.verType == 3) {
-      return b(paramMiniAppInfo) + bfgc.c(paramMiniAppInfo.appId) + "_" + paramMiniAppInfo.version;
-    }
-    return b(paramMiniAppInfo) + paramMiniAppInfo.appId + "_debug";
+    SubPkgInfo localSubPkgInfo = new SubPkgInfo();
+    localSubPkgInfo.subPkgName = paramParcel.readString();
+    localSubPkgInfo.downloadUrl = paramParcel.readString();
+    localSubPkgInfo.independent = paramParcel.readInt();
+    localSubPkgInfo.fileSize = paramParcel.readInt();
+    return localSubPkgInfo;
   }
   
-  public static String a(MiniGamePluginInfo paramMiniGamePluginInfo)
+  public SubPkgInfo[] a(int paramInt)
   {
-    return a + bfgc.c(paramMiniGamePluginInfo.b) + "_plugin_" + paramMiniGamePluginInfo.c;
-  }
-  
-  public static boolean a(MiniAppInfo paramMiniAppInfo)
-  {
-    return new File(a(paramMiniAppInfo)).exists();
-  }
-  
-  public static String b(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo.isEngineTypeMiniGame()) {
-      return a;
-    }
-    return b;
+    return new SubPkgInfo[paramInt];
   }
 }
 

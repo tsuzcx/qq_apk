@@ -1,35 +1,84 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ajcs
-  extends BroadcastReceiver
+  implements INetInfoHandler
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  
+  public ajcs(int paramInt)
   {
-    if (paramIntent == null) {
-      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
-    }
-    do
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
+    for (;;)
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
-        }
-      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-      paramContext = paramIntent.getStringExtra("data");
+      return;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
+        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
       }
-    } while (TextUtils.isEmpty(paramContext));
-    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
+      try
+      {
+        ApolloCmdChannel localApolloCmdChannel = ajac.a();
+        if (localApolloCmdChannel != null)
+        {
+          Object localObject = ajac.a(this.jdField_a_of_type_Int);
+          if (localObject != null)
+          {
+            localObject = ((ajcf)localObject).a();
+            if (localObject != null)
+            {
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("type", paramInt);
+              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
+              return;
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
+      }
+    }
+  }
+  
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 

@@ -1,85 +1,111 @@
-import android.text.TextUtils;
-import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class bhir
-  extends IPConfigStrategy
-  implements bgft
+  implements bhip
 {
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
+  private IBinder a;
   
-  public bhir()
+  bhir(IBinder paramIBinder)
   {
-    a();
-    QzoneConfig.getInstance().addListener(this);
+    this.a = paramIBinder;
   }
   
-  private void a()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
-    super.setConfig(this.jdField_a_of_type_JavaUtilMap);
-  }
-  
-  private void a(Map<String, String> paramMap, String paramString1, String paramString2)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
-  }
-  
-  private void a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    Object localObject = null;
-    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
-    paramString3 = paramString1 + "||" + paramString2;
-    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    paramString1 = localObject;
-    if (!TextUtils.isEmpty(paramString2))
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString4)) {
-        paramString1 = paramString2.replace("ips", paramString4);
-      }
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramMap.put(paramString3, paramString2);
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    paramMap.put(paramString3, paramString1);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public void onConfigChange()
+  public void a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      localParcel1.writeFloat(paramFloat);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    a();
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void c()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

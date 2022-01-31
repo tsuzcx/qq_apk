@@ -1,46 +1,65 @@
-import android.text.Spanned;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
+import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
 
-class bjgk
-  extends bkcj
+public class bjgk
+  implements bfub
 {
-  bjgk(bjgj parambjgj, int paramInt)
-  {
-    super(paramInt);
-  }
+  bjgk(bjgi parambjgi) {}
   
-  public int a(CharSequence paramCharSequence)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    int j = 0;
-    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
-    int i;
-    if (paramInt2 - paramInt1 != str.length())
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.a == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.a)
     {
-      i = 1;
-      if (i == 0) {
-        break label92;
-      }
-      paramInt2 = str.length();
-      paramInt1 = j;
-      paramCharSequence = str;
+      paramView.c(l);
+      return;
     }
-    label92:
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.a == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!bbfj.g(this.a.e.getContext())) {
+        break label114;
+      }
+      bjgi.a(this.a).d();
+      bjgi.a(this.a).a();
+      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
+    }
     for (;;)
     {
-      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      if ((paramSpanned == null) && (i != 0))
-      {
-        return paramCharSequence;
-        i = 0;
-        break;
-      }
-      return paramSpanned;
+      ((aavt)paramView.getTag()).a = true;
+      return true;
+      l = this.a.a;
+      break;
+      label114:
+      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
     }
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.a == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.a)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

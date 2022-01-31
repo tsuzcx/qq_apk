@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public final class apeq
-  implements Parcelable.Creator<ForwardFileInfo>
+  implements Parcelable.Creator<FileInfo>
 {
-  public ForwardFileInfo a(Parcel paramParcel)
+  public FileInfo a(Parcel paramParcel)
   {
-    return new ForwardFileInfo(paramParcel, null);
+    return new FileInfo(paramParcel, null);
   }
   
-  public ForwardFileInfo[] a(int paramInt)
+  public FileInfo[] a(int paramInt)
   {
-    return new ForwardFileInfo[paramInt];
+    return new FileInfo[paramInt];
   }
 }
 

@@ -1,15 +1,15 @@
 import com.tencent.qphone.base.util.QLog;
 
 final class atwb
-  implements athy
+  implements atia
 {
-  atwb(atwf paramatwf, String paramString) {}
+  atwb(atwi paramatwi, int paramInt) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_Atwf != null) {
-      this.jdField_a_of_type_Atwf.a(false, this.jdField_a_of_type_JavaLangString);
+    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+    if (this.jdField_a_of_type_Atwi != null) {
+      this.jdField_a_of_type_Atwi.a(false, null, true, this.jdField_a_of_type_Int);
     }
   }
 }

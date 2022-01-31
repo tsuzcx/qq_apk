@@ -1,13 +1,6 @@
-import org.json.JSONObject;
-
-public abstract class ska
+class ska
 {
-  public ska(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
-  
-  public abstract void a(JSONObject paramJSONObject);
+  private static final sjy a = new sjy(null);
 }
 
 

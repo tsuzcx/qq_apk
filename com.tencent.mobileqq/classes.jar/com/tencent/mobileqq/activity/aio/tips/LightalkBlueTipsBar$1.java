@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aeyg;
-import aeyh;
+import aeye;
+import aeyf;
 
 public class LightalkBlueTipsBar$1
   implements Runnable
 {
-  public LightalkBlueTipsBar$1(aeyg paramaeyg) {}
+  public LightalkBlueTipsBar$1(aeye paramaeye) {}
   
   public void run()
   {
-    aeyh localaeyh = aeyh.a();
-    if (localaeyh != null)
+    aeyf localaeyf = aeyf.a();
+    if (localaeyf != null)
     {
-      this.this$0.a = localaeyh.d;
-      this.this$0.b = localaeyh.e;
+      this.this$0.a = localaeyf.d;
+      this.this$0.b = localaeyf.e;
     }
   }
 }

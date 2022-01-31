@@ -1,21 +1,9 @@
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public abstract interface awwp
-  extends awwn
+  extends awws
 {
-  public abstract View a(String paramString);
-  
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  public abstract ImageView b();
 }
 
 

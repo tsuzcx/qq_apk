@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukm;
+import auko;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -13,14 +13,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import ozr;
+import ozo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class ArticleInfoModule$41
   implements Runnable
 {
-  public ArticleInfoModule$41(ozr paramozr, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
+  public ArticleInfoModule$41(ozo paramozo, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
@@ -46,8 +46,8 @@ public class ArticleInfoModule$41
           localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
           if (localObject != null)
           {
-            this.this$0.a((aukm)localObject);
-            localConcurrentHashMap = (ConcurrentHashMap)ozr.a(this.this$0).get(Integer.valueOf(0));
+            this.this$0.a((auko)localObject);
+            localConcurrentHashMap = (ConcurrentHashMap)ozo.a(this.this$0).get(Integer.valueOf(0));
             if (localConcurrentHashMap != null)
             {
               localIterator2 = localConcurrentHashMap.values().iterator();
@@ -68,10 +68,10 @@ public class ArticleInfoModule$41
       if (localObject != null)
       {
         localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        ozr.a(this.this$0, Integer.valueOf(0), (ArticleInfo)localObject);
+        ozo.a(this.this$0, Integer.valueOf(0), (ArticleInfo)localObject);
         localArrayList2.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
       }
-      localConcurrentHashMap = (ConcurrentHashMap)ozr.a(this.this$0).get(Integer.valueOf(70));
+      localConcurrentHashMap = (ConcurrentHashMap)ozo.a(this.this$0).get(Integer.valueOf(70));
       if (localConcurrentHashMap == null) {
         break;
       }
@@ -89,7 +89,7 @@ public class ArticleInfoModule$41
           break label499;
         }
         localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        ozr.a(this.this$0, Integer.valueOf(70), (ArticleInfo)localObject);
+        ozo.a(this.this$0, Integer.valueOf(70), (ArticleInfo)localObject);
         localArrayList1.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
         break;
         QLog.d("ArticleInfoModule", 1, "remove artileinfo cache is null while feedid = " + l + "feedtype" + i);

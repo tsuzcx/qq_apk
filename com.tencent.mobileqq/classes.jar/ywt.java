@@ -1,47 +1,49 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ywt
-  implements ytb
+  implements yxe
 {
-  ywt(ywq paramywq) {}
-  
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    Object localObject = null;
+    if (paramywk != null) {}
+    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      yxp.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    return -2147483648L;
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    yxs.b("GdtBaseBannerFragment", String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, yta paramyta)
-  {
-    yxs.d("GdtBaseBannerFragment", "onAdFailedToLoad " + paramyta.a());
-    Toast.makeText(this.a.getActivity().getApplicationContext(), "onAdFailedToLoad " + paramyta.a(), 0).show();
-  }
-  
-  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    yxs.b("GdtBaseBannerFragment", String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    yxs.b("GdtBaseBannerFragment", String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
-  }
-  
-  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    yxs.b("GdtBaseBannerFragment", String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }), 0).show();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("carrier", yys.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramywk != null) {
+            paramString = paramywk.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
+          return true;
+          localJSONException = localJSONException;
+          yxp.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          yxp.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

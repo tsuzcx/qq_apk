@@ -1,16 +1,29 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
-class ahdw
-  implements Comparator<ahdx>
+public class ahdw
+  implements ahdz
 {
-  ahdw(ahdv paramahdv) {}
+  public ahdw(DoodleLayout paramDoodleLayout) {}
   
-  public int a(ahdx paramahdx1, ahdx paramahdx2)
+  public void a()
   {
-    if (paramahdx2.a - paramahdx1.a > 0.0F) {
-      return 1;
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
     }
-    return -1;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
   }
 }
 

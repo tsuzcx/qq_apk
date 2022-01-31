@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import aits;
+import aitq;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.ArrayList;
 
 public class ApolloStoreStabilityReportManager$2
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$2(aits paramaits) {}
+  public ApolloStoreStabilityReportManager$2(aitq paramaitq) {}
   
   public void run()
   {
-    aits.a(this.this$0, false);
-    if (aits.a(this.this$0).size() > 0) {
-      ThreadManagerV2.excute(aits.a(this.this$0), 128, null, true);
+    aitq.a(this.this$0, false);
+    if (aitq.a(this.this$0).size() > 0) {
+      ThreadManagerV2.excute(aitq.a(this.this$0), 128, null, true);
     }
   }
 }

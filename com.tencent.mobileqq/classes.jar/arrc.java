@@ -1,23 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class arrc
-  extends BroadcastReceiver
+  extends akil
 {
   public arrc(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramIntent == null) {}
-    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
-      return;
+    QLog.i("ListenTogether.Manager", 1, "onTroopManagerSuccess result: " + paramInt2 + " troopUin: " + paramString);
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    {
+      String str = arrn.a(1, paramString);
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        arqq.a(ListenTogetherManager.a(this.a), paramString, false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(1, paramString, false);
+      }
     }
-    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
-    ListenTogetherManager.c(this.a);
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onPassiveExit troopUin: " + paramString);
+    String str = arrn.a(1, paramString);
+    if (ListenTogetherManager.a(this.a).equals(str))
+    {
+      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+      arqq.a(ListenTogetherManager.a(this.a), paramString, false);
+      this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+      this.a.a(1, paramString, false);
+    }
   }
 }
 

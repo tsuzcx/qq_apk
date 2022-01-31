@@ -1,12 +1,14 @@
+import android.content.DialogInterface;
+
 class vwk
+  extends bbdt
 {
-  static void a(String paramString1, String paramString2) {}
+  vwk(vwj paramvwj) {}
   
-  static void b(String paramString1, String paramString2) {}
-  
-  static void c(String paramString1, String paramString2) {}
-  
-  static void d(String paramString1, String paramString2) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

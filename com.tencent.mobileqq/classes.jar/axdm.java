@@ -1,62 +1,104 @@
-public abstract class axdm
-  extends axdv
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+
+public class axdm
+  extends ampa<axdl>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public axdm()
+  private String a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
   }
   
-  public String a()
+  public int a()
   {
+    return 325;
+  }
+  
+  @NonNull
+  public axdl a(int paramInt)
+  {
+    return new axdl();
+  }
+  
+  @Nullable
+  public axdl a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      axdl localaxdl = axdl.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localaxdl;
+    }
     return null;
   }
   
-  public boolean a()
+  public Class<axdl> a()
   {
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "reqBusiType invalid, reqBusiType:" + this.jdField_a_of_type_Int);
-      return false;
-    }
-    if (this.jdField_b_of_type_Int == -1)
-    {
-      a("ShortVideoBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
-    }
-    if (this.c == null)
-    {
-      a("ShortVideoBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
-    }
-    return true;
+    return axdl.class;
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("reqBusiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.d);
-    localStringBuilder.append("\n |-").append("md5:").append(this.e);
-    localStringBuilder.append("\n |-").append("thumbMD5:").append(this.g);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Aunp);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(axdl paramaxdl)
+  {
+    boolean bool2 = true;
+    int i = paramaxdl.a;
+    int j = paramaxdl.b;
+    int k = paramaxdl.c;
+    int m = paramaxdl.d;
+    paramaxdl = a();
+    if (ShortVideoUtils.c(paramaxdl) != j)
+    {
+      ShortVideoUtils.b(paramaxdl, j);
+      if (i == 1)
+      {
+        bool1 = true;
+        ShortVideoUtils.c(paramaxdl, bool1);
+        ShortVideoUtils.f = false;
+      }
+    }
+    else if (ShortVideoUtils.b(paramaxdl) != m)
+    {
+      ShortVideoUtils.a(paramaxdl, m);
+      if (k != 1) {
+        break label103;
+      }
+    }
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ShortVideoUtils.b(paramaxdl, bool1);
+      ShortVideoUtils.e = false;
+      return;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public int b()
+  {
+    return ShortVideoUtils.a(a());
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

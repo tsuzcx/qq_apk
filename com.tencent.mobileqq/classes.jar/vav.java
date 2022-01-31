@@ -1,31 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
 
 public class vav
-  extends QQUIEventReceiver<MystoryListView, svv>
+  extends AnimatorListenerAdapter
 {
-  public vav(@NonNull MystoryListView paramMystoryListView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramMystoryListView);
-  }
-  
-  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull svv paramsvv)
-  {
-    paramMystoryListView.q();
-    paramsvv = (vbd)paramMystoryListView.a("FeedSegment");
-    if (paramsvv != null) {
-      paramsvv.j();
+    if (this.a) {
+      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
     }
-    paramMystoryListView = (vcs)paramMystoryListView.a("NewMyStorySegment");
-    if (paramMystoryListView != null) {
-      paramMystoryListView.a(false);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svv.class;
   }
 }
 

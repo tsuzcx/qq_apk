@@ -1,44 +1,23 @@
-public class llf
+class llf
 {
-  public static String a;
-  private llg jdField_a_of_type_Llg = new llg(this);
-  private llo jdField_a_of_type_Llo = new llo(this);
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  int m = 0;
+  int n = 0;
+  int o = 0;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public int a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Llo != null) {
-      return this.jdField_a_of_type_Llo.a(paramArrayOfByte);
-    }
-    return -1;
-  }
-  
-  public llh a()
-  {
-    llh localllh = null;
-    if (this.jdField_a_of_type_Llo != null) {
-      localllh = this.jdField_a_of_type_Llo.a();
-    }
-    return localllh;
-  }
-  
-  public void a(long paramLong, llp paramllp)
-  {
-    this.jdField_a_of_type_Llg.a(paramLong, paramllp);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_Llg != null) {
-      arrayOfByte = this.jdField_a_of_type_Llg.a();
-    }
-    return arrayOfByte;
-  }
+  llf(llc paramllc) {}
 }
 
 

@@ -1,42 +1,61 @@
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
+import org.json.JSONObject;
 
 public class bkgd
-  implements bjfd
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  public int a;
+  private bkgc a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l = "";
+  public String m;
   
-  bkgd(bkgb parambkgb, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
+  public bkgd()
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131376849));
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
   }
   
-  public void a()
+  public bkgd(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("poi_poster_id");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster_name");
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("poster_type");
+    this.c = paramJSONObject.getString("thumb_url");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("predownload", 0);
+    this.d = paramJSONObject.getString("static_url");
+    paramJSONObject = paramJSONObject.getJSONObject("resource");
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("resurl", "");
+    this.jdField_f_of_type_JavaLangString = paramJSONObject.optString("md5", "");
+    this.g = paramJSONObject.optString("name");
+    this.h = paramJSONObject.optString("id", "");
+    this.jdField_a_of_type_Boolean = bkge.a(this.jdField_a_of_type_Int);
   }
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public bkgc a()
   {
-    paramInt = (int)paramFloat;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
+    return this.jdField_a_of_type_Bkgc;
   }
   
-  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
+  public void a(bkgc parambkgc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "isSucess:" + paramBoolean);
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambkfm));
+    this.jdField_a_of_type_Bkgc = parambkgc;
   }
 }
 

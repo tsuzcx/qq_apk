@@ -1,14 +1,35 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class wli
-  implements wln
+  implements wth
 {
-  wli(wlh paramwlh) {}
+  wli(wlg paramwlg, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    this.a.d(paramStFeed);
+    if (paramBoolean1)
+    {
+      xhb.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
+      paramString = this.jdField_a_of_type_Wlg.b().iterator();
+      while (paramString.hasNext()) {
+        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
+          paramString.remove();
+        }
+      }
+      this.jdField_a_of_type_Wlg.notifyDataSetChanged();
+      bcql.a(wlg.a(this.jdField_a_of_type_Wlg), 2, ajya.a(2131690663), 0).a();
+      if (this.jdField_a_of_type_Wlg.b().size() < 5) {
+        this.jdField_a_of_type_Wlg.o();
+      }
+    }
+    if (paramBoolean2) {
+      xhb.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+    }
   }
 }
 

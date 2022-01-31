@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.main;
 
-import agch;
-import bcpq;
+import agcf;
+import bcqf;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class MainAssistObserver$22
   implements Runnable
 {
-  public MainAssistObserver$22(agch paramagch) {}
+  public MainAssistObserver$22(agcf paramagcf) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MainAssistObserver$22
       return;
     }
     this.this$0.c = true;
-    this.this$0.jdField_a_of_type_Bcpq.hide();
+    this.this$0.jdField_a_of_type_Bcqf.hide();
   }
 }
 

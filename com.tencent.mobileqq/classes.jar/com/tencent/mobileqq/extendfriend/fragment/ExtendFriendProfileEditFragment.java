@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import abtu;
-import actn;
+import abtq;
+import actj;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,22 +25,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aoep;
-import aoes;
-import aogh;
-import aohq;
-import aohr;
-import aohs;
-import aoht;
-import aohu;
-import aoki;
-import axqw;
-import azmi;
-import baxt;
-import bbmj;
-import bcpw;
-import bdhv;
-import bfmr;
+import aoeu;
+import aoex;
+import aogm;
+import aohv;
+import aohw;
+import aohx;
+import aohy;
+import aohz;
+import aokn;
+import axqy;
+import azmk;
+import bayh;
+import bbmx;
+import bcql;
+import bdik;
+import bfni;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -51,8 +51,8 @@ import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Switch;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import mxi;
-import mxm;
+import mxf;
+import mxj;
 
 public class ExtendFriendProfileEditFragment
   extends Fragment
@@ -60,15 +60,15 @@ public class ExtendFriendProfileEditFragment
 {
   public int a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new aohq(this);
+  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new aohv(this);
   private View jdField_a_of_type_AndroidViewView;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new aohu(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new aohz(this);
   public EditText a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private azmi jdField_a_of_type_Azmi;
-  private bcpw jdField_a_of_type_Bcpw;
+  private azmk jdField_a_of_type_Azmk;
+  private bcql jdField_a_of_type_Bcql;
   private ExtendFriendProfileEditFragment.ExtendFriendInfo jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo;
   public ExtendFriendVoiceView a;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
@@ -126,22 +126,22 @@ public class ExtendFriendProfileEditFragment
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, mxm parammxm)
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, mxj parammxj)
   {
     for (int i = 1;; i = 0) {
       try
       {
         long l = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
         byte[] arrayOfByte = new byte[13];
-        bbmj.a(arrayOfByte, 0, l);
+        bbmx.a(arrayOfByte, 0, l);
         arrayOfByte[4] = 0;
-        bbmj.a(arrayOfByte, 5, (short)1);
-        bbmj.a(arrayOfByte, 7, 42276);
-        bbmj.a(arrayOfByte, 9, (short)2);
+        bbmx.a(arrayOfByte, 5, (short)1);
+        bbmx.a(arrayOfByte, 7, 42276);
+        bbmx.a(arrayOfByte, 9, (short)2);
         if (paramBoolean)
         {
-          bbmj.a(arrayOfByte, 11, (short)i);
-          mxi.a(paramQQAppInterface, parammxm, arrayOfByte, "OidbSvc.0x4ff_9", 1279, 9);
+          bbmx.a(arrayOfByte, 11, (short)i);
+          mxf.a(paramQQAppInterface, parammxj, arrayOfByte, "OidbSvc.0x4ff_9", 1279, 9);
           if (QLog.isColorLevel()) {
             QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch: " + paramBoolean);
           }
@@ -158,36 +158,36 @@ public class ExtendFriendProfileEditFragment
   
   private void d()
   {
-    Object localObject = ((aoep)getActivity().app.getManager(264)).a();
+    Object localObject = ((aoeu)getActivity().app.getManager(264)).a();
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(((aoes)localObject).jdField_f_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = ((aoes)localObject).jdField_f_of_type_Int;
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(((aoex)localObject).jdField_f_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = ((aoex)localObject).jdField_f_of_type_Int;
     }
     localObject = getActivity().app;
     String str = ((QQAppInterface)localObject).c();
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(baxt.a((AppInterface)localObject, 1, str));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(bayh.a((AppInterface)localObject, 1, str));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365756));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375408));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363562));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365755));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375410));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363561));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377447));
     this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366355);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131369810);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(aoki.a(actn.a(27.0F, getResources()), -15550475, 1.0F));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(aoki.a(actn.a(27.0F, getResources()), -16777216, 0.08F));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131369809);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(aokn.a(actj.a(27.0F, getResources()), -15550475, 1.0F));
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(aokn.a(actj.a(27.0F, getResources()), -16777216, 0.08F));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377446);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379275);
+    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379280);
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367973));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378485));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378490));
     this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367965));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378488));
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.jdField_a_of_type_AndroidViewView.findViewById(2131379266));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379265));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378493));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)this.jdField_a_of_type_AndroidViewView.findViewById(2131379271));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379270));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     Fragment localFragment = getParentFragment();
@@ -198,13 +198,13 @@ public class ExtendFriendProfileEditFragment
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setMode(1);
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setActivity(getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setDeleteIconEnable(true, new aohr(this));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setDeleteIconEnable(true, new aohw(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(new ColorDrawable(-657931));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new ColorDrawable(-657931));
     this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(new aohs(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(new aohx(this));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aoht(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aohy(this));
     this.jdField_c_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo != null) {
       a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
@@ -240,7 +240,7 @@ public class ExtendFriendProfileEditFragment
     int j = this.jdField_d_of_type_Int;
     int k = ImmersiveUtils.getStatusBarHeight(getActivity());
     int m = this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
-    int n = actn.a(96.0F, getResources());
+    int n = actj.a(96.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(i - j - k - m - n);
   }
   
@@ -267,7 +267,7 @@ public class ExtendFriendProfileEditFragment
   
   private void l()
   {
-    a(actn.a(114.0F, getResources()) - ImmersiveUtils.getStatusBarHeight(getActivity()));
+    a(actj.a(114.0F, getResources()) - ImmersiveUtils.getStatusBarHeight(getActivity()));
   }
   
   private void m()
@@ -293,9 +293,9 @@ public class ExtendFriendProfileEditFragment
     ExtendFriendProfileEditFragment.ExtendFriendInfo localExtendFriendInfo = new ExtendFriendProfileEditFragment.ExtendFriendInfo();
     localExtendFriendInfo.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
     localExtendFriendInfo.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-    if ((this.jdField_a_of_type_Azmi != null) && ((this.jdField_a_of_type_Azmi instanceof AudioInfo)))
+    if ((this.jdField_a_of_type_Azmk != null) && ((this.jdField_a_of_type_Azmk instanceof AudioInfo)))
     {
-      localExtendFriendInfo.jdField_b_of_type_Int = (((AudioInfo)this.jdField_a_of_type_Azmi).duration / 1000);
+      localExtendFriendInfo.jdField_b_of_type_Int = (((AudioInfo)this.jdField_a_of_type_Azmk).duration / 1000);
       return localExtendFriendInfo;
     }
     localExtendFriendInfo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
@@ -305,11 +305,11 @@ public class ExtendFriendProfileEditFragment
   public void a()
   {
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetEditText != null)) {
-      bfmr.b(this.jdField_a_of_type_AndroidWidgetEditText);
+      bfni.b(this.jdField_a_of_type_AndroidWidgetEditText);
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, aogh paramaogh)
+  public void a(QQAppInterface paramQQAppInterface, aogm paramaogm)
   {
     Object localObject;
     boolean bool;
@@ -317,29 +317,29 @@ public class ExtendFriendProfileEditFragment
     {
       this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
       localObject = this.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramaogh.mVipHide) {
+      if (paramaogm.mVipHide) {
         break label164;
       }
       bool = true;
       ((Switch)localObject).setChecked(bool);
       this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramaogh.mNickName);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(paramaogh.mPopularity));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramaogm.mNickName);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(paramaogm.mPopularity));
       localObject = this.jdField_c_of_type_AndroidWidgetImageView;
-      if (paramaogh.mGender != 2) {
+      if (paramaogm.mGender != 2) {
         break label170;
       }
     }
     label164:
     label170:
-    for (int i = 2130844286;; i = 2130844287)
+    for (int i = 2130844287;; i = 2130844288)
     {
       ((ImageView)localObject).setImageResource(i);
-      VipUtils.a(paramaogh, this.jdField_d_of_type_AndroidWidgetImageView);
-      this.jdField_d_of_type_AndroidWidgetImageView.setTag(paramaogh);
+      VipUtils.a(paramaogm, this.jdField_d_of_type_AndroidWidgetImageView);
+      this.jdField_d_of_type_AndroidWidgetImageView.setTag(paramaogm);
       this.jdField_e_of_type_AndroidViewView.setVisibility(0);
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8009F0E", "0X8009F0E", 0, 0, "", "", "", "");
+      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X8009F0E", "0X8009F0E", 0, 0, "", "", "", "");
       return;
       bool = false;
       break;
@@ -372,7 +372,7 @@ public class ExtendFriendProfileEditFragment
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceDuration(this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceUrl(this.jdField_b_of_type_JavaLangString);
       if (this.jdField_b_of_type_JavaLangString.indexOf("file_md5=") <= 0) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceFileMD5(bdhv.a(this.jdField_b_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceFileMD5(bdik.a(this.jdField_b_of_type_JavaLangString));
       }
     }
     for (this.jdField_d_of_type_Boolean = true;; this.jdField_d_of_type_Boolean = false)
@@ -392,7 +392,7 @@ public class ExtendFriendProfileEditFragment
   
   public void a(AudioInfo paramAudioInfo)
   {
-    this.jdField_a_of_type_Azmi = paramAudioInfo;
+    this.jdField_a_of_type_Azmk = paramAudioInfo;
     if (!TextUtils.isEmpty(paramAudioInfo.path))
     {
       this.jdField_b_of_type_JavaLangString = paramAudioInfo.path;
@@ -401,7 +401,7 @@ public class ExtendFriendProfileEditFragment
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceDuration(this.jdField_b_of_type_Int / 1000);
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceUrl(this.jdField_b_of_type_JavaLangString);
       if (this.jdField_b_of_type_JavaLangString.indexOf("file_md5=") <= 0) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceFileMD5(bdhv.a(this.jdField_b_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.setVoiceFileMD5(bdik.a(this.jdField_b_of_type_JavaLangString));
       }
       this.jdField_e_of_type_Boolean = true;
       j();
@@ -427,15 +427,15 @@ public class ExtendFriendProfileEditFragment
   
   public void b()
   {
-    Object localObject = ((aoep)getActivity().app.getManager(264)).a();
+    Object localObject = ((aoeu)getActivity().app.getManager(264)).a();
     if (localObject == null) {}
-    for (int i = 11000;; i = ((aoes)localObject).jdField_c_of_type_Int * 1000)
+    for (int i = 11000;; i = ((aoex)localObject).jdField_c_of_type_Int * 1000)
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("audio_max_length", i);
       ((Intent)localObject).putExtra("auto_start", true);
       ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      abtu.a(getActivity(), (Intent)localObject, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
+      abtq.a(getActivity(), (Intent)localObject, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
       return;
     }
   }
@@ -467,14 +467,14 @@ public class ExtendFriendProfileEditFragment
     {
     default: 
       return;
-    case 2131365756: 
+    case 2131365755: 
       this.jdField_b_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      bfmr.a(this.jdField_a_of_type_AndroidWidgetEditText);
+      bfni.a(this.jdField_a_of_type_AndroidWidgetEditText);
       return;
-    case 2131363562: 
+    case 2131363561: 
       b();
       return;
     }
@@ -488,7 +488,7 @@ public class ExtendFriendProfileEditFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560738, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560737, paramViewGroup, false);
     e();
     d();
     return this.jdField_a_of_type_AndroidViewView;

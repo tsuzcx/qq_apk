@@ -1,38 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aemv
-  extends akdo
+  implements View.OnClickListener
 {
-  aemv(aemj paramaemj) {}
+  aemv(aemh paramaemh) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void t_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
-    }
+    actj.n = true;
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    acxs.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
   }
 }
 

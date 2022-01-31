@@ -1,29 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.Nullable;
 
 class bilb
-  implements Animation.AnimationListener
+  implements bjos<bioz>
 {
-  bilb(biku parambiku, boolean paramBoolean, int paramInt, String paramString) {}
+  bilb(bikt parambikt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@Nullable bioz parambioz)
   {
-    biku.a(this.jdField_a_of_type_Biku, false);
-    biku.b(this.jdField_a_of_type_Biku).setVisibility(8);
-    biku.a(this.jdField_a_of_type_Biku).setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (!biku.a(this.jdField_a_of_type_Biku).get())) {
-      biku.a(this.jdField_a_of_type_Biku, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    bikt.a(this.a, parambioz);
+    if (bikt.a(this.a) != null) {
+      bikt.a(this.a).a(bikt.a(this.a).a(), bikt.a(this.a));
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    biku.a(this.jdField_a_of_type_Biku, true);
   }
 }
 

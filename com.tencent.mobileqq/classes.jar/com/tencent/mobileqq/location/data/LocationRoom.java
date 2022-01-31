@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.location.data;
 
 import android.support.annotation.Nullable;
-import arui;
-import aruj;
 import aruk;
-import aruq;
+import arul;
+import arum;
+import arus;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
@@ -22,21 +22,21 @@ import java.util.Set;
 public class LocationRoom
 {
   private int jdField_a_of_type_Int = -1;
-  private arui jdField_a_of_type_Arui;
-  private volatile aruj jdField_a_of_type_Aruj;
   private aruk jdField_a_of_type_Aruk;
+  private volatile arul jdField_a_of_type_Arul;
+  private arum jdField_a_of_type_Arum;
   private LocationRoom.Venue jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue;
   private volatile CameraPosition jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition;
-  private LinkedHashMap<String, arui> jdField_a_of_type_JavaUtilLinkedHashMap;
+  private LinkedHashMap<String, aruk> jdField_a_of_type_JavaUtilLinkedHashMap;
   private volatile boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private volatile boolean jdField_b_of_type_Boolean;
   
-  public LocationRoom(aruk paramaruk, String paramString)
+  public LocationRoom(arum paramarum, String paramString)
   {
-    this.jdField_a_of_type_Aruk = paramaruk;
+    this.jdField_a_of_type_Arum = paramarum;
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_Arui = new arui(paramString, null, 0.0D);
+    this.jdField_a_of_type_Aruk = new aruk(paramString, null, 0.0D);
   }
   
   public int a()
@@ -44,19 +44,19 @@ public class LocationRoom
     return this.jdField_a_of_type_Int;
   }
   
-  public arui a()
-  {
-    return this.jdField_a_of_type_Arui;
-  }
-  
-  public arui a(String paramString)
-  {
-    return (arui)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-  }
-  
   public aruk a()
   {
     return this.jdField_a_of_type_Aruk;
+  }
+  
+  public aruk a(String paramString)
+  {
+    return (aruk)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+  }
+  
+  public arum a()
+  {
+    return this.jdField_a_of_type_Arum;
   }
   
   public LocationRoom.Venue a()
@@ -71,11 +71,11 @@ public class LocationRoom
   
   public List<LatLng> a()
   {
-    if ((this.jdField_a_of_type_Arui == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)) {
+    if ((this.jdField_a_of_type_Aruk == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)) {
       return null;
     }
     ArrayList localArrayList = new ArrayList(2);
-    localArrayList.add(this.jdField_a_of_type_Arui.a());
+    localArrayList.add(this.jdField_a_of_type_Aruk.a());
     localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
     return localArrayList;
   }
@@ -85,9 +85,9 @@ public class LocationRoom
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(aruj paramaruj)
+  public void a(arul paramarul)
   {
-    this.jdField_a_of_type_Aruj = paramaruj;
+    this.jdField_a_of_type_Arul = paramarul;
   }
   
   public void a(QQAppInterface paramQQAppInterface, CameraPosition paramCameraPosition)
@@ -95,10 +95,10 @@ public class LocationRoom
     if (QLog.isColorLevel()) {
       QLog.d("LocationRoom", 2, "onLeaveMapPage: invoked. lastCameraPosition: " + paramCameraPosition);
     }
-    this.jdField_a_of_type_Aruj = null;
+    this.jdField_a_of_type_Arul = null;
     a(false);
     a(null);
-    if (aruq.a(paramQQAppInterface).b())
+    if (arus.a(paramQQAppInterface).b())
     {
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition = paramCameraPosition;
       return;
@@ -109,13 +109,13 @@ public class LocationRoom
   public void a(LocationRoom.Venue paramVenue)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationRoom", 2, new Object[] { "[venue]setVenue invoked. venue: ", paramVenue + " mVenue: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue + " listener: " + this.jdField_a_of_type_Aruj });
+      QLog.d("LocationRoom", 2, new Object[] { "[venue]setVenue invoked. venue: ", paramVenue + " mVenue: " + this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue + " listener: " + this.jdField_a_of_type_Arul });
     }
     if (paramVenue != null)
     {
       if (paramVenue.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue)) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_JavaLangRefSoftReference == null) && (this.jdField_a_of_type_Aruj != null)) {
-          this.jdField_a_of_type_Aruj.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+        if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_JavaLangRefSoftReference == null) && (this.jdField_a_of_type_Arul != null)) {
+          this.jdField_a_of_type_Arul.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
         }
       }
       do
@@ -130,8 +130,8 @@ public class LocationRoom
           }
         }
         this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = paramVenue;
-      } while (this.jdField_a_of_type_Aruj == null);
-      this.jdField_a_of_type_Aruj.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+      } while (this.jdField_a_of_type_Arul == null);
+      this.jdField_a_of_type_Arul.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue != null) && (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_JavaLangRefSoftReference != null))
@@ -141,8 +141,8 @@ public class LocationRoom
       if (paramVenue != null) {
         paramVenue.remove();
       }
-      if (this.jdField_a_of_type_Aruj != null) {
-        this.jdField_a_of_type_Aruj.a();
+      if (this.jdField_a_of_type_Arul != null) {
+        this.jdField_a_of_type_Arul.a();
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue = null;
@@ -150,69 +150,69 @@ public class LocationRoom
   
   public void a(LatLng paramLatLng, Double paramDouble)
   {
-    this.jdField_a_of_type_Arui.a(paramLatLng, paramDouble);
+    this.jdField_a_of_type_Aruk.a(paramLatLng, paramDouble);
   }
   
-  public void a(List<arui> paramList)
+  public void a(List<aruk> paramList)
   {
     Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    arui localarui;
+    aruk localaruk;
     while (((Iterator)localObject).hasNext())
     {
-      localarui = (arui)((Map.Entry)((Iterator)localObject).next()).getValue();
-      if (!paramList.contains(localarui))
+      localaruk = (aruk)((Map.Entry)((Iterator)localObject).next()).getValue();
+      if (!paramList.contains(localaruk))
       {
-        if (this.jdField_a_of_type_Aruj != null) {
-          this.jdField_a_of_type_Aruj.a(localarui.a());
+        if (this.jdField_a_of_type_Arul != null) {
+          this.jdField_a_of_type_Arul.a(localaruk.a());
         }
         if (QLog.isColorLevel()) {
-          QLog.d("LocationRoom", 2, new Object[] { "updateRoomLocation invoked. remove LocationItem: ", localarui + " listener: " + this.jdField_a_of_type_Aruj });
+          QLog.d("LocationRoom", 2, new Object[] { "updateRoomLocation invoked. remove LocationItem: ", localaruk + " listener: " + this.jdField_a_of_type_Arul });
         }
         ((Iterator)localObject).remove();
       }
     }
-    if ((this.jdField_a_of_type_Aruk.a() == 0) && (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 1) && (paramList.size() == 2)) {
+    if ((this.jdField_a_of_type_Arum.a() == 0) && (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 1) && (paramList.size() == 2)) {
       this.jdField_a_of_type_Boolean = true;
     }
     int i = 0;
     if (i < paramList.size())
     {
-      localObject = (arui)paramList.get(i);
+      localObject = (aruk)paramList.get(i);
       int j;
-      if (((arui)localObject).equals(this.jdField_a_of_type_Arui))
+      if (((aruk)localObject).equals(this.jdField_a_of_type_Aruk))
       {
-        if (this.jdField_a_of_type_Arui.a() < 0)
+        if (this.jdField_a_of_type_Aruk.a() < 0)
         {
-          localObject = this.jdField_a_of_type_Arui;
+          localObject = this.jdField_a_of_type_Aruk;
           j = this.jdField_b_of_type_Int;
           this.jdField_b_of_type_Int = (j + 1);
-          ((arui)localObject).a(j);
+          ((aruk)localObject).a(j);
         }
-        if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.values().contains(this.jdField_a_of_type_Arui)) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_Arui.a(), this.jdField_a_of_type_Arui);
+        if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.values().contains(this.jdField_a_of_type_Aruk)) {
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_Aruk.a(), this.jdField_a_of_type_Aruk);
         }
       }
       for (;;)
       {
         i += 1;
         break;
-        localarui = (arui)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((arui)localObject).a());
-        if (localarui == null)
+        localaruk = (aruk)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((aruk)localObject).a());
+        if (localaruk == null)
         {
           j = this.jdField_b_of_type_Int;
           this.jdField_b_of_type_Int = (j + 1);
-          ((arui)localObject).a(j);
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(((arui)localObject).a(), localObject);
+          ((aruk)localObject).a(j);
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(((aruk)localObject).a(), localObject);
         }
         else
         {
-          if (localarui.a() < 0)
+          if (localaruk.a() < 0)
           {
             j = this.jdField_b_of_type_Int;
             this.jdField_b_of_type_Int = (j + 1);
-            localarui.a(j);
+            localaruk.a(j);
           }
-          localarui.a(((arui)localObject).a(), Double.valueOf(((arui)localObject).a()));
+          localaruk.a(((aruk)localObject).a(), Double.valueOf(((aruk)localObject).a()));
         }
       }
     }
@@ -228,9 +228,9 @@ public class LocationRoom
     return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(aruk paramaruk)
+  public boolean a(arum paramarum)
   {
-    return this.jdField_a_of_type_Aruk.equals(paramaruk);
+    return this.jdField_a_of_type_Arum.equals(paramarum);
   }
   
   public int b()
@@ -245,7 +245,7 @@ public class LocationRoom
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
     while (localIterator.hasNext()) {
-      localArrayList.add(((arui)localIterator.next()).a());
+      localArrayList.add(((aruk)localIterator.next()).a());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue != null) {
       localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
@@ -263,7 +263,7 @@ public class LocationRoom
     return this.jdField_b_of_type_Boolean;
   }
   
-  public List<arui> c()
+  public List<aruk> c()
   {
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + 1);
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilLinkedHashMap.values());
@@ -282,7 +282,7 @@ public class LocationRoom
     if (!(paramObject instanceof LocationRoom)) {
       return false;
     }
-    return this.jdField_a_of_type_Aruk.equals(((LocationRoom)paramObject).jdField_a_of_type_Aruk);
+    return this.jdField_a_of_type_Arum.equals(((LocationRoom)paramObject).jdField_a_of_type_Arum);
   }
 }
 

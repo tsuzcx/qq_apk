@@ -1,14 +1,176 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import cooperation.qzone.util.QZLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bkqb
-  implements DialogInterface.OnClickListener
+public class bkqb
+  extends bjto
 {
-  bkqb(bkpy parambkpy) {}
+  public View a;
+  private bkpz jdField_a_of_type_Bkpz;
+  private bkqd jdField_a_of_type_Bkqd;
+  private bkqf jdField_a_of_type_Bkqf;
+  private final QzoneEditPictureActivity jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity;
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
+  public String d;
+  public int e = -1;
+  public String e;
+  public int f;
+  public boolean f;
+  public boolean g;
+  public boolean h = true;
+  public boolean i;
+  public boolean j = true;
+  private boolean k;
+  private boolean l;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bkqb(QzoneEditPictureActivity paramQzoneEditPictureActivity, boolean paramBoolean)
   {
-    bkpy.a(this.a, "an_yuanshipin");
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_f_of_type_Boolean = true;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity = paramQzoneEditPictureActivity;
+    this.l = paramBoolean;
+  }
+  
+  private void D()
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity.findViewById(2131371648);
+    Object localObject = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity).inflate(2131561852, null);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(0, bkvi.jdField_a_of_type_Int, 0, 0);
+    localLayoutParams.addRule(11);
+    localRelativeLayout.addView((View)localObject, localLayoutParams);
+    ((LinearLayout)localObject).findViewById(2131374094).setVisibility(0);
+    ((LinearLayout)localObject).findViewById(2131374092).setVisibility(0);
+    ((LinearLayout)localObject).findViewById(2131374095).setVisibility(8);
+    localObject = (RelativeLayout)this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity.getLayoutInflater().inflate(2131561850, localRelativeLayout, false);
+    localLayoutParams = new RelativeLayout.LayoutParams(-1, actj.a(50.0F, a().a().getResources()));
+    ((RelativeLayout)localObject).setVisibility(0);
+    localLayoutParams.addRule(12);
+    if (bkvi.e > 0) {}
+    for (int m = bkvi.e;; m = actj.a(60.0F, this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity.getResources()))
+    {
+      localLayoutParams.bottomMargin = m;
+      View localView = new View(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzoneEditPictureActivity);
+      localView.setBackgroundColor(Color.argb(128, 0, 0, 0));
+      localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+      localView.setVisibility(8);
+      localRelativeLayout.addView((View)localObject, localLayoutParams);
+      localRelativeLayout.addView(localView);
+      this.jdField_a_of_type_AndroidViewView = localView;
+      return;
+    }
+  }
+  
+  private bkqc a()
+  {
+    Iterator localIterator = a().iterator();
+    while (localIterator.hasNext())
+    {
+      bjxl localbjxl = (bjxl)localIterator.next();
+      if ((localbjxl instanceof bkqc)) {
+        return (bkqc)localbjxl;
+      }
+    }
+    return null;
+  }
+  
+  public void a(Context paramContext)
+  {
+    super.a(paramContext);
+    d(3005);
+  }
+  
+  protected void a(@NonNull EditVideoParams paramEditVideoParams)
+  {
+    long l1 = 0xFFFFFFFF & (paramEditVideoParams.jdField_a_of_type_Long | 0x0);
+    if (f())
+    {
+      super.a(new EditVideoParams(paramEditVideoParams.jdField_a_of_type_Int, 0xFDFFFFFF & 0xFFFDFFFF & l1 & 0xFBFFFFFF & 0xFFFFDFFF, paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource, paramEditVideoParams.jdField_a_of_type_AndroidOsBundle));
+      a(this.jdField_a_of_type_JavaUtilList);
+      return;
+    }
+    super.a(new EditVideoParams(paramEditVideoParams.jdField_a_of_type_Int, l1, paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource, paramEditVideoParams.jdField_a_of_type_AndroidOsBundle));
+  }
+  
+  protected void a(List<bjxl> paramList)
+  {
+    super.a(paramList);
+    if (f())
+    {
+      Object localObject = new bkpz(this);
+      this.jdField_a_of_type_Bkpz = ((bkpz)localObject);
+      paramList.add(localObject);
+      localObject = new bkqf(this);
+      this.jdField_a_of_type_Bkqf = ((bkqf)localObject);
+      paramList.add(localObject);
+      localObject = new bkqd(this);
+      this.jdField_a_of_type_Bkqd = ((bkqd)localObject);
+      paramList.add(localObject);
+    }
+    try
+    {
+      paramList.add(new bkqn(this));
+      return;
+    }
+    catch (Exception paramList)
+    {
+      QZLog.e("QzEditVideoPartManager", 2, new Object[] { "addExtraParts", " add report part error" });
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    bkqc localbkqc = a();
+    if (localbkqc != null) {
+      localbkqc.a_(paramInt, null);
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    d(3006);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    this.k = paramBoolean;
+  }
+  
+  public boolean f()
+  {
+    return this.l;
+  }
+  
+  public boolean g()
+  {
+    return this.k;
+  }
+  
+  public void j()
+  {
+    if (f()) {
+      D();
+    }
+    super.j();
   }
 }
 

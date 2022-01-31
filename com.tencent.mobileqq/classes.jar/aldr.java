@@ -1,24 +1,28 @@
 import com.tencent.mobileqq.ar.ScanningData;
 import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
 import com.tencent.qphone.base.util.QLog;
 
 public class aldr
-  implements aufs
+  implements aufu
 {
-  public aldr(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
+  public aldr(ScanningSurfaceView.8 param8) {}
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
     }
-    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    axqw.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
+    axqy.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
+    }
+    this.a.this$0.a.a();
   }
 }
 

@@ -1,38 +1,15 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class aonw
-  extends AsyncTask<Void, Void, Integer>
+  implements View.OnClickListener
 {
-  public aonw(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public aonw(FMActivity paramFMActivity) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    return Integer.valueOf(aptw.b(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      apel localapel = (apel)localIterator.next();
-      if (localapel.e == 4)
-      {
-        localapel.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_Apej.notifyDataSetChanged();
-      }
-    }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    FMActivity.c(this.a);
   }
 }
 

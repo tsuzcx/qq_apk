@@ -1,8 +1,7 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.Switch;
 
 public class nxb
   implements CompoundButton.OnCheckedChangeListener
@@ -11,38 +10,24 @@ public class nxb
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int j = 1;
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
+    paramCompoundButton = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      shh.a(i);
-      paramCompoundButton = new JSONObject();
+      ReadInJoySettingActivity.a(paramCompoundButton, bool);
+      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
+        break label75;
+      }
       if (paramBoolean) {
-        i = j;
+        break;
       }
-      try
-      {
-        for (;;)
-        {
-          paramCompoundButton.put("click_opt", i);
-          noo.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", paramCompoundButton.toString(), false);
-          return;
-          i = 1;
-          break;
-          i = 2;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+      return;
     }
+    ReadInJoySettingActivity.a(this.a).show();
+    return;
+    label75:
+    this.a.c = false;
   }
 }
 

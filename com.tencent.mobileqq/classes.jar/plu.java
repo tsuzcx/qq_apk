@@ -1,25 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.os.Bundle;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
+import tencent.im.oidb.oidb_0xc2f.RspBody;
 
-class plu
-  implements pca
+public class plu
+  extends mxg
 {
-  plu(plp paramplp, RecommendFollowInfo paramRecommendFollowInfo) {}
+  plu(plm paramplm) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
-      plp.a(this.jdField_a_of_type_Plp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      plp.a(this.jdField_a_of_type_Plp).notifyDataSetChanged();
-      return;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new oidb_0xc2f.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        plm.a(this.a).mRecommendFollowInfos = qbx.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
+        if ((plm.a(this.a).mRecommendFollowInfos.a != null) && (plm.a(this.a).mRecommendFollowInfos.a.size() >= 3))
+        {
+          plm.a(this.a).a(plm.a(this.a).mRecommendFollowInfos.a);
+          plm.a(this.a).isShowRecommendList = true;
+          plm.a(this.a);
+          plm.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
+      }
     }
-    bcpw.a(plp.c(this.jdField_a_of_type_Plp).getContext(), 1, 2131718502, 0).a();
   }
 }
 

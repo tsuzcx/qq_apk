@@ -1,21 +1,13 @@
-import android.view.animation.Transformation;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqf
-  implements bbkq<Integer>
+  implements bcsc
 {
   public acqf(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.a.c.setText(paramInteger + "");
-    if (paramInteger.intValue() > 9999)
-    {
-      this.a.c.setTextSize(36.0F);
-      return;
-    }
-    this.a.c.setTextSize(44.0F);
+    this.a.a(paramInt2);
   }
 }
 

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import bfrg;
+import bfrx;
 import java.util.ArrayList;
 
 public class ExpandableListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = new bfrg();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bfrx();
   private Parcelable jdField_a_of_type_AndroidOsParcelable;
   ArrayList<ExpandableListConnector.GroupMetadata> jdField_a_of_type_JavaUtilArrayList;
   

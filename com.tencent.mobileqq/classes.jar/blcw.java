@@ -1,10 +1,8 @@
-public abstract interface blcw
+public class blcw
 {
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void i();
+  public Object a;
+  public boolean a;
+  public boolean b;
 }
 
 

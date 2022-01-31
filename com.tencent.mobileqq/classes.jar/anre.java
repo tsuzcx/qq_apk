@@ -1,45 +1,17 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
 
 class anre
-  implements URLDrawableDownListener
+  implements bfph
 {
-  anre(anqx paramanqx, anyc paramanyc, anrf paramanrf) {}
+  anre(anrc paramanrc, bfpc parambfpc) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Anyc.toString());
-    anqx.a(this.jdField_a_of_type_Anqx, this.jdField_a_of_type_Anrf.a, this.jdField_a_of_type_Anrf);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Anyc.toString());
-    anqx.a(this.jdField_a_of_type_Anqx, this.jdField_a_of_type_Anrf.a, this.jdField_a_of_type_Anrf);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Anyc.toString());
-    anqx.a(this.jdField_a_of_type_Anqx, this.jdField_a_of_type_Anrf.a, this.jdField_a_of_type_Anrf);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadProgressed: " + this.jdField_a_of_type_Anyc.toString());
+    this.jdField_a_of_type_Anrc.f();
+    if (this.jdField_a_of_type_Bfpc.isShowing()) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
-    anqx.a(this.jdField_a_of_type_Anqx, this.jdField_a_of_type_Anrf.a, this.jdField_a_of_type_Anrf);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadSuccess: " + this.jdField_a_of_type_Anyc.toString());
-    }
-    anqx.a(this.jdField_a_of_type_Anqx, this.jdField_a_of_type_Anrf.a, this.jdField_a_of_type_Anrf);
+    axqy.b(anrc.a(this.jdField_a_of_type_Anrc), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
   }
 }
 

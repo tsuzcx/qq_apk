@@ -2,8 +2,8 @@ package com.tencent.mobileqq.search.model;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import awob;
-import awpn;
+import awod;
+import awpp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -25,9 +25,9 @@ import pb.unite.search.DynamicDiscovery.Result;
 import pb.unite.search.DynamicDiscovery.TitleHeaderItem;
 
 public class HotWordSearchEntryDataModel
-  extends awpn
+  extends awpp
 {
-  public final awob a;
+  public final awod a;
   public final HotWordSearchEntryDataModel.GIFInfo a;
   public final List<HotWordSearchEntryDataModel.HotSearchItem> a;
   
@@ -35,7 +35,7 @@ public class HotWordSearchEntryDataModel
   {
     super(paramQQAppInterface, paramInt1, paramInt2, paramBoolean);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Awob = new awob(this);
+    this.jdField_a_of_type_Awod = new awod(this);
     this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo = new HotWordSearchEntryDataModel.GIFInfo();
   }
   
@@ -43,7 +43,7 @@ public class HotWordSearchEntryDataModel
   {
     super(paramQQAppInterface, paramInt1, paramArrayOfByte, paramInt2, paramBoolean);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Awob = new awob(this);
+    this.jdField_a_of_type_Awod = new awod(this);
     this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo = new HotWordSearchEntryDataModel.GIFInfo();
     a(paramArrayOfByte);
   }
@@ -91,13 +91,13 @@ public class HotWordSearchEntryDataModel
         }
         paramArrayOfByte = ((DynamicDiscovery.Result)localObject).hot_search_items.get();
         localObject = (DynamicDiscovery.TitleHeaderItem)((DynamicDiscovery.Result)localObject).title_header.get();
-        this.jdField_a_of_type_Awob.b = ((DynamicDiscovery.TitleHeaderItem)localObject).icon_url.get().toStringUtf8();
-        this.jdField_a_of_type_Awob.jdField_a_of_type_JavaLangString = ((DynamicDiscovery.TitleHeaderItem)localObject).title.get().toStringUtf8();
-        this.jdField_a_of_type_Awob.c = ((DynamicDiscovery.TitleHeaderItem)localObject).morn_text.get().toStringUtf8();
-        this.jdField_a_of_type_Awob.d = ((DynamicDiscovery.TitleHeaderItem)localObject).morn_url.get().toStringUtf8();
-        this.jdField_a_of_type_Awob.jdField_a_of_type_Int = ((DynamicDiscovery.TitleHeaderItem)localObject).header_type.get();
+        this.jdField_a_of_type_Awod.b = ((DynamicDiscovery.TitleHeaderItem)localObject).icon_url.get().toStringUtf8();
+        this.jdField_a_of_type_Awod.jdField_a_of_type_JavaLangString = ((DynamicDiscovery.TitleHeaderItem)localObject).title.get().toStringUtf8();
+        this.jdField_a_of_type_Awod.c = ((DynamicDiscovery.TitleHeaderItem)localObject).morn_text.get().toStringUtf8();
+        this.jdField_a_of_type_Awod.d = ((DynamicDiscovery.TitleHeaderItem)localObject).morn_url.get().toStringUtf8();
+        this.jdField_a_of_type_Awod.jdField_a_of_type_Int = ((DynamicDiscovery.TitleHeaderItem)localObject).header_type.get();
         if (((DynamicDiscovery.TitleHeaderItem)localObject).qq_index_jump_url.has()) {
-          this.jdField_a_of_type_Awob.e = ((DynamicDiscovery.TitleHeaderItem)localObject).qq_index_jump_url.get().toStringUtf8();
+          this.jdField_a_of_type_Awod.e = ((DynamicDiscovery.TitleHeaderItem)localObject).qq_index_jump_url.get().toStringUtf8();
         }
         this.jdField_a_of_type_JavaUtilList.clear();
         if (!a(this.b, false))
@@ -135,13 +135,13 @@ public class HotWordSearchEntryDataModel
       ((UnifySearchDiscovery.Result)localObject).mergeFrom(paramArrayOfByte);
       paramArrayOfByte = ((UnifySearchDiscovery.Result)localObject).hot_search_items.get();
       localObject = (UnifySearchDiscovery.TitleHeaderItem)((UnifySearchDiscovery.Result)localObject).title_header.get();
-      this.jdField_a_of_type_Awob.b = ((UnifySearchDiscovery.TitleHeaderItem)localObject).icon_url.get().toStringUtf8();
-      this.jdField_a_of_type_Awob.jdField_a_of_type_JavaLangString = ((UnifySearchDiscovery.TitleHeaderItem)localObject).title.get().toStringUtf8();
-      this.jdField_a_of_type_Awob.c = ((UnifySearchDiscovery.TitleHeaderItem)localObject).morn_text.get().toStringUtf8();
-      this.jdField_a_of_type_Awob.d = ((UnifySearchDiscovery.TitleHeaderItem)localObject).morn_url.get().toStringUtf8();
-      this.jdField_a_of_type_Awob.jdField_a_of_type_Int = ((UnifySearchDiscovery.TitleHeaderItem)localObject).header_type.get();
+      this.jdField_a_of_type_Awod.b = ((UnifySearchDiscovery.TitleHeaderItem)localObject).icon_url.get().toStringUtf8();
+      this.jdField_a_of_type_Awod.jdField_a_of_type_JavaLangString = ((UnifySearchDiscovery.TitleHeaderItem)localObject).title.get().toStringUtf8();
+      this.jdField_a_of_type_Awod.c = ((UnifySearchDiscovery.TitleHeaderItem)localObject).morn_text.get().toStringUtf8();
+      this.jdField_a_of_type_Awod.d = ((UnifySearchDiscovery.TitleHeaderItem)localObject).morn_url.get().toStringUtf8();
+      this.jdField_a_of_type_Awod.jdField_a_of_type_Int = ((UnifySearchDiscovery.TitleHeaderItem)localObject).header_type.get();
       if (((UnifySearchDiscovery.TitleHeaderItem)localObject).qq_index_jump_url.has()) {
-        this.jdField_a_of_type_Awob.e = ((UnifySearchDiscovery.TitleHeaderItem)localObject).qq_index_jump_url.get().toStringUtf8();
+        this.jdField_a_of_type_Awod.e = ((UnifySearchDiscovery.TitleHeaderItem)localObject).qq_index_jump_url.get().toStringUtf8();
       }
       this.jdField_a_of_type_JavaUtilList.clear();
       if (!a(this.b, true))

@@ -1,59 +1,35 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class tal
-  extends tbd
+class tal
+  extends tax
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int b = -1;
+  tal(tak paramtak) {}
   
-  public tal(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public String a()
-  {
-    return tai.b;
-  }
-  
-  public tbe a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
-    try
+    int i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
     {
-      localRspLikeFeed.mergeFrom(paramArrayOfByte);
-      return new tam(localRspLikeFeed);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      veg.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
-    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      localPBUInt32Field.set(i);
-      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
-      if (this.b != -1) {
-        localReqLikeFeed.type.set(this.b);
+      paramView = (szy)this.a.a();
+      if (tak.a(this.a) != 11) {
+        break label138;
       }
-      return localReqLikeFeed.toByteArray();
+      i = 211;
+    }
+    for (;;)
+    {
+      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
+      i = vei.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      vei.a("home_page", "clk_like_more", vei.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), vei.a(paramView.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return;
+      label138:
+      if (tak.a(this.a) == 12) {
+        i = 222;
+      } else {
+        i = 210;
+      }
     }
   }
 }

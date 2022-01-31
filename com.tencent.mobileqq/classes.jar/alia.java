@@ -1,16 +1,18 @@
-import android.graphics.RectF;
-
 public class alia
 {
-  public double a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public float a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
+    return localStringBuilder.toString();
+  }
 }
 
 

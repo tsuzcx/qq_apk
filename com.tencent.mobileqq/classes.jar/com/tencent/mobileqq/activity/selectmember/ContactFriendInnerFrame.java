@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bcrn;
+import bcsc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.mobileqq.widget.RedDotTextView;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.widget.TabBarView;
 
 public class ContactFriendInnerFrame
   extends SelectMemberInnerFrame
-  implements bcrn
+  implements bcsc
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public TroopDiscussionBaseV a;
@@ -106,10 +106,10 @@ public class ContactFriendInnerFrame
     super.a(paramBundle);
     paramBundle = a();
     setContentView(2131560146);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131376794));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131376796));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131691076));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(ajyc.a(2131702469) + paramBundle.getString(2131691076));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(ajya.a(2131702480) + paramBundle.getString(2131691076));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131691077));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131691077));
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368179));
@@ -118,7 +118,7 @@ public class ContactFriendInnerFrame
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719207), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719218), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
   }
   
   public void d()

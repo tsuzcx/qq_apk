@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae;
 
-import biim;
+import bijd;
 
 public class AEPituCameraUnit$23
   implements Runnable
 {
-  public AEPituCameraUnit$23(biim parambiim) {}
+  public AEPituCameraUnit$23(bijd parambijd) {}
   
   public void run()
   {
-    biim.d(this.this$0);
+    bijd.d(this.this$0);
   }
 }
 

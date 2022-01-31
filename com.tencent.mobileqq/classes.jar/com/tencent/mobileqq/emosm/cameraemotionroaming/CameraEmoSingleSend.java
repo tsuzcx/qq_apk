@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import ajth;
+import ajtf;
 import android.text.TextUtils;
-import anrs;
 import anrx;
-import anry;
-import anrz;
-import axrl;
-import biuw;
-import bizu;
+import ansc;
+import ansd;
+import anse;
+import axrn;
+import bivn;
+import bjal;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -23,9 +23,9 @@ import java.util.Timer;
 public class CameraEmoSingleSend
   extends AsyncStep
 {
-  private ajth jdField_a_of_type_Ajth;
-  private anrs jdField_a_of_type_Anrs;
-  private anrz jdField_a_of_type_Anrz;
+  private ajtf jdField_a_of_type_Ajtf;
+  private anrx jdField_a_of_type_Anrx;
+  private anse jdField_a_of_type_Anse;
   private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
@@ -48,16 +48,16 @@ public class CameraEmoSingleSend
     for (;;)
     {
       ((CameraEmotionData)localObject2).RomaingType = ((String)???);
-      this.jdField_a_of_type_Anrz.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-      this.jdField_a_of_type_Anrz.a();
-      this.jdField_a_of_type_Ajth.a(5, paramBoolean, 14);
+      this.jdField_a_of_type_Anse.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+      this.jdField_a_of_type_Anse.a();
+      this.jdField_a_of_type_Ajtf.a(5, paramBoolean, 14);
       localObject2 = new HashMap();
       if (paramBoolean)
       {
         ??? = "1";
         ((HashMap)localObject2).put("sucFlag", ???);
         ((HashMap)localObject2).put("retCode", String.valueOf(paramInt));
-        axrl.a(BaseApplication.getContext()).a(null, "CamEmoUpload", paramBoolean, 0L, 0L, (HashMap)localObject2, null);
+        axrn.a(BaseApplication.getContext()).a(null, "CamEmoUpload", paramBoolean, 0L, 0L, (HashMap)localObject2, null);
       }
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
@@ -82,8 +82,8 @@ public class CameraEmoSingleSend
       String str = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
       this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath = paramString;
       this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.md5 = str;
-      this.jdField_a_of_type_Anrz.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-      this.jdField_a_of_type_Anrs.a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, new anry(this));
+      this.jdField_a_of_type_Anse.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+      this.jdField_a_of_type_Anrx.a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, new ansd(this));
       return;
     }
     a(false, 14);
@@ -113,14 +113,14 @@ public class CameraEmoSingleSend
         }
         QLog.d("CameraEmoSingleSend", 1, new Object[] { "resend, emoOriginalPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath, " emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath, " emoId:", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoId) });
         this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.RomaingType = "failed";
-        this.jdField_a_of_type_Anrz.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-        this.jdField_a_of_type_Ajth.notifyUI(4, true, null);
+        this.jdField_a_of_type_Anse.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+        this.jdField_a_of_type_Ajtf.notifyUI(4, true, null);
         return 7;
         bool2 = false;
         break;
       }
       label244:
-      this.jdField_a_of_type_Anrz.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+      this.jdField_a_of_type_Anse.b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
     }
     for (;;)
     {
@@ -149,8 +149,8 @@ public class CameraEmoSingleSend
               return 7;
             }
             long l = System.currentTimeMillis();
-            ??? = new biuw(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath);
-            ((biuw)???).a(new anrx(this, (biuw)???, l));
+            ??? = new bivn(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath);
+            ((bivn)???).a(new ansc(this, (bivn)???, l));
           }
           QLog.d("CameraEmoSingleSend", 1, new Object[] { "upload no need wait, timer canceled, emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath });
           return 7;
@@ -166,10 +166,10 @@ public class CameraEmoSingleSend
   
   public void b()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)bizu.a();
-    this.jdField_a_of_type_Anrz = ((anrz)localQQAppInterface.getManager(333));
-    this.jdField_a_of_type_Ajth = ((ajth)localQQAppInterface.a(160));
-    this.jdField_a_of_type_Anrs = ((anrs)localQQAppInterface.getManager(334));
+    QQAppInterface localQQAppInterface = (QQAppInterface)bjal.a();
+    this.jdField_a_of_type_Anse = ((anse)localQQAppInterface.getManager(333));
+    this.jdField_a_of_type_Ajtf = ((ajtf)localQQAppInterface.a(160));
+    this.jdField_a_of_type_Anrx = ((anrx)localQQAppInterface.getManager(334));
   }
 }
 

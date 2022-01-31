@@ -1,12 +1,6 @@
-public class bcfb
+public abstract interface bcfb
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean;
-  String d;
+  public abstract void onCheckOfflineFinish(int paramInt);
 }
 
 

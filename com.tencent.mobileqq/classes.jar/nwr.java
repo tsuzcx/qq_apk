@@ -1,30 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nwr
-  implements rel
+  implements bfpj
 {
-  private WeakReference<ReadInJoyNewBaseActivity> a;
+  public nwr(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public nwr(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
+  public void onDismiss()
   {
-    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
-  }
-  
-  public void a()
-  {
-    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
-    if (localReadInJoyNewFeedsActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
-      }
-    }
-    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
+    {
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
       return;
+      bool = false;
     }
-    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 

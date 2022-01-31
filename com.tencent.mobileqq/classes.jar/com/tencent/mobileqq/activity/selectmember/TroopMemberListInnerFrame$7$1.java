@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aigh;
+import aigf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -10,7 +10,7 @@ import java.util.List;
 public class TroopMemberListInnerFrame$7$1
   implements Runnable
 {
-  public TroopMemberListInnerFrame$7$1(aigh paramaigh, List paramList) {}
+  public TroopMemberListInnerFrame$7$1(aigf paramaigf, List paramList) {}
   
   public void run()
   {
@@ -28,8 +28,8 @@ public class TroopMemberListInnerFrame$7$1
       for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
       {
         QLog.d("TroopMemberListInnerFrame", 2, i);
-        this.jdField_a_of_type_Aigh.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Aigh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Aigh.a.b, System.currentTimeMillis()).commit();
-        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Aigh.a, this.jdField_a_of_type_Aigh.a.b, this.jdField_a_of_type_JavaUtilList);
+        this.jdField_a_of_type_Aigf.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Aigf.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Aigf.a.b, System.currentTimeMillis()).commit();
+        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Aigf.a, this.jdField_a_of_type_Aigf.a.b, this.jdField_a_of_type_JavaUtilList);
         return;
       }
       return;

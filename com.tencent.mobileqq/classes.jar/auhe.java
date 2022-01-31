@@ -1,29 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-
-public class auhe
-  implements bfvg
+public abstract interface auhe
 {
-  public auhe(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public abstract void a();
   
-  public void a(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     auhe
  * JD-Core Version:    0.7.0.1
  */

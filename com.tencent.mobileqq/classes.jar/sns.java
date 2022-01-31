@@ -1,20 +1,32 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
 class sns
-  implements View.OnTouchListener
+  extends akws
 {
-  sns(snq paramsnq, int paramInt) {}
+  sns(snn paramsnn) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a()
   {
-    snq.a(this.jdField_a_of_type_Snq, paramView);
-    this.jdField_a_of_type_Snq.d = this.jdField_a_of_type_Int;
-    snq.a(this.jdField_a_of_type_Snq).onTouchEvent(paramMotionEvent);
-    return false;
+    return 0;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+    }
+    this.a.a = true;
+    snn.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    snn.a(this.a, 2131695569);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

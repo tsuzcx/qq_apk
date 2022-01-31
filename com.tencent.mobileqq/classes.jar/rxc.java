@@ -1,52 +1,25 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.widget.FrameLayout;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 class rxc
-  implements rvz
+  implements rxd
 {
-  rxc(rxb paramrxb, FrameLayout paramFrameLayout) {}
+  rxc(rxb paramrxb) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    if (rxb.a(this.jdField_a_of_type_Rxb) != null) {
-      rxb.a(this.jdField_a_of_type_Rxb).a(paramInt);
-    }
+    rxb.a(this.a).b(paramString, paramOnClickListener);
   }
   
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    if (paramInt2 == 5)
-    {
-      Intent localIntent = new Intent();
-      localIntent.setAction("float_layer_finsh_action");
-      rxb.a(this.jdField_a_of_type_Rxb).getActivity().sendBroadcast(localIntent);
-    }
-    rxb.a(this.jdField_a_of_type_Rxb).getActivity().doOnBackPressed();
-    rxb.a(this.jdField_a_of_type_Rxb).getActivity().overridePendingTransition(0, 0);
+    rxb.a(this.a).c(paramBoolean);
   }
   
-  public void b()
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    }
+    rxb.a(this.a).a(paramString, paramOnClickListener);
   }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt == 2) && (rxb.a(this.jdField_a_of_type_Rxb).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void c() {}
 }
 
 

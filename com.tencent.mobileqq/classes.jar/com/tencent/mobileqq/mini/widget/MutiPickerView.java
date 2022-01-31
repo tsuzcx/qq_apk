@@ -53,10 +53,10 @@ public class MutiPickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131370599));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131370600));
+    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131370598));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131370599));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131370601));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131370600));
     this.mConfirmTextView.setOnClickListener(this);
     setOnCancelListener(this);
   }
@@ -124,14 +124,14 @@ public class MutiPickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370600)
+    if (paramView.getId() == 2131370599)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131370601) {
+    while (paramView.getId() != 2131370600) {
       return;
     }
     if (this.mOnConfirmListener != null) {

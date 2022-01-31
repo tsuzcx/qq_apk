@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
 public class wgk
-  implements DialogInterface.OnDismissListener
+  implements BusinessObserver
 {
   public wgk(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.f = false;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
+      return;
+    }
+    this.b.g();
   }
 }
 

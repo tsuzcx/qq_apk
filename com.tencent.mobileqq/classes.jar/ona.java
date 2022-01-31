@@ -1,62 +1,85 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class ona
-  implements WtTicketPromise
+public class ona
 {
-  ona(TicketManager paramTicketManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void Done(Ticket paramTicket)
+  private static String a(String paramString)
   {
-    int j = 0;
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
+    paramString = paramString.getBytes();
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      QLog.i(omx.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      omx.a(this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "m.tencent.com"));
-      if ((!TextUtils.isEmpty(omx.b())) && (omx.b().length() > 0)) {
-        QLog.i(omx.a(), 1, "getPskeyFromServerAndRetry get pskey from server success!");
-      }
-      return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null))
+      paramString[i] = ((byte)(paramString[i] ^ 0xB6));
+      i += 1;
+    }
+    return bbco.encodeToString(paramString, 2);
+  }
+  
+  public static void a()
+  {
+    Object localObject1 = onh.a().getApplication().getPackageManager();
+    Object localObject2 = ((PackageManager)localObject1).getInstalledPackages(0);
+    String str = onh.a();
+    if (localObject2 != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        i = 2;
-      }
-      else
-      {
-        i = j;
-        if (paramTicket != null)
+        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject2).next();
+        try
         {
-          i = j;
-          if (paramTicket._pskey_map != null)
+          if (((PackageManager)localObject1).getLaunchIntentForPackage(localPackageInfo.packageName) != null)
           {
-            i = j;
-            if (paramTicket._pskey_map.get("m.tencent.com") == null) {
-              i = 3;
-            }
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("package_name", localPackageInfo.packageName);
+            localJSONObject.put("version_name", localPackageInfo.versionName);
+            localJSONObject.put("first_install_time", localPackageInfo.firstInstallTime);
+            localJSONObject.put("last_update_time", localPackageInfo.lastUpdateTime);
+            localArrayList.add(localJSONObject);
           }
         }
+        catch (JSONException localJSONException)
+        {
+          QLog.e("ReadInJoyRUA", 2, "reportUserApps: ", localJSONException);
+        }
+      }
+      int k = localArrayList.size();
+      int m = k / 4;
+      int i = 0;
+      while (i < m + 1)
+      {
+        localObject1 = new JSONArray();
+        int j = 0;
+        while (j < 4)
+        {
+          int n = i * 4 + j;
+          if (n >= k) {
+            break;
+          }
+          ((JSONArray)localObject1).put(localArrayList.get(n));
+          j += 1;
+        }
+        localObject1 = a(((JSONArray)localObject1).toString());
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("uin", str);
+        ((HashMap)localObject2).put("data", localObject1);
+        QLog.d("ReadInJoyRUA", 2, "reportUserApps: " + (String)localObject1);
+        axrn.a(onh.a().getApplication()).a(str, "actKandianRUA", true, 1L, 0L, (HashMap)localObject2, null, false);
+        i += 1;
       }
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i(omx.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i(omx.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
   }
 }
 

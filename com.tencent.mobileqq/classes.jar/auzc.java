@@ -1,43 +1,24 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
 public class auzc
-  implements ViewPager.OnPageChangeListener
+  extends Handler
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public auzc(CircularProgressBar paramCircularProgressBar) {}
   
-  public auzc(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 1)
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.b)
-      {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      if (CircularProgressBar.a(this.a) > 360) {
+        CircularProgressBar.a(this.a, 0);
       }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
-      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
     }
   }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
 }
 
 

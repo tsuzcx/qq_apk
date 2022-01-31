@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
 
 public class aair
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aair(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public aair(ArkFullScreenAppActivity.8.1.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      altd.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, altd.c, 0, 0);
-    }
-    this.a.a();
+    paramDialogInterface.dismiss();
   }
 }
 

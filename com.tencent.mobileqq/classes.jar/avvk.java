@@ -1,6 +1,6 @@
 public abstract interface avvk
 {
-  public abstract void setNeedAdvertisement(boolean paramBoolean);
+  public abstract void a();
 }
 
 

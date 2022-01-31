@@ -1,23 +1,23 @@
 package cooperation.weiyun;
 
-import ajyc;
-import bcpw;
-import bidb;
+import ajya;
+import bcql;
+import bids;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class WeiyunMagnifierSDK$LeakListener$2
   implements Runnable
 {
-  public WeiyunMagnifierSDK$LeakListener$2(bidb parambidb, String paramString1, boolean paramBoolean, String paramString2) {}
+  public WeiyunMagnifierSDK$LeakListener$2(bids parambids, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = ajyc.a(2131716926) + this.b;; str = ajyc.a(2131716925))
+    for (String str = ajya.a(2131716937) + this.b;; str = ajya.a(2131716936))
     {
-      bcpw.a(localBaseApplicationImpl, str, 2000).a();
+      bcql.a(localBaseApplicationImpl, str, 2000).a();
       return;
     }
   }

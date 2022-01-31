@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
 
 public class agxt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public agxt(RedPacketPopFragment paramRedPacketPopFragment) {}
+  public agxt(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
+    {
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
+    }
   }
 }
 

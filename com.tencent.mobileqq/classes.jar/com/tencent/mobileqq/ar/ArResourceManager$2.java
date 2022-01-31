@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar;
 
-import alce;
-import alci;
+import alcd;
+import alch;
 import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
 public class ArResourceManager$2
   implements Runnable
 {
-  public ArResourceManager$2(alci paramalci, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ArResourceManager$2(alch paramalch, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {

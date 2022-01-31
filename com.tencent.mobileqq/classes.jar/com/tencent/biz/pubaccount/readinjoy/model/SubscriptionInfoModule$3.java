@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import osm;
-import pbu;
+import osj;
+import pbr;
 
 public class SubscriptionInfoModule$3
   implements Runnable
 {
-  public SubscriptionInfoModule$3(pbu parampbu, List paramList) {}
+  public SubscriptionInfoModule$3(pbr parampbr, List paramList) {}
   
   public void run()
   {
-    osm.a().b(this.a);
+    osj.a().b(this.a);
   }
 }
 

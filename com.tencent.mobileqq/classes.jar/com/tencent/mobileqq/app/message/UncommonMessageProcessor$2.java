@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import akri;
+import akrh;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class UncommonMessageProcessor$2
   extends SendMessageHandler.SendMessageRunnable
 {
-  public UncommonMessageProcessor$2(akri paramakri, ToServiceMsg paramToServiceMsg) {}
+  public UncommonMessageProcessor$2(akrh paramakrh, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {

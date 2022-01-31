@@ -1,60 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class apkx
-  implements amgw
+  extends aoun
 {
-  private DataLineMsgRecord a;
+  public apkx(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
   
-  public apkx(DataLineMsgRecord paramDataLineMsgRecord)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
   {
-    this.a = paramDataLineMsgRecord;
-  }
-  
-  private String a()
-  {
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
-        str = localJSONObject.toString();
+    if (!paramBoolean) {
+      if ((paramString != null) && (paramString.length() > 0)) {
+        apug.a(paramString);
       }
-      return str;
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.a == null)
+    do
     {
-      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    amhc localamhc = new amhc();
-    localamhc.a(17039360);
-    String str = apvk.b(6, this.a.sessionid + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localamhc.a(str);
-    localamhc.b(this.a.filename);
-    localamhc.c(apvb.a(this.a.filesize));
-    int i = apue.a(apue.a(this.a.filename));
-    localamhc.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localamhc.a(str.getBytes());
-    }
-    return localamhc.a();
+      do
+      {
+        do
+        {
+          return;
+        } while ((this.a.b == null) || (this.a.app == null));
+        if (this.a.b.b() == paramLong) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
+      return;
+    } while (this.a.app.a().b(paramLong) != null);
+    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
   }
 }
 

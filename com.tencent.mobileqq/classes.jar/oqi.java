@@ -1,24 +1,8 @@
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import java.io.File;
-
-public class oqi
-  implements OnCompositionLoadedListener
+public abstract interface oqi
 {
-  public oqi(ReadInJoyLottieDrawable.4 param4) {}
+  public abstract void a();
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    if (paramLottieComposition != null)
-    {
-      oqe.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
-      oqe.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
+  public abstract void b();
 }
 
 

@@ -1,18 +1,22 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ahgo
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  ahgo(ahgn paramahgn) {}
+  ahgo(ahgl paramahgl, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a();
+    ahif.a("sq.cptp", 1, 0, null, false);
+    if (!naj.a(this.jdField_a_of_type_JavaLangString))
+    {
+      QLog.d("SpringBigInsertPage", 1, "invalide actionUrl: " + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    return true;
+    this.jdField_a_of_type_Ahgl.a();
+    ahgl.a(this.jdField_a_of_type_Ahgl, this.jdField_a_of_type_JavaLangString);
   }
 }
 

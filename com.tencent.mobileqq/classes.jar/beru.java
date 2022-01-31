@@ -1,23 +1,28 @@
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 
-public class beru
+public final class beru
+  implements Parcelable.Creator<LoginInfo>
 {
-  public int a = -1;
-  public ShareChatModel a;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public boolean b;
-  public int c = -1;
-  public String c;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
+  public LoginInfo a(Parcel paramParcel)
+  {
+    LoginInfo localLoginInfo = new LoginInfo();
+    LoginInfo.a(localLoginInfo, paramParcel.readInt());
+    LoginInfo.a(localLoginInfo, paramParcel.readString());
+    LoginInfo.b(localLoginInfo, paramParcel.readString());
+    LoginInfo.c(localLoginInfo, paramParcel.readString());
+    LoginInfo.d(localLoginInfo, paramParcel.readString());
+    LoginInfo.a(localLoginInfo, paramParcel.createByteArray());
+    LoginInfo.e(localLoginInfo, paramParcel.readString());
+    LoginInfo.f(localLoginInfo, paramParcel.readString());
+    return localLoginInfo;
+  }
+  
+  public LoginInfo[] a(int paramInt)
+  {
+    return new LoginInfo[paramInt];
+  }
 }
 
 

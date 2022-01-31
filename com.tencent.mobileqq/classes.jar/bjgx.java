@@ -1,9 +1,20 @@
-import android.support.annotation.NonNull;
+import android.graphics.RectF;
+import android.text.TextPaint;
 
-public abstract interface bjgx
+public abstract class bjgx
 {
-  @NonNull
-  public abstract String a(int paramInt, @NonNull String paramString);
+  protected int a;
+  protected RectF a;
+  protected TextPaint a;
+  protected int b;
+  
+  public bjgx(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+  }
 }
 
 

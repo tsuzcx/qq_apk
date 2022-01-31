@@ -1,32 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.smtt.sdk.WebView;
 
-class aquh
-  extends Handler
+public abstract interface aquh
 {
-  aquh(aqug paramaqug, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(WebView paramWebView);
   
-  public void handleMessage(Message paramMessage)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)aqug.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
-  }
+  public abstract void b(WebView paramWebView);
 }
 
 

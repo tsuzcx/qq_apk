@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import adll;
-import alpf;
+import adlj;
+import alpe;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppModuleReg$ModuleQQ$14
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$14(alpf paramalpf, long paramLong, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$14(alpe paramalpe, long paramLong, String paramString) {}
   
   public void run()
   {
@@ -27,11 +27,11 @@ public class ArkAppModuleReg$ModuleQQ$14
           return;
         } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
         localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = adll.a((ark.Container)localObject);
+        localObject = adlj.a((ark.Container)localObject);
       } while (localObject == null);
-      localObject = (adll)((WeakReference)localObject).get();
+      localObject = (adlj)((WeakReference)localObject).get();
     } while (localObject == null);
-    localArkFullScreenAppActivity.a((adll)localObject, this.jdField_a_of_type_JavaLangString);
+    localArkFullScreenAppActivity.a((adlj)localObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 

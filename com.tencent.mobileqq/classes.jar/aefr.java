@@ -1,25 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aefr
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  aefr(aefp paramaefp) {}
+  aefr(aefn paramaefn) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (aefp.a(this.a) != null) {
-      aefp.a(this.a).setVisibility(8);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if (aefp.a(this.a) != null) {
-      aefp.a(this.a).c();
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

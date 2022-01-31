@@ -1,81 +1,51 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.util.StateSet;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
-public class bcjy
-  extends bcni
+public abstract class bcjy
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bcjz jdField_a_of_type_Bcjz;
-  private boolean jdField_a_of_type_Boolean = true;
+  public DraggableGridView a;
   
-  public bcjy(Drawable paramDrawable1, Drawable paramDrawable2)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract Object a(int paramInt);
+  
+  public abstract Object a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  
+  public int b()
   {
-    super(null, 0);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(jdField_a_of_type_ArrayOfInt, paramDrawable2);
-    localStateListDrawable.addState(StateSet.WILD_CARD, paramDrawable1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, paramDrawable2.getBounds().right, paramDrawable2.getBounds().bottom);
+    return 1;
   }
   
-  public void a(View paramView)
+  public int b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
-    paramView.invalidate();
+    return 0;
   }
   
-  public void a(bcjz parambcjz)
+  public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bcjz = parambcjz;
+    this.a.a(paramInt1, paramInt2);
   }
   
-  public void a(boolean paramBoolean)
+  public void c()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    int i;
-    do
-    {
-      return false;
-      i = paramMotionEvent.getAction();
-    } while (i == 2);
-    if (i == 0) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
-    }
-    for (;;)
-    {
-      if ((i == 1) && (this.jdField_a_of_type_Bcjz != null)) {
-        this.jdField_a_of_type_Bcjz.a(this);
-      }
-      paramView.invalidate();
-      return true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
-    paramView.invalidate();
-  }
-  
-  public Drawable getDrawable()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    ((bclu)this.a.a()).notifyDataSetChanged();
   }
 }
 

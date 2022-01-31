@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import ahfz;
+import ahfx;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -34,8 +34,8 @@ class MiniAppDesktopAdapter$ModuleViewHolder
   {
     super(paramView);
     this.mActivityReference = new WeakReference(paramActivity);
-    this.mModuleText = ((TextView)paramView.findViewById(2131370217));
-    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370216));
+    this.mModuleText = ((TextView)paramView.findViewById(2131370216));
+    this.mMoreMiniApp = ((ImageView)paramView.findViewById(2131370215));
   }
   
   public void update(DesktopAppModuleInfo paramDesktopAppModuleInfo)
@@ -46,12 +46,12 @@ class MiniAppDesktopAdapter$ModuleViewHolder
     Object localObject2;
     if (localAppInterface != null)
     {
-      localObject1 = (ahfz)localAppInterface.getManager(342);
-      if ((localObject1 == null) || (!((ahfz)localObject1).h())) {
+      localObject1 = (ahfx)localAppInterface.getManager(342);
+      if ((localObject1 == null) || (!((ahfx)localObject1).h())) {
         break label343;
       }
       DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppInterface.getManager(336);
-      localObject2 = ((ahfz)localObject1).a();
+      localObject2 = ((ahfx)localObject1).a();
       localObject1 = localObject2;
       if (localDesktopDataManager != null)
       {
@@ -98,7 +98,7 @@ class MiniAppDesktopAdapter$ModuleViewHolder
         return;
         label343:
         this.mModuleText.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131166931));
-        this.mMoreMiniApp.setImageResource(2130849076);
+        this.mMoreMiniApp.setImageResource(2130849082);
         break;
         i = 3004;
         break label222;

@@ -1,235 +1,567 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.tencent.qphone.base.util.MD5;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bbwu
 {
-  public static Map<String, Long> a;
-  private int jdField_a_of_type_Int = -1;
-  private final String jdField_a_of_type_JavaLangString = "LhHelper";
-  private int jdField_b_of_type_Int = -1;
-  private final String jdField_b_of_type_JavaLangString = "a4d7ea5belhtimecard";
-  private final String c = "cmd=rsp&key=a4d7ea5belhtimecard";
-  private final String d = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi";
-  private String e;
+  public byte a;
+  public float a;
+  public int a;
+  public long a;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private bbwt jdField_a_of_type_Bbwt;
+  public bbwv a;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  ArrayList<bbwu> jdField_a_of_type_JavaUtilArrayList;
+  public List<String> a;
+  public Map<String, File> a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public boolean e;
+  public int f;
+  public long f;
+  public String f;
+  public boolean f;
+  public int g;
+  public long g;
+  public boolean g;
+  public long h;
+  public boolean h;
+  public long i;
+  public boolean i = true;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o = true;
+  public boolean p = true;
+  public boolean q;
+  public boolean r;
+  public boolean s = true;
   
-  static
+  public bbwu(String paramString, File paramFile)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap(10);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_e_of_type_Int = 60000;
+    this.jdField_f_of_type_JavaLangString = "Vip";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_Bbwv = new bbwv();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramFile);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_d_of_type_Int = 1;
   }
   
-  public bbwu(String paramString)
+  public bbwu(List<String> paramList, Map<String, File> paramMap, String paramString)
   {
-    this.e = paramString;
-  }
-  
-  private OkHttpClient a()
-  {
-    OkHttpClient localOkHttpClient = new OkHttpClient();
-    localOkHttpClient.setConnectTimeout(5L, TimeUnit.SECONDS);
-    localOkHttpClient.setReadTimeout(5L, TimeUnit.SECONDS);
-    return localOkHttpClient;
-  }
-  
-  private String a()
-  {
-    return MD5.toMD5("cmd=rsp&key=a4d7ea5belhtimecard&uin=" + this.e);
-  }
-  
-  private String a(int paramInt)
-  {
-    return MD5.toMD5("cmd=" + paramInt + "&key=" + "a4d7ea5belhtimecard" + "&uin=" + this.e);
-  }
-  
-  private JSONObject a(int paramInt)
-  {
-    int i;
-    try
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_e_of_type_Int = 60000;
+    this.jdField_f_of_type_JavaLangString = "Vip";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_Bbwv = new bbwv();
+    if (paramList != null)
     {
-      Object localObject = b(paramInt);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return null;
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      if (paramMap == null) {
+        break label169;
       }
-      QLog.d("LhHelper", 1, "reqCgi cmd = " + paramInt);
-      localObject = new Request.Builder().url((String)localObject).build();
-      localObject = a().newCall((Request)localObject).execute();
-      i = ((Response)localObject).code();
-      if (i == 200)
-      {
-        localObject = new JSONObject(((Response)localObject).body().string()).optJSONObject("12042");
-        if (localObject == null) {
-          break label278;
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("data");
-        if (localObject == null) {
-          break label278;
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("rsp");
-        if (localObject == null) {
-          break label278;
-        }
-        i = ((JSONObject)localObject).optInt("ret");
-        String str = ((JSONObject)localObject).optString("sign");
-        QLog.d("LhHelper", 1, "reqCgi retCode = " + i);
-        if ((i == 0) && (a().equalsIgnoreCase(str))) {
-          return localObject;
-        }
-        QLog.e("LhHelper", 1, "reqCgi rsp sign error, cmd = " + paramInt);
-        return null;
-      }
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      QLog.e("LhHelper", 1, "reqCgi exception cmd =" + paramInt + ", e = ", localThrowable);
-      return null;
+      this.jdField_a_of_type_JavaUtilMap = paramMap;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_d_of_type_Int = 2;
+      return;
+      paramList = new ArrayList();
+      break;
+      label169:
+      paramMap = new HashMap();
     }
-    QLog.e("LhHelper", 1, "reqCgi http errorCode = " + i + " ,cmd = " + paramInt);
-    label278:
-    return null;
-  }
-  
-  private JSONObject a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("req", paramJSONObject);
-      localJSONObject1.put("12042", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("LhHelper", 1, "buildReqData exception e = ", paramJSONObject);
-    }
-    return null;
-  }
-  
-  private String b(int paramInt)
-  {
-    try
-    {
-      String str = a(paramInt);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("cmd", paramInt);
-      localJSONObject.put("sign", str);
-      localJSONObject.put("uin", this.e);
-      str = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?data=" + a(localJSONObject);
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("LhHelper", 1, "buildReqUrl cmd = " + paramInt + "exception e = ", localThrowable);
-    }
-    return null;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+  }
+  
+  public Bundle a()
+  {
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    }
+    return this.jdField_a_of_type_AndroidOsBundle;
+  }
+  
+  public bbwt a()
+  {
+    return this.jdField_a_of_type_Bbwt;
+  }
+  
+  public Map<String, String> a()
+  {
+    return this.jdField_b_of_type_JavaUtilMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    float f1 = 100.0F;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Int = paramInt;
+    if (this.jdField_b_of_type_Long <= 0L) {
+      f1 = 30.0F;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Float = ((f1 + paramInt * 100) / this.jdField_a_of_type_JavaUtilList.size());
+      return;
+      if (this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)
+      {
+        if (paramInt + 1 == this.jdField_a_of_type_JavaUtilList.size())
+        {
+          a(3);
+          this.jdField_a_of_type_Float = 100.0F;
+        }
+      }
+      else {
+        f1 = 100.0F * (float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long;
+      }
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(bbwt parambbwt)
+  {
+    this.jdField_a_of_type_Bbwt = parambbwt;
+  }
+  
+  public void a(bbwu parambbwu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask,task.key=" + parambbwu.jdField_a_of_type_JavaLangString);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambbwu);
+      }
+      while (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask, taskList.size() >= DUPLICATE_LIMIT,size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (this.jdField_b_of_type_JavaUtilMap == null) {
+          this.jdField_b_of_type_JavaUtilMap = new HashMap();
+        }
+        this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
+      }
+      finally {}
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
   }
   
   public boolean a()
   {
-    try
-    {
-      if (a(2) != null) {
-        return true;
-      }
-      QLog.e("LhHelper", 1, "receiveReq rsp data is error");
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "receiveReq exception e = ", localThrowable);
-      }
-    }
-    return false;
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean a(byte paramByte)
+  {
+    return ((byte)(this.jdField_a_of_type_Byte | 0x0) & paramByte) == paramByte;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    int i1 = 0;
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("id");
+    }
+    return i1;
+  }
+  
+  public void b()
+  {
+    if (a() != null) {
+      a().onProgress(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label135;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+            localbbwu.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+            localbbwu.a().onProgress(localbbwu);
+          }
+        }
+      }
+      return;
+      label135:
+      i1 -= 1;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_f_of_type_Long = paramInt;
   }
   
   public boolean b()
   {
-    try
-    {
-      JSONObject localJSONObject = a(3);
-      if (localJSONObject != null)
-      {
-        int i = localJSONObject.optInt("lhState", -1);
-        QLog.d("LhHelper", 1, "reqLhStatus lhState = " + i);
-        if (i == 2) {
-          return true;
-        }
-      }
-      else
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus rsp data is error");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("LhHelper", 1, "reqLhStatus exception e = ", localThrowable);
-      }
-    }
-    return false;
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
-  public int c()
+  public void c()
   {
-    try
+    if (a() != null) {
+      a().onCancel(this);
+    }
+    for (;;)
     {
-      JSONObject localJSONObject = a(1);
-      if (localJSONObject != null)
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        this.jdField_a_of_type_Int = localJSONObject.optInt("buyoutMonth", -1);
-        this.jdField_b_of_type_Int = localJSONObject.optInt("buyoutType", -1);
-        int i = localJSONObject.optInt("cardState", -1);
-        if ((this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
         {
-          if (i == 0) {
-            return 1;
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label119;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onCancel(localbbwu);
           }
         }
-        else
+      }
+      return;
+      label119:
+      i1 -= 1;
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool;
+    if (a() != null) {
+      bool = a().onStart(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
         {
-          QLog.e("LhHelper", 1, "checkUserStatus buyoutData is error");
-          break label103;
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label137;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onStart(localbbwu);
+          }
         }
       }
-      else
-      {
-        QLog.e("LhHelper", 1, "checkUserStatus rsp data is empty");
-      }
+      return bool;
+      bool = true;
+      continue;
+      label137:
+      i1 -= 1;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void d()
+  {
+    if (a() != null) {
+      a().onDoneFile(this);
+    }
+    for (;;)
     {
-      QLog.e("LhHelper", 1, "checkUserStatus exception e = ", localThrowable);
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label119;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onDoneFile(localbbwu);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
     }
-    return 2;
-    label103:
-    return 3;
+  }
+  
+  public void e()
+  {
+    if (a() != null) {
+      a().onDone(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label119;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onDone(localbbwu);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof bbwu)) && (((bbwu)paramObject).jdField_a_of_type_JavaUtilList.equals(this.jdField_a_of_type_JavaUtilList));
+  }
+  
+  public void f()
+  {
+    if (a() != null) {
+      a().onNetWifi2Mobile();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label117;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onNetWifi2Mobile();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void g()
+  {
+    if (a() != null) {
+      a().onNetWifi2None();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label117;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onNetWifi2None();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void h()
+  {
+    if (a() != null) {
+      a().onNetMobile2None();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbbwu == null) || (localbbwu.a() == null)) {
+              break label117;
+            }
+            localbbwu.a(a());
+            localbbwu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbbwu.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbbwu.a().onNetMobile2None();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void i()
+  {
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          break label72;
+        }
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
+        {
+          bbwu localbbwu = (bbwu)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if (localbbwu == null) {
+            break label75;
+          }
+          localbbwu.a(null);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      label72:
+      return;
+      label75:
+      i1 -= 1;
+    }
+  }
+  
+  public String toString()
+  {
+    return " key=" + this.jdField_a_of_type_JavaLangString + ",urlList size=" + this.jdField_a_of_type_JavaUtilList.size() + "|currentUrlIndex=" + this.jdField_c_of_type_Int + "|errCode=" + this.jdField_a_of_type_Int + "|status=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger + "|readSize=" + this.jdField_b_of_type_Long + "|maxSize=" + this.jdField_a_of_type_Long + "|percent=" + this.jdField_a_of_type_Float;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbwu
  * JD-Core Version:    0.7.0.1
  */

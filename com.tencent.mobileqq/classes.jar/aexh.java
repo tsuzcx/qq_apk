@@ -1,49 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
 public class aexh
 {
   public String a;
+  public List<? extends aewf> a;
   public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("user_id", this.a);
-      localJSONObject2.put("keyword", this.b);
-      localJSONObject2.put("appid", this.c);
-      localJSONObject2.put("expose_md5s", this.d);
-      localJSONObject2.put("expose_urls", this.e);
-      localJSONObject2.put("click_md5", this.f);
-      localJSONObject2.put("click_url", this.g);
-      localJSONObject2.put("aio_type", this.h);
-      localJSONObject2.put("mobile_type", this.i);
-      localJSONObject2.put("to_user_id", this.j);
-      localJSONObject2.put("passthough", this.k);
-      localJSONObject1.put("dcId", this.l);
-      localJSONObject1.put("data", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
-    }
-    return localJSONObject1;
-  }
+  public List<? extends aewf> b;
 }
 
 

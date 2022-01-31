@@ -1,15 +1,17 @@
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.widget.Switch;
+import com.tencent.widget.ThemeImageView;
 
 public class ains
 {
   public ImageView a;
   public RelativeLayout a;
   public TextView a;
-  public andx a;
-  public Switch a;
+  public anec a;
+  public ThemeImageView a;
+  
+  public ains(ainr paramainr) {}
 }
 
 

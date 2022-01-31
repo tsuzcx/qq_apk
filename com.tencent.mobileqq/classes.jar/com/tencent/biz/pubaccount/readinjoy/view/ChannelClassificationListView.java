@@ -4,20 +4,20 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.AdapterView.OnItemClickListener;
-import bawz;
+import baxn;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
 import java.util.ArrayList;
+import qzk;
+import qzl;
 import qzn;
-import qzo;
-import qzq;
 
-public class ChannelClassificationListView<T extends qzq>
+public class ChannelClassificationListView<T extends qzn>
   extends DisableSlideHorizontalListView
 {
   private int jdField_a_of_type_Int;
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private ArrayList<T> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ChannelClassificationListView<T>.qzo jdField_a_of_type_Qzo;
+  private ChannelClassificationListView<T>.qzl jdField_a_of_type_Qzl;
   
   public ChannelClassificationListView(Context paramContext)
   {
@@ -33,17 +33,17 @@ public class ChannelClassificationListView<T extends qzq>
   
   private void a()
   {
-    this.jdField_a_of_type_Qzo = new qzo(this, null);
-    setAdapter(this.jdField_a_of_type_Qzo);
-    setDividerWidth(bawz.a(getContext(), 10.0F));
-    setOnScrollStateChangedListener(new qzn(this));
+    this.jdField_a_of_type_Qzl = new qzl(this, null);
+    setAdapter(this.jdField_a_of_type_Qzl);
+    setDividerWidth(baxn.a(getContext(), 10.0F));
+    setOnScrollStateChangedListener(new qzk(this));
   }
   
   public void setData(int paramInt, ArrayList<T> paramArrayList)
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Qzo.notifyDataSetChanged();
+    this.jdField_a_of_type_Qzl.notifyDataSetChanged();
   }
   
   public void setOnItemClickListener(@Nullable AdapterView.OnItemClickListener paramOnItemClickListener)

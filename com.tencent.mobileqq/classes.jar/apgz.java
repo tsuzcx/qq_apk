@@ -1,11 +1,34 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import java.util.HashMap;
 
-class apgz
+public class apgz
 {
-  int jdField_a_of_type_Int = 201;
-  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  private int c;
+  public long c;
+  public long d;
   
-  apgz(apgy paramapgy) {}
+  public apgz()
+  {
+    this.jdField_c_of_type_Int = 3;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("param_SubReason", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_XTFReceiverType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_Suffix", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_TargetType", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_FileSize", String.valueOf(this.d));
+    localHashMap.put("param_TranferPlatform", String.valueOf(this.jdField_c_of_type_Int));
+    return localHashMap;
+  }
 }
 
 

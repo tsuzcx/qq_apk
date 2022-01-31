@@ -1,52 +1,132 @@
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class bkga
-  implements bkfz
+public class bkga
+  extends bkfz
 {
-  private List<bkfv> a = new ArrayList();
+  public static boolean b;
+  public List<bkgd> a = new ArrayList();
+  public Map<String, Map<String, bkgb>> a;
+  public int c;
+  public String f;
+  public String g = "default";
+  public String h;
+  public String i;
   
-  public void a()
+  public bkga(@NonNull String paramString)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bkfv)localIterator.next()).h();
-    }
+    super(paramString);
   }
   
-  public void a(int paramInt)
+  public static List<bkgd> a(JSONArray paramJSONArray)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bkfv)localIterator.next()).b(paramInt);
-    }
-  }
-  
-  public void a(bkfv parambkfv)
-  {
-    if (parambkfv == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(parambkfv)) {
-      throw new IllegalStateException("Observer " + parambkfv + " is already registered.");
-    }
-    this.a.add(parambkfv);
-  }
-  
-  public void b(bkfv parambkfv)
-  {
-    if (parambkfv == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    synchronized (this.a)
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    while (j < paramJSONArray.length())
     {
-      int i = this.a.indexOf(parambkfv);
-      if (i != -1) {
-        this.a.remove(i);
-      }
-      return;
+      localArrayList.add(new bkgd(paramJSONArray.getJSONObject(j)));
+      j += 1;
     }
+    return localArrayList;
+  }
+  
+  public static Map<String, Map<String, bkgb>> a(JSONArray paramJSONArray)
+  {
+    Object localObject1;
+    if (paramJSONArray != null) {
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          HashMap localHashMap1 = new HashMap(paramJSONArray.length());
+          int j = 0;
+          for (;;)
+          {
+            localObject1 = localHashMap1;
+            if (j >= paramJSONArray.length()) {
+              break;
+            }
+            Object localObject2 = paramJSONArray.getJSONObject(j);
+            localObject1 = ((JSONObject)localObject2).getString("id");
+            localObject2 = ((JSONObject)localObject2).getJSONArray("res");
+            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
+            {
+              HashMap localHashMap2 = new HashMap(((JSONArray)localObject2).length());
+              int k = 0;
+              while (k < ((JSONArray)localObject2).length())
+              {
+                JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(k);
+                bkgb localbkgb = new bkgb();
+                localbkgb.a = localJSONObject.getString("resname");
+                localbkgb.b = localJSONObject.getString("resurl");
+                localbkgb.d = localJSONObject.getString("cityname");
+                localbkgb.c = localJSONObject.getString("md5");
+                localHashMap2.put(localbkgb.d, localbkgb);
+                k += 1;
+              }
+              localHashMap1.put(localObject1, localHashMap2);
+            }
+            j += 1;
+          }
+        }
+        localObject1 = null;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        QLog.e("FacePackage", 1, paramJSONArray, new Object[0]);
+      }
+    }
+    return localObject1;
+  }
+  
+  public bkgd a(String paramString)
+  {
+    if ((!bbkk.a(paramString)) && (this.a != null))
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        bkgd localbkgd = (bkgd)localIterator.next();
+        if (paramString.equals(localbkgd.a)) {
+          return localbkgd;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return "InformationFacePackage";
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return ((bkgd)this.a.get(paramInt)).c;
+    }
+    return null;
+  }
+  
+  public int b()
+  {
+    return this.a.size();
+  }
+  
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return ((bkgd)this.a.get(paramInt)).d;
+    }
+    return null;
   }
 }
 

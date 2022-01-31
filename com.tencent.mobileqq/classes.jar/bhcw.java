@@ -1,9 +1,40 @@
 import android.view.View;
-import cooperation.qzone.contentbox.model.MQMsg;
+import android.view.View.OnClickListener;
+import cooperation.qzone.contentbox.MsgPhotoView;
 
-public abstract interface bhcw
+public class bhcw
+  implements View.OnClickListener
 {
-  public abstract void a(MQMsg paramMQMsg, View paramView, int paramInt);
+  public bhcw(MsgPhotoView paramMsgPhotoView) {}
+  
+  public void onClick(View paramView)
+  {
+    if (MsgPhotoView.a(this.a) != null)
+    {
+      if (paramView == MsgPhotoView.a(this.a)) {
+        MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
+      }
+    }
+    else {
+      return;
+    }
+    if (paramView == MsgPhotoView.b(this.a))
+    {
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
+      return;
+    }
+    if (paramView == MsgPhotoView.c(this.a))
+    {
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
+      return;
+    }
+    if (paramView == MsgPhotoView.d(this.a))
+    {
+      MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
+      return;
+    }
+    MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
+  }
 }
 
 

@@ -1,43 +1,67 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.text.TextUtils;
-import android.webkit.URLUtil;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.widget.RadioGroup;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment;
+import java.util.ArrayList;
 
 public class sas
-  implements xgx<CertifiedAccountRead.StGetMainPageRsp>
+  implements ViewPager.OnPageChangeListener
 {
   public sas(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  private void a(int paramInt)
   {
-    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
-    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
-    String str = localStUser.icon.get();
-    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
+    if (paramInt == FolderBaseTabFragment.a)
     {
-      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new sat(this, localStUser));
+      if (ServiceAccountFolderActivityNew.a(this.a)) {}
+      for (str = "1";; str = "2")
+      {
+        xhb.b("auth_discover", "tofollow", 0, 0, new String[] { str });
+        return;
+      }
+    }
+    if (ServiceAccountFolderActivityNew.a(this.a)) {}
+    for (String str = "1";; str = "2")
+    {
+      xhb.b("auth_follow", "todiscover", 0, 0, new String[] { str });
+      return;
     }
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (paramBoolean)
+    wil.a();
+    a(paramInt);
+    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
     {
-      if (paramStGetMainPageRsp != null)
-      {
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
-        veg.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
-        a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+      ServiceAccountFolderActivityNew.a(this.a).getChildAt(paramInt).performClick();
+      ServiceAccountFolderActivityNew.a(this.a, false);
+    }
+    ((FolderBaseTabFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt)).a(this.a, paramInt);
+    long l1;
+    long l2;
+    if (ServiceAccountFolderActivityNew.a(this.a) > 0L)
+    {
+      l1 = System.currentTimeMillis();
+      l2 = ServiceAccountFolderActivityNew.a(this.a);
+      if (ServiceAccountFolderActivityNew.a(this.a) != FolderBaseTabFragment.a) {
+        break label173;
       }
+    }
+    label173:
+    for (String str = "auth_follow";; str = "auth_discover")
+    {
+      xhb.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
+      ServiceAccountFolderActivityNew.a(this.a, 0L);
+      ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
+      ServiceAccountFolderActivityNew.a(this.a, paramInt);
       return;
     }
-    veg.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 

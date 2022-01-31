@@ -1,8 +1,13 @@
 public class bald
 {
-  public int a;
-  public int b;
-  public int c;
+  public long a;
+  public boolean a;
+  
+  public bald(boolean paramBoolean, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

@@ -7,8 +7,8 @@ import NS_MINI_USERAUTH.MiniUserAuth.StUserAuthScope;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bera;
-import besl;
+import berr;
+import betc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class ExtConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ExtConfigInfo> CREATOR = new bera();
+  public static final Parcelable.Creator<ExtConfigInfo> CREATOR = new berr();
   public ArrayList<ApiScopeEntry> apiScopeEntries = new ArrayList();
   public String configKey;
   public String configVersion;
@@ -67,7 +67,7 @@ public class ExtConfigInfo
     }
     catch (Exception paramStExtConfigInfo)
     {
-      besl.d("ExtConfigInfo", "merge from error", paramStExtConfigInfo);
+      betc.d("ExtConfigInfo", "merge from error", paramStExtConfigInfo);
     }
     for (;;)
     {
@@ -140,7 +140,7 @@ public class ExtConfigInfo
     }
     catch (Exception localException)
     {
-      besl.d("ExtConfigInfo", "toJson error", localException);
+      betc.d("ExtConfigInfo", "toJson error", localException);
       return localJSONObject;
     }
     JSONArray localJSONArray2 = new JSONArray();

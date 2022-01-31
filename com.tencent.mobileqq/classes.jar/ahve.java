@@ -1,22 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class ahve
-  implements bfoq
+  implements DialogInterface.OnClickListener
 {
   public ahve(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_Bfol.dismiss();
+    vei.a("video_shoot", "cancel_now", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,20 +1,29 @@
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public abstract interface auol
+public final class auol
+  implements Parcelable.Creator<ReportInfo>
 {
-  public abstract void a(int paramInt);
+  public ReportInfo a(Parcel paramParcel)
+  {
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.d = paramParcel.readInt();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    return localReportInfo;
+  }
   
-  public abstract void a(int paramInt, aunu paramaunu);
-  
-  public abstract void a(int paramInt, ArrayList<aunu> paramArrayList);
-  
-  public abstract void a_(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, aunu paramaunu);
-  
-  public abstract void c(int paramInt, aunu paramaunu);
-  
-  public abstract void d(int paramInt, aunu paramaunu);
+  public ReportInfo[] a(int paramInt)
+  {
+    return new ReportInfo[paramInt];
+  }
 }
 
 

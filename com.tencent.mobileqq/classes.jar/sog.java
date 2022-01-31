@@ -1,6 +1,18 @@
-public abstract interface sog
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+
+public class sog
+  implements View.OnClickListener
 {
-  public abstract void a(Object paramObject);
+  public sog(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
+  }
 }
 
 

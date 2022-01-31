@@ -1,63 +1,37 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class axlw
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, float paramFloat5, float paramFloat6)
+  public static int a;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static boolean jdField_a_of_type_Boolean;
+  
+  static
   {
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat5, paramFloat6);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, paramFloat1, 0, paramFloat2, 0, paramFloat3, 0, paramFloat4);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setDuration(paramInt);
-    localAnimationSet.setFillEnabled(true);
-    localAnimationSet.setFillBefore(true);
-    localAnimationSet.setFillAfter(true);
-    paramView.startAnimation(localAnimationSet);
+    jdField_a_of_type_Int = -4;
   }
   
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
+  public static boolean a()
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(paramInt);
-    localScaleAnimation.setFillEnabled(true);
-    localScaleAnimation.setFillBefore(true);
-    localScaleAnimation.setFillAfter(true);
-    if (paramAnimationListener != null) {
-      localScaleAnimation.setAnimationListener(paramAnimationListener);
+    boolean bool = false;
+    if (jdField_a_of_type_Boolean) {
+      return true;
     }
-    paramView.startAnimation(localScaleAnimation);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    a(paramView, paramBoolean, 200);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.2F, 1.0F);
-    localAlphaAnimation.setDuration(paramInt);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    b(paramView, paramBoolean, 200);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.2F);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    localAlphaAnimation.setDuration(paramInt);
-    paramView.startAnimation(localAlphaAnimation);
+    String str = axle.e(BaseApplicationImpl.getContext());
+    if (str == null) {
+      return false;
+    }
+    if (!bbdx.a(str + "libObjectTracker.so")) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
+      }
+      jdField_a_of_type_Boolean = bool;
+      return jdField_a_of_type_Boolean;
+      bool = true;
+    }
   }
 }
 

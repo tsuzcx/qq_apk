@@ -1,135 +1,68 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdht
+  implements bdll
 {
-  protected static String a;
-  protected static boolean a;
+  public bdht(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
   
-  static
+  public void a(int paramInt, String paramString)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaLangString += ".*[S|s][I|i][D|d].*";
-    jdField_a_of_type_JavaLangString += "|.*==.*";
-    jdField_a_of_type_JavaLangString += "|.*[U|u][I|i][N|n].*";
-    jdField_a_of_type_JavaLangString += "|.*%3d%3d.*";
-    jdField_a_of_type_JavaLangString += "|.*[V|v][K|k][E|e][Y|y]";
+    bdii.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
   }
   
-  protected static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(List<DownloadInfo> paramList)
   {
-    if (jdField_a_of_type_Boolean) {
-      if (paramInt == 1)
+    bdii.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
       {
-        if (paramThrowable != null) {
-          break label187;
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          if (TextUtils.isEmpty(localDownloadInfo.l)) {
+            localJSONObject.put("final_file_exits", "false");
+          }
+          for (;;)
+          {
+            localJSONArray.put(localJSONObject);
+            i += 1;
+            break;
+            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.i(paramString1, 2, "" + "::" + paramString2);
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
         }
       }
     }
-    label98:
-    do
-    {
-      break label186;
-      if ((paramInt == 2) || (paramInt == 0))
-      {
-        if (paramThrowable != null) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      if (paramInt == 3)
-      {
-        if (paramThrowable != null) {
-          break label265;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2);
-        }
-      }
-      for (;;)
-      {
-        if (paramInt == 4)
-        {
-          if (paramThrowable != null) {
-            break label304;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e(paramString1, 2, "" + "::" + paramString2);
-          }
-        }
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break;
-        if (!QLog.isColorLevel()) {
-          break label98;
-        }
-        QLog.d(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        break label98;
-        if (QLog.isColorLevel()) {
-          QLog.w(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    label186:
-    label187:
-    label226:
-    QLog.e(paramString1, 2, "" + "::" + paramString2, paramThrowable);
-    label265:
-    label304:
-    return;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(0, paramString1, paramString2, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(2, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a(1, paramString1, paramString2, null);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(3, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a(2, paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a(4, paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    a(3, paramString1, paramString2, null);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    a(4, paramString1, paramString2, null);
+    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
+    bdii.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 

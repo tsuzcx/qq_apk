@@ -1,40 +1,41 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import com.tencent.qphone.base.util.QLog;
 
 class lpw
-  implements aysa
 {
-  public void onResp(aysx paramaysx)
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  
+  void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
   {
-    Object localObject = (lpx)paramaysx.jdField_a_of_type_Aysw.a();
-    lcl.c("EffectBeautyTools", "download file call back. file = " + ((lpx)localObject).a);
-    if (paramaysx.jdField_a_of_type_Int != 0)
-    {
-      lcl.c("EffectBeautyTools", "download file faild. errcode = " + paramaysx.b);
-      return;
+    String str;
+    StringBuilder localStringBuilder;
+    if ((paramArrayOfByte == null) || (this.jdField_a_of_type_Int == 0) || (this.b == 0) || (this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.d != paramInt4) || (this.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Boolean != paramBoolean)) {
+      if (QLog.isColorLevel())
+      {
+        str = lpu.a;
+        localStringBuilder = new StringBuilder().append("onProcessFrame, data[");
+        if (paramArrayOfByte == null) {
+          break label299;
+        }
+      }
     }
-    if (!((lpx)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramaysx.jdField_a_of_type_Aysw.c)))
+    label299:
+    for (boolean bool = true;; bool = false)
     {
-      lcl.c("EffectBeautyTools", "download file faild : md5 is not match.");
-      bbdj.d(paramaysx.jdField_a_of_type_Aysw.c);
+      QLog.d(str, 1, bool + "], frameIndex[" + paramLong2 + "], width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.b + "->" + paramInt2 + "], format[" + this.c + "->" + paramInt3 + "], angle[" + this.d + "->" + paramInt4 + "], FPS[" + this.jdField_a_of_type_Long + "->" + paramLong1 + "], isFront[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.d = paramInt4;
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_a_of_type_Boolean = paramBoolean;
       return;
-    }
-    lcl.c("EffectBeautyTools", "download file successed.");
-    try
-    {
-      localObject = lco.h();
-      bbdj.a(paramaysx.jdField_a_of_type_Aysw.c, (String)localObject, false);
-      bbdj.d(paramaysx.jdField_a_of_type_Aysw.c);
-      return;
-    }
-    catch (IOException paramaysx)
-    {
-      paramaysx.printStackTrace();
-      lcl.c("EffectBeautyTools", "unzip file faild.");
     }
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

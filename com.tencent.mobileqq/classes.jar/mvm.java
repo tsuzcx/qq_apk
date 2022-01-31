@@ -1,21 +1,21 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
 public class mvm
-  implements Comparator<Integer>
+  implements Animation.AnimationListener
 {
-  public mvm(StageEffectView paramStageEffectView) {}
+  public mvm(StageEffectView.5.1 param1) {}
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramInteger1 = (mvt)this.a.getChildAt(paramInteger1.intValue()).getTag();
-    paramInteger2 = (mvt)this.a.getChildAt(paramInteger2.intValue()).getTag();
-    if (paramInteger1.c < paramInteger2.c) {
-      return 1;
-    }
-    return -1;
+    this.a.a.a.a(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

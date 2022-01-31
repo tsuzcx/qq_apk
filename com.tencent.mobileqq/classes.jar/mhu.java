@@ -1,8 +1,18 @@
-import com.tencent.av.ui.QavListItemBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.QavPanel;
 
-public abstract interface mhu
+public class mhu
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
+  public mhu(QavPanel paramQavPanel) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.a.a(true);
+    }
+  }
 }
 
 

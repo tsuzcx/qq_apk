@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class afhf
-  implements aftj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public afhf(TroopView paramTroopView) {}
   
-  public int a(int paramInt, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    int i = TroopView.a(this.a).getCurrentItem();
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    Object localObject = TroopView.a(this.a).a(i, false);
-    if (localObject != null)
+    for (;;)
     {
-      localObject = (AddContactViewPagerTroopFragment)localObject;
-      afdk localafdk = (afdk)this.a.a.get(i);
-      if ((paramInt >= 0) && (paramInt < localafdk.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localafdk.b = paramInt;
-        afdl localafdl = (afdl)localafdk.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        ((AddContactViewPagerTroopFragment)localObject).a(localafdl.b, localafdl.jdField_a_of_type_JavaLangString);
-        axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_clk", 0, 0, localafdl.jdField_a_of_type_JavaLangString, localafdk.jdField_a_of_type_JavaLangString, "", "");
-      }
+      TroopView.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    return 0;
   }
 }
 

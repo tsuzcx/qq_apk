@@ -1,37 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class agmo
 {
-  public static boolean a(String paramString)
+  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  
+  public agmo(PhotoCropActivity paramPhotoCropActivity)
   {
-    if (("jpg".equals(paramString)) || ("gif".equals(paramString)) || ("png".equals(paramString)) || ("jpeg".equals(paramString))) {}
-    while ((paramString.lastIndexOf("bmp") != -1) || (paramString.lastIndexOf("bitmap") != -1)) {
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
   }
   
-  public static String[] a(String paramString)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String[] arrayOfString;
-    do
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
     {
-      return null;
-      arrayOfString = paramString.split("/");
-      if (arrayOfString.length == 2) {
-        break;
+      bfpc localbfpc = (bfpc)bfpp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        localbfpc.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
+        i += 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MimeHelper", 2, "Mimetype error:" + paramString);
-    return null;
-    return arrayOfString;
+      localbfpc.c(2131690596);
+      localbfpc.a(new agmp(this, localbfpc));
+      localbfpc.show();
+    }
   }
   
-  public static boolean b(String paramString)
+  public void a(int paramInt) {}
+  
+  public void a(String[] paramArrayOfString)
   {
-    return "video/mp4".equals(paramString);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
 }
 

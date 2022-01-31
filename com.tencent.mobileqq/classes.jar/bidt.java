@@ -1,32 +1,36 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class bidt
-  implements Cloneable
+  extends RemoteCommand
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  private static bidu jdField_a_of_type_Bidu;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
-  private bidt(bidr parambidr, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public bidt()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    super("weiyun.notify_state");
   }
   
-  public bidt a()
+  public void a(bidu parambidu)
   {
-    try
+    jdField_a_of_type_Bidu = parambidu;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    paramOnInvokeFinishLinstener = new Bundle();
+    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
     {
-      bidt localbidt = (bidt)super.clone();
-      return localbidt;
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
+      if (jdField_a_of_type_Bidu != null) {
+        jdField_a_of_type_Bidu.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      }
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    return paramOnInvokeFinishLinstener;
   }
 }
 

@@ -1,68 +1,111 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
 
-class bitq
-  implements bjob<biqv>
+public class bitq
+  extends RecyclerView.Adapter<bits>
 {
-  bitq(bitp parambitp, bisc parambisc) {}
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bitf jdField_a_of_type_Bitf;
+  private ArrayList<bitb> jdField_a_of_type_JavaUtilArrayList;
   
-  public void a(@Nullable biqv parambiqv)
+  public bitq(Context paramContext, bitf parambitf)
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material download state");
-    if ((parambiqv == null) || (bitj.a(this.jdField_a_of_type_Bitp.a) == null)) {}
-    label360:
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bitf = parambitf;
+    a(this.jdField_a_of_type_Bitf.a());
+    a(this.jdField_a_of_type_Bitf.a());
+  }
+  
+  private void a(RecyclerView paramRecyclerView)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+  }
+  
+  private void a(ArrayList<bitb> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public bits a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
+    }
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558522, paramViewGroup, false);
+    if (paramInt != 0) {
+      paramViewGroup.setVisibility(4);
+    }
+    return new bits(paramViewGroup);
+  }
+  
+  public void a()
+  {
+    bits localbits = (bits)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_Int);
+    if (localbits != null) {
+      localbits.a(false);
+    }
     for (;;)
     {
+      if (this.jdField_a_of_type_Int >= 0) {
+        ((bitb)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int - 1)).a(false);
+      }
+      this.jdField_a_of_type_Int = -1;
       return;
-      int i = this.jdField_a_of_type_Bisc.jdField_a_of_type_Int + 1;
-      for (;;)
-      {
-        if (i >= bitj.a(this.jdField_a_of_type_Bitp.a).size()) {
-          break label360;
-        }
-        bisj localbisj = (bisj)bitj.a(this.jdField_a_of_type_Bitp.a).get(i);
-        if ((localbisj != null) && (localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && (localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id.equals(parambiqv.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)))
-        {
-          if (localbisj.jdField_b_of_type_Int != parambiqv.jdField_a_of_type_Int) {
-            localbisj.jdField_b_of_type_Int = parambiqv.jdField_a_of_type_Int;
-          }
-          if (localbisj.jdField_b_of_type_Int != 2) {
-            break;
-          }
-          localbisj.jdField_b_of_type_JavaLangString = biqo.a().a(localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-          QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Downloaded material", "path===" + localbisj.jdField_b_of_type_JavaLangString });
-          parambiqv = new biuz();
-          parambiqv.jdField_a_of_type_Int = i;
-          parambiqv.jdField_a_of_type_JavaLangString = localbisj.jdField_b_of_type_JavaLangString;
-          if ((localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && ((localbisj.jdField_a_of_type_JavaLangString == null) || (localbisj.jdField_a_of_type_JavaLangString.equals("")))) {
-            if (localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename") != null)
-            {
-              parambiqv.jdField_b_of_type_JavaLangString = "";
-              parambiqv.c = ((String)localbisj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename"));
-            }
-          }
-          for (;;)
-          {
-            bitj.a(this.jdField_a_of_type_Bitp.a).a(parambiqv);
-            localbisj.jdField_a_of_type_Int = 12;
-            bitj.a(this.jdField_a_of_type_Bitp.a).notifyItemChanged(i);
-            return;
-            parambiqv.jdField_b_of_type_JavaLangString = "";
-            parambiqv.c = "";
-            continue;
-            if (localbisj.jdField_a_of_type_JavaLangString == null) {
-              parambiqv.jdField_b_of_type_JavaLangString = "";
-            } else {
-              parambiqv.jdField_b_of_type_JavaLangString = localbisj.jdField_a_of_type_JavaLangString;
-            }
-          }
-        }
-        i += 1;
+      if (this.jdField_a_of_type_Int >= 0) {
+        notifyItemChanged(this.jdField_a_of_type_Int);
       }
     }
+  }
+  
+  public void a(bits parambits, int paramInt)
+  {
+    if (parambits.getLayoutPosition() == 0)
+    {
+      localObject = new FrameLayout.LayoutParams(baxn.a(this.jdField_a_of_type_AndroidContentContext, 33.0F), baxn.a(this.jdField_a_of_type_AndroidContentContext, 33.0F));
+      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, baxn.a(this.jdField_a_of_type_AndroidContentContext, 51.0F), 0);
+      parambits.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+    }
+    Object localObject = ((bitb)this.jdField_a_of_type_JavaUtilArrayList.get(parambits.getLayoutPosition() - 1)).a;
+    parambits.a.setText((CharSequence)localObject);
+    if (this.jdField_a_of_type_Int == parambits.getLayoutPosition()) {
+      parambits.a(true);
+    }
+    for (;;)
+    {
+      parambits.itemView.setOnClickListener(new bitr(this, parambits, (String)localObject));
+      return;
+      parambits.a(false);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt != 0) {
+      return 0;
+    }
+    return 1;
   }
 }
 

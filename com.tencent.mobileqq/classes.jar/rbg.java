@@ -1,17 +1,4 @@
-class rbg
-  extends oyg
-{
-  rbg(rap paramrap, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(oya paramoya)
-  {
-    paramoya.h();
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rbg

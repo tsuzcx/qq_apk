@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import android.app.Activity;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-public final class bjcg
-  implements Parcelable.Creator<QIMFilterCategoryItem>
+public class bjcg
 {
-  public QIMFilterCategoryItem a(Parcel paramParcel)
-  {
-    return new QIMFilterCategoryItem(paramParcel);
-  }
+  public Bundle a;
+  public bjcj a;
+  public WeakReference<Activity> a;
   
-  public QIMFilterCategoryItem[] a(int paramInt)
+  public bjcg(bjcj parambjcj, Bundle paramBundle, Activity paramActivity)
   {
-    return new QIMFilterCategoryItem[paramInt];
+    this.jdField_a_of_type_Bjcj = parambjcj;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
   }
 }
 

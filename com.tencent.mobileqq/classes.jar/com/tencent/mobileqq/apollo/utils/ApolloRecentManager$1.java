@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajmw;
-import ajon;
+import ajmu;
+import ajol;
 
 public class ApolloRecentManager$1
   implements Runnable
@@ -13,10 +13,10 @@ public class ApolloRecentManager$1
     }
     if (this.a == null)
     {
-      ajmw.a(this.this$0.a, this.b);
+      ajmu.a(this.this$0.a, this.b);
       return;
     }
-    ajmw.a(this.this$0.a, this.b, this.a);
+    ajmu.a(this.this$0.a, this.b, this.a);
   }
 }
 

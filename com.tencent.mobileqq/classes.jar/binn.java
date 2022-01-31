@@ -1,36 +1,16 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import android.support.annotation.NonNull;
 
 public class binn
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public binn(AEBeautyProviderView paramAEBeautyProviderView) {}
+  public String a;
+  public boolean a;
+  public String b = "null";
+  public String c = "null";
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  @NonNull
+  public String toString()
   {
-    if (AEBeautyProviderView.a(this.a) != null)
-    {
-      AEBeautyProviderView.a(this.a).b(paramInt);
-      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
-    bizg.a().e(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+    return this.jdField_a_of_type_JavaLangString + ", ready=" + this.jdField_a_of_type_Boolean + ", extraInfo=" + this.c + ", error=" + this.b;
   }
 }
 

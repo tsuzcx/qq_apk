@@ -1,42 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
 
-class aozf
-  extends aouj
+public class aozf
+  extends BroadcastReceiver
 {
-  aozf(aoze paramaoze) {}
+  public aozf(FileManagerDataCenter.1 param1) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
-    }
-    bifs.a(null, paramInt2);
-    paramString1 = this.a.a.a().a(paramLong2);
-    Bundle localBundle;
-    if ((paramString1 != null) && (paramString1.nOpType == 50))
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
     {
-      localBundle = new Bundle();
-      localBundle.putString("taskId", paramString1.miniAppDownloadId);
-      if (!paramBoolean) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localBundle.putInt("retCode", paramInt1);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      localBundle.putString("retMsg", paramString1);
-      QIPCServerHelper.getInstance().callClient(apea.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
-      this.a.a(paramLong2);
-      return;
+      paramContext = paramIntent.getBundleExtra("extraBundle");
+      aoze.a(this.a.this$0, paramContext);
     }
   }
 }

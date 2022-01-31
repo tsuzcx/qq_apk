@@ -1,24 +1,43 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class abbt
-  implements View.OnClickListener
+  implements awqw
 {
   public abbt(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    if (this.a.app != null)
+    int i = 1;
+    awoe localawoe = (awoe)paramView.getTag(2131379213);
+    if (localawoe == null) {}
+    for (;;)
     {
-      paramView = new Intent();
-      paramView.putExtras(this.a.getIntent().getExtras());
-      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
-      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
-      this.a.setResult(-1, paramView);
-      this.a.finish();
+      return;
+      String str1 = localawoe.b();
+      String str2 = localawoe.a().toString();
+      paramView = "-1";
+      if ((localawoe instanceof awms))
+      {
+        paramView = ((awms)localawoe).e();
+        i = 3000;
+      }
+      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
+        return;
+        if ((localawoe instanceof awmy)) {
+          paramView = ((awmy)localawoe).a;
+        } else if ((localawoe instanceof awnd)) {
+          paramView = ((awnd)localawoe).a().troopuin;
+        } else if ((localawoe instanceof awmt)) {
+          i = 0;
+        } else {
+          i = -1;
+        }
+      }
     }
   }
 }

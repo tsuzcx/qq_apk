@@ -1,17 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aehs
-  implements DialogInterface.OnClickListener
+public class aehs
 {
-  aehs(aehq paramaehq) {}
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
+  boolean f = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    aegu.u(this.a.a).setResult(8001);
-  }
+  public aehs(aegs paramaegs) {}
 }
 
 

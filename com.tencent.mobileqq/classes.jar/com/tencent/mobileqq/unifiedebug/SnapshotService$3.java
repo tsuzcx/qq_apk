@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import baun;
-import baup;
+import bavb;
+import bavd;
 
 class SnapshotService$3
   implements Runnable
 {
-  SnapshotService$3(SnapshotService paramSnapshotService, baun parambaun, baup parambaup) {}
+  SnapshotService$3(SnapshotService paramSnapshotService, bavb parambavb, bavd parambavd) {}
   
   public void run()
   {
-    SnapshotService.a(this.this$0, this.jdField_a_of_type_Baun, this.jdField_a_of_type_Baup);
+    SnapshotService.a(this.this$0, this.jdField_a_of_type_Bavb, this.jdField_a_of_type_Bavd);
   }
 }
 

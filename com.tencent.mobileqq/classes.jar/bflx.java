@@ -1,7 +1,8 @@
 public class bflx
 {
-  public bfly a;
-  public boolean a;
+  public long a;
+  
+  public bflx(bflw parambflw) {}
 }
 
 

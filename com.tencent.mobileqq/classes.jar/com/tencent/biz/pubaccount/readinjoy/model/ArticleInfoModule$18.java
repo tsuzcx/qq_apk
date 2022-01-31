@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
 import java.util.List;
-import ozr;
+import ozo;
 
 public class ArticleInfoModule$18
   implements Runnable
 {
-  public ArticleInfoModule$18(ozr paramozr, int paramInt1, List paramList, int paramInt2, long paramLong1, boolean paramBoolean, long paramLong2) {}
+  public ArticleInfoModule$18(ozo paramozo, int paramInt1, List paramList, int paramInt2, long paramLong1, boolean paramBoolean, long paramLong2) {}
   
   public void run()
   {
-    ozr.a(this.this$0, this.jdField_a_of_type_Int);
+    ozo.a(this.this$0, this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (List localList = ozr.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
+    for (List localList = ozo.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
       return;
     }
     this.this$0.a.post(new ArticleInfoModule.18.1(this, localList));

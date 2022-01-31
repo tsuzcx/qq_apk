@@ -1,76 +1,133 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
-class ambd
-  extends Drawable
+public class ambd
 {
+  public double a;
   public int a;
-  public Bitmap a;
-  private Paint a;
+  public amba a;
+  @Deprecated
+  public amcm a;
+  public String a;
+  public ArrayList<amba> a;
+  public HashMap<String, amcl> a;
+  public HashSet<String> a;
   public boolean a;
-  public int b = -1;
+  public int[] a;
+  public int b;
+  public amba b;
+  public ArrayList<Integer> b;
+  public HashMap<String, amcc> b;
+  public boolean b;
+  public int c;
+  public amba c;
+  public ArrayList<String> c;
+  public int d;
+  public amba d;
+  public int e;
+  public amba e;
+  public int f = -1;
+  public amba f;
+  public int g = 2;
   
-  public ambd(Bitmap paramBitmap)
+  public ambd(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.b = paramBitmap.getHeight();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void draw(Canvas paramCanvas)
+  private boolean a(File paramFile, String paramString)
   {
-    Rect localRect = super.getBounds();
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool2 = false;
+    paramFile = new File(paramFile, paramString);
+    boolean bool1 = bool2;
+    if (paramFile.exists())
     {
-      paramCanvas.save();
-      paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
+      bool1 = bool2;
+      if (paramFile.isDirectory())
+      {
+        paramFile = paramFile.list();
+        bool1 = bool2;
+        if (paramFile != null)
+        {
+          bool1 = bool2;
+          if (paramFile.length > 0) {
+            bool1 = true;
+          }
+        }
+      }
     }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean) {
-      paramCanvas.restore();
+    return bool1;
+  }
+  
+  public int a()
+  {
+    if (a()) {
+      return ((Integer)this.b.get(this.e)).intValue();
     }
+    return -1;
   }
   
-  public int getIntrinsicHeight()
+  public void a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.b;
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (a())
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
+      this.e = ((this.e + 1) % this.b.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleConfig", 2, "now change bubble sub id: " + this.b.get(this.e));
+      }
+      return;
     }
+    this.e = 0;
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
+    return (this.b != null) && (this.b.size() > 0);
   }
   
-  public void setDither(boolean paramBoolean)
+  public boolean a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
-    super.invalidateSelf();
+    return (this.b != null) && (this.b.contains(Integer.valueOf(paramInt)));
+  }
+  
+  public boolean a(File paramFile)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+    while (localIterator.hasNext()) {
+      if (a(paramFile, (String)localIterator.next())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((this.c != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext()) {
+        if (paramString.indexOf(((String)localIterator.next()).toLowerCase()) != -1) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("[ bubbleId=" + this.jdField_a_of_type_Int).append(",");
+    localStringBuffer.append("name=" + this.jdField_a_of_type_JavaLangString).append(" ]");
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,51 +1,51 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralRecommendFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
-public class uwj
-  extends uxr<GeneralRecommendFeedItem>
+class uwj
+  implements syq<tlq, tlr>
 {
-  public uwj(@NonNull GeneralRecommendFeedItem paramGeneralRecommendFeedItem)
-  {
-    super(paramGeneralRecommendFeedItem);
-  }
+  uwj(uwh paramuwh, JobContext paramJobContext, uvu paramuvu) {}
   
-  public GeneralRecommendFeedItem a()
+  public void a(@NonNull tlq paramtlq, @Nullable tlr arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    return (GeneralRecommendFeedItem)super.a();
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_recommend_feed.recommend_feed.get();
-    ((GeneralRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralRecommendFeedItem)this.a).blurb = paramStoryFeed.general_recommend_feed.blurb.get().toStringUtf8();
-    ((GeneralRecommendFeedItem)this.a).recommendId = paramStoryFeed.general_recommend_feed.recommend_id.get();
-    ((GeneralRecommendFeedItem)this.a).recommendTitle = paramStoryFeed.general_recommend_feed.title_wording.get().toStringUtf8();
-    ((GeneralRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralRecommendHomeFeed", localFeedVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      ved.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
     }
-    c(paramStoryFeed, true);
-    return true;
+    if (??? == null)
+    {
+      paramErrorMessage = new tlr(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Uwh)
+      {
+        uwh.a(this.jdField_a_of_type_Uwh, paramErrorMessage);
+        uwh.a(this.jdField_a_of_type_Uwh).remove(paramtlq);
+        uwh.a(this.jdField_a_of_type_Uwh, this.jdField_a_of_type_Uvu);
+        return;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      ved.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    }
+    tbw localtbw = (tbw)tcz.a(17);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (tls)localIterator.next();
+      localtbw.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      if (paramErrorMessage.b == 1) {
+        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localtbw.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+      }
+    }
   }
 }
 

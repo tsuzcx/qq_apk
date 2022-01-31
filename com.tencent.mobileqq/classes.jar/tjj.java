@@ -1,24 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
-class tjj
-  extends SimpleJob<Object>
+public class tjj
+  extends tja
 {
-  tjj(tji paramtji, String paramString)
+  public int a;
+  public String a;
+  public List<VideoCollectionItem> a;
+  public String b;
+  public boolean e = true;
+  
+  public tjj(String paramString, ErrorMessage paramErrorMessage)
   {
-    super(paramString);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public String toString()
   {
-    if (this.a.jdField_a_of_type_Tjl == null) {
-      this.a.jdField_a_of_type_Tjl = new tjl(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = "";
-    tji.a(this.a);
-    return null;
+    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,17 +1,15 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
 class aqfs
   implements DialogInterface.OnClickListener
 {
-  aqfs(aqfo paramaqfo, bbgg parambbgg) {}
+  aqfs(aqfq paramaqfq, bbgu parambbgu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
-    this.jdField_a_of_type_Aqfo.a.setResult(-1);
-    this.jdField_a_of_type_Aqfo.a.finish();
+    this.jdField_a_of_type_Aqfq.c();
+    this.jdField_a_of_type_Bbgu.dismiss();
   }
 }
 

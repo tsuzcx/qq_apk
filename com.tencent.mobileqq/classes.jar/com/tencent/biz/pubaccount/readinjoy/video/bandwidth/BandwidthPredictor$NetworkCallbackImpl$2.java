@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import qwf;
-import qwh;
+import qwc;
+import qwe;
 
 public class BandwidthPredictor$NetworkCallbackImpl$2
   implements Runnable
 {
-  public BandwidthPredictor$NetworkCallbackImpl$2(qwh paramqwh) {}
+  public BandwidthPredictor$NetworkCallbackImpl$2(qwe paramqwe) {}
   
   public void run()
   {
-    qwf.a(this.a.a);
+    qwc.a(this.a.a);
   }
 }
 

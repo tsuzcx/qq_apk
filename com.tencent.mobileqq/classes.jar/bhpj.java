@@ -1,160 +1,104 @@
-import android.text.TextUtils;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.pluginsdk.IPluginActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bhpj
 {
-  private static bhpj jdField_a_of_type_Bhpj;
-  private static String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "xmpcoreUrl", "http://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar");
-  private static String b = QzoneConfig.getInstance().getConfig("QZoneSetting", "XMPcoreJarMD5", "a0c5ac44fc2d0e35187f0c1479db48b2");
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static bhpj a()
+  public static boolean a(Activity paramActivity)
   {
-    if (jdField_a_of_type_Bhpj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bhpj == null) {
-        jdField_a_of_type_Bhpj = new bhpj();
-      }
-      return jdField_a_of_type_Bhpj;
-    }
-    finally {}
+    return a(paramActivity, new bhpk(paramActivity), 0);
   }
   
-  private HashMap<String, Object> a(String paramString1, String paramString2, String[] paramArrayOfString)
+  public static boolean a(Activity paramActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0) || (!this.jdField_a_of_type_Boolean)) {
-      paramString1 = null;
-    }
-    Object localObject1;
-    HashMap localHashMap;
-    int j;
-    int i;
+    if (paramActivity == null) {}
     do
     {
-      do
-      {
-        return paramString1;
-        localObject1 = bhnv.a("com.adobe.xmp.XmpUtil", "extractXMPMeta", false, a(new Class[] { String.class }), new Object[] { paramString1 });
-        localHashMap = new HashMap();
-        paramString1 = localHashMap;
-      } while (localObject1 == null);
-      j = paramArrayOfString.length;
-      i = 0;
-      paramString1 = localHashMap;
-    } while (i >= j);
-    paramString1 = paramArrayOfString[i];
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (;;)
-    {
-      i += 1;
-      break;
-      Object localObject2 = bhnv.a(localObject1, "getProperty", false, a(new Class[] { String.class, String.class }), new Object[] { paramString2, paramString1 });
-      if (localObject2 != null)
-      {
-        localObject2 = bhnv.a(localObject2, "getValue", false, new Class[0], new Object[0]);
-        if (localObject2 != null) {
-          localHashMap.put(paramString1, localObject2);
-        }
+      return false;
+      if ((paramActivity instanceof BasePluginActivity)) {
+        return a((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
       }
-    }
-  }
-  
-  private void a()
-  {
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule");
-    if (b())
-    {
-      QZLog.i("XMPCoreUtil", 4, new Object[] { "xmpCoreModulePath =", QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar") });
-      this.jdField_a_of_type_Boolean = QzoneModuleManager.getInstance().loadModule("xmpcore.jar", getClass().getClassLoader(), false, false);
-      if (this.jdField_a_of_type_Boolean) {
-        QZLog.i("XMPCoreUtil", "loadXMPCoreModule success");
+      if ((paramActivity instanceof QzonePluginProxyActivity)) {
+        return a((QzonePluginProxyActivity)paramActivity, paramQQPermissionCallback, paramInt);
       }
-    }
-    else
-    {
-      return;
-    }
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule fail");
+      if ((paramActivity instanceof BaseActivity)) {
+        return a((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
+      }
+    } while (!(paramActivity instanceof Activity));
+    return b(paramActivity);
   }
   
-  private boolean a()
+  public static boolean a(BasePluginActivity paramBasePluginActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    String str = LocalMultiProcConfig.getString("xmp_core_file_md5", null);
-    if (TextUtils.isEmpty(str)) {}
-    while (!str.equalsIgnoreCase(b)) {
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean b()
-  {
-    String str = QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar");
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "isXMPCoreJarExit path = ", str });
-    if (TextUtils.isEmpty(str)) {
+    if (paramBasePluginActivity == null) {
       return false;
     }
-    return new File(str).exists();
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramBasePluginActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBasePluginActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      paramBasePluginActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return false;
+    }
+    return true;
   }
   
-  public void a(bhpm parambhpm)
+  private static boolean a(QzonePluginProxyActivity paramQzonePluginProxyActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    if (parambhpm == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (paramQzonePluginProxyActivity == null) {}
+    do
     {
-      parambhpm.a(this.jdField_a_of_type_Boolean);
-      return;
-    }
-    if ((a()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      a();
-      parambhpm.a(this.jdField_a_of_type_Boolean);
-      return;
-    }
-    QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bhpk(this, parambhpm));
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
-    }
-    Object localObject = a(paramString, "http://ns.google.com/photos/1.0/panorama/", new String[] { "GPano:UsePanoramaViewer" });
-    if (localObject != null)
-    {
-      localObject = ((HashMap)localObject).get("GPano:UsePanoramaViewer");
-      if ((localObject != null) && ((localObject instanceof String)))
-      {
-        boolean bool = ((String)localObject).equalsIgnoreCase("true");
-        QZLog.i("XMPCoreUtil", 4, new Object[] { "isPanorama: ", Boolean.valueOf(bool) });
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(bool));
-        return bool;
+      return false;
+      if ((Build.VERSION.SDK_INT < 23) || ((paramQzonePluginProxyActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramQzonePluginProxyActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))) {
+        break;
       }
-    }
+      paramQzonePluginProxyActivity = paramQzonePluginProxyActivity.a();
+    } while (paramQzonePluginProxyActivity == null);
+    paramQzonePluginProxyActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
     return false;
+    return true;
   }
   
-  public Class[] a(Class... paramVarArgs)
+  private static boolean a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    Class[] arrayOfClass = new Class[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      arrayOfClass[i] = paramVarArgs[i];
-      i += 1;
+    if (paramBaseActivity == null) {
+      return false;
     }
-    return arrayOfClass;
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramBaseActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      return false;
+    }
+    return true;
+  }
+  
+  private static Activity b(Activity paramActivity)
+  {
+    Activity localActivity;
+    if (paramActivity == null) {
+      localActivity = null;
+    }
+    do
+    {
+      return localActivity;
+      localActivity = paramActivity;
+    } while (!(paramActivity instanceof BasePluginActivity));
+    return ((BasePluginActivity)paramActivity).getOutActivity();
+  }
+  
+  private static boolean b(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
+    {
+      bbdj.b(b(paramActivity));
+      return false;
+    }
+    return true;
   }
 }
 

@@ -1,34 +1,34 @@
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 class bjnh
 {
-  final int jdField_a_of_type_Int;
-  final Method jdField_a_of_type_JavaLangReflectMethod;
+  final Map<bjnp, List<bjni>> a;
+  final Map<bjni, bjnp> b;
   
-  bjnh(int paramInt, Method paramMethod)
+  bjnh(Map<bjni, bjnp> paramMap)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
-    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    this.b = paramMap;
+    this.a = new HashMap();
+    Iterator localIterator = paramMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      bjnp localbjnp = (bjnp)localEntry.getValue();
+      List localList = (List)this.a.get(localbjnp);
+      paramMap = localList;
+      if (localList == null)
+      {
+        paramMap = new ArrayList();
+        this.a.put(localbjnp, paramMap);
       }
-      paramObject = (bjnh)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
+      paramMap.add(localEntry.getKey());
+    }
   }
 }
 

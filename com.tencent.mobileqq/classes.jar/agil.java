@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class agil
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public agil(BaseActivityView paramBaseActivityView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.f();
+    this.a.a = null;
   }
 }
 

@@ -24,18 +24,18 @@ public class MiniAppTextArea1$KeyboardHiddenObserver
       {
         if ((paramObject instanceof String))
         {
-          MiniAppTextArea1.access$1402(this.this$0, false);
+          MiniAppTextArea1.access$1502(this.this$0, false);
           if (((!"confirm".equals((String)paramObject)) && (!"hideKeyboard".equals((String)paramObject))) || ((this.this$0.isFocused()) || ("hideInput".equals((String)paramObject))))
           {
             if ((MiniAppTextArea1.access$600(this.this$0) != null) && (MiniAppTextArea1.access$600(this.this$0).appBrandRuntime != null) && (MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage() != null)) {
               MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage().hideKeyBoardConfirmView();
             }
-            MiniAppTextArea1.access$1800(this.this$0, (String)paramObject);
+            MiniAppTextArea1.access$1900(this.this$0, (String)paramObject);
           }
         }
         else if ((paramObject instanceof Integer))
         {
-          MiniAppTextArea1.access$1402(this.this$0, true);
+          MiniAppTextArea1.access$1502(this.this$0, true);
           MiniAppTextArea1.access$402(this.this$0, (int)(Integer.valueOf(String.valueOf(paramObject)).intValue() * DisplayUtil.getDensity(this.this$0.getContext())));
           if ((DisplayUtil.hasNavBar(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity)) && (DisplayUtil.isNavigationBarExist(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity))) {
             MiniAppTextArea1.access$402(this.this$0, MiniAppTextArea1.access$400(this.this$0) + DisplayUtil.getNavigationBarHeight(MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.activity));
@@ -49,9 +49,9 @@ public class MiniAppTextArea1$KeyboardHiddenObserver
               int m = MiniAppTextArea1.access$500(this.this$0);
               MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage().showKeyBoardConfirmView(j - k - m);
             }
-            MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.jsPluginEngine.setCurInputId(MiniAppTextArea1.access$1900(this.this$0));
+            MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.jsPluginEngine.setCurInputId(MiniAppTextArea1.access$2000(this.this$0));
             paramObservable = new JSONObject();
-            paramObservable.put("inputId", MiniAppTextArea1.access$1900(this.this$0));
+            paramObservable.put("inputId", MiniAppTextArea1.access$2000(this.this$0));
             int j = MiniAppTextArea1.access$400(this.this$0);
             if (MiniAppTextArea1.access$200(this.this$0)) {
               i = MiniAppTextArea1.access$500(this.this$0);

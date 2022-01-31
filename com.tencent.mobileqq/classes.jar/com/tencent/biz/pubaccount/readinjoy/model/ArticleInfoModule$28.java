@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
-import ozr;
+import ozo;
 
 public class ArticleInfoModule$28
   implements Runnable
 {
-  public ArticleInfoModule$28(ozr paramozr, ChannelTopCookie paramChannelTopCookie) {}
+  public ArticleInfoModule$28(ozo paramozo, ChannelTopCookie paramChannelTopCookie) {}
   
   public void run()
   {

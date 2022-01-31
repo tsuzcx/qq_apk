@@ -1,43 +1,60 @@
+import SummaryCard.CondFitUser;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
 import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import java.util.List;
 
 public class ammt
-  implements bftk
+  implements ajuc
 {
   public ammt(SearchResultActivity paramSearchResultActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
-    if (bbev.d(this.a)) {
-      SearchResultActivity.c(this.a);
+    int i = 1;
+    if (paramInt == 3) {
+      if (!paramBoolean1)
+      {
+        this.a.b = 3;
+        this.a.jdField_a_of_type_Ammv.notifyDataSetChanged();
+      }
     }
-    for (;;)
+    while (paramInt != 2)
     {
-      SearchResultActivity.a(this.a, System.currentTimeMillis());
-      return true;
-      SearchResultActivity.a(this.a).a(1);
-      paramView = Message.obtain();
-      paramView.what = 3;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+      return;
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      paramList = this.a;
+      if (paramBoolean2) {}
+      for (paramInt = i;; paramInt = 0)
+      {
+        paramList.b = paramInt;
+        break;
+      }
     }
+    if (paramBoolean1)
+    {
+      bbbn.a(true);
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.jdField_a_of_type_JavaUtilList.clear();
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      this.a.jdField_a_of_type_Ammv.notifyDataSetChanged();
+      bbbn.a(false);
+      SearchResultActivity.a(this.a).a(0);
+      paramList = Message.obtain();
+      paramList.what = 5;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
+      return;
+    }
+    SearchResultActivity.a(this.a).a(1);
+    paramList = Message.obtain();
+    paramList.what = 4;
+    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

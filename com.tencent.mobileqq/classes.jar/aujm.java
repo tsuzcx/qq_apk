@@ -1,51 +1,73 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusPagerAdapter;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusPanel;
+import com.tencent.mobileqq.widget.QQViewPager;
+import mqq.app.AppRuntime.Status;
 
 public class aujm
-  extends akav
 {
-  public aujm(OpenApiManager paramOpenApiManager) {}
+  private OnlineStatusPanel a;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  @SuppressLint({"UseSparseArrays"})
+  public aujm(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, aujk paramaujk, int paramInt)
   {
-    a(false, paramString1, paramLong2);
+    this.a = ((OnlineStatusPanel)View.inflate(paramContext, 2131558824, null));
+    this.a.a(paramInt);
+    this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(paramaujk);
+    paramViewGroup.addView(this.a);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public aujj a()
   {
-    Intent localIntent;
-    if (OpenApiManager.access$300(this.a).containsKey(Long.valueOf(paramLong)))
+    return this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a;
+  }
+  
+  public void a()
+  {
+    boolean bool = true;
+    QQViewPager localQQViewPager = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.getCount() > 1) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenApi.Manager", 2, "onSendResult, isSuccess = " + paramBoolean + ", uniseq = " + paramLong);
-      }
-      paramString = (String)OpenApiManager.access$300(this.a).remove(Long.valueOf(paramLong));
-      paramString = (aujq)OpenApiManager.access$200(this.a).get(paramString);
-      if (paramString != null)
-      {
-        localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + paramString.b);
-        localIntent.putExtra("msgid", paramString.a(String.valueOf(paramLong)));
-        if (!paramBoolean) {
-          break label171;
-        }
-      }
-    }
-    label171:
-    for (int i = 0;; i = -9)
-    {
-      localIntent.putExtra("rs_code", i);
-      BaseApplicationImpl.sApplication.sendBroadcast(localIntent, paramString.c);
+      localQQViewPager.b(bool);
       return;
+      bool = false;
     }
+  }
+  
+  public void a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    a(paramStatus, paramLong, null);
+  }
+  
+  public void a(AppRuntime.Status paramStatus, long paramLong, aujn paramaujn)
+  {
+    aujj localaujj = aujc.a().a(paramStatus, paramLong);
+    if (localaujj != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a = localaujj;
+      this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.notifyDataSetChanged();
+      if (paramaujn != null)
+      {
+        paramStatus = new aujj(paramStatus);
+        paramStatus.a = paramLong;
+        paramaujn.a(paramStatus);
+      }
+    }
+  }
+  
+  void b()
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aujm
  * JD-Core Version:    0.7.0.1
  */

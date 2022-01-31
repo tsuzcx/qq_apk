@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abed;
+import abdz;
 
 public class FriendProfileCardActivity$27$1
   implements Runnable
 {
-  public FriendProfileCardActivity$27$1(abed paramabed) {}
+  public FriendProfileCardActivity$27$1(abdz paramabdz) {}
   
   public void run()
   {

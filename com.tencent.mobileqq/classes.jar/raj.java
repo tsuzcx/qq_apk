@@ -1,25 +1,13 @@
-import android.view.ViewGroup;
-import java.util.concurrent.ArrayBlockingQueue;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
 
 public class raj
+  implements aybj
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public ArrayBlockingQueue a;
-  private rak jdField_a_of_type_Rak;
-  private int b;
+  public raj(RainView paramRainView) {}
   
-  public raj(int paramInt1, int paramInt2, ViewGroup paramViewGroup, rak paramrak)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_Rak = paramrak;
-  }
-  
-  public raj(int paramInt, ViewGroup paramViewGroup, rak paramrak)
-  {
-    this(paramInt, 1, paramViewGroup, paramrak);
+    this.a.b(this.a);
   }
 }
 

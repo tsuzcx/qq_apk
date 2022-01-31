@@ -1,60 +1,26 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+
 public class lsu
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[8];
+  public lsu(RandomController paramRandomController) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int -= 1;
-    return this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int];
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_ArrayOfInt.length != 8) {
-      this.jdField_a_of_type_ArrayOfInt = new int[8];
+    if (RandomController.a(this.a) == 1) {
+      axqy.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == this.jdField_a_of_type_Int)
+    for (;;)
     {
-      arrayOfInt = new int[this.jdField_a_of_type_Int + this.jdField_a_of_type_Int];
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      this.a.c();
+      RandomController.d(this.a, false);
+      return;
+      if (RandomController.a(this.a) == 2) {
+        axqy.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+      }
     }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    arrayOfInt[i] = paramInt;
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public int[] a(int[] paramArrayOfInt)
-  {
-    int[] arrayOfInt;
-    if (paramArrayOfInt != null)
-    {
-      arrayOfInt = paramArrayOfInt;
-      if (paramArrayOfInt.length >= this.jdField_a_of_type_Int) {}
-    }
-    else
-    {
-      arrayOfInt = new int[this.jdField_a_of_type_Int];
-    }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
-    return arrayOfInt;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 

@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.persistence.EntityDaoRegister;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
-public class aukz
+public abstract interface aukz
 {
-  public static aukz a = new aukz();
-  
-  public static aukz a()
-  {
-    return a;
-  }
-  
-  public auky a(Class paramClass)
-  {
-    return EntityDaoRegister.a(paramClass);
-  }
+  public abstract void a(NoColumnError paramNoColumnError);
 }
 
 

@@ -1,16 +1,16 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class azoh
-  implements Comparable<azoh>
+  implements DialogInterface.OnDismissListener
 {
-  public String a;
-  public String b;
+  azoh(azoc paramazoc) {}
   
-  azoh(azoa paramazoa) {}
-  
-  public int a(@NonNull azoh paramazoh)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return this.b.compareTo(paramazoh.b);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

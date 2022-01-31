@@ -1,164 +1,85 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.URL;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class aewy
-  extends ProtocolDownloader.Adapter
+  extends aewc
 {
-  public static final String a;
-  public Handler a;
-  public aukn a;
+  private Collection<String> a;
   
-  static
+  public aewy(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = bbuv.a(ajsf.aW + "keyword_emotion/");
+    super(paramQQAppInterface);
   }
   
-  public aewy()
+  public List<? extends aewf> a(String paramString)
   {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      this.jdField_a_of_type_Aukn = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getEntityManagerFactory().createEntityManager();
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    Looper localLooper = ThreadManager.getFileThreadLooper();
-    if (localLooper != null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticon search start.");
     }
-  }
-  
-  public static String a(aewx paramaewx)
-  {
-    String str = null;
-    if (!TextUtils.isEmpty(paramaewx.e())) {
-      str = paramaewx.e();
-    }
-    while (TextUtils.isEmpty(paramaewx.a())) {
-      return str;
-    }
-    return paramaewx.a();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return aexd.a(paramString).exists();
-  }
-  
-  public File a(String paramString, File paramFile, URLDrawableHandler paramURLDrawableHandler)
-  {
-    long l = System.currentTimeMillis();
-    DownloadParams localDownloadParams = new DownloadParams();
-    localDownloadParams.url = new URL(paramString);
-    localDownloadParams.urlStr = paramString;
-    String str1 = paramFile.getPath();
-    String str2;
-    if (bbev.g(BaseApplicationImpl.getContext()))
+    ArrayList localArrayList = new ArrayList();
+    askf localaskf = (askf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+    Object localObject = (answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    aexb localaexb = aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localObject = ((answ)localObject).a();
+    if (localObject != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("StickerRecDrawableDownLoader", 2, "keyword emotion download: " + paramString + " -> " + str1);
+        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticonDataList.size : " + ((List)localObject).size());
       }
-      str2 = str1 + ".tmp";
-      localObject = new File(str2);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+        if (("isUpdate".equals(localCustomEmotionData.RomaingType)) || ("needDownload".equals(localCustomEmotionData.RomaingType)) || ("overflow".equals(localCustomEmotionData.RomaingType)) || ("overflow_downloaded".equals(localCustomEmotionData.RomaingType))) {
+          if ((!TextUtils.isEmpty(localCustomEmotionData.modifyWord)) && (paramString.equals(localaexb.b(localCustomEmotionData.modifyWord))))
+          {
+            localArrayList.add(new aewx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
+          }
+          else if ((!TextUtils.isEmpty(localCustomEmotionData.ocrWord)) && (paramString.equals(localaexb.b(localCustomEmotionData.ocrWord))))
+          {
+            localArrayList.add(new aewx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
+          }
+          else if (localCustomEmotionData.isMarkFace)
+          {
+            Emoticon localEmoticon = localaskf.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId);
+            if ((localEmoticon != null) && (!TextUtils.isEmpty(localEmoticon.name)) && (paramString.equals(localaexb.b(localEmoticon.name)))) {
+              localArrayList.add(new aewx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
+            }
+          }
+        }
       }
-      paramURLDrawableHandler.publishProgress(0);
     }
-    for (;;)
+    if (localArrayList.isEmpty())
     {
-      try
-      {
-        localObject = new FileOutputStream(str2);
-        if (paramURLDrawableHandler == null) {
-          break label276;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite onSearchStickerRecLocalEmoticon matchList is null or empty,keyWord: " + bbbr.a(paramString));
       }
-      catch (Exception paramURLDrawableHandler)
-      {
-        try
-        {
-          new ayrn().a((OutputStream)localObject, localDownloadParams, paramURLDrawableHandler);
-          ((FileOutputStream)localObject).close();
-          paramURLDrawableHandler = new File(str2);
-          if (!paramURLDrawableHandler.renameTo(paramFile))
-          {
-            bbdj.a(paramURLDrawableHandler, paramFile);
-            paramURLDrawableHandler.delete();
-          }
-          l = System.currentTimeMillis() - l;
-          paramURLDrawableHandler = new HashMap();
-          paramURLDrawableHandler.put("sticker_url", paramString);
-          if ((!paramFile.exists()) || (paramFile.length() <= 0L)) {
-            break;
-          }
-          axrl.a(BaseApplication.getContext()).a(null, "StickerRecImgDownload", true, l, 0L, paramURLDrawableHandler, "");
-          return paramFile;
-        }
-        catch (Exception paramURLDrawableHandler)
-        {
-          for (;;)
-          {
-            paramURLDrawableHandler = (URLDrawableHandler)localObject;
-          }
-        }
-        paramURLDrawableHandler = paramURLDrawableHandler;
-        paramURLDrawableHandler = null;
-      }
-      paramURLDrawableHandler.close();
-      label276:
-      new File(str2).delete();
+      return null;
     }
-    axrl.a(BaseApplication.getContext()).a(null, "StickerRecImgDownload", false, l, 0L, null, "");
-    paramFile.delete();
-    QLog.e("StickerRecDrawableDownLoader", 1, "downloadImage|file not exist or empty. filepath=" + str1);
-    throw new IOException("File not Found. url: " + localDownloadParams.url);
+    return localArrayList;
   }
   
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  public void a()
   {
-    try
-    {
-      paramDownloadParams = a((aewx)paramDownloadParams.mExtraInfo);
-      return a(paramDownloadParams);
-    }
-    catch (Exception paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-    }
-    return false;
+    this.jdField_a_of_type_JavaUtilCollection = aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
   }
   
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramDownloadParams = a((aewx)paramDownloadParams.mExtraInfo);
-    QLog.d("StickerRecDrawableDownLoader", 1, "loadImageFile");
-    File localFile1 = aexd.a(paramDownloadParams);
-    if ((localFile1.exists()) && (localFile1.length() > 0L))
-    {
-      QLog.d("StickerRecDrawableDownLoader", 1, "loadImageFile file.exists()");
-      return localFile1;
+    if (this.jdField_a_of_type_JavaUtilCollection == null) {
+      a();
     }
-    localFile1.getParentFile().mkdirs();
-    if ((bbbd.a()) && (bbbd.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bbbd.b());
-    }
-    File localFile2 = new File(jdField_a_of_type_JavaLangString);
-    if (!localFile2.exists()) {
-      localFile2.mkdir();
-    }
-    return a(paramDownloadParams, localFile1, paramURLDrawableHandler);
+    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
   }
 }
 

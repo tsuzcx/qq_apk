@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agco
-  implements DialogInterface.OnCancelListener
+  extends atzo
 {
-  agco(agcm paramagcm) {}
+  agco(agcf paramagcf) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  protected void a(Object paramObject)
+  {
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
+    }
+  }
 }
 
 

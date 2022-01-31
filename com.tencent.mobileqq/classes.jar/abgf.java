@@ -1,57 +1,41 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
-public class abgf
-  implements bfoq
+class abgf
+  extends ajxj
 {
-  public abgf(FriendProfileImageActivity paramFriendProfileImageActivity, abgm paramabgm, boolean paramBoolean, bfol parambfol) {}
+  abgf(abge paramabge) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    switch (paramInt)
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      bazo.a(this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
       }
-      bazo.a(this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
-        break;
-      }
-      FriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_Abgm.d);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
-        break;
-      }
-      bazo.b(this.jdField_a_of_type_Abgm.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
-        break;
-      }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Abgm);
-      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Abgi);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Abgi, false);
+      this.a.c(this.a.jdField_a_of_type_Abgi);
+      return;
+    }
+    this.a.jdField_a_of_type_Abgi.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Abgi);
   }
 }
 

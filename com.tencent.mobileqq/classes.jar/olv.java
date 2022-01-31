@@ -1,4 +1,4 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
@@ -6,16 +6,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 class olv
   implements ViewBase.OnClickListener
 {
-  olv(ols paramols, ViewBase paramViewBase) {}
+  olv(olt paramolt) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
-    {
-      olr.a(this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
-      olr.a(this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-    }
-    onk.e(this.jdField_a_of_type_Ols.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    qam.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, "0X8009B77");
+    onh.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.jump_url);
   }
 }
 

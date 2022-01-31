@@ -1,28 +1,49 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnControllerClickListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.lang.ref.WeakReference;
 
 public class beos
-  implements beor
+  implements VideoPlayerProxy.OnControllerClickListener
 {
-  private int jdField_a_of_type_Int;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private String jdField_a_of_type_JavaLangString;
+  public beos(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public int a()
+  public void onAttationClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onBackClick(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    return this.jdField_a_of_type_Int;
+    betc.a("MiniAppVideoPlayer", "video player onBackClick");
+    if ((Activity)this.a.a.get() == null) {}
+    while (!this.a.c) {
+      return;
+    }
+    this.a.g();
   }
   
-  public MiniAppInfo a()
+  public void onBackOnFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    betc.a("MiniAppVideoPlayer", "video player onBackOnFullScreenClick");
+    if ((Activity)this.a.a.get() == null) {}
+    while (!this.a.c) {
+      return;
+    }
+    this.a.g();
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void onCacheClick(VideoPlayerProxy paramVideoPlayerProxy) {}
   
-  public void a() {}
+  public void onFeedbackClick(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
+  {
+    if (this.a.c)
+    {
+      this.a.g();
+      return;
+    }
+    this.a.f();
+  }
 }
 
 

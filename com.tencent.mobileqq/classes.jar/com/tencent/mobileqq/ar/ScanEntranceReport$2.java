@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import axrl;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public class ScanEntranceReport$2
     localHashMap.put("init_delay", String.valueOf(this.jdField_a_of_type_Long));
     localHashMap.put("init_time", String.valueOf(this.jdField_b_of_type_Long));
     localHashMap.put("download_resource", String.valueOf(this.jdField_b_of_type_Boolean));
-    axrl.a(BaseApplication.getContext()).a("", "scanner_ar_init", true, this.c, 0L, localHashMap, "");
+    axrn.a(BaseApplication.getContext()).a("", "scanner_ar_init", true, this.c, 0L, localHashMap, "");
   }
 }
 

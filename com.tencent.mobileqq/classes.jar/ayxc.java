@@ -5,66 +5,30 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ayxc
 {
-  public static long a = -1L;
-  public static long b = -1L;
+  public static int a = -1;
   
-  public static long a()
+  public static void a(int paramInt)
   {
-    if (a < 0L)
-    {
-      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
-      }
-    }
-    return a;
-  }
-  
-  private static long a(String paramString, long paramLong)
-  {
-    long l = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).getLong(paramString, -1L);
-    if (l < 0L) {
-      return paramLong;
-    }
-    return l;
-  }
-  
-  public static void a(long paramLong)
-  {
-    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      a = paramLong;
-    }
-  }
-  
-  private static void a(String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
-    localEditor.putLong(paramString, paramLong);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
+    localEditor.putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
     localEditor.commit();
+    a = paramInt;
     if (QLog.isColorLevel()) {
-      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
+      QLog.d("PicUploadExifInfoSwitch", 2, "setSwitch:" + paramInt);
     }
   }
   
-  public static long b()
+  public static boolean a()
   {
-    if (b < 0L)
+    if (aqwf.a().g()) {}
+    do
     {
-      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
+      return true;
+      if (a < 0) {
+        a = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
       }
-    }
-    return b;
-  }
-  
-  public static void b(long paramLong)
-  {
-    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      b = paramLong;
-    }
+    } while (a == 1);
+    return false;
   }
 }
 

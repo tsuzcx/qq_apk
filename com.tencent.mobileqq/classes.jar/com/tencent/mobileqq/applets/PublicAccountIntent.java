@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import ajtg;
+import ajte;
 import android.content.Context;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
@@ -8,21 +8,21 @@ import mqq.app.Servlet;
 public class PublicAccountIntent
   extends NewIntent
 {
-  private ajtg a;
+  private ajte a;
   
   public PublicAccountIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  public ajtg a()
+  public ajte a()
   {
     return this.a;
   }
   
-  public void a(ajtg paramajtg)
+  public void a(ajte paramajte)
   {
-    this.a = paramajtg;
+    this.a = paramajte;
   }
 }
 

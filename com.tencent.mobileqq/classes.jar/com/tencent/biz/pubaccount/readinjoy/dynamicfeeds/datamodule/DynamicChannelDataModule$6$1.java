@@ -5,13 +5,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import ork;
-import orm;
+import orh;
+import orj;
 
 public class DynamicChannelDataModule$6$1
   implements Runnable
 {
-  public DynamicChannelDataModule$6$1(orm paramorm, Bundle paramBundle, JSONObject paramJSONObject) {}
+  public DynamicChannelDataModule$6$1(orj paramorj, Bundle paramBundle, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -23,12 +23,12 @@ public class DynamicChannelDataModule$6$1
       if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
         break label97;
       }
-      localObject = ork.a(this.jdField_a_of_type_Orm.jdField_a_of_type_Ork, this.jdField_a_of_type_Orm.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = orh.a(this.jdField_a_of_type_Orj.jdField_a_of_type_Orh, this.jdField_a_of_type_Orj.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
     {
       if ((localObject == null) || (((List)localObject).size() == 0)) {
-        ork.a(this.jdField_a_of_type_Orm.jdField_a_of_type_Ork, bool, this.jdField_a_of_type_Orm.jdField_a_of_type_Int, false, false, null);
+        orh.a(this.jdField_a_of_type_Orj.jdField_a_of_type_Orh, bool, this.jdField_a_of_type_Orj.jdField_a_of_type_Int, false, false, null);
       }
       return;
       bool = false;

@@ -1,17 +1,59 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class uec
-  implements ufn
+  implements TVK_SDKMgr.OnLogListener
 {
-  public uec(TrimTextureVideoView paramTrimTextureVideoView) {}
+  public int a;
   
-  public boolean a(ufk paramufk, int paramInt1, int paramInt2)
+  public int d(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+      QLog.d(paramString1, 2, paramString2);
     }
-    return true;
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
+    {
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
+    }
   }
 }
 

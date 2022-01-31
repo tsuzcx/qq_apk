@@ -1,19 +1,14 @@
-import android.view.animation.Animation;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class xpl
-  extends bfmg
+  implements View.OnClickListener
 {
-  xpl(xpi paramxpi) {}
+  xpl(xpk paramxpk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.a().e();
-    this.a.a.a().a();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().d();
+    this.a.e();
   }
 }
 

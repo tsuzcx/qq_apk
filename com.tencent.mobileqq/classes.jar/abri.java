@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class abri
-  implements DialogInterface.OnCancelListener
+public class abri
+  implements bfpj
 {
-  abri(abre paramabre) {}
+  public abri(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDismiss()
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    if (this.a.a) {
+      this.a.finish();
+    }
   }
 }
 

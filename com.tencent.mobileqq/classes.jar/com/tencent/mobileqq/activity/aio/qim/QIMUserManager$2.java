@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.aio.qim;
 
-import aekr;
+import aekp;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMUserManager$2
   implements Runnable
 {
-  public QIMUserManager$2(aekr paramaekr, String paramString1, String paramString2, boolean paramBoolean) {}
+  public QIMUserManager$2(aekp paramaekp, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (aekr.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (aekr.a(this.this$0, this.b))
+    if (aekp.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
+      if (aekp.a(this.this$0, this.b))
       {
-        aekr.a(this.this$0);
-        aekr.a(this.this$0, 2);
+        aekp.a(this.this$0);
+        aekp.a(this.this$0, 2);
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + aekr.a(this.this$0));
+        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + aekp.a(this.this$0));
       }
       return;
-      aekr.a(this.this$0, 4);
+      aekp.a(this.this$0, 4);
       continue;
-      aekr.a(this.this$0, 3);
+      aekp.a(this.this$0, 3);
     }
   }
 }

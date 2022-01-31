@@ -1,50 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationBanner;
-import com.tencent.widget.SimpleTextView;
+import android.os.Bundle;
+import com.tencent.widget.AbsListView;
 
 class afme
-  extends bfvp
+  implements bfos
 {
-  afme(afma paramafma, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  afme(afly paramafly) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    afly.a(this.a, paramInt1 + paramInt2 - 1);
   }
   
-  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    parambfvo = super.a(paramInt, paramObject, parambfvo, paramOnClickListener);
-    if ((parambfvo instanceof SimpleTextView)) {
-      parambfvo.setTag(paramObject);
-    }
-    return parambfvo;
-  }
-  
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
-  {
-    int i = 0;
-    if ((paramArrayOfbfvo == null) || (paramArrayOfbfvo.length <= 0)) {}
-    for (;;)
-    {
+    if (paramInt != 0) {
       return;
-      paramInt = i;
-      if (paramArrayOfbfvo.length < 0)
-      {
-        paramInt = i;
-        if (!(paramObject instanceof ConnectsExplorationBanner))
-        {
-          paramArrayOfbfvo[0].b = 0;
-          paramArrayOfbfvo[0].a = 0;
-          paramInt = 1;
-        }
-      }
-      while (paramInt < paramArrayOfbfvo.length)
-      {
-        paramArrayOfbfvo[paramInt].b = -1;
-        paramArrayOfbfvo[paramInt].a = -1;
-        paramInt += 1;
-      }
     }
+    if (afly.b(this.a) >= this.a.getCount() - 2)
+    {
+      paramAbsListView = new Bundle();
+      paramAbsListView.putString("from", "4");
+      afly.a(this.a).b(4, afly.a(this.a), paramAbsListView);
+    }
+    this.a.d();
   }
 }
 

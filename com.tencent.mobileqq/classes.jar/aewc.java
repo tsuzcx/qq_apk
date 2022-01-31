@@ -1,22 +1,21 @@
-public abstract interface aewc
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract class aewc
+  implements aewg
 {
-  public abstract int a();
+  protected QQAppInterface a;
   
-  public abstract int a(float paramFloat1, float paramFloat2);
+  public aewc(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public void a() {}
   
-  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(float paramFloat1, float paramFloat2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return aexb.a(paramQQAppInterface).a(paramString);
+  }
 }
 
 

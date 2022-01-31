@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View.OnLongClickListener;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import asrp;
+import asrr;
 
 public class MultiCardCustomLayout
   extends RelativeLayout
@@ -32,7 +32,7 @@ public class MultiCardCustomLayout
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector == null)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new asrp(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new asrr(this), new Handler(Looper.getMainLooper()));
     }
   }
   

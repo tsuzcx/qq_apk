@@ -1,20 +1,36 @@
-public class vxr
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+
+public final class vxr
 {
-  public static String a(int[] paramArrayOfInt)
+  private final vxs a;
+  
+  public vxr(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramArrayOfInt[0]);
-    int i = 1;
-    while (i < paramArrayOfInt.length)
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append(paramArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    this(paramContext, paramOnGestureListener, null);
+  }
+  
+  public vxr(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new vxt(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public void a(int paramInt)
+  {
+    vxt.a(paramInt);
+  }
+  
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  {
+    this.a.a(paramOnDoubleTapListener);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramMotionEvent);
   }
 }
 

@@ -1,11 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class sit
+final class sit
+  implements DialogInterface.OnClickListener
 {
-  private static final Map<String, Object> a = new HashMap();
-  
-  public static void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

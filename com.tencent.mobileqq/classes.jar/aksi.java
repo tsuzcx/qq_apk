@@ -1,37 +1,30 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aksi
-  implements View.OnTouchListener
+final class aksi
+  extends bbwt
 {
-  aksi(aksf paramaksf, ImageView paramImageView) {}
+  aksi(String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCancel(bbwu parambbwu)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    akse.jdField_a_of_type_Bbwu = null;
+    QLog.d(akse.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
+  }
+  
+  public void onDone(bbwu parambbwu)
+  {
+    akse.jdField_a_of_type_Bbwu = null;
+    if (parambbwu.a() == 3)
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      QLog.d(akse.jdField_a_of_type_JavaLangString, 1, "download finished " + akse.f);
+      parambbwu = new File(this.jdField_a_of_type_JavaLangString);
+      if ((parambbwu.exists()) && (akse.a(parambbwu))) {
+        QLog.d(akse.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      return;
     }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    QLog.d(akse.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambbwu.b, " code=", Integer.valueOf(parambbwu.a) });
   }
 }
 

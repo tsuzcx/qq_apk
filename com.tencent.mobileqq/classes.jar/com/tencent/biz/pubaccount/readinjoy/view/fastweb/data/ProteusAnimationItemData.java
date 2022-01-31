@@ -5,7 +5,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import rkc;
+import rjz;
 
 public class ProteusAnimationItemData
   extends ProteusItemData
@@ -53,7 +53,7 @@ public class ProteusAnimationItemData
     if (paramBoolean) {}
     for (this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_Int, i });; this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_a_of_type_Int, 1 }))
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new rkc(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new rjz(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(350L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;

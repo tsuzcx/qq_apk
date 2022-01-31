@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin.proxy;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.ReaderCallback;
 import android.os.Bundle;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.buscard.BuscardHelper;
@@ -27,7 +27,7 @@ public class BaseNFCProxyActivity
   
   private void showNoNfcDialog(String paramString1, String paramString2)
   {
-    bbcv.a(this, 0, paramString1, paramString2, ajyc.a(2131701034), ajyc.a(2131701035), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
+    bbdj.a(this, 0, paramString1, paramString2, ajya.a(2131701045), ajya.a(2131701046), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
   }
   
   public void onCreate(Bundle paramBundle)

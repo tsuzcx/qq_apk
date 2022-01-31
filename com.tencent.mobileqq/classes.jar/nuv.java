@@ -1,26 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
 
 public class nuv
-  implements wxw
+  implements bcei
 {
-  public nuv(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public nuv(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void a(Bundle paramBundle)
+  public Object a(int paramInt)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    switch (paramInt)
     {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+    default: 
+      return null;
     }
+    return new nux(this.a);
   }
 }
 

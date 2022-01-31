@@ -1,12 +1,18 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abko
-  extends atzm
+  extends ajxj
 {
   public abko(Leba paramLeba) {}
   
-  protected void a(Object paramObject)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((axcj)this.a.a.getManager(10) == null) {
+      return;
+    }
     Leba.c(this.a);
   }
 }

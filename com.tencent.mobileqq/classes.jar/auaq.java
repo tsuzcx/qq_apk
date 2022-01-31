@@ -12,11 +12,11 @@ public class auaq
   
   public void onDismiss()
   {
-    this.a.a = null;
-    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
+    this.a.b = null;
+    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
     {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130844792);
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      Drawable localDrawable = this.a.getResources().getDrawable(2130844793);
+      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
   }
 }

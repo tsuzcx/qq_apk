@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
 import android.os.Vibrator;
-import thy;
+import thv;
 
 public class MsgTabStoryNodeListManager$1
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$1(thy paramthy) {}
+  public MsgTabStoryNodeListManager$1(thv paramthv) {}
   
   public void run()
   {
-    thy.a(this.this$0).vibrate(20L);
+    thv.a(this.this$0).vibrate(20L);
   }
 }
 

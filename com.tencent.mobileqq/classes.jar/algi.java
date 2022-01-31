@@ -1,18 +1,15 @@
-public abstract interface algi
+public class algi
 {
-  public abstract void a(int paramInt, algs paramalgs, long paramLong);
+  public String a;
+  public byte[] a;
+  public String b;
   
-  public abstract void a(algk paramalgk);
-  
-  public abstract void a(algl paramalgl);
-  
-  public abstract void a(algm paramalgm);
-  
-  public abstract void a(algn paramalgn);
-  
-  public abstract void a(algu paramalgu);
-  
-  public abstract void b(algl paramalgl);
+  public algi(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
 }
 
 

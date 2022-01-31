@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.msgTabNode.view.viewholder;
 
-import ajxn;
+import ajxl;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import tin;
+import tik;
 
 public class FriendNodeViewHolder$1
   implements Runnable
 {
-  public FriendNodeViewHolder$1(tin paramtin, QQAppInterface paramQQAppInterface, String paramString) {}
+  public FriendNodeViewHolder$1(tik paramtik, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    if (((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_JavaLangString) == null) {
+    if (((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(this.jdField_a_of_type_JavaLangString) == null) {
       ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(this.jdField_a_of_type_JavaLangString);
     }
   }

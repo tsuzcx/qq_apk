@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQAppInterface$24
@@ -10,7 +10,7 @@ class QQAppInterface$24
   
   public void run()
   {
-    bcpw.a(QQAppInterface.k(this.this$0).getApplicationContext(), 2131690329, 5000).a();
+    bcql.a(QQAppInterface.k(this.this$0).getApplicationContext(), 2131690329, 5000).a();
   }
 }
 

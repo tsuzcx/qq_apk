@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aywk;
-import bbxn;
+import aywm;
+import bbyb;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -36,7 +36,7 @@ public class ProfileCardDiyPhotoWallView
   
   public View a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561633, null);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561632, null);
     localView.setPadding(this.e, this.e, this.e, this.e);
     return localView;
   }
@@ -46,7 +46,7 @@ public class ProfileCardDiyPhotoWallView
     ViewGroup localViewGroup = super.a(paramInt1, paramInt2, paramInt3);
     if ((!TextUtils.isEmpty(this.b)) && (this.b.startsWith("http")))
     {
-      localViewGroup.setBackgroundDrawable(a(this.b, new bbxn(paramInt1 * 2, paramInt2 * 2)));
+      localViewGroup.setBackgroundDrawable(a(this.b, new bbyb(paramInt1 * 2, paramInt2 * 2)));
       return localViewGroup;
     }
     localViewGroup.setBackgroundColor(this.d);
@@ -56,8 +56,8 @@ public class ProfileCardDiyPhotoWallView
   protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = aywk.a;
-    localURLDrawableOptions.mFailedDrawable = aywk.a;
+    localURLDrawableOptions.mLoadingDrawable = aywm.a;
+    localURLDrawableOptions.mFailedDrawable = aywm.a;
     localURLDrawableOptions.mPlayGifImage = false;
     if (paramDecodeHandler != null) {
       localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();

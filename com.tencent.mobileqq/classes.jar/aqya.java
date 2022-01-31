@@ -1,147 +1,53 @@
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
+import com.tencent.mobileqq.hiboom.RichTextPanelView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class aqya
+  extends PagerAdapter
 {
-  public static ConcurrentHashMap<String, ArrayList<aqyd>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<String, aqyc> b = new ConcurrentHashMap();
+  public aqya(RichTextPanel paramRichTextPanel) {}
   
-  public static void a()
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    synchronized (a)
-    {
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator2 = a.values().iterator();
-      while (localIterator2.hasNext())
-      {
-        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
-        if (localIterator3.hasNext())
-        {
-          aqyd localaqyd = (aqyd)localIterator3.next();
-          localaqyd.d();
-          localHashSet.add(localaqyd.d);
-        }
-      }
-    }
-    Iterator localIterator1 = localObject.iterator();
-    while (localIterator1.hasNext()) {
-      c((String)localIterator1.next());
-    }
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  public static void a(aqyd paramaqyd)
+  public int getCount()
   {
-    synchronized (a)
-    {
-      String str = paramaqyd.a();
-      ArrayList localArrayList = (ArrayList)a.get(str);
-      if (localArrayList == null)
-      {
-        localArrayList = new ArrayList();
-        localArrayList.add(paramaqyd);
-        a.put(str, localArrayList);
-      }
-      while (localArrayList.contains(paramaqyd)) {
-        return;
-      }
-      localArrayList.add(paramaqyd);
-    }
+    return RichTextPanel.a(this.a).size();
   }
   
-  public static void a(String paramString)
+  public int getItemPosition(Object paramObject)
   {
-    synchronized (a)
-    {
-      aqyd localaqyd;
-      do
-      {
-        Iterator localIterator = a.keySet().iterator();
-        Object localObject;
-        while (!((Iterator)localObject).hasNext())
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject = (String)localIterator.next();
-          } while (!((String)localObject).endsWith("plugin"));
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-        }
-        localaqyd = (aqyd)((Iterator)localObject).next();
-      } while (!((aqyb)localaqyd).a.equals(paramString));
-      localaqyd.b();
-      localaqyd.d();
-    }
+    return -2;
   }
   
-  public static void b(String paramString)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    synchronized (a)
-    {
-      Iterator localIterator = a.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        if (((String)localObject).startsWith(paramString))
-        {
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-          if (((Iterator)localObject).hasNext()) {
-            ((aqyd)((Iterator)localObject).next()).d();
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
     }
-    c(paramString);
+    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
+    }
+    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
+    return RichTextPanel.a(this.a).get(paramInt);
   }
   
-  public static void c(String paramString)
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    synchronized (a)
-    {
-      aqyc localaqyc = (aqyc)b.get(paramString);
-      if (localaqyc != null)
-      {
-        localaqyc.d();
-        b.remove(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void d(String paramString)
-  {
-    synchronized (a)
-    {
-      paramString = (aqyc)b.get(paramString);
-      if (paramString != null) {
-        paramString.b();
-      }
-      return;
-    }
-  }
-  
-  public static void e(String paramString)
-  {
-    synchronized (a)
-    {
-      if ((aqyc)b.get(paramString) == null)
-      {
-        aqyc localaqyc = new aqyc(paramString);
-        b.put(paramString, localaqyc);
-        localaqyc.a();
-      }
-      return;
-    }
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqya
  * JD-Core Version:    0.7.0.1
  */

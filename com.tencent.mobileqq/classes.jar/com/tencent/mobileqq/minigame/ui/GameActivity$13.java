@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import bbdr;
+import bbef;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -32,7 +32,7 @@ class GameActivity$13
         ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
         if (Build.VERSION.SDK_INT >= 21)
         {
-          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bbdr.b((Drawable)localObject));
+          localObject = new ActivityManager.TaskDescription(this.val$miniConfig.config.name, bbef.b((Drawable)localObject));
           this.this$0.setTaskDescription((ActivityManager.TaskDescription)localObject);
         }
         if (!localBitmap.isRecycled()) {

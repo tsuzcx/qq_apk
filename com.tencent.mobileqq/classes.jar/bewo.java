@@ -1,6 +1,6 @@
 public abstract interface bewo
 {
-  public abstract void d();
+  public abstract void a(boolean paramBoolean);
 }
 
 

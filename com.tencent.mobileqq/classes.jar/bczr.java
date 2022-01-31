@@ -1,21 +1,71 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.CardContainer;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bczr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bdje
 {
-  public bczr(CardContainer paramCardContainer) {}
+  public bczr(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(Exception paramException)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.setLayoutParams(paramValueAnimator);
-    this.a.requestLayout();
+    if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
+      this.a.jdField_a_of_type_Bcqf.dismiss();
+    }
+    this.a.b(paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
+      this.a.jdField_a_of_type_Bcqf.dismiss();
+    }
+    try
+    {
+      if (paramJSONObject.getInt("ret") == 0)
+      {
+        if (this.a.jdField_a_of_type_Xnw == null)
+        {
+          this.a.jdField_a_of_type_Xnw = new xnw(this.a);
+          this.a.jdField_a_of_type_Xnw.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690481));
+          this.a.jdField_a_of_type_Xnw.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690480, new Object[] { this.a.e }), this.a);
+          this.a.jdField_a_of_type_Xnw.a(this.a);
+        }
+        if (this.a.jdField_a_of_type_Xnw.isShowing()) {
+          return;
+        }
+        this.a.jdField_a_of_type_Xnw.show();
+        return;
+      }
+      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
+      {
+        if (this.a.jdField_a_of_type_Bbgu == null) {
+          this.a.jdField_a_of_type_Bbgu = bbdj.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690484), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690485), 2131690832, 2131694794, this.a, null);
+        }
+        paramJSONObject = paramJSONObject.getString("msg");
+        if (!TextUtils.isEmpty(paramJSONObject)) {
+          this.a.jdField_a_of_type_Bbgu.setMessage(paramJSONObject);
+        }
+        if (this.a.jdField_a_of_type_Bbgu.isShowing()) {
+          return;
+        }
+        this.a.jdField_a_of_type_Bbgu.show();
+        return;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      a(paramJSONObject);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
+    }
+    paramJSONObject = paramJSONObject.getString("msg");
+    bcql.a(bcyb.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
   }
 }
 

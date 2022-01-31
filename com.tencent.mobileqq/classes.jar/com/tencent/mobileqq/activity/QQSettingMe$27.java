@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aweo;
+import aweq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.richstatus.RichStatus;
 

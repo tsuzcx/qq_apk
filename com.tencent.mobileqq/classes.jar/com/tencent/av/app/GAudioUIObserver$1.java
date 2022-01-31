@@ -1,11 +1,11 @@
 package com.tencent.av.app;
 
-import lfg;
+import lfb;
 
 public class GAudioUIObserver$1
   implements Runnable
 {
-  public GAudioUIObserver$1(lfg paramlfg, Object paramObject) {}
+  public GAudioUIObserver$1(lfb paramlfb, Object paramObject) {}
   
   public void run()
   {

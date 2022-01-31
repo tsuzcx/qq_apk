@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import apue;
+import apug;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ class QfileLocalFileMediaTabView$3
   
   public void run()
   {
-    Object localObject = apue.a(this.a.a());
+    Object localObject = apug.a(this.a.a());
     if (!this.this$0.c.containsKey(localObject)) {
       this.this$0.c.put(localObject, new ArrayList());
     }

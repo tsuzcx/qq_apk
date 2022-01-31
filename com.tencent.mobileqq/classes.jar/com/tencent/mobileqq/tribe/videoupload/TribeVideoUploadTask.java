@@ -3,32 +3,32 @@ package com.tencent.mobileqq.tribe.videoupload;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import azcg;
 import azci;
-import azcj;
+import azck;
+import azcl;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import sxf;
-import sxg;
+import sxc;
+import sxd;
 
 public class TribeVideoUploadTask
-  extends BasePublishTask<azci>
-  implements sxg
+  extends BasePublishTask<azck>
+  implements sxd
 {
   protected Handler a;
   protected WeakReference<BaseActivity> a;
   
-  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, azci paramazci)
+  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, azck paramazck)
   {
-    super(paramazci);
-    paramazci.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    azcg localazcg = new azcg(paramazci.jdField_a_of_type_JavaLangString);
-    localazcg.a(new azcj(this, paramazci));
-    paramazci.jdField_a_of_type_JavaUtilList.add(localazcg);
+    super(paramazck);
+    paramazck.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    azci localazci = new azci(paramazck.jdField_a_of_type_JavaLangString);
+    localazci.a(new azcl(this, paramazck));
+    paramazck.jdField_a_of_type_JavaUtilList.add(localazci);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
     a(this);
@@ -54,7 +54,7 @@ public class TribeVideoUploadTask
   public void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
   {
     QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
-    paramBasePublishTask = (azci)paramBasePublishTask.a();
+    paramBasePublishTask = (azck)paramBasePublishTask.a();
     if (paramBasePublishTask.b())
     {
       QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);

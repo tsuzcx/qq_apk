@@ -1,20 +1,17 @@
 public class avyp
+  implements avyq
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
-  
-  private avyp(long paramLong1, long paramLong2, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
+    ved.b("FlowEdit_NeoVideoFilterPlayView", "onResetAndStart");
   }
   
-  public String toString()
+  public void a(int paramInt1, int paramInt2)
   {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
+    ved.a("FlowEdit_NeoVideoFilterPlayView", "onSpeedChange, old=%d, new=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
+  
+  public void a(long paramLong) {}
 }
 
 

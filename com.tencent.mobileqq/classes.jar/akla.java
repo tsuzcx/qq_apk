@@ -1,19 +1,8 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.automator.AsyncStep;
 
-public class akla
-  implements ThreadFactory
+public abstract interface akla
 {
-  private final AtomicInteger a = new AtomicInteger(1);
-  
-  public Thread newThread(Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
-    if (paramRunnable.getPriority() != 10) {
-      paramRunnable.setPriority(10);
-    }
-    return paramRunnable;
-  }
+  public abstract void a(AsyncStep paramAsyncStep, int paramInt);
 }
 
 

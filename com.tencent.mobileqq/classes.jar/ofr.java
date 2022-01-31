@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ofr
-  implements ViewBase.OnClickListener
+final class ofr
+  implements DialogInterface.OnClickListener
 {
-  ofr(ofe paramofe) {}
+  ofr(ohs paramohs, oif paramoif) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Oii.a != null)
+    if (paramInt == 1)
     {
-      onk.a(this.a.jdField_a_of_type_Ohv.a().getContext(), this.a.jdField_a_of_type_Oii.a.activityJumpUrl);
-      if (this.a.jdField_a_of_type_Ohv.a() != null) {
-        this.a.jdField_a_of_type_Ohv.a().e(this.a.jdField_a_of_type_Oii);
+      if (this.jdField_a_of_type_Ohs != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Ohs.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Oif);
+          this.jdField_a_of_type_Ohs.notifyDataSetChanged();
+        }
       }
+      bhvy.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
     }
   }
 }

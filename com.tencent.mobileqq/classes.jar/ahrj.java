@@ -1,27 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahrj
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
   public ahrj(LoginView paramLoginView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
-    }
-    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
-      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    return true;
+    LoginView.b(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

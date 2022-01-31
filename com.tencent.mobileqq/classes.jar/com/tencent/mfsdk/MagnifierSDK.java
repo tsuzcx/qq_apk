@@ -1,9 +1,8 @@
 package com.tencent.mfsdk;
 
-import aaab;
-import aaak;
-import aaat;
-import aaba;
+import aaag;
+import aaap;
+import aaaw;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -13,22 +12,23 @@ import com.tencent.mfsdk.reporter.DFObserver;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
-import zzw;
-import zzx;
+import zzt;
+import zzu;
+import zzy;
 
 public class MagnifierSDK
 {
   public static int a;
   public static long a;
-  public static aaak a;
-  private static aaat jdField_a_of_type_Aaat = new aaat();
+  public static aaag a;
+  private static aaap jdField_a_of_type_Aaap = new aaap();
   public static SharedPreferences.Editor a;
   public static SharedPreferences a;
   private static MagnifierSDK jdField_a_of_type_ComTencentMfsdkMagnifierSDK;
   private static DFObserver jdField_a_of_type_ComTencentMfsdkReporterDFObserver = new DFObserver();
   public static String a;
   public static MqqHandler a;
-  private zzw jdField_a_of_type_Zzw;
+  private zzt jdField_a_of_type_Zzt;
   
   static
   {
@@ -80,13 +80,13 @@ public class MagnifierSDK
     if (QLog.isColorLevel()) {
       QLog.i("MagnifierSDK", 2, "beginSceneStage:" + paramString);
     }
-    aaba.a().a(paramString);
+    aaaw.a().a(paramString);
   }
   
-  public static void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull Class<? extends zzx> paramClass)
+  public static void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull Class<? extends zzu> paramClass)
   {
     QLog.i("MagnifierSDK", 1, "setABFactor:" + paramClass + " val " + paramString2);
-    paramClass = aaab.a(paramClass);
+    paramClass = zzy.a(paramClass);
     paramClass.a(paramString2, paramString1);
     paramClass.a();
   }
@@ -96,19 +96,19 @@ public class MagnifierSDK
     if (QLog.isColorLevel()) {
       QLog.i("MagnifierSDK", 2, "endSceneStage:" + paramString);
     }
-    aaba.a().b(paramString);
+    aaaw.a().b(paramString);
   }
   
   public void a(Application paramApplication)
   {
-    if ((this.jdField_a_of_type_Zzw != null) && (jdField_a_of_type_MqqOsMqqHandler != null)) {
-      LeakInspector.a(jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Zzw);
+    if ((this.jdField_a_of_type_Zzt != null) && (jdField_a_of_type_MqqOsMqqHandler != null)) {
+      LeakInspector.a(jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Zzt);
     }
   }
   
-  public void a(zzw paramzzw)
+  public void a(zzt paramzzt)
   {
-    this.jdField_a_of_type_Zzw = paramzzw;
+    this.jdField_a_of_type_Zzt = paramzzt;
   }
   
   public boolean a(Application paramApplication)

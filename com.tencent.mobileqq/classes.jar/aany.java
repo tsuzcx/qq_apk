@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.config.AppSetting;
 
-class aany
-  implements DialogInterface.OnClickListener
+public abstract interface aany
 {
-  aany(aanw paramaanw) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public static final boolean S = AppSetting.d;
+  public static final String f = ajya.a(2131701560);
 }
 
 

@@ -1,26 +1,9 @@
-import com.tencent.biz.qqstory.model.filter.FilterItem;
-import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
-
 public class tdw
 {
+  @vyj(a="type")
   public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public FilterItem a()
-  {
-    try
-    {
-      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
-      return localFilterItem;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
-    }
-  }
+  @vyj(a="content")
+  public tdv a;
 }
 
 

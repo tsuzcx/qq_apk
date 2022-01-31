@@ -1,85 +1,46 @@
-import java.util.Comparator;
-import java.util.List;
-
 public class lky
 {
-  public static final Object a;
-  public static final Comparator<lky> a;
-  private static lky b;
-  private static int c;
-  public int a;
-  public aykp a;
-  private lky a;
-  public int b;
+  private int jdField_a_of_type_Int;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[512];
+  private int b;
   
-  static
+  public lky()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilComparator = new lkz();
-  }
-  
-  private lky(aykp paramaykp, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Aykp = paramaykp;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static lky a(aykp paramaykp, int paramInt1, int paramInt2)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    int i = 0;
+    while (i < 512)
     {
-      if (jdField_b_of_type_Lky != null)
-      {
-        lky locallky = jdField_b_of_type_Lky;
-        jdField_b_of_type_Lky = locallky.jdField_a_of_type_Lky;
-        locallky.a(paramaykp, paramInt1, paramInt2);
-        c -= 1;
-        return locallky;
-      }
-      return new lky(paramaykp, paramInt1, paramInt2);
+      this.jdField_a_of_type_ArrayOfByte[i] = 0;
+      i += 1;
     }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  private void a(aykp paramaykp, int paramInt1, int paramInt2)
+  public void a(byte paramByte)
   {
-    this.jdField_a_of_type_Lky = null;
-    this.jdField_a_of_type_Aykp = paramaykp;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
+    this.jdField_a_of_type_Int += 1;
+    this.b += 1;
   }
   
-  public static void a(List<lky> paramList)
+  public void a(int paramInt)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
-      {
-        lky locallky = (lky)paramList.remove(i);
-        if (locallky != null) {
-          locallky.a();
-        }
-        i -= 1;
-      }
-    }
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)(paramInt >> 8 & 0xFF);
+    int k = (byte)(paramInt >> 16 & 0xFF);
+    int m = (byte)(paramInt >> 24 & 0xFF);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramInt = this.jdField_a_of_type_Int;
+    System.arraycopy(new byte[] { m, k, j, i }, 0, arrayOfByte, paramInt, 4);
+    this.jdField_a_of_type_Int += 4;
+    this.b += 4;
   }
   
-  public void a()
+  public byte[] a()
   {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (c < 50)
-      {
-        this.jdField_a_of_type_Lky = jdField_b_of_type_Lky;
-        jdField_b_of_type_Lky = this;
-        c += 1;
-      }
-      return;
-    }
+    byte[] arrayOfByte = new byte[this.b];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
+    return arrayOfByte;
   }
 }
 

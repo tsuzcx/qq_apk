@@ -1,17 +1,12 @@
 public class qct
 {
-  private qcu jdField_a_of_type_Qcu = new qcu(0L);
-  private qcv jdField_a_of_type_Qcv = new qcv("");
-  private qcw jdField_a_of_type_Qcw = new qcw("");
+  private String a;
+  private String b;
+  private String c;
   
-  public void a(qcu paramqcu)
+  public qct(String paramString)
   {
-    this.jdField_a_of_type_Qcu = paramqcu;
-  }
-  
-  public void a(qcv paramqcv)
-  {
-    this.jdField_a_of_type_Qcv = paramqcv;
+    this.a = paramString;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.webviewplugin;
 
-import bcdb;
+import bcdp;
 import com.tencent.biz.pubaccount.CustomWebView;
-import xjz;
+import xjw;
 
 public class BusinessReportPlugin$1
   implements Runnable
 {
-  public BusinessReportPlugin$1(xjz paramxjz, String paramString) {}
+  public BusinessReportPlugin$1(xjw paramxjw, String paramString) {}
   
   public void run()
   {

@@ -1,21 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class arsb
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public arsb(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, arsq paramarsq) {}
+  public arsb(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Arsq.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    if ((!ListenTogetherOverlayFragment.a(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
+      ListenTogetherOverlayFragment.a(this.a).finish();
     }
+    ListenTogetherOverlayFragment.a(this.a, null);
   }
 }
 

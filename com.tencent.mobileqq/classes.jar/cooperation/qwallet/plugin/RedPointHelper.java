@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -74,8 +74,8 @@ public class RedPointHelper
     if ((paramInt1 & 0x8) != 0) {
       i = j + paramView.getHeight() / 2 - m / 2;
     }
-    paramInt1 = actn.a(paramInt2, this.mContext.getResources());
-    paramInt2 = actn.a(paramInt3, this.mContext.getResources());
+    paramInt1 = actj.a(paramInt2, this.mContext.getResources());
+    paramInt2 = actj.a(paramInt3, this.mContext.getResources());
     this.popupWindow.showAtLocation(paramView, 0, k + paramInt1, i + paramInt2);
   }
 }

@@ -4,13 +4,13 @@ import NS_MINI_INTERFACE.INTERFACE.StAppMode;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import beqv;
+import berm;
 import com.tencent.mobileqq.pb.PBBoolField;
 
 public class AppMode
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppMode> CREATOR = new beqv();
+  public static final Parcelable.Creator<AppMode> CREATOR = new berm();
   public boolean a;
   public boolean b;
   public boolean c;

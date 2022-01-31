@@ -1,33 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afva
-  implements ansy
+  implements DialogInterface.OnClickListener
 {
-  afva(afur paramafur, int paramInt) {}
+  afva(afup paramafup, boolean paramBoolean, String paramString) {}
   
-  public void a(float paramFloat, List<Integer> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + afur.b(this.jdField_a_of_type_Afur));
+    axqy.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, afup.a(this.jdField_a_of_type_Afup), "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false);
     }
-    if (!afur.b(this.jdField_a_of_type_Afur))
+    for (;;)
     {
-      afur.b(this.jdField_a_of_type_Afur, paramList);
-      afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_Int, paramFloat);
-    }
-  }
-  
-  public void a(List<Integer> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + afur.b(this.jdField_a_of_type_Afur));
-    }
-    if (!afur.b(this.jdField_a_of_type_Afur))
-    {
-      afur.a(this.jdField_a_of_type_Afur).removeMessages(11);
-      afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_Int, paramList);
+      this.jdField_a_of_type_Afup.f();
+      return;
+      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

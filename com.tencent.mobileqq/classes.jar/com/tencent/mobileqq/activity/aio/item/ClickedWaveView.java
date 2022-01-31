@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import actn;
-import adnl;
-import adwl;
+import actj;
+import adnj;
+import adwj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -19,9 +19,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class ClickedWaveView
   extends ImageView
 {
-  static final int jdField_a_of_type_Int = actn.a(0.01F, BaseApplicationImpl.getContext().getResources());
-  static final int b = actn.a(60.0F, BaseApplicationImpl.getContext().getResources());
-  adnl jdField_a_of_type_Adnl = null;
+  static final int jdField_a_of_type_Int = actj.a(0.01F, BaseApplicationImpl.getContext().getResources());
+  static final int b = actj.a(60.0F, BaseApplicationImpl.getContext().getResources());
+  adnj jdField_a_of_type_Adnj = null;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   Scroller jdField_a_of_type_AndroidWidgetScroller = null;
@@ -69,8 +69,8 @@ public class ClickedWaveView
     for (;;)
     {
       return bool;
-      if (this.jdField_a_of_type_Adnl != null) {
-        this.jdField_a_of_type_Adnl.a();
+      if (this.jdField_a_of_type_Adnj != null) {
+        this.jdField_a_of_type_Adnj.a();
       }
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
         ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).unscheduleSelf((Runnable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -78,15 +78,15 @@ public class ClickedWaveView
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(jdField_a_of_type_Int, 0, b, 0, 900);
       this.c = jdField_a_of_type_Int;
       this.d = 30;
-      adwl.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
+      adwj.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
       postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$MovingRadiusRunnable, 20L);
       return true;
       setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
         ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).d();
       }
-      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Adnl != null)) {
-        this.jdField_a_of_type_Adnl.a(this.jdField_a_of_type_AndroidOsBundle);
+      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Adnj != null)) {
+        this.jdField_a_of_type_Adnj.a(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
   }
@@ -101,9 +101,9 @@ public class ClickedWaveView
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void setOnTouchReceive(adnl paramadnl)
+  public void setOnTouchReceive(adnj paramadnj)
   {
-    this.jdField_a_of_type_Adnl = paramadnl;
+    this.jdField_a_of_type_Adnj = paramadnj;
   }
 }
 

@@ -1,29 +1,29 @@
-import android.app.Dialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
 import android.content.res.Resources;
-import android.util.SparseArray;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.util.List;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.common.config.AppSetting;
 
-public class bath
-  extends baks
+class bath
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bath(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  bath(batg parambatg) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, List<bald> paramList)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    paramString = (balf)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
-    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
+    if ((paramValueAnimator.intValue() >= this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865)) && (AppSetting.d) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() > 0))
     {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString);
-      return;
+      paramValueAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(0);
+      if (paramValueAnimator != null) {
+        paramValueAnimator.requestFocusFromTouch();
+      }
     }
-    this.a.c();
-    bbcv.a(this.a, 230, this.a.getResources().getString(2131697989), this.a.getResources().getString(2131697988), this.a.getResources().getString(2131690596), this.a.getResources().getString(2131697991), new bati(this), new batj(this)).show();
-    batd.a("gold_bean", "gap");
   }
 }
 

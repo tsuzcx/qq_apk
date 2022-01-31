@@ -1,288 +1,215 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
 
-@TargetApi(16)
 public class mnd
 {
-  private int jdField_a_of_type_Int;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private BufferedOutputStream jdField_a_of_type_JavaIoBufferedOutputStream;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private mne jdField_a_of_type_Mne;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  
-  public mnd() {}
-  
-  public mnd(int paramInt1, int paramInt2, int paramInt3)
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  private void a()
-  {
-    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-    Object localObject;
-    int j;
-    if (i >= 0)
-    {
-      localObject = arrayOfByteBuffer[i];
-      ((ByteBuffer)localObject).clear();
-      j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
-      if (j < 0)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 0);
-        label66:
-        arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    int i = 0;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PCMConverter", 2, "converteBitCount, srcData == null || srcData.length == 0");
       }
     }
-    for (;;)
+    do
     {
-      i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-      if (i >= 0)
+      do
       {
-        localObject = arrayOfByteBuffer[i];
-        byte[] arrayOfByte = new byte[this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size];
-        ((ByteBuffer)localObject).get(arrayOfByte);
-        ((ByteBuffer)localObject).clear();
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
-        a(arrayOfByte);
-        continue;
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, 0L, 0);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-        break;
-        if (i != -1) {
+        return paramArrayOfByte;
+        if (paramInt1 != paramInt2) {
           break;
         }
-        break label66;
-      }
-      if (i != -2) {
-        return;
-      }
-      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, "encoder output format changed: " + localObject);
-      }
-    }
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    while ((this.d == 0) || (this.e == 0) || (this.f == 0)) {
-      return;
-    }
-    paramArrayOfByte = mng.a(paramArrayOfByte, this.d, this.e, this.f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-    try
-    {
-      this.jdField_a_of_type_JavaIoBufferedOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      QLog.e("AudioFileDecoder", 1, "writeFile exception", paramArrayOfByte);
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-    }
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoBufferedOutputStream != null)
+      } while (!QLog.isColorLevel());
+      QLog.d("PCMConverter", 2, "converteBitCount, srcBitCount == targetBitCount");
+      return paramArrayOfByte;
+      if ((paramInt1 == 8) && (paramInt2 == 16))
       {
-        this.jdField_a_of_type_JavaIoBufferedOutputStream.flush();
-        this.jdField_a_of_type_JavaIoBufferedOutputStream.close();
+        arrayOfByte = new byte[paramArrayOfByte.length * 2];
+        paramInt1 = i;
+        while (paramInt1 < paramArrayOfByte.length)
+        {
+          paramInt2 = (short)(paramArrayOfByte[paramInt1] * 256);
+          arrayOfByte[(paramInt1 * 2 + 1)] = ((byte)(paramInt2 & 0xFF));
+          arrayOfByte[(paramInt1 * 2)] = ((byte)((short)(paramInt2 >> 8) & 0xFF));
+          paramInt1 += 1;
+        }
+        return arrayOfByte;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, String.format("decode successful, save to %s, size: %sK", new Object[] { this.jdField_b_of_type_JavaLangString, Long.valueOf(new File(this.jdField_b_of_type_JavaLangString).length() / 1024L) }));
-      }
-      return;
-    }
-    catch (IOException localIOException)
+    } while ((paramInt1 != 16) || (paramInt2 != 8));
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length / 2];
+    paramInt1 = 0;
+    while (paramInt1 < paramArrayOfByte.length / 2)
     {
-      localIOException.printStackTrace();
+      arrayOfByte[paramInt1] = ((byte)((short)((short)((short)((short)paramArrayOfByte[(paramInt1 * 2 + 1)] & 0xFF | 0x0) << 8) | (short)paramArrayOfByte[(paramInt1 * 2)] & 0xFF) / 256));
+      paramInt1 += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int n = 0;
+    int m = 0;
+    int i1 = paramInt1 / 8;
+    int i2 = paramArrayOfByte.length / i1;
+    Object localObject = new short[i2];
+    int j = 0;
+    paramInt1 = 0;
+    while (j < i2)
+    {
+      int i = 0;
+      int k = 0;
+      while (k < i1)
+      {
+        i = (short)(i | (short)((paramArrayOfByte[paramInt1] & 0xFF) << k * 8));
+        k += 1;
+        paramInt1 += 1;
+      }
+      localObject[j] = i;
+      j += 1;
+    }
+    paramArrayOfByte = a(paramInt2, paramInt3, (short[])localObject);
+    paramInt2 = paramArrayOfByte.length;
+    if (i1 == 1)
+    {
+      localObject = new byte[paramInt2];
+      paramInt1 = m;
+      while (paramInt1 < paramInt2)
+      {
+        localObject[paramInt1] = ((byte)paramArrayOfByte[paramInt1]);
+        paramInt1 += 1;
+      }
+      return localObject;
+    }
+    localObject = new byte[paramInt2 * 2];
+    paramInt1 = n;
+    while (paramInt1 < paramArrayOfByte.length)
+    {
+      localObject[(paramInt1 * 2)] = ((byte)(paramArrayOfByte[paramInt1] & 0xFF));
+      localObject[(paramInt1 * 2 + 1)] = ((byte)(paramArrayOfByte[paramInt1] >> 8 & 0xFF));
+      paramInt1 += 1;
+    }
+    return localObject;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (paramInt2 != paramInt5) {}
+    for (byte[] arrayOfByte = a(paramArrayOfByte, paramInt2, paramInt5);; arrayOfByte = paramArrayOfByte)
+    {
+      paramArrayOfByte = arrayOfByte;
+      if (paramInt3 != paramInt6) {
+        paramArrayOfByte = b(arrayOfByte, paramInt3, paramInt6, paramInt5);
+      }
+      arrayOfByte = paramArrayOfByte;
+      if (paramInt1 != paramInt4) {
+        arrayOfByte = a(paramArrayOfByte, paramInt5, paramInt1, paramInt4);
+      }
+      return arrayOfByte;
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public static short[] a(int paramInt1, int paramInt2, short[] paramArrayOfShort)
+  {
+    if (paramInt1 == paramInt2) {
+      return paramArrayOfShort;
+    }
+    int j = Math.round(paramArrayOfShort.length / paramInt1 * paramInt2);
+    float f1 = j / paramArrayOfShort.length;
+    short[] arrayOfShort = new short[j];
+    paramInt1 = 0;
+    while (paramInt1 < j)
+    {
+      float f2 = paramInt1 / f1;
+      int k = (int)f2;
+      int i = k + 1;
+      paramInt2 = i;
+      if (i >= paramArrayOfShort.length) {
+        paramInt2 = paramArrayOfShort.length - 1;
+      }
+      arrayOfShort[paramInt1] = ((short)(int)((paramArrayOfShort[paramInt2] - paramArrayOfShort[k]) * (f2 - k) + paramArrayOfShort[k]));
+      paramInt1 += 1;
+    }
+    return arrayOfShort;
+  }
+  
+  private static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     int j = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    paramString1 = new File(this.jdField_a_of_type_JavaLangString);
-    if (!paramString1.exists())
-    {
+    int k = 0;
+    int i = 0;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
       if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, String.format("audio file %s is not exist", new Object[] { this.jdField_a_of_type_JavaLangString }));
+        QLog.d("PCMConverter", 2, "convertChannelCount, srcData == null || srcData.length == 0");
       }
-      if (this.jdField_a_of_type_Mne != null) {
-        this.jdField_a_of_type_Mne.a(-2);
-      }
-      return;
     }
-    int i;
-    for (;;)
+    do
     {
-      try
+      do
       {
-        for (;;)
+        do
         {
-          this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_JavaLangString);
-          i = 0;
-          if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
-          {
-            paramString2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-            String str = paramString2.getString("mime");
-            if (!str.startsWith("audio")) {
-              break label281;
-            }
-            this.jdField_a_of_type_AndroidMediaMediaFormat = paramString2;
-            this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-            this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-          }
-          try
-          {
-            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(paramString2, null, null, 0);
-            if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-              break label288;
-            }
-            QLog.e("AudioFileDecoder", 1, "init audioCodec fail");
-            if (this.jdField_a_of_type_Mne == null) {
-              break;
-            }
-            this.jdField_a_of_type_Mne.a(-1);
-            return;
-          }
-          catch (Throwable paramString2)
-          {
-            for (;;)
-            {
-              if (this.jdField_a_of_type_Mne != null) {
-                this.jdField_a_of_type_Mne.a(-5);
-              }
-              QLog.e("AudioFileDecoder", 1, "decode configure exception:" + paramString2, paramString2);
-            }
-          }
-        }
-        if (this.jdField_a_of_type_Mne == null) {
-          break;
-        }
-      }
-      catch (IOException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-      this.jdField_a_of_type_Mne.a(-3);
-      return;
-      label281:
-      i += 1;
-    }
-    label288:
-    this.d = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate");
-    this.f = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count");
-    this.e = 16;
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioFileDecoder", 2, String.format("decode audio sampleRate: %s, channelCount: %s, bitDeepth: %s", new Object[] { Integer.valueOf(this.d), Integer.valueOf(this.f), Integer.valueOf(this.e) }));
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaIoBufferedOutputStream = new BufferedOutputStream(this.jdField_a_of_type_JavaIoFileOutputStream);
-        if (QLog.isColorLevel()) {
-          QLog.d("AudioFileDecoder", 2, String.format("start decode file %s, size: %sK", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(paramString1.length() / 1024L) }));
-        }
-      }
-      catch (IOException paramString2)
-      {
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-          if (this.jdField_a_of_type_Mne != null) {
-            this.jdField_a_of_type_Mne.a(this.jdField_a_of_type_JavaLangString);
-          }
-          this.jdField_a_of_type_Boolean = false;
-          if (this.jdField_a_of_type_Boolean) {
-            break label652;
-          }
-          try
-          {
-            a();
-          }
-          catch (Throwable paramString1)
-          {
-            QLog.e("AudioFileDecoder", 1, "decode frame exception:" + paramString1, paramString1);
-            i = j;
-            if (this.jdField_a_of_type_Mne != null)
-            {
-              this.jdField_a_of_type_Mne.a(-6);
-              i = j;
-            }
-          }
-          b();
-          if ((i == 0) || (this.jdField_a_of_type_Mne == null)) {
+          return paramArrayOfByte;
+          if (paramInt1 != paramInt2) {
             break;
           }
-          this.jdField_a_of_type_Mne.b(this.jdField_b_of_type_JavaLangString);
-          return;
+        } while (!QLog.isColorLevel());
+        QLog.d("PCMConverter", 2, "convertChannelCount, srcChannelCount == targetChannelCount");
+        return paramArrayOfByte;
+        if ((paramInt3 == 8) || (paramInt3 == 16)) {
+          break;
         }
-        catch (Exception paramString1)
+      } while (!QLog.isColorLevel());
+      QLog.d("PCMConverter", 2, "convertChannelCount, only support bit8 and bit16");
+      return paramArrayOfByte;
+      if ((paramInt1 == 1) && (paramInt2 == 2))
+      {
+        arrayOfByte = new byte[paramArrayOfByte.length * 2];
+        paramInt1 = j;
+        if (paramInt3 == 8)
         {
-          QLog.e("AudioFileDecoder", 1, "decode start exception:" + paramString1, paramString1);
+          paramInt1 = i;
+          while (paramInt1 < paramArrayOfByte.length)
+          {
+            arrayOfByte[(paramInt1 * 2)] = paramArrayOfByte[paramInt1];
+            arrayOfByte[(paramInt1 * 2 + 1)] = paramArrayOfByte[paramInt1];
+            paramInt1 += 1;
+          }
         }
-        paramString2 = paramString2;
-        QLog.e("AudioFileDecoder", 1, "decode io exception:" + paramString2, paramString2);
-        continue;
+        while (paramInt1 < paramArrayOfByte.length / 2)
+        {
+          arrayOfByte[(paramInt1 * 4)] = paramArrayOfByte[(paramInt1 * 2)];
+          arrayOfByte[(paramInt1 * 4 + 1)] = paramArrayOfByte[(paramInt1 * 2 + 1)];
+          arrayOfByte[(paramInt1 * 4 + 2)] = paramArrayOfByte[(paramInt1 * 2)];
+          arrayOfByte[(paramInt1 * 4 + 3)] = paramArrayOfByte[(paramInt1 * 2 + 1)];
+          paramInt1 += 1;
+        }
+        return arrayOfByte;
       }
-      if (this.jdField_a_of_type_Mne == null) {
-        break;
+    } while ((paramInt1 != 2) || (paramInt2 != 1));
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length / 2];
+    if (paramInt3 == 8)
+    {
+      paramInt1 = k;
+      while (paramInt1 < paramArrayOfByte.length / 2)
+      {
+        arrayOfByte[paramInt1] = ((byte)((short)(paramArrayOfByte[(paramInt1 * 2)] + paramArrayOfByte[(paramInt1 * 2 + 1)]) >> 1));
+        paramInt1 += 1;
       }
-      this.jdField_a_of_type_Mne.a(-4);
-      return;
-      label652:
-      i = 1;
     }
-  }
-  
-  public void a(mne parammne)
-  {
-    this.jdField_a_of_type_Mne = parammne;
+    if (paramInt3 == 16)
+    {
+      paramInt1 = 0;
+      while (paramInt1 < paramArrayOfByte.length / 4)
+      {
+        paramInt2 = (short)((short)((short)((short)paramArrayOfByte[(paramInt1 * 4 + 1)] & 0xFF | 0x0) << 8) | (short)paramArrayOfByte[(paramInt1 * 4)] & 0xFF);
+        paramInt3 = (short)((short)((short)((short)paramArrayOfByte[(paramInt1 * 4 + 3)] & 0xFF | 0x0) << 8) | (short)paramArrayOfByte[(paramInt1 * 4 + 2)] & 0xFF);
+        paramInt2 = (short)(paramInt2 / 2 + paramInt3 / 2);
+        arrayOfByte[(paramInt1 * 2)] = ((byte)(paramInt2 & 0xFF));
+        arrayOfByte[(paramInt1 * 2 + 1)] = ((byte)((short)(paramInt2 >> 8) & 0xFF));
+        paramInt1 += 1;
+      }
+    }
+    return arrayOfByte;
   }
 }
 

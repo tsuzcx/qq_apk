@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahey;
+import ahew;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
@@ -21,13 +21,13 @@ class DrawRedpacketPannelPreviewFragment$11
       }
       String str = DrawRedpacketPannelPreviewFragment.a(DrawRedpacketPannelPreviewFragment.a(this.this$0), File.separator + System.currentTimeMillis() + ".png", DrawRedpacketPannelPreviewFragment.a(this.this$0));
       Message localMessage = Message.obtain();
-      ahey localahey = new ahey(null);
-      localahey.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localahey.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localahey.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localahey.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localahey.c = str;
-      localMessage.obj = localahey;
+      ahew localahew = new ahew(null);
+      localahew.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localahew.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localahew.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localahew.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localahew.c = str;
+      localMessage.obj = localahew;
       localMessage.what = 1001;
       DrawRedpacketPannelPreviewFragment.a(this.this$0).sendMessage(localMessage);
       return;

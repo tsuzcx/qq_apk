@@ -1,29 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class agoe
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agoe(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public agoe(PhotoPreviewActivity paramPhotoPreviewActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.a.a())
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a(0);
-      return;
-    case 1: 
-      this.a.m();
-      return;
-    case 2: 
-      this.a.l();
-      return;
-    }
-    this.a.a(0);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

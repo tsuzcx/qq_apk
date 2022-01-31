@@ -1,28 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.weaknet;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import onk;
-import onr;
+import onh;
+import ono;
 import org.json.JSONException;
-import saj;
-import sak;
+import sag;
+import sah;
 
 public class WeakNetManager$1
   implements Runnable
 {
-  public WeakNetManager$1(sak paramsak, long paramLong) {}
+  public WeakNetManager$1(sah paramsah, long paramLong) {}
   
   public void run()
   {
-    sak.a(this.this$0, null);
-    if (saj.a())
+    sah.a(this.this$0, null);
+    if (sag.a())
     {
-      bcpw.a(BaseApplicationImpl.sApplication, 1, 2131718621, 1).a();
+      bcql.a(BaseApplicationImpl.sApplication, 1, 2131718632, 1).a();
       try
       {
-        saj.a("0X8009D08", onk.a().a("loading_time", String.valueOf(this.a)).a());
+        sag.a("0X8009D08", onh.a().a("loading_time", String.valueOf(this.a)).a());
         QLog.d("WeakNetManager", 1, "show weak net toast.");
         return;
       }

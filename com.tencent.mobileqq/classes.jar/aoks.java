@@ -1,21 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
-final class aoks
-  implements View.OnTouchListener
+class aoks
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  aoks(aokr paramaokr) {}
+  
+  public void onAudioFocusChange(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if ((aokr.a(this.a) != null) && (paramInt == -1) && (aokr.a(this.a) != null)) {
+      aokr.a(this.a).c(false);
     }
   }
 }

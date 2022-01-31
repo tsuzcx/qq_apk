@@ -1,32 +1,18 @@
-public class avsn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+
+public final class avsn
+  implements Parcelable.Creator<FilterCategory>
 {
-  public int a;
-  public avso a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c = "";
-  
-  public avsn()
+  public FilterCategory a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
+    return new FilterCategory(paramParcel);
   }
   
-  public boolean a()
+  public FilterCategory[] a(int paramInt)
   {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Avso == null) || (this.jdField_a_of_type_Avso.d == 2);
-  }
-  
-  public String toString()
-  {
-    return "SubtitleItem{id=" + this.jdField_a_of_type_Int + " name=" + this.jdField_b_of_type_JavaLangString + " isShow=" + this.jdField_a_of_type_Boolean + " pos=" + this.jdField_b_of_type_Int + "}";
+    return new FilterCategory[paramInt];
   }
 }
 

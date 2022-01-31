@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.ipc;
 
-import atfx;
-import atfy;
+import atfz;
+import atga;
 
 public class NearbyProcManager$2
   implements Runnable
 {
-  public NearbyProcManager$2(atfx paramatfx, atfy paramatfy, int paramInt, Object[] paramArrayOfObject) {}
+  public NearbyProcManager$2(atfz paramatfz, atga paramatga, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atfy.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Atga.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

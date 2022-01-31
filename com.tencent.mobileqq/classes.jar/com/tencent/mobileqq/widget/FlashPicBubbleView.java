@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -48,10 +48,10 @@ public class FlashPicBubbleView
   {
     super.onDraw(paramCanvas);
     Object localObject = getResources();
-    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130846323);
-    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130846324);
-    localDrawable1.setBounds(0, 0, getWidth(), actn.a(95.0F, (Resources)localObject));
-    localDrawable2.setBounds(0, actn.a(95.0F, (Resources)localObject), getWidth(), getHeight());
+    Drawable localDrawable1 = ((Resources)localObject).getDrawable(2130846329);
+    Drawable localDrawable2 = ((Resources)localObject).getDrawable(2130846330);
+    localDrawable1.setBounds(0, 0, getWidth(), actj.a(95.0F, (Resources)localObject));
+    localDrawable2.setBounds(0, actj.a(95.0F, (Resources)localObject), getWidth(), getHeight());
     LightingColorFilter localLightingColorFilter;
     if ((!this.c) && (!this.jdField_a_of_type_Boolean))
     {

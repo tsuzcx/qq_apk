@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bdro;
-import bdru;
+import bdsd;
+import bdsj;
 
 class VoIPManager$2
-  implements bdro
+  implements bdsd
 {
   VoIPManager$2(VoIPManager paramVoIPManager) {}
   
@@ -13,7 +13,7 @@ class VoIPManager$2
     if (paramInt - 32 == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      bdru.c("VoIPManager", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      bdsj.c("VoIPManager", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
       return bool;
     }
   }

@@ -1,13 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class atrh
-  implements atap
+  implements DialogInterface.OnClickListener
 {
-  atrh(atqu paramatqu) {}
+  atrh(atqw paramatqw) {}
   
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.c(paramBoolean);
-    this.a.u = paramBoolean;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

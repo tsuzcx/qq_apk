@@ -1,48 +1,46 @@
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
-class ajtl
-  implements IUploadTaskCallback
+public class ajtl
+  extends aywb
 {
-  ajtl(ajtk paramajtk) {}
+  WeakReference<ajtm> a;
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public ajtl(ajtm paramajtm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
-    }
-    this.a.notifyUI(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
+    this.a = new WeakReference(paramajtm);
   }
   
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramLong1 == paramLong2)
-    {
-      this.a.b = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
+    ayqo localayqo = (ayqo)paramMessage.obj;
+    if (localayqo.b == 35) {
+      switch (paramMessage.what)
+      {
       }
     }
-  }
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
-  
-  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
-    }
-    synchronized (ajtk.a(this.a))
+    do
     {
-      if (ajtk.a(this.a).size() != 0)
+      do
       {
-        ajtk.a(this.a);
+        return;
+        paramMessage = localayqo.a;
+        if ((this.a != null) && (this.a.get() != null))
+        {
+          ((ajtm)this.a.get()).b(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
+      return;
+      if ((this.a != null) && (this.a.get() != null))
+      {
+        ((ajtm)this.a.get()).d();
         return;
       }
-      this.a.notifyUI(71, true, new Object[0]);
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
   }
 }
 

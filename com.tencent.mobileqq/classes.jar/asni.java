@@ -1,36 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
 public class asni
-  implements DialogInterface.OnClickListener
+  implements asmv
 {
-  public asni(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public asni(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
-    paramInt = asnx.a().a();
-    if (1 == paramInt)
-    {
-      this.a.l();
-      if (this.a.a) {
-        asoe.a("0X800A253", 3);
-      }
-    }
-    while (2 != paramInt)
-    {
-      return;
-      asoe.a("0X800A253", 1);
-      return;
-    }
-    if (this.a.d) {
-      asoe.a("0X800A244", 2);
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
     }
     for (;;)
     {
-      this.a.l();
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
       return;
-      asoe.a("0X800A244", 1);
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
     }
   }
 }

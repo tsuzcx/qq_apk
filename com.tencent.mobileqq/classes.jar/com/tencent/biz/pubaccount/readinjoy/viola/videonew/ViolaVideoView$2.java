@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew;
 
-import rzd;
+import rza;
 
 class ViolaVideoView$2
   implements Runnable
 {
-  ViolaVideoView$2(ViolaVideoView paramViolaVideoView, rzd paramrzd) {}
+  ViolaVideoView$2(ViolaVideoView paramViolaVideoView, rza paramrza) {}
   
   public void run()
   {

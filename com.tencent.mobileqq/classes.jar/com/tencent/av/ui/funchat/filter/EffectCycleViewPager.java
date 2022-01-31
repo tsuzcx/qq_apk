@@ -8,16 +8,16 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
-import mmt;
-import mmu;
+import mmq;
+import mmr;
 
 @TargetApi(9)
 public class EffectCycleViewPager
   extends ViewPager
 {
   public SparseArray<View> a;
-  private mmt a;
-  public mmu a;
+  private mmq a;
+  public mmr a;
   
   public EffectCycleViewPager(Context paramContext)
   {
@@ -38,15 +38,15 @@ public class EffectCycleViewPager
   
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
-    this.jdField_a_of_type_Mmu = new mmu(this, paramPagerAdapter);
-    super.setAdapter(this.jdField_a_of_type_Mmu);
+    this.jdField_a_of_type_Mmr = new mmr(this, paramPagerAdapter);
+    super.setAdapter(this.jdField_a_of_type_Mmr);
     setCurrentItem(1);
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_Mmt = new mmt(this, paramOnPageChangeListener, getCurrentItem());
-    super.setOnPageChangeListener(this.jdField_a_of_type_Mmt);
+    this.jdField_a_of_type_Mmq = new mmq(this, paramOnPageChangeListener, getCurrentItem());
+    super.setOnPageChangeListener(this.jdField_a_of_type_Mmq);
   }
 }
 

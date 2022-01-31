@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.doutu;
 
-import afac;
+import afaa;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import anny;
-import anob;
+import anod;
+import anog;
 import com.tencent.widget.HorizontalListView;
 
 public class DoutuEmotionHorizonListView
   extends HorizontalListView
 {
-  private anob a;
+  private anog a;
   
   public DoutuEmotionHorizonListView(Context paramContext)
   {
@@ -35,25 +35,25 @@ public class DoutuEmotionHorizonListView
   {
     if (paramInt1 > 0)
     {
-      if (!(getAdapter() instanceof anny)) {
+      if (!(getAdapter() instanceof anod)) {
         break label34;
       }
-      ((anny)getAdapter()).b();
+      ((anod)getAdapter()).b();
     }
     for (;;)
     {
       super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
       return;
       label34:
-      if ((getAdapter() instanceof afac)) {
-        ((afac)getAdapter()).b();
+      if ((getAdapter() instanceof afaa)) {
+        ((afaa)getAdapter()).b();
       }
     }
   }
   
-  public void setTouchListener(anob paramanob)
+  public void setTouchListener(anog paramanog)
   {
-    this.a = paramanob;
+    this.a = paramanog;
   }
 }
 

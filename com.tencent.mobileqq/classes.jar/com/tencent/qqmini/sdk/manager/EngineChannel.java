@@ -6,22 +6,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import beiw;
-import bess;
-import best;
-import besu;
+import bejn;
+import betj;
+import betk;
+import betl;
 
 public class EngineChannel
   implements Parcelable
 {
-  public static final Parcelable.Creator<EngineChannel> CREATOR = new bess();
+  public static final Parcelable.Creator<EngineChannel> CREATOR = new betj();
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private besu jdField_a_of_type_Besu;
+  private betl jdField_a_of_type_Betl;
   private String jdField_a_of_type_JavaLangString = "Unknown";
   
   public EngineChannel()
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = new EngineChannel.MyReceiver(this, new best(beiw.a().getLooper()));
+    this.jdField_a_of_type_AndroidOsResultReceiver = new EngineChannel.MyReceiver(this, new betk(bejn.a().getLooper()));
   }
   
   private EngineChannel(ResultReceiver paramResultReceiver)
@@ -36,9 +36,9 @@ public class EngineChannel
     }
   }
   
-  public void a(besu parambesu)
+  public void a(betl parambetl)
   {
-    this.jdField_a_of_type_Besu = parambesu;
+    this.jdField_a_of_type_Betl = parambetl;
   }
   
   public void a(String paramString)

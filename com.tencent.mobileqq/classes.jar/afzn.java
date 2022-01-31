@@ -1,8 +1,16 @@
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class afzn
   implements View.OnClickListener
@@ -11,9 +19,20 @@ public class afzn
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(paramView);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("troop_uin", this.a.c);
+    List localList = (List)this.a.jdField_a_of_type_Agau.a.get(ChatHistoryTroopMemberFragment.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      localArrayList.add(((agas)localList.get(i)).a);
+      i += 1;
+    }
+    localIntent.putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), localIntent, TroopMemberHistoryFragment.class);
+    paramView = ((TroopManager)this.a.getActivity().app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
+    bbbp.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bbbp.a(paramView) });
   }
 }
 

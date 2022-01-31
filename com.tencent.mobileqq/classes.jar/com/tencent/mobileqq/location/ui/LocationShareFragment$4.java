@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.location.ui;
 
-import aruq;
-import arxh;
+import arus;
+import arxj;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class LocationShareFragment$4
@@ -11,7 +11,7 @@ class LocationShareFragment$4
   
   public void run()
   {
-    aruq.a(this.a.app).c();
+    arus.a(this.a.app).c();
     if (LocationShareFragment.a(this.this$0) != null)
     {
       LocationShareFragment.a(this.this$0).onStop();

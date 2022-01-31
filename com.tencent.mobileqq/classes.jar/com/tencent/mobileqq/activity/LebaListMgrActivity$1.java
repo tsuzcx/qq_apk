@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import agca;
-import ajzo;
+import agby;
+import ajzm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -12,9 +12,9 @@ class LebaListMgrActivity$1
   
   public void run()
   {
-    agca.a().a(this.this$0, this.this$0.app);
+    agby.a().a(this.this$0, this.this$0.app);
     boolean bool = this.this$0.app.a().a();
-    List localList = agca.a().a();
+    List localList = agby.a().a();
     this.this$0.runOnUiThread(new LebaListMgrActivity.1.1(this, bool, localList));
   }
 }

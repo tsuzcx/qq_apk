@@ -1,6 +1,8 @@
 public abstract interface avuh
 {
-  public abstract void H_();
+  public abstract void a(bilk parambilk);
+  
+  public abstract void a(String paramString);
 }
 
 

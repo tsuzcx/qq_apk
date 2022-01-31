@@ -1,66 +1,36 @@
-import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.1;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.2;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3;
-import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class tbt
-  extends uxv
-  implements View.OnClickListener
+class tbt
+  implements syq<tmn, toh>
 {
-  public EditText a;
-  public tda a;
-  public EditText b;
+  tbt(tbr paramtbr) {}
   
-  public void a()
+  public void a(@NonNull tmn paramtmn, @Nullable toh paramtoh, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.a();
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    super.a(paramBundle1, paramBundle2);
-    this.jdField_a_of_type_Tda = ((tda)tdc.a(29));
-    a(2131558442);
-    a(2131363544).setOnClickListener(this);
-    a(2131363591).setOnClickListener(this);
-    a(2131363497).setOnClickListener(this);
-    a(2131363619).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131365520));
-    this.b = ((EditText)a(2131365487));
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    ved.b("AddressDataProvider", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtoh != null))
     {
-    default: 
-      return;
-    case 2131363544: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
-      return;
-    case 2131363591: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
-      return;
-    case 2131363497: 
-      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
-      return;
-    case 2131363500: 
-      this.b.getText().toString();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      this.b.getText().clear();
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      new tbs(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
-      return;
+      ved.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramtoh.toString());
+      this.a.jdField_a_of_type_JavaLangObject = new tbu(paramtoh.a, paramtoh.c, paramtoh.d, paramtoh.e, paramtoh.f, paramtmn.d, paramtmn.e);
+      this.a.a("country", paramtoh.a);
+      this.a.a("province", paramtoh.c);
+      this.a.a("city", paramtoh.d);
+      this.a.a("district", paramtoh.e);
+      this.a.a("street", paramtoh.f);
+      this.a.a("longitude", paramtmn.d);
+      this.a.a("latitude", paramtmn.e);
+      this.a.a("time", System.currentTimeMillis());
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      ved.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramtmn });
+      this.a.a(false, null);
+    }
   }
 }
 

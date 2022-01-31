@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ArMapUtil$1
@@ -8,7 +8,7 @@ public final class ArMapUtil$1
 {
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), this.a, 1000).a();
+    bcql.a(BaseApplicationImpl.getContext(), this.a, 1000).a();
   }
 }
 

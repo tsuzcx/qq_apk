@@ -1,38 +1,36 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.lang.ref.WeakReference;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class ubx
-  implements DialogInterface.OnDismissListener
+  extends JobSegment<String, String>
 {
-  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  private ubx(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public ubx(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDialogInterface != null)
+    this.a.jdField_a_of_type_Ucz.a(null);
+    this.a.jdField_a_of_type_Ucz.a(null);
+    this.a.jdField_a_of_type_Ucz.a(null);
+    this.a.jdField_a_of_type_Ucz.a(null);
+    this.a.jdField_a_of_type_Ucz.a(null);
+    if (VideoViewVideoHolder.f(this.a) == 0)
     {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
-        break label40;
-      }
-      veg.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
-    }
-    label40:
-    while (paramDialogInterface.e()) {
+      ved.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
+      notifyResult(paramString);
       return;
     }
-    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-    paramDialogInterface.d();
-    paramDialogInterface.a = null;
+    if (VideoViewVideoHolder.f(this.a) < 7)
+    {
+      ved.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
+      VideoViewVideoHolder.a(this.a, 0);
+      notifyResult(paramString);
+      return;
+    }
+    ved.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
+    this.a.jdField_a_of_type_Ucz.a();
+    VideoViewVideoHolder.a(this.a, 0);
+    notifyResult(paramString);
   }
 }
 

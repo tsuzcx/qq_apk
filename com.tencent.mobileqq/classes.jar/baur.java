@@ -1,10 +1,6 @@
-import java.util.List;
-
-public class baur
+public abstract interface baur
 {
-  public String a;
-  public List<String> a;
-  public boolean a;
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

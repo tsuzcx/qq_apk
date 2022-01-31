@@ -4,20 +4,20 @@ import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForTroopStory;
-import vwt;
-import vwu;
+import vwq;
+import vwr;
 
 public class TroopStoryForwardTask$2$1
   implements Runnable
 {
-  public TroopStoryForwardTask$2$1(vwu paramvwu, String paramString) {}
+  public TroopStoryForwardTask$2$1(vwr paramvwr, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
-    this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Vwu.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
-    this.jdField_a_of_type_Vwu.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
+    this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Vwr.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
+    this.jdField_a_of_type_Vwr.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
   }
 }
 

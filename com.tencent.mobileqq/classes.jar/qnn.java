@@ -1,27 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class qnn
-  extends Handler
+  extends AnimatorListenerAdapter
 {
-  qnn(qnm paramqnm) {}
+  qnn(qnl paramqnl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
+    paramAnimator = new Bundle();
+    paramAnimator.putBoolean("key_is_from_floating_window", true);
+    paramAnimator.putParcelable("VIDEO_OBJ", qnl.a(this.a).a);
+    if (qnl.a(this.a) != null) {}
+    for (long l = qnl.a(this.a).a() + 300L;; l = 0L)
     {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-      } while ((qnm.a(this.a) == null) || (qnm.a(this.a) == null) || (qnm.a(this.a).getVisibility() != 0) || (!bhvh.f()));
-      qnm.a(this.a, qnm.a(this.a));
-      sendEmptyMessageDelayed(2, 3000L);
+      paramAnimator.putLong("VIDEO_PLAY_POSITION", l);
+      qoi.a(BaseActivity.sTopActivity, paramAnimator, false, qnl.a(this.a));
+      qnl.a(this.a, 1);
       return;
     }
-    this.a.a();
   }
 }
 

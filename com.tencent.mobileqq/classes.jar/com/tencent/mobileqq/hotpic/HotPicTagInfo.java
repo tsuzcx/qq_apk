@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.hotpic;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class HotPicTagInfo
-  extends aukm
+  extends auko
   implements Comparable<HotPicTagInfo>
 {
   public int position;
-  @auma
+  @aumc
   public int tagId;
   public String tagName;
   public int tagType;

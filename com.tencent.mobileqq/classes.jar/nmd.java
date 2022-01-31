@@ -1,24 +1,29 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class nmd
-  implements rci
+final class nmd
+  implements BusinessObserver
 {
-  nmd(nma paramnma, AdvertisementInfo paramAdvertisementInfo) {}
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdDislikeHelper", 2, "onComplain");
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "doAdReport success!");
+        }
+      }
+      return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_from_type", 1);
-    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    PublicFragmentActivity.a(nma.a(this.jdField_a_of_type_Nma), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    nma.a(this.jdField_a_of_type_Nma).dismiss();
+    catch (Exception paramBundle) {}
   }
 }
 

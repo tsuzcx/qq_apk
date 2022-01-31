@@ -1,35 +1,68 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.qphone.base.util.QLog;
 
-public final class atxk<Params, Result>
+public class atxk
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Params a;
-  public final String a;
-  public SoftReference<View> a;
-  public Future<?> a;
-  public SoftReference<View> b;
-  public SoftReference<Result> c;
-  
-  public atxk(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
-    {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramParams;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.redtouch.util", 2, "onMedalConfigChanged configOn:" + paramBoolean + " refresh parents");
     }
+    paramQQAppInterface = (atxd)paramQQAppInterface.getManager(160);
+    RedTouchItem localRedTouchItem = paramQQAppInterface.a(10016);
+    if (paramQQAppInterface.a(localRedTouchItem))
+    {
+      localRedTouchItem.isClosed = paramBoolean;
+      paramQQAppInterface.d(10016);
+    }
+    localRedTouchItem = paramQQAppInterface.a(10015);
+    if (paramQQAppInterface.a(localRedTouchItem))
+    {
+      localRedTouchItem.isClosed = paramBoolean;
+      paramQQAppInterface.d(10015);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + paramQQAppInterface.getCurrentAccountUin(), 4).getBoolean("medal_switch_disable", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.redtouch.util", 2, "card.medalSwitchDisable=" + bool);
+    }
+    if (bbkb.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (QLog.isColorLevel())) {
+        QLog.d("Q.redtouch.util", 2, "medal config off");
+      }
+      if ((bool) || (i != 0)) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.redtouch.util", 2, "onLikeRankListConfigChanged configOn:" + paramBoolean + " refresh parents");
+    }
+    paramQQAppInterface = (atxd)paramQQAppInterface.getManager(160);
+    RedTouchItem localRedTouchItem = paramQQAppInterface.a(100601);
+    if (paramQQAppInterface.a(localRedTouchItem))
+    {
+      localRedTouchItem.isClosed = paramBoolean;
+      paramQQAppInterface.d(100601);
+    }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return ((ajzq)paramQQAppInterface.getManager(186)).c();
   }
 }
 

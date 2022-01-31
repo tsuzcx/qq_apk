@@ -1,44 +1,54 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxl
-  extends aowe
+  implements aout
 {
-  aoxl(aoxk paramaoxk, aoxp paramaoxp, String paramString) {}
+  aoxl(aoxk paramaoxk, String paramString, aoxt paramaoxt) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle)
+  public void a(int paramInt, String paramString)
   {
-    super.a(paramBoolean, paramLong, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxk.jdField_a_of_type_JavaLangString + " start DiscUploadTaskExcuter isSuccess:" + paramBoolean + " retCode:" + paramLong + " retMsg:" + paramString6);
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
-    if (!paramBoolean)
+    for (;;)
     {
-      if ((paramLong == -100001L) || (paramLong == -100002L))
-      {
-        this.jdField_a_of_type_Aoxp.a(aowt.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Long, false), true);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxk.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
       }
-      this.jdField_a_of_type_Aoxp.a(aowt.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Long, false), false);
+      this.jdField_a_of_type_Aoxt.a(aowx.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Long, bool2), bool1);
       return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
     }
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aoxk.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aoxk.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aoxk.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aoxk.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aoxk.f);
+    localBundle.putString("_m_ForwardUuid", paramString);
     if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxk.jdField_a_of_type_JavaLangString + " start upload Discfile");
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxk.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
     }
-    paramBoolean = apee.e(aowt.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Aowt));
-    paramString5 = paramBundle.getString("strHttpsDomain");
-    int i = paramBundle.getShort("httpsPort");
-    paramString2 = "";
-    if (apvk.b(aowt.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Aowt))) {
-      paramString2 = paramBundle.getString("strHttpsDomain");
-    }
-    paramString1 = new aowg(aowt.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Aowt), paramString3, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aoxk.jdField_a_of_type_Long, paramString4, paramInt, paramBoolean, paramString5, i, this.jdField_a_of_type_Aoxk.b, paramString2, new aoxm(this, paramString1));
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxk.jdField_a_of_type_JavaLangString + " add to rsCenter");
-    }
-    aoxk.a(this.jdField_a_of_type_Aoxk, apue.a().longValue());
-    aowt.a(this.jdField_a_of_type_Aoxk.jdField_a_of_type_Aowt).a().a(aoxk.a(this.jdField_a_of_type_Aoxk), paramString1);
+    this.jdField_a_of_type_Aoxt.a(paramString, localBundle);
   }
 }
 

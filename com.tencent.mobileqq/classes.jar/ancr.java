@@ -1,85 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ancr
+  extends ampa<ancq>
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
-  
-  public static ancr a(ampi[] paramArrayOfampi)
+  public static ancq a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      paramArrayOfampi = null;
-    }
-    ancr localancr;
-    for (;;)
-    {
-      return paramArrayOfampi;
-      localancr = new ancr();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfampi[0].a);
-        if (localJSONObject.has("flag"))
-        {
-          localancr.d = localJSONObject.getInt("flag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localancr.d);
-          }
-        }
-        if (localJSONObject.has("showCount"))
-        {
-          localancr.c = localJSONObject.getInt("showCount");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localancr.c);
-          }
-        }
-        if (localJSONObject.has("groupFlag"))
-        {
-          localancr.b = localJSONObject.getInt("groupFlag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localancr.b);
-          }
-        }
-        paramArrayOfampi = localancr;
-        if (localJSONObject.has("groupShowCount"))
-        {
-          localancr.a = localJSONObject.getInt("groupShowCount");
-          paramArrayOfampi = localancr;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localancr.a);
-            return localancr;
-          }
-        }
-      }
-      catch (Exception paramArrayOfampi)
-      {
-        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfampi.toString());
-      }
-    }
-    return localancr;
+    return (ancq)ampl.a().a(437);
   }
   
   public int a()
   {
-    return this.a;
+    return 437;
   }
+  
+  @NonNull
+  public ancq a(int paramInt)
+  {
+    return new ancq();
+  }
+  
+  @Nullable
+  public ancq a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return ancq.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<ancq> a()
+  {
+    return ancq.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ancq paramancq) {}
   
   public int b()
   {
-    return this.b;
+    return 0;
   }
   
-  public int c()
+  public boolean b()
   {
-    return this.c;
+    return false;
   }
   
-  public int d()
+  public boolean c()
   {
-    return this.d;
+    return true;
   }
 }
 

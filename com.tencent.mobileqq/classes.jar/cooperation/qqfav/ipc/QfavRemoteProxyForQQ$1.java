@@ -1,16 +1,16 @@
 package cooperation.qqfav.ipc;
 
-import bgql;
-import bgqn;
+import bgrc;
+import bgre;
 
 public class QfavRemoteProxyForQQ$1
   implements Runnable
 {
-  public QfavRemoteProxyForQQ$1(bgql parambgql, bgqn parambgqn) {}
+  public QfavRemoteProxyForQQ$1(bgrc parambgrc, bgre parambgre) {}
   
   public void run()
   {
-    bgql.a(this.this$0, this.a);
+    bgrc.a(this.this$0, this.a);
   }
 }
 

@@ -1,29 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
 
 public class ven
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public ven(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  public ven(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
-    {
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      return true;
-    }
-    return false;
+    this.a.getActivity().finish();
   }
 }
 

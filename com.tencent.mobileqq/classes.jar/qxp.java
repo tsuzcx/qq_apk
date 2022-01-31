@@ -1,6 +1,28 @@
-public abstract interface qxp<V>
+import com.tencent.biz.pubaccount.VideoInfo;
+
+public abstract interface qxp
 {
-  public abstract void a(V paramV);
+  public abstract int a();
+  
+  public abstract VideoInfo a();
+  
+  public abstract qql a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

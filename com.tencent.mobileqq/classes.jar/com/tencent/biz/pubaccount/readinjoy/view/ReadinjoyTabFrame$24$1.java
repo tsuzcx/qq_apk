@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rha;
+import rgx;
 
 public class ReadinjoyTabFrame$24$1
   implements Runnable
 {
-  public ReadinjoyTabFrame$24$1(rha paramrha) {}
+  public ReadinjoyTabFrame$24$1(rgx paramrgx) {}
   
   public void run()
   {

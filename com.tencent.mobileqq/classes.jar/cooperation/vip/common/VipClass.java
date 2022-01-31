@@ -1,11 +1,11 @@
 package cooperation.vip.common;
 
 import android.app.Activity;
-import bhym;
+import bhzd;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 public class VipClass
-  extends bhym
+  extends bhzd
 {
   private static VipClass a = new VipClass();
   

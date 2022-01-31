@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import ozr;
-import qax;
+import ozo;
+import qau;
 
 public class ArticleInfoModule$11
   implements Runnable
 {
-  public ArticleInfoModule$11(ozr paramozr, int paramInt, List paramList) {}
+  public ArticleInfoModule$11(ozo paramozo, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -21,9 +21,9 @@ public class ArticleInfoModule$11
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        qax localqax = (qax)((Iterator)localObject).next();
-        if (localqax.jdField_a_of_type_Int != 0) {
-          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localqax.jdField_a_of_type_Long + ", failCode : " + localqax.jdField_a_of_type_Int + ",fialMessage : " + localqax.jdField_a_of_type_JavaLangString);
+        qau localqau = (qau)((Iterator)localObject).next();
+        if (localqau.jdField_a_of_type_Int != 0) {
+          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localqau.jdField_a_of_type_Long + ", failCode : " + localqau.jdField_a_of_type_Int + ",fialMessage : " + localqau.jdField_a_of_type_JavaLangString);
         }
       }
     }

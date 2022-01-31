@@ -1,12 +1,10 @@
-import java.util.Comparator;
-
-final class rpf
-  implements Comparator<byte[]>
+public abstract interface rpf
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
-  }
+  public abstract void a(rph paramrph, int paramInt);
+  
+  public abstract void a(rph paramrph, Throwable paramThrowable);
+  
+  public abstract void a(rph paramrph, rpd paramrpd);
 }
 
 

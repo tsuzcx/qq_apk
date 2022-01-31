@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import arsq;
-import axrl;
+import arss;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LyricsController$4
   implements Runnable
 {
-  public LyricsController$4(arsq paramarsq, boolean paramBoolean) {}
+  public LyricsController$4(arss paramarss, boolean paramBoolean) {}
   
   public void run()
   {
-    axrl.a(BaseApplicationImpl.getContext()).a("", "listen_together_float_window_permission_quality", this.a, 0L, 0L, null, "", false);
+    axrn.a(BaseApplicationImpl.getContext()).a("", "listen_together_float_window_permission_quality", this.a, 0L, 0L, null, "", false);
   }
 }
 

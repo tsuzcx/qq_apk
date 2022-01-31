@@ -1,18 +1,6 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.widget.SingleLineTextView;
-
-class afsl
-  extends aimv
+public abstract interface afsl
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public abstract void a(String paramString, int paramInt);
 }
 
 

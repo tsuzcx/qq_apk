@@ -1,6 +1,6 @@
 public abstract interface angq
 {
-  public abstract angp a(int paramInt);
+  public abstract void a(anhr paramanhr, angp paramangp);
 }
 
 

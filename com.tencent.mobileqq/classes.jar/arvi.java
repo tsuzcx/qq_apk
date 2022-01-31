@@ -1,141 +1,69 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.ui.HeadSetViewModule.1;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class arvi
-  implements View.OnClickListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aruk jdField_a_of_type_Aruk;
-  private aryt jdField_a_of_type_Aryt;
-  private PublicFragmentActivity jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public arvi(Context paramContext)
+  public arvi(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
-    if ((paramContext instanceof PublicFragmentActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity = ((PublicFragmentActivity)paramContext);
-    }
-    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     b();
-  }
-  
-  private void a() {}
-  
-  private void a(ArrayList<String> paramArrayList)
-  {
-    if (QLog.isColorLevel())
-    {
-      Iterator localIterator = paramArrayList.iterator();
-      String str2;
-      for (String str1 = ""; localIterator.hasNext(); str1 = str1 + ", " + str2) {
-        str2 = (String)localIterator.next();
-      }
-      QLog.d("HeadSetViewModule", 2, new Object[] { "refreshHeadSet: invoked. ", " uins: ", str1, " headAdapter.count: ", Integer.valueOf(this.jdField_a_of_type_Aryt.getCount()) });
-    }
-    if (this.jdField_a_of_type_Aryt == null) {
-      return;
-    }
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
-    {
-      QLog.e("HeadSetViewModule", 1, "refreshHeadSet: failed. uins empty, maybe exit room");
-      return;
-    }
-    paramArrayList = new HeadSetViewModule.1(this, paramArrayList);
-    ThreadManager.getUIHandlerV2().post(paramArrayList);
   }
   
   private void b()
   {
-    ImmersiveUtils.a(true, this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getWindow());
-    ImmersiveUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getWindow(), true);
-  }
-  
-  private void b(ArrayList<String> paramArrayList)
-  {
-    if (paramArrayList.size() == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getResources().getString(2131693983));
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
-      aryd.a(this.jdField_a_of_type_AndroidWidgetTextView, "" + this.jdField_a_of_type_AndroidWidgetTextView.getText());
-      return;
-      paramArrayList = paramArrayList.size() + this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.getString(2131694007);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramArrayList);
+      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
     }
   }
   
   private void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HeadSetViewModule", 2, new Object[] { "onClickMinimizeShare: invoked. ", " textSharingCount: ", this.jdField_a_of_type_AndroidWidgetTextView });
-    }
-    if (arzl.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity, this.jdField_a_of_type_Aruk)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity.finish();
-    }
-    axqw.b(null, "CliOper", "", "", "0X800A76F", "0X800A76F", 0, 0, "", "0", "0", "");
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1);
+    axqy.b(null, "CliOper", "", "", "0X800A763", "0X800A763", 0, 0, "", "0", "0", "");
   }
   
   private void d()
   {
+    acxs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
+    }
+    aeft.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("HeadSetViewModule", 2, "onClickCancelShare: invoked. ");
+      QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
     }
-    bfol localbfol = bfol.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicFragmentActivity);
-    localbfol.a(2131692075, 3);
-    localbfol.a(2131694602);
-    localbfol.c(2131690596);
-    localbfol.a(new arvj(this, localbfol));
-    localbfol.show();
-    axqw.b(null, "CliOper", "", "", "0X800A76D", "0X800A76D", 0, 0, "", "0", "0", "");
-  }
-  
-  public void a(TextView paramTextView)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-  }
-  
-  public void a(aruk paramaruk)
-  {
-    this.jdField_a_of_type_Aruk = paramaruk;
-  }
-  
-  public void a(aryt paramaryt)
-  {
-    this.jdField_a_of_type_Aryt = paramaryt;
-  }
-  
-  void a(List<arui> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(String.valueOf(((arui)paramList.next()).a()));
-    }
-    a(localArrayList);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
       return;
-    case 2131363866: 
+    }
+    Object localObject = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeoc)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!((ajxl)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    {
       d();
       return;
     }
-    c();
+    localObject = bfpc.a(this.jdField_a_of_type_AndroidContentContext);
+    ((bfpc)localObject).a(2131719268, 0);
+    ((bfpc)localObject).a(2131719500, 0);
+    ((bfpc)localObject).c(2131690596);
+    ((bfpc)localObject).a(new arvj(this, (bfpc)localObject));
+    ((bfpc)localObject).show();
   }
 }
 

@@ -1,16 +1,16 @@
 package cooperation.troop_homework.jsp;
 
-import bhwt;
+import bhxk;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$1
   implements Runnable
 {
-  public TroopHWFileDownloadManager$1(bhwt parambhwt, String paramString1, String paramString2) {}
+  public TroopHWFileDownloadManager$1(bhxk parambhxk, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bhwt.a(this.this$0).startDownloadTask(this.a, "resource/tm.android.unknown", this.b);
+    bhxk.a(this.this$0).startDownloadTask(this.a, "resource/tm.android.unknown", this.b);
   }
 }
 

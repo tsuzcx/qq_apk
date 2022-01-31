@@ -1,10 +1,18 @@
-class sdr
+public class sdr
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public int a;
+  public long a;
+  public int b = -1;
+  
+  public sdr()
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "time: " + this.jdField_a_of_type_Long + " starPosition: " + this.jdField_a_of_type_Int + "  endPostition: " + this.b;
+  }
 }
 
 

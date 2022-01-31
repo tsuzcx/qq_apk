@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class anln
-  implements ValueAnimator.AnimatorUpdateListener
+class anln
+  implements View.OnClickListener
 {
-  public anln(DataReportViewer paramDataReportViewer) {}
+  anln(anlm paramanlm, WindowManager paramWindowManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlm.a.a);
   }
 }
 

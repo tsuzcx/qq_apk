@@ -1,54 +1,55 @@
+import android.os.Binder;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class bgsl
-  extends QIPCModule
+public abstract class bgsl
+  extends Binder
+  implements bgsk
 {
-  public bgsl(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
+  public bgsl()
   {
-    super(paramString);
+    attachInterface(this, "cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static bgsk a(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgsj.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
-    }
-    if (bgsj.g.equals(paramString)) {
-      if (QQPimGetTipsInfoIPC.a() != -1) {}
-    }
-    while ((!bgsj.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
-    {
-      do
-      {
-        do
-        {
-          return null;
-        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
-        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-        if (QQPimGetTipsInfoIPC.a() == 0)
-        {
-          QQPimGetTipsInfoIPC.a(-1);
-          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
-          return null;
-        }
-      } while (QQPimGetTipsInfoIPC.a() != 1);
-      QQPimGetTipsInfoIPC.a(-1);
-      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
+    if (paramIBinder == null) {
       return null;
     }
-    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-    paramString = new QQPimTipsInfo();
-    paramString.a = 0;
-    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
-    return null;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof bgsk))) {
+      return (bgsk)localIInterface;
+    }
+    return new bgsm(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramInt1, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 

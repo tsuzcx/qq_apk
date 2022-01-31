@@ -1,18 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.32;
 
 public class anyx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bcay
 {
-  public anyx(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public anyx(EmoticonMainPanel.32 param32) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean)
   {
-    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.a.getParent() != null) {
-      this.a.getParent().requestLayout();
+    if (paramBoolean) {
+      this.a.this$0.a.a();
     }
   }
 }

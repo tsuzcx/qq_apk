@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import ajyc;
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
-
 class FileAssistantActivity$1$1
   implements Runnable
 {
@@ -12,10 +7,7 @@ class FileAssistantActivity$1$1
   
   public void run()
   {
-    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131379346));
-    View localView = this.a.this$0.a.inflate();
-    this.a.this$0.a.setVisibility(0);
-    ((TextView)localView.findViewById(2131378377)).setText(ajyc.a(2131704483));
+    FileAssistantActivity.a(this.a.this$0);
   }
 }
 

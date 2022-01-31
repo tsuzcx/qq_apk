@@ -9,8 +9,10 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
+import android.os.Build.VERSION;
 import android.util.Log;
 import java.io.File;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
@@ -24,6 +26,7 @@ public class YtVideoEncoder
   private static final String TAG = YtVideoEncoder.class.getSimpleName();
   private static int mHeight;
   private static int mWidth;
+  private int colorFormat = 21;
   private boolean mAbort = false;
   private YtVideoEncoder.IYUVToVideoEncoderCallback mCallback;
   private ConcurrentLinkedQueue<YuvImage> mEncodeQueue = new ConcurrentLinkedQueue();
@@ -42,6 +45,33 @@ public class YtVideoEncoder
   {
     this.mCallback = paramIYUVToVideoEncoderCallback;
     this.mNeedWork = paramBoolean;
+  }
+  
+  private byte[] I420ToNV21(int paramInt1, int paramInt2, YuvImage paramYuvImage)
+  {
+    if (this.yuvnv12 == null) {
+      this.yuvnv12 = new byte[paramInt1 * paramInt2 * 3 / 2];
+    }
+    paramYuvImage = paramYuvImage.getYuvData();
+    paramInt1 *= paramInt2;
+    paramInt2 = 0;
+    while (paramInt2 < paramInt1)
+    {
+      this.yuvnv12[paramInt2] = paramYuvImage[paramInt2];
+      paramInt2 += 1;
+    }
+    int j = paramInt1 / 4 + paramInt1;
+    paramInt2 = paramInt1;
+    int i = paramInt1;
+    while (i < paramInt1 * 3 / 2)
+    {
+      this.yuvnv12[j] = paramYuvImage[(i + 1)];
+      this.yuvnv12[paramInt2] = paramYuvImage[i];
+      j += 1;
+      paramInt2 += 1;
+      i += 2;
+    }
+    return this.yuvnv12;
   }
   
   private byte[] NV12ToNV21(int paramInt1, int paramInt2, YuvImage paramYuvImage)
@@ -73,6 +103,14 @@ public class YtVideoEncoder
   private long computePresentationTime(long paramLong, int paramInt)
   {
     return 132L + 1000000L * paramLong / paramInt;
+  }
+  
+  private byte[] convertYUV(int paramInt1, int paramInt2, YuvImage paramYuvImage)
+  {
+    if (this.colorFormat == 2130706688) {
+      return NV12ToNV21(paramInt1, paramInt2, paramYuvImage);
+    }
+    return I420ToNV21(paramInt1, paramInt2, paramYuvImage);
   }
   
   private void encodeYUV420SP(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2)
@@ -159,6 +197,14 @@ public class YtVideoEncoder
     }
   }
   
+  private ByteBuffer getInputBuffer(int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return this.mediaCodec.getInputBuffer(paramInt);
+    }
+    return this.mediaCodec.getInputBuffers()[paramInt];
+  }
+  
   private byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
     int[] arrayOfInt = new int[paramInt1 * paramInt2];
@@ -167,6 +213,14 @@ public class YtVideoEncoder
     encodeYUV420SP(arrayOfByte, arrayOfInt, paramInt1, paramInt2);
     paramBitmap.recycle();
     return arrayOfByte;
+  }
+  
+  private ByteBuffer getOutputBuffer(int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return this.mediaCodec.getOutputBuffer(paramInt);
+    }
+    return this.mediaCodec.getOutputBuffers()[paramInt];
   }
   
   private static boolean isRecognizedFormat(int paramInt)
@@ -234,6 +288,7 @@ public class YtVideoEncoder
       if (i < paramMediaCodecInfo.colorFormats.length)
       {
         j = paramMediaCodecInfo.colorFormats[i];
+        YtLogger.d(TAG, "found colorformat: " + j);
         if (!isRecognizedFormat(j)) {}
       }
       else
@@ -298,12 +353,12 @@ public class YtVideoEncoder
         if (??? == null) {
           continue;
         }
-        ??? = NV12ToNV21(mWidth, mHeight, (YuvImage)???);
+        ??? = convertYUV(mWidth, mHeight, (YuvImage)???);
         int i = this.mediaCodec.dequeueInputBuffer(200000L);
         long l = computePresentationTime(this.mGenerateIndex, 30);
         if (i >= 0)
         {
-          localObject2 = this.mediaCodec.getInputBuffer(i);
+          localObject2 = getInputBuffer(i);
           ((ByteBuffer)localObject2).clear();
           ((ByteBuffer)localObject2).put((byte[])???);
           this.mediaCodec.queueInputBuffer(i, 0, ???.length, l, 0);
@@ -333,7 +388,7 @@ public class YtVideoEncoder
         if (((MediaCodec.BufferInfo)???).size == 0) {
           continue;
         }
-        ByteBuffer localByteBuffer = this.mediaCodec.getOutputBuffer(i);
+        ByteBuffer localByteBuffer = getOutputBuffer(i);
         if (localByteBuffer == null)
         {
           YtLogger.e(TAG, "encoderOutputBuffer " + i + " was null");
@@ -383,150 +438,69 @@ public class YtVideoEncoder
     }
   }
   
-  /* Error */
   public void startEncoding(int paramInt1, int paramInt2, File paramFile)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 65	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mNeedWork	Z
-    //   4: ifne +4 -> 8
-    //   7: return
-    //   8: iload_1
-    //   9: putstatic 221	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mWidth	I
-    //   12: iload_2
-    //   13: putstatic 223	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mHeight	I
-    //   16: aload_0
-    //   17: aload_3
-    //   18: putfield 179	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mOutputFile	Ljava/io/File;
-    //   21: aload_3
-    //   22: invokevirtual 345	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   25: astore 4
-    //   27: ldc 15
-    //   29: invokestatic 347	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:selectCodec	(Ljava/lang/String;)Landroid/media/MediaCodecInfo;
-    //   32: astore_3
-    //   33: aload_3
-    //   34: ifnonnull +42 -> 76
-    //   37: getstatic 51	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   40: ldc_w 349
-    //   43: invokestatic 264	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   46: return
-    //   47: astore 4
-    //   49: getstatic 51	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   52: new 279	java/lang/StringBuilder
-    //   55: dup
-    //   56: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   59: ldc_w 351
-    //   62: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: aload_3
-    //   66: invokevirtual 354	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokestatic 264	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: return
-    //   76: getstatic 51	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   79: new 279	java/lang/StringBuilder
-    //   82: dup
-    //   83: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   86: ldc_w 356
-    //   89: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: aload_3
-    //   93: invokevirtual 359	android/media/MediaCodecInfo:getName	()Ljava/lang/String;
-    //   96: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokestatic 126	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   105: aload_3
-    //   106: ldc 15
-    //   108: invokestatic 361	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:selectColorFormat	(Landroid/media/MediaCodecInfo;Ljava/lang/String;)I
-    //   111: pop
-    //   112: aload_0
-    //   113: aload_3
-    //   114: invokevirtual 359	android/media/MediaCodecInfo:getName	()Ljava/lang/String;
-    //   117: invokestatic 365	android/media/MediaCodec:createByCodecName	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   120: putfield 111	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaCodec	Landroid/media/MediaCodec;
-    //   123: ldc 15
-    //   125: getstatic 221	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mWidth	I
-    //   128: getstatic 223	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mHeight	I
-    //   131: invokestatic 371	android/media/MediaFormat:createVideoFormat	(Ljava/lang/String;II)Landroid/media/MediaFormat;
-    //   134: astore_3
-    //   135: aload_3
-    //   136: ldc_w 373
-    //   139: ldc 7
-    //   141: invokevirtual 377	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   144: aload_3
-    //   145: ldc_w 379
-    //   148: bipush 30
-    //   150: invokevirtual 377	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   153: aload_3
-    //   154: ldc_w 381
-    //   157: bipush 21
-    //   159: invokevirtual 377	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   162: aload_3
-    //   163: ldc_w 383
-    //   166: iconst_1
-    //   167: invokevirtual 377	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   170: aload_0
-    //   171: getfield 111	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaCodec	Landroid/media/MediaCodec;
-    //   174: aload_3
-    //   175: aconst_null
-    //   176: aconst_null
-    //   177: iconst_1
-    //   178: invokevirtual 387	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   181: aload_0
-    //   182: getfield 111	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaCodec	Landroid/media/MediaCodec;
-    //   185: invokevirtual 388	android/media/MediaCodec:start	()V
-    //   188: aload_0
-    //   189: new 130	android/media/MediaMuxer
-    //   192: dup
-    //   193: aload 4
-    //   195: iconst_0
-    //   196: invokespecial 390	android/media/MediaMuxer:<init>	(Ljava/lang/String;I)V
-    //   199: putfield 128	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   202: getstatic 51	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   205: ldc_w 392
-    //   208: invokestatic 126	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   211: return
-    //   212: astore_3
-    //   213: getstatic 51	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   216: new 279	java/lang/StringBuilder
-    //   219: dup
-    //   220: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   223: ldc_w 394
-    //   226: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: aload_3
-    //   230: invokevirtual 397	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   233: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   239: invokestatic 264	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   242: return
-    //   243: astore_3
-    //   244: getstatic 51	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   247: new 279	java/lang/StringBuilder
-    //   250: dup
-    //   251: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   254: ldc_w 399
-    //   257: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload_3
-    //   261: invokevirtual 397	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   264: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   270: invokestatic 264	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   273: return
-    //   274: astore 5
-    //   276: goto -164 -> 112
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	279	0	this	YtVideoEncoder
-    //   0	279	1	paramInt1	int
-    //   0	279	2	paramInt2	int
-    //   0	279	3	paramFile	File
-    //   25	1	4	str	String
-    //   47	147	4	localIOException	java.io.IOException
-    //   274	1	5	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   21	27	47	java/io/IOException
-    //   112	123	212	java/io/IOException
-    //   188	202	243	java/io/IOException
-    //   105	112	274	java/lang/Exception
+    if (!this.mNeedWork) {
+      return;
+    }
+    mWidth = paramInt1;
+    mHeight = paramInt2;
+    this.mOutputFile = paramFile;
+    try
+    {
+      String str = paramFile.getCanonicalPath();
+      paramFile = selectCodec("video/avc");
+      if (paramFile == null)
+      {
+        YtLogger.e(TAG, "Unable to find an appropriate codec for video/avc");
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      YtLogger.e(TAG, "Unable to get path for " + paramFile);
+      return;
+    }
+    YtLogger.d(TAG, "found codec: " + paramFile.getName());
+    this.colorFormat = 21;
+    try
+    {
+      this.colorFormat = selectColorFormat(paramFile, "video/avc");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.mediaCodec = MediaCodec.createByCodecName(paramFile.getName());
+          paramFile = MediaFormat.createVideoFormat("video/avc", mWidth, mHeight);
+          paramFile.setInteger("bitrate", 16000000);
+          paramFile.setInteger("frame-rate", 30);
+          paramFile.setInteger("color-format", this.colorFormat);
+          paramFile.setInteger("i-frame-interval", 1);
+          this.mediaCodec.configure(paramFile, null, null, 1);
+          this.mediaCodec.start();
+        }
+        catch (IOException paramFile)
+        {
+          YtLogger.e(TAG, "Unable to create MediaCodec " + paramFile.getMessage());
+          return;
+        }
+        try
+        {
+          this.mediaMuxer = new MediaMuxer(localIOException, 0);
+          YtLogger.d(TAG, "Initialization complete. Starting encoder...");
+          return;
+        }
+        catch (IOException paramFile)
+        {
+          YtLogger.e(TAG, "MediaMuxer creation failed. " + paramFile.getMessage());
+        }
+        localException = localException;
+        this.colorFormat = 21;
+      }
+    }
   }
   
   public void stopEncoding()

@@ -9,7 +9,7 @@ public class ch
   
   public void onClick(View paramView)
   {
-    actn.n = true;
+    actj.n = true;
     paramView = (fw)paramView.getTag();
     this.a.b(paramView);
   }

@@ -1,26 +1,15 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
-
-class ayhu
-  implements URLDrawable.DownloadListener
+public class ayhu
+  implements ayit
 {
-  ayhu(ayht paramayht, String paramString) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public int getCloudFileType()
   {
-    if (!ayht.a(this.jdField_a_of_type_Ayht).contains(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
-      }
-      ayht.a(this.jdField_a_of_type_Ayht).add(this.jdField_a_of_type_JavaLangString);
-    }
+    return 10;
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
+  public boolean isClickable()
+  {
+    return false;
+  }
 }
 
 

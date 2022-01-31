@@ -2,10 +2,11 @@ package com.tencent.mobileqq.mini.app;
 
 import android.content.Context;
 import android.content.Intent;
-import begs;
-import bepk;
-import besj;
-import besl;
+import behj;
+import beqb;
+import beta;
+import betc;
+import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3.QQBaselibLoader;
 import com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver;
 import common.config.service.QzoneConfig;
@@ -20,12 +21,14 @@ public class AppBrandTaskPreloadReceiver7
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Object localObject = paramIntent.getAction();
-    besl.b("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
-    begs.a(paramContext.getApplicationContext());
-    bepk.a().a(AppBrandUI3.QQBaselibLoader.g());
-    localObject = bepk.a().a();
+    betc.b("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
+    behj.a(paramContext.getApplicationContext());
+    beqb.a().a(AppBrandUI3.QQBaselibLoader.g());
+    AppBrandUI3.initOKHttpClient();
+    paramIntent.putExtra("isFlutterRuntimeProcess", true);
+    localObject = beqb.a().a();
     if (localObject != null) {
-      ((besj)localObject).a(paramContext, paramIntent);
+      ((beta)localObject).a(paramContext, paramIntent);
     }
   }
 }

@@ -1,42 +1,31 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class blav
 {
-  public static blav a;
-  public static String a;
-  private bkzx a;
+  public static int a;
+  public static boolean a;
   
   static
   {
-    jdField_a_of_type_Blav = new blav();
+    jdField_a_of_type_Int = 1500;
   }
   
-  private blav()
+  public static boolean a()
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static blav a()
-  {
-    return jdField_a_of_type_Blav;
-  }
-  
-  public bkzx a()
-  {
-    if (this.jdField_a_of_type_Bkzx == null) {
-      this.jdField_a_of_type_Bkzx = new bkzx(40, axik.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
     }
-    return this.jdField_a_of_type_Bkzx;
-  }
-  
-  public bkzz a()
-  {
-    return bkzz.a();
-  }
-  
-  public AVCodec a()
-  {
-    return AVCodec.get();
+    boolean bool = axhq.a(axhq.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
   }
 }
 

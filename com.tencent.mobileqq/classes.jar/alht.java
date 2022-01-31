@@ -1,19 +1,10 @@
 public class alht
 {
-  public long a;
-  public alhi a;
-  public alhs a;
-  
-  public alht()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Alhs = null;
-    this.jdField_a_of_type_Alhi = null;
-  }
+  public long b = 0L;
   
   public String toString()
   {
-    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Alhs + ", faceResult = " + this.jdField_a_of_type_Alhi + '}';
+    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
   }
 }
 

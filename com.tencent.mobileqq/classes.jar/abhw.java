@@ -1,27 +1,20 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
-import mqq.util.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
 
 public class abhw
-  extends aymm
+  implements View.OnClickListener
 {
-  WeakReference<acck> a;
-  WeakReference<View> b;
+  public abhw(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  abhw(acck paramacck, View paramView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramacck);
-    this.b = new WeakReference(paramView);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    acck localacck = (acck)this.a.get();
-    View localView = (View)this.b.get();
-    if ((localacck != null) && (localView != null)) {
-      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localacck, localView));
-    }
-    return super.a(paramInt);
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    axqy.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
   }
 }
 

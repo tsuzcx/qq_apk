@@ -1,36 +1,13 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class vcr
-  extends wcr
+class vcr
+  implements svz
 {
-  public static final String KEY = "NewDividerSegment";
+  vcr(vcp paramvcp, TextView paramTextView) {}
   
-  public vcr(Context paramContext)
+  public void a(String paramString, int paramInt)
   {
-    super(paramContext);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
-  {
-    return paramvas.a();
-  }
-  
-  public String a()
-  {
-    return "NewDividerSegment";
-  }
-  
-  public vas a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new vas(LayoutInflater.from(this.a).inflate(2131561222, paramViewGroup, false));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707530) + paramInt + "%");
   }
 }
 

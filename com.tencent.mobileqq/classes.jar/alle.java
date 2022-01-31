@@ -1,10 +1,8 @@
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+
 public abstract interface alle
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 

@@ -30,14 +30,14 @@ public class UserListItemView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     if (paramInt == 0) {
-      LayoutInflater.from(paramContext).inflate(2131561999, this);
+      LayoutInflater.from(paramContext).inflate(2131561998, this);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362959));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362956));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362958));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362955));
       return;
-      LayoutInflater.from(paramContext).inflate(2131562000, this);
+      LayoutInflater.from(paramContext).inflate(2131561999, this);
     }
   }
   

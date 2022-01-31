@@ -1,21 +1,8 @@
-import android.support.annotation.FloatRange;
+import android.view.View;
 
-public class xfn
+public abstract interface xfn
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private xfm jdField_a_of_type_Xfm = new xfm();
-  
-  public xfm a()
-  {
-    xfm.b(this.jdField_a_of_type_Xfm, this.jdField_a_of_type_Float - xfm.a(this.jdField_a_of_type_Xfm));
-    return this.jdField_a_of_type_Xfm;
-  }
-  
-  public xfn a(@FloatRange(from=0.01D) float paramFloat)
-  {
-    xfm.a(this.jdField_a_of_type_Xfm, paramFloat);
-    return this;
-  }
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

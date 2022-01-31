@@ -1,10 +1,6 @@
 public abstract interface vpl
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void b(int paramInt);
 }
 
 

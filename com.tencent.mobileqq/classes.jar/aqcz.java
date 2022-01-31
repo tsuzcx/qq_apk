@@ -1,49 +1,69 @@
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import tencent.im.msg.im_msg_body.RichText;
 
 class aqcz
-  extends mxm
+  implements auoq
 {
-  aqcz(aqcw paramaqcw) {}
+  aqcz(aqcy paramaqcy) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aqgh.a("KEY_STAGE_2_IMAGE_DC2", bool);
-      if (paramBundle == null) {
-        break;
-      }
-      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d(aqcw.a(), 2, new Object[] { "notifyImageSendMessage onResult currentRequestTime =", Long.valueOf(aqcw.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
-      }
-      if ((l != -1L) && (l == aqcw.a(this.a))) {
-        break;
-      }
-      aqcw.a(this.a);
-      return;
-    }
-    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.e(aqcw.a(), 1, new Object[] { "notifyImageSendMessage onResult error errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-      aqcw.a(this.a);
-      return;
-    }
-    aqcw.a(this.a, paramArrayOfByte);
-    ForwardUtils.a(aqcw.a(this.a), paramArrayOfByte, aqcw.a(this.a), aqcw.a(this.a).getString("share_comment_message_for_server"));
+    return null;
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(auor paramauor)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e(aqcw.a(), 1, "notifyImageSendMessage onError msg =" + paramString);
+    if ((paramauor != null) && (QLog.isColorLevel())) {
+      QLog.d(aqcy.a(), 2, "requestNormalShare updateMsg info =" + paramauor);
     }
-    return super.a(paramInt, paramString, paramBundle);
+  }
+  
+  public void b(auor paramauor)
+  {
+    String str = aqcy.a(this.a).getString("uin");
+    HashMap localHashMap = new HashMap();
+    if (aqcy.a(this.a))
+    {
+      localObject = "1";
+      localHashMap.put("param_time_out", localObject);
+      if (str != null) {
+        break label125;
+      }
+    }
+    label125:
+    for (Object localObject = "";; localObject = str)
+    {
+      aqgj.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", (String)localObject, localHashMap, ForwardUtils.a(paramauor));
+      QLog.d(aqcy.a(), 1, new Object[] { "requestNormalShare onSend result =", paramauor, ", isTimeOut=", Boolean.valueOf(aqcy.a(this.a)) });
+      if (!aqcy.a(this.a)) {
+        break label132;
+      }
+      return;
+      localObject = "0";
+      break;
+    }
+    label132:
+    if (ForwardUtils.a(paramauor))
+    {
+      paramauor = (String[])paramauor.jdField_a_of_type_JavaLangObject;
+      QLog.i(aqcy.a(), 1, "requestNormalShare onSend urls=" + paramauor[0] + " ," + paramauor[1]);
+      aqcy.a(this.a, paramauor[0], paramauor[1]);
+      return;
+    }
+    int i = paramauor.b;
+    boolean bool = ForwardUtils.a(aqcy.a(this.a));
+    localObject = (String[])paramauor.jdField_a_of_type_JavaLangObject;
+    QLog.e(aqcy.a(), 1, new Object[] { "requestNormalShare onSend error result.result : ", Integer.valueOf(paramauor.jdField_a_of_type_Int), ", errCode=" + i + ", hasSDPermission=" + bool });
+    if ((i == 9402) && (!bool) && (localObject != null) && (localObject.length == 2))
+    {
+      aqcy.a(this.a, localObject[0], localObject[1]);
+      return;
+    }
+    aqcy.a(this.a);
   }
 }
 

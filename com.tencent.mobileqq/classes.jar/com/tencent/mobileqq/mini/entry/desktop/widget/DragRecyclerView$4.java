@@ -4,11 +4,11 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import bfya;
+import bfyr;
 import com.tencent.qphone.base.util.QLog;
 
 class DragRecyclerView$4
-  extends bfya
+  extends bfyr
 {
   DragRecyclerView$4(DragRecyclerView paramDragRecyclerView) {}
   

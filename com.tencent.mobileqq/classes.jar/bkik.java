@@ -1,312 +1,110 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tribe.async.async.JobSegment;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Arrays;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Point;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
 
+@TargetApi(14)
 public class bkik
-  extends bjwu
-  implements DialogInterface.OnDismissListener, bjsh
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private bkin jdField_a_of_type_Bkin;
-  @Nullable
-  private bkiq jdField_a_of_type_Bkiq;
-  private float b;
-  private float c;
-  private float d;
+  public static int a;
+  public static int b;
   
-  public bkik(@NonNull bjww parambjww)
+  public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(parambjww);
+    if (paramInt2 < paramInt4) {
+      return 1.0F;
+    }
+    return paramInt4 / paramInt2;
   }
   
-  private String a(bkiq parambkiq)
+  public static int a()
   {
-    int i = -1;
-    switch (this.jdField_a_of_type_Int)
+    return a(BaseApplicationImpl.getApplication().getBaseContext(), 30.0F);
+  }
+  
+  public static int a(Context paramContext)
+  {
+    if (a > 0) {
+      return a;
+    }
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    Point localPoint;
+    if (Build.VERSION.SDK_INT >= 13)
     {
+      localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
     }
-    for (;;)
+    for (a = localPoint.x;; a = paramContext.getDefaultDisplay().getWidth()) {
+      return a;
+    }
+  }
+  
+  public static int a(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
+  public static void a(Canvas paramCanvas, bkim parambkim, bkin parambkin, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = a();
+    paramCanvas.concat(parambkim.b(parambkin));
+    int j = (int)(parambkin.u * parambkin.q * parambkin.w) + parambkin.j * 2;
+    int k = (int)(parambkin.v * parambkin.q * parambkin.w) + parambkin.j * 2;
+    paramCanvas.translate(-j * 1.0F / 2.0F, -k * 1.0F / 2.0F);
+    parambkim = new Paint();
+    parambkim.setStyle(Paint.Style.STROKE);
+    parambkim.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167146));
+    parambkim.setStrokeWidth(a(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
+    int m = a(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
+    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, j, k), m, m, parambkim);
+    paramCanvas.translate(-i / 2, -i / 2);
+    if (paramInt1 > 0)
     {
-      bkae localbkae = (bkae)a().a();
-      if (localbkae == null) {
-        break label304;
-      }
-      JSONObject localJSONObject1 = new JSONObject();
-      try
-      {
-        parambkiq = new JSONArray(Arrays.asList(parambkiq.jdField_a_of_type_ArrayOfJavaLangString));
-        localJSONObject1.put("t", i);
-        localJSONObject1.put("c", parambkiq);
-        parambkiq = new JSONArray(Arrays.asList(new Integer[] { Integer.valueOf(vzo.a(a())), Integer.valueOf(vzo.d(a())) }));
-        JSONArray localJSONArray1 = new JSONArray(Arrays.asList(new Float[] { Float.valueOf(localbkae.u * localbkae.q), Float.valueOf(localbkae.v * localbkae.q) }));
-        JSONArray localJSONArray2 = new JSONArray(Arrays.asList(new Float[] { Float.valueOf(localbkae.b.x + localbkae.s), Float.valueOf(localbkae.b.y + localbkae.t) }));
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("ss", parambkiq);
-        localJSONObject2.put("ls", localJSONArray1);
-        localJSONObject2.put("lp", localJSONArray2);
-        localJSONObject2.put("r", localbkae.r);
-        localJSONObject1.put("a", localJSONObject2);
-        parambkiq = localJSONObject1.toString();
-        return parambkiq;
-      }
-      catch (JSONException parambkiq)
-      {
-        veg.e("Q.qqstory.publish.editEditVideoInteract", parambkiq.toString());
-      }
-      i = 1;
+      parambkim = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt1);
+      parambkim.setBounds(0, 0, i, i);
+      parambkim.draw(paramCanvas);
     }
-    label304:
-    return null;
-  }
-  
-  private void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Bkin != null) && (this.jdField_a_of_type_Bkin.isShowing())) {
-      d();
-    }
-    this.jdField_a_of_type_Bkin = new bkin(a(), this, paramInt);
-    this.jdField_a_of_type_Bkin.a(a());
-    this.jdField_a_of_type_Bkin.setContentView(2131561443);
-    this.jdField_a_of_type_Bkin.setOnDismissListener(this);
-    this.jdField_a_of_type_Bkin.show();
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_Bkin != null) && (this.jdField_a_of_type_Bkin.isShowing()))
+    paramCanvas.translate(j, k);
+    if (paramInt3 > 0)
     {
-      this.jdField_a_of_type_Bkin.dismiss();
-      this.jdField_a_of_type_Bkin = null;
+      parambkim = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
+      parambkim.setBounds(0, 0, i, i);
+      parambkim.draw(paramCanvas);
     }
-  }
-  
-  public Bitmap a()
-  {
-    bkad localbkad = a();
-    if (localbkad.a()) {}
-    for (;;)
+    paramCanvas.translate(0.0F, -k);
+    if (paramInt2 > 0)
     {
-      return null;
-      int i = localbkad.a.width();
-      int j = localbkad.a.height();
-      try
-      {
-        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        if (localBitmap != null)
-        {
-          localbkad.d(new Canvas(localBitmap));
-          return localBitmap;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        veg.c("Q.qqstory.publish.editEditVideoInteract", "OutOfMemoryError :", localOutOfMemoryError);
-      }
+      parambkim = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
+      parambkim.setBounds(0, 0, i, i);
+      parambkim.draw(paramCanvas);
     }
-    return null;
   }
   
-  @NonNull
-  public bkad a()
+  public static int b(Context paramContext)
   {
-    Object localObject = (bjsd)a(bjsd.class);
-    if (localObject == null) {
-      throw new IllegalStateException("can not get EditDoodleExport");
+    if (b > 0) {
+      return b;
     }
-    localObject = ((bjsd)localObject).a().a();
-    if (localObject == null) {
-      throw new IllegalStateException("InteractPasterLayer is null.");
-    }
-    return localObject;
-  }
-  
-  public bkiq a()
-  {
-    switch (this.jdField_a_of_type_Int)
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    Point localPoint;
+    if (Build.VERSION.SDK_INT >= 13)
     {
-    default: 
-      return null;
+      localPoint = new Point();
+      paramContext.getDefaultDisplay().getSize(localPoint);
     }
-    return this.jdField_a_of_type_Bkiq;
-  }
-  
-  public JobSegment<bkkm, bkkm> a(int paramInt)
-  {
-    if (((this.jdField_a_of_type_Bjww.a.a instanceof EditTakeVideoSource)) || ((this.jdField_a_of_type_Bjww.a.a instanceof EditLocalVideoSource))) {
-      return new bkky(this);
+    for (b = localPoint.y;; b = paramContext.getDefaultDisplay().getHeight()) {
+      return b;
     }
-    return new bkkq(this);
-  }
-  
-  public void a()
-  {
-    super.a();
-    a(bjsh.class, this);
-  }
-  
-  public void a(int paramInt, bkiq parambkiq)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      Bitmap localBitmap = parambkiq.jdField_a_of_type_AndroidGraphicsBitmap;
-      a().a(localBitmap, parambkiq.jdField_a_of_type_ArrayOfAndroidGraphicsRect, parambkiq.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Float, this.b, this.c, this.d);
-      return;
-      this.jdField_a_of_type_Bkiq = parambkiq;
-    }
-  }
-  
-  public void a(Bundle paramBundle, bkiq parambkiq)
-  {
-    int i = paramBundle.getInt("interact_type");
-    this.jdField_a_of_type_Float = paramBundle.getFloat("scale");
-    this.b = paramBundle.getFloat("rotate");
-    this.c = paramBundle.getFloat("translateX");
-    this.d = paramBundle.getFloat("translateY");
-    a(i, parambkiq);
-  }
-  
-  public void a(bkae parambkae, float paramFloat1, float paramFloat2)
-  {
-    Bundle localBundle = new Bundle();
-    bjyh.a(localBundle, parambkae);
-    localBundle.putInt("interact_type", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bjww.a(38, localBundle);
-    parambkae.l = false;
-  }
-  
-  public void a(@NonNull String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull Rect[] paramArrayOfRect, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 1001;
-    this.jdField_a_of_type_Bkiq = new bkiq(paramBitmap, paramArrayOfString, paramArrayOfRect, paramBoolean);
-    a().a(paramBitmap, paramArrayOfRect, paramArrayOfString, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_Bkin != null) && (this.jdField_a_of_type_Bkin.isShowing()))
-    {
-      d();
-      return true;
-    }
-    return false;
-  }
-  
-  public void a_(int paramInt, bkkm parambkkm)
-  {
-    bkiq localbkiq = a();
-    if (localbkiq != null)
-    {
-      ((bjbt)bjae.a(15)).a(null);
-      String str = a(localbkiq);
-      if (!TextUtils.isEmpty(str))
-      {
-        veg.a("Q.qqstory.publish.editEditVideoInteract", "editVideoPrePublish, interact json:%s", str);
-        parambkkm.a.putExtra("i_l", str);
-        vel.a("video_edit", "pub_vote", 2, 0, new String[] { localbkiq.jdField_a_of_type_ArrayOfJavaLangString[0] });
-        vel.a("video_edit_new", "qa_send", 2, 0, new String[0]);
-      }
-      return;
-    }
-    veg.a("Q.qqstory.publish.editEditVideoInteract", "editVideoPrePublish, paster info is null. type:%s", Integer.valueOf(this.jdField_a_of_type_Int));
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      d();
-      return;
-    }
-    int i = -1;
-    paramInt = i;
-    if (paramObject != null)
-    {
-      paramInt = i;
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (Bundle)paramObject;
-        this.jdField_a_of_type_Float = paramObject.getFloat("scale");
-        this.b = paramObject.getFloat("rotate");
-        this.c = paramObject.getFloat("translateX");
-        this.d = paramObject.getFloat("translateY");
-        paramInt = paramObject.getInt("interact_type");
-      }
-    }
-    if (paramInt != 1001) {
-      throw new IllegalArgumentException("unSupport paster type:" + paramInt);
-    }
-    a(paramInt);
-    a().e();
-    vel.a("video_edit", "clk_vote_entry", 2, 0, new String[0]);
-  }
-  
-  public void b()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      veg.d("Q.qqstory.publish.editEditVideoInteract", "delete interact paster error:%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = -1;
-      return;
-      this.jdField_a_of_type_Bkiq = null;
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Int == -1) {
-      return true;
-    }
-    bkiq localbkiq = a();
-    if (localbkiq == null) {
-      return true;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if ((i >= localbkiq.jdField_a_of_type_ArrayOfJavaLangString.length) || (TextUtils.isEmpty(localbkiq.jdField_a_of_type_ArrayOfJavaLangString[i])))
-      {
-        if (i != localbkiq.jdField_a_of_type_ArrayOfJavaLangString.length) {
-          break;
-        }
-        return true;
-      }
-      i += 1;
-    }
-    bbcv.a(a(), 230, ajyc.a(2131703787), null, ajyc.a(2131703851), ajyc.a(2131703807), new bkil(this), new bkim(this)).show();
-    return false;
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Bjww.a(0);
   }
 }
 

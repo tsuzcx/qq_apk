@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import bgpf;
 import bgpw;
-import bgpx;
+import bgqn;
+import bgqo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,13 +15,13 @@ import mqq.app.AppContentProvider;
 
 public class FavoritesProvider
   extends AppContentProvider
-  implements bgpw
+  implements bgqn
 {
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
   private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, bgpx> jdField_a_of_type_JavaUtilMap;
+  private Map<Integer, bgqo> jdField_a_of_type_JavaUtilMap;
   
-  private bgpx a(Uri paramUri)
+  private bgqo a(Uri paramUri)
   {
     int i = 1;
     int n = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
@@ -54,7 +54,7 @@ public class FavoritesProvider
             j = i;
             if (i != 0)
             {
-              bgpf.a(false);
+              bgpw.a(false);
               j = 0;
             }
             localObject = localBaseApplicationImpl.getRuntime();
@@ -79,7 +79,7 @@ public class FavoritesProvider
     paramUri = paramUri.getLastPathSegment();
     if (this.jdField_a_of_type_JavaLangString.equals(paramUri))
     {
-      localObject = (bgpx)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
+      localObject = (bgqo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
       if (localObject != null) {
         switch (n)
         {
@@ -113,7 +113,7 @@ public class FavoritesProvider
         break;
       }
     }
-    for (paramUri = (bgpx)bgpf.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bgpx)bgpf.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
+    for (paramUri = (bgqo)bgpw.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bgqo)bgpw.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
     {
       this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(n), paramUri);
       return paramUri;
@@ -126,9 +126,9 @@ public class FavoritesProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    bgpx localbgpx = a(paramUri);
-    if (localbgpx != null) {
-      return localbgpx.delete(paramUri, paramString, paramArrayOfString);
+    bgqo localbgqo = a(paramUri);
+    if (localbgqo != null) {
+      return localbgqo.delete(paramUri, paramString, paramArrayOfString);
     }
     return 0;
   }
@@ -140,9 +140,9 @@ public class FavoritesProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    bgpx localbgpx = a(paramUri);
-    if (localbgpx != null) {
-      return localbgpx.insert(paramUri, paramContentValues);
+    bgqo localbgqo = a(paramUri);
+    if (localbgqo != null) {
+      return localbgqo.insert(paramUri, paramContentValues);
     }
     return null;
   }
@@ -160,21 +160,21 @@ public class FavoritesProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    bgpx localbgpx = a(paramUri);
+    bgqo localbgqo = a(paramUri);
     if (QLog.isDevelopLevel()) {
-      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbgpx + ",uri=" + paramUri + ",selection=" + paramString1);
+      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbgqo + ",uri=" + paramUri + ",selection=" + paramString1);
     }
-    if (localbgpx != null) {
-      return localbgpx.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    if (localbgqo != null) {
+      return localbgqo.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
     }
     return null;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    bgpx localbgpx = a(paramUri);
-    if (localbgpx != null) {
-      return localbgpx.update(paramUri, paramContentValues, paramString, paramArrayOfString);
+    bgqo localbgqo = a(paramUri);
+    if (localbgqo != null) {
+      return localbgqo.update(paramUri, paramContentValues, paramString, paramArrayOfString);
     }
     return 0;
   }

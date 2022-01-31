@@ -1,22 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class apae
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements DialogInterface.OnClickListener
 {
-  apae(apad paramapad) {}
+  apae(apab paramapab, apag paramapag) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
-    paramTVK_IMediaPlayer = ajyc.a(2131704586);
-    paramString = (apab)this.a.a.get();
-    if (paramString != null) {
-      paramString.a(paramInt2, paramTVK_IMediaPlayer);
-    }
-    return false;
+    this.jdField_a_of_type_Apag.a();
   }
 }
 

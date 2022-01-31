@@ -1,16 +1,30 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.MotionEvent;
 
 class mmg
-  implements TextWatcher
+  implements mmj
 {
-  mmg(mme parammme) {}
+  mmg(mmb parammmb) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (!this.a.c()) {
+        break label23;
+      }
+      this.a.f();
+    }
+    for (;;)
+    {
+      return false;
+      label23:
+      if (this.a.b()) {
+        this.a.e();
+      } else if (mmb.a(this.a) != null) {
+        mmb.a(this.a).a(paramMotionEvent);
+      }
+    }
+  }
 }
 
 

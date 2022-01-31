@@ -1,6 +1,6 @@
 public abstract interface udd
 {
-  public abstract void a(udc paramudc);
+  public abstract boolean a(ucz paramucz, int paramInt, Object paramObject);
 }
 
 

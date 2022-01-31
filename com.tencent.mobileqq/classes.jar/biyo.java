@@ -1,214 +1,50 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.play.PlayDownloadManagerWrap.1;
-import dov.com.qq.im.ae.play.PlayDownloadManagerWrap.2;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import android.content.Context;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.ttpic.baseutils.string.StringUtils;
 
-public class biyo
+class biyo
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private final Map<String, biqy> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private WeakReference<biwb> jdField_a_of_type_MqqUtilWeakReference;
-  private final Map<String, List<biyn>> b = new HashMap();
+  biyo(biym parambiym) {}
   
-  public static biyo a()
+  public void onClick(View paramView)
   {
-    return biyq.a;
-  }
-  
-  private void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    if (biym.a(this.a).getText().length() > biym.a(this.a))
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      bcql.a(this.a.getContext(), this.a.getContext().getString(2131689807, new Object[] { Integer.valueOf(biym.a(this.a)) }), 1).a();
       return;
     }
-  }
-  
-  private void a(String paramString, biqy parambiqy)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, parambiqy);
-      return;
+    if (biym.a(this.a) != null) {
+      localObject = null;
     }
-  }
-  
-  private boolean a(String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilMap.get(paramString) != null)
-        {
-          bool = true;
-          return bool;
-        }
-      }
-      boolean bool = false;
-    }
-  }
-  
-  public Map<String, biqy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-    this.b.clear();
-  }
-  
-  public void a(biqn parambiqn, boolean paramBoolean)
-  {
-    if (parambiqn == null) {}
-    for (;;)
-    {
-      return;
-      String str;
-      List localList;
-      try
-      {
-        str = parambiqn.jdField_a_of_type_JavaLangString;
-        localList = (List)this.b.get(str);
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean) && (parambiqn.equals(biwh.a))) {
-          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, parambiqn));
-        }
-        if (localList == null)
-        {
-          this.b.remove(str);
-          continue;
-        }
-      }
-      finally {}
-      parambiqn = localList.iterator();
-      while (parambiqn.hasNext()) {
-        ((biyn)parambiqn.next()).a(str, paramBoolean);
-      }
-      this.b.remove(str);
-    }
-  }
-  
-  public void a(biwb parambiwb, @NonNull biqk parambiqk, @NonNull biqn parambiqn)
-  {
-    if (a(parambiqn.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambiwb);
-    }
-    parambiwb = new biyp(null);
-    a(parambiqn.jdField_a_of_type_JavaLangString, parambiwb);
-    this.jdField_a_of_type_JavaLangString = parambiqn.jdField_a_of_type_JavaLangString;
-    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, parambiqk, parambiqn, parambiwb), 128, null, true);
-  }
-  
-  /* Error */
-  public void a(String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	biyo:b	Ljava/util/Map;
-    //   6: aload_1
-    //   7: invokeinterface 58 2 0
-    //   12: checkcast 70	java/util/List
-    //   15: astore_3
-    //   16: aload_3
-    //   17: ifnonnull +17 -> 34
-    //   20: aload_0
-    //   21: getfield 23	biyo:b	Ljava/util/Map;
-    //   24: aload_1
-    //   25: invokeinterface 49 2 0
-    //   30: pop
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: return
-    //   34: aload_3
-    //   35: invokeinterface 103 1 0
-    //   40: astore_3
-    //   41: aload_3
-    //   42: invokeinterface 109 1 0
-    //   47: ifeq -16 -> 31
-    //   50: aload_3
-    //   51: invokeinterface 113 1 0
-    //   56: checkcast 115	biyn
-    //   59: aload_1
-    //   60: iload_2
-    //   61: invokeinterface 148 3 0
-    //   66: goto -25 -> 41
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	biyo
-    //   0	74	1	paramString	String
-    //   0	74	2	paramInt	int
-    //   15	36	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	69	finally
-    //   20	31	69	finally
-    //   34	41	69	finally
-    //   41	66	69	finally
-  }
-  
-  public void a(String paramString, biyn parambiyn)
-  {
-    if (parambiyn != null) {}
     try
     {
-      List localList = (List)this.b.get(paramString);
-      Object localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList();
-      }
-      if (!((List)localObject).contains(parambiyn))
-      {
-        ((List)localObject).add(parambiyn);
-        this.b.put(paramString, localObject);
-      }
-      return;
+      paramView = biym.a(this.a).getText().toString();
+      localObject = paramView;
     }
-    finally {}
-  }
-  
-  public void b(String paramString, biyn parambiyn)
-  {
-    List localList;
-    try
+    catch (IndexOutOfBoundsException paramView)
     {
-      localList = (List)this.b.get(paramString);
-      if ((localList != null) && (localList.size() > 1))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext()) {
-          if ((biyn)localIterator.next() == parambiyn) {
-            localIterator.remove();
-          }
-        }
-      }
-      if (localList == null) {
-        break label91;
-      }
+      label98:
+      break label98;
     }
-    finally {}
-    if (localList.size() < 1) {
-      label91:
-      this.b.remove(paramString);
+    paramView = (View)localObject;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramView = StringUtils.removeUTF8Emoji((String)localObject);
     }
+    Object localObject = paramView;
+    if (!TextUtils.isEmpty(paramView)) {
+      localObject = paramView.replaceAll("\\r|\\n", "");
+    }
+    paramView = (View)localObject;
+    if (localObject != null) {
+      paramView = ((String)localObject).trim();
+    }
+    biym.a(this.a).a(paramView);
+    this.a.dismiss();
   }
 }
 

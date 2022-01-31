@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Handler;
+import java.lang.ref.WeakReference;
 
 public class bcuy
-  implements DialogInterface.OnDismissListener
+  extends Handler
 {
-  public bcuy(ShareActionSheetV2 paramShareActionSheetV2) {}
+  WeakReference<Context> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bcuy(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareActionSheetV2", 2, "onDismiss() called with: dialog = [" + paramDialogInterface + "] #this = " + Integer.toHexString(System.identityHashCode(this)));
-    }
-    ShareActionSheetV2.a(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onDismiss(paramDialogInterface);
-    }
+    this.a = new WeakReference(paramContext);
   }
 }
 

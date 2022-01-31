@@ -1,51 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavListItemBase;
 
-class mhp
-  implements Animation.AnimationListener
+public abstract interface mhp
 {
-  mhp(mho parammho) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.b();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
-    }
-  }
+  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
 }
 
 

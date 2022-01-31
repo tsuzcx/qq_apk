@@ -1,73 +1,76 @@
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqek
-  extends aqeq
+  extends aqds
 {
-  private boolean o;
-  
   public aqek(Intent paramIntent)
   {
     super(paramIntent);
+    this.e = true;
   }
   
-  public boolean a()
+  public List<RecentUser> a(List<RecentUser> paramList)
   {
-    super.a();
-    this.b = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
-    this.o = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
-    if ((this.b > 0L) && (!this.o)) {
-      xmt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
-    }
-    G();
-    Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
-    ((Bundle)localObject).putInt("req_type", 1);
-    localObject = axuy.a((Bundle)localObject);
-    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localObject);
-    }
-    H();
-    return true;
-  }
-  
-  protected boolean a(bbgg parambbgg)
-  {
-    if (this.o)
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_name");
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_icon");
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      if ((localRecentUser != null) && (!bbbr.a(localRecentUser.uin)) && (localRecentUser.getType() != 1020) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1005) && ((localRecentUser.getType() != 1006) || (a(aqau.h))) && (localRecentUser.getType() != 1009) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 1001) && (localRecentUser.getType() != 10002) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1022) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 0) || (!naz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+        localArrayList.add(localRecentUser);
+      }
     }
-    if ((parambbgg != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null))
-    {
-      this.jdField_a_of_type_Aqez = new aqez(this, this.jdField_a_of_type_AndroidAppActivity);
-      parambbgg.addView(this.jdField_a_of_type_Aqez.a());
-      parambbgg.adjustMessageTopBottomMargin(0.0F, 10.0F);
-      a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, parambbgg);
-    }
-    return false;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Bbgg.setMessage("");
-  }
-  
-  protected boolean c()
-  {
-    I();
-    return true;
+    return localArrayList;
   }
   
   protected void d()
   {
-    if (this.d)
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005793", "0X8005793", 0, 0, "", "", "", "");
-      this.d = false;
-    }
+    e();
     super.d();
+  }
+  
+  public void e()
+  {
+    Object localObject1 = axva.a(this.jdField_a_of_type_AndroidOsBundle);
+    if ((localObject1 == null) || (TextUtils.isEmpty(((AbsStructMsg)localObject1).mMsg_A_ActionData))) {}
+    for (;;)
+    {
+      return;
+      Object localObject2 = bbex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, ((AbsStructMsg)localObject1).mMsg_A_ActionData);
+      if (localObject2 == null) {
+        continue;
+      }
+      localObject1 = ((bbeg)localObject2).b("usertype");
+      localObject2 = ((bbeg)localObject2).b("unionid");
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
+        continue;
+      }
+      try
+      {
+        i = Integer.parseInt((String)localObject1);
+        vei.a("share_uin", "qq_suc", banb.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype")), i, new String[] { localObject2 });
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.qqstory.shareAccount", 2, "shareToQQ success userType:" + i + ",userUnionId:" + (String)localObject2);
+        return;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          int i = 0;
+        }
+      }
+    }
   }
 }
 

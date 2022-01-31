@@ -1,15 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-
-class qni
-  extends bfmg
+public abstract interface qni
 {
-  qni(qng paramqng) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(8);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

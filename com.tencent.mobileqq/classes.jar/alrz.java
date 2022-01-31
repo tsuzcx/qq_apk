@@ -1,9 +1,13 @@
-import java.lang.ref.WeakReference;
-
 public class alrz
 {
-  public WeakReference<ayxq> a;
-  public boolean a = false;
+  public volatile int a;
+  public volatile boolean a;
+  
+  private alrz()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

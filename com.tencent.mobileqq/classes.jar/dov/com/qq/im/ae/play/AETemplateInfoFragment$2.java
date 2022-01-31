@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bbdj;
+import bbdx;
 import com.tencent.qphone.base.util.QLog;
 
 class AETemplateInfoFragment$2
@@ -11,7 +11,7 @@ class AETemplateInfoFragment$2
   public void run()
   {
     long l = System.currentTimeMillis();
-    bbdj.a(AETemplateInfoFragment.a);
+    bbdx.a(AETemplateInfoFragment.a);
     if (QLog.isDebugVersion()) {
       QLog.d("AETemplateInfoFragment", 4, new Object[] { "clear temp files finish, cost=", Long.valueOf(System.currentTimeMillis() - l) });
     }

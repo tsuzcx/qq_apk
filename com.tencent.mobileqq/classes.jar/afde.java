@@ -1,43 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
 
-public class afde
-  extends afda
+class afde
+  implements bfos
 {
-  public afde(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  afde(afdd paramafdd) {}
+  
+  private boolean a(AbsListView paramAbsListView)
   {
-    super(paramContext, paramQQAppInterface, paramBoolean);
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
   }
   
-  protected int a()
-  {
-    return 10021;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    axqw.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int b()
-  {
-    return 109;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    axqw.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int c()
-  {
-    return 10022;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    axqw.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.d();
+    }
   }
 }
 

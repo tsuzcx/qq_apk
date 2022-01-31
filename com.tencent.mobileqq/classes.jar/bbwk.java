@@ -1,15 +1,49 @@
-public class bbwk
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.SuperPlayerMgr.ILogListener;
+
+class bbwk
+  implements SuperPlayerMgr.ILogListener
 {
-  public boolean a;
+  bbwk(bbwh parambbwh) {}
   
-  public bbwk()
+  public int d(String paramString1, String paramString2)
   {
-    this.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
   }
   
-  public bbwk(boolean paramBoolean)
+  public int e(String paramString1, String paramString2)
   {
-    this.a = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class afnd
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  afnd(afna paramafna) {}
+  afnd(afnc paramafnc) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bamn.a(afna.a(this.a), paramView, 17, 10029);
-    bbbb.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { paramView.uin, paramView.recomAlgol });
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
+    }
   }
 }
 

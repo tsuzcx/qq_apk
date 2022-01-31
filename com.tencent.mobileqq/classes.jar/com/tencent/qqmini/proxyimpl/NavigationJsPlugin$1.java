@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import besl;
+import betc;
 
 class NavigationJsPlugin$1
   implements Runnable
@@ -19,7 +19,7 @@ class NavigationJsPlugin$1
     }
     catch (Throwable localThrowable)
     {
-      besl.d("NavigationJsPlugin", "Failed to moveTaskBack");
+      betc.d("NavigationJsPlugin", "Failed to moveTaskBack");
     }
   }
 }

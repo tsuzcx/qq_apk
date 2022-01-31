@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-class bjtt
-  implements DialogInterface.OnClickListener
+public class bjtt
+  implements ThreadExcutor.IThreadListener
 {
-  bjtt(bjto parambjto) {}
+  bjtt(bjts parambjts) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    paramDialogInterface.dismiss();
-    dov.com.qq.im.capture.view.MusicProviderView.a = false;
-    this.a.a.a.a(this.a.a.a());
-    bjto.a(this.a);
+    if ((this.a.jdField_a_of_type_Bjyv == null) || (this.a.jdField_a_of_type_Bjyv.getActivity() == null)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bjyv.a().postDelayed(new EditPicSave.1.1(this), 500L);
+  }
+  
+  public void onPreRun()
+  {
+    if (this.a.jdField_a_of_type_Bjxn.a.a() == 14) {
+      bjts.a(this.a, false);
+    }
   }
 }
 

@@ -1,14 +1,28 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pns
-  extends RecyclerView.OnScrollListener
+  implements owr
 {
   pns(pnr parampnr) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    QLog.d(pno.a(this.a.a), 2, "stopScroll as videoplayer start");
+    pno.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    QLog.d(pno.a(this.a.a), 2, "startScroll as videoplayer stop");
+    if (pno.a(this.a.a) != null) {
+      pno.a(this.a.a, pno.a(this.a.a).a());
+    }
+  }
+  
+  public void c()
+  {
+    QLog.d(pno.a(this.a.a), 2, "startScroll as videoplayer complete");
+    pno.a(this.a.a, 1000L);
   }
 }
 

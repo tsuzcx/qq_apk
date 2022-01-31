@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
 
-class bdhc
-  implements DialogInterface.OnClickListener
+public class bdhc
+  implements View.OnClickListener
 {
-  bdhc(bdgz parambdgz, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  public bdhc(CommonTitleBar paramCommonTitleBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bdgz.a(this.jdField_a_of_type_Bdgz, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
+    }
   }
 }
 

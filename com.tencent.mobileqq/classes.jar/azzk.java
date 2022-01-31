@@ -1,33 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class azzk
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public azzk(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public azzk(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEditable.length() == 0)
-    {
-      this.a.e();
-      this.a.a(false);
-      return;
+    if (this.a.jdField_a_of_type_Bbgu.isShowing()) {
+      this.a.jdField_a_of_type_Bbgu.dismiss();
     }
-    this.a.jdField_a_of_type_Azzt.a();
-    this.a.jdField_a_of_type_Azzt.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
-    this.a.b = 0;
-    this.a.a(true);
-    paramEditable = paramEditable.toString();
-    this.a.b(paramEditable);
+    if (!bbfj.g(this.a.jdField_a_of_type_AndroidContentContext)) {
+      this.a.jdField_a_of_type_Bbgu.show();
+    }
+    do
+    {
+      return;
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    } while (ReciteRecordLayout.a(this.a) == null);
+    ReciteRecordLayout.a(this.a).f();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

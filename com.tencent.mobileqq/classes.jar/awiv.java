@@ -1,11 +1,8 @@
-public class awiv
+import java.util.List;
+
+public abstract interface awiv
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public abstract void a(int paramInt, List<? extends awij> paramList);
 }
 
 

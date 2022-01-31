@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import akno;
-import aknv;
-import akny;
+import aknn;
+import aknu;
+import aknx;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,27 +10,27 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOIceBreakShow$1
   implements Runnable
 {
-  public AIOIceBreakShow$1(akno paramakno, int paramInt, String paramString) {}
+  public AIOIceBreakShow$1(aknn paramaknn, int paramInt, String paramString) {}
   
   public void run()
   {
-    aknv localaknv = (aknv)akno.a(this.this$0).a.getManager(285);
+    aknu localaknu = (aknu)aknn.a(this.this$0).a.getManager(285);
     if (QLog.isColorLevel())
     {
       if (this.jdField_a_of_type_Int != 1) {
         break label75;
       }
-      localaknv.f(this.jdField_a_of_type_JavaLangString);
+      localaknu.f(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
       QLog.d("AIOIceBreakShow", 1, String.format("removeDelay, type = %s, uin = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
       label75:
-      if (akny.d(this.jdField_a_of_type_Int)) {
-        localaknv.g(this.jdField_a_of_type_JavaLangString);
+      if (aknx.d(this.jdField_a_of_type_Int)) {
+        localaknu.g(this.jdField_a_of_type_JavaLangString);
       } else {
-        localaknv.d(this.jdField_a_of_type_JavaLangString);
+        localaknu.d(this.jdField_a_of_type_JavaLangString);
       }
     }
   }

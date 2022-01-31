@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import apfm;
-import apge;
+import apfq;
+import apgi;
 
 public class TroopFileSearchEngine$1
   implements Runnable
 {
-  public TroopFileSearchEngine$1(apge paramapge) {}
+  public TroopFileSearchEngine$1(apgi paramapgi) {}
   
   public void run()
   {
-    if (!apge.a(this.this$0)) {
+    if (!apgi.a(this.this$0)) {
       return;
     }
-    apge.a(this.this$0);
-    apge.a(this.this$0, apge.a(this.this$0).b());
-    apge.a(this.this$0, apge.a(this.this$0));
+    apgi.a(this.this$0);
+    apgi.a(this.this$0, apgi.a(this.this$0).b());
+    apgi.a(this.this$0, apgi.a(this.this$0));
   }
 }
 

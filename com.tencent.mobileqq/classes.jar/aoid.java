@@ -1,21 +1,27 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aoid
-  extends RecyclerView.AdapterDataObserver
+  extends aoez
 {
   public aoid(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void onChanged()
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aogm> paramList, aoft paramaoft)
   {
-    if (this.a.jdField_a_of_type_Aoiu.a() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aoiv);
+    if (ExtendFriendSearchFragment.a(this.a) != paramLong) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aoiv);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Aoiv);
+    try
+    {
+      ExtendFriendSearchFragment.a(this.a, 1);
+      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaoft);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
+    }
   }
 }
 

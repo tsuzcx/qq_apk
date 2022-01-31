@@ -1,23 +1,20 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajwu
-  extends auiz
+  implements View.OnClickListener
 {
-  public ajwu(FrameHelperActivity paramFrameHelperActivity) {}
+  public ajwu(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
+    if ((FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) != null) && (FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).isShowing())) {
+      FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity).dismiss();
     }
-    FrameHelperActivity localFrameHelperActivity = this.a;
-    if (paramInt > 0) {
-      i = 1;
-    }
-    FrameHelperActivity.a(localFrameHelperActivity, i);
-    this.a.v();
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

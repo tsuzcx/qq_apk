@@ -1,14 +1,11 @@
-import android.content.Context;
-
-public abstract class awte
-  extends awth
+public abstract interface awte
+  extends awwr
 {
-  protected abstract awtc a(Context paramContext);
+  public abstract awtc a();
   
-  public int b()
-  {
-    return 1;
-  }
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

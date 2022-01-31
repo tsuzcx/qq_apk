@@ -1,591 +1,139 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.support.v4.util.MQLruCache;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.etrump.mixlayout.ETEngine;
-import com.etrump.mixlayout.ETFont;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.1;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.2;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.3;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.4;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.5;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.6;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoReq;
+import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoRsp;
+import com.tencent.pb.pendant.DiyAddonPbInfo.AddonReqComm;
+import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonReq;
+import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonRsp;
+import com.tencent.pb.pendant.DiyAddonUser.UserDiyInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 
 public class aiqz
+  extends ajtb
 {
-  public static volatile long a;
-  public static aiqz a;
-  public static boolean a;
-  public final int a;
-  public ETEngine a;
-  public final LRULinkedHashMap<String, DiyPendantEntity> a;
-  public final Runnable a;
-  public final CopyOnWriteArrayList<aira> a;
-  public final CopyOnWriteArraySet<String> a;
-  AtomicBoolean a;
-  public final LRULinkedHashMap<Integer, hn> b;
-  public final CopyOnWriteArraySet<String> b;
-  public final LRULinkedHashMap<String, Bitmap> c = new LRULinkedHashMap(10);
-  
-  private aiqz()
+  public aiqz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 64;
-    this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(64);
-    this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(16);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangRunnable = new DiyPendantFetcher.1(this);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstanceForDiyPendant();
+    super(paramQQAppInterface);
   }
   
-  public static aiqz a()
-  {
-    if (jdField_a_of_type_Aiqz == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aiqz == null) {
-        jdField_a_of_type_Aiqz = new aiqz();
-      }
-      return jdField_a_of_type_Aiqz;
-    }
-    finally {}
-  }
-  
-  private void c(String paramString)
-  {
-    Object localObject2 = paramString.split("_");
-    if (localObject2.length == 3)
-    {
-      Object localObject1 = localObject2[2];
-      localObject2 = localObject2[1];
-      if (BaseApplicationImpl.sImageCache.get(paramString) == null)
-      {
-        localObject1 = new File(bbby.c((String)localObject1));
-        if (((File)localObject1).exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("DiyPendantFetcher", 2, "decode and put scale bitmap into BaseApplicationImpl.sImageCache, " + ((File)localObject1).getAbsolutePath());
-          }
-          localObject1 = bawu.a(((File)localObject1).getAbsolutePath());
-          if (localObject1 != null)
-          {
-            BaseApplicationImpl.sImageCache.put(paramString, localObject1);
-            this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
-          }
-        }
-      }
-    }
-  }
-  
-  public Bitmap a(aiqw paramaiqw, int paramInt)
-  {
-    if ((paramaiqw == null) || (TextUtils.isEmpty(paramaiqw.jdField_a_of_type_JavaLangString))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramaiqw.jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = (DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramaiqw.jdField_a_of_type_JavaLangString);
-      if (((DiyPendantEntity)localObject).getStickerInfoList().size() > paramInt)
-      {
-        localObject = a((DiyPendantSticker)((DiyPendantEntity)localObject).getStickerInfoList().get(paramInt));
-        Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject);
-        if (localBitmap != null)
-        {
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localObject);
-          return localBitmap;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "can not found bitmap cache in BaseApplicationImpl.sImageCache! " + (String)localObject);
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localObject);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "fetchDiyPaster: put DiyPendantDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaiqw);
-      paramaiqw = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramaiqw instanceof QQAppInterface)) {
-        a((QQAppInterface)paramaiqw, 500);
-      }
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "can not found cache in DiyPendantCache! " + paramaiqw.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramaiqw.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public Bitmap a(aira paramaira, String paramString, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramInt1 <= 0)) {
-      return null;
-    }
-    String str = paramString + "_" + paramInt1 + "_" + paramInt2 + "_" + paramFloat + "_" + paramInt3 + "_" + paramInt4 + "_" + paramInt5;
-    if (this.c.containsKey(str)) {
-      return (Bitmap)this.c.get(str);
-    }
-    synchronized (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine)
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        a();
-      }
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (TextUtils.isEmpty(paramString)))
-      {
-        QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail EnigeReady = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + " text = " + paramString);
-        return null;
-      }
-    }
-    Object localObject = bbby.a(String.valueOf(paramInt1));
-    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(paramInt1))
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaira);
-      if (bbby.a(String.valueOf(paramInt1)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "found font res but can not load the font, font id = " + paramInt1);
-        }
-        ThreadManager.executeOnFileThread(new DiyPendantFetcher.3(this, (String)localObject, paramInt1));
-      }
-      for (;;)
-      {
-        QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail font not exist!");
-        return null;
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "can not found font res! font id = " + paramInt1);
-        }
-        a(paramInt1, paramInt2);
-      }
-    }
-    paramaira = new ETFont(paramInt1, (String)localObject, paramFloat);
-    paramaira.setColor(paramInt3);
-    try
-    {
-      localObject = Bitmap.createBitmap(paramInt4, paramInt5, Bitmap.Config.ARGB_8888);
-      if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isPaintableChar(paramString.charAt(0), paramaira)) {
-        break label590;
-      }
-      for (paramInt1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_spaceMeasureText(paramString, 0, paramString.length(), paramaira, paramPaint); paramInt1 > paramInt4; paramInt1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_spaceMeasureText(paramString, 0, paramString.length(), paramaira, paramPaint)) {
-        paramaira.mFontSize -= 1;
-      }
-      paramInt2 = (paramInt4 - paramInt1) / 2;
-    }
-    catch (OutOfMemoryError paramaira)
-    {
-      QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont Bitmap.createBitmap OutOfMemoryError: " + paramaira.getMessage());
-      return null;
-    }
-    paramInt1 = 0;
-    paramPaint = new Paint.FontMetrics();
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_getFontMetrics(paramPaint, paramaira))
-    {
-      paramFloat = paramPaint.bottom;
-      float f = paramPaint.top;
-      paramInt1 = (int)((paramInt5 - (paramFloat - f)) / 2.0F);
-    }
-    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_drawText(paramString, (Bitmap)localObject, paramInt2, paramInt1, paramaira))
-    {
-      QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail font not support: " + paramString.charAt(0));
-      return null;
-    }
-    label590:
-    if (localObject != null) {
-      this.c.put(str, localObject);
-    }
-    return localObject;
-  }
-  
-  public Typeface a(aira paramaira, int paramInt1, int paramInt2)
-  {
-    if ((paramaira == null) || (paramInt1 <= 0)) {
-      return null;
-    }
-    hn localhn = (hn)this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(Integer.valueOf(paramInt1));
-    if ((localhn != null) && (localhn.jdField_a_of_type_AndroidGraphicsTypeface != null)) {
-      return localhn.jdField_a_of_type_AndroidGraphicsTypeface;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "can not found typeface in the cache! font id = " + paramInt1);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaira);
-    a(paramInt1, paramInt2);
-    return null;
-  }
-  
-  public DiyPendantEntity a(QQAppInterface paramQQAppInterface, String paramString, ajtg paramajtg)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      paramQQAppInterface = null;
-    }
-    do
-    {
-      return paramQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramString))
-      {
-        paramQQAppInterface = new ArrayList();
-        paramQQAppInterface.add(this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString));
-        if (paramajtg != null) {
-          paramajtg.onUpdate(1, true, paramQQAppInterface);
-        }
-        return (DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
-      }
-      localObject = (DiyPendantEntity)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, " uinAndDiyId=? ", new String[] { paramString });
-      if (localObject == null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "query diy pendant from database, uinAndDiyId: " + paramString);
-      }
-      this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramString, localObject);
-      paramString = new ArrayList();
-      paramString.add(localObject);
-      paramQQAppInterface = (QQAppInterface)localObject;
-    } while (paramajtg == null);
-    paramajtg.onUpdate(1, true, paramString);
-    return localObject;
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "start request diy id " + paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
-    Object localObject = new ArrayList();
-    ((List)localObject).add(Long.valueOf(Long.parseLong(paramString.split("_")[0])));
-    ((airb)paramQQAppInterface.a(114)).a((List)localObject, paramajtg);
-    return null;
-  }
-  
-  public String a(DiyPendantSticker paramDiyPendantSticker)
-  {
-    return "DiyPendantFetcher_" + paramDiyPendantSticker.type + "_" + paramDiyPendantSticker.stickerId;
-  }
-  
-  public List<DiyPendantSticker> a(aiqw paramaiqw)
-  {
-    if ((paramaiqw == null) || (TextUtils.isEmpty(paramaiqw.jdField_a_of_type_JavaLangString))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramaiqw.jdField_a_of_type_JavaLangString)) {
-      return ((DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramaiqw.jdField_a_of_type_JavaLangString)).getStickerInfoList();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "can not found cache in DiyPendantCache! " + paramaiqw.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramaiqw.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "fetchDiyBaseInfo: put DiyPendantDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaiqw);
-    paramaiqw = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramaiqw instanceof QQAppInterface)) {
-      a((QQAppInterface)paramaiqw, 500);
-    }
-    return null;
-  }
-  
-  void a()
-  {
-    long l1 = System.currentTimeMillis();
-    try
-    {
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.initEngine(16, 1048576))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("DiyPendantFetcher", 2, "DIY Pendant init Font Engine time = " + (l2 - l1) + "ms");
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.isEngineInited.compareAndSet(false, true)) {
-          hw.c();
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        QLog.d("DiyPendantFetcher", 1, "vip font not downloaded, start early download.");
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      QLog.e("DiyPendantFetcher", 1, "initETEngine Exception:" + localThrowable.getMessage());
-    }
-  }
-  
-  void a(int paramInt1, int paramInt2)
-  {
-    String str = bbby.a(String.valueOf(paramInt1));
-    if (!this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.containsKey(Integer.valueOf(paramInt1)))
-    {
-      hn localhn = new hn(paramInt1, str);
-      localhn.b = paramInt2;
-      this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(Integer.valueOf(paramInt1), localhn);
-    }
-    ThreadManager.executeOnFileThread(new DiyPendantFetcher.4(this, paramInt1, str));
-  }
-  
-  public void a(DiyPendantEntity paramDiyPendantEntity)
-  {
-    paramDiyPendantEntity = paramDiyPendantEntity.getStickerInfoList().iterator();
-    while (paramDiyPendantEntity.hasNext())
-    {
-      String str = a((DiyPendantSticker)paramDiyPendantEntity.next());
-      if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(str)) {
-        c(str);
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      b(paramQQAppInterface);
-    } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()));
-    ThreadManager.post(new DiyPendantFetcher.2(this, paramQQAppInterface), 5, null, false);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()));
-      if (paramInt <= 0)
-      {
-        ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        a(paramQQAppInterface);
-        return;
-      }
-    } while (System.currentTimeMillis() <= jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "postLoadPendantDiy delay:  " + paramInt);
-    }
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
-    jdField_a_of_type_Long = System.currentTimeMillis() + paramInt;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, List<DiyPendantEntity> paramList)
+  public void a(List<Long> paramList, ajte paramajte)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)paramList.next();
-      if (paramBoolean)
-      {
-        paramQQAppInterface.getEntityManagerFactory().createEntityManager().b(localDiyPendantEntity);
-        ExtensionInfo localExtensionInfo = localajxn.a(localDiyPendantEntity.uinAndDiyId.split("_")[0]);
-        if ((localExtensionInfo != null) && (localExtensionInfo.pendantDiyId != localDiyPendantEntity.diyId))
-        {
-          localExtensionInfo.pendantDiyId = localDiyPendantEntity.diyId;
-          localArrayList.add(localExtensionInfo);
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localDiyPendantEntity.uinAndDiyId);
-      this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
-      a(localDiyPendantEntity);
-    }
-    localajxn.b(localArrayList);
-    d();
-  }
-  
-  public void a(String paramString)
-  {
     if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "notifyPasterDownloadComplete " + paramString);
+      QLog.i("DiyPendantHandler", 2, "try fetchDiyPendants: " + TextUtils.join(",", paramList));
     }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString)) {
-        c(paramString);
-      }
-      d();
-    }
+    DiyAddonPbInfo.AddonReqComm localAddonReqComm = new DiyAddonPbInfo.AddonReqComm();
+    localAddonReqComm.platform.set(109L);
+    localAddonReqComm.osver.set(Build.VERSION.RELEASE);
+    localAddonReqComm.mqqver.set("8.3.0");
+    DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
+    localAddonGetDiyInfoReq.uin.set(paramList);
+    paramList = new DiyAddonPbInfo.ReadAddonReq();
+    paramList.cmd.set(1);
+    paramList.comm.set(localAddonReqComm);
+    paramList.packetseq.set(System.currentTimeMillis());
+    paramList.reqcmd0x01.set(localAddonGetDiyInfoReq);
+    paramajte = super.createToServiceMsg("ReadDiyAddonInfo.1", paramajte);
+    paramajte.putWupBuffer(paramList.toByteArray());
+    super.sendPbReq(paramajte);
   }
   
-  public void b()
+  protected Class<? extends ajte> observerClass()
   {
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    VasQuickUpdateManager localVasQuickUpdateManager;
-    Object localObject2;
-    if ((localObject1 instanceof QQAppInterface))
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("ReadDiyAddonInfo.1"))
     {
-      c();
-      if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) {
-        break label222;
+      bool = paramFromServiceMsg.isSuccess();
+      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
+      if (QLog.isColorLevel()) {
+        QLog.d("DiyPendantHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
       }
-      localVasQuickUpdateManager = (VasQuickUpdateManager)((AppRuntime)localObject1).getManager(184);
-      localObject2 = null;
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        String[] arrayOfString = ((String)localIterator.next()).split("_");
-        if (arrayOfString.length != 3) {
-          break label238;
-        }
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new String[this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size()];
-        }
-        localObject2 = arrayOfString[2];
-        int j = i + 1;
-        localObject1[i] = ("faceAddon.sticker." + (String)localObject2 + ".png");
-        i = j;
+      if (bool) {
+        paramFromServiceMsg = new DiyAddonPbInfo.ReadAddonRsp();
       }
     }
-    for (;;)
+    while (!QLog.isColorLevel())
     {
-      localObject2 = localObject1;
-      break;
-      if ((localObject2 != null) && (localObject2.length > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "now download from VasQuickUpdateManager list: " + TextUtils.join(",", (Object[])localObject2));
-        }
-        localVasQuickUpdateManager.downloadGatherItem(4L, localObject2[0], (String[])localObject2, "DiyPendantFetcher");
-      }
-      label222:
       do
       {
+        try
+        {
+          boolean bool;
+          paramFromServiceMsg = (DiyAddonPbInfo.ReadAddonRsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg != null) {
+            if (paramFromServiceMsg.ret.get() != 0L)
+            {
+              QLog.d("DiyPendantHandler", 1, "fetch diy pendant info 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
+              super.notifyUI(paramToServiceMsg, 1, false, null);
+              return;
+            }
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          Object localObject;
+          for (;;)
+          {
+            QLog.e("DiyPendantHandler", 1, "fetch diy pendant info on response err", paramFromServiceMsg);
+            paramFromServiceMsg = null;
+          }
+          if ((paramFromServiceMsg.rspcmd0x01.has()) && (paramFromServiceMsg.rspcmd0x01.userdiyinfo.has()))
+          {
+            paramObject = paramFromServiceMsg.rspcmd0x01.userdiyinfo.get();
+            paramFromServiceMsg = new ArrayList();
+            if (paramObject != null)
+            {
+              paramObject = paramObject.iterator();
+              while (paramObject.hasNext())
+              {
+                localObject = (DiyAddonUser.UserDiyInfo)paramObject.next();
+                if ((((DiyAddonUser.UserDiyInfo)localObject).uin.has()) && (((DiyAddonUser.UserDiyInfo)localObject).curid.has()))
+                {
+                  DiyPendantEntity localDiyPendantEntity = new DiyPendantEntity();
+                  localDiyPendantEntity.uinAndDiyId = (((DiyAddonUser.UserDiyInfo)localObject).uin.get() + "_" + ((DiyAddonUser.UserDiyInfo)localObject).curid.get());
+                  localDiyPendantEntity.diyId = ((DiyAddonUser.UserDiyInfo)localObject).curid.get();
+                  localDiyPendantEntity.borderId = ((DiyAddonUser.UserDiyInfo)localObject).frameid.get();
+                  localDiyPendantEntity.updateTs = ((DiyAddonUser.UserDiyInfo)localObject).updatets.get();
+                  localDiyPendantEntity.setStickerInfoList(((DiyAddonUser.UserDiyInfo)localObject).stickerinfo.get());
+                  paramFromServiceMsg.add(localDiyPendantEntity);
+                }
+              }
+            }
+            aiqx.a().a(this.app, true, paramFromServiceMsg);
+            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
+            return;
+          }
+          super.notifyUI(paramToServiceMsg, 1, false, null);
+          return;
+        }
+        super.notifyUI(paramToServiceMsg, 1, false, null);
         return;
+        super.notifyUI(paramToServiceMsg, 1, false, null);
       } while (!QLog.isColorLevel());
-      QLog.i("DiyPendantFetcher", 2, "all paster has decode!");
-      return;
-      label238:
-      localObject1 = localObject2;
-    }
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = true;
-      ThreadManager.post(new DiyPendantFetcher.5(this, paramQQAppInterface), 5, null, false);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "notifyFontDownloadComplete, scid =" + paramString);
-    }
-    hn localhn;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.replace("faceAddon.stickerFont.android.", "");
-      localhn = (hn)this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(Integer.valueOf(Integer.parseInt(paramString)));
-      if (localhn != null)
-      {
-        if (localhn.b != 1) {
-          break label128;
-        }
-        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          a();
-        }
-        if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(localhn.jdField_a_of_type_JavaLangString, Integer.parseInt(paramString), true))) {
-          d();
-        }
-      }
-    }
-    label128:
-    while (!new File(localhn.jdField_a_of_type_JavaLangString).exists()) {
+      QLog.d("DiyPendantHandler", 2, "DiyText isSuccess is false sso通道  异常");
       return;
     }
-    localhn.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(localhn.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
-    {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      while (localIterator.hasNext()) {
-        c((String)localIterator.next());
-      }
-      d();
-    }
-  }
-  
-  public void c(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "mUnCacheDiyId size is 0!");
-      }
-    }
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      localArrayList = new ArrayList();
-      Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-      int j = ((ArrayList)localObject1).size();
-      Object localObject2 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      int i = 0;
-      while (i < j)
-      {
-        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)((aukn)localObject2).a(DiyPendantEntity.class, (String)((ArrayList)localObject1).get(i));
-        if (localDiyPendantEntity != null) {
-          localArrayList.add(localDiyPendantEntity);
-        }
-        i += 1;
-      }
-      localObject1 = localArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (DiyPendantEntity)((Iterator)localObject1).next();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(((DiyPendantEntity)localObject2).uinAndDiyId);
-      }
-    } while (localArrayList.isEmpty());
-    a(paramQQAppInterface, false, localArrayList);
-  }
-  
-  @TargetApi(11)
-  public void d()
-  {
-    ThreadManager.getUIHandler().post(new DiyPendantFetcher.6(this));
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    QLog.d("DiyPendantHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
   }
 }
 

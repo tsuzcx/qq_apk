@@ -1,6 +1,22 @@
-public abstract interface ajyy
+import java.util.Comparator;
+
+class ajyy
+  implements Comparator<ajzb>
 {
-  public abstract boolean a(ajzd paramajzd);
+  ajyy(ajyx paramajyx) {}
+  
+  public int a(ajzb paramajzb1, ajzb paramajzb2)
+  {
+    if ((paramajzb1 == null) || (paramajzb2 == null)) {}
+    do
+    {
+      return 0;
+      if (paramajzb1.a > paramajzb2.a) {
+        return 1;
+      }
+    } while (paramajzb1.a >= paramajzb2.a);
+    return -1;
+  }
 }
 
 

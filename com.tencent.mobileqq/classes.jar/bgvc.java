@@ -1,37 +1,11 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.Future;
-
-public class bgvc
-  implements PluginManagerUpdater
+class bgvc
+  implements bgtx
 {
-  private ardx jdField_a_of_type_Ardx;
-  private File jdField_a_of_type_JavaIoFile;
+  bgvc(bgvb parambgvb) {}
   
-  public bgvc(ardx paramardx, File paramFile)
+  public void a()
   {
-    this.jdField_a_of_type_Ardx = paramardx;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
-  
-  public File getLatest()
-  {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
-  
-  public Future isAvailable(File paramFile)
-  {
-    return this.jdField_a_of_type_Ardx.isAvailable(paramFile);
-  }
-  
-  public Future update()
-  {
-    return this.jdField_a_of_type_Ardx.update();
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    bgvb.a(this.a);
   }
 }
 

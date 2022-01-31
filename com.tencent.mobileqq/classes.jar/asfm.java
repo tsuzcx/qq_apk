@@ -1,12 +1,43 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class asfm
+public class asfm
+  extends aoez
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  public asfm(MatchChatSettingFragment paramMatchChatSettingFragment) {}
+  
+  protected void a(boolean paramBoolean1, ArrayList<aogn> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      MatchChatSettingFragment.a(this.a, paramBoolean2);
+    }
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
+    }
+    MatchChatSettingFragment localMatchChatSettingFragment;
+    if (!paramBoolean)
+    {
+      localMatchChatSettingFragment = this.a;
+      if (MatchChatSettingFragment.a(this.a).a()) {
+        break label61;
+      }
+    }
+    label61:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
+      return;
+    }
+  }
 }
 
 

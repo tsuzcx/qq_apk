@@ -1,36 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.biz.troop.TroopMemberApiService;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class wya
-  implements wze
+public class wya
+  extends WtloginListener
 {
-  wya(wxy paramwxy, String paramString) {}
+  public wya(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    for (;;)
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (paramInt2 == 0)
     {
-      try
-      {
-        localJSONObject.put("retCode", 0);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localJSONObject.put("errMsg", paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          localJSONObject.put("file", paramString1);
-        }
-        this.jdField_a_of_type_Wxy.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e(this.jdField_a_of_type_Wxy.TAG, 1, paramString2, paramString1);
-      }
-      localJSONObject.put("retCode", 1);
+      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
   }
 }
 

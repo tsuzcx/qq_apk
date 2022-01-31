@@ -1,19 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public abstract interface ucj
+public class ucj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
+  public ucj(XViewPager paramXViewPager) {}
   
-  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc);
-  
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc, int paramInt, Object paramObject);
-  
-  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc, boolean paramBoolean);
-  
-  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc);
-  
-  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.scrollTo(i, 0);
+    XViewPager.a(this.a, i);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(2);
+    }
+  }
 }
 
 

@@ -1,112 +1,83 @@
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
 public class wel
-  implements wej
+  implements View.OnTouchListener
 {
-  protected int a = 1;
+  protected float a;
+  protected final RecyclerView a;
+  protected wee a;
+  protected wef a;
+  protected weg a;
+  protected weh a;
+  protected final wek a;
+  protected wem a;
   
-  public void a(int paramInt)
+  public wel(RecyclerView paramRecyclerView)
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_Weg = new wei();
+    this.jdField_a_of_type_Wek = new wek();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  public void a(View paramView, float paramFloat)
+  public View a()
   {
-    if (this.a == 1)
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Wee = new wee(this, -2.0F);
+    this.jdField_a_of_type_Wem = new wem(this, 3.0F, 1.0F);
+    this.jdField_a_of_type_Weh = new weh(this);
+    this.jdField_a_of_type_Wef = this.jdField_a_of_type_Weh;
+    b();
+  }
+  
+  public void a(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    if ((paramLayoutManager instanceof LinearLayoutManager))
     {
-      paramView.setTranslationY(paramFloat);
+      paramLayoutManager = (LinearLayoutManager)paramLayoutManager;
+      this.jdField_a_of_type_Weg.a(paramLayoutManager.getOrientation());
       return;
     }
-    paramView.setTranslationX(paramFloat);
+    this.jdField_a_of_type_Weg.a(1);
   }
   
-  public void a(View paramView, float paramFloat, MotionEvent paramMotionEvent)
+  protected void a(wef paramwef)
   {
-    if (this.a == 1)
-    {
-      paramView.setTranslationY(paramFloat);
-      paramMotionEvent.offsetLocation(0.0F, paramFloat - paramMotionEvent.getY(0));
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
-    paramMotionEvent.offsetLocation(paramFloat - paramMotionEvent.getX(0), 0.0F);
+    wef localwef = this.jdField_a_of_type_Wef;
+    this.jdField_a_of_type_Wef = paramwef;
+    this.jdField_a_of_type_Wef.a(localwef);
   }
   
-  public void a(View paramView, weg paramweg)
+  public void b()
   {
-    if (this.a == 1)
-    {
-      paramweg.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_Y;
-      paramweg.jdField_a_of_type_Float = paramView.getTranslationY();
-      paramweg.b = paramView.getHeight();
-      return;
-    }
-    paramweg.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_X;
-    paramweg.jdField_a_of_type_Float = paramView.getTranslationX();
-    paramweg.b = paramView.getWidth();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
   }
   
-  public boolean a(View paramView)
+  public void c()
   {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(-1)) {}
-    }
-    while (!paramView.canScrollHorizontally(-1))
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(null);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(0);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-      return true;
+    default: 
       return false;
+    case 2: 
+      return this.jdField_a_of_type_Wef.a(paramMotionEvent);
     }
-    return false;
-  }
-  
-  public boolean a(View paramView, wem paramwem, MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramMotionEvent.getHistorySize() == 0) {}
-    float f1;
-    float f2;
-    do
-    {
-      return false;
-      f1 = paramMotionEvent.getY(0) - paramMotionEvent.getHistoricalY(0, 0);
-      f2 = paramMotionEvent.getX(0) - paramMotionEvent.getHistoricalX(0, 0);
-      if (this.a != 1) {
-        break;
-      }
-    } while (Math.abs(f1) < Math.abs(f2));
-    paramwem.jdField_a_of_type_Float = paramView.getTranslationY();
-    paramwem.b = f1;
-    if (paramwem.b > 0.0F) {
-      bool1 = true;
-    }
-    for (paramwem.jdField_a_of_type_Boolean = bool1;; paramwem.jdField_a_of_type_Boolean = bool1)
-    {
-      return true;
-      if (Math.abs(f2) < Math.abs(f1)) {
-        break;
-      }
-      paramwem.jdField_a_of_type_Float = paramView.getTranslationX();
-      paramwem.b = f2;
-      bool1 = bool2;
-      if (paramwem.b > 0.0F) {
-        bool1 = true;
-      }
-    }
-  }
-  
-  public boolean b(View paramView)
-  {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(1)) {}
-    }
-    while (!paramView.canScrollHorizontally(1))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return this.jdField_a_of_type_Wef.b(paramMotionEvent);
   }
 }
 

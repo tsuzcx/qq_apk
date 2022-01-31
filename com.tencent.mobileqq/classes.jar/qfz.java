@@ -1,16 +1,21 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.SimpleAdapter.ViewBinder;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class qfz
-  implements View.OnClickListener
+  implements SimpleAdapter.ViewBinder
 {
   public qfz(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onClick(View paramView)
+  public boolean setViewValue(View paramView, Object paramObject, String paramString)
   {
-    this.a.getActivity().finish();
+    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
+    {
+      ((TextView)paramView).setText((CharSequence)paramObject);
+      return true;
+    }
+    return false;
   }
 }
 

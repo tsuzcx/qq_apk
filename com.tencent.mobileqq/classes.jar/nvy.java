@@ -1,19 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
 public class nvy
-  implements mzb
+  extends osm
 {
-  public nvy(ReadInJoyFeedsActivity.1 param1) {}
+  public nvy(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    {
+      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
+      return;
     }
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((nsy)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
   }
   
-  public void progress(int paramInt) {}
+  public void b(int paramInt)
+  {
+    this.a.a(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((nsy)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+    }
+  }
 }
 
 

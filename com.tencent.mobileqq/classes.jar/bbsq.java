@@ -1,82 +1,45 @@
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.os.Handler;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class bbsq<E>
+class bbsq
+  implements Observer
 {
-  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
+  bbsq(bbsp parambbsp) {}
   
-  public List<E> a(String paramString)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    try
+    if ((paramObject instanceof ArrayList))
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, E paramE)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
-      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
-      if (localCopyOnWriteArrayList2 == null)
+      paramObservable = (ArrayList)paramObject;
+      switch (((Integer)paramObservable.get(0)).intValue())
       {
-        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
-        this.a.put(paramString, localCopyOnWriteArrayList1);
+      default: 
+        return;
       }
-      localCopyOnWriteArrayList1.add(paramE);
+      paramObservable = (RichStatus)paramObservable.get(1);
+      bbsp.a(this.a, paramObservable);
+      if (bbsp.a(this.a).plainText != null)
+      {
+        paramObject = awek.a().b;
+        if (paramObject != null)
+        {
+          paramObject.plainText = ((ArrayList)bbsp.a(this.a).plainText.clone());
+          paramObject.topics.clear();
+          paramObject.topics.addAll(bbsp.a(this.a).topics);
+        }
+      }
+      if (paramObservable != null) {
+        bbsp.b(this.a).copyFrom(paramObservable);
+      }
+      bbsp.a(this.a).a().sendEmptyMessage(10003);
+      awek.a().deleteObserver(bbsp.a(this.a));
       return;
     }
-    finally {}
-  }
-  
-  public void a(String paramString, Object paramObject, boolean paramBoolean)
-  {
-    try
-    {
-      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
-      if (paramString != null)
-      {
-        if (paramBoolean)
-        {
-          Iterator localIterator = paramString.iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject1 = localIterator.next();
-            Object localObject2 = ((WeakReference)localObject1).get();
-            if ((localObject2 == null) || (localObject2 == paramObject)) {
-              paramString.remove(localObject1);
-            }
-          }
-        }
-        paramString.remove(paramObject);
-      }
-    }
-    finally {}
-  }
-  
-  public List<E> b(String paramString)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
+    bbsp.a(this.a).a().sendEmptyMessage(10003);
   }
 }
 

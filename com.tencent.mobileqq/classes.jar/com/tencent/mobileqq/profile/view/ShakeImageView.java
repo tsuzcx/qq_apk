@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import veg;
+import ved;
 
 public class ShakeImageView
   extends ImageView
@@ -74,7 +74,7 @@ public class ShakeImageView
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      veg.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
+      ved.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
     }
     if ((getVisibility() != 8) && (this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null))
     {
@@ -87,7 +87,7 @@ public class ShakeImageView
   {
     super.onDetachedFromWindow();
     if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      veg.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
+      ved.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
     }
     if ((this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null)) {
       this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);

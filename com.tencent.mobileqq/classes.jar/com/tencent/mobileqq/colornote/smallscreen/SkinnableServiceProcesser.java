@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import amki;
+import amkh;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,13 +12,13 @@ import com.tencent.qphone.base.util.QLog;
 public class SkinnableServiceProcesser
   extends BroadcastReceiver
 {
-  private final amki jdField_a_of_type_Amki;
+  private final amkh jdField_a_of_type_Amkh;
   private final Service jdField_a_of_type_AndroidAppService;
   
-  public SkinnableServiceProcesser(Service paramService, amki paramamki)
+  public SkinnableServiceProcesser(Service paramService, amkh paramamkh)
   {
     this.jdField_a_of_type_AndroidAppService = paramService;
-    this.jdField_a_of_type_Amki = paramamki;
+    this.jdField_a_of_type_Amkh = paramamkh;
     try
     {
       this.jdField_a_of_type_AndroidAppService.registerReceiver(this, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
@@ -43,8 +43,8 @@ public class SkinnableServiceProcesser
       return;
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
-    if (this.jdField_a_of_type_Amki != null) {
-      this.jdField_a_of_type_Amki.e();
+    if (this.jdField_a_of_type_Amkh != null) {
+      this.jdField_a_of_type_Amkh.e();
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
   }

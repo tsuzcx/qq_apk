@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
-import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.Setting;
 
 public final class ankb
-  implements ExternalProvider
+  implements Parcelable.Creator<Setting>
 {
-  public void onSoLoad(String paramString1, String paramString2)
+  public Setting a(Parcel paramParcel)
   {
-    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
+    Setting localSetting = new Setting();
+    localSetting.readFromParcel(paramParcel);
+    return localSetting;
+  }
+  
+  public Setting[] a(int paramInt)
+  {
+    return new Setting[paramInt];
   }
 }
 

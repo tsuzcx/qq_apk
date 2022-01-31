@@ -1,71 +1,34 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.view.ViewStub;
-import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class biop
-  extends bijx
+  implements Animation.AnimationListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bioq(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public biop(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
-  public biop(ViewStub paramViewStub)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramViewStub);
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370905);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370906));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370904));
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap, boolean paramBoolean)
-  {
-    a();
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).b();
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(2000L);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(200L);
-      this.jdField_a_of_type_AndroidViewView.setAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.startNow();
-      return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
   
-  public void b()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (!a()) {
-      return;
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null)
+    {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.cancel();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

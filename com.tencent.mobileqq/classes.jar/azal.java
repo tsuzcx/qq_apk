@@ -1,54 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azal
-  implements View.OnClickListener
 {
-  public azal(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  private int d;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public azal()
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.b))
+    this.jdField_d_of_type_Int = 1;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) {
-        break label125;
-      }
-      this.a.a(200);
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-      this.a.c = true;
-      paramView = (azbh)((View)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-      if ((paramView instanceof azbg))
-      {
-        paramView = ((azbg)paramView).a;
-        this.a.a(paramView, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-      }
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("video_md5", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("video_thumbe_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("text", this.e);
+      localJSONObject.put("duration", this.jdField_a_of_type_Int);
+      localJSONObject.put("size", this.jdField_a_of_type_Long);
+      localJSONObject.put("width", this.jdField_b_of_type_Int);
+      localJSONObject.put("height", this.jdField_c_of_type_Int);
+      localJSONObject.put("isLocalVideo", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("takeVideoMode", this.jdField_d_of_type_Int);
+      return localJSONObject;
     }
-    return;
-    label125:
-    if (this.a.b)
+    catch (JSONException localJSONException)
     {
-      paramView = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent();
-      if (paramView != null)
-      {
-        ((ViewGroup)paramView).removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      }
-      paramView = (azbh)((View)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag();
-      this.a.a(paramView);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoInfo", 2, "VideoInfo: " + QLog.getStackTraceString(localJSONException));
     }
-    for (;;)
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      this.a.c = false;
+    default: 
+      this.jdField_d_of_type_Int = -1;
       return;
-      this.a.b(200);
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.b((azbh)((View)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getTag());
-      this.a.jdField_a_of_type_Long = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
+    case 1: 
+      this.jdField_d_of_type_Int = 2;
+      return;
+    case 0: 
+      this.jdField_d_of_type_Int = 1;
+      return;
     }
+    this.jdField_d_of_type_Int = 3;
   }
 }
 

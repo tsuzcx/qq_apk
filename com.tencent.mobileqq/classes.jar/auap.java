@@ -2,15 +2,15 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class auap
-  implements audw
+  implements audy
 {
   public auap(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a(int paramInt, audx paramaudx)
+  public void a(int paramInt, audz paramaudz)
   {
-    if ((paramaudx != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramaudx.b)))
+    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramaudz.b)))
     {
-      OCRResultActivity.c(this.a, paramaudx.b);
+      OCRResultActivity.b(this.a, paramaudz.b);
       OCRResultActivity.a(this.a, false);
     }
   }

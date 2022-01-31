@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.ListView;
 
 public class di
-  implements bftk
+  implements bfub
 {
   public di(LiteActivity paramLiteActivity) {}
   

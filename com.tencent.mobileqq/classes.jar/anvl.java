@@ -1,269 +1,45 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.1;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.2;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.3;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.4;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Vector;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
 
-public class anvl
+class anvl
+  implements ajte
 {
-  private static anvl jdField_a_of_type_Anvl;
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private anty jdField_a_of_type_Anty = new anvm(this);
-  private Client jdField_a_of_type_ComTencentMobileqqEmosmClient = new Client();
-  EmojiIPCAlarmer jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = null;
-  private Vector<anvn> jdField_a_of_type_JavaUtilVector = new Vector();
-  private CopyOnWriteArrayList<anql> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  anvl(anuq paramanuq, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
   
-  public static anvl a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (jdField_a_of_type_Anvl == null) {}
+    if ((paramBoolean) && (paramObject != null)) {}
     try
     {
-      if (jdField_a_of_type_Anvl == null) {
-        jdField_a_of_type_Anvl = new anvl();
-      }
-      return jdField_a_of_type_Anvl;
-    }
-    finally {}
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((anql)localIterator.next()).onBindedToClient();
-    }
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((anql)localIterator.next()).onDisconnectWithService();
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "alarm init");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = new EmojiIPCAlarmer(this.jdField_a_of_type_Anty);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a();
-    }
-  }
-  
-  private void f(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchPushMsg suc");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((anql)localIterator.next()).onPushMsg(paramBundle);
-    }
-  }
-  
-  public anvn a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
-      while (localIterator.hasNext())
+      if ((paramObject instanceof List))
       {
-        anvn localanvn = (anvn)localIterator.next();
-        if (localanvn.jdField_a_of_type_Int == paramInt)
+        paramObject = (List)paramObject;
+        if (!paramObject.isEmpty())
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "remove req queue seq:" + paramInt);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(localanvn.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_a_of_type_JavaUtilVector.remove(localanvn);
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "after remove req queue size:" + this.jdField_a_of_type_JavaUtilVector.size());
-          }
-          return localanvn;
+          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
+          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
+          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
         }
       }
-      return null;
-    }
-  }
-  
-  public anvn a(Bundle paramBundle)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
-    {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      paramBundle = new anvn(i, paramBundle);
-      e();
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "add to req queue seq: " + paramBundle.jdField_a_of_type_Int);
-      }
-      paramBundle.jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(paramBundle.jdField_a_of_type_Int, 30000L);
-      this.jdField_a_of_type_JavaUtilVector.add(paramBundle);
-      return paramBundle;
-    }
-  }
-  
-  public Client a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
-  }
-  
-  public void a()
-  {
-    c();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      QLog.e("Q.emoji.web.EmoWebIPCOperator", 1, "error:reqbundle is null.");
-    }
-    do
-    {
-      do
+      for (;;)
       {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
         return;
-        localObject = a(paramBundle);
-      } while ((localObject == null) || ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) && (this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(((anvn)localObject).jdField_a_of_type_AndroidOsBundle))));
-      paramBundle = a(paramBundle.getInt("seq"));
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
       }
-    } while (paramBundle == null);
-    Object localObject = new Bundle();
-    a((Bundle)localObject, 1002);
-    paramBundle.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-    a(new WebIPCOperator.1(this, paramBundle));
-  }
-  
-  void a(Bundle paramBundle, int paramInt)
-  {
-    if (paramBundle != null) {
-      paramBundle.putInt("failcode", paramInt);
-    }
-  }
-  
-  public void a(anql paramanql)
-  {
-    if (paramanql == null) {}
-    do
-    {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "RegisterObserver key:" + paramanql.key);
-      }
-    } while (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramanql));
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramanql);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    if (paramRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
     }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqEmosmClient.isClientBinded();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    d();
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if ((paramBundle != null) && ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient == null) || (!this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(paramBundle))))
+    catch (Exception paramObject)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
+        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
       }
-      Bundle localBundle = new Bundle();
-      a(localBundle, 1002);
-      paramBundle.putBundle("response", localBundle);
-      a(new WebIPCOperator.2(this, paramBundle));
-    }
-  }
-  
-  public void b(anql paramanql)
-  {
-    if (paramanql != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "unRegisterObserver key:" + paramanql.key);
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramanql)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramanql);
-      }
-    }
-  }
-  
-  public void c(Bundle paramBundle)
-  {
-    Object localObject;
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("seq");
-      localObject = a(i);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchResp seq:" + i);
-      }
-      if (localObject == null) {
-        break label74;
-      }
-      a(paramBundle, 1000);
-      a(new WebIPCOperator.3(this, paramBundle));
-    }
-    label74:
-    do
-    {
-      return;
-      localObject = paramBundle.getString("cmd");
-    } while ((localObject == null) || ((!((String)localObject).equals("startDownloadEmoji")) && (!((String)localObject).equals("stopdownload")) && (!((String)localObject).equals("openEquipmentLock")) && (!((String)localObject).equals("card_setSummaryCard")) && (!((String)localObject).equals("card_getVipInfo")) && (!((String)localObject).equals("closeWeb")) && (!((String)localObject).equals("setMobileResult")) && (!((String)localObject).equals("setWaitingResponse")) && (!((String)localObject).equals("openEmojiMall")) && (!((String)localObject).equals("openProfileCard")) && (!((String)localObject).equals("close_version")) && (!((String)localObject).equals("openEmojiDetail")) && (!((String)localObject).equals("openFontSetting")) && (!((String)localObject).equals("startDownloadColorRing")) && (!((String)localObject).equals("stopDownloadColorRing")) && (!((String)localObject).equals("funcall_download")) && (!((String)localObject).equals("funcall_set")) && (!((String)localObject).equals("getA2")) && (!((String)localObject).equals("openDevLock")) && (!((String)localObject).equals("queryDevLockStatus")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_video_isinstalled")) && (!((String)localObject).equals("ipc_video_install_plugin")) && (!((String)localObject).equals("gamecenter_delaydownload")) && (!((String)localObject).equals("ipc_apollo_changerole")) && (!((String)localObject).equals("ipc_apollo_preview")) && (!((String)localObject).equals("ipc_apollo_check_avatar_res")) && (!((String)localObject).equals("ipc_apollo_preview_audio_action")) && (!((String)localObject).equals("ipc_apollo_preview_action")) && (!((String)localObject).equals("IPC_APOLLO_DOWNLOAD_GAME")) && (!((String)localObject).equals("ipc_apollo_downloadImageOnFrame")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_get_team_work_url")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_apollo_exec_script")) && (!((String)localObject).equals("ipc_apollo_get_playmate_msg"))));
-    a(paramBundle, 1000);
-    a(new WebIPCOperator.4(this, paramBundle));
-  }
-  
-  public void d(Bundle paramBundle)
-  {
-    f(paramBundle);
-  }
-  
-  public void e(Bundle paramBundle)
-  {
-    Object localObject = paramBundle.getString("cmd");
-    int i = paramBundle.getInt("failcode");
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchResp suc: " + (String)localObject + ", retCode: " + i);
-    }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((anql)((Iterator)localObject).next()).onResponse(paramBundle);
     }
   }
 }

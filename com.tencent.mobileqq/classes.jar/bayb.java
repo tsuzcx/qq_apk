@@ -1,10 +1,12 @@
-public abstract interface bayb
+import android.graphics.Bitmap;
+
+abstract interface bayb
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public abstract void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bayb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amsm
-  extends ampb<amsl>
 {
-  public int a()
-  {
-    return 417;
-  }
+  private boolean a;
   
-  @NonNull
-  public amsl a(int paramInt)
+  public static amsm a(String paramString)
   {
-    return new amsl();
-  }
-  
-  @Nullable
-  public amsl a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if (paramString == null) {}
+    do
     {
-      amsl localamsl = new amsl();
-      localamsl.a = paramArrayOfampi[0].a;
-      return localamsl;
-    }
+      return null;
+      try
+      {
+        amsm localamsm = new amsm();
+        localamsm.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
+        return localamsm;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public Class<amsl> a()
+  public boolean a()
   {
-    return amsl.class;
+    return this.a;
   }
   
-  public void a()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onReqNoReceive]");
-    }
-    amsl localamsl = (amsl)ampm.a().a(417);
-    if (localamsl != null) {
-      ((airz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153)).d(localamsl.a);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amsl paramamsl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onUpdate]");
-    }
-    airz localairz = (airz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153);
-    if (paramamsl != null) {}
-    for (paramamsl = paramamsl.a;; paramamsl = null)
-    {
-      localairz.d(paramamsl);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "needSeparate:" + this.a;
   }
 }
 

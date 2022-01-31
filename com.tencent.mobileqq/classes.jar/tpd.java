@@ -1,20 +1,40 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
 
-public class tpd
-  extends syq
+class tpd
+  implements tpf
 {
-  public int b;
+  tpd(tpb paramtpb) {}
   
-  public tpd(qqstory_service.RspWatchVideo paramRspWatchVideo)
+  public void a(trm paramtrm)
   {
-    super(paramRspWatchVideo.result);
-    this.b = paramRspWatchVideo.unread_count.get();
+    tpb.a(this.a).c();
+    Activity localActivity = tpb.a(this.a).a();
+    if (localActivity == null)
+    {
+      c(paramtrm);
+      return;
+    }
+    try.a(localActivity, paramtrm, tpb.a(this.a));
   }
   
-  public String toString()
+  public void b(trm paramtrm)
   {
-    return "WatchVideoResponse{unReadCount=" + this.b + '}';
+    tpb.a(this.a).c();
+    if (tpb.a(this.a) != null)
+    {
+      tpb.a(this.a).c(paramtrm.a);
+      tpb.a(this.a).a();
+    }
+  }
+  
+  public void c(trm paramtrm)
+  {
+    tpb.a(this.a).c();
+    if (tpb.a(this.a) != null)
+    {
+      tpb.a(this.a).d(paramtrm.a);
+      tpb.a(this.a).a();
+    }
   }
 }
 

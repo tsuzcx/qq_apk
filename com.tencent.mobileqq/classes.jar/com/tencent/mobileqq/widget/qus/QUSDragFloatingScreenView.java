@@ -150,9 +150,9 @@ public class QUSDragFloatingScreenView
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368597));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365395);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364722);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368596));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365394);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364721);
   }
   
   public void a()
@@ -163,17 +163,17 @@ public class QUSDragFloatingScreenView
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848611);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848617);
   }
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848610);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848616);
   }
   
   protected void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848610);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848616);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

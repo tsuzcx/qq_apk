@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.music;
 
-import asvu;
+import asvw;
 
 class QQPlayerService$6
   implements Runnable
 {
-  QQPlayerService$6(QQPlayerService paramQQPlayerService, asvu paramasvu, SongInfo paramSongInfo) {}
+  QQPlayerService$6(QQPlayerService paramQQPlayerService, asvw paramasvw, SongInfo paramSongInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Asvu.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    this.jdField_a_of_type_Asvw.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
   }
 }
 

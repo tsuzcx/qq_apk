@@ -1,22 +1,8 @@
-class aoiy
-  extends aoeu
+public abstract interface aoiy
 {
-  aoiy(aoix paramaoix) {}
+  public abstract void a();
   
-  protected void a(boolean paramBoolean, int paramInt, aofp paramaofp, String paramString)
-  {
-    this.a.a().a(paramBoolean, paramInt, paramaofp, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, aofp paramaofp)
-  {
-    this.a.a().a(paramBoolean, paramaofp);
-  }
-  
-  protected void e(boolean paramBoolean)
-  {
-    this.a.a().a(paramBoolean);
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,51 +1,37 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
 public class aiiv
-  implements View.OnClickListener
+  implements aijc
 {
   public aiiv(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (bcpw.a() == 0)
-    {
-      paramView = new aksl(this.a, this.a.app, QQSpecialFriendSettingActivity.a(this.a));
-      paramView.setOnDismissListener(new aiiw(this, paramView));
-      paramView.show();
-      axqw.b(null, "dc00898", "", "", "0X8009ACB", "0X8009ACB", 0, 0, "", "", "", "");
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all setings");
+      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
     }
-    if (bbev.g(this.a))
+    if (paramBoolean) {}
+    for (;;)
     {
-      boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
-      boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
-      paramView = QQSpecialFriendSettingActivity.a(this.a);
-      String str = QQSpecialFriendSettingActivity.a(this.a);
-      int i = QQSpecialFriendSettingActivity.a(this.a);
-      paramView.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-      paramView = this.a.a.obtainMessage(8193);
-      paramView.obj = this.a.getString(2131699485);
-      this.a.a.sendMessage(paramView);
-      if ((bool1) && (bool2)) {}
-      for (paramView = "0";; paramView = "1")
+      try
       {
-        axqw.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramView, "", "", "");
+        QQSpecialFriendSettingActivity.a(this.a);
         return;
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
     }
-    paramView = this.a.a.obtainMessage(8195);
-    paramView.arg1 = 0;
-    paramView.arg2 = 2131692321;
-    this.a.a.sendMessage(paramView);
   }
 }
 

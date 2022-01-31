@@ -1,15 +1,12 @@
-import android.os.Handler;
-
 class vgg
-  implements avtk
+  extends axdi
 {
-  vgg(vgd paramvgd) {}
+  vgg(vga paramvga) {}
   
   public void a()
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
-    ((vlv)tdc.a(8)).a(vyo.a(this.a.jdField_a_of_type_Vhp.a), this.a.jdField_a_of_type_Vmi);
+    ved.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.Y_();
   }
 }
 

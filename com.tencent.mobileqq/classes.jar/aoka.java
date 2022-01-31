@@ -1,9 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import android.graphics.drawable.Drawable;
 
-public abstract interface aoka<V extends View>
+public abstract interface aoka
 {
-  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
+  public abstract void setLastUpdatedLabel(CharSequence paramCharSequence);
+  
+  public abstract void setLoadingDrawable(Drawable paramDrawable);
+  
+  public abstract void setPullLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshResultLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshingLabel(CharSequence paramCharSequence);
+  
+  public abstract void setReleaseLabel(CharSequence paramCharSequence);
 }
 
 

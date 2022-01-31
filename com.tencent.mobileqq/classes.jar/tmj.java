@@ -1,33 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmj
-  extends syv
+  extends sys<tml>
 {
-  public static final String a;
-  public uvr a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_comment_list_775");
-  }
+  public List<String> a = new ArrayList();
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return "StorySvc.homepage_batch_feeds_label";
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
     try
     {
-      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
-      return new tmk(localRspFeedCommentList);
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new tml(localRspStoryFeedTagInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -40,17 +36,14 @@ public class tmj
   
   protected byte[] a()
   {
-    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
-    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Uvr.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Uvr.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Uvr.jdField_b_of_type_JavaLangString = "";
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Uvr.jdField_b_of_type_JavaLangString));
-    localReqFeedCommentList.source.set(this.jdField_a_of_type_Uvr.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Uvr.jdField_b_of_type_Int != -1) {
-      localReqFeedCommentList.type.set(this.jdField_a_of_type_Uvr.jdField_b_of_type_Int);
-    }
-    return localReqFeedCommentList.toByteArray();
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 

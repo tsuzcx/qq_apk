@@ -1,39 +1,16 @@
-import android.animation.ObjectAnimator;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class atba
+class atba
+  extends atgh
 {
-  public int a;
-  protected Drawable a;
-  public Handler a;
-  protected ImageView a;
-  public ArrayList<String> a;
-  protected int b;
+  atba(atav paramatav, int paramInt) {}
   
-  public void a(String paramString)
+  protected void a()
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.b;
-    ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_reddot_face";
-    paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-    paramString.setTag(bavi.a(this.b, this.b));
-    paramString.setDecodeHandler(bavi.a);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)
-    {
-      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.1F });
-      ((ObjectAnimator)localObject).addListener(new atbb(this, paramString));
-      ((ObjectAnimator)localObject).setDuration(1500L).start();
-      return;
+    if (QLog.isColorLevel()) {
+      atbr.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    atav.a(this.jdField_a_of_type_Atav, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

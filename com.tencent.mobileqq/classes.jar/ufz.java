@@ -1,14 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import java.util.List;
 
-class ufz
-  implements MediaPlayer.OnVideoSizeChangedListener
+public class ufz
+  extends ucv
 {
-  ufz(ufu paramufu, ufs paramufs) {}
+  public ufz(AbsVideoInfoWidget paramAbsVideoInfoWidget, StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Ufs.a(this.jdField_a_of_type_Ufu, paramInt1, paramInt2);
+    super.a(paramInt);
+    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder.b;
+    if ((paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) || (paramInt < 0))
+    {
+      ved.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.b, "Position error , get data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.size()) });
+      return;
+    }
+    uas localuas = (uas)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget.a.get(paramInt);
+    AbsVideoInfoWidget.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget, localuas);
   }
 }
 

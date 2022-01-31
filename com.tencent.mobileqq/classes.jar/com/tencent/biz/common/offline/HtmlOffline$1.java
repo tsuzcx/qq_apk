@@ -1,22 +1,22 @@
 package com.tencent.biz.common.offline;
 
 import android.content.Context;
-import mzc;
-import mze;
-import mzj;
-import mzr;
+import myz;
+import mzb;
+import mzg;
+import mzo;
 
 public final class HtmlOffline$1
   implements Runnable
 {
-  public HtmlOffline$1(Context paramContext, String paramString, mzc parammzc) {}
+  public HtmlOffline$1(Context paramContext, String paramString, myz parammyz) {}
   
   public void run()
   {
-    if (mze.a.a()) {
-      mze.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
+    if (mzb.a.a()) {
+      mzb.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
     }
-    new mzj(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Mzc).a();
+    new mzg(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Myz).a();
   }
 }
 

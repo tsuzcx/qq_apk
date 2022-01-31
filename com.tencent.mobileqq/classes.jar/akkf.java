@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import android.os.Message;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import mqq.os.MqqHandler;
 
-public final class akkf
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+public class akkf
+  extends MqqHandler
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
+  public akkf(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public AddFriendBlockedInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new AddFriendBlockedInfo[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a);
   }
 }
 

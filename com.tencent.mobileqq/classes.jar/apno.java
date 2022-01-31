@@ -1,15 +1,16 @@
-import java.util.List;
-
 class apno
-  implements xba
+  implements apli
 {
-  apno(apnn paramapnn, boolean paramBoolean, String paramString, short paramShort) {}
+  apno(apnh paramapnh) {}
   
-  public void a(List<apqg> paramList)
+  public void a()
   {
-    if (this.jdField_a_of_type_Apnn.a.jdField_a_of_type_Apnc != null) {
-      this.jdField_a_of_type_Apnn.a.jdField_a_of_type_Apnc.a(paramList, this.jdField_a_of_type_Apnn.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apnn.a.b, this.jdField_a_of_type_Apnn.a.c, this.jdField_a_of_type_Apnn.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
-    }
+    this.a.a(false, aptd.a(this.a.a.a()), this.a.c(), new apnp(this));
+  }
+  
+  public void b()
+  {
+    this.a.t();
   }
 }
 

@@ -1,26 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
 
 public class ume
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
+  public ume(MyMemoriesListView paramMyMemoriesListView) {}
   
-  public ume(umb paramumb, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramumb = ((tcp)tdc.a(19)).a(paramString);
-    if (paramumb != null) {
-      a(paramumb);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
+      if (this.a.jdField_a_of_type_Umf != null) {
+        this.a.jdField_a_of_type_Umf.c();
+      }
     }
-  }
-  
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
-  {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 

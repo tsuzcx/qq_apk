@@ -1,15 +1,27 @@
-public class ayhs
-  implements ayir
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract class ayhs
 {
-  public int getCloudFileType()
+  protected Context a;
+  protected BaseAdapter a;
+  protected QQAppInterface a;
+  protected int b;
+  
+  public ayhs(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    return 10;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    this.b = paramInt;
   }
   
-  public boolean isClickable()
-  {
-    return false;
-  }
+  public abstract View a(int paramInt1, ayit paramayit, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 

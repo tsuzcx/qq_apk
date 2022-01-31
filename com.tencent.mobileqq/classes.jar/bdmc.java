@@ -1,21 +1,15 @@
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+
 public class bdmc
 {
   public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  public DialogInterface.OnClickListener a;
+  public Bundle a;
+  public boolean a;
+  public boolean b;
   
-  public bdmc(bdmb parambdmb)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_JavaLangString + "," + this.jdField_b_of_type_Int + "," + this.jdField_a_of_type_JavaLangString;
-  }
+  public bdmc(bdlr parambdlr) {}
 }
 
 

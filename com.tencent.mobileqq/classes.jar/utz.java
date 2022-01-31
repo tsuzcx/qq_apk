@@ -1,25 +1,68 @@
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class utz
-  extends tjd
+  implements tkj
 {
-  public int a;
-  public String a;
-  public List<ShareGroupCollectionItem> a;
+  private uua a;
   
-  public utz(ErrorMessage paramErrorMessage, String paramString)
+  public String a(long paramLong)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return ((tdl)tcz.a(2)).b(String.valueOf(paramLong), false);
   }
   
-  public String toString()
+  public void a(long paramLong)
   {
-    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    ThreadManager.post(new StoryQQ2UidConverter.1(this, paramLong), 5, null, false);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      ved.e("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with default uid error. uid : %s.", new Object[] { paramString });
+      return;
+    }
+    ved.a("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with default uid: %s.", paramString);
+    paramString = new teg("", paramString);
+    new tki(this).a(1, paramString, String.valueOf(hashCode()));
+  }
+  
+  public void a(tkk paramtkk)
+  {
+    if (!TextUtils.equals(paramtkk.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()))) {
+      return;
+    }
+    if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
+      ved.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid);
+    }
+    for (paramtkk = paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramtkk = null)
+    {
+      ThreadManager.getUIHandler().post(new StoryQQ2UidConverter.2(this, paramtkk));
+      return;
+    }
+  }
+  
+  public void a(uua paramuua)
+  {
+    this.a = paramuua;
+  }
+  
+  public void b(long paramLong)
+  {
+    if (paramLong <= 0L)
+    {
+      ved.e("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with qq error. qq : %d.", new Object[] { Long.valueOf(paramLong) });
+      return;
+    }
+    ved.a("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with qq: %d.", Long.valueOf(paramLong));
+    teg localteg = new teg(String.valueOf(paramLong), "");
+    new tki(this).a(0, localteg, String.valueOf(hashCode()));
   }
 }
 

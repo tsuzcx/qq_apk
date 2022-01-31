@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import aosw;
-import aoze;
+import aota;
+import aozi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QfileBaseRecentFileTabView$10$2
   implements Runnable
 {
-  public QfileBaseRecentFileTabView$10$2(aosw paramaosw, long paramLong) {}
+  public QfileBaseRecentFileTabView$10$2(aota paramaota, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aosw.a.g();
-    QfileBaseRecentFileTabView.F(this.jdField_a_of_type_Aosw.a).a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Aota.a.g();
+    QfileBaseRecentFileTabView.F(this.jdField_a_of_type_Aota.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

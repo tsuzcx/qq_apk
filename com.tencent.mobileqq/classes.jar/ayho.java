@@ -1,23 +1,27 @@
 import android.view.View;
-import java.util.List;
+import android.view.View.OnClickListener;
 
 class ayho
-  implements bfoq
+  implements View.OnClickListener
 {
-  ayho(ayhl paramayhl, List paramList, ayir paramayir, bfol parambfol) {}
+  ayho(ayhn paramayhn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    ayit localayit;
+    if (bbbr.a("tag_swip_icon_menu_item", paramView.getTag()))
     {
-      paramView = (ayis)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (ayhl.a(this.jdField_a_of_type_Ayhl) != null) {
-        ayhl.a(this.jdField_a_of_type_Ayhl).a(paramView.b(), this.jdField_a_of_type_Ayir);
+      localayit = (ayit)paramView.getTag(-10);
+      if (paramView.getId() != 2131364301) {
+        break label40;
       }
-      this.jdField_a_of_type_Bfol.dismiss();
+      ayhn.a(this.a, localayit);
+    }
+    label40:
+    while (ayhn.a(this.a) == null) {
       return;
     }
-    this.jdField_a_of_type_Bfol.cancel();
+    ayhn.a(this.a).a(paramView.getId(), localayit);
   }
 }
 

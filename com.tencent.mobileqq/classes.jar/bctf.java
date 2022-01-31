@@ -1,6 +1,11 @@
-public abstract interface bctf
+public abstract class bctf
+  implements bctg
 {
-  public abstract void a();
+  public void a() {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean) {}
 }
 
 

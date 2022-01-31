@@ -9,7 +9,13 @@ public class ahsv
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    if (EditLocalVideoActivity.a(this.a)) {}
+    for (paramInt = -1;; paramInt = 0)
+    {
+      EditLocalVideoActivity.a(this.a).dismiss();
+      EditLocalVideoActivity.a(this.a, paramInt);
+      return;
+    }
   }
 }
 

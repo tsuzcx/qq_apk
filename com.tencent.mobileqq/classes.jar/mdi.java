@@ -1,48 +1,25 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.EffectSettingUi.2.1;
-import com.tencent.av.ui.EffectSettingUi.2.2;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.EffectToolbar;
 import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class mdi
-  implements mph
+  implements Observer
 {
-  public mdi(EffectSettingUi paramEffectSettingUi) {}
+  private WeakReference<EffectToolbar> a;
   
-  public void a(boolean paramBoolean)
+  public mdi(EffectToolbar paramEffectToolbar)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
-    }
-    if (paramBoolean)
-    {
-      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (AVActivity)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
-        }
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Mph = null;
+    this.a = new WeakReference(paramEffectToolbar);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectSettingUi", 1, "onStatusChanged, seq[" + l + "]");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
+    if (localEffectToolbar == null) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
+    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
   }
 }
 

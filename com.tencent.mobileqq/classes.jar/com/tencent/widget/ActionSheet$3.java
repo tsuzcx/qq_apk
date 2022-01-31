@@ -2,21 +2,21 @@ package com.tencent.widget;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import bfol;
-import bfon;
+import bfpc;
+import bfpe;
 
 public class ActionSheet$3
   implements Runnable
 {
-  public ActionSheet$3(bfol parambfol) {}
+  public ActionSheet$3(bfpc parambfpc) {}
   
   public void run()
   {
-    bfol.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bfol.a(this.this$0).getHeight()));
-    bfol.a(this.this$0).setDuration(200L);
-    bfol.a(this.this$0).setFillAfter(true);
-    bfol.a(this.this$0).startAnimation(bfol.a(this.this$0));
-    bfol.a(this.this$0).setAnimationListener(new bfon(this));
+    bfpc.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bfpc.a(this.this$0).getHeight()));
+    bfpc.a(this.this$0).setDuration(200L);
+    bfpc.a(this.this$0).setFillAfter(true);
+    bfpc.a(this.this$0).startAnimation(bfpc.a(this.this$0));
+    bfpc.a(this.this$0).setAnimationListener(new bfpe(this));
   }
 }
 

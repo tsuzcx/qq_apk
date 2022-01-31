@@ -1,53 +1,22 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class azdh
-  extends Handler
+  implements InputFilter
 {
-  public azdh(AudioRecordFragment paramAudioRecordFragment) {}
+  public azdh(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if ((this.a.getActivity() == null) || (this.a.isDetached())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (paramCharSequence.contains("\n")) {
+        return paramCharSequence.replaceAll("\n", "");
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
-      return;
-      paramMessage = paramMessage.obj.toString();
-      File localFile = new File(paramMessage);
-      if (localFile.exists()) {}
-      for (long l = localFile.length();; l = 0L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-        paramMessage = new Intent();
-        paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-        this.a.getActivity().setResult(-1, paramMessage);
-        this.a.getActivity().finish();
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals("publish")) || (this.a.b == null));
-    bair.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
+    return null;
   }
 }
 

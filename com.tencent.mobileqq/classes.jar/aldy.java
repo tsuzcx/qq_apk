@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-
-public final class aldy
-  implements Parcelable.Creator<ArCloudConfigInfo>
+public class aldy
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  
+  public aldy()
   {
-    return new ArCloudConfigInfo(paramParcel);
+    this.jdField_a_of_type_Float = 2.0F;
+    this.jdField_b_of_type_Float = 2.0F;
   }
   
-  public ArCloudConfigInfo[] a(int paramInt)
+  public String toString()
   {
-    return new ArCloudConfigInfo[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
+    return localStringBuilder.toString();
   }
 }
 

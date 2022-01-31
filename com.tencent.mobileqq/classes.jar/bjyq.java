@@ -1,7 +1,16 @@
-public class bjyq
-  implements bkyi
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bjyq
+  implements DialogInterface.OnClickListener
 {
-  bjyq(bjyp parambjyp) {}
+  bjyq(bjyn parambjyn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bjyn.a(this.a);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

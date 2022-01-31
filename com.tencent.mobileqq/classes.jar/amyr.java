@@ -1,70 +1,62 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
-import org.json.JSONException;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class amyr
-  extends amyi<QQFriendRelation2Config>
+  extends amyp<amyq>
 {
-  public static QQFriendRelation2Config c()
-  {
-    QQFriendRelation2Config localQQFriendRelation2Config2 = (QQFriendRelation2Config)ampm.a().a(491);
-    QQFriendRelation2Config localQQFriendRelation2Config1 = localQQFriendRelation2Config2;
-    if (localQQFriendRelation2Config2 == null) {
-      localQQFriendRelation2Config1 = new QQFriendRelation2Config();
-    }
-    return localQQFriendRelation2Config1;
-  }
-  
   public int a()
   {
-    return 491;
+    return 479;
   }
   
   @NonNull
-  public QQFriendRelation2Config a()
+  public amyq a()
   {
-    return new QQFriendRelation2Config();
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
+    }
+    return new amyq();
   }
   
   @NonNull
-  public QQFriendRelation2Config a(ampi[] paramArrayOfampi)
+  public amyq a(@NonNull amph[] paramArrayOfamph)
   {
-    boolean bool = true;
-    localQQFriendRelation2Config = new QQFriendRelation2Config();
-    paramArrayOfampi = paramArrayOfampi[0].a;
+    boolean bool = false;
+    amyq localamyq = new amyq();
     try
     {
-      if (!TextUtils.isEmpty(paramArrayOfampi)) {
-        if (new JSONObject(paramArrayOfampi).optInt("enable", 1) != 1) {
-          break label49;
+      if (paramArrayOfamph[0].a != null)
+      {
+        if (new JSONObject(paramArrayOfamph[0].a).optInt("show_custom_online_state", 1) == 1) {
+          bool = true;
+        }
+        localamyq.a = bool;
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localamyq.a);
         }
       }
-      for (;;)
-      {
-        localQQFriendRelation2Config.mIsEnable = bool;
-        return localQQFriendRelation2Config;
-        label49:
-        bool = false;
-      }
-      return localQQFriendRelation2Config;
+      return localamyq;
     }
-    catch (JSONException paramArrayOfampi)
+    catch (Exception paramArrayOfamph)
     {
-      veg.e("QQFriendRelation2Processor", "QQFriendRelation2Config onParsed exception :" + paramArrayOfampi.getMessage());
+      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfamph);
     }
+    return localamyq;
   }
   
-  public Class<QQFriendRelation2Config> a()
+  public Class<amyq> a()
   {
-    return QQFriendRelation2Config.class;
+    return amyq.class;
   }
   
   @NonNull
-  public QQFriendRelation2Config b()
+  public amyq b()
   {
-    return new QQFriendRelation2Config();
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
+    }
+    return new amyq();
   }
 }
 

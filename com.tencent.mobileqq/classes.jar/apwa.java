@@ -1,9 +1,10 @@
-public class apwa
+import android.widget.ImageView;
+
+public abstract interface apwa
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(ImageView paramImageView);
 }
 
 

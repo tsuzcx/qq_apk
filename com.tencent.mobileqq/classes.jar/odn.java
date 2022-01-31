@@ -1,36 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class odn
 {
-  public static AtomicBoolean a;
-  
-  public static ArkAppMessage a(qan paramqan)
+  public static void a(int paramInt)
   {
-    return null;
+    if ((paramInt == 41516) || (paramInt == 41522)) {
+      nol.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new odl().a().a(paramInt).a(), false);
+    }
   }
-  
-  public static void a() {}
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(View paramView) {}
-  
-  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
-  
-  public static void a(odl paramodl, int paramInt) {}
-  
-  public static boolean a(ArkAppMessage paramArkAppMessage)
-  {
-    return false;
-  }
-  
-  public static void b() {}
-  
-  public static void b(int paramInt) {}
-  
-  public static void b(View paramView) {}
 }
 
 

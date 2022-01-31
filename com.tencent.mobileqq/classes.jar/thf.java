@@ -1,15 +1,12 @@
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
 
 public class thf
-  implements bcmw
 {
-  public thf(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void a(String paramString)
-  {
-    this.a.a.setVisibility(4);
-  }
+  private thf(DotAnimationView paramDotAnimationView) {}
 }
 
 

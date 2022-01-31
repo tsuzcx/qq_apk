@@ -1,19 +1,14 @@
 import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public final class allm
+public class allm
+  extends alln
 {
-  public static Bundle a(Bundle paramBundle)
+  public String a = "10001";
+  
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = new allr(localBundle);
-    paramBundle.a(10L);
-    paramBundle.b(true);
-    paramBundle.a(true);
-    paramBundle.b(4096L);
-    return paramBundle.a();
+    this.a = paramBundle.getString("PromotionDescription");
   }
 }
 

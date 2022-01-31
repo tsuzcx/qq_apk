@@ -9,8 +9,8 @@ public class acos
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akuz.b(), String.valueOf(0), akva.a(), "0");
-    this.a.a();
+    UpgradeActivity.a(this.a, false);
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "");
   }
 }
 

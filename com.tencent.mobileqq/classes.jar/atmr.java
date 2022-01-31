@@ -1,40 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class atmr
-  extends AnimatorListenerAdapter
+  implements atii
 {
-  atmr(atlu paramatlu) {}
+  atmr(atlw paramatlw) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c = false;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366535).setVisibility(8);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366509).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366534).setTranslationY(0.0F);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366540).setVisibility(8);
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c = true;
-    int i = this.a.jdField_b_of_type_Int;
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366533).setBackgroundResource(2130844587);
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366533).getBackground().setColorFilter(new LightingColorFilter(-16777216, i));
-    this.a.jdField_b_of_type_AndroidViewView.findViewById(2131366532).setBackgroundColor(0);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
+      }
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        this.a.a(paramArrayOfByte);
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

@@ -1,16 +1,14 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
+import com.tencent.image.URLImageView;
 
 class ron
-  extends osp
+  implements sed
 {
-  ron(rom paramrom) {}
+  ron(roj paramroj, ChannelCoverInfo paramChannelCoverInfo) {}
   
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public void a()
   {
-    if (paramBoolean) {
-      rom.a(this.a, rom.a(this.a, paramList));
-    }
+    roj.a(this.jdField_a_of_type_Roj).setImageDrawable(roj.a(this.jdField_a_of_type_Roj, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
   }
 }
 

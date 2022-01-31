@@ -1,18 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 class xaa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements URLDrawableDownListener
 {
-  xaa(wzw paramwzw) {}
+  xaa(wzt paramwzt) {}
   
-  public void onGlobalLayout()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    int i = this.a.d.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bbdh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.c.setMaxWidth(i);
-    this.a.c.setText(new ayju(this.a.jdField_a_of_type_Azpe.h, 16).a());
+    this.a.a(false, "onLoadCancelled");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.a(false, "onLoadFailed");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    this.a.a(false, "onLoadInterrupted");
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a(true, "onLoadSuccessed");
+    this.a.b = true;
   }
 }
 

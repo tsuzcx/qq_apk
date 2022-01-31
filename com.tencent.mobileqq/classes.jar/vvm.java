@@ -1,17 +1,8 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.support.annotation.NonNull;
 
-public class vvm
-  implements AdapterView.OnItemClickListener
+public abstract interface vvm
 {
-  public vvm(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public abstract void a(@NonNull vvt paramvvt);
 }
 
 

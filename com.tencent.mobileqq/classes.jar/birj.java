@@ -1,6 +1,10 @@
-class birj
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+
+public class birj
 {
-  private static birh a = new birh(null);
+  public int a;
+  public MetaMaterial a;
+  public String a;
 }
 
 

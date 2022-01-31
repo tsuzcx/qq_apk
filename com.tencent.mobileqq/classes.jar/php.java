@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class php
-  implements rad
+public abstract interface php
 {
-  php(pho parampho) {}
+  public abstract TemplateBean a(int paramInt, JSONObject paramJSONObject);
   
-  public void a()
-  {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-    this.a.jdField_a_of_type_Phq.a(true);
-  }
+  public abstract JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo);
   
-  public void b()
-  {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-    this.a.jdField_a_of_type_Phq.a(false);
-  }
+  public abstract void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2);
+  
+  public abstract boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase);
 }
 
 

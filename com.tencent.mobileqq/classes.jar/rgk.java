@@ -1,8 +1,17 @@
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-public abstract interface rgk
+public class rgk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public rgk(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
+  }
 }
 
 

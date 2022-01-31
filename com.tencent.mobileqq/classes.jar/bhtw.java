@@ -1,98 +1,74 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Status;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 import org.json.JSONObject;
 
-class bhtw
-  implements Downloader.DownloadListener
+public class bhtw
+  extends WebViewPlugin
 {
-  bhtw(bhtv parambhtv, String paramString) {}
+  private String a = bhtw.class.getSimpleName();
   
-  public void onDownloadCanceled(String paramString)
+  public bhtw()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
+    this.mPluginNameSpace = "QzMoodSelectPicture";
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!paramString2.equals("QzMoodSelectPicture")) {}
+    while ((!paramString3.equals("selectPicture")) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      return false;
     }
+    paramJsBridgeListener = new Intent();
+    paramString1 = new Bundle();
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", -1);
-      localJSONObject.put("message", paramString);
-      bhtv.a(this.jdField_a_of_type_Bhtv).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
-    }
-    for (;;)
-    {
-      try
+      paramString2 = new JSONObject(paramVarArgs[0]);
+      paramString1.putString("mood_web_pic_url", paramString2.getString("url"));
+      paramString1.putString("mood_web_pic_id", paramString2.getString("imageId"));
+      paramString1.putInt("mood_web_pic_width", paramString2.getInt("width"));
+      paramString1.putInt("mood_web_pic_height", paramString2.getInt("height"));
+      paramString1.putInt("mood_web_pic_sourceid", paramString2.optInt("sourceid"));
+      paramString1.putString("mood_web_pic_attachinfo", paramString2.getString("quickselect"));
+      paramJsBridgeListener.putExtras(paramString1);
+      if (this.mRuntime.a() != null)
       {
-        paramString = new JSONObject();
-        if (paramDownloadResult == null) {
-          continue;
-        }
-        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
-        if (localStatus == null) {
-          continue;
-        }
-        paramString.put("code", localStatus.failReason);
-        paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
+        this.mRuntime.a().setResult(-1, paramJsBridgeListener);
+        this.mRuntime.a().finish();
       }
-      catch (Exception paramString)
+      return true;
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
       {
-        if (!QLog.isColorLevel()) {
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.w(this.a, 2, "select mood picture,decode param error");
         }
-        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
-        return;
-        paramString.put("code", -1);
-        paramString.put("message", "DownloadFailed");
-        continue;
       }
-      bhtv.b(this.jdField_a_of_type_Bhtv).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-      paramString.put("code", -1);
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void onCreate()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
-    }
+    super.onCreate();
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", "http://www.baidu.com");
+    localIntent.putExtras(localBundle);
+    this.mRuntime.a().setResult(50, localIntent);
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadSucceed");
-    }
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("code", 0);
-      paramString.put("message", "success");
-      bhtv.c(this.jdField_a_of_type_Bhtv).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
-    }
-  }
+  public void onDestroy() {}
 }
 
 

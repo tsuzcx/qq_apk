@@ -1,10 +1,17 @@
+import com.tencent.qphone.base.util.QLog;
+
 class avzp
+  implements awal
 {
-  avyy jdField_a_of_type_Avyy;
-  avzk jdField_a_of_type_Avzk;
-  avzl jdField_a_of_type_Avzl;
+  avzp(avzo paramavzo) {}
   
-  private avzp(avzm paramavzm) {}
+  public void a(boolean paramBoolean, String paramString)
+  {
+    avzo.a(this.a, true);
+    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
+      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
+    }
+  }
 }
 
 

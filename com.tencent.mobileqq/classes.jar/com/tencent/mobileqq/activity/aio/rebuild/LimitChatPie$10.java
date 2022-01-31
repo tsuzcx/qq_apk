@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aequ;
+import aeqs;
 import android.content.Context;
 import android.widget.TextView;
 
 public class LimitChatPie$10
   implements Runnable
 {
-  public LimitChatPie$10(aequ paramaequ) {}
+  public LimitChatPie$10(aeqs paramaeqs) {}
   
   public void run()
   {
-    aequ.b(this.this$0, this.this$0.a.getString(2131698989));
-    this.this$0.f.setText(aequ.a(this.this$0));
+    aeqs.b(this.this$0, this.this$0.a.getString(2131698999));
+    this.this$0.f.setText(aeqs.a(this.this$0));
   }
 }
 

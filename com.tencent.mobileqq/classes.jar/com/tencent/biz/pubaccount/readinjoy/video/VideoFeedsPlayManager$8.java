@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bcpw;
+import bcql;
 
 class VideoFeedsPlayManager$8
   implements Runnable
 {
   public void run()
   {
-    bcpw.a(VideoFeedsPlayManager.a(this.this$0), this.a, 0).a();
+    bcql.a(VideoFeedsPlayManager.a(this.this$0), this.a, 0).a();
   }
 }
 

@@ -1,35 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
 public class acdx
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public acdx(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public acdx(SubAccountUgActivity paramSubAccountUgActivity, ayaq paramayaq, Pair paramPair) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
-    }
-    paramView = (ayav)this.a.app.getManager(61);
-    if (paramView != null) {}
-    for (int i = paramView.a();; i = 0)
+    this.jdField_a_of_type_Ayaq.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!ayaq.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
     {
-      if (i < 2)
-      {
-        paramView = new Intent(this.a, SubLoginActivity.class);
-        paramView.putExtra("fromWhere", this.a.b);
-        this.a.startActivity(paramView);
-        return;
-      }
-      ayao.a(this.a.app, this.a);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
+      ayap.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
   }
 }
 

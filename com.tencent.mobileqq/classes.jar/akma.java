@@ -1,20 +1,23 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class akma
-  extends ajyt
+  extends ajto
 {
-  private akma(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
+  public akma(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  protected void a(int paramInt)
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    if (GetJoinedHotChatListStep.a(this.a) != null)
-    {
-      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
-      GetJoinedHotChatListStep.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
     }
-    if (paramInt == 0)
+    if (!this.a.a.app.getCurrentAccountUin().equals(paramString)) {
+      return;
+    }
+    if (!paramBoolean)
     {
       this.a.a(7);
       return;

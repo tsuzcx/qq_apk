@@ -1,46 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 
 public class adlc
-  implements View.OnClickListener
+  extends acuj
+  implements URLDrawable.URLDrawableListener
 {
-  public adlc(ApolloItemBuilder paramApolloItemBuilder) {}
+  public SpannableStringBuilder a;
+  public ImageSpan a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    Object localObject = (adle)actn.a(paramView);
-    paramView = (airz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-    localObject = (MessageForApollo)((adle)localObject).a;
-    if (localObject == null)
-    {
-      QLog.e("ApolloItemBuilder", 1, "errInfo->mr is null.");
-      return;
+    if (this.d != null) {
+      this.d.setVisibility(8);
     }
-    ApolloActionData localApolloActionData = ((ajmw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(((MessageForApollo)localObject).mApolloMessage.id);
-    if (localApolloActionData == null)
-    {
-      QLog.e("ApolloItemBuilder", 1, "ApolloActionData is null.");
-      return;
-    }
-    CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(localApolloActionData.gameId, ((MessageForApollo)localObject).isSend(), "message", 0L, 1, 0, 0, 0, "", 333001, localApolloActionData.gameName);
-    localStartCheckParam.version = paramView.a(localApolloActionData.gameId);
-    localStartCheckParam.disableMinGame = true;
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloItemBuilder", 2, "game tail click: " + localStartCheckParam.toString());
+      QLog.d("ApolloItemBuilder", 2, "onLoadSuccessed,mDrawableCacheKey:" + paramURLDrawable);
     }
-    ApolloGameUtil.a(this.a.jdField_a_of_type_AndroidContentContext, localStartCheckParam);
-    VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_actiontail_clk", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { Integer.toString(((MessageForApollo)localObject).mApolloMessage.id), Integer.toString(localApolloActionData.gameId) });
   }
 }
 

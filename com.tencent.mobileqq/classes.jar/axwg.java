@@ -1,34 +1,71 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class axwg
 {
-  private long jdField_a_of_type_Long = -1L;
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public int a;
+  public axwg a;
+  public String a;
+  public List<axwg> a;
+  public Map<String, String> a;
+  public String b;
   
-  public void a()
+  public axwg(String paramString, Map<String, String> paramMap)
   {
-    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % 300 != 1) {
-      return;
-    }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Int = 1;
+    this.b = paramString;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    if (this.jdField_a_of_type_Long == -1L) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cost", l1 - l2 + "");
-    localHashMap.put("layout", paramInt1 + "");
-    localHashMap.put("first", paramInt2 + "");
-    axrl.a(BaseApplication.getContext()).a(null, "structmsg_builder_getview", true, 0L, 0L, localHashMap, "", false);
-    this.jdField_a_of_type_Long = -1L;
+    return 0;
+  }
+  
+  public axwg a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return a(this.jdField_a_of_type_JavaUtilList.indexOf(this) + 1);
+    }
+    return null;
+  }
+  
+  public axwg a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (axwg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a(axwg paramaxwg)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramaxwg);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0);
+  }
+  
+  public axwg b()
+  {
+    return a(0);
   }
 }
 

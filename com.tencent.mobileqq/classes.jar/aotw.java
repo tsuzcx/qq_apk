@@ -1,45 +1,89 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aotw
-  extends apvd
+  implements apxv
 {
-  public aotw(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void a()
+  public aotw(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.a.a().b();
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.b = 2147483647;
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2);
+    if (localFileManagerEntity == null) {}
+    do
+    {
+      return;
+      if (!apel.a(localFileManagerEntity)) {
+        bool = true;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+    } while (!QfileRecentPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView, localFileManagerEntity, this.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.k();
   }
   
-  public void b()
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.a.a().p();
+    if (paramInt1 != paramInt3) {
+      return;
+    }
+    paramInt3 = Math.min(paramInt2, paramInt4);
+    int i = Math.max(paramInt2, paramInt4);
+    if (paramInt4 < paramInt2) {
+      this.b = Math.min(paramInt4, this.b);
+    }
+    for (;;)
+    {
+      paramInt2 = paramInt3;
+      while (paramInt2 <= i)
+      {
+        QfileRecentPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView, (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+        paramInt2 += 1;
+      }
+      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+    }
+    paramInt2 = this.b;
+    QfileRecentPicFileTabView localQfileRecentPicFileTabView;
+    FileManagerEntity localFileManagerEntity;
+    boolean bool;
+    if (paramInt2 < paramInt3)
+    {
+      localQfileRecentPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView;
+      localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileRecentPicFileTabView.a(localQfileRecentPicFileTabView, localFileManagerEntity, bool);
+        paramInt2 += 1;
+        break;
+      }
+    }
+    paramInt2 = i + 1;
+    if (paramInt2 <= this.jdField_a_of_type_Int)
+    {
+      localQfileRecentPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView;
+      localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileRecentPicFileTabView.a(localQfileRecentPicFileTabView, localFileManagerEntity, bool);
+        paramInt2 += 1;
+        break;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.k();
   }
   
-  public void c()
-  {
-    this.a.a.a().q();
-  }
+  public void a(boolean paramBoolean) {}
   
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
-  }
+  public void b(int paramInt1, int paramInt2) {}
 }
 
 

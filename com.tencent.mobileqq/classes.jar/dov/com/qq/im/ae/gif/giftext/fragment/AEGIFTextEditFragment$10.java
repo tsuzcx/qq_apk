@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import biso;
-import biua;
+import bitf;
+import biur;
 
 public class AEGIFTextEditFragment$10
   implements Runnable
 {
-  public AEGIFTextEditFragment$10(biua parambiua, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  public AEGIFTextEditFragment$10(biur parambiur, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
   public void run()
   {
-    biua.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    biua.a(this.this$0).a(this.jdField_a_of_type_Int);
+    biur.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    biur.a(this.this$0).a(this.jdField_a_of_type_Int);
     if (this.b.equals("#ccffffff"))
     {
-      biua.a(this.this$0).a(false, true);
+      biur.a(this.this$0).a(false, true);
       return;
     }
-    biua.a(this.this$0).a(true, false);
+    biur.a(this.this$0).a(true, false);
   }
 }
 

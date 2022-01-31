@@ -1,48 +1,40 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnControllerClickListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import java.lang.ref.WeakReference;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import java.util.HashSet;
 
-public class beob
-  implements VideoPlayerProxy.OnControllerClickListener
+class beob
+  implements View.OnClickListener
 {
-  public beob(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  beob(beny parambeny) {}
   
-  public void onAttationClick(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onBackClick(VideoPlayerProxy paramVideoPlayerProxy)
+  public void onClick(View paramView)
   {
-    besl.a("MiniAppVideoPlayer", "video player onBackClick");
-    if ((Activity)this.a.a.get() == null) {}
-    while (!this.a.c) {
-      return;
-    }
-    this.a.g();
-  }
-  
-  public void onBackOnFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
-  {
-    besl.a("MiniAppVideoPlayer", "video player onBackOnFullScreenClick");
-    if ((Activity)this.a.a.get() == null) {}
-    while (!this.a.c) {
-      return;
-    }
-    this.a.g();
-  }
-  
-  public void onCacheClick(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onFeedbackClick(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onFullScreenClick(VideoPlayerProxy paramVideoPlayerProxy)
-  {
-    if (this.a.c)
+    int i = paramView.getId();
+    Object localObject;
+    if ((beny.a(this.a)) && ((beny.a(this.a) == null) || (!beny.a(this.a).contains(Integer.valueOf(i)))) && (beny.b(this.a) != -1) && (i != beny.b(this.a)))
     {
-      this.a.g();
-      return;
+      localObject = (View)beny.a(this.a).get(beny.b(this.a));
+      ((View)localObject).findViewById(2131361914).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131361913);
+      beny.a(this.a, (TextView)localObject, false);
+      localObject = (View)beny.a(this.a).get(i);
+      ((View)localObject).findViewById(2131361914).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131361913);
+      beny.a(this.a, (TextView)localObject, true);
+      beny.a(this.a, i);
     }
-    this.a.f();
+    if (beny.a(this.a) != null) {
+      beny.a(this.a).OnClick(paramView, i);
+    }
+    if (beny.a(this.a) != null)
+    {
+      localObject = (TextView)paramView.findViewById(2131361913);
+      if ((localObject != null) && ((localObject instanceof TextView))) {
+        beny.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      }
+    }
   }
 }
 

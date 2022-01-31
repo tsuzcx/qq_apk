@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osm;
+import osj;
 
 class ArticleInfoModule$40$1
   implements Runnable
@@ -9,7 +9,7 @@ class ArticleInfoModule$40$1
   
   public void run()
   {
-    osm.a().b();
+    osj.a().b();
   }
 }
 

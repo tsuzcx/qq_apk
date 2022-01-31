@@ -1,28 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
-import dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.10;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bjpb
-  implements DialogInterface.OnClickListener
 {
-  public bjpb(LightWeightCameraCaptureUnit.10 param10) {}
+  private final HashMap<String, bjow> a = new HashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  final bjow a(String paramString)
   {
-    paramDialogInterface = this.a.this$0.jdField_a_of_type_Bjqu.a();
-    if (paramInt == 1)
-    {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView.setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
+    return (bjow)this.a.get(paramString);
+  }
+  
+  public final void a()
+  {
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bjow)localIterator.next()).b();
     }
-    paramDialogInterface.finish();
+    this.a.clear();
+  }
+  
+  final void a(String paramString, bjow parambjow)
+  {
+    paramString = (bjow)this.a.put(paramString, parambjow);
+    if (paramString != null) {
+      paramString.b();
+    }
   }
 }
 

@@ -1,32 +1,45 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import android.content.Context;
+import com.tencent.kwstudio.office.base.IGlobal;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
+import java.io.File;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
 
 public final class apju
-  implements aysa
+  implements IGlobal
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  private final TdsReaderGlobal a;
   
-  private apju(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  private apju(TdsReaderGlobal paramTdsReaderGlobal)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
+    this.a = paramTdsReaderGlobal;
   }
   
-  public void onResp(aysx paramaysx)
+  public Context getApplicationContext()
   {
-    if ((paramaysx.c == 200) || (paramaysx.c == 206)) {}
-    for (String str = new String(paramaysx.a);; str = null)
-    {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramaysx.c, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramaysx.c + ", rsp=" + str);
-      return;
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public Executor getExecutor()
+  {
+    return TdsReaderGlobal.a(this.a);
+  }
+  
+  public String getFileDir()
+  {
+    Context localContext = getApplicationContext();
+    File localFile2 = localContext.getExternalFilesDir(null);
+    File localFile1 = localFile2;
+    if (localFile2 == null) {
+      localFile1 = localContext.getFilesDir();
     }
+    return localFile1.getAbsolutePath();
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public InputStream getResourceAsStream(String paramString)
+  {
+    return null;
+  }
 }
 
 

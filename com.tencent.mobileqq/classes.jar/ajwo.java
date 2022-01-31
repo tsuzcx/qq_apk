@@ -1,20 +1,42 @@
-import com.tencent.mobileqq.app.FrameFragment;
-import com.tencent.mobileqq.widget.QQTabHost;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class ajwo
-  implements bcpu
+  implements View.OnTouchListener
 {
-  public ajwo(FrameFragment paramFrameFragment) {}
+  public ajwo(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt1 == paramInt2)
+    switch (paramMotionEvent.getAction())
     {
-      paramQQTabHost = this.a.b();
-      if (paramQQTabHost != null) {
-        paramQQTabHost.d();
-      }
     }
+    do
+    {
+      do
+      {
+        return false;
+      } while (!ayaq.c(this.a.getActivity().app, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      return false;
+      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    return false;
+    FrameHelperActivity.b(this.a);
+    return false;
   }
 }
 

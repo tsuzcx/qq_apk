@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import nxw;
+import nxt;
 
 class ReadinjoySubscriptManagerActivity$4
   implements Runnable
 {
-  ReadinjoySubscriptManagerActivity$4(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, nxw paramnxw, Bitmap paramBitmap) {}
+  ReadinjoySubscriptManagerActivity$4(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, nxt paramnxt, Bitmap paramBitmap) {}
   
   public void run()
   {
-    nxw.a(this.jdField_a_of_type_Nxw).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    nxt.a(this.jdField_a_of_type_Nxt).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

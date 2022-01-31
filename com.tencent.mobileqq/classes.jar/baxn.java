@@ -1,8 +1,23 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
-abstract interface baxn
+public class baxn
 {
-  public abstract void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap);
+  public static int a(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+  }
+  
+  public static int b(Context paramContext, float paramFloat)
+  {
+    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
+  }
+  
+  public static int c(Context paramContext, float paramFloat)
+  {
+    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+  }
 }
 
 

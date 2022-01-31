@@ -1,20 +1,21 @@
-import android.widget.CompoundButton;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
-class abhk
-  implements aylk
+public class abhk
+  implements View.OnClickListener
 {
-  abhk(abhj paramabhj, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
+  public abhk(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onCancel()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Abhj.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
-  }
-  
-  public void onConfirm()
-  {
-    this.jdField_a_of_type_Abhj.a.b();
-    GeneralSettingActivity.a(this.jdField_a_of_type_Abhj.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    paramView = new Intent();
+    paramView.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
+    axqy.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,100 +1,68 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class nsa
-  extends bcal
-  implements bcbj
 {
-  public nsa(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  public static void a(Drawable paramDrawable)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
-  }
-  
-  public void a()
-  {
-    super.doOnResume();
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopNewPageWebViewBuilder", 2, "[bindJavaScript]");
+    if (!a()) {
+      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
     }
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new sfn());
-    paramArrayList.add(new arnc());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new arme());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bbus());
-    paramArrayList.add(new QWalletMixJsPlugin());
+    while (!(paramDrawable instanceof URLDrawable)) {
+      return;
+    }
+    ((URLDrawable)paramDrawable).setDecodeHandler(new nsb());
   }
   
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
+  public static void a(ImageView paramImageView)
   {
-    super.buildBaseWebView(paramAppInterface);
+    if (paramImageView == null) {
+      return;
+    }
+    if (b())
+    {
+      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
+      return;
+    }
+    paramImageView.clearColorFilter();
   }
   
-  public void c()
+  private static boolean a()
   {
-    super.doOnDestroy();
+    Object localObject = (osl)((QQAppInterface)onh.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((osl)localObject).a().a();
+      if (localObject != null)
+      {
+        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
+        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
+        return "1".equals(localObject);
+      }
+    }
+    return false;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  private static boolean b()
   {
-    super.onPageFinished(paramWebView, paramString);
+    Object localObject = (osl)((QQAppInterface)onh.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((osl)localObject).a().a();
+      if (localObject != null)
+      {
+        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
+        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
+        return "1".equals(localObject);
+      }
+    }
+    return false;
   }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 

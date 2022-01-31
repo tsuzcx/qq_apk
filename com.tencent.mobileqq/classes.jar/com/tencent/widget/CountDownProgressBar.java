@@ -11,8 +11,8 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bfpz;
-import bfqa;
+import bfqq;
+import bfqr;
 
 public class CountDownProgressBar
   extends View
@@ -21,8 +21,8 @@ public class CountDownProgressBar
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bfpz(this);
-  private bfqa jdField_a_of_type_Bfqa;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bfqq(this);
+  private bfqr jdField_a_of_type_Bfqr;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = 1000L;
@@ -121,9 +121,9 @@ public class CountDownProgressBar
     }
   }
   
-  public void setOnCountDownLinstener(bfqa parambfqa)
+  public void setOnCountDownLinstener(bfqr parambfqr)
   {
-    this.jdField_a_of_type_Bfqa = parambfqa;
+    this.jdField_a_of_type_Bfqr = parambfqr;
   }
   
   public void setTotalMills(long paramLong)

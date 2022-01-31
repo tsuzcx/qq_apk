@@ -1,13 +1,18 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nhs
-  implements net
+  implements View.OnClickListener
 {
-  public nhs(AccountDetailActivity paramAccountDetailActivity) {}
+  public nhs(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

@@ -2,23 +2,23 @@ package com.tencent.biz.subscribe.comment;
 
 import android.text.TextUtils;
 import android.widget.Button;
-import wmf;
+import wmc;
 
 public class ActionSheetDialog$4
   implements Runnable
 {
-  public ActionSheetDialog$4(wmf paramwmf, String paramString) {}
+  public ActionSheetDialog$4(wmc paramwmc, String paramString) {}
   
   public void run()
   {
     if (TextUtils.isEmpty(this.a))
     {
-      wmf.a(this.this$0).setText("");
-      wmf.a(this.this$0).setVisibility(8);
+      wmc.a(this.this$0).setText("");
+      wmc.a(this.this$0).setVisibility(8);
       return;
     }
-    wmf.a(this.this$0).setText(this.a);
-    wmf.a(this.this$0).setVisibility(0);
+    wmc.a(this.this$0).setText(this.a);
+    wmc.a(this.this$0).setVisibility(0);
   }
 }
 

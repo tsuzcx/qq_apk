@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class atmw
   implements View.OnClickListener
 {
-  atmw(atlu paramatlu) {}
+  atmw(atlw paramatlw) {}
   
   public void onClick(View paramView)
   {
-    this.a.i(paramView);
+    this.a.g(paramView);
   }
 }
 

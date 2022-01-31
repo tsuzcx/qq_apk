@@ -1,93 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class aish
-  extends bbwf
+  extends BroadcastReceiver
 {
-  aish(airz paramairz) {}
+  aish(airx paramairx) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download onDone");
+    if (paramIntent == null) {
+      QLog.e("ApolloManager", 1, "[onReceive] intent null");
     }
-    if (parambbwg.a() == 3) {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_download_success", 0, 0, new String[0]);
-    }
-    if (this.a.jdField_a_of_type_Ajom != null) {
-      this.a.jdField_a_of_type_Ajom.b();
-    }
-  }
-  
-  public void onDoneFile(bbwg parambbwg)
-  {
-    if (parambbwg == null) {}
-    label314:
-    label320:
-    for (;;)
+    do
     {
       return;
-      String str1 = parambbwg.c;
-      parambbwg = parambbwg.a();
-      if (parambbwg != null)
-      {
-        parambbwg = (ApolloActionData)parambbwg.getSerializable(str1);
-        if (parambbwg == null)
-        {
-          QLog.e("ApolloManager", 1, "action res onDoneFile but action data is null");
-          return;
-        }
-        String str2 = ApolloUtil.a(parambbwg, 4);
-        if (str1.equals(ApolloUtil.a(parambbwg, 5)))
-        {
-          try
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloManager", 2, "action res zip done acitonid=" + parambbwg.actionId + " action name =" + parambbwg.actionName);
-            }
-            if (!ApolloUtil.a(parambbwg.actionId, parambbwg.personNum))
-            {
-              bbdj.a(str2, ApolloUtil.a(parambbwg, 6), false);
-              bbdj.d(str2);
-              this.a.a(parambbwg);
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ApolloManager", 2, "uncompressZip fail zip file: " + str2, localException);
-              }
-            }
-          }
-          if (parambbwg.compoundType <= 0) {
-            break label314;
-          }
-        }
-        for (boolean bool = ApolloUtil.a(parambbwg.actionId, 1, parambbwg.personNum, false);; bool = ApolloUtil.a(parambbwg))
-        {
-          if ((!bool) || (this.a.jdField_a_of_type_Ajom == null)) {
-            break label320;
-          }
-          parambbwg.status = 1;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-            ((ajmw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(parambbwg);
-          }
-          this.a.jdField_a_of_type_Ajom.a(parambbwg);
-          return;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ApolloManager", 2, "onDoneFile panelView actionId = " + parambbwg.actionId + " action name =" + parambbwg.actionName);
-          break;
-        }
+      paramContext = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
       }
-    }
+    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
+    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
+    ((bbrd)this.a.a.a(71)).a(null, paramContext, -1003, 0);
   }
 }
 

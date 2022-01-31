@@ -1,37 +1,54 @@
-import android.app.Activity;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
-import mqq.os.MqqHandler;
 
 public class auba
-  extends ayga
+  implements View.OnTouchListener
 {
-  public auba(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public auba(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
+    {
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
+      {
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if (localObject.length != 0)
+        {
+          localObject[0].onClick(paramView);
+          axqy.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        return true;
+      }
+      if ((j == 1) && (!paramView.isFocused())) {
+        axqy.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
+    }
   }
 }
 

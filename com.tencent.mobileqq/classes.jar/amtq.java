@@ -1,28 +1,82 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class amtq
+  implements ampc<String>
 {
-  private amtr jdField_a_of_type_Amtr;
-  private String jdField_a_of_type_JavaLangString;
+  public ArrayList<amtr> a = new ArrayList();
   
-  public amtq()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Amtr = new amtr();
+    this.a.clear();
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("random_list");
+        if (paramString != null)
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            amtr localamtr = new amtr();
+            localamtr.a = localJSONObject.optString("nick", "");
+            localamtr.b = localJSONObject.optString("headid", "");
+            localamtr.c = localJSONObject.optString("url", "");
+            if ((!TextUtils.isEmpty(localamtr.a)) && (!TextUtils.isEmpty(localamtr.b)) && (!TextUtils.isEmpty(localamtr.c))) {
+              break label230;
+            }
+            if (!QLog.isColorLevel()) {
+              break label235;
+            }
+            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
+            break label235;
+            if (j == 0) {
+              break label240;
+            }
+            this.a.add(localamtr);
+            break label240;
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
+        return;
+      }
+      label230:
+      int j = 1;
+      continue;
+      label235:
+      j = 0;
+      continue;
+      label240:
+      i += 1;
+    }
   }
   
-  public amtq(String paramString, amtr paramamtr)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Amtr = paramamtr;
-  }
-  
-  public amtr a()
-  {
-    return this.jdField_a_of_type_Amtr;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.a.size() > 0) {
+      return this.a.toString();
+    }
+    return "";
   }
 }
 

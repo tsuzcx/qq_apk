@@ -1,24 +1,22 @@
-class thl
-  extends ssy
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class thl
+  extends QQUIEventReceiver<thh, tce>
 {
-  thl(thk paramthk) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public thl(@NonNull thh paramthh)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      bcpw.a(this.a.a.a, 2, ajyc.a(2131706958), 0).a();
-    }
-    do
-    {
-      return;
-      if ((!paramBoolean1) && (paramBoolean2))
-      {
-        bcpw.a(this.a.a.a, 1, ajyc.a(2131706963), 0).a();
-        return;
-      }
-    } while ((paramBoolean1) || (paramBoolean2));
-    bcpw.a(this.a.a.a, 1, ajyc.a(2131706959), 0).a();
+    super(paramthh);
+  }
+  
+  public void a(@NonNull thh paramthh, @NonNull tce paramtce)
+  {
+    paramthh.a.b(paramtce);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tce.class;
   }
 }
 

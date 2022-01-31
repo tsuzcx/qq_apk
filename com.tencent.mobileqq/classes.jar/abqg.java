@@ -1,42 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.activity.Now;
 
 public class abqg
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public abqg(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abqg(Now paramNow) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
+    if (Now.a(this.a) != null) {
+      Now.a(this.a).m();
     }
-    if (!NotifyPushSettingActivity.a(this.a).b())
-    {
-      NotifyPushSettingActivity.a(this.a).a(this.a);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
-      paramBoolean = bool;
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        paramBoolean = true;
-      }
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
-    }
-    do
-    {
-      return;
-      mqr.a(this.a.app.getCurrentAccountUin(), paramBoolean);
-      if (!paramBoolean) {
-        axqw.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
   }
 }
 

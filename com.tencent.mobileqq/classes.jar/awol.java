@@ -1,41 +1,48 @@
-import android.app.Activity;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import java.text.SimpleDateFormat;
 
 public class awol
-  extends awoc
+  extends awoj
 {
-  public MiniAppLocalSearchEntity a;
-  protected String a;
-  public int[] a;
+  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy/MM/dd");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private RecentUser jdField_a_of_type_ComTencentMobileqqDataRecentUser;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence b;
+  private CharSequence c;
   
-  public awol(QQAppInterface paramQQAppInterface, int paramInt, MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity, String paramString)
+  public awol(QQAppInterface paramQQAppInterface, String paramString, RecentUser paramRecentUser, MessageRecord paramMessageRecord)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity = paramMiniAppLocalSearchEntity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected long a(String paramString)
-  {
-    return 0L;
+    this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
   
   public CharSequence a()
   {
-    return awvy.b(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName, this.jdField_a_of_type_JavaLangString, 10, true);
+    if (this.b == null) {
+      if (!myb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+        break label60;
+      }
+    }
+    label60:
+    SessionInfo localSessionInfo;
+    for (this.b = (BaseApplicationImpl.sApplication.getString(2131697495) + myb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
+    {
+      return this.b;
+      localSessionInfo = new SessionInfo();
+      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
+      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
+    }
   }
   
   public String a()
@@ -45,64 +52,11 @@ public class awol
   
   public void a(View paramView)
   {
-    if ((MiniAppLocalSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(310) != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask != 0) {
-        break label314;
-      }
-      MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1005);
-    }
-    for (;;)
-    {
-      QQAppInterface localQQAppInterface;
-      JSONObject localJSONObject;
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (awiu.b.containsKey(this))
-        {
-          paramView = (awiv)awiu.b.get(this);
-          localJSONObject = new JSONObject();
-        }
-      }
-      try
-      {
-        localJSONObject.put("project", awso.a());
-        localJSONObject.put("event_src", "client");
-        localJSONObject.put("obj_lct", paramView.jdField_a_of_type_Int);
-        localJSONObject.put("get_src", "native");
-        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(awso.a(UniteSearchActivity.d));
-        if (c())
-        {
-          paramView = "1";
-          awso.a(null, localReportModelDC02528.ver3(paramView).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
-          awvy.b(localQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, e(), e());
-          if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
-            break label379;
-          }
-          awso.a(null, 0, this.b, "0X8009D31", 3, 0, null, null);
-          return;
-          label314:
-          MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1027);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e(h, 2, "e = " + localJSONException);
-          continue;
-          paramView = "0";
-        }
-        label379:
-        if ((this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName.equals(this.jdField_a_of_type_JavaLangString)))
-        {
-          awso.a(null, 0, this.b, "0X8009D33", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
-          return;
-        }
-        awso.a(null, 0, this.b, "0X8009D45", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
-      }
-    }
+    ahpd.jdField_a_of_type_Boolean = true;
+    ahpd.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    ahpd.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType()), false);
+    akgb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 40, paramView, true);
   }
   
   public boolean a()
@@ -110,64 +64,35 @@ public class awol
     return false;
   }
   
+  public CharSequence b()
+  {
+    if (this.c == null) {
+      this.c = awwa.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
+    }
+    return this.c;
+  }
+  
   public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
   }
   
   public int c()
   {
-    return 0;
+    return 1;
   }
   
   public CharSequence c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.desc;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask & 0x1) != 0;
-  }
-  
-  public int d()
-  {
-    return 0;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+      this.jdField_a_of_type_JavaLangCharSequence = bbkp.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
+    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public CharSequence d()
   {
     return null;
-  }
-  
-  public String d()
-  {
-    return null;
-  }
-  
-  public int e()
-  {
-    return 6;
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
-  }
-  
-  public String g()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.iconUrl;
-  }
-  
-  public String h()
-  {
-    return "https://qzonestyle.gtimg.cn/aoi/sola/20190108152813_orkMRcBegl.png";
   }
 }
 

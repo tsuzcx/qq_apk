@@ -1,13 +1,8 @@
-public class voe
+import android.view.MotionEvent;
+
+public abstract class voe
 {
-  public int a;
-  
-  public voe(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a() {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

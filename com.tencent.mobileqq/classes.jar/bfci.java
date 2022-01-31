@@ -1,74 +1,56 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bfci
-  implements belg
 {
-  public bfci(MiniAppTextArea paramMiniAppTextArea) {}
+  private bfcj jdField_a_of_type_Bfcj;
+  private final ConcurrentLinkedQueue<AppBrandPage> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public void onSoftKeyboardClosed()
+  public bfci(behq parambehq)
   {
-    MiniAppTextArea.a(this.a, false);
+    this.jdField_a_of_type_Bfcj = new bfcj(parambehq);
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  public bfcj a()
   {
-    MiniAppTextArea localMiniAppTextArea = null;
-    try
+    return this.jdField_a_of_type_Bfcj;
+  }
+  
+  public AppBrandPage a(behq parambehq, AppBrandPageContainer paramAppBrandPageContainer)
+  {
+    betc.a("AppBrandPagePool", "mBrandPageList size : " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+    AppBrandPage localAppBrandPage = (AppBrandPage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    if (localAppBrandPage == null)
     {
-      PageWebviewContainer localPageWebviewContainer;
-      Object localObject;
-      int i;
-      if (MiniAppTextArea.a(this.a) != null)
-      {
-        localPageWebviewContainer = MiniAppTextArea.a(this.a).a();
-        MiniAppTextArea.a(this.a).setCurInputId(MiniAppTextArea.d(this.a));
-        MiniAppTextArea.a(this.a, paramInt);
-        localObject = localMiniAppTextArea;
-        if (MiniAppTextArea.a(this.a) != null)
-        {
-          localObject = localMiniAppTextArea;
-          if (MiniAppTextArea.a(this.a).a() != null) {
-            localObject = MiniAppTextArea.a(this.a).a().a();
-          }
-        }
-        if ((bffu.a((Context)localObject)) && (bffu.a((Activity)localObject)))
-        {
-          localMiniAppTextArea = this.a;
-          paramInt = MiniAppTextArea.b(this.a);
-          MiniAppTextArea.a(localMiniAppTextArea, bffu.c((Context)localObject) + paramInt);
-        }
-        MiniAppTextArea.c(this.a);
-        if (this.a.isFocused())
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("inputId", MiniAppTextArea.d(this.a));
-          i = MiniAppTextArea.b(this.a);
-          if (!MiniAppTextArea.b(this.a)) {
-            break label250;
-          }
-        }
-      }
-      label250:
-      for (paramInt = MiniAppTextArea.c(this.a);; paramInt = 0)
-      {
-        ((JSONObject)localObject).put("height", (int)((paramInt + i) / bffu.a(this.a.getContext()) + 0.5F));
-        localPageWebviewContainer.b("onKeyboardShow", ((JSONObject)localObject).toString());
-        return;
-        localPageWebviewContainer = null;
-        break;
-      }
+      betc.b("AppBrandPagePool", "getAppBrandPage form new BrandPageWebview.");
+      return new AppBrandPage(parambehq, paramAppBrandPageContainer);
+    }
+    betc.b("AppBrandPagePool", "getAppBrandPage from cache.");
+    return localAppBrandPage;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    }
+    if (this.jdField_a_of_type_Bfcj != null) {
+      this.jdField_a_of_type_Bfcj.a();
+    }
+  }
+  
+  public void a(behq parambehq, AppBrandPageContainer paramAppBrandPageContainer)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) || (parambehq == null)) {}
+    do
+    {
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+      betc.a("AppBrandPagePool", "preLoadAppBrandPage");
+      parambehq = new AppBrandPage(parambehq, paramAppBrandPageContainer);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambehq);
+    } while (this.jdField_a_of_type_Bfcj == null);
+    this.jdField_a_of_type_Bfcj.a(paramAppBrandPageContainer);
   }
 }
 

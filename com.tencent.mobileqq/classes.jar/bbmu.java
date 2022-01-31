@@ -1,69 +1,316 @@
-import android.os.IBinder;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class bbmu
+public class bbmu
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Method b;
-  private static Method c;
-  private static Method d;
+  public static String f;
+  public int a;
+  public long a;
+  public ayui a;
+  private final bbmw jdField_a_of_type_Bbmw;
+  public Object a;
+  public String a;
+  public HttpURLConnection a;
+  public HashMap<String, String> a;
+  public AtomicBoolean a;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  public String[] a;
+  public int b;
+  public long b;
+  public String b;
+  public HashMap<String, String> b;
+  public AtomicBoolean b;
+  public final boolean b;
+  private byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public AtomicBoolean c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d = true;
+  public int e = -1;
+  public long e;
+  public String e;
+  public boolean e;
+  public int f;
+  public long f;
+  public boolean f;
+  public int g;
+  public long g;
+  private String g;
+  public boolean g;
+  public int h;
+  public long h;
+  private String h;
+  public boolean h;
+  private int jdField_i_of_type_Int;
+  private String jdField_i_of_type_JavaLangString = "GET";
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  private boolean m = true;
   
   static
   {
-    try
+    jdField_f_of_type_JavaLangString = "param_reason";
+  }
+  
+  public bbmu(String paramString, byte[] paramArrayOfByte, bbmw parambbmw)
+  {
+    this(paramString, paramArrayOfByte, parambbmw, false);
+  }
+  
+  public bbmu(String paramString, byte[] paramArrayOfByte, bbmw parambbmw, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = 201;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.g = paramString;
+    if (paramString != null)
     {
-      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
-      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
-      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
-      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
-      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
-      return;
+      this.h = paramString.substring(0, paramString.length());
+      this.jdField_a_of_type_Bbmw = parambbmw;
+      if (paramArrayOfByte != null) {
+        break label139;
+      }
+      this.jdField_a_of_type_ArrayOfByte = null;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    for (;;)
     {
-      localClassNotFoundException.printStackTrace();
+      this.jdField_b_of_type_Boolean = paramBoolean;
       return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
+      this.h = null;
+      break;
+      label139:
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
     }
   }
   
-  public static IBinder a(String paramString)
+  public int a()
   {
-    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+    return this.jdField_i_of_type_Int;
   }
   
-  private static Object a(Method paramMethod, Object... paramVarArgs)
+  public long a()
   {
-    try
-    {
-      paramMethod = paramMethod.invoke(null, paramVarArgs);
-      return paramMethod;
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public bbmw a()
+  {
+    return this.jdField_a_of_type_Bbmw;
+  }
+  
+  public String a()
+  {
+    return this.g;
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public HashMap<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    catch (IllegalArgumentException paramMethod)
-    {
-      paramMethod.printStackTrace();
-      return null;
+    this.jdField_a_of_type_JavaNetHttpURLConnection = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_i_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.jdField_f_of_type_Int = paramInt1;
+    this.e = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    if ((this.jdField_a_of_type_Bbmw instanceof aypb)) {
+      ((aypb)this.jdField_a_of_type_Bbmw).a(paramInt1, paramInt2, 0L, paramString);
     }
-    catch (IllegalAccessException paramMethod)
-    {
-      paramMethod.printStackTrace();
-      return null;
+  }
+  
+  public void a(String paramString)
+  {
+    this.g = paramString;
+    this.h = this.g.substring(0, this.g.length());
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return;
     }
-    catch (InvocationTargetException paramMethod)
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_b_of_type_ArrayOfByte;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.h;
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_f_of_type_Int = 0;
+    this.e = 0;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_b_of_type_ArrayOfByte = null;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 5)
     {
-      paramMethod.printStackTrace();
+      this.jdField_a_of_type_Int = 201;
+      return;
     }
-    return null;
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Int = 202;
+      return;
+    }
+    if (paramInt == 10)
+    {
+      this.jdField_a_of_type_Int = 200;
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_i_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return;
+    }
+    this.jdField_b_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.m = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.m;
+  }
+  
+  public byte[] b()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public int c()
+  {
+    return this.e;
+  }
+  
+  public String c()
+  {
+    String str2 = a();
+    String str1 = str2;
+    if (!this.d) {
+      str1 = ayuk.a(str2);
+    }
+    return str1;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public boolean c()
+  {
+    if ((this.jdField_f_of_type_Int == -9527) && (this.e == 404))
+    {
+      String str = (String)this.jdField_b_of_type_JavaUtilHashMap.get(jdField_f_of_type_JavaLangString);
+      if (("H_404_-6101".equals(str)) || ("H_404_-5062".equals(str))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public String d()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean d()
+  {
+    if ((this.jdField_b_of_type_JavaUtilHashMap.containsKey("X-RtFlag")) && ("0".equals(this.jdField_b_of_type_JavaUtilHashMap.get("X-RtFlag"))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richmedia.HttpMsg", 2, "permitRetry : X-RtFlag = 0");
+      }
+      return false;
+    }
+    if ((this.jdField_f_of_type_Int == -9527) && (this.e == 404))
+    {
+      String str = (String)this.jdField_b_of_type_JavaUtilHashMap.get(jdField_f_of_type_JavaLangString);
+      return (!"H_404_-6101".equals(str)) && (!"H_404_-5062".equals(str));
+    }
+    return (this.jdField_f_of_type_Int != 9048) && (this.jdField_f_of_type_Int != 9057) && (this.jdField_f_of_type_Int != 9020) && (this.jdField_f_of_type_Int != 9022) && (this.jdField_f_of_type_Int != 9366) && (this.jdField_f_of_type_Int != 9058);
+  }
+  
+  public String e()
+  {
+    return this.jdField_i_of_type_JavaLangString;
   }
 }
 

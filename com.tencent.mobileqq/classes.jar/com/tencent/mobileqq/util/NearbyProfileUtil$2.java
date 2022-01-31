@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Bundle;
-import atbx;
+import atbz;
 
 public final class NearbyProfileUtil$2
   implements Runnable
 {
-  public NearbyProfileUtil$2(atbx paramatbx, Bundle paramBundle) {}
+  public NearbyProfileUtil$2(atbz paramatbz, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atbx.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false, false);
+    this.jdField_a_of_type_Atbz.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false, false);
   }
 }
 

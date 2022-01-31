@@ -1,40 +1,69 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ImageUploadStep.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.TicketManager;
+import mqq.observer.SSOAccountObserver;
 
-public class ayqx
-  extends ayqs
+class ayqx
+  extends ayqu
 {
-  private int a;
+  private SSOAccountObserver a;
+  private AtomicBoolean c = new AtomicBoolean(false);
   
-  ayqx(ayqr paramayqr)
+  ayqx(ayqt paramayqt)
   {
-    super(paramayqr);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
+    super(paramayqt);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new ayqy(this);
+    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
   }
   
   protected boolean a()
   {
-    return ayqr.a(this.jdField_b_of_type_Ayqr).get();
+    return (this.c.get()) && (!TextUtils.isEmpty(ayqt.f(this.jdField_b_of_type_Ayqt)));
   }
   
   protected void d()
   {
+    String str = this.jdField_b_of_type_Ayqt.a.getCurrentAccountUin();
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + ayqr.a(this.jdField_b_of_type_Ayqr) + ",remoteUrl=" + ayqr.a(this.jdField_b_of_type_Ayqr) + " ,localUrl=" + ayqr.b(this.jdField_b_of_type_Ayqr));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + ayqt.a(this.jdField_b_of_type_Ayqt));
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       f();
-      return;
     }
-    if (ayqr.a(this.jdField_b_of_type_Ayqr).get())
+    for (;;)
     {
-      b();
       return;
+      if (!this.jdField_b_of_type_Ayqt.e())
+      {
+        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_Ayqt.a);
+        this.jdField_b_of_type_Ayqt.b(9366, "illegal app");
+        c();
+        return;
+      }
+      int i;
+      if (!ayqt.a(this.jdField_b_of_type_Ayqt))
+      {
+        str = ((TicketManager)this.jdField_b_of_type_Ayqt.a.getManager(2)).getSkey(str);
+        if (!TextUtils.isEmpty(str))
+        {
+          i = 0;
+          ayqt.d(this.jdField_b_of_type_Ayqt, str);
+          this.c.set(true);
+          b();
+        }
+      }
+      while (i != 0)
+      {
+        if (ayqt.b(this.jdField_b_of_type_Ayqt) == 11) {
+          aqgj.a("KEY_SSO_GET_TICKET_NO_PASSWD");
+        }
+        this.jdField_b_of_type_Ayqt.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_Ayqt.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
+        return;
+        i = 1;
+      }
     }
-    ThreadManager.excute(new ForwardSdkShareProcessor.ImageUploadStep.1(this), 128, null, true);
   }
 }
 

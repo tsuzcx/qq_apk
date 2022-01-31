@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
@@ -11,7 +11,7 @@ class QZoneShareActivity$18
   
   public void run()
   {
-    bcpw.a(this.this$0, this.this$0.a.msg.get(), 0).a();
+    bcql.a(this.this$0, this.this$0.a.msg.get(), 0).a();
   }
 }
 

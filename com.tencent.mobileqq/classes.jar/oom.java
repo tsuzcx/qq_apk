@@ -1,86 +1,33 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.aladdin.config.network.AladdinResponseHandler;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oom
-  extends MSFServlet
+  implements AladdinConfigHandler
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.i("QQAladdinRequestHandler", 1, "[onReceive] cmd=" + paramFromServiceMsg.getServiceCmd() + " appSeq=" + paramFromServiceMsg.getAppSeq() + " success=" + paramFromServiceMsg.isSuccess() + " resultCode=" + paramFromServiceMsg.getResultCode());
-    if (!paramFromServiceMsg.isSuccess()) {
-      return;
-    }
-    AladdinResponseHandler localAladdinResponseHandler = (AladdinResponseHandler)paramIntent.getParcelableExtra("key_response_handler");
-    for (;;)
+    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      try
-      {
-        Object localObject = ool.a(paramFromServiceMsg.getWupBuffer());
-        int i = paramFromServiceMsg.getResultCode();
-        QLog.i("QQAladdinRequestHandler", 1, "[onReceive] msfRetCode = " + i);
-        if (i != 1000) {
-          break;
-        }
-        if (localObject != null)
-        {
-          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject);
-          i = paramFromServiceMsg.uint32_result.get();
-          QLog.i("QQAladdinRequestHandler", 1, "[onReceive] oidbResult = " + i);
-          if ((paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
-          {
-            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-            localObject = (Bundle)paramIntent.getParcelableExtra("key_extra_info");
-            localAladdinResponseHandler.onReceive(paramFromServiceMsg, (Bundle)localObject);
-            ool.a((Bundle)localObject);
-            paramIntent = paramIntent.getParcelableArrayListExtra("key_aladdin_listeners");
-            if ((paramIntent == null) || (paramIntent.size() <= 0)) {
-              break;
-            }
-            i = 0;
-            if (i >= paramIntent.size()) {
-              break;
-            }
-            ((AladdinListener)paramIntent.get(i)).a();
-            i += 1;
-            continue;
-          }
-          QLog.e("QQAladdinRequestHandler", 1, "[onReceive] oidb bytes_bodybuffer is empty");
-          continue;
-        }
-        QLog.e("QQAladdinRequestHandler", 1, "[onReceive] msf data is empty");
-      }
-      catch (Exception paramIntent)
-      {
-        QLog.e("QQAladdinRequestHandler", 1, "[onReceive] ", paramIntent);
-        return;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAd_feeds")) {
+        bhvy.a("ad_feeds_proteus_offline_bid", str2);
       }
     }
+    return true;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onWipeConfig(int paramInt)
   {
-    paramIntent = paramIntent.getByteArrayExtra("key_body_bytes");
-    if (paramIntent != null)
-    {
-      paramIntent = pow.a("OidbSvc.0xbf8", 3064, 0, paramIntent);
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(ool.b(paramIntent.getWupBuffer()));
-      paramPacket.setAttributes(paramIntent.getAttributes());
-      return;
-    }
-    QLog.e("QQAladdinRequestHandler", 1, "[onSend] bytes are null");
+    bhvy.a("ad_feeds_proteus_offline_bid", "0");
   }
 }
 

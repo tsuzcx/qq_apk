@@ -2,35 +2,35 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import tdc;
+import tcz;
+import uqa;
 import uqd;
-import uqg;
-import uwg;
-import veg;
+import uwd;
+import ved;
 
 public class VideoListPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((uwg)tdc.a(12)).a(uqd.a(this.this$0), uqd.a(this.this$0));
-    uqg localuqg = new uqg(new ErrorMessage(), uqd.a(this.this$0));
-    localuqg.d = false;
-    localuqg.b = true;
-    localuqg.c = true;
-    localuqg.jdField_a_of_type_Boolean = true;
+    ??? = ((uwd)tcz.a(12)).a(uqa.a(this.this$0), uqa.a(this.this$0));
+    uqd localuqd = new uqd(new ErrorMessage(), uqa.a(this.this$0));
+    localuqd.d = false;
+    localuqd.b = true;
+    localuqd.c = true;
+    localuqd.jdField_a_of_type_Boolean = true;
     if (??? != null) {
-      localuqg.jdField_a_of_type_JavaUtilList = ((FeedVideoInfo)???).mVideoItemList;
+      localuqd.jdField_a_of_type_JavaUtilList = ((FeedVideoInfo)???).mVideoItemList;
     }
     synchronized (this.this$0)
     {
       if (!this.this$0.b)
       {
-        uqd.a(this.this$0, localuqg);
-        veg.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from cache: %s", localuqg);
+        uqa.a(this.this$0, localuqd);
+        ved.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from cache: %s", localuqd);
         return;
       }
-      veg.d("Q.qqstory.home.data:VideoListPageLoader", "load cache data later than load from network");
+      ved.d("Q.qqstory.home.data:VideoListPageLoader", "load cache data later than load from network");
     }
   }
 }

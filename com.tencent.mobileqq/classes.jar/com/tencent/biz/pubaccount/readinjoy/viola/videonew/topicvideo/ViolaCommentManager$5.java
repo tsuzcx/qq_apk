@@ -4,12 +4,12 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import rzk;
+import rzh;
 
 public class ViolaCommentManager$5
   implements Runnable
 {
-  public ViolaCommentManager$5(rzk paramrzk, VVideoView paramVVideoView, View paramView, ArticleInfo paramArticleInfo, AnchorData paramAnchorData, int paramInt) {}
+  public ViolaCommentManager$5(rzh paramrzh, VVideoView paramVVideoView, View paramView, ArticleInfo paramArticleInfo, AnchorData paramAnchorData, int paramInt) {}
   
   public void run()
   {

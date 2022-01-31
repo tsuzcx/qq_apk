@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import baft;
-import bbcv;
-import bbgg;
+import bagh;
+import bbdj;
+import bbgu;
 
 public class VisitorTroopCardFragment$16
   implements Runnable
@@ -19,11 +19,11 @@ public class VisitorTroopCardFragment$16
     do
     {
       return;
-      this.this$0.a = bbcv.a(this.this$0.getActivity(), 230);
+      this.this$0.a = bbdj.a(this.this$0.getActivity(), 230);
       this.this$0.a.setMessage(this.a);
-      baft localbaft = new baft(this);
-      this.this$0.a.setPositiveButton(2131691035, localbaft);
-      this.this$0.a.setNegativeButton(2131690596, localbaft);
+      bagh localbagh = new bagh(this);
+      this.this$0.a.setPositiveButton(2131691035, localbagh);
+      this.this$0.a.setNegativeButton(2131690596, localbagh);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import bekq;
-import besb;
-import besc;
-import besd;
+import belh;
+import bess;
+import best;
+import besu;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.util.StorageUtil;
@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class AppBrandUI3$QQBaselibLoader
-  extends besb
+  extends bess
 {
   public static final String TAG = "QQBaselibLoader";
   private static volatile QQBaselibLoader instance;
@@ -32,7 +32,7 @@ public class AppBrandUI3$QQBaselibLoader
     }
   }
   
-  public void loadBaselib(Context paramContext, besd parambesd)
+  public void loadBaselib(Context paramContext, besu parambesu)
   {
     int i = 0;
     for (;;)
@@ -43,35 +43,35 @@ public class AppBrandUI3$QQBaselibLoader
       {
         if (isBaseLibInit())
         {
-          if (parambesd != null) {
-            parambesd.a(0, "", this.mBaselibContent.a());
+          if (parambesu != null) {
+            parambesu.a(0, "", this.mBaselibContent.a());
           }
           return;
         }
-        paramContext = new besc();
+        paramContext = new best();
         str2 = StorageUtil.getPreference().getString("downloadUrl", "");
-        str1 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+        str1 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
         QLog.i("minisdk-start", 1, "execute baseLibLoad task. url=" + str2 + " version=" + str1);
         str2 = BaseLibManager.g().getBaseLibDir(str2, str1);
       }
       finally {}
       try
       {
-        if (!BaseLibInfo.needUpdateVersion("1.12.1.00001", str1)) {
+        if (!BaseLibInfo.needUpdateVersion("1.13.0.00013", str1)) {
           break label507;
         }
-        QLog.e("minisdk-start", 1, "download baselib invalid! use assert baselib. download_version=" + str1 + " assert_version=" + "1.12.1.00001");
+        QLog.e("minisdk-start", 1, "download baselib invalid! use assert baselib. download_version=" + str1 + " assert_version=" + "1.13.0.00013");
         if ((!paramContext.a()) && (i != 0))
         {
           QLog.d("minisdk-start", 1, "readJsFromFile from download.");
-          paramContext.a = bekq.a(new File(str2, "QView.js"));
-          paramContext.b = bekq.a(new File(str2, "QLogic.js"));
+          paramContext.a = belh.a(new File(str2, "QView.js"));
+          paramContext.b = belh.a(new File(str2, "QLogic.js"));
           paramContext.h = (str2 + File.separator + "QLogic.js");
-          paramContext.c = bekq.a(new File(str2, "QVConsole.js"));
-          paramContext.d = bekq.a(new File(str2, "QRemoteDebug.js"));
-          paramContext.e = bekq.a(new File(str2, "QWebview.js"));
-          paramContext.f = bekq.a(new File(str2, "QWorker.js"));
-          paramContext.g = bekq.a(new File(str2, "QPageFrame.html"));
+          paramContext.c = belh.a(new File(str2, "QVConsole.js"));
+          paramContext.d = belh.a(new File(str2, "QRemoteDebug.js"));
+          paramContext.e = belh.a(new File(str2, "QWebview.js"));
+          paramContext.f = belh.a(new File(str2, "QWorker.js"));
+          paramContext.g = belh.a(new File(str2, "QPageFrame.html"));
         }
         if (!paramContext.a())
         {
@@ -90,13 +90,13 @@ public class AppBrandUI3$QQBaselibLoader
       {
         QLog.e("minisdk-start", 1, "readJsFromFile failed." + localThrowable);
         continue;
-        parambesd.a(-1, "基础库加载失败", null);
+        parambesu.a(-1, "基础库加载失败", null);
       }
       setBaselib(paramContext);
-      if (parambesd != null) {
+      if (parambesu != null) {
         if (isBaseLibInit())
         {
-          parambesd.a(0, "", this.mBaselibContent.a());
+          parambesu.a(0, "", this.mBaselibContent.a());
         }
         else
         {

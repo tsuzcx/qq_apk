@@ -1,16 +1,16 @@
 package com.tencent.qqmini.proxyimpl;
 
-import begw;
-import beyu;
+import behn;
+import bezl;
 
 class MiniSDKClientQIPCModule$1
   implements Runnable
 {
-  MiniSDKClientQIPCModule$1(MiniSDKClientQIPCModule paramMiniSDKClientQIPCModule, begw parambegw) {}
+  MiniSDKClientQIPCModule$1(MiniSDKClientQIPCModule paramMiniSDKClientQIPCModule, behn parambehn) {}
   
   public void run()
   {
-    beyu.a(this.val$runtime.a(), "share_success");
+    bezl.a(this.val$runtime.a(), "share_success");
   }
 }
 

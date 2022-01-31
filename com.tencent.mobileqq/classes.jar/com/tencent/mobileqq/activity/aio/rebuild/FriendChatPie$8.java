@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeoo;
+import aeom;
 import android.os.Bundle;
 import android.os.Message;
 import mqq.os.MqqHandler;
@@ -8,15 +8,15 @@ import mqq.os.MqqHandler;
 public class FriendChatPie$8
   implements Runnable
 {
-  public FriendChatPie$8(aeoo paramaeoo) {}
+  public FriendChatPie$8(aeom paramaeom) {}
   
   public void run()
   {
-    Message localMessage = aeoo.c(this.this$0).obtainMessage(42);
+    Message localMessage = aeom.c(this.this$0).obtainMessage(42);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("showRedDot", false);
     localMessage.setData(localBundle);
-    aeoo.d(this.this$0).sendMessage(localMessage);
+    aeom.d(this.this$0).sendMessage(localMessage);
   }
 }
 

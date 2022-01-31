@@ -1,23 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import UserGrowth.stSimpleMetaFeed;
 import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class sjm
-  implements View.OnClickListener
+  implements sjg
 {
   public sjm(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a(bfzf<stSimpleMetaFeed> parambfzf)
   {
-    WSPublicAccReport.getInstance().reportPublicAccDetailClick();
-    paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-    paramView.putExtra("uin", String.valueOf(2062433139L));
-    paramView.putExtra("uintype", 1008);
-    paramView.putExtra("source", 119);
-    this.a.startActivity(paramView);
+    int i;
+    if (WSRecommendFragment.d(this.a))
+    {
+      i = parambfzf.getAdapterPosition();
+      parambfzf = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
+      if (parambfzf != null) {}
+    }
+    else
+    {
+      return;
+    }
+    WSRecommendFragment.a(this.a, parambfzf, i);
   }
 }
 

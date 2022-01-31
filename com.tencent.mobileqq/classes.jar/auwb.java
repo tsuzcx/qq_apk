@@ -9,7 +9,7 @@ public class auwb
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
+    this.a.e();
   }
 }
 

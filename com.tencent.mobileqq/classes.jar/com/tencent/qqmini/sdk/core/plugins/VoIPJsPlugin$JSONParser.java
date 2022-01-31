@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.launcher.annotation.JsonORM;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ public class VoIPJsPlugin$JSONParser<T>
       try
       {
         JSONObject localJSONObject = new JSONObject(paramString);
-        besl.d("[mini] VoIPJsPlugin", "JSON is empty");
+        betc.d("[mini] VoIPJsPlugin", "JSON is empty");
       }
       catch (JSONException paramClass)
       {
@@ -25,11 +25,11 @@ public class VoIPJsPlugin$JSONParser<T>
         }
         catch (Exception paramString)
         {
-          besl.d("[mini] VoIPJsPlugin", "JSONParser error! failed parse to " + paramClass, paramString);
+          betc.d("[mini] VoIPJsPlugin", "JSONParser error! failed parse to " + paramClass, paramString);
           return null;
         }
         paramClass = paramClass;
-        besl.d("[mini] VoIPJsPlugin", "JSONParser error! not a valid JSON " + paramString, paramClass);
+        betc.d("[mini] VoIPJsPlugin", "JSONParser error! not a valid JSON " + paramString, paramClass);
         return null;
       }
     }
@@ -46,13 +46,13 @@ public class VoIPJsPlugin$JSONParser<T>
       }
       catch (Exception paramJSONObject)
       {
-        besl.d("[mini] VoIPJsPlugin", "JsonORM error! failed parse to " + paramClass, paramJSONObject);
+        betc.d("[mini] VoIPJsPlugin", "JsonORM error! failed parse to " + paramClass, paramJSONObject);
       }
     }
     for (;;)
     {
       return null;
-      besl.d("[mini] VoIPJsPlugin", "JSON obj is empty");
+      betc.d("[mini] VoIPJsPlugin", "JSON obj is empty");
     }
   }
 }

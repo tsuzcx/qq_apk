@@ -1,15 +1,15 @@
 package com.tencent.mm.hardcoder;
 
-import aabg;
+import aabc;
 
 public class HCPerfManager$1
   implements Runnable
 {
-  public HCPerfManager$1(aabg paramaabg) {}
+  public HCPerfManager$1(aabc paramaabc) {}
   
   public void run()
   {
-    aabg.a(this.this$0);
+    aabc.a(this.this$0);
   }
 }
 

@@ -1,31 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-
 public class aqrs
-  extends aqrr
 {
-  private ImageView a;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public aqrs(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public String toString()
   {
-    super(paramContext, paramView, paramViewGroup);
-    this.a = ((ImageView)paramView.findViewById(2131363043));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846164);
-    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846164);
-    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
-    this.a.setOnClickListener(new aqrt(this, paramFeedsItemData));
+    return "TaskInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", packageName=" + this.jdField_b_of_type_JavaLangString + ", appName=" + this.e + ", taskStatus=" + this.d + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.l + '\'' + ", createTime=" + this.c + ", apkChannel=" + this.g + '}';
   }
 }
 

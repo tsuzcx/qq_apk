@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import algo;
-import alkz;
+import algn;
+import alky;
 
 public class QQARSession$9
   implements Runnable
 {
-  public QQARSession$9(alkz paramalkz, boolean paramBoolean) {}
+  public QQARSession$9(alky paramalky, boolean paramBoolean) {}
   
   public void run()
   {
     int j = 0;
-    if (alkz.c(this.this$0)) {
-      if (alkz.a(this.this$0) != null) {
-        alkz.b(this.this$0, false);
+    if (alky.c(this.this$0)) {
+      if (alky.a(this.this$0) != null) {
+        alky.b(this.this$0, false);
       }
     }
     int i;
@@ -21,13 +21,13 @@ public class QQARSession$9
     {
       return;
       i = j;
-      if (alkz.a(this.this$0) != null)
+      if (alky.a(this.this$0) != null)
       {
         i = j;
-        if (alkz.a(this.this$0).a != null)
+        if (alky.a(this.this$0).a != null)
         {
           i = j;
-          if (alkz.b(this.this$0))
+          if (alky.b(this.this$0))
           {
             i = j;
             if (this.this$0.a == 2) {
@@ -38,12 +38,12 @@ public class QQARSession$9
       }
       if ((this.a) && (i != 0))
       {
-        alkz.a(this.this$0, alkz.a(this.this$0).a);
+        alky.a(this.this$0, alky.a(this.this$0).a);
         return;
       }
     } while (i == 0);
-    if (alkz.a(this.this$0) != null) {
-      alkz.b(this.this$0, true);
+    if (alky.a(this.this$0) != null) {
+      alky.b(this.this$0, true);
     }
     this.this$0.n();
   }

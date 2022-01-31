@@ -1,184 +1,154 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.MD5;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.ListView;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsReq;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsRsp;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.UrlInfo;
-import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.ReqBody;
-import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.RspBody;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class oxq
-  extends pbh
-  implements oxo
 {
-  private static oxq jdField_a_of_type_Oxq = new oxq();
-  private final String jdField_a_of_type_JavaLangString = "gifvideo.KandianShortContentGifStrategy";
-  private ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  public oxq()
+  public static void a(View paramView)
   {
-    super(null, null, null, pou.a(), null);
-  }
-  
-  private Object a(Integer paramInteger)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
-  }
-  
-  public static oxq a()
-  {
-    return jdField_a_of_type_Oxq;
-  }
-  
-  private void a(Integer paramInteger, Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
+    if ((paramView instanceof oxk)) {
+      ((oxk)paramView).a();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramInteger, paramObject);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static void a(Container paramContainer)
   {
-    Object localObject1 = new oidb_cmd0xda2.RspBody();
-    Object localObject2 = (Boolean)paramToServiceMsg.getAttribute("compressFlag");
-    if (localObject2 != null) {}
-    for (boolean bool = ((Boolean)localObject2).booleanValue();; bool = false)
+    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+    while (paramContainer.hasNext())
     {
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, new Object[] { "convertVidToUrl resp result code ", Integer.valueOf(onc.a(paramToServiceMsg, paramFromServiceMsg, paramObject, (MessageMicro)localObject1, bool)) });
-      if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp != null) && (((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.has()))
+      Object localObject = (Map.Entry)paramContainer.next();
+      if ((((Map.Entry)localObject).getValue() instanceof ply))
       {
-        int i = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.get();
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret code is " + i);
-        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.has())) {
-          break label449;
-        }
-        paramFromServiceMsg = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.get();
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret msg is " + paramFromServiceMsg);
-        label183:
-        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.has())) {
-          break label555;
-        }
-        paramObject = (ArrayList)((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.get();
-        localObject1 = new StringBuilder().append("urls result: ");
-        if (paramObject == null) {
-          break label460;
+        localObject = (ply)((Map.Entry)localObject).getValue();
+        if ((((ply)localObject).a() instanceof NativeVideoView)) {
+          ((ply)localObject).a().b();
         }
       }
-      label449:
-      label460:
-      for (paramFromServiceMsg = paramObject.toString();; paramFromServiceMsg = "null")
+    }
+  }
+  
+  public static void a(ListView paramListView)
+  {
+    a(paramListView, true);
+  }
+  
+  public static void a(ListView paramListView, boolean paramBoolean)
+  {
+    e(paramListView);
+  }
+  
+  public static void b(Container paramContainer)
+  {
+    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+    while (paramContainer.hasNext())
+    {
+      Object localObject = (Map.Entry)paramContainer.next();
+      if ((((Map.Entry)localObject).getValue() instanceof ply))
       {
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, paramFromServiceMsg);
-        if ((paramObject == null) || (paramObject.size() <= 0)) {
-          break label545;
+        localObject = (ply)((Map.Entry)localObject).getValue();
+        if ((((ply)localObject).a() instanceof NativeVideoView)) {
+          ((ply)localObject).a().b();
         }
-        paramFromServiceMsg = new ArrayList();
-        localObject1 = new ArrayList();
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
+      }
+    }
+  }
+  
+  public static void b(ListView paramListView)
+  {
+    if ((!onh.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof oxk)) {
+          ((oxk)localView).b();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void c(ListView paramListView)
+  {
+    if ((!onh.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof oxk)) {
+          ((oxk)localView).a();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void d(ListView paramListView)
+  {
+    if ((!onh.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof oxk)) {
+          ((oxk)localView).c();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private static void e(ListView paramListView)
+  {
+    int j = 0;
+    int i = 0;
+    View localView;
+    if (i < paramListView.getChildCount())
+    {
+      localView = paramListView.getChildAt(i);
+      if (((localView instanceof oxk)) && (omr.a(localView) >= 60.0F))
+      {
+        QLog.d("gifvideo.VideoPlayControlUtils", 2, ">= 60f");
+        if (!((oxk)localView).a()) {}
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        QLog.d("gifvideo.VideoPlayControlUtils", 2, "item to play: " + i);
+        for (;;)
         {
-          localObject2 = (content_vidurl_svr.UrlInfo)paramObject.next();
-          if (localObject2 != null)
+          if (j < paramListView.getChildCount())
           {
-            paramFromServiceMsg.add(((content_vidurl_svr.UrlInfo)localObject2).url.get());
-            ((List)localObject1).add(((content_vidurl_svr.UrlInfo)localObject2).vid.get());
-            QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "update vid: " + ((content_vidurl_svr.UrlInfo)localObject2).vid.get() + " url: " + ((content_vidurl_svr.UrlInfo)localObject2).url.get());
-            ood localood = new ood();
-            localood.b = ((content_vidurl_svr.UrlInfo)localObject2).vid.get();
-            localood.jdField_a_of_type_JavaLangString = ((content_vidurl_svr.UrlInfo)localObject2).url.get();
-            onx.a(localood);
+            localView = paramListView.getChildAt(j);
+            if (((localView instanceof oxk)) && (j != i)) {
+              ((oxk)localView).a();
+            }
+            j += 1;
+            continue;
+            i += 1;
+            break;
           }
         }
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret code");
-        break;
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret msg");
-        break label183;
       }
-      paramToServiceMsg = (oxp)a(Integer.valueOf(((Integer)paramToServiceMsg.getAttribute("vidToUrlSeq")).intValue()));
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "has callback");
-        paramToServiceMsg.a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), (String[])paramFromServiceMsg.toArray(new String[paramFromServiceMsg.size()]));
-        label545:
-        return;
-      }
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, " call back is null");
       return;
-      label555:
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no urls");
-      return;
-    }
-  }
-  
-  public void a(String paramString, oxp paramoxp)
-  {
-    a(new String[] { paramString }, paramoxp);
-  }
-  
-  public void a(String[] paramArrayOfString, oxp paramoxp)
-  {
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
-    {
-      content_vidurl_svr.GetVid2UrlsReq localGetVid2UrlsReq = new content_vidurl_svr.GetVid2UrlsReq();
-      Object localObject = bbct.c();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.app_version.set((String)localObject);
-      }
-      localGetVid2UrlsReq.appid.set("143193");
-      localGetVid2UrlsReq.app_name.set("");
-      localObject = oxm.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.client_ip.set((String)localObject);
-      }
-      localObject = onk.f();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.imei.set((String)localObject);
-      }
-      localGetVid2UrlsReq.net_type.set(bcxh.a(null));
-      localGetVid2UrlsReq.system.set(1);
-      localGetVid2UrlsReq.timestamp.set(System.currentTimeMillis() / 1000L + "");
-      if (onk.a() != null) {}
-      for (localObject = onk.a().getAccount();; localObject = "")
-      {
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localGetVid2UrlsReq.uid.set((String)localObject);
-        }
-        int j = paramArrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject = paramArrayOfString[i];
-          localGetVid2UrlsReq.vids.add(localObject);
-          i += 1;
-        }
-      }
-      localObject = MD5.toMD5(localGetVid2UrlsReq.appid.get() + "|" + localGetVid2UrlsReq.timestamp.get() + "|" + localGetVid2UrlsReq.uid.get() + "|" + localGetVid2UrlsReq.system.get() + "|" + localGetVid2UrlsReq.app_name.get() + "|" + localGetVid2UrlsReq.app_version.get() + "|" + "MTQzMTkzYWRhZmdkaGg=");
-      localGetVid2UrlsReq.sign.set((String)localObject);
-      localObject = new oidb_cmd0xda2.ReqBody();
-      ((oidb_cmd0xda2.ReqBody)localObject).msg_get_vid_to_url_req.set(localGetVid2UrlsReq);
-      ((oidb_cmd0xda2.ReqBody)localObject).uint32_req_type.set(1);
-      localObject = pow.a("OidbSvc.0xda2", 3490, 0, ((oidb_cmd0xda2.ReqBody)localObject).toByteArray());
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "request vids " + paramArrayOfString);
-      int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      ((ToServiceMsg)localObject).addAttribute("vidToUrlSeq", Integer.valueOf(i));
-      a(Integer.valueOf(i), paramoxp);
-      a((ToServiceMsg)localObject);
+      i = -1;
     }
   }
 }

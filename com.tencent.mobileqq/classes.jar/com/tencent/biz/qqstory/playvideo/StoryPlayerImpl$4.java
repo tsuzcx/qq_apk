@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import tuw;
-import veg;
+import tut;
+import ved;
 
 public class StoryPlayerImpl$4
   implements Runnable
 {
-  public StoryPlayerImpl$4(tuw paramtuw) {}
+  public StoryPlayerImpl$4(tut paramtut) {}
   
   public void run()
   {
-    veg.b("Q.qqstory.playernew.StoryPlayerImpl", "mStartRequestDataRunnable run");
-    tuw.b(this.this$0);
+    ved.b("Q.qqstory.playernew.StoryPlayerImpl", "mStartRequestDataRunnable run");
+    tut.b(this.this$0);
   }
 }
 

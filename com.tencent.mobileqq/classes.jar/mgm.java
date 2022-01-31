@@ -1,15 +1,23 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
 
 public class mgm
-  implements aaqd
+  implements Comparator<ldr>
 {
-  public mgm(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mgm(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public int a(ldr paramldr1, ldr paramldr2)
   {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.d(10);
+    if ((paramldr2.b) && (paramldr1.b)) {
+      return paramldr2.d - paramldr1.d;
+    }
+    if ((!paramldr2.b) && (!paramldr1.b)) {
+      return paramldr2.d - paramldr1.d;
+    }
+    if ((paramldr2.b) && (!paramldr1.b)) {
+      return 1;
+    }
+    return -1;
   }
 }
 

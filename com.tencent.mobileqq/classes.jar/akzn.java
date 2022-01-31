@@ -1,6 +1,16 @@
-class akzn
+public abstract interface akzn
 {
-  private static final akzl a = new akzl(null);
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(akzo paramakzo);
+  
+  public abstract void b();
 }
 
 

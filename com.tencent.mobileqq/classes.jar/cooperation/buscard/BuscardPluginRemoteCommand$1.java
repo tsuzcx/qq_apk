@@ -1,17 +1,17 @@
 package cooperation.buscard;
 
 import android.os.Bundle;
-import bggc;
+import bggt;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 public class BuscardPluginRemoteCommand$1
   implements Runnable
 {
-  public BuscardPluginRemoteCommand$1(bggc parambggc, Bundle paramBundle1, Bundle paramBundle2, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  public BuscardPluginRemoteCommand$1(bggt parambggt, Bundle paramBundle1, Bundle paramBundle2, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
   public void run()
   {
-    bggc.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener);
+    bggt.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener);
   }
 }
 

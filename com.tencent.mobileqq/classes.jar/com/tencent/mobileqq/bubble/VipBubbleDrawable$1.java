@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
-import amcz;
+import amcy;
 
 public class VipBubbleDrawable$1
   implements Runnable
 {
-  public VipBubbleDrawable$1(amcz paramamcz) {}
+  public VipBubbleDrawable$1(amcy paramamcy) {}
   
   public void run()
   {

@@ -1,20 +1,62 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import android.app.Activity;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter.Params;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.views.canvas.GdtCanvasData;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
 import java.lang.ref.WeakReference;
 
-class ysk
-  implements MiniAppLauncher.MiniAppLaunchListener
+public final class ysk
+  implements AdVideoCeilingAdapter
 {
-  ysk(ysj paramysj, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
-  
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public AdError show(AdVideoCeilingAdapter.Params paramParams)
   {
-    yxs.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      yxp.d("GdtVideoCeilingAdapter", "show error");
+      return new AdError(4);
+    }
+    Object localObject = new GdtVideoData();
+    ((GdtVideoData)localObject).setUrl(paramParams.videoUrl);
+    ((GdtVideoData)localObject).setStartPositionMillis(paramParams.videoStartPositionMillis);
+    ((GdtVideoData)localObject).setLoop(paramParams.videoLoop);
+    ((GdtVideoData)localObject).setDirectPlay(paramParams.videoPlayForced);
+    GdtVideoCeilingData localGdtVideoCeilingData = new GdtVideoCeilingData();
+    localGdtVideoCeilingData.setAd((GdtAd)GdtAd.class.cast(paramParams.ad));
+    localGdtVideoCeilingData.setWebUrl(paramParams.webUrl);
+    localGdtVideoCeilingData.setVideoData((GdtVideoData)localObject);
+    localObject = yzf.a((GdtAd)GdtAd.class.cast(paramParams.ad), paramParams.autodownload);
+    switch (paramParams.style)
+    {
+    default: 
+      return new AdError(4);
+    case 1: 
+      localGdtVideoCeilingData.setStyle(1);
+    }
+    while (!localGdtVideoCeilingData.isValid())
+    {
+      yxp.d("GdtVideoCeilingAdapter", "show error");
+      return new AdError(4);
+      localGdtVideoCeilingData.setStyle(2);
+      continue;
+      localGdtVideoCeilingData.setStyle(3);
+      continue;
+      if ((localObject == null) || (!((GdtCanvasData)localObject).isValid()))
+      {
+        localGdtVideoCeilingData.setStyle(1);
+      }
+      else
+      {
+        localGdtVideoCeilingData.setCanvasData((GdtCanvasData)localObject);
+        localGdtVideoCeilingData.setStyle(4);
+      }
+    }
+    GdtBaseVideoCeilingFragment.a((Activity)paramParams.activity.get(), GdtVideoCeilingFragmentForJS.class, localGdtVideoCeilingData, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 

@@ -1,65 +1,61 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Calendar;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class uzc
-  implements vab
+  extends uzr
+  implements syq<uzd, uze>
 {
-  protected uze a;
-  protected vac a;
-  protected vad a;
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_Uze;
-  }
+  private boolean a;
   
   public String a()
   {
-    return getClass().getSimpleName();
+    return "GetPhotographyGuideInfoStep";
   }
   
   public void a()
   {
-    veg.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
-    d();
+    ved.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
+    uzd localuzd = new uzd();
+    syo.a().a(localuzd, this);
   }
   
-  public void a(Object paramObject) {}
-  
-  public void a(vac paramvac)
+  public void a(@NonNull uzd paramuzd, @Nullable uze paramuze, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Vac = paramvac;
-  }
-  
-  public void a(vad paramvad)
-  {
-    this.jdField_a_of_type_Vad = paramvad;
-  }
-  
-  public boolean a()
-  {
-    return false;
+    if ((paramErrorMessage.isSuccess()) && (paramuze != null))
+    {
+      ved.b("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond success.");
+      paramuzd = (tcs)tcz.a(10);
+      paramuze = paramuze.a;
+      if ((paramuze != null) && (paramuze.size() > 0)) {
+        paramuzd.b("StorySvc.get_photography_guide.word", paramuze.get(0));
+      }
+      for (;;)
+      {
+        d();
+        return;
+        paramuzd.b("StorySvc.get_photography_guide.word", ajya.a(2131705271));
+      }
+    }
+    ved.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramuzd });
+    b(paramErrorMessage);
   }
   
   public void b() {}
   
-  public void c() {}
-  
-  protected void d()
+  public void c()
   {
-    String str = sxp.a("StorySvc.homepage_my_day_710");
-    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l);
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
-    this.jdField_a_of_type_Uze = new uze();
-    syr.a().a(new tmb(str, localReqTodayStoryVidList, null), new uzd(this, localReqTodayStoryVidList, str));
+    try
+    {
+      this.a = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

@@ -1,110 +1,72 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.List;
+import mqq.util.WeakReference;
 
 public class bgwp
-  extends bgwn
+  implements View.OnClickListener
 {
-  public long a;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n;
+  final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
+  final WeakReference<ReaderTabBarView> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void a(Bundle paramBundle)
+  public bgwp(ReaderTabBarView paramReaderTabBarView, int paramInt, @NonNull List<WebViewTabBarData> paramList)
   {
-    super.a(paramBundle);
-    this.e = paramBundle.getString("_mqqpay_payapi_serialnumber");
-    this.f = paramBundle.getString("_mqqpay_payapi_callbackscheme");
-    this.g = paramBundle.getString("_mqqpay_payapi_pubacc");
-    this.h = paramBundle.getString("_mqqpay_payapi_pubacchint");
-    this.i = paramBundle.getString("_mqqpay_payapi_tokenid");
-    this.j = paramBundle.getString("_mqqpay_payapi_nonce");
-    this.jdField_a_of_type_Long = paramBundle.getLong("_mqqpay_payapi_timeStamp");
-    this.k = paramBundle.getString("_mqqpay_payapi_bargainorId");
-    this.l = paramBundle.getString("_mqqpay_payapi_sigType");
-    this.m = paramBundle.getString("_mqqpay_payapi_sig");
-    this.n = paramBundle.getString("_mqqpay_payapi_packageName");
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReaderTabBarView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    this.c = "browser";
-    this.d = "pay";
-    this.jdField_a_of_type_Int = 1;
-    try
+    paramView = (ReaderTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramView == null) {
+      break label15;
+    }
+    label15:
+    int i;
+    String str1;
+    String str2;
+    do
     {
-      paramString = new JSONObject(paramString);
-      JSONObject localJSONObject = paramString.optJSONObject("action");
-      if (localJSONObject != null)
+      do
       {
-        String str = localJSONObject.optString("name");
-        if (str != null)
-        {
-          if (!str.equals("pay")) {
-            return;
-          }
-          this.e = localJSONObject.optString("identifier");
-          localJSONObject = paramString.optJSONObject("application");
-          if (localJSONObject != null)
-          {
-            this.jdField_a_of_type_JavaLangString = localJSONObject.optString("appId");
-            this.b = localJSONObject.optString("sdkVersion");
-            this.n = localJSONObject.optString("pkgName");
-            this.f = localJSONObject.optString("urlScheme");
-          }
-          paramString = paramString.optJSONObject("params");
-          if (paramString != null)
-          {
-            this.i = paramString.optString("tokenId");
-            this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
-            this.j = paramString.optString("nonce");
-            this.k = paramString.optString("bargainorId");
-            this.l = "HMAC-SHA1";
-            this.m = paramString.optString("sig");
-            return;
-          }
-        }
+        return;
+      } while (this.jdField_a_of_type_Int == ReaderTabBarView.a(paramView));
+      long l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long < 500L) {
+        break;
       }
+      this.jdField_a_of_type_Long = l;
+      paramView.setSelectedTab(this.jdField_a_of_type_Int);
+      i = ReaderTabBarView.a(paramView)[this.jdField_a_of_type_Int];
+      paramView.setCurrentItemId(i);
+      paramView.a();
+      ReaderTabBarView.a(paramView, i);
+      str1 = paramView.b();
+      str2 = paramView.a();
+      switch (i)
+      {
+      default: 
+        return;
+      case 0: 
+        bgwi.a(str1, str2, "297", "0", "3", "", "");
+      }
+    } while (!paramView.a(i));
+    bgwi.a(str1, str2, "69", "336", "0", "3", "", "", "");
+    return;
+    bgwi.a(str1, str2, "298", "0", "3", "", "");
+    return;
+    if (bgwd.f(paramView.getContext())) {
+      bgwd.f(paramView.getContext(), false);
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    while ((TextUtils.isEmpty(this.c)) || ((!this.c.equals("native")) && (!this.c.equals("browser"))) || (TextUtils.isEmpty(this.n)) || ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) || (TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.k)) || (TextUtils.isEmpty(this.j)) || (TextUtils.isEmpty(this.m)) || (TextUtils.isEmpty(this.l)) || (this.jdField_a_of_type_Long <= 0L) || (TextUtils.isEmpty(this.e))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append("&sn=" + this.e);
-    localStringBuilder.append("&cs=" + this.f);
-    localStringBuilder.append("&pa=" + this.g);
-    localStringBuilder.append("&pah=" + this.h);
-    localStringBuilder.append("&ti=" + this.i);
-    localStringBuilder.append("&ne=" + this.j);
-    localStringBuilder.append("&ts=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append("&bi=" + this.k);
-    localStringBuilder.append("&st=" + this.l);
-    localStringBuilder.append("&sg=" + this.m);
-    localStringBuilder.append("&pn=" + this.n);
-    return localStringBuilder.toString();
+    bgwi.a(str1, str2, "300", "0", "3", "", "");
+    return;
+    bgwi.a(str1, str2, "1847", "0", "3", "", "");
   }
 }
 

@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
 
 public class azgk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public azgk(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public azgk(TroopBarPublishActivity.16 param16) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.setResult(-1, null);
-    this.a.finish();
+    this.a.this$0.t();
   }
 }
 

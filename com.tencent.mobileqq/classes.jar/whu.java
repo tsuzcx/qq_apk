@@ -1,12 +1,19 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
 
-public abstract interface whu
+public final class whu
+  implements Parcelable.Creator<ScannerParams>
 {
-  public abstract JSONObject a();
+  public ScannerParams a(Parcel paramParcel)
+  {
+    return new ScannerParams(paramParcel);
+  }
   
-  public abstract void a();
-  
-  public abstract void b();
+  public ScannerParams[] a(int paramInt)
+  {
+    return new ScannerParams[paramInt];
+  }
 }
 
 

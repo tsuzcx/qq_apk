@@ -1,34 +1,15 @@
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
 import java.util.UUID;
 
-public abstract interface azux
+public class azux
+  implements azva
 {
-  public abstract int a();
+  azux(azuw paramazuw) {}
   
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract UUID a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract boolean d();
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, azuz paramazuz)
+  {
+    azsk.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, paramazuz), false);
+  }
 }
 
 

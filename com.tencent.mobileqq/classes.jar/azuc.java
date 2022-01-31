@@ -1,23 +1,27 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Map;
 import java.util.UUID;
 
 class azuc
-  extends xbc
+  extends xaz
 {
   azuc(azub paramazub) {}
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (paramBundle.getLong("troopUin") != azub.a(this.a)) {}
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
     do
     {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (!paramBoolean) {
-      azsr.a("TroopFileToTroopForwarder", azsr.a, "[" + azub.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
-    }
-    azub.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+      do
+      {
+        return;
+        paramBundle = paramBundle.getString("itemKey");
+      } while (paramBundle == null);
+      paramBundle = UUID.fromString(paramBundle);
+      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+    } while (paramBundle == null);
+    azub.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

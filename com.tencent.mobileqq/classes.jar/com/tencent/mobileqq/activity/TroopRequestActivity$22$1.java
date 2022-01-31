@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aclv;
-import afnv;
+import aclr;
+import afnt;
 
 public class TroopRequestActivity$22$1
   implements Runnable
 {
-  public TroopRequestActivity$22$1(aclv paramaclv, int paramInt) {}
+  public TroopRequestActivity$22$1(aclr paramaclr, int paramInt) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Afnv.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a);
+    this.this$0.jdField_a_of_type_Afnt.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a);
   }
 }
 

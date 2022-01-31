@@ -1,177 +1,56 @@
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.1;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.2;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.3;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.4;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.5;
-import java.lang.ref.WeakReference;
-
 public final class yug
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = -2147483648L;
-  private ArkAppMgr.IGetAppPathByNameCallback jdField_a_of_type_ComTencentArkOpenArkAppMgr$IGetAppPathByNameCallback = new yuh(this);
-  private WeakReference<yui> jdField_a_of_type_JavaLangRefWeakReference;
-  private yuf jdField_a_of_type_Yuf;
-  private boolean jdField_a_of_type_Boolean;
+  private static volatile boolean a;
   
-  public yug(WeakReference<yui> paramWeakReference, yuf paramyuf, long paramLong)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_Yuf = paramyuf;
-    this.jdField_a_of_type_Long = paramLong;
-    a();
-  }
-  
-  private String a()
-  {
-    String str = null;
-    if (a()) {
-      str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.jdField_a_of_type_Yuf.a, "", null, false);
-    }
-    yxs.b("GdtArkPreDownloadTask", String.format("getPath %s", new Object[] { str }));
-    return str;
-  }
-  
-  private void a()
-  {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.1(this), 4);
-  }
-  
-  private void a(int paramInt)
-  {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.4(this, paramInt), 0);
-  }
-  
-  private void a(int paramInt1, int paramInt2, long paramLong)
-  {
-    AdThreadManager.INSTANCE.postDelayed(new GdtArkPreDownloadTask.3(this, paramInt1, paramInt2), 0, paramLong);
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Yuf != null) && (this.jdField_a_of_type_Yuf.a());
-  }
-  
-  private static boolean a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0)
+    switch (paramInt)
     {
-      if ((paramInt2 != 1) && (paramInt2 != 1)) {}
+    case -4: 
+    case -3: 
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    default: 
+      return 1;
+    case 0: 
+      return 0;
+    case 5: 
+      return 208;
+    case 6: 
+      return 14;
+    case 7: 
+      return 15;
+    case -2: 
+      return 3;
+    case -5: 
+      return 209;
+    case -6: 
+      return 6;
+    case -7: 
+      return 13;
     }
-    else {
-      do
-      {
-        return true;
-        if (paramInt1 != 1) {
-          break;
-        }
-      } while ((paramInt2 == 2) || (paramInt2 == 3));
+    return 207;
+  }
+  
+  public static void a()
+  {
+    yxp.b("GdtArkUtil", String.format("init %b", new Object[] { Boolean.valueOf(a) }));
+    if (a) {
+      return;
     }
-    do
+    try
     {
-      do
-      {
-        yxs.d("GdtArkPreDownloadTask", String.format("checkStatus result:false oldStatus:%d newStatus:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-        return false;
-      } while (paramInt1 != 2);
-      if (paramInt2 == 3) {
-        break;
+      if (a) {
+        return;
       }
-    } while (paramInt2 != 4);
-    return true;
-  }
-  
-  private void b()
-  {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.2(this), 0);
-  }
-  
-  /* Error */
-  private void b(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 23	yug:jdField_a_of_type_Int	I
-    //   4: istore_2
-    //   5: iload_2
-    //   6: iload_1
-    //   7: if_icmpeq +30 -> 37
-    //   10: aload_0
-    //   11: monitorenter
-    //   12: iload_2
-    //   13: iload_1
-    //   14: if_icmpeq +21 -> 35
-    //   17: iload_2
-    //   18: iload_1
-    //   19: invokestatic 143	yug:a	(II)Z
-    //   22: ifeq +54 -> 76
-    //   25: aload_0
-    //   26: iload_1
-    //   27: putfield 23	yug:jdField_a_of_type_Int	I
-    //   30: aload_0
-    //   31: iload_1
-    //   32: invokespecial 145	yug:a	(I)V
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: ldc 65
-    //   39: ldc 147
-    //   41: iconst_3
-    //   42: anewarray 4	java/lang/Object
-    //   45: dup
-    //   46: iconst_0
-    //   47: iload_2
-    //   48: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   51: aastore
-    //   52: dup
-    //   53: iconst_1
-    //   54: iload_1
-    //   55: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   58: aastore
-    //   59: dup
-    //   60: iconst_2
-    //   61: aload_0
-    //   62: getfield 23	yug:jdField_a_of_type_Int	I
-    //   65: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   68: aastore
-    //   69: invokestatic 73	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   72: invokestatic 79	yxs:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: return
-    //   76: aload_0
-    //   77: iconst_1
-    //   78: ldc 148
-    //   80: lconst_0
-    //   81: invokespecial 121	yug:a	(IIJ)V
-    //   84: goto -49 -> 35
-    //   87: astore_3
-    //   88: aload_0
-    //   89: monitorexit
-    //   90: aload_3
-    //   91: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	92	0	this	yug
-    //   0	92	1	paramInt	int
-    //   4	44	2	i	int
-    //   87	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   17	35	87	finally
-    //   35	37	87	finally
-    //   76	84	87	finally
-    //   88	90	87	finally
-  }
-  
-  private void c()
-  {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.5(this), 4);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    }
+    finally {}
+    a = true;
+    alvs.a(true);
+    alvs.a();
   }
 }
 

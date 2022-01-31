@@ -1,17 +1,64 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.LinearLayout;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import org.json.JSONObject;
 
 class rlb
-  implements ValueAnimator.AnimatorUpdateListener
+  extends rkg
 {
-  rlb(rky paramrky) {}
+  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rlb(rla paramrla, View paramView, BaseData paramBaseData)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    rky.a(this.a).getLayoutParams().height = i;
-    rky.a(this.a).requestLayout();
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    }
+  }
+  
+  private void a(Context paramContext, JSONObject paramJSONObject)
+  {
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new rlc(this, paramContext));
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
+    TemplateBean localTemplateBean;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramBaseData2 instanceof ProteusItemData));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
+      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+    } while (localTemplateBean == null);
+    rla.a(this.jdField_a_of_type_Rla, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    if ((paramBaseData2 instanceof RecommendAdData)) {
+      rla.a(this.jdField_a_of_type_Rla, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, (RecommendAdData)paramBaseData2);
+    }
+    if (paramBaseData1 != paramBaseData2) {}
+    try
+    {
+      localTemplateBean.getViewBean().bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, localTemplateBean.getViewDataBinding());
+      olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+      label127:
+      a(rla.a(this.jdField_a_of_type_Rla), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b);
+      return;
+    }
+    catch (Exception paramBaseData1)
+    {
+      break label127;
+    }
   }
 }
 

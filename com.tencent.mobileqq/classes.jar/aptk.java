@@ -1,4 +1,5 @@
-// INTERNAL ERROR //
+public abstract interface aptk {}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aptk

@@ -1,17 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bhxt
-  implements bhyj
+public class bhxt
 {
-  bhxt(bhxr parambhxr) {}
+  public int a;
+  public Bitmap a;
+  public bhxi a;
+  public bhxj a;
+  public bhxs a;
+  String jdField_a_of_type_JavaLangString;
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public void a(boolean paramBoolean)
+  public bhxt(TroopHWJsPlugin paramTroopHWJsPlugin)
   {
-    QLog.d("VipARCameraController", 2, "loadState " + paramBoolean);
-    bhxr.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      bhye.a().a(bhxr.a(this.a));
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_Bhxi = new bhxu(this);
+  }
+  
+  public void a()
+  {
+    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.2(this), null, false);
+  }
+  
+  public void b()
+  {
+    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.3(this), null, false);
   }
 }
 

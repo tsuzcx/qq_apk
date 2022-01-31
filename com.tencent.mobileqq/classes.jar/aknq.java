@@ -1,28 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView.1.1;
 
-class aknq
-  implements Animator.AnimatorListener
+public class aknq
+  implements View.OnClickListener
 {
-  aknq(akno paramakno) {}
+  public aknq(AIOIceBreakView paramAIOIceBreakView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    akno.a(this.a, false);
-    akno.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    akno.a(this.a, false);
-    akno.a(this.a);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    akno.a(this.a, true);
+    AIOIceBreakView.a(this.a).u(24);
+    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
+    if (AIOIceBreakView.a(this.a).a.a != 1044) {
+      if (AIOIceBreakView.a(this.a).a.a != 0) {
+        break label126;
+      }
+    }
+    label126:
+    for (int i = 1;; i = 2)
+    {
+      axqy.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
+      axqy.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
+      return;
+    }
   }
 }
 

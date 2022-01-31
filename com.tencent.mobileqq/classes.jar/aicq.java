@@ -1,40 +1,23 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class aicq
-  extends aume
+  extends BroadcastReceiver
 {
-  public aicq(ContactsInnerFrame paramContactsInnerFrame) {}
+  public aicq(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).d())
+    if ((bbfj.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
     }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
-    {
-      ContactsInnerFrame.a(this.a);
-      return;
-    }
-    ContactsInnerFrame.b(this.a);
   }
 }
 

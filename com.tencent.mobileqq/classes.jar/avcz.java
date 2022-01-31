@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
 import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class avcz
-  implements DialogInterface.OnClickListener
+public class avcz
+  implements avdf
 {
-  avcz(avcw paramavcw, String paramString, PushDialogTemplate paramPushDialogTemplate) {}
+  avcz(avcy paramavcy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List<PushDialogTemplate> paramList)
   {
-    new avdb(avcw.a(this.jdField_a_of_type_Avcw).jdField_a_of_type_AndroidContentContext, avcw.a(this.jdField_a_of_type_Avcw).a()).a(this.jdField_a_of_type_JavaLangString).a(avcw.a(this.jdField_a_of_type_Avcw).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(avcw.a(this.jdField_a_of_type_Avcw)).a();
-    if (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.isFriendBanned())
-    {
-      axqw.b(avcw.a(this.jdField_a_of_type_Avcw).a(), "dc00898", "", "", "0X800A4BE", "0X800A4BE", 0, 0, "", "", "", "");
-      return;
-    }
-    axqw.b(avcw.a(this.jdField_a_of_type_Avcw).a(), "dc00898", "", "", "0X800A4BC", "0X800A4BC", 0, 0, "", "", "", "");
+    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
   }
 }
 

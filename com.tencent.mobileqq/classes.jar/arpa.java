@@ -1,50 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class arpa
-  extends Handler
+public class arpa
+  extends WebViewPlugin
 {
-  arpa(aroz paramaroz, Looper paramLooper)
+  public static final String a;
+  protected wxr a;
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaLangString = arpa.class.getSimpleName();
   }
   
-  public void handleMessage(Message paramMessage)
+  public arpa()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(0);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      aroz.a(this.a).c();
-      bbbr.b(2131230744, false);
-      bbbr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    case 1: 
-      this.a.b(1);
-      return;
-    case 16711689: 
-      localObject = (JSONObject)paramMessage.obj;
-      paramMessage = ((JSONObject)localObject).optString("msg", "");
-      localObject = ((JSONObject)localObject).optString("path", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
-      return;
+    this.mPluginNameSpace = "ftssearch";
+    this.jdField_a_of_type_Wxr = wxr.a();
+    this.jdField_a_of_type_Wxr.a();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
+    while ("ftssearch".equals(paramString2)) {
+      return false;
     }
-    Object localObject = (JSONObject)paramMessage.obj;
-    paramMessage = ((JSONObject)localObject).optString("msg", "");
-    localObject = ((JSONObject)localObject).optString("path", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
+    return false;
   }
 }
 

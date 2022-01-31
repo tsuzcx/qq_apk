@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afpv;
+import afpt;
 import com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
@@ -20,13 +20,13 @@ class PhoneContactFragment$2
     }
     if (this.this$0.jdField_a_of_type_ComTencentWidgetXListView != null)
     {
-      if (this.this$0.jdField_a_of_type_Afpv == null)
+      if (this.this$0.jdField_a_of_type_Afpt == null)
       {
-        this.this$0.jdField_a_of_type_Afpv = new afpv(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
-        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_Afpv);
+        this.this$0.jdField_a_of_type_Afpt = new afpt(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
+        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_Afpt);
       }
-      this.this$0.jdField_a_of_type_Afpv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.this$0.jdField_a_of_type_Afpv.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Afpt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.this$0.jdField_a_of_type_Afpt.notifyDataSetChanged();
     }
   }
 }

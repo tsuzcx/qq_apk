@@ -1,11 +1,24 @@
-public class aaoh
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public final class aaoh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public long c;
+  public aaoh(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqa paramaaqa, aaqb paramaaqb, BaseActivity paramBaseActivity, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqa, this.jdField_a_of_type_Aaqb);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
+  }
 }
 
 

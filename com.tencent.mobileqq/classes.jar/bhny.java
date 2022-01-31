@@ -1,19 +1,40 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.support.annotation.NonNull;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 
-final class bhny
-  implements QQPermissionCallback
+public class bhny
+  implements Comparable<bhny>
 {
-  bhny(String paramString1, String paramString2, Activity paramActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bhny(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
   {
-    bbcv.b(bhnx.a(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a(@NonNull bhny parambhny)
   {
-    bhnx.a(this.jdField_a_of_type_JavaLangString, this.b);
+    return (int)(this.jdField_a_of_type_Long - parambhny.jdField_a_of_type_Long);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof bhny)) && (this.jdField_a_of_type_JavaLangString.equals(((bhny)paramObject).jdField_a_of_type_JavaLangString));
   }
 }
 

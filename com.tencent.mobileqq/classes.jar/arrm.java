@@ -1,19 +1,18 @@
-public class arrm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+
+public final class arrm
+  implements Parcelable.Creator<ListenTogetherSession>
 {
-  public String a;
-  public boolean a;
-  public boolean b;
-  
-  public arrm(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public ListenTogetherSession a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    return new ListenTogetherSession(paramParcel, null);
   }
   
-  public String toString()
+  public ListenTogetherSession[] a(int paramInt)
   {
-    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
+    return new ListenTogetherSession[paramInt];
   }
 }
 

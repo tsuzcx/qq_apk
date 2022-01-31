@@ -1,25 +1,33 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract interface agip
+public class agip
+  extends ajxj
 {
-  public abstract View a();
+  public agip(BindNumberActivity paramBindNumberActivity) {}
   
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract View b();
-  
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramList != null) {
+        break label95;
+      }
+    }
+    label95:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
+      if (paramBoolean) {
+        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      }
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
+      return;
+    }
+  }
 }
 
 

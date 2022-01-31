@@ -1,9 +1,21 @@
-final class bhlu
-  implements bhoc
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
+
+public class bhlu
+  implements View.OnClickListener
 {
-  public void onNetworkConnect(boolean paramBoolean)
+  public bhlu(QZoneShareActivity paramQZoneShareActivity) {}
+  
+  public void onClick(View paramView)
   {
-    bhlt.a(null);
+    if (!this.a.d)
+    {
+      this.a.f();
+      return;
+    }
+    this.a.h();
+    this.a.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import baxa;
+import baxo;
 import com.tencent.image.AbstractVideoImage;
 
 class DynamicAvatarManager$8$1
@@ -10,7 +10,7 @@ class DynamicAvatarManager$8$1
   
   public void run()
   {
-    if (!baxa.b) {
+    if (!baxo.b) {
       AbstractVideoImage.resumeAll();
     }
   }

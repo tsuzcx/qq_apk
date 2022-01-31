@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import adch;
-import adci;
-import adcn;
+import adce;
+import adcf;
+import adck;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -17,8 +17,8 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-import axli;
-import axqw;
+import axlk;
+import axqy;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 
@@ -27,7 +27,7 @@ public class VoiceTextEditScrollerView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private adcn jdField_a_of_type_Adcn;
+  private adck jdField_a_of_type_Adck;
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private final String jdField_a_of_type_JavaLangString = "VoiceTextEditPanel";
@@ -95,15 +95,15 @@ public class VoiceTextEditScrollerView
   private boolean a(float paramFloat)
   {
     paramFloat = a(paramFloat);
-    return (this.jdField_e_of_type_Float > 2000.0F) || (paramFloat > axli.a(150.0F)) || (!this.jdField_b_of_type_Boolean);
+    return (this.jdField_e_of_type_Float > 2000.0F) || (paramFloat > axlk.a(150.0F)) || (!this.jdField_b_of_type_Boolean);
   }
   
   private void b()
   {
     if (this.jdField_c_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Adcn != null) {
-        this.jdField_a_of_type_Adcn.i();
+      if (this.jdField_a_of_type_Adck != null) {
+        this.jdField_a_of_type_Adck.i();
       }
       this.jdField_c_of_type_Boolean = false;
     }
@@ -147,30 +147,30 @@ public class VoiceTextEditScrollerView
     }
     int j = getHeight();
     int k = getHeight();
-    if (this.jdField_a_of_type_Adcn != null) {
-      this.jdField_a_of_type_Adcn.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
+    if (this.jdField_a_of_type_Adck != null) {
+      this.jdField_a_of_type_Adck.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
     }
     if (!this.jdField_b_of_type_Boolean)
     {
       if (this.jdField_d_of_type_Boolean)
       {
         this.jdField_d_of_type_Boolean = false;
-        axqw.b(null, "dc00898", "", "", "0X800A8A0", "0X800A8A0", 3, 0, "", "", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800A8A0", "0X800A8A0", 3, 0, "", "", "", "");
         return;
       }
-      axqw.b(null, "dc00898", "", "", "0X800A8A0", "0X800A8A0", 2, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", "0X800A8A0", "0X800A8A0", 2, 0, "", "", "", "");
       return;
     }
-    axqw.b(null, "dc00898", "", "", "0X800A8A0", "0X800A8A0", 1, 0, "", "", "", "");
+    axqy.b(null, "dc00898", "", "", "0X800A8A0", "0X800A8A0", 1, 0, "", "", "", "");
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, View paramView)
   {
     ValueAnimator localValueAnimator = ObjectAnimator.ofFloat(new float[] { paramInt1, paramInt2 }).setDuration(paramInt6);
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new adch(this, paramInt4, paramInt3, paramView));
+    localValueAnimator.addUpdateListener(new adce(this, paramInt4, paramInt3, paramView));
     localValueAnimator.start();
-    localValueAnimator.addListener(new adci(this, paramInt5));
+    localValueAnimator.addListener(new adcf(this, paramInt5));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -202,15 +202,15 @@ public class VoiceTextEditScrollerView
       this.jdField_e_of_type_Float = -1.0F;
       this.jdField_b_of_type_Boolean = false;
       a(paramMotionEvent);
-      if (this.jdField_a_of_type_Adcn != null)
+      if (this.jdField_a_of_type_Adck != null)
       {
-        this.jdField_a_of_type_Adcn.b(this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Adck.b(this.jdField_b_of_type_Int);
         continue;
         a(paramMotionEvent);
         a();
         b(paramMotionEvent);
         continue;
-        if (this.jdField_a_of_type_Adcn != null)
+        if (this.jdField_a_of_type_Adck != null)
         {
           b();
           if (a(paramMotionEvent.getRawY()))
@@ -221,16 +221,16 @@ public class VoiceTextEditScrollerView
           {
             int i = this.jdField_d_of_type_Int;
             int j = this.jdField_c_of_type_Int;
-            this.jdField_a_of_type_Adcn.a(i - j, this.jdField_c_of_type_Int);
+            this.jdField_a_of_type_Adck.a(i - j, this.jdField_c_of_type_Int);
           }
         }
       }
     }
   }
   
-  public void setListener(adcn paramadcn)
+  public void setListener(adck paramadck)
   {
-    this.jdField_a_of_type_Adcn = paramadcn;
+    this.jdField_a_of_type_Adck = paramadck;
   }
   
   public void setMaskClick(boolean paramBoolean)

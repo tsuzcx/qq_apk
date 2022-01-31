@@ -1,55 +1,138 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class apvj
+public abstract interface apvj
 {
-  private final byte jdField_a_of_type_Byte = 0;
-  private final int jdField_a_of_type_Int = 20;
-  private final String jdField_a_of_type_JavaLangString = "PrivacyInfoUtil";
-  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
-  private final byte jdField_b_of_type_Byte = 0;
-  private final String jdField_b_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
-  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
-  private final byte jdField_c_of_type_Byte = 1;
-  private final String jdField_c_of_type_JavaLangString = "random";
-  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
-  private final byte jdField_d_of_type_Byte = 0;
-  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
-  private final byte[] e = "qlinkwillthebestfunction".getBytes();
-  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
-  private final byte[] g = "whowillbethenextbigtiger".getBytes();
-  private final byte[] h = "whenwillwefindmahang_370".getBytes();
-  private final byte[] i = "whenwillchinagetworldcap".getBytes();
-  private byte[] j;
+  public abstract void A();
   
-  public apvj()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
-  }
+  public abstract void B();
   
-  public void a(String paramString)
-  {
-    if (paramString != null) {}
-    for (paramString = paramString.getBytes();; paramString = null)
-    {
-      this.j = paramString;
-      return;
-    }
-  }
+  public abstract void C();
+  
+  public abstract void D();
+  
+  public abstract void E();
+  
+  public abstract void F();
+  
+  public abstract void G();
+  
+  public abstract void H();
+  
+  public abstract void I();
+  
+  public abstract void J();
+  
+  public abstract void K();
+  
+  public abstract void L();
+  
+  public abstract void M();
+  
+  public abstract void N();
+  
+  public abstract void O();
+  
+  public abstract void P();
+  
+  public abstract void Q();
+  
+  public abstract void R();
+  
+  public abstract void S();
+  
+  public abstract void T();
+  
+  public abstract void U();
+  
+  public abstract void V();
+  
+  public abstract void W();
+  
+  public abstract void X();
+  
+  public abstract void Y();
+  
+  public abstract void Z();
+  
+  public abstract void a();
+  
+  public abstract void aa();
+  
+  public abstract void ab();
+  
+  public abstract void ac();
+  
+  public abstract void ad();
+  
+  public abstract void ae();
+  
+  public abstract void af();
+  
+  public abstract void ag();
+  
+  public abstract void ah();
+  
+  public abstract void ai();
+  
+  public abstract void aj();
+  
+  public abstract void ak();
+  
+  public abstract void al();
+  
+  public abstract void am();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void v();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apvj
  * JD-Core Version:    0.7.0.1
  */

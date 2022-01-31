@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
-import argc;
+import arge;
 
 public class HuayangPluginLauncher$3
   implements Runnable
 {
   private int a;
   
-  public HuayangPluginLauncher$3(argc paramargc) {}
+  public HuayangPluginLauncher$3(arge paramarge) {}
   
   public void run()
   {
-    argc.a(this.this$0, this.a);
+    arge.a(this.this$0, this.a);
     this.a += 20;
     if (this.a < 80) {
-      argc.a(this.this$0).postDelayed(this, 300L);
+      arge.a(this.this$0).postDelayed(this, 300L);
     }
   }
 }

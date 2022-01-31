@@ -1,23 +1,11 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class thw
-  extends QQUIEventReceiver<thk, tgh>
+class thw
+  implements bfpj
 {
-  public thw(@NonNull thk paramthk)
-  {
-    super(paramthk);
-  }
+  thw(thv paramthv, tff paramtff) {}
   
-  public void a(@NonNull thk paramthk, @NonNull tgh paramtgh)
+  public void onDismiss()
   {
-    paramthk.a.a.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tgh.class;
+    vei.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Tff.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Tff.jdField_a_of_type_JavaLangString });
   }
 }
 

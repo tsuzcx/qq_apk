@@ -1,28 +1,8 @@
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 
-public class bjef
-  extends bjde
+public abstract interface bjef
 {
-  public bjef(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    bdid.a().a(ajyc.a(2131701075) + this.a.a);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (this.a.a.getLocalPath().equals(paramString))) {
-      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
-    }
-  }
+  public abstract void a(MusicItemInfo paramMusicItemInfo);
 }
 
 

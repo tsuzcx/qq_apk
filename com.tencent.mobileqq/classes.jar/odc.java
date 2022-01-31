@@ -1,28 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class odc
-  implements obc
+public class odc
+  implements ViewBase.IBuilder
 {
-  odc(ocz paramocz) {}
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (ocz.a(this.a).booleanValue())
-    {
-      if ((ocz.a(this.a).isShown()) && (ocz.a(this.a).getWindowVisibility() == 0))
-      {
-        ocz.a(this.a, ocz.a(this.a));
-        ocz.a(this.a).removeCallbacks(ocz.a(this.a));
-        ocz.a(this.a).postDelayed(ocz.a(this.a), ocz.a(this.a).mAdvertisementExtInfo.n);
-      }
-    }
-    else {
-      return;
-    }
-    ocz.a(this.a, Boolean.valueOf(false));
-    ocz.a(this.a, ocz.a(this.a));
+    return new odb(paramVafContext);
   }
 }
 

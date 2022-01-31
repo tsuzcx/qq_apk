@@ -1,41 +1,15 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aepn
-  extends bciq
+  implements View.OnTouchListener
 {
-  aepn(aepg paramaepg) {}
+  aepn(aepe paramaepe) {}
   
-  public void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDownLoadedPluginResult result = " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.bw();
-    }
-    do
-    {
-      return;
-      bcpw.a(this.a.a(), ajyc.a(2131705100), 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
-  }
-  
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
-    }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bcis == null)) {}
-    bcir localbcir;
-    do
-    {
-      return;
-      localbcir = this.a.jdField_a_of_type_Bcis.a();
-    } while (localbcir == null);
-    localbcir.a(String.valueOf(paramLong2), paramBoolean);
+    return true;
   }
 }
 

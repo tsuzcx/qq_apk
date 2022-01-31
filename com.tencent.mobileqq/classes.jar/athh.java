@@ -1,16 +1,18 @@
-public class athh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+
+public final class athh
+  implements Parcelable.Creator<Comments>
 {
-  public int a;
-  public String a;
-  public int b;
-  
-  public athh() {}
-  
-  public athh(String paramString, int paramInt1, int paramInt2)
+  public Comments a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return new Comments(paramParcel);
+  }
+  
+  public Comments[] a(int paramInt)
+  {
+    return new Comments[paramInt];
   }
 }
 

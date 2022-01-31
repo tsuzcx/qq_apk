@@ -1,57 +1,63 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.MotionEvent;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class baqw
-  implements View.OnTouchListener
+  extends BaseAdapter
 {
-  public baqw(TroopGiftActionButton paramTroopGiftActionButton, TextView paramTextView) {}
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public baqw(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
+  }
+  
+  public int getCount()
+  {
+    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
-      paramMotionEvent.setDuration(100L);
-      paramMotionEvent.setAnimationListener(new baqx(this));
-      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
-      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
-      Object localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setShape(1);
-      ((GradientDrawable)localObject).setCornerRadius(bawz.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
-      ((GradientDrawable)localObject).setAlpha(192);
-      paramMotionEvent.setImageDrawable((Drawable)localObject);
-      localObject = new RelativeLayout.LayoutParams(bawz.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), bawz.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
-      localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
-      ((ScaleAnimation)localObject).setDuration(150L);
-      ((ScaleAnimation)localObject).setAnimationListener(new baqy(this, paramMotionEvent));
-      paramMotionEvent.startAnimation((Animation)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
-      }
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
     }
-    return true;
+    for (;;)
+    {
+      paramViewGroup = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
+      WheelTextView localWheelTextView = (WheelTextView)paramView;
+      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
+      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
+      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
+      localWheelTextView.setText(paramViewGroup);
+      return paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqw
  * JD-Core Version:    0.7.0.1
  */

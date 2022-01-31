@@ -1,73 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
 public class nqj
-  extends ampb<nqi>
+  implements TouchWebView.OnScrollChangedListener
 {
-  public int a()
-  {
-    return 32;
-  }
+  public nqj(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public Class<nqi> a()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    return nqi.class;
-  }
-  
-  @NonNull
-  public nqi a(int paramInt)
-  {
-    if (paramInt == 0)
+    paramInt1 = paramInt2 - paramInt4;
+    if (paramInt1 > 0)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        return nqi.a(bbjn.e(((QQAppInterface)localAppRuntime).getApplication()));
+      if (this.a.jdField_b_of_type_Int < 0) {
+        this.a.jdField_b_of_type_Int = 0;
+      }
+      paramView = this.a;
+      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      {
+        this.a.jdField_c_of_type_Boolean = false;
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        {
+          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
+          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
       }
     }
-    return new nqi();
-  }
-  
-  @Nullable
-  public nqi a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return nqi.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(nqi paramnqi)
-  {
-    paramnqi.b();
-    paramnqi.a();
-  }
-  
-  public int b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return bbjn.n(((QQAppInterface)localAppRuntime).getApp());
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_b_of_type_Int > 0) {
+          this.a.jdField_b_of_type_Int = 0;
+        }
+        paramView = this.a;
+        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
+      this.a.jdField_c_of_type_Boolean = true;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

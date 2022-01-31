@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,14 +9,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bjkw;
+import bjln;
 
 public class QIMSlidingItemView
   extends LinearLayout
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bjkw jdField_a_of_type_Bjkw;
+  bjln jdField_a_of_type_Bjln;
   
   public QIMSlidingItemView(@NonNull Context paramContext)
   {
@@ -42,12 +42,12 @@ public class QIMSlidingItemView
     setGravity(16);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(actn.a(13.0F, getResources()), actn.a(12.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(actj.a(13.0F, getResources()), actj.a(12.0F, getResources()));
     localLayoutParams.gravity = 17;
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = actn.a(4.0F, getResources());
+    localLayoutParams.leftMargin = actj.a(4.0F, getResources());
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -71,20 +71,20 @@ public class QIMSlidingItemView
       }
     }
     label41:
-    for (paramInt = this.jdField_a_of_type_Bjkw.b;; paramInt = this.jdField_a_of_type_Bjkw.jdField_a_of_type_Int)
+    for (paramInt = this.jdField_a_of_type_Bjln.b;; paramInt = this.jdField_a_of_type_Bjln.jdField_a_of_type_Int)
     {
       localImageView.setImageResource(paramInt);
       return;
     }
   }
   
-  public void setData(bjkw parambjkw)
+  public void setData(bjln parambjln)
   {
-    this.jdField_a_of_type_Bjkw = parambjkw;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bjkw.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bjkw.jdField_a_of_type_Int != 0)
+    this.jdField_a_of_type_Bjln = parambjln;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bjln.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Bjln.jdField_a_of_type_Int != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bjkw.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bjln.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 
 import java.lang.ref.WeakReference;
-import rpi;
-import rpk;
+import rpf;
+import rph;
 
 class RunningJob$4
   implements Runnable
@@ -13,7 +13,7 @@ class RunningJob$4
     while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    ((rpi)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_Int);
+    ((rpf)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_Int);
   }
 }
 

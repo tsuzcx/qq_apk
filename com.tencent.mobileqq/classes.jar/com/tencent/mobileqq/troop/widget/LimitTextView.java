@@ -8,8 +8,8 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import ayjw;
-import ayki;
+import ayjy;
+import aykk;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -95,7 +95,7 @@ public class LimitTextView
       localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
       paramInt2 = ((String)localObject).codePointAt(paramInt1 - 2);
       paramInt3 = ((String)localObject).codePointAt(paramInt1 - 1);
-      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= ayjw.a)) && (paramInt2 <= 65535)) {
+      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= ayjy.a)) && (paramInt2 <= 65535)) {
         break label164;
       }
       str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 2) + "…";
@@ -123,7 +123,7 @@ public class LimitTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    super.setText(new ayki(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
+    super.setText(new aykk(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
   }
 }
 

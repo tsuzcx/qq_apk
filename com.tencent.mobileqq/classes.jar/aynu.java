@@ -1,6 +1,5 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
 
 class aynu
   implements Animation.AnimationListener
@@ -9,8 +8,7 @@ class aynu
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.a = false;
+    this.a.a.e();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

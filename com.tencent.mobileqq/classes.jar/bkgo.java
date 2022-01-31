@@ -1,14 +1,48 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.lang.ref.Reference;
+import java.lang.ref.ReferenceQueue;
+import java.util.HashMap;
 
-public class bkgo
-  extends bjdc
+public class bkgo<K, V>
 {
-  public bkgo(EditTextEffectView paramEditTextEffectView) {}
+  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
+  private HashMap<K, bkgo<K, V>.bkgp> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void e()
+  @Nullable
+  public V a(K paramK)
   {
-    super.e();
-    this.a.a();
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK))
+    {
+      paramK = (bkgp)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+      if (paramK.get() != null) {
+        return paramK.get();
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      Reference localReference = this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      if (localReference == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(((bkgp)localReference).a());
+    }
+  }
+  
+  public void a(@NonNull K paramK, @NonNull V paramV)
+  {
+    if ((paramK == null) || (paramV == null)) {
+      throw new IllegalArgumentException("key-value cannot be null");
+    }
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramK)) && (((bkgp)this.jdField_a_of_type_JavaUtilHashMap.get(paramK)).get() != null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramK, new bkgp(this, paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
   }
 }
 

@@ -1,22 +1,29 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-final class bjmi
-  implements EIPCResultCallback
+public class bjmi
+  implements URLDrawable.URLDrawableListener
 {
-  bjmi(String paramString) {}
+  private final WeakReference<TextView> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bjmi(TextView paramTextView)
   {
-    if (paramEIPCResult != null)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("uinname");
-      if (QLog.isColorLevel()) {
-        QLog.i("PeakIpcController", 2, "getTroopMemberName success name = " + paramEIPCResult);
-      }
-      bkly.a().a(this.a, paramEIPCResult);
+    this.a = new WeakReference(paramTextView);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (TextView)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
     }
   }
 }

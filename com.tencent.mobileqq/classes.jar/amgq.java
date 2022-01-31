@@ -1,89 +1,38 @@
+import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import mqq.util.WeakReference;
 
-class amgq
-  extends Handler
+public class amgq
 {
-  private WeakReference<amgp> a;
-  
-  amgq(amgp paramamgp)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramamgp);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("param_service_type");
+      String str = paramBundle.getString("param_sub_type");
+      if (paramBundle.getInt("param_extra", 1) != 2) {
+        amhj.a().a(i, str, paramBoolean);
+      }
+      amhj.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    Object localObject1 = (amgp)this.a.get();
-    if (localObject1 == null) {}
-    do
+    amhj.a().a(paramInt, paramString, paramBoolean);
+  }
+  
+  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (paramBundle != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localObject1 = amgp.a((amgp)localObject1);
-            switch (paramMessage.what)
-            {
-            case 7: 
-            case 8: 
-            default: 
-              return;
-            }
-          } while (localObject1 == null);
-          localObject2 = (Bundle)paramMessage.obj;
-          if (paramMessage.what == 3) {}
-          for (bool1 = true;; bool1 = false)
-          {
-            ((amgr)localObject1).onAddColorNote((Bundle)localObject2, bool1);
-            return;
-          }
-        } while (localObject1 == null);
-        try
-        {
-          localObject2 = (Pair)paramMessage.obj;
-          int i = ((Integer)((Pair)localObject2).first).intValue();
-          localObject2 = (String)((Pair)localObject2).second;
-          if (paramMessage.what != 5)
-          {
-            ((amgr)localObject1).onDeleteColorNote(i, (String)localObject2, bool1);
-            return;
-          }
-        }
-        catch (ClassCastException paramMessage)
-        {
-          for (;;)
-          {
-            QLog.e("ColorNoteCurd", 2, paramMessage, new Object[0]);
-            return;
-            bool1 = false;
-          }
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("ColorNoteCurd", 2, paramMessage, new Object[0]);
-          return;
-        }
-      } while ((localObject1 == null) || (paramMessage.obj == null));
-      paramMessage = (Bundle)paramMessage.obj;
-      ((amgr)localObject1).onUpdateColorNoteState(paramMessage.getInt("key_service_type"), paramMessage.getString("key_sub_type"), paramMessage);
-      return;
-    } while ((localObject1 == null) || (paramMessage.obj == null));
-    Object localObject2 = (ColorNote)paramMessage.obj;
-    if (paramMessage.what == 10) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      ((amgr)localObject1).onUpdateColorNote((ColorNote)localObject2, bool1);
-      return;
+      amhj.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
+      amhj.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
+      amhj.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
+      amhj.a().b(bool);
     }
   }
 }

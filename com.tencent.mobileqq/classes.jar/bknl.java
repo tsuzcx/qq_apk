@@ -1,12 +1,22 @@
-public abstract interface bknl
+import android.util.Property;
+
+class bknl
+  extends Property<bknf, Float>
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  bknl(bknf parambknf, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
   
-  public abstract void d(int paramInt);
+  public Float a(bknf parambknf)
+  {
+    return Float.valueOf(bknf.b(parambknf));
+  }
   
-  public abstract void e(int paramInt);
-  
-  public abstract void f(int paramInt);
+  public void a(bknf parambknf, Float paramFloat)
+  {
+    bknf.a(parambknf, paramFloat);
+  }
 }
 
 

@@ -1,19 +1,23 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class abbk
-  implements View.OnClickListener
+  extends aebx
 {
-  public abbk(FontSettingActivity paramFontSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public abbk(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (ajwe.a(this.a, FontSettingActivity.a(this.a), true)) {
-      ajwe.a();
-    }
-    this.a.finish();
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
+  
+  public void a(acuj paramacuj, ChatMessage paramChatMessage) {}
+  
+  public void b(View paramView) {}
 }
 
 

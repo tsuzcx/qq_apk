@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import bfmr;
+import bfni;
 
 class ForwardFriendListActivity$4
   implements Runnable
@@ -10,7 +10,7 @@ class ForwardFriendListActivity$4
   
   public void run()
   {
-    bfmr.a(this.a);
+    bfni.a(this.a);
   }
 }
 

@@ -1,18 +1,15 @@
 import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.7.1;
 
 public class wlc
-  implements wsf
+  implements wtk
 {
-  wlc(wkx paramwkx) {}
+  wlc(wku paramwku) {}
   
-  public void a() {}
-  
-  public void a(AnimationDrawable paramAnimationDrawable)
+  public void a(int paramInt)
   {
-    if (wkx.g(this.a) != null) {
-      wkx.m(this.a).runOnUiThread(new DetailBaseAdapter.4.1(this, paramAnimationDrawable));
+    if (wku.q(this.a) != null) {
+      wku.r(this.a).runOnUiThread(new DetailBaseAdapter.7.1(this));
     }
   }
 }

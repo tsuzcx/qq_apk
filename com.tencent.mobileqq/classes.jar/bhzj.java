@@ -1,44 +1,71 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_req;
-import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-class bhzj
-  extends QzoneExternalRequest
+public class bhzj
+  extends bhzo
 {
-  bhzj(bhzi parambhzi, Intent paramIntent) {}
-  
-  public String getCmdString()
+  public bhzj(String paramString, View paramView)
   {
-    return "SweetQzoneService.GetCommCfg";
+    super(paramString, paramView);
   }
   
-  public JceStruct getReq()
+  private ImageView.ScaleType a(String paramString)
   {
-    sweet_comm_cfg_get_req localsweet_comm_cfg_get_req = new sweet_comm_cfg_get_req();
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(Integer.valueOf(1));
-    localsweet_comm_cfg_get_req.vec_cfg = ((ArrayList)localObject);
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
-    {
-      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      localObject = new sweet_req_comm();
-      ((sweet_req_comm)localObject).opuin = l;
-      ((sweet_req_comm)localObject).uin = l;
-      ((sweet_req_comm)localObject).loveuin = 0L;
-      ((sweet_req_comm)localObject).qua = bgxr.a();
-      ((sweet_req_comm)localObject).pf = 1;
-      ((sweet_req_comm)localObject).src = 3;
-      localsweet_comm_cfg_get_req.req_comm = ((sweet_req_comm)localObject);
+    if (TextUtils.isEmpty(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
     }
-    return localsweet_comm_cfg_get_req;
+    if ("center_crop".equals(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("fit_center".equals(paramString)) {
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
   }
   
-  public String uniKey()
+  protected void a(String paramString)
   {
-    return "GetCommCfg";
+    if (!bfnx.a(paramString)) {}
+    do
+    {
+      return;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+      {
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
+        localURLDrawableOptions.mRequestHeight = this.b;
+      }
+      localURLDrawableOptions.mLoadingDrawable = aywm.a;
+      localURLDrawableOptions.mFailedDrawable = aywm.a;
+      localURLDrawableOptions.mPlayGifImage = false;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    } while (paramString == null);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        a(paramString2);
+        return;
+      }
+    } while (!"scale_type".equals(paramString1));
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+  }
+  
+  protected void b()
+  {
+    super.b();
   }
 }
 

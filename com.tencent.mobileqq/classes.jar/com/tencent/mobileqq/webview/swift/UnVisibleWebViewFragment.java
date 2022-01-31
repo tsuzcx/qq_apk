@@ -7,14 +7,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import axqw;
-import ayfe;
-import aygf;
-import bcch;
-import bcfa;
-import bcfm;
-import bcgb;
-import bcgc;
+import axqy;
+import ayfg;
+import aygh;
+import bccv;
+import bcfo;
+import bcga;
+import bcgp;
+import bcgq;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -25,12 +25,12 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebSettings;
-import nax;
+import nau;
 
 public class UnVisibleWebViewFragment
   extends WebViewFragment
 {
-  private aygf a;
+  private aygh a;
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -43,20 +43,20 @@ public class UnVisibleWebViewFragment
   
   private void a(String paramString)
   {
-    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + ayfe.a(paramString));
+    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + ayfg.a(paramString));
     CookieSyncManager.createInstance(BaseApplicationImpl.getApplication());
     CookieSyncManager.getInstance().sync();
   }
   
-  public aygf a(ViewGroup paramViewGroup)
+  public aygh a(ViewGroup paramViewGroup)
   {
     boolean bool2 = false;
-    if ((this.jdField_a_of_type_Bcfm.b & 0x40) != 0L) {}
+    if ((this.jdField_a_of_type_Bcga.b & 0x40) != 0L) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.jdField_a_of_type_Aygf = new aygf(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this, this.jdField_a_of_type_AndroidContentIntent, bool1);
-      this.jdField_a_of_type_Aygf.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl);
-      TouchWebView localTouchWebView = this.jdField_a_of_type_Aygf.a();
+      this.jdField_a_of_type_Aygh = new aygh(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this, this.jdField_a_of_type_AndroidContentIntent, bool1);
+      this.jdField_a_of_type_Aygh.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl);
+      TouchWebView localTouchWebView = this.jdField_a_of_type_Aygh.a();
       if (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) {
         this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.bindWebView(localTouchWebView);
       }
@@ -64,12 +64,12 @@ public class UnVisibleWebViewFragment
       localTouchWebView.setPluginEngine(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine);
       if ((localTouchWebView instanceof SwiftReuseTouchWebView))
       {
-        bcfa localbcfa = this.jdField_a_of_type_Bcfa;
+        bcfo localbcfo = this.jdField_a_of_type_Bcfo;
         bool1 = bool2;
         if (1 == ((SwiftReuseTouchWebView)localTouchWebView).a) {
           bool1 = true;
         }
-        localbcfa.u = bool1;
+        localbcfo.u = bool1;
       }
       if (localTouchWebView.getX5WebViewExtension() != null) {
         this.r = true;
@@ -81,7 +81,7 @@ public class UnVisibleWebViewFragment
       if (paramViewGroup != null) {
         paramViewGroup.addView(localTouchWebView);
       }
-      return this.jdField_a_of_type_Aygf;
+      return this.jdField_a_of_type_Aygh;
     }
   }
   
@@ -94,9 +94,9 @@ public class UnVisibleWebViewFragment
     {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(null).a();
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setOnTouchListener(this);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnLongClickListener(new bcch(this));
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnLongClickListener(new bccv(this));
       l1 = System.currentTimeMillis();
-      if ((this.jdField_a_of_type_Bcfm.a & 0x10000) == 0L) {
+      if ((this.jdField_a_of_type_Bcga.a & 0x10000) == 0L) {
         break label428;
       }
       i = 2;
@@ -110,10 +110,10 @@ public class UnVisibleWebViewFragment
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setAllowFileAccessFromFileURLs(false);
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setAllowUniversalAccessFromFileURLs(false);
       l2 = System.currentTimeMillis();
-      this.jdField_a_of_type_Bcfa.n = (l2 - l1);
-      this.jdField_a_of_type_Bcfa.R = l2;
+      this.jdField_a_of_type_Bcfo.n = (l2 - l1);
+      this.jdField_a_of_type_Bcfo.R = l2;
       if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "init browser, cost = " + this.jdField_a_of_type_Bcfa.n);
+        QLog.d("WebLog_WebViewFragment", 2, "init browser, cost = " + this.jdField_a_of_type_Bcfo.n);
       }
       l2 = System.currentTimeMillis();
       IX5WebViewExtension localIX5WebViewExtension = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension();
@@ -125,11 +125,11 @@ public class UnVisibleWebViewFragment
       if (i == 0) {
         break label510;
       }
-      Bundle localBundle = bcgc.a();
+      Bundle localBundle = bcgq.a();
       if (localBundle != null) {
         localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
       }
-      if (!this.jdField_a_of_type_Bcfa.w) {
+      if (!this.jdField_a_of_type_Bcfo.w) {
         break label486;
       }
       l1 = 2L;
@@ -145,13 +145,13 @@ public class UnVisibleWebViewFragment
     {
       label291:
       if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(bcgb.a) }));
+        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(bcgp.a) }));
       }
       System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.reportInitPerformance(l1, i, this.jdField_a_of_type_Bcfa.jdField_c_of_type_Long, bcgb.a);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.reportInitPerformance(l1, i, this.jdField_a_of_type_Bcfo.jdField_c_of_type_Long, bcgp.a);
       System.currentTimeMillis();
-      this.jdField_a_of_type_Bcfa.e = 2;
-      for (this.jdField_a_of_type_Bcfa.g = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));; this.jdField_a_of_type_Bcfa.g = String.valueOf(Build.VERSION.SDK_INT))
+      this.jdField_a_of_type_Bcfo.e = 2;
+      for (this.jdField_a_of_type_Bcfo.g = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));; this.jdField_a_of_type_Bcfo.g = String.valueOf(Build.VERSION.SDK_INT))
       {
         l1 = System.currentTimeMillis();
         if (QLog.isColorLevel()) {
@@ -175,7 +175,7 @@ public class UnVisibleWebViewFragment
           i = 0;
           break label224;
           label486:
-          if (bcfa.s) {}
+          if (bcfo.s) {}
           for (i = 1;; i = 0)
           {
             l1 = i;
@@ -185,7 +185,7 @@ public class UnVisibleWebViewFragment
           i = 0;
           break label291;
           label510:
-          this.jdField_a_of_type_Bcfa.e = 1;
+          this.jdField_a_of_type_Bcfo.e = 1;
         }
       }
       label534:
@@ -195,27 +195,27 @@ public class UnVisibleWebViewFragment
   
   public void g()
   {
-    nax.a("Web_readyToLoadUrl");
+    nau.a("Web_readyToLoadUrl");
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
       return;
     }
     a();
-    if ((this.jdField_a_of_type_Bcfa.i) && (this.jdField_a_of_type_Bcfa.k > 0L))
+    if ((this.jdField_a_of_type_Bcfo.i) && (this.jdField_a_of_type_Bcfo.k > 0L))
     {
-      axqw.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Bcfa.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Bcfa.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Bcfa.k = 0L;
+      axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Bcfo.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Bcfo.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Bcfo.k = 0L;
     }
-    this.jdField_a_of_type_Bcfa.q = System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Bcfa.q;
-    l = this.jdField_a_of_type_Bcfa.b;
+    this.jdField_a_of_type_Bcfo.q = System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Bcfo.q;
+    l = this.jdField_a_of_type_Bcfo.b;
     a(this.jdField_h_of_type_JavaLangString);
     if (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString))
     {
       QLog.i("WebLog_WebViewFragment", 1, "tendocpreload , UnVisibleWebViewFragment  preload =" + this.jdField_a_of_type_ComTencentBizUiTouchWebView);
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_h_of_type_JavaLangString);
     }
-    nax.b("Web_readyToLoadUrl");
-    this.jdField_a_of_type_Bcfa.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_h_of_type_JavaLangString, 0, 0, 0, 0, 0, null);
+    nau.b("Web_readyToLoadUrl");
+    this.jdField_a_of_type_Bcfo.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_h_of_type_JavaLangString, 0, 0, 0, 0, 0, null);
   }
   
   void i()
@@ -223,13 +223,13 @@ public class UnVisibleWebViewFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onDestroy");
     }
-    bcfa localbcfa = this.jdField_a_of_type_Bcfa;
+    bcfo localbcfo = this.jdField_a_of_type_Bcfo;
     this.i = true;
-    localbcfa.l = true;
-    if (this.jdField_a_of_type_Aygf != null)
+    localbcfo.l = true;
+    if (this.jdField_a_of_type_Aygh != null)
     {
-      this.jdField_a_of_type_Aygf.a();
-      this.jdField_a_of_type_Aygf = null;
+      this.jdField_a_of_type_Aygh.a();
+      this.jdField_a_of_type_Aygh = null;
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
     }
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;

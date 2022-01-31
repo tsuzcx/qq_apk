@@ -1,52 +1,19 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class axjy
-  extends AsyncTask<String, Integer, Boolean>
+  implements View.OnClickListener
 {
-  axjy(axjq paramaxjq) {}
+  axjy(axjs paramaxjs) {}
   
-  protected Boolean a(String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (paramVarArgs == null) {
-      paramVarArgs = Boolean.valueOf(false);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramVarArgs;
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("VALUE_MSG_VIDEO_ID", paramVarArgs);
-        paramVarArgs = axkb.a().a("CMD_QUERY_VIDEO_REDBAG_STAT", (Bundle)localObject);
-        if (paramVarArgs == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RedBagVideoManager", 2, "QueryRewardedTask VideoPlayIPCClient.callServer value=null");
-          }
-          return Boolean.valueOf(false);
-        }
-        localObject = Boolean.valueOf(paramVarArgs.getBoolean("VALUE_MSG_REDBAG_STAT"));
-        paramVarArgs = (String[])localObject;
-      } while (!((Boolean)localObject).booleanValue());
-      paramVarArgs = (String[])localObject;
-    } while (axjq.b(this.a) == null);
-    axjq.b(this.a).h = 1;
-    return localObject;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (paramBoolean.booleanValue()) {
-      axjq.c(this.a);
-    }
-    while (axjq.a(this.a)) {
+    axjs.a(this.a, axjs.a(this.a));
+    axjs.b(this.a, System.currentTimeMillis());
+    if (axjs.a(this.a) - axjs.b(this.a) < 300L) {
       return;
     }
-    axjq.d(this.a);
+    axjs.a(this.a);
   }
 }
 

@@ -1,29 +1,20 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.concurrent.Executor;
 
-final class aouv
-  extends xbe
+class aouv
+  implements apuc
 {
-  aouv(String paramString, aovr paramaovr, long paramLong) {}
+  aouv(aouu paramaouu, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public void a(String paramString)
   {
-    if (!paramBoolean)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aovr.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
-    }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Long, false), false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
+    apus.a().execute(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
   }
 }
 

@@ -1,12 +1,39 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
+
 public class qcu
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private long b;
+  public String a;
+  public String b;
+  public String c;
   
-  public qcu(long paramLong)
+  public qcu(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramOutsideLinkInfo.title.has()) {
+      this.a = paramOutsideLinkInfo.title.get();
+    }
+    if (paramOutsideLinkInfo.bring_goods_url.has()) {
+      this.b = paramOutsideLinkInfo.bring_goods_url.get();
+    }
+    if (paramOutsideLinkInfo.icon_url.has()) {
+      this.c = paramOutsideLinkInfo.icon_url.get();
+    }
+  }
+  
+  public articlesummary.OutsideLinkInfo a()
+  {
+    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
+    if (!TextUtils.isEmpty(this.c)) {
+      localOutsideLinkInfo.icon_url.set(this.c);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localOutsideLinkInfo.bring_goods_url.set(this.b);
+    }
+    if (!TextUtils.isEmpty(this.a)) {
+      localOutsideLinkInfo.title.set(this.a);
+    }
+    return localOutsideLinkInfo;
   }
 }
 

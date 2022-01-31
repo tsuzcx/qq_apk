@@ -1,6 +1,8 @@
 public abstract interface afti
 {
-  public abstract void b(int paramInt);
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
 }
 
 

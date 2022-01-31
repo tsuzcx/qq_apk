@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
+import ahpm;
+import ahpn;
 import ahpo;
-import ahpp;
-import ahpq;
-import ahpt;
+import ahpr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,13 +31,13 @@ import java.util.List;
 
 public class DragFrameLayout
   extends FrameLayout
-  implements ahpt
+  implements ahpr
 {
   private static final int[] jdField_a_of_type_ArrayOfInt = { 2130841878, 2130841879, 2130841880, 2130841881, 2130841882 };
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int;
-  private ahpo jdField_a_of_type_Ahpo;
-  private ahpp jdField_a_of_type_Ahpp;
+  private ahpm jdField_a_of_type_Ahpm;
+  private ahpn jdField_a_of_type_Ahpn;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF(-1.0F, -1.0F);
@@ -46,7 +46,7 @@ public class DragFrameLayout
   private DragFrameLayout.AllBornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner;
   private DragFrameLayout.BornRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner;
   private DragFrameLayout.ShakeRunner jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner;
-  private final List<ahpq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<ahpo> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private final int c;
@@ -120,8 +120,8 @@ public class DragFrameLayout
   
   private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    if (this.jdField_a_of_type_Ahpp != null) {
-      this.jdField_a_of_type_Ahpp.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Ahpn != null) {
+      this.jdField_a_of_type_Ahpn.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -262,7 +262,7 @@ public class DragFrameLayout
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((ahpq)localIterator.next()).a(paramBoolean, this.f, this);
+      ((ahpo)localIterator.next()).a(paramBoolean, this.f, this);
     }
   }
   
@@ -302,25 +302,25 @@ public class DragFrameLayout
     }
   }
   
-  public void a(ahpq paramahpq)
+  public void a(ahpo paramahpo)
   {
-    if ((paramahpq != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramahpq))) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramahpq);
+    if ((paramahpo != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramahpo))) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramahpo);
     }
   }
   
-  public void a(ahpq paramahpq, boolean paramBoolean)
+  public void a(ahpo paramahpo, boolean paramBoolean)
   {
-    if ((paramahpq != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramahpq)))
+    if ((paramahpo != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramahpo)))
     {
       if (!paramBoolean) {
-        this.jdField_a_of_type_JavaUtilList.add(paramahpq);
+        this.jdField_a_of_type_JavaUtilList.add(paramahpo);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramahpq);
+    this.jdField_a_of_type_JavaUtilList.add(0, paramahpo);
   }
   
   public void a(View paramView, int paramInt)
@@ -547,14 +547,14 @@ public class DragFrameLayout
     return true;
   }
   
-  public void setDragViewProvider(ahpo paramahpo)
+  public void setDragViewProvider(ahpm paramahpm)
   {
-    this.jdField_a_of_type_Ahpo = paramahpo;
+    this.jdField_a_of_type_Ahpm = paramahpm;
   }
   
-  public void setOnDragListener(ahpp paramahpp)
+  public void setOnDragListener(ahpn paramahpn)
   {
-    this.jdField_a_of_type_Ahpp = paramahpp;
+    this.jdField_a_of_type_Ahpn = paramahpn;
   }
 }
 

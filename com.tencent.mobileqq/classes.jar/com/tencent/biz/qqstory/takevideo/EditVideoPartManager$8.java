@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import vhp;
+import vhm;
 
 public class EditVideoPartManager$8
   implements Runnable
 {
-  public EditVideoPartManager$8(vhp paramvhp) {}
+  public EditVideoPartManager$8(vhm paramvhm) {}
   
   public void run()
   {

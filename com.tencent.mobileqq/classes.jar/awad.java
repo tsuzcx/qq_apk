@@ -1,104 +1,73 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import java.util.LinkedList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.opengl.GLES20;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class awad
-  extends GPUBaseFilter
+  extends avzy
 {
-  private float jdField_a_of_type_Float;
-  private avzw jdField_a_of_type_Avzw;
-  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private avzw b;
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230754);
+  private int jdField_a_of_type_Int = -1;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private int b;
   
-  private void a(@NonNull Runnable paramRunnable)
+  public awad()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mFilterType = 6;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Int != -1) {
+      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
-      return;
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      ved.b("Q.qqstory.publish.edit GPUNashvilleFilter", "mosaic bitmap recycle");
     }
   }
   
-  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
+  public void onDrawTexture()
   {
+    super.onDrawTexture();
+    GLES20.glActiveTexture(33985);
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      {
+        QLog.w("Q.qqstory.publish.edit GPUNashvilleFilter", 1, "bitmap error");
+        return;
+      }
+      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
+    GLES20.glUniform1i(this.b, 1);
+  }
+  
+  public void onInitialized()
+  {
+    super.onInitialized();
     try
     {
-      while (!paramLinkedList.isEmpty())
-      {
-        Runnable localRunnable = (Runnable)paramLinkedList.poll();
-        if (localRunnable != null) {
-          localRunnable.run();
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_JavaUtilLinkedList);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
-  {
-    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!avzu.a(paramInt1)) {
-      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
-    }
-    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Avzw != null) || (this.b != null);
-  }
-  
-  public void destroy()
-  {
-    if (this.jdField_a_of_type_Avzw != null) {
-      this.jdField_a_of_type_Avzw.destroy();
-    }
-    if (this.b != null) {
-      this.b.destroy();
-    }
-  }
-  
-  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (!a())
-    {
-      veg.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130845266));
+      this.b = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
       return;
     }
-    if (this.jdField_a_of_type_Avzw != null) {
-      this.jdField_a_of_type_Avzw.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
-    }
-    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
-  }
-  
-  public void init()
-  {
-    if ((this.jdField_a_of_type_Avzw != null) && (!this.jdField_a_of_type_Avzw.isInitialized())) {
-      this.jdField_a_of_type_Avzw.init();
-    }
-    if ((this.b != null) && (!this.b.isInitialized())) {
-      this.b.init();
-    }
-  }
-  
-  public void onOutputSizeChanged(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Avzw != null) {
-      this.jdField_a_of_type_Avzw.onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    if (this.b != null) {
-      this.b.onOutputSizeChanged(paramInt1, paramInt2);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        ved.e("Q.qqstory.publish.edit GPUNashvilleFilter", "OutOfMemoryError:%s", new Object[] { localOutOfMemoryError.getMessage() });
+      }
     }
   }
 }

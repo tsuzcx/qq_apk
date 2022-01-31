@@ -5,12 +5,12 @@ import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 public class nno
   implements DialogInterface.OnClickListener
 {
-  public nno(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  public nno(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.c, this.d, 1);
   }
 }
 

@@ -1,135 +1,59 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.1;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.2;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.3;
+import dov.com.qq.im.ae.gif.video.VideoGIFCreator.4;
+import dov.com.qq.im.video.GifEncoder;
 
-public final class biwd
+public class biwd
 {
-  private long jdField_a_of_type_Long;
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  private static String jdField_a_of_type_JavaLangString = bivn.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bivk jdField_a_of_type_Bivk = new bivk();
+  private biwc jdField_a_of_type_Biwc;
+  private biwf jdField_a_of_type_Biwf;
+  private biwg jdField_a_of_type_Biwg;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
+  private int jdField_b_of_type_Int = 380;
+  private BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private int jdField_c_of_type_Int = 380;
+  private BaseFilter jdField_c_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   
-  private long a(String paramString)
+  public biwd(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
-    }
-    return 0L;
-  }
-  
-  private long a(String paramString1, String paramString2)
-  {
-    long l2 = 0L;
-    long l3 = a(paramString1);
-    long l4 = a(paramString2);
-    long l1 = l2;
-    if (l4 > 0L)
-    {
-      l1 = l2;
-      if (l3 > l4) {
-        l1 = l3 - l4;
-      }
-    }
-    return l1;
-  }
-  
-  public static biwd a()
-  {
-    return biwf.a();
-  }
-  
-  private boolean a()
-  {
-    return true;
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "input video = " + paramString);
+    HandlerThread localHandlerThread = new HandlerThread("GIFCreatorHT");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.1(this, paramString));
   }
   
   public void a()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Long > 0L) {
-      bizq.b("CameraLaunchPerf", "old AIO launch total cost=" + (l - this.jdField_a_of_type_Long));
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.4(this));
   }
   
-  public void a(long paramLong)
+  public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.2(this, paramBitmap, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
   }
   
-  public void a(String paramString)
+  public void a(biwf parambiwf)
   {
-    if (a()) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    }
-    bizq.b("CameraLaunchPerf", paramString);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (a()) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-    }
-    bizq.b("CameraLaunchPerf", paramString + " real happened at " + paramLong);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (!a()) {
-      bizq.b("CameraLaunchPerf******", paramString1 + "--" + paramString2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (a()) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("collect data:{");
-    if (!paramBoolean) {
-      localStringBuilder.append("userClick-startActivity=").append(a("startActivityForResult", "userClick")).append(", userClickDispatch=").append(a("AECameraLauncher---launchAECameraUnit-begin", "userClick")).append(", launchAECameraUnit=").append(a("AECameraLauncher---launchAECameraUnit-end", "AECameraLauncher---launchAECameraUnit-begin"));
-    }
-    for (;;)
-    {
-      localStringBuilder.append("}");
-      bizq.b("CameraLaunchPerf", localStringBuilder.toString());
-      return;
-      paramBoolean = this.b;
-      this.b = false;
-      localStringBuilder.append("isColdLaunch=").append(paramBoolean).append(", startActivity-firstRealFrame=").append(a("onDrawFrameReal-end", "mainProcessLaunch")).append(", startActivity-firstFakeFrame=").append(a("onDrawFrameFake-end1", "mainProcessLaunch")).append(", ipc_cost=").append(a("activityOnCreateBegin", "mainProcessLaunch")).append(", activityOnCreate=").append(a("activityOnCreateEnd", "activityOnCreateBegin")).append(", buildCaptureUnit=").append(a("buildCaptureUnit-end", "buildCaptureUnit-begin")).append(", unitOnCreateView=").append(a("unitOnCreateView-end", "unitOnCreateView-begin")).append(", unitInflateView=").append(a("unitInflateView-end", "unitInflateView-begin")).append(", glSurfaceViewStaticInit=").append(a("glSurfaceViewStaticInit-end", "glSurfaceViewStaticInit-begin")).append(", activityOnStart=").append(a("activityOnStartEnd", "activityOnStartBegin")).append(", activityOnResume=").append(a("activityOnResumeEnd", "activityOnResumeBegin")).append(", activityOnResume-onSurfaceCreated=").append(a("onSurfaceCreated-begin", "activityOnResumeEnd")).append(", onSurfaceCreated=").append(a("onSurfaceCreated-end", "onSurfaceCreated-begin")).append(", startCamPreview-onFrameAvailable=").append(a("onFrameAvailable", "startCameraPreview-end")).append(", onDrawFrame1=").append(a("onDrawFrameFake-end1", "onDrawFrameFake-begin1")).append(", onDrawFrame2=").append(a("onDrawFrameFake-end2", "onDrawFrameFake-begin2")).append(", onDrawFrame3=").append(a("onDrawFrameFake-end3", "onDrawFrameFake-begin3")).append(", onDrawFrameReal=").append(a("onDrawFrameReal-end", "onDrawFrameReal-begin")).append(", filterProcessInitFilters=").append(a("FilterProcessInitFilters-end", "FilterProcessInitFilters-begin")).append(", filterMgrDraw=").append(a("filterMgrDraw-end", "filterMgrDraw-begin")).append(", onDrawFrame1End-onFrameAvailable=").append(a("onFrameAvailable", "onDrawFrameFake-end1"));
-    }
-  }
-  
-  public void b()
-  {
-    if (a()) {
-      return;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    bizq.b("CameraLaunchPerf", "beginSession----");
-  }
-  
-  public void c()
-  {
-    if (a()) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    bizq.b("CameraLaunchPerf", "endSession----");
+    this.jdField_a_of_type_Biwf = parambiwf;
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "start create gif");
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.3(this));
   }
 }
 

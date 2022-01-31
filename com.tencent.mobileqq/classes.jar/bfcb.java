@@ -1,17 +1,35 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bfcb
-  implements MethodChannel.MethodCallHandler
+public abstract interface bfcb
+  extends behs
 {
-  bfcb(bfca parambfca) {}
+  public abstract View a();
   
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
-  {
-    paramResult.success(null);
-    besl.a("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
-  }
+  public abstract void a();
+  
+  public abstract void a(Activity paramActivity);
+  
+  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void setApkgInfo(bekp parambekp);
 }
 
 

@@ -1,16 +1,36 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import java.util.List;
 
 public class qgm
-  extends osp
+  extends qgn
 {
-  public qgm(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
-  
-  public void c(List<TagInfo> paramList)
+  public qgm(@NonNull Context paramContext, int paramInt)
   {
-    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
-    osm.a().b(this);
+    super(paramContext, paramInt);
+  }
+  
+  public boolean a()
+  {
+    return getCount() == 5;
+  }
+  
+  public boolean a(@NonNull TagInfo paramTagInfo)
+  {
+    int i = getCount();
+    super.a(paramTagInfo);
+    return i != getCount();
+  }
+  
+  @NonNull
+  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramView.setSelected(true);
+    return paramView;
   }
 }
 

@@ -1,44 +1,47 @@
 import android.content.Context;
+import android.content.res.Resources;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class aghf
+  extends aggw
 {
-  public static aggy a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public aghf(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    int i = paramSessionInfo.a;
-    Object localObject = null;
-    if (paramSessionInfo.f == 3) {
-      paramSessionInfo = new aghi(paramContext, paramSessionInfo, paramQQAppInterface);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  private void A()
+  {
+    if (!this.d) {}
+    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      return;
     }
-    do
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+    if (mau.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
     {
-      return paramSessionInfo;
-      switch (i)
-      {
-      default: 
-        paramContext = localObject;
-        paramSessionInfo = paramContext;
-      }
-    } while (!QLog.isColorLevel());
-    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
-    if (paramContext == null) {}
-    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
-    {
-      QLog.i("MiniPieFactory", 2, paramSessionInfo);
-      return paramContext;
-      paramContext = new aghg(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new aghh(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new aghl(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new aghk(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new aghj(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698570));
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    super.g();
+    A();
+  }
+  
+  protected void y()
+  {
+    this.jdField_a_of_type_JavaLangString = "MiniPieForDisc";
   }
 }
 

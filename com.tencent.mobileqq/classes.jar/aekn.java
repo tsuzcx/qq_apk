@@ -1,28 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.widget.RoundRectImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
 class aekn
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  aekn(aekm paramaekm) {}
+  aekn(aekm paramaekm, aekh paramaekh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
+    }
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

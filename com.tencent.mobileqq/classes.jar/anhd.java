@@ -1,209 +1,38 @@
 import android.graphics.Canvas;
-import android.os.Build.VERSION;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
-import android.view.View.OnTouchListener;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.concurrent.locks.ReentrantLock;
+import android.text.TextPaint;
 
 public class anhd
-  implements SurfaceHolder.Callback, anhb
+  extends anha
 {
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
-  private anhc jdField_a_of_type_Anhc;
-  private volatile Object jdField_a_of_type_JavaLangObject;
-  private volatile ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile Object jdField_b_of_type_JavaLangObject;
-  private volatile boolean jdField_b_of_type_Boolean;
+  private TextPaint a = new TextPaint();
   
-  public anhd(SurfaceView paramSurfaceView)
+  private String a(anga paramanga)
   {
-    this.jdField_a_of_type_AndroidViewSurfaceView = paramSurfaceView;
-    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotCacheDrawing(true);
-    this.jdField_a_of_type_AndroidViewSurfaceView.setDrawingCacheEnabled(false);
-    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotDraw(true);
-    this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
+    return String.valueOf(paramanga.a());
   }
   
-  private boolean a()
+  public anhy a(anga paramanga)
   {
-    c();
-    return (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock != null) && (this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_b_of_type_JavaLangObject != null);
+    angz localangz = angj.a();
+    float f1 = anib.a(localangz.c(), a(paramanga)) + localangz.f() + localangz.f();
+    float f2 = anib.a(localangz.c());
+    f2 = localangz.e() * 2.0F + f2;
+    paramanga.a(f2);
+    paramanga.b(f1);
+    return new anhy(f1, f2);
   }
   
-  private Canvas b()
+  public boolean a(anga paramanga)
   {
-    Object localObject2;
-    if (anfe.a().a().b())
-    {
-      localObject2 = this.jdField_a_of_type_AndroidViewSurfaceHolder.lockHardwareCanvas();
-      return localObject2;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    e();
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaLangObject != null)) {}
-    for (;;)
-    {
-      try
-      {
-        Canvas localCanvas = this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().lockHardwareCanvas();
-        localObject2 = localCanvas;
-        if (localCanvas != null) {
-          break;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-        return null;
-      }
-      catch (Exception localException)
-      {
-        anhx.a("SurfaceDanmakuView", "Exception locking surface", localException);
-      }
-      Object localObject1 = null;
-    }
+    return true;
   }
   
-  private void b(Canvas paramCanvas)
+  public void b(Canvas paramCanvas, anga paramanga, angj paramangj, float paramFloat1, float paramFloat2)
   {
-    if (anfe.a().a().b()) {
-      this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().unlockCanvasAndPost(paramCanvas);
-    } while (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-  }
-  
-  private boolean b()
-  {
-    return (angs.a()) && (((Build.VERSION.SDK_INT == 23) && (a())) || (anfe.a().a().b()));
-  }
-  
-  private void c()
-  {
-    d();
-    e();
-  }
-  
-  private void d()
-  {
-    Object localObject = anfe.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
-    if ((localObject instanceof ReentrantLock)) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ((ReentrantLock)localObject);
-    }
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_JavaLangObject = anfe.a().a().a(SurfaceView.class, "mDrawingStopped", this.jdField_a_of_type_AndroidViewSurfaceView);
-    this.jdField_b_of_type_JavaLangObject = anfe.a().a().a(SurfaceView.class, "mWindow", this.jdField_a_of_type_AndroidViewSurfaceView);
-    if ((this.jdField_a_of_type_JavaLangObject instanceof Boolean)) {
-      this.jdField_a_of_type_Boolean = ((Boolean)this.jdField_a_of_type_JavaLangObject).booleanValue();
-    }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_AndroidViewSurfaceView.getY();
-  }
-  
-  public Canvas a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return b();
-    }
-    return this.jdField_a_of_type_AndroidViewSurfaceHolder.lockCanvas();
-  }
-  
-  public void a()
-  {
-    ReentrantLock localReentrantLock = (ReentrantLock)anfe.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
-    Surface localSurface = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().getSurface();
-    try
-    {
-      Method localMethod = Surface.class.getDeclaredMethod("nativeRelease", new Class[] { Long.TYPE });
-      localMethod.setAccessible(true);
-      Field localField = Surface.class.getDeclaredField("mLockedObject");
-      localField.setAccessible(true);
-      Long localLong = (Long)localField.get(localSurface);
-      anhx.c("surface_lock", "SurfaceDanmakuView unlock lockObjectValue = " + localLong);
-      if (localLong.longValue() != 0L) {
-        localMethod.invoke(null, new Object[] { localLong });
-      }
-      localField.setLong(localSurface, 0L);
-      anhx.b("surface_lock", "SurfaceDanmakuView unlock: release success");
-      return;
-    }
-    catch (Exception localException)
-    {
-      anhx.a("surface_lock", "SurfaceDanmakuView unlock:release failed", localException);
-      return;
-    }
-    finally
-    {
-      anhx.c("surface_lock", "SurfaceDanmakuView unlock surfaceLock = " + localReentrantLock);
-      if ((localReentrantLock != null) && (localReentrantLock.isLocked()))
-      {
-        anhx.c("surface_lock", "SurfaceDanmakuView unlock");
-        localReentrantLock.unlock();
-      }
-    }
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      b(paramCanvas);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
-  }
-  
-  public void a(View.OnTouchListener paramOnTouchListener)
-  {
-    this.jdField_a_of_type_AndroidViewSurfaceView.setOnTouchListener(paramOnTouchListener);
-  }
-  
-  public void a(anhc paramanhc)
-  {
-    this.jdField_a_of_type_Anhc = paramanhc;
-  }
-  
-  public void b() {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Anhc != null) {
-      this.jdField_a_of_type_Anhc.j();
-    }
-    anhx.c("SurfaceDanmakuView", "surfaceChanged, width = " + paramInt2 + ", height = " + paramInt3);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.jdField_a_of_type_Anhc != null) {
-      this.jdField_a_of_type_Anhc.i();
-    }
-    this.jdField_b_of_type_Boolean = b();
-    anhx.c("SurfaceDanmakuView", "surfaceCreated, isHardwareAccelerateEnable = " + this.jdField_b_of_type_Boolean);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.jdField_a_of_type_Anhc != null) {
-      this.jdField_a_of_type_Anhc.k();
-    }
-    anhx.c("SurfaceDanmakuView", "surfaceDestroyed");
+    paramangj = angj.a();
+    this.a.setTextSize(paramangj.c());
+    this.a.setColor(-1);
+    paramCanvas.drawText(a(paramanga), paramangj.f() + paramFloat1, paramangj.e() + paramFloat2 - this.a.ascent(), this.a);
   }
 }
 

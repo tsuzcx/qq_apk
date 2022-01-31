@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import besl;
+import betc;
 import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ class ChannelProxyImpl$2
     {
       for (;;)
       {
-        besl.d("ChannelProxyImpl", "tianshuRequestAdv", paramStJudgeTimingRsp);
+        betc.d("ChannelProxyImpl", "tianshuRequestAdv", paramStJudgeTimingRsp);
       }
     }
   }

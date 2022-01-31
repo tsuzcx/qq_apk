@@ -1,20 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
 
 class wls
-  implements wsp
+  extends RecyclerView.ViewHolder
 {
-  wls(wlq paramwlq) {}
-  
-  public void a(boolean paramBoolean)
+  public wls(wlq paramwlq, View paramView)
   {
-    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      xhe.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Wlo.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-      return;
+    super(paramView);
+  }
+  
+  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  {
+    if ((this.itemView instanceof SubScribeDraftItemView)) {
+      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
     }
   }
 }

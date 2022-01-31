@@ -1,23 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDialogActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lyx
+public class lyx
+  extends BroadcastReceiver
 {
-  public abstract Bitmap a(long paramLong);
+  public lyx(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
   
-  public abstract TroopInfoData a();
-  
-  public abstract String a();
-  
-  public abstract String a(int paramInt);
-  
-  public abstract String a(long paramLong, int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract String b();
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState"))
+    {
+      int i = paramIntent.getIntExtra("SmallScreenState", -1);
+      long l = mtj.a(paramIntent);
+      boolean bool = lze.c(this.a.a.getApp());
+      if ((AudioHelper.e()) || (bool)) {
+        QLog.w(SmallScreenDialogActivity.a(this.a), 1, "Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[" + bool + "], state[" + i + "], seq[" + l + "]");
+      }
+      if (bool) {
+        this.a.finish();
+      }
+    }
+  }
 }
 
 

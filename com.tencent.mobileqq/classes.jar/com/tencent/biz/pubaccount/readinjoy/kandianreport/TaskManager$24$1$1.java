@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import naa;
+import mzx;
 
 class TaskManager$24$1$1
   implements DialogInterface.OnClickListener
@@ -12,7 +12,7 @@ class TaskManager$24$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    naa.a(BaseApplicationImpl.getContext(), this.this$2.val$rText);
+    mzx.a(BaseApplicationImpl.getContext(), this.this$2.val$rText);
   }
 }
 

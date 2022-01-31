@@ -1,59 +1,103 @@
-import android.annotation.TargetApi;
-import android.opengl.EGL14;
-import android.opengl.EGLSurface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeTask;
 
-@TargetApi(17)
 public class avyx
 {
-  private EGLSurface a;
-  protected avyw a;
-  
-  public avyx(avyw paramavyw)
-  {
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-    this.jdField_a_of_type_Avyw = paramavyw;
-  }
+  private int jdField_a_of_type_Int;
+  private VideoFlowDecodeTask jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+  private Thread jdField_a_of_type_JavaLangThread;
   
   public void a()
   {
-    this.jdField_a_of_type_Avyw.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    if (this.jdField_a_of_type_JavaLangThread != null) {
+      this.jdField_a_of_type_JavaLangThread.interrupt();
     }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Avyw.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaLangThread = null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = null;
   }
   
-  public void a(long paramLong)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Avyw.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.a(paramInt);
+      ved.b("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt);
+      return;
     }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Avyw.a(paramObject);
+    ved.d("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt + " failed, can not find DecodeRunnable");
   }
   
-  public boolean a()
+  public void a(long paramLong1, long paramLong2)
   {
-    boolean bool = this.jdField_a_of_type_Avyw.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      ved.d("FlowEdit_VideoFlowDecoder", "setPlayRange [" + paramLong1 + " ms, " + paramLong2 + " ms]");
+      localVideoFlowDecodeTask.a(paramLong1, paramLong2);
+      return;
     }
-    return bool;
+    ved.d("FlowEdit_VideoFlowDecoder", "setPlayRange failed, can not find DecodeRunnable");
+  }
+  
+  public void a(avxv paramavxv, avxp paramavxp, avxw paramavxw)
+  {
+    Thread localThread;
+    if (this.jdField_a_of_type_JavaLangThread != null)
+    {
+      ved.b("FlowEdit_VideoFlowDecoder", "stopDecode before startDecode, current thread : %s", this.jdField_a_of_type_JavaLangThread.getName());
+      localThread = this.jdField_a_of_type_JavaLangThread;
+      a();
+    }
+    try
+    {
+      localThread.join();
+      ved.c("FlowEdit_VideoFlowDecoder", "startDecode, create decode runnable");
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = new VideoFlowDecodeTask(paramavxv.a, paramavxp, paramavxw);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask.a(paramavxv);
+      paramavxv = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+      paramavxp = new StringBuilder().append("HWVideoDecoder-Thread-");
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(paramavxv, i, 8);
+      this.jdField_a_of_type_JavaLangThread.start();
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Avyw.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = true;
+      ved.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+      return;
+    }
+    ved.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
+  }
+  
+  public void c()
+  {
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = false;
+      synchronized (localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject)
+      {
+        localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject.notifyAll();
+        ved.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+        return;
+      }
+    }
+    ved.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
 }
 

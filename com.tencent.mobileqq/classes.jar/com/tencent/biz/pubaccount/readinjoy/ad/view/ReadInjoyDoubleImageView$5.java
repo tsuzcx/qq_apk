@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import oaz;
-import ocz;
+import oaw;
+import ocw;
 
 public class ReadInjoyDoubleImageView$5
   implements Runnable
 {
-  public ReadInjoyDoubleImageView$5(ocz paramocz) {}
+  public ReadInjoyDoubleImageView$5(ocw paramocw) {}
   
   public void run()
   {
-    if ((ocz.a(this.this$0) != null) && (ocz.a(this.this$0) != null))
+    if ((ocw.a(this.this$0) != null) && (ocw.a(this.this$0) != null))
     {
-      ocz.a(this.this$0).setIsShowSrc(false);
-      ocz.a(this.this$0).b();
+      ocw.a(this.this$0).setIsShowSrc(false);
+      ocw.a(this.this$0).b();
     }
   }
 }

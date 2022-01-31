@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
 public class addz
-  implements adeb
+  implements adec
 {
-  public addz(DoodleView paramDoodleView) {}
+  public addz(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
   
-  public void a()
+  public void a(int paramInt, aden paramaden)
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      this.jdField_a_of_type_JavaUtilMap.notifyAll();
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramaden);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      }
+      return;
+      paramaden = finally;
+      throw paramaden;
     }
   }
 }

@@ -1,22 +1,51 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowRcmdRsp;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.network.SubscribeGetFollowRcmdRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
-public class wko
+class wko
+  implements xgu<CertifiedAccountRead.StGetFollowRcmdRsp>
 {
-  public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
+  wko(wkn paramwkn, SubscribeGetFollowRcmdRequest paramSubscribeGetFollowRcmdRequest, wkq paramwkq) {}
   
-  public wko(CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowRcmdRsp paramStGetFollowRcmdRsp)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public wko(CertifiedAccountMeta.StUser paramStUser)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
-    this.jdField_a_of_type_Int = 1;
+    boolean bool = VSNetworkHelper.a(paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowRcmdRsp == null))
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (wkn.a(this.jdField_a_of_type_Wkn) != null)) {
+        bcql.a(wkn.b(this.jdField_a_of_type_Wkn), 1, paramString, 0).a();
+      }
+      if (!bool)
+      {
+        VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkSubscribeGetFollowRcmdRequest);
+        if ((this.jdField_a_of_type_Wkn.getItemCount() == 0) && (this.jdField_a_of_type_Wkq != null)) {
+          this.jdField_a_of_type_Wkq.a();
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramString = paramStGetFollowRcmdRsp.rcmdList.get();
+      } while ((bool) && (!wkn.a(this.jdField_a_of_type_Wkn)));
+      if ((paramString != null) && (paramString.size() > 0))
+      {
+        if (wkn.a(this.jdField_a_of_type_Wkn)) {
+          wkn.a(this.jdField_a_of_type_Wkn, false);
+        }
+        wkn.a(this.jdField_a_of_type_Wkn, paramString, paramStGetFollowRcmdRsp.extInfo, true);
+        xhb.b("auth_follow", "blank_exp", 0, 0, new String[0]);
+        return;
+      }
+    } while ((bool) || (this.jdField_a_of_type_Wkn.getItemCount() != 0));
+    wkn.b(this.jdField_a_of_type_Wkn, true);
+    this.jdField_a_of_type_Wkn.notifyDataSetChanged();
   }
 }
 

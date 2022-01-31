@@ -1,6 +1,6 @@
 public abstract interface bgil
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract bgim a(bcdp parambcdp, bgii parambgii);
 }
 
 

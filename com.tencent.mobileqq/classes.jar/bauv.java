@@ -1,15 +1,10 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-class bauv
-  implements FilenameFilter
+public abstract interface bauv
 {
-  bauv(baus parambaus, String paramString) {}
+  public abstract void a();
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

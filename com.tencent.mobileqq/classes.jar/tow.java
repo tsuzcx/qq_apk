@@ -1,17 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tow
-  extends syq
+  extends syn
 {
-  public final String a;
-  public final int b;
+  public stj a = new stj();
   
-  public tow(qqstory_service.RspGetWeather paramRspGetWeather)
+  public tow(qqstory_service.RspAuthKey paramRspAuthKey)
   {
-    this.b = paramRspGetWeather.temperature.get();
-    this.a = paramRspGetWeather.wea_desc.get();
+    super(paramRspAuthKey.result);
+    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
+    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
+    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
+    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
+    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
+    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
+    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
   }
 }
 

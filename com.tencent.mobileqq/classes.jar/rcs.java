@@ -1,17 +1,28 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
 
 public class rcs
-  implements oki
+  extends bfps
 {
-  public rcs(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, oki paramoki) {}
-  
-  public void a(int paramInt)
+  public rcs(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
-    if (this.jdField_a_of_type_Oki != null) {
-      this.jdField_a_of_type_Oki.a(paramInt);
-    }
+    super(paramReadInJoyFlowLayout);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    ReadInJoyFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    ReadInJoyFlowLayout.a(this.a);
   }
 }
 

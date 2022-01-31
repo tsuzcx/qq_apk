@@ -1,109 +1,47 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.ListView;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import cooperation.qqfav.globalsearch.FavoriteSearchFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bgpz
-  extends awkd<awog, awwp>
-  implements View.OnClickListener
+class bgpz
+  extends OnPluginInstallListener.Stub
 {
-  public bgpz(FavoriteSearchFragment paramFavoriteSearchFragment, ListView paramListView, baxk parambaxk)
-  {
-    super(paramListView, parambaxk);
-  }
+  bgpz(bgpy parambgpy) {}
   
-  protected awrb<awog, awwp> a(int paramInt)
-  {
-    return new bgqd(FavoriteSearchFragment.a(this.a));
-  }
+  public void onInstallBegin(String paramString) {}
   
-  protected awwq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new awyf(paramViewGroup, 2131562384);
-  }
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
   
-  public int getCount()
+  public void onInstallError(String paramString, int paramInt)
   {
-    int i = super.getCount();
-    if ((i > 0) && (((bgqc)super.a(i - 1)).a == -2L)) {
-      return i - 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
     }
-    return i;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == super.getCount() - 1) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 1)
+    try
     {
-      Object localObject;
-      if (paramView == null)
-      {
-        localObject = new TextView(paramViewGroup.getContext());
-        ((TextView)localObject).setTextSize(18.0F);
-        ((TextView)localObject).setTextColor(paramViewGroup.getResources().getColor(2131166865));
-        ((TextView)localObject).setGravity(1);
-        ((TextView)localObject).setClickable(true);
-        ((TextView)localObject).setOnClickListener(this);
-        ((TextView)localObject).setPadding(0, 16, 0, 16);
-        paramView = (View)localObject;
-        paramViewGroup = paramView;
-        if (((bgqc)super.a(paramInt)).a != -1L) {
-          break label118;
-        }
-        paramViewGroup.performClick();
-      }
-      label118:
-      do
-      {
-        return localObject;
-        paramViewGroup = (TextView)paramView;
-        localObject = paramView;
-        break;
-        paramViewGroup.setText(2131698129);
-        paramView = (Animatable)paramViewGroup.getCompoundDrawables()[1];
-        paramViewGroup.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      } while (paramView == null);
-      paramView.stop();
-      return localObject;
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
     }
-    return super.getView(paramInt, paramView, paramViewGroup);
+    catch (Exception paramString) {}
   }
   
-  public int getViewTypeCount()
+  public void onInstallFinish(String paramString)
   {
-    return 2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (TextView)paramView;
-    paramView.setText(null);
-    Animatable localAnimatable = (Animatable)BaseApplicationImpl.sApplication.getResources().getDrawable(2130839140);
-    paramView.setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localAnimatable, null, null);
-    localAnimatable.start();
-    paramView = (FavoriteSearchEngine)this.a.a;
-    FavoriteSearchFragment.a(this.a).a = this.a.c;
-    paramView.a(FavoriteSearchFragment.a(this.a), this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
+    }
+    bgpw.a().set(true);
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgpz
  * JD-Core Version:    0.7.0.1
  */

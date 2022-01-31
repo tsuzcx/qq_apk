@@ -1,21 +1,20 @@
 import android.os.Bundle;
-import com.tencent.qqinterface.CommonCallback;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
+import java.util.concurrent.Future;
 
 class arjk
-  implements ndl
+  implements CustomizedTicket
 {
-  arjk(arjh paramarjh, ndk paramndk, CommonCallback paramCommonCallback) {}
+  arjk(arjj paramarjj) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3)
+  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_Arjh.a.a(this.jdField_a_of_type_Ndk.a(), this.jdField_a_of_type_Ndk.a(), paramLong, 0);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isOnline", paramBoolean);
-    localBundle.putString("videoUrl", paramString1);
-    localBundle.putString("vid", paramString2);
-    localBundle.putLong("timeConsume", paramLong);
-    localBundle.putString("mqqApi", paramString3);
-    this.jdField_a_of_type_ComTencentQqinterfaceCommonCallback.onResult(localBundle);
+    return this.a.a(paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
+  {
+    return this.a.a(paramString1, paramString2);
   }
 }
 

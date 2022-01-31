@@ -1,35 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
+import java.util.Comparator;
 
-class binl
+final class binl
+  implements Comparator<binn>
 {
-  static CharSequence a(@NonNull bimw parambimw)
+  public int a(binn parambinn1, binn parambinn2)
   {
-    if (parambimw.a) {
-      return parambimw.toString();
+    if (parambinn1.a) {
+      return 1;
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    parambimw = parambimw.toString();
-    SpannableString localSpannableString = new SpannableString(parambimw);
-    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambimw.length(), 17);
-    localSpannableStringBuilder.append(localSpannableString);
-    return localSpannableStringBuilder;
-  }
-  
-  static CharSequence a(@NonNull bimx parambimx)
-  {
-    if ("failed".equals(parambimx.c))
-    {
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      parambimx = parambimx.toString();
-      SpannableString localSpannableString = new SpannableString(parambimx);
-      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambimx.length(), 17);
-      localSpannableStringBuilder.append(localSpannableString);
-      return localSpannableStringBuilder;
+    if (parambinn2.a) {
+      return -1;
     }
-    return parambimx.toString();
+    return 0;
   }
 }
 

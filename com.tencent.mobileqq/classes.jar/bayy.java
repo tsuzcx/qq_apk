@@ -1,15 +1,10 @@
-import android.graphics.drawable.BitmapDrawable;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-class bayy
-  extends BitmapDrawable
+public abstract interface bayy
 {
-  private final WeakReference<bayz> a;
+  public abstract void a(int paramInt, List<bayz> paramList);
   
-  public bayz a()
-  {
-    return (bayz)this.a.get();
-  }
+  public abstract void a(bayz parambayz);
 }
 
 

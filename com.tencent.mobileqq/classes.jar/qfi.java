@@ -1,18 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qfi
-  implements qfj
+class qfi
+  implements View.OnClickListener
 {
-  public qfi(ReadInJoyDraftboxFragment.1 param1) {}
+  qfi(qfh paramqfh) {}
   
-  public void a(List<ReadInJoyDraftboxItem> paramList)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new ReadInJoyDraftboxFragment.1.1.1(this, paramList));
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (qfh.a(this.a) != null) {
+      qfh.a(this.a).a(paramView, i);
+    }
   }
 }
 

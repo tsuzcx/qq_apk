@@ -1,39 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import java.util.ArrayList;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import java.util.List;
 
-public final class avpn
-  implements Parcelable.Creator<RedAppInfo>
+public abstract class avpn
 {
-  public RedAppInfo a(Parcel paramParcel)
+  private static int b;
+  public int a;
+  
+  public avpn()
   {
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
-    localRedAppInfo.a = new ArrayList();
-    paramParcel.readList(localRedAppInfo.a, null);
-    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
-    return localRedAppInfo;
+    int i = b;
+    b = i + 1;
+    this.a = i;
   }
   
-  public RedAppInfo[] a(int paramInt)
-  {
-    return new RedAppInfo[paramInt];
-  }
+  public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
 }
 
 

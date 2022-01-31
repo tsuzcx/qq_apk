@@ -1,18 +1,10 @@
-import android.os.Looper;
-import android.os.Message;
-
-class ybt
-  extends ayvz
+public class ybt
 {
-  ybt(ybs paramybs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public float a;
+  public int a;
+  public long a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(paramMessage);
-  }
+  public ybt(ybp paramybp) {}
 }
 
 

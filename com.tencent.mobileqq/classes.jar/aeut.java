@@ -1,14 +1,18 @@
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class aeut
-  implements bame
+  extends ayfn
 {
   public aeut(TroopChatPie paramTroopChatPie) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (paramInt == 0) {}
+    ayfx.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    ayfx.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 

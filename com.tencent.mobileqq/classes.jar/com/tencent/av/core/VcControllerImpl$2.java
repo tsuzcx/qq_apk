@@ -1,7 +1,7 @@
 package com.tencent.av.core;
 
 import com.tencent.qphone.base.util.QLog;
-import llu;
+import llp;
 
 class VcControllerImpl$2
   implements Runnable

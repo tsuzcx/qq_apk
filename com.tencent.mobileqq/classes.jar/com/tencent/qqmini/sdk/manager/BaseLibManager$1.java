@@ -1,26 +1,26 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.content.SharedPreferences;
-import besl;
-import besn;
-import beso;
-import besr;
-import bfgv;
+import betc;
+import bete;
+import betf;
+import beti;
+import bfhm;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 public class BaseLibManager$1
   implements Runnable
 {
-  public BaseLibManager$1(besn parambesn, besr parambesr) {}
+  public BaseLibManager$1(bete parambete, beti parambeti) {}
   
   public void run()
   {
-    String str1 = bfgv.a().getString("downloadUrl", null);
-    String str2 = bfgv.a().getString("version", "1.12.1.00001");
-    besl.b("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str2);
-    besl.b("miniapp-process_BaseLibManager", "forceUpdateBaseLib current requestVersion is:" + str2);
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(str2, true, true, new beso(this, str1, str2));
+    String str1 = bfhm.a().getString("downloadUrl", null);
+    String str2 = bfhm.a().getString("version", "1.13.0.00013");
+    betc.b("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str2);
+    betc.b("miniapp-process_BaseLibManager", "forceUpdateBaseLib current requestVersion is:" + str2);
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(str2, true, true, new betf(this, str1, str2));
   }
 }
 

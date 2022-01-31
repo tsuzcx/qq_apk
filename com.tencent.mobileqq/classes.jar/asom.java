@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class asom
-  implements DialogInterface.OnClickListener
+  implements asup
 {
-  asom(asoh paramasoh) {}
+  asom(asol paramasol) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.e();
-    asoh.a(this.a).a(false, null, false);
+    if ((asoj.a(this.a.jdField_a_of_type_Asoj) != null) && (asoj.a(this.a.jdField_a_of_type_Asoj).a != null)) {
+      this.a.jdField_a_of_type_Asuw.a(this.a.jdField_a_of_type_JavaUtilList, 2, asoj.a(this.a.jdField_a_of_type_Asoj).a.a);
+    }
+    this.a.jdField_a_of_type_Asuw.a();
+    if (asoj.a(this.a.jdField_a_of_type_Asoj) != null) {
+      asoj.a(this.a.jdField_a_of_type_Asoj).a(false, null, false);
+    }
   }
 }
 

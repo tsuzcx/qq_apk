@@ -1,14 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-class bkpj
-  implements CompoundButton.OnCheckedChangeListener
+public final class bkpj
+  extends RecyclablePool.Recyclable
 {
-  bkpj(bkpi parambkpi) {}
+  public long a;
+  public String a;
+  public long[] a;
+  public long b;
+  public long c;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bkpj()
   {
-    bkpi.a(this.a).f = paramBoolean;
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    {
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
+    }
+    this.c = 0L;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    a();
   }
 }
 

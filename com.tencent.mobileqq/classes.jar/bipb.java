@@ -1,107 +1,173 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.GetWatermarkDictRequest;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
 
 public class bipb
+  extends RecyclerView.ViewHolder
 {
-  private static volatile bipb jdField_a_of_type_Bipb;
-  private static final String jdField_a_of_type_JavaLangString = bipb.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private biqn jdField_a_of_type_Biqn;
-  private SosoInterface.SosoLocation jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public ImageView a;
+  public RelativeLayout a;
+  public URLImageView a;
+  public AEDownLoadingView a;
+  public ImageView b;
+  public ImageView c;
   
-  public static bipb a()
+  public bipb(View paramView)
   {
-    if (jdField_a_of_type_Bipb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bipb == null) {
-        jdField_a_of_type_Bipb = new bipb();
-      }
-      return jdField_a_of_type_Bipb;
-    }
-    finally {}
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377242));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375797));
+    this.b = ((ImageView)paramView.findViewById(2131365361));
+    this.c = ((ImageView)paramView.findViewById(2131377618));
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131372030));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379363));
   }
   
-  private void a(double paramDouble1, double paramDouble2)
+  private static int a(boolean paramBoolean)
   {
-    long l = fi.a();
-    GetWatermarkDictRequest localGetWatermarkDictRequest = new GetWatermarkDictRequest(new COMM.StCommonExt(), paramDouble1, paramDouble2, String.valueOf(l));
-    VSNetworkHelper.a().a(localGetWatermarkDictRequest, new bipd(this));
+    if (paramBoolean) {
+      return 0;
+    }
+    return 8;
   }
   
-  private void a(Map<String, String> paramMap)
+  private void a(bire parambire)
   {
-    LogicDataManager.getInstance().addWatermarkDict(paramMap);
-    String str = (String)paramMap.get("City");
-    if (str != null) {
-      LogicDataManager.getInstance().setLocation(str);
-    }
-    str = (String)paramMap.get("Weather");
-    if (str != null) {}
-    try
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.b.setVisibility(8);
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+  }
+  
+  private void b(bire parambire)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    c(parambire);
+    e(parambire);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambire.a));
+  }
+  
+  private void c(bire parambire)
+  {
+    if (parambire.a())
     {
-      i = Integer.parseInt(str);
-      LogicDataManager.getInstance().setWeather(i);
-      LogicDataManager.getInstance().setWeatherType(i);
-      paramMap = (String)paramMap.get("TempCurr");
-      if (paramMap != null) {
-        LogicDataManager.getInstance().setTemperature(paramMap.replace(ajyc.a(2131716879), ""));
-      }
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
       return;
     }
-    catch (NumberFormatException localNumberFormatException)
+    if (parambire.d)
     {
-      for (;;)
-      {
-        LogUtils.e(localNumberFormatException);
-        int i = 0;
-      }
-    }
-  }
-  
-  public biqn a()
-  {
-    return this.jdField_a_of_type_Biqn;
-  }
-  
-  public SosoInterface.SosoLocation a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 50);
-    if (this.jdField_a_of_type_Int != 1) {
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
       return;
     }
-    akug.a(new bipc(this, "qq_story_water_mark", false));
-  }
-  
-  public void a(biqn parambiqn)
-  {
-    this.jdField_a_of_type_Biqn = parambiqn;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    xfr.a().a("WM_LIST_CONFIG_CHANGED", Boolean.valueOf(paramBoolean));
-  }
-  
-  public void b()
-  {
-    try
+    if (parambire.jdField_e_of_type_Boolean)
     {
-      jdField_a_of_type_Bipb = null;
-      this.jdField_a_of_type_Biqn = null;
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(0);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgress(parambire.jdField_e_of_type_Int);
       return;
     }
-    finally {}
+    this.b.setVisibility(0);
+    this.b.setImageResource(2130843773);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
+  }
+  
+  private void d(bire parambire)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843839);
+    c(parambire);
+    e(parambire);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(parambire.a));
+  }
+  
+  private void e(bire parambire)
+  {
+    if (parambire.a())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(2130845104);
+      return;
+    }
+    if (parambire.b())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(parambire.a());
+      return;
+    }
+    this.c.setVisibility(8);
+  }
+  
+  private void f(bire parambire)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      a(parambire);
+      return;
+    case 0: 
+      a(parambire);
+      return;
+    case 1: 
+      b(parambire);
+      g(parambire);
+      return;
+    }
+    d(parambire);
+    g(parambire);
+  }
+  
+  private void g(bire parambire)
+  {
+    if (TextUtils.isEmpty(parambire.c)) {
+      return;
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    int i = actj.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843772);
+    localURLDrawableOptions.mRequestWidth = i;
+    localURLDrawableOptions.mRequestHeight = i;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mRetryCount = 3;
+    parambire = URLDrawable.getDrawable(parambire.c, localURLDrawableOptions);
+    if (parambire.getStatus() == 2) {
+      parambire.restartDownload();
+    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(parambire);
+  }
+  
+  public void a(int paramInt, bire parambire)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    f(parambire);
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    int i = actj.a(6.0F, paramContext.getResources());
+    int j = actj.a(2.0F, paramContext.getResources());
+    int k = actj.a(16.0F, paramContext.getResources());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(k / 2);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(-1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-16725252);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
 }
 

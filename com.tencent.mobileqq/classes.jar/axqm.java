@@ -1,52 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
 
 public class axqm
-  extends ampb<axqn>
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 577;
-  }
+  public axqm(LocalCrashCollector.3 param3) {}
   
-  @NonNull
-  public axqn a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new axqn();
-  }
-  
-  @Nullable
-  public axqn a(ampi[] paramArrayOfampi)
-  {
-    axqn localaxqn = new axqn();
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
-      axqn.a(localaxqn, paramArrayOfampi[0].a);
+    try
+    {
+      LocalCrashCollector.a(this.a.this$0).a.setText("");
+      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      paramDialogInterface.dismiss();
+      return;
     }
-    return localaxqn;
-  }
-  
-  public Class<axqn> a()
-  {
-    return axqn.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(axqn paramaxqn) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

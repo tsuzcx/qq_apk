@@ -1,56 +1,51 @@
-import android.content.Intent;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class auff
-  extends MSFServlet
+  implements INetInfoHandler
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  private auff(OlympicToolAppInterface paramOlympicToolAppInterface) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onNetMobile2None()
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    if (OlympicToolAppInterface.i(this.a) != null) {
+      OlympicToolAppInterface.j(this.a).onNetMobile2None();
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
+    if (OlympicToolAppInterface.g(this.a) != null) {
+      OlympicToolAppInterface.h(this.a).onNetMobile2Wifi(paramString);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.a(this.a) != null) {
+      OlympicToolAppInterface.b(this.a).onNetNone2Mobile(paramString);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (OlympicToolAppInterface.e(this.a) != null) {
+      OlympicToolAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.c(this.a) != null) {
+      OlympicToolAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (OlympicToolAppInterface.k(this.a) != null) {
+      OlympicToolAppInterface.l(this.a).onNetWifi2None();
     }
   }
 }

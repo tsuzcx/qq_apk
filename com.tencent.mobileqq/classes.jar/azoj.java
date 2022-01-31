@@ -1,10 +1,17 @@
-public abstract interface azoj
+import android.support.annotation.NonNull;
+
+class azoj
+  implements Comparable<azoj>
 {
-  public abstract void a(int paramInt, String paramString);
+  public String a;
+  public String b;
   
-  public abstract void b(int paramInt, String paramString);
+  azoj(azoc paramazoc) {}
   
-  public abstract void c(String paramString);
+  public int a(@NonNull azoj paramazoj)
+  {
+    return this.b.compareTo(paramazoj.b);
+  }
 }
 
 

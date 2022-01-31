@@ -1,22 +1,22 @@
 package cooperation.qzone;
 
-import bgyx;
-import bgyz;
+import bgzo;
+import bgzq;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 
 public class QZoneStartupMonitor$2$1
   implements Runnable
 {
-  public QZoneStartupMonitor$2$1(bgyz parambgyz, int paramInt) {}
+  public QZoneStartupMonitor$2$1(bgzq parambgzq, int paramInt) {}
   
   public void run()
   {
-    bgyx.a(this.jdField_a_of_type_Bgyz.a);
+    bgzo.a(this.jdField_a_of_type_Bgzq.a);
     if (QzoneConfig.getInstance().getConfig("QZoneSetting", "atuoRecoveryQzoneCount", 1) > this.jdField_a_of_type_Int)
     {
       QLog.i("QZoneStartupMonitor", 1, "oat 不合法，并且wns配置要自动修复，重新安装qzone=");
-      bgyx.b(this.jdField_a_of_type_Bgyz.a);
+      bgzo.b(this.jdField_a_of_type_Bgzq.a);
       LocalMultiProcConfig.putInt("key_recovery_count", this.jdField_a_of_type_Int + 1);
     }
   }

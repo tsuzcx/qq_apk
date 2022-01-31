@@ -1,42 +1,14 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.widget.XPanelContainer;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.io.File;
+import java.io.FilenameFilter;
 
 class bkca
-  implements bjgz
+  implements FilenameFilter
 {
-  bkca(bkbv parambkbv) {}
+  bkca(bkby parambkby) {}
   
-  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    if ((paramDynamicTextItem != null) && (paramInt > -1))
-    {
-      paramView = paramDynamicTextItem.a(paramInt);
-      if (paramView != null)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-        if (!paramView.equals(bjgr.a(paramDynamicTextItem.c(), paramInt))) {
-          break label139;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bkbv.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-        }
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
-        }
-        return;
-        label139:
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
-      }
-    }
-    this.a.a(false);
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
   }
 }
 

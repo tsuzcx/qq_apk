@@ -1,24 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class uoz
-  extends SimpleJob
+public abstract interface uoz
 {
-  uoz(uoy paramuoy, String paramString, upb paramupb, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  public abstract void L_();
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Uoy.a();
-    this.jdField_a_of_type_Uoy.b();
-    ((tbz)tdc.a(17)).a(this.jdField_a_of_type_Upb.a, uoy.a(this.jdField_a_of_type_Uoy).a, uoy.a(this.jdField_a_of_type_Uoy).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Uoy.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
-  }
+  public abstract void M_();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void f();
 }
 
 

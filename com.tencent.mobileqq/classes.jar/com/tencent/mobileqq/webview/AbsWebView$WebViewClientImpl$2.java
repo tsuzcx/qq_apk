@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview;
 
-import bcar;
+import bcbf;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class AbsWebView$WebViewClientImpl$2
   implements Runnable
 {
-  public AbsWebView$WebViewClientImpl$2(bcar parambcar, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public AbsWebView$WebViewClientImpl$2(bcbf parambcbf, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {

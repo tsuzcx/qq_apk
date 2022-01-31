@@ -1,221 +1,111 @@
-import android.annotation.TargetApi;
-import android.media.AudioTrack;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.util.Pair;
-import java.nio.ByteBuffer;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qg.loader.QGDownloader.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@TargetApi(16)
-public class bdtc
-  extends bdte
+public abstract class bdtc
 {
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bdtd jdField_a_of_type_Bdtd;
-  public bkxb a;
+  public int a;
+  private Map<String, List<bdtd>> a;
   
-  public bdtc(bdtg parambdtg, bdtf parambdtf, bkxb parambkxb)
+  @NonNull
+  static bdtc a()
   {
-    super(parambdtg, parambdtf);
-    this.jdField_a_of_type_Bkxb = new bkxb();
-    this.jdField_a_of_type_Bkxb.a(parambkxb);
+    return new bdth();
   }
   
-  private AudioTrack a()
+  private void d(String paramString, boolean paramBoolean)
   {
-    int j = 3;
-    AudioTrack localAudioTrack;
-    for (;;)
+    paramString = (List)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramString != null)
     {
-      try
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
       {
-        if (this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.e == 1)
-        {
-          i = 4;
-          if (this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.b == 16) {
-            j = 2;
-          }
-          int k = AudioTrack.getMinBufferSize(this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.d, i, j);
-          localAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.d, i, j, k, 1);
+        bdtd localbdtd = (bdtd)paramString.next();
+        if (paramBoolean) {
+          localbdtd.a();
+        } else {
+          localbdtd.b();
         }
       }
-      catch (Throwable localThrowable1)
-      {
-        int i;
-        localAudioTrack = null;
-      }
-      try
-      {
-        localAudioTrack.play();
-        return localAudioTrack;
-      }
-      catch (Throwable localThrowable2)
-      {
-        break label94;
-      }
-      i = 12;
-    }
-    label94:
-    veg.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "AudioTrack init fail :%s", localThrowable1);
-    return localAudioTrack;
-  }
-  
-  private void a(AudioTrack paramAudioTrack, byte[] paramArrayOfByte, int paramInt)
-  {
-    int i;
-    switch (this.jdField_a_of_type_Bkxb.jdField_a_of_type_Int)
-    {
-    default: 
-      if (!this.jdField_a_of_type_Bdtg.a) {
-        paramAudioTrack.write(paramArrayOfByte, 0, paramInt);
-      }
-      paramInt = 1;
-      paramArrayOfByte = null;
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((!this.jdField_a_of_type_Bdtg.a) && (paramInt == 0) && (paramArrayOfByte != null)) {
-        paramAudioTrack.write(paramArrayOfByte, 0, i);
-      }
-      return;
-      i = paramArrayOfByte.length / 2;
-      byte[] arrayOfByte = new byte[i];
-      bkxz.a(paramArrayOfByte, 0, arrayOfByte, i);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-      continue;
-      i = paramArrayOfByte.length * 2;
-      arrayOfByte = new byte[i];
-      bkxz.a(paramArrayOfByte, 0, arrayOfByte, i, 2);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-      continue;
-      i = paramArrayOfByte.length * 2 / 3;
-      arrayOfByte = new byte[i];
-      bkxz.b(paramArrayOfByte, 0, arrayOfByte, i);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
-      continue;
-      i = paramArrayOfByte.length * 4;
-      arrayOfByte = new byte[i];
-      bkxz.a(paramArrayOfByte, 0, arrayOfByte, i, 4);
-      paramArrayOfByte = arrayOfByte;
-      paramInt = 0;
     }
   }
   
-  public long a(long paramLong)
+  protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-    return super.a(paramLong);
-  }
-  
-  protected String a()
-  {
-    return "Q.qqstory.mediadecoderMediaCodecAudioRender";
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
-    switch (i)
-    {
-    default: 
-      if ((paramBufferInfo.flags & 0x4) != 0)
-      {
-        veg.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "output EOS");
-        this.jdField_b_of_type_Boolean = true;
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("QGDownloader", 2, "onFail.");
     }
-    for (;;)
+    this.jdField_a_of_type_Int = 1;
+    c(paramString, false);
+    d(paramString, false);
+  }
+  
+  protected void a(String paramString, int paramInt) {}
+  
+  protected abstract void a(String paramString, boolean paramBoolean);
+  
+  public final void a(String paramString, boolean paramBoolean, bdtd parambdtd)
+  {
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    }
+    if (parambdtd != null)
     {
-      paramMediaCodec.releaseOutputBuffer(i, false);
-      return;
-      veg.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "INFO_OUTPUT_BUFFERS_CHANGED");
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
-      return;
-      veg.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "New format " + paramMediaCodec.getOutputFormat());
-      return;
-      veg.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "dequeueOutputBuffer timed out!");
-      return;
-      try
-      {
-        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-        if (localObject == null)
-        {
-          veg.e("Q.qqstory.mediadecoderMediaCodecAudioRender", "find no data");
-          return;
-        }
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      Object localObject = localList;
+      if (localList == null) {
+        localObject = new ArrayList(1);
       }
-      catch (Exception paramMediaCodec)
+      parambdtd.a = System.currentTimeMillis();
+      ((List)localObject).add(parambdtd);
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+    }
+    a(paramString, paramBoolean);
+  }
+  
+  protected void b(String paramString, boolean paramBoolean)
+  {
+    boolean bool = bdte.b.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("QGDownloader", 2, new Object[] { "onSuccess. loadSo=", Boolean.valueOf(paramBoolean), ", soLoaded=", Boolean.valueOf(bool) });
+    }
+    this.jdField_a_of_type_Int = 0;
+    c(paramString, true);
+    if (!paramBoolean)
+    {
+      d(paramString, true);
+      return;
+    }
+    if (!bool)
+    {
+      ThreadManagerV2.excute(new QGDownloader.1(this, paramString), 16, null, true);
+      return;
+    }
+    d(paramString, false);
+  }
+  
+  protected void c(String paramString, boolean paramBoolean)
+  {
+    paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((paramString != null) && (!paramString.isEmpty())) {
+      paramString = (bdtd)paramString.get(0);
+    }
+    for (long l = System.currentTimeMillis() - paramString.a;; l = 0L)
+    {
+      if (paramBoolean) {}
+      for (paramString = "1";; paramString = "0")
       {
-        veg.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "handle data error :%s", paramMediaCodec);
+        vei.b("video_game_tech", "qg_so_download", 0, 0, new String[] { String.valueOf(l), paramString });
         return;
       }
-      if (paramBufferInfo.size != 0)
-      {
-        ((ByteBuffer)localObject).position(paramBufferInfo.offset);
-        ((ByteBuffer)localObject).limit(paramBufferInfo.offset + paramBufferInfo.size);
-      }
-      int j = ((ByteBuffer)localObject).remaining();
-      paramBufferInfo = new byte[j];
-      ((ByteBuffer)localObject).get(paramBufferInfo, 0, j);
-      Object localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = new Pair(paramBufferInfo, Integer.valueOf(j));
-      this.jdField_a_of_type_Bdtd.sendMessage((Message)localObject);
-    }
-  }
-  
-  protected void a(bdtf parambdtf, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    try
-    {
-      this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.e = paramMediaFormat.getInteger("channel-count");
-      this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.d = vxt.a(paramMediaFormat);
-      veg.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "config after b=" + this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.c + " c=" + this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.e + " sc=" + this.jdField_a_of_type_Bkxb.jdField_a_of_type_Axkf.d);
-      paramMediaCodec.configure(paramMediaFormat, null, null, 0);
-      this.jdField_a_of_type_AndroidMediaAudioTrack = a();
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("mc_audio_thread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Bdtd = new bdtd(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return;
-    }
-    catch (Throwable parambdtf)
-    {
-      for (;;)
-      {
-        parambdtf.printStackTrace();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_AndroidMediaAudioTrack != null)
-    {
-      this.jdField_a_of_type_AndroidMediaAudioTrack.stop();
-      this.jdField_a_of_type_AndroidMediaAudioTrack.release();
-      this.jdField_a_of_type_AndroidMediaAudioTrack = null;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_Bdtd = null;
     }
   }
 }

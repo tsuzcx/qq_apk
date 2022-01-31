@@ -1,80 +1,84 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
 public class mqk
 {
-  public int a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  public static String a;
   
-  public mqk(int paramInt1, String paramString, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt2;
+    jdField_a_of_type_JavaLangString = "AVEnterPopActionSheetUtil";
   }
   
-  public int a()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "app == null || context == null || sessionInfo == null");
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (muf.a());
+      muf localmuf = muf.a(paramContext);
+      int[] arrayOfInt = new int[5];
+      localmuf.a(2131689581);
+      arrayOfInt[0] = 1;
+      localmuf.b(2131720362);
+      arrayOfInt[1] = 2;
+      localmuf.b(2131720384);
+      localmuf.c(2131690596);
+      localmuf.a(new mql());
+      localmuf.a(new mqm(localmuf, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramContext, paramInt));
+      localmuf.show();
+    } while (paramInt != 3);
+    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    {
+      axqy.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
+      return;
+    }
+    axqy.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
   }
   
-  public String a()
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      return;
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "enterGroupVideo,, isAudio[" + paramBoolean + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
+    if (!paramBoolean) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      aefg.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.c());
+      return;
+    }
   }
   
-  public void a(int paramInt)
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
   {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {}
+    do
+    {
+      return;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "enterC2CAudioVideo,, isAudio[" + paramBoolean + "], fromType[" + paramInt + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
+      localObject = (askn)paramQQAppInterface.getManager(11);
+    } while (localObject == null);
+    String str;
+    if (paramSessionInfo.jdField_a_of_type_Int == 1006) {
+      str = ((askn)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    }
+    for (Object localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;; localObject = ((askn)localObject).b(str))
+    {
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, str, paramSessionInfo.d, (String)localObject, paramBoolean, paramSessionInfo.b, true, true, null, "from_internal", paramMap);
+      return;
+      str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    }
   }
 }
 

@@ -1,12 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
 
 public class wjl
-  extends RecyclerView.ViewHolder
+  implements wsn
 {
-  public wjl(wjk paramwjk, View paramView)
+  public wjl(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  
+  public void a(boolean paramBoolean)
   {
-    super(paramView);
+    if (paramBoolean)
+    {
+      wpt.a().a(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
+      return;
+    }
+    bcql.a(this.a.getContext(), 2131719955, 0).a();
   }
 }
 

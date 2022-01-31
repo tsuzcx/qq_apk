@@ -1,45 +1,74 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.quic.QuicResDownload;
-import java.util.Properties;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class axel
-  implements axeo
+class axel
+  implements axeq
 {
-  public axel(ShortVideoResourceManager.3 param3) {}
+  axej jdField_a_of_type_Axej;
+  private String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  boolean b = true;
+  boolean c = true;
+  boolean d = true;
+  boolean e = true;
+  
+  public axel(String paramString, axej paramaxej)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Axej = paramaxej;
+  }
   
   public void G_()
   {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onNetWorkNone...", null);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.b) && (this.c) && (this.e)) {
+      axej.a(this.jdField_a_of_type_Axej);
+    }
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      a();
+      return;
+      if (paramString1.startsWith("new_qq_android_native_short_filter_"))
+      {
+        this.b = true;
+        paramString1 = new Intent();
+        paramString1.setAction("new_qq_android_native_short_filter_");
+        paramString1.setPackage(BaseApplicationImpl.getContext().getPackageName());
+        BaseApplicationImpl.getContext().sendBroadcast(paramString1);
+      }
+      else if (paramString1.startsWith("new_qq_android_native_art_filter_"))
+      {
+        this.c = true;
+      }
+      else if (paramString1.startsWith("new_qq_android_native_portrait_filter_"))
+      {
+        this.d = true;
+      }
+      else if (paramString1.startsWith("new_qq_android_native_object_tracking_"))
+      {
+        this.e = true;
+      }
+    }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
-      QuicResDownload.a = true;
-    }
-    try
-    {
-      Properties localProperties = new Properties();
-      localProperties.put("version", "8.2.8.4440");
-      localProperties.put("appid", String.valueOf(AppSetting.a()));
-      localProperties.put("release", String.valueOf(true));
-      localProperties.put("name", paramString);
-      axql.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
   }
 }
 

@@ -1,42 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.util.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
 
-class afcl
-  extends ajxl
+public class afcl
+  implements bfph
 {
-  afcl(afck paramafck) {}
+  public afcl(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bfpc parambfpc) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    afck.a(this.a).removeMessages(1);
-    if ((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing())) {
-      QLog.e("SeparateForward", 1, new Object[] { "onGetFriendNickBatch timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
-    }
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_Bcpq.dismiss();
-      asty.a().b.clear();
-      if ((paramBoolean) && (paramObject != null)) {
-        asty.a().b.putAll((Map)paramObject);
-      }
-      if (asty.a().b.size() == 0)
-      {
-        BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-        if (localBaseActivity != null) {
-          bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131698468, 0).b(localBaseActivity.getTitleBarHeight());
-        }
-      }
-      while (QLog.isDevelopLevel())
-      {
-        QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
-        return;
-        this.a.a((Map)paramObject, asty.a().a);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Bfpc.isShowing()) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
   }
 }

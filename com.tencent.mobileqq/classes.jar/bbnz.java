@@ -1,34 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
 
 public class bbnz
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements bbny
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bbnv jdField_a_of_type_Bbnv;
-  bboa jdField_a_of_type_Bboa;
-  ImageView b;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bbnz(View paramView, bbnv parambbnv, bboa parambboa)
+  public bbnz(String paramString, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_Bbnv = parambbnv;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364372));
-    this.b = ((ImageView)paramView.findViewById(2131364373));
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_Bboa = parambboa;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onClick(View paramView)
+  public URLDrawable a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Bbnv.a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Bboa != null) {
-      this.jdField_a_of_type_Bboa.a(this.jdField_a_of_type_Bbnv.a(this.jdField_a_of_type_Int));
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
+    localBundle.putBoolean("key_use_cache", false);
+    return bbqz.a(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
   }
 }
 

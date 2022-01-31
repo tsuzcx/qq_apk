@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aglg;
-import agqk;
-import bamm;
+import agle;
+import agqi;
+import bana;
 
 public class TroopPhotoController$1
   implements Runnable
 {
-  public TroopPhotoController$1(agqk paramagqk, aglg paramaglg, bamm parambamm) {}
+  public TroopPhotoController$1(agqi paramagqi, agle paramagle, bana parambana) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Aglg, this.jdField_a_of_type_Bamm);
+    this.this$0.a(this.jdField_a_of_type_Agle, this.jdField_a_of_type_Bana);
   }
 }
 

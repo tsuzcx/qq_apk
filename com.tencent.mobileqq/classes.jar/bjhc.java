@@ -1,55 +1,58 @@
-import android.text.Spanned;
-import android.text.TextUtils;
+import android.graphics.Typeface;
+import java.util.ArrayList;
+import java.util.List;
 
-class bjhc
-  extends bkcj
+public class bjhc
 {
-  bjhc(bjha parambjha, int paramInt)
+  float jdField_a_of_type_Float = 0.0F;
+  int jdField_a_of_type_Int;
+  Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
+  ArrayList<bjgy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  float jdField_b_of_type_Float = 0.0F;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  float jdField_c_of_type_Float = 0.0F;
+  int jdField_c_of_type_Int = 0;
+  float d = 0.0F;
+  
+  public bjhc()
   {
-    super(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public int a(CharSequence paramCharSequence)
+  public bjha a(int paramInt, List<String> paramList)
   {
-    return 0;
+    bjha localbjha = new bjha(paramInt, paramList);
+    localbjha.jdField_a_of_type_JavaUtilArrayList.clear();
+    localbjha.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
+      localbjha.a(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    }
+    localbjha.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Boolean) {
+      bjha.a(localbjha, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Int);
+    }
+    bjha.a(localbjha, this.jdField_b_of_type_Boolean, this.d, this.jdField_c_of_type_Int);
+    if (!paramList.isEmpty()) {
+      localbjha.a(0, (String)paramList.get(0));
+    }
+    return localbjha;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(int paramInt)
   {
-    Object localObject = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    String str1 = bakj.b((String)localObject);
-    String str2 = this.jdField_a_of_type_Bjha.a(str1);
-    this.jdField_a_of_type_Int = (((String)localObject).length() - str1.length() + 20);
-    localObject = str2.split("\n");
-    int m = localObject.length;
-    int j = 0;
-    int i = 0;
-    if (j < m)
-    {
-      int k = localObject[j].length();
-      int n = k / 5;
-      if (k % 5 > 0) {}
-      for (k = 1;; k = 0)
-      {
-        i += k + n;
-        j += 1;
-        break;
-      }
-    }
-    if (TextUtils.equals(paramCharSequence, "\n")) {
-      i += 1;
-    }
-    for (;;)
-    {
-      if (i > bjha.a().length)
-      {
-        if (!TextUtils.equals("", paramCharSequence)) {
-          a();
-        }
-        return "";
-      }
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Typeface paramTypeface)
+  {
+    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
+  }
+  
+  public void a(bjgy parambjgy)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambjgy);
   }
 }
 

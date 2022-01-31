@@ -1,12 +1,12 @@
-import android.graphics.Canvas;
+import android.view.animation.Interpolator;
 
-public abstract interface bfwb
+public class bfwb
+  implements Interpolator
 {
-  public abstract void a(Canvas paramCanvas);
-  
-  public abstract int getHeight();
-  
-  public abstract int getWidth();
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+  }
 }
 
 

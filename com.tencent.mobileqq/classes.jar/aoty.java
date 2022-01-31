@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
-class aoty
-  implements aptu
+public class aoty
+  implements View.OnClickListener
 {
-  aoty(aotx paramaotx, FileManagerEntity paramFileManagerEntity) {}
+  public aoty(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 3) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 0))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-      {
-        this.jdField_a_of_type_Aotx.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        return;
-      }
-      this.jdField_a_of_type_Aotx.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Aotx.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_Aotx.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    QfileRecentPicFileTabView.a(this.a, paramView, false);
   }
-  
-  public void b() {}
 }
 
 

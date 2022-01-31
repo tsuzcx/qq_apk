@@ -1,22 +1,23 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
 import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class aspa
   extends AnimatorListenerAdapter
 {
-  public aspa(MultiAIOFragment paramMultiAIOFragment) {}
+  public aspa(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
     super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.d(this.a);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.d(this.a);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

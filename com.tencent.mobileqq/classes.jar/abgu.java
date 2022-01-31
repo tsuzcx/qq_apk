@@ -1,26 +1,31 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class abgu
-  implements ajuc
+  implements bfph
 {
-  public abgu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public abgu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, bfpc parambfpc) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
-    {
-      if (paramBoolean) {
-        break label55;
-      }
-      FriendProfileMoreInfoActivity.a(this.a);
-      bcpw.a(this.a, 2131691028, 0).b(this.a.getTitleBarHeight());
+    if (this.jdField_a_of_type_Bfpc != null) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
-    label55:
-    while (paramInt != 2) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 1);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(3) }));
+      return;
+    case 1: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 2);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(2) }));
       return;
     }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
+    FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 3);
+    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(1) }));
   }
 }
 

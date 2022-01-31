@@ -1,10 +1,8 @@
-import java.util.ArrayList;
 import java.util.List;
 
-public class spu
-  extends ssk
+public abstract interface spu
 {
-  public List<sqb> a = new ArrayList();
+  public abstract void a(List<spy> paramList, List<spz> paramList1);
 }
 
 

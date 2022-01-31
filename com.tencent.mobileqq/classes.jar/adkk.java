@@ -1,76 +1,91 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 
-class adkk
-  extends aqkl
+public class adkk
+  extends Drawable
 {
-  adkk(adkg paramadkg) {}
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private static final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private float jdField_a_of_type_Float;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
+  public adkk(int paramInt, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
-    }
-    if ((this.a.jdField_a_of_type_Asrq != null) && (this.a.jdField_a_of_type_Asrq.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(paramInt1);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    float f1 = 0.0F;
+    int i = getLevel();
+    if (i == 0) {}
+    Rect localRect1;
+    Rect localRect2;
+    int j;
+    int k;
+    int m;
     do
     {
       return;
-      if (this.a.jdField_a_of_type_Asrq != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + adkg.a(this.a));
-      }
-    } while (adkg.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
+      localRect1 = jdField_b_of_type_AndroidGraphicsRect;
+      localRect2 = getBounds();
+      j = localRect2.width();
+      k = localRect2.height();
+      k -= (10000 - i) * k / 10000;
+      m = paramCanvas.getHeight();
+      Gravity.apply(48, j, k, localRect2, localRect1);
+    } while ((j <= 0) || (k <= 0));
+    this.jdField_a_of_type_JavaLangString = (100 - i / 100 + "%");
+    paramCanvas.save();
+    float f2;
+    if (this.jdField_a_of_type_Boolean)
     {
-      long l1 = 0L;
-      try
-      {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
-        }
-      }
+      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
+      f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
+      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.height() + m) / 2;
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
     }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
+    for (;;)
     {
-      if (paramHashMap == null) {
-        break label272;
+      paramCanvas.clipRect(localRect1);
+      jdField_a_of_type_AndroidGraphicsRectF.set(localRect2);
+      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (this.jdField_a_of_type_Boolean) {
+        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
       }
-      paramObject = adkg.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      adkg.a(this.a).removeMessages(0);
-      adkg.a(this.a).sendMessage(paramObject);
+      paramCanvas.restore();
       return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Asrq.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+      f2 = 0.0F;
     }
-    label272:
-    paramHashMap = adkg.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693621);
-    adkg.a(this.a).sendMessage(paramHashMap);
   }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

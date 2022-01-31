@@ -1,20 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
-
-class aeel
-  implements aeen
+public abstract interface aeel
 {
-  aeel(aeei paramaeei, String paramString, aeeo paramaeeo) {}
-  
-  public void a(int paramInt)
-  {
-    if (new File(this.jdField_a_of_type_JavaLangString).exists())
-    {
-      this.jdField_a_of_type_Aeeo.a.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aeeo.f.setVisibility(8);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

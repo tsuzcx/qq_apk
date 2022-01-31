@@ -1,22 +1,19 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class abtw
-  extends Handler
+class abtw
+  implements View.OnClickListener
 {
-  public abtw(QQBroadcastActivity paramQQBroadcastActivity) {}
+  abtw(abtt paramabtt, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Abtt.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 

@@ -1,27 +1,26 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class rvu
-  implements View.OnLayoutChangeListener
+  extends AnimatorListenerAdapter
 {
-  public rvu(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  public rvu(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((CommonSuspensionGestureLayout.a(this.a) != null) && ((CommonSuspensionGestureLayout.a(this.a).getLayoutParams() instanceof FrameLayout.LayoutParams)))
-    {
-      paramView = (FrameLayout.LayoutParams)CommonSuspensionGestureLayout.a(this.a).getLayoutParams();
-      CommonSuspensionGestureLayout.a(this.a, CommonSuspensionGestureLayout.a(this.a));
-      if (paramView.bottomMargin != CommonSuspensionGestureLayout.b(this.a))
-      {
-        paramView.gravity = 80;
-        paramView.bottomMargin = CommonSuspensionGestureLayout.a(this.a);
-        CommonSuspensionGestureLayout.a(this.a).setLayoutParams(paramView);
-      }
-      this.a.b();
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

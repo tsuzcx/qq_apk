@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aazi;
+import aaze;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 public class DiscussionMemberActivity$3$1
   implements Runnable
 {
-  public DiscussionMemberActivity$3$1(aazi paramaazi) {}
+  public DiscussionMemberActivity$3$1(aaze paramaaze) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class DiscussionMemberActivity$3$1
     DiscussionMemberActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(0);
     this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_Ajxl);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_Ajxj);
   }
 }
 

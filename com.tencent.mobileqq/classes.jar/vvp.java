@@ -1,8 +1,11 @@
-import android.support.annotation.NonNull;
+import android.widget.ImageView;
 
-public abstract interface vvp
+class vvp
 {
-  public abstract void a(@NonNull vvw paramvvw);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
+  
+  vvp(vvo paramvvo) {}
 }
 
 

@@ -1,235 +1,133 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoPtuResManager.1;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.ArrayList;
 
 public class axef
+  implements acwb
 {
-  public static boolean a;
+  public View a;
+  private axei jdField_a_of_type_Axei;
+  private String jdField_a_of_type_JavaLangString;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public static int a(Context paramContext)
+  public axef(axed paramaxed, axei paramaxei)
   {
-    int i = 0;
-    if (a()) {
-      if (!a(paramContext)) {
-        break label50;
-      }
-    }
-    label50:
-    for (i = 1;; i = 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPtuResManager", 2, "getPtuResState " + i);
-      }
-      return i;
-    }
+    this.jdField_a_of_type_Axei = paramaxei;
+    this.jdField_a_of_type_AndroidViewView = new View(BaseApplicationImpl.getApplication());
   }
   
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  private void a()
   {
-    int i = 0;
-    String str = "new_qq_android_native_ptu_res_" + paramSVConfigItem.versionCode;
-    if (paramSVConfigItem.name.equalsIgnoreCase(str))
+    if (!axed.a(this.jdField_a_of_type_Axed))
     {
-      if (paramSVConfigItem.versionCode < 70)
+      TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+      axed.a(this.jdField_a_of_type_Axed, true);
+    }
+    if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext()))
+    {
+      if (axed.a(this.jdField_a_of_type_Axed) == null) {
+        axed.a(this.jdField_a_of_type_Axed, TVK_SDKMgr.getProxyFactory());
+      }
+      if (axed.a(this.jdField_a_of_type_Axed) != null)
       {
-        i = -2;
-        VideoEnvironment.a("ShortVideoPtuResManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPendant=" + 62, null);
-      }
-      return i;
-    }
-    return -4;
-  }
-  
-  public static String a()
-  {
-    return axlc.a(VideoEnvironment.a()) + "ptu_res";
-  }
-  
-  private static String a(Context paramContext)
-  {
-    String str = b(paramContext);
-    if (str != null) {}
-    for (paramContext = str;; paramContext = "null")
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "getPtuResPath:pathLog = " + paramContext, null);
-      return str;
-    }
-  }
-  
-  private static void a()
-  {
-    ThreadManager.excute(new ShortVideoPtuResManager.1(), 64, null, false);
-  }
-  
-  private static boolean a()
-  {
-    return axlc.c();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    if (paramContext == null)
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "isFilterSoExist:getPtuResPath soRootPath = null", null);
-      return false;
-    }
-    if (!new File(paramContext).exists())
-    {
-      VideoEnvironment.a("ShortVideoPtuResManager", "isFilterSoExist:getPtuResPath soRootPath=" + paramContext + ",exists=false", null);
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("ptu_short_video_mgr_sp", 4).edit();
-    localEditor.putString("ptu_short_video_so_name_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoPtuResManager", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
-    return bool;
-  }
-  
-  private static boolean a(String paramString, int paramInt)
-  {
-    boolean bool2 = false;
-    String str = paramString.trim();
-    VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK signature=" + paramString, null);
-    paramString = axet.a(str);
-    int i = paramString.a();
-    VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
-    boolean bool1 = bool2;
-    if (i == 0)
-    {
-      paramString = paramString.b().trim();
-      VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
-      i = Integer.parseInt(paramString);
-      VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
-      bool1 = bool2;
-      if (i >= paramInt) {
-        bool1 = true;
+        if (axed.a(this.jdField_a_of_type_Axed) == null) {
+          axed.a(this.jdField_a_of_type_Axed, axed.a(this.jdField_a_of_type_Axed).getCacheMgr(BaseApplicationImpl.getContext()));
+        }
+        if (axed.a(this.jdField_a_of_type_Axed) != null)
+        {
+          TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
+          String str = ShortVideoUtils.a(this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+          localTVK_PlayerVideoInfo.setConfigMap("file_dir", str);
+          localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20160518));
+          localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(ShortVideoUtils.a()));
+          localTVK_PlayerVideoInfo.setVid(this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5() + this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+          axed.a(this.jdField_a_of_type_Axed).preLoadVideoByUrl(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ArrayOfJavaLangString[0], null, localTVK_PlayerVideoInfo);
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideoPreDownloader", 2, "pre-download handle short video:" + str);
+          }
+          this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.setBitValue(0, (byte)1);
+          this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.serial();
+          this.jdField_a_of_type_Axed.a.a().a(this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
+          ausf.a(1000, 100);
+        }
       }
     }
-    return bool1;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool3 = false;
-    boolean bool2 = true;
-    bool1 = true;
     for (;;)
     {
-      try
-      {
-        String str = a();
-        str = str + File.separator + paramString1 + File.separator;
-        File localFile = new File(str);
-        if (localFile.exists())
-        {
-          if ((c().equals(paramString1)) && (b(str, "ptu_config_file")))
-          {
-            VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[checkUnzipFileListSizeIsOK]success=true", null);
-            bool1 = false;
-            return bool1;
-          }
-          bbdj.a(str);
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[deleteDirectory|already exists]unzipPath=" + str, null);
-        }
-        boolean bool4 = localFile.mkdirs();
-        VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[exists]mkOK=" + bool4, null);
-        if (!localFile.exists())
-        {
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:unzipFile.exists=false[error]", null);
-          continue;
-        }
-        try
-        {
-          bbdj.a(paramString2, str, false);
-          bool1 = b(str, "ptu_config_file");
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK success=" + bool1, null);
-          if (!bool1) {
-            break label434;
-          }
-          bool1 = axdc.a(str);
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:copyResFileToFinalDir copyOK=" + bool1, null);
-          if (!bool1) {
-            break;
-          }
-          bool4 = a(paramString1);
-          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK saveOK=" + bool4, null);
-          bool1 = bool3;
-          if (!bool4)
-          {
-            bool4 = a(paramString1);
-            VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool4, null);
-            bool1 = bool3;
-            if (!bool4)
-            {
-              VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-              bool1 = a("ptu_config_file");
-              VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-              bool1 = true;
-            }
-          }
-          a();
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            continue;
-            bool1 = true;
-            continue;
-            bool1 = true;
-          }
-        }
-      }
-      finally {}
-      bool2 = bool1;
-      bool1 = bool2;
-      if (bool2)
-      {
-        bbdj.a(str);
-        bool1 = bool2;
+      BaseShortVideoOprerator.a(this.jdField_a_of_type_Axed.a, this.jdField_a_of_type_Axei);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreDownloader", 2, "pre-download handle short video but sdk not installed");
       }
     }
   }
   
-  private static String b(Context paramContext)
+  public void a(View paramView, ayqo paramayqo, int paramInt1, int paramInt2)
   {
-    paramContext = c();
-    if (paramContext.equals("Ptu000_0"))
+    if (paramayqo.jdField_b_of_type_Long != this.jdField_a_of_type_Axei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq) {}
+    while ((paramayqo.jdField_b_of_type_Int != 6) && (paramayqo.jdField_b_of_type_Int != 17) && (paramayqo.jdField_b_of_type_Int != 9) && (paramayqo.jdField_b_of_type_Int != 20)) {
+      return;
+    }
+    switch (paramayqo.d)
     {
-      VideoEnvironment.a("ShortVideoPtuResManager", "getPtuResPath:pathVersion=Pendant000_0", null);
-      return null;
+    default: 
+      return;
+    case 2002: 
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreDownloader", 2, "STATUS_RECV_PROCESS: get url finished");
+      }
+      if (paramayqo.c != null)
+      {
+        this.jdField_a_of_type_ArrayOfJavaLangString = paramayqo.c;
+        this.jdField_a_of_type_JavaLangString = paramayqo.u;
+        paramInt1 = 0;
+      }
+      break;
+    case 2004: 
+    case 2005: 
+    case 5001: 
+    case 5002: 
+      while (paramInt1 < 1)
+      {
+        if (!bbkk.a(this.jdField_a_of_type_JavaLangString))
+        {
+          paramView = new StringBuilder();
+          paramayqo = this.jdField_a_of_type_ArrayOfJavaLangString;
+          paramayqo[paramInt1] = (paramayqo[paramInt1] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
+        }
+        paramInt1 += 1;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPreDownloader", 2, "STATUS_RECV_FAILED");
+        }
+        if (this.jdField_a_of_type_Axei.jdField_a_of_type_Axeg != null) {
+          this.jdField_a_of_type_Axei.jdField_a_of_type_Axeg.a(paramayqo.d);
+        }
+        axed.a(this.jdField_a_of_type_Axed).remove(this);
+        return;
+      }
+      this.jdField_a_of_type_Axei.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (this.jdField_a_of_type_Axei.jdField_a_of_type_Boolean) {
+        axed.a(this.jdField_a_of_type_Axed, this.jdField_a_of_type_Axei);
+      }
+      break;
     }
-    return a() + File.separator + paramContext + File.separator;
-  }
-  
-  private static boolean b(String paramString1, String paramString2)
-  {
-    return axdc.b(paramString1, paramString2);
-  }
-  
-  private static String c()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("ptu_short_video_mgr_sp", 4).getString("ptu_short_video_so_name_key", "Ptu000_0");
-    boolean bool = a(str, 70);
-    VideoEnvironment.a("ShortVideoPtuResManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
+    for (;;)
+    {
+      axed.a(this.jdField_a_of_type_Axed).remove(this);
+      return;
+      a();
     }
-    return "Ptu000_0";
   }
 }
 

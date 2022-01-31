@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
-
-public class ayzw
-  extends ayyb
+public abstract interface ayzw
 {
-  protected void a(ayti paramayti)
-  {
-    paramayti.a = "LongConn.SharePic2Wechat";
-  }
-  
-  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
-  {
-    paramTryUpImgReq.uint32_bu_type.set(96);
-  }
+  public abstract void a(ayyp paramayyp, ayze paramayze);
 }
 
 

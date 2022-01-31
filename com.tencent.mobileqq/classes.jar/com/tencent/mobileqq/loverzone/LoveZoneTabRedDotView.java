@@ -13,9 +13,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import asav;
-import bbkx;
-import bhus;
+import asax;
+import bbll;
+import bhvj;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -31,8 +31,8 @@ public class LoveZoneTabRedDotView
   private final int jdField_a_of_type_Int = 11;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new asav(this);
-  private bhus jdField_a_of_type_Bhus;
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new asax(this);
+  private bhvj jdField_a_of_type_Bhvj;
   public boolean a;
   private String b = "";
   
@@ -89,11 +89,11 @@ public class LoveZoneTabRedDotView
     {
       this.jdField_a_of_type_Boolean = false;
       setVisibility(8);
-      if (this.jdField_a_of_type_Bhus != null)
+      if (this.jdField_a_of_type_Bhvj != null)
       {
-        this.jdField_a_of_type_Bhus.stop();
-        this.jdField_a_of_type_Bhus.b();
-        this.jdField_a_of_type_Bhus = null;
+        this.jdField_a_of_type_Bhvj.stop();
+        this.jdField_a_of_type_Bhvj.b();
+        this.jdField_a_of_type_Bhvj = null;
       }
     }
   }
@@ -102,14 +102,14 @@ public class LoveZoneTabRedDotView
   {
     if ((this.jdField_a_of_type_Boolean) && (getVisibility() == 0))
     {
-      if (this.jdField_a_of_type_Bhus == null) {
+      if (this.jdField_a_of_type_Bhvj == null) {
         requestLayout();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Bhus.d();
+    this.jdField_a_of_type_Bhvj.d();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -119,24 +119,24 @@ public class LoveZoneTabRedDotView
       return;
     }
     paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130845197);
+    Drawable localDrawable = getResources().getDrawable(2130845198);
     localDrawable.getBounds();
     localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
     localDrawable.draw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + bbkx.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Bhus == null)
+    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + bbll.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Bhvj == null)
     {
-      this.jdField_a_of_type_Bhus = new bhus();
-      this.jdField_a_of_type_Bhus.a(jdField_a_of_type_JavaLangString, 18);
-      this.jdField_a_of_type_Bhus.a(false);
-      this.jdField_a_of_type_Bhus.b(true);
-      this.jdField_a_of_type_Bhus.c();
-      this.jdField_a_of_type_Bhus.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-      this.jdField_a_of_type_Bhus.start();
+      this.jdField_a_of_type_Bhvj = new bhvj();
+      this.jdField_a_of_type_Bhvj.a(jdField_a_of_type_JavaLangString, 18);
+      this.jdField_a_of_type_Bhvj.a(false);
+      this.jdField_a_of_type_Bhvj.b(true);
+      this.jdField_a_of_type_Bhvj.c();
+      this.jdField_a_of_type_Bhvj.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+      this.jdField_a_of_type_Bhvj.start();
     }
-    this.jdField_a_of_type_Bhus.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - bbkx.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + bbkx.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + bbkx.b(25.0F) - bbkx.b(2.0F) * 3);
-    this.jdField_a_of_type_Bhus.draw(paramCanvas);
+    this.jdField_a_of_type_Bhvj.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - bbll.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + bbll.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + bbll.b(25.0F) - bbll.b(2.0F) * 3);
+    this.jdField_a_of_type_Bhvj.draw(paramCanvas);
     paramCanvas.restore();
   }
   
@@ -149,15 +149,15 @@ public class LoveZoneTabRedDotView
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bbkx.b(11.0F));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bbll.b(11.0F));
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     }
     int j = View.MeasureSpec.getSize(paramInt2);
-    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + bbkx.b(6.0F) + bbkx.b(25.0F);
+    paramInt1 = (int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.b) + bbll.b(6.0F) + bbll.b(25.0F);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     int i = (int)(localFontMetrics.bottom - localFontMetrics.top);
-    j = j / 2 - i / 2 - bbkx.b(2.0F);
-    int k = bbkx.b(2.0F);
+    j = j / 2 - i / 2 - bbll.b(2.0F);
+    int k = bbll.b(2.0F);
     if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
@@ -165,7 +165,7 @@ public class LoveZoneTabRedDotView
     this.jdField_a_of_type_AndroidGraphicsRect.top = j;
     this.jdField_a_of_type_AndroidGraphicsRect.right = (paramInt1 + 0);
     this.jdField_a_of_type_AndroidGraphicsRect.bottom = (i + k * 2 + j);
-    this.jdField_a_of_type_Float = (j + bbkx.b(2.0F) - localFontMetrics.top);
+    this.jdField_a_of_type_Float = (j + bbll.b(2.0F) - localFontMetrics.top);
     setMeasuredDimension(paramInt1, paramInt2);
   }
   

@@ -1,16 +1,29 @@
-import android.graphics.Rect;
-import android.hardware.Camera.AutoFocusCallback;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable.1;
 
 public class axif
+  extends axgj
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback;
-  public axgb a;
-  public axge a;
-  public boolean a;
-  Rect b;
+  public Handler a;
   
-  public axif(axhx paramaxhx) {}
+  public axif(Handler paramHandler)
+  {
+    if (paramHandler != null)
+    {
+      this.a = paramHandler;
+      return;
+    }
+    this.a = new Handler(Looper.getMainLooper());
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (this.a == null) {
+      return;
+    }
+    this.a.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
+  }
 }
 
 

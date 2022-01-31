@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bbdj;
-import sjy;
+import bbdx;
+import sjv;
 
 public class WeiShiCacheManager$2
   implements Runnable
 {
-  public WeiShiCacheManager$2(sjy paramsjy) {}
+  public WeiShiCacheManager$2(sjv paramsjv) {}
   
   public void run()
   {
-    bbdj.a(sjy.a(this.this$0), false);
+    bbdx.a(sjv.a(this.this$0), false);
   }
 }
 

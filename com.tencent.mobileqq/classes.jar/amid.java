@@ -1,23 +1,15 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 class amid
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  amid(amic paramamic) {}
+  amid(amib paramamib) {}
   
-  public void onClick(View paramView)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if ((amic.a(this.a) != null) && (amic.a(this.a).getVisibility() == 0) && (amic.a(this.a).hasFocus())) {
-      return;
-    }
-    amic.a(this.a);
-    paramView = new Bundle();
-    paramView.putInt("start_from", 1);
-    ColorNoteSettingFragment.a(amic.a(this.a), ColorNoteSettingFragment.class, paramView);
-    axqw.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
+    amib.a(this.a);
+    return true;
   }
 }
 

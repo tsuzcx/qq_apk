@@ -1,19 +1,62 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import org.json.JSONObject;
 
 public class vju
+  implements Cloneable
 {
-  public final int c;
-  public final Bitmap c;
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public String c;
   
-  public vju(int paramInt, Bitmap paramBitmap)
+  static
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
   }
   
-  public String toString()
+  public static vju a(JSONObject paramJSONObject)
   {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+    vju localvju = new vju();
+    localvju.jdField_b_of_type_Int = paramJSONObject.getInt("version");
+    localvju.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
+    localvju.c = paramJSONObject.getString("url");
+    localvju.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
+    return localvju;
+  }
+  
+  public String a()
+  {
+    Object localObject = new File(c());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
+        return c();
+      }
+    }
+    return null;
+  }
+  
+  public String b()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+  }
+  
+  public String c()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  public String d()
+  {
+    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 

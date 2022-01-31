@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.message;
 
 import android.app.ProgressDialog;
-import bejp;
+import bekg;
 
 public class GetScreenshot$1
   implements Runnable
@@ -10,8 +10,8 @@ public class GetScreenshot$1
   {
     if (this.a != null)
     {
-      bejp.a(this.this$0, new ProgressDialog(this.a));
-      bejp.a(this.this$0).show();
+      bekg.a(this.this$0, new ProgressDialog(this.a));
+      bekg.a(this.this$0).show();
     }
   }
 }

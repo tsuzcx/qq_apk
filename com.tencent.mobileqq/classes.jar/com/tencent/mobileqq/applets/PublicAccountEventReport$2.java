@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
-import akwv;
+import akwu;
 import android.text.TextUtils;
-import bhzv;
-import bhzw;
+import biam;
+import bian;
 
 public final class PublicAccountEventReport$2
   implements Runnable
@@ -12,7 +12,7 @@ public final class PublicAccountEventReport$2
   
   public void run()
   {
-    Object localObject = akwv.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = akwu.a(this.jdField_a_of_type_JavaLangString);
     int j;
     String str;
     int k;
@@ -28,10 +28,10 @@ public final class PublicAccountEventReport$2
     label117:
     for (int i = 6;; i = 1)
     {
-      localObject = new bhzw(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
-      ((bhzw)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((bhzw)localObject).f = "vab_push";
-      bhzv.a().a((bhzw)localObject);
+      localObject = new bian(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
+      ((bian)localObject).l = this.jdField_a_of_type_JavaLangString;
+      ((bian)localObject).f = "vab_push";
+      biam.a().a((bian)localObject);
       return;
     }
   }

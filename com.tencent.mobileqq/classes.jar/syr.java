@@ -1,37 +1,26 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
 
-public class syr
+public abstract class syr<Request extends sys, Respond extends syn>
+  implements syq<Request, Respond>
 {
-  public static volatile syr a;
+  public static Handler a = new Handler(Looper.getMainLooper());
   
-  public static syr a()
+  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
   {
-    Object localObject = a;
-    if (localObject == null) {
-      try
-      {
-        syr localsyr2 = a;
-        localObject = localsyr2;
-        if (localsyr2 == null)
-        {
-          localObject = new syr();
-          a = (syr)localObject;
-        }
-        return localObject;
-      }
-      finally {}
+    if (Thread.currentThread() == a.getLooper().getThread())
+    {
+      b(paramRequest, paramRespond, paramErrorMessage);
+      return;
     }
-    return localsyr1;
+    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
   }
   
-  public <Request extends syv, Respond extends syq> void a(Request paramRequest, syt<Request, Respond> paramsyt)
-  {
-    paramRequest = new sys(paramRequest);
-    paramRequest.jdField_a_of_type_Syt = paramsyt;
-    paramRequest.jdField_a_of_type_Syv.a(paramRequest);
-    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_Syv);
-  }
+  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 

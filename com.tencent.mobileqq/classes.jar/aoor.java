@@ -1,37 +1,36 @@
-import android.view.View;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class aoor
-  implements bfoq
+  implements bfos
 {
-  public aoor(LocalFileBrowserActivity paramLocalFileBrowserActivity, bfol parambfol) {}
+  public aoor(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-        if ((!apvb.a(paramView.c())) || (apvb.c(paramView.c())))
-        {
-          apue.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          aptv.a(2131692410);
-        }
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
       }
+      return;
     }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.g + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    }
+    if (paramInt == 0)
+    {
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
   }
 }
 

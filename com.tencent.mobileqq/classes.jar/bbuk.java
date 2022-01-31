@@ -1,17 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vashealth.SportManager.3.1;
-import mqq.observer.BusinessObserver;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bbuk
-  implements BusinessObserver
+class bbuk
+  implements SensorEventListener
 {
-  bbuk(bbui parambbui) {}
+  bbuk(bbuh parambbuh) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    this.a.e = ("Current step data:" + String.valueOf(paramSensorEvent.values[0]));
+    QLog.d("HealthStepCounterPlugin", 1, "onSensorChanged:" + this.a.e);
+    if ((bbuh.jdField_b_of_type_Int == 1) && (bbuh.jdField_b_of_type_Boolean))
+    {
+      this.a.c = ((int)paramSensorEvent.values[0]);
+      bbuh.jdField_b_of_type_Boolean = false;
+    }
+    if (bbuh.jdField_b_of_type_Int == 3)
+    {
+      bbuh.jdField_b_of_type_Int = 0;
+      this.a.d = ((int)paramSensorEvent.values[0]);
+    }
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      try
+      {
+        paramSensorEvent = new JSONObject();
+        paramSensorEvent.put("retCode", 0);
+        paramSensorEvent.put("step", this.a.d - this.a.c);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("source", "none");
+        paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, localJSONObject);
+        if (bbuh.a)
+        {
+          this.a.mRuntime.a().loadUrl("javascript:" + paramSensorEvent);
+          QLog.d("HealthStepCounterPlugin", 1, "Steps detect:" + (this.a.d - this.a.c));
+          bbuh.a = false;
+        }
+        bbuh.jdField_b_of_type_Boolean = true;
+        return;
+      }
+      catch (Exception paramSensorEvent)
+      {
+        paramSensorEvent = new JSONObject();
+      }
+      try
+      {
+        paramSensorEvent.put("retCode", -1);
+        paramSensorEvent.put("step", 0);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("source", "none");
+        this.a.dispatchJsEvent("StepsDetect", paramSensorEvent, localJSONObject);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
+      }
+      catch (JSONException paramSensorEvent)
+      {
+        for (;;)
+        {
+          paramSensorEvent.printStackTrace();
+        }
+      }
     }
   }
 }

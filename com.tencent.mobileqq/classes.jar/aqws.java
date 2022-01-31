@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
-
-public class aqws
-  implements askp<T, List<FontBubble>>
+class aqws
+  extends akat
 {
-  public aqws(FontBubblePanelView paramFontBubblePanelView) {}
+  aqws(aqwp paramaqwp) {}
   
-  public List<FontBubble> a(T paramT)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
-    FontBubble localFontBubble = new FontBubble();
-    localFontBubble.viewType = 0;
-    paramT.add(localFontBubble);
-    return paramT;
+    this.a.a(paramLong);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, akaq paramakaq)
+  {
+    this.a.a(paramLong);
   }
 }
 

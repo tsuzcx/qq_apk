@@ -1,13 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
 
 public class bktd
-  implements DialogInterface.OnClickListener
+  implements INetInfoHandler
 {
-  public bktd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bktd(bktc parambktc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    Thread.currentThread().getId();
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bktc.a(this.a);
+    }
+    while (bktc.a(this.a) == null) {
+      return;
+    }
+    bktc.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

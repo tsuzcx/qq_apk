@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aece
-  implements DialogInterface.OnClickListener
+public class aece
+  extends acuj
 {
-  aece(aebz paramaebz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  long jdField_a_of_type_Long;
+  acxj jdField_a_of_type_Acxj;
+  public aibq a;
+  public ImageView b;
+  public ImageView c;
+  public TextView d;
 }
 
 

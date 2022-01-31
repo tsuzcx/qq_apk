@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
 class agsn
-  implements DialogInterface.OnClickListener
+  implements aptw
 {
-  agsn(agsl paramagsl, Runnable paramRunnable) {}
+  agsn(agsj paramagsj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.h();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
   }
 }
 

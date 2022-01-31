@@ -1,8 +1,23 @@
-public abstract interface bauk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.qphone.base.util.QLog;
+
+class bauk
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  bauk(baui parambaui) {}
   
-  public abstract void b();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
+    {
+      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
+      }
+    }
+  }
 }
 
 

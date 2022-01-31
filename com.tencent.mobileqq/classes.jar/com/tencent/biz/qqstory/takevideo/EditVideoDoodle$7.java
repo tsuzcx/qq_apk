@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import vgd;
-import vhp;
+import vga;
+import vhm;
 
 public class EditVideoDoodle$7
   implements Runnable
 {
-  public EditVideoDoodle$7(vgd paramvgd) {}
+  public EditVideoDoodle$7(vga paramvga) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Int == 2) {
-      this.this$0.jdField_a_of_type_Vhp.f();
+      this.this$0.jdField_a_of_type_Vhm.f();
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_Int = 1;
       return;
       if (this.this$0.jdField_a_of_type_Int == 3) {
-        this.this$0.jdField_a_of_type_Vhp.r();
+        this.this$0.jdField_a_of_type_Vhm.r();
       }
     }
   }

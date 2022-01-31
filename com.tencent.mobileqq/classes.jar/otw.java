@@ -1,33 +1,29 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
 public class otw
-  implements ohm
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public otw(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  public otw(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    if (!paramBoolean)
-    {
-      this.a.onBackEvent();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
       return;
     }
-    this.a.a(this.a.a);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.onBackEvent();
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setDuration(400L);
+    localAlphaAnimation.setAnimationListener(new otx(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 

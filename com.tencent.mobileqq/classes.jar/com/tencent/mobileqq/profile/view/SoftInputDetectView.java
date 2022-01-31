@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
-import avam;
+import avao;
 import com.tencent.qphone.base.util.QLog;
 
 public class SoftInputDetectView
@@ -13,7 +13,7 @@ public class SoftInputDetectView
 {
   private int jdField_a_of_type_Int;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private avam jdField_a_of_type_Avam;
+  private avao jdField_a_of_type_Avao;
   private boolean jdField_a_of_type_Boolean = true;
   private int b;
   private int c;
@@ -66,8 +66,8 @@ public class SoftInputDetectView
       if (QLog.isColorLevel()) {
         QLog.d("SoftInputDetectView", 2, "Detected layout change. Input Method is showing? " + bool + " Input Method Height is " + this.jdField_a_of_type_Int);
       }
-      if (this.jdField_a_of_type_Avam != null) {
-        this.jdField_a_of_type_Avam.a(bool, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Avao != null) {
+        this.jdField_a_of_type_Avao.a(bool, this.jdField_a_of_type_Int);
       }
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
       return;
@@ -81,9 +81,9 @@ public class SoftInputDetectView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnImStateChangedListener(avam paramavam)
+  public void setOnImStateChangedListener(avao paramavao)
   {
-    this.jdField_a_of_type_Avam = paramavam;
+    this.jdField_a_of_type_Avao = paramavao;
   }
 }
 

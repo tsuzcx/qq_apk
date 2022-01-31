@@ -1,69 +1,31 @@
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_PAIR.sweet_pair_byebye_rsp;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class bhzg
-  extends bhzb
+class bhzg
+  implements Downloader.DownloadListener
 {
-  public QQAppInterface a()
+  bhzg(bhzf parambhzf, String paramString1, String paramString2) {}
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (QLog.isColorLevel()) {
+      QLog.i("LottieLoader", 0, "diy data download fail url = " + paramString);
     }
-    return null;
+    bhzf.a(this.jdField_a_of_type_Bhzf, 2);
+    bhzf.a(this.jdField_a_of_type_Bhzf, false, paramString, this.jdField_a_of_type_JavaLangString, this.b);
   }
   
-  public QzoneExternalRequest a(Intent paramIntent)
-  {
-    return new bhzh(this, paramIntent);
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong1);
-    localIntent.putExtra("friendUin", paramLong2);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject = a();
-    int i;
-    if (localObject != null)
-    {
-      localObject = (aqkf)((QQAppInterface)localObject).a(153);
-      paramIntent = String.valueOf(paramIntent.getLongExtra("friendUin", -1L));
-      if (paramFromServiceMsg == null) {
-        break label98;
-      }
-      i = paramFromServiceMsg.getResultCode();
+    if (QLog.isColorLevel()) {
+      QLog.i("LottieLoader", 0, "diy data download success url = " + paramString);
     }
-    while (i == 1000)
-    {
-      paramFromServiceMsg = (sweet_pair_byebye_rsp)bhoi.a(paramFromServiceMsg.getWupBuffer(), "sweet_pair_byebye");
-      if (paramFromServiceMsg != null)
-      {
-        paramFromServiceMsg = paramFromServiceMsg.rsp_comm;
-        if (paramFromServiceMsg.retcode == 0) {
-          ((aqkf)localObject).a(true, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
-        }
-      }
-      else
-      {
-        return;
-        label98:
-        i = -1;
-        continue;
-      }
-      ((aqkf)localObject).a(false, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
-      return;
-    }
-    ((aqkf)localObject).a(false, -1, null, null);
+    bhzf.b(this.jdField_a_of_type_Bhzf, true, paramString, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

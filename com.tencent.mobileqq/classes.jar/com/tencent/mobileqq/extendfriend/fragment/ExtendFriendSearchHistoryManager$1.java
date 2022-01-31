@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aoif;
+import aoik;
 
 public class ExtendFriendSearchHistoryManager$1
   implements Runnable
 {
-  public ExtendFriendSearchHistoryManager$1(aoif paramaoif) {}
+  public ExtendFriendSearchHistoryManager$1(aoik paramaoik) {}
   
   public void run()
   {
-    aoif.a(this.this$0);
+    aoik.a(this.this$0);
   }
 }
 

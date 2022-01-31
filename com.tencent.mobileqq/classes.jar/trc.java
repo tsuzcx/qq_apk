@@ -1,16 +1,14 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
 class trc
-  extends tpo
+  extends tpx
 {
-  trc(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trt paramtrt)
+  trc(tqh paramtqh, String paramString)
   {
-    super(paramStoryVideoItem);
+    super(paramString);
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trt.e = ((String)a("result"));
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
     return true;
   }
 }

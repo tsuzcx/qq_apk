@@ -1,50 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment.4.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class afdy
-  implements afdo
+  extends akui
 {
-  public afdy(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public afdy(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
   {
-    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
-      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
     }
-    if (paramBoolean)
+    if (paramInt != 0)
     {
-      if (paramInt <= 0) {
-        break label73;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
+      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
     }
-    label73:
-    Object localObject;
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
-      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689703);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689709);
-      this.a.c.setText(2131689704);
-      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.c.setOnClickListener(new afdz(this));
-      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
-    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
-    ((ViewGroup)localObject).setBackgroundResource(2130839132);
   }
 }
 

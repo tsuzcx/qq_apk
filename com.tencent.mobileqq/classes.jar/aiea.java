@@ -1,52 +1,37 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class aiea
-  implements Comparator<ResultRecord>
+  implements View.OnTouchListener
 {
-  public int a(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
+  
+  public aiea(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = -1;
-    long l1;
-    long l2;
-    label17:
-    int i;
-    if (paramResultRecord1 == null)
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      l1 = 0L;
-      if (paramResultRecord2 != null) {
-        break label38;
-      }
-      l2 = 0L;
-      if (l1 != l2) {
-        break label47;
-      }
-      i = 0;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
-    label38:
-    label47:
-    do
+    for (;;)
     {
-      do
-      {
-        return i;
-        l1 = paramResultRecord1.a;
-        break;
-        l2 = paramResultRecord2.a;
-        break label17;
-        i = j;
-      } while (l1 == 0L);
-      if (l2 == 0L) {
-        return 1;
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
       }
-      i = j;
-    } while (l1 < l2);
-    return 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aiea
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bawi;
-import bbkx;
+import baww;
+import bbll;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 
@@ -47,13 +47,13 @@ public class FormMultiLineSwitchItem
     }
     if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
     {
-      bawi.a(this.b, false);
+      baww.a(this.b, false);
       setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + " " + this.jdField_a_of_type_JavaLangString);
     }
     this.b.setSingleLine(false);
     this.b.setDuplicateParentStateEnabled(true);
-    int i = bbkx.a();
-    int j = bbkx.a(96.0F);
+    int i = bbll.a();
+    int j = bbll.a(96.0F);
     this.b.setMaxWidth(i - j);
     localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131296621);
     localLayoutParams.bottomMargin = getResources().getDimensionPixelOffset(2131296627);

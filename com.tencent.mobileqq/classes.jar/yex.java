@@ -1,24 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.msg.data.MessageForDevShortVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class yex
-  extends akgf
+public final class yex
+  implements Parcelable.Creator<MessageForShortVideo>
 {
-  yex(yeu paramyeu) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public MessageForDevShortVideo a(Parcel paramParcel)
   {
-    if (paramBoolean)
-    {
-      if (paramInt == 1)
-      {
-        aoen.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
-        return;
-      }
-      aoen.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
-      return;
-    }
-    aoen.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
+    localMessageForDevShortVideo.uuid = paramParcel.readString();
+    localMessageForDevShortVideo.md5 = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
+    localMessageForDevShortVideo.fileType = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
+    localMessageForDevShortVideo.fileSource = paramParcel.readString();
+    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
+    return localMessageForDevShortVideo;
+  }
+  
+  public MessageForDevShortVideo[] a(int paramInt)
+  {
+    return new MessageForDevShortVideo[paramInt];
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import noo;
-import npx;
+import nol;
+import npu;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rap;
+import ram;
 
 public class ReadInJoyBaseAdapter$15
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$15(rap paramrap, BaseArticleInfo paramBaseArticleInfo) {}
+  public ReadInJoyBaseAdapter$15(ram paramram, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class ReadInJoyBaseAdapter$15
       try
       {
         localJSONObject.put("algorithm_id", this.a.mAlgorithmID);
-        noo.a(null, "", "0X8008AD1", "0X8008AD1", 0, 0, "", "", "", npx.a(this.a.mVideoVid, this.a.innerUniqueID, (int)this.a.mChannelID, localJSONObject), false);
+        nol.a(null, "", "0X8008AD1", "0X8008AD1", 0, 0, "", "", "", npu.a(this.a.mVideoVid, this.a.innerUniqueID, (int)this.a.mChannelID, localJSONObject), false);
         return;
       }
       catch (JSONException localJSONException)

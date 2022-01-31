@@ -1,29 +1,47 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class bbuq
-  extends EmojiUiPlugin
+  extends Handler
 {
-  public void OnActivityCreate()
+  public bbuq(PathTraceManager paramPathTraceManager, Looper paramLooper)
   {
-    this.mActivityType = 2;
-    super.OnActivityCreate();
+    super(paramLooper);
   }
   
-  public void OnActivityPause()
+  public void handleMessage(Message paramMessage)
   {
-    super.OnActivityPause();
-    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
-  }
-  
-  public long getPluginBusiness()
-  {
-    return 8L;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramMessage = (JSONObject)paramMessage.obj;
+        String str = paramMessage.getString("callback");
+        if (this.a.a != null)
+        {
+          bbug localbbug = (bbug)this.a.a.get();
+          if (localbbug != null)
+          {
+            localbbug.callJs(str, new String[] { paramMessage.toString() });
+            return;
+          }
+        }
+      }
+      catch (Exception paramMessage) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbuq
  * JD-Core Version:    0.7.0.1
  */

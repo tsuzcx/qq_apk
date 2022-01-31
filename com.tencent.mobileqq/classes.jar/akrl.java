@@ -1,33 +1,16 @@
-import java.util.Comparator;
+import android.graphics.Bitmap;
 
 public class akrl
-  implements Comparator<akrm>
 {
-  private int a;
-  
-  public akrl(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int a(akrm paramakrm1, akrm paramakrm2)
-  {
-    if (this.a == 2) {
-      if (paramakrm1.b <= paramakrm2.b) {}
-    }
-    while (paramakrm1.a > paramakrm2.a)
-    {
-      return -1;
-      if (paramakrm1.b < paramakrm2.b) {
-        return 1;
-      }
-      return 0;
-    }
-    if (paramakrm1.a < paramakrm2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

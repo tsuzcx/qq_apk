@@ -1,16 +1,24 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.Conversation;
 
 public class aawu
-  extends atzl
+  extends BroadcastReceiver
 {
   public aawu(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
-      avpu.a(this.a);
+    if ("login".equals(paramIntent.getStringExtra("status")))
+    {
+      this.a.a.a(27, 2);
+      this.a.a.b = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
+      return;
     }
+    this.a.a.k();
   }
 }
 

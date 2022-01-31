@@ -1,12 +1,12 @@
 class akek
-  implements bgka
+  implements lxr
 {
-  akek(akej paramakej) {}
+  akek(akei paramakei) {}
   
-  public void a(bgjz parambgjz)
+  public void a(lxq paramlxq)
   {
-    parambgjz.a(this.a.a.a);
-    parambgjz.a();
+    paramlxq.a(this.a.a.a);
+    paramlxq.a();
   }
 }
 

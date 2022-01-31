@@ -1,14 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 class ayne
-  implements DialogInterface.OnClickListener
+  extends akil
 {
-  ayne(ayna paramayna) {}
+  ayne(aync paramaync) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, "onTroopManagerSuccess,reqType=" + paramInt1 + ", result=" + paramInt2 + ", troopUin=" + paramString);
+    }
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    {
+      Iterator localIterator = aync.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((aynn)((Map.Entry)localIterator.next()).getValue()).a(paramInt1, paramInt2, paramString);
+      }
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, "onPassiveExit, troopUin=" + paramString + ", reason=" + paramInt);
+    }
+    Iterator localIterator = aync.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((aynn)((Map.Entry)localIterator.next()).getValue()).a(paramString, paramInt);
+    }
   }
 }
 

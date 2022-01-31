@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.util.List;
 
 public class aubb
-  implements bcns
+  extends aylg
 {
   public aubb(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    OCRResultFragmentNew.a(this.a, 0);
-  }
-  
-  public void a(String paramString)
-  {
-    aylc.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    auab.a(OCRResultFragmentNew.a(this.a), paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    aylc.a(OCRResultFragmentNew.a(this.a), (QQAppInterface)OCRResultFragmentNew.a(this.a).get(), paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    TranslateFragment.a(OCRResultFragmentNew.a(this.a), paramString);
+    super.a(paramBoolean, paramList);
+    if (OCRResultFragmentNew.a(this.a) != null)
+    {
+      OCRResultFragmentNew.a(this.a).setOnCancelListener(null);
+      OCRResultFragmentNew.a(this.a).dismiss();
+    }
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultFragmentNew.a(this.a, 2);
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131707834), 0).a();
   }
 }
 

@@ -1,17 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ImageUploadHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-final class babw
-  implements DialogInterface.OnClickListener
+public class babw
+  implements bhxi
 {
-  babw(XMediaEditor paramXMediaEditor, List paramList) {}
+  private babe a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public babw(ArithmeticViewHolder paramArithmeticViewHolder, babe parambabe)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Babe = parambabe;
+  }
+  
+  private void a(babe parambabe)
+  {
+    ThreadManager.getUIHandler().post(new ArithmeticViewHolder.ImageUploadHandler.1(this, parambabe));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Babe.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Babe.jdField_a_of_type_Int = paramInt;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Babe);
+    a(this.jdField_a_of_type_Babe);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Babe.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Babe.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Babe.jdField_a_of_type_Int = 100;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Babe);
+    a(this.jdField_a_of_type_Babe);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArithmeticViewHolder", 2, "update success , url = " + paramString);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Babe.jdField_b_of_type_Int = 2;
+    a(this.jdField_a_of_type_Babe);
+    QLog.w("ArithmeticViewHolder", 2, "upload error , code = " + paramInt + " ;local path = " + this.jdField_a_of_type_Babe.jdField_b_of_type_JavaLangString);
   }
 }
 

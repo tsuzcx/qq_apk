@@ -1,33 +1,28 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
 
-public class aopa
-  implements TextWatcher
+class aopa
+  implements View.OnClickListener
 {
-  public aopa(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  aopa(aooz paramaooz, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
-      aptv.a(BaseApplicationImpl.getContext().getString(2131694381));
-    }
-    while (TextUtils.isEmpty(paramEditable)) {
+    paramView = (apew)this.jdField_a_of_type_AndroidViewView.getTag();
+    this.jdField_a_of_type_Aooz.a.e = paramView.a;
+    paramView = (FileInfo)this.jdField_a_of_type_Aooz.a.b.get(this.jdField_a_of_type_Aooz.a.e);
+    if ((!apvd.a(paramView.c())) || (apvd.c(paramView.c())))
+    {
+      apug.d(paramView.c());
+      this.jdField_a_of_type_Aooz.a.b.remove(this.jdField_a_of_type_Aooz.a.e);
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Aooz.a);
       return;
     }
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
+    aptx.a(2131692410);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

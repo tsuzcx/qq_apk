@@ -14,28 +14,28 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import baaj;
-import baak;
-import baal;
-import baam;
-import baan;
-import baao;
-import baas;
-import baat;
-import baav;
-import baaw;
 import baax;
+import baay;
+import baaz;
+import baba;
 import babb;
 import babc;
 import babg;
+import babh;
 import babj;
+import babk;
+import babl;
 import babp;
-import babs;
+import babq;
 import babu;
-import baca;
+import babx;
+import bacd;
 import bacg;
 import baci;
-import bfmr;
+import baco;
+import bacu;
+import bacw;
+import bfni;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 import com.tencent.qphone.base.util.QLog;
@@ -51,13 +51,13 @@ public class XMediaEditor
   private int jdField_a_of_type_Int;
   private Bundle jdField_a_of_type_AndroidOsBundle = new Bundle();
   private View jdField_a_of_type_AndroidViewView;
-  private baak jdField_a_of_type_Baak;
-  private baal jdField_a_of_type_Baal;
-  private baam jdField_a_of_type_Baam;
-  public baao a;
-  private babb jdField_a_of_type_Babb;
-  babp jdField_a_of_type_Babp = new baaj(this);
-  private babs jdField_a_of_type_Babs;
+  private baay jdField_a_of_type_Baay;
+  private baaz jdField_a_of_type_Baaz;
+  private baba jdField_a_of_type_Baba;
+  public babc a;
+  private babp jdField_a_of_type_Babp;
+  bacd jdField_a_of_type_Bacd = new baax(this);
+  private bacg jdField_a_of_type_Bacg;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
@@ -80,20 +80,20 @@ public class XMediaEditor
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = new LinearLayoutManager(paramContext);
-    addItemDecoration(new baan(26));
+    addItemDecoration(new babb(26));
     setLayoutManager(paramAttributeSet);
     paramAttributeSet = new SparseArray();
-    this.jdField_a_of_type_Babs = new babs(this, paramContext);
-    this.jdField_a_of_type_Babs.a(this.jdField_a_of_type_Babp);
-    paramAttributeSet.put(-1, this.jdField_a_of_type_Babs);
-    paramAttributeSet.put(0, new baca(this, paramContext).a(this.jdField_a_of_type_Babp));
-    paramAttributeSet.put(3, new babj(this, paramContext).a(this.jdField_a_of_type_Babp));
-    paramAttributeSet.put(1, new babu(this).a(this.jdField_a_of_type_Babp));
-    paramAttributeSet.put(2, new baci(this).a(this.jdField_a_of_type_Babp));
-    paramAttributeSet.put(4, new HWReciteItem(this, paramContext).a(this.jdField_a_of_type_Babp));
-    paramAttributeSet.put(7, new babg(this, paramContext).a(this.jdField_a_of_type_Babp));
-    this.jdField_a_of_type_Baao = new baao(paramAttributeSet);
-    setAdapter(this.jdField_a_of_type_Baao);
+    this.jdField_a_of_type_Bacg = new bacg(this, paramContext);
+    this.jdField_a_of_type_Bacg.a(this.jdField_a_of_type_Bacd);
+    paramAttributeSet.put(-1, this.jdField_a_of_type_Bacg);
+    paramAttributeSet.put(0, new baco(this, paramContext).a(this.jdField_a_of_type_Bacd));
+    paramAttributeSet.put(3, new babx(this, paramContext).a(this.jdField_a_of_type_Bacd));
+    paramAttributeSet.put(1, new baci(this).a(this.jdField_a_of_type_Bacd));
+    paramAttributeSet.put(2, new bacw(this).a(this.jdField_a_of_type_Bacd));
+    paramAttributeSet.put(4, new HWReciteItem(this, paramContext).a(this.jdField_a_of_type_Bacd));
+    paramAttributeSet.put(7, new babu(this, paramContext).a(this.jdField_a_of_type_Bacd));
+    this.jdField_a_of_type_Babc = new babc(paramAttributeSet);
+    setAdapter(this.jdField_a_of_type_Babc);
     setDefaultContent();
   }
   
@@ -125,10 +125,10 @@ public class XMediaEditor
   {
     int i = 0;
     int k;
-    for (int j = 0; i < this.jdField_a_of_type_Baao.getItemCount(); j = k)
+    for (int j = 0; i < this.jdField_a_of_type_Babc.getItemCount(); j = k)
     {
       k = j;
-      if (this.jdField_a_of_type_Baao.a(i).b() == paramInt) {
+      if (this.jdField_a_of_type_Babc.a(i).b() == paramInt) {
         k = j + 1;
       }
       i += 1;
@@ -138,7 +138,7 @@ public class XMediaEditor
   
   public String a()
   {
-    return this.jdField_a_of_type_Baao.a();
+    return this.jdField_a_of_type_Babc.a();
   }
   
   public String a(String paramString)
@@ -146,19 +146,19 @@ public class XMediaEditor
     return this.jdField_a_of_type_AndroidOsBundle.getString(paramString);
   }
   
-  public ArrayList<babc> a()
+  public ArrayList<babq> a()
   {
-    return this.jdField_a_of_type_Baao.a();
+    return this.jdField_a_of_type_Babc.a();
   }
   
-  public ArrayList<baas> a(int paramInt)
+  public ArrayList<babg> a(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdField_a_of_type_Baao.getItemCount())
+    while (i < this.jdField_a_of_type_Babc.getItemCount())
     {
-      if (this.jdField_a_of_type_Baao.a(i).b() == paramInt) {
-        localArrayList.add(this.jdField_a_of_type_Baao.a(i));
+      if (this.jdField_a_of_type_Babc.a(i).b() == paramInt) {
+        localArrayList.add(this.jdField_a_of_type_Babc.a(i));
       }
       i += 1;
     }
@@ -167,13 +167,13 @@ public class XMediaEditor
   
   public void a()
   {
-    this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
-    bacg localbacg = (bacg)findViewHolderForAdapterPosition(this.jdField_a_of_type_Babb.jdField_c_of_type_Int);
-    if (localbacg != null)
+    this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
+    bacu localbacu = (bacu)findViewHolderForAdapterPosition(this.jdField_a_of_type_Babp.jdField_c_of_type_Int);
+    if (localbacu != null)
     {
-      localbacg.a.setFocusable(true);
-      localbacg.a.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new XMediaEditor.1(this, localbacg));
+      localbacu.a.setFocusable(true);
+      localbacu.a.setFocusableInTouchMode(true);
+      ThreadManager.getUIHandler().post(new XMediaEditor.1(this, localbacu));
     }
   }
   
@@ -181,55 +181,55 @@ public class XMediaEditor
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_Baao.b(0);
-      this.jdField_a_of_type_Baao.notifyDataSetChanged();
-      this.jdField_a_of_type_Babp.a(null, false);
+      this.jdField_a_of_type_Babc.b(0);
+      this.jdField_a_of_type_Babc.notifyDataSetChanged();
+      this.jdField_a_of_type_Bacd.a(null, false);
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_Baao.a(paramInt - 1);
-    if (paramInt + 1 < this.jdField_a_of_type_Baao.getItemCount()) {}
-    for (Object localObject1 = this.jdField_a_of_type_Baao.a(paramInt + 1);; localObject1 = null)
+    Object localObject2 = this.jdField_a_of_type_Babc.a(paramInt - 1);
+    if (paramInt + 1 < this.jdField_a_of_type_Babc.getItemCount()) {}
+    for (Object localObject1 = this.jdField_a_of_type_Babc.a(paramInt + 1);; localObject1 = null)
     {
       if (localObject1 == null)
       {
-        if ((localObject2 instanceof babb))
+        if ((localObject2 instanceof babp))
         {
-          if (this.jdField_a_of_type_Babb != null) {
-            this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = false;
+          if (this.jdField_a_of_type_Babp != null) {
+            this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = false;
           }
-          this.jdField_a_of_type_Babb = ((babb)localObject2);
-          this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_Babp = ((babp)localObject2);
+          this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
         }
-        this.jdField_a_of_type_Baao.b(paramInt);
-        this.jdField_a_of_type_Baao.notifyDataSetChanged();
-        this.jdField_a_of_type_Babp.a(null, false);
+        this.jdField_a_of_type_Babc.b(paramInt);
+        this.jdField_a_of_type_Babc.notifyDataSetChanged();
+        this.jdField_a_of_type_Bacd.a(null, false);
         return;
       }
-      if ((!(localObject1 instanceof babb)) || (!(localObject2 instanceof babb)))
+      if ((!(localObject1 instanceof babp)) || (!(localObject2 instanceof babp)))
       {
-        this.jdField_a_of_type_Baao.b(paramInt);
-        this.jdField_a_of_type_Baao.notifyDataSetChanged();
-        this.jdField_a_of_type_Babp.a(null, false);
+        this.jdField_a_of_type_Babc.b(paramInt);
+        this.jdField_a_of_type_Babc.notifyDataSetChanged();
+        this.jdField_a_of_type_Bacd.a(null, false);
         return;
       }
-      localObject1 = (babb)localObject1;
-      localObject2 = (babb)localObject2;
-      ((babb)localObject2).jdField_a_of_type_Int = ((babb)localObject2).jdField_a_of_type_JavaLangString.length();
-      bacg localbacg = (bacg)findViewHolderForAdapterPosition(((babb)localObject2).jdField_c_of_type_Int);
-      if (localbacg != null) {
-        localbacg.a.setSelection(((babb)localObject2).jdField_a_of_type_Int);
+      localObject1 = (babp)localObject1;
+      localObject2 = (babp)localObject2;
+      ((babp)localObject2).jdField_a_of_type_Int = ((babp)localObject2).jdField_a_of_type_JavaLangString.length();
+      bacu localbacu = (bacu)findViewHolderForAdapterPosition(((babp)localObject2).jdField_c_of_type_Int);
+      if (localbacu != null) {
+        localbacu.a.setSelection(((babp)localObject2).jdField_a_of_type_Int);
       }
-      if (TextUtils.isEmpty(((babb)localObject1).jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(((babp)localObject1).jdField_a_of_type_JavaLangString))
       {
-        if (this.jdField_a_of_type_Babb != null) {
-          this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = false;
+        if (this.jdField_a_of_type_Babp != null) {
+          this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = false;
         }
-        this.jdField_a_of_type_Babb = ((babb)localObject2);
-        this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Baao.b(paramInt + 1);
-        this.jdField_a_of_type_Baao.b(paramInt);
-        this.jdField_a_of_type_Baao.notifyDataSetChanged();
-        this.jdField_a_of_type_Babp.a(null, false);
+        this.jdField_a_of_type_Babp = ((babp)localObject2);
+        this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Babc.b(paramInt + 1);
+        this.jdField_a_of_type_Babc.b(paramInt);
+        this.jdField_a_of_type_Babc.notifyDataSetChanged();
+        this.jdField_a_of_type_Bacd.a(null, false);
         if (paramInt - 1 < 0) {
           break label369;
         }
@@ -239,12 +239,12 @@ public class XMediaEditor
       {
         scrollToPosition(paramInt);
         return;
-        if (TextUtils.isEmpty(((babb)localObject2).jdField_a_of_type_JavaLangString))
+        if (TextUtils.isEmpty(((babp)localObject2).jdField_a_of_type_JavaLangString))
         {
-          ((babb)localObject2).jdField_a_of_type_JavaLangString = ((babb)localObject1).jdField_a_of_type_JavaLangString;
+          ((babp)localObject2).jdField_a_of_type_JavaLangString = ((babp)localObject1).jdField_a_of_type_JavaLangString;
           break;
         }
-        ((babb)localObject2).jdField_a_of_type_JavaLangString += ((babb)localObject1).jdField_a_of_type_JavaLangString;
+        ((babp)localObject2).jdField_a_of_type_JavaLangString += ((babp)localObject1).jdField_a_of_type_JavaLangString;
         break;
         label369:
         paramInt = 0;
@@ -254,73 +254,73 @@ public class XMediaEditor
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Baao.a(paramInt, paramString);
-    this.jdField_a_of_type_Babp.a(null, false);
+    this.jdField_a_of_type_Babc.a(paramInt, paramString);
+    this.jdField_a_of_type_Bacd.a(null, false);
   }
   
-  public void a(baas parambaas)
+  public void a(babg parambabg)
   {
-    if (parambaas == null)
+    if (parambabg == null)
     {
       Toast.makeText(getContext(), "插入的EditItemInfoBase为空", 0).show();
       return;
     }
     Object localObject1;
     Object localObject2;
-    if (this.jdField_a_of_type_Baao.getItemCount() == 0)
+    if (this.jdField_a_of_type_Babc.getItemCount() == 0)
     {
-      if ((parambaas instanceof babb))
+      if ((parambabg instanceof babp))
       {
-        this.jdField_a_of_type_Baao.a(parambaas);
-        this.jdField_a_of_type_Baao.notifyDataSetChanged();
-        this.jdField_a_of_type_Babb = ((babb)parambaas);
-        this.jdField_a_of_type_Babb.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Babc.a(parambabg);
+        this.jdField_a_of_type_Babc.notifyDataSetChanged();
+        this.jdField_a_of_type_Babp = ((babp)parambabg);
+        this.jdField_a_of_type_Babp.jdField_c_of_type_Int = 0;
+        this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
         return;
       }
-      localObject1 = new babb("");
-      localObject2 = new babb("");
-      this.jdField_a_of_type_Baao.a((baas)localObject1);
-      this.jdField_a_of_type_Baao.a(parambaas);
-      this.jdField_a_of_type_Baao.a((baas)localObject2);
-      this.jdField_a_of_type_Babb = ((babb)localObject2);
-      this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Babb.jdField_c_of_type_Int = 2;
-      this.jdField_a_of_type_Baao.notifyDataSetChanged();
-      this.jdField_a_of_type_Babp.a(null, false);
-      scrollToPosition(this.jdField_a_of_type_Babb.jdField_c_of_type_Int);
+      localObject1 = new babp("");
+      localObject2 = new babp("");
+      this.jdField_a_of_type_Babc.a((babg)localObject1);
+      this.jdField_a_of_type_Babc.a(parambabg);
+      this.jdField_a_of_type_Babc.a((babg)localObject2);
+      this.jdField_a_of_type_Babp = ((babp)localObject2);
+      this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Babp.jdField_c_of_type_Int = 2;
+      this.jdField_a_of_type_Babc.notifyDataSetChanged();
+      this.jdField_a_of_type_Bacd.a(null, false);
+      scrollToPosition(this.jdField_a_of_type_Babp.jdField_c_of_type_Int);
       return;
     }
     int j;
     int i;
-    if (this.jdField_a_of_type_Babb == null)
+    if (this.jdField_a_of_type_Babp == null)
     {
-      localObject1 = this.jdField_a_of_type_Baao.a(this.jdField_a_of_type_Baao.getItemCount() - 1);
-      if ((localObject1 instanceof babb))
+      localObject1 = this.jdField_a_of_type_Babc.a(this.jdField_a_of_type_Babc.getItemCount() - 1);
+      if ((localObject1 instanceof babp))
       {
-        this.jdField_a_of_type_Babb = ((babb)localObject1);
-        this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Babp = ((babp)localObject1);
+        this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
       }
     }
     else
     {
-      j = this.jdField_a_of_type_Babb.jdField_c_of_type_Int;
-      if (this.jdField_a_of_type_Babb.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Babb.jdField_a_of_type_Int = 0;
+      j = this.jdField_a_of_type_Babp.jdField_c_of_type_Int;
+      if (this.jdField_a_of_type_Babp.jdField_a_of_type_Int < 0) {
+        this.jdField_a_of_type_Babp.jdField_a_of_type_Int = 0;
       }
-      i = this.jdField_a_of_type_Babb.jdField_a_of_type_Int;
-      localObject1 = (bacg)findViewHolderForAdapterPosition(j);
+      i = this.jdField_a_of_type_Babp.jdField_a_of_type_Int;
+      localObject1 = (bacu)findViewHolderForAdapterPosition(j);
       if (localObject1 == null) {
         break label663;
       }
-      i = ((bacg)localObject1).a.getSelectionStart();
+      i = ((bacu)localObject1).a.getSelectionStart();
     }
     label519:
     label663:
     for (;;)
     {
       if (i == 0) {
-        if (this.jdField_a_of_type_Babb.jdField_a_of_type_JavaLangString.length() == 0)
+        if (this.jdField_a_of_type_Babp.jdField_a_of_type_JavaLangString.length() == 0)
         {
           localObject2 = "";
           localObject1 = "";
@@ -328,46 +328,46 @@ public class XMediaEditor
       }
       for (;;)
       {
-        if (!(parambaas instanceof babb)) {
+        if (!(parambabg instanceof babp)) {
           break label519;
         }
-        parambaas = (babb)parambaas;
-        this.jdField_a_of_type_Babb.b((String)localObject2 + parambaas.jdField_a_of_type_JavaLangString + (String)localObject1);
-        localObject1 = this.jdField_a_of_type_Babb;
-        ((babb)localObject1).jdField_a_of_type_Int += parambaas.jdField_a_of_type_JavaLangString.length();
-        scrollToPosition(this.jdField_a_of_type_Babb.jdField_c_of_type_Int);
-        this.jdField_a_of_type_Babp.a(null, false);
+        parambabg = (babp)parambabg;
+        this.jdField_a_of_type_Babp.b((String)localObject2 + parambabg.jdField_a_of_type_JavaLangString + (String)localObject1);
+        localObject1 = this.jdField_a_of_type_Babp;
+        ((babp)localObject1).jdField_a_of_type_Int += parambabg.jdField_a_of_type_JavaLangString.length();
+        scrollToPosition(this.jdField_a_of_type_Babp.jdField_c_of_type_Int);
+        this.jdField_a_of_type_Bacd.a(null, false);
         return;
-        localObject1 = new babb("");
-        this.jdField_a_of_type_Babb = ((babb)localObject1);
-        this.jdField_a_of_type_Babb.jdField_c_of_type_Int = this.jdField_a_of_type_Baao.getItemCount();
-        this.jdField_a_of_type_Baao.a((baas)localObject1);
+        localObject1 = new babp("");
+        this.jdField_a_of_type_Babp = ((babp)localObject1);
+        this.jdField_a_of_type_Babp.jdField_c_of_type_Int = this.jdField_a_of_type_Babc.getItemCount();
+        this.jdField_a_of_type_Babc.a((babg)localObject1);
         break;
-        localObject1 = this.jdField_a_of_type_Babb.jdField_a_of_type_JavaLangString;
+        localObject1 = this.jdField_a_of_type_Babp.jdField_a_of_type_JavaLangString;
         localObject2 = "";
         continue;
-        localObject2 = this.jdField_a_of_type_Babb.jdField_a_of_type_JavaLangString.substring(0, i);
-        if (this.jdField_a_of_type_Babb.jdField_a_of_type_JavaLangString.length() == i) {
+        localObject2 = this.jdField_a_of_type_Babp.jdField_a_of_type_JavaLangString.substring(0, i);
+        if (this.jdField_a_of_type_Babp.jdField_a_of_type_JavaLangString.length() == i) {
           localObject1 = "";
         } else {
-          localObject1 = this.jdField_a_of_type_Babb.jdField_a_of_type_JavaLangString.substring(i);
+          localObject1 = this.jdField_a_of_type_Babp.jdField_a_of_type_JavaLangString.substring(i);
         }
       }
-      baas localbaas = this.jdField_a_of_type_Baao.a(j);
-      if ((localbaas instanceof babb)) {
-        ((babb)localbaas).b((String)localObject2);
+      babg localbabg = this.jdField_a_of_type_Babc.a(j);
+      if ((localbabg instanceof babp)) {
+        ((babp)localbabg).b((String)localObject2);
       }
       for (;;)
       {
-        localObject1 = new babb((String)localObject1);
-        this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = false;
-        ((babb)localObject1).jdField_a_of_type_Boolean = true;
-        ((babb)localObject1).jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_Babb = ((babb)localObject1);
-        this.jdField_a_of_type_Baao.a(j + 1, (baas)localObject1);
-        this.jdField_a_of_type_Baao.a(j + 1, parambaas);
-        this.jdField_a_of_type_Babb.jdField_c_of_type_Int = (j + 2);
-        this.jdField_a_of_type_Baao.notifyDataSetChanged();
+        localObject1 = new babp((String)localObject1);
+        this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = false;
+        ((babp)localObject1).jdField_a_of_type_Boolean = true;
+        ((babp)localObject1).jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Babp = ((babp)localObject1);
+        this.jdField_a_of_type_Babc.a(j + 1, (babg)localObject1);
+        this.jdField_a_of_type_Babc.a(j + 1, parambabg);
+        this.jdField_a_of_type_Babp.jdField_c_of_type_Int = (j + 2);
+        this.jdField_a_of_type_Babc.notifyDataSetChanged();
         break;
         if (QLog.isColorLevel()) {
           QLog.d("XMediaEditor", 2, "insert item 类型不对 insertPosition" + j);
@@ -376,24 +376,24 @@ public class XMediaEditor
     }
   }
   
-  public void a(ArrayList<babc> paramArrayList)
+  public void a(ArrayList<babq> paramArrayList)
   {
-    this.jdField_a_of_type_Baao.a(paramArrayList);
+    this.jdField_a_of_type_Babc.a(paramArrayList);
   }
   
-  public void a(List<baas> paramList)
+  public void a(List<babg> paramList)
   {
     int i = 0;
     while (i < paramList.size())
     {
-      a((baas)paramList.get(i));
+      a((babg)paramList.get(i));
       i += 1;
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Baao.b();
+    return this.jdField_a_of_type_Babc.b();
   }
   
   public int b()
@@ -406,20 +406,20 @@ public class XMediaEditor
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public ArrayList<baaw> b()
+  public ArrayList<babk> b()
   {
-    return this.jdField_a_of_type_Baao.b();
+    return this.jdField_a_of_type_Babc.b();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = false;
-    bacg localbacg = (bacg)findViewHolderForAdapterPosition(this.jdField_a_of_type_Babb.jdField_c_of_type_Int);
-    if (localbacg != null)
+    this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = false;
+    bacu localbacu = (bacu)findViewHolderForAdapterPosition(this.jdField_a_of_type_Babp.jdField_c_of_type_Int);
+    if (localbacu != null)
     {
-      localbacg.a.setFocusable(false);
-      localbacg.a.setFocusableInTouchMode(false);
-      ThreadManager.getUIHandler().post(new XMediaEditor.2(this, localbacg));
+      localbacu.a.setFocusable(false);
+      localbacu.a.setFocusableInTouchMode(false);
+      ThreadManager.getUIHandler().post(new XMediaEditor.2(this, localbacu));
     }
   }
   
@@ -440,24 +440,24 @@ public class XMediaEditor
   
   public int d()
   {
-    return this.jdField_a_of_type_Baao.a();
+    return this.jdField_a_of_type_Babc.a();
   }
   
   public void d()
   {
     this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_Babs.a(null);
-    if (this.jdField_a_of_type_Baao.b())
+    this.jdField_a_of_type_Bacg.a(null);
+    if (this.jdField_a_of_type_Babc.b())
     {
-      this.jdField_a_of_type_Baao.b(0);
-      this.jdField_a_of_type_Baao.notifyDataSetChanged();
+      this.jdField_a_of_type_Babc.b(0);
+      this.jdField_a_of_type_Babc.notifyDataSetChanged();
     }
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Baao.a();
+    this.jdField_a_of_type_Babc.a();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -503,7 +503,7 @@ public class XMediaEditor
             localEditText.setFocusableInTouchMode(true);
             localEditText.requestFocus();
           }
-          bfmr.a(localEditText);
+          bfni.a(localEditText);
         }
       }
     }
@@ -514,24 +514,24 @@ public class XMediaEditor
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setCommitStateChangeListener(baak parambaak)
+  public void setCommitStateChangeListener(baay parambaay)
   {
-    this.jdField_a_of_type_Baak = parambaak;
+    this.jdField_a_of_type_Baay = parambaay;
   }
   
-  public void setContentLengthChangeListener(baal parambaal)
+  public void setContentLengthChangeListener(baaz parambaaz)
   {
-    this.jdField_a_of_type_Baal = parambaal;
+    this.jdField_a_of_type_Baaz = parambaaz;
   }
   
   public void setData(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_Baao.a(new JSONArray(paramString));
-      this.jdField_a_of_type_Babp.a(null, false);
-      int i = this.jdField_a_of_type_Baao.b();
-      this.jdField_a_of_type_Babp.a(this.jdField_a_of_type_Int, i);
+      this.jdField_a_of_type_Babc.a(new JSONArray(paramString));
+      this.jdField_a_of_type_Bacd.a(null, false);
+      int i = this.jdField_a_of_type_Babc.b();
+      this.jdField_a_of_type_Bacd.a(this.jdField_a_of_type_Int, i);
       this.jdField_a_of_type_Int = i;
       return;
     }
@@ -550,27 +550,27 @@ public class XMediaEditor
       {
         if (i < paramJSONArray.length())
         {
-          baas localbaas = baat.a(paramJSONArray.getJSONObject(i));
-          if (localbaas == null) {
+          babg localbabg = babh.a(paramJSONArray.getJSONObject(i));
+          if (localbabg == null) {
             break label201;
           }
-          if ((localbaas instanceof babc))
+          if ((localbabg instanceof babq))
           {
-            ((babc)localbaas).g = 3;
-            if ((localbaas instanceof baax)) {
-              ((baax)localbaas).e = 100;
+            ((babq)localbabg).g = 3;
+            if ((localbabg instanceof babl)) {
+              ((babl)localbabg).e = 100;
             }
           }
-          if ((localbaas instanceof babb))
+          if ((localbabg instanceof babp))
           {
-            this.jdField_a_of_type_Babb.b(((babb)localbaas).jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_Babb.jdField_a_of_type_Int = ((babb)localbaas).jdField_a_of_type_JavaLangString.length();
-            this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = false;
-            this.jdField_a_of_type_Baao.notifyDataSetChanged();
+            this.jdField_a_of_type_Babp.b(((babp)localbabg).jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_Babp.jdField_a_of_type_Int = ((babp)localbabg).jdField_a_of_type_JavaLangString.length();
+            this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = false;
+            this.jdField_a_of_type_Babc.notifyDataSetChanged();
           }
           else
           {
-            a(localbaas);
+            a(localbabg);
           }
         }
       }
@@ -579,22 +579,22 @@ public class XMediaEditor
         paramJSONArray.printStackTrace();
         return;
       }
-      int j = this.jdField_a_of_type_Baao.b();
+      int j = this.jdField_a_of_type_Babc.b();
       i = 0;
       for (;;)
       {
         if (i < j)
         {
-          paramJSONArray = this.jdField_a_of_type_Baao.a(i);
-          if ((paramJSONArray instanceof babb))
+          paramJSONArray = this.jdField_a_of_type_Babc.a(i);
+          if ((paramJSONArray instanceof babp))
           {
-            this.jdField_a_of_type_Babb = ((babb)paramJSONArray);
-            this.jdField_a_of_type_Babb.jdField_a_of_type_Boolean = true;
+            this.jdField_a_of_type_Babp = ((babp)paramJSONArray);
+            this.jdField_a_of_type_Babp.jdField_a_of_type_Boolean = true;
           }
         }
         else
         {
-          this.jdField_a_of_type_Baao.notifyDataSetChanged();
+          this.jdField_a_of_type_Babc.notifyDataSetChanged();
           scrollToPosition(0);
           return;
         }
@@ -607,8 +607,8 @@ public class XMediaEditor
   
   public void setDefaultContent()
   {
-    setData("[" + new babb("").toString() + "]");
-    this.jdField_a_of_type_Babb = ((babb)this.jdField_a_of_type_Baao.a(0));
+    setData("[" + new babp("").toString() + "]");
+    this.jdField_a_of_type_Babp = ((babp)this.jdField_a_of_type_Babc.a(0));
   }
   
   public void setExtraValue(String paramString1, String paramString2)
@@ -616,9 +616,9 @@ public class XMediaEditor
     this.jdField_a_of_type_AndroidOsBundle.putString(paramString1, paramString2);
   }
   
-  public void setFocusChangeListener(baam parambaam)
+  public void setFocusChangeListener(baba parambaba)
   {
-    this.jdField_a_of_type_Baam = parambaam;
+    this.jdField_a_of_type_Baba = parambaba;
   }
   
   public void setHeaderView(View paramView)
@@ -629,14 +629,14 @@ public class XMediaEditor
       return;
     }
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Babs.a(this.jdField_a_of_type_AndroidViewView);
-    if (this.jdField_a_of_type_Baao.b())
+    this.jdField_a_of_type_Bacg.a(this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Babc.b())
     {
-      this.jdField_a_of_type_Baao.notifyDataSetChanged();
+      this.jdField_a_of_type_Babc.notifyDataSetChanged();
       return;
     }
-    this.jdField_a_of_type_Baao.a(0, new baav());
-    this.jdField_a_of_type_Baao.notifyDataSetChanged();
+    this.jdField_a_of_type_Babc.a(0, new babj());
+    this.jdField_a_of_type_Babc.notifyDataSetChanged();
   }
   
   public void setHint(String paramString)
@@ -661,7 +661,7 @@ public class XMediaEditor
   
   public void setShowType(int paramInt)
   {
-    this.jdField_a_of_type_Baao.a(paramInt);
+    this.jdField_a_of_type_Babc.a(paramInt);
   }
   
   public void setSizeLimit(int paramInt)

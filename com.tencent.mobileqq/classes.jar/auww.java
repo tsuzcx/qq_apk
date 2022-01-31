@@ -1,8 +1,106 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface auww
+public class auww
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public Bitmap c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public auww(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static auww a(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString = a(paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PraiseInfo", 2, "content:" + paramString);
+        }
+        paramString = new JSONObject(paramString);
+        auww localauww = new auww(paramInt);
+        localauww.jdField_a_of_type_JavaLangString = paramString.optString("name");
+        localauww.jdField_b_of_type_JavaLangString = paramString.optString("text");
+        if (paramString.has("color"))
+        {
+          String str = paramString.optString("color").trim();
+          paramString = str;
+          if (str.startsWith("0x")) {
+            paramString = str.substring(2);
+          }
+        }
+        try
+        {
+          localauww.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
+          return localauww;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PraiseInfo", 2, "color invalid");
+            }
+          }
+        }
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
+        return null;
+      }
+      catch (IOException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+      }
+    }
+  }
+  
+  private static String a(String paramString)
+  {
+    File localFile = new File(paramString);
+    if (!localFile.exists()) {
+      QLog.e("PraiseInfo", 1, paramString + " not exist!");
+    }
+    do
+    {
+      return null;
+      try
+      {
+        paramString = bbdx.b(localFile);
+        return paramString;
+      }
+      catch (OutOfMemoryError paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PraiseInfo", 2, paramString.getMessage());
+    return null;
+  }
 }
 
 

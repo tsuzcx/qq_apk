@@ -1,9 +1,9 @@
 import android.view.View;
 
-class axwy
+public class axwy
 {
-  View a;
-  View b;
+  public View a;
+  public View b;
 }
 
 

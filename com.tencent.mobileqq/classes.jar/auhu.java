@@ -1,19 +1,35 @@
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.4;
 
-class auhu
-  extends View.AccessibilityDelegate
+public class auhu
+  implements Animation.AnimationListener
 {
-  auhu(auhi paramauhi, ClickableSpan paramClickableSpan) {}
+  public auhu(AccountPanel.4 param4) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
-      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
+    try
+    {
+      this.a.this$0.dismiss();
+      paramAnimation.setAnimationListener(null);
+      auhk.a(this.a.this$0).clearAnimation();
+      auhk.a(this.a.this$0, true);
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      for (;;)
+      {
+        paramAnimation.printStackTrace();
+      }
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

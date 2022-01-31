@@ -1,14 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Bundle;
 
-public final class ajfx
-  implements EIPCResultCallback
+public abstract interface ajfx
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
@@ -18,14 +18,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avtu;
-import avtv;
 import avtw;
 import avtx;
 import avty;
 import avtz;
 import avua;
-import axlw;
+import avub;
+import avuc;
+import axly;
 import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -34,22 +34,22 @@ public class CameraCaptureButtonLayout
   extends RelativeLayout
 {
   private float jdField_a_of_type_Float = 10000.0F;
-  private int jdField_a_of_type_Int = actn.a(45.0F, getResources());
+  private int jdField_a_of_type_Int = actj.a(45.0F, getResources());
   private long jdField_a_of_type_Long;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler = new avtx(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new avtw(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new avtz(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new avty(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avty jdField_a_of_type_Avty;
-  private avtz jdField_a_of_type_Avtz;
   private avua jdField_a_of_type_Avua;
+  private avub jdField_a_of_type_Avub;
+  private avuc jdField_a_of_type_Avuc;
   private CameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView;
   private CircleProgress jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
   public AtomicBoolean a;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = actn.a(70.0F, getResources());
+  private int jdField_b_of_type_Int = actj.a(70.0F, getResources());
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public AtomicBoolean b;
@@ -89,11 +89,11 @@ public class CameraCaptureButtonLayout
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131560772, this, true);
+    LayoutInflater.from(getContext()).inflate(2131560771, this, true);
     this.jdField_a_of_type_AndroidViewView = findViewById(2131366409);
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366491));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365712));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131364822));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365711));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131364821));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366393));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366394));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
@@ -106,11 +106,11 @@ public class CameraCaptureButtonLayout
   private void d()
   {
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    axlw.a(this.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.0F, 0.1F, 1.2F, 400, null);
+    axly.a(this.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.0F, 0.1F, 1.2F, 400, null);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 1.1333F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avtu(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new avtv(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avtw(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new avtx(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -145,10 +145,10 @@ public class CameraCaptureButtonLayout
   
   private void g()
   {
-    Object localObject = this.jdField_a_of_type_Avua;
+    Object localObject = this.jdField_a_of_type_Avuc;
     if (localObject != null)
     {
-      this.jdField_a_of_type_Boolean = ((avua)localObject).a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, this.jdField_a_of_type_Long, this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_Boolean = ((avuc)localObject).a(this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, this.jdField_a_of_type_Long, this.jdField_a_of_type_Float);
       if (this.jdField_a_of_type_Boolean) {
         h();
       }
@@ -168,7 +168,7 @@ public class CameraCaptureButtonLayout
     label189:
     for (int i = 100;; i = (int)((float)l / this.jdField_a_of_type_Float * 100.0F))
     {
-      localObject = (int)l / 1000 + ajyc.a(2131701289);
+      localObject = (int)l / 1000 + ajya.a(2131701300);
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i);
       if (!QLog.isColorLevel()) {
@@ -250,14 +250,14 @@ public class CameraCaptureButtonLayout
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public void setButtonListenerInterceptor(avtz paramavtz)
+  public void setButtonListenerInterceptor(avub paramavub)
   {
-    this.jdField_a_of_type_Avtz = paramavtz;
+    this.jdField_a_of_type_Avub = paramavub;
   }
   
-  public void setCaptureButtonProgressInterceptor(avua paramavua)
+  public void setCaptureButtonProgressInterceptor(avuc paramavuc)
   {
-    this.jdField_a_of_type_Avua = paramavua;
+    this.jdField_a_of_type_Avuc = paramavuc;
   }
   
   public void setFunctionFlag(int paramInt)

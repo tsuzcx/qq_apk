@@ -1,87 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public class akal
+  extends AccountObserver
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
+  public akal(MessageHandler paramMessageHandler, String paramString) {}
   
-  public void a()
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    long l = bbct.d();
-    try
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).getString("LowMemoryStat", null);
-      if (localObject == null) {
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
         return;
       }
-      if (((String)localObject).length() == 0) {
-        return;
-      }
-      localObject = new DataInputStream(new ByteArrayInputStream(bbca.decode((String)localObject, 0)));
-      this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.c = ((DataInputStream)localObject).readLong();
-      this.d = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.e = ((DataInputStream)localObject).readLong();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
       {
-        b();
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.notifyUI(1, true, localOpenID);
+        }
+        i += 1;
       }
     }
-    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d))
+    if (paramBoolean) {}
+    for (paramHashMap = "0";; paramHashMap = "1")
     {
-      b();
+      bdes.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
       return;
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.c = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.e = 0L;
-  }
-  
-  public void c()
-  {
-    try
-    {
-      Object localObject = new ByteArrayOutputStream();
-      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
-      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
-      localDataOutputStream.writeLong(this.c);
-      localDataOutputStream.writeLong(this.d);
-      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
-      localDataOutputStream.writeLong(this.e);
-      localDataOutputStream.flush();
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", bbca.encodeToString((byte[])localObject, 0)).commit();
-      return;
-    }
-    catch (Exception localException) {}
   }
 }
 

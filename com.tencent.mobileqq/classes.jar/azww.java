@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 
-public class azww
-  implements QQPermissionCallback
+class azww
+  implements View.OnClickListener
 {
-  public azww(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  azww(azwu paramazwu, CheckBox paramCheckBox) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bbcv.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
-    bfmr.a(this.a.getActivity());
+    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
+    }
   }
 }
 

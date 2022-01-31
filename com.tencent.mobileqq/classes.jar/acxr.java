@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class acxr
-  implements axod
 {
-  public acxr(PlusPanel paramPlusPanel, yak paramyak) {}
-  
-  public void a()
-  {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Yak);
-  }
-  
-  public void b()
-  {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Yak);
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
 }
 
 

@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import blbf;
+import blbw;
 
 class Game3DNativeEvent
-  implements blbf
+  implements blbw
 {
   public native void gestureEventNative(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   

@@ -1,17 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-
 final class apvp
-  implements aptu
+  implements bbws
 {
-  apvp(Activity paramActivity, Intent paramIntent) {}
+  apvp(apvg paramapvg) {}
   
-  public void a()
+  public void callback(int paramInt)
   {
-    aqbc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
+    if ((paramInt == 1) || (paramInt == 2)) {
+      this.a.a();
+    }
   }
-  
-  public void b() {}
 }
 
 

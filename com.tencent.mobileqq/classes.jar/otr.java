@@ -1,25 +1,25 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
 public class otr
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public otr(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  public otr(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (bcet)this.a.a.a(4);
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.a())) {
-      return;
-    }
-    ReadInJoyAdIMAXBrowserFragment.a(this.a);
-    paramView = new HashMap();
-    paramView.put("stat_src", "5");
-    nmf.a(new nyg().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nmf.u).b(nmf.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nmf.a(paramView)).a());
+    this.a.getView().setVisibility(8);
+    this.a.getActivity().setResult(-1);
+    this.a.getActivity().finish();
+    this.a.getActivity().overridePendingTransition(0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

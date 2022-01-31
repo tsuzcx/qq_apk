@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount;
 
-import actn;
-import ajxn;
+import actj;
+import ajxl;
 import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhvh;
-import bkur;
+import bhvy;
+import bkvi;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
@@ -21,15 +21,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import npe;
-import nps;
-import qol;
-import rva;
+import npb;
+import npp;
+import qoi;
+import rux;
 
 public class VideoInfo
-  implements Parcelable, rva
+  implements Parcelable, rux
 {
-  public static final Parcelable.Creator<VideoInfo> CREATOR = new npe();
+  public static final Parcelable.Creator<VideoInfo> CREATOR = new npb();
   public String A;
   public String B;
   public String C;
@@ -62,7 +62,7 @@ public class VideoInfo
   public String a;
   public ArrayList<VideoInfo.ChannelInfo> a;
   public HashSet<String> a;
-  public nps a;
+  public npp a;
   public boolean a;
   private Object[] a;
   public int b;
@@ -314,7 +314,7 @@ public class VideoInfo
   
   private void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject = qol.a(paramActivity, b(), c());
+    this.jdField_a_of_type_ArrayOfJavaLangObject = qoi.a(paramActivity, b(), c());
     if (QLog.isColorLevel())
     {
       paramActivity = new StringBuilder("VideoInfo innerInitVideoAreaHeightInfo() ");
@@ -471,7 +471,7 @@ public class VideoInfo
       if (this.jdField_j_of_type_JavaLangString.equals(paramQQAppInterface.c())) {
         return true;
       }
-      if (((ajxn)paramQQAppInterface.getManager(51)).b(this.jdField_j_of_type_JavaLangString)) {
+      if (((ajxl)paramQQAppInterface.getManager(51)).b(this.jdField_j_of_type_JavaLangString)) {
         return true;
       }
     }
@@ -490,29 +490,29 @@ public class VideoInfo
     for (;;)
     {
       return new int[] { i1, i2 };
-      int i4 = actn.a(32.0F, paramActivity.getResources());
-      int i3 = actn.a(10.0F, paramActivity.getResources());
+      int i4 = actj.a(32.0F, paramActivity.getResources());
+      int i3 = actj.a(10.0F, paramActivity.getResources());
       i2 = i3;
       i1 = i4;
-      if (bkur.b())
+      if (bkvi.b())
       {
-        i1 = i4 + bkur.b(paramActivity);
+        i1 = i4 + bkvi.b(paramActivity);
         i2 = i3;
         continue;
         if (!paramBoolean)
         {
           i1 = b(paramActivity);
-          i3 = qol.b(paramActivity)[1];
+          i3 = qoi.b(paramActivity)[1];
           if (i3 < i1) {
             break;
           }
-          i2 = actn.a(10.0F, paramActivity.getResources());
+          i2 = actj.a(10.0F, paramActivity.getResources());
           if (b(paramActivity))
           {
-            i1 = (i3 - i1) / 2 + actn.a(32.0F, paramActivity.getResources());
+            i1 = (i3 - i1) / 2 + actj.a(32.0F, paramActivity.getResources());
             continue;
           }
-          i1 = (i3 - i1) / 2 + actn.a(10.0F, paramActivity.getResources());
+          i1 = (i3 - i1) / 2 + actj.a(10.0F, paramActivity.getResources());
           continue;
         }
         if (c() != 0) {
@@ -522,14 +522,14 @@ public class VideoInfo
       }
     }
     label212:
-    int i1 = qol.b(paramActivity)[1];
-    i2 = qol.b(paramActivity)[0];
+    int i1 = qoi.b(paramActivity)[1];
+    i2 = qoi.b(paramActivity)[0];
     float f1 = b() / c();
     i2 = (int)(i2 * f1);
     if (i2 <= i1) {}
-    for (i2 = (i1 - i2) / 2 + actn.a(16.0F, paramActivity.getResources());; i2 = actn.a(16.0F, paramActivity.getResources()))
+    for (i2 = (i1 - i2) / 2 + actj.a(16.0F, paramActivity.getResources());; i2 = actj.a(16.0F, paramActivity.getResources()))
     {
-      i1 = actn.a(16.0F, paramActivity.getResources());
+      i1 = actj.a(16.0F, paramActivity.getResources());
       break;
     }
   }
@@ -681,7 +681,7 @@ public class VideoInfo
   
   public int c(Activity paramActivity)
   {
-    int[] arrayOfInt = qol.b(paramActivity);
+    int[] arrayOfInt = qoi.b(paramActivity);
     if (paramActivity == null) {}
     int i2;
     do
@@ -752,7 +752,7 @@ public class VideoInfo
   
   public boolean e()
   {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo != null) && (bhvh.e());
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo != null) && (bhvy.e());
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

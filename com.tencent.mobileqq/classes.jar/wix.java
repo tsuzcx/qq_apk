@@ -1,28 +1,29 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribeGetRecommendUserListRequest;
 
 public class wix
-  implements aysa
 {
-  public wix(SubscribeUtils.1 param1) {}
+  private long jdField_a_of_type_Long;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private wiz jdField_a_of_type_Wiz;
   
-  public void onResp(aysx paramaysx)
+  public COMM.StCommonExt a()
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + paramaysx.c);
-    try
-    {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      nay.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      gp.a(this.a.jdField_a_of_type_JavaIoFile);
-      return;
-    }
-    catch (Exception paramaysx)
-    {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + paramaysx);
-    }
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 0, 1);
+    VSNetworkHelper.a().a(paramString, new wiy(this));
+  }
+  
+  public void a(wiz paramwiz)
+  {
+    this.jdField_a_of_type_Wiz = paramwiz;
+  }
 }
 
 

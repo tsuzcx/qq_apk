@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-
-final class bekf
-  extends View.AccessibilityDelegate
+public class bekf
+  implements bekl<String>
 {
-  bekf(CharSequence paramCharSequence, String paramString) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public static bekf a()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    return new bekf();
+  }
+  
+  public String a(behn parambehn)
+  {
+    parambehn = parambehn.a();
+    if (parambehn != null) {
+      return parambehn.a();
     }
-    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 

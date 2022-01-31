@@ -1,22 +1,56 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class ayci
-  extends ayay
+  extends aycm
 {
-  protected SpriteGLView a;
+  private Paint a;
+  private String b = "";
+  private int g = 20;
+  private int h = -1;
   
-  public aybe a()
+  public ayci(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    return this.a;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    e(paramInt1);
+    f(paramInt2);
+    a(paramSpriteGLView, paramString);
   }
   
-  public void aO_() {}
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  public void a(SpriteGLView paramSpriteGLView, String paramString)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    b();
+    if (paramString.equals(this.b)) {
+      return;
+    }
+    this.b = paramString;
+    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(paramString);
+    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
+    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Aycp != null) {
+      this.jdField_a_of_type_Aycp.c();
+    }
+    this.jdField_a_of_type_Aycp = new aycp(paramSpriteGLView, paramString);
+    g();
+    f();
+  }
+  
+  public void e(int paramInt)
+  {
+    this.h = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+  }
+  
+  public void f(int paramInt)
+  {
+    this.g = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
   }
 }
 

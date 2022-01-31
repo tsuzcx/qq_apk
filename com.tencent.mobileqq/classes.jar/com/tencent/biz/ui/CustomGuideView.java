@@ -1,6 +1,6 @@
 package com.tencent.biz.ui;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -35,21 +35,21 @@ public class CustomGuideView
   public CustomGuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = ajyc.a(2131702697);
+    this.jdField_a_of_type_JavaLangString = ajya.a(2131702708);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = ajyc.a(2131702697);
+    this.jdField_a_of_type_JavaLangString = ajya.a(2131702708);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = ajyc.a(2131702697);
+    this.jdField_a_of_type_JavaLangString = ajya.a(2131702708);
     a();
   }
   

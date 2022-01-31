@@ -1,15 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class aidb
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  public aidb(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  aidb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+  }
 }
 
 

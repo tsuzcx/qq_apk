@@ -1,243 +1,382 @@
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class aztd
 {
-  public String a;
-  public ArrayList<azss> a;
-  public String b;
-  public ArrayList<azss> b;
-  public String c;
-  public ArrayList<azss> c;
-  public String d;
-  public ArrayList<azss> d;
-  public String e;
-  public String f;
-  public String g;
+  private static volatile aztd a;
+  protected List<awii> a;
+  protected List<aztf> b;
   
-  public aztd(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public static final int a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.e = paramString3;
-    this.jdField_c_of_type_JavaLangString = ChnToSpell.a(paramString2, 1).toLowerCase();
-    this.jdField_d_of_type_JavaLangString = ChnToSpell.a(paramString2, 2).toLowerCase();
-    this.f = ChnToSpell.a(paramString3, 1).toLowerCase();
-    this.g = ChnToSpell.a(paramString3, 2).toLowerCase();
+    if (paramString1 == null) {}
+    for (paramString1 = ""; TextUtils.isEmpty(paramString1); paramString1 = paramString1.trim().toLowerCase()) {
+      return 0;
+    }
+    if (paramString3 == null)
+    {
+      paramString3 = null;
+      if (paramString4 != null) {
+        break label106;
+      }
+      paramString4 = null;
+      label39:
+      if (paramString5 != null) {
+        break label117;
+      }
+      paramString5 = null;
+      label47:
+      if (paramString6 != null) {
+        break label130;
+      }
+      paramString6 = null;
+      label55:
+      if (paramString7 != null) {
+        break label143;
+      }
+      paramString7 = null;
+      label63:
+      if (paramString8 != null) {
+        break label156;
+      }
+      paramString8 = null;
+      label71:
+      if (paramString2 != null) {
+        break label169;
+      }
+    }
+    label130:
+    label143:
+    label156:
+    label169:
+    for (paramString2 = null;; paramString2 = paramString2.trim().toLowerCase())
+    {
+      if ((TextUtils.isEmpty(paramString2)) || (!paramString2.contains(paramString1))) {
+        break label180;
+      }
+      return 7;
+      paramString3 = paramString3.trim().toLowerCase();
+      break;
+      label106:
+      paramString4 = paramString4.trim().toLowerCase();
+      break label39;
+      label117:
+      paramString5 = paramString5.trim().toLowerCase();
+      break label47;
+      paramString6 = paramString6.trim().toLowerCase();
+      break label55;
+      paramString7 = paramString7.trim().toLowerCase();
+      break label63;
+      paramString8 = paramString8.trim().toLowerCase();
+      break label71;
+    }
+    label180:
+    if ((!TextUtils.isEmpty(paramString6)) && (paramString6.contains(paramString1))) {
+      return 4;
+    }
+    if ((!TextUtils.isEmpty(paramString3)) && (paramString3.contains(paramString1))) {
+      return 1;
+    }
+    if ((!TextUtils.isEmpty(paramString7)) && (paramString7.contains(paramString1))) {
+      return 5;
+    }
+    if ((!TextUtils.isEmpty(paramString8)) && (paramString8.contains(paramString1))) {
+      return 6;
+    }
+    if (((!TextUtils.isEmpty(paramString4)) && (paramString4.contains(paramString1))) || ((!TextUtils.isEmpty(paramString5)) && (paramString5.contains(paramString1)))) {
+      return 2;
+    }
+    if (((!TextUtils.isEmpty(paramString4)) && (paramString4.contains(paramString1))) || ((!TextUtils.isEmpty(paramString5)) && (paramString5.contains(paramString1)))) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public static aztd a()
+  {
+    if (jdField_a_of_type_Aztd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aztd == null) {
+        jdField_a_of_type_Aztd = new aztd();
+      }
+      return jdField_a_of_type_Aztd;
+    }
+    finally {}
+  }
+  
+  public static final String a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if (paramInt == 1) {}
+    while ((paramInt == 2) || (paramInt == 3)) {
+      return paramString2;
+    }
+    if (paramInt == 4) {
+      return paramString3;
+    }
+    if (paramInt == 5) {
+      return paramString3;
+    }
+    if (paramInt == 6) {
+      return paramString3;
+    }
+    if (paramInt == 7) {
+      return paramString1;
+    }
+    return null;
+  }
+  
+  public static ArrayList<Long> a(List<? extends awij> paramList)
+  {
+    ArrayList localArrayList = null;
     int j;
     int i;
-    int k;
-    if (!TextUtils.isEmpty(paramString2))
+    if (paramList != null)
     {
-      paramString1 = paramString2.trim();
-      j = paramString1.length();
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(j);
+      j = paramList.size();
+      localArrayList = new ArrayList();
       i = 0;
-      while (i < j)
-      {
-        k = paramString1.charAt(i);
-        if ((k >= 19968) && (k <= 40869))
-        {
-          paramString2 = paramString1.substring(i, i + 1);
-          this.jdField_a_of_type_JavaUtilArrayList.add(new azss(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
-          this.jdField_b_of_type_JavaUtilArrayList.add(new azss(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
-        }
-        i += 1;
-      }
     }
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = paramString3.trim();
-      j = paramString1.length();
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(j);
-      this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(j);
-      i = 0;
-      while (i < j)
-      {
-        k = paramString1.charAt(i);
-        if ((k >= 19968) && (k <= 40869))
-        {
-          paramString2 = paramString1.substring(i, i + 1);
-          this.jdField_c_of_type_JavaUtilArrayList.add(new azss(paramContext, paramString2, ChnToSpell.a(paramString2, 1).toLowerCase()));
-          this.jdField_d_of_type_JavaUtilArrayList.add(new azss(paramContext, paramString2, ChnToSpell.a(paramString2, 2).toLowerCase()));
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  protected static final int a(int paramInt, String paramString, aztd paramaztd)
-  {
-    int i = -1;
-    if (paramInt == 5) {
-      i = paramaztd.f.indexOf(paramString);
-    }
-    do
-    {
-      return i;
-      if (paramInt == 6) {
-        return paramaztd.g.indexOf(paramString);
-      }
-      if (paramInt == 2) {
-        return paramaztd.jdField_c_of_type_JavaLangString.indexOf(paramString);
-      }
-    } while (paramInt != 3);
-    return paramaztd.jdField_d_of_type_JavaLangString.indexOf(paramString);
-  }
-  
-  protected static int a(int paramInt, ArrayList<azss> paramArrayList)
-  {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = 0;
     for (;;)
     {
-      azss localazss;
-      if (i < k)
+      if (i < j)
       {
-        localazss = (azss)paramArrayList.get(i);
-        if (localazss.jdField_a_of_type_Int + j <= paramInt) {}
+        Object localObject = (awij)paramList.get(i);
+        if ((localObject instanceof awhl))
+        {
+          localObject = (awhl)localObject;
+          try
+          {
+            if ((((awhl)localObject).a() == 0) || (((awhl)localObject).a() == 3)) {
+              break label116;
+            }
+            localArrayList.add(Long.valueOf(Long.parseLong(((awhl)localObject).d())));
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            localNumberFormatException.printStackTrace();
+          }
+          catch (NullPointerException localNullPointerException)
+          {
+            localNullPointerException.printStackTrace();
+          }
+        }
       }
       else
       {
-        return j;
+        return localArrayList;
       }
-      j += localazss.jdField_a_of_type_Int;
+      label116:
       i += 1;
     }
   }
   
-  protected static final int a(String paramString, aztd paramaztd)
+  public final awhl a(String paramString)
   {
-    int j = 0;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < j)
+    {
+      awii localawii = (awii)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (((localawii instanceof awhl)) && (paramString.equals(localawii.d()))) {
+        return (awhl)localawii;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    long l1 = System.currentTimeMillis();
     int i;
-    if ((paramaztd.f != null) && (paramaztd.f.indexOf(paramString) > -1)) {
-      i = 5;
-    }
-    do
+    int j;
+    if (this.b == null)
     {
-      do
+      i = 0;
+      j = 0;
+      label17:
+      if (j >= i) {
+        break label152;
+      }
+      localObject = (aztf)this.b.get(j);
+      if (!((aztf)localObject).a.equals(paramString2)) {
+        break label143;
+      }
+    }
+    label143:
+    label152:
+    for (Object localObject = aztf.a(paramString1, (aztf)localObject);; localObject = null)
+    {
+      long l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileSearchManager", 2, "getFriendsSearchedSet() time cost = " + (l2 - l1) + " , hanzi = " + (String)localObject + ", input = " + paramString1 + ", uin = " + paramString2);
+      }
+      return localObject;
+      i = this.b.size();
+      break;
+      j += 1;
+      break label17;
+    }
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  public List<awii> a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    long l1 = System.currentTimeMillis();
+    ArrayList localArrayList1 = new ArrayList();
+    ExecutorService localExecutorService = Executors.newFixedThreadPool(1);
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.add(localExecutorService.submit(new azte(this, paramContext, paramQQAppInterface, awii.E, paramInt)));
+    paramInt = 0;
+    try
+    {
+      while (paramInt < localArrayList2.size())
       {
-        return i;
-        if ((paramaztd.g != null) && (paramaztd.g.indexOf(paramString) > -1)) {
-          return 6;
+        paramContext = (List)((Future)localArrayList2.get(paramInt)).get();
+        localArrayList1.addAll(paramContext);
+        paramContext.clear();
+        paramInt += 1;
+      }
+      localArrayList2.clear();
+      localExecutorService.shutdown();
+    }
+    catch (InterruptedException paramContext)
+    {
+      for (;;)
+      {
+        long l2;
+        paramContext.printStackTrace();
+      }
+    }
+    catch (ExecutionException paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+      }
+    }
+    l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopFileSearchManager", 2, "initSearchData() time cost = " + (l2 - l1) + " , size = " + localArrayList1.size());
+    }
+    return localArrayList1;
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  public List<awii> a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, boolean paramBoolean)
+  {
+    long l = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
+    Object localObject;
+    if (localajxl != null)
+    {
+      localObject = localajxl.b();
+      if (localObject != null)
+      {
+        Iterator localIterator1 = ((List)localObject).iterator();
+        while (localIterator1.hasNext())
+        {
+          Groups localGroups = (Groups)localIterator1.next();
+          localObject = localajxl.a(String.valueOf(localGroups.group_id));
+          if (localObject != null)
+          {
+            Iterator localIterator2 = ((List)localObject).iterator();
+            label105:
+            Friends localFriends;
+            if (localIterator2.hasNext())
+            {
+              localFriends = (Friends)localIterator2.next();
+              if (localFriends.gathtertype != 1) {
+                break label176;
+              }
+            }
+            label176:
+            for (localObject = paramContext.getResources().getString(2131720649);; localObject = localGroups.group_name)
+            {
+              localArrayList.add(new awhl(paramContext, paramQQAppInterface, localFriends, (String)localObject, 0L, paramLong));
+              break label105;
+              break;
+            }
+          }
         }
-        if ((paramaztd.jdField_c_of_type_JavaLangString != null) && (paramaztd.jdField_c_of_type_JavaLangString.indexOf(paramString) > -1)) {
-          return 2;
+      }
+    }
+    if (paramBoolean)
+    {
+      localObject = new Friends();
+      ((Friends)localObject).uin = paramQQAppInterface.getCurrentAccountUin();
+      ((Friends)localObject).name = paramQQAppInterface.getCurrentNickname();
+      localArrayList.add(new awhl(paramContext, paramQQAppInterface, (Friends)localObject, paramContext.getResources().getString(2131720649), 0L, paramLong));
+    }
+    paramLong = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopFileSearchManager", 2, "getFriends() time cost = " + (paramLong - l) + " , size = " + localArrayList.size());
+    }
+    return localArrayList;
+  }
+  
+  public List<aztf> a(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    long l1 = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
+    if (localajxl != null)
+    {
+      Object localObject1 = localajxl.b();
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = localajxl.a(String.valueOf(((Groups)((Iterator)localObject1).next()).group_id));
+          if (localObject2 != null)
+          {
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              Friends localFriends = (Friends)((Iterator)localObject2).next();
+              localArrayList.add(new aztf(paramContext, localFriends.uin, localFriends.name, localFriends.remark));
+            }
+          }
         }
-        i = j;
-      } while (paramaztd.jdField_d_of_type_JavaLangString == null);
-      i = j;
-    } while (paramaztd.jdField_d_of_type_JavaLangString.indexOf(paramString) <= -1);
-    return 3;
+      }
+    }
+    if (paramBoolean) {
+      localArrayList.add(new aztf(paramContext, paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentNickname(), null));
+    }
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopFileSearchManager", 2, "getFriendsSearchedSet() time cost = " + (l2 - l1) + " , size = " + localArrayList.size());
+    }
+    return localArrayList;
   }
   
-  protected static final String a(int paramInt1, int paramInt2, String paramString, aztd paramaztd)
+  public void a()
   {
-    String str = null;
-    if (paramInt1 == 5) {
-      paramaztd = paramaztd.jdField_c_of_type_JavaUtilArrayList;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-    for (;;)
-    {
-      if (paramaztd != null)
-      {
-        paramInt1 = paramString.length();
-        str = a(a(paramInt2, paramaztd), b(paramInt1 + paramInt2, paramaztd), paramaztd);
-      }
-      return str;
-      if (paramInt1 == 6) {
-        paramaztd = paramaztd.jdField_d_of_type_JavaUtilArrayList;
-      } else if (paramInt1 == 2) {
-        paramaztd = paramaztd.jdField_a_of_type_JavaUtilArrayList;
-      } else if (paramInt1 == 3) {
-        paramaztd = paramaztd.jdField_b_of_type_JavaUtilArrayList;
-      } else {
-        paramaztd = null;
-      }
+    if (this.b != null) {
+      this.b.clear();
     }
-  }
-  
-  public static String a(int paramInt1, int paramInt2, ArrayList<azss> paramArrayList)
-  {
-    int m = paramArrayList.size();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    for (;;)
-    {
-      azss localazss;
-      if (i < m)
-      {
-        localazss = (azss)paramArrayList.get(i);
-        if (j == paramInt1) {
-          k = 1;
-        }
-        if (j != paramInt2) {}
-      }
-      else
-      {
-        return localStringBuilder.toString();
-      }
-      if (k != 0) {
-        localStringBuilder.append(localazss.jdField_a_of_type_JavaLangString);
-      }
-      j += localazss.jdField_a_of_type_Int;
-      i += 1;
-    }
-  }
-  
-  public static final String a(String paramString, aztd paramaztd)
-  {
-    int i = a(paramString, paramaztd);
-    int j = a(i, paramString, paramaztd);
-    String str = null;
-    if (((j == 0) && (i == 5) && (paramString.equalsIgnoreCase(paramaztd.f))) || ((i == 6) && (paramString.equalsIgnoreCase(paramaztd.g)))) {
-      str = paramaztd.e;
-    }
-    do
-    {
-      return str;
-      if (((j == 0) && (i == 2) && (paramString.equalsIgnoreCase(paramaztd.jdField_c_of_type_JavaLangString))) || ((i == 3) && (paramString.equalsIgnoreCase(paramaztd.jdField_d_of_type_JavaLangString)))) {
-        return paramaztd.jdField_b_of_type_JavaLangString;
-      }
-    } while (j <= -1);
-    return a(i, j, paramString, paramaztd);
-  }
-  
-  protected static int b(int paramInt, ArrayList<azss> paramArrayList)
-  {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = 0;
-    while (i < k)
-    {
-      j = ((azss)paramArrayList.get(i)).jdField_a_of_type_Int + j;
-      if (j >= paramInt) {
-        return j;
-      }
-      i += 1;
-    }
-    return j;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localStringBuilder.append("uin = " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localStringBuilder.append(", name = " + this.jdField_b_of_type_JavaLangString);
-    }
-    if (this.e != null) {
-      localStringBuilder.append(", remark = " + this.e);
-    }
-    return localStringBuilder.toString();
   }
 }
 

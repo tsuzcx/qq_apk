@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import bbwx;
-import bbwy;
+import bbxl;
+import bbxm;
 
 public class TMSManager$1
   implements Runnable
 {
-  public TMSManager$1(bbwx parambbwx, bbwy parambbwy) {}
+  public TMSManager$1(bbxl parambbxl, bbxm parambbxm) {}
   
   public void run()
   {

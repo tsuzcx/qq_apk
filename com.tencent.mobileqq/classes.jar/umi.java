@@ -1,9 +1,6 @@
 public abstract interface umi
-  extends uuh
 {
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract boolean a(String paramString);
 }
 
 

@@ -1,318 +1,144 @@
-import android.app.Activity;
-import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build.VERSION;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import cooperation.qqreader.QRReaderPageProxyActivity;
-import cooperation.qqreader.host.ChannelIdHelper;
-import cooperation.qqreader.js.JsCallParams;
-import cooperation.qqreader.proxy.ReaderJsPluginProxy;
-import cooperation.qqreader.ui.ReaderHomePageActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import cooperation.qqreader.QRBridgeActivity;
+import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bgtr
 {
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgtg jdField_a_of_type_Bgtg = new bgts(this);
-  private bgtw jdField_a_of_type_Bgtw;
-  private JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  private static final bgtr jdField_a_of_type_Bgtr = new bgtr();
+  private int jdField_a_of_type_Int = 300;
+  private long jdField_a_of_type_Long = 100L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int = 300;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int = 100;
+  private boolean jdField_c_of_type_Boolean = true;
   
-  public bgtr(Activity paramActivity)
+  private bgtr()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a(bgwj.a(BaseApplicationImpl.getContext()));
+    a();
   }
   
-  private Intent a(Activity paramActivity)
+  public static bgtr a()
   {
-    Intent localIntent = new Intent(paramActivity, QRReaderPageProxyActivity.class);
-    localIntent.putExtra("useSkinEngine", false);
-    localIntent.putExtra("userQqResources", 2);
-    localIntent.putExtras(paramActivity.getIntent());
-    localIntent.putExtra("readerDpcConfig", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name(), "0|0|0|0|0|0"));
-    return localIntent;
+    return jdField_a_of_type_Bgtr;
   }
   
-  private Intent a(Activity paramActivity, Bundle paramBundle)
+  private void a()
   {
-    boolean bool = false;
-    String str1 = paramBundle.getString("readtype");
-    int i = -1;
-    if (!TextUtils.isEmpty(str1)) {
-      i = Integer.valueOf(str1).intValue();
-    }
-    switch (i)
+    bgwz.a(bgwz.b, new bgts(this), true);
+  }
+  
+  private void a(String paramString)
+  {
+    label155:
+    label158:
+    label161:
+    do
     {
-    case 17: 
-    case 18: 
-    case 19: 
-    case 21: 
-    case 22: 
-    case 23: 
-    case 28: 
-    case 29: 
-    case 30: 
-    default: 
-      paramActivity = null;
+      for (;;)
+      {
+        int i;
+        try
+        {
+          JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("configs");
+          paramString = null;
+          i = 0;
+          if (i >= localJSONArray.length()) {
+            break label158;
+          }
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          String str = localJSONObject.getString("version");
+          if ("*".equals(str))
+          {
+            paramString = localJSONObject;
+            break label161;
+          }
+          if (!str.contains("8.3.0")) {
+            break label155;
+          }
+          paramString = localJSONObject;
+        }
+        catch (Exception paramString)
+        {
+          bgwf.a("QRLocalManager", "json parse err", paramString);
+          return;
+        }
+        this.jdField_a_of_type_Boolean = paramString.optBoolean("aioEntryEnable");
+        this.jdField_b_of_type_Boolean = paramString.optBoolean("previewEntryEnable");
+        this.jdField_c_of_type_Boolean = paramString.optBoolean("moreEntryEnable");
+        this.jdField_a_of_type_Long = paramString.optInt("aioFileSizeLimit");
+        this.jdField_a_of_type_Int = paramString.optInt("addBookshelfDuration");
+        this.jdField_b_of_type_Int = paramString.optInt("goBookshelfDuration");
+        this.jdField_c_of_type_Int = paramString.optInt("splitChapterParaMaxNum");
+        return;
+        break label161;
+        break;
+        i += 1;
+      }
+    } while (paramString != null);
+  }
+  
+  private boolean a()
+  {
+    if (!bgtt.a().a())
+    {
+      bgtt.a().a();
+      return false;
+    }
+    return true;
+  }
+  
+  public void a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    Intent localIntent1 = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent1.putExtra("readtype", "31");
+    localIntent1.putExtra("stay", "1");
+    Intent localIntent2 = new Intent();
+    localIntent2.putExtra("com.qqreader.pureader.FILE_PATH", paramString);
+    if (paramBoolean) {
+      localIntent2.putExtra("ChannelID", "100328");
     }
     for (;;)
     {
-      paramBundle = paramActivity;
-      if (paramActivity == null)
-      {
-        paramBundle = new Intent();
-        paramBundle.setClass(this.jdField_a_of_type_AndroidAppActivity, ReaderHomePageActivity.class);
-        paramBundle.putExtras(bgsz.a(paramBundle, 1));
-      }
-      paramBundle.putExtra("params_remote_connect_at_launch", true);
-      return paramBundle;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("id"));
-      paramActivity.putExtra("ChannelSrc2", paramBundle.getString("group_code"));
-      if (!TextUtils.equals(paramBundle.getString("stay"), "1")) {
-        bool = true;
-      }
-      paramActivity.putExtra("is_return_to_home_page", bool);
-      continue;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("book_new_id"));
-      paramActivity.putExtra("is_from_conversation", paramBundle.getBoolean("is_from_conversation", false));
-      continue;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("bid"));
-      paramActivity.putExtra("com.qqreader.pureader.CHAPTER_ID", paramBundle.getString("cid"));
-      if (!TextUtils.equals(paramBundle.getString("stay"), "1")) {}
-      for (bool = true;; bool = false)
-      {
-        paramActivity.putExtra("is_return_to_home_page", bool);
-        paramActivity.putExtra("is_from_conversation", paramBundle.getBoolean("is_from_conversation", false));
-        if (paramBundle.getBoolean("recent_note", false)) {
-          ChannelIdHelper.setChannelId("100336");
-        }
-        paramActivity.setFlags(67108864);
-        break;
-      }
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", paramBundle.getString("nbid"));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", paramBundle.getString("bid"));
-      paramActivity.putExtra("com.qqreader.pureader.CHAPTER_ID", paramBundle.getString("cid"));
-      paramActivity.putExtra("com.qqreader.pureader.IN_BOOKSHELF", paramBundle.getString("inBookShelf"));
-      ChannelIdHelper.setChannelId(paramBundle);
-      paramActivity.setFlags(67108864);
-      continue;
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.FILE_PATH", paramBundle.getString("com.qqreader.pureader.FILE_PATH"));
-      paramActivity.putExtra("com.qqreader.pureader.EXTRA_KEY_IS_LOCAL", true);
-      ChannelIdHelper.setChannelId(paramBundle);
-      continue;
-      if (!paramBundle.getBoolean("is_from_qreader_shortcut", false))
-      {
-        paramActivity = null;
-      }
-      else
-      {
-        if (!paramBundle.getBoolean("cityshortcut")) {
-          break;
-        }
-        paramBundle = new Intent();
-        paramBundle.setClass(paramActivity, ReaderHomePageActivity.class);
-        paramBundle.putExtras(bgsz.a(paramBundle, 1));
-        paramBundle.putExtra("is_from_qreader_shortcut", true);
-        paramActivity = paramBundle;
-      }
-    }
-    long l1 = paramBundle.getLong("book_id");
-    long l2 = paramBundle.getLong("book_new_id");
-    str1 = bbct.a(paramActivity).a;
-    String str2 = bgvt.a(paramActivity);
-    if (l2 != 0L) {}
-    for (paramBundle = String.valueOf(l2);; paramBundle = "")
-    {
-      bgvr.a(str1, str2, "2198", paramBundle, "2", "");
-      paramActivity = a(paramActivity);
-      paramActivity.putExtra("com.qqreader.pureader.BOOK_ID", String.valueOf(l2));
-      paramActivity.putExtra("com.qqreader.pureader.YW_BOOK_ID", String.valueOf(l1));
-      paramActivity.putExtra("is_return_to_home_page", true);
-      paramActivity.putExtra("is_from_qreader_shortcut", true);
-      paramActivity.setFlags(67108864);
-      break;
-    }
-  }
-  
-  private View a()
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localImageView.setBackgroundColor(-1);
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localRelativeLayout.addView(localImageView);
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-    localTextView.setText(2131693978);
-    localTextView.setTextColor(-16777216);
-    localTextView.setGravity(17);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(13);
-    localTextView.setPadding(0, bawz.a(this.jdField_a_of_type_AndroidAppActivity, 120.0F), 0, 0);
-    localRelativeLayout.addView(localTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
-    bgtz.a().a(this.jdField_a_of_type_AndroidAppActivity, localImageView);
-    return localRelativeLayout;
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    boolean bool = bguw.a();
-    bgvo.e("ReaderSplashImpl", "jumpToPlugin: isUseShadow = " + bool);
-    if (bool)
-    {
-      bguw.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, "com.qqreader.pureader.SSReaderActivity", new bgtu(this));
+      localIntent1.putExtras(localIntent2);
+      paramContext.startActivity(localIntent1);
       return;
+      localIntent2.putExtra("ChannelID", "100330");
     }
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    bgtf.a().a(this.jdField_a_of_type_Bgtg);
-    a(a());
   }
   
-  private void a(View paramView)
+  public boolean a(@NonNull FileManagerEntity paramFileManagerEntity)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-    {
-      bgvo.a("ReaderSplashImpl", "showLoadingView: mContentView == null");
-      return;
+    if ((paramFileManagerEntity.status != 1) || (TextUtils.isEmpty(paramFileManagerEntity.strFilePath))) {
+      return false;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView);
+    return a(paramFileManagerEntity.strFilePath, paramFileManagerEntity.fileSize);
   }
   
-  private void a(JsCallParams paramJsCallParams)
+  public boolean a(String paramString, long paramLong)
   {
-    if (bgtf.a().a())
-    {
-      ReaderJsPluginProxy localReaderJsPluginProxy = bgtf.a().a(new bgtt(this));
-      if (localReaderJsPluginProxy != null) {
-        localReaderJsPluginProxy.call(paramJsCallParams.a(), paramJsCallParams.b(), paramJsCallParams.c(), paramJsCallParams.a());
-      }
-      for (;;)
-      {
-        d();
-        return;
-        bgvo.a("ReaderSplashImpl", "checkPluginForHandleSpecialJsCall: plugin is ready but jsPluginProxy is null");
-      }
+    if (paramLong < this.jdField_a_of_type_Long * 1024L) {}
+    while ((!this.jdField_a_of_type_Boolean) || (!a()) || (TextUtils.isEmpty(paramString)) || (!new File(paramString).exists())) {
+      return false;
     }
-    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = paramJsCallParams;
-    bgtf.a().a(this.jdField_a_of_type_Bgtg);
-    a(a());
+    return paramString.toLowerCase().endsWith(".txt");
   }
   
-  private void b(@NonNull Bundle paramBundle)
+  public boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {
-      bgvo.a("ReaderSplashImpl", "doJump: activity is null");
+    if (paramFileManagerEntity == null) {}
+    while (!paramFileManagerEntity.fileName.toLowerCase().endsWith(".txt")) {
+      return false;
     }
-    Intent localIntent;
-    do
-    {
-      return;
-      if (paramBundle.getBoolean("is_from_qreader_shortcut")) {
-        paramBundle.putString("readtype", String.valueOf(26));
-      }
-      localIntent = a(this.jdField_a_of_type_AndroidAppActivity, paramBundle);
-    } while (localIntent == null);
-    localIntent.putExtra("launch_by_splash", true);
-    localIntent.putExtra("login_interval", bgvt.a(BaseApplicationImpl.getApplication()));
-    if (localIntent.getStringExtra("ChannelSrc2") == null) {
-      localIntent.putExtra("ChannelSrc2", paramBundle.getString("ChannelSrc2"));
-    }
-    if ((localIntent.getComponent() != null) && ("cooperation.qqreader.ui.ReaderHomePageActivity".equals(localIntent.getComponent().getClassName())))
-    {
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-      d();
-      return;
-    }
-    localIntent.putExtra("is_from_splash_activity", true);
-    localIntent.putExtra("com.qqreader.pureader.START_TIME", System.currentTimeMillis());
-    a(localIntent);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidContentIntent == null)
-    {
-      bgvo.a("ReaderSplashImpl", "handlePendingJumpPluginIntent: mPendingJumpPluginIntent == null");
-      return;
-    }
-    if ((this.jdField_a_of_type_AndroidAppActivity.isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())))
-    {
-      bgvo.b("ReaderSplashImpl", "handlePendingJumpPluginIntent: activity is destroyed");
-      return;
-    }
-    bgsz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, "com.qqreader.pureader.SSReaderActivity", new bgtv(this));
-    this.jdField_a_of_type_AndroidContentIntent = null;
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a()
-  {
-    bgvo.d("ReaderSplashImpl", "onCreate");
-    Object localObject = new IntentFilter();
-    ((IntentFilter)localObject).addAction("cooperation.qqreader.start_reader_act_completed");
-    if (this.jdField_a_of_type_Bgtw == null)
-    {
-      this.jdField_a_of_type_Bgtw = new bgtw(this, null);
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Bgtw, (IntentFilter)localObject);
-    }
-    localObject = (JsCallParams)this.jdField_a_of_type_AndroidOsBundle.getParcelable("splash_pending_js_param");
-    if (localObject != null)
-    {
-      a((JsCallParams)localObject);
-      return;
-    }
-    b(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void a(@NonNull Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(@NonNull ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bgtw != null)
-    {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Bgtw);
-      this.jdField_a_of_type_Bgtw = null;
-    }
+    return this.jdField_c_of_type_Boolean;
   }
 }
 

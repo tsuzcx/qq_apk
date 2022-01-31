@@ -1,38 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class bgot
-  extends RemoteCommand
+public class bgot
+  implements DialogInterface.OnClickListener
 {
-  bgot(bgos parambgos, String paramString)
-  {
-    super(paramString);
-  }
+  public bgot(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBundle == null) {
-      paramBundle = null;
-    }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = bgos.a(this.a, paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(4));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgot
  * JD-Core Version:    0.7.0.1
  */

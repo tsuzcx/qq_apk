@@ -1,34 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.24.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class rha
-  extends osp
+  implements DialogInterface.OnClickListener
 {
   public rha(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain confirm");
     }
-    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
-  }
-  
-  public void k()
-  {
-    super.k();
-    if (ReadinjoyTabFrame.a(this.a) != null) {
-      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.24.1(this));
-    }
-  }
-  
-  public void l()
-  {
-    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
-    ReadinjoyTabFrame.a(this.a).b();
   }
 }
 

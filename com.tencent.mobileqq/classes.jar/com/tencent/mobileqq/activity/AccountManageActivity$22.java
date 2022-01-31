@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ayav;
+import ayax;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountManageActivity$22
@@ -10,7 +10,7 @@ class AccountManageActivity$22
   
   public void run()
   {
-    ayav localayav = (ayav)this.this$0.app.getManager(61);
+    ayax localayax = (ayax)this.this$0.app.getManager(61);
     this.this$0.runOnUiThread(new AccountManageActivity.22.1(this));
   }
 }

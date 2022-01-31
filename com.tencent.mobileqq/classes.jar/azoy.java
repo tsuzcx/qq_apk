@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class azoy
-  extends azou
+  extends azow
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
@@ -12,24 +12,52 @@ public class azoy
     if (localTroopFeedItem == null) {
       return null;
     }
-    localTroopFeedItem.type = 10;
-    try
+    for (;;)
     {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      if (paramJSONObject.length() > 0)
+      int i;
+      int j;
+      try
       {
-        paramJSONObject = paramJSONObject.getJSONObject(0);
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("videourl");
-        localTroopFeedItem.title = paramJSONObject.getString("videointro");
-        localTroopFeedItem.picPath = paramJSONObject.getString("videoid");
+        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+        i = 0;
+        if (i >= localJSONArray.length()) {
+          break label200;
+        }
+        paramJSONObject = localJSONArray.getJSONObject(i);
+        j = paramJSONObject.getInt("type");
+        if (j == 0)
+        {
+          localTroopFeedItem.content = paramJSONObject.getString("value");
+        }
+        else if (j == 3)
+        {
+          if (!paramJSONObject.has("pic_url")) {
+            break label203;
+          }
+          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
+        }
       }
-      return localTroopFeedItem;
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
+      if (j == 10)
+      {
+        localTroopFeedItem.title = paramJSONObject.getString("value");
+      }
+      else if ((j == 6) && (bbkk.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
+      {
+        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+        break label203;
+        label200:
+        return localTroopFeedItem;
+      }
+      label203:
+      i += 1;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return null;
   }
 }
 

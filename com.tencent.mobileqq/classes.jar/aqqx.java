@@ -1,37 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 class aqqx
-  extends Handler
+  implements View.OnClickListener
 {
   aqqx(aqqw paramaqqw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if (!this.a.b) {}
+    do
     {
-    case 3: 
-    case 5: 
-    default: 
       return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      aqqw.a(this.a);
-      return;
-    case 6: 
-      aqqw.b(this.a);
-      return;
-    case 2: 
-      aqqw.c(this.a);
-      return;
-    case 4: 
-      aqqw.d(this.a);
-      return;
+      aqsr.a(aqqw.a(this.a), aqqw.b(this.a), "205928", aqqw.a(this.a));
+    } while (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl, 2016, null);
     }
-    aqqw.e(this.a);
+    for (;;)
+    {
+      this.a.c();
+      return;
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    }
   }
 }
 

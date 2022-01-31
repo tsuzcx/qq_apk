@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.multiaio.widget;
 
-import asrb;
+import asrd;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 class TabPageIndicator$1
   implements Runnable
 {
-  TabPageIndicator$1(TabPageIndicator paramTabPageIndicator, asrb paramasrb, RecentBaseData paramRecentBaseData) {}
+  TabPageIndicator$1(TabPageIndicator paramTabPageIndicator, asrd paramasrd, RecentBaseData paramRecentBaseData) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Asrb, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData);
+    this.this$0.a(this.jdField_a_of_type_Asrd, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData);
   }
 }
 

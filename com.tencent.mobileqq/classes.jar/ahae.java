@@ -1,19 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
 
 public class ahae
-  implements View.OnClickListener
 {
-  public ahae(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
+  public int a;
+  public BaseHbFragment a;
+  public String a;
   
-  public void onClick(View paramView)
+  public ahae(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
   }
 }
 

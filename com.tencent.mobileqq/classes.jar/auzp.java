@@ -1,60 +1,40 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Set;
 
 public class auzp
+  implements ajte
 {
-  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  private WeakReference<ProfileHeaderView> a;
   
-  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  public auzp(ProfileHeaderView paramProfileHeaderView)
   {
-    return (ToggleButton)this.a.get(paramProfileLabelInfo);
+    this.a = new WeakReference(paramProfileHeaderView);
   }
   
-  public Map<ProfileLabelInfo, ToggleButton> a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (!a(paramProfileLabelInfo)) {
-      this.a.put(paramProfileLabelInfo, paramToggleButton);
-    }
-  }
-  
-  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    return this.a.get(paramProfileLabelInfo) != null;
-  }
-  
-  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (a(paramProfileLabelInfo)) {
-      this.a.remove(paramProfileLabelInfo);
-    }
-  }
-  
-  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
-      a(paramProfileLabelInfo, paramToggleButton);
-    }
-    for (;;)
+    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
     {
-      paramProfileLabelInfo.toggleStatus();
-      paramToggleButton.toggle();
-      return;
-      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        b(paramProfileLabelInfo, paramToggleButton);
+      paramObject = (Set)paramObject;
+      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
+      if (localProfileHeaderView == null) {
+        break label80;
+      }
+      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_Auuy.a.jdField_a_of_type_JavaLangString))
+      {
+        localProfileHeaderView.b(localProfileHeaderView.jdField_a_of_type_Auuy, false);
+        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
       }
     }
+    label80:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
   }
 }
 

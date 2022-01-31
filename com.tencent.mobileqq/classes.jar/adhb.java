@@ -1,25 +1,27 @@
 import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class adhb
-  implements bfoq
+  implements bfph
 {
-  adhb(adha paramadha, boolean paramBoolean, bfol parambfol) {}
+  adhb(adgx paramadgx, ChatMessage paramChatMessage, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
+        break label41;
+      }
+      apue.a("0X8005E4F");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      this.jdField_a_of_type_Adgx.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
-      if (adha.a(this.jdField_a_of_type_Adha) != null) {
-        adha.a(this.jdField_a_of_type_Adha, adha.a(this.jdField_a_of_type_Adha));
-      }
-      adha.a(this.jdField_a_of_type_Adha, "0X800A7F5", this.jdField_a_of_type_Boolean);
-      continue;
-      adha.a(this.jdField_a_of_type_Adha, "0X800A7F6", this.jdField_a_of_type_Boolean);
+      label41:
+      apue.a("0X8005E4D");
     }
   }
 }

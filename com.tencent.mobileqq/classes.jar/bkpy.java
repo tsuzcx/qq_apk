@@ -1,114 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.util.QZLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-public class bkpy
-  extends bjwu
+class bkpy
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private bkpf jdField_a_of_type_Bkpf;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
-  private View c;
+  private int jdField_a_of_type_Int;
+  private final Class<? extends bjxl> jdField_a_of_type_JavaLangClass;
+  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private final int b;
+  private final int c;
   
-  public bkpy(@NonNull bkpf parambkpf, Activity paramActivity)
+  private bkpy(int paramInt1, int paramInt2, int paramInt3, Class<? extends bjxl> paramClass)
   {
-    super(parambkpf);
-    this.jdField_a_of_type_Bkpf = parambkpf;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    if (vuc.a().b() == 22) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  static bkpy a(int paramInt1, int paramInt2, int paramInt3, Class<? extends bjxl> paramClass)
+  {
+    return new bkpy(paramInt1, paramInt2, paramInt3, paramClass);
+  }
+  
+  Class<? extends bjxl> a()
+  {
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    String str = a().getString(2131718105);
-    bgyf localbgyf = bgyf.a();
-    bgxy.a(this.jdField_a_of_type_AndroidAppActivity, localbgyf, paramString, QQStoryContext.a().a(), "", 1010, str, false);
-  }
-  
-  private void d()
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131365523);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131561853, localRelativeLayout, false);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, bkur.a, 0, 0);
-    localLayoutParams.addRule(11);
-    localLayoutParams.addRule(10);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131374093);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131374092);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
-    }
-    for (;;)
-    {
-      localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      return;
-      this.b.setOnClickListener(new bkpz(this));
-      this.c.setOnClickListener(new bkqa(this));
-    }
-  }
-  
-  private void j()
-  {
-    bbcv.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(2131718242).setPositiveButton(2131717755, new bkqc(this)).setNegativeButton(2131719536, new bkqb(this)).show();
-  }
-  
-  private void k()
-  {
-    bbcv.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(2131718243).setPositiveButton(2131717755, new bkqe(this)).setNegativeButton(2131691035, new bkqd(this)).show();
-  }
-  
-  public void a()
-  {
-    super.a();
-    d();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 1010) && (paramInt2 == -1))
-    {
-      bdid.a().a(2131717975);
-      this.jdField_a_of_type_Bkpf.f = true;
-    }
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
       {
-        return;
-      } while (this.jdField_a_of_type_AndroidViewView == null);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    } while (this.jdField_a_of_type_AndroidViewView == null);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        Integer localInteger = (Integer)localIterator.next();
+        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
+        QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", toString() + " with " + localInteger });
+      }
+    }
+    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
+    QZLog.d("QzoneEditPictureAndVide", 2, "performReport " + toString());
   }
   
-  public void g()
+  void a(Set<Integer> paramSet)
   {
-    super.g();
-    bhuo.a().a();
+    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
+  }
+  
+  public String toString()
+  {
+    return "QzoneEditPictureReportModel{actionType=" + this.jdField_a_of_type_Int + ", subActionType=" + this.b + ", reserve=" + this.c + '}';
   }
 }
 

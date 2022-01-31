@@ -1,79 +1,34 @@
-import com.tencent.mm.vfs.VFSFileInputStream;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import java.util.Random;
 
 public class axwi
 {
-  public static AbsStructMsg a(String paramString)
+  private long jdField_a_of_type_Long = -1L;
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  
+  public void a()
   {
-    paramString = new ByteArrayInputStream(paramString.getBytes());
-    axwf localaxwf = new axwf();
-    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-    try
-    {
-      localSAXParserFactory.newSAXParser().parse(paramString, localaxwf);
-      paramString.close();
-      paramString = localaxwf.a();
-      return paramString;
+    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % 300 != 1) {
+      return;
     }
-    catch (ParserConfigurationException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-      }
-      return null;
-    }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
   }
   
-  public static String a(String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    try
-    {
-      paramString = new VFSFileInputStream(paramString);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramString.read(arrayOfByte, 0, 1024);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
+    if (this.jdField_a_of_type_Long == -1L) {
+      return;
     }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return "";
-    }
-    return paramString;
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cost", l1 - l2 + "");
+    localHashMap.put("layout", paramInt1 + "");
+    localHashMap.put("first", paramInt2 + "");
+    axrn.a(BaseApplication.getContext()).a(null, "structmsg_builder_getview", true, 0L, 0L, localHashMap, "", false);
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

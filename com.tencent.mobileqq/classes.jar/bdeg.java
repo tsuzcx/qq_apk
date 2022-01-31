@@ -1,4 +1,4 @@
-public abstract interface bdeg {}
+class bdeg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

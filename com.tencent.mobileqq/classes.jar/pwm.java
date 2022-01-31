@@ -1,61 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwm
-  implements View.OnClickListener
+  implements pbx
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  qbe jdField_a_of_type_Qbe;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
-  ImageView[] c;
+  public pwm(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  private pwm(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
-  
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    boolean bool = true;
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131366528: 
-      i = 0;
-      if (i < this.jdField_a_of_type_Qbe.a.size()) {
-        if (((RecommendFollowInfo)this.jdField_a_of_type_Qbe.a.get(i)).isFollowed) {
-          break;
-        }
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    for (int i = 0;; i = 1)
+    if (paramBoolean)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
-      List localList = this.jdField_a_of_type_Qbe.a;
-      if (i == 0) {}
-      for (;;)
-      {
-        paramView.a(localList, bool);
-        return;
-        i += 1;
-        break;
-        bool = false;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
       return;
     }
+    bcql.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131718513, 0).a();
   }
 }
 

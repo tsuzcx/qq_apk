@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import auok;
+import auom;
 import com.tencent.mobileqq.data.MessageForStructing;
 
 class PicPreDownloader$6
@@ -10,7 +10,7 @@ class PicPreDownloader$6
   
   public void run()
   {
-    auok.a(this.a, this.this$0.a);
+    auom.a(this.a, this.this$0.a);
   }
 }
 

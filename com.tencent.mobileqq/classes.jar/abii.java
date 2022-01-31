@@ -1,33 +1,22 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class abii
-  implements bfoq
+  implements bfpt
 {
-  public abii(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
+  public abii(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    if (paramInt == 0)
-    {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
-      }
-      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-        break label110;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131693230);
-    }
-    label110:
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
       return;
     }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, bbdj.a(this.a, 2131693224, 2131693228, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

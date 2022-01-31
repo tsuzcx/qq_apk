@@ -1,52 +1,59 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 
 public class azca
+  extends azby
 {
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, String paramString, int paramInt5, azcc paramazcc)
+  public int a;
+  public qq_ad_get.QQAdGetRsp.AdInfo a;
+  public int b;
+  public boolean b;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  
+  public azca(JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject)));
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("product_type");
+    JSONObject localJSONObject1 = paramJSONObject.optJSONObject("display_info");
+    JSONObject localJSONObject2 = localJSONObject1.optJSONObject("basic_info");
+    this.b = localJSONObject2.optString("img");
+    this.f = localJSONObject2.optString("txt");
+    localJSONObject2 = localJSONObject1.optJSONObject("video_info");
+    this.jdField_a_of_type_JavaLangString = localJSONObject2.optString("video_url");
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("https"))) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("https", "http");
+    }
+    this.jdField_a_of_type_Long = (localJSONObject2.optInt("media_duration") * 1000);
+    if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) {
+      if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_width.get() / this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_height.get() <= 0.75F) {
+        break label293;
+      }
+    }
+    label293:
+    for (boolean bool = true;; bool = false)
     {
-      localJSONObject.put("start", paramInt1);
-      localJSONObject.put("num", paramInt2);
-      localJSONObject.put("type", paramInt3);
-      if ((paramInt3 == 1) || (paramInt3 == 2)) {
-        localJSONObject.put("theme_id", paramInt4);
+      this.jdField_a_of_type_Boolean = bool;
+      localJSONObject1 = localJSONObject1.optJSONObject("advertiser_info");
+      this.d = localJSONObject1.optString("corporate_image_name");
+      this.e = localJSONObject1.optString("corporate_logo");
+      localJSONObject1 = paramJSONObject.optJSONObject("report_info");
+      this.h = localJSONObject1.optString("negative_feedback_url");
+      if (!TextUtils.isEmpty(this.h)) {
+        this.h = this.h.replace("__ACT_TYPE__", "2001");
       }
-      localJSONObject.put("from", 2);
-      localJSONObject.put("bid", paramLong);
-      localJSONObject.put("pid", paramString);
-      if (paramInt5 != -1) {
-        localJSONObject.put("recommend_by_bid", paramInt5);
-      }
+      this.i = localJSONObject1.optString("exposure_url");
+      this.g = paramJSONObject.optJSONObject("app_info").optString("app_package_name");
+      return;
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        WebSsoBody.WebSsoRequestBody localWebSsoRequestBody;
-        paramString.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, localJSONObject.toString());
-    }
-    paramString = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), mxh.class);
-    paramString.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.shortvideo_feeds");
-    localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-    localWebSsoRequestBody.type.set(0);
-    localWebSsoRequestBody.data.set(localJSONObject.toString());
-    paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-    paramString.setObserver(new azcb(paramazcc));
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
   }
 }
 

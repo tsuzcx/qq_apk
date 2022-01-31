@@ -1,18 +1,26 @@
-import mqq.app.QQPermissionCallback;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.gallery.model.GalleryBaseData;
+import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
 
 class aqpb
-  implements QQPermissionCallback
+  implements MessageQueue.IdleHandler
 {
-  aqpb(aqox paramaqox) {}
+  aqpb(aqoz paramaqoz) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean queueIdle()
   {
-    bbcv.b(this.a.a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aqox.a(this.a);
+    Object localObject = this.a.a.a();
+    if ((localObject != null) && (((aqmi)localObject).a != null) && (((aqmi)localObject).a.a() == 1))
+    {
+      localObject = (AIOPicData)((aqmi)localObject).a;
+      aqmq localaqmq = new aqmq();
+      if ((localObject != null) && (localaqmq.a((AIOPicData)localObject, 4)) && (localaqmq.a((AIOPicData)localObject, 4) == null))
+      {
+        this.a.e(true);
+        this.a.j();
+      }
+    }
+    return false;
   }
 }
 

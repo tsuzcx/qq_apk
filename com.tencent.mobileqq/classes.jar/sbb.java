@@ -1,22 +1,22 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import java.util.Comparator;
 
-class sbb
-  extends bfvn
+public class sbb
+  implements Comparator<sat>
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  SingleLineTextView jdField_b_of_type_ComTencentWidgetSingleLineTextView;
+  public sbb(saz paramsaz) {}
   
-  sbb(sax paramsax) {}
+  public int a(sat paramsat1, sat paramsat2)
+  {
+    long l1 = paramsat1.a;
+    long l2 = paramsat2.a;
+    if (l2 > l1) {
+      return 1;
+    }
+    if (l2 < l1) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import amkn;
+import amkm;
 import android.os.Build.VERSION;
-import riy;
-import riz;
+import riv;
+import riw;
 
 public class FastWebActivity$25$2
   implements Runnable
 {
-  public FastWebActivity$25$2(riy paramriy) {}
+  public FastWebActivity$25$2(riv paramriv) {}
   
   public void run()
   {
     if ((Build.VERSION.SDK_INT > 26) && (FastWebActivity.a(this.a.a) == null))
     {
-      amkn.a(this.a.a, new riz(this));
+      amkm.a(this.a.a, new riw(this));
       return;
     }
     this.a.a.finish();

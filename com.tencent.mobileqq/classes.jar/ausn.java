@@ -1,97 +1,161 @@
+import ProfileLogic.QC.readUserInfoRsp;
+import ProfileLogic.QC.setUserFlagRsp;
+import ProfileLogic.QC.setUserProfileRsp;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
 import com.tencent.mobileqq.profile.CustomCoverFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class ausn
-  implements View.OnClickListener
+  extends akfy
 {
   public ausn(CustomCoverFragment paramCustomCoverFragment) {}
   
-  public void onClick(View paramView)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    int i = 1;
-    if (paramView.getId() == 2131368526) {
-      if (CustomCoverFragment.a(this.a) != null)
-      {
-        paramView = this.a;
-        if (CustomCoverFragment.c(this.a)) {
-          break label152;
-        }
-        bool = true;
-        CustomCoverFragment.b(paramView, bool);
-        paramView = (akfw)CustomCoverFragment.a(this.a).a(13);
-        if (!CustomCoverFragment.b(this.a)) {
-          break label158;
-        }
-        i = 1;
-        paramView.h(i);
-        CustomCoverFragment.a(this.a).a(0, this.a.getString(2131699041), 0, CustomCoverFragment.a(this.a));
-        localObject = CustomCoverFragment.a(this.a).getCurrentAccountUin();
-        if (!CustomCoverFragment.b(this.a)) {
-          break label163;
-        }
-        paramView = "open_random";
-        VasWebviewUtil.reportCommercialDrainage((String)localObject, "defaultcard", paramView, "", 1, 0, 0, "", "", "");
-      }
-    }
-    label152:
-    label158:
-    label163:
-    while (this.a.getActivity() == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-        continue;
-        i = 0;
-        continue;
-        paramView = "close_random";
-      }
-    }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {}
-    for (int j = ((Integer)localObject).intValue();; j = 0)
+    boolean bool = true;
+    int i = 0;
+    CustomCoverFragment.a(this.a).b();
+    Object localObject = this.a.getActivity();
+    if (localObject == null) {}
+    label194:
+    label334:
+    label353:
+    label364:
+    do
     {
-      if ((paramView instanceof Button))
+      do
       {
-        if (CustomCoverFragment.c(this.a))
+        do
         {
-          bcpw.a(this.a.getActivity(), 0, 2131690616, 0).a();
+          do
+          {
+            do
+            {
+              return;
+              if (!paramBoolean) {
+                break label724;
+              }
+              if (!(paramObject instanceof readUserInfoRsp)) {
+                break label364;
+              }
+              this.a.stopTitleProgress();
+              paramObject = (readUserInfoRsp)paramObject;
+              if (CustomCoverFragment.a(this.a))
+              {
+                localObject = this.a;
+                if (paramObject.flag != 1) {
+                  break;
+                }
+                paramBoolean = true;
+                CustomCoverFragment.a((CustomCoverFragment)localObject, paramBoolean);
+              }
+              CustomCoverFragment.a(this.a, paramObject.itemid);
+              CustomCoverFragment.b(this.a, paramObject.index);
+              CustomCoverFragment.c(this.a, paramObject.listend);
+              if (!TextUtils.isEmpty(paramObject.urlprefix)) {
+                auuz.a = paramObject.urlprefix;
+              }
+              CustomCoverFragment.a(this.a, paramObject.itemlist);
+              if (CustomCoverFragment.a(this.a) != null)
+              {
+                if (CustomCoverFragment.a(this.a).size() != 0) {
+                  break label334;
+                }
+                CustomCoverFragment.a(this.a).setVisibility(8);
+                CustomCoverFragment.c(this.a, 2);
+              }
+              if (CustomCoverFragment.a(this.a) != null) {
+                CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+              }
+            } while (!QLog.isColorLevel());
+            localObject = new StringBuilder().append("onDefaultCardRsp: [readUserInfoRsp] selId=").append(CustomCoverFragment.a(this.a)).append(" reqIndex=").append(CustomCoverFragment.b(this.a)).append(" footerState=").append(CustomCoverFragment.c(this.a)).append(" flag=");
+            if (paramObject.flag == 1)
+            {
+              paramBoolean = bool;
+              localObject = ((StringBuilder)localObject).append(paramBoolean).append(" itemList=");
+              if (paramObject.itemlist != null) {
+                break label353;
+              }
+            }
+            for (;;)
+            {
+              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, i);
+              return;
+              paramBoolean = false;
+              break;
+              CustomCoverFragment.a(this.a).setVisibility(0);
+              break label194;
+              paramBoolean = false;
+              break label293;
+              i = paramObject.itemlist.size();
+            }
+            if (!(paramObject instanceof setUserProfileRsp)) {
+              break;
+            }
+            i = ((setUserProfileRsp)paramObject).ret;
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
+            }
+            if (i == 0)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] selId=" + CustomCoverFragment.a(this.a));
+              }
+              paramObject = new Intent();
+              paramObject.putExtra("req_code_key", 2002);
+              paramObject.putExtra("card_url_key", this.a.a(CustomCoverFragment.d(this.a)));
+              ((FragmentActivity)localObject).setResult(-1, paramObject);
+              ((FragmentActivity)localObject).finish();
+              return;
+            }
+          } while (this.a.getActivity() == null);
+          bcql.a(this.a.getActivity(), 1, 2131720544, 0).a();
           return;
+        } while (!(paramObject instanceof setUserFlagRsp));
+        i = ((setUserFlagRsp)paramObject).ret;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] ret=" + i);
         }
-        if (CustomCoverFragment.a(this.a) != j)
-        {
-          CustomCoverFragment.a(this.a, j);
-          return;
-        }
-        if (j != CustomCoverFragment.a(this.a)) {
+        if (i != 0) {
           break;
         }
-        CustomCoverFragment.a(this.a, 0);
-        return;
-      }
-      if (!(paramView instanceof ImageView)) {
-        break;
-      }
-      paramView = new Intent();
-      paramView.putExtra("cover_id_key", j);
-      if (!CustomCoverFragment.c(this.a)) {
-        if (CustomCoverFragment.a(this.a) != j) {}
-      }
-      for (i = 2;; i = 0)
-      {
-        paramView.putExtra("cover_button_key", i);
-        abtu.a(this.a.getActivity(), paramView, PublicFragmentActivity.class, CoverDetailFragment.class, 2001);
-        return;
-      }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] setFlag=" + CustomCoverFragment.b(this.a));
+        }
+        CustomCoverFragment.a(this.a, true);
+        bcql.a((Context)localObject, 0, 2131720547, 0).a();
+        if (CustomCoverFragment.b(this.a))
+        {
+          ((FragmentActivity)localObject).finish();
+          return;
+        }
+        CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
+      } while (CustomCoverFragment.a(this.a) == null);
+      CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+      return;
+    } while (this.a.getActivity() == null);
+    label293:
+    bcql.a(this.a.getActivity(), 1, 2131720544, 0).a();
+    return;
+    label724:
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
     }
+    if ("profilelogic.readUserInfo".equals(paramObject))
+    {
+      CustomCoverFragment.c(this.a, 1);
+      this.a.stopTitleProgress();
+      bcql.a((Context)localObject, 1, 2131720253, 0).a();
+      return;
+    }
+    bcql.a((Context)localObject, 1, 2131720544, 0).a();
   }
 }
 

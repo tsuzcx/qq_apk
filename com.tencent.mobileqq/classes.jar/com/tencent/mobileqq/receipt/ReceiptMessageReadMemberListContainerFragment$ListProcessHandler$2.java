@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import avov;
+import avox;
 
 public class ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$2
   implements Runnable
 {
-  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$2(avov paramavov, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$2(avox paramavox, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
   public void run()
   {

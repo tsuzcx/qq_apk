@@ -1,30 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-class azvu
-  implements syt<azvw, syq>
+public final class azvu
+  implements Parcelable.Creator<HWGuideItem>
 {
-  azvu(azvt paramazvt) {}
-  
-  public void a(@NonNull azvw paramazvw, @Nullable syq paramsyq, @NonNull ErrorMessage paramErrorMessage)
+  public HWGuideItem a(Parcel paramParcel)
   {
-    if (paramErrorMessage.isFail())
-    {
-      veg.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
-      azvt.a(this.a, paramErrorMessage);
-      return;
-    }
-    if (paramsyq.a == 0)
-    {
-      paramazvw = new azvx();
-      paramazvw.a = azvt.a(this.a);
-      paramazvw.b = azvt.a(this.a).b;
-      azvt.a(this.a, paramazvw);
-      return;
-    }
-    veg.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramsyq.b);
-    azvt.b(this.a, new ErrorMessage(paramsyq.a, paramsyq.b));
+    return new HWGuideItem(paramParcel);
+  }
+  
+  public HWGuideItem[] a(int paramInt)
+  {
+    return new HWGuideItem[paramInt];
   }
 }
 

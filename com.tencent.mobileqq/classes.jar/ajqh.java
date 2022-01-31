@@ -1,23 +1,66 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1.1.1;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.1.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.1.2;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajqh
-  implements Animation.AnimationListener
+  extends ajot
 {
-  public ajqh(ApolloMainViewBinder.1 param1) {}
+  public ajqh(ApolloPanel paramApolloPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloMainViewBinder.1.1.1(this), 300L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, "tab download Done");
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(ApolloActionData paramApolloActionData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
+    }
+    this.a.a(paramApolloActionData);
+    if (ApolloPanel.a(this.a) != null) {
+      ApolloPanel.a(this.a).a(paramApolloActionData);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(Boolean paramBoolean)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
+    MqqHandler localMqqHandler;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getHandler(ChatActivity.class);
+        } while (localMqqHandler == null);
+        localMqqHandler.post(new ApolloPanel.1.1(this));
+        if (!paramBoolean.booleanValue()) {
+          break;
+        }
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin());
+      } while (this.a.c == null);
+      this.a.c.clear();
+      this.a.d(this.a.b(ApolloPanel.jdField_a_of_type_Int));
+      return;
+    } while ((this.a.jdField_a_of_type_Ajqe == null) || (this.a.jdField_a_of_type_Ajqe.c != 3));
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
+    }
+    localMqqHandler.post(new ApolloPanel.1.2(this));
+  }
 }
 
 

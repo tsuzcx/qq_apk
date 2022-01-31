@@ -1,36 +1,102 @@
-import android.support.annotation.RestrictTo;
+import android.os.Build.VERSION;
+import java.io.File;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class bjms
-  implements bjmw
+  implements bldj
 {
-  private final bjmv[] a;
+  int jdField_a_of_type_Int = 1024000;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public Throwable a;
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int = 25;
+  final long jdField_b_of_type_Long;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  boolean jdField_c_of_type_Boolean;
+  int d;
+  int e;
+  int f;
   
-  bjms(bjmv[] paramArrayOfbjmv)
+  public bjms(String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = paramArrayOfbjmv;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_c_of_type_Boolean = paramBoolean2;
   }
   
-  public void a(bjnb parambjnb, bjmy parambjmy)
+  public bldk a(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    bjnd localbjnd = new bjnd();
-    bjmv[] arrayOfbjmv = this.a;
-    int k = arrayOfbjmv.length;
-    int i = 0;
-    while (i < k)
+    bldk localbldk = new bldk();
+    if (paramInt1 <= paramInt2) {}
+    for (;;)
     {
-      arrayOfbjmv[i].a(parambjnb, parambjmy, false, localbjnd);
-      i += 1;
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      localbldk.jdField_a_of_type_JavaIoFile = localFile;
+      localbldk.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localbldk.jdField_a_of_type_Float = (960.0F / paramInt2);
+      localbldk.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localbldk.jdField_b_of_type_Boolean = a();
+      localbldk.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localbldk.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      localbldk.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
+      localbldk.d = this.jdField_c_of_type_Boolean;
+      localbldk.f = this.jdField_c_of_type_Int;
+      localbldk.g = this.d;
+      localbldk.h = this.e;
+      localbldk.i = this.f;
+      ved.a("CropVideoActivity", "HWCompressProcessor, step: getEncodeConfig() config.setRotation = " + localbldk.jdField_b_of_type_Boolean + ", scaleRate=" + localbldk.jdField_a_of_type_Float + ", videoBitRate=" + localbldk.jdField_a_of_type_Int + ", videoFrameRate=" + localbldk.jdField_b_of_type_Int + ", beginTime=" + localbldk.jdField_a_of_type_Long + ", endTime=" + localbldk.jdField_b_of_type_Long, ", isMute=" + this.jdField_b_of_type_Boolean, ", accurateSeek=" + this.jdField_c_of_type_Boolean + ", cropX=" + this.jdField_c_of_type_Int + ", cropY=" + this.d + ", cropWidth=" + this.e + ", cropHeight=" + this.f);
+      return localbldk;
+      paramInt2 = paramInt1;
     }
-    arrayOfbjmv = this.a;
-    k = arrayOfbjmv.length;
-    i = j;
-    while (i < k)
-    {
-      arrayOfbjmv[i].a(parambjnb, parambjmy, true, localbjnd);
-      i += 1;
+  }
+  
+  public void a()
+  {
+    ved.e("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onSuccessed");
+  }
+  
+  public void a(int paramInt)
+  {
+    ved.b("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onProgress:" + paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+  }
+  
+  public void a(Throwable paramThrowable)
+  {
+    ved.e("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onFailed");
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
     }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    ved.c("CropVideoActivity", "HWCompressProcessor, step: HWCompressProcessor onCanceled");
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

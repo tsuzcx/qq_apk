@@ -1,39 +1,66 @@
-import android.view.View;
-import com.tencent.biz.eqq.CrmIvrText.1;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nba
-  extends ayki
+final class nba
+  implements BusinessObserver
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  nba(Context paramContext, QQAppInterface paramQQAppInterface, bcqf parambcqf, SessionInfo paramSessionInfo, String paramString) {}
   
-  public nba(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  static void a(View paramView, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
-  {
-    paramView.post(new CrmIvrText.1(paramQQAppInterface, paramView, paramString1));
-  }
-  
-  protected void a()
-  {
-    super.a();
-    Matcher localMatcher = Pattern.compile(aykw.b + "|" + "QQ语音").matcher(this.e);
-    while (localMatcher.find())
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
-      int i = localMatcher.start();
-      int j = localMatcher.end();
-      a(new nbb(this, this.e.substring(i, j)), i, j, 33);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          naz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+          naz.a(this.jdField_a_of_type_Bcqf);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
+          }
+          naz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
+          naz.a(this.jdField_a_of_type_Bcqf);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        naz.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        naz.a(this.jdField_a_of_type_Bcqf);
+        return;
+      }
+      naz.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      naz.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      naz.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
     }
   }
 }

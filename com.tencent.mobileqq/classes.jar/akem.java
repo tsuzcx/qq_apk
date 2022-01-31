@@ -1,12 +1,12 @@
 class akem
-  implements bgka
+  implements lxr
 {
-  akem(akef paramakef, byte[] paramArrayOfByte) {}
+  akem(akee paramakee, byte[] paramArrayOfByte) {}
   
-  public void a(bgjz parambgjz)
+  public void a(lxq paramlxq)
   {
-    parambgjz.a(this.jdField_a_of_type_ArrayOfByte);
-    parambgjz.a();
+    paramlxq.a(this.jdField_a_of_type_ArrayOfByte);
+    paramlxq.a();
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import udg;
-import ueg;
-import uek;
+import udd;
+import ued;
+import ueh;
 
 public class VideoViewTVKImpl$4$1
   implements Runnable
 {
-  public VideoViewTVKImpl$4$1(uek paramuek, int paramInt, Object paramObject) {}
+  public VideoViewTVKImpl$4$1(ueh paramueh, int paramInt, Object paramObject) {}
   
   public void run()
   {
     int i;
-    if (this.jdField_a_of_type_Uek.a.a != null)
+    if (this.jdField_a_of_type_Ueh.a.a != null)
     {
       i = this.jdField_a_of_type_Int;
       if (this.jdField_a_of_type_Int != 21) {
@@ -22,7 +22,7 @@ public class VideoViewTVKImpl$4$1
     }
     for (;;)
     {
-      this.jdField_a_of_type_Uek.a.a.a(this.jdField_a_of_type_Uek.a, i, this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_Ueh.a.a.a(this.jdField_a_of_type_Ueh.a, i, this.jdField_a_of_type_JavaLangObject);
       return;
       label58:
       if (this.jdField_a_of_type_Int == 22) {

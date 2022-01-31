@@ -1,19 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.widget.ScrollView;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.28.1;
-import mqq.os.MqqHandler;
 
 public class aeum
-  implements myi
+  extends ScrollView
 {
-  public aeum(TroopChatPie paramTroopChatPie) {}
-  
-  public void a(String paramString1, String paramString2)
+  public aeum(TroopChatPie paramTroopChatPie, Context paramContext)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
-      TroopChatPie.k(this.a).post(new TroopChatPie.28.1(this, paramString2));
-    }
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

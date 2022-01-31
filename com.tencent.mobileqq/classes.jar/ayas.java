@@ -1,12 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
 class ayas
+  implements DialogInterface.OnCancelListener
 {
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
+  ayas(ayaq paramayaq, String paramString, int paramInt) {}
   
-  public ayas(String paramString, Object paramObject)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Ayaq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
   }
 }
 

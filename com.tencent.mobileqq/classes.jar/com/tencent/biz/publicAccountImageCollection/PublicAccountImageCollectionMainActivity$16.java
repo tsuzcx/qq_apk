@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import akdi;
+import akdh;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,13 +13,13 @@ class PublicAccountImageCollectionMainActivity$16
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    akdi localakdi;
+    akdh localakdh;
     do
     {
       return;
-      localakdi = (akdi)this.this$0.app.getManager(56);
-    } while (localakdi == null);
-    PublicAccountImageCollectionMainActivity.c(this.this$0, localakdi.a(Long.valueOf(this.this$0.a)));
+      localakdh = (akdh)this.this$0.app.getManager(56);
+    } while (localakdh == null);
+    PublicAccountImageCollectionMainActivity.c(this.this$0, localakdh.a(Long.valueOf(this.this$0.a)));
     PublicAccountImageCollectionMainActivity.a(this.this$0).postDelayed(new PublicAccountImageCollectionMainActivity.16.1(this), 0L);
   }
 }

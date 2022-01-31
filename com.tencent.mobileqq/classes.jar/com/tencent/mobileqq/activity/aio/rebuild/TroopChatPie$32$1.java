@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeuq;
-import bcpw;
+import aeuo;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -9,17 +9,17 @@ import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 public class TroopChatPie$32$1
   implements Runnable
 {
-  public TroopChatPie$32$1(aeuq paramaeuq, MessageRecord paramMessageRecord) {}
+  public TroopChatPie$32$1(aeuo paramaeuo, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
     {
-      bcpw.a(this.jdField_a_of_type_Aeuq.a.a.getApp(), 2131692046, 0).a();
+      bcql.a(this.jdField_a_of_type_Aeuo.a.a.getApp(), 2131692046, 0).a();
       return;
     }
-    bcpw.a(this.jdField_a_of_type_Aeuq.a.a.getApp(), 2131719772, 0).a();
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aeuq.a.a.c(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    bcql.a(this.jdField_a_of_type_Aeuo.a.a.getApp(), 2131719783, 0).a();
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aeuo.a.a.c(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

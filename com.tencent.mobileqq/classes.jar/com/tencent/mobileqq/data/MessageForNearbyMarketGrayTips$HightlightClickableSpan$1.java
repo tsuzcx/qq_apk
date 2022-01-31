@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import anje;
+import anjj;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(anje paramanje) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(anjj paramanjj) {}
   
   public void run()
   {

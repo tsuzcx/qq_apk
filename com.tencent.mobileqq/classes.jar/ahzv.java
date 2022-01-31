@@ -1,22 +1,54 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ahzv
-  implements MediaPlayer.OnCompletionListener
 {
-  public ahzv(FixedSizeVideoView paramFixedSizeVideoView) {}
+  private ahzw jdField_a_of_type_Ahzw;
+  private ConcurrentHashMap<Integer, aiaa> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public ahzv(ahzw paramahzw)
   {
-    if (this.a.a != null)
+    this.jdField_a_of_type_Ahzw = paramahzw;
+  }
+  
+  public aiaa a(int paramInt)
+  {
+    return (aiaa)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
     {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+      aiaa localaiaa = (aiaa)localIterator.next();
+      localaiaa.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      localaiaa.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
+  }
+  
+  public void a(aiaa paramaiaa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramaiaa.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramaiaa.jdField_a_of_type_Int), paramaiaa);
+    if (this.jdField_a_of_type_Ahzw != null) {
+      this.jdField_a_of_type_Ahzw.a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

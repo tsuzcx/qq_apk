@@ -1,12 +1,12 @@
 package com.tencent.av.ui.redbag;
 
 import com.tencent.av.ui.AVActivity;
-import mpc;
+import moz;
 
 public class AVRedBagMgr$7
   implements Runnable
 {
-  public AVRedBagMgr$7(mpc parammpc) {}
+  public AVRedBagMgr$7(moz parammoz) {}
   
   public void run()
   {

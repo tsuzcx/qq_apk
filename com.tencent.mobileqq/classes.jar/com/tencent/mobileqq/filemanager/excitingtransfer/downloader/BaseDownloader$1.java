@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.downloader;
 
-import aphf;
-import apti;
+import aphj;
+import aptm;
 
 public class BaseDownloader$1
   implements Runnable
 {
-  public BaseDownloader$1(aphf paramaphf) {}
+  public BaseDownloader$1(aphj paramaphj) {}
   
   public void run()
   {
-    this.this$0.a = apti.a();
-    this.this$0.a(aphf.a(this.this$0));
+    this.this$0.a = aptm.a();
+    this.this$0.a(aphj.a(this.this$0));
   }
 }
 

@@ -1,20 +1,15 @@
-class phq
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import java.util.Map;
+
+public class phq
+  implements pqy
 {
-  private boolean jdField_a_of_type_Boolean;
+  public phq(ProteusItemView paramProteusItemView, rbq paramrbq) {}
   
-  phq(pgz parampgz, boolean paramBoolean)
+  public void a(View paramView, Map<String, Object> paramMap)
   {
-    a(paramBoolean);
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Rbq.c();
   }
 }
 

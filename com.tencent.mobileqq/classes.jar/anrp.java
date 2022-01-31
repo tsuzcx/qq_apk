@@ -1,26 +1,32 @@
-public class anrp
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
+
+class anrp
+  extends ajvz
 {
-  public static int a = 300;
+  anrp(anrm paramanrm) {}
   
-  public static String a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (bbjw.a(paramString)) {
-      return "";
-    }
-    paramString = paramString.split("_");
-    if (paramString.length > 2) {
-      return paramString[1];
-    }
-    return "";
+    anrm.a(this.a).clear();
   }
   
-  public static String a(String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((bbjw.a(paramString1)) || (bbjw.a(paramString2))) {
-      return "";
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.e();
     }
-    paramString2 = bdhu.a(paramString2);
-    return ajsf.bi + paramString2 + paramString1;
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (anrm.a(this.a) != null)) {
+      anrm.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    }
+    if ((this.a.a != null) && (paramBoolean)) {
+      this.a.a.e();
+    }
   }
 }
 

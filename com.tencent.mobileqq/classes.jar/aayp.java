@@ -1,43 +1,21 @@
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Card;
 
 public class aayp
-  extends ajxl
+  extends ajto
 {
   public aayp(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      this.a.a();
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-    }
-    while ((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing()) || (this.a.isFinishing())) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bcpq.dismiss();
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
-      {
-        paramString = ((ajxn)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
-        if (paramString != null) {
-          this.a.d = paramString.name;
-        }
+      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
       }
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

@@ -1,19 +1,33 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class bjyv
-  implements ufp
+public abstract interface bjyv
 {
-  public bjyv(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  @NonNull
+  public abstract Context a();
   
-  public void a_(ufk paramufk)
-  {
-    veg.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
-  }
+  public abstract Intent a(bkld parambkld);
+  
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 

@@ -1,17 +1,60 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.Context;
+import java.util.HashMap;
 
-class bdkq
-  implements bdit
+public class bdkq
 {
-  bdkq(bdkp parambdkp, DownloadInfo paramDownloadInfo) {}
+  protected static bdkq a;
+  protected Context a;
+  protected bdkp a;
+  protected final HashMap<String, bdkn> a;
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  protected bdkq(Context paramContext)
   {
-    bdht.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bdhr.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bdkp = new bdkr(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+  }
+  
+  public static bdkq a(Context paramContext)
+  {
+    if (jdField_a_of_type_Bdkq != null) {
+      return jdField_a_of_type_Bdkq;
+    }
+    try
+    {
+      if (jdField_a_of_type_Bdkq == null) {
+        jdField_a_of_type_Bdkq = new bdkq(paramContext);
+      }
+      paramContext = jdField_a_of_type_Bdkq;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public bdkn a(Class<? extends bdkj> paramClass, long paramLong, String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      if (this.jdField_a_of_type_AndroidContentContext == null) {
+        throw new RuntimeException("call initiate(Context context) before this");
+      }
+    }
+    if (paramString == null) {
+      throw new RuntimeException("invalid table name");
+    }
+    Object localObject = bdkn.a(paramLong, paramString);
+    localObject = (bdkn)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    if (localObject == null)
+    {
+      paramClass = new bdkn(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
+      paramClass.a(this.jdField_a_of_type_Bdkp);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
+    }
+    for (;;)
+    {
+      return paramClass;
+      paramClass = (Class<? extends bdkj>)localObject;
+    }
   }
 }
 

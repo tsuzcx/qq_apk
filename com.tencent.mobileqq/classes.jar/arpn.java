@@ -1,57 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
-class arpn
-  implements Handler.Callback
+public class arpn
 {
-  arpn(arpm paramarpm) {}
+  public static HashMap<Long, String> a = new HashMap();
   
-  private void a()
+  static
   {
-    if (arpm.a(this.a) != null) {
-      arpm.a(this.a).setRefreshing(false);
-    }
-    if (arpm.a(this.a) != null) {
-      arpm.a(this.a).setRefresh(false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 3: 
-      bcpw.a(this.a.a(), 1, 2131719788, 0).b(arpm.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label134;
-        }
-        arpm.a(this.a);
-        if (arpm.a(this.a) == null) {
-          break;
-        }
-        arpm.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
-      }
-      label134:
-      a();
-      bcpw.a(this.a.a(), 1, 2131719788, 0).b(arpm.a(this.a));
-      return false;
-    }
-    a();
-    return false;
+    a.put(Long.valueOf(1047L), "biz_src_qqmusic");
+    a.put(Long.valueOf(5362L), "biz_src_zz_dianjing");
+    a.put(Long.valueOf(1113L), "biz_src_zz_bodong");
+    a.put(Long.valueOf(3053L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(763L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(883L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(4559L), "biz_src_zf_sport");
+    a.put(Long.valueOf(826L), "biz_src_feeds_buluo");
+    a.put(Long.valueOf(489L), "biz_src_zf_games");
+    a.put(Long.valueOf(879L), "biz_src_hdsp_dtzbj");
   }
 }
 

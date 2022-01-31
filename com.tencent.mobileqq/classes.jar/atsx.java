@@ -1,11 +1,11 @@
 class atsx
-  implements bfos
+  implements bfpj
 {
-  atsx(atsa paramatsa) {}
+  atsx(atsc paramatsc) {}
   
   public void onDismiss()
   {
-    atsa.a(this.a, this.a.h, false);
+    atsc.a(this.a, this.a.c, false);
   }
 }
 

@@ -1,16 +1,16 @@
 import android.view.View;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
 
 public class ameh
-  implements bfpd
+  implements bfph
 {
-  public ameh(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public ameh(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bfpc parambfpc) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a();
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

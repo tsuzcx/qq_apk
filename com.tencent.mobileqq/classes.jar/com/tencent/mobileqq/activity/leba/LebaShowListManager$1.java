@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.leba;
 
-import agca;
-import avpq;
+import agby;
+import avps;
 import com.tencent.qphone.base.util.QLog;
 
 public class LebaShowListManager$1
   implements Runnable
 {
-  public LebaShowListManager$1(agca paramagca, avpq paramavpq, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
+  public LebaShowListManager$1(agby paramagby, avps paramavps, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
   
   public void run()
   {
@@ -15,14 +15,14 @@ public class LebaShowListManager$1
     {
       try
       {
-        avpq localavpq = this.jdField_a_of_type_Avpq;
+        avps localavps = this.jdField_a_of_type_Avps;
         i = (int)this.jdField_a_of_type_Long;
         boolean bool = this.jdField_a_of_type_Boolean;
         if (this.b != -9223372036854775808L) {
           continue;
         }
         l = this.c;
-        i = localavpq.a(i, bool, l);
+        i = localavps.a(i, bool, l);
       }
       catch (Exception localException)
       {

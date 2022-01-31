@@ -1,17 +1,29 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.BaseAdapter;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.PagingScrollView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bcod
-  extends BaseAdapter
+public class bcod
+  implements View.OnTouchListener
 {
-  public abstract int a();
+  public bcod(PagingScrollView paramPagingScrollView) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract boolean a(int paramInt);
-  
-  public boolean a(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    if (this.a.mIsOnSpecialView)
+    {
+      int i = paramMotionEvent.getAction();
+      if ((i == 1) || (i == 3))
+      {
+        this.a.mIsOnSpecialView = false;
+        this.a.getParent().requestDisallowInterceptTouchEvent(false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
+        }
+      }
+    }
     return false;
   }
 }

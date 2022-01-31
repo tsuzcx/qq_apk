@@ -1,16 +1,19 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.BaseChatPie.82;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class aanj
-  implements View.OnTouchListener
+  implements bcpz
 {
-  public aanj(BaseChatPie.82 param82) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131371906);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aanj(BaseChatPie paramBaseChatPie) {}
+  
+  public boolean a()
   {
-    return true;
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
 }
 

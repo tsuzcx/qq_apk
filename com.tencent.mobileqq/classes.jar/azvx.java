@@ -1,7 +1,10 @@
 public class azvx
 {
+  public long a;
   public String a;
+  public long b;
   public String b;
+  public long c;
 }
 
 

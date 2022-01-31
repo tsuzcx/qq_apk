@@ -1,29 +1,26 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
 
 public final class anik
   implements Parcelable.Creator
 {
-  public IPSiteModel.Goods a(Parcel paramParcel)
+  public IPSiteModel.Book a(Parcel paramParcel)
   {
-    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
-    localGoods.cover = paramParcel.readString();
-    localGoods.goodsTags = paramParcel.readString();
-    localGoods.id = paramParcel.readString();
-    localGoods.name = paramParcel.readString();
-    localGoods.price = paramParcel.readString();
-    localGoods.saleTags = paramParcel.readString();
-    localGoods.svipPrice = paramParcel.readString();
-    localGoods.url = paramParcel.readString();
-    localGoods.moreUrl = paramParcel.readString();
-    localGoods.saleNum = paramParcel.readString();
-    return localGoods;
+    IPSiteModel.Book localBook = new IPSiteModel.Book();
+    localBook.cover = paramParcel.readString();
+    localBook.desc = paramParcel.readString();
+    localBook.id = paramParcel.readString();
+    localBook.jumpUrl = paramParcel.readString();
+    localBook.name = paramParcel.readString();
+    localBook.recommDesc = paramParcel.readString();
+    localBook.authorName = paramParcel.readString();
+    return localBook;
   }
   
-  public IPSiteModel.Goods[] a(int paramInt)
+  public IPSiteModel.Book[] a(int paramInt)
   {
-    return new IPSiteModel.Goods[paramInt];
+    return new IPSiteModel.Book[paramInt];
   }
 }
 

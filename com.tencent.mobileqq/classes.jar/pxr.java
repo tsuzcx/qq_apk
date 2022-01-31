@@ -1,16 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pxr
-  implements pca
+  extends ClickableSpan
 {
-  public pxr(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public pxr(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      osj.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
-    }
+    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
+    ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(actj.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

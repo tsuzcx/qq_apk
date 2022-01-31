@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class abgx
-  implements DialogInterface.OnClickListener
+class abgx
+  implements Handler.Callback
 {
-  public abgx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  abgx(abgw paramabgw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    axqw.b(this.a.app, "dc00898", "", "", "0X800A0D8", "0X800A0D8", 0, 0, "", "", "", "");
-    FriendProfileMoreInfoActivity.b(this.a);
+    return true;
   }
 }
 

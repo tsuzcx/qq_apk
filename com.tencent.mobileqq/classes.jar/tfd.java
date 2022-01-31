@@ -1,16 +1,20 @@
-class tfd
-  implements stn
+public class tfd
 {
-  tfd(tfc paramtfc, tfe paramtfe) {}
+  public final long a;
+  public final tfb a;
+  public final long b;
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public tfd(tfb paramtfb, long paramLong1, long paramLong2)
   {
-    tfc.a(this.jdField_a_of_type_Tfc, new tfg[] { new tfg(this.jdField_a_of_type_Tfe, paramLong1, paramLong2) });
+    this.jdField_a_of_type_Tfb = paramtfb;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
   
-  public void a(String paramString1, String paramString2) {}
+  public String toString()
+  {
+    return "Progress{intput=" + this.jdField_a_of_type_Tfb + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
+  }
 }
 
 

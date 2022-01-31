@@ -1,137 +1,148 @@
+import android.app.Notification;
+import android.graphics.Bitmap;
+import android.os.Binder;
 import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVPbInfo;
 
-class lwm
-  implements lwk
+public abstract class lwm
+  extends Binder
+  implements lwl
 {
-  private IBinder a;
-  
-  lwm(IBinder paramIBinder)
+  public lwm()
   {
-    this.a = paramIBinder;
+    attachInterface(this, "com.tencent.av.service.IAVServiceForQQ");
   }
   
-  /* Error */
-  public void a(boolean paramBoolean, com.tencent.av.service.AVRedPacketConfig paramAVRedPacketConfig)
+  public static lwl a(IBinder paramIBinder)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: aload 4
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: iload_1
-    //   15: ifeq +47 -> 62
-    //   18: aload 4
-    //   20: iload_3
-    //   21: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: ifnull +42 -> 67
-    //   28: aload 4
-    //   30: iconst_1
-    //   31: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   34: aload_2
-    //   35: aload 4
-    //   37: iconst_0
-    //   38: invokevirtual 39	com/tencent/av/service/AVRedPacketConfig:writeToParcel	(Landroid/os/Parcel;I)V
-    //   41: aload_0
-    //   42: getfield 15	lwm:a	Landroid/os/IBinder;
-    //   45: iconst_1
-    //   46: aload 4
-    //   48: aconst_null
-    //   49: iconst_1
-    //   50: invokeinterface 45 5 0
-    //   55: pop
-    //   56: aload 4
-    //   58: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   61: return
-    //   62: iconst_0
-    //   63: istore_3
-    //   64: goto -46 -> 18
-    //   67: aload 4
-    //   69: iconst_0
-    //   70: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   73: goto -32 -> 41
-    //   76: astore_2
-    //   77: aload 4
-    //   79: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   82: aload_2
-    //   83: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	this	lwm
-    //   0	84	1	paramBoolean	boolean
-    //   0	84	2	paramAVRedPacketConfig	com.tencent.av.service.AVRedPacketConfig
-    //   1	63	3	i	int
-    //   5	73	4	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   7	14	76	finally
-    //   18	24	76	finally
-    //   28	41	76	finally
-    //   41	56	76	finally
-    //   67	73	76	finally
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean, java.lang.String paramString1, java.lang.String paramString2)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore 4
-    //   3: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   6: astore 5
-    //   8: aload 5
-    //   10: ldc 25
-    //   12: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: iload_1
-    //   16: ifeq +43 -> 59
-    //   19: aload 5
-    //   21: iload 4
-    //   23: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   26: aload 5
-    //   28: aload_2
-    //   29: invokevirtual 52	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   32: aload 5
-    //   34: aload_3
-    //   35: invokevirtual 52	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   38: aload_0
-    //   39: getfield 15	lwm:a	Landroid/os/IBinder;
-    //   42: iconst_2
-    //   43: aload 5
-    //   45: aconst_null
-    //   46: iconst_1
-    //   47: invokeinterface 45 5 0
-    //   52: pop
-    //   53: aload 5
-    //   55: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   58: return
-    //   59: iconst_0
-    //   60: istore 4
-    //   62: goto -43 -> 19
-    //   65: astore_2
-    //   66: aload 5
-    //   68: invokevirtual 48	android/os/Parcel:recycle	()V
-    //   71: aload_2
-    //   72: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	this	lwm
-    //   0	73	1	paramBoolean	boolean
-    //   0	73	2	paramString1	java.lang.String
-    //   0	73	3	paramString2	java.lang.String
-    //   1	60	4	i	int
-    //   6	61	5	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	15	65	finally
-    //   19	53	65	finally
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceForQQ");
+    if ((localIInterface != null) && ((localIInterface instanceof lwl))) {
+      return (lwl)localIInterface;
+    }
+    return new lwn(paramIBinder);
   }
   
   public IBinder asBinder()
   {
-    return this.a;
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVServiceForQQ");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(lwj.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.createByteArray());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      b(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      c(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      if (paramParcel1.readInt() != 0)
+      {
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label292;
+        }
+      }
+      for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+        bool = false;
+        break;
+      }
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramParcel2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (paramParcel1 = (Bitmap)Bitmap.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(paramParcel2, paramParcel1);
+        return true;
+      }
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readString());
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      paramParcel1 = a(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+      }
+      paramParcel2.writeInt(0);
+      return true;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readLong(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 12: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      label292:
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+      if (paramParcel1.readInt() != 0) {
+        bool = true;
+      }
+      a(bool);
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceForQQ");
+    c();
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

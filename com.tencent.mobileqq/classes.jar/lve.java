@@ -1,48 +1,68 @@
-import android.graphics.Rect;
-
 public class lve
-  extends lvf
+  extends lum
 {
-  public lva a;
   public int b;
-  public int c;
   
-  public lve(lva paramlva)
+  protected float a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Long = 1800L;
-    this.a = paramlva;
+    return this.b + paramInt1;
   }
   
   public void a(long paramLong)
   {
-    super.a(paramLong);
-    Rect localRect = this.a.a();
-    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
-    int j = (localRect.top + localRect.bottom - this.c) / 2;
-    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
-    int m = localRect.top;
-    a(i, j, k, (localRect.bottom + m + this.c) / 2);
-    if (this.a.a != null) {
-      a(this.a.a());
+    paramLong -= this.a;
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramLong <= 3733L)
+    {
+      paramLong = paramLong * 3L % 2800L / 3L;
+      if ((paramLong < 0L) || (paramLong >= 133L)) {
+        break label65;
+      }
+      f1 = (float)(-3L * paramLong) / 100.0F;
     }
     for (;;)
     {
-      b(this.a.a());
+      a(f1);
       return;
-      a(0);
+      label65:
+      if ((paramLong >= 133L) && (paramLong < 266L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
+      }
+      else if ((paramLong >= 266L) && (paramLong < 400L))
+      {
+        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
+      }
+      else if ((paramLong >= 400L) && (paramLong < 533L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
+      }
+      else
+      {
+        f1 = f2;
+        if (paramLong >= 533L)
+        {
+          f1 = f2;
+          if (paramLong < 666L) {
+            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          }
+        }
+      }
     }
   }
   
-  public void b()
+  protected float b(int paramInt1, int paramInt2)
   {
-    super.b();
-    this.a = null;
+    return paramInt2;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 152 / 160);
-    this.c = (paramInt1 * 152 / 160);
+    paramInt3 = paramInt1 * 102 / 160;
+    paramInt4 = paramInt1 * 140 / 160;
+    this.b = (paramInt1 * 24 / 160);
+    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
   }
 }
 

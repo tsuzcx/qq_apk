@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import behf;
-import beho;
-import behq;
-import beka;
-import besl;
+import behw;
+import beif;
+import beih;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy.AuthListResult;
 import java.util.List;
 
 class SettingsJsPlugin$2
   implements ChannelProxy.AuthListResult
 {
-  SettingsJsPlugin$2(SettingsJsPlugin paramSettingsJsPlugin, behf parambehf, beka parambeka) {}
+  SettingsJsPlugin$2(SettingsJsPlugin paramSettingsJsPlugin, behw parambehw, bekr parambekr) {}
   
-  public void onReceiveResult(boolean paramBoolean, List<beho> paramList, List<behq> paramList1)
+  public void onReceiveResult(boolean paramBoolean, List<beif> paramList, List<beih> paramList1)
   {
     if (paramBoolean)
     {
@@ -22,7 +22,7 @@ class SettingsJsPlugin$2
       SettingsJsPlugin.access$100(this.this$0, this.val$authorizeCenter, this.val$req);
       return;
     }
-    besl.d("SettingsJsPlugin", "getSetting-getAuthStateList failed");
+    betc.d("SettingsJsPlugin", "getSetting-getAuthStateList failed");
   }
 }
 

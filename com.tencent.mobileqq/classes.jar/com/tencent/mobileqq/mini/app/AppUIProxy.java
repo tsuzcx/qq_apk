@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.app;
 
-import amgo;
-import amhc;
+import amgn;
+import amhb;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import asje;
+import asjg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.colornote.data.ColorNote;
@@ -53,7 +53,7 @@ public class AppUIProxy
   protected boolean doNotMoveTaskToBackThisTime;
   private AppBrandFragment mAppBrandFragment;
   private AppLoadingUI mAppLoadingUI;
-  protected amgo mColorNoteController;
+  protected amgn mColorNoteController;
   private FragmentManager mFragmentManager;
   private Intent mIntent;
   public PostTable mPostTable;
@@ -158,7 +158,7 @@ public class AppUIProxy
     {
       paramBundle = sCacheAppBrandFragment;
       this.mAppBrandFragment = paramBundle;
-      paramBundle = (ViewGroup)paramBaseActivity.findViewById(2131369508);
+      paramBundle = (ViewGroup)paramBaseActivity.findViewById(2131369507);
       if (paramBundle != null)
       {
         this.mAppLoadingUI = new AppLoadingUI(paramBaseActivity);
@@ -186,11 +186,11 @@ public class AppUIProxy
     label365:
     for (EngineChannel localEngineChannel = (EngineChannel)this.mIntent.getParcelableExtra("engineChannel");; localEngineChannel = null)
     {
-      asje.a().a(localEngineChannel);
-      asje.a().a(paramBundle, null);
+      asjg.a().a(localEngineChannel);
+      asjg.a().a(paramBundle, null);
       MiniAppClientQIPCModule.registerModule();
       initOnIntentChanged();
-      this.mColorNoteController = new amgo(paramBaseActivity, false, true);
+      this.mColorNoteController = new amgn(paramBaseActivity, false, true);
       this.mColorNoteController.a(paramBaseActivity);
       this.mColorNoteController.a(this);
       this.mColorNoteController.a(new AppUIProxy.1(this, paramBaseActivity));
@@ -395,10 +395,10 @@ public class AppUIProxy
       QLog.d("miniapp-start_AppUIProxy", 2, "getColorNote, appInfo: " + localMiniAppConfig.config.toString());
     }
     byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(localMiniAppConfig.config);
-    return new amhc().a(16842752).a(localMiniAppConfig.config.appId).b(localMiniAppConfig.config.name).c(localMiniAppConfig.config.desc).d(localMiniAppConfig.config.iconUrl).a(arrayOfByte).a();
+    return new amhb().a(16842752).a(localMiniAppConfig.config.appId).b(localMiniAppConfig.config.name).c(localMiniAppConfig.config.desc).d(localMiniAppConfig.config.iconUrl).a(arrayOfByte).a();
   }
   
-  public amgo getColorNoteController()
+  public amgn getColorNoteController()
   {
     return this.mColorNoteController;
   }

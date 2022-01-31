@@ -1,24 +1,19 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.graphics.Outline;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.view.ViewOutlineProvider;
 import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class yog
-  extends FrameLayout
+  extends ViewOutlineProvider
 {
-  public yog(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, Context paramContext, CustomWebView paramCustomWebView)
-  {
-    super(paramContext);
-  }
+  public yog(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView instanceof View)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.dispatchTouchEvent(paramMotionEvent);
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), actj.a(5.0F, paramView.getResources()));
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 

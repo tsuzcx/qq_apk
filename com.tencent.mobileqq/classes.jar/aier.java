@@ -1,77 +1,40 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aier
-  implements acay
+  extends BroadcastReceiver
 {
   public aier(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(Editable paramEditable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
       }
-      return;
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
-  }
-  
-  public void a(ResultRecord paramResultRecord)
-  {
-    String str = paramResultRecord.a;
-    if (this.a.b(str))
+    int i;
+    int j;
+    do
     {
-      this.a.e(str);
-      this.a.a(paramResultRecord, false);
-      this.a.k();
-      int i = this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a();
-      if ((i == 6) || (i == 7) || (i == 5) || (i == 4) || (i == 1) || (i == 0) || (i == 8) || (i == 9)) {
-        ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).f();
-      }
-      SelectMemberActivity.a(this.a, false);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && ((this.a.j == 6) || (this.a.j == 7) || (this.a.j != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
-    {
-      ContactSearchFragment localContactSearchFragment = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-      if (localContactSearchFragment != null)
+      do
       {
-        localContactSearchFragment.d(this.a.w);
-        localContactSearchFragment.a(this.a.a(), this.a.jdField_b_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131375187, localContactSearchFragment);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = localContactSearchFragment;
-      }
-      if (this.a.jdField_b_of_type_Int == 0) {
-        axqw.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
-      }
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason", 0);
+      j = paramIntent.getIntExtra("stopReason3rd", -1);
+    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
     }
-    else
-    {
-      return;
-    }
-    axqw.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
+    this.a.finish();
   }
 }
 

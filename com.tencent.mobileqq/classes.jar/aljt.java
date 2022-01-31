@@ -1,7 +1,4 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import android.util.Xml;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +7,7 @@ import java.util.HashMap;
 import org.xmlpull.v1.XmlPullParser;
 
 public class aljt
-  extends aljg
+  extends aljf
 {
   private static final Object a;
   public static boolean b;
@@ -22,7 +19,7 @@ public class aljt
   
   public static byte a(String paramString)
   {
-    return aljg.a(2, paramString);
+    return aljf.a(1, paramString);
   }
   
   public static Object a()
@@ -36,7 +33,7 @@ public class aljt
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getFilesDir is null");
+        QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getFilesDir is null");
       }
       localObject = "";
     }
@@ -44,16 +41,19 @@ public class aljt
     do
     {
       return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidetect.model_v8.2.0";
+      str = localObject + "/pddata/prd/" + "qq.android.minidetect.so_v8.2.0";
       localObject = str;
     } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getLibDir ,path = " + str);
+    QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getLibDir ,path = " + str);
     return str;
   }
   
   public static String a(String paramString)
   {
-    return paramString;
+    if (jdField_a_of_type_Boolean) {
+      return "lib" + paramString + "_64" + ".so";
+    }
+    return "lib" + paramString + ".so";
   }
   
   protected static void a(boolean paramBoolean)
@@ -63,19 +63,25 @@ public class aljt
   
   public static boolean a()
   {
-    if ((!a("qr_anchor.bin")) || (!a("qr_detection_model.txt")) || (!a("qr_detection_model.bin")))
+    boolean bool2 = true;
+    boolean bool1;
+    if (aljf.a(1, b, "QMCF_qr"))
+    {
+      bool1 = bool2;
+      if (!jdField_a_of_type_Boolean)
+      {
+        bool1 = bool2;
+        if (aljf.a(1, b, "yuvutil")) {}
+      }
+    }
+    else
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "modules is not exist!");
+        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
       }
-      return false;
+      bool1 = false;
     }
-    return true;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return aljg.a(2, b, paramString);
+    return bool1;
   }
   
   public static boolean a(String paramString, HashMap<String, String> paramHashMap)
@@ -95,46 +101,41 @@ public class aljt
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.e("MiniRecog.MiniScanDetectModelLoader", 2, paramString, paramHashMap);
+        QLog.e("MiniRecog.MiniScanDetectSoLoader", 2, paramString, paramHashMap);
         bool = false;
         return bool;
       }
       int i = localXmlPullParser.next();
-      break label245;
+      break label222;
       String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("qr_anchor.bin"))
+      if (str.equalsIgnoreCase("QMCF_qr"))
       {
-        paramHashMap.put("qr_anchor.bin", localXmlPullParser.nextText());
+        paramHashMap.put("QMCF_qr", localXmlPullParser.nextText());
         continue;
       }
       else
       {
-        if (str.equalsIgnoreCase("qr_detection_model.txt"))
+        if (str.equalsIgnoreCase("yuvutil"))
         {
-          paramHashMap.put("qr_detection_model.txt", localXmlPullParser.nextText());
+          paramHashMap.put("yuvutil", localXmlPullParser.nextText());
           continue;
         }
-        if (str.equalsIgnoreCase("qr_detection_model.bin"))
+        if (str.equalsIgnoreCase("QMCF_qr_64"))
         {
-          paramHashMap.put("qr_detection_model.bin", localXmlPullParser.nextText());
+          paramHashMap.put("QMCF_qr_64", localXmlPullParser.nextText());
           continue;
         }
-        if (str.equalsIgnoreCase("match_detect_so_md5"))
-        {
-          b("match_detect_so_md5", localXmlPullParser.nextText());
+        if (!str.equalsIgnoreCase("yuvutil_64")) {
           continue;
         }
-        if (!str.equalsIgnoreCase("match_detect_so_md5_64")) {
-          continue;
-        }
-        b("match_detect_so_md5_64", localXmlPullParser.nextText());
+        paramHashMap.put("yuvutil_64", localXmlPullParser.nextText());
         continue;
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "parseConfig success|config=" + paramHashMap);
+        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "parseConfig success|config=" + paramHashMap);
         return true;
-        label245:
+        label222:
         if (i != 1) {
           switch (i)
           {
@@ -144,54 +145,22 @@ public class aljt
     }
   }
   
-  public static String b()
+  public static byte b(String paramString)
   {
-    String str1;
-    String str3;
-    if (jdField_a_of_type_Boolean)
-    {
-      str1 = "match_detect_so_md5_64";
-      str3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("mini_native_" + str1, null);
-      if (QLog.isColorLevel()) {
-        if (str3 != null) {
-          break label88;
-        }
-      }
+    if ((jdField_a_of_type_Boolean) && (paramString == "yuvutil")) {
+      return 0;
     }
-    label88:
-    for (String str2 = "null";; str2 = str3)
-    {
-      QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("getMatchDetectSoMd5=%s tag=%s", new Object[] { str2, str1 }));
-      return str3;
-      str1 = "match_detect_so_md5";
-      break;
-    }
+    return aljf.a(1, b, paramString);
   }
   
   public static String b(String paramString)
   {
-    return paramString;
+    return "lib" + paramString + ".so";
   }
   
-  public static void b(String paramString1, String paramString2)
+  public static String c(String paramString)
   {
-    Object localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    if (TextUtils.isEmpty(paramString2)) {
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, "").apply();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = paramString2;
-        if (paramString2 == null) {
-          localObject = "null";
-        }
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("saveMatchDetectSoMd5=%s tag=%s", new Object[] { localObject, paramString1 }));
-      }
-      return;
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, paramString2).apply();
-    }
+    return aljf.a(1, paramString);
   }
 }
 

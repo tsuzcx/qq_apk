@@ -1,8 +1,34 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public abstract interface mhd
+class mhd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhw parammhw, mhv parammhv);
+  mhd(mhc parammhc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mha.a(this.a.a, false);
+    if (paramInt == 1)
+    {
+      axqy.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!muc.a(mha.a(this.a.a))) {
+        mha.a(this.a.a).a(mha.a(this.a.a));
+      }
+    }
+    while (paramInt != 0)
+    {
+      return;
+      mha.a(this.a.a).b(mha.a(this.a.a));
+      return;
+    }
+    mha.a(this.a.a, mha.a(this.a.a).a().v);
+  }
 }
 
 

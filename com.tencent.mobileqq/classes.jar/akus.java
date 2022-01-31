@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public final class akus
-  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
+  implements Parcelable.Creator<SosoInterface.SosoLocation>
 {
-  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
+  public SosoInterface.SosoLocation a(Parcel paramParcel)
   {
-    return new SosoInterface.SosoLbsInfo(paramParcel);
+    return new SosoInterface.SosoLocation(paramParcel);
   }
   
-  public SosoInterface.SosoLbsInfo[] a(int paramInt)
+  public SosoInterface.SosoLocation[] a(int paramInt)
   {
-    return new SosoInterface.SosoLbsInfo[paramInt];
+    return new SosoInterface.SosoLocation[paramInt];
   }
 }
 

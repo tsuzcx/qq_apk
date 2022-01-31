@@ -1,22 +1,78 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class nir
-  implements Animation.AnimationListener
+  implements INetInfoHandler
 {
-  public nir(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  private nir(VideoCoverAdapter paramVideoCoverAdapter) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2None()
   {
-    this.a.setResult(-1);
-    PublicAccountAdvertisementActivity.g(this.a);
-    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
+    }
+    VideoCoverAdapter.a(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
+    }
+    VideoCoverAdapter.a(this.a, false);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
+    }
+    if (!VideoCoverAdapter.a(this.a))
+    {
+      paramString = this.a.a();
+      if ((paramString != null) && (paramString.isPlaying()))
+      {
+        this.a.c();
+        this.a.d();
+      }
+      VideoCoverAdapter.a(this.a, true);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
+    }
+    VideoCoverAdapter.a(this.a, false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
+    }
+    if (!VideoCoverAdapter.a(this.a))
+    {
+      paramString = this.a.a();
+      if ((paramString != null) && (paramString.isPlaying()))
+      {
+        this.a.c();
+        this.a.d();
+      }
+      VideoCoverAdapter.a(this.a, true);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
+    }
+    VideoCoverAdapter.a(this.a);
+  }
 }
 
 

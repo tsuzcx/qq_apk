@@ -1,13 +1,14 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahna
-  implements bfps
+  implements DialogInterface.OnClickListener
 {
-  ahna(ahmx paramahmx, View paramView) {}
+  ahna(ahmv paramahmv) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    paramDialogInterface.dismiss();
   }
 }
 

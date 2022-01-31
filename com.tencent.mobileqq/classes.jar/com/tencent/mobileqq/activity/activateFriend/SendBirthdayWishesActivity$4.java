@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import ajyc;
+import ajya;
 import android.widget.ImageButton;
 
 class SendBirthdayWishesActivity$4
@@ -13,11 +13,11 @@ class SendBirthdayWishesActivity$4
     if (this.a == 2)
     {
       this.this$0.a.setImageResource(2130837922);
-      this.this$0.a.setContentDescription(ajyc.a(2131713780));
+      this.this$0.a.setContentDescription(ajya.a(2131713791));
       return;
     }
-    this.this$0.a.setImageResource(2130846982);
-    this.this$0.a.setContentDescription(ajyc.a(2131713781));
+    this.this$0.a.setImageResource(2130846988);
+    this.this$0.a.setContentDescription(ajya.a(2131713792));
   }
 }
 

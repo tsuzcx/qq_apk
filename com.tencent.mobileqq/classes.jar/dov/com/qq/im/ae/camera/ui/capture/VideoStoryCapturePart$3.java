@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
-import bimj;
-import bivy;
+import bina;
+import biwp;
 
 public class VideoStoryCapturePart$3
   implements Runnable
 {
-  public VideoStoryCapturePart$3(bimj parambimj) {}
+  public VideoStoryCapturePart$3(bina parambina) {}
   
   public void run()
   {
-    bimj.a(this.this$0);
-    bimj.a(this.this$0).b(false);
-    bimj.b(this.this$0);
+    bina.a(this.this$0);
+    bina.a(this.this$0).b(false);
+    bina.b(this.this$0);
   }
 }
 

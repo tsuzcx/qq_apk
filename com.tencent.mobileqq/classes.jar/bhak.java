@@ -1,8 +1,17 @@
-import android.os.Bundle;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface bhak
+class bhak
 {
-  public abstract void callback(int paramInt, Bundle paramBundle);
+  private final String jdField_a_of_type_JavaLangString;
+  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private volatile String b;
+  private volatile String c;
+  
+  private bhak(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
+  }
 }
 
 

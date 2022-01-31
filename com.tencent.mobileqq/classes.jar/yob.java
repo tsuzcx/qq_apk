@@ -1,34 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tgpa.vendorpd.GameCallback;
-import org.json.JSONObject;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import java.io.File;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.UUID;
 
-public final class yob
-  implements GameCallback
+public class yob
+  extends bdfn
 {
-  public yob(JSONObject paramJSONObject) {}
+  private static final String b = ;
   
-  public int getPreDownloadVersionInfo(String paramString)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
-    }
+    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
+    String str = "" + ((TelephonyManager)localObject).getDeviceId();
+    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
+    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
+    long l2 = str.hashCode();
+    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
+  }
+  
+  public static String b()
+  {
     try
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ret") == 0)
+      InetAddress localInetAddress;
+      do
       {
-        paramString = paramString.optJSONObject("data");
-        bich.a().a(paramString, this.a);
-      }
-      return 0;
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while (localInetAddress.isLoopbackAddress());
+      Object localObject = localInetAddress.getHostAddress().toString();
+      return localObject;
     }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
-      }
-    }
+    catch (SocketException localSocketException) {}
+    return null;
   }
 }
 

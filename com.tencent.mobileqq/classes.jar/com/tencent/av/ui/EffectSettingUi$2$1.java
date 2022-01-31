@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mdi;
+import mdd;
 
 public class EffectSettingUi$2$1
   implements Runnable
 {
-  public EffectSettingUi$2$1(mdi parammdi) {}
+  public EffectSettingUi$2$1(mdd parammdd) {}
   
   public void run()
   {

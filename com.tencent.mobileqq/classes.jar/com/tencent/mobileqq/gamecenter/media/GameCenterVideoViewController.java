@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.media;
 
-import actn;
-import ajae;
-import ajej;
+import actj;
+import ajac;
+import ajeh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -29,13 +29,13 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import aqsn;
-import aqso;
-import aqss;
-import aqst;
-import bbev;
-import bfni;
-import bich;
+import aqsp;
+import aqsq;
+import aqsu;
+import aqsv;
+import bbfj;
+import bfnz;
+import bicy;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -57,9 +57,9 @@ import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import omu;
-import siz;
-import yod;
+import omr;
+import siw;
+import yoa;
 
 public class GameCenterVideoViewController
   extends FrameLayout
@@ -76,7 +76,7 @@ public class GameCenterVideoViewController
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqso jdField_a_of_type_Aqso;
+  private aqsq jdField_a_of_type_Aqsq;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private FeedsItemData jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData;
   private VideoLoadingImage jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage;
@@ -136,17 +136,17 @@ public class GameCenterVideoViewController
   private void p()
   {
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2131559095, this));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131378936));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369815));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131378941));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369814));
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131371103));
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage = ((VideoLoadingImage)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131361802));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372027));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131365423));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131365422));
     this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368185));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379129));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379134));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366877));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131371159));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131364809));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131364808));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
@@ -158,7 +158,7 @@ public class GameCenterVideoViewController
   private void q()
   {
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(omu.a((int)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion() / 1000));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(omr.a((int)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion() / 1000));
   }
   
   public long a()
@@ -183,7 +183,7 @@ public class GameCenterVideoViewController
       com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "videoProxyFactory is null.");
       return null;
     }
-    if (bfni.d()) {}
+    if (bfnz.d()) {}
     for (IVideoViewBase localIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(getContext());; localIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(getContext()))
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(getContext(), localIVideoViewBase);
@@ -197,7 +197,7 @@ public class GameCenterVideoViewController
       return null;
     }
     TVK_SDKMgr.setDebugEnable(false);
-    TVK_SDKMgr.setOnLogListener(new ajej());
+    TVK_SDKMgr.setOnLogListener(new ajeh());
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo("", "");
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
@@ -235,7 +235,7 @@ public class GameCenterVideoViewController
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(8);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
-    this.jdField_a_of_type_Aqso.a(true, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Aqsq.a(true, this.jdField_b_of_type_Int);
   }
   
   public boolean b()
@@ -250,7 +250,7 @@ public class GameCenterVideoViewController
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(9);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-    this.jdField_a_of_type_Aqso.a(false, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Aqsq.a(false, this.jdField_b_of_type_Int);
   }
   
   public void d()
@@ -261,11 +261,11 @@ public class GameCenterVideoViewController
       if ((this.jdField_c_of_type_Int == 2) && (jdField_a_of_type_Int == 0))
       {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(14);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, aqss.jdField_b_of_type_Int - this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, aqsu.jdField_b_of_type_Int - this.jdField_a_of_type_Long);
       }
       return;
     }
-    if (!bbev.g(getContext()))
+    if (!bbfj.g(getContext()))
     {
       ThreadManagerV2.getUIHandlerV2().post(new GameCenterVideoViewController.2(this));
       com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, "commentReport network error, stop request.");
@@ -293,7 +293,7 @@ public class GameCenterVideoViewController
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.videoUrl)) {
           break label382;
         }
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayer(getContext(), this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, localTVK_PlayerVideoInfo, siz.a(), 0L, 0L);
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayer(getContext(), this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, localTVK_PlayerVideoInfo, siw.a(), 0L, 0L);
       }
     }
     for (;;)
@@ -343,18 +343,18 @@ public class GameCenterVideoViewController
   
   public void g()
   {
-    if ((bbev.g(getContext())) && (bbev.h(getContext())))
+    if ((bbfj.g(getContext())) && (bbfj.h(getContext())))
     {
       this.d = true;
       arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
       i = getHeight();
       localDisplayMetrics = getResources().getDisplayMetrics();
-      if ((arrayOfInt[1] > actn.a(50.0F, getResources())) && (arrayOfInt[1] + i < (i + localDisplayMetrics.heightPixels) / 2 + actn.a(50.0F, getResources())) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0))
+      if ((arrayOfInt[1] > actj.a(50.0F, getResources())) && (arrayOfInt[1] + i < (i + localDisplayMetrics.heightPixels) / 2 + actj.a(50.0F, getResources())) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0))
       {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(13);
-        setMute(aqst.jdField_a_of_type_Boolean);
+        setMute(aqsv.jdField_a_of_type_Boolean);
       }
     }
     while (!com.tencent.qphone.base.util.QLog.isColorLevel())
@@ -433,8 +433,8 @@ public class GameCenterVideoViewController
           if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 3)
           {
             paramMessage = URLDrawable.URLDrawableOptions.obtain();
-            paramMessage.mLoadingDrawable = getResources().getDrawable(2130842638);
-            paramMessage.mFailedDrawable = getResources().getDrawable(2130842638);
+            paramMessage.mLoadingDrawable = getResources().getDrawable(2130842639);
+            paramMessage.mFailedDrawable = getResources().getDrawable(2130842639);
             paramMessage = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_video_stop@2x.png");
             this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
             this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage.setVisibility(8);
@@ -446,8 +446,8 @@ public class GameCenterVideoViewController
           if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0)
           {
             paramMessage = URLDrawable.URLDrawableOptions.obtain();
-            paramMessage.mLoadingDrawable = getResources().getDrawable(2130842639);
-            paramMessage.mFailedDrawable = getResources().getDrawable(2130842639);
+            paramMessage.mLoadingDrawable = getResources().getDrawable(2130842640);
+            paramMessage.mFailedDrawable = getResources().getDrawable(2130842640);
             paramMessage = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_video_play@2x.png", paramMessage);
             this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
             this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage.setVisibility(8);
@@ -457,8 +457,8 @@ public class GameCenterVideoViewController
             {
               this.jdField_b_of_type_ComTencentImageURLImageView.setImageURL(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.coverImgUrl);
               this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(omu.a(0));
-              paramMessage = omu.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.videoDuration);
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(omr.a(0));
+              paramMessage = omr.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.videoDuration);
               this.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessage);
               return false;
             }
@@ -473,8 +473,8 @@ public class GameCenterVideoViewController
           if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 5)
           {
             paramMessage = URLDrawable.URLDrawableOptions.obtain();
-            paramMessage.mLoadingDrawable = getResources().getDrawable(2130842638);
-            paramMessage.mFailedDrawable = getResources().getDrawable(2130842638);
+            paramMessage.mLoadingDrawable = getResources().getDrawable(2130842639);
+            paramMessage.mFailedDrawable = getResources().getDrawable(2130842639);
             paramMessage = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_video_play@2x.png", paramMessage);
             this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
             this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage.setVisibility(8);
@@ -482,8 +482,8 @@ public class GameCenterVideoViewController
             return false;
           }
           paramMessage = URLDrawable.URLDrawableOptions.obtain();
-          paramMessage.mLoadingDrawable = getResources().getDrawable(2130842639);
-          paramMessage.mFailedDrawable = getResources().getDrawable(2130842639);
+          paramMessage.mLoadingDrawable = getResources().getDrawable(2130842640);
+          paramMessage.mFailedDrawable = getResources().getDrawable(2130842640);
           paramMessage = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_video_play@2x.png", paramMessage);
           this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage.setVisibility(8);
@@ -507,7 +507,7 @@ public class GameCenterVideoViewController
         paramMessage = new FrameLayout.LayoutParams(-1, -1);
         this.jdField_a_of_type_AndroidViewViewGroup.addView(this, paramMessage);
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(2);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841326);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841323);
         this.jdField_a_of_type_Boolean = true;
         return false;
       } while (!this.jdField_a_of_type_Boolean);
@@ -516,16 +516,16 @@ public class GameCenterVideoViewController
       a(getContext()).getWindow().clearFlags(1024);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(0);
       a(getContext()).setRequestedOrientation(1);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841327);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841324);
       this.jdField_a_of_type_Boolean = false;
       return false;
     case 10: 
       if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842482);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842483);
         return false;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842483);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842484);
       return false;
     case 12: 
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -539,15 +539,15 @@ public class GameCenterVideoViewController
         if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData != null))
         {
           paramMessage = new HashMap();
-          yod.a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
+          yoa.a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
           paramMessage.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
           paramMessage.put(Integer.valueOf(6), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.feedId);
           paramMessage.put(Integer.valueOf(4), "20");
           paramMessage.put(Integer.valueOf(43), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.algorithmId);
           paramMessage.put(Integer.valueOf(44), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.type + "");
-          yod.a(ajae.a(), "769", "205020", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramMessage);
+          yoa.a(ajac.a(), "769", "205020", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramMessage);
         }
-        aqsn.a().a(this);
+        aqsp.a().a(this);
         this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
         this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage.setVisibility(0);
         d();
@@ -556,7 +556,7 @@ public class GameCenterVideoViewController
       com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[handleMessage] autoplay mCurrentStatus:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       return false;
     }
-    bich.a().a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId);
+    bicy.a().a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId);
     return false;
   }
   
@@ -567,14 +567,14 @@ public class GameCenterVideoViewController
       if ((this.d) && (this.jdField_b_of_type_Boolean))
       {
         HashMap localHashMap = new HashMap();
-        yod.a(localHashMap, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
+        yoa.a(localHashMap, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
         localHashMap.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
         localHashMap.put(Integer.valueOf(6), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.feedId);
         localHashMap.put(Integer.valueOf(4), "-1");
         localHashMap.put(Integer.valueOf(42), a() + "");
         localHashMap.put(Integer.valueOf(43), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.algorithmId);
         localHashMap.put(Integer.valueOf(44), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.type + "");
-        yod.a(ajae.a(), "769", "205026", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
+        yoa.a(ajac.a(), "769", "205026", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
       setCurrentStatus(0);
@@ -637,7 +637,7 @@ public class GameCenterVideoViewController
         j();
       }
     case 2131371103: 
-    case 2131379129: 
+    case 2131379134: 
       do
       {
         do
@@ -648,15 +648,15 @@ public class GameCenterVideoViewController
             if ((this.jdField_b_of_type_Boolean) && (!this.d))
             {
               paramView = new HashMap();
-              yod.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
+              yoa.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
               paramView.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
               paramView.put(Integer.valueOf(6), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.feedId);
               paramView.put(Integer.valueOf(4), "20");
               paramView.put(Integer.valueOf(43), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.algorithmId);
               paramView.put(Integer.valueOf(44), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.type + "");
-              yod.a(ajae.a(), "769", "205023", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramView);
+              yoa.a(ajac.a(), "769", "205023", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramView);
             }
-            aqsn.a().a(this);
+            aqsp.a().a(this);
             this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
             this.jdField_a_of_type_ComTencentMobileqqGamecenterViewVideoLoadingImage.setVisibility(0);
             d();
@@ -667,14 +667,14 @@ public class GameCenterVideoViewController
             if (this.jdField_b_of_type_Boolean)
             {
               paramView = new HashMap();
-              yod.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
+              yoa.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
               paramView.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
               paramView.put(Integer.valueOf(6), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.feedId);
               paramView.put(Integer.valueOf(4), "20");
               paramView.put(Integer.valueOf(42), a() + "");
               paramView.put(Integer.valueOf(43), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.algorithmId);
               paramView.put(Integer.valueOf(44), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.type + "");
-              yod.a(ajae.a(), "769", "205034", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramView);
+              yoa.a(ajac.a(), "769", "205034", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramView);
             }
             h();
             return;
@@ -683,19 +683,19 @@ public class GameCenterVideoViewController
         if (this.jdField_b_of_type_Boolean)
         {
           paramView = new HashMap();
-          yod.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
+          yoa.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
           paramView.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.msgId);
           paramView.put(Integer.valueOf(6), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.feedId);
           paramView.put(Integer.valueOf(4), "20");
           paramView.put(Integer.valueOf(42), a() + "");
           paramView.put(Integer.valueOf(43), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.algorithmId);
           paramView.put(Integer.valueOf(44), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.type + "");
-          yod.a(ajae.a(), "769", "205034", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramView);
+          yoa.a(ajac.a(), "769", "205034", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId, "76902", "1", "160", paramView);
         }
         if ((this.jdField_c_of_type_Int == 2) && (jdField_a_of_type_Int == 0))
         {
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(14);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, aqss.jdField_b_of_type_Int - this.jdField_a_of_type_Long);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, aqsu.jdField_b_of_type_Int - this.jdField_a_of_type_Long);
         }
         e();
         return;
@@ -703,7 +703,7 @@ public class GameCenterVideoViewController
       if (!this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute()) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        aqst.jdField_a_of_type_Boolean = bool1;
+        aqsv.jdField_a_of_type_Boolean = bool1;
         bool1 = bool2;
         if (!this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute()) {
           bool1 = true;
@@ -762,7 +762,7 @@ public class GameCenterVideoViewController
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[onVideoPrepared] status:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",sPlayCount = " + jdField_a_of_type_Int + ",ConfigCount=" + aqss.jdField_a_of_type_Int);
+    com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[onVideoPrepared] status:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",sPlayCount = " + jdField_a_of_type_Int + ",ConfigCount=" + aqsu.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 5) {
       return;
     }
@@ -772,15 +772,15 @@ public class GameCenterVideoViewController
     {
       int i = jdField_a_of_type_Int + 1;
       jdField_a_of_type_Int = i;
-      if ((i >= aqss.jdField_a_of_type_Int) && (aqss.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId)))
+      if ((i >= aqsu.jdField_a_of_type_Int) && (aqsu.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.gameInfo.gameAppId)))
       {
         jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, aqss.jdField_b_of_type_Int - this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, aqsu.jdField_b_of_type_Int - this.jdField_a_of_type_Long);
       }
     }
     long l = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)l);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(omu.a((int)l / 1000));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(omr.a((int)l / 1000));
     a();
     if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.type == 2) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
@@ -799,8 +799,8 @@ public class GameCenterVideoViewController
       com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, "[setCurrentStatus] status:" + paramInt + ", obj:" + this);
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-    if (this.jdField_a_of_type_Aqso != null) {
-      this.jdField_a_of_type_Aqso.a(paramInt, this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_Aqsq != null) {
+      this.jdField_a_of_type_Aqsq.a(paramInt, this.jdField_b_of_type_Int);
     }
   }
   
@@ -819,8 +819,8 @@ public class GameCenterVideoViewController
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-      if (this.jdField_a_of_type_Aqso != null) {
-        this.jdField_a_of_type_Aqso.b(paramBoolean, this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Aqsq != null) {
+        this.jdField_a_of_type_Aqsq.b(paramBoolean, this.jdField_b_of_type_Int);
       }
     }
   }
@@ -830,9 +830,9 @@ public class GameCenterVideoViewController
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setVideoStatusChangerListener(aqso paramaqso)
+  public void setVideoStatusChangerListener(aqsq paramaqsq)
   {
-    this.jdField_a_of_type_Aqso = paramaqso;
+    this.jdField_a_of_type_Aqsq = paramaqsq;
   }
 }
 

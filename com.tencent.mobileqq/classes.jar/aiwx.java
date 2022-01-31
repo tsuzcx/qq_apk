@@ -1,29 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
-import com.tencent.widget.HorizontalListView;
 
 public class aiwx
-  implements Animation.AnimationListener
+  implements AdapterView.OnItemClickListener
 {
   public aiwx(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (CmGameDebugView.a(this.a))
-    {
-      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
-      CmGameDebugView.a(this.a, false);
-    }
-    if (CmGameDebugView.b(this.a)) {
-      CmGameDebugView.b(this.a, 0);
-    }
+    CmGameDebugView.a(this.a, paramInt);
+    this.a.a(paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

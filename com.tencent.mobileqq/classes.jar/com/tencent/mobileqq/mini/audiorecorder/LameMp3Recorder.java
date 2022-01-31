@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.audiorecorder;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -193,7 +193,7 @@ public class LameMp3Recorder
     }
     if (getTime() < 1)
     {
-      this.mMainHandler.sendMessage(generateRecordErrMsg(ajyc.a(2131705981)));
+      this.mMainHandler.sendMessage(generateRecordErrMsg(ajya.a(2131705992)));
       recordStop();
     }
     this.mPauseTime = System.currentTimeMillis();

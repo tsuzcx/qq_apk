@@ -1,13 +1,16 @@
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+
 class bfcs
-  implements besd
+  implements MethodChannel.MethodCallHandler
 {
-  bfcs(bfcp parambfcp) {}
+  bfcs(bfcr parambfcr) {}
   
-  public void a(int paramInt, String paramString, besc parambesc)
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    if ((paramInt == 0) && (parambesc != null)) {
-      this.a.a(parambesc.b, parambesc.h);
-    }
+    paramResult.success(null);
+    betc.a("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
   }
 }
 

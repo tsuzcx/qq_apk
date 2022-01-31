@@ -1,221 +1,235 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.ListView;
 
 public class oye
+  extends oxx
 {
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private pjq jdField_a_of_type_Pjq;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private oyo jdField_a_of_type_Oyo;
+  private boolean jdField_a_of_type_Boolean;
   
-  public oye(oyc paramoyc) {}
-  
-  private View a(View paramView, ArticleInfo paramArticleInfo, int paramInt)
+  private BaseArticleInfo a(int paramInt)
   {
-    if (paramArticleInfo != null)
-    {
-      ArkAppMessage localArkAppMessage = odn.a(paramArticleInfo.mArkAppFeedsInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("FrameworkHandler", 2, new Object[] { "getArkAppView, position: ", Integer.valueOf(paramInt), ", articleInfo: ", paramArticleInfo, ", arkAppMessage: ", localArkAppMessage });
-      }
-      return a(paramArticleInfo, paramView, localArkAppMessage);
-    }
-    odn.b(paramView);
-    return paramView;
+    return a().b(paramInt);
   }
   
-  private View a(View paramView, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2)
+  public static void a(Context paramContext, ImageView paramImageView, qtv paramqtv)
   {
-    Object localObject = new pbi(this.jdField_a_of_type_Oyc.a(), paramArticleInfo, paramInt1, this.jdField_a_of_type_Oyc.b(), this.jdField_a_of_type_Oyc.c(), paramInt2, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.d(), null, this.jdField_a_of_type_Oyc.a());
-    View localView = pqq.a(paramInt2, localObject, paramInt1, paramView, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.a());
-    if (localView != null)
-    {
-      localView.setTag(2131379208, localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("FrameworkHandler", 2, "CellFactory.getView = " + localView.getTag().getClass().getSimpleName());
-      }
-      localView.setTag(2131368790, this.jdField_a_of_type_Oyc.a());
-      if (paramArticleInfo == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FrameworkHandler", 2, "getView() article is null, set view gone, position: " + paramInt2);
-        }
-        if (localView.getVisibility() != 8) {
-          localView.setVisibility(8);
-        }
-        if ((localView.getLayoutParams() instanceof AbsListView.LayoutParams))
-        {
-          paramView = (AbsListView.LayoutParams)localView.getLayoutParams();
-          if (paramView.height != 1)
-          {
-            paramView.height = 1;
-            localView.setLayoutParams(paramView);
-          }
-        }
-        if (localView != null) {
-          break label410;
-        }
-        paramInt1 = 0;
-        label256:
-        localObject = this.jdField_a_of_type_Oyc.c() + "";
-        if (paramArticleInfo == null) {
-          break label415;
-        }
-      }
-    }
-    label410:
-    label415:
-    for (paramView = String.valueOf(paramArticleInfo.mArticleID);; paramView = "")
-    {
-      noo.a(null, "", "0X80095B4", "0X80095B4", 0, paramInt1, (String)localObject, paramView, this.jdField_a_of_type_Oyc.b() + "", "", false);
-      return localView;
-      if (localView.getVisibility() != 0) {
-        localView.setVisibility(0);
-      }
-      if (!(localView.getLayoutParams() instanceof AbsListView.LayoutParams)) {
-        break;
-      }
-      paramView = (AbsListView.LayoutParams)localView.getLayoutParams();
-      if (paramView.height == -2) {
-        break;
-      }
-      paramView.height = -2;
-      localView.setLayoutParams(paramView);
-      break;
-      QLog.w("FrameworkHandler", 1, "CellFactory.getView = null");
-      break;
-      paramInt1 = 1;
-      break label256;
-    }
-  }
-  
-  private View a(View paramView, ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2, int paramInt1, int paramInt2)
-  {
-    paramArticleInfo2 = new pbi(this.jdField_a_of_type_Oyc.a(), paramArticleInfo1, paramInt1, this.jdField_a_of_type_Oyc.b(), this.jdField_a_of_type_Oyc.c(), paramInt2, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.d(), paramArticleInfo2, this.jdField_a_of_type_Oyc.a());
-    paramArticleInfo2.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
-    long l;
-    if ((paramView != null) && ((paramView instanceof ProteusItemView)))
-    {
-      l = System.currentTimeMillis();
-      olr.a((ProteusItemView)paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.a(), paramArticleInfo2, paramInt2, "default_feeds");
-      paramView = (ProteusItemView)paramView;
-      sai.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.convertview#bindData", System.currentTimeMillis() - l);
-    }
-    for (;;)
-    {
-      if ((paramView != null) && (paramView.a() != null))
-      {
-        l = System.currentTimeMillis();
-        paramArticleInfo1 = this.jdField_a_of_type_Oyc.a();
-        paramView.a().setTag(2131368790, paramArticleInfo1);
-        paramView.setTag(2131379208, paramArticleInfo2);
-        sai.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.setTag", System.currentTimeMillis() - l);
-      }
-      return paramView;
-      l = System.currentTimeMillis();
-      paramView = olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt1, paramArticleInfo1);
-      sai.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.getView", System.currentTimeMillis() - l);
-      l = System.currentTimeMillis();
-      olr.a(paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.a(), paramArticleInfo2, paramInt2, "default_feeds");
-      sai.a("FrameworkHandler", String.valueOf(paramInt1), "getProteusNormalView.newview#bindData", System.currentTimeMillis() - l);
-    }
-  }
-  
-  private View a(BaseArticleInfo paramBaseArticleInfo, View paramView, ArkAppMessage paramArkAppMessage)
-  {
-    Object localObject2;
-    if (paramBaseArticleInfo == null)
-    {
-      localObject2 = paramView;
-      return localObject2;
-    }
-    Object localObject1;
-    if ((paramView != null) && ((paramView.getTag() instanceof odl))) {
-      localObject1 = (odl)paramView.getTag();
-    }
-    for (;;)
-    {
-      localObject2 = paramView;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = paramView;
-      if (paramView == null) {
-        break;
-      }
-      if (!odn.a(paramArkAppMessage)) {
-        break label127;
-      }
-      ((odl)localObject1).a(paramArkAppMessage, paramBaseArticleInfo);
-      ((odl)localObject1).a();
-      odn.a(paramView);
-      return paramView;
-      localObject2 = new odl(paramArkAppMessage, paramBaseArticleInfo);
-      odn.a((odl)localObject2, this.jdField_a_of_type_Oyc.b());
-      localObject1 = localObject2;
-      if (((odl)localObject2).a() != null)
-      {
-        paramView = ((odl)localObject2).a();
-        paramView.setTag(localObject2);
-        localObject1 = localObject2;
-      }
-    }
-    label127:
-    odn.a(paramArkAppMessage, 0);
-    odn.b(paramView);
-    return paramView;
-  }
-  
-  private View b(View paramView, ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2, int paramInt1, int paramInt2)
-  {
-    paramArticleInfo2 = new pbi(this.jdField_a_of_type_Oyc.a(), paramArticleInfo1, paramInt1, this.jdField_a_of_type_Oyc.b(), this.jdField_a_of_type_Oyc.c(), paramInt2, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.d(), paramArticleInfo2, this.jdField_a_of_type_Oyc.a());
-    long l;
-    if ((paramView != null) && ((paramView instanceof ProteusItemView)))
-    {
-      l = System.currentTimeMillis();
-      this.jdField_a_of_type_Pjq.a((ProteusItemView)paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.a(), paramArticleInfo2, paramInt2);
-      sai.a("FrameworkHandler", String.valueOf(paramInt1), "getDynamicProteusView.convertview#bindData", System.currentTimeMillis() - l);
-      paramView = (ProteusItemView)paramView;
-    }
-    for (;;)
-    {
-      paramArticleInfo1 = this.jdField_a_of_type_Oyc.a();
-      if (paramView.a() != null) {
-        paramView.a().setTag(2131368790, paramArticleInfo1);
-      }
-      paramView.setTag(2131379208, paramArticleInfo2);
-      return paramView;
-      l = System.currentTimeMillis();
-      paramView = this.jdField_a_of_type_Pjq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt1, paramArticleInfo1);
-      sai.a("FrameworkHandler", String.valueOf(paramInt1), "getDynamicProteusView.getView", System.currentTimeMillis() - l);
-      l = System.currentTimeMillis();
-      this.jdField_a_of_type_Pjq.a(paramView, paramInt1, paramArticleInfo1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Oyc.a(), this.jdField_a_of_type_Oyc.a(), paramArticleInfo2, paramInt2);
-      sai.a("FrameworkHandler", String.valueOf(paramInt1), "getDynamicProteusView.newview#bindData", System.currentTimeMillis() - l);
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = this.jdField_a_of_type_Oyc.a().a();
-        this.jdField_a_of_type_Pjq = this.jdField_a_of_type_Oyc.a().a();
-        this.jdField_a_of_type_Boolean = true;
-      }
+    if (paramImageView == null) {
       return;
     }
-    finally
+    ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
+    localLayoutParams.width = ((int)omr.a(paramContext, paramqtv));
+    paramImageView.setLayoutParams(localLayoutParams);
+  }
+  
+  private static BaseArticleInfo b(oye paramoye, View paramView)
+  {
+    if ((paramoye == null) || (paramView == null) || (!(paramView.getTag() instanceof oyi))) {
+      return null;
+    }
+    paramView = (oyi)paramView.getTag();
+    if (paramView != null) {
+      return paramoye.a(paramView.a());
+    }
+    return null;
+  }
+  
+  private static oyi b(View paramView)
+  {
+    if ((paramView == null) || (!(paramView.getTag() instanceof oyi))) {
+      return null;
+    }
+    return (oyi)paramView.getTag();
+  }
+  
+  private static void b(oye paramoye, BaseArticleInfo paramBaseArticleInfo, VideoColumnInfo paramVideoColumnInfo, int paramInt, String paramString)
+  {
+    int k = paramoye.a().a();
+    String str = onh.c(paramBaseArticleInfo);
+    int i;
+    if (((ArticleInfo)paramBaseArticleInfo).hasChannelInfo())
     {
-      localObject = finally;
-      throw localObject;
+      i = paramBaseArticleInfo.mChannelInfoId;
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
+        break label217;
+      }
+    }
+    label217:
+    for (int j = 0;; j = 1)
+    {
+      paramoye = new qzb(onh.a(paramBaseArticleInfo.mAlgorithmID, onh.a(paramBaseArticleInfo), 0, i, j, bbfj.h(paramoye.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, onh.e(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
+      paramoye.h(paramBaseArticleInfo.innerUniqueID).a(k).e(paramBaseArticleInfo.mStrategyId).h(npu.a).i(409409).k(paramBaseArticleInfo.mVideoAdsJumpType).l(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(onh.w(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo).S(paramInt).r(paramString).f(paramBaseArticleInfo);
+      if (paramVideoColumnInfo != null) {
+        paramoye.ab(paramVideoColumnInfo.a);
+      }
+      nol.a(null, "", "0X8007625", "0X8007625", 0, 0, "2", "", "", paramoye.a().a(), false);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = a(paramInt).intValue();
+    Object localObject;
+    rfk localrfk;
+    if ((paramView == null) || (!(paramView.getTag() instanceof oyp)))
+    {
+      localObject = a(paramInt, paramView, paramViewGroup, i);
+      paramView = ((oyp)localObject).a(paramInt, paramViewGroup);
+      ((oyp)localObject).f = paramView;
+      ((oyp)localObject).a = paramInt;
+      paramView.setTag(localObject);
+      paramView.setTag(2131368790, a());
+      paramViewGroup = new pdl(a(), a().a(), a(), a(), a().a(), a().a());
+      paramView.setTag(2131379215, paramViewGroup);
+      localrfk = new rfk(paramView);
+      paramView.setTag(2131379218, localrfk);
+      paramView.addOnAttachStateChangeListener(new oyf(this, (oyp)localObject));
+    }
+    BaseArticleInfo localBaseArticleInfo;
+    for (;;)
+    {
+      localBaseArticleInfo = a(paramInt);
+      ((oyp)localObject).a(a());
+      if (localBaseArticleInfo != null) {
+        break;
+      }
+      QLog.w("ReadInJoyBaseAdapter", 2, "article is null, return");
+      return localrfk.a();
+      localObject = (oyp)paramView.getTag();
+      ((oyp)localObject).a = paramInt;
+      paramViewGroup = (pcx)paramView.getTag(2131379215);
+      localrfk = (rfk)paramView.getTag(2131379218);
+    }
+    long l;
+    if (i == 46)
+    {
+      l = System.currentTimeMillis();
+      a().a((oyk)localObject, localBaseArticleInfo);
+      saf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configTwoItemVideo", System.currentTimeMillis() - l);
+    }
+    for (;;)
+    {
+      localObject = null;
+      if (paramInt < d() - 1) {
+        localObject = (ArticleInfo)a(paramInt + 1);
+      }
+      localObject = new pbf(a(), (ArticleInfo)localBaseArticleInfo, i, b(), c(), paramInt, a(), d(), (ArticleInfo)localObject, a());
+      paramView.setTag(2131379213, localObject);
+      paramViewGroup.a(localrfk, (pau)localObject, i);
+      return localrfk.a();
+      if (i == 4)
+      {
+        l = System.currentTimeMillis();
+        a().a((oyl)localObject, localBaseArticleInfo, paramInt);
+        saf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configVideoItemUI", System.currentTimeMillis() - l);
+        if ((a() != null) && (a().a() != null) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)))
+        {
+          localObject = (AdvertisementInfo)localBaseArticleInfo;
+          a().a().a((AdvertisementInfo)localObject, a().a());
+        }
+      }
+      else if (i == 70)
+      {
+        l = System.currentTimeMillis();
+        a().a((oyr)localObject, localBaseArticleInfo, paramInt);
+        saf.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configWeishiGridTwoItemUI", System.currentTimeMillis() - l);
+      }
+      else if (i == 118)
+      {
+        a().a((oyj)localObject, localBaseArticleInfo, paramInt);
+      }
+      else if (i == 119)
+      {
+        a().a((oyl)localObject, localBaseArticleInfo, paramInt);
+        localObject = (oym)localObject;
+        ((oym)localObject).a(localBaseArticleInfo.mVideoColumnInfo);
+        ((oym)localObject).a(localBaseArticleInfo);
+        oym.a((oym)localObject).setTag(localObject);
+        oym.a((oym)localObject).setTag(localObject);
+      }
+      else if (i == 6)
+      {
+        a().a((oyh)localObject, localBaseArticleInfo, paramInt);
+      }
+      else if (i == 128)
+      {
+        a().a((oyg)localObject, localBaseArticleInfo, paramInt);
+      }
+    }
+  }
+  
+  public Boolean a()
+  {
+    if ((a().a() != null) && (a().a().a() != null) && (a().a().a().a()))
+    {
+      a().a().a().g();
+      return Boolean.valueOf(true);
+    }
+    return super.a();
+  }
+  
+  public oyp a(int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
+  {
+    paramView = a();
+    switch (paramInt2)
+    {
+    default: 
+      return new oyl(paramView, this);
+    case 4: 
+      return new oyl(paramView, this);
+    case 46: 
+      return new oyk(paramView, this);
+    case 70: 
+      return new oyr(paramView, this);
+    case 118: 
+      return new oyj(paramView, this);
+    case 119: 
+      return new oym(paramView, this);
+    case 6: 
+      return new oyh(paramView, this);
+    }
+    return new oyg(paramView, this);
+  }
+  
+  public void a(View paramView, ListView paramListView)
+  {
+    this.jdField_a_of_type_Oyo = new oyo(this, null);
+    this.jdField_a_of_type_Boolean = bhvy.d();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 4) || (paramInt == 46) || (paramInt == 70) || (paramInt == 118) || (paramInt == 119) || (paramInt == 6) || (paramInt == 128);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return (onh.a(a(paramInt1))) && (b() == 56) && (this.jdField_a_of_type_Boolean) && (paramInt2 == 4);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Oyo != null) {
+      this.jdField_a_of_type_Oyo.removeCallbacksAndMessages(null);
     }
   }
 }

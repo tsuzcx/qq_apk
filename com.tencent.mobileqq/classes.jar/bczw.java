@@ -1,17 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardHeadLayout;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.BindGroupFragment;
 
 public class bczw
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public bczw(CardHeadLayout paramCardHeadLayout, ImageView paramImageView) {}
+  public bczw(BindGroupFragment paramBindGroupFragment) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    BindGroupFragment.a(this.a).finish();
   }
 }
 

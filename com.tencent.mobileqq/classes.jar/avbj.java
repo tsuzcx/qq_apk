@@ -1,20 +1,13 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordPanel.2.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class avbj
-  extends avbg
 {
-  public avbj(LSRecordPanel paramLSRecordPanel) {}
+  public float a;
+  public int a;
+  public float b = -1.0F;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public avbj()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
-    }
-    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

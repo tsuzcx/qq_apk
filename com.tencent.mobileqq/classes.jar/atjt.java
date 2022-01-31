@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class atjt
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
   public atjt(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramMotionEvent.getAction() == 2;
+    paramDialogInterface.dismiss();
   }
 }
 

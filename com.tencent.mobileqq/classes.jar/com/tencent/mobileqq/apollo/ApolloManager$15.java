@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
+import airx;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloManager$15
   implements Runnable
 {
-  public ApolloManager$15(airz paramairz, String paramString) {}
+  public ApolloManager$15(airx paramairx, String paramString) {}
   
   public void run()
   {

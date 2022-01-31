@@ -1,73 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aqwa
-  implements adih
+class aqwa
+  implements DialogInterface.OnClickListener
 {
-  private final BaseChatPie a;
-  public boolean a;
+  aqwa(aqvv paramaqvv) {}
   
-  public aqwa(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public static aqwa a(BaseChatPie paramBaseChatPie)
-  {
-    return (aqwa)paramBaseChatPie.a(6);
-  }
-  
-  private void b(XEditTextEx paramXEditTextEx)
-  {
-    try
-    {
-      paramXEditTextEx.setTextMenuListener(null);
-      return;
-    }
-    catch (Throwable paramXEditTextEx) {}
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
-    do
-    {
-      return;
-      if (paramInt == 11)
-      {
-        b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-        return;
-      }
-    } while (paramInt != 4);
-    bfnr.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-  
-  public void a(XEditTextEx paramXEditTextEx)
-  {
-    aqwb localaqwb = new aqwb(this);
-    try
-    {
-      paramXEditTextEx.setTextMenuListener(localaqwb);
-      return;
-    }
-    catch (Throwable paramXEditTextEx)
-    {
-      paramXEditTextEx.printStackTrace();
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11, 4 };
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt >= 30) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    aqvv.a(this.a).finish();
   }
 }
 

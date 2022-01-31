@@ -1,46 +1,42 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.SurfaceTexture;
+import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.lang.ref.WeakReference;
 
-class bixw
-  implements TextWatcher
+public class bixw
+  implements TextureView.SurfaceTextureListener
 {
-  bixw(bixv parambixv) {}
+  private WeakReference<AETemplateInfoFragment> a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bixw(AETemplateInfoFragment paramAETemplateInfoFragment)
   {
-    int i = 0;
-    int j = paramEditable.length();
-    paramEditable = String.format("%d/%d", new Object[] { Integer.valueOf(j), Integer.valueOf(bixv.a(this.a)) });
-    if (j > bixv.a(this.a))
-    {
-      paramEditable = new SpannableString(paramEditable);
-      int k = String.valueOf(j).length();
-      paramEditable.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), 0, k, 33);
-      bixv.a(this.a).setText(paramEditable);
-      paramEditable = bixv.a(this.a);
-      if (j <= 0) {
-        break label132;
-      }
-    }
-    for (;;)
-    {
-      paramEditable.setVisibility(i);
-      return;
-      bixv.a(this.a).setText(paramEditable);
-      break;
-      label132:
-      i = 8;
+    this.a = new WeakReference(paramAETemplateInfoFragment);
+  }
+  
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureAvailable");
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.a((AETemplateInfoFragment)this.a.get(), paramSurfaceTexture);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureDestroyed");
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.c((AETemplateInfoFragment)this.a.get());
+    }
+    return true;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---onSurfaceTextureSizeChanged");
+  }
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

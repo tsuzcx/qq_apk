@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import awke;
-import awll;
-import baxk;
+import awkg;
+import awln;
+import baxy;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.widget.ListView;
 import java.util.List;
@@ -19,8 +19,8 @@ public class MessageSearchDetailFragment
 {
   private static FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awke jdField_a_of_type_Awke;
-  private baxk jdField_a_of_type_Baxk;
+  private awkg jdField_a_of_type_Awkg;
+  private baxy jdField_a_of_type_Baxy;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private FullMessageSearchResult.SearchResultItem b;
@@ -54,8 +54,8 @@ public class MessageSearchDetailFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Baxk != null) {
-      this.jdField_a_of_type_Baxk.d();
+    if (this.jdField_a_of_type_Baxy != null) {
+      this.jdField_a_of_type_Baxy.d();
     }
   }
   
@@ -65,11 +65,11 @@ public class MessageSearchDetailFragment
     if ((this.b == null) || (this.b.secondPageMessageUniseq == null)) {}
     for (int i = 0;; i = this.b.secondPageMessageUniseq.size())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719078, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Baxk = new baxk(getActivity(), getActivity().app);
-      this.jdField_a_of_type_Awke = new awll(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Awke);
-      this.jdField_a_of_type_Awke.a();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719089, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Baxy = new baxy(getActivity(), getActivity().app);
+      this.jdField_a_of_type_Awkg = new awln(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxy, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Awkg);
+      this.jdField_a_of_type_Awkg.a();
       return;
     }
   }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajsf;
-import aktg;
+import ajsd;
+import aktf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -14,9 +14,9 @@ class RecentItemKandianMergeData$2
   
   public void run()
   {
-    aktg localaktg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(ajsf.aA, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "time", Long.valueOf(this.jdField_a_of_type_Long));
-    localaktg.a(this.this$0.mUser);
+    aktf localaktf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(ajsd.aA, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "time", Long.valueOf(this.jdField_a_of_type_Long));
+    localaktf.a(this.this$0.mUser);
   }
 }
 

@@ -1,33 +1,30 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tyk
-  extends SimpleObserver<ups>
+  extends QQUIEventReceiver<tyc, tkk>
 {
-  public tyk(tyf paramtyf) {}
-  
-  public void a(ups paramups)
+  public tyk(@NonNull tyc paramtyc)
   {
-    super.onNext(paramups);
-    tyf.a(this.a, paramups, new ErrorMessage(), true);
+    super(paramtyc);
   }
   
-  public void onCancel()
+  public void a(@NonNull tyc paramtyc, @NonNull tkk paramtkk)
   {
-    super.onCancel();
-    veg.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
+    if (paramtkk.a.isSuccess())
     {
-      tyf.a(this.a, tyf.a(this.a), new ErrorMessage(), false);
-      return;
+      ved.a(this.TAG, "receive user info event. %s.", paramtkk.toString());
+      paramtyc = paramtyc.a();
+      if (paramtyc != null) {
+        paramtyc.a();
+      }
     }
-    tyf.a(this.a, tyf.a(this.a), (ErrorMessage)paramError, false);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkk.class;
   }
 }
 

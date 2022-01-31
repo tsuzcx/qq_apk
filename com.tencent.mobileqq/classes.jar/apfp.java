@@ -1,79 +1,90 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop.TroopFileProxyActivity;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apfp
-  implements apfn
+  implements awoh
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static final String a;
+  public static final String b = ajya.a(2131705392);
+  int jdField_a_of_type_Int = -1;
+  List<awoi> jdField_a_of_type_JavaUtilList;
+  String c;
   
-  public apfp(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = Long.parseLong(paramString);
+    jdField_a_of_type_JavaLangString = apfp.class.getSimpleName();
   }
   
-  private void a()
+  public apfp(List<awoi> paramList, String paramString, int paramInt)
   {
-    Intent localIntent = TroopMemberListActivity.a(this.jdField_a_of_type_AndroidContentContext, String.valueOf(this.jdField_a_of_type_Long), 18);
-    localIntent.putExtra("uin", this.jdField_a_of_type_Long);
-    localIntent.putExtra("param_from", 23);
-    localIntent.putExtra("uintype", 1);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void b(int paramInt)
+  public int a()
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("title_type", paramInt);
-    localIntent.putExtra("troop_uin", this.jdField_a_of_type_Long);
-    TroopFileProxyActivity.c((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return 3;
   }
   
-  public void a(int paramInt)
+  public String a()
   {
-    switch (paramInt)
+    return ajya.a(2131705374);
+  }
+  
+  public List<awoi> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    awix localawix;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    if (((paramView.getContext() instanceof UniteSearchActivity)) && (awiw.b.containsKey(this)))
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 12: 
-    default: 
-      QLog.i("QFileTroopSearchTypeController", 4, "unknown search type.");
-      return;
-    case 3: 
-      b(1);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 1, 0, "", "", "", "");
-      return;
-    case 2: 
-      b(2);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 2, 0, "", "", "", "");
-      return;
-    case 0: 
-      b(4);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 3, 0, "", "", "", "");
-      return;
-    case 1: 
-      b(3);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 4, 0, "", "", "", "");
-      return;
-    case 11: 
-      b(10000);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 5, 0, "", "", "", "");
+      localawix = (awix)awiw.b.get(this);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", awsq.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localawix.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "native");
+      awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawix.jdField_a_of_type_Long + "").obj2(localawix.b).ver1(localawix.jdField_a_of_type_JavaLangString).ver2(awsq.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
+      awwa.a(this.c, 100, 0, paramView);
+      apue.a("0X8006061");
+      awsq.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
+      FileSearchActivity.a(paramView.getContext(), this.c, this.jdField_a_of_type_JavaUtilList, true, this.jdField_a_of_type_Int);
       return;
     }
-    a();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
+    }
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > a()) {
+      awsq.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5A", 0, 0, null, null);
+    }
+    return this.c;
   }
 }
 

@@ -1,22 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aduz
-  extends actr
+  implements View.OnClickListener
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
+  aduz(aduy paramaduy) {}
   
-  aduz(aduw paramaduw) {}
+  public void onClick(View paramView)
+  {
+    actj.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    aduy.a(this.a).onClick(paramView);
+  }
 }
 
 

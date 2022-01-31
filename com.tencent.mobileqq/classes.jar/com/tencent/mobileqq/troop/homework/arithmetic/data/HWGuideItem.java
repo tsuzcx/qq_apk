@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.homework.arithmetic.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azvs;
+import azvu;
 
 public class HWGuideItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<HWGuideItem> CREATOR = new azvs();
+  public static final Parcelable.Creator<HWGuideItem> CREATOR = new azvu();
   public String a;
   public String b;
   

@@ -1,23 +1,15 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
-import java.util.ArrayList;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
 public class wus
-  implements ViewPager.OnPageChangeListener
+  extends wun
 {
-  public wus(SubscribeBannerView paramSubscribeBannerView) {}
+  public wus(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
-      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
-    }
+    wur.a(this.a.a.this$0, wur.b(this.a.a.this$0));
   }
 }
 

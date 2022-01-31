@@ -1,120 +1,51 @@
 import android.os.Handler;
 import android.os.Looper;
-import com.tencent.av.camera.CameraObserver.1;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.lang.ref.WeakReference;
 
 public class lkg
-  implements Observer
+  extends Handler
 {
-  Handler a = null;
+  WeakReference<CameraUtils> a;
   
-  private void a(Object paramObject)
+  public lkg(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    long l = 0L;
-    if (paramObject == null) {
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isDevelopLevel()) {
-      QLog.w("CameraObserver", 1, "OnUpdate, msgType[" + i + "]");
-    }
-    boolean bool;
-    switch (i)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramObject.length > 1)
-      {
-        bool = ((Boolean)paramObject[1]).booleanValue();
-        if (paramObject.length <= 2) {
-          break label317;
-        }
-      }
-      break;
-    }
-    label317:
-    for (l = ((Long)paramObject[2]).longValue();; l = 0L)
-    {
-      a(l, bool);
-      return;
-      a();
-      return;
-      bool = ((Boolean)paramObject[1]).booleanValue();
-      i = ((Integer)paramObject[2]).intValue();
-      if (paramObject.length > 3) {
-        l = ((Long)paramObject[3]).longValue();
-      }
-      a(l, bool, i);
-      return;
-      if (paramObject.length > 1) {
-        l = ((Long)paramObject[1]).longValue();
-      }
-      a(l);
-      return;
-      bool = ((Boolean)paramObject[1]).booleanValue();
-      if (paramObject.length > 2) {
-        l = ((Long)paramObject[2]).longValue();
-      }
-      b(l, bool);
-      return;
-      b();
-      return;
-      a(((Boolean)paramObject[1]).booleanValue());
-      return;
-      try
-      {
-        paramObject = (byte[])paramObject[1];
-        a(paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          paramObject.printStackTrace();
-          paramObject = null;
-        }
-      }
-      b(((Boolean)paramObject[1]).booleanValue());
-      return;
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramCameraUtils);
   }
   
-  @Deprecated
-  protected void a() {}
-  
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(byte[] paramArrayOfByte) {}
-  
-  protected void b() {}
-  
-  protected void b(long paramLong, boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void a(long paramLong)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
+    removeMessages(1);
+  }
+  
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
+  {
+    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "], seq[" + paramLong + "]");
+    a(paramLong);
+    paramString = obtainMessage(1);
+    paramString.arg1 = paramInt1;
+    paramString.arg2 = paramInt2;
+    paramString.obj = Long.valueOf(paramLong);
+    sendMessageDelayed(paramString, 1000L);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
+      if (!(paramMessage.obj instanceof Long)) {
+        break label75;
       }
-      this.a.post(new CameraObserver.1(this, paramObject));
+    }
+    label75:
+    for (long l = Long.valueOf(0L).longValue();; l = 0L)
+    {
+      CameraUtils.a((CameraUtils)this.a.get(), l, paramMessage.arg1, paramMessage.arg2);
+      super.handleMessage(paramMessage);
       return;
     }
-    a(paramObject);
   }
 }
 

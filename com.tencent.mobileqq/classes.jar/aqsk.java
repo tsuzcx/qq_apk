@@ -1,26 +1,17 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
 import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
 public class aqsk
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public aqsk(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  public aqsk(QQGamePubAccountFragment paramQQGamePubAccountFragment, FrameLayout paramFrameLayout) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.a.f();
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment));
+    QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, null);
   }
 }
 

@@ -1,191 +1,118 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.scenetracker.SceneReportRunnable;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Vector;
-
 public class aaba
-  implements Handler.Callback
 {
-  private static aaba jdField_a_of_type_Aaba;
-  public Handler a;
-  public ArrayList<aaaz> a;
+  private static StringBuilder a = new StringBuilder(512);
   
-  static
+  /* Error */
+  public static java.lang.String a(java.io.InputStream paramInputStream)
   {
-    if (!aaba.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  private aaba()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
-  }
-  
-  public static aaba a()
-  {
-    if (jdField_a_of_type_Aaba == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aaba == null) {
-        jdField_a_of_type_Aaba = new aaba();
-      }
-      return jdField_a_of_type_Aaba;
-    }
-    finally {}
-  }
-  
-  private void a(aaaz paramaaaz, long paramLong)
-  {
-    if (paramaaaz.a())
-    {
-      double d = 100.0D * paramaaaz.jdField_a_of_type_Double;
-      if (QLog.isColorLevel()) {
-        QLog.i("reportToDenta", 2, "reportToDenta" + paramaaaz.jdField_a_of_type_JavaLangString + " " + d + " mem " + paramaaaz.jdField_a_of_type_Long);
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("cpuUsage", String.valueOf(d));
-      localHashMap.put("memory", String.valueOf(paramaaaz.jdField_a_of_type_Long));
-      localHashMap.put("scene", String.valueOf(paramaaaz.jdField_a_of_type_JavaLangString));
-      localHashMap.put("duration", String.valueOf(paramLong));
-      axrl.a(BaseApplicationImpl.getContext()).a("", "actScenePerf", true, 0L, 0L, localHashMap, "");
-    }
-  }
-  
-  public aaaz a(String paramString)
-  {
-    aaaz localaaaz2 = b(paramString);
-    aaaz localaaaz1 = localaaaz2;
-    if (localaaaz2 == null)
-    {
-      localaaaz1 = new aaaz();
-      localaaaz1.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaaaz1);
-    }
-    return localaaaz1;
-  }
-  
-  public void a()
-  {
-    if ((aaav.jdField_a_of_type_JavaUtilVector.size() > 0) || (aaav.b.size() > 0))
-    {
-      SceneReportRunnable localSceneReportRunnable = SceneReportRunnable.a(BaseApplicationImpl.processName);
-      axrg.a().jdField_a_of_type_AndroidOsHandler.post(localSceneReportRunnable);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!UnifiedMonitor.a().a()) {
-      return;
-    }
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramString).sendToTarget();
-  }
-  
-  public aaaz b(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      aaaz localaaaz = (aaaz)localIterator.next();
-      if (TextUtils.equals(localaaaz.jdField_a_of_type_JavaLangString, paramString)) {
-        return localaaaz;
-      }
-    }
-    return null;
-  }
-  
-  public void b(String paramString)
-  {
-    if (!UnifiedMonitor.a().a()) {
-      return;
-    }
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramString).sendToTarget();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    Object localObject1;
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-    case 2: 
-      Object localObject2;
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            paramMessage = (String)paramMessage.obj;
-            aaav.a().jdField_a_of_type_JavaLangString = paramMessage;
-            localObject1 = aaav.a().a();
-          } while (localObject1 == null);
-          localObject2 = b(paramMessage);
-          if ((!jdField_a_of_type_Boolean) && (localObject2 != null)) {
-            throw new AssertionError();
-          }
-          localObject2 = a(paramMessage);
-          l1 = System.currentTimeMillis();
-          localaabd1 = new aabd();
-          localaabd1.jdField_a_of_type_Double = ((aaay)localObject1).jdField_a_of_type_Long;
-          localaabd1.jdField_b_of_type_Long = ((aaay)localObject1).f;
-          localaabd1.jdField_a_of_type_JavaLangString = paramMessage;
-          localaabd1.jdField_a_of_type_Long = l1;
-          localaabd1.jdField_a_of_type_Int = 0;
-          ((aaaz)localObject2).jdField_a_of_type_Aabd = localaabd1;
-          aaav.b.add(localaabd1);
-          ((aaaz)localObject2).a((aaay)localObject1);
-          return false;
-          paramMessage = (String)paramMessage.obj;
-          localObject1 = b(paramMessage);
-        } while (localObject1 == null);
-        localObject2 = aaav.a().a();
-      } while (localObject2 == null);
-      aabd localaabd1 = ((aaaz)localObject1).jdField_a_of_type_Aabd;
-      aabd localaabd2 = new aabd();
-      localaabd2.jdField_a_of_type_JavaLangString = paramMessage;
-      localaabd2.jdField_a_of_type_Double = ((aaay)localObject2).jdField_a_of_type_Long;
-      localaabd2.jdField_b_of_type_Long = ((aaay)localObject2).f;
-      localaabd2.jdField_b_of_type_Double = ((localaabd2.jdField_a_of_type_Double - localaabd1.jdField_a_of_type_Double) * 1000.0D);
-      long l1 = localaabd2.jdField_b_of_type_Long;
-      long l2 = localaabd1.jdField_b_of_type_Long;
-      localaabd2.jdField_a_of_type_Long = localaabd1.jdField_a_of_type_Long;
-      localaabd2.jdField_a_of_type_Int = 1;
-      aaav.b.add(localaabd2);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      this.jdField_a_of_type_JavaUtilArrayList.remove(localObject1);
-      ((aaaz)localObject1).a((aaay)localObject2);
-      a();
-      a((aaaz)localObject1, l1 - l2);
-      return false;
-    }
-    paramMessage = aaav.a().a();
-    if (paramMessage != null)
-    {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        ((aaaz)((Iterator)localObject1).next()).a(paramMessage);
-      }
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 5000L);
-    return false;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: new 26	java/io/BufferedReader
+    //   5: dup
+    //   6: new 28	java/io/InputStreamReader
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 31	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   14: invokespecial 34	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   17: astore_0
+    //   18: getstatic 16	aaba:a	Ljava/lang/StringBuilder;
+    //   21: iconst_0
+    //   22: getstatic 16	aaba:a	Ljava/lang/StringBuilder;
+    //   25: invokevirtual 38	java/lang/StringBuilder:length	()I
+    //   28: invokevirtual 42	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload_0
+    //   33: invokevirtual 46	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ifnull +41 -> 79
+    //   41: getstatic 16	aaba:a	Ljava/lang/StringBuilder;
+    //   44: aload_1
+    //   45: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc 52
+    //   50: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: goto -22 -> 32
+    //   57: astore_1
+    //   58: aload_0
+    //   59: ifnull +7 -> 66
+    //   62: aload_0
+    //   63: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   66: getstatic 16	aaba:a	Ljava/lang/StringBuilder;
+    //   69: ifnull +54 -> 123
+    //   72: getstatic 16	aaba:a	Ljava/lang/StringBuilder;
+    //   75: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: areturn
+    //   79: aload_0
+    //   80: ifnull -14 -> 66
+    //   83: aload_0
+    //   84: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   87: goto -21 -> 66
+    //   90: astore_0
+    //   91: goto -25 -> 66
+    //   94: astore_0
+    //   95: aconst_null
+    //   96: astore_0
+    //   97: aload_0
+    //   98: ifnull -32 -> 66
+    //   101: aload_0
+    //   102: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   105: goto -39 -> 66
+    //   108: astore_0
+    //   109: goto -43 -> 66
+    //   112: astore_0
+    //   113: aload_1
+    //   114: ifnull +7 -> 121
+    //   117: aload_1
+    //   118: invokevirtual 55	java/io/BufferedReader:close	()V
+    //   121: aload_0
+    //   122: athrow
+    //   123: ldc 60
+    //   125: areturn
+    //   126: astore_0
+    //   127: goto -61 -> 66
+    //   130: astore_1
+    //   131: goto -10 -> 121
+    //   134: astore_2
+    //   135: aload_0
+    //   136: astore_1
+    //   137: aload_2
+    //   138: astore_0
+    //   139: goto -26 -> 113
+    //   142: astore_1
+    //   143: goto -46 -> 97
+    //   146: astore_0
+    //   147: aconst_null
+    //   148: astore_0
+    //   149: goto -91 -> 58
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	152	0	paramInputStream	java.io.InputStream
+    //   1	44	1	str	java.lang.String
+    //   57	61	1	localException	java.lang.Exception
+    //   130	1	1	localIOException	java.io.IOException
+    //   136	1	1	localInputStream	java.io.InputStream
+    //   142	1	1	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   134	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   18	32	57	java/lang/Exception
+    //   32	37	57	java/lang/Exception
+    //   41	54	57	java/lang/Exception
+    //   83	87	90	java/io/IOException
+    //   2	18	94	java/lang/OutOfMemoryError
+    //   101	105	108	java/io/IOException
+    //   2	18	112	finally
+    //   62	66	126	java/io/IOException
+    //   117	121	130	java/io/IOException
+    //   18	32	134	finally
+    //   32	37	134	finally
+    //   41	54	134	finally
+    //   18	32	142	java/lang/OutOfMemoryError
+    //   32	37	142	java/lang/OutOfMemoryError
+    //   41	54	142	java/lang/OutOfMemoryError
+    //   2	18	146	java/lang/Exception
   }
 }
 

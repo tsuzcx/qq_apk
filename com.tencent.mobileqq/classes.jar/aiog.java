@@ -1,13 +1,16 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aiog
-  implements Comparator<atyy>
+  implements View.OnClickListener
 {
-  aiog(aiof paramaiof) {}
+  aiog(aiod paramaiod, QQAppInterface paramQQAppInterface) {}
   
-  public int a(atyy paramatyy1, atyy paramatyy2)
+  public void onClick(View paramView)
   {
-    return (int)(paramatyy2.a - paramatyy1.a);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
+    aiod.a(this.jdField_a_of_type_Aiod);
   }
 }
 

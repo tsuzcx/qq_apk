@@ -1,13 +1,6 @@
-import java.io.File;
-import org.json.JSONObject;
-
 public abstract interface ude
 {
-  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public abstract void a_(ucz paramucz);
 }
 
 

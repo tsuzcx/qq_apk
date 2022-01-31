@@ -1,19 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo;
 
-class pts
-  implements View.OnTouchListener
+public class pts
+  extends ptk
 {
-  pts(pto parampto, LinearLayout paramLinearLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public pts(Context paramContext, baxy parambaxy, ram paramram)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

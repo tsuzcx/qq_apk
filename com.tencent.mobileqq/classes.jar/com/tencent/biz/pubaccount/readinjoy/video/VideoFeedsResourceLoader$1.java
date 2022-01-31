@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.content.Context;
-import qrr;
+import qro;
 
 public class VideoFeedsResourceLoader$1
   implements Runnable
 {
-  public VideoFeedsResourceLoader$1(qrr paramqrr, Context paramContext) {}
+  public VideoFeedsResourceLoader$1(qro paramqro, Context paramContext) {}
   
   public void run()
   {
-    qrr.a(this.a, 2130842556);
-    qrr.a(this.a, 2130842418);
+    qro.a(this.a, 2130842557);
+    qro.a(this.a, 2130842419);
   }
 }
 

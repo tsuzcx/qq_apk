@@ -1,26 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+
 public class bdgq
+  implements DialogInterface.OnClickListener
 {
-  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
-  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
+  public bdgq(DownloadJSApi.2 param2) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
-    }
-    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
-    }
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdlb.r, false);
+    bdgp.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 

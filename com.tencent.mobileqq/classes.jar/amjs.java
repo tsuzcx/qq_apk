@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 class amjs
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  amjs(amjq paramamjq) {}
+  amjs(amjp paramamjp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    amgo.c(false);
+    if (this.a.a.getActivity() != null)
+    {
+      this.a.a.getActivity().finish();
+      this.a.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

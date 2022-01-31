@@ -9,9 +9,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bbdh;
+import bbdv;
 import com.tencent.qphone.base.util.QLog;
-import vrl;
+import vri;
 
 public class MusicHorizontalSeekView
   extends View
@@ -25,7 +25,7 @@ public class MusicHorizontalSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected vrl a;
+  protected vri a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
@@ -52,14 +52,14 @@ public class MusicHorizontalSeekView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = 0.0F;
-    this.m = ((int)bbdh.a(paramContext, 2.0F));
-    this.n = ((int)bbdh.a(paramContext, 1.0F));
-    jdField_b_of_type_Int = (int)bbdh.a(paramContext, 10.0F);
-    jdField_c_of_type_Int = (int)bbdh.a(paramContext, 21.0F);
+    this.m = ((int)bbdv.a(paramContext, 2.0F));
+    this.n = ((int)bbdv.a(paramContext, 1.0F));
+    jdField_b_of_type_Int = (int)bbdv.a(paramContext, 10.0F);
+    jdField_c_of_type_Int = (int)bbdv.a(paramContext, 21.0F);
     int i1 = 0;
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)bbdh.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)bbdv.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
@@ -181,8 +181,8 @@ public class MusicHorizontalSeekView
     this.j = ((this.k - this.f) / 2);
     paramInt1 = (this.l - jdField_c_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.j, paramInt1, this.j + this.d * jdField_b_of_type_Int, jdField_c_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_Vrl != null) {
-      this.jdField_a_of_type_Vrl.a(this.j, this.f);
+    if (this.jdField_a_of_type_Vri != null) {
+      this.jdField_a_of_type_Vri.a(this.j, this.f);
     }
   }
   
@@ -201,10 +201,10 @@ public class MusicHorizontalSeekView
         return bool;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_Vrl == null) {
+        if (this.jdField_a_of_type_Vri == null) {
           break;
         }
-        this.jdField_a_of_type_Vrl.a(this.g, this.f, this.h);
+        this.jdField_a_of_type_Vri.a(this.g, this.f, this.h);
         break;
         f1 = paramMotionEvent.getX();
       } while (Math.abs(f1 - this.jdField_a_of_type_Float) < 2.0F);
@@ -216,8 +216,8 @@ public class MusicHorizontalSeekView
         {
           this.h = 0;
           super.invalidate();
-          if (this.jdField_a_of_type_Vrl != null) {
-            this.jdField_a_of_type_Vrl.b(this.g, this.f, this.h);
+          if (this.jdField_a_of_type_Vri != null) {
+            this.jdField_a_of_type_Vri.b(this.g, this.f, this.h);
           }
           this.jdField_a_of_type_Float = f1;
           return false;
@@ -227,22 +227,22 @@ public class MusicHorizontalSeekView
       {
         this.h = (this.g - this.f);
         super.invalidate();
-        if (this.jdField_a_of_type_Vrl != null) {
-          this.jdField_a_of_type_Vrl.b(this.g, this.f, this.h);
+        if (this.jdField_a_of_type_Vri != null) {
+          this.jdField_a_of_type_Vri.b(this.g, this.f, this.h);
         }
         this.jdField_a_of_type_Float = f1;
         return false;
       }
       super.invalidate();
-      if (this.jdField_a_of_type_Vrl != null) {
-        this.jdField_a_of_type_Vrl.b(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_Vri != null) {
+        this.jdField_a_of_type_Vri.b(this.g, this.f, this.h);
       }
       this.jdField_a_of_type_Float = f1;
       continue;
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_Vrl != null) {
-        this.jdField_a_of_type_Vrl.c(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_Vri != null) {
+        this.jdField_a_of_type_Vri.c(this.g, this.f, this.h);
       }
     }
   }
@@ -255,9 +255,9 @@ public class MusicHorizontalSeekView
     this.g = (jdField_b_of_type_Int * this.e);
   }
   
-  public void setOnSeekListener(vrl paramvrl)
+  public void setOnSeekListener(vri paramvri)
   {
-    this.jdField_a_of_type_Vrl = paramvrl;
+    this.jdField_a_of_type_Vri = paramvri;
   }
   
   public void setPlayedPosition(int paramInt)

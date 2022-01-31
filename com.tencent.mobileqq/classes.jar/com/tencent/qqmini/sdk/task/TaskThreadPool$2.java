@@ -1,27 +1,27 @@
 package com.tencent.qqmini.sdk.task;
 
-import besl;
-import bfew;
+import betc;
+import bffn;
 import java.util.Queue;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class TaskThreadPool$2
   implements Runnable
 {
-  public TaskThreadPool$2(bfew parambfew) {}
+  public TaskThreadPool$2(bffn parambffn) {}
   
   public void run()
   {
     try
     {
-      if (bfew.a(this.this$0)) {
-        bfew.a(this.this$0).execute((Runnable)bfew.a(this.this$0).poll());
+      if (bffn.a(this.this$0)) {
+        bffn.a(this.this$0).execute((Runnable)bffn.a(this.this$0).poll());
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      besl.d("ThreadPool", "", localThrowable);
+      betc.d("ThreadPool", "", localThrowable);
     }
   }
 }

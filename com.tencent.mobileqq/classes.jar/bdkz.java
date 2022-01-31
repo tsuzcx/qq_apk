@@ -1,40 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
-public class bdkz
+final class bdkz
+  implements DialogInterface.OnClickListener
 {
-  private static bdkz jdField_a_of_type_Bdkz;
-  private bdlb jdField_a_of_type_Bdlb = new bdlb(this, null);
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bdla(this, "Module_DownloaderGetCodeServer");
-  private Map<String, Bundle> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+  bdkz(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public static bdkz a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Bdkz == null) {}
-    try
-    {
-      jdField_a_of_type_Bdkz = new bdkz();
-      return jdField_a_of_type_Bdkz;
-    }
-    finally {}
-  }
-  
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    bdkx.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

@@ -1,24 +1,24 @@
 package cooperation.vip.vipcomponent.util;
 
-import biai;
-import biak;
+import biaz;
+import bibb;
 
 public class ZipResDownloadManager$1
   implements Runnable
 {
-  public ZipResDownloadManager$1(biai parambiai, String paramString) {}
+  public ZipResDownloadManager$1(biaz parambiaz, String paramString) {}
   
   public void run()
   {
     String str = this.a;
     if (this.this$0.a(str)) {}
-    biak localbiak;
+    bibb localbibb;
     do
     {
       return;
-      localbiak = biai.a(this.this$0, str, -1, null, null);
-    } while (!biai.a(this.this$0, str, localbiak));
-    biai.a(this.this$0, localbiak);
+      localbibb = biaz.a(this.this$0, str, -1, null, null);
+    } while (!biaz.a(this.this$0, str, localbibb));
+    biaz.a(this.this$0, localbibb);
   }
 }
 

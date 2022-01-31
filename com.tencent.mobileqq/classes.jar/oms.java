@@ -1,20 +1,12 @@
-import android.widget.TextView;
-import java.util.List;
-
-class oms
-  implements rrs
+public class oms
 {
-  oms(omr paramomr) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(String paramString1, String paramString2)
+  public String toString()
   {
-    this.a.jdField_a_of_type_Omt.b.setText(paramString2);
-    this.a.jdField_a_of_type_Pbb.d = paramString2;
-    this.a.jdField_a_of_type_Pbb.c = paramString1;
-    if (this.a.jdField_a_of_type_Int < omq.a(this.a.jdField_a_of_type_Omq).size()) {
-      omq.a(this.a.jdField_a_of_type_Omq, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Pbb);
-    }
-    this.a.jdField_a_of_type_Omq.a.dismiss();
+    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
   }
 }
 

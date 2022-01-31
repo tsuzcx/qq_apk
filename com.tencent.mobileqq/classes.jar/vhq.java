@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class vhq
-  implements DialogInterface.OnClickListener
+  extends SimpleJob<Object>
 {
-  vhq(vhp paramvhp) {}
+  vhq(vhm paramvhm, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  {
+    super(paramString1);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vei.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
+  }
 }
 
 

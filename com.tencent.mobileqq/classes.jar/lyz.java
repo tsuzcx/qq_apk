@@ -1,16 +1,16 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
-public class lyz
-  extends PhoneStateListener
+public abstract interface lyz
 {
-  public lyz(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public abstract int a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
   
-  public void onCallStateChanged(int paramInt, String paramString)
-  {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
-  }
+  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  
+  public abstract void a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
+  
+  public abstract int b(SmallScreenRelativeLayout paramSmallScreenRelativeLayout);
 }
 
 

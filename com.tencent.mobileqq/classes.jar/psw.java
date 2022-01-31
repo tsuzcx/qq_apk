@@ -1,13 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class psw
-  implements pvr
+  implements View.OnClickListener
 {
   psw(psv parampsv) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    rbu localrbu = this.a.jdField_a_of_type_Rap.a();
-    if (localrbu != null) {
-      localrbu.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    paramView = this.a.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

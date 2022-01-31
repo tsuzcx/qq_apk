@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
 import android.view.Window;
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class CommonRecordSoundPanel$5
@@ -13,7 +13,7 @@ class CommonRecordSoundPanel$5
   {
     this.this$0.setRequestedOrientation4Recording(true);
     this.this$0.a.getWindow().clearFlags(128);
-    bcpw.a(this.this$0.a, 2131690022, 1).b(this.this$0.a.getTitleBarHeight());
+    bcql.a(this.this$0.a, 2131690022, 1).b(this.this$0.a.getTitleBarHeight());
   }
 }
 

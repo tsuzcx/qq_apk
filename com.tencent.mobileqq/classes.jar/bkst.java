@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.12;
-
-public class bkst
-  implements DialogInterface.OnClickListener
+public final class bkst
+  implements aiau
 {
-  public bkst(ShortVideoPlayActivity.12 param12) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.a.this$0.s();
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

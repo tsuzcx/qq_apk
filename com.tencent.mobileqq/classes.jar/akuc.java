@@ -1,28 +1,27 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
-
 public class akuc
-  implements pca
+  implements ajte
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public akuc(int paramInt1, int paramInt2, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    paramString = new Intent("notify_main_subscribe_follow_state");
-    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
-    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
-    paramString.putExtra("follow_uin_smooth_dx", this.b);
-    paramString.putExtra("follow_uin_status", paramBoolean);
-    BaseApplication.getContext().sendBroadcast(paramString);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      if (!paramBoolean) {
+        break;
+      }
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
+    return;
+    a(false, false, -1);
   }
 }
 

@@ -1,27 +1,65 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizer;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerListener;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerResult;
+import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecordState;
+import com.tencent.qphone.base.util.QLog;
 
-public class lto
-  extends ltl
+class lto
+  implements VoiceRecognizerListener
 {
-  public boolean a;
-  public String b;
-  public String c;
-  public int f = -1;
-  public int g = -1;
+  lto(ltm paramltm) {}
   
-  public lto(RandomWebProtocol paramRandomWebProtocol) {}
-  
-  void a(String paramString)
+  public void onGetError(int paramInt)
   {
-    super.a(paramString);
-    if ((2 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
+    QLog.d("AVVoiceRecog", 2, "onGetError. err = " + paramInt);
+  }
+  
+  public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
+  {
+    if ((!ltm.a(this.a)) || (ltm.b(this.a))) {
+      QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
+    }
+    label162:
+    for (;;)
     {
-      this.f = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
-      this.b = this.jdField_a_of_type_OrgJsonJSONObject.optString("groupids");
-      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("businessid", -1);
-      this.c = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("ownerenable", true);
+      return;
+      if (paramVoiceRecognizerResult.isHalf)
+      {
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.isHalf.");
+        return;
+      }
+      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text)) {
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text == null.");
+      }
+      for (;;)
+      {
+        if (!paramVoiceRecognizerResult.isEnd) {
+          break label162;
+        }
+        int i = VoiceRecognizer.shareInstance().startReceiving();
+        if (i >= 0) {
+          break;
+        }
+        QLog.i("AVVoiceRecog", 1, "restart falied. ret = " + i);
+        return;
+        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text = " + paramVoiceRecognizerResult.text);
+        if (ltm.a(this.a) != null) {
+          ltm.a(this.a).a(paramVoiceRecognizerResult.text);
+        }
+      }
+    }
+  }
+  
+  public void onGetVoiceRecordState(VoiceRecordState paramVoiceRecordState)
+  {
+    QLog.d("AVVoiceRecog", 2, "onGetVoiceRecordState. state = " + paramVoiceRecordState);
+  }
+  
+  public void onVolumeChanged(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVVoiceRecog", 2, "onVolumeChanged. volume = " + paramInt);
     }
   }
 }

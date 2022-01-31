@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.history;
 
-import aarv;
-import aarw;
-import aask;
+import aarr;
+import aars;
+import aasg;
+import aegp;
 import aegr;
-import aegt;
-import afck;
-import afwh;
+import afci;
+import afwf;
+import afxr;
 import afxt;
+import afxu;
 import afxv;
 import afxw;
-import afxx;
-import afxy;
-import agbs;
+import agbq;
 import android.app.Dialog;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -24,20 +24,20 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aodj;
-import aodw;
-import aptv;
-import asul;
-import asup;
-import asuu;
-import bbev;
-import bbgg;
-import bcpw;
-import bfmt;
-import bfol;
-import bfoy;
-import bici;
-import bide;
+import aodo;
+import aoeb;
+import aptx;
+import asun;
+import asur;
+import asuw;
+import bbfj;
+import bbgu;
+import bcql;
+import bfnk;
+import bfpc;
+import bfpp;
+import bicz;
+import bidv;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -52,27 +52,27 @@ import mqq.os.MqqHandler;
 
 public class ChatHistoryEmotionBaseFragment
   extends ChatHistoryBaseFragment
-  implements aarw, aegt, Handler.Callback
+  implements aars, aegr, Handler.Callback
 {
-  aarv jdField_a_of_type_Aarv;
-  private afck jdField_a_of_type_Afck;
-  private List<aodw> jdField_a_of_type_JavaUtilList;
+  aarr jdField_a_of_type_Aarr;
+  private afci jdField_a_of_type_Afci;
+  private List<aoeb> jdField_a_of_type_JavaUtilList;
   protected final MqqHandler a;
-  private bbgg b;
+  private bbgu b;
   
   public ChatHistoryEmotionBaseFragment()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new bfmt(Looper.getMainLooper(), this, true);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bfnk(Looper.getMainLooper(), this, true);
   }
   
-  private void a(String paramString1, String paramString2, String paramString3, String paramString4, aask paramaask)
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, aasg paramaasg)
   {
     if ((this.b != null) && (this.b.isShowing())) {
       this.b.dismiss();
     }
-    bbgg localbbgg = new bbgg(getActivity(), 2131755791);
-    localbbgg.setContentView(2131558906);
-    this.b = localbbgg;
+    bbgu localbbgu = new bbgu(getActivity(), 2131755791);
+    localbbgu.setContentView(2131558906);
+    this.b = localbbgu;
     this.b.setTitle(paramString1);
     this.b.setMessage(paramString2);
     paramString1 = paramString4;
@@ -83,8 +83,8 @@ public class ChatHistoryEmotionBaseFragment
     if (TextUtils.isEmpty(paramString3)) {
       paramString2 = getString(2131691035);
     }
-    this.b.setNegativeButton(paramString1, new afxx(this, paramaask));
-    this.b.setPositiveButton(paramString2, new afxy(this, paramaask));
+    this.b.setNegativeButton(paramString1, new afxv(this, paramaasg));
+    this.b.setPositiveButton(paramString2, new afxw(this, paramaasg));
     this.b.setCancelable(true);
     this.b.setCanceledOnTouchOutside(false);
     this.b.show();
@@ -92,30 +92,30 @@ public class ChatHistoryEmotionBaseFragment
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Aarv != null) && (this.jdField_a_of_type_Aarv.jdField_a_of_type_Aodj != null) && (this.jdField_a_of_type_Aarv.jdField_a_of_type_Aodj.getCount() == 0))
+    if ((this.jdField_a_of_type_Aarr != null) && (this.jdField_a_of_type_Aarr.jdField_a_of_type_Aodo != null) && (this.jdField_a_of_type_Aarr.jdField_a_of_type_Aodo.getCount() == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.history.BaseFragment", 2, "onEmotionLoaded, mEmotionView.mAdapter is null");
       }
-      this.jdField_a_of_type_Afwh.a(false);
+      this.jdField_a_of_type_Afwf.a(false);
       return;
     }
-    this.jdField_a_of_type_Afwh.a(true);
+    this.jdField_a_of_type_Afwf.a(true);
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.a(paramLong);
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.a(paramLong);
     }
   }
   
-  public void a(aodw paramaodw)
+  public void a(aoeb paramaoeb)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramaodw);
+    this.jdField_a_of_type_JavaUtilList.add(paramaoeb);
   }
   
   public boolean a()
@@ -132,7 +132,7 @@ public class ChatHistoryEmotionBaseFragment
         if (QLog.isColorLevel()) {
           QLog.d("Q.history.BaseFragment", 2, "isOverLimit");
         }
-        aptv.a(2131692562);
+        aptx.a(2131692563);
       }
       return bool;
     }
@@ -140,12 +140,12 @@ public class ChatHistoryEmotionBaseFragment
   
   protected void b() {}
   
-  public void b(aodw paramaodw)
+  public void b(aoeb paramaoeb)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.remove(paramaodw);
+    this.jdField_a_of_type_JavaUtilList.remove(paramaoeb);
   }
   
   void b(boolean paramBoolean)
@@ -177,40 +177,40 @@ public class ChatHistoryEmotionBaseFragment
     localArrayList.add(Integer.valueOf(1));
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(4));
-    this.jdField_a_of_type_Agbs.a(localArrayList);
+    this.jdField_a_of_type_Agbq.a(localArrayList);
   }
   
   public void e()
   {
     super.e();
     u();
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.a();
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.a();
     }
-    if ((this.jdField_a_of_type_Aarv != null) && (this.jdField_a_of_type_Aarv.jdField_a_of_type_Aodj != null) && (this.jdField_a_of_type_Aarv.jdField_a_of_type_Aodj.getCount() == 0))
+    if ((this.jdField_a_of_type_Aarr != null) && (this.jdField_a_of_type_Aarr.jdField_a_of_type_Aodo != null) && (this.jdField_a_of_type_Aarr.jdField_a_of_type_Aodo.getCount() == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.history.BaseFragment", 2, "doOnResume, mEmotionView.mAdapter is null");
       }
-      if (this.jdField_a_of_type_Afwh != null) {
-        this.jdField_a_of_type_Afwh.a(false);
+      if (this.jdField_a_of_type_Afwf != null) {
+        this.jdField_a_of_type_Afwf.a(false);
       }
     }
-    while (this.jdField_a_of_type_Afwh == null) {
+    while (this.jdField_a_of_type_Afwf == null) {
       return;
     }
-    this.jdField_a_of_type_Afwh.a(true);
+    this.jdField_a_of_type_Afwf.a(true);
   }
   
   public void g()
   {
     super.g();
-    aegr.a().b(this);
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.c();
+    aegp.a().b(this);
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.c();
     }
-    if (this.jdField_a_of_type_Afck != null) {
-      this.jdField_a_of_type_Afck.b();
+    if (this.jdField_a_of_type_Afci != null) {
+      this.jdField_a_of_type_Afci.b();
     }
   }
   
@@ -223,8 +223,8 @@ public class ChatHistoryEmotionBaseFragment
     do
     {
       return true;
-      if (this.jdField_a_of_type_Aarv != null) {
-        this.jdField_a_of_type_Aarv.f();
+      if (this.jdField_a_of_type_Aarr != null) {
+        this.jdField_a_of_type_Aarr.f();
       }
       u();
       p();
@@ -237,7 +237,7 @@ public class ChatHistoryEmotionBaseFragment
       if (this.jdField_a_of_type_AndroidAppDialog != null) {
         this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
-      bide.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), d());
+      bidv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), d());
       u();
       return true;
       if (this.jdField_a_of_type_AndroidAppDialog != null) {
@@ -245,30 +245,30 @@ public class ChatHistoryEmotionBaseFragment
       }
       u();
       i = paramMessage.arg1;
-    } while (!bici.a(i));
-    if (bici.d(i))
+    } while (!bicz.a(i));
+    if (bicz.d(i))
     {
-      getString(2131694921);
+      getString(2131694922);
       paramMessage = "";
-      if (bici.b(i))
+      if (bicz.b(i))
       {
-        getString(2131694921);
+        getString(2131694922);
         paramMessage = getString(2131692190);
       }
       for (;;)
       {
-        afxw localafxw = new afxw(this);
-        a(getString(2131698741), paramMessage, null, null, localafxw);
+        afxu localafxu = new afxu(this);
+        a(getString(2131698751), paramMessage, null, null, localafxu);
         return true;
-        if (bici.c(i))
+        if (bicz.c(i))
         {
-          getString(2131694921);
+          getString(2131694922);
           paramMessage = getString(2131692188);
         }
       }
     }
     paramMessage = (String)paramMessage.obj;
-    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramMessage, 1).b(d());
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramMessage, 1).b(d());
     return true;
   }
   
@@ -279,9 +279,9 @@ public class ChatHistoryEmotionBaseFragment
       CheckPermission.requestStorePermission(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null);
       return;
     }
-    if (!bbev.d(BaseApplication.getContext()))
+    if (!bbfj.d(BaseApplication.getContext()))
     {
-      bcpw.a(getActivity(), 2131694672, 1).b(getResources().getDimensionPixelSize(2131298865));
+      bcql.a(getActivity(), 2131694673, 1).b(getResources().getDimensionPixelSize(2131298865));
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -290,28 +290,28 @@ public class ChatHistoryEmotionBaseFragment
     }
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (aodw)((Iterator)localObject1).next();
-      if ((((aodw)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic))
+      localObject2 = (aoeb)((Iterator)localObject1).next();
+      if ((((aoeb)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic))
       {
-        localArrayList.add(asup.a((MessageForPic)((aodw)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord));
+        localArrayList.add(asur.a((MessageForPic)((aoeb)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord));
         continue;
-        aptv.c(2131692559);
+        aptx.c(2131692560);
         return;
       }
     }
-    Object localObject1 = new asul(getActivity());
-    Object localObject2 = (asuu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(324);
-    ((asuu)localObject2).a(new afxt(this, (asul)localObject1, (asuu)localObject2, localArrayList));
-    ((asuu)localObject2).a(localArrayList, true);
-    ((asuu)localObject2).a(localArrayList, 1, 5);
+    Object localObject1 = new asun(getActivity());
+    Object localObject2 = (asuw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(324);
+    ((asuw)localObject2).a(new afxr(this, (asun)localObject1, (asuw)localObject2, localArrayList));
+    ((asuw)localObject2).a(localArrayList, true);
+    ((asuw)localObject2).a(localArrayList, 1, 5);
     r();
   }
   
   protected void m()
   {
-    if (!bbev.d(BaseApplication.getContext()))
+    if (!bbfj.d(BaseApplication.getContext()))
     {
-      bcpw.a(getActivity(), 2131694672, 1).b(getResources().getDimensionPixelSize(2131298865));
+      bcql.a(getActivity(), 2131694673, 1).b(getResources().getDimensionPixelSize(2131298865));
       return;
     }
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
@@ -319,18 +319,18 @@ public class ChatHistoryEmotionBaseFragment
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add((ChatMessage)((aodw)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        localArrayList.add((ChatMessage)((aoeb)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
       }
-      if (this.jdField_a_of_type_Afck == null)
+      if (this.jdField_a_of_type_Afci == null)
       {
-        this.jdField_a_of_type_Afck = new afck(getActivity(), 3);
-        this.jdField_a_of_type_Afck.a();
+        this.jdField_a_of_type_Afci = new afci(getActivity(), 3);
+        this.jdField_a_of_type_Afci.a();
       }
-      this.jdField_a_of_type_Afck.a(localArrayList);
+      this.jdField_a_of_type_Afci.a(localArrayList);
       q();
       return;
     }
-    aptv.c(2131692559);
+    aptx.c(2131692560);
   }
   
   protected void n()
@@ -341,47 +341,47 @@ public class ChatHistoryEmotionBaseFragment
     }
     if (i == 0)
     {
-      aptv.c(2131692559);
+      aptx.c(2131692560);
       return;
     }
-    bfol localbfol = (bfol)bfoy.a(getActivity(), null);
-    localbfol.a(2131696395);
-    localbfol.a(getActivity().getString(2131692409), 3);
-    localbfol.c(2131690596);
-    localbfol.a(new afxv(this, localbfol));
-    localbfol.show();
+    bfpc localbfpc = (bfpc)bfpp.a(getActivity(), null);
+    localbfpc.a(2131696396);
+    localbfpc.a(getActivity().getString(2131692409), 3);
+    localbfpc.c(2131690596);
+    localbfpc.a(new afxt(this, localbfpc));
+    localbfpc.show();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    aegr.a().a(this);
+    aegp.a().a(this);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Aarv == null)
+    if (this.jdField_a_of_type_Aarr == null)
     {
-      this.jdField_a_of_type_Aarv = new aarv();
-      this.jdField_a_of_type_Aarv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_Aarv.jdField_a_of_type_Aarw = this;
+      this.jdField_a_of_type_Aarr = new aarr();
+      this.jdField_a_of_type_Aarr.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      this.jdField_a_of_type_Aarr.jdField_a_of_type_Aars = this;
     }
-    return this.jdField_a_of_type_Aarv.a();
+    return this.jdField_a_of_type_Aarr.a();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.b();
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.a();
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.a();
     }
   }
   
@@ -395,21 +395,21 @@ public class ChatHistoryEmotionBaseFragment
   
   protected void t()
   {
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.d();
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.d();
     }
   }
   
   public void u()
   {
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.e();
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.e();
     }
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((aodw)localIterator.next()).jdField_a_of_type_Boolean = false;
+        ((aoeb)localIterator.next()).jdField_a_of_type_Boolean = false;
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }

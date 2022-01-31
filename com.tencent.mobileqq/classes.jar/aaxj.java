@@ -1,20 +1,40 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class aaxj
-  extends GestureDetector.SimpleOnGestureListener
+  extends akwq
 {
-  public aaxj(Conversation paramConversation) {}
+  private WeakReference<Conversation> a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public aaxj(Conversation paramConversation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      Conversation localConversation = (Conversation)this.a.get();
+      if (localConversation != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
+          if (localAppletsAccountInfo != null) {
+            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
+          }
+        }
+      }
     }
-    Conversation.i(this.a);
-    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

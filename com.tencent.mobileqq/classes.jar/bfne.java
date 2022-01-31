@@ -1,36 +1,81 @@
-public class bfne<T>
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+
+public class bfne
 {
-  private long jdField_a_of_type_Long;
-  private bfnf<T> jdField_a_of_type_Bfnf;
-  private long b;
-  
-  private bfne(bfnf<T> parambfnf)
+  public static Camera a()
   {
-    this.jdField_a_of_type_Bfnf = parambfnf;
+    return a(-1, 5);
   }
   
-  public static <T> bfne<T> a(bfnf<T> parambfnf)
+  public static Camera a(int paramInt)
   {
-    return new bfne(parambfnf);
+    return a(paramInt, 5);
   }
   
-  public bfne<T> a(long paramLong)
+  @TargetApi(9)
+  public static Camera a(int paramInt1, int paramInt2)
   {
-    this.b = paramLong;
-    return this;
-  }
-  
-  public bfne<T> a(T paramT)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > this.b)
+    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+      paramInt2 = 1;
+    }
+    int i = 0;
+    Camera localCamera1 = null;
+    Camera localCamera3;
+    for (;;)
     {
-      this.jdField_a_of_type_Long = l;
-      if (this.jdField_a_of_type_Bfnf != null) {
-        this.jdField_a_of_type_Bfnf.a(paramT);
+      localCamera3 = localCamera1;
+      if (i < paramInt2)
+      {
+        Camera localCamera2 = localCamera1;
+        try
+        {
+          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
+            localCamera2 = localCamera1;
+          }
+          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
+          {
+            localCamera2 = localCamera1;
+            localCamera3 = localCamera1;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            localCamera2 = localCamera1;
+            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
+            return localCamera1;
+            localCamera2 = localCamera1;
+          }
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
+          }
+          i += 1;
+          if (i < paramInt2) {
+            try
+            {
+              Thread.currentThread();
+              Thread.sleep(500);
+              Object localObject = localCamera2;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                localInterruptedException.printStackTrace();
+              }
+            }
+          } else {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
       }
     }
-    return this;
+    return localCamera3;
   }
 }
 

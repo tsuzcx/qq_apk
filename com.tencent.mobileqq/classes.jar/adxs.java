@@ -1,35 +1,34 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class adxs
-  extends tth
+  extends acuj
 {
-  public adxs(QQStoryItemBuilder paramQQStoryItemBuilder, adxu paramadxu, long paramLong, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
-    }
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
-      return;
-    }
-    if (paramInt == 10100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_b_of_type_Long);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_b_of_type_Long);
-  }
+  public ViewGroup a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public AutoStartProgressBar a;
+  public URLDrawable a;
+  public QQStoryItemBuilder.StoryChatVideoView a;
+  public BubbleImageView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public BubbleImageView b;
+  public String b;
+  public TextView c;
+  public BubbleImageView c;
+  public TextView d;
+  public TextView e;
 }
 
 

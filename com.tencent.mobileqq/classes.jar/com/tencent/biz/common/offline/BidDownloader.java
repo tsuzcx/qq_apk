@@ -8,7 +8,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.vas.LzmaUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -17,17 +17,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import myy;
+import mza;
 import mzb;
-import mzd;
-import mze;
-import mzk;
+import mzh;
+import mzp;
+import mzq;
 import mzs;
-import mzt;
-import mzv;
+import nao;
 import nar;
 import nau;
-import nax;
-import nay;
+import nav;
 
 public class BidDownloader
   implements Handler.Callback
@@ -36,18 +36,18 @@ public class BidDownloader
   public static BidDownloader.WifiListener a;
   public static ArrayList<BidDownloader> a;
   public static HashMap<String, Integer> a;
-  public static mzs a;
-  public static mzt a;
+  public static mzp a;
+  public static mzq a;
   public static String d;
   public static boolean g;
   public int a;
   public Handler a;
   public String a;
-  public mzb a;
+  public myy a;
   public boolean a;
   public int b;
   public String b;
-  public mzb b;
+  public myy b;
   public boolean b;
   public int c;
   public String c;
@@ -59,12 +59,12 @@ public class BidDownloader
   
   static
   {
-    jdField_a_of_type_Mzt = new nau();
-    jdField_a_of_type_Mzs = new mzv();
+    jdField_a_of_type_Mzq = new nar();
+    jdField_a_of_type_Mzp = new mzs();
     jdField_d_of_type_JavaLangString = "BidDownloader";
   }
   
-  public BidDownloader(String paramString, AppRuntime paramAppRuntime, mzb parammzb, boolean paramBoolean, int paramInt)
+  public BidDownloader(String paramString, AppRuntime paramAppRuntime, myy parammyy, boolean paramBoolean, int paramInt)
   {
     this.jdField_a_of_type_Boolean = true;
     if (TextUtils.isEmpty(paramString)) {
@@ -76,14 +76,14 @@ public class BidDownloader
       jdField_a_of_type_JavaUtilHashMap = new HashMap();
       jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader$WifiListener = new BidDownloader.WifiListener();
     }
-    this.jdField_a_of_type_Mzb = parammzb;
+    this.jdField_a_of_type_Myy = parammyy;
     jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramInt == 1)
     {
       this.jdField_b_of_type_Boolean = true;
-      paramString = mzk.b(this.jdField_a_of_type_JavaLangString);
+      paramString = mzh.b(this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(paramString))
       {
         if (!this.e) {
@@ -293,8 +293,8 @@ public class BidDownloader
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Mzb != null) {
-      this.jdField_a_of_type_Mzb.loaded(null, paramInt1);
+    if (this.jdField_a_of_type_Myy != null) {
+      this.jdField_a_of_type_Myy.loaded(null, paramInt1);
     }
   }
   
@@ -346,7 +346,7 @@ public class BidDownloader
         } while ((jdField_a_of_type_JavaUtilArrayList == null) || (jdField_a_of_type_JavaUtilArrayList.isEmpty()));
         paramString = (BidDownloader)jdField_a_of_type_JavaUtilArrayList.get(0);
       } while (jdField_a_of_type_AndroidContentContext == null);
-      if ((paramString.f) && (nar.a(jdField_a_of_type_AndroidContentContext) != 1) && (!g))
+      if ((paramString.f) && (nao.a(jdField_a_of_type_AndroidContentContext) != 1) && (!g))
       {
         paramString = new IntentFilter();
         paramString.addAction("android.net.conn.CONNECTIVITY_CHANGE");
@@ -384,10 +384,10 @@ public class BidDownloader
     } while (!QLog.isColorLevel());
     QLog.i(jdField_d_of_type_JavaLangString, 2, jdField_a_of_type_JavaUtilHashMap + "," + this.jdField_a_of_type_JavaLangString + "add to queue");
     return;
-    mze.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
+    mzb.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
     b();
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_d_of_type_JavaLangString, 2, this.jdField_a_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_Mzb);
+      QLog.i(jdField_d_of_type_JavaLangString, 2, this.jdField_a_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_Myy);
     }
     a(this.jdField_a_of_type_JavaLangString);
   }
@@ -414,14 +414,14 @@ public class BidDownloader
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       return false;
     }
-    this.jdField_b_of_type_Mzb = new mzd(this, l);
+    this.jdField_b_of_type_Myy = new mza(this, l);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     return true;
   }
   
   public void b()
   {
-    jdField_a_of_type_Mzt.c(new BidDownloader.2(this));
+    jdField_a_of_type_Mzq.c(new BidDownloader.2(this));
   }
   
   public boolean b()
@@ -443,7 +443,7 @@ public class BidDownloader
       {
         return bool2;
         bool2 = bool1;
-        if (!TextUtils.isEmpty(mzk.b(str1)))
+        if (!TextUtils.isEmpty(mzh.b(str1)))
         {
           localObject1 = new File(str4);
           if (((File)localObject1).exists()) {
@@ -470,16 +470,16 @@ public class BidDownloader
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       if (((String)localObject2).equals("zip"))
       {
-        i = nay.a(str4, str3);
+        i = nav.a(str4, str3);
         label229:
         if (QLog.isColorLevel()) {
           QLog.i(jdField_d_of_type_JavaLangString, 2, "now delete original download offline zip, path: " + str4);
         }
-        nax.b(str4);
+        nau.b(str4);
         if (i <= 0) {
           break label470;
         }
-        mze.a(str2, 13, 0L, i, "lixian_update", "0");
+        mzb.a(str2, 13, 0L, i, "lixian_update", "0");
         bool1 = bool3;
         if (QLog.isColorLevel())
         {
@@ -491,7 +491,7 @@ public class BidDownloader
     label691:
     for (;;)
     {
-      nax.a(str3);
+      nau.a(str3);
       bool2 = bool1;
       if (!QLog.isColorLevel()) {
         break;
@@ -506,7 +506,7 @@ public class BidDownloader
         QLog.w(jdField_d_of_type_JavaLangString, 1, "can not recognize download compress file format, " + this.jdField_b_of_type_JavaLangString);
         if (this.jdField_d_of_type_Boolean)
         {
-          i = nay.a(str4, str3);
+          i = nav.a(str4, str3);
           break label229;
         }
         if (this.e)
@@ -525,19 +525,19 @@ public class BidDownloader
             bool2 = ((File)localObject2).renameTo(new File((String)localObject1));
             bool1 = bool2;
             if (!bool2) {
-              bool1 = bbdj.b(str4, (String)localObject1);
+              bool1 = bbdx.b(str4, (String)localObject1);
             }
             if (!bool1)
             {
-              mze.a(str2, 13, 0L, i, "lixian_update", "0");
+              mzb.a(str2, 13, 0L, i, "lixian_update", "0");
               bool1 = false;
               break label691;
             }
-            mze.a(str2, 13, 0L, i, "lixian_time", "0");
+            mzb.a(str2, 13, 0L, i, "lixian_time", "0");
             bool1 = true;
             break label691;
           }
-          mze.a(str2, 13, 0L, i, "lixian_update", "0");
+          mzb.a(str2, 13, 0L, i, "lixian_update", "0");
           bool1 = bool3;
           continue;
         }
@@ -556,7 +556,7 @@ public class BidDownloader
       }
       return;
     }
-    jdField_a_of_type_Mzt.c(new BidDownloader.4(this));
+    jdField_a_of_type_Mzq.c(new BidDownloader.4(this));
   }
   
   public boolean handleMessage(Message paramMessage)

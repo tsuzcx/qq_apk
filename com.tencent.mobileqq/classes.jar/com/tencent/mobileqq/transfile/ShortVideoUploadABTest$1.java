@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import ayvb;
+import ayvd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -12,7 +12,7 @@ public final class ShortVideoUploadABTest$1
   
   public void run()
   {
-    ayvb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+    ayvd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
   }
 }
 

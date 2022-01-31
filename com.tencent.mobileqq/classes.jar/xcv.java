@@ -1,118 +1,23 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.troopgift.GridListViewPager;
-import com.tencent.biz.troopgift.RadioViewPager;
+import android.view.View.OnClickListener;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class xcv
-  extends baks
+  implements View.OnClickListener
 {
-  public xcv(TroopGiftPanel paramTroopGiftPanel, xdk paramxdk) {}
+  public xcv(TroopGiftPanel paramTroopGiftPanel, xch paramxch) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.d("TroopGiftPanel", 1, "getPackGiftStorage, onError: errorCode = " + paramInt + ", errorMsg = " + paramString);
-    if (this.jdField_a_of_type_Xdk != null) {
-      this.jdField_a_of_type_Xdk.a(paramInt);
-    }
-  }
-  
-  public void a(List<bale> paramList, xch paramxch)
-  {
-    boolean bool2 = true;
-    QLog.d("TroopGiftPanel", 1, "getPackGiftStorage, onGetPackageGiftList giveGifts.size=" + paramList.size());
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf == null) {
-      return;
-    }
-    boolean bool1;
-    label170:
-    int i;
-    if (this.jdField_a_of_type_Xdk != null)
-    {
-      this.jdField_a_of_type_Xdk.a(paramList, paramxch);
-      if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d] instanceof RadioViewPager))
-      {
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.a != null)
-        {
-          ((RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d]).setEmptyInfo(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.a.b);
-          paramList = (RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d];
-          if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.a.jdField_a_of_type_Int != 1) {
-            break label412;
-          }
-          bool1 = true;
-          paramList.setIsShowJumpInfo(bool1, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.a.c, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext);
-        }
-        if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.e == null) || (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.e.size() <= 0)) {
-          break label418;
-        }
-        i = 1;
-        label227:
-        paramList = (RadioViewPager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfAndroidViewView[TroopGiftPanel.d];
-        if (i != 0) {
-          break label423;
-        }
-        bool1 = true;
-        label249:
-        paramList.setIsListEmpty(bool1);
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d())
-        {
-          paramList = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.i;
-          if (i == 0) {
-            break label429;
-          }
-          i = 0;
-          label279:
-          paramList.setVisibility(i);
-        }
-      }
+    if (this.jdField_a_of_type_Xch.jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Xch.c);
     }
     for (;;)
     {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d] != null)
-        {
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d].setData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.e);
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[TroopGiftPanel.d].a();
-        }
-        if (!this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d()) {
-          break label440;
-        }
-        paramList = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel;
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.f)) || (!TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel))) {
-          break label434;
-        }
-        bool1 = bool2;
-        paramList.setSendGiftBtnEnabled(bool1);
-        return;
-      }
-      catch (Exception paramList)
-      {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.b(paramList);
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_Xcf.a(paramxch);
-      break;
-      label412:
-      bool1 = false;
-      break label170;
-      label418:
-      i = 0;
-      break label227;
-      label423:
-      bool1 = false;
-      break label249;
-      label429:
-      i = 4;
-      break label279;
-      label434:
-      bool1 = false;
+      axqy.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Xch.jdField_a_of_type_JavaLangString);
+      return;
+      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Xch.c);
     }
-    label440:
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setSendGiftBtnEnabled(TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel));
   }
 }
 

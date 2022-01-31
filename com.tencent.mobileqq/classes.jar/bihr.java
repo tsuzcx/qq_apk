@@ -1,261 +1,231 @@
-import android.graphics.Bitmap;
-import android.graphics.PointF;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import cooperation.qzone.QzonePluginProxyActivity;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.mode.CaptureModeController;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import java.util.ArrayList;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class bihr
+  extends QIMEffectCameraCaptureUnit
 {
-  /* Error */
-  public static Bitmap a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  private boolean a;
+  private int d;
+  private String l;
+  
+  public bihr(bjrl parambjrl, bjrk parambjrk)
   {
-    // Byte code:
-    //   0: iload_1
-    //   1: iload_2
-    //   2: getstatic 16	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   5: invokestatic 22	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   8: astore 4
-    //   10: aload 4
-    //   12: iload_3
-    //   13: invokevirtual 26	android/graphics/Bitmap:setPremultiplied	(Z)V
-    //   16: new 28	java/io/File
-    //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 32	java/io/File:<init>	(Ljava/lang/String;)V
-    //   24: invokestatic 35	bihr:a	(Ljava/io/File;)[B
-    //   27: astore_0
-    //   28: aload 4
-    //   30: invokevirtual 39	android/graphics/Bitmap:getWidth	()I
-    //   33: aload 4
-    //   35: invokevirtual 42	android/graphics/Bitmap:getHeight	()I
-    //   38: imul
-    //   39: iconst_4
-    //   40: imul
-    //   41: invokestatic 48	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   44: astore 5
-    //   46: aload 5
-    //   48: aload_0
-    //   49: invokevirtual 52	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
-    //   52: pop
-    //   53: aload 5
-    //   55: iconst_0
-    //   56: invokevirtual 56	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   59: pop
-    //   60: aload 4
-    //   62: aload 5
-    //   64: invokevirtual 60	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
-    //   67: aload 4
-    //   69: areturn
-    //   70: astore_0
-    //   71: aconst_null
-    //   72: astore 4
-    //   74: ldc 62
-    //   76: iconst_4
-    //   77: new 64	java/lang/StringBuilder
-    //   80: dup
-    //   81: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   84: ldc 69
-    //   86: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: aload_0
-    //   90: invokevirtual 77	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   93: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   102: aload 4
-    //   104: areturn
-    //   105: astore_0
-    //   106: aconst_null
-    //   107: astore 4
-    //   109: ldc 62
-    //   111: iconst_4
-    //   112: ldc 88
-    //   114: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   117: aload 4
-    //   119: areturn
-    //   120: astore_0
-    //   121: goto -12 -> 109
-    //   124: astore_0
-    //   125: goto -51 -> 74
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	128	0	paramString	String
-    //   0	128	1	paramInt1	int
-    //   0	128	2	paramInt2	int
-    //   0	128	3	paramBoolean	boolean
-    //   8	110	4	localBitmap	Bitmap
-    //   44	19	5	localByteBuffer	ByteBuffer
-    // Exception table:
-    //   from	to	target	type
-    //   0	10	70	java/lang/Exception
-    //   0	10	105	java/lang/OutOfMemoryError
-    //   10	67	120	java/lang/OutOfMemoryError
-    //   10	67	124	java/lang/Exception
+    super(parambjrl, parambjrk);
+    this.jdField_a_of_type_Bjrd = new bjrd(10004, 8, 2);
+    this.jdField_a_of_type_Int = 6;
   }
   
-  private static PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
+  private void b(Activity paramActivity)
   {
-    return new PointF((paramPointF1.x * paramPointF3.x + paramPointF1.y * paramPointF3.y - paramPointF1.x * paramPointF2.x - paramPointF1.y * paramPointF2.y) / (paramPointF1.x * paramPointF1.x + paramPointF1.y * paramPointF1.y), (paramPointF1.x * paramPointF3.y - paramPointF1.y * paramPointF3.x - paramPointF1.x * paramPointF2.y + paramPointF1.y * paramPointF2.x) / (paramPointF1.x * paramPointF1.x + paramPointF1.y * paramPointF1.y));
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("newflag", true);
+    localIntent.putExtra("refer", "schemeActiveFeeds");
+    QzonePluginProxyActivity.a(localIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
+    localIntent.addFlags(805306368);
+    bgyp.c(paramActivity, localAppRuntime.getAccount(), localIntent, -1);
   }
   
-  public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public int a()
   {
-    try
-    {
-      BitmapUtils.saveBitmap2PNG(a(paramString1, paramInt1, paramInt2, false), paramString2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-      QLog.d("Util", 4, "saveBitmapRawBytesToFile exception, msg = " + paramString1.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramString1)
-    {
-      paramString1.printStackTrace();
-      QLog.d("Util", 4, "saveBitmapRawBytesToFile error, msg = " + paramString1.getMessage());
-    }
+    return 2131560546;
   }
   
-  public static void a(String paramString, Bitmap paramBitmap)
+  public View a()
   {
-    try
-    {
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(paramBitmap.getWidth() * paramBitmap.getHeight() * 4);
-      paramBitmap.copyPixelsToBuffer(localByteBuffer);
-      paramString = new File(paramString);
-      if (!paramString.exists()) {
-        paramString.createNewFile();
-      }
-      paramString = new FileOutputStream(paramString);
-      paramString.write(localByteBuffer.array());
-      paramString.flush();
-      paramString.close();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      QLog.d("Util", 4, "saveBitmapRawBytesToFile exception, msg = " + paramString.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      paramString.printStackTrace();
-      QLog.d("Util", 4, "saveBitmapRawBytesToFile error, msg = " + paramString.getMessage());
-    }
+    View localView = super.a();
+    this.b.setOnClickListener(this);
+    this.b.setVisibility(0);
+    return localView;
   }
   
-  public static boolean a(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
+  protected List<View> a()
   {
-    PointF localPointF2 = new PointF(((PointF)paramList.get(53)).x - ((PointF)paramList.get(43)).x, ((PointF)paramList.get(53)).y - ((PointF)paramList.get(43)).y);
-    float f1 = ((PointF)paramList.get(53)).x;
-    float f2 = ((PointF)paramList.get(43)).x;
-    float f3 = ((PointF)paramList.get(53)).y;
-    PointF localPointF1 = new PointF(0.5F * (f2 + f1), (((PointF)paramList.get(43)).y + f3) * 0.5F);
-    if ((localPointF2.x < 0.01D) && (localPointF2.y < 0.01D)) {
-      return false;
-    }
-    f2 = 99999.0F;
-    float f4 = 0.0F;
-    f3 = 99999.0F;
-    f1 = 0.0F;
-    int i = 0;
-    PointF localPointF3;
-    if (i < 83)
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.b);
+    return localArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    Activity localActivity;
+    Object localObject2;
+    Object localObject1;
+    switch (paramInt1)
     {
-      localPointF3 = a(localPointF2, localPointF1, new PointF(((PointF)paramList.get(i)).x, ((PointF)paramList.get(i)).y));
-      if (localPointF3.y >= f2) {
-        break label736;
-      }
-      f2 = localPointF3.y;
+    default: 
+    case 10004: 
+      do
+      {
+        do
+        {
+          return;
+        } while (paramInt2 != -1);
+        localActivity = this.jdField_a_of_type_Bjrl.a();
+        paramInt1 = paramIntent.getIntExtra("forward_to_someplace_from_shoot_quick", 0);
+        if (paramInt1 != 1002) {
+          break;
+        }
+        b(localActivity);
+        localObject2 = paramIntent.getStringExtra("forward_source_to_qzone");
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label570;
+        }
+        localObject1 = paramIntent.getStringExtra("set_user_callback");
+      } while (localObject1 == null);
     }
-    label736:
     for (;;)
     {
-      if (localPointF3.y > f4) {
-        f4 = localPointF3.y;
-      }
-      for (;;)
-      {
-        if (localPointF3.x < f3) {
-          f3 = localPointF3.x;
-        }
-        for (;;)
-        {
-          if (localPointF3.x > f1) {
-            f1 = localPointF3.x;
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            paramList = b(localPointF2, localPointF1, new PointF((f3 + f1) * 0.5F, (f2 + f4) * 0.5F));
-            f1 = Math.max(f1 - f3, f4 - f2);
-            localPointF3 = b(localPointF2, localPointF1, new PointF(0.5F * f1, 0.0F));
-            localPointF3 = new PointF(localPointF3.x - localPointF1.x, localPointF3.y - localPointF1.y);
-            localPointF2 = b(localPointF2, localPointF1, new PointF(0.0F, f1 * 0.5F));
-            localPointF1 = new PointF(localPointF2.x - localPointF1.x, localPointF2.y - localPointF1.y);
-            paramList = new PointF(paramList.x, paramList.y);
-            localPointF2 = new PointF(localPointF3.x, localPointF3.y);
-            localPointF1 = new PointF(localPointF1.x, localPointF1.y);
-            paramArrayOfFloat[0] = ((paramList.x - localPointF2.x + localPointF1.x) / paramInt1);
-            paramArrayOfFloat[1] = (1.0F - (paramList.y - localPointF2.y + localPointF1.y) / paramInt2);
-            paramArrayOfFloat[2] = ((paramList.x - localPointF2.x - localPointF1.x) / paramInt1);
-            paramArrayOfFloat[3] = (1.0F - (paramList.y - localPointF2.y - localPointF1.y) / paramInt2);
-            paramArrayOfFloat[4] = ((paramList.x + localPointF2.x - localPointF1.x) / paramInt1);
-            paramArrayOfFloat[5] = (1.0F - (paramList.y + localPointF2.y - localPointF1.y) / paramInt2);
-            paramArrayOfFloat[6] = ((paramList.x + localPointF2.x + localPointF1.x) / paramInt1);
-            f1 = paramList.y;
-            paramArrayOfFloat[7] = (1.0F - (localPointF2.y + f1 + localPointF1.y) / paramInt2);
-            return true;
-          }
-        }
-      }
-    }
-  }
-  
-  private static byte[] a(File paramFile)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream;
-    if (paramFile.isFile()) {
+      boolean bool;
       try
       {
-        paramFile = new FileInputStream(paramFile);
-        byte[] arrayOfByte = new byte[1024];
-        localByteArrayOutputStream = new ByteArrayOutputStream();
-        for (;;)
+        localObject1 = Class.forName((String)localObject1).newInstance();
+        if (!(localObject1 instanceof ahua)) {
+          break label564;
+        }
+        localObject1 = (ahua)localObject1;
+        ((ahua)localObject1).c_((String)localObject2);
+        localObject2 = paramIntent.getStringExtra("key_content");
+        bool = paramIntent.getBooleanExtra("forward_to_qzone_to_enable_edit", false);
+        biig.a(this.jdField_a_of_type_Bjrl.a(), paramIntent, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_Bjrk, null, (ahua)localObject1, (String)localObject2, 1, null, bool, null, false);
+        localActivity.finish();
+        if (this.jdField_a_of_type_Bjao != null)
         {
-          int i = paramFile.read(arrayOfByte);
-          if (i == -1) {
+          this.jdField_a_of_type_Bjao.l();
+          this.jdField_a_of_type_Bjao.n();
+        }
+        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject2 = null;
+        localObject1 = localObject2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QIMQuickShootEffectCameraCaptureUnit", 2, "initComponentParamData:exp =" + localThrowable);
+        localObject1 = localObject2;
+        continue;
+      }
+      if (paramInt1 == 1003)
+      {
+        paramIntent = ((PublishParam)paramIntent.getParcelableExtra(PublishParam.a)).c;
+        localObject1 = new Intent(localActivity, QQStoryMainActivity.class);
+        ((Intent)localObject1).putExtra("new_video_extra_info", paramIntent);
+        localActivity.startActivity((Intent)localObject1);
+        localActivity.finish();
+      }
+      else
+      {
+        biig.a(this.jdField_a_of_type_Bjrl.a(), paramIntent, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_Bjrk, new bihs(this, localActivity, paramIntent));
+        continue;
+        if ((paramInt2 == -1) && (paramIntent != null))
+        {
+          localObject1 = this.jdField_a_of_type_Bjrl.a();
+          paramInt1 = paramIntent.getIntExtra("forward_to_someplace_from_shoot_quick", 0);
+          if (paramInt1 == 1002)
+          {
+            b((Activity)localObject1);
+            paramIntent.putExtra("open_leba_tab_fragment", true);
+            ((Activity)localObject1).setResult(-1, paramIntent);
+            ((Activity)localObject1).finish();
+            return;
+          }
+          if (paramInt1 != 1003) {
             break;
           }
-          localByteArrayOutputStream.write(arrayOfByte, 0, i);
+          paramIntent = ((PublishParam)paramIntent.getParcelableExtra(PublishParam.a)).c;
+          localObject2 = new Intent((Context)localObject1, QQStoryMainActivity.class);
+          ((Intent)localObject2).putExtra("new_video_extra_info", paramIntent);
+          ((Activity)localObject1).startActivity((Intent)localObject2);
+          ((Activity)localObject1).finish();
+          return;
         }
-        return null;
+        if (paramInt2 != 0) {
+          break;
+        }
+        bool = false;
+        if (paramIntent != null) {
+          bool = paramIntent.getBooleanExtra("mark_from_artfilter_bridge_activity", false);
+        }
+        if ((bool) || (paramIntent != null) || (!(this.jdField_a_of_type_Bjrl.a() instanceof SplashActivity))) {
+          break;
+        }
+        if (this.jdField_a_of_type_Bjao != null)
+        {
+          this.jdField_a_of_type_Bjao.l();
+          this.jdField_a_of_type_Bjao.n();
+        }
+        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
+        return;
+        label564:
+        localObject1 = null;
+        continue;
+        label570:
+        localObject1 = null;
       }
-      catch (IOException paramFile)
-      {
-        paramFile.printStackTrace();
-      }
-    }
-    for (;;)
-    {
-      paramFile = localByteArrayOutputStream.toByteArray();
-      return paramFile;
-      QLog.d("Util", 4, "file not found, path = " + paramFile.getAbsolutePath());
     }
   }
   
-  private static PointF b(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
+  public void a(avuo paramavuo)
   {
-    return new PointF(paramPointF2.x + paramPointF3.x * paramPointF1.x - paramPointF3.y * paramPointF1.y, paramPointF2.y + paramPointF3.x * paramPointF1.y + paramPointF3.y * paramPointF1.x);
+    super.a(paramavuo);
+    bjre localbjre = new bjrg(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a()).a(2).b(101).a();
+    this.jdField_a_of_type_Bjrd.a(localbjre);
+    bkvh.a(this.jdField_a_of_type_Bjrl.a(), paramavuo, this.jdField_a_of_type_Bjrd, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
+  {
+    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
+    bjrh localbjrh = new bjrj().a(101).b(2).a();
+    this.jdField_a_of_type_Bjrd.a(localbjrh);
+    a(paramLocalMediaInfo);
+    bkvh.a(this.jdField_a_of_type_Bjrl.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_Bjrd, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+  }
+  
+  public void h()
+  {
+    super.h();
+    this.b.setVisibility(8);
+  }
+  
+  public void n()
+  {
+    super.n();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, this.d, this.l);
+    }
+  }
+  
+  public void o()
+  {
+    Bundle localBundle = this.jdField_a_of_type_Bjrl.a().getIntent().getExtras();
+    this.jdField_a_of_type_Boolean = localBundle.getBoolean("ARG_UNFOLD_DD", false);
+    this.d = localBundle.getInt("ARG_DD_CATEGORY_ID");
+    this.l = localBundle.getString("ARG_DD_ITEM_ID");
   }
 }
 

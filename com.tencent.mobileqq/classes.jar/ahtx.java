@@ -1,26 +1,49 @@
-import android.view.View;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ahtx
-  implements bfoq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ahtx(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  float jdField_a_of_type_Float;
   
-  public void OnClick(View paramView, int paramInt)
+  public ahtx(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return super.onDown(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.j)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    if (Math.abs(f) > this.jdField_a_of_type_Float)
     {
-    default: 
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
+      return true;
     }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    ahub.b("", "0X800656F", "0");
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

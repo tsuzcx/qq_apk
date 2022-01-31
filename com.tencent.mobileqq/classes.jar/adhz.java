@@ -1,36 +1,21 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 class adhz
-  implements InputFilter
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  adhz(adhy paramadhy) {}
+  adhz(adhw paramadhw) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onGlobalLayout()
   {
-    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!axmv.b()))
     {
-      adhy.a(this.a);
-      return "";
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      return;
     }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
-      {
-        adhy.a(this.a);
-        return "";
-      }
-    }
-    adhy.a(this.a);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
   }
 }
 

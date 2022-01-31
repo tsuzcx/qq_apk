@@ -1,202 +1,101 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.DrawerPushItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.game.ApolloGameConfig.1;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class aixr
-  extends aixl
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static boolean d;
-  long a;
-  public DrawerPushItem a;
-  int b;
-  int c;
+  static {}
   
-  public aixr(QQAppInterface paramQQAppInterface, DrawerPushItem paramDrawerPushItem)
+  public static int a(String paramString)
   {
-    super(paramQQAppInterface);
-    this.jdField_c_of_type_Int = 7;
-    this.jdField_a_of_type_Int = paramDrawerPushItem.priority;
-    jdField_a_of_type_JavaLangString = paramDrawerPushItem.content;
-    this.jdField_b_of_type_Int = paramDrawerPushItem.action_id;
-    jdField_b_of_type_JavaLangString = paramDrawerPushItem.ext_url;
-    jdField_d_of_type_JavaLangString = paramDrawerPushItem.msg_id;
-    jdField_c_of_type_JavaLangString = paramDrawerPushItem.tips_str;
-    if (paramDrawerPushItem.bubble_res_id == 32) {
-      this.jdField_c_of_type_Int = 7;
+    int i = -1;
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt(paramString, -1);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem = paramDrawerPushItem;
-      return;
-      if (paramDrawerPushItem.bubble_res_id == 33) {
-        this.jdField_c_of_type_Int = 6;
-      } else {
-        this.jdField_c_of_type_Int = 9;
-      }
-    }
+    return i;
   }
   
-  public int a(ajfs paramajfs, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  public static int a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum >= this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts)) {
-      return super.a(paramajfs, paramInt, paramAppInterface, paramContext);
-    }
-    int i;
-    boolean bool;
-    if (this.jdField_b_of_type_Int > ajmu.jdField_a_of_type_Int)
+    int j = -1;
+    if (paramQQAppInterface != null)
     {
-      i = 3;
-      bool = ApolloUtil.c(5, this.jdField_b_of_type_Int);
-      if (this.jdField_b_of_type_Int <= 0) {
-        break label225;
+      paramQQAppInterface = (airx)paramQQAppInterface.getManager(153);
+      int i;
+      if ("aio.city.game".equals(paramString))
+      {
+        i = j;
+        if (paramQQAppInterface != null)
+        {
+          if (!paramQQAppInterface.d) {
+            break label45;
+          }
+          i = aixs.d;
+        }
       }
-      if (!bool) {
-        break label172;
-      }
-      paramAppInterface = new ApolloActionData();
-      paramAppInterface.actionId = this.jdField_b_of_type_Int;
-      paramAppInterface.actionType = 0;
-      paramInt = 6;
-      ajfj.a(paramajfs, 6, paramAppInterface);
+      label45:
+      do
+      {
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              return i;
+              i = -1;
+            }
+            i = j;
+          } while (!"drawer.game".equals(paramString));
+          i = j;
+        } while (paramQQAppInterface == null);
+        i = j;
+      } while (!paramQQAppInterface.e);
+      return aixs.b;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AplloDrawerStatus", 2, new Object[] { "PushDrawerStatus onExecAction:", Integer.valueOf(this.jdField_b_of_type_Int), ",rscType:", Integer.valueOf(paramInt), ",isRscDone:", Boolean.valueOf(bool) });
-      }
-      return 0;
-      i = 2;
-      break;
-      label172:
-      super.a(paramajfs, i, paramInt, paramAppInterface, paramContext);
-      ajhw.a(paramAppInterface, ApolloUtil.c(this.jdField_b_of_type_Int) + "/d.zip", ApolloUtil.d(this.jdField_b_of_type_Int));
-      paramInt = 0;
-      continue;
-      label225:
-      super.a(paramajfs, i, paramInt, paramAppInterface, paramContext);
-      paramInt = 0;
-    }
+    QLog.e("ApolloGameConfig", 1, "app is null");
+    return -1;
   }
   
-  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface)
+  public static String a(String paramString)
   {
-    a(paramQQAppInterface, paramContext);
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, "");
+    }
+    return "";
   }
   
-  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public static void a()
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum >= this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts))
-    {
-      jdField_d_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      if (QLog.isColorLevel()) {
-        QLog.i("AplloDrawerStatus", 2, "ShowCount Max:" + this.jdField_a_of_type_Boolean);
-      }
-      return;
-    }
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot == 0)
-    {
-      bool = true;
-      jdField_d_of_type_Boolean = bool;
-      this.jdField_b_of_type_Boolean = true;
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        ajfj.a(paramajfs, jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.bubble_res_id);
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramajfs = (airz)paramQQAppInterface.getManager(153);
-      paramContext = jdField_d_of_type_JavaLangString;
-      if (!paramajfs.jdField_d_of_type_Boolean) {
-        break label202;
-      }
-    }
-    label202:
-    for (paramInt = 0;; paramInt = 1)
-    {
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "drawer_avatar_RedDotShow", 0, 0, new String[] { paramContext, String.valueOf(paramInt), this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.act_id });
-      return;
-      bool = false;
-      break;
-    }
+    ThreadManager.post(new ApolloGameConfig.1(), 8, null, true);
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public static boolean a(String paramString, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {}
-    do
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null)
     {
-      return;
-      airz localairz = (airz)paramQQAppInterface.getManager(153);
-      if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot != 1) {
-        localairz.a(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum = this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts;
-    } while (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot != 1);
-    ((avpq)paramQQAppInterface.getManager(36)).b(String.valueOf("103100.103200"));
+      localSharedPreferences.edit().putInt(paramString, paramInt).apply();
+      return true;
+    }
+    return false;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ajfs paramajfs)
+  public static boolean a(String paramString1, String paramString2)
   {
-    super.a(paramQQAppInterface, paramajfs);
-    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_Long == 0L)) {}
-    do
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null)
     {
-      return;
-      jdField_d_of_type_Boolean = false;
-    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1000L);
-    a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface);
-    paramajfs = this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem;
-    paramajfs.show_sum += 1;
-    paramQQAppInterface = (airz)paramQQAppInterface.getManager(153);
-    if ((this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum >= this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts) && (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot != 1))
-    {
-      paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-      return;
+      localSharedPreferences.edit().putString(paramString1, paramString2).apply();
+      return true;
     }
-    paramQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {
-      return;
-    }
-    a(paramQQAppInterface);
-    airz localairz = (airz)paramQQAppInterface.getManager(153);
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.reddotGameId > 0)
-    {
-      QLog.d("AplloDrawerStatus", 1, "onBubbleClick play game id:" + this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.reddotGameId);
-      ApolloGameUtil.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.reddotGameId, 0L, 0, null, 323, null);
-      paramContext = jdField_d_of_type_JavaLangString;
-      if (!localairz.jdField_d_of_type_Boolean) {
-        break label168;
-      }
-    }
-    label168:
-    for (int i = 0;; i = 1)
-    {
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "drawer_avatar_RedDotClear", 0, 0, new String[] { paramContext, String.valueOf(i), this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.act_id });
-      return;
-      localairz.a(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.scheme, this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.ext_url, "drawer");
-      break;
-    }
-  }
-  
-  public void b(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface, paramContext);
+    return false;
   }
 }
 

@@ -1,54 +1,46 @@
 import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONObject;
 
-public class bewx
+class bewx
+  implements AsyncResult
 {
-  public static JSONObject a(String paramString)
-  {
-    int i = 0;
-    localJSONObject = new JSONObject();
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        int j = paramString.indexOf("?");
-        String str = paramString;
-        if (j > -1)
-        {
-          str = paramString;
-          if (paramString.length() > j + 1) {
-            str = paramString.substring(j + 1);
-          }
-        }
-        paramString = str.split("&");
-        if ((paramString != null) && (paramString.length > 0))
-        {
-          j = paramString.length;
-          while (i < j)
-          {
-            str = paramString[i];
-            if (!TextUtils.isEmpty(str))
-            {
-              int k = str.indexOf("=");
-              if (k >= 0) {
-                localJSONObject.put(str.substring(0, k), str.substring(k + 1));
-              }
-            }
-            i += 1;
-          }
-        }
-      }
-      return localJSONObject;
-    }
-    catch (Throwable paramString)
-    {
-      besl.d("PathUtil", "getJSONQueryString exception " + paramString);
-    }
-  }
+  bewx(beww parambeww) {}
   
-  public static boolean a(String paramString)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://"));
+    if (paramBoolean)
+    {
+      long l = paramJSONObject.optLong("retCode");
+      String str = paramJSONObject.optString("errMsg");
+      betc.b("MiniAppInfoLoadTask", "getAppInfoById, retCode = " + l + ",errMsg = " + str);
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject.launchParam.a(beww.a(this.a).launchParam);
+        paramJSONObject.apkgInfo = beww.a(this.a).apkgInfo;
+        paramJSONObject.launchParam.a = paramJSONObject.appId;
+        if (!TextUtils.isEmpty(beww.a(this.a).launchParam.d)) {
+          paramJSONObject.extendData = beww.a(this.a).launchParam.d;
+        }
+        if (paramJSONObject.verType != 3) {
+          paramJSONObject.forceReroad = 3;
+        }
+        bezi.a(paramJSONObject, 1028, "main_loading", bezi.a(paramJSONObject));
+        beww.a(this.a, paramJSONObject);
+        this.a.c();
+        return;
+      }
+      bezl.a(beww.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
+      beyq.a("2launch_fail", "shotcut_request_fail", null, beww.a(this.a));
+      this.a.f();
+      return;
+    }
+    bezl.a(beww.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
+    beyq.a("2launch_fail", "shotcut_request_fail", null, beww.a(this.a));
+    this.a.f();
   }
 }
 

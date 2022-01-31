@@ -1,9 +1,17 @@
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 
-public class ndb
+public final class ndb
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt, List<SearchProtocol.WordItem> paramList) {}
+  public ndb(Handler paramHandler) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.sendEmptyMessage(-1);
+  }
 }
 
 

@@ -1,9 +1,20 @@
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import mqq.app.QQPermissionCallback;
 
 public class abnk
+  implements QQPermissionCallback
 {
-  public ResourcePluginInfo a;
-  public String a;
+  public abnk(NearbyActivity paramNearbyActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a();
+  }
 }
 
 

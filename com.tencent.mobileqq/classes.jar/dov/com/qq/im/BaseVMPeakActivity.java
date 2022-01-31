@@ -2,47 +2,47 @@ package dov.com.qq.im;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import bjmx;
-import bjmy;
-import bjnb;
-import bjoc;
-import bjok;
-import bjol;
+import bjno;
+import bjnp;
+import bjns;
+import bjot;
+import bjpb;
+import bjpc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseVMPeakActivity
   extends PeakActivity
-  implements bjnb, bjol
+  implements bjns, bjpc
 {
-  private bjoc jdField_a_of_type_Bjoc = new bjoc(this);
-  private bjok jdField_a_of_type_Bjok;
+  private bjot jdField_a_of_type_Bjot = new bjot(this);
+  private bjpb jdField_a_of_type_Bjpb;
   
-  public bjmx a()
+  public bjno a()
   {
-    return this.jdField_a_of_type_Bjoc;
+    return this.jdField_a_of_type_Bjot;
   }
   
   @NonNull
-  public bjok a()
+  public bjpb a()
   {
     if (BaseApplicationImpl.getApplication() == null) {
       throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
     }
-    if (this.jdField_a_of_type_Bjok == null) {
-      this.jdField_a_of_type_Bjok = new bjok();
+    if (this.jdField_a_of_type_Bjpb == null) {
+      this.jdField_a_of_type_Bjpb = new bjpb();
     }
-    return this.jdField_a_of_type_Bjok;
+    return this.jdField_a_of_type_Bjpb;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bjoc = new bjoc(this);
+    this.jdField_a_of_type_Bjot = new bjot(this);
     try
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.a);
+      this.jdField_a_of_type_Bjot.a(bjnp.a);
       return;
     }
     catch (Throwable paramBundle)
@@ -56,9 +56,9 @@ public class BaseVMPeakActivity
     super.onDestroy();
     try
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.f);
-      if ((this.jdField_a_of_type_Bjok != null) && (!isChangingConfigurations())) {
-        this.jdField_a_of_type_Bjok.a();
+      this.jdField_a_of_type_Bjot.a(bjnp.f);
+      if ((this.jdField_a_of_type_Bjpb != null) && (!isChangingConfigurations())) {
+        this.jdField_a_of_type_Bjpb.a();
       }
       return;
     }
@@ -76,7 +76,7 @@ public class BaseVMPeakActivity
     super.onPause();
     try
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.d);
+      this.jdField_a_of_type_Bjot.a(bjnp.d);
       return;
     }
     catch (Throwable localThrowable)
@@ -90,7 +90,7 @@ public class BaseVMPeakActivity
     super.onResume();
     try
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.c);
+      this.jdField_a_of_type_Bjot.a(bjnp.c);
       return;
     }
     catch (Throwable localThrowable)
@@ -104,7 +104,7 @@ public class BaseVMPeakActivity
     super.onStart();
     try
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.b);
+      this.jdField_a_of_type_Bjot.a(bjnp.b);
       return;
     }
     catch (Throwable localThrowable)
@@ -118,7 +118,7 @@ public class BaseVMPeakActivity
     super.onStop();
     try
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.e);
+      this.jdField_a_of_type_Bjot.a(bjnp.e);
       return;
     }
     catch (Throwable localThrowable)

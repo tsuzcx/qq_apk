@@ -1,25 +1,35 @@
-import android.view.View;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class mxb
-  implements bfpc
+public class mxb
+  implements TextWatcher
 {
-  mxb(mxa parammxa, PoiMapActivity paramPoiMapActivity) {}
+  public mxb(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Mxa.a(paramInt, true);
-    int i = this.jdField_a_of_type_Mxa.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
-    paramInt = 0;
-    while (paramInt < i)
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      if (this.jdField_a_of_type_Mxa.e != paramInt) {
-        this.jdField_a_of_type_Mxa.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
-      }
-      paramInt += 1;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_Mxa.notifyDataSetChanged();
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

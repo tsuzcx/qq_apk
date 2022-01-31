@@ -1,25 +1,565 @@
-import android.util.Property;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.1;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.2;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.3;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.4;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.5;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.6;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SendPanelManager.7;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-class bkmp
-  extends Property<bkmo, Float>
+public class bkmp
+  implements Manager
 {
-  bkmp(bkmo parambkmo, Class paramClass, String paramString)
+  private int jdField_a_of_type_Int = 0;
+  private akru jdField_a_of_type_Akru;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bkmf jdField_a_of_type_Bkmf;
+  public volatile String a;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private List<RecentUser> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private CopyOnWriteArrayList<bkmo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  public volatile boolean a;
+  private volatile boolean b;
+  private volatile boolean c;
+  
+  private bkmp()
   {
-    super(paramClass, paramString);
+    a();
   }
   
-  public Float a(bkmo parambkmo)
+  public static bkmp a()
   {
-    if (parambkmo != null) {
-      return Float.valueOf(bkmo.a(parambkmo));
+    return bkmq.a();
+  }
+  
+  private String a(RecentUser paramRecentUser)
+  {
+    String str1 = "";
+    String str2;
+    if ((paramRecentUser == null) || (this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      str2 = "";
+      return str2;
     }
-    return Float.valueOf(0.0F);
+    switch (paramRecentUser.getType())
+    {
+    }
+    for (;;)
+    {
+      str2 = str1;
+      if (!TextUtils.isEmpty(str1)) {
+        break;
+      }
+      return paramRecentUser.displayName;
+      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramRecentUser.uin + 0);
+      continue;
+      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramRecentUser.uin + 1);
+      continue;
+      str1 = this.jdField_a_of_type_Akru.a(paramRecentUser.uin);
+      continue;
+      bjmu.a(paramRecentUser.troopUin, paramRecentUser.uin);
+      continue;
+      str1 = this.jdField_a_of_type_Akru.a(paramRecentUser.troopUin, paramRecentUser.uin);
+    }
   }
   
-  public void a(bkmo parambkmo, Float paramFloat)
+  private void a()
   {
-    if (parambkmo != null) {
-      bkmo.a(parambkmo, paramFloat.floatValue());
+    this.jdField_a_of_type_Akru = new akru();
+    this.jdField_a_of_type_Akru.a();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    bjna.a();
+  }
+  
+  private void a(bkmo parambkmo, int paramInt1, int paramInt2)
+  {
+    int i = parambkmo.jdField_b_of_type_Int;
+    if (i == 1) {
+      if ((paramInt1 == 1003) || (paramInt1 == 1007))
+      {
+        parambkmo.jdField_b_of_type_Int = 3;
+        parambkmo.jdField_c_of_type_Int = 100;
+      }
+    }
+    while ((i != 0) || ((paramInt1 != 1003) && (paramInt1 != 1007)))
+    {
+      return;
+      if ((paramInt1 == 1004) || (paramInt1 == 1005) || (paramInt1 == 1006))
+      {
+        parambkmo.jdField_b_of_type_Int = 2;
+        return;
+      }
+      parambkmo.jdField_c_of_type_Int = paramInt2;
+      return;
+    }
+    parambkmo.jdField_b_of_type_Int = 3;
+    parambkmo.jdField_c_of_type_Int = 100;
+  }
+  
+  private void a(List<RecentUser> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)paramList.next();
+        if (a(localRecentUser.getType())) {
+          this.jdField_a_of_type_JavaUtilList.add(localRecentUser);
+        }
+      }
+    }
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000);
+  }
+  
+  private void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SendPanelManager", 2, "loadPanelData");
+    }
+    if (this.jdField_a_of_type_Bkmf != null) {
+      this.jdField_a_of_type_Bkmf.c();
+    }
+    j();
+    d();
+    this.jdField_a_of_type_Int = 1;
+    try
+    {
+      ThreadManager.getFileThreadHandler().post(new SendPanelManager.1(this));
+      ThreadManager.getSubThreadHandler().post(new SendPanelManager.2(this));
+      ThreadManager.getFileThreadHandler().post(new SendPanelManager.3(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (this.jdField_a_of_type_Bkmf == null) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "loadPanelData exception = " + localException.getMessage());
+      }
+      this.jdField_a_of_type_Int = 3;
+      i();
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      while (this.jdField_a_of_type_Bkmf == null) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "loadPanelData OutOfMemoryError");
+      }
+      this.jdField_a_of_type_Int = 3;
+      i();
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("file_short_send_panel", 0).getBoolean("send_panel_animation_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), true);
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  private void e()
+  {
+    a(this.jdField_a_of_type_Akru.a(RecentUser.class, "select * from recent order by lastmsgtime desc", null));
+    f();
+    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("SendPanelManager", 2, "loadRecentUserList finish");
+    }
+    h();
+  }
+  
+  private void f()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Object localObject2 = new ArrayList();
+      Object localObject1 = new ArrayList();
+      Object localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)((Iterator)localObject3).next();
+        if (localRecentUser.showUpTime > 0L) {
+          ((List)localObject2).add(localRecentUser);
+        } else {
+          ((List)localObject1).add(localRecentUser);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (((List)localObject2).size() > 0)
+      {
+        Collections.sort((List)localObject2, new bkmh());
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (RecentUser)((Iterator)localObject2).next();
+          this.jdField_a_of_type_JavaUtilList.add(localObject3);
+        }
+      }
+      if (((List)localObject1).size() > 0)
+      {
+        Collections.sort((List)localObject1, new bkmh());
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (RecentUser)((Iterator)localObject1).next();
+          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+        }
+      }
+    }
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_Akru.a(0, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Akru.b(1, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_c_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("SendPanelManager", 2, "loadNameList finish");
+    }
+    h();
+  }
+  
+  private void h()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "conformAllData");
+      }
+      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label406;
+      }
+      localObject = new ArrayList();
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localRecentUser = (RecentUser)localIterator.next();
+        localbkmo = new bkmo();
+        localbkmo.jdField_a_of_type_JavaLangString = localRecentUser.uin;
+        localbkmo.jdField_b_of_type_JavaLangString = localRecentUser.troopUin;
+        if (localRecentUser.getType() == 1000)
+        {
+          localbkmo.jdField_c_of_type_JavaLangString = localRecentUser.displayName;
+          ((List)localObject).add(localRecentUser);
+        }
+        for (;;)
+        {
+          if (localRecentUser.getType() == 1)
+          {
+            localPair = bjmu.a(localRecentUser.uin);
+            if (localPair != null)
+            {
+              if (((Boolean)localPair.first).booleanValue())
+              {
+                if (!QLog.isColorLevel()) {
+                  break;
+                }
+                QLog.e("SendPanelManager", 2, "conformAllData troop is disband");
+                break;
+                localbkmo.jdField_c_of_type_JavaLangString = a(localRecentUser);
+                continue;
+              }
+              localbkmo.jdField_c_of_type_Boolean = ((Boolean)localPair.second).booleanValue();
+            }
+          }
+        }
+        localbkmo.jdField_a_of_type_Int = localRecentUser.getType();
+        if ((localRecentUser.getType() == 0) && (!TextUtils.isEmpty(localbkmo.jdField_a_of_type_JavaLangString)) && ((TextUtils.isEmpty(localbkmo.jdField_c_of_type_JavaLangString)) || (localbkmo.jdField_a_of_type_JavaLangString.equals(localbkmo.jdField_c_of_type_JavaLangString)))) {
+          localbkmo.jdField_c_of_type_JavaLangString = bjmu.a(localbkmo.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localbkmo);
+      }
+      if (((List)localObject).size() > 0)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          a((RecentUser)((Iterator)localObject).next());
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilList.clear();
+      }
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+      }
+      if (this.jdField_a_of_type_Bkmf != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("SendPanelManager", 2, "conformAllData onLoadFinish");
+        }
+        this.jdField_a_of_type_Int = 2;
+        i();
+      }
+    }
+    label406:
+    while (this.jdField_a_of_type_Bkmf == null)
+    {
+      Object localObject;
+      Iterator localIterator;
+      RecentUser localRecentUser;
+      bkmo localbkmo;
+      Pair localPair;
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("SendPanelManager", 2, "conformAllData onLoadFinish recentUserList is empty");
+    }
+    this.jdField_a_of_type_Int = 2;
+    i();
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_Bkmf != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.4(this));
+    }
+  }
+  
+  private void j()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    }
+  }
+  
+  public List<bkmo> a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)) {
+      return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    }
+    b();
+    return null;
+  }
+  
+  public void a(bkmf parambkmf)
+  {
+    this.jdField_a_of_type_Bkmf = parambkmf;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "updateOperateStatus uin is null");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if ((this.jdField_a_of_type_Bkmf != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0))
+      {
+        int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          bkmo localbkmo = (bkmo)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
+          if ((!TextUtils.isEmpty(localbkmo.jdField_a_of_type_JavaLangString)) && (localbkmo.jdField_a_of_type_JavaLangString.equals(paramString)) && (localbkmo.jdField_a_of_type_Int == paramInt1) && (localbkmo.jdField_b_of_type_Boolean))
+          {
+            a(localbkmo, paramInt2, paramInt3);
+            if (localbkmo.jdField_a_of_type_Long <= 0L) {
+              localbkmo.jdField_a_of_type_Long = paramLong;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("SendPanelManager", 2, "updateOperateStatus operateStatus = " + localbkmo.jdField_b_of_type_Int + " ,progress = " + localbkmo.jdField_c_of_type_Int + " ,position = " + i + ", uinseq:" + localbkmo.jdField_a_of_type_Long);
+            }
+            this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.6(this, i, localbkmo));
+            return;
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "updateFilePath fileMd5 is null");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0))
+      {
+        paramString1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        while (paramString1.hasNext()) {
+          ((bkmo)paramString1.next()).g = paramString2;
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "updateFilePath fail uin = " + paramString1 + " ,filePath = " + paramString2);
+      }
+      if (this.jdField_a_of_type_Bkmf != null) {
+        this.jdField_a_of_type_Bkmf.e();
+      }
+      return;
+    }
+    Object localObject3 = null;
+    Object localObject1 = null;
+    int i = -1;
+    int k = i;
+    Object localObject2 = localObject3;
+    int j;
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      k = i;
+      localObject2 = localObject3;
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)
+      {
+        int m = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
+        j = 0;
+        label127:
+        k = i;
+        localObject2 = localObject1;
+        if (j < m)
+        {
+          localObject2 = (bkmo)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(j);
+          ((bkmo)localObject2).e = paramString2;
+          ((bkmo)localObject2).f = paramString3;
+          ((bkmo)localObject2).jdField_a_of_type_Boolean = paramBoolean;
+          if ((TextUtils.isEmpty(((bkmo)localObject2).jdField_a_of_type_JavaLangString)) || (!((bkmo)localObject2).jdField_a_of_type_JavaLangString.equals(paramString1)) || (paramInt != ((bkmo)localObject2).jdField_a_of_type_Int)) {
+            break label381;
+          }
+          localObject1 = localObject2;
+          i = j;
+        }
+      }
+    }
+    label381:
+    for (;;)
+    {
+      j += 1;
+      break label127;
+      if (localObject2 != null)
+      {
+        ((bkmo)localObject2).jdField_b_of_type_Int = 1;
+        if (this.jdField_a_of_type_Bkmf != null) {
+          this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.7(this, k, (bkmo)localObject2));
+        }
+        if (paramBoolean) {
+          bjmu.a(((bkmo)localObject2).e, paramString3, (bkmo)localObject2, this.jdField_a_of_type_JavaLangString);
+        }
+        for (;;)
+        {
+          ((bkmo)localObject2).jdField_b_of_type_Boolean = true;
+          avtd.a((bkmo)localObject2);
+          bizt.a().a(((bkmo)localObject2).g, ((bkmo)localObject2).jdField_a_of_type_Int);
+          bjah.b("SendPanelManager", "【updateFilePath】messageType:" + ((bkmo)localObject2).jdField_a_of_type_Int);
+          a(paramString1, paramInt, ((bkmo)localObject2).g);
+          return;
+          bjmu.a(paramString2, (bkmo)localObject2, this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SendPanelManager", 2, "updateFilePath can not find sendItemInfo");
+      return;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      if (QLog.isColorLevel()) {
+        QLog.e("SendPanelManager", 2, "updateTroopMemberName uin = " + paramString1 + " ,name = " + paramString2);
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        if ((this.jdField_a_of_type_Bkmf == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() <= 0)) {
+          break;
+        }
+        int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          bkmo localbkmo = (bkmo)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
+          if ((!TextUtils.isEmpty(localbkmo.jdField_a_of_type_JavaLangString)) && (localbkmo.jdField_a_of_type_JavaLangString.equals(paramString1)) && (localbkmo.jdField_a_of_type_Int == 1000))
+          {
+            localbkmo.jdField_c_of_type_JavaLangString = paramString2;
+            if (QLog.isColorLevel()) {
+              QLog.e("SendPanelManager", 2, "updateTroopMemberName");
+            }
+            this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.5(this, i, localbkmo));
+            return;
+          }
+          i += 1;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("SendPanelManager", 2, "updateTroopMemberName exception uin = " + paramString1 + " ,name = " + paramString2);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("file_short_send_panel", 0).edit().putBoolean("send_panel_animation_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramBoolean).apply();
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SendPanelManager", 2, "onDestroy()");
+    }
+    j();
+    if (this.jdField_a_of_type_Bkmf != null)
+    {
+      this.jdField_a_of_type_Bkmf.d();
+      this.jdField_a_of_type_Bkmf = null;
     }
   }
 }

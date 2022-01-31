@@ -1,13 +1,12 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Matrix;
-
-final class wrz
-  implements TypeEvaluator<Matrix>
+public abstract interface wrz
 {
-  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
-  {
-    return null;
-  }
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

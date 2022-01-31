@@ -1,9 +1,9 @@
 package cooperation.readinjoy;
 
-import bhvh;
+import bhvy;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import noo;
+import nol;
 import org.json.JSONObject;
 
 public final class ReadInJoyHelper$5
@@ -16,8 +16,8 @@ public final class ReadInJoyHelper$5
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      bhvh.a(localJSONObject);
-      noo.a(null, this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "0X8009662", "0X8009662", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", localJSONObject.toString(), false);
+      bhvy.a(localJSONObject);
+      nol.a(null, this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "0X8009662", "0X8009662", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", localJSONObject.toString(), false);
       return;
     }
     catch (Exception localException)

@@ -1,20 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-class nkn
-  implements DialogInterface.OnCancelListener
+public class nkn
+  implements bcep
 {
-  nkn(nke paramnke, JsResult paramJsResult, Context paramContext) {}
+  public nkn(CustomWebView paramCustomWebView, nko paramnko) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(String paramString, Bundle paramBundle, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nke.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    switch (this.jdField_a_of_type_Nko.a)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nko.c, this.jdField_a_of_type_Nko.d);
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nko.b, this.jdField_a_of_type_Nko.c, this.jdField_a_of_type_Nko.d, this.jdField_a_of_type_Nko.e);
   }
 }
 

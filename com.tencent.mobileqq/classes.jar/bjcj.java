@@ -3,9 +3,8 @@ import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.CaptureSet.1;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.qq.im.capture.data.TemplateSet.1;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,38 +15,36 @@ import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class bjcj
-  extends bjbs
-  implements bjbg
+  extends bjbw
+  implements bjbx
 {
-  private final CopyOnWriteArraySet<bjbf> a;
-  float b;
-  public long b;
-  public WeakReference<Activity> b;
-  public boolean b;
-  public ArrayList<bjbf> c = new ArrayList();
+  float jdField_a_of_type_Float = 1.0F;
+  public long a;
+  public WeakReference<Activity> a;
+  private final CopyOnWriteArraySet<bjbw> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  public boolean a;
+  public ArrayList<bjbw> b = new ArrayList();
   
   public bjcj(Object paramObject)
   {
     super(paramObject);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    this.jdField_b_of_type_Float = 1.0F;
   }
   
   public float a()
   {
     try
     {
-      Iterator localIterator = this.c.iterator();
+      Iterator localIterator = this.b.iterator();
       float f2;
       float f3;
       for (float f1 = 0.0F; localIterator.hasNext(); f1 += f3 * f2)
       {
-        bjbf localbjbf = (bjbf)localIterator.next();
-        f2 = localbjbf.a();
+        bjbw localbjbw = (bjbw)localIterator.next();
+        f2 = localbjbw.a();
         if (QLog.isDevelopLevel()) {
-          QLog.i("QTemplate", 2, "getProgress " + localbjbf.toString() + " progress =" + f2);
+          QLog.i("QCombo", 2, "getProgress " + localbjbw.toString() + " progress =" + f2);
         }
-        f3 = this.jdField_b_of_type_Float;
+        f3 = this.jdField_a_of_type_Float;
       }
       return f1;
     }
@@ -68,17 +65,17 @@ public class bjcj
     }
     for (;;)
     {
-      Iterator localIterator = this.c.iterator();
+      Iterator localIterator = this.b.iterator();
       int i;
       if (localIterator.hasNext())
       {
-        bjbf localbjbf = (bjbf)localIterator.next();
-        i = localbjbf.a();
+        bjbw localbjbw = (bjbw)localIterator.next();
+        i = localbjbw.a();
         if (QLog.isColorLevel())
         {
           localStringBuilder.append(i);
           localStringBuilder.append("|");
-          localStringBuilder.append(localbjbf.toString());
+          localStringBuilder.append(localbjbw.toString());
           localStringBuilder.append("   ");
         }
         if (i == 2)
@@ -91,7 +88,7 @@ public class bjcj
       {
         label125:
         if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, localStringBuilder.toString());
+          QLog.i("QCombo", 2, localStringBuilder.toString());
         }
         if (j != 0)
         {
@@ -113,7 +110,7 @@ public class bjcj
             b();
           }
           i = k;
-        } while (System.currentTimeMillis() - this.jdField_b_of_type_Long <= 15000L);
+        } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 60000L);
         b(2);
         a(5);
         return 2;
@@ -128,21 +125,19 @@ public class bjcj
   
   public int a(Activity paramActivity, int paramInt)
   {
-    Object localObject1;
-    if ((this instanceof bjcj))
-    {
-      localObject1 = (bjbt)bjae.a(15);
-      if (((bjbt)localObject1).a(this, paramInt))
+    if ((this instanceof bjcq)) {
+      if (bjby.a((bjcq)this, paramInt))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, "apply already" + toString());
+          QLog.i("QCombo", 2, "apply already" + toString());
         }
-        ((bjbt)localObject1).a(this, paramActivity, paramInt);
+        bkrf.a().a((bjcq)this, paramActivity, paramInt);
       }
     }
-    label338:
+    label337:
     do
     {
+      Object localObject1;
       Object localObject3;
       do
       {
@@ -151,117 +146,103 @@ public class bjcj
           do
           {
             return 0;
-            localObject3 = (QIMTemplateItem)this.jdField_a_of_type_JavaLangObject;
-            if ((localObject3 != null) && (paramInt == 0))
+            localObject2 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject;
+            if ((localObject2 != null) && (paramInt == 0))
             {
-              localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-              if ("back".equals(((QIMTemplateItem)localObject3).f))
+              localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+              if ("back".equals(((QIMFilterCategoryItem)localObject2).g))
               {
-                localObject3 = new Bundle();
-                ((Bundle)localObject3).putInt(axhp.b, 2);
-                ((AppRuntime)localObject2).notifyObservers(bjbq.class, 970, true, (Bundle)localObject3);
+                localObject2 = new Bundle();
+                ((Bundle)localObject2).putInt(axhr.b, 2);
+                ((AppRuntime)localObject1).notifyObservers(bjch.class, 970, true, (Bundle)localObject2);
               }
             }
             else
             {
-              localObject2 = localObject1.a[paramInt];
-              if (localObject2 != null) {
-                ((bjcj)localObject2).a(paramActivity, paramInt);
+              localObject1 = bkrf.a().a[paramInt];
+              if (localObject1 != null) {
+                ((bjcq)localObject1).a(paramActivity, paramInt);
               }
-              ((bjbt)localObject1).a(this, paramActivity, paramInt);
+              bkrf.a().a((bjcq)this, paramActivity, paramInt);
               if (QLog.isColorLevel()) {
-                QLog.i("QTemplate", 2, "apply " + toString() + ", " + paramInt);
+                QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt);
               }
               localObject1 = new ArrayList();
-              localObject2 = this.c.iterator();
+              localObject2 = this.b.iterator();
             }
             for (;;)
             {
               if (!((Iterator)localObject2).hasNext()) {
-                break label338;
+                break label337;
               }
-              localObject3 = (bjbf)((Iterator)localObject2).next();
-              if ((localObject3 instanceof bjbh))
+              localObject3 = (bjbw)((Iterator)localObject2).next();
+              if ((localObject3 instanceof bjby))
               {
-                ((List)localObject1).add(((bjbh)localObject3).a);
+                ((List)localObject1).add(((bjby)localObject3).a);
                 continue;
-                if ((!"front".equals(((QIMTemplateItem)localObject3).f)) || (!axhn.c())) {
+                if ((!"front".equals(((QIMFilterCategoryItem)localObject2).g)) || (!axhp.c())) {
                   break;
                 }
-                localObject3 = new Bundle();
-                ((Bundle)localObject3).putInt(axhp.b, 1);
-                ((AppRuntime)localObject2).notifyObservers(bjbq.class, 970, true, (Bundle)localObject3);
+                localObject2 = new Bundle();
+                ((Bundle)localObject2).putInt(axhr.b, 1);
+                ((AppRuntime)localObject1).notifyObservers(bjch.class, 970, true, (Bundle)localObject2);
                 break;
               }
-              ((bjbf)localObject3).a(paramActivity, paramInt);
+              ((bjbw)localObject3).a(paramActivity, paramInt);
             }
-          } while (!(this instanceof bjcj));
-          localObject2 = (bjbk)bjae.a(5);
-          if (((bjbk)localObject2).a(paramInt).a()) {
+          } while (!(this instanceof bjcq));
+          localObject2 = (bjcb)bjav.a(5);
+          if (localObject2.jdField_a_of_type_ArrayOfBjcf[paramInt].a()) {
             break;
           }
         } while (!QLog.isColorLevel());
         QLog.i("QCombo", 2, "apply " + toString() + ", " + paramInt + " comboApplyFilterAborted");
         return 0;
-        localObject3 = ((bjbk)localObject2).a;
+        localObject2.jdField_a_of_type_ArrayOfBjcf[paramInt].a(null);
+        localObject3 = ((bjcb)localObject2).jdField_a_of_type_Bkrg;
       } while (localObject3 == null);
-      Object localObject2 = ((bjbk)localObject2).a(this, ((bkqp)localObject3).a(paramInt).c);
-      if (localObject2 != null) {
-        bkqo.a().b((QIMFilterCategoryItem)localObject2, paramActivity, paramInt);
-      }
-      bkqo.a().a((QIMFilterCategoryItem)localObject2, paramInt);
-      bjbh.a(paramActivity, (List)localObject1, this, paramInt);
-      paramActivity = this.jdField_a_of_type_JavaLangObject;
-    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMTemplateItem)) || (!((QIMTemplateItem)this.jdField_a_of_type_JavaLangObject).a()) || (paramInt == 1) || (paramInt == 3));
-    ((bjdm)bjae.a().c(8)).a(paramInt);
+      Object localObject2 = ((bjcb)localObject2).a((bjcq)this, ((bkrg)localObject3).a(paramInt).c);
+      bkrf.a().b((QIMFilterCategoryItem)localObject2, paramActivity, paramInt);
+      bkrf.a().a((QIMFilterCategoryItem)localObject2, paramInt);
+      bjby.a(paramActivity, (List)localObject1, this, paramInt);
+    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) || (!((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).c()) || (paramInt == 1) || (paramInt == 3));
+    ((bjed)bjav.a().c(8)).a(paramInt);
     return 0;
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    bjbk localbjbk = (bjbk)bjae.b(5);
-    if (localbjbk != null) {
-      localbjbk.a(this, paramInt);
+    bjcb localbjcb = (bjcb)bjav.b(5);
+    if (localbjcb != null) {
+      localbjcb.a(this, paramInt);
     }
   }
   
   public void a(Activity paramActivity, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "unApply " + toString() + ", " + paramInt);
+      QLog.i("QCombo", 2, "unApply " + toString() + ", " + paramInt);
     }
-    Object localObject1 = this.c.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (bjbf)((Iterator)localObject1).next();
-      if (((localObject2 instanceof bjda)) && ((paramInt == 2) || (paramInt == 4))) {
-        ((bjda)localObject2).c(paramActivity, paramInt);
-      } else {
-        ((bjbf)localObject2).a(paramActivity, paramInt);
-      }
-    }
-    bkqo.a().b(null, paramActivity, paramInt);
-    localObject1 = (bjbt)bjae.a(15);
-    Object localObject2 = localObject1.a[paramInt];
-    if ((localObject2 != null) && (((bjcj)localObject2).b().equals(b()))) {
-      ((bjbt)localObject1).a(null, paramActivity, paramInt);
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((bjbw)localIterator.next()).a(paramActivity, paramInt);
     }
   }
   
-  public void a(bjbf parambjbf)
+  public void a(bjbw parambjbw)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "onDownloadStart " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+      QLog.i("QCombo", 2, "onDownloadStart " + toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
     }
   }
   
-  public void a(bjbf parambjbf, int paramInt)
+  public void a(bjbw parambjbw, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambjbf);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambjbw);
     if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "onDownloadError " + toString() + ":" + parambjbf.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+      QLog.i("QCombo", 2, "onDownloadError " + toString() + ":" + parambjbw.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
     {
@@ -273,22 +254,21 @@ public class bjcj
   public int b()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "download " + toString());
+      QLog.i("QCombo", 2, "download " + toString());
     }
-    if (!bbev.g(BaseApplicationImpl.getContext()))
+    if (!bbfj.g(BaseApplicationImpl.getContext()))
     {
       a(6);
       return 2;
     }
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    ThreadManager.getSubThreadHandler().post(new TemplateSet.1(this));
+    ThreadManager.getSubThreadHandler().post(new CaptureSet.1(this));
     return 1;
   }
   
   public String b()
   {
     if (this.jdField_a_of_type_JavaLangObject != null) {
-      return ((QIMTemplateItem)this.jdField_a_of_type_JavaLangObject).a;
+      return ((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).a;
     }
     return "unknown" + hashCode();
   }
@@ -296,9 +276,9 @@ public class bjcj
   public void b()
   {
     super.b();
-    bjbk localbjbk = (bjbk)bjae.b(5);
-    if (localbjbk != null) {
-      localbjbk.a(this);
+    bjcb localbjcb = (bjcb)bjav.b(5);
+    if (localbjcb != null) {
+      localbjcb.a(this);
     }
   }
   
@@ -307,26 +287,15 @@ public class bjcj
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(Activity paramActivity, int paramInt)
+  public void b(bjbw parambjbw)
   {
-    super.b(paramActivity, paramInt);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambjbw);
     if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "select " + toString());
-    }
-    QIMTemplateItem localQIMTemplateItem = (QIMTemplateItem)this.jdField_a_of_type_JavaLangObject;
-    ((bjbt)bjae.a(15)).a(localQIMTemplateItem, paramActivity, paramInt);
-    ((bjbk)bjae.a(5)).a(paramInt).a(this);
-  }
-  
-  public void b(bjbf parambjbf)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(parambjbf);
-    if (QLog.isColorLevel()) {
-      QLog.i("QTemplate", 2, "onDownloadSuccess= " + toString() + ":" + parambjbf.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
+      QLog.i("QCombo", 2, "onDownloadSuccess= " + toString() + ":" + parambjbw.toString() + ", count=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size());
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_Boolean)
       {
         b(2);
         a(4);
@@ -344,20 +313,20 @@ public class bjcj
   
   public int c()
   {
-    Object localObject = this.c.iterator();
+    Object localObject = this.b.iterator();
     int j = 0;
     int i = 0;
-    bjbf localbjbf;
+    bjbw localbjbw;
     if (((Iterator)localObject).hasNext())
     {
-      localbjbf = (bjbf)((Iterator)localObject).next();
-      if (localbjbf.a() == 2)
+      localbjbw = (bjbw)((Iterator)localObject).next();
+      if (localbjbw.a() == 2)
       {
-        localbjbf.a(this);
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbjbf);
-        localbjbf.b();
+        localbjbw.a(this);
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbjbw);
+        localbjbw.b();
         if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, "download " + toString() + "  " + localbjbf.toString());
+          QLog.i("QCombo", 2, "download " + toString() + "  " + localbjbw.toString());
         }
         i = j;
         j = 1;
@@ -369,24 +338,25 @@ public class bjcj
       j = i;
       i = k;
       break;
-      if (localbjbf.a() == 1)
+      if (localbjbw.a() == 1)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbjbf);
-        localbjbf.a(this);
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localbjbw);
+        localbjbw.a(this);
         if (QLog.isColorLevel()) {
-          QLog.i("QTemplate", 2, "downloading " + toString() + ":" + localbjbf.toString());
+          QLog.i("QCombo", 2, "downloading " + toString() + ":" + localbjbw.toString());
         }
         k = 1;
         j = i;
         i = k;
         continue;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
         if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() > 0)
         {
           b(1);
           a();
-          localObject = (bjbk)bjae.b(5);
+          localObject = (bjcb)bjav.b(5);
           if (localObject != null) {
-            ((bjbk)localObject).b(this);
+            ((bjcb)localObject).b(this);
           }
         }
         if ((i != 0) || (j != 0))
@@ -407,11 +377,10 @@ public class bjcj
     }
   }
   
-  public void d(bjbf parambjbf)
+  public void c(bjbw parambjbw)
   {
-    this.c.add(parambjbf);
-    parambjbf.c = (this.c.size() - 1);
-    this.jdField_b_of_type_Float = (1.0F / this.c.size());
+    this.b.add(parambjbw);
+    this.jdField_a_of_type_Float = (1.0F / this.b.size());
   }
 }
 

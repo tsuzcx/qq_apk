@@ -1,6 +1,6 @@
 public abstract interface wtk
 {
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public abstract void a(int paramInt);
 }
 
 

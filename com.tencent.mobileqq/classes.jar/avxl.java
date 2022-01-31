@@ -1,21 +1,63 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-@TargetApi(14)
 public class avxl
 {
-  public int a;
-  public SurfaceTexture a;
-  public Surface a;
+  protected int a;
+  protected PublishVideoEntry a;
+  protected int b;
+  protected int c;
+  protected int d = -1;
+  protected int e = -1;
   
-  public avxl(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  public avxl(int paramInt, PublishVideoEntry paramPublishVideoEntry)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
+  }
+  
+  private int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 7: 
+      return 5;
+    case 8: 
+      return 6;
+    case 9: 
+      return 7;
+    }
+    return 4;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    }
+    return 3;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = b(paramInt);
+    this.c = a(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -36,7 +36,7 @@ public class OnlineStatusPanel
   
   private int a(int paramInt)
   {
-    return actn.a(32.0F, getResources()) * paramInt + actn.a(20.0F, getResources()) * (paramInt - 1) + actn.a(16.0F, getResources());
+    return actj.a(32.0F, getResources()) * paramInt + actj.a(20.0F, getResources()) * (paramInt - 1) + actj.a(16.0F, getResources());
   }
   
   private void b()

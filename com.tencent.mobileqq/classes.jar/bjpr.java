@@ -1,20 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-public class bjpr
-  extends Handler
+class bjpr
+  extends BroadcastReceiver
 {
-  public bjpr(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bjpr(bjpq parambjpq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    paramContext = this.a.a.a();
+    if ((paramContext == null) || (paramContext.isFinishing())) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("LightWeightCameraCaptureUnit", 2, "receive ACTION_START_VIDEO_CHAT.");
+          }
+          this.a.h();
+          return;
+        }
+      } while (!"tencent.qq.ipc.event".equals(paramContext));
+      paramContext = paramIntent.getExtras();
+      if (paramContext != null)
+      {
+        AIOLongCaptureCtrl.a(paramContext);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LightWeightCameraCaptureUnit", 2, "receive ACTION_START_IPC_EVENT. extras=null");
   }
 }
 

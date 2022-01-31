@@ -1,26 +1,18 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-import com.tencent.widget.AbsListView;
 
 public class akki
-  implements bfob
+  implements View.OnClickListener
 {
   public akki(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
-    {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        NewFriendVerifyBlockedListFragment.a(this.a).a();
-      }
-    }
-    else {
-      return;
-    }
-    NewFriendVerifyBlockedListFragment.a(this.a).b();
-    NewFriendVerifyBlockedListFragment.a(this.a).c();
+    akka.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
+    axqy.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
   }
 }
 

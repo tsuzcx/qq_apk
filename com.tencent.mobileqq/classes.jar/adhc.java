@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 
 class adhc
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  adhc(adha paramadha, ChatMessage paramChatMessage) {}
+  adhc(adgx paramadgx, ChatMessage paramChatMessage, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Adha.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      adgx.a(this.jdField_a_of_type_Adgx, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      axqy.b(adgx.a(this.jdField_a_of_type_Adgx), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, adgx.a(this.jdField_a_of_type_Adgx).a, "", "", "");
+      continue;
+      axqy.b(adgx.a(this.jdField_a_of_type_Adgx), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, adgx.a(this.jdField_a_of_type_Adgx).a, "", "", "");
+    }
   }
 }
 

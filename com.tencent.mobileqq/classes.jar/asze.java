@@ -1,31 +1,52 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-final class asze
-  implements DialogInterface.OnClickListener
+public class asze
+  implements INetInfoHandler
 {
-  asze(String paramString, int paramInt, Activity paramActivity) {}
+  private asze(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNetMobile2None()
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
+    if (NearbyAppInterface.i(this.a) != null) {
+      NearbyAppInterface.j(this.a).onNetMobile2None();
     }
-    if (this.jdField_a_of_type_Int == 1) {
-      axqw.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.g(this.a) != null) {
+      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
     }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.a(this.a) != null) {
+      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
     }
-    axqw.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (NearbyAppInterface.e(this.a) != null) {
+      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (NearbyAppInterface.c(this.a) != null) {
+      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (NearbyAppInterface.k(this.a) != null) {
+      NearbyAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

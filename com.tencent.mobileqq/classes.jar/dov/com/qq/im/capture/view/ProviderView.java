@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import bizu;
-import bjkh;
-import bkdo;
+import bjal;
+import bjky;
+import bkef;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import vzo;
+import vzl;
 
 public abstract class ProviderView
   extends FrameLayout
@@ -25,8 +25,8 @@ public abstract class ProviderView
   protected View a;
   protected ViewGroup a;
   protected RelativeLayout a;
-  public bjkh a;
-  protected bkdo a;
+  public bjky a;
+  protected bkef a;
   protected AppInterface a;
   protected QIMSlidingTabView a;
   protected Handler b;
@@ -72,15 +72,15 @@ public abstract class ProviderView
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bizu.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bjal.a();
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2131560533, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131560532, this, false);
       addView(paramBundle);
       this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131372052));
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
       {
-        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131560534, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131560533, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView);
         this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131372049));
       }
@@ -88,7 +88,7 @@ public abstract class ProviderView
     else
     {
       paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-      paramBundle.height = vzo.a(getContext(), this.f);
+      paramBundle.height = vzl.a(getContext(), this.f);
       this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
       if (this.e != 1) {
         break label221;
@@ -147,7 +147,7 @@ public abstract class ProviderView
     if (this.jdField_a_of_type_AndroidViewView == null) {
       try
       {
-        paramBundle = LayoutInflater.from(getContext()).inflate(2131560533, this, false);
+        paramBundle = LayoutInflater.from(getContext()).inflate(2131560532, this, false);
         addView(paramBundle);
         if (this.jdField_b_of_type_AndroidViewView == null)
         {
@@ -156,7 +156,7 @@ public abstract class ProviderView
           if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
             break label143;
           }
-          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131560534, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131560533, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView);
         }
         for (;;)
@@ -228,8 +228,8 @@ public abstract class ProviderView
   
   protected void k()
   {
-    if (this.jdField_a_of_type_Bjkh != null) {
-      this.jdField_a_of_type_Bjkh.h();
+    if (this.jdField_a_of_type_Bjky != null) {
+      this.jdField_a_of_type_Bjky.h();
     }
   }
   
@@ -262,9 +262,9 @@ public abstract class ProviderView
     this.g = paramInt;
   }
   
-  public void setDoodleEventListener(bkdo parambkdo)
+  public void setDoodleEventListener(bkef parambkef)
   {
-    this.jdField_a_of_type_Bkdo = parambkdo;
+    this.jdField_a_of_type_Bkef = parambkef;
   }
   
   public void setLiuHaiParentView(RelativeLayout paramRelativeLayout)
@@ -277,9 +277,9 @@ public abstract class ProviderView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(bjkh parambjkh)
+  public void setProviderViewListener(bjky parambjky)
   {
-    this.jdField_a_of_type_Bjkh = parambjkh;
+    this.jdField_a_of_type_Bjky = parambjky;
   }
   
   public void setTabBarPosition(int paramInt)

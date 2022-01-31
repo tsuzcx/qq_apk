@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.NativeAd.fragment;
 
-import abtu;
+import abtq;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nll;
-import nlt;
+import nli;
+import nlq;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yxs;
+import yxp;
 
 public class ReadInJoyNativeAdAppFragment
   extends PublicBaseFragment
@@ -32,7 +32,7 @@ public class ReadInJoyNativeAdAppFragment
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<nll> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<nli> jdField_a_of_type_JavaUtilArrayList;
   private String b;
   private String c;
   
@@ -73,7 +73,7 @@ public class ReadInJoyNativeAdAppFragment
         i = 0;
         if (i < ((JSONArray)localObject1).length())
         {
-          localObject2 = nll.a(getActivity().app, ((JSONArray)localObject1).getJSONObject(i));
+          localObject2 = nli.a(getActivity().app, ((JSONArray)localObject1).getJSONObject(i));
           if (localObject2 != null) {
             this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
           }
@@ -106,11 +106,11 @@ public class ReadInJoyNativeAdAppFragment
       }
       return;
     }
-    yxs.b("ReadInJoyNativeAdAppFragment", "start");
+    yxp.b("ReadInJoyNativeAdAppFragment", "start");
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtras(paramBundle);
-    abtu.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
+    abtq.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -143,7 +143,7 @@ public class ReadInJoyNativeAdAppFragment
     {
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setVideoPlayPositon(this.jdField_a_of_type_Long);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setData((nlt)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setData((nlq)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
     }
     return paramLayoutInflater;

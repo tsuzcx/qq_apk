@@ -1,99 +1,62 @@
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
 public class xee
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  String jdField_a_of_type_JavaLangString;
-  private List<xee> jdField_a_of_type_JavaUtilList;
-  String b;
-  String c;
-  String d;
-  private String e;
-  private String f;
+  protected Context a;
+  protected Drawable a;
+  protected View a;
+  protected WindowManager a;
+  protected PopupWindow a;
   
-  public xee(String paramString1, String paramString2, Drawable paramDrawable, int paramInt)
+  public xee(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.e = paramString2;
-    this.f = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new xef(this));
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
   }
   
-  public int a()
+  protected void a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String a()
-  {
-    return this.e;
-  }
-  
-  public xee a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new IllegalStateException("setContentView was not called with a view to display.");
     }
-    return (xee)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(mobileqq_mp.ButtonInfo paramButtonInfo)
-  {
-    if (paramButtonInfo.logo_url.has()) {
-      this.jdField_a_of_type_JavaLangString = paramButtonInfo.logo_url.get();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
     }
-    if (paramButtonInfo.texture_url.has()) {
-      this.d = paramButtonInfo.texture_url.get();
-    }
-    if (paramButtonInfo.bg_colors.has())
+    for (;;)
     {
-      paramButtonInfo = paramButtonInfo.bg_colors.get().split("\\|");
-      if (paramButtonInfo.length > 0) {
-        this.b = paramButtonInfo[0];
-      }
-      if (paramButtonInfo.length > 1) {
-        this.c = paramButtonInfo[1];
-      }
-    }
-  }
-  
-  public void a(xee paramxee)
-  {
-    if (paramxee == null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
       return;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramxee);
   }
   
-  public boolean a()
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    return this.jdField_a_of_type_JavaUtilList != null;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
   }
   
-  public int b()
+  public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
   }
   
-  public String b()
+  public void b(View paramView)
   {
-    return this.f;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
   }
 }
 

@@ -1,15 +1,23 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-public final class weq
-  extends SparseArray<RotateCircleImageView.BorderStyle>
+public class weq
+  implements Animator.AnimatorListener
 {
-  public weq(int paramInt)
+  public weq(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramInt);
-    append(0, RotateCircleImageView.BorderStyle.STILL);
-    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+    RotateCircleImageView.a(this.a).start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

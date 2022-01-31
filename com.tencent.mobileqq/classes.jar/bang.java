@@ -1,13 +1,34 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
 
 public class bang
 {
-  public View a;
-  public URLImageView a;
+  public static <T extends banh> T a(Class<T> paramClass)
+  {
+    try
+    {
+      paramClass = (banh)Class.forName(paramClass.getName()).newInstance();
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
   
-  public bang(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
+  public static <T extends Thread> T a(Class<T> paramClass)
+  {
+    try
+    {
+      paramClass = (TroopUploadingThread)Class.forName(paramClass.getName()).newInstance();
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

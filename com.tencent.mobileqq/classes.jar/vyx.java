@@ -1,6 +1,52 @@
-public abstract interface vyx
+import android.view.View;
+import android.widget.TextView;
+
+public class vyx
+  extends vyz
 {
-  public abstract void a(vzc paramvzc, boolean paramBoolean);
+  TextView a;
+  
+  public vyx(vzb paramvzb, View paramView)
+  {
+    super(paramvzb, paramView);
+    this.a = ((TextView)paramView.findViewById(2131377069));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
+  }
+  
+  public CharSequence a()
+  {
+    return this.a.getText();
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = vyq.a(this.a, 1);
+    this.a.setText(paramCharSequence);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.setBackgroundResource(2130843782);
+      return;
+    }
+    this.a.setBackgroundResource(0);
+  }
+  
+  public CharSequence b()
+  {
+    return this.a.getHint();
+  }
+  
+  public void b(CharSequence paramCharSequence)
+  {
+    this.a.setHint(paramCharSequence);
+    this.a.setGravity(17);
+  }
 }
 
 

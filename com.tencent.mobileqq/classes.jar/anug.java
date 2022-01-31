@@ -1,59 +1,19 @@
 import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class anug
-  extends bbwm
+  extends nrc
 {
   public anug(MessengerService paramMessengerService) {}
   
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public void a(Object paramObject)
   {
-    if (this.a.a != null) {}
-    try
-    {
-      Message localMessage = Message.obtain(null, 5);
-      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
-      {
-        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
-        paramBundle.putString("name", localChatBackgroundInfo.name);
-        paramBundle.putString("url", localChatBackgroundInfo.url);
-      }
-      paramBundle.putInt("type", 2);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    Message localMessage;
     if (this.a.a != null)
     {
-      localMessage = Message.obtain(null, 5);
-      localMessage.setData(paramBundle);
-    }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+      this.a.a.putString("data", bazp.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
   }
 }

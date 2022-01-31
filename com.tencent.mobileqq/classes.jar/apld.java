@@ -1,68 +1,60 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class apld
-  implements amgw
+  implements amgv
 {
-  private azqt jdField_a_of_type_Azqt;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   
-  public apld(long paramLong, azqt paramazqt)
+  public apld(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = (paramLong + "");
-    this.jdField_a_of_type_Azqt = paramazqt;
+    this.a = paramString;
+    if (bbdx.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
+    }
   }
   
   private String a()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("file_color_note_peerType", 1);
-      localJSONObject.put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("file_color_note_fileName", this.jdField_a_of_type_Azqt.g);
-      localJSONObject.put("file_color_note_fileSize", this.jdField_a_of_type_Azqt.c);
-      if (this.jdField_a_of_type_Azqt.a != null) {
-        localJSONObject.put("file_color_note_file_uuid", this.jdField_a_of_type_Azqt.a.toString());
-      }
-      for (;;)
-      {
-        localJSONObject.put("file_color_note_file_url", this.jdField_a_of_type_Azqt.e);
-        localJSONObject.put("file_color_note_busId", this.jdField_a_of_type_Azqt.h);
-        return localJSONObject.toString();
-        localJSONObject.put("file_color_note_file_uuid", "");
-      }
-      return "";
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
   public ColorNote getColorNote()
   {
-    if (this.jdField_a_of_type_Azqt != null) {}
-    amhc localamhc = new amhc();
-    localamhc.a(17039360);
-    String str = apvk.b(2, this.jdField_a_of_type_Azqt.e);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    if (!bbdx.b(this.a))
+    {
+      QLog.i("FavFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
     }
-    localamhc.a(str);
-    localamhc.b(this.jdField_a_of_type_Azqt.g);
-    localamhc.c(apvb.a(this.jdField_a_of_type_Azqt.c));
-    int i = apue.a(apue.a(this.jdField_a_of_type_Azqt.g));
-    localamhc.d("resdrawable://" + i);
+    amhb localamhb = new amhb();
+    localamhb.a(17039360);
+    String str = apvm.b(4, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("FavFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localamhb.a(str);
+    str = apug.a(this.a);
+    localamhb.b(str);
+    localamhb.c(apvd.a(apug.a(this.a)));
+    int i = apug.a(apug.a(str));
+    localamhb.d("resdrawable://" + i);
     str = a();
     if (!TextUtils.isEmpty(str)) {
-      localamhc.a(str.getBytes());
+      localamhb.a(str.getBytes());
     }
-    return localamhc.a();
+    return localamhb.a();
   }
 }
 

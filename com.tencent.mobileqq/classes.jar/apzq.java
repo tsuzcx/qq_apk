@@ -1,97 +1,81 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
-import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
-import com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.MethodCodec;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
+import io.flutter.plugin.common.StandardMethodCodec;
 
-public class apzq
-  extends apzh
+public abstract class apzq
+  implements MethodChannel.MethodCallHandler
 {
-  public static final AtomicInteger a;
-  private Map<Integer, MethodChannel.Result> a;
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
+  protected abstract void a(String paramString, MethodChannel.Result paramResult);
   
-  public apzq(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    super(paramString, paramBinaryMessenger);
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
+  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
   
-  private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
+  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
+  
+  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void c(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    if ((paramRequestPacket == null) || (paramResult == null)) {
-      QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
-    }
-    int i;
-    do
+    String str = paramMethodCall.method;
+    if ("setSpecialCare".equals(str))
     {
-      return;
-      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
-      localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
-      localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
-      localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramResult);
-      localToServiceMsg.putWupBuffer(paramRequestPacket.body);
-      paramResult = new NewIntent(a().getApplication(), apzp.class);
-      paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-      a().startServlet(paramResult);
-    } while (!QLog.isColorLevel());
-    QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
-  }
-  
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new apzr(this);
-  }
-  
-  public MethodCodec a()
-  {
-    return apzs.a;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramToServiceMsg == null)
-    {
-      QLog.d("QFlutter.SSOChannel", 1, "onReceive, request is null");
+      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
       return;
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = paramToServiceMsg.extraData.getLong("REQUEST_TIME");
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
+    if ("setQzoneNotify".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
+      return;
     }
-    byte[] arrayOfByte = paramFromServiceMsg.getWupBuffer();
-    ResponsePacket localResponsePacket = new ResponsePacket();
-    localResponsePacket.isSuc = Boolean.valueOf(paramFromServiceMsg.isSuccess());
-    localResponsePacket.errCode = Integer.valueOf(paramFromServiceMsg.getResultCode());
-    localResponsePacket.body = arrayOfByte;
-    int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
-    paramFromServiceMsg = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-    a(paramToServiceMsg.getServiceCmd(), localResponsePacket, paramFromServiceMsg);
-  }
-  
-  public void a(String paramString, ResponsePacket paramResponsePacket, MethodChannel.Result paramResult)
-  {
-    ThreadManager.getUIHandler().post(new SSOChannel.2(this, paramResponsePacket, paramString, paramResult));
+    if ("getSCFSwitchs".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("getSpecialRing".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("openSpecialRingMall".equals(str))
+    {
+      c((String)paramMethodCall.argument("uin"), paramResult);
+      return;
+    }
+    if ("onPageShowReport".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onBellShowReport".equals(str))
+    {
+      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onBellClickReport".equals(str))
+    {
+      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
+      return;
+    }
+    if ("onSpecialCareSwitchReport".equals(str))
+    {
+      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 

@@ -1,80 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-public class bbiy
+public abstract interface bbiy
 {
-  public static int a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_versioncode", 0);
-  }
+  public abstract int a();
   
-  public static void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_versioncode", paramInt);
-    localEditor.apply();
-  }
+  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
   
-  public static void a(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_predownload_success_key", paramBoolean);
-    localEditor.apply();
-  }
+  public abstract void a();
   
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_predownload_success_key", false);
-  }
+  public abstract void a(int paramInt);
   
-  public static boolean a(int paramInt)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0);
-    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
-    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(String paramString);
   
-  public static int b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_dialog_versioncode", 0);
-  }
+  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
   
-  public static void b(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_dialog_versioncode", paramInt);
-    localEditor.apply();
-  }
+  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
   
-  public static void b(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_has_show_upgrade_dialog", paramBoolean);
-    localEditor.apply();
-  }
+  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
   
-  public static boolean b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_has_show_upgrade_dialog", false);
-  }
+  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
   
-  public static void c(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_normal_upgrade_version", paramInt);
-    localEditor.apply();
-  }
+  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
   
-  public static void c(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_normal_upgrade", paramBoolean);
-    localEditor.apply();
-  }
+  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
 }
 
 

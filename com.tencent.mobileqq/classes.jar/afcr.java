@@ -1,27 +1,36 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class afcr
-  implements bfob
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
   public afcr(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Afcw.getCount();
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
-    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
-      return;
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof Integer))) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = ((Integer)paramView).intValue();
+      } while ((i < 0) || (this.a.jdField_a_of_type_Afcu == null));
+      paramView = this.a.getActivity();
+    } while (paramView == null);
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+    MessageRecord localMessageRecord = ((afct)this.a.jdField_a_of_type_Afcu.getItem(i)).a;
+    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
   }
 }
 

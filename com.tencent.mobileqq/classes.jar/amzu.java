@@ -1,56 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-
 public class amzu
-  extends amyi<amzt>
 {
-  public int a()
+  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public String a()
   {
-    return 26;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  @NonNull
-  public amzt a()
+  public void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ajtu localajtu = (ajtu)localQQAppInterface.a(16);
-    if (localajtu != null) {
-      localajtu.a(localQQAppInterface.getApplication().getApplicationContext());
-    }
-    return new amzt();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  @NonNull
-  public amzt a(ampi[] paramArrayOfampi)
+  public void a(boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ajtu localajtu = (ajtu)localQQAppInterface.a(16);
-    if (localajtu != null) {
-      localajtu.a(localQQAppInterface, paramArrayOfampi[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfampi[0]);
-    }
-    return new amzt();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public Class<amzt> a()
+  public boolean a()
   {
-    return amzt.class;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  @NonNull
-  public amzt b()
+  public void b(boolean paramBoolean)
   {
-    return new amzt();
+    this.b = paramBoolean;
   }
   
-  public boolean c()
+  public boolean b()
   {
-    return false;
+    return this.b;
   }
 }
 

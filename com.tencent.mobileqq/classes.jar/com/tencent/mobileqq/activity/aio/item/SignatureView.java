@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -21,7 +21,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bbqf;
+import bbqt;
 import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public final class SignatureView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   public Drawable a;
   public TextPaint a;
-  public bbqf a;
+  public bbqt a;
   public VipPngPlayAnimationDrawable a;
   public CharSequence a;
   public String a;
@@ -93,13 +93,13 @@ public final class SignatureView
     this.jdField_a_of_type_Float = (12.0F * this.jdField_d_of_type_Float);
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_JavaLangCharSequence = ajyc.a(2131714112);
+    this.jdField_b_of_type_JavaLangCharSequence = ajya.a(2131714123);
     this.jdField_c_of_type_Int = Color.parseColor("#878B99");
     this.jdField_b_of_type_Float = (11.0F * this.jdField_d_of_type_Float);
     this.jdField_b_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Float);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849331);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848959);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849340);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848965);
     this.jdField_a_of_type_Int = Color.parseColor("#66000000");
     this.jdField_c_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
     this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
@@ -232,22 +232,22 @@ public final class SignatureView
           }
           m = paramCanvas.getSaveCount();
           paramCanvas.save();
-          paramCanvas.translate(this.jdField_a_of_type_Bbqf.jdField_a_of_type_Float * this.jdField_d_of_type_Int, this.k + this.jdField_a_of_type_Bbqf.jdField_b_of_type_Float * (this.jdField_e_of_type_Int - this.k));
-          n = (int)(this.jdField_a_of_type_Bbqf.jdField_c_of_type_Float * this.jdField_d_of_type_Int + 0.5D);
-          i1 = (int)(this.jdField_a_of_type_Bbqf.jdField_d_of_type_Float * (this.jdField_e_of_type_Int - this.k) + 0.5D);
+          paramCanvas.translate(this.jdField_a_of_type_Bbqt.jdField_a_of_type_Float * this.jdField_d_of_type_Int, this.k + this.jdField_a_of_type_Bbqt.jdField_b_of_type_Float * (this.jdField_e_of_type_Int - this.k));
+          n = (int)(this.jdField_a_of_type_Bbqt.jdField_c_of_type_Float * this.jdField_d_of_type_Int + 0.5D);
+          i1 = (int)(this.jdField_a_of_type_Bbqt.jdField_d_of_type_Float * (this.jdField_e_of_type_Int - this.k) + 0.5D);
           paramCanvas.drawBitmap(jdField_a_of_type_AndroidGraphicsBitmap, new Rect(0, 0, jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), new Rect(0, 0, n, i1), this.jdField_a_of_type_AndroidGraphicsPaint);
           paramCanvas.restoreToCount(m);
         }
         for (;;)
         {
           invalidate();
-          if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Bbqf != null))
+          if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Bbqt != null))
           {
             m = paramCanvas.getSaveCount();
             paramCanvas.save();
-            paramCanvas.translate(this.jdField_a_of_type_Bbqf.jdField_a_of_type_Float * this.jdField_d_of_type_Int, this.k + this.jdField_a_of_type_Bbqf.jdField_b_of_type_Float * (this.jdField_e_of_type_Int - this.k));
-            n = (int)(this.jdField_a_of_type_Bbqf.jdField_c_of_type_Float * this.jdField_d_of_type_Int + 0.5D);
-            i1 = (int)(this.jdField_a_of_type_Bbqf.jdField_d_of_type_Float * (this.jdField_e_of_type_Int - this.k) + 0.5D);
+            paramCanvas.translate(this.jdField_a_of_type_Bbqt.jdField_a_of_type_Float * this.jdField_d_of_type_Int, this.k + this.jdField_a_of_type_Bbqt.jdField_b_of_type_Float * (this.jdField_e_of_type_Int - this.k));
+            n = (int)(this.jdField_a_of_type_Bbqt.jdField_c_of_type_Float * this.jdField_d_of_type_Int + 0.5D);
+            i1 = (int)(this.jdField_a_of_type_Bbqt.jdField_d_of_type_Float * (this.jdField_e_of_type_Int - this.k) + 0.5D);
             this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.setBounds(0, 0, n, i1);
             this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.draw(paramCanvas);
             paramCanvas.restoreToCount(m);
@@ -284,7 +284,7 @@ public final class SignatureView
           }
           if (this.jdField_c_of_type_Boolean)
           {
-            localObject = ajyc.a(2131714122);
+            localObject = ajya.a(2131714133);
             this.jdField_d_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
             this.jdField_d_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
             Point localPoint = new Point(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.centerY());
@@ -331,18 +331,18 @@ public final class SignatureView
     setMeasuredDimension(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
   }
   
-  public void setAnimation(int paramInt, String paramString, bbqf parambbqf)
+  public void setAnimation(int paramInt, String paramString, bbqt parambbqt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Signature.SignatureView", 2, toString() + "SignatureView setAnimation.");
     }
-    this.jdField_a_of_type_Bbqf = parambbqf;
+    this.jdField_a_of_type_Bbqt = parambbqt;
     if ((jdField_a_of_type_AndroidGraphicsBitmap != null) && (!jdField_a_of_type_AndroidGraphicsBitmap.isMutable()) && (!jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
       jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    ThreadManager.post(new SignatureView.1(this, paramInt, paramString, parambbqf), 5, null, true);
+    ThreadManager.post(new SignatureView.1(this, paramInt, paramString, parambbqt), 5, null, true);
   }
 }
 

@@ -1,31 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.widget.XListView;
 
 public class ammr
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public ammr(LocationSelectActivity paramLocationSelectActivity) {}
+  public ammr(SearchResultActivity paramSearchResultActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    if (AppSetting.d)
+    switch (paramMessage.what)
     {
-      LocationSelectActivity.b(this.a).setContentDescription(ajyc.a(2131706298) + LocationSelectActivity.a(this.a).name);
-      LocationSelectActivity.a(this.a).setContentDescription(ajyc.a(2131706296) + LocationSelectActivity.a(this.a).a().getText());
     }
-    paramDialogInterface = LocationSelectActivity.a(this.a);
-    if (LocationSelectActivity.a(this.a) == 0)
+    for (;;)
     {
-      axqw.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
-      return;
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      bcql.a(this.a, 2131694610, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
-    axqw.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
   }
 }
 

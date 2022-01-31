@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.app.Dialog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView;
 
 public class bcuz
-  implements DialogInterface.OnShowListener
+  extends Dialog
 {
-  public bcuz(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public bcuz(@NonNull Context paramContext)
   {
-    ShareActionSheetV2.a(this.a, false);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onShow(paramDialogInterface);
-    }
-    ShareActionSheetV2.b(this.a);
+    super(paramContext, 2131755168);
+    setContentView(2131558826);
+    ((QUSDragFloatingScreenView)findViewById(2131373499)).a();
   }
 }
 

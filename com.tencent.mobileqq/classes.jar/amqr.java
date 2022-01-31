@@ -1,94 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class amqr
-  extends ampb<amql>
+  extends amqq
 {
-  public static amql b(int paramInt)
-  {
-    amql localamql = (amql)ampm.a().a(paramInt);
-    if (localamql != null) {
-      return localamql;
-    }
-    return new amql();
-  }
-  
   public int a()
   {
-    return 0;
+    return 170;
   }
   
-  @NonNull
-  public amql a(int paramInt)
+  public amqk a(String paramString)
   {
-    return new amql();
-  }
-  
-  public amql a(String paramString)
-  {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    return new amql(paramString);
-  }
-  
-  @Nullable
-  public amql a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    QLog.d("ArkAIDictConfigProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
     {
-      paramArrayOfampi = paramArrayOfampi[0].a;
-      if (!TextUtils.isEmpty(paramArrayOfampi)) {
-        return a(paramArrayOfampi);
+      amrc localamrc = (amrc)ampv.a(paramString, amrc.class);
+      return new amql(paramString, localamrc);
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkAIDictConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
       }
-      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
-    }
-    return null;
-  }
-  
-  public Class<amql> a()
-  {
-    return amql.class;
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
-  }
-  
-  public void a(amql paramamql)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
     }
   }
   
-  public boolean a()
+  public void a(amqk paramamqk)
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super.a(paramamqk);
+    if (paramamqk == null) {
+      QLog.i("ArkAIDictConfigProcessor", 1, "newConf is null");
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("ArkAIDictConfigProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramamqk.a());
+          paramamqk = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        } while (paramamqk == null);
+        paramamqk = (ArkAppCenter)paramamqk.getManager(121);
+      } while (paramamqk == null);
+      paramamqk = paramamqk.a();
+    } while (paramamqk == null);
+    paramamqk.a();
   }
 }
 

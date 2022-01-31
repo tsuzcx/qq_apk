@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qzj;
-import rhr;
+import qzg;
+import rho;
 
 class ReadinjoyTabbar$2
   implements Runnable
 {
-  ReadinjoyTabbar$2(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, rhr paramrhr) {}
+  ReadinjoyTabbar$2(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, rho paramrho) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rhr.a.a);
+    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rho.a.a);
   }
 }
 

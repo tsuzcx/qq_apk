@@ -1,95 +1,53 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class oab
-  extends WebViewPlugin
 {
-  public oab()
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    this.mPluginNameSpace = "ReadinjoyAdJs";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountWebviewPlugin", 2, " method null or args == null");
-      }
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountWebviewPlugin", 2, " method:" + paramString3);
-    }
-    if ("setGameSubscribe".equals(paramString3)) {}
     try
     {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString1.optString("ret");
-      paramString1.optString("appid");
-      paramString1 = paramString1.optString("pkgname");
-      if (("1".equals(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString2)))
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
+      if (paramAdData.U != null) {
+        oar.a(paramJSONObject, paramAdData.a);
+      }
+      if (!TextUtils.isEmpty(paramAdData.j))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountWebviewPlugin", 2, " method:pkgname=" + paramString1);
-        }
-        paramJsBridgeListener = new Bundle();
-        paramJsBridgeListener.putBoolean("isSuccess", true);
-        paramJsBridgeListener.putString("pkgname", paramString1);
-        wxu.a().a(130, paramJsBridgeListener);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.j);
+        paramJSONObject.put("id_tv_title", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.l))
+      {
+        localObject = sfa.a(paramAdData.l, 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("image_url", ((URL)localObject).toString());
+        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
+      }
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.q))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject);
       }
     }
-    catch (Exception paramJsBridgeListener)
+    catch (JSONException paramAdData)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
-        }
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
     }
-    if ("setGameLoadState".equals(paramString3)) {}
-    try
-    {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString1.optString("adid");
-      long l1 = nmk.a(paramString1.optString("navigationStart"), 0L);
-      long l2 = nmk.a(paramString1.optString("htmlLoaded"), 0L);
-      long l3 = nmk.a(paramString1.optString("domComplete"), 0L);
-      if ((l1 > 0L) || (l2 > 0L) || (l3 > 0L))
-      {
-        paramString1 = new Bundle();
-        paramString1.putString("adid", paramJsBridgeListener);
-        paramString1.putLong("navigationStart", l1);
-        paramString1.putLong("htmlLoaded", l2);
-        paramString1.putLong("domComplete", l3);
-        wxu.a().a(137, paramString1);
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
-        }
-      }
-    }
-    return true;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    return super.handleSchemaRequest(paramString1, paramString2);
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
+    return paramJSONObject;
+    return paramJSONObject;
   }
 }
 

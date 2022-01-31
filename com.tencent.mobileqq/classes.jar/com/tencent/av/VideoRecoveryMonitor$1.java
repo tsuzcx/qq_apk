@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import lec;
+import ldx;
 
 public class VideoRecoveryMonitor$1
   implements Runnable
 {
-  public VideoRecoveryMonitor$1(lec paramlec) {}
+  public VideoRecoveryMonitor$1(ldx paramldx) {}
   
   public void run()
   {
-    lec.a(this.this$0);
+    ldx.a(this.this$0);
   }
 }
 

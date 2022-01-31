@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import baxa;
+import baxo;
 
 class DynamicAvatarView$1
   implements Runnable

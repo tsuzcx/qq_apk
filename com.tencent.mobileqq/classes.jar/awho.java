@@ -1,28 +1,25 @@
-import java.util.List;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class awho
+class awho
+  implements Comparator<awng>
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public String b;
-  public String c;
+  awho(awhn paramawhn) {}
   
-  public awho(int paramInt, String paramString1, String paramString2, String paramString3)
+  public int a(awng paramawng1, awng paramawng2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public awho(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    int i = paramawng2.a[2] - paramawng1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = paramawng1.a[0] - paramawng2.a[0];
+      i = j;
+    } while (j != 0);
+    paramawng1 = paramawng1.c.substring(paramawng1.a[0] + paramawng1.a[1]);
+    paramawng2 = paramawng2.c.substring(paramawng2.a[0] + paramawng2.a[1]);
+    return ChnToSpell.a(paramawng1, 2).compareTo(ChnToSpell.a(paramawng2, 2));
   }
 }
 

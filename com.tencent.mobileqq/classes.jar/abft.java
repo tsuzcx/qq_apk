@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class abft
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public abft(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FriendProfileImageActivity.a(this.a);
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

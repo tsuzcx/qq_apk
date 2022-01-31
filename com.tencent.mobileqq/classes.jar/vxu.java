@@ -1,36 +1,39 @@
-import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
 
-public final class vxu
+class vxu
+  extends Handler
 {
-  private final vxv a;
+  vxu(vxt paramvxt) {}
   
-  public vxu(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  vxu(vxt paramvxt, Handler paramHandler)
   {
-    this(paramContext, paramOnGestureListener, null);
+    super(paramHandler.getLooper());
   }
   
-  public vxu(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new vxw(paramContext, paramOnGestureListener, paramHandler);
-  }
-  
-  public void a(int paramInt)
-  {
-    vxw.a(paramInt);
-  }
-  
-  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
-  {
-    this.a.a(paramOnDoubleTapListener);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramMotionEvent);
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+    }
+    do
+    {
+      return;
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      return;
+    }
+    this.a.b = true;
   }
 }
 

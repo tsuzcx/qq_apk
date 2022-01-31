@@ -1,16 +1,17 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
 
 class aufq
   extends AnimatorListenerAdapter
 {
-  aufq(aufh paramaufh, View paramView) {}
+  aufq(aufj paramaufj) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    aufh.a(this.jdField_a_of_type_Aufh).removeView(this.jdField_a_of_type_AndroidViewView);
+    if (aufj.a(this.a) != null) {
+      aufj.a(this.a).setVisibility(0);
+    }
   }
 }
 

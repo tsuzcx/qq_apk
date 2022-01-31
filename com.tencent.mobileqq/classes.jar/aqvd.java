@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import android.support.annotation.DrawableRes;
 
 public class aqvd
-  extends ThreadLocal<Boolean>
 {
-  public aqvd(JefsClass paramJefsClass) {}
-  
-  protected Boolean a()
+  @DrawableRes
+  public static int a(int paramInt)
   {
-    return Boolean.valueOf(false);
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 1001: 
+      return 2130847221;
+    case 1002: 
+      return 2130847222;
+    case 1003: 
+      return 2130847223;
+    case 1004: 
+      return 2130847224;
+    }
+    return 2130847225;
   }
 }
 

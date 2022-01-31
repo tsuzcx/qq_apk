@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.launcher.annotation;
 
-import beqn;
-import beqo;
+import bere;
+import berf;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class JsonORM
 {
-  private static final Map<Class, beqo[]> a = new IdentityHashMap();
+  private static final Map<Class, berf[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -45,7 +45,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (beqo[])a.get(paramClass);
+    Object localObject2 = (berf[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -199,25 +199,25 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<beqo> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<berf> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      beqn localbeqn = (beqn)localField.getAnnotation(beqn.class);
-      if (localbeqn == null) {}
+      bere localbere = (bere)localField.getAnnotation(bere.class);
+      if (localbere == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new beqo(localbeqn.a(), a(localField.getType()), localField));
+        paramArrayList.add(new berf(localbere.a(), a(localField.getType()), localField));
       }
     }
   }
   
-  private static beqo[] a(Class<?> paramClass)
+  private static berf[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -225,7 +225,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new beqo[localArrayList.size()];
+    paramClass = new berf[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

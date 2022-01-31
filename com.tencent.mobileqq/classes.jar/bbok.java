@@ -1,12 +1,24 @@
-import android.graphics.Bitmap;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class bbok
+class bbok
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public int a;
-  public Bitmap a;
-  public float[] a;
-  public int[] a;
-  public int b;
+  bbok(bboj parambboj) {}
+  
+  public int getSpanSize(int paramInt)
+  {
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
+    {
+    default: 
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
+    }
+    return 1;
+  }
 }
 
 

@@ -1,45 +1,35 @@
-import android.view.View;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.widget.ListView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.widget.ScrollView;
 
 public class xek
-  implements bftk
 {
-  public xek(RefreshView paramRefreshView) {}
+  private static final String jdField_a_of_type_JavaLangString = xek.class.getSimpleName();
+  private float jdField_a_of_type_Float;
+  public int a;
+  public bfuc a;
+  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
+  public boolean a;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public xek(ScrollView paramScrollView, TouchWebView paramTouchWebView)
   {
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      this.a.jdField_a_of_type_Xed.ao_();
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
+    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
       return;
     }
-    this.a.jdField_a_of_type_Xed.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2)
-    {
-      RefreshView.a(this.a, false);
-      this.a.a(RefreshView.a(this.a));
-      this.a.jdField_a_of_type_Xed.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
-    }
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2) {
-      this.a.jdField_a_of_type_Xed.b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
   }
 }
 

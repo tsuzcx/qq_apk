@@ -1,28 +1,55 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-class awxt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class awxt
+  extends awto
 {
-  awxt(awxs paramawxs) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private awxu jdField_a_of_type_Awxu;
   
-  public void onGlobalLayout()
+  public awxt(awtc paramawtc, Context paramContext)
   {
-    if (awxs.a(this.a) != null)
+    super(paramawtc, paramContext);
+  }
+  
+  private void a()
+  {
+    String str = a();
+    if (!TextUtils.isEmpty(str))
     {
-      if (Build.VERSION.SDK_INT >= 16) {
-        awxs.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      if (QLog.isColorLevel()) {
+        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
       }
-      ViewGroup.LayoutParams localLayoutParams = awxs.a(this.a).getLayoutParams();
-      if (localLayoutParams != null)
-      {
-        localLayoutParams.height = ((int)(awxs.a(this.a).getWidth() / 2.3F));
-        awxs.a(this.a).requestLayout();
-      }
+      this.jdField_a_of_type_Awxu.a();
+      this.jdField_a_of_type_Awxu.a(str);
+      this.jdField_a_of_type_Awxu.b();
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
+  }
+  
+  private void b(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559623, null, false);
+    this.jdField_a_of_type_Awxu.a(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public View a(Context paramContext)
+  {
+    this.jdField_a_of_type_Awxu = new awxu(paramContext);
+    b(paramContext);
+    a();
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void e()
+  {
+    a();
   }
 }
 

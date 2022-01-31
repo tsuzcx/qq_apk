@@ -1,260 +1,181 @@
-import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.opengl.effects.AEFilterSupport;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lhu
-  extends EffectConfigBase<FilterItem>
 {
-  static boolean jdField_a_of_type_Boolean;
-  static boolean b;
-  FilterItem jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = null;
-  private FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
+  static int jdField_a_of_type_Int = 0;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString = "";
+  static String b = "";
+  static String c = "";
   
-  public lhu(VideoAppInterface paramVideoAppInterface)
+  public static void a(int paramInt)
   {
-    super(paramVideoAppInterface);
-  }
-  
-  public static String a(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    int i;
-    int j;
-    do
+    if ((paramInt != 1) && (paramInt != 3) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
     {
-      return paramString;
-      i = paramString.lastIndexOf(".");
-      j = paramString.lastIndexOf(File.separator);
-      if (j != -1) {
-        break;
-      }
-    } while (i == -1);
-    return paramString.substring(0, i);
-    if (i == -1) {
-      return paramString.substring(j + 1);
-    }
-    if (j < i) {}
-    for (paramString = paramString.substring(j + 1, i);; paramString = paramString.substring(j + 1)) {
-      return paramString;
+      long l = System.currentTimeMillis();
+      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+      jdField_a_of_type_JavaLangString = "";
+      jdField_a_of_type_Int = 0;
     }
   }
   
-  public static boolean a()
+  public static void a(int paramInt, String paramString)
   {
-    if (b) {
-      return true;
+    g(paramString);
+    if (!TextUtils.isEmpty(b)) {
+      a("0X8008025", b);
     }
-    if ((!lpz.a(8, 1400000L)) && (!lpz.a(4, 2150000L))) {
-      return false;
-    }
-    lpi locallpi = lpi.a();
-    if ((locallpi != null) && (!locallpi.b()))
-    {
-      lcl.c("EffectFilterTools", "isSupportGesture false");
-      return false;
-    }
-    b = true;
-    return b;
   }
   
-  public static boolean a(Context paramContext)
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (jdField_a_of_type_Boolean) {
-      bool1 = jdField_a_of_type_Boolean;
-    }
-    do
+    if ((paramVideoAppInterface != null) && (paramString != null))
     {
-      do
-      {
-        return bool1;
-        if (!lpz.e())
-        {
-          lcl.c("EffectFilterTools", "isSupport Error: 1");
-          return false;
-        }
-        bool1 = bool2;
-      } while (!lpz.a(4, 1400000L));
-      if (paramContext == null) {
-        break;
-      }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(lcy.b(132).a));
-    paramContext = lpi.a();
-    if ((paramContext != null) && (!paramContext.a()))
-    {
-      lcl.c("EffectFilterTools", "  isSupportFilter false");
-      return false;
-    }
-    jdField_a_of_type_Boolean = true;
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(PendantItem paramPendantItem)
-  {
-    if (paramPendantItem == null) {
-      return false;
-    }
-    boolean bool;
-    if (AEFilterSupport.a()) {
-      if (!PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind())) {
-        bool = true;
+      g(paramString);
+      paramVideoAppInterface = (liz)paramVideoAppInterface.a(5);
+      boolean bool = paramVideoAppInterface.a(3, "normal");
+      if ((paramVideoAppInterface.a(3, "interact")) || (bool)) {
+        a("0X8008026", null);
       }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, ptu[%s], support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(AEFilterSupport.a()), Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
-      }
-      return bool;
-      bool = false;
-      continue;
-      if (!PendantItem.isOnlySupportNewFilter(paramPendantItem.getKind())) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 132;
-  }
-  
-  public FilterDesc a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
-  }
-  
-  public Class<?> a()
-  {
-    return FilterItem.class;
-  }
-  
-  public String a(FilterItem paramFilterItem)
-  {
-    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.getResurl())) && (!TextUtils.isEmpty(paramFilterItem.getId())))
-    {
-      String str = b(paramFilterItem);
-      paramFilterItem = a(paramFilterItem.getResurl());
-      return str + paramFilterItem;
-    }
-    return null;
-  }
-  
-  public List<FilterItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
-    {
-    default: 
       return;
     }
-    a(paramLong, null);
+    a("0X8008027", null);
   }
   
-  public void a(long paramLong, PendantItem paramPendantItem)
+  public static void a(String paramString)
   {
-    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getFilterName())))
+    g(paramString);
+    a("0X8008021", null);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if ((paramInt == 1) || (paramInt == 3))
     {
-      b(paramLong, (FilterItem)a(paramPendantItem.getFilterName()));
+      a(paramString, 10L, paramInt);
       return;
     }
-    b(paramLong, this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem);
-  }
-  
-  protected void a(FilterItem paramFilterItem) {}
-  
-  public boolean a(long paramLong, FilterItem paramFilterItem)
-  {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerFilterFilterItem = paramFilterItem;
-    return b(paramLong, paramFilterItem);
-  }
-  
-  protected boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    super.b();
-    boolean bool1 = bool2;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
     {
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = 0;
-      if (paramString.hasNext())
+      long l = System.currentTimeMillis();
+      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+    }
+    jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    g(paramString2);
+    b = paramString1;
+  }
+  
+  public static void a(String paramString, long paramLong, int paramInt)
+  {
+    lcg.c("MagicDataReport", "DOUBLE SCREEN DataReport onStateReport: |" + paramString + "|" + paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("activeName", paramString);
+    localHashMap.put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatFace", true, -1L, -1L, localHashMap, true);
+    try
+    {
+      UserAction.flushObjectsToDB(true);
+      int i = 0;
+      switch (paramInt)
       {
-        FilterItem localFilterItem = (FilterItem)paramString.next();
-        long l = AudioHelper.b();
-        if (AudioHelper.e()) {
-          QLog.w("EffectFilterTools", 1, "preDownloadResource, seq[" + l + "], res[" + localFilterItem.getResurl() + "], icon[" + localFilterItem.getIconurl() + "]");
+      default: 
+        paramInt = i;
+        if (paramInt != 0) {
+          b(paramInt, paramString);
         }
-        if (localFilterItem.getPredownload() != 1) {
-          break label185;
-        }
-        j += 1;
-        if ((!TextUtils.isEmpty(localFilterItem.getResurl())) && (!localFilterItem.isUsable())) {
-          a(l, localFilterItem);
-        }
+        return;
       }
     }
-    label185:
-    for (;;)
+    catch (Exception localException)
     {
-      break;
-      i += 1;
-      continue;
-      bool1 = bool2;
-      if (i == j) {
-        bool1 = true;
+      for (;;)
+      {
+        lcg.e("MagicDataReport", localException.getMessage());
+        continue;
+        paramInt = 3;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 5;
       }
-      return bool1;
     }
   }
   
-  boolean b(long paramLong, FilterItem paramFilterItem)
+  public static void a(String paramString1, String paramString2)
   {
-    boolean bool = super.a(paramLong, paramFilterItem);
-    lgf locallgf = VideoController.a().a();
-    if (TextUtils.isEmpty(a(paramFilterItem)))
+    a("CliOper", paramString1, 0, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    lcg.c("MagicDataReport", "reportClickEvent key = " + paramString2 + ", fromType = " + paramInt + ", value = " + paramString3 + ", mRoomId = " + c);
+    axqy.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    lcg.c("MagicDataReport", "WL_DEBUG reportChangeFace fromType = " + paramInt + ", id = " + paramString);
+    if ((TextUtils.isEmpty(c)) || (c.equals("0")))
     {
-      locallgf.a.clear(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+      VideoController localVideoController = VideoController.a();
+      c = localVideoController.a(localVideoController.a().d) + "";
     }
-    for (;;)
+    if (paramInt == 5)
     {
-      if (paramFilterItem != null) {
-        lhv.a((FilterItem)a());
-      }
-      return bool;
-      locallgf.a.set(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResurl(), paramFilterItem.getMd5(), paramFilterItem.getIconurl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.type = paramFilterItem.getFiltertype();
+      a("dc00898", "0X800984E", paramInt, paramString);
+      return;
+    }
+    a("dc00898", "0X80088B3", paramInt, paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    g(paramString);
+    a("0X800812F", null);
+  }
+  
+  public static void c(String paramString)
+  {
+    g(paramString);
+    a("0X8008130", null);
+  }
+  
+  public static void d(String paramString)
+  {
+    g(paramString);
+    a("0X800984D", null);
+  }
+  
+  public static void e(String paramString)
+  {
+    g(paramString);
+    a("0X8008131", null);
+  }
+  
+  public static void f(String paramString)
+  {
+    g(paramString);
+    a("0X8008022", null);
+  }
+  
+  static void g(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0"))) {
+      c = paramString;
     }
   }
 }

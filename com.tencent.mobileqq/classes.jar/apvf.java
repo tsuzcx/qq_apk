@@ -1,14 +1,18 @@
-public abstract interface apvf
+public abstract class apvf
 {
-  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3);
+  public void a() {}
   
-  public abstract long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4);
+  public void b() {}
   
-  public abstract String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3);
+  public void c() {}
   
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
+  public void d() {}
   
-  public abstract void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4);
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

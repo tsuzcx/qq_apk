@@ -1,8 +1,13 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.5.1;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class rwk
-  implements saf
+  implements sac
 {
   public rwk(ViolaFragment paramViolaFragment) {}
   
@@ -11,48 +16,31 @@ public class rwk
     this.a.a.b();
     this.a.a.d();
     if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "initViola success!");
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
     }
   }
   
   public void a(int paramInt)
   {
-    this.a.a.b();
-    this.a.a.c();
-    if (QLog.isColorLevel()) {
-      QLog.e("ViolaFragment", 2, "initViola error,error code=" + paramInt);
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
+    {
+      new Handler(localLooper).postDelayed(new ViolaFragment.5.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
+      }
+      return;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    if ((this.a.a.b()) && (paramBoolean))
-    {
-      if (Math.abs(paramInt1) < this.a.a.a() / 2) {
-        break label79;
-      }
-      if (!ViolaFragment.a(this.a))
-      {
-        this.a.a(Boolean.valueOf(false));
-        ahir.a(this.a.getActivity(), true);
-        ViolaFragment.a(this.a, true);
-      }
-    }
-    label79:
-    while (!ViolaFragment.a(this.a)) {
-      return;
-    }
-    this.a.a(Boolean.valueOf(true));
-    ahir.a(this.a.getActivity(), false);
-    ViolaFragment.a(this.a, false);
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
   
   public void a(String paramString, int paramInt) {}
   
   public void b(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "initViola process,process code=" + paramInt);
+      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
     }
   }
 }

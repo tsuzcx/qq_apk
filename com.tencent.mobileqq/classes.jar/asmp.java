@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class asmp
-  implements View.OnClickListener
+  implements RadioGroup.OnCheckedChangeListener
 {
   public asmp(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing())) {
-      MsgBackupDateFragment.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
     }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2131364706: 
+      MsgBackupDateFragment.a(this.a, 1);
+      return;
+    }
+    MsgBackupDateFragment.a(this.a, 2);
   }
 }
 

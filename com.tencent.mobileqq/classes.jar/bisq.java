@@ -1,14 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.2.1;
+import mqq.os.MqqHandler;
 
-class bisq
-  implements View.OnClickListener
+public class bisq
+  implements bjos<Boolean>
 {
-  bisq(biso parambiso) {}
+  bisq(bisp parambisp) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a.d();
+    ThreadManager.getSubThreadHandler().post(new AEVideoStoryGIFTplViewModel.2.1(this));
   }
 }
 

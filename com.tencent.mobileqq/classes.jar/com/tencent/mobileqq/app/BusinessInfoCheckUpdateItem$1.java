@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import ajtf;
-import ajzn;
-import ajzz;
-import akhe;
+import ajtd;
+import ajzl;
+import ajzx;
+import akbc;
+import akhd;
 import java.util.ArrayList;
 
 public final class BusinessInfoCheckUpdateItem$1
-  extends ArrayList<ajtf>
+  extends ArrayList<ajtd>
 {
   public BusinessInfoCheckUpdateItem$1()
   {
-    add(new akhe());
-    add(new ajzn());
-    add(new ajzz());
+    add(new akhd());
+    add(new ajzl());
+    add(new ajzx());
+    add(new akbc());
   }
 }
 

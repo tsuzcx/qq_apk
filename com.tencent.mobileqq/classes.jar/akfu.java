@@ -1,458 +1,303 @@
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.commonsdk.cache.QQHashMap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RoamSettingManager.1;
-import com.tencent.mobileqq.app.RoamSettingManager.2;
-import com.tencent.mobileqq.app.RoamSettingManager.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.RoamSetting;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.manager.Manager;
+import java.util.HashMap;
 
 public class akfu
-  implements Manager
 {
-  public aukn a;
-  public QQHashMap<String, RoamSetting> a;
-  RoamSetting a;
-  public Lock a;
-  public boolean a;
-  public QQHashMap<String, RoamSetting> b;
+  public static String a;
+  public static boolean a;
+  private static boolean jdField_b_of_type_Boolean;
+  private SQLiteOpenHelper jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper;
+  private aulq jdField_a_of_type_Aulq = new aulq();
+  private com.tencent.mobileqq.app.SQLiteDatabase jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase;
+  private com.tencent.mobileqq.app.SQLiteDatabase jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase;
   
-  public akfu(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aukn = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new QQHashMap(1003, 0, 60);
-    this.b = new QQHashMap(1004, 0, 60);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-    a();
+    jdField_a_of_type_JavaLangString = ajsd.aW + "WalFlag";
   }
   
-  private boolean a(String paramString)
+  public akfu(SQLiteOpenHelper paramSQLiteOpenHelper)
   {
-    boolean bool = false;
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      if ((i == -2) || (i == -1) || (i == 1) || (i == 2) || (i == 3) || (i == 4)) {
-        bool = true;
-      }
-      return bool;
+    QLog.d("SQLiteOpenHelper", 1, new Object[] { " new SQLiteOpenHelper  helper = ", paramSQLiteOpenHelper, " this = ", this });
+    if (QLog.isColorLevel()) {
+      QLog.d("SQLiteOpenHelper", 1, new Object[] { " new SQLiteOpenHelper, db name = ", paramSQLiteOpenHelper.getDatabaseName() });
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.e("RoamSettingManager", 1, paramString + "");
-    }
-    return false;
+    this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper = paramSQLiteOpenHelper;
   }
   
-  public int a()
+  public static final void a(Exception paramException) {}
+  
+  public com.tencent.mobileqq.app.SQLiteDatabase a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)this.jdField_a_of_type_Aukn.a(RoamSetting.class, "setting_revision"));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value == null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = null;
-      return 0;
-    }
-    try
-    {
-      i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "parse revision.value exception, revision.value=" + this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
+        localSQLiteDatabase = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getWritableDatabase();
+        if ((jdField_a_of_type_Boolean) && (bfnz.e()) && (localSQLiteDatabase != null))
+        {
+          boolean bool = jdField_b_of_type_Boolean;
+          if (bool) {}
         }
-        int i = 0;
       }
-    }
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    RoamSetting localRoamSetting2 = a(paramString);
-    RoamSetting localRoamSetting1 = localRoamSetting2;
-    if (localRoamSetting2 == null)
-    {
-      localRoamSetting1 = localRoamSetting2;
-      if (!TextUtils.isEmpty(paramString))
+      catch (Exception localException)
       {
-        localRoamSetting1 = new RoamSetting(paramString, Integer.toString(paramInt));
-        a(localRoamSetting1);
+        android.database.sqlite.SQLiteDatabase localSQLiteDatabase;
+        if (this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase == null) {
+          break label576;
+        }
+        Object localObject2 = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.hashCode());
+        QLog.e("SQLiteOpenHelper", 1, new Object[] { "getWritableDatabase error, ", "dbW = ", localObject2, " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+        QLog.e("SQLiteOpenHelper", 1, "getWritableDatabase", localException);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("SQLiteOpenHelper", 1, new Object[] { " getWritableDatabase error, db name = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getDatabaseName() });
+        a(localException);
+        continue;
       }
+      finally {}
+      try
+      {
+        localSQLiteDatabase.enableWriteAheadLogging();
+        if (localSQLiteDatabase == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("SQLiteOpenHelper", 1, new Object[] { "wdbIsNull, ", Integer.valueOf(this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.hashCode()), new Exception(), " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+          }
+        }
+        else
+        {
+          if ((this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase == null) || (this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.a != localSQLiteDatabase))
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase == null) {
+              break label582;
+            }
+            localObject1 = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.hashCode());
+            if (localSQLiteDatabase == null) {
+              break label588;
+            }
+            Integer localInteger = Integer.valueOf(localSQLiteDatabase.hashCode());
+            QLog.d("SQLiteOpenHelper", 1, new Object[] { "check dbWIsNull: ", localObject1, " dbIsNull: ", localInteger });
+            this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase = new com.tencent.mobileqq.app.SQLiteDatabase(localSQLiteDatabase, this.jdField_a_of_type_Aulq, this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getDatabaseName());
+            if (this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase == null) {
+              break label570;
+            }
+            localObject1 = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase.hashCode());
+            QLog.d("SQLiteOpenHelper", 1, new Object[] { "new dbW = ", localObject1, " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+          }
+          Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase;
+          return localObject1;
+        }
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        QLog.e("SQLiteOpenHelper", 1, new Object[] { "try WAL enalbe exception ", localIllegalStateException, " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+        if (QLog.isColorLevel()) {
+          QLog.d("SQLiteOpenHelper", 1, new Object[] { " try WAL enalbe exception, db name = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getDatabaseName() });
+        }
+        jdField_b_of_type_Boolean = true;
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("WriteWALException", "1");
+        axrn.a(BaseApplicationImpl.getApplication()).a(null, "actWALException", true, 0L, 0L, (HashMap)localObject2, null);
+        continue;
+      }
+      QLog.e("SQLiteOpenHelper", 1, new Object[] { "wdbIsNull, ", Integer.valueOf(this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.hashCode()), " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+      continue;
+      label570:
+      String str1 = "null";
+      continue;
+      label576:
+      str1 = "null";
+      continue;
+      label582:
+      str1 = "null";
+      continue;
+      label588:
+      String str2 = "null";
     }
-    return RoamSetting.getIntValue(localRoamSetting1, paramInt);
   }
   
   /* Error */
-  public RoamSetting a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: aload_0
-    //   7: getfield 49	akfu:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 139 1 0
-    //   15: aload_1
-    //   16: invokestatic 143	bbix:a	(Ljava/lang/String;)I
-    //   19: istore_2
-    //   20: iload_2
-    //   21: iconst_1
-    //   22: if_icmpne +106 -> 128
-    //   25: aload_0
-    //   26: getfield 44	akfu:b	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   29: aload_1
-    //   30: invokevirtual 147	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 89	com/tencent/mobileqq/data/RoamSetting
-    //   36: astore_3
-    //   37: aload_3
-    //   38: astore 4
-    //   40: aload_3
-    //   41: ifnonnull +75 -> 116
-    //   44: aload_3
-    //   45: astore 4
-    //   47: aload_0
-    //   48: getfield 21	akfu:jdField_a_of_type_Boolean	Z
-    //   51: ifne +65 -> 116
-    //   54: aload_0
-    //   55: getfield 35	akfu:jdField_a_of_type_Aukn	Laukn;
-    //   58: ldc 89
-    //   60: aload_1
-    //   61: invokevirtual 96	aukn:a	(Ljava/lang/Class;Ljava/lang/String;)Laukm;
-    //   64: checkcast 89	com/tencent/mobileqq/data/RoamSetting
-    //   67: astore_1
-    //   68: aload_1
-    //   69: astore 4
-    //   71: aload_1
-    //   72: ifnull +44 -> 116
-    //   75: aload_1
-    //   76: astore 4
-    //   78: aload_1
-    //   79: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   82: ifnull +34 -> 116
-    //   85: aload_1
-    //   86: astore 4
-    //   88: aload_1
-    //   89: getfield 100	com/tencent/mobileqq/data/RoamSetting:value	Ljava/lang/String;
-    //   92: ifnull +24 -> 116
-    //   95: iload_2
-    //   96: iconst_1
-    //   97: if_icmpne +46 -> 143
-    //   100: aload_0
-    //   101: getfield 44	akfu:b	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   104: aload_1
-    //   105: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   108: aload_1
-    //   109: invokevirtual 154	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   112: pop
-    //   113: aload_1
-    //   114: astore 4
-    //   116: aload_0
-    //   117: getfield 49	akfu:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   120: invokeinterface 157 1 0
-    //   125: aload 4
-    //   127: areturn
-    //   128: aload_0
-    //   129: getfield 42	akfu:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   132: aload_1
-    //   133: invokevirtual 147	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   136: checkcast 89	com/tencent/mobileqq/data/RoamSetting
-    //   139: astore_3
-    //   140: goto -103 -> 37
-    //   143: aload_0
-    //   144: getfield 42	akfu:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
-    //   147: aload_1
-    //   148: getfield 150	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
-    //   151: aload_1
-    //   152: invokevirtual 154	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   155: pop
-    //   156: aload_1
-    //   157: astore 4
-    //   159: goto -43 -> 116
-    //   162: astore_1
-    //   163: aload_0
-    //   164: getfield 49	akfu:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   167: invokeinterface 157 1 0
-    //   172: aload_1
-    //   173: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	akfu
-    //   0	174	1	paramString	String
-    //   19	79	2	i	int
-    //   36	104	3	localRoamSetting	RoamSetting
-    //   38	120	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	20	162	finally
-    //   25	37	162	finally
-    //   47	68	162	finally
-    //   78	85	162	finally
-    //   88	95	162	finally
-    //   100	113	162	finally
-    //   128	140	162	finally
-    //   143	156	162	finally
-  }
-  
-  public RoamSetting a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return null;
-    }
-    RoamSetting localRoamSetting = a(paramString1);
-    if (localRoamSetting == null)
-    {
-      localRoamSetting = new RoamSetting(paramString1, paramString2);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    for (;;)
-    {
-      try
-      {
-        if (bbix.a(paramString1) == 1)
-        {
-          if (a(paramString2))
-          {
-            this.b.put(localRoamSetting.path, localRoamSetting);
-            return localRoamSetting;
-            if (paramString2.equals(localRoamSetting.value)) {
-              return null;
-            }
-            localRoamSetting.value = paramString2;
-            break;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramString1 + ", value:" + paramString2);
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-    }
-  }
-  
   public void a()
   {
-    ThreadManager.post(new RoamSettingManager.1(this), 8, null, false);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 172	akfu:jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   6: ifnull +94 -> 100
+    //   9: aload_0
+    //   10: getfield 172	akfu:jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   13: invokevirtual 98	java/lang/Object:hashCode	()I
+    //   16: invokestatic 104	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   19: astore_1
+    //   20: aload_0
+    //   21: getfield 111	akfu:jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   24: ifnull +82 -> 106
+    //   27: aload_0
+    //   28: getfield 111	akfu:jdField_a_of_type_ComTencentMobileqqAppSQLiteDatabase	Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   31: invokevirtual 98	java/lang/Object:hashCode	()I
+    //   34: invokestatic 104	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   37: astore_2
+    //   38: ldc 45
+    //   40: iconst_1
+    //   41: bipush 8
+    //   43: anewarray 4	java/lang/Object
+    //   46: dup
+    //   47: iconst_0
+    //   48: ldc 174
+    //   50: aastore
+    //   51: dup
+    //   52: iconst_1
+    //   53: aload_1
+    //   54: aastore
+    //   55: dup
+    //   56: iconst_2
+    //   57: ldc 176
+    //   59: aastore
+    //   60: dup
+    //   61: iconst_3
+    //   62: aload_2
+    //   63: aastore
+    //   64: dup
+    //   65: iconst_4
+    //   66: ldc 107
+    //   68: aastore
+    //   69: dup
+    //   70: iconst_5
+    //   71: aload_0
+    //   72: getfield 68	akfu:jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper	Landroid/database/sqlite/SQLiteOpenHelper;
+    //   75: aastore
+    //   76: dup
+    //   77: bipush 6
+    //   79: ldc 49
+    //   81: aastore
+    //   82: dup
+    //   83: bipush 7
+    //   85: aload_0
+    //   86: aastore
+    //   87: invokestatic 55	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   90: aload_0
+    //   91: getfield 68	akfu:jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper	Landroid/database/sqlite/SQLiteOpenHelper;
+    //   94: invokevirtual 179	android/database/sqlite/SQLiteOpenHelper:close	()V
+    //   97: aload_0
+    //   98: monitorexit
+    //   99: return
+    //   100: ldc 170
+    //   102: astore_1
+    //   103: goto -83 -> 20
+    //   106: ldc 170
+    //   108: astore_2
+    //   109: goto -71 -> 38
+    //   112: astore_1
+    //   113: aload_0
+    //   114: monitorexit
+    //   115: aload_1
+    //   116: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	this	akfu
+    //   19	84	1	localObject1	Object
+    //   112	4	1	localObject2	Object
+    //   37	72	2	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	112	finally
+    //   20	38	112	finally
+    //   38	97	112	finally
   }
   
-  public void a(int paramInt)
+  public com.tencent.mobileqq.app.SQLiteDatabase b()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting != null)
-    {
-      localObject = Integer.toString(paramInt);
-      if (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value = ((String)localObject);
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting);
-      return;
-      localObject = new RoamSetting();
-      ((RoamSetting)localObject).path = "setting_revision";
-      ((RoamSetting)localObject).value = Integer.toString(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)localObject);
-    }
-  }
-  
-  public void a(RoamSetting paramRoamSetting)
-  {
-    if ((paramRoamSetting == null) || (paramRoamSetting.path == null) || (paramRoamSetting.value == null)) {
-      return;
-    }
-    int j = bbix.a(paramRoamSetting.path);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    if (j == 1) {}
     for (;;)
     {
       try
       {
-        if (a(paramRoamSetting.value))
+        localSQLiteDatabase = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getReadableDatabase();
+        if ((jdField_a_of_type_Boolean) && (bfnz.e()) && (localSQLiteDatabase != null))
         {
-          this.b.put(paramRoamSetting.path, paramRoamSetting);
-          i = 1;
-          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-          if ((j == 1) && (i == 0)) {
-            break;
-          }
-          if (Looper.myLooper() == Looper.getMainLooper()) {
-            break label182;
-          }
-          a(paramRoamSetting);
-          return;
+          boolean bool = jdField_b_of_type_Boolean;
+          if (bool) {}
         }
+      }
+      catch (Exception localException)
+      {
+        android.database.sqlite.SQLiteDatabase localSQLiteDatabase;
+        if (this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase == null) {
+          break label562;
+        }
+        Object localObject2 = Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase.hashCode());
+        QLog.e("SQLiteOpenHelper", 1, new Object[] { "getReadableDatabase error, ", "dbR = ", localObject2, " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+        QLog.e("SQLiteOpenHelper", 1, "getReadableDatabase", localException);
         if (!QLog.isColorLevel()) {
-          break label199;
+          continue;
         }
-        QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramRoamSetting.path + ", value:" + paramRoamSetting.value);
-        i = 0;
+        QLog.d("SQLiteOpenHelper", 1, new Object[] { " getReadableDatabase error, db name = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getDatabaseName() });
+        a(localException);
         continue;
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramRoamSetting.path, paramRoamSetting);
-        i = 1;
-        continue;
-        ThreadManagerV2.excute(new RoamSettingManager.2(this, paramRoamSetting), 32, null, false);
       }
-      finally
+      finally {}
+      try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      label182:
-      return;
-      label199:
-      int i = 0;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    RoamSetting localRoamSetting = a(paramString);
-    if ((localRoamSetting == null) || (localRoamSetting.path == null) || (localRoamSetting.value == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      if (bbix.a(paramString) == 1) {
-        this.b.remove(localRoamSetting.path);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-          break;
-        }
-        ThreadManager.post(new RoamSettingManager.3(this, localRoamSetting), 5, null, false);
-        return;
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.remove(localRoamSetting.path);
-      }
-      b(localRoamSetting);
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public void a(List<RoamSetting> paramList)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    try
-    {
-      aukp localaukp = this.jdField_a_of_type_Aukn.a();
-      localObject1 = localaukp;
-      localObject2 = localaukp;
-      localaukp.a();
-      if (paramList != null)
-      {
-        int i = 0;
-        for (;;)
+        localSQLiteDatabase.enableWriteAheadLogging();
+        if (localSQLiteDatabase == null)
         {
-          localObject1 = localaukp;
-          localObject2 = localaukp;
-          if (i >= paramList.size()) {
-            break;
+          if (QLog.isColorLevel()) {
+            QLog.e("SQLiteOpenHelper", 1, new Object[] { "rdbIsNull, ", Integer.valueOf(this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.hashCode()), new Exception(), " this =", this });
           }
-          localObject1 = localaukp;
-          localObject2 = localaukp;
-          a((aukm)paramList.get(i));
-          i += 1;
+        }
+        else
+        {
+          if ((this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase == null) || (this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase.a != localSQLiteDatabase))
+          {
+            if (this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase == null) {
+              break label568;
+            }
+            localObject1 = Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase.hashCode());
+            if (localSQLiteDatabase == null) {
+              break label574;
+            }
+            Integer localInteger = Integer.valueOf(localSQLiteDatabase.hashCode());
+            QLog.d("SQLiteOpenHelper", 1, new Object[] { "check dbRIsNull: ", localObject1, " dbIsNull: ", localInteger });
+            this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase = new com.tencent.mobileqq.app.SQLiteDatabase(localSQLiteDatabase, this.jdField_a_of_type_Aulq, this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getDatabaseName());
+            if (this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase == null) {
+              break label556;
+            }
+            localObject1 = Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase.hashCode());
+            QLog.d("SQLiteOpenHelper", 1, new Object[] { "new dbR = ", localObject1, " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+          }
+          Object localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppSQLiteDatabase;
+          return localObject1;
         }
       }
-      localObject1 = localaukp;
-      localObject2 = localaukp;
-      localaukp.c();
-      return;
-    }
-    catch (Exception paramList)
-    {
-      localObject2 = localObject1;
-      paramList.printStackTrace();
-      localObject2 = localObject1;
-      if (QLog.isColorLevel())
+      catch (IllegalStateException localIllegalStateException)
       {
-        localObject2 = localObject1;
-        QLog.w("RoamSettingManager", 2, "insert write exception: " + paramList.getMessage());
+        QLog.e("SQLiteOpenHelper", 1, new Object[] { "try WAL enalbe exception ", localIllegalStateException, " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+        if (QLog.isColorLevel()) {
+          QLog.d("SQLiteOpenHelper", 1, new Object[] { " try WAL enalbe exception, db name = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.getDatabaseName() });
+        }
+        jdField_b_of_type_Boolean = true;
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("ReadWALException", "1");
+        axrn.a(BaseApplicationImpl.getApplication()).a(null, "actWALException", true, 0L, 0L, (HashMap)localObject2, null);
+        continue;
       }
-      return;
-    }
-    finally
-    {
-      if (localObject2 != null) {
-        localObject2.b();
-      }
-    }
-  }
-  
-  public boolean a(aukm paramaukm)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Aukn.a())
-    {
-      if (paramaukm.getStatus() != 1000) {
-        break label48;
-      }
-      this.jdField_a_of_type_Aukn.b(paramaukm);
-      bool1 = bool2;
-      if (paramaukm.getStatus() == 1001) {
-        bool1 = true;
-      }
-    }
-    label48:
-    do
-    {
-      return bool1;
-      if (paramaukm.getStatus() == 1001) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramaukm.getStatus() != 1002);
-    return this.jdField_a_of_type_Aukn.a(paramaukm);
-  }
-  
-  public boolean b(aukm paramaukm)
-  {
-    if (this.jdField_a_of_type_Aukn.a()) {
-      return this.jdField_a_of_type_Aukn.b(paramaukm);
-    }
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap != null) {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.clear();
-    }
-    if ((this.jdField_a_of_type_Aukn != null) && (this.jdField_a_of_type_Aukn.a())) {
-      this.jdField_a_of_type_Aukn.a();
+      QLog.e("SQLiteOpenHelper", 1, new Object[] { "rdbIsNull, ", Integer.valueOf(this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper.hashCode()), " helper = ", this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteOpenHelper, " this = ", this });
+      continue;
+      label556:
+      String str1 = "null";
+      continue;
+      label562:
+      str1 = "null";
+      continue;
+      label568:
+      str1 = "null";
+      continue;
+      label574:
+      String str2 = "null";
     }
   }
 }

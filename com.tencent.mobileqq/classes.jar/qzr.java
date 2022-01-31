@@ -1,135 +1,51 @@
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class qzr
+class qzr
+  implements View.OnClickListener
 {
-  private static qzr jdField_a_of_type_Qzr;
-  private int jdField_a_of_type_Int = 0;
-  private int b = 0;
+  qzr(qzo paramqzo, Activity paramActivity) {}
   
-  private qzr()
+  public void onClick(View paramView)
   {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(218);
-    if (localAladdinConfig != null)
+    int i;
+    Bundle localBundle;
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      this.jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("daily_diandian_icon_mode_pure", 0);
-      this.b = localAladdinConfig.getIntegerFromString("daily_diandian_icon_mode_mix", 0);
-      QLog.d("DailyFeedsDiandianEntranceManager", 1, "Daily entry pure : " + this.jdField_a_of_type_Int + ", mix : " + this.b);
-    }
-  }
-  
-  private String a()
-  {
-    int i = -1;
-    int j = a();
-    if (j == 2) {
-      i = 5;
-    }
-    for (;;)
-    {
-      try
+      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to config feeds");
+      i = bhvy.e();
+      localBundle = new Bundle();
+      if ((paramView instanceof ReadInJoyColorBandEntranceButton))
       {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("diandianfeeds_type", i);
-        ((JSONObject)localObject).put("trigger_src", 1);
-        ((JSONObject)localObject).put("channel_id", olm.b());
-        localObject = ((JSONObject)localObject).toString();
-        return localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if (j == 3) {
-        i = 6;
-      } else if (j == 1) {
-        i = RecommendFeedsDiandianEntranceManager.a().a();
+        paramView = ((ReadInJoyColorBandEntranceButton)paramView).a();
+        if (!(paramView instanceof Parcelable)) {
+          break label82;
+        }
+        localBundle.putParcelable("daily_bottom_entry_data", (Parcelable)paramView);
       }
     }
-    return "";
-  }
-  
-  public static qzr a()
-  {
-    if (jdField_a_of_type_Qzr == null) {}
-    try
+    label82:
+    while ((i != 3) && (i != 4))
     {
-      if (jdField_a_of_type_Qzr == null) {
-        jdField_a_of_type_Qzr = new qzr();
-      }
-      return jdField_a_of_type_Qzr;
+      localBundle.putInt("daily_bottom_triger_src", 1);
+      rcb.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
+      this.jdField_a_of_type_Qzo.b();
+      return;
     }
-    finally {}
-  }
-  
-  public static rva a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getParcelable("daily_bottom_entry_data");
-    if ((paramBundle instanceof rva)) {
-      return (rva)paramBundle;
-    }
-    return null;
-  }
-  
-  public static boolean a(Bundle paramBundle)
-  {
-    return paramBundle.containsKey("daily_bottom_entry_data");
-  }
-  
-  public int a()
-  {
-    if (!bhvh.i())
+    RecommendFeedsDiandianEntranceManager.EntranceIconInfo localEntranceIconInfo = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
+    if (i == 4) {}
+    for (paramView = "https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&_wwv=1&_wvSb=0&_nav_txtclr=00000&from=kdybrk&target=hot&_nav_titleclr=000000&_wvNlb=0xffffff";; paramView = "mqqapi://readinjoy/open?src_type=internal&ispush=1&target=2&readinjoyNotDecodeUrl=1&version=1&channelid=70&channelname=看点关注&channelType=0&changeChannelOrder=true&moveChannelFromSource=0")
     {
-      QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode | hide mode");
-      return 0;
+      localEntranceIconInfo.c = paramView;
+      localBundle.putParcelable("daily_bottom_entry_data", localEntranceIconInfo);
+      break;
     }
-    if (oox.a(oox.b()))
-    {
-      QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode |  entryModeInNormalDaily : " + this.jdField_a_of_type_Int);
-      return this.jdField_a_of_type_Int;
-    }
-    QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode |  entryModeInMixDaily : " + this.b);
-    return this.b;
-  }
-  
-  public View.OnClickListener a(Activity paramActivity, View paramView, ntu paramntu)
-  {
-    switch (a())
-    {
-    case 1: 
-    default: 
-      return new qzu(this, paramActivity);
-    case 3: 
-      return new qzs(this, paramntu);
-    case 0: 
-      return null;
-    }
-    return new qzt(this, paramActivity);
-  }
-  
-  public void a()
-  {
-    if (a() != 0) {
-      noo.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", a(), false);
-    }
-  }
-  
-  public boolean a()
-  {
-    return a() != 0;
-  }
-  
-  public void b()
-  {
-    noo.a(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", a(), false);
   }
 }
 

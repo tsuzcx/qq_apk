@@ -1,96 +1,65 @@
-import android.text.TextUtils;
+import android.graphics.Rect;
+import android.view.View;
+import java.util.ArrayList;
 
-public class aofp
+class aofp
+  implements aolq
 {
-  public int a;
-  public long a;
-  public aofc a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "0";
-  public String f = "";
+  aofp(aofo paramaofo, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
   
-  public aofp()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 1;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public aofp a()
+  public Rect a(int paramInt)
   {
-    aofp localaofp = new aofp();
-    localaofp.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaofp.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
-    localaofp.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localaofp.c = this.c;
-    localaofp.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    localaofp.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localaofp.e = this.e;
-    return localaofp;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = bbbd.a("");
-    this.jdField_b_of_type_JavaLangString = "";
-    this.c = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "0";
-    this.jdField_b_of_type_Int = 0;
-    this.f = "";
-    this.jdField_a_of_type_Aofc = null;
-  }
-  
-  public boolean a()
-  {
-    String str = bbbd.a(this.jdField_a_of_type_ArrayOfByte);
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    do
+    Rect localRect = new Rect(0, 0, 0, 0);
+    int i = a();
+    if (i > 1)
     {
-      do
+      if (paramInt == 0)
       {
-        return false;
-      } while (!(paramObject instanceof aofp));
-      paramObject = (aofp)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
+        localRect.right = this.b;
+        localRect.left = (this.b * 2);
+      }
+    }
+    else {
+      return localRect;
+    }
+    if (paramInt == i - 1)
+    {
+      localRect.left = this.b;
+      localRect.right = (this.b * 2);
+      return localRect;
+    }
+    paramInt = this.b;
+    localRect.right = paramInt;
+    localRect.left = paramInt;
+    return localRect;
   }
   
-  public String toString()
+  public View a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    String str = bbbd.a(this.jdField_a_of_type_ArrayOfByte);
-    int i = 0;
-    if (str != null) {
-      i = str.length();
+    int j = a();
+    if (j <= b()) {}
+    for (int i = 2131560739;; i = 2131560740)
+    {
+      View localView = View.inflate(this.jdField_a_of_type_Aofo.itemView.getContext(), i, null);
+      aofo.a(this.jdField_a_of_type_Aofo, localView, (aofn)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
+      aofo.a(this.jdField_a_of_type_Aofo, (aofn)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
+      return localView;
     }
-    localStringBuilder.append("{sig: ").append(i).append("}");
-    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{nickName: ").append(this.d).append("}");
-    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
-    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.f).append("}");
-    if (this.jdField_a_of_type_Aofc != null) {
-      localStringBuilder.append(this.jdField_a_of_type_Aofc.toString());
-    }
-    return localStringBuilder.toString();
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

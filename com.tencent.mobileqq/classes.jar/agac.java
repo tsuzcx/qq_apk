@@ -1,5 +1,4 @@
 import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
@@ -11,10 +10,42 @@ public class agac
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_d_of_type_Int == 11) {
-      axqw.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    int i;
+    do
+    {
+      return;
+      i = ((Integer)localObject).intValue();
+    } while (i < 0);
+    paramView = paramView.findViewById(2131378259);
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
+    {
+      if (bool)
+      {
+        paramView = (agas)this.a.jdField_a_of_type_Agaw.getItem(i);
+        this.a.a(paramView);
+        if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
+          this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
+        }
+        if (this.a.jdField_d_of_type_Int != 11) {
+          break;
+        }
+        axqy.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
+        return;
+      }
+      paramView = (agas)this.a.jdField_a_of_type_Agau.getItem(i);
+      this.a.a(paramView);
+      if (this.a.jdField_d_of_type_Int == 11) {
+        axqy.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+      }
+      if (this.a.jdField_d_of_type_Int != 18) {
+        break;
+      }
+      axqy.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
+      return;
     }
-    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
   }
 }
 

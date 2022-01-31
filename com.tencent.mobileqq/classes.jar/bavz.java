@@ -1,32 +1,45 @@
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
 
 final class bavz
   implements DownloadParams.DecodeHandler
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "mRoundCornerDecoder---------------");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
+    if ((paramBitmap == null) || (paramDownloadParams == null)) {}
+    int i;
+    int j;
+    int k;
+    int m;
     do
     {
       do
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bbdr.b(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+        return paramBitmap;
+        paramDownloadParams = paramDownloadParams.tag;
+      } while ((!(paramDownloadParams instanceof int[])) || (((int[])paramDownloadParams).length != 4));
+      paramDownloadParams = (int[])paramDownloadParams;
+      i = paramDownloadParams[0];
+      j = paramDownloadParams[1];
+      k = paramDownloadParams[2];
+      m = paramDownloadParams[3];
+    } while ((k <= 0) || (m <= 0) || ((k == paramBitmap.getWidth()) && (m == paramBitmap.getHeight())));
+    try
+    {
+      paramDownloadParams = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(paramDownloadParams);
+      Matrix localMatrix = new Matrix();
+      bavw.a(localMatrix, paramBitmap.getWidth(), paramBitmap.getHeight(), k, m, i, j);
+      localCanvas.drawBitmap(paramBitmap, localMatrix, new Paint(6));
+      return paramDownloadParams;
+    }
+    catch (OutOfMemoryError paramDownloadParams) {}
+    return paramBitmap;
   }
 }
 

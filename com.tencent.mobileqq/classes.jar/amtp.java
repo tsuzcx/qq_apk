@@ -1,80 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amtp
-  extends ampb<amto>
 {
-  public static amto a()
+  private amtq jdField_a_of_type_Amtq;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public amtp()
   {
-    return (amto)ampm.a().a(426);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Amtq = new amtq();
   }
   
-  public static boolean e()
+  public amtp(String paramString, amtq paramamtq)
   {
-    amto localamto = a();
-    if (localamto != null) {}
-    for (boolean bool = localamto.c();; bool = false)
-    {
-      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
-      return bool;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amtq = paramamtq;
   }
   
-  public int a()
+  public amtq a()
   {
-    return 426;
+    return this.jdField_a_of_type_Amtq;
   }
   
-  @NonNull
-  public amto a(int paramInt)
+  public String a()
   {
-    return new amto();
-  }
-  
-  @Nullable
-  public amto a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      new amto();
-      return amto.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<amto> a()
-  {
-    return amto.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amto paramamto)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramamto.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

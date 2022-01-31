@@ -1,19 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
 class xja
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  xja(xit paramxit) {}
+  xja(xiz paramxiz, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      xit.a(this.a, paramIntent);
-      xit.d(this.a);
-      xit.c(this.a);
+    if (xiz.a(this.jdField_a_of_type_Xiz) != null) {
+      xiz.a(this.jdField_a_of_type_Xiz).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
     }
   }
 }

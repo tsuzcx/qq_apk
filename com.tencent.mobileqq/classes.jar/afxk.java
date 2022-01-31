@@ -1,20 +1,52 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class afxk
+  implements View.OnClickListener
 {
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
-  public TextView c;
+  public afxk(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
   
-  public afxk(afxi paramafxi) {}
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof String)) {
+      return;
+    }
+    Object localObject1 = (ChatMessage)((afxi)paramView.getTag()).a;
+    if (this.a.c)
+    {
+      this.a.jdField_a_of_type_Agbd.a(localObject1);
+      this.a.jdField_a_of_type_Afxg.notifyDataSetChanged();
+    }
+    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
+    {
+      this.a.jdField_a_of_type_Afxg.notifyDataSetChanged();
+      return;
+    }
+    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
+    Object localObject2;
+    if ((localObject1 instanceof StructMsgForGeneralShare))
+    {
+      localObject2 = (StructMsgForGeneralShare)localObject1;
+      axvm localaxvm = new axvm(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
+      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localaxvm);
+    }
+    for (;;)
+    {
+      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
+      break;
+      if ((localObject1 instanceof StructMsgForAudioShare))
+      {
+        localObject2 = (StructMsgForAudioShare)localObject1;
+        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
+      }
+    }
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -23,7 +23,7 @@ import tencent.im.oidb.cmd0xa28.oidb_0xa28.RoleInfo;
 import tencent.im.oidb.cmd0xa28.oidb_0xa28.RspBody;
 
 public class KplCard
-  extends aukm
+  extends auko
 {
   public String bgUrl;
   public String commonInfo;
@@ -32,13 +32,13 @@ public class KplCard
   public int gender;
   public long mvpLevel;
   public String qqNick;
-  @aulx
+  @aulz
   public List<KplRoleInfo> roleList;
   public long round;
   public String sRoleList;
   public String score;
   public long superLevel;
-  @auma
+  @aumc
   public String uin;
   
   public static KplCard parseProto(oidb_0xa28.RspBody paramRspBody, String paramString)

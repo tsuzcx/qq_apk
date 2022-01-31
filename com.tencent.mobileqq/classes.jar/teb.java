@@ -1,76 +1,84 @@
-import java.io.File;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-class teb
-  extends tfc
+public class teb
+  extends syn
 {
-  teb(tea paramtea, stz paramstz)
-  {
-    super(paramstz);
-  }
+  @NonNull
+  public final String a;
+  @NonNull
+  public final List<FilterItem> a;
+  public final boolean a;
+  public final int b;
   
-  protected tff a(tfe... paramVarArgs)
+  public teb(byte[] paramArrayOfByte)
   {
-    tff localtff = super.a(paramVarArgs);
-    paramVarArgs = paramVarArgs[0];
-    String str;
-    if (localtff.jdField_a_of_type_Int == 0) {
-      str = paramVarArgs.b.substring(0, paramVarArgs.b.length() - 4);
-    }
-    try
+    Object localObject1 = new qqstory_service.RspGetFilterList();
+    for (;;)
     {
-      vyi.d(str);
-      label42:
-      int i = nay.a(paramVarArgs.b, str);
-      if (i == 0)
+      try
       {
-        if (tea.a(str, false)) {
+        ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
+        this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
+        this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
+        if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
+          this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
+          paramArrayOfByte = new ArrayList();
+          localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
+          tdt localtdt = new tdt();
+          localtdt.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
+          localtdt.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
+          localtdt.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
+          localtdt.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
+          localtdt.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
           try
           {
-            paramVarArgs = this.a.a(new File(str, "config.json"));
-            if (paramVarArgs != null)
-            {
-              veg.d("FileDownloadTask", "parse config file success !");
-              this.a.a.put(str, paramVarArgs);
-              return localtff;
-            }
+            localObject2 = localtdt.a();
+            paramArrayOfByte.add(localObject2);
+            ved.d("VideoFilterManager", "GET Filter : id=%d, name=%s, type=%d, url=%s, md5=%s", new Object[] { Long.valueOf(((FilterItem)localObject2).filterId), ((FilterItem)localObject2).filterName, Integer.valueOf(((FilterItem)localObject2).filterType), ((FilterItem)localObject2).filterConfigUrl, ((FilterItem)localObject2).filterConfigMd5 });
           }
-          catch (Exception paramVarArgs)
+          catch (FilterItem.FilterItemIllegalException localFilterItemIllegalException)
           {
-            for (;;)
-            {
-              veg.c("FileDownloadTask", "parse config failed", paramVarArgs);
-              paramVarArgs = null;
-            }
-            veg.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
-            return new tff(localtff.jdField_a_of_type_Tfe, -1, "illegal config file");
+            ved.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
           }
+          continue;
         }
-        veg.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
-        return new tff(localtff.jdField_a_of_type_Tfe, -1, "illegal folder");
+        bool = false;
       }
-      veg.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
-      return new tff(localtff.jdField_a_of_type_Tfe, i, "unzip failed");
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        ved.e("VideoFilterManager", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_b_of_type_JavaLangString = ajya.a(2131716272);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Int = 0;
+        return;
+      }
     }
-    catch (Exception localException)
-    {
-      break label42;
-    }
-  }
-  
-  protected void a(tff arg1)
-  {
-    veg.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
-    if (???.jdField_a_of_type_Int == 0) {
-      veg.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_Tfe.jdField_a_of_type_JavaLangString });
-    }
-    synchronized (this.a.b)
-    {
-      tea.a(this.a, null);
-      this.a.d();
-      return;
-      veg.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_Tfe.jdField_a_of_type_JavaLangString });
-    }
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
   }
 }
 

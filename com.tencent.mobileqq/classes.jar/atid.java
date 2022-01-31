@@ -2,17 +2,15 @@ import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
 class atid
-  extends mxl
+  extends mxi
 {
-  atid(athz paramathz, String paramString, atig paramatig) {}
+  atid(atib paramatib, atii paramatii) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt != 0) {
-      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Atig != null) {
-      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
+    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
+    if (this.jdField_a_of_type_Atii != null) {
+      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }

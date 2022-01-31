@@ -1,39 +1,107 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class zaa
-  implements View.OnTouchListener
 {
-  private static final int jdField_a_of_type_Int = bbkx.b(3.0F);
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private int b;
-  private int c;
+  public View a;
+  private WeakReference<zab> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<WeakReference<zab>> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public zaa(Runnable paramRunnable)
+  private int a(WeakReference<zab> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int j = (int)paramMotionEvent.getX();
-    int i = (int)paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int j;
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null))
     {
+      j = -1;
+      return j;
     }
+    int i = 0;
     for (;;)
     {
-      return false;
-      this.b = j;
-      this.c = i;
-      return true;
-      j = Math.abs(j - this.b);
-      i = Math.abs(i - this.c);
-      if ((j < jdField_a_of_type_Int) && (i < jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label71;
       }
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localWeakReference != null)
+      {
+        j = i;
+        if (localWeakReference.get() == paramWeakReference.get()) {
+          break;
+        }
+      }
+      i += 1;
     }
+    label71:
+    return -1;
+  }
+  
+  private zab a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (zab)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    if (a() != null) {
+      a().b();
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  private boolean b(WeakReference<zab> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    while (a(paramWeakReference) != -1) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramWeakReference);
+    return true;
+  }
+  
+  private boolean c(WeakReference<zab> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    int i;
+    do
+    {
+      return false;
+      i = a(paramWeakReference);
+    } while (i == -1);
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    return true;
+  }
+  
+  public void a(WeakReference<zab> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == a()))
+    {
+      yxp.a("GdtVideoCommonView", "MutiVideoManager play return: " + paramWeakReference);
+      return;
+    }
+    a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    b(paramWeakReference);
+  }
+  
+  public boolean a(WeakReference<zab> paramWeakReference)
+  {
+    if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {}
+    do
+    {
+      return false;
+      c(paramWeakReference);
+    } while (this.jdField_a_of_type_JavaUtilList.size() <= 0);
+    paramWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.iterator().next();
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((zab)paramWeakReference.get()).a();
+    }
+    return true;
   }
 }
 

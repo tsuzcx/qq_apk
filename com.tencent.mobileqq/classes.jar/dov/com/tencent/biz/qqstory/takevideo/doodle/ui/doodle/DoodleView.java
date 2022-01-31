@@ -17,16 +17,16 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bjzr;
-import bjzs;
-import bkaf;
-import bkav;
-import bkay;
-import bkbb;
-import bkef;
-import bkei;
-import bkex;
-import bkht;
+import bkai;
+import bkaj;
+import bkaw;
+import bkbm;
+import bkbp;
+import bkbs;
+import bkew;
+import bkez;
+import bkfo;
+import bkik;
 import com.tencent.mobileqq.app.ThreadManager;
 import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
@@ -44,7 +44,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import veg;
+import ved;
 
 public class DoodleView
   extends View
@@ -54,15 +54,15 @@ public class DoodleView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  protected bjzs a;
-  protected bkav a;
-  public bkbb a;
+  protected bkaj a;
+  protected bkbm a;
+  public bkbs a;
   public EditVideoParams a;
   public DoodleLayout a;
-  private Comparator<bkav> jdField_a_of_type_JavaUtilComparator = new bkei(this);
-  private LinkedList<bkav> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  protected List<bkav> a;
-  protected Map<String, bkav> a;
+  private Comparator<bkbm> jdField_a_of_type_JavaUtilComparator = new bkez(this);
+  private LinkedList<bkbm> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  protected List<bkbm> a;
+  protected Map<String, bkbm> a;
   public boolean a;
   public int b;
   private boolean b;
@@ -95,13 +95,13 @@ public class DoodleView
       this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
       bool1 = true;
       bool2 = true;
-      veg.b("DoodleView", "create Doodle bitmap, width:" + this.c + ",height:" + this.d);
+      ved.b("DoodleView", "create Doodle bitmap, width:" + this.c + ",height:" + this.d);
       bool1 = bool2;
       return bool1;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      veg.c("DoodleView", "create doodle bitmap failed: %s", localOutOfMemoryError);
+      ved.c("DoodleView", "create doodle bitmap failed: %s", localOutOfMemoryError);
     }
     return bool1;
   }
@@ -113,7 +113,7 @@ public class DoodleView
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator.hasNext()) {
-      if (!((bkav)localIterator.next()).a(paramLong)) {
+      if (!((bkbm)localIterator.next()).a(paramLong)) {
         return true;
       }
     }
@@ -122,21 +122,21 @@ public class DoodleView
   
   private void b()
   {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bjzs);
-    this.jdField_a_of_type_Bkbb.jdField_a_of_type_Bkay.a(this.jdField_a_of_type_JavaUtilList, this);
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bkaj);
+    this.jdField_a_of_type_Bkbs.jdField_a_of_type_Bkbp.a(this.jdField_a_of_type_JavaUtilList, this);
     Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      bkav localbkav = (bkav)((Iterator)localObject).next();
-      this.jdField_a_of_type_JavaUtilMap.put(localbkav.a(), localbkav);
+      bkbm localbkbm = (bkbm)((Iterator)localObject).next();
+      this.jdField_a_of_type_JavaUtilMap.put(localbkbm.a(), localbkbm);
     }
-    veg.b("DoodleView", "DoodleView hold layers:" + this.jdField_a_of_type_JavaUtilMap.toString());
-    this.jdField_a_of_type_Bkav = this.jdField_a_of_type_Bjzs;
+    ved.b("DoodleView", "DoodleView hold layers:" + this.jdField_a_of_type_JavaUtilMap.toString());
+    this.jdField_a_of_type_Bkbm = this.jdField_a_of_type_Bkaj;
     if (this.jdField_a_of_type_JavaUtilList.size() > 1) {}
-    for (localObject = (bkav)this.jdField_a_of_type_JavaUtilList.get(1);; localObject = null)
+    for (localObject = (bkbm)this.jdField_a_of_type_JavaUtilList.get(1);; localObject = null)
     {
-      if ((localObject != null) && ((((bkav)localObject).c() != this.jdField_a_of_type_Int) || (((bkav)localObject).d() != this.jdField_b_of_type_Int))) {
-        onSizeChanged(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, ((bkav)localObject).c(), ((bkav)localObject).d());
+      if ((localObject != null) && ((((bkbm)localObject).c() != this.jdField_a_of_type_Int) || (((bkbm)localObject).d() != this.jdField_b_of_type_Int))) {
+        onSizeChanged(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, ((bkbm)localObject).c(), ((bkbm)localObject).d());
       }
       super.requestLayout();
       return;
@@ -146,27 +146,27 @@ public class DoodleView
   private void d()
   {
     long l = SystemClock.uptimeMillis();
-    Object localObject = (bkaf)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
-    if ((localObject != null) && (((bkaf)localObject).a.a()) && (((bkaf)localObject).a.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-      ((bkaf)localObject).a.b(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+    Object localObject = (bkaw)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
+    if ((localObject != null) && (((bkaw)localObject).a.a()) && (((bkaw)localObject).a.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
+      ((bkaw)localObject).a.b(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
     }
     this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
     Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) && (localObject != null)) {
-      ((bkaf)localObject).c(localCanvas);
+      ((bkaw)localObject).c(localCanvas);
     }
     localObject = new LinkedList(this.jdField_a_of_type_JavaUtilMap.values());
     Collections.sort((List)localObject, this.jdField_a_of_type_JavaUtilComparator);
     int i = ((LinkedList)localObject).size() - 1;
     while (i >= 0)
     {
-      bkav localbkav = (bkav)((LinkedList)localObject).get(i);
-      if (localbkav != null) {
-        localbkav.b(localCanvas);
+      bkbm localbkbm = (bkbm)((LinkedList)localObject).get(i);
+      if (localbkbm != null) {
+        localbkbm.b(localCanvas);
       }
       i -= 1;
     }
-    veg.b("DoodleView", "drawLayerInDoodleBitmap cost time:" + (SystemClock.uptimeMillis() - l));
+    ved.b("DoodleView", "drawLayerInDoodleBitmap cost time:" + (SystemClock.uptimeMillis() - l));
   }
   
   private boolean d()
@@ -183,37 +183,37 @@ public class DoodleView
   {
     if (!a())
     {
-      veg.e("DoodleView", "create doodle bitmap failed.");
+      ved.e("DoodleView", "create doodle bitmap failed.");
       return null;
     }
     d();
     return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public bkav a()
+  public bkbm a()
   {
-    return this.jdField_a_of_type_Bkav;
+    return this.jdField_a_of_type_Bkbm;
   }
   
-  public bkav a(MotionEvent paramMotionEvent)
+  public bkbm a(MotionEvent paramMotionEvent)
   {
     LinkedList localLinkedList = new LinkedList(this.jdField_a_of_type_JavaUtilList);
     Collections.sort(localLinkedList, this.jdField_a_of_type_JavaUtilComparator);
     int i = 0;
     while (i < localLinkedList.size())
     {
-      bkav localbkav = (bkav)localLinkedList.get(i);
-      if ((localbkav != null) && (localbkav.b(paramMotionEvent))) {
-        return localbkav;
+      bkbm localbkbm = (bkbm)localLinkedList.get(i);
+      if ((localbkbm != null) && (localbkbm.b(paramMotionEvent))) {
+        return localbkbm;
       }
       i += 1;
     }
-    return this.jdField_a_of_type_Bjzs;
+    return this.jdField_a_of_type_Bkaj;
   }
   
-  public <LAYER extends bkav> LAYER a(String paramString)
+  public <LAYER extends bkbm> LAYER a(String paramString)
   {
-    paramString = (bkav)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (bkbm)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("this layer is not exist in DoodleView.");
     }
@@ -226,33 +226,33 @@ public class DoodleView
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-    this.jdField_a_of_type_Bjzs = new bjzs(this);
-    this.jdField_a_of_type_Bkav = this.jdField_a_of_type_Bjzs;
+    this.jdField_a_of_type_Bkaj = new bkaj(this);
+    this.jdField_a_of_type_Bkbm = this.jdField_a_of_type_Bkaj;
   }
   
   public void a(EditVideoParams paramEditVideoParams)
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    Object localObject = (bkaf)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
+    Object localObject = (bkaw)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
     if (localObject != null)
     {
-      localObject = (bkex)((bkaf)localObject).a.a(103);
+      localObject = (bkfo)((bkaw)localObject).a.a(103);
       if (localObject != null)
       {
         if (!paramEditVideoParams.a()) {
           break label55;
         }
-        ((bkex)localObject).a(104);
+        ((bkfo)localObject).a(104);
       }
     }
     return;
     label55:
     if (((paramEditVideoParams.a instanceof EditTakeVideoSource)) || ((paramEditVideoParams.a instanceof EditLocalVideoSource)))
     {
-      ((bkex)localObject).a(105);
+      ((bkfo)localObject).a(105);
       return;
     }
-    ((bkex)localObject).a(103);
+    ((bkfo)localObject).a(103);
   }
   
   public void a(boolean paramBoolean1, float paramFloat1, float paramFloat2, float paramFloat3, PointF paramPointF, boolean paramBoolean2, int paramInt)
@@ -278,7 +278,7 @@ public class DoodleView
     //   18: aload_3
     //   19: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokestatic 103	veg:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: invokestatic 103	ved:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_0
     //   29: invokevirtual 345	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView:a	()Landroid/graphics/Bitmap;
     //   32: astore 8
@@ -286,7 +286,7 @@ public class DoodleView
     //   36: ifnonnull +14 -> 50
     //   39: ldc 80
     //   41: ldc_w 347
-    //   44: invokestatic 103	veg:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 103	ved:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   47: iload 4
     //   49: ireturn
     //   50: aconst_null
@@ -447,7 +447,7 @@ public class DoodleView
     boolean bool = false;
     if (localIterator.hasNext())
     {
-      if ((((bkav)localIterator.next()).a(paramJSONObject)) || (bool)) {}
+      if ((((bkbm)localIterator.next()).a(paramJSONObject)) || (bool)) {}
       for (bool = true;; bool = false) {
         break;
       }
@@ -462,7 +462,7 @@ public class DoodleView
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Bkav == this.jdField_a_of_type_Bjzs;
+    return this.jdField_a_of_type_Bkbm == this.jdField_a_of_type_Bkaj;
   }
   
   public int c()
@@ -474,7 +474,7 @@ public class DoodleView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((bkav)localIterator.next()).b();
+      ((bkbm)localIterator.next()).b();
     }
     h();
   }
@@ -483,7 +483,7 @@ public class DoodleView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      if (!((bkav)localIterator.next()).a()) {
+      if (!((bkbm)localIterator.next()).a()) {
         return false;
       }
     }
@@ -492,8 +492,8 @@ public class DoodleView
   
   public void f()
   {
-    setActiveLayer(this.jdField_a_of_type_Bjzs);
-    setTopLevelLayer(this.jdField_a_of_type_Bjzs);
+    setActiveLayer(this.jdField_a_of_type_Bkaj);
+    setTopLevelLayer(this.jdField_a_of_type_Bkaj);
   }
   
   public void g()
@@ -502,7 +502,7 @@ public class DoodleView
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((bkav)localIterator.next()).a();
+        ((bkbm)localIterator.next()).a();
       }
       if (this.jdField_a_of_type_AndroidGraphicsCanvas != null) {
         this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -513,7 +513,7 @@ public class DoodleView
   
   public void h()
   {
-    veg.b("DoodleView", "recycle bitmap.");
+    ved.b("DoodleView", "recycle bitmap.");
     if (d())
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
@@ -524,9 +524,9 @@ public class DoodleView
   
   public void i()
   {
-    bkaf localbkaf = (bkaf)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
-    if ((localbkaf != null) && (localbkaf.a.a()) && (this.c > 0)) {
-      localbkaf.a.a(this.c);
+    bkaw localbkaw = (bkaw)this.jdField_a_of_type_JavaUtilMap.get("LineLayer");
+    if ((localbkaw != null) && (localbkaw.a.a()) && (this.c > 0)) {
+      localbkaw.a.a(this.c);
     }
   }
   
@@ -548,9 +548,9 @@ public class DoodleView
         localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
         while (((Iterator)localObject).hasNext())
         {
-          bkav localbkav = (bkav)((Map.Entry)((Iterator)localObject).next()).getValue();
-          if ((localbkav instanceof bkaf)) {
-            ((bkaf)localbkav).a.a(paramCanvas);
+          bkbm localbkbm = (bkbm)((Map.Entry)((Iterator)localObject).next()).getValue();
+          if ((localbkbm instanceof bkaw)) {
+            ((bkaw)localbkbm).a.a(paramCanvas);
           }
         }
       }
@@ -560,9 +560,9 @@ public class DoodleView
       int i = this.jdField_a_of_type_JavaUtilLinkedList.size() - 1;
       while (i >= 0)
       {
-        localObject = (bkav)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
+        localObject = (bkbm)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
         if (localObject != null) {
-          ((bkav)localObject).d(paramCanvas);
+          ((bkbm)localObject).d(paramCanvas);
         }
         i -= 1;
       }
@@ -586,40 +586,40 @@ public class DoodleView
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
       return;
     }
-    if (this.jdField_a_of_type_Bkbb != null)
+    if (this.jdField_a_of_type_Bkbs != null)
     {
-      veg.b("DoodleView", "DoodleViewWidth:" + paramInt1 + ",DoodleViewHeight:" + paramInt2 + ",MaxWidth:" + this.jdField_a_of_type_Bkbb.jdField_a_of_type_Int + ",MaxHeight:" + this.jdField_a_of_type_Bkbb.jdField_b_of_type_Int);
+      ved.b("DoodleView", "DoodleViewWidth:" + paramInt1 + ",DoodleViewHeight:" + paramInt2 + ",MaxWidth:" + this.jdField_a_of_type_Bkbs.jdField_a_of_type_Int + ",MaxHeight:" + this.jdField_a_of_type_Bkbs.jdField_b_of_type_Int);
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
-      if (this.jdField_a_of_type_Bkbb.jdField_a_of_type_Int == 0)
+      if (this.jdField_a_of_type_Bkbs.jdField_a_of_type_Int == 0)
       {
         paramInt3 = this.jdField_a_of_type_Int;
         label108:
-        if (this.jdField_a_of_type_Bkbb.jdField_b_of_type_Int != 0) {
+        if (this.jdField_a_of_type_Bkbs.jdField_b_of_type_Int != 0) {
           break label227;
         }
       }
       label227:
-      for (paramInt4 = this.jdField_b_of_type_Int;; paramInt4 = this.jdField_a_of_type_Bkbb.jdField_b_of_type_Int)
+      for (paramInt4 = this.jdField_b_of_type_Int;; paramInt4 = this.jdField_a_of_type_Bkbs.jdField_b_of_type_Int)
       {
-        float f = bkht.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt3, paramInt4);
+        float f = bkik.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt3, paramInt4);
         this.c = ((int)(this.jdField_a_of_type_Int * f));
         this.d = ((int)(this.jdField_b_of_type_Int * f));
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
-          bkav localbkav = (bkav)localIterator.next();
-          localbkav.b(f);
-          localbkav.a(paramInt1, paramInt2);
+          bkbm localbkbm = (bkbm)localIterator.next();
+          localbkbm.b(f);
+          localbkbm.a(paramInt1, paramInt2);
         }
         break;
-        paramInt3 = this.jdField_a_of_type_Bkbb.jdField_a_of_type_Int;
+        paramInt3 = this.jdField_a_of_type_Bkbs.jdField_a_of_type_Int;
         break label108;
       }
     }
     this.c = 0;
     this.d = 0;
-    veg.e("DoodleView", "DoodleConfig is null.");
+    ved.e("DoodleView", "DoodleConfig is null.");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -627,14 +627,14 @@ public class DoodleView
     if (this.jdField_b_of_type_Boolean) {
       return true;
     }
-    if ((this.jdField_a_of_type_Bkav == this.jdField_a_of_type_Bjzs) && (paramMotionEvent.getAction() == 0))
+    if ((this.jdField_a_of_type_Bkbm == this.jdField_a_of_type_Bkaj) && (paramMotionEvent.getAction() == 0))
     {
-      this.jdField_a_of_type_Bkav = a(paramMotionEvent);
-      this.jdField_a_of_type_Bkav.d(true);
-      this.jdField_a_of_type_Bkav.n();
-      veg.b("DoodleView", this.jdField_a_of_type_Bkav.toString() + " hold the TouchEvent.");
+      this.jdField_a_of_type_Bkbm = a(paramMotionEvent);
+      this.jdField_a_of_type_Bkbm.d(true);
+      this.jdField_a_of_type_Bkbm.n();
+      ved.b("DoodleView", this.jdField_a_of_type_Bkbm.toString() + " hold the TouchEvent.");
     }
-    return this.jdField_a_of_type_Bkav.d(paramMotionEvent);
+    return this.jdField_a_of_type_Bkbm.d(paramMotionEvent);
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
@@ -645,21 +645,21 @@ public class DoodleView
     }
   }
   
-  public void setActiveLayer(bkav parambkav)
+  public void setActiveLayer(bkbm parambkbm)
   {
-    bkav localbkav = this.jdField_a_of_type_Bkav;
-    this.jdField_a_of_type_Bkav = parambkav;
-    if (localbkav == this.jdField_a_of_type_Bkav) {
+    bkbm localbkbm = this.jdField_a_of_type_Bkbm;
+    this.jdField_a_of_type_Bkbm = parambkbm;
+    if (localbkbm == this.jdField_a_of_type_Bkbm) {
       return;
     }
-    localbkav.l();
-    this.jdField_a_of_type_Bkav.m();
+    localbkbm.l();
+    this.jdField_a_of_type_Bkbm.m();
   }
   
-  public void setDoodleConfig(bkbb parambkbb)
+  public void setDoodleConfig(bkbs parambkbs)
   {
-    veg.b("DoodleView", "init DoodleConfig: " + parambkbb.toString());
-    this.jdField_a_of_type_Bkbb = parambkbb;
+    ved.b("DoodleView", "init DoodleConfig: " + parambkbs.toString());
+    this.jdField_a_of_type_Bkbs = parambkbs;
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilMap.clear();
     b();
@@ -695,23 +695,23 @@ public class DoodleView
     ThreadManager.getUIHandler().post(new DoodleView.2(this, paramLong));
   }
   
-  public void setTopLevelLayer(bkav parambkav)
+  public void setTopLevelLayer(bkbm parambkbm)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
-      bkav localbkav = (bkav)localIterator.next();
-      if ((localbkav.i_() <= i) || ((localbkav instanceof bjzr))) {
+      bkbm localbkbm = (bkbm)localIterator.next();
+      if ((localbkbm.i_() <= i) || ((localbkbm instanceof bkai))) {
         break label64;
       }
-      i = localbkav.i_();
+      i = localbkbm.i_();
     }
     label64:
     for (;;)
     {
       break;
-      parambkav.d(i);
+      parambkbm.d(i);
       return;
     }
   }

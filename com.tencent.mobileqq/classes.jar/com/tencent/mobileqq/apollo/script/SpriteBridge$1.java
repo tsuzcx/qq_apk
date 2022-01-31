@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ajey;
-import ajfo;
+import ajew;
+import ajfm;
 
 public class SpriteBridge$1
   implements Runnable
 {
-  public SpriteBridge$1(ajey paramajey, SpriteTaskParam paramSpriteTaskParam) {}
+  public SpriteBridge$1(ajew paramajew, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (ajey.a(this.this$0) != null)
+    if (ajew.a(this.this$0) != null)
     {
-      if (ajey.a(this.this$0).a()) {
+      if (ajew.a(this.this$0).a()) {
         this.a.j = 1;
       }
       this.a.a = this.this$0;
-      ajey.a(this.this$0).a(this.a);
+      ajew.a(this.this$0).a(this.a);
     }
   }
 }

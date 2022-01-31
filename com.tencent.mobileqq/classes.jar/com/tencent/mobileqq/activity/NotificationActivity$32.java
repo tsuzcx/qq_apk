@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbwu;
+import bbxi;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 

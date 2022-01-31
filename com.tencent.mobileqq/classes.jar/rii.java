@@ -1,15 +1,24 @@
-public abstract class rii
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+
+public class rii
+  implements ogo
 {
-  private static int a = 7;
+  public rii(FastWebActivity paramFastWebActivity) {}
   
-  public static int a()
+  public void a(long paramLong)
   {
-    return a;
-  }
-  
-  public static void a(int paramInt)
-  {
-    a = paramInt;
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).b = paramLong;
+      if (FastWebActivity.a(this.a).b <= 0L)
+      {
+        FastWebActivity.a(this.a).b = 0L;
+        this.a.e();
+      }
+      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
+    }
   }
 }
 

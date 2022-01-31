@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
+import mid;
 import mig;
-import mij;
 
 public class QavPanel$NormalMenuView$1$1
   implements Runnable
 {
-  public QavPanel$NormalMenuView$1$1(mig parammig) {}
+  public QavPanel$NormalMenuView$1$1(mid parammid) {}
   
   public void run()
   {

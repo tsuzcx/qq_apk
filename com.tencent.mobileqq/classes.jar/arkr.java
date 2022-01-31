@@ -1,16 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import android.view.View;
 
 final class arkr
-  implements EIPCResultCallback
+  implements bfph
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  arkr(Intent paramIntent, bfpc parambfpc) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    if (paramEIPCResult.code != 0) {}
+    axqy.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
+    paramView = arkv.a();
+    if (paramInt == 0) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      paramView.a(paramInt);
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
   }
 }
 

@@ -1,20 +1,28 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.av.ui.VideoControlUI;
 
 public class mjm
-  implements View.OnTouchListener
+  extends Handler
 {
-  public mjm(VideoControlUI paramVideoControlUI) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mjm(VideoControlUI paramVideoControlUI, Looper paramLooper)
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    String str = (String)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 256: 
+      mao.a(this.a.a, 1037, str);
+      return;
     }
-    return false;
+    mao.a(this.a.a, 1036, str);
   }
 }
 

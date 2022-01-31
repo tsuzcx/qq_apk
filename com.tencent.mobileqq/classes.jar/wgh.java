@@ -1,37 +1,16 @@
-import android.os.CountDownTimer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class wgh
-  extends CountDownTimer
+  implements DialogInterface.OnDismissListener
 {
-  public wgh(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
-  {
-    super(paramLong1, paramLong2);
-  }
+  public wgh(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onFinish()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
-    {
-      QRDisplayActivity.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 4, "enter longclick");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
-      QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+    this.a.f = false;
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 

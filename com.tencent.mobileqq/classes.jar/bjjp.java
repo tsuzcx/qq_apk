@@ -1,27 +1,45 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.Animation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bjjp
-  extends RecyclerView.OnScrollListener
+public class bjjp
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
-  bjjp(bjjo parambjjo) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Bjjo.a();
-    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new bjjq(paramInt1, paramView));
+    return localValueAnimator;
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
   {
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      this.jdField_a_of_type_Boolean = true;
+    return new bbky(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bjjr(paramView));
+  }
+  
+  public static void a(List<bjjs> paramList, Animator.AnimatorListener paramAnimatorListener)
+  {
+    if (paramList.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        bjjs localbjjs = (bjjs)paramList.next();
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localbjjs.jdField_a_of_type_AndroidViewView, localbjjs.jdField_a_of_type_JavaLangString, new float[] { localbjjs.jdField_a_of_type_Float, localbjjs.jdField_b_of_type_Float }).setDuration(localbjjs.jdField_a_of_type_Long);
+        localObjectAnimator.setStartDelay(localbjjs.jdField_b_of_type_Long);
+        localArrayList.add(localObjectAnimator);
+      }
+      paramList = new AnimatorSet();
+      paramList.playTogether(localArrayList);
+      paramList.addListener(paramAnimatorListener);
+      paramList.start();
     }
   }
 }

@@ -1,59 +1,81 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import com.tencent.open.base.img.ImageCache;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bddz
+class bddz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  protected static bddz a;
-  protected static byte[] a;
-  protected LruCache<String, Bitmap> a;
+  bddz(bddy parambddy) {}
   
-  static
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  protected bddz()
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(50);
-  }
-  
-  public static bddz a()
-  {
-    if (jdField_a_of_type_Bddz == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
     {
-      if (jdField_a_of_type_Bddz == null) {
-        jdField_a_of_type_Bddz = new bddz();
+      bool1 = bool2;
+      if (Math.abs(paramFloat1) > 20.0F)
+      {
+        bool1 = bool2;
+        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
+        {
+          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+          if (this.a.jdField_a_of_type_AndroidViewView != null) {
+            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+          }
+          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
+          {
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != null)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131375998);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
+          if (paramFloat1 > 20.0F)
+          {
+            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+              break label245;
+            }
+            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
+            {
+              paramMotionEvent1 = paramMotionEvent1.findViewById(2131375998);
+              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
+                ((ShaderAnimLayout)paramMotionEvent1).e();
+              }
+            }
+            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+          }
+        }
       }
-      return jdField_a_of_type_Bddz;
     }
-  }
-  
-  public Bitmap a(String arg1)
-  {
-    Object localObject1 = bdhv.b(???);
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    for (;;)
     {
-      localObject1 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject1);
-      return localObject1;
+      bool1 = true;
+      return bool1;
+      label245:
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131375998);
+        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "show current selectedAccountView");
+          }
+          ((ShaderAnimLayout)paramMotionEvent1).a();
+          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
+          this.a.jdField_a_of_type_AndroidViewView = null;
+        }
+      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    String str = bdhv.b(paramString);
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(str);
-      ImageCache.a(paramString);
-      return;
-    }
-  }
-  
-  public void a(String paramString, bdeb parambdeb)
-  {
-    ImageCache.a("app", paramString, new bdea(this, parambdeb, paramString));
   }
 }
 

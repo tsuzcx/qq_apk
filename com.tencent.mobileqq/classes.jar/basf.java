@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5;
 
-class basf
-  implements aycb
+public class basf
+  implements aybj
 {
-  basf(base parambase) {}
+  public basf(TroopGiftToAllSurfaceView.5 param5) {}
   
   public void a()
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.jdField_a_of_type_Aycb != null) {
-      this.a.a.a.a.jdField_a_of_type_Aycb.a();
-    }
-    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
+    TroopGiftToAllSurfaceView.a(this.a.this$0).a(new aybi[] { new aybo(600, 0, 255), new aybr(new aybi[] { new aybq(300, 0.0F, 1.2F), new aybq(300, 1.2F, 1.0F) }) });
   }
 }
 

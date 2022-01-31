@@ -1,28 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
 
 class mhg
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  mhg(mhf parammhf) {}
+  mhg(mha parammha) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QavDoubleVideoSharpnessMangaer", 2, "onReceive SVIPPayResultReceiver");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    if (("tencent.video.q2v.SVIP.PAY".equals(paramContext)) && (mhf.a(this.a) != null))
+    mha.a(this.a, false);
+    if (paramInt == 1)
     {
-      paramContext = mhf.a(this.a).a();
-      if ((paramContext != null) && (paramContext.jdField_d_of_type_Int == 2)) {
-        mhf.a(this.a).a(Long.valueOf(paramContext.jdField_d_of_type_JavaLangString).longValue(), mhf.a(this.a));
+      axqy.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.c();
+      if (!muc.a(mha.a(this.a))) {
+        mha.a(this.a).a(mha.a(this.a));
       }
-      this.a.e();
     }
+    while (paramInt != 0)
+    {
+      return;
+      mha.a(this.a).b(mha.a(this.a));
+      return;
+    }
+    mha.a(this.a, mha.a(this.a).a().v);
   }
 }
 

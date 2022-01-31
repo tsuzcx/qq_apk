@@ -1,55 +1,104 @@
-import android.os.Binder;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class bgqj
-  extends Binder
-  implements bgqi
+public class bgqj
 {
-  public bgqj()
+  private static bgqj jdField_a_of_type_Bgqj;
+  private ArrayList<bgqk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
+  
+  public static bgqj a()
   {
-    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
+    if (jdField_a_of_type_Bgqj == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgqj == null) {
+        jdField_a_of_type_Bgqj = new bgqj();
+      }
+      return jdField_a_of_type_Bgqj;
+    }
+    finally {}
   }
   
-  public static bgqi a(IBinder paramIBinder)
+  public bgqk a(long paramLong)
   {
-    if (paramIBinder == null) {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
+        }
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        bgqk localbgqk = (bgqk)localIterator.next();
+        if (localbgqk.jdField_a_of_type_Long == paramLong)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localbgqk);
+          if (QLog.isColorLevel()) {
+            QLog.d("QfavRequestQueue", 2, "pop, id: " + paramLong + "pendingsize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          }
+          return localbgqk;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public List<Bundle> a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
       return null;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof bgqi))) {
-      return (bgqi)localIInterface;
-    }
-    return new bgqk(paramIBinder);
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    paramArrayOfByte = (Bundle)Bundle.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramArrayOfByte.getParcelableArrayList("pendingData");
   }
   
-  public IBinder asBinder()
+  public boolean a()
   {
-    return this;
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      return bool;
+    }
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public byte[] a()
   {
-    switch (paramInt1)
+    ArrayList localArrayList1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-      return true;
+      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        return null;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        localArrayList1.add(((bgqk)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-    paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramInt1, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+    if (localArrayList2.isEmpty()) {
+      return null;
     }
+    ??? = new Bundle();
+    ((Bundle)???).putParcelableArrayList("pendingData", localArrayList2);
+    Parcel localParcel = Parcel.obtain();
+    ((Bundle)???).writeToParcel(localParcel, 0);
+    ??? = localParcel.marshall();
+    localParcel.recycle();
+    return ???;
   }
 }
 

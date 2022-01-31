@@ -1,21 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class abfy
-  implements Animation.AnimationListener
+  implements bfpv
 {
   public abfy(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.f = false;
-    this.a.finish();
+    if (paramView == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_Abgg.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

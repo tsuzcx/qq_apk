@@ -1,26 +1,25 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
 import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class mwf
-  implements View.OnKeyListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
   public mwf(PoiMapActivity paramPoiMapActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onPreDraw()
   {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
+    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
     {
-      paramView = ((TextView)paramView).getText().toString();
-      if (!TextUtils.isEmpty(paramView)) {
-        this.a.a(paramView);
-      }
-      return true;
+      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
+      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
-    return false;
+    return true;
   }
 }
 

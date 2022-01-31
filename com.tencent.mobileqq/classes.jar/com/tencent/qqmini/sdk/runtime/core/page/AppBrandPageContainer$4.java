@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import begz;
-import bekm;
-import bemn;
-import bfbe;
+import behq;
+import beld;
+import bene;
+import bfbv;
 
 public class AppBrandPageContainer$4
   implements Runnable
@@ -12,7 +12,7 @@ public class AppBrandPageContainer$4
   
   public void run()
   {
-    bekm.a(AppBrandPageContainer.a(this.this$0).a(), 230, "重启后生效", null, 2131694208, 2131694225, new bfbe(this), null).show();
+    beld.a(AppBrandPageContainer.a(this.this$0).a(), 230, "重启后生效", null, 2131694209, 2131694226, new bfbv(this), null).show();
   }
 }
 

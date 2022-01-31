@@ -1,34 +1,10 @@
-import android.graphics.Color;
-import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 
-public class bbrf
+public abstract interface bbrf
 {
-  public byte a;
-  public int a;
-  public long a;
-  public SparseArray<bbrf> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  public abstract boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo);
   
-  public static bbrf a()
-  {
-    return new bbrf();
-  }
-  
-  public static bbrf a(int paramInt, byte paramByte)
-  {
-    bbrf localbbrf = new bbrf();
-    localbbrf.jdField_b_of_type_Int = paramInt;
-    localbbrf.jdField_a_of_type_Byte = paramByte;
-    return localbbrf;
-  }
-  
-  public int a()
-  {
-    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
-  }
+  public abstract boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo);
 }
 
 

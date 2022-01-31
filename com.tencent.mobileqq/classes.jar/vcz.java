@@ -1,11 +1,32 @@
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+
 class vcz
-  implements vzt<uzn>
+  extends ssv
 {
-  vcz(vcs paramvcs) {}
+  vcz(vcp paramvcp) {}
   
-  public uzn a()
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    return new uzn(null);
+    if ((vcp.a(this.a) == null) || (vcp.a(this.a).a == null))
+    {
+      ved.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
+    }
+    String str = vcp.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      ved.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
+    }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new uzy[] { new uzt(uzb.a(str)), (uzy)this.a.b.a(), new uzs(new vda(this, str)) });
   }
 }
 

@@ -1,59 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.NetworkState;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bhgl
-  extends bhga
+  implements DialogInterface.OnClickListener
 {
-  public bhgl(QzoneModuleManager paramQzoneModuleManager) {}
+  public bhgl(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bhgq parambhgq) {}
   
-  private void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkState.isWifiConn())
-    {
-      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
-      return;
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    if (this.jdField_a_of_type_Bhgq != null) {
+      this.jdField_a_of_type_Bhgq.a();
     }
-    QzoneModuleManager.access$008(this.a);
-    for (;;)
-    {
-      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
-      {
-        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
-        if (this.a.checkIfNeedUpdate(str)) {
-          this.a.updateModule(str, this);
-        }
-      }
-      else
-      {
-        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
-          break;
-        }
-        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
-        return;
-      }
-      QzoneModuleManager.access$008(this.a);
-    }
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    super.onDownloadCanceled(paramString);
-    a();
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    super.onDownloadFailed(paramString);
-    a();
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    super.onDownloadSucceed(paramString);
-    a();
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
   }
 }
 

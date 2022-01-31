@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
 
 public final class npj
-  implements Parcelable.Creator<VideoInfo.ECommerceEntranceInfo>
+  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
 {
-  public VideoInfo.ECommerceEntranceInfo a(Parcel paramParcel)
+  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
   {
-    return new VideoInfo.ECommerceEntranceInfo(paramParcel);
+    return new VideoInfo.GameAdDownloadInfo(paramParcel);
   }
   
-  public VideoInfo.ECommerceEntranceInfo[] a(int paramInt)
+  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
   {
-    return new VideoInfo.ECommerceEntranceInfo[paramInt];
+    return new VideoInfo.GameAdDownloadInfo[paramInt];
   }
 }
 

@@ -1,4 +1,19 @@
-// INTERNAL ERROR //
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+
+public class rhi
+  implements View.OnLongClickListener
+{
+  public rhi(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    ReadinjoyTabFrame.a(this.a);
+    return true;
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhi

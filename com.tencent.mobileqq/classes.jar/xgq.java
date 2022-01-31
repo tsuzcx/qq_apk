@@ -1,75 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 public class xgq
 {
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  private static final String jdField_a_of_type_JavaLangString = xgq.class.getName();
+  private static xgo jdField_a_of_type_Xgo;
+  private static String b;
+  private static String c;
   
-  public xgq(xgm paramxgm, String paramString1, String paramString2)
+  public static xgo a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      localObject = Arrays.asList(((File)localObject).list());
-      String str;
-      if (((List)localObject).contains("bg@2x.png"))
-      {
-        str = paramString + "/" + "bg@2x.png";
-        if (!new File(str).exists()) {
-          break label195;
-        }
-        this.c = str;
-      }
-      if (((List)localObject).contains("camera@2x.png"))
-      {
-        str = paramString + "/" + "camera@2x.png";
-        if (!new File(str).exists()) {
-          break label203;
-        }
-        this.d = str;
-      }
+    if (b == null) {
+      b = BaseApplicationImpl.getApplication().getPackageName();
     }
-    for (;;)
-    {
-      if (((List)localObject).contains("point@2x.png"))
-      {
-        paramString = paramString + "/" + "point@2x.png";
-        if (!new File(paramString).exists()) {
-          break label211;
-        }
-        this.e = paramString;
-      }
-      return;
-      label195:
-      this.jdField_a_of_type_Boolean = false;
-      break;
-      label203:
-      this.jdField_a_of_type_Boolean = false;
+    if (c == null) {
+      c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
     }
-    label211:
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
-    return this.jdField_a_of_type_Boolean;
+    if (jdField_a_of_type_Xgo == null)
+    {
+      jdField_a_of_type_Xgo = new xgr(b, c);
+      ved.b(jdField_a_of_type_JavaLangString, "init FileCache");
+    }
+    return jdField_a_of_type_Xgo;
   }
 }
 

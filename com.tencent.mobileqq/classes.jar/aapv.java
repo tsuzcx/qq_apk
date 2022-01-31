@@ -1,17 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
 
 public final class aapv
   implements DialogInterface.OnCancelListener
 {
-  public aapv(DialogInterface.OnClickListener paramOnClickListener) {}
+  public aapv(aaqb paramaaqb, aaqa paramaaqa) {}
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, 0);
+    if (this.jdField_a_of_type_Aaqb.a) {
+      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
+    if (this.jdField_a_of_type_Aaqa != null) {
+      this.jdField_a_of_type_Aaqa.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

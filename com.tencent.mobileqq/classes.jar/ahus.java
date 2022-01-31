@@ -1,48 +1,42 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahus
-  extends OrientationEventListener
+  implements alcs
 {
-  public ahus(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ahus(NewFlowCameraActivity paramNewFlowCameraActivity, SharedPreferences paramSharedPreferences) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void a(alcu paramalcu)
   {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.j) {}
-    do
+    long l = paramalcu.jdField_a_of_type_ArrayOfLong[((int)(paramalcu.jdField_a_of_type_ArrayOfLong.length * NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)))];
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicAdjustment", 2, "onDataRefresh: datatype=" + NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) + " monitedValue=" + l);
+    }
+    if (paramalcu.jdField_a_of_type_Int >= 100)
     {
+      if (l > NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+      {
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, true, paramalcu);
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+      }
+    }
+    else {
       return;
-      if (paramInt == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
-        }
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+    }
+    if (l < NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+    {
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false, paramalcu);
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicAdjustment", 2, "Finished. Frame count = " + paramalcu.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("SVDNAdjustment_quality_down_mark", 1).putInt("SVDNAdjustment_quality_up_mark", 1).commit();
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
   }
 }
 

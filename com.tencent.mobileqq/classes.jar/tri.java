@@ -1,69 +1,152 @@
-public abstract class tri
-  extends tqk
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor.1;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor.2;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor.3;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor.4;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor.5;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import mqq.os.MqqHandler;
+
+public class tri
+  implements trh
 {
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
+  private List<trg> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  Executor jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newSingleThreadExecutor();
+  private trj jdField_a_of_type_Trj;
+  public volatile boolean a;
   
-  protected String a(int paramInt)
+  private void a(@NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
   {
-    return null;
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      return;
+    }
+    a(new JobExecutor.1(this, (trg)this.jdField_a_of_type_JavaUtilList.get(0), paramConcurrentHashMap));
   }
   
-  public void a(tro paramtro)
+  private void a(@NonNull trg paramtrg, @NonNull ConcurrentHashMap<String, Object> paramConcurrentHashMap)
   {
-    super.a(paramtro);
-    paramtro.a = this.jdField_c_of_type_JavaLangString;
+    paramtrg.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
+    paramtrg.a(paramConcurrentHashMap);
+    if (!paramtrg.a())
+    {
+      if (this.jdField_a_of_type_Trj != null) {
+        this.jdField_a_of_type_Trj.b();
+      }
+      a();
+      return;
+    }
+    if (paramtrg.jdField_a_of_type_Boolean)
+    {
+      paramtrg.a();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.2(this, paramtrg));
   }
   
-  public void a(trq paramtrq)
+  public tri a(@NonNull trg paramtrg)
   {
-    super.a(paramtrq);
-    paramtrq.b = 2;
-    paramtrq.d = ("[" + ssi.a + "] " + this.a);
-    paramtrq.a = this.d;
-    paramtrq.k = this.a;
-    paramtrq.l = this.b;
-    paramtrq.h = this.jdField_c_of_type_JavaLangString;
+    paramtrg.jdField_a_of_type_Trh = this;
+    this.jdField_a_of_type_JavaUtilList.add(paramtrg);
+    return this;
   }
   
-  public void a(trr paramtrr)
+  protected void a()
   {
-    super.a(paramtrr);
-    paramtrr.jdField_c_of_type_JavaLangString = this.a;
-    paramtrr.d = this.b;
-    paramtrr.a = this.d;
-    paramtrr.e = this.jdField_c_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_Trj = null;
   }
   
-  public void a(trs paramtrs)
+  public void a(Runnable paramRunnable)
   {
-    super.a(paramtrs);
-    paramtrs.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    paramtrs.e = this.d;
-    paramtrs.a = this.a;
-    paramtrs.d = tsa.a(this.d);
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      paramRunnable.run();
+      return;
+    }
+    ThreadManager.getUIHandler().post(paramRunnable);
   }
   
-  public void a(trt paramtrt)
+  public void a(@NonNull trj paramtrj)
   {
-    super.a(paramtrt);
-    paramtrt.jdField_c_of_type_JavaLangString = this.b;
-    paramtrt.a = this.a;
-    paramtrt.d = this.jdField_c_of_type_JavaLangString;
-    paramtrt.e = this.d;
-    paramtrt.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Trj = paramtrj;
+    a(new ConcurrentHashMap());
   }
   
-  public void b(trt paramtrt)
+  public void a(boolean paramBoolean)
   {
-    super.b(paramtrt);
-    paramtrt.jdField_c_of_type_JavaLangString = this.b;
-    paramtrt.a = this.a;
-    paramtrt.d = this.jdField_c_of_type_JavaLangString;
-    paramtrt.e = this.d;
-    paramtrt.jdField_c_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Trj != null) {
+        this.jdField_a_of_type_Trj.c();
+      }
+      a();
+      return;
+    }
+    trg localtrg = (trg)this.jdField_a_of_type_JavaUtilList.get(0);
+    if (paramBoolean)
+    {
+      if (localtrg.b)
+      {
+        if (Looper.myLooper() == Looper.getMainLooper())
+        {
+          localtrg.a(localtrg.b());
+          return;
+        }
+        ThreadManager.getUIHandler().post(new JobExecutor.3(this, localtrg));
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.4(this, localtrg));
+      return;
+    }
+    if (this.jdField_a_of_type_Trj != null) {
+      this.jdField_a_of_type_Trj.b();
+    }
+    localtrg.a(paramBoolean);
+    a();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Trj != null) {
+        this.jdField_a_of_type_Trj.c();
+      }
+      a();
+    }
+    trg localtrg;
+    do
+    {
+      return;
+      if (!paramBoolean) {
+        break label108;
+      }
+      localtrg = (trg)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        break;
+      }
+      if (this.jdField_a_of_type_Trj != null) {
+        this.jdField_a_of_type_Trj.a();
+      }
+    } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
+    a();
+    return;
+    ThreadManager.getUIHandler().post(new JobExecutor.5(this, localtrg));
+    return;
+    label108:
+    if (this.jdField_a_of_type_Trj != null) {
+      this.jdField_a_of_type_Trj.b();
+    }
+    a();
   }
 }
 

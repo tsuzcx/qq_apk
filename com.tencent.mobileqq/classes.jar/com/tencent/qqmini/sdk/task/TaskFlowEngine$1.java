@@ -1,22 +1,22 @@
 package com.tencent.qqmini.sdk.task;
 
-import bfer;
-import bfeu;
+import bffi;
+import bffl;
 
 public class TaskFlowEngine$1
   implements Runnable
 {
-  public TaskFlowEngine$1(bfeu parambfeu) {}
+  public TaskFlowEngine$1(bffl parambffl) {}
   
   public void run()
   {
-    bfer[] arrayOfbfer = bfeu.access$000(this.this$0);
-    int j = arrayOfbfer.length;
+    bffi[] arrayOfbffi = bffl.access$000(this.this$0);
+    int j = arrayOfbffi.length;
     int i = 0;
     while (i < j)
     {
-      bfer localbfer = arrayOfbfer[i];
-      bfeu.access$100(this.this$0, localbfer);
+      bffi localbffi = arrayOfbffi[i];
+      bffl.access$100(this.this$0, localbffi);
       i += 1;
     }
   }

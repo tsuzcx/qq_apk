@@ -1,202 +1,221 @@
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.graphics.PointF;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import dov.com.qq.im.BaseVMPeakActivity;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
+import java.io.File;
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class bitj
-  extends Fragment
-  implements bisx
+  extends RecyclerView.Adapter<bitp>
 {
-  public static double a;
-  public static List<List<List<PointF>>> a;
-  public static List<List<float[]>> b;
-  private long jdField_a_of_type_Long = 9223372036854775807L;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private biss jdField_a_of_type_Biss;
-  private biuo jdField_a_of_type_Biuo;
-  private biur jdField_a_of_type_Biur;
-  private bius jdField_a_of_type_Bius;
-  private bivb jdField_a_of_type_Bivb;
-  private bivc jdField_a_of_type_Bivc;
-  private BaseVMPeakActivity jdField_a_of_type_DovComQqImBaseVMPeakActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView b;
-  private List<bisj> c = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private bito jdField_a_of_type_Bito;
+  private bivj jdField_a_of_type_Bivj;
+  private bjns jdField_a_of_type_Bjns;
+  private HashMap<String, SoftReference<bive>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<bita> jdField_a_of_type_JavaUtilList;
+  private Set<Integer> jdField_a_of_type_JavaUtilSet;
   
-  static
+  public bitj(Context paramContext, List<bita> paramList)
   {
-    jdField_a_of_type_Double = 1.0D;
-  }
-  
-  public static bitj a(String paramString, long paramLong)
-  {
-    bitj localbitj = new bitj();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("KEY_PREVIEW_SOURCE_PATH", paramString);
-    localBundle.putLong("KEY_AVAILABLE_EMO_COUNT", paramLong);
-    localbitj.setArguments(localBundle);
-    return localbitj;
-  }
-  
-  private void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("qipc_param_camera_emo_png_dirs", paramArrayList1);
-    localBundle.putStringArrayList("qipc_param_camera_emo_texts", paramArrayList2);
-    localBundle.putStringArrayList("qipc_param_camera_emo_snapshots", paramArrayList3);
-    QIPCClientHelper.getInstance().callServer("CameraEmoIpcServer", "qipc_action_camera_emo_create_gif_and_upload", localBundle, new bits(this));
-    getActivity().setResult(201);
-    getActivity().finish();
-  }
-  
-  private void b()
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375453);
-    ViewGroup.LayoutParams localLayoutParams = localRelativeLayout.getLayoutParams();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = ((int)(DeviceUtils.getScreenHeight(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity) * 0.08F));
-    localRelativeLayout.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367062).setOnClickListener(new bitl(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378372));
-    int i = (int)(DeviceUtils.getScreenWidth(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity) * 0.04F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, bawz.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 9.0F), 0, bawz.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 9.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375562));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bitm(this));
-    c();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375556));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 2));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new bitn(this));
-    d();
-  }
-  
-  private void d()
-  {
-    Object localObject = new bisj();
-    ((bisj)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-    ((bisj)localObject).jdField_a_of_type_JavaLangString = null;
-    ((bisj)localObject).b = 2;
-    this.c.add(0, new bisj());
-    this.jdField_a_of_type_Biss = new biss(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, this.c);
-    this.jdField_a_of_type_Biss.a(this);
-    this.jdField_a_of_type_Biss.a(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Biss);
-    localObject = new biuz();
-    ((biuz)localObject).a = 0;
-    this.jdField_a_of_type_Bivc.a((biuz)localObject);
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_Bius = ((bius)biix.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity).a(bius.class));
-    this.jdField_a_of_type_Biss.a(this.jdField_a_of_type_Bius, this.jdField_a_of_type_DovComQqImBaseVMPeakActivity);
-    this.jdField_a_of_type_Bius.b().a("");
-    this.jdField_a_of_type_Bius.a().a(new bism("#ccffffff", "#000000"));
-    this.jdField_a_of_type_Bius.c().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new bito(this));
-    this.jdField_a_of_type_Bius.a();
-    this.jdField_a_of_type_Biuo = ((biuo)biix.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity).a(biuo.class));
-    this.jdField_a_of_type_Biur = ((biur)biix.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, bjmo.a()).a(biur.class));
-    this.jdField_a_of_type_Biur.a().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new bitp(this));
-  }
-  
-  private void f()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(0);
-    localObject = biua.a(this.jdField_a_of_type_JavaLangString, true, (View)localObject);
-    getFragmentManager().beginTransaction().add(2131366671, (Fragment)localObject).addToBackStack(null).commit();
-  }
-  
-  protected int a()
-  {
-    return 2131558519;
-  }
-  
-  public void a()
-  {
-    f();
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    this.jdField_a_of_type_DovComQqImBaseVMPeakActivity = ((BaseVMPeakActivity)getActivity());
-    paramBundle = getArguments().getString("KEY_PREVIEW_SOURCE_PATH");
-    this.jdField_a_of_type_Long = getArguments().getLong("KEY_AVAILABLE_EMO_COUNT");
-    QLog.d("AEGIFChunkPreviewFragment", 4, "availableEmoCount = " + this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Bivc = new bivc(paramBundle, jdField_a_of_type_JavaUtilList, jdField_b_of_type_JavaUtilList, jdField_a_of_type_Double, getActivity());
-    this.jdField_a_of_type_Bivc.a(new bitk(this));
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("happy", ajyc.a(2131699957));
-    this.jdField_a_of_type_JavaUtilHashMap.put("neutral", ajyc.a(2131699958));
-    this.jdField_a_of_type_JavaUtilHashMap.put("sad", ajyc.a(2131699963));
-    this.jdField_a_of_type_JavaUtilHashMap.put("anger", ajyc.a(2131699961));
-    this.jdField_a_of_type_JavaUtilHashMap.put("disgust", ajyc.a(2131699959));
-    this.jdField_a_of_type_JavaUtilHashMap.put("fear", ajyc.a(2131699966));
-  }
-  
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(a(), paramViewGroup, false));
-    b();
-    e();
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    bivc localbivc;
-    if (this.jdField_a_of_type_Bivc != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_Int = ((int)(DeviceUtils.getScreenWidth(paramContext) * 0.44F) + 1);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
-      localbivc = this.jdField_a_of_type_Bivc;
-      if (this.jdField_a_of_type_Boolean) {
-        break label31;
+      ((bita)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
+      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(0));
+    }
+  }
+  
+  private void a(ImageView paramImageView, String paramString, int paramInt)
+  {
+    Object localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localObject1 != null) {}
+    for (localObject1 = (bive)((SoftReference)localObject1).get();; localObject1 = null)
+    {
+      if (localObject1 == null)
+      {
+        localObject1 = new ArrayList();
+        if (!TextUtils.isEmpty(paramString))
+        {
+          Object localObject2 = new File(paramString);
+          if (((File)localObject2).exists())
+          {
+            localObject2 = ((File)localObject2).listFiles();
+            if (localObject2.length > 0)
+            {
+              int i = 0;
+              while (i < localObject2.length)
+              {
+                String str = String.format(paramString + "/frame_%03d.png", new Object[] { Integer.valueOf(i) });
+                if (new File(str).exists()) {
+                  ((ArrayList)localObject1).add(str);
+                }
+                i += 1;
+              }
+            }
+          }
+        }
+        localObject1 = new bive(this.jdField_a_of_type_AndroidContentContext, (ArrayList)localObject1, 55L);
+        ((bive)localObject1).a(false);
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject1));
+      }
+      for (paramString = (String)localObject1;; paramString = (String)localObject1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zswp20pro", 2, "playAnimationDrawable, position = " + paramInt);
+        }
+        if ((paramImageView.getDrawable() != null) && (paramImageView.getDrawable() != paramString) && ((paramImageView.getDrawable() instanceof bive)))
+        {
+          ((bive)paramImageView.getDrawable()).stop();
+          paramImageView.setImageDrawable(null);
+        }
+        paramImageView.setImageDrawable(paramString);
+        paramString.start();
+        return;
       }
     }
-    label31:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  private void a(AEGIFOutlineTextView paramAEGIFOutlineTextView)
+  {
+    if (this.jdField_a_of_type_Bivj != null)
     {
-      localbivc.a(bool);
+      this.jdField_a_of_type_Bivj.a().a(this.jdField_a_of_type_Bjns, new bitl(this, paramAEGIFOutlineTextView));
+      this.jdField_a_of_type_Bivj.b().a(this.jdField_a_of_type_Bjns, new bitm(this, paramAEGIFOutlineTextView));
+    }
+    paramAEGIFOutlineTextView.setOnClickListener(new bitn(this));
+    paramAEGIFOutlineTextView.setVisibility(0);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
+      if (paramBoolean) {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajya.a(2131699965));
+      }
+    }
+    else
+    {
       return;
+    }
+    ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajya.a(2131699975));
+  }
+  
+  public bitp a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new bitp(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558520, paramViewGroup, false));
+  }
+  
+  public Set<Integer> a()
+  {
+    return this.jdField_a_of_type_JavaUtilSet;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(bito parambito)
+  {
+    this.jdField_a_of_type_Bito = parambito;
+  }
+  
+  public void a(bitp parambitp)
+  {
+    super.onViewRecycled(parambitp);
+    if ((bitp.a(parambitp) != null) && (bitp.a(parambitp).getDrawable() != null) && ((bitp.a(parambitp).getDrawable() instanceof bive)))
+    {
+      ((bive)bitp.a(parambitp).getDrawable()).stop();
+      bitp.a(parambitp).setImageDrawable(null);
     }
   }
   
-  public void onPause()
+  public void a(bitp parambitp, int paramInt)
   {
-    super.onPause();
-    bizc.a().H();
+    bita localbita = (bita)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837664);
+    localObject = bbqz.a("https://qd.myapp.com/myapp/qqteam/QIM/ae_gif_loading.png", new int[] { 0 }, (Drawable)localObject);
+    bitp.a(parambitp).setImageDrawable((Drawable)localObject);
+    bitp.a(parambitp).setVisibility(4);
+    parambitp.a(localbita.a());
+    switch (localbita.jdField_a_of_type_Int)
+    {
+    default: 
+    case 10: 
+    case 11: 
+    case 12: 
+      for (;;)
+      {
+        localObject = parambitp.itemView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = -1;
+        ((ViewGroup.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
+        parambitp.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        parambitp.itemView.setOnClickListener(new bitk(this, localbita, paramInt, parambitp));
+        return;
+        bitp.b(parambitp).setVisibility(4);
+        bitp.a(parambitp).setVisibility(0);
+      }
+    }
+    bitp.a(parambitp).setVisibility(8);
+    if (paramInt == 0)
+    {
+      a(bitp.a(parambitp));
+      bitp.a(parambitp).setVisibility(0);
+    }
+    bitp.b(parambitp).setVisibility(0);
+    if (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
+    {
+      parambitp.a(true);
+      a(true);
+    }
+    for (;;)
+    {
+      localObject = localbita.c;
+      a(bitp.a(parambitp), (String)localObject, paramInt);
+      break;
+      parambitp.a(false);
+    }
   }
   
-  public void onResume()
+  public void a(bivj parambivj, bjns parambjns)
   {
-    super.onResume();
-    this.jdField_a_of_type_Boolean = false;
-    bizg.a().j();
+    this.jdField_a_of_type_Bivj = parambivj;
+    this.jdField_a_of_type_Bjns = parambjns;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
   }
 }
 

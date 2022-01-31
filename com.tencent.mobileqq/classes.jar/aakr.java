@@ -1,30 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class aakr
-  implements bfoq
+  extends atzp
 {
-  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
+  public aakr(AuthDevActivity paramAuthDevActivity) {}
   
-  public aakr(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+    AuthDevActivity.a(this.a, paramSecureCheckResponse);
   }
   
-  public void a(SubAccountInfo paramSubAccountInfo)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+    bcql.a(this.a, paramString2, 0).a();
+    QLog.e("Q.devlock.AuthDevActivity", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
   }
 }
 

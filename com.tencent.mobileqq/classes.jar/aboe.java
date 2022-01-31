@@ -1,9 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class aboe
   implements DialogInterface.OnClickListener
@@ -12,16 +11,10 @@ public class aboe
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.a(this.a.app, "dc00898", "", "", "0X800AA17", "0X800AA17", 0, 0, "", "", NotificationActivity.b(this.a), "");
-    if (MiniAppSecurityUtil.checkMiniAppForLogin(NotificationActivity.c(this.a))) {
-      MiniAppLauncher.startMiniApp(this.a, NotificationActivity.c(this.a), 2089, null);
-    }
-    for (;;)
-    {
-      this.a.finish();
-      return;
-      QLog.e("NotificationActivity", 1, "MiniAppLauncher.startMiniApp error: fake app!");
-    }
+    axqy.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.a(this.a));
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.a.finish();
   }
 }
 

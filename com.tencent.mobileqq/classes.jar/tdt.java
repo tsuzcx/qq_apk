@@ -1,12 +1,25 @@
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
+
 public class tdt
 {
-  public final int a;
-  public final String a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public tdt(int paramInt, String paramString)
+  public FilterItem a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
+    }
   }
 }
 

@@ -5,29 +5,25 @@ import com.tribe.async.async.JobContext;
 import java.util.Vector;
 
 class uwl
-  implements syt<tlz, tma>
+  implements syq<tmi, tof>
 {
-  uwl(uwk paramuwk, JobContext paramJobContext, uvx paramuvx) {}
+  uwl(uwh paramuwh, JobContext paramJobContext, uvu paramuvu) {}
   
-  public void a(@NonNull tlz paramtlz, @Nullable tma arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull tmi paramtmi, @Nullable tof paramtof, @NonNull ErrorMessage arg3)
   {
     if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
+      ved.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
       return;
     }
-    tma localtma = ???;
-    if (??? == null) {
-      localtma = new tma(paramErrorMessage);
+    if ((paramtof == null) || (???.isFail())) {
+      ved.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
     }
-    if (paramErrorMessage.isFail()) {
-      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
-    }
-    synchronized (this.jdField_a_of_type_Uwk)
+    synchronized (this.jdField_a_of_type_Uwh)
     {
-      uwk.a(this.jdField_a_of_type_Uwk, localtma);
-      uwk.a(this.jdField_a_of_type_Uwk).remove(paramtlz);
-      uwk.a(this.jdField_a_of_type_Uwk, this.jdField_a_of_type_Uvx);
+      uwh.a(this.jdField_a_of_type_Uwh, paramtof);
+      uwh.a(this.jdField_a_of_type_Uwh).remove(paramtmi);
+      uwh.a(this.jdField_a_of_type_Uwh, this.jdField_a_of_type_Uvu);
       return;
     }
   }

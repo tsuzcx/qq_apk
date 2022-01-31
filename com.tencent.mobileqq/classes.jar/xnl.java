@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface xnl
+class xnl
+  implements View.OnClickListener
 {
-  public abstract void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem);
+  xnl(xnj paramxnj, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnj, 1);
+    }
+  }
 }
 
 

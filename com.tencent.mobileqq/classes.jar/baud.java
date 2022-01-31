@@ -1,6 +1,15 @@
+import android.graphics.Bitmap;
+import android.view.View;
+
 public abstract interface baud
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void setBitmap(Bitmap paramBitmap);
 }
 
 

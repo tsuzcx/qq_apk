@@ -1,20 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class ryh
-  extends shd
+class ryh
+  extends BroadcastReceiver
 {
-  public ryh(BridgeModule paramBridgeModule) {}
+  ryh(ryg paramryg) {}
   
-  public bbje a(Integer paramInteger)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bbje localbbje = super.a(paramInteger);
-    if ((paramInteger.intValue() == 11) && (localbbje != null))
-    {
-      localbbje.b = 2130843424;
-      localbbje.a = BaseApplicationImpl.getApplication().getString(2131693393);
-    }
-    return localbbje;
+    this.a.a(paramContext, paramIntent);
   }
 }
 

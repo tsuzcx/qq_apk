@@ -1,19 +1,8 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
-public class aevy
-  implements aewa
+public abstract interface aevy
 {
-  public aevy(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
-  
-  public void a(View paramView)
-  {
-    if ((paramView.getTag() instanceof Integer))
-    {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

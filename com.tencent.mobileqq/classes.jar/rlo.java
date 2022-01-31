@@ -1,27 +1,49 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastShareBottomCreator.ViewHolder.ShareCallBack.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rlo
-  extends pak
+class rlo
+  implements pbx
 {
-  public ArticleInfo a;
+  rlo(rln paramrln) {}
   
-  public rlo(rln paramrln, ArticleInfo paramArticleInfo)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, rna paramrna)
-  {
-    super.a(paramBoolean, paramInt, paramrna);
-    if ((paramBoolean) && (paramrna != null) && (!TextUtils.isEmpty(paramrna.a(paramInt)))) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    rln.a(this.a, true);
+    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
+    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
+      paramString = "2";
+    }
+    for (;;)
     {
-      ThreadManager.getUIHandler().post(new WebFastShareBottomCreator.ViewHolder.ShareCallBack.1(this, paramBoolean, paramInt, paramrna));
-      return;
+      paramString = onh.a(localContext, localArticleInfo, 0, paramString);
+      if (paramBoolean) {
+        paramInt = 1;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramString.put("is_done", paramInt);
+          rno.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b, "0X800898B", paramString.toString());
+          return;
+          paramString = "1";
+          break;
+          paramInt = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
     }
   }
 }

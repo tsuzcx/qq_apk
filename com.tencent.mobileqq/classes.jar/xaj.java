@@ -1,34 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.widget.Button;
 import com.tencent.biz.troop.file.MoveFileActivity;
+import java.util.ArrayList;
 
 public class xaj
-  implements DialogInterface.OnClickListener
+  extends xao
 {
   public xaj(MoveFileActivity paramMoveFileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, azpi paramazpi)
   {
-    paramDialogInterface = (xnm)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > bakj.a)
-    {
-      paramDialogInterface.a(this.a.getString(2131697630), -65536);
-      axqw.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
-    }
-    do
-    {
+    if (this.a.getActivity().isFinishing()) {
       return;
-      if (bakj.a(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface.a(this.a.getString(2131697631), -65536);
-        axqw.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
-        return;
-      }
-      paramDialogInterface.dismiss();
-    } while (bakj.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    xap.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131697559);
+    }
+    this.a.b();
+    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131298865);
+    if (paramBoolean)
+    {
+      MoveFileActivity.a(this.a).add(0, paramazpi);
+      MoveFileActivity.c(this.a, 0);
+      MoveFileActivity.a(this.a).setEnabled(true);
+      MoveFileActivity.a(this.a).setBackgroundResource(2130839047);
+      MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755329);
+      MoveFileActivity.a(this.a).i(paramazpi);
+      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, this.a.jdField_a_of_type_Long + "", paramazpi.b, "", "");
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131706910), 0).b(i);
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      paramazpi = this.a.getString(2131696381);
+      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
+      return;
+    case -313: 
+      paramazpi = this.a.getString(2131697627);
+      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "repeat", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
+    }
+    for (;;)
+    {
+      this.a.a(this.a.getResources().getString(2131697792), null, this.a.jdField_a_of_type_JavaLangString, paramazpi);
+      return;
+      paramazpi = this.a.getString(2131697632);
+      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
+      continue;
+      paramazpi = this.a.getString(2131697630);
+      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
+      return;
+      paramazpi = this.a.getString(2131697629);
+      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
+      return;
+      paramazpi = this.a.getString(2131697633);
+      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
+    }
   }
 }
 

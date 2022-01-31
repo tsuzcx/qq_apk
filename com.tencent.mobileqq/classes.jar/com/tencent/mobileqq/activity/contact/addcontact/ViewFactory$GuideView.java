@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import afhn;
-import afho;
+import afhl;
+import afhm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ public class ViewFactory$GuideView
   implements View.OnClickListener
 {
   public static final int a;
-  public afho a;
+  public afhm a;
   private int b = -1;
   
   static
@@ -65,7 +65,7 @@ public class ViewFactory$GuideView
     }
   }
   
-  private void a(ArrayList<afhn> paramArrayList, String paramString)
+  private void a(ArrayList<afhl> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -73,28 +73,28 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((afhn)paramArrayList.get(i)).b));
-      localView.setTag(((afhn)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131367264)).setImageResource(((afhn)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131367279)).setText(localView.getContext().getResources().getString(((afhn)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      localView.setTag(Integer.valueOf(((afhl)paramArrayList.get(i)).b));
+      localView.setTag(((afhl)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131367264)).setImageResource(((afhl)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131367279)).setText(localView.getContext().getResources().getString(((afhl)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
       ((TextView)localView.findViewById(2131367269)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((afhn)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setContentDescription(getResources().getString(((afhl)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
   }
   
-  public afhn a(int paramInt)
+  public afhl a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 80000000: 
-      return new afhn(2131689717, 2130843910);
+      return new afhl(2131689717, 2130843911);
     case 80000001: 
-      return new afhn(2131689719, 2130843911);
+      return new afhl(2131689719, 2130843912);
     }
-    return new afhn(2131689718, 2130843912);
+    return new afhl(2131689718, 2130843913);
   }
   
   public void a(int paramInt, String paramString)
@@ -126,8 +126,8 @@ public class ViewFactory$GuideView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Afho != null) {
-        this.jdField_a_of_type_Afho.a(i, paramView);
+      if (this.jdField_a_of_type_Afhm != null) {
+        this.jdField_a_of_type_Afhm.a(i, paramView);
       }
       return;
       i = 80000000;
@@ -138,9 +138,9 @@ public class ViewFactory$GuideView
     }
   }
   
-  public void setListener(afho paramafho)
+  public void setListener(afhm paramafhm)
   {
-    this.jdField_a_of_type_Afho = paramafho;
+    this.jdField_a_of_type_Afhm = paramafhm;
   }
 }
 

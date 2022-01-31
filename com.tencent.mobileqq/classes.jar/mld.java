@@ -1,21 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
 import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.widget.RotateLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class mld
-  implements Animation.AnimationListener
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  private mld(VideoLayerUI paramVideoLayerUI) {}
+  public mld(VideoLayerUI paramVideoLayerUI) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    VideoLayerUI.a(this.a).setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
+    }
+    if (VideoLayerUI.c(this.a) < 0) {
+      VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
+    }
+    if (VideoLayerUI.d(this.a) < 0) {
+      VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
+    }
+    float f = paramScaleGestureDetector.getScaleFactor();
+    this.a.jdField_a_of_type_ArrayOfMdz[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
+    return true;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
+    }
+    float f1 = this.a.jdField_a_of_type_ArrayOfMdz[0].c();
+    float f2 = this.a.jdField_a_of_type_ArrayOfMdz[0].a();
+    float f3 = this.a.jdField_a_of_type_ArrayOfMdz[0].b();
+    if (f1 < f2) {
+      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMdz[0], f2 / f1, 60L);
+    }
+    while (f1 <= f3) {
+      return;
+    }
+    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMdz[0], f3 / f1, 60L);
+  }
 }
 
 

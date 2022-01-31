@@ -1,63 +1,90 @@
-import android.os.Process;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tribe.async.async.JobContext;
 
 public class vst
+  extends vsn<vsa, vsa>
 {
-  private static int a;
-  
-  public static String a(int paramInt)
+  protected void a(JobContext paramJobContext, vsa paramvsa)
   {
-    String str;
-    if (paramInt == 1)
-    {
-      bbdj.c(ssi.e + ".nomedia");
-      str = ssi.e + b(paramInt) + "/";
+    System.currentTimeMillis();
+    int i = vzl.a(BaseApplication.getContext());
+    i = vzl.d(BaseApplication.getContext()) * 720 / i;
+    if (i % 2 != 0) {
+      i += 1;
     }
     for (;;)
     {
-      a(str);
-      return str;
-      str = ajsf.bn + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
-      bbdj.c(str + ".nomedia");
+      Object localObject = paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_JavaLangString;
+      paramJobContext = (JobContext)localObject;
+      if (!paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_Boolean)
+      {
+        paramJobContext = (JobContext)localObject;
+        if (paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_Boolean) {
+          paramJobContext = paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_JavaLangString;
+        }
+      }
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      for (;;)
+      {
+        try
+        {
+          bbef.a(paramJobContext, (BitmapFactory.Options)localObject);
+          if (((BitmapFactory.Options)localObject).outWidth * 720 == ((BitmapFactory.Options)localObject).outHeight * i)
+          {
+            j = 1;
+            if ((!(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)) && ((paramvsa.jdField_a_of_type_Int != 1) || (j != 0)) && (((BitmapFactory.Options)localObject).outWidth <= 720) && (((BitmapFactory.Options)localObject).outHeight <= i) && (((BitmapFactory.Options)localObject).outWidth % 2 == 0) && (((BitmapFactory.Options)localObject).outHeight % 2 == 0)) {
+              break label384;
+            }
+            paramJobContext = paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_AndroidGraphicsBitmap;
+            if (paramJobContext != null) {
+              break;
+            }
+            ved.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap is null please check!");
+            super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 0));
+            return;
+          }
+        }
+        catch (OutOfMemoryError paramJobContext)
+        {
+          ved.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "decode image failed", paramJobContext);
+          super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 6));
+          return;
+        }
+        int j = 0;
+      }
+      ved.a("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap width=%s, height=%s", Integer.valueOf(paramJobContext.getWidth()), Integer.valueOf(paramJobContext.getHeight()));
+      localObject = vxv.b(paramJobContext, 720, i, false, false);
+      if (localObject == null)
+      {
+        super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 5));
+        return;
+      }
+      paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_Boolean = false;
+      paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_Boolean = true;
+      String str = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.jdField_b_of_type_JavaLangString, ".jpg");
+      vxv.a((Bitmap)localObject, str);
+      if (paramJobContext != localObject)
+      {
+        ((Bitmap)localObject).recycle();
+        ved.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge recycle bitmap");
+      }
+      for (;;)
+      {
+        paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_JavaLangString = str;
+        super.notifyResult(paramvsa);
+        return;
+        ved.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge do not recycle bitmap");
+      }
+      label384:
+      ved.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "no need resize. srcWidth=%s, srcHeight=%s, destWidth=%s, destHeight=%s", Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(720), Integer.valueOf(i));
+      super.notifyResult(paramvsa);
+      return;
     }
-  }
-  
-  @NonNull
-  public static String a(int paramInt, String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("folderPath should not be null");
-    }
-    String str = paramString1;
-    if (!paramString1.endsWith("/")) {
-      str = paramString1 + "/";
-    }
-    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
-    {
-      bool = paramString.delete();
-      veg.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
-    }
-    if (!paramString.exists())
-    {
-      bool = paramString.mkdirs();
-      veg.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
-    }
-  }
-  
-  private static String b(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
-    paramInt = a;
-    a = paramInt + 1;
-    return paramInt;
   }
 }
 

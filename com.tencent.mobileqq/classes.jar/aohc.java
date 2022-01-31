@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class aohc
-  extends aoeu
+  implements View.OnTouchListener
 {
-  public aohc(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public aohc(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  protected void a(boolean paramBoolean1, List<GroupInfo> paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    switch (paramMotionEvent.getAction())
     {
-      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
-      return;
     }
-    catch (Exception paramList)
+    for (;;)
     {
-      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

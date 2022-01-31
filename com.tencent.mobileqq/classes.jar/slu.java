@@ -1,63 +1,60 @@
+import NS_KING_INTERFACE.stPostFeedDingRsp;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class slu
-  extends MSFServlet
+final class slu
+  implements slh
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent == null) {
-      Log.e("weishi", "***onReceive request is null");
-    }
-    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
-      return;
-    }
-    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
-  }
+  slu(Handler paramHandler, int paramInt) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(sls paramsls)
   {
-    if (paramIntent == null)
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    if ((paramsls == null) || (paramsls.jdField_a_of_type_JavaLangObject == null))
     {
-      Log.e("weishi", "onSend request is null");
-      return;
+      localMessage.what = 4302;
+      localMessage.obj = Integer.valueOf(-1);
+      Log.e(slt.a, "点赞失败:-1");
     }
     for (;;)
     {
-      try
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+      if ((paramsls.jdField_a_of_type_JavaLangObject instanceof stPostFeedDingRsp))
       {
-        if ((paramIntent instanceof WeishiIntent))
+        stPostFeedDingRsp localstPostFeedDingRsp = (stPostFeedDingRsp)paramsls.jdField_a_of_type_JavaLangObject;
+        if (localstPostFeedDingRsp == null)
         {
-          slv localslv = ((WeishiIntent)paramIntent).a;
-          sls localsls = localslv.a;
-          byte[] arrayOfByte2 = localsls.encode();
-          byte[] arrayOfByte1 = arrayOfByte2;
-          if (arrayOfByte2 == null)
-          {
-            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localslv.a.uniKey());
-            arrayOfByte1 = new byte[4];
+          Log.e(slt.a, "服务器失败！！！");
+          localMessage.what = 4302;
+          localMessage.obj = Integer.valueOf(paramsls.jdField_a_of_type_Int);
+        }
+        else
+        {
+          int i = localstPostFeedDingRsp.is_ding;
+          localMessage.what = 4301;
+          localMessage.obj = Integer.valueOf(i);
+          paramsls = new Intent("weishi_public_account_ding_state_change");
+          paramsls.putExtra("position", this.jdField_a_of_type_Int);
+          paramsls.putExtra("is_ding", i);
+          BaseApplication.getContext().sendBroadcast(paramsls);
+          Log.e(slt.a, "发送了点赞广播");
+          if (i == 0) {
+            Log.e(slt.a, "请求后变成：没有点赞-by微视");
+          } else {
+            Log.e(slt.a, "请求后变成：已经点赞-by微视");
           }
-          paramPacket.setTimeout(30000L);
-          Log.e("timeout", "timeout:30000");
-          paramPacket.setSSOCommand("SQQzoneSvc." + localslv.a.c());
-          Log.e("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localslv.a.c());
-          localsls.d = arrayOfByte1.length;
-          paramPacket.putSendData(arrayOfByte1);
-          Log.i("weishi-Servlet", "onSend request cmd=" + localslv.a.uniKey() + " is correct");
-          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
-          return;
         }
       }
-      catch (Exception paramIntent)
+      else
       {
-        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
-        return;
+        Log.e(slt.a, "点赞失败:-2");
+        localMessage.what = 4302;
+        localMessage.obj = Integer.valueOf(-2);
       }
-      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
     }
   }
 }

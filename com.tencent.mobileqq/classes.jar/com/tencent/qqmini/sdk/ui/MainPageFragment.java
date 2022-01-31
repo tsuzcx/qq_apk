@@ -18,19 +18,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-import begs;
-import besl;
-import beuc;
-import bext;
-import beyu;
-import bfez;
-import bffa;
-import bffb;
-import bffc;
-import bfff;
-import bffu;
-import bffy;
-import bfgt;
+import behj;
+import betc;
+import beut;
+import beyk;
+import bezl;
+import bffq;
+import bffr;
+import bffs;
+import bfft;
+import bffw;
+import bfgl;
+import bfgp;
+import bfhk;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
@@ -47,13 +47,13 @@ public class MainPageFragment
   private static final String jdField_a_of_type_JavaLangString = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini/";
   private static final String jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/mini/files/";
   private int jdField_a_of_type_Int;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new bffb(this);
+  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new bffs(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private Switch jdField_a_of_type_AndroidWidgetSwitch;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bffc jdField_a_of_type_Bffc;
+  private bfft jdField_a_of_type_Bfft;
   private MiniAppProxy jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
   private boolean jdField_a_of_type_Boolean;
@@ -72,12 +72,12 @@ public class MainPageFragment
   
   private Drawable a(String paramString)
   {
-    int i = bffu.a(getActivity(), 70.0F);
+    int i = bfgl.a(getActivity(), 70.0F);
     Drawable localDrawable = null;
     try
     {
       if (Build.VERSION.SDK_INT >= 21) {
-        localDrawable = getActivity().getDrawable(2130840788);
+        localDrawable = getActivity().getDrawable(2130840785);
       }
       return this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.getDrawable(getActivity(), paramString, i, i, localDrawable);
     }
@@ -85,7 +85,7 @@ public class MainPageFragment
     {
       for (;;)
       {
-        besl.d("MainPageFragment", "getIconDrawable, exception!");
+        betc.d("MainPageFragment", "getIconDrawable, exception!");
         localException.printStackTrace();
         Object localObject = null;
       }
@@ -130,14 +130,14 @@ public class MainPageFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("mini_app_info", paramMiniAppInfo);
     localIntent.putExtra("versionType", paramInt);
-    bfff.a(paramContext, localIntent, MiniFragmentActivity.class, MainPageFragment.class);
+    bffw.a(paramContext, localIntent, MiniFragmentActivity.class, MainPageFragment.class);
   }
   
   private void a(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
     {
-      besl.d("MainPageFragment", "startMoreInformation, miniAppInfo = " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      betc.d("MainPageFragment", "startMoreInformation, miniAppInfo = " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
       return;
     }
     String str2 = "https://q.qq.com/os/store/details-more?appid=" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId;
@@ -185,7 +185,7 @@ public class MainPageFragment
     }
     for (;;)
     {
-      if (!bfgt.a())
+      if (!bfhk.a())
       {
         this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -207,23 +207,23 @@ public class MainPageFragment
   
   private void b(String paramString)
   {
-    beyu.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, beyu.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "user_click", "more_about", paramString);
+    bezl.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bezl.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "user_click", "more_about", paramString);
   }
   
   private void b(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840789);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840786);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840816);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840813);
   }
   
   private void c()
   {
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.launchParam.jdField_a_of_type_Int = 1024;
-    begs.a(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    behj.a(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
   }
   
   private void c(MiniAppInfo paramMiniAppInfo)
@@ -277,23 +277,23 @@ public class MainPageFragment
   
   private void f()
   {
-    this.jdField_a_of_type_Bffc = new bffc(getActivity());
-    this.jdField_a_of_type_Bffc.setContentView(LayoutInflater.from(getActivity()).inflate(2131559303, null));
-    TextView localTextView = (TextView)this.jdField_a_of_type_Bffc.findViewById(2131370325);
+    this.jdField_a_of_type_Bfft = new bfft(getActivity());
+    this.jdField_a_of_type_Bfft.setContentView(LayoutInflater.from(getActivity()).inflate(2131559303, null));
+    TextView localTextView = (TextView)this.jdField_a_of_type_Bfft.findViewById(2131370324);
     localTextView.setText("设置");
     localTextView.setOnClickListener(this);
-    localTextView = (TextView)this.jdField_a_of_type_Bffc.findViewById(2131370319);
+    localTextView = (TextView)this.jdField_a_of_type_Bfft.findViewById(2131370318);
     localTextView.setText("更多资料");
     localTextView.setOnClickListener(this);
-    ((TextView)this.jdField_a_of_type_Bffc.findViewById(2131370302)).setOnClickListener(this);
-    this.jdField_a_of_type_Bffc.show();
+    ((TextView)this.jdField_a_of_type_Bfft.findViewById(2131370301)).setOnClickListener(this);
+    this.jdField_a_of_type_Bfft.show();
   }
   
   private void g()
   {
     if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
     {
-      besl.d("MainPageFragment", "startComplainAndCallback, mApkgConfig = " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      betc.d("MainPageFragment", "startComplainAndCallback, mApkgConfig = " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
       return;
     }
     Object localObject1 = "";
@@ -307,7 +307,7 @@ public class MainPageFragment
       for (;;)
       {
         Object localObject2;
-        besl.d("MainPageFragment", "startComplainAndCallback, url = " + "");
+        betc.d("MainPageFragment", "startComplainAndCallback, url = " + "");
         localUnsupportedEncodingException.printStackTrace();
       }
     }
@@ -320,7 +320,7 @@ public class MainPageFragment
     ((Intent)localObject1).putExtras((Bundle)localObject2);
     this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.startBrowserActivity(getActivity(), (Intent)localObject1);
     b("feedback");
-    besl.a("MainPageFragment", "feedback, prepare to upload log ");
+    betc.a("MainPageFragment", "feedback, prepare to upload log ");
     localObject1 = new Bundle();
     ((Bundle)localObject1).putString("appid", this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
     ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).callServer("MiniAppTransferModule", "upload_user_log", (Bundle)localObject1);
@@ -330,7 +330,7 @@ public class MainPageFragment
   
   public String a()
   {
-    return beuc.a().a();
+    return beut.a().a();
   }
   
   public void a(MiniAppInfo paramMiniAppInfo) {}
@@ -338,7 +338,7 @@ public class MainPageFragment
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131370305)
+    if (i == 2131370304)
     {
       c();
       b("launch");
@@ -350,64 +350,64 @@ public class MainPageFragment
         do
         {
           return;
-          if (i == 2131370312)
+          if (i == 2131370311)
           {
             e();
             return;
           }
-          if (i == 2131370324)
+          if (i == 2131370323)
           {
             c(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
             return;
           }
-          if (i == 2131370322)
+          if (i == 2131370321)
           {
             h();
             b("share");
             return;
           }
-        } while (i == 2131370323);
-        if (i == 2131370299)
+        } while (i == 2131370322);
+        if (i == 2131370298)
         {
           g();
           return;
         }
-        if (i == 2131370328)
+        if (i == 2131370327)
         {
           getActivity().finish();
           return;
         }
-        if (i == 2131370329)
+        if (i == 2131370328)
         {
           f();
           return;
         }
-        if (i != 2131370325) {
+        if (i != 2131370324) {
           break;
         }
       } while ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId)));
       ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openPermissionSettingsActivity(getActivity(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name);
-      this.jdField_a_of_type_Bffc.dismiss();
+      this.jdField_a_of_type_Bfft.dismiss();
       b("set");
       return;
-      if (i == 2131370319)
+      if (i == 2131370318)
       {
-        if (bfgt.a()) {
+        if (bfhk.a()) {
           a(null);
         }
         for (;;)
         {
-          this.jdField_a_of_type_Bffc.dismiss();
+          this.jdField_a_of_type_Bfft.dismiss();
           b("profile");
           return;
           paramView = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
           if (paramView != null) {
-            paramView.getSDKOpenKeyToken(null, new bffa(this));
+            paramView.getSDKOpenKeyToken(null, new bffr(this));
           }
         }
       }
-    } while (i != 2131370302);
-    this.jdField_a_of_type_Bffc.dismiss();
+    } while (i != 2131370301);
+    this.jdField_a_of_type_Bfft.dismiss();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -418,12 +418,12 @@ public class MainPageFragment
       getActivity().getWindow().clearFlags(67108864);
       getActivity().getWindow().addFlags(-2147483648);
       getActivity().getWindow().setStatusBarColor(-1);
-      bffy.a(true, getActivity().getWindow());
+      bfgp.a(true, getActivity().getWindow());
     }
-    if (bffu.jdField_a_of_type_Boolean)
+    if (bfgl.jdField_a_of_type_Boolean)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
-      paramLayoutInflater.setPadding(0, bffu.d(getActivity()), 0, 0);
+      paramLayoutInflater.setPadding(0, bfgl.d(getActivity()), 0, 0);
     }
     a();
     return paramLayoutInflater;
@@ -432,35 +432,35 @@ public class MainPageFragment
   public void onResume()
   {
     super.onResume();
-    bext.a().a(getClass().getSimpleName(), true);
+    beyk.a().a(getClass().getSimpleName(), true);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370315));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370314));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370320));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370301));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370314));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370313));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131375952);
-    this.jdField_a_of_type_AndroidWidgetSwitch = ((Switch)paramView.findViewById(2131370324));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370322));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370305));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370323);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131370299);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370312);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370328));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370329));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375953));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370319));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370300));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370313));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370312));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131375954);
+    this.jdField_a_of_type_AndroidWidgetSwitch = ((Switch)paramView.findViewById(2131370323));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370321));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370304));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370322);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131370298);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370311);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370327));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370328));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375955));
     this.e = paramView.findViewById(2131368376);
     this.jdField_a_of_type_AndroidWidgetSwitch.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView.setOnLongClickListener(new bfez(this));
+    this.jdField_c_of_type_AndroidViewView.setOnLongClickListener(new bffq(this));
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adva;
-import ayog;
+import aduy;
+import ayoi;
 import com.tencent.image.URLDrawable;
 
 public class MixedMsgItemBuilder$2
   implements Runnable
 {
-  public MixedMsgItemBuilder$2(adva paramadva, String paramString, URLDrawable paramURLDrawable) {}
+  public MixedMsgItemBuilder$2(aduy paramaduy, String paramString, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    if (ayog.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (ayoi.b(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();

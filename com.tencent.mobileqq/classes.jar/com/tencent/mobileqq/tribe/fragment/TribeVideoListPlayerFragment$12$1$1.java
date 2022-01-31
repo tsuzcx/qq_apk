@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import ajyc;
-import azan;
-import bcpw;
+import ajya;
+import azap;
+import bcql;
 
 class TribeVideoListPlayerFragment$12$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class TribeVideoListPlayerFragment$12$1$1
   
   public void run()
   {
-    bcpw.a(this.a.a.a.getActivity(), 2, ajyc.a(2131715116), 1).a();
+    bcql.a(this.a.a.a.getActivity(), 2, ajya.a(2131715127), 1).a();
   }
 }
 

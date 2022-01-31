@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import berr;
+import besi;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -11,7 +11,7 @@ import java.util.UUID;
 public class ShareChatModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShareChatModel> CREATOR = new berr();
+  public static final Parcelable.Creator<ShareChatModel> CREATOR = new besi();
   public int a;
   public long a;
   public String a;

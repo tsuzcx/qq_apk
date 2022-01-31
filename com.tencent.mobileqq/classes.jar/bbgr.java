@@ -1,38 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class bbgr
+public class bbgr
+  implements ArkViewImplement.LoadCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  bbgr(bbgp parambbgp) {}
   
-  private void a()
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.w("BrandColorManager", 4, "set band border-color fail");
+    onLoadState(paramInt1);
   }
   
-  void a(View paramView)
+  public void onLoadState(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
+    WeakReference localWeakReference = new WeakReference(this.a);
+    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbgr
  * JD-Core Version:    0.7.0.1
  */

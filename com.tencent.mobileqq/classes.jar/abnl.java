@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class abnl
-  extends ajxl
+  extends atga
 {
-  public abnl(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public abnl(NearbyActivity paramNearbyActivity) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  protected void a()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      bcpw.a(this.a, this.a.getString(2131694323), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      bcpw.a(this.a, 2, this.a.getString(2131694325), 0).b(this.a.getTitleBarHeight());
-    }
+    this.a.a.sendEmptyMessageDelayed(2, 0L);
   }
 }
 

@@ -1,5 +1,6 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import java.net.URL;
 import org.json.JSONObject;
 
 public class pef
@@ -7,23 +8,41 @@ public class pef
   public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
     JSONObject localJSONObject1 = new JSONObject();
-    pen.a(paramBaseArticleInfo, localJSONObject1, Utils.toLong(paramBaseArticleInfo.mSubscribeID));
-    pen.r(paramBaseArticleInfo, localJSONObject1);
-    pen.u(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_content_wrapper", new JSONObject());
-    localJSONObject1.put("id_article_wrapper", new JSONObject());
-    localJSONObject1.put("id_multi_image", new JSONObject());
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
+    localJSONObject1.put("id_small_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
+    localJSONObject1.put("id_small_video_cover", localObject);
     JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", ajyc.a(2131713035));
-    localJSONObject1.put("id_summary", localJSONObject2);
-    localJSONObject2 = new JSONObject();
-    localJSONObject2.put("article_small_imge_url", "https://qqpublic.qpic.cn/qq_public_cover/0/0-1512726317-04871A48D592EB571A29D6F16C134B70_open/320");
-    localJSONObject1.put("id_article_small_imge", localJSONObject2);
-    pen.a(paramBaseArticleInfo, localJSONObject1, false);
-    pen.m(paramBaseArticleInfo, localJSONObject1);
-    pen.C(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_pgc_multi_cell");
-    return localJSONObject1;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", localObject);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("small_video_duration", omr.a(paramBaseArticleInfo.mVideoDuration));
+      localJSONObject1.put("id_small_video_duration", localObject);
+      pek.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label186;
+      }
+      pek.a(paramBaseArticleInfo, localJSONObject1);
+      pek.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      pek.m(paramBaseArticleInfo, localJSONObject1);
+      pek.e(paramBaseArticleInfo, localJSONObject1);
+      pek.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      pek.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label186:
+      pek.d(paramBaseArticleInfo, localJSONObject1);
+    }
   }
 }
 

@@ -1,25 +1,26 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.LangSettingFragment;
+import java.util.List;
 
-class aqht
+public class aqht
   implements View.OnClickListener
 {
-  aqht(aqhs paramaqhs, int paramInt) {}
+  public aqht(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if (aqhs.a(this.jdField_a_of_type_Aqhs, this.jdField_a_of_type_Int))
+    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < LangSettingFragment.a().size()))
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
-      }
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
+      LangSettingFragment.c(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, ((Integer)LangSettingFragment.a().get(this.jdField_a_of_type_Int)).intValue());
     }
-    if (LangSettingFragment.a(this.jdField_a_of_type_Aqhs.a) != ((Integer)paramView.getTag()).intValue()) {
-      LangSettingFragment.a(this.jdField_a_of_type_Aqhs.a, ((Integer)paramView.getTag()).intValue());
+    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
+    }
+    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
+      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
     }
   }
 }

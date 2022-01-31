@@ -1,6 +1,6 @@
 package com.tencent.av.funchat;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -13,7 +13,7 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
-import mts;
+import mtp;
 
 public class AVListImageView
   extends ImageView
@@ -42,8 +42,8 @@ public class AVListImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int m = actn.a(this.jdField_a_of_type_Int, getResources()) - 2;
-    int n = actn.a(this.jdField_b_of_type_Int, getResources());
+    int m = actj.a(this.jdField_a_of_type_Int, getResources()) - 2;
+    int n = actj.a(this.jdField_b_of_type_Int, getResources());
     int i = Math.min(getWidth(), getHeight()) / 2;
     int j = getWidth() / 2;
     int k = getHeight() / 2;
@@ -53,7 +53,7 @@ public class AVListImageView
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        if (!(localDrawable instanceof mts)) {
+        if (!(localDrawable instanceof mtp)) {
           localDrawable.setColorFilter(-10591367, PorterDuff.Mode.MULTIPLY);
         }
         localDrawable.setBounds(m, m, getWidth() - m, getHeight() - m);
@@ -83,7 +83,7 @@ public class AVListImageView
         localDrawable.setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
         break;
       }
-      if ((localDrawable instanceof mts)) {
+      if ((localDrawable instanceof mtp)) {
         break;
       }
       localDrawable.clearColorFilter();

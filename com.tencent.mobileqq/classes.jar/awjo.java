@@ -1,6 +1,7 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class awjo
   implements View.OnClickListener
@@ -9,7 +10,8 @@ public class awjo
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    BaseSearchActivity.b = 1;
+    this.a.a.setText("");
   }
 }
 

@@ -1,22 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class aaip
-  implements adlo
+  implements View.OnClickListener
 {
   public aaip(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public boolean a(adll paramadll)
+  public void onClick(View paramView)
   {
     this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2130771997, 2130772001);
-    }
-    return false;
-  }
-  
-  public boolean a(adll paramadll, String paramString1, String paramString2)
-  {
-    return false;
+    this.a.overridePendingTransition(2130771997, 2130772001);
   }
 }
 

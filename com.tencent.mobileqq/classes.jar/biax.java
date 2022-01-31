@@ -1,15 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import cooperation.qzone.util.QZLog;
 
 public class biax
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public biaw a;
+  public static int a = 2;
+  public static int b = 1;
+  public static int c = 4;
   
-  public biax(biaq parambiaq) {}
+  public static void a(String paramString1, String paramString2)
+  {
+    QZLog.d(paramString1, c, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    QZLog.d(paramString1, b, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    QZLog.e(paramString1, paramString2, null);
+  }
 }
 
 

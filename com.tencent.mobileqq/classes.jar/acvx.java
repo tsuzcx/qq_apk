@@ -1,189 +1,65 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainChange;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfos;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.intimate_relation.intimate_relation.IntimateBuddy;
+import tencent.intimate_relation.intimate_relation.IntimateInfo;
+import tencent.intimate_relation.intimate_relation.IntimateLadybro;
+import tencent.intimate_relation.intimate_relation.IntimateLover;
+import tencent.intimate_relation.intimate_relation.SnsRelationInfo;
 
 public class acvx
 {
   public int a;
-  public acwa a;
-  public String a;
-  public ArrayList<acvy> a;
-  public boolean a;
-  public acwa b;
-  public String b;
   
-  public acvx()
+  public static acvx a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public static acvx a(submsgtype0xc7.RelationalChainChange paramRelationalChainChange, boolean paramBoolean)
-  {
-    acvx localacvx = new acvx();
-    localacvx.jdField_a_of_type_Boolean = paramBoolean;
-    localacvx.jdField_a_of_type_JavaLangString = String.valueOf(paramRelationalChainChange.uint64_src_uin.get());
-    localacvx.jdField_b_of_type_JavaLangString = String.valueOf(paramRelationalChainChange.uint64_dst_uin.get());
-    localacvx.jdField_a_of_type_Int = paramRelationalChainChange.uint32_change_type.get();
-    if (paramRelationalChainChange.msg_relational_chain_info_old.has()) {
-      localacvx.jdField_a_of_type_Acwa = acwa.a((submsgtype0xc7.RelationalChainInfo)paramRelationalChainChange.msg_relational_chain_info_old.get());
-    }
-    if (paramRelationalChainChange.msg_relational_chain_info_new.has()) {
-      localacvx.jdField_b_of_type_Acwa = acwa.a((submsgtype0xc7.RelationalChainInfo)paramRelationalChainChange.msg_relational_chain_info_new.get());
-    }
-    if ((paramRelationalChainChange.rpt_relational_chain_infos.has()) && (paramRelationalChainChange.rpt_relational_chain_infos.size() > 0))
+    intimate_relation.IntimateInfo localIntimateInfo = null;
+    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
+    for (;;)
     {
-      localacvx.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramRelationalChainChange.rpt_relational_chain_infos.size())
+      try
       {
-        acvy localacvy = new acvy();
-        if ((paramRelationalChainChange.rpt_relational_chain_infos.get(i) != null) && (((submsgtype0xc7.RelationalChainInfos)paramRelationalChainChange.rpt_relational_chain_infos.get(i)).msg_relational_chain_info_old.has())) {
-          localacvy.jdField_a_of_type_Acwa = acwa.a((submsgtype0xc7.RelationalChainInfo)((submsgtype0xc7.RelationalChainInfos)paramRelationalChainChange.rpt_relational_chain_infos.get(i)).msg_relational_chain_info_old.get());
-        }
-        if ((paramRelationalChainChange.rpt_relational_chain_infos.get(i) != null) && (((submsgtype0xc7.RelationalChainInfos)paramRelationalChainChange.rpt_relational_chain_infos.get(i)).msg_relational_chain_info_new.has())) {
-          localacvy.jdField_b_of_type_Acwa = acwa.a((submsgtype0xc7.RelationalChainInfo)((submsgtype0xc7.RelationalChainInfos)paramRelationalChainChange.rpt_relational_chain_infos.get(i)).msg_relational_chain_info_new.get());
-        }
-        localacvx.jdField_a_of_type_JavaUtilArrayList.add(localacvy);
-        i += 1;
-      }
-    }
-    return localacvx;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      if (this.jdField_a_of_type_Acwa != null) {
-        return this.jdField_a_of_type_Acwa.jdField_a_of_type_Int;
-      }
-    }
-    else if (this.jdField_b_of_type_Acwa != null) {
-      return this.jdField_b_of_type_Acwa.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public acvz a()
-  {
-    Object localObject2 = null;
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Acwa != null)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_Acwa.jdField_a_of_type_Acwc != null)
+        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localIntimateInfo;
+        if (localSnsRelationInfo.intimate_list.has())
         {
-          localObject1 = new acvz();
-          ((acvz)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Acwa.jdField_a_of_type_Acwc.jdField_a_of_type_JavaLangString;
-          ((acvz)localObject1).jdField_a_of_type_Long = this.jdField_a_of_type_Acwa.jdField_a_of_type_Acwc.jdField_e_of_type_Long;
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (this.jdField_b_of_type_Acwa == null);
-      localObject1 = localObject2;
-    } while (this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc == null);
-    Object localObject1 = new acvz();
-    ((acvz)localObject1).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.jdField_a_of_type_JavaLangString;
-    ((acvz)localObject1).jdField_a_of_type_Long = this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.jdField_e_of_type_Long;
-    return localObject1;
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_b_of_type_Acwa != null) && (this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc != null)) {
-      return this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.jdField_b_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_b_of_type_Acwa != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc != null)
-      {
-        bool1 = bool2;
-        if (this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.jdField_b_of_type_Boolean)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.d))
+          paramArrayOfByte = localIntimateInfo;
+          if (localSnsRelationInfo.intimate_list.size() > 0)
           {
-            bool1 = bool2;
-            if (!TextUtils.isEmpty(this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.jdField_e_of_type_JavaLangString)) {
-              bool1 = true;
+            paramArrayOfByte = new acvx();
+            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
+            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
+              break label173;
             }
+            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
           }
         }
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
+        }
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
+        return null;
+      }
+      label173:
+      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
+      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
+        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
       }
     }
-    return bool1;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      if (this.jdField_a_of_type_Acwa != null) {
-        return this.jdField_a_of_type_Acwa.a();
-      }
-    }
-    else if (this.jdField_b_of_type_Acwa != null) {
-      return this.jdField_b_of_type_Acwa.a();
-    }
-    return 0;
-  }
-  
-  public String b()
-  {
-    if ((this.jdField_b_of_type_Acwa != null) && (this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc != null)) {
-      return this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.d;
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_b_of_type_Acwa != null) {
-      return this.jdField_b_of_type_Acwa.a();
-    }
-    return 0;
-  }
-  
-  public String c()
-  {
-    if ((this.jdField_b_of_type_Acwa != null) && (this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc != null)) {
-      return this.jdField_b_of_type_Acwa.jdField_a_of_type_Acwc.jdField_e_of_type_JavaLangString;
-    }
-    return null;
   }
   
   @NonNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsRelationChainChangePushInfo{");
-    localStringBuilder.append("selfUin:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("friendUin:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("changeType:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("old:").append(this.jdField_a_of_type_Acwa).append(", ");
-    localStringBuilder.append("now:").append(this.jdField_b_of_type_Acwa).append(", ");
+    localStringBuilder.append("ExtSnsIntimatePushInfo{");
+    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

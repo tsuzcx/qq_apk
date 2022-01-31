@@ -1,15 +1,11 @@
-import android.os.Bundle;
-
 class agci
-  extends atzp
+  extends aoez
 {
-  agci(agch paramagch) {}
+  agci(agcf paramagcf) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(int paramInt)
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      agch.a(this.a);
-    }
+    this.a.g();
   }
 }
 

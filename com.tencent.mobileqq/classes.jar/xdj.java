@@ -1,10 +1,6 @@
-import java.util.List;
-
 public abstract interface xdj
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<bald> paramList);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

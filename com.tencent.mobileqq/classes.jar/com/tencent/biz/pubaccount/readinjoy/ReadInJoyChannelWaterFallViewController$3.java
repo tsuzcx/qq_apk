@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import bhvh;
-import noo;
-import nts;
-import onk;
+import bhvy;
+import nol;
+import ntp;
+import onh;
 
 public class ReadInJoyChannelWaterFallViewController$3
   implements Runnable
 {
-  public ReadInJoyChannelWaterFallViewController$3(nts paramnts) {}
+  public ReadInJoyChannelWaterFallViewController$3(ntp paramntp) {}
   
   public void run()
   {
-    if (nts.a(this.this$0) == 40677)
+    if (ntp.a(this.this$0) == 40677)
     {
-      noo.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bhvh.a("default_feeds_proteus_offline_bid"), "", "", onk.b(nts.a(this.this$0)), false);
+      nol.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", onh.b(ntp.a(this.this$0)), false);
       return;
     }
-    noo.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bhvh.a("default_feeds_proteus_offline_bid"), "", "", onk.b(nts.a(this.this$0)), false);
+    nol.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", onh.b(ntp.a(this.this$0)), false);
   }
 }
 

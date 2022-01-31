@@ -1,95 +1,57 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 class adhp
-  extends bafg
+  implements URLDrawable.URLDrawableListener
 {
-  adhp(adho paramadho, QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  adhp(adhl paramadhl) {}
   
-  protected void a(long paramLong)
-  {
-    if ((paramLong == Long.parseLong(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!adho.a(this.a).N))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated.");
-      }
-      TroopInfo localTroopInfo = ((TroopManager)adho.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if (localTroopInfo == null) {
-        break label133;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated. getTroopAIOShortCutBar.");
-      }
-      adho.a(this.a).a(Long.parseLong(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)localTroopInfo.dwGroupClassExt);
-    }
-    label133:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated. TroopInfo is null!");
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  protected void b(long paramLong, boolean paramBoolean)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramLong == Long.parseLong(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!adho.a(this.a).N))
+    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo.");
-      }
-      if (adho.a(this.a) != null) {
-        break label59;
-      }
-    }
-    label58:
-    label59:
-    do
-    {
-      bafe localbafe;
-      List localList;
-      do
+      paramThrowable = this.a.a.iterator();
+      while (paramThrowable.hasNext())
       {
-        do
-        {
-          break label58;
-          do
-          {
-            return;
-          } while (adho.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-          localbafe = adho.a(this.a).a(Long.valueOf(Long.parseLong(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-          if (localbafe == null) {
-            break;
-          }
-          this.a.a(localbafe);
-        } while (localbafe.a().size() <= 0);
-        localList = localbafe.a();
-      } while (System.currentTimeMillis() <= localbafe.b());
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo.getTroopShortcutBarAppIdsRedPoint.");
+        Pair localPair = (Pair)paramThrowable.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null) && (adhl.a(this.a) != null)) {
+          ((URLImageView)localPair.second).setImageDrawable(adhl.a(this.a).a.getResources().getDrawable(2130843106));
+        }
       }
-      adho.a(this.a).a(Long.valueOf(paramLong), localList);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo. info is null. Will not update UI and redpoint.");
+    }
   }
   
-  protected void c(long paramLong, boolean paramBoolean)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramLong == Long.parseLong(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!adho.a(this.a).N))
+    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
+    if ((localDrawable instanceof RegionDrawable))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppShortcutBarAIOHelper", 2, "onGetTroopAppidsRedPoint.");
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
+        {
+          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
+          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
+          ((URLImageView)localPair.second).setVisibility(0);
+        }
       }
-      bafe localbafe = adho.a(this.a).a(Long.valueOf(Long.parseLong(adho.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-      this.a.a(localbafe);
     }
   }
 }

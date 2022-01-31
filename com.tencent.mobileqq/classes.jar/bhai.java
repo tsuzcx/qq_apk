@@ -1,44 +1,15 @@
-import android.os.Handler;
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import java.util.Properties;
+import org.json.JSONObject;
 
-public class bhai
-  implements OnPluginInstallListener
+class bhai
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public bhai(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, long paramLong) {}
+  bhai(bhah parambhah) {}
   
-  public IBinder asBinder()
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallBegin");
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallDownloadProgress");
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    QLog.e("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallError");
-    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1012);
-    paramString = new Properties();
-    paramString.put("status", "installError");
-    QzoneVerticalVideoDownloadActivity.access$1000("vertical_layer_plugin_depend", paramString);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallFinish");
-    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1011);
-    QzoneVerticalVideoDownloadActivity.access$900("vertical_layer_plugin_depend", "status", "installFinish", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    QLog.d("QzoneIPCModule", 4, String.format("after preload For QQ MINI Program %b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

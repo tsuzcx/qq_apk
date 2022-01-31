@@ -3,12 +3,12 @@ package com.tencent.mobileqq.mini.share;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -58,7 +58,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = ajyc.a(2131706869);; paramJSONObject = ajyc.a(2131706870))
+    for (paramJSONObject = ajya.a(2131706880);; paramJSONObject = ajya.a(2131706881))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -212,10 +212,10 @@ public class MiniProgramShareUtils
     }
     int j = 0;
     int i = j;
-    if (!bbjw.a(paramMiniArkShareModel.getTemplateId()))
+    if (!bbkk.a(paramMiniArkShareModel.getTemplateId()))
     {
       i = j;
-      if (!bbjw.a(paramMiniArkShareModel.getTemplateData())) {
+      if (!bbkk.a(paramMiniArkShareModel.getTemplateData())) {
         i = 2;
       }
     }

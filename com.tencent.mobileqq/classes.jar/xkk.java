@@ -1,40 +1,20 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class xkk
-  implements bfug
+  extends akui
 {
-  xkk(xke paramxke, String paramString) {}
-  
-  public void a(bfuf parambfuf)
+  xkk(xkj paramxkj, String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (parambfuf.a)
-    {
-    default: 
-      return;
-    case 0: 
-      try
-      {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_Xke.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception parambfuf)
-      {
-        parambfuf.printStackTrace();
-        return;
-      }
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
     }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_Xke.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception parambfuf)
-    {
-      parambfuf.printStackTrace();
-    }
+    xki.a(this.a.jdField_a_of_type_Xki, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

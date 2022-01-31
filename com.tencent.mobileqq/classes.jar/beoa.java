@@ -1,18 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.core.widget.actionsheet.ActionSheet.3;
 
 public class beoa
-  implements bent
+  implements Animation.AnimationListener
 {
-  public beoa(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  public beoa(ActionSheet.3 param3) {}
   
-  public void a(File paramFile)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((MiniAppVideoPlayer.c(this.a) != null) && (paramFile != null)) {
-      MiniAppVideoPlayer.c(this.a).setImageBitmap(bekr.a(paramFile.getAbsolutePath()));
-    }
+    this.a.this$0.a();
+    beny.a(this.a.this$0, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

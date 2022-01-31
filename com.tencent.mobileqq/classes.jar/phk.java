@@ -1,26 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 class phk
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  phk(pgz parampgz, pax parampax, Container paramContainer, PgcSmallView paramPgcSmallView) {}
+  phk(pgw parampgw, VideoView paramVideoView, ViewBean paramViewBean, ViewBase paramViewBase) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = this.jdField_a_of_type_Pax.a();
-    paramView.click_area = 11;
-    onk.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramView, (int)paramView.mChannelID);
-    if (this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
+    boolean bool;
+    if (((AudioManager)paramContext.getSystemService("audio")).getStreamVolume(3) <= 0)
     {
-      onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.jdField_a_of_type_Qda.h, null);
-      return;
+      bool = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.setMute(bool);
+      paramIntent = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean;
+      if (!bool) {
+        break label62;
+      }
     }
-    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a.jdField_a_of_type_Qch.c, null);
+    label62:
+    for (paramContext = "video_audio_mute";; paramContext = "video_audio_speak")
+    {
+      paramIntent.putMapValue("pgc_video_content_audio_icon", paramContext);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.bindDynamicValue(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

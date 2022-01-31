@@ -1,88 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import java.util.List;
+import android.os.Bundle;
 
-public class arih
-  extends akgi
+class arih
+  implements wxt
 {
-  public arih(ShareToQQActivity paramShareToQQActivity) {}
+  arih(arig paramarig) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void a(Bundle paramBundle)
   {
-    if (this.a.a == null)
+    int i = paramBundle.getInt("msg");
+    if (i == 90)
     {
-      this.a.finish();
+      arig.a(this.a, paramBundle.getInt("state"));
+      arig.a(this.a, arig.a(this.a), arig.b(this.a));
+    }
+    while (i != 91) {
       return;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bbbd.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bbbd.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
+    i = paramBundle.getInt("errCode");
+    paramBundle = paramBundle.getString("desc");
+    arig.a(this.a, i, paramBundle);
   }
 }
 

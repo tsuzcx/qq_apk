@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import aqha;
+import aqhc;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private aqha a;
+  private aqhc a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -49,9 +49,9 @@ public class PerfRelativeLayout
     }
   }
   
-  public void setOnDrawCompleteListener(aqha paramaqha)
+  public void setOnDrawCompleteListener(aqhc paramaqhc)
   {
-    this.a = paramaqha;
+    this.a = paramaqhc;
   }
 }
 

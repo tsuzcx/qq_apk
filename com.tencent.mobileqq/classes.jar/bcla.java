@@ -1,21 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.content.Context;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
 public class bcla
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public bcla(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
+  public bcla(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+    if (paramView.getId() == 2131364824)
+    {
+      paramView = ContextMenuTextView.a(this.a);
+      ContextMenuTextView.a(this.a);
+      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

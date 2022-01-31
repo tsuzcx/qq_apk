@@ -1,43 +1,33 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
 
 public class acri
-  extends ajxl
+  implements View.OnClickListener
 {
-  public acri(ActivateFriendGrid paramActivateFriendGrid) {}
+  public acri(ActivateFriendView paramActivateFriendView) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    for (;;)
+    paramView = (ActivateFriendViewItem)paramView;
+    if (paramView.a)
     {
-      if (i < ActivateFriendGrid.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = bbcl.b(ActivateFriendGrid.a(this.a), str, false);
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
-        }
+      ActivateFriendView.a(this.a);
+      if (paramView.a) {
+        break label75;
       }
-      else
-      {
-        return;
-      }
-      i += 1;
     }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 0;
-    while (i < ActivateFriendGrid.a(this.a).size())
+    label75:
+    for (boolean bool = true;; bool = false)
     {
-      String str = bbcl.j(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
-      i += 1;
+      paramView.setChecked(bool);
+      if (ActivateFriendView.a(this.a) != null) {
+        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+      }
+      return;
+      ActivateFriendView.b(this.a);
+      break;
     }
   }
 }

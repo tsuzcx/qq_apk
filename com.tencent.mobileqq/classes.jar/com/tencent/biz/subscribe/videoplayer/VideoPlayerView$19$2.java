@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import wuf;
+import wuc;
 
 public class VideoPlayerView$19$2
   implements Runnable
 {
-  public VideoPlayerView$19$2(wuf paramwuf) {}
+  public VideoPlayerView$19$2(wuc paramwuc) {}
   
   public void run()
   {

@@ -1,25 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
 import android.content.Intent;
-import android.os.Handler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class avfe
-  extends BroadcastReceiver
+public class avfe
+  extends MSFServlet
 {
-  avfe(avfd paramavfd) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramIntent != null) && ("com.qzonex.localalbum.new_photo_notification_feedback_action".equals(paramIntent.getAction())))
-    {
+    if (paramFromServiceMsg != null) {
       if (QLog.isColorLevel()) {
-        QLog.i("QzonePhotoGuideNotifyServlet", 2, "QzonePhotoGuideNotifyServlet onReceive");
+        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
       }
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
+    {
+      avfd localavfd = new avfd(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
+      byte[] arrayOfByte = localavfd.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
       }
-      this.a.b();
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localavfd.uniKey());
+      paramPacket.putSendData(paramIntent);
     }
   }
 }

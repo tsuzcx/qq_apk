@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import aopw;
-import aosp;
-import apvb;
-import apvh;
-import apxv;
+import aoqb;
+import aost;
+import apvd;
+import apvj;
+import apxx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -20,31 +20,31 @@ import java.util.Set;
 public class QfileLocalFileOtherTabView
   extends QfileBaseLocalFileTabView
 {
-  public QfileLocalFileOtherTabView(Context paramContext, List<apxv> paramList, boolean paramBoolean)
+  public QfileLocalFileOtherTabView(Context paramContext, List<apxx> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     setEditbarButton(false, false, true, true, true);
   }
   
-  protected aopw a()
+  protected aoqb a()
   {
-    return new aosp(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new aost(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   String a(String paramString)
   {
-    paramString = apvb.a(paramString);
+    paramString = apvd.a(paramString);
     if ((paramString == null) || (paramString.length() == 0)) {
-      return ajyc.a(2131709688);
+      return ajya.a(2131709699);
     }
     paramString = paramString.toLowerCase();
     if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
-      return ajyc.a(2131709665);
+      return ajya.a(2131709676);
     }
     if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
-      return ajyc.a(2131709682);
+      return ajya.a(2131709693);
     }
-    return ajyc.a(2131709670);
+    return ajya.a(2131709681);
   }
   
   protected void a()

@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.view.View;
-import beka;
-import benh;
-import benm;
-import besl;
+import bekr;
+import beny;
+import beod;
+import betc;
 
 class TelephonyJsPlugin$2$1
-  implements benm
+  implements beod
 {
-  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, benh parambenh) {}
+  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, beny parambeny) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -29,7 +29,7 @@ class TelephonyJsPlugin$2$1
     }
     catch (Exception paramView)
     {
-      besl.d("TelephonyJsPlugin", this.this$1.val$req.a + " error.", paramView);
+      betc.d("TelephonyJsPlugin", this.this$1.val$req.a + " error.", paramView);
     }
   }
 }

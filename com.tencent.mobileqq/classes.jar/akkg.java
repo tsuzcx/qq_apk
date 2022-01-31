@@ -1,20 +1,34 @@
-import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
 import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class akkg
-  extends MqqHandler
+  extends akkd
 {
   public akkg(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (QLog.isColorLevel()) {
+      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
+    }
+    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
       return;
     }
-    NewFriendVerifyBlockedListFragment.a(this.a);
+    this.a.a.removeMessages(1);
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
+    }
   }
 }
 

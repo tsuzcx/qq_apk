@@ -2,8 +2,8 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import anys;
-import anyt;
+import anyx;
+import anyy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -34,7 +34,7 @@ public class EmoticonMainPanel$32
           if (QLog.isColorLevel()) {
             QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for market open strategy");
           }
-          localWebProcessManager.a(-1, new anys(this));
+          localWebProcessManager.a(-1, new anyx(this));
           return;
         }
         l = localSharedPreferences.getLong("sp_key_send_h5_magic_face_time", 0L);
@@ -44,7 +44,7 @@ public class EmoticonMainPanel$32
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
         }
-        localWebProcessManager.a(-1, new anyt(this));
+        localWebProcessManager.a(-1, new anyy(this));
         return;
       }
     }

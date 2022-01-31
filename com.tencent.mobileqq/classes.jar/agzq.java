@@ -1,8 +1,26 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface agzq
+public class agzq
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, List<String> paramList);
+  public agzq(LingHbFragment paramLingHbFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView instanceof TextView))
+    {
+      paramView = ((TextView)paramView).getText().toString();
+      QLog.i("LingHbFragment", 2, "choice: " + paramView);
+      this.a.c.setText(paramView);
+      this.a.a.post(new LingHbFragment.2.1(this));
+    }
+  }
 }
 
 

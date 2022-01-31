@@ -1,26 +1,10 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class syq
+public abstract interface syq<Request extends sys, Respond extends syn>
 {
-  public int a;
-  public String b;
-  
-  public syq() {}
-  
-  public syq(int paramInt, String paramString)
-  {
-    this.a = paramInt;
-    this.b = paramString;
-  }
-  
-  public syq(qqstory_struct.ErrorInfo paramErrorInfo)
-  {
-    this.a = paramErrorInfo.error_code.get();
-    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
-  }
+  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 

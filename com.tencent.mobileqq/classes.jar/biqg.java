@@ -1,31 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
-class biqg
-  implements biyk
+public class biqg
+  extends RecyclerView.ViewHolder
 {
-  biqg(biqf parambiqf, ToServiceMsg paramToServiceMsg) {}
+  public Button a;
+  public EditText a;
+  public ImageView a;
+  public boolean a;
   
-  public void a(int paramInt)
+  public biqg(bipy parambipy, View paramView)
   {
-    biqf.a(this.jdField_a_of_type_Biqf, null, null);
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      paramBitmap = biqf.a(this.jdField_a_of_type_Biqf.mApp.getApp(), paramBitmap);
-      if ((paramBitmap == null) || (paramBitmap.length() < 1))
-      {
-        biqf.a(this.jdField_a_of_type_Biqf, null, null);
-        return;
-      }
-      biqf.a(this.jdField_a_of_type_Biqf, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
-      return;
-    }
-    biqf.a(this.jdField_a_of_type_Biqf, null, null);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365515));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365268));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375167));
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

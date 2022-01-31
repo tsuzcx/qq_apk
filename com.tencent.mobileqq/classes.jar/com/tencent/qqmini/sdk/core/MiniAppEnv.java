@@ -1,62 +1,62 @@
 package com.tencent.qqmini.sdk.core;
 
 import android.content.Context;
-import behf;
-import beio;
-import bejk;
-import bepk;
-import besb;
-import besh;
-import beuc;
+import behw;
+import bejf;
+import bekb;
+import beqb;
+import bess;
+import besy;
+import beut;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MiniAppEnv
-  implements besh
+  implements besy
 {
   private static final String TAG = "MiniAppEnv";
   private static MiniAppEnv sInstance;
-  protected beio mApkgLoader = beio.a();
-  private Map<String, behf> mAuthStateMap = new HashMap();
+  protected bejf mApkgLoader = bejf.a();
+  private Map<String, behw> mAuthStateMap = new HashMap();
   protected Context mContext;
   private LoginInfo mLoginInfo = new LoginInfo();
   private String mMenuStyle = "light";
-  protected besb sBaselibLoader = new bejk();
+  protected bess sBaselibLoader = new bekb();
   
   public static MiniAppEnv g()
   {
     return sInstance;
   }
   
-  public beio getApkgLoader()
+  public bejf getApkgLoader()
   {
     return this.mApkgLoader;
   }
   
-  public behf getAuthSate(String paramString)
+  public behw getAuthSate(String paramString)
   {
     if (this.mAuthStateMap.containsKey(paramString)) {
-      return (behf)this.mAuthStateMap.get(paramString);
+      return (behw)this.mAuthStateMap.get(paramString);
     }
     synchronized (this.mAuthStateMap)
     {
-      behf localbehf = (behf)this.mAuthStateMap.get(paramString);
-      Object localObject = localbehf;
-      if (localbehf == null)
+      behw localbehw = (behw)this.mAuthStateMap.get(paramString);
+      Object localObject = localbehw;
+      if (localbehw == null)
       {
-        localObject = beuc.a().a();
-        localObject = new behf(getContext(), paramString, (String)localObject);
+        localObject = beut.a().a();
+        localObject = new behw(getContext(), paramString, (String)localObject);
         this.mAuthStateMap.put(paramString, localObject);
       }
       return localObject;
     }
   }
   
-  public besb getBaselibLoader()
+  public bess getBaselibLoader()
   {
-    if (bepk.a().a() != null) {
-      return bepk.a().a();
+    if (beqb.a().a() != null) {
+      return beqb.a().a();
     }
     return this.sBaselibLoader;
   }
@@ -84,15 +84,15 @@ public class MiniAppEnv
     this.mContext = paramContext;
   }
   
-  public void setApkgLoader(beio parambeio)
+  public void setApkgLoader(bejf parambejf)
   {
-    this.mApkgLoader = parambeio;
+    this.mApkgLoader = parambejf;
   }
   
   @Deprecated
-  public void setBaselibLoader(besb parambesb)
+  public void setBaselibLoader(bess parambess)
   {
-    this.sBaselibLoader = parambesb;
+    this.sBaselibLoader = parambess;
   }
   
   public void setLoginInfo(LoginInfo paramLoginInfo)

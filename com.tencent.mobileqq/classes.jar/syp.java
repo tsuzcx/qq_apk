@@ -1,25 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class syp
-  extends syq
+class syp<Request extends sys, Respond extends syn>
+  implements syt<Respond>
 {
-  public String a;
-  public boolean a;
+  protected final long a;
+  protected syq<Request, Respond> a;
+  public Request a;
   
-  public syp(qqstory_struct.ErrorInfo paramErrorInfo, PBUInt32Field paramPBUInt32Field, PBBytesField paramPBBytesField)
+  public syp(Request paramRequest)
   {
-    super(paramErrorInfo);
-    if (paramPBUInt32Field.get() == 1) {}
-    for (;;)
+    this.jdField_a_of_type_Sys = paramRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void b(int paramInt, String paramString, Respond paramRespond)
+  {
+    syq localsyq = this.jdField_a_of_type_Syq;
+    if (localsyq != null)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramPBBytesField.get().toStringUtf8();
+      localsyq.a(this.jdField_a_of_type_Sys, paramRespond, new ErrorMessage(paramInt, paramString));
       return;
-      bool = false;
     }
+    ved.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+  }
+  
+  public void a(int paramInt, String paramString, Respond paramRespond)
+  {
+    b(paramInt, paramString, paramRespond);
   }
 }
 

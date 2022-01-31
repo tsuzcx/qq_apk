@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import bfmt;
+import bfnk;
 
 class SendWebPicActivity$1
   implements Runnable

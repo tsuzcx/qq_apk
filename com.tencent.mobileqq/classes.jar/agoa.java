@@ -1,115 +1,27 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.widget.NumberCheckBox;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.DragView;
-import java.util.ArrayList;
 
 public class agoa
-  implements bfpe
+  implements View.OnClickListener
 {
   public agoa(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, " onItemSelected position=" + paramInt);
-    }
-    LocalMediaInfo localLocalMediaInfo = this.a.b(this.a.jdField_a_of_type_Agoz.a(paramInt));
-    if (this.a.E)
+    if (PhotoPreviewActivity.f(this.a))
     {
-      if ((localLocalMediaInfo == null) || (this.a.a(localLocalMediaInfo.path) != 1)) {
-        break label444;
-      }
-      if (this.a.jdField_a_of_type_Agqu != null)
-      {
-        agrc localagrc = new agrc();
-        localagrc.jdField_a_of_type_Boolean = false;
-        localagrc.jdField_a_of_type_JavaLangString = localLocalMediaInfo.path;
-        this.a.jdField_a_of_type_Agqu.a(paramAdapterView, localagrc);
-      }
-      if (paramView != null)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371918));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      if ((this.a.b != 0) && (this.a.b != 1) && (this.a.b != 3000)) {
-        break label432;
-      }
-      PhotoPreviewActivity.b(this.a, 8);
+      this.a.j();
+      return;
     }
-    for (;;)
-    {
-      this.a.t = paramInt;
-      try
-      {
-        this.a.jdField_a_of_type_ComTencentWidgetDragView.setOriginRect(this.a.b((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.t)).thumbRect);
-        if (PhotoPreviewActivity.c(this.a))
-        {
-          PhotoPreviewActivity.a(this.a, this.a.t);
-          this.a.g();
-          if (!this.a.w)
-          {
-            if (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
-              break label590;
-            }
-            this.a.d.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
-          }
-          paramAdapterView = (String)paramAdapterView.getAdapter().getItem(paramInt);
-          if ((this.a.a(paramAdapterView) == 1) && (!this.a.g)) {
-            this.a.f();
-          }
-          if (PhotoPreviewActivity.c(this.a)) {
-            PhotoPreviewActivity.a(this.a, (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.t));
-          }
-          return;
-          label432:
-          PhotoPreviewActivity.c(this.a, 8);
-          continue;
-          label444:
-          PhotoPreviewActivity.c(this.a, 0);
-          if (this.a.jdField_a_of_type_Agqu == null) {
-            continue;
-          }
-          this.a.jdField_a_of_type_Agqu.a(null, null);
-        }
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("PhotoPreviewActivity", 2, bfnd.a(paramView));
-            continue;
-            if (this.a.c.contains(Integer.valueOf(this.a.t)))
-            {
-              int i = this.a.c.indexOf(Integer.valueOf(this.a.t));
-              if (i != -1) {
-                PhotoPreviewActivity.a(this.a, i + 1);
-              } else {
-                this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
-              }
-            }
-            else
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
-              continue;
-              label590:
-              this.a.d.setText(this.a.getResources().getString(2131695336));
-            }
-          }
-        }
-      }
+    if (this.a.L) {
+      axqy.b(null, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
     }
+    if (("FROM_PHOTO_LIST_FLOW".equals(this.a.e)) && (this.a.J)) {
+      this.a.setResult(-1);
+    }
+    this.a.finish();
+    bbbx.a(this.a, true, false);
   }
 }
 

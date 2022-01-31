@@ -1,88 +1,89 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class bkgg
-  implements URLDrawableDownListener
+  extends bkfz
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  public List<bkgh> a;
+  public boolean b;
+  public String f;
   
-  public bkgg(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public bkgg(@NonNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private boolean a(ImageView paramImageView)
+  public static List<bkgh> a(JSONArray paramJSONArray)
   {
-    paramImageView = (String)paramImageView.getTag(2131376880);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    veg.b("InformationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131376849, Boolean.valueOf(false));
-      return;
+      localArrayList.add(new bkgh(paramJSONArray.getJSONObject(i)));
+      i += 1;
     }
-    veg.b("InformationFaceAdapter", "onLoadCanceled error.");
+    return localArrayList;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bkgh a(String paramString)
   {
-    veg.b("InformationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    if ((!bbkk.a(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
     {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131376849, Boolean.valueOf(false));
-      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bkgh localbkgh = (bkgh)localIterator.next();
+        if (paramString.equals(localbkgh.f)) {
+          return localbkgh;
+        }
+      }
     }
-    veg.b("InformationFaceAdapter", "onLoadFialed error.");
+    return null;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public String a()
   {
-    veg.b("InformationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131376849, Boolean.valueOf(false));
-      return;
-    }
-    veg.b("InformationFaceAdapter", "onLoadProgressed error.");
+    return "LocationFacePackage";
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public String a(int paramInt)
   {
-    veg.b("InformationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131376849, Boolean.valueOf(true));
-      return;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bkgh)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
     }
-    veg.b("InformationFaceAdapter", "onLoadSuccessed error.");
+    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bkgh)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    }
+    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isLocating=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

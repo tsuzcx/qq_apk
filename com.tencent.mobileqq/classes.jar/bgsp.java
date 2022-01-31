@@ -1,95 +1,93 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqpim.QQPimBridgeActivity;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import protocol.KQQConfig.GetResourceReqInfo;
 
 public class bgsp
+  implements bgso
 {
-  public static Intent a(Context paramContext)
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    try
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    switch (paramInt)
     {
-      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-      return paramContext;
     }
-    catch (Throwable paramContext)
+    do
     {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static Intent a(Context paramContext, String paramString1, String paramString2)
-  {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    try
-    {
-      if (localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode < 1171)
+      do
       {
-        paramContext = a(paramContext);
-        paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-        return paramContext;
-      }
-      paramContext = new Intent();
-      paramContext.setPackage("com.tencent.qqpim");
-      paramContext.setAction("com.tencent.qqpim.action_open_qqpim");
-      paramContext.putExtra("product_package", "com.tencent.mobileqq");
-      paramContext.putExtra("model_name", paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramContext.putExtra("account_name", paramString2);
-      }
-      paramContext.setFlags(67108864);
-      paramContext.setFlags(268435456);
-      paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = true;
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext = paramContext.getPackageInfo("com.tencent.qqpim", 1);
-      if (paramContext == null) {
-        bool = false;
-      }
-      return bool;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle)
-  {
-    if (a(paramActivity))
-    {
-      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X8006711", "0X8006711", 0, 0, "", "", "", "");
-      paramActivity.startActivity(a(paramActivity, bgsj.s, null));
-      return;
-    }
-    axqw.b(paramQQAppInterface, "CliOper", "", "", "0X8006712", "0X8006712", 0, 0, "", "", "", "");
-    paramQQAppInterface = new Intent();
-    paramQQAppInterface.setClass(paramActivity, QQPimBridgeActivity.class);
-    paramQQAppInterface.putExtras(paramBundle);
-    paramActivity.startActivity(paramQQAppInterface);
+        String str1;
+        String str2;
+        do
+        {
+          return true;
+          ajts.a((QQAppInterface)localObject);
+          return true;
+          paramBundle = (akiv)((QQAppInterface)localObject).a(44);
+          paramBundle.a(new bgsq(this));
+          paramBundle.a("");
+          return true;
+          paramBundle = (ajud)((QQAppInterface)localObject).a(4);
+          paramBundle.a(null, new GetResourceReqInfo[] { paramBundle.d() });
+          return true;
+          ((QQAppInterface)localObject).addObserver(new bgsr(this));
+          return true;
+          boolean bool = paramBundle.getBoolean("visible");
+          ((ajzj)((QQAppInterface)localObject).a(3)).a(bool);
+          return true;
+          paramInt = paramBundle.getInt("iFaceType");
+          str1 = paramBundle.getString("uinOrMobileNum");
+          byte b = paramBundle.getByte("faceFileType");
+          int i = paramBundle.getInt("idType");
+          paramBundle = (FriendListHandler)((QQAppInterface)localObject).a(1);
+          switch (paramInt)
+          {
+          default: 
+            return true;
+          case 1: 
+            paramBundle.a(str1, (byte)0, b);
+            return true;
+          case 11: 
+            paramBundle.b(str1, b);
+            return true;
+          case 4: 
+            paramBundle.a(str1, b);
+            return true;
+          case 32: 
+            paramBundle.a(str1, i, (byte)1, b);
+            return true;
+          }
+          paramBundle.b(str1, i, (byte)1, b);
+          return true;
+          str1 = paramBundle.getString("mUin");
+          str2 = paramBundle.getString("feedsId");
+          paramInt = paramBundle.getInt("action");
+          paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
+        } while (paramBundle == null);
+        paramBundle.a(str1, str2, 255, paramInt);
+        return true;
+        ((QQAppInterface)localObject).addObserver(new bgss(this));
+        return true;
+        ((QQAppInterface)localObject).registObserver(new bgst(this, null));
+        return true;
+        paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
+      } while (paramBundle == null);
+      paramBundle.a();
+      return true;
+      ((SignatureHandler)((QQAppInterface)localObject).a(41)).a(paramBundle.getString("uin"), paramBundle.getString("feedsId"), 255, true);
+      return true;
+      paramBundle = bbcz.j((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("name", paramBundle);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 6, (Bundle)localObject);
+      return true;
+    } while (paramBundle == null);
+    ((QQAppInterface)localObject).sendToService((ToServiceMsg)paramBundle.getParcelable("msg"));
+    return true;
   }
 }
 

@@ -1,25 +1,16 @@
 class aeql
-  implements baoe
+  implements xdi
 {
-  aeql(aeqd paramaeqd) {}
+  aeql(aeqb paramaeqb) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      this.a.X = true;
-      paramString = (adjr)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
-    }
-    do
-    {
-      return;
-      this.a.X = false;
-      paramString = (adjr)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    this.a.a.a(false, false, 4);
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
   }
 }
 

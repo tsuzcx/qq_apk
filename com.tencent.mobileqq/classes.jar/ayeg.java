@@ -1,6 +1,25 @@
-public abstract interface ayeg
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+final class ayeg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(bcpq parambcpq);
+  ayeg(Context paramContext, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      apug.b(this.jdField_a_of_type_AndroidContentContext, anbq.a().a());
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
+  }
 }
 
 

@@ -1,20 +1,12 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ajzn
-  implements ajtf
 {
-  public List<String> a(AppInterface paramAppInterface)
+  public int a;
+  public long a;
+  public int b;
+  
+  public String toString()
   {
-    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).a().a()))
-    {
-      paramAppInterface = new ArrayList();
-      paramAppInterface.add("100000");
-      return paramAppInterface;
-    }
-    return null;
+    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
   }
 }
 

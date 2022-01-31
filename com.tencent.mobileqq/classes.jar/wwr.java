@@ -1,18 +1,15 @@
-import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
 public class wwr
-  implements wwq
+  implements DialogInterface.OnDismissListener
 {
-  public wwr(AsyncRichTextView paramAsyncRichTextView) {}
+  public wwr(FollowTextView paramFollowTextView) {}
   
-  public boolean a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
-    while (BaseApplicationImpl.getContext() == null) {
-      return true;
-    }
-    return true;
+    FollowTextView.a(this.a, true);
   }
 }
 

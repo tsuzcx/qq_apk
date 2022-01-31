@@ -1,34 +1,24 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
+import eipc.EIPCResult;
 
-class ayfz
-  implements WtTicketPromise
+public class ayfz
+  extends QIPCModule
 {
-  ayfz(ayfy paramayfy, Runnable paramRunnable) {}
-  
-  public void Done(Ticket paramTicket)
+  public ayfz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    super("Module_TDFileChangeNameQIPCModule");
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    bdii.c(ayfx.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    if (paramString.equals("Action_url_2_fmdb")) {
+      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
     }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    return null;
   }
 }
 

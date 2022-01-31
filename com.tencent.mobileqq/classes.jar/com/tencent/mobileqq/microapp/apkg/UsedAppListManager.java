@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ahiq;
-import airz;
-import ajae;
+import ahio;
+import airx;
+import ajac;
 import android.text.TextUtils;
-import aukm;
-import aukn;
 import auko;
 import aukp;
-import bbqp;
+import aukq;
+import aukr;
+import bbrd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -130,49 +130,49 @@ public class UsedAppListManager
         paramAppInfo.updateTimeStamp();
         localUsedAppListManager.insertAppInfo(paramAppInfo);
       } while (paramAppInfo.type != 2);
-      paramAppInfo = (airz)((QQAppInterface)localObject).getManager(153);
+      paramAppInfo = (airx)((QQAppInterface)localObject).getManager(153);
     } while ((paramAppInfo.l) && (paramAppInfo.j()));
-    ajae.b(4);
+    ajac.b(4);
     return;
-    ahiq.a(paramAppInfo);
+    ahio.a(paramAppInfo);
   }
   
-  private void saveToDB(aukm paramaukm)
+  private void saveToDB(auko paramauko)
   {
-    aukn localaukn = this.mApp.getEntityManagerFactory().createEntityManager();
-    aukp localaukp;
-    if ((localaukn != null) && (paramaukm != null))
+    aukp localaukp = this.mApp.getEntityManagerFactory().createEntityManager();
+    aukr localaukr;
+    if ((localaukp != null) && (paramauko != null))
     {
-      localaukp = localaukn.a();
-      localaukp.a();
+      localaukr = localaukp.a();
+      localaukr.a();
     }
     try
     {
-      updateEntity(localaukn, paramaukm);
-      localaukp.c();
+      updateEntity(localaukp, paramauko);
+      localaukr.c();
       return;
     }
-    catch (Exception paramaukm)
+    catch (Exception paramauko)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("UsedAppListManager", 2, "saveToDB exception: ", paramaukm);
+        QLog.d("UsedAppListManager", 2, "saveToDB exception: ", paramauko);
       }
       return;
     }
     finally
     {
-      localaukp.b();
+      localaukr.b();
     }
   }
   
-  private boolean updateEntity(aukn paramaukn, aukm paramaukm)
+  private boolean updateEntity(aukp paramaukp, auko paramauko)
   {
     boolean bool = false;
-    if (paramaukn.a()) {
-      if (paramaukm.getStatus() == 1000)
+    if (paramaukp.a()) {
+      if (paramauko.getStatus() == 1000)
       {
-        paramaukn.b(paramaukm);
-        if (paramaukm.getStatus() == 1001) {
+        paramaukp.b(paramauko);
+        if (paramauko.getStatus() == 1001) {
           bool = true;
         }
       }
@@ -180,17 +180,17 @@ public class UsedAppListManager
     while (!QLog.isColorLevel())
     {
       return bool;
-      if ((paramaukm.getStatus() == 1001) || (paramaukm.getStatus() == 1002)) {
-        return paramaukn.a(paramaukm);
+      if ((paramauko.getStatus() == 1001) || (paramauko.getStatus() == 1002)) {
+        return paramaukp.a(paramauko);
       }
     }
-    QLog.d("UsedAppListManager", 2, "updateEntity em closed e=" + paramaukm.getTableName());
+    QLog.d("UsedAppListManager", 2, "updateEntity em closed e=" + paramauko.getTableName());
     return false;
   }
   
   public void getUsedAppList()
   {
-    ((bbqp)this.mApp.a(71)).c();
+    ((bbrd)this.mApp.a(71)).c();
   }
   
   public void onDestroy() {}
@@ -203,15 +203,15 @@ public class UsedAppListManager
       return;
       QLog.i("UsedAppListManager", 1, "removeAllAppInfo");
       if (this.mUsedAppInfos != null) {}
-      aukn localaukn;
+      aukp localaukp;
       synchronized (this.mUsedAppInfos)
       {
         this.mUsedAppInfos.clear();
-        localaukn = this.mApp.getEntityManagerFactory().createEntityManager();
-        if (localaukn == null) {
+        localaukp = this.mApp.getEntityManagerFactory().createEntityManager();
+        if (localaukp == null) {
           continue;
         }
-        ??? = localaukn.a();
+        ??? = localaukp.a();
       }
     }
   }
@@ -246,16 +246,16 @@ public class UsedAppListManager
     //   45: ifnull -32 -> 13
     //   48: aload_0
     //   49: getfield 42	com/tencent/mobileqq/microapp/apkg/UsedAppListManager:mApp	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   52: invokevirtual 204	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lauko;
-    //   55: invokevirtual 210	auko:createEntityManager	()Laukn;
+    //   52: invokevirtual 204	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Laukq;
+    //   55: invokevirtual 210	aukq:createEntityManager	()Laukp;
     //   58: astore_3
     //   59: aload_3
     //   60: ifnull -47 -> 13
     //   63: aload_3
-    //   64: invokevirtual 215	aukn:a	()Laukp;
+    //   64: invokevirtual 215	aukp:a	()Laukr;
     //   67: astore_2
     //   68: aload_2
-    //   69: invokevirtual 219	aukp:a	()V
+    //   69: invokevirtual 219	aukr:a	()V
     //   72: new 247	java/lang/StringBuilder
     //   75: dup
     //   76: invokespecial 248	java/lang/StringBuilder:<init>	()V
@@ -273,7 +273,7 @@ public class UsedAppListManager
     //   108: aload_0
     //   109: aload_3
     //   110: aload 5
-    //   112: invokespecial 223	com/tencent/mobileqq/microapp/apkg/UsedAppListManager:updateEntity	(Laukn;Laukm;)Z
+    //   112: invokespecial 223	com/tencent/mobileqq/microapp/apkg/UsedAppListManager:updateEntity	(Laukp;Lauko;)Z
     //   115: pop
     //   116: aload 4
     //   118: ldc_w 289
@@ -294,7 +294,7 @@ public class UsedAppListManager
     //   155: aload_1
     //   156: invokestatic 233	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   159: aload_2
-    //   160: invokevirtual 228	aukp:b	()V
+    //   160: invokevirtual 228	aukr:b	()V
     //   163: return
     //   164: astore_1
     //   165: aload_2
@@ -318,13 +318,13 @@ public class UsedAppListManager
     //   195: aastore
     //   196: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   199: aload_2
-    //   200: invokevirtual 226	aukp:c	()V
+    //   200: invokevirtual 226	aukr:c	()V
     //   203: aload_2
-    //   204: invokevirtual 228	aukp:b	()V
+    //   204: invokevirtual 228	aukr:b	()V
     //   207: return
     //   208: astore_1
     //   209: aload_2
-    //   210: invokevirtual 228	aukp:b	()V
+    //   210: invokevirtual 228	aukr:b	()V
     //   213: aload_1
     //   214: athrow
     // Local variable table:
@@ -332,7 +332,7 @@ public class UsedAppListManager
     //   0	215	0	this	UsedAppListManager
     //   0	215	1	paramList	List<AppInfo>
     //   25	185	2	localObject	Object
-    //   58	52	3	localaukn	aukn
+    //   58	52	3	localaukp	aukp
     //   79	112	4	localStringBuilder	java.lang.StringBuilder
     //   106	19	5	localAppInfo	AppInfo
     // Exception table:

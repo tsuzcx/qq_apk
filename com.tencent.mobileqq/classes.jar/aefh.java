@@ -1,11 +1,26 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForVideo;
 
 class aefh
-  extends acun
+  implements View.OnClickListener
 {
-  public RelativeLayout a;
+  aefh(aefg paramaefg) {}
   
-  private aefh(aeff paramaeff) {}
+  public void onClick(View paramView)
+  {
+    if (!aefg.a(this.a)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!llw.c()) || (!llw.d()));
+      paramView = (acva)actj.a(paramView);
+    } while (paramView == null);
+    paramView = (MessageForVideo)paramView.a;
+    aefg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

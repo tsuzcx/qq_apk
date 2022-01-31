@@ -1,96 +1,38 @@
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-final class skr
-  extends skp
+@SuppressLint({"HandlerLeak"})
+class skr
+  extends Handler
 {
-  public void installSucceed(String paramString1, String paramString2)
+  WeakReference<skq> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  skr(skq paramskq1, skq paramskq2)
   {
-    super.installSucceed(paramString1, paramString2);
-    if (skq.b()) {
-      return;
-    }
-    skq.a(paramString1, paramString2, true);
+    snb.b("WSFallKeyPicMonitor", "init DownloadHandler");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramskq2);
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void handleMessage(Message paramMessage)
   {
-    sne.c("WeishiDownloadUtil", "qq onDownloadCancel info = " + paramDownloadInfo);
-    if (skq.a(paramDownloadInfo))
+    super.handleMessage(paramMessage);
+    snb.b("WSFallKeyPicMonitor", "handleMessage to download");
+    if (paramMessage.what == 1)
     {
-      skq.a();
-      int i = skq.b();
-      WSPublicAccReport.getInstance().reportDownload(skq.a(), i, 3, 2, 0);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    sne.d("WeishiDownloadUtil", "qq onDownloadError info = " + paramDownloadInfo);
-    if (skq.a(paramDownloadInfo))
-    {
-      skq.a();
-      paramInt2 = skq.b();
-      WSPublicAccReport.getInstance().reportDownload(skq.a(), paramInt2, 3, 2, 0);
-      sne.d("WeishiDownloadUtil", " errorCode:" + paramInt1 + ", errorMsg: " + paramString);
-      skq.a(paramDownloadInfo, paramInt1);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    skq.a();
-    int i = skq.a();
-    int j = skq.b();
-    if (skq.b())
-    {
-      if (skq.d()) {
-        sne.d("WeishiDownloadUtil", "这是预下载中点击操作，qq监听器响应");
+      if (skq.a(this.jdField_a_of_type_Skq) != 4) {
+        break label46;
       }
+      skq.a(this.jdField_a_of_type_Skq);
     }
-    else
+    for (;;)
     {
-      skq.a(paramDownloadInfo, i, j, "QQ");
+      this.jdField_a_of_type_Skq.b();
       return;
+      label46:
+      skq.b(this.jdField_a_of_type_Skq);
     }
-    sne.d("WeishiDownloadUtil", "这是qq的监听器，不响应qzone. onDownloadFinish eventId:" + i + ",eventType:" + j);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadPause(paramDownloadInfo);
-    sne.d("WeishiDownloadUtil", "qq onDownloadPause info = " + paramDownloadInfo);
-    if (skq.a(paramDownloadInfo)) {
-      skq.a();
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    super.onDownloadUpdate(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        sne.c("WeishiDownloadUtil", "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
-      }
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadWait(paramDownloadInfo);
-    sne.d("WeishiDownloadUtil", "qq onDownloadWait info = " + paramDownloadInfo);
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    super.packageReplaced(paramString1, paramString2);
-    sne.d("WeishiDownloadUtil", "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
   }
 }
 

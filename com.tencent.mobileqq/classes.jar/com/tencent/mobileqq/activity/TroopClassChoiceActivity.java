@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import acgp;
-import acgq;
+import acgl;
+import acgm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import basm;
-import basn;
-import bcxm;
-import bdjt;
-import bfpc;
+import bata;
+import batb;
+import bcyb;
+import bdki;
+import bfpt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.widget.AdapterView;
@@ -19,43 +19,43 @@ import java.util.ArrayList;
 
 public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
-  implements bfpc
+  implements bfpt
 {
-  private acgq jdField_a_of_type_Acgq;
-  public basm a;
+  private acgm jdField_a_of_type_Acgm;
+  public bata a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<basm> a;
+  public ArrayList<bata> a;
   private String b;
   
   private void b()
   {
     Object localObject = getIntent();
     this.b = String.valueOf(((Intent)localObject).getStringExtra("troopGroupClassExt"));
-    basm localbasm = basn.a(this).a();
-    if ((localbasm != null) && (this.b.equals(localbasm.b)))
+    bata localbata = batb.a(this).a();
+    if ((localbata != null) && (this.b.equals(localbata.b)))
     {
-      this.jdField_a_of_type_Basm = localbasm;
+      this.jdField_a_of_type_Bata = localbata;
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("id");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label113;
       }
-      this.jdField_a_of_type_JavaUtilArrayList = basn.a(this).a();
+      this.jdField_a_of_type_JavaUtilArrayList = batb.a(this).a();
     }
     for (;;)
     {
-      bdjt.a(bcxm.a().a());
+      bdki.a(bcyb.a().a());
       a();
       return;
-      this.jdField_a_of_type_Basm = basn.a(this).a(this, this.b);
+      this.jdField_a_of_type_Bata = batb.a(this).a(this, this.b);
       break;
       label113:
-      this.jdField_a_of_type_JavaUtilArrayList = basn.a(this).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilArrayList = batb.a(this).a(this.jdField_a_of_type_JavaLangString);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localObject = (basm)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (((basm)localObject).jdField_a_of_type_Basm != null) {
-          setTitle(((basm)localObject).jdField_a_of_type_Basm.jdField_a_of_type_JavaLangString);
+        localObject = (bata)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if (((bata)localObject).jdField_a_of_type_Bata != null) {
+          setTitle(((bata)localObject).jdField_a_of_type_Bata.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -66,13 +66,13 @@ public class TroopClassChoiceActivity
     setContentBackgroundResource(2130838514);
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377699));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Acgq = new acgq(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acgq);
+    this.jdField_a_of_type_Acgm = new acgm(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acgm);
   }
   
   public void a()
   {
-    basn.a(BaseApplicationImpl.getContext()).a(this.b, new acgp(this));
+    batb.a(BaseApplicationImpl.getContext()).a(this.b, new acgl(this));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -87,15 +87,15 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562531);
-    setTitle(2131720427);
+    super.setContentView(2131562530);
+    setTitle(2131720438);
     b();
     c();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (basm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramAdapterView = (bata)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if ((paramAdapterView.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdapterView.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!paramAdapterView.b.equals("10015")) && (!paramAdapterView.b.equals("10017")))
     {
       paramView = new Intent(this, TroopClassChoiceActivity.class);
@@ -104,7 +104,7 @@ public class TroopClassChoiceActivity
       startActivityForResult(paramView, 11);
       return;
     }
-    basn.a(this).a(paramAdapterView);
+    batb.a(this).a(paramAdapterView);
     paramView = new Intent();
     paramView.putExtra("id", paramAdapterView.b);
     setResult(-1, paramView);

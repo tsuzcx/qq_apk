@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class rbn
   implements View.OnClickListener
 {
-  rbn(rap paramrap, String paramString) {}
+  rbn(ram paramram, String paramString) {}
   
   public void onClick(View paramView)
   {
-    noo.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    nol.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

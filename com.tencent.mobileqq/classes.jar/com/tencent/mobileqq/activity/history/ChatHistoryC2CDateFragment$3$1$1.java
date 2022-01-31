@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
-import afwy;
-import ajyc;
+import afww;
+import ajya;
 
 class ChatHistoryC2CDateFragment$3$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class ChatHistoryC2CDateFragment$3$1$1
   
   public void run()
   {
-    this.a.a.a.c(ajyc.a(2131701626));
+    this.a.a.a.c(ajya.a(2131701637));
   }
 }
 

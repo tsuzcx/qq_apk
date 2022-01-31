@@ -1,22 +1,18 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
 
-public class bjjb
+public final class bjjb
+  implements Parcelable.Creator<TextParcelData>
 {
-  public float a;
-  public long a;
-  public View a;
-  public String a;
-  public float b;
-  public long b;
-  
-  public bjjb(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
+  public TextParcelData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    return new TextParcelData(paramParcel);
+  }
+  
+  public TextParcelData[] a(int paramInt)
+  {
+    return new TextParcelData[paramInt];
   }
 }
 

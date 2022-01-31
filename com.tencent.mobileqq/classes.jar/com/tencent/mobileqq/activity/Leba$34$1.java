@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.TextView;
-import bfqb;
+import bfqs;
 
 class Leba$34$1
   implements Runnable
@@ -15,7 +15,7 @@ class Leba$34$1
       if (Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0) != null) {
         Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0).setVisibility(0);
       }
-      bfqb.a(Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0), 9, this.jdField_a_of_type_Int, 0);
+      bfqs.a(Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0), 9, this.jdField_a_of_type_Int, 0);
     }
     while (Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0) == null) {
       return;

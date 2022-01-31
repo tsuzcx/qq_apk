@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abzk;
+import abzg;
 
 public class RegisterVerifyCodeActivity$5$1$1
   implements Runnable
 {
-  public RegisterVerifyCodeActivity$5$1$1(abzk paramabzk) {}
+  public RegisterVerifyCodeActivity$5$1$1(abzg paramabzg) {}
   
   public void run()
   {

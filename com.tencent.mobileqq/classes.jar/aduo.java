@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.qphone.base.util.QLog;
 
 class aduo
-  implements askp<MarkFaceMessage, Void>
+  implements asci
 {
-  aduo(adug paramadug, aduu paramaduu) {}
+  aduo(adun paramadun) {}
   
-  public Void a(MarkFaceMessage paramMarkFaceMessage)
+  public void a(adus paramadus)
   {
-    paramMarkFaceMessage = ((askd)this.jdField_a_of_type_Adug.a.getManager(14)).a(paramMarkFaceMessage);
-    this.jdField_a_of_type_Aduu.jdField_a_of_type_Aobk = paramMarkFaceMessage;
-    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
-      this.jdField_a_of_type_Aduu.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((askd)this.jdField_a_of_type_Adug.a.getManager(14)).a(paramMarkFaceMessage.a.epId);
+    if (QLog.isColorLevel()) {
+      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
     }
-    asdy.a();
-    return null;
+    adue.a(this.a.jdField_a_of_type_Adue, paramadus);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      adue.a(this.a.jdField_a_of_type_Adue, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_Adus);
+    }
   }
 }
 

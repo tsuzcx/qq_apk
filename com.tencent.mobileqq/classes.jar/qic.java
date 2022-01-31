@@ -1,79 +1,99 @@
-import android.view.View;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qic
-  implements awog
+  implements awuu<awoi>, awuv<awoi>
 {
-  private String jdField_a_of_type_JavaLangString;
-  private qbc jdField_a_of_type_Qbc;
+  private awuv<awoi> jdField_a_of_type_Awuv;
+  private List<awuu> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<awoi> b = new ArrayList();
   
-  public qic(qbc paramqbc)
+  public qic(List<awuu> paramList)
   {
-    this.jdField_a_of_type_Qbc = paramqbc;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
-  public int a()
+  public List<awoi> a(awvi paramawvi)
   {
-    return 0;
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((awuu)localIterator.next()).a(paramawvi));
+    }
+    return localArrayList;
   }
   
-  public CharSequence a()
+  public void a()
   {
-    return awvy.b(this.jdField_a_of_type_Qbc.a(), this.jdField_a_of_type_JavaLangString, 6, true);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((awuu)localIterator.next()).a();
+    }
   }
   
-  public String a()
+  public void a(awvi paramawvi, awuv<awoi> paramawuv)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.b.clear();
+    this.jdField_a_of_type_Awuv = paramawuv;
+    paramawuv = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramawuv.hasNext()) {
+      ((awuu)paramawuv.next()).a(paramawvi, this);
+    }
   }
   
-  public qbc a()
+  public void a(List<awoi> paramList)
   {
-    return this.jdField_a_of_type_Qbc;
+    if (this.jdField_a_of_type_Awuv != null) {
+      this.jdField_a_of_type_Awuv.a(paramList);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView) {}
-  
-  public boolean a()
+  public void a(List<awoi> paramList, int paramInt)
   {
-    return false;
+    this.b.addAll(paramList);
+    if (this.jdField_a_of_type_Awuv != null) {
+      this.jdField_a_of_type_Awuv.a(this.b, paramInt);
+    }
   }
   
-  public boolean a(String paramString)
+  public void a(List<awoi> paramList, awvj paramawvj)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this.jdField_a_of_type_Qbc.a().contains(paramString);
+    a(paramList, paramawvj.a);
   }
   
-  public int b()
+  public void b()
   {
-    return 0;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((awuu)localIterator.next()).b();
+    }
   }
   
-  public CharSequence b()
+  public void c()
   {
-    return "";
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((awuu)localIterator.next()).c();
+    }
   }
   
-  public String b()
+  public void d()
   {
-    return this.jdField_a_of_type_Qbc.a().toString();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((awuu)localIterator.next()).d();
+    }
   }
   
-  public int c()
+  public void e()
   {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    return ajyc.a(2131704668);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((awuu)localIterator.next()).e();
+    }
   }
 }
 

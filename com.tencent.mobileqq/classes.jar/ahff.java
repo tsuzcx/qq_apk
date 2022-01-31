@@ -1,23 +1,43 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.text.DecimalFormat;
 
-class ahff
-  implements axne
+public class ahff
 {
-  ahff(ahfe paramahfe, ahfg paramahfg) {}
+  public static String a;
+  public static DecimalFormat a;
+  private static boolean a;
+  public static String b;
+  public static String c;
+  private static String d;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  static
   {
-    if (paramInt == 0)
+    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+    c = jdField_a_of_type_JavaLangString;
+    d = jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
+  }
+  
+  public static String a()
+  {
+    if (!jdField_a_of_type_Boolean)
     {
-      ahfe.a(this.jdField_a_of_type_Ahfe, true);
-      if (this.jdField_a_of_type_Ahfg != null) {
-        this.jdField_a_of_type_Ahfg.a(true);
+      QQAppInterface localQQAppInterface = ahiw.a();
+      if (localQQAppInterface != null) {
+        d = ((agzd)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
       }
     }
-    while (this.jdField_a_of_type_Ahfg == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ahfg.a(false);
+    return d;
+  }
+  
+  public String toString()
+  {
+    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

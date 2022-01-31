@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adyh;
-import adys;
+import adyf;
+import adyq;
 import android.content.Context;
-import anie;
+import anij;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -16,18 +16,18 @@ import mqq.os.MqqHandler;
 public final class ReplyTextItemBuilder$4
   implements Runnable
 {
-  public ReplyTextItemBuilder$4(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, adys paramadys, Context paramContext, ChatThumbView paramChatThumbView) {}
+  public ReplyTextItemBuilder$4(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, adyq paramadyq, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
     Object localObject4 = null;
     Object localObject2;
     Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof anie))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof anij))
     {
-      localObject2 = (anie)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localObject1 = ((anie)localObject2).getSourceMsgInfo();
-      ((anie)localObject2).getHasPulledSourceMsg();
+      localObject2 = (anij)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject1 = ((anij)localObject2).getSourceMsgInfo();
+      ((anij)localObject2).getHasPulledSourceMsg();
     }
     for (;;)
     {
@@ -54,7 +54,7 @@ public final class ReplyTextItemBuilder$4
             if (((MessageRecord)localObject1).isLongMsg())
             {
               StringBuilder localStringBuilder = new StringBuilder();
-              localMessageRecord = adyh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, localStringBuilder);
+              localMessageRecord = adyf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, localStringBuilder);
               localObject2 = localObject1;
               localObject3 = localObject4;
               if (localMessageRecord != null)

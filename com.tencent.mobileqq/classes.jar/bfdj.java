@@ -1,49 +1,13 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
-import java.util.Map;
-
-@begt(a="ApkgLoadAsyncTask")
-public class bfdj
-  extends bfeq
+class bfdj
+  implements besu
 {
-  private bejy jdField_a_of_type_Bejy;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private boolean jdField_a_of_type_Boolean;
+  bfdj(bfdg parambfdg) {}
   
-  public bfdj(Context paramContext, bepv parambepv)
+  public void a(int paramInt, String paramString, best parambest)
   {
-    super(paramContext, parambepv);
-  }
-  
-  public bejy a()
-  {
-    return this.jdField_a_of_type_Bejy;
-  }
-  
-  public void a() {}
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    bexz.a(206, "", a().getMiniAppInfoForReport());
-    besl.b("AppRuntimeLoader", "ApkgLoadAsyncTask start loadApkgByConfig");
-    if ((this.jdField_a_of_type_Boolean) && (paramMiniAppInfo != null) && (paramMiniAppInfo.supportNativeRenderMode()))
-    {
-      besl.b("AppRuntimeLoader", "ApkgLoadAsyncTask use flutter url:" + (String)paramMiniAppInfo.renderInfo.a.get(Integer.valueOf(1)));
-      paramMiniAppInfo.downloadUrl = ((String)paramMiniAppInfo.renderInfo.a.get(Integer.valueOf(1)));
+    if ((paramInt == 0) && (parambest != null)) {
+      this.a.a(parambest.b, parambest.h);
     }
-    beip.a().a(a(), this.jdField_a_of_type_Boolean, paramMiniAppInfo, new bfdk(this, paramMiniAppInfo));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c()
-  {
-    super.c();
-    bexz.a(207, "", a().getMiniAppInfoForReport());
   }
 }
 

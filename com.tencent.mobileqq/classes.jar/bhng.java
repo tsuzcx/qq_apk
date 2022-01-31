@@ -1,18 +1,10 @@
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import cooperation.qzone.statistic.access.concept.Collector;
 
-public class bhng
-  implements Printer
+public abstract class bhng
 {
-  public bhng(QzoneThreadMonitor paramQzoneThreadMonitor) {}
+  public static bhng a = new bhnh();
   
-  public void println(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneThreadMonitor", 4, paramString);
-    }
-  }
+  public abstract boolean a(Collector paramCollector);
 }
 
 

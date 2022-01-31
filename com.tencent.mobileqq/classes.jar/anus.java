@@ -1,52 +1,28 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 class anus
-  implements ajie
+  extends VasQuickUpdateManager.CallBacker
 {
-  anus(anul paramanul, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anus(anuq paramanuq, MessengerService paramMessengerService) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramString = new Bundle();
-    int i;
-    if (paramBoolean) {
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramArrayOfInt = ((airz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        if (paramArrayOfInt == null) {
-          break label231;
-        }
-        i = paramArrayOfInt.apolloVipFlag;
-        paramInt2 = paramArrayOfInt.apolloVipLevel;
-      }
-    }
-    for (;;)
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
     {
-      paramString.putInt("apollo_apolloVipFlag", i);
-      paramString.putInt("apollo_apolloVipLevel", paramInt2);
-      paramString.putBoolean("apollo_is_super_yellow", airz.c());
-      paramString.putInt("apollo_result", 0);
-      paramString.putInt("apollo_partnerRoleId", paramInt1);
-      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      paramString.putInt("apollo_previewAction", this.jdField_b_of_type_Int);
-      paramString.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      paramString.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      paramString.putString("title", this.c);
-      paramString.putString("subTitle", this.d);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramString.putInt("apollo_result", 1);
-      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      label231:
-      paramInt2 = 0;
-      i = 0;
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a != null)
+      {
+        paramString1 = new Bundle();
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putString("cmd", "card_download_wzry_template");
+        paramString1.putInt("result", paramInt1);
+        paramString1.putString("message", paramString3);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putBundle("response", paramString1);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a = null;
+      }
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
   }
 }

@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.config;
 
-import bcpw;
-import biqf;
+import bcql;
+import biqw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class CameraPeakServiceHandler$2
   implements Runnable
 {
-  public CameraPeakServiceHandler$2(biqf parambiqf) {}
+  public CameraPeakServiceHandler$2(biqw parambiqw) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getApplication(), 2131689811, 1).a();
+    bcql.a(BaseApplicationImpl.getApplication(), 2131689811, 1).a();
   }
 }
 

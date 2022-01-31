@@ -1,22 +1,20 @@
-public class zzr
+import java.util.Comparator;
+import java.util.Map.Entry;
+
+final class zzr
+  implements Comparator
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public int c;
-  
-  public zzr(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramInt3;
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
+    }
+    if (i < j) {
+      return 2;
+    }
+    return -1;
   }
 }
 

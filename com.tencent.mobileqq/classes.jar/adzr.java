@@ -1,44 +1,25 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.VideoProgressView;
+import android.view.View;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.CropBubbleVideoView;
-import java.util.concurrent.CopyOnWriteArraySet;
 
-public class adzr
-  extends acun
+class adzr
+  implements bfph
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public VideoProgressView a;
-  public CropBubbleVideoView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  adzr(adzq paramadzq, MessageForShortVideo paramMessageForShortVideo, adzw paramadzw, bfpc parambfpc) {}
   
-  public adzr(adzh paramadzh) {}
-  
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView != null)
+    switch (paramInt)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.a();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = bbbf.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          adzh.a(this.jdField_a_of_type_Adzh, localMessageForShortVideo, l);
-        }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Adzq.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adzw);
+      } else {
+        this.jdField_a_of_type_Adzq.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adzw);
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.a(true);
-      adzh.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView);
     }
   }
 }

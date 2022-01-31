@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ahsy
-  implements DialogInterface.OnDismissListener
+  implements bfph
 {
-  public ahsy(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public ahsy(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, false);
-    }
+    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + ajya.a(2131703671);
+    bhbe.a().c(paramView);
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

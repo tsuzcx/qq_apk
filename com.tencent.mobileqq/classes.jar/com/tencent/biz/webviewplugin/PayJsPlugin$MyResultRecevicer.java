@@ -3,7 +3,7 @@ package com.tencent.biz.webviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bcdb;
+import bcdp;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 

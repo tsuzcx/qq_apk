@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import tfk;
 import tfn;
-import tfq;
-import tgm;
-import tgn;
+import tgj;
+import tgk;
 
 public class MsgTabNodeListLoader$2$1
   implements Runnable
 {
-  public MsgTabNodeListLoader$2$1(tfq paramtfq, tgm paramtgm, tgn paramtgn, ErrorMessage paramErrorMessage) {}
+  public MsgTabNodeListLoader$2$1(tfn paramtfn, tgj paramtgj, tgk paramtgk, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tfq.a.a(this.jdField_a_of_type_Tgm, this.jdField_a_of_type_Tgn, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.jdField_a_of_type_Tfn.a.a(this.jdField_a_of_type_Tgj, this.jdField_a_of_type_Tgk, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

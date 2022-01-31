@@ -1,135 +1,208 @@
-import NS_NEW_MOBILE_REPORT.AccessReqHead;
-import NS_NEW_MOBILE_REPORT.AccessRspHead;
-import NS_NEW_MOBILE_REPORT.Terminal;
-import android.content.pm.PackageInfo;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.webview.controller.BaseTranslucentController.2;
 
 public class bibd
-  extends QzoneExternalRequest
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static String b = "";
-  private static String c = "";
-  private AccessReqHead jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
+  private long jdField_a_of_type_Long;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bibe(this);
+  protected Handler a;
+  protected QQBrowserActivity a;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public bibd(long paramLong)
+  public bibd(QQBrowserActivity paramQQBrowserActivity)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead = new AccessReqHead();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.loginType = 1;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uin = paramLong;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal = new Terminal();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imei = String.valueOf(a());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.macAddress = String.valueOf(c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.androidId = String.valueOf(bbct.f());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imsi = String.valueOf(b());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.mode = String.valueOf(bbct.i());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.manufacture = String.valueOf(bbct.h());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei = String.valueOf(UserAction.getQIMEI());
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBInstallPackageReportRequest", 1, "YYBInstallPackageReportRequest qimei=" + this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei);
-    }
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uniqueId = String.valueOf(bdja.c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.installPkgList = new ArrayList();
-    Object localObject = bdiw.a(BaseApplicationImpl.getApplication());
-    if (localObject != null)
+    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      return;
+      try
       {
-        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-        this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.installPkgList.add(localPackageInfo.packageName);
+        QZLog.i("BaseTranslucentControll", "registerBroadcast");
+        IntentFilter localIntentFilter = new IntentFilter();
+        String[] arrayOfString = a();
+        if (arrayOfString != null)
+        {
+          int j = arrayOfString.length;
+          int i = 0;
+          while (i < j)
+          {
+            localIntentFilter.addAction(arrayOfString[i]);
+            i += 1;
+          }
+        }
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (bool) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_Boolean = true;
+          return;
+        }
+        catch (Exception localException1)
+        {
+          QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
+          return;
+        }
+        return;
+      }
+      catch (Exception localException2)
+      {
+        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
       }
     }
   }
   
-  public static AccessRspHead a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  private void g()
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
+    try
     {
-      return paramArrayOfByte;
-      paramArrayOfInt = (AccessRspHead)decode(paramArrayOfByte, "NewMobileReport", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        QZLog.i("BaseTranslucentControll", "removeBroadcast");
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception localException2)
+    {
+      QZLog.e("BaseTranslucentControll", "removeBroadcast error", localException2);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a(false);
+    f();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
+  }
+  
+  public void a(Intent paramIntent) {}
+  
+  protected void a(View paramView)
+  {
+    if (!this.b)
+    {
+      this.b = true;
+      QZLog.i("BaseTranslucentControll", "setAlpha(1)");
+      if (paramView != null) {
+        paramView.setAlpha(1.0F);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b() != null)
+        {
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b().getWebView();
+          if (paramView != null)
+          {
+            Object localObject = paramView.getTag(2131374582);
+            if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
+              break label119;
+            }
+            i = 1;
+            paramView.setTag(2131374579, Boolean.TRUE);
+            if (i != 0)
+            {
+              QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
+              bhsm.a(paramView);
+              return;
+            }
+            QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
+            return;
+          }
+        }
+      }
+      catch (Exception paramView)
+      {
+        QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
+      }
+      return;
+      label119:
+      int i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131364705);
+    if (localView == null) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
+      {
+        localView.setAlpha(0.0F);
+        this.b = false;
+        QZLog.i("BaseTranslucentControll", "setAlpha(0)");
+        return;
+      }
+      QZLog.i("BaseTranslucentControll", "isLoadSuccess = true，setAlpha(1)");
+      a(localView);
+      return;
+    }
+    QZLog.i("BaseTranslucentControll", "isLoadSuccess = false，setAlpha(1)");
+    a(localView);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String[] a()
+  {
     return null;
   }
   
-  public static String a()
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
   {
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    try
-    {
-      jdField_a_of_type_JavaLangString = bfmw.a("b94d1a");
-      label27:
-      return jdField_a_of_type_JavaLangString;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
+    g();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public static String b()
+  public void e()
   {
-    if ((b != null) && (b.length() > 0)) {
-      return b;
-    }
-    try
-    {
-      b = bfmw.b("b94d1a");
-      label27:
-      return b;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public static String c()
-  {
-    if ((c != null) && (c.length() > 0)) {
-      return c;
-    }
-    try
-    {
-      c = bfmw.c("b94d1a");
-      label27:
-      return c;
-    }
-    catch (Exception localException)
-    {
-      break label27;
-    }
-  }
-  
-  public String getCmdString()
-  {
-    return "MobileReport.NewMobileReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
-  }
-  
-  public String uniKey()
-  {
-    return "NewMobileReport";
+    a(true);
   }
 }
 

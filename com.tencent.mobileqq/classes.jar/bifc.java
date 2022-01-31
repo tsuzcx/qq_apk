@@ -1,6 +1,8 @@
 public abstract interface bifc
 {
-  public abstract int a();
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, long paramLong, bien parambien, boolean paramBoolean);
 }
 
 

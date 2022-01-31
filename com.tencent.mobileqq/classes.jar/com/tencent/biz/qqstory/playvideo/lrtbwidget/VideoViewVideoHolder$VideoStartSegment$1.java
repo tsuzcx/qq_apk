@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import udc;
-import veg;
+import ucz;
+import ved;
 
 class VideoViewVideoHolder$VideoStartSegment$1
   implements Runnable
@@ -15,8 +15,8 @@ class VideoViewVideoHolder$VideoStartSegment$1
     if (this.a.isCanceled()) {
       return;
     }
-    veg.d(this.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, mVideoView.start()");
-    this.a.this$0.jdField_a_of_type_Udc.b();
+    ved.d(this.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, mVideoView.start()");
+    this.a.this$0.jdField_a_of_type_Ucz.b();
     ThreadManager.getUIHandler().post(new VideoViewVideoHolder.VideoStartSegment.1.1(this));
   }
 }

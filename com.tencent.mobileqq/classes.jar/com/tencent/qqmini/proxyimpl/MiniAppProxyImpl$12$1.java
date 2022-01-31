@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniAppProxyImpl$12$1
@@ -10,7 +10,7 @@ class MiniAppProxyImpl$12$1
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
   }
 }
 

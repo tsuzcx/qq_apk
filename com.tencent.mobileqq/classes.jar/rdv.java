@@ -1,33 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.37.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-import pb.unite.search.RequestSearchWord.Rcmd;
-
-public class rdv
-  implements akjb
+class rdv
+  extends oyd
 {
-  public rdv(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2) {}
-  
-  public void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
+  rdv(rdu paramrdu, String paramString)
   {
-    if ((paramPBRepeatMessageField == null) || (paramPBRepeatMessageField.size() <= 0)) {
-      return;
-    }
-    if (ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).containsKey(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime)) {
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(this.jdField_a_of_type_Int + 1));
-    }
-    for (;;)
-    {
-      bbjn.a("search_word_prefix_show_times", bbjn.b("search_word_prefix_show_times") + 1L);
-      ThreadManager.getUIHandler().post(new ReadInJoyListViewGroup.37.1(this, paramPBRepeatMessageField, paramPBStringField));
-      return;
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(1));
-    }
+    super(paramString);
+  }
+  
+  public void a(oxx paramoxx)
+  {
+    paramoxx.g();
   }
 }
 

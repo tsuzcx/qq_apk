@@ -2,19 +2,19 @@ package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.view.View;
 import android.widget.ImageView;
-import biku;
-import bizj;
+import bill;
+import bjaa;
 
 public class VideoStoryAIScenePart$6
   implements Runnable
 {
-  public VideoStoryAIScenePart$6(biku parambiku) {}
+  public VideoStoryAIScenePart$6(bill parambill) {}
   
   public void run()
   {
-    biku.a(this.this$0).setVisibility(4);
-    biku.a(this.this$0).setVisibility(4);
-    bizj.a().a("ai_guide_shown", true, 0);
+    bill.a(this.this$0).setVisibility(4);
+    bill.a(this.this$0).setVisibility(4);
+    bjaa.a().a("ai_guide_shown", true, 0);
   }
 }
 

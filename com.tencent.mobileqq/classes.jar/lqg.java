@@ -1,138 +1,95 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
+import android.annotation.SuppressLint;
+import android.opengl.EGL14;
+import android.os.Build.VERSION;
+import javax.microedition.khronos.egl.EGL10;
 
-class lqg
+public class lqg
 {
-  private int jdField_a_of_type_Int;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
+  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
+  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
   
-  public lqg(String paramString)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.c = 0;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    Object localObject = new int[2];
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject);
+    localObject = new javax.microedition.khronos.egl.EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglChooseConfig(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0) {
+      lcg.e("OffscreenSurface", "TROUBLE! No config found.");
+    }
+    localObject = localObject[0];
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject, new int[] { 12375, 64, 12374, 64, 12344 });
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
   }
   
-  private void b()
+  private void c()
   {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
+    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null))
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable1);
-          }
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        throw localObject;
-      }
-      catch (Throwable localThrowable4)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable4);
-          }
-        }
-      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
     }
-    catch (Throwable localThrowable2)
+  }
+  
+  @SuppressLint({"NewApi"})
+  private void d()
+  {
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    Object localObject = new int[2];
+    EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1);
+    localObject = new android.opengl.EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGL14.eglChooseConfig(this.jdField_a_of_type_AndroidOpenglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject, 0, 1, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0) {
+      lcg.c("OffscreenSurface", "TROUBLE! No config found.");
+    }
+    localObject = localObject[0];
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
+    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+    EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext);
+  }
+  
+  @SuppressLint({"NewApi"})
+  private void f()
+  {
+    if ((this.jdField_a_of_type_AndroidOpenglEGLDisplay != null) && (this.jdField_a_of_type_AndroidOpenglEGLSurface != null) && (this.jdField_a_of_type_AndroidOpenglEGLContext != null))
     {
-      localThrowable2 = localThrowable2;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FilterProcessTest", 4, "DebugFile-save flush fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable2);
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
-      catch (Throwable localThrowable3)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable3);
-          }
-        }
-      }
+      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+      EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
+      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
+      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
     }
-    finally {}
   }
   
-  public void a()
+  void b()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FilterProcessTest", 4, String.format("DebugFile-end size[%s, %s], fmt[%s], frame[%s], path[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), this.jdField_b_of_type_JavaLangString }));
-    }
-    b();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.c = 0;
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramArrayOfByte == null) || (paramInt2 == 0) || (paramInt3 == 0)) {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      d();
       return;
     }
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (this.jdField_a_of_type_Int != paramInt2) || (this.jdField_b_of_type_Int != paramInt3) || (this.c != paramInt1))
+    a();
+  }
+  
+  public void e()
+  {
+    if (Build.VERSION.SDK_INT >= 17)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FilterProcessTest", 4, String.format("DebugFile-save pre_size[%s,%s], cur_size[%s,%s], pre_fmt[%s], cur_fmt[%s], count[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.c), Integer.valueOf(paramInt1), Integer.valueOf(this.d) }));
-      }
-      b();
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "_" + lqf.a(paramInt2, paramInt3, paramInt1) + ".yuv");
-      File localFile = new File(this.jdField_b_of_type_JavaLangString);
-      if ((localFile.exists()) && (localFile.isFile()) && (!localFile.delete()) && (QLog.isDevelopLevel())) {
-        QLog.i("FilterProcessTest", 4, "DebugFile-save del fail path: " + this.jdField_b_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_b_of_type_Int = paramInt3;
-      this.d = 0;
-      this.c = paramInt1;
-      this.d += 1;
-      lqf.a(this.jdField_a_of_type_JavaIoFileOutputStream, paramArrayOfByte);
+      f();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("FilterProcessTest", 4, "DebugFile-save create FileOutputStream fail path: " + this.jdField_b_of_type_JavaLangString);
-        }
-      }
-    }
+    c();
   }
 }
 

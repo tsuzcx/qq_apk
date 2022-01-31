@@ -1,42 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
 public class abup
-  implements EIPCResultCallback
+  implements Animation.AnimationListener
 {
-  public abup(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
+  public abup(QQLSActivity paramQQLSActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF error_code:" + paramEIPCResult.code);
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
-      }
-      return;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      continue;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      if (paramEIPCResult.data != null) {
-        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf"));
-      }
-      QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF success conf :" + QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
-      continue;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

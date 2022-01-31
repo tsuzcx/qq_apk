@@ -2,17 +2,17 @@ package com.tencent.biz.subscribe.utils;
 
 import android.content.Context;
 import java.util.TimerTask;
-import wtm;
-import wtn;
+import wtj;
+import wtk;
 
 public class TimeAndCountHelper$1
   extends TimerTask
 {
-  public TimeAndCountHelper$1(wtm paramwtm, Context paramContext, String paramString, wtn paramwtn) {}
+  public TimeAndCountHelper$1(wtj paramwtj, Context paramContext, String paramString, wtk paramwtk) {}
   
   public void run()
   {
-    wtm.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wtn);
+    wtj.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wtk);
   }
 }
 

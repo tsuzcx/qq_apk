@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import bcts;
+import bcuh;
 
 public class FloatingLocationWrapper$3
   implements Runnable
 {
-  public FloatingLocationWrapper$3(bcts parambcts, int paramInt) {}
+  public FloatingLocationWrapper$3(bcuh parambcuh, int paramInt) {}
   
   public void run()
   {
-    bcts.a(this.this$0, this.a);
+    bcuh.a(this.this$0, this.a);
     this.this$0.e();
   }
 }

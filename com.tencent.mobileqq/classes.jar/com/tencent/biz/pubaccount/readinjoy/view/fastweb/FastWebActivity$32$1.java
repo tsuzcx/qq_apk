@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import rjd;
+import rja;
 
 public class FastWebActivity$32$1
   implements Runnable
 {
-  public FastWebActivity$32$1(rjd paramrjd, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public FastWebActivity$32$1(rja paramrja, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
   
   public void run()
   {
@@ -14,11 +14,11 @@ public class FastWebActivity$32$1
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        FastWebActivity.a(this.jdField_a_of_type_Rjd.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-        FastWebActivity.k(this.jdField_a_of_type_Rjd.a);
+        FastWebActivity.a(this.jdField_a_of_type_Rja.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+        FastWebActivity.k(this.jdField_a_of_type_Rja.a);
         return;
       }
-      FastWebActivity.l(this.jdField_a_of_type_Rjd.a);
+      FastWebActivity.l(this.jdField_a_of_type_Rja.a);
       return;
     }
     catch (Exception localException)

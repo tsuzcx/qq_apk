@@ -1,12 +1,17 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class yeg
+class yeg
+  implements bfph
 {
-  public int a;
-  public String a;
-  public int b;
+  yeg(yee paramyee, adws paramadws, MessageForPtt paramMessageForPtt, bfpc parambfpc) {}
   
-  private yeg(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Yee.a(this.jdField_a_of_type_Adws, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    this.jdField_a_of_type_Yee.b();
+    this.jdField_a_of_type_Bfpc.dismiss();
+  }
 }
 
 

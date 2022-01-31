@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahzn;
+import ahzl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class WordingItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<WordingItem> CREATOR = new ahzn();
+  public static final Parcelable.Creator<WordingItem> CREATOR = new ahzl();
   public long a;
   public String a;
   public byte[] a;

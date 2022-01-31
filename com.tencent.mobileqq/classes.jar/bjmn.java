@@ -1,13 +1,21 @@
-import android.support.annotation.CallSuper;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bjmn
-  extends bjof
+  implements View.OnTouchListener
 {
-  @CallSuper
-  public void b()
+  public bjmn(CropVideoActivity paramCropVideoActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.b();
-    bjmo.a().a(this);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    CropVideoActivity.a(this.a).a(paramMotionEvent);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

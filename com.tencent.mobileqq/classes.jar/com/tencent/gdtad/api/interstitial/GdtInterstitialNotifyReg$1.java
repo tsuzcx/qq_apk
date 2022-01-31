@@ -6,9 +6,9 @@ import com.tencent.ark.ark;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
 import java.lang.ref.WeakReference;
-import yuf;
-import yul;
-import yxs;
+import yuc;
+import yui;
+import yxp;
 
 public final class GdtInterstitialNotifyReg$1
   implements Runnable
@@ -19,10 +19,10 @@ public final class GdtInterstitialNotifyReg$1
   {
     try
     {
-      ark.arkNotify(yul.a().a().a, "interstitial_view_resume_event", "{}", "json");
-      yxs.b("GdtInterstitialNotifyReg", String.format("sendResume", new Object[0]));
+      ark.arkNotify(yui.a().a().a, "interstitial_view_resume_event", "{}", "json");
+      yxp.b("GdtInterstitialNotifyReg", String.format("sendResume", new Object[0]));
       Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      String str = yul.a().a().a;
+      String str = yui.a().a().a;
       if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null) && (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a != null))
       {
         GdtAd localGdtAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a.a;
@@ -34,7 +34,7 @@ public final class GdtInterstitialNotifyReg$1
     {
       for (;;)
       {
-        yxs.d("GdtInterstitialNotifyReg", "sendResume", localThrowable);
+        yxp.d("GdtInterstitialNotifyReg", "sendResume", localThrowable);
         continue;
         Object localObject = null;
       }

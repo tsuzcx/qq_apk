@@ -1,18 +1,82 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class ojv
+class ojv
+  implements BusinessObserver
 {
-  public String a;
-  public List<CommentData> a = new ArrayList();
-  public boolean a;
-  public List<SubCommentData> b = new ArrayList();
+  ojv(oju paramoju, BaseCommentData paramBaseCommentData) {}
   
-  public boolean a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return (this.a != null) && (this.a.size() > 0);
+    int i = 1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label249;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        paramBundle = localWebSsoResponseBody.data.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
+        }
+        paramBundle = new JSONObject(paramBundle);
+        if (paramInt != 0)
+        {
+          paramBundle.optString("msg");
+          paramInt = 0;
+          i = paramInt;
+          if ((i == 0) && (oju.a(this.jdField_a_of_type_Oju) != null)) {
+            oju.a(this.jdField_a_of_type_Oju).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
+          }
+          return;
+        }
+        paramInt = paramBundle.optInt("ret");
+        if (paramInt != 0) {
+          break label249;
+        }
+        paramInt = i;
+        try
+        {
+          if (oju.a(this.jdField_a_of_type_Oju) == null) {
+            continue;
+          }
+          oju.a(this.jdField_a_of_type_Oju).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
+          paramInt = i;
+        }
+        catch (Exception paramBundle)
+        {
+          paramInt = 1;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+        continue;
+      }
+      paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      i = paramInt;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        i = paramInt;
+        continue;
+        label249:
+        paramInt = 0;
+      }
+    }
   }
 }
 

@@ -8,15 +8,15 @@ import java.util.List;
 public class aubv
   implements PopupWindow.OnDismissListener
 {
-  public aubv(TranslateFragment paramTranslateFragment, auad paramauad) {}
+  public aubv(TranslateFragment paramTranslateFragment, auaf paramauaf) {}
   
   public void onDismiss()
   {
-    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Auad.c != null) && (this.jdField_a_of_type_Auad.c.size() > 1))
+    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Auaf.b != null) && (this.jdField_a_of_type_Auaf.b.size() > 1))
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845297);
-      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845299);
+      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
   }
 }

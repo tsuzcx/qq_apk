@@ -1,37 +1,131 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class armw
-  implements QQPermissionCallback
+  extends WebViewPlugin
 {
-  public armw(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public armw()
   {
-    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
+    this.mPluginNameSpace = "medalwall";
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private Context a()
   {
-    try
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  private void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, "clearRedPoint from web!");
+    }
+    amfw.a().a();
+  }
+  
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+      return;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+        c(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+        startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, PermisionPrivacyActivity.class), (byte)100);
+        return;
+      }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
+  }
+  
+  private void c(String paramString)
+  {
+    String str = this.mRuntime.a().getCurrentAccountUin();
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + str, 4).getBoolean("medal_switch_disable", false);
+    if (!TextUtils.isEmpty(paramString)) {
+      if (!bool) {
+        break label74;
+      }
+    }
+    label74:
+    for (str = "{\"isOn\":0}";; str = "{\"isOn\":1}")
+    {
+      callJs(paramString, new String[] { str });
       return;
     }
-    catch (Exception paramArrayOfString)
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if ("medalwall".equals(paramString2))
     {
-      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2131690593, 0).a();
+      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {}
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if (!"getMedalSwitch".equals(paramString3)) {
+        break label54;
+      }
+      a(paramVarArgs[0]);
     }
+    for (;;)
+    {
+      bool = true;
+      return bool;
+      label54:
+      if ("jumpToMedalSettings".equals(paramString3)) {
+        b(paramVarArgs[0]);
+      } else if ("clearRedPoint".equals(paramString3)) {
+        a();
+      }
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 100) {
+      c(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = a();
   }
 }
 

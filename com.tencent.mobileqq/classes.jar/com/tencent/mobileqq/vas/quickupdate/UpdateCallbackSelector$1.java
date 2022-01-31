@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.vas.quickupdate;
 
-import bbso;
-import bbsr;
-import bbss;
-import bbst;
-import bbsu;
-import bbsv;
-import bbsw;
-import bbsz;
+import bbtc;
+import bbtf;
+import bbtg;
+import bbth;
+import bbti;
+import bbtj;
+import bbtk;
+import bbtn;
 import java.util.HashMap;
 
 public final class UpdateCallbackSelector$1
-  extends HashMap<Long, bbso>
+  extends HashMap<Long, bbtc>
 {
   public UpdateCallbackSelector$1()
   {
-    bbso[] arrayOfbbso = new bbso[7];
-    arrayOfbbso[0] = bbsw.a;
-    arrayOfbbso[1] = bbsv.a;
-    arrayOfbbso[2] = bbst.a;
-    arrayOfbbso[3] = bbsr.a;
-    arrayOfbbso[4] = bbss.a;
-    arrayOfbbso[5] = bbsu.a;
-    arrayOfbbso[6] = bbsz.a;
-    int j = arrayOfbbso.length;
+    bbtc[] arrayOfbbtc = new bbtc[7];
+    arrayOfbbtc[0] = bbtk.a;
+    arrayOfbbtc[1] = bbtj.a;
+    arrayOfbbtc[2] = bbth.a;
+    arrayOfbbtc[3] = bbtf.a;
+    arrayOfbbtc[4] = bbtg.a;
+    arrayOfbbtc[5] = bbti.a;
+    arrayOfbbtc[6] = bbtn.a;
+    int j = arrayOfbbtc.length;
     while (i < j)
     {
-      bbso localbbso = arrayOfbbso[i];
-      put(Long.valueOf(localbbso.getBID()), localbbso);
+      bbtc localbbtc = arrayOfbbtc[i];
+      put(Long.valueOf(localbbtc.getBID()), localbbtc);
       i += 1;
     }
   }

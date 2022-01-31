@@ -1,29 +1,18 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import mqq.app.QQPermissionCallback;
 
 class bhua
-  implements bhue
+  implements QQPermissionCallback
 {
-  bhua(bhtz parambhtz, IWebviewListener paramIWebviewListener) {}
+  bhua(bhty parambhty, int paramInt) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (bhtz.a(this.jdField_a_of_type_Bhtz) == null) {}
-    do
-    {
-      return;
-      if (bhtz.a(this.jdField_a_of_type_Bhtz).getVisibility() != 0) {
-        bhtz.a(this.jdField_a_of_type_Bhtz).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
+    bbdj.b(this.jdField_a_of_type_Bhty.mRuntime.a());
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
-    }
+    bhty.a(this.jdField_a_of_type_Bhty, this.jdField_a_of_type_Int);
   }
 }
 

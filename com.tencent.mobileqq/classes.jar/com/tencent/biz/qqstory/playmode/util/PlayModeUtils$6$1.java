@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import tod;
-import tsy;
-import ttf;
+import toa;
+import tsv;
+import ttc;
 
 public class PlayModeUtils$6$1
   implements Runnable
 {
-  public PlayModeUtils$6$1(tsy paramtsy, tod paramtod, ErrorMessage paramErrorMessage) {}
+  public PlayModeUtils$6$1(tsv paramtsv, toa paramtoa, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Tod != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()))
+    if ((this.jdField_a_of_type_Toa != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()))
     {
-      this.this$0.a.a(this.jdField_a_of_type_Tod.b);
+      this.this$0.a.a(this.jdField_a_of_type_Toa.b);
       return;
     }
     this.this$0.a.a(-1);

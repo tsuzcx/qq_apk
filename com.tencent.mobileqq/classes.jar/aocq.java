@@ -1,16 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aocq
-  implements View.OnClickListener
+class aocq
+  implements DialogInterface.OnClickListener
 {
-  public aocq(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
+  aocq(aocn paramaocn) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131719975);
+    bbrk.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    {
+      if (EmojiStickerManager.a().a != 0) {
+        break label103;
+      }
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      label103:
+      if (EmojiStickerManager.a().a == 1) {
+        paramInt = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        paramInt = 3;
+      } else {
+        paramInt = -1;
+      }
     }
   }
 }

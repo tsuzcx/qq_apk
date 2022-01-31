@@ -2,10 +2,10 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bfog;
+import bfox;
 
 class AbsListView$PerformClick
-  extends bfog
+  extends bfox
   implements Runnable
 {
   int a;

@@ -11,13 +11,13 @@ public class akjj
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mqz.e(false, false);
+    mqw.e(false, false);
     VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
     VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    mqz.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
+    mqw.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
   }
 }
 

@@ -1,39 +1,35 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class uwb
-  implements syt<tlz, syq>
+public final class uwb
+  extends QQUIEventReceiver<uvx, tjo>
 {
-  public uwb(FeedManager.3 param3) {}
-  
-  public void a(@NonNull tlz paramtlz, @Nullable syq paramsyq, @NonNull ErrorMessage paramErrorMessage)
+  public uwb(@NonNull uvx paramuvx)
   {
-    paramtlz = (tma)paramsyq;
-    paramsyq = new uwf();
-    paramsyq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramtlz == null)) {
-      uwa.a().remove(this.a.a);
-    }
-    for (;;)
+    super(paramuvx);
+  }
+  
+  public void a(@NonNull uvx paramuvx, @NonNull tjo paramtjo)
+  {
+    ved.a(this.TAG, "receive feature event. %s.", paramtjo.toString());
+    if ((paramtjo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjo.jdField_a_of_type_JavaUtilList != null))
     {
-      veg.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
-      ste.a().dispatch(paramsyq);
-      return;
-      if (!paramtlz.a.isEmpty())
+      paramtjo = paramtjo.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtjo.hasNext())
       {
-        paramsyq.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((uxp)paramtlz.a.get(0)).a());
-      }
-      else
-      {
-        veg.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
-        uwa.a().remove(this.a.a);
+        tec localtec = (tec)paramtjo.next();
+        uvx.a(paramuvx).put(localtec.a, localtec);
       }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjo.class;
   }
 }
 

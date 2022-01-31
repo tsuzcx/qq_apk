@@ -1,8 +1,8 @@
-import android.widget.Button;
+import android.widget.TextView;
 
 public class afkw
 {
-  public Button a;
+  public TextView a;
 }
 
 

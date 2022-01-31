@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import akyo;
+import akyn;
 
 class ScanEntryProviderContainerView$4
   implements Runnable
 {
-  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, akyo paramakyo) {}
+  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, akyn paramakyn) {}
   
   public void run()
   {

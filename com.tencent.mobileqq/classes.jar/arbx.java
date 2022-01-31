@@ -1,14 +1,18 @@
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
 
-public abstract interface arbx
+class arbx
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  arbx(arbp paramarbp) {}
   
-  public abstract void a(int paramInt1, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt2, int paramInt3, int paramInt4, String paramString, Object paramObject);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void j();
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    }
+  }
 }
 
 

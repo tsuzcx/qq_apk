@@ -1,17 +1,41 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class axjt
-  implements adnz
+class axjt
+  extends BroadcastReceiver
 {
-  axjt(axjq paramaxjq) {}
+  axjt(axjs paramaxjs) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (axjq.a(this.a) == null) {
-      axjq.a(this.a, new Handler());
+    if (paramIntent == null) {}
+    for (;;)
+    {
+      return;
+      paramContext = paramIntent.getStringExtra("event");
+      if (paramContext != null)
+      {
+        paramIntent = paramIntent.getStringExtra("data");
+        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
+          try
+          {
+            paramContext = new JSONObject(paramIntent);
+            paramIntent = paramContext.optString("shortVideoId");
+            boolean bool = paramContext.optBoolean("isPaid");
+            if ((axjs.a(this.a) != null) && (axjs.a(this.a).h != 1) && (bool) && (axjs.a(this.a).c.equals(paramIntent)))
+            {
+              new axkb(this.a).execute(new String[0]);
+              return;
+            }
+          }
+          catch (JSONException paramContext) {}
+        }
+      }
     }
-    axjq.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
   }
 }
 

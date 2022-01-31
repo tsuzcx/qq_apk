@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class DataJsPlugin$10
   implements AsyncResult
 {
-  DataJsPlugin$10(DataJsPlugin paramDataJsPlugin, String paramString, beka parambeka) {}
+  DataJsPlugin$10(DataJsPlugin paramDataJsPlugin, String paramString, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      besl.a("DataJsPlugin", "call getUserInfo ： " + paramJSONObject.toString());
+      betc.a("DataJsPlugin", "call getUserInfo ： " + paramJSONObject.toString());
       if (("webapi_getuserinfo_opendata".equals(this.val$apiName)) && (paramJSONObject != null)) {}
       try
       {
@@ -35,11 +35,11 @@ class DataJsPlugin$10
       {
         for (;;)
         {
-          besl.d("DataJsPlugin", "webapi_getuserinfo_opendata error, ", localThrowable);
+          betc.d("DataJsPlugin", "webapi_getuserinfo_opendata error, ", localThrowable);
         }
       }
     }
-    besl.a("DataJsPlugin", "call getUserInfo failed. ");
+    betc.a("DataJsPlugin", "call getUserInfo failed. ");
     this.val$req.b();
   }
 }

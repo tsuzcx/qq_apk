@@ -1,6 +1,18 @@
-public abstract interface ogy
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.qphone.base.util.QLog;
+
+public class ogy
+  implements View.OnClickListener
 {
-  public abstract void onViewCreated(boolean paramBoolean);
+  public ogy(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
+  
+  public void onClick(View paramView)
+  {
+    QLog.d("ReadInJoyCommentListView", 2, "loadmore comment when network not available");
+    ReadInJoyCommentListView.a(this.a);
+  }
 }
 
 

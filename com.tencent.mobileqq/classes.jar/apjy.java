@@ -1,44 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
 
-final class apjy
-  extends mxm
+public final class apjy
+  implements aysc
 {
-  apjy(apjz paramapjz) {}
+  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private apjy(String paramString, IHostInterface.IHttpListener paramIHttpListener)
   {
-    if (paramInt == 0) {
-      paramBundle = new oidb_0x6e7.RspBody();
-    }
-    do
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
-        }
-        if (this.a != null) {
-          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
-      }
-    } while (this.a == null);
-    this.a.a(0, -1);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
   }
+  
+  public void onResp(aysz paramaysz)
+  {
+    if ((paramaysz.c == 200) || (paramaysz.c == 206)) {}
+    for (String str = new String(paramaysz.a);; str = null)
+    {
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramaysz.c, str);
+      }
+      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramaysz.c + ", rsp=" + str);
+      return;
+    }
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,16 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-
-public class rwl
-  implements rxd
+public abstract interface rwl
 {
-  public rwl(ViolaFragment paramViolaFragment) {}
-  
-  public void a(int paramInt)
-  {
-    if (ViolaFragment.a(this.a) != null) {
-      ViolaFragment.a(this.a).a(paramInt);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

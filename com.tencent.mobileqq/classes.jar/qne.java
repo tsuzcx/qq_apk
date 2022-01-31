@@ -1,22 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 
-public class qne
-  implements ooa
+class qne
+  extends URLDrawableDownListener.Adapter
 {
-  public qne(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  qne(qnd paramqnd) {}
   
-  public void a(ood paramood)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qnc.a(), 2, "UUIDToUrlCallback Callback vid=" + paramood.jdField_b_of_type_JavaLangString + ", url=" + paramood.jdField_a_of_type_JavaLangString + ", isH265=" + paramood.jdField_a_of_type_Boolean + ", isHWCodec=" + paramood.jdField_b_of_type_Boolean + ", fileBitRate=" + paramood.c);
-    }
-    if ((!TextUtils.isEmpty(paramood.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramood.jdField_a_of_type_JavaLangString, paramood.jdField_b_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramood.jdField_a_of_type_JavaLangString, paramood.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
-    }
+    this.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
 }
 

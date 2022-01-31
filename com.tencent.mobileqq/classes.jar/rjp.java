@@ -1,16 +1,142 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class rjp
-  extends DataSetObserver
+public class rjp
+  extends BaseAdapter
 {
-  rjp(rjo paramrjo) {}
+  private List<BaseAdapter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private rjr jdField_a_of_type_Rjr;
+  private rjs jdField_a_of_type_Rjs;
   
-  public void onChanged()
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    QLog.d(FastWebActivity.a(this.a.a), 2, "DataSetObserver ");
-    FastWebActivity.a(this.a.a, 100L);
+    return getView(paramInt, paramView, paramViewGroup);
+  }
+  
+  public List<BaseAdapter> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a() {}
+  
+  public void a(BaseAdapter paramBaseAdapter)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramBaseAdapter == null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramBaseAdapter);
+    paramBaseAdapter.registerDataSetObserver(new rjq(this));
+  }
+  
+  public void a(rjr paramrjr)
+  {
+    this.jdField_a_of_type_Rjr = paramrjr;
+  }
+  
+  public void a(rjs paramrjs)
+  {
+    this.jdField_a_of_type_Rjs = paramrjs;
+  }
+  
+  public int getCount()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getCount() + i) {}
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
+      int i = localBaseAdapter.getCount();
+      if (paramInt < i) {
+        return localBaseAdapter.getItem(paramInt);
+      }
+      paramInt -= i;
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      BaseAdapter localBaseAdapter = (BaseAdapter)localIterator.next();
+      int i = localBaseAdapter.getCount();
+      if (paramInt < i) {
+        return localBaseAdapter.getItemId(paramInt);
+      }
+      paramInt -= i;
+    }
+    return -1L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    BaseAdapter localBaseAdapter;
+    if (localIterator.hasNext())
+    {
+      localBaseAdapter = (BaseAdapter)localIterator.next();
+      j = localBaseAdapter.getCount();
+      if (i >= j) {}
+    }
+    for (i = localBaseAdapter.getItemViewType(i);; i = -1)
+    {
+      return i + paramInt;
+      i -= j;
+      paramInt = localBaseAdapter.getViewTypeCount() + paramInt;
+      break;
+    }
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = paramInt;
+    while (localIterator.hasNext())
+    {
+      Object localObject = (BaseAdapter)localIterator.next();
+      int j = ((BaseAdapter)localObject).getCount();
+      if (i < j)
+      {
+        localObject = ((BaseAdapter)localObject).getView(i, paramView, paramViewGroup);
+        if (this.jdField_a_of_type_Rjs != null)
+        {
+          this.jdField_a_of_type_Rjs.a(paramInt, (View)localObject);
+          return localObject;
+        }
+      }
+      i -= j;
+    }
+    return null;
+  }
+  
+  public int getViewTypeCount()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((BaseAdapter)localIterator.next()).getViewTypeCount() + i) {}
+    return Math.max(i, 1);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Rjr != null) {
+      this.jdField_a_of_type_Rjr.a();
+    }
   }
 }
 

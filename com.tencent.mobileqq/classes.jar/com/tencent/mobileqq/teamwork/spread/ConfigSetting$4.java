@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import ajyc;
+import ajya;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aptv;
-import ayhd;
+import aptx;
+import ayhf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -13,8 +13,8 @@ public class ConfigSetting$4
 {
   public void run()
   {
-    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ayhd.a(this.this$0)).commit();
-    aptv.d(ajyc.a(2131702421));
+    this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ayhf.a(this.this$0)).commit();
+    aptx.d(ajya.a(2131702432));
   }
 }
 

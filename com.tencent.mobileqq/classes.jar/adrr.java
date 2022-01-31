@@ -1,30 +1,24 @@
 import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class adrr
-  extends ClickableSpan
+  implements bfph
 {
-  adrr(adqy paramadqy) {}
+  adrr(adrp paramadrp, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
     {
-      paramView = bfol.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131720365);
-      paramView.c(2131690596);
-      paramView.a(new adrs(this));
-      paramView.a(new adrt(this, paramView));
-      paramView.show();
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+    default: 
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    ChatActivityUtils.a(this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adrp.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
+    axqy.b(this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_Adrp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

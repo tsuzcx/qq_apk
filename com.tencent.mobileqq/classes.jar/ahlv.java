@@ -1,24 +1,20 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
 
 class ahlv
   implements View.OnClickListener
 {
-  ahlv(ahkf paramahkf, String paramString) {}
+  ahlv(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
-    }
-    paramView = new Intent(ahkf.a(this.jdField_a_of_type_Ahkf), QQBrowserDelegationActivity.class);
-    paramView.putExtra("injectrecommend", true);
-    ahkf.a(this.jdField_a_of_type_Ahkf).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-    axqw.a(ahkf.a(this.jdField_a_of_type_Ahkf).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
+    paramView = new Intent(ahkd.a(this.a), NotifyPushSettingActivity.class);
+    ahkd.a(this.a).startActivity(paramView);
+    axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
+    axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
   }
 }
 

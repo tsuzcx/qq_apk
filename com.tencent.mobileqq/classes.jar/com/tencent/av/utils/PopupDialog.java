@@ -1,6 +1,6 @@
 package com.tencent.av.utils;
 
-import abtu;
+import abtq;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,47 +9,47 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Window;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
-import lzj;
+import lze;
 import mqq.app.BaseActivity;
-import msj;
-import msk;
-import msl;
+import msg;
+import msh;
+import msi;
 
 public class PopupDialog
   extends BaseActivity
 {
-  public static msl a;
-  bbgg jdField_a_of_type_Bbgg = null;
+  public static msi a;
+  bbgu jdField_a_of_type_Bbgu = null;
   boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Msl = new msl();
+    jdField_a_of_type_Msi = new msi();
   }
   
-  public static bbgg a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static bbgu a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bbgg localbbgg2;
+    bbgu localbbgu2;
     try
     {
       if (paramContext != BaseApplicationImpl.getApplication()) {
-        localbbgg1 = bbcv.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+        localbbgu1 = bbdj.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
       }
     }
     catch (Exception localException1)
     {
-      bbgg localbbgg1;
-      localbbgg2 = null;
+      bbgu localbbgu1;
+      localbbgu2 = null;
     }
     try
     {
-      localbbgg1.show();
-      return localbbgg1;
+      localbbgu1.show();
+      return localbbgu1;
     }
     catch (Exception localException2)
     {
@@ -59,7 +59,7 @@ public class PopupDialog
     return null;
     label56:
     a(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
-    return localbbgg2;
+    return localbbgu2;
   }
   
   public static void a()
@@ -67,14 +67,14 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "hideCustomDialog");
     }
-    jdField_a_of_type_Msl.jdField_a_of_type_Boolean = false;
-    msl localmsl = jdField_a_of_type_Msl;
-    if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    jdField_a_of_type_Msi.jdField_a_of_type_Boolean = false;
+    msi localmsi = jdField_a_of_type_Msi;
+    if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localmsl = jdField_a_of_type_Msl;
-      msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
-      localmsl = jdField_a_of_type_Msl;
-      msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+      localmsi = jdField_a_of_type_Msi;
+      msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+      localmsi = jdField_a_of_type_Msi;
+      msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     }
   }
   
@@ -103,7 +103,7 @@ public class PopupDialog
       paramString1.putExtra("public_fragment_window_feature", 1);
       paramString1.putExtra("request", localBundle);
       paramString1.addFlags(268435456);
-      abtu.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
+      abtq.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
       return;
     }
   }
@@ -113,18 +113,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "changeDialogText");
     }
-    Object localObject = jdField_a_of_type_Msl;
-    if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    Object localObject = jdField_a_of_type_Msi;
+    if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramContext = jdField_a_of_type_Msl;
-      msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
+      paramContext = jdField_a_of_type_Msi;
+      msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
       return;
     }
     localObject = new Intent(paramContext, PopupDialog.class);
     ((Intent)localObject).putExtra("invoke_type", "changeText");
     ((Intent)localObject).addFlags(268435456);
-    jdField_a_of_type_Msl.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Msl.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Msi.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Msi.jdField_b_of_type_JavaLangString = paramString2;
     paramContext.startActivity((Intent)localObject);
   }
   
@@ -134,28 +134,28 @@ public class PopupDialog
       QLog.d("PopupDialog", 2, "sendIsResumeBroadcast isResume = " + paramBoolean);
     }
     if (this.jdField_a_of_type_Boolean) {
-      lzj.a(BaseApplicationImpl.getContext(), paramBoolean);
+      lze.a(BaseApplicationImpl.getContext(), paramBoolean);
     }
   }
   
-  public static bbgg b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static bbgu b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bbgg localbbgg2;
+    bbgu localbbgu2;
     try
     {
       if (paramContext != BaseApplicationImpl.getApplication()) {
-        localbbgg1 = bbcv.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+        localbbgu1 = bbdj.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
       }
     }
     catch (Exception localException1)
     {
-      bbgg localbbgg1;
-      localbbgg2 = null;
+      bbgu localbbgu1;
+      localbbgu2 = null;
     }
     try
     {
-      localbbgg1.show();
-      return localbbgg1;
+      localbbgu1.show();
+      return localbbgu1;
     }
     catch (Exception localException2)
     {
@@ -165,7 +165,7 @@ public class PopupDialog
     return null;
     label56:
     b(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
-    return localbbgg2;
+    return localbbgu2;
   }
   
   public static void b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -177,74 +177,74 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "showCustomDialog");
     }
-    jdField_a_of_type_Msl.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Msl.jdField_a_of_type_Int = paramInt1;
-    jdField_a_of_type_Msl.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Msl.jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_Msl.jdField_b_of_type_Int = paramInt2;
-    jdField_a_of_type_Msl.c = paramInt3;
-    jdField_a_of_type_Msl.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
-    jdField_a_of_type_Msl.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
+    jdField_a_of_type_Msi.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Msi.jdField_a_of_type_Int = paramInt1;
+    jdField_a_of_type_Msi.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Msi.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Msi.jdField_b_of_type_Int = paramInt2;
+    jdField_a_of_type_Msi.c = paramInt3;
+    jdField_a_of_type_Msi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
+    jdField_a_of_type_Msi.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
     paramContext.startActivity(localIntent);
   }
   
   void a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_Msl.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Msl.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bbgg.setTitle(paramString1);
-    this.jdField_a_of_type_Bbgg.setMessage(paramString2);
-    if (!this.jdField_a_of_type_Bbgg.isShowing()) {
-      this.jdField_a_of_type_Bbgg.show();
+    jdField_a_of_type_Msi.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Msi.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Bbgu.setTitle(paramString1);
+    this.jdField_a_of_type_Bbgu.setMessage(paramString2);
+    if (!this.jdField_a_of_type_Bbgu.isShowing()) {
+      this.jdField_a_of_type_Bbgu.show();
     }
   }
   
   void b()
   {
     Object localObject1 = super.getIntent().getStringExtra("invoke_type");
-    if ((TextUtils.equals((CharSequence)localObject1, "reshow")) && (this.jdField_a_of_type_Bbgg != null)) {
-      if (!this.jdField_a_of_type_Bbgg.isShowing()) {
-        this.jdField_a_of_type_Bbgg.show();
+    if ((TextUtils.equals((CharSequence)localObject1, "reshow")) && (this.jdField_a_of_type_Bbgu != null)) {
+      if (!this.jdField_a_of_type_Bbgu.isShowing()) {
+        this.jdField_a_of_type_Bbgu.show();
       }
     }
     do
     {
       return;
-      if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_Bbgg == null)) {
+      if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_Bbgu == null)) {
         break;
       }
-      localObject1 = jdField_a_of_type_Msl.jdField_a_of_type_JavaLangString;
-      localObject2 = jdField_a_of_type_Msl.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Bbgg.setTitle((String)localObject1);
-      this.jdField_a_of_type_Bbgg.setMessage((CharSequence)localObject2);
-    } while (this.jdField_a_of_type_Bbgg.isShowing());
-    this.jdField_a_of_type_Bbgg.show();
+      localObject1 = jdField_a_of_type_Msi.jdField_a_of_type_JavaLangString;
+      localObject2 = jdField_a_of_type_Msi.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Bbgu.setTitle((String)localObject1);
+      this.jdField_a_of_type_Bbgu.setMessage((CharSequence)localObject2);
+    } while (this.jdField_a_of_type_Bbgu.isShowing());
+    this.jdField_a_of_type_Bbgu.show();
     return;
-    int k = jdField_a_of_type_Msl.jdField_a_of_type_Int;
-    String str1 = jdField_a_of_type_Msl.jdField_a_of_type_JavaLangString;
-    String str2 = jdField_a_of_type_Msl.jdField_b_of_type_JavaLangString;
-    int i = jdField_a_of_type_Msl.jdField_b_of_type_Int;
-    int j = jdField_a_of_type_Msl.c;
-    if (this.jdField_a_of_type_Bbgg != null)
+    int k = jdField_a_of_type_Msi.jdField_a_of_type_Int;
+    String str1 = jdField_a_of_type_Msi.jdField_a_of_type_JavaLangString;
+    String str2 = jdField_a_of_type_Msi.jdField_b_of_type_JavaLangString;
+    int i = jdField_a_of_type_Msi.jdField_b_of_type_Int;
+    int j = jdField_a_of_type_Msi.c;
+    if (this.jdField_a_of_type_Bbgu != null)
     {
-      this.jdField_a_of_type_Bbgg.dismiss();
-      this.jdField_a_of_type_Bbgg = null;
+      this.jdField_a_of_type_Bbgu.dismiss();
+      this.jdField_a_of_type_Bbgu = null;
     }
-    localObject1 = new msj(this);
-    Object localObject2 = new msk(this);
-    if ((i == 0) || (jdField_a_of_type_Msl.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    localObject1 = new msg(this);
+    Object localObject2 = new msh(this);
+    if ((i == 0) || (jdField_a_of_type_Msi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject1 = null;
-      i = 2131720772;
+      i = 2131720783;
     }
-    if ((j == 0) || (jdField_a_of_type_Msl.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    if ((j == 0) || (jdField_a_of_type_Msi.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject2 = null;
-      j = 2131720772;
+      j = 2131720783;
     }
-    this.jdField_a_of_type_Bbgg = bbcv.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
-    this.jdField_a_of_type_Bbgg.setCancelable(false);
-    this.jdField_a_of_type_Bbgg.show();
+    this.jdField_a_of_type_Bbgu = bbdj.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+    this.jdField_a_of_type_Bbgu.setCancelable(false);
+    this.jdField_a_of_type_Bbgu.show();
   }
   
   public void onBackPressed() {}
@@ -255,19 +255,19 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onCreate");
     }
-    getWindow().setBackgroundDrawableResource(2130849552);
-    paramBundle = jdField_a_of_type_Msl;
-    if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    getWindow().setBackgroundDrawableResource(2130849561);
+    paramBundle = jdField_a_of_type_Msi;
+    if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramBundle = jdField_a_of_type_Msl;
-      if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramBundle = jdField_a_of_type_Msi;
+      if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramBundle = jdField_a_of_type_Msl;
-        msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramBundle = jdField_a_of_type_Msi;
+        msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramBundle = jdField_a_of_type_Msl;
-    msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramBundle = jdField_a_of_type_Msi;
+    msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   public void onDestroy()
@@ -275,13 +275,13 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_Bbgg != null)
+    if (this.jdField_a_of_type_Bbgu != null)
     {
-      this.jdField_a_of_type_Bbgg.dismiss();
-      this.jdField_a_of_type_Bbgg = null;
+      this.jdField_a_of_type_Bbgu.dismiss();
+      this.jdField_a_of_type_Bbgu = null;
     }
-    msl localmsl = jdField_a_of_type_Msl;
-    msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+    msi localmsi = jdField_a_of_type_Msi;
+    msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     super.onDestroy();
   }
   
@@ -302,18 +302,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onNewIntent");
     }
-    paramIntent = jdField_a_of_type_Msl;
-    if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    paramIntent = jdField_a_of_type_Msi;
+    if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramIntent = jdField_a_of_type_Msl;
-      if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramIntent = jdField_a_of_type_Msi;
+      if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramIntent = jdField_a_of_type_Msl;
-        msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramIntent = jdField_a_of_type_Msi;
+        msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramIntent = jdField_a_of_type_Msl;
-    msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramIntent = jdField_a_of_type_Msi;
+    msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   public void onPause()
@@ -326,21 +326,21 @@ public class PopupDialog
   {
     super.onResume();
     b();
-    msl localmsl = jdField_a_of_type_Msl;
-    if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    msi localmsi = jdField_a_of_type_Msi;
+    if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localmsl = jdField_a_of_type_Msl;
-      if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      localmsi = jdField_a_of_type_Msi;
+      if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        localmsl = jdField_a_of_type_Msl;
-        msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        localmsi = jdField_a_of_type_Msi;
+        msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    localmsl = jdField_a_of_type_Msl;
-    if (msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+    localmsi = jdField_a_of_type_Msi;
+    if (msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
     {
-      localmsl = jdField_a_of_type_Msl;
-      msl.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+      localmsi = jdField_a_of_type_Msi;
+      msi.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
     }
     a(true);
   }

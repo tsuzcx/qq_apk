@@ -1,6 +1,17 @@
-public abstract interface oxo
+public class oxo
+  implements oxl
 {
-  public abstract void a(String paramString, oxp paramoxp);
+  private static oxo a = new oxo();
+  
+  public static oxo a()
+  {
+    return a;
+  }
+  
+  public void a(String paramString, oxm paramoxm)
+  {
+    onu.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new oxp(this, paramoxm));
+  }
 }
 
 

@@ -1,16 +1,36 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.qphone.base.util.QLog;
 
 public class mfo
   implements DialogInterface.OnClickListener
 {
-  public mfo(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public mfo(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(this.a.c, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.g()) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().a() == -1) {
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.q(this.jdField_a_of_type_Long);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d())
+      {
+        MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
+        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "PressCameraBtnRunnable-->go on stage fail,can not find the session");
+      }
+    }
   }
 }
 

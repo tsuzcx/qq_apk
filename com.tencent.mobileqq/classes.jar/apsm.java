@@ -1,10 +1,29 @@
-public abstract interface apsm
+public abstract class apsm
 {
-  public abstract void a(int paramInt);
+  private apsl a;
   
-  public abstract void a(boolean paramBoolean);
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
+  }
   
-  public abstract void b(boolean paramBoolean);
+  public apsl a()
+  {
+    return this.a;
+  }
+  
+  public abstract String a();
+  
+  public void a(apsl paramapsl)
+  {
+    this.a = paramapsl;
+  }
 }
 
 

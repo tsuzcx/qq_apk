@@ -1,10 +1,20 @@
-import android.net.Uri;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface aqvz
+class aqvz
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(Uri paramUri);
+  aqvz(aqvv paramaqvv) {}
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.a)
+    {
+      this.a.a = false;
+      aqvv.a(this.a).finish();
+    }
+  }
 }
 
 

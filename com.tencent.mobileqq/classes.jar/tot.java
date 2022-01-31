@@ -1,39 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class tot
-  extends syq
+  extends syn
 {
   public final String a;
-  public final List<vvg> a;
   public final int b;
   
-  public tot(qqstory_service.RspGetTagList paramRspGetTagList)
+  public tot(qqstory_service.RspGetWeather paramRspGetWeather)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Object localObject = paramRspGetTagList.tag_list.get();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilList.add(new vvg(localTagItem));
-      }
-    }
-    this.b = paramRspGetTagList.is_end.get();
-    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
-  }
-  
-  public String toString()
-  {
-    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    this.b = paramRspGetWeather.temperature.get();
+    this.a = paramRspGetWeather.wea_desc.get();
   }
 }
 

@@ -1,15 +1,20 @@
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+
 public class bkjh
 {
-  public int a;
-  public bkjd<Boolean, bkji> a;
-  public String a;
-  public boolean a;
-  public int b;
-  public bkjd<Boolean, bkjj> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
+  public final Bitmap a;
+  public final boolean a;
+  public final Rect[] a;
+  public final String[] a;
+  
+  public bkjh(Bitmap paramBitmap, String[] paramArrayOfString, Rect[] paramArrayOfRect, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

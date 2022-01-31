@@ -1,43 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class wsj
+class wsj
+  implements xgu<CertifiedAccountWrite.StDoTipOffRsp>
 {
-  public static void a(Context paramContext, int paramInt, wsq paramwsq)
+  wsj(wsi paramwsi) {}
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
   {
-    bfol localbfol = bfol.a(paramContext);
-    localbfol.a(String.format(paramContext.getString(2131719946), new Object[] { Integer.valueOf(paramInt) }));
-    localbfol.b(2131719945);
-    localbfol.c(2131690596);
-    localbfol.a(new wsn(paramwsq, localbfol));
-    localbfol.a(new wso(paramwsq, localbfol));
-    if (!localbfol.isShowing()) {
-      localbfol.show();
+    paramBoolean = true;
+    if (paramLong == 0L)
+    {
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
+      if (this.a.a != null)
+      {
+        paramString = this.a.a;
+        if (paramLong != 0L) {
+          break label78;
+        }
+      }
     }
-  }
-  
-  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, wsq paramwsq, wsp paramwsp)
-  {
-    a(paramContext, null, paramStFeed, paramwsq, paramwsp);
-  }
-  
-  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, wsq paramwsq, wsp paramwsp)
-  {
-    bfol localbfol = bfol.a(paramContext);
-    localbfol.a(paramContext.getString(2131719947));
-    localbfol.a(2131719948, 3);
-    localbfol.c(2131690596);
-    localbfol.a(new wsk(localbfol, paramwsp));
-    localbfol.a(new wsl(paramStUser, paramStFeed, paramwsq, paramwsp, localbfol));
-    if (!localbfol.isShowing()) {
-      localbfol.show();
+    for (;;)
+    {
+      paramString.a(paramBoolean);
+      return;
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
+      break;
+      label78:
+      paramBoolean = false;
     }
-  }
-  
-  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, wsq paramwsq, wsp paramwsp)
-  {
-    a(paramContext, paramStUser, null, paramwsq, paramwsp);
   }
 }
 

@@ -32,10 +32,10 @@ public class ReadInJoyTipsView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374838));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374841));
-    this.b = ((ImageView)findViewById(2131374840));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374839));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374840));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374843));
+    this.b = ((ImageView)findViewById(2131374842));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374841));
   }
   
   protected void onFinishInflate()

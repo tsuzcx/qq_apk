@@ -3,46 +3,37 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class ahhe
-  implements ahbt
+  implements ahbr
 {
-  ahhe(ahhd paramahhd, ahgi paramahgi) {}
+  ahhe(ahhb paramahhb) {}
   
   public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    int j = 1;
+    int i = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadDefaultRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
+      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
     }
-    int i;
     if (paramInt == 0)
     {
-      i = 1;
+      paramInt = 1;
       if (paramPathResult == null) {
-        break label156;
+        break label154;
       }
     }
     for (;;)
     {
-      if (((j & i) == 0) || (bbjw.a(paramPathResult.folderPath))) {
-        break label162;
+      if (((i & paramInt) != 0) && (!bbkk.a(paramPathResult.folderPath)))
+      {
+        ahhb.b(this.a, paramPathResult.folderPath + File.separator + "logo" + File.separator);
+        ahhb.e(this.a);
       }
-      ahhd.a(this.jdField_a_of_type_Ahhd, paramPathResult.folderPath + File.separator + "pendant" + File.separator);
-      ahhd.b(this.jdField_a_of_type_Ahhd);
-      if (!ahhd.b()) {
-        break label162;
-      }
-      ahhd.a(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
-      ahhd.c(this.jdField_a_of_type_Ahhd);
-      ahhd.d(this.jdField_a_of_type_Ahhd);
+      QLog.i("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes -->mLogoDrawableLoaded：" + ahhb.b(this.a));
       return;
-      i = 0;
+      paramInt = 0;
       break;
-      label156:
-      j = 0;
+      label154:
+      i = 0;
     }
-    label162:
-    ahhd.b(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
-    QLog.e("springHb_SpringHbEntryPendantHolder", 2, "tryLoadDefaultRes --> PreloadFailed，resCode：" + paramInt);
   }
 }
 

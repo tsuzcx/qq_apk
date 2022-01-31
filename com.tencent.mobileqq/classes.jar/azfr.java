@@ -5,16 +5,13 @@ import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3.1;
 import com.tencent.widget.AdapterView;
 
 public class azfr
-  implements bfpd
+  implements bfpt
 {
   public azfr(TroopAvatarWallPreviewActivity.3.1 param1) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
-      TroopAvatarWallPreviewActivity.d(this.a.a.this$0);
-    }
-    return true;
+    this.a.a.this$0.a();
   }
 }
 

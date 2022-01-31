@@ -1,42 +1,72 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class aidj
-  implements bfts
+  implements View.OnClickListener
 {
   public aidj(FriendTabView paramFriendTabView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a = true;
-    FriendTabView.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
+    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
+    aiez localaiez = (aiez)paramView.getTag();
+    String str;
+    boolean bool;
+    if ((localaiez != null) && (localaiez.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaiez.jdField_a_of_type_JavaLangObject != null))
     {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      str = "";
+      if (!(localaiez.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label236;
       }
-      for (;;)
+      str = ((Friends)localaiez.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localaiez.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
       {
-        this.a.a = true;
-        FriendTabView.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
+        if (!localaiez.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label262;
+        }
+        bool = this.a.a.a(localaiez.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
+        label110:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
+        }
+        localaiez.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.d)
+        {
+          if (!localaiez.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label287;
+          }
+          paramView.setContentDescription(localaiez.d.getText().toString() + ajya.a(2131704953));
         }
       }
     }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
+    for (;;)
     {
-      paramPinnedFooterExpandableListView.b(paramInt);
+      this.a.c();
+      if (AppSetting.d) {
+        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
+      }
       return;
+      label236:
+      if (!(localaiez.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
+        break;
+      }
+      str = ((PhoneContact)localaiez.jdField_a_of_type_JavaLangObject).name;
+      break;
+      label262:
+      bool = this.a.a.a(localaiez.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
+      break label110;
+      label287:
+      paramView.setContentDescription(localaiez.d.getText().toString() + ajya.a(2131704954));
     }
-    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 

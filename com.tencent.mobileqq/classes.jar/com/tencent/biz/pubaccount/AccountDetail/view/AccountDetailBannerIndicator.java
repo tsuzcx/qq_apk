@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -34,8 +34,8 @@ public class AccountDetailBannerIndicator
   
   private void a()
   {
-    int j = actn.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = actn.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = actj.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = actj.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {

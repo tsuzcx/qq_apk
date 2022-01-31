@@ -1,11 +1,11 @@
 package common.config.service;
 
-import bgfq;
+import bggh;
 
 public final class QZoneConfigHelper$1
   implements Runnable
 {
-  public QZoneConfigHelper$1(bgfq parambgfq) {}
+  public QZoneConfigHelper$1(bggh parambggh) {}
   
   public void run()
   {

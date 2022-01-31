@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import azrf;
 import azrh;
-import azrw;
-import bbjn;
-import bbqp;
+import azrj;
+import azry;
+import bbkb;
+import bbrd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -18,11 +18,11 @@ public class TroopEnterEffectsStep
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "TroopEnterEffectsStep: doStep");
     }
-    long l = bbjn.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
-    azrf localazrf = ((azrw)this.a.app.getManager(231)).a();
-    if ((l == 0L) || (localazrf.a == null) || ((System.currentTimeMillis() - l) / 1000L > localazrf.a.a))
+    long l = bbkb.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
+    azrh localazrh = ((azry)this.a.app.getManager(231)).a();
+    if ((l == 0L) || (localazrh.a == null) || ((System.currentTimeMillis() - l) / 1000L > localazrh.a.a))
     {
-      ((bbqp)this.a.app.a(71)).a(2L, 0L);
+      ((bbrd)this.a.app.a(71)).a(2L, 0L);
       return 2;
     }
     return 7;

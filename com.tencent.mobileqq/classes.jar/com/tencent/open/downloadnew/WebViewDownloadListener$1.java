@@ -1,34 +1,34 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Build.VERSION;
-import bdew;
-import bdht;
-import bdlx;
-import bdly;
+import bdfl;
+import bdii;
+import bdmm;
+import bdmn;
 import com.tencent.smtt.sdk.WebView;
 
 public class WebViewDownloadListener$1
   implements Runnable
 {
-  public WebViewDownloadListener$1(bdlx parambdlx, WebView paramWebView, String paramString) {}
+  public WebViewDownloadListener$1(bdmm parambdmm, WebView paramWebView, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (bdew.a().a())) {
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (bdfl.a().a())) {
       try
       {
-        bdht.a("WebViewDownloadListener", "wb.loadUrl(loadJs):" + this.jdField_a_of_type_JavaLangString);
+        bdii.a("WebViewDownloadListener", "wb.loadUrl(loadJs):" + this.jdField_a_of_type_JavaLangString);
         if (Build.VERSION.SDK_INT < 19)
         {
           this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
           return;
         }
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(this.jdField_a_of_type_JavaLangString, new bdly(this));
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(this.jdField_a_of_type_JavaLangString, new bdmn(this));
         return;
       }
       catch (Exception localException)
       {
-        bdht.a("WebViewDownloadListener", "doJsCallBack >>> ", localException);
+        bdii.a("WebViewDownloadListener", "doJsCallBack >>> ", localException);
       }
     }
   }

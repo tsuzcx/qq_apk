@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
+import alxs;
 import alxt;
-import alxu;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ARGLSurfaceView
   extends GLSurfaceView
-  implements alxu, GLSurfaceView.Renderer
+  implements alxt, GLSurfaceView.Renderer
 {
   public static final int ACCELER_TYPE = 1;
   public static long FPS_LIMIT = 33L;
@@ -36,8 +36,8 @@ public class ARGLSurfaceView
   private volatile boolean mIsContextDestroyed;
   volatile boolean mIsDestroyed = false;
   private boolean mIsSupportPreserveEGLContextOnPause = true;
-  private alxu mSensorListener;
-  public alxt mSensorManager;
+  private alxt mSensorListener;
+  public alxs mSensorManager;
   private ARGLSurfaceView.SurfaceStateListener mSurfaceStateListener;
   private OrientationEventListener orientationListener;
   
@@ -98,12 +98,12 @@ public class ARGLSurfaceView
     this.orientationListener = new ARGLSurfaceView.3(this, paramActivity, paramActivity);
   }
   
-  public void initSensor(alxu paramalxu, int paramInt)
+  public void initSensor(alxt paramalxt, int paramInt)
   {
     if ((this.mSensorManager == null) && (this.mCurActivity != null))
     {
-      this.mSensorManager = new alxt(this.mCurActivity, paramInt);
-      this.mSensorListener = paramalxu;
+      this.mSensorManager = new alxs(this.mCurActivity, paramInt);
+      this.mSensorListener = paramalxt;
     }
   }
   

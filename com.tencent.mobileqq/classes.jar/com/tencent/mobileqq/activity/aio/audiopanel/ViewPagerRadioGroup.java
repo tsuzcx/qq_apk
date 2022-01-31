@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
@@ -35,7 +35,7 @@ public class ViewPagerRadioGroup
         localRadioButton.setChecked(true);
         if (paramInt == 1)
         {
-          localRadioButton.setContentDescription(ajyc.a(2131716462));
+          localRadioButton.setContentDescription(ajya.a(2131716473));
           localRadioButton.sendAccessibilityEvent(128);
         }
       }

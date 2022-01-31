@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-
-public final class nkz
-  implements Parcelable.Creator<EncryptUinInfo>
+public class nkz
 {
-  public EncryptUinInfo a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  
+  public boolean a()
   {
-    return new EncryptUinInfo(paramParcel);
+    return this.b == 1;
   }
   
-  public EncryptUinInfo[] a(int paramInt)
+  public String toString()
   {
-    return new EncryptUinInfo[paramInt];
+    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
   }
 }
 

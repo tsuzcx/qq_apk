@@ -1,26 +1,11 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class aeyt
-  implements View.OnClickListener
+public abstract interface aeyt
+  extends aeyx
 {
-  aeyt(aeys paramaeys) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent();
-    paramView.putExtra("is_from_conversation", true);
-    paramView.putExtra("bookid", aeys.a(this.a));
-    paramView.putExtra("book_new_id", aeys.b(this.a));
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramView);
-    localIntent.putExtra("readtype", "15");
-    localIntent.setClassName(aeys.a(this.a), "cooperation.qqreader.QRBridgeActivity");
-    localIntent.addFlags(268435456);
-    aeys.a(this.a).startActivity(localIntent);
-  }
+  public abstract View a(Object... paramVarArgs);
 }
 
 

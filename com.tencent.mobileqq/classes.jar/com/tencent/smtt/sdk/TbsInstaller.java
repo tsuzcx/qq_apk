@@ -157,8 +157,14 @@ class TbsInstaller
     mTbsCoreInstalledVer = new TbsInstaller.1();
     mTbsInstallerHandler = null;
     Long[] arrayOfLong1 = { Long.valueOf(44005L), Long.valueOf(39094008L) };
-    Long[] arrayOfLong2 = { Long.valueOf(43909L), Long.valueOf(38917816L) };
-    WEBCORE_LIB_LENGTH_MAP = new Long[][] { { Long.valueOf(44006L), Long.valueOf(39094008L) }, arrayOfLong1, { Long.valueOf(43910L), Long.valueOf(38917816L) }, { Long.valueOf(44027L), Long.valueOf(39094008L) }, { Long.valueOf(44028L), Long.valueOf(39094008L) }, { Long.valueOf(44029L), Long.valueOf(39094008L) }, { Long.valueOf(44030L), Long.valueOf(39094008L) }, { Long.valueOf(44032L), Long.valueOf(39094008L) }, { Long.valueOf(44033L), Long.valueOf(39094008L) }, { Long.valueOf(44034L), Long.valueOf(39094008L) }, arrayOfLong2 };
+    Long[] arrayOfLong2 = { Long.valueOf(43910L), Long.valueOf(38917816L) };
+    Long[] arrayOfLong3 = { Long.valueOf(44027L), Long.valueOf(39094008L) };
+    Long[] arrayOfLong4 = { Long.valueOf(44028L), Long.valueOf(39094008L) };
+    Long[] arrayOfLong5 = { Long.valueOf(44029L), Long.valueOf(39094008L) };
+    Long[] arrayOfLong6 = { Long.valueOf(44030L), Long.valueOf(39094008L) };
+    Long[] arrayOfLong7 = { Long.valueOf(44032L), Long.valueOf(39094008L) };
+    Long[] arrayOfLong8 = { Long.valueOf(43909L), Long.valueOf(38917816L) };
+    WEBCORE_LIB_LENGTH_MAP = new Long[][] { { Long.valueOf(44006L), Long.valueOf(39094008L) }, arrayOfLong1, arrayOfLong2, arrayOfLong3, arrayOfLong4, arrayOfLong5, arrayOfLong6, arrayOfLong7, { Long.valueOf(44033L), Long.valueOf(39094008L) }, { Long.valueOf(44034L), Long.valueOf(39094008L) }, arrayOfLong8 };
     isStaticTbsInstalling = false;
     tbs_core_copy_filter = new TbsInstaller.2();
     mCoreVersion = 0;
@@ -4955,114 +4961,122 @@ class TbsInstaller
     //   1: astore 4
     //   3: aload_2
     //   4: invokestatic 910	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: ifeq +6 -> 13
+    //   7: ifeq +8 -> 15
     //   10: aload 4
-    //   12: areturn
-    //   13: new 460	java/io/File
-    //   16: dup
-    //   17: aload_0
-    //   18: aload_1
-    //   19: invokevirtual 688	com/tencent/smtt/sdk/TbsInstaller:getTbsCoreShareDir	(Landroid/content/Context;)Ljava/io/File;
-    //   22: ldc 154
-    //   24: invokespecial 469	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: astore_1
-    //   28: aload_1
-    //   29: ifnull +12 -> 41
-    //   32: aload_1
-    //   33: invokevirtual 473	java/io/File:exists	()Z
-    //   36: istore_3
-    //   37: iload_3
-    //   38: ifne +18 -> 56
-    //   41: iconst_0
-    //   42: ifeq -32 -> 10
-    //   45: new 1297	java/lang/NullPointerException
-    //   48: dup
-    //   49: invokespecial 1298	java/lang/NullPointerException:<init>	()V
-    //   52: athrow
-    //   53: astore_1
-    //   54: aconst_null
-    //   55: areturn
-    //   56: new 726	java/util/Properties
-    //   59: dup
-    //   60: invokespecial 727	java/util/Properties:<init>	()V
-    //   63: astore 5
-    //   65: new 729	java/io/BufferedInputStream
-    //   68: dup
-    //   69: new 731	java/io/FileInputStream
-    //   72: dup
-    //   73: aload_1
-    //   74: invokespecial 732	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   77: invokespecial 735	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   80: astore_1
-    //   81: aload 5
-    //   83: aload_1
-    //   84: invokevirtual 738	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   87: aload_1
-    //   88: invokevirtual 739	java/io/BufferedInputStream:close	()V
-    //   91: aload 5
-    //   93: aload_2
-    //   94: invokevirtual 1299	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   97: astore_2
+    //   12: astore_2
+    //   13: aload_2
+    //   14: areturn
+    //   15: new 460	java/io/File
+    //   18: dup
+    //   19: aload_0
+    //   20: aload_1
+    //   21: invokevirtual 688	com/tencent/smtt/sdk/TbsInstaller:getTbsCoreShareDir	(Landroid/content/Context;)Ljava/io/File;
+    //   24: ldc 154
+    //   26: invokespecial 469	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   29: astore_1
+    //   30: aload_1
+    //   31: ifnull +12 -> 43
+    //   34: aload_1
+    //   35: invokevirtual 473	java/io/File:exists	()Z
+    //   38: istore_3
+    //   39: iload_3
+    //   40: ifne +21 -> 61
+    //   43: aload 4
+    //   45: astore_2
+    //   46: iconst_0
+    //   47: ifeq -34 -> 13
+    //   50: new 1297	java/lang/NullPointerException
+    //   53: dup
+    //   54: invokespecial 1298	java/lang/NullPointerException:<init>	()V
+    //   57: athrow
+    //   58: astore_1
+    //   59: aconst_null
+    //   60: areturn
+    //   61: new 726	java/util/Properties
+    //   64: dup
+    //   65: invokespecial 727	java/util/Properties:<init>	()V
+    //   68: astore 5
+    //   70: new 729	java/io/BufferedInputStream
+    //   73: dup
+    //   74: new 731	java/io/FileInputStream
+    //   77: dup
+    //   78: aload_1
+    //   79: invokespecial 732	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   82: invokespecial 735	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   85: astore_1
+    //   86: aload 5
+    //   88: aload_1
+    //   89: invokevirtual 738	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   92: aload_1
+    //   93: invokevirtual 739	java/io/BufferedInputStream:close	()V
+    //   96: aload 5
     //   98: aload_2
-    //   99: astore 4
-    //   101: aload_1
-    //   102: ifnull -92 -> 10
-    //   105: aload_1
-    //   106: invokevirtual 739	java/io/BufferedInputStream:close	()V
-    //   109: aload_2
-    //   110: areturn
-    //   111: astore_1
-    //   112: aload_2
-    //   113: areturn
-    //   114: astore_1
-    //   115: aconst_null
-    //   116: astore_1
-    //   117: aload_1
-    //   118: ifnull -108 -> 10
-    //   121: aload_1
-    //   122: invokevirtual 739	java/io/BufferedInputStream:close	()V
+    //   99: invokevirtual 1299	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   102: astore_2
+    //   103: aload_2
+    //   104: astore 4
+    //   106: aload 4
+    //   108: astore_2
+    //   109: aload_1
+    //   110: ifnull -97 -> 13
+    //   113: aload_1
+    //   114: invokevirtual 739	java/io/BufferedInputStream:close	()V
+    //   117: aload 4
+    //   119: areturn
+    //   120: astore_1
+    //   121: aload 4
+    //   123: areturn
+    //   124: astore_1
     //   125: aconst_null
-    //   126: areturn
-    //   127: astore_1
-    //   128: aconst_null
-    //   129: areturn
-    //   130: astore_2
-    //   131: aconst_null
-    //   132: astore_1
-    //   133: aload_1
-    //   134: ifnull +7 -> 141
-    //   137: aload_1
-    //   138: invokevirtual 739	java/io/BufferedInputStream:close	()V
-    //   141: aload_2
-    //   142: athrow
-    //   143: astore_1
-    //   144: goto -3 -> 141
-    //   147: astore_2
-    //   148: goto -15 -> 133
-    //   151: astore_2
-    //   152: goto -35 -> 117
+    //   126: astore_1
+    //   127: aload 4
+    //   129: astore_2
+    //   130: aload_1
+    //   131: ifnull -118 -> 13
+    //   134: aload_1
+    //   135: invokevirtual 739	java/io/BufferedInputStream:close	()V
+    //   138: aconst_null
+    //   139: areturn
+    //   140: astore_1
+    //   141: aconst_null
+    //   142: areturn
+    //   143: astore_2
+    //   144: aconst_null
+    //   145: astore_1
+    //   146: aload_1
+    //   147: ifnull +7 -> 154
+    //   150: aload_1
+    //   151: invokevirtual 739	java/io/BufferedInputStream:close	()V
+    //   154: aload_2
+    //   155: athrow
+    //   156: astore_1
+    //   157: goto -3 -> 154
+    //   160: astore_2
+    //   161: goto -15 -> 146
+    //   164: astore_2
+    //   165: goto -38 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	155	0	this	TbsInstaller
-    //   0	155	1	paramContext	Context
-    //   0	155	2	paramString	String
-    //   36	2	3	bool	boolean
-    //   1	99	4	str	String
-    //   63	29	5	localProperties	java.util.Properties
+    //   0	168	0	this	TbsInstaller
+    //   0	168	1	paramContext	Context
+    //   0	168	2	paramString	String
+    //   38	2	3	bool	boolean
+    //   1	127	4	str	String
+    //   68	29	5	localProperties	java.util.Properties
     // Exception table:
     //   from	to	target	type
-    //   45	53	53	java/io/IOException
-    //   105	109	111	java/io/IOException
-    //   13	28	114	java/lang/Exception
-    //   32	37	114	java/lang/Exception
-    //   56	81	114	java/lang/Exception
-    //   121	125	127	java/io/IOException
-    //   13	28	130	finally
-    //   32	37	130	finally
-    //   56	81	130	finally
-    //   137	141	143	java/io/IOException
-    //   81	98	147	finally
-    //   81	98	151	java/lang/Exception
+    //   50	58	58	java/io/IOException
+    //   113	117	120	java/io/IOException
+    //   15	30	124	java/lang/Exception
+    //   34	39	124	java/lang/Exception
+    //   61	86	124	java/lang/Exception
+    //   134	138	140	java/io/IOException
+    //   15	30	143	finally
+    //   34	39	143	finally
+    //   61	86	143	finally
+    //   150	154	156	java/io/IOException
+    //   86	103	160	finally
+    //   86	103	164	java/lang/Exception
   }
   
   File getCoreDir(Context paramContext, int paramInt)
@@ -5939,10 +5953,10 @@ class TbsInstaller
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore_2
+    //   1: istore_3
     //   2: aload_1
     //   3: ifnonnull +5 -> 8
-    //   6: iload_2
+    //   6: iload_3
     //   7: ireturn
     //   8: aconst_null
     //   9: astore 5
@@ -6005,17 +6019,17 @@ class TbsInstaller
     //   120: ireturn
     //   121: aload 5
     //   123: invokestatic 1721	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   126: istore_3
-    //   127: iload_3
-    //   128: istore_2
+    //   126: istore_2
+    //   127: iload_2
+    //   128: istore_3
     //   129: aload_1
     //   130: ifnull -124 -> 6
     //   133: aload_1
     //   134: invokevirtual 739	java/io/BufferedInputStream:close	()V
-    //   137: iload_3
+    //   137: iload_2
     //   138: ireturn
     //   139: astore_1
-    //   140: iload_3
+    //   140: iload_2
     //   141: ireturn
     //   142: astore_1
     //   143: aconst_null
@@ -6050,8 +6064,8 @@ class TbsInstaller
     //   start	length	slot	name	signature
     //   0	192	0	this	TbsInstaller
     //   0	192	1	paramString	String
-    //   1	128	2	i	int
-    //   126	15	3	j	int
+    //   126	15	2	i	int
+    //   1	128	3	j	int
     //   37	3	4	bool	boolean
     //   9	156	5	str1	String
     //   171	1	5	localIOException	java.io.IOException
@@ -6179,7 +6193,7 @@ class TbsInstaller
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore_2
+    //   1: istore_3
     //   2: aconst_null
     //   3: astore 5
     //   5: ldc 151
@@ -6211,7 +6225,7 @@ class TbsInstaller
     //   63: dup
     //   64: invokespecial 1298	java/lang/NullPointerException:<init>	()V
     //   67: athrow
-    //   68: iload_2
+    //   68: iload_3
     //   69: ireturn
     //   70: new 726	java/util/Properties
     //   73: dup
@@ -6247,17 +6261,17 @@ class TbsInstaller
     //   131: ireturn
     //   132: aload 5
     //   134: invokestatic 1721	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   137: istore_3
-    //   138: iload_3
-    //   139: istore_2
+    //   137: istore_2
+    //   138: iload_2
+    //   139: istore_3
     //   140: aload_1
     //   141: ifnull -73 -> 68
     //   144: aload_1
     //   145: invokevirtual 739	java/io/BufferedInputStream:close	()V
-    //   148: iload_3
+    //   148: iload_2
     //   149: ireturn
     //   150: astore_1
-    //   151: iload_3
+    //   151: iload_2
     //   152: ireturn
     //   153: astore_1
     //   154: aconst_null
@@ -6295,8 +6309,8 @@ class TbsInstaller
     //   start	length	slot	name	signature
     //   0	206	0	this	TbsInstaller
     //   0	206	1	paramFile	File
-    //   1	139	2	i	int
-    //   137	15	3	j	int
+    //   137	15	2	i	int
+    //   1	139	3	j	int
     //   49	3	4	bool	boolean
     //   3	173	5	str	String
     //   185	1	5	localIOException	java.io.IOException
@@ -6433,11 +6447,11 @@ class TbsInstaller
     //   79: invokestatic 636	com/tencent/smtt/utils/FileUtil:hasEnoughFreeSpace	(Landroid/content/Context;)Z
     //   82: ifne +70 -> 152
     //   85: invokestatic 642	com/tencent/smtt/utils/TbsUtils:getROMAvailableSize	()J
-    //   88: lstore 9
+    //   88: lstore 8
     //   90: aload_1
     //   91: invokestatic 536	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
     //   94: invokevirtual 645	com/tencent/smtt/sdk/TbsDownloadConfig:getDownloadMinFreeSpace	()J
-    //   97: lstore 7
+    //   97: lstore 6
     //   99: aload_1
     //   100: invokestatic 650	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
     //   103: sipush 210
@@ -6446,11 +6460,11 @@ class TbsInstaller
     //   110: invokespecial 480	java/lang/StringBuilder:<init>	()V
     //   113: ldc_w 1822
     //   116: invokevirtual 486	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: lload 9
+    //   119: lload 8
     //   121: invokevirtual 655	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   124: ldc_w 657
     //   127: invokevirtual 486	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: lload 7
+    //   130: lload 6
     //   132: invokevirtual 655	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   135: invokevirtual 490	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokevirtual 661	com/tencent/smtt/sdk/TbsLogReport:setInstallErrorCode	(ILjava/lang/String;)V
@@ -6470,18 +6484,18 @@ class TbsInstaller
     //   170: return
     //   171: getstatic 281	com/tencent/smtt/sdk/TbsInstaller:mTbsInstallLock	Ljava/util/concurrent/locks/Lock;
     //   174: invokeinterface 578 1 0
-    //   179: istore 6
+    //   179: istore 10
     //   181: ldc 151
     //   183: new 479	java/lang/StringBuilder
     //   186: dup
     //   187: invokespecial 480	java/lang/StringBuilder:<init>	()V
     //   190: ldc_w 1824
     //   193: invokevirtual 486	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: iload 6
+    //   196: iload 10
     //   198: invokevirtual 583	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   201: invokevirtual 490	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   204: invokestatic 417	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   207: iload 6
+    //   207: iload 10
     //   209: ifeq +1499 -> 1708
     //   212: aload_1
     //   213: invokestatic 536	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
@@ -7204,9 +7218,9 @@ class TbsInstaller
     //   246	1535	3	i	int
     //   262	1527	4	j	int
     //   228	1230	5	k	int
-    //   179	29	6	bool	boolean
-    //   97	34	7	l1	long
-    //   88	32	9	l2	long
+    //   97	34	6	l1	long
+    //   88	32	8	l2	long
+    //   179	29	10	bool	boolean
     //   628	1140	11	localObject1	Object
     //   620	1166	12	localObject2	Object
     // Exception table:

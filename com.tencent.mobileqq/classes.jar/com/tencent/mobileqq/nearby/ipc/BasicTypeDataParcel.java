@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atfs;
+import atfu;
 
 public class BasicTypeDataParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new atfs();
+  public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new atfu();
   public int a;
   public Object[] a;
   

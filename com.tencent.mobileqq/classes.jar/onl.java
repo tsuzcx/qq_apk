@@ -1,14 +1,7 @@
-import android.content.Context;
-
 final class onl
-  implements rwi
+  implements bfuy
 {
-  onl(Context paramContext, String paramString) {}
-  
-  public void a()
-  {
-    onk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-  }
+  public void a() {}
 }
 
 

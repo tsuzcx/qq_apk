@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="feedsId")
 public class TroopNotificationCache
-  extends aukm
+  extends auko
 {
   public static final int FEED_TYPE_NEW_GUIDE = 34;
   public static final int FEED_TYPE_NOTICE = 23;

@@ -1,127 +1,80 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
-import java.util.LinkedList;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public abstract class baxm
+public class baxm
 {
-  int jdField_a_of_type_Int = 10;
-  baxn jdField_a_of_type_Baxn = null;
-  Hashtable<String, FaceInfo> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  LinkedList<FaceInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  boolean jdField_a_of_type_Boolean = false;
-  protected int b;
-  Hashtable<String, FaceInfo> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
-  
-  public abstract Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte);
-  
-  public void a()
+  public static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    if (QLog.isColorLevel()) {
-      atbp.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
-  
-  public void a(baxn parambaxn)
-  {
-    this.jdField_a_of_type_Baxn = parambaxn;
-  }
-  
-  public abstract void a(AppInterface paramAppInterface);
-  
-  protected void a(FaceInfo paramFaceInfo)
-  {
-    if (paramFaceInfo == null) {}
-    for (;;)
+    Object localObject2 = paramContext.getResources().getString(paramInt1);
+    Object localObject1 = paramContext.getResources().getString(paramInt2);
+    String str2 = paramContext.getResources().getString(paramInt3);
+    String str1 = paramContext.getResources().getString(paramInt4);
+    paramContext = new Dialog(paramContext, 2131755791);
+    paramContext.setContentView(2131558883);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365150);
+    if (localTextView != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.jdField_b_of_type_Int + ", pause=" + this.jdField_a_of_type_Boolean + ",faceinfo=" + paramFaceInfo.toString());
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramFaceInfo);
-        if (paramFaceInfo.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramFaceInfo);
-          paramFaceInfo.a(FaceInfo.k);
-          if ((this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-            continue;
-          }
-          e();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
-            continue;
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFaceInfo);
-          }
-        }
+      localTextView.setText((CharSequence)localObject2);
+      localTextView.setContentDescription((CharSequence)localObject2);
+    }
+    localObject2 = (TextView)paramContext.findViewById(2131365146);
+    if (localObject2 != null)
+    {
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
+    }
+    localObject1 = (TextView)paramContext.findViewById(2131365135);
+    if (localObject1 != null)
+    {
+      ((TextView)localObject1).setText(str2);
+      ((TextView)localObject1).setContentDescription(str2);
+      if (paramOnClickListener1 != null) {
+        ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public final boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
-  {
-    return a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3, 100, false);
-  }
-  
-  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3);
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FaceDecoderBase", 2, "resume");
+    paramOnClickListener1 = (TextView)paramContext.findViewById(2131365141);
+    if (paramOnClickListener1 != null)
+    {
+      paramOnClickListener1.setText(str1);
+      paramOnClickListener1.setContentDescription(str1);
+      if (paramOnClickListener2 != null) {
+        paramOnClickListener1.setOnClickListener(paramOnClickListener2);
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
-    while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
-      e();
-    }
+    return paramContext;
   }
   
-  public void c()
+  public static Dialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if (QLog.isColorLevel()) {
-      atbp.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+    paramContext = new Dialog(paramContext, 2131755791);
+    paramContext.setContentView(2131558883);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365150);
+    if (localTextView != null) {
+      localTextView.setText(paramString1);
     }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      atbp.a(2, "FaceDecoderBase", "destory", new Object[0]);
+    paramString1 = (TextView)paramContext.findViewById(2131365146);
+    if (paramString1 != null) {
+      paramString1.setText(paramString2);
     }
-    c();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Baxn = null;
-    this.jdField_a_of_type_Boolean = false;
+    paramString1 = (TextView)paramContext.findViewById(2131365135);
+    if (paramString1 != null) {
+      paramString1.setText(2131690495);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365141);
+    if (paramString1 != null) {
+      paramString1.setText(2131690572);
+    }
+    paramContext.setOnDismissListener(paramOnDismissListener);
+    return paramContext;
   }
-  
-  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baxm
  * JD-Core Version:    0.7.0.1
  */

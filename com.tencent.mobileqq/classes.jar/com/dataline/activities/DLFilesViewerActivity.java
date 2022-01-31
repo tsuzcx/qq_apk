@@ -1,9 +1,9 @@
 package com.dataline.activities;
 
-import ajsf;
-import ajuo;
-import ajuv;
-import aksz;
+import ajsd;
+import ajum;
+import ajut;
+import aksy;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -34,7 +34,7 @@ public class DLFilesViewerActivity
   implements Observer
 {
   public static String a;
-  private ajuv jdField_a_of_type_Ajuv = new bu(this);
+  private ajut jdField_a_of_type_Ajut = new bu(this);
   private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private fd jdField_a_of_type_Fd;
@@ -69,11 +69,11 @@ public class DLFilesViewerActivity
       int k;
       if ((localDLFileInfo.a == 5) && (localDataLineMsgRecord.strMoloKey != null))
       {
-        ajuo localajuo = (ajuo)this.app.a(8);
+        ajum localajum = (ajum)this.app.a(8);
         if (!localDataLineMsgRecord.bIsApkFile) {
           break label151;
         }
-        if (localajuo.a(localDataLineMsgRecord.strMoloKey))
+        if (localajum.a(localDataLineMsgRecord.strMoloKey))
         {
           k = 1;
           label122:
@@ -99,10 +99,10 @@ public class DLFilesViewerActivity
           this.rightViewText.setVisibility(0);
           if (j != 0)
           {
-            this.rightViewText.setText(getString(2131693881));
+            this.rightViewText.setText(getString(2131693882));
             return;
           }
-          this.rightViewText.setText(getString(2131693880));
+          this.rightViewText.setText(getString(2131693881));
           return;
         }
         this.rightViewText.setVisibility(8);
@@ -115,16 +115,16 @@ public class DLFilesViewerActivity
   {
     DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getFirstItem();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgRecord.bIsApkFile)) {
-      setTitle(2131693882);
+      setTitle(2131693883);
     }
     for (;;)
     {
       this.leftView.setVisibility(0);
-      this.leftView.setText(getString(2131693964));
+      this.leftView.setText(getString(2131693965));
       a();
       this.rightViewText.setOnClickListener(new bs(this));
       return;
-      setTitle(2131693906);
+      setTitle(2131693907);
     }
   }
   
@@ -151,9 +151,9 @@ public class DLFilesViewerActivity
     this.jdField_a_of_type_Fd = new fd(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet, this, this.app);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Fd);
     paramBundle = LayoutInflater.from(getActivity()).inflate(2131558825, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130843997));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130843998));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(paramBundle);
-    addObserver(this.jdField_a_of_type_Ajuv);
+    addObserver(this.jdField_a_of_type_Ajut);
     paramBundle = this.app.a();
     if (paramBundle != null) {
       paramBundle.addObserver(this);
@@ -165,8 +165,8 @@ public class DLFilesViewerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ajuv != null) {
-      removeObserver(this.jdField_a_of_type_Ajuv);
+    if (this.jdField_a_of_type_Ajut != null) {
+      removeObserver(this.jdField_a_of_type_Ajut);
     }
     if (this.app.a() != null) {
       this.app.a().deleteObserver(this);
@@ -195,11 +195,11 @@ public class DLFilesViewerActivity
         if (!(paramObject instanceof QQMessageFacade.Message)) {
           break;
         }
-      } while (!((QQMessageFacade.Message)paramObject).frienduin.endsWith(String.valueOf(ajsf.z)));
+      } while (!((QQMessageFacade.Message)paramObject).frienduin.endsWith(String.valueOf(ajsd.z)));
       this.jdField_a_of_type_Fd.notifyDataSetChanged();
       a();
       return;
-    } while ((!(paramObject instanceof RecentUser)) || (!((RecentUser)paramObject).uin.endsWith(String.valueOf(ajsf.z))));
+    } while ((!(paramObject instanceof RecentUser)) || (!((RecentUser)paramObject).uin.endsWith(String.valueOf(ajsd.z))));
     this.jdField_a_of_type_Fd.notifyDataSetChanged();
     a();
   }

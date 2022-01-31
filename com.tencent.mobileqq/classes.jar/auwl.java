@@ -1,10 +1,13 @@
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
+import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
+
 public class auwl
 {
-  public int a;
-  public auwm a;
-  public String a;
-  public int b;
-  public String b;
+  public HiBoomTextView a;
+  public ProfileCardScrollImageView a;
+  
+  public auwl(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
 }
 
 

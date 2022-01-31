@@ -1,30 +1,57 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import org.json.JSONObject;
 
-class seb
-  implements rcj
+public class seb
+  extends sfa
 {
-  seb(sdz paramsdz) {}
+  final int a = 3;
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public seb(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (!bbev.g(sdv.a(this.a.a)))
+    super(paramBaseApplicationImpl);
+  }
+  
+  public static URL a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      bcpw.a(sdv.a(this.a.a), 1, sdv.a(this.a.a).getString(2131718330), 0).a();
-      return false;
+      paramString = new URL("pubaccountimage_gifplaytime", null, paramString);
+      return paramString;
     }
-    paramView = onk.a();
-    osj.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
-    bcpw.a(sdv.a(this.a.a), -1, sdv.a(this.a.a).getString(2131699663), 0).b(sdv.a(this.a.a).getResources().getDimensionPixelSize(2131298865));
-    sdv.a(this.a.a).dismiss();
-    if (sdv.a(this.a.a) != null) {
-      sdv.a(this.a.a).a(sdv.a(this.a.a), sdv.e(this.a.a), sdv.a(this.a.a), paramArrayList);
+    catch (MalformedURLException paramString)
+    {
+      for (;;)
+      {
+        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
+        paramString = null;
+      }
     }
-    return true;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (GifDrawable.isGifFile(paramFile)) {
+      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
+        break label52;
+      }
+    }
+    label52:
+    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
+    {
+      return new sec(paramFile, true, i);
+      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+    }
   }
 }
 

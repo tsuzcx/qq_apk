@@ -1,14 +1,36 @@
-import java.io.File;
+import android.view.View;
 
 public abstract interface atkz
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public abstract int a();
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public abstract long a();
   
-  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
+  public abstract View a();
   
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(atla paramatla);
+  
+  public abstract void a(atlb paramatlb);
+  
+  public abstract void a(atlc paramatlc);
+  
+  public abstract void a(atld paramatld);
+  
+  public abstract void a(atle paramatle);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

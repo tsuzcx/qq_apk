@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class arba
-  implements DialogInterface.OnClickListener
+public abstract interface arba
+  extends View.OnTouchListener
 {
-  public arba(PresenceInterfaceImpl.10 param10) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QLog.d("PresenceInterfaceImpl", 2, "user click button");
-  }
+  public abstract void b(View paramView, int paramInt);
+  
+  public abstract void c(aqzt paramaqzt, int paramInt);
 }
 
 

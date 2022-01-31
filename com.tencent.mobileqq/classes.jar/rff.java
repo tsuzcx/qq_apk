@@ -1,6 +1,17 @@
-public abstract interface rff
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+
+public class rff
+  implements aycb
 {
-  public abstract void a(String paramString);
+  public rff(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
+  
+  public void a(aybe paramaybe)
+  {
+    ReadInJoySkinSlideDownView.a(this.a, paramaybe);
+    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, paramaybe));
+  }
 }
 
 

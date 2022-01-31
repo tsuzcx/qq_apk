@@ -1,17 +1,6 @@
-import com.tencent.av.app.VideoAppInterface;
-
-public class mur
-  extends mus
+public abstract interface mur
 {
-  public mur(VideoAppInterface paramVideoAppInterface, long paramLong)
-  {
-    super(paramVideoAppInterface, 64, paramLong);
-  }
-  
-  public void a(String paramString, muu parammuu)
-  {
-    super.a(paramString, parammuu);
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

@@ -1,287 +1,73 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.LruCache;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
 
 public class bfgi
 {
-  private static long jdField_a_of_type_Long;
-  private static LruCache<String, Integer> jdField_a_of_type_AndroidUtilLruCache = new LruCache(5);
-  private static volatile bfgl jdField_a_of_type_Bfgl;
-  private static Map<String, BufferedWriter> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static LinkedBlockingQueue<bfgk> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue(256);
-  private static long b = 1048576L;
-  
-  public static String a(String paramString)
+  public static String a()
   {
-    String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-    return bfgp.b + bfgc.c(paramString) + "/" + str + "/miniprogramLog/";
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    StringWriter localStringWriter = new StringWriter();
+    int j = arrayOfStackTraceElement.length;
+    int i = 0;
+    while (i < j)
+    {
+      localStringWriter.write(arrayOfStackTraceElement[i].toString());
+      localStringWriter.write("\n");
+      i += 1;
+    }
+    localStringWriter.flush();
+    return localStringWriter.toString();
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static String a(Throwable paramThrowable)
   {
-    b(b(paramString1), paramString2);
+    return a(paramThrowable, false);
   }
   
-  private static boolean a(String paramString)
+  private static String a(Throwable paramThrowable, boolean paramBoolean)
   {
-    return Pattern.compile("^[-\\+]?[\\d]*$").matcher(paramString).matches();
-  }
-  
-  private static String b(String paramString)
-  {
-    String str = a(paramString);
-    Object localObject3 = (Integer)jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-    Object localObject6 = new File(str);
-    if (!((File)localObject6).exists()) {
-      ((File)localObject6).mkdirs();
+    if (paramThrowable == null) {
+      return "";
     }
-    Object localObject1 = localObject3;
-    Object localObject5;
-    int j;
-    int i;
-    Object localObject7;
-    Object localObject2;
-    if (localObject3 == null)
+    Object localObject1 = Thread.currentThread();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!paramBoolean)
     {
-      localObject3 = Integer.valueOf(1);
-      localObject5 = localObject3;
-      try
-      {
-        localObject6 = ((File)localObject6).listFiles();
-        localObject1 = localObject3;
-        if (localObject6 != null)
-        {
-          localObject5 = localObject3;
-          localObject1 = localObject3;
-          if (localObject6.length > 0)
-          {
-            localObject5 = localObject3;
-            j = localObject6.length;
-            i = 0;
-            for (;;)
-            {
-              localObject1 = localObject3;
-              if (i >= j) {
-                break;
-              }
-              localObject5 = localObject3;
-              localObject7 = localObject6[i].getName();
-              localObject1 = localObject3;
-              localObject5 = localObject3;
-              if (((String)localObject7).contains("log"))
-              {
-                localObject5 = localObject3;
-                localObject7 = ((String)localObject7).substring(((String)localObject7).lastIndexOf("log") + 1);
-                localObject1 = localObject3;
-                localObject5 = localObject3;
-                if (a((String)localObject7))
-                {
-                  localObject1 = localObject3;
-                  localObject5 = localObject3;
-                  if (Integer.valueOf((String)localObject7).intValue() > ((Integer)localObject3).intValue())
-                  {
-                    localObject5 = localObject3;
-                    localObject1 = Integer.valueOf((String)localObject7);
-                  }
-                }
-              }
-              i += 1;
-              localObject3 = localObject1;
-            }
-          }
-        }
-        if (System.currentTimeMillis() - jdField_a_of_type_Long <= 60000L) {
-          break label572;
-        }
-      }
-      catch (Exception localException1)
-      {
-        besl.d("MiniLog", paramString, localException1);
-        localObject2 = localObject5;
-      }
+      localStringBuilder.append("Exception in thread \"");
+      localStringBuilder.append(((Thread)localObject1).getName());
+      localStringBuilder.append("\"");
+      localStringBuilder.append(paramThrowable.toString());
     }
-    else
+    localObject1 = paramThrowable.getStackTrace();
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
     {
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      localObject3 = localObject2;
+      Object localObject2 = localObject1[i];
+      localStringBuilder.append("\tat ");
+      localStringBuilder.append(localObject2);
+      localStringBuilder.append("\n");
+      i += 1;
     }
-    for (;;)
+    if ((paramThrowable instanceof InvocationTargetException)) {}
+    for (paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();; paramThrowable = paramThrowable.getCause())
     {
-      try
+      if (paramThrowable != null)
       {
-        if (bekq.a(str + "log" + localObject2).length() <= b) {
-          break label572;
-        }
-        localObject3 = localObject2;
-        if (((Integer)localObject2).intValue() >= 5) {
-          continue;
-        }
-        localObject3 = localObject2;
-        i = ((Integer)localObject2).intValue();
-        localObject3 = Integer.valueOf(i + 1);
+        localStringBuilder.append("caused by: ");
+        localStringBuilder.append(paramThrowable.toString());
+        localStringBuilder.append("\n");
+        localStringBuilder.append(a(paramThrowable, true));
       }
-      catch (Exception localException3)
-      {
-        localObject2 = localObject3;
-        localObject3 = localException3;
-        ((Exception)localObject3).printStackTrace();
-        localObject3 = localObject2;
-        continue;
-      }
-      jdField_a_of_type_AndroidUtilLruCache.put(paramString, localObject3);
-      return str + "log" + localObject3;
-      localObject3 = localObject2;
-      new File(str + "log" + 1).delete();
-      localObject2 = Integer.valueOf(1);
-      i = 2;
-      localObject3 = localObject2;
-      if (i <= 5)
-      {
-        try
-        {
-          localObject6 = new File(str + "log" + i);
-          if (!((File)localObject6).exists()) {
-            break label569;
-          }
-          besl.b("MiniLog", "rename from file:log" + i + " to file:" + localObject2);
-          localObject7 = new StringBuilder().append(str).append("log");
-          j = ((Integer)localObject2).intValue();
-          localObject5 = Integer.valueOf(j + 1);
-          localObject3 = localObject5;
-          ((File)localObject6).renameTo(new File(localObject2));
-          localObject2 = localObject5;
-        }
-        catch (Exception localException2)
-        {
-          continue;
-          label569:
-          continue;
-        }
-        i += 1;
-        continue;
-        label572:
-        Object localObject4 = localObject2;
-      }
+      return localStringBuilder.toString();
     }
   }
   
-  private static void b()
+  public static boolean a()
   {
-    if (jdField_a_of_type_Bfgl == null) {
-      try
-      {
-        if (jdField_a_of_type_Bfgl == null) {
-          jdField_a_of_type_Bfgl = new bfgl(beiw.a().getLooper(), null);
-        }
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    bfgk localbfgk = new bfgk();
-    localbfgk.b = paramString2;
-    localbfgk.a = paramString1;
-    b();
-    if (jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.offer(localbfgk))
-    {
-      jdField_a_of_type_Bfgl.removeMessages(2);
-      jdField_a_of_type_Bfgl.sendEmptyMessageDelayed(2, 1000L);
-    }
-  }
-  
-  private static void c()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.isEmpty()) {
-          break label186;
-        }
-        localbfgk = (bfgk)jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll();
-        if ((localbfgk == null) || (TextUtils.isEmpty(localbfgk.a))) {
-          continue;
-        }
-        str = localbfgk.a;
-        localFile = new File(str);
-        if (localFile.exists()) {
-          continue;
-        }
-        bekq.a(str);
-        localBufferedWriter1 = new BufferedWriter(new bfgm(localFile, true), 8192);
-      }
-      catch (Throwable localThrowable)
-      {
-        bfgk localbfgk;
-        String str;
-        File localFile;
-        BufferedWriter localBufferedWriter1;
-        if (localThrowable.getMessage() == null) {
-          continue;
-        }
-        besl.d("MiniLog", localThrowable.getMessage());
-        try
-        {
-          return;
-        }
-        finally {}
-        localBufferedWriter2 = (BufferedWriter)jdField_a_of_type_JavaUtilMap.get(str);
-        localObject1 = localBufferedWriter2;
-        if (localBufferedWriter2 != null) {
-          continue;
-        }
-        localObject1 = new BufferedWriter(new bfgm(localFile, true), 8192);
-        continue;
-      }
-      finally
-      {
-        d();
-      }
-      localBufferedWriter1.write(localbfgk.b);
-      jdField_a_of_type_JavaUtilMap.put(str, localBufferedWriter1);
-    }
-    for (;;)
-    {
-      BufferedWriter localBufferedWriter2;
-      Object localObject1;
-      label186:
-      d();
-    }
-  }
-  
-  private static void d()
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      BufferedWriter localBufferedWriter = (BufferedWriter)localIterator.next();
-      if (localBufferedWriter != null) {
-        try
-        {
-          localBufferedWriter.flush();
-          localBufferedWriter.close();
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
-    jdField_a_of_type_JavaUtilMap.clear();
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion();
   }
 }
 

@@ -7,13 +7,13 @@ import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.Map;
-import rwp;
-import rwq;
+import rwm;
+import rwn;
 
 public class BaseHttpAdapter$1
   implements Runnable
 {
-  public BaseHttpAdapter$1(rwp paramrwp, HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener) {}
+  public BaseHttpAdapter$1(rwm paramrwm, HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener) {}
   
   public void run()
   {
@@ -21,19 +21,19 @@ public class BaseHttpAdapter$1
     Object localObject = this.this$0.a();
     try
     {
-      HttpURLConnection localHttpURLConnection = rwp.a(this.this$0, this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset, this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener);
-      ((rwq)localObject).a(localHttpURLConnection, this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.body);
+      HttpURLConnection localHttpURLConnection = rwm.a(this.this$0, this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset, this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener);
+      ((rwn)localObject).a(localHttpURLConnection, this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.body);
       Map localMap = localHttpURLConnection.getHeaderFields();
       int i = localHttpURLConnection.getResponseCode();
       if (this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener != null) {
         this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener.onHeadersReceived(i, localMap);
       }
-      ((rwq)localObject).a();
+      ((rwn)localObject).a();
       localHttpResponse.statusCode = String.valueOf(i);
       if ((i >= 200) && (i <= 299))
       {
-        localObject = ((rwq)localObject).a(localHttpURLConnection.getInputStream());
-        localHttpResponse.originalData = rwp.a(this.this$0, (InputStream)localObject, this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener);
+        localObject = ((rwn)localObject).a(localHttpURLConnection.getInputStream());
+        localHttpResponse.originalData = rwm.a(this.this$0, (InputStream)localObject, this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener);
       }
       for (;;)
       {
@@ -43,16 +43,16 @@ public class BaseHttpAdapter$1
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d(rwp.a, 2, "METHOD_OPEN_REQUEST_NET request url is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.url + "  request body is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.body + ", response code:" + localHttpResponse.errorCode);
+        QLog.d(rwm.a, 2, "METHOD_OPEN_REQUEST_NET request url is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.url + "  request body is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.body + ", response code:" + localHttpResponse.errorCode);
         return;
-        localHttpResponse.errorMsg = rwp.a(this.this$0, localHttpURLConnection.getErrorStream(), this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener);
+        localHttpResponse.errorMsg = rwm.a(this.this$0, localHttpURLConnection.getErrorStream(), this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener);
       }
       return;
     }
     catch (Exception localException)
     {
-      rwp.a(this.this$0, localHttpResponse, this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener, localException.getMessage());
-      QLog.e(rwp.a, 2, "METHOD_OPEN_REQUEST_NET error! request url is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.url + "  request body is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.body + ",error msg:" + localException.getMessage());
+      rwm.a(this.this$0, localHttpResponse, this.jdField_a_of_type_ComTencentViolaAdapterIHttpAdapter$OnHttpListener, localException.getMessage());
+      QLog.e(rwm.a, 2, "METHOD_OPEN_REQUEST_NET error! request url is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.url + "  request body is:" + this.jdField_a_of_type_ComTencentViolaAdapterHttpRequset.body + ",error msg:" + localException.getMessage());
     }
   }
 }

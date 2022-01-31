@@ -1,31 +1,42 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class rnv
-  implements wxw
+public abstract class rnv
 {
-  rnv(rnu paramrnu) {}
+  protected abstract void a();
   
-  public void a(Bundle paramBundle)
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    int i = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "config = " + i);
-    }
-    if (i == 0) {
-      WxShareHelperFromReadInjoy.a().a(rnu.b(this.a), rnu.a(this.a), 0, false);
-    }
-    for (;;)
+    try
     {
-      rnu.a(this.a).recycle();
-      rnu.a(this.a, null);
+      paramJSONObject.put("folder_status", onh.d);
+      paramJSONObject.put("kandian_mode", onh.e());
+      paramJSONObject = paramJSONObject.toString();
+      nol.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
       return;
-      WXShareHelper.a().a(rnu.b(this.a), rnu.a(this.a), 0, false);
+    }
+    catch (JSONException paramString)
+    {
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
     }
   }
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

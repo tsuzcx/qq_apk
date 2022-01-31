@@ -1,18 +1,34 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.Utils.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class oqs
-  extends RecyclerView.OnScrollListener
 {
-  public oqs(ReadInJoyDynamicChannelBaseFragment paramReadInJoyDynamicChannelBaseFragment, StaggeredGridLayoutManager paramStaggeredGridLayoutManager) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static void a()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.invalidateSpanAssignments();
+    if (a())
+    {
+      QLog.d("DynamicChannelUtils", 1, "dynamicChannelSwitch is on, prepare it.");
+      ThreadManager.getSubThreadHandler().postDelayed(new Utils.1(), 3000L);
+    }
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = Aladdin.getConfig(144);
+    if (localObject != null)
+    {
+      localObject = ((AladdinConfig)localObject).getString("dc_switch", "0");
+      QLog.d("DynamicChannelUtils", 1, new Object[] { "dcSwitch = ", localObject });
+    }
+    for (boolean bool = TextUtils.equals((CharSequence)localObject, "1");; bool = false)
+    {
+      QLog.d("DynamicChannelUtils", 1, new Object[] { "isDynamicChannelSwitchOn = ", Boolean.valueOf(bool) });
+      return bool;
     }
   }
 }

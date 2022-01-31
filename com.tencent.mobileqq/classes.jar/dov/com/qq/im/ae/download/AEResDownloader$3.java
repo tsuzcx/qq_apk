@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.download;
 
-import axeo;
-import biqz;
-import bizq;
+import axeq;
+import birq;
+import bjah;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import java.util.HashMap;
@@ -12,14 +12,14 @@ import java.util.Map;
 public class AEResDownloader$3
   implements Runnable
 {
-  public AEResDownloader$3(biqz parambiqz, int paramInt, QQAppInterface paramQQAppInterface, List paramList, axeo paramaxeo) {}
+  public AEResDownloader$3(birq parambirq, int paramInt, QQAppInterface paramQQAppInterface, List paramList, axeq paramaxeq) {}
   
   public void run()
   {
-    bizq.b("AEResDownloader", "【AEResDownloader】preDownloadTask 【start】package" + this.jdField_a_of_type_Int);
-    biqz.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(3));
-    biqz.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(System.currentTimeMillis()));
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Axeo, (String)biqz.a().get(Integer.valueOf(this.jdField_a_of_type_Int)));
+    bjah.b("AEResDownloader", "【AEResDownloader】preDownloadTask 【start】package" + this.jdField_a_of_type_Int);
+    birq.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(3));
+    birq.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(System.currentTimeMillis()));
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Axeq, (String)birq.a().get(Integer.valueOf(this.jdField_a_of_type_Int)));
   }
 }
 

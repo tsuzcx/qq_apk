@@ -1,30 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
-
-class asgi
-  implements EIPClientConnectListener
+public abstract interface asgi
 {
-  asgi(asgh paramasgh) {}
+  public abstract void a();
   
-  public void connectFailed()
-  {
-    asgh.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "connectFailed");
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      asgh.a(this.a, paramEIPCConnection.procName);
-    }
-    asgh.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "connectSuccess");
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

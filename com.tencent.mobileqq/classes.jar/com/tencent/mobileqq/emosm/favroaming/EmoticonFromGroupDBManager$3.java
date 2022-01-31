@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansf;
-import aukn;
+import ansk;
 import aukp;
+import aukr;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmoticonFromGroupDBManager$3
   implements Runnable
 {
-  public EmoticonFromGroupDBManager$3(ansf paramansf, int paramInt, List paramList) {}
+  public EmoticonFromGroupDBManager$3(ansk paramansk, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -29,19 +29,19 @@ public class EmoticonFromGroupDBManager$3
     {
       try
       {
-        localaukp = this.this$0.a.a();
-        localObject1 = localaukp;
-        localObject3 = localaukp;
-        localaukp.a();
-        localObject1 = localaukp;
-        localObject3 = localaukp;
+        localaukr = this.this$0.a.a();
+        localObject1 = localaukr;
+        localObject3 = localaukr;
+        localaukr.a();
+        localObject1 = localaukr;
+        localObject3 = localaukr;
         switch (this.jdField_a_of_type_Int)
         {
         }
       }
       catch (Exception localException)
       {
-        aukp localaukp;
+        aukr localaukr;
         localObject3 = localObject1;
         if (!QLog.isColorLevel()) {
           continue;
@@ -91,36 +91,36 @@ public class EmoticonFromGroupDBManager$3
         }
         localObject3.b();
       }
-      localObject1 = localaukp;
-      localObject3 = localaukp;
-      localaukp.c();
-      if (localaukp != null) {
-        localaukp.b();
+      localObject1 = localaukr;
+      localObject3 = localaukr;
+      localaukr.c();
+      if (localaukr != null) {
+        localaukr.b();
       }
       if (QLog.isColorLevel()) {
         QLog.i("EmoticonFromGroup_DBManager", 2, "db operation end.");
       }
       return;
-      localObject1 = localaukp;
-      localObject3 = localaukp;
+      localObject1 = localaukr;
+      localObject3 = localaukr;
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = localaukp;
-      localObject3 = localaukp;
+      localObject1 = localaukr;
+      localObject3 = localaukr;
       if (localIterator.hasNext())
       {
-        localObject1 = localaukp;
-        localObject3 = localaukp;
+        localObject1 = localaukr;
+        localObject3 = localaukr;
         localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localIterator.next();
-        localObject1 = localaukp;
-        localObject3 = localaukp;
+        localObject1 = localaukr;
+        localObject3 = localaukr;
         if (!this.this$0.a(localEmoticonFromGroupEntity))
         {
-          localObject1 = localaukp;
-          localObject3 = localaukp;
+          localObject1 = localaukr;
+          localObject3 = localaukr;
           if (QLog.isColorLevel())
           {
-            localObject1 = localaukp;
-            localObject3 = localaukp;
+            localObject1 = localaukr;
+            localObject3 = localaukr;
             QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "updateEntity error, e.md5=" + localEmoticonFromGroupEntity.md5);
           }
         }

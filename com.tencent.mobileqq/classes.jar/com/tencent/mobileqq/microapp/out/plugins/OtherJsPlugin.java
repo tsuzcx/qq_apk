@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.out.plugins;
 
-import ahok;
+import ahoi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -115,7 +115,7 @@ public class OtherJsPlugin
   
   public void enterQRCode(BaseActivity paramBaseActivity)
   {
-    if (!ahok.a(paramBaseActivity)) {
+    if (!ahoi.a(paramBaseActivity)) {
       return;
     }
     Intent localIntent = new Intent(paramBaseActivity, ScannerActivity.class);

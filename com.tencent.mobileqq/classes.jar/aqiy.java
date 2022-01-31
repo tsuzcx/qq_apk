@@ -1,8 +1,8 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import mqq.app.AppRuntime;
 
 public class aqiy
   implements CompoundButton.OnCheckedChangeListener
@@ -11,13 +11,31 @@ public class aqiy
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    bfmj.a(false, paramBoolean);
-    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
+    int i;
+    if (paramBoolean)
     {
-      axqw.b(null, "CliOper", "", paramCompoundButton, "0X800A6E4", "0X800A6E4", 0, i, "", "", "", "");
+      i = 1;
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
+      ((ajud)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(4)).c();
+      ajud.a(QQSettingAutoDownloadAndSaveFragment.a(this.a), paramBoolean);
+      if (!paramBoolean) {
+        break label134;
+      }
+      if (akuz.a().a() != 4) {
+        akuz.a().a();
+      }
+      axqy.b(null, "CliOper", "", "", "0X8007212", "0X8007212", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      ((MessageHandler)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(0)).f(paramBoolean);
       return;
+      i = 0;
+      break;
+      label134:
+      akuz.a().b();
+      axqy.b(null, "CliOper", "", "", "0X8007213", "0X8007213", 0, 0, "", "", "", "");
     }
   }
 }

@@ -1,90 +1,49 @@
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class avxk
+class avxk
+  implements avzm
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
+  avxk(avxj paramavxj, int[] paramArrayOfInt) {}
   
-  public avxk()
+  public void a()
   {
-    this(null, 0, true, false);
+    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
   }
   
-  public avxk(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(String arg1)
   {
-    this(paramString, paramInt, paramBoolean1, paramBoolean2, 0L, 0L);
+    vei.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
+    synchronized (avxj.a(this.jdField_a_of_type_Avxj))
+    {
+      avxj.a(this.jdField_a_of_type_Avxj, true);
+      avxj.a(this.jdField_a_of_type_Avxj).notifyAll();
+      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
+      return;
+    }
   }
   
-  public avxk(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
+  public void a_(int paramInt, Throwable arg2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    String str;
+    if (??? != null) {
+      str = ???.getMessage();
+    }
+    for (;;)
+    {
+      vei.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
+      ved.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
+      avxj.a(this.jdField_a_of_type_Avxj, paramInt);
+      synchronized (avxj.a(this.jdField_a_of_type_Avxj))
+      {
+        avxj.a(this.jdField_a_of_type_Avxj, true);
+        avxj.a(this.jdField_a_of_type_Avxj).notifyAll();
+        return;
+        str = "UNKNOWN ERROR";
+      }
+    }
   }
   
-  public boolean a(avxk paramavxk)
-  {
-    if (paramavxk == null) {
-      throw new NullPointerException();
-    }
-    boolean bool = false;
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramavxk.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = paramavxk.jdField_a_of_type_JavaLangString;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Int != paramavxk.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Int = paramavxk.jdField_a_of_type_Int;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Boolean != paramavxk.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = paramavxk.jdField_a_of_type_Boolean;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Boolean != paramavxk.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = paramavxk.jdField_b_of_type_Boolean;
-      bool = true;
-    }
-    if (this.jdField_a_of_type_Long != paramavxk.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = paramavxk.jdField_a_of_type_Long;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Long != paramavxk.jdField_b_of_type_Long)
-    {
-      this.jdField_b_of_type_Long = paramavxk.jdField_b_of_type_Long;
-      bool = true;
-    }
-    if (this.jdField_b_of_type_Int != paramavxk.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_Int = paramavxk.jdField_b_of_type_Int;
-      bool = true;
-    }
-    if (this.c != paramavxk.c)
-    {
-      this.c = paramavxk.c;
-      return true;
-    }
-    return bool;
-  }
-  
-  public String toString()
-  {
-    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
-  }
+  public void b() {}
 }
 
 

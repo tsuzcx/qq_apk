@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
-import ahdm;
+import ahdk;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -10,7 +10,7 @@ import mqq.app.AppRuntime;
 public class RedPacketProxy$2
   extends ResultReceiver
 {
-  public RedPacketProxy$2(ahdm paramahdm, Handler paramHandler, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
+  public RedPacketProxy$2(ahdk paramahdk, Handler paramHandler, IRedPacket.OnGetSkinListener paramOnGetSkinListener)
   {
     super(paramHandler);
   }

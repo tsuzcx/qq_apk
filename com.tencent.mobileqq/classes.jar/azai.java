@@ -5,31 +5,26 @@ import android.widget.ListView;
 class azai
   implements Animator.AnimatorListener
 {
-  azai(azae paramazae) {}
+  azai(azag paramazag) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), -azae.a(this.a), 0, 0);
-    azae.a(this.a).setVisibility(8);
-    azae.a(this.a, false);
-    azae.b(this.a, false);
+    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), -azag.a(this.a), 0, 0);
+    azag.a(this.a, false);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), -azae.a(this.a), 0, 0);
-    azae.a(this.a).setVisibility(8);
-    azae.a(this.a, false);
-    azae.b(this.a, false);
+    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    azag.a(this.a, false);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    azae.a(this.a, true);
-    azae.b(this.a, true);
+    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), -azag.a(this.a), 0, 0);
+    azag.a(this.a, true);
   }
 }
 

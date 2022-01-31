@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import ajty;
-import ajuc;
+import ajtw;
+import ajua;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ConditionSearchManager$3
   implements Runnable
 {
-  public ConditionSearchManager$3(ajty paramajty, boolean paramBoolean) {}
+  public ConditionSearchManager$3(ajtw paramajtw, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ConditionSearchManager$3
       ((LinkedList)localObject).addAll(this.this$0.a);
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((ajuc)((Iterator)localObject).next()).a(1, this.a);
+        ((ajua)((Iterator)localObject).next()).a(1, this.a);
       }
     }
     if ((this.a) && (this.this$0.c)) {

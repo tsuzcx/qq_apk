@@ -9,7 +9,9 @@ final class qow
   
   public void onAnimationEnd(Animator paramAnimator)
   {
+    this.a.setAlpha(1.0F);
     this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
   }
 }
 

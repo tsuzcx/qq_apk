@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class wuw
-  implements View.OnClickListener
+class wuw
+  implements bcww
 {
-  public wuw(SubscribeQRCodeShareHelper.3 param3) {}
+  wuw(wur paramwur) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.this$0.a.b();
+    if ((wur.c(this.a) == null) || (!wur.c(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      bcql.a(wur.a(this.a), 1, "分享失败", 0).a();
+      return;
+    }
+    bcql.a(wur.a(this.a), 2, "分享成功", 0).a();
   }
 }
 

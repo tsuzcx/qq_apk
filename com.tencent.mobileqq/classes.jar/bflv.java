@@ -1,39 +1,34 @@
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
-import com.tencent.mobileqq.shortvideo.resource.SensorResource;
-
-public class bflv
-  implements SensorResource
+public abstract interface bflv
 {
-  public boolean checkSensorEnable()
-  {
-    return liq.a().a();
-  }
+  public abstract void a(int paramInt);
   
-  public boolean getCameraIsFront()
-  {
-    return liq.a().b();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public int getRotation()
-  {
-    return 0;
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public void registerListener(SensorEventListener paramSensorEventListener)
-  {
-    liq.a().a(paramSensorEventListener);
-  }
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
   
-  public void setCameraChangedListener(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
-  {
-    liq.a().a(paramCameraChangedCallBack);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void unregisterListener(SensorEventListener paramSensorEventListener)
-  {
-    liq.a().b(paramSensorEventListener);
-  }
+  public abstract void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt, String paramString);
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt, String paramString);
 }
 
 

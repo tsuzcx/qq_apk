@@ -1,8 +1,10 @@
 public class wwz
 {
-  public float a;
-  public int a;
-  public CharSequence a;
+  public String a;
+  public String b;
+  public String c;
+  
+  public wwz(wwy paramwwy) {}
 }
 
 

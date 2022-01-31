@@ -1,6 +1,20 @@
-public abstract interface udh
+class udh
+  implements udc
 {
-  public abstract void a_(udc paramudc);
+  public udc a;
+  
+  private udh(udf paramudf) {}
+  
+  public boolean a(ucz paramucz, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    if (udf.a(this.jdField_a_of_type_Udf) != null) {
+      udf.a(this.jdField_a_of_type_Udf).c(udf.a(this.jdField_a_of_type_Udf));
+    }
+    if (this.jdField_a_of_type_Udc != null) {
+      return this.jdField_a_of_type_Udc.a(paramucz, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
+  }
 }
 
 

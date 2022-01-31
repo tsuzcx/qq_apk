@@ -1,23 +1,45 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import android.text.TextUtils;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ywz
-  implements yxh
+final class ywz
+  implements yxe
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    Object localObject = null;
-    wxu localwxu = wxu.a();
-    localwxu.a();
-    localwxu.j(new yxa(this, paramywn, paramString, paramVarArgs, localwxu));
-    if (paramywn != null) {}
-    for (paramString = paramywn.a();; paramString = null)
+    if (paramywk != null) {}
+    for (paramString = paramywk.a(); (paramywk == null) || (paramString == null); paramString = null)
     {
-      paramVarArgs = localObject;
-      if (paramywn != null) {
-        paramVarArgs = paramywn.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
+      yxp.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
       return true;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        paramywk = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
+        if (TextUtils.equals(paramywk, "com.tencent.mobileqq"))
+        {
+          paramywk = PublicFragmentActivity.class;
+          GdtInterstitialFragmentForJS.a(paramString, paramywk, paramVarArgs);
+          return true;
+        }
+      }
+      catch (JSONException paramywk)
+      {
+        yxp.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramywk);
+        return true;
+      }
+      if (TextUtils.equals(paramywk, "com.tencent.mobileqq:tool")) {
+        paramywk = PublicFragmentActivityForTool.class;
+      } else {
+        paramywk = PublicFragmentActivityForMini.class;
+      }
     }
   }
 }

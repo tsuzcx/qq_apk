@@ -1,32 +1,75 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.gmersdk_warper.GMEAVEngineWalper.2.1;
+import cooperation.comic.utils.QQComicPluginBridge.1;
 
 public class bgjb
-  implements bgjj
+  implements OnPluginInstallListener
 {
-  bgjb(bgiz parambgiz) {}
+  public bgjb(QQComicPluginBridge.1 param1) {}
   
-  public void a(int paramInt, String paramString)
+  public IBinder asBinder()
   {
-    if (paramInt == 0) {
-      QLog.e("AVEngineWalper", 1, "enter room successfully!!!");
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Bgjc != null)) {
+      this.a.a.jdField_a_of_type_Bgjc.a(98, "载入中,（我会越来越快的>_<）");
     }
-    for (;;)
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
     {
-      if (this.a.a != null) {
-        this.a.a.b(paramInt, paramString);
+      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (this.a.a.jdField_a_of_type_Bgjc != null)
+      {
+        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
+        this.a.a.jdField_a_of_type_Bgjc.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
       }
-      new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
+    }
+  }
+  
+  public void onInstallError(String arg1, int paramInt)
+  {
+    synchronized ()
+    {
+      bgja.a().notifyAll();
+      if (this.a.a != null) {
+        this.a.a.jdField_a_of_type_Int = paramInt;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
+      }
       return;
-      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    }
+  }
+  
+  public void onInstallFinish(String arg1)
+  {
+    synchronized ()
+    {
+      bgja.a().notifyAll();
+      if (this.a.a != null)
+      {
+        this.a.a.b = System.currentTimeMillis();
+        if (this.a.a.jdField_a_of_type_Bgjc != null) {
+          this.a.a.jdField_a_of_type_Bgjc.a(99, "载入中,（我会越来越快的>_<）");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgjb
  * JD-Core Version:    0.7.0.1
  */

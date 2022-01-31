@@ -1,65 +1,47 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import java.util.List;
 
 public class asmf
-  extends asku
 {
-  public asmf(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private List<Integer> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
   
-  public void a(boolean paramBoolean)
+  public asmf a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
-    }
-    super.a(paramBoolean);
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void a(boolean paramBoolean, asly paramasly)
+  public asmf a(String paramString)
   {
-    if (paramBoolean) {
-      this.a.a(paramasly);
-    }
-    super.a(paramBoolean, paramasly);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public asmf a(List<Integer> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    Object localObject;
-    if ((paramBoolean) && ((paramObject instanceof asls)))
-    {
-      localObject = (asls)paramObject;
-      this.a.a((asls)localObject);
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      if ((paramObject instanceof Integer))
-      {
-        localObject = (Integer)paramObject;
-        this.a.a((Integer)localObject);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
   
-  public void b(boolean paramBoolean)
+  public MsgBackupUserData a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
-    }
-    super.b(paramBoolean);
+    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public asmf b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    this.a.a(paramBoolean, paramObject);
-    super.b(paramBoolean, paramObject);
+    this.b = paramString;
+    return this;
+  }
+  
+  public asmf c(String paramString)
+  {
+    this.c = paramString;
+    return this;
   }
 }
 

@@ -1,16 +1,47 @@
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import org.json.JSONObject;
 
-public class bcil
-  implements atcg
+public abstract interface bcil
+  extends bccw
 {
-  public bcil(WerewolvesHostInterface paramWerewolvesHostInterface) {}
+  public abstract long getDetect302Time();
   
-  public void bt()
-  {
-    this.a.mGameRoomAVController.c();
-  }
+  public abstract boolean getIsReloadUrl();
   
-  public void bu() {}
+  public abstract long getOpenUrlAfterCheckOfflineTime();
+  
+  public abstract long getReadIndexFromOfflineTime();
+  
+  public abstract JSONObject getX5Performance();
+  
+  public abstract long getgetWebViewTime();
+  
+  public abstract long getinitBrowserTime();
+  
+  public abstract long getinitTBSTime();
+  
+  public abstract long getinitTime();
+  
+  public abstract boolean getisWebViewCache();
+  
+  public abstract long getmClickTime();
+  
+  public abstract long getmOnCreateMilliTimeStamp();
+  
+  public abstract boolean getmPerfFirstLoadTag();
+  
+  public abstract long getmStartLoadUrlMilliTimeStamp();
+  
+  public abstract long getmTimeBeforeLoadUrl();
+  
+  public abstract long getonCreateTime();
+  
+  public abstract long getpluginFinished();
+  
+  public abstract long getviewInflateTime();
+  
+  public abstract boolean isMainPageUseLocalFile();
+  
+  public abstract void setX5Performance(JSONObject paramJSONObject);
 }
 
 

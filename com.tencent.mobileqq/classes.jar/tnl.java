@@ -1,53 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tnl
-  extends syv<tow>
+  extends sys<tow>
 {
-  private static final String a = sxp.a("StorySvc.get_weather");
-  public final int c;
-  public final int d;
-  public final int e;
-  
-  public tnl(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
   public String a()
   {
-    return a;
+    return sxm.a("StorySvc.video_apply_authkey");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public tow a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
     try
     {
-      localRspGetWeather.mergeFrom(paramArrayOfByte);
-      return new tow(localRspGetWeather);
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new tow(localRspAuthKey);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
-    localReqGetWeather.coordinate.set(this.c);
-    localReqGetWeather.longitude.set(this.d);
-    localReqGetWeather.latitude.set(this.e);
-    return localReqGetWeather.toByteArray();
+    return new byte[0];
   }
 }
 

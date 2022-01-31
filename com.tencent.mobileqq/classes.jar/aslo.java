@@ -1,45 +1,22 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 
 public class aslo
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public String a;
+  public boolean a;
   
-  public aslo(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
+  public String a(aslb paramaslb, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MsgBackupUserData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  }
-  
-  public String a()
-  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return paramaslb.a(paramMessageRecord, paramMsgBackupResEntity);
+    }
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public String b()
+  public boolean a()
   {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
-    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

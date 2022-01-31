@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 
 class TribeVideoPreviewFragment$3
   implements Runnable
@@ -12,10 +12,10 @@ class TribeVideoPreviewFragment$3
   {
     if (this.a)
     {
-      bcpw.a(this.this$0.getActivity(), 2, ajyc.a(2131715096), 0).a();
+      bcql.a(this.this$0.getActivity(), 2, ajya.a(2131715107), 0).a();
       return;
     }
-    bcpw.a(this.this$0.getActivity(), 1, ajyc.a(2131715117), 0).a();
+    bcql.a(this.this$0.getActivity(), 1, ajya.a(2131715128), 0).a();
   }
 }
 

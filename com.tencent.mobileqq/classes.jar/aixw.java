@@ -1,32 +1,22 @@
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class aixw
-  extends ajdp
+  implements ajcv
 {
-  public aixw(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  public aixw(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (!TextUtils.isEmpty(paramString2))
     {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
-    try
-    {
-      paramObject = new JSONObject(paramObject.toString());
-      paramInt = paramObject.optInt("errCode");
-      paramObject.remove("errCode");
-      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+      paramString1 = new Bundle();
+      paramString1.putInt("type", this.jdField_a_of_type_Int);
+      paramString1.putString("uin", paramString2);
+      paramString2 = new aixx(this);
+      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
     }
   }
 }

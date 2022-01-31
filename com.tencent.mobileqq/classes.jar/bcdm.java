@@ -1,18 +1,18 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
 
-class bcdm
-  implements ValueCallback<Bundle>
+public class bcdm
 {
-  bcdm(bcdl parambcdl) {}
+  public static final WebAccelerateHelper.CommonJsPluginFactory a = new bcdn();
   
-  public void a(Bundle paramBundle)
+  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
   {
-    int i = paramBundle.getInt("input-box-num", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
+    switch (paramIntent.getIntExtra("web_view_module_from", -1))
+    {
+    default: 
+      return null;
     }
+    return a;
   }
 }
 

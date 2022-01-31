@@ -1,29 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 
 public class abhh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abhh(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public abhh(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if ((paramDialogInterface instanceof bbgu)) {
+      ((bbgu)paramDialogInterface).setOnDismissListener(null);
     }
-    ((avpq)this.a.app.getManager(36)).b("100190.100194");
-    paramView = new Intent();
-    paramView.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingMsgClearFragment.class);
-    axqw.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
-    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

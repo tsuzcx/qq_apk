@@ -1,23 +1,34 @@
-import android.view.ViewGroup.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
 
 public class rig
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rig(VariableSizeTextView paramVariableSizeTextView, ViewGroup.LayoutParams paramLayoutParams) {}
+  private static rig a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static rig a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.b)
+    try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setFocusable(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setClickable(true);
+      if (a == null) {
+        a = new rig();
+      }
+      rig localrig = a;
+      return localrig;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((int)(f + 0.5F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    finally {}
+  }
+  
+  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
   }
 }
 

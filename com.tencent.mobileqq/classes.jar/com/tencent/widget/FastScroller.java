@@ -21,8 +21,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
-import bfni;
-import bfrr;
+import bfnz;
+import bfsi;
 
 public class FastScroller
 {
@@ -152,7 +152,7 @@ public class FastScroller
         if (paramContext.getApplicationInfo().targetSdkVersion >= 11)
         {
           this.jdField_g_of_type_Boolean = bool;
-          if (bfni.e()) {
+          if (bfnz.e()) {
             m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getVerticalScrollbarPosition();
           }
           a(m);
@@ -651,10 +651,10 @@ public class FastScroller
     Object localObject2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
     this.jdField_a_of_type_AndroidWidgetSectionIndexer = null;
     Object localObject1 = localObject2;
-    if ((localObject2 instanceof bfrr))
+    if ((localObject2 instanceof bfsi))
     {
-      this.jdField_g_of_type_Int = ((bfrr)localObject2).a();
-      localObject1 = ((bfrr)localObject2).getWrappedAdapter();
+      this.jdField_g_of_type_Int = ((bfsi)localObject2).a();
+      localObject1 = ((bfsi)localObject2).getWrappedAdapter();
     }
     if ((localObject1 instanceof ExpandableListConnector))
     {

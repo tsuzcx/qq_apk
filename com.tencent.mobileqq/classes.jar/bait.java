@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bait
+class bait
+  implements View.OnClickListener
 {
-  public int a;
-  public AudioInfo a;
-  public TroopBarPOI a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public ArrayList<TroopBarPOI> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  bait(bais parambais) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

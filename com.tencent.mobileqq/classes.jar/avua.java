@@ -1,10 +1,10 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleProgress;
-
 public abstract interface avua
 {
-  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

@@ -1,42 +1,186 @@
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask.SerialExecutor.1;
-import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class belp
-  implements Executor
+  extends FilterOutputStream
 {
-  final ArrayDeque<Runnable> jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static belp jdField_b_of_type_Belp;
+  private static int c;
+  protected int a;
+  private belp jdField_a_of_type_Belp;
+  private boolean jdField_a_of_type_Boolean;
+  protected byte[] a;
+  private final int jdField_b_of_type_Int = 4;
   
-  public void a()
+  private belp(OutputStream paramOutputStream)
+  {
+    this(paramOutputStream, 8192);
+  }
+  
+  private belp(OutputStream paramOutputStream, int paramInt)
+  {
+    super(paramOutputStream);
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static belp a(OutputStream paramOutputStream)
+  {
+    belp localbelp = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Belp != null)
+      {
+        localbelp = jdField_b_of_type_Belp;
+        jdField_b_of_type_Belp = localbelp.jdField_a_of_type_Belp;
+        localbelp.jdField_a_of_type_Belp = null;
+        c -= 1;
+      }
+      if (localbelp != null)
+      {
+        localbelp.out = paramOutputStream;
+        localbelp.jdField_a_of_type_Boolean = true;
+        return localbelp;
+      }
+    }
+    return new belp(paramOutputStream);
+  }
+  
+  private void a()
+  {
+    c();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (c < 4)
+      {
+        this.jdField_a_of_type_Belp = jdField_b_of_type_Belp;
+        jdField_b_of_type_Belp = this;
+        c += 1;
+      }
+      return;
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
+      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
+    }
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new IOException("BufferedOutputStream is closed");
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.out = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Int > 0)
+    {
+      this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public void close()
   {
     try
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        break label14;
       }
+    }
+    finally
+    {
+      try
+      {
+        for (;;)
+        {
+          label14:
+          super.close();
+          a();
+        }
+      }
+      finally
+      {
+        a();
+      }
+      localObject1 = finally;
+    }
+  }
+  
+  public void flush()
+  {
+    try
+    {
+      b();
+      d();
+      this.out.flush();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      b();
+      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfByte.length)
+      {
+        this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = 0;
+      }
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      arrayOfByte[i] = ((byte)paramInt);
       return;
     }
     finally {}
   }
   
-  public void execute(Runnable paramRunnable)
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.offer(new AsyncTask.SerialExecutor.1(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
+      b();
+      if (paramArrayOfByte == null) {
+        throw new NullPointerException("buffer == null");
       }
-      return;
     }
-    finally
+    finally {}
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (paramInt2 >= arrayOfByte.length)
     {
-      paramRunnable = finally;
-      throw paramRunnable;
+      d();
+      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    }
+    for (;;)
+    {
+      return;
+      a(paramArrayOfByte.length, paramInt1, paramInt2);
+      if (paramInt2 > arrayOfByte.length - this.jdField_a_of_type_Int) {
+        d();
+      }
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
+      this.jdField_a_of_type_Int += paramInt2;
     }
   }
 }

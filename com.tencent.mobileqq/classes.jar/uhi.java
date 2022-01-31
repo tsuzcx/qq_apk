@@ -1,48 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class uhi
-  extends QQUIEventReceiver<uhf, uat>
+class uhi
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference<ugm> a;
+  uhi(uhg paramuhg, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public uhi(@NonNull uhf paramuhf)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramuhf);
-  }
-  
-  public void a(ugm paramugm)
-  {
-    this.a = new WeakReference(paramugm);
-  }
-  
-  public void a(@NonNull uhf paramuhf, @NonNull uat paramuat)
-  {
-    if (paramuat.jdField_a_of_type_Boolean) {
-      if ((paramuat.jdField_a_of_type_JavaLangString != null) && (this.a != null))
-      {
-        paramuhf = (ugm)this.a.get();
-        if (paramuhf != null) {
-          paramuhf.b(paramuat.jdField_a_of_type_JavaLangString);
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    do
-    {
-      do
-      {
-        return;
-        veg.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramuat.jdField_a_of_type_JavaLangString });
-      } while (this.a == null);
-      paramuhf = (ugm)this.a.get();
-    } while (paramuhf == null);
-    paramuhf.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return uat.class;
   }
 }
 

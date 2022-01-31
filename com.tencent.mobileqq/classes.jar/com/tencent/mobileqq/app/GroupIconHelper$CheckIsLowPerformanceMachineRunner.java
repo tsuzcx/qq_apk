@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bbct;
+import bbdh;
 
 class GroupIconHelper$CheckIsLowPerformanceMachineRunner
   implements Runnable
@@ -9,8 +9,8 @@ class GroupIconHelper$CheckIsLowPerformanceMachineRunner
   
   public void run()
   {
-    long l = bbct.a();
-    int i = bbct.b();
+    long l = bbdh.a();
+    int i = bbdh.b();
     if ((l != 0L) && (l < 1024L) && (i <= 1)) {
       GroupIconHelper.a(true);
     }

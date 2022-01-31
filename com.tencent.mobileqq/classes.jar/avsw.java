@@ -1,25 +1,60 @@
-import android.opengl.GLSurfaceView;
+import android.support.v4.view.ViewPager;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
 import com.tencent.ttpic.openapi.filter.GLGestureListener;
 import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 
 public class avsw
   implements GLGestureListener
 {
-  public GameplayEngine a;
+  private ViewPager a;
+  
+  public avsw(ViewPager paramViewPager)
+  {
+    this.a = paramViewPager;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    this.a = paramViewPager;
+  }
   
   public int onGetPriority()
   {
-    return 1040;
+    return 1002;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    paramMotionEvent = new axjk(paramMotionEvent);
-    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
-    return false;
+    int i = paramMotionEvent.getPointerCount();
+    paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean) && (this.a != null) && (this.a.isShown())) {}
+    try
+    {
+      this.a.onTouchEvent(paramMotionEvent);
+      if ((i != 2) || (!paramBoolean) || (this.a == null) || (!this.a.isShown())) {}
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+        {
+          paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+          this.a.onTouchEvent(paramMotionEvent);
+          paramMotionEvent.recycle();
+        }
+        return false;
+        localException = localException;
+        localException.printStackTrace();
+      }
+      catch (Exception paramMotionEvent)
+      {
+        for (;;)
+        {
+          paramMotionEvent.printStackTrace();
+        }
+      }
+    }
   }
 }
 

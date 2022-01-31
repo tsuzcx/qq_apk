@@ -1,14 +1,6 @@
-import java.util.List;
-
 public abstract interface bjll
 {
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(List<Long> paramList);
+  public abstract void U();
 }
 
 

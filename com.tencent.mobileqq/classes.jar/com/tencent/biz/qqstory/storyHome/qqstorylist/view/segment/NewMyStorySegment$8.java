@@ -5,24 +5,24 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import uyf;
-import vcs;
-import vzo;
+import uyc;
+import vcp;
+import vzl;
 
 public class NewMyStorySegment$8
   implements Runnable
 {
-  public NewMyStorySegment$8(vcs paramvcs, TextView paramTextView, View paramView, ImageView paramImageView) {}
+  public NewMyStorySegment$8(vcp paramvcp, TextView paramTextView, View paramView, ImageView paramImageView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(vcs.a(this.this$0, vcs.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - vzo.a(vcs.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
-    if (vcs.a(this.this$0).f > 0)
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(vcp.a(this.this$0, vcp.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - vzl.a(vcp.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
+    if (vcp.a(this.this$0).f > 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(vcs.b(this.this$0).getResources().getColor(2131166941));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(vcp.b(this.this$0).getResources().getColor(2131166941));
   }
 }
 

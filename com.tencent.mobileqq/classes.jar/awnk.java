@@ -1,20 +1,19 @@
-import android.content.Context;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import com.tencent.qphone.base.util.QLog;
 
 public class awnk
-  extends awoh
+  extends awoj
 {
   private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  public CharSequence a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
+  private CharSequence b;
   
   public awnk(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
@@ -25,7 +24,7 @@ public class awnk
   
   public CharSequence a()
   {
-    return awvy.a(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public String a()
@@ -35,13 +34,9 @@ public class awnk
   
   public void a(View paramView)
   {
-    Context localContext = paramView.getContext();
-    if ((localContext != null) && ((localContext instanceof BaseActivity)))
-    {
-      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), 4);
-      awvy.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-      awvy.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
-    }
+    AddFriendActivity.a((Activity)paramView.getContext(), new SearchResultItem(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record), ((BaseActivity)paramView.getContext()).app, true, 1);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
   }
   
   public boolean a()
@@ -51,44 +46,41 @@ public class awnk
   
   public CharSequence b()
   {
-    return null;
+    StringBuilder localStringBuilder;
+    if (this.b == null)
+    {
+      localStringBuilder = new StringBuilder().append("(");
+      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() == 0L) {
+        break label78;
+      }
+    }
+    label78:
+    for (String str = String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());; str = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get())
+    {
+      this.b = awwa.a(str + ")", this.jdField_a_of_type_JavaLangString);
+      return this.b;
+    }
   }
   
   public String b()
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-  }
-  
-  public boolean b()
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("name = ").append(this.jdField_a_of_type_JavaLangCharSequence).append(", isCert = ");
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break label102;
-      }
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
+      return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
     }
-    label102:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GroupNetSearchModelPublicAcntItem", 2, bool);
-      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
-        break;
-      }
-      return true;
-    }
-    return false;
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
   }
   
   public int c()
   {
-    return 1;
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
+      return 1;
+    }
+    return 11;
   }
   
   public CharSequence c()
   {
-    return ajyc.a(2131705346);
+    return ajya.a(2131705356);
   }
   
   public CharSequence d()

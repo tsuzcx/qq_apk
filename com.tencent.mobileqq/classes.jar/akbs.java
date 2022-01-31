@@ -1,46 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 class akbs
-  implements askm
+  implements Comparator<Object>
 {
-  akbs(akbo paramakbo) {}
+  akbs(akbn paramakbn) {}
   
-  public void a(int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    if (((paramObject1 instanceof atza)) && ((paramObject2 instanceof atza))) {
+      return (int)(((atza)paramObject2).a - ((atza)paramObject1).a);
     }
-    this.a.d();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    if (((paramObject1 instanceof atza)) && ((paramObject2 instanceof PhoneContact))) {
+      return (int)(((PhoneContact)paramObject2).lastScanTime - ((atza)paramObject1).a * 1000L);
     }
-    this.a.d();
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof PhoneContact))) {
+      return (int)(((PhoneContact)paramObject2).lastScanTime - ((PhoneContact)paramObject1).lastScanTime);
     }
-    if ((paramInt & 0x1) != 0) {
-      synchronized (akbo.a(this.a))
-      {
-        Iterator localIterator = akbo.a(this.a).iterator();
-        if (localIterator.hasNext()) {
-          ((akbu)localIterator.next()).b();
-        }
-      }
+    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof atza))) {
+      return (int)(((atza)paramObject2).a * 1000L - ((PhoneContact)paramObject1).lastScanTime);
     }
+    return 0;
   }
 }
 

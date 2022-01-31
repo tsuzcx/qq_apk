@@ -1,14 +1,14 @@
 class apby
-  extends apbq
+  extends apbu
 {
-  public apby(apbe paramapbe)
+  public apby(apbi paramapbi)
   {
-    super(paramapbe);
+    super(paramapbi);
   }
   
   protected String a()
   {
-    return "StateRefuseByPC";
+    return "StateGotoOffFileProcess";
   }
 }
 

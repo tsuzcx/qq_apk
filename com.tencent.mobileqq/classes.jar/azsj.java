@@ -1,25 +1,32 @@
-import java.util.Set;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class azsj
-  extends azuw
+public class azsj
+  extends MSFServlet
 {
-  azsj(azsi paramazsi) {}
-  
-  protected void a(Set<Long> paramSet)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.a = 1;
-    if ((paramSet != null) && (paramSet.contains(Long.valueOf(azsi.a(this.a))))) {
-      this.a.a = 2;
+    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      return;
     }
-    azsr.c("TroopFileTransferMgr", azsr.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
-    if (this.a.b > 0)
-    {
-      if ((this.a.b == 2) || (this.a.a == 2)) {
-        bajf.a(azsi.a(this.a), azsi.b(this.a), 107);
-      }
-      this.a.a = 0;
-      this.a.b = 0;
-    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bbma.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
+    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+    paramPacket.autoResend = bool;
+    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
   }
 }
 

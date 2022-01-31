@@ -1,32 +1,56 @@
 import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import org.json.JSONObject;
 
 class arns
-  implements wxw
+  implements wxt
 {
-  arns(arnp paramarnp) {}
+  arns(arnr paramarnr, long paramLong1, long paramLong2, String paramString) {}
   
   public void a(Bundle paramBundle)
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
-    try
+    boolean bool = true;
+    paramBundle = paramBundle.getString("videoPath");
+    Object localObject;
+    if (!TextUtils.isEmpty(paramBundle))
     {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
-      return;
+      localObject = new File(paramBundle);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
     }
-    catch (Exception paramBundle)
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
+        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
       }
-      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
+      try
+      {
+        localObject = new JSONObject();
+        if (bool)
+        {
+          MediaApiPlugin.a(this.jdField_a_of_type_Arnr.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
+          ((JSONObject)localObject).put("ret", 0);
+          ((JSONObject)localObject).put("errMsg", "");
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Arnr.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          return;
+          ((JSONObject)localObject).put("ret", -2);
+          ((JSONObject)localObject).put("errMsg", ajya.a(2131715195));
+        }
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      catch (Exception paramBundle)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+      }
+      return;
+      bool = false;
     }
   }
 }

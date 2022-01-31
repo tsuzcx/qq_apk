@@ -21,7 +21,7 @@ import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import yxr;
+import yxo;
 
 class MiniAppDesktopAdapter$3
   implements View.OnClickListener
@@ -67,7 +67,7 @@ class MiniAppDesktopAdapter$3
         try
         {
           paramView = new JSONObject(paramView.amsAdInfo);
-          paramView = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramView))).report_info.click_url.get();
+          paramView = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramView))).report_info.click_url.get();
           MiniAppUtils.reportMiniAppAd(paramView);
           QLog.d("MiniAppDesktopAdapter", 1, "--- click : " + paramView);
           return;

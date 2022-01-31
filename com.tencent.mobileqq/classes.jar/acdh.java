@@ -1,33 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
 public class acdh
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnKeyListener
 {
-  public acdh(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public acdh(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.c(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
+    if (paramInt == 4) {
+      this.a.finish();
     }
-    for (;;)
-    {
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      return;
-      this.a.app.c(0);
-      break;
-      label68:
-      i = 0;
-    }
+    return false;
   }
 }
 

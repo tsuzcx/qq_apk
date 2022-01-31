@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import bfno;
+import bfof;
 import com.tencent.commonsdk.util.notification.NotificationLimiterUtil;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
@@ -18,7 +18,7 @@ public class MiniMsgTabServerInitStep
   private void b()
   {
     a = true;
-    NotificationLimiterUtil.setLimiter(new bfno());
+    NotificationLimiterUtil.setLimiter(new bfof());
   }
   
   public int a()

@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.BragActivity;
 
-class bdab
-  implements QQPermissionCallback
+public class bdab
+  implements bdeq
 {
-  bdab(bdaa parambdaa) {}
+  public bdab(BragActivity paramBragActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    bbcv.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
+    this.a.a.setImageBitmap(paramBitmap);
   }
 }
 

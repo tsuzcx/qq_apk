@@ -1,56 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class nrv
-  extends ampb<nrt>
+  extends nrx
 {
-  public static nrt a()
+  public nrv(EcshopNewPageFragment paramEcshopNewPageFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    return (nrt)ampm.a().a(593);
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
   }
   
-  public int a()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return 593;
+    super.onPageFinished(paramWebView, paramString);
+    EcshopNewPageFragment.a(this.a).setVisibility(0);
   }
   
-  public Class<nrt> a()
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    return nrt.class;
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
-  @NonNull
-  public nrt a(int paramInt)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    return new nrt();
-  }
-  
-  @Nullable
-  public nrt a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
-      return new nrt();
-    }
-    return nrt.a(paramArrayOfampi[0].a);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(nrt paramnrt) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

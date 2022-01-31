@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bjah;
-import bjai;
-import bjaj;
+import bjay;
+import bjaz;
+import bjba;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class CaptureModeAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bjaj jdField_a_of_type_Bjaj;
-  private List<bjai> jdField_a_of_type_JavaUtilList;
+  private bjba jdField_a_of_type_Bjba;
+  private List<bjaz> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int = a(-1, 0.6F);
   private List<TextView> jdField_b_of_type_JavaUtilList = new ArrayList();
   
@@ -39,7 +39,7 @@ public class CaptureModeAdapter
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (((bjai)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt) {
+        if (((bjaz)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt) {
           return i;
         }
         i += 1;
@@ -95,24 +95,24 @@ public class CaptureModeAdapter
     localTextView.setTextColor(this.jdField_b_of_type_Int);
   }
   
-  public void a(bjaj parambjaj)
+  public void a(bjba parambjba)
   {
-    this.jdField_a_of_type_Bjaj = parambjaj;
+    this.jdField_a_of_type_Bjba = parambjba;
   }
   
-  public void a(List<bjai> paramList, int paramInt)
+  public void a(List<bjaz> paramList, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     int i = 0;
     if (i < paramList.size())
     {
-      bjai localbjai = (bjai)paramList.get(i);
-      TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560540, null);
-      localTextView.setText(localbjai.a());
+      bjaz localbjaz = (bjaz)paramList.get(i);
+      TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560539, null);
+      localTextView.setText(localbjaz.a());
       localTextView.setTag(Integer.valueOf(i));
-      localTextView.setContentDescription(localbjai.b());
-      localTextView.setOnClickListener(new bjah(this));
-      if (localbjai.a() != paramInt) {
+      localTextView.setContentDescription(localbjaz.b());
+      localTextView.setOnClickListener(new bjay(this));
+      if (localbjaz.a() != paramInt) {
         localTextView.setTextColor(this.jdField_b_of_type_Int);
       }
       for (;;)

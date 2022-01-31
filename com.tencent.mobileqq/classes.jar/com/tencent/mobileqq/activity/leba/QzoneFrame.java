@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.leba;
 
+import agbz;
+import agca;
 import agcb;
-import agcc;
-import agcd;
-import ajwm;
+import ajwk;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -14,10 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import axmt;
-import bhbh;
-import bhbl;
-import bhkr;
+import axmv;
+import bhby;
+import bhcc;
+import bhli;
 import com.tencent.component.media.image.ImageLoader;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FrameHelperActivity;
@@ -26,14 +26,14 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QzoneFrame
-  extends ajwm
+  extends ajwk
 {
   public static int a;
   public static String a;
   public static int b;
-  private agcd jdField_a_of_type_Agcd = new agcc(this);
+  private agcb jdField_a_of_type_Agcb = new agca(this);
   private Fragment jdField_a_of_type_AndroidAppFragment;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agcb(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agbz(this);
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -56,14 +56,14 @@ public class QzoneFrame
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561919, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561918, null);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
     super.a();
-    bhbh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bhby.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     f();
   }
   
@@ -94,14 +94,14 @@ public class QzoneFrame
   
   public void a(boolean paramBoolean)
   {
-    bhkr.a().b(0);
+    bhli.a().b(0);
     ThreadManager.executeOnSubThread(new QzoneFrame.3(this));
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidAppFragment != null) && ((this.jdField_a_of_type_AndroidAppFragment instanceof bhbl))) {
-      ((bhbl)this.jdField_a_of_type_AndroidAppFragment).setQzoneSwitchlistener(this.jdField_a_of_type_Agcd);
+    if ((this.jdField_a_of_type_AndroidAppFragment != null) && ((this.jdField_a_of_type_AndroidAppFragment instanceof bhcc))) {
+      ((bhcc)this.jdField_a_of_type_AndroidAppFragment).setQzoneSwitchlistener(this.jdField_a_of_type_Agcb);
     }
   }
   
@@ -116,11 +116,11 @@ public class QzoneFrame
   {
     try
     {
-      bhkr.a().a();
-      ImmersiveUtils.a(axmt.d(), a().getWindow());
+      bhli.a().a();
+      ImmersiveUtils.a(axmv.d(), a().getWindow());
       ImageLoader.getInstance().clear(false);
       if (this.jdField_a_of_type_AndroidAppFragment != null) {
-        ((bhbl)this.jdField_a_of_type_AndroidAppFragment).onSwitchOutofQzone();
+        ((bhcc)this.jdField_a_of_type_AndroidAppFragment).onSwitchOutofQzone();
       }
       return;
     }
@@ -158,18 +158,18 @@ public class QzoneFrame
   {
     QLog.d("QzoneFrame", 1, "onCreate: ");
     super.f();
-    bhbh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bhbh.b(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374185));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373808));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374178));
-    this.jdField_b_of_type_AndroidAppFragment = bhbh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaFriendFeedFragment");
+    bhby.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bhby.b(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374187));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131373810));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374180));
+    this.jdField_b_of_type_AndroidAppFragment = bhby.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.qzone.feed.ui.activity.QQLebaFriendFeedFragment");
     this.jdField_a_of_type_AndroidAppFragment = this.jdField_b_of_type_AndroidAppFragment;
     b();
     Object localObject;
     if (this.jdField_a_of_type_AndroidAppFragment != null)
     {
-      ((bhbl)this.jdField_b_of_type_AndroidAppFragment).setTitleView(this.jdField_a_of_type_AndroidViewViewGroup);
+      ((bhcc)this.jdField_b_of_type_AndroidAppFragment).setTitleView(this.jdField_a_of_type_AndroidViewViewGroup);
       this.jdField_a_of_type_AndroidAppFragment.onAttach(a());
       this.jdField_a_of_type_AndroidAppFragment.onCreate(null);
       localObject = this.jdField_a_of_type_AndroidAppFragment.onCreateView(a().getLayoutInflater(), null, null);
@@ -196,8 +196,8 @@ public class QzoneFrame
         QLog.e("QzoneFrame", 1, "registerReceiver" + localException);
         return;
       }
-      if ((this.jdField_b_of_type_AndroidAppFragment instanceof bhbl)) {
-        ((bhbl)this.jdField_b_of_type_AndroidAppFragment).forceRefresh();
+      if ((this.jdField_b_of_type_AndroidAppFragment instanceof bhcc)) {
+        ((bhcc)this.jdField_b_of_type_AndroidAppFragment).forceRefresh();
       }
     }
   }
@@ -268,8 +268,8 @@ public class QzoneFrame
   public void k()
   {
     l();
-    axmt.jdField_c_of_type_Int = 0;
-    axmt.d = 0;
+    axmv.jdField_c_of_type_Int = 0;
+    axmv.d = 0;
     f();
   }
   
@@ -283,11 +283,11 @@ public class QzoneFrame
     if (this.jdField_c_of_type_AndroidAppFragment != null) {
       this.jdField_c_of_type_AndroidAppFragment.onDestroy();
     }
-    if ((this.jdField_b_of_type_AndroidAppFragment instanceof bhbl)) {
-      ((bhbl)this.jdField_b_of_type_AndroidAppFragment).clearCache();
+    if ((this.jdField_b_of_type_AndroidAppFragment instanceof bhcc)) {
+      ((bhcc)this.jdField_b_of_type_AndroidAppFragment).clearCache();
     }
-    if ((this.jdField_c_of_type_AndroidAppFragment instanceof bhbl)) {
-      ((bhbl)this.jdField_c_of_type_AndroidAppFragment).clearCache();
+    if ((this.jdField_c_of_type_AndroidAppFragment instanceof bhcc)) {
+      ((bhcc)this.jdField_c_of_type_AndroidAppFragment).clearCache();
     }
     this.jdField_b_of_type_AndroidAppFragment = null;
     this.jdField_c_of_type_AndroidAppFragment = null;

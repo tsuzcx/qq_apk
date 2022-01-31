@@ -1,74 +1,16 @@
-import android.annotation.TargetApi;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import java.io.InputStream;
+import com.tencent.qphone.base.util.QLog;
 
-public class mts
-  extends BitmapDrawable
+class mts
+  implements bfpj
 {
-  private ColorStateList a;
+  mts(mtq parammtq) {}
   
-  public mts(Resources paramResources, Bitmap paramBitmap, int paramInt)
+  public void onDismiss()
   {
-    super(paramResources, paramBitmap);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
-  }
-  
-  public mts(Resources paramResources, InputStream paramInputStream, int paramInt)
-  {
-    super(paramResources, paramInputStream);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
-  }
-  
-  public static mts a(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    return new mts(paramResources, paramResources.openRawResource(paramInt1), paramInt2);
-  }
-  
-  public static mts a(Resources paramResources, Bitmap paramBitmap, int paramInt)
-  {
-    return new mts(paramResources, paramBitmap, paramInt);
-  }
-  
-  @TargetApi(16)
-  public static void a(View paramView, int paramInt1, int paramInt2)
-  {
-    if (paramView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
     }
-    mts localmts = a(paramView.getResources(), paramInt1, paramInt2);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramView.setBackground(localmts);
-      return;
-    }
-    paramView.setBackgroundDrawable(localmts);
-  }
-  
-  public boolean isStateful()
-  {
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    int i = this.a.getColorForState(paramArrayOfInt, 0);
-    if (i != 0) {
-      setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-    }
-    for (;;)
-    {
-      invalidateSelf();
-      return super.onStateChange(paramArrayOfInt);
-      clearColorFilter();
-    }
+    axqy.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbjn;
+import bbkb;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MainFragment$4
@@ -11,7 +11,7 @@ class MainFragment$4
   public void run()
   {
     if (BaseApplicationImpl.getContext() != null) {
-      bbjn.a(BaseApplicationImpl.getContext(), "");
+      bbkb.a(BaseApplicationImpl.getContext(), "");
     }
   }
 }

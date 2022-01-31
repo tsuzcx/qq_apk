@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwm;
-import bbjl;
+import acwi;
+import bbjz;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class IntimateInfoShareHelper$1
   implements Runnable
 {
-  public IntimateInfoShareHelper$1(acwm paramacwm) {}
+  public IntimateInfoShareHelper$1(acwi paramacwi) {}
   
   public void run()
   {
-    acwm.a(this.this$0, this.this$0.a(acwm.a(this.this$0)));
-    acwm.a(this.this$0).a(acwm.a(this.this$0));
+    acwi.a(this.this$0, this.this$0.a(acwi.a(this.this$0)));
+    acwi.a(this.this$0).a(acwi.a(this.this$0));
     ThreadManager.getUIHandler().post(new IntimateInfoShareHelper.1.1(this));
   }
 }

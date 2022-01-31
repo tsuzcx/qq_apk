@@ -1,26 +1,32 @@
-public class ardu
-  implements ajtg
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+
+class ardu
+  implements TextWatcher
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  ardu(ardt paramardt) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void afterTextChanged(Editable paramEditable) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
+    if (ardt.a(this.a) != null)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
+      if (TextUtils.isEmpty(paramCharSequence)) {
+        break label45;
+      }
+      if (!ardt.b(this.a))
+      {
+        ardt.b(this.a, true);
+        ardt.a(this.a, 1);
+      }
     }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    return;
+    label45:
+    this.a.c();
   }
 }
 

@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class lxc
-  implements Parcelable.Creator<LBSInfo>
+public class lxc
+  extends akat
 {
-  public LBSInfo a(Parcel paramParcel)
-  {
-    return new LBSInfo(paramParcel);
-  }
+  public lxc(QQServiceForAV paramQQServiceForAV) {}
   
-  public LBSInfo[] a(int paramInt)
+  protected void a()
   {
-    return new LBSInfo[paramInt];
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface != null) {
+      new bgkq(localQQAppInterface).a(new lxd(this));
+    }
   }
 }
 

@@ -1,21 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
 public class wqv
-  extends BroadcastReceiver
+  implements ude
 {
-  private wqv(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
+  public wqv(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a_(ucz paramucz)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
+    try
     {
-      SubscribePersonalDetailFragment.b(this.a, false);
-      wpw.a().a(new UserStateUpdateEvent());
+      if (QQPlayerService.a()) {
+        QQPlayerService.c(this.a.getActivity());
+      }
+      return;
+    }
+    catch (Exception paramucz)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SubscribeVideoDetailFragment", 2, "QQPlayerService.stopPlayMusic exception!", paramucz);
+      }
+      paramucz.printStackTrace();
     }
   }
 }

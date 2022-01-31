@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import ajzo;
-import bciv;
+import ajzm;
+import bcjj;
 
 public class LebaHelper$1
   implements Runnable
 {
-  public LebaHelper$1(ajzo paramajzo) {}
+  public LebaHelper$1(ajzm paramajzm) {}
   
   public void run()
   {
-    ajzo.a(this.this$0);
-    ajzo.b(this.this$0);
-    this.this$0.jdField_a_of_type_Bciv = new bciv(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ajzo.c(this.this$0);
+    ajzm.a(this.this$0);
+    ajzm.b(this.this$0);
+    this.this$0.jdField_a_of_type_Bcjj = new bcjj(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ajzm.c(this.this$0);
   }
 }
 

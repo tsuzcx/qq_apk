@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class baml
-  extends bamt
+class baml
+  extends mxj
 {
-  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  baml(bamk parambamk, bams parambams) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED) || (this.a.a()))
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      this.a = ((TroopUploadingThread)bams.a(paramClass));
-      this.a.a(paramArrayList, paramHashMap, paramList, this);
-      this.a.start();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bams.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
     }
   }
 }

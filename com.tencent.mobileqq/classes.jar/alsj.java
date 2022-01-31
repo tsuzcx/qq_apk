@@ -1,12 +1,6 @@
-public class alsj
+public abstract interface alsj
 {
-  public void a(alsl paramalsl, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  public abstract void a(alsm paramalsm, boolean paramBoolean, byte[] paramArrayOfByte);
 }
 
 

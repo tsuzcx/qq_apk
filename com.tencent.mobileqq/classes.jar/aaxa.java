@@ -1,21 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aaxa
-  extends BroadcastReceiver
+class aaxa
+  implements DialogInterface.OnClickListener
 {
-  public aaxa(Conversation paramConversation) {}
+  aaxa(aawy paramaawy) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
-      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

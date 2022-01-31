@@ -1,23 +1,10 @@
-public class axmz
+public abstract interface axmz
 {
-  private axmy a = new axmy();
+  public abstract void a(axnc paramaxnc, axng paramaxng);
   
-  public axmy a()
-  {
-    return this.a;
-  }
+  public abstract void a(String paramString);
   
-  public axmz a(String paramString)
-  {
-    this.a.a = paramString;
-    return this;
-  }
-  
-  public axmz a(boolean paramBoolean)
-  {
-    this.a.b = paramBoolean;
-    return this;
-  }
+  public abstract boolean a(String paramString);
 }
 
 

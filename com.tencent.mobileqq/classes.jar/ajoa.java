@@ -1,14 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ajoa
-  extends ajof
+public abstract interface ajoa
 {
-  ajoa(ajnx paramajnx) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,15 +1,15 @@
 public class amqo
-  extends amql
+  extends amqk
 {
-  private amrf a;
+  private amri a;
   
-  amqo(String paramString, amrf paramamrf)
+  public amqo(String paramString, amri paramamri)
   {
     super(paramString);
-    this.a = paramamrf;
+    this.a = paramamri;
   }
   
-  public amrf a()
+  public amri a()
   {
     return this.a;
   }

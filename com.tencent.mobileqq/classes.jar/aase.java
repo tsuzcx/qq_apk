@@ -1,26 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
 
 public class aase
-  implements aptu
+  implements DialogInterface.OnClickListener
 {
-  public aase(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouq paramaouq) {}
+  public aase(ChatHistoryFileActivity paramChatHistoryFileActivity, aasg paramaasg) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Aouq.b(localFileManagerEntity);
-      }
-    }
+    this.jdField_a_of_type_Aasg.a(true);
   }
-  
-  public void b() {}
 }
 
 

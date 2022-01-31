@@ -1,18 +1,14 @@
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.widget.RoundImageView;
 
 class amlu
-  extends anhg
 {
-  public ETTextView a;
+  public angi a;
   public RoundImageView a;
   
-  public amlu(amlr paramamlr, View paramView)
+  public amlu(amlq paramamlq, RoundImageView paramRoundImageView, angi paramangi)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131367679));
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364438));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = paramRoundImageView;
+    this.jdField_a_of_type_Angi = paramangi;
   }
 }
 

@@ -1,23 +1,43 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class acru
-  implements acrk
+  implements BusinessObserver
 {
-  public acru(PositionActivatePage paramPositionActivatePage) {}
+  public acru(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt > 0) {
-      this.a.a.setEnabled(true);
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
     }
-    while (paramInt > 1)
+    if (paramInt == 2005)
     {
-      this.a.a.setText(2131689597);
-      return;
-      this.a.a.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
+      }
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
     }
-    this.a.a.setText(2131689598);
+    else
+    {
+      return;
+    }
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 

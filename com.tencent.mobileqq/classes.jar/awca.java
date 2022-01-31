@@ -1,24 +1,32 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import com.tencent.qphone.base.util.QLog;
 
 public class awca
-  implements awcm
+  implements TextWatcher
 {
   public awca(EditActivity paramEditActivity) {}
   
-  public void a(bcjy parambcjy)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (EditActivity.a(this.a) == parambcjy)
-    {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
-      }
-      EditActivity.a(this.a, null);
+    EditActivity.a = true;
+    axqy.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
+    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
+      EditActivity.a(this.a).setSelection(paramEditable.length());
     }
+    EditActivity.a(this.a);
   }
   
-  public boolean a(bcjy parambcjy)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return parambcjy != EditActivity.a(this.a);
+    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
   }
 }
 

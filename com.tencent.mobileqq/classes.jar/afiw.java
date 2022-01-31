@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-
-public class afiw
-  implements View.OnClickListener
+class afiw
+  implements afix<T>
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  afiw(afiv paramafiv, int paramInt) {}
   
-  protected afiw(afit paramafit) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (afit.a(this.jdField_a_of_type_Afit) != null) {
-      afit.a(this.jdField_a_of_type_Afit).a(this.jdField_a_of_type_JavaLangString);
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(afjf paramafjf, T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Afiv.a(paramafjf, paramT, paramInt);
+  }
+  
+  public boolean a(T paramT, int paramInt)
+  {
+    return true;
   }
 }
 

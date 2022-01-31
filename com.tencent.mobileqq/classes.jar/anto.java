@@ -1,6 +1,20 @@
-public abstract interface anto
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+
+class anto
+  extends DataSetObserver
 {
-  public abstract void a_(int paramInt1, int paramInt2);
+  anto(antn paramantn, DragSortListView paramDragSortListView) {}
+  
+  public void onChanged()
+  {
+    this.jdField_a_of_type_Antn.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Antn.notifyDataSetInvalidated();
+  }
 }
 
 

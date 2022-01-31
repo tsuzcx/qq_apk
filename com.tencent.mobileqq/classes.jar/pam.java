@@ -1,40 +1,181 @@
-public class pam<T>
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule.1;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule.2;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule.3;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule.4;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class pam
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  private int jdField_a_of_type_Int = -1;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private final String jdField_a_of_type_JavaLangString = "FollowCoverInfoModule";
+  private HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private qdq jdField_a_of_type_Qdq;
   
-  public pam(T paramT)
+  public pam(AppInterface paramAppInterface)
   {
-    this(paramT, localObject, 600000L);
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    b();
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      ThreadManager.executeOnFileThread(new FollowCoverInfoModule.1(this));
     }
   }
   
-  public pam(T paramT, long paramLong)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    this.jdField_a_of_type_Long = localObject;
+    int i = 0;
+    SharedPreferences localSharedPreferences = bhvy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt("follow_tab_enter_topic_reddot_time", 0);
+    }
+    return i;
   }
   
-  public T a()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    SharedPreferences localSharedPreferences = bhvy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString("follow_tab_last_refresh_cookie", "");
+    }
+    return "";
   }
   
-  public void a(T paramT)
+  public HashMap<Long, Long> a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
+    try
+    {
+      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      return localHashMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public boolean a()
+  public void a()
   {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      if (QLog.isColorLevel()) {
+        QLog.d("FollowCoverInfoModule", 2, "topic update exp clear");
+      }
+      ThreadManager.executeOnFileThread(new FollowCoverInfoModule.3(this));
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject = bhvy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putInt("follow_tab_user_topic_reddot_update_num", paramInt);
+        bhvy.a((SharedPreferences.Editor)localObject, true);
+        QLog.d("FollowCoverInfoModule", 2, "update user topic reddot update num : " + paramInt);
+      }
+    }
+  }
+  
+  public void a(Long paramLong)
+  {
+    try
+    {
+      Long localLong = Long.valueOf(System.currentTimeMillis());
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, localLong);
+      if (QLog.isColorLevel()) {
+        QLog.d("FollowCoverInfoModule", 2, "topic update exp set " + paramLong + " " + localLong);
+      }
+      ThreadManager.executeOnFileThread(new FollowCoverInfoModule.4(this, new HashMap(this.jdField_a_of_type_JavaUtilHashMap)));
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = bhvy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putString("follow_tab_last_refresh_cookie", paramString);
+        bhvy.a((SharedPreferences.Editor)localObject, true);
+        QLog.d("FollowCoverInfoModule", 2, "updateLastRefreshCookie cookie : " + paramString);
+      }
+    }
+  }
+  
+  public void a(qdq paramqdq)
+  {
+    StringBuilder localStringBuilder;
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Qdq = paramqdq;
+        if (paramqdq == null)
+        {
+          i = 0;
+          this.jdField_a_of_type_Int = i;
+          if (!QLog.isColorLevel()) {
+            break label151;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("topic update save info exists ").append(this.jdField_a_of_type_Int).append(" size ");
+          if ((paramqdq == null) || (paramqdq.a == null)) {
+            break;
+          }
+          localStringBuilder.append(paramqdq.a.size()).append(" ");
+          Iterator localIterator = paramqdq.a.iterator();
+          if (!localIterator.hasNext()) {
+            break label141;
+          }
+          localStringBuilder.append(((qds)localIterator.next()).jdField_a_of_type_Int).append(" ");
+          continue;
+        }
+        int i = 1;
+      }
+      finally {}
+    }
+    localStringBuilder.append("0");
+    label141:
+    QLog.d("FollowCoverInfoModule", 2, localStringBuilder.toString());
+    label151:
+    ThreadManager.executeOnFileThread(new FollowCoverInfoModule.2(this, paramqdq));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = bhvy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putBoolean("follow_tab_user_topic_follow_state", paramBoolean);
+        bhvy.a((SharedPreferences.Editor)localObject, true);
+        QLog.d("FollowCoverInfoModule", 2, "update user follow state : " + paramBoolean);
+      }
+    }
   }
 }
 

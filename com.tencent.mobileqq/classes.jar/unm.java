@@ -1,16 +1,6 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-
-public class unm
-  implements bfrx
+public abstract interface unm
 {
-  public unm(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Unp != null)) {
-      this.a.jdField_a_of_type_Unp.a(this.a.jdField_a_of_type_Unj.a);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

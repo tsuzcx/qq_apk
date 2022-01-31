@@ -1,57 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.manager.Manager;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
 
 public class asyy
-  implements Manager
+  implements URLDrawable.DownloadListener
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
   
-  public asyy(QQAppInterface paramQQAppInterface)
+  public asyy(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("NearbyGeneralConfig", 0);
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("Notify_on_like", true);
-      this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_allow_nearby_like", true);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(boolean paramBoolean)
+  public asyy(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("Notify_on_like", paramBoolean).commit();
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean a()
+  public void onFileDownloadFailed(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
   }
   
-  public void b(boolean paramBoolean)
+  public void onFileDownloadStarted()
   {
-    if ((this.b != paramBoolean) && (this.jdField_a_of_type_AndroidContentSharedPreferences != null))
-    {
-      this.b = paramBoolean;
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_allow_nearby_like", paramBoolean).commit();
-    }
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
-  public boolean b()
+  public void onFileDownloadSucceed(long paramLong)
   {
-    return this.b;
+    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
   }
-  
-  public void onDestroy() {}
 }
 
 

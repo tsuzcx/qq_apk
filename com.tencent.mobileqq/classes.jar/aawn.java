@@ -1,236 +1,47 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.32.1;
-import com.tencent.mobileqq.activity.Conversation.32.2;
-import com.tencent.mobileqq.activity.Conversation.32.3;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aawn
-  extends akav
+  extends ajut
 {
   public aawn(Conversation paramConversation) {}
   
-  protected void a(int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    this.a.a(new Conversation.32.3(this, paramInt));
-  }
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    paramString1 = ahnn.a(paramString1, -2147483648);
-    this.a.a(2, 9, paramString1);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    paramString = ahnn.a(paramString, -2147483648);
-    this.a.a(2, 9, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akas paramakas)
-  {
-    a(paramBoolean, paramString, paramLong);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, ayaw paramayaw)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "Conversation.onPushSubAccountMsgNotify() isSuccess=" + paramBoolean + " subAccount=" + paramString);
-      if (paramayaw != null) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onPushSubAccountMsgNotify() mainAccount=" + paramayaw.jdField_b_of_type_JavaLangString + " subAccount=" + paramayaw.jdField_c_of_type_JavaLangString + " data.errorType=" + paramayaw.jdField_a_of_type_Int + " errorMsg=" + paramayaw.jdField_a_of_type_JavaLangString + " isNeedStartGetMsg=" + paramayaw.jdField_b_of_type_Boolean);
-      }
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, ajsd.z, 6000);
     }
-    if ((!paramBoolean) || (paramayaw == null)) {
+    while (i != 1) {
       return;
     }
-    if (paramayaw.jdField_a_of_type_Int == 0)
-    {
-      ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1);
-      paramayaw = (ayao)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(62);
-      if (paramayaw != null) {
-        paramayaw.a(paramString, 1, true);
-      }
-    }
-    for (;;)
-    {
-      this.a.a(0L);
-      return;
-      if (paramayaw.jdField_a_of_type_Int == 1)
-      {
-        ayao.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-        Conversation.h(this.a);
-      }
-    }
+    this.a.a(8, ajsd.A, 6000);
   }
   
-  public void a(boolean paramBoolean, String paramString, ayax paramayax)
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "onSubAccountThirdQQUnreadMsgNum.isSuccess=" + paramBoolean + "  subAccount=" + paramString);
-      if (paramayax != null) {
-        QLog.d("SUB_ACCOUNT", 2, "onSubAccountThirdQQUnreadMsgNum.data=" + paramayax);
-      }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, ajsd.z, 6003);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning())) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (paramayax == null) || (paramayax.d == 0));
-      i = ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    } while ((paramayax.d <= i) || (ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()) > 0));
-    ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramayax.d);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(ajsf.x, 7000) == null) {
-      ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ajsf.x, 7);
-    }
-    for (;;)
-    {
-      this.a.a(0L);
-      return;
-      ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ajsf.x, 6);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.troop.revoked_troop_msg", 2, "onMsgRevokeNotice, isSuccess:" + paramBoolean1);
-    }
-    if (!paramBoolean1) {
+    while (i != 1) {
       return;
     }
-    MessageRecord localMessageRecord;
-    askq localaskq;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      localMessageRecord = (MessageRecord)paramList.get(0);
-      localaskq = (askq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-      switch (localMessageRecord.istroop)
-      {
-      }
+    this.a.a(8, ajsd.A, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, ajsd.z, 6000);
     }
-    for (;;)
-    {
-      super.a(paramBoolean1, paramList, paramBoolean2);
+    while (i != 1) {
       return;
-      if (localaskq.a(localMessageRecord.frienduin) != -1)
-      {
-        ((azqz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.istroop)).a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.shmsgseq);
-        this.a.a(8, localMessageRecord.frienduin, localMessageRecord.istroop);
-        continue;
-        if (localaskq.a(localMessageRecord.frienduin + "&" + 3000) != -1)
-        {
-          ((akpi)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.istroop)).a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.shmsgseq);
-          this.a.a(8, localMessageRecord.frienduin, localMessageRecord.istroop);
-        }
-      }
     }
-  }
-  
-  protected void b()
-  {
-    asfb.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
-    }
-    this.a.a(0L);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, ayaw paramayaw)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "onGetSubAccountMsgNotify.isSuccess=" + paramBoolean + "  subAccount=" + paramString);
-      if (paramayaw != null) {
-        QLog.d("SUB_ACCOUNT", 2, "onGetSubAccountMsgNotify.data.errorType=" + paramayaw.jdField_a_of_type_Int + " errorMsg=" + paramayaw.jdField_a_of_type_JavaLangString + " mainAccount=" + paramayaw.jdField_b_of_type_JavaLangString + "  subAccount=" + paramayaw.jdField_c_of_type_JavaLangString + " isNeedStartGetMsg=" + paramayaw.jdField_b_of_type_Boolean);
-      }
-    }
-    if (paramayaw != null) {
-      switch (paramayaw.jdField_a_of_type_Int)
-      {
-      default: 
-        if ((paramayaw.jdField_c_of_type_Boolean) && (!paramayaw.d) && (paramayaw.jdField_c_of_type_JavaLangString != null) && (paramayaw.jdField_c_of_type_JavaLangString.length() > 4))
-        {
-          ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 6);
-          paramayaw.d = true;
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      this.a.a(0L);
-      return;
-      ayao.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      continue;
-      ayao.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-    }
-  }
-  
-  protected void c()
-  {
-    this.a.a(0L);
-  }
-  
-  public void c(boolean paramBoolean, String paramString)
-  {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, onBoxMsgUnreadNumRefresh");
-    }
-    this.a.a(0L);
-  }
-  
-  protected void d(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetOfflineMsgFinished|isSuc = " + paramBoolean);
-    }
-    if (this.a.c > 0L) {
-      bbjv.a("Conversation_PullToRefresh_msgCB", SystemClock.uptimeMillis() - this.a.c);
-    }
-    if (this.a.jdField_a_of_type_Long != 1000L) {
-      this.a.jdField_a_of_type_Long = 1000L;
-    }
-    this.a.a(new Conversation.32.1(this, paramBoolean));
-    Object localObject = (PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    if (localObject != null)
-    {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0);
-      long l = localSharedPreferences.getLong("fresh_weather_time", 0L);
-      l = System.currentTimeMillis() - l;
-      if ((l > 86400000L) || (l < 0L))
-      {
-        ((PublicAccountHandler)localObject).a(-1, 0, 0, 0);
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putLong("fresh_weather_time", System.currentTimeMillis());
-        ((SharedPreferences.Editor)localObject).commit();
-      }
-    }
-  }
-  
-  protected void e(boolean paramBoolean)
-  {
-    this.a.a(new Conversation.32.2(this, paramBoolean));
+    this.a.a(8, ajsd.A, 6003);
   }
 }
 

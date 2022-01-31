@@ -1,22 +1,26 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
 class phh
-  extends ComponentPGCShortContentBig
+  implements View.OnClickListener
 {
-  phh(pgz parampgz, Context paramContext, ArticleInfo paramArticleInfo)
-  {
-    super(paramContext);
-  }
+  phh(pgw parampgw, pau parampau, Container paramContainer, PgcSmallView paramPgcSmallView) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
+    paramView = this.jdField_a_of_type_Pau.a();
+    paramView.click_area = 11;
+    onh.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramView, (int)paramView.mChannelID);
+    if (this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
+    {
+      onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a.jdField_a_of_type_Qcx.h, null);
+      return;
     }
-    return super.a();
+    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewPgcSmallView.getContext(), this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a.jdField_a_of_type_Qce.c, null);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import akyr;
-import akyy;
+import akyq;
+import akyx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 
@@ -10,12 +10,12 @@ public class ARPromotionConfigHandler$ARPromotionEntryHandler
 {
   public ARPromotionConfigHandler$ARPromotionEntryHandler(String paramString)
   {
-    super(akyy.a + 365, paramString, "config_qq.android.ar_", "config", "ver");
+    super(akyx.a + 365, paramString, "config_qq.android.ar_", "config", "ver");
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
   {
-    akyy.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramPromotionConfigInfo);
+    akyx.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramPromotionConfigInfo);
   }
 }
 

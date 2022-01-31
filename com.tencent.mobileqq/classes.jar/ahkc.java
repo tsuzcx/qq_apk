@@ -1,34 +1,42 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
-import java.util.ArrayList;
+import android.support.annotation.IdRes;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ahkc
-  implements bfoq
 {
-  public ahkc(AppletsFolderManager.2 param2) {}
+  private static final Map<String, Integer> a;
+  public static int[] a;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    if (ahjz.a(this.a.this$0)) {
-      return;
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130838179, 2130838170, 2130838172, 2130838180, 2130838348, 2130840921, 2130838181, 2130838169, 2130838174, 2130838171, 2130838168, 2130838175, 2130838176, 2130838177, 2130838178 };
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
+    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
+    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
+  }
+  
+  @IdRes
+  public static int a(int paramInt)
+  {
+    return jdField_a_of_type_ArrayOfInt[paramInt];
+  }
+  
+  public static int a(String paramString)
+  {
+    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (!sgg.d(paramString)) {
+        break label37;
+      }
     }
-    ahjz.a(this.a.this$0, true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ahjz.a(this.a.this$0).dismiss();
-      return;
-      paramView = new ArrayList();
-      akwz localakwz = new akwz();
-      localakwz.a(Integer.valueOf(this.a.a).intValue());
-      localakwz.a(Integer.valueOf(this.a.b).intValue());
-      localakwz.b(0);
-      paramView.add(localakwz.a());
-      ahjz.a(this.a.this$0).a(paramView);
-      bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131700608), 0).a();
+    label37:
+    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
+      return localInteger1.intValue();
     }
   }
 }

@@ -1,26 +1,19 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+
 class bjsp
-  implements bkjd<Boolean, bkji>
+  implements View.OnClickListener
 {
-  bjsp(bjsn parambjsn) {}
+  bjsp(bjso parambjso) {}
   
-  public Void a(Boolean paramBoolean, bkji parambkji)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean.booleanValue()) || (parambkji == null) || (parambkji.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      veg.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+    if (bjso.a(this.a) == -1) {
+      bjso.a(this.a, "Clk_add_topic");
     }
-    veg.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(parambkji.jdField_a_of_type_Int));
-    if (parambkji.jdField_a_of_type_Int >= this.a.a.length)
-    {
-      veg.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(parambkji.jdField_a_of_type_Int) });
-      return null;
-    }
-    veg.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(parambkji.jdField_a_of_type_Int));
-    this.a.a[parambkji.jdField_a_of_type_Int] = bjsq.a(this.a.a[parambkji.jdField_a_of_type_Int], parambkji.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.a.a[parambkji.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = parambkji.jdField_a_of_type_JavaLangString;
-    this.a.j();
-    return null;
+    TroopBarPublishUtils.a((Activity)this.a.a(), 1001, bjso.a(this.a));
   }
 }
 

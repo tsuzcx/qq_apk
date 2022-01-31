@@ -1,13 +1,20 @@
-public class bism
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class bism
+  implements Animation.AnimationListener
 {
-  public String a;
-  public String b;
+  bism(bisl parambisl) {}
   
-  public bism(String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    bisl.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

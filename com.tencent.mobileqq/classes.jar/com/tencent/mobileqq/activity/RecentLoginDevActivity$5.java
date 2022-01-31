@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcpq;
+import bcqf;
 
 class RecentLoginDevActivity$5
   implements Runnable
@@ -12,7 +12,7 @@ class RecentLoginDevActivity$5
     try
     {
       if ((RecentLoginDevActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        RecentLoginDevActivity.a(this.this$0, new bcpq(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        RecentLoginDevActivity.a(this.this$0, new bcqf(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
       }
       if ((RecentLoginDevActivity.a(this.this$0) != null) && (!RecentLoginDevActivity.a(this.this$0).isShowing())) {
         RecentLoginDevActivity.a(this.this$0).show();

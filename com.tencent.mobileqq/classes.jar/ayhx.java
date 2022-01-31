@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
 
-class ayhx
-  implements View.OnClickListener
+public class ayhx
 {
-  ayhx(ayhw paramayhw) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public AsyncImageView a;
+  public GroupPadTemplateInfo a;
   
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof ayhr))
-    {
-      ayhr localayhr = (ayhr)paramView.getTag();
-      if ((this.a.a != null) && (localayhr.a.isClickable())) {
-        this.a.a.onClick(paramView);
-      }
-    }
-  }
+  public ayhx(ayhv paramayhv) {}
 }
 
 

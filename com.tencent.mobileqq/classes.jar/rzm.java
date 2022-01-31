@@ -1,17 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-class rzm
-  extends AnimatorListenerAdapter
+public class rzm
+  extends rzc
+  implements ryv
 {
-  rzm(rzk paramrzk, VVideoView paramVVideoView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public rzm(Activity paramActivity, ryq paramryq, VVideoView paramVVideoView)
   {
-    rzk.a(this.jdField_a_of_type_Rzk, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
+    super(paramActivity, paramryq, paramVVideoView);
   }
+  
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

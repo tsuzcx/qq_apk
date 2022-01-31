@@ -1,31 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
-final class wau
-  extends wad
+class wau
 {
-  wau(wad paramwad) {}
-  
-  public void onFailure(String paramString)
+  static String a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
     }
-    this.a.onFailure(paramString);
-    vel.a("music_composite", "music_clip", 0, 1, new String[0]);
   }
   
-  public void onStart()
+  static String b(Context paramContext)
   {
-    super.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    vel.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
-    }
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.a();
+    return paramContext + str;
   }
 }
 

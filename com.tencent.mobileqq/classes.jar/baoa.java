@@ -1,17 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import android.view.MotionEvent;
 
-public class baoa
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface baoa
 {
-  public baoa(RedDotAnimateView paramRedDotAnimateView) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
-    this.a.invalidate();
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

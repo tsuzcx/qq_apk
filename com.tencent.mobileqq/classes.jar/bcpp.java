@@ -1,10 +1,24 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ProfileNameView;
 
-public abstract interface bcpp
+public class bcpp
+  implements View.OnClickListener
 {
-  public abstract void onMapScrollEnd(GeoPoint paramGeoPoint);
+  public bcpp(ProfileNameView paramProfileNameView, auuy paramauuy) {}
   
-  public abstract void onMapScrollStart(GeoPoint paramGeoPoint);
+  public void onClick(View paramView)
+  {
+    String str = balw.a().a(this.jdField_a_of_type_Auuy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", str);
+    paramView.getContext().startActivity(localIntent);
+    axqy.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+  }
 }
 
 

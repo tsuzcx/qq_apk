@@ -1,23 +1,34 @@
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class atak
   implements DialogInterface.OnClickListener
 {
-  atak(atah paramatah, Activity paramActivity) {}
+  atak(ataj paramataj, boolean paramBoolean, String paramString1, atar paramatar, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_Atah.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
+    if (this.jdField_a_of_type_Boolean)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.a);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+      this.jdField_a_of_type_Ataj.b();
+      if (!this.jdField_a_of_type_Ataj.a()) {
+        break label104;
+      }
+      this.jdField_a_of_type_Ataj.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
+      this.jdField_a_of_type_Atar.a(this.jdField_a_of_type_JavaLangString, false);
+      ataj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
+    }
+    for (;;)
+    {
+      ataj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
+      return;
+      this.jdField_a_of_type_Ataj.c();
+      break;
+      label104:
+      this.jdField_a_of_type_Ataj.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
+      ataj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
     }
   }
 }

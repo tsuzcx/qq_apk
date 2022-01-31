@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import apmx;
-import appk;
-import ayfe;
+import apnb;
+import appo;
+import ayfg;
 import java.util.List;
 
 public class SimpleFilePresenter$3
   implements Runnable
 {
-  public SimpleFilePresenter$3(appk paramappk, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
+  public SimpleFilePresenter$3(appo paramappo, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class SimpleFilePresenter$3
       if (this.jdField_a_of_type_Int == 3000) {
         localList2 = this.jdField_a_of_type_JavaUtilList;
       }
-      ayfe.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
+      ayfg.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
       return;
       localObject = null;
       break;

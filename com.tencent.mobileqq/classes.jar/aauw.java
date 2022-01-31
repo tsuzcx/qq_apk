@@ -1,57 +1,34 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.ManageInfo;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
+import com.tencent.qphone.base.util.QLog;
 
 public class aauw
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aauw(ChatSettingForTroop paramChatSettingForTroop, oidb_0xaf4.RspBody paramRspBody) {}
+  public aauw(ChatSettingForTroop.51 param51) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0xaf4Oidb_0xaf4$RspBody.manage_info.url.get();
-    Intent localIntent;
-    String str;
-    if ((paramView.startsWith("http")) || (paramView.startsWith("https")))
+    if (paramInt == 1)
     {
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, QQBrowserActivity.class);
-      str = paramView.replace("$GCODE$", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
-      paramView = null;
-      int i = 0;
-      while (i < ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size())
-      {
-        Object localObject = paramView;
-        if (paramView == null) {
-          localObject = new StringBuilder("&mini_appids=");
-        }
-        ((StringBuilder)localObject).append(ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).get(i));
-        if (i != ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size() - 1) {
-          ((StringBuilder)localObject).append(",");
-        }
-        i += 1;
-        paramView = (View)localObject;
-      }
-      if (paramView == null) {
-        break label233;
-      }
-    }
-    label233:
-    for (paramView = str + paramView.toString();; paramView = str)
-    {
-      localIntent.putExtra("url", paramView);
-      localIntent.putExtra("webStyle", "noBottomBar");
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.startActivity(localIntent);
-      MiniProgramLpReportDC04239.reportByQQqunInfo("qun", "qun_info", "click_set", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
+      this.a.this$0.a.cancel();
       return;
+    }
+    try
+    {
+      aqfd.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
     }
   }
 }

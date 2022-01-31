@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bcdx
-  implements ThreadExcutor.IThreadListener
+class bcdx
+  extends bcdz
 {
-  public bcdx(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
+  bcdx(bcdu parambcdu)
+  {
+    super(parambcdu);
+  }
   
-  public void onAdded() {}
-  
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
+  }
 }
 
 

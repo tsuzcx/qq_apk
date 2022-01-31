@@ -1,39 +1,37 @@
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class vpv<T extends vpu>
+public class vpv
+  extends vpr
 {
-  protected int a;
-  public final View a;
-  public T a;
+  @NonNull
+  public final tdu a;
+  @NonNull
+  public final String c;
   
-  protected vpv(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public vpv(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull tdu paramtdu)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
-    }
+    super(paramInt1, paramString1, paramInt2);
+    this.c = paramString2;
+    this.a = paramtdu;
   }
   
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
+  @NonNull
+  public Class<? extends vps> a()
   {
-    this.jdField_a_of_type_Vpu = null;
-    this.jdField_a_of_type_Int = -1;
+    return vpx.class;
   }
   
-  public void a(T paramT, int paramInt)
+  @NonNull
+  public vps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Vpu = paramT;
-    this.jdField_a_of_type_Int = paramInt;
+    return new vpx(paramContext, paramViewGroup, null);
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Vpu != null) && (this.jdField_a_of_type_Vpu.a());
+    return true;
   }
 }
 

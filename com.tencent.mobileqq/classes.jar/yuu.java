@@ -1,29 +1,139 @@
-import android.content.Context;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import android.annotation.SuppressLint;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-final class yuu
-  implements ArkViewImplement.LoadCallback
+public class yuu
+  implements View.OnTouchListener
 {
-  yuu(long paramLong, String paramString, WeakReference paramWeakReference, GdtInterstitialParams paramGdtInterstitialParams) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private List<WeakReference<View>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private yuv jdField_a_of_type_Yuv;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c;
+  private int d;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  String a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = yuj.a(paramInt2);
-    yxs.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
-    yut.a(i, paramInt2, this.jdField_a_of_type_JavaLangString);
-    yyf.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, i, paramInt2);
+    long l1 = this.jdField_b_of_type_Long;
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = System.currentTimeMillis();
+    long l4 = this.jdField_b_of_type_Long;
+    long l5 = System.currentTimeMillis();
+    long l6 = this.jdField_a_of_type_Long;
+    int i;
+    int j;
+    int k;
+    Object localObject;
+    if (paramBoolean1)
+    {
+      i = 1;
+      j = axlk.b(BaseApplicationImpl.getContext());
+      k = axlk.a(BaseApplicationImpl.getContext());
+      localObject = new JSONObject();
+    }
+    for (;;)
+    {
+      try
+      {
+        ((JSONObject)localObject).put("g", String.valueOf(l1 - l2));
+        ((JSONObject)localObject).put("sc", String.valueOf(l3 - l4));
+        ((JSONObject)localObject).put("ec", String.valueOf(l5 - l6));
+        ((JSONObject)localObject).put("aa", String.valueOf(this.jdField_a_of_type_Int));
+        ((JSONObject)localObject).put("ab", String.valueOf(this.jdField_b_of_type_Int));
+        ((JSONObject)localObject).put("ba", String.valueOf(this.c));
+        ((JSONObject)localObject).put("bb", String.valueOf(this.d));
+        ((JSONObject)localObject).put("d", String.valueOf(0));
+        ((JSONObject)localObject).put("p", String.valueOf(paramLong));
+        ((JSONObject)localObject).put("f", String.valueOf(0));
+        ((JSONObject)localObject).put("x", String.valueOf(i));
+        ((JSONObject)localObject).put("sz", String.valueOf(-999));
+        ((JSONObject)localObject).put("da", String.valueOf(k));
+        ((JSONObject)localObject).put("db", String.valueOf(j));
+        if (!paramBoolean2) {
+          continue;
+        }
+        i = 2;
+        ((JSONObject)localObject).put("vca", String.valueOf(i));
+      }
+      catch (Exception localException)
+      {
+        String str;
+        yxp.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString error", localException);
+        continue;
+        paramString = "?";
+        continue;
+      }
+      str = ((JSONObject)localObject).toString();
+      localObject = paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localObject = paramString;
+        if (!paramString.contains("&s={"))
+        {
+          localObject = new StringBuilder().append(paramString);
+          if (!paramString.contains("?")) {
+            continue;
+          }
+          paramString = "&";
+          localObject = paramString + "s=" + str;
+          yxp.d("GdtMotiveVideoClickCoordinateReportHelper", "getReportString click url result : " + (String)localObject);
+        }
+      }
+      return localObject;
+      i = 0;
+      break;
+      i = 1;
+    }
   }
   
-  public void onLoadState(int paramInt)
+  public void a()
   {
-    yxs.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
-    if (paramInt == 1) {
-      yyf.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, 0, -2147483648);
+    this.jdField_a_of_type_Yuv = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      View localView = (View)((WeakReference)localIterator.next()).get();
+      if (localView != null) {
+        localView.setOnTouchListener(null);
+      }
     }
-    while (paramInt != -1) {
-      return;
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramView));
+    paramView.setOnTouchListener(this);
+  }
+  
+  @SuppressLint({"ClickableViewAccessibility"})
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
+      continue;
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.c = ((int)paramMotionEvent.getRawX());
+      this.d = ((int)paramMotionEvent.getRawY());
+      if (this.jdField_a_of_type_Yuv != null) {
+        this.jdField_a_of_type_Yuv.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
+      }
     }
   }
 }

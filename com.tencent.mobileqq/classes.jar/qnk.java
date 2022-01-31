@@ -1,24 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFloatWindowDragLayout;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
-public class qnk
-  implements ValueAnimator.AnimatorUpdateListener
+class qnk
+  extends Handler
 {
-  public qnk(VideoFeedsFloatWindowDragLayout paramVideoFeedsFloatWindowDragLayout, int paramInt1, int paramInt2) {}
+  qnk(qnj paramqnj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout.getLayoutParams();
-    int i = this.jdField_a_of_type_Int;
-    localLayoutParams.x = (((Point)paramValueAnimator.getAnimatedValue()).x + i);
-    i = this.b;
-    localLayoutParams.y = (((Point)paramValueAnimator.getAnimatedValue()).y + i);
-    if (VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout) != null) {
-      VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout).a();
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        return;
+      } while ((qnj.a(this.a) == null) || (qnj.a(this.a) == null) || (qnj.a(this.a).getVisibility() != 0) || (!bhvy.f()));
+      qnj.a(this.a, qnj.a(this.a));
+      sendEmptyMessageDelayed(2, 3000L);
+      return;
     }
+    this.a.a();
   }
 }
 

@@ -1,33 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-class aufu
-  extends Handler
+public abstract interface aufu
 {
-  private WeakReference<aufh> a;
+  public abstract void a();
   
-  public aufu(aufh paramaufh)
-  {
-    this.a = new WeakReference(paramaufh);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    aufh localaufh = (aufh)this.a.get();
-    if (localaufh == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      aufh.a(localaufh, (aufw)paramMessage.obj);
-      return;
-    }
-    aufh.a(localaufh);
-  }
+  public abstract void b();
 }
 
 

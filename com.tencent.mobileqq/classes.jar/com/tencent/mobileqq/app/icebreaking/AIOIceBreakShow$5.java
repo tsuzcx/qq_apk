@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import akno;
-import aknv;
+import aknn;
+import aknu;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class AIOIceBreakShow$5
   implements Runnable
 {
-  public AIOIceBreakShow$5(akno paramakno) {}
+  public AIOIceBreakShow$5(aknn paramaknn) {}
   
   public void run()
   {
-    ((aknv)akno.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(285)).g(akno.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((aknu)aknn.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(285)).g(aknn.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

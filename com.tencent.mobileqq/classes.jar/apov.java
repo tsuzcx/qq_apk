@@ -1,15 +1,39 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 class apov
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  apov(apos paramapos) {}
+  apov(apou paramapou) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    apue.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c());
-    this.a.b = true;
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {}
+    do
+    {
+      do
+      {
+        return;
+        ((FileBrowserActivity)this.a.a.a).a.b();
+        paramAdapterView = ((bbjv)paramAdapterView).a;
+        paramAdapterView.a.onClick(paramView);
+      } while (!"export_auto_open".equals(((FileBrowserActivity)this.a.a.a).a.a()));
+      if (paramAdapterView.c == 2)
+      {
+        axqy.b(null, "dc00898", "", "", "0X800A3B8", "0X800A3B8", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramAdapterView.c == 27)
+      {
+        axqy.b(null, "dc00898", "", "", "0X800A3B9", "0X800A3B9", 0, 0, "", "", "", "");
+        return;
+      }
+    } while (paramAdapterView.c != 6);
+    axqy.b(null, "dc00898", "", "", "0X800A3BA", "0X800A3BA", 0, 0, "", "", "", "");
   }
 }
 

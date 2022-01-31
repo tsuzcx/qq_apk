@@ -1,58 +1,45 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
 
-class aswf
-  implements ServiceConnection
+public class aswf
+  extends BroadcastReceiver
 {
-  aswf(aswe paramaswe) {}
+  public aswf(MusicGeneQQBrowserActivity paramMusicGeneQQBrowserActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aswe.a(this.a, asvm.a(paramIBinder));
-    try
+    if (paramIntent == null) {}
+    do
     {
-      aswe.a(this.a).a(aswe.a(this.a));
-      if (aswe.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "0");
-        aswe.a(this.a).a(paramComponentName);
-        aswe.a(this.a, null);
-      }
       return;
-    }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    try
-    {
-      if (aswe.a(this.a) != null) {
-        aswe.a(this.a).b(aswe.a(this.a));
-      }
-      if (aswe.a(this.a) != null)
+      paramContext = paramIntent.getAction();
+      String str1;
+      String str2;
+      String str3;
+      if ("BROAD_CAST_SHARE_MUSIC_GENE".equals(paramContext))
       {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "1");
-        aswe.a(this.a).a(paramComponentName);
-        aswe.a(this.a, null);
+        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+        MusicGeneQQBrowserActivity.a(this.a, str2, str3, "", str1, paramContext, paramIntent, 1101244924L);
+        return;
       }
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
+      if ("BROAD_CAST_SHARE_SONG".equals(paramContext))
       {
-        paramComponentName.printStackTrace();
+        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
+        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
+        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
+        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
+        String str4 = paramIntent.getStringExtra("BUNDLE_KEY_AUDIO_URL");
+        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
+        MusicGeneQQBrowserActivity.a(this.a, str2, str3, str4, str1, paramContext, paramIntent, 1101244924L);
+        return;
       }
-    }
-    aswe.a(this.a, null);
+    } while (!"BROAD_CAST_UPDATE_TITLE".equals(paramContext));
   }
 }
 

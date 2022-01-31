@@ -1,151 +1,151 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class adic
+  implements adif
 {
-  private SparseArrayCompat<SparseArrayCompat<adih>> a = new SparseArrayCompat(15);
-  private SparseArrayCompat<adig> b = new SparseArrayCompat();
+  private BaseChatPie a;
   
   public adic(BaseChatPie paramBaseChatPie)
   {
-    a(1, new adiq(paramBaseChatPie));
-    a(2, new aqln(paramBaseChatPie));
-    a(3, new adif(paramBaseChatPie));
-    a(4, new aibu(paramBaseChatPie));
-    a(5, new adjv(paramBaseChatPie));
-    a(6, new aqwa(paramBaseChatPie));
-    a(7, new adiu(paramBaseChatPie));
-    a(8, new adhl(paramBaseChatPie));
-    a(9, new avnl(paramBaseChatPie));
-    a(10, new adii(paramBaseChatPie));
-    a(11, new adin(paramBaseChatPie));
-    a(12, new adhu(paramBaseChatPie));
-    a(13, new aqft(paramBaseChatPie));
-    a(37, new aqcn(paramBaseChatPie));
-    a(14, new adji(paramBaseChatPie));
-    a(15, new AIOLongShotHelper(paramBaseChatPie));
-    if ((paramBaseChatPie instanceof aeoo))
-    {
-      a(16, new ardr((aeoo)paramBaseChatPie));
-      a(30, new adjb(paramBaseChatPie));
-    }
-    if ((paramBaseChatPie instanceof aequ)) {
-      a(16, new ardr((aequ)paramBaseChatPie));
-    }
-    a(17, new adiw(paramBaseChatPie));
-    a(18, new adid());
-    a(19, new aneu(paramBaseChatPie));
-    a(20, new adhx());
-    a(24, new adhy(paramBaseChatPie));
-    a(22, new adjw());
-    if (((paramBaseChatPie instanceof aetp)) || ((paramBaseChatPie instanceof aemf))) {
-      a(23, new adjr(paramBaseChatPie));
-    }
-    a(21, new adgn(paramBaseChatPie));
-    a(25, new adhw(paramBaseChatPie));
-    a(26, new adis(paramBaseChatPie));
-    a(27, new adiy(paramBaseChatPie));
-    if ((paramBaseChatPie instanceof TroopChatPie))
-    {
-      a(28, new adjn(paramBaseChatPie));
-      a(31, new adjp(paramBaseChatPie));
-    }
-    a(29, new adjg(paramBaseChatPie));
-    a(39, new adie(paramBaseChatPie));
-    a(44, new adjc(paramBaseChatPie));
-    if ((paramBaseChatPie instanceof TroopChatPie))
-    {
-      TroopChatPie localTroopChatPie = (TroopChatPie)paramBaseChatPie;
-      a(33, new aruf(paramBaseChatPie));
-      a(34, new adgm(localTroopChatPie));
-    }
-    if ((paramBaseChatPie instanceof aeoo)) {
-      a(32, new arud(paramBaseChatPie));
-    }
-    if (((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof aeoo))) {
-      a(35, new adhi(paramBaseChatPie));
-    }
-    a(38, new adiv(paramBaseChatPie));
-    if ((paramBaseChatPie instanceof aetp)) {
-      a(36, new adjd(paramBaseChatPie));
-    }
-    if (((paramBaseChatPie instanceof aeoo)) || ((paramBaseChatPie instanceof aets)) || ((paramBaseChatPie instanceof aerl))) {
-      a(42, new avcw(paramBaseChatPie));
-    }
-    a(40, new adje(paramBaseChatPie));
-    a(41, new adjh(paramBaseChatPie));
-    a(43, new adjk(paramBaseChatPie));
-    if ((paramBaseChatPie instanceof aeoo)) {
-      a(45, new awbs(paramBaseChatPie));
-    }
-    if ((paramBaseChatPie instanceof aequ)) {
-      a(45, new awbs(paramBaseChatPie));
-    }
-    a(46, new adha(paramBaseChatPie));
-    a(47, new adik(paramBaseChatPie));
-    if ((paramBaseChatPie instanceof TroopChatPie)) {
-      a(48, new adjo(paramBaseChatPie));
-    }
-    a(49, new adgc(paramBaseChatPie));
-    if (((paramBaseChatPie instanceof aeoo)) || ((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof aeoe))) {
-      a(50, new amcp(paramBaseChatPie));
-    }
-    if ((paramBaseChatPie instanceof TroopChatPie)) {
-      a(51, new adjq(paramBaseChatPie));
-    }
-    if ((paramBaseChatPie instanceof TroopChatPie)) {
-      a(52, new adho(paramBaseChatPie));
-    }
+    this.a = paramBaseChatPie;
   }
   
-  private void a(int paramInt, adig paramadig)
+  public static boolean a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass)
   {
-    this.b.put(paramInt, paramadig);
-  }
-  
-  private void a(int paramInt, adih paramadih)
-  {
-    this.b.put(paramInt, paramadih);
-    int[] arrayOfInt = paramadih.a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = arrayOfInt[i];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
-      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
-      if (localSparseArrayCompat2 == null)
-      {
-        localSparseArrayCompat1 = new SparseArrayCompat();
-        this.a.put(k, localSparseArrayCompat1);
-      }
-      localSparseArrayCompat1.put(paramInt, paramadih);
-      i += 1;
+    Intent localIntent1 = paramActivity.getIntent();
+    if (!localIntent1.getBooleanExtra("back_for_hidden_chat", false)) {
+      return false;
     }
+    Intent localIntent2 = new Intent();
+    localIntent2.putExtra("back_for_hidden_chat", true);
+    localIntent2.setFlags(603979776);
+    localIntent1.putExtra("should_restore_from_kill", false);
+    PublicFragmentActivity.a(paramActivity, localIntent1, paramClass, -1);
+    paramActivity.overridePendingTransition(2130771988, 2130771989);
+    return true;
   }
   
-  public <T extends adig> T a(int paramInt)
+  public static boolean a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
-    return (adig)this.b.get(paramInt);
+    if ((paramInt == 1) && (b(paramString, paramQQAppInterface))) {}
+    while ((paramInt == 0) && (a(paramString, paramQQAppInterface))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    ExtensionInfo localExtensionInfo = ((ajxl)paramQQAppInterface.getManager(51)).a(String.valueOf(paramString));
+    paramQQAppInterface = localExtensionInfo;
+    if (localExtensionInfo == null)
+    {
+      paramQQAppInterface = new ExtensionInfo();
+      paramQQAppInterface.uin = String.valueOf(paramString);
+    }
+    return paramQQAppInterface.hiddenChatSwitch == 1;
+  }
+  
+  public static boolean b(Activity paramActivity, Class<?> paramClass)
+  {
+    if (!paramActivity.getIntent().getBooleanExtra("back_for_hidden_chat", false)) {
+      return false;
+    }
+    paramClass = new Intent(paramActivity, paramClass);
+    paramClass.putExtra("back_for_hidden_chat", true);
+    paramClass.setFlags(603979776);
+    paramActivity.startActivity(paramClass);
+    paramActivity.overridePendingTransition(2130771988, 2130771989);
+    return true;
+  }
+  
+  public static boolean b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
+    paramQQAppInterface = localTroopInfo;
+    if (localTroopInfo == null)
+    {
+      paramQQAppInterface = new TroopInfo();
+      paramQQAppInterface.troopuin = paramString;
+    }
+    return TroopInfo.isCmdUinFlagEx2Open(paramQQAppInterface.cmdUinFlagEx2, 512);
+  }
+  
+  public static boolean c(Activity paramActivity, Class<?> paramClass)
+  {
+    if (!paramActivity.getIntent().getBooleanExtra("back_for_hidden_chat", false)) {
+      return false;
+    }
+    paramClass = new Intent(paramActivity, paramClass);
+    paramClass.setFlags(603979776);
+    paramClass.putExtra("tab_index", MainFragment.b);
+    paramClass.putExtra("fragment_id", 1);
+    paramActivity.startActivity(paramClass);
+    paramActivity.overridePendingTransition(2130771988, 2130771989);
+    return true;
+  }
+  
+  public void a()
+  {
+    if (a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      axqy.b(null, "dc00898", "", "", "0X800A34F", "0X800A34F", 0, 0, "0", "0", "", "");
+    }
   }
   
   public void a(int paramInt)
   {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
-      return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((adih)localSparseArrayCompat.valueAt(i)).a(paramInt);
-        i += 1;
-      }
+    if ((paramInt == 7) && (a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+      axqy.b(null, "dc00898", "", "", "0X800A34E", "0X800A34E", this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("hidden_aio_msg_source", 999), 0, "0", "0", "", "");
     }
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      paramIntent.putExtra("hidden_aio_msg_source", 3);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (bool)
+    {
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      if (localIntent.getIntExtra("entrance", 0) == 2) {
+        localIntent.putExtra("FromType", 2);
+      }
+      localIntent.putExtra("back_for_hidden_chat", true);
+      a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, HiddenChatFragment.class);
+      localIntent.removeExtra("back_for_hidden_chat");
+    }
+    return bool;
+  }
+  
+  public boolean a(QQMessageFacade.Message paramMessage)
+  {
+    if (a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      return true;
+    }
+    return a(paramMessage.frienduin, paramMessage.istroop, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 7 };
   }
 }
 

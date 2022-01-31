@@ -1,25 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
 class aprc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnLayoutChangeListener
 {
-  aprc(apqx paramapqx) {}
+  aprc(aprb paramaprb) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((apqx.a(this.a).getVisibility() == 0) && (Math.abs(apqx.a(this.a).getAlpha() - f) >= 0.02F)) {
-        apqx.a(this.a).setAlpha(f);
-      }
-      if ((apqx.a(this.a).getVisibility() == 0) && (Math.abs(apqx.a(this.a).getAlpha() - f) >= 0.02F)) {
-        apqx.a(this.a).setAlpha(f);
-      }
-    }
+    this.a.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 

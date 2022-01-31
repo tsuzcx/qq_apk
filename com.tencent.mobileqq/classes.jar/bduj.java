@@ -1,15 +1,30 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bduj
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public bduj(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bduk(this);
+  public BubblePopupWindow a;
+  public String a;
   
-  public void onClick(View paramView)
+  public bduj(QidianProfileCardActivity paramQidianProfileCardActivity)
   {
-    this.a.finish();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    int i = paramView.getId();
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
+    bbmf localbbmf = new bbmf();
+    localbbmf.a(i, ajya.a(2131709756));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcq.a(paramView, localbbmf, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bdul(this));
+    return true;
   }
 }
 

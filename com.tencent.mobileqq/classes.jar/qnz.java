@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2.1;
+import org.json.JSONObject;
 
 public class qnz
-  implements obl
 {
-  public qnz(VideoFeedsGameAdComManager.2.1 param1) {}
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a()
+  qnz(qnv paramqnv, JSONObject paramJSONObject)
   {
-    this.a.a.this$0.b(true);
+    if (paramJSONObject == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
+    this.b = paramJSONObject.optString("sGiftName");
+    this.c = paramJSONObject.optString("sNeedRole");
+    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
   }
 }
 

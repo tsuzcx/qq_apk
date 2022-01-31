@@ -1,223 +1,232 @@
-import QQService.DiscussRespHeader;
-import QQService.RespAddDiscussMember;
-import QQService.RespChangeDiscussName;
-import QQService.RespCreateDiscuss;
-import QQService.RespGetDiscussInfo;
-import QQService.RespGetDiscussInteRemark;
-import QQService.RespJoinDiscuss;
-import QQService.RespQuitDiscuss;
-import QQService.RespSetDiscussAttr;
-import QQService.RespSetDiscussFlag;
+import MAAccessClient.AccessReq;
+import MAAccessClient.AccessRsp;
+import MAAccessClient.CheckSinglePkgSigReq;
+import MAAccessClient.GetSinglePkgSigReq;
+import android.os.Bundle;
 import com.qq.jce.wup.UniPacket;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import protocol.KQQConfig.GetResourceReq;
+import protocol.KQQConfig.GetResourceResp;
+import protocol.KQQConfig.SDKUpgradeReq;
+import protocol.KQQConfig.SDKUpgradeRes;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class awza
+  extends xom
 {
-  private Object a(boolean paramBoolean, Object paramObject1, Object paramObject2)
+  private static final String[] a = { "ConfigServantObj", "ConfigService", "MAAControl", "ResourceConfig" };
+  
+  private AccessReq a(byte[] paramArrayOfByte)
   {
-    awzb localawzb = new awzb(this);
-    localawzb.jdField_a_of_type_Boolean = paramBoolean;
-    localawzb.jdField_a_of_type_JavaLangObject = paramObject1;
-    localawzb.b = paramObject2;
-    return localawzb;
+    AccessReq localAccessReq = new AccessReq();
+    localAccessReq.gray = 0;
+    String str2 = bbdh.a();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localAccessReq.imei = str1;
+    str2 = bbdh.k();
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localAccessReq.manufacture = str1;
+    str2 = bbdh.i();
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localAccessReq.mode = str1;
+    str2 = bbdh.j();
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localAccessReq.rom = str1;
+    localAccessReq.body = paramArrayOfByte;
+    localAccessReq.platform = 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpgradeController", 4, "createAccessReq:\nimei:" + localAccessReq.imei + "\ngray:" + localAccessReq.gray);
+    }
+    return localAccessReq;
   }
   
-  private <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
+  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      return null;
-    }
-    catch (RuntimeException paramArrayOfByte) {}
-    return null;
+    return (AccessRsp)a(paramFromServiceMsg.getWupBuffer(), paramString, new AccessRsp());
   }
   
   private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramToServiceMsg = (RespSetDiscussFlag)a(paramFromServiceMsg.getWupBuffer(), "RespSetDiscussFlag", new RespSetDiscussFlag());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
-    {
-      QLog.w("DiscussionReceiver", 2, "<<---discussFlagResp or respheader is null");
-      return null;
+    return (GetResourceResp)a(paramFromServiceMsg.getWupBuffer(), "res", new GetResourceResp());
+  }
+  
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("ClientReq");
+    paramUniPacket.put("iCmdType", Integer.valueOf(1));
+    SDKUpgradeReq localSDKUpgradeReq = new SDKUpgradeReq();
+    localSDKUpgradeReq.cProtocolVer = 1;
+    localSDKUpgradeReq.iActionType = paramToServiceMsg.extraData.getInt("iActionType");
+    localSDKUpgradeReq.iWidth = paramToServiceMsg.extraData.getInt("iWidth");
+    localSDKUpgradeReq.iHeight = paramToServiceMsg.extraData.getInt("iHeight");
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "Get Config: " + localSDKUpgradeReq.iActionType + localSDKUpgradeReq.iActionType + ", " + localSDKUpgradeReq.iWidth + ", " + localSDKUpgradeReq.iHeight);
     }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramToServiceMsg.getUin());
+    localSDKUpgradeReq.vUin = localArrayList;
+    localSDKUpgradeReq.bSdkUpdateFlag = false;
+    localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(AppSetting.a()));
+    localSDKUpgradeReq.vAppid = localArrayList;
+    paramUniPacket.put("SDKUpgradeReq", localSDKUpgradeReq);
+    paramToServiceMsg.setTimeout(20000L);
+    return true;
   }
   
   private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramToServiceMsg = (RespSetDiscussAttr)a(paramFromServiceMsg.getWupBuffer(), "RespSetDiscussAttr", new RespSetDiscussAttr());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
+    paramToServiceMsg = (SDKUpgradeRes)a(paramFromServiceMsg.getWupBuffer(), "SDKUpgradeRes", new SDKUpgradeRes());
+    if (QLog.isColorLevel())
     {
-      QLog.w("DiscussionReceiver", 2, "<<---discussAttr or respheader is null!");
-      return null;
-    }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
-  }
-  
-  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (RespQuitDiscuss)a(paramFromServiceMsg.getWupBuffer(), "RespQuitDiscuss", new RespQuitDiscuss());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
-    {
-      QLog.w("DiscussionReceiver", 2, "<<---discussQuitResp or respheader is null");
-      return null;
-    }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
-  }
-  
-  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (RespGetDiscussInfo)a(paramFromServiceMsg.getWupBuffer(), "RespGetDiscussInfo", new RespGetDiscussInfo());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
-    {
-      QLog.w("DiscussionReceiver", 2, "<<---discussInfo or respHeader is null!");
-      return null;
-    }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
-  }
-  
-  private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (RespGetDiscussInteRemark)a(paramFromServiceMsg.getWupBuffer(), "RespGetDiscussInteRemark", new RespGetDiscussInteRemark());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
-    {
-      QLog.w("DiscussionReceiver", 2, "<<---discussInfo or respHeader is null!");
-      return null;
-    }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
-  }
-  
-  private Object g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (RespCreateDiscuss)a(paramFromServiceMsg.getWupBuffer(), "RespCreateDiscuss", new RespCreateDiscuss());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DiscussionReceiver", 2, "<<---createDiscussResp or respheader is null!");
+      QLog.d("UpgradeController", 2, "Get Upgrade Config Resp: " + paramToServiceMsg);
+      if (paramToServiceMsg != null)
+      {
+        if ((paramToServiceMsg.vUpgradeInfo != null) && (paramToServiceMsg.vUpgradeInfo.size() > 0)) {
+          break label83;
+        }
+        QLog.d("UpgradeController", 2, "Not vUpgradeInfo");
       }
-      return null;
     }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
+    return paramToServiceMsg;
+    label83:
+    paramFromServiceMsg = (UpgradeInfo)paramToServiceMsg.vUpgradeInfo.get(0);
+    QLog.d("UpgradeController", 2, "Get UpgradeInfo: " + paramFromServiceMsg);
+    QLog.d("UpgradeController", 2, "iAppid: " + paramFromServiceMsg.iAppid);
+    QLog.d("UpgradeController", 2, "bAppType: " + paramFromServiceMsg.bAppType);
+    QLog.d("UpgradeController", 2, "iUpgradeType: " + paramFromServiceMsg.iUpgradeType);
+    QLog.d("UpgradeController", 2, "iUpgradeSdkId: " + paramFromServiceMsg.iUpgradeSdkId);
+    QLog.d("UpgradeController", 2, "strTitle: " + paramFromServiceMsg.strTitle);
+    QLog.d("UpgradeController", 2, "strUpgradeDesc: " + paramFromServiceMsg.strUpgradeDesc);
+    QLog.d("UpgradeController", 2, "strUrl: " + paramFromServiceMsg.strUrl);
+    QLog.d("UpgradeController", 2, "iActionType=0: " + paramFromServiceMsg.iActionType);
+    QLog.d("UpgradeController", 2, "bNewSwitch: " + paramFromServiceMsg.bNewSwitch);
+    QLog.d("UpgradeController", 2, "iNewTimeStamp: " + paramFromServiceMsg.iNewTimeStamp);
+    QLog.d("UpgradeController", 2, "strUpgradePageUrl: " + paramFromServiceMsg.strUpgradePageUrl);
+    QLog.d("UpgradeController", 2, "iIncrementUpgrade: " + paramFromServiceMsg.iIncrementUpgrade);
+    QLog.d("UpgradeController", 2, "iTipsType: " + paramFromServiceMsg.iTipsType);
+    QLog.d("UpgradeController", 2, "strBannerPicUrl: " + paramFromServiceMsg.strBannerPicUrl);
+    QLog.d("UpgradeController", 2, "strNewUpgradeDescURL: " + paramFromServiceMsg.strNewUpgradeDescURL);
+    QLog.d("UpgradeController", 2, "iDisplayDay: " + paramFromServiceMsg.iDisplayDay);
+    QLog.d("UpgradeController", 2, "iTipsWaitDay: " + paramFromServiceMsg.iTipsWaitDay);
+    QLog.d("UpgradeController", 2, "strProgressName: " + paramFromServiceMsg.strProgressName);
+    QLog.d("UpgradeController", 2, "strNewTipsDescURL: " + paramFromServiceMsg.strNewTipsDescURL);
+    QLog.d("UpgradeController", 2, "strNewSoftwareURL: " + paramFromServiceMsg.strNewSoftwareURL);
+    QLog.d("UpgradeController", 2, "bGray: " + paramFromServiceMsg.bGray);
+    return paramToServiceMsg;
   }
   
-  private Object h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    paramToServiceMsg = (RespChangeDiscussName)a(paramFromServiceMsg.getWupBuffer(), "RespChangeDiscussName", new RespChangeDiscussName());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null)) {
-      return null;
-    }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
-    }
-  }
-  
-  private Object i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = (RespAddDiscussMember)a(paramFromServiceMsg.getWupBuffer(), "RespAddDiscussMember", new RespAddDiscussMember());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("GetResourceReq");
+    ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("getResourceReqInfos");
+    GetResourceReq localGetResourceReq = new GetResourceReq();
+    if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      QLog.w("DiscussionReceiver", 2, "<<---addDisMember or respheader is null!");
-      return null;
+      localGetResourceReq.vecResReqInfo = localArrayList;
+      localGetResourceReq.sLanCodeType = 1;
     }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
+    paramUniPacket.put("req", localGetResourceReq);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "encode request,servantName is:ConfigServantObj,funcName is:GetResourceReq,AppSeq is:" + paramToServiceMsg.getAppSeq());
     }
+    return true;
   }
   
-  private Object j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    paramToServiceMsg = (RespJoinDiscuss)a(paramFromServiceMsg.getWupBuffer(), "RespJoinDiscuss", new RespJoinDiscuss());
-    DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)a(paramFromServiceMsg.getWupBuffer(), "DiscussRespHeader", new DiscussRespHeader());
-    if ((paramToServiceMsg == null) || (localDiscussRespHeader == null))
-    {
-      QLog.w("DiscussionReceiver", 2, "<<---decodeRespJoinDiscuss or respheader is null!");
-      return null;
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("GetResourceReq");
+    CheckSinglePkgSigReq localCheckSinglePkgSigReq = new CheckSinglePkgSigReq();
+    localCheckSinglePkgSigReq.pkgName = BaseApplicationImpl.sApplication.getPackageName();
+    String str2 = paramToServiceMsg.extraData.getString("ac");
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    if ((paramFromServiceMsg.getResultCode() == 1000) && (localDiscussRespHeader.Result == 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return a(bool, localDiscussRespHeader, paramToServiceMsg);
+    localCheckSinglePkgSigReq.pkgSig = str1;
+    localCheckSinglePkgSigReq.versionCode = aney.a(BaseApplicationImpl.sApplication);
+    localCheckSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
+    localCheckSinglePkgSigReq.sysVer = bbdh.a();
+    paramToServiceMsg = localCheckSinglePkgSigReq.toByteArray();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpgradeController", 4, "CheckSinglePkgSigReq:\nversionCode:" + localCheckSinglePkgSigReq.versionCode);
     }
+    paramUniPacket.put("MAAControl.CheckSinglePkgSig", a(paramToServiceMsg));
+    return true;
+  }
+  
+  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("GetResourceReq");
+    GetSinglePkgSigReq localGetSinglePkgSigReq = new GetSinglePkgSigReq();
+    localGetSinglePkgSigReq.pkgName = paramToServiceMsg.extraData.getString("pn");
+    localGetSinglePkgSigReq.versionCode = paramToServiceMsg.extraData.getInt("vc");
+    localGetSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
+    localGetSinglePkgSigReq.sysVer = paramToServiceMsg.extraData.getInt("sv");
+    paramUniPacket.put("MAAControl.GetSinglePkgSig", a(localGetSinglePkgSigReq.toByteArray()));
+    return true;
   }
   
   public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionReceiver", 2, "~~~decode cmd: " + str);
+    if ("ResourceConfig.GetResourceReq".equals(str)) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
     }
-    if ("QQServiceDiscussSvc.ReqAddDiscussMember".equalsIgnoreCase(str)) {
-      return i(paramToServiceMsg, paramFromServiceMsg);
+    if ("ConfigService.ClientReq".equals(str)) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
     }
-    if ("QQServiceDiscussSvc.ReqChangeDiscussName".equalsIgnoreCase(str)) {
-      return h(paramToServiceMsg, paramFromServiceMsg);
+    if ("MAAControl.CheckSinglePkgSig".equals(str)) {
+      return a(paramToServiceMsg, paramFromServiceMsg, str);
     }
-    if ("QQServiceDiscussSvc.ReqCreateDiscuss".equalsIgnoreCase(str)) {
-      return g(paramToServiceMsg, paramFromServiceMsg);
+    if ("MAAControl.GetSinglePkgSig".equals(str)) {
+      return a(paramToServiceMsg, paramFromServiceMsg, str);
     }
-    if ("OidbSvc.0x58a".equalsIgnoreCase(str)) {}
-    for (;;)
-    {
-      return null;
-      if ("QQServiceDiscussSvc.ReqGetDiscussInfo".equalsIgnoreCase(str)) {
-        return e(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("QQServiceDiscussSvc.ReqQuitDiscuss".equalsIgnoreCase(str)) {
-        return d(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("QQServiceDiscussSvc.ReqSetDiscussAttr".equalsIgnoreCase(str)) {
-        return c(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("QQServiceDiscussSvc.ReqSetDiscussFlag".equalsIgnoreCase(str)) {
-        return b(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("QQServiceDiscussSvc.ReqGetDiscussInteRemark".equalsIgnoreCase(str)) {
-        return f(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if ("QQServiceDiscussSvc.ReqJoinDiscuss".equalsIgnoreCase(str)) {
-        return j(paramToServiceMsg, paramFromServiceMsg);
-      }
-      QLog.w("DiscussionReceiver", 2, "~~~unknow cmd: " + str);
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if ("ConfigService.ClientReq".equals(str)) {
+      return b(paramToServiceMsg, paramUniPacket);
     }
+    if ("ResourceConfig.GetResourceReq".equals(str)) {
+      return c(paramToServiceMsg, paramUniPacket);
+    }
+    if ("MAAControl.CheckSinglePkgSig".equals(str)) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    if ("MAAControl.GetSinglePkgSig".equals(str)) {
+      return e(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return a;
   }
 }
 

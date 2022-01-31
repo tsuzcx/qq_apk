@@ -1,27 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
+import android.hardware.SensorManager;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class aaqv
-  extends Handler
+  implements acts
 {
   public aaqv(ChatHistory paramChatHistory) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new bcpq(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691528);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
+    this.a.p();
+    if (this.a.jdField_a_of_type_Aarq != null) {
+      this.a.jdField_a_of_type_Aarq.d();
     }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.b(2131695205);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

@@ -4,13 +4,17 @@ import android.content.DialogInterface.OnClickListener;
 class afvb
   implements DialogInterface.OnClickListener
 {
-  afvb(afur paramafur) {}
+  afvb(afup paramafup, boolean paramBoolean, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      afur.a(this.a);
+    axqy.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, afup.a(this.jdField_a_of_type_Afup), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false);
+      return;
     }
+    afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

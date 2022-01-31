@@ -1,28 +1,57 @@
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ttn
-  implements svc
+  extends Handler
 {
-  public ttn(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  WeakReference<FollowCaptureLauncher> a;
   
-  public void a(String paramString, int paramInt)
+  public ttn(FollowCaptureLauncher paramFollowCaptureLauncher)
   {
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramString;
-    localMessage.what = 65543;
-    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+    this.a = new WeakReference(paramFollowCaptureLauncher);
   }
   
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  public void handleMessage(Message paramMessage)
   {
-    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+    int i = 0;
+    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
+    if (localFollowCaptureLauncher == null) {}
+    for (;;)
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      }
+      while (i != 0)
+      {
+        FollowCaptureLauncher.f(localFollowCaptureLauncher);
+        return;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher);
+        continue;
+        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.c(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.d(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
+        }
+        vei.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
+        FollowCaptureLauncher.e(localFollowCaptureLauncher);
+        continue;
+        localFollowCaptureLauncher.a();
+      }
+    }
   }
 }
 

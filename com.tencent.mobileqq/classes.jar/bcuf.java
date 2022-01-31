@@ -1,30 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
-
-public class bcuf
-  implements MediaPlayer.OnPreparedListener
+public abstract interface bcuf
 {
-  public bcuf(VideoTextureView paramVideoTextureView) {}
+  public abstract void a();
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    if (VideoTextureView.a(this.a) != null)
-    {
-      VideoTextureView.a(this.a).start();
-      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
-    }
-    if (VideoTextureView.a() != null)
-    {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-      VideoTextureView.a().onVideoProgressUpdate(0);
-      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
-    }
-    if (VideoTextureView.a(this.a) != null) {
-      VideoTextureView.a(this.a).post(this.a.a);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

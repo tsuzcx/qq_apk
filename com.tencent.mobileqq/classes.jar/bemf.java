@@ -1,26 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.ActionSheetDialog.3;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
 
 public class bemf
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public bemf(ActionSheetDialog.3 param3) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bemf(Looper paramLooper)
   {
-    try
-    {
-      beme.a(this.a.this$0);
-      beme.a(this.a.this$0, true);
-      return;
-    }
-    catch (Exception paramAnimation) {}
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    bemd localbemd = (bemd)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      AsyncTask.b(localbemd.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask, localbemd.jdField_a_of_type_ArrayOfJavaLangObject[0]);
+      return;
+    }
+    localbemd.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask.a(localbemd.jdField_a_of_type_ArrayOfJavaLangObject);
+  }
 }
 
 

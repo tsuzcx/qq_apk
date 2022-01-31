@@ -1,26 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
 public class tjl
 {
   public int a;
-  public long a;
-  public String a;
+  public VideoCollectionItem a;
   
-  public tjl(tji paramtji, String paramString)
+  public tjl(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramtji = ((tcp)tdc.a(19)).a(paramString);
-    if (paramtji != null) {
-      a(paramtji);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
   }
   
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  public String toString()
   {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "delete";; str = "update") {
+      return str + '}';
+    }
   }
 }
 

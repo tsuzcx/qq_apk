@@ -1,21 +1,4 @@
-class bjnr<K, V>
-  extends bjnv<K, V>
-{
-  bjnr(bjnt<K, V> parambjnt1, bjnt<K, V> parambjnt2)
-  {
-    super(parambjnt1, parambjnt2);
-  }
-  
-  bjnt<K, V> a(bjnt<K, V> parambjnt)
-  {
-    return parambjnt.a;
-  }
-  
-  bjnt<K, V> b(bjnt<K, V> parambjnt)
-  {
-    return parambjnt.b;
-  }
-}
+public abstract interface bjnr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

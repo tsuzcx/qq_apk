@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import java.io.Serializable;
 
 public class TroopFileData
-  extends aukm
+  extends auko
   implements Serializable
 {
   public static final long serialVersionUID = 0L;
@@ -16,7 +16,7 @@ public class TroopFileData
   public int duration;
   public long entitySessionId;
   public String fileName;
-  @auma
+  @aumc
   public String fileUrl;
   public int height;
   public long lastTime;

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import vzo;
+import vzl;
 
 public class QZoneLayoutTemplateBase
   extends ViewGroup
@@ -31,7 +31,7 @@ public class QZoneLayoutTemplateBase
   public QZoneLayoutTemplateBase(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.c = vzo.a(paramContext, 5.0F);
+    this.c = vzl.a(paramContext, 5.0F);
   }
   
   public void addView(View paramView)

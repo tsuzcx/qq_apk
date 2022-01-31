@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begy;
-import beiy;
-import bejd;
-import beka;
-import bekg;
-import besl;
+import behp;
+import bejp;
+import beju;
+import bekr;
+import bekx;
+import betc;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class VoIPJsPlugin$2$1
-  implements bejd
+  implements beju
 {
   VoIPJsPlugin$2$1(VoIPJsPlugin.2 param2) {}
   
@@ -21,14 +21,14 @@ class VoIPJsPlugin$2$1
     try
     {
       localJSONObject.put("errCode", paramInt);
-      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, bekg.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+      this.this$1.val$req.jdField_a_of_type_Behp.a(this.this$1.val$req.b, bekx.b(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
       return;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        besl.d("[mini] VoIPJsPlugin", "JSONException", localJSONException);
+        betc.d("[mini] VoIPJsPlugin", "JSONException", localJSONException);
       }
     }
   }
@@ -39,15 +39,15 @@ class VoIPJsPlugin$2$1
     try
     {
       localJSONObject.put("openIdList", paramJSONArray);
-      this.this$1.val$req.jdField_a_of_type_Begy.a(this.this$1.val$req.b, bekg.a(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
-      beiy.a().a(new VoIPJsPlugin.2.1.1(this));
+      this.this$1.val$req.jdField_a_of_type_Behp.a(this.this$1.val$req.b, bekx.a(this.this$1.val$req.jdField_a_of_type_JavaLangString, localJSONObject).toString());
+      bejp.a().a(new VoIPJsPlugin.2.1.1(this));
       return;
     }
     catch (JSONException paramJSONArray)
     {
       for (;;)
       {
-        besl.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
+        betc.d("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
       }
     }
   }

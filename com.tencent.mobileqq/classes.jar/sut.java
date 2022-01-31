@@ -1,74 +1,212 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.Map;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager.1;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class sut
-  extends sva
+@TargetApi(14)
+public class sut
+  implements tch
 {
-  public sut(suq paramsuq)
+  public PreloadDownloader a;
+  public Runnable a;
+  public List<PreloadQueue> a;
+  public suu a;
+  
+  public sut()
   {
-    super("Q.qqstory.download.preload.PlayingListPreloader");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader = new PreloadDownloader();
+    this.jdField_a_of_type_Suu = new suv(this);
+    Object localObject1 = new suw();
+    ((suw)localObject1).a(0);
+    localObject1 = ((suw)localObject1).a();
+    Object localObject2 = new suw();
+    ((suw)localObject2).a(1);
+    localObject2 = ((suw)localObject2).a();
+    Object localObject3 = new suw();
+    ((suw)localObject3).a(2);
+    localObject3 = ((suw)localObject3).a();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject1);
+    localArrayList.add(localObject2);
+    localArrayList.add(localObject3);
+    this.jdField_a_of_type_JavaUtilList = localArrayList;
   }
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul)
+  public void a()
   {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramsul);
-    a(paramString, paramInt1, paramErrorMessage, paramsul);
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(this.jdField_a_of_type_Suu);
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a((PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(0));
   }
   
-  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, sul paramsul)
+  /* Error */
+  public void a(int paramInt)
   {
-    sus localsus = this.a.jdField_a_of_type_Sus;
-    if (localsus == null) {}
-    label14:
-    label169:
-    do
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 24	sut:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   6: iload_1
+    //   7: invokeinterface 59 2 0
+    //   12: checkcast 61	com/tencent/biz/qqstory/base/preload/PreloadQueue
+    //   15: astore_3
+    //   16: aload_3
+    //   17: ifnonnull +30 -> 47
+    //   20: ldc 67
+    //   22: new 69	java/lang/StringBuilder
+    //   25: dup
+    //   26: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   29: ldc 72
+    //   31: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: iload_1
+    //   35: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 89	ved:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: return
+    //   47: aload_0
+    //   48: getfield 29	sut:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;
+    //   51: invokevirtual 92	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	()I
+    //   54: istore_2
+    //   55: aload_0
+    //   56: getfield 29	sut:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;
+    //   59: invokevirtual 95	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	()Lsui;
+    //   62: astore 4
+    //   64: aload_3
+    //   65: invokevirtual 98	com/tencent/biz/qqstory/base/preload/PreloadQueue:clearAllTask	()V
+    //   68: ldc 67
+    //   70: new 69	java/lang/StringBuilder
+    //   73: dup
+    //   74: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   77: ldc 100
+    //   79: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: iload_1
+    //   83: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   86: ldc 102
+    //   88: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: iload_2
+    //   92: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 105	ved:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: iload_2
+    //   102: iload_1
+    //   103: if_icmpne -59 -> 44
+    //   106: aload_0
+    //   107: getfield 29	sut:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;
+    //   110: aload 4
+    //   112: invokevirtual 108	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	(Lsui;)V
+    //   115: goto -71 -> 44
+    //   118: astore_3
+    //   119: aload_0
+    //   120: monitorexit
+    //   121: aload_3
+    //   122: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	123	0	this	sut
+    //   0	123	1	paramInt	int
+    //   54	50	2	i	int
+    //   15	50	3	localPreloadQueue	PreloadQueue
+    //   118	4	3	localObject	Object
+    //   62	49	4	localsui	sui
+    // Exception table:
+    //   from	to	target	type
+    //   2	16	118	finally
+    //   20	44	118	finally
+    //   47	101	118	finally
+    //   106	115	118	finally
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangRunnable = new PreloadDownloaderManager.1(this);
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
+  }
+  
+  public void a(List<sui> paramList, int paramInt, boolean paramBoolean)
+  {
+    if (paramList == null) {}
+    PreloadQueue localPreloadQueue;
+    for (;;)
     {
-      break label14;
-      do
+      return;
+      try
       {
-        return;
-      } while (!TextUtils.equals(paramString, localsus.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localsus.b)) {
-          break label136;
+        ved.d("Q.qqstory.download.preload.PreloadDownloaderManager", "setPreloadTaskList , id = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
+        localPreloadQueue = (PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        if (localPreloadQueue == null) {
+          ved.d("Q.qqstory.download.preload.PreloadDownloaderManager", "cannot find queue , id = " + paramInt);
         }
       }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
-      {
-        localsus.b = paramErrorMessage;
-        localsus.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramsul.a.containsKey("handleCallback")) || (localsus.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localsus.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label169;
-        }
-        if (this.a.jdField_a_of_type_Suu == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_Suu.a(paramString, paramsul.d, paramInt);
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Suu == null);
-    label136:
-    this.a.jdField_a_of_type_Suu.a(paramString, paramsul.d, localsus.a(), paramInt);
-  }
-  
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
-  {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramsul);
-    a(paramString, paramInt1, new ErrorMessage(), paramsul);
-  }
-  
-  public void b(String paramString, int paramInt, sul paramsul)
-  {
-    super.b(paramString, paramInt, paramsul);
-    if ((this.a.jdField_a_of_type_Suu != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_Suu.b(paramString, paramsul.d, paramInt);
+      finally {}
     }
+    sui localsui2 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+    if (paramList.size() == 0) {}
+    for (sui localsui1 = null;; localsui1 = (sui)paramList.get(0))
+    {
+      localPreloadQueue.clearAllTask();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localPreloadQueue.addTask((sui)paramList.next(), false);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a() > paramInt)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+      paramBoolean = true;
+    }
+    for (;;)
+    {
+      boolean bool = paramBoolean;
+      if (localsui2 != null)
+      {
+        bool = paramBoolean;
+        if (localsui1 != null)
+        {
+          bool = paramBoolean;
+          if (localsui1.equals(localsui2)) {
+            bool = false;
+          }
+        }
+      }
+      if (!bool) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localsui2);
+      break;
+    }
+  }
+  
+  public void a(sum paramsum)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(paramsum);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaLangRunnable == null) && (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a());
+  }
+  
+  public void b()
+  {
+    a(10L);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    {
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
   }
 }
 

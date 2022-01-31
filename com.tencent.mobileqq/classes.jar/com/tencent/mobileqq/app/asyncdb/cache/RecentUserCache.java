@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import adie;
-import ahjz;
-import ahnn;
-import ahop;
-import ajsf;
+import adic;
+import ahjx;
+import ahnl;
+import ahon;
+import ajsd;
+import akkq;
 import akkr;
-import akks;
-import akkv;
-import akpc;
-import akpt;
-import akpy;
+import akku;
+import akpb;
+import akps;
+import akpx;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
-import aukm;
-import aukn;
 import auko;
-import aver;
-import awzw;
-import axaa;
-import ayfv;
-import bdto;
-import bhvh;
+import aukp;
+import aukq;
+import avet;
+import awzy;
+import axac;
+import ayfx;
+import bduf;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,22 +41,22 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import sgj;
+import sgg;
 
 public class RecentUserCache
-  extends akks
+  extends akkr
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  Comparator<aukm> jdField_a_of_type_JavaUtilComparator = new akkv(true);
-  Comparator<aukm> b;
-  protected ConcurrentHashMap<String, ConcurrentHashMap<String, aukm>> b;
+  Comparator<auko> jdField_a_of_type_JavaUtilComparator = new akku(true);
+  Comparator<auko> b;
+  protected ConcurrentHashMap<String, ConcurrentHashMap<String, auko>> b;
   private ConcurrentHashMap<String, Long> c = new ConcurrentHashMap(64);
   
-  public RecentUserCache(QQAppInterface paramQQAppInterface, akkr paramakkr)
+  public RecentUserCache(QQAppInterface paramQQAppInterface, akkq paramakkq)
   {
-    super(paramQQAppInterface, paramakkr, RecentUser.class);
+    super(paramQQAppInterface, paramakkq, RecentUser.class);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(64);
-    this.jdField_b_of_type_JavaUtilComparator = new akkv(false);
+    this.jdField_b_of_type_JavaUtilComparator = new akku(false);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new RecentUserCache.CacheMap(this, null);
     d();
   }
@@ -104,11 +104,11 @@ public class RecentUserCache
     {
       RecentUser localRecentUser = (RecentUser)localIterator.next();
       if (localRecentUser != null) {
-        if ((localObject1 == null) && (ajsf.G.equals(localRecentUser.uin)))
+        if ((localObject1 == null) && (ajsd.G.equals(localRecentUser.uin)))
         {
           localObject1 = localRecentUser;
         }
-        else if ((localObject2 == null) && ((ajsf.D.equals(localRecentUser.uin)) || (4000 == localRecentUser.getType())))
+        else if ((localObject2 == null) && ((ajsd.D.equals(localRecentUser.uin)) || (4000 == localRecentUser.getType())))
         {
           if ((localRecentUser.msg == null) && (localRecentUser.msgData != null)) {
             localRecentUser.doParse();
@@ -117,7 +117,7 @@ public class RecentUserCache
             localObject2 = localRecentUser;
           }
         }
-        else if ((localObject3 == null) && (ajsf.T.equals(localRecentUser.uin)))
+        else if ((localObject3 == null) && (ajsd.T.equals(localRecentUser.uin)))
         {
           localObject3 = localRecentUser;
         }
@@ -139,7 +139,7 @@ public class RecentUserCache
   
   private void c(RecentUser paramRecentUser, boolean paramBoolean)
   {
-    String str = ahnn.a(paramRecentUser.uin, paramRecentUser.getType());
+    String str = ahnl.a(paramRecentUser.uin, paramRecentUser.getType());
     long l = Math.max(Math.max(paramRecentUser.opTime, paramRecentUser.showUpTime), Math.max(paramRecentUser.lastmsgtime, paramRecentUser.lastmsgdrafttime));
     if ((!paramBoolean) && (this.c.containsKey(str)) && (((Long)this.c.get(str)).longValue() >= l))
     {
@@ -212,14 +212,14 @@ public class RecentUserCache
       while (localIterator.hasNext())
       {
         RecentUser localRecentUser = (RecentUser)((Map.Entry)localIterator.next()).getValue();
-        if ((!bhvh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (localRecentUser.getType() == 7220))
+        if ((!bhvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (localRecentUser.getType() == 7220))
         {
           localIterator.remove();
           if (QLog.isColorLevel()) {
             QLog.d("Q.db.Cache.RecentUserCache", 2, "remove kandian merge");
           }
         }
-        if ((bhvh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (((localRecentUser.getType() == 1008) && (TextUtils.equals(localRecentUser.uin, ajsf.az))) || (localRecentUser.getType() == 7210)))
+        if ((bhvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (((localRecentUser.getType() == 1008) && (TextUtils.equals(localRecentUser.uin, ajsd.az))) || (localRecentUser.getType() == 7210)))
         {
           localIterator.remove();
           if (QLog.isColorLevel()) {
@@ -230,7 +230,7 @@ public class RecentUserCache
     }
   }
   
-  public axaa a(String paramString, int paramInt)
+  public axac a(String paramString, int paramInt)
   {
     ArrayList localArrayList;
     Object localObject;
@@ -266,7 +266,7 @@ public class RecentUserCache
           break;
         }
         localObject = (RecentUser)paramString.next();
-      } while (l - ((RecentUser)localObject).lastmsgtime <= awzw.b);
+      } while (l - ((RecentUser)localObject).lastmsgtime <= awzy.b);
     }
     for (paramInt = localArrayList.indexOf(localObject) + 1;; paramInt = -1)
     {
@@ -275,7 +275,7 @@ public class RecentUserCache
       }
       for (;;)
       {
-        paramString = new axaa();
+        paramString = new axac();
         paramString.a = i;
         paramString.b = paramInt;
         paramString.c = localArrayList.size();
@@ -311,10 +311,10 @@ public class RecentUserCache
     return localRecentUser;
   }
   
-  public String a(aukm paramaukm)
+  public String a(auko paramauko)
   {
-    paramaukm = (RecentUser)paramaukm;
-    return paramaukm.uin + "&" + paramaukm.getType();
+    paramauko = (RecentUser)paramauko;
+    return paramauko.uin + "&" + paramauko.getType();
   }
   
   public List<RecentUser> a()
@@ -376,9 +376,9 @@ public class RecentUserCache
         }
         localRecentUser = (RecentUser)((Map.Entry)localIterator.next()).getValue();
         localRecentUser.parse();
-        if ((TextUtils.equals(localRecentUser.uin, ajsf.az)) || (TextUtils.equals(localRecentUser.uin, ajsf.ac)))
+        if ((TextUtils.equals(localRecentUser.uin, ajsd.az)) || (TextUtils.equals(localRecentUser.uin, ajsd.ac)))
         {
-          if (!bhvh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+          if (!bhvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
             break label479;
           }
           bool = false;
@@ -388,7 +388,7 @@ public class RecentUserCache
           localArrayList.add(localRecentUser);
           continue;
         }
-        if (!TextUtils.equals(localRecentUser.uin, ajsf.aA)) {
+        if (!TextUtils.equals(localRecentUser.uin, ajsd.aA)) {
           break label171;
         }
       }
@@ -402,13 +402,13 @@ public class RecentUserCache
       boolean bool = false;
       continue;
       label171:
-      if (TextUtils.equals(localRecentUser.uin, ajsf.aQ))
+      if (TextUtils.equals(localRecentUser.uin, ajsd.aQ))
       {
         bool = false;
       }
       else
       {
-        if (TextUtils.equals(localRecentUser.uin, ajsf.D))
+        if (TextUtils.equals(localRecentUser.uin, ajsd.D))
         {
           if (paramBoolean2) {
             bool = false;
@@ -416,26 +416,26 @@ public class RecentUserCache
         }
         else
         {
-          if (TextUtils.equals(localRecentUser.uin, ajsf.aO))
+          if (TextUtils.equals(localRecentUser.uin, ajsd.aO))
           {
-            if (!ayfv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+            if (!ayfx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
               bool = false;
             }
           }
-          else if ((TextUtils.equals(localRecentUser.uin, ajsf.aQ)) || (TextUtils.equals(localRecentUser.uin, ajsf.aR)))
+          else if ((TextUtils.equals(localRecentUser.uin, ajsd.aQ)) || (TextUtils.equals(localRecentUser.uin, ajsd.aR)))
           {
-            if (!bhvh.c(localRecentUser.uin)) {
+            if (!bhvy.c(localRecentUser.uin)) {
               bool = false;
             }
           }
           else
           {
-            if (TextUtils.equals(ajsf.H, localRecentUser.uin))
+            if (TextUtils.equals(ajsd.H, localRecentUser.uin))
             {
               bool = false;
               continue;
             }
-            if (TextUtils.equals(ajsf.aS, localRecentUser.uin))
+            if (TextUtils.equals(ajsd.aS, localRecentUser.uin))
             {
               if (!LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser)) {
                 bool = false;
@@ -445,7 +445,7 @@ public class RecentUserCache
             {
               if (localRecentUser.getType() == 1038)
               {
-                bool = ahjz.a(false);
+                bool = ahjx.a(false);
                 continue;
               }
               if (localRecentUser.isHiddenChat == 1)
@@ -453,7 +453,7 @@ public class RecentUserCache
                 bool = false;
                 continue;
               }
-              if (TextUtils.equals(ajsf.aT, localRecentUser.uin))
+              if (TextUtils.equals(ajsd.aT, localRecentUser.uin))
               {
                 bool = false;
                 continue;
@@ -513,14 +513,14 @@ public class RecentUserCache
         QLog.d("Q.db.Cache.RecentUserCache", 2, "saveRecentUser user: " + paramRecentUser.uin + " type " + paramRecentUser.getType() + " msgType " + paramRecentUser.msgType);
       }
     } while (paramRecentUser.getType() == 1036);
-    if (akpt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin, paramRecentUser.getType()))
+    if (akps.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin, paramRecentUser.getType()))
     {
       QLog.d("Q.db.Cache.RecentUserCache", 1, "find save invalid user:" + paramRecentUser.uin + " type:" + paramRecentUser.getType(), new RuntimeException("invalid user"));
-      akpt.a(paramRecentUser.uin);
+      akps.a(paramRecentUser.uin);
     }
     if ((paramRecentUser.getType() == 1) || (paramRecentUser.getType() == 0))
     {
-      boolean bool = adie.a(paramRecentUser.uin, paramRecentUser.getType(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      boolean bool = adic.a(paramRecentUser.uin, paramRecentUser.getType(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("Q.db.Cache.RecentUserCache", 2, "saveRecentUser user: " + paramRecentUser.uin + " type " + paramRecentUser.getType() + " isHidden " + bool + " user.isHiddenChat=" + paramRecentUser.isHiddenChat);
       }
@@ -553,11 +553,11 @@ public class RecentUserCache
       if (paramRecentUser.getType() == 7000) {
         break label742;
       }
-      if (bdto.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin)) {
+      if (bduf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin)) {
         paramRecentUser.setType(1024);
       }
       localArrayList = new ArrayList();
-      localObject = akpy.q;
+      localObject = akpx.q;
       j = localObject.length;
       i = 0;
       while (i < j)
@@ -604,7 +604,7 @@ public class RecentUserCache
           paramRecentUser = (RecentUser)localObject;
           continue;
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localArrayList.get(i));
-          this.jdField_a_of_type_Akkr.a((aukm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localArrayList.get(i)), 2, 0, null);
+          this.jdField_a_of_type_Akkq.a((auko)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localArrayList.get(i)), 2, 0, null);
         }
       }
     }
@@ -612,7 +612,7 @@ public class RecentUserCache
     {
       localObject = paramRecentUser;
     }
-    aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecentUser)localObject).uin, ((RecentUser)localObject).getType());
+    avet.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((RecentUser)localObject).uin, ((RecentUser)localObject).getType());
     label742:
     a((RecentUser)localObject);
     if ((((RecentUser)localObject).getType() == 7220) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(localObject)))
@@ -628,8 +628,8 @@ public class RecentUserCache
     for (long l = System.currentTimeMillis() / 1000L;; l = 0L)
     {
       ((RecentUser)localObject).showUpTime = l;
-      a((aukm)localObject);
-      if ((((RecentUser)localObject).isHiddenChat != 0) || (!ahop.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+      a((auko)localObject);
+      if ((((RecentUser)localObject).isHiddenChat != 0) || (!ahon.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
         break;
       }
       try
@@ -670,7 +670,7 @@ public class RecentUserCache
   
   public void a(String paramString, boolean paramBoolean)
   {
-    int[] arrayOfInt = akpy.q;
+    int[] arrayOfInt = akpx.q;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -684,7 +684,7 @@ public class RecentUserCache
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType(), 0);
         }
         ((RecentUser)localObject).setType(k);
-        c((aukm)localObject);
+        c((auko)localObject);
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "delRecentUser user: " + a(((RecentUser)localObject).uin) + " type " + ((RecentUser)localObject).getType() + " msgType " + ((RecentUser)localObject).msgType);
         }
@@ -795,14 +795,14 @@ public class RecentUserCache
   
   protected void d()
   {
-    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     Object localObject1;
     Object localObject2;
-    if (sgj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (sgg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
-      localObject1 = ajsf.ay;
+      localObject1 = ajsd.ay;
       localObject2 = Integer.toString(150);
-      localObject1 = localaukn.a(RecentUser.class, false, "uin!=?", new String[] { localObject1 }, null, null, "showUpTime desc, lastmsgtime desc", (String)localObject2);
+      localObject1 = localaukp.a(RecentUser.class, false, "uin!=?", new String[] { localObject1 }, null, null, "showUpTime desc, lastmsgtime desc", (String)localObject2);
     }
     Object localObject3;
     for (;;)
@@ -810,7 +810,7 @@ public class RecentUserCache
       if (localObject1 == null)
       {
         localObject2 = RecentUser.class.getSimpleName();
-        localObject1 = localaukn.a(RecentUser.class, (String)localObject2, false, null, null, null, null, "showUpTime desc, lastmsgtime desc", Integer.toString(150));
+        localObject1 = localaukp.a(RecentUser.class, (String)localObject2, false, null, null, null, null, "showUpTime desc, lastmsgtime desc", Integer.toString(150));
         if (localObject1 != null)
         {
           localObject3 = ((List)localObject1).iterator();
@@ -823,11 +823,11 @@ public class RecentUserCache
               localRecentUser.setId(-1L);
               a(localRecentUser, 2, null);
               continue;
-              localObject1 = localaukn.a(RecentUser.class, false, null, null, null, null, "showUpTime desc, lastmsgtime desc", Integer.toString(150));
+              localObject1 = localaukp.a(RecentUser.class, false, null, null, null, null, "showUpTime desc, lastmsgtime desc", Integer.toString(150));
               break;
             }
           }
-          localaukn.a((String)localObject2);
+          localaukp.a((String)localObject2);
         }
       }
     }
@@ -835,7 +835,7 @@ public class RecentUserCache
     label536:
     for (;;)
     {
-      localaukn.a();
+      localaukp.a();
       a((List)localObject1);
       Collections.sort((List)localObject1, this.jdField_a_of_type_JavaUtilComparator);
       localObject1 = ((List)localObject1).iterator();
@@ -848,7 +848,7 @@ public class RecentUserCache
           }
           localObject2 = (RecentUser)((Iterator)localObject1).next();
           a((RecentUser)localObject2);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a((aukm)localObject2), localObject2);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a((auko)localObject2), localObject2);
           continue;
           localObject1 = new ArrayList(20);
           break;
@@ -860,7 +860,7 @@ public class RecentUserCache
           {
             localObject2 = new RecentUser().getTableName();
             localObject3 = (RecentUser)((List)localObject1).get(140);
-            bool = localaukn.b("delete from " + (String)localObject2 + " where showUpTime < " + ((RecentUser)localObject3).showUpTime + " or showUpTime = " + ((RecentUser)localObject3).showUpTime + " and max(lastmsgtime, lastmsgdrafttime) < " + Math.max(((RecentUser)localObject3).lastmsgtime, ((RecentUser)localObject3).lastmsgdrafttime) + "; ");
+            bool = localaukp.b("delete from " + (String)localObject2 + " where showUpTime < " + ((RecentUser)localObject3).showUpTime + " or showUpTime = " + ((RecentUser)localObject3).showUpTime + " and max(lastmsgtime, lastmsgdrafttime) < " + Math.max(((RecentUser)localObject3).lastmsgtime, ((RecentUser)localObject3).lastmsgdrafttime) + "; ");
             if (!bool) {
               break label529;
             }

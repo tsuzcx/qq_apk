@@ -1,17 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class adzl
-  implements bcmw
+  implements bcwm
 {
-  adzl(adzh paramadzh, adzr paramadzr) {}
+  adzl(adzf paramadzf, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Adzf.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+      axdq.jdField_a_of_type_Boolean = true;
     }
+    while ((paramInt != 3) && (paramInt != 1)) {
+      return;
+    }
+    axdq.jdField_a_of_type_Long = 0L;
   }
 }
 

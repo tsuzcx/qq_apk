@@ -1,14 +1,6 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.tmassistant.common.jce.StatItem;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 class bdet
   extends Handler
@@ -20,68 +12,22 @@ class bdet
   
   public void handleMessage(Message paramMessage)
   {
-    int i;
-    Object localObject2;
-    if (paramMessage.what == 1)
+    switch (paramMessage.what)
     {
-      localObject1 = bdes.a(this.a).keySet();
-      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
-      {
-        paramMessage = new ArrayList();
-        localObject1 = ((Set)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          i = ((Integer)((Iterator)localObject1).next()).intValue();
-          localObject2 = new StatItem();
-          ((StatItem)localObject2).type = i;
-          ((StatItem)localObject2).records = ((ArrayList)bdes.a(this.a).get(Integer.valueOf(i)));
-          paramMessage.add(localObject2);
-        }
-        bdes.a(this.a).clear();
-        if (paramMessage.size() > 0)
-        {
-          i = bdes.a(this.a).a(paramMessage);
-          bdes.a(this.a).put(i, paramMessage);
-        }
-      }
     }
-    while (paramMessage.what != 2) {
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
-    }
-    Object localObject1 = bdef.a().a();
-    paramMessage = new ArrayList();
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      i = ((Integer)((Iterator)localObject1).next()).intValue();
-      Object localObject3 = bdef.a().a(String.valueOf(i));
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
+      bdes localbdes = this.a;
+      if (paramMessage.obj == null) {}
+      for (String str = null;; str = (String)paramMessage.obj)
       {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
-          try
-          {
-            ((ArrayList)localObject2).add((String)localSerializable);
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
+        localbdes.a(str);
+        break;
       }
-      if (((ArrayList)localObject2).size() > 0) {
-        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
-      }
+      this.a.a();
     }
-    if (paramMessage.size() > 0)
-    {
-      i = bdes.a(this.a).a(paramMessage);
-      bdes.b(this.a).put(i, paramMessage);
-    }
-    bdes.a(this.a).sendEmptyMessageDelayed(2, bdes.a(this.a));
   }
 }
 

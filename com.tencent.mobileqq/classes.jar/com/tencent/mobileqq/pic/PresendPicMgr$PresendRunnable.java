@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.pic;
 
-import aune;
-import auog;
+import aung;
+import auoi;
 
 class PresendPicMgr$PresendRunnable
   implements Runnable
 {
-  private auog a;
+  private auoi a;
   
-  public PresendPicMgr$PresendRunnable(PresendPicMgr paramPresendPicMgr, auog paramauog)
+  public PresendPicMgr$PresendRunnable(PresendPicMgr paramPresendPicMgr, auoi paramauoi)
   {
-    this.a = paramauog;
+    this.a = paramauoi;
   }
   
   public void run()
   {
-    aune.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
+    aung.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
     this.a.a();
   }
 }

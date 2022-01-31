@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
 public class arvy
   implements DialogInterface.OnClickListener
 {
-  public arvy(LocationDialogUtil.6 param6) {}
+  public arvy(LocationDialogUtil.5 param5) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arvk.a(this.a.b, "0X800A76A");
+    this.a.a.finish();
   }
 }
 

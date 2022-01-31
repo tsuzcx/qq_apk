@@ -1,30 +1,112 @@
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class bane
-  extends Handler
+  implements Manager
 {
-  public bane(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
+  protected Handler a;
+  QQAppInterface a;
+  public Map<String, Integer> a;
+  
+  public bane(QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    b();
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a(String paramString)
   {
-    if ((AvatarWallViewPager.a(this.a)) || (!AvatarWallViewPager.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
+    paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramString));
+    if (paramString != null) {
+      return paramString.intValue();
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    Object localObject = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
+        ((StringBuilder)localObject).append(str).append(";");
+      }
+    }
+    if (((StringBuilder)localObject).length() > 0)
+    {
+      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1).toString();
+      bbax.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", (String)localObject);
       return;
     }
-    paramMessage = this.a;
-    paramMessage.b += 1;
-    this.a.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+    bbax.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", "");
   }
+  
+  public void a(long paramLong)
+  {
+    int j = 0;
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
+    if (localInteger != null) {}
+    for (int i = localInteger.intValue();; i = 0)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramLong);
+      if ((bool) && (i == 0)) {
+        j = 1;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
+        if (j != i) {
+          a();
+        }
+        return;
+        if (bool) {
+          j = i;
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (a(paramString) == 1)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(2));
+      a();
+    }
+  }
+  
+  public void b()
+  {
+    Object localObject = bbax.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(";");
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < localObject.length)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(localObject[i], Integer.valueOf(1));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

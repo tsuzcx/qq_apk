@@ -1,85 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class anbi
+  extends ampa<anbh>
 {
-  private boolean a;
-  private boolean b;
-  
-  public static anbi a(ampi[] paramArrayOfampi)
+  public static anbh a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      return null;
-    }
-    anbi localanbi = new anbi();
-    ArrayList localArrayList = new ArrayList();
-    int j = paramArrayOfampi.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(paramArrayOfampi[i].a);
-      i += 1;
-    }
-    if (localArrayList.size() > 0)
-    {
-      paramArrayOfampi = new HashMap();
-      i = 0;
-      if (i < localArrayList.size())
-      {
-        Object localObject = (String)localArrayList.get(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs |type: 294,content: " + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((String)localObject).split("=");
-          if (localObject.length == 2)
-          {
-            if (!TextUtils.isEmpty(localObject[1])) {
-              localObject[1] = localObject[1].trim();
-            }
-            paramArrayOfampi.put(localObject[0], localObject[1]);
-            if (QLog.isColorLevel()) {
-              QLog.i("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd, name=" + localObject[0] + ", val=" + localObject[1]);
-            }
-          }
-        }
-      }
-      localanbi.a = "1".equals(paramArrayOfampi.get("enable_tencent_docs_assistant"));
-      localanbi.b = "1".equals(paramArrayOfampi.get("preload_tool_process"));
-      paramArrayOfampi = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramArrayOfampi instanceof QQAppInterface))
-      {
-        paramArrayOfampi = (QQAppInterface)paramArrayOfampi;
-        ayfv.b(paramArrayOfampi, localanbi.b);
-        ayfv.a(paramArrayOfampi, localanbi.a);
-      }
-    }
-    for (;;)
-    {
-      return localanbi;
-      if (QLog.isColorLevel()) {
-        QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs|type: 294,content_list is empty ");
-      }
-    }
+    return (anbh)ampl.a().a(521);
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.a;
+    return 521;
+  }
+  
+  @NonNull
+  public anbh a(int paramInt)
+  {
+    return new anbh();
+  }
+  
+  @Nullable
+  public anbh a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return anbh.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<anbh> a()
+  {
+    return anbh.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(anbh paramanbh) {}
+  
+  public int b()
+  {
+    return 0;
   }
   
   public boolean b()
   {
-    return this.b;
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

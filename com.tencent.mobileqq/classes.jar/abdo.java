@@ -1,85 +1,38 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.util.Pair;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.1;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import java.util.ArrayList;
 
 public class abdo
-  extends ajtq
+  extends bblk
 {
-  public abdo(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public abdo(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_Auuw != null) && (this.a.jdField_a_of_type_Auuw.a != null) && (this.a.jdField_a_of_type_Auuw.a.a != null) && (paramString.equals(this.a.jdField_a_of_type_Auuw.a.a))) {
-      if ((paramBoolean1) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(paramBoolean2);
-      }
-    }
-    for (;;)
-    {
-      QLog.d("FriendProfileCardActivity", 2, " isSuccess" + paramBoolean1 + " isAllow" + paramBoolean2);
-      return;
-      QLog.e("FriendProfileCardActivity", 2, "onGetAllowSeeLoginDays uin empty");
-    }
+    super(paramInt);
   }
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    for (;;)
+    Intent localIntent = new Intent(this.a, CardPicGalleryActivity.class);
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
+      localIntent.putExtra("extra_default", 2130844897);
+    }
+    localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
+    localIntent.putExtra("extra_mode", 2);
+    localIntent.putExtra("is_from_mine_profile", true);
+    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
+    for (int i = this.a.jdField_a_of_type_Auuy.a.defaultCardId;; i = 0)
     {
-      try
-      {
-        if (this.a.isFinishing()) {
-          break;
-        }
-        this.a.jdField_b_of_type_Bfnk.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
-        this.a.B();
-        if ((!paramBoolean) || (paramObject == null)) {
-          break;
-        }
-        if ((paramObject instanceof Card))
-        {
-          ThreadManager.post(new FriendProfileCardActivity.12.1(this, (Card)paramObject), 5, null, true);
-          return;
-        }
-        if (!(paramObject instanceof Pair)) {
-          break;
-        }
-        paramObject = (Pair)paramObject;
-        if (((Integer)paramObject.first).intValue() == 101107)
-        {
-          this.a.d = 1;
-          this.a.C();
-          return;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-      if (((Integer)paramObject.first).intValue() == 101108)
-      {
-        this.a.d = 2;
-      }
-      else if (((Integer)paramObject.first).intValue() == 101111)
-      {
-        this.a.d = 3;
-      }
-      else if (((Integer)paramObject.first).intValue() == 12002)
-      {
-        this.a.d = 4;
-      }
-      else
-      {
-        this.a.d = 5;
-        this.a.a((SSummaryCardRsp)paramObject.second);
-      }
+      localIntent.putExtra("default_card_id", i);
+      this.a.startActivity(localIntent);
+      this.a.overridePendingTransition(2130772287, 0);
+      this.a.b(1);
+      return;
     }
   }
 }

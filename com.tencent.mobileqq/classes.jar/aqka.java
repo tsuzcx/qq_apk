@@ -1,19 +1,4 @@
-public abstract interface aqka
-{
-  public abstract String a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void aS_();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
-}
+public abstract interface aqka {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

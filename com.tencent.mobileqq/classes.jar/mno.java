@@ -1,6 +1,16 @@
 public abstract interface mno
 {
-  public abstract void e(int paramInt);
+  public abstract void a(int paramInt, Throwable paramThrowable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

@@ -1,23 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ovp
-  implements bfpc
+  extends osm
 {
-  public ovp(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
+  public ovp(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    if (paramInt <= 0) {}
-    do
-    {
-      return;
-      paramAdapterView = (pcp)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
-    } while (paramAdapterView.a != 2);
-    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
+    }
+    if (paramInt1 == 0) {
+      this.a.a(paramInt2, paramInt3, paramBoolean);
+    }
   }
 }
 

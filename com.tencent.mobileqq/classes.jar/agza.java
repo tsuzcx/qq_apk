@@ -1,37 +1,89 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class agza
-  extends RecyclerView.ItemDecoration
 {
-  private int a;
-  private int b;
-  
-  private agza(int paramInt1, int paramInt2)
+  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    int i = paramInt;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
+      return i;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramInt;
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
   {
-    int i = paramRecyclerView.getChildPosition(paramView);
-    if (i == 0)
-    {
-      paramRect.left = this.a;
-      return;
+    String str = paramString;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
     }
-    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    try
     {
-      paramRect.left = this.b;
-      paramRect.right = this.a;
-      return;
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
+      return str;
     }
-    paramRect.left = this.b;
+    catch (Throwable paramJSONObject) {}
+    return paramString;
+  }
+  
+  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONArray localJSONArray = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONArray;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONObject localJSONObject = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONObject;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
   }
 }
 

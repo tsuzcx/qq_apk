@@ -1,212 +1,259 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bepr
-  extends bepn
+class bepr
+  implements bepp
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private bepv jdField_a_of_type_Bepv;
-  public boolean a;
-  private int b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  private IBinder a;
   
-  public bepr(bepv parambepv)
+  bepr(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bepv = parambepv;
+    this.a = paramIBinder;
   }
   
-  public void a(bepm parambepm)
+  public Bundle a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (parambepm == null) {}
-    MiniAppInfo localMiniAppInfo;
-    label86:
-    label223:
-    do
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
     {
-      begw localbegw;
-      Object localObject;
-      int j;
-      do
+      try
       {
-        do
+        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
+        localParcel1.writeString(paramString1);
+        localParcel1.writeString(paramString2);
+        if (paramBundle != null)
         {
-          do
+          localParcel1.writeInt(1);
+          paramBundle.writeToParcel(localParcel1, 0);
+          this.a.transact(6, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
           {
-            do
-            {
-              return;
-              besl.b("minisdk-start_RuntimeState", "onStateChange message:" + parambepm.jdField_a_of_type_Int);
-              localbegw = this.jdField_a_of_type_Bepv.getRuntime();
-              localMiniAppInfo = this.jdField_a_of_type_Bepv.getMiniAppInfo();
-              if (localMiniAppInfo != null)
-              {
-                i = localMiniAppInfo.getReportType();
-                if ((localbegw == null) || (localbegw.a() == null)) {
-                  break label296;
-                }
-                localObject = localbegw.a().a();
-              }
-              switch (parambepm.jdField_a_of_type_Int)
-              {
-              default: 
-                return;
-              case 1: 
-                this.jdField_a_of_type_Long = System.currentTimeMillis();
-                if (localMiniAppInfo != null)
-                {
-                  parambepm = localMiniAppInfo.appId;
-                  if (localMiniAppInfo == null) {
-                    break label308;
-                  }
-                }
-                for (localObject = localMiniAppInfo.name;; localObject = "")
-                {
-                  besl.b("minisdk-start_RuntimeState", "[" + parambepm + "][" + (String)localObject + "] 启动(MiniActivity onCreate)");
-                  beyr.a(localMiniAppInfo, 24, String.valueOf(i));
-                  this.jdField_a_of_type_Int = 0;
-                  return;
-                  i = 0;
-                  break;
-                  localObject = null;
-                  break label86;
-                  parambepm = "";
-                  break label223;
-                }
-              }
-            } while (!this.jdField_a_of_type_Boolean);
-            this.jdField_b_of_type_Boolean = true;
-            return;
-            this.jdField_a_of_type_Int = 1;
-            localObject = new StringBuilder().append("--- report load appid:");
-            if (localMiniAppInfo != null) {}
-            for (parambepm = localMiniAppInfo.appId;; parambepm = Integer.valueOf(0))
-            {
-              besl.b("minisdk-start_RuntimeState", parambepm);
-              bexz.a("2load", null, null, localMiniAppInfo);
-              return;
-            }
-            this.jdField_a_of_type_Int = 2;
-          } while (this.d);
-          this.d = true;
-          long l1;
-          long l2;
-          if ((localbegw != null) && (localMiniAppInfo != null))
-          {
-            besl.b("minisdk-start_RuntimeState", "--- report show firstframe appid:" + localMiniAppInfo.appId);
-            bexz.a("2launch", "first_frame", (String)localObject, localMiniAppInfo);
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              break label564;
-            }
-            parambepm = localMiniAppInfo.launchParam.c;
-            beyr.a(localMiniAppInfo, 21, parambepm, null, null, 0);
-            l1 = System.currentTimeMillis();
-            l2 = this.jdField_a_of_type_Long;
-            j = this.jdField_b_of_type_Int;
-            if (i != 0) {
-              break label570;
-            }
+            paramString1 = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
+            return paramString1;
           }
-          for (parambepm = "0";; parambepm = "1")
-          {
-            beyr.a(localMiniAppInfo, 1043, null, null, null, j, parambepm, l1 - l2, null);
-            if ((!this.c) || (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())) {
-              break;
-            }
-            bemw.a(MiniAppEnv.g().getContext(), "进入native小程序,仅debug可见", 0).a();
-            return;
-            parambepm = (bepm)localObject;
-            break label473;
-          }
-        } while (localMiniAppInfo == null);
-        besl.b("minisdk-start_RuntimeState", "--- report bring_to_front appid:" + localMiniAppInfo.appId);
-        bexz.a("2show", "bring_to_front", (String)localObject, localMiniAppInfo);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        for (parambepm = localMiniAppInfo.launchParam.c;; parambepm = (bepm)localObject)
+        }
+        else
         {
-          beyr.a(localMiniAppInfo, 1, parambepm, null, null, 0);
-          if (localbegw == null) {
-            break;
-          }
-          besl.b("minisdk-start_RuntimeState", "--- report click_resume appid:" + localMiniAppInfo.appId);
-          bexz.a("2launch", "click_resume", (String)localObject, localMiniAppInfo);
-          beyr.a(localMiniAppInfo, 21, parambepm, null, null, 0);
-          return;
-        }
-      } while (localMiniAppInfo == null);
-      besl.b("minisdk-start_RuntimeState", "--- report launch fail appid:" + localMiniAppInfo.appId);
-      bexz.a("2launch_fail", "flutter_sdk_fail", (String)localObject, localMiniAppInfo);
-      return;
-      bexz.a("2close", "loading_page", null, localMiniAppInfo);
-      return;
-      bexz.a("2close", "inner_page", (String)localObject, localMiniAppInfo);
-      if ((this.jdField_a_of_type_Bepv.isLoadSucceed()) && (localbegw != null) && (localbegw.e()))
-      {
-        beyr.a(localMiniAppInfo, 1025, "1");
-        return;
-      }
-      beyr.a(localMiniAppInfo, 1026, "1");
-      return;
-      bexz.a("2unload", null, (String)localObject, localMiniAppInfo);
-      return;
-      bexz.a("2hide", null, (String)localObject, localMiniAppInfo);
-      beyr.a(localMiniAppInfo, 20, "" + i);
-      return;
-      if (i == 1)
-      {
-        if (localMiniAppInfo == null) {
-          break label940;
-        }
-        if (this.jdField_a_of_type_Int != 0) {
-          break label917;
-        }
-        beyu.a(localMiniAppInfo, "1", null, "load_fail", "loading_page_back_press");
-      }
-      while (this.d)
-      {
-        bexz.a("2back_key", "inner_page", (String)localObject, localMiniAppInfo);
-        return;
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          beyu.a(localMiniAppInfo, "1", null, "show_fail", "loading_page_back_press");
+          localParcel1.writeInt(0);
           continue;
-          besl.d("minisdk-start_RuntimeState", "doOnBackPressed gameConfig=null");
         }
+        paramString1 = null;
       }
-      bexz.a("2back_key", "loading_page", (String)localObject, localMiniAppInfo);
-      return;
-      if (parambepm.jdField_a_of_type_JavaLangObject != null) {}
-      for (int i = ((Integer)parambepm.jdField_a_of_type_JavaLangObject).intValue();; i = 0)
+      finally
       {
-        j = i;
-        if (i >= 0) {
-          j = 0;
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
+        localParcel1.writeInt(paramInt);
+        localParcel1.writeString(paramString);
+        if (paramMiniAppInfo != null)
+        {
+          localParcel1.writeInt(1);
+          paramMiniAppInfo.writeToParcel(localParcel1, 0);
+          if (paramBundle != null)
+          {
+            localParcel1.writeInt(1);
+            paramBundle.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
         }
-        this.jdField_b_of_type_Int = j;
-        return;
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
       }
-      if (localMiniAppInfo == null) {
-        break;
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
-    } while ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1));
-    label296:
-    label308:
-    label473:
-    beyu.a(localMiniAppInfo, "1", null, "load_fail", "loading_page_kill");
-    label564:
-    label570:
-    bexz.a("2launch_fail", "loading_page_kill", null, localMiniAppInfo);
-    label917:
-    label940:
-    return;
-    besl.d("minisdk-start_RuntimeState", "doOnDestroy kill self gameConfig=null");
+    }
+  }
+  
+  /* Error */
+  public void a(MiniAppInfo paramMiniAppInfo)
+  {
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_1
+    //   15: ifnull +41 -> 56
+    //   18: aload_2
+    //   19: iconst_1
+    //   20: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   23: aload_1
+    //   24: aload_2
+    //   25: iconst_0
+    //   26: invokevirtual 72	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   29: aload_0
+    //   30: getfield 15	bepr:a	Landroid/os/IBinder;
+    //   33: iconst_3
+    //   34: aload_2
+    //   35: aload_3
+    //   36: iconst_0
+    //   37: invokeinterface 48 5 0
+    //   42: pop
+    //   43: aload_3
+    //   44: invokevirtual 51	android/os/Parcel:readException	()V
+    //   47: aload_3
+    //   48: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   51: aload_2
+    //   52: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   55: return
+    //   56: aload_2
+    //   57: iconst_0
+    //   58: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   61: goto -32 -> 29
+    //   64: astore_1
+    //   65: aload_3
+    //   66: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   69: aload_2
+    //   70: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   73: aload_1
+    //   74: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	75	0	this	bepr
+    //   0	75	1	paramMiniAppInfo	MiniAppInfo
+    //   3	67	2	localParcel1	Parcel
+    //   7	59	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	14	64	finally
+    //   18	29	64	finally
+    //   29	47	64	finally
+    //   56	61	64	finally
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
+        if (paramMiniAppInfo != null)
+        {
+          localParcel1.writeInt(1);
+          paramMiniAppInfo.writeToParcel(localParcel1, 0);
+          if (paramBundle != null)
+          {
+            localParcel1.writeInt(1);
+            paramBundle.writeToParcel(localParcel1, 0);
+            if (paramResultReceiver == null) {
+              break label131;
+            }
+            localParcel1.writeInt(1);
+            paramResultReceiver.writeToParcel(localParcel1, 0);
+            this.a.transact(2, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      continue;
+      label131:
+      localParcel1.writeInt(0);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, Bundle paramBundle, bepu parambepu)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
+        localParcel1.writeString(paramString1);
+        localParcel1.writeString(paramString2);
+        if (paramBundle != null)
+        {
+          localParcel1.writeInt(1);
+          paramBundle.writeToParcel(localParcel1, 0);
+          if (parambepu != null)
+          {
+            paramString1 = parambepu.asBinder();
+            localParcel1.writeStrongBinder(paramString1);
+            this.a.transact(5, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramString1 = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

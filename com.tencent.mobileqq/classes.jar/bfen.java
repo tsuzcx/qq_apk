@@ -1,26 +1,11 @@
 public class bfen
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  
-  public float a()
+  public static com.tencent.smtt.sdk.ValueCallback a(android.webkit.ValueCallback paramValueCallback)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return 0.0F;
+    if (paramValueCallback != null) {
+      return new bfeo(paramValueCallback);
     }
-    return this.jdField_a_of_type_Float / this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float += paramFloat;
-    this.jdField_a_of_type_Int += 1;
+    return null;
   }
 }
 

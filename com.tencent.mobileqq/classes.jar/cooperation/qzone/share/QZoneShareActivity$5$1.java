@@ -1,17 +1,17 @@
 package cooperation.qzone.share;
 
-import bcpw;
-import bhll;
+import bcql;
+import bhmc;
 
 public class QZoneShareActivity$5$1
   implements Runnable
 {
-  public QZoneShareActivity$5$1(bhll parambhll) {}
+  public QZoneShareActivity$5$1(bhmc parambhmc) {}
   
   public void run()
   {
     this.a.a.k();
-    bcpw.a(this.a.a, 1, 2131694282, 1).a();
+    bcql.a(this.a.a, 1, 2131694283, 1).a();
     this.a.a.finish();
   }
 }

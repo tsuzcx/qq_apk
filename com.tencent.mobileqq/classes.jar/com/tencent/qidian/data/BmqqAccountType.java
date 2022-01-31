@@ -1,10 +1,10 @@
 package com.tencent.qidian.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class BmqqAccountType
-  extends aukm
+  extends auko
 {
   public static final int TYPE_ACCOUNT_BMQQ_EXT = 0;
   public static final int TYPE_ACCOUNT_CRM_EXT = 2;
@@ -14,7 +14,7 @@ public class BmqqAccountType
   public static final int TYPE_ACCOUNT_QIDIAN_MAIN = 6;
   public static final int TYPE_ACCOUNT_UNKNOW = 4;
   public int mAccountType;
-  @auma
+  @aumc
   public String mUin = "";
   
   public BmqqAccountType() {}

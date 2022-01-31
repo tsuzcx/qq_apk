@@ -1,93 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amxj
-  extends ampb<amxh>
 {
-  public static amxh a()
+  private int a;
+  
+  public amxj()
   {
-    amxh localamxh2 = (amxh)ampm.a().a(583);
-    amxh localamxh1 = localamxh2;
-    if (localamxh2 == null) {
-      localamxh1 = new amxh();
-    }
-    return localamxh1;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public int a()
+  public static amxj a(amph paramamph)
   {
-    return 583;
-  }
-  
-  @NonNull
-  public amxh a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ExtendFriendBannerProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new amxh();
-  }
-  
-  @Nullable
-  public amxh a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendBannerProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
+    amxj localamxj = new amxj();
+    if (paramamph != null) {
       if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBannerProcessor", 2, "onParsed " + paramArrayOfampi.length);
-      }
-      return amxh.a(paramArrayOfampi[0]);
-    }
-    return null;
-  }
-  
-  public Class<amxh> a()
-  {
-    return amxh.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ExtendFriendBannerProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amxh paramamxh)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramamxh == null) {
-        break label43;
+        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramamph.jdField_a_of_type_Int + " content->" + paramamph.jdField_a_of_type_JavaLangString);
       }
     }
-    label43:
-    for (paramamxh = paramamxh.toString();; paramamxh = " empty")
+    try
     {
-      QLog.d("ExtendFriendBannerProcessor", 2, paramamxh);
-      return;
+      localamxj.jdField_a_of_type_Int = new JSONObject(paramamph.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
+      return localamxj;
     }
+    catch (JSONException paramamph)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramamph.toString());
+    }
+    return localamxj;
   }
   
-  public int b()
+  public boolean a()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 

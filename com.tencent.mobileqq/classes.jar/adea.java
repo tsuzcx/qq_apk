@@ -1,8 +1,11 @@
+import java.util.List;
+import java.util.Map;
+
 public abstract interface adea
 {
-  public abstract void a();
+  public abstract void a(String paramString, int paramInt, adds paramadds, List<aden> paramList, Map<Integer, Integer> paramMap);
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract boolean a(String paramString);
 }
 
 

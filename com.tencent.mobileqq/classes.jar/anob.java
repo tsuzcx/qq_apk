@@ -1,6 +1,28 @@
-public abstract interface anob
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class anob
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  anob(annz paramannz, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (annz.c(this.a));
+    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
+    this.a.onGetError(1830002);
+  }
 }
 
 

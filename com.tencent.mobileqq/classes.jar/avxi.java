@@ -1,49 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-
-class avxi
-  implements avzk
+public class avxi
 {
-  avxi(avxh paramavxh, int[] paramArrayOfInt) {}
+  public int a;
+  public long a;
+  public axkh a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
   
-  public void a()
+  public avxi()
   {
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a(String arg1)
+  public void a(avxi paramavxi)
   {
-    vel.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (avxh.a(this.jdField_a_of_type_Avxh))
-    {
-      avxh.a(this.jdField_a_of_type_Avxh, true);
-      avxh.a(this.jdField_a_of_type_Avxh).notifyAll();
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
+    if (paramavxi == null) {
+      throw new NullPointerException();
     }
+    this.jdField_a_of_type_JavaLangString = paramavxi.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Axkh = paramavxi.jdField_a_of_type_Axkh;
+    this.jdField_a_of_type_Boolean = paramavxi.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramavxi.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Boolean = paramavxi.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramavxi.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramavxi.jdField_b_of_type_Long;
+    this.c = paramavxi.c;
   }
   
-  public void a_(int paramInt, Throwable arg2)
+  public String toString()
   {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
-    }
-    for (;;)
-    {
-      vel.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      veg.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      avxh.a(this.jdField_a_of_type_Avxh, paramInt);
-      synchronized (avxh.a(this.jdField_a_of_type_Avxh))
-      {
-        avxh.a(this.jdField_a_of_type_Avxh, true);
-        avxh.a(this.jdField_a_of_type_Avxh).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
-      }
-    }
+    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
   }
-  
-  public void b() {}
 }
 
 

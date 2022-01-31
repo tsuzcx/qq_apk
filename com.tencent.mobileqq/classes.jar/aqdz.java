@@ -1,95 +1,53 @@
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.1;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class aqdz
-  extends aqdt
+  extends aqdv
 {
-  public static int a;
-  public static int b = 1;
-  private akim jdField_a_of_type_Akim = new aqea(this);
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new aqec(this);
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private aqed jdField_a_of_type_Aqed;
-  private baxk jdField_a_of_type_Baxk;
-  private baxl jdField_a_of_type_Baxl = new aqeb(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
   
-  public aqdz(bbgg parambbgg)
+  public aqdz(bbgu parambbgu)
   {
-    super(parambbgg);
-  }
-  
-  private void b(String paramString)
-  {
-    ThreadManager.getFileThreadHandler().post(new ForwardPreviewTroopMemberController.1(this, paramString));
+    super(parambbgu);
   }
   
   protected int a()
   {
-    return 380;
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bbgu.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296975)) / bbll.a));
+    }
+    return this.jdField_a_of_type_Int;
   }
   
   protected View a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null)
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      int i = actn.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.rightMargin = i;
-      localLayoutParams.leftMargin = i;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558888, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377045));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new aqea(this));
+    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    QLog.i("Forward.Preview.Dialog", 1, "bindData title: " + paramString1 + " uin: " + paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramQQAppInterface = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardPreviewTextController", 2, " bindData ");
     }
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface;
-    a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
-    this.jdField_a_of_type_Baxk = new baxk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Baxk.a(this.jdField_a_of_type_Baxl);
-    this.jdField_a_of_type_Aqed = new aqed(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Baxk);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aqed);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-    d();
-    if (paramInt == 1) {
-      ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).o(this.jdField_a_of_type_JavaLangString);
+    if (paramString1 != null) {
+      a(paramString1);
     }
-    while (paramInt != 3000) {
-      return;
-    }
-    b(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void c()
-  {
-    QLog.i("Forward.Preview.Dialog", 1, "onDestroy.");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
-    if (this.jdField_a_of_type_Baxk != null) {
-      this.jdField_a_of_type_Baxk.d();
+    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new aykk(paramString2, 5, 20));
     }
   }
 }

@@ -1,29 +1,44 @@
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
 public class atbj
-  extends ayox
+  extends awyp
 {
-  private NearbyAppInterface a;
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
   public atbj(NearbyAppInterface paramNearbyAppInterface)
   {
-    super(paramNearbyAppInterface);
-    this.a = paramNearbyAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  public ayoz a(aywa paramaywa)
+  public AppInterface a()
   {
-    if (paramaywa == null) {}
-    do
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      return null;
-      if ((paramaywa.b == 8) || (paramaywa.b == 64) || (paramaywa.b == 21)) {
-        return new ayst(this, paramaywa);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.richmedia.TransFileController", 2, paramaywa.toString());
-    return null;
+      super.a();
+      super.a(new awzv(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface));
+      super.d();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, atbk.class);
   }
 }
 

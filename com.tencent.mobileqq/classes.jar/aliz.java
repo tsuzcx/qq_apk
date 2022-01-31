@@ -1,90 +1,99 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class aliz
-  implements aliw
+  implements myy
 {
-  aliz(aliy paramaliy, aljb paramaljb, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  aliz(alix paramalix, alja paramalja, ArrayList paramArrayList, aliw paramaliw) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Aljb != null) {
-      this.jdField_a_of_type_Aljb.a(aliy.a(this.jdField_a_of_type_Aliy, paramLong1, 0));
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline package finish, code = " + paramInt + "param1" + paramString);
+    if (paramInt == 0) {
+      if (paramString == null) {
+        if (this.jdField_a_of_type_Alja != null)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Aliw);
+          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          {
+            this.jdField_a_of_type_Alja.a(true);
+            this.jdField_a_of_type_Alja.a(4, true);
+            this.jdField_a_of_type_Alix.a();
+          }
+        }
+      }
     }
+    label244:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              for (;;)
+              {
+                return;
+                try
+                {
+                  paramString = new JSONObject(paramString);
+                  if (!paramString.has("data")) {
+                    break label244;
+                  }
+                  paramString = paramString.getJSONArray("data");
+                  if (((paramString.length() == 0) || (!paramString.getJSONObject(0).has("bid"))) || (this.jdField_a_of_type_Alja != null))
+                  {
+                    this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Aliw);
+                    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+                    {
+                      this.jdField_a_of_type_Alja.a(true);
+                      this.jdField_a_of_type_Alja.a(4, true);
+                      this.jdField_a_of_type_Alix.a();
+                      return;
+                    }
+                  }
+                }
+                catch (JSONException paramString)
+                {
+                  paramString.printStackTrace();
+                }
+              }
+            } while (this.jdField_a_of_type_Alja == null);
+            this.jdField_a_of_type_Alja.a(false);
+            this.jdField_a_of_type_Alja.a(4, false);
+            this.jdField_a_of_type_Alix.a();
+            return;
+            paramString = this.jdField_a_of_type_Alja;
+          } while (paramString == null);
+          return;
+          if (paramInt != 7) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Alja == null);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Aliw);
+      } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 0);
+      this.jdField_a_of_type_Alja.a(true);
+      this.jdField_a_of_type_Alja.a(4, true);
+      this.jdField_a_of_type_Alix.a();
+      return;
+    } while (this.jdField_a_of_type_Alja == null);
+    this.jdField_a_of_type_Alja.a(false);
+    this.jdField_a_of_type_Alja.a(4, false);
+    this.jdField_a_of_type_Alix.a();
   }
   
-  public void a(boolean paramBoolean, alix paramalix)
+  public void progress(int paramInt)
   {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
-    if (this.jdField_a_of_type_Aljb != null) {
-      this.jdField_a_of_type_Aljb.a(paramalix.jdField_a_of_type_Int, paramBoolean);
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline progress  = " + paramInt);
+    if (this.jdField_a_of_type_Alja != null) {
+      this.jdField_a_of_type_Alja.a(alix.a(this.jdField_a_of_type_Alix, 0L, paramInt));
     }
-    if (paramBoolean)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          localalix = (alix)localIterator.next();
-          if (!localalix.jdField_a_of_type_JavaLangString.equals(paramalix.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          if (paramalix.jdField_a_of_type_Boolean) {}
-          try
-          {
-            System.currentTimeMillis();
-            if (paramalix.jdField_a_of_type_Int == 6)
-            {
-              new File(paramalix.c);
-              aljc.a(paramalix.c, alis.b());
-            }
-            for (;;)
-            {
-              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
-              this.b.remove(localalix);
-              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  remove " + localalix.jdField_a_of_type_JavaLangString);
-              break;
-              if (paramalix.jdField_a_of_type_Int != 7) {
-                break label268;
-              }
-              aljc.a(paramalix.c, alis.a(paramalix.b));
-            }
-            return;
-          }
-          catch (Exception localException)
-          {
-            new File(paramalix.c).delete();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
-            if (this.jdField_a_of_type_Aljb != null) {
-              this.jdField_a_of_type_Aljb.a(false);
-            }
-            this.jdField_a_of_type_Aliy.a();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
-          }
-        }
-      }
-      label268:
-      while (this.b.size() != 0) {
-        for (;;)
-        {
-          alix localalix;
-          File localFile = new File(paramalix.c);
-          aljc.a(paramalix.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramalix.b + File.separator);
-        }
-      }
-      if (this.jdField_a_of_type_Aljb != null) {
-        this.jdField_a_of_type_Aljb.a(true);
-      }
-      this.jdField_a_of_type_Aliy.a();
-      return;
-    }
-    if (this.jdField_a_of_type_Aljb != null) {
-      this.jdField_a_of_type_Aljb.a(false);
-    }
-    this.jdField_a_of_type_Aliy.a();
   }
 }
 

@@ -1,4 +1,3 @@
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
@@ -7,24 +6,11 @@ import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 public class aomc
   implements View.OnClickListener
 {
-  public aomc(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public aomc(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, aonp paramaonp) {}
   
   public void onClick(View paramView)
   {
-    if (bbev.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
-    {
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
-      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramView.what = 2;
-      paramView.arg1 = 2;
-      paramView.obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
-      axqw.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
-      return;
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692271);
-    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    bbac.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_Aonp.e, 1);
   }
 }
 

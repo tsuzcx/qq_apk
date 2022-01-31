@@ -1,18 +1,18 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aplb
-  implements amgw
+  implements amgv
 {
-  private FileManagerEntity a;
+  private DataLineMsgRecord a;
   
-  public aplb(FileManagerEntity paramFileManagerEntity)
+  public aplb(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    this.a = paramFileManagerEntity;
+    this.a = paramDataLineMsgRecord;
   }
   
   private String a()
@@ -23,10 +23,7 @@ public class aplb
       JSONObject localJSONObject = new JSONObject();
       if (this.a != null)
       {
-        localJSONObject.put("file_color_note_peerType", this.a.peerType);
-        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
-        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
-        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
+        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
         str = localJSONObject.toString();
       }
       return str;
@@ -39,25 +36,25 @@ public class aplb
   {
     if (this.a == null)
     {
-      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
       return null;
     }
-    amhc localamhc = new amhc();
-    localamhc.a(17039360);
-    String str = apvk.b(1, this.a.nSessionId + "");
+    amhb localamhb = new amhb();
+    localamhb.a(17039360);
+    String str = apvm.b(6, this.a.sessionid + "");
     if (QLog.isColorLevel()) {
-      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
+      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    localamhc.a(str);
-    localamhc.b(this.a.fileName);
-    localamhc.c(apvb.a(this.a.fileSize));
-    int i = apue.a(apue.a(this.a.fileName));
-    localamhc.d("resdrawable://" + i);
+    localamhb.a(str);
+    localamhb.b(this.a.filename);
+    localamhb.c(apvd.a(this.a.filesize));
+    int i = apug.a(apug.a(this.a.filename));
+    localamhb.d("resdrawable://" + i);
     str = a();
     if (!TextUtils.isEmpty(str)) {
-      localamhc.a(str.getBytes());
+      localamhb.a(str.getBytes());
     }
-    return localamhc.a();
+    return localamhb.a();
   }
 }
 

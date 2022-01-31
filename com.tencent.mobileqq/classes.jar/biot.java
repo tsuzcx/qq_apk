@@ -1,17 +1,17 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-class biot
-  implements bjob<bioz>
+public class biot
+  extends bjdt
 {
-  biot(bior parambior) {}
+  public biot(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public void a(@Nullable bioz parambioz)
+  public void a()
   {
-    if (parambioz == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
     }
-    bior.d(this.a).setSelected(parambioz.a());
+    this.a.a(true);
   }
 }
 

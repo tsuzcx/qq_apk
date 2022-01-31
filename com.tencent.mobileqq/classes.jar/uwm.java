@@ -1,51 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 
-class uwm
-  implements syt<tlt, tlu>
+public class uwm
+  extends uvs
 {
-  uwm(uwk paramuwk, JobContext paramJobContext, uvx paramuvx) {}
+  public List<uxm> b = new ArrayList();
+  public boolean e;
   
-  public void a(@NonNull tlt paramtlt, @Nullable tlu arg2, @NonNull ErrorMessage paramErrorMessage)
+  public uwm(ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramErrorMessage);
+  }
+  
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
     {
-      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
-      return;
+      uxm localuxm = (uxm)localIterator.next();
+      localStringBuilder.append("feedId:").append(localuxm.a().feedId);
+      localStringBuilder.append("unionId:").append(localuxm.a().getOwner().getUnionId());
     }
-    if (??? == null)
-    {
-      paramErrorMessage = new tlu(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_Uwk)
-      {
-        uwk.a(this.jdField_a_of_type_Uwk, paramErrorMessage);
-        uwk.a(this.jdField_a_of_type_Uwk).remove(paramtlt);
-        uwk.a(this.jdField_a_of_type_Uwk, this.jdField_a_of_type_Uvx);
-        return;
-      }
-    }
-    if (paramErrorMessage.isFail()) {
-      veg.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
-    }
-    tbz localtbz = (tbz)tdc.a(17);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (tlv)localIterator.next();
-      localtbz.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-      if (paramErrorMessage.b == 1) {
-        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localtbz.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
-      }
-    }
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
   }
 }
 

@@ -1,36 +1,30 @@
-import Wallet.RedInfoSyncRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class ahcz
-  implements BusinessObserver
+public class ahcz
 {
-  ahcz(ahcy paramahcy) {}
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ahcz() {}
+  
+  public ahcz(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
-    }
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
-        if (paramBundle == null) {
-          break label97;
-        }
-      }
-    }
-    label97:
-    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
-    {
-      QLog.d("QWalletRedManager", 2, paramBundle);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
+  
+  public String toString()
+  {
+    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
   }
 }
 

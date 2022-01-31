@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
 import android.os.Bundle;
-import apji;
-import apjj;
+import apjm;
+import apjn;
 import com.tencent.qphone.base.util.QLog;
 
 public class LocalTdsViewManager$OpenCallbackImpl$1
   implements Runnable
 {
-  public LocalTdsViewManager$OpenCallbackImpl$1(apjj paramapjj, Integer paramInteger, Object paramObject, Bundle paramBundle) {}
+  public LocalTdsViewManager$OpenCallbackImpl$1(apjn paramapjn, Integer paramInteger, Object paramObject, Bundle paramBundle) {}
   
   public void run()
   {
@@ -21,8 +21,8 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
       {
         return;
         QLog.w("TdsReaderView_LocalTdsViewManager", 1, "showErrorCode:" + this.jdField_a_of_type_JavaLangObject);
-      } while (apjj.a(this.this$0) == null);
-      apjj.a(this.this$0).a(false);
+      } while (apjn.a(this.this$0) == null);
+      apjn.a(this.this$0).a(false);
       return;
     }
     boolean bool1;
@@ -35,7 +35,7 @@ public class LocalTdsViewManager$OpenCallbackImpl$1
     }
     for (;;)
     {
-      apjj.a(this.this$0).a(bool1, bool2);
+      apjn.a(this.this$0).a(bool1, bool2);
       return;
       bool1 = false;
       break;

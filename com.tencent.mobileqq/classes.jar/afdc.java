@@ -1,17 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-class afdc
-  implements View.OnClickListener
+public class afdc
+  extends afcy
 {
-  afdc(afda paramafda) {}
-  
-  public void onClick(View paramView)
+  public afdc(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bamn.a(afda.a(this.a), paramView, this.a.b(), this.a.c());
-    this.a.a(paramView);
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10021;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    axqy.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 109;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    axqy.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10022;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    axqy.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 

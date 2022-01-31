@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
 
 public class bjjy
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bjjy(MusicProviderView paramMusicProviderView) {}
+  public bjjy(AdvancedProviderView paramAdvancedProviderView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = bkzo.a().a();
+    if (paramView.size() > 1) {
+      vzw.a(this.a.a, paramView.get(1));
+    }
   }
 }
 

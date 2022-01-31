@@ -1,57 +1,22 @@
+import android.app.Activity;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
 
 public class aflp
-  extends ajvl
+  extends akkd
 {
   public aflp(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
-  {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).b(paramLong);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (paramObject.size() > 0))
-      {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
-          }
-        }
-      }
-      return;
-    }
-  }
-  
   protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramBoolean) {}
-    try
-    {
-      long l = Long.parseLong(paramString);
-      SystemMsgListView.a(this.a).b(l);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
+    }
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    SystemMsgListView.a(this.a).c();
   }
 }
 

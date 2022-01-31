@@ -1,42 +1,42 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class qfp
-  extends QIMEffectCameraCaptureUnit
+  extends osm
 {
-  public qfp(bjqu parambjqu, bjqt parambjqt)
-  {
-    super(parambjqu, parambjqt);
-    this.jdField_a_of_type_Bjqm = new bjqm(10017, 106, 4);
-  }
+  public qfp(ReadInJoyPrivacyListFragment paramReadInJoyPrivacyListFragment) {}
   
-  public View a()
+  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    this.s = false;
-    this.r = false;
-    View localView = super.a();
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    return localView;
-  }
-  
-  protected avuj a()
-  {
-    avuj localavuj = super.a();
-    localavuj.a(false);
-    localavuj.l(2);
-    localavuj.i(2);
-    return localavuj;
-  }
-  
-  public void a(avum paramavum)
-  {
-    Activity localActivity = this.jdField_a_of_type_Bjqu.a();
-    localActivity.startActivity(EditPicActivity.a(localActivity, paramavum.a, true, true, true, true, true, 8));
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetPrivacyList | retcode ").append(paramInt1).append(" | feedsId ").append(paramLong).append("| totalCnt ").append(paramInt3).append(" | nextPageStartIndex ").append(paramInt2).append(" | hasNextPage ").append(paramBoolean).append("| uinList size ");
+    int i;
+    if (paramList != null)
+    {
+      i = paramList.size();
+      QLog.d("ReadInJoyPrivacyListFragment", 1, i);
+      if (paramInt1 != 0) {
+        break label180;
+      }
+      ReadInJoyPrivacyListFragment.a(this.a, paramInt2);
+      ReadInJoyPrivacyListFragment.b(this.a, paramInt3);
+      ReadInJoyPrivacyListFragment.a(this.a, paramBoolean);
+      if (paramList != null) {
+        ReadInJoyPrivacyListFragment.a(this.a).addAll(paramList);
+      }
+      if (ReadInJoyPrivacyListFragment.a(this.a) != null) {
+        ReadInJoyPrivacyListFragment.a(this.a).a(ReadInJoyPrivacyListFragment.a(this.a));
+      }
+    }
+    label180:
+    while (ReadInJoyPrivacyListFragment.a(this.a) == null)
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ReadInJoyPrivacyListFragment.a(this.a).a();
   }
 }
 

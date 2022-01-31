@@ -1,6 +1,10 @@
-public abstract interface ajkr
+import com.tencent.TMG.sdk.AVContext.StartParam;
+
+public class ajkr
+  extends AVContext.StartParam
 {
-  public abstract void a(long paramLong, String paramString);
+  public int a;
+  public long a;
 }
 
 

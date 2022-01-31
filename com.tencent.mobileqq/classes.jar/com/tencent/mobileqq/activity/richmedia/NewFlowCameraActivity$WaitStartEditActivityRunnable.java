@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajyc;
+import ajya;
 import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
-import bbdj;
+import bbdx;
 import java.io.File;
-import veg;
-import vel;
+import ved;
+import vei;
 
 class NewFlowCameraActivity$WaitStartEditActivityRunnable
   implements Runnable
@@ -26,7 +26,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
     {
       this.b = a();
       this.jdField_a_of_type_Int = paramInt;
-      paramNewFlowCameraActivity.d(ajyc.a(2131707467));
+      paramNewFlowCameraActivity.d(ajya.a(2131707478));
       return;
     }
   }
@@ -46,7 +46,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
         if (i >= j) {
           break;
         }
-        l2 = bbdj.a(arrayOfFile[i].getAbsolutePath());
+        l2 = bbdx.a(arrayOfFile[i].getAbsolutePath());
         i += 1;
         l1 = l2 + l1;
       }
@@ -57,10 +57,10 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
   public void run()
   {
     long l = a();
-    veg.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
+    ved.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
     if (l == this.b)
     {
-      vel.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
+      vei.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
       this.this$0.S();
       NewFlowCameraActivity.a(this.this$0, this.jdField_a_of_type_Int);
       return;

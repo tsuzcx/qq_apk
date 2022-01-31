@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import arlg;
-import aynm;
-import aynn;
+import arli;
+import ayno;
+import aynp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class WatchTogetherSession
-  extends aynm
+  extends ayno
   implements Parcelable
 {
-  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new arlg();
+  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new arli();
   public int a;
   public long a;
   public String a;
@@ -75,7 +75,7 @@ public class WatchTogetherSession
   
   public int b()
   {
-    return 2130844031;
+    return 2130844032;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -93,7 +93,7 @@ public class WatchTogetherSession
       if (TextUtils.isEmpty(paramQQAppInterface)) {
         break label78;
       }
-      paramQQAppInterface = aynn.a(16, paramQQAppInterface);
+      paramQQAppInterface = aynp.a(16, paramQQAppInterface);
     }
     for (;;)
     {

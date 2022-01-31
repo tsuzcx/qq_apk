@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.qphone.base.util.QLog;
-import sip;
+import sim;
 
 public final class SneakyCallback$4
   implements Runnable
@@ -12,7 +12,7 @@ public final class SneakyCallback$4
   {
     try
     {
-      sip.a(sip.a(), this.a);
+      sim.a(sim.a(), this.a);
       return;
     }
     catch (Exception localException)

@@ -1,75 +1,128 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PresendPicMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AccountNotMatchException;
+import java.util.UUID;
 
-class auoi
-  implements auol
+public class auoi
 {
-  auoi(auoh paramauoh, aunt paramaunt, auob paramauob) {}
+  public int a;
+  public CompressInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, aunu paramaunu) {}
-  
-  public void a(int paramInt, ArrayList<aunu> paramArrayList) {}
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, aunu paramaunu) {}
-  
-  public void c(int paramInt, aunu arg2)
+  public auoi(PresendPicMgr paramPresendPicMgr, CompressInfo paramCompressInfo, int paramInt1, int paramInt2)
   {
-    auop localauop = (auop)???.a;
-    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Aunt.jdField_a_of_type_Auob.g).append(",uuid:").append(this.jdField_a_of_type_Aunt.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
-    if (paramInt == 0)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = a();
+    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = paramCompressInfo;
+    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public String a()
+  {
+    return "__" + UUID.randomUUID().toString();
+  }
+  
+  public void a()
+  {
+    aung.a("PresendPicMgr", "PresendReq.compressAndUploadPic", "call start,current PresendReq is " + this);
+    long l = System.nanoTime();
+    if (this.jdField_a_of_type_Boolean)
     {
-      ??? = "ResultOk";
-      aune.a("PresendPicMgrService", "onSend ", ???);
-      aune.a("PresendPicMgrService", "onSend", " SendResult = " + localauop);
+      aung.a("PresendPicMgr", "compressAndUploadPic ", "PresendStatus: srcPah:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c + ",destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString + ",uuid:" + this.jdField_a_of_type_JavaLangString + " ,canceled:true, peakCompress:false, peakUpload:false");
+      return;
     }
+    auos.a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
+    aung.a("PresendPicMgr", "compressAndUploadPic ", "PresendStatus: srcPah:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c + ",destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString + ",uuid:" + this.jdField_a_of_type_JavaLangString + ",canceled:false,peakCompress:true,peakUpload:false");
+    l = (System.nanoTime() - l) / 1000000L;
+    aung.a("PresendPicMgr", "PresendReq.compressAndUploadPic", "Process peak,[#]compress, cost= " + l);
+    b();
+    aung.a("PresendPicMgr", "PresendReq.compressAndUploadPic", "call end,current PresendReq is " + this);
+  }
+  
+  public void a(int paramInt)
+  {
     for (;;)
     {
-      synchronized (auoh.a(this.jdField_a_of_type_Auoh))
+      try
       {
-        if (!this.jdField_a_of_type_Auob.f)
-        {
-          if (paramInt == 0)
+        aung.a("PresendPicMgr", "PresendReq.cancel", "current PresendReq is " + this);
+        this.jdField_a_of_type_Boolean = true;
+        boolean bool = this.jdField_b_of_type_Boolean;
+        if (bool) {
+          try
           {
-            this.jdField_a_of_type_Aunt.jdField_a_of_type_Auob.c = 1;
-            aune.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Aunt);
-            auoh.a(this.jdField_a_of_type_Auoh).add(this.jdField_a_of_type_Aunt);
+            aung.a("PresendPicMgr", "PresendReq.cancel", "call cancelUpload");
+            PresendPicMgr.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr).a(this.jdField_a_of_type_JavaLangString, paramInt);
             return;
-            ??? = "ResultFail";
-            break;
           }
-          this.jdField_a_of_type_Aunt.jdField_a_of_type_Auob.c = 2;
+          catch (RemoteException localRemoteException)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("PresendPicMgr", 2, localRemoteException.getMessage(), localRemoteException);
+            continue;
+          }
         }
+        aung.a("PresendPicMgr", "PresendReq.cancel", "mIsUpload is false,no need to call cancelUpload");
       }
-      if (paramInt == 0)
-      {
-        try
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(auoh.a(this.jdField_a_of_type_Auoh));
-          localObject2 = (MessageRecord)this.jdField_a_of_type_Aunt.jdField_a_of_type_Auob.a;
-          ((awan)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
-          aune.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Aunt);
-        }
-        catch (AccountNotMatchException localAccountNotMatchException) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("PresendPicMgrService", 2, "no appRuntime");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
-      }
+      finally {}
     }
   }
   
-  public void d(int paramInt, aunu paramaunu) {}
+  public void b()
+  {
+    try
+    {
+      aung.a("PresendPicMgr", "PresendReq.uploadPic", "current PresendReq is " + this);
+      if (this.jdField_a_of_type_Boolean) {
+        aung.a("PresendPicMgr", "uploadPic ", "PresendStatus: srcPah:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c + ",destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString + ",uuid:" + this.jdField_a_of_type_JavaLangString + " ,canceled:true, peakCompress:true, peakUpload:false");
+      }
+      for (;;)
+      {
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString == null)
+        {
+          aung.b("PresendPicMgr", "PresendReq.uploadPic", "mCompressInfo.destPath == null! ");
+          continue;
+        }
+        try
+        {
+          PresendPicMgr.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr).a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          this.jdField_b_of_type_Boolean = true;
+          aung.a("PresendPicMgr", "uploadPic ", "PresendStatus: srcPah:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c + ",destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString + ",uuid:" + this.jdField_a_of_type_JavaLangString + " ,canceled:false, peakCompress:true, peakUpload:true");
+          aung.a("PresendPicMgr", "PresendReq.uploadPic", "call end");
+        }
+        catch (RemoteException localRemoteException)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("PresendPicMgr", 2, localRemoteException.getMessage(), localRemoteException);
+            }
+          }
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPresendReq");
+    localStringBuilder.append("\n|-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n|-").append("mIsCancel:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n|-").append("mIsUpload:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n|-").append("mCompressInfo:").append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
+    return localStringBuilder.toString();
+  }
 }
 
 

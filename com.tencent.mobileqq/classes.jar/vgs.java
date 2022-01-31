@@ -1,13 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
 
-public abstract interface vgs
+public class vgs
+  implements tbz<tdq>
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  vgs(vgr paramvgr) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
-  
-  public abstract void onClick(View paramView);
+  public void a(boolean paramBoolean, tdq paramtdq)
+  {
+    ved.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramtdq != null))
+    {
+      ved.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramtdq.a));
+      int i = paramtdq.a;
+      vgr.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
+    }
+  }
 }
 
 

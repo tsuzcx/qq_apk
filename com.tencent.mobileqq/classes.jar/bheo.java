@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.ImageTagInfo;
+import NS_USER_ACTION_REPORT.ActionInfo;
 
-public final class bheo
-  implements Parcelable.Creator<ImageTagInfo>
+class bheo
 {
-  public ImageTagInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
+  
+  public bheo(long paramLong, int paramInt)
   {
-    return new ImageTagInfo(paramParcel, null);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public ImageTagInfo[] a(int paramInt)
+  public bheo(long paramLong1, int paramInt, long paramLong2)
   {
-    return new ImageTagInfo[paramInt];
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+  }
+  
+  public ActionInfo a()
+  {
+    ActionInfo localActionInfo = new ActionInfo();
+    localActionInfo.oper_time = this.jdField_a_of_type_Long;
+    localActionInfo.action_id = this.jdField_a_of_type_Int;
+    localActionInfo.action_value = this.b;
+    return localActionInfo;
   }
 }
 

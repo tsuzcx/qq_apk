@@ -1,29 +1,20 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class auqr
-  implements Animator.AnimatorListener
+  extends bfmx
 {
-  auqr(auqi paramauqi, View paramView) {}
+  auqr(auqk paramauqk) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Auqi.l();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Auqi.l();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Auqi.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
     }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 

@@ -1,13 +1,19 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.28.1;
+import mqq.os.MqqHandler;
 
 public class aeuk
-  extends akiu
+  implements myf
 {
   public aeuk(TroopChatPie paramTroopChatPie) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(String paramString1, String paramString2)
   {
-    this.a.e(65536);
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
+      TroopChatPie.k(this.a).post(new TroopChatPie.28.1(this, paramString2));
+    }
   }
 }
 

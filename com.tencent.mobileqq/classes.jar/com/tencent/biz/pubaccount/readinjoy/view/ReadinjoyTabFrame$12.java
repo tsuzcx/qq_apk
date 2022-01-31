@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.app.Activity;
-import onk;
+import onh;
 
 class ReadinjoyTabFrame$12
   implements Runnable
@@ -11,7 +11,7 @@ class ReadinjoyTabFrame$12
   public void run()
   {
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      onk.a(this.this$0.a(), this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
+      onh.a(this.this$0.a(), this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

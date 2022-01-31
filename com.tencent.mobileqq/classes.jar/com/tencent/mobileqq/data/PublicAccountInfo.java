@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import ajuj;
+import ajuh;
 import android.content.Context;
 import android.os.SystemClock;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -21,19 +21,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import nbc;
+import naz;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigGroupInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.PublicAccountInfo;
 
 public class PublicAccountInfo
-  extends aukm
+  extends auko
 {
   public static final int SHOW_FLAG_INVISIBLE_BIT = 2048;
   public static final int SHOW_FLAG_NO = 2;
   public static final int SHOW_FLAG_YES = 1;
   public static final int SHOW_MSG_FLAG_TYPE = 5;
-  @aulx
+  @aulz
   public HashMap<String, Integer> Marks;
   public int accountFlag;
   public long accountFlag2;
@@ -43,7 +43,7 @@ public class PublicAccountInfo
   public String displayNumber;
   public long eqqAccountFlag;
   public int extendType;
-  @aulx
+  @aulz
   public boolean isOffLine;
   public boolean isRecvMsg;
   public boolean isRecvPush;
@@ -58,13 +58,13 @@ public class PublicAccountInfo
   public int mShowMsgFlag;
   public int messageSettingFlag;
   public String name;
-  @aulx
+  @aulz
   public int orderForMark;
   public int showFlag;
   public String summary;
-  @auma
+  @aumc
   public long uin;
-  @aulx
+  @aulz
   private String uinStr;
   
   private static void copyEqqLbsSwitch(mobileqq_mp.EqqAccountInfo paramEqqAccountInfo, PublicAccountInfo paramPublicAccountInfo)
@@ -167,7 +167,7 @@ public class PublicAccountInfo
     localPublicAccountInfo.mIsAgreeSyncLbs = paramAccountDetail.isAgreeSyncLbs;
     localPublicAccountInfo.mIsSyncLbsSelected = paramAccountDetail.isSyncLbsSelected;
     localPublicAccountInfo.dateTime = paramLong;
-    ajuj.a(localPublicAccountInfo);
+    ajuh.a(localPublicAccountInfo);
     return localPublicAccountInfo;
   }
   
@@ -721,7 +721,7 @@ public class PublicAccountInfo
   {
     if (2 == this.extendType)
     {
-      if (nbc.a) {
+      if (naz.a) {
         break label31;
       }
       if (QLog.isDevelopLevel()) {

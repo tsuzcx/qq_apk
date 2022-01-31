@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import ahpf;
+import ahpd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import pbu;
-import sgj;
+import pbr;
+import sgg;
 
 public class SubscriptionInfoModule$6
   implements Runnable
 {
-  public SubscriptionInfoModule$6(pbu parampbu, String paramString) {}
+  public SubscriptionInfoModule$6(pbr parampbr, String paramString) {}
   
   public void run()
   {
-    int i = sgj.b((QQAppInterface)this.this$0.a, this.a);
-    ahpf.b((QQAppInterface)this.this$0.a, this.a, i);
+    int i = sgg.b((QQAppInterface)this.this$0.a, this.a);
+    ahpd.b((QQAppInterface)this.this$0.a, this.a, i);
     ((QQAppInterface)this.this$0.a).a().c(this.a, 1008);
   }
 }

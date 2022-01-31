@@ -1,43 +1,73 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.Button;
+import java.util.HashMap;
 
 public class bkpm
-  extends bjtb
 {
-  private View a;
+  public static int a = 0;
   
-  public bkpm(@NonNull bjww parambjww)
+  public static void a(int paramInt, String paramString1, String paramString2, HashMap<String, String> paramHashMap)
   {
-    super(parambjww);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.a = a(2131374090);
-    ((Button)a(2131366434)).setOnClickListener(new bkpn(this));
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if (paramMessage.arg1 == 1) {
-      this.a.setVisibility(8);
-    }
-    return super.a(paramMessage);
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    super.a_(paramInt, paramObject);
-    paramObject = this.a;
-    if ((paramInt == 0) || (paramInt == 7)) {}
-    for (paramInt = 0;; paramInt = 8)
+    switch (paramInt)
     {
-      paramObject.setVisibility(paramInt);
+    default: 
       return;
     }
+    String str1 = paramString2;
+    String str2;
+    String str3;
+    if (paramHashMap != null)
+    {
+      str2 = (String)paramHashMap.get("cameraType");
+      str3 = (String)paramHashMap.get("isTemplateMode");
+      paramHashMap = (String)paramHashMap.get("templateId");
+      if ((!String.valueOf(2).equals(str2)) || ((!String.valueOf(false).equals(str3)) && (paramHashMap != null))) {
+        break label99;
+      }
+      str1 = "0X8007819";
+    }
+    for (;;)
+    {
+      a(paramString1, str1);
+      return;
+      label99:
+      if ((String.valueOf(2).equals(str2)) && (String.valueOf(true).equals(str3)) && (paramHashMap != null))
+      {
+        str1 = "0X800781A";
+      }
+      else if ((String.valueOf(1).equals(str2)) && ((String.valueOf(false).equals(str3)) || (paramHashMap == null)))
+      {
+        str1 = "0X800781B";
+      }
+      else
+      {
+        str1 = paramString2;
+        if (String.valueOf(1).equals(str2))
+        {
+          str1 = paramString2;
+          if (String.valueOf(true).equals(str3))
+          {
+            str1 = paramString2;
+            if (paramHashMap != null) {
+              str1 = "0X800781C";
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    axqy.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, "", "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    axqy.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, paramString4, paramString5, paramString6);
   }
 }
 

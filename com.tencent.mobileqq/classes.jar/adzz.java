@@ -1,70 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class adzz
+  implements View.OnClickListener
 {
-  public static int a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
+  public adzz(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, boolean paramBoolean2, QQAppInterface paramQQAppInterface) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_b_of_type_Boolean = true;
-    jdField_a_of_type_Int = 15;
-    jdField_b_of_type_Int = 20;
-  }
-  
-  public static void a()
-  {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label211;
-      }
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 300L)) {
+      return;
     }
-    try
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Boolean) && (this.b))
     {
-      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
-      label93:
-      if (!TextUtils.isEmpty(localObject[1])) {
-        jdField_b_of_type_Boolean = localObject[1].equals("1");
-      }
-      if (!TextUtils.isEmpty(localObject[2])) {}
-      for (;;)
-      {
-        try
-        {
-          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
-          jdField_a_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
-          }
-          return;
-        }
-        catch (Exception localException1)
-        {
-          jdField_a_of_type_Int = 15;
-          continue;
-        }
-        label211:
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Int = 15;
-      }
+      axgo.a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return;
     }
-    catch (Exception localException2)
-    {
-      break label93;
-    }
+    QLog.d("ShortVideoRealItemBuilder", 1, String.format("not support dance Pendant, codec[%s], entry[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
   }
 }
 

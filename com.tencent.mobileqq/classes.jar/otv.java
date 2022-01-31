@@ -1,27 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
 
 public class otv
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  public otv(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  public otv(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(this.a.a);
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
+    return true;
   }
 }
 

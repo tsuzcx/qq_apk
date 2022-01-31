@@ -1,40 +1,43 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
 import com.tencent.mobileqq.data.ActivateFriendItem;
 import java.util.ArrayList;
 
 public class acrj
-  extends akjz
+  extends ajxj
 {
-  public acrj(ActivateFriendGrid paramActivateFriendGrid) {}
+  public acrj(ActivateFriendView paramActivateFriendView) {}
   
-  public void b()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
-      return;
-    }
     int i = 0;
-    label23:
-    if (i < ActivateFriendGrid.a(this.a).size())
-    {
-      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
-        break label122;
-      }
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689585));
-    }
     for (;;)
     {
-      i += 1;
-      break label23;
-      break;
-      label122:
-      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
+      if (i < ActivateFriendView.a(this.a).size())
       {
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689588));
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = bbcz.b(ActivateFriendView.a(this.a), str, false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
+        }
       }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
+    while (i < ActivateFriendView.a(this.a).size())
+    {
+      String str = bbcz.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
+      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
+      i += 1;
     }
   }
 }

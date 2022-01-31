@@ -1,56 +1,16 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bfzh
-  extends RecyclerView.AdapterDataObserver
+  implements View.OnClickListener
 {
-  bfzh(bfzg parambfzg) {}
+  bfzh(bfzg parambfzg, bfzf parambfzf) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    this.a.notifyDataSetChanged();
-    if (bfzg.a(this.a) != null) {
-      bfzg.a(this.a).a(bfzg.a(this.a));
-    }
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeChanged(bfzg.a(this.a).size() + paramInt1, paramInt2);
-    if (bfzg.a(this.a) != null) {
-      bfzg.a(this.a).a(bfzg.a(this.a));
-    }
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.a.notifyItemRangeChanged(bfzg.a(this.a).size() + paramInt1, paramInt2, paramObject);
-    if (bfzg.a(this.a) != null) {
-      bfzg.a(this.a).a(bfzg.a(this.a));
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(bfzg.a(this.a).size() + paramInt1, paramInt2);
-    if (bfzg.a(this.a) != null) {
-      bfzg.a(this.a).a(bfzg.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(bfzg.a(this.a).size() + paramInt1, bfzg.a(this.a).size() + paramInt2);
-    if (bfzg.a(this.a) != null) {
-      bfzg.a(this.a).a(bfzg.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(bfzg.a(this.a).size() + paramInt1, paramInt2);
-    if (bfzg.a(this.a) != null) {
-      bfzg.a(this.a).a(bfzg.a(this.a));
+    int i = this.jdField_a_of_type_Bfzf.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Bfzg.a.a(this.jdField_a_of_type_Bfzf.itemView, i);
     }
   }
 }

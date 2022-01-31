@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
 class aeok
-  extends aqun
+  implements DialogInterface.OnClickListener
 {
-  aeok(aeoe paramaeoe) {}
+  aeok(aeoj paramaeoj, String paramString) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      aeoe.a(this.a).a(this.a.jdField_a_of_type_Aexy, new Object[0]);
+    ((ajvi)this.jdField_a_of_type_Aeoj.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aeoj.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
     }
-  }
-  
-  protected void b()
-  {
-    if (((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Aexy.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (aeoe.b(this.a).a() == 14)) {
-      aeoe.c(this.a).a();
-    }
+    this.jdField_a_of_type_Aeoj.a.H();
   }
 }
 

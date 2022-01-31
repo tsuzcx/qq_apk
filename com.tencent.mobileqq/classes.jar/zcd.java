@@ -1,23 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import java.util.Map;
 
-public class zcd
-  extends AnimatorListenerAdapter
+public abstract interface zcd
 {
-  public zcd(TransitionContext paramTransitionContext) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    this.a.a();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.a();
-  }
+  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
 }
 
 

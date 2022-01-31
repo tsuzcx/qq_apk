@@ -1,12 +1,25 @@
-import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
-
-public class thi
+class thi
+  extends ssv
 {
-  public float a;
-  public float b;
-  public float c;
+  thi(thh paramthh) {}
   
-  private thi(DotAnimationView paramDotAnimationView) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      bcql.a(this.a.a.a, 2, ajya.a(2131706969), 0).a();
+    }
+    do
+    {
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
+      {
+        bcql.a(this.a.a.a, 1, ajya.a(2131706974), 0).a();
+        return;
+      }
+    } while ((paramBoolean1) || (paramBoolean2));
+    bcql.a(this.a.a.a, 1, ajya.a(2131706970), 0).a();
+  }
 }
 
 

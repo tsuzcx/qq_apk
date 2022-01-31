@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axli;
-import bbdj;
+import axlk;
+import bbdx;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
@@ -29,18 +29,18 @@ import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import veg;
-import wio;
-import wiv;
-import wpw;
-import wpy;
-import wvu;
-import wvw;
-import xhe;
+import ved;
+import wil;
+import wis;
+import wpt;
+import wpv;
+import wvr;
+import wvt;
+import xhb;
 
 public class RelativeFeedItemView
   extends BaseWidgetView<CertifiedAccountMeta.StFeed>
-  implements wpy
+  implements wpv
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839736);
   private View jdField_a_of_type_AndroidViewView;
@@ -72,7 +72,7 @@ public class RelativeFeedItemView
     if (paramInt == 1)
     {
       str1 = "like";
-      xhe.a(str2, "auth_feeds", str1, 0, this.jdField_a_of_type_Int, new String[] { "", "", ((CertifiedAccountMeta.StFeed)a()).poster.nick.get(), ((CertifiedAccountMeta.StFeed)a()).title.get() });
+      xhb.a(str2, "auth_feeds", str1, 0, this.jdField_a_of_type_Int, new String[] { "", "", ((CertifiedAccountMeta.StFeed)a()).poster.nick.get(), ((CertifiedAccountMeta.StFeed)a()).title.get() });
       j = ((CertifiedAccountMeta.StFeed)a()).likeInfo.count.get();
       if (paramInt != 1) {
         break label177;
@@ -127,14 +127,14 @@ public class RelativeFeedItemView
     float f1 = 1.333333F;
     if ((paramStFeed.cover.width.get() == 0) || (paramStFeed.cover.height.get() == 0))
     {
-      veg.c("RelativeFeedItemView", "getImageScale()  return 3/4");
+      ved.c("RelativeFeedItemView", "getImageScale()  return 3/4");
       return 0.75F;
     }
     float f2 = paramStFeed.cover.height.get() / paramStFeed.cover.width.get();
     if (f2 > 1.333333F) {}
     for (;;)
     {
-      veg.c("RelativeFeedItemView", "getImageScale()  feed.width:" + paramStFeed.cover.width.get() + "  feed.height:" + paramStFeed.cover.height.get() + "  realHeight=" + f1);
+      ved.c("RelativeFeedItemView", "getImageScale()  feed.width:" + paramStFeed.cover.width.get() + "  feed.height:" + paramStFeed.cover.height.get() + "  realHeight=" + f1);
       return f1;
       f1 = f2;
     }
@@ -147,7 +147,7 @@ public class RelativeFeedItemView
   
   public View.OnClickListener a()
   {
-    return new wvw(this);
+    return new wvt(this);
   }
   
   public View a()
@@ -189,7 +189,7 @@ public class RelativeFeedItemView
         if (paramStFeed.likeInfo != null) {
           b(paramStFeed);
         }
-        if (!wiv.a(paramStFeed.type.get())) {
+        if (!wis.a(paramStFeed.type.get())) {
           break label553;
         }
         int i = paramStFeed.video.duration.get() / 1000 / 60;
@@ -203,10 +203,10 @@ public class RelativeFeedItemView
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getLayoutParams().width = this.jdField_b_of_type_Int;
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.requestLayout();
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        wio.a(paramStFeed.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, null, bbdj.c(paramStFeed.cover.url.get()));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().width = axli.a(18.0F);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = axli.a(18.0F);
-        wio.a(paramStFeed.poster.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+        wil.a(paramStFeed.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, null, bbdx.c(paramStFeed.cover.url.get()));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().width = axlk.a(18.0F);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = axlk.a(18.0F);
+        wil.a(paramStFeed.poster.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
         if ((paramStFeed.status.get() != 3) || (!BaseApplicationImpl.getApplication().getRuntime().getAccount().equals(paramStFeed.poster.id.get()))) {
           break label608;
         }
@@ -214,7 +214,7 @@ public class RelativeFeedItemView
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wvu(this, paramStFeed));
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wvr(this, paramStFeed));
         if (this.jdField_c_of_type_Boolean)
         {
           this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(1711276032);
@@ -231,7 +231,7 @@ public class RelativeFeedItemView
         if (((ExtraTypeInfo)localObject).pageType != 7003) {
           break label630;
         }
-        xhe.a(paramStFeed.poster.id.get(), "auth_follow", "new_c_exp", 0, 0, new String[] { "", "", paramStFeed.id.get(), paramStFeed.title.get() });
+        xhb.a(paramStFeed.poster.id.get(), "auth_follow", "new_c_exp", 0, 0, new String[] { "", "", paramStFeed.id.get(), paramStFeed.title.get() });
         return;
         this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText((CharSequence)localObject);
         this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setVisibility(0);
@@ -251,20 +251,20 @@ public class RelativeFeedItemView
     label547:
     label553:
     label608:
-    xhe.b(paramStFeed.poster.id.get(), "auth_discover", "exp_content", 0, 0, new String[] { "", "", paramStFeed.id.get(), paramStFeed.title.get() });
+    xhb.b(paramStFeed.poster.id.get(), "auth_discover", "exp_content", 0, 0, new String[] { "", "", paramStFeed.id.get(), paramStFeed.title.get() });
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131378171));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378054));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378168));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131368571));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131378174));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378059));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378171));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131368570));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(4.0F));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131368502));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378165));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369466);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368647));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378168));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369465);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368646));
   }
   
   public void a(SimpleBaseEvent paramSimpleBaseEvent)
@@ -278,14 +278,14 @@ public class RelativeFeedItemView
   {
     super.onAttachedToWindow();
     this.jdField_b_of_type_Boolean = true;
-    wpw.a().a(this);
+    wpt.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_b_of_type_Boolean = false;
-    wpw.a().b(this);
+    wpt.a().b(this);
   }
   
   public void setIsInNightMode(boolean paramBoolean)

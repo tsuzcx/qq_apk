@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.mobileqq.teamwork.PadInfo;
 
-public final class aydw
-  implements Parcelable.Creator<ReSendCmd>
+public abstract interface aydw
 {
-  public ReSendCmd a(Parcel paramParcel)
-  {
-    return new ReSendCmd(paramParcel);
-  }
+  public abstract void a(PadInfo paramPadInfo);
   
-  public ReSendCmd[] a(int paramInt)
-  {
-    return new ReSendCmd[paramInt];
-  }
+  public abstract void b(PadInfo paramPadInfo);
 }
 
 

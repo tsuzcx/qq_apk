@@ -1,94 +1,58 @@
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
 
 public class afkn
-  extends afjv
-  implements rtz
+  extends afjt
+  implements View.OnClickListener
 {
-  public afkn(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
+  public afkn(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
   {
-    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
+    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
   }
   
   public View a(int paramInt, View paramView)
   {
-    paramInt = this.jdField_a_of_type_Aipp.c();
-    int i = this.jdField_a_of_type_Aipp.b();
-    afko localafko;
+    Object localObject;
     if ((paramView == null) || (!(paramView.getTag() instanceof afko)))
     {
-      localafko = new afko();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560916, null);
-      localafko.a = ((ThemeTabLayout)paramView.findViewById(2131376812));
-      localafko.a.a(this);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendSlideTabBuilder", 2, "getView new ConnectionsTabLayout tabPosition  ->" + paramInt + ", tabId =" + i);
+      localObject = new afko();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560922, null);
+      ((afko)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
+      ((afko)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365715);
+      ((afko)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.setTag(localObject);
+      ((afko)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((atzd)this.jdField_a_of_type_Atza).a.title);
+      localObject = ((afko)localObject).jdField_a_of_type_AndroidViewView;
+      if (!((atzd)this.jdField_a_of_type_Atza).a.showEntrance) {
+        break label133;
       }
-      if ((this.jdField_a_of_type_Atyy != null) || ((this.jdField_a_of_type_Atyy instanceof atza))) {
-        localafko.a.a(((atza)this.jdField_a_of_type_Atyy).a, i);
-      }
-      localafko.a.setOnTabSelectedListener(this);
-      paramView.setTag(localafko);
     }
-    for (;;)
+    label133:
+    for (paramInt = 0;; paramInt = 8)
     {
-      c(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewFriendSlideTabBuilder", 2, "getView update tabPosition = " + paramInt + ", tabId =" + i);
-      }
-      if ((localafko != null) && (localafko.a != null) && ((this.jdField_a_of_type_Atyy != null) || ((this.jdField_a_of_type_Atyy instanceof atza))))
-      {
-        ArrayList localArrayList = ((atza)this.jdField_a_of_type_Atyy).a;
-        localafko.a.b(localArrayList, i);
-      }
+      ((View)localObject).setVisibility(paramInt);
       return paramView;
-      localafko = (afko)paramView.getTag();
+      localObject = (afko)paramView.getTag();
+      break;
     }
   }
   
-  public ArrayList<afly> a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Atyy != null) || ((this.jdField_a_of_type_Atyy instanceof atza))) {
-      return ((atza)this.jdField_a_of_type_Atyy).a;
-    }
-    return null;
-  }
-  
-  public void a(rue paramrue)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendSlideTabBuilder", 2, "builder onTabSelected tab ->" + paramrue.a());
-    }
-    if ((this.jdField_a_of_type_Aipp != null) && (paramrue != null))
+    switch (paramView.getId())
     {
-      this.jdField_a_of_type_Aipp.b(((Integer)paramrue.a()).intValue(), paramrue.a());
-      int i = this.jdField_a_of_type_Aipp.b();
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", i, 0, "0", "3", "", "");
-    }
-  }
-  
-  public void b(rue paramrue) {}
-  
-  public void c(View paramView)
-  {
-    if (paramView == null) {
+    default: 
       return;
     }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839132);
-      return;
-    }
-    paramView.setBackgroundResource(2130849130);
+    akka.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    axqy.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
   }
-  
-  public void c(rue paramrue) {}
 }
 
 

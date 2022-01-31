@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import java.util.Comparator;
 
-public abstract interface aioe
-  extends aiod
+class aioe
+  implements Comparator<atza>
 {
-  public abstract void a(String paramString);
+  aioe(aiod paramaiod) {}
   
-  public abstract void a(List<MayKnowRecommend> paramList);
+  public int a(atza paramatza1, atza paramatza2)
+  {
+    return (int)(paramatza2.a - paramatza1.a);
+  }
 }
 
 

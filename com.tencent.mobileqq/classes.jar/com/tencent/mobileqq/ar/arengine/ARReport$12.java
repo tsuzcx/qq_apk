@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aliq;
-import axrl;
+import alip;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$12
   implements Runnable
 {
-  public ARReport$12(aliq paramaliq, long paramLong, boolean paramBoolean) {}
+  public ARReport$12(alip paramalip, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ARReport$12
     }
     for (;;)
     {
-      axrl.a(BaseApplication.getContext()).a("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
+      axrn.a(BaseApplication.getContext()).a("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
       return;
       localHashMap.put("result", "1");
     }

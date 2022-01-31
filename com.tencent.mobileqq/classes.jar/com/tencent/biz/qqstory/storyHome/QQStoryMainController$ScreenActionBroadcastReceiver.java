@@ -3,9 +3,9 @@ package com.tencent.biz.qqstory.storyHome;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import suw;
-import tdc;
-import veg;
+import sut;
+import tcz;
+import ved;
 
 public class QQStoryMainController$ScreenActionBroadcastReceiver
   extends BroadcastReceiver
@@ -15,14 +15,14 @@ public class QQStoryMainController$ScreenActionBroadcastReceiver
     paramContext = paramIntent.getAction();
     if (paramContext.equals("android.intent.action.SCREEN_OFF"))
     {
-      ((suw)tdc.a(6)).a(120000L);
-      veg.d("Q.qqstory.home.QQStoryMainActivity", "screen off , preloader stop");
+      ((sut)tcz.a(6)).a(120000L);
+      ved.d("Q.qqstory.home.QQStoryMainActivity", "screen off , preloader stop");
     }
     while (!paramContext.equals("android.intent.action.SCREEN_ON")) {
       return;
     }
-    ((suw)tdc.a(6)).c();
-    veg.d("Q.qqstory.home.QQStoryMainActivity", "screen on , preloader start");
+    ((sut)tcz.a(6)).c();
+    ved.d("Q.qqstory.home.QQStoryMainActivity", "screen on , preloader start");
   }
 }
 

@@ -1,62 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class amyk
-  extends amyi<amyj>
+class amyk
+  implements amxr
 {
-  public int a()
-  {
-    return 479;
-  }
+  amyk(amyj paramamyj) {}
   
-  @NonNull
-  public amyj a()
+  public void a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
-    }
-    return new amyj();
-  }
-  
-  @NonNull
-  public amyj a(@NonNull ampi[] paramArrayOfampi)
-  {
-    boolean bool = false;
-    amyj localamyj = new amyj();
-    try
-    {
-      if (paramArrayOfampi[0].a != null)
-      {
-        if (new JSONObject(paramArrayOfampi[0].a).optInt("show_custom_online_state", 1) == 1) {
-          bool = true;
-        }
-        localamyj.a = bool;
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localamyj.a);
-        }
-      }
-      return localamyj;
-    }
-    catch (Exception paramArrayOfampi)
-    {
-      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfampi);
-    }
-    return localamyj;
-  }
-  
-  public Class<amyj> a()
-  {
-    return amyj.class;
-  }
-  
-  @NonNull
-  public amyj b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
-    }
-    return new amyj();
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, amyj.a(this.a), -1L, null, false, 0);
   }
 }
 

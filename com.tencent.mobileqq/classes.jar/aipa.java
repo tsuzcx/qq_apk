@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class aipa
-  extends akim
 {
-  aipa(aiov paramaiov) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
-  {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(aiov.a(this.a))))
-    {
-      aiov.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
-      return;
-    }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + aiov.a(this.a));
-  }
+  aipa(aiot paramaiot) {}
 }
 
 

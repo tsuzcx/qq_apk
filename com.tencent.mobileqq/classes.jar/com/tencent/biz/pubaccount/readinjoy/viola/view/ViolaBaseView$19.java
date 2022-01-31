@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bhvh;
+import bhvy;
 import com.tencent.viola.utils.ViolaUtils;
-import onk;
+import onh;
 
 class ViolaBaseView$19
   implements Runnable
@@ -11,15 +11,15 @@ class ViolaBaseView$19
   
   public void run()
   {
-    if (System.currentTimeMillis() - ((Long)bhvh.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + onk.a(), Long.valueOf(0L))).longValue() > 18000000L)
+    if (System.currentTimeMillis() - ((Long)bhvy.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + onh.a(), Long.valueOf(0L))).longValue() > 18000000L)
     {
       ViolaBaseView.d(this.this$0, false);
-      bhvh.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + onk.a(), Long.valueOf(System.currentTimeMillis()));
+      bhvy.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + onh.a(), Long.valueOf(System.currentTimeMillis()));
     }
-    if ((System.currentTimeMillis() - ((Long)bhvh.a(ViolaUtils.getPageName(this.this$0.a) + onk.a(), Long.valueOf(0L))).longValue() > 7200000L) && (ViolaBaseView.b(this.this$0)))
+    if ((System.currentTimeMillis() - ((Long)bhvy.a(ViolaUtils.getPageName(this.this$0.a) + onh.a(), Long.valueOf(0L))).longValue() > 7200000L) && (ViolaBaseView.b(this.this$0)))
     {
       ViolaBaseView.e(this.this$0, false);
-      bhvh.a(ViolaUtils.getPageName(this.this$0.a) + onk.a(), Long.valueOf(System.currentTimeMillis()));
+      bhvy.a(ViolaUtils.getPageName(this.this$0.a) + onh.a(), Long.valueOf(System.currentTimeMillis()));
     }
   }
 }

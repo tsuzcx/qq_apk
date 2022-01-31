@@ -1,74 +1,66 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0xce5.Oidb_0xce5.RobotInfo;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.List;
 
 public class balv
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private String e;
-  
-  public static balv a(Oidb_0xce5.RobotInfo paramRobotInfo)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, List<String> paramList, long paramLong)
   {
-    if (paramRobotInfo != null)
-    {
-      balv localbalv = new balv();
-      localbalv.jdField_a_of_type_Long = paramRobotInfo.robot_uin.get();
-      localbalv.jdField_a_of_type_JavaLangString = paramRobotInfo.name.get();
-      localbalv.jdField_a_of_type_Int = paramRobotInfo.status.get();
-      localbalv.jdField_b_of_type_JavaLangString = paramRobotInfo.desc.get();
-      localbalv.jdField_b_of_type_Int = paramRobotInfo.enabled_groups.get();
-      localbalv.jdField_c_of_type_JavaLangString = paramRobotInfo.welcome_msg.get();
-      localbalv.jdField_d_of_type_JavaLangString = paramRobotInfo.call_name.get();
-      localbalv.jdField_c_of_type_Int = paramRobotInfo.show_invite.get();
-      localbalv.jdField_d_of_type_Int = paramRobotInfo.offline.get();
-      localbalv.e = paramRobotInfo.verify.get();
-      return localbalv;
+    long l = LocalMultiProcConfig.getLong4Uin("aio_qzone_troop_gray_tips", 0L, Long.parseLong(paramString2));
+    if (System.currentTimeMillis() <= l * 1000L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips during cool down");
+      }
     }
-    return null;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_d_of_type_Int == 1;
-  }
-  
-  public String toString()
-  {
-    return "robot_uin:" + this.jdField_a_of_type_Long + " name:" + this.jdField_a_of_type_JavaLangString + " status:" + this.jdField_a_of_type_Int + " desc:" + this.jdField_b_of_type_JavaLangString + " enabled_groups:" + this.jdField_b_of_type_Int + " welcome_msg:" + this.jdField_c_of_type_JavaLangString + " call_name:" + this.jdField_d_of_type_JavaLangString + " show_invite:" + this.jdField_c_of_type_Int + " offline:" + this.jdField_d_of_type_Int + " verify:" + this.e;
+    do
+    {
+      return;
+      i = QzoneConfig.getInstance().getConfig("aio_qzone_troop_gray_tips", "troop_gray_tips_min_photo_count", 9);
+      if (paramList.size() >= i) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopGrayTipUtils", 2, "Unable to display gray tips, current photos count: " + paramList.size() + " required min photos count: " + i);
+    return;
+    Object localObject = ajya.a(2131720503);
+    String str2 = ajya.a(2131720501);
+    String str1 = ajya.a(2131720502);
+    str2 = (String)localObject + " " + str2 + " " + str1;
+    paramString1 = new aqvb(paramString1, paramString2, str2, 1, -5040, 131086, System.currentTimeMillis() / 1000L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      if (i != paramList.size() - 1) {
+        localStringBuilder.append((String)paramList.get(i)).append(",");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append((String)paramList.get(i));
+      }
+    }
+    paramList = new ArrayList();
+    i = BaseApplicationImpl.getApplication().getResources().getColor(2131167109);
+    localObject = new MessageForGrayTips.HightlightItem(0, ((String)localObject).length(), Long.parseLong(paramString2), 0, 50, localStringBuilder.toString(), "", "", "", i);
+    paramString2 = new MessageForGrayTips.HightlightItem(str2.length() - str1.length(), str2.length(), Long.parseLong(paramString2), 0, 51, "", "", "", "", i);
+    paramList.add(localObject);
+    paramList.add(paramString2);
+    paramString1.a = paramList;
+    paramString2 = new MessageForUniteGrayTip();
+    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+    paramString2.saveExtInfoToExtStr("grayLastUniseq", paramLong + "");
+    aqvc.a(paramQQAppInterface, paramString2);
+    LpReportInfo_pf00064.allReport(40, 3, 1);
   }
 }
 

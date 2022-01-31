@@ -1,42 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Set;
 
 public class akeb
-  extends BroadcastReceiver
+  extends ajxj
 {
   public akeb(QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
-          {
-            aqya.a();
-            return;
-          }
-        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
-        paramContext = paramIntent.getStringExtra("kickedUin");
-      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
-      paramContext = this.a.getKickIntent();
-    } while (paramContext == null);
-    paramContext.putExtra("isSameDevice", false);
-    paramIntent = paramIntent.getStringExtra("msg");
-    if (!TextUtils.isEmpty(paramIntent)) {
-      paramContext.putExtra("msg", paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
     }
-    this.a.setKickIntent(paramContext);
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.f()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
+        }
+        QQAppInterface.a(this.a, (QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a().get(0), false);
+      }
+      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "removeObserver");
+    }
+    this.a.removeObserver(this);
   }
 }
 

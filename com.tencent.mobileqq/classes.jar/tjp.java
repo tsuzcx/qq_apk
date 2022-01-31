@@ -1,20 +1,27 @@
-import java.util.ArrayList;
-
 public class tjp
-  extends ssk
 {
-  public final int a;
-  public ArrayList<tjo> a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
   
-  public tjp(int paramInt)
+  public tjp(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
   }
   
-  public String toString()
+  public void a()
   {
-    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
+    tjq localtjq = new tjq(this, false);
+    tjr localtjr = new tjr(this, false);
+    tay.a().a(localtjq, localtjr);
+  }
+  
+  public void b()
+  {
+    tjq localtjq = new tjq(this, true);
+    tjr localtjr = new tjr(this, true);
+    tay.a().a(localtjq, localtjr);
   }
 }
 

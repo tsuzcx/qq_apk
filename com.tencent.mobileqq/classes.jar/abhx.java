@@ -1,41 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import mqq.util.WeakReference;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class abhx
-  implements DialogInterface.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  WeakReference<GeneralSettingActivity> a;
-  WeakReference<CompoundButton> b;
+  public abhx(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public abhx(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramGeneralSettingActivity);
-    this.b = new WeakReference(paramCompoundButton);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    CompoundButton localCompoundButton = null;
-    if (this.a == null)
+    int j = 1;
+    paramCompoundButton = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
     {
-      paramDialogInterface = null;
-      if (this.b != null) {
-        break label47;
+      i = 2;
+      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
+      this.a.a(paramBoolean);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label93;
       }
     }
-    for (;;)
+    label93:
+    for (int i = j;; i = 0)
     {
-      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
-        paramDialogInterface.a(localCompoundButton, false);
-      }
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
       return;
-      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      i = 1;
       break;
-      label47:
-      localCompoundButton = (CompoundButton)this.b.get();
     }
   }
 }

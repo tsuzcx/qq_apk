@@ -1,9 +1,17 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+
 class azkn
-  implements bfps
+  implements View.OnClickListener
 {
-  azkn(azkk paramazkk) {}
+  azkn(azkm paramazkm) {}
   
-  public void a() {}
+  public void onClick(View paramView)
+  {
+    GroupManagerActivity.a((Activity)azkm.a(this.a));
+  }
 }
 
 

@@ -1,7 +1,18 @@
-public class avxp
+public abstract interface avxp
 {
-  public static boolean a = true;
-  public static boolean b = true;
+  public abstract void a(int paramInt, Throwable paramThrowable);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void i();
+  
+  public abstract void l();
 }
 
 

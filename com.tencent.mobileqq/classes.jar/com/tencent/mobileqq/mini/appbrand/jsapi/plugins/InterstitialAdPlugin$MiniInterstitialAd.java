@@ -26,8 +26,8 @@ import java.util.HashMap;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yuk;
-import yxr;
+import yuh;
+import yxo;
 
 class InterstitialAdPlugin$MiniInterstitialAd
 {
@@ -36,7 +36,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniInterstitialAd";
-  private yuk adInterstitial;
+  private yuh adInterstitial;
   private String adUnitId;
   private int appInterstitialId;
   private BaseJsPluginEngine jsPluginEngine;
@@ -183,7 +183,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   
   private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
     paramJSONObject = new GdtHandler.Options();
     paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
     paramJSONObject.jdField_a_of_type_Boolean = true;

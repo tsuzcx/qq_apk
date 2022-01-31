@@ -1,17 +1,19 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-class bdhw
-  implements Comparator<File>
+public class bdhw
+  implements ValueCallback<String>
 {
-  public int a(File paramFile1, File paramFile2)
+  public bdhw(DownloadInterfaceNew.2 param2) {}
+  
+  public void a(String paramString)
   {
-    return paramFile1.getName().compareTo(paramFile2.getName());
+    bdii.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdhw
  * JD-Core Version:    0.7.0.1
  */

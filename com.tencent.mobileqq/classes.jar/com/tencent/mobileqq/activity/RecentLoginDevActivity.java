@@ -2,11 +2,11 @@ package com.tencent.mobileqq.activity;
 
 import QQService.DeviceItemDes;
 import QQService.SvcDevLoginInfo;
-import abxu;
-import abxv;
-import abxw;
-import abxx;
-import ajxl;
+import abxq;
+import abxr;
+import abxs;
+import abxt;
+import ajxj;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -20,11 +20,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aoen;
-import bbkb;
-import bcpq;
-import bfol;
-import bfoy;
+import aoes;
+import bbkp;
+import bcqf;
+import bfpc;
+import bfpp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -33,11 +33,11 @@ import java.util.List;
 public class RecentLoginDevActivity
   extends IphoneTitleBarActivity
 {
-  private ajxl jdField_a_of_type_Ajxl = new abxx(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new abxu(this);
+  private ajxj jdField_a_of_type_Ajxj = new abxt(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new abxq(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bcpq jdField_a_of_type_Bcpq;
-  private bfol jdField_a_of_type_Bfol;
+  private bcqf jdField_a_of_type_Bcqf;
+  private bfpc jdField_a_of_type_Bfpc;
   private String jdField_a_of_type_JavaLangString = "";
   private List<SvcDevLoginInfo> jdField_a_of_type_JavaUtilList;
   
@@ -50,15 +50,15 @@ public class RecentLoginDevActivity
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131694493);
+      str = getResources().getString(2131694494);
     }
-    this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(this, null));
-    paramString1 = getString(2131694485, new Object[] { str });
-    this.jdField_a_of_type_Bfol.a(paramString1);
-    this.jdField_a_of_type_Bfol.a(getResources().getString(2131694483), 3);
-    this.jdField_a_of_type_Bfol.c(2131690596);
-    this.jdField_a_of_type_Bfol.a(new abxw(this, paramString2, paramArrayList, paramInt));
-    this.jdField_a_of_type_Bfol.show();
+    this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(this, null));
+    paramString1 = getString(2131694486, new Object[] { str });
+    this.jdField_a_of_type_Bfpc.a(paramString1);
+    this.jdField_a_of_type_Bfpc.a(getResources().getString(2131694484), 3);
+    this.jdField_a_of_type_Bfpc.c(2131690596);
+    this.jdField_a_of_type_Bfpc.a(new abxs(this, paramString2, paramArrayList, paramInt));
+    this.jdField_a_of_type_Bfpc.show();
   }
   
   private void a(List<SvcDevLoginInfo> paramList)
@@ -101,13 +101,13 @@ public class RecentLoginDevActivity
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
         break label386;
       }
-      ((TextView)localObject).setText(2131694493);
+      ((TextView)localObject).setText(2131694494);
     }
     for (;;)
     {
       localObject = new StringBuffer();
       if (localSvcDevLoginInfo.iLoginTime > 0L) {
-        ((StringBuffer)localObject).append(bbkb.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
+        ((StringBuffer)localObject).append(bbkp.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
       }
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strLoginLocation))
       {
@@ -124,7 +124,7 @@ public class RecentLoginDevActivity
       }
       localRelativeLayout.setClickable(true);
       localRelativeLayout.setTag(localSvcDevLoginInfo);
-      localRelativeLayout.setOnClickListener(new abxv(this, localRelativeLayout, i));
+      localRelativeLayout.setOnClickListener(new abxr(this, localRelativeLayout, i));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       break;
       if (i == 0)
@@ -152,8 +152,8 @@ public class RecentLoginDevActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131560732);
-    setTitle(2131694492);
+    super.setContentView(2131560731);
+    setTitle(2131694493);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367529));
     try
     {
@@ -161,11 +161,11 @@ public class RecentLoginDevActivity
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "packName = " + this.jdField_a_of_type_JavaLangString);
       }
-      addObserver(this.jdField_a_of_type_Ajxl);
+      addObserver(this.jdField_a_of_type_Ajxj);
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onCreate begin to getRecentLoginDevList");
       }
-      bool = aoen.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
+      bool = aoes.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
       if (bool)
       {
         a();
@@ -190,7 +190,7 @@ public class RecentLoginDevActivity
   {
     super.onDestroy();
     b();
-    removeObserver(this.jdField_a_of_type_Ajxl);
+    removeObserver(this.jdField_a_of_type_Ajxj);
   }
 }
 

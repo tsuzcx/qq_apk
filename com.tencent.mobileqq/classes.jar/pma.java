@@ -1,45 +1,137 @@
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.text.format.DateUtils;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyApngImageView.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
+import java.util.Date;
 
-class pma
-  implements View.OnClickListener
+public class pma
+  extends ImageBase
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  private Drawable a;
+  public NativeReadInjoyImageView a;
   
-  private pma(plp paramplp) {}
-  
-  public void onClick(View paramView)
+  public pma(VafContext paramVafContext)
   {
-    switch (paramView.getId())
+    super(paramVafContext);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#00000000"));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
+  }
+  
+  private static long a(Date paramDate1, Date paramDate2)
+  {
+    return Math.abs((paramDate1.getTime() - paramDate2.getTime()) / 86400000L);
+  }
+  
+  private void a(String paramString)
+  {
+    Log.d("DEBUG_LOADIMG", "real loadimg");
+    new Handler(Looper.getMainLooper()).postDelayed(new ReadInjoyApngImageView.1(this, paramString), 1500L);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
+  }
+  
+  public void loadImage(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")))
     {
-    default: 
-      return;
-    case 2131366528: 
-      paramView = this.jdField_a_of_type_Plp;
-      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-      for (boolean bool = true;; bool = false)
+      Log.d("DEBUG_LOADIMG", "loadimg begin");
+      if (DateUtils.isToday(bbkb.b("search_word_prefix_ug_weishi_opt_day_show_time"))) {
+        break label163;
+      }
+      Log.d("DEBUG_LOADIMG", "loadimg not in a day");
+      bbkb.a("search_word_prefix_ug_weishi_opt_day_show_time", System.currentTimeMillis());
+      if (a(new Date(System.currentTimeMillis()), new Date(bbkb.b("search_word_prefix_ug_weishi_opt_week_first_show_time"))) > 7L)
       {
-        paramView.a(localRecommendFollowInfo, bool);
-        noo.a(null, onk.a() + "", "0X800984A", "0X800984A", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
-        return;
+        Log.d("DEBUG_LOADIMG", "loadimg after 7 days");
+        bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_time", System.currentTimeMillis());
+        bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
+        a(paramString);
       }
     }
-    plp.b(this.jdField_a_of_type_Plp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-    noo.a(null, onk.a() + "", "0X8009849", "0X8009849", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
+    else
+    {
+      return;
+    }
+    Log.d("DEBUG_LOADIMG", "loadimg in 7 days");
+    if (bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count") < 3)
+    {
+      Log.d("DEBUG_LOADIMG", "loadimg in 7 days, less than 3");
+      bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count", bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
+      a(paramString);
+      return;
+    }
+    Log.d("DEBUG_LOADIMG", "loadimg in 7 days, more than 3");
+    return;
+    label163:
+    Log.d("DEBUG_LOADIMG", "loadimg in a day");
+  }
+  
+  public void onComDraw(Canvas paramCanvas)
+  {
+    super.onComDraw(paramCanvas);
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+    loadImage(this.mSrc);
+    refresh();
+  }
+  
+  public void reset()
+  {
+    super.reset();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(null);
+    this.mSrc = null;
+  }
+  
+  public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageBitmap(paramBitmap);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(paramDrawable);
   }
 }
 

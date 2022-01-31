@@ -1,18 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class tsy
-  implements syt<tmf, tod>
+final class tsy
+  implements bfph
 {
-  tsy(ttf paramttf) {}
+  tsy(StoryVideoItem paramStoryVideoItem, bfpc parambfpc) {}
   
-  public void a(@NonNull tmf paramtmf, @Nullable tod paramtod, @NonNull ErrorMessage paramErrorMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramtod, paramErrorMessage));
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((tdl)tcz.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new tkv().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      ved.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
+    }
   }
 }
 

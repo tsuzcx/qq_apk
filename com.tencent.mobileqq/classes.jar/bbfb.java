@@ -1,130 +1,84 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.1;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.2;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.3;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.4;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener.5;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class bbfb
-  implements bdko
 {
-  private long a;
-  private long b;
+  public static final String a;
+  private static ThreadLocal<LinkedList<Long>> a;
+  public static final String b;
+  public static final String c;
   
-  protected bbfb(bbew parambbew) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  static
   {
-    long l;
-    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
-    {
-      l = System.currentTimeMillis();
-      if (l - this.b >= 1000L) {}
-    }
-    else
-    {
-      return;
-    }
-    this.b = l;
-    bdht.b("NewUpgradeDialog", bdeu.a(10010, bbew.a(), 3, 400));
-    bdes.a().a(22, bdeu.a(10010, bbew.a(), 3, 400));
+    jdField_a_of_type_JavaLangString = PhotoListActivity.class.getSimpleName();
+    b = AlbumListActivity.class.getSimpleName();
+    c = PhotoPreviewActivity.class.getSimpleName();
+    jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public static void a()
   {
-    bdht.c("NewUpgradeDialog", "onDownloadCancel");
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    if (QLog.isColorLevel())
     {
-      bdht.c("NewUpgradeDialog", "onDownloadError state = " + paramInt2);
-      if ((paramDownloadInfo.f == 100) || (paramDownloadInfo.a() == 4)) {
-        onDownloadFinish(paramDownloadInfo);
-      }
-    }
-    else
-    {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.4(this, paramDownloadInfo));
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    bdht.c("NewUpgradeDialog", "onDownloadFinish");
-    long l;
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      l = System.currentTimeMillis();
-      if (l - this.jdField_a_of_type_Long >= 1000L) {}
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    bdht.b("NewUpgradeDialog", bdeu.a(10010, bbew.a(), 3, 700));
-    bdes.a().a(20, bdeu.a(10010, bbew.a(), 3, 700));
-    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.2(this, paramDownloadInfo));
-    if (bbew.b(this.jdField_a_of_type_Bbew))
-    {
-      bbew.b(this.jdField_a_of_type_Bbew);
-      bdht.c("NewUpgradeDialog", ajyc.a(2131707573));
-      return;
-    }
-    bdht.c("NewUpgradeDialog", ajyc.a(2131707581));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      bdht.c("NewUpgradeDialog", "onDownloadPause");
-      bdht.b("NewUpgradeDialog", bdeu.a(10010, bbew.a(), 3, 600));
-      bdes.a().a(19, bdeu.a(10010, bbew.a(), 3, 600));
-      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.1(this, paramDownloadInfo));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bdht.c("NewUpgradeDialog", "onDownloadUpdate");
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      LinkedList localLinkedList2 = (LinkedList)jdField_a_of_type_JavaLangThreadLocal.get();
+      LinkedList localLinkedList1 = localLinkedList2;
+      if (localLinkedList2 == null)
       {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if (localDownloadInfo.c.equals("1101070898"))
-        {
-          bdht.c("NewUpgradeDialog", "onDownloadUpdate STATE = " + localDownloadInfo.a());
-          ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.3(this, localDownloadInfo));
-        }
+        localLinkedList1 = new LinkedList();
+        jdField_a_of_type_JavaLangThreadLocal.set(localLinkedList1);
       }
+      localLinkedList1.addFirst(Long.valueOf(SystemClock.uptimeMillis()));
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public static void a(String paramString1, String paramString2)
   {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
-      bdht.c("NewUpgradeDialog", "onDownloadWait");
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      bbew.a(this.jdField_a_of_type_Bbew, new bbfb(this.jdField_a_of_type_Bbew));
-      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.5(this));
+      localObject2 = (LinkedList)jdField_a_of_type_JavaLangThreadLocal.get();
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new LinkedList();
+        jdField_a_of_type_JavaLangThreadLocal.set(localObject1);
+        ((LinkedList)localObject1).addFirst(Long.valueOf(SystemClock.uptimeMillis()));
+      }
+      localObject2 = new StringBuilder();
+      int i = 1;
+      while (i < ((LinkedList)localObject1).size())
+      {
+        ((StringBuilder)localObject2).append("    ");
+        i += 1;
+      }
+      if (((LinkedList)jdField_a_of_type_JavaLangThreadLocal.get()).size() != 0) {}
+    }
+    else
+    {
+      return;
+    }
+    ((StringBuilder)localObject2).append(paramString2);
+    ((StringBuilder)localObject2).append(":cost ");
+    ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)jdField_a_of_type_JavaLangThreadLocal.get()).removeFirst()).longValue());
+    ((StringBuilder)localObject2).append("ms");
+    QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder("PreUploadVideo");
+      localStringBuilder.append("[").append(paramString1).append("] ");
+      if (paramString2 != null) {
+        localStringBuilder.append("status:").append(paramString2).append(" ");
+      }
+      localStringBuilder.append("content:").append(paramString3);
+      QLog.i("PreUploadVideo", 2, localStringBuilder.toString());
     }
   }
 }

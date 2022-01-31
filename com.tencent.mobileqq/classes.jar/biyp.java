@@ -1,32 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 class biyp
-  implements biqy
+  implements View.OnClickListener
 {
-  public void a(biqn parambiqn, int paramInt)
-  {
-    if (paramInt <= 1) {
-      return;
-    }
-    biyo.a().a(parambiqn.a, paramInt);
-  }
+  biyp(biym parambiym) {}
   
-  public void a(biqn parambiqn, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (parambiqn == null) {
-      return;
-    }
-    parambiqn.e = false;
-    if (paramBoolean) {
-      parambiqn.d = true;
-    }
-    for (;;)
-    {
-      biyo.a().a(parambiqn, paramBoolean);
-      biyo.a(biyo.a(), parambiqn.a);
-      return;
-      QLog.e("PlayDownloadManagerWrap", 1, "download failed with id: " + parambiqn.a);
-    }
+    biym.a(this.a).setText(null);
+    this.a.dismiss();
   }
 }
 

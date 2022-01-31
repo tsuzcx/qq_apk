@@ -1,83 +1,68 @@
+import android.os.Handler;
+import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.minigame.GameRuntime.2.1;
 
-final class beva
-  implements beuz, bevb
+public class beva
+  implements ITTEngine.IListener
 {
-  private int jdField_a_of_type_Int;
-  private final bevb jdField_a_of_type_Bevb;
-  private bevc jdField_a_of_type_Bevc;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  beva(beuy parambeuy) {}
   
-  beva(bevb parambevb)
+  public void onFirstRender()
   {
-    this.jdField_a_of_type_Bevb = parambevb;
+    betc.b("GameRuntime", "onFirstRender");
+    this.a.a(bekc.a(2021));
+    beuy.a(this.a, System.currentTimeMillis());
+    if (beuy.a(this.a))
+    {
+      beuy.a(this.a, false);
+      betc.b("GameRuntime", "game[" + beuy.a(this.a).appId + "][" + beuy.a(this.a).name + "] 冷启动，首帧出现!");
+      bezi.a(beuy.a(this.a), 1022, "1");
+    }
+    for (;;)
+    {
+      long l1 = beuy.b(this.a);
+      long l2 = beuy.c(this.a);
+      bezi.a(beuy.a(this.a), 1042, null, null, null, 0, "1", l1 - l2, null);
+      behm.a(beuy.b(this.a));
+      beuy.a(this.a).post(new GameRuntime.2.1(this));
+      return;
+      betc.b("GameRuntime", "game[" + beuy.a(this.a).appId + "][" + beuy.a(this.a).name + "] 热启动,二次启动游戏!");
+      bezi.a(beuy.a(this.a), 1023, "1");
+      bewe.a(beuy.a(this.a), beuy.a(this.a));
+    }
   }
   
-  private void a()
+  public void onGameLaunched(int paramInt, long paramLong)
   {
-    bevb localbevb;
-    bevc localbevc;
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      if (!this.c)
+    beuy.b(this.a, System.currentTimeMillis());
+    bezi.a(beuy.a(this.a), 1040, null, null, null, 0, "1", paramLong, null);
+    beqf.a().a(63, new Object[] { Integer.valueOf(paramInt) });
+    beyq.a("2load_end", String.valueOf(beuy.a(this.a)), null, beuy.a(this.a));
+    if (beuy.a(this.a) >= 0)
+    {
+      MiniAppInfo localMiniAppInfo = beuy.a(this.a);
+      if (beuy.a(this.a)) {}
+      for (String str = "1";; str = "0")
       {
-        localbevb = this.jdField_a_of_type_Bevb;
-        localbevc = this.jdField_a_of_type_Bevc;
-        if (this.jdField_a_of_type_JavaLangThrowable == null) {
-          break label79;
-        }
+        bezi.b(localMiniAppInfo, 1008, str);
+        bezi.a(beuy.a(this.a), 1008, "1");
+        return;
       }
     }
-    label79:
-    for (String str = this.jdField_a_of_type_JavaLangThrowable.getMessage();; str = "download plugin fail")
-    {
-      localbevb.onInitGpkgInfo(2022, localbevc, str);
-      this.jdField_a_of_type_Bevb.onInitGpkgInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bevc, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
+    bezl.a(beuy.a(this.a), "1", null, "show_fail", "load_pkg_fail");
+    beyq.a("2launch_fail", "load_pkg_fail", null, beuy.a(this.a));
+    beyv.a(bevz.a().a(), 512);
   }
   
-  public void a(boolean paramBoolean, Throwable paramThrowable)
+  public void onInitFinish()
   {
-    try
-    {
-      this.b = true;
-      this.c = paramBoolean;
-      this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-      a();
-      return;
-    }
-    finally
-    {
-      paramThrowable = finally;
-      throw paramThrowable;
-    }
-  }
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
-  {
-    this.jdField_a_of_type_Bevb.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
-  }
-  
-  public void onInitGpkgInfo(int paramInt, bevc parambevc, String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bevc = parambevc;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      a();
-      return;
-    }
-    finally
-    {
-      parambevc = finally;
-      throw parambevc;
-    }
+    betc.b("GameRuntime", "onInitFinish");
+    long l1 = System.currentTimeMillis();
+    long l2 = beuy.a(this.a);
+    bezi.a(beuy.a(this.a), 1039, null, null, null, 0, "1", l1 - l2, null);
+    this.a.f();
+    beuy.a(this.a, 0);
   }
 }
 

@@ -1,33 +1,47 @@
-class afjw
-  extends bfvp
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class afjw
+  extends afjt
+  implements View.OnClickListener
 {
-  afjw(afjv paramafjv, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public afjw(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
   }
   
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  public View a(int paramInt, View paramView)
   {
-    paramInt = 1;
-    if ((paramArrayOfbfvo == null) || (paramArrayOfbfvo.length <= 0)) {}
-    for (;;)
+    View localView;
+    if (paramView != null)
     {
-      return;
-      int i = this.a.a();
-      if ((paramArrayOfbfvo.length < 0) && ((i & 0xF) == 1))
-      {
-        paramArrayOfbfvo[0].b = 0;
-        paramArrayOfbfvo[0].a = 0;
-      }
-      while (paramInt < paramArrayOfbfvo.length)
-      {
-        paramArrayOfbfvo[paramInt].b = -1;
-        paramArrayOfbfvo[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
-      }
+      localView = paramView;
+      if ((paramView.getTag() instanceof afjx)) {}
     }
+    else
+    {
+      localView = LayoutInflater.from(this.a).inflate(2131561128, null);
+    }
+    localView.setOnClickListener(this);
+    localView.setTag(new afjx());
+    return localView;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
+    }
+    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
+    localIntent.putExtra("kSrouce", 15);
+    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
   }
 }
 

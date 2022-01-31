@@ -1,43 +1,17 @@
-public class axms
-  implements ajtg
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class axms
+  extends aymo
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
+  axms(axmr paramaxmr) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramObject = (Object[])paramObject;
-          } while ((paramObject == null) || (paramObject.length != 3));
-          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-          return;
-          paramObject = (Object[])paramObject;
-        } while ((paramObject == null) || (paramObject.length != 5));
-        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-      } while ((paramObject == null) || (paramObject.length != 3));
-      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      paramObject = (Object[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 3));
-    b(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    axmr.a(this.a).set(-2147483648);
+    axmr.b(this.a).set(-2147483648);
+    return super.a(paramInt);
   }
 }
 

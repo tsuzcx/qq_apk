@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import begy;
-import beml;
+import behp;
+import benc;
 import com.tencent.qqmini.sdk.core.widget.CoverView;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -108,9 +108,9 @@ public class CoverVideoView
     this.a.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setServiceWebview(begy parambegy)
+  public void setServiceWebview(behp parambehp)
   {
-    this.a.jdField_a_of_type_Begy = parambegy;
+    this.a.jdField_a_of_type_Behp = parambehp;
   }
   
   public void setVideoPath(String paramString)
@@ -123,9 +123,9 @@ public class CoverVideoView
     this.a.jdField_a_of_type_Long = paramInt;
   }
   
-  public void setWebviewContainer(beml parambeml)
+  public void setWebviewContainer(benc parambenc)
   {
-    this.a.jdField_a_of_type_Beml = parambeml;
+    this.a.jdField_a_of_type_Benc = parambenc;
   }
 }
 

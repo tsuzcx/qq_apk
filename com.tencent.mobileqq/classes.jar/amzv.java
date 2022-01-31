@@ -1,65 +1,59 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amzv
+  extends amyp<amzu>
 {
-  public int a = 2;
-  public int b = 1;
-  public int c = 1;
-  private int d = 1;
-  private int e = 1;
-  
-  @NonNull
-  public static amzv a()
+  public static amzu a()
   {
-    return new amzv();
+    return (amzu)ampl.a().a(413);
+  }
+  
+  public int a()
+  {
+    return 413;
   }
   
   @NonNull
-  public static amzv a(@Nullable String paramString)
+  public amzu a(@NonNull amph[] paramArrayOfamph)
   {
-    amzv localamzv = new amzv();
+    amzu localamzu = new amzu();
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    if (paramArrayOfamph != null) {}
     try
     {
-      if (!TextUtils.isEmpty(paramString))
+      if (!"".equals(paramArrayOfamph))
       {
-        paramString = new JSONObject(paramString);
-        localamzv.a = paramString.optInt("kingcard", localamzv.a);
-        localamzv.d = paramString.optInt("gldrawable", localamzv.d);
-        localamzv.b = paramString.optInt("webso_preload", localamzv.b);
-        localamzv.c = paramString.optInt("webso_screenshot", localamzv.c);
-        localamzv.e = paramString.optInt("etcdrawable", localamzv.e);
+        paramArrayOfamph = new JSONObject(paramArrayOfamph);
+        localamzu.a(paramArrayOfamph.getString("url"));
+        localamzu.a(paramArrayOfamph.getBoolean("isEnable"));
+        localamzu.b(paramArrayOfamph.getBoolean("hideHotValue"));
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localamzv.toString());
-      }
-      return localamzv;
+      return localamzu;
     }
-    catch (Exception paramString)
+    catch (JSONException paramArrayOfamph)
     {
-      for (;;)
-      {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
-      }
+      paramArrayOfamph.printStackTrace();
     }
+    return localamzu;
   }
   
-  public boolean a()
+  public Class<amzu> a()
   {
-    return this.d > 0;
+    return amzu.class;
   }
   
-  public boolean b()
+  @NonNull
+  public amzu b()
   {
-    return this.e > 0;
+    return new amzu();
   }
   
-  public String toString()
+  @NonNull
+  public amzu c()
   {
-    return "QVipSDKConfig{kingCard=" + this.a + ", gldrawable=" + this.d + ", webso_preload=" + this.b + ", webso_screenshot=" + this.c + '}';
+    return new amzu();
   }
 }
 

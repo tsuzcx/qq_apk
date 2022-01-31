@@ -1,48 +1,65 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class rkr
-  extends rkj
+public class rkr
+  implements rkh
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View b;
-  private View c;
-  
-  public rkr(rkn paramrkn, View paramView, BaseData paramBaseData)
+  public static String a(String paramString, ImageData paramImageData)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378378));
-    this.b = paramView.findViewById(2131365276);
-    this.c = paramView.findViewById(2131376353);
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = "";
-    if (paramBaseData2.p == 7)
+    if ((TextUtils.isEmpty(paramString)) || (!paramImageData.a)) {}
+    while (!((Boolean)bhvy.a("sp_native_web_sharpp_pic_switch", Boolean.valueOf(false))).booleanValue()) {
+      return paramString;
+    }
+    if (paramString.contains("fmt=gif"))
     {
-      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
-      this.b.setVisibility(0);
+      paramImageData.a = false;
+      return paramString;
+    }
+    paramImageData = bfnx.a(paramString);
+    if (paramImageData.containsKey("tp"))
+    {
+      paramImageData = (String)paramImageData.get("tp");
+      paramString = paramString.replace("tp=" + paramImageData, "tp=sharp");
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if ((paramBaseData2.p != 7) || (!((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean)) {
-        break;
-      }
-      this.c.setVisibility(8);
-      return;
-      if (paramBaseData2.p == 13)
-      {
-        paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
-        this.b.setVisibility(8);
+      QLog.d(paf.a, 2, "sharpSupport, url : " + paramString);
+      return paramString;
+      if (paramImageData.size() > 0) {
+        paramString = paramString + "&tp=sharp";
+      } else {
+        paramString = paramString + "?tp=sharp";
       }
     }
-    this.c.setVisibility(0);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return paramString.contains("tp=sharp");
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 1;
+  }
+  
+  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new rks(LayoutInflater.from(paramContext).inflate(2131559920, null), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.p == 3;
   }
 }
 

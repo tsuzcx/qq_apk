@@ -1,17 +1,20 @@
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class baup
+class baup
+  implements baus
 {
-  public long a;
-  public ResultReceiver a;
-  public bauo a;
-  public String a;
-  public long b;
-  public String b;
-  private long c;
+  baup(baui parambaui) {}
   
-  public baup(SnapshotService paramSnapshotService) {}
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      this.a.d = paramString;
+      baui.e(this.a);
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131715791), 0).a();
+  }
 }
 
 

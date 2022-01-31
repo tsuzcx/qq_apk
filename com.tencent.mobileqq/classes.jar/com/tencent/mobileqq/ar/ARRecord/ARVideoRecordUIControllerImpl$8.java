@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akzh;
-import akzl;
-import akzo;
+import akzg;
+import akzk;
+import akzn;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(akzl paramakzl, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(akzk paramakzk, int paramInt) {}
   
   public void run()
   {
-    if (akzl.a(this.this$0) != null) {
-      akzl.a(this.this$0).a(0);
+    if (akzk.a(this.this$0) != null) {
+      akzk.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (akzl.a(this.this$0) != -1) {
-        switch (akzl.a(this.this$0))
+      if (akzk.a(this.this$0) != -1) {
+        switch (akzk.a(this.this$0))
         {
         case 5: 
         default: 
-          akzl.a(this.this$0, -1);
+          akzk.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      akzl.b(this.this$0, false);
-      if (!akzl.c(this.this$0)) {
-        akzl.a(this.this$0);
+      akzk.b(this.this$0, false);
+      if (!akzk.c(this.this$0)) {
+        akzk.a(this.this$0);
       }
       return;
-      akzl.a("0X8008A56");
-      akzh.a("AR视频已保存", akzl.e);
+      akzk.a("0X8008A56");
+      akzg.a("AR视频已保存", akzk.e);
       break;
-      akzh.a(akzl.h, true);
+      akzg.a(akzk.h, true);
       break;
-      akzl.a("0X8008A56");
-      akzh.a(akzl.h, true);
+      akzk.a("0X8008A56");
+      akzg.a(akzk.h, true);
       break;
-      if (akzl.b(this.this$0) == true)
+      if (akzk.b(this.this$0) == true)
       {
-        akzl.a(this.this$0, false);
+        akzk.a(this.this$0, false);
       }
       else
       {
-        akzl.a("0X8008A56");
-        akzh.a(akzl.h, true);
+        akzk.a("0X8008A56");
+        akzg.a(akzk.h, true);
         continue;
-        akzl.a("0X8008A56");
+        akzk.a("0X8008A56");
         if (this.a == 1) {
-          akzh.a("AR视频已保存", akzl.f);
+          akzg.a("AR视频已保存", akzk.f);
         } else {
-          akzh.a("AR视频已保存", akzl.g);
+          akzg.a("AR视频已保存", akzk.g);
         }
       }
     }

@@ -1,31 +1,67 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class niz
-  implements View.OnTouchListener
 {
-  public niz(VideoCoverFragment paramVideoCoverFragment) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static niz jdField_a_of_type_Niz;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new nja(this);
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<String> b = new ArrayList();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static niz a()
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (jdField_a_of_type_Niz == null) {
+      jdField_a_of_type_Niz = new niz();
+    }
+    return jdField_a_of_type_Niz;
+  }
+  
+  private void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      VideoCoverFragment.a(this.a).b();
-      if (!this.a.a())
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = aywm.a(str);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
         }
-        this.a.a(false);
+      }
+      return;
+    }
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        break label118;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
+          }
+        }
       }
     }
-    return false;
-    label47:
-    this.a.a(true);
-    return false;
+    a();
+    label118:
   }
 }
 

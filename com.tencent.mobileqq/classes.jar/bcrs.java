@@ -1,59 +1,18 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
-public final class bcrs
+public class bcrs
   implements ValueAnimator.AnimatorUpdateListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  private final TabDragAnimationView jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView;
-  float b = 0.0F;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
-  
-  public bcrs(TabDragAnimationView paramTabDragAnimationView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
-  }
-  
-  public void a()
-  {
-    this.c = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c;
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Float;
-    this.e = (this.c - this.jdField_a_of_type_Float);
-    this.f = (this.jdField_d_of_type_Float - this.b);
-  }
+  public bcrs(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((f2 < 0.1F) && (this.jdField_a_of_type_Float == 0.0F) && (this.b == 0.0F))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-      paramValueAnimator.cancel();
-      paramValueAnimator.removeUpdateListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a = null;
-      return;
-    }
-    float f1;
-    if (f2 < 0.1F)
-    {
-      f1 = this.e;
-      if (f2 >= 0.1F) {
-        break label126;
-      }
-    }
-    label126:
-    for (f2 = this.f;; f2 = this.f * (1.0F - f2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(this.c - f1, this.jdField_d_of_type_Float - f2, false);
-      return;
-      f1 = this.e * (1.0F - f2);
-      break;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 

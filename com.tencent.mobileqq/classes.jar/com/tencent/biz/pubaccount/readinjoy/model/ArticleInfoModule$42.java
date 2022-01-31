@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
-import osm;
-import ozr;
+import osj;
+import ozo;
 
 public class ArticleInfoModule$42
   implements Runnable
 {
-  public ArticleInfoModule$42(ozr paramozr) {}
+  public ArticleInfoModule$42(ozo paramozo) {}
   
   public void run()
   {
-    osm.a().b();
+    osj.a().b();
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 2, "8c8 response refresh ui ");
     }

@@ -1,98 +1,109 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axuh
 {
-  public bbds a;
-  @auma
-  public String a;
-  public short a;
-  public String b = "";
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l;
-  public String m;
-  public String n;
+  public final int a;
+  public long a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<axuf> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private short jdField_a_of_type_Short;
+  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int;
+  public long b;
+  private short jdField_b_of_type_Short;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private short jdField_c_of_type_Short = 1;
   
-  public axuh(long paramLong, String paramString, short paramShort)
+  public axuh(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-    this.c = paramString;
-    if (paramShort == 0)
-    {
-      this.jdField_a_of_type_Short = 10;
-      return;
-    }
-    this.jdField_a_of_type_Short = paramShort;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = avcd.a(paramQQAppInterface, paramInt1, ayta.a().a());
+    avbt.a(paramString);
   }
   
-  public boolean a(String paramString)
+  public int a()
   {
-    try
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public File a()
+  {
+    return new File(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public List<axuf> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public short a()
+  {
+    return this.jdField_b_of_type_Short;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Short = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public void a(short paramShort)
+  {
+    this.jdField_b_of_type_Short = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      String[] arrayOfString = paramString.split("&");
-      if (arrayOfString.length == 7)
-      {
-        this.e = arrayOfString[0].substring("RESPCONDITION=".length());
-        this.f = arrayOfString[1].substring("SUBJECT=".length());
-        this.g = arrayOfString[2].substring("DESC=".length());
-        this.h = arrayOfString[3].substring("RESPDESC=".length());
-        this.i = arrayOfString[4].substring("RESPCONTENTTYPES=".length());
-        this.j = bbmj.a(arrayOfString[5].substring("RESPDEST=".length()));
-        int i1;
-        String str;
-        if ((this.j != null) && (this.j.length() > 0))
-        {
-          i1 = this.j.lastIndexOf("channel_id");
-          if (i1 != -1)
-          {
-            paramString = this.j.substring(i1);
-            i1 = paramString.charAt("channel_id".length());
-            if (i1 != 37) {
-              break label244;
-            }
-            str = paramString.substring(paramString.indexOf('%') + 3);
-            paramString = str;
-            if (str.indexOf('%') > 0) {
-              paramString = str.substring(0, str.indexOf('%'));
-            }
-            this.b = paramString;
-          }
-        }
-        for (;;)
-        {
-          this.k = arrayOfString[6].substring("RESPCONTENTS=".length());
-          if (!"PLUGIN".equalsIgnoreCase(this.i)) {
-            break;
-          }
-          return true;
-          label244:
-          if (i1 == 61)
-          {
-            str = paramString.substring(paramString.indexOf('=') + 1);
-            paramString = str;
-            if (str.indexOf('&') > 0) {
-              paramString = str.substring(0, str.indexOf('&'));
-            }
-            this.b = paramString;
-          }
-        }
-        return false;
-      }
+      avbt.b(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PushBanner", 2, "loadParams Exception:", paramString);
-      }
-    }
-    throw new IllegalArgumentException("PushBanner Params Count must be:7");
+    avbt.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    avbt.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public short b()
+  {
+    return this.jdField_c_of_type_Short;
+  }
+  
+  public void b(short paramShort)
+  {
+    this.jdField_c_of_type_Short = paramShort;
+  }
+  
+  public short c()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public void c(short paramShort)
+  {
+    this.jdField_a_of_type_Short = paramShort;
   }
 }
 

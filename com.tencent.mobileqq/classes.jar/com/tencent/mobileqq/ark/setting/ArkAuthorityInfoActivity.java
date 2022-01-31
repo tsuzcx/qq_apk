@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.setting;
 
-import alpf;
-import alwl;
+import alpe;
+import alwk;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,12 +21,12 @@ public class ArkAuthorityInfoActivity
     setContentView(2131558629);
     super.setTitle(2131690189);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("intent_extra_authority_app_name");
-    ((TextView)super.findViewById(2131362773)).setText(getString(2131690201, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((TextView)super.findViewById(2131362772)).setText(getString(2131690201, new Object[] { this.jdField_a_of_type_JavaLangString }));
     int i = 0;
     while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362768, 2131362764, 2131362767, 2131362765, 2131362766 }[i]);
-      int j = alpf.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
+      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362767, 2131362763, 2131362766, 2131362764, 2131362765 }[i]);
+      int j = alpe.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
         paramBundle.setVisibility(8);
@@ -39,7 +39,7 @@ public class ArkAuthorityInfoActivity
         for (boolean bool = true;; bool = false)
         {
           paramBundle.setChecked(bool);
-          paramBundle.setOnCheckedChangeListener(new alwl(this, i));
+          paramBundle.setOnCheckedChangeListener(new alwk(this, i));
           break;
         }
       }

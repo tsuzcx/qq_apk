@@ -1,31 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class tsj
-  implements Parcelable.Creator
+class tsj
+  implements tsn
 {
-  public StoryPushMsg a(Parcel paramParcel)
-  {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
-  }
+  tsj(tsi paramtsi) {}
   
-  public StoryPushMsg[] a(int paramInt)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    return new StoryPushMsg[paramInt];
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

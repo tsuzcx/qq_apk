@@ -1,41 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class abph
-  implements DialogInterface.OnClickListener
+  extends ajto
 {
-  private int jdField_a_of_type_Int;
+  public abph(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public abph(NotificationActivity paramNotificationActivity, int paramInt)
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int == 1) {
-        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      }
-    }
-    while (paramInt != 1)
+    if (paramBoolean1)
     {
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Int != 2);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      return;
+      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
     }
-    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abph
  * JD-Core Version:    0.7.0.1
  */

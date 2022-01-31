@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
-import bdrh;
-import bdri;
-import bdrq;
-import bdrt;
+import ajya;
+import bdrw;
+import bdrx;
+import bdsf;
+import bdsi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 
 class VoIPManager$3
-  extends bdrt
+  extends bdsi
 {
   VoIPManager$3(VoIPManager paramVoIPManager) {}
   
@@ -20,12 +20,12 @@ class VoIPManager$3
   {
     QLog.d("VoIPManager", 1, "onEnterRoom");
     VoIPManager.access$100(this.this$0).set(true);
-    bdrq localbdrq = bdri.a().a();
+    bdsf localbdsf = bdrx.a().a();
     if (VoIPManager.access$200(this.this$0) != null) {
       this.this$0.updateMuteConfig(VoIPManager.access$200(this.this$0), null);
     }
-    if (localbdrq != null) {
-      localbdrq.b();
+    if (localbdsf != null) {
+      localbdsf.b();
     }
     VoIPManager.access$000(this.this$0, -1);
   }
@@ -49,25 +49,25 @@ class VoIPManager$3
           break;
         }
       } while (VoIPManager.access$400(this.this$0) == null);
-      VoIPManager.access$400(this.this$0).onInterrupt(4, ajyc.a(2131716861));
+      VoIPManager.access$400(this.this$0).onInterrupt(4, ajya.a(2131716872));
       return;
     } while ((paramInt != 3) || (VoIPManager.access$400(this.this$0) == null));
-    VoIPManager.access$400(this.this$0).onInterrupt(3, ajyc.a(2131716860));
+    VoIPManager.access$400(this.this$0).onInterrupt(3, ajya.a(2131716871));
   }
   
-  public void onUserAudioAvailable(bdrh parambdrh, boolean paramBoolean)
+  public void onUserAudioAvailable(bdrw parambdrw, boolean paramBoolean)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserAudioAvailable userInfo=%s available=%s", new Object[] { parambdrh, Boolean.valueOf(paramBoolean) }));
+    QLog.d("VoIPManager", 1, String.format("onUserAudioAvailable userInfo=%s available=%s", new Object[] { parambdrw, Boolean.valueOf(paramBoolean) }));
   }
   
-  public void onUserEnter(bdrh parambdrh)
+  public void onUserEnter(bdrw parambdrw)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserEnter userInfo=%s", new Object[] { parambdrh }));
-    if ((VoIPManager.access$300(this.this$0) == null) && (VoIPManager.access$500(this.this$0, parambdrh.jdField_a_of_type_Long) == null))
+    QLog.d("VoIPManager", 1, String.format("onUserEnter userInfo=%s", new Object[] { parambdrw }));
+    if ((VoIPManager.access$300(this.this$0) == null) && (VoIPManager.access$500(this.this$0, parambdrw.jdField_a_of_type_Long) == null))
     {
       VoIPManager.UserModel localUserModel = new VoIPManager.UserModel(this.this$0, null);
-      localUserModel.mUin = parambdrh.jdField_a_of_type_Long;
-      localUserModel.mOpenId = parambdrh.jdField_a_of_type_JavaLangString;
+      localUserModel.mUin = parambdrw.jdField_a_of_type_Long;
+      localUserModel.mOpenId = parambdrw.jdField_a_of_type_JavaLangString;
       localUserModel.mMicStat = 1;
       VoIPManager.access$700(this.this$0, localUserModel);
       if (VoIPManager.access$400(this.this$0) != null) {
@@ -76,25 +76,25 @@ class VoIPManager$3
     }
   }
   
-  public void onUserExit(bdrh parambdrh)
+  public void onUserExit(bdrw parambdrw)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserExit userInfo=%s", new Object[] { parambdrh }));
+    QLog.d("VoIPManager", 1, String.format("onUserExit userInfo=%s", new Object[] { parambdrw }));
     if (VoIPManager.access$300(this.this$0) == null)
     {
-      VoIPManager.access$900(this.this$0, parambdrh.jdField_a_of_type_Long);
+      VoIPManager.access$900(this.this$0, parambdrw.jdField_a_of_type_Long);
       if (VoIPManager.access$400(this.this$0) != null) {
         VoIPManager.access$400(this.this$0).onRoomMemberChange(VoIPManager.access$800(this.this$0));
       }
     }
   }
   
-  public void onUserSpeaking(bdrh parambdrh, boolean paramBoolean)
+  public void onUserSpeaking(bdrw parambdrw, boolean paramBoolean)
   {
-    QLog.d("VoIPManager", 1, String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { parambdrh, Boolean.valueOf(paramBoolean) }));
-    parambdrh = VoIPManager.access$500(this.this$0, parambdrh.jdField_a_of_type_Long);
-    if (parambdrh != null)
+    QLog.d("VoIPManager", 1, String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { parambdrw, Boolean.valueOf(paramBoolean) }));
+    parambdrw = VoIPManager.access$500(this.this$0, parambdrw.jdField_a_of_type_Long);
+    if (parambdrw != null)
     {
-      parambdrh.mSpeaking = paramBoolean;
+      parambdrw.mSpeaking = paramBoolean;
       if (VoIPManager.access$400(this.this$0) != null) {
         VoIPManager.access$400(this.this$0).onRoomMemberSpeaking(VoIPManager.access$1000(this.this$0));
       }
@@ -103,7 +103,7 @@ class VoIPManager$3
     QLog.e("VoIPManager", 1, "onUserSpeaking userModel==null");
   }
   
-  public void onUserUpdate(List<bdrh> paramList)
+  public void onUserUpdate(List<bdrw> paramList)
   {
     if ((VoIPManager.access$300(this.this$0) != null) && (paramList != null))
     {
@@ -111,9 +111,9 @@ class VoIPManager$3
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
-        bdrh localbdrh = (bdrh)localIterator.next();
-        if (localbdrh.jdField_a_of_type_Long != 0L) {
-          localJSONArray.put(localbdrh.jdField_a_of_type_JavaLangString);
+        bdrw localbdrw = (bdrw)localIterator.next();
+        if (localbdrw.jdField_a_of_type_Long != 0L) {
+          localJSONArray.put(localbdrw.jdField_a_of_type_JavaLangString);
         }
       }
       VoIPManager.access$300(this.this$0).onJoinRoom(localJSONArray);

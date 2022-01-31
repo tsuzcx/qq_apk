@@ -3,14 +3,14 @@ package com.tencent.mobileqq.ocr.view;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
-import audi;
+import audk;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 
 public class CommonMenuPopupView$1
   implements Runnable
 {
-  public CommonMenuPopupView$1(audi paramaudi, View paramView, int paramInt1, int paramInt2) {}
+  public CommonMenuPopupView$1(audk paramaudk, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class CommonMenuPopupView$1
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing())) {}
     try
     {
-      audi.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
+      audk.a(this.this$0).a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, true);
       return;
     }
     catch (Exception localException)

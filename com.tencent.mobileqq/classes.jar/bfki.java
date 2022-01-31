@@ -1,104 +1,25 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.SharpPDec;
-import java.io.File;
 
-public final class bfki
+class bfki
+  implements bfjs
 {
-  public static boolean a;
-  private static boolean b;
+  bfki(bfkh parambfkh) {}
   
-  public static File a(File paramFile)
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    File localFile = new File(paramFile.getAbsolutePath() + ".shp");
-    if (paramFile.exists()) {
-      paramFile.renameTo(localFile);
-    }
-    return localFile;
-  }
-  
-  public static String a(File paramFile)
-  {
-    return paramFile.getAbsolutePath() + ".shp";
-  }
-  
-  public static boolean a()
-  {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.vip_individuation.name());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
     {
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 2) && (!"0".equals(localObject[1]))) {
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
       }
+      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
     }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if ((!a) && (a())) {
-      b(paramContext);
-    }
-    return (a) && (a());
-  }
-  
-  public static boolean b()
-  {
-    String str = Build.CPU_ABI + Build.CPU_ABI2;
-    if (Build.VERSION.SDK_INT < 14) {}
-    while ((!str.contains("armeabi-v7a")) && (!str.contains("armeabi"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    if (!b) {
-      b = UpdateAvSo.a(paramContext, "TcHevcDec");
-    }
-    if ((b) && (!a)) {
-      a = c(paramContext);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSharpPUtil", 2, "isSharpPSoAvaliable: " + b);
-    }
-    return b;
-  }
-  
-  private static boolean c(Context paramContext)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if ((!b()) || (!a())) {
-      return false;
-    }
-    try
-    {
-      if (SharpPDec.a(paramContext) == 1) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      QLog.i("-------cooperation.SharpPDec", 4, "load from qq original");
-      return bool1;
-    }
-    catch (UnsatisfiedLinkError paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return bool2;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfki
  * JD-Core Version:    0.7.0.1
  */

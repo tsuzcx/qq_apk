@@ -1,17 +1,20 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class aohl
-  implements View.OnTouchListener
+public class aohl
+  extends RecyclerView.ViewHolder
 {
-  aohl(aohk paramaohk, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aohl(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
   {
-    this.jdField_a_of_type_Aohk.a.onTouchEvent(paramMotionEvent);
-    return false;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367679));
   }
 }
 

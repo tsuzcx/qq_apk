@@ -1,689 +1,720 @@
-import QTimedMessage.QTimedMessage.C2CMessage;
-import QTimedMessage.QTimedMessage.C2CMessage.RichText;
-import QTimedMessage.QTimedMessage.Client;
-import QTimedMessage.QTimedMessage.Content;
-import QTimedMessage.QTimedMessage.Message;
-import QTimedMessage.QTimedMessage.Timer;
-import QTimedMessage.QTimedMessage.User;
-import android.content.Intent;
-import android.os.Bundle;
+import Wallet.AcsMsg;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.1;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.2;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.3;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.4;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.5;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x75f.cmd0x75f.AddBatchReq;
-import tencent.im.oidb.cmd0x75f.cmd0x75f.AddBatchRsp;
-import tencent.im.oidb.cmd0x75f.cmd0x75f.ReqBody;
-import tencent.im.oidb.cmd0x75f.cmd0x75f.RspBody;
-import tencent.im.oidb.cmd0x7c9.cmd0x7c9.ReqBody;
-import tencent.im.oidb.cmd0x7c9.cmd0x7c9.ReqHelloType;
-import tencent.im.oidb.cmd0x7c9.cmd0x7c9.RspBody;
-import tencent.im.oidb.cmd0x7c9.cmd0x7c9.RspHelloContent;
-import tencent.im.oidb.cmd0x82a.cmd0x82a.MsgInfo;
-import tencent.im.oidb.cmd0x82a.cmd0x82a.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Observable;
+import java.util.Set;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgBody;
+import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.GeoGraphicNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
 
 public class akjv
-  extends MSFServlet
+  extends Observable
+  implements Manager
 {
-  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  private long jdField_a_of_type_Long;
+  private acsn jdField_a_of_type_Acsn;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ActivateFriendsManager.1(this);
+  Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private int jdField_b_of_type_Int = 1;
+  private long jdField_b_of_type_Long;
+  private volatile Set<Long> jdField_b_of_type_JavaUtilSet;
+  private int jdField_c_of_type_Int = 2;
+  private long jdField_c_of_type_Long;
+  private volatile Set<Long> jdField_c_of_type_JavaUtilSet;
+  private int jdField_d_of_type_Int = 3;
+  private long jdField_d_of_type_Long;
+  private volatile Set<Long> jdField_d_of_type_JavaUtilSet;
+  private int jdField_e_of_type_Int = -2147483648;
+  private volatile Set<Long> jdField_e_of_type_JavaUtilSet;
+  
+  public akjv(QQAppInterface paramQQAppInterface)
   {
-    long[] arrayOfLong = paramIntent.getExtras().getLongArray("p_uin_list");
-    ArrayList localArrayList = new ArrayList();
-    akjw localakjw = (akjw)getAppRuntime().getManager(85);
-    Bundle localBundle = new Bundle();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(1024);
-      localStringBuilder.append("rspSendMessage response.getResultCode()=").append(paramFromServiceMsg.getResultCode()).append("send count = ").append(arrayOfLong.length);
-      if (!paramFromServiceMsg.isSuccess()) {}
-    }
-    for (;;)
-    {
-      Object localObject1;
-      Object localObject3;
-      try
-      {
-        localObject1 = new oidb_sso.OIDBSSOPkg();
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-      {
-        Object localObject2;
-        localObject1 = null;
-      }
-      try
-      {
-        localObject2 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        localObject3 = new byte[((ByteBuffer)localObject2).getInt() - 4];
-        ((ByteBuffer)localObject2).get((byte[])localObject3);
-        ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom((byte[])localObject3);
-        localObject3 = localObject1;
-        i = ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.get();
-        if (localStringBuilder != null) {
-          localStringBuilder.append(" respGetBirthday|oidb_sso.OIDBSSOPkg.result=").append(i);
-        }
-        if (((i != 0) && (i != 1401)) || (!((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.get() == null)) {
-          break label494;
-        }
-        localObject2 = ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.get().toByteArray();
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-      {
-        label415:
-        break label415;
-      }
-      try
-      {
-        localObject1 = new cmd0x75f.RspBody();
-        ((cmd0x75f.RspBody)localObject1).mergeFrom((byte[])localObject2);
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get((byte[])localObject2);
-        ((cmd0x75f.RspBody)localObject1).mergeFrom((byte[])localObject2);
-        paramFromServiceMsg = (cmd0x75f.AddBatchRsp)((cmd0x75f.RspBody)localObject1).msg_add_batch_rsp.get();
-        if (localStringBuilder == null) {
-          break label680;
-        }
-        localStringBuilder.append(" rpt_messages size=").append(paramFromServiceMsg.rpt_messages.get().size());
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        if (!QLog.isColorLevel()) {
-          break label494;
-        }
-        QLog.d("ActivateFriends.Servlet", 2, "respSendTimingMsg erro ", paramFromServiceMsg);
-      }
-      int j = paramFromServiceMsg.rpt_messages.get().size();
-      if (i < j)
-      {
-        try
-        {
-          long l = ((QTimedMessage.Message)paramFromServiceMsg.rpt_messages.get().get(i)).msg_content.msg_c2c_message.msg_to_user.uint64_uin.get();
-          localArrayList.add(Long.valueOf(l));
-          if (localStringBuilder != null)
-          {
-            localStringBuilder.append("{");
-            localStringBuilder.append(l);
-            localStringBuilder.append("}");
-          }
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ActivateFriends.Servlet", 2, "respSendMessage index=" + i);
-          continue;
-        }
-        i += 1;
-        continue;
-        localObject3 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ActivateFriends.Servlet", 2, "rspSendMessage|oidb_sso parseFrom byte", localInvalidProtocolBufferMicroException1);
-        localObject3 = localObject1;
-        continue;
-      }
-      label494:
-      if (localArrayList.size() == arrayOfLong.length) {
-        i = 0;
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ActivateFriends.Servlet", 2, localStringBuilder.toString());
-        }
-        if (i == 2) {
-          break label648;
-        }
-        paramFromServiceMsg = new long[localArrayList.size()];
-        j = 0;
-        while (j < localArrayList.size())
-        {
-          paramFromServiceMsg[j] = ((Long)localArrayList.get(j)).longValue();
-          j += 1;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("ActivateFriends.Servlet", 2, "respSendMsg | response.result = " + paramFromServiceMsg.getResultCode());
-        break;
-        if (localArrayList.size() > 0) {
-          i = 1;
-        } else {
-          i = 2;
-        }
-      }
-      localakjw.a(paramFromServiceMsg, 2);
-      label648:
-      localBundle.putInt("key_rt_type", i);
-      notifyObserver(paramIntent, 113, true, localBundle, akjz.class);
-      return;
-      localStringBuilder = null;
-      break;
-      label680:
-      int i = 0;
-    }
+    this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("pref_act_frd" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_check_stamp", 0L);
+    this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_memorial_check_stamp", 0L);
+    this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_check_interval", 120000L);
+    this.jdField_d_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_memorial_check_interval", 120000L);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_Acsn = new acsn(paramQQAppInterface);
+    acsm.a(paramQQAppInterface);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, ArrayList<String> paramArrayList)
+  public static int a(byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
-    localNewIntent.putExtra("param_req_type", 116);
-    localNewIntent.putStringArrayListExtra("data", paramArrayList);
-    paramQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
-    localNewIntent.putExtra("param_req_type", 114);
-    localNewIntent.putExtra("param_req_birthday", paramBoolean1);
-    localNewIntent.putExtra("param_req_memorial", paramBoolean2);
-    paramQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Servlet", 2, "sendGetBirthDayMsgForce");
-    }
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
-    localNewIntent.putExtra("param_req_type", 114);
-    localNewIntent.putExtra("param_has_birthday_data", paramBoolean1);
-    localNewIntent.putExtra("param_has_memorial_data", paramBoolean3);
-    localNewIntent.putExtra("param_req_birthday", paramBoolean2);
-    localNewIntent.putExtra("param_req_memorial", paramBoolean4);
-    paramQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int paramInt)
-  {
-    if ((paramArrayOfLong1.length == 0) || (paramArrayOfLong1.length != paramArrayOfLong2.length)) {
-      return false;
-    }
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), akjv.class);
-    localNewIntent.putExtra("param_req_type", 113);
-    localNewIntent.putExtra("p_msg", paramString);
-    localNewIntent.putExtra("p_uin_list", paramArrayOfLong1);
-    localNewIntent.putExtra("p_time_list", paramArrayOfLong2);
-    localNewIntent.putExtra("p_gift_id", paramInt);
-    paramQQAppInterface.startServlet(localNewIntent);
-    return true;
-  }
-  
-  private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject = null;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    try
     {
-      localStringBuilder = new StringBuilder(1024);
-      localStringBuilder.append("response.getResultCode()=").append(paramFromServiceMsg.getResultCode());
+      SubMsgType0x76.MsgBody localMsgBody = new SubMsgType0x76.MsgBody();
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      int i = localMsgBody.uint32_msg_type.get();
+      return i;
     }
-    for (;;)
+    catch (Exception paramArrayOfByte)
     {
-      if (paramFromServiceMsg.getResultCode() == 1000) {}
-      for (;;)
-      {
-        try
-        {
-          paramIntent = new oidb_sso.OIDBSSOPkg();
-          localObject = paramIntent;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          try
-          {
-            paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-            localObject = new byte[paramFromServiceMsg.getInt() - 4];
-            paramFromServiceMsg.get((byte[])localObject);
-            paramIntent.mergeFrom((byte[])localObject);
-            localObject = paramIntent;
-            if (localObject != null)
-            {
-              i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
-              if (localStringBuilder != null) {
-                localStringBuilder.append(" respGetBirthday|oidb_sso.OIDBSSOPkg.result=").append(i);
-              }
-              if ((i == 0) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() != null))
-              {
-                paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
-                try
-                {
-                  paramFromServiceMsg = new cmd0x7c9.RspBody();
-                  paramFromServiceMsg.mergeFrom(paramIntent);
-                  if (!paramFromServiceMsg.rpt_hello_content.has()) {
-                    break label382;
-                  }
-                  paramIntent = (akjw)getAppRuntime().getManager(85);
-                  paramFromServiceMsg = paramFromServiceMsg.rpt_hello_content.get().iterator();
-                  if (paramFromServiceMsg.hasNext())
-                  {
-                    localObject = (cmd0x7c9.RspHelloContent)paramFromServiceMsg.next();
-                    i = ((cmd0x7c9.RspHelloContent)localObject).uint32_next_time_gap.get();
-                    j = ((cmd0x7c9.RspHelloContent)localObject).uint32_req_type.get();
-                    if (localStringBuilder != null) {
-                      localStringBuilder.append(" type=").append(j).append(" interval=").append(i);
-                    }
-                    if (j != 1) {
-                      break label359;
-                    }
-                    paramIntent.a(i * 1000);
-                    continue;
-                  }
-                  if (localStringBuilder == null) {
-                    continue;
-                  }
-                }
-                catch (Exception paramIntent)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ActivateFriends.Servlet", 2, "respGetBirthday|oidb_sso parseFrom byte", paramIntent);
-                  }
-                }
-              }
-            }
-            QLog.d("ActivateFriends.Servlet", 2, localStringBuilder.toString());
-            return;
-          }
-          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-          {
-            int i;
-            int j;
-            long l;
-            break label334;
-          }
-          paramFromServiceMsg = paramFromServiceMsg;
-          paramIntent = (Intent)localObject;
-        }
-        label334:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ActivateFriends.Servlet", 2, "respGetBirthday|oidb_sso parseFrom byte", paramFromServiceMsg);
-          localObject = paramIntent;
-          continue;
-          label359:
-          if (j == 2)
-          {
-            l = i * 1000;
-            paramIntent.b(l);
-            continue;
-            label382:
-            if (localStringBuilder != null)
-            {
-              localStringBuilder.append(" rspBody.rpt_hello_content hasno ");
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("ActivateFriends.Servlet", 2, "respGetBirthday | response.result = " + paramFromServiceMsg.getResultCode());
-              }
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "ParseMessageType catch error.", paramArrayOfByte);
       }
-      localStringBuilder = null;
     }
+    return 1;
   }
   
-  private void c(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static String a(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    if (QLog.isColorLevel()) {
-      localStringBuilder.append("activiate_friends|response.getResultCode()=").append(paramFromServiceMsg.getResultCode());
-    }
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
-    for (;;)
-    {
-      try
-      {
-        paramIntent = new oidb_sso.OIDBSSOPkg();
-        int i;
-        localObject = paramIntent;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        try
-        {
-          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-          localObject = new byte[paramFromServiceMsg.getInt() - 4];
-          paramFromServiceMsg.get((byte[])localObject);
-          paramIntent.mergeFrom((byte[])localObject);
-          localObject = paramIntent;
-          if (localObject != null)
-          {
-            i = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
-            if (localStringBuilder != null) {
-              localStringBuilder.append(" respSendReadedActivateFriends|oidb_sso.OIDBSSOPkg.result=").append(i);
-            }
-          }
-          if (localStringBuilder != null) {
-            QLog.d("ActivateFriends.Servlet", 2, localStringBuilder.toString());
-          }
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-        {
-          Object localObject;
-          break label139;
-        }
-        paramFromServiceMsg = paramFromServiceMsg;
-        paramIntent = null;
-      }
-      label139:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ActivateFriends.Servlet", 2, "respSendReadedActivateFriends|oidb_sso parseFrom byte", paramFromServiceMsg);
-        localObject = paramIntent;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("ActivateFriends.Servlet", 2, "respSendReadedActivateFriends | response.result = " + paramFromServiceMsg.getResultCode());
-        }
-      }
-    }
+    int[] arrayOfInt = new int[10];
+    int[] tmp6_5 = arrayOfInt;
+    tmp6_5[0] = 2131689840;
+    int[] tmp11_6 = tmp6_5;
+    tmp11_6[1] = 2131689845;
+    int[] tmp16_11 = tmp11_6;
+    tmp16_11[2] = 2131689844;
+    int[] tmp21_16 = tmp16_11;
+    tmp21_16[3] = 2131689838;
+    int[] tmp26_21 = tmp21_16;
+    tmp26_21[4] = 2131689837;
+    int[] tmp31_26 = tmp26_21;
+    tmp31_26[5] = 2131689842;
+    int[] tmp36_31 = tmp31_26;
+    tmp36_31[6] = 2131689841;
+    int[] tmp42_36 = tmp36_31;
+    tmp42_36[7] = 2131689836;
+    int[] tmp48_42 = tmp42_36;
+    tmp48_42[8] = 2131689839;
+    int[] tmp54_48 = tmp48_42;
+    tmp54_48[9] = 2131689843;
+    tmp54_48;
+    return paramContext.getString(arrayOfInt[new java.util.Random().nextInt(arrayOfInt.length)]);
   }
   
-  private void c(Intent paramIntent, Packet paramPacket)
+  public static String a(Context paramContext, SubMsgType0x76.MsgBody paramMsgBody)
   {
-    Object localObject1 = paramIntent.getLongArrayExtra("p_uin_list");
-    long[] arrayOfLong = paramIntent.getLongArrayExtra("p_time_list");
-    String str = paramIntent.getStringExtra("p_msg");
-    int j = paramIntent.getIntExtra("p_gift_id", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Servlet", 2, "reqSendMessage | uin = " + Arrays.toString((long[])localObject1) + " | time = " + Arrays.toString(arrayOfLong));
-    }
-    paramIntent = new cmd0x75f.ReqBody();
-    paramIntent.uint64_appid.set(1800000011L);
-    paramIntent.uint32_subcmd.set(6);
-    cmd0x75f.AddBatchReq localAddBatchReq = new cmd0x75f.AddBatchReq();
-    ArrayList localArrayList = new ArrayList(localObject1.length);
-    int i = 0;
-    if (i < localObject1.length)
+    String str2 = paramMsgBody.bytes_notify_wording.get().toStringUtf8();
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      QTimedMessage.Message localMessage = new QTimedMessage.Message();
-      localMessage.uint64_appid.set(1800000011L);
-      Object localObject2 = new QTimedMessage.User();
-      ((QTimedMessage.User)localObject2).enum_uin_type.set(3);
-      ((QTimedMessage.User)localObject2).uint64_uin.set(getAppRuntime().getLongAccountUin());
-      localMessage.msg_author.set((MessageMicro)localObject2);
-      localMessage.uint32_main_type.set(100);
-      localMessage.uint32_sub_type.set(1);
-      localMessage.uint64_create_time.set(System.currentTimeMillis());
-      localObject2 = new QTimedMessage.Timer();
-      ((QTimedMessage.Timer)localObject2).uint64_time.set(arrayOfLong[i] * 1000L);
-      localMessage.msg_timer.set((MessageMicro)localObject2);
-      localObject2 = new QTimedMessage.Content();
-      QTimedMessage.C2CMessage localC2CMessage = new QTimedMessage.C2CMessage();
-      Object localObject3 = new QTimedMessage.User();
-      ((QTimedMessage.User)localObject3).enum_uin_type.set(3);
-      ((QTimedMessage.User)localObject3).uint64_uin.set(getAppRuntime().getLongAccountUin());
-      localC2CMessage.msg_from_user.set((MessageMicro)localObject3);
-      localObject3 = new QTimedMessage.User();
-      ((QTimedMessage.User)localObject3).enum_uin_type.set(3);
-      ((QTimedMessage.User)localObject3).uint64_uin.set(localObject1[i]);
-      localC2CMessage.msg_to_user.set((MessageMicro)localObject3);
-      localObject3 = new QTimedMessage.Client();
-      ((QTimedMessage.Client)localObject3).uint32_Mobile.set(1);
-      ((QTimedMessage.Client)localObject3).uint32_PC.set(1);
-      localC2CMessage.msg_recv_client.set((MessageMicro)localObject3);
-      if (j != -1)
-      {
-        localObject3 = new QTimedMessage.C2CMessage.RichText();
-        ((QTimedMessage.C2CMessage.RichText)localObject3).uint32_service_id.set(51);
-        ((QTimedMessage.C2CMessage.RichText)localObject3).uint32_gift_id.set(j);
-        localC2CMessage.msg_rich_text.set((MessageMicro)localObject3);
-        localC2CMessage.uint32_send_rich_text_standalone.set(1);
-        localC2CMessage.bytes_text.set(ByteStringMicro.copyFrom(str.getBytes()));
-        localC2CMessage.uint32_send_text_standalone.set(1);
+      if (paramMsgBody.uint32_msg_type.get() != 1) {
+        break label63;
       }
-      for (;;)
-      {
-        ((QTimedMessage.Content)localObject2).msg_c2c_message.set(localC2CMessage);
-        localMessage.msg_content.set((MessageMicro)localObject2);
-        localArrayList.add(localMessage);
-        i += 1;
-        break;
-        localC2CMessage.bytes_text.set(ByteStringMicro.copyFrom(str.getBytes()));
-        localC2CMessage.uint32_send_text_standalone.set(1);
-      }
+      str1 = String.format(paramContext.getString(2131689833), new Object[] { paramMsgBody.msg_geographic_notify.bytes_local_city.get().toStringUtf8() });
     }
-    localAddBatchReq.rpt_messages.set(localArrayList);
-    paramIntent.msg_add_batch_req.set(localAddBatchReq);
-    localObject1 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1887);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(3);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
-    paramPacket.setSSOCommand("OidbSvc.0x75f");
-    localObject1 = ByteBuffer.allocate(paramIntent.length + 4);
-    ((ByteBuffer)localObject1).putInt(paramIntent.length + 4);
-    ((ByteBuffer)localObject1).put(paramIntent);
-    paramPacket.putSendData(((ByteBuffer)localObject1).array());
-  }
-  
-  public void a(Intent paramIntent, Packet paramPacket)
-  {
-    int j = 1;
-    boolean bool2 = paramIntent.getBooleanExtra("param_req_birthday", false);
-    boolean bool1 = paramIntent.getBooleanExtra("param_req_memorial", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Servlet", 2, "req send get birthday message birthday=" + bool2 + " memorial=" + bool1);
-    }
-    Object localObject = new cmd0x7c9.ReqBody();
-    ArrayList localArrayList = new ArrayList(2);
-    cmd0x7c9.ReqHelloType localReqHelloType;
-    if (bool2)
-    {
-      localReqHelloType = new cmd0x7c9.ReqHelloType();
-      localReqHelloType.string_qua.set(bgxr.a());
-      localReqHelloType.uint32_req_type.set(1);
-      if (paramIntent.hasExtra("param_has_birthday_data"))
-      {
-        bool2 = paramIntent.getBooleanExtra("param_has_birthday_data", false);
-        PBUInt32Field localPBUInt32Field = localReqHelloType.uint32_has_data;
-        if (bool2)
-        {
-          i = 1;
-          localPBUInt32Field.set(i);
-        }
-      }
-      else
-      {
-        localArrayList.add(localReqHelloType);
-      }
-    }
-    else if (bool1)
-    {
-      localReqHelloType = new cmd0x7c9.ReqHelloType();
-      localReqHelloType.string_qua.set(bgxr.a());
-      localReqHelloType.uint32_req_type.set(2);
-      if (paramIntent.hasExtra("param_has_memorial_data"))
-      {
-        bool1 = paramIntent.getBooleanExtra("param_has_memorial_data", false);
-        paramIntent = localReqHelloType.uint32_has_data;
-        if (!bool1) {
-          break label376;
-        }
-      }
-    }
-    label376:
-    for (int i = j;; i = 0)
-    {
-      paramIntent.set(i);
-      localArrayList.add(localReqHelloType);
-      ((cmd0x7c9.ReqBody)localObject).rpt_hello_type.set(localArrayList);
-      ((cmd0x7c9.ReqBody)localObject).string_qua.set(bgxr.a());
-      paramIntent = new oidb_sso.OIDBSSOPkg();
-      paramIntent.uint32_command.set(1993);
-      paramIntent.uint32_service_type.set(2);
-      paramIntent.uint32_result.set(0);
-      paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((cmd0x7c9.ReqBody)localObject).toByteArray()));
-      paramPacket.setSSOCommand("OidbSvc.0x7c9_2");
-      paramIntent = paramIntent.toByteArray();
-      localObject = ByteBuffer.allocate(paramIntent.length + 4);
-      ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
-      ((ByteBuffer)localObject).put(paramIntent);
-      paramPacket.putSendData(((ByteBuffer)localObject).array());
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void b(Intent paramIntent, Packet paramPacket)
-  {
-    Object localObject1 = paramIntent.getStringArrayListExtra("data");
-    if (localObject1 == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ActivateFriends.Servlet", 2, "activiate_friends|reqSendReadedActivateFriends size:" + ((List)localObject1).size());
-    }
-    paramIntent = new cmd0x82a.ReqBody();
-    paramIntent.uint32_app_id.set(1001);
-    paramIntent.uint32_inst_id.set(AppSetting.a());
-    ArrayList localArrayList = new ArrayList(((List)localObject1).size());
-    int i = 0;
-    for (;;)
-    {
-      if (i < ((List)localObject1).size())
-      {
-        String str1 = (String)((List)localObject1).get(i);
-        try
-        {
-          Object localObject2 = new JSONObject(str1);
-          str1 = ((JSONObject)localObject2).optString("key_msg_ext_from_uin", "");
-          String str2 = ((JSONObject)localObject2).optString("key_msg_ext_to_uin", "");
-          String str3 = ((JSONObject)localObject2).optString("key_msg_ext_msg_seq", "");
-          String str4 = ((JSONObject)localObject2).optString("key_msg_ext_msg_type", "");
-          localObject2 = ((JSONObject)localObject2).optString("key_msg_ext_msg_sub_type", "");
-          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-            break label503;
-          }
-          cmd0x82a.MsgInfo localMsgInfo = new cmd0x82a.MsgInfo();
-          localMsgInfo.uint64_from_uin.set(Long.valueOf(str1).longValue());
-          localMsgInfo.uint64_to_uin.set(Long.valueOf(str2).longValue());
-          localMsgInfo.uint32_msg_seq.set(Integer.valueOf(str3).intValue());
-          localMsgInfo.uint32_type.set(Integer.valueOf(str4).intValue());
-          localMsgInfo.uint32_subtype.set(Integer.valueOf((String)localObject2).intValue());
-          localArrayList.add(localMsgInfo);
-        }
-        catch (JSONException localJSONException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label503;
-          }
-          QLog.i("ActivateFriends.Servlet", 2, localJSONException.getMessage(), localJSONException);
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label503;
-          }
-        }
-        QLog.i("ActivateFriends.Servlet", 2, localException.getMessage(), localException);
-      }
-      else
-      {
-        paramIntent.msg_info.set(localArrayList);
-        localObject1 = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2090);
-        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
-        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-        ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-        paramPacket.setSSOCommand("OidbSvc.0x82a_1");
-        paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
-        localObject1 = ByteBuffer.allocate(paramIntent.length + 4);
-        ((ByteBuffer)localObject1).putInt(paramIntent.length + 4);
-        ((ByteBuffer)localObject1).put(paramIntent);
-        paramPacket.putSendData(((ByteBuffer)localObject1).array());
-        return;
-      }
-      label503:
-      i += 1;
-    }
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    String str2 = paramFromServiceMsg.getServiceCmd();
-    if (str2 == null) {}
-    label98:
+    label63:
     do
     {
-      return;
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label98;
-        }
+      return str1;
+      if (paramMsgBody.uint32_msg_type.get() == 2) {
+        return paramContext.getString(2131689831);
       }
-      for (String str1 = "";; str1 = "not")
-      {
-        QLog.d("ActivateFriends.Servlet", 2, str1 + " success");
-        if (!str2.equals("OidbSvc.0x7c9_2")) {
-          break;
-        }
-        b(paramIntent, paramFromServiceMsg);
-        return;
-      }
-      if (str2.equals("OidbSvc.0x75f"))
-      {
-        a(paramIntent, paramFromServiceMsg);
-        return;
-      }
-    } while (!str2.equals("OidbSvc.0x82a_1"));
-    c(paramIntent, paramFromServiceMsg);
+      str1 = str2;
+    } while (paramMsgBody.uint32_msg_type.get() != 3);
+    return paramContext.getString(2131689835);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private Set<Long> a(int paramInt)
   {
-    Bundle localBundle = paramIntent.getExtras();
-    if (localBundle == null) {
-      return;
+    Object localObject1 = null;
+    if (paramInt == 1) {
+      localObject1 = this.jdField_b_of_type_JavaUtilSet;
     }
-    switch (localBundle.getInt("param_req_type", 0))
+    Object localObject2;
+    for (;;)
     {
-    case 115: 
-    default: 
-      return;
-    case 113: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Servlet", 2, "req send timing message");
+      localObject2 = localObject1;
+      if (localObject1 != null) {
+        break label190;
       }
-      c(paramIntent, paramPacket);
-      return;
-    case 114: 
-      a(paramIntent, paramPacket);
+      localObject2 = new HashSet(6);
+      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_uin_sended_" + paramInt, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "getUinSendedSet, str = " + (String)localObject1 + ", msgType = " + paramInt);
+      }
+      localObject1 = ((String)localObject1).split("-");
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        CharSequence localCharSequence = localObject1[i];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          ((Set)localObject2).add(Long.valueOf(Long.parseLong(localCharSequence)));
+        }
+        i += 1;
+      }
+      if (paramInt == 2) {
+        localObject1 = this.jdField_c_of_type_JavaUtilSet;
+      }
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_b_of_type_JavaUtilSet = ((Set)localObject2);
+      label190:
+      return localObject2;
+    }
+    this.jdField_c_of_type_JavaUtilSet = ((Set)localObject2);
+    return localObject2;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, submsgtype0xeb.MsgBody paramMsgBody)
+  {
+    if (paramMsgBody == null) {
       return;
     }
-    b(paramIntent, paramPacket);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    if (QLog.isColorLevel()) {
+      localStringBuilder.append("activiate_friends|onReceiveReadedActivateFriendsPush|");
+    }
+    int j = 0;
+    Object localObject1 = paramQQAppInterface.a().b(ajsd.ad, 9002);
+    HashSet localHashSet = new HashSet(((List)localObject1).size());
+    if (QLog.isColorLevel()) {
+      localStringBuilder.append(null).append("get unread msgs|");
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (MessageRecord)((Iterator)localObject1).next();
+      if (!((MessageRecord)localObject2).isread)
+      {
+        localObject2 = ((MessageRecord)localObject2).getExtInfoFromExtStr("key_msg_ext_msg_seq");
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localHashSet.add(localObject2);
+          if (QLog.isColorLevel()) {
+            localStringBuilder.append((String)localObject2).append("|");
+          }
+        }
+      }
+    }
+    int i;
+    if (paramMsgBody.rpt_msg_info.has())
+    {
+      paramMsgBody = paramMsgBody.rpt_msg_info.get().iterator();
+      for (;;)
+      {
+        if (paramMsgBody.hasNext())
+        {
+          localObject1 = Integer.toString(((submsgtype0xeb.MsgInfo)paramMsgBody.next()).uint32_msg_seq.get());
+          if (localHashSet.contains(localObject1))
+          {
+            j = 1;
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder.append("we have ").append((String)localObject1).append(" in unread msgs|");
+              i = j;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        paramQQAppInterface.a().c(ajsd.ad, 9002);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("ActivateFriends.Manager", 2, localStringBuilder.toString());
+      return;
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder.append("rpt_msg_info is null|");
+        i = j;
+        continue;
+        i = 0;
+      }
+    }
+  }
+  
+  private Set<Long> b(int paramInt)
+  {
+    if (paramInt == 2)
+    {
+      if (this.jdField_d_of_type_JavaUtilSet != null) {
+        return this.jdField_d_of_type_JavaUtilSet;
+      }
+      HashSet localHashSet = new HashSet(6);
+      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_uin_wished_" + paramInt, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "getUinWishedSet, str = " + (String)localObject + ", type = " + paramInt);
+      }
+      localObject = ((String)localObject).split("-");
+      int i = localObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        CharSequence localCharSequence = localObject[paramInt];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          localHashSet.add(Long.valueOf(Long.parseLong(localCharSequence)));
+        }
+        paramInt += 1;
+      }
+      this.jdField_d_of_type_JavaUtilSet = localHashSet;
+    }
+    return this.jdField_d_of_type_JavaUtilSet;
+  }
+  
+  private Set<Long> c(int paramInt)
+  {
+    if (paramInt == 2)
+    {
+      if (this.jdField_e_of_type_JavaUtilSet != null) {
+        return this.jdField_e_of_type_JavaUtilSet;
+      }
+      HashSet localHashSet = new HashSet(6);
+      Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_uin_expired_" + paramInt, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "getUinWishedSet, str = " + (String)localObject + ", type = " + paramInt);
+      }
+      localObject = ((String)localObject).split("-");
+      int i = localObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        CharSequence localCharSequence = localObject[paramInt];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          localHashSet.add(Long.valueOf(Long.parseLong(localCharSequence)));
+        }
+        paramInt += 1;
+      }
+      this.jdField_e_of_type_JavaUtilSet = localHashSet;
+    }
+    return this.jdField_e_of_type_JavaUtilSet;
+  }
+  
+  String a(String paramString)
+  {
+    String str;
+    if (TextUtils.isEmpty(paramString)) {
+      str = null;
+    }
+    do
+    {
+      return str;
+      str = paramString;
+    } while (paramString.length() <= 3);
+    return paramString.substring(paramString.length() - 3, paramString.length());
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "onReceivePushMessage  msgType = " + paramInt);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_sended_" + paramInt, "").commit();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_wished_" + paramInt, "").commit();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_expired_" + paramInt, "").commit();
+    if (paramInt == 1) {
+      this.jdField_b_of_type_JavaUtilSet = new HashSet();
+    }
+    for (;;)
+    {
+      if ((paramInt == 2) || (paramInt == 3))
+      {
+        if (paramInt == 2) {
+          i = 1;
+        }
+        LpReportInfo_pf00064.allReport(220, 1, i);
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007210", "0X8007211", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_birth_msg_stamp", awzy.a()).commit();
+        ThreadManager.getSubThreadHandler().post(new ActivateFriendsManager.4(this));
+      }
+      return;
+      if (paramInt == 2) {
+        this.jdField_c_of_type_JavaUtilSet = new HashSet();
+      }
+    }
+  }
+  
+  public void a(int paramInt, long[] paramArrayOfLong1, long[] paramArrayOfLong2, String paramString)
+  {
+    a(paramInt, paramArrayOfLong1, paramArrayOfLong2, paramString, -1);
+  }
+  
+  public void a(int paramInt1, long[] paramArrayOfLong1, long[] paramArrayOfLong2, String paramString, int paramInt2)
+  {
+    int j = 0;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendMessages | uin = ");
+      if ((paramArrayOfLong1 != null) && (paramArrayOfLong1.length != 0)) {
+        break label120;
+      }
+      localStringBuilder.append("null");
+      localStringBuilder.append(" | time = ");
+      if ((paramArrayOfLong2 != null) && (paramArrayOfLong2.length != 0)) {
+        break label166;
+      }
+      localStringBuilder.append("null");
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" | giftId = ").append(paramInt2);
+      QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
+      ThreadManager.getSubThreadHandler().post(new ActivateFriendsManager.3(this, paramInt1, paramArrayOfLong1, paramString, paramInt2, paramArrayOfLong2));
+      return;
+      label120:
+      int k = paramArrayOfLong1.length;
+      int i = 0;
+      while (i < k)
+      {
+        localStringBuilder.append(a(String.valueOf(paramArrayOfLong1[i]))).append(",");
+        i += 1;
+      }
+      break;
+      label166:
+      k = paramArrayOfLong2.length;
+      i = j;
+      while (i < k)
+      {
+        localStringBuilder.append(paramArrayOfLong2[i]).append(",");
+        i += 1;
+      }
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong < 120000L) {
+      l = 120000L;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Long = l;
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_check_stamp", System.currentTimeMillis()).putLong("key_check_interval", l).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "saveBirthdayCheckInStamp=" + this.jdField_b_of_type_Long);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString2 + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true).apply();
+      MessageForText localMessageForText = new MessageForText();
+      localMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localMessageForText.frienduin = ajsd.ad;
+      localMessageForText.istroop = 9002;
+      localMessageForText.senderuin = "";
+      localMessageForText.time = NetConnInfoCenter.getServerTime();
+      localMessageForText.msg = paramString1;
+      localMessageForText.uniseq = paramString2.hashCode();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "---doNotifaction---" + paramString2 + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "---uniseq: " + localMessageForText.uniseq);
+      }
+      paramString1 = new ArrayList();
+      paramString1.add(localMessageForText);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, true, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.D();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "do report : QQnotice.list.show");
+      }
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.list.show", 0, 0, "", "", paramString2, "");
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("ActivateFriends.Manager", 1, "doNotifaction throw an exception: " + paramString1);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    if (paramLong > NetConnInfoCenter.getServerTime())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "has not arrive noticetime, set AlarmMangaer first!");
+      }
+      acsk localacsk = (acsk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(321);
+      if (localacsk != null)
+      {
+        AcsMsg localAcsMsg = new AcsMsg();
+        localAcsMsg.msg_id = paramString2;
+        localAcsMsg.notice_time = paramLong;
+        localAcsMsg.title = paramString1;
+        localacsk.a(localAcsMsg);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "has arrive noticetime, doNotifaction!");
+    }
+    a(paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean2)
+    {
+      ((ajti)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).l(paramBoolean1);
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695238) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean1).commit();
+  }
+  
+  public void a(long[] paramArrayOfLong, int paramInt)
+  {
+    HashSet localHashSet = new HashSet(6);
+    localHashSet.addAll(a(paramInt));
+    int j = localHashSet.size();
+    int k = paramArrayOfLong.length;
+    int i = 0;
+    while (i < k)
+    {
+      localHashSet.add(Long.valueOf(paramArrayOfLong[i]));
+      i += 1;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = localHashSet.iterator();
+    while (localIterator.hasNext()) {
+      localStringBuilder.append((Long)localIterator.next()).append("-");
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_uin_sended_" + paramInt, localStringBuilder.toString()).commit();
+    if (paramInt == 1) {
+      this.jdField_b_of_type_JavaUtilSet = localHashSet;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "onSendTimingMsgSuc, send count = " + paramArrayOfLong.length + ", orginal count = " + j + ", new count = " + localHashSet.size());
+      }
+      return;
+      this.jdField_c_of_type_JavaUtilSet = localHashSet;
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_e_of_type_Int == paramInt) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_e_of_type_Int = paramInt;
+      return bool;
+    }
+  }
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    return a(paramInt).contains(Long.valueOf(paramLong));
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ((ajti)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).v();
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695238) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+  }
+  
+  public boolean a(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      SubMsgType0x76.MsgBody localMsgBody = new SubMsgType0x76.MsgBody();
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      boolean bool = localMsgBody.bool_strong_notify.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "shouldMsgTips | " + bool);
+      }
+      return bool;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "IsMessageTipsInBackground catch error.", paramArrayOfByte);
+      }
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    ActivateFriendsManager.2 local2 = new ActivateFriendsManager.2(this);
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      ThreadManager.getSubThreadHandler().post(local2);
+      return;
+    }
+    local2.run();
+  }
+  
+  void b(long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong < 120000L) {
+      l = 120000L;
+    }
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    this.jdField_d_of_type_Long = l;
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_memorial_check_stamp", System.currentTimeMillis()).putLong("key_memorial_check_interval", l).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "saveMemorialCheckInStamp=" + this.jdField_d_of_type_Long);
+    }
+  }
+  
+  public boolean b(long paramLong, int paramInt)
+  {
+    if ((b(paramInt) == null) || (b(paramInt).size() == 0)) {
+      return false;
+    }
+    return b(paramInt).contains(Long.valueOf(paramLong));
+  }
+  
+  public boolean b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ((ajti)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).v();
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695238) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public boolean b(byte[] arg1)
+  {
+    int i = a(???);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      {
+        if (!this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i)))
+        {
+          bool = true;
+          this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(i));
+          return bool;
+        }
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_Int = this.jdField_c_of_type_Int;
+    akju.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, true, false, true);
+  }
+  
+  public boolean c(long paramLong, int paramInt)
+  {
+    if ((c(paramInt) == null) || (c(paramInt).size() == 0)) {
+      return false;
+    }
+    return c(paramInt).contains(Long.valueOf(paramLong));
+  }
+  
+  public void d()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+      return;
+    }
+  }
+  
+  public void e()
+  {
+    ThreadManagerV2.excute(new ActivateFriendsManager.5(this), 16, null, true);
+    try
+    {
+      str1 = acrp.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd");
+      if (QLog.isColorLevel()) {
+        QLog.i("ActivateFriends.Manager", 2, "do login currenDayTimeStapStr: " + str1);
+      }
+      str2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("sp_key_fetch_reminder_list_time", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("ActivateFriends.Manager", 2, "do login cacheCurrenDayTimeStapStr: " + str2);
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      String str1;
+      String str2;
+      long l2;
+      label163:
+      QLog.e("ActivateFriends.Manager", 1, "checkTodayReminder throw an exception: " + localThrowable);
+    }
+    try
+    {
+      l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) % 3600L * 1000L;
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ActivateFriends.Manager", 2, "do login delay: " + l2);
+        l1 = l2;
+      }
+    }
+    catch (Exception localException)
+    {
+      l1 = 0L;
+      break label163;
+    }
+    l2 = NetConnInfoCenter.getServerTimeMillis();
+    l1 += acrp.a(NetConnInfoCenter.getServerTimeMillis());
+    if (QLog.isColorLevel()) {
+      QLog.i("ActivateFriends.Manager", 2, "do login currentDelayTs: " + acrp.a(l1, "yyyy-MM-dd HH:mm:ss"));
+    }
+    if ((str1.equals(str2)) || (l2 < l1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ActivateFriends.Manager", 2, "already fetch today's data");
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Acsn.a(str1, new akjw(this, str1));
+      return;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    acsm.a();
   }
 }
 

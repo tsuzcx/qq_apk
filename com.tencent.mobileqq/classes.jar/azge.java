@@ -1,25 +1,73 @@
-import android.text.Editable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class azge
-  implements TextWatcher
+  extends Handler
 {
   public azge(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.J.length()) && (paramInt2 > paramInt3))
-    {
-      this.a.e(false);
-      return;
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(this.a.q)) {
+      localBundle.putString("bid", this.a.q);
     }
-    TroopBarPublishActivity.b(this.a);
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)) {}
+    int i;
+    for (String str = "interestcircle";; str = "qqbuluo")
+    {
+      localBundle.putString("from", str);
+      localBundle.putString("uin", this.a.app.getCurrentAccountUin());
+      localBundle.putString("title", bajf.a(this.a.a).trim());
+      localBundle.putString("content", bajf.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText).trim());
+      switch (paramMessage.what)
+      {
+      case 3: 
+      default: 
+        i = 3;
+        TroopBarPublishUtils.a(this.a, 1, i, localBundle);
+        return;
+      }
+    }
+    localBundle.putString("clicktype", "music");
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      i = 2;
+      label210:
+      if (!TextUtils.isEmpty(this.a.q)) {
+        break label259;
+      }
+    }
+    label259:
+    for (paramMessage = "0";; paramMessage = this.a.q)
+    {
+      axqy.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_music", i, 0, paramMessage, "", "", "");
+      i = 4;
+      break;
+      i = 1;
+      break label210;
+    }
+    if ((this.a.jdField_b_of_type_AndroidWidgetTextView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    {
+      i = 2;
+      if (!TextUtils.isEmpty(this.a.q)) {
+        break label340;
+      }
+    }
+    label340:
+    for (paramMessage = "0";; paramMessage = this.a.q)
+    {
+      axqy.b(null, "dc00899", "pub_page_new", "", "pub_page", "Clk_record", i, 0, paramMessage, "", "", "");
+      return;
+      i = 1;
+      break;
+    }
   }
 }
 

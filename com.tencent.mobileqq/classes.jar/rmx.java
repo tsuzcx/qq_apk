@@ -1,46 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.ArrayList;
-import java.util.List;
-
 public class rmx
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private rmy jdField_a_of_type_Rmy;
-  private List<BaseData> b = new ArrayList();
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public rmx(String paramString, rmy paramrmy)
+  public String a(int paramInt)
   {
-    this.jdField_a_of_type_Rmy = paramrmy;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Rmy != null)) {
-        this.jdField_a_of_type_Rmy.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
-      }
-      return;
+    if (paramInt == 2) {
+      return this.d;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (paramInt == 3) {
+      return this.e;
     }
+    if (paramInt == 6) {
+      return this.a;
+    }
+    if (paramInt == 4) {
+      return this.c;
+    }
+    if (paramInt == 5) {
+      return this.b;
+    }
+    return null;
   }
   
-  public void a(List<BaseData> paramList)
+  public String toString()
   {
-    this.b = paramList;
-    a();
-  }
-  
-  public void b(List<BaseData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    a();
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("weibo : ").append(this.a).append("\n");
+    localStringBuilder.append("qq : ").append(this.d).append("\n");
+    localStringBuilder.append("wx : ").append(this.c).append("\n");
+    localStringBuilder.append("pyq : ").append(this.b).append("\n");
+    localStringBuilder.append("qzone : ").append(this.e).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import actn;
-import akja;
+import actj;
+import akiz;
 import android.graphics.Paint;
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import awso;
-import bbct;
+import auko;
+import aulz;
+import awsq;
+import bbdh;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
@@ -33,35 +33,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import onk;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ovh;
-import oxo;
-import oxp;
+import ove;
+import oxl;
+import oxm;
 import pb.unite.search.RequestSearchWord.Rcmd;
-import pot;
-import qag;
+import poq;
+import qad;
+import qak;
 import qan;
-import qaq;
-import qay;
-import qba;
+import qav;
+import qax;
+import qbc;
+import qbe;
 import qbf;
-import qbh;
-import qbi;
-import qbp;
-import qbq;
-import qbv;
-import qca;
-import qce;
-import qcj;
-import qcl;
-import qcy;
-import qdd;
+import qbm;
+import qbn;
+import qbs;
+import qbx;
+import qcb;
+import qcg;
+import qci;
+import qcv;
+import qda;
+import qdq;
 import qdt;
-import qdw;
-import qdy;
-import rvn;
+import qdv;
+import rvk;
 import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
 import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
@@ -87,19 +87,19 @@ import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class BaseArticleInfo
-  extends aukm
-  implements qbh
+  extends auko
+  implements qbe
 {
-  @aulx
+  @aulz
   public static final int ARTICLE_TYPE_NOMAL = 0;
-  @aulx
+  @aulz
   public static final int ARTICLE_TYPE_SHORT_CONTENT = 1;
-  @aulx
+  @aulz
   private static final String TAG = "Q.readinjoy.BaseArticleInfo";
   public String adReportCommonData;
   public int articleStyle;
-  @aulx
-  public rvn articleViewModel;
+  @aulz
+  public rvk articleViewModel;
   public String avatar;
   public int busiType = 1;
   public long businessId;
@@ -111,21 +111,21 @@ public class BaseArticleInfo
   public String comment_id;
   public String comment_jump_url;
   public String content;
-  @aulx
-  public qba familyCommentInfo;
+  @aulz
+  public qax familyCommentInfo;
   public byte[] familyCommentInfoByte;
-  @aulx
+  @aulz
   public int feedsFirstExposurePos = -1;
-  @aulx
+  @aulz
   public FusionBiuInfo fusionBiuInfo;
   public byte[] fusionBiuInfoByte;
   public String galleryReprotExdData;
   public String gifCoverUrl;
   public boolean hasAwesome;
-  @aulx
+  @aulz
   public boolean hintFlag;
-  @aulx
-  public qbf hotWordInfo;
+  @aulz
+  public qbc hotWordInfo;
   public byte[] hotWordInfoListBytes;
   public int icon_height;
   public String icon_url;
@@ -136,32 +136,32 @@ public class BaseArticleInfo
   public int isCardJumpUrlAvailable;
   public int isCloseDislike;
   public boolean isExtraBiuExpanded;
-  @aulx
+  @aulz
   public boolean isNeeaRealExposureFilter;
-  @aulx
+  @aulz
   public boolean isNeedShowBtnWhenFollowed;
-  @aulx
+  @aulz
   public boolean isPublicAccountFollowed;
-  @aulx
+  @aulz
   public boolean isShowFreeNetFlow;
-  @aulx
+  @aulz
   public boolean isShowGif;
-  @aulx
+  @aulz
   public boolean isShowRecommendList;
   public int isSuperTop;
   public boolean isSuperTopic;
-  @aulx
+  @aulz
   public boolean isTwoItem;
   public boolean isUseGif;
   public String jump_url;
-  @aulx
+  @aulz
   public boolean like;
   public int mAbandonRepeatFlag;
   public int mAccountLess;
   public long mAlgorithmGroup = -1L;
   public long mAlgorithmID = -1L;
-  @aulx
-  public qan mArkAppFeedsInfo;
+  @aulz
+  public qak mArkAppFeedsInfo;
   public byte[] mArkAppFeedsInfoBytes;
   public String mArticleContentUrl = "";
   public String mArticleFriendLikeText;
@@ -169,7 +169,7 @@ public class BaseArticleInfo
   public String mArticleSubscriptColor;
   public String mArticleSubscriptText;
   public int mArticleType;
-  @aulx
+  @aulz
   private URL mCacheVideoURL;
   public String mCardJumpUrl;
   public long mChannelID = -1L;
@@ -181,184 +181,184 @@ public class BaseArticleInfo
   public long mCommentCount = -1L;
   public int mCommentIconType;
   public byte[] mCommentInfoBytes;
-  @aulx
+  @aulz
   public List<articlesummary.CommentInfo> mCommentsObj;
-  @aulx
+  @aulz
   public int mCurrentX;
   public String mDianDianLabelIconUrl;
   public String mDianDianLabelText;
   public String mDiskLikeInfoString;
-  @aulx
+  @aulz
   public ArrayList<DislikeInfo> mDislikeInfos;
   public byte[] mExtraBiuBriefBytes;
-  @aulx
-  public qay mExtraBiuBriefInfo;
+  @aulz
+  public qav mExtraBiuBriefInfo;
   public String mFeedCookie;
   public long mFeedId;
-  @aulx
+  @aulz
   public long mFeedIndexInGroup;
   public int mFeedType;
   public String mFirstPagePicUrl = "";
   public String mGWCommonData;
-  @aulx
+  @aulz
   public galleryFeeds.GalleryFeedsInfo mGalleryFeedsInfo;
   public int mGalleryPicNumber;
-  @aulx
+  @aulz
   public long mGroupCount;
-  @aulx
+  @aulz
   public long mGroupId = -1L;
-  @aulx
+  @aulz
   public List<BaseArticleInfo> mGroupSubArticleList;
-  @aulx
+  @aulz
   public URL mHeaderIconUrl;
   public int mIsDispTimestamp;
   public int mIsGallery;
-  @aulx
+  @aulz
   public boolean mIsGalleryChannel;
-  @aulx
+  @aulz
   public boolean mIsInPolymeric;
   public boolean mIsPolymericGallery;
   public int mIsShowSearchord;
   public String mJsonPictureList;
   public String mJsonVideoList;
-  @aulx
+  @aulz
   public int mJumpType;
-  @aulx
-  public qbi mKdLiveInfo;
+  @aulz
+  public qbf mKdLiveInfo;
   public byte[] mKdLiveInfoBytes;
-  @aulx
+  @aulz
   public List<articlesummary.ChannelInfo> mLabelListObj;
   public byte[] mLableListInfoBytes;
   public long mMergeVideoId;
-  @aulx
-  private qbh mModel;
+  @aulz
+  private qbe mModel;
   public byte[] mMultiBiuSameListBytes;
-  @aulx
+  @aulz
   public List<articlesummary.MultiBiuSameContent> mMultiBiuSameListObj;
   public byte[] mNewPackInfoBytes;
-  @aulx
-  public qbq mNewPolymericInfo;
+  @aulz
+  public qbn mNewPolymericInfo;
   public String mOriginalUrl = "";
   public boolean mPUinIsActive;
   public byte[] mPackInfoBytes;
-  @aulx
+  @aulz
   public articlesummary.PackInfo mPackInfoObj;
-  @aulx
+  @aulz
   public articlesummary.PartnerAccountInfo mPartnerAccountInfo;
   public byte[] mPartnerAccountInfoBytes;
-  @aulx
+  @aulz
   public URL[] mPictures;
-  @aulx
-  public qbv mPolymericInfo;
-  @aulx
+  @aulz
+  public qbs mPolymericInfo;
+  @aulz
   public URL mPolymericSmallVideoCoverUrl;
-  @aulx
+  @aulz
   public TemplateBean mProteusTemplateBean;
   public long mRecommendFollowId;
   public byte[] mRecommendFollowInfoBytes;
-  @aulx
-  public qca mRecommendFollowInfos;
+  @aulz
+  public qbx mRecommendFollowInfos;
   public long mRecommendSeq = -1L;
   public long mRecommendTime = -1L;
   public String mRecommentdReason = "";
-  @aulx
+  @aulz
   public String mRefreshTime = "0";
   public String mReportCommonData;
-  @aulx
+  @aulz
   public int mResolvedFeedType;
   public String mSearchWordSessionId;
   public String mSearchWordTitle;
   public ArrayList<RequestSearchWord.Rcmd> mSearchWords = new ArrayList();
   public byte[] mServerContext;
   public boolean mShowBigPicture;
-  @aulx
+  @aulz
   public VideoColumnInfo mSimpleVideoColumnInfo;
   public byte[] mSimpleVideoColumnInfoBytes;
-  @aulx
+  @aulz
   public URL mSinglePicture;
-  @aulx
+  @aulz
   public SocializeFeedsInfo mSocialFeedInfo;
   public byte[] mSocialFeedInfoByte;
   public String mStrCircleId;
   public int mStrategyId;
   public byte[] mSubArticleListBytes;
-  @aulx
+  @aulz
   public List<ArticleInfo> mSubArtilceList;
-  @aulx
+  @aulz
   public List<articlesummary.ArticleSummary> mSubSummaryListObj;
   public String mSubscribeID = "";
   public byte[] mSubscribeInfoBytes;
-  @aulx
+  @aulz
   public articlesummary.SubscribeInfo mSubscribeInfoObj;
   public String mSubscribeName = "";
   public String mSummary = "";
-  @aulx
+  @aulz
   public String mThirdVideoURL;
-  @aulx
+  @aulz
   public long mThirdVideoURLExpireTime;
   public long mTime = -1L;
   public String mTitle = "";
   public String mTopicPicInfo = "";
   public double mTopicPicWHRatio;
-  @aulx
-  public qdt mTopicRecommendFeedsInfo;
+  @aulz
+  public qdq mTopicRecommendFeedsInfo;
   public byte[] mTopicRecommendFeedsInfoByte;
   public int mVideoAdsJumpType;
   public String mVideoAdsJumpUrl;
   public int mVideoAdsSource;
   public String mVideoArticleSubsColor;
   public String mVideoArticleSubsText;
-  @aulx
+  @aulz
   public VideoColumnInfo mVideoColumnInfo;
   public byte[] mVideoColumnInfoBytes;
   public int mVideoCommentCount;
-  @aulx
-  private qaq mVideoCoverInterceptor;
-  @aulx
+  @aulz
+  private qan mVideoCoverInterceptor;
+  @aulz
   public URL mVideoCoverUrl;
-  @aulx
+  @aulz
   public articlesummary.VideoDownloadBarInfo mVideoDownloadBarInfo;
   public byte[] mVideoDownloadBarInfoBytes;
-  @aulx
+  @aulz
   public int mVideoDuration;
-  @aulx
+  @aulz
   public int mVideoJsonHeight;
-  @aulx
+  @aulz
   public int mVideoJsonWidth;
   public String mVideoLogoUrl;
   public int mVideoPlayCount;
   public int mVideoType;
-  @aulx
+  @aulz
   public String mVideoVid;
   public byte[] mWeishiUGInfo;
-  @aulx
+  @aulz
   public long mXGFileSize;
   public String msgBoxBriefContent;
   public String msgBoxBriefPreFix;
   public int msgBoxBriefPreFixType;
-  @aulx
+  @aulz
   public ArrayList<MultiBiuSameContent> multiBiuSameContentList;
-  @aulx
-  public qbp multiVideoColumnInfo;
+  @aulz
+  public qbm multiVideoColumnInfo;
   public byte[] multiVideoColumnInfoBytes;
   public String nick_name;
   public String proteusItemsData;
   public long publishUin;
   public String rawkey;
-  @aulx
-  public qce scripCmsInfo;
+  @aulz
+  public qcb scripCmsInfo;
   public byte[] scripCmsInfoByte;
-  @aulx
+  @aulz
   public List<articlesummary.SRTUniversalID> srtUniversalID;
   public byte[] srtUniversalIDBytesList;
-  public oxo strategy;
-  public oxp strategyCallback;
+  public oxl strategy;
+  public oxm strategyCallback;
   public String thirdAction;
   public String thirdIcon;
   public String thirdName;
-  @aulx
+  @aulz
   public String thirdUin;
-  @aulx
+  @aulz
   public String thirdUinName;
   public long uin;
   public String vIconUrl;
@@ -367,15 +367,15 @@ public class BaseArticleInfo
   public int videoJumpChannelType = -1;
   public String videoReportInfo;
   public String viewRowkey;
-  @aulx
-  public ovh waterFallPic;
-  @aulx
+  @aulz
+  public ove waterFallPic;
+  @aulz
   public articlesummary.WeishiUGInfo weishiUGInfo;
   
-  private qbh getLazyModel()
+  private qbe getLazyModel()
   {
     if (this.mModel == null) {
-      this.mModel = qdy.a(this);
+      this.mModel = qdv.a(this);
     }
     return this.mModel;
   }
@@ -390,18 +390,18 @@ public class BaseArticleInfo
   
   private void handlerFeedsTypeInOldVersionDatabase()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qdh != null))
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qde != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "rewrite feedstype for wenda article articleinfo = " + toString());
       }
-      if ((this.mFeedType != 1) || (this.mSocialFeedInfo.jdField_a_of_type_Qcj == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qcj.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qdd == null)) {
+      if ((this.mFeedType != 1) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qda == null)) {
         break label529;
       }
-      if ((this.mSocialFeedInfo.jdField_a_of_type_Qdd.b != 3) || (this.mSocialFeedInfo.jdField_a_of_type_Qcj.b.intValue() == 21)) {
+      if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b != 3) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b.intValue() == 21)) {
         break label463;
       }
-      this.mSocialFeedInfo.jdField_a_of_type_Qcj.b = Long.valueOf(21L);
+      this.mSocialFeedInfo.jdField_a_of_type_Qcg.b = Long.valueOf(21L);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu question card");
       }
@@ -426,7 +426,7 @@ public class BaseArticleInfo
               }
             }
           }
-          if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcy != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcy.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
+          if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.BaseArticleInfo", 2, "rewrite feedstype for gallery card articleinfo = " + toString());
@@ -434,34 +434,34 @@ public class BaseArticleInfo
             if (this.mFeedType != 1) {
               break;
             }
-            if (this.mSocialFeedInfo.jdField_a_of_type_Qcj == null) {
-              this.mSocialFeedInfo.jdField_a_of_type_Qcj = new qcj();
+            if (this.mSocialFeedInfo.jdField_a_of_type_Qcg == null) {
+              this.mSocialFeedInfo.jdField_a_of_type_Qcg = new qcg();
             }
-            if ((this.mSocialFeedInfo.jdField_a_of_type_Qcj.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qcj.b.intValue() != 23))
+            if ((this.mSocialFeedInfo.jdField_a_of_type_Qcg.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b.intValue() != 23))
             {
-              this.mSocialFeedInfo.jdField_a_of_type_Qcj.b = new Long(23L);
+              this.mSocialFeedInfo.jdField_a_of_type_Qcg.b = new Long(23L);
               if (QLog.isColorLevel()) {
                 QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu gallery card");
               }
             }
           }
           return;
-          if ((this.mSocialFeedInfo.jdField_a_of_type_Qdd.b == 4) && (this.mSocialFeedInfo.jdField_a_of_type_Qcj.b.intValue() != 22))
+          if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b == 4) && (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b.intValue() != 22))
           {
-            this.mSocialFeedInfo.jdField_a_of_type_Qcj.b = Long.valueOf(22L);
+            this.mSocialFeedInfo.jdField_a_of_type_Qcg.b = Long.valueOf(22L);
             if (QLog.isColorLevel())
             {
               QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu answer card");
               continue;
-              if ((this.mFeedType != 1) && (this.mSocialFeedInfo.jdField_a_of_type_Qdd != null)) {
-                if ((this.mSocialFeedInfo.jdField_a_of_type_Qdd.b == 3) && (this.mFeedType != 21))
+              if ((this.mFeedType != 1) && (this.mSocialFeedInfo.jdField_a_of_type_Qda != null)) {
+                if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b == 3) && (this.mFeedType != 21))
                 {
                   this.mFeedType = 21;
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for question card");
                   }
                 }
-                else if ((this.mSocialFeedInfo.jdField_a_of_type_Qdd.b == 4) && (this.mFeedType != 22))
+                else if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b == 4) && (this.mFeedType != 22))
                 {
                   this.mFeedType = 22;
                   if (QLog.isColorLevel()) {
@@ -541,9 +541,9 @@ public class BaseArticleInfo
   {
     if (this.mPolymericSmallVideoCoverUrl == null)
     {
-      qbh localqbh = getLazyModel();
-      if ((localqbh instanceof qdw)) {
-        this.mPolymericSmallVideoCoverUrl = ((qdw)localqbh).getVideoCoverWithSmartCut(paramInt1, paramInt2);
+      qbe localqbe = getLazyModel();
+      if ((localqbe instanceof qdt)) {
+        this.mPolymericSmallVideoCoverUrl = ((qdt)localqbe).getVideoCoverWithSmartCut(paramInt1, paramInt2);
       }
     }
     else
@@ -558,7 +558,7 @@ public class BaseArticleInfo
     if (this.mPolymericSmallVideoCoverUrl == null)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        this.mPolymericSmallVideoCoverUrl = onk.a(onk.a(paramString, paramInt1, paramInt2));
+        this.mPolymericSmallVideoCoverUrl = onh.a(onh.a(paramString, paramInt1, paramInt2));
       }
     }
     else {
@@ -604,13 +604,13 @@ public class BaseArticleInfo
   
   public boolean hasOnlyTwoVideoFeeds()
   {
-    if ((!onk.a(this)) && (!onk.w(this))) {
+    if ((!onh.a(this)) && (!onh.w(this))) {
       return false;
     }
     if ((this.mSubArtilceList != null) && (this.mSubArtilceList.size() == 1))
     {
       ArticleInfo localArticleInfo = (ArticleInfo)this.mSubArtilceList.get(0);
-      if ((localArticleInfo != null) && ((onk.a(localArticleInfo)) || (onk.w(localArticleInfo)))) {
+      if ((localArticleInfo != null) && ((onh.a(localArticleInfo)) || (onh.w(localArticleInfo)))) {
         return true;
       }
     }
@@ -629,12 +629,12 @@ public class BaseArticleInfo
   
   public boolean isPGCShortContent()
   {
-    return ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcy != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcy.jdField_a_of_type_Boolean)) || (this.mArticleType == 1);
+    return ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_Boolean)) || (this.mArticleType == 1);
   }
   
   public boolean isSocialFeed()
   {
-    return (this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcl != null);
+    return (this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qci != null);
   }
   
   public boolean isSubscriptFeed()
@@ -730,7 +730,7 @@ public class BaseArticleInfo
       this.mPackInfoObj.mergeFrom(this.mPackInfoBytes);
       this.mGroupId = this.mPackInfoObj.uint64_pack_id.get();
       if (this.mPackInfoObj != null) {
-        this.mPolymericInfo = qbv.a(this.mPackInfoObj);
+        this.mPolymericInfo = qbs.a(this.mPackInfoObj);
       }
       label250:
       if ((this.mSubscribeInfoBytes != null) && (this.mSubscribeInfoBytes.length > 0)) {
@@ -771,7 +771,7 @@ public class BaseArticleInfo
             try
             {
               ((articlesummary.VideoColumnInfo)localObject1).mergeFrom(this.multiVideoColumnInfoBytes);
-              this.multiVideoColumnInfo = qbp.a((articlesummary.VideoColumnInfo)localObject1);
+              this.multiVideoColumnInfo = qbm.a((articlesummary.VideoColumnInfo)localObject1);
               if ((this.mKdLiveInfoBytes != null) && (this.mKdLiveInfoBytes.length > 0)) {
                 localObject1 = new articlesummary.KdLiveInfo();
               }
@@ -781,7 +781,7 @@ public class BaseArticleInfo
               try
               {
                 ((articlesummary.KdLiveInfo)localObject1).mergeFrom(this.mKdLiveInfoBytes);
-                this.mKdLiveInfo = qbi.a((articlesummary.KdLiveInfo)localObject1);
+                this.mKdLiveInfo = qbf.a((articlesummary.KdLiveInfo)localObject1);
                 if ((this.mSimpleVideoColumnInfoBytes != null) && (this.mSimpleVideoColumnInfoBytes.length > 0)) {
                   localObject1 = new articlesummary.VideoColumnInfo();
                 }
@@ -801,7 +801,7 @@ public class BaseArticleInfo
                   try
                   {
                     ((articlesummary.ScripCmsInfo)localObject1).mergeFrom(this.scripCmsInfoByte);
-                    this.scripCmsInfo = qce.a((articlesummary.ScripCmsInfo)localObject1);
+                    this.scripCmsInfo = qcb.a((articlesummary.ScripCmsInfo)localObject1);
                     if ((this.familyCommentInfoByte != null) && (this.familyCommentInfoByte.length > 0)) {
                       localObject1 = new articlesummary.FamilyCommentInfo();
                     }
@@ -811,7 +811,7 @@ public class BaseArticleInfo
                     try
                     {
                       ((articlesummary.FamilyCommentInfo)localObject1).mergeFrom(this.familyCommentInfoByte);
-                      this.familyCommentInfo = qba.a((articlesummary.FamilyCommentInfo)localObject1);
+                      this.familyCommentInfo = qax.a((articlesummary.FamilyCommentInfo)localObject1);
                       if ((this.fusionBiuInfoByte != null) && (this.fusionBiuInfoByte.length > 0)) {
                         localObject1 = new articlesummary.FusionBiuInfo();
                       }
@@ -852,7 +852,7 @@ public class BaseArticleInfo
                         try
                         {
                           ((articlesummary.TopicRecommendFeedsInfo)localObject1).mergeFrom(this.mTopicRecommendFeedsInfoByte);
-                          this.mTopicRecommendFeedsInfo = qdt.a((articlesummary.TopicRecommendFeedsInfo)localObject1);
+                          this.mTopicRecommendFeedsInfo = qdq.a((articlesummary.TopicRecommendFeedsInfo)localObject1);
                           label717:
                           if ((this.mArkAppFeedsInfoBytes != null) && (this.mArkAppFeedsInfoBytes.length > 0)) {
                             localObject1 = new articlesummary.ArkAppFeedsInfo();
@@ -865,7 +865,7 @@ public class BaseArticleInfo
                             for (;;)
                             {
                               ((articlesummary.ArkAppFeedsInfo)localObject1).mergeFrom(this.mArkAppFeedsInfoBytes);
-                              this.mArkAppFeedsInfo = qan.a((articlesummary.ArkAppFeedsInfo)localObject1);
+                              this.mArkAppFeedsInfo = qak.a((articlesummary.ArkAppFeedsInfo)localObject1);
                               if ((this.mSubArticleListBytes == null) || (this.mSubArticleListBytes.length <= 0)) {
                                 break label1258;
                               }
@@ -895,14 +895,14 @@ public class BaseArticleInfo
                               int j;
                               for (int i = 0; ((Iterator)localObject5).hasNext(); i = j)
                               {
-                                ArticleInfo localArticleInfo = pot.a((articlesummary.ArticleSummary)((Iterator)localObject5).next(), (int)this.mChannelID, 0, null);
+                                ArticleInfo localArticleInfo = poq.a((articlesummary.ArticleSummary)((Iterator)localObject5).next(), (int)this.mChannelID, 0, null);
                                 ((ArrayList)localObject1).add(localArticleInfo);
                                 if ((!QLog.isColorLevel()) || (localArticleInfo == null)) {
                                   break label1840;
                                 }
                                 StringBuilder localStringBuilder = new StringBuilder().append("postRead(): 解析 sub articleSummary【");
                                 j = i + 1;
-                                QLog.e("Q.readinjoy.BaseArticleInfo", 2, i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + onk.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " algorithmID : " + localArticleInfo.mAlgorithmID + " mAlgorithmGroup:" + localArticleInfo.mAlgorithmGroup + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
+                                QLog.e("Q.readinjoy.BaseArticleInfo", 2, i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + onh.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " algorithmID : " + localArticleInfo.mAlgorithmID + " mAlgorithmGroup:" + localArticleInfo.mAlgorithmGroup + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
                               }
                               localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
                               localInvalidProtocolBufferMicroException1.printStackTrace();
@@ -965,7 +965,7 @@ public class BaseArticleInfo
                               {
                                 ((articlesummary.NewPackInfo)localObject2).mergeFrom(this.mNewPackInfoBytes);
                                 if (localObject2 != null) {
-                                  this.mNewPolymericInfo = qbq.a((articlesummary.NewPackInfo)localObject2);
+                                  this.mNewPolymericInfo = qbn.a((articlesummary.NewPackInfo)localObject2);
                                 }
                                 if ((this.mRecommendFollowInfoBytes != null) && (this.mRecommendFollowInfoBytes.length > 0)) {
                                   localObject2 = new articlesummary.RecommendFollowInfos();
@@ -977,7 +977,7 @@ public class BaseArticleInfo
                                 {
                                   ((articlesummary.RecommendFollowInfos)localObject2).mergeFrom(this.mRecommendFollowInfoBytes);
                                   if (localObject2 != null) {
-                                    this.mRecommendFollowInfos = qca.a((articlesummary.RecommendFollowInfos)localObject2);
+                                    this.mRecommendFollowInfos = qbx.a((articlesummary.RecommendFollowInfos)localObject2);
                                   }
                                   if ((this.hotWordInfoListBytes != null) && (this.hotWordInfoListBytes.length > 0)) {
                                     localObject2 = new articlesummary.HotWordInfo();
@@ -989,7 +989,7 @@ public class BaseArticleInfo
                                   {
                                     ((articlesummary.HotWordInfo)localObject2).mergeFrom(this.hotWordInfoListBytes);
                                     if (localObject2 != null) {
-                                      this.hotWordInfo = qbf.a((articlesummary.HotWordInfo)localObject2);
+                                      this.hotWordInfo = qbc.a((articlesummary.HotWordInfo)localObject2);
                                     }
                                     if ((this.mExtraBiuBriefBytes != null) && (this.mExtraBiuBriefBytes.length > 0)) {
                                       localObject2 = new articlesummary.AggregatedList();
@@ -1001,7 +1001,7 @@ public class BaseArticleInfo
                                     {
                                       ((articlesummary.AggregatedList)localObject2).mergeFrom(this.mExtraBiuBriefBytes);
                                       if (localObject2 != null) {
-                                        this.mExtraBiuBriefInfo = qay.a((articlesummary.AggregatedList)localObject2);
+                                        this.mExtraBiuBriefInfo = qav.a((articlesummary.AggregatedList)localObject2);
                                       }
                                       handlerFeedsTypeInOldVersionDatabase();
                                       if ((this.bytesBusiData != null) && (this.bytesBusiData.length > 0)) {
@@ -1065,7 +1065,7 @@ public class BaseArticleInfo
                                               for (;;)
                                               {
                                                 this.weishiUGInfo.mergeFrom(this.mWeishiUGInfo);
-                                                qag.a(this);
+                                                qad.a(this);
                                                 return;
                                                 localInvalidProtocolBufferMicroException6 = localInvalidProtocolBufferMicroException6;
                                                 localInvalidProtocolBufferMicroException6.printStackTrace();
@@ -1167,8 +1167,8 @@ public class BaseArticleInfo
         if (this.mSocialFeedInfo != null)
         {
           this.mSocialFeedInfoByte = this.mSocialFeedInfo.a();
-          if (this.mSocialFeedInfo.jdField_a_of_type_Qcl != null) {
-            this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_Qcl.jdField_a_of_type_Long;
+          if (this.mSocialFeedInfo.jdField_a_of_type_Qci != null) {
+            this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long;
           }
         }
         if (this.mTopicRecommendFeedsInfo != null) {
@@ -1281,9 +1281,9 @@ public class BaseArticleInfo
     }
   }
   
-  public void setOnVideoCoverInterceptor(qaq paramqaq)
+  public void setOnVideoCoverInterceptor(qan paramqan)
   {
-    this.mVideoCoverInterceptor = paramqaq;
+    this.mVideoCoverInterceptor = paramqan;
   }
   
   public void setSearchWordInfo(String paramString, PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
@@ -1301,8 +1301,8 @@ public class BaseArticleInfo
     this.mSearchWords.clear();
     localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Paint localPaint = new Paint();
-    localPaint.setTextSize(actn.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
-    int i = (int)bbct.k() - actn.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
+    localPaint.setTextSize(actj.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
+    int i = (int)bbdh.k() - actj.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
     int j;
     label146:
     RequestSearchWord.Rcmd localRcmd;
@@ -1322,13 +1322,13 @@ public class BaseArticleInfo
         {
           localRcmd = (RequestSearchWord.Rcmd)paramPBStringField.next();
           int k = (int)localPaint.measureText(localRcmd.word.get().toStringUtf8());
-          k = actn.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
+          k = actj.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
           if (i - k > 0) {
             if (TextUtils.isEmpty(paramString))
             {
               paramString = paramString + localRcmd.word.get().toStringUtf8();
               label264:
-              int m = actn.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
+              int m = actj.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
               this.mSearchWords.add(localRcmd);
               paramPBStringField.remove();
               i -= k - m;
@@ -1350,8 +1350,8 @@ public class BaseArticleInfo
       if (this.innerUniqueID != null) {
         paramPBRepeatMessageField = ByteStringMicro.copyFromUtf8(this.innerUniqueID).toStringUtf8();
       }
-      awso.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
-      ((akja)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
+      awsq.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
+      ((akiz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
       return;
     }
   }
@@ -1371,7 +1371,7 @@ public class BaseArticleInfo
     StringBuilder localStringBuilder = new StringBuilder().append("BaseArticleInfo{mArticleID=").append(this.mArticleID).append("\n, mRecommendSeq=").append(this.mRecommendSeq).append("\n, mTitle=").append(this.mTitle).append("\n, mSummary=").append(this.mSummary).append("\n, mPUinIsActive=").append(this.mPUinIsActive).append("\n, mFeedType=").append(this.mFeedType).append("\n, mResolvedFeedType=").append(this.mResolvedFeedType).append("\n, mRowKey=").append(this.innerUniqueID).append("\n, icon_url=").append(this.icon_url).append("\n, icon_with=").append(this.icon_with).append("\n, icon_height=").append(this.icon_height).append("\n, uin=").append(this.uin).append("\n, nick_name=").append(this.nick_name).append("\n, comment_id=").append(this.comment_id).append("\n, content=").append(this.content).append("\n, jump_url=").append(this.jump_url).append("\n, isUseGif=").append(this.isUseGif).append("\n, mFirstPagePicUrl= ").append(this.mFirstPagePicUrl).append("\n, mJsonPictureList= ").append(this.mJsonPictureList).append("\n, mJsonVideoList= ").append(this.mJsonVideoList).append("\n, proteusItemsData= ").append(this.proteusItemsData).append("\n, mNewPolymericInfo= ").append(this.mNewPolymericInfo).append("\n, mFeedId=");
     if (this.mSocialFeedInfo != null) {}
     for (long l = this.mSocialFeedInfo.jdField_a_of_type_Long;; l = 0L) {
-      return l + "\n, isShowRecommendList= " + this.isShowRecommendList + "\n, isPGCShortContent= " + isPGCShortContent() + "\n, isAccountShown= " + this.isAccountShown + "\n, mSocialFeedInfo= " + this.mSocialFeedInfo + "\n, mExtraBiuLevel= " + qay.a(this) + "\n, mArticleContentUrl= " + this.mArticleContentUrl + "\n, isCardJumpUrlAvailable= " + this.isCardJumpUrlAvailable + "\n, mCardJumpUrl= " + this.mCardJumpUrl + "\n, mPartnerAccountInfo= " + getPartnerAccountInfoStr() + "\n, comment_jump_url= " + this.comment_jump_url + "\n, adReportCommonData= " + this.adReportCommonData + '}';
+      return l + "\n, isShowRecommendList= " + this.isShowRecommendList + "\n, isPGCShortContent= " + isPGCShortContent() + "\n, isAccountShown= " + this.isAccountShown + "\n, mSocialFeedInfo= " + this.mSocialFeedInfo + "\n, mExtraBiuLevel= " + qav.a(this) + "\n, mArticleContentUrl= " + this.mArticleContentUrl + "\n, isCardJumpUrlAvailable= " + this.isCardJumpUrlAvailable + "\n, mCardJumpUrl= " + this.mCardJumpUrl + "\n, mPartnerAccountInfo= " + getPartnerAccountInfoStr() + "\n, comment_jump_url= " + this.comment_jump_url + "\n, adReportCommonData= " + this.adReportCommonData + '}';
     }
   }
 }

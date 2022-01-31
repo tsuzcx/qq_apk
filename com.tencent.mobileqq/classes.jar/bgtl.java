@@ -1,21 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.content.Context;
+import android.text.TextUtils;
+import cooperation.qqpim.QQPimTipsInfo;
 
-class bgtl
-  extends akdo
+public class bgtl
 {
-  bgtl(bgtk parambgtk, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
   {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
+    if (paramQQPimTipsInfo == null)
+    {
+      bgtj.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
+      return;
+    }
+    bgtj.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
+  }
+  
+  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
+  {
+    if (paramQQPimTipsInfo == null) {}
+    while (TextUtils.isEmpty(bgtj.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
+      return;
+    }
+    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
+    {
+    case 3: 
+    default: 
+      return;
+    case 1: 
+      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      return;
+    case 2: 
+      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+      return;
+    }
+    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgtl
  * JD-Core Version:    0.7.0.1
  */

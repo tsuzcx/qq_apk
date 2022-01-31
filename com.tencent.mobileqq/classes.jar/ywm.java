@@ -1,31 +1,26 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class ywm
-  implements yxh
+public class ywm
+  implements yxe
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    String str = null;
-    if (paramywn != null) {}
-    for (paramString = paramywn.a();; paramString = null)
+    if (paramywk != null) {}
+    for (paramString = paramywk.a(); (paramywk == null) || (paramString == null); paramString = null)
     {
-      if (paramywn != null) {
-        str = paramywn.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "doAdReport", str);
-      try
-      {
-        paramywn = new JSONObject(paramVarArgs[0]);
-        if (paramywn.getInt("reportType") == 1) {
-          yyh.a(paramywn.getInt("convType"), paramywn.getString("traceId"), paramywn.getString("productId"));
-        }
-        return true;
-      }
-      catch (Exception paramywn)
-      {
-        paramywn.printStackTrace();
-      }
+      yxp.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    try
+    {
+      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
+      return true;
+    }
+    catch (JSONException paramywk)
+    {
+      yxp.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramywk);
     }
     return true;
   }

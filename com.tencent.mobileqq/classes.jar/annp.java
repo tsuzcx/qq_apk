@@ -1,16 +1,26 @@
 import android.content.Context;
 
 public class annp
-  extends lza
+  extends lyv
 {
-  public static boolean a(Context paramContext, String paramString)
+  public static int a(Context paramContext, String paramString)
   {
-    return a(paramContext, "TencentDoc_USER_" + paramString, false);
+    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
   }
   
-  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  public static long a(Context paramContext, String paramString)
   {
-    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
+    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
+  }
+  
+  public static void b(Context paramContext, String paramString, int paramInt)
+  {
+    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
   }
 }
 

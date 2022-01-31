@@ -1,462 +1,166 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.data.LikeRankingInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.PluginConfig.PluginConfig.GetResourceReq;
-import tencent.im.PluginConfig.PluginConfig.GetResourceReqInfo;
+import mqq.manager.Manager;
 
 public class ajzq
+  implements Manager
 {
-  public static int a(int paramInt)
-  {
-    return paramInt / 1000;
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = -1L;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  LikeRankingInfo jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo;
+  String jdField_a_of_type_JavaLangString;
+  List<LikeRankingInfo> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  boolean b = true;
+  boolean c = true;
   
-  public static int a(ajzp paramajzp)
+  public ajzq(QQAppInterface paramQQAppInterface)
   {
-    if (paramajzp == null) {
-      return 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo = new LikeRankingInfo();
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.uin = Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue();
     }
-    return paramajzp.jdField_a_of_type_Int * 1000 + paramajzp.b;
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+    this.b = paramQQAppInterface.getBoolean("notify_on_like_ranking_list", true);
+    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount = paramQQAppInterface.getInt("like_ranking_list_total_like_count", -1);
+    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday = paramQQAppInterface.getInt("like_ranking_list_today_like_count", -1);
+    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum = paramQQAppInterface.getInt("like_ranking_list_ranking_num", 0);
+    this.c = paramQQAppInterface.getBoolean("partake__like_ranking_list", true);
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public LikeRankingInfo a()
   {
-    int i;
-    if (paramQQAppInterface == null) {
-      i = -1;
-    }
-    int j;
-    do
-    {
-      return i;
-      j = paramQQAppInterface.getPreferences().getInt("sp_key_leba_group_seq", 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("LebaHelper", 2, "getLebaGroup, seq=" + j);
-    return j;
+    return this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo;
   }
   
-  /* Error */
-  public static List<ajzp> a(QQAppInterface paramQQAppInterface)
+  public List<LikeRankingInfo> a()
   {
-    // Byte code:
-    //   0: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +11 -> 14
-    //   6: ldc 39
-    //   8: iconst_2
-    //   9: ldc 69
-    //   11: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   14: new 74	java/util/ArrayList
-    //   17: dup
-    //   18: invokespecial 75	java/util/ArrayList:<init>	()V
-    //   21: astore_3
-    //   22: aload_0
-    //   23: invokevirtual 23	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
-    //   26: ldc 77
-    //   28: ldc 79
-    //   30: invokeinterface 83 3 0
-    //   35: astore_0
-    //   36: new 85	org/json/JSONArray
-    //   39: dup
-    //   40: aload_0
-    //   41: invokespecial 88	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   44: astore_0
-    //   45: iconst_0
-    //   46: istore_1
-    //   47: iload_1
-    //   48: aload_0
-    //   49: invokevirtual 92	org/json/JSONArray:length	()I
-    //   52: if_icmpge +126 -> 178
-    //   55: aload_0
-    //   56: iload_1
-    //   57: invokevirtual 96	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   60: astore 4
-    //   62: aload 4
-    //   64: invokevirtual 102	org/json/JSONObject:names	()Lorg/json/JSONArray;
-    //   67: astore 5
-    //   69: aload 5
-    //   71: ifnull +150 -> 221
-    //   74: new 10	ajzp
-    //   77: dup
-    //   78: invokespecial 103	ajzp:<init>	()V
-    //   81: astore 6
-    //   83: iconst_0
-    //   84: istore_2
-    //   85: iload_2
-    //   86: aload 5
-    //   88: invokevirtual 92	org/json/JSONArray:length	()I
-    //   91: if_icmpge +89 -> 180
-    //   94: aload 5
-    //   96: iload_2
-    //   97: invokevirtual 106	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   100: astore 7
-    //   102: ldc 108
-    //   104: aload 7
-    //   106: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   109: ifeq +18 -> 127
-    //   112: aload 6
-    //   114: aload 4
-    //   116: aload 7
-    //   118: invokevirtual 118	org/json/JSONObject:getLong	(Ljava/lang/String;)J
-    //   121: putfield 121	ajzp:jdField_a_of_type_Long	J
-    //   124: goto +104 -> 228
-    //   127: ldc 123
-    //   129: aload 7
-    //   131: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   134: ifeq +18 -> 152
-    //   137: aload 6
-    //   139: aload 4
-    //   141: aload 7
-    //   143: invokevirtual 126	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   146: putfield 13	ajzp:jdField_a_of_type_Int	I
-    //   149: goto +79 -> 228
-    //   152: ldc 128
-    //   154: aload 7
-    //   156: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   159: ifeq +69 -> 228
-    //   162: aload 6
-    //   164: aload 4
-    //   166: aload 7
-    //   168: invokevirtual 126	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   171: putfield 16	ajzp:b	I
-    //   174: goto +54 -> 228
-    //   177: astore_0
-    //   178: aload_3
-    //   179: areturn
-    //   180: aload_3
-    //   181: aload 6
-    //   183: invokeinterface 133 2 0
-    //   188: pop
-    //   189: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   192: ifeq +29 -> 221
-    //   195: ldc 39
-    //   197: iconst_2
-    //   198: new 41	java/lang/StringBuilder
-    //   201: dup
-    //   202: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   205: ldc 79
-    //   207: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: aload 6
-    //   212: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   215: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   218: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   221: iload_1
-    //   222: iconst_1
-    //   223: iadd
-    //   224: istore_1
-    //   225: goto -178 -> 47
-    //   228: iload_2
-    //   229: iconst_1
-    //   230: iadd
-    //   231: istore_2
-    //   232: goto -147 -> 85
-    //   235: astore 7
-    //   237: goto -9 -> 228
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	240	0	paramQQAppInterface	QQAppInterface
-    //   46	179	1	i	int
-    //   84	148	2	j	int
-    //   21	160	3	localArrayList	ArrayList
-    //   60	105	4	localJSONObject	JSONObject
-    //   67	28	5	localJSONArray	JSONArray
-    //   81	130	6	localajzp	ajzp
-    //   100	67	7	str	String
-    //   235	1	7	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   36	45	177	org/json/JSONException
-    //   47	69	177	org/json/JSONException
-    //   74	83	177	org/json/JSONException
-    //   85	102	177	org/json/JSONException
-    //   102	124	177	org/json/JSONException
-    //   127	149	177	org/json/JSONException
-    //   152	174	177	org/json/JSONException
-    //   180	221	177	org/json/JSONException
-    //   102	124	235	java/lang/Exception
-    //   127	149	235	java/lang/Exception
-    //   152	174	235	java/lang/Exception
-  }
-  
-  public static Map<Long, ajzp> a(List<ajzp> paramList)
-  {
-    if (paramList == null) {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
       return null;
     }
-    HashMap localHashMap = new HashMap();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ajzp localajzp = (ajzp)paramList.next();
-      if (localajzp != null) {
-        localHashMap.put(Long.valueOf(localajzp.jdField_a_of_type_Long), localajzp);
-      }
-    }
-    return localHashMap;
+    return new ArrayList(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public static PluginConfig.GetResourceReq a(int paramInt, List<LebaPluginInfo> paramList)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramList.next();
-        if (localLebaPluginInfo != null)
-        {
-          PluginConfig.GetResourceReqInfo localGetResourceReqInfo = new PluginConfig.GetResourceReqInfo();
-          localGetResourceReqInfo.res_id.set((int)localLebaPluginInfo.uiResId);
-          localGetResourceReqInfo.res_seq.set(localLebaPluginInfo.sResSeq);
-          localArrayList.add(localGetResourceReqInfo);
-        }
-      }
-    }
-    paramList = new PluginConfig.GetResourceReq();
-    paramList.plugin_type.set(4000);
-    paramList.plugin_layout_seq.set(paramInt);
-    paramList.reqinfo_list.set(localArrayList);
-    return paramList;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-    paramQQAppInterface.putString("sp_key_leba_upgrade_info", "4440");
-    paramQQAppInterface.commit();
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaHelper", 2, String.format("update version, buildNum[%s]", new Object[] { "4440" }));
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "saveLebaGroupSeq，seq=" + paramInt);
-    }
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-    paramQQAppInterface.putInt("sp_key_leba_group_seq", paramInt);
-    paramQQAppInterface.commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<ajzp> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaHelper", 2, "saveGroupInfo");
-    }
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    do
-    {
-      return;
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      for (;;)
-      {
-        if (paramList.hasNext())
-        {
-          ajzp localajzp = (ajzp)paramList.next();
-          if (localajzp == null) {
-            continue;
-          }
-          try
-          {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("uiResId", localajzp.jdField_a_of_type_Long);
-            localJSONObject.put("groudId", localajzp.jdField_a_of_type_Int);
-            localJSONObject.put("index", localajzp.b);
-            localJSONArray.put(localJSONObject);
-            if (QLog.isColorLevel()) {
-              QLog.i("LebaHelper", 2, "" + localajzp);
-            }
-          }
-          catch (JSONException paramList)
-          {
-            QLog.e("LebaHelper", 1, "saveGroupInfo, exp=", paramList);
-          }
-        }
-      }
-      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-      paramQQAppInterface.putString("sp_key_leba_group_info", localJSONArray.toString());
-      paramQQAppInterface.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("LebaHelper", 2, "saveGroupInfo, result=" + true);
-  }
-  
-  public static void a(List<andx> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(paramList.size());
-    localLinkedHashSet.addAll(paramList);
-    paramList.clear();
-    paramList.addAll(localLinkedHashSet);
-  }
-  
-  public static void a(List<andx> paramList1, List<andx> paramList2)
-  {
-    Collections.sort(paramList2, new ajzr());
-    paramList2 = paramList2.iterator();
-    int i = 0;
-    int j = -1;
-    if (paramList2.hasNext())
-    {
-      andx localandx1 = (andx)paramList2.next();
-      andx localandx2;
-      if (a(localandx1.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.sPriority) != j)
-      {
-        localandx2 = new andx();
-        if (paramList1.size() > 0) {
-          if (i < 2)
-          {
-            ((andx)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 0;
-            label101:
-            localandx2.jdField_a_of_type_JavaLangString = "empty_normal";
-            label109:
-            paramList1.add(localandx2);
-            j = a(localandx1.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.sPriority);
-            localandx1.jdField_a_of_type_Int = 1;
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramList1.add(localandx1);
-        break;
-        ((andx)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 2;
-        break label101;
-        localandx2.jdField_a_of_type_JavaLangString = "empty_normal";
-        break label109;
-        i += 1;
-        localandx1.jdField_a_of_type_Int = 3;
-      }
-    }
-    if (paramList1.size() > 0)
-    {
-      if (i < 2) {
-        ((andx)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 0;
-      }
-    }
-    else {
-      return;
-    }
-    ((andx)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 2;
-  }
-  
-  public static boolean a(andx paramandx)
-  {
-    if ((paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cDataType == 1) && (!TextUtils.isEmpty(paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName))) {
-      return "qzone_feedlist".equals(paramandx.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName);
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getPreferences().getString("sp_key_leba_upgrade_info", "");
-    if (!"4440".equals(paramQQAppInterface)) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt1 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday) || (paramInt3 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount) || (paramInt2 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("LebaHelper", 2, String.format("update version isAppUpgrade[%b], preBuildNum[%s], cur[%s]", new Object[] { Boolean.valueOf(bool), paramQQAppInterface, "4440" }));
+        QLog.i("LikeRankingListManager", 2, String.format("updateMyRank todayVoteCount:%d rank:%d total:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
       }
-      return bool;
+      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount = paramInt3;
+      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday = paramInt1;
+      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum = paramInt2;
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+      localEditor.putInt("like_ranking_list_total_like_count", paramInt3);
+      localEditor.putInt("like_ranking_list_today_like_count", paramInt1);
+      localEditor.putInt("like_ranking_list_ranking_num", paramInt2);
+      localEditor.commit();
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  public void a(long paramLong)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return true;
-      if (7720L == paramLong)
-      {
-        int i = bbjn.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
-        paramQQAppInterface = (aoep)paramQQAppInterface.getManager(264);
-        if ((i == 1) && (paramQQAppInterface.b())) {}
-        for (boolean bool = false;; bool = true) {
-          return bool;
-        }
-      }
-      if (7759L != paramLong) {
-        break;
-      }
-      paramQQAppInterface = ((amno)paramQQAppInterface.getManager(269)).a();
-    } while ((paramQQAppInterface == null) || (paramQQAppInterface.i < 1));
-    return false;
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    localEditor.putLong("like_ranking_list_animation_time", paramLong);
+    localEditor.commit();
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong, boolean paramBoolean, Map<Long, LebaPluginInfo> paramMap)
+  public void a(List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean)
   {
-    if (paramLong == 100000L) {
-      return (paramQQAppInterface.a() != null) && (paramQQAppInterface.a().a());
-    }
-    boolean bool;
-    if (paramBoolean)
-    {
-      paramQQAppInterface = (LebaPluginInfo)paramMap.get(Long.valueOf(paramLong));
-      if ((paramQQAppInterface != null) && ((paramQQAppInterface == null) || (paramQQAppInterface.showInSimpleMode != 0))) {
-        break label140;
-      }
-      bool = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MainAssistObserver.LebaTabRedTouch", 2, "needShowRedDot, id=" + paramLong + ", isSimpleMode=" + paramBoolean + ", needShow=" + bool);
-      }
-      return bool;
-      if (!agca.a().a(paramQQAppInterface, paramLong)) {
-        bool = false;
-      } else {
-        label140:
-        bool = true;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static int b(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean)
   {
-    if (paramQQAppInterface == null) {
-      return -1;
-    }
-    int i = paramQQAppInterface.getPreferences().getInt("sp_key_leba_layout_type", 0);
-    QLog.d("LebaHelper", 1, "getLebaLayoutType =" + i);
-    return i;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    QLog.d("LebaHelper", 1, "saveLebaLayoutType，layoutType = " + paramInt);
-    if (paramQQAppInterface == null) {
+    if (this.b == paramBoolean) {
       return;
     }
-    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-    paramQQAppInterface.putInt("sp_key_leba_layout_type", paramInt);
-    paramQQAppInterface.commit();
+    this.b = paramBoolean;
+    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit().putBoolean("notify_on_like_ranking_list" + this.jdField_a_of_type_JavaLangString, this.b).commit();
   }
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.c == paramBoolean) {
+      return;
+    }
+    this.c = paramBoolean;
+    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit().putBoolean("partake__like_ranking_list" + this.jdField_a_of_type_JavaLangString, this.c).commit();
+    atxk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("notify_on_like_ranking_list" + this.jdField_a_of_type_JavaLangString, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("LikeRankingListManager", 2, "getNotificationSwitch=" + bool);
+    }
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    this.c = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("partake__like_ranking_list" + this.jdField_a_of_type_JavaLangString, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("LikeRankingListManager", 2, "getPartakeRankingEnabled=" + this.c);
+    }
+    return this.c;
+  }
+  
+  public boolean d()
+  {
+    boolean bool2 = false;
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(l);
+    int i = localCalendar1.get(11);
+    boolean bool1 = bool2;
+    if (i >= 22)
+    {
+      bool1 = bool2;
+      if (i < 24)
+      {
+        if (this.jdField_a_of_type_Long < 0L) {
+          this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("like_ranking_list_animation_time", 0L);
+        }
+        Calendar localCalendar2 = Calendar.getInstance();
+        localCalendar2.setTimeInMillis(this.jdField_a_of_type_Long);
+        if (localCalendar2.get(1) == localCalendar1.get(1))
+        {
+          bool1 = bool2;
+          if (localCalendar2.get(6) == localCalendar1.get(6)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public void onDestroy() {}
 }
 
 

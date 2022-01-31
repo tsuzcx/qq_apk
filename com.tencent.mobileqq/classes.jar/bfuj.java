@@ -1,26 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.widget.ProgressPieView;
+import android.view.View;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-public class bfuj
-  extends Handler
+public abstract interface bfuj
 {
-  long jdField_a_of_type_Long;
+  public abstract void a();
   
-  public bfuj(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-      sendEmptyMessageDelayed(0, 1L);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 

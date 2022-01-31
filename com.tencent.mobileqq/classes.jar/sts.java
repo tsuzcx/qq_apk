@@ -1,42 +1,54 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.LruCache;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class sts
-  extends SimpleJob<Void>
+  implements syq<tng, tor>
 {
-  sts(sto paramsto, String paramString1, String paramString2, int paramInt)
-  {
-    super(paramString1);
-  }
+  sts(stl paramstl, String paramString, Object paramObject, AtomicBoolean paramAtomicBoolean1, AtomicBoolean paramAtomicBoolean2) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull tng arg1, @Nullable tor paramtor, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
+    if ((paramErrorMessage.isSuccess()) && (paramtor != null))
     {
-      sto.a(this.jdField_a_of_type_Sto).lock();
-      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      sto.a(this.jdField_a_of_type_Sto).remove(paramJobContext);
-      paramJobContext = QQStoryContext.a().a().createEntityManager();
-      paramVarArgs = tcz.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
+      ved.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url success , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      ??? = (tcw)tcz.a(5);
+      if (paramtor.a != null)
       {
-        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
-        paramVarArgs.setStatus(1000);
-        paramVarArgs.bIsDownloadCompleted = 1;
-        paramJobContext.b(paramVarArgs);
+        paramErrorMessage = paramtor.a.iterator();
+        while (paramErrorMessage.hasNext()) {
+          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+        }
       }
-      return null;
+      paramtor.a = ???.a(paramtor.a);
+      ((stl)tcz.a(28)).a(paramtor.b);
+      this.jdField_a_of_type_Stl.c(this.jdField_a_of_type_JavaLangString, 0);
     }
-    finally
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      sto.a(this.jdField_a_of_type_Sto).unlock();
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        try
+        {
+          if (this.b.get()) {
+            this.jdField_a_of_type_JavaLangObject.notifyAll();
+          }
+          return;
+          ved.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url fail , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        }
+        catch (Exception paramtor)
+        {
+          for (;;)
+          {
+            ved.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary lock error");
+          }
+        }
+      }
     }
   }
 }

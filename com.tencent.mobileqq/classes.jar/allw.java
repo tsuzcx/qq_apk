@@ -1,25 +1,22 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
 
 public class allw
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public allw(ARScanEntryView paramARScanEntryView) {}
+  public allw(ARScanEntryView.26 param26) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.a.jdField_a_of_type_Alae != null) {
+      this.a.jdField_a_of_type_Alae.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    ARScanEntryView.g(this.a.this$0);
+    ARScanEntryView.d(this.a.this$0);
+    this.a.this$0.a.setOnClickListener(this.a.this$0);
   }
 }
 

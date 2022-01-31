@@ -1,49 +1,87 @@
+import android.database.Cursor;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+
 public abstract class auko
 {
-  private static final String CLOSE_EXCEPTION_MSG = "The EntityManagerFactory has been already closed";
-  private boolean closed;
-  private final akfv dbHelper = build(paramString);
-  private String mName;
+  public static final int DETACHED = 1002;
+  public static final int MANAGED = 1001;
+  public static final int NEW = 1000;
+  public static final int REMOVED = 1003;
+  long _id = -1L;
+  int _status = 1000;
   
-  public auko(String paramString)
+  public auko deepCopyByReflect()
   {
-    this.mName = paramString;
-  }
-  
-  public abstract akfv build(String paramString);
-  
-  public void close()
-  {
-    if (this.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    try
+    {
+      auko localauko = (auko)getClass().newInstance();
+      if (localauko != null)
+      {
+        Field[] arrayOfField = getClass().getFields();
+        int j = arrayOfField.length;
+        int i = 0;
+        while (i < j)
+        {
+          Field localField = arrayOfField[i];
+          if (!localField.isAccessible()) {
+            localField.setAccessible(true);
+          }
+          localField.set(localauko, localField.get(this));
+          i += 1;
+        }
+        localauko._status = 1000;
+        localauko.postRead();
+      }
+      return localauko;
     }
-    this.closed = true;
-    this.dbHelper.a();
-  }
-  
-  public aukn createEntityManager()
-  {
-    if (this.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    catch (Exception localException)
+    {
+      QLog.d("Entity", 1, " deepCopyByReflect:failed" + getClass().getName() + " exception e: = " + localException.getMessage());
+      localException.printStackTrace();
     }
-    aula localaula = new aula(this.dbHelper, this.mName);
-    this.closed = false;
-    return localaula;
+    return null;
   }
   
-  public aukn createMessageRecordEntityManager()
+  protected boolean entityByCursor(Cursor paramCursor)
   {
-    if (this.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
-    }
-    aukv localaukv = new aukv(this.dbHelper, this.mName);
-    this.closed = false;
-    return localaukv;
+    return false;
   }
   
-  public boolean isOpen()
+  protected Class<? extends auko> getClassForTable()
   {
-    return !this.closed;
+    return getClass();
+  }
+  
+  public long getId()
+  {
+    return this._id;
+  }
+  
+  public int getStatus()
+  {
+    return this._status;
+  }
+  
+  public String getTableName()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  protected void postRead() {}
+  
+  protected void postwrite() {}
+  
+  protected void prewrite() {}
+  
+  public void setId(long paramLong)
+  {
+    this._id = paramLong;
+  }
+  
+  public void setStatus(int paramInt)
+  {
+    this._status = paramInt;
   }
 }
 

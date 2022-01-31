@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class bhvw
-  implements DialogInterface.OnDismissListener
+public abstract interface bhvw
 {
-  bhvw(bhvv parambhvv, DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
-  }
+  public abstract void onZipLoaded(boolean paramBoolean);
 }
 
 

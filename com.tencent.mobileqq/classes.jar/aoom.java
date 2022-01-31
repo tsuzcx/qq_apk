@@ -1,36 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
+import java.util.Random;
 
 public class aoom
-  implements bfob
+  implements View.OnClickListener
 {
-  public aoom(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public aoom(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    this.a.startTitleProgress();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131695129);
+    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    if (this.a.jdField_a_of_type_Apet != null)
     {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
-      return;
+      paramView = this.a.jdField_a_of_type_Apet;
+      paramView.a += 1;
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.g + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
-    }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
+    int i = new Random(System.currentTimeMillis()).nextInt(1500);
+    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
   }
 }
 

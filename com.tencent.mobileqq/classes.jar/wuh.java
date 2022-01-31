@@ -1,16 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
 
 public class wuh
-  implements www
+  implements View.OnClickListener
 {
   public wuh(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(View paramView)
   {
-    xhe.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+    VideoPlayerView.b(this.a);
   }
 }
 

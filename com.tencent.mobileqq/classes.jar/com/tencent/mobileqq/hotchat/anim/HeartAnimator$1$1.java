@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.hotchat.anim;
 
 import android.view.ViewGroup;
-import aqyi;
+import aqyk;
 
 public class HeartAnimator$1$1
   implements Runnable
 {
-  public HeartAnimator$1$1(aqyi paramaqyi) {}
+  public HeartAnimator$1$1(aqyk paramaqyk) {}
   
   public void run()
   {

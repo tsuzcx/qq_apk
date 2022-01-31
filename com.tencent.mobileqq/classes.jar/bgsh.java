@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bgsh
-  implements DialogInterface.OnDismissListener
+  extends bgsx
 {
-  public bgsh(QQPimBridgeActivity paramQQPimBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bgsh(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    this.a.finish();
+    super(paramContext);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

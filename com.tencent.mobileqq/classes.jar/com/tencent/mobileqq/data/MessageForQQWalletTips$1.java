@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ahiy;
+import ahiw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -56,7 +56,7 @@ class MessageForQQWalletTips$1
             break;
           }
           localObject3 = (TroopMemberInfo)localIterator.next();
-        } while ((localObject3 == null) || (!ahiy.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
+        } while ((localObject3 == null) || (!ahiw.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
       }
       for (int i = 0;; i = 1)
       {

@@ -1,50 +1,56 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class avod
-  implements URLDrawableDownListener
+  extends QIPCModule
 {
-  public avod(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  private static avod jdField_a_of_type_Avod;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  private avod(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
+    super(paramString);
+  }
+  
+  public static avod a()
+  {
+    if (jdField_a_of_type_Avod != null) {
+      return jdField_a_of_type_Avod;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Avod == null) {
+        jdField_a_of_type_Avod = new avod("REAL_NAME");
+      }
+      avod localavod = jdField_a_of_type_Avod;
+      return localavod;
     }
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+      QLog.i("RealName", 2, "onCall s: " + paramString);
     }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
-    }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
+    if (paramBundle == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        paramInt = paramBundle.getInt("result");
+        if (QLog.isColorLevel()) {
+          QLog.i("RealName", 2, "result is : " + paramInt);
+        }
+      } while (paramInt == 0);
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } while (paramString == null);
+    ((ajud)paramString.a(4)).e();
+    return null;
   }
 }
 

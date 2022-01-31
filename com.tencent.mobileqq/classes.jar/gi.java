@@ -12,11 +12,11 @@ class gi
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131364991 == paramView.getId())
+    if (2131364990 == paramView.getId())
     {
       paramView = new gj(this);
       gk localgk = new gk(this);
-      bbcv.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693913), this.jdField_a_of_type_AndroidContentContext.getString(2131693892), 2131690596, 2131693932, paramView, localgk).show();
+      bbdj.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693914), this.jdField_a_of_type_AndroidContentContext.getString(2131693893), 2131690596, 2131693933, paramView, localgk).show();
     }
   }
 }

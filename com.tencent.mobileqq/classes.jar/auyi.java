@@ -1,36 +1,8 @@
-import QC.SuixintieCheckInfo;
-import QC.SuixintieCheckItem;
-import com.qq.taf.jce.JceInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
+import QC.UniBusiGetOneItemWithCheckRsp;
 
-public class auyi
+public abstract interface auyi
 {
-  public static SuixintieCheckInfo a(String paramString)
-  {
-    SuixintieCheckInfo localSuixintieCheckInfo = new SuixintieCheckInfo();
-    localSuixintieCheckInfo.readFrom(new JceInputStream(bcvi.a(paramString, 0)));
-    if (localSuixintieCheckInfo.vSuixintieCheckList != null) {
-      return localSuixintieCheckInfo;
-    }
-    return null;
-  }
-  
-  public static SuixintieCheckItem a(SuixintieCheckInfo paramSuixintieCheckInfo, int paramInt)
-  {
-    if (paramSuixintieCheckInfo.vSuixintieCheckList != null)
-    {
-      paramSuixintieCheckInfo = paramSuixintieCheckInfo.vSuixintieCheckList.iterator();
-      while (paramSuixintieCheckInfo.hasNext())
-      {
-        SuixintieCheckItem localSuixintieCheckItem = (SuixintieCheckItem)paramSuixintieCheckInfo.next();
-        if (localSuixintieCheckItem.appid == paramInt) {
-          return localSuixintieCheckItem;
-        }
-      }
-    }
-    return null;
-  }
+  public abstract void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp);
 }
 
 

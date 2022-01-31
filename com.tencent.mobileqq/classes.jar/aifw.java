@@ -1,17 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class aifw
-  extends akim
+public class aifw
 {
-  aifw(aifu paramaifu) {}
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public aifw(aifs paramaifs, int paramInt, auko paramauko)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      aifu.a(this.a, paramString, localBitmap);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramauko);
+  }
+  
+  public aifw(aifs paramaifs, int paramInt, DiscussionInfo paramDiscussionInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public aifw(aifs paramaifs, int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
   }
 }
 

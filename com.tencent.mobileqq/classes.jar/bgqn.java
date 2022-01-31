@@ -1,13 +1,13 @@
-import android.os.Bundle;
+import android.net.Uri;
 
-public class bgqn
+public abstract interface bgqn
 {
-  public int a;
-  public Bundle a;
+  public static final Uri a = Uri.parse("content://qq.favorites/biz_related");
+  public static final Uri b = Uri.parse("content://qq.favorites/global_search");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqn
  * JD-Core Version:    0.7.0.1
  */

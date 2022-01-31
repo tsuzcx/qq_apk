@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
-import bjww;
+import bjxn;
 
 public class EditVideoPartManager$6
   implements Runnable
 {
-  public EditVideoPartManager$6(bjww parambjww) {}
+  public EditVideoPartManager$6(bjxn parambjxn) {}
   
   public void run()
   {

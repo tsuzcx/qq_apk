@@ -1,21 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 class aqqd
-  implements CompoundButton.OnCheckedChangeListener
+  extends RecyclerView.ViewHolder
 {
-  aqqd(aqqa paramaqqa, String paramString) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  aqqd(aqqc paramaqqc, View paramView)
   {
-    paramCompoundButton = bich.a();
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      paramCompoundButton.a(str, i);
-      return;
-    }
+    super(paramView);
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

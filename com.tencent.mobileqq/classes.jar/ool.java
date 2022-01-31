@@ -1,61 +1,85 @@
-import android.os.Bundle;
-import com.tencent.aladdin.config.network.AladdinRequestHandler;
-import com.tencent.aladdin.config.network.AladdinResponseHandler;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.os.Handler;
+import com.tencent.aladdin.config.network.AsyncTaskExecutor;
 
 public class ool
-  extends AladdinRequestHandler
+  implements AsyncTaskExecutor
 {
-  public static byte[] a(byte[] paramArrayOfByte)
+  public static final ool a;
+  private volatile Handler a;
+  
+  static
   {
-    int i = paramArrayOfByte.length - 4;
-    byte[] arrayOfByte = new byte[i];
-    bbmj.a(arrayOfByte, 0, paramArrayOfByte, 4, i);
-    return arrayOfByte;
+    jdField_a_of_type_Ool = new ool();
   }
   
-  private static void b(Bundle paramBundle)
+  /* Error */
+  public void execute(java.lang.Runnable paramRunnable)
   {
-    HashMap localHashMap = new HashMap();
-    int i = paramBundle.getInt("key_ret_code", 0);
-    localHashMap.put("param_OpCode", String.valueOf(paramBundle.getInt("key_rsp_type", 0)));
-    localHashMap.put("param_FailCode", String.valueOf(i));
-    long l1 = paramBundle.getLong("key_config_count");
-    long l2 = paramBundle.getLong("key_failed_count");
-    localHashMap.put("param_ConfigCount", String.valueOf(l1));
-    localHashMap.put("param_FailCount", String.valueOf(l2));
-    l1 = paramBundle.getLong("key_response_timestamp", 0L) - paramBundle.getLong("key_request_timestamp", 0L);
-    localHashMap.put("param_CostTime", String.valueOf(l1));
-    paramBundle = axrl.a(onk.a().getApplication());
-    String str = onk.a();
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramBundle.a(str, "actKanDianAladdinResult", bool, l1, 0L, localHashMap, null, false);
-      return;
-    }
-  }
-  
-  private static byte[] c(byte[] paramArrayOfByte)
-  {
-    long l = paramArrayOfByte.length;
-    byte[] arrayOfByte = new byte[(int)l + 4];
-    bbmj.a(arrayOfByte, 0, 4L + l);
-    bbmj.a(arrayOfByte, 4, paramArrayOfByte, (int)l);
-    return arrayOfByte;
-  }
-  
-  public void onSend(byte[] paramArrayOfByte, Bundle paramBundle, AladdinResponseHandler paramAladdinResponseHandler)
-  {
-    AppRuntime localAppRuntime = onk.a();
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), oom.class);
-    localNewIntent.putExtra("key_body_bytes", paramArrayOfByte);
-    localNewIntent.putExtra("key_extra_info", paramBundle);
-    localNewIntent.putExtra("key_response_handler", paramAladdinResponseHandler);
-    localNewIntent.putParcelableArrayListExtra("key_aladdin_listeners", ooh.a);
-    localAppRuntime.startServlet(localNewIntent);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 24	ool:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   4: ifnonnull +42 -> 46
+    //   7: aload_0
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 24	ool:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ifnonnull +29 -> 44
+    //   18: ldc 26
+    //   20: iconst_0
+    //   21: invokestatic 32	com/tencent/mobileqq/app/ThreadManagerV2:newFreeHandlerThread	(Ljava/lang/String;I)Landroid/os/HandlerThread;
+    //   24: astore_2
+    //   25: aload_2
+    //   26: invokevirtual 37	android/os/HandlerThread:start	()V
+    //   29: aload_0
+    //   30: new 39	android/os/Handler
+    //   33: dup
+    //   34: aload_2
+    //   35: invokevirtual 43	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   38: invokespecial 46	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   41: putfield 24	ool:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_0
+    //   47: getfield 24	ool:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   50: aload_1
+    //   51: invokevirtual 50	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   54: pop
+    //   55: return
+    //   56: astore_2
+    //   57: ldc 52
+    //   59: iconst_2
+    //   60: aload_2
+    //   61: iconst_0
+    //   62: anewarray 4	java/lang/Object
+    //   65: invokestatic 58	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   68: aload_0
+    //   69: new 39	android/os/Handler
+    //   72: dup
+    //   73: invokestatic 61	com/tencent/mobileqq/app/ThreadManagerV2:getFileThreadLooper	()Landroid/os/Looper;
+    //   76: invokespecial 46	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   79: putfield 24	ool:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   82: goto -38 -> 44
+    //   85: astore_1
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: aload_1
+    //   89: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	90	0	this	ool
+    //   0	90	1	paramRunnable	java.lang.Runnable
+    //   13	22	2	localObject	Object
+    //   56	5	2	localOutOfMemoryError	java.lang.OutOfMemoryError
+    // Exception table:
+    //   from	to	target	type
+    //   18	44	56	java/lang/OutOfMemoryError
+    //   9	14	85	finally
+    //   18	44	85	finally
+    //   44	46	85	finally
+    //   57	82	85	finally
+    //   86	88	85	finally
   }
 }
 

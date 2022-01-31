@@ -1,18 +1,29 @@
 import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Comparator;
-import java.util.Map.Entry;
+import java.util.List;
 
 public class aksa
-  implements Comparator<Map.Entry<String, Integer>>
+  implements Comparator<String>
 {
-  public aksa(MsgLruCache paramMsgLruCache) {}
+  private aksa(MsgLruCache paramMsgLruCache) {}
   
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  public int a(String paramString1, String paramString2)
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
+    paramString1 = this.a.getOriginal(paramString1);
+    paramString2 = this.a.getOriginal(paramString2);
+    if ((paramString1 == null) || (paramString1.isEmpty())) {
       return 1;
     }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
+    if ((paramString2 == null) || (paramString2.isEmpty())) {
+      return -1;
+    }
+    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
+    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
+    if (l1 > l2) {
+      return 1;
+    }
+    if (l1 == l2) {
       return 0;
     }
     return -1;

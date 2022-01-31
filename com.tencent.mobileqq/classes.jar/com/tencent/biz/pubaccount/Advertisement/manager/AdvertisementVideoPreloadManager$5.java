@@ -3,23 +3,23 @@ package com.tencent.biz.pubaccount.Advertisement.manager;
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nji;
-import nsb;
+import njf;
+import nry;
 
 public class AdvertisementVideoPreloadManager$5
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$5(nji paramnji) {}
+  public AdvertisementVideoPreloadManager$5(njf paramnjf) {}
   
   public void run()
   {
-    nsb localnsb = nji.a(this.this$0);
-    if (localnsb != null)
+    nry localnry = njf.a(this.this$0);
+    if (localnry != null)
     {
-      localnsb.a(PAAdPreloadTask.class.getSimpleName());
-      Iterator localIterator = nji.a(this.this$0).iterator();
+      localnry.a(PAAdPreloadTask.class.getSimpleName());
+      Iterator localIterator = njf.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        localnsb.a((PAAdPreloadTask)localIterator.next());
+        localnry.a((PAAdPreloadTask)localIterator.next());
       }
     }
   }

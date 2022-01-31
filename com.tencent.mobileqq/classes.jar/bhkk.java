@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.SendMsg;
+import android.os.IInterface;
+import cooperation.qzone.plugin.PluginRecord;
 
-public final class bhkk
-  implements Parcelable.Creator<SendMsg>
+public abstract interface bhkk
+  extends IInterface
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  public abstract PluginRecord a(String paramString);
   
-  public SendMsg[] a(int paramInt)
-  {
-    return new SendMsg[paramInt];
-  }
+  public abstract void a();
+  
+  public abstract void a(bhip parambhip, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, bhis parambhis, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.adapter;
 
-import aipp;
-import akbo;
+import aipn;
+import akbn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -9,16 +9,16 @@ import java.util.ArrayList;
 public class SystemMsgListAdapter$1
   implements Runnable
 {
-  public SystemMsgListAdapter$1(aipp paramaipp, int paramInt) {}
+  public SystemMsgListAdapter$1(aipn paramaipn, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.e("SystemMsgListAdapter", 2, "MSG_FRESH_DATA refreshDataInner tabId = " + this.a);
     }
-    aipp.a(this.this$0).a(true, this.a);
-    ArrayList localArrayList = aipp.a(this.this$0).b();
-    aipp.a(this.this$0).runOnUiThread(new SystemMsgListAdapter.1.1(this, localArrayList));
+    aipn.a(this.this$0).a(true, this.a);
+    ArrayList localArrayList = aipn.a(this.this$0).b();
+    aipn.a(this.this$0).runOnUiThread(new SystemMsgListAdapter.1.1(this, localArrayList));
   }
 }
 

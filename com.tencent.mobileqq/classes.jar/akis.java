@@ -1,25 +1,12 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
-
 class akis
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<akir> b;
+  public long a;
+  public String a;
   
-  public akis(akio paramakio, View paramView, akir paramakir)
+  akis(akin paramakin, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramakir);
-  }
-  
-  public akir a()
-  {
-    return (akir)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

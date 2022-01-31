@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
 class ahkj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ahkj(ahkf paramahkf) {}
+  ahkj(ahki paramahki) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = ajco.a();
-    if (paramView != null)
-    {
-      paramView.a(ahkf.a(this.a));
-      paramView.a();
-      ajco.i();
+    if (ajcm.a() != null) {
+      ajac.a();
     }
-    axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
+    paramDialogInterface = ajac.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
+    }
   }
 }
 

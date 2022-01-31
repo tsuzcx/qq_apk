@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-
-public final class asjd
-  implements Parcelable.Creator<MiniAppOptions>
+class asjd
+  extends asiz<asjb>
 {
-  public MiniAppOptions a(Parcel paramParcel)
+  public asjd(asjb paramasjb)
   {
-    return new MiniAppOptions(paramParcel);
+    super(paramasjb);
   }
   
-  public MiniAppOptions[] a(int paramInt)
+  public void a(asjb paramasjb, boolean paramBoolean, asiw paramasiw)
   {
-    return new MiniAppOptions[paramInt];
+    if (paramasjb == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      asiu localasiu = paramasjb.a(paramasiw.f);
+      if (localasiu != null)
+      {
+        asjb.a(paramasjb).a(paramasiw, localasiu);
+        return;
+      }
+    }
+    asjb.a(paramasjb, paramasiw.jdField_a_of_type_JavaLangString, paramasiw.jdField_a_of_type_Int, 1002);
   }
 }
 

@@ -1,26 +1,14 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Comparator;
 
-public class asbq
+class asbq
+  implements Comparator<asbe>
 {
-  private List<asbr> a = Collections.synchronizedList(new ArrayList());
-  
-  void a(long paramLong)
+  public int a(asbe paramasbe1, asbe paramasbe2)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((asbr)localIterator.next()).a(paramLong);
+    if (paramasbe1.a >= paramasbe2.a) {
+      return 1;
     }
-  }
-  
-  void b(long paramLong)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((asbr)localIterator.next()).b(paramLong);
-    }
+    return -1;
   }
 }
 

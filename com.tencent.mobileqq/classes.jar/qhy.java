@@ -1,105 +1,48 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qhy
-  extends BaseAdapter
-  implements qgz<ObservableArrayList<ResultRecord>>
+  implements awuu<awoi>
 {
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
-  private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = new ObservableArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private List<qhz> a = new ArrayList();
   
-  public qhy(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
+  public List<awoi> a(awvi paramawvi)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = paramObservableArrayList;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      qhz localqhz = (qhz)localIterator.next();
+      if (localqhz.a(paramawvi.a)) {
+        localArrayList.add(localqhz);
+      }
+    }
+    return localArrayList;
   }
   
   public void a()
   {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-    if (i > 0)
+    Iterator localIterator = osg.a().c().iterator();
+    while (localIterator.hasNext())
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(i - 1);
-      }
+      qaz localqaz = (qaz)localIterator.next();
+      this.a.add(new qhz(localqaz));
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    notifyDataSetChanged();
   }
   
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList)
+  public void a(awvi paramawvi, awuv<awoi> paramawuv)
   {
-    notifyDataSetChanged();
+    paramawuv.a(a(paramawvi), 1);
   }
   
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2) {}
+  public void b() {}
   
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
+  public void c() {}
   
-  public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
+  public void d() {}
   
-  public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null) {
-      paramViewGroup = (ReadInJoyHeadImageView)paramView.getTag();
-    }
-    for (;;)
-    {
-      Object localObject = getItem(paramInt);
-      if ((localObject != null) && ((localObject instanceof ResultRecord))) {
-        paramViewGroup.setHeadImgByUin(((ResultRecord)localObject).a());
-      }
-      int i = getCount();
-      paramViewGroup = paramView.findViewById(2131367896);
-      if ((!this.jdField_a_of_type_Boolean) || (paramInt != i - 1)) {
-        break;
-      }
-      paramViewGroup.setVisibility(0);
-      return paramView;
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560014, paramViewGroup, false);
-      paramViewGroup = (ReadInJoyHeadImageView)paramView.findViewById(2131367895);
-      paramView.setTag(paramViewGroup);
-    }
-    paramViewGroup.setVisibility(4);
-    return paramView;
-  }
+  public void e() {}
 }
 
 

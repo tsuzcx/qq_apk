@@ -1,16 +1,4 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-
-public class barv
-  implements aycb
-{
-  public barv(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, aycb paramaycb) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new barw(this));
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     barv

@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class bcem
-  implements ThreadExcutor.IThreadListener
+public final class bcem
+  implements WtTicketPromise
 {
-  bcem(bcek parambcek) {}
+  public void Done(Ticket paramTicket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService : Done");
+    }
+  }
   
-  public void onAdded() {}
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    }
+  }
   
-  public void onPostRun() {}
-  
-  public void onPreRun() {}
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
+  }
 }
 
 

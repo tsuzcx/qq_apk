@@ -1,43 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-public final class auip
-  implements anyb
+public class auip
+  implements DialogInterface.OnClickListener
 {
-  public auip(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public auip(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public void a(anyc paramanyc)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramanyc != null) {}
-    try
-    {
-      paramanyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
+    if (!this.a.getActivity().isFinishing()) {
+      this.a.getActivity().finish();
     }
-    catch (Throwable paramanyc) {}
   }
-  
-  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
-  
-  public boolean a(anyc paramanyc)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    ayla.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(anyc paramanyc) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

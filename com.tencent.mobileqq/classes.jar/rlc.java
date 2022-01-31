@@ -1,29 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class rlc
-  implements Animation.AnimationListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  rlc(rky paramrky, FastWebArticleInfo paramFastWebArticleInfo) {}
+  rlc(rlb paramrlb, Context paramContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onFound(ViewBase paramViewBase)
   {
-    ImageView localImageView = rky.c(this.jdField_a_of_type_Rky);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
-    for (int i = 2130842305;; i = 2130841224)
-    {
-      localImageView.setImageResource(i);
-      paramAnimation.setInterpolator(new AnticipateInterpolator());
-      return;
-    }
+    paramViewBase.setOnClickListener(new rld(this));
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

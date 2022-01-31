@@ -1,12 +1,25 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
 public class bcnn
 {
-  public float a;
-  public Bitmap a;
-  public float b;
-  public float c;
-  public float d;
+  private Stack<AnimationTextView> jdField_a_of_type_JavaUtilStack = new Stack();
+  
+  public bcnn(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public AnimationTextView a()
+  {
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
+    }
+    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
+  }
+  
+  public void a(AnimationTextView paramAnimationTextView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+  }
 }
 
 

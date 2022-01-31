@@ -1,27 +1,28 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afnx
-  extends akim
+  implements View.OnClickListener
 {
   public afnx(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.10.1(this, paramString));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    if ((paramBoolean) && (paramList != null)) {
-      this.a.a(paramList);
-    }
+    if (!(paramView.getTag() instanceof afmp)) {}
+    do
+    {
+      do
+      {
+        return;
+        paramView = (afmp)paramView.getTag();
+      } while (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
+      this.a.a(paramView);
+    } while (paramView.jdField_a_of_type_Int != 82);
+    axqy.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
   }
 }
 

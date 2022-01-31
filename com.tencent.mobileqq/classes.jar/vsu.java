@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-
-public final class vsu
-  implements Parcelable.Creator<PublishParam>
+public class vsu
 {
-  public PublishParam a(Parcel paramParcel)
+  public static String a(String paramString)
   {
-    return new PublishParam(paramParcel);
+    return "Q.qqstory.record.RMW." + paramString;
   }
   
-  public PublishParam[] a(int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    return new PublishParam[paramInt];
+    ved.a(a(paramString1), paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    ved.c(a(paramString1), String.format(paramString2, paramVarArgs));
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    ved.b(a(paramString1), paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    ved.c(a(paramString1), paramString2);
   }
 }
 

@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface bfxc
 {
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

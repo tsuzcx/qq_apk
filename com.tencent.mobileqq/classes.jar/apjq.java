@@ -1,44 +1,37 @@
-import android.content.Context;
-import com.tencent.kwstudio.office.base.IGlobal;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
-import java.io.File;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
 public final class apjq
-  implements IGlobal
+  implements Handler.Callback
 {
-  private final TdsReaderGlobal a;
+  private final WeakReference<TdsDebugView> a;
   
-  private apjq(TdsReaderGlobal paramTdsReaderGlobal)
+  private apjq(TdsDebugView paramTdsDebugView)
   {
-    this.a = paramTdsReaderGlobal;
+    this.a = new WeakReference(paramTdsDebugView);
   }
   
-  public Context getApplicationContext()
+  public boolean handleMessage(Message paramMessage)
   {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public Executor getExecutor()
-  {
-    return TdsReaderGlobal.a(this.a);
-  }
-  
-  public String getFileDir()
-  {
-    Context localContext = getApplicationContext();
-    File localFile2 = localContext.getExternalFilesDir(null);
-    File localFile1 = localFile2;
-    if (localFile2 == null) {
-      localFile1 = localContext.getFilesDir();
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return true;
     }
-    return localFile1.getAbsolutePath();
-  }
-  
-  public InputStream getResourceAsStream(String paramString)
-  {
-    return null;
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    case 2: 
+      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    }
+    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+    return true;
   }
 }
 

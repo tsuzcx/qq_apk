@@ -1,29 +1,38 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
-import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
-import com.tencent.gdtad.views.xijing.GdtTextData;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class zay
-  implements View.OnFocusChangeListener
+class zay
+  implements URLDrawable.URLDrawableListener
 {
-  public zay(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  zay(zax paramzax) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()))
-    {
-      yxs.b("GdtFormItemTextBoxView", "onFocusChange error");
-      return;
+    zax.a(this.a, paramURLDrawable);
+    yxp.b("GdtDrawableLoader", "onLoadCanceled " + zax.a(this.a));
+    zax.a(this.a, false);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    zax.a(this.a, paramURLDrawable);
+    yxp.d("GdtDrawableLoader", "onLoadFialed " + zax.a(this.a), paramThrowable);
+    if (!zax.a(this.a)) {
+      zax.a(this.a, false);
     }
-    if (paramBoolean)
-    {
-      paramView = new zai(2, -1, this.a.a().title.text);
-      paramView.b = GdtFormItemTextBoxView.a(this.a);
-      GdtFormItemTextBoxView.a(this.a, paramView);
-      return;
-    }
-    GdtFormItemTextBoxView.a(this.a);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    zax.a(this.a, paramURLDrawable);
+    yxp.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + zax.a(this.a));
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    zax.a(this.a, paramURLDrawable);
+    yxp.b("GdtDrawableLoader", "onLoadSuccessed " + zax.a(this.a));
+    zax.a(this.a, true);
   }
 }
 

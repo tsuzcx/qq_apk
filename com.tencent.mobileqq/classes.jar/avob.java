@@ -1,56 +1,52 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleTextureView;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.ArrayList;
 
 public class avob
-  extends QIPCModule
+  extends Handler
 {
-  private static avob jdField_a_of_type_Avob;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
   
-  private avob(String paramString)
+  public avob(ParticleTextureView paramParticleTextureView, Looper paramLooper)
   {
-    super(paramString);
+    super(paramLooper);
   }
   
-  public static avob a()
+  public void handleMessage(Message paramMessage)
   {
-    if (jdField_a_of_type_Avob != null) {
-      return jdField_a_of_type_Avob;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Avob == null) {
-        jdField_a_of_type_Avob = new avob("REAL_NAME");
-      }
-      avob localavob = jdField_a_of_type_Avob;
-      return localavob;
     }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RealName", 2, "onCall s: " + paramString);
-    }
-    if (paramBundle == null) {}
     do
     {
-      do
+      return;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_INIT_DATA");
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a();
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 2);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.c = 0;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_ADD_DATA");
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap);
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 4);
+      return;
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView;
+      paramMessage.c += 1;
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a())
       {
-        return null;
-        paramInt = paramBundle.getInt("result");
-        if (QLog.isColorLevel()) {
-          QLog.i("RealName", 2, "result is : " + paramInt);
-        }
-      } while (paramInt == 0);
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while (paramString == null);
-    ((ajuf)paramString.a(4)).e();
-    return null;
+        ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 2);
+        return;
+      }
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 4);
+      return;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_REFRESH_VIEW size = " + this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_JavaUtilArrayList.size());
+    } while ((this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_JavaUtilArrayList.size() <= 0) && (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.d();
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import bels;
+import bemj;
 
 public class NioSelectorThread$1
   implements Runnable
 {
-  public NioSelectorThread$1(bels parambels) {}
+  public NioSelectorThread$1(bemj parambemj) {}
   
   public void run()
   {
-    bels.a(this.this$0);
+    bemj.a(this.this$0);
   }
 }
 

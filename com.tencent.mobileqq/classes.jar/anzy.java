@@ -1,6 +1,13 @@
-public abstract interface anzy
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ProgressButton;
+
+public class anzy
+  extends anxj
 {
-  public abstract void a(int paramInt);
+  public TextView a;
+  public URLImageView a;
+  public ProgressButton a;
 }
 
 

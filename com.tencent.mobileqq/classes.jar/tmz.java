@@ -1,59 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqShareVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tmz
-  extends syv<top>
+  extends sys
 {
-  public String a = "";
-  public long b;
+  public static final String a;
+  public ter a;
   public String b;
-  public int c;
-  public int d;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.homepage_batch_feeds_720");
+  }
   
   public String a()
   {
-    return sxp.a("StorySvc.get_share_group_collection_list");
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspShareVideoCollectionList localRspShareVideoCollectionList = new qqstory_service.RspShareVideoCollectionList();
+    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
     try
     {
-      localRspShareVideoCollectionList.mergeFrom(paramArrayOfByte);
-      return new top(this.jdField_b_of_type_JavaLangString, localRspShareVideoCollectionList);
+      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new tna(localRspStoryFeedIdList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.d("Q.qqstory:GetShareGroupListRequest", "" + paramArrayOfByte);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqShareVideoCollectionList localReqShareVideoCollectionList = new qqstory_service.ReqShareVideoCollectionList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqShareVideoCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
+    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (this.jdField_a_of_type_Ter != null)
+    {
+      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Ter.c);
+      localReqStoryFeedIdList.gps.setHasFlag(true);
+      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Ter.a);
+      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Ter.b);
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqShareVideoCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    localReqShareVideoCollectionList.collection_count.set(this.c);
-    localReqShareVideoCollectionList.collection_video_count.set(this.d);
-    localReqShareVideoCollectionList.seqno.set(this.jdField_b_of_type_Long);
-    return localReqShareVideoCollectionList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupListRequest{startCookie='" + this.a + '\'' + ", collectionCount=" + this.c + ", collectionVideoCount=" + this.d + ", seqno=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    localReqStoryFeedIdList.client_version.set(6);
+    return localReqStoryFeedIdList.toByteArray();
   }
 }
 

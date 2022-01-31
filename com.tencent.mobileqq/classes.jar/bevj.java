@@ -1,19 +1,18 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
 
-public class bevj
+class bevj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b = null;
-  public String c = null;
-  public String d = null;
+  bevj(bevg parambevg, DialogCallback paramDialogCallback) {}
   
-  bevj(bevi parambevi)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 1001;
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkCallbackDialogCallback.onCancel();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,19 +1,14 @@
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
+
 class afmd
-  extends ajtq
+  implements Comparator<MayKnowRecommend>
 {
-  afmd(afma paramafma) {}
+  afmd(afly paramafly) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if (paramBoolean)
-    {
-      bcpw.a(afma.a(this.a), 2131699202, 3000).a();
-      if (afma.a(this.a) != 23) {
-        this.a.a(true);
-      }
-      return;
-    }
-    bcpw.a(afma.a(this.a), 2131699201, 0).a();
+    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
   }
 }
 

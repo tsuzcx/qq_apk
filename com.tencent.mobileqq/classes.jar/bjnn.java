@@ -1,19 +1,10 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.annotation.RestrictTo;
 
-class bjnn
-  implements ThreadFactory
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+public abstract interface bjnn
+  extends bjnr
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  bjnn(bjnm parambjnm) {}
-  
-  public Thread newThread(Runnable paramRunnable)
-  {
-    paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName(String.format("arch_disk_io_%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()) }));
-    return paramRunnable;
-  }
+  public abstract void a(bjns parambjns, bjnp parambjnp);
 }
 
 

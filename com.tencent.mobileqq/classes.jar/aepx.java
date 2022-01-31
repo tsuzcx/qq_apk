@@ -1,39 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class aepx
-  implements View.OnTouchListener
+  implements bcix<oidb_0x8ed.RspBody>
 {
-  aepx(aepg paramaepg) {}
+  aepx(aepe paramaepe) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bcis.a();
-    if (i == 0)
+    if ((paramInt == 0) && (this.a.ac))
     {
-      this.a.m.setText(ajyc.a(2131705135));
-      this.a.m.setTextColor(this.a.r);
-      this.a.jdField_a_of_type_Atcf.b();
-      if (paramView != null) {
-        paramView.a(true);
-      }
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
+      bcql.a(this.a.jdField_a_of_type_AndroidContentContext, 2, ajya.a(2131705127), 0).a();
+      bbkb.e(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_Atch.a(this.a.jdField_a_of_type_AndroidContentContext);
     }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.m.setText(ajyc.a(2131705074));
-    this.a.m.setTextColor(this.a.q);
-    this.a.jdField_a_of_type_Atcf.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
   }
 }
 

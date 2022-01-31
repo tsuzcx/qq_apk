@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import akhq;
+import akhp;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class TroopHandler$1
   implements Runnable
 {
-  public TroopHandler$1(akhq paramakhq) {}
+  public TroopHandler$1(akhp paramakhp) {}
   
   public void run()
   {

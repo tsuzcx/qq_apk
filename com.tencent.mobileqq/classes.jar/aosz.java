@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
 public class aosz
-  implements View.OnClickListener
+  implements Comparator<FileManagerEntity>
 {
   public aosz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onClick(View paramView)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    this.a.c.setVisibility(8);
-    ancb.a().a("");
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
+    }
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

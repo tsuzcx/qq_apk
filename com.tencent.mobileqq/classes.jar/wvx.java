@@ -1,80 +1,33 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
 public class wvx
-  extends SubscribeBannerView.BannerAdapter
+  extends FragmentPagerAdapter
 {
-  public wvx(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
-  
-  private String a(Object paramObject)
+  public wvx(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
-      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
-    }
-    return "";
+    super(paramFragmentManager);
   }
   
-  public View a(View paramView, Object paramObject)
+  public int getCount()
   {
-    String str = a(paramObject);
-    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
-    {
-      paramObject = (CertifiedAccountMeta.StImage)paramObject;
-      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
-      {
-        float f = paramObject.height.get() / paramObject.width.get();
-        paramObject = paramView.getLayoutParams();
-        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
-        int i = j;
-        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
-          i = RelativeMultiPicHeadItemView.b(this.a);
-        }
-        paramObject.width = i;
-        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
-      }
-    }
-    if (str != null) {}
-    try
-    {
-      paramObject = wrt.a(str);
-      if (!TextUtils.isEmpty(paramObject))
-      {
-        paramObject = new File(paramObject);
-        if (paramObject.exists())
-        {
-          ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
-          return paramView;
-        }
-      }
-    }
-    catch (Exception paramObject)
-    {
-      QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
-      wio.a(str, (URLImageView)paramView);
-    }
-    return paramView;
+    return RelativePersonalBottomView.a(this.a).size();
   }
   
-  protected URLImageView a(ViewGroup paramViewGroup)
+  public Fragment getItem(int paramInt)
   {
-    paramViewGroup = new URLImageView(paramViewGroup.getContext());
-    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
-    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
-    {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
-      return paramViewGroup;
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
     }
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 

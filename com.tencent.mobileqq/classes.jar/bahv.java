@@ -1,181 +1,67 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
 
 public class bahv
-  implements bfob
 {
-  protected float a;
-  protected int a;
-  protected Bitmap a;
-  protected Handler a;
-  protected LruCache<String, Bitmap> a;
-  protected bahw a;
-  protected bfob a;
-  protected ListView a;
-  protected ArrayList<String> a;
-  protected int b;
-  protected LruCache<String, String> b;
-  protected int c;
-  
-  protected Bitmap a(Bitmap paramBitmap)
+  public static String a(String paramString)
   {
-    int j = this.jdField_b_of_type_Int;
-    int i = this.c;
-    float f2 = this.jdField_a_of_type_Float;
-    int k = paramBitmap.getWidth();
-    float f1 = f2;
-    if (k > 0)
-    {
-      f1 = f2;
-      if (k < j * f2) {
-        f1 = k / j;
-      }
+    if (a(paramString)) {
+      return paramString + 140;
     }
-    j = (int)(j * f1);
-    i = (int)(f1 * i);
-    return bbdr.a(paramBitmap, j, j, i);
+    return null;
   }
   
-  public Bitmap a(String paramString, boolean paramBoolean)
+  public static String a(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject;
-    for (;;)
-    {
-      try
-      {
-        localObject = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-        if (localObject != null)
-        {
-          if (!QLog.isColorLevel()) {
-            return localObject;
-          }
-          QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, hit cache:" + paramString);
-          return localObject;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, not in cache:" + paramString + ", add2Request=" + paramBoolean);
-        }
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          if (TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString))) {
-            continue;
-          }
-          localObject = Message.obtain();
-          ((Message)localObject).obj = paramString;
-          ((Message)localObject).what = 1001;
-          this.jdField_a_of_type_Bahw.sendMessage((Message)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, in file cache:" + paramString + ", send decode msg ");
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, exception:" + paramString.toString());
-        continue;
-      }
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-      if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 350L);
-        if (QLog.isColorLevel()) {
-          QLog.d("NonMainAppListViewFaceLoader", 2, "getFaceBitmap, not in file cache:" + paramString + ", send getQQHead msg ");
-        }
-      }
+    if (TextUtils.isEmpty(paramString2)) {
+      QLog.d("AvatarTroopUtil", 1, "getAvatarAddress troopUin is empty");
     }
-    return localObject;
+    do
+    {
+      return "http://p.qlogo.cn/gh/dir/file/";
+      if (1 == paramInt) {
+        return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
+      }
+    } while (paramInt != 0);
+    return "http://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
   }
   
-  protected void a(boolean paramBoolean)
+  public static boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NonMainAppListViewFaceLoader", 2, "refreshListFace, add2Request:" + paramBoolean);
+    if (paramString == null) {
+      return false;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {
-      return;
+    return paramString.startsWith("http://p.qlogo.cn/gh/");
+  }
+  
+  public static String b(String paramString)
+  {
+    if (a(paramString)) {
+      return paramString + 0;
     }
-    int j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
-    int i = 0;
-    label49:
-    Object localObject;
-    if (i < j)
+    return null;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
+    for (int i = 1;; i = 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
-      if (!(localObject instanceof aimv)) {
-        break label131;
-      }
-      localObject = (aimv)localObject;
-      if ((localObject != null) && (((aimv)localObject).a != null) && (((aimv)localObject).a.length() > 0)) {
-        ((aimv)localObject).c.setImageBitmap(a(((aimv)localObject).a, paramBoolean));
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label49;
-      break;
-      label131:
-      if ((localObject instanceof qms))
+      int j = paramString.length();
+      int k;
+      do
       {
-        localObject = (qms)localObject;
-        if ((((qms)localObject).jdField_a_of_type_Qqo != null) && (((qms)localObject).jdField_a_of_type_Qqo.a != null) && ((((qms)localObject).jdField_a_of_type_Qqo.a.jdField_a_of_type_Int == 1) || (((qms)localObject).jdField_a_of_type_Qqo.a.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(((qms)localObject).jdField_a_of_type_Qqo.a.j)) && (((qms)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView != null)) {
-          ((qms)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageBitmap(a(((qms)localObject).jdField_a_of_type_Qqo.a.j, paramBoolean));
+        k = j - 1;
+        if (k < i) {
+          break;
         }
-      }
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    }
-    if (this.jdField_a_of_type_Bfob != null) {
-      this.jdField_a_of_type_Bfob.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "onScrollStateChanged, " + this.jdField_a_of_type_Int + " => " + paramInt);
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if (paramInt == 0)
-      {
-        a(true);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 350L);
-      }
-      while (this.jdField_a_of_type_Bfob != null)
-      {
-        this.jdField_a_of_type_Bfob.onScrollStateChanged(paramAbsListView, paramInt);
-        return;
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-      }
+        j = k;
+      } while (Character.isDigit(paramString.charAt(k)));
+      return false;
+      return true;
     }
   }
 }

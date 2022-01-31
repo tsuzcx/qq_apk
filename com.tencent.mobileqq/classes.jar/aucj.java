@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aucj
-  implements Parcelable.Creator<TranslateResult>
+final class aucj
+  implements ajuz
 {
-  public TranslateResult a(Parcel paramParcel)
+  public void a(boolean paramBoolean)
   {
-    return new TranslateResult(paramParcel);
-  }
-  
-  public TranslateResult[] a(int paramInt)
-  {
-    return new TranslateResult[paramInt];
+    if (paramBoolean) {
+      auci.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
+    }
   }
 }
 

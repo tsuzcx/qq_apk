@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.annotation.TargetApi;
 import android.media.MediaMetadataRetriever;
-import avxk;
-import avyy;
-import avzc;
+import avxm;
+import avza;
+import avze;
 import java.util.List;
-import veg;
-import vjf;
-import vjg;
-import vjh;
+import ved;
+import vjc;
+import vjd;
+import vje;
 
 public class HWEditLocalVideoPlayer$ConvertIFramesRunnable
   implements Runnable
@@ -28,7 +28,7 @@ public class HWEditLocalVideoPlayer$ConvertIFramesRunnable
   @TargetApi(17)
   public void run()
   {
-    veg.d("Q.qqstory.record.HWEditLocalVideoPlayer", "start convert i frame video. mVideoPath = " + HWEditLocalVideoPlayer.a(this.this$0));
+    ved.d("Q.qqstory.record.HWEditLocalVideoPlayer", "start convert i frame video. mVideoPath = " + HWEditLocalVideoPlayer.a(this.this$0));
     Object localObject1 = new MediaMetadataRetriever();
     try
     {
@@ -51,24 +51,24 @@ public class HWEditLocalVideoPlayer$ConvertIFramesRunnable
         i = Integer.valueOf(str2).intValue();
         j = Integer.valueOf((String)localObject2).intValue();
         k = Integer.valueOf(str1).intValue();
-        HWEditLocalVideoPlayer.a(this.this$0, new avzc());
+        HWEditLocalVideoPlayer.a(this.this$0, new avze());
         localObject1 = HWEditLocalVideoPlayer.a(this.this$0) + "_" + this.c + ".IFrames.mp4";
         if (this.b != 0) {
           HWEditLocalVideoPlayer.a(this.this$0).a = (this.b * this.a);
         }
-        localObject2 = (vjh)this.this$0.a.get(this.c);
-        l1 = vjh.a((vjh)localObject2);
-        l2 = vjh.b((vjh)localObject2);
-        HWEditLocalVideoPlayer.a(this.this$0).a(new avxk(HWEditLocalVideoPlayer.a(this.this$0), 0, false, true, l1, l2), new avyy((String)localObject1, j, k, 12582912, this.b, this.a, 0, false, i, null, null, null, false), new vjf(this, (vjh)localObject2), new vjg(this));
+        localObject2 = (vje)this.this$0.a.get(this.c);
+        l1 = vje.a((vje)localObject2);
+        l2 = vje.b((vje)localObject2);
+        HWEditLocalVideoPlayer.a(this.this$0).a(new avxm(HWEditLocalVideoPlayer.a(this.this$0), 0, false, true, l1, l2), new avza((String)localObject1, j, k, 12582912, this.b, this.a, 0, false, i, null, null, null, false), new vjc(this, (vje)localObject2), new vjd(this));
         return;
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
-        veg.e("Q.qqstory.record.HWEditLocalVideoPlayer", "video info error, videoFilePath=" + HWEditLocalVideoPlayer.a(this.this$0));
+        ved.e("Q.qqstory.record.HWEditLocalVideoPlayer", "video info error, videoFilePath=" + HWEditLocalVideoPlayer.a(this.this$0));
       }
       localException = localException;
-      veg.c("Q.qqstory.record.HWEditLocalVideoPlayer", "setDataSource failed when convert i frame", localException);
+      ved.c("Q.qqstory.record.HWEditLocalVideoPlayer", "setDataSource failed when convert i frame", localException);
       return;
     }
   }

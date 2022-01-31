@@ -1,824 +1,988 @@
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
-import android.provider.Settings.System;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Environment;
+import android.os.Process;
+import android.os.StatFs;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioUtil.1;
-import com.tencent.mobileqq.utils.AudioUtil.7;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.mobileqq.util.Utils.1;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class bbbr
 {
   private static int jdField_a_of_type_Int;
-  public static MediaPlayer a;
-  private static asgp jdField_a_of_type_Asgp = new bbbs();
+  static Boolean jdField_a_of_type_JavaLangBoolean;
+  public static String a;
+  private static StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private static final Set<Long> jdField_a_of_type_JavaUtilSet;
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 12290, -225, -255, 33, 63, -244, -229, 44, 32 };
+  public static final String[] a;
   
-  public static int a()
+  static
   {
-    return ((AudioManager)BaseApplicationImpl.sApplication.getSystemService("audio")).getRingerMode();
+    jdField_a_of_type_JavaUtilSet = new Utils.1(100);
+    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajya.a(2131716020), ajya.a(2131716017), ajya.a(2131716036), ajya.a(2131716024), ajya.a(2131716041), ajya.a(2131716022), ajya.a(2131716015), ajya.a(2131716031), ajya.a(2131716030), ajya.a(2131716043), ajya.a(2131716016), ajya.a(2131716023) };
   }
   
-  private static MediaPlayer a(Context paramContext, int paramInt)
+  private static byte a(char paramChar)
   {
+    return (byte)"0123456789ABCDEF".indexOf(paramChar);
+  }
+  
+  public static int a(byte paramByte)
+  {
+    int i = paramByte;
+    if (paramByte < 0) {
+      i = paramByte + 256;
+    }
+    return i;
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i = 2;
+    if (jdField_a_of_type_JavaLangStringBuilder.length() > 560) {}
     try
     {
-      paramContext = paramContext.getResources().openRawResourceFd(paramInt);
-      if (paramContext == null) {
-        return null;
+      int j = jdField_a_of_type_JavaLangStringBuilder.toString().getBytes("utf-8").length;
+      if ((jdField_a_of_type_Int != j) && (QLog.isColorLevel())) {
+        QLog.d("Utils", 2, "calculate byte num not equal byte num returned by getBytes(),totalByteNum is:" + jdField_a_of_type_Int + ",byteNum" + j);
       }
-      MediaPlayer localMediaPlayer = new MediaPlayer();
-      a(localMediaPlayer);
-      localMediaPlayer.setDataSource(paramContext.getFileDescriptor(), paramContext.getStartOffset(), paramContext.getLength());
-      paramContext.close();
-      localMediaPlayer.prepare();
-      return localMediaPlayer;
+      label76:
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      jdField_a_of_type_Int = 0;
+      if ((paramInt >= 0) && (paramInt < 128)) {
+        i = 1;
+      }
+      for (;;)
+      {
+        jdField_a_of_type_JavaLangStringBuilder.append(Character.toChars(paramInt));
+        jdField_a_of_type_Int += i;
+        return i;
+        if ((paramInt < 128) || (paramInt >= 2048)) {
+          if ((paramInt >= 2048) && (paramInt < 65536)) {
+            i = 3;
+          } else if ((paramInt >= 65536) && (paramInt < 2097152)) {
+            i = 4;
+          } else if ((paramInt >= 2097152) && (paramInt < 67108864)) {
+            i = 5;
+          } else {
+            i = 6;
+          }
+        }
+      }
     }
-    catch (Exception paramContext)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("createAndSetAudioStreamType", 2, "create failed:", paramContext);
-      }
+      break label76;
+    }
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.set(1, paramInt1, paramInt2);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.set(1, 1, 19);
+    Calendar localCalendar3 = Calendar.getInstance();
+    localCalendar3.set(1, 2, 18);
+    Calendar localCalendar4 = Calendar.getInstance();
+    localCalendar4.set(1, 3, 20);
+    Calendar localCalendar5 = Calendar.getInstance();
+    localCalendar5.set(1, 4, 19);
+    Calendar localCalendar6 = Calendar.getInstance();
+    localCalendar6.set(1, 5, 20);
+    Calendar localCalendar7 = Calendar.getInstance();
+    localCalendar7.set(1, 6, 21);
+    Calendar localCalendar8 = Calendar.getInstance();
+    localCalendar8.set(1, 7, 22);
+    Calendar localCalendar9 = Calendar.getInstance();
+    localCalendar9.set(1, 8, 22);
+    Calendar localCalendar10 = Calendar.getInstance();
+    localCalendar10.set(1, 9, 22);
+    Calendar localCalendar11 = Calendar.getInstance();
+    localCalendar11.set(1, 10, 23);
+    Calendar localCalendar12 = Calendar.getInstance();
+    localCalendar12.set(1, 11, 22);
+    Calendar localCalendar13 = Calendar.getInstance();
+    localCalendar13.set(1, 12, 21);
+    if ((localCalendar1.compareTo(localCalendar2) > 0) && (localCalendar1.compareTo(localCalendar3) <= 0)) {
+      return 1;
+    }
+    if ((localCalendar1.compareTo(localCalendar3) > 0) && (localCalendar1.compareTo(localCalendar4) <= 0)) {
+      return 2;
+    }
+    if ((localCalendar1.compareTo(localCalendar4) > 0) && (localCalendar1.compareTo(localCalendar5) <= 0)) {
+      return 3;
+    }
+    if ((localCalendar1.compareTo(localCalendar5) > 0) && (localCalendar1.compareTo(localCalendar6) <= 0)) {
+      return 4;
+    }
+    if ((localCalendar1.compareTo(localCalendar6) > 0) && (localCalendar1.compareTo(localCalendar7) <= 0)) {
+      return 5;
+    }
+    if ((localCalendar1.compareTo(localCalendar7) > 0) && (localCalendar1.compareTo(localCalendar8) <= 0)) {
+      return 6;
+    }
+    if ((localCalendar1.compareTo(localCalendar8) > 0) && (localCalendar1.compareTo(localCalendar9) <= 0)) {
+      return 7;
+    }
+    if ((localCalendar1.compareTo(localCalendar9) > 0) && (localCalendar1.compareTo(localCalendar10) <= 0)) {
+      return 8;
+    }
+    if ((localCalendar1.compareTo(localCalendar10) > 0) && (localCalendar1.compareTo(localCalendar11) <= 0)) {
+      return 9;
+    }
+    if ((localCalendar1.compareTo(localCalendar11) > 0) && (localCalendar1.compareTo(localCalendar12) <= 0)) {
+      return 10;
+    }
+    if ((localCalendar1.compareTo(localCalendar12) > 0) && (localCalendar1.compareTo(localCalendar13) <= 0)) {
+      return 11;
+    }
+    return 12;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt2 == 0) || (paramInt3 == 0) || (paramInt2 == paramInt3)) {
+      return paramInt1;
+    }
+    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+  }
+  
+  public static int a(long paramLong)
+  {
+    return (int)paramLong;
+  }
+  
+  public static int a(long paramLong1, long paramLong2)
+  {
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static int a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return -1;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+  }
+  
+  public static int a(String paramString)
+  {
+    return a(paramString)[0];
+  }
+  
+  public static long a()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.clear(10);
+    localCalendar.clear(12);
+    localCalendar.clear(13);
+    localCalendar.clear(14);
+    return localCalendar.getTimeInMillis();
+  }
+  
+  public static long a(int paramInt)
+  {
+    return paramInt & 0xFFFFFFFF;
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static long a(File paramFile)
+  {
+    paramFile = new StatFs(paramFile.getPath());
+    long l = paramFile.getBlockSize();
+    return paramFile.getAvailableBlocks() * l;
+  }
+  
+  public static long a(byte[] paramArrayOfByte)
+  {
+    return paramArrayOfByte[0] & 0xFF | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[4] & 0xFF) << 32 | (paramArrayOfByte[5] & 0xFF) << 40 | (paramArrayOfByte[6] & 0xFF) << 48 | (paramArrayOfByte[7] & 0xFF) << 56;
+  }
+  
+  public static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return a(paramArrayOfByte[(paramInt + 3)]) | a(paramArrayOfByte[(paramInt + 2)]) << 8 | a(paramArrayOfByte[(paramInt + 1)]) << 16 | a(paramArrayOfByte[paramInt]) << 24;
+  }
+  
+  public static String a(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt <= jdField_a_of_type_ArrayOfJavaLangString.length)) {
+      return jdField_a_of_type_ArrayOfJavaLangString[(paramInt - 1)];
+    }
+    return "";
+  }
+  
+  public static String a(int paramInt1, int paramInt2)
+  {
+    return a(a(paramInt1, paramInt2));
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static String a(Context paramContext)
+  {
+    if (Environment.getExternalStorageState().equals("mounted"))
+    {
+      paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
+      return Environment.getExternalStorageDirectory().getPath() + paramContext;
     }
     return null;
   }
   
-  private static MediaPlayer a(Context paramContext, Uri paramUri)
+  public static String a(String paramString)
   {
-    try
-    {
-      MediaPlayer localMediaPlayer = new MediaPlayer();
-      a(localMediaPlayer);
-      localMediaPlayer.setDataSource(paramContext, paramUri);
-      localMediaPlayer.prepare();
-      return localMediaPlayer;
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return "0|0";
     }
-    catch (IOException paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("createAndSetAudioStreamType", 2, "create failed:", paramContext);
-      }
-    }
-    return null;
+    return paramString.charAt(0) + "|" + paramString.length();
   }
   
-  public static void a()
+  public static String a(String paramString, int paramInt)
   {
-    try
-    {
-      if (jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      }
-      label12:
-      jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label12;
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, MediaPlayer.OnCompletionListener paramOnCompletionListener)
-  {
-    try
-    {
-      a(paramInt1, paramInt2, paramOnCompletionListener, null);
-      return;
-    }
-    finally
-    {
-      paramOnCompletionListener = finally;
-      throw paramOnCompletionListener;
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, MediaPlayer.OnCompletionListener paramOnCompletionListener, Handler paramHandler)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-          continue;
-        }
-        boolean bool = jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (paramOnCompletionListener == null) {
-          continue;
-        }
-        if ((paramHandler != null) && (paramHandler.getLooper() != Looper.myLooper())) {
-          break label154;
-        }
-        paramOnCompletionListener.onCompletion(jdField_a_of_type_AndroidMediaMediaPlayer);
-        continue;
-      }
-      finally {}
-      return;
-      a();
-      if (paramInt1 != AppSetting.d)
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(BaseApplicationImpl.sApplication, paramInt1);
-        if (jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          jdField_a_of_type_Int = paramInt2;
-          if (jdField_a_of_type_Int != 0) {
-            jdField_a_of_type_Int -= 1;
-          }
-          jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bbbw(paramOnCompletionListener, paramHandler));
-          jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(false);
-        }
-      }
-      else
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(BaseApplicationImpl.sApplication, Settings.System.DEFAULT_NOTIFICATION_URI);
-        continue;
-      }
-      continue;
-      label154:
-      paramHandler.post(new AudioUtil.7(paramOnCompletionListener));
-    }
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("mediaPlayerStartForMsg", 2, "resourceId=" + paramInt + ",looping=" + paramBoolean);
-        }
-        if (jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-          continue;
-        }
-        if (!jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("mediaPlayerStartForMsg", 2, "media palyer is playing");
-        }
-      }
-      catch (Exception localException1)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("mediaPlayerStartForMsg", 2, "media palyer exception", localException1);
-        continue;
-      }
-      finally {}
-      return;
-      try
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      }
-      catch (Exception localException2)
-      {
-        if (!QLog.isColorLevel()) {
-          break label167;
-        }
-        QLog.e("mediaPlayerStartForMsg", 2, "media palyer release exception", localException2);
-        label167:
-        jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        continue;
-      }
-      finally
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      }
-      if (paramInt != AppSetting.d)
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = a(BaseApplicationImpl.sApplication, paramInt);
-        if (jdField_a_of_type_AndroidMediaMediaPlayer == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.w("mediaPlayerStartForMsg", 2, "media palyer is null");
-        }
-      }
-      else
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = a(BaseApplicationImpl.sApplication, Settings.System.DEFAULT_NOTIFICATION_URI);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("mediaPlayerStartForMsg", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
-        continue;
-      }
-      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bbbu());
-      jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
-    }
-  }
-  
-  private static void a(MediaPlayer paramMediaPlayer)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      paramMediaPlayer.setAudioStreamType(3);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("MediaPlayerStart", 2, "get QQAppInterface error");
-  }
-  
-  /* Error */
-  public static void a(Uri paramUri, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   8: astore 4
-    //   10: aload 4
-    //   12: ifnull +13 -> 25
-    //   15: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   18: invokevirtual 106	android/media/MediaPlayer:release	()V
-    //   21: aconst_null
-    //   22: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   25: aload_0
-    //   26: invokevirtual 249	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   29: ldc 251
-    //   31: invokevirtual 257	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   34: ifeq +195 -> 229
-    //   37: new 53	android/media/MediaPlayer
-    //   40: dup
-    //   41: invokespecial 54	android/media/MediaPlayer:<init>	()V
-    //   44: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   47: iload_2
-    //   48: ifeq +25 -> 73
-    //   51: invokestatic 86	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   54: ifeq +13 -> 67
-    //   57: ldc_w 259
-    //   60: iconst_2
-    //   61: ldc_w 261
-    //   64: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   70: invokestatic 57	bbbr:a	(Landroid/media/MediaPlayer;)V
-    //   73: new 263	java/io/FileInputStream
-    //   76: dup
-    //   77: new 265	java/io/File
-    //   80: dup
-    //   81: aload_0
-    //   82: invokevirtual 268	android/net/Uri:getPath	()Ljava/lang/String;
-    //   85: invokespecial 271	java/io/File:<init>	(Ljava/lang/String;)V
-    //   88: invokespecial 274	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   91: astore_0
-    //   92: aload_0
-    //   93: astore_3
-    //   94: aload_0
-    //   95: astore 4
-    //   97: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   100: aload_0
-    //   101: invokevirtual 277	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   104: invokevirtual 280	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   107: aload_0
-    //   108: astore_3
-    //   109: aload_0
-    //   110: astore 4
-    //   112: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   115: invokevirtual 80	android/media/MediaPlayer:prepare	()V
-    //   118: aload_0
-    //   119: astore_3
-    //   120: aload_0
-    //   121: astore 4
-    //   123: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   126: new 282	bbbx
-    //   129: dup
-    //   130: invokespecial 283	bbbx:<init>	()V
-    //   133: invokevirtual 133	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   136: aload_0
-    //   137: astore_3
-    //   138: aload_0
-    //   139: astore 4
-    //   141: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   144: invokevirtual 136	android/media/MediaPlayer:start	()V
-    //   147: aload_0
-    //   148: astore_3
-    //   149: aload_0
-    //   150: astore 4
-    //   152: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   155: iload_1
-    //   156: invokevirtual 140	android/media/MediaPlayer:setLooping	(Z)V
-    //   159: aload_0
-    //   160: ifnull +7 -> 167
-    //   163: aload_0
-    //   164: invokevirtual 284	java/io/FileInputStream:close	()V
-    //   167: ldc 2
-    //   169: monitorexit
-    //   170: return
-    //   171: astore 4
-    //   173: aconst_null
-    //   174: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   177: goto -152 -> 25
-    //   180: astore_0
-    //   181: aconst_null
-    //   182: astore 4
-    //   184: aload 4
-    //   186: ifnull -19 -> 167
-    //   189: aload 4
-    //   191: invokevirtual 284	java/io/FileInputStream:close	()V
-    //   194: goto -27 -> 167
-    //   197: astore_0
-    //   198: aload_0
-    //   199: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   202: goto -35 -> 167
-    //   205: astore_0
-    //   206: ldc 2
-    //   208: monitorexit
-    //   209: aload_0
-    //   210: athrow
-    //   211: astore_0
-    //   212: aconst_null
-    //   213: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   216: aload_0
-    //   217: athrow
-    //   218: astore_0
-    //   219: aload_3
-    //   220: ifnull +7 -> 227
-    //   223: aload_3
-    //   224: invokevirtual 284	java/io/FileInputStream:close	()V
-    //   227: aload_0
-    //   228: athrow
-    //   229: getstatic 25	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   232: aload_0
-    //   233: invokestatic 164	android/media/MediaPlayer:create	(Landroid/content/Context;Landroid/net/Uri;)Landroid/media/MediaPlayer;
-    //   236: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   239: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   242: astore_0
-    //   243: aload_0
-    //   244: ifnonnull +23 -> 267
-    //   247: iconst_0
-    //   248: ifeq -81 -> 167
-    //   251: new 289	java/lang/NullPointerException
-    //   254: dup
-    //   255: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   258: athrow
-    //   259: astore_0
-    //   260: aload_0
-    //   261: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   264: goto -97 -> 167
-    //   267: iload_2
-    //   268: ifeq +25 -> 293
-    //   271: invokestatic 86	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   274: ifeq +13 -> 287
-    //   277: ldc_w 259
-    //   280: iconst_2
-    //   281: ldc_w 261
-    //   284: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   287: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   290: invokestatic 57	bbbr:a	(Landroid/media/MediaPlayer;)V
-    //   293: aconst_null
-    //   294: astore_0
-    //   295: goto -177 -> 118
-    //   298: astore_0
-    //   299: aload_0
-    //   300: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   303: goto -136 -> 167
-    //   306: astore_3
-    //   307: aload_3
-    //   308: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   311: goto -84 -> 227
-    //   314: astore_0
-    //   315: goto -96 -> 219
-    //   318: astore_0
-    //   319: goto -135 -> 184
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	322	0	paramUri	Uri
-    //   0	322	1	paramBoolean1	boolean
-    //   0	322	2	paramBoolean2	boolean
-    //   1	223	3	localUri	Uri
-    //   306	2	3	localIOException	IOException
-    //   8	143	4	localObject1	Object
-    //   171	1	4	localException	Exception
-    //   182	8	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	21	171	java/lang/Exception
-    //   5	10	180	java/lang/Exception
-    //   21	25	180	java/lang/Exception
-    //   25	47	180	java/lang/Exception
-    //   51	67	180	java/lang/Exception
-    //   67	73	180	java/lang/Exception
-    //   73	92	180	java/lang/Exception
-    //   173	177	180	java/lang/Exception
-    //   212	218	180	java/lang/Exception
-    //   229	243	180	java/lang/Exception
-    //   271	287	180	java/lang/Exception
-    //   287	293	180	java/lang/Exception
-    //   189	194	197	java/io/IOException
-    //   163	167	205	finally
-    //   189	194	205	finally
-    //   198	202	205	finally
-    //   223	227	205	finally
-    //   227	229	205	finally
-    //   251	259	205	finally
-    //   260	264	205	finally
-    //   299	303	205	finally
-    //   307	311	205	finally
-    //   15	21	211	finally
-    //   5	10	218	finally
-    //   21	25	218	finally
-    //   25	47	218	finally
-    //   51	67	218	finally
-    //   67	73	218	finally
-    //   73	92	218	finally
-    //   173	177	218	finally
-    //   212	218	218	finally
-    //   229	243	218	finally
-    //   271	287	218	finally
-    //   287	293	218	finally
-    //   251	259	259	java/io/IOException
-    //   163	167	298	java/io/IOException
-    //   223	227	306	java/io/IOException
-    //   97	107	314	finally
-    //   112	118	314	finally
-    //   123	136	314	finally
-    //   141	147	314	finally
-    //   152	159	314	finally
-    //   97	107	318	java/lang/Exception
-    //   112	118	318	java/lang/Exception
-    //   123	136	318	java/lang/Exception
-    //   141	147	318	java/lang/Exception
-    //   152	159	318	java/lang/Exception
-  }
-  
-  /* Error */
-  public static void a(java.lang.String paramString, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: aload 5
-    //   11: astore_3
-    //   12: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   15: ifnull +60 -> 75
-    //   18: aload 5
-    //   20: astore_3
-    //   21: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   24: invokevirtual 113	android/media/MediaPlayer:isPlaying	()Z
-    //   27: istore_2
-    //   28: iload_2
-    //   29: ifeq +33 -> 62
-    //   32: iconst_0
-    //   33: ifeq +11 -> 44
-    //   36: new 289	java/lang/NullPointerException
-    //   39: dup
-    //   40: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   43: athrow
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: return
-    //   48: astore_0
-    //   49: aload_0
-    //   50: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   53: goto -9 -> 44
-    //   56: astore_0
-    //   57: ldc 2
-    //   59: monitorexit
-    //   60: aload_0
-    //   61: athrow
-    //   62: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   65: invokevirtual 106	android/media/MediaPlayer:release	()V
-    //   68: aload 5
-    //   70: astore_3
-    //   71: aconst_null
-    //   72: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   75: aload 5
-    //   77: astore_3
-    //   78: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   81: ifnonnull +16 -> 97
-    //   84: aload 5
-    //   86: astore_3
-    //   87: new 53	android/media/MediaPlayer
-    //   90: dup
-    //   91: invokespecial 54	android/media/MediaPlayer:<init>	()V
-    //   94: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   97: aload 5
-    //   99: astore_3
-    //   100: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   103: invokevirtual 294	android/media/MediaPlayer:reset	()V
-    //   106: aload 5
-    //   108: astore_3
-    //   109: new 263	java/io/FileInputStream
-    //   112: dup
-    //   113: aload_0
-    //   114: invokespecial 295	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   117: astore_0
-    //   118: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   121: aload_0
-    //   122: invokevirtual 277	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   125: invokevirtual 280	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   128: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   131: invokestatic 57	bbbr:a	(Landroid/media/MediaPlayer;)V
-    //   134: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   137: invokevirtual 80	android/media/MediaPlayer:prepare	()V
-    //   140: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   143: new 297	bbbt
-    //   146: dup
-    //   147: invokespecial 298	bbbt:<init>	()V
-    //   150: invokevirtual 133	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   153: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   156: invokevirtual 136	android/media/MediaPlayer:start	()V
-    //   159: getstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   162: iload_1
-    //   163: invokevirtual 140	android/media/MediaPlayer:setLooping	(Z)V
-    //   166: aload_0
-    //   167: ifnull -123 -> 44
-    //   170: aload_0
-    //   171: invokevirtual 284	java/io/FileInputStream:close	()V
-    //   174: goto -130 -> 44
-    //   177: astore_0
-    //   178: aload_0
-    //   179: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   182: goto -138 -> 44
-    //   185: astore_3
-    //   186: aload 5
-    //   188: astore_3
-    //   189: aconst_null
-    //   190: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   193: goto -118 -> 75
-    //   196: astore_3
-    //   197: aload 4
-    //   199: astore_0
-    //   200: aload_3
-    //   201: astore 4
-    //   203: aload_0
-    //   204: astore_3
-    //   205: aload 4
-    //   207: invokevirtual 299	java/lang/Exception:printStackTrace	()V
-    //   210: aload_0
-    //   211: astore_3
-    //   212: invokestatic 86	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   215: ifeq +17 -> 232
-    //   218: aload_0
-    //   219: astore_3
-    //   220: ldc_w 301
-    //   223: iconst_2
-    //   224: ldc_w 303
-    //   227: aload 4
-    //   229: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   232: aload_0
-    //   233: ifnull -189 -> 44
-    //   236: aload_0
-    //   237: invokevirtual 284	java/io/FileInputStream:close	()V
-    //   240: goto -196 -> 44
-    //   243: astore_0
-    //   244: aload_0
-    //   245: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   248: goto -204 -> 44
-    //   251: astore_0
-    //   252: aload 5
-    //   254: astore_3
-    //   255: aconst_null
-    //   256: putstatic 103	bbbr:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   259: aload 5
-    //   261: astore_3
-    //   262: aload_0
-    //   263: athrow
-    //   264: astore_0
-    //   265: aload_3
-    //   266: ifnull +7 -> 273
-    //   269: aload_3
-    //   270: invokevirtual 284	java/io/FileInputStream:close	()V
-    //   273: aload_0
-    //   274: athrow
-    //   275: astore_3
-    //   276: aload_3
-    //   277: invokevirtual 287	java/io/IOException:printStackTrace	()V
-    //   280: goto -7 -> 273
-    //   283: astore 4
-    //   285: aload_0
-    //   286: astore_3
-    //   287: aload 4
-    //   289: astore_0
-    //   290: goto -25 -> 265
-    //   293: astore 4
-    //   295: goto -92 -> 203
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	298	0	paramString	java.lang.String
-    //   0	298	1	paramBoolean	boolean
-    //   27	2	2	bool	boolean
-    //   11	98	3	localObject1	Object
-    //   185	1	3	localException1	Exception
-    //   188	1	3	localObject2	Object
-    //   196	5	3	localException2	Exception
-    //   204	66	3	localObject3	Object
-    //   275	2	3	localIOException	IOException
-    //   286	1	3	str	java.lang.String
-    //   4	224	4	localObject4	Object
-    //   283	5	4	localObject5	Object
-    //   293	1	4	localException3	Exception
-    //   1	259	5	localObject6	Object
-    // Exception table:
-    //   from	to	target	type
-    //   36	44	48	java/io/IOException
-    //   36	44	56	finally
-    //   49	53	56	finally
-    //   170	174	56	finally
-    //   178	182	56	finally
-    //   236	240	56	finally
-    //   244	248	56	finally
-    //   269	273	56	finally
-    //   273	275	56	finally
-    //   276	280	56	finally
-    //   170	174	177	java/io/IOException
-    //   62	68	185	java/lang/Exception
-    //   12	18	196	java/lang/Exception
-    //   21	28	196	java/lang/Exception
-    //   71	75	196	java/lang/Exception
-    //   78	84	196	java/lang/Exception
-    //   87	97	196	java/lang/Exception
-    //   100	106	196	java/lang/Exception
-    //   109	118	196	java/lang/Exception
-    //   189	193	196	java/lang/Exception
-    //   255	259	196	java/lang/Exception
-    //   262	264	196	java/lang/Exception
-    //   236	240	243	java/io/IOException
-    //   62	68	251	finally
-    //   12	18	264	finally
-    //   21	28	264	finally
-    //   71	75	264	finally
-    //   78	84	264	finally
-    //   87	97	264	finally
-    //   100	106	264	finally
-    //   109	118	264	finally
-    //   189	193	264	finally
-    //   205	210	264	finally
-    //   212	218	264	finally
-    //   220	232	264	finally
-    //   255	259	264	finally
-    //   262	264	264	finally
-    //   269	273	275	java/io/IOException
-    //   118	166	283	finally
-    //   118	166	293	java/lang/Exception
-  }
-  
-  @TargetApi(8)
-  public static boolean a(Context paramContext, boolean paramBoolean)
-  {
-    if (paramContext == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioUtil", 2, "context is null.");
-      }
+    String str;
+    if (paramString == null) {
+      str = paramString;
     }
     do
     {
-      return false;
-      if (bfni.b()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AudioUtil", 2, "Android 2.1 and below can not stop music");
-    return false;
-    paramContext = (AudioManager)paramContext.getSystemService("audio");
-    if (paramBoolean)
-    {
-      if (paramContext.requestAudioFocus(null, 3, 2) == 1) {}
-      for (bool = true;; bool = false)
+      do
       {
-        asgl.a().a(1, jdField_a_of_type_Asgp);
-        if (QLog.isColorLevel()) {
-          QLog.d("AudioUtil", 2, "pauseMusic bMute=" + paramBoolean + " result=" + bool);
+        do
+        {
+          do
+          {
+            return str;
+            str = paramString;
+          } while (paramString.length() == 0);
+          str = paramString;
+        } while (paramString.length() <= paramInt);
+        paramString = paramString.substring(0, paramInt);
+        if (paramString.codePointAt(paramString.length() - 1) == 20) {
+          break;
         }
-        return bool;
-      }
-    }
+        str = paramString;
+      } while (paramString.length() < 4);
+      str = paramString;
+    } while (paramString.codePointAt(paramString.length() - 4) != 20);
+    return paramString.substring(0, paramString.length() - 1);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, new String[] { "106" }, new String[] { "QQ注册验证码" }, 3);
+  }
+  
+  private static String a(String paramString1, String paramString2, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt)
+  {
+    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {}
+    label138:
+    label191:
+    label328:
+    label334:
     for (;;)
     {
-      try
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Utils", 2, "oriAdd=" + paramString1 + "smsbody=" + paramString2);
+      }
+      if (paramArrayOfString1 != null)
       {
-        for (;;)
+        int j = paramArrayOfString1.length;
+        int i = 0;
+        if (i < j)
         {
-          int i = paramContext.abandonAudioFocus(null);
-          if (i != 1) {
-            break label182;
+          String str = paramArrayOfString1[i];
+          if ((str == null) || (str.length() <= 0) || (!paramString1.startsWith(str))) {}
+        }
+        for (i = 1;; i = 0)
+        {
+          if ((i == 0) || (paramArrayOfString2 == null) || (paramArrayOfString2.length == 0) || (paramString2 == null)) {
+            break label334;
           }
-          bool = true;
-          try
+          j = paramArrayOfString2.length;
+          i = 0;
+          if (i < j)
           {
-            ThreadManager.getSubThreadHandler().postDelayed(new AudioUtil.1(), 1000L);
+            paramString1 = paramArrayOfString2[i];
+            if ((paramString1 == null) || (paramString1.length() <= 0) || (!paramString2.contains(paramString1))) {}
           }
-          catch (NullPointerException paramContext) {}
+          for (i = 1;; i = 0)
+          {
+            if (i == 0) {
+              break label328;
+            }
+            paramArrayOfString1 = paramString2.toCharArray();
+            paramString1 = "";
+            j = 0;
+            int k = 0;
+            if (j < paramArrayOfString1.length)
+            {
+              char c = paramArrayOfString1[j];
+              if ((c >= '0') && (c <= '9'))
+              {
+                paramString2 = paramString1 + String.valueOf(c);
+                i = 1;
+              }
+              do
+              {
+                j += 1;
+                paramString1 = paramString2;
+                k = i;
+                break label191;
+                i += 1;
+                break;
+                i += 1;
+                break label138;
+                paramString2 = paramString1;
+                i = k;
+              } while (k == 0);
+              if (paramString1.length() < paramInt) {}
+            }
+            else
+            {
+              if ((paramString1 == null) || (paramString1.length() <= 0)) {
+                break label319;
+              }
+            }
+            for (;;)
+            {
+              return paramString1;
+              paramString2 = "";
+              i = 0;
+              break;
+              paramString1 = null;
+            }
+          }
+          break;
         }
       }
-      catch (NullPointerException paramContext)
-      {
-        label182:
-        bool = false;
-        continue;
-      }
-      QLog.e("AudioUtil", 1, "caught npe", paramContext);
-      break;
-      bool = false;
     }
   }
   
-  public static void b(int paramInt, boolean paramBoolean)
+  public static String a(byte[] paramArrayOfByte)
   {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() < 2) {
+        localStringBuffer.append(0);
+      }
+      localStringBuffer.append(str.toUpperCase());
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static ArrayList<String> a(String paramString, int paramInt1, int paramInt2, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList, ArrayList<ArrayList<MessageForText.AtTroopMemberInfo>> paramArrayList1)
+  {
+    ArrayList localArrayList2 = new ArrayList();
+    int i2 = paramString.length();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    ArrayList localArrayList1 = null;
+    int i1 = 0;
+    int j = 0;
+    int n = 0;
+    int i3;
+    int k;
+    label62:
+    MessageForText.AtTroopMemberInfo localAtTroopMemberInfo;
+    String str1;
+    label171:
+    label195:
+    String str2;
+    int i4;
+    String str3;
+    if (j < i2)
+    {
+      i3 = paramString.codePointAt(j);
+      k = i;
+      if (paramArrayList == null) {
+        break label1123;
+      }
+      k = i;
+      if (i >= paramArrayList.size()) {
+        break label1123;
+      }
+      localAtTroopMemberInfo = (MessageForText.AtTroopMemberInfo)paramArrayList.get(i);
+      if ((localAtTroopMemberInfo != null) && (localAtTroopMemberInfo.isValid()))
+      {
+        if ((localAtTroopMemberInfo == null) || (localAtTroopMemberInfo.startPos != j)) {
+          break label477;
+        }
+        str1 = paramString.substring(localAtTroopMemberInfo.startPos, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen);
+        k = a(str1);
+        localAtTroopMemberInfo.startPos = ((short)(localAtTroopMemberInfo.startPos + i1));
+        if (localArrayList1 != null) {
+          break label1120;
+        }
+        localArrayList1 = new ArrayList();
+        localArrayList1.add(localAtTroopMemberInfo);
+        k = k + 11 + 8;
+        i += 1;
+        if (n + k <= paramInt1) {
+          break label835;
+        }
+        str2 = localStringBuilder.toString();
+        m = -1;
+        if (localArrayList1 != null) {
+          break label667;
+        }
+        i4 = str2.length() - paramInt2;
+        n = 0;
+      }
+      for (;;)
+      {
+        if (n < jdField_a_of_type_ArrayOfChar.length)
+        {
+          m = str2.lastIndexOf(jdField_a_of_type_ArrayOfChar[n]);
+          if (m <= i4) {}
+        }
+        else
+        {
+          n = str2.lastIndexOf('\024');
+          if ((m <= i4) || (n != -1)) {
+            break label563;
+          }
+          str2 = localStringBuilder.substring(0, m + 1);
+          str3 = localStringBuilder.substring(m + 1);
+          localStringBuilder.setLength(0);
+          m = a(str3);
+          localStringBuilder.append(str3);
+          label326:
+          i4 = str2.length();
+          localArrayList2.add(str2);
+          paramArrayList1.add(localArrayList1);
+          if (str1 == null) {
+            break label679;
+          }
+          localStringBuilder.append(str1);
+          n = localAtTroopMemberInfo.textLen - 1 + j;
+          label374:
+          j = n;
+          if (i3 == 20)
+          {
+            if (n + 1 < i2) {
+              break label720;
+            }
+            j = n;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("Utils", 2, "there is no other char behind EMO_HEAD_CODE,msg is:" + paramString);
+              j = n;
+            }
+          }
+          label434:
+          localArrayList1 = null;
+          m += k;
+          k = i1 - i4;
+          j += 1;
+          i1 = k;
+          n = m;
+          break;
+          i += 1;
+          break label62;
+          label477:
+          if (i3 == 20)
+          {
+            if ((j + 1 < i2) && ((paramString.charAt(j + 1) == 'ÿ') || (paramString.charAt(j + 1) == 'ǿ')))
+            {
+              str1 = null;
+              k = 20;
+              break label195;
+            }
+            str1 = null;
+            k = 12;
+            break label195;
+          }
+          k = a(i3);
+          str1 = null;
+          break label195;
+        }
+        n += 1;
+      }
+      label563:
+      if ((n - 2 < 0) || (str2.charAt(n - 1) != 'ÿ') || (str2.charAt(n - 2) != '\024')) {
+        break label1133;
+      }
+    }
+    label667:
+    label679:
+    label720:
+    label860:
+    label1120:
+    label1123:
+    label1133:
+    for (int m = n - 2;; m = n)
+    {
+      if (m > i4)
+      {
+        str2 = localStringBuilder.substring(0, m);
+        str3 = localStringBuilder.substring(m);
+        localStringBuilder.setLength(0);
+        m = a(str3);
+        localStringBuilder.append(str3);
+        break label326;
+      }
+      localStringBuilder.setLength(0);
+      m = 0;
+      break label326;
+      localStringBuilder.setLength(0);
+      m = 0;
+      break label326;
+      if (i3 > 65535)
+      {
+        localStringBuilder.appendCodePoint(i3);
+        n = j + 1;
+        break label374;
+      }
+      localStringBuilder.append((char)i3);
+      n = j;
+      break label374;
+      if ('ÿ' == paramString.charAt(n + 1))
+      {
+        j = n;
+        if (n + 4 >= i2) {
+          break label434;
+        }
+        localStringBuilder.append(paramString.charAt(n + 1));
+        localStringBuilder.append(paramString.charAt(n + 2));
+        localStringBuilder.append(paramString.charAt(n + 3));
+        localStringBuilder.append(paramString.charAt(n + 4));
+        j = n + 4;
+        break label434;
+      }
+      localStringBuilder.append(paramString.charAt(n + 1));
+      j = n + 1;
+      break label434;
+      if (str1 != null)
+      {
+        localStringBuilder.append(str1);
+        m = localAtTroopMemberInfo.textLen - 1 + j;
+        j = m;
+        if (i3 == 20)
+        {
+          if (m + 1 < i2) {
+            break label975;
+          }
+          j = m;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("Utils", 2, "there is no other char behind EMO_HEAD_CODE,msg is:" + paramString);
+            j = m;
+          }
+        }
+      }
+      for (;;)
+      {
+        m = n + k;
+        k = i1;
+        break;
+        if (i3 > 65535)
+        {
+          localStringBuilder.appendCodePoint(i3);
+          m = j + 1;
+          break label860;
+        }
+        localStringBuilder.append((char)i3);
+        m = j;
+        break label860;
+        if ('ÿ' == paramString.charAt(m + 1))
+        {
+          j = m;
+          if (m + 4 < i2)
+          {
+            localStringBuilder.append(paramString.charAt(m + 1));
+            localStringBuilder.append(paramString.charAt(m + 2));
+            localStringBuilder.append(paramString.charAt(m + 3));
+            localStringBuilder.append(paramString.charAt(m + 4));
+            j = m + 4;
+          }
+        }
+        else
+        {
+          localStringBuilder.append(paramString.charAt(m + 1));
+          j = m + 1;
+        }
+      }
+      if (localStringBuilder.length() > 0)
+      {
+        localArrayList2.add(localStringBuilder.toString());
+        paramArrayList1.add(localArrayList1);
+      }
+      return localArrayList2;
+      break label171;
+      localAtTroopMemberInfo = null;
+      i = k;
+      break;
+    }
+  }
+  
+  public static short a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return (short)(a(paramArrayOfByte[(paramInt + 1)]) | a(paramArrayOfByte[paramInt]) << 8);
+  }
+  
+  public static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable)
+    {
+      QLog.e("Utils", 1, paramCloseable, new Object[0]);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    ExceptionTracker.printCallStack(paramString, 1);
+  }
+  
+  public static void a(Throwable paramThrowable) {}
+  
+  public static boolean a()
+  {
+    return (Environment.getExternalStorageState().equals("mounted")) && (Environment.getExternalStorageDirectory().exists());
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString.trim()))) {
+      return false;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", jdField_a_of_type_JavaLangString.trim());
+    paramContext.startActivity(localIntent);
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    if ((paramContext == null) || (paramString == null)) {
+      return false;
+    }
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+    while (paramContext.hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+      if (localRunningAppProcessInfo.processName.equals(paramString))
+      {
+        Process.killProcess(localRunningAppProcessInfo.pid);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(Object paramObject1, Object paramObject2)
+  {
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.equals(ajsd.E)) || (paramString.equals(String.valueOf(ajsd.F))) || (paramString.equals(String.valueOf(ajsd.G))) || (paramString.equals(String.valueOf(ajsd.H))) || (paramString.equals(String.valueOf(ajsd.J))) || (paramString.equals(String.valueOf(ajsd.D))) || (paramString.equals(String.valueOf(ajsd.C))) || (paramString.equals(String.valueOf(ajsd.U))) || (paramString.equals(String.valueOf(ajsd.ac))) || (paramString.equals(String.valueOf(ajsd.aB))) || (paramString.equals(String.valueOf(ajsd.z))) || (paramString.equals(String.valueOf(ajsd.A))) || (paramString.equals(String.valueOf(ajsd.B))) || (paramString.equals(String.valueOf(ajsd.aa))) || (paramString.equals(String.valueOf(ajsd.x))) || (paramString.equals(String.valueOf(ajsd.w))) || (paramString.equals(String.valueOf(ajsd.ab))) || (paramString.equals(String.valueOf(ajsd.W))) || (paramString.equals(String.valueOf(ajsd.Z))) || (paramString.equals(String.valueOf(ajsd.X))) || (paramString.equals(String.valueOf(ajsd.ad))) || (paramString.equals(String.valueOf(ajsd.ae))) || (paramString.equals(String.valueOf(ajsd.ar))) || (paramString.equals(String.valueOf(ajsd.at))) || (paramString.equals(String.valueOf(ajsd.au))) || (paramString.equals(String.valueOf(ajsd.aA))) || (paramString.equals(String.valueOf(66600000L))) || (paramString.equals(String.valueOf(ajsd.aD))) || (paramString.equals(String.valueOf(9946L))) || (paramString.equals(String.valueOf(ajsd.aM)));
+  }
+  
+  public static byte[] a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)((0xFF00 & paramInt) >> 8);
+    int k = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      paramString = null;
+      return paramString;
+    }
+    int j = paramString.length() / 2;
+    byte[] arrayOfByte = new byte[j];
+    char[] arrayOfChar = paramString.toUpperCase().toCharArray();
+    int i = 0;
     for (;;)
     {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaPlayerStart", 2, "resourceId=" + paramInt + ",looping=" + paramBoolean);
-        }
-        if (jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-          continue;
-        }
-        if (!jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("MediaPlayerStart", 2, "media palyer is playing");
-        }
+      paramString = arrayOfByte;
+      if (i >= j) {
+        break;
       }
-      catch (Exception localException1)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MediaPlayerStart", 2, "media palyer exception", localException1);
-        continue;
-      }
-      finally {}
-      return;
-      try
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      }
-      catch (Exception localException2)
-      {
-        if (!QLog.isColorLevel()) {
-          break label167;
-        }
-        QLog.e("MediaPlayerStart", 2, "media palyer release exception", localException2);
-        label167:
-        jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        continue;
-      }
-      finally
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      }
-      if (paramInt != AppSetting.d)
-      {
-        jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(BaseApplicationImpl.sApplication, paramInt);
-        if (jdField_a_of_type_AndroidMediaMediaPlayer == null)
+      int k = i * 2;
+      int m = a(arrayOfChar[k]);
+      arrayOfByte[i] = ((byte)(a(arrayOfChar[(k + 1)]) | m << 4));
+      i += 1;
+    }
+  }
+  
+  public static int[] a(String paramString)
+  {
+    int[] arrayOfInt = new int[2];
+    if (paramString == null)
+    {
+      arrayOfInt[1] = 0;
+      arrayOfInt[0] = 0;
+      return arrayOfInt;
+    }
+    int i2 = paramString.length();
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    if (k < i2)
+    {
+      int i3 = paramString.codePointAt(k);
+      int n;
+      int j;
+      if (i3 == 20) {
+        if ((k + 4 < i2) && ((paramString.charAt(k + 1) == 'ÿ') || (paramString.charAt(k + 1) == 'ǿ')))
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.w("MediaPlayerStart", 2, "media palyer is null");
+          i += 20;
+          n = m + 1;
+          j = k + 4;
         }
+      }
+      for (;;)
+      {
+        k = j + 1;
+        m = n;
+        break;
+        i += 12;
+        j = k + 1;
+        n = m;
+        continue;
+        int i1 = i + a(i3);
+        j = k;
+        n = m;
+        i = i1;
+        if (i3 > 255)
+        {
+          j = k + 1;
+          n = m;
+          i = i1;
+        }
+      }
+    }
+    arrayOfInt[0] = i;
+    arrayOfInt[1] = m;
+    return arrayOfInt;
+  }
+  
+  public static int b(long paramLong1, long paramLong2)
+  {
+    return a(paramLong1 - -9223372036854775808L, -9223372036854775808L + paramLong2);
+  }
+  
+  public static long b()
+  {
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    int i = localStatFs.getBlockSize();
+    int j = localStatFs.getAvailableBlocks();
+    long l = i;
+    return j * l;
+  }
+  
+  public static String b(String paramString)
+  {
+    int i = 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramString == null) {
+      localStringBuilder.append("null");
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      if (paramString.length() == 0)
+      {
+        localStringBuilder.append("");
       }
       else
       {
-        jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(BaseApplicationImpl.sApplication, Settings.System.DEFAULT_NOTIFICATION_URI);
-        if (!QLog.isColorLevel()) {
-          continue;
+        int j = paramString.length();
+        if (j > 10)
+        {
+          localStringBuilder.append(paramString.charAt(0)).append(paramString.charAt(1)).append("***").append(paramString.charAt(j - 1)).append('[').append(j).append(']');
         }
-        QLog.d("MediaPlayerStart", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
-        continue;
+        else
+        {
+          localStringBuilder.append(paramString.charAt(0));
+          while (i < paramString.length())
+          {
+            localStringBuilder.append('*');
+            i += 1;
+          }
+        }
       }
-      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bbbv());
-      jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
     }
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("len must be greater than 0,len is:" + paramInt);
+    }
+    if (paramString == null) {}
+    while (paramString.length() <= paramInt) {
+      return paramString;
+    }
+    return paramString.substring(0, paramInt) + "...";
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    String str = ajya.a(2131716042);
+    return a(paramString1, paramString2, new String[] { "106" }, new String[] { str, "Login Verification Code" }, 3);
+  }
+  
+  public static boolean b()
+  {
+    Boolean localBoolean = jdField_a_of_type_JavaLangBoolean;
+    Object localObject = localBoolean;
+    long l1;
+    if (localBoolean == null)
+    {
+      localObject = MobileQQ.sMobileQQ.getFirstSimpleAccount();
+      if (localObject != null)
+      {
+        localObject = ((SimpleAccount)localObject).getUin();
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          l1 = 0L;
+        }
+      }
+    }
+    else
+    {
+      try
+      {
+        long l2 = Long.parseLong((String)localObject);
+        l1 = l2;
+      }
+      catch (Exception localException)
+      {
+        label52:
+        break label52;
+      }
+      if (!jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(l1))) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = Boolean.valueOf(bool);
+      return ((Boolean)localObject).booleanValue();
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    return ajsd.aC.equals(paramString);
+  }
+  
+  public static String c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
+    {
+      return paramString;
+      i = paramString.lastIndexOf('_');
+    } while (i <= 0);
+    return paramString.substring(i + 1);
+  }
+  
+  public static String c(String paramString1, String paramString2)
+  {
+    String str1 = ajya.a(2131716034);
+    String str2 = ajya.a(2131716018);
+    return a(paramString1, paramString2, new String[] { "1062", "1065", "1066", "1069" }, new String[] { str1, str2 }, 3);
+  }
+  
+  public static boolean c()
+  {
+    boolean bool2 = false;
+    List localList = BaseApplicationImpl.sApplication.getAllAccounts();
+    boolean bool1 = bool2;
+    if (localList != null)
+    {
+      bool1 = bool2;
+      if (localList.size() >= 8) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Utils", 2, "isAccountNumExceedMax, isExceed=" + bool1);
+    }
+    return bool1;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      label9:
+      break label9;
+    }
+    return ((l1 >= 2726500000L) && (l1 <= 2726511999L)) || ((l1 >= 800000000L) && (l1 <= 800099999L)) || ((l1 >= 938000000L) && (l1 <= 938099999L)) || ((l1 >= 1068660000L) && (l1 <= 1068669960L)) || ((l1 >= 2355000000L) && (l1 <= 2355199999L)) || (l1 == 56268888L);
+  }
+  
+  public static String d(String paramString1, String paramString2)
+  {
+    String str1 = ajya.a(2131716027);
+    String str2 = ajya.a(2131716028);
+    return a(paramString1, paramString2, new String[] { "10010", "106" }, new String[] { str1, str2, "QQ" }, 3);
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return (paramString != null) && (paramString.length() > 0) && (!"0".equals(paramString)) && (!"10000".equals(paramString)) && (!"1000000".equals(paramString)) && (!"80000000".equals(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbbr
  * JD-Core Version:    0.7.0.1
  */

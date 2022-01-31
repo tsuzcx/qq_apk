@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -48,7 +48,7 @@ public class RoundBGTextView
   
   public void setRoundCornerSize(int paramInt)
   {
-    this.jdField_a_of_type_Int = actn.a(paramInt, getResources());
+    this.jdField_a_of_type_Int = actj.a(paramInt, getResources());
   }
 }
 

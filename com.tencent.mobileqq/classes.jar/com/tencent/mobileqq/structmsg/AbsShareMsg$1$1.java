@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.structmsg;
 
-import axuj;
+import axul;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
 
 public class AbsShareMsg$1$1
   implements Runnable
 {
-  public AbsShareMsg$1$1(axuj paramaxuj, QQAppInterface paramQQAppInterface) {}
+  public AbsShareMsg$1$1(axul paramaxul, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

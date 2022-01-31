@@ -1,12 +1,9 @@
 import android.graphics.Path;
 import java.util.List;
 
-public class adey
+public abstract interface adey
 {
-  public int a;
-  public Path a;
-  public List<ades> a;
-  public boolean a;
+  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<adep> paramList);
 }
 
 

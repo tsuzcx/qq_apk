@@ -1,21 +1,14 @@
-import android.os.Bundle;
+import java.util.List;
 
 class apsg
-  implements apsh
+  implements bcwm
 {
-  apsg(apsf paramapsf) {}
+  apsg(apsc paramapsc, List paramList) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
+    if (paramInt == 2) {
+      bakx.a(apsc.a(this.jdField_a_of_type_Apsc), apsc.a(this.jdField_a_of_type_Apsc), this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

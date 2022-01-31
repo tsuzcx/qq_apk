@@ -1,41 +1,148 @@
 import android.content.Context;
 import android.view.View;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import java.lang.ref.WeakReference;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public class ytw
+final class ytw
+  extends FrameLayout
+  implements yts
 {
-  public static int a(int paramInt1, int paramInt2)
+  yts a;
+  
+  public ytw(Context paramContext, GdtAd paramGdtAd)
   {
-    if (paramInt1 == 0) {
-      return Double.valueOf(1.0D * paramInt2 / 1026.0D * 249.0D).intValue();
+    super(paramContext);
+    if ((paramContext == null) || (paramGdtAd == null) || (!paramGdtAd.isValid()))
+    {
+      yxp.d("GdtBannerViewWithLetterStyle", "constructor");
+      return;
     }
-    yxs.d("GdtBannerViewBuilder", "getHeight error");
-    return -2147483648;
+    setBackgroundResource(2130839678);
+    int k = -2147483648;
+    int m = -2147483648;
+    int i;
+    int j;
+    if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184) || (paramGdtAd.getCreativeSize() == 193) || (paramGdtAd.getCreativeSize() == 194) || (paramGdtAd.getCreativeSize() == 210))
+    {
+      i = k;
+      j = m;
+      if (paramGdtAd.getImageData() != null)
+      {
+        i = paramGdtAd.getImageData().jdField_a_of_type_Int;
+        j = paramGdtAd.getImageData().b;
+      }
+      if ((i > 0) && (j > 0)) {
+        break label248;
+      }
+      yxp.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
+    }
+    for (;;)
+    {
+      paramContext = new ImageView(getContext());
+      paramContext.setImageResource(2130839679);
+      addView(paramContext, -1, -1);
+      return;
+      i = k;
+      j = m;
+      if (paramGdtAd.getCreativeSize() != 285) {
+        break;
+      }
+      i = k;
+      j = m;
+      if (paramGdtAd.getImageData(0) == null) {
+        break;
+      }
+      i = k;
+      j = m;
+      if (paramGdtAd.getImageData(1) == null) {
+        break;
+      }
+      i = k;
+      j = m;
+      if (paramGdtAd.getImageData(2) == null) {
+        break;
+      }
+      i = paramGdtAd.getImageData(0).jdField_a_of_type_Int;
+      j = paramGdtAd.getImageData(0).b;
+      break;
+      label248:
+      if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184) || (paramGdtAd.getCreativeSize() == 210)) {
+        this.a = new ytz(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());
+      }
+      for (;;)
+      {
+        addView(this.a.a());
+        break;
+        if (paramGdtAd.getCreativeSize() == 193)
+        {
+          this.a = new yty(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j);
+        }
+        else if (paramGdtAd.getCreativeSize() == 194)
+        {
+          this.a = new yua(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription());
+        }
+        else
+        {
+          if (paramGdtAd.getCreativeSize() != 285) {
+            break label453;
+          }
+          this.a = new yub(paramContext, paramGdtAd.getImageData(0).jdField_a_of_type_JavaLangString, paramGdtAd.getImageData(1).jdField_a_of_type_JavaLangString, paramGdtAd.getImageData(2).jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());
+        }
+      }
+      label453:
+      yxp.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
+    }
   }
   
-  public static ytv a(ytu paramytu)
+  public View a()
   {
-    if ((paramytu == null) || (!paramytu.a()) || (!paramytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.a == null) || (this.a.a() == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      yxs.d("GdtBannerViewBuilder", "build error");
-      return null;
+      yxp.d("GdtBannerViewWithLetterStyle", "setSize error");
+      return;
     }
-    if (paramytu.jdField_a_of_type_Int == 0) {}
-    for (ytz localytz = new ytz((Context)paramytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);; localytz = null)
-    {
-      if ((localytz != null) && (localytz.a() != null) && (ytv.a != null))
-      {
-        localytz.a().setOnTouchListener(new ytx(localytz));
-        localytz.a().setOnClickListener(new yty(localytz, paramytu));
-      }
-      if (localytz != null) {
-        localytz.a(paramytu.b, paramytu.c);
-      }
-      AdReporterForAnalysis.reportForBanner((Context)paramytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-      return localytz;
+    int i = Double.valueOf(0.7076023391812866D * paramInt1).intValue();
+    int j = Double.valueOf(0.9036144578313253D * paramInt2).intValue();
+    paramInt1 = Double.valueOf((paramInt1 - i) * 1.0D / 2.0D).intValue();
+    paramInt2 = Double.valueOf((paramInt2 - j) * 1.0D / 2.0D).intValue();
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
+    localLayoutParams.topMargin = paramInt2;
+    localLayoutParams.bottomMargin = paramInt2;
+    localLayoutParams.leftMargin = paramInt1;
+    localLayoutParams.rightMargin = paramInt1;
+    this.a.a().setLayoutParams(localLayoutParams);
+    this.a.a(i, j);
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (this.a == null) {
+      return;
     }
+    this.a.a(paramContext);
+  }
+  
+  public void b(Context paramContext)
+  {
+    if (this.a == null) {
+      return;
+    }
+    this.a.b(paramContext);
+  }
+  
+  public void c(Context paramContext)
+  {
+    if (this.a == null) {
+      return;
+    }
+    this.a.c(paramContext);
   }
 }
 

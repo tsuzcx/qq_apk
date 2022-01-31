@@ -1,51 +1,17 @@
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 
-public class vza
-  extends vzc
+class vza
+  implements View.OnClickListener
 {
-  TextView a;
+  vza(vyz paramvyz) {}
   
-  public vza(vze paramvze, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramvze, paramView);
-    this.a = ((TextView)paramView.findViewById(2131377067));
-    this.a.setMaxLines(1);
-    this.a.setSingleLine();
-  }
-  
-  public CharSequence a()
-  {
-    return this.a.getText();
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.setText(paramCharSequence);
-    paramCharSequence = vyt.a(this.a, 1);
-    this.a.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.setBackgroundResource(2130843781);
-      return;
+    paramView = this.a.jdField_a_of_type_Vyv;
+    if (paramView != null) {
+      paramView.a(this.a.jdField_a_of_type_Vzb, this.a);
     }
-    this.a.setBackgroundResource(0);
-  }
-  
-  public CharSequence b()
-  {
-    return this.a.getHint();
-  }
-  
-  public void b(CharSequence paramCharSequence)
-  {
-    this.a.setHint(paramCharSequence);
-    this.a.setGravity(17);
   }
 }
 

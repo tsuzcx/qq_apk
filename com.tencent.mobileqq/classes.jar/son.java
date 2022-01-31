@@ -1,178 +1,84 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import android.graphics.Matrix;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.ViewGroup;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.1;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.10;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.11;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.2;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.3;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.4;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.5;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.6;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.7;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.8;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.9;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class son
-  extends nnb
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public son(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  private son(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a(soz paramsoz)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
+    this.a.jdField_a_of_type_Float = paramScaleGestureDetector.getScaleFactor();
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond");
+      QLog.d("qqBaseActivity", 2, "缩放比例是" + this.a.jdField_a_of_type_Float);
     }
-    PublicAccountImageCollectionMainActivity.a(this.a, paramsoz);
-    if (paramsoz == null)
+    QLog.d("qqBaseActivity", 2, "catch zoom");
+    if (PublicAccountImageCollectionMainActivity.a(this.a))
     {
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.5(this), 0L);
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.a(this.a, paramsoz);
-    PublicAccountImageCollectionMainActivity.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onReportReadPhotoCollectionRespond isSuccess =" + paramBoolean);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onCreateArticleCommentRespond isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      PublicAccountImageCollectionMainActivity.b(this.a);
-    }
-    for (int i = 1;; i = 0)
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.6(this, paramBoolean, paramInt), 0L);
-      noo.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B97", "0X8007B97", 0, 0, this.a.b, this.a.c, "" + i, "", false);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onSendArticleLikeReq,articleID=" + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onQueryArticleLikeCount,articleID=" + paramString + "likeCount" + paramInt);
-    }
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.b)))
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a, paramInt);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.1(this, paramInt), 0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onCheckIsArticleLiked,articleID=" + paramString + "isLiked" + paramBoolean2);
-    }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.b)))
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a, paramBoolean2);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.2(this), 0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ArrayList<spc> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetRecommendInfoRespond isSuccess =" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
-      {
-        PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.8(this), 0L);
-        return;
+      if (PublicAccountImageCollectionMainActivity.a(this.a).getScaleType() != ImageView.ScaleType.MATRIX) {
+        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.MATRIX);
       }
-      PublicAccountImageCollectionMainActivity.a(this.a, paramArrayList);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.9(this, paramArrayList), 0L);
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.10(this), 0L);
-  }
-  
-  public void a(boolean paramBoolean, soz paramsoz, byte[] paramArrayOfByte, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      if ((paramString != null) && (!paramString.equals(this.a.b)))
+      this.a.jdField_b_of_type_AndroidGraphicsMatrix.set(PublicAccountImageCollectionMainActivity.a(this.a).getImageMatrix());
+      this.a.jdField_b_of_type_AndroidGraphicsMatrix.getValues(this.a.jdField_b_of_type_ArrayOfFloat);
+      if (this.a.jdField_b_of_type_ArrayOfFloat[0] > this.a.jdField_a_of_type_ArrayOfFloat[0] * 3.0F)
       {
-        if (paramsoz != null)
+        this.a.jdField_a_of_type_Float = (this.a.jdField_a_of_type_ArrayOfFloat[0] * 3.0F / this.a.jdField_b_of_type_ArrayOfFloat[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "the last scale is" + this.a.jdField_a_of_type_Float);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidGraphicsMatrix.set(this.a.jdField_b_of_type_AndroidGraphicsMatrix);
+      this.a.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.a.jdField_a_of_type_Float, this.a.jdField_a_of_type_Float, PublicAccountImageCollectionMainActivity.a(this.a).getWidth() / 2, PublicAccountImageCollectionMainActivity.a(this.a).getHeight() / 2);
+      PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.jdField_a_of_type_AndroidGraphicsMatrix);
+      return true;
+    }
+    this.a.jdField_b_of_type_AndroidViewViewGroup = PublicAccountImageCollectionMainActivity.a(this.a).a();
+    if ((this.a.jdField_b_of_type_AndroidViewViewGroup != null) && ((this.a.jdField_b_of_type_AndroidViewViewGroup.getTag() instanceof snv)))
+    {
+      paramScaleGestureDetector = (ZImageView)this.a.jdField_b_of_type_AndroidViewViewGroup.getChildAt(0);
+      if ((paramScaleGestureDetector != null) && ((paramScaleGestureDetector instanceof ZImageView)))
+      {
+        PublicAccountImageCollectionMainActivity.a(this.a, paramScaleGestureDetector.getDrawable());
+        int i = paramScaleGestureDetector.getWidth();
+        int j = paramScaleGestureDetector.getHeight();
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        localLayoutParams.addRule(15);
+        this.a.jdField_c_of_type_AndroidGraphicsMatrix = paramScaleGestureDetector.getImageMatrix();
+        this.a.jdField_c_of_type_AndroidGraphicsMatrix.getValues(this.a.jdField_a_of_type_ArrayOfFloat);
+        this.a.jdField_a_of_type_AndroidGraphicsMatrix.set(this.a.jdField_c_of_type_AndroidGraphicsMatrix);
+        PublicAccountImageCollectionMainActivity.a(this.a, new PublicAccountImageView(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidOsHandler, this.a.jdField_c_of_type_AndroidGraphicsMatrix, this.a.jdField_a_of_type_Int, i, j));
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageDrawable(PublicAccountImageCollectionMainActivity.a(this.a));
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.jdField_a_of_type_AndroidGraphicsMatrix);
+        this.a.jdField_a_of_type_AndroidViewViewGroup.addView(PublicAccountImageCollectionMainActivity.a(this.a), localLayoutParams);
+        PublicAccountImageCollectionMainActivity.b(this.a, true);
+        i = ((snv)this.a.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_Int;
+        if (PublicAccountImageCollectionMainActivity.a(this.a).a != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramsoz.jdField_a_of_type_JavaLangString);
-          }
-          PublicAccountImageCollectionPreloadManager.a().a(paramsoz, paramArrayOfByte);
-          PublicAccountImageCollectionPreloadManager.a().b(paramsoz);
-        }
-        if ((paramsoz == null) || (paramsoz.jdField_a_of_type_JavaUtilArrayList == null)) {
-          break label308;
+          paramScaleGestureDetector = ((soy)PublicAccountImageCollectionMainActivity.a(this.a).a.get(i - 1)).jdField_a_of_type_JavaLangString;
+          nol.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B91", "0X8007B91", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, paramScaleGestureDetector, "1", false);
         }
       }
     }
-    label308:
-    for (int i = paramsoz.jdField_a_of_type_JavaUtilArrayList.size();; i = 0)
-    {
-      noo.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B8A", "0X8007B8A", 0, 0, this.a.b, this.a.c, "" + PublicAccountImageCollectionMainActivity.b(this.a, PublicAccountImageCollectionMainActivity.a(this.a)), "" + i, false);
-      return;
-      PublicAccountImageCollectionMainActivity.a(this.a, paramsoz);
-      if (paramsoz == null)
-      {
-        PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.3(this), 0L);
-        break;
-      }
-      PublicAccountImageCollectionMainActivity.a(this.a, paramsoz);
-      PublicAccountImageCollectionPreloadManager.a().a(paramsoz, paramArrayOfByte);
-      PublicAccountImageCollectionMainActivity.a(this.a);
-      break;
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.4(this), 0L);
-      break;
-    }
+    PublicAccountImageCollectionMainActivity.a(this.a).a();
+    return true;
   }
   
-  public void b(boolean paramBoolean, int paramInt)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetArticleCommentCountRespond count=" + paramInt);
-    }
-    if (paramBoolean)
-    {
-      PublicAccountImageCollectionMainActivity.c(this.a, paramInt);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.7(this), 0L);
-    }
+    return true;
   }
   
-  public void c(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetArticleReadCount isSuccess =" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      PublicAccountImageCollectionMainActivity.d(this.a, paramInt);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.11(this), 0L);
-    }
-  }
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

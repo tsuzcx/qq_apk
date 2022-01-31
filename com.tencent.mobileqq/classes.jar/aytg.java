@@ -1,49 +1,82 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.CheckConErroObserver;
-
 public class aytg
-  extends CheckConErroObserver
 {
-  ayti jdField_a_of_type_Ayti;
-  aytj jdField_a_of_type_Aytj;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public aytg(ProtoReqManager paramProtoReqManager, aytj paramaytj, ayti paramayti)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Aytj = paramaytj;
-    this.jdField_a_of_type_Ayti = paramayti;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle != null)
+    if ((paramString != null) && (paramString.length() > 12))
     {
-      Object localObject = paramBundle.getString("msf_con_erro");
-      paramBundle = (Bundle)localObject;
-      if (localObject == null) {
-        paramBundle = "";
+      paramString = paramString.split("\\|");
+      if ((paramString != null) && (paramString.length < 13)) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_Long = Long.parseLong(paramString[12]);
+      if (paramString.length >= 14) {
+        this.jdField_a_of_type_JavaLangString = paramString[13];
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
-      }
-      if (this.jdField_a_of_type_Aytj != null)
+      if (paramString.length < 15) {}
+    }
+    catch (Exception localException3)
+    {
+      try
       {
-        localObject = this.jdField_a_of_type_Aytj.a;
-        if (localObject != null) {
-          ((FromServiceMsg)localObject).addAttribute("_tag_socket_connerror", paramBundle);
+        this.jdField_a_of_type_Int = Integer.parseInt(paramString[14]);
+        if (paramString.length < 16) {}
+      }
+      catch (Exception localException3)
+      {
+        try
+        {
+          this.jdField_b_of_type_JavaLangString = paramString[15];
+          if (paramString.length < 17) {}
+        }
+        catch (Exception localException3)
+        {
+          try
+          {
+            for (;;)
+            {
+              this.c = paramString[16];
+              if (paramString.length >= 18) {}
+              try
+              {
+                this.jdField_b_of_type_Int = Integer.parseInt(paramString[17]);
+                return;
+              }
+              catch (Exception paramString)
+              {
+                this.jdField_b_of_type_Int = -1;
+              }
+              localException1 = localException1;
+              this.jdField_a_of_type_Long = -1L;
+              continue;
+              localException2 = localException2;
+              this.jdField_a_of_type_Int = -1;
+            }
+            localException3 = localException3;
+            this.jdField_b_of_type_JavaLangString = null;
+          }
+          catch (Exception localException4)
+          {
+            for (;;)
+            {
+              this.c = null;
+            }
+          }
         }
       }
-    }
-    if (this.jdField_a_of_type_Ayti.a != null) {
-      this.jdField_a_of_type_Ayti.a.a(this.jdField_a_of_type_Aytj, this.jdField_a_of_type_Ayti);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aytg
  * JD-Core Version:    0.7.0.1
  */

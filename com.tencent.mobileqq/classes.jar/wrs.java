@@ -1,50 +1,26 @@
-public class wrs
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+
+class wrs
+  implements Animator.AnimatorListener
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private wsc jdField_a_of_type_Wsc;
+  wrs(wrq paramwrq, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    a(-1);
+    paramAnimator = (FrameLayout.LayoutParams)wrq.b(this.jdField_a_of_type_Wrq).getLayoutParams();
+    paramAnimator.height = this.jdField_a_of_type_Int;
+    paramAnimator.width = this.b;
+    paramAnimator.setMargins(this.c, this.d, 0, 0);
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Wsc != null) {}
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case -1: 
-      this.jdField_a_of_type_Wsc.n();
-      return;
-    case 1: 
-      this.jdField_a_of_type_Wsc.l();
-      return;
-    case 2: 
-      this.jdField_a_of_type_Wsc.k();
-      return;
-    }
-    this.jdField_a_of_type_Wsc.m();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(wsc paramwsc)
-  {
-    this.jdField_a_of_type_Wsc = paramwsc;
-    a(this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == -1;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

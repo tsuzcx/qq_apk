@@ -1,15 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
-class vbr
-  implements bcmw
+public class vbr
+  implements Dispatcher.Event
 {
-  vbr(vbd paramvbd, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public void a(String paramString)
+  public vbr(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    veg.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
-    swa.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+    this.d = paramFloat4;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.a = paramFloat1;
   }
 }
 

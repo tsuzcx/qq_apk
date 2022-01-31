@@ -1,14 +1,22 @@
-public class bero
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.DebugInfo;
+
+public final class bero
+  implements Parcelable.Creator<DebugInfo>
 {
-  public bert a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public DebugInfo a(Parcel paramParcel)
+  {
+    DebugInfo localDebugInfo = new DebugInfo();
+    localDebugInfo.a = paramParcel.readString();
+    localDebugInfo.b = paramParcel.readString();
+    return localDebugInfo;
+  }
+  
+  public DebugInfo[] a(int paramInt)
+  {
+    return new DebugInfo[paramInt];
+  }
 }
 
 

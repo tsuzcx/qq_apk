@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.model;
 
-import aexd;
-import askd;
-import aukn;
+import aexb;
+import askf;
 import aukp;
+import aukr;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonTab;
 import java.util.Collection;
@@ -14,37 +14,37 @@ import java.util.List;
 public class EmoticonManager$18
   implements Runnable
 {
-  public EmoticonManager$18(askd paramaskd, String paramString) {}
+  public EmoticonManager$18(askf paramaskf, String paramString) {}
   
   public void run()
   {
     String str;
     synchronized (this.this$0)
     {
-      this.this$0.jdField_a_of_type_Aukn.a(EmoticonTab.class.getSimpleName());
-      aukp localaukp = this.this$0.jdField_a_of_type_Aukn.a();
+      this.this$0.jdField_a_of_type_Aukp.a(EmoticonTab.class.getSimpleName());
+      aukr localaukr = this.this$0.jdField_a_of_type_Aukp.a();
       try
       {
-        localaukp.a();
+        localaukr.a();
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          askd.a(this.this$0, str, true, false);
+          askf.a(this.this$0, str, true, false);
           continue;
           localObject2 = finally;
         }
       }
       finally
       {
-        localaukp.b();
+        localaukr.b();
       }
     }
     Object localObject5 = this.this$0.b.iterator();
     while (((Iterator)localObject5).hasNext())
     {
       str = (String)((Iterator)localObject5).next();
-      askd.a(this.this$0, str, false, true);
+      askf.a(this.this$0, str, false, true);
     }
     localObject2.c();
     localObject2.b();
@@ -61,7 +61,7 @@ public class EmoticonManager$18
         ((HashSet)???).add(((Emoticon)localObject5).name);
       }
     }
-    aexd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
+    aexb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
     this.this$0.a(this.a);
   }
 }

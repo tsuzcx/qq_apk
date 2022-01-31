@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
-import arsc;
+import arse;
 import com.tencent.mobileqq.listentogether.data.ISong;
 
 public class ListenTogetherPlayFragment$1$1
   implements Runnable
 {
-  public ListenTogetherPlayFragment$1$1(arsc paramarsc, String paramString, int paramInt1, int paramInt2) {}
+  public ListenTogetherPlayFragment$1$1(arse paramarse, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Arsc.a.a.d())) {
-      ListenTogetherPlayFragment.a(this.jdField_a_of_type_Arsc.a, this.jdField_a_of_type_Int, this.b, false);
+    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Arse.a.a.d())) {
+      ListenTogetherPlayFragment.a(this.jdField_a_of_type_Arse.a, this.jdField_a_of_type_Int, this.b, false);
     }
   }
 }

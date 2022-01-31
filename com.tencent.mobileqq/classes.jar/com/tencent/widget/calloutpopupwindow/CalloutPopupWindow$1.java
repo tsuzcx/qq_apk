@@ -1,16 +1,16 @@
 package com.tencent.widget.calloutpopupwindow;
 
 import android.view.View;
-import bfxh;
+import bfxy;
 
 public class CalloutPopupWindow$1
   implements Runnable
 {
-  public CalloutPopupWindow$1(bfxh parambfxh, View paramView, int paramInt1, int paramInt2) {}
+  public CalloutPopupWindow$1(bfxy parambfxy, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    bfxh.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    bfxy.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
 }
 

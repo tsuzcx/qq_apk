@@ -1,25 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-class aynr
-  implements Animation.AnimationListener
+public abstract interface aynr
 {
-  aynr(aynq paramaynq) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new ayns(this));
-    this.a.d.startAnimation(paramAnimation);
-  }
+  public abstract bbgu a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract String a();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
+  
+  public abstract void a(ayno paramayno, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
 }
 
 

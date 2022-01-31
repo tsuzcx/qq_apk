@@ -2,17 +2,15 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-class agpu
+final class agpu
   implements DialogInterface.OnClickListener
 {
-  agpu(agpn paramagpn) {}
+  agpu(Activity paramActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      agpn.a(this.a).moveTaskToBack(true);
+    if (paramInt == 0) {
+      this.a.finish();
     }
   }
 }

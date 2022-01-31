@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import besl;
-import bfad;
+import betc;
+import bfau;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
 import org.json.JSONObject;
@@ -9,11 +9,11 @@ import org.json.JSONObject;
 class ChannelProxyDefault$4
   implements MiniAppProxy.SenderListener
 {
-  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bfad parambfad, AsyncResult paramAsyncResult) {}
+  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bfau parambfau, AsyncResult paramAsyncResult) {}
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    besl.c("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
+    betc.c("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
     if (paramInt == 0) {
       if (this.val$result != null)
       {

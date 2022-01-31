@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import arfs;
+import arfu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class HuayangOpenHelper$1$1
@@ -10,7 +10,7 @@ class HuayangOpenHelper$1$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Arfs.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_JavaUtilMap);
+    this.this$0.jdField_a_of_type_Arfu.a(this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_JavaUtilMap);
   }
 }
 

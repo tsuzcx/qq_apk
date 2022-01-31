@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class apyd
-  implements DialogInterface.OnClickListener
+public class apyd
+  implements View.OnClickListener
 {
-  apyd(apyc paramapyc) {}
+  public apyd(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    SendBottomBar.a(this.a.a);
+    if (SendBottomBar.a(this.a).isChecked())
+    {
+      SendBottomBar.a(this.a).d();
+      SendBottomBar.a(this.a).setText(ajya.a(2131713813));
+      return;
+    }
+    SendBottomBar.a(this.a).e();
+    SendBottomBar.a(this.a).setText(ajya.a(2131713825));
   }
 }
 

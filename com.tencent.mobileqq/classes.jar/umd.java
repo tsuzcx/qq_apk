@@ -1,25 +1,11 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
-class umd
-  extends SimpleJob<Object>
+public abstract class umd
 {
-  umd(umb paramumb, String paramString)
-  {
-    super(paramString);
-  }
+  public int a;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    if (this.a.a == null) {
-      this.a.a = new ume(this.a, this.a.c);
-    }
-    this.a.d = this.a.a.a;
-    umb.a(this.a);
-    return null;
-  }
+  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
 }
 
 

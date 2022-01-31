@@ -1,28 +1,69 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ola
 {
-  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
+  HashMap<String, HashSet<Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  olb jdField_a_of_type_Olb;
+  
+  public ola(olb paramolb)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    this.jdField_a_of_type_Olb = paramolb;
+  }
+  
+  private void b(String paramString, Object paramObject)
+  {
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localHashSet2 != null) && (localHashSet2.contains(paramObject))) {
+      return;
     }
-    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
-    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
-    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
-    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
-    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
-    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
-    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
-    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
-    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
-    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
-    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
-    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
-    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
-    return localBundle;
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null) {
+      localHashSet1 = new HashSet();
+    }
+    localHashSet1.add(paramObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    a(paramString, paramObject, true);
+  }
+  
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    b(paramString, paramObject);
+    if (paramBoolean) {}
+    while (this.jdField_a_of_type_Olb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Olb.a(paramString, paramObject);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Olb != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = ((HashSet)localEntry.getValue()).iterator();
+        while (localIterator2.hasNext())
+        {
+          Object localObject = localIterator2.next();
+          this.jdField_a_of_type_Olb.a((String)localEntry.getKey(), localObject);
+        }
+      }
+    }
   }
 }
 

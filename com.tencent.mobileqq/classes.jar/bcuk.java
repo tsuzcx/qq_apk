@@ -1,16 +1,59 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
 
-public class bcuk
-  extends Dialog
+class bcuk
+  implements bcuf
 {
-  public bcuk(@NonNull Context paramContext)
+  bcuk(bcuj parambcuj) {}
+  
+  public void a()
   {
-    super(paramContext, 2131755168);
-    setContentView(2131558826);
-    ((QUSDragFloatingScreenView)findViewById(2131373497)).a();
+    if (bcuj.a(this.a) != null)
+    {
+      bcuj.a(this.a).notifyVideoStop();
+      bcuj.a(this.a, 1);
+    }
+    this.a.a(true, new View[] { bcuj.a(this.a) });
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.a.a != null) && (this.a.a.getVisibility() != 0))
+    {
+      this.a.a(true, new View[] { this.a.a });
+      if ((paramBoolean) && (bcuj.a(this.a) != null) && (bcuj.a(this.a) == 0))
+      {
+        bcuj.a(this.a).notifyVideoStart();
+        this.a.a(false, new View[] { bcuj.a(this.a) });
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((bcuj.a(this.a) != null) && (bcuj.a(this.a).getVisibility() == 0))
+    {
+      this.a.a(false, new View[] { bcuj.a(this.a) });
+      return;
+    }
+    this.a.a(true, new View[] { bcuj.a(this.a) });
+    bcuj.a(this.a, 1);
+  }
+  
+  public void b()
+  {
+    if (bcuj.a(this.a) != null) {
+      bcuj.a(this.a).notifyVideoStop();
+    }
+    this.a.a(true, new View[] { bcuj.a(this.a) });
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    this.a.b(5);
   }
 }
 

@@ -1,14 +1,8 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-class apks
+public abstract interface apks
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public abstract void a(String paramString);
   
-  private apks(apkq paramapkq) {}
+  public abstract void az_();
 }
 
 

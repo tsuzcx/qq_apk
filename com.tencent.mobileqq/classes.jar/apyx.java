@@ -1,17 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class apyx
-  extends apyr
+  implements acxj
 {
-  public apyx(FlashChatTextEffectView paramFlashChatTextEffectView) {}
+  public apyx(FlashChatPanel paramFlashChatPanel) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public boolean onLongClick(View paramView)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.b();
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramView instanceof ArkAppView)) {
+      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
     }
+    return true;
   }
 }
 

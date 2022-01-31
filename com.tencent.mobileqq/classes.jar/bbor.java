@@ -1,48 +1,19 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class bbor
-  implements AudioManager.OnAudioFocusChangeListener
+public class bbor
+  extends RecyclerView.ViewHolder
 {
-  bbor(bbop parambbop) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onAudioFocusChange(int paramInt)
+  public bbor(View paramView, int paramInt)
   {
-    if (paramInt == -2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
-      }
-      synchronized (this.a.a)
-      {
-        if (this.a.a.a == 4) {
-          this.a.a();
-        }
-        return;
-      }
-    }
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "gained focus");
-      }
-      if (this.a.b)
-      {
-        this.a.c();
-        this.a.b = false;
-      }
-    }
-    else if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
-      }
-      this.a.b();
-      synchronized (this.a.a)
-      {
-        this.a.a.a = 6;
-        return;
-      }
+    super(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364387));
     }
   }
 }

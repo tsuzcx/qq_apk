@@ -1,6 +1,17 @@
-public abstract interface rvp<T>
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+
+public class rvp
+  implements View.OnClickListener
 {
-  public abstract void a(rvo<T> paramrvo);
+  public rvp(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  
+  public void onClick(View paramView)
+  {
+    CommonSuspensionGestureLayout.a(this.a).a(true, 0, 5);
+    CommonSuspensionGestureLayout.a(this.a, 1);
+  }
 }
 
 

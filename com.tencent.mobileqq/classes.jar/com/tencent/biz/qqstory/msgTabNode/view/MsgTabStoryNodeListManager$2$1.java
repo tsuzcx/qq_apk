@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
+import thv;
 import thy;
-import tib;
-import veg;
+import ved;
 
 public class MsgTabStoryNodeListManager$2$1
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$2$1(tib paramtib, Object paramObject) {}
+  public MsgTabStoryNodeListManager$2$1(thy paramthy, Object paramObject) {}
   
   public void run()
   {
-    veg.a(thy.b(), "GetRedPointExObserver::freshRedPoint(%s)", String.valueOf(this.jdField_a_of_type_JavaLangObject));
-    this.jdField_a_of_type_Tib.a.a();
+    ved.a(thv.b(), "GetRedPointExObserver::freshRedPoint(%s)", String.valueOf(this.jdField_a_of_type_JavaLangObject));
+    this.jdField_a_of_type_Thy.a.a();
   }
 }
 

@@ -1,15 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import android.content.Intent;
+import android.os.Bundle;
 
-public class tyw
-  extends wdh
+public abstract interface tyw
 {
-  public tyw(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public boolean a(boolean paramBoolean)
-  {
-    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
-    return true;
-  }
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

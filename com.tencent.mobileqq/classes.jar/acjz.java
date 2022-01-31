@@ -1,108 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
+import android.app.Dialog;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.28.1;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.28.2;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class acjz
-  implements bfoq
+  implements Animation.AnimationListener
 {
-  public acjz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acjz(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((!TroopMemberListActivity.c(this.a)) && (paramInt >= 5)) {}
-    for (int i = paramInt + 1;; i = paramInt)
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      if (this.a.e) {
-        if (paramInt == 0) {
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.1(this), 320L);
-        }
-      }
-      for (;;)
-      {
-        if ((this.a.jdField_a_of_type_Bfol != null) && (this.a.jdField_a_of_type_Bfol.isShowing())) {
-          this.a.jdField_a_of_type_Bfol.dismiss();
-        }
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.jdField_b_of_type_JavaLangString);
-          continue;
-          if (this.a.jdField_d_of_type_Int == 9) {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.c = true;
-              this.a.t = "";
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              if (this.a.jdField_a_of_type_Acla != null) {
-                this.a.jdField_a_of_type_Acla.a();
-              }
-              axqw.b(this.a.app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.n, "", "");
-              break;
-            }
-          } else {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.l();
-              break;
-            case 1: 
-              if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-              {
-                paramView = new Intent(this.a, SelectMemberActivity.class);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("group_uin", this.a.jdField_b_of_type_JavaLangString);
-                paramView.putExtra("param_groupcode", this.a.jdField_a_of_type_JavaLangString);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("param_subtype", 4);
-                paramView.putExtra("param_entrance", 30);
-                paramView.putExtra("param_max", 30);
-                paramView.putExtra("param_exit_animation", 3);
-                this.a.startActivity(paramView);
-                this.a.overridePendingTransition(2130771997, 0);
-                axqw.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
-              }
-              break;
-            case 2: 
-              this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.2(this), 320L);
-              break;
-            case 3: 
-              this.a.jdField_d_of_type_Boolean = true;
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              TroopMemberListActivity.a(this.a);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131368431));
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(ajyc.a(2131715613));
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new acka(this));
-              if (this.a.jdField_a_of_type_Acla != null) {
-                this.a.jdField_a_of_type_Acla.a();
-              }
-              paramView = this.a.n;
-              this.a.a("Clk_del", paramView, "");
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
     }
+    while (paramAnimation != this.b) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

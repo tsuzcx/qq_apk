@@ -1,31 +1,48 @@
-import NS_USER_ACTION_REPORT.ActionInfo;
-
-class bhdx
+public abstract class bhdx
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private long b;
-  
-  public bhdx(long paramLong, int paramInt)
+  public static bheg a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    return bheb.a().a(paramLong);
   }
   
-  public bhdx(long paramLong1, int paramInt, long paramLong2)
+  public static bheh a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
+    return bheb.a().a(paramLong);
   }
   
-  public ActionInfo a()
+  public static bhei a(long paramLong)
   {
-    ActionInfo localActionInfo = new ActionInfo();
-    localActionInfo.oper_time = this.jdField_a_of_type_Long;
-    localActionInfo.action_id = this.jdField_a_of_type_Int;
-    localActionInfo.action_value = this.b;
-    return localActionInfo;
+    return bheb.a().a(paramLong);
+  }
+  
+  public static String a(int paramInt, String paramString1, String paramString2, bhdz parambhdz)
+  {
+    return bheb.a().a(paramInt, paramString1, paramString2, parambhdz);
+  }
+  
+  public static String a(int paramInt, String paramString1, String paramString2, bhea parambhea)
+  {
+    return a(paramInt, paramString1, paramString2, true, parambhea);
+  }
+  
+  public static String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bhea parambhea)
+  {
+    return bheb.a().a(paramInt, paramString1, paramString2, paramBoolean, parambhea);
+  }
+  
+  public static void a(long paramLong, bheg parambheg)
+  {
+    bheb.a().a(paramLong, parambheg);
+  }
+  
+  public static void a(long paramLong, bheh parambheh)
+  {
+    bheb.a().a(paramLong, parambheh);
+  }
+  
+  public static void a(long paramLong, bhei parambhei)
+  {
+    bheb.a().a(paramLong, parambhei);
   }
 }
 

@@ -1,40 +1,15 @@
-public final class yta
+import android.content.Context;
+import android.view.View;
+
+public abstract interface yta
 {
-  private int a = -2147483648;
+  public abstract View a();
   
-  public yta(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract void a(Context paramContext);
   
-  public int a()
-  {
-    return this.a;
-  }
+  public abstract void b(Context paramContext);
   
-  public String a()
-  {
-    switch (a())
-    {
-    default: 
-      return null;
-    case 0: 
-      return "Success";
-    case 1: 
-      return "Internal Error";
-    case 2: 
-      return "Ad was re-loaded too frequently";
-    case 3: 
-      return "Network Error";
-    case 4: 
-      return "Invalid Request";
-    case 5: 
-      return "No Fill";
-    case 6: 
-      return "Server Error";
-    }
-    return "Display Format Mismatch";
-  }
+  public abstract void c(Context paramContext);
 }
 
 

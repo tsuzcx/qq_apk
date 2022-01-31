@@ -1,17 +1,27 @@
-import java.util.Random;
-
-public class alyh
+class alyh
 {
-  public static Random a = new Random();
+  static final float[] a;
   
-  public static final float a(float paramFloat)
+  static
   {
-    return alyj.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return alyi.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8192) {
+        break;
+      }
+      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 

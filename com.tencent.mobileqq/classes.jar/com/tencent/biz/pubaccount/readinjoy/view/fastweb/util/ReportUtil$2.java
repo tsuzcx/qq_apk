@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import onk;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rnr;
+import rno;
 
 public final class ReportUtil$2
   implements Runnable
@@ -23,11 +23,11 @@ public final class ReportUtil$2
     }
     for (;;)
     {
-      localObject = onk.a(localContext, localArticleInfo, i, (String)localObject);
+      localObject = onh.a(localContext, localArticleInfo, i, (String)localObject);
       try
       {
         ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-        rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A731", ((JSONObject)localObject).toString());
+        rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A731", ((JSONObject)localObject).toString());
         return;
         localObject = "1";
       }

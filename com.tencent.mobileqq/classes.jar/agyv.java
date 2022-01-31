@@ -1,6 +1,16 @@
-public abstract class agyv
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+class agyv
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt);
+  agyw jdField_a_of_type_Agyw;
+  
+  agyv(agyu paramagyu, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Agyw = ((agyw)paramView);
+  }
 }
 
 

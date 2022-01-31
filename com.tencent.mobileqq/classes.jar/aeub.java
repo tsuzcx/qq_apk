@@ -1,45 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeub
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aeub(TroopChatPie paramTroopChatPie, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aeub(TroopChatPie paramTroopChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof bakq));
-        this.a.a((bakq)paramMessage);
-        return;
-      } while (TroopChatPie.j(this.a) == null);
-      TroopChatPie.k(this.a).a();
-      return;
-    }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    bcpw.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    new axrc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_cancel").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+    this.a.H();
   }
 }
 

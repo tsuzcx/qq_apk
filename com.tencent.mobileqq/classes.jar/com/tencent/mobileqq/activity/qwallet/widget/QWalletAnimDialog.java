@@ -39,14 +39,14 @@ public class QWalletAnimDialog
   {
     super.requestWindowFeature(1);
     Object localObject = getWindow();
-    setContentView(2131561669);
+    setContentView(2131561668);
     ((Window)localObject).setLayout(-1, -1);
     ((Window)localObject).setBackgroundDrawable(new ColorDrawable(0));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       ((Window)localObject).addFlags(67108864);
     }
     setCanceledOnTouchOutside(false);
-    this.mAnimationView = ((AnimationView)findViewById(2131363992));
+    this.mAnimationView = ((AnimationView)findViewById(2131363991));
     this.mAnimationView.setAnimationFromInfo(this.mAnimInfo);
     this.mAnimationView.setAnimationListener(new QWalletAnimDialog.1(this));
     localObject = new IntentFilter();

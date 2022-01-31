@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
+import aert;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -12,7 +12,7 @@ import java.util.List;
 public class PublicAccountChatPie$16
   implements Runnable
 {
-  public PublicAccountChatPie$16(aerv paramaerv, List paramList) {}
+  public PublicAccountChatPie$16(aert paramaert, List paramList) {}
   
   public void run()
   {

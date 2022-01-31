@@ -1,9 +1,13 @@
 public class aywh
 {
-  public int a = -2;
-  public long a;
-  public aywa a;
-  public String a;
+  public int a;
+  public int b;
+  
+  public aywh(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

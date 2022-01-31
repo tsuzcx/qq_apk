@@ -1,18 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.av.app.VideoAppInterface;
 
-class muo
-  extends Handler
+public class muo
+  extends mup
 {
-  public void handleMessage(Message paramMessage)
+  public muo(VideoAppInterface paramVideoAppInterface, long paramLong)
   {
-    mun localmun = (mun)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localmun.jdField_a_of_type_Mul.a(((mup[])localmun.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
+    super(paramVideoAppInterface, 64, paramLong);
+  }
+  
+  public void a(String paramString, mur parammur)
+  {
+    super.a(paramString, parammur);
   }
 }
 

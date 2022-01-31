@@ -1,91 +1,113 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import java.io.File;
+import android.os.Bundle;
+import java.security.InvalidParameterException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bcee
-  implements bfor
+public class bcee
 {
-  bcee(bced parambced) {}
+  final int jdField_a_of_type_Int;
+  private bceh jdField_a_of_type_Bceh = new bcef(this);
+  final bcei jdField_a_of_type_Bcei;
+  final bcej jdField_a_of_type_Bcej;
+  final ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public void a(View paramView, int paramInt, String paramString)
+  public bcee(bcej parambcej, int paramInt, bcei parambcei)
   {
-    if (paramString != null)
+    this.jdField_a_of_type_Bcej = parambcej;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bcei = parambcei;
+    int i = 0;
+    while (i < 32)
     {
-      if (this.a.jdField_a_of_type_Bcpq == null)
-      {
-        this.a.jdField_a_of_type_Bcpq = new bcpq(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_Bcpq.c(2131694099);
+      int k = j;
+      if ((1 << i & paramInt) != 0) {
+        k = j + 1;
       }
-      this.a.jdField_a_of_type_Bcpq.show();
-      if (!paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690563))) {
-        break label165;
-      }
-      if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-        break label115;
-      }
-      this.a.jdField_b_of_type_Int = 0;
+      i += 1;
+      j = k;
     }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(j);
+  }
+  
+  public <T> T a(int paramInt)
+  {
+    if (paramInt >= 0) {}
     for (;;)
     {
-      this.a.jdField_a_of_type_Bfol.dismiss();
-      return;
-      label115:
-      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-        this.a.jdField_a_of_type_Bcpq.dismiss();
-      }
-      this.a.b(this.a.jdField_b_of_type_JavaLangString);
-      continue;
-      label165:
-      if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690562)))
+      Object localObject4;
+      try
       {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-          this.a.jdField_b_of_type_Int = 1;
-        } else {
-          this.a.a(this.a.jdField_b_of_type_JavaLangString);
+        if ((this.jdField_a_of_type_Int & paramInt) == 0) {
+          break label250;
         }
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693391)))
-      {
-        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-          this.a.jdField_a_of_type_Bcpq.dismiss();
+        localObject4 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+        Object localObject1 = localObject4;
+        if (localObject4 != null) {
+          break label136;
         }
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, 1);
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693390)))
-      {
-        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-          this.a.jdField_a_of_type_Bcpq.dismiss();
+        if (this.jdField_a_of_type_Bcei == null) {
+          break label255;
         }
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, 2);
+        localObject4 = this.jdField_a_of_type_Bcei.a(paramInt);
       }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690565)))
+      finally {}
+      throw new InvalidParameterException("componentFlag:" + paramInt + " cannot create, please check!");
+      Object localObject3 = new bcfg();
+      label136:
+      label250:
+      label255:
+      do
       {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+        if ((localObject3 instanceof bceg))
         {
-          this.a.jdField_b_of_type_Int = 2;
+          localObject4 = (bceg)localObject3;
+          ((bceg)localObject4).jdField_a_of_type_Bceh = this.jdField_a_of_type_Bceh;
+          ((bceg)localObject4).b();
         }
-        else
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject3);
+        for (;;)
         {
-          if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-            this.a.jdField_a_of_type_Bcpq.dismiss();
-          }
-          this.a.c(this.a.jdField_b_of_type_JavaLangString);
+          return localObject3;
+          localObject3 = new bcex(this.jdField_a_of_type_Bceh);
+          break;
+          localObject3 = new bcfx();
+          break;
+          localObject3 = new bcfh();
+          break;
+          localObject3 = new bcer(this.jdField_a_of_type_Bceh.a());
+          break;
+          localObject3 = new bcfo();
+          break;
+          localObject3 = new bcfs(this.jdField_a_of_type_Bceh.a());
+          break;
+          localObject3 = new bceu();
+          break;
+          localObject3 = new bcfc();
+          break;
+          localObject3 = null;
         }
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693381)))
+        localObject3 = localObject4;
+      } while (localObject4 != null);
+      localObject3 = localObject4;
+      switch (paramInt)
       {
-        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-          this.a.jdField_a_of_type_Bcpq.dismiss();
-        }
-        if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-        {
-          paramView = new File(this.a.jdField_b_of_type_JavaLangString);
-          paramString = ((TeamWorkDocEditBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).a.getCurrentAccountUin();
-          bgpd.b(paramView.getAbsolutePath()).a(this.a.jdField_a_of_type_AndroidAppActivity, paramString);
-        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (paramBundle.hasNext())
+    {
+      Object localObject = paramBundle.next();
+      if ((localObject instanceof bceg)) {
+        ((bceg)localObject).a(paramInt, localBundle);
       }
     }
   }

@@ -1,27 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class ajjq
-  implements ajie
+  implements ajic
 {
-  ajjq(ajjf paramajjf, File paramFile, String paramString) {}
+  ajjq(ajjd paramajjd, File paramFile, String paramString) {}
   
   public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 0, paramInt1 + ajyc.a(2131700501));
+        this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + ajya.a(2131700510));
         return;
       }
-      this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + ajyc.a(2131700477));
+      this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + ajya.a(2131700486));
       return;
     }
-    this.jdField_a_of_type_Ajjf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + ajyc.a(2131700495));
+    this.jdField_a_of_type_Ajjd.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + ajya.a(2131700507));
   }
 }
 

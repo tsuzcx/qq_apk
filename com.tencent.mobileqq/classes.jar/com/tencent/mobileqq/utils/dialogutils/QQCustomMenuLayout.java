@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Layout;
@@ -51,7 +51,7 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838608);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131710200));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131710211));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -79,7 +79,7 @@ public class QQCustomMenuLayout
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838613);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131710186));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131710197));
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));

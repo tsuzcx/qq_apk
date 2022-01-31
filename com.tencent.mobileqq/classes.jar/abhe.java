@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class abhe
-  implements DialogInterface.OnClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public abhe(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bbgg parambbgg) {}
+  public abhe(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

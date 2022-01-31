@@ -1,76 +1,103 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.webkit.MimeTypeMap;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import java.io.File;
 
-class bdnv
-  implements BusinessObserver
+public final class bdnv
 {
-  bdnv(bdno parambdno, bdna parambdna, bdny parambdny, int paramInt, preAuth.PreAuthRequest paramPreAuthRequest, Activity paramActivity) {}
-  
-  private void a(int paramInt, String paramString)
+  public static Intent a(Context paramContext, File paramFile)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "--> preAuth onFail mPreAuthRetryCount=", Integer.valueOf(bdno.c(this.jdField_a_of_type_Bdno)), ", errorCode=", Integer.valueOf(paramInt) });
-    if (bdno.c(this.jdField_a_of_type_Bdno) < this.jdField_a_of_type_Int)
-    {
-      bdno.d(this.jdField_a_of_type_Bdno);
-      this.jdField_a_of_type_Bdno.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthRequest, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bdna, this.jdField_a_of_type_Bdny, this.jdField_a_of_type_Int);
-      return;
+    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
+      return null;
     }
-    bdno.b(this.jdField_a_of_type_Bdno, 0);
-    this.jdField_a_of_type_Bdny.a(paramInt, paramString);
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(bdno.c(this.jdField_a_of_type_Bdno)) });
-    if (!paramBoolean)
-    {
-      aqgh.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdna, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
+    String str = paramFile.getName().toLowerCase().trim();
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.addFlags(268435456);
+    if (a(str, paramContext.getResources().getStringArray(2130968625))) {
+      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
     }
-    byte[] arrayOfByte = paramBundle.getByteArray("data");
-    if (arrayOfByte == null)
+    for (;;)
     {
-      aqgh.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdna, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
-    }
-    preAuth.PreAuthResponse localPreAuthResponse = new preAuth.PreAuthResponse();
-    arrayOfByte = bdnz.b(arrayOfByte, this.jdField_a_of_type_Bdna);
-    try
-    {
-      localPreAuthResponse = (preAuth.PreAuthResponse)localPreAuthResponse.mergeFrom(arrayOfByte);
-      if ((localPreAuthResponse.ret.has()) && (localPreAuthResponse.ret.get() == 0))
+      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
+      return localIntent;
+      if (a(str, paramContext.getResources().getStringArray(2130968631)))
       {
-        QLog.d("OpenSdkVirtualManager", 1, "--> preAuth mergeFrom success");
-        aqgh.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdna, true);
-        bdno.a(this.jdField_a_of_type_Bdno, localPreAuthResponse);
-        bdno.b(this.jdField_a_of_type_Bdno, 0);
-        this.jdField_a_of_type_Bdny.a();
-        return;
+        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968622)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
+      {
+        localIntent.addFlags(67108864);
+        localIntent.putExtra("oneshot", 0);
+        localIntent.putExtra("configchange", 0);
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968629)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
+      }
+      else if (a(str, paramContext.getResources().getStringArray(2130968623)))
+      {
+        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
+      }
+      else
+      {
+        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
+        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
       }
     }
-    catch (Exception localException)
+  }
+  
+  public static boolean a(String paramString, String[] paramArrayOfString)
+  {
+    boolean bool2 = false;
+    int j = paramArrayOfString.length;
+    int i = 0;
+    for (;;)
     {
-      QLog.e("OpenSdkVirtualManager", 1, "Exception", localException);
-      aqgh.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdna, false);
-      a(paramBundle.getInt("code", -1), "");
-      return;
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (paramString.endsWith(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "--> preAuth mergeFrom fail ret=", Integer.valueOf(localException.ret.get()), ", msg=", localException.msg.get() });
-    aqgh.a("KEY_PRE_AUTH", this.jdField_a_of_type_Bdna, false);
-    a(localException.ret.get(), localException.msg.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnv
  * JD-Core Version:    0.7.0.1
  */

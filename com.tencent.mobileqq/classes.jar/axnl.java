@@ -1,26 +1,73 @@
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.soload.config.SoConfig;
 import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class axnl
-  implements EIPCResultCallback
+public class axnl
 {
-  axnl(axnj paramaxnj, axnm paramaxnm) {}
+  private static volatile axnl jdField_a_of_type_Axnl;
+  SoConfig jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private axnl()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = (SoConfig.SoInfo)paramEIPCResult.data.getSerializable("res");
-      if (this.jdField_a_of_type_Axnm != null) {
-        this.jdField_a_of_type_Axnm.a(paramEIPCResult);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoConfigManager", 2, "SoConfigManager init");
     }
-    while (this.jdField_a_of_type_Axnm == null) {
+    if (a()) {
+      this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig = SoConfig.readConfig();
+    }
+  }
+  
+  public static axnl a()
+  {
+    if (jdField_a_of_type_Axnl == null) {}
+    try
+    {
+      if (jdField_a_of_type_Axnl == null) {
+        jdField_a_of_type_Axnl = new axnl();
+      }
+      return jdField_a_of_type_Axnl;
+    }
+    finally {}
+  }
+  
+  private SoConfig.SoInfo a(String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos != null)) {
+      return (SoConfig.SoInfo)this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos.get(paramString);
+    }
+    return null;
+  }
+  
+  private boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface;
+  }
+  
+  public void a(axnp paramaxnp)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.update(paramaxnp);
+  }
+  
+  public void a(String paramString, axno paramaxno)
+  {
+    if (a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SoLoadWidget.SoConfigManager", 2, "getSoInfo, name=" + paramString + ", SoConfig=" + this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig);
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos == null) || (this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos.size() == 0)) {
+        ((axnq)ampl.a().a(526)).a(new axnm(this, paramaxno, paramString));
+      }
+      while (paramaxno == null) {
+        return;
+      }
+      paramaxno.a(a(paramString));
       return;
     }
-    this.jdField_a_of_type_Axnm.a(null);
+    ahio.a(paramString, new axnn(this, paramaxno));
   }
 }
 

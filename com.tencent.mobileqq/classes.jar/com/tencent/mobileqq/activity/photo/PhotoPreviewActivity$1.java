@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import bkya;
+import bkyr;
 import java.io.File;
 
 class PhotoPreviewActivity$1
@@ -10,7 +10,7 @@ class PhotoPreviewActivity$1
   
   public void run()
   {
-    bkya.a(new File(this.a).getParent());
+    bkyr.a(new File(this.a).getParent());
   }
 }
 

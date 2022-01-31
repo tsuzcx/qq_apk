@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aapo;
+import aapk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatActivityUtils$36$1
   implements Runnable
 {
-  public ChatActivityUtils$36$1(aapo paramaapo) {}
+  public ChatActivityUtils$36$1(aapk paramaapk) {}
   
   public void run()
   {

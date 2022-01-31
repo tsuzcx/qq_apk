@@ -1,11 +1,103 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface vvd
+public class vvd
 {
-  public abstract void a(int paramInt, @Nonnull List<vvg> paramList, boolean paramBoolean);
+  public final int a;
+  public final String a;
+  public final vve a;
   
-  public abstract void b(int paramInt, @Nonnull List<vvg> paramList, boolean paramBoolean);
+  public vvd(qqstory_struct.TagItem paramTagItem)
+  {
+    this.jdField_a_of_type_Vve = new vve((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
+    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
+  }
+  
+  public vvd(TagItemEntry paramTagItemEntry)
+  {
+    this.jdField_a_of_type_Vve = new vve(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
+    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
+    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
+  }
+  
+  public vvd(vve paramvve, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Vve = paramvve;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public TagItemEntry a()
+  {
+    TagItemEntry localTagItemEntry = new TagItemEntry();
+    localTagItemEntry.id = this.jdField_a_of_type_Vve.jdField_a_of_type_Long;
+    localTagItemEntry.name = this.jdField_a_of_type_Vve.jdField_a_of_type_JavaLangString;
+    localTagItemEntry.desc = this.jdField_a_of_type_Vve.b;
+    localTagItemEntry.type = this.jdField_a_of_type_Vve.jdField_a_of_type_Int;
+    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
+    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
+    return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
+    try
+    {
+      if (this.jdField_a_of_type_Vve == null) {
+        return null;
+      }
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Vve.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Vve.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Vve.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Vve.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException) {}
+    return null;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (vvd)paramObject;
+      if (this.jdField_a_of_type_Vve != null) {
+        return this.jdField_a_of_type_Vve.equals(paramObject.jdField_a_of_type_Vve);
+      }
+    } while (paramObject.jdField_a_of_type_Vve == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_Vve != null) {
+      return this.jdField_a_of_type_Vve.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TagItem{tagInfo=" + this.jdField_a_of_type_Vve + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

@@ -1,200 +1,223 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistoryStructMsgView.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.data.ChatMessage;>;
-import mqq.os.MqqHandler;
+import java.util.Map;
 
 public class aasy
-  extends aata
-  implements Handler.Callback, bfob
+  extends ajxj
 {
-  private static int c;
-  public int a;
-  public long a;
-  aimf jdField_a_of_type_Aimf;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public QQAppInterface a;
-  XListView jdField_a_of_type_ComTencentWidgetXListView;
-  final String jdField_a_of_type_JavaLangString = "ChatHistory_Struct";
-  public ArrayList<Object> a;
-  public final MqqHandler a;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  public long b;
-  View.OnClickListener b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
+  public aasy(ChatSettingActivity paramChatSettingActivity) {}
   
-  static
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    jdField_c_of_type_Int = 30;
-  }
-  
-  public aasy()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Long = 9223372036854775807L;
-    this.jdField_c_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bfmt(Looper.getMainLooper(), this, true);
-  }
-  
-  private void f()
-  {
-    if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
+    if (paramBoolean) {
+      if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a) != null) && (ChatSettingActivity.b(this.a).equals(paramString1)) && (paramString2 != null) && (!ChatSettingActivity.e(this.a).equals(paramString2)))
+      {
+        if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+        {
+          ChatSettingActivity.a(this.a, 2131693526, 2);
+          ChatSettingActivity.a(this.a).dismiss();
+        }
+        ChatSettingActivity.b(this.a, paramString2);
+        ChatSettingActivity.b(this.a, paramString2);
+        ChatSettingActivity.c(this.a, paramString2);
+      }
+    }
+    while (ChatSettingActivity.a(this.a) != 0) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new aasz(this);
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing()) && (!this.a.isFinishing())) {
+      ChatSettingActivity.a(this.a).dismiss();
+    }
+    ChatSettingActivity.b(this.a, ChatSettingActivity.e(this.a));
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap) {}
   
-  public void a(Intent paramIntent, QQAppInterface paramQQAppInterface, Context paramContext)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("uin");
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
-    this.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("uinname");
-    f();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562457, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365675));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376554));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562456, null);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
-    a(true);
-    this.jdField_a_of_type_Aimf = new aimf(this.jdField_a_of_type_AndroidContentContext, (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone(), this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnClickListener, this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aimf);
-  }
-  
-  public void a(List<ChatMessage> paramList)
-  {
-    Iterator localIterator;
-    int i;
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
+    }
+    label270:
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.removeAll(paramList);
-      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramList = null;
+      return;
+      Object localObject = (String[])paramArrayOfObject[0];
+      boolean[] arrayOfBoolean = (boolean[])paramArrayOfObject[1];
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(localObject.length), " len2:", Integer.valueOf(arrayOfBoolean.length) });
+      }
+      if (paramBoolean)
+      {
+        int i = 0;
+        for (;;)
+        {
+          if (i >= localObject.length) {
+            break label270;
+          }
+          paramArrayOfObject = localObject[i];
+          paramBoolean = arrayOfBoolean[i];
+          if (paramArrayOfObject.equals(ChatSettingActivity.b(this.a)))
+          {
+            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean);
+            this.a.a();
+            localObject = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+            if ((!this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) && (!this.a.c.a())) {}
+            for (i = 0;; i = 8)
+            {
+              ((FormSwitchItem)localObject).setVisibility(i);
+              this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("tag_hidden_chat", 2, new Object[] { "uin:", paramArrayOfObject, " switch:", Boolean.valueOf(paramBoolean) });
+              return;
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (paramString.equals(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.a(this.a) != null))
+    {
+      if ((ChatSettingActivity.a(this.a) == 1010) || (ChatSettingActivity.a(this.a) == 1001) || (ChatSettingActivity.a(this.a) == 10002))
+      {
+        paramString = bayh.a(this.a.app, 200, ChatSettingActivity.b(this.a), true);
+        ChatSettingActivity.a(this.a, new WeakReference(paramString));
+        ChatSettingActivity.a(this.a).setImageDrawable(paramString);
+      }
+    }
+    else {
+      return;
+    }
+    if (ChatSettingActivity.a(this.a) == 1006)
+    {
+      paramString = bayh.b(this.a.app, ChatSettingActivity.b(this.a), (byte)3);
+      ChatSettingActivity.a(this.a).setImageDrawable(paramString);
+      return;
+    }
+    paramString = bayh.a(this.a.app, 1, ChatSettingActivity.b(this.a));
+    ChatSettingActivity.a(this.a, new WeakReference(paramString));
+    ChatSettingActivity.a(this.a).setImageDrawable(paramString);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    QLog.i(ChatSettingActivity.a(this.a), 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if ((paramBoolean) && (String.valueOf(paramObject).equals(ChatSettingActivity.b(this.a))))
+    {
+      if ((this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) || (this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() != 0)) {
+        break label96;
+      }
+      this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+    }
+    label96:
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem == null) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.getVisibility() != 0)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, ChatSettingActivity.b(this.a))))
+    {
+      ChatSettingActivity.b(this.a, ChatSettingActivity.d(this.a, ChatSettingActivity.b(this.a)));
+      if (ChatSettingActivity.e(this.a) == null) {
+        ChatSettingActivity.b(this.a, "");
+      }
+      ChatSettingActivity.b(this.a, ChatSettingActivity.e(this.a));
+      ChatSettingActivity.f(this.a);
+    }
+  }
+  
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    ChatSettingActivity.g(this.a);
+    ChatSettingActivity.e(this.a);
+    if (paramBoolean2) {
+      if (!ChatSettingActivity.b(this.a).endsWith(paramLong + "")) {}
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        ChatSettingActivity.a(this.a, paramString, 1);
+        return;
+      }
+    } while (!ChatSettingActivity.b(this.a).endsWith(paramLong + ""));
+    if (paramBoolean1)
+    {
+      ChatSettingActivity.a(this.a, 2131719531, 1);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131719529, 1);
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
+    if ((ChatSettingActivity.a(this.a) == 0) && (paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(ChatSettingActivity.b(this.a))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ChatSettingActivity.a(this.a), 2, "onUpdateHotFriendLevel");
+      }
+      ChatSettingActivity.f(this.a);
+    }
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.c(this.a) != null) && (paramString.equals(ChatSettingActivity.c(this.a))))
+    {
+      paramString = bayh.b(this.a.app, paramString, (byte)3);
+      ChatSettingActivity.a(this.a).setImageDrawable(paramString);
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    int j;
+    int i;
+    if ((paramBoolean) && (paramArrayOfString != null) && (this.a.f != null) && (ChatSettingActivity.a(this.a) == 0) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))))
+    {
+      j = paramArrayOfString.length;
       i = 0;
     }
     for (;;)
     {
-      Object localObject1 = paramList;
-      if (localIterator.hasNext())
+      if (i < j)
       {
-        Object localObject2 = localIterator.next();
-        if ((localObject2 instanceof String))
-        {
-          localObject1 = paramList;
-          if (i == 0) {
-            localObject1 = localObject2;
-          }
-          int j = i + 1;
-          paramList = (List<ChatMessage>)localObject1;
-          i = j;
-          if (j != 2) {
-            continue;
-          }
+        String str = paramArrayOfString[i];
+        if (ChatSettingActivity.b(this.a).equals(str)) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
         }
       }
       else
       {
-        if (localObject1 != null) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localObject1);
-        }
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
         return;
       }
-      paramList = null;
-      i = 0;
+      i += 1;
     }
   }
   
-  public void a(boolean paramBoolean)
+  protected void onUpdateStrangerRichStatus(boolean paramBoolean, String[] paramArrayOfString, Map<String, RichStatus> paramMap)
   {
-    ThreadManager.post(new ChatHistoryStructMsgView.2(this, paramBoolean), 10, null, true);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aimf.notifyDataSetChanged();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aimf.notifyDataSetChanged();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aimf.notifyDataSetChanged();
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      this.jdField_a_of_type_Aimf.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (!this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      a(false);
-      this.jdField_a_of_type_Aimf.notifyDataSetChanged();
+    if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (paramMap != null) && (paramMap.containsKey(ChatSettingActivity.b(this.a)))) {
+      ChatSettingActivity.a(this.a, (RichStatus)paramMap.get(ChatSettingActivity.b(this.a)), this.a.f);
     }
   }
 }

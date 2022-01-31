@@ -2,91 +2,59 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.1;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class tlk
-  extends tjg
-  implements syt<tnj, tou>
+  extends tjd
+  implements syq<tmy, too>
 {
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public List<String> a;
-  private final boolean jdField_a_of_type_Boolean;
+  protected String a;
+  protected List<String> a;
   
-  public tlk(List<String> paramList)
+  public tlk(String paramString, List<String> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    a(paramList);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public tlk(List<String> paramList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    a(paramList);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a(List<String> paramList)
-  {
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if (!StoryVideoItem.isFakeVid(str)) {
-          this.jdField_a_of_type_JavaUtilList.add(str);
-        }
-      }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
   }
   
   public void a()
   {
-    Bosses.get().postLightWeightJob(new VidToBasicInfoHandler.1(this), 0);
+    tmy localtmy = new tmy();
+    localtmy.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    syo.a().a(localtmy, this);
   }
   
-  public void a(@NonNull tnj paramtnj, @Nullable tou paramtou, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull tmy paramtmy, @Nullable too paramtoo, @NonNull ErrorMessage paramErrorMessage)
   {
-    tll localtll = new tll();
-    if ((paramtou == null) || (paramErrorMessage.isFail()))
+    paramtmy = new tll();
+    if ((paramtoo == null) || (paramErrorMessage.isFail()))
     {
       c();
-      localtll.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      ste.a().dispatch(localtll);
-      paramtnj = paramtnj.jdField_a_of_type_JavaUtilList.iterator();
+      stb.a().dispatch(paramtmy);
+      return;
     }
-    while (paramtnj.hasNext())
+    b();
+    paramtoo.jdField_a_of_type_JavaUtilList = ((tcw)tcz.a(5)).a(paramtoo.jdField_a_of_type_JavaUtilList);
+    paramtmy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramtoo = paramtoo.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramtoo.hasNext())
     {
-      paramtou = (String)paramtnj.next();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramtou);
-      continue;
-      paramtnj = (tcz)tdc.a(5);
-      if (paramtou.jdField_a_of_type_JavaUtilList != null)
-      {
-        paramErrorMessage = paramtou.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramErrorMessage.hasNext()) {
-          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
-        }
-      }
-      paramtou.jdField_a_of_type_JavaUtilList = paramtnj.a(paramtou.jdField_a_of_type_JavaUtilList);
-      localtll.jdField_a_of_type_JavaUtilList = paramtou.jdField_a_of_type_JavaUtilList;
-      ((sto)tdc.a(28)).a(paramtou.b);
-      ste.a().dispatch(localtll);
-      b();
+      paramErrorMessage = (StoryVideoItem)paramtoo.next();
+      paramErrorMessage = new uuc(paramErrorMessage.mVid, paramErrorMessage);
+      paramtmy.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
     }
+    stb.a().dispatch(paramtmy);
   }
   
   public String toString()
   {
-    return "VidToBasicInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

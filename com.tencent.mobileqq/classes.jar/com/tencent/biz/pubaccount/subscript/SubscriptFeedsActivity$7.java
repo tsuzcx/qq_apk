@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import akdi;
+import akdh;
 import com.tencent.mobileqq.app.QQAppInterface;
-import sdf;
+import sdc;
 
 class SubscriptFeedsActivity$7
   implements Runnable
@@ -11,8 +11,8 @@ class SubscriptFeedsActivity$7
   
   public void run()
   {
-    ((akdi)this.this$0.app.getManager(56)).a();
-    sdf.a().c(this.this$0.app);
+    ((akdh)this.this$0.app.getManager(56)).a();
+    sdc.a().c(this.this$0.app);
   }
 }
 

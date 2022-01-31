@@ -1,23 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvm
-  implements Animation.AnimationListener
+  implements axhy
 {
   public ahvm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(Exception paramException)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
+  }
 }
 
 

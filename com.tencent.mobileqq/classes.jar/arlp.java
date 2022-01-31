@@ -1,27 +1,46 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
 import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
 import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.qphone.base.util.QLog;
 
-final class arlp
+class arlp
   implements HookMethodCallback
 {
+  private int a;
+  
+  public arlp(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
   public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
-    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
+    if (paramMethodHookParam.throwable == null) {
+      return;
+    }
+    Throwable localThrowable;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localThrowable = paramMethodHookParam.throwable.getCause();
+    }
+    while ((localThrowable instanceof OutOfMemoryError))
     {
-      paramMethodHookParam = new StringBuilder(1000);
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      int i = 0;
-      while (i < arrayOfStackTraceElement.length)
+      arlo.b();
+      try
       {
-        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
-        i += 1;
+        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
+        paramMethodHookParam.throwable = null;
+        arlo.a(true, this.a);
+        return;
       }
-      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
+      catch (Exception paramMethodHookParam)
+      {
+        arlo.a(false, this.a);
+        return;
+        localThrowable = paramMethodHookParam.throwable;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        arlo.a(false, this.a);
+      }
     }
   }
   

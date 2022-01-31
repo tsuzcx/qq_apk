@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bcib;
+import bcip;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 
@@ -23,7 +23,7 @@ public class WereWolvesLoadingView
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  bcib jdField_a_of_type_Bcib;
+  bcip jdField_a_of_type_Bcip;
   Runnable jdField_a_of_type_JavaLangRunnable = new WereWolvesLoadingView.1(this);
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int = 0;
@@ -71,11 +71,11 @@ public class WereWolvesLoadingView
     this.jdField_b_of_type_Boolean = true;
   }
   
-  public void setComplete(bcib parambcib)
+  public void setComplete(bcip parambcip)
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Bcib = parambcib;
+    this.jdField_a_of_type_Bcip = parambcip;
     this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -101,9 +101,9 @@ public class WereWolvesLoadingView
       if (this.jdField_b_of_type_Int < 100) {
         break label141;
       }
-      if ((this.jdField_a_of_type_Bcib != null) && (!this.jdField_a_of_type_Boolean))
+      if ((this.jdField_a_of_type_Bcip != null) && (!this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bcib.a();
+        this.jdField_a_of_type_Bcip.a();
         this.jdField_a_of_type_Boolean = true;
       }
       return;

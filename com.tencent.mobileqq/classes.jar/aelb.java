@@ -1,41 +1,18 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.qphone.base.util.QLog;
 
-public class aelb
-  extends aekt
+class aelb
+  implements bgxd
 {
-  public aelb(QQAppInterface paramQQAppInterface, aell paramaell, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvj paramacvj)
-  {
-    super(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
-      this.i = 0;
-    }
-    this.j = 2130846313;
-  }
+  aelb(aela paramaela) {}
   
-  public boolean b()
+  public void a(int paramInt, String... paramVarArgs)
   {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_Aell.b.setVisibility(0);
-    this.jdField_a_of_type_Aell.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Aell.b.setText("QQ视频通话红包");
-    return false;
-  }
-  
-  public void i()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
     {
-      this.jdField_a_of_type_Aell.d.setVisibility(0);
+      QLog.i(aela.a, 2, "error get pskey...");
       return;
     }
-    super.i();
+    aela.a(this.a, paramVarArgs[0]);
   }
 }
 

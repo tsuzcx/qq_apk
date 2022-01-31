@@ -1,77 +1,122 @@
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.richstatus.SignatureManagerForTool.1;
+import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class awek
-  implements EIPCResultCallback
+public class awek
+  extends Observable
 {
-  awek(awei paramawei) {}
+  private static awek jdField_a_of_type_Awek;
+  public RichStatus a;
+  public EIPCResultCallback a;
+  private ConcurrentHashMap<Integer, bbqs> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public RichStatus b;
+  private EIPCResultCallback jdField_b_of_type_EipcEIPCResultCallback = new awel(this);
+  private ConcurrentHashMap<Integer, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private awek()
   {
-    Object localObject = paramEIPCResult.data;
-    if (localObject == null) {}
-    do
+    this.jdField_a_of_type_EipcEIPCResultCallback = new awem(this);
+  }
+  
+  public static awek a()
+  {
+    try
     {
-      do
+      if (jdField_a_of_type_Awek == null) {
+        jdField_a_of_type_Awek = new awek();
+      }
+      awek localawek = jdField_a_of_type_Awek;
+      return localawek;
+    }
+    finally {}
+  }
+  
+  public static String a(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public bbqs a(int paramInt)
+  {
+    return a(paramInt, false);
+  }
+  
+  public bbqs a(int paramInt, boolean paramBoolean)
+  {
+    bbqs localbbqs2 = (bbqs)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Object localObject;
+    if ((localbbqs2 != null) && (!localbbqs2.a.get()))
+    {
+      localObject = localbbqs2;
+      if (!paramBoolean) {}
+    }
+    else
+    {
+      bbqs localbbqs1 = localbbqs2;
+      if (localbbqs2 == null)
       {
-        do
-        {
-          do
-          {
-            return;
-            switch (((Bundle)localObject).getInt("notify_type"))
-            {
-            case 6: 
-            case 7: 
-            default: 
-              return;
-            case 4: 
-              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
-            }
-          } while (!(paramEIPCResult instanceof RichStatus));
-          awei.c(this.a);
-          localObject = new ArrayList();
-          ((ArrayList)localObject).add(Integer.valueOf(5));
-          ((ArrayList)localObject).add(paramEIPCResult);
-          this.a.notifyObservers(localObject);
-          return;
-          localObject = new HashMap();
-          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
-          i = paramEIPCResult.data.getInt("result");
-          int j = paramEIPCResult.data.getInt("type");
-          awei.d(this.a);
-          paramEIPCResult = new ArrayList();
-          paramEIPCResult.add(Integer.valueOf(6));
-          paramEIPCResult.add(Integer.valueOf(i));
-          paramEIPCResult.add(localObject);
-          paramEIPCResult.add(Integer.valueOf(j));
-          this.a.notifyObservers(paramEIPCResult);
-          return;
-          ((Bundle)localObject).getLong("bid");
-          paramEIPCResult = ((Bundle)localObject).getString("scid");
-        } while (TextUtils.isEmpty(paramEIPCResult));
-        i = ((Bundle)localObject).getInt("download_result");
-      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
-      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
-    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
-    int i = Integer.parseInt(paramEIPCResult);
-    awei.e(this.a);
-    paramEIPCResult = new ArrayList();
-    paramEIPCResult.add(Integer.valueOf(7));
-    paramEIPCResult.add(Integer.valueOf(i));
-    this.a.notifyObservers(paramEIPCResult);
-    return;
-    i = ((Bundle)localObject).getInt("key_history_signature_num");
-    awei.f(this.a);
-    paramEIPCResult = new ArrayList();
-    paramEIPCResult.add(Integer.valueOf(8));
-    paramEIPCResult.add(Integer.valueOf(i));
-    this.a.notifyObservers(paramEIPCResult);
+        localbbqs1 = new bbqs(Integer.toString(paramInt));
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localbbqs1);
+      }
+      localObject = localbbqs1;
+      if (paramInt != 0)
+      {
+        localbbqs1.a.set(true);
+        ThreadManagerV2.executeOnFileThread(new SignatureManagerForTool.1(this, paramInt));
+        localObject = localbbqs1;
+      }
+    }
+    return localObject;
+  }
+  
+  public String a(int paramInt)
+  {
+    String str = (String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(str))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", hy.g, localBundle, this.jdField_b_of_type_EipcEIPCResultCallback);
+    }
+    return str;
+  }
+  
+  public void a(RichStatus paramRichStatus)
+  {
+    if (paramRichStatus == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    QLog.d("Signature.TOOL", 2, "updateHandleStatus: tpdId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+  }
+  
+  public void b(RichStatus paramRichStatus)
+  {
+    if (paramRichStatus == null) {
+      return;
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
+      this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    }
+    this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    QLog.d("Signature.TOOL", 2, "updateSaveStatus: tpdId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    a(paramRichStatus);
   }
 }
 

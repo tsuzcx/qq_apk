@@ -1,139 +1,196 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.sdk.EntryModel;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class alqb
+  implements alqd
 {
-  private static HashMap<String, alqe> a = new HashMap();
-  
-  static
+  private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    a.put("qq", new alqg());
-    a.put("tel", new alqi());
-    a.put("app", new alqc());
-    a.put("mqzone", new alqh());
-    a.put("miniapp", new alqf());
-  }
-  
-  public static List<Object> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
+    awzl localawzl = new awzl();
+    j = 268435456;
+    try
     {
-      Object localObject2 = paramJSONArray.get(i);
-      Object localObject1;
-      if ((localObject2 instanceof JSONArray)) {
-        localObject1 = a((JSONArray)localObject2);
+      k = Integer.parseInt(paramString4);
+      if ((k & 0x4000000) != 67108864) {
+        break label99;
       }
+      j = 335544320;
+    }
+    catch (Exception paramString4)
+    {
       for (;;)
       {
-        localArrayList.add(localObject1);
-        i += 1;
-        break;
-        localObject1 = localObject2;
-        if ((localObject2 instanceof JSONObject)) {
-          localObject1 = a((JSONObject)localObject2);
-        }
+        int k;
+        int i;
+        continue;
+        j = 268435456;
       }
     }
-    return localArrayList;
+    i = j;
+    if ((k & 0x20000000) == 536870912) {
+      i = j | 0x20000000;
+    }
+    j = i;
+    if ((k & 0x400000) == 4194304) {
+      j = i | 0x400000;
+    }
+    localawzl.a(a(), paramContext, paramString1, paramString2, paramString3, j);
   }
   
-  public static Map<String, Object> a(JSONObject paramJSONObject)
+  private boolean a(Context paramContext, String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    if (localIterator.hasNext())
+    boolean bool = false;
+    paramContext = paramContext.getPackageManager();
+    try
     {
-      String str = (String)localIterator.next();
-      Object localObject2 = paramJSONObject.get(str);
-      Object localObject1;
-      if ((localObject2 instanceof JSONArray)) {
-        localObject1 = a((JSONArray)localObject2);
+      paramContext = paramContext.getPackageInfo(paramString.trim(), 0);
+      if (paramContext != null) {
+        bool = true;
       }
+      return bool;
+    }
+    catch (Exception paramContext) {}
+    return false;
+  }
+  
+  private boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      return false;
+    }
+    Object localObject1 = null;
+    String str1 = "platform=qq_m&current_uin=$OPID$&launchfrom=Ark&openid=$OPID$&atoken=$AT$&ptoken=$PT$" + "&big_brother_source_key=" + paramString3;
+    try
+    {
+      Object localObject2 = alqa.a(new JSONObject(paramString2));
+      Object localObject3 = ((Map)localObject2).get("url");
+      paramString2 = (String)localObject1;
+      if (localObject3 != null)
+      {
+        paramString2 = (String)localObject1;
+        if ((localObject3 instanceof String)) {
+          paramString2 = (String)localObject3;
+        }
+      }
+      try
+      {
+        localObject1 = ((Map)localObject2).get("data");
+        if ((localObject1 == null) || (!(localObject1 instanceof Map))) {
+          break label383;
+        }
+        localObject2 = (Map)localObject1;
+        localObject1 = new StringBuilder();
+        localObject2 = ((Map)localObject2).entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Object localObject4 = (Map.Entry)((Iterator)localObject2).next();
+          localObject3 = ((Map.Entry)localObject4).getKey();
+          localObject4 = ((Map.Entry)localObject4).getValue();
+          if ((localObject3 != null) && ((localObject3 instanceof String)) && (localObject4 != null))
+          {
+            ((StringBuilder)localObject1).append("&");
+            ((StringBuilder)localObject1).append(localObject3);
+            ((StringBuilder)localObject1).append("=");
+            ((StringBuilder)localObject1).append(localObject4.toString());
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break label256;
+        }
+      }
+      catch (JSONException localJSONException) {}
+    }
+    catch (JSONException paramString2)
+    {
       for (;;)
       {
-        localHashMap.put(str, localObject1);
-        break;
-        localObject1 = localObject2;
-        if ((localObject2 instanceof JSONObject)) {
-          localObject1 = a((JSONObject)localObject2);
-        }
+        paramString2 = null;
       }
     }
-    return localHashMap;
+    QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.jsonParseError");
+    label256:
+    if (!a(localBaseActivity, paramString4)) {
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = new Intent(localBaseActivity, QQBrowserActivity.class);
+        paramString1.putExtra("url", paramString2);
+        ArkAppCenter.a(paramString1, paramString3);
+        paramString1.putExtra("fromArkAppDownload", true);
+        localBaseActivity.startActivity(paramString1);
+      }
+    }
+    for (;;)
+    {
+      return true;
+      String str2 = str1 + localJSONException;
+      str1 = str2;
+      break;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler, download url is empty");
+        continue;
+        a(localBaseActivity, paramString1, str1, paramString4, "0");
+      }
+    }
   }
   
-  public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  protected QQAppInterface a()
   {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  {
+    if (paramLong != 0L) {
+      return false;
+    }
+    paramString3 = BaseActivity.sTopActivity;
+    if (paramString3 == null) {
+      return false;
+    }
     if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
-    QLog.e("ArkApp", 2, "navigate url: " + paramString1);
-    Object localObject = paramString1.split(":");
-    if (localObject.length <= 1) {
-      return false;
-    }
-    if (MiniAppLauncher.isMiniAppUrl(paramString1)) {
-      try
-      {
-        i = Integer.parseInt((String)bfng.b(paramString1.substring(paramString1.indexOf("?") + 1)).get("scene"));
-        paramString2 = b();
-        MiniAppLauncher.startMiniApp(BaseActivity.sTopActivity, paramString1, i, paramString2, null);
-        return true;
-      }
-      catch (Exception paramString2)
-      {
-        for (;;)
-        {
-          QLog.e("ArkApp", 1, "Ark parse miniapp scene failed.", paramString2);
-          int i = 2059;
-        }
-      }
-    }
-    localObject = localObject[0];
-    alqe localalqe = (alqe)a.get(localObject);
-    if (localalqe == null) {
-      return false;
-    }
-    localObject = paramString1.substring(((String)localObject).length() + 1);
-    paramString1 = (String)localObject;
-    if (((String)localObject).startsWith("//")) {
-      paramString1 = ((String)localObject).substring(2);
-    }
-    localalqe.a(paramString1, paramString2, paramJSONObject, paramLong, paramString3);
-    return true;
-  }
-  
-  private static EntryModel b()
-  {
-    Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof FragmentActivity))
+    if (paramJSONObject == null) {}
+    for (paramJSONObject = "biz_src_jc_ark";; paramJSONObject = paramJSONObject.optString("businessId", "biz_src_jc_ark"))
     {
-      localObject = (FragmentActivity)localObject;
-      if (((FragmentActivity)localObject).getChatFragment() != null)
-      {
-        localObject = ((FragmentActivity)localObject).getChatFragment().a();
-        if ((localObject instanceof TroopChatPie)) {
-          return ((BaseChatPie)localObject).a();
-        }
+      String str = BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).getString(paramString1, null);
+      if ((str == null) || (str.length() <= 0) || (!a(paramString3, str))) {
+        break;
       }
+      a(paramString1, paramString2, paramJSONObject, str);
+      return true;
     }
-    return null;
+    paramString3 = a();
+    if (paramString3 == null)
+    {
+      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.navigate.app is null.");
+      return false;
+    }
+    ((ArkAppCenter)paramString3.getManager(121)).a(paramString1, this, new alqc(this, paramString2, paramJSONObject));
+    return true;
   }
 }
 

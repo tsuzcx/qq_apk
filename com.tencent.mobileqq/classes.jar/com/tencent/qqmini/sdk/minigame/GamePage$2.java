@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import beug;
-import bewy;
+import beux;
+import bexp;
 import com.tencent.qqmini.sdk.minigame.ui.VConsoleDragView;
 
 public class GamePage$2
   implements Runnable
 {
-  public GamePage$2(beug parambeug, VConsoleDragView paramVConsoleDragView) {}
+  public GamePage$2(beux parambeux, VConsoleDragView paramVConsoleDragView) {}
   
   public void run()
   {
-    if (!beug.a(this.this$0))
+    if (!beux.a(this.this$0))
     {
-      beug.a(this.this$0);
-      beug.a(this.this$0).a(beug.a(this.this$0), this.a, false);
+      beux.a(this.this$0);
+      beux.a(this.this$0).a(beux.a(this.this$0), this.a, false);
     }
   }
 }

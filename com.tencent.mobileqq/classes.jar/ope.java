@@ -1,122 +1,233 @@
-import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
 
 public class ope
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
-  pbb a(String paramString, List<pbb> paramList)
+  public static float a()
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      pbb localpbb = (pbb)paramList.next();
-      if (localpbb.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localpbb;
-      }
+    return ((Float)bhvy.a("seriestype_feeds_covered_light", Float.valueOf(0.8F))).floatValue();
+  }
+  
+  public static final int a()
+  {
+    return ((Integer)bhvy.a("seriestype_feeds_press", Integer.valueOf(0))).intValue();
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    float f = ((Float)bhvy.a("small_video_max_width_height_ratio", Float.valueOf(0.75F))).floatValue();
+    int i = ((Integer)bhvy.a("small_video_max_duration", Integer.valueOf(60))).intValue();
+    if ((paramInt1 / paramInt2 <= f) && (paramInt3 <= i)) {
+      return 1;
     }
-    return null;
+    return 0;
+  }
+  
+  public static String a()
+  {
+    return (String)bhvy.a("seriestype_top_bar_title", "推荐视频");
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = ((Boolean)bhvy.a("viola_enable", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiVideoConfigHandler", 2, "isViolaEnable: " + bool);
+    }
+    return bool;
+  }
+  
+  public static final boolean a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode() videoFrom=" + paramInt + "seriestype_video_from=" + (String)bhvy.a("seriestype_video_from", "null") + "seriestype_video_type=" + bhvy.a("seriestype_video_type", Integer.valueOf(-1)));
+    }
+    return bhvy.a(paramInt, "\\|", "seriestype_video_from");
+  }
+  
+  public static final boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode() videoFrom=" + paramInt1 + ", videoWidth=" + paramInt2 + ", videoHeight=" + paramInt3 + ", duration=" + paramInt4 + "seriestype_video_from=" + (String)bhvy.a("seriestype_video_from", "null") + "seriestype_video_type=" + bhvy.a("seriestype_video_type", Integer.valueOf(-1)) + "small_video_max_width_height_ratio=" + bhvy.a("small_video_max_width_height_ratio", Float.valueOf(0.0F)) + "small_video_max_duration=" + bhvy.a("small_video_max_duration", Integer.valueOf(0)));
+    }
+    if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0)) {
+      return false;
+    }
+    int i = ((Integer)bhvy.a("seriestype_video_type", Integer.valueOf(0))).intValue();
+    return (bhvy.a(paramInt1, "\\|", "seriestype_video_from")) && ((i == 2) || (i == a(paramInt2, paramInt3, paramInt4)));
+  }
+  
+  public static final int b()
+  {
+    return ((Integer)bhvy.a("seriestype_feeds_covered_time", Integer.valueOf(3))).intValue();
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    Map localMap = ooi.a(paramString);
-    Object localObject4 = localMap.keySet();
-    Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
-    paramString = new JSONArray();
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+    boolean bool2 = false;
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("MultiVideoConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    Object localObject = oof.a(paramString);
+    paramString = (String)((Map)localObject).get("seriestype_video_from");
+    if (paramString == null) {
+      paramString = "";
+    }
+    int k;
+    float f3;
+    label444:
+    label451:
+    label457:
+    label464:
+    label469:
+    label474:
+    for (;;)
+    {
+      float f2 = 0.75F;
+      k = 60;
+      f3 = 0.8F;
       try
       {
-        localObject1 = new JSONArray((String)localObject1);
-        if (localObject1 != null) {}
-        Object localObject5;
-        String[] arrayOfString;
-        Object localObject3;
-        Object localObject2;
-        for (;;) {}
+        str = (String)((Map)localObject).get("seriestype_feeds_press");
+        if (str == null) {
+          break label474;
+        }
+        paramInt1 = Integer.parseInt(str);
       }
-      catch (JSONException localJSONException1)
+      catch (Exception localException1)
       {
         for (;;)
         {
-          try
-          {
-            QLog.d("KandianDailySettingConfigHandler", 2, "old data: " + localObject1);
-            paramInt1 = 0;
-            if (paramInt1 < ((JSONArray)localObject1).length())
-            {
-              localArrayList.add(pbb.a(((JSONArray)localObject1).optJSONObject(paramInt1)));
-              paramInt1 += 1;
-              continue;
-            }
-            paramString = (String)localObject1;
-            localObject4 = ((Set)localObject4).iterator();
-            if (!((Iterator)localObject4).hasNext()) {
-              continue;
-            }
-            localObject5 = (String)((Iterator)localObject4).next();
-            localObject1 = (String)localMap.get(localObject5);
-            QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] key=" + (String)localObject5 + ", value=" + (String)localObject1);
-            arrayOfString = ((String)localObject1).split("\\|");
-            if (arrayOfString.length != 3) {
-              continue;
-            }
-            paramInt1 = 1;
-            localObject3 = a((String)localObject5, localArrayList);
-            localObject1 = localObject3;
-            if (localObject3 == null)
-            {
-              paramInt1 = 0;
-              localObject1 = new pbb();
-            }
-            ((pbb)localObject1).jdField_b_of_type_JavaLangString = arrayOfString[0];
-            ((pbb)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject5);
-            localObject3 = arrayOfString[1].split(",");
-            localObject5 = arrayOfString[2].split(",");
-            ((pbb)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
-            ((pbb)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-            ((pbb)localObject1).jdField_b_of_type_JavaUtilList.add("");
-            ((pbb)localObject1).jdField_a_of_type_JavaUtilList.add("");
-            paramInt2 = 0;
-            if (paramInt2 >= localObject3.length) {
-              continue;
-            }
-            ((pbb)localObject1).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
-            paramInt2 += 1;
-            continue;
-            localJSONException1 = localJSONException1;
-          }
-          catch (JSONException localJSONException2)
-          {
-            paramString = localJSONException1;
-            localObject2 = localJSONException2;
-            continue;
-          }
-          localJSONException1.printStackTrace();
-          continue;
+          String str;
           paramInt2 = 0;
-          if (paramInt2 < localObject5.length)
+          continue;
+          paramInt1 = 0;
+        }
+      }
+      paramInt2 = paramInt1;
+      try
+      {
+        str = (String)((Map)localObject).get("seriestype_feeds_covered_time");
+        if (str == null) {
+          break label469;
+        }
+        paramInt1 = Integer.parseInt(str);
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          int i = 3;
+          continue;
+          paramInt1 = 3;
+        }
+      }
+      i = paramInt1;
+      try
+      {
+        str = (String)((Map)localObject).get("seriestype_video_type");
+        if (str == null) {
+          break label464;
+        }
+        paramInt1 = Integer.parseInt(str);
+      }
+      catch (Exception localException3)
+      {
+        for (;;)
+        {
+          label238:
+          int j = 0;
+          continue;
+          paramInt1 = 0;
+        }
+      }
+      j = paramInt1;
+      try
+      {
+        str = (String)((Map)localObject).get("small_video_max_width_height_ratio");
+        if (str == null) {
+          break label457;
+        }
+        f1 = Float.parseFloat(str);
+      }
+      catch (Exception localException6)
+      {
+        for (;;)
+        {
+          continue;
+          continue;
+          float f1 = 0.8F;
+          continue;
+          paramInt1 = 60;
+          continue;
+          f1 = 0.75F;
+        }
+      }
+      f2 = f1;
+      try
+      {
+        str = (String)((Map)localObject).get("small_video_max_duration");
+        if (str == null) {
+          break label451;
+        }
+        paramInt1 = Integer.parseInt(str);
+      }
+      catch (Exception localException5)
+      {
+        for (;;)
+        {
+          paramInt1 = k;
+        }
+      }
+      try
+      {
+        str = (String)((Map)localObject).get("seriestype_feeds_covered_light");
+        if (str == null) {
+          break label444;
+        }
+        f1 = Float.parseFloat(str);
+      }
+      catch (Exception localException4)
+      {
+        f1 = f3;
+        break label238;
+      }
+      str = (String)((Map)localObject).get("seriestype_top_bar_title");
+      if (str == null)
+      {
+        str = "推荐视频";
+        try
+        {
+          localObject = (String)((Map)localObject).get("viola_enable");
+          bool1 = bool2;
+          if (localObject != null)
           {
-            localJSONException1.jdField_b_of_type_JavaUtilList.add(localObject5[paramInt2]);
-            paramInt2 += 1;
-          }
-          else if (paramInt1 == 0)
-          {
-            paramString.put(localJSONException1.a());
+            k = Integer.parseInt((String)localObject);
+            bool1 = bool2;
+            if (k == 1) {
+              bool1 = true;
+            }
           }
         }
-        QLog.d("KandianDailySettingConfigHandler", 2, "new data: " + paramString.toString());
-        ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", paramString.toString());
+        catch (Exception localException7)
+        {
+          for (;;)
+          {
+            boolean bool1 = bool2;
+          }
+        }
+        bhvy.a("seriestype_top_bar_title", str);
+        bhvy.a("seriestype_video_from", paramString);
+        bhvy.a("seriestype_feeds_press", Integer.valueOf(paramInt2));
+        bhvy.a("seriestype_feeds_covered_time", Integer.valueOf(i));
+        bhvy.a("seriestype_video_type", Integer.valueOf(j));
+        bhvy.a("small_video_max_width_height_ratio", Float.valueOf(f2));
+        bhvy.a("small_video_max_duration", Integer.valueOf(paramInt1));
+        bhvy.a("seriestype_feeds_covered_light", Float.valueOf(f1));
+        bhvy.a("viola_enable", Boolean.valueOf(bool1));
         return true;
       }
     }
@@ -124,8 +235,16 @@ public class ope
   
   public void onWipeConfig(int paramInt)
   {
-    QLog.d("KandianDailySettingConfigHandler", 2, "[onWipeConfig]");
-    ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", "");
+    super.onWipeConfig(paramInt);
+    bhvy.a("seriestype_feeds_press", Integer.valueOf(0));
+    bhvy.a("seriestype_feeds_covered_time", Integer.valueOf(3));
+    bhvy.a("seriestype_video_from", "");
+    bhvy.a("seriestype_video_type", Integer.valueOf(0));
+    bhvy.a("small_video_max_width_height_ratio", Double.valueOf(0.75D));
+    bhvy.a("small_video_max_duration", Integer.valueOf(60));
+    bhvy.a("seriestype_feeds_covered_light", Float.valueOf(0.8F));
+    bhvy.a("seriestype_top_bar_title", "推荐视频");
+    bhvy.a("viola_enable", Boolean.valueOf(false));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.like;
 
-import auwu;
-import auwv;
+import auww;
+import auwx;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -46,7 +46,7 @@ public class PraiseManager$LoadCallback
         {
           ??? = arrayOfWeakReference[i];
           if ((??? != null) && (???.get() != null)) {
-            ((auwv)???.get()).a(this.jdField_a_of_type_Int, (auwu)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+            ((auwx)???.get()).a(this.jdField_a_of_type_Int, (auww)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
           }
           i += 1;
           continue;

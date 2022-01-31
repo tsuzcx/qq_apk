@@ -1,11 +1,12 @@
-import java.util.Comparator;
-
-public final class akzd
-  implements Comparator<akze>
+public class akzd
 {
-  public int a(akze paramakze1, akze paramakze2)
+  public int a;
+  public long a;
+  
+  public akzd(long paramLong, int paramInt)
   {
-    return paramakze1.a - paramakze2.a;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

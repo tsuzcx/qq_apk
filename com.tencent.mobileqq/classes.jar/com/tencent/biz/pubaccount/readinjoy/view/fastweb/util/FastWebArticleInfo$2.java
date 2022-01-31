@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import osj;
-import pai;
-import rmm;
+import osg;
+import paf;
+import rmj;
 
 public class FastWebArticleInfo$2
   implements Runnable
@@ -12,11 +12,11 @@ public class FastWebArticleInfo$2
   
   public void run()
   {
-    pai localpai = osj.a().a();
-    if (localpai == null) {
+    paf localpaf = osg.a().a();
+    if (localpaf == null) {
       return;
     }
-    localpai.a(this.a.mArticleContentUrl, this.a.innerUniqueID, this.a.mSubscribeID, 2, new rmm(this));
+    localpaf.a(this.a.mArticleContentUrl, this.a.innerUniqueID, this.a.mSubscribeID, 2, new rmj(this));
   }
 }
 

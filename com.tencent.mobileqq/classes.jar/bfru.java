@@ -1,28 +1,9 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.HorizontalListView;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
-public class bfru
-  extends DataSetObserver
+public abstract interface bfru
 {
-  public bfru(HorizontalListView paramHorizontalListView) {}
-  
-  public void onChanged()
-  {
-    this.a.mDataChanged = true;
-    HorizontalListView.access$402(this.a, false);
-    HorizontalListView.access$100(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
-  }
-  
-  public void onInvalidated()
-  {
-    HorizontalListView.access$402(this.a, false);
-    HorizontalListView.access$100(this.a);
-    this.a.reset(true);
-    this.a.invalidate();
-    this.a.requestLayout();
-  }
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong);
 }
 
 

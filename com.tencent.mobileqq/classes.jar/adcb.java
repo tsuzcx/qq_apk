@@ -1,9 +1,8 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class adcb
   implements View.OnClickListener
@@ -12,8 +11,21 @@ public class adcb
   
   public void onClick(View paramView)
   {
-    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
-      bcpw.a(this.a.getContext(), ajyc.a(2131716856), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298865));
+    VoiceTextEditPanel.a(this.a).a.setVisibility(0);
+    if (!this.a.a())
+    {
+      VoiceTextEditPanel.a(this.a).h(false);
+      VoiceTextEditPanel.a(this.a).a();
+      VoiceTextEditPanel.b(this.a);
+      axqy.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 1, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      VoiceTextEditPanel.c(this.a);
+      return;
+      VoiceTextEditPanel.a(this.a).a(1);
+      VoiceTextEditPanel.a(this.a).aK();
+      axqy.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 2, 0, "", "", "", "");
     }
   }
 }

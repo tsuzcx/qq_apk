@@ -1,13 +1,17 @@
+import android.text.TextUtils;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ujo
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public List<String> a = new ArrayList();
+  public List<String> b = new ArrayList();
   
-  public ujo(String paramString)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
+      this.b.add(paramString);
+    }
   }
 }
 

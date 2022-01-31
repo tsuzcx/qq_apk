@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aivx;
-import ajbm;
+import aivv;
+import ajbk;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -39,14 +39,14 @@ class CmGameCmdChannel$RequestRunable
       Iterator localIterator = localCmGameCmdChannel.a.iterator();
       while (localIterator.hasNext())
       {
-        aivx localaivx = ((ajbm)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        if (localaivx != null)
+        aivv localaivv = ((ajbk)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        if (localaivv != null)
         {
-          if (localaivx.jdField_a_of_type_Boolean) {
+          if (localaivv.jdField_a_of_type_Boolean) {
             localIterator.remove();
           }
-          if (localaivx.b) {
-            localCmGameCmdChannel.a(0, this.jdField_a_of_type_JavaLangString, localaivx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          if (localaivv.b) {
+            localCmGameCmdChannel.a(0, this.jdField_a_of_type_JavaLangString, localaivv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
           }
         }
       }

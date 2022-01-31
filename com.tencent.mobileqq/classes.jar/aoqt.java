@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.view.View;
 
 class aoqt
-  implements aptu
+  implements bfqj
 {
-  aoqt(aoqq paramaoqq, WeiYunFileInfo paramWeiYunFileInfo) {}
+  aoqt(aoqr paramaoqr, View paramView) {}
   
   public void a()
   {
-    FileManagerEntity localFileManagerEntity = apue.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Aoqq.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Aoqq.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Aoqq.a.a(localFileManagerEntity);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
-  
-  public void b() {}
 }
 
 

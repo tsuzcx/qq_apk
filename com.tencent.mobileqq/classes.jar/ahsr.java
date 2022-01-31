@@ -1,54 +1,47 @@
 import android.media.MediaPlayer;
-import android.widget.ImageView;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahsr
-  implements ahzw
+  implements MediaPlayer.OnPreparedListener
 {
   public ahsr(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(MediaPlayer paramMediaPlayer)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (EditLocalVideoActivity.b(this.a))
+    if (QLog.isColorLevel()) {
+      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
+    }
+    EditLocalVideoActivity.a(this.a).removeMessages(9999);
+    EditLocalVideoActivity.h(this.a);
+    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
+    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
+    EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
+    int i;
+    int j;
+    if (!EditLocalVideoActivity.a(this.a).a())
     {
-      QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------1   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.a(this.a).pause();
-      paramMediaPlayer.seekTo(EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
+      EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
+      if ((bhoh.a(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
+        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
+      }
+      i = paramMediaPlayer.getVideoWidth();
+      j = paramMediaPlayer.getVideoHeight();
+      if ((i <= 0) || (j <= 0)) {
+        Toast.makeText(this.a.getApplicationContext(), ajya.a(2131703649), 1).show();
+      }
+    }
+    else
+    {
       return;
     }
-    QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------2   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-    paramMediaPlayer.seekTo(EditLocalVideoActivity.c(this.a));
-    EditLocalVideoActivity.a(this.a).start();
-  }
-  
-  public void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2)
-  {
-    if (EditLocalVideoActivity.b(this.a))
-    {
-      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------3   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      paramFixedSizeVideoView.pause();
-      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.b(this.a, false);
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      if (EditLocalVideoActivity.a(this.a) != null) {
-        EditLocalVideoActivity.a(this.a).b();
-      }
-      do
-      {
-        return;
-      } while (EditLocalVideoActivity.d(this.a) == 0);
-      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------4   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      paramFixedSizeVideoView.setPlayDuration(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a) - EditLocalVideoActivity.c(this.a));
-      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.c(this.a));
-      paramFixedSizeVideoView.start();
-    }
+    EditLocalVideoActivity.e(this.a, i);
+    EditLocalVideoActivity.f(this.a, j);
+    EditLocalVideoActivity.a(this.a, i, j);
   }
 }
 

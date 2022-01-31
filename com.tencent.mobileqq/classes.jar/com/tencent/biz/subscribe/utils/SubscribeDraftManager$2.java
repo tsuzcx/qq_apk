@@ -8,22 +8,22 @@ import com.tencent.smtt.utils.Md5Utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import seh;
-import wsz;
-import wtd;
+import see;
+import wsw;
+import wta;
 
 public class SubscribeDraftManager$2
   implements Runnable
 {
-  public SubscribeDraftManager$2(wsz paramwsz, String paramString, wtd paramwtd) {}
+  public SubscribeDraftManager$2(wsw paramwsw, String paramString, wta paramwta) {}
   
   public void run()
   {
-    Object localObject1 = new VFSFile(wsz.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
+    Object localObject1 = new VFSFile(wsw.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
     if ((((VFSFile)localObject1).exists()) && (((VFSFile)localObject1).isDirectory()))
     {
       localObject1 = ((VFSFile)localObject1).listFiles();
-      QLog.d(wsz.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
+      QLog.d(wsw.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
       localArrayList = new ArrayList();
       j = localObject1.length;
       i = 0;
@@ -35,10 +35,10 @@ public class SubscribeDraftManager$2
         localObject2 = localObject1[i];
         try
         {
-          localObject2 = wsz.a(this.this$0, ((VFSFile)localObject2).getAbsolutePath());
+          localObject2 = wsw.a(this.this$0, ((VFSFile)localObject2).getAbsolutePath());
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            localObject2 = (SubscribeDraftBean)seh.a().a((String)localObject2, SubscribeDraftBean.class);
+            localObject2 = (SubscribeDraftBean)see.a().a((String)localObject2, SubscribeDraftBean.class);
             if (localObject2 != null) {
               localArrayList.add(localObject2);
             }
@@ -48,7 +48,7 @@ public class SubscribeDraftManager$2
         {
           for (;;)
           {
-            QLog.d(wsz.jdField_a_of_type_JavaLangString, 4, "readString failed:");
+            QLog.d(wsw.jdField_a_of_type_JavaLangString, 4, "readString failed:");
           }
         }
         i += 1;
@@ -56,12 +56,12 @@ public class SubscribeDraftManager$2
       label181:
       Collections.sort(localArrayList);
       if (!localArrayList.isEmpty()) {
-        if (this.jdField_a_of_type_Wtd != null) {
-          this.jdField_a_of_type_Wtd.a(4, true, "", new Object[] { localArrayList });
+        if (this.jdField_a_of_type_Wta != null) {
+          this.jdField_a_of_type_Wta.a(4, true, "", new Object[] { localArrayList });
         }
       }
     }
-    while (this.jdField_a_of_type_Wtd == null)
+    while (this.jdField_a_of_type_Wta == null)
     {
       ArrayList localArrayList;
       int j;
@@ -70,11 +70,11 @@ public class SubscribeDraftManager$2
       do
       {
         return;
-      } while (this.jdField_a_of_type_Wtd == null);
-      this.jdField_a_of_type_Wtd.a(4, false, "", null);
+      } while (this.jdField_a_of_type_Wta == null);
+      this.jdField_a_of_type_Wta.a(4, false, "", null);
       return;
     }
-    this.jdField_a_of_type_Wtd.a(4, false, "", null);
+    this.jdField_a_of_type_Wta.a(4, false, "", null);
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.util.Log;
-import apmx;
-import appk;
-import ayfe;
+import apnb;
+import appo;
+import ayfg;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class SimpleFilePresenter$2
   implements Runnable
 {
-  public SimpleFilePresenter$2(appk paramappk, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public SimpleFilePresenter$2(appo paramappo, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
-    String str = ayfe.a(this.a.m, this.this$0.a.h());
+    String str = ayfg.a(this.a.m, this.this$0.a.h());
     Log.i("app2", "result is=" + str);
   }
 }

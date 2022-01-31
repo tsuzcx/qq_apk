@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.app.Activity;
-import bepy;
+import beqp;
 
 public class BaseUIProxy$3
   implements Runnable
 {
-  public BaseUIProxy$3(bepy parambepy) {}
+  public BaseUIProxy$3(beqp parambeqp) {}
   
   public void run()
   {

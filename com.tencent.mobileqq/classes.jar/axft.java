@@ -1,38 +1,46 @@
-import android.hardware.Camera.PreviewCallback;
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.StateCallback;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureRequest.Builder;
+import android.support.annotation.NonNull;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
 import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import java.nio.ByteBuffer;
+import java.util.concurrent.Semaphore;
 
 public class axft
-  implements ImageReader.OnImageAvailableListener
+  extends CameraCaptureSession.StateCallback
 {
   public axft(Camera2Control paramCamera2Control) {}
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public void onConfigureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession)
   {
-    try
-    {
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
-        if (localPreviewCallback != null)
-        {
-          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-          localByteBuffer.get(arrayOfByte);
-          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
-        }
-        paramImageReader.close();
-      }
-      return;
+    axgf.a(2, "[Camera2]startPreview onConfigureFailed!");
+    Camera2Control.c(this.a, false);
+    Camera2Control.a(this.a).release();
+    if (this.a.jdField_a_of_type_Axga != null) {
+      this.a.jdField_a_of_type_Axga.a(-202);
     }
-    catch (Exception paramImageReader)
+  }
+  
+  public void onConfigured(@NonNull CameraCaptureSession paramCameraCaptureSession)
+  {
+    axgf.a(1, "[Camera2]startPreview onConfigured!");
+    Camera2Control.c(this.a, true);
+    Camera2Control.a(this.a, paramCameraCaptureSession);
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_MODE, Integer.valueOf(1));
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, Camera2Control.a(this.a));
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      axgd.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
+      Camera2Control.a(this.a, Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a)));
+      this.a.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = Camera2Control.a(this.a).createCaptureCallback(Camera2Control.a(this.a), Camera2Control.a(this.a));
+    }
+    for (;;)
+    {
+      Camera2Control.a(this.a);
+      Camera2Control.a(this.a).release();
+      return;
+      Camera2Control.b(this.a, Camera2Control.a(this.a).build());
     }
   }
 }

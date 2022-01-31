@@ -1,18 +1,18 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import java.util.Comparator;
 
-final class aqrn
-  implements Comparator<PadFaceAd>
+public final class aqrn
+  implements Parcelable.Creator<PadFaceAd>
 {
-  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
+  public PadFaceAd a(Parcel paramParcel)
   {
-    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
-      return -1;
-    }
-    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
-      return 0;
-    }
-    return 1;
+    return new PadFaceAd(paramParcel);
+  }
+  
+  public PadFaceAd[] a(int paramInt)
+  {
+    return new PadFaceAd[paramInt];
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
-import aukn;
 import aukp;
+import aukr;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -11,19 +11,19 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import ozr;
+import ozo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class ArticleInfoModule$40
   implements Runnable
 {
-  public ArticleInfoModule$40(ozr paramozr, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
+  public ArticleInfoModule$40(ozo paramozo, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
   
   public void run()
   {
-    aukp localaukp = this.this$0.jdField_a_of_type_Aukn.a();
-    localaukp.a();
+    aukr localaukr = this.this$0.jdField_a_of_type_Aukp.a();
+    localaukr.a();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
     int j;
@@ -85,20 +85,20 @@ public class ArticleInfoModule$40
       QLog.d("ArticleInfoModule", 1, new Object[] { "handle 8c8, feedsId = ", Long.valueOf(l), ", feedsType = ", Integer.valueOf(j) });
       ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 0);
       if (localArticleInfo != null) {
-        ozr.a(this.this$0, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 0);
+        ozo.a(this.this$0, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 0);
       }
       localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 70);
       if (localArticleInfo != null) {
-        ozr.a(this.this$0, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 70);
+        ozo.a(this.this$0, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 70);
       }
       localObject1 = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 41403);
       if (localObject1 != null) {
-        ozr.a(this.this$0, (ArticleInfo)localObject1, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 41403);
+        ozo.a(this.this$0, (ArticleInfo)localObject1, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 41403);
       }
       if ((this.jdField_a_of_type_Boolean) && (localObject1 != null) && (((ArticleInfo)localObject1).mSocialFeedInfo != null) && (((ArticleInfo)localObject1).publishUin != 0L))
       {
         localObject2 = "publishUin = " + ((ArticleInfo)localObject1).publishUin;
-        localObject2 = this.this$0.jdField_a_of_type_Aukn.a(ArticleInfo.class, true, (String)localObject2, null, null, null, "mRecommendSeq desc", null);
+        localObject2 = this.this$0.jdField_a_of_type_Aukp.a(ArticleInfo.class, true, (String)localObject2, null, null, null, "mRecommendSeq desc", null);
         if (localObject2 == null)
         {
           QLog.d("ArticleInfoModule", 1, "no soical feeds to update article.publishUin:" + ((ArticleInfo)localObject1).publishUin);
@@ -135,8 +135,8 @@ public class ArticleInfoModule$40
     if ((i != 0) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null)) {
       this.this$0.jdField_a_of_type_AndroidOsHandler.post(new ArticleInfoModule.40.1(this));
     }
-    localaukp.c();
-    localaukp.b();
+    localaukr.c();
+    localaukr.b();
     this.this$0.h();
   }
 }

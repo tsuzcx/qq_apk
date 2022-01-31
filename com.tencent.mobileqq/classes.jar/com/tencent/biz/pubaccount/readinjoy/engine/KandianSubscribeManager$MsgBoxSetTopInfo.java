@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ahnn;
-import ajsf;
-import aktg;
+import ahnl;
+import ajsd;
+import aktf;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -21,8 +21,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import noo;
-import onk;
+import nol;
+import onh;
 
 public class KandianSubscribeManager$MsgBoxSetTopInfo
   implements Serializable
@@ -36,7 +36,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
   private Pair<Integer, Long> a(int paramInt)
   {
     Pair localPair = new Pair(Integer.valueOf(-1), Long.valueOf(-1L));
-    int j = onk.a;
+    int j = onh.a;
     Object localObject1 = new ArrayList();
     label300:
     label331:
@@ -47,7 +47,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
       Object localObject3;
       try
       {
-        Object localObject2 = ahnn.a().a;
+        Object localObject2 = ahnl.a().a;
         if (localObject2 == null) {
           return localPair;
         }
@@ -62,7 +62,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
             ((Iterator)localObject2).remove();
             break label334;
           }
-          if (!ajsf.aQ.equals(((RecentBaseData)localObject3).a())) {
+          if (!ajsd.aQ.equals(((RecentBaseData)localObject3).a())) {
             break label331;
           }
           i = 1;
@@ -79,7 +79,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
         {
           localObject2 = (RecentBaseData)((List)localObject1).get(i);
           localObject3 = (RecentUserBaseData)localObject2;
-          if (TextUtils.equals(((RecentUserBaseData)localObject3).a(), ajsf.aQ))
+          if (TextUtils.equals(((RecentUserBaseData)localObject3).a(), ajsd.aQ))
           {
             if (i < j)
             {
@@ -145,7 +145,7 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
     if (!a()) {}
     Pair localPair;
     QQAppInterface localQQAppInterface;
-    aktg localaktg;
+    aktf localaktf;
     RecentUser localRecentUser;
     do
     {
@@ -156,24 +156,24 @@ public class KandianSubscribeManager$MsgBoxSetTopInfo
           return;
           localPair = a(this.setTopPosition);
         } while ((((Integer)localPair.first).intValue() < 0) || (((Long)localPair.second).longValue() < 0L));
-        localQQAppInterface = (QQAppInterface)onk.a();
-        localObject = localQQAppInterface.a().b(ajsf.aQ, 1008);
+        localQQAppInterface = (QQAppInterface)onh.a();
+        localObject = localQQAppInterface.a().b(ajsd.aQ, 1008);
       } while ((localObject == null) || (((MessageRecord)localObject).isread));
-      localaktg = localQQAppInterface.a().a();
-      localRecentUser = localaktg.b(ajsf.aQ, 1008);
+      localaktf = localQQAppInterface.a().a();
+      localRecentUser = localaktf.b(ajsd.aQ, 1008);
     } while (localRecentUser == null);
     localRecentUser.lastmsgtime = ((Long)localPair.second).longValue();
     ((MessageRecord)localObject).time = ((Long)localPair.second).longValue();
-    localQQAppInterface.a().a(ajsf.aQ, 1008, ((MessageRecord)localObject).uniseq, "time", Long.valueOf(((MessageRecord)localObject).time));
-    localaktg.a(localRecentUser);
+    localQQAppInterface.a().a(ajsd.aQ, 1008, ((MessageRecord)localObject).uniseq, "time", Long.valueOf(((MessageRecord)localObject).time));
+    localaktf.a(localRecentUser);
     Object localObject = localQQAppInterface.getHandler(Conversation.class);
     if (localObject != null) {
       ((MqqHandler)localObject).sendEmptyMessage(1009);
     }
     this.lastSetTopTimeMillis = System.currentTimeMillis();
-    onk.a("kandian_subscribe_settop_info_key", this, true);
+    onh.a("kandian_subscribe_settop_info_key", this, true);
     QLog.d(KandianSubscribeManager.a, 1, "settop successful! pos : " + localPair.first + ", msgtime : " + localPair.second);
-    noo.a(localQQAppInterface, "CliOper", "", "", "0X80097D5", "0X80097D5", 0, 1, String.valueOf(localPair.first), null, null, null, false);
+    nol.a(localQQAppInterface, "CliOper", "", "", "0X80097D5", "0X80097D5", 0, 1, String.valueOf(localPair.first), null, null, null, false);
   }
 }
 

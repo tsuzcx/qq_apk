@@ -1,14 +1,9 @@
+import android.view.MotionEvent;
+import android.view.View;
+
 public abstract interface ahml
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent);
 }
 
 

@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bjst;
-import bjww;
+import bjtk;
+import bjxn;
 
 class HWEditLocalVideoPlayer$6
   implements Runnable
@@ -11,9 +11,9 @@ class HWEditLocalVideoPlayer$6
   
   public void run()
   {
-    bjst localbjst = (bjst)this.this$0.a(bjst.class);
-    if (localbjst != null) {
-      localbjst.b();
+    bjtk localbjtk = (bjtk)this.this$0.a(bjtk.class);
+    if (localbjtk != null) {
+      localbjtk.b();
     }
     this.this$0.a.a(Message.obtain(null, 14));
   }

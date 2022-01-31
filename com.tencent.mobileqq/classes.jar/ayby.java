@@ -1,6 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface ayby
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract Bitmap a(aybf paramaybf, String paramString1, String paramString2);
 }
 
 

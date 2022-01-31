@@ -1,9 +1,9 @@
 package com.tencent.biz.qrcode.activity;
 
-import ajvi;
+import ajvg;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bbdr;
+import bbef;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QRDisplayActivity$3$1
@@ -19,19 +19,19 @@ class QRDisplayActivity$3$1
     for (;;)
     {
       if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a();
+        this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a();
       }
       return;
       if (this.a.this$0.jdField_c_of_type_Int == 2)
       {
         this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = this.a.this$0.app.a(this.a.this$0.jdField_c_of_type_JavaLangString, (byte)3, false, false);
         if (this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.f();
+          this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bbef.f();
         }
       }
       else
       {
-        Drawable localDrawable = this.a.this$0.jdField_a_of_type_Ajvi.a(this.a.this$0.jdField_c_of_type_JavaLangString, true);
+        Drawable localDrawable = this.a.this$0.jdField_a_of_type_Ajvg.a(this.a.this$0.jdField_c_of_type_JavaLangString, true);
         if ((localDrawable instanceof BitmapDrawable)) {
           this.a.this$0.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localDrawable).getBitmap();
         }

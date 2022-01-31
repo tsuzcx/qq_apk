@@ -1,21 +1,15 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoView;
-
 public class aecz
-  extends acun
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public AutoStartProgressBar a;
-  public TribeShortVideoItemBuilder.TribeShortVideoView a;
-  public boolean a;
-  public TextView b;
+  public int a;
+  public String a;
+  public int b;
+  
+  public aecz(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
 }
 
 

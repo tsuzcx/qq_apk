@@ -1,103 +1,94 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import javax.annotation.Nullable;
+import org.json.JSONObject;
 
 public class babe
-  extends JobSegment<baax, baax>
+  implements ssi
 {
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public babe(XMediaEditor paramXMediaEditor)
+  public babe()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  protected void a(JobContext paramJobContext, baax parambaax)
+  @Nullable
+  public JSONObject a(int paramInt)
   {
-    babd localbabd = (babd)parambaax;
-    if (QLog.isColorLevel()) {
-      QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment start. info status=", Integer.valueOf(localbabd.jdField_g_of_type_Int) });
-    }
-    String str = baax.b();
-    XMediaEditor localXMediaEditor;
-    int i;
-    for (;;)
+    int j = 1;
+    int i = 1;
+    JSONObject localJSONObject = new JSONObject();
+    switch (paramInt)
     {
-      try
+    default: 
+      paramInt = i;
+    }
+    while (paramInt != 0)
+    {
+      return null;
+      paramInt = i;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        localXMediaEditor = (XMediaEditor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localXMediaEditor == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment sourceVideoPath=", localbabd.f });
-        }
-        str = bbuv.a(str + localbabd.f.substring(localbabd.f.lastIndexOf("/") + 1, localbabd.f.lastIndexOf(".")) + System.currentTimeMillis() + apvb.a(localbabd.f));
-        i = bhwp.a(localXMediaEditor.getContext(), localbabd.f, str);
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo ret:", Integer.valueOf(i) });
-        }
-        if (i != 1) {
-          break label414;
-        }
-        str = localbabd.f;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        label217:
-        QLog.e("CompressVideoSegment", 1, "CompressVideoSegment error. OutOfMemoryError");
-        URLDrawable.clearMemoryCache();
-        System.gc();
-        if (this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a(paramJobContext, parambaax);
-        return;
-        notifyError(new Error("-200"));
-        return;
-        notifyError(new Error("0"));
-        return;
-        notifyError(new Error("-1"));
-        return;
-      }
-      if (apvb.b(str))
-      {
-        if (apvb.a(str) > 104857600L)
+        localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
+        paramInt = 0;
+        continue;
+        paramInt = j;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
         {
-          notifyError(new Error("200"));
-          return;
+          localJSONObject.put("raw_url", this.jdField_a_of_type_JavaLangString);
+          paramInt = 0;
         }
-        localbabd.jdField_g_of_type_JavaLangString = str;
-        ThreadManager.getUIHandler().post(new VideoInfo.CompressVideoSegment.1(this, localbabd, localXMediaEditor));
-        if (isCanceled()) {
-          return;
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          localJSONObject.put("fake_url", this.jdField_b_of_type_JavaLangString);
+          paramInt = 0;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment notifyResult. mVideoCompressedPath=", localbabd.jdField_g_of_type_JavaLangString, ", info status=", Integer.valueOf(localbabd.jdField_g_of_type_Int) });
-        }
-        notifyResult(localbabd);
-        return;
       }
-      label414:
-      if (i != 0) {
-        if (i != 1) {
-          break label217;
-        }
+    }
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("raw_url");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("fake_url");
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof babe))
+    {
+      paramObject = (babe)paramObject;
+      if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
+      }
+      if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
+      }
+      if (paramObject.jdField_a_of_type_Int != -1) {
+        this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
+      }
+      if (paramObject.jdField_b_of_type_Int != -1) {
+        this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
       }
     }
   }
   
-  public void onCancel()
+  public boolean equals(Object paramObject)
   {
-    notifyError(new Error("c_2001"));
+    if ((paramObject instanceof babe))
+    {
+      paramObject = (babe)paramObject;
+      if ((this.jdField_b_of_type_JavaLangString != null) && (paramObject.jdField_b_of_type_JavaLangString != null)) {
+        return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
+      }
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
 }
 

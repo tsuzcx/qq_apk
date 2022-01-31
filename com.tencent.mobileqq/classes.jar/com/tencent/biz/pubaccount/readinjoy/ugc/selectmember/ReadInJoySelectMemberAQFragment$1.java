@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
-import bcpw;
+import bcql;
 
 class ReadInJoySelectMemberAQFragment$1
   implements Runnable
@@ -13,7 +13,7 @@ class ReadInJoySelectMemberAQFragment$1
       return;
     }
     this.this$0.a();
-    bcpw.a(this.this$0.getActivity(), 1, this.this$0.getString(this.a), 0).b(ReadInJoySelectMemberAQFragment.a(this.this$0));
+    bcql.a(this.this$0.getActivity(), 1, this.this$0.getString(this.a), 0).b(ReadInJoySelectMemberAQFragment.a(this.this$0));
   }
 }
 

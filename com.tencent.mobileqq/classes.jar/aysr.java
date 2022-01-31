@@ -1,826 +1,698 @@
 import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.JobQueue;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.startup.step.InitUrlDrawable;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.MultiMsgUpProcessor.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.Cryptor;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.OutputStream;
-import java.net.URL;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.http.Header;
+import tencent.im.longconn.longmsg.LongMsg.MsgUpReq;
+import tencent.im.longconn.longmsg.LongMsg.ReqBody;
+import tencent.im.msg.im_msg_head.Head;
+import tencent.im.msg.im_msg_head.HttpConnHead;
+import tencent.im.msg.im_msg_head.LoginSig;
 
 public class aysr
-  extends ayog
+  extends aypg
 {
-  private JobQueue a = new JobQueue(4);
+  private static int c;
+  public int a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aywc.i;
+  public boolean a;
+  private int jdField_b_of_type_Int = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
+  private long jdField_b_of_type_Long = -1L;
+  private bgbd jdField_b_of_type_Bgbd = new bgbd();
+  private String jdField_b_of_type_JavaLangString;
+  private byte[] d;
+  private byte[] e;
+  private byte[] f;
+  private byte[] g;
+  private byte[] h;
+  private byte[] i;
   
-  public static URL a(String paramString)
+  public aysr(ayvx paramayvx, aywc paramaywc)
   {
-    paramString = new URL(paramString);
-    return new URL("nearbyimage", paramString.getAuthority(), paramString.getFile());
+    super(paramayvx, paramaywc);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_d_of_type_ArrayOfByte = paramaywc.jdField_b_of_type_ArrayOfByte;
+    this.jdField_a_of_type_Int = paramaywc.h;
+    if (this.jdField_d_of_type_ArrayOfByte != null) {}
+    for (this.q = paramaywc.jdField_b_of_type_ArrayOfByte.length;; this.q = 0L) {
+      try
+      {
+        this.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString);
+        return;
+      }
+      catch (Exception paramayvx)
+      {
+        paramayvx.printStackTrace();
+        this.jdField_a_of_type_Long = 0L;
+      }
+    }
   }
   
-  public static List<String> a(String paramString)
+  public static int a(int paramInt)
   {
-    int i = 28;
-    ArrayList localArrayList = new ArrayList();
-    int k;
-    Object localObject;
-    int j;
-    if (paramString != null)
+    int j = 3;
+    switch (paramInt)
     {
-      long l = SystemClock.elapsedRealtime();
-      boolean bool = ajyd.a().a();
-      k = NetConnInfoCenter.getActiveNetIpFamily(true);
-      if (k != 3) {
-        break label348;
+    default: 
+      j = 1;
+    case 1: 
+    case 3000: 
+      return j;
+    case 1040: 
+      return 15;
+    }
+    return 255;
+  }
+  
+  private boolean a()
+  {
+    Object localObject1 = new LongMsg.MsgUpReq();
+    ((LongMsg.MsgUpReq)localObject1).setHasFlag(true);
+    ((LongMsg.MsgUpReq)localObject1).uint64_dst_uin.set(Long.valueOf(this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString).longValue());
+    ((LongMsg.MsgUpReq)localObject1).bytes_msg_content.set(ByteStringMicro.copyFrom(this.jdField_d_of_type_ArrayOfByte));
+    ((LongMsg.MsgUpReq)localObject1).bytes_msg_ukey.set(ByteStringMicro.copyFrom(this.g));
+    ((LongMsg.MsgUpReq)localObject1).uint32_store_type.set(2);
+    ((LongMsg.MsgUpReq)localObject1).uint32_msg_type.set(a(this.jdField_b_of_type_Int));
+    Object localObject2 = new LongMsg.ReqBody();
+    ((LongMsg.ReqBody)localObject2).setHasFlag(true);
+    ((LongMsg.ReqBody)localObject2).uint32_subcmd.set(1);
+    ((LongMsg.ReqBody)localObject2).uint32_term_type.set(5);
+    ((LongMsg.ReqBody)localObject2).uint32_platform_type.set(9);
+    ((LongMsg.ReqBody)localObject2).rpt_msg_up_req.add((MessageMicro)localObject1);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
+      ((LongMsg.ReqBody)localObject2).uint32_agent_type.set(1);
+    }
+    this.jdField_e_of_type_ArrayOfByte = ((LongMsg.ReqBody)localObject2).toByteArray();
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    byte[] arrayOfByte = new Cryptor().encrypt(((LongMsg.ReqBody)localObject2).toByteArray(), this.jdField_h_of_type_ArrayOfByte);
+    Object localObject3 = new im_msg_head.LoginSig();
+    ((im_msg_head.LoginSig)localObject3).uint32_type.set(22);
+    ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.i));
+    localObject1 = new String();
+    int j = 0;
+    while (j < "8.3.0".length())
+    {
+      localObject2 = localObject1;
+      if ("8.3.0".charAt(j) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("8.3.0".charAt(j)));
       }
-      localObject = ayxe.a();
-      if (!bool) {
-        break label343;
-      }
-      j = 28;
-      localObject = ((ayxe)localObject).a(paramString, 1001, true, j);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-        localArrayList.add(((ArrayList)localObject).get(0));
-      }
-      localObject = ayxe.a();
-      if (bool) {
-        i = 1;
-      }
-      localObject = ((ayxe)localObject).a(paramString, 1001, true, i);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-        localArrayList.add(((ArrayList)localObject).get(0));
-      }
+      j += 1;
+      localObject1 = localObject2;
+    }
+    localObject2 = new im_msg_head.HttpConnHead();
+    ((im_msg_head.HttpConnHead)localObject2).uint64_uin.set(this.jdField_a_of_type_Long);
+    ((im_msg_head.HttpConnHead)localObject2).uint32_command.set(1791);
+    ((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.set(1291);
+    ((im_msg_head.HttpConnHead)localObject2).uint32_seq.set(d());
+    ((im_msg_head.HttpConnHead)localObject2).uint32_version.set(Integer.parseInt((String)localObject1));
+    ((im_msg_head.HttpConnHead)localObject2).uint32_flag.set(1);
+    ((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.set(0);
+    ((im_msg_head.HttpConnHead)localObject2).uint32_error_code.set(0);
+    localObject1 = new im_msg_head.Head();
+    ((im_msg_head.Head)localObject1).uint32_head_type.set(4);
+    ((im_msg_head.Head)localObject1).msg_login_sig.set((MessageMicro)localObject3);
+    ((im_msg_head.Head)localObject1).msg_httpconn_head.set((MessageMicro)localObject2);
+    localObject1 = ((im_msg_head.Head)localObject1).toByteArray();
+    localObject2 = new ByteArrayOutputStream();
+    try
+    {
+      localObject3 = new DataOutputStream((OutputStream)localObject2);
+      ((DataOutputStream)localObject3).write(40);
+      ((DataOutputStream)localObject3).writeInt(localObject1.length);
+      ((DataOutputStream)localObject3).writeInt(arrayOfByte.length);
+      ((DataOutputStream)localObject3).write((byte[])localObject1);
+      ((DataOutputStream)localObject3).write(arrayOfByte);
+      ((DataOutputStream)localObject3).write(41);
+      ((DataOutputStream)localObject3).flush();
+      this.jdField_e_of_type_ArrayOfByte = ((ByteArrayOutputStream)localObject2).toByteArray();
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "convertURL: " + paramString.toString() + " ip_zhitongche cost: " + (SystemClock.elapsedRealtime() - l) + " ipType=" + k + " bPrefIpv6=" + bool + " ips=" + Arrays.toString(localArrayList.toArray()));
+        QLog.d("MultiMsgUpProcessor", 2, localException.getMessage());
       }
-      if ((localArrayList.size() == 0) && (k != 2))
-      {
-        localObject = null;
-        if (!"p.qpic.cn".equals(paramString)) {
-          break label417;
-        }
-        localObject = amph.a(2);
+      b(9360, "constructToSendData() dos.write()");
+    }
+    return false;
+  }
+  
+  private static int d()
+  {
+    int j = jdField_c_of_type_Int;
+    jdField_c_of_type_Int = j + 1;
+    return j;
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_Aypd.a();
+    ayyw localayyw = new ayyw();
+    localayyw.jdField_a_of_type_Long = this.q;
+    localayyw.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localayyw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localayyw.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString;
+    localayyw.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString;
+    localayyw.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_d_of_type_JavaLangString;
+    localayyw.f = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
+    ayyp localayyp = new ayyp();
+    localayyp.jdField_a_of_type_Ayzw = this;
+    localayyp.jdField_a_of_type_JavaLangString = "multi_msg_up";
+    localayyp.jdField_a_of_type_JavaUtilList.add(localayyw);
+    localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProtoReqManager();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Aypd);
+      d();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localayyp.toString());
       }
+    } while (!f());
+    this.jdField_a_of_type_Ayyp = localayyp;
+    ayzv.a(localayyp);
+  }
+  
+  protected long a(long paramLong)
+  {
+    return this.jdField_e_of_type_ArrayOfByte.length;
+  }
+  
+  protected String a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new StringBuilder();
+    ayuq localayuq = (ayuq)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    paramArrayOfByte.append("http://");
+    paramArrayOfByte.append(localayuq.jdField_a_of_type_JavaLangString);
+    if (localayuq.jdField_a_of_type_Int != 80)
+    {
+      paramArrayOfByte.append(":");
+      paramArrayOfByte.append(localayuq.jdField_a_of_type_Int);
+    }
+    paramArrayOfByte.append("/cgi-bin/httpconn");
+    return paramArrayOfByte.toString();
+  }
+  
+  public void a(ayyp paramayyp, ayze paramayze)
+  {
+    this.jdField_a_of_type_Ayyp = null;
+    if ((paramayze == null) || (paramayze.jdField_a_of_type_JavaUtilList == null) || (paramayze.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      b(9006, "resp == null || resp.resps == null || resp.resps.size() == 0");
+      d();
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localArrayList.add(localObject);
-      }
-      if (localArrayList.size() < 2) {
-        localArrayList.add(paramString);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "convertURL urlStr end: ips=" + Arrays.toString(localArrayList.toArray()));
-      }
-      return localArrayList;
-      label343:
-      j = 1;
-      break;
-      label348:
-      if (k == 2)
+      return;
+      paramayyp = paramayze.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramayyp.hasNext())
       {
-        j = 1;
-        label355:
-        localObject = ayxe.a();
-        if (j == 0) {
-          break label412;
+        paramayze = (ayzr)paramayyp.next();
+        if (QLog.isColorLevel()) {
+          b("procUrl", paramayze.toString());
         }
-      }
-      for (;;)
-      {
-        localObject = ((ayxe)localObject).a(paramString, 1001, true, i);
-        if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-          break;
+        a(this.jdField_a_of_type_Aypd, paramayze);
+        paramayze = (ayzo)paramayze;
+        if (paramayze.jdField_c_of_type_Int != 0) {
+          break label197;
         }
-        localArrayList.add(((ArrayList)localObject).get(0));
-        break;
-        j = 0;
-        break label355;
-        label412:
-        i = 1;
-      }
-      label417:
-      if ("p.qlogo.cn".equals(paramString)) {
-        localObject = amph.a(1);
-      } else if ("ugc.qpic.cn".equals(paramString)) {
-        localObject = amph.b(8);
-      } else if (a(paramString)) {
-        localObject = amph.a(0);
-      } else if ("i.gtimg.cn".equals(paramString)) {
-        localObject = amph.b();
-      } else if ("imgcache.qq.com".equals(paramString)) {
-        localObject = amph.a();
-      } else if (c(paramString)) {
-        localObject = amph.b(9);
-      } else if (d(paramString)) {
-        localObject = amph.b(11);
-      } else if (e(paramString)) {
-        localObject = amph.b(10);
-      } else if ("pgdt.gtimg.cn".equals(paramString)) {
-        localObject = amph.a(3);
-      } else if ("sqimg.qq.com".equals(paramString)) {
-        localObject = amph.a(4);
-      } else if ("download.wegame.qq.com".equals(paramString)) {
-        localObject = amph.a(5);
-      } else if ("wfqqreader.3g.qq.com".equals(paramString)) {
-        localObject = amph.a(6);
-      } else if ("buluo.qq.com".equals(paramString)) {
-        localObject = amph.a(7);
+        this.f = paramayze.jdField_a_of_type_ArrayOfByte;
+        this.g = paramayze.jdField_b_of_type_ArrayOfByte;
+        this.jdField_a_of_type_JavaUtilArrayList = paramayze.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_h_of_type_ArrayOfByte = paramayze.jdField_c_of_type_ArrayOfByte;
+        this.i = paramayze.jdField_d_of_type_ArrayOfByte;
+        try
+        {
+          this.jdField_b_of_type_JavaLangString = new String(this.f, "utf-8");
+          if (a()) {
+            aP_();
+          }
+        }
+        catch (UnsupportedEncodingException paramayze)
+        {
+          for (;;)
+          {
+            paramayze.printStackTrace();
+          }
+          d();
+        }
       }
     }
+    label197:
+    b(9007, "upResp.result=" + paramayze.jdField_c_of_type_Int);
+    d();
   }
   
-  private void a(String paramString)
+  protected void a(boolean paramBoolean)
   {
+    int j = 2;
+    String str = this.jdField_a_of_type_Aypd.a(1) + ";" + this.jdField_b_of_type_Aypd.a(2) + ";" + this.jdField_c_of_type_Aypd.a(3);
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyImgDownloader", 2, "download img start url: " + paramString + " time: " + SystemClock.elapsedRealtime());
+      QLog.d("MultiMsgUpProcessor", 2, "doDSReport : GroupPic doReport : result:" + paramBoolean);
     }
-  }
-  
-  private void a(String paramString, boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "download img end url: " + paramString + " " + paramBoolean + " " + paramLong);
-      }
+    if (this.jdField_a_of_type_Aywc.e == 1030) {}
+    while (((!paramBoolean) && (ayuc.b(this.jdField_j_of_type_Int))) || (this.jdField_h_of_type_Boolean) || ((paramBoolean) && ((this.jdField_m_of_type_Int & 0x2) > 0)) || ((!paramBoolean) && ((this.jdField_m_of_type_Int & 0x1) > 0))) {
       return;
     }
-    QLog.w("NearbyImgDownloader", 1, "download img end url: " + paramString + " " + paramBoolean + " " + paramLong);
+    int k = this.jdField_m_of_type_Int;
+    long l;
+    if (paramBoolean)
+    {
+      this.jdField_m_of_type_Int = (j | k);
+      this.jdField_l_of_type_Long = System.currentTimeMillis();
+      l = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_step", str);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString);
+      if (!paramBoolean) {
+        break label426;
+      }
+      if ((this.n <= 0L) || (this.jdField_o_of_type_Long <= 0L)) {
+        break label421;
+      }
+      j = 1;
+      label245:
+      if ((this.p) && (j != 0))
+      {
+        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+        this.jdField_a_of_type_JavaLangStringBuilder.append("s").append(this.jdField_o_of_type_Int).append("_").append("tr").append(this.n).append("_").append("ht").append(this.jdField_m_of_type_Long).append("_").append("pic").append(this.jdField_o_of_type_Long).append(";");
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_CostEach", this.jdField_a_of_type_JavaLangStringBuilder.toString());
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_sliceNum", String.valueOf(this.jdField_o_of_type_Int));
+      }
+      axrn.a(BaseApplication.getContext()).a(null, "actMultiMsgUpload", true, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
+    }
+    for (;;)
+    {
+      l();
+      return;
+      j = 1;
+      break;
+      label421:
+      j = 0;
+      break label245;
+      label426:
+      if (this.jdField_j_of_type_Int != -9527) {
+        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove("param_url");
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_picmd5", this.jdField_d_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.q));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_busi", String.valueOf(this.jdField_a_of_type_Aywc.e));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_uinType", String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Int));
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_uniseq", String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long));
+      axrn.a(BaseApplication.getContext()).a(null, "actMultiMsgUpload", false, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
+    }
   }
   
-  /* Error */
-  private boolean a(java.io.InputStream paramInputStream, long paramLong, ayqd paramayqd, URLDrawableHandler paramURLDrawableHandler)
+  public byte[] a(int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: new 214	java/io/BufferedInputStream
-    //   3: dup
-    //   4: aload_1
-    //   5: ldc 215
-    //   7: invokespecial 218	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   10: astore 13
-    //   12: ldc 215
-    //   14: newarray byte
-    //   16: astore 14
-    //   18: new 220	java/io/FileOutputStream
-    //   21: dup
-    //   22: aload 4
-    //   24: getfield 225	ayqd:a	Ljava/io/File;
-    //   27: iconst_0
-    //   28: invokespecial 228	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   31: astore 4
-    //   33: lconst_0
-    //   34: lstore 8
-    //   36: aload 4
-    //   38: astore_1
-    //   39: aload 13
-    //   41: aload 14
-    //   43: invokevirtual 234	java/io/InputStream:read	([B)I
-    //   46: istore 6
-    //   48: iload 6
-    //   50: iconst_m1
-    //   51: if_icmpeq +151 -> 202
-    //   54: aload 4
-    //   56: astore_1
-    //   57: aload 4
-    //   59: aload 14
-    //   61: iconst_0
-    //   62: iload 6
-    //   64: invokevirtual 238	java/io/FileOutputStream:write	([BII)V
-    //   67: lload 8
-    //   69: iload 6
-    //   71: i2l
-    //   72: ladd
-    //   73: lstore 10
-    //   75: aload 4
-    //   77: astore_1
-    //   78: lload 10
-    //   80: l2f
-    //   81: lload_2
-    //   82: l2f
-    //   83: fdiv
-    //   84: ldc 239
-    //   86: fmul
-    //   87: f2i
-    //   88: istore 7
-    //   90: aload 4
-    //   92: astore_1
-    //   93: aload 5
-    //   95: iload 7
-    //   97: invokeinterface 244 2 0
-    //   102: lload 10
-    //   104: lstore 8
-    //   106: aload 4
-    //   108: astore_1
-    //   109: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   112: ifeq -76 -> 36
-    //   115: aload 4
-    //   117: astore_1
-    //   118: ldc 89
-    //   120: iconst_2
-    //   121: new 91	java/lang/StringBuilder
-    //   124: dup
-    //   125: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   128: ldc 246
-    //   130: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: iload 7
-    //   135: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   138: ldc 248
-    //   140: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: iload 6
-    //   145: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   154: lload 10
-    //   156: lstore 8
-    //   158: goto -122 -> 36
-    //   161: astore 5
-    //   163: aload 4
-    //   165: astore_1
-    //   166: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   169: ifeq +17 -> 186
-    //   172: aload 4
-    //   174: astore_1
-    //   175: ldc 89
-    //   177: iconst_2
-    //   178: aload 5
-    //   180: invokevirtual 249	java/io/IOException:toString	()Ljava/lang/String;
-    //   183: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   186: iconst_0
-    //   187: istore 12
-    //   189: aload 13
-    //   191: invokevirtual 252	java/io/InputStream:close	()V
-    //   194: aload 4
-    //   196: invokevirtual 253	java/io/FileOutputStream:close	()V
-    //   199: iload 12
-    //   201: ireturn
-    //   202: aload 4
-    //   204: astore_1
-    //   205: aload 4
-    //   207: invokevirtual 256	java/io/FileOutputStream:flush	()V
-    //   210: iconst_1
-    //   211: istore 12
-    //   213: aload 13
-    //   215: invokevirtual 252	java/io/InputStream:close	()V
-    //   218: aload 4
-    //   220: invokevirtual 253	java/io/FileOutputStream:close	()V
-    //   223: iconst_1
-    //   224: ireturn
-    //   225: astore_1
-    //   226: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   229: ifeq -30 -> 199
-    //   232: ldc 89
-    //   234: iconst_2
-    //   235: aload_1
-    //   236: invokevirtual 257	java/lang/Exception:toString	()Ljava/lang/String;
-    //   239: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   242: iconst_1
-    //   243: ireturn
-    //   244: astore_1
-    //   245: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   248: ifeq -49 -> 199
-    //   251: ldc 89
-    //   253: iconst_2
-    //   254: aload_1
-    //   255: invokevirtual 257	java/lang/Exception:toString	()Ljava/lang/String;
-    //   258: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   261: iconst_0
-    //   262: ireturn
-    //   263: astore 4
-    //   265: aconst_null
-    //   266: astore_1
-    //   267: aload 13
-    //   269: invokevirtual 252	java/io/InputStream:close	()V
-    //   272: aload_1
-    //   273: invokevirtual 253	java/io/FileOutputStream:close	()V
-    //   276: aload 4
-    //   278: athrow
-    //   279: astore_1
-    //   280: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   283: ifeq -7 -> 276
-    //   286: ldc 89
-    //   288: iconst_2
-    //   289: aload_1
-    //   290: invokevirtual 257	java/lang/Exception:toString	()Ljava/lang/String;
-    //   293: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   296: goto -20 -> 276
-    //   299: astore 4
-    //   301: goto -34 -> 267
-    //   304: astore 5
-    //   306: aconst_null
-    //   307: astore 4
-    //   309: goto -146 -> 163
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	312	0	this	aysr
-    //   0	312	1	paramInputStream	java.io.InputStream
-    //   0	312	2	paramLong	long
-    //   0	312	4	paramayqd	ayqd
-    //   0	312	5	paramURLDrawableHandler	URLDrawableHandler
-    //   46	98	6	i	int
-    //   88	46	7	j	int
-    //   34	123	8	l1	long
-    //   73	82	10	l2	long
-    //   187	25	12	bool	boolean
-    //   10	258	13	localBufferedInputStream	java.io.BufferedInputStream
-    //   16	44	14	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   39	48	161	java/io/IOException
-    //   57	67	161	java/io/IOException
-    //   78	90	161	java/io/IOException
-    //   93	102	161	java/io/IOException
-    //   109	115	161	java/io/IOException
-    //   118	154	161	java/io/IOException
-    //   205	210	161	java/io/IOException
-    //   213	223	225	java/lang/Exception
-    //   189	199	244	java/lang/Exception
-    //   12	33	263	finally
-    //   267	276	279	java/lang/Exception
-    //   39	48	299	finally
-    //   57	67	299	finally
-    //   78	90	299	finally
-    //   93	102	299	finally
-    //   109	115	299	finally
-    //   118	154	299	finally
-    //   166	172	299	finally
-    //   175	186	299	finally
-    //   205	210	299	finally
-    //   12	33	304	java/io/IOException
+    return this.jdField_e_of_type_ArrayOfByte;
   }
   
-  public static boolean a(String paramString)
+  public void aP_()
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (this.jdField_b_of_type_Long == -1L) {
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    }
+    this.jdField_b_of_type_Aypd.a();
+    long l1 = this.jdField_s_of_type_Long;
+    long l2 = a(l1);
+    Object localObject = a((int)l1, (int)l2);
+    if (localObject == null) {
+      d();
+    }
+    do
+    {
+      int j;
+      do
+      {
+        return;
+        b("sendingdata", "pos:" + l1 + "  transferData len:" + localObject.length);
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        localObject = ayoi.d(this.jdField_b_of_type_JavaLangString);
+        File localFile = new File((String)localObject);
+        if (localFile.exists()) {
+          localFile.delete();
+        }
+        bbdx.a(this.jdField_e_of_type_ArrayOfByte, (String)localObject);
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        this.jdField_a_of_type_Aywc.i = this.jdField_a_of_type_JavaLangString;
+        super.j();
+        localObject = new ayss(this);
+        this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 27, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, (ITransactionCallback)localObject, null, false);
+        j = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+        if (QLog.isColorLevel()) {
+          QLog.i("TAG_MultiMsg", 2, "Multimsg upload file by BDH and retCode = " + j);
+        }
+      } while (j == 0);
+      a(j, "SubmitError.", "", this.jdField_b_of_type_Aypd);
+      d();
+      return;
+      localObject = a((byte[])localObject);
+      if (l1 + l2 >= this.q) {
+        ((ayrx)localObject).jdField_a_of_type_JavaUtilHashMap.put("Connection", "close");
+      }
+    } while (!f());
+    this.jdField_a_of_type_Aysy = ((aysy)localObject);
+    n();
+    this.jdField_a_of_type_Aysa.a((aysy)localObject);
+  }
+  
+  public void aR_()
+  {
+    super.aR_();
+    d(1000);
+    if ((this.jdField_d_of_type_ArrayOfByte == null) || (this.jdField_d_of_type_ArrayOfByte.length == 0))
+    {
+      b(9042, "data is empty");
+      d();
+      return;
+    }
+    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!j()))
+    {
+      d();
+      return;
+    }
+    f();
+  }
+  
+  public int b()
+  {
+    if (this.jdField_k_of_type_Boolean)
+    {
+      this.jdField_k_of_type_Boolean = false;
+      this.jdField_o_of_type_Boolean = false;
+      d(1002);
+      this.t = 0;
+      this.jdField_s_of_type_Int = 0;
+      this.g = null;
+      this.r = 0;
+      this.jdField_s_of_type_Long = 0L;
+      this.jdField_j_of_type_Int = 0;
+      this.jdField_j_of_type_JavaLangString = "";
+      this.jdField_b_of_type_Bgbd.a();
+      this.jdField_a_of_type_Ayoz.a.post(new MultiMsgUpProcessor.2(this));
+    }
+    return 0;
+  }
+  
+  public int c()
+  {
+    super.c();
+    b("uiParam", this.jdField_a_of_type_Aywc.toString());
+    if ((this.jdField_d_of_type_ArrayOfByte == null) || (0L >= this.q) || (0L == this.jdField_a_of_type_Long)) {
+      return -1;
+    }
+    this.jdField_e_of_type_JavaLangString = "";
+    return 0;
+  }
+  
+  public void d()
+  {
+    super.d();
+    d(1005);
+    if (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null)
+    {
+      auor localauor = new auor();
+      localauor.jdField_a_of_type_Int = -1;
+      localauor.jdField_b_of_type_Int = this.jdField_j_of_type_Int;
+      localauor.jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
+      localauor.jdField_a_of_type_JavaLangObject = Long.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq.b(localauor);
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    auor localauor;
+    if (this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq != null)
+    {
+      localauor = new auor();
+      localauor.jdField_b_of_type_Int = 0;
+      localauor.jdField_a_of_type_Long = this.q;
+      localauor.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      localauor.jdField_a_of_type_JavaLangObject = Long.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+    }
+    try
+    {
+      localauor.jdField_c_of_type_JavaLangString = new String(this.f, "UTF-8");
+      this.jdField_a_of_type_Aywc.jdField_a_of_type_Auoq.b(localauor);
+      d(1003);
+      return;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        localauor.jdField_b_of_type_Int = -1;
+        localauor.jdField_a_of_type_JavaLangString = ("Failed. Convert ResID to UTF-8 string failed, resID = " + this.f.toString());
+        b("onSuccess", localauor.jdField_a_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public boolean j()
+  {
+    this.jdField_a_of_type_ArrayOfByte = MD5.toMD5Byte(this.jdField_d_of_type_ArrayOfByte);
+    if (this.jdField_a_of_type_ArrayOfByte == null)
+    {
+      b(9041, "getMd5 error");
       return false;
     }
-    return Pattern.compile("^q\\d?.qlogo.cn$").matcher(paramString).find();
-  }
-  
-  public static boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.compile("a[0-9].qpic.cn").matcher(paramString).find();
-  }
-  
-  public static boolean d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.compile(".*qzs.qq.com").matcher(paramString).find();
-  }
-  
-  public static boolean e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.compile(".*qzonestyle.gtimg.cn").matcher(paramString).find();
-  }
-  
-  /* Error */
-  public File a(ayqd paramayqd, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_2
-    //   2: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   5: invokespecial 295	aysr:a	(Ljava/lang/String;)V
-    //   8: aload_3
-    //   9: invokeinterface 298 1 0
-    //   14: aload_2
-    //   15: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   18: ldc_w 300
-    //   21: invokevirtual 303	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   24: ifeq +223 -> 247
-    //   27: aload_2
-    //   28: aload_2
-    //   29: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   32: ldc_w 300
-    //   35: ldc_w 305
-    //   38: invokevirtual 309	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   41: putfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   44: new 311	java/io/File
-    //   47: dup
-    //   48: aload_2
-    //   49: getfield 315	com/tencent/image/DownloadParams:url	Ljava/net/URL;
-    //   52: invokevirtual 33	java/net/URL:getFile	()Ljava/lang/String;
-    //   55: invokespecial 316	java/io/File:<init>	(Ljava/lang/String;)V
-    //   58: astore 8
-    //   60: aload 8
-    //   62: invokevirtual 319	java/io/File:exists	()Z
-    //   65: ifeq +161 -> 226
-    //   68: aload 8
-    //   70: invokevirtual 322	java/io/File:isFile	()Z
-    //   73: ifeq +153 -> 226
-    //   76: new 214	java/io/BufferedInputStream
-    //   79: dup
-    //   80: new 324	java/io/FileInputStream
-    //   83: dup
-    //   84: aload 8
-    //   86: invokespecial 327	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   89: invokespecial 330	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   92: astore 9
-    //   94: iconst_0
-    //   95: istore 4
-    //   97: aload_0
-    //   98: aload 9
-    //   100: aload 8
-    //   102: invokevirtual 333	java/io/File:length	()J
-    //   105: aload_1
-    //   106: aload_3
-    //   107: invokespecial 208	aysr:a	(Ljava/io/InputStream;JLayqd;Lcom/tencent/image/URLDrawableHandler;)Z
-    //   110: ifeq +30 -> 140
-    //   113: aload_3
-    //   114: aload 8
-    //   116: invokevirtual 333	java/io/File:length	()J
-    //   119: invokeinterface 337 3 0
-    //   124: aload_0
-    //   125: aload_2
-    //   126: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   129: iconst_1
-    //   130: aload 8
-    //   132: invokevirtual 333	java/io/File:length	()J
-    //   135: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   138: aconst_null
-    //   139: areturn
-    //   140: iload 4
-    //   142: iconst_3
-    //   143: if_icmpne +24 -> 167
-    //   146: aload_3
-    //   147: iconst_4
-    //   148: invokeinterface 342 2 0
-    //   153: aload_0
-    //   154: aload_2
-    //   155: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   158: iconst_0
-    //   159: ldc2_w 343
-    //   162: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   165: aconst_null
-    //   166: areturn
-    //   167: ldc2_w 345
-    //   170: invokestatic 351	java/lang/Thread:sleep	(J)V
-    //   173: iload 4
-    //   175: iconst_1
-    //   176: iadd
-    //   177: istore 4
-    //   179: iload 4
-    //   181: iconst_3
-    //   182: if_icmple +538 -> 720
-    //   185: aload_3
-    //   186: iconst_4
-    //   187: invokeinterface 342 2 0
-    //   192: aload_0
-    //   193: aload_2
-    //   194: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   197: iconst_0
-    //   198: ldc2_w 343
-    //   201: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   204: aconst_null
-    //   205: areturn
-    //   206: astore_1
-    //   207: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   210: ifeq -25 -> 185
-    //   213: ldc 89
-    //   215: iconst_2
-    //   216: aload_1
-    //   217: invokevirtual 352	java/io/FileNotFoundException:toString	()Ljava/lang/String;
-    //   220: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   223: goto -38 -> 185
-    //   226: aload_3
-    //   227: iconst_4
-    //   228: invokeinterface 342 2 0
-    //   233: aload_0
-    //   234: aload_2
-    //   235: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   238: iconst_0
-    //   239: ldc2_w 343
-    //   242: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   245: aconst_null
-    //   246: areturn
-    //   247: new 39	java/util/ArrayList
-    //   250: dup
-    //   251: invokespecial 40	java/util/ArrayList:<init>	()V
-    //   254: astore 9
-    //   256: new 39	java/util/ArrayList
-    //   259: dup
-    //   260: invokespecial 40	java/util/ArrayList:<init>	()V
-    //   263: astore 10
-    //   265: new 21	java/net/URL
-    //   268: dup
-    //   269: aload_2
-    //   270: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   273: invokespecial 24	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   276: astore 11
-    //   278: aload 11
-    //   280: invokevirtual 355	java/net/URL:getHost	()Ljava/lang/String;
-    //   283: astore 12
-    //   285: aload 10
-    //   287: new 357	org/apache/http/message/BasicHeader
-    //   290: dup
-    //   291: ldc_w 359
-    //   294: aload 12
-    //   296: invokespecial 362	org/apache/http/message/BasicHeader:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   299: invokeinterface 82 2 0
-    //   304: pop
-    //   305: aload 9
-    //   307: aload 12
-    //   309: invokestatic 364	aysr:a	(Ljava/lang/String;)Ljava/util/List;
-    //   312: invokeinterface 368 2 0
-    //   317: pop
-    //   318: iconst_0
-    //   319: istore 4
-    //   321: invokestatic 371	android/os/SystemClock:uptimeMillis	()J
-    //   324: lstore 6
-    //   326: iload 4
-    //   328: iconst_1
-    //   329: iadd
-    //   330: istore 5
-    //   332: aload 9
-    //   334: invokeinterface 135 1 0
-    //   339: iload 5
-    //   341: if_icmplt +121 -> 462
-    //   344: iload 5
-    //   346: iconst_1
-    //   347: isub
-    //   348: istore 4
-    //   350: new 21	java/net/URL
-    //   353: dup
-    //   354: ldc_w 373
-    //   357: aload 9
-    //   359: iload 4
-    //   361: invokeinterface 374 2 0
-    //   366: checkcast 100	java/lang/String
-    //   369: aload 11
-    //   371: invokevirtual 33	java/net/URL:getFile	()Ljava/lang/String;
-    //   374: invokespecial 36	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   377: astore 8
-    //   379: aload 8
-    //   381: ifnonnull +116 -> 497
-    //   384: iload 5
-    //   386: iconst_2
-    //   387: if_icmple +326 -> 713
-    //   390: aload_0
-    //   391: aload_2
-    //   392: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   395: iconst_0
-    //   396: ldc2_w 375
-    //   399: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   402: aconst_null
-    //   403: areturn
-    //   404: astore_1
-    //   405: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   408: ifeq +32 -> 440
-    //   411: ldc 89
-    //   413: iconst_2
-    //   414: new 91	java/lang/StringBuilder
-    //   417: dup
-    //   418: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   421: ldc_w 378
-    //   424: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   427: aload_1
-    //   428: invokevirtual 381	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
-    //   431: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   437: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   440: aload_3
-    //   441: bipush 13
-    //   443: invokeinterface 342 2 0
-    //   448: aload_0
-    //   449: aload_2
-    //   450: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   453: iconst_0
-    //   454: ldc2_w 382
-    //   457: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   460: aconst_null
-    //   461: areturn
-    //   462: aload 9
-    //   464: invokeinterface 135 1 0
-    //   469: iconst_1
-    //   470: isub
-    //   471: istore 4
-    //   473: goto -123 -> 350
-    //   476: astore 8
-    //   478: ldc 89
-    //   480: iconst_1
-    //   481: aload 8
-    //   483: invokevirtual 381	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
-    //   486: aload 8
-    //   488: invokestatic 386	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   491: aconst_null
-    //   492: astore 8
-    //   494: goto -115 -> 379
-    //   497: aload_2
-    //   498: aload 8
-    //   500: invokevirtual 387	java/net/URL:toString	()Ljava/lang/String;
-    //   503: putfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   506: new 389	ayss
-    //   509: dup
-    //   510: aload_0
-    //   511: aload_1
-    //   512: aload_3
-    //   513: aload_2
-    //   514: invokespecial 392	ayss:<init>	(Laysr;Layqd;Lcom/tencent/image/URLDrawableHandler;Lcom/tencent/image/DownloadParams;)V
-    //   517: astore 8
-    //   519: aload_2
-    //   520: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   523: aload 8
-    //   525: aload 10
-    //   527: iconst_1
-    //   528: iconst_0
-    //   529: sipush 10000
-    //   532: sipush 20000
-    //   535: invokestatic 397	com/tencent/mobileqq/utils/HttpDownloadUtil:a	(Ljava/lang/String;Lbbdo;Ljava/util/List;IZII)Lanvo;
-    //   538: astore 8
-    //   540: aload 8
-    //   542: getfield 402	anvo:b	I
-    //   545: ifne +32 -> 577
-    //   548: aload_3
-    //   549: aload 8
-    //   551: getfield 404	anvo:e	I
-    //   554: i2l
-    //   555: invokeinterface 337 3 0
-    //   560: aload_0
-    //   561: aload_2
-    //   562: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   565: iconst_1
-    //   566: aload 8
-    //   568: getfield 404	anvo:e	I
-    //   571: i2l
-    //   572: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   575: aconst_null
-    //   576: areturn
-    //   577: invokestatic 371	android/os/SystemClock:uptimeMillis	()J
-    //   580: lload 6
-    //   582: lsub
-    //   583: ldc2_w 405
-    //   586: lcmp
-    //   587: iflt +62 -> 649
-    //   590: ldc 89
-    //   592: iconst_1
-    //   593: new 91	java/lang/StringBuilder
-    //   596: dup
-    //   597: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   600: ldc_w 408
-    //   603: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   606: invokestatic 371	android/os/SystemClock:uptimeMillis	()J
-    //   609: lload 6
-    //   611: lsub
-    //   612: invokevirtual 108	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   615: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   618: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   621: aload_3
-    //   622: aload 8
-    //   624: getfield 402	anvo:b	I
-    //   627: invokeinterface 342 2 0
-    //   632: aload_0
-    //   633: aload_2
-    //   634: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   637: iconst_0
-    //   638: aload 8
-    //   640: getfield 402	anvo:b	I
-    //   643: i2l
-    //   644: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   647: aconst_null
-    //   648: areturn
-    //   649: iload 5
-    //   651: iconst_2
-    //   652: if_icmpne +31 -> 683
-    //   655: aload_3
-    //   656: aload 8
-    //   658: getfield 402	anvo:b	I
-    //   661: invokeinterface 342 2 0
-    //   666: aload_0
-    //   667: aload_2
-    //   668: getfield 293	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   671: iconst_0
-    //   672: aload 8
-    //   674: getfield 402	anvo:b	I
-    //   677: i2l
-    //   678: invokespecial 339	aysr:a	(Ljava/lang/String;ZJ)V
-    //   681: aconst_null
-    //   682: areturn
-    //   683: iload 5
-    //   685: iconst_1
-    //   686: if_icmpne -302 -> 384
-    //   689: invokestatic 65	ayxe:a	()Layxe;
-    //   692: aload 12
-    //   694: aload 11
-    //   696: invokevirtual 355	java/net/URL:getHost	()Ljava/lang/String;
-    //   699: sipush 1001
-    //   702: invokevirtual 411	ayxe:a	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   705: goto -321 -> 384
-    //   708: astore 10
-    //   710: goto -537 -> 173
-    //   713: iload 5
-    //   715: istore 4
-    //   717: goto -391 -> 326
-    //   720: goto -623 -> 97
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	723	0	this	aysr
-    //   0	723	1	paramayqd	ayqd
-    //   0	723	2	paramDownloadParams	DownloadParams
-    //   0	723	3	paramURLDrawableHandler	URLDrawableHandler
-    //   95	621	4	i	int
-    //   330	384	5	j	int
-    //   324	286	6	l	long
-    //   58	322	8	localObject1	Object
-    //   476	11	8	localMalformedURLException	java.net.MalformedURLException
-    //   492	181	8	localObject2	Object
-    //   92	371	9	localObject3	Object
-    //   263	263	10	localArrayList	ArrayList
-    //   708	1	10	localInterruptedException	java.lang.InterruptedException
-    //   276	419	11	localURL	URL
-    //   283	410	12	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   76	94	206	java/io/FileNotFoundException
-    //   97	138	206	java/io/FileNotFoundException
-    //   146	165	206	java/io/FileNotFoundException
-    //   167	173	206	java/io/FileNotFoundException
-    //   265	318	404	java/net/MalformedURLException
-    //   350	379	476	java/net/MalformedURLException
-    //   167	173	708	java/lang/InterruptedException
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return null;
-  }
-  
-  public boolean a()
-  {
+    this.jdField_d_of_type_JavaLangString = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    this.jdField_a_of_type_Ayqo.f = this.jdField_d_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = (this.jdField_d_of_type_JavaLangString + "." + this.jdField_e_of_type_JavaLangString);
     return true;
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  protected void n()
   {
-    paramURLDrawableHandler = paramDownloadParams.getHeader("gif_type");
-    if (paramURLDrawableHandler != null)
+    String str;
+    if ((this.jdField_a_of_type_Aysy != null) && ((this.jdField_a_of_type_Aysy instanceof ayrx)))
     {
-      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
-      float f = paramDownloadParams.mGifRoundCorner;
-      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (paramURLDrawableHandler.equals("1"))) {
-        return new bbpr(paramFile, true, f, 1);
+      if (!akpx.c(this.jdField_b_of_type_Int)) {
+        break label56;
+      }
+      str = "multimsgCu";
+    }
+    for (;;)
+    {
+      ((ayrx)this.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype(str, ((ayrx)this.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString);
+      return;
+      label56:
+      if (this.jdField_b_of_type_Int == 1) {
+        str = "multimsgGu";
+      } else {
+        str = "multimsgDu";
       }
     }
-    return null;
   }
   
-  public JobQueue getQueue(URL paramURL)
+  /* Error */
+  public void onResp(aysz paramaysz)
   {
-    return this.a;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    String str = paramDownloadParams.urlStr;
-    Object localObject = a(str);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyImgDownloader", 2, "loadImageFile file exist: " + ((File)localObject).getAbsolutePath());
-      }
-      return localObject;
-    }
-    localObject = c(str);
-    localObject = InitUrlDrawable.a.a((String)localObject);
-    try
-    {
-      a((ayqd)localObject, paramDownloadParams, paramURLDrawableHandler);
-      paramDownloadParams = a(str);
-      if (paramDownloadParams != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyImgDownloader", 2, "loadImageFile f exist:" + paramDownloadParams.getAbsolutePath());
-        }
-        ((ayqd)localObject).a.delete();
-        return paramDownloadParams;
-      }
-    }
-    catch (Exception paramDownloadParams)
-    {
-      if (localObject != null) {
-        ((ayqd)localObject).a(false);
-      }
-      throw paramDownloadParams;
-    }
-    paramDownloadParams = ((ayqd)localObject).a();
-    return paramDownloadParams;
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 843	aypg:onResp	(Laysz;)V
+    //   5: aload_0
+    //   6: getfield 730	aysr:jdField_o_of_type_Boolean	Z
+    //   9: ifne +10 -> 19
+    //   12: aload_0
+    //   13: getfield 728	aysr:jdField_k_of_type_Boolean	Z
+    //   16: ifeq +4 -> 20
+    //   19: return
+    //   20: aload_0
+    //   21: aconst_null
+    //   22: putfield 706	aysr:jdField_a_of_type_Aysy	Laysy;
+    //   25: aload_0
+    //   26: ldc_w 844
+    //   29: new 393	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 394	java/lang/StringBuilder:<init>	()V
+    //   36: ldc_w 846
+    //   39: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_1
+    //   43: getfield 849	aysz:jdField_a_of_type_Int	I
+    //   46: invokevirtual 418	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: ldc_w 851
+    //   52: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: aload_1
+    //   56: getfield 852	aysz:jdField_b_of_type_Int	I
+    //   59: invokevirtual 418	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   62: ldc_w 854
+    //   65: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: aload_1
+    //   69: getfield 855	aysz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   72: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 421	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokevirtual 379	aysr:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   81: aload_1
+    //   82: getfield 849	aysz:jdField_a_of_type_Int	I
+    //   85: ifne +209 -> 294
+    //   88: aload_0
+    //   89: iconst_0
+    //   90: putfield 857	aysr:jdField_l_of_type_Int	I
+    //   93: aload_1
+    //   94: getfield 858	aysz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   97: ldc_w 860
+    //   100: invokevirtual 862	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   103: astore 8
+    //   105: aload 8
+    //   107: ifnull +162 -> 269
+    //   110: aload_1
+    //   111: getfield 858	aysz:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   114: ldc_w 860
+    //   117: invokevirtual 862	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   120: checkcast 195	java/lang/String
+    //   123: invokestatic 242	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   126: istore_2
+    //   127: iload_2
+    //   128: ifeq +10 -> 138
+    //   131: iload_2
+    //   132: ldc_w 863
+    //   135: if_icmpne +141 -> 276
+    //   138: iconst_1
+    //   139: istore_3
+    //   140: aload_0
+    //   141: aload_0
+    //   142: getfield 484	aysr:jdField_b_of_type_Aypd	Laypd;
+    //   145: aload_1
+    //   146: iload_3
+    //   147: invokevirtual 866	aysr:a	(Laypd;Laysz;Z)V
+    //   150: invokestatic 625	android/os/SystemClock:uptimeMillis	()J
+    //   153: lstore 4
+    //   155: aload_0
+    //   156: getfield 30	aysr:jdField_b_of_type_Long	J
+    //   159: lstore 6
+    //   161: iload_3
+    //   162: ifeq +119 -> 281
+    //   165: aload_0
+    //   166: ldc_w 844
+    //   169: new 393	java/lang/StringBuilder
+    //   172: dup
+    //   173: invokespecial 394	java/lang/StringBuilder:<init>	()V
+    //   176: ldc_w 868
+    //   179: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: lload 4
+    //   184: lload 6
+    //   186: lsub
+    //   187: invokevirtual 558	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   190: ldc_w 870
+    //   193: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: aload_0
+    //   197: getfield 814	aysr:jdField_a_of_type_Ayqo	Layqo;
+    //   200: getfield 871	ayqo:jdField_a_of_type_Long	J
+    //   203: invokevirtual 558	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   206: ldc_w 873
+    //   209: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: iload_2
+    //   213: invokevirtual 418	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 421	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokevirtual 379	aysr:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   222: aload_0
+    //   223: invokevirtual 874	aysr:e	()V
+    //   226: return
+    //   227: astore_1
+    //   228: aload_0
+    //   229: sipush 9343
+    //   232: new 23	java/lang/Exception
+    //   235: dup
+    //   236: ldc_w 876
+    //   239: invokespecial 877	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   242: invokestatic 882	ayoj:a	(Ljava/lang/Exception;)Ljava/lang/String;
+    //   245: ldc_w 585
+    //   248: aload_0
+    //   249: getfield 484	aysr:jdField_b_of_type_Aypd	Laypd;
+    //   252: invokevirtual 370	aysr:a	(ILjava/lang/String;Ljava/lang/String;Laypd;)V
+    //   255: aload_0
+    //   256: invokevirtual 372	aysr:d	()V
+    //   259: return
+    //   260: astore 8
+    //   262: ldc_w 883
+    //   265: istore_2
+    //   266: goto -139 -> 127
+    //   269: ldc_w 863
+    //   272: istore_2
+    //   273: goto -146 -> 127
+    //   276: iconst_0
+    //   277: istore_3
+    //   278: goto -138 -> 140
+    //   281: aload_0
+    //   282: iload_2
+    //   283: ldc_w 885
+    //   286: invokevirtual 309	aysr:b	(ILjava/lang/String;)V
+    //   289: aload_0
+    //   290: invokevirtual 372	aysr:d	()V
+    //   293: return
+    //   294: aload_0
+    //   295: aload_0
+    //   296: getfield 484	aysr:jdField_b_of_type_Aypd	Laypd;
+    //   299: aload_1
+    //   300: iconst_0
+    //   301: invokevirtual 866	aysr:a	(Laypd;Laysz;Z)V
+    //   304: aload_0
+    //   305: aload_1
+    //   306: getfield 852	aysz:jdField_b_of_type_Int	I
+    //   309: aload_1
+    //   310: getfield 855	aysz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   313: invokevirtual 309	aysr:b	(ILjava/lang/String;)V
+    //   316: aload_0
+    //   317: invokevirtual 372	aysr:d	()V
+    //   320: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	321	0	this	aysr
+    //   0	321	1	paramaysz	aysz
+    //   126	157	2	j	int
+    //   139	139	3	bool	boolean
+    //   153	30	4	l1	long
+    //   159	26	6	l2	long
+    //   103	3	8	localObject	Object
+    //   260	1	8	localNumberFormatException	java.lang.NumberFormatException
+    // Exception table:
+    //   from	to	target	type
+    //   81	105	227	java/lang/Exception
+    //   110	127	227	java/lang/Exception
+    //   140	161	227	java/lang/Exception
+    //   165	226	227	java/lang/Exception
+    //   281	293	227	java/lang/Exception
+    //   294	320	227	java/lang/Exception
+    //   110	127	260	java/lang/NumberFormatException
   }
 }
 

@@ -1,17 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public class acfj
-  implements audw
+public final class acfj
+  implements agbw
 {
-  public acfj(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  private WeakReference<aicm> a;
   
-  public void a(int paramInt, audx paramaudx)
+  public acfj(aicm paramaicm)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramaudx.b)))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramaudx.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    this.a = new WeakReference(paramaicm);
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    aicm localaicm = (aicm)this.a.get();
+    if (localaicm != null) {
+      localaicm.a(paramMotionEvent);
     }
   }
 }

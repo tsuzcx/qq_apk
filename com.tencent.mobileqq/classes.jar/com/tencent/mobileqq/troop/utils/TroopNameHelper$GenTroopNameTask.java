@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajxn;
-import akhq;
+import ajxl;
+import akhp;
 import android.text.TextUtils;
-import baln;
-import balo;
-import balw;
-import bamn;
-import bbbd;
+import bamb;
+import bamc;
+import bamk;
+import banb;
+import bbbr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Friends;
@@ -23,14 +23,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TroopNameHelper$GenTroopNameTask
   extends TroopNameHelper.Task
 {
-  baln jdField_a_of_type_Baln;
+  bamb jdField_a_of_type_Bamb;
   String jdField_a_of_type_JavaLangString;
   
-  TroopNameHelper$GenTroopNameTask(TroopNameHelper paramTroopNameHelper, String paramString, baln parambaln)
+  TroopNameHelper$GenTroopNameTask(TroopNameHelper paramTroopNameHelper, String paramString, bamb parambamb)
   {
     super(paramTroopNameHelper);
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Baln = parambaln;
+    this.jdField_a_of_type_Bamb = parambamb;
   }
   
   public void a()
@@ -46,7 +46,7 @@ public class TroopNameHelper$GenTroopNameTask
       return;
       if (TextUtils.isEmpty(localTroopInfo.troopowneruin))
       {
-        this.this$0.jdField_a_of_type_Akhq.a(Long.parseLong(this.jdField_a_of_type_JavaLangString), 0L, 1, 0, 0);
+        this.this$0.jdField_a_of_type_Akhp.a(Long.parseLong(this.jdField_a_of_type_JavaLangString), 0L, 1, 0, 0);
         this.this$0.b.put(this.jdField_a_of_type_JavaLangString, this);
         return;
       }
@@ -55,11 +55,11 @@ public class TroopNameHelper$GenTroopNameTask
       }
       localObject1 = (Long)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_a_of_type_JavaLangString);
     } while ((localObject1 != null) && (System.currentTimeMillis() - ((Long)localObject1).longValue() <= 86400000L));
-    this.this$0.jdField_a_of_type_Akhq.o(this.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_Akhp.o(this.jdField_a_of_type_JavaLangString);
     this.this$0.b.put(this.jdField_a_of_type_JavaLangString, this);
     this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
     return;
-    balw localbalw = (balw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
+    bamk localbamk = (bamk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
     Iterator localIterator = ((List)localObject2).iterator();
     Object localObject3 = null;
     for (;;)
@@ -68,35 +68,35 @@ public class TroopNameHelper$GenTroopNameTask
       if (localIterator.hasNext())
       {
         Object localObject4 = (TroopMemberInfo)localIterator.next();
-        if ((bbbd.d(((TroopMemberInfo)localObject4).memberuin)) && (!localbalw.b(((TroopMemberInfo)localObject4).memberuin)) && (!((TroopMemberInfo)localObject4).memberuin.equals("50000000")))
+        if ((bbbr.d(((TroopMemberInfo)localObject4).memberuin)) && (!localbamk.b(((TroopMemberInfo)localObject4).memberuin)) && (!((TroopMemberInfo)localObject4).memberuin.equals("50000000")))
         {
-          localObject2 = new balo(this);
-          ((balo)localObject2).jdField_a_of_type_JavaLangString = ((TroopMemberInfo)localObject4).memberuin;
-          ((balo)localObject2).jdField_b_of_type_JavaLangString = ((TroopMemberInfo)localObject4).friendnick;
-          ((balo)localObject2).c = ((TroopMemberInfo)localObject4).troopnick;
-          ((balo)localObject2).jdField_a_of_type_Boolean = bamn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, ((balo)localObject2).jdField_a_of_type_JavaLangString);
-          ((balo)localObject2).jdField_b_of_type_Boolean = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((balo)localObject2).jdField_a_of_type_JavaLangString);
-          localObject4 = this.this$0.jdField_a_of_type_Ajxn.e(((balo)localObject2).jdField_a_of_type_JavaLangString);
+          localObject2 = new bamc(this);
+          ((bamc)localObject2).jdField_a_of_type_JavaLangString = ((TroopMemberInfo)localObject4).memberuin;
+          ((bamc)localObject2).jdField_b_of_type_JavaLangString = ((TroopMemberInfo)localObject4).friendnick;
+          ((bamc)localObject2).c = ((TroopMemberInfo)localObject4).troopnick;
+          ((bamc)localObject2).jdField_a_of_type_Boolean = banb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, ((bamc)localObject2).jdField_a_of_type_JavaLangString);
+          ((bamc)localObject2).jdField_b_of_type_Boolean = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((bamc)localObject2).jdField_a_of_type_JavaLangString);
+          localObject4 = this.this$0.jdField_a_of_type_Ajxl.e(((bamc)localObject2).jdField_a_of_type_JavaLangString);
           if ((localObject4 != null) && (((Friends)localObject4).isFriend()))
           {
-            ((balo)localObject2).d = ((Friends)localObject4).remark;
-            ((balo)localObject2).jdField_b_of_type_JavaLangString = ((Friends)localObject4).name;
+            ((bamc)localObject2).d = ((Friends)localObject4).remark;
+            ((bamc)localObject2).jdField_b_of_type_JavaLangString = ((Friends)localObject4).name;
           }
-          if ((localObject4 != null) && (((balo)localObject2).jdField_b_of_type_Boolean)) {
-            ((balo)localObject2).jdField_b_of_type_JavaLangString = ((Friends)localObject4).name;
+          if ((localObject4 != null) && (((bamc)localObject2).jdField_b_of_type_Boolean)) {
+            ((bamc)localObject2).jdField_b_of_type_JavaLangString = ((Friends)localObject4).name;
           }
-          if (!TextUtils.isEmpty(((balo)localObject2).c))
+          if (!TextUtils.isEmpty(((bamc)localObject2).c))
           {
-            ((balo)localObject2).e = ((balo)localObject2).c;
-            ((balo)localObject2).f = ChnToSpell.a(((balo)localObject2).c, 2);
+            ((bamc)localObject2).e = ((bamc)localObject2).c;
+            ((bamc)localObject2).f = ChnToSpell.a(((bamc)localObject2).c, 2);
             label498:
-            if ((!((balo)localObject2).jdField_b_of_type_Boolean) && (!((balo)localObject2).jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(((balo)localObject2).e))) {
+            if ((!((bamc)localObject2).jdField_b_of_type_Boolean) && (!((bamc)localObject2).jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(((bamc)localObject2).e))) {
               localArrayList.add(localObject2);
             }
-            if (((balo)localObject2).jdField_a_of_type_Boolean) {
+            if (((bamc)localObject2).jdField_a_of_type_Boolean) {
               localObject3 = localObject2;
             }
-            if (!((balo)localObject2).jdField_b_of_type_Boolean) {
+            if (!((bamc)localObject2).jdField_b_of_type_Boolean) {
               break label827;
             }
             localObject1 = localObject2;
@@ -108,22 +108,22 @@ public class TroopNameHelper$GenTroopNameTask
     for (;;)
     {
       break label262;
-      if (!TextUtils.isEmpty(((balo)localObject2).d))
+      if (!TextUtils.isEmpty(((bamc)localObject2).d))
       {
-        ((balo)localObject2).e = ((balo)localObject2).d;
-        ((balo)localObject2).f = ChnToSpell.a(((balo)localObject2).d, 2);
+        ((bamc)localObject2).e = ((bamc)localObject2).d;
+        ((bamc)localObject2).f = ChnToSpell.a(((bamc)localObject2).d, 2);
         break label498;
       }
-      if (TextUtils.isEmpty(((balo)localObject2).jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(((bamc)localObject2).jdField_b_of_type_JavaLangString)) {
         break label498;
       }
-      ((balo)localObject2).e = ((balo)localObject2).jdField_b_of_type_JavaLangString;
-      ((balo)localObject2).f = ChnToSpell.a(((balo)localObject2).jdField_b_of_type_JavaLangString, 2);
+      ((bamc)localObject2).e = ((bamc)localObject2).jdField_b_of_type_JavaLangString;
+      ((bamc)localObject2).f = ChnToSpell.a(((bamc)localObject2).jdField_b_of_type_JavaLangString, 2);
       break label498;
       Collections.sort(localArrayList);
       if ((localObject3 != null) && (localObject1 != null))
       {
-        if (!((balo)localObject3).jdField_a_of_type_JavaLangString.equals(((balo)localObject1).jdField_a_of_type_JavaLangString)) {
+        if (!((bamc)localObject3).jdField_a_of_type_JavaLangString.equals(((bamc)localObject1).jdField_a_of_type_JavaLangString)) {
           break label717;
         }
         localArrayList.add(localArrayList.size(), localObject3);
@@ -134,9 +134,9 @@ public class TroopNameHelper$GenTroopNameTask
         localObject2 = localArrayList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (balo)((Iterator)localObject2).next();
-          if (!TextUtils.isEmpty(((balo)localObject3).e)) {
-            ((ArrayList)localObject1).add(((balo)localObject3).e);
+          localObject3 = (bamc)((Iterator)localObject2).next();
+          if (!TextUtils.isEmpty(((bamc)localObject3).e)) {
+            ((ArrayList)localObject1).add(((bamc)localObject3).e);
           }
         }
         label717:
@@ -148,11 +148,11 @@ public class TroopNameHelper$GenTroopNameTask
       localTroopInfo.newTroopNameTimeStamp = System.currentTimeMillis();
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(localTroopInfo);
       localObject2 = this.jdField_a_of_type_JavaLangString;
-      this.this$0.jdField_a_of_type_Akhq.notifyUI(116, true, new Object[] { localObject2, localObject1 });
-      if (this.jdField_a_of_type_Baln == null) {
+      this.this$0.jdField_a_of_type_Akhp.notifyUI(116, true, new Object[] { localObject2, localObject1 });
+      if (this.jdField_a_of_type_Bamb == null) {
         break;
       }
-      this.jdField_a_of_type_Baln.a(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+      this.jdField_a_of_type_Bamb.a(this.jdField_a_of_type_JavaLangString, (String)localObject1);
       return;
     }
   }

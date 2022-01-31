@@ -1,34 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rij
+  implements ohm
 {
-  private static rij a;
+  public rij(FastWebActivity paramFastWebActivity) {}
   
-  public static rij a()
+  public void a() {}
+  
+  public void onClick(View paramView)
   {
-    try
+    switch (paramView.getId())
     {
-      if (a == null) {
-        a = new rij();
-      }
-      rij localrij = a;
-      return localrij;
+    default: 
+      return;
     }
-    finally {}
-  }
-  
-  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
+    this.a.a(false, null, null);
   }
 }
 

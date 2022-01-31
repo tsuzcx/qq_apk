@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apcy;
+import apdc;
 
 public class UniformDownloadMgr$6
   implements Runnable
 {
-  public UniformDownloadMgr$6(apcy paramapcy) {}
+  public UniformDownloadMgr$6(apdc paramapdc) {}
   
   public void run()
   {
-    apcy.b(this.this$0, null);
-    apcy.b(this.this$0);
+    apdc.b(this.this$0, null);
+    apdc.b(this.this$0);
   }
 }
 

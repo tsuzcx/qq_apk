@@ -1,15 +1,16 @@
-import android.app.Activity;
-
 class apte
-  implements bcvx
+  implements bbws
 {
-  apte(apsz paramapsz, Activity paramActivity, int paramInt) {}
+  apte(aptd paramaptd, aptw paramaptw) {}
   
-  public void a(int paramInt)
+  public void callback(int paramInt)
   {
-    if (paramInt == 2) {
-      apsz.a(this.jdField_a_of_type_Apsz, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      this.jdField_a_of_type_Aptw.a();
+      return;
     }
+    this.jdField_a_of_type_Aptw.b();
   }
 }
 

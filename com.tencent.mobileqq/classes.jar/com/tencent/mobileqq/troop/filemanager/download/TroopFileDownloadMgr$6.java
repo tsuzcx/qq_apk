@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
 import android.os.Bundle;
-import aztl;
+import aztn;
 import java.util.UUID;
 
 public class TroopFileDownloadMgr$6
   implements Runnable
 {
-  public TroopFileDownloadMgr$6(aztl paramaztl, UUID paramUUID, Bundle paramBundle) {}
+  public TroopFileDownloadMgr$6(aztn paramaztn, UUID paramUUID, Bundle paramBundle) {}
   
   public void run()
   {
-    aztl.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
+    aztn.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

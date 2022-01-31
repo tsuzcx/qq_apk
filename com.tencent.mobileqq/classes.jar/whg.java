@@ -1,44 +1,15 @@
-import android.view.View;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class whg
-  implements xnv
+  implements whq
 {
-  public whg(ScannerActivity paramScannerActivity) {}
+  public whg(ScannerActivity paramScannerActivity, long paramLong) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    ScannerActivity.a(this.a).setVisibility(8);
-    bbgg localbbgg = bbcv.a(this.a, 230);
-    if (paramInt == 2) {
-      localbbgg.setMessage(2131718896);
-    }
-    for (;;)
-    {
-      whh localwhh = new whh(this);
-      localbbgg.setPositiveButton(2131694793, localwhh);
-      localbbgg.setOnCancelListener(localwhh);
-      localbbgg.show();
-      return;
-      localbbgg.setMessage(2131718905);
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    String str = "QR_CODE";
-    if (ScannerActivity.a(this.a) != null) {
-      str = ScannerActivity.a(this.a).a();
-    }
-    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
+    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 

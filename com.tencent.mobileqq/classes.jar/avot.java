@@ -1,26 +1,16 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class avot
-  implements ViewPager.OnPageChangeListener
+  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
   public avot(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
-    if (paramInt == 0)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
+    return ChnToSpell.a(paramMemberInfo1.b, 1).compareTo(ChnToSpell.a(paramMemberInfo2.b, 1));
   }
 }
 

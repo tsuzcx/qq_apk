@@ -2,57 +2,31 @@ import org.json.JSONObject;
 
 public class nya
 {
-  public double a;
-  public int a;
-  public long a;
   public String a;
-  public double b;
-  public int b;
-  public long b;
   public String b;
-  public double c;
-  public long c;
   public String c;
-  public double d;
+  public String d;
   
-  public static nya a(JSONObject paramJSONObject)
+  public nya(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    try
+    if (paramJSONObject != null)
     {
-      nya localnya = new nya();
-      try
-      {
-        localnya.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
-        localnya.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
-        localnya.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
-        localnya.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
-        localnya.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
-        localnya.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
-        localnya.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
-        localnya.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
-        localnya.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
-        localnya.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
-        localnya.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
-        localnya.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
-        return localnya;
-      }
-      catch (Exception localException1)
-      {
-        paramJSONObject = localnya;
-      }
+      this.a = paramJSONObject.optString("dest_url");
+      this.b = paramJSONObject.optString("rl");
+      this.c = paramJSONObject.optString("button_txt");
+      this.d = paramJSONObject.optString("button_bg");
     }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        paramJSONObject = null;
-      }
-    }
-    localException1.printStackTrace();
-    return paramJSONObject;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
+    localStringBuilder.append("destUrl=").append(this.a);
+    localStringBuilder.append(",rl=").append(this.b);
+    localStringBuilder.append(",buttonTxt=").append(this.c);
+    localStringBuilder.append(",buttonBg=").append(this.d);
+    localStringBuilder.append("}");
+    return super.toString();
   }
 }
 

@@ -1,14 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.qphone.base.util.QLog;
 
-class aifo
-  implements View.OnClickListener
+public class aifo
+  extends ajse
 {
-  aifo(aifm paramaifm) {}
+  public aifo(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    aifm.a(this.a).onClick(paramView);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
+      }
+    } while (TroopDiscussionTroop.a(this.a) == null);
+    TroopDiscussionTroop.a(this.a).c();
   }
 }
 

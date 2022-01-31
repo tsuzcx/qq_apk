@@ -1,91 +1,66 @@
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class qua
 {
-  public static final String a = String.valueOf(20160519);
+  private static boolean b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new qub(this));
+  private quc jdField_a_of_type_Quc;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static int a(int paramInt1, int paramInt2)
+  public qua(Context paramContext)
   {
-    int i = 10000;
-    if (paramInt2 * 1000 > 60000) {
-      if (paramInt1 <= paramInt2 * 1000 - 8000) {}
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
+  }
+  
+  private void c()
+  {
+    TVK_SDKMgr.setOnLogListener(new que(null));
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "getPreviewStartPosi(): forwardPosition=" + paramInt1 + ", videoDuration=" + paramInt2 + " => previewStartPosi=" + i);
-      }
-      return i;
-      if (paramInt1 >= 8000)
+      if (!b)
       {
-        i = paramInt1 - 8000;
-        continue;
-        i = 0;
+        TVK_SDKMgr.setDebugEnable(true);
+        TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.readinjoy.video", 2, "initVideoSDK() finish");
+        }
+        b = true;
       }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
     }
   }
   
-  public static long a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(quc paramquc)
   {
-    return paramInt2 * 512 + paramInt1 * paramInt3 / paramInt2;
+    this.jdField_a_of_type_Quc = paramquc;
   }
   
-  public static String a()
+  public boolean a()
   {
-    return "";
+    return TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public static String a(int paramInt)
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      return " PLAY_STATE_UNKNOW ";
-    case 0: 
-      return " PLAY_STATE_IDLE ";
-    case 1: 
-      return " PLAY_STATE_PREPARING ";
-    case 2: 
-      return " PLAY_STATE_PREPARED ";
-    case 3: 
-      return " PLAY_STATE_PLAYING ";
-    case 5: 
-      return " PLAY_STATE_PAUSED ";
-    case 4: 
-      return " PLAY_STATE_BUFFERING ";
-    case 7: 
-      return " PLAY_STATE_COMPLETE ";
-    }
-    return " PLAY_STATE_ERROR ";
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 123)
-    {
-      if (paramInt2 == 103) {
-        return ajyc.a(2131716327) + paramInt1 + "-" + paramInt2;
-      }
-      return ajyc.a(2131716341) + paramInt1 + "-" + paramInt2;
-    }
-    if (paramInt1 == 122)
-    {
-      if (paramInt2 == 204) {
-        return ajyc.a(2131716337) + paramInt1 + "-" + paramInt2;
-      }
-      if (paramInt2 == 202) {
-        return ajyc.a(2131716330) + paramInt1 + "-" + paramInt2;
-      }
-      return ajyc.a(2131716317) + paramInt1 + "-" + paramInt2;
-    }
-    if (paramInt1 == 101)
-    {
-      if (paramInt2 == 80) {
-        return ajyc.a(2131716329) + paramInt1 + "-" + paramInt2;
-      }
-      return ajyc.a(2131716319) + paramInt1 + "-" + paramInt2;
-    }
-    return ajyc.a(2131716325) + paramInt1 + "-" + paramInt2;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Quc = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

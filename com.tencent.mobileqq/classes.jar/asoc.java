@@ -1,16 +1,8 @@
-import android.support.annotation.NonNull;
-
 public class asoc
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  @NonNull
-  public String toString()
-  {
-    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
-  }
+  public static final String a = bbvj.a(ajsd.aW + "msgbackup/");
+  public static final String b = a + "multimsg/";
+  public static final String c = a + "db/";
 }
 
 

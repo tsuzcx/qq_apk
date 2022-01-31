@@ -1,17 +1,6 @@
-import android.widget.PopupWindow.OnDismissListener;
-
-class okf
-  implements PopupWindow.OnDismissListener
+public abstract interface okf
 {
-  okf(oke paramoke) {}
-  
-  public void onDismiss()
-  {
-    this.a.a(1.0F);
-    if (oke.a(this.a) != null) {
-      oke.a(this.a).a(oke.a(this.a));
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

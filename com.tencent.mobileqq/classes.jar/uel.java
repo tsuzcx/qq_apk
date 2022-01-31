@@ -1,19 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 import mqq.os.MqqHandler;
 
 public class uel
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  uel(ueg paramueg) {}
+  uel(ued paramued) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
   }
 }
 

@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController.2;
+import java.util.List;
 
-public class badl
-  implements View.OnClickListener
+public abstract interface badl
 {
-  public badl(HomeworkTroopController.2 param2) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a();
-  }
+  public abstract void a(List<badq> paramList);
 }
 
 

@@ -1,19 +1,30 @@
-public class mnz
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
+class mnz
+  extends Handler
 {
-  public float a;
-  public int a;
-  public int b;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<mny> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public mnz(int paramInt1, int paramInt2, int paramInt3)
+  mnz(String paramString, mny parammny)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammny);
   }
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_Int + "_" + this.b + "_" + this.jdField_a_of_type_Float;
+    mny localmny = (mny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmny != null) {}
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    mny.a(localmny);
+    lcg.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 

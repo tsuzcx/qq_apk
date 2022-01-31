@@ -1,42 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class awgh
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private boolean a = true;
+  public final TextView a;
+  private awgf jdField_a_of_type_Awgf;
+  public RecentDynamicAvatarView a;
   
-  public static awgh a(String paramString)
+  public awgh(awge paramawge, View paramView, awgf paramawgf)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      awgh localawgh = new awgh();
-      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
-      for (;;)
-      {
-        localawgh.a = bool;
-        return localawgh;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370832));
+    this.jdField_a_of_type_Awgf = paramawgf;
+    paramView.setOnClickListener(this);
+    paramView.setTag(this);
   }
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
+    if ((this.jdField_a_of_type_Awgf != null) && (awge.a(this.jdField_a_of_type_Awge))) {
+      this.jdField_a_of_type_Awgf.a(paramView, getAdapterPosition() - 1);
+    }
+    while (this.jdField_a_of_type_Awgf == null) {
+      return;
+    }
+    this.jdField_a_of_type_Awgf.a(paramView, getAdapterPosition());
   }
 }
 

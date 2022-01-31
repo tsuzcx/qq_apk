@@ -1,13 +1,18 @@
-import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-class bjuo
-  implements ViewTreeObserver.OnScrollChangedListener
+public final class bjuo
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  bjuo(bjun parambjun) {}
-  
-  public void onScrollChanged()
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    bjun.a(this.a);
+    return new EditTakeGifSource(paramParcel);
+  }
+  
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
   }
 }
 

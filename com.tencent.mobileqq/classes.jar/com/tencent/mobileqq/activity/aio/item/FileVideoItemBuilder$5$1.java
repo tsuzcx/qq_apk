@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adps;
-import adpv;
+import adpq;
+import adpt;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class FileVideoItemBuilder$5$1
   implements Runnable
 {
-  public FileVideoItemBuilder$5$1(adpv paramadpv) {}
+  public FileVideoItemBuilder$5$1(adpt paramadpt) {}
   
   public void run()
   {
-    ChatActivityUtils.a(this.a.a.a, 2131719252, 1);
+    ChatActivityUtils.a(this.a.a.a, 2131719263, 1);
   }
 }
 

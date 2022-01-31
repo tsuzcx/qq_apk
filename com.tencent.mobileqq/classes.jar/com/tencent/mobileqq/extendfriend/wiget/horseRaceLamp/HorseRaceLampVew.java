@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import aolo;
-import aolp;
-import aolq;
-import aolr;
+import aolt;
+import aolu;
+import aolv;
+import aolw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -27,9 +27,9 @@ public class HorseRaceLampVew
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 3;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private aolo jdField_a_of_type_Aolo;
-  private aolr jdField_a_of_type_Aolr;
-  private ArrayList<aolp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private aolt jdField_a_of_type_Aolt;
+  private aolw jdField_a_of_type_Aolw;
+  private ArrayList<aolu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 15;
@@ -69,7 +69,7 @@ public class HorseRaceLampVew
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((aolp)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+        ((aolu)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
         i += 1;
       }
     }
@@ -79,7 +79,7 @@ public class HorseRaceLampVew
   {
     setFocusableInTouchMode(true);
     paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Int = (-actn.a(0.02F * this.jdField_b_of_type_Int, paramContext.getApp().getResources()));
+    this.jdField_a_of_type_Int = (-actj.a(0.02F * this.jdField_b_of_type_Int, paramContext.getApp().getResources()));
     if (this.jdField_a_of_type_Int == 0)
     {
       QLog.e("HorseRaceLampVew + horserace", 2, "mMovespeed is 0");
@@ -134,15 +134,15 @@ public class HorseRaceLampVew
             localObject = localView.getTag();
             n = k;
             i = m;
-            if ((localObject instanceof aolq))
+            if ((localObject instanceof aolv))
             {
               m += 1;
-              localObject = (aolq)localObject;
+              localObject = (aolv)localObject;
               n = k;
               i = m;
               if (localView.getWidth() != 0)
               {
-                ((aolq)localObject).c(localView.getMeasuredWidth());
+                ((aolv)localObject).c(localView.getMeasuredWidth());
                 n = k + 1;
                 i = m;
               }
@@ -157,7 +157,7 @@ public class HorseRaceLampVew
         i = i1;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          ((aolp)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
+          ((aolu)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
           i += 1;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -178,11 +178,11 @@ public class HorseRaceLampVew
             localView.setVisibility(0);
           }
           localObject = localView.getTag();
-          if ((localObject instanceof aolq))
+          if ((localObject instanceof aolv))
           {
-            localObject = (aolq)localObject;
-            j = ((aolq)localObject).a();
-            k = ((aolq)localObject).b();
+            localObject = (aolv)localObject;
+            j = ((aolv)localObject).a();
+            k = ((aolv)localObject).b();
             localView.setX(j);
             localView.setY(k);
           }
@@ -268,15 +268,15 @@ public class HorseRaceLampVew
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_b_of_type_Int);
   }
   
-  public void setAdapter(aolr paramaolr)
+  public void setAdapter(aolw paramaolw)
   {
-    this.jdField_a_of_type_Aolr = paramaolr;
+    this.jdField_a_of_type_Aolw = paramaolw;
     d();
   }
   
-  public void setTagClickListner(aolo paramaolo)
+  public void setTagClickListner(aolt paramaolt)
   {
-    this.jdField_a_of_type_Aolo = paramaolo;
+    this.jdField_a_of_type_Aolt = paramaolt;
   }
 }
 

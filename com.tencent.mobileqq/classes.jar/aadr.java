@@ -1,71 +1,86 @@
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class aadr
-  implements aabm
+  extends aado
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<CustomWebView> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public aadr(CustomWebView paramCustomWebView, JSONObject paramJSONObject)
+  private boolean a(aabi paramaabi)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCustomWebView);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("__nativeAPICallID__");
-  }
-  
-  public void onComplete()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 4]);");
-      }
+    Object localObject = null;
+    if ((this.jdField_a_of_type_Aadp.a() instanceof bcif)) {
+      localObject = (bcif)this.jdField_a_of_type_Aadp.a();
     }
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 3, " + paramInt + ", '" + paramString + "']);");
-      }
+    if (localObject == null) {
+      return false;
     }
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 1, " + paramInt + "]);");
-      }
+    localObject = ((bcif)localObject).a();
+    if (localObject == null) {
+      return false;
     }
+    ((xmq)localObject).a(paramaabi);
+    return true;
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  private boolean a(JSONObject paramJSONObject)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 2, " + paramJSONObject.toString() + "]);");
-      }
+    bcif localbcif = null;
+    if ((this.jdField_a_of_type_Aadp.a() instanceof bcif)) {
+      localbcif = (bcif)this.jdField_a_of_type_Aadp.a();
     }
+    if (localbcif == null) {
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    String str1 = paramJSONObject.optString("title");
+    String str2 = paramJSONObject.optString("desc");
+    String str3 = paramJSONObject.optString("shareUrl");
+    paramJSONObject = paramJSONObject.optString("imageUrl");
+    String str4 = this.jdField_a_of_type_Aabl.a().b;
+    if (!TextUtils.isEmpty(str4))
+    {
+      localBundle.putString("source_name", str4);
+      localBundle.putString("source_icon", this.jdField_a_of_type_Aabl.a().e);
+    }
+    localBundle.putInt("extra_url_info_from", 1);
+    return localbcif.a(str1, str2, str3, paramJSONObject, localBundle);
   }
   
-  public void onTrigger(JSONObject paramJSONObject)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabi paramaabi)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    switch (paramInt)
     {
-      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localCustomWebView != null) {
-        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 5, " + paramJSONObject.toString() + "]);");
+    default: 
+      return false;
+    case 25: 
+      if (a(paramJSONObject)) {
+        aaep.a(paramaabi, aabk.a);
+      }
+      break;
+    }
+    for (;;)
+    {
+      return true;
+      aaep.a(paramaabi, -1, "");
+      continue;
+      aaep.a(paramaabi, aabk.a);
+      paramString = this.jdField_a_of_type_Aabl.a();
+      if ((paramString == null) || (paramString.isFinishing()))
+      {
+        QLog.e("WVUIModule", 1, "execute activity is null or finish");
+        return false;
+      }
+      paramString.finish();
+      continue;
+      aaep.a(paramaabi, aabk.a);
+      continue;
+      if (a(paramaabi)) {
+        aaep.a(paramaabi, aabk.a);
+      } else {
+        aaep.a(paramaabi, -1, "");
       }
     }
   }

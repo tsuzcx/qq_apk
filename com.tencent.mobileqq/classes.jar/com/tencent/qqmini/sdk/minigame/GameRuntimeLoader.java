@@ -2,39 +2,39 @@ package com.tencent.qqmini.sdk.minigame;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bejy;
-import bepv;
-import bepw;
-import beqh;
-import besl;
-import besm;
-import beul;
+import bekp;
+import beqm;
+import beqn;
+import beqy;
+import betc;
+import betd;
 import bevc;
-import bevi;
-import bevy;
-import bewb;
-import bewc;
-import bewe;
-import bewf;
-import bexz;
-import beyu;
-import bfer;
+import bevt;
+import bevz;
+import bewp;
+import bews;
+import bewt;
+import bewv;
+import beww;
+import beyq;
+import bezl;
+import bffi;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.InstalledEngine;
 
 public class GameRuntimeLoader
-  extends bepv
+  extends beqm
 {
-  public static final bepw<GameRuntimeLoader> CREATOR = new beul();
+  public static final beqn<GameRuntimeLoader> CREATOR = new bevc();
   public static final String LOG_TAG = "GameRuntimeLoader";
   private boolean baseEngineLoaded;
-  private bevy mGameEngineLoadTask;
-  private bewb mGameRuntimeCreateTask;
-  private bewc mGpkgLoadTask;
-  private bewe mInitGameRuntimeTask;
-  private bewf mMiniAppInfoLoadTask;
-  private bevc miniGamePkg;
+  private bewp mGameEngineLoadTask;
+  private bews mGameRuntimeCreateTask;
+  private bewt mGpkgLoadTask;
+  private bewv mInitGameRuntimeTask;
+  private beww mMiniAppInfoLoadTask;
+  private bevt miniGamePkg;
   
   private GameRuntimeLoader(Context paramContext)
   {
@@ -59,18 +59,18 @@ public class GameRuntimeLoader
     return bool1;
   }
   
-  private void onGameEngineLoadTaskDone(bevy parambevy)
+  private void onGameEngineLoadTaskDone(bewp parambewp)
   {
-    if (!parambevy.d())
+    if (!parambewp.d())
     {
       this.baseEngineLoaded = false;
-      parambevy = parambevy.a();
-      if (parambevy != null)
+      parambewp = parambewp.a();
+      if (parambewp != null)
       {
-        beyu.a(parambevy, "1", null, "page_view", "load_fail", "baselib_task_fail", "");
-        bexz.a("2launch_fail", "baselib_task_fail", null, parambevy);
-        if (parambevy != null) {
-          parambevy = parambevy.appId;
+        bezl.a(parambewp, "1", null, "page_view", "load_fail", "baselib_task_fail", "");
+        beyq.a("2launch_fail", "baselib_task_fail", null, parambewp);
+        if (parambewp != null) {
+          parambewp = parambewp.appId;
         }
       }
       notifyRuntimeEvent(2013, new Object[] { Integer.valueOf(this.mGameEngineLoadTask.jdField_a_of_type_Int) });
@@ -80,18 +80,18 @@ public class GameRuntimeLoader
     notifyRuntimeEvent(2012, new Object[0]);
   }
   
-  private void onGameRuntimeCreateTask(bewb parambewb)
+  private void onGameRuntimeCreateTask(bews parambews)
   {
-    this.mRuntime = parambewb.a();
+    this.mRuntime = parambews.a();
   }
   
-  private void onGpkgLoadAsyncTaskDone(bewc parambewc)
+  private void onGpkgLoadAsyncTaskDone(bewt parambewt)
   {
-    if (parambewc.d())
+    if (parambewt.d())
     {
-      this.miniGamePkg = parambewc.a();
-      bevi.a().a(this.miniGamePkg);
-      bevi.a().a(this.mMiniAppInfo);
+      this.miniGamePkg = parambewt.a();
+      bevz.a().a(this.miniGamePkg);
+      bevz.a().a(this.mMiniAppInfo);
       notifyRuntimeEvent(2002, new Object[0]);
     }
     for (;;)
@@ -100,44 +100,44 @@ public class GameRuntimeLoader
       return;
       notifyRuntimeEvent(2003, new Object[0]);
       this.miniGamePkg = null;
-      parambewc = parambewc.a();
-      if (parambewc != null)
+      parambewt = parambewt.a();
+      if (parambewt != null)
       {
-        beyu.a(parambewc, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
-        bexz.a("2launch_fail", "pkg_task_fail", null, parambewc);
-        if (parambewc != null) {
-          parambewc = parambewc.appId;
+        bezl.a(parambewt, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
+        beyq.a("2launch_fail", "pkg_task_fail", null, parambewt);
+        if (parambewt != null) {
+          parambewt = parambewt.appId;
         }
       }
     }
   }
   
-  private void onInitGameRuntimeTaskDone(bewe parambewe)
+  private void onInitGameRuntimeTaskDone(bewv parambewv)
   {
     this.mIsRunning = false;
     notifyRuntimeEvent(2031, new Object[0]);
     onRuntimeLoadResult(0, "Load runtime successfully");
   }
   
-  private void onMiniAppInfoLoadTaskDone(bewf parambewf)
+  private void onMiniAppInfoLoadTaskDone(beww parambeww)
   {
-    if (!parambewf.d()) {
+    if (!parambeww.d()) {
       return;
     }
-    this.mMiniAppInfo = parambewf.a();
-    beqh.a().a(this.mMiniAppInfo);
+    this.mMiniAppInfo = parambeww.a();
+    beqy.a().a(this.mMiniAppInfo);
     this.mGpkgLoadTask.a(this.mMiniAppInfo);
   }
   
-  public bfer[] createTasks()
+  public bffi[] createTasks()
   {
-    this.mGameRuntimeCreateTask = new bewb(this.mContext, this);
-    this.mMiniAppInfoLoadTask = new bewf(this.mContext, this);
-    this.mGameEngineLoadTask = new bevy(this.mContext, this);
-    this.mGpkgLoadTask = new bewc(this.mContext, this);
-    this.mInitGameRuntimeTask = new bewe(this.mContext, this);
+    this.mGameRuntimeCreateTask = new bews(this.mContext, this);
+    this.mMiniAppInfoLoadTask = new beww(this.mContext, this);
+    this.mGameEngineLoadTask = new bewp(this.mContext, this);
+    this.mGpkgLoadTask = new bewt(this.mContext, this);
+    this.mInitGameRuntimeTask = new bewv(this.mContext, this);
     this.mInitGameRuntimeTask.a(this.mGameEngineLoadTask.a(this.mGameRuntimeCreateTask)).a(this.mGpkgLoadTask.a(this.mMiniAppInfoLoadTask));
-    return new bfer[] { this.mInitGameRuntimeTask };
+    return new bffi[] { this.mInitGameRuntimeTask };
   }
   
   public boolean dismissLoadingAfterLoaded()
@@ -164,7 +164,7 @@ public class GameRuntimeLoader
     return this.mGameEngineLoadTask.a();
   }
   
-  public bevc getMiniGamePkg()
+  public bevt getMiniGamePkg()
   {
     return this.miniGamePkg;
   }
@@ -172,41 +172,41 @@ public class GameRuntimeLoader
   public boolean isGameReadyStart(MiniAppInfo paramMiniAppInfo)
   {
     boolean bool = isGamePkgReady(paramMiniAppInfo);
-    besl.b("GameRuntimeLoader", "[MiniEng]isGameReadyStart:" + bool + ",baseEngineLoaded:" + this.baseEngineLoaded);
+    betc.b("GameRuntimeLoader", "[MiniEng]isGameReadyStart:" + bool + ",baseEngineLoaded:" + this.baseEngineLoaded);
     return (this.baseEngineLoaded) && (bool);
   }
   
   public void loadMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
-    paramMiniAppInfo.apkgInfo = new bejy(besm.a(this.mMiniAppInfo), paramMiniAppInfo);
+    paramMiniAppInfo.apkgInfo = new bekp(betd.a(this.mMiniAppInfo), paramMiniAppInfo);
     this.mMiniAppInfoLoadTask.a(paramMiniAppInfo);
     this.mGameEngineLoadTask.a(paramMiniAppInfo);
     this.mGpkgLoadTask.a(paramMiniAppInfo);
     super.loadMiniAppInfo(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bfer parambfer)
+  public void onTaskDone(bffi parambffi)
   {
-    if (parambfer == null) {}
+    if (parambffi == null) {}
     for (;;)
     {
       return;
-      besl.b("GameRuntimeLoader", "[MiniEng]" + parambfer + " done! succ:" + parambfer.d());
-      if ((parambfer instanceof bewb)) {
-        onGameRuntimeCreateTask((bewb)parambfer);
+      betc.b("GameRuntimeLoader", "[MiniEng]" + parambffi + " done! succ:" + parambffi.d());
+      if ((parambffi instanceof bews)) {
+        onGameRuntimeCreateTask((bews)parambffi);
       }
-      while (parambfer.c())
+      while (parambffi.c())
       {
-        updateFlow(parambfer);
+        updateFlow(parambffi);
         return;
-        if ((parambfer instanceof bewc)) {
-          onGpkgLoadAsyncTaskDone((bewc)parambfer);
-        } else if ((parambfer instanceof bevy)) {
-          onGameEngineLoadTaskDone((bevy)parambfer);
-        } else if ((parambfer instanceof bewf)) {
-          onMiniAppInfoLoadTaskDone((bewf)parambfer);
-        } else if ((parambfer instanceof bewe)) {
-          onInitGameRuntimeTaskDone((bewe)parambfer);
+        if ((parambffi instanceof bewt)) {
+          onGpkgLoadAsyncTaskDone((bewt)parambffi);
+        } else if ((parambffi instanceof bewp)) {
+          onGameEngineLoadTaskDone((bewp)parambffi);
+        } else if ((parambffi instanceof beww)) {
+          onMiniAppInfoLoadTaskDone((beww)parambffi);
+        } else if ((parambffi instanceof bewv)) {
+          onInitGameRuntimeTaskDone((bewv)parambffi);
         }
       }
     }

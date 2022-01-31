@@ -9,7 +9,17 @@ public class auix
   
   public void onClick(View paramView)
   {
-    AutoReplyEditActivity.b(this.a, true);
+    if (AutoReplyEditActivity.c(this.a))
+    {
+      AutoReplyEditActivity.a(this.a, false);
+      return;
+    }
+    if (AutoReplyEditActivity.d(this.a))
+    {
+      AutoReplyEditActivity.b(this.a, false);
+      return;
+    }
+    AutoReplyEditActivity.a(this.a, true);
   }
 }
 

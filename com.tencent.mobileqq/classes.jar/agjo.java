@@ -1,26 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.widget.IndexView;
 
 public class agjo
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public agjo(CountryActivity paramCountryActivity) {}
+  public agjo(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Agjv.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

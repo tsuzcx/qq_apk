@@ -1,19 +1,52 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.opengl.texture.YUVTexture;
+
 public class lry
+  extends Handler
 {
-  private final int a;
-  private int b;
-  private int c;
-  
-  public lry(int paramInt)
+  public lry(YUVTexture paramYUVTexture, Looper paramLooper)
   {
-    this.a = paramInt;
-    this.b = 1;
-    this.c = 1;
+    super(paramLooper);
   }
   
-  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void handleMessage(Message paramMessage)
   {
-    paramlqt.a(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    int i = paramMessage.what;
+    this.a.d = true;
+    switch (i)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (YUVTexture.a(this.a) == null);
+          YUVTexture.a(this.a).c();
+          return;
+        } while (YUVTexture.a(this.a) == null);
+        YUVTexture.a(this.a).b();
+        return;
+      } while (YUVTexture.a(this.a) == null);
+      YUVTexture.a(this.a).a();
+      return;
+    } while (YUVTexture.a(this.a) == null);
+    if (YUVTexture.a(this.a) == null) {
+      YUVTexture.a(this.a, new loy('=', ';'));
+    }
+    paramMessage = (String)paramMessage.obj;
+    YUVTexture.a(this.a).a(paramMessage);
+    i = YUVTexture.a(this.a).a("width");
+    int j = YUVTexture.a(this.a).a("height");
+    int k = YUVTexture.a(this.a).a("angle");
+    int m = YUVTexture.a(this.a).a("rotation", -1);
+    YUVTexture.a(this.a).a(i, j, k, m);
   }
 }
 

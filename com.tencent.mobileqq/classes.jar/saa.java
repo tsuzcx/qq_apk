@@ -1,15 +1,29 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 public class saa
-  implements rwh
+  extends Handler
 {
-  public saa(ViolaBaseView paramViolaBaseView) {}
+  private saa(ViolaBaseView paramViolaBaseView) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b() {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
+    }
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
+  }
 }
 
 

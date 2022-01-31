@@ -1,13 +1,15 @@
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahmz
-  implements tkt
+  implements DialogInterface.OnClickListener
 {
-  ahmz(ahmx paramahmx) {}
+  ahmz(ahmv paramahmv) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.invalidateViews();
+    ((ajti)this.a.a.a(2)).m(false);
   }
 }
 

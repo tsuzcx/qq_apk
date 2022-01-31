@@ -1,73 +1,37 @@
-import android.support.annotation.Nullable;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
 
 class bitp
-  implements bjob<bisc>
+  extends RecyclerView.ViewHolder
 {
-  bitp(bitj parambitj) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private AEGIFOutlineTextView jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView;
+  private DrawableImageView jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView;
+  private ImageView b;
   
-  public void a(@Nullable bisc parambisc)
+  public bitp(bitj parambitj, View paramView)
   {
-    int i = 0;
-    bitj.a(this.a).a().a(bitj.a(this.a));
-    if (parambisc != null)
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363647));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372826));
+    this.jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView = ((DrawableImageView)paramView.findViewById(2131362166));
+    this.b = ((ImageView)paramView.findViewById(2131362167));
+    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView = ((AEGIFOutlineTextView)paramView.findViewById(2131371163));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Obtained recognizedEmotion", "=====" + parambisc });
-      QLog.d("AEGIFChunkPreviewFragment", 4, "emo ===" + parambisc.jdField_a_of_type_JavaLangString + "text ===" + parambisc.jdField_a_of_type_Int + "material ====" + parambisc.jdField_b_of_type_Int);
-      if (parambisc.jdField_a_of_type_JavaLangString == null)
-      {
-        parambisc.jdField_a_of_type_Int = 0;
-        parambisc.jdField_b_of_type_Int = 6;
-        parambisc.jdField_a_of_type_JavaLangString = "default";
-      }
-      if ((parambisc.jdField_a_of_type_JavaUtilList != null) && (parambisc.jdField_a_of_type_JavaUtilList.size() == 0)) {
-        parambisc.jdField_a_of_type_JavaUtilList.addAll(biso.jdField_a_of_type_JavaUtilList);
-      }
-      Object localObject;
-      if (parambisc.jdField_a_of_type_JavaLangString.equals("default"))
-      {
-        localObject = ajyc.a(2131699965);
-        bitj.a(this.a).setText((CharSequence)localObject);
-      }
-      for (;;)
-      {
-        if (i < parambisc.jdField_a_of_type_Int)
-        {
-          localObject = new bisj();
-          ((bisj)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-          ((bisj)localObject).jdField_a_of_type_JavaLangString = ((String)parambisc.jdField_a_of_type_JavaUtilList.get(i % parambisc.jdField_a_of_type_JavaUtilList.size()));
-          ((bisj)localObject).jdField_b_of_type_Int = 2;
-          if (bitj.a(this.a).size() < bitj.a(this.a)) {}
-        }
-        else
-        {
-          bitj.a(this.a).a(bitj.a(this.a), parambisc.jdField_a_of_type_JavaLangString);
-          bitj.a(this.a).b().a(bitj.a(this.a), new bitq(this, parambisc));
-          bitj.a(this.a).a().a(bitj.a(this.a), new bitr(this, parambisc));
-          return;
-          localObject = (String)bitj.a(this.a).get(parambisc.jdField_a_of_type_JavaLangString);
-          localObject = ajyc.a(2131699960) + (String)localObject + ajyc.a(2131699967);
-          break;
-        }
-        bitj.a(this.a).add(localObject);
-        bitj.a(this.a).notifyItemInserted(bitj.a(this.a).size() - 1);
-        biuz localbiuz = new biuz();
-        localbiuz.jdField_b_of_type_JavaLangString = ((bisj)localObject).jdField_a_of_type_JavaLangString;
-        localbiuz.jdField_a_of_type_Int = (i + 1);
-        bitj.a(this.a).a(localbiuz);
-        i += 1;
-      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837927);
+      return;
     }
-    QLog.d("AEGIFChunkPreviewFragment", 4, "Recognized emotion bean is null");
-    parambisc = new bisj();
-    parambisc.jdField_b_of_type_JavaLangString = "";
-    parambisc.jdField_a_of_type_JavaLangString = "";
-    parambisc.jdField_b_of_type_Int = 2;
-    parambisc.jdField_a_of_type_Int = 11;
-    bitj.a(this.a).add(parambisc);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837640);
   }
 }
 

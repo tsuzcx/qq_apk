@@ -14,10 +14,10 @@ class RMVideoStateMgr$2
     synchronized (RMVideoStateMgr.a(this.this$0))
     {
       AudioCapture localAudioCapture = this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture;
-      if ((localAudioCapture != null) && (localAudioCapture.b != null) && (this.this$0.jdField_a_of_type_Blbl != null) && (localAudioCapture.c()) && (localAudioCapture != null))
+      if ((localAudioCapture != null) && (localAudioCapture.b != null) && (this.this$0.jdField_a_of_type_Blcc != null) && (localAudioCapture.c()) && (localAudioCapture != null))
       {
         localAudioCapture.c();
-        localAudioCapture.b.getAndSet(this.this$0.jdField_a_of_type_Blbl);
+        localAudioCapture.b.getAndSet(this.this$0.jdField_a_of_type_Blcc);
       }
       if (QLog.isColorLevel()) {
         QLog.d("RMVideoStateMgr", 2, "[@][openAudioRecord]");

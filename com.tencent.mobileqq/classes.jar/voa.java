@@ -1,9 +1,14 @@
-public class voa
+import android.graphics.Bitmap;
+
+public abstract interface voa
 {
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
-  }
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(vob paramvob);
 }
 
 

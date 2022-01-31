@@ -1,20 +1,53 @@
-public abstract interface mas
+import android.graphics.drawable.Drawable;
+
+public class mas
+  extends maq
 {
-  public abstract void a();
+  protected Drawable a;
+  protected String b;
+  protected int k = 0;
   
-  public abstract boolean a();
+  public mas(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+  }
   
-  public abstract boolean a(mav parammav);
+  public mas(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
+  {
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
+    this.b = paramString2;
+    this.k = paramInt5;
+  }
   
-  public abstract void b();
+  public int a()
+  {
+    return 1;
+  }
   
-  public abstract boolean b();
+  public Drawable a()
+  {
+    return this.a;
+  }
   
-  public abstract boolean b(mav parammav);
+  public void a(Drawable paramDrawable)
+  {
+    this.a = paramDrawable;
+  }
   
-  public abstract void c();
+  public String b()
+  {
+    return this.b;
+  }
   
-  public abstract void d();
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int k()
+  {
+    return this.k;
+  }
 }
 
 

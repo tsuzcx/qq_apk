@@ -1,26 +1,26 @@
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
 import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class azna
-  extends aznf
+  extends aznh
 {
-  public azna(TroopAioKeywordTipBar.4 param4) {}
+  public azna(TroopAioKeywordTipBar.4 param4, List paramList, azne paramazne) {}
   
   public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    if (!this.a.this$0.a) {}
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
     do
     {
       return;
       if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (azmw.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
+    this.jdField_a_of_type_Azne.a(this.jdField_a_of_type_JavaUtilList, null, 2, new aznb(this));
     return;
-    azmu.a(this.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    azmw.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

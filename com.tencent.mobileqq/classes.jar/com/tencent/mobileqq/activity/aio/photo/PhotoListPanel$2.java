@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aigy;
+import aigw;
 
 class PhotoListPanel$2
   implements Runnable
 {
-  PhotoListPanel$2(PhotoListPanel paramPhotoListPanel, aigy paramaigy) {}
+  PhotoListPanel$2(PhotoListPanel paramPhotoListPanel, aigw paramaigw) {}
   
   public void run()
   {

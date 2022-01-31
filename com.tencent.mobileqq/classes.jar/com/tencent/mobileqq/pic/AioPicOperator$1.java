@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
-import auml;
+import aumn;
 import com.tencent.image.URLDrawable;
 
 public class AioPicOperator$1
   implements Runnable
 {
-  public AioPicOperator$1(auml paramauml, URLDrawable paramURLDrawable) {}
+  public AioPicOperator$1(aumn paramaumn, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

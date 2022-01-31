@@ -1,34 +1,11 @@
-import android.opengl.GLES20;
-import javax.microedition.khronos.opengles.GL11;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 
-public class lqv
-  implements lqw
+class lqv
+  extends VideoFilterBase
 {
-  public int a()
+  lqv(lqu paramlqu)
   {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = 0;
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    lsv.a();
-    return arrayOfInt[0];
-  }
-  
-  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lsv.a();
-  }
-  
-  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
-    lsv.a();
-  }
-  
-  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lsv.a();
+    super(lqu.a(), lqu.b());
   }
 }
 

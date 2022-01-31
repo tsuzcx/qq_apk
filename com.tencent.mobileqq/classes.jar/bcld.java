@@ -1,44 +1,49 @@
+import android.graphics.Camera;
+import android.graphics.Matrix;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.view.animation.Transformation;
 
-public class bcld
-  implements Animation.AnimationListener
+class bcld
+  extends Animation
 {
-  private bcld(DraggableGridView paramDraggableGridView) {}
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bcld(View paramView)
   {
-    int i = 0;
-    while (i < DraggableGridView.a(this.a).getChildCount())
-    {
-      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
-      if ((paramAnimation instanceof GridView))
-      {
-        paramAnimation = (GridView)paramAnimation;
-        int j = 0;
-        while (j < paramAnimation.getChildCount())
-        {
-          paramAnimation.getChildAt(j).clearAnimation();
-          paramAnimation.getChildAt(j).setPressed(false);
-          paramAnimation.getChildAt(j).setVisibility(0);
-          j += 1;
-        }
-      }
-      i += 1;
-    }
-    this.a.a();
-    DraggableGridView.b(this.a, false);
-    DraggableGridView.c(this.a, false);
-    DraggableGridView.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramFloat = 90.0F - 90.0F * paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, 0.0F);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, 0.0F);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

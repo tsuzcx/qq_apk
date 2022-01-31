@@ -1,47 +1,15 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-class bhgg
-  implements Downloader.DownloadListener
+public class bhgg
+  implements DialogInterface.OnClickListener
 {
-  bhgg(bhgf parambhgf) {}
+  public bhgg(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = Message.obtain(bhgf.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bhgf.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    paramString = (bhgh)bhgf.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
-    }
-    Message localMessage = Message.obtain(bhgf.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bhgf.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    this.a.getPlayMode();
   }
 }
 

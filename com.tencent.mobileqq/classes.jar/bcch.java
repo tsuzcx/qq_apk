@@ -1,35 +1,27 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 
-public class bcch
-  implements View.OnLongClickListener
+class bcch
+  implements Animation.AnimationListener
 {
-  public bcch(UnVisibleWebViewFragment paramUnVisibleWebViewFragment) {}
+  bcch(bccg parambccg, View paramView) {}
   
-  public boolean onLongClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.a.jdField_a_of_type_Bces.a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
-    }
-    if (!this.a.jdField_a_of_type_Bces.a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    bced localbced = (bced)this.a.jdField_a_of_type_Bcdq.a(8);
-    if ((localbced != null) && (localbced.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimation.leftMargin = this.jdField_a_of_type_Bccg.e;
+    paramAnimation.topMargin = this.jdField_a_of_type_Bccg.f;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Bccg.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

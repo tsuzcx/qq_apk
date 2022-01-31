@@ -1,30 +1,43 @@
-import UserGrowth.stH5OpInfo;
 import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class slb
-  implements snn
+public class slb
+  extends sks
 {
-  slb(sla paramsla, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  private TextView a;
   
-  public void a(String paramString, int paramInt)
+  private slb(ViewGroup paramViewGroup, sjf paramsjf)
   {
-    sla.a(this.jdField_a_of_type_Sla, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
-    sms.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    super(paramViewGroup, paramsjf, 2131560119);
   }
   
-  public void b(String paramString, int paramInt)
+  public static slb a(ViewGroup paramViewGroup, sjf paramsjf)
   {
-    sla.a(this.jdField_a_of_type_Sla, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    return new slb(paramViewGroup, paramsjf);
   }
   
-  public void c(String paramString, int paramInt)
+  protected void a()
   {
-    sla.a(this.jdField_a_of_type_Sla, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    sms.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    this.a = ((TextView)a(1).findViewById(2131379109));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
+      return;
+    }
+    this.a.setText(paramstSimpleMetaFeed.feed_desc);
+    a(1, paramstSimpleMetaFeed);
+    a(2, 1, paramstSimpleMetaFeed);
   }
 }
 

@@ -1,16 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class bjzv
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bjzv
 {
-  bjzv(bjzu parambjzu) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
-  }
+  public abstract void b();
 }
 
 

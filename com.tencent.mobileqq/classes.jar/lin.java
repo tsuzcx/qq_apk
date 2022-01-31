@@ -1,77 +1,153 @@
-import com.tencent.aekit.api.standard.ai.AIManager;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sveffects.SdkContext;
-import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
-public class lin
+public abstract class lin
+  extends EffectConfigBase<PendantItem>
+  implements lho
 {
-  public static boolean a()
+  protected final lio a;
+  protected boolean a;
+  
+  public lin(VideoAppInterface paramVideoAppInterface)
   {
-    boolean bool3 = true;
-    Object localObject1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
-    Object localObject2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
-    boolean bool1;
-    label132:
-    long l;
-    if ((!axlc.g()) || (AIManager.installDetector(PTSegmenter.class, (String)localObject2, (String)localObject1)))
-    {
-      bool1 = true;
-      bool2 = liq.a().a();
-      boolean bool4 = lio.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable portraitSo = " + bool1 + "| sensorEnable = " + bool2 + " |DPCEntry = " + bool4);
-      }
-      if ((!bool1) || (!bool2) || (!bool4)) {
-        break label279;
-      }
-      bool2 = true;
-      if (!bool2) {
-        return bool2;
-      }
-      localObject1 = lio.a();
-      if (localObject1 == null) {
-        break label337;
-      }
-      l = lio.a();
-      localObject1 = ((List)localObject1).iterator();
-      bool1 = false;
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Lio = new lio();
+  }
+  
+  public abstract VideoMaterial a(String paramString);
+  
+  public Class<?> a()
+  {
+    return PendantItem.class;
+  }
+  
+  public String a(PendantItem paramPendantItem)
+  {
+    String str = null;
+    if (paramPendantItem != null) {
+      str = lcj.c() + paramPendantItem.getMd5();
     }
-    label163:
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (lip)((Iterator)localObject1).next();
-      if (localObject2 != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable CPUinfo = " + ((lip)localObject2).b + "|" + ((lip)localObject2).a);
-        }
-        if ((bool1) || (lpz.a(((lip)localObject2).b, ((lip)localObject2).a * 10000, l * 100000000L))) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          break label163;
-          bool1 = false;
-          break;
-          bool2 = false;
-          break label132;
-        }
-      }
+    return str;
+  }
+  
+  public List<PendantItem> a(String paramString)
+  {
+    paramString = super.a(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (paramString != null) {
+      localArrayList.addAll(paramString);
     }
-    label279:
-    if ((bool2) && (bool1)) {}
-    for (boolean bool2 = bool3;; bool2 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable isDeviceSupport = " + bool1);
-      }
-      return bool2;
+    return localArrayList;
+  }
+  
+  public lio a(int paramInt1, int paramInt2)
+  {
+    if (!lpu.e()) {
+      return null;
     }
-    label337:
-    return false;
-    return bool2;
+    VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
+    PendantItem localPendantItem = (PendantItem)a();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      d();
+    }
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Lio.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_Lio.jdField_a_of_type_JavaLangString = null;
+      }
+      return null;
+    }
+    String str1 = c(localPendantItem);
+    String str2 = localPendantItem.getId();
+    if ((str1.equals(this.jdField_a_of_type_Lio.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Lio.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_Lio.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
+      return this.jdField_a_of_type_Lio;
+    }
+    long l = System.currentTimeMillis();
+    VideoMaterial localVideoMaterial = a(str1);
+    this.jdField_a_of_type_Lio.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
+    this.jdField_a_of_type_Lio.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
+    this.jdField_a_of_type_Lio.jdField_a_of_type_JavaLangString = str1;
+    lcg.c(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
+    return this.jdField_a_of_type_Lio;
+  }
+  
+  public void a()
+  {
+    super.a();
+    lhn locallhn = (lhn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    if (locallhn != null) {
+      locallhn.a(b(), this);
+    }
+  }
+  
+  protected void a(long paramLong, PendantItem paramPendantItem)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      ((lhp)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
+    }
+  }
+  
+  public boolean a(long paramLong, PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramLong, paramPendantItem);
+    lga locallga = VideoController.a().a();
+    a(paramLong, paramPendantItem);
+    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
+    {
+      locallga.a.set(1);
+      return bool;
+    }
+    locallga.a.clear(1);
+    return bool;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return ljd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+  }
+  
+  public abstract int b();
+  
+  public String b(PendantItem paramPendantItem)
+  {
+    String str = "";
+    if (paramPendantItem != null) {
+      str = lcj.d() + paramPendantItem.getMd5() + File.separator;
+    }
+    return str;
+  }
+  
+  protected String c(PendantItem paramPendantItem)
+  {
+    String str = "";
+    if (paramPendantItem != null)
+    {
+      str = b(paramPendantItem) + paramPendantItem.getName() + File.separator;
+      if (!new File(str).exists()) {}
+    }
+    else
+    {
+      return str;
+    }
+    return lcj.b() + paramPendantItem.getName() + File.separator;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Lio.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_Lio.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.jdField_a_of_type_Lio.jdField_a_of_type_JavaLangString = null;
   }
 }
 

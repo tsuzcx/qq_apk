@@ -1,11 +1,9 @@
 import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
 
 public class aocf
-  extends anxe
+  extends anxj
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
+  public LinearLayout[] a;
 }
 
 

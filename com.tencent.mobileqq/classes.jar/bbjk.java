@@ -1,24 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-final class bbjk
-  extends akav
+public class bbjk
 {
-  public void a(boolean paramBoolean, long paramLong, akaw paramakaw)
+  public static bbjs a(int paramInt, ArrayList<bbjs> paramArrayList)
   {
-    if (paramakaw != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramakaw.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramakaw.b);
-      localStringBuilder.append("retryCount: " + paramakaw.c);
-      localStringBuilder.append("detailErrorReason: " + paramakaw.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramakaw.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
-      return;
+    bbjs localbbjs = bbjs.a(paramInt);
+    paramArrayList.add(localbbjs);
+    return localbbjs;
+  }
+  
+  public static bbjs a(int paramInt1, ArrayList<bbjs> paramArrayList, String paramString, int paramInt2)
+  {
+    bbjs localbbjs = a(paramInt1, paramArrayList);
+    paramArrayList = paramString;
+    if (paramString == null) {
+      paramArrayList = "";
     }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+    localbbjs.b = paramArrayList;
+    localbbjs.e = paramInt2;
+    return localbbjs;
   }
 }
 

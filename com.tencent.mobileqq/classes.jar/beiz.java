@@ -1,28 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class beiz
-  extends BroadcastReceiver
+public abstract interface beiz
 {
-  beiz(beiy parambeiy) {}
+  public abstract void onFailed(String paramString1, String paramString2);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")) && (paramIntent.hasExtra("state")))
-    {
-      if (paramIntent.getIntExtra("state", 0) != 0) {
-        break label46;
-      }
-      beiy.a(this.a, 2);
-    }
-    label46:
-    while (paramIntent.getIntExtra("state", 0) != 1) {
-      return;
-    }
-    beiy.a(this.a, 1);
-  }
+  public abstract void onSuccess(String paramString1, String paramString2);
 }
 
 

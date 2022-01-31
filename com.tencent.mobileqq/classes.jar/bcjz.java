@@ -1,6 +1,16 @@
-public abstract interface bcjz
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.BounceScrollView;
+
+public class bcjz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(bcjy parambcjy);
+  public bcjz(BounceScrollView paramBounceScrollView) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+  }
 }
 
 

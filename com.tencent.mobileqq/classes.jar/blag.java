@@ -1,19 +1,8 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import java.nio.ByteBuffer;
-
 public class blag
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public MediaFormat a;
-  public ByteBuffer a;
-  public boolean a;
-  
-  public blag(blaf paramblaf)
+  public static blah a(String paramString)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    this.jdField_a_of_type_Boolean = true;
+    return new blah(paramString);
   }
 }
 

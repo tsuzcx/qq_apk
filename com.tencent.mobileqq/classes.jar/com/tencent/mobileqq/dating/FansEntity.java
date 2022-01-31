@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dating;
 
 import appoint.define.appoint_define.CommonLabel;
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.oidb.cmd0x9e4.cmd0x9e4.UdcUinData;
 
 public class FansEntity
-  extends aukm
+  extends auko
 {
   public int age;
   public int career;
@@ -21,7 +21,7 @@ public class FansEntity
   public int constellation;
   public int gender;
   public int single;
-  @auma
+  @aumc
   public long uin;
   public int vip;
   

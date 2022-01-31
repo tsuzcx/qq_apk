@@ -1,9 +1,16 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.List;
-
-public abstract interface tfa
+class tfa
+  implements stk
 {
-  public abstract void a(int paramInt, tfb paramtfb, List<TroopBarPOI> paramList);
+  tfa(tez paramtez, tfb paramtfb) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    tez.a(this.jdField_a_of_type_Tez, new tfd[] { new tfd(this.jdField_a_of_type_Tfb, paramLong1, paramLong2) });
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

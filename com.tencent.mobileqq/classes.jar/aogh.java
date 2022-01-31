@@ -1,44 +1,8 @@
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class aogh
+public abstract interface aogh
 {
-  public static final int FOOTER_TYPE_LOADING = 0;
-  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
-  public static final int FOOTER_TYPE_LOAD_OVER = 2;
-  public static final int TYPE_EMTPY = 2;
-  public static final int TYPE_FEED = 0;
-  public static final int TYPE_FEED_ADV = 4;
-  public static final int TYPE_FEED_BANNER = 6;
-  public static final int TYPE_FOOTER = 1;
-  public static final int TYPE_MATCH = 3;
-  public static final int TYPE_MINI_RECOMM = 5;
-  public boolean mAddFriendVerified;
-  public AlumBasicData mAlumbasicdata;
-  public int mAvailLikeCount;
-  public boolean mBigVipHide;
-  public int mBigVipLevel;
-  public String mDeclaration;
-  public int mFooterType;
-  public int mGender;
-  public boolean mIsMyFeed;
-  public boolean mLiked;
-  public String mNickName;
-  public int mPopularity;
-  public String mStrRecomTrace;
-  public int mTemplateId;
-  public int mType;
-  public String mUin;
-  public boolean mVipHide;
-  public int mVipLevel;
-  public int mVipType;
-  public int mVoiceDuration;
-  public String mVoiceUrl;
-  public boolean mbAllowStrangerVote;
-  
-  public boolean equals(Object paramObject)
-  {
-    return (paramObject != null) && ((paramObject instanceof aogh)) && (bbbd.a(((aogh)paramObject).mUin, this.mUin));
-  }
+  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
 }
 
 

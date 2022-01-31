@@ -1,28 +1,29 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
 public class auga
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public auga(PromotionEntry paramPromotionEntry) {}
+  public auga(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (PromotionEntry.a(this.a) == null) {}
-    do
+    switch (paramView.getId())
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+    default: 
+      return;
+    case 2131375605: 
+      this.a.b();
+      return;
+    case 2131375600: 
+      this.a.c();
+      return;
+    case 2131375594: 
+      this.a.d();
+      return;
+    }
+    this.a.doOnBackPressed();
   }
 }
 

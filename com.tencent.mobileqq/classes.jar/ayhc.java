@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import java.util.List;
 
-public class ayhc
-  extends aygz
+public abstract interface ayhc
 {
-  public ayhc(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, ayhf paramayhf)
-  {
-    super(paramQQAppInterface, paramDataLineMsgRecord, paramayhf);
-  }
-  
-  protected String a()
-  {
-    return this.a.filename;
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

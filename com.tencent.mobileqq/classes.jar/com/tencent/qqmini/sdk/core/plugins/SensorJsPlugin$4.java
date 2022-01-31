@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class SensorJsPlugin$4
   implements Runnable
 {
-  SensorJsPlugin$4(SensorJsPlugin paramSensorJsPlugin, beka parambeka) {}
+  SensorJsPlugin$4(SensorJsPlugin paramSensorJsPlugin, bekr parambekr) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ class SensorJsPlugin$4
           if (j != 20) {
             break label201;
           }
-          if (this.this$0.startRotationListening(this.val$req.jdField_a_of_type_Begy, i))
+          if (this.this$0.startRotationListening(this.val$req.jdField_a_of_type_Behp, i))
           {
             SensorJsPlugin.access$302(this.this$0, true);
             this.val$req.a();

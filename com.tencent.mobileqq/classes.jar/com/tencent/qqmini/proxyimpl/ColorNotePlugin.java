@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amgo;
-import begz;
-import beka;
-import beki;
+import amgn;
+import behq;
+import bekr;
+import bekz;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
@@ -33,15 +33,15 @@ public class ColorNotePlugin
           }
         }
       }
-      while ((localObject1 != null) && (!((amgo)localObject1).c()))
+      while ((localObject1 != null) && (!((amgn)localObject1).c()))
       {
-        if (!((amgo)localObject1).b()) {
+        if (!((amgn)localObject1).b()) {
           break label168;
         }
         if (!paramBoolean) {
           break label155;
         }
-        beki.a(new ColorNotePlugin.1(this, (amgo)localObject1));
+        bekz.a(new ColorNotePlugin.1(this, (amgn)localObject1));
         return;
         localObject1 = localObject2;
         if (this.mMiniAppContext.a() != null)
@@ -54,21 +54,21 @@ public class ColorNotePlugin
       }
     }
     label155:
-    beki.a(new ColorNotePlugin.2(this, (amgo)localObject1));
+    bekz.a(new ColorNotePlugin.2(this, (amgn)localObject1));
     return;
     label168:
-    beki.a(new ColorNotePlugin.3(this, (amgo)localObject1));
+    bekz.a(new ColorNotePlugin.3(this, (amgn)localObject1));
   }
   
-  public void addColorSign(beka parambeka)
+  public void addColorSign(bekr parambekr)
   {
-    parambeka.a();
+    parambekr.a();
     addColorSign(false);
   }
   
-  public void addColorSignDirectly(beka parambeka)
+  public void addColorSignDirectly(bekr parambekr)
   {
-    parambeka.a();
+    parambekr.a();
     addColorSign(true);
   }
 }

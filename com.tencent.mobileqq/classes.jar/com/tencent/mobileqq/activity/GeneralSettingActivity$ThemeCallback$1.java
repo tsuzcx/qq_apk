@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import abhw;
-import acck;
+import abhs;
+import accg;
 import android.view.View;
-import axmt;
+import axmv;
 
 public class GeneralSettingActivity$ThemeCallback$1
   implements Runnable
 {
-  public GeneralSettingActivity$ThemeCallback$1(abhw paramabhw, acck paramacck, View paramView) {}
+  public GeneralSettingActivity$ThemeCallback$1(abhs paramabhs, accg paramaccg, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acck.a(axmt.c(), false);
+    this.jdField_a_of_type_Accg.a(axmv.c(), false);
     this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
 }

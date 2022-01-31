@@ -1,16 +1,6 @@
-import com.tencent.image.URLDrawableHandler;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class bbqk
-  implements EIPCResultCallback
+public abstract interface bbqk
 {
-  bbqk(bbqj parambbqj, URLDrawableHandler paramURLDrawableHandler) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    this.jdField_a_of_type_Bbqj.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 

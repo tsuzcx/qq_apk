@@ -1,70 +1,85 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class bazu
-  extends ajxl
+  extends bayh
 {
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  ajvx jdField_a_of_type_Ajvx = null;
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  
+  public bazu(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bayi parambayi, boolean paramBoolean2)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
-      if (paramSetting == null) {
-        break label99;
-      }
-    }
-    label99:
-    for (String str = paramSetting.uin;; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bazt.a(this.a)))) {
-        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
-      }
-      return;
-    }
+    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean2);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
   }
   
-  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
+  protected Bitmap a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    return b();
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Ajvx != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
-      if (paramList == null) {
-        break label138;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Ajvx);
+      this.jdField_a_of_type_Ajvx = null;
     }
-    label138:
-    for (String str = paramList.toString();; str = "")
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
+    super.a();
+  }
+  
+  protected void a(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+  }
+  
+  protected boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
+      return false;
+    }
+    FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, this));
+    return true;
+  }
+  
+  protected Bitmap b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
+      return null;
+    }
+    String str = FaceInfo.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c);
+    return ((bayr)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(str);
+  }
+  
+  protected void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    }
+    Bitmap localBitmap = b();
+    if (localBitmap != null)
     {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if (paramList != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          if ((str != null) && (str.equals(bazt.a(this.a))))
-          {
-            if (!paramBoolean) {
-              break label145;
-            }
-            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap is already in cache...");
       }
+      a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, localBitmap);
       return;
     }
-    label145:
-    bazt.a(this.a).obtainMessage(1).sendToTarget();
+    if (this.jdField_a_of_type_Ajvx == null)
+    {
+      this.jdField_a_of_type_Ajvx = new bazv(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Ajvx);
+    }
+    ((ajvw)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
   }
 }
 

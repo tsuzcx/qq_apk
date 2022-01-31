@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 class abrf
   implements DialogInterface.OnClickListener
 {
-  abrf(abre paramabre) {}
+  abrf(abra paramabra) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

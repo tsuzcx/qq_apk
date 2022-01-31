@@ -1,6 +1,36 @@
-public abstract interface bfxe
+import android.database.DataSetObserver;
+import android.widget.BaseAdapter;
+
+public abstract class bfxe
+  extends BaseAdapter
+  implements bfxl
 {
-  public abstract void a(boolean paramBoolean);
+  private final bfxg a = new bfxg(this);
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.a(paramInt1, paramInt2);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.a.notifyChanged();
+  }
+  
+  public void notifyDataSetInvalidated()
+  {
+    this.a.notifyInvalidated();
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.a.registerObserver(paramDataSetObserver);
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.a.unregisterObserver(paramDataSetObserver);
+  }
 }
 
 

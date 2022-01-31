@@ -1,34 +1,62 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Activity;
+import android.content.res.Resources;
+import java.util.ArrayList;
+import java.util.List;
 
-class utx
-  extends QQUIEventReceiver<utu, tkn>
+public class utx
 {
-  public utx(@NonNull utu paramutu)
+  public static int a;
+  public static int b = 2;
+  public Activity a;
+  public String a;
+  private List<wco> a;
+  public vaq a;
+  public int c;
+  public int d;
+  
+  static
   {
-    super(paramutu);
+    jdField_a_of_type_Int = 1;
   }
   
-  public void a(@NonNull utu paramutu, @NonNull tkn paramtkn)
+  public utx(Activity paramActivity, int paramInt1, String paramString, int paramInt2, vaq paramvaq)
   {
-    if ((paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramutu.jdField_a_of_type_JavaLangString)))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.d = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Vaq = paramvaq;
+    if (paramInt2 == jdField_a_of_type_Int)
     {
-      veg.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramtkn);
-      paramutu.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramtkn.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      utu.a(paramutu).e();
-      utu.a(paramutu).c();
-      utu.a(paramutu).d();
-      utu.a(paramutu).a();
+      a();
+      return;
     }
+    if (paramInt2 == b)
+    {
+      b();
+      return;
+    }
+    throw new IllegalStateException("setup profile list error because unknown list type.");
   }
   
-  public Class acceptEventClass()
+  private void a()
   {
-    return tkn.class;
+    this.jdField_a_of_type_JavaUtilList.add(new uul(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new uuj(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_Vaq, false));
+    this.jdField_a_of_type_JavaUtilList.add(new uui(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131699693), 2130845704, 2130845705));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.add(new uul(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new uun(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_JavaUtilList.add(new uum(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public List<wco> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 

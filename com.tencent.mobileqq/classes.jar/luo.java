@@ -1,63 +1,49 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class luo
-  extends alxn
+  extends lum
 {
-  public String a(alxr paramalxr)
+  public void a(long paramLong)
   {
-    paramalxr = lco.g() + paramalxr.b + File.separator;
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketRDHandler", 2, "getUnzipDirPath dir = " + paramalxr);
-    }
-    return paramalxr;
-  }
-  
-  public boolean a(alxr paramalxr, boolean paramBoolean)
-  {
-    long l1 = -1L;
-    boolean bool1 = true;
-    boolean bool2 = true;
-    if (paramalxr.a)
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 3099L) && (paramLong < 3432L))
     {
-      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getLong(paramalxr.b, -1L);
-      paramalxr = new File(a(paramalxr));
-      paramBoolean = bool2;
-      if (paramalxr.exists())
+      i = (int)(255L * (paramLong - 3099L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 3432L) - 3099.0F) / 333.0F;
+    }
+    for (;;)
+    {
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong >= 3432L) && (paramLong <= 3865L))
       {
-        long l2 = paramalxr.lastModified();
-        l1 = l2;
-        paramBoolean = bool2;
-        if (l3 > 0L)
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3865L)
         {
-          l1 = l2;
-          paramBoolean = bool2;
-          if (l3 != l2)
+          f1 = f2;
+          i = j;
+          if (paramLong < 4032L)
           {
-            paramBoolean = false;
-            l1 = l2;
+            i = (int)(255L * (4032L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3865L - paramLong) * 0.5F) / 167.0F;
           }
         }
       }
-      bool1 = paramBoolean;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AVRedPacketRDHandler", 2, "verifyUnzipDir result = " + paramBoolean + ",recordedModifyTime = " + l3 + ",realModifyTime = " + l1);
-        bool1 = paramBoolean;
-      }
     }
-    return bool1;
   }
   
-  public String b(alxr paramalxr)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramalxr = lco.g() + paramalxr.b + ".end";
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketRDHandler", 2, "getDownloadPath path[" + paramalxr + "]");
-    }
-    return paramalxr;
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 

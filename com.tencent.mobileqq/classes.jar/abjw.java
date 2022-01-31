@@ -1,28 +1,18 @@
+import android.content.Intent;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 
-public class abjw
-  implements QQPermissionCallback
+class abjw
+  implements bcay
 {
-  public abjw(JumpActivity paramJumpActivity, boolean paramBoolean) {}
+  abjw(abjv paramabjv, JumpActivity paramJumpActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new abjx(this));
-    paramArrayOfString = new HashMap();
-    axrl.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("JumpAction", 1, "system share.doShare user grant");
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
-    paramArrayOfString = new HashMap();
-    axrl.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.a();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_key_jump_src", 1);
+    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
   }
 }
 

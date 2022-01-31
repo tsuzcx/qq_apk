@@ -1,8 +1,9 @@
-public class ahyr
+class ahyr
 {
-  public int a;
-  public String a;
-  public String b;
+  long jdField_a_of_type_Long;
+  ahyt jdField_a_of_type_Ahyt;
+  long jdField_b_of_type_Long;
+  ahyt jdField_b_of_type_Ahyt;
 }
 
 

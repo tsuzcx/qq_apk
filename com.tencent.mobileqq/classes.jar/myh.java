@@ -1,10 +1,44 @@
-public class myh
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.TextView;
+
+class myh
+  implements Handler.Callback
 {
-  public String a;
-  public String b;
-  public String c;
+  myh(myg parammyg) {}
   
-  public myh(mye parammye) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    int i;
+    if (paramMessage.what == 291) {
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
+      paramMessage = this.a;
+      paramMessage.jdField_a_of_type_Int += 1;
+      if (this.a.jdField_a_of_type_Int == 4) {
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
+      return false;
+      i = 2131696356;
+      continue;
+      i = 2131696357;
+      continue;
+      i = 2131696358;
+      continue;
+      i = 2131696359;
+    }
+  }
 }
 
 

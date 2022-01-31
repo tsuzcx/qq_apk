@@ -1,21 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.26.1;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aesn
-  implements Animation.AnimationListener
+class aesn
+  implements xdy
 {
-  aesn(aerv paramaerv) {}
+  aesn(aert paramaert) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    aerv.e(this.a).post(new PublicAccountChatPie.26.1(this));
+    if ((advo.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (paramInt1 == 0))
+    {
+      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
+      return;
+    }
+    actj.n = true;
+    this.a.jdField_a_of_type_Nnu.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, aert.a(this.a), aert.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    akwu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, aert.e(this.a), paramInt1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

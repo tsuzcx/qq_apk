@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import ahfz;
-import ahgm;
+import ahfx;
+import ahgk;
 import android.graphics.Bitmap;
 
 public class SpringHbEntryManager$7
   implements Runnable
 {
-  public SpringHbEntryManager$7(ahfz paramahfz, Bitmap paramBitmap) {}
+  public SpringHbEntryManager$7(ahfx paramahfx, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (ahfz.a(this.this$0) != null) {
-      ahfz.a(this.this$0).a(this.a, "", null);
+    if (ahfx.a(this.this$0) != null) {
+      ahfx.a(this.this$0).a(this.a, "", null);
     }
   }
 }

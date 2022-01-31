@@ -1,58 +1,46 @@
-import com.tencent.qqprotect.qsec.IQSecRuntime;
-import com.tencent.qqprotect.qsec.IRuntimeInterface;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 import mqq.app.MobileQQ;
 
 public class bfjo
-  implements IQSecRuntime
+  implements bfiq
 {
-  public static IQSecRuntime a;
-  private HashMap<String, IRuntimeInterface> a;
+  public bfjo(QSecFramework paramQSecFramework) {}
   
-  public bfjo()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
-  }
-  
-  public void a(IRuntimeInterface paramIRuntimeInterface)
-  {
-    String str = paramIRuntimeInterface.getInterfaceName();
-    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
-    }
-  }
-  
-  public Object getApplicationContext()
-  {
-    return MobileQQ.sMobileQQ;
-  }
-  
-  public Object getQQAppInterface()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public int getRuntimeVersion()
-  {
-    return 1;
-  }
-  
-  public IRuntimeInterface queryRuntimeInterface(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
-    if (localIRuntimeInterface2 != null)
+    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
+    for (;;)
     {
-      localIRuntimeInterface1 = localIRuntimeInterface2;
-      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
-        localIRuntimeInterface1 = null;
+      return;
+      try
+      {
+        Object[] arrayOfObject = new Object[1];
+        if ((QSecFramework.a(1L, 33751040L, bfhs.a(), 0L, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
+        {
+          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
+          bfhs.a = QSecFramework.a(this.a);
+          QSecFramework.a(this.a, true);
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), bfhs.a(QSecFramework.a(this.a)) }));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
-    return localIRuntimeInterface1;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when init native.");
+    }
+    bfhq.a(1, 2);
   }
 }
 

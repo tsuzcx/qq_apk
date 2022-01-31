@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import amgw;
+import amgv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -14,8 +14,8 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbkx;
-import bemw;
+import bbll;
+import benn;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -81,7 +81,7 @@ public class AppBrandPage
   private NavigationBar navBar;
   private ViewGroup rootView;
   private TabBarView tabView;
-  private bemw toast;
+  private benn toast;
   private ToastView toastView;
   private Map<String, WebviewContainer> webViewMap = new HashMap();
   
@@ -92,12 +92,12 @@ public class AppBrandPage
   
   private int getDefaultNaviBarHeight()
   {
-    return bbkx.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
+    return bbll.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
   }
   
   private int getDefaultTabBarHeight()
   {
-    return bbkx.b(54.0F);
+    return bbll.b(54.0F);
   }
   
   private String getLoadedUrl(String paramString1, String paramString2)
@@ -249,10 +249,10 @@ public class AppBrandPage
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, DisplayUtil.getRealHeight(getContext())));
     this.centerLayout = new FrameLayout(getContext());
-    this.centerLayout.setId(2131364702);
+    this.centerLayout.setId(2131364701);
     this.centerLayout.setBackgroundColor(-1);
     this.tabView = new TabBarView(getContext());
-    this.tabView.setId(2131376789);
+    this.tabView.setId(2131376791);
     this.tabView.setOnTabItemClickListener(this.appBrandPageContainer);
     this.tabView.setVisibility(8);
     this.navBar = new NavigationBar(getContext());
@@ -514,7 +514,7 @@ public class AppBrandPage
         {
           paramString1 = (AppBrandUI)this.appBrandRuntime.activity;
           localObject2 = paramString1.getAppUIProxy();
-          setServiceInfo((amgw)localObject2);
+          setServiceInfo((amgv)localObject2);
           if ((localObject2 instanceof AppUIProxy)) {
             setPostTab(((AppUIProxy)localObject2).mPostTable);
           }
@@ -751,17 +751,17 @@ public class AppBrandPage
     }
     for (;;)
     {
-      bemw localbemw;
+      benn localbenn;
       try
       {
-        localbemw = new bemw(getContext());
+        localbenn = new benn(getContext());
         if (!TextUtils.isEmpty(paramString2))
         {
-          localbemw.a(new BitmapDrawable(paramString2));
-          localbemw.a(paramCharSequence);
-          localbemw.c(paramInt2);
-          localbemw.a();
-          this.toast = localbemw;
+          localbenn.a(new BitmapDrawable(paramString2));
+          localbenn.a(paramCharSequence);
+          localbenn.c(paramInt2);
+          localbenn.a();
+          this.toast = localbenn;
           return;
         }
       }
@@ -771,9 +771,9 @@ public class AppBrandPage
         return;
       }
       if ("none".equals(paramString1)) {
-        localbemw.b(-1);
+        localbenn.b(-1);
       } else {
-        localbemw.a(ToastView.getIconRes(paramString1));
+        localbenn.a(ToastView.getIconRes(paramString1));
       }
     }
   }

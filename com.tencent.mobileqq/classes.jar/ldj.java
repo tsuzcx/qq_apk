@@ -1,6 +1,15 @@
+import com.tencent.av.VideoController;
+import java.util.Comparator;
+
 public class ldj
+  implements Comparator<ldr>
 {
-  public static String a = "0";
+  public ldj(VideoController paramVideoController) {}
+  
+  public int a(ldr paramldr1, ldr paramldr2)
+  {
+    return (int)(paramldr1.d - paramldr2.d);
+  }
 }
 
 

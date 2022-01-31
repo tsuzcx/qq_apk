@@ -1,24 +1,17 @@
-import android.os.Build.VERSION;
 import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class amjw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
   public amjw(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public void onGlobalLayout()
+  public boolean onPreDraw()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ColorNoteSmallScreenRelativeLayout.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ColorNoteSmallScreenRelativeLayout.a(this.a);
+    return true;
   }
 }
 

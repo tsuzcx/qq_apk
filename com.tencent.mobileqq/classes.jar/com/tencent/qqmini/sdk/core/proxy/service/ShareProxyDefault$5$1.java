@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
-import bemw;
-import besl;
+import benn;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +16,7 @@ class ShareProxyDefault$5$1
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    besl.d("ShareProxy", "shareNetworkPicMessage failed, because of picture downloadFailed");
+    betc.d("ShareProxy", "shareNetworkPicMessage failed, because of picture downloadFailed");
   }
   
   public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
@@ -30,7 +30,7 @@ class ShareProxyDefault$5$1
     {
       this.val$loadingDialog.dismiss();
       if (paramInt == 0) {
-        bemw.a(this.this$1.val$activity, 1, "网络异常，图片分享失败", 1).b(this.this$1.val$activity.getResources().getDimensionPixelSize(2131297229));
+        benn.a(this.this$1.val$activity, 1, "网络异常，图片分享失败", 1).b(this.this$1.val$activity.getResources().getDimensionPixelSize(2131297229));
       }
       if (paramInt == 0) {
         break;
@@ -40,7 +40,7 @@ class ShareProxyDefault$5$1
       ShareProxyDefault.access$000(this.this$1.this$0, this.this$1.val$shareData);
       return;
     }
-    besl.d("ShareProxy", "shareNetworkPicMessage failed, because of picture downloadFailed");
+    betc.d("ShareProxy", "shareNetworkPicMessage failed, because of picture downloadFailed");
   }
 }
 

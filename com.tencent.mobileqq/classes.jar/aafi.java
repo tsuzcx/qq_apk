@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class aafi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public aafi(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (View)paramView.getParent().getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    int i;
-    do
-    {
-      return;
-      i = ((Integer)paramView.getTag()).intValue();
-    } while ((i == 0) && (!aumi.a().a(this.a.app, this.a)));
-    this.a.a(i);
-    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
+    axqy.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 

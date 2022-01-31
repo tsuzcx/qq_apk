@@ -1,83 +1,72 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class afnq
-  implements bfoq
+  extends akgy
 {
-  public afnq(TroopActivity paramTroopActivity, bfol parambfol) {}
+  public afnq(TroopActivity paramTroopActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    paramView = (akfd)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(22);
-    long l = 0L;
-    int i = 0;
-    switch (paramInt)
+    if (paramBoolean)
     {
-    default: 
-      paramInt = 0;
-    case 0: 
-      for (i = 0;; i = 1)
+      if (paramPBRepeatMessageField != null)
       {
-        this.jdField_a_of_type_Bfol.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a().c(ajsf.W, 9000, -paramInt);
-        paramView = (akfc)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(33);
-        if (i == 0) {
-          break;
-        }
-        paramView.a(ajsf.W, 9000);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(Conversation.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(1009));
-        }
-        return;
-        paramInt = aydb.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(NotificationView.class);
-        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(TroopNotifyAndRecommendView.class);
-        if (paramView != null) {
-          paramView.sendEmptyMessage(1014);
-        }
-        if (localMqqHandler != null) {
-          localMqqHandler.sendEmptyMessage(1014);
+        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
+        while (paramPBRepeatMessageField.hasNext())
+        {
+          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
+          QLog.d("TroopActivity", 2, "ondelete: uin " + localDelResult.uin.get());
+          if (this.a.a != null)
+          {
+            int i = 0;
+            while (i < this.a.a.size())
+            {
+              Stranger localStranger = (Stranger)this.a.a.get(i);
+              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
+                this.a.a.remove(localStranger);
+              }
+              i += 1;
+            }
+          }
         }
       }
     }
-    paramInt = i;
-    if (paramView != null)
-    {
-      i = akfd.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app);
-      paramView.c();
-      paramView.b();
-      paramView.a(1);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(TroopNotifyAndRecommendView.class);
-      paramInt = i;
-      if (paramView != null)
+    else if (QLog.isColorLevel()) {
+      QLog.d("TroopActivity", 2, "onDelete is failed");
+    }
+  }
+  
+  public void a(boolean paramBoolean, List<Stranger> paramList)
+  {
+    if (paramBoolean) {
+      if (paramList != null)
       {
-        paramView.sendEmptyMessage(105);
-        paramInt = i;
+        this.a.a.clear();
+        this.a.a.addAll(paramList);
+        QLog.d("TroopActivity", 2, "onGetListRemote :" + this.a.a.size());
       }
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a().b(ajsf.N, 0);
-    if ((paramView == null) || (paramView.size() == 0)) {
-      l = 0L;
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    for (i = 1;; i = 0)
+    QLog.d("TroopActivity", 2, "onGetListRemote is failed");
+  }
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
     {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app, "CliOper", "", "", "Grp_recommend", "Grp_recom_empty", 0, 0, "", "", "", "");
-      axqw.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_del", 0, 0, "", "", "", "");
-      break;
-      l = ((MessageForSystemMsg)paramView.get(paramView.size() - 1)).getSystemMsg().msg_time.get() * 1000L;
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
+      QLog.d("TroopActivity", 2, "onGetListLocal :" + this.a.a.size());
     }
-    paramView.a(ajsf.W, 9000, l);
   }
 }
 

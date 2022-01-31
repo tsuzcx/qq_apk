@@ -1,9 +1,9 @@
 final class adeo
-  implements adek<aden>
+  implements adeh<aden>
 {
-  public aden a(adeh paramadeh)
+  public aden a(adee paramadee)
   {
-    return new aden(paramadeh);
+    return new aden(paramadee);
   }
 }
 

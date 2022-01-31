@@ -5,21 +5,21 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import qls;
-import qmm;
-import qmr;
+import qlp;
+import qmj;
+import qmo;
 
 public class VideoFeedsAdapter$ShortVideoItemDelegate$8
   implements Runnable
 {
-  public VideoFeedsAdapter$ShortVideoItemDelegate$8(qmm paramqmm) {}
+  public VideoFeedsAdapter$ShortVideoItemDelegate$8(qmj paramqmj) {}
   
   public void run()
   {
-    qmm.a(this.a).m.setVisibility(8);
-    qmm.a(this.a).k.setVisibility(0);
-    qmm.a(this.a).k.setImageResource(2130842516);
-    RelativeLayout localRelativeLayout = (RelativeLayout)qls.a(this.a.a).getWindow().getDecorView().findViewById(2131363287);
+    qmj.a(this.a).m.setVisibility(8);
+    qmj.a(this.a).k.setVisibility(0);
+    qmj.a(this.a).k.setImageResource(2130842517);
+    RelativeLayout localRelativeLayout = (RelativeLayout)qlp.a(this.a.a).getWindow().getDecorView().findViewById(2131363286);
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(4);
     }

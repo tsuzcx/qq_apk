@@ -1,47 +1,59 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class abma
-  extends atzn
+  extends WtloginObserver
 {
   public abma(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    bcpw.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
-    LoginInfoActivity.a(this.a).setVisibility(4);
-  }
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody)
-  {
-    LoginInfoActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    TextView localTextView = LoginInfoActivity.b(this.a);
-    if (i == 1)
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      paramRspBody = this.a.getString(2131692277);
-      localTextView.setText(paramRspBody);
-      LoginInfoActivity.a(this.a).setVisibility(4);
-      LoginInfoActivity.b(this.a).setVisibility(0);
-      if (i != 1) {
-        break label122;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+      }
+      aoem.a().a(paramDevlockInfo.TransferInfo);
+      LoginInfoActivity.a(this.a, paramDevlockInfo);
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      LoginInfoActivity.b(this.a, LoginInfoActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      }
+      if (paramDevlockInfo == null) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
       }
     }
-    label122:
-    for (paramRspBody = "1";; paramRspBody = "0")
+    LoginInfoActivity.d(this.a);
+    paramDevlockInfo = this.a.getString(2131692133);
+    paramWUserSigInfo = paramDevlockInfo;
+    if (paramErrMsg != null)
     {
-      axqw.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
-      return;
-      paramRspBody = this.a.getString(2131692284);
-      break;
+      paramWUserSigInfo = paramDevlockInfo;
+      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
+        paramWUserSigInfo = paramErrMsg.getMessage();
+      }
     }
+    bcql.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
 }
 

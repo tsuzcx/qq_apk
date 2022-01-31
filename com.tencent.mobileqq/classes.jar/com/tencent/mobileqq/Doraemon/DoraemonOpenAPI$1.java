@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import aacb;
+import aabx;
 
 public final class DoraemonOpenAPI$1
   implements Runnable
 {
   public void run()
   {
-    aacb localaacb = aacb.a();
-    localaacb.a();
-    localaacb.b();
+    aabx localaabx = aabx.a();
+    localaabx.a();
+    localaabx.b();
   }
 }
 

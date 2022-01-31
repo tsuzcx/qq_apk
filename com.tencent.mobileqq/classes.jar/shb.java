@@ -1,9 +1,7 @@
 public class shb
+  extends bbjs
 {
-  protected boolean a(Integer paramInteger)
-  {
-    return false;
-  }
+  public boolean a;
 }
 
 

@@ -1,39 +1,34 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.10;
-import java.util.HashMap;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import org.json.JSONObject;
 
-public class ajbs
-  extends ajof
+class ajbs
+  implements aabi
 {
-  public ajbs(CmGameSubProcessHandler.10 param10) {}
+  ajbs(ajbo paramajbo, String paramString, long paramLong, aabl paramaabl, CmGameInitParams paramCmGameInitParams) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    if (paramInt == 200)
-    {
-      Object localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, (BitmapFactory.Options)localObject);
-      localObject = Bitmap.createBitmap(paramArrayOfByte.getWidth(), paramArrayOfByte.getHeight(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      localCanvas.drawBitmap(paramArrayOfByte, 0.0F, 0.0F, null);
-      localCanvas.save();
-      paramArrayOfByte.recycle();
-      if (localObject != null)
-      {
-        this.a.a.a((Bitmap)localObject, 200);
-        ajbq.b(this.a.this$0).put(this.a.b, localObject);
-      }
-      return;
-    }
-    this.a.a.a(null, paramInt);
+    ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("openid");
+    paramJSONObject = paramJSONObject.optString("access_token", "");
+    ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aabl);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

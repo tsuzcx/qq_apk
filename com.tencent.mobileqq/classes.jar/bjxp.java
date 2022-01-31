@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class bjxp
-  implements bcph
+  extends SimpleJob<Object>
 {
-  bjxp(bjxm parambjxm) {}
-  
-  public void a(bcpf parambcpf)
+  bjxp(bjxn parambjxn, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpf);
-    }
+    super(paramString1);
   }
   
-  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vei.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
+  }
 }
 
 

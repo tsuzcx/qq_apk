@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import veg;
-import vhp;
-import vjf;
+import ved;
+import vhm;
+import vjc;
 
 public class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1
   implements Runnable
 {
-  public HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1(vjf paramvjf) {}
+  public HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1(vjc paramvjc) {}
   
   public void run()
   {
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, null);
     if (!HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0))
     {
-      veg.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Convert video finished but player not displayed.");
+      ved.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Convert video finished but player not displayed.");
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Vhp.a != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Vhp.a.b() == 3) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.c == this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int)) {
-      HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_Vjh);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Vhm.a != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Vhm.a.b() == 3) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.c == this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int)) {
+      HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_Vje);
     }
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0);
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int);

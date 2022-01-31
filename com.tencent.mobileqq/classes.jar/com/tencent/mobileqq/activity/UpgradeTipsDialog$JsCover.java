@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import acpe;
+import acpa;
+import akuy;
 import akuz;
-import akva;
-import arlw;
-import axqw;
+import arly;
+import axqy;
 import com.tencent.qphone.base.util.QLog;
 
 public class UpgradeTipsDialog$JsCover
-  extends arlw
+  extends arly
 {
   protected UpgradeTipsDialog$JsCover(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
@@ -18,7 +18,7 @@ public class UpgradeTipsDialog$JsCover
       QLog.d("UpgradeController", 2, "loadTipsComplete");
     }
     UpgradeTipsDialog.a(this.a, true);
-    axqw.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuz.b(), String.valueOf(1), akva.a(), "");
+    axqy.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(1), akuz.a(), "");
     if (UpgradeTipsDialog.a(this.a) != null)
     {
       UpgradeTipsDialog.a(this.a).a(this.a);

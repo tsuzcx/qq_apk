@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public final class vts
-  implements Parcelable.Creator<SlideItemInfo>
+class vts
+  implements View.OnClickListener
 {
-  public SlideItemInfo a(Parcel paramParcel)
-  {
-    return new SlideItemInfo(paramParcel);
-  }
+  vts(vtr paramvtr, vtu paramvtu) {}
   
-  public SlideItemInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new SlideItemInfo[paramInt];
+    if (vtr.a(this.jdField_a_of_type_Vtr) != null) {
+      vtr.a(this.jdField_a_of_type_Vtr).a((SlideItemInfo)this.jdField_a_of_type_Vtu.a.getTag());
+    }
   }
 }
 

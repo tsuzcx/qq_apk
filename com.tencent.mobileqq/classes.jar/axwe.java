@@ -1,71 +1,46 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.widget.TextView;
 
 public class axwe
+  extends axur
 {
-  public int a;
-  public axwe a;
-  public String a;
-  public List<axwe> a;
-  public Map<String, String> a;
-  public String b;
-  
-  public axwe(String paramString, Map<String, String> paramMap)
+  public axwe()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.b = paramString;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this(null);
   }
   
-  public int a()
+  public axwe(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    super(paramString, "tips");
   }
   
-  public axwe a()
+  public TextView a(Context paramContext)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return a(this.jdField_a_of_type_JavaUtilList.indexOf(this) + 1);
-    }
-    return null;
+    paramContext = super.a(paramContext);
+    paramContext.setBackgroundResource(2130843962);
+    paramContext.setPadding(20, 5, 20, 5);
+    paramContext.setGravity(17);
+    return paramContext;
   }
   
-  public axwe a(int paramInt)
+  public String a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (axwe)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    return "tips";
   }
   
-  public String a(String paramString)
+  protected int c()
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    return null;
+    return 2131378380;
   }
   
-  public void a(axwe paramaxwe)
+  public int e()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramaxwe);
+    return -1;
   }
   
-  public boolean a()
+  public int f()
   {
-    return (this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0);
-  }
-  
-  public axwe b()
-  {
-    return a(0);
+    return 28;
   }
 }
 

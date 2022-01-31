@@ -1,41 +1,20 @@
-import android.text.TextUtils;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class aahf
-  extends bduv
+  implements View.OnClickListener
 {
   public aahf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    switch (paramView.getId())
     {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
-        if (AddFriendVerifyActivity.a(this.a) != null)
-        {
-          str = AddFriendVerifyActivity.a(this.a).getText().toString();
-          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
-            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
-          }
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
+    default: 
       return;
     }
-    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
+    AddFriendVerifyActivity.c(this.a);
   }
 }
 

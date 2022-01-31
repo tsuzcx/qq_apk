@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import onk;
+import onh;
 
 class KandianMergeManager$10
   implements Runnable
@@ -9,7 +9,7 @@ class KandianMergeManager$10
   
   public void run()
   {
-    onk.f(KandianMergeManager.a(this.this$0));
+    onh.f(KandianMergeManager.a(this.this$0));
   }
 }
 

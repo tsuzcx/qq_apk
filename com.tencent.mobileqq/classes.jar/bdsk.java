@@ -1,14 +1,25 @@
-import com.tencent.qg.sdk.QGReporter.QGReporterImpl;
+import android.util.Log;
 
 public class bdsk
-  implements QGReporter.QGReporterImpl
 {
-  public void reportEvent(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
+  public void a(String paramString1, String paramString2)
   {
-    if (veg.a()) {
-      veg.b("QGReporter", "[tag]%s;[mainAction]%s;[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString5, paramString6, paramString7, paramString8 });
-    }
-    axqw.b(null, paramString1, paramString2, "", paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    Log.d(paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    Log.d(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    Log.w(paramString1, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    Log.d(paramString1, paramString2);
   }
 }
 

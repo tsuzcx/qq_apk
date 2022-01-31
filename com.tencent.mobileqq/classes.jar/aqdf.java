@@ -1,25 +1,38 @@
-import android.view.KeyEvent;
-import android.view.Window;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
 
 class aqdf
-  implements anyz
+  implements View.OnClickListener
 {
-  aqdf(aqdb paramaqdb) {}
+  aqdf(aqdd paramaqdd, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (aqdb.a(this.a)))
-    {
-      aqdb.a(this.a).removeView(aqdb.a(this.a));
-      aqdb.a(this.a, false);
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      aqdb.a(this.a);
-      return true;
+    this.jdField_a_of_type_Aqdd.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aqdd, 1);
     }
-    return false;
+    if (aqdd.a(this.jdField_a_of_type_Aqdd))
+    {
+      aqdd.a(this.jdField_a_of_type_Aqdd).removeView(aqdd.a(this.jdField_a_of_type_Aqdd));
+      aqdd.a(this.jdField_a_of_type_Aqdd, false);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Aqdd.isShowing()) {
+        this.jdField_a_of_type_Aqdd.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
+    }
   }
 }
 

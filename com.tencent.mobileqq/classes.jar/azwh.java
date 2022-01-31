@@ -1,24 +1,31 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import java.util.ArrayList;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
 
 public class azwh
+  implements ViewPager.OnPageChangeListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
+  public azwh(DotStyleNavBar paramDotStyleNavBar) {}
   
-  public azwh(HomeworkGuideFragment paramHomeworkGuideFragment) {}
-  
-  public void a(int paramInt, View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371608));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365017));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.setCurrent(paramInt);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
+    }
   }
 }
 

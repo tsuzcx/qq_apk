@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import mck;
+import mcf;
 
 class AVActivity$13
   implements Runnable

@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import android.content.Context;
+import android.text.TextUtils;
+import java.io.File;
 
-public final class beqz
-  implements Parcelable.Creator<EntryModel>
+public class beqz
 {
-  public EntryModel a(Parcel paramParcel)
-  {
-    return new EntryModel(paramParcel, null);
-  }
+  public static final String a = beqb.a().a().getFilesDir().getPath() + "/mini/";
+  public static final String b = a + ".baseLib";
   
-  public EntryModel[] a(int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    return new EntryModel[paramInt];
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return null;
+    }
+    return b + File.separator + bfgt.c(paramString1) + "_" + paramString2 + File.separator;
   }
 }
 

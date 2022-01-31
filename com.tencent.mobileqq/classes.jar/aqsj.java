@@ -1,26 +1,27 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 
 public class aqsj
-  implements bcsv
+  implements View.OnClickListener
 {
   public aqsj(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 5) || (paramInt == 4))
+    if (QQGamePubAccountFragment.a(this.a) != null)
     {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
+      QQGamePubAccountFragment.a(this.a).scrollToPosition(0);
+      QQGamePubAccountFragment.a(this.a).setVisibility(8);
+      if (this.a.a != null) {
+        this.a.a.setCurrentItem(0);
+      }
     }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
+    paramView = (String)QQGamePubAccountFragment.a(this.a).getTag();
+    yoa.a(ajac.a(), "769", "205031", "", "76901", "1", "160", new String[] { paramView, "", "20" });
   }
 }
 

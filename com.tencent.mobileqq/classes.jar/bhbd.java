@@ -1,30 +1,53 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVideoSoDownloadModule;
 
-class bhbd
-  extends BroadcastReceiver
+public class bhbd
+  implements axeq
 {
-  private String jdField_a_of_type_JavaLangString;
+  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
   
-  private bhbd(bhbb parambhbb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bhbd(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+  }
+  
+  public void G_()
+  {
+    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
+    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, ajya.a(2131712479));
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
     {
-      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label40;
+      if (paramInt == 0) {
+        break label111;
       }
-      bhbb.a(this.jdField_a_of_type_Bhbb, true);
+      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, ajya.a(2131712488) + paramInt + "]");
+      axdu.b(2, paramInt);
     }
-    label40:
-    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+    for (;;)
+    {
+      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
       return;
+      label111:
+      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+      {
+        paramString2 = new Bundle();
+        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
+      }
     }
-    bhbb.b(this.jdField_a_of_type_Bhbb, true);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    }
   }
 }
 

@@ -1,34 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tng
-  extends syv<tot>
+  extends sys<tor>
 {
-  private static final String jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_label_list");
-  private final boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  private final int d;
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public tng(int paramInt1, long paramLong, String paramString, int paramInt2)
+  static
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.union_batch_vid_basic_info");
   }
   
-  public tng(String paramString, int paramInt)
+  public tng()
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.d = paramInt;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public String a()
@@ -36,34 +30,47 @@ public class tng
     return jdField_a_of_type_JavaLangString;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
+    qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
     try
     {
-      localRspGetTagList.mergeFrom(paramArrayOfByte);
-      return new tot(localRspGetTagList);
+      localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
+      ved.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", vyp.a(localRspBatchGetVideoFullInfoList));
+      return new tor(localRspBatchGetVideoFullInfoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.b("Q.qqstory.net:GetVideoFullInfoListRequest", a(), paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
-    if (this.jdField_a_of_type_Boolean)
+    qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      localReqGetTagList.music_type.set(this.c);
-      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!str.startsWith("Loading")) {}
+        for (boolean bool = true;; bool = false)
+        {
+          vxp.a(bool);
+          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+          break;
+        }
+      }
     }
-    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
-    localReqGetTagList.size.set(this.d);
-    return localReqGetTagList.toByteArray();
+    localReqBatchGetVideoFullInfoList.source.set(this.c);
+    return localReqBatchGetVideoFullInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
   }
 }
 

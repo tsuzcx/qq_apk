@@ -1,26 +1,25 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import java.util.List;
 
 public class awnl
-  implements awof
+  implements awoh
 {
+  private afgv jdField_a_of_type_Afgv;
   private String jdField_a_of_type_JavaLangString;
-  private List<awog> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private List<awoi> jdField_a_of_type_JavaUtilList;
   
-  public awnl(afgx paramafgx, List<awog> paramList, String paramString, boolean paramBoolean)
+  public awnl(afgv paramafgv, List<awoi> paramList, String paramString)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Afgv = paramafgv;
   }
   
   public int a()
@@ -30,36 +29,30 @@ public class awnl
   
   public String a()
   {
-    return ajyc.a(2131705342);
+    if (UniteSearchActivity.d == 12) {
+      return ajya.a(2131705355) + sfe.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
+    }
+    return ajya.a(2131705354);
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View paramView)
   {
-    awvy.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject2 = "http://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = (String)localObject2 + "&show_tab=hot";
+    awwa.a(this.jdField_a_of_type_JavaLangString, 90, 0, paramView);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("from_key", 2);
+    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
+    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
+    localIntent.putExtra("jump_src_key", 0);
+    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Afgv);
+    paramView = paramView.getContext();
+    if ((paramView != null) && ((paramView instanceof BaseActivity))) {
+      nol.a(((BaseActivity)paramView).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D22", "0X8005D22", 0, 0, "0", "1", this.jdField_a_of_type_JavaLangString, "", false);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
-    }
-    localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("uin", ((BaseActivity)paramView.getContext()).app.getCurrentAccountUin());
-    ((Intent)localObject2).putExtra("portraitOnly", true);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    paramView.getContext().startActivity((Intent)localObject2);
   }
   
   public String b()

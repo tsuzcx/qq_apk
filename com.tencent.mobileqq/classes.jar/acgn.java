@@ -1,17 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class acgn
-  extends ayvz
+  implements View.OnClickListener
 {
-  public acgn(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acgn(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
   }
 }
 

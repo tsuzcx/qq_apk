@@ -1,72 +1,33 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.content.ComponentCallbacks2;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.Intent;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 class lfo
-  implements ComponentCallbacks2
+  extends BroadcastReceiver
 {
   lfo(lfn paramlfn) {}
   
-  private void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    VideoController localVideoController = this.a.a.a();
-    if (localVideoController != null) {
-      localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
-    }
-    try
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
-      if (localMemoryInfo.lowMemory) {}
-      for (paramInt = 1;; paramInt = 0)
+      do
       {
-        localVideoController.a("lowMemory", String.valueOf(paramInt));
         return;
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      lcl.e("GMemoryMonitor", localThrowable.getMessage());
-    }
-  }
-  
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GMemoryMonitor", 2, "onConfigurationChanged called");
-    }
-  }
-  
-  public void onLowMemory()
-  {
-    QLog.d("GMemoryMonitor", 1, "onLowMemory called");
-    this.a.a(-10, this.a.a.e);
-    a(-10);
-  }
-  
-  public void onTrimMemory(int paramInt)
-  {
-    if (paramInt >= 15) {
-      liz.a(41, paramInt);
-    }
-    if (paramInt == 15)
-    {
+        paramContext = lfn.a(this.a).a();
+      } while (paramContext == null);
       if (QLog.isColorLevel()) {
-        QLog.d("GMemoryMonitor", 2, "onTrimMemory called ,level = " + paramInt);
+        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
       }
-      this.a.a(paramInt, this.a.a.e);
-      ((ljb)this.a.a.a(4)).a(27, paramInt);
-      a(paramInt);
+    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
+    if (QLog.isColorLevel()) {
+      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
     }
+    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
   }
 }
 

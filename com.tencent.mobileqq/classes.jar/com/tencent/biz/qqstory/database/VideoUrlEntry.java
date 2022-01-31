@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
+import auko;
 
 public class VideoUrlEntry
-  extends aukm
+  extends auko
 {
   public String vid;
   public String videoUrl;

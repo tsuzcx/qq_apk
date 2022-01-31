@@ -2,30 +2,25 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
 
 public class bjpy
   extends AnimatorListenerAdapter
 {
-  public bjpy(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bjpy(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  140ms end");
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
     }
-    arql.a();
-    this.a.a.setImageResource(2130843630);
-    this.a.a.setOnTouchListener(null);
-    this.a.a.setOnTouchListener(new bjpz(this));
-    this.a.b.setStateful(true);
-    this.a.b.setOnClickListener(new bjqa(this));
+    this.a.jdField_a_of_type_Bjqs.d = 1;
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
     }
   }
 }

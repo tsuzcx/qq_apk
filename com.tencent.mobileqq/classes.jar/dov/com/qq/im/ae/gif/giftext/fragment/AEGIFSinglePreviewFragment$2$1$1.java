@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import bcpw;
-import bitt;
-import bitv;
-import bitw;
+import bcql;
+import biuk;
+import bium;
+import biun;
 
 public class AEGIFSinglePreviewFragment$2$1$1
   implements Runnable
 {
-  public AEGIFSinglePreviewFragment$2$1$1(bitw parambitw) {}
+  public AEGIFSinglePreviewFragment$2$1$1(biun parambiun) {}
   
   public void run()
   {
-    bcpw.a(bitt.a(this.a.a.a), 1, this.a.a.a.getString(2131689640), 1).a();
+    bcql.a(biuk.a(this.a.a.a), 1, this.a.a.a.getString(2131689640), 1).a();
   }
 }
 

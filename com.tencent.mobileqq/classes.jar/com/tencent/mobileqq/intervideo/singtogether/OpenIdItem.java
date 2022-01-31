@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.intervideo.singtogether;
 
-import aukm;
+import auko;
 
 public class OpenIdItem
-  extends aukm
+  extends auko
 {
   public long appId;
   public String openId;

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import axme;
 import axmg;
+import axmi;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
 @TargetApi(18)
 public class JBMR2VideoConverterImpl
-  implements axmg
+  implements axmi
 {
   private WeakReference<Thread> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean = false;
@@ -26,12 +26,12 @@ public class JBMR2VideoConverterImpl
     return true;
   }
   
-  public boolean a(File paramFile, axme paramaxme, boolean paramBoolean)
+  public boolean a(File paramFile, axmg paramaxmg, boolean paramBoolean)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, paramaxme), "VideoConvert");
+      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, paramaxmg), "VideoConvert");
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
       paramFile.start();
       if (paramBoolean) {}

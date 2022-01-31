@@ -1,34 +1,23 @@
-import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
 public class atgs
-  implements atkc
+  implements URLDrawable.URLDrawableListener
 {
-  public atgs(StoryPlayController paramStoryPlayController, atkl paramatkl, VideoData paramVideoData) {}
+  public atgs(StoryPlayController paramStoryPlayController, atky paramatky) {}
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369178).setVisibility(0);
-    }
-    this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(0);
-    this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.c();
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(String paramString, View paramView, int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369178).setVisibility(8);
+    if (this.jdField_a_of_type_Atky != null) {
+      this.jdField_a_of_type_Atky.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
     }
-    this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
-    this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new atgt(this));
   }
 }
 

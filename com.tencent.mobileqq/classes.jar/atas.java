@@ -1,342 +1,162 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.util.Base64;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor.1;
-import com.tencent.mobileqq.nearby.NearbyReceiver;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedPath;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AccountNotMatchException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0x69.Submsgtype0x69;
+import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
 
 public class atas
 {
-  public static int a;
-  static aqyd[] jdField_a_of_type_ArrayOfAqyd = new aqyd[3];
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "nearby_leba", "nearby_msgbox", "nearby_guide" };
+  private static atas a = new atas();
   
-  public static void a()
+  public static atas a()
   {
-    if (QLog.isColorLevel()) {
-      atbp.a("preloadNearbyProcess", new Object[0]);
-    }
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), NearbyReceiver.class);
-    localIntent.putExtra("nearby_preload_from", 1);
-    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    return a;
   }
   
-  public static void a(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
   {
-    if ((paramInt >= 0) && (paramInt < 3)) {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: appid = " + paramInt + ", path = " + paramString1 + ", content = " + paramString2);
+    }
+    if ((paramString2 != null) && (paramString2.length() > 0) && (paramString1 != null) && (paramString1.length() > 0))
+    {
       try
       {
-        if (jdField_a_of_type_ArrayOfAqyd[paramInt] == null) {
-          jdField_a_of_type_ArrayOfAqyd[paramInt] = new aqyd(jdField_a_of_type_ArrayOfJavaLangString[paramInt], "com.tencent.mobileqq:tool");
-        }
-        for (;;)
+        paramString2 = new JSONObject(paramString2).getString("_red_ext_0x69");
+        Object localObject = new Submsgtype0x69();
+        ((Submsgtype0x69)localObject).mergeFrom(Base64.decode(paramString2, 0));
+        paramString2 = new oidb_0x791.RedDotInfo();
+        paramString2.uint32_appid.set(((Submsgtype0x69)localObject).uint32_appid.get());
+        paramString2.bool_display_reddot.set(((Submsgtype0x69)localObject).bool_display_reddot.get());
+        avps localavps = (avps)paramQQAppInterface.getManager(36);
+        if ((!paramString1.equals("7719.771901")) && (!paramString1.equals("7719.771903")))
         {
-          jdField_a_of_type_ArrayOfAqyd[paramInt].a();
+          paramInt = i;
+          if (!paramString1.equals("7719.771904")) {}
+        }
+        else
+        {
+          paramInt = localavps.a(paramString1, 0);
+          paramInt = localavps.a(paramString1, 1) + paramInt;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: num = " + paramInt);
+        }
+        paramString2.uint32_number.set(paramInt);
+        paramString2.uint32_reason.set(((Submsgtype0x69)localObject).uint32_reason.get());
+        paramString2.uint32_last_time.set(((Submsgtype0x69)localObject).uint32_last_time.get());
+        paramString2.uint64_cmd_uin.set(((Submsgtype0x69)localObject).uint64_cmd_uin.get());
+        paramString2.str_face_url.set(((Submsgtype0x69)localObject).bytes_face_url.get());
+        paramString2.str_custom_buffer.set(((Submsgtype0x69)localObject).bytes_custom_buffer.get());
+        paramString2.uint32_expire_time.set(((Submsgtype0x69)localObject).uint32_expire_time.get());
+        paramString2.uint32_cmd_uin_type.set(((Submsgtype0x69)localObject).uint32_cmd_uin_type.get());
+        paramString2.uint32_report_type.set(((Submsgtype0x69)localObject).uint32_report_type.get());
+        paramString1 = (mxu)paramQQAppInterface.getManager(70);
+        if ((paramString2.uint32_appid.get() != 38) && (paramString2.uint32_appid.get() != 42) && (paramString2.uint32_appid.get() != 59) && (paramString2.uint32_appid.get() != 60)) {
           return;
-          jdField_a_of_type_ArrayOfAqyd[paramInt].d();
         }
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isDevelopLevel()) {
-          atbp.a("NearbyProcessMonitor", "preloadHitSession", new Object[] { localThrowable.toString() });
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    Object localObject5 = null;
-    if (QLog.isColorLevel()) {
-      atbp.a("NearbyProcessMonitor", new Object[] { "dataUpgrade" });
-    }
-    if (((Boolean)atbg.a(paramString, "nearby_sp_upgrade_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(paramString);
-      }
-      catch (AccountNotMatchException localException1)
-      {
-        try
+        localObject = paramString1.a(paramString2.uint32_appid.get());
+        if ((localObject != null) && (((oidb_0x791.RedDotInfo)localObject).uint32_number.get() == paramInt))
         {
-          Object localObject1;
-          if ((localObject1 instanceof QQAppInterface))
-          {
-            Object localObject2 = (QQAppInterface)localObject1;
-            Object localObject4 = localObject1;
-            localObject1 = localObject2;
-            while (localObject1 != null)
-            {
-              if (!atbg.a(paramString, "self_gender"))
-              {
-                localObject2 = ((ajxn)((QQAppInterface)localObject4).getManager(51)).b(paramString);
-                if (localObject2 != null)
-                {
-                  localObject4 = (aszd)((QQAppInterface)localObject1).getManager(106);
-                  if (QLog.isColorLevel()) {
-                    atbp.a("NearbyProcessMonitor", new Object[] { "gender", Short.valueOf(((Card)localObject2).shGender) });
-                  }
-                  if (localObject4 != null) {
-                    ((aszd)localObject4).b(((Card)localObject2).shGender);
-                  }
-                }
-              }
-              if (!atbg.a(paramString, "hotchat_tab_switch")) {}
-              try
-              {
-                i = ((QQAppInterface)localObject1).getPreferences().getInt("hotchat_tab_switch", 0);
-                if (QLog.isColorLevel())
-                {
-                  if (i == 0)
-                  {
-                    bool = true;
-                    atbp.a("NearbyProcessMonitor", new Object[] { "hotchat_tab_swtich", Boolean.valueOf(bool) });
-                  }
-                }
-                else
-                {
-                  if (i != 0) {
-                    break label644;
-                  }
-                  bool = true;
-                  atbg.a(paramString, "hotchat_tab_switch", Boolean.valueOf(bool));
-                  if (atbg.a(paramString, "supportHotChatDemo")) {}
-                }
-              }
-              catch (Exception localException1)
-              {
-                try
-                {
-                  for (;;)
-                  {
-                    i = ((QQAppInterface)localObject1).getPreferences().getInt("supportHotChatDemo", 0);
-                    if (QLog.isColorLevel())
-                    {
-                      if (i != 1) {
-                        break label661;
-                      }
-                      bool = true;
-                      atbp.a("NearbyProcessMonitor", new Object[] { "hotchat_demo_switch", Boolean.valueOf(bool) });
-                    }
-                    if (i != 1) {
-                      break label666;
-                    }
-                    bool = true;
-                    atbg.a(paramString, "supportHotChatDemo", Boolean.valueOf(bool));
-                    if (!atbg.a(paramString, "ShowFreshNews"))
-                    {
-                      bool = BaseApplicationImpl.getApplication().getSharedPreferences("FRESHNEWS_SP", 0).getBoolean(paramString + "ShowFreshNews", true);
-                      if (QLog.isColorLevel()) {
-                        atbp.a("NearbyProcessMonitor", new Object[] { "freshnews_tab_switch", Boolean.valueOf(bool) });
-                      }
-                      atbg.a(paramString, "ShowFreshNews", Boolean.valueOf(bool));
-                    }
-                    if (!atbg.a(paramString, "nearby_enter_time"))
-                    {
-                      long l = BaseApplicationImpl.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getLong(paramString + "_key_enter_nearby_time", 0L);
-                      if (QLog.isColorLevel()) {
-                        atbp.a("NearbyProcessMonitor", new Object[] { "entry_time", Long.valueOf(l) });
-                      }
-                      atbg.a(paramString, "nearby_enter_time", Long.valueOf(l));
-                    }
-                    if (!atbg.a(paramString, "self_god_flag"))
-                    {
-                      bool = ((QQAppInterface)localObject1).getApp().getSharedPreferences("dating_pref" + paramString, 0).getBoolean("toplist_self_is_god", false);
-                      if (QLog.isColorLevel()) {
-                        atbp.a("NearbyProcessMonitor", new Object[] { "god", Boolean.valueOf(bool) });
-                      }
-                      atbg.a(paramString, "self_god_flag", Boolean.valueOf(bool));
-                    }
-                    if (!atbg.a(paramString, "nearby_people_disclaimer_ok_5.8.0")) {
-                      atbg.a(paramString, "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(((QQAppInterface)localObject1).getPreferences().getBoolean("nearby_people_disclaimer_ok_5.8.0", false)));
-                    }
-                    atbg.a(paramString, "nearby_sp_upgrade_flag", Boolean.valueOf(true));
-                    return;
-                    localAccountNotMatchException1 = localAccountNotMatchException1;
-                    localObject1 = null;
-                    localAccountNotMatchException1.printStackTrace();
-                    localObject4 = localObject1;
-                    localObject1 = localObject5;
-                    break;
-                    localException1 = localException1;
-                    i = 0;
-                    continue;
-                    bool = false;
-                  }
-                  label644:
-                  bool = false;
-                }
-                catch (Exception localException2)
-                {
-                  for (;;)
-                  {
-                    localException2.printStackTrace();
-                    int i = 0;
-                    continue;
-                    label661:
-                    boolean bool = false;
-                    continue;
-                    label666:
-                    bool = false;
-                  }
-                }
-              }
-            }
-          }
-        }
-        catch (AccountNotMatchException localAccountNotMatchException2)
-        {
-          for (;;)
-          {
-            continue;
-            Object localObject3 = null;
-          }
-        }
-      }
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      atbp.a("startNearbyProcess", new Object[] { Integer.valueOf(paramInt) });
-    }
-    a(paramInt);
-    if (aqyd.a("com.tencent.mobileqq:tool")) {
-      if (QLog.isColorLevel()) {
-        atbp.a("NearbyProcess is exist", new Object[0]);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramInt < 0) || (paramInt >= 3)) {
-            break label140;
-          }
-          if (!"1".equals(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_preload_nearby_process.name(), "0"))) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        atbp.a("dpc disable preload nearby process", new Object[0]);
-        return;
-      } while (!atbg.e(paramString));
-      if (jdField_a_of_type_Int <= 10) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    atbp.a("cation: preload  to much times, ", new Object[] { Integer.valueOf(jdField_a_of_type_Int) });
-    return;
-    label140:
-    ThreadManager.post(new NearbyProcessMonitor.1(paramString), 10, null, false);
-  }
-  
-  public static void b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < 3)) {}
-    try
-    {
-      if (jdField_a_of_type_ArrayOfAqyd[paramInt] != null) {
-        jdField_a_of_type_ArrayOfAqyd[paramInt].b();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      atbp.a("NearbyProcessMonitor", "reportSessionHit", new Object[] { localThrowable.toString() });
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    if (!atbg.a(paramString, "self_school_name")) {
-      for (;;)
-      {
-        try
-        {
-          Object localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(paramString);
-          if (!(localObject1 instanceof QQAppInterface)) {
-            break label147;
-          }
-          localObject1 = (QQAppInterface)localObject1;
-          localObject2 = ((ajxn)((QQAppInterface)localObject1).getManager(51)).c(paramString);
-          if (localObject2 != null)
-          {
-            localObject1 = ((Card)localObject2).strSchool;
-            localObject2 = localObject1;
-            if (localObject1 != null)
-            {
-              atbg.a(paramString, "self_school_name", localObject1);
-              localObject2 = localObject1;
-            }
-            if (!atbp.b()) {
-              break;
-            }
-            atbp.a("NearbyProcessMonitor", new Object[] { "checkSchoolName", localObject2 });
+          if (!QLog.isColorLevel()) {
             return;
           }
-          localObject1 = (NearbyPeopleCard)((QQAppInterface)localObject1).getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { paramString });
-          if (localObject1 != null)
-          {
-            localObject1 = ((NearbyPeopleCard)localObject1).college;
-            continue;
-          }
-          localObject1 = null;
-        }
-        catch (Throwable paramString)
-        {
-          paramString.printStackTrace();
+          QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: unread num not change, just return");
           return;
         }
-        continue;
-        label147:
-        Object localObject2 = null;
+        paramString1.a(true);
+        paramString1.a(paramString2);
+        new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("nearby_push_red_tmp").a(new String[] { paramString2.uint32_appid.get() + "" }).a();
+        if (paramString2.uint32_appid.get() == 59)
+        {
+          new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("like_exp_red").a();
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        return;
+      }
+      if (paramString2.uint32_appid.get() == 60)
+      {
+        if (paramString2.uint64_cmd_uin.get() == 1822701914L)
+        {
+          new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("assist_exp_red").a();
+          return;
+        }
+        new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("c2c_exp_red").a();
+        return;
+      }
+      if (paramString2.uint32_appid.get() == 61) {
+        new axrc(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("paried_exp_red").a();
       }
     }
   }
   
-  public static void b(String paramString, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, List<BusinessInfoCheckUpdate.NumRedInfo> paramList)
   {
-    axrl localaxrl = axrl.a(BaseApplicationImpl.getContext());
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localaxrl.a(paramString, "actCheckHasUnreadMsg", bool, paramInt, 0L, null, "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfos");
     }
-  }
-  
-  public static void c(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < 3)) {}
-    try
+    if (paramList.size() > 0)
     {
-      if (jdField_a_of_type_ArrayOfAqyd[paramInt] != null) {
-        jdField_a_of_type_ArrayOfAqyd[paramInt].d();
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = new HashMap();
+      paramList = paramList.iterator();
+      Object localObject2;
+      while (paramList.hasNext())
+      {
+        localObject2 = (BusinessInfoCheckUpdate.NumRedInfo)paramList.next();
+        if ((((BusinessInfoCheckUpdate.NumRedInfo)localObject2).appid.get() == 7719) && (((BusinessInfoCheckUpdate.NumRedInfo)localObject2).num_red_path.get().size() > 0))
+        {
+          localObject2 = ((BusinessInfoCheckUpdate.NumRedInfo)localObject2).num_red_path.get().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            BusinessInfoCheckUpdate.NumRedPath localNumRedPath1 = (BusinessInfoCheckUpdate.NumRedPath)((Iterator)localObject2).next();
+            if (((Map)localObject1).containsKey(localNumRedPath1.str_path.get()))
+            {
+              BusinessInfoCheckUpdate.NumRedPath localNumRedPath2 = (BusinessInfoCheckUpdate.NumRedPath)((Map)localObject1).get(localNumRedPath1.str_path.get());
+              if (localNumRedPath1.uint32_expire_time.get() > localNumRedPath2.uint32_expire_time.get()) {
+                ((Map)localObject1).put(localNumRedPath1.str_path.get(), localNumRedPath1);
+              }
+            }
+            else
+            {
+              ((Map)localObject1).put(localNumRedPath1.str_path.get(), localNumRedPath1);
+            }
+          }
+        }
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      atbp.a("NearbyProcessMonitor", "reportSessionEnd", new Object[] { localThrowable.toString() });
+      paramList = ((Map)localObject1).entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        localObject1 = (Map.Entry)paramList.next();
+        localObject2 = new Submsgtype0x89.NumRedBusiInfo();
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint64_msgid.set(((BusinessInfoCheckUpdate.NumRedPath)((Map.Entry)localObject1).getValue()).uint64_msgid.get());
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint32_android_app_id.set(7719);
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).str_android_path.set(((BusinessInfoCheckUpdate.NumRedPath)((Map.Entry)localObject1).getValue()).str_path.get());
+        localArrayList.add(localObject2);
+      }
+      ((avpo)paramQQAppInterface.getManager(65)).a(localArrayList, "nearby_num_red_dot", new atat(this, paramQQAppInterface));
     }
   }
 }

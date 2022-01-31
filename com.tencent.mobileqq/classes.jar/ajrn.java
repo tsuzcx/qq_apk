@@ -1,153 +1,83 @@
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ajrn
-  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<ApolloActionPackage> jdField_a_of_type_JavaUtilList;
-  private int b = -1;
+  public SessionInfo a;
+  public List<ajpx> a;
+  public Context b;
+  public int c = 0;
+  public int d;
+  public int e;
+  protected int f = -1;
   
-  public ajrn(Context paramContext)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131165549);
+    return 0;
   }
   
-  public Drawable a(ApolloActionPackage paramApolloActionPackage)
+  public int a(int paramInt)
   {
-    ApolloActionPackage localApolloActionPackage = null;
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    URLDrawable localURLDrawable2;
-    if (!TextUtils.isEmpty(paramApolloActionPackage.mIconSelectedUrl))
-    {
-      localURLDrawable2 = ajhu.a("" + paramApolloActionPackage.mIconSelectedUrl.hashCode(), null, paramApolloActionPackage.mIconSelectedUrl, true);
-      localURLDrawable1 = localURLDrawable2;
-      if (localURLDrawable2 != null) {
-        localURLDrawable2.startDownload();
-      }
+    return 0;
+  }
+  
+  public ajpx a(String paramString)
+  {
+    return null;
+  }
+  
+  public View a()
+  {
+    return null;
+  }
+  
+  public View a(int paramInt)
+  {
+    View localView = a();
+    a(localView, paramInt);
+    return localView;
+  }
+  
+  public ArrayList<ajpx> a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(View paramView, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
     }
-    for (URLDrawable localURLDrawable1 = localURLDrawable2;; localURLDrawable1 = null)
+    if ((this.a == null) || (this.a.size() == 0)) {
+      QLog.e("ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
+    }
+    do
     {
-      if (!TextUtils.isEmpty(paramApolloActionPackage.mIconUnselectedUrl))
+      do
       {
-        paramApolloActionPackage = ajhu.a("" + paramApolloActionPackage.mIconUnselectedUrl.hashCode(), null, paramApolloActionPackage.mIconUnselectedUrl, true);
-        localApolloActionPackage = paramApolloActionPackage;
-        if (paramApolloActionPackage != null)
-        {
-          paramApolloActionPackage.startDownload();
-          localApolloActionPackage = paramApolloActionPackage;
-        }
-      }
-      if (localURLDrawable1 != null) {
-        localStateListDrawable.addState(new int[] { 16842913 }, localURLDrawable1);
-      }
-      if (localApolloActionPackage != null) {
-        localStateListDrawable.addState(new int[] { -16842913 }, localApolloActionPackage);
-      }
-      return localStateListDrawable;
-    }
+        return;
+      } while ((paramInt < 0) || (paramInt >= this.a.size()));
+      this.f = paramInt;
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
   }
   
-  public ApolloActionPackage a(int paramInt)
+  public void c_(List<ajpx> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return (ApolloActionPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<ApolloActionPackage> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(List<ApolloActionPackage> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  @TargetApi(14)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558623, paramViewGroup, false);
-      paramViewGroup = new ajro(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131376787));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setActivated(true);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376784);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376785));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localObject = paramViewGroup.jdField_a_of_type_AndroidViewView;
-      if (paramInt == getCount() - 1) {
-        break label227;
-      }
-    }
-    label227:
-    for (int i = 0;; i = 4)
-    {
-      ((View)localObject).setVisibility(i);
-      localObject = a(paramInt);
-      if (localObject != null)
-      {
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(a((ApolloActionPackage)localObject));
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(((ApolloActionPackage)localObject).name);
-        if ((((ApolloActionPackage)localObject).isUpdate) && (NetConnInfoCenter.getServerTimeMillis() >= ((ApolloActionPackage)localObject).redStartTime)) {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-      if (paramInt != this.b) {
-        break label233;
-      }
-      paramView.setSelected(true);
-      return paramView;
-      paramViewGroup = (ajro)paramView.getTag();
-      break;
-    }
-    label233:
-    paramView.setSelected(false);
-    return paramView;
+    this.a = paramList;
   }
 }
 

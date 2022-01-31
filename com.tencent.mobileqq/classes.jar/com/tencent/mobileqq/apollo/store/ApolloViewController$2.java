@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.store;
 
-import ajii;
+import ajig;
 
 public class ApolloViewController$2
   implements Runnable
 {
-  public ApolloViewController$2(ajii paramajii, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
+  public ApolloViewController$2(ajig paramajig, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
   
   public void run()
   {
-    ajii.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
+    ajig.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
   }
 }
 

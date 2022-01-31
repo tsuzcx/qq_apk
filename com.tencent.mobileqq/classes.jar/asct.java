@@ -1,21 +1,27 @@
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class asct
 {
+  public int a;
   public String a;
+  public List<ascw> a = new ArrayList();
+  public int b = -1;
   public String b;
   public String c;
   
-  public String a(int paramInt, float paramFloat)
+  public int a(int paramInt)
   {
-    String str = null;
-    if (this.c != null)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      str = this.c.replaceFirst("%param%", "" + paramInt);
-      paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
-      str = str.replaceFirst("%param%", "" + paramFloat);
+      ascw localascw = (ascw)localIterator.next();
+      if ((localascw.a <= paramInt) && (localascw.b > paramInt)) {
+        return localascw.c;
+      }
     }
-    return str;
+    return 0;
   }
 }
 

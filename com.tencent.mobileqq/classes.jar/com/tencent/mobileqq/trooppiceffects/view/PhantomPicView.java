@@ -18,11 +18,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import batp;
+import baud;
 
 public class PhantomPicView
   extends FrameLayout
-  implements batp
+  implements baud
 {
   protected Handler a;
   protected FrameLayout a;

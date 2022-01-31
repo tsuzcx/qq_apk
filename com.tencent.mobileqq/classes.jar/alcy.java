@@ -1,10 +1,10 @@
 public abstract interface alcy
 {
-  public abstract void b(int paramInt);
+  public abstract void a(int paramInt);
   
-  public abstract void c();
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void d();
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

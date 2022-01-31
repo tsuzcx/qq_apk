@@ -1,20 +1,28 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acly
-  extends baiz
+  implements bfph
 {
-  public acly(TroopRequestActivity paramTroopRequestActivity) {}
+  public acly(TroopRequestActivity paramTroopRequestActivity, bfpc parambfpc) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBoolean) && (paramAccountDetail != null))
+    switch (paramInt)
     {
-      this.a.j.setText(paramAccountDetail.name);
-      this.a.b.setVisibility(0);
-      this.a.e();
+    default: 
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    if (bbfj.d(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
+    }
+    for (;;)
+    {
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
+      break;
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694610, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
     }
   }
 }

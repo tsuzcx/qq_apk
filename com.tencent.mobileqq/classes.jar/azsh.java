@@ -1,37 +1,37 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Bundle;
 
 public class azsh
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
-  }
+  static long a;
+  public int a;
+  public Bundle a;
+  public azsi a;
+  public String a;
+  public mxj a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c = 3;
+  public int d = 25;
+  public int e = 450000;
+  public int f = 1;
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public azsh()
   {
-    if (paramIntent == null) {
-      return;
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bblm.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
-    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
-    paramPacket.autoResend = bool;
-    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
+    this.jdField_a_of_type_Int = 480000;
+    this.jdField_b_of_type_Int = 9;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    long l = jdField_a_of_type_Long + 1L;
+    jdField_a_of_type_Long = l;
+    this.jdField_b_of_type_Long = l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azsh
  * JD-Core Version:    0.7.0.1
  */

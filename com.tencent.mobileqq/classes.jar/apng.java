@@ -1,12 +1,12 @@
-class apng
-  implements aooz
+import java.util.List;
+
+public abstract interface apng
 {
-  apng(apnd paramapnd) {}
+  public abstract void a(long paramLong);
   
-  public void a(long paramLong)
-  {
-    apnd.b(this.a, paramLong);
-  }
+  public abstract void a(List<apqk> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

@@ -1,51 +1,53 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdck
-  implements bdip
+  extends URLDrawableDownListener.Adapter
 {
-  protected bdck(bdcj parambdcj) {}
+  public bdck(OpenCardContainer paramOpenCardContainer) {}
   
-  public void a(Exception paramException)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    bdht.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
+    }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    try
-    {
-      int i = paramJSONObject.getInt("ret");
-      Object localObject = paramJSONObject.getString("msg");
-      if (i == 0)
-      {
-        localObject = paramJSONObject.getJSONArray("update_list");
-        i = ((JSONArray)localObject).length();
-        if (i > 0) {
-          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
-        }
-        localObject = bdnm.a(bcxm.a().a(), "prefer_last_avatar_update_time").edit();
-        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
-        ((SharedPreferences.Editor)localObject).commit();
-        if (this.a.a != null) {
-          this.a.a.a();
-        }
-      }
-      else
-      {
-        bdht.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
     }
-    catch (JSONException paramJSONObject)
-    {
-      bdht.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
     }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
+    }
+    OpenCardContainer.a(this.a);
+    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
   }
 }
 

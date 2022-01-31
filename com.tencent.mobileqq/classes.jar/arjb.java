@@ -1,43 +1,18 @@
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.intervideo.nowproxy.NowPluginObserver;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
+import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
 
-public class arjb
-  implements NowPluginObserver
+class arjb
+  extends CustomizedDownloader
 {
-  public arjb(LoadingFragment paramLoadingFragment) {}
+  arjb(arik paramarik) {}
   
-  public void onCloseLoadingView()
+  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
-    }
-  }
-  
-  public void onEnterAvPlugin(Bundle paramBundle) {}
-  
-  public void onEnterRoom(Bundle paramBundle)
-  {
-    this.a.a();
-  }
-  
-  public void onExitRoom(Bundle paramBundle) {}
-  
-  public void onLoadingViewCreated(View paramView)
-  {
-    if (paramView != null)
-    {
-      this.a.getActivity();
-      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
-      if ((paramView != null) && (localFrameLayout != null)) {
-        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
-      }
-    }
+    paramBundle = new Bundle();
+    paramBundle.putString("url", paramString1);
+    paramBundle.putString("path", paramString2);
+    arjj.a().a(paramBundle, paramDownloadCallback);
   }
 }
 

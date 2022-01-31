@@ -1,70 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class bbav
-  implements acxn
+public abstract interface bbav<T>
 {
-  List<View.OnTouchListener> a = new ArrayList();
-  List<View.OnLongClickListener> b = new ArrayList();
-  List<acxn> c = new ArrayList();
+  public abstract T a(Bitmap paramBitmap);
   
-  void a(acxn paramacxn)
-  {
-    this.c.add(paramacxn);
-  }
+  public abstract void a(Exception paramException);
   
-  void a(View.OnTouchListener paramOnTouchListener)
-  {
-    this.a.add(paramOnTouchListener);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    for (int i = 0;; i = 0) {
-      try
-      {
-        while (i < this.b.size())
-        {
-          ((View.OnLongClickListener)this.b.get(i)).onLongClick(paramView);
-          i += 1;
-          continue;
-          while (i < this.c.size())
-          {
-            ((View.OnLongClickListener)this.c.get(i)).onLongClick(paramView);
-            i += 1;
-          }
-          return false;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    for (int i = 0;; i = 0) {
-      try
-      {
-        while (i < this.a.size())
-        {
-          ((View.OnTouchListener)this.a.get(i)).onTouch(paramView, paramMotionEvent);
-          i += 1;
-          continue;
-          while (i < this.c.size())
-          {
-            ((acxn)this.c.get(i)).onTouch(paramView, paramMotionEvent);
-            i += 1;
-          }
-          return false;
-        }
-      }
-      finally {}
-    }
-  }
+  public abstract void a(T paramT, Bitmap paramBitmap);
 }
 
 

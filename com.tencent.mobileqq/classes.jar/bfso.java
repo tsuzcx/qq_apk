@@ -1,17 +1,6 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-
-class bfso
-  implements View.OnKeyListener
+public abstract interface bfso
 {
-  bfso(bfsm parambfsm) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    this.a.c();
-    return true;
-  }
+  public abstract void onScrollStateChanged(int paramInt);
 }
 
 

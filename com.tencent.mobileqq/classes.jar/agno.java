@@ -1,26 +1,24 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import java.util.ArrayList;
 
 class agno
-  implements agmj
+  implements xhg
 {
-  agno(agnn paramagnn, int paramInt) {}
+  agno(agnn paramagnn, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    if (bkpe.a(this.jdField_a_of_type_Agnn.a, paramLocalMediaInfo))
-    {
-      if (PhotoListActivity.l(this.jdField_a_of_type_Agnn.a))
-      {
-        PhotoListActivity.a(this.jdField_a_of_type_Agnn.a, paramLocalMediaInfo);
-        xhe.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-        return;
-      }
-      this.jdField_a_of_type_Agnn.a.f();
-      this.jdField_a_of_type_Agnn.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_Agnn.a.f();
+    this.jdField_a_of_type_Agnn.a.a.f();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
+    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
+    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
+    this.jdField_a_of_type_Agnn.a.a.getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
+    PhotoListActivity.a(this.jdField_a_of_type_Agnn.a.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
   }
 }
 

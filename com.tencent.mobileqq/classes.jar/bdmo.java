@@ -1,16 +1,66 @@
+import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import com.tencent.open.downloadnew.YybHandleUtil.1;
+import java.io.File;
+import java.text.DecimalFormat;
 import mqq.os.MqqHandler;
 
 public class bdmo
-  extends bdmx
 {
-  public bdmo(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  public static String a = "YybHandleUtil";
+  public static String b = "APK/MobileAssistant_main.apk";
+  public static String c = "yyb.apk";
+  public static final String d = ajya.a(2131717043);
   
-  public void a()
+  public static String a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
+    if (paramInt < 0) {
+      return null;
+    }
+    float f2 = paramInt;
+    paramInt = 0;
+    float f1;
+    String str2;
+    String str1;
+    if (f2 / 1048576.0F > 1.0F)
+    {
+      f1 = f2 / 1048576.0F;
+      paramInt = 2;
+      str2 = new DecimalFormat("#.#").format(f1);
+      if (paramInt != 2) {
+        break label92;
+      }
+      str1 = "MB";
+    }
+    for (;;)
+    {
+      return str2 + str1;
+      f1 = f2;
+      if (f2 / 1024.0F <= 1.0F) {
+        break;
+      }
+      f1 = f2 / 1024.0F;
+      paramInt = 1;
+      break;
+      label92:
+      if (paramInt == 1) {
+        str1 = "KB";
+      } else {
+        str1 = "B";
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    bdii.c(a, "---deleteYYBApkPackage--");
+    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
+  }
+  
+  public static boolean a()
+  {
+    String str = bcyb.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
+    return bdjl.a(bcyb.a().a(), str);
   }
 }
 

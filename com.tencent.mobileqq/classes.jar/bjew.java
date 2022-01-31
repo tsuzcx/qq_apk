@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 
-class bjew
-  implements avtk
+public class bjew
+  extends bjdv
 {
-  bjew(bjeu parambjeu, boolean paramBoolean) {}
+  public bjew(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
   
-  public void a()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    SosoInterface.a(new bjex(this, "NewStoryTakeVideoActivity"));
+    bdis.a().a(ajya.a(2131701086) + this.a.a);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if ((paramBoolean) && (this.a.a.getLocalPath().equals(paramString))) {
+      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
+    }
   }
 }
 

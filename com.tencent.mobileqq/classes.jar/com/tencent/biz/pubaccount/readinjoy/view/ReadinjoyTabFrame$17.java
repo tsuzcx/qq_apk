@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ost;
+import osq;
 
 class ReadinjoyTabFrame$17
   implements Runnable

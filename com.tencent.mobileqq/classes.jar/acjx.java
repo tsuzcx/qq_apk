@@ -1,7 +1,9 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class acjx
   implements View.OnClickListener
@@ -10,7 +12,12 @@ public class acjx
   
   public void onClick(View paramView)
   {
-    this.a.b.dismiss();
+    paramView = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    TroopMemberListActivity.a(this.a, paramView);
   }
 }
 

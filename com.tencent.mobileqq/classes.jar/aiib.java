@@ -1,12 +1,9 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public class aiib
+public final class aiib
   implements DialogInterface.OnClickListener
 {
-  public aiib(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 

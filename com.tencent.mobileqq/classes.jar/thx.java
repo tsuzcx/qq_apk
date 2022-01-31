@@ -1,31 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class thx
-  extends QQUIEventReceiver<thk, tkn>
+class thx
+  implements View.OnClickListener
 {
-  public thx(@NonNull thk paramthk)
-  {
-    super(paramthk);
-  }
+  thx(thv paramthv) {}
   
-  public void a(@NonNull thk paramthk, @NonNull tkn paramtkn)
+  public void onClick(View paramView)
   {
-    if ((paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkn.jdField_a_of_type_JavaUtilList != null) && (!paramtkn.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      paramthk.a.b(paramtkn);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramtkn.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkn.class;
+    this.a.a.dismiss();
+    vei.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 

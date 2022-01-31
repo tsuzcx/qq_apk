@@ -1,234 +1,128 @@
+import android.os.Debug;
+import android.os.Debug.MemoryInfo;
 import android.os.Handler;
+import android.os.SystemClock;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.1;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.10;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.14;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.3;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.8;
-import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.9;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics.1;
+import java.util.Locale;
 
 public class beyu
 {
-  private static long jdField_a_of_type_Long = 5000L;
-  private static MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new SDKMiniProgramLpReportDC04239.14();
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private final Debug.MemoryInfo jdField_a_of_type_AndroidOsDebug$MemoryInfo = new Debug.MemoryInfo();
+  private final bffe jdField_a_of_type_Bffe = new bffe();
+  private final bfff jdField_a_of_type_Bfff = new bfff();
+  private final bffg jdField_a_of_type_Bffg = new bffg(200);
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new MiniGamePerformanceStatics.1(this);
+  private long jdField_b_of_type_Long;
+  private final bffe jdField_b_of_type_Bffe = new bffe();
   
-  public static String a(MiniAppInfo paramMiniAppInfo)
+  private float a()
   {
-    if (paramMiniAppInfo != null)
+    Debug.getMemoryInfo(this.jdField_a_of_type_AndroidOsDebug$MemoryInfo);
+    return this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss() / 1024.0F;
+  }
+  
+  private static String a(float paramFloat)
+  {
+    return String.format(Locale.US, "%.1f", new Object[] { Float.valueOf(paramFloat) });
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Bffe.a();
+    this.jdField_b_of_type_Bffe.a();
+    this.jdField_a_of_type_Bffg.a();
+    this.jdField_a_of_type_Long = beyf.a("-1");
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+  }
+  
+  private void e()
+  {
+    float f2 = 0.0F;
+    MiniAppProxy localMiniAppProxy;
+    float f5;
+    float f6;
+    float f7;
+    float f3;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
     {
-      if (paramMiniAppInfo.isReportTypeMiniGame()) {
-        return "1";
-      }
-      return "0";
-    }
-    return "0";
-  }
-  
-  public static void a()
-  {
-    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      besl.b("MiniProgramLpReportDC04239", "deleteRecordDurationMsg");
-    }
-    beyo.a().a().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString)
-  {
-    beyo.a().a().post(new SDKMiniProgramLpReportDC04239.8(paramString, paramMiniAppInfo));
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    beyo.a().a().post(new SDKMiniProgramLpReportDC04239.3(paramString3, paramString4, paramString1, paramMiniAppInfo, paramString2));
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    beyo.a().a().post(new SDKMiniProgramLpReportDC04239.1(paramString3, paramString4, paramString5, paramString1, paramMiniAppInfo, paramString2));
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    beyo.a().a().post(new SDKMiniProgramLpReportDC04239.9(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6));
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    if (a(paramString4))
-    {
-      beyo.a().a().post(new SDKMiniProgramLpReportDC04239.10(paramMiniAppInfo, paramString3, paramString4, paramString2, paramString5, paramString6, paramString1));
-      if (("unload".equals(paramString4)) || ("close".equals(paramString4)) || ("hide".equals(paramString4)) || ("finishshow".equals(paramString4)))
+      long l = SystemClock.uptimeMillis() - this.jdField_b_of_type_Long;
+      if (l < 10000L)
       {
-        beyo.a().b();
-        if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-          besl.a("MiniProgramLpReportDC04239", "reportPageView() called flush()");
-        }
+        d();
+        return;
       }
-      if (!"show".equals(paramString4)) {
-        break label266;
+      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      f5 = (float)(beyf.a("-1") - this.jdField_a_of_type_Long) / ((float)l / 1000.0F);
+      f6 = this.jdField_a_of_type_Bffe.a();
+      f7 = this.jdField_a_of_type_Bfff.a() - this.jdField_a_of_type_Float;
+      if (!this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isReportTypeMiniGame()) {
+        break label365;
       }
-      jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-      c();
-    }
-    label168:
-    while ((!"unload".equals(paramString4)) && (!"hide".equals(paramString4)) && (!"close".equals(paramString4)))
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(beyn.b());
-      String str = bekj.a(paramString2);
-      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+      f3 = this.jdField_b_of_type_Bffe.a();
+      float f4 = this.jdField_a_of_type_Bffg.a();
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 629, a(f5), "1");
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 631, a(f6), "1");
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 643, a(f7), "1");
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 630, a(f3), "1");
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 642, a(f4), "1");
+      beza.a(f3, f4);
+      f1 = f3;
+      f2 = f4;
+      if (localMiniAppProxy.isDebugVersion())
       {
-        paramString2 = String.valueOf(paramMiniAppInfo.launchParam.a);
-        localArrayList.addAll(beyn.a(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString1, null));
-        localArrayList.addAll(beyn.c());
-        if (!bfgt.a()) {
-          localArrayList.addAll(beyn.a());
-        }
-        if (!bfgt.a()) {
-          break label259;
-        }
-      }
-      for (int i = 2;; i = 12)
-      {
-        paramString1 = beyn.a(i, localArrayList, null);
-        beyo.a().a(paramString1);
-        break;
-        paramString2 = null;
-        break label168;
+        betc.b("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " avgFps:" + f3 + " fpsVariance:" + f4 + " dalivkPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.dalvikPss + " nativePss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.nativePss + " otherPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.otherPss + " totalPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss());
+        f2 = f4;
       }
     }
-    label259:
-    label266:
-    a();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return ("click".equals(paramString)) || ("load".equals(paramString)) || ("load_fail".equals(paramString)) || ("show".equals(paramString)) || ("show_fail".equals(paramString)) || ("finishshow".equals(paramString)) || ("hide".equals(paramString)) || ("unload".equals(paramString)) || ("close".equals(paramString));
-  }
-  
-  public static void b(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(beyn.b());
-    String str = bekj.a(paramString2);
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+    for (float f1 = f3;; f1 = 0.0F)
     {
-      paramString2 = String.valueOf(paramMiniAppInfo.launchParam.a);
-      localArrayList.addAll(beyn.a(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, paramString1, ""));
-      localArrayList.addAll(beyn.c());
-      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.reportData != null) && (paramMiniAppInfo.reportData.size() > 0)) {
-        localArrayList.addAll(beyn.a(paramMiniAppInfo.reportData));
-      }
-      if (!bfgt.a()) {
-        localArrayList.addAll(beyn.a());
-      }
-      if (!bfgt.a()) {
-        break label173;
-      }
-    }
-    label173:
-    for (int i = 2;; i = 12)
-    {
-      paramMiniAppInfo = beyn.a(i, localArrayList, null);
-      beyo.a().a(paramMiniAppInfo);
+      bezb.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f5, f6, f7, f1, f2);
+      d();
       return;
-      paramString2 = null;
-      break;
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2, String paramString3)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(beyn.b());
-    localArrayList.addAll(beyn.a(paramString1, paramString2, paramString3, null, null, null, null));
-    localArrayList.addAll(beyn.c());
-    if (!bfgt.a()) {
-      localArrayList.addAll(beyn.a());
-    }
-    if (bfgt.a()) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = beyn.a(i, localArrayList, null);
-      beyo.a().a(paramString1);
-      beyo.a().b();
-      return;
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(beyn.b());
-    localArrayList.addAll(beyn.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, null));
-    localArrayList.addAll(beyn.c());
-    if (!bfgt.a()) {
-      localArrayList.addAll(beyn.a());
-    }
-    if (bfgt.a()) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = beyn.a(i, localArrayList, null);
-      beyo.a().a(paramString1);
-      beyo.a().b();
-      return;
-    }
-  }
-  
-  private static void c()
-  {
-    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      besl.b("MiniProgramLpReportDC04239", "sendRecordDurationMsg");
-    }
-    beyo.a().a().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    beyo.a().a().postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
-  }
-  
-  private static void c(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(beyn.b());
-    String str1 = "0";
-    if (paramMiniAppInfo != null) {
-      str1 = a(paramMiniAppInfo);
-    }
-    String str2;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
-    {
-      str2 = String.valueOf(paramMiniAppInfo.launchParam.a);
-      localArrayList.addAll(beyn.a(paramMiniAppInfo, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, str1, ""));
-      localArrayList.addAll(beyn.c());
-      if (!bfgt.a()) {
-        localArrayList.addAll(beyn.a());
-      }
-      if (!bfgt.a()) {
-        break label150;
+      label365:
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 629, a(f5), "0");
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 631, a(f6), "0");
+      bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 643, a(f7), "0");
+      if (localMiniAppProxy.isDebugVersion()) {
+        betc.b("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " dalivkPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.dalvikPss + " nativePss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.nativePss + " otherPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.otherPss + " totalPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss());
       }
     }
-    label150:
-    for (int i = 2;; i = 12)
-    {
-      paramMiniAppInfo = beyn.a(i, localArrayList, null);
-      beyo.a().a(paramMiniAppInfo);
-      beyo.a().b();
-      return;
-      str2 = null;
-      break;
-    }
   }
   
-  private static void c(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void a()
   {
-    a(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4, paramString5, "", null, null, null);
+    this.jdField_a_of_type_Float = a();
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Bffg.a(paramFloat);
+    this.jdField_b_of_type_Bffe.a(paramFloat);
+  }
+  
+  public void a(MiniAppInfo paramMiniAppInfo)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+  }
+  
+  public void b()
+  {
+    d();
+    Handler localHandler = bejn.a();
+    localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+  }
+  
+  public void c()
+  {
+    bejn.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    e();
   }
 }
 

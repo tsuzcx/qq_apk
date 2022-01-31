@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-
-public class admu
-  implements View.OnClickListener
+public abstract interface admu
 {
-  public admu(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
-    }
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

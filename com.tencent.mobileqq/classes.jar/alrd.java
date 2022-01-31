@@ -1,22 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
-public class alrd
-  implements View.OnClickListener
+class alrd
+  implements AdapterView.OnItemClickListener
 {
-  alrd(alra paramalra) {}
+  alrd(alqz paramalqz) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((alra.a(this.a) == null) || (alra.a(this.a).size() <= 0) || (alra.a(this.a) >= alra.a(this.a).size()) || (alra.a(this.a).get(alra.a(this.a)) == null)) {
-      return;
+    paramAdapterView = alqz.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(false);
     }
-    paramView = ((adlk)alra.a(this.a).get(alra.a(this.a))).getAppName();
-    ArkAppCenter.a().post(paramView, new ArkAiAppPanel.4.1(this, paramView));
+    alqz.a(this.a).setSelection(paramInt);
+    paramAdapterView = alqz.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(true);
+    }
+    alqz.a(this.a, paramInt);
+    alqz.a(this.a, true);
+    if ((alqz.a(this.a) != null) && (alqz.a(this.a).size() > 0) && (alqz.a(this.a).size() > alqz.a(this.a)))
+    {
+      paramAdapterView = (alsa)alqz.a(this.a).get(alqz.a(this.a));
+      if (paramAdapterView != null) {
+        altc.a(null, paramAdapterView.a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
+      }
+    }
   }
 }
 

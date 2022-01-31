@@ -1,24 +1,26 @@
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pmx
-  implements URLDrawable.DownloadListener
+  extends pmp
 {
-  public pmx(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public pmx(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3)
   {
-    xds localxds = new xds(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842194));
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localxds, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
+  public void onClick(View paramView)
+  {
+    paramView = this.a.a.a.a();
+    if (paramView.isPGCShortContent())
+    {
+      onh.b(this.a.getContext(), paramView, (int)paramView.mChannelID);
+      pjr.a(this.a.getContext(), paramView);
+      return;
+    }
+    onh.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
 }
 
 

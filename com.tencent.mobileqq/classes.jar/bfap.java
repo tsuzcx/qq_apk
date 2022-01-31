@@ -1,73 +1,62 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.webkit.WebView;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import java.util.ArrayList;
-import java.util.List;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
+import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bfap
-  extends bfar
+  extends bfau
 {
-  public static volatile boolean a;
-  private List<String> a;
+  private INTERFACE.StGetUserSettingReq a = new INTERFACE.StGetUserSettingReq();
   
-  public bfap()
+  public bfap(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a.appid.set(paramString1);
+    this.a.openid.set(paramString2);
+    this.a.settingItem.set(paramString3);
+  }
+  
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetUserSettingRsp localStGetUserSettingRsp = new INTERFACE.StGetUserSettingRsp();
     try
     {
-      if ((!jdField_a_of_type_Boolean) && (Build.VERSION.SDK_INT >= 28))
+      localStGetUserSettingRsp.mergeFrom(a(paramArrayOfByte));
+      if ((localStGetUserSettingRsp != null) && (localStGetUserSettingRsp.setting != null))
       {
-        jdField_a_of_type_Boolean = true;
-        WebView.setDataDirectorySuffix(bepk.a().b());
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("settingItem", localStGetUserSettingRsp.setting.settingItem.get());
+        paramArrayOfByte.put("desc", localStGetUserSettingRsp.setting.desc.get());
+        paramArrayOfByte.put("authState", localStGetUserSettingRsp.setting.authState.get());
+        return paramArrayOfByte;
       }
-      this.jdField_a_of_type_Bfbk = new AppBrandPageContainer(this, this.jdField_a_of_type_Bfas);
-      return;
+      betc.a("VerifyPluginRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        besl.d("AppBrandRuntime", "setDataDirectorySuffix error", localThrowable);
-      }
+      betc.a("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
     }
+    return null;
   }
   
-  public void a(bfdc parambfdc)
+  protected byte[] a()
   {
-    super.a(parambfdc);
+    return this.a.toByteArray();
   }
   
-  public void a(String paramString)
+  protected String b()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      besl.d("AppBrandRuntime", "loadSubPkgAppService url is null.");
-      return;
-    }
-    if (this.jdField_a_of_type_Bejy == null)
-    {
-      besl.d("AppBrandRuntime", "loadSubPkgAppService ApkgInfo is null.");
-      return;
-    }
-    String str = this.jdField_a_of_type_Bejy.c(paramString);
-    if (TextUtils.isEmpty(str))
-    {
-      besl.d("AppBrandRuntime", "loadSubPkgAppService subPkgRoot is null.");
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramString))
-    {
-      besl.d("AppBrandRuntime", "loadSubPkgAppService has loaded.");
-      return;
-    }
-    str = this.jdField_a_of_type_Bejy.e(str);
-    if (TextUtils.isEmpty(str))
-    {
-      besl.d("AppBrandRuntime", "loadSubPkgAppService appServiceJsStr is null.");
-      return;
-    }
-    this.jdField_a_of_type_Bfdc.a(str, new bfaq(this, paramString));
+    return "GetUserSetting";
   }
 }
 

@@ -1,21 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Friends;
-import mqq.app.QQPermissionCallback;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
 class afpn
-  implements QQPermissionCallback
+  extends bfwg
 {
-  afpn(afpl paramafpl, View paramView, Friends paramFriends, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  afpn(afpm paramafpm, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    bbcv.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public View a(int paramInt, Object paramObject, bfwf parambfwf, View.OnClickListener paramOnClickListener)
   {
-    afpl.a(this.jdField_a_of_type_Afpl, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataFriends);
+    parambfwf = super.a(paramInt, paramObject, parambfwf, paramOnClickListener);
+    if ((parambfwf instanceof SimpleTextView)) {
+      parambfwf.setTag(paramObject);
+    }
+    return parambfwf;
+  }
+  
+  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
+  {
+    this.a.a(paramInt, paramArrayOfbfwf, paramObject);
   }
 }
 

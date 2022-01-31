@@ -1,15 +1,4 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-
-public class syg
-{
-  public static void a(Object paramObject)
-  {
-    if ((paramObject instanceof QQAppInterface)) {
-      syh.a = new WeakReference((QQAppInterface)paramObject);
-    }
-  }
-}
+public class syg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

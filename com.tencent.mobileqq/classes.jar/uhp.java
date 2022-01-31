@@ -1,29 +1,30 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class uhp
-  extends sth<uhj, tah>
+  extends ste<uhg, tjy>
 {
-  public uhp(uhj paramuhj)
+  public uhp(uhg paramuhg)
   {
-    super(paramuhj);
+    super(paramuhg);
   }
   
-  public void a(@NonNull uhj paramuhj, @NonNull tah paramtah)
+  public void a(@NonNull uhg paramuhg, @NonNull tjy paramtjy)
   {
-    if ((paramuhj.a != null) && (TextUtils.equals(paramuhj.a.b, paramtah.a)))
+    if ((paramuhg.a != null) && (paramtjy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjy.jdField_a_of_type_JavaUtilList.contains(paramuhg.a.a)))
     {
-      veg.a(this.TAG, "receive feed info change event. %s.", paramtah.toString());
-      paramuhj.i();
+      ved.a(this.TAG, "receive tag info change event. %s", paramtjy.toString());
+      paramuhg.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return tah.class;
+    return tjy.class;
   }
   
-  public void b(@NonNull uhj paramuhj, @NonNull tah paramtah) {}
+  public void b(@NonNull uhg paramuhg, @NonNull tjy paramtjy) {}
 }
 
 

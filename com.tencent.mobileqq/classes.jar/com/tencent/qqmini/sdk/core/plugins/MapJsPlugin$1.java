@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import bekh;
+import bekr;
+import beky;
 import org.json.JSONObject;
 
 class MapJsPlugin$1
-  implements bekh
+  implements beky
 {
-  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, beka parambeka) {}
+  MapJsPlugin$1(MapJsPlugin paramMapJsPlugin, bekr parambekr) {}
   
   public void onLocationFinishCallback(JSONObject paramJSONObject)
   {

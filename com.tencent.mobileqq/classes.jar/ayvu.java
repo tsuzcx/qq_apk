@@ -1,142 +1,100 @@
+import android.annotation.TargetApi;
+import android.net.SSLCertificateSocketFactory;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import org.apache.http.conn.scheme.LayeredSocketFactory;
+import org.apache.http.conn.ssl.StrictHostnameVerifier;
+import org.apache.http.params.HttpParams;
+
+@TargetApi(17)
 public class ayvu
+  implements LayeredSocketFactory
 {
-  public static int d;
-  public static int e;
-  public static int f;
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  static final HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier = new StrictHostnameVerifier();
+  SSLCertificateSocketFactory jdField_a_of_type_AndroidNetSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(0, null);
+  private String jdField_a_of_type_JavaLangString;
   
-  static
+  public ayvu(String paramString)
   {
-    jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
-    jdField_f_of_type_Int = 10;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static String a(String paramString1, long paramLong, int paramInt1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, int paramInt3)
+  public Socket connectSocket(Socket paramSocket, String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2, HttpParams paramHttpParams)
   {
-    return aywi.a(paramString1, paramLong, paramInt1, paramBoolean, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramInt2, paramInt3);
+    paramSocket.connect(new InetSocketAddress(paramString, paramInt1));
+    return paramSocket;
   }
   
-  public void a(String paramString)
+  public Socket createSocket()
   {
-    Object localObject;
-    if ((paramString != null) && (paramString.length() > 0) && (paramString.charAt(0) == '\026'))
+    return new Socket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SNISocketFactory", 2, "createSocket " + paramSocket.toString() + " host:" + paramString + " port:" + paramInt + " autoClose:" + paramBoolean);
+    }
+    paramSocket = (SSLSocket)this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+    int i = 10;
+    if (Build.VERSION.SDK_INT >= 17)
     {
-      localObject = paramString.split("\\|");
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < localObject.length)
-        {
-          if ((localObject[i] != null) && (localObject[i].equals("null"))) {
-            localObject[i] = null;
-          }
-          i += 1;
-        }
-        if (localObject.length >= 1) {
-          this.jdField_a_of_type_JavaLangString = localObject[0].trim();
-        }
-        if (localObject.length < 2) {}
+      if (QLog.isColorLevel()) {
+        QLog.i("SNISocketFactory", 2, "Setting SNI hostname");
       }
+      this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.setHostname(paramSocket, paramString);
     }
-    try
+    for (;;)
     {
-      this.jdField_a_of_type_Long = Long.parseLong(localObject[1]);
-      if (localObject.length < 3) {}
-    }
-    catch (NumberFormatException localException3)
-    {
+      SSLSession localSSLSession = paramSocket.getSession();
+      if (jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(paramString, localSSLSession)) {
+        break;
+      }
+      ayrp.a(i + 4, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
+      paramSocket.close();
+      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
+      if (QLog.isColorLevel()) {
+        QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
+      }
+      i = 20;
+      int j;
       try
       {
-        this.jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
-        if (localObject.length < 4) {}
+        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
       }
-      catch (NumberFormatException localException3)
+      catch (Exception localException)
       {
-        try
-        {
-          this.jdField_a_of_type_Boolean = Boolean.parseBoolean(localObject[3]);
-          if (localObject.length >= 5) {
-            this.jdField_b_of_type_JavaLangString = localObject[4];
-          }
-          if (localObject.length >= 6) {
-            this.jdField_c_of_type_JavaLangString = localObject[5];
-          }
-          if (localObject.length >= 7) {
-            this.jdField_d_of_type_JavaLangString = localObject[6];
-          }
-          if (localObject.length >= 8) {
-            this.jdField_e_of_type_JavaLangString = localObject[7];
-          }
-          if (localObject.length >= 9) {
-            this.jdField_f_of_type_JavaLangString = localObject[8];
-          }
-          if (localObject.length >= 10) {
-            this.g = localObject[9];
-          }
-          if (localObject.length < 11) {}
-        }
-        catch (Exception localException3)
-        {
-          try
-          {
-            this.jdField_b_of_type_Int = Integer.parseInt(localObject[10]);
-            if (localObject.length < 12) {}
-          }
-          catch (Exception localException3)
-          {
-            try
-            {
-              for (;;)
-              {
-                this.jdField_c_of_type_Int = Integer.parseInt(localObject[11]);
-                if (this.jdField_c_of_type_Int == jdField_f_of_type_Int)
-                {
-                  localObject = new ayte();
-                  ((ayte)localObject).a(paramString);
-                  this.jdField_a_of_type_JavaLangObject = localObject;
-                }
-                return;
-                localNumberFormatException1 = localNumberFormatException1;
-                this.jdField_a_of_type_Long = 0L;
-                localNumberFormatException1.printStackTrace();
-                continue;
-                localNumberFormatException2 = localNumberFormatException2;
-                this.jdField_a_of_type_Int = 0;
-                localNumberFormatException2.printStackTrace();
-                continue;
-                localException2 = localException2;
-                this.jdField_a_of_type_Boolean = false;
-                localException2.printStackTrace();
-              }
-              localException3 = localException3;
-              this.jdField_b_of_type_Int = 0;
-              localException3.printStackTrace();
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                this.jdField_c_of_type_Int = 0;
-                localException1.printStackTrace();
-              }
-            }
-          }
-        }
+        j = 30;
+        i = j;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("SNISocketFactory", 2, "SNI not useable");
+        i = j;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("SNISocketFactory", 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
+    }
+    ayrp.a(i, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
+    return paramSocket;
+  }
+  
+  public boolean isSecure(Socket paramSocket)
+  {
+    if ((paramSocket instanceof SSLSocket)) {
+      return ((SSLSocket)paramSocket).isConnected();
+    }
+    return false;
   }
 }
 

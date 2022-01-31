@@ -1,7 +1,16 @@
-public class bihs
+import android.app.Activity;
+import android.content.Intent;
+
+class bihs
+  extends biih
 {
-  public static String a = "";
-  public static String b = "";
+  bihs(bihr parambihr, Activity paramActivity, Intent paramIntent) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+  }
 }
 
 

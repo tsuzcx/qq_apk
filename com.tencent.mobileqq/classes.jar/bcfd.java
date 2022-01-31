@@ -1,73 +1,30 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcfd
+class bcfd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final ArrayList<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
-    {
-      try
-      {
-        Object localObject = (amwx)ampm.a().a(361);
-        if ((localObject != null) && (!TextUtils.isEmpty(((amwx)localObject).d)))
-        {
-          localObject = ((amwx)localObject).d;
-          localObject = ((String)localObject).split(";");
-          int j = localObject.length;
-          int i = 0;
-          if (i < j)
-          {
-            localArrayList.add(localObject[i]);
-            i += 1;
-            continue;
-          }
-          return localArrayList;
-        }
-      }
-      catch (Throwable localThrowable) {}
-      String str = "QQ";
-    }
-  }
+  bcfd(bcfc parambcfc, View paramView) {}
   
-  public static final boolean a(int paramInt, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    amwx localamwx = (amwx)ampm.a().a(361);
-    if (localamwx != null) {}
-    switch (paramInt)
-    {
-    default: 
-      return paramBoolean;
-    case 1: 
-      return localamwx.jdField_a_of_type_Boolean;
-    case 2: 
-      return localamwx.jdField_b_of_type_Boolean;
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
     }
-    return localamwx.jdField_c_of_type_Boolean;
-  }
-  
-  public static final boolean b(int paramInt, boolean paramBoolean)
-  {
-    amwx localamwx = (amwx)ampm.a().a(361);
-    if (localamwx != null) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
+    if (i > 150)
     {
-      do
-      {
-        do
-        {
-          return paramBoolean;
-        } while (Math.random() >= Float.valueOf(localamwx.jdField_a_of_type_JavaLangString).floatValue());
-        return true;
-      } while (Math.random() >= Float.valueOf(localamwx.jdField_b_of_type_JavaLangString).floatValue());
-      return true;
-    } while (Math.random() >= Float.valueOf(localamwx.jdField_c_of_type_JavaLangString).floatValue());
-    return true;
+      this.jdField_a_of_type_Bcfc.c = true;
+      this.jdField_a_of_type_Bcfc.a(false, 0);
+    }
+    while (!this.jdField_a_of_type_Bcfc.c) {
+      return;
+    }
+    this.jdField_a_of_type_Bcfc.c = false;
   }
 }
 

@@ -5,31 +5,31 @@ import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pwr;
-import pws;
-import qca;
+import pwo;
+import pwp;
+import qbx;
 
 public class ComponentContentRecommendFollowList$6$1
   implements Runnable
 {
-  public ComponentContentRecommendFollowList$6$1(pwr parampwr, long paramLong, boolean paramBoolean) {}
+  public ComponentContentRecommendFollowList$6$1(pwo parampwo, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ComponentContentRecommendFollowList", 2, "onUpdateAfterAccountFollow uin = " + this.jdField_a_of_type_Long + " isFollow = " + this.jdField_a_of_type_Boolean);
     }
-    Iterator localIterator = ComponentContentRecommendFollowList.a(this.jdField_a_of_type_Pwr.a).mRecommendFollowInfos.a.iterator();
+    Iterator localIterator = ComponentContentRecommendFollowList.a(this.jdField_a_of_type_Pwo.a).mRecommendFollowInfos.a.iterator();
     while (localIterator.hasNext())
     {
       RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)localIterator.next();
       if (this.jdField_a_of_type_Long == localRecommendFollowInfo.uin)
       {
         localRecommendFollowInfo.isFollowed = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_Pwr.a.a(localRecommendFollowInfo);
+        this.jdField_a_of_type_Pwo.a.a(localRecommendFollowInfo);
       }
     }
-    ComponentContentRecommendFollowList.a(this.jdField_a_of_type_Pwr.a).notifyDataSetChanged();
+    ComponentContentRecommendFollowList.a(this.jdField_a_of_type_Pwo.a).notifyDataSetChanged();
   }
 }
 

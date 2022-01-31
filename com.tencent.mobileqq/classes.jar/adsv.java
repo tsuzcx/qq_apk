@@ -1,11 +1,23 @@
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class adsv
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public String a;
+  public adsv(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  public adsv(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    super.onAnimationCancel(paramAnimator);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
+  }
 }
 
 

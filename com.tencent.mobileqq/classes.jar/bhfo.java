@@ -1,13 +1,25 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-public class bhfo
-  implements bhfz
+public final class bhfo
+  implements Parcelable.Creator<VideoInfo.VideoRemark>
 {
-  public bhfo(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
+  }
+  
+  public VideoInfo.VideoRemark[] a(int paramInt)
+  {
+    return new VideoInfo.VideoRemark[paramInt];
   }
 }
 

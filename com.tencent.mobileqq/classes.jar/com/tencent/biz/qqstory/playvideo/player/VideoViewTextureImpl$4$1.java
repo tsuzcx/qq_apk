@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import udh;
-import uet;
+import ude;
+import ueq;
 
 public class VideoViewTextureImpl$4$1
   implements Runnable
 {
-  public VideoViewTextureImpl$4$1(uet paramuet) {}
+  public VideoViewTextureImpl$4$1(ueq paramueq) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Udh.a_(this.a.jdField_a_of_type_Uep);
+    this.a.jdField_a_of_type_Ude.a_(this.a.jdField_a_of_type_Uem);
   }
 }
 

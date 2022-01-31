@@ -1,13 +1,16 @@
-public class blam
+import java.util.ArrayList;
+
+public abstract interface blam
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, blaf paramblaf);
+  
+  public abstract void a(int paramInt, ArrayList<blaf> paramArrayList);
+  
+  public abstract void a(String[] paramArrayOfString, String paramString);
+  
+  public abstract void b(int paramInt, blaf paramblaf);
 }
 
 

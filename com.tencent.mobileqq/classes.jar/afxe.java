@@ -1,37 +1,25 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-class afxe
-  implements aptu
+public class afxe
+  implements bfph
 {
-  afxe(afxc paramafxc, FileManagerEntity paramFileManagerEntity) {}
+  public afxe(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment, bfpc parambfpc) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Afxc.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    paramView = new ArrayList();
+    paramView.addAll(ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment));
+    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment).a(paramView, 3, new afxf(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment.h();
+    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment, false);
+    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment);
+    if (this.jdField_a_of_type_Bfpc.isShowing()) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
-    ajuo localajuo;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localajuo = (ajuo)this.jdField_a_of_type_Afxc.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localajuo.a(localArrayList));
-    aptv.a(2131692664);
-    return;
-    this.jdField_a_of_type_Afxc.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
-  
-  public void b() {}
 }
 
 

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ci
-  implements bfoq
+  implements bfph
 {
-  public ci(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, fw paramfw, bfol parambfol) {}
+  public ci(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, fw paramfw, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -17,7 +17,7 @@ public class ci
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.cancel();
+      this.jdField_a_of_type_Bfpc.cancel();
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
       {

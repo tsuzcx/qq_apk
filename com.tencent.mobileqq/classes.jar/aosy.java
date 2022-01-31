@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
 
 public class aosy
-  implements Comparator<OfflineFileInfo>
+  implements View.OnClickListener
 {
-  public aosy(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public aosy(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
+  public void onClick(View paramView)
   {
-    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
+    QfileLocalFilePicTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
   }
 }
 

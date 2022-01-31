@@ -1,9 +1,4 @@
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-
-public abstract interface ahpq
-{
-  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
-}
+public abstract interface ahpq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

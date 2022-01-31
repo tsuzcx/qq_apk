@@ -1,25 +1,44 @@
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.Network;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
-import org.jetbrains.annotations.Nullable;
-
-@RequiresApi(21)
-public final class qwh
-  extends ConnectivityManager.NetworkCallback
+class qwh
+  extends qwm
 {
-  private qwh(qwf paramqwf) {}
+  private final float jdField_a_of_type_Float;
+  private final qwk jdField_a_of_type_Qwk;
+  private final qwk b;
   
-  public void onAvailable(@Nullable Network paramNetwork)
+  public qwh(float paramFloat)
   {
-    qwf.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Qwk = new qwk(this.jdField_a_of_type_Float);
+    this.b = new qwk(this.jdField_a_of_type_Float);
   }
   
-  public void onLost(@Nullable Network paramNetwork)
+  public long a(long paramLong)
   {
-    qwf.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
+    this.jdField_a_of_type_Qwk.a(paramLong);
+    paramLong = this.jdField_a_of_type_Qwk.b;
+    this.b.a(paramLong);
+    long l = this.b.b;
+    float f = this.jdField_a_of_type_Float / (1.0F - this.jdField_a_of_type_Float);
+    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Qwk.a();
+    this.b.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Qwk.b();
+    this.b.b();
+  }
+  
+  public String toString()
+  {
+    return "DoubleExponentialPredictor(" + this.jdField_a_of_type_Float + ')';
   }
 }
 

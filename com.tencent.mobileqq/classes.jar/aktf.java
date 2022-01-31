@@ -1,21 +1,13 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
+
 public class aktf
+  extends RecentUserCache
 {
-  public void a() {}
-  
-  public void a(int paramInt)
+  public aktf(QQAppInterface paramQQAppInterface, akkq paramakkq)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1000: 
-      a();
-      return;
-    }
-    b();
+    super(paramQQAppInterface, paramakkq);
   }
-  
-  public void b() {}
 }
 
 

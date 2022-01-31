@@ -1,22 +1,21 @@
-import java.util.ArrayList;
-
-class ojo
-  extends ojq
+public class ojo
 {
-  ojo(oio paramoio, int paramInt)
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  
+  public ojo(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramoio, null);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  void a(ojt paramojt)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      paramojt.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    paramojt.onCommentLoadMore(2, false, new ArrayList(), false, 4);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

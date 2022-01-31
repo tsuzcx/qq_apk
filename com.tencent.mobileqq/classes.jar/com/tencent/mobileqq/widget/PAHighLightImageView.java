@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -9,36 +9,36 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bcnm;
+import bcob;
 
 public class PAHighLightImageView
   extends PAImageView
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private bcnm jdField_a_of_type_Bcnm;
+  private bcob jdField_a_of_type_Bcob;
   
   public PAHighLightImageView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcnm = new bcnm(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Bcnm);
+    this.jdField_a_of_type_Bcob = new bcob(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_Bcob);
   }
   
   public PAHighLightImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcnm = new bcnm(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Bcnm);
+    this.jdField_a_of_type_Bcob = new bcob(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_Bcob);
   }
   
   public PAHighLightImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcnm = new bcnm(this, paramContext);
-    setOnTouchListener(this.jdField_a_of_type_Bcnm);
+    this.jdField_a_of_type_Bcob = new bcob(this, paramContext);
+    setOnTouchListener(this.jdField_a_of_type_Bcob);
   }
   
   public void a()
@@ -63,7 +63,7 @@ public class PAHighLightImageView
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(Color.argb(77, 0, 0, 0));
       if (paramBoolean) {
-        localGradientDrawable.setCornerRadius(actn.a(5.0F, paramContext.getResources()));
+        localGradientDrawable.setCornerRadius(actj.a(5.0F, paramContext.getResources()));
       }
       localView.setBackgroundDrawable(localGradientDrawable);
       localViewGroup.addView(localView, new ViewGroup.LayoutParams(getLayoutParams()));

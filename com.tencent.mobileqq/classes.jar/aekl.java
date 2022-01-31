@@ -2,38 +2,27 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.widget.RoundRectImageView;
 
 class aekl
   implements Animation.AnimationListener
 {
-  aekl(aekk paramaekk, float paramFloat) {}
+  aekl(aekk paramaekk) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    aune.a("PhotoListPanel", "DragHandler", " flyOutAnimation End fAnimLayout:" + this.jdField_a_of_type_Aekk.jdField_a_of_type_AndroidWidgetRelativeLayout + ",## dy = " + (this.jdField_a_of_type_Float - this.jdField_a_of_type_Aekk.jdField_a_of_type_Aekj.b));
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Aekk.c.getLayoutParams();
-    paramAnimation.topMargin = this.jdField_a_of_type_Aekk.d.topMargin;
-    this.jdField_a_of_type_Aekk.c.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Aekk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.jdField_a_of_type_Aekk.c.getWidth() / 2, this.jdField_a_of_type_Aekk.c.getHeight() / 2);
-    paramAnimation.addAnimation(this.jdField_a_of_type_Aekk.b);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.b);
     paramAnimation.addAnimation(localScaleAnimation);
     paramAnimation.setDuration(200L);
-    this.jdField_a_of_type_Aekk.c.startAnimation(paramAnimation);
-    aune.a("PhotoListPanel", "DragHandler", "startReemergeAnimation fAnimLayout:" + this.jdField_a_of_type_Aekk.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    paramAnimation.setAnimationListener(this.jdField_a_of_type_Aekk.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    aune.a("PhotoListPanel", "DragHandler", "@#flyOutAnimation, onAnimationStart ");
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

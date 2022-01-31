@@ -1,38 +1,62 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import android.graphics.drawable.Drawable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class vou
-  implements AdapterView.OnItemClickListener
 {
-  public vou(FacePanel paramFacePanel) {}
+  public Drawable a;
+  public String a;
+  public vov a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public vou()
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
-    if (DoodleLayout.a) {}
-    for (paramAdapterView = "2";; paramAdapterView = "1")
-    {
-      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
-      if (this.a.jdField_a_of_type_Vpe != null)
-      {
-        paramAdapterView = this.a.jdField_a_of_type_Vpe.a(paramInt);
-        if ((paramAdapterView != null) && ((paramAdapterView instanceof vot)))
-        {
-          vem.a("0X80076C7", "", "", ((vot)paramAdapterView).a, "");
-          vem.a("0X80075DC", ((vot)paramAdapterView).a);
-        }
-      }
-      if (paramInt == 1)
-      {
-        vem.a("0X80076CC");
-        vem.b("0X80075E1");
-      }
-      return;
+    this.jdField_a_of_type_Vov = new vov();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Vov == null) {
+      this.jdField_a_of_type_Vov = new vov();
     }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.e);
+      int i = localJSONObject.getInt("align");
+      Object localObject = localJSONObject.getJSONArray("picture_margin");
+      int j = ((JSONArray)localObject).getInt(0);
+      int k = ((JSONArray)localObject).getInt(1);
+      int m = ((JSONArray)localObject).getInt(2);
+      int n = ((JSONArray)localObject).getInt(3);
+      localObject = localJSONObject.getString("text_color");
+      int i1 = localJSONObject.getInt("text_size");
+      int i2 = localJSONObject.getInt("picture_width");
+      int i3 = localJSONObject.getInt("picture_height");
+      int i4 = localJSONObject.getInt("standard_width");
+      int i5 = localJSONObject.getInt("standard_height");
+      this.jdField_a_of_type_Vov.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Vov.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
+      this.jdField_a_of_type_Vov.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.jdField_a_of_type_Vov.b = i1;
+      this.jdField_a_of_type_Vov.c = i2;
+      this.jdField_a_of_type_Vov.d = i3;
+      this.jdField_a_of_type_Vov.e = i4;
+      this.jdField_a_of_type_Vov.f = i5;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Vov + '}';
   }
 }
 

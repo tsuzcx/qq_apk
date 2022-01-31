@@ -1,14 +1,21 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract interface suo
+class suo
+  extends SimpleJob
 {
-  public abstract void a();
+  suo(sun paramsun, String paramString, boolean paramBoolean)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<sul> paramList, boolean paramBoolean);
-  
-  public abstract void a(sup paramsup);
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Sun.b(this.jdField_a_of_type_Boolean);
+    return null;
+  }
 }
 
 

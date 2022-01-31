@@ -1,11 +1,14 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public class awqv
-  implements awrb
+class awqv
+  implements View.OnClickListener
 {
-  public void a(awoe paramawoe, awwq paramawwq)
+  awqv(awqs paramawqs) {}
+  
+  public void onClick(View paramView)
   {
-    paramawwq.a().setVisibility(8);
+    awqs.a(this.a).a(paramView);
   }
 }
 

@@ -1,10 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class aaxz
-  extends Handler
+class aaxz
+  implements DialogInterface.OnClickListener
 {
-  public aaxz(DevlockPushActivity paramDevlockPushActivity) {}
+  aaxz(aaxy paramaaxy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a();
+    DevlockQuickLoginActivity.b(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
+  }
 }
 
 

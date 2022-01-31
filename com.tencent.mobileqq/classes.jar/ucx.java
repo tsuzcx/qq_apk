@@ -1,19 +1,21 @@
-import android.os.Parcel;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
 
-public final class ucx
-  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
+public class ucx
+  implements Animation.AnimationListener
 {
-  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public ucx(ExploreAnimalView paramExploreAnimalView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+    this.a.a.startAnimation(this.a.b);
   }
   
-  public XViewPager.SavedState[] a(int paramInt)
-  {
-    return new XViewPager.SavedState[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

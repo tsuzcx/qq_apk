@@ -1,58 +1,48 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awwv
-  extends awww
+  implements awwq
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private List<awwr> jdField_a_of_type_JavaUtilList;
   
   public awwv(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369348));
   }
   
-  protected void a()
+  public View a()
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377350));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369115));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367799));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364811));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376878));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376713));
-    this.d = ((TextView)localView.findViewById(2131365043));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getColor(2131166791));
-      }
-      if (this.d != null) {
-        this.d.setTextColor(this.d.getContext().getResources().getColor(2131166791));
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      }
-    } while (this.d == null);
-    this.d.setTextColor(Color.parseColor("#737373"));
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return a();
+  }
+  
+  public List<awwr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return null;
   }
 }
 

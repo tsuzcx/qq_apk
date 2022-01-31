@@ -1,86 +1,44 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class lhv
+  implements Observer
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString = "EffectFilterTools";
-  static boolean jdField_a_of_type_Boolean;
+  private WeakReference<MagicFaceDataEntity> a;
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  public lhv(MagicFaceDataEntity paramMagicFaceDataEntity)
   {
-    if (paramVideoAppInterface.a(1))
-    {
-      paramVideoAppInterface = (FilterItem)((lhu)paramVideoAppInterface.a(1)).a();
-      a(paramVideoAppInterface);
-      lcl.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramVideoAppInterface + "|" + jdField_a_of_type_Boolean);
-      if (!jdField_a_of_type_Boolean) {
-        break label77;
-      }
-    }
-    label77:
-    for (paramVideoAppInterface = "0X80076B2";; paramVideoAppInterface = "0X80076B1")
-    {
-      a(paramVideoAppInterface);
-      return;
-    }
+    this.a = new WeakReference(paramMagicFaceDataEntity);
   }
   
-  static void a(FilterItem paramFilterItem)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    long l1 = System.currentTimeMillis();
-    lcl.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramFilterItem + "|" + jdField_a_of_type_Long);
-    if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
+    int j;
+    if (this.a.get() != null)
     {
-      if (jdField_a_of_type_Long != 0L)
+      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
+      if (paramObject != null)
       {
-        long l2 = l1 - jdField_a_of_type_Long;
-        lcl.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + l2);
-        if (l2 > 5000L)
+        Object[] arrayOfObject = (Object[])paramObject;
+        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
         {
-          jdField_a_of_type_Boolean = true;
-          a(paramFilterItem, l2 / 1000L);
+          j = ((Integer)arrayOfObject[0]).intValue();
+          if ((j == 130) || (j == 131) || (j == 132)) {
+            if ((j != 131) && (j != 132)) {
+              break label152;
+            }
+          }
         }
       }
-      lcl.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter 33:" + jdField_a_of_type_Long);
     }
-    jdField_a_of_type_Long = l1;
-  }
-  
-  public static void a(FilterItem paramFilterItem, long paramLong)
-  {
-    paramFilterItem = paramFilterItem.getId();
-    lcl.c(jdField_a_of_type_JavaLangString, "DataReport onStateReport:" + paramFilterItem + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filterName", paramFilterItem);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, localHashMap, true);
-    try
+    label152:
+    for (int i = 500;; i = 0)
     {
-      UserAction.flushObjectsToDB(true);
-      return;
-    }
-    catch (Exception paramFilterItem)
-    {
-      lcl.e(jdField_a_of_type_JavaLangString, paramFilterItem.getMessage());
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    axqw.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    lcl.c(jdField_a_of_type_JavaLangString, "DataReport onSupport:" + paramBoolean);
-    if (paramBoolean) {}
-    for (String str = "0X80076AF";; str = "0X80076B0")
-    {
-      a(str);
+      lcg.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
+      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
       return;
     }
   }

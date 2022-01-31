@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axfp;
-import bbjw;
+import axfr;
+import bbkk;
 
 public class ShortVideoResourceManager$SVConfigItem
 {
@@ -21,12 +21,12 @@ public class ShortVideoResourceManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!bbjw.a(this.arm64v8a_md5)) && (!bbjw.a(this.arm64v8a_url));
+    return (!bbkk.a(this.arm64v8a_md5)) && (!bbkk.a(this.arm64v8a_url));
   }
   
   public String getSignature()
   {
-    if ((axfp.a()) && (check64BitReady())) {
+    if ((axfr.a()) && (check64BitReady())) {
       return this.arm64v8a_md5 + '_' + this.versionCode;
     }
     return this.armv7a_md5 + '_' + this.versionCode;

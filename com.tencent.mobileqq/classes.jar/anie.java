@@ -1,12 +1,25 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.lang.ref.WeakReference;
 
-public abstract interface anie
+public class anie
+  implements adml
 {
-  public abstract boolean getHasPulledSourceMsg();
+  public anie(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
   
-  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
-  
-  public abstract void setPulledSourceMsg();
+  public void a()
+  {
+    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
+    {
+      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject != null) {
+        localObject = (altf)((QQAppInterface)localObject).a(95);
+      }
+    }
+  }
 }
 
 

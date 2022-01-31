@@ -1,23 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1.1.1;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
 
 public class ajpd
-  implements Animation.AnimationListener
+  implements bctk
 {
-  public ajpd(ApolloFavViewBinder.1 param1) {}
+  public ajpd(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView, int paramInt)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloFavViewBinder.1.1.1(this), 300L);
+    if (paramInt == 1) {
+      this.a.getActivity().finish();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

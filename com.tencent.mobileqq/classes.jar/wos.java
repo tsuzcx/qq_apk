@@ -1,10 +1,31 @@
-import android.view.View;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
-public abstract interface wos
+public class wos
+  extends wme
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, Object paramObject);
+  protected WeakReference<Context> a;
   
-  public abstract void b(View paramView, int paramInt1, int paramInt2, Object paramObject);
+  public wos(Context paramContext, int paramInt)
+  {
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public boolean a()
+  {
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (a()) {
+      return;
+    }
+    super.show();
+  }
 }
 
 

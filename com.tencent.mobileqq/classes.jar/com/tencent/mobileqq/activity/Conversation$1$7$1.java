@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aavy;
+import aavu;
 
 class Conversation$1$7$1
   implements Runnable

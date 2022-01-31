@@ -1,17 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-class bkbx
-  implements View.OnClickListener
+public class bkbx
 {
-  bkbx(bkbv parambkbv) {}
+  private static bkbx a = new bkbx();
   
-  public void onClick(View paramView)
+  public static bkbx a()
   {
-    this.a.a.setSelectAllOnFocus(false);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a.setOnClickListener(null);
+    return a;
+  }
+  
+  public URLDrawable a(String paramString, int paramInt1, int paramInt2)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      localURLDrawableOptions.mRequestWidth = paramInt1;
+      localURLDrawableOptions.mRequestHeight = paramInt2;
+    }
+    localURLDrawableOptions.mFailedDrawable = aywm.a;
+    localURLDrawableOptions.mLoadingDrawable = aywm.a;
+    localURLDrawableOptions.mUseAutoScaleParams = false;
+    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+  }
+  
+  public void a(ImageView paramImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
+    {
+      ved.e("ImageLoader", "ImageView or uri is null.");
+      return;
+    }
+    ved.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    paramString = a(paramString, paramInt1, paramInt2);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      paramImageView.setImageDrawable(paramString);
+      return;
+      paramString = null;
+    }
   }
 }
 

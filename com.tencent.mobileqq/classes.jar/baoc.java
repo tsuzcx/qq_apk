@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class baoc
-  implements bame
+  extends TextView
 {
-  public baoc(RobotPanelLayoutBase paramRobotPanelLayoutBase, baog parambaog) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public baoc(FollowImageTextView paramFollowImageTextView, Context paramContext)
   {
-    if (paramInt == 0) {
+    super(paramContext);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if (FollowImageTextView.a(this.a))
+    {
+      super.onDraw(paramCanvas);
       return;
     }
-    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase.getContext(), 1, ajyc.a(2131713479) + "", 0).a();
+    Object localObject = getPaint();
+    ((TextPaint)localObject).setColor(getCurrentTextColor());
+    ((TextPaint)localObject).drawableState = getDrawableState();
+    localObject = FollowImageTextView.a(this.a);
+    ((baof)localObject).a(FollowImageTextView.a(this.a) - 1);
+    ((baof)localObject).a(paramCanvas);
   }
 }
 

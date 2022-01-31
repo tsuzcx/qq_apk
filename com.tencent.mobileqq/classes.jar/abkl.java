@@ -1,21 +1,31 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.activity.Leba.28.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class abkl
-  implements View.OnFocusChangeListener
+  extends atzn
 {
   public abkl(Leba paramLeba) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramBoolean)
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
     {
-      paramView.clearFocus();
-      awso.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
-      axqw.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+      return;
+      if (Leba.b(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        ajzo.a(localArrayList, agby.a().a(this.a.a));
+        this.a.a(new Leba.28.1(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        agby.a |= 0x2;
+      }
     }
   }
 }

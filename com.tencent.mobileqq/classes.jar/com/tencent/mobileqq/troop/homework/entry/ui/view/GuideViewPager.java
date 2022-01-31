@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import azwm;
-import azxy;
+import azwo;
+import azym;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
@@ -24,7 +24,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private azxy a;
+  private azym a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -58,40 +58,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    azwm localazwm = (azwm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561146, null);
+    azwo localazwo = (azwo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561145, null);
     Object localObject = (ImageView)localRelativeLayout.findViewById(2131366870);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363152);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131363151);
     ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131366842);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361895);
-    if (localazwm.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localazwm.jdField_a_of_type_JavaLangString))
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131361894);
+    if (localazwo.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localazwo.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localazwm.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localazwo.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localazwm.c))
+      if (!TextUtils.isEmpty(localazwo.c))
       {
-        localImageView2.setImageDrawable(a(localazwm.c));
+        localImageView2.setImageDrawable(a(localazwo.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localazwm.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localazwo.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localazwm.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localazwo.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localazwm.b))
+      if (!TextUtils.isEmpty(localazwo.b))
       {
-        localObject = a(localazwm.b);
+        localObject = a(localazwo.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localazwm.b));
+        localImageView1.setImageDrawable(a(localazwo.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -105,8 +105,8 @@ public class GuideViewPager
     do
     {
       return;
-    } while (this.jdField_a_of_type_Azxy == null);
-    this.jdField_a_of_type_Azxy.a();
+    } while (this.jdField_a_of_type_Azym == null);
+    this.jdField_a_of_type_Azym.a();
   }
   
   public void onPlayOnce()
@@ -114,9 +114,9 @@ public class GuideViewPager
     ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(azxy paramazxy)
+  public void setOnActionBtnClickListener(azym paramazym)
   {
-    this.jdField_a_of_type_Azxy = paramazxy;
+    this.jdField_a_of_type_Azym = paramazym;
   }
 }
 

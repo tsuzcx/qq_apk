@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class aavg
-  implements askp<Void, bbtb>
+  implements DialogInterface.OnClickListener
 {
-  public aavg(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aavg(ContactBindedActivity paramContactBindedActivity) {}
   
-  public bbtb a(Void paramVoid)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return bbtc.a(this.a.app).a(this.a.a.troopUin);
+    ContactBindedActivity.a(this.a, null);
   }
 }
 

@@ -1,22 +1,21 @@
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.1.1;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 import mqq.os.MqqHandler;
 
 public class atlg
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  atlg(atld paramatld) {}
+  atlg(atlf paramatlf) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoViewTVKImpl", 2, "onInfo what=" + paramInt + "  ex:" + paramObject);
+      QLog.i("VideoViewTVKImpl", 2, "onCompletion() called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "]");
     }
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt, paramObject));
-    return false;
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.1.1(this));
   }
 }
 

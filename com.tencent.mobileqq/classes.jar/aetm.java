@@ -1,14 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.7;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aetm
-  implements nom
+class aetm
+  extends BroadcastReceiver
 {
-  public aetm(PublicAccountChatPie.7 param7) {}
+  private aetm(aert paramaert) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.this$0.a.sendEmptyMessage(1);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      aert.a(this.a, 1);
+    }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    aert.a(this.a, 1);
   }
 }
 

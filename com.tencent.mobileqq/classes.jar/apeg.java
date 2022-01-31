@@ -1,8 +1,39 @@
-public abstract interface apeg
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+
+public class apeg
 {
-  public abstract void a();
+  private final bifc jdField_a_of_type_Bifc;
+  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public abstract void a(int paramInt, String paramString);
+  public apeg(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, bifc parambifc)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
+    this.jdField_a_of_type_Bifc = parambifc;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    biep.a().a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
 }
 
 

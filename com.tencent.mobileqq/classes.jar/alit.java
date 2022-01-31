@@ -1,71 +1,61 @@
-import com.tencent.common.app.AppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
 
-public class alit
+class alit
+  implements aysc
 {
-  protected static ayrz a;
-  private ayry jdField_a_of_type_Ayry;
-  public AppInterface a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<alix> jdField_a_of_type_JavaUtilArrayList;
+  alit(alis paramalis, aliw paramaliw, aliv paramaliv) {}
   
-  static
+  public void onResp(aysz paramaysz)
   {
-    jdField_a_of_type_Ayrz = new aliv();
-  }
-  
-  public alit(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Ayry = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    try
+    if (paramaysz.jdField_a_of_type_Int == 3)
     {
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((alix)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Ayry.b(((alix)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Ayrv);
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((ayrx)paramaysz.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString);
       return;
     }
-    finally {}
-  }
-  
-  public boolean a(alix paramalix, aliw arg2)
-  {
-    if ((paramalix == null) || (??? == null)) {
-      return false;
-    }
-    ??? = new aliu(this, paramalix, ???);
-    ayrv localayrv = new ayrv();
-    localayrv.jdField_a_of_type_Aysa = ???;
-    localayrv.jdField_a_of_type_JavaLangString = paramalix.jdField_a_of_type_JavaLangString;
-    localayrv.jdField_a_of_type_Int = 0;
-    localayrv.c = paramalix.c;
-    localayrv.e = 1;
-    localayrv.jdField_a_of_type_Ayrz = jdField_a_of_type_Ayrz;
-    this.jdField_a_of_type_Ayry.a(localayrv);
-    paramalix.jdField_a_of_type_Ayrv = localayrv;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (alis.a(this.jdField_a_of_type_Alis))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramalix);
-      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramalix.jdField_a_of_type_JavaLangString);
-      return true;
+      int i;
+      if (alis.a(this.jdField_a_of_type_Alis) != null)
+      {
+        i = 0;
+        if (i < alis.a(this.jdField_a_of_type_Alis).size())
+        {
+          if (!((aliw)alis.a(this.jdField_a_of_type_Alis).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Aliw.jdField_a_of_type_JavaLangString)) {
+            break label268;
+          }
+          alis.a(this.jdField_a_of_type_Alis).remove(i);
+        }
+      }
+      if (paramaysz.jdField_a_of_type_Int == 0)
+      {
+        ??? = new File(((ayrx)paramaysz.jdField_a_of_type_Aysy).c);
+        String str = aurn.a(((File)???).getAbsolutePath());
+        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Aliw.b))) && (this.jdField_a_of_type_Aliw.jdField_a_of_type_Int != 1))
+        {
+          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((ayrx)paramaysz.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
+          this.jdField_a_of_type_Aliv.a(false, this.jdField_a_of_type_Aliw);
+          return;
+          label268:
+          i += 1;
+        }
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Aliv.a(bool, this.jdField_a_of_type_Aliw);
+      return;
     }
   }
   
-  public void b()
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((ayrx)paramaysy).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
+    this.jdField_a_of_type_Aliv.a(paramLong1, paramLong2);
   }
 }
 

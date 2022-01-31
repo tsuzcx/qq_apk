@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class wfw
-  implements View.OnClickListener
+public class wfw
+  implements DialogInterface.OnClickListener
 {
-  wfw(wfu paramwfu) {}
+  public wfw(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (TextView)this.a.a.findViewById(2131364692);
-    if ((paramView.getText() instanceof String)) {
-      this.a.a((String)paramView.getText());
-    }
+    this.a.finish();
   }
 }
 

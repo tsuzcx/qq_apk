@@ -1,27 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class aplc
-  implements amjh
+  implements amgv
 {
-  public String a()
+  public ColorNote getColorNote()
   {
-    return ajyc.a(2131699413);
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    while (paramInt != 17039360) {
-      return;
+    amhb localamhb = new amhb();
+    localamhb.a(17039360);
+    String str = apvm.b(-1, "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
     }
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
-    localIntent.putExtra("from", "FileAssistant");
-    paramView.startActivity(localIntent);
-    axqw.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
+    localamhb.a(str);
+    localamhb.b("default_file");
+    localamhb.c("0MB");
+    localamhb.d("resdrawable://2130843550");
+    return localamhb.a();
   }
 }
 

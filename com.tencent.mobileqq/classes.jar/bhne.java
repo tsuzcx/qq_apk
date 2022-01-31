@@ -1,10 +1,11 @@
-public final class bhne
-  extends ThreadLocal<Boolean>
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.List;
+
+public abstract class bhne
 {
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public static bhne a = new bhnf();
+  
+  public abstract String a(List<Statistic> paramList);
 }
 
 

@@ -1,43 +1,38 @@
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
 
 class ajjl
-  implements aiuf
+  implements aiui
 {
-  ajjl(ajjk paramajjk) {}
+  ajjl(ajjd paramajjd, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  public void a(boolean paramBoolean, String paramString1, List<aiuc> paramList, String paramString2)
+  public void a(boolean paramBoolean, aiuh paramaiuh)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    int i = 0;
-    if (i < this.a.jdField_a_of_type_ArrayOfInt.length)
+    paramaiuh = aitz.a().a(8, this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
+    if (paramaiuh == null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      paramString1 = aiub.a().a(8, this.a.jdField_a_of_type_ArrayOfInt[i]);
-      int j;
-      if (paramString1 != null)
-      {
-        paramList = this.a.jdField_a_of_type_Ajjf;
-        int k = paramString1.b;
-        if (paramString1.a())
-        {
-          j = 0;
-          label88:
-          paramString1 = ajjf.a(paramList, 8, String.valueOf(k), j);
-          this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
+      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
+      localObject = ajjd.a(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break;
-        j = 2;
-        break label88;
-        paramString1 = ajjf.a(this.a.jdField_a_of_type_Ajjf, 8, String.valueOf(this.a.jdField_a_of_type_ArrayOfInt[i]), 2);
-        this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
       }
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    this.a.jdField_a_of_type_Ajjf.a(this.a.jdField_a_of_type_JavaLangString, ajyc.a(2131700491), this.a.jdField_a_of_type_OrgJsonJSONArray);
+    if (paramaiuh == null)
+    {
+      this.jdField_a_of_type_Ajjd.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramaiuh);
+    aiub.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new ajjm(this, (String)localObject), localArrayList, false, null);
   }
 }
 

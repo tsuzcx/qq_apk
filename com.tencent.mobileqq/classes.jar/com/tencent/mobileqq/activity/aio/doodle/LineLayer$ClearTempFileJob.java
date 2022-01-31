@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import ajsf;
-import bbdj;
+import ajsd;
+import bbdx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class LineLayer$ClearTempFileJob
   implements Runnable
 {
-  public final String a = ajsf.cl + "temp" + File.separator;
+  public final String a = ajsd.cl + "temp" + File.separator;
   
   public LineLayer$ClearTempFileJob(LineLayer paramLineLayer) {}
   
@@ -16,7 +16,7 @@ class LineLayer$ClearTempFileJob
   {
     try
     {
-      bbdj.a(this.a, true);
+      bbdx.a(this.a, true);
       return;
     }
     catch (Exception localException)

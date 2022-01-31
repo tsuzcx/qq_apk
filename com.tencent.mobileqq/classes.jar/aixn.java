@@ -1,71 +1,37 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
 
 public class aixn
-  extends aixl
 {
-  public long a;
   public String a;
-  public WeakReference<QQSettingMe> a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  int g = 7;
-  private int h;
   
-  public aixn(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
+  public aixn(String paramString)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 98;
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("entry_id", 1);
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq", 0L);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jump_url");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("is_red", 0);
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_url");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("action_id", 0);
-    this.e = paramJSONObject.optInt("bubble_id", 0);
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
-    this.f = paramJSONObject.optInt("show_sum", 1);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
+    this.a = paramString;
   }
   
-  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface)
+  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExploreDrawerStatus", 2, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
-    }
-    ((airz)paramQQAppInterface.getManager(153)).a(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
-  }
-  
-  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (this.h >= this.f) {}
+    int i = airx.a(paramQQAppInterface);
+    if ((paramajfq == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
+    SharedPreferences localSharedPreferences;
     do
     {
-      do
-      {
-        return;
-        this.h += 1;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          ajfj.a(paramajfs, this.jdField_a_of_type_JavaLangString, 9, this.e);
-        }
-      } while ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
-      paramajfs = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramajfs == null);
-    paramajfs.a(this.jdField_c_of_type_JavaLangString);
+      return;
+      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
+      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramContext, true));
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
+    }
+    ajfh.a(paramajfq, paramString, 3, 0);
+    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
   }
 }
 

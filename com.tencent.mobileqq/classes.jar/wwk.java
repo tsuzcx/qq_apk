@@ -1,25 +1,30 @@
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-class wwk
-  implements wtk
+public class wwk
+  extends ClickableSpan
 {
-  wwk(wwj paramwwj) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private wwl jdField_a_of_type_Wwl;
+  private String b;
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1)
+    if (this.jdField_a_of_type_Wwl != null) {
+      this.jdField_a_of_type_Wwl.a(this.jdField_a_of_type_JavaLangString, this.b);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int != -2147483648)
     {
-      xhe.b(SubScribeDraftItemView.b(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "delete_draft", 0, 0, new String[0]);
-      paramString = new SubDraftChangeEvent();
-      paramString.setDraftID(String.valueOf(this.a.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
-      wpw.a().a(paramString);
-      QLog.d(SubScribeDraftItemView.a(), 4, "delete draft success");
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
       return;
     }
-    bcpw.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), "delete failed", 1).a();
+    super.updateDrawState(paramTextPaint);
   }
 }
 

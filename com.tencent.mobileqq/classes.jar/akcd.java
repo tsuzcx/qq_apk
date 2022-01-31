@@ -24,7 +24,11 @@ public class akcd
     if (j == 0) {
       i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
     }
-    return i;
+    j = i;
+    if (i == 0) {
+      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    }
+    return j;
   }
 }
 

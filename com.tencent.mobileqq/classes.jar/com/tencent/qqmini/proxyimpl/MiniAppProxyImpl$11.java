@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import besl;
-import bhzu;
+import betc;
+import bial;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import org.json.JSONObject;
 
 class MiniAppProxyImpl$11
-  implements bhzu
+  implements bial
 {
   MiniAppProxyImpl$11(MiniAppProxyImpl paramMiniAppProxyImpl, AsyncResult paramAsyncResult) {}
   
@@ -27,7 +27,7 @@ class MiniAppProxyImpl$11
     {
       for (;;)
       {
-        besl.d("MiniAppProxyImpl", "tianshuRequestAdv", paramGetAdsRsp);
+        betc.d("MiniAppProxyImpl", "tianshuRequestAdv", paramGetAdsRsp);
       }
     }
   }

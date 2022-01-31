@@ -1,20 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class azzr
-  implements View.OnClickListener
+  implements INetInfoHandler
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public azzr(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  protected azzr(azzp paramazzp) {}
-  
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (this.jdField_a_of_type_Azzp.a != null) {
-      this.jdField_a_of_type_Azzp.a.a(paramView, this.jdField_a_of_type_Int);
-    }
+    this.a.b.cancel();
+    this.a.b.start();
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.b.cancel();
+    this.a.b.start();
   }
 }
 

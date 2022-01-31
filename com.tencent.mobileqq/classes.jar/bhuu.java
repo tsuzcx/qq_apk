@@ -1,52 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import com.tencent.biz.webviewplugin.OpenCenterPlugin;
+import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
-class bhuu
-  extends Handler
+final class bhuu
+  extends WebAccelerateHelper.CommonJsPluginFactory
 {
-  bhuu(bhus parambhus, Looper paramLooper)
+  public List<WebViewPlugin> getCommonJsPlugin()
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int j = 0;
-    if (this.a.getCallback() == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramMessage.what != 1000) || (!bhus.a(this.a).jdField_a_of_type_Boolean));
-      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bhus.a(this.a).jdField_a_of_type_Int));
-      int i;
-      if ((bhus.a(this.a)) && (bhus.a(this.a).jdField_a_of_type_Bhuy.a() != 0)) {
-        i = k % bhus.a(this.a).jdField_a_of_type_Bhuy.a();
-      }
-      for (;;)
-      {
-        bhus.a(this.a).jdField_a_of_type_Bhuy.a(i);
-        if (j != 0) {
-          break;
-        }
-        long l = 1000 / bhus.a(this.a).jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
-        this.a.invalidateSelf();
-        return;
-        i = k;
-        if (k >= bhus.a(this.a).jdField_a_of_type_Bhuy.a())
-        {
-          j = 1;
-          i = k;
-        }
-      }
-      this.a.stop();
-      this.a.invalidateSelf();
-    } while (this.a.jdField_a_of_type_Bhuv == null);
-    this.a.jdField_a_of_type_Bhuv.onAnimationFinished();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new airb());
+    localArrayList.add(new xlb());
+    localArrayList.add(new xmk());
+    localArrayList.add(new xlk());
+    localArrayList.add(new bcim());
+    localArrayList.add(new VasWebReport());
+    localArrayList.add(new armm());
+    localArrayList.add(new OpenCenterPlugin());
+    localArrayList.add(new MiniAppPlugin());
+    localArrayList.add(new xmf());
+    localArrayList.add(new QzoneWebMusicJsPlugin());
+    localArrayList.add(new xne());
+    return localArrayList;
   }
 }
 

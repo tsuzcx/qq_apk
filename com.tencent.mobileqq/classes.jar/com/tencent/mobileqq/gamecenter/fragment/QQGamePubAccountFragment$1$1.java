@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aqsc;
+import aqse;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
 
 public class QQGamePubAccountFragment$1$1
   implements Runnable
 {
-  public QQGamePubAccountFragment$1$1(aqsc paramaqsc, FeedsItemData.TopCardInfo paramTopCardInfo) {}
+  public QQGamePubAccountFragment$1$1(aqse paramaqse, FeedsItemData.TopCardInfo paramTopCardInfo) {}
   
   public void run()
   {
-    QQGamePubAccountFragment.a(this.jdField_a_of_type_Aqsc.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo);
+    QQGamePubAccountFragment.a(this.jdField_a_of_type_Aqse.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo);
   }
 }
 

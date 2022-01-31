@@ -1,20 +1,16 @@
-import com.tencent.widget.AbsListView;
+import java.util.List;
 
 class rbc
-  implements bfob
+  extends oyd
 {
-  rbc(rap paramrap) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  rbc(ram paramram, String paramString, List paramList)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    rap.b(this.a, paramAbsListView);
+    super(paramString);
+  }
+  
+  public void a(oxx paramoxx)
+  {
+    paramoxx.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

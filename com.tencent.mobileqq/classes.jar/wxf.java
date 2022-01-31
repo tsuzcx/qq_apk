@@ -1,25 +1,26 @@
+import android.view.SurfaceHolder;
 import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class wxf
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public wxf(TribeVideoPlugin paramTribeVideoPlugin, wxo paramwxo) {}
+  public wxf(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (paramTVK_IMediaPlayer.getCurrentPostion() == 0L) {
-      axqw.b(null, "dc00899", "BizTechReport", ((BaseActivity)TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin)).getCurrentAccountUin(), "tribe_video", "video_prepared_time", 0, 0, Long.toString(System.currentTimeMillis() - wxo.a(this.jdField_a_of_type_Wxo)), Integer.toString(bbev.b(TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin))), "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
     }
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(5, wxo.a(this.jdField_a_of_type_Wxo));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = wxo.a(this.jdField_a_of_type_Wxo);
-      paramTVK_IMediaPlayer.what = 5;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
     }
   }
 }

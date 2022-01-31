@@ -1,14 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-public class oul
-  implements osn
+public abstract interface oul<DataType>
 {
-  public oul(ReadInJoyDailyFragment paramReadInJoyDailyFragment, int paramInt) {}
+  public abstract DataType a(int paramInt);
   
-  public void a(osp paramosp)
-  {
-    paramosp.h(this.jdField_a_of_type_Int);
-  }
+  public abstract List<DataType> a();
+  
+  public abstract void a();
+  
+  public abstract void a(DataType paramDataType, int paramInt);
+  
+  public abstract void a(List<DataType> paramList);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void b(List<DataType> paramList);
+  
+  public abstract void c();
+  
+  public abstract void c(List<ChannelCoverInfo> paramList);
 }
 
 

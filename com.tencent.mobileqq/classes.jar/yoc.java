@@ -1,12 +1,14 @@
-import cooperation.wadl.ipc.WadlResult;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
-public abstract interface yoc
+public class yoc
+  implements yoq
 {
-  public abstract void a(WadlResult paramWadlResult);
+  public yoc(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, String paramString) {}
   
-  public abstract void b(WadlResult paramWadlResult);
-  
-  public abstract void c(WadlResult paramWadlResult);
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentGamecenterCommonUtilGameCenterAPIJavaScript.callbackJS(this.jdField_a_of_type_JavaLangString, paramInt, paramString);
+  }
 }
 
 

@@ -1,20 +1,28 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class vgv
-  implements tcc<tdt>
+class vgv
+  extends AnimatorListenerAdapter
 {
-  vgv(vgu paramvgu) {}
+  vgv(vgu paramvgu, View paramView) {}
   
-  public void a(boolean paramBoolean, tdt paramtdt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    veg.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramtdt != null))
-    {
-      veg.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramtdt.a));
-      int i = paramtdt.a;
-      vgu.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
-    }
+    ved.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ved.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ved.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
   }
 }
 

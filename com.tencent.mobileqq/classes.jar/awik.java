@@ -1,6 +1,8 @@
 public abstract interface awik
 {
-  public abstract void a(int paramInt);
+  public abstract double a();
+  
+  public abstract double b();
 }
 
 

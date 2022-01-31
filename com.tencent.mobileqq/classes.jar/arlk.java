@@ -1,64 +1,100 @@
-import android.view.WindowManager.BadTokenException;
-import android.view.accessibility.AccessibilityManager;
-import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
-final class arlk
-  implements HookMethodCallback
+public class arlk
+  extends WebViewPlugin
 {
-  arlk(Class paramClass) {}
-  
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public arlk()
   {
-    if (paramMethodHookParam.throwable == null) {
+    this.mPluginNameSpace = "emojiEggSetting";
+  }
+  
+  private void a(int paramInt, String... paramVarArgs)
+  {
+    try
+    {
+      Activity localActivity = this.mRuntime.a();
+      paramVarArgs = new JSONObject(paramVarArgs[0]).optString("frd_uin");
+      if (!TextUtils.isEmpty(paramVarArgs))
+      {
+        Intent localIntent = actj.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
+        localIntent.putExtra("uin", paramVarArgs);
+        if (paramInt == 1) {
+          localIntent.putExtra("KEY_SHOULD_SHOW_KEYBOARD", true);
+        }
+        for (;;)
+        {
+          localIntent.putExtra("uintype", 0);
+          localActivity.startActivity(localIntent);
+          return;
+          if (paramInt == 2) {
+            localIntent.putExtra("KEY_SHOULD_SHOW_PLUS_PANEL", true);
+          }
+        }
+      }
       return;
     }
-    Object localObject;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localObject = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localObject instanceof WindowManager.BadTokenException)) {
-      try
-      {
-        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
-        Field localField = this.a.getDeclaredField("mAccessibilityManager");
-        localField.setAccessible(true);
-        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
-        return;
-      }
-      catch (NoSuchFieldException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-        localObject = paramMethodHookParam.throwable;
-      }
-      catch (IllegalArgumentException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (IllegalAccessException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-      }
+    catch (Exception paramVarArgs)
+    {
+      QLog.e("IntimatePlugin", 1, "gotoC2C exception e = ", paramVarArgs);
     }
   }
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimatePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if ("emojiEggSetting".equals(paramString2))
+    {
+      if (!"showVC".equals(paramString3)) {}
+    }
+    else
+    {
+      do
+      {
+        try
+        {
+          paramJsBridgeListener = this.mRuntime.a();
+          int i = new JSONObject(paramVarArgs[0]).optInt("entry");
+          paramString1 = new Intent(paramJsBridgeListener, ShowReactiveActivity.class);
+          paramString1.putExtra("entry", i);
+          paramJsBridgeListener.startActivity(paramString1);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          QLog.e("IntimatePlugin", 1, "openConfessAIO exception e = ", paramJsBridgeListener);
+          return false;
+        }
+        if (!"interactionScore".equals(paramString2)) {
+          break;
+        }
+        if ("gotoChat".equals(paramString3))
+        {
+          a(1, paramVarArgs);
+          return true;
+        }
+      } while (!"gotoCall".equals(paramString3));
+      a(2, paramVarArgs);
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
 }
 
 

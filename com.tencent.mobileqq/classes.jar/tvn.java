@@ -1,20 +1,80 @@
-import java.io.File;
+import android.support.annotation.NonNull;
 
-final class tvn
-  implements sty
+public class tvn
 {
-  tvn(File paramFile, String paramString) {}
+  @NonNull
+  public final String a;
+  @NonNull
+  public final String b;
+  @NonNull
+  public final String c;
+  public final String d;
   
-  public void a(stw paramstw)
+  public tvn(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    String str = paramstw.b;
-    if (str != null)
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
     {
-      if ((paramstw.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!sum.a(this.jdField_a_of_type_JavaIoFile))) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      tvk.a(new tvq(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
+      ved.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
+      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
     }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (tvn)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.d != null) {
+      bool1 = this.d.equals(paramObject.d);
+    }
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      if (paramObject.d != null) {
+        bool1 = false;
+      }
+    }
+  }
+  
+  public int hashCode()
+  {
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.d != null) {}
+    for (int i = this.d.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
   }
 }
 

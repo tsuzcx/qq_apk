@@ -1,33 +1,23 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bjmz
-  implements Comparable<bjmz>
+final class bjmz
+  implements EIPCResultCallback
 {
-  public static final bjmz a;
-  public static final bjmz b = new bjmz(1);
-  public static final bjmz c = new bjmz(2);
-  public static final bjmz d = new bjmz(3);
-  public static final bjmz e = new bjmz(4);
-  public final int a;
+  bjmz(String paramString) {}
   
-  static
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    jdField_a_of_type_Bjmz = new bjmz(0);
-  }
-  
-  public bjmz(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(@NonNull bjmz parambjmz)
-  {
-    return this.jdField_a_of_type_Int - parambjmz.jdField_a_of_type_Int;
-  }
-  
-  public boolean a(@NonNull bjmz parambjmz)
-  {
-    return a(parambjmz) >= 0;
+    if (paramEIPCResult != null)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("uinname");
+      if (QLog.isColorLevel()) {
+        QLog.i("PeakIpcController", 2, "getTroopMemberName success name = " + paramEIPCResult);
+      }
+      bkmp.a().a(this.a, paramEIPCResult);
+    }
   }
 }
 

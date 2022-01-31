@@ -1,12 +1,15 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acqu
+class acqu
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  acqu(acqr paramacqr, acqo paramacqo) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Acqr.a.a(this.jdField_a_of_type_Acqo);
+  }
 }
 
 

@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class ankl
-  implements DialogInterface.OnClickListener
+public class ankl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ankl(anki paramanki) {}
+  public ankl(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.cancel();
-    QLog.d(anki.a(), 1, "showConfirmDialog, cancel click");
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, anki.d, anki.d, 0, 0, "", "", "", "");
+    akry.b = paramBoolean;
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(akry.a, 0).edit().putBoolean(akry.c, paramBoolean).commit();
   }
 }
 

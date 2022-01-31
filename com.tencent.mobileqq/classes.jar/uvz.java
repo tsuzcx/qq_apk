@@ -1,37 +1,57 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class uvz
-  extends SimpleObserver<T>
+class uvz
+  implements syq<tlw, syn>
 {
-  public uvz(uvu paramuvu) {}
+  uvz(uvx paramuvx) {}
   
-  public void a(T paramT)
+  public void a(@NonNull tlw paramtlw, @Nullable syn paramsyn, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.onNext(paramT);
-    this.a.b();
-    veg.b("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data finish %s", paramT);
-    paramT.d = this.a.jdField_a_of_type_Boolean;
-    this.a.a(paramT.a, paramT.c);
-    this.a.jdField_a_of_type_Uvw.b();
-    this.a.jdField_a_of_type_Uvy.a(paramT);
-    this.a.a("Q.qqstory.home.data.FeedListPageLoaderBase");
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    paramError = (ErrorMessage)paramError;
-    paramError = this.a.a(paramError);
-    paramError.d = this.a.jdField_a_of_type_Boolean;
-    this.a.jdField_a_of_type_Uvy.a(paramError);
+    paramsyn = (tlx)paramsyn;
+    int j = paramErrorMessage.errorCode;
+    int k = paramtlw.b.size();
+    if (paramsyn == null) {}
+    for (int i = 0;; i = paramsyn.jdField_a_of_type_JavaUtilList.size())
+    {
+      ved.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec , error :%d , req size :%d , resp size :%d , list :%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), paramtlw.b });
+      if ((!paramErrorMessage.isFail()) && (paramsyn != null)) {
+        break;
+      }
+      paramtlw = paramtlw.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtlw.hasNext())
+      {
+        paramsyn = (uvp)paramtlw.next();
+        uvx.a().remove(paramsyn.a);
+      }
+    }
+    if (paramtlw.jdField_a_of_type_JavaUtilList.size() != paramsyn.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramErrorMessage = new ArrayList();
+      paramtlw = paramtlw.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtlw.hasNext())
+      {
+        uvp localuvp = (uvp)paramtlw.next();
+        if (!paramsyn.jdField_a_of_type_JavaUtilHashSet.contains(localuvp.a))
+        {
+          paramErrorMessage.add(localuvp.a);
+          uvx.a().remove(localuvp.a);
+        }
+      }
+      ved.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec warning , some feed not return ! %s", new Object[] { paramErrorMessage });
+    }
+    paramtlw = paramsyn.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramtlw.hasNext())
+    {
+      paramsyn = (uxm)paramtlw.next();
+      this.a.a(paramsyn.a());
+    }
   }
 }
 

@@ -1,18 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.RecvMsg;
+import java.io.File;
+import java.io.FileFilter;
 
-public final class bhki
-  implements Parcelable.Creator<RecvMsg>
+final class bhki
+  implements FileFilter
 {
-  public RecvMsg a(Parcel paramParcel)
+  public boolean accept(File paramFile)
   {
-    return new RecvMsg(paramParcel);
-  }
-  
-  public RecvMsg[] a(int paramInt)
-  {
-    return new RecvMsg[paramInt];
+    return paramFile.getName().endsWith(".cfg");
   }
 }
 

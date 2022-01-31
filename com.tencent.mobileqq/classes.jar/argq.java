@@ -1,203 +1,406 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Log;
+import com.tencent.mobileqq.intervideo.huiyin.FileUploadUtil.1;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Set;
 
 public class argq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arha(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new argz(this, Looper.getMainLooper());
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arfp jdField_a_of_type_Arfp = new argv(this);
-  bcpq jdField_a_of_type_Bcpq;
-  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  String d;
-  String e = null;
-  String f = null;
-  String g = null;
-  String h = null;
-  String i = null;
+  private static String jdField_a_of_type_JavaLangString;
+  private static char[] jdField_a_of_type_ArrayOfChar = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+  private static String b;
   
-  public argq(Activity paramActivity)
+  private static String a(InputStream paramInputStream, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {
-      this.jdField_c_of_type_JavaLangString = "checkVersion";
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = 0;
-      Object localObject2 = arfn.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
-      String str1 = this.d;
-      String str2 = this.e;
-      String str3 = this.h;
-      String str4 = this.jdField_c_of_type_JavaLangString;
-      String str5 = this.e;
-      Object localObject1;
-      if (this.f == null)
-      {
-        localObject1 = "";
-        ((arfn)localObject2).a(str1, str2, "", str3, 0, str4, "", "", str5, (String)localObject1, this.jdField_a_of_type_Arfp);
-        return;
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        this.jdField_c_of_type_Long = System.currentTimeMillis();
-        arhh.a.a(40, String.valueOf(this.jdField_a_of_type_Boolean));
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("huiyin").opName("download").d1(String.valueOf(bbev.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))).d2(String.valueOf(this.jdField_a_of_type_Boolean)).report();
-        if (this.f == null) {}
-      }
-      try
-      {
-        localObject1 = new JSONObject(this.f);
-        ((JSONObject)localObject1).put("startTS", System.currentTimeMillis());
-        this.f = ((JSONObject)localObject1).toString();
-        label211:
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("huiyin").opName("launch");
-        if (bbev.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
-        {
-          localObject1 = "1";
-          label242:
-          localObject2 = ((IVPluginDataReporter)localObject2).d1((String)localObject1);
-          if (!this.jdField_c_of_type_Boolean) {
-            break label291;
-          }
-          localObject1 = "1";
-          label258:
-          localObject2 = ((IVPluginDataReporter)localObject2).d2((String)localObject1);
-          if (!this.jdField_a_of_type_Boolean) {
-            break label297;
-          }
-        }
-        label291:
-        label297:
-        for (localObject1 = "1";; localObject1 = "2")
-        {
-          ((IVPluginDataReporter)localObject2).d3((String)localObject1).report();
-          break;
-          localObject1 = "2";
-          break label242;
-          localObject1 = "2";
-          break label258;
-        }
-        localObject1 = this.f;
-      }
-      catch (Exception localException)
-      {
-        break label211;
-      }
-    }
-  }
-  
-  private void c()
-  {
-    if (!bbev.g(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
-    {
-      arhh.a.a(32, null);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131705650));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131705654));
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.jdField_a_of_type_AndroidAppActivity.findViewById(16908290).setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new args(this));
-      return;
-    }
-    arfe.a(this.d, new argt(this));
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.setContentView(2131560856);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131372031));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367293));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131365336));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131371995));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131372023));
-    this.jdField_a_of_type_AndroidAppActivity.findViewById(16908290).setVisibility(8);
-    this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367702).setOnClickListener(new argr(this));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("huiyin");
-    this.h = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("uin");
-    this.f = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("extra");
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidAppActivity.getIntent().getBooleanExtra("preloadOnly", false);
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    paramBundle = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("param_general");
     try
     {
-      paramBundle = new JSONObject(paramBundle);
-      this.e = paramBundle.optString("opentype");
-      this.g = paramBundle.optString("uri");
-      this.jdField_b_of_type_JavaLangString = paramBundle.optString("notifyJsCallback");
-      this.jdField_c_of_type_JavaLangString = paramBundle.optString("action");
-      this.jdField_a_of_type_JavaLangString = paramBundle.optString("pluginPackageName");
-      this.i = paramBundle.optString("pluginData");
-      this.d = paramBundle.optString("appType");
-      c();
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      this.jdField_b_of_type_Long = 0L;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        arhh.a.a(20, null);
-        paramBundle = new IntentFilter();
-        paramBundle.addAction("close.activity");
-        paramBundle.addAction("close.loading");
-        this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-        return;
-      }
-    }
-    catch (JSONException paramBundle)
-    {
+      paramString = new BufferedReader(new InputStreamReader(paramInputStream, paramString));
+      StringWriter localStringWriter = new StringWriter();
+      char[] arrayOfChar = new char[256];
       for (;;)
       {
-        paramBundle.printStackTrace();
-        continue;
-        arhh.a.a(30, null);
+        int i = paramString.read(arrayOfChar);
+        if (i <= 0) {
+          break;
+        }
+        localStringWriter.write(arrayOfChar, 0, i);
+      }
+      paramString = localStringWriter.toString();
+    }
+    finally
+    {
+      if (paramInputStream != null) {
+        paramInputStream.close();
+      }
+    }
+    if (paramInputStream != null) {
+      paramInputStream.close();
+    }
+    return paramString;
+  }
+  
+  private static String a(HttpURLConnection paramHttpURLConnection)
+  {
+    int i = paramHttpURLConnection.getResponseCode();
+    if (i != 200) {
+      throw new IOException(ajya.a(2131704583) + i);
+    }
+    return b(paramHttpURLConnection);
+  }
+  
+  private static HttpURLConnection a(String paramString)
+  {
+    paramString = (HttpURLConnection)new URL(paramString).openConnection();
+    paramString.setDoInput(true);
+    paramString.setUseCaches(false);
+    paramString.setDoOutput(true);
+    paramString.setRequestMethod("POST");
+    paramString.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + jdField_a_of_type_JavaLangString);
+    paramString.setRequestProperty("Cookie", b + jdField_a_of_type_JavaLangString);
+    paramString.setRequestProperty("User-Agent", "Android Client Agent");
+    return paramString;
+  }
+  
+  /* Error */
+  private static void a(DataOutputStream paramDataOutputStream, java.io.File paramFile)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_1
+    //   6: invokevirtual 137	java/io/File:getName	()Ljava/lang/String;
+    //   9: astore_3
+    //   10: aload_0
+    //   11: new 70	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 139
+    //   20: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: getstatic 59	argq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   26: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   35: aload_0
+    //   36: ldc 146
+    //   38: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   41: aload_0
+    //   42: new 70	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 148
+    //   51: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_3
+    //   55: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc 150
+    //   60: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   69: aload_0
+    //   70: ldc 146
+    //   72: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   75: aload_0
+    //   76: new 70	java/lang/StringBuilder
+    //   79: dup
+    //   80: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   83: ldc 152
+    //   85: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: aload_3
+    //   89: invokestatic 157	java/net/URLConnection:guessContentTypeFromName	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   101: aload_0
+    //   102: ldc 146
+    //   104: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   107: aload_0
+    //   108: ldc 146
+    //   110: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   113: aconst_null
+    //   114: astore_3
+    //   115: new 159	java/io/FileInputStream
+    //   118: dup
+    //   119: aload_1
+    //   120: invokespecial 162	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   123: astore_1
+    //   124: sipush 4096
+    //   127: newarray byte
+    //   129: astore_3
+    //   130: aload_1
+    //   131: aload_3
+    //   132: invokevirtual 165	java/io/InputStream:read	([B)I
+    //   135: istore_2
+    //   136: iload_2
+    //   137: iconst_m1
+    //   138: if_icmpeq +25 -> 163
+    //   141: aload_0
+    //   142: aload_3
+    //   143: iconst_0
+    //   144: iload_2
+    //   145: invokevirtual 168	java/io/DataOutputStream:write	([BII)V
+    //   148: goto -18 -> 130
+    //   151: astore_0
+    //   152: aload_1
+    //   153: ifnull -149 -> 4
+    //   156: aload_1
+    //   157: invokevirtual 53	java/io/InputStream:close	()V
+    //   160: return
+    //   161: astore_0
+    //   162: return
+    //   163: aload_1
+    //   164: invokevirtual 53	java/io/InputStream:close	()V
+    //   167: aload_0
+    //   168: ldc 146
+    //   170: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   173: aload_0
+    //   174: invokevirtual 171	java/io/DataOutputStream:flush	()V
+    //   177: aload_1
+    //   178: ifnull -174 -> 4
+    //   181: aload_1
+    //   182: invokevirtual 53	java/io/InputStream:close	()V
+    //   185: return
+    //   186: astore_0
+    //   187: return
+    //   188: astore_0
+    //   189: aload_3
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnull +7 -> 199
+    //   195: aload_1
+    //   196: invokevirtual 53	java/io/InputStream:close	()V
+    //   199: aload_0
+    //   200: athrow
+    //   201: astore_1
+    //   202: goto -3 -> 199
+    //   205: astore_0
+    //   206: goto -15 -> 191
+    //   209: astore_0
+    //   210: aconst_null
+    //   211: astore_1
+    //   212: goto -60 -> 152
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	215	0	paramDataOutputStream	DataOutputStream
+    //   0	215	1	paramFile	java.io.File
+    //   135	10	2	i	int
+    //   9	181	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   124	130	151	java/io/IOException
+    //   130	136	151	java/io/IOException
+    //   141	148	151	java/io/IOException
+    //   163	177	151	java/io/IOException
+    //   156	160	161	java/lang/Exception
+    //   181	185	186	java/lang/Exception
+    //   115	124	188	finally
+    //   195	199	201	java/lang/Exception
+    //   124	130	205	finally
+    //   130	136	205	finally
+    //   141	148	205	finally
+    //   163	177	205	finally
+    //   115	124	209	java/io/IOException
+  }
+  
+  private static void a(DataOutputStream paramDataOutputStream, Map<String, String> paramMap)
+  {
+    if ((paramMap == null) || (paramMap.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        paramDataOutputStream.writeBytes("--" + jdField_a_of_type_JavaLangString);
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + (String)localEntry.getKey() + "\"");
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes((String)localEntry.getValue());
+        paramDataOutputStream.writeBytes("\r\n");
       }
     }
   }
   
-  public void b()
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, argr paramargr)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    Log.i("legoupload", paramString1 + "\n" + paramString2 + "\nusername " + paramString5);
+    if ((paramString2 == null) || (paramString1 == null))
+    {
+      Log.e("HuiyinFileUpload", "url null or file path null");
+      return;
+    }
+    new Thread(new FileUploadUtil.1(paramString6, paramString5, paramString3, paramString4, paramString7, paramString8, paramString1, paramString2, paramargr)).start();
+  }
+  
+  private static String b()
+  {
+    Random localRandom = new Random();
+    char[] arrayOfChar = new char[localRandom.nextInt(9) + 12];
+    int i = 0;
+    while (i < arrayOfChar.length)
+    {
+      arrayOfChar[i] = jdField_a_of_type_ArrayOfChar[localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length)];
+      i += 1;
+    }
+    return "===AndroidFormBoundary" + new String(arrayOfChar);
+  }
+  
+  private static String b(HttpURLConnection paramHttpURLConnection)
+  {
+    String str = c(paramHttpURLConnection.getContentType());
+    InputStream localInputStream = paramHttpURLConnection.getErrorStream();
+    if (localInputStream == null) {
+      return a(paramHttpURLConnection.getInputStream(), str);
+    }
+    return a(localInputStream, str);
+  }
+  
+  /* Error */
+  private static void b(String paramString, Map<String, String> paramMap, java.io.File paramFile, argr paramargr)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aload_0
+    //   4: invokestatic 273	argq:a	(Ljava/lang/String;)Ljava/net/HttpURLConnection;
+    //   7: astore_0
+    //   8: new 141	java/io/DataOutputStream
+    //   11: dup
+    //   12: aload_0
+    //   13: invokevirtual 277	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   16: invokespecial 280	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   19: astore 4
+    //   21: aload 4
+    //   23: aload_1
+    //   24: invokestatic 282	argq:a	(Ljava/io/DataOutputStream;Ljava/util/Map;)V
+    //   27: aload 4
+    //   29: aload_2
+    //   30: invokestatic 284	argq:a	(Ljava/io/DataOutputStream;Ljava/io/File;)V
+    //   33: aload 4
+    //   35: ldc 146
+    //   37: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   40: aload 4
+    //   42: new 70	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 139
+    //   51: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: getstatic 59	argq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   57: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: ldc 139
+    //   62: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   71: aload 4
+    //   73: ldc 146
+    //   75: invokevirtual 144	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   78: aload 4
+    //   80: invokevirtual 285	java/io/DataOutputStream:close	()V
+    //   83: aload_3
+    //   84: iconst_0
+    //   85: aload_0
+    //   86: invokestatic 287	argq:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   89: invokeinterface 292 3 0
+    //   94: aload_0
+    //   95: ifnull +7 -> 102
+    //   98: aload_0
+    //   99: invokevirtual 295	java/net/HttpURLConnection:disconnect	()V
+    //   102: aload 4
+    //   104: ifnull +8 -> 112
+    //   107: aload 4
+    //   109: invokevirtual 285	java/io/DataOutputStream:close	()V
+    //   112: return
+    //   113: astore_0
+    //   114: aload_0
+    //   115: invokevirtual 298	java/lang/Exception:printStackTrace	()V
+    //   118: return
+    //   119: astore_0
+    //   120: aconst_null
+    //   121: astore_1
+    //   122: aload 4
+    //   124: astore_2
+    //   125: aload_2
+    //   126: ifnull +7 -> 133
+    //   129: aload_2
+    //   130: invokevirtual 295	java/net/HttpURLConnection:disconnect	()V
+    //   133: aload_1
+    //   134: ifnull +7 -> 141
+    //   137: aload_1
+    //   138: invokevirtual 285	java/io/DataOutputStream:close	()V
+    //   141: aload_0
+    //   142: athrow
+    //   143: astore_1
+    //   144: aload_1
+    //   145: invokevirtual 298	java/lang/Exception:printStackTrace	()V
+    //   148: goto -7 -> 141
+    //   151: astore_3
+    //   152: aconst_null
+    //   153: astore_1
+    //   154: aload_0
+    //   155: astore_2
+    //   156: aload_3
+    //   157: astore_0
+    //   158: goto -33 -> 125
+    //   161: astore_1
+    //   162: aload_0
+    //   163: astore_2
+    //   164: aload_1
+    //   165: astore_0
+    //   166: aload 4
+    //   168: astore_1
+    //   169: goto -44 -> 125
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	172	0	paramString	String
+    //   0	172	1	paramMap	Map<String, String>
+    //   0	172	2	paramFile	java.io.File
+    //   0	172	3	paramargr	argr
+    //   1	166	4	localDataOutputStream	DataOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   107	112	113	java/lang/Exception
+    //   3	8	119	finally
+    //   137	141	143	java/lang/Exception
+    //   8	21	151	finally
+    //   21	94	161	finally
+  }
+  
+  private static String c(String paramString)
+  {
+    String str = "UTF-8";
+    String[] arrayOfString = paramString.split(";");
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      paramString = str;
+      if (i < j)
+      {
+        paramString = arrayOfString[i].trim();
+        if (!paramString.startsWith("charset")) {
+          break label73;
+        }
+        arrayOfString = paramString.split("=", 2);
+        paramString = str;
+        if (arrayOfString.length == 2) {
+          paramString = arrayOfString[1].trim();
+        }
+      }
+      return paramString;
+      label73:
+      i += 1;
+    }
   }
 }
 

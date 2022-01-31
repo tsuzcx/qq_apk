@@ -1,15 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
 class aetg
-  implements bfwv
+  implements DialogInterface.OnCancelListener
 {
-  aetg(aerv paramaerv) {}
+  aetg(aert paramaert) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((!this.a.al) && (this.a.am))
-    {
-      this.a.al = true;
-      sgx.a("SUBSCRIPT_AIO_COST", null);
-    }
+    this.a.H();
   }
 }
 

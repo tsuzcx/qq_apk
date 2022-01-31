@@ -1,40 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
-class acwx
-  implements bfoq
+public class acwx
+  implements Animator.AnimatorListener
 {
-  acwx(acwp paramacwp, String paramString) {}
+  public acwx(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    acwp.a(this.jdField_a_of_type_Acwp).dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        acwp.a(this.jdField_a_of_type_Acwp, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (acwp.a(this.jdField_a_of_type_Acwp))
-      {
-        acwp.b(this.jdField_a_of_type_Acwp);
-        return;
-      }
-      acwp.c(this.jdField_a_of_type_Acwp);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (acwp.a(this.jdField_a_of_type_Acwp))
-    {
-      acwp.b(this.jdField_a_of_type_Acwp);
-      return;
-    }
-    acwp.c(this.jdField_a_of_type_Acwp);
+    onAnimationEnd(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.c.setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

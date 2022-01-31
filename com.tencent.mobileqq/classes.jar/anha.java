@@ -1,8 +1,37 @@
 import android.graphics.Canvas;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface anha
+public abstract class anha<D extends anga>
 {
-  public abstract void a(Canvas paramCanvas, anfv paramanfv, ange paramange, float paramFloat1, float paramFloat2);
+  private ArrayList<anhf> a;
+  
+  private void c(Canvas paramCanvas, D paramD, angj paramangj, float paramFloat1, float paramFloat2)
+  {
+    if (this.a != null)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((anhf)localIterator.next()).a(paramCanvas, paramD, paramangj, paramFloat1, paramFloat2);
+      }
+    }
+  }
+  
+  public abstract anhy a(D paramD);
+  
+  public void a() {}
+  
+  public final void a(Canvas paramCanvas, D paramD, angj paramangj, float paramFloat1, float paramFloat2)
+  {
+    b(paramCanvas, paramD, paramangj, paramFloat1, paramFloat2);
+    c(paramCanvas, paramD, paramangj, paramFloat1, paramFloat2);
+  }
+  
+  public void a(D paramD) {}
+  
+  public abstract boolean a(anga paramanga);
+  
+  public abstract void b(Canvas paramCanvas, D paramD, angj paramangj, float paramFloat1, float paramFloat2);
 }
 
 

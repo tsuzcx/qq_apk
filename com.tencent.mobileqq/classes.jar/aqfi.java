@@ -1,22 +1,29 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-class aqfi
-  extends Handler
+public class aqfi
+  implements auoq
 {
-  aqfi(aqfb paramaqfb) {}
+  public aqfi(ForwardSdkShareOption.2 param2) {}
   
-  public void handleMessage(Message paramMessage)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (paramMessage.what == 0) {
-      bcpw.a(this.a.a, ajyc.a(2131704815), 0).a();
+    return null;
+  }
+  
+  public void a(auor paramauor)
+  {
+    if ((paramauor != null) && (QLog.isColorLevel())) {
+      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramauor.toString() });
     }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+  }
+  
+  public void b(auor paramauor)
+  {
+    aqgj.b("KEY_STAGE_2_UPLOAD_IMAGE");
+    aqfd.a(this.a.this$0, this.a.this$0.a, paramauor, this.a.b, this.a.c, this.a.d);
   }
 }
 

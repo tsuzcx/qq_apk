@@ -13,7 +13,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import birh;
+import biry;
 
 public class AEGIFOutlineTextView
   extends View
@@ -147,7 +147,7 @@ public class AEGIFOutlineTextView
   
   public void setFontStyle()
   {
-    Typeface localTypeface = birh.a().a("jianqiaohei.ttf");
+    Typeface localTypeface = biry.a().a("jianqiaohei.ttf");
     this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
     this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
   }

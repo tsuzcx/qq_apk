@@ -1,39 +1,86 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class anba
+  implements ampc<String>
 {
-  private String a = ajyc.a(2131714836);
-  private String b = "";
+  public String a;
+  public ArrayList<anbb> a;
+  private String b = "place_holder";
+  private String c = "data";
+  private String d = "topic_id";
+  private String e = "topic_name";
   
-  public static anba a(ampi[] paramArrayOfampi)
+  public anba()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      return null;
-    }
-    anba localanba = new anba();
-    try
-    {
-      paramArrayOfampi = new JSONObject(paramArrayOfampi[0].a);
-      localanba.a = paramArrayOfampi.getString("emptyShowWording");
-      localanba.b = paramArrayOfampi.getString("linkWord");
-      return localanba;
-    }
-    catch (JSONException paramArrayOfampi)
-    {
-      paramArrayOfampi.printStackTrace();
-    }
-    return localanba;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public String a()
+  public void a(String paramString)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        paramString = localJSONObject.optJSONArray(this.c);
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, ajya.a(2131714166));
+        if (paramString == null) {
+          break;
+        }
+        i = 0;
+        if (i >= paramString.length()) {
+          break;
+        }
+        localJSONObject = paramString.getJSONObject(i);
+        localanbb = new anbb();
+        localanbb.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
+        localanbb.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
+        if (!TextUtils.isEmpty(localanbb.jdField_a_of_type_JavaLangString)) {
+          break label193;
+        }
+        if (!QLog.isColorLevel()) {
+          break label198;
+        }
+        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
+      }
+      catch (JSONException paramString)
+      {
+        int i;
+        anbb localanbb;
+        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
+        return;
+      }
+      if (j != 0) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localanbb);
+      }
+      i += 1;
+      continue;
+      label193:
+      int j = 1;
+      continue;
+      label198:
+      j = 0;
+    }
   }
   
-  public String b()
+  public String toString()
   {
-    return this.b;
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
+    }
+    return "";
   }
 }
 

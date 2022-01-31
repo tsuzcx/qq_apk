@@ -1,8 +1,10 @@
 public abstract interface avct
 {
-  public abstract void a(avcr paramavcr, avcs paramavcs);
+  public abstract avcu a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public abstract void b(avcr paramavcr, avcs paramavcs);
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

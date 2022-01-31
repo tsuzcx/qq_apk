@@ -1,17 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.content.DialogInterface.OnClickListener;
 
 class qsn
-  implements DialogInterface.OnShowListener
+  implements DialogInterface.OnClickListener
 {
-  qsn(qsk paramqsk) {}
+  qsn(qsl paramqsl) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    qrw.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    qrw.a(this.a.a).getWindow().clearFlags(8);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

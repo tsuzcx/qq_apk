@@ -1,97 +1,45 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class ajwj
-  extends ajyb
 {
-  protected long a;
-  private String a;
-  protected long b;
-  
-  protected void a()
+  public static String a(byte[] paramArrayOfByte)
   {
-    boolean bool2 = true;
-    super.a();
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.d >= 3L)
+    if (paramArrayOfByte == null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label203;
-      }
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      if (!bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      }
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "Data is null");
+      return "";
     }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    oidb_0xd55.RspBody localRspBody = new oidb_0xd55.RspBody();
+    try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
-      {
-        bool1 = true;
-        label139:
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
-        axrt.a().d(axrt.a());
-        this.jdField_a_of_type_Long = 0L;
+      localRspBody.mergeFrom(paramArrayOfByte);
+      if (localRspBody.wording.has()) {
+        return localRspBody.wording.get();
       }
+      return "";
     }
-    else if (this.b >= GuardManager.d) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label213;
-      }
-    }
-    label203:
-    label213:
-    for (boolean bool1 = bool2;; bool1 = false)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
-      this.b = 0L;
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "oidb_0xd55_RspBody merge fail:" + paramArrayOfByte.getMessage());
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, null, paramString3, null, 1069);
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label139;
     }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!"com.tencent.mobileqq".equals(paramString))
+    catch (Exception paramContext)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-      altu.a();
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    QQAppInterface.a().d();
-    ajwf.a().a(paramString);
-    amkg.a(true);
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.startCoreService(ajxz.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      altu.b();
-      amkg.a(false);
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, paramContext.getMessage());
     }
   }
 }

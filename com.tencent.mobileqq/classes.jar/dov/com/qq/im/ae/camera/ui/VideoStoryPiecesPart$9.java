@@ -2,25 +2,25 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bbdr;
-import bbkx;
-import bigg;
-import bikc;
+import bbef;
+import bbll;
+import bigx;
+import bikt;
 
 public class VideoStoryPiecesPart$9
   implements Runnable
 {
-  public VideoStoryPiecesPart$9(bikc parambikc) {}
+  public VideoStoryPiecesPart$9(bikt parambikt) {}
   
   public void run()
   {
     try
     {
-      bikc.a(this.this$0, bigg.a(bikc.a(this.this$0), true));
-      if ((bikc.a(this.this$0) != null) && (!bikc.a(this.this$0).isRecycled())) {
-        bikc.a(this.this$0, bbdr.b(bikc.a(this.this$0), bbkx.a(3.0F), bikc.a(this.this$0).getWidth(), bikc.a(this.this$0).getHeight()));
+      bikt.a(this.this$0, bigx.a(bikt.a(this.this$0), true));
+      if ((bikt.a(this.this$0) != null) && (!bikt.a(this.this$0).isRecycled())) {
+        bikt.a(this.this$0, bbef.b(bikt.a(this.this$0), bbll.a(3.0F), bikt.a(this.this$0).getWidth(), bikt.a(this.this$0).getHeight()));
       }
-      bikc.b(this.this$0).runOnUiThread(new VideoStoryPiecesPart.9.1(this));
+      bikt.b(this.this$0).runOnUiThread(new VideoStoryPiecesPart.9.1(this));
       return;
     }
     catch (Exception localException)

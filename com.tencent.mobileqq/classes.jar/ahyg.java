@@ -1,6 +1,19 @@
-public abstract interface ahyg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+
+public final class ahyg
+  implements Parcelable.Creator<BarrageParcelItem>
 {
-  public abstract void a(long paramLong1, long paramLong2, String paramString1, String paramString2, boolean paramBoolean);
+  public BarrageParcelItem a(Parcel paramParcel)
+  {
+    return new BarrageParcelItem(paramParcel);
+  }
+  
+  public BarrageParcelItem[] a(int paramInt)
+  {
+    return new BarrageParcelItem[paramInt];
+  }
 }
 
 

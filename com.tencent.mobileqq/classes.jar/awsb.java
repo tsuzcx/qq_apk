@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class awsb
   implements View.OnClickListener
 {
-  awsb(awsa paramawsa, awop paramawop) {}
+  awsb(awsa paramawsa, awoi paramawoi) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Awop.a(paramView);
+    this.jdField_a_of_type_Awoi.a(paramView);
   }
 }
 

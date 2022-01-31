@@ -1,30 +1,42 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class usv
-  implements syt<tmt, tmu>
+public class usv
+  extends QQUIEventReceiver<ust, tjj>
 {
-  usv(usu paramusu, JobContext paramJobContext, Integer paramInteger) {}
-  
-  public void a(@NonNull tmt paramtmt, @Nullable tmu paramtmu, @NonNull ErrorMessage paramErrorMessage)
+  public usv(@NonNull ust paramust)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramust);
+  }
+  
+  public void a(@NonNull ust paramust, @NonNull tjj paramtjj)
+  {
+    if (paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
-      return;
+      ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramtjj.jdField_a_of_type_Int));
+      if ((TextUtils.isEmpty(paramtjj.b)) || (paramtjj.b.equals(paramust.jdField_a_of_type_JavaLangString))) {
+        break label49;
+      }
     }
-    if ((paramErrorMessage.isFail()) || (paramtmu == null))
+    label49:
+    do
     {
-      veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      usu.a(this.jdField_a_of_type_Usu, paramErrorMessage);
       return;
-    }
-    usu.a(this.jdField_a_of_type_Usu).a(paramtmu.jdField_a_of_type_JavaUtilList, paramtmu.jdField_a_of_type_JavaLangString, paramtmu.jdField_a_of_type_Boolean);
-    ((uwa)tdc.a(11)).a(paramtmu.jdField_a_of_type_JavaUtilList);
-    paramtmt = usu.a(this.jdField_a_of_type_Usu).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    usu.a(this.jdField_a_of_type_Usu, paramtmt);
+      if (paramtjj.jdField_a_of_type_Int != -1) {
+        ust.a(paramust, paramtjj.jdField_a_of_type_Int);
+      }
+    } while (paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
+    paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = ust.a(paramust);
+    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramust), 5, null, false);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjj.class;
   }
 }
 

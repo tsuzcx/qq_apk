@@ -1,86 +1,25 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 class bgjf
-  implements bgjk
+  extends BroadcastReceiver
 {
-  bgjf(bgiz parambgiz) {}
+  bgjf(bgje parambgje) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_Bega != null) {
-      this.a.jdField_a_of_type_Bega.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
-    if (this.a.jdField_a_of_type_Bega != null) {
-      this.a.jdField_a_of_type_Bega.c(paramInt, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String[] paramArrayOfString)
-  {
-    int k = paramArrayOfString.length;
-    int j = 0;
-    String str;
-    if (j < k)
-    {
-      str = paramArrayOfString[j];
-      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
-      }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
-      {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-        }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
-        }
-      }
-      if (this.a.jdField_a_of_type_Bega != null) {
-        this.a.jdField_a_of_type_Bega.a(paramInt, paramArrayOfString);
-      }
-      return;
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_Bega != null) {
-      this.a.jdField_a_of_type_Bega.a(paramArrayOfString);
-    }
+    bgje.a(this.a);
+    bgje.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgjf
  * JD-Core Version:    0.7.0.1
  */

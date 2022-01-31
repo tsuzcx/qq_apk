@@ -1,16 +1,18 @@
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class orv
-  extends ajxl
+  extends BroadcastReceiver
 {
   public orv(KandianMergeManager paramKandianMergeManager) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, ajsf.aA))) {
-      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { ajsf.aA });
+    paramContext = osg.a().a();
+    if (paramContext != null) {
+      paramContext.a();
     }
   }
 }

@@ -1,48 +1,55 @@
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 class waf
-  extends wad
+  extends waa
 {
-  waf(wae paramwae, wam paramwam) {}
+  waf(wab paramwab, waj paramwaj, String[] paramArrayOfString, ArrayList paramArrayList) {}
   
   public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_Wam.onFailure(paramString);
+    ved.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
+    this.jdField_a_of_type_Waj.onFailure(paramString);
   }
   
   public void onFinish(boolean paramBoolean)
   {
-    wae localwae;
-    if (this.jdField_a_of_type_Wae.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-    {
-      localwae = this.jdField_a_of_type_Wae;
-      if (!paramBoolean) {
-        break label44;
-      }
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
+      this.jdField_a_of_type_Waj.onFinish(paramBoolean);
     }
-    label44:
-    for (int i = 1;; i = 0)
+    if (paramBoolean) {}
+    try
     {
-      localwae.jdField_a_of_type_Int = i;
-      wae.jdField_a_of_type_Wae = null;
-      this.jdField_a_of_type_Wam.onFinish(paramBoolean);
+      this.jdField_a_of_type_Wab.a(this.jdField_a_of_type_JavaUtilArrayList);
       return;
+    }
+    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
+    {
+      this.jdField_a_of_type_Waj.onFailure(localFFmpegCommandAlreadyRunningException.getMessage());
+      ved.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      this.jdField_a_of_type_Waj.onFailure(localIOException.getMessage());
+      ved.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
     }
   }
   
   public void onProgress(String paramString)
   {
-    this.jdField_a_of_type_Wam.onProgress(paramString);
+    this.jdField_a_of_type_Waj.onProgress(paramString);
   }
   
   public void onStart()
   {
-    this.jdField_a_of_type_Wam.onStart();
+    this.jdField_a_of_type_Waj.onStart();
   }
   
   public void onSuccess(String paramString)
   {
-    this.jdField_a_of_type_Wam.onSuccess(paramString);
+    this.jdField_a_of_type_Waj.onSuccess(paramString);
   }
 }
 

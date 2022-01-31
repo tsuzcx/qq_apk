@@ -1,25 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class aohd
-  implements View.OnTouchListener
+  implements aohg
 {
-  public aohd(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public aohd(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    ExtendFriendFragment.a(this.a);
   }
 }
 

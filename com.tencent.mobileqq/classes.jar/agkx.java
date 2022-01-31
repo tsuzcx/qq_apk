@@ -1,20 +1,21 @@
-import android.os.MessageQueue.IdleHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.photo.AlbumListActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
 
 public class agkx
-  implements MessageQueue.IdleHandler
+  extends BroadcastReceiver
 {
-  public agkx(AlbumListActivity paramAlbumListActivity, int paramInt1, int paramInt2) {}
+  public agkx(AlbumListActivity paramAlbumListActivity) {}
   
-  public boolean queueIdle()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("AlbumListActivity", 1, "AlbumListActivity has finished by broadcastReceiver.");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
   }
 }
 

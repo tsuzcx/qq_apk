@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class aeir
-  extends axfa
+public abstract interface aeir
 {
-  public aeir(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
   
-  public void a(int paramInt)
-  {
-    aejg localaejg = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localaejg != null) {
-      localaejg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
-    }
-  }
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
   
-  public void a(int paramInt, axes paramaxes)
-  {
-    aejg localaejg = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (paramaxes.jdField_a_of_type_Int == 0)
-    {
-      paramaxes = (aumz)paramaxes.jdField_a_of_type_JavaLangObject;
-      if (localaejg != null) {
-        localaejg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramaxes.b, false);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramaxes.b);
-      return;
-    }
-    if (localaejg != null) {
-      localaejg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramaxes.jdField_a_of_type_Aunp.a + ", desc:" + paramaxes.jdField_a_of_type_Aunp.b, false);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

@@ -1,25 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
+import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
 
-public class ankg
-  implements CompoundButton.OnCheckedChangeListener
+public final class ankg
+  implements ExternalProvider
 {
-  public ankg(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onSoLoad(String paramString1, String paramString2)
   {
-    akrz.b = paramBoolean;
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(akrz.a, 0).edit().putBoolean(akrz.c, paramBoolean).commit();
+    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankg
  * JD-Core Version:    0.7.0.1
  */

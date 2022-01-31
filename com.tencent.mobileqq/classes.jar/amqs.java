@@ -5,52 +5,59 @@ import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class amqs
-  extends amqr
+  extends amqq
 {
   public int a()
   {
-    return 170;
+    return 186;
   }
   
-  public amql a(String paramString)
+  public amqk a(String paramString)
   {
-    QLog.d("ArkAIDictConfigProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
+    QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    for (;;)
     {
-      amrd localamrd = (amrd)ampw.a(paramString, amrd.class);
-      return new amqm(paramString, localamrd);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
+      try
       {
-        QLog.i("ArkAIDictConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
+        amrd localamrd = (amrd)ampv.a(paramString, amrd.class);
+        amrn localamrn;
+        QLog.i("ArkAIKeyWordConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException1);
       }
+      catch (QStorageInstantiateException localQStorageInstantiateException1)
+      {
+        try
+        {
+          localamrn = (amrn)ampv.a(paramString, amrn.class);
+          return new amqm(paramString, localamrd, localamrn);
+        }
+        catch (QStorageInstantiateException localQStorageInstantiateException2)
+        {
+          Object localObject;
+          break label71;
+        }
+        localQStorageInstantiateException1 = localQStorageInstantiateException1;
+        localamrd = null;
+      }
+      label71:
+      localObject = null;
     }
   }
   
-  public void a(amql paramamql)
+  public void a(amqk paramamqk)
   {
-    super.a(paramamql);
-    if (paramamql == null) {
-      QLog.i("ArkAIDictConfigProcessor", 1, "newConf is null");
+    super.a(paramamqk);
+    if (paramamqk == null) {
+      QLog.i("ArkAIKeyWordConfigProcessor", 1, "newConf is null");
     }
+    alqx localalqx;
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          QLog.d("ArkAIDictConfigProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramamql.a());
-          paramamql = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        } while (paramamql == null);
-        paramamql = (ArkAppCenter)paramamql.getManager(121);
-      } while (paramamql == null);
-      paramamql = paramamql.a();
-    } while (paramamql == null);
-    paramamql.a();
+      return;
+      QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramamqk.a());
+      localalqx = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(121)).a();
+      paramamqk = paramamqk.a();
+    } while (paramamqk == null);
+    localalqx.a(paramamqk.a());
   }
 }
 

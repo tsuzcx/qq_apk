@@ -1,12 +1,21 @@
-class ayuj
+public class ayuj
+  extends ayuf
 {
-  int jdField_a_of_type_Int;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int a = 360000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 10000;
+  private int e = 20000;
+  private int f = 3000;
   
-  ayuj(int paramInt, String[] paramArrayOfString)
+  public int a()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = paramInt;
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 

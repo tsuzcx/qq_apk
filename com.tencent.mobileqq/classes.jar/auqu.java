@@ -1,34 +1,25 @@
 import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import android.view.animation.Animation;
 import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
 public class auqu
-  implements Animator.AnimatorListener
+  extends bfmx
 {
-  public auqu(FormalView paramFormalView) {}
+  public auqu(FormalView paramFormalView, View paramView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
+    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
-    {
-      FormalView.b(this.a).setVisibility(0);
-      return;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
+      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
     }
-    FormalView.b(this.a).setVisibility(8);
   }
 }
 

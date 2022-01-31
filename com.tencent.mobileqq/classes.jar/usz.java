@@ -1,34 +1,54 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class usz
-  extends QQUIEventReceiver<usw, utz>
+  extends QQUIEventReceiver<ust, tkk>
 {
-  public usz(@NonNull usw paramusw)
+  public usz(@NonNull ust paramust)
   {
-    super(paramusw);
+    super(paramust);
   }
   
-  public void a(@NonNull usw paramusw, @NonNull utz paramutz)
+  public void a(@NonNull ust paramust, @NonNull tkk paramtkk)
   {
-    if (paramutz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (TextUtils.equals(paramtkk.jdField_a_of_type_JavaLangString, String.valueOf(paramust.hashCode())))
     {
-      veg.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramutz.jdField_a_of_type_Int));
-      usw.b(paramusw, paramutz.jdField_a_of_type_Int);
-      if (paramusw.a != null)
+      if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
       {
-        paramusw.a.shareGroupCount = usw.b(paramusw);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramusw), 5, null, false);
+        ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramtkk);
+        paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+        paramust.jdField_a_of_type_JavaLangString = paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+        if (ust.a(paramust) != -1) {
+          paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = ust.a(paramust);
+        }
+        if (ust.b(paramust) != -1) {
+          paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = ust.b(paramust);
+        }
+        ((FriendListHandler)tsr.a().a(1)).c(paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+        ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramust), 5, null, false);
+      }
+      for (;;)
+      {
+        ust.a(paramust).a(paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+        return;
+        bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706538) + paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
+        ved.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramtkk });
       }
     }
+    ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramtkk);
   }
   
   public Class acceptEventClass()
   {
-    return utz.class;
+    return tkk.class;
   }
 }
 

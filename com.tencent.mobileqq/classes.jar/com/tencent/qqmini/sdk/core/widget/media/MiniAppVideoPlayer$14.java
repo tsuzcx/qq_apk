@@ -10,7 +10,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bffu;
+import bfgl;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import java.lang.ref.WeakReference;
 
@@ -35,7 +35,7 @@ class MiniAppVideoPlayer$14
     this.this$0.c = true;
     MiniAppVideoPlayer.e(this.this$0).setVisibility(0);
     MiniAppVideoPlayer.d(this.this$0).setVisibility(0);
-    if (this.this$0.jdField_a_of_type_Beml != null) {}
+    if (this.this$0.jdField_a_of_type_Benc != null) {}
     MiniAppVideoPlayer.a(this.this$0, ((CoverVideoView)this.this$0.getParent()).getLayoutParams());
     if (this.this$0.getParent().getParent() != null)
     {
@@ -69,8 +69,8 @@ class MiniAppVideoPlayer$14
     }
     for (;;)
     {
-      j = bffu.b(this.this$0.getContext());
-      k = bffu.a(this.this$0.getContext());
+      j = bfgl.b(this.this$0.getContext());
+      k = bfgl.a(this.this$0.getContext());
       int m;
       label296:
       label300:
@@ -81,7 +81,7 @@ class MiniAppVideoPlayer$14
         if (i == 0) {
           break label442;
         }
-        if (this.this$0.jdField_a_of_type_Beml != null) {
+        if (this.this$0.jdField_a_of_type_Benc != null) {
           break label447;
         }
         localObject = new RelativeLayout.LayoutParams(m, k);

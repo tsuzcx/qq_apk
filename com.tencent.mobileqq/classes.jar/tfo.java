@@ -1,15 +1,47 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tfo
-  implements tkm
+class tfo
+  extends SimpleObserver<List<tso>>
 {
-  tfo(tfn paramtfn) {}
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(tkn paramtkn)
+  tfo(tfk paramtfk) {}
+  
+  public void a(List<tso> paramList)
   {
-    veg.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramtkn);
-    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramtkn));
+    ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
+    super.onNext(paramList);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      tso localtso = (tso)paramList.get(i);
+      if (!localtso.a) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localtso.b);
+      }
+      i += 1;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onComplete()
+  {
+    ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
+    super.onComplete();
+    this.jdField_a_of_type_Tfk.a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
+    super.onError(paramError);
+    this.jdField_a_of_type_Tfk.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

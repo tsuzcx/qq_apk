@@ -1,155 +1,75 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import mqq.app.AccountNotMatchException;
 
-public class auok
+class auok
+  implements auon
 {
-  public static int a;
-  public static String a;
-  public static boolean a;
-  public static boolean b;
+  auok(auoj paramauoj, aunv paramaunv, auod paramauod) {}
   
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "struct_msg_pic_pre";
-  }
+  public void a(int paramInt) {}
   
-  public static int a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      return BaseApplicationImpl.getApplication().getSharedPreferences(localQQAppInterface.getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).getInt("mStructMsgPicSwitch", 0);
-    }
-    return 0;
-  }
+  public void a(int paramInt, aunw paramaunw) {}
   
-  public static void a(int paramInt)
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      jdField_a_of_type_Int = paramInt;
-      b = true;
-      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences(((QQAppInterface)localObject).getCurrentAccountUin() + "_" + jdField_a_of_type_JavaLangString, 0).edit();
-      ((SharedPreferences.Editor)localObject).putInt("mStructMsgPicSwitch", paramInt);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-  }
+  public void a(int paramInt, ArrayList<aunw> paramArrayList) {}
   
-  public static void a(axun paramaxun, List<String> paramList)
-  {
-    if ((paramaxun != null) && ((paramaxun instanceof axuo)))
-    {
-      paramaxun = ((axuo)paramaxun).a;
-      if ((paramaxun != null) && (paramaxun.size() > 0)) {
-        paramaxun = paramaxun.iterator();
-      }
-    }
-    else
-    {
-      while (paramaxun.hasNext())
-      {
-        a((axun)paramaxun.next(), paramList);
-        continue;
-        if ((paramaxun != null) && ((paramaxun instanceof axwq)))
-        {
-          paramaxun = ((axwq)paramaxun).S;
-          if ((TextUtils.isEmpty(paramaxun)) || (!paramaxun.startsWith("http"))) {
-            break;
-          }
-        }
-      }
-    }
-    try
-    {
-      if (a(new URL(paramaxun).getHost())) {
-        paramList.add(paramaxun);
-      }
-      return;
-    }
-    catch (MalformedURLException paramaxun)
-    {
-      paramaxun.printStackTrace();
-    }
-  }
+  public void a_(int paramInt, boolean paramBoolean) {}
   
-  public static void a(MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
+  public void b(int paramInt, aunw paramaunw) {}
+  
+  public void c(int paramInt, aunw arg2)
   {
-    int i = aunq.a();
-    if (!b)
+    auor localauor = (auor)???.a;
+    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Aunv.jdField_a_of_type_Auod.g).append(",uuid:").append(this.jdField_a_of_type_Aunv.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
+    if (paramInt == 0)
     {
-      jdField_a_of_type_Int = a();
-      b = true;
-    }
-    if ((i != 0) && (jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("StructMsgPicPreDelegate", 2, "not wifi not pre download");
-      }
+      ??? = "ResultOk";
+      aung.a("PresendPicMgrService", "onSend ", ???);
+      aung.a("PresendPicMgrService", "onSend", " SendResult = " + localauor);
     }
     for (;;)
     {
-      return;
-      if (paramMessageForStructing != null)
+      synchronized (auoj.a(this.jdField_a_of_type_Auoj))
       {
-        paramQQAppInterface = paramMessageForStructing.structingMsg;
-        ArrayList localArrayList = new ArrayList();
-        if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof AbsShareMsg)))
+        if (!this.jdField_a_of_type_Auod.f)
         {
-          localObject = ((AbsShareMsg)paramQQAppInterface).getStructMsgItemLists();
-          if ((localObject != null) && (((List)localObject).size() > 0))
+          if (paramInt == 0)
           {
-            localObject = ((List)localObject).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              a((axun)((Iterator)localObject).next(), localArrayList);
-            }
+            this.jdField_a_of_type_Aunv.jdField_a_of_type_Auod.c = 1;
+            aung.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Aunv);
+            auoj.a(this.jdField_a_of_type_Auoj).add(this.jdField_a_of_type_Aunv);
+            return;
+            ??? = "ResultFail";
+            break;
           }
+          this.jdField_a_of_type_Aunv.jdField_a_of_type_Auod.c = 2;
         }
-        if (localArrayList.size() <= 0) {
-          break;
+      }
+      if (paramInt == 0)
+      {
+        try
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(auoj.a(this.jdField_a_of_type_Auoj));
+          localObject2 = (MessageRecord)this.jdField_a_of_type_Aunv.jdField_a_of_type_Auod.a;
+          ((awap)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
+          aung.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Aunv);
         }
-        Object localObject = new ayrr();
-        ((ayrr)localObject).b = paramQQAppInterface.mMsgServiceID;
-        ((ayrr)localObject).c = paramQQAppInterface.mMsgTemplateID;
-        ((ayrr)localObject).jdField_a_of_type_JavaLangString = String.valueOf(paramMessageForStructing.istroop);
-        ((ayrr)localObject).jdField_a_of_type_Boolean = true;
-        paramMessageForStructing = localArrayList.iterator();
-        while (paramMessageForStructing.hasNext()) {
-          a((String)paramMessageForStructing.next(), (ayrr)localObject);
+        catch (AccountNotMatchException localAccountNotMatchException) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("PresendPicMgrService", 2, "no appRuntime");
         }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
       }
     }
   }
   
-  public static void a(String paramString, ayrr paramayrr)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http"))) {
-      ayrn.a(paramString, paramayrr, null, 1);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool = Pattern.compile("((\\.|^)(qq\\.com|soso\\.com|gtimg\\.cn|url\\.cn|qpic\\.cn|qlogo\\.cn|idqqimg\\.com)$)").matcher(paramString).find();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StructMsgPicPreDelegate", 4, " host = " + paramString + " ,isTencentDomain = " + bool);
-    }
-    return bool;
-  }
+  public void d(int paramInt, aunw paramaunw) {}
 }
 
 

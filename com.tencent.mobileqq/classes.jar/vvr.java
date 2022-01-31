@@ -1,77 +1,19 @@
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import java.util.ArrayList;
 
 public class vvr
-  extends BaseAdapter
+  implements vvs
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<vvw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public vvr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public void a(@NonNull ArrayList<vvt> paramArrayList, @NonNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList<vvw> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    vvw localvvw = (vvw)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    int i = 0;
+    while (i < vvt.a.length)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561227, paramViewGroup, false);
-      paramView = new vvs(this);
-      paramView.a = ((ImageView)localView.findViewById(2131368320));
-      paramView.b = ((ImageView)localView.findViewById(2131368375));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+      paramArrayList.add(new vvt(paramContext.getResources().getDrawable(vvt.b[i]), 0, vvt.a[i]));
+      i += 1;
     }
-    for (;;)
-    {
-      paramViewGroup.a.setImageDrawable(localvvw.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramViewGroup.b.setVisibility(0);
-      return localView;
-      paramViewGroup = (vvs)paramView.getTag();
-      localView = paramView;
-    }
-    paramViewGroup.b.setVisibility(8);
-    return localView;
   }
 }
 

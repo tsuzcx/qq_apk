@@ -1,6 +1,6 @@
 public abstract interface atwh
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

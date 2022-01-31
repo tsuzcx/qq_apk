@@ -1,83 +1,91 @@
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import android.os.Bundle;
 
 public class bayz
-  extends AsyncTask<Object, Void, Drawable>
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public Bundle a;
+  public Object a;
+  public String a;
+  public String b;
   
-  private View a()
+  public bayz() {}
+  
+  public bayz(int paramInt, String paramString1, String paramString2, Object paramObject, Bundle paramBundle)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (this == bayx.a(this.jdField_a_of_type_Bayx, localView)) {
-      return localView;
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public Drawable a(Object... paramVarArgs)
+  public boolean a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
-    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
-    bayv localbayv = (bayv)paramVarArgs[1];
-    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
-    if (((bayx.a(this.jdField_a_of_type_Bayx) == null) || (isCancelled()) || (a() == null) || (bayx.a(this.jdField_a_of_type_Bayx))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!bayx.a(this.jdField_a_of_type_Bayx)))) {}
+    if ((this.jdField_a_of_type_Int < 1) || (this.jdField_a_of_type_Int > 4)) {}
+    while ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString.trim())) || ((this.jdField_a_of_type_Int == 3) && ((this.b == null) || ("".equals(this.b))) && ((this.jdField_a_of_type_JavaLangObject == null) || ("".equals(this.jdField_a_of_type_JavaLangObject))))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof bayz))
+    {
+      paramObject = (bayz)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (bbbr.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && ((3 != this.jdField_a_of_type_Int) || ((bbbr.a(this.b, paramObject.b)) && (bbbr.a(this.jdField_a_of_type_JavaLangObject, paramObject.jdField_a_of_type_JavaLangObject)) && (bbbr.a(this.jdField_a_of_type_AndroidOsBundle, paramObject.jdField_a_of_type_AndroidOsBundle))))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int m = 0;
+    int n = this.jdField_a_of_type_Int;
+    int i;
+    int j;
+    label27:
+    int k;
+    if (this.jdField_a_of_type_JavaLangString == null)
+    {
+      i = 0;
+      if (this.b != null) {
+        break label66;
+      }
+      j = 0;
+      if (this.jdField_a_of_type_JavaLangObject != null) {
+        break label77;
+      }
+      k = 0;
+      label36:
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        break label88;
+      }
+    }
     for (;;)
     {
-      try
-      {
-        paramVarArgs = localbayv.a();
-        if ((bayx.a(this.jdField_a_of_type_Bayx) != null) && (paramVarArgs != null)) {
-          bayx.a(this.jdField_a_of_type_Bayx).a(str, paramVarArgs);
-        }
-        return paramVarArgs;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        if (bayx.a(this.jdField_a_of_type_Bayx) != null) {
-          bayx.a(this.jdField_a_of_type_Bayx).a();
-        }
-        System.gc();
-        Thread.yield();
-        try
-        {
-          paramVarArgs = localbayv.a();
-        }
-        catch (OutOfMemoryError paramVarArgs)
-        {
-          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
-        }
-      }
-      paramVarArgs = null;
+      return k + (n + i + j) + m;
+      i = this.jdField_a_of_type_JavaLangString.hashCode();
+      break;
+      label66:
+      j = this.b.hashCode();
+      break label27;
+      label77:
+      k = this.jdField_a_of_type_JavaLangObject.hashCode();
+      break label36;
+      label88:
+      m = this.jdField_a_of_type_AndroidOsBundle.hashCode();
     }
   }
   
-  public void a(Drawable paramDrawable)
+  public String toString()
   {
-    View localView = a();
-    baza localbaza = (baza)bayx.a(this.jdField_a_of_type_Bayx).remove(localView);
-    if ((isCancelled()) || (bayx.a(this.jdField_a_of_type_Bayx))) {
-      paramDrawable = null;
-    }
-    if (localView != null)
-    {
-      if (paramDrawable != null) {
-        break label72;
-      }
-      if ((localbaza != null) && (localbaza.a != null)) {
-        localbaza.a.a(localView, null);
-      }
-    }
-    return;
-    label72:
-    bayx.a(this.jdField_a_of_type_Bayx, this.jdField_a_of_type_Boolean, localView, paramDrawable, localbaza);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[iType = ").append(this.jdField_a_of_type_Int).append(", strKey = ").append(this.jdField_a_of_type_JavaLangString).append(", strSubKey = ").append(this.b).append(", obj = ").append(this.jdField_a_of_type_JavaLangObject).append(", extraUpdateTargetParams = ").append(this.jdField_a_of_type_AndroidOsBundle).append(']');
+    return localStringBuilder.toString();
   }
 }
 

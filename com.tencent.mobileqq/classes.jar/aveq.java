@@ -1,55 +1,27 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.QCallRecord;
 import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aveq
-  extends BaseAdapter
+  implements bfph
 {
-  public List<QCallRecord> a;
+  public aveq(QCallDetailActivity paramQCallDetailActivity, String paramString, bfpc parambfpc) {}
   
-  public aveq(QCallDetailActivity paramQCallDetailActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    if ((QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == null) || (paramInt >= QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).length)) {
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
-      return QCallRecord.TYPE_DATE;
+    switch (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)[paramInt])
+    {
+    default: 
+      return;
     }
-    return QCallRecord.TYPE_REALRECORD;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return paramView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.startActivity(paramView);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF9", "0X8005AF9", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

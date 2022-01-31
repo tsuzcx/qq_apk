@@ -1,22 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import java.util.List;
 
 public class sal
-  extends Handler
+  implements View.OnKeyListener
 {
-  public sal(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  private sal(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMessage.what)
+    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
     {
-    default: 
-      return;
+      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
+      if (paramKeyEvent != null) {
+        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
+      }
+      ReadInJoyNewSearchActivity.a(this.a, paramView);
+      this.a.a(paramView);
     }
-    paramMessage = (List)paramMessage.obj;
-    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
+    return false;
   }
 }
 

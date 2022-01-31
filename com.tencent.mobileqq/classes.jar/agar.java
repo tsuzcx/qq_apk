@@ -10,7 +10,6 @@ public class agar
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
     this.a.getActivity().finish();
   }
 }

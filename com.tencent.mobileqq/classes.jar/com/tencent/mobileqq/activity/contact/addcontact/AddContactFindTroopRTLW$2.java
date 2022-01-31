@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import afdm;
+import afdk;
 import android.widget.TextView;
 
 public class AddContactFindTroopRTLW$2
   implements Runnable
 {
-  public AddContactFindTroopRTLW$2(afdm paramafdm) {}
+  public AddContactFindTroopRTLW$2(afdk paramafdk) {}
   
   public void run()
   {
-    afdm.a(this.this$0).setVisibility(0);
+    afdk.a(this.this$0).setVisibility(0);
   }
 }
 

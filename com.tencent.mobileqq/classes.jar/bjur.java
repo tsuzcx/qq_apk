@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bjur
-  implements View.OnClickListener
+public abstract interface bjur
+  extends bjxm
 {
-  bjur(bjun parambjun) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    this.a.a.a(34);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

@@ -1,11 +1,42 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
 class airg
+  extends Handler
 {
-  public int a;
-  public String a;
-  
-  airg(aird paramaird)
+  airg(airf paramairf, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = "0";
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == airf.a(this.a))
+    {
+      QLog.d(airf.a(this.a), 4, "Receive Message!");
+      this.a.a();
+    }
+    for (;;)
+    {
+      try
+      {
+        axqy.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
+        return;
+      }
+      catch (Exception paramMessage) {}
+      if (paramMessage.what == airf.b(this.a))
+      {
+        QLog.d(airf.a(this.a), 4, "Receive Message!");
+        try
+        {
+          axqy.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
+          return;
+        }
+        catch (Exception paramMessage) {}
+      }
+    }
   }
 }
 

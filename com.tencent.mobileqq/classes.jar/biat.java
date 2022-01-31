@@ -1,18 +1,12 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.content.Context;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
 
-class biat
-  implements View.OnKeyListener
+public final class biat
+  extends bhmt<QzoneHuangzuanVipIconShow, Context>
 {
-  biat(biaq parambiaq) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected QzoneHuangzuanVipIconShow a(Context paramContext)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
-      this.a.d();
-    }
-    return false;
+    return new QzoneHuangzuanVipIconShow(paramContext);
   }
 }
 

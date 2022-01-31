@@ -1,25 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class afwr
-  extends Handler
+  implements View.OnClickListener
 {
   public afwr(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1)
+    if (!this.a.d)
     {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
+      if (bfnz.e()) {
+        this.a.startActivity(new Intent("android.settings.SETTINGS"));
       }
-      this.a.a = new bcpq(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691528);
-      this.a.a.show();
     }
+    else {
+      return;
+    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

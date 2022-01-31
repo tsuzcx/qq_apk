@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import abzw;
+import abzx;
+import abzy;
 import acaa;
 import acab;
-import acac;
-import acae;
-import acaf;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbjn;
+import bbkb;
 import com.tencent.av.widget.RatingBar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -28,9 +28,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import lcl;
-import ldi;
-import mrv;
+import lcg;
+import ldd;
+import mrs;
 import org.json.JSONObject;
 
 public class ScoreQAVFragment
@@ -38,9 +38,9 @@ public class ScoreQAVFragment
 {
   public int a;
   public long a;
-  private acaf jdField_a_of_type_Acaf;
+  private acab jdField_a_of_type_Acab;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acac(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new abzy(this);
   public Button a;
   public ImageView a;
   public TextView a;
@@ -107,34 +107,34 @@ public class ScoreQAVFragment
   
   void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131375023));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131375025));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-    this.jdField_a_of_type_ComTencentAvWidgetRatingBar = ((RatingBar)paramView.findViewById(2131374703));
+    this.jdField_a_of_type_ComTencentAvWidgetRatingBar = ((RatingBar)paramView.findViewById(2131374705));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
     try
     {
-      if (mrv.a("qav_score_normal.jpg")) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(getResources(), mrv.b() + "qav_score_normal.jpg"));
+      if (mrs.a("qav_score_normal.jpg")) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(getResources(), mrs.b() + "qav_score_normal.jpg"));
       }
-      this.jdField_a_of_type_ComTencentAvWidgetRatingBar.setOnRatingListener(new acaa(this));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364527));
+      this.jdField_a_of_type_ComTencentAvWidgetRatingBar.setOnRatingListener(new abzw(this));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364526));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373475));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376701));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373477));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376703));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
         this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       }
-      if (bbjn.e(this.jdField_d_of_type_JavaLangString).getBoolean(ldi.l, false))
+      if (bbkb.e(this.jdField_d_of_type_JavaLangString).getBoolean(ldd.l, false))
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131696141);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131696142);
         this.jdField_a_of_type_ComTencentAvWidgetRatingBar.setClickable(false);
       }
-      this.jdField_a_of_type_Acaf = new acaf(this);
-      paramView = new acab(this);
-      this.jdField_a_of_type_Acaf.a(paramView);
+      this.jdField_a_of_type_Acab = new acab(this);
+      paramView = new abzx(this);
+      this.jdField_a_of_type_Acab.a(paramView);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -151,7 +151,7 @@ public class ScoreQAVFragment
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      lcl.c("ScoreActivity", "parse config: " + paramString);
+      lcg.c("ScoreActivity", "parse config: " + paramString);
     }
     do
     {
@@ -174,11 +174,11 @@ public class ScoreQAVFragment
         do
         {
           paramString.printStackTrace();
-          lcl.c("ScoreActivity", "parse exception: " + paramString.toString());
+          lcg.c("ScoreActivity", "parse exception: " + paramString.toString());
         } while (!QLog.isColorLevel());
         return;
       }
-      lcl.c("ScoreActivity", "parse|config is empty!");
+      lcg.c("ScoreActivity", "parse|config is empty!");
     } while (!QLog.isColorLevel());
   }
   
@@ -199,30 +199,30 @@ public class ScoreQAVFragment
   public void b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      lcl.c("ScoreActivity", "parse infos: " + paramString);
+      lcg.c("ScoreActivity", "parse infos: " + paramString);
     }
     do
     {
       try
       {
         paramString = new JSONObject(paramString);
-        if (paramString.has(ldi.jdField_d_of_type_JavaLangString)) {
-          this.jdField_a_of_type_Long = paramString.getLong(ldi.jdField_d_of_type_JavaLangString);
+        if (paramString.has(ldd.jdField_d_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Long = paramString.getLong(ldd.jdField_d_of_type_JavaLangString);
         }
-        if (paramString.has(ldi.jdField_e_of_type_JavaLangString)) {
-          this.jdField_b_of_type_Long = paramString.getLong(ldi.jdField_e_of_type_JavaLangString);
+        if (paramString.has(ldd.jdField_e_of_type_JavaLangString)) {
+          this.jdField_b_of_type_Long = paramString.getLong(ldd.jdField_e_of_type_JavaLangString);
         }
-        if (paramString.has(ldi.jdField_f_of_type_JavaLangString)) {
-          this.jdField_a_of_type_Int = paramString.getInt(ldi.jdField_f_of_type_JavaLangString);
+        if (paramString.has(ldd.jdField_f_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Int = paramString.getInt(ldd.jdField_f_of_type_JavaLangString);
         }
-        if (paramString.has(ldi.j)) {
-          this.jdField_d_of_type_Long = paramString.getLong(ldi.j);
+        if (paramString.has(ldd.j)) {
+          this.jdField_d_of_type_Long = paramString.getLong(ldd.j);
         }
-        if (paramString.has(ldi.i)) {
-          this.jdField_c_of_type_Long = paramString.getLong(ldi.i);
+        if (paramString.has(ldd.i)) {
+          this.jdField_c_of_type_Long = paramString.getLong(ldd.i);
         }
-        if (paramString.has(ldi.k)) {
-          this.jdField_c_of_type_JavaLangString = paramString.getString(ldi.k);
+        if (paramString.has(ldd.k)) {
+          this.jdField_c_of_type_JavaLangString = paramString.getString(ldd.k);
         }
         return;
       }
@@ -231,12 +231,12 @@ public class ScoreQAVFragment
         do
         {
           paramString.printStackTrace();
-          lcl.c("ScoreActivity", "parse exception: " + paramString.toString());
+          lcg.c("ScoreActivity", "parse exception: " + paramString.toString());
         } while (!QLog.isColorLevel());
         QLog.i("ScoreActivity", 2, "parse exception: " + paramString.toString());
         return;
       }
-      lcl.c("ScoreActivity", "parse|infos is empty!");
+      lcg.c("ScoreActivity", "parse|infos is empty!");
     } while (!QLog.isColorLevel());
     QLog.i("ScoreActivity", 2, "parse|infos is empty!");
   }
@@ -265,7 +265,7 @@ public class ScoreQAVFragment
       this.jdField_b_of_type_Int = paramBundle.getInt("uinType", 0);
       this.jdField_f_of_type_Long = paramBundle.getLong("uniseq", 0L);
       a(paramView);
-      new acae(this).execute(new String[0]);
+      new acaa(this).execute(new String[0]);
       return;
     }
     catch (Exception paramBundle)

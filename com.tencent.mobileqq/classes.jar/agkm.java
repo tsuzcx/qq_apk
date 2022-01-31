@@ -1,52 +1,44 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agkm
-  implements agip
+  extends aumg
 {
-  public agkm(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public agkm(PhoneLaunchActivity.1 param1) {}
   
-  public View a()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.a.leftView;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.b;
-  }
-  
-  public TextView b()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public TextView c()
-  {
-    return this.a.centerView;
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
+    if (this.a.this$0.a != null)
+    {
+      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
+      this.a.this$0.a = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      Object localObject = this.a.this$0;
+      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
+      {
+        this.a.this$0.setResult(-1);
+        this.a.this$0.finish();
+        return;
+      }
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a.this$0)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.this$0.startActivityForResult((Intent)localObject, 2);
+      this.a.this$0.setResult(-1);
+      this.a.this$0.finish();
+      return;
+    }
+    this.a.this$0.a(ajya.a(2131708020));
   }
 }
 

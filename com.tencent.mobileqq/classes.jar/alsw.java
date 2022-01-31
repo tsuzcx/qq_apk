@@ -1,19 +1,30 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import java.util.HashMap;
 
-public final class alsw
-  implements ArkEnvironmentManager.IDataReport
+public class alsw
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  private static HashMap<String, alsx> a = new HashMap();
+  
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    QQAppInterface localQQAppInterface = null;
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)localAppRuntime;
+    paramString = (alsx)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
     }
-    altd.a(localQQAppInterface, paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    return paramObject2;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString != null) {
+      a.remove(paramString);
+    }
+  }
+  
+  public static void a(String paramString, alsx paramalsx)
+  {
+    if (paramString != null) {
+      a.put(paramString, paramalsx);
+    }
   }
 }
 

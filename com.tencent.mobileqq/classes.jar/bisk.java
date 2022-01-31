@@ -1,17 +1,13 @@
-public class bisk
+import android.support.v7.widget.RecyclerView;
+
+class bisk
+  implements xez
 {
-  private Boolean a;
-  public String a;
+  bisk(bise parambise) {}
   
-  public bisk(String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
+    bise.a(this.a).setVisibility(0);
   }
 }
 

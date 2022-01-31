@@ -1,12 +1,22 @@
-import java.io.File;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-public abstract interface bgko
+public class bgko
+  extends FlingGestureHandler
 {
-  public abstract void a(File paramFile1, File paramFile2);
+  boolean a = true;
   
-  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
+  public bgko(Activity paramActivity)
+  {
+    super(paramActivity);
+  }
   
-  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
+  public void flingLToR()
+  {
+    if (this.a) {
+      super.flingLToR();
+    }
+  }
 }
 
 

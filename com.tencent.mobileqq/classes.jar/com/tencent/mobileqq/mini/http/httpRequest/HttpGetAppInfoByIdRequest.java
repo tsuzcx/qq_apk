@@ -5,7 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -59,7 +59,7 @@ public class HttpGetAppInfoByIdRequest
     INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bblm.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bbma.b(paramArrayOfByte));
       localStGetAppInfoByIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("GetAppInfoByIdRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStGetAppInfoByIdRsp != null)

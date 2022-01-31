@@ -1,12 +1,32 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+
 public class qdv
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public int c;
-  public String c = "";
-  public String d = "";
+  private static qbe a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+      return new qar(paramBaseArticleInfo);
+    }
+    return new qdt(paramBaseArticleInfo);
+  }
+  
+  public static qbe a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (a(paramBaseArticleInfo)) {
+      return a(1, paramBaseArticleInfo);
+    }
+    return a(0, paramBaseArticleInfo);
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!ram.q((ArticleInfo)paramBaseArticleInfo));
+  }
 }
 
 

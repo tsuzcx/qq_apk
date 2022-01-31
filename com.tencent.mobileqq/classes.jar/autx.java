@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
 class autx
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  autx(autt paramautt) {}
+  autx(autv paramautv, PersonalityLabelInfo paramPersonalityLabelInfo, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.e();
+      return;
+      autv.a(this.jdField_a_of_type_Autv, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      continue;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Autv.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.jdField_a_of_type_Autv.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
     }
   }
 }

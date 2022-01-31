@@ -1,83 +1,110 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v4.util.ArrayMap;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class anar
-  extends ampb<anap>
 {
-  public int a()
+  private int jdField_a_of_type_Int;
+  private ArrayMap<String, ArrayList<anas>> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(5);
+  
+  public static anar a()
   {
-    return 456;
+    return (anar)ampl.a().a(432);
   }
   
-  @NonNull
-  public anap a(int paramInt)
+  public static anar a(amph paramamph)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VerticalSearchConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new anap();
-  }
-  
-  @Nullable
-  public anap a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerticalSearchConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
+    int i = 0;
+    anar localanar = new anar();
+    if (paramamph != null) {
       if (QLog.isColorLevel()) {
-        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
+        QLog.d("SearchRichConfBean", 2, "parse taskid->" + paramamph.jdField_a_of_type_Int + " content->" + paramamph.jdField_a_of_type_JavaLangString);
       }
-      return anap.a(paramArrayOfampi[0]);
+    }
+    for (;;)
+    {
+      ArrayList localArrayList1;
+      ArrayList localArrayList2;
+      try
+      {
+        paramamph = new JSONObject(paramamph.jdField_a_of_type_JavaLangString);
+        localanar.a(paramamph.optInt("switch", 0));
+        paramamph = paramamph.optJSONArray("templateinfo");
+        if (paramamph != null)
+        {
+          localArrayList1 = new ArrayList(10);
+          localArrayList2 = new ArrayList(10);
+          int j = paramamph.length();
+          if (i >= j) {
+            break label292;
+          }
+          JSONObject localJSONObject = paramamph.optJSONObject(i);
+          if (localJSONObject == null) {
+            break label310;
+          }
+          anas localanas = new anas();
+          localanas.jdField_a_of_type_Int = localJSONObject.optInt("templateid");
+          localanas.jdField_a_of_type_JavaLangString = localJSONObject.optString("templatetype");
+          localanas.c = localJSONObject.optString("templatever");
+          localanas.b = localJSONObject.optString("templatename");
+          localanas.d = localJSONObject.optString("templateview");
+          if ("ark".equals(localanas.jdField_a_of_type_JavaLangString)) {
+            localArrayList1.add(localanas);
+          } else if ("native".equals(localanas.jdField_a_of_type_JavaLangString)) {
+            localArrayList2.add(localanas);
+          }
+        }
+      }
+      catch (Exception paramamph)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SearchRichConfBean", 2, "parse error->" + paramamph.toString());
+        }
+      }
+      return localanar;
+      label292:
+      localanar.a("ark", localArrayList1);
+      localanar.a("native", localArrayList2);
+      return localanar;
+      label310:
+      i += 1;
+    }
+  }
+  
+  public ArrayList<anas> a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) {
+      return (ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
     }
     return null;
   }
   
-  public Class a()
+  void a(int paramInt)
   {
-    return anap.class;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt)
+  void a(String paramString, ArrayList<anas> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
+    if ((this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) && (paramString != null)) {
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramArrayList);
     }
   }
   
-  public void a(anap paramanap)
+  public boolean a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramanap == null) {
-        break label43;
-      }
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) {}
+    for (String str = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.toString();; str = "null") {
+      return String.format("mRichSwitch:%d  templateData:%s", new Object[] { Integer.valueOf(i), str });
     }
-    label43:
-    for (paramanap = paramanap.toString();; paramanap = " empty")
-    {
-      QLog.d("VerticalSearchConfProcessor", 2, paramanap);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

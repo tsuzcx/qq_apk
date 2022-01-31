@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aavx;
-import ajyc;
-import akup;
+import aavt;
+import ajya;
+import akuo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -16,15 +16,15 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import azgx;
-import azgy;
 import azgz;
 import azha;
 import azhb;
-import baho;
-import bair;
-import bcpw;
-import bfpc;
+import azhc;
+import azhd;
+import baic;
+import bajf;
+import bcql;
+import bfpt;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
@@ -40,14 +40,14 @@ import org.json.JSONObject;
 
 public class TroopBarPublishLocationSelectActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, baho, bfpc
+  implements View.OnClickListener, baic, bfpt
 {
   public long a;
-  protected akup a;
+  protected akuo a;
   protected Drawable a;
   public Handler a;
   protected View a;
-  protected azhb a;
+  protected azhd a;
   public final TroopBarPOI a;
   protected PullRefreshHeader a;
   public XListView a;
@@ -60,11 +60,11 @@ public class TroopBarPublishLocationSelectActivity
   public TroopBarPublishLocationSelectActivity()
   {
     this.jdField_a_of_type_JavaLangString = "TroopBarPublishLocationSelectActivity";
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", ajyc.a(2131715225), 0, "", 0, "");
-    this.jdField_a_of_type_AndroidOsHandler = new azgz(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", ajya.a(2131715236), 0, "", 0, "");
+    this.jdField_a_of_type_AndroidOsHandler = new azhb(this);
   }
   
-  public static final void a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, baho parambaho)
+  public static final void a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, baic parambaic)
   {
     Bundle localBundle1 = new Bundle();
     localBundle1.putString("lat", String.valueOf(paramInt1));
@@ -75,27 +75,27 @@ public class TroopBarPublishLocationSelectActivity
     if (paramBoolean) {
       localBundle2.putBoolean("refresh_all_poi", paramBoolean);
     }
-    bair.a(paramBaseActivity, localBundle1, "https://buluo.qq.com/cgi-bin/bar/user/poilist", 3, localBundle2, parambaho);
+    bajf.a(paramBaseActivity, localBundle1, "https://buluo.qq.com/cgi-bin/bar/user/poilist", 3, localBundle2, parambaic);
   }
   
   protected void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559459, this.jdField_a_of_type_ComTencentWidgetXListView, false));
-    aavx localaavx = new aavx();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localaavx);
+    aavt localaavt = new aavt();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localaavt);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getResources().getDrawable(2130839135));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new azgy(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new azha(this));
   }
   
   protected void a(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
     {
-      aavx localaavx = (aavx)this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getTag();
-      if (localaavx != null)
+      aavt localaavt = (aavt)this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getTag();
+      if (localaavt != null)
       {
-        localaavx.jdField_a_of_type_Boolean = false;
+        localaavt.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 800L);
         if (paramInt == 0) {
           this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -166,7 +166,7 @@ public class TroopBarPublishLocationSelectActivity
         {
           paramBundle = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(1);
           this.b = paramBundle;
-          this.jdField_a_of_type_Azhb.notifyDataSetChanged();
+          this.jdField_a_of_type_Azhd.notifyDataSetChanged();
           return;
           label212:
           if (paramJSONObject.optInt("isend", -1) == 1) {
@@ -176,15 +176,15 @@ public class TroopBarPublishLocationSelectActivity
           if (paramInt == 0) {
             break label274;
           }
-          bcpw.a(this, 1, getString(2131696569, new Object[] { Integer.valueOf(paramInt) }), 0).b(getTitleBarHeight());
+          bcql.a(this, 1, getString(2131696570, new Object[] { Integer.valueOf(paramInt) }), 0).b(getTitleBarHeight());
           return;
         }
         paramBundle = null;
         continue;
         label274:
-        bcpw.a(this, 1, getString(2131696569, new Object[] { Integer.valueOf(paramJSONObject.optInt("errno", -1)) }), 0).b(getTitleBarHeight());
+        bcql.a(this, 1, getString(2131696570, new Object[] { Integer.valueOf(paramJSONObject.optInt("errno", -1)) }), 0).b(getTitleBarHeight());
         return;
-        bcpw.a(this, 1, 2131696568, 0).b(getTitleBarHeight());
+        bcql.a(this, 1, 2131696569, 0).b(getTitleBarHeight());
         return;
         label332:
         paramInt = 0;
@@ -197,19 +197,19 @@ public class TroopBarPublishLocationSelectActivity
   
   protected void a(boolean paramBoolean)
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375053);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375055);
     if (paramBoolean)
     {
-      localTextView.setText(2131719795);
+      localTextView.setText(2131719806);
       return;
     }
-    localTextView.setText(2131719790);
+    localTextView.setText(2131719801);
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_Akup = new azha(this, 0, true, true, 0L, false, false, "QLifeCommentActivity");
-    SosoInterface.a(this.jdField_a_of_type_Akup);
+    this.jdField_a_of_type_Akuo = new azhc(this, 0, true, true, 0L, false, false, "QLifeCommentActivity");
+    SosoInterface.a(this.jdField_a_of_type_Akuo);
   }
   
   protected void b(boolean paramBoolean)
@@ -235,11 +235,11 @@ public class TroopBarPublishLocationSelectActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130840199));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130840196));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(1);
     setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
-    setTitle(2131696528);
-    this.rightViewImg.setImageResource(2130841989);
+    setTitle(2131696529);
+    this.rightViewImg.setImageResource(2130841990);
     this.rightViewImg.setVisibility(0);
     this.rightViewImg.setOnClickListener(this);
     paramBundle = getIntent();
@@ -269,19 +269,19 @@ public class TroopBarPublishLocationSelectActivity
     {
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559459, null);
       a();
-      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375051);
-      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375053);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375060);
-      ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131375054);
+      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375053);
+      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375055);
+      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375062);
+      ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131375056);
       localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131719790);
+      localTextView1.setText(2131719801);
       localTextView2.setVisibility(8);
       paramBundle.setVisibility(8);
       localProgressBar.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new azgx(this));
-      this.jdField_a_of_type_Azhb = new azhb(this, this, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Azhb);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new azgz(this));
+      this.jdField_a_of_type_Azhd = new azhd(this, this, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Azhd);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
       a(0, true);
       return true;
@@ -295,8 +295,8 @@ public class TroopBarPublishLocationSelectActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Akup != null) {
-      SosoInterface.b(this.jdField_a_of_type_Akup);
+    if (this.jdField_a_of_type_Akuo != null) {
+      SosoInterface.b(this.jdField_a_of_type_Akuo);
     }
   }
   
@@ -316,7 +316,7 @@ public class TroopBarPublishLocationSelectActivity
       return;
     }
     this.c = ((TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-    this.jdField_a_of_type_Azhb.notifyDataSetChanged();
+    this.jdField_a_of_type_Azhd.notifyDataSetChanged();
     if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI.equals(this.c)) {}
     for (paramAdapterView = null;; paramAdapterView = this.c)
     {

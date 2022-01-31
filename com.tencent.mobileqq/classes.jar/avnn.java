@@ -1,24 +1,31 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class avnn
-  implements Downloader.DownloadListener
+public class avnn
+  implements adif
 {
-  avnn(avnm paramavnm) {}
+  private QQAppInterface a;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public avnn(BaseChatPie paramBaseChatPie)
   {
-    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
+    this.a = paramBaseChatPie.a;
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void a(int paramInt)
   {
-    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a == null);
+    ((avno)this.a.getManager(312)).onDestroy();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 9 };
   }
 }
 

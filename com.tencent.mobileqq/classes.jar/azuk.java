@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
-
 public abstract interface azuk
 {
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask);
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, azui paramazui);
 }
 
 

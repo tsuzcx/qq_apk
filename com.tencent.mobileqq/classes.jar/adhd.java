@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class adhd
   implements DialogInterface.OnClickListener
 {
-  adhd(adha paramadha) {}
+  adhd(adgx paramadgx) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

@@ -10,7 +10,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bbgg;
+import bbgu;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
@@ -32,7 +32,7 @@ public class FakeUrl
   protected FakeUrl.FakeInfo fakeInfo = new FakeUrl.FakeInfo();
   protected FakeUrl.FakeListener fl;
   private DialogInterface.OnClickListener lListener = new FakeUrl.1(this);
-  private bbgg mDialog;
+  private bbgu mDialog;
   private boolean mIsCloseAfterClickUrl = true;
   private DialogInterface.OnClickListener rListener = new FakeUrl.2(this);
   
@@ -174,7 +174,7 @@ public class FakeUrl
     if (TextUtils.isEmpty(paramFakeListener)) {}
     for (paramString = null;; paramString = this.lListener)
     {
-      this.mDialog = new bbgg(this.context, 2131755791);
+      this.mDialog = new bbgu(this.context, 2131755791);
       this.mDialog.setContentView(2131558906);
       this.mDialog.setTitle(paramJSONObject.optString("title", null));
       this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));

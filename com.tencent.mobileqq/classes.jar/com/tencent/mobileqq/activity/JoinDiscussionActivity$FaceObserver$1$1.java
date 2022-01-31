@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abjr;
+import abjn;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 

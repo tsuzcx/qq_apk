@@ -9,7 +9,7 @@ public class auha
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.a.invalidate();
   }
 }

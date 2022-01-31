@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aozx;
-import apad;
+import apab;
+import apah;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ public final class FileVideoManager$2
       QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]FreeVideoControl");
       QLog.i("VideoPlayControllerForFile", 1, "[" + this.a + "]StartDownload");
     }
-    if ((aozx.a == null) || (aozx.a(aozx.a) == null) || (!aozx.a(aozx.a).containsKey(this.a))) {
+    if ((apab.a == null) || (apab.a(apab.a) == null) || (!apab.a(apab.a).containsKey(this.a))) {
       if (QLog.isColorLevel()) {
         QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]queue is zero return");
       }
@@ -25,10 +25,10 @@ public final class FileVideoManager$2
     do
     {
       return;
-      apad localapad = (apad)aozx.a(aozx.a).get(this.a);
-      localapad.a();
-      aozx.a(localapad);
-      aozx.a(aozx.a).remove(this.a);
+      apah localapah = (apah)apab.a(apab.a).get(this.a);
+      localapah.a();
+      apab.a(localapah);
+      apab.a(apab.a).remove(this.a);
     } while (!QLog.isColorLevel());
     QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]removed");
   }

@@ -1,35 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class vuz
+  extends syr<tnd, toq>
 {
-  public final int a;
-  public final String a;
-  public final boolean a;
-  public final String b;
-  public final String c;
-  public final String d;
+  vuz(vux paramvux) {}
   
-  public vuz(qqstory_struct.CompInfoBase paramCompInfoBase)
+  public void a(@NonNull tnd paramtnd, @Nullable toq paramtoq, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
-    this.b = paramCompInfoBase.backgroud_url.get();
-    this.c = paramCompInfoBase.compared_vid.get();
-    if (paramCompInfoBase.is_compared_able.get() == 1) {}
+    ved.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtoq != null))
+    {
+      ved.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramtoq.toString());
+      vux.a(this.a).addAll(paramtoq.jdField_a_of_type_JavaUtilList);
+      vux.a(this.a, paramtoq.jdField_a_of_type_JavaLangString);
+      vux.a(this.a, paramtoq.b);
+      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
+    }
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.d = paramCompInfoBase.icon_url.get();
-      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+      vux.a(this.a).b(paramErrorMessage.errorCode, vux.a(this.a), this.a.a());
       return;
-      bool = false;
+      ved.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
-  }
-  
-  public String toString()
-  {
-    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

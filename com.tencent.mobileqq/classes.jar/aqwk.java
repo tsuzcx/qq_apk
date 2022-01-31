@@ -1,161 +1,159 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspDownloadCheckRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspJumpCheckRecmd;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ProviderInfo;
+import android.content.pm.ResolveInfo;
+import android.content.pm.ServiceInfo;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bigbrother.ServerApi.ReqDownloadCheckRecmd;
+import com.tencent.mobileqq.bigbrother.ServerApi.ReqJumpCheckRecmd;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionRsp;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.RspBody;
-import tencent.im.oidb.jump_url_check.jump_url_check.RspJumpUrlCheckRecmd;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionReq;
+import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.ReqBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aqwk
-  extends MSFServlet
+  implements Manager
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private aqwl a;
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, amaf paramamaf)
   {
-    int i = 2;
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("CheckForwardServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
+    QLog.i("TeleScreen|CheckForwardManager", 1, "dl src: " + paramString1 + ", refId: " + paramString4);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), aqwm.class);
+    ServerApi.ReqDownloadCheckRecmd localReqDownloadCheckRecmd = new ServerApi.ReqDownloadCheckRecmd();
+    localReqDownloadCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    if (paramString2 != null) {
+      localReqDownloadCheckRecmd.pkg_name.set(paramString2);
     }
-    Object localObject1 = paramIntent.getStringExtra("CMD");
-    if ("OidbSvc.0xc78_1".equals(localObject1)) {
-      i = 1;
+    if (paramString3 != null) {
+      localReqDownloadCheckRecmd.url.set(paramString3);
+    }
+    if (paramString1 != null) {
+      localReqDownloadCheckRecmd.source.set(paramString1);
+    }
+    if (paramString4 != null) {
+      localReqDownloadCheckRecmd.ref_source.set(paramString4);
+    }
+    localReqDownloadCheckRecmd.platform.set("android");
+    localNewIntent.putExtra("CMD", "QQApkSvc.check_download_apk");
+    localNewIntent.putExtra("RequestBytes", localReqDownloadCheckRecmd.toByteArray());
+    paramString1 = amay.a();
+    if (paramamaf != null)
+    {
+      int i = paramString1.a(paramContext, paramamaf);
+      localNewIntent.putExtra("req_id", i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
+      }
+    }
+    localNewIntent.setObserver(amay.a());
+    localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, List<ResolveInfo> paramList, String paramString6, amak paramamak)
+  {
+    QLog.i("TeleScreen|CheckForwardManager", 1, "jump src: " + paramString1 + ", pkg: " + paramString3 + ", scheme: " + paramString4 + ", action: " + paramString5 + "， refId: " + paramString6);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    NewIntent localNewIntent = new NewIntent(localBaseApplicationImpl.getApplicationContext(), aqwm.class);
+    ServerApi.ReqJumpCheckRecmd localReqJumpCheckRecmd = new ServerApi.ReqJumpCheckRecmd();
+    localReqJumpCheckRecmd.uin.set(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    if (paramString3 != null) {
+      localReqJumpCheckRecmd.pkg_name.add(paramString3);
     }
     for (;;)
     {
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("ext_info", paramIntent.getStringExtra("ext_info"));
-      ((Bundle)localObject1).putInt("req_id", paramIntent.getIntExtra("req_id", 0));
-      bool1 = paramFromServiceMsg.isSuccess();
-      if (!bool1) {
-        break label637;
+      if (paramString4 != null) {
+        localReqJumpCheckRecmd.scheme.set(paramString4);
       }
-      try
+      if (paramString5 != null) {
+        localReqJumpCheckRecmd.action.set(paramString5);
+      }
+      if (paramString2 != null) {
+        localReqJumpCheckRecmd.url.set(paramString2);
+      }
+      if (paramString1 != null) {
+        localReqJumpCheckRecmd.source.set(paramString1);
+      }
+      if (paramString6 != null) {
+        localReqJumpCheckRecmd.ref_source.set(paramString6);
+      }
+      localReqJumpCheckRecmd.platform.set("android");
+      localNewIntent.putExtra("CMD", "QQApkSvc.check_jump_apk");
+      localNewIntent.putExtra("RequestBytes", localReqJumpCheckRecmd.toByteArray());
+      int i = amay.a().a(paramContext, paramamak);
+      localNewIntent.putExtra("req_id", i);
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|CheckForwardManager", 2, "add req with id: " + i);
+      }
+      localNewIntent.setObserver(amay.a());
+      localBaseApplicationImpl.getRuntime().startServlet(localNewIntent);
+      if ((localReqJumpCheckRecmd.pkg_name.isEmpty()) && (TextUtils.isEmpty(localReqJumpCheckRecmd.scheme.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.action.get())) && (TextUtils.isEmpty(localReqJumpCheckRecmd.url.get())))
       {
-        localObject2 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject2).getInt() - 4];
-        ((ByteBuffer)localObject2).get(paramFromServiceMsg);
-        switch (i)
-        {
-        }
+        axqg.c();
+        QLog.e("TeleScreen|CheckForwardManager", 1, "openthirdappnullinfo" + QLog.getStackTraceString(new Throwable()));
       }
-      catch (Throwable paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          label164:
-          QLog.e("CheckForwardServlet", 1, paramFromServiceMsg, new Object[0]);
-          bool1 = bool2;
-        }
-      }
-      notifyObserver(paramIntent, i, bool1, (Bundle)localObject1, aqwj.class);
       return;
-      if (!"QQApkSvc.check_jump_url".equals(localObject1)) {
-        if ("QQApkSvc.check_download_apk".equals(localObject1))
-        {
-          i = 3;
-        }
-        else
-        {
-          if (!"QQApkSvc.check_jump_apk".equals(localObject1)) {
-            break label640;
-          }
-          i = 4;
-        }
-      }
-    }
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom(paramFromServiceMsg);
-    if (((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.get() == 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (bool1)
+      if (paramList != null)
       {
-        paramFromServiceMsg = new oidb_cmd0xc78.RspBody();
-        paramFromServiceMsg.mergeFrom(((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get().toByteArray());
-        paramFromServiceMsg = (oidb_cmd0xc78.CheckShareExtensionRsp)paramFromServiceMsg.check_share_extension_rsp.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("CheckForwardServlet", 2, "onreceive result: " + paramFromServiceMsg.result.get() + ", jump: " + paramFromServiceMsg.jump_result.get());
+        paramString3 = paramList.iterator();
+        while (paramString3.hasNext())
+        {
+          paramList = (ResolveInfo)paramString3.next();
+          if (paramList.activityInfo != null) {
+            localReqJumpCheckRecmd.pkg_name.add(paramList.activityInfo.packageName);
+          } else if (paramList.serviceInfo != null) {
+            localReqJumpCheckRecmd.pkg_name.add(paramList.serviceInfo.packageName);
+          } else if ((Build.VERSION.SDK_INT >= 19) && (paramList.providerInfo != null)) {
+            localReqJumpCheckRecmd.pkg_name.add(paramList.providerInfo.packageName);
+          }
         }
-        ((Bundle)localObject1).putInt("result", paramFromServiceMsg.result.get());
-        ((Bundle)localObject1).putInt("jump_result", paramFromServiceMsg.jump_result.get());
-        ((Bundle)localObject1).putString("jump_url", paramFromServiceMsg.jump_url.get());
-        break label645;
-        localObject2 = new jump_url_check.RspJumpUrlCheckRecmd();
-        ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).mergeFrom(paramFromServiceMsg);
-        ((Bundle)localObject1).putInt("err_code", ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).err_code.get());
-        ((Bundle)localObject1).putString("err_msg", ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).err_msg.get());
-        ((Bundle)localObject1).putBoolean("can_jump", ((jump_url_check.RspJumpUrlCheckRecmd)localObject2).can_jump.get());
-        break label164;
-        localObject2 = new ServerApi.RspDownloadCheckRecmd();
-        ((ServerApi.RspDownloadCheckRecmd)localObject2).mergeFrom(paramFromServiceMsg);
-        ((Bundle)localObject1).putBoolean("allow_download", ((ServerApi.RspDownloadCheckRecmd)localObject2).check_pass.get());
-        paramFromServiceMsg = (ServerApi.ErrorInfo)((ServerApi.RspDownloadCheckRecmd)localObject2).err_info.get();
-        if (paramFromServiceMsg == null) {
-          break label164;
+        if ((QLog.isColorLevel()) && (localReqJumpCheckRecmd.pkg_name.has()) && (!localReqJumpCheckRecmd.pkg_name.isEmpty())) {
+          QLog.d("TeleScreen|CheckForwardManager", 2, "resolve pkg: " + (String)localReqJumpCheckRecmd.pkg_name.get(0));
         }
-        ((Bundle)localObject1).putInt("err_code", paramFromServiceMsg.err_code.get());
-        ((Bundle)localObject1).putString("err_msg", paramFromServiceMsg.err_msg.get());
-        ((Bundle)localObject1).putString("jump_url", paramFromServiceMsg.jump_url.get());
-        break label164;
-        localObject2 = new ServerApi.RspJumpCheckRecmd();
-        ((ServerApi.RspJumpCheckRecmd)localObject2).mergeFrom(paramFromServiceMsg);
-        ((Bundle)localObject1).putInt("jump", ((ServerApi.RspJumpCheckRecmd)localObject2).jump_method.get());
-        paramFromServiceMsg = (ServerApi.ErrorInfo)((ServerApi.RspJumpCheckRecmd)localObject2).err_info.get();
-        if (paramFromServiceMsg == null) {
-          break label164;
-        }
-        ((Bundle)localObject1).putInt("err_code", paramFromServiceMsg.err_code.get());
-        ((Bundle)localObject1).putString("err_msg", paramFromServiceMsg.err_msg.get());
-        break label164;
-        label637:
-        break label164;
-        label640:
-        i = 0;
-        break;
       }
-      label645:
-      break label164;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(QQAppInterface paramQQAppInterface, oidb_cmd0xc78.CheckShareExtensionReq paramCheckShareExtensionReq, String paramString, aqwn paramaqwn)
   {
-    if (paramIntent == null) {
-      return;
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), aqwm.class);
+    localNewIntent.putExtra("CMD", "OidbSvc.0xc78_1");
+    localNewIntent.putExtra("ext_info", paramString);
+    paramString = new oidb_cmd0xc78.ReqBody();
+    paramString.check_share_extension_req.set(paramCheckShareExtensionReq);
+    paramCheckShareExtensionReq = new oidb_sso.OIDBSSOPkg();
+    paramCheckShareExtensionReq.uint32_command.set(3192);
+    paramCheckShareExtensionReq.uint32_service_type.set(1);
+    paramCheckShareExtensionReq.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramString.toByteArray()));
+    localNewIntent.putExtra("RequestBytes", paramCheckShareExtensionReq.toByteArray());
+    if (this.a == null) {
+      this.a = new aqwl();
     }
-    String str = paramIntent.getStringExtra("CMD");
-    paramPacket.setSSOCommand(str);
-    if (str.equals("QQApkSvc.check_jump_url")) {
-      paramPacket.setTimeout(10000L);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckForwardServlet", 2, "onSend with cmd: " + str);
-      }
-      paramPacket.putSendData(bblm.a(paramIntent.getByteArrayExtra("RequestBytes")));
-      return;
-      if (str.equals("QQApkSvc.check_download_apk")) {
-        paramPacket.setTimeout(((amax)ampm.a().a(416)).a);
-      } else if (str.equals("QQApkSvc.check_jump_apk")) {
-        paramPacket.setTimeout(((amax)ampm.a().a(416)).b);
-      }
+    int i = this.a.a(paramaqwn);
+    localNewIntent.setObserver(this.a);
+    localNewIntent.putExtra("req_id", i);
+    paramQQAppInterface.startServlet(localNewIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("TeleScreen|CheckForwardManager", 2, "sendCheckShareReq");
     }
   }
+  
+  public void onDestroy() {}
 }
 
 

@@ -1,36 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.view.MotionEvent;
 
-public class aefy
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+public abstract interface aefy
 {
-  public aefy(PEPanel paramPEPanel) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
-    }
-    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
-      PEPanel.a(this.a).setVisibility(0);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.setListViewVisibile(8);
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

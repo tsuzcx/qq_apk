@@ -1,77 +1,59 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.ProgressUIHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class owq
-  extends Handler
+  implements URLDrawable.URLDrawableListener
 {
-  WeakReference<ReadInjoyIMAXAdFragment> a;
+  public owq(GifView paramGifView, long paramLong, AtomicLong paramAtomicLong1, AtomicLong paramAtomicLong2, AtomicLong paramAtomicLong3, AtomicLong paramAtomicLong4, URLDrawable paramURLDrawable) {}
   
-  public owq(Looper paramLooper, ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ReadInjoyIMAXAdFragment localReadInjoyIMAXAdFragment = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (localReadInjoyIMAXAdFragment == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView))
     {
-    default: 
-      return;
-    }
-    long l1;
-    if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
-    {
-      l1 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getCurrentPostion();
-      long l2 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getDuration();
-      if (l1 >= l2 - 300L)
-      {
-        ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, true);
-        int i = (int)(l2 - l1);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: pos=" + l1 + ", duration=" + l2 + ", remainDuration=" + i + ", mHasCallEndingSoon=" + ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment));
-        }
-        if (!ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment))
-        {
-          ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, true);
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: !!!");
-          }
-          ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment);
-        }
-        ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, l1);
+      if (!GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView)) {
+        break label104;
       }
+      GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
     }
     for (;;)
     {
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
+      QLog.d("gifvideo.GifView", 1, "onLoadFialed! mIsBigImg=" + GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView));
+      paramURLDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView;
+      paramURLDrawable.a += 1;
       return;
-      if ((l1 > 500L) || (l1 < 0L) || (!ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment))) {
-        break;
+      label104:
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != 0L)
+    {
+      l1 -= this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+      if (this.b.longValue() != 0L) {
+        break label282;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoReplayOnLoop: pos=" + l1);
-      }
-      ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, false);
-      ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, false);
-      if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) == null) {
-        break;
-      }
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).pause();
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
+    }
+    label282:
+    for (int i = 1;; i = 0)
+    {
+      QLog.d("gifvideo.GifView", 2, "gif status: " + i + " file size: " + this.c + " download time: " + this.b + " load time: " + l2);
+      QLog.d("gifvideo.GifView", 2, "gif status: " + i + " file size: " + this.c + " download time2: " + this.d + " load time2: " + l1);
+      nol.a(null, "", "0X800A148", "0X800A148", 0, i, this.c + "", this.d + "", l1 + "", this.b + " " + l2, false);
+      GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
+      return;
+      l1 = l2;
       break;
-      ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment) + 100);
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment));
     }
   }
 }

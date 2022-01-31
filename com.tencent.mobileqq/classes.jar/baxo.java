@@ -1,338 +1,272 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.AbstractVideoImage;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.data.DynamicAvatar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
-import java.util.LinkedList;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class baxo
-  extends baxm
-  implements baxh
 {
-  private baxq jdField_a_of_type_Baxq;
-  private baxr jdField_a_of_type_Baxr;
-  private baxs jdField_a_of_type_Baxs;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static long a;
+  public static Object a;
+  public static int[] a;
+  public static boolean b;
+  public int a;
+  public alyy a;
+  public Drawable a;
+  public URLDrawable a;
+  public String a;
+  public WeakReference<DynamicAvatarView> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public WeakReference<baxo> b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public boolean g;
   
-  public baxo(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_ArrayOfInt = new int[] { 2, 3, 5, 0, 4, 6, 1 };
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  public Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte)
+  public baxo()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceDecoderImpl", 2, "getBitmapFromCache, mApp is null");
-      }
-      return null;
-    }
-    if ((paramInt1 == 1001) && (paramString != null) && (!GroupIconHelper.a(paramString))) {}
-    for (Object localObject = GroupIconHelper.a(paramString);; localObject = paramString)
-    {
-      if ((paramInt1 == 4) && (!bamn.a(paramString))) {
-        paramInt1 = 113;
-      }
-      for (;;)
-      {
-        if (paramInt1 == 113) {
-          paramByte = 3;
-        }
-        paramByte = bayd.a(paramByte);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt1, (String)localObject, paramByte, paramInt2, 100, true);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a((String)localObject);
-        if ((localObject != null) && (paramInt1 == 1001))
-        {
-          ajvi localajvi = (ajvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
-          if ((localajvi != null) && (localajvi.a() != null)) {
-            localajvi.a().f(paramString);
-          }
-          if (this.jdField_a_of_type_Baxq == null)
-          {
-            this.jdField_a_of_type_Baxq = new baxq(this, null);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Baxq);
-          }
-        }
-        return localObject;
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2, long paramLong)
+  public baxo(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bayi parambayi, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    do
+    this.jdField_a_of_type_Boolean = true;
+    a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
+    if ((paramAppInterface instanceof QQAppInterface)) {}
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bayj(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean4);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bazu(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean4))
     {
-      do
-      {
-        return;
-      } while ((paramInt1 == 32) && (paramInt2 != 200) && (paramInt2 != 202) && (paramInt2 != 204));
-      if (paramInt1 == 32) {}
-      for (byte b = 1;; b = 0)
-      {
-        FaceInfo localFaceInfo = new FaceInfo(paramInt1, paramString, false, b, 3, false, paramInt2);
-        String str = FaceInfo.a(paramInt1, paramString, paramInt2);
-        if (this.jdField_b_of_type_JavaUtilHashtable.get(str) == null) {
-          this.jdField_b_of_type_JavaUtilHashtable.put(str, localFaceInfo);
-        }
-        if (this.jdField_a_of_type_Baxr == null)
-        {
-          this.jdField_a_of_type_Baxr = new baxr(this, null);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Baxr);
-        }
-        if (paramInt1 != 32) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString, paramInt2, paramLong);
-        return;
-      }
-    } while (paramInt1 != 16);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString, paramInt2, paramLong);
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramAppInterface)
-    {
-      d();
-      if ((paramAppInterface instanceof QQAppInterface)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
-      }
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo)
-  {
-    if ((paramFaceInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    do
-    {
+      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(this);
+      a(paramBoolean4, null);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDecoderImpl", 2, "onDecodeTaskCompletedNeedDownload, faceInfo=" + paramFaceInfo.toString());
-      }
-      this.jdField_b_of_type_Int -= 1;
-      paramAppInterface = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(paramFaceInfo.b());
+    }
+  }
+  
+  public baxo(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean1, DynamicAvatar paramDynamicAvatar, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt4)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 0, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(this);
+    a(paramBoolean3, paramDynamicAvatar);
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      jdField_b_of_type_Boolean = true;
+      AbstractVideoImage.pauseAll();
+      paramAppInterface = (alyy)paramAppInterface.getManager(180);
       if (paramAppInterface != null)
       {
-        if (this.jdField_a_of_type_Baxr == null)
-        {
-          this.jdField_a_of_type_Baxr = new baxr(this, null);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Baxr);
-        }
-        baxk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppInterface);
+        paramAppInterface.d();
+        ThreadManager.getSubThreadHandler().removeCallbacks(paramAppInterface.a);
       }
-    } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int));
-    e();
-  }
-  
-  public void a(FaceInfo paramFaceInfo, Bitmap paramBitmap)
-  {
-    if ((paramFaceInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.FaceDecoderImpl", 2, "onDecodeTaskCompleted, faceInfo=" + paramFaceInfo.toString());
-    }
-    this.jdField_b_of_type_Int -= 1;
-    if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (!this.jdField_a_of_type_Boolean)) {
-      e();
-    }
-    FaceInfo localFaceInfo = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.remove(paramFaceInfo.b());
-    int j;
-    if (localFaceInfo != null)
-    {
-      j = FaceInfo.r;
-      if (paramBitmap == null) {
-        break label161;
-      }
-    }
-    label161:
-    for (int i = FaceInfo.f;; i = FaceInfo.g)
-    {
-      localFaceInfo.a(j, i);
-      if ((this.jdField_a_of_type_Baxn == null) || (paramBitmap == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Baxn.onDecodeTaskCompleted(this.jdField_b_of_type_Int + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
       return;
     }
   }
   
-  protected void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2)
+  public static void b(AppInterface paramAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    label177:
+    int i;
+    if (jdField_a_of_type_Long <= 0L)
+    {
+      i = bbdh.b();
+      if (i < 8) {
+        break label50;
+      }
+      jdField_a_of_type_Long = 100L;
+    }
+    for (;;)
+    {
+      paramAppInterface = (alyy)paramAppInterface.getManager(180);
+      ThreadManager.getSubThreadHandler().postDelayed(paramAppInterface.a, jdField_a_of_type_Long);
+      return;
+      label50:
+      if (i >= 4) {
+        jdField_a_of_type_Long = 200L;
+      } else if (i >= 3) {
+        jdField_a_of_type_Long = 400L;
+      } else if (i >= 2) {
+        jdField_a_of_type_Long = 800L;
+      } else {
+        jdField_a_of_type_Long = 1000L;
+      }
+    }
+  }
+  
+  public Drawable a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
+        return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      }
+      return this.jdField_a_of_type_ComTencentImageURLDrawable;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public void a()
+  {
+    if (!b()) {}
+    while (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+      return;
+    }
+    ((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
+  }
+  
+  public void a(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, boolean paramBoolean1, int paramInt5, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, DynamicAvatar paramDynamicAvatar, boolean paramBoolean5)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
+    this.jdField_d_of_type_Boolean = paramBoolean3;
+    this.jdField_c_of_type_Boolean = paramBoolean4;
+    this.g = paramBoolean2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    if (paramInt2 == 200)
+    {
+      this.jdField_c_of_type_Int = 17;
+      if (paramInt1 != 32) {
+        break label144;
+      }
+    }
+    label144:
+    for (this.jdField_b_of_type_Int = 18;; this.jdField_b_of_type_Int = 17)
+    {
+      this.jdField_d_of_type_Int = paramInt3;
+      this.f = paramBoolean1;
+      this.jdField_b_of_type_JavaLangString = "";
+      this.jdField_c_of_type_JavaLangString = "";
+      this.jdField_e_of_type_Boolean = false;
+      this.jdField_d_of_type_JavaLangString = alyy.b(paramInt1, paramInt2, paramString, paramInt3);
+      if (!paramBoolean5) {
+        this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+      }
+      this.jdField_a_of_type_Alyy = ((alyy)paramAppInterface.getManager(180));
+      return;
+      this.jdField_c_of_type_Int = 18;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean, DynamicAvatar paramDynamicAvatar)
+  {
+    this.jdField_a_of_type_Alyy.a(this);
+    if ((paramBoolean) && (this.jdField_a_of_type_Alyy.a(this.jdField_e_of_type_Int)))
+    {
+      paramBoolean = true;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (this.jdField_a_of_type_Boolean) {
+        break label46;
+      }
+    }
+    label46:
     do
     {
-      Object localObject;
       do
       {
-        Bitmap localBitmap;
-        do
-        {
-          return;
-          localObject = FaceInfo.a(paramInt1, paramString, paramInt2);
-          if ((paramInt1 == 101) && ((!paramBoolean) || (this.jdField_a_of_type_Boolean))) {
-            break label177;
-          }
-          localBitmap = a(paramInt1, paramString, paramInt2, (byte)3);
-          if (localBitmap == null) {
-            break;
-          }
-          localObject = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.remove(localObject);
-          if (localObject != null) {
-            ((FaceInfo)localObject).a(FaceInfo.r, FaceInfo.f);
-          }
-        } while (this.jdField_a_of_type_Baxn == null);
-        this.jdField_a_of_type_Baxn.onDecodeTaskCompleted(this.jdField_b_of_type_Int + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramInt1, paramString, localBitmap);
         return;
-        paramString = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(localObject);
-        if (paramString != null)
+        paramBoolean = false;
+        break;
+      } while ((!this.g) && (!bbfj.h(BaseApplicationImpl.getContext())) && (this.jdField_d_of_type_Boolean));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "getDynamicAvatar uin: " + this.jdField_a_of_type_JavaLangString + " source: " + this.jdField_e_of_type_Int);
+      }
+      if ((this.g) || (paramDynamicAvatar == null))
+      {
+        this.jdField_a_of_type_Alyy.b(this);
+        return;
+      }
+      if (paramDynamicAvatar != null)
+      {
+        this.jdField_b_of_type_JavaLangString = alyy.a(this.jdField_b_of_type_Int, this.jdField_d_of_type_Int, paramDynamicAvatar);
+        this.jdField_c_of_type_JavaLangString = alyy.a(this.jdField_b_of_type_Int, 640, paramDynamicAvatar);
+        if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
         {
-          a(paramString);
-          return;
+          this.jdField_b_of_type_JavaLangString = alyy.a(17, this.jdField_d_of_type_Int, paramDynamicAvatar);
+          this.jdField_c_of_type_JavaLangString = alyy.a(17, 640, paramDynamicAvatar);
         }
-        paramString = (FaceInfo)this.jdField_b_of_type_JavaUtilHashtable.remove(localObject);
-      } while (paramString == null);
-      paramString.a(FaceInfo.j);
-      this.jdField_a_of_type_JavaUtilHashtable.put(localObject, paramString);
-      a(paramString);
-      return;
-      paramString = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.remove(localObject);
-    } while (paramString == null);
-    paramInt2 = FaceInfo.r;
-    if (!paramBoolean) {}
-    for (paramInt1 = FaceInfo.g;; paramInt1 = FaceInfo.h)
-    {
-      paramString.a(paramInt2, paramInt1);
-      return;
-    }
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          this.jdField_e_of_type_Boolean = true;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, "initValue url: " + this.jdField_b_of_type_JavaLangString);
+        }
+      }
+    } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+    this.jdField_a_of_type_Alyy.b(this);
   }
   
-  public boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3)
+  public boolean a()
   {
-    if ((paramString == null) || (paramString.length() < 5))
+    return a() == this.jdField_a_of_type_ComTencentImageURLDrawable;
+  }
+  
+  public boolean a(URLDrawable paramURLDrawable)
+  {
+    if (!b()) {
+      return false;
+    }
+    if (this.jdField_b_of_type_JavaLangString.equals(((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceDecoderImpl", 2, "requestDecodeFace fail. type=" + paramInt2 + ", uin=" + paramString);
+        QLog.w("Q.dynamicAvatar", 2, "setVideoDrawable url equals currentUrl");
       }
       return false;
     }
-    byte b = 3;
-    if (paramInt3 == 0) {
-      if ((paramInt2 != 101) && (paramInt2 != 1001)) {}
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.dynamicAvatar", 2, "truly setVideoDrawable");
     }
-    String str;
-    for (b = 3;; b = (byte)paramInt3)
+    ((DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    if (!jdField_b_of_type_Boolean)
     {
-      paramInt3 = bayd.a(b);
-      str = FaceInfo.a(paramInt2, paramString, paramInt1);
-      FaceInfo localFaceInfo = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(str);
-      if ((localFaceInfo == null) || (localFaceInfo.a(FaceInfo.j, 300000L))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceDecoderImpl", 2, "requestDecodeFace, uin repeat. uin=" + paramString);
-      }
-      if ((localFaceInfo.b) && (!paramBoolean2)) {
-        localFaceInfo.b = false;
-      }
-      localFaceInfo.c = paramInt3;
+      a();
       return true;
     }
-    paramString = new FaceInfo(paramInt2, paramString, paramBoolean2, paramByte, paramInt3, false, paramInt1, paramBoolean3, 100);
-    paramString.a(FaceInfo.j);
-    this.jdField_a_of_type_JavaUtilHashtable.put(str, paramString);
-    a(paramString);
+    return false;
+  }
+  
+  public boolean b()
+  {
+    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
+      return false;
+    }
+    DynamicAvatarView localDynamicAvatarView = (DynamicAvatarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localDynamicAvatarView.jdField_a_of_type_Baxo != this)
+    {
+      QLog.e("Q.dynamicAvatar", 1, "mDynamicFaceDrawable is changed : " + this + " " + localDynamicAvatarView.jdField_a_of_type_Baxo);
+      return false;
+    }
     return true;
-  }
-  
-  public void d()
-  {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    baxq localbaxq = this.jdField_a_of_type_Baxq;
-    baxr localbaxr = this.jdField_a_of_type_Baxr;
-    baxs localbaxs = this.jdField_a_of_type_Baxs;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Baxq = null;
-    this.jdField_a_of_type_Baxs = null;
-    this.jdField_a_of_type_Baxr = null;
-    if (localQQAppInterface != null)
-    {
-      if (localbaxq != null) {
-        localQQAppInterface.removeObserver(localbaxq);
-      }
-      if (localbaxr != null) {
-        localQQAppInterface.removeObserver(localbaxr);
-      }
-      if (localbaxs != null) {
-        localQQAppInterface.removeObserver(localbaxs);
-      }
-    }
-    super.d();
-  }
-  
-  protected void e()
-  {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      QLog.i("Q.qqhead.FaceDecoderImpl", 2, " runNextTask, mReadyRequests is empty");
-    }
-    label204:
-    do
-    {
-      return;
-      try
-      {
-        localObject2 = (FaceInfo)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.qqhead.FaceDecoderImpl", 2, " runNextTask, faceinfo=" + ((FaceInfo)localObject2).toString());
-          }
-          if (((((FaceInfo)localObject2).jdField_a_of_type_Int == 101) || (((FaceInfo)localObject2).jdField_a_of_type_Int == 1001)) && (this.jdField_a_of_type_Baxq == null))
-          {
-            this.jdField_a_of_type_Baxq = new baxq(this, null);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Baxq);
-          }
-          if (((((FaceInfo)localObject2).jdField_a_of_type_Int == 4) || (((FaceInfo)localObject2).jdField_a_of_type_Int == 113)) && (!bamn.a(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString)))
-          {
-            if (this.jdField_a_of_type_Baxs == null) {
-              this.jdField_a_of_type_Baxs = new baxs(this, null);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Baxs);
-          }
-          this.jdField_b_of_type_Int += 1;
-          FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FaceInfo)localObject2, this));
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          localObject1 = localObject2;
-          localObject2 = localThrowable2;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        Object localObject2;
-        break label204;
-      }
-      if (localObject1 != null) {
-        this.jdField_b_of_type_Int -= 1;
-      }
-    } while (!QLog.isColorLevel());
-    atbp.a("Q.qqhead.FaceDecoderImpl", new Object[] { "runNextTask", localObject2, localObject1 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baxo
  * JD-Core Version:    0.7.0.1
  */

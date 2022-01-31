@@ -1,36 +1,34 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.OverlappingImgLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afmk
-  implements baxl
+public abstract interface afmk
 {
-  public afmk(OverlappingImgLayout paramOverlappingImgLayout) {}
+  public abstract Activity a();
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    do
-    {
-      return;
-      paramInt1 = 0;
-      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
-      {
-        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
-        {
-          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
-          if (QLog.isColorLevel()) {
-            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
-          }
-        }
-        paramInt1 += 1;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-  }
+  public abstract View a();
+  
+  public abstract aqbe a();
+  
+  public abstract bfnk a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract View b();
+  
+  public abstract boolean b();
+  
+  public abstract View c();
+  
+  public abstract View d();
 }
 
 

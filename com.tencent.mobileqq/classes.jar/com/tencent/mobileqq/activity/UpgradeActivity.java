@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity;
 
+import acoe;
+import acof;
+import acog;
+import acoh;
 import acoi;
 import acoj;
 import acok;
@@ -14,14 +18,10 @@ import acos;
 import acot;
 import acou;
 import acov;
-import acow;
-import acox;
-import acoy;
-import acoz;
-import ajyc;
+import ajya;
+import akuy;
 import akuz;
-import akva;
-import akvf;
+import akve;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,18 +29,18 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.Window;
-import awzw;
-import axqw;
-import bbcv;
-import bbew;
-import bbgg;
-import bbiy;
-import bbjn;
-import bdes;
-import bdeu;
-import bdht;
-import bdid;
-import bdlc;
+import awzy;
+import axqy;
+import bbdj;
+import bbfk;
+import bbgu;
+import bbjm;
+import bbkb;
+import bdfh;
+import bdfj;
+import bdii;
+import bdis;
+import bdlr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
@@ -72,7 +72,7 @@ public class UpgradeActivity
   
   private void a(boolean paramBoolean)
   {
-    if (akva.a().a() == 4)
+    if (akuz.a().a() == 4)
     {
       Object localObject = this.app.getHandler(Conversation.class);
       if (localObject != null)
@@ -83,12 +83,12 @@ public class UpgradeActivity
       }
       return;
     }
-    UpgradeDetailActivity.a(this, akva.a().a(), false, true, true);
+    UpgradeDetailActivity.a(this, akuz.a().a(), false, true, true);
   }
   
   private void c()
   {
-    this.jdField_b_of_type_JavaLangString = ajyc.a(2131715914);
+    this.jdField_b_of_type_JavaLangString = ajya.a(2131715925);
     this.jdField_c_of_type_JavaLangString = "检测到你的网络环境处于2G/3G下，继续下载QQ将会产生流量。";
     showDialog(8192);
   }
@@ -96,7 +96,7 @@ public class UpgradeActivity
   private void d()
   {
     this.jdField_b_of_type_JavaLangString = "下载QQ失败";
-    this.jdField_c_of_type_JavaLangString = ajyc.a(2131715917);
+    this.jdField_c_of_type_JavaLangString = ajya.a(2131715928);
     showDialog(16384);
   }
   
@@ -116,7 +116,7 @@ public class UpgradeActivity
     if (getIntent().hasExtra("strCancelButtonDesc")) {
       this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("strCancelButtonDesc");
     }
-    if (akva.a().a() == 4) {}
+    if (akuz.a().a() == 4) {}
     int i;
     for (boolean bool = true;; bool = false)
     {
@@ -133,7 +133,7 @@ public class UpgradeActivity
     }
     if (this.jdField_c_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Long = awzw.a();
+      this.jdField_a_of_type_Long = awzy.a();
       Object localObject = this.app.getPreferences();
       ((SharedPreferences)localObject).getInt("upgrade_tip_count", 0);
       if (i == 0)
@@ -204,7 +204,7 @@ public class UpgradeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    paramBundle = akva.a().a();
+    paramBundle = akuz.a().a();
     if ((paramBundle == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType <= 0))
     {
       finish();
@@ -231,10 +231,10 @@ public class UpgradeActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if ((this.jdField_b_of_type_Boolean) && (bdlc.a().b()))
+    if ((this.jdField_b_of_type_Boolean) && (bdlr.a().b()))
     {
-      if (!bdlc.a().f()) {
-        bbew.a(this);
+      if (!bdlr.a().f()) {
+        bbfk.a(this);
       }
       finish();
     }
@@ -254,49 +254,49 @@ public class UpgradeActivity
     }
     while (localObject1 != null)
     {
-      ((bbgg)localObject1).setCanceledOnTouchOutside(false);
-      ((bbgg)localObject1).setOnDismissListener(new acor(this));
+      ((bbgu)localObject1).setCanceledOnTouchOutside(false);
+      ((bbgu)localObject1).setOnDismissListener(new acon(this));
       return localObject1;
-      axqw.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuz.b(), String.valueOf(0), akva.a(), "");
-      localObject1 = bbcv.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-      ((bbgg)localObject1).setPositiveButton(2131720672, new acot(this)).setNegativeButton(2131717268, new acos(this)).setOnKeyListener(new acoi(this));
+      axqy.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "");
+      localObject1 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+      ((bbgu)localObject1).setPositiveButton(2131720683, new acop(this)).setNegativeButton(2131717279, new acoo(this)).setOnKeyListener(new acoe(this));
       continue;
       if (this.jdField_d_of_type_Int == 0)
       {
-        axqw.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuz.b(), String.valueOf(0), akva.a(), "");
-        localObject1 = bbcv.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        axqy.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "");
+        localObject1 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
         b();
-        if (akva.a().a() == 4) {}
-        for (paramInt = 2131693591;; paramInt = 2131720672)
+        if (akuz.a().a() == 4) {}
+        for (paramInt = 2131693592;; paramInt = 2131720683)
         {
-          ((bbgg)localObject1).setPositiveButton(paramInt, new acow(this)).setNegativeButton(2131720671, new acov(this)).setOnKeyListener(new acou(this));
+          ((bbgu)localObject1).setPositiveButton(paramInt, new acos(this)).setNegativeButton(2131720682, new acor(this)).setOnKeyListener(new acoq(this));
           break;
         }
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        axqw.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuz.b(), String.valueOf(2), akva.a(), "");
-        axqw.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(2), akuz.a(), "");
+        axqy.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
         try
         {
           this.jdField_c_of_type_JavaLangString = String.format(this.jdField_c_of_type_JavaLangString, new Object[0]);
-          acox localacox = new acox(this);
-          acoy localacoy = new acoy(this);
+          acot localacot = new acot(this);
+          acou localacou = new acou(this);
           if (this.jdField_a_of_type_Boolean) {
             if ((this.g == null) || ("".equals(this.g)))
             {
-              localObject1 = ajyc.a(2131715918);
+              localObject1 = ajya.a(2131715929);
               if ((this.h != null) && (!"".equals(this.h))) {
                 break label620;
               }
-              str = ajyc.a(2131715911);
-              paramInt = bbjn.aO(this, this.app.c());
-              bbjn.ae(this, this.app.c(), paramInt + 1);
-              bbjn.j(this, this.app.c(), System.currentTimeMillis());
-              localObject1 = bbcv.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, (String)localObject1, str, this.f, localacoy, localacox);
+              str = ajya.a(2131715922);
+              paramInt = bbkb.aO(this, this.app.c());
+              bbkb.ae(this, this.app.c(), paramInt + 1);
+              bbkb.j(this, this.app.c(), System.currentTimeMillis());
+              localObject1 = bbdj.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, (String)localObject1, str, this.f, localacou, localacot);
               b();
               ((Dialog)localObject1).setCanceledOnTouchOutside(false);
-              ((Dialog)localObject1).setOnDismissListener(new acoz(this));
+              ((Dialog)localObject1).setOnDismissListener(new acov(this));
               return localObject1;
             }
           }
@@ -315,28 +315,28 @@ public class UpgradeActivity
           }
           if ((this.jdField_e_of_type_JavaLangString == null) || ("".equals(this.jdField_e_of_type_JavaLangString)))
           {
-            localObject2 = ajyc.a(2131715909);
+            localObject2 = ajya.a(2131715920);
             label657:
             if ((this.jdField_d_of_type_JavaLangString != null) && (!"".equals(this.jdField_d_of_type_JavaLangString))) {
               break label737;
             }
           }
           label737:
-          for (String str = ajyc.a(2131715916);; str = this.jdField_d_of_type_JavaLangString)
+          for (String str = ajya.a(2131715927);; str = this.jdField_d_of_type_JavaLangString)
           {
-            paramInt = bbjn.aN(this, this.app.c());
-            bbjn.ad(this, this.app.c(), paramInt + 1);
-            bbjn.i(this, this.app.c(), System.currentTimeMillis());
+            paramInt = bbkb.aN(this, this.app.c());
+            bbkb.ad(this, this.app.c(), paramInt + 1);
+            bbkb.i(this, this.app.c(), System.currentTimeMillis());
             break;
             localObject2 = this.jdField_e_of_type_JavaLangString;
             break label657;
           }
         }
-        Object localObject2 = bbcv.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-        ((bbgg)localObject2).setPositiveButton(ajyc.a(2131715915), new acok(this)).setNegativeButton(ajyc.a(2131715920), new acoj(this));
+        Object localObject2 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ((bbgu)localObject2).setPositiveButton(ajya.a(2131715926), new acog(this)).setNegativeButton(ajya.a(2131715931), new acof(this));
         continue;
-        localObject2 = bbcv.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-        ((bbgg)localObject2).setPositiveButton(ajyc.a(2131715912), new acom(this)).setNegativeButton(ajyc.a(2131715913), new acol(this));
+        localObject2 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ((bbgu)localObject2).setPositiveButton(ajya.a(2131715923), new acoi(this)).setNegativeButton(ajya.a(2131715924), new acoh(this));
         continue;
         long l = System.currentTimeMillis();
         if (l - jdField_c_of_type_Long <= 1000L)
@@ -345,10 +345,10 @@ public class UpgradeActivity
           return null;
         }
         jdField_c_of_type_Long = l;
-        localObject2 = akva.a().a();
-        if ((localObject2 == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akvf == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null))
+        localObject2 = akuz.a().a();
+        if ((localObject2 == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akve == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null))
         {
-          bdid.a().a(ajyc.a(2131715919));
+          bdis.a().a(ajya.a(2131715930));
           finish();
           return null;
         }
@@ -357,20 +357,20 @@ public class UpgradeActivity
         try
         {
           this.jdField_c_of_type_JavaLangString = String.format(this.jdField_c_of_type_JavaLangString, new Object[0]);
-          l = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akvf.jdField_a_of_type_Long;
-          bbiy.b(true);
-          paramInt = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akvf.jdField_a_of_type_Int;
-          bbiy.b(paramInt);
-          if (bdlc.a().b())
+          l = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akve.jdField_a_of_type_Long;
+          bbjm.b(true);
+          paramInt = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akve.jdField_a_of_type_Int;
+          bbjm.b(paramInt);
+          if (bdlr.a().b())
           {
-            localObject2 = bbcv.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, new acon(this), new acoo(this));
-            ((bbgg)localObject2).setOnDismissListener(new acop(this));
-            bdht.b("qqBaseActivity", bdeu.a(10010, 1, 1, 100));
-            bdht.b("qqBaseActivity", bdeu.a(10010, 1, 2, 100));
-            bdht.b("qqBaseActivity", bdeu.a(10010, 1, 3, 100));
-            bdes.a().a(16, bdeu.a(10010, 1, 1, 100));
-            bdes.a().a(16, bdeu.a(10010, 1, 2, 100));
-            bdes.a().a(16, bdeu.a(10010, 1, 3, 100));
+            localObject2 = bbdj.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, new acoj(this), new acok(this));
+            ((bbgu)localObject2).setOnDismissListener(new acol(this));
+            bdii.b("qqBaseActivity", bdfj.a(10010, 1, 1, 100));
+            bdii.b("qqBaseActivity", bdfj.a(10010, 1, 2, 100));
+            bdii.b("qqBaseActivity", bdfj.a(10010, 1, 3, 100));
+            bdfh.a().a(16, bdfj.a(10010, 1, 1, 100));
+            bdfh.a().a(16, bdfj.a(10010, 1, 2, 100));
+            bdfh.a().a(16, bdfj.a(10010, 1, 3, 100));
             return localObject2;
           }
         }
@@ -382,9 +382,9 @@ public class UpgradeActivity
             localException2.printStackTrace();
           }
           this.jdField_b_of_type_Boolean = true;
-          bdlc.a().a(false);
-          localObject2 = bbcv.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, "");
-          ((bbew)localObject2).a(new acoq(this, (bbew)localObject2, paramInt), true);
+          bdlr.a().a(false);
+          localObject2 = bbdj.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, "");
+          ((bbfk)localObject2).a(new acom(this, (bbfk)localObject2, paramInt), true);
           return localObject2;
         }
       }

@@ -1,65 +1,18 @@
-import android.text.TextUtils;
-import android.util.Log;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Looper;
 
 public class bekz
 {
-  public static Object a(String paramString)
+  private static Handler a = new Handler(Looper.getMainLooper());
+  
+  public static void a(Runnable paramRunnable)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName(paramString).newInstance();
-      return paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      Log.e("ReflectionUtil", "ClassNotFoundException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      Log.e("ReflectionUtil", "IllegalAccessException: ");
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramString)
-    {
-      Log.e("ReflectionUtil", "InstantiationException: ");
-      paramString.printStackTrace();
-    }
-    return null;
+    a.post(paramRunnable);
   }
   
-  public static Object a(String paramString1, String paramString2)
+  public static void a(Runnable paramRunnable, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    try
-    {
-      paramString1 = Class.forName(paramString1);
-      paramString1 = paramString1.getField(paramString2).get(paramString1);
-      return paramString1;
-    }
-    catch (NoSuchFieldException paramString1)
-    {
-      Log.w("ReflectionUtil", "NoSuchFieldException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      Log.w("ReflectionUtil", "IllegalAccessException: " + paramString1.getMessage());
-      return null;
-    }
-    catch (ClassNotFoundException paramString1)
-    {
-      Log.w("ReflectionUtil", "ClassNotFoundException: " + paramString1.getMessage());
-    }
-    return null;
+    a.postDelayed(paramRunnable, paramLong);
   }
 }
 

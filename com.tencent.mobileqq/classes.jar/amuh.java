@@ -1,36 +1,67 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amuh
+  extends ampa<amug>
 {
-  private int a;
-  
-  public static amuh a(String paramString)
+  public int a()
   {
-    if (paramString == null) {}
-    do
+    return 488;
+  }
+  
+  @NonNull
+  public amug a(int paramInt)
+  {
+    return new amug();
+  }
+  
+  @Nullable
+  public amug a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      return null;
-      try
-      {
-        amuh localamuh = new amuh();
-        localamuh.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
-        return localamuh;
+      amug localamug = amug.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+      return localamug;
+    }
     return null;
+  }
+  
+  public Class<amug> a()
+  {
+    return amug.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amug paramamug)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramamug.toString());
+    }
   }
   
   public boolean a()
   {
-    return this.a == 1;
+    return true;
   }
   
-  public String toString()
+  public int b()
   {
-    return "open:" + this.a;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

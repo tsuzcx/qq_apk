@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.core.cache;
 
 import android.text.TextUtils;
 import android.util.LruCache;
-import behy;
-import beib;
-import beif;
-import beig;
-import beii;
-import besl;
+import beip;
+import beis;
+import beiw;
+import beix;
+import beiz;
+import betc;
 import java.io.IOException;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,17 +15,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Storage$2
   implements Runnable
 {
-  public Storage$2(beig parambeig, String paramString1, String paramString2, beii parambeii, String paramString3) {}
+  public Storage$2(beix parambeix, String paramString1, String paramString2, beiz parambeiz, String paramString3) {}
   
   public void run()
   {
-    ??? = beif.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((??? != null) && (((String)???).length() > 1048576) && (this.jdField_a_of_type_Beii != null)) {
-      this.jdField_a_of_type_Beii.onFailed(this.c, "size limit reached");
+    ??? = beiw.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((??? != null) && (((String)???).length() > 1048576) && (this.jdField_a_of_type_Beiz != null)) {
+      this.jdField_a_of_type_Beiz.onFailed(this.c, "size limit reached");
     }
-    if (beig.a(this.this$0) != null) {
-      if (beig.a(this.this$0).a()) {
-        beig.a(this.this$0);
+    if (beix.a(this.this$0) != null) {
+      if (beix.a(this.this$0).a()) {
+        beix.a(this.this$0);
       }
     }
     label361:
@@ -39,41 +39,41 @@ public class Storage$2
           {
             if (this.this$0.a() * 1000L + ((String)???).length() > 10485760L)
             {
-              besl.d("Storage", "exceeded the limit size");
-              if (this.jdField_a_of_type_Beii != null) {
-                this.jdField_a_of_type_Beii.onFailed(this.c, "exceeded the limit size");
+              betc.d("Storage", "exceeded the limit size");
+              if (this.jdField_a_of_type_Beiz != null) {
+                this.jdField_a_of_type_Beiz.onFailed(this.c, "exceeded the limit size");
               }
             }
-            beib localbeib = beig.a(this.this$0).a(this.c);
-            if (localbeib != null)
+            beis localbeis = beix.a(this.this$0).a(this.c);
+            if (localbeis != null)
             {
-              localbeib.a(0, (String)???);
-              localbeib.a();
+              localbeis.a(0, (String)???);
+              localbeis.a();
             }
-            if (beig.a(this.this$0) != null) {
-              beig.a(this.this$0).put(this.c, ???);
+            if (beix.a(this.this$0) != null) {
+              beix.a(this.this$0).put(this.c, ???);
             }
           }
-          synchronized (beig.a())
+          synchronized (beix.a())
           {
-            beig.a(this.this$0).trimToSize(10485760 / beig.a().keySet().size());
-            if (this.jdField_a_of_type_Beii != null) {
-              this.jdField_a_of_type_Beii.onSuccess(this.c, "ok");
+            beix.a(this.this$0).trimToSize(10485760 / beix.a().keySet().size());
+            if (this.jdField_a_of_type_Beiz != null) {
+              this.jdField_a_of_type_Beiz.onSuccess(this.c, "ok");
             }
           }
         }
         catch (Throwable localThrowable)
         {
-          if (this.jdField_a_of_type_Beii != null) {
-            this.jdField_a_of_type_Beii.onFailed(this.c, localThrowable.getMessage());
+          if (this.jdField_a_of_type_Beiz != null) {
+            this.jdField_a_of_type_Beiz.onFailed(this.c, localThrowable.getMessage());
           }
-          besl.d("Storage", localThrowable.getMessage(), localThrowable);
-          if (beig.a(this.this$0) == null) {
+          betc.d("Storage", localThrowable.getMessage(), localThrowable);
+          if (beix.a(this.this$0) == null) {
             continue;
           }
           try
           {
-            beig.a(this.this$0).a();
+            beix.a(this.this$0).a();
             return;
           }
           catch (IOException localIOException1)
@@ -84,13 +84,13 @@ public class Storage$2
         }
         finally
         {
-          if (beig.a(this.this$0) == null) {
+          if (beix.a(this.this$0) == null) {
             break label361;
           }
         }
         try
         {
-          beig.a(this.this$0).a();
+          beix.a(this.this$0).a();
           return;
         }
         catch (IOException localIOException2)
@@ -103,7 +103,7 @@ public class Storage$2
       throw localObject3;
       try
       {
-        beig.a(this.this$0).a();
+        beix.a(this.this$0).a();
         throw localObject2;
       }
       catch (IOException localIOException3)
@@ -113,9 +113,9 @@ public class Storage$2
           localIOException3.printStackTrace();
         }
       }
-      besl.d("Storage", "mDiskCache.isClosed(): ");
-    } while (this.jdField_a_of_type_Beii == null);
-    this.jdField_a_of_type_Beii.onFailed(this.c, "can not write");
+      betc.d("Storage", "mDiskCache.isClosed(): ");
+    } while (this.jdField_a_of_type_Beiz == null);
+    this.jdField_a_of_type_Beiz.onFailed(this.c, "can not write");
   }
 }
 

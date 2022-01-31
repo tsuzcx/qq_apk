@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class Ability
-  extends aukm
+  extends auko
 {
   public static final int ABILITY_PHOTO = 2;
   public static final int ABILITY_VIDEO = 1;
   public int flags;
-  @auma
+  @aumc
   public String uin;
   
   public static boolean hasAbility(int paramInt1, int paramInt2)

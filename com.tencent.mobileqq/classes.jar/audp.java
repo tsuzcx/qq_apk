@@ -1,17 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
 public class audp
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
   public audp(ScanOcrView paramScanOcrView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.e = i;
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
+    }
   }
 }
 

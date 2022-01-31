@@ -4,9 +4,9 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import bbct;
-import bbdj;
-import bhvh;
+import bbdh;
+import bbdx;
+import bhvy;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
@@ -25,10 +25,10 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import mzk;
-import nas;
-import noo;
-import onk;
+import mzh;
+import nap;
+import nol;
+import onh;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -62,7 +62,7 @@ public class TaskManager
     try
     {
       isConfigureOn = getConfigOn();
-      SCRIPT_ROOT_PATH = mzk.a("3412") + "3412";
+      SCRIPT_ROOT_PATH = mzh.a("3412") + "3412";
       JSSCRIPT_EXTRACTION_DIR = SCRIPT_ROOT_PATH + "/extraction";
       JSSCRIPT_PROCESS_DIR = SCRIPT_ROOT_PATH + "/process";
       JSSCRIPT_DISTRIBUTION_DIR = SCRIPT_ROOT_PATH + "/distribution";
@@ -251,7 +251,7 @@ public class TaskManager
   
   public static boolean getConfigOn()
   {
-    return ((Integer)bhvh.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)bhvy.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
   }
   
   public static TaskManager getInstance()
@@ -261,7 +261,7 @@ public class TaskManager
   
   private String getMmapUtilsName(String paramString)
   {
-    String str = onk.a().getAccount();
+    String str = onh.a().getAccount();
     return str + "_" + paramString;
   }
   
@@ -379,7 +379,7 @@ public class TaskManager
           if (((File)localObject1).exists())
           {
             localObject2 = new StringBuffer();
-            localObject1 = bbdj.b((File)localObject1);
+            localObject1 = bbdx.b((File)localObject1);
             if (localJSContext == null) {
               continue;
             }
@@ -448,13 +448,13 @@ public class TaskManager
   
   private boolean isTaskAvailable(Task paramTask)
   {
-    int i = ((Integer)bhvh.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
+    int i = ((Integer)bhvy.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
     return (i != Task.STATUS_FAIL) && (i != Task.STATUS_QUIT);
   }
   
   private Task readTaskConfigFile(File paramFile)
   {
-    return readTaskConfigJson(bbdj.a(paramFile));
+    return readTaskConfigJson(bbdx.a(paramFile));
   }
   
   private Task readTaskConfigJson(String paramString)
@@ -526,7 +526,7 @@ public class TaskManager
   private void readTasksFromConfigFile()
   {
     QLog.d("kandianreport.taskmanager", 1, "readTasksFromConfigFile...");
-    if (bbdj.a(TASK_CONFIG_DIR))
+    if (bbdx.a(TASK_CONFIG_DIR))
     {
       Object localObject1 = new File(TASK_CONFIG_DIR).listFiles();
       this.taskList.clear();
@@ -607,10 +607,10 @@ public class TaskManager
     paramString1.put("version", scriptVersion + "");
     paramString1.put("so_version", KandianReportSoLoader.getSoVersion() + "");
     paramString1.put("phone", Build.MODEL);
-    paramString1.put("sys_version", bbct.e());
-    paramString1.put("qq_version", bbct.c());
+    paramString1.put("sys_version", bbdh.e());
+    paramString1.put("qq_version", bbdh.c());
     paramString1.put("appid", AppSetting.a() + "");
-    noo.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
+    nol.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
   }
   
   private void startTask(Task paramTask)
@@ -634,7 +634,7 @@ public class TaskManager
       if (isStarted) {
         return;
       }
-      if (bbdj.a(SCRIPT_ROOT_PATH)) {
+      if (bbdx.a(SCRIPT_ROOT_PATH)) {
         break label124;
       }
       QLog.d("kandianreport.taskmanager", 1, "startTasksIfExist: offline root dir is null");
@@ -648,7 +648,7 @@ public class TaskManager
         return;
         try
         {
-          if (nas.a(SCRIPT_ROOT_PATH, "3412")) {
+          if (nap.a(SCRIPT_ROOT_PATH, "3412")) {
             continue;
           }
           KandianReportSoLoader.logAndReport("startTasksIfExist: verification failed");
@@ -786,7 +786,7 @@ public class TaskManager
   {
     QLog.d("kandianreport.taskmanager", 2, "mark task fail " + paramTask.id);
     paramTask.status = Task.STATUS_FAIL;
-    bhvh.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
+    bhvy.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
   }
   
   public void qlog(int paramInt, String paramString)
@@ -807,7 +807,7 @@ public class TaskManager
           initTask(localTask);
           startTask(localTask);
           localTask.status = Task.STATUS_ACCEPT;
-          bhvh.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
+          bhvy.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
         }
         catch (Exception localException)
         {
@@ -840,7 +840,7 @@ public class TaskManager
   public void restore()
   {
     QLog.d("kandianreport.taskmanager", 1, "restore");
-    bhvh.a("kandianreport_ON", Integer.valueOf(1));
+    bhvy.a("kandianreport_ON", Integer.valueOf(1));
   }
   
   public void startAllTasks()

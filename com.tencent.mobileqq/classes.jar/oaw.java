@@ -1,363 +1,336 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.graphics.Point;
+import android.view.animation.AccelerateInterpolator;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TimeZone;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class oaw
 {
-  private static volatile oaw jdField_a_of_type_Oaw;
-  public static boolean b;
-  public int a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSystemSharedPreferences("ReadInJoySuperMaskAd", 0);
-  public AdvertisementInfo a;
-  public obs a;
-  public boolean a;
-  private int b;
-  private boolean c;
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
+  private oaz jdField_a_of_type_Oaz;
   
-  private oaw()
+  public oaz a()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private static long a(long paramLong)
-  {
-    return (TimeZone.getTimeZone("GMT+8").getOffset(paramLong) + paramLong) / 86400000L;
-  }
-  
-  public static oaw a()
-  {
-    if (jdField_a_of_type_Oaw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Oaw == null) {
-        jdField_a_of_type_Oaw = new oaw();
-      }
-      return jdField_a_of_type_Oaw;
-    }
-    finally {}
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      String str = onk.a().a("ad_mengceng", String.valueOf(1)).a();
-      return str;
-    }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public static boolean c()
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(206);
-    if (localAladdinConfig != null)
-    {
-      int i = localAladdinConfig.getIntegerFromString("ad_mengceng", 0);
-      QLog.d("ReadInJoySuperMaskAd", 1, new Object[] { "should show super mask, value = ", Integer.valueOf(i) });
-      return i == 1;
-    }
-    return false;
-  }
-  
-  private boolean e()
-  {
-    if (onk.w()) {
-      QLog.d("ReadInJoySuperMaskAd", 1, "should not show super mask, isFloatWindowShowing = true");
-    }
-    for (;;)
-    {
-      return false;
-      long l1 = NetConnInfoCenter.getServerTimeMillis();
-      long l2 = a();
-      if ((l1 - l2 < 86400000L) && (a(l1) == a(l2))) {}
-      for (int i = 1; (i == 0) || (l2 == -1L) || (d()); i = 0) {
-        return true;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str + "_" + "RIJSuperMaskLastShowMaskTimeKey", -1L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySuperMaskAd", 2, "current uni last show time : " + str + " at time: " + l);
-    }
-    return l;
-  }
-  
-  public MaterialData a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo == null)) {
-      return null;
-    }
-    Iterator localIterator = nzq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(2).iterator();
-    while (localIterator.hasNext())
-    {
-      MaterialData localMaterialData = (MaterialData)localIterator.next();
-      if ((localMaterialData.adid.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid))) && (localMaterialData.ad_source.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h)))) {
-        return localMaterialData;
-      }
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo == null) || (!b())) {
-      return "";
-    }
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = nzq.a((QQAppInterface)localObject1).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
-    Object localObject2 = new File(str, "manifest.json");
-    if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile()) || (!((File)localObject2).canRead()))
-    {
-      nzq.a((QQAppInterface)localObject1).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
-      return "";
-    }
-    Object localObject3 = new StringBuffer();
-    gp.a((StringBuffer)localObject3, ((File)localObject2).getPath());
-    localObject2 = ((StringBuffer)localObject3).toString();
-    try
-    {
-      localObject3 = new JSONObject((String)localObject2);
-      localObject2 = ((JSONObject)localObject3).getString("animFileName");
-      this.jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("superMaskType", 1);
-      if (localObject2 != null)
-      {
-        localObject3 = new File(str, (String)localObject2);
-        if ((!((File)localObject3).exists()) || (!((File)localObject3).isFile()) || (!((File)localObject3).canRead()))
-        {
-          nzq.a((QQAppInterface)localObject1).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
-          return "";
-        }
-        localObject1 = str + (String)localObject2;
-        return localObject1;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      return "";
-    }
-    return "";
-  }
-  
-  public ArrayList a()
-  {
-    Object localObject = nzq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(2);
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      MaterialData localMaterialData = (MaterialData)((Iterator)localObject).next();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("adId", localMaterialData.adid);
-      localHashMap.put("adSource", localMaterialData.ad_source);
-      localHashMap.put("adMaterial", localMaterialData.ad_material);
-      localArrayList.add(localHashMap);
-    }
-    return localArrayList;
+    return this.jdField_a_of_type_Oaz;
   }
   
   public void a()
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putLong(str + "_" + "RIJSuperMaskLastShowMaskTimeKey", l);
-    localEditor.apply();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySuperMaskAd", 2, "current uni won't show today : " + str + " at time: " + l);
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
   
-  public void a(int paramInt)
+  public void a(ReadInjoyCutImageView paramReadInjoyCutImageView, ocv paramocv1, ocv paramocv2, int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    if ((paramInt == 4) && (this.jdField_a_of_type_Obs != null) && (this.jdField_a_of_type_Obs.a())) {
-      this.jdField_a_of_type_Obs.a();
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = str + "_" + String.valueOf(paramLong) + "_" + String.valueOf(paramInt);
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putBoolean(str, true);
-    localEditor.apply();
-  }
-  
-  public void a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((!oau.m(paramAdvertisementInfo)) || (!e()) || (!c())) {
-      return;
-    }
-    if (this.jdField_b_of_type_Int == 4)
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Point localPoint1 = new Point();
+    Point localPoint2 = new Point();
+    Point localPoint3 = new Point();
+    Point localPoint4 = new Point();
+    float f1 = 0.0F;
+    int n = 0;
+    int i1 = 0;
+    int m;
+    int k;
+    int j;
+    int i;
+    if (paramocv1.a == paramocv2.a)
     {
-      this.jdField_b_of_type_Int = 0;
-      return;
-    }
-    a(1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Obs != null) && (this.jdField_a_of_type_Obs.a())) {
-      this.jdField_a_of_type_Obs.a(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    if (d()) {
-      return true;
-    }
-    return this.c;
-  }
-  
-  public boolean a(long paramLong, int paramInt)
-  {
-    boolean bool2 = false;
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = str + "_" + String.valueOf(paramLong) + "_" + String.valueOf(paramInt);
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(str, false))
-    {
-      bool1 = bool2;
-      if (!e()) {
-        bool1 = true;
+      paramocv1.b = Math.abs(paramocv1.b);
+      paramocv2.b = Math.abs(paramocv2.b);
+      if (paramocv1.b > paramocv2.b) {
+        paramocv1.a(paramocv2);
       }
+      localArrayList1.add(new ocv(0.0F, 0.0F));
+      localArrayList1.add(paramocv1);
+      localArrayList1.add(paramocv2);
+      localArrayList1.add(new ocv(0.0F, 1.0F));
+      localArrayList1.add(new ocv(0.0F, 0.0F));
+      localArrayList2.add(paramocv1);
+      localArrayList2.add(new ocv(1.0F, 0.0F));
+      localArrayList2.add(new ocv(1.0F, 1.0F));
+      localArrayList2.add(paramocv2);
+      localArrayList2.add(paramocv1);
+      if ((paramInt1 != 5) || (paramInt2 != 5)) {
+        break label2165;
+      }
+      m = 2;
+      k = 1;
+      j = 1;
+      i = i1;
     }
-    return bool1;
+    for (;;)
+    {
+      switch (m)
+      {
+      default: 
+        label280:
+        switch (k)
+        {
+        }
+        break;
+      }
+      for (;;)
+      {
+        paramReadInjoyCutImageView.a();
+        paramReadInjoyCutImageView.setClipArea(localArrayList1, localArrayList2);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateInterpolator());
+        f1 = localPoint2.x - localPoint1.x;
+        f2 = localPoint2.y - localPoint1.y;
+        f3 = localPoint4.x - localPoint3.x;
+        float f4 = localPoint4.y - localPoint3.y;
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new oax(this, f1, f2, f3, f4, paramReadInjoyCutImageView));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new oay(this, paramReadInjoyCutImageView));
+        return;
+        if (paramocv1.b == paramocv2.b)
+        {
+          paramocv1.b = Math.abs(paramocv1.b);
+          paramocv2.b = Math.abs(paramocv2.b);
+          if (paramocv1.a > paramocv2.a) {
+            paramocv1.a(paramocv2);
+          }
+          localArrayList1.add(new ocv(0.0F, 0.0F));
+          localArrayList1.add(new ocv(1.0F, 0.0F));
+          localArrayList1.add(paramocv2);
+          localArrayList1.add(paramocv1);
+          localArrayList1.add(new ocv(0.0F, 0.0F));
+          localArrayList2.add(paramocv1);
+          localArrayList2.add(paramocv2);
+          localArrayList2.add(new ocv(1.0F, 1.0F));
+          localArrayList2.add(new ocv(0.0F, 1.0F));
+          localArrayList2.add(paramocv1);
+          if ((paramInt1 != 5) || (paramInt2 != 5)) {
+            break label2147;
+          }
+          m = 3;
+          k = 4;
+          i = 1;
+          j = n;
+          break;
+        }
+        f2 = (paramocv2.b - paramocv1.b) / (paramocv2.a - paramocv1.a);
+        f3 = (paramocv2.b + paramocv1.b - (paramocv2.a + paramocv1.a) * f2) / 2.0F;
+        paramocv1.b = Math.abs(paramocv1.b);
+        paramocv2.b = Math.abs(paramocv2.b);
+        if (f2 > 0.0F)
+        {
+          if (paramocv1.a < paramocv2.a) {
+            paramocv1.a(paramocv2);
+          }
+          localArrayList1.add(new ocv(0.0F, 0.0F));
+          localArrayList2.add(new ocv(paramocv1));
+          localocv = new ocv(1.0F, 0.0F);
+          if (localocv.b > localocv.a * f2 + f3)
+          {
+            localArrayList1.add(localocv);
+            label795:
+            localArrayList1.add(paramocv1);
+            localArrayList2.add(new ocv(1.0F, 1.0F));
+            localArrayList1.add(paramocv2);
+            localocv = new ocv(0.0F, 1.0F);
+            if (-localocv.b <= localocv.a * f2 + f3) {
+              break label1133;
+            }
+            localArrayList1.add(localocv);
+          }
+          for (;;)
+          {
+            localArrayList2.add(paramocv2);
+            localArrayList1.add(new ocv((ocv)localArrayList1.get(0)));
+            localArrayList2.add(new ocv((ocv)localArrayList2.get(0)));
+            i = i1;
+            j = n;
+            f1 = f2;
+            m = paramInt1;
+            k = paramInt2;
+            if (paramInt1 != 5) {
+              break;
+            }
+            i = i1;
+            j = n;
+            f1 = f2;
+            m = paramInt1;
+            k = paramInt2;
+            if (paramInt2 != 5) {
+              break;
+            }
+            f1 = -1.0F / f2;
+            f4 = f3 / (f1 - f2);
+            localPoint1.x = ((int)(paramReadInjoyCutImageView.getWidth() * f4));
+            localPoint1.y = (-(int)((f4 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+            localPoint2.x = 0;
+            localPoint2.y = 0;
+            f1 = (f3 + f1 + 1.0F) / (f1 - f2);
+            localPoint3.x = ((int)(paramReadInjoyCutImageView.getWidth() * f1));
+            localPoint3.y = (-(int)((f1 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+            localPoint4.x = paramReadInjoyCutImageView.getWidth();
+            localPoint4.y = paramReadInjoyCutImageView.getHeight();
+            i = i1;
+            j = n;
+            f1 = f2;
+            m = paramInt1;
+            k = paramInt2;
+            break;
+            localArrayList2.add(localocv);
+            break label795;
+            label1133:
+            localArrayList2.add(localocv);
+          }
+        }
+        if (paramocv1.a > paramocv2.a) {
+          paramocv1.a(paramocv2);
+        }
+        localArrayList2.add(paramocv1);
+        ocv localocv = new ocv(0.0F, 0.0F);
+        if (localocv.b < localocv.a * f2 + f3)
+        {
+          localArrayList1.add(localocv);
+          label1207:
+          localArrayList1.add(paramocv1);
+          localArrayList1.add(paramocv2);
+          localArrayList2.add(new ocv(1.0F, 0.0F));
+          localocv = new ocv(1.0F, 1.0F);
+          if (-localocv.b >= localocv.a * f2 + f3) {
+            break label1560;
+          }
+          localArrayList1.add(localocv);
+        }
+        for (;;)
+        {
+          localArrayList1.add(new ocv(0.0F, 1.0F));
+          localArrayList2.add(paramocv2);
+          localArrayList1.add(new ocv((ocv)localArrayList1.get(0)));
+          localArrayList2.add(new ocv((ocv)localArrayList2.get(0)));
+          i = i1;
+          j = n;
+          f1 = f2;
+          m = paramInt1;
+          k = paramInt2;
+          if (paramInt1 != 5) {
+            break;
+          }
+          i = i1;
+          j = n;
+          f1 = f2;
+          m = paramInt1;
+          k = paramInt2;
+          if (paramInt2 != 5) {
+            break;
+          }
+          f1 = -1.0F / f2;
+          f4 = (1.0F + f3) / (f1 - f2);
+          localPoint1.x = ((int)(paramReadInjoyCutImageView.getWidth() * f4));
+          localPoint1.y = (-(int)((f4 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+          localPoint2.x = 0;
+          localPoint2.y = paramReadInjoyCutImageView.getHeight();
+          f1 = (f3 + f1) / (f1 - f2);
+          localPoint3.x = ((int)(paramReadInjoyCutImageView.getWidth() * f1));
+          localPoint3.y = (-(int)((f1 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+          localPoint4.x = paramReadInjoyCutImageView.getWidth();
+          localPoint4.y = 0;
+          i = i1;
+          j = n;
+          f1 = f2;
+          m = paramInt1;
+          k = paramInt2;
+          break;
+          localArrayList2.add(localocv);
+          break label1207;
+          label1560:
+          localArrayList2.add(localocv);
+        }
+        localPoint1.x = ((int)(Math.max(paramocv1.a, paramocv2.a) * paramReadInjoyCutImageView.getWidth()));
+        localPoint1.y = 0;
+        localPoint2.x = 0;
+        localPoint2.y = 0;
+        break label280;
+        f2 = Math.max(paramocv1.a, paramocv2.a);
+        localPoint1.x = 0;
+        localPoint1.y = 0;
+        localPoint2.x = ((int)(f2 * paramReadInjoyCutImageView.getWidth()));
+        localPoint2.y = 0;
+        break label280;
+        f2 = Math.min(paramocv1.b, paramocv2.b);
+        f3 = Math.max(paramocv1.b, paramocv2.b);
+        if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+        for (paramInt1 = 0;; paramInt1 = (int)(f2 * paramReadInjoyCutImageView.getHeight()))
+        {
+          localPoint1.y = paramInt1;
+          localPoint1.x = 0;
+          localPoint2.y = ((int)(paramReadInjoyCutImageView.getHeight() * f3));
+          localPoint2.x = 0;
+          break;
+        }
+        f2 = Math.min(paramocv1.b, paramocv2.b);
+        localPoint1.y = ((int)(Math.max(paramocv1.b, paramocv2.b) * paramReadInjoyCutImageView.getHeight()));
+        localPoint1.x = 0;
+        if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+        for (paramInt1 = 0;; paramInt1 = (int)(f2 * paramReadInjoyCutImageView.getHeight()))
+        {
+          localPoint2.y = paramInt1;
+          localPoint2.x = 0;
+          break;
+        }
+        f1 = Math.min(paramocv1.a, paramocv2.a);
+        localPoint3.x = paramReadInjoyCutImageView.getWidth();
+        localPoint3.y = 0;
+        localPoint4.x = ((int)(f1 * paramReadInjoyCutImageView.getWidth()));
+        localPoint4.y = 0;
+        continue;
+        localPoint3.x = ((int)(Math.min(paramocv1.a, paramocv2.a) * paramReadInjoyCutImageView.getWidth()));
+        localPoint3.y = 0;
+        localPoint4.x = paramReadInjoyCutImageView.getWidth();
+        localPoint4.y = 0;
+      }
+      float f2 = Math.min(paramocv1.b, paramocv2.b);
+      float f3 = Math.max(paramocv1.b, paramocv2.b);
+      localPoint3.y = ((int)(f2 * paramReadInjoyCutImageView.getHeight()));
+      localPoint3.x = 0;
+      if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+      for (paramInt1 = paramReadInjoyCutImageView.getHeight();; paramInt1 = (int)(paramReadInjoyCutImageView.getHeight() * f3))
+      {
+        localPoint4.y = paramInt1;
+        localPoint4.x = 0;
+        break;
+      }
+      f2 = Math.min(paramocv1.b, paramocv2.b);
+      f3 = Math.max(paramocv1.b, paramocv2.b);
+      if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+      for (paramInt1 = paramReadInjoyCutImageView.getHeight();; paramInt1 = (int)(f3 * paramReadInjoyCutImageView.getHeight()))
+      {
+        localPoint3.y = paramInt1;
+        localPoint3.x = 0;
+        localPoint4.y = ((int)(paramReadInjoyCutImageView.getHeight() * f2));
+        localPoint4.x = 0;
+        break;
+      }
+      label2147:
+      i = 1;
+      j = n;
+      m = paramInt1;
+      k = paramInt2;
+      continue;
+      label2165:
+      j = 1;
+      i = i1;
+      m = paramInt1;
+      k = paramInt2;
+    }
   }
   
-  public int b()
+  public void a(oaz paramoaz)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Oaz = paramoaz;
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null)) {
-      nmf.a(new nyg().a(BaseApplication.getContext()).a(nmf.jdField_b_of_type_Int).b(nmf.an).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).e(new JSONObject()).a());
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (!this.jdField_a_of_type_AndroidAnimationValueAnimator.isStarted())) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null))
-    {
-      if (paramInt == 1)
-      {
-        jdField_b_of_type_Boolean = true;
-        noo.a(null, "", "0X8009819", "0X8009819", 0, 0, "", "", "", b(), false);
-      }
-    }
-    else {
-      return;
-    }
-    JSONObject localJSONObject2;
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject2 = new JSONObject();
-      if ((paramInt == nmf.jdField_a_of_type_Int) || (paramInt == nmf.B))
-      {
-        localJSONObject2.put("volumn", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.f);
-        if (this.jdField_a_of_type_Int != 1)
-        {
-          if (this.jdField_a_of_type_Int != 3) {
-            break label246;
-          }
-          String str1 = "1";
-          label121:
-          localJSONObject2.put("is_transparent", str1);
-        }
-        localJSONObject1.put("click_info_report", String.valueOf(localJSONObject2));
-        nmf.a(new nyg().a(BaseApplication.getContext()).a(paramInt).b(nmf.an).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).e(localJSONObject1).a());
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("ReadInJoySuperMaskAd", 1, new Object[] { "JSONException", localJSONException.toString() });
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.f.equals("1")) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      localJSONObject2.put("volumn", str2);
-      break;
-      label246:
-      str2 = "";
-      break label121;
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySuperMaskAd", 2, "setShouldAskSuperMask = " + paramBoolean);
-    }
-    if ((e()) && (c()))
-    {
-      this.c = paramBoolean;
-      return;
-    }
-    this.c = false;
-  }
-  
-  public boolean b()
-  {
-    Iterator localIterator = nzq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(2).iterator();
-    while (localIterator.hasNext())
-    {
-      MaterialData localMaterialData = (MaterialData)localIterator.next();
-      if ((localMaterialData.ad_source.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h))) && (localMaterialData.adid.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid))) && (localMaterialData.res_version == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.p)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Obs != null) {
-      this.jdField_a_of_type_Obs = null;
-    }
-  }
-  
-  public boolean d()
-  {
-    return bbjn.az(BaseApplicationImpl.getApplication(), BaseApplicationImpl.getApplication().getRuntime().getAccount()) == 1;
   }
 }
 

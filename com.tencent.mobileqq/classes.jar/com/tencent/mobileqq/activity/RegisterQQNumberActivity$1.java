@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import askl;
+import askn;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class RegisterQQNumberActivity$1
@@ -10,7 +10,7 @@ class RegisterQQNumberActivity$1
   
   public void run()
   {
-    ((askl)this.this$0.app.getManager(11)).g();
+    ((askn)this.this$0.app.getManager(11)).g();
   }
 }
 

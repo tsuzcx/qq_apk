@@ -1,18 +1,38 @@
-public class bcgr
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+
+final class bcgr
+  implements ValueCallback<String>
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  bcgr(WebViewFragment paramWebViewFragment) {}
   
-  public String toString()
+  public void a(String paramString)
   {
-    return "url=" + this.jdField_a_of_type_JavaLangString + " ,method=" + this.b + " ,jsonHeader=" + this.c + " ,body=" + this.d + " ," + this.e + " ,rspBase64=" + this.jdField_a_of_type_Boolean + " ,timeout=" + this.jdField_a_of_type_Int + " ,userInfo=" + this.jdField_a_of_type_JavaLangObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("SwiftWebViewUtils", 2, "evaluateJavascript: " + paramString);
+    }
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (String str = paramString.trim();; str = "")
+    {
+      if (!TextUtils.isEmpty(str))
+      {
+        paramString = str;
+        if (str.startsWith("\"")) {
+          paramString = str.replaceFirst("\"", "");
+        }
+        str = paramString;
+        if (paramString.endsWith("\"")) {
+          str = paramString.substring(0, paramString.length() - 1);
+        }
+        localBundle.putString("banner_wording", String.format(ajya.a(2131714707), new Object[] { str }));
+      }
+      this.a.d(localBundle);
+      return;
+    }
   }
 }
 

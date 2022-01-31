@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
-import aukm;
-import aukn;
 import auko;
+import aukp;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -54,11 +54,11 @@ public class MiniAppEntrySettingFragment
   
   private void initUI(View paramView)
   {
-    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131370182));
+    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131370181));
     if (MiniAppUtils.isNightMode()) {
       this.mSettingLayout.setBackgroundColor(-16777216);
     }
-    this.mSettingListView = ((ListView)paramView.findViewById(2131370307));
+    this.mSettingListView = ((ListView)paramView.findViewById(2131370306));
     this.mSettingListViewAdapter = new MiniAppEntrySettingFragment.SettingListViewAdapter(this, paramView.getContext());
     this.mSettingListView.setAdapter(this.mSettingListViewAdapter);
     if (this.activity != null) {
@@ -97,16 +97,16 @@ public class MiniAppEntrySettingFragment
     //   54: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   57: return
     //   58: aload_2
-    //   59: invokevirtual 76	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lauko;
-    //   62: invokevirtual 82	auko:createEntityManager	()Laukn;
+    //   59: invokevirtual 76	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Laukq;
+    //   62: invokevirtual 82	aukq:createEntityManager	()Laukp;
     //   65: astore_3
     //   66: aload_3
     //   67: ifnull -10 -> 57
     //   70: aload_3
-    //   71: invokevirtual 222	aukn:a	()Laukp;
+    //   71: invokevirtual 222	aukp:a	()Laukr;
     //   74: astore_2
     //   75: aload_2
-    //   76: invokevirtual 226	aukp:a	()V
+    //   76: invokevirtual 226	aukr:a	()V
     //   79: aload_1
     //   80: invokeinterface 106 1 0
     //   85: astore_1
@@ -118,7 +118,7 @@ public class MiniAppEntrySettingFragment
     //   97: aload_1
     //   98: invokeinterface 116 1 0
     //   103: checkcast 84	com/tencent/mobileqq/mini/entry/MiniAppSettingSwitchInfoEntity
-    //   106: invokespecial 57	com/tencent/mobileqq/mini/activity/MiniAppEntrySettingFragment:updateSwitchData	(Laukn;Laukm;)Z
+    //   106: invokespecial 57	com/tencent/mobileqq/mini/activity/MiniAppEntrySettingFragment:updateSwitchData	(Laukp;Lauko;)Z
     //   109: pop
     //   110: goto -24 -> 86
     //   113: astore_1
@@ -130,16 +130,16 @@ public class MiniAppEntrySettingFragment
     //   125: aload_1
     //   126: invokestatic 235	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   129: aload_2
-    //   130: invokevirtual 238	aukp:b	()V
+    //   130: invokevirtual 238	aukr:b	()V
     //   133: return
     //   134: aload_2
-    //   135: invokevirtual 241	aukp:c	()V
+    //   135: invokevirtual 241	aukr:c	()V
     //   138: aload_2
-    //   139: invokevirtual 238	aukp:b	()V
+    //   139: invokevirtual 238	aukr:b	()V
     //   142: return
     //   143: astore_1
     //   144: aload_2
-    //   145: invokevirtual 238	aukp:b	()V
+    //   145: invokevirtual 238	aukr:b	()V
     //   148: aload_1
     //   149: athrow
     // Local variable table:
@@ -147,7 +147,7 @@ public class MiniAppEntrySettingFragment
     //   0	150	0	this	MiniAppEntrySettingFragment
     //   0	150	1	paramList	List<MiniAppSettingSwitchInfoEntity>
     //   14	131	2	localObject	Object
-    //   65	32	3	localaukn	aukn
+    //   65	32	3	localaukp	aukp
     // Exception table:
     //   from	to	target	type
     //   79	86	113	java/lang/Exception
@@ -173,37 +173,37 @@ public class MiniAppEntrySettingFragment
     ThreadManager.excute(new MiniAppEntrySettingFragment.3(this, paramList), 32, null, true);
   }
   
-  private boolean updateSwitchData(aukn paramaukn, aukm paramaukm)
+  private boolean updateSwitchData(aukp paramaukp, auko paramauko)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramaukn.a()) {
-      if (paramaukm.getStatus() == 1000)
+    if (paramaukp.a()) {
+      if (paramauko.getStatus() == 1000)
       {
-        paramaukn.b(paramaukm);
-        if (paramaukm.getStatus() == 1001) {
+        paramaukp.b(paramauko);
+        if (paramauko.getStatus() == 1001) {
           bool1 = true;
         }
-        paramaukn.a();
+        paramaukp.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
+      if ((paramauko.getStatus() != 1001) && (paramauko.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramaukn.a(paramaukm);
+      bool1 = paramaukp.a(paramauko);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppEntrySettingFragment", 2, "updateEntity em closed e=" + paramaukm.getTableName());
+    QLog.d("MiniAppEntrySettingFragment", 2, "updateEntity em closed e=" + paramauko.getTableName());
     return false;
   }
   
   public int getContentLayoutId()
   {
-    return 2131561969;
+    return 2131561968;
   }
   
   public void onAttach(Activity paramActivity)
@@ -221,7 +221,7 @@ public class MiniAppEntrySettingFragment
   {
     super.onViewCreated(paramView, paramBundle);
     this.activity = getActivity();
-    setTitle(ajyc.a(2131706803));
+    setTitle(ajya.a(2131706814));
     initData();
     initUI(paramView);
   }

@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import java.lang.ref.WeakReference;
 
 class axwo
-  implements agws
+  implements View.OnTouchListener
 {
-  axwo(axwn paramaxwn, StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext) {}
+  axwo(axwm paramaxwm) {}
   
-  public void a(Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramBundle.getInt("retCode");
-    String str = paramBundle.getString("retMsg");
-    int j = paramBundle.getInt("payTime");
-    paramBundle = paramBundle.getString("orderId");
-    this.jdField_a_of_type_Axwn.a.b(i);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Axwn.a.aj, i);
-    VACDReportUtil.a("ret_code=" + i + "|ret_str=" + str + "|pay_time=" + j + "|order_id=" + paramBundle, "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
+    if (this.a.a != null)
+    {
+      acxj localacxj = (acxj)this.a.a.get();
+      if (localacxj != null) {
+        return localacxj.onTouch(paramView, paramMotionEvent);
+      }
+    }
+    return false;
   }
 }
 

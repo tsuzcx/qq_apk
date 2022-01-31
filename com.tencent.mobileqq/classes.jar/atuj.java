@@ -1,9 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard.HiWanItem;
 
-public abstract interface atuj
+public class atuj
 {
-  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
+  public NearbyPeopleCard.HiWanItem a;
 }
 
 

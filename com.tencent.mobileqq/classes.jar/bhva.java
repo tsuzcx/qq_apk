@@ -1,13 +1,9 @@
-import android.graphics.drawable.AnimationDrawable;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.LruCache;
 
-public class bhva
+public abstract interface bhva
 {
-  public QzoneZipCacheHelperCallBack mCallBack;
-  
-  public void onLoadedFailed() {}
-  
-  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
+  public abstract void a(LruCache<Integer, BitmapDrawable> paramLruCache);
 }
 
 

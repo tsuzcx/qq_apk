@@ -1,10 +1,16 @@
-public abstract interface rss
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+
+public class rss
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public rss(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
-  
-  public abstract void b(boolean paramBoolean, String paramString);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidate();
+  }
 }
 
 

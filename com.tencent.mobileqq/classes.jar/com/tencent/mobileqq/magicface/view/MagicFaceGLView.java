@@ -5,17 +5,17 @@ import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
-import asds;
 import asdu;
-import asdx;
+import asdw;
+import asdz;
 import com.tencent.qphone.base.util.QLog;
 
 public class MagicFaceGLView
   extends GLSurfaceView
-  implements SurfaceHolder.Callback, asdu
+  implements SurfaceHolder.Callback, asdw
 {
-  private asds jdField_a_of_type_Asds;
-  private asdx jdField_a_of_type_Asdx;
+  private asdu jdField_a_of_type_Asdu;
+  private asdz jdField_a_of_type_Asdz;
   public volatile boolean a;
   private volatile boolean b;
   
@@ -27,8 +27,8 @@ public class MagicFaceGLView
     }
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-    this.jdField_a_of_type_Asds = new asds();
-    setRenderer(this.jdField_a_of_type_Asds);
+    this.jdField_a_of_type_Asdu = new asdu();
+    setRenderer(this.jdField_a_of_type_Asdu);
     setRenderMode(0);
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceGLView", 2, "func [gl] MagicFaceGLView ends");
@@ -55,10 +55,10 @@ public class MagicFaceGLView
   
   public void b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, float paramFloat)
   {
-    if (this.jdField_a_of_type_Asds == null) {
+    if (this.jdField_a_of_type_Asdu == null) {
       return;
     }
-    this.jdField_a_of_type_Asds.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, getWidth(), getHeight(), paramFloat, this.b);
+    this.jdField_a_of_type_Asdu.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, getWidth(), getHeight(), paramFloat, this.b);
     requestRender();
   }
   
@@ -67,9 +67,9 @@ public class MagicFaceGLView
     this.b = paramBoolean;
   }
   
-  public void setSurfaceCreatelistener(asdx paramasdx)
+  public void setSurfaceCreatelistener(asdz paramasdz)
   {
-    this.jdField_a_of_type_Asdx = paramasdx;
+    this.jdField_a_of_type_Asdz = paramasdz;
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
@@ -79,8 +79,8 @@ public class MagicFaceGLView
     }
     super.surfaceCreated(paramSurfaceHolder);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Asdx != null) {
-      this.jdField_a_of_type_Asdx.a();
+    if (this.jdField_a_of_type_Asdz != null) {
+      this.jdField_a_of_type_Asdz.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceGLView", 2, "func [gl] surfaceCreated ends");

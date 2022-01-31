@@ -1,45 +1,26 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 
 public class abnh
-  implements GestureDetector.OnDoubleTapListener
+  extends ajxj
 {
-  public abnh(MainFragment paramMainFragment) {}
+  public abnh(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
+    if (this.a.isFinishing()) {
+      return;
     }
-    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
-    if (paramMotionEvent != null) {}
-    for (int i = paramMotionEvent.d;; i = 0)
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      bcql.a(this.a, this.a.getString(2131694324), 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
-      }
-      paramMotionEvent = this.a.b();
-      if ((paramMotionEvent instanceof Conversation)) {
-        ((Conversation)paramMotionEvent).c();
-      }
-      if (i == 0) {
-        MainFragment.d(this.a);
-      }
-      return false;
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      bcql.a(this.a, 2, this.a.getString(2131694326), 0).b(this.a.getTitleBarHeight());
     }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
   }
 }
 

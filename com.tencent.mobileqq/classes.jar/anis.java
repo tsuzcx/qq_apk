@@ -1,9 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
 
-public abstract interface anis
+public final class anis
+  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
 {
-  public abstract void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile);
+  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
+  {
+    return new IntimateInfo.CommonTroopInfo(paramParcel);
+  }
+  
+  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  {
+    return new IntimateInfo.CommonTroopInfo[paramInt];
+  }
 }
 
 

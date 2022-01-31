@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
-import bbcv;
-import bbgg;
+import ajya;
+import bbdj;
+import bbgu;
 
 class LogJsPlugin$2
   implements Runnable
@@ -11,7 +11,7 @@ class LogJsPlugin$2
   
   public void run()
   {
-    bbcv.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajyc.a(2131706363), null, 2131690596, 2131694793, new LogJsPlugin.2.1(this), null).show();
+    bbdj.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajya.a(2131706374), null, 2131690596, 2131694794, new LogJsPlugin.2.1(this), null).show();
   }
 }
 

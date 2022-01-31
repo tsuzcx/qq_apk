@@ -1,33 +1,54 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import org.json.JSONObject;
 
 public class pel
+  implements php
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    pen.w(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("id_content_wrapper", new JSONObject());
-    localJSONObject1.put("id_article_wrapper", new JSONObject());
-    localJSONObject1.put("id_summary_wrapper", new JSONObject());
-    localJSONObject1.put("id_info_wrapper", new JSONObject());
-    pen.b(paramBaseArticleInfo, localJSONObject1);
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("summary_text", ajyc.a(2131712886));
-    localJSONObject1.put("id_summary", localJSONObject2);
-    localJSONObject1.put("id_image_content", new JSONObject());
-    localJSONObject2 = new JSONObject();
-    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
-    localJSONObject1.put("id_article_small_imge", localJSONObject2);
-    pen.a(paramBaseArticleInfo, localJSONObject1, true);
-    pen.e(paramBaseArticleInfo, localJSONObject1);
-    pen.m(paramBaseArticleInfo, localJSONObject1);
-    pen.C(paramBaseArticleInfo, localJSONObject1);
-    pen.D(paramBaseArticleInfo, localJSONObject1);
-    pen.b(localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_small_cell");
-    return localJSONObject1;
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
+    }
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    {
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      }
+    }
+    return new pdm().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).a("ReadInjoy_original_cell").F(paramBaseArticleInfo).E(paramBaseArticleInfo).H(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject = (pju)paramContainer.findViewBaseByName("id_info_avator");
+    if (localObject != null) {
+      ((pju)localObject).a(parampau);
+    }
+    localObject = (pjs)paramContainer.findViewBaseByName("id_article_comment");
+    if (localObject != null) {
+      ((pjs)localObject).a(parampau);
+    }
+    pmo.a(paramContainer, parampau.a());
+    pek.a(paramContainer, parampau);
+    pmo.b(paramContainer, parampau);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

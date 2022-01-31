@@ -1,43 +1,16 @@
-import java.util.List;
+import android.support.annotation.Nullable;
 
-class twa
-  implements twq
+public class twa
+  extends twl
 {
-  twa(tvy paramtvy) {}
+  @Nullable
+  public uvp a;
   
-  public void a()
+  public twa(String paramString, @Nullable uvp paramuvp)
   {
-    tvy.a(this.a, this.a.a.a(tvy.a(this.a), 5));
-    List localList = tvy.a(this.a).a;
-    if ((tvy.a(this.a) == null) && (localList.size() > 0)) {
-      tvy.a(this.a, ((twp)localList.get(0)).a);
-    }
-    label199:
-    for (;;)
-    {
-      veg.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { tvy.a(this.a) });
-      tvy.a(this.a).a(tvy.a(this.a), "");
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label199;
-        }
-        if (((twp)localList.get(i)).a.equals(tvy.a(this.a)))
-        {
-          if (localList.size() <= i + 1) {
-            break;
-          }
-          tvy.a(this.a, ((twp)localList.get(i + 1)).a);
-          break;
-        }
-        i += 1;
-      }
-    }
+    super(paramString);
+    this.a = paramuvp;
   }
-  
-  public void a(two paramtwo, String paramString, boolean paramBoolean) {}
 }
 
 

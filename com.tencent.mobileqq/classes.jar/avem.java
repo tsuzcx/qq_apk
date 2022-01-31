@@ -1,17 +1,54 @@
-import android.view.View;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.GroupIconHelper;
 import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class avem
-  implements bfpc
+  extends ajvj
 {
   public avem(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramAdapterView = akcb.a(((TextView)paramView.findViewById(2131373000)).getText().toString());
-    this.a.a(this.a.getActivity(), paramAdapterView);
+    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(QCallDetailActivity.a(this.a));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(paramString);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    {
+      String str = paramString;
+      if (GroupIconHelper.a(paramString)) {
+        str = GroupIconHelper.b(paramString);
+      }
+      if (QCallDetailActivity.a(this.a).equals(str))
+      {
+        this.a.a(QCallDetailActivity.a(this.a));
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
+      this.a.finish();
+    }
   }
 }
 

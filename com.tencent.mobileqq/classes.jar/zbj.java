@@ -1,6 +1,17 @@
+import android.view.View;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+
 public abstract interface zbj
 {
-  public abstract void b(boolean paramBoolean);
+  public abstract void a(View paramView);
+  
+  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
 }
 
 

@@ -1,15 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public class vsz
-  extends Handler
+class vsz
+  implements ServiceConnection
 {
-  public vsz(RMWService paramRMWService) {}
+  private vsx a;
   
-  public void handleMessage(Message paramMessage)
+  public vsz(vsx paramvsx)
   {
-    vsx.b("RMWService", "service.handle : " + vsy.a(paramMessage));
+    this.a = paramvsx;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    vsx localvsx = this.a;
+    if (localvsx != null) {
+      localvsx.a(paramComponentName, paramIBinder);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    vsx localvsx = this.a;
+    if (localvsx != null) {
+      localvsx.a(paramComponentName);
+    }
   }
 }
 

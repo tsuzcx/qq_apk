@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import nam;
-import oax;
+import naj;
+import oau;
 import org.json.JSONObject;
 
 public final class ReadInJoyTelePhoneUtils$1
@@ -18,7 +18,7 @@ public final class ReadInJoyTelePhoneUtils$1
   {
     try
     {
-      Object localObject = nam.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdRl + "&acttype=9001", "GET", null, null);
+      Object localObject = naj.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdRl + "&acttype=9001", "GET", null, null);
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -34,7 +34,7 @@ public final class ReadInJoyTelePhoneUtils$1
         localObject = new JSONObject((String)localObject);
         if ((((JSONObject)localObject).optJSONObject("data") != null) && (!TextUtils.isEmpty(((JSONObject)localObject).optJSONObject("data").optString("fmcphone"))))
         {
-          oax.a(this.jdField_a_of_type_AndroidContentContext, ((JSONObject)localObject).optJSONObject("data").optString("fmcphone"), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+          oau.a(this.jdField_a_of_type_AndroidContentContext, ((JSONObject)localObject).optJSONObject("data").optString("fmcphone"), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
           return;
         }
       }

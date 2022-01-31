@@ -1,13 +1,34 @@
-public abstract class avwv
-  extends avxa
+import java.util.HashMap;
+
+public class avwv
+  extends avwx
 {
-  public int b = -1;
-  public int c;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  public int h = -1;
+  public long a = 0L;
+  public long b;
+  
+  public avwv()
+  {
+    this.jdField_b_of_type_Long = -1L;
+  }
+  
+  public HashMap<String, String> a(String paramString)
+  {
+    if ("ShortVideo.FullscreenPreview".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_duration", this.a + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
+      return paramString;
+    }
+    return null;
+  }
 }
 
 

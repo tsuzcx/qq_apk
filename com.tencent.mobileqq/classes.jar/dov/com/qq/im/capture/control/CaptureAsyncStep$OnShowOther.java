@@ -1,20 +1,20 @@
 package dov.com.qq.im.capture.control;
 
-import bigh;
-import bjae;
+import bigy;
+import bjav;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import xoz;
+import xow;
 
 public class CaptureAsyncStep$OnShowOther
   extends AsyncStep
 {
   public int a()
   {
-    bigh localbigh = (bigh)bjae.a(13);
-    localbigh.d(0);
-    localbigh.a(2);
-    xoz.a().h = 1;
-    xoz.a().j = 1;
+    bigy localbigy = (bigy)bjav.a(13);
+    localbigy.d(0);
+    localbigy.a(2);
+    xow.a().h = 1;
+    xow.a().j = 1;
     return 7;
   }
 }

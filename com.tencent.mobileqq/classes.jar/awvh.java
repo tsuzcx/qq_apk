@@ -1,30 +1,21 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-public class awvh
+public final class awvh
+  implements Comparator<awpm>
 {
-  public int a;
-  public String a;
-  
-  public awvh(String paramString, int paramInt)
+  public int a(awpm paramawpm1, awpm paramawpm2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString.equals(paramString);
+    int j = Long.signum(paramawpm2.b() - paramawpm1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramawpm2.a() - paramawpm1.a());
     }
-    return false;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    j = i;
+    if (i == 0) {
+      j = PublicAccountSearchEngine.a(paramawpm1, paramawpm2);
+    }
+    return j;
   }
 }
 

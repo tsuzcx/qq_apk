@@ -1,18 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.Comparator;
 
 public class nxn
-  implements bfoq
+  implements Comparator<nxs>
 {
-  public nxn(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
+  public nxn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(nxs paramnxs1, nxs paramnxs2)
   {
-    if (paramInt == 0)
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(nxs.a(paramnxs1)))
     {
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
+      i = 2147483647;
+      if (!TextUtils.isEmpty(nxs.a(paramnxs2))) {
+        break label44;
+      }
+    }
+    for (;;)
+    {
+      return i - j;
+      i = nxs.a(paramnxs1).codePointAt(0);
+      break;
+      label44:
+      j = nxs.a(paramnxs2).codePointAt(0);
     }
   }
 }

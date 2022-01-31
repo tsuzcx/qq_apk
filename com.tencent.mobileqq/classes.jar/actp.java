@@ -1,18 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class actp
-  implements bcak
+public abstract interface actp
 {
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      actd.a();
-    }
-  }
+  public abstract int a();
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

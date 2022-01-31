@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
 import NS_QQ_STORY_META.META.StStoryFeed;
-import aaod;
-import acus;
+import aanz;
+import acuo;
 import android.util.Base64;
-import awzw;
+import awzy;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,11 +17,11 @@ public final class ChatActivityFacade$8
   
   public void run()
   {
-    acus localacus;
+    acuo localacuo;
     BeancurdMsg localBeancurdMsg;
-    if (aaod.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
+    if (aanz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
     {
-      localacus = (acus)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
+      localacuo = (acuo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
       localBeancurdMsg = new BeancurdMsg();
     }
     try
@@ -31,9 +31,9 @@ public final class ChatActivityFacade$8
       localBeancurdMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
       localBeancurdMsg.isNeedDelHistory = true;
       localBeancurdMsg.ispush = true;
-      localBeancurdMsg.startTime = awzw.a();
+      localBeancurdMsg.startTime = awzy.a();
       localBeancurdMsg.validTime = 604800L;
-      localacus.a(localBeancurdMsg);
+      localacuo.a(localBeancurdMsg);
       return;
     }
     catch (Exception localException)

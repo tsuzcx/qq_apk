@@ -1,21 +1,27 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
 import java.util.List;
 
 public class awnh
-  implements awof
+  implements awoh
 {
-  private afgx jdField_a_of_type_Afgx;
+  private afgv jdField_a_of_type_Afgv;
   private String jdField_a_of_type_JavaLangString;
-  private List<awog> jdField_a_of_type_JavaUtilList;
+  private List<awoi> jdField_a_of_type_JavaUtilList;
+  private String b;
   
-  public awnh(afgx paramafgx, List<awog> paramList, String paramString)
+  public awnh(afgv paramafgv, List<awoi> paramList, String paramString1, String paramString2)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Afgx = paramafgx;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Afgv = paramafgv;
+    this.b = paramString2;
   }
   
   public int a()
@@ -25,22 +31,32 @@ public class awnh
   
   public String a()
   {
-    return ajyc.a(2131705341);
+    return ajya.a(2131705358);
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View paramView)
   {
-    awvy.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("from_key", 0);
-    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Afgx);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
+    awni localawni = (awni)this.jdField_a_of_type_JavaUtilList.get(0);
+    if ((localawni != null) && (!TextUtils.isEmpty(this.b)))
+    {
+      Object localObject = new Intent(paramView.getContext(), PublicAccountBrowser.class);
+      ((Intent)localObject).putExtra("url", this.b);
+      paramView.getContext().startActivity((Intent)localObject);
+      if (localawni.a() != null)
+      {
+        localObject = localawni.a().hotword.get();
+        int i = localawni.a().hotword_type.get();
+        nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, localawni.a(), (String)localObject, String.valueOf(i), "2");
+      }
+    }
+    paramView.getContext();
+    nol.a(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "0", this.jdField_a_of_type_JavaLangString, "0");
   }
   
   public String b()

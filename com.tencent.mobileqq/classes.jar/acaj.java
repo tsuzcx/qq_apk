@@ -1,12 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
 public class acaj
+  implements View.OnClickListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public acaj(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

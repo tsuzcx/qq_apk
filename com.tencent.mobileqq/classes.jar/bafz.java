@@ -1,38 +1,39 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class bafz
-  extends ViewPager.SimpleOnPageChangeListener
+public abstract interface bafz
 {
-  public bafz(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public abstract void a();
   
-  public void onPageSelected(int paramInt)
-  {
-    super.onPageSelected(paramInt);
-    String str1;
-    String str3;
-    if (this.a.a != null)
-    {
-      if (!VisitorTroopCardFragment.a(this.a)) {
-        break label85;
-      }
-      str1 = "grpData_admin";
-      str3 = this.a.a.troopUin;
-      if (!VisitorTroopCardFragment.a(this.a)) {
-        break label91;
-      }
-    }
-    label85:
-    label91:
-    for (String str2 = bbbb.a(this.a.a);; str2 = "1")
-    {
-      bbbb.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
-      return;
-      str1 = "grpData_visitor";
-      break;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
+  
+  public abstract void a(boolean paramBoolean, List<agle> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d();
+  
+  public abstract void d(String paramString);
+  
+  public abstract void e(String paramString);
 }
 
 

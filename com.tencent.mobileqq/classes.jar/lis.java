@@ -1,153 +1,173 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract class lis
-  extends EffectConfigBase<PendantItem>
-  implements lht
+public class lis
 {
-  protected final lit a;
-  protected boolean a;
-  
-  public lis(VideoAppInterface paramVideoAppInterface)
+  public static void a()
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Lit = new lit();
-  }
-  
-  public abstract VideoMaterial a(String paramString);
-  
-  public Class<?> a()
-  {
-    return PendantItem.class;
-  }
-  
-  public String a(PendantItem paramPendantItem)
-  {
-    String str = null;
-    if (paramPendantItem != null) {
-      str = lco.c() + paramPendantItem.getMd5();
-    }
-    return str;
-  }
-  
-  public List<PendantItem> a(String paramString)
-  {
-    paramString = super.a(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString != null) {
-      localArrayList.addAll(paramString);
-    }
-    return localArrayList;
-  }
-  
-  public lit a(int paramInt1, int paramInt2)
-  {
-    if (!lpz.e()) {
-      return null;
-    }
-    VideoMemoryManager.getInstance().setForceLoadFromSdCard(true);
-    PendantItem localPendantItem = (PendantItem)a();
-    if (this.jdField_a_of_type_Boolean)
+    try
     {
-      this.jdField_a_of_type_Boolean = false;
-      d();
+      boolean bool = a("QuaVChatNewIntent", true, null);
+      QLog.d("VideoBeaconReporter", 1, "event_QuaVChatNewIntent, isSucceed[true],  ret[" + bool + "]");
+      return;
     }
-    if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
+    catch (Throwable localThrowable)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Lit.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Lit.jdField_a_of_type_JavaLangString = null;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("VideoBeaconReporter", 2, "event_QuaVChatNewIntent:", localThrowable);
+    }
+  }
+  
+  public static void a(int paramInt, long paramLong1, long paramLong2, String paramString)
+  {
+    boolean bool2 = true;
+    QLog.d("VideoBeaconReporter", 1, "reportQuaOnCloseVideo_onCloseVideo :reason[" + paramInt + "], param0[" + paramLong1 + "], param1[" + paramLong2 + "], param2[" + paramString + "], ");
+    for (;;)
+    {
+      try
+      {
+        localHashMap = new HashMap();
+        l = paramLong1;
+        if (paramLong2 != 0L)
+        {
+          i = (int)paramLong2 + 1000;
+          paramInt = i;
+          l = paramLong1;
+          if (paramString == null) {}
+        }
       }
-      return null;
+      catch (Throwable paramString)
+      {
+        HashMap localHashMap;
+        long l;
+        int i;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VideoBeaconReporter", 2, "event_QuaOnCloseVideo:", paramString);
+        return;
+        boolean bool1 = false;
+        continue;
+        if (l != 0L) {
+          continue;
+        }
+        bool1 = bool2;
+        continue;
+      }
+      try
+      {
+        l = Long.parseLong(paramString);
+        paramInt = i;
+      }
+      catch (Exception paramString)
+      {
+        paramInt = i;
+        l = paramLong1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoBeaconReporter", 2, "parseLong error:", paramString);
+        paramInt = i;
+        l = paramLong1;
+      }
     }
-    String str1 = c(localPendantItem);
-    String str2 = localPendantItem.getId();
-    if ((str1.equals(this.jdField_a_of_type_Lit.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Lit.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_Lit.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
-      return this.jdField_a_of_type_Lit;
-    }
-    long l = System.currentTimeMillis();
-    VideoMaterial localVideoMaterial = a(str1);
-    this.jdField_a_of_type_Lit.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = localVideoMaterial;
-    this.jdField_a_of_type_Lit.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
-    this.jdField_a_of_type_Lit.jdField_a_of_type_JavaLangString = str1;
-    lcl.c(this.jdField_a_of_type_JavaLangString, String.format("getVideoPendant, patternPath[%s], id[%s], material[%s], cost[%s]", new Object[] { str1, str2, localVideoMaterial, Long.valueOf(System.currentTimeMillis() - l) }));
-    return this.jdField_a_of_type_Lit;
-  }
-  
-  public void a()
-  {
-    super.a();
-    lhs locallhs = (lhs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-    if (locallhs != null) {
-      locallhs.a(b(), this);
-    }
-  }
-  
-  protected void a(long paramLong, PendantItem paramPendantItem)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      ((lhu)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a(paramLong, paramPendantItem);
-    }
-  }
-  
-  public boolean a(long paramLong, PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramLong, paramPendantItem);
-    lgf locallgf = VideoController.a().a();
-    a(paramLong, paramPendantItem);
-    if ((paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
+    localHashMap.put("reason", "" + paramInt);
+    localHashMap.put("error_code", "" + l);
+    if (paramInt == 1)
     {
-      locallgf.a.set(1);
-      return bool;
+      bool1 = bool2;
+      if (l != 1L)
+      {
+        bool1 = bool2;
+        if (l != 2L) {}
+      }
+      else
+      {
+        bool2 = a("QuaOnCloseVideo", bool1, localHashMap);
+        QLog.d("VideoBeaconReporter", 1, "event_QuaOnCloseVideo, isSucceed[" + bool1 + "], node_reason[" + (String)localHashMap.get("reason") + "], node_error_code[" + (String)localHashMap.get("error_code") + "],     ret[" + bool2 + "]");
+        return;
+      }
     }
-    locallgf.a.clear(1);
-    return bool;
   }
   
-  protected boolean a(String paramString)
+  public static void a(long paramLong)
   {
-    return lji.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-  }
-  
-  public abstract int b();
-  
-  public String b(PendantItem paramPendantItem)
-  {
-    String str = "";
-    if (paramPendantItem != null) {
-      str = lco.d() + paramPendantItem.getMd5() + File.separator;
-    }
-    return str;
-  }
-  
-  protected String c(PendantItem paramPendantItem)
-  {
-    String str = "";
-    if (paramPendantItem != null)
+    boolean bool1 = true;
+    for (;;)
     {
-      str = b(paramPendantItem) + paramPendantItem.getName() + File.separator;
-      if (!new File(str).exists()) {}
+      long l;
+      try
+      {
+        new HashMap();
+        l = -1L;
+        if (paramLong <= 0L) {
+          break label107;
+        }
+        l = System.currentTimeMillis() - paramLong;
+      }
+      catch (Throwable localThrowable)
+      {
+        boolean bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoBeaconReporter", 2, "event_QuaInviteClose:", localThrowable);
+        return;
+      }
+      bool2 = a("QuaInviteClose", bool1, null);
+      QLog.d("VideoBeaconReporter", 1, "event_QuaInviteClose, isSucceed[" + bool1 + "],  ret[" + bool2 + "]");
+      return;
+      label107:
+      while (l <= 2000L)
+      {
+        bool1 = false;
+        break;
+      }
     }
-    else
-    {
-      return str;
-    }
-    return lco.b() + paramPendantItem.getName() + File.separator;
   }
   
-  public void d()
+  public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Lit.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
-    this.jdField_a_of_type_Lit.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
-    this.jdField_a_of_type_Lit.jdField_a_of_type_JavaLangString = null;
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        localHashMap = new HashMap();
+        if (!paramBoolean1) {
+          continue;
+        }
+        localHashMap.put("broadcast_created", "1");
+        if (!paramBoolean2) {
+          continue;
+        }
+        localHashMap.put("vchat_created", "1");
+        paramBoolean1 = bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        HashMap localHashMap;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VideoBeaconReporter", 2, "event_QuaProcessWakeUp:", localThrowable);
+        return;
+        localThrowable.put("vchat_created", "0");
+        paramBoolean1 = false;
+        continue;
+      }
+      paramBoolean2 = a("QuaProcessWakeUp", paramBoolean1, localHashMap);
+      QLog.d("VideoBeaconReporter", 1, "event_QuaProcessWakeUp, isSucceed[" + paramBoolean1 + "], node_broadcast_created[" + (String)localHashMap.get("broadcast_created") + "], node_vchat_created[" + (String)localHashMap.get("vchat_created") + "],     ret[" + paramBoolean2 + "]");
+      return;
+      localHashMap.put("broadcast_created", "0");
+    }
+  }
+  
+  private static boolean a(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
+  {
+    axrn.a(BaseApplicationImpl.getContext()).a(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
+    return true;
   }
 }
 

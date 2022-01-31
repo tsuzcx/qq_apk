@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.colornote.settings;
 
-import amir;
-import amix;
+import amiq;
+import amiw;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
-  private amir jdField_a_of_type_Amir;
+  private amiq jdField_a_of_type_Amiq;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
@@ -38,14 +38,14 @@ public class ColorNoteSettingBaseSection
   private void b()
   {
     inflate(getContext(), 2131558812, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131375771));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363086));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131375773));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363085));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Amir.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Amiq.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +53,10 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(amir paramamir)
+  public void setAdapter(amiq paramamiq)
   {
-    this.jdField_a_of_type_Amir = paramamir;
-    this.jdField_a_of_type_Amir.a(new amix(this));
+    this.jdField_a_of_type_Amiq = paramamiq;
+    this.jdField_a_of_type_Amiq.a(new amiw(this));
   }
   
   public void setContentDescription(CharSequence paramCharSequence)

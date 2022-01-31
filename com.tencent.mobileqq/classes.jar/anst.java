@@ -1,72 +1,51 @@
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
-class anst
-  extends ayvz
+public class anst
+  extends QIPCModule
 {
-  anst(anss paramanss, Looper paramLooper)
+  private static anst a;
+  
+  private anst(String paramString)
   {
-    super(paramLooper);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static anst a()
   {
-    Object localObject = (ayqm)paramMessage.obj;
-    if ((localObject == null) || (((ayqm)localObject).c != this.a.a())) {}
-    do
+    if (a == null) {}
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          case 1002: 
-          case 1006: 
-          case 1007: 
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + ((ayqm)localObject).g);
-        }
-      } while (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() < this.a.jdField_b_of_type_Int);
-      this.a.f();
-      return;
-      if (anss.a(this.a) == null)
-      {
-        QLog.e("FavroamingManager", 1, "app is null");
-        return;
+      if (a == null) {
+        a = new anst("EmoticonIPCModule");
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FavroamingManager", 2, "STATUS_SEND_AND_SAVE_FINISHED resId=" + ((ayqm)localObject).g);
-      }
-      paramMessage = ((ansr)this.a.a()).a(((ayqm)localObject).g);
-      localObject = (ajwa)anss.b(this.a).a(72);
-    } while ((localObject == null) || (paramMessage == null) || (paramMessage.isMarkFace));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramMessage);
-    ((ajwa)localObject).a(localArrayList, 1);
-    return;
-    QLog.i("FavroamingManager", 1, "upload fav error:" + ((ayqm)localObject).g);
-    if (anss.c(this.a) != null) {}
-    for (int i = bbev.b(anss.d(this.a).getApplication());; i = -1)
-    {
-      bbrj.a("emotionType", "emotionActionFav", "4", "", "", i + "", ((ayqm)localObject).g, "", "", "");
-      return;
-      QLog.i("FavroamingManager", 1, "upload fav cancel:" + ((ayqm)localObject).g);
-      return;
+      return a;
     }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
+      }
+      return null;
+    }
+    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bbrg)((QQAppInterface)localAppRuntime).getManager(235)).a, paramInt), 5, null, true);
+    return null;
   }
 }
 

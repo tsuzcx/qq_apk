@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.location.ui;
 
-import arvk;
-import bbgg;
+import arvm;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public final class LocationDialogUtil$14
   implements Runnable
 {
-  public LocationDialogUtil$14(BaseActivity paramBaseActivity, bbgg parambbgg) {}
+  public LocationDialogUtil$14(BaseActivity paramBaseActivity, bbgu parambbgu) {}
   
   public void run()
   {
-    arvk.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Bbgg);
+    arvm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Bbgu);
   }
 }
 

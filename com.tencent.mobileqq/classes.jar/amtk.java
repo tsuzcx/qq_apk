@@ -1,70 +1,69 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amtk
+  extends ampa<amtj>
 {
-  private static final amtk jdField_a_of_type_Amtk = new amtk();
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
-  
-  public static amtk a(ampi[] paramArrayOfampi)
+  public static amtj a()
   {
-    Object localObject;
-    if (paramArrayOfampi == null) {
-      localObject = jdField_a_of_type_Amtk;
-    }
-    for (;;)
+    return (amtj)ampl.a().a(572);
+  }
+  
+  public int a()
+  {
+    return 572;
+  }
+  
+  @NonNull
+  public amtj a(int paramInt)
+  {
+    return new amtj();
+  }
+  
+  @Nullable
+  public amtj a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      return localObject;
-      try
-      {
-        amtk localamtk = new amtk();
-        int j = paramArrayOfampi.length;
-        int i = 0;
-        localObject = localamtk;
-        if (i >= j) {
-          continue;
-        }
-        localObject = new JSONObject(paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localamtk.jdField_a_of_type_Boolean = bool;
-          localamtk.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
-          localamtk.b = ((JSONObject)localObject).optString("guideHighlightText", "");
-          localamtk.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
-          i += 1;
-          break;
-        }
-        return jdField_a_of_type_Amtk;
-      }
-      catch (Exception paramArrayOfampi)
-      {
-        QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfampi);
-      }
+      new amtj();
+      return amtj.a(paramArrayOfamph);
     }
+    return null;
   }
   
-  public long a()
+  public Class<amtj> a()
   {
-    return this.jdField_a_of_type_Long;
+    return amtj.class;
   }
   
-  public String a()
+  public void a(int paramInt) {}
+  
+  public void a(amtj paramamtj)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramamtj.toString());
+    }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return true;
   }
   
-  public String b()
+  public int b()
   {
-    return this.b;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

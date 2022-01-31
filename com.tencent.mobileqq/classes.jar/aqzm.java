@@ -1,17 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqzm
   implements DialogInterface.OnClickListener
 {
-  public aqzm(HotPicPageView paramHotPicPageView, aqzr paramaqzr) {}
+  public aqzm(HotPicPageView.4.2 param2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aqzr.a(-11);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_Aqzt.a == 1) {
+      this.a.a.jdField_a_of_type_Aqzt.a(0);
+    }
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 

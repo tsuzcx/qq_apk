@@ -1,24 +1,24 @@
 package cooperation.plugin;
 
-import bglx;
+import bgmo;
 
 public class PluginPreInstaller$2
   implements Runnable
 {
-  public PluginPreInstaller$2(bglx parambglx) {}
+  public PluginPreInstaller$2(bgmo parambgmo) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbglx;
-    //   4: invokestatic 25	bglx:a	(Lbglx;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbgmo;
+    //   4: invokestatic 25	bgmo:a	(Lbgmo;)Lcom/tencent/mobileqq/app/QQAppInterface;
     //   7: ifnonnull +4 -> 11
     //   10: return
     //   11: aload_0
-    //   12: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbglx;
-    //   15: invokestatic 25	bglx:a	(Lbglx;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   12: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbgmo;
+    //   15: invokestatic 25	bgmo:a	(Lbgmo;)Lcom/tencent/mobileqq/app/QQAppInterface;
     //   18: invokevirtual 31	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   21: astore 4
     //   23: aload 4
@@ -39,14 +39,14 @@ public class PluginPreInstaller$2
     //   52: astore_2
     //   53: iconst_1
     //   54: aload_0
-    //   55: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbglx;
-    //   58: invokestatic 25	bglx:a	(Lbglx;)Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   61: invokestatic 56	bgtp:a	(ILcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   55: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbgmo;
+    //   58: invokestatic 25	bgmo:a	(Lbgmo;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   61: invokestatic 56	bgug:a	(ILcom/tencent/mobileqq/app/QQAppInterface;)V
     //   64: aload_3
     //   65: astore_2
     //   66: aload_0
-    //   67: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbglx;
-    //   70: invokestatic 25	bglx:a	(Lbglx;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   67: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbgmo;
+    //   70: invokestatic 25	bgmo:a	(Lbgmo;)Lcom/tencent/mobileqq/app/QQAppInterface;
     //   73: invokestatic 62	cooperation/qqreader/QRBridgeUtil:getSKey	(Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
     //   76: astore 6
     //   78: aload_3
@@ -154,11 +154,11 @@ public class PluginPreInstaller$2
     //   311: invokevirtual 160	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   314: istore_1
     //   315: aload_0
-    //   316: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbglx;
-    //   319: invokestatic 163	bglx:a	(Lbglx;)Landroid/content/Context;
+    //   316: getfield 12	cooperation/plugin/PluginPreInstaller$2:this$0	Lbgmo;
+    //   319: invokestatic 163	bgmo:a	(Lbgmo;)Landroid/content/Context;
     //   322: iload_1
     //   323: iconst_1
-    //   324: invokestatic 168	bgto:a	(Landroid/content/Context;IZ)V
+    //   324: invokestatic 168	bguf:a	(Landroid/content/Context;IZ)V
     //   327: aload_3
     //   328: ifnull -318 -> 10
     //   331: aload_3

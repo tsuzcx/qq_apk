@@ -1,53 +1,81 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxe
-  extends aoxr
+  implements aout
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  aoxe(aoxd paramaoxd, String paramString, aoxt paramaoxt) {}
   
-  aoxe(aowt paramaowt, MessageRecord paramMessageRecord)
+  public void a(int paramInt, String paramString)
   {
-    super(paramaowt);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    boolean bool3 = false;
+    boolean bool4 = true;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
+    boolean bool2 = bool3;
+    boolean bool1 = bool4;
+    if (paramInt != -100001)
+    {
+      bool2 = bool3;
+      bool1 = bool4;
+      if (paramInt != -100002)
+      {
+        if (paramInt != -100003) {
+          break label107;
+        }
+        bool1 = bool4;
+        bool2 = bool3;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aoxt.a(aowx.a(this.jdField_a_of_type_Aoxd.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      label107:
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+        bool2 = bool3;
+      }
+    }
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aoxp paramaoxp)
+  public void a(String paramString)
   {
-    if ("1".equals(this.g))
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aoxd.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aoxd.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aoxd.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aoxd.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aoxd.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Aoxd.d))
+    {
+      i = 0;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aoxd.e)) {
+        break label257;
+      }
+    }
+    label257:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aoxd.e))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxd.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
       }
-      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, false), false);
+      aowx.a(aowx.a(this.jdField_a_of_type_Aoxd.jdField_a_of_type_Aowx), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aoxd.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aoxt);
       return;
+      i = Integer.parseInt(this.jdField_a_of_type_Aoxd.d);
+      break;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
-      }
-      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    aowt.a(this.jdField_a_of_type_Aowt).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aoxf(this, paramString, paramaoxp));
   }
 }
 

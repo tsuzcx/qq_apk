@@ -1,6 +1,6 @@
-public abstract interface ajod
+public class ajod
 {
-  public abstract void a(int paramInt);
+  public void a(int paramInt, byte[] paramArrayOfByte) {}
 }
 
 

@@ -1,17 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import java.lang.ref.WeakReference;
 
 public class agio
-  implements DialogInterface.OnKeyListener
+  extends Handler
 {
-  public agio(BaseActivityView paramBaseActivityView) {}
+  private WeakReference<BaseActivityView> a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public agio(BaseActivityView paramBaseActivityView)
   {
-    return (paramInt == 4) && (this.a.a.e()) && (bbev.d(this.a.getContext()));
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

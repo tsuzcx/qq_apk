@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import ambf;
+import ambe;
 
 class TextPreviewSettingActivity$2
   implements Runnable
 {
-  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, ambf paramambf, String paramString) {}
+  TextPreviewSettingActivity$2(TextPreviewSettingActivity paramTextPreviewSettingActivity, ambe paramambe, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ambf.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_Ambe.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

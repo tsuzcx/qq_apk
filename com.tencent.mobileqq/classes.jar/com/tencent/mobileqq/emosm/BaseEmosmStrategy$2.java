@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm;
 
-import anqe;
-import ansq;
-import axqw;
+import anqj;
+import ansv;
+import axqy;
 import java.util.ArrayList;
 
 public class BaseEmosmStrategy$2
   implements Runnable
 {
-  public BaseEmosmStrategy$2(anqe paramanqe, ArrayList paramArrayList) {}
+  public BaseEmosmStrategy$2(anqj paramanqj, ArrayList paramArrayList) {}
   
   public void run()
   {
-    ansq.a(this.a);
-    axqw.b(null, "dc00898", "", "", "0X800A6E1", "0X800A6E1", 0, 0, "", "", "", "");
+    ansv.a(this.a);
+    axqy.b(null, "dc00898", "", "", "0X800A6E1", "0X800A6E1", 0, 0, "", "", "", "");
   }
 }
 

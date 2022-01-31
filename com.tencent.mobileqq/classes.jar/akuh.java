@@ -1,86 +1,46 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import java.util.Map;
-
-final class akuh
-  extends akup
+class akuh
 {
-  akuh(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, akuj paramakuj)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  
+  public akuh(String paramString, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  public int a()
   {
-    boolean bool = false;
-    for (;;)
-    {
-      synchronized (akug.a())
-      {
-        if (akug.b().containsKey(this))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("SOSO.LBS.LbsManagerService", 0, "onConsecutiveFailure reverseListenerMap contains. business id: " + this.tag + " fail count: " + paramInt2);
-          }
-          if (paramInt2 > 5)
-          {
-            localakuj = (akuj)akug.b().remove(this);
-            akug.a().remove(localakuj);
-            if (paramInt2 > 5) {
-              SosoInterface.b(this);
-            }
-            return;
-          }
-          akuj localakuj = (akuj)akug.b().get(this);
-          if (paramInt2 == 5) {
-            bool = true;
-          }
-          localakuj.onConsecutiveFailure(paramInt1, paramInt2, bool);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS.LbsManagerService", 0, "onConsecutiveFailure reverseListenerMap not contains. business id: " + this.tag + " fail count: " + paramInt2);
-      }
+    if (this.jdField_a_of_type_Int == 5) {
+      return 0;
     }
+    if (this.jdField_a_of_type_Int == 4) {
+      return 60000;
+    }
+    if (this.jdField_a_of_type_Int == 3) {
+      return 180000;
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      return 600000;
+    }
+    return 1800000;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public String toString()
   {
-    for (;;)
-    {
-      synchronized ()
-      {
-        if (akug.b().containsKey(this))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("SOSO.LBS.LbsManagerService", 0, "onLocationFinish reverseListenerMap contains. business id: " + this.tag);
-          }
-          if (this.goonListener)
-          {
-            localakuj = (akuj)akug.b().get(this);
-            localakuj.onLocationFinish(paramInt, akug.a(paramSosoLbsInfo, this.a.businessId));
-            return;
-          }
-          akuj localakuj = (akuj)akug.b().remove(this);
-          akug.a().remove(localakuj);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS.LbsManagerService", 0, "onLocationFinish reverseListenerMap not contains. business id: " + this.tag + " this is: " + this);
-      }
-    }
-  }
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized ()
-    {
-      if (akug.b().containsKey(this)) {
-        ((akuj)akug.b().get(this)).onStatusUpdate(paramString1, paramInt, paramString2);
-      }
-      return;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("businessId: ").append(this.jdField_a_of_type_JavaLangString).append(",").append("reqLonAndLat: ").append(this.jdField_a_of_type_Boolean).append(",").append("realTimeRequirement: ").append(this.jdField_a_of_type_Int).append(",").append("requestDataLevel: ").append(this.jdField_b_of_type_Int).append(",").append("reqGoon: ").append(this.jdField_b_of_type_Boolean).append(",").append("canUseGps: ").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

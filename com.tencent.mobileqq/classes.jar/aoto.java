@@ -1,26 +1,45 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
 
 public class aoto
-  implements Cloneable
+  extends apvf
 {
-  public int a;
-  public View a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
+  public aoto(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
-  public aoto(aotm paramaotm) {}
+  public void a()
+  {
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
+  }
 }
 
 

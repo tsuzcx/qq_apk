@@ -1,27 +1,21 @@
 import android.os.Handler;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class azba
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
   public azba(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
     }
-    for (;;)
-    {
-      return false;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
-      continue;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
-    }
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajxx;
+import ajxv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -30,18 +30,18 @@ class GroupIconHelper$GenerateIconRunner
   public void a()
   {
     if (this.jdField_a_of_type_JavaLangString == null) {}
-    ajxx localajxx1;
+    ajxv localajxv1;
     label56:
     Object localObject3;
     do
     {
       return;
-      localajxx1 = (ajxx)GroupIconHelper.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+      localajxv1 = (ajxv)GroupIconHelper.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
       if (!this.jdField_a_of_type_Boolean) {
         break;
       }
-      localajxx1 = (ajxx)GroupIconHelper.a(this.this$0).get(GroupIconHelper.a(this.jdField_a_of_type_JavaLangString));
-      if ((localajxx1 == null) && (this.jdField_a_of_type_Int != 3)) {
+      localajxv1 = (ajxv)GroupIconHelper.a(this.this$0).get(GroupIconHelper.a(this.jdField_a_of_type_JavaLangString));
+      if ((localajxv1 == null) && (this.jdField_a_of_type_Int != 3)) {
         break label1047;
       }
       localObject3 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -50,33 +50,33 @@ class GroupIconHelper$GenerateIconRunner
       default: 
         return;
       case 1: 
-        localajxx1 = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, localajxx1, false);
+        localajxv1 = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, localajxv1, false);
         if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.dih", 2, "CheckAndCreateDisIcon Done: " + this.jdField_a_of_type_JavaLangString + ", isChanged=" + localajxx1.jdField_a_of_type_Boolean);
+          QLog.d("Q.qqhead.dih", 2, "CheckAndCreateDisIcon Done: " + this.jdField_a_of_type_JavaLangString + ", isChanged=" + localajxv1.jdField_a_of_type_Boolean);
         }
         break;
       }
-    } while (!localajxx1.jdField_a_of_type_Boolean);
+    } while (!localajxv1.jdField_a_of_type_Boolean);
     Object localObject2;
     label247:
     String[] arrayOfString;
     int j;
     int i;
-    if (localajxx1.c)
+    if (localajxv1.c)
     {
       GroupIconHelper.a(this.this$0, GroupIconHelper.a(this.jdField_a_of_type_JavaLangString));
       return;
       localObject2 = this.jdField_a_of_type_JavaLangString;
-      if (localajxx1 == null) {
+      if (localajxv1 == null) {
         break label1043;
       }
       try
       {
-        if (localajxx1.jdField_a_of_type_JavaLangString != null) {
+        if (localajxv1.jdField_a_of_type_JavaLangString != null) {
           break label1043;
         }
-        localajxx1 = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, false, localajxx1, true);
-        if (localajxx1 == null)
+        localajxv1 = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, false, localajxv1, true);
+        if (localajxv1 == null)
         {
           QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. iconinfo is null, disUin=" + this.jdField_a_of_type_JavaLangString);
           return;
@@ -84,16 +84,16 @@ class GroupIconHelper$GenerateIconRunner
       }
       finally {}
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. disUin=" + this.jdField_a_of_type_JavaLangString + " ,isSyncFace=" + localajxx2.jdField_b_of_type_Boolean + ", faceUinSet=" + localajxx2.jdField_a_of_type_JavaLangString);
+        QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. disUin=" + this.jdField_a_of_type_JavaLangString + " ,isSyncFace=" + localajxv2.jdField_b_of_type_Boolean + ", faceUinSet=" + localajxv2.jdField_a_of_type_JavaLangString);
       }
-      localajxx2.e = true;
-      if (!localajxx2.jdField_b_of_type_Boolean)
+      localajxv2.e = true;
+      if (!localajxv2.jdField_b_of_type_Boolean)
       {
-        localajxx2.jdField_b_of_type_Boolean = true;
-        localajxx2.jdField_a_of_type_JavaUtilArrayList.clear();
-        if ((localajxx2.jdField_a_of_type_JavaLangString != null) && (localajxx2.jdField_a_of_type_JavaLangString.length() > 1))
+        localajxv2.jdField_b_of_type_Boolean = true;
+        localajxv2.jdField_a_of_type_JavaUtilArrayList.clear();
+        if ((localajxv2.jdField_a_of_type_JavaLangString != null) && (localajxv2.jdField_a_of_type_JavaLangString.length() > 1))
         {
-          arrayOfString = localajxx2.jdField_a_of_type_JavaLangString.split(";");
+          arrayOfString = localajxv2.jdField_a_of_type_JavaLangString.split(";");
           if (arrayOfString != null)
           {
             j = arrayOfString.length;
@@ -111,7 +111,7 @@ class GroupIconHelper$GenerateIconRunner
           if (!((QQAppInterface)localObject3).a(1, str, 0)) {
             ((FriendListHandler)((QQAppInterface)localObject3).a(1)).a(str, (byte)0, (byte)2);
           } else {
-            localajxx2.jdField_a_of_type_JavaUtilArrayList.add(str);
+            localajxv2.jdField_a_of_type_JavaUtilArrayList.add(str);
           }
         }
       }
@@ -119,11 +119,11 @@ class GroupIconHelper$GenerateIconRunner
       {
         try
         {
-          QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. disUin=" + this.jdField_a_of_type_JavaLangString + localajxx2.toString());
-          if ((localajxx2.jdField_a_of_type_Byte == 2) && (localajxx2.jdField_b_of_type_JavaLangString != null))
+          QLog.d("Q.qqhead.dih", 2, "TYPE_CREAT. disUin=" + this.jdField_a_of_type_JavaLangString + localajxv2.toString());
+          if ((localajxv2.jdField_a_of_type_Byte == 2) && (localajxv2.jdField_b_of_type_JavaLangString != null))
           {
-            localObject3 = GroupIconHelper.a(localajxx2.jdField_a_of_type_JavaUtilArrayList, false);
-            if (localajxx2.jdField_b_of_type_JavaLangString.equals(localObject3)) {
+            localObject3 = GroupIconHelper.a(localajxv2.jdField_a_of_type_JavaUtilArrayList, false);
+            if (localajxv2.jdField_b_of_type_JavaLangString.equals(localObject3)) {
               return;
             }
           }
@@ -136,15 +136,15 @@ class GroupIconHelper$GenerateIconRunner
               QLog.e("Q.qqhead.dih", 2, "TYPE_CREAT", localException);
             }
           }
-          i = localajxx2.jdField_a_of_type_JavaUtilArrayList.size();
-          if ((i >= localajxx2.jdField_a_of_type_Int) || ((localajxx2.jdField_a_of_type_Byte == 1) && (i >= 4) && (localajxx2.jdField_a_of_type_Int > 4)) || ((localajxx2.jdField_a_of_type_Byte == 2) && (i > 0)) || (localajxx2.d))
+          i = localajxv2.jdField_a_of_type_JavaUtilArrayList.size();
+          if ((i >= localajxv2.jdField_a_of_type_Int) || ((localajxv2.jdField_a_of_type_Byte == 1) && (i >= 4) && (localajxv2.jdField_a_of_type_Int > 4)) || ((localajxv2.jdField_a_of_type_Byte == 2) && (i > 0)) || (localajxv2.d))
           {
-            GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, localajxx2, false);
-            if (i >= localajxx2.jdField_a_of_type_Int) {
+            GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, localajxv2, false);
+            if (i >= localajxv2.jdField_a_of_type_Int) {
               GroupIconHelper.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
             }
           }
-          if ((i < localajxx2.jdField_a_of_type_Int) && (GroupIconHelper.a(this.this$0) == null)) {}
+          if ((i < localajxv2.jdField_a_of_type_Int) && (GroupIconHelper.a(this.this$0) == null)) {}
           synchronized (GroupIconHelper.a(this.this$0))
           {
             if (GroupIconHelper.a(this.this$0) == null)
@@ -157,10 +157,10 @@ class GroupIconHelper$GenerateIconRunner
         }
         GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString);
         return;
-        ??? = new ajxx(this.this$0, null);
-        ??? = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, (ajxx)???, true);
+        ??? = new ajxv(this.this$0, null);
+        ??? = GroupIconHelper.a(this.this$0, this.jdField_a_of_type_JavaLangString, true, (ajxv)???, true);
         boolean bool;
-        if (((ajxx)???).jdField_a_of_type_Boolean) {
+        if (((ajxv)???).jdField_a_of_type_Boolean) {
           if (GroupIconHelper.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString))
           {
             this.this$0.d(this.jdField_a_of_type_JavaLangString);
@@ -170,7 +170,7 @@ class GroupIconHelper$GenerateIconRunner
         }
         while (QLog.isColorLevel())
         {
-          QLog.d("Q.qqhead.dih", 2, "refreshDisIcon: " + this.jdField_a_of_type_JavaLangString + ", isChanged=" + ((ajxx)???).jdField_a_of_type_Boolean + ", isCreated=" + bool);
+          QLog.d("Q.qqhead.dih", 2, "refreshDisIcon: " + this.jdField_a_of_type_JavaLangString + ", isChanged=" + ((ajxv)???).jdField_a_of_type_Boolean + ", isCreated=" + bool);
           return;
           localObject2 = new File(localObject4.a(this.this$0.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0));
           if ((localObject2 != null) && (((File)localObject2).exists())) {

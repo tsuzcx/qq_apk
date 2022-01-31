@@ -1,20 +1,26 @@
 final class agmb
-  extends aglx
+  extends aglv
 {
+  public boolean a()
+  {
+    return true;
+  }
+  
   public boolean a(String paramString)
   {
     if (!super.a(paramString)) {}
+    String[] arrayOfString;
     do
     {
       return false;
-      paramString = agmo.a(paramString);
-    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmo.a(paramString[1])));
+      arrayOfString = agmm.a(paramString);
+    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmm.a(arrayOfString[1])) && (!arrayOfString[1].equals("gif"))) || (agmm.b(paramString))));
     return true;
   }
   
   public boolean b()
   {
-    return false;
+    return true;
   }
 }
 

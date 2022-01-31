@@ -2,13 +2,13 @@ package com.tencent.mobileqq.widget;
 
 import android.os.Handler;
 import android.os.Message;
-import bcjd;
+import bcjr;
 import java.util.TimerTask;
 
 public class AntiphingToast$3
   extends TimerTask
 {
-  public AntiphingToast$3(bcjd parambcjd) {}
+  public AntiphingToast$3(bcjr parambcjr) {}
   
   public void run()
   {

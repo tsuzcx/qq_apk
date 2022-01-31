@@ -1,152 +1,166 @@
-import android.net.Uri;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.guidingchannel.ReadInJoyChannelGuidingManager.1;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
 import java.util.List;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg;
+import java.util.Map;
+import java.util.Set;
 
-public class oxx
+public abstract class oxx
 {
-  private static SparseArray<oxy> a = new SparseArray();
-  private static SparseArray<String> b = new SparseArray();
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private ram jdField_a_of_type_Ram;
   
-  private static void a(int paramInt)
+  public abstract int a();
+  
+  public final Activity a()
   {
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[clearInsertedArticleInfo], channelID = " + paramInt);
-    a.remove(paramInt);
+    return this.jdField_a_of_type_Ram.a();
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView, rap paramrap)
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramBaseArticleInfo == null) || (paramReadInJoyXListView == null) || (paramrap == null))
-    {
-      QLog.e("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], articleInfo is null or listView is null, or adapter is null.");
-      return;
-    }
-    int i = (int)paramBaseArticleInfo.mChannelID;
-    String str = (String)b.get(i);
-    b.remove(i);
-    if (!TextUtils.equals(paramBaseArticleInfo.innerUniqueID, str))
-    {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], rowKey not equal, do not open; channelID = " + i + ", lastRowKey = " + str + ", innerUniqueID = " + paramBaseArticleInfo.innerUniqueID);
-      return;
-    }
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], click first article.");
-    onk.b().post(new ReadInJoyChannelGuidingManager.1(paramReadInJoyXListView, paramrap));
+    return null;
   }
   
-  public static void a(String paramString)
+  public AnimationSet a()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      paramString = Uri.parse(paramString);
-      String str1 = paramString.getQueryParameter("channelid");
-      Object localObject = paramString.getQueryParameter("algorithmid");
-      String str2 = paramString.getQueryParameter("rowkey");
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], channelid = " + str1 + ", algorithmID = " + (String)localObject + ", rowKey = " + str2);
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str2))) {
-        continue;
-      }
-      localObject = new oxy((String)localObject, str2);
-      try
-      {
-        int i = Integer.valueOf(str1).intValue();
-        a.put(i, localObject);
-        b.put(i, str2);
-        try
-        {
-          str1 = paramString.getQueryParameter("article_url");
-          paramString = paramString.getQueryParameter("show_floating_window");
-          str2 = URLDecoder.decode(str1, "utf-8");
-          if ((i == 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (TextUtils.equals("1", paramString)) && (bhvh.i()))
-          {
-            b.remove(i);
-            QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
-          }
-          if ((i != 0) || (bhvh.i())) {
-            continue;
-          }
-          a.remove(i);
-          b.remove(i);
-          QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove insertInfo and last rowKey.");
-          return;
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
-          return;
-        }
-        return;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
-      }
-    }
+    return this.jdField_a_of_type_Ram.a();
   }
   
-  public static void a(poz parampoz, List<oidb_cmd0x68b.InnerMsg> paramList)
+  public final baxy a()
   {
-    if ((parampoz == null) || (paramList == null)) {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], params is null or innerMsgList is null.");
+    return this.jdField_a_of_type_Ram.a();
+  }
+  
+  public ReadInJoyBaseListViewGroup a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  }
+  
+  public AbsListView a()
+  {
+    if (this.jdField_a_of_type_Ram != null) {
+      return this.jdField_a_of_type_Ram.a();
     }
-    int i;
-    do
-    {
-      return;
-      if (parampoz.a != -1L)
-      {
-        QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], is not pull down refresh, do not insert.");
-        return;
-      }
-      i = parampoz.b;
-    } while (!a(i));
-    parampoz = (oxy)a.get(i);
-    oidb_cmd0x68b.InnerMsg localInnerMsg = new oidb_cmd0x68b.InnerMsg();
-    localInnerMsg.uint32_jump_src_type.set(12);
-    localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(parampoz.b)));
-    if (i == 0) {
-      localInnerMsg.uint32_jump_src_type.set(13);
-    }
-    try
-    {
-      localInnerMsg.uint64_algorithm_id.set(Long.valueOf(parampoz.a).longValue());
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], insertArticle = " + parampoz);
-      paramList.add(0, localInnerMsg);
-      a(i);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], e = " + localNumberFormatException);
-      }
+    return null;
+  }
+  
+  public Boolean a()
+  {
+    return null;
+  }
+  
+  public Integer a(int paramInt)
+  {
+    return Integer.valueOf(this.jdField_a_of_type_Ram.getItemViewType(paramInt));
+  }
+  
+  public final Object a(int paramInt)
+  {
+    return this.jdField_a_of_type_Ram.getItem(paramInt);
+  }
+  
+  public final ram a()
+  {
+    return this.jdField_a_of_type_Ram;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(View paramView, ArticleInfo paramArticleInfo, int paramInt) {}
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt) {}
+  
+  public final void a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = paramReadInJoyBaseListViewGroup;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  
+  public void a(List<BaseArticleInfo> paramList) {}
+  
+  public void a(Map<Integer, qao> paramMap) {}
+  
+  public void a(Map<Long, qao> paramMap, boolean paramBoolean) {}
+  
+  public void a(Set<Long> paramSet, Map<Long, qao> paramMap) {}
+  
+  public final void a(ram paramram)
+  {
+    this.jdField_a_of_type_Ram = paramram;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
     }
   }
   
-  public static boolean a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public final boolean a()
   {
-    oxy localoxy = (oxy)a.get(paramInt);
-    if (localoxy != null)
-    {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], " + localoxy);
-      return localoxy.a();
-    }
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], channelID = " + paramInt + ", insertArticle is null.");
+    return this.jdField_a_of_type_Ram.c;
+  }
+  
+  public boolean a(int paramInt)
+  {
     return false;
   }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Ram.a();
+  }
+  
+  public void b() {}
+  
+  public void b(View paramView, ListView paramListView) {}
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Ram.b();
+  }
+  
+  public void c() {}
+  
+  public final int d()
+  {
+    return this.jdField_a_of_type_Ram.getCount();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
 }
 
 

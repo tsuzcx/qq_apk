@@ -1,7 +1,6 @@
-class pzs
-  extends pyw
+public abstract interface pzs
 {
-  pzs(pzi parampzi) {}
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
 }
 
 

@@ -1,44 +1,32 @@
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import org.json.JSONObject;
 
-class ovd
-  implements View.OnClickListener
+public class ovd
+  extends RecyclerView.ItemDecoration
 {
-  ovd(ovb paramovb, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public ovd(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
   {
-    ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment).a(paramView, this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Ovb.a());
-    paramView = olg.a(this.jdField_a_of_type_Ovb.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Ovb.a(), (ArticleInfo)this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    try
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
     {
-      paramView.put("card_type", 8);
-      oli localoli = new oli(this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      localoli.e = String.valueOf(this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
-      localoli.f = String.valueOf(this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
-      localoli.g = paramView.toString();
-      if (this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
-        localoli.a = String.valueOf(this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
-      }
-      localoli.b = "0X8009A78";
-      localoli.c = "0X8009A78";
-      olg.a(localoli);
-      paramView = new JSONObject();
-      paramView.put("time", System.currentTimeMillis() / 1000L);
-      paramView.put("channel_id", this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a());
-      paramView.put("folder_status", onk.d);
-      paramView.put("kandian_mode", onk.e());
-      paramView.put("feeds_type", "1008");
-      paramView.put("rowkey", shx.a(this.jdField_a_of_type_Ovb.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-      noo.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", paramView.toString(), false);
+      paramRect.left = (this.jdField_a_of_type_Int * 2);
+      paramRect.right = this.jdField_a_of_type_Int;
       return;
     }
-    catch (Exception paramView) {}
+    paramRect.left = (this.jdField_a_of_type_Int / 2);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

@@ -1,15 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
+import android.view.View.OnClickListener;
 
-class apwz
-  extends AnimatorListenerAdapter
+public abstract class apwz
+  implements View.OnClickListener
 {
-  apwz(apwy paramapwy) {}
+  private long a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public abstract void a(View paramView);
+  
+  public void b(View paramView) {}
+  
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(8);
+    long l = System.currentTimeMillis();
+    if (l - this.a >= 500L)
+    {
+      a(paramView);
+      this.a = l;
+      return;
+    }
+    b(paramView);
   }
 }
 

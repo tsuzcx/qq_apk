@@ -1,21 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.List;
 
 class aobd
-  implements View.OnClickListener
+  implements aoao
 {
-  aobd(aobc paramaobc, IPSiteModel.Goods paramGoods) {}
+  aobd(aoba paramaoba) {}
   
-  public void onClick(View paramView)
+  public void a(List<aoam> paramList)
   {
-    paramView = new Intent(aobc.a(this.jdField_a_of_type_Aobc), QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(aobc.a(this.jdField_a_of_type_Aobc), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(aobc.a(this.jdField_a_of_type_Aobc), "IP", "aio_productclk", "", 0, 0, 0, aobc.b(this.jdField_a_of_type_Aobc), aobc.c(this.jdField_a_of_type_Aobc), "", "", "", "", "", 0, 0, 0, 0);
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

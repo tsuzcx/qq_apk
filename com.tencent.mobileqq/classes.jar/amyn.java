@@ -1,28 +1,49 @@
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class amyn
-  extends ClickableSpan
+  implements amxr
 {
-  amyn(amym paramamym, String paramString, Context paramContext) {}
+  amyn(amyj paramamyj) {}
   
-  public void onClick(View paramView)
+  public void a(Context paramContext)
   {
-    bbiq.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), (Activity)this.jdField_a_of_type_AndroidContentContext);
-    axqw.b(null, "dc00898", "", "", amym.a(this.jdField_a_of_type_Amym), amym.a(this.jdField_a_of_type_Amym), 2, 0, "", "", "", "");
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      Intent localIntent;
+      if (new JSONObject(amyj.a(this.a)).getInt("showlocalfile") == 1)
+      {
+        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
+        if (localIntent != null) {}
+      }
+      else
+      {
+        return;
+      }
+      try
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("category", 23);
+        localIntent.putExtra("bundle", localBundle);
+        localIntent.putExtra("localSdCardfile", 0);
+        paramContext.startActivity(localIntent);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 

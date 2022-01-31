@@ -1,35 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.util.SparseBooleanArray;
-import android.view.View;
+import android.os.Handler;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.1;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 public class wuc
-  extends AnimatorListenerAdapter
+  implements wvd
 {
-  public wuc(VideoPlayerView paramVideoPlayerView, WeakReference paramWeakReference, int paramInt1, boolean paramBoolean, int paramInt2) {}
+  public wuc(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, false);
+    VideoPlayerView.f(this.a, paramBoolean);
+    if (VideoPlayerView.j(this.a)) {
+      this.a.a().post(new VideoPlayerView.19.1(this));
     }
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Int != 0) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) == null) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
-      return;
-    }
-    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
-      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(0);
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
-      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).put(this.jdField_a_of_type_JavaLangRefWeakReference, Integer.valueOf(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getVisibility()));
-    }
+    do
+    {
+      do
+      {
+        return;
+        if (VideoPlayerView.c(this.a))
+        {
+          this.a.a().post(new VideoPlayerView.19.2(this));
+          return;
+        }
+      } while (!VideoPlayerView.i(this.a));
+      if (VideoPlayerView.a(this.a) != null) {
+        VideoPlayerView.a(this.a).a(true);
+      }
+      this.a.f();
+    } while (VideoPlayerView.a(this.a) == null);
+    VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
   }
 }
 

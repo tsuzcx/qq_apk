@@ -1,17 +1,13 @@
-import java.util.Comparator;
+import android.app.Activity;
+import android.view.View;
 
-class auco
-  implements Comparator<String>
+public abstract interface auco
 {
-  auco(aucn paramaucn) {}
+  public abstract Activity a();
   
-  public int a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,73 +1,16 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.graphics.Canvas;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-class bfyy
-  extends RecyclerView.AdapterDataObserver
+public abstract interface bfyy
 {
-  bfyy(bfyx parambfyx) {}
+  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
   
-  private void a(int paramInt1, int paramInt2)
-  {
-    View localView = this.a.a(bfyx.a(this.a));
-    if (localView != null) {}
-    for (int i = bfyx.a(this.a).getPosition(localView);; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PagerSnapHelper", 2, "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + bfyx.b(this.a) + ", currentPosition=" + i);
-      }
-      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
-      {
-        bfza.a(bfyx.a(this.a), true);
-        bfyx.a(this.a).addOnLayoutChangeListener(bfyx.a(this.a));
-        bfyx.a(this.a).requestLayout();
-      }
-      return;
-    }
-  }
+  public abstract void a(View paramView);
   
-  public void onChanged()
-  {
-    a(0, bfyx.a(this.a).getItemCount());
-  }
+  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    if (paramObject == null) {
-      onItemRangeChanged(paramInt1, paramInt2);
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= bfyx.b(this.a)) {
-      bfyx.b(this.a, bfyx.b(this.a) + paramInt2);
-    }
-    a(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 == bfyx.b(this.a)) {
-      bfyx.b(this.a, paramInt2);
-    }
-    a(paramInt1, paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 <= bfyx.b(this.a)) {
-      bfyx.b(this.a, bfyx.b(this.a) - paramInt2);
-    }
-    a(paramInt1, paramInt2);
-  }
+  public abstract void b(View paramView);
 }
 
 

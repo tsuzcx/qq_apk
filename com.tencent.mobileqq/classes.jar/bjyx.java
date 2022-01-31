@@ -1,26 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.MessageQueue.IdleHandler;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.linker.VipFrwrdLinkView;
 
-public class bjyx
-  implements xhj
+class bjyx
+  implements MessageQueue.IdleHandler
 {
-  public bjyx(LocalVideoSelectActivity paramLocalVideoSelectActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  bjyx(bjyw parambjyw) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public boolean queueIdle()
   {
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.isFinishing())
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.b();
-      Bundle localBundle = new Bundle();
-      if (paramArrayList != null)
-      {
-        localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-        localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
-      }
-      bkpe.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity, LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.jdField_a_of_type_Int, this.b, this.c, this.d, 0, "", "", false, LocalVideoSelectActivity.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.e, localBundle);
+    bjyw.a(this.a, true);
+    if ((this.a.jdField_a_of_type_Bjyv == null) || (this.a.jdField_a_of_type_Bjyv.getActivity() == null) || (this.a.jdField_a_of_type_Bjyv.getActivity().getIntent() == null) || (this.a.jdField_a_of_type_Bjyv.getActivity().getIntent().getExtras() == null)) {
+      return false;
     }
+    Object localObject = this.a.jdField_a_of_type_Bjxn.a;
+    String str1 = ((EditVideoParams)localObject).a("vip_forward_uid");
+    String str2 = ((EditVideoParams)localObject).a("vip_forward_vid");
+    String str3 = ((EditVideoParams)localObject).a("vip_forward_feedid");
+    String str4 = ((EditVideoParams)localObject).a("vip_forward_name");
+    localObject = ((EditVideoParams)localObject).a("vip_forward_avatrname");
+    bjyw.a(this.a, new teo());
+    bjyw.a(this.a).jdField_a_of_type_Int = 5;
+    bjyw.a(this.a).jdField_a_of_type_Tep = new tep();
+    bjyw.a(this.a).jdField_a_of_type_Tep.a = str1;
+    bjyw.a(this.a).jdField_a_of_type_Tep.c = str2;
+    bjyw.a(this.a).jdField_a_of_type_Tep.b = str3;
+    bjyw.a(this.a).jdField_a_of_type_Tep.f = str4;
+    bjyw.a(this.a).jdField_a_of_type_Tep.g = ((String)localObject);
+    this.a.d();
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView.setLinkInfo(bjyw.a(this.a));
+    return false;
   }
 }
 

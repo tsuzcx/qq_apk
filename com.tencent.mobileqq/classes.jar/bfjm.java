@@ -1,35 +1,13 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
 
-class bfjm
-  implements bfjg
+public class bfjm
 {
-  bfjm(bfjl parambfjl) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 1) {
-      synchronized (bfjl.a(this.a))
-      {
-        Object localObject2 = (List)bfjl.a(this.a).get(Integer.valueOf(paramInt2));
-        if (localObject2 != null)
-        {
-          bfjl.a(this.a).remove(Integer.valueOf(paramInt2));
-          bfjl.a(this.a);
-        }
-        if (localObject2 != null)
-        {
-          ??? = ((List)localObject2).iterator();
-          if (((Iterator)???).hasNext())
-          {
-            localObject2 = (bfjn)((Iterator)???).next();
-            bfjl.a(this.a).a(((bfjn)localObject2).jdField_a_of_type_Int, ((bfjn)localObject2).b, ((bfjn)localObject2).c, new Object[] { ((bfjn)localObject2).jdField_a_of_type_ArrayOfByte }, null);
-          }
-        }
-      }
-    }
-  }
+  int jdField_a_of_type_Int;
+  Bundle jdField_a_of_type_AndroidOsBundle;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int c;
 }
 
 

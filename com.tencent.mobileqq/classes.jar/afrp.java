@@ -1,20 +1,40 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
 public class afrp
-  extends aimv
+  extends ajsy
 {
-  public afrm a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public afrp(TroopFragment paramTroopFragment) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    if (paramInt2 == 0)
+    {
+      this.a.h();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
+    }
+    label47:
+    while (!this.a.isResumed())
+    {
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131715393), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131715392), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694928);
+    }
+    bcql.a(this.a.getActivity(), 1, paramString1, 0).a();
+  }
 }
 
 

@@ -1,8 +1,20 @@
-import android.view.View;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public abstract interface azzq
+public class azzq
+  extends CountDownTimer
 {
-  public abstract void a(View paramView, int paramInt);
+  public azzq(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  {
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    ReciteRecordLayout.a(this.a);
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 

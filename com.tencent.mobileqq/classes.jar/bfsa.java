@@ -1,20 +1,8 @@
-import com.tencent.widget.HorizontalListView;
+import android.view.MotionEvent;
 
-public class bfsa
+public abstract interface bfsa
 {
-  private int a;
-  
-  private bfsa(HorizontalListView paramHorizontalListView) {}
-  
-  public void a()
-  {
-    this.a = HorizontalListView.access$900(this.this$0);
-  }
-  
-  public boolean a()
-  {
-    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

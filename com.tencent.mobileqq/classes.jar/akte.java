@@ -1,10 +1,21 @@
-public abstract interface akte
+public class akte
 {
-  public abstract void a(String paramString);
+  public void a() {}
   
-  public abstract void a(String paramString, int paramInt);
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a();
+      return;
+    }
+    b();
+  }
   
-  public abstract void b(String paramString, int paramInt);
+  public void b() {}
 }
 
 

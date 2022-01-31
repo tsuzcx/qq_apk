@@ -1,16 +1,13 @@
 import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class udy
-  implements ufo
+  implements ufi
 {
   public udy(TextureVideoView paramTextureVideoView) {}
   
-  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
+  public void a(ufh paramufh, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramufk, paramInt1, paramInt2);
-    }
-    return true;
+    this.a.f = paramInt;
   }
 }
 

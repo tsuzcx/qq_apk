@@ -1,6 +1,8 @@
+import com.tencent.widget.VerticalGallery;
+
 public abstract interface bfxb
 {
-  public abstract void l(boolean paramBoolean);
+  public abstract void a(VerticalGallery paramVerticalGallery);
 }
 
 

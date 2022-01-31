@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class RelationTroopEntity
-  extends aukm
+  extends auko
 {
   public TroopInfo troopInfo;
 }

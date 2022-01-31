@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public final class aldx
-  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    return new ARScanStarFaceConfigInfo(paramParcel);
+    return new ArCloudConfigInfo(paramParcel);
   }
   
-  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  public ArCloudConfigInfo[] a(int paramInt)
   {
-    return new ARScanStarFaceConfigInfo[paramInt];
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 

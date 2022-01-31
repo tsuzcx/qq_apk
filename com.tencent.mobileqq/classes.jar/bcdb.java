@@ -1,74 +1,46 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcdb
+  implements bbav<String>
 {
-  public WeakReference<CustomWebView> a;
-  WeakReference<AppInterface> b;
-  WeakReference<Activity> c;
-  WeakReference<bcci> d = null;
-  WeakReference<WebViewFragment> e = null;
+  public bcdb(WebViewFragment paramWebViewFragment) {}
   
-  public bcdb(Activity paramActivity, AppInterface paramAppInterface)
+  public String a(Bitmap paramBitmap)
   {
-    this.c = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramAppInterface);
-    if ((paramActivity instanceof bcci)) {
-      this.d = new WeakReference((bcci)paramActivity);
-    }
+    String str = WebViewFragment.d + System.currentTimeMillis() + ".jpg";
+    asjo.a(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
+    return str;
   }
   
-  public Activity a()
+  public void a(Exception paramException)
   {
-    return (Activity)this.c.get();
-  }
-  
-  public bcci a(Activity paramActivity)
-  {
-    if (this.d != null) {
-      return (bcci)this.d.get();
-    }
-    return null;
-  }
-  
-  public CustomWebView a()
-  {
-    if (this.a != null) {
-      return (CustomWebView)this.a.get();
-    }
-    return null;
-  }
-  
-  public AppInterface a()
-  {
-    return (AppInterface)this.b.get();
-  }
-  
-  public WebViewFragment a()
-  {
-    if (this.e != null) {
-      return (WebViewFragment)this.e.get();
-    }
-    return null;
-  }
-  
-  public void a(bcci parambcci)
-  {
-    if (parambcci != null) {
-      this.d = new WeakReference(parambcci);
-    }
-  }
-  
-  public void a(WebViewFragment paramWebViewFragment)
-  {
-    if (paramWebViewFragment != null)
+    QLog.e("WebLog_WebViewFragment", 1, "onScreenShotError, error is " + paramException.getMessage());
+    if (this.a.getActivity() == null)
     {
-      this.e = new WeakReference(paramWebViewFragment);
-      this.d = new WeakReference(paramWebViewFragment);
+      QLog.e("WebLog_WebViewFragment", 1, "screen long shot onScreenShotError, activity is null");
+      return;
     }
+    bcql.a(this.a.getActivity(), 2131719049, 0).a();
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (this.a.getActivity() == null)
+    {
+      QLog.e("WebLog_WebViewFragment", 1, "screen long shot error, activity is null");
+      return;
+    }
+    paramBitmap = new Intent();
+    paramBitmap.putExtra("public_fragment_window_feature", 1);
+    paramBitmap.putExtra("screen_path", paramString);
+    paramBitmap.putExtra("is_web_screen_long_shot", true);
+    abtq.a(this.a.getActivity(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
   }
 }
 

@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bile;
-import bilf;
+import bilv;
+import bilw;
 import java.util.List;
-import nam;
+import naj;
 
 public class AEBottomListAdapter$1$1
   implements Runnable
 {
-  public AEBottomListAdapter$1$1(bilf parambilf) {}
+  public AEBottomListAdapter$1$1(bilw parambilw) {}
   
   public void run()
   {
-    int i = nam.a();
+    int i = naj.a();
     if (i != 0) {
       this.a.a.notifyDataSetChanged();
     }
-    if ((i == 1) && (bile.a(this.a.a).size() > 1)) {
-      bile.a(this.a.a);
+    if ((i == 1) && (bilv.a(this.a.a).size() > 1)) {
+      bilv.a(this.a.a);
     }
   }
 }

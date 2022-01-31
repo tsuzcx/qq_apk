@@ -1,22 +1,9 @@
-import android.graphics.RectF;
+import android.view.View;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
-public class bjhq
-  extends bjgf
+public abstract interface bjhq
 {
-  private int a;
-  
-  public bjhq(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  void a(int paramInt, bjgg parambjgg)
-  {
-    RectF localRectF = parambjgg.a;
-    localRectF.top += this.a * paramInt;
-    parambjgg = parambjgg.a;
-    parambjgg.bottom += this.a * paramInt;
-  }
+  public abstract void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt);
 }
 
 

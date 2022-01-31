@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acus;
-import aeoo;
+import acuo;
+import aeom;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendChatPie$3
   implements Runnable
 {
-  public FriendChatPie$3(aeoo paramaeoo) {}
+  public FriendChatPie$3(aeom paramaeom) {}
   
   public void run()
   {
-    ((acus)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0);
+    ((acuo)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0);
   }
 }
 

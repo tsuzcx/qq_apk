@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.Context;
-import axrl;
+import axrn;
 import java.util.HashMap;
 
 public final class ReadInJoyUtils$6
@@ -11,7 +11,7 @@ public final class ReadInJoyUtils$6
   
   public void run()
   {
-    axrl.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideoH265GetURL", true, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
+    axrn.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideoH265GetURL", true, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
   }
 }
 

@@ -1,54 +1,58 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
 
-class arfo
-  extends BroadcastReceiver
+public class arfo
 {
-  arfo(arfn paramarfn) {}
+  final Context jdField_a_of_type_AndroidContentContext;
+  final String jdField_a_of_type_JavaLangString;
+  String b = "";
+  String c = "";
+  String d = "";
+  String e;
+  String f;
+  String g;
+  String h;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public arfo(Context paramContext, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    if (arfn.a(this.a)) {
-      arfn.a(this.a, j);
-    }
-    if (paramContext.equals(arfw.a(arfn.a(this.a))))
-    {
-      paramContext = (arfp)arfn.a(this.a).get();
-      if (paramContext != null) {
-        paramContext.a(j, paramIntent.getExtras());
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = arfn.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
-        {
-          if ((j == paramContext[i]) && (arfn.b(this.a)))
-          {
-            arfn.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            arfn.a(this.a, false);
-          }
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
-      }
-      if ((arfn.c(this.a)) && (j == 4))
-      {
-        arfn.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        arfn.a(this.a, false);
-      }
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void b(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public void e(String paramString)
+  {
+    this.g = paramString;
+  }
+  
+  public void f(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "uin: " + this.jdField_a_of_type_JavaLangString + " roomId: " + this.b + " roomGroupCode: " + this.c + " roomShowNumber: " + this.d + " fromId: " + this.e + " openType: " + this.f + " fromGroupId: " + this.g + " fromGroupOwnerUin: " + this.h;
   }
 }
 

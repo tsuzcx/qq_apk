@@ -1,54 +1,29 @@
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-class aouz
-  implements aoup
+final class aouz
+  extends xbb
 {
-  aouz(aouy paramaouy, String paramString, aovr paramaovr) {}
+  aouz(String paramString, aovv paramaovv, long paramLong) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2DiscTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aouy.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Aouy.jdField_a_of_type_Long, bool2), bool1);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Long, false), true);
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aouy.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aouy.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aouy.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aouy.d);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aouy.e);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aouy.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter success");
+    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
+    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
+    if (paramInt1 == 0)
+    {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aovv.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+      return;
     }
-    this.jdField_a_of_type_Aovr.a(paramString, localBundle);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 

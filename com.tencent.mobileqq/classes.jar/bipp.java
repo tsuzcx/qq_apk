@@ -1,24 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-
 public class bipp
-  extends RecyclerView.ViewHolder
+  extends bjow
 {
-  public Button a;
-  public EditText a;
-  public ImageView a;
-  public boolean a;
+  private bjor<bipq> a = new bjor();
+  private bjor<Boolean> b = new bjor();
   
-  public bipp(biph parambiph, View paramView)
+  public bjor<bipq> a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365516));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365269));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375165));
-    this.jdField_a_of_type_Boolean = false;
+    return this.a;
+  }
+  
+  public bjor<Boolean> b()
+  {
+    return this.b;
   }
 }
 

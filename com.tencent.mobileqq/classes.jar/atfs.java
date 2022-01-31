@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class atfs
-  implements Parcelable.Creator<BasicTypeDataParcel>
+class atfs
+  implements View.OnClickListener
 {
-  public BasicTypeDataParcel a(Parcel paramParcel)
-  {
-    return new BasicTypeDataParcel(paramParcel);
-  }
+  atfs(atfr paramatfr) {}
   
-  public BasicTypeDataParcel[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new BasicTypeDataParcel[paramInt];
+    if (atfr.a(this.a) != null) {
+      atfr.a(this.a).a(atfr.a(this.a));
+    }
+    this.a.dismiss();
   }
 }
 

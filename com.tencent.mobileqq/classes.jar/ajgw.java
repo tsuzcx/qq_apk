@@ -1,55 +1,62 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(11)
 public class ajgw
+  extends EditText
+  implements ActionMode.Callback
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
-  
-  private ajgw(Activity paramActivity)
+  public ajgw(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new ajgx(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
-  }
-  
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
-  
-  private void a()
-  {
-    int i = a();
-    int j;
-    int k;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      k = j - i;
-      if (k <= j / 4) {
-        break label58;
-      }
+    super(paramContext);
+    super.setLongClickable(false);
+    super.setTextIsSelectable(false);
+    super.setImeOptions(268435456);
+    if (Build.VERSION.SDK_INT >= 11) {
+      super.setCustomSelectionActionModeCallback(this);
     }
-    label58:
-    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
+  }
+  
+  public void a(int paramInt)
+  {
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
-      this.jdField_a_of_type_Int = i;
+      super.setSelection(paramInt);
       return;
     }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
+    }
   }
   
-  public static void a(Activity paramActivity)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    new ajgw(paramActivity);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public boolean onTextContextMenuItem(int paramInt)
+  {
+    return true;
   }
 }
 

@@ -1,29 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public class apse
-  extends apsi
+class apse
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  apse(apsc paramapsc, List paramList, apsb paramapsb) {}
   
-  public apse(FileManagerEntity paramFileManagerEntity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
-    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if (paramInt == 1)
     {
-      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
-      return "";
+      apsc.a(this.jdField_a_of_type_Apsc, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Apsb != null) {
+        this.jdField_a_of_type_Apsb.a(1, 0);
+      }
     }
-    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
+    while (this.jdField_a_of_type_Apsb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Apsb.a(1, 1);
   }
 }
 

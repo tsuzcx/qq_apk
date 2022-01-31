@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import asmu;
-import asoe;
+import asmw;
+import asog;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
@@ -22,7 +22,7 @@ public class MsgBackupMigrateFragment
   {
     super.b();
     setTitle(getActivity().getString(2131690363));
-    this.vg.setOnItemSelectListener(new asmu(this));
+    this.vg.setOnItemSelectListener(new asmw(this));
   }
   
   protected void c()
@@ -97,7 +97,7 @@ public class MsgBackupMigrateFragment
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
     }
-    asoe.a("0X800A230");
+    asog.a("0X800A230");
   }
   
   public void onDestroyView()

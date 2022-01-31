@@ -1,18 +1,18 @@
-import android.os.Message;
-import android.widget.TextView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aiif
-  extends MqqHandler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public aiif(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onGlobalLayout()
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

@@ -1,32 +1,67 @@
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.os.SystemClock;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Interpolator;
 
-public abstract interface auee
+public class auee
 {
-  public abstract void a(Matrix paramMatrix);
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
+  private boolean jdField_a_of_type_Boolean = true;
+  private float jdField_b_of_type_Float;
+  private long jdField_b_of_type_Long = 250L;
+  private float c;
   
-  public abstract void a(MotionEvent paramMotionEvent);
+  private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+  }
   
-  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
+  public float a()
+  {
+    return this.c;
+  }
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
   
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat1;
+  }
   
-  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  public void a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
   
-  public abstract void b(MotionEvent paramMotionEvent);
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    if (l >= this.jdField_b_of_type_Long)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.c = this.jdField_b_of_type_Float;
+      return false;
+    }
+    float f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation((float)l / (float)this.jdField_b_of_type_Long);
+    this.c = a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f);
+    return true;
+  }
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
-  
-  public abstract void c(MotionEvent paramMotionEvent);
-  
-  public abstract boolean c(MotionEvent paramMotionEvent);
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 

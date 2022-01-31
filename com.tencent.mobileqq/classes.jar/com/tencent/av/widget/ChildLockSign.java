@@ -14,12 +14,12 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import axqw;
+import axqy;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.qphone.base.util.QLog;
-import lgf;
+import lga;
 
 public class ChildLockSign
   extends View
@@ -64,7 +64,7 @@ public class ChildLockSign
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131372228);
+    setId(2131372230);
     paramAttributeSet = getResources();
     this.jdField_a_of_type_Boolean = true;
     try
@@ -113,7 +113,7 @@ public class ChildLockSign
       {
         paramMessage.a().x = true;
         ((DoubleVideoCtrlUI)localObject).d(true);
-        axqw.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        axqy.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
       }
       for (;;)
       {
@@ -121,7 +121,7 @@ public class ChildLockSign
         return false;
         paramMessage.a().x = false;
         ((DoubleVideoCtrlUI)localObject).s();
-        axqw.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+        axqy.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       }
     }
     catch (Exception paramMessage)

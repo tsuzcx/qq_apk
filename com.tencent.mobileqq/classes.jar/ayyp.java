@@ -1,26 +1,35 @@
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ayyp
-  extends ayyy
 {
   public int a;
+  aytk jdField_a_of_type_Aytk;
+  ayze jdField_a_of_type_Ayze = new ayze();
+  public ayzw a;
+  public ProtoReqManager a;
   public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  public List<ayza> a;
+  public byte[] a;
+  
+  public ayyp()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" uuid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" storageSource:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" isSelfSend:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" busiType:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.d);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localStringBuilder.append("index:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(((ayza)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
+      i += 1;
+    }
     return localStringBuilder.toString();
   }
 }

@@ -1,46 +1,51 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.BindGroupActivity;
+import java.util.List;
 
 public class bczn
-  extends Handler
+  extends bdei
 {
-  public bczn(CardContainer paramCardContainer, Looper paramLooper)
+  public bczn(BindGroupActivity paramBindGroupActivity) {}
+  
+  public int getCount()
   {
-    super(paramLooper);
+    return this.a.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void handleMessage(Message paramMessage)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    switch (paramMessage.what)
+    Object localObject;
+    if ((paramView != null) && (paramView.getTag() != null))
     {
+      localObject = (bczo)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CardContainer", 2, "-->handleMessage MSG_UPDATE");
+      localObject = (bczm)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bczm)localObject).b);
+      paramView.jdField_a_of_type_JavaLangString = ((bczm)localObject).c;
+      Bitmap localBitmap = bdeo.a().a(((bczm)localObject).c);
+      if (localBitmap == null) {
+        break;
       }
-      CardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      continue;
-      if ((paramMessage.obj instanceof String))
-      {
-        Object localObject = (String)paramMessage.obj;
-        localObject = this.a.a((String)localObject);
-        if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
-        {
-          this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
-          Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
-        }
-      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      return paramViewGroup;
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562406, paramViewGroup, false);
+      paramView = new bczo();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131365824));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377869));
+      paramViewGroup.setTag(paramView);
     }
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840209);
+    bdeo.a().a(((bczm)localObject).c, this.a);
+    return paramViewGroup;
   }
 }
 

@@ -1,29 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
-
 public class badq
   implements Comparable<badq>
 {
   public int a;
-  public TroopInfo a;
   public String a;
   public int b;
+  public String b;
   
-  public int a(@NonNull badq parambadq)
+  public badq(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    if (this.b != parambadq.b) {
-      return this.b - parambadq.b;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public int a(badq parambadq)
+  {
+    if (this.jdField_b_of_type_Int < parambadq.jdField_b_of_type_Int) {
+      return -1;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
+    if (this.jdField_b_of_type_Int > parambadq.jdField_b_of_type_Int) {
+      return 1;
     }
-    if (parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(parambadq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
-    }
-    if (this.jdField_a_of_type_Int != parambadq.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambadq.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambadq.jdField_a_of_type_JavaLangString);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
   }
 }
 

@@ -1,17 +1,28 @@
-public class qbw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
+
+public final class qbw
+  implements Parcelable.Creator<RecommendFollowInfoTitle>
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public int g;
+  public RecommendFollowInfoTitle a(Parcel paramParcel)
+  {
+    boolean bool = true;
+    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
+    localRecommendFollowInfoTitle.title = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRecommendFollowInfoTitle.isAllFollowed = bool;
+      return localRecommendFollowInfoTitle;
+      bool = false;
+    }
+  }
+  
+  public RecommendFollowInfoTitle[] a(int paramInt)
+  {
+    return new RecommendFollowInfoTitle[paramInt];
+  }
 }
 
 

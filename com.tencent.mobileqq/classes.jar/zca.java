@@ -1,18 +1,21 @@
-import android.view.View;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
 public class zca
-  implements zbr
+  extends AnimatorListenerAdapter
 {
-  public zca(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
+  public zca(TransitionContext paramTransitionContext) {}
   
-  public void a(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
     this.a.a();
   }
 }

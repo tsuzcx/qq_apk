@@ -1,10 +1,35 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-abstract interface auni
+final class auni
+  implements ayzw
 {
-  public abstract MessageRecord a(aunn paramaunn);
+  auni(String paramString1, String paramString2, PhotoSendParams paramPhotoSendParams) {}
   
-  public abstract MessageRecord a(auob paramauob);
+  public void a(ayyp paramayyp, ayze paramayze)
+  {
+    int j = 0;
+    if (j < paramayze.a.size())
+    {
+      paramayyp = (ayzr)paramayze.a.get(j);
+      int i = -1;
+      if ((paramayyp instanceof ayzj)) {
+        i = ((ayzj)paramayyp).c;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + paramayyp.toString());
+        }
+        j += 1;
+        break;
+        if ((paramayyp instanceof ayzg)) {
+          i = ((ayzg)paramayyp).c;
+        }
+      }
+    }
+  }
 }
 
 

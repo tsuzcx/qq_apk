@@ -3,11 +3,11 @@ package com.tencent.qqmini.sdk.report;
 import NS_COMM.COMM.Entry;
 import NS_MINI_REPORT.REPORT.SingleDcData;
 import android.content.SharedPreferences;
-import besl;
-import beyn;
-import beyo;
-import bfgt;
-import bfgv;
+import betc;
+import beze;
+import bezf;
+import bfhk;
+import bfhm;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import java.util.ArrayList;
@@ -22,15 +22,15 @@ public final class MiniProgramLpReportDC04884$1
   public void run()
   {
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      besl.a("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.a);
+      betc.a("MiniProgramLpReportDC04", "reportApiReportcalled with args: " + this.a);
     }
-    Object localObject = bfgv.a().getString("version", "1.12.1.00001");
-    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { beyn.a("appid", this.b), beyn.a("miniapp_version", this.c), beyn.a("baselib_version", (String)localObject), beyn.a("apiResult", this.a) }));
-    if (!bfgt.a()) {
-      ((ArrayList)localObject).addAll(beyn.a());
+    Object localObject = bfhm.a().getString("version", "1.13.0.00013");
+    localObject = new ArrayList(Arrays.asList(new COMM.Entry[] { beze.a("appid", this.b), beze.a("miniapp_version", this.c), beze.a("baselib_version", (String)localObject), beze.a("apiResult", this.a) }));
+    if (!bfhk.a()) {
+      ((ArrayList)localObject).addAll(beze.a());
     }
-    localObject = beyn.a(9, String.valueOf(6), (List)localObject, null);
-    beyo.a().a((REPORT.SingleDcData)localObject);
+    localObject = beze.a(9, String.valueOf(6), (List)localObject, null);
+    bezf.a().a((REPORT.SingleDcData)localObject);
   }
 }
 

@@ -1,31 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-class svu
-  extends SimpleJob<Object>
+public final class svu
 {
-  svu(svo paramsvo, String paramString)
+  public ShareGroupFeedItem a;
+  public VideoListFeedItem a;
+  public ArrayList<svt> a;
+  
+  public svu()
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public String toString()
   {
-    paramVarArgs = ((tcz)tdc.a(5)).a();
-    paramJobContext = new ArrayList(paramVarArgs.size());
-    paramVarArgs = paramVarArgs.iterator();
-    while (paramVarArgs.hasNext()) {
-      paramJobContext.add(new sxh((StoryVideoItem)paramVarArgs.next()));
-    }
-    this.a.a(paramJobContext);
-    veg.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
-    return null;
+    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

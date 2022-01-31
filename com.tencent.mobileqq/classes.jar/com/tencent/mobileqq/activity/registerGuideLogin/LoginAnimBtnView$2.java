@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import ahrh;
+import ahrf;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,7 +18,7 @@ public class LoginAnimBtnView$2
     }
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.this$0.getContext(), "login_btn_lottie_anim.json", new ahrh(this));
+      LottieComposition.Factory.fromAssetFileName(this.this$0.getContext(), "login_btn_lottie_anim.json", new ahrf(this));
       return;
     }
     catch (Throwable localThrowable)

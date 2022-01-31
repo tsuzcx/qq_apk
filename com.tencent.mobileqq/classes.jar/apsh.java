@@ -1,10 +1,18 @@
-import android.os.Bundle;
+import android.app.Activity;
+import java.util.List;
 
-public abstract interface apsh
+class apsh
+  implements aptw
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle);
+  apsh(apsc paramapsc, List paramList) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle);
+  public void a()
+  {
+    aptx.d(apsc.a(this.jdField_a_of_type_Apsc).getString(2131692830));
+    bakx.a(apsc.a(this.jdField_a_of_type_Apsc), apsc.a(this.jdField_a_of_type_Apsc), this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void b() {}
 }
 
 

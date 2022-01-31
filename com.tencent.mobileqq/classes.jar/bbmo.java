@@ -1,393 +1,884 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.hardware.Camera.Parameters;
-import android.view.Window;
+import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bbmo
 {
-  private bbmn a = bbmn.a();
+  private static int a;
+  public static boolean a;
+  private static int jdField_b_of_type_Int;
+  private static boolean jdField_b_of_type_Boolean;
+  private static int c;
+  private static int d;
+  private static int e;
+  private static int f;
   
-  public static bbmo a()
+  static
   {
-    return bbmq.a;
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
+    jdField_d_of_type_Int = -1;
+    jdField_e_of_type_Int = -1;
+    jdField_f_of_type_Int = -1;
   }
   
-  public int a()
+  private static int a(Context paramContext)
   {
-    return 1;
-  }
-  
-  /* Error */
-  @android.annotation.TargetApi(16)
-  public android.app.Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, boolean paramBoolean, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: aload 7
-    //   2: invokevirtual 38	com/tencent/mobileqq/app/QQAppInterface:a	()Z
-    //   5: istore 10
-    //   7: ldc 39
-    //   9: istore 9
-    //   11: aload_1
-    //   12: ldc 41
-    //   14: iconst_m1
-    //   15: invokevirtual 47	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   18: sipush 1008
-    //   21: if_icmpne +199 -> 220
-    //   24: getstatic 53	ajsf:u	Ljava/lang/String;
-    //   27: aload_1
-    //   28: ldc 55
-    //   30: invokevirtual 59	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   33: invokevirtual 65	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   36: ifeq +177 -> 213
-    //   39: iload 9
-    //   41: istore 8
-    //   43: aload_1
-    //   44: ldc 67
-    //   46: iconst_0
-    //   47: invokevirtual 71	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   50: ifeq +7 -> 57
-    //   53: ldc 72
-    //   55: istore 8
-    //   57: aload_1
-    //   58: ldc 74
-    //   60: iload 8
-    //   62: invokevirtual 78	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   65: pop
-    //   66: invokestatic 84	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   69: iconst_0
-    //   70: aload_1
-    //   71: ldc 85
-    //   73: invokestatic 91	android/app/PendingIntent:getActivity	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
-    //   76: astore_1
-    //   77: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   80: ifeq +28 -> 108
-    //   83: ldc 98
-    //   85: iconst_2
-    //   86: new 100	java/lang/StringBuilder
-    //   89: dup
-    //   90: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   93: ldc 103
-    //   95: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: aload_1
-    //   99: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokestatic 118	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   108: getstatic 124	android/os/Build$VERSION:SDK_INT	I
-    //   111: bipush 11
-    //   113: if_icmpge +204 -> 317
-    //   116: new 126	android/app/Notification
-    //   119: dup
-    //   120: iload 8
-    //   122: aload_3
-    //   123: invokestatic 132	java/lang/System:currentTimeMillis	()J
-    //   126: invokespecial 135	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   129: astore_2
-    //   130: aload_2
-    //   131: aload_1
-    //   132: putfield 139	android/app/Notification:contentIntent	Landroid/app/PendingIntent;
-    //   135: iload 10
-    //   137: ifeq +24 -> 161
-    //   140: aload_2
-    //   141: aload_2
-    //   142: getfield 142	android/app/Notification:flags	I
-    //   145: bipush 32
-    //   147: ior
-    //   148: putfield 142	android/app/Notification:flags	I
-    //   151: aload_2
-    //   152: aload_2
-    //   153: getfield 142	android/app/Notification:flags	I
-    //   156: iconst_2
-    //   157: ior
-    //   158: putfield 142	android/app/Notification:flags	I
-    //   161: invokestatic 84	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   164: aload 7
-    //   166: invokestatic 147	bazl:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
-    //   169: ifeq +42 -> 211
-    //   172: invokestatic 153	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   175: bipush 11
-    //   177: invokevirtual 157	java/util/Calendar:get	(I)I
-    //   180: pop
-    //   181: aload_2
-    //   182: aload_2
-    //   183: getfield 142	android/app/Notification:flags	I
-    //   186: iconst_1
-    //   187: ior
-    //   188: putfield 142	android/app/Notification:flags	I
-    //   191: aload_2
-    //   192: ldc 158
-    //   194: putfield 161	android/app/Notification:ledARGB	I
-    //   197: aload_2
-    //   198: sipush 2000
-    //   201: putfield 164	android/app/Notification:ledOffMS	I
-    //   204: aload_2
-    //   205: sipush 2000
-    //   208: putfield 167	android/app/Notification:ledOnMS	I
-    //   211: aload_2
-    //   212: areturn
-    //   213: ldc 168
-    //   215: istore 8
-    //   217: goto -174 -> 43
-    //   220: aload_1
-    //   221: ldc 41
-    //   223: iconst_m1
-    //   224: invokevirtual 47	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   227: sipush 1010
-    //   230: if_icmpne +28 -> 258
-    //   233: getstatic 171	ajsf:ab	Ljava/lang/String;
-    //   236: invokestatic 175	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   239: aload_1
-    //   240: ldc 55
-    //   242: invokevirtual 59	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   245: invokevirtual 65	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   248: ifeq +10 -> 258
-    //   251: ldc 176
-    //   253: istore 8
-    //   255: goto -212 -> 43
-    //   258: aload_1
-    //   259: ldc 41
-    //   261: iconst_m1
-    //   262: invokevirtual 47	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   265: sipush 1001
-    //   268: if_icmpeq +20 -> 288
-    //   271: iload 9
-    //   273: istore 8
-    //   275: aload_1
-    //   276: ldc 41
-    //   278: iconst_m1
-    //   279: invokevirtual 47	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   282: sipush 10002
-    //   285: if_icmpne -242 -> 43
-    //   288: iload 9
-    //   290: istore 8
-    //   292: getstatic 179	ajsf:H	Ljava/lang/String;
-    //   295: invokestatic 175	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   298: aload_1
-    //   299: ldc 55
-    //   301: invokevirtual 59	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   304: invokevirtual 65	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   307: ifeq -264 -> 43
-    //   310: ldc 180
-    //   312: istore 8
-    //   314: goto -271 -> 43
-    //   317: new 182	android/app/Notification$Builder
-    //   320: dup
-    //   321: invokestatic 84	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   324: invokespecial 185	android/app/Notification$Builder:<init>	(Landroid/content/Context;)V
-    //   327: iload 8
-    //   329: invokevirtual 189	android/app/Notification$Builder:setSmallIcon	(I)Landroid/app/Notification$Builder;
-    //   332: iconst_1
-    //   333: invokevirtual 193	android/app/Notification$Builder:setAutoCancel	(Z)Landroid/app/Notification$Builder;
-    //   336: invokestatic 132	java/lang/System:currentTimeMillis	()J
-    //   339: invokevirtual 197	android/app/Notification$Builder:setWhen	(J)Landroid/app/Notification$Builder;
-    //   342: aload_3
-    //   343: invokevirtual 201	android/app/Notification$Builder:setTicker	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   346: astore 11
-    //   348: iload 10
-    //   350: ifeq +10 -> 360
-    //   353: aload 11
-    //   355: iconst_1
-    //   356: invokevirtual 204	android/app/Notification$Builder:setOngoing	(Z)Landroid/app/Notification$Builder;
-    //   359: pop
-    //   360: ldc 206
-    //   362: invokestatic 212	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   365: ldc 214
-    //   367: iconst_1
-    //   368: anewarray 208	java/lang/Class
-    //   371: dup
-    //   372: iconst_0
-    //   373: getstatic 220	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   376: aastore
-    //   377: invokevirtual 224	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   380: astore 12
-    //   382: aload 12
-    //   384: ifnull +22 -> 406
-    //   387: aload 12
-    //   389: aload 11
-    //   391: iconst_1
-    //   392: anewarray 4	java/lang/Object
-    //   395: dup
-    //   396: iconst_0
-    //   397: iconst_1
-    //   398: invokestatic 227	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   401: aastore
-    //   402: invokevirtual 233	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   405: pop
-    //   406: invokestatic 84	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   409: aload 7
-    //   411: invokestatic 147	bazl:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
-    //   414: ifeq +26 -> 440
-    //   417: invokestatic 153	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   420: bipush 11
-    //   422: invokevirtual 157	java/util/Calendar:get	(I)I
-    //   425: pop
-    //   426: aload 11
-    //   428: ldc 158
-    //   430: sipush 2000
-    //   433: sipush 2000
-    //   436: invokevirtual 237	android/app/Notification$Builder:setLights	(III)Landroid/app/Notification$Builder;
-    //   439: pop
-    //   440: iload 6
-    //   442: ifeq +57 -> 499
-    //   445: aload_2
-    //   446: ifnull +10 -> 456
-    //   449: aload 11
-    //   451: aload_2
-    //   452: invokevirtual 241	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
-    //   455: pop
-    //   456: aload 11
-    //   458: aload 4
-    //   460: invokevirtual 244	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   463: aload 5
-    //   465: invokevirtual 247	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   468: aload_1
-    //   469: invokevirtual 251	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
-    //   472: pop
-    //   473: getstatic 124	android/os/Build$VERSION:SDK_INT	I
-    //   476: bipush 16
-    //   478: if_icmplt +52 -> 530
-    //   481: aload 11
-    //   483: invokevirtual 255	android/app/Notification$Builder:build	()Landroid/app/Notification;
-    //   486: astore_1
-    //   487: aload_1
-    //   488: areturn
-    //   489: astore 12
-    //   491: aload 12
-    //   493: invokevirtual 258	java/lang/Exception:printStackTrace	()V
-    //   496: goto -90 -> 406
-    //   499: aload 11
-    //   501: aload 4
-    //   503: invokevirtual 244	android/app/Notification$Builder:setContentTitle	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   506: aload 5
-    //   508: invokevirtual 247	android/app/Notification$Builder:setContentText	(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
-    //   511: aload_1
-    //   512: invokevirtual 251	android/app/Notification$Builder:setContentIntent	(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
-    //   515: pop
-    //   516: aload_2
-    //   517: ifnull -44 -> 473
-    //   520: aload 11
-    //   522: aload_2
-    //   523: invokevirtual 241	android/app/Notification$Builder:setLargeIcon	(Landroid/graphics/Bitmap;)Landroid/app/Notification$Builder;
-    //   526: pop
-    //   527: goto -54 -> 473
-    //   530: getstatic 124	android/os/Build$VERSION:SDK_INT	I
-    //   533: bipush 16
-    //   535: if_icmpge +17 -> 552
-    //   538: getstatic 124	android/os/Build$VERSION:SDK_INT	I
-    //   541: bipush 11
-    //   543: if_icmplt +9 -> 552
-    //   546: aload 11
-    //   548: invokevirtual 261	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
-    //   551: areturn
-    //   552: new 126	android/app/Notification
-    //   555: dup
-    //   556: iload 8
-    //   558: aload_3
-    //   559: invokestatic 132	java/lang/System:currentTimeMillis	()J
-    //   562: invokespecial 135	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   565: astore_1
-    //   566: aload_1
-    //   567: areturn
-    //   568: astore_1
-    //   569: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   572: ifeq +14 -> 586
-    //   575: ldc_w 263
-    //   578: iconst_2
-    //   579: aload_1
-    //   580: invokevirtual 266	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   583: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   586: new 126	android/app/Notification
-    //   589: dup
-    //   590: iload 8
-    //   592: aload_3
-    //   593: invokestatic 132	java/lang/System:currentTimeMillis	()J
-    //   596: invokespecial 135	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
-    //   599: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	600	0	this	bbmo
-    //   0	600	1	paramIntent	Intent
-    //   0	600	2	paramBitmap	Bitmap
-    //   0	600	3	paramString1	String
-    //   0	600	4	paramString2	String
-    //   0	600	5	paramString3	String
-    //   0	600	6	paramBoolean	boolean
-    //   0	600	7	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   41	550	8	i	int
-    //   9	280	9	j	int
-    //   5	344	10	bool	boolean
-    //   346	201	11	localBuilder	android.app.Notification.Builder
-    //   380	8	12	localMethod	java.lang.reflect.Method
-    //   489	3	12	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   360	382	489	java/lang/Exception
-    //   387	406	489	java/lang/Exception
-    //   473	487	568	java/lang/Exception
-    //   530	552	568	java/lang/Exception
-    //   552	566	568	java/lang/Exception
-  }
-  
-  public Intent a(Intent paramIntent)
-  {
-    paramIntent.putExtra(a(), Integer.parseInt(b()));
-    return null;
-  }
-  
-  public Bitmap a(Bitmap paramBitmap, int paramInt)
-  {
-    if (paramBitmap != null) {
-      return Bitmap.createScaledBitmap(paramBitmap, paramInt, paramInt, true);
+    int i = 0;
+    paramContext = (Activity)paramContext;
+    if ((paramContext instanceof FTSEntitySearchActivity)) {
+      i = 2;
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    return bbmn.a;
-  }
-  
-  public String a(Camera.Parameters paramParameters)
-  {
-    String str = "off";
-    List localList = paramParameters.getSupportedFlashModes();
-    if (localList.contains("torch")) {
-      paramParameters = "torch";
+    while (!(paramContext instanceof FTSEntitySearchDetailActivity)) {
+      return i;
     }
+    return 3;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("support_fts4_flag" + paramQQAppInterface.getCurrentAccountUin(), -1);
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putInt("fts_upgrade_tables" + paramQQAppInterface.getCurrentAccountUin(), paramInt1 + paramInt2);
+    int i = paramInt1;
+    if (localEditor.commit()) {
+      i = paramInt1 + paramInt2;
+    }
+    return i;
+  }
+  
+  public static int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      return paramParameters;
-      if (localList.contains("on")) {
-        return "on";
+      return 0;
+      paramString = paramString.split(" ");
+    } while (paramString == null);
+    return paramString.length;
+  }
+  
+  public static long a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getLong("fts_upgrade_cost" + paramQQAppInterface.getCurrentAccountUin(), 0L);
+  }
+  
+  public static long a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putLong("fts_upgrade_cost" + paramQQAppInterface.getCurrentAccountUin(), paramLong1 + paramLong2);
+    long l = paramLong1;
+    if (localEditor.commit()) {
+      l = paramLong1 + paramLong2;
+    }
+    return l;
+  }
+  
+  public static Pair<CharSequence, CharSequence> a(awoe paramawoe)
+  {
+    if ((paramawoe instanceof awmt)) {
+      return ((awmt)paramawoe).a();
+    }
+    if ((paramawoe instanceof awms)) {
+      return ((awms)paramawoe).a();
+    }
+    return null;
+  }
+  
+  public static FTSMessage a(ContentValues paramContentValues, MessageRecord paramMessageRecord)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (paramContentValues.containsKey("msgData"))
+        {
+          arrayOfByte = paramContentValues.getAsByteArray("msgData");
+          if (arrayOfByte != null) {
+            continue;
+          }
+          paramMessageRecord.msg = null;
+        }
       }
-      paramParameters = str;
-    } while (!localList.contains("auto"));
-    return "auto";
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        byte[] arrayOfByte;
+        localUnsupportedEncodingException.printStackTrace();
+        paramMessageRecord.msg = null;
+        continue;
+      }
+      if (paramContentValues.containsKey("time")) {
+        paramMessageRecord.time = paramContentValues.getAsLong("time").longValue();
+      }
+      if (paramContentValues.containsKey("shmsgseq")) {
+        paramMessageRecord.shmsgseq = paramContentValues.getAsLong("shmsgseq").longValue();
+      }
+      return FTSMessageCodec.a(paramMessageRecord);
+      paramMessageRecord.msg = new String(arrayOfByte, "UTF-8");
+    }
   }
   
-  public void a(Intent paramIntent)
+  public static String a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2)
   {
-    paramIntent.setFlags(337641472);
+    if ((paramQQAppInterface == null) || (paramContext == null)) {}
+    do
+    {
+      return paramString1;
+      switch (paramInt)
+      {
+      default: 
+        return bbcz.a(paramQQAppInterface, paramString1, paramInt);
+      }
+      if (ajsd.G.equals(paramString1)) {
+        return paramContext.getString(2131719985);
+      }
+      if (ajsd.J.equals(paramString1)) {
+        return paramContext.getString(2131719984);
+      }
+      if (ajsd.E.equals(paramString1)) {
+        return paramContext.getString(2131720051);
+      }
+      if (paramInt != 1000) {
+        break;
+      }
+      paramContext = (TroopManager)paramQQAppInterface.getManager(52);
+    } while (paramContext == null);
+    return bbcz.a(paramQQAppInterface, paramString1, paramContext.b(paramString2), paramString2, true, null);
+    if (paramInt == 1004)
+    {
+      paramContext = bbcz.c(paramQQAppInterface, paramString2, paramString1);
+      if ((paramContext != null) && (paramContext.equals(paramString1))) {
+        return bbcz.b(paramQQAppInterface, paramString1, true);
+      }
+    }
+    else
+    {
+      return bbcz.a(paramQQAppInterface, paramString1, paramInt);
+    }
+    return paramContext;
   }
   
-  public void a(Window paramWindow)
+  public static String a(String paramString)
   {
-    paramWindow.setType(2004);
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        localStringBuilder = new StringBuilder(64);
+        localaqlj = new aqlj(new StringReader(paramString), paramString.length());
+        paramString = null;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder;
+        aqlj localaqlj;
+        aqlg localaqlg;
+        localThrowable.printStackTrace();
+        paramString = localObject;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.fts.utils", 2, "tokenSegment: failure", localThrowable);
+      }
+      try
+      {
+        localaqlg = localaqlj.a();
+        if (localaqlg != null) {
+          continue;
+        }
+        if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && (!TextUtils.isEmpty(paramString.a())))
+        {
+          localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+          localStringBuilder.append("*");
+        }
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.fts.utils", 2, "tokenSegment: failure", paramString);
+        continue;
+      }
+      paramString = localStringBuilder.toString();
+      return paramString;
+      if ((paramString != null) && (TextUtils.equals(paramString.b(), "double")) && ((!TextUtils.equals(localaqlg.b(), "double")) || (paramString.b() < localaqlg.a())) && (!TextUtils.isEmpty(paramString.a())))
+      {
+        localStringBuilder.append(paramString.a().charAt(paramString.a().length() - 1));
+        localStringBuilder.append("*");
+        localStringBuilder.append(' ');
+      }
+      if ((!TextUtils.isEmpty(localaqlg.a())) && ((!TextUtils.equals(localaqlg.b(), "double")) || (localaqlg.a().length() != 1)))
+      {
+        localStringBuilder.append(localaqlg.a());
+        localStringBuilder.append(' ');
+      }
+      paramString = localaqlg;
+    }
+    return null;
   }
   
-  public boolean a()
+  public static ArrayList<bbmq> a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return (!this.a.a(0)) && (this.a.a(1));
+    long l1 = System.nanoTime();
+    int m = paramString.length();
+    int j = 0;
+    int k = 0;
+    int i;
+    if (k < m)
+    {
+      if (paramString.charAt(k) < '') {}
+      for (i = j + 1;; i = j + 2)
+      {
+        k += 1;
+        j = i;
+        break;
+      }
+    }
+    m = j / 2 + 2;
+    ArrayList localArrayList;
+    Object localObject1;
+    Object localObject2;
+    if (j >= 3)
+    {
+      k = j * 2;
+      localArrayList = new ArrayList();
+      i = m;
+      if (j >= 3)
+      {
+        localObject1 = paramQQAppInterface.getCurrentAccountUin();
+        localObject2 = bbcz.b(paramQQAppInterface, (String)localObject1, true);
+        if (!((String)localObject2).toLowerCase().startsWith(paramString.toLowerCase())) {
+          break label429;
+        }
+        localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131166987)), 0, paramString.length(), 17);
+        localArrayList.add(new bbmq((String)localObject1, 0, new Pair(localObject2, null)));
+        i = m + 1;
+      }
+      label193:
+      paramQQAppInterface = new awtu(paramQQAppInterface, 10001, 29, null);
+      paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.a(new awvi(paramString));
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.isEmpty())) {
+        break label923;
+      }
+      j = 0;
+      localObject1 = paramQQAppInterface.iterator();
+    }
+    label349:
+    label369:
+    for (;;)
+    {
+      label248:
+      if (((Iterator)localObject1).hasNext())
+      {
+        paramString = (awoe)((Iterator)localObject1).next();
+        if ((paramString.b() & 0xFFFFFFFF & 0xFF000000) >> 24 != 2L) {
+          if (localArrayList.size() < i)
+          {
+            if ((paramString.d() == 0) || (paramString.d() == 1004))
+            {
+              m = j + 1;
+              paramQQAppInterface = a(paramString);
+              localArrayList.add(new bbmq(paramString.b(), paramString.d(), paramQQAppInterface));
+              j = m;
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              if (paramString.b() != null) {
+                break label767;
+              }
+              paramQQAppInterface = "null";
+              j = paramString.d();
+              if (paramString.a() != null) {
+                break label775;
+              }
+            }
+            for (paramString = "null";; paramString = paramString.a())
+            {
+              QLog.d("Q.fts.utils", 2, String.format("contactSearchForTopN, contact uin: %s, uinType: %d, matchTitle: %s", new Object[] { paramQQAppInterface, Integer.valueOf(j), paramString }));
+              j = m;
+              break label248;
+              k = -1;
+              break;
+              if (((String)localObject1).toLowerCase().startsWith(paramString.toLowerCase()))
+              {
+                localObject3 = new SpannableStringBuilder("(" + (String)localObject1 + ")");
+                ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131166987)), 1, paramString.length() + 1, 17);
+                localArrayList.add(new bbmq((String)localObject1, 0, new Pair(localObject2, localObject3)));
+                i = m + 1;
+                break label193;
+              }
+              Object localObject3 = awwa.a((String)localObject2, paramString, 1);
+              if (localObject3[0] == 0)
+              {
+                i = localObject3[1];
+                localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+                ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131166987)), 0, i, 17);
+                localArrayList.add(new bbmq((String)localObject1, 0, new Pair(localObject2, null)));
+                i = m + 1;
+                break label193;
+              }
+              localObject3 = awwa.a((String)localObject2, paramString, 2);
+              i = m;
+              if (localObject3[0] != 0) {
+                break label193;
+              }
+              i = localObject3[1];
+              localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+              ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131166987)), 0, i, 17);
+              localArrayList.add(new bbmq((String)localObject1, 0, new Pair(localObject2, null)));
+              i = m + 1;
+              break label193;
+              localArrayList.add(new bbmq(paramString.b(), paramString.d(), null));
+              m = j;
+              break label349;
+              label767:
+              paramQQAppInterface = paramString.b();
+              break label369;
+            }
+          }
+          else if (j < k)
+          {
+            if ((paramString.d() == 0) || (paramString.d() == 1004))
+            {
+              paramQQAppInterface = a(paramString);
+              localArrayList.add(new bbmq(paramString.b(), paramString.d(), paramQQAppInterface));
+              if (QLog.isColorLevel())
+              {
+                if (paramString.b() != null) {
+                  break label907;
+                }
+                paramQQAppInterface = "null";
+                m = paramString.d();
+                if (paramString.a() != null) {
+                  break label915;
+                }
+              }
+              for (paramString = "null";; paramString = paramString.a())
+              {
+                QLog.d("Q.fts.utils", 2, String.format("contactSearchForTopN, contact uin: %s, uinType: %d, matchTitle: %s", new Object[] { paramQQAppInterface, Integer.valueOf(m), paramString }));
+                j += 1;
+                break;
+                paramQQAppInterface = paramString.b();
+                break label850;
+              }
+            }
+          }
+        }
+      }
+    }
+    label429:
+    label850:
+    long l2 = System.nanoTime();
+    label775:
+    label907:
+    label915:
+    label923:
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.fts.utils", 2, "contactSearchForTopN, cost: " + (l2 - l1) / 1000000L + "ms size: " + localArrayList.size() + " contactNum: " + i + " friendNum: " + k);
+      i = 0;
+      while (i < localArrayList.size())
+      {
+        QLog.i("Q.fts.utils", 2, "index = " + i + ", contactInfo = " + localArrayList.get(i));
+        i += 1;
+      }
+    }
+    return localArrayList;
   }
   
-  public String b()
+  public static ArrayList<String> a(String paramString)
   {
-    return bbmn.c;
+    if (paramString == null) {
+      return null;
+    }
+    paramString = paramString.replaceAll("[^A-Za-z0-9\\u4e00-\\u9fa5]", " ").split("\\s");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      String str = paramString[i].trim();
+      if ((str != null) && (!TextUtils.isEmpty(str))) {
+        localArrayList.add(str);
+      }
+      i += 1;
+    }
+    return localArrayList;
   }
   
-  public void b(Window paramWindow)
+  public static void a(View paramView)
   {
-    paramWindow.setType(2);
+    HashMap localHashMap = new HashMap();
+    bbmp.jdField_c_of_type_Int = a(paramView.getContext());
+    paramView = (Integer)paramView.getTag(2131379214);
+    if (paramView != null) {}
+    for (int i = paramView.intValue();; i = -1)
+    {
+      bbmp.jdField_e_of_type_Int = i + 1;
+      if (bbmp.jdField_f_of_type_Int == 1)
+      {
+        bbmp.jdField_a_of_type_Long = bbmp.jdField_d_of_type_Long + (System.nanoTime() - bbmp.jdField_c_of_type_Long) / 1000000L;
+        bbmp.jdField_b_of_type_Long = bbmp.jdField_f_of_type_Long + (System.nanoTime() - bbmp.jdField_e_of_type_Long) / 1000000L;
+      }
+      if (bbmp.jdField_d_of_type_Int == 1)
+      {
+        bbmp.h = -1;
+        bbmp.i = -1;
+        bbmp.j = -1;
+      }
+      localHashMap.put("keyNum", String.valueOf(bbmp.jdField_a_of_type_Int));
+      localHashMap.put("firstKeyLen", String.valueOf(bbmp.jdField_b_of_type_Int));
+      localHashMap.put("itemPage", String.valueOf(bbmp.jdField_c_of_type_Int));
+      localHashMap.put("itemSearchStrategy", String.valueOf(bbmp.jdField_d_of_type_Int));
+      localHashMap.put("itemPosition", String.valueOf(bbmp.jdField_e_of_type_Int));
+      localHashMap.put("itemType", String.valueOf(bbmp.jdField_f_of_type_Int));
+      localHashMap.put("itemUinType", String.valueOf(bbmp.g));
+      if (bbmp.jdField_f_of_type_Int == 1)
+      {
+        localHashMap.put("totalCost", String.valueOf(bbmp.jdField_a_of_type_Long));
+        localHashMap.put("searchCost", String.valueOf(bbmp.jdField_b_of_type_Long));
+      }
+      localHashMap.put("senderNum", String.valueOf(bbmp.h));
+      localHashMap.put("friendNum", String.valueOf(bbmp.i));
+      localHashMap.put("friendIndex", String.valueOf(bbmp.j));
+      axrn.a(BaseApplicationImpl.getApplication()).a(null, "actFtsItemClickEvent", true, bbmp.jdField_a_of_type_Long, bbmp.jdField_b_of_type_Long, localHashMap, "", false);
+      if ((bbmp.jdField_f_of_type_Int == 1) && (QLog.isColorLevel())) {
+        QLog.d("Q.fts.utils", 2, "actFtsItemClickEvent: totalCost = " + bbmp.jdField_a_of_type_Long + ", searchCost = " + bbmp.jdField_b_of_type_Long);
+      }
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putInt("support_fts4_flag" + paramQQAppInterface.getCurrentAccountUin(), paramInt);
+    localEditor.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
+    paramQQAppInterface = ((SharedPreferences)localObject).edit();
+    localObject = ((SharedPreferences)localObject).getAll().keySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
+      if (str.endsWith(paramString)) {
+        paramQQAppInterface.remove(str);
+      }
+    }
+    paramQQAppInterface.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_upgrade_log_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    PackageManager localPackageManager = BaseApplicationImpl.getApplication().getPackageManager();
+    try
+    {
+      int i = localPackageManager.getApplicationInfo(BaseApplicationImpl.getApplication().getPackageName(), 0).flags;
+      if ((i & 0x40000) != 0) {
+        bool = true;
+      }
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.fts.utils", 2, "isInstallOnSDCard: failure", localException);
+    }
+    return bool;
+    return false;
+  }
+  
+  public static boolean a(ContentValues paramContentValues)
+  {
+    if ((paramContentValues.containsKey("msgtype")) && (paramContentValues.getAsInteger("msgtype").intValue() == -2006)) {}
+    while ((paramContentValues.containsKey("isValid")) && (!paramContentValues.getAsBoolean("isValid").booleanValue())) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return (b(paramQQAppInterface) == 1) && (!b());
+  }
+  
+  public static String[] a(String paramString)
+  {
+    int j = 0;
+    Object localObject = a(paramString);
+    if (localObject == null) {
+      return null;
+    }
+    paramString = new ArrayList();
+    int i = 0;
+    while (i < ((ArrayList)localObject).size())
+    {
+      String str = a((String)((ArrayList)localObject).get(i));
+      if (!TextUtils.isEmpty(str)) {
+        paramString.add(str.trim());
+      }
+      i += 1;
+    }
+    if (paramString.size() == 0) {
+      return null;
+    }
+    localObject = new String[paramString.size()];
+    i = j;
+    while (i < paramString.size())
+    {
+      localObject[i] = ((String)paramString.get(i));
+      i += 1;
+    }
+    return localObject;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    int i = a(paramQQAppInterface);
+    if (i == -1)
+    {
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        a(paramQQAppInterface, 1);
+        return 1;
+      }
+      a(paramQQAppInterface, 0);
+      return 0;
+    }
+    return i;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putInt("fts_upgrade_msgs" + paramQQAppInterface.getCurrentAccountUin(), paramInt1 + paramInt2);
+    int i = paramInt1;
+    if (localEditor.commit()) {
+      i = paramInt1 + paramInt2;
+    }
+    return i;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSystemSharedPreferences("fts_sp_file", 0).edit();
+    paramQQAppInterface.putInt("fts_crash_count_by_hook", paramInt);
+    paramQQAppInterface.commit();
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_upgrade_table_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return jdField_b_of_type_Boolean;
+    }
+    jdField_a_of_type_Boolean = true;
+    if (a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.utils", 2, "QQ install on SDCard");
+      }
+      if (!e((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))
+      {
+        localObject1 = new HashMap();
+        ((HashMap)localObject1).put("param_ROM", bbdh.j());
+        axrn.a(BaseApplication.getContext()).a(null, "actQQInstallExternal", true, -1L, 0L, (HashMap)localObject1, null, false);
+        c((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+      }
+    }
+    Object localObject1 = bbdh.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.fts.utils", 2, "Rom total size: " + localObject1[0] + " MB, Rom available size: " + localObject1[1] + " MB");
+    }
+    if (localObject1[0] == -1L)
+    {
+      jdField_b_of_type_Boolean = true;
+      return true;
+    }
+    try
+    {
+      Object localObject2 = BaseApplicationImpl.getApplication().getFilesDir().getPath();
+      long l = Math.ceil(new File(((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/")) + "/databases", BaseApplicationImpl.getApplication().getRuntime().getAccount() + ".db").length() / 1048576.0D);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.fts.utils", 2, "uin.db size: " + l + " MB");
+      }
+      if (localObject1[1] > 5L * l)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.fts.utils", 2, "NOT Low Rom For FTS");
+        }
+        jdField_b_of_type_Boolean = false;
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.fts.utils", 2, "IS Low Rom For FTS");
+      }
+      if (!f((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))
+      {
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("param_ROM", bbdh.j());
+        ((HashMap)localObject2).put("param_totalrom", String.valueOf(localObject1[0]));
+        ((HashMap)localObject2).put("param_availrom", String.valueOf(localObject1[1]));
+        ((HashMap)localObject2).put("param_dbsize", String.valueOf(l));
+        axrn.a(BaseApplication.getContext()).a(null, "actLowRomForFTS", true, -1L, 0L, (HashMap)localObject2, null, false);
+        d((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+      }
+      jdField_b_of_type_Boolean = true;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "isLowRomForFTS: failure", localException);
+      }
+      jdField_b_of_type_Boolean = true;
+    }
+    return true;
+  }
+  
+  public static boolean b(ContentValues paramContentValues)
+  {
+    if (paramContentValues.containsKey("msgData")) {}
+    while ((paramContentValues.containsKey("time")) || (paramContentValues.containsKey("shmsgseq"))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_upgrade_log_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static String[] b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    localObject = new StringBuilder(32);
+    paramString = new aqlk(new StringReader(paramString));
+    try
+    {
+      for (;;)
+      {
+        aqlg localaqlg = paramString.a();
+        if (localaqlg == null) {
+          break;
+        }
+        if (!TextUtils.isEmpty(localaqlg.a()))
+        {
+          ((StringBuilder)localObject).append(localaqlg.a());
+          ((StringBuilder)localObject).append(' ');
+        }
+      }
+      int i;
+      return localObject;
+    }
+    catch (IOException paramString)
+    {
+      ((StringBuilder)localObject).setLength(0);
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "keywordSegment: failure", paramString);
+      }
+      paramString = new ArrayList();
+      if (((StringBuilder)localObject).length() > 0) {
+        paramString.add(((StringBuilder)localObject).toString().trim());
+      }
+      if (paramString.size() == 0) {
+        return null;
+      }
+      localObject = new String[paramString.size()];
+      i = 0;
+      while (i < paramString.size())
+      {
+        localObject[i] = ((String)paramString.get(i));
+        i += 1;
+      }
+    }
+  }
+  
+  public static int c(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_upgrade_tables" + paramQQAppInterface.getCurrentAccountUin(), 0);
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("install_external_report_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean c()
+  {
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.FTSSwitch.name(), "-1");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.fts.utils", 2, "DPC FTS Switch: " + str);
+    }
+    if (TextUtils.equals(str, "1")) {}
+    do
+    {
+      return true;
+      if (TextUtils.equals(str, "0")) {
+        return false;
+      }
+      if (!TextUtils.equals(str, "-1")) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.fts.utils", 2, "DPC FTS Switch has not config!");
+    return true;
+    return false;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_upgrade_table_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int d(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_upgrade_msgs" + paramQQAppInterface.getCurrentAccountUin(), 0);
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("low_rom_for_fts_report_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    return (b(paramQQAppInterface)) && (c(paramQQAppInterface));
+  }
+  
+  public static int e(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_Int == -1) {
+      jdField_a_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_compare_flag" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return jdField_a_of_type_Int;
+  }
+  
+  public static void e(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("hardware_support_fts_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean e(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("install_external_report_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int f(QQAppInterface paramQQAppInterface)
+  {
+    return BaseApplicationImpl.sApplication.getSystemSharedPreferences("fts_sp_file", 0).getInt("fts_crash_count_by_hook", 0);
+  }
+  
+  public static void f(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_first_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean f(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("low_rom_for_fts_report_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int g(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_b_of_type_Int == -1) {
+      jdField_b_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_extension_flag" + paramQQAppInterface.getCurrentAccountUin(), 1);
+    }
+    return jdField_b_of_type_Int;
+  }
+  
+  public static boolean g(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("hardware_support_fts_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public static int h(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_c_of_type_Int == -1) {
+      jdField_c_of_type_Int = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getInt("fts_extension_conversation_flag" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return jdField_c_of_type_Int;
+  }
+  
+  public static boolean h(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_first_flag" + paramQQAppInterface.getCurrentAccountUin(), true);
   }
 }
 

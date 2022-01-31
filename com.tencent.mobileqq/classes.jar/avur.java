@@ -1,66 +1,15 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import com.tencent.qphone.base.util.QLog;
 
-public class avur
-  implements ViewPager.OnPageChangeListener
+class avur
+  implements avsl
 {
-  public int a;
+  avur(avuq paramavuq) {}
   
-  public avur(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
+      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
-      }
-    }
-    Object localObject;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
-      }
-      ahub.a("", "0X8007804", "", "", "", "");
-      this.jdField_a_of_type_Int = paramInt;
-      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
-      if (localView != null)
-      {
-        localObject = (Runnable)localView.getTag();
-        if (localObject != null)
-        {
-          localView.removeCallbacks((Runnable)localObject);
-          localView.setTag(null);
-        }
-        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
-      }
-      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
-      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
-      if (localView != null)
-      {
-        localView.removeCallbacks((Runnable)localView.getTag());
-        localView.clearAnimation();
-      }
-    } while (localObject == null);
-    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
-    ((View)localObject).clearAnimation();
   }
 }
 

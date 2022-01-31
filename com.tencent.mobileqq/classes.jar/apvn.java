@@ -1,12 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 final class apvn
-  implements bbwe
+  implements View.OnClickListener
 {
-  apvn(apve paramapve) {}
+  apvn(apuv paramapuv) {}
   
-  public void callback(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      this.a.a();
+    if (this.a != null) {
+      this.a.onClick(paramView);
     }
   }
 }

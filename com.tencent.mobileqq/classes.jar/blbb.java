@@ -1,11 +1,13 @@
-class blbb
-  implements blaz
+import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+
+public class blbb
 {
-  blbb(blba paramblba) {}
+  public int a;
+  public int b = 0;
   
-  public boolean a(double paramDouble)
+  public blbb(SVHwEncoder.HwEncode paramHwEncode)
   {
-    return blba.a(this.a);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

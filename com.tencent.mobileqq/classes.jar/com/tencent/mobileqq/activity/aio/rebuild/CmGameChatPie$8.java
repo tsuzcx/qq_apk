@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aena;
-import airz;
-import aizk;
+import aemy;
+import airx;
+import aizi;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class CmGameChatPie$8
   implements Runnable
 {
-  public CmGameChatPie$8(aena paramaena) {}
+  public CmGameChatPie$8(aemy paramaemy) {}
   
   public void run()
   {
-    ((airz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((airx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.minigame;
 
 import android.os.Process;
-import beuh;
+import beuy;
 
 public class GameRuntime$4
   implements Runnable
 {
-  public GameRuntime$4(beuh parambeuh) {}
+  public GameRuntime$4(beuy parambeuy) {}
   
   public void run()
   {

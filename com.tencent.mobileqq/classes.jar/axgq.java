@@ -1,8 +1,8 @@
 public abstract interface axgq
 {
-  public abstract void a(int paramInt);
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
 }
 
 

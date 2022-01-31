@@ -1,15 +1,16 @@
 import com.tencent.av.ui.VideoLayerUI;
 
 public class mkw
-  implements lst
+  implements lso
 {
-  public mkw(VideoLayerUI paramVideoLayerUI, mee parammee, boolean paramBoolean) {}
+  public mkw(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Mee.o(true);
-    this.jdField_a_of_type_Mee.a(-1044L, this.jdField_a_of_type_Boolean);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_Mee, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
   }
 }
 

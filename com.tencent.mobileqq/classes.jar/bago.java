@@ -1,22 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
 public class bago
-  implements bfoq
+  implements bcqa
 {
-  public bago(BulkSendMessageFragment paramBulkSendMessageFragment, bfol parambfol) {}
+  public bago(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
-    }
-    this.jdField_a_of_type_Bfol.dismiss();
-  }
+  public void a(Bundle paramBundle) {}
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

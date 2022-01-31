@@ -1,21 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AbsListView;
 
 public class agrq
-  implements bfob
+  implements View.OnClickListener
 {
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  
   public agrq(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(int paramInt)
   {
-    if (paramInt == 0)
-    {
-      aaad.a().a("list_photo", false);
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(CheckBox paramCheckBox)
+  {
+    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
     }
-    aaad.a().a("list_photo");
   }
 }
 

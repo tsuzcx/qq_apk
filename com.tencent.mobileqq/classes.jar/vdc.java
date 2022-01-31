@@ -1,32 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
 
-class vdc
-  extends ssy
+public class vdc
+  implements uzx
 {
-  vdc(vcs paramvcs) {}
+  vdc(vcp paramvcp) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if ((vcs.a(this.a) == null) || (vcs.a(this.a).a == null))
-    {
-      veg.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
-      return;
-    }
-    String str = vcs.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
-    {
-      veg.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
-      return;
-    }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new vab[] { new uzw(uze.a(str)), (vab)this.a.b.a(), new uzv(new vdd(this, str)) });
+    ved.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
   }
 }
 

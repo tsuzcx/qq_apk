@@ -1,25 +1,14 @@
-final class qgw
-  extends qgu<qgz, qgy, qgx>
+public abstract interface qgw<T extends qgv>
 {
-  public void a(qgz paramqgz, qgy paramqgy, int paramInt, qgx paramqgx)
-  {
-    switch (paramInt)
-    {
-    default: 
-      paramqgz.a(paramqgy);
-      return;
-    case 1: 
-      paramqgz.a(paramqgy, paramqgx.a, paramqgx.b);
-      return;
-    case 2: 
-      paramqgz.b(paramqgy, paramqgx.a, paramqgx.b);
-      return;
-    case 3: 
-      paramqgz.a(paramqgy, paramqgx.a, paramqgx.c, paramqgx.b);
-      return;
-    }
-    paramqgz.c(paramqgy, paramqgx.a, paramqgx.b);
-  }
+  public abstract void a(T paramT);
+  
+  public abstract void a(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void a(T paramT, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void c(T paramT, int paramInt1, int paramInt2);
 }
 
 

@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class cd
-  implements bfps
+  implements bfqj
 {
   public cd(LiteActivity paramLiteActivity) {}
   

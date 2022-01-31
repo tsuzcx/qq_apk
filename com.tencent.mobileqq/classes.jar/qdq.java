@@ -1,130 +1,203 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendFeedsTitle;
+import tencent.im.oidb.articlesummary.articlesummary.TopicRecommendInfo;
 
 public class qdq
-  extends qdm
 {
-  public int b;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<qds> a;
+  public qdr a;
   public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h = "";
-  public String i = "";
+  public String b;
+  public qdr b;
+  public String c;
   
   public qdq()
   {
-    super(2);
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static qdm b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  public static qdq a(articlesummary.TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo)
   {
-    if (!paramBannerItem.msg_video_banner_item.has()) {
+    if (paramTopicRecommendFeedsInfo == null)
+    {
+      QLog.d("TopicRecommendFeedsInfo", 1, "convertPBToInfo feedsInfo == null");
       return null;
     }
-    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
     qdq localqdq = new qdq();
-    if (localVideoBannerItem.bytes_share_url.has()) {
-      localqdq.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
+    if (paramTopicRecommendFeedsInfo.uint64_feeds_id.has()) {
+      localqdq.jdField_a_of_type_Long = paramTopicRecommendFeedsInfo.uint64_feeds_id.get();
     }
-    if (localVideoBannerItem.uint32_video_duration.has()) {
-      localqdq.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
+    if (paramTopicRecommendFeedsInfo.bytes_subscribe_name.has()) {
+      localqdq.jdField_c_of_type_JavaLangString = paramTopicRecommendFeedsInfo.bytes_subscribe_name.get().toStringUtf8();
     }
-    if (localVideoBannerItem.uint32_video_width.has()) {
-      localqdq.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
+    if (paramTopicRecommendFeedsInfo.uint32_feeds_style.has()) {
+      localqdq.jdField_a_of_type_Int = paramTopicRecommendFeedsInfo.uint32_feeds_style.get();
     }
-    if (localVideoBannerItem.uint32_video_height.has()) {
-      localqdq.d = localVideoBannerItem.uint32_video_height.get();
+    Object localObject;
+    if (paramTopicRecommendFeedsInfo.msg_topic_recommend_info.has())
+    {
+      localObject = paramTopicRecommendFeedsInfo.msg_topic_recommend_info.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        articlesummary.TopicRecommendInfo localTopicRecommendInfo = (articlesummary.TopicRecommendInfo)((Iterator)localObject).next();
+        qds localqds = new qds();
+        if (localTopicRecommendInfo.bytes_business_name.has()) {
+          localqds.jdField_a_of_type_JavaLangString = localTopicRecommendInfo.bytes_business_name.get().toStringUtf8();
+        }
+        if (localTopicRecommendInfo.bytes_business_name_prefix.has()) {
+          localqds.jdField_c_of_type_JavaLangString = localTopicRecommendInfo.bytes_business_name_prefix.get().toStringUtf8();
+        }
+        if (localTopicRecommendInfo.bytes_business_url.has()) {
+          localqds.jdField_b_of_type_JavaLangString = localTopicRecommendInfo.bytes_business_url.get().toStringUtf8();
+        }
+        if (localTopicRecommendInfo.uint32_business_id.has()) {
+          localqds.jdField_a_of_type_Int = localTopicRecommendInfo.uint32_business_id.get();
+        }
+        if (localTopicRecommendInfo.uint32_number_of_participants.has()) {
+          localqds.jdField_b_of_type_Int = localTopicRecommendInfo.uint32_number_of_participants.get();
+        }
+        if (localTopicRecommendInfo.bytes_pic_url.has()) {
+          localqds.d = localTopicRecommendInfo.bytes_pic_url.get().toStringUtf8();
+        }
+        if (localTopicRecommendInfo.uint32_is_follow.has()) {
+          localqds.jdField_c_of_type_Int = localTopicRecommendInfo.uint32_is_follow.get();
+        }
+        localqdq.jdField_a_of_type_JavaUtilArrayList.add(localqds);
+      }
     }
-    if (localVideoBannerItem.bytes_video_vid.has()) {
-      localqdq.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
+    if (paramTopicRecommendFeedsInfo.msg_left_title.has())
+    {
+      localObject = (articlesummary.TopicRecommendFeedsTitle)paramTopicRecommendFeedsInfo.msg_left_title.get();
+      localqdq.jdField_a_of_type_Qdr = new qdr();
+      if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.has()) {
+        localqdq.jdField_a_of_type_Qdr.jdField_a_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.get().toStringUtf8();
+      }
+      if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.has()) {
+        localqdq.jdField_a_of_type_Qdr.jdField_b_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.get().toStringUtf8();
+      }
     }
-    if (localVideoBannerItem.bytes_video_cover.has()) {
-      localqdq.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
+    if (paramTopicRecommendFeedsInfo.msg_right_title.has())
+    {
+      localObject = (articlesummary.TopicRecommendFeedsTitle)paramTopicRecommendFeedsInfo.msg_right_title.get();
+      localqdq.jdField_b_of_type_Qdr = new qdr();
+      if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.has()) {
+        localqdq.jdField_b_of_type_Qdr.jdField_a_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.get().toStringUtf8();
+      }
+      if (((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.has()) {
+        localqdq.jdField_b_of_type_Qdr.jdField_b_of_type_JavaLangString = ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.get().toStringUtf8();
+      }
     }
-    if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
-      localqdq.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
+    if ((paramTopicRecommendFeedsInfo.bytes_comments.has()) && (paramTopicRecommendFeedsInfo.bytes_comments.get() != null)) {}
+    try
+    {
+      localqdq.jdField_b_of_type_JavaLangString = new String(paramTopicRecommendFeedsInfo.bytes_comments.get().toByteArray(), "utf-8");
+      if (paramTopicRecommendFeedsInfo.uint64_uin.has()) {
+        localqdq.jdField_b_of_type_Long = paramTopicRecommendFeedsInfo.uint64_uin.get();
+      }
+      if (paramTopicRecommendFeedsInfo.bytes_subscribe_id.has()) {
+        paramTopicRecommendFeedsInfo = paramTopicRecommendFeedsInfo.bytes_subscribe_id.get().toByteArray();
+      }
     }
-    if (localVideoBannerItem.uint32_busi_type.has()) {
-      localqdq.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
+    catch (Exception localException)
+    {
+      try
+      {
+        localqdq.jdField_a_of_type_JavaLangString = new String(paramTopicRecommendFeedsInfo, "utf-8");
+        return localqdq;
+        localException = localException;
+        QLog.d("TopicRecommendFeedsInfo", 1, "parse bytes_comments failed ", localException);
+      }
+      catch (Exception paramTopicRecommendFeedsInfo)
+      {
+        for (;;)
+        {
+          paramTopicRecommendFeedsInfo.printStackTrace();
+        }
+      }
     }
-    if (localVideoBannerItem.bytes_title.has()) {
-      localqdq.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_account_name.has()) {
-      localqdq.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint64_account_uin.has()) {
-      localqdq.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
-    }
-    if (localVideoBannerItem.uint32_is_ugc.has()) {
-      localqdq.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
-    }
-    if (localVideoBannerItem.uint64_feeds_id.has()) {
-      localqdq.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
-    }
-    if (localVideoBannerItem.uint32_feeds_type.has()) {
-      localqdq.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
-    }
-    a(localqdq, paramBannerItem);
-    a(paramBannerItem, localqdq);
-    return localqdq;
   }
   
-  public oidb_cmd0xbc9.BannerItem a()
+  public articlesummary.TopicRecommendFeedsInfo a()
   {
-    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
-    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
+    articlesummary.TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = new articlesummary.TopicRecommendFeedsInfo();
+    localTopicRecommendFeedsInfo.uint32_feeds_style.set(this.jdField_a_of_type_Int);
+    localTopicRecommendFeedsInfo.uint64_feeds_id.set(this.jdField_a_of_type_Long);
+    if (this.jdField_c_of_type_JavaLangString != null) {
+      localTopicRecommendFeedsInfo.bytes_subscribe_name.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
     }
-    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
-    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
-    localVideoBannerItem.uint32_video_height.set(this.d);
-    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
+    Object localObject = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      qds localqds = (qds)localIterator.next();
+      articlesummary.TopicRecommendInfo localTopicRecommendInfo = new articlesummary.TopicRecommendInfo();
+      localTopicRecommendInfo.uint32_number_of_participants.set(localqds.jdField_b_of_type_Int);
+      if (!TextUtils.isEmpty(localqds.jdField_a_of_type_JavaLangString)) {
+        localTopicRecommendInfo.bytes_business_name.set(ByteStringMicro.copyFromUtf8(localqds.jdField_a_of_type_JavaLangString));
+      }
+      if (!TextUtils.isEmpty(localqds.jdField_c_of_type_JavaLangString)) {
+        localTopicRecommendInfo.bytes_business_name_prefix.set(ByteStringMicro.copyFromUtf8(localqds.jdField_c_of_type_JavaLangString));
+      }
+      if (!TextUtils.isEmpty(localqds.jdField_b_of_type_JavaLangString)) {
+        localTopicRecommendInfo.bytes_business_url.set(ByteStringMicro.copyFromUtf8(localqds.jdField_b_of_type_JavaLangString));
+      }
+      if (!TextUtils.isEmpty(localqds.d)) {
+        localTopicRecommendInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localqds.d));
+      }
+      localTopicRecommendInfo.uint32_business_id.set(localqds.jdField_a_of_type_Int);
+      localTopicRecommendInfo.uint32_is_follow.set(localqds.jdField_c_of_type_Int);
+      ((List)localObject).add(localTopicRecommendInfo);
     }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localTopicRecommendFeedsInfo.msg_topic_recommend_info.set((List)localObject);
+    if (this.jdField_a_of_type_Qdr != null)
+    {
+      localObject = new articlesummary.TopicRecommendFeedsTitle();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Qdr.jdField_b_of_type_JavaLangString)) {
+        ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Qdr.jdField_b_of_type_JavaLangString));
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Qdr.jdField_a_of_type_JavaLangString)) {
+        ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Qdr.jdField_a_of_type_JavaLangString));
+      }
+      localTopicRecommendFeedsInfo.msg_left_title.set((MessageMicro)localObject);
     }
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+    if (this.jdField_b_of_type_Qdr != null)
+    {
+      localObject = new articlesummary.TopicRecommendFeedsTitle();
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_Qdr.jdField_b_of_type_JavaLangString)) {
+        ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_url.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_Qdr.jdField_b_of_type_JavaLangString));
+      }
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_Qdr.jdField_a_of_type_JavaLangString)) {
+        ((articlesummary.TopicRecommendFeedsTitle)localObject).bytes_title_content.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_Qdr.jdField_a_of_type_JavaLangString));
+      }
+      localTopicRecommendFeedsInfo.msg_right_title.set((MessageMicro)localObject);
     }
-    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
-    if (!TextUtils.isEmpty(this.i)) {
-      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localTopicRecommendFeedsInfo.bytes_subscribe_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     }
-    if (!TextUtils.isEmpty(this.h)) {
-      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
+    localTopicRecommendFeedsInfo.uint64_uin.set(this.jdField_b_of_type_Long);
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localTopicRecommendFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
     }
-    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
-    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
-    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
-    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
-    localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
-    return localBannerItem;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_f_of_type_Int == 1;
+    return localTopicRecommendFeedsInfo;
   }
   
   public String toString()
   {
-    return super.toString() + " vid: " + this.jdField_g_of_type_JavaLangString + " puin : " + this.jdField_b_of_type_Long + " busitype " + this.jdField_e_of_type_Int + " accountName : " + this.h + "  shareUrl : " + this.jdField_f_of_type_JavaLangString + " isUgc " + this.jdField_f_of_type_Int + " feedsId " + this.jdField_c_of_type_Long + " feedsType " + this.jdField_g_of_type_Int + " videoTitle: " + this.i;
+    return "feedsId = " + this.jdField_a_of_type_Long + ", topicAuthorUin = " + this.jdField_b_of_type_Long + ", subsribeId = " + this.jdField_a_of_type_JavaLangString;
   }
 }
 

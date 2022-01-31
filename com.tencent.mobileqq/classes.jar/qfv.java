@@ -1,24 +1,68 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class qfv
-  extends osp
+  implements TextWatcher
 {
-  public qfv(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  public qfv(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramList.size() == 0)
+    int k = paramEditable.length();
+    int i;
+    int j;
+    label24:
+    Drawable[] arrayOfDrawable;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      ReadInJoyTopicSelectionFragment.a(this.a).clear();
-      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
-      this.a.a.clear();
-      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
-      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
-      onk.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
+      i = 1;
+      if (k <= 0) {
+        break label156;
+      }
+      j = 1;
+      if ((j ^ i) != 0)
+      {
+        arrayOfDrawable = ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).getCompoundDrawables();
+        if (k <= 0) {
+          break label161;
+        }
+        Drawable localDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment.getResources().getDrawable(2130839266);
+        localDrawable.setBounds(0, 0, bbll.b(16.0F), bbll.b(16.0F));
+        arrayOfDrawable[2] = localDrawable;
+      }
     }
+    for (;;)
+    {
+      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      this.jdField_a_of_type_Int = k;
+      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment, paramEditable.toString());
+      if (paramEditable.length() <= 0) {
+        break label169;
+      }
+      osg.a().h(ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment));
+      return;
+      i = 0;
+      break;
+      label156:
+      j = 0;
+      break label24;
+      label161:
+      arrayOfDrawable[2] = null;
+    }
+    label169:
+    ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setVisibility(4);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

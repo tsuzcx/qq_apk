@@ -1,53 +1,111 @@
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
+
 public class bgti
-  extends bggi
 {
-  public final bggh a;
-  private String d;
-  
-  public bgti(bgth parambgth, int paramInt, String paramString)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = "noreason";
-    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bggh = new bggh(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_Bggh.a = new aqyb(paramString, "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
-  }
-  
-  protected void a()
-  {
-    this.jdField_d_of_type_JavaLangString = "preload:ok:common";
-    bgth.a(this.jdField_a_of_type_Bgth, this.jdField_a_of_type_Bggh, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
-  }
-  
-  protected boolean a(bggo parambggo)
-  {
-    boolean bool = bgth.a(this.jdField_a_of_type_Bgth);
-    if (bool) {}
-    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
+    if ((paramBaseApplicationImpl == null) || (paramString == null))
     {
-      this.jdField_d_of_type_JavaLangString = str;
-      if (parambggo != null)
-      {
-        parambggo.jdField_a_of_type_Int = 2;
-        parambggo.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+      if (QLog.isColorLevel()) {
+        QLog.d(bgta.a, 2, "createQQPimRuntime() application == null || processName == null");
       }
-      return bool;
+      return null;
     }
-  }
-  
-  protected boolean b(bggo parambggo)
-  {
-    return true;
+    try
+    {
+      Class localClass1 = Class.forName("com.qqpim.application.QQPimPluginRuntime");
+      if (localClass1 != null) {}
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(bgta.a, 2, "createQQPimRuntime() cls == null");
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          ClassLoader localClassLoader;
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        localClassNotFoundException = localClassNotFoundException;
+        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqpim_plugin.apk");
+        Class localClass2 = localClassLoader.loadClass("com.qqpim.application.QQPimPluginRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        continue;
+        do
+        {
+          return null;
+          if (QLog.isColorLevel()) {
+            QLog.d(bgta.a, 2, "createQQPimRuntime() 1 ");
+          }
+          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
+        if (QLog.isColorLevel()) {
+          QLog.d(bgta.a, 2, "createQQPimRuntime() succ");
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgti
  * JD-Core Version:    0.7.0.1
  */

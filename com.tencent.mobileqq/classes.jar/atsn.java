@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class atsn
-  implements DialogInterface.OnClickListener
+  implements bfpj
 {
-  atsn(atsm paramatsm, bbgg parambbgg) {}
+  atsn(atsc paramatsc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
-    this.jdField_a_of_type_Atsm.a.f();
+    atsc.a(this.a, this.a.b, false);
   }
 }
 

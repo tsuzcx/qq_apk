@@ -1,23 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bjtw
-  implements View.OnClickListener
+public abstract interface bjtw
+  extends bjxm
 {
-  bjtw(bjtv parambjtv) {}
+  public abstract void b();
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a;
-    if (!bjtv.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bjtv.a(paramView, bool);
-      bjtv.a(this.a, bjtv.a(this.a));
-      tcv.d(bjtv.a(this.a));
-      return;
-    }
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

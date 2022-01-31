@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Process;
 import android.text.TextUtils;
-import anqu;
-import aymh;
+import anqz;
+import aymj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
@@ -111,7 +111,7 @@ public class ThemeCleaner
   
   private static void a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!anqu.a(paramString)))
+    if ((TextUtils.isEmpty(paramString)) || (!anqz.a(paramString)))
     {
       QLog.e("ThemeCleaner", 1, "cleanTheme error id: " + paramString);
       return;
@@ -121,12 +121,12 @@ public class ThemeCleaner
       QLog.e("ThemeCleaner", 1, paramString + " is current, should not clean");
       return;
     }
-    a(new File(new aymh().a(paramString).a(paramAppRuntime.getApplication())));
+    a(new File(new aymj().a(paramString).a(paramAppRuntime.getApplication())));
   }
   
   private static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!anqu.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
+    if ((TextUtils.isEmpty(paramString)) || (!anqz.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
     for (;;)
     {
       return false;

@@ -1,28 +1,8 @@
-import android.content.Context;
-import java.io.File;
-
-final class bifk
-  implements biek
+public abstract interface bifk
 {
-  bifk(String paramString1, String paramString2, bifm parambifm, Context paramContext, File paramFile1, File paramFile2) {}
+  public abstract void a(long paramLong, int paramInt, String paramString);
   
-  public void a(String paramString, long paramLong, float paramFloat)
-  {
-    if (this.jdField_a_of_type_Bifm != null) {
-      this.jdField_a_of_type_Bifm.a(paramLong, paramFloat);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
-  {
-    if (paramBoolean) {
-      bidy.a().a(bifj.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bifl(this));
-    }
-    while (this.jdField_a_of_type_Bifm == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bifm.a(paramString3);
-  }
+  public abstract void a(long paramLong, biek parambiek);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpi;
+import adpg;
 
 public class FilePicItemBuilder$2
   implements Runnable
 {
-  public FilePicItemBuilder$2(adpi paramadpi) {}
+  public FilePicItemBuilder$2(adpg paramadpg) {}
   
   public void run()
   {

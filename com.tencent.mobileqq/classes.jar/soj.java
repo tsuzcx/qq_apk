@@ -1,17 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class soj
-  implements View.OnClickListener
+  implements View.OnSystemUiVisibilityChangeListener
 {
   public soj(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void onClick(View paramView)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    if (paramInt == 4102) {}
+    while (!bfnz.e()) {
+      return;
     }
+    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
   }
 }
 

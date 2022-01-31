@@ -1,27 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class atqn
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  atqn(atpi paramatpi, String paramString) {}
+  atqn(atpk paramatpk) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Atpi.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Atpi.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atpi.a.j)) {}
-    for (paramView = "1";; paramView = "2")
+    if (paramAnimation == atpk.b(this.a))
     {
-      localIntent.putExtra("url", paramView);
-      axqw.b(this.jdField_a_of_type_Atpi.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Atpi.a.startActivity(localIntent);
-      this.jdField_a_of_type_Atpi.a.l = true;
-      return;
+      atpk.a(this.a).setVisibility(8);
+      atpk.a(this.a).clearAnimation();
+      atpk.a(this.a).setBackgroundResource(2130848202);
+      atpk.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == atpk.a(this.a))
+    {
+      atpk.a(this.a).setVisibility(0);
+      atpk.a(this.a).setBackgroundResource(2130849547);
+      atpk.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
     }
   }
 }

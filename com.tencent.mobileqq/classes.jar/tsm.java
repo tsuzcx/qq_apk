@@ -1,16 +1,11 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
 
-class tsm
-  implements tsq
+public abstract interface tsm
 {
-  tsm(tsl paramtsl) {}
+  public abstract void a();
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
-  }
+  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
 }
 
 

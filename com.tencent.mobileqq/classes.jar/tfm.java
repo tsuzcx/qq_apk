@@ -1,14 +1,18 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
 class tfm
-  implements Comparator<tsr>
+  implements syq<tha, thb>
 {
-  tfm(tfl paramtfl) {}
+  tfm(tfk paramtfk) {}
   
-  public int a(tsr paramtsr1, tsr paramtsr2)
+  public void a(@NonNull tha paramtha, @Nullable thb paramthb, @NonNull ErrorMessage paramErrorMessage)
   {
-    return thg.a(paramtsr1.a.mCreateTime, paramtsr2.a.mCreateTime);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramthb + " ,errorMsg = " + paramErrorMessage);
+    }
   }
 }
 

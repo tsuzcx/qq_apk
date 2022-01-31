@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.TimerTask;
-import qvn;
+import qvk;
 
 public class VideoVolumeControl$3
   extends TimerTask
 {
-  public VideoVolumeControl$3(qvn paramqvn) {}
+  public VideoVolumeControl$3(qvk paramqvk) {}
   
   public void run()
   {
-    qvn.a(this.this$0, true);
+    qvk.a(this.this$0, true);
   }
 }
 

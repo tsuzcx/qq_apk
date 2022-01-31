@@ -1,147 +1,116 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atwl
-  extends atwn
 {
-  public atwl(Context paramContext, QQAppInterface paramQQAppInterface)
+  public static <T> T a(View paramView, Class<T> paramClass)
   {
-    super(paramContext, paramQQAppInterface);
-  }
-  
-  public int a(atuy paramatuy)
-  {
-    return 2;
-  }
-  
-  public View a(ViewGroup paramViewGroup, atuy paramatuy)
-  {
-    paramatuy = (atwm)paramatuy;
-    paramViewGroup = LayoutInflater.from(this.a).inflate(2131560895, paramViewGroup, false);
-    paramatuy.g = ((TextView)paramViewGroup.findViewById(2131378370));
-    paramatuy.e = ((ImageView)paramViewGroup.findViewById(2131368638));
-    return paramViewGroup;
-  }
-  
-  public atuy a()
-  {
-    return new atwm(this);
-  }
-  
-  public void d(atuy paramatuy)
-  {
-    atww localatww = (atww)paramatuy.a;
-    if ((localatww.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localatww.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0))
+    if (paramView == null) {}
+    do
     {
-      atwj.a(this.a, localatww.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 4);
+      return null;
+      if (!(paramView.getParent() instanceof AbsListView)) {
+        break;
+      }
+    } while (!a(paramView.getTag().getClass(), paramClass));
+    return paramView.getTag();
+    return a((View)paramView.getParent(), paramClass);
+  }
+  
+  public static String a(long paramLong)
+  {
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    long l2 = l1 - paramLong;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l1);
+    int i = localCalendar.get(5);
+    int j = localCalendar.get(1);
+    localCalendar.setTimeInMillis(paramLong);
+    int k = localCalendar.get(5);
+    int m = localCalendar.get(1);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat();
+    if (l2 < 600000L) {
+      return ajya.a(2131707230);
+    }
+    if (l2 < 3600000L) {
+      return l2 / 60L / 1000L + 1L + ajya.a(2131707223);
+    }
+    if ((l2 < 21600000L) && (k == i)) {
+      return l2 / 60L / 60L / 1000L + ajya.a(2131707217);
+    }
+    if ((l2 < 86400000L) && (k == i))
+    {
+      localSimpleDateFormat.applyPattern("HH:mm");
+      return localSimpleDateFormat.format(localCalendar.getTime());
+    }
+    if ((l2 < 86400000L) && (k != i))
+    {
+      localSimpleDateFormat.applyPattern("HH:mm");
+      return ajya.a(2131707228) + localSimpleDateFormat.format(localCalendar.getTime());
+    }
+    if (m == j)
+    {
+      localSimpleDateFormat.applyPattern("MM-dd");
+      return localSimpleDateFormat.format(localCalendar.getTime());
+    }
+    localSimpleDateFormat.applyPattern("yyyy-MM-dd");
+    return localSimpleDateFormat.format(localCalendar.getTime());
+  }
+  
+  public static void a(Context paramContext, PublishVideoEntry paramPublishVideoEntry, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    File localFile1 = new File(paramPublishVideoEntry.mLocalRawVideoDir + "");
+    File localFile2 = new File(paramPublishVideoEntry.thumbPath + "");
+    paramPublishVideoEntry = new File(paramPublishVideoEntry.doodlePath + "");
+    try
+    {
+      localJSONObject.put("videoUrl", localFile1.toURI() + "");
+      localJSONObject.put("coverUrl", localFile2.toURI() + "");
+      localJSONObject.put("doodleUrl", paramPublishVideoEntry.toURI() + "");
+      localJSONObject.put("is_local", "1");
+      paramPublishVideoEntry = new Bundle();
+      paramPublishVideoEntry.putString("preLoadParams", localJSONObject.toString());
+      paramPublishVideoEntry.putBoolean("scroll_to_comment", false);
+      paramPublishVideoEntry.putString("isLocal", "1");
+      paramPublishVideoEntry.putString("_from", "3");
+      paramPublishVideoEntry.putString("play_mode", String.valueOf(2));
+      paramPublishVideoEntry.putBoolean("is_multi_progress_bar", false);
+      paramPublishVideoEntry.putString("feed_type", String.valueOf(paramInt));
+      SmallVideoFragment.a(paramContext, paramPublishVideoEntry);
       return;
     }
-    super.d(paramatuy);
-  }
-  
-  public void f(atuy paramatuy)
-  {
-    atwm localatwm = (atwm)paramatuy;
-    Object localObject1 = (atww)localatwm.a;
-    paramatuy = ((atww)localObject1).n;
-    paramatuy = bbkd.a(this.a, localatwm.a.a, paramatuy);
-    Object localObject2;
-    if (TextUtils.isEmpty(paramatuy))
+    catch (JSONException paramPublishVideoEntry)
     {
-      localatwm.g.setVisibility(8);
-      localObject2 = (String)localatwm.e.getTag(2131376880);
-      if (((atww)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null) {
-        break label475;
-      }
-      paramatuy = new File(((atww)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath + "");
-    }
-    for (boolean bool = paramatuy.exists();; bool = false)
-    {
-      label132:
-      int i;
-      if (bool)
-      {
-        localObject1 = ((atww)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath;
-        if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
-        {
-          localatwm.e.setTag(2131376880, localObject1);
-          localObject2 = (LinearLayout.LayoutParams)localatwm.e.getLayoutParams();
-          i = vzo.a(BaseApplicationImpl.getContext(), 180.0F);
-          if (localObject2 != null) {
-            break label368;
-          }
-          localObject2 = new LinearLayout.LayoutParams(-2, -2);
-          localatwm.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        }
-      }
       for (;;)
       {
-        try
-        {
-          localObject2 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130844648);
-          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130844648);
-          ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "profileCard";
-          if (!bool) {
-            continue;
-          }
-          paramatuy = URLDrawable.getDrawable(paramatuy, (URLDrawable.URLDrawableOptions)localObject2);
-          paramatuy.setTag(bavi.a(bawz.a(localatwm.e.getContext(), 3.0F), 0, 0));
-          paramatuy.setDecodeHandler(bavi.f);
-          localatwm.e.setImageDrawable(paramatuy);
-        }
-        catch (Exception paramatuy)
-        {
-          label368:
-          localatwm.e.setImageDrawable(this.a.getResources().getDrawable(2130844648));
-          QLog.i("PicMomentItemBuilder", 1, paramatuy.toString());
-          continue;
-        }
-        localatwm.e.setTag(localatwm);
-        localatwm.e.setOnClickListener(this);
-        return;
-        localatwm.g.setVisibility(0);
-        if ((paramatuy instanceof SpannableString)) {
-          localatwm.g.setMovementMethod(LinkMovementMethod.getInstance());
-        }
-        localatwm.g.setText(paramatuy);
-        break;
-        localObject1 = ((atww)localObject1).jdField_a_of_type_JavaLangString;
-        break label132;
-        if ((((LinearLayout.LayoutParams)localObject2).width <= i) && (((LinearLayout.LayoutParams)localObject2).height <= i)) {
-          if (((LinearLayout.LayoutParams)localObject2).weight < ((LinearLayout.LayoutParams)localObject2).height)
-          {
-            ((LinearLayout.LayoutParams)localObject2).height = i;
-            localatwm.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          }
-          else
-          {
-            ((LinearLayout.LayoutParams)localObject2).width = i;
-            continue;
-            paramatuy = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyMomentUtils", 2, "getPreviewPage, e=" + paramPublishVideoEntry.toString());
         }
       }
-      label475:
-      paramatuy = null;
     }
+  }
+  
+  private static boolean a(Class paramClass1, Class paramClass2)
+  {
+    if ((paramClass1 == Object.class) || (paramClass1 == null)) {
+      return false;
+    }
+    if (paramClass1 == paramClass2) {
+      return true;
+    }
+    return a(paramClass1.getSuperclass(), paramClass2);
   }
 }
 

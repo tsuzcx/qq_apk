@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-class betz
-  implements DialogInterface.OnClickListener
+final class betz
+  implements AsyncResult
 {
-  betz(bety parambety) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    paramDialogInterface.dismiss();
+    betc.a("GameGrowthGuardianManager", "onReceived() called with: success = [" + paramBoolean + "], stReportExecuteRsp = [" + paramJSONObject + "]");
   }
 }
 

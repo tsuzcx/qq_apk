@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.message;
 
-import akhq;
-import akow;
+import akhp;
+import akov;
 
 public class C2CMessageProcessor$2
   implements Runnable
 {
-  public C2CMessageProcessor$2(akow paramakow, akhq paramakhq, String paramString) {}
+  public C2CMessageProcessor$2(akov paramakov, akhp paramakhp, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akhq.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    this.jdField_a_of_type_Akhp.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 

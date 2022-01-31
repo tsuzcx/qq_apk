@@ -1,38 +1,123 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aezj
-  implements View.OnClickListener
+public class aezj
+  extends NativeGifImage
 {
-  private long jdField_a_of_type_Long;
+  private afaj jdField_a_of_type_Afaj;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
+  private Paint b;
   
-  aezj(aezi paramaezi) {}
-  
-  public void onClick(View paramView)
+  public aezj(File paramFile, boolean paramBoolean, float paramFloat)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {
-      return;
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+  }
+  
+  private void a(Canvas paramCanvas, Rect paramRect)
+  {
+    float f2 = 1.0F;
+    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
+    {
+      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
+      this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_Aezi.jdField_a_of_type_Aeyx.a();
-    paramView = new Intent(aezi.a(this.jdField_a_of_type_Aezi), QQBrowserActivity.class);
-    paramView.putExtra("hide_left_button", false);
-    paramView.putExtra("show_right_close_button", false);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    String str = bbpp.a(aezi.a(this.jdField_a_of_type_Aezi), "call", "mvip.gongneng.anroid.individuation.web");
-    VasWebviewUtil.openQQBrowserWithoutAD(aezi.a(this.jdField_a_of_type_Aezi), str, 524288L, paramView, false, -1);
-    VipUtils.a(this.jdField_a_of_type_Aezi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
-    paramView = this.jdField_a_of_type_Aezi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.jdField_a_of_type_Aezi.jdField_a_of_type_JavaLangString, 4);
-    paramView.commit();
+    float f1 = paramRect.width() / getWidth();
+    if (Math.abs(f1 - 1.0F) < 0.01D)
+    {
+      f1 = f2;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_Afaj.jdField_a_of_type_AndroidGraphicsPaint;
+        this.b = this.jdField_a_of_type_Afaj.b;
+        f1 = f2;
+      }
+    }
+    for (;;)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        f2 = paramRect.top + this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfFloat[i] * f1;
+        if (this.b != null) {
+          paramCanvas.drawText(this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
+        }
+        paramCanvas.drawText(this.jdField_a_of_type_Afaj.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i += 1;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_Afaj.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Afaj.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
+        if (this.jdField_a_of_type_Afaj.b != null)
+        {
+          this.b = new Paint(this.jdField_a_of_type_Afaj.b);
+          this.b.setTextSize(this.jdField_a_of_type_Afaj.b.getTextSize() * f1);
+        }
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public void a(afaj paramafaj)
+  {
+    this.jdField_a_of_type_Afaj = paramafaj;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
+    }
+    a(paramCanvas, localRect);
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
+  }
+  
+  public int d()
+  {
+    return this.mMetaData[WIDTH_INDEX];
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+    a(paramCanvas, paramRect);
+  }
+  
+  public void drawFirstFrame(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
+    a(paramCanvas, paramRect);
   }
 }
 

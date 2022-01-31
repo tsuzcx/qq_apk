@@ -1,18 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qzm
-  implements ValueAnimator.AnimatorUpdateListener
+class qzm
+  implements View.OnClickListener
 {
-  public qzm(BezierSideBarView paramBezierSideBarView, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
+  qzm(qzl paramqzl, ViewGroup paramViewGroup) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    BezierSideBarView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.invalidate();
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener.onAnimationUpdate(paramValueAnimator);
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (ChannelClassificationListView.a(this.jdField_a_of_type_Qzl.a) != null) {
+      ChannelClassificationListView.a(this.jdField_a_of_type_Qzl.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Qzl.getItemId(i));
+    }
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("subchannelid", this.jdField_a_of_type_Qzl.a(i).b());
+      paramView.put("subchannelname", this.jdField_a_of_type_Qzl.a(i).a());
+      paramView.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Qzl.a));
+      nol.a(null, onh.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", paramView.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

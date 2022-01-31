@@ -1,17 +1,20 @@
 public class aqna
+  implements ajte
 {
-  public int a;
-  public int b;
+  public void a() {}
   
-  public aqna(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public void a(aqnd paramaqnd) {}
   
-  public String toString()
+  protected void a(boolean paramBoolean, aqnd paramaqnd) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return "Point{x=" + this.a + ", y=" + this.b + '}';
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, (aqnd)paramObject);
   }
 }
 

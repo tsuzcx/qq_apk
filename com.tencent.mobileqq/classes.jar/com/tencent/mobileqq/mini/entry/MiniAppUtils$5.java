@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bcgs;
+import bchg;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$5
@@ -18,13 +18,13 @@ final class MiniAppUtils$5
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bcgs))
+    if ((paramMessage.obj instanceof bchg))
     {
-      bcgs localbcgs = (bcgs)paramMessage.obj;
-      if (localbcgs.c == 0)
+      bchg localbchg = (bchg)paramMessage.obj;
+      if (localbchg.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbcgs.d);
+        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbchg.d);
       }
     }
   }

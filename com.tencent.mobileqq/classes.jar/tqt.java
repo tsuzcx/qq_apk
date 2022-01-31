@@ -1,11 +1,16 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
 class tqt
-  extends tpy
+  extends tpj
 {
-  tqt(tqk paramtqk, trs paramtrs) {}
+  tqt(tqh paramtqh, StoryVideoItem paramStoryVideoItem, trn paramtrn)
+  {
+    super(paramStoryVideoItem);
+  }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trs.e = ((String)a("UploadImageJob_out_image_url"));
+    this.jdField_a_of_type_Trn.a = ((String)a("result"));
     return true;
   }
 }

@@ -1,10 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
 
-public abstract interface bfry
+public class bfry
+  implements View.OnTouchListener
 {
-  public abstract void a(View paramView);
+  public bfry(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public abstract void b(View paramView);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

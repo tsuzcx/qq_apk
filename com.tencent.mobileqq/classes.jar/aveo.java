@@ -1,27 +1,17 @@
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.AdapterView;
 
 public class aveo
-  implements bfoq
+  implements bfpt
 {
-  public aveo(QCallDetailActivity paramQCallDetailActivity, String paramString, bfol parambfol) {}
+  public aveo(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == null) || (paramInt >= QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).length)) {
-      return;
-    }
-    switch (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)[paramInt])
-    {
-    default: 
-      return;
-    }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.startActivity(paramView);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF9", "0X8005AF9", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Bfol.dismiss();
+    paramAdapterView = akca.a(((TextView)paramView.findViewById(2131373002)).getText().toString());
+    this.a.a(this.a.getActivity(), paramAdapterView);
   }
 }
 

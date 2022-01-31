@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.data.TroopInfo;
 
 class azdo
-  implements DialogInterface.OnDismissListener
+  extends akil
 {
-  azdo(azdl paramazdl) {}
+  azdo(azdn paramazdn) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(int paramInt1, int paramInt2)
   {
-    azdl.a(this.a);
+    azdn.a(this.a, false, paramInt1, paramInt2, null);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    azdn.a(this.a, true, paramInt1, paramInt2, paramString);
+  }
+  
+  protected void a(String paramString)
+  {
+    azdn.a(this.a, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    azdn.a(this.a, paramBoolean, paramLong, paramTroopInfo);
   }
 }
 

@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-public class adyy
-  implements View.OnClickListener
+public final class adyy
+  implements bcpw
 {
-  public adyy(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public adyy(Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void a(bcpu parambcpu)
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(217)).a(paramView.getContext(), localMessageRecord);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpu);
     }
+    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambcpu), 100L);
   }
+  
+  public void a(bcpu parambcpu, int paramInt1, int paramInt2) {}
 }
 
 

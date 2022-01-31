@@ -9,8 +9,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bawz;
-import bbct;
+import baxn;
+import bbdh;
 
 public class SelectTouchBarView
   extends RelativeLayout
@@ -29,16 +29,16 @@ public class SelectTouchBarView
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     LayoutInflater.from(paramContext).inflate(2131558576, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362361));
-    a((RelativeLayout)findViewById(2131362360));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362360));
+    a((RelativeLayout)findViewById(2131362359));
   }
   
   private void a(RelativeLayout paramRelativeLayout)
   {
-    int i = (int)bbct.a(true);
+    int i = (int)bbdh.a(true);
     int j = View.MeasureSpec.makeMeasureSpec(0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.measure(j, j);
-    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - bawz.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
+    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - baxn.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
     i = j;
     if (j < 0) {
       i = 0;
@@ -89,7 +89,7 @@ public class SelectTouchBarView
   
   public void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362360);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362359);
     localRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     localRelativeLayout.removeView(this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     a(localRelativeLayout);

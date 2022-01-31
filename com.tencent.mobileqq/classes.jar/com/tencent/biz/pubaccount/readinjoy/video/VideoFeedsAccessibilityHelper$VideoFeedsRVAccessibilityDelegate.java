@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajyc;
+import ajya;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -21,7 +21,7 @@ public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     AccessibilityEventCompat.asRecord(paramAccessibilityEvent).setItemCount(0);
-    paramView.setContentDescription(ajyc.a(2131716185));
+    paramView.setContentDescription(ajya.a(2131716196));
   }
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)

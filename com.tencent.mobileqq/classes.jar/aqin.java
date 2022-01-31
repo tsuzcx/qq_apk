@@ -1,33 +1,55 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqin
-  implements xem
+  extends akuo
 {
-  public aqin(NearbyHybridFragment paramNearbyHybridFragment) {}
-  
-  public void a()
+  public aqin(NearbyHybridFragment paramNearbyHybridFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, boolean paramBoolean4, String paramString, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong1, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
+    StringBuilder localStringBuilder = new StringBuilder().append("onLocationFinish, errCode=").append(paramInt).append(", timeCost=").append(l).append(", info==null?");
+    if (paramSosoLbsInfo == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("nearby.NearbyHybridFragment.webloading", 1, bool + ", isTimeOut=" + this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.l);
+      if ((paramInt == 0) && (paramSosoLbsInfo != null)) {
+        break label188;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(false, paramInt, l);
+      if (!this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.l) {
+        break;
+      }
+      return;
     }
-    this.a.g();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
-    if (localSosoLbsInfo == null) {
-      localSosoLbsInfo = SosoInterface.b();
+    if (bbfj.g(BaseApplicationImpl.getContext())) {
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 1, ajya.a(2131707197), 1).a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d = 1;
+    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    return;
+    label188:
+    NearbyHybridFragment.jdField_a_of_type_Long = System.currentTimeMillis();
+    NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo = paramSosoLbsInfo;
+    atbi.a(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), paramSosoLbsInfo);
+    if (!this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.l) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.e();
     }
     for (;;)
     {
-      if (localSosoLbsInfo != null) {
-        ((akbm)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(true, paramInt, l);
       return;
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(paramSosoLbsInfo);
     }
   }
 }

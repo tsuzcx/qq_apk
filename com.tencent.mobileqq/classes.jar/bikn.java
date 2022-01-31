@@ -1,9 +1,13 @@
-import android.graphics.Bitmap;
-import java.util.ArrayList;
-
-public abstract interface bikn
+class bikn
+  extends bjch
 {
-  public abstract void a(Bitmap paramBitmap, ArrayList<biko> paramArrayList, bikp parambikp);
+  bikn(bikl parambikl) {}
+  
+  public void a()
+  {
+    super.a();
+    this.a.j();
+  }
 }
 
 

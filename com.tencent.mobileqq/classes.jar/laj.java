@@ -1,48 +1,116 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.Socket;
-import java.security.KeyStore;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
+import android.os.Message;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class laj
-  extends org.apache.http.conn.ssl.SSLSocketFactory
+  extends lah
 {
-  private SSLContext a = SSLContext.getInstance("TLS");
-  
-  public laj(KeyStore paramKeyStore)
+  protected Object a(String paramString)
   {
-    super(paramKeyStore);
-    try
+    Object localObject = null;
+    String str = paramString.trim();
+    if (!str.startsWith("{"))
     {
-      paramKeyStore = new lal();
-      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
+      paramString = localObject;
+      if (!str.startsWith("[")) {}
+    }
+    else
+    {
+      paramString = new JSONTokener(str).nextValue();
+    }
+    if (paramString == null) {
+      return str;
+    }
+    return paramString;
+  }
+  
+  protected void a(int paramInt, Header[] paramArrayOfHeader, Object paramObject)
+  {
+    if ((paramObject instanceof JSONObject))
+    {
+      a(paramInt, paramArrayOfHeader, (JSONObject)paramObject);
       return;
     }
-    catch (Exception paramKeyStore)
+    if ((paramObject instanceof JSONArray))
     {
-      for (;;)
+      a(paramInt, paramArrayOfHeader, (JSONArray)paramObject);
+      return;
+    }
+    a(new JSONException("Unexpected type " + paramObject.getClass().getName()), (JSONObject)null);
+  }
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject) {}
+  
+  protected void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.a(paramMessage);
+      return;
+    }
+    paramMessage = (Object[])paramMessage.obj;
+    a(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], paramMessage[2]);
+  }
+  
+  public void a(Throwable paramThrowable, JSONArray paramJSONArray) {}
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject) {}
+  
+  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  {
+    if (paramInt != 204) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
-        }
-        paramKeyStore = null;
+        b(a(100, new Object[] { Integer.valueOf(paramInt), paramArrayOfHeader, a(paramString) }));
+        return;
+      }
+      catch (JSONException paramArrayOfHeader)
+      {
+        b(paramArrayOfHeader, paramString);
+        return;
       }
     }
+    b(a(100, new Object[] { Integer.valueOf(paramInt), new JSONObject() }));
   }
   
-  public Socket createSocket()
+  protected void c(Throwable paramThrowable, String paramString)
   {
-    return this.a.getSocketFactory().createSocket();
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    if (paramString != null)
+    {
+      try
+      {
+        Object localObject = a(paramString);
+        if ((localObject instanceof JSONObject))
+        {
+          a(paramThrowable, (JSONObject)localObject);
+          return;
+        }
+        if ((localObject instanceof JSONArray))
+        {
+          a(paramThrowable, (JSONArray)localObject);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        a(paramThrowable, paramString);
+        return;
+      }
+      a(paramThrowable, paramString);
+      return;
+    }
+    a(paramThrowable, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     laj
  * JD-Core Version:    0.7.0.1
  */

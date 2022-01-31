@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
 import Wallet.FocusMpIdReq;
-import agwv;
-import ahok;
-import ajyc;
-import amgo;
+import agwt;
+import ahoi;
+import ajya;
+import amgn;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -21,32 +21,32 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
-import bahx;
-import bbbj;
-import bbct;
-import bbwc;
-import bcpw;
-import bcxm;
-import bdev;
-import bdki;
-import bdkm;
-import bdko;
-import beil;
-import belj;
-import beru;
-import besi;
+import bail;
+import bbbx;
+import bbdh;
+import bbwq;
+import bcql;
+import bcyb;
+import bdfk;
+import bdkx;
+import bdlb;
+import bdld;
+import bejc;
+import bema;
 import besl;
-import bewx;
-import bexy;
-import beyu;
-import bffj;
-import bffl;
-import bfgv;
-import bgxq;
-import bgxr;
-import bhzt;
-import bhzv;
-import bhzw;
+import besz;
+import betc;
+import bexo;
+import beyp;
+import bezl;
+import bfga;
+import bfgc;
+import bfhm;
+import bgyh;
+import bgyi;
+import biak;
+import biam;
+import bian;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -118,12 +118,12 @@ public class MiniAppProxyImpl
   private ArrayList<Integer> backHomeSceneList = new MiniAppProxyImpl.1(this);
   private boolean isMiniMsgTabShow;
   private MiniAppInfo mDownLoadMiniAppInfo;
-  private bdko mDownloadListener = new MiniAppProxyImpl.12(this);
+  private bdld mDownloadListener = new MiniAppProxyImpl.12(this);
   private String mDownloadNativeAppId;
   private String mDownloadPackageName;
   private String mDownloadUrl;
   private Handler mHandler = new Handler(Looper.getMainLooper(), new MiniAppProxyImpl.2(this));
-  private besi miniRuntime;
+  private besz miniRuntime;
   private BroadcastReceiver scanResultReceiver;
   
   private void downloadByDownloadApi(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -132,33 +132,33 @@ public class MiniAppProxyImpl
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bdkm.b, paramString1);
-    localBundle.putString(bdkm.j, paramString4);
-    localBundle.putString(bdkm.f, paramString2);
-    localBundle.putInt(bdkm.k, 2);
-    localBundle.putString(bdkm.i, "MiniApp");
-    localBundle.putString(bdkm.l, paramString3);
-    localBundle.putInt(bdkm.H, 1);
-    bdki.a(this.mDownloadListener);
-    bdki.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
-    bcpw.a(paramActivity, "开始下载", 1).a();
-    bexy.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "qqdownload");
+    localBundle.putString(bdlb.b, paramString1);
+    localBundle.putString(bdlb.j, paramString4);
+    localBundle.putString(bdlb.f, paramString2);
+    localBundle.putInt(bdlb.k, 2);
+    localBundle.putString(bdlb.i, "MiniApp");
+    localBundle.putString(bdlb.l, paramString3);
+    localBundle.putInt(bdlb.H, 1);
+    bdkx.a(this.mDownloadListener);
+    bdkx.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    bcql.a(paramActivity, "开始下载", 1).a();
+    beyp.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "qqdownload");
   }
   
-  private bhzw newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  private bian newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    bhzw localbhzw = new bhzw();
-    localbhzw.b = (String.valueOf(bcxm.a().a()) + '_' + i);
-    localbhzw.d = paramInt;
-    localbhzw.jdField_e_of_type_Int = 1;
-    localbhzw.g = String.valueOf(paramAdItem.iAdId.get());
-    localbhzw.n = paramString;
-    localbhzw.jdField_a_of_type_Long = i;
-    localbhzw.jdField_a_of_type_Int = 1;
-    localbhzw.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localbhzw.i = "";
-    return localbhzw;
+    bian localbian = new bian();
+    localbian.b = (String.valueOf(bcyb.a().a()) + '_' + i);
+    localbian.d = paramInt;
+    localbian.jdField_e_of_type_Int = 1;
+    localbian.g = String.valueOf(paramAdItem.iAdId.get());
+    localbian.n = paramString;
+    localbian.jdField_a_of_type_Long = i;
+    localbian.jdField_a_of_type_Int = 1;
+    localbian.jdField_e_of_type_JavaLangString = "tianshu.81";
+    localbian.i = "";
+    return localbian;
   }
   
   private void openAppDetailPage(Context paramContext, String paramString1, String paramString2)
@@ -172,14 +172,14 @@ public class MiniAppProxyImpl
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bdev.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
-      bexy.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
+      bdfk.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      beyp.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bdev.b((Activity)paramContext, localBundle);
-      bexy.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
+      bdfk.b((Activity)paramContext, localBundle);
+      beyp.a(this.mDownLoadMiniAppInfo, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     QLog.e("MiniAppProxyImpl", 2, "onOpenThridApp mContext 必现是一个Activity");
@@ -191,7 +191,7 @@ public class MiniAppProxyImpl
     while (!this.miniRuntime.a().isEngineTypeMiniGame()) {
       return;
     }
-    beyu.a(this.miniRuntime.a(), beyu.a(this.miniRuntime.a()), null, "user_click", "more_button", paramString);
+    bezl.a(this.miniRuntime.a(), bezl.a(this.miniRuntime.a()), null, "user_click", "more_button", paramString);
   }
   
   private void sendSetUserAppTopRequest(MiniAppInfo paramMiniAppInfo)
@@ -234,7 +234,7 @@ public class MiniAppProxyImpl
       QLog.i("MiniAppProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bbwc.a();
+    i = bbwq.a();
     QLog.i("MiniAppProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -244,17 +244,17 @@ public class MiniAppProxyImpl
     }
   }
   
-  private void startReportPage(besi parambesi)
+  private void startReportPage(besz parambesz)
   {
-    MiniAppInfo localMiniAppInfo = parambesi.a();
-    Activity localActivity = parambesi.a();
+    MiniAppInfo localMiniAppInfo = parambesz.a();
+    Activity localActivity = parambesz.a();
     if ((localMiniAppInfo != null) && (localActivity != null)) {
-      parambesi = "";
+      parambesz = "";
     }
     try
     {
       localObject = URLEncoder.encode("https://support.qq.com/data/1368/2018/0927/5e6c84b68d1f3ad390e7beeb6c2f83b0.jpeg", "UTF-8");
-      parambesi = (besi)localObject;
+      parambesz = (besz)localObject;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
@@ -265,19 +265,19 @@ public class MiniAppProxyImpl
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + localMiniAppInfo.appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + parambesi + ajyc.a(2131701341);
-    parambesi = new Intent(localActivity, QQBrowserActivity.class);
-    parambesi.putExtra("url", (String)localObject);
+    localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + localMiniAppInfo.appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + parambesz + ajya.a(2131701352);
+    parambesz = new Intent(localActivity, QQBrowserActivity.class);
+    parambesz.putExtra("url", (String)localObject);
     localObject = new Bundle();
     ((Bundle)localObject).putBoolean("hide_more_button", true);
-    parambesi.putExtras((Bundle)localObject);
-    localActivity.startActivity(parambesi);
-    beyu.a(localMiniAppInfo, beyu.a(localMiniAppInfo), null, "user_click", "more_button", "report");
+    parambesz.putExtras((Bundle)localObject);
+    localActivity.startActivity(parambesz);
+    bezl.a(localMiniAppInfo, bezl.a(localMiniAppInfo), null, "user_click", "more_button", "report");
   }
   
   public boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    agwv.a(new FocusMpIdReq(paramString1, paramString2), new MiniAppProxyImpl.8(this, paramAsyncResult));
+    agwt.a(new FocusMpIdReq(paramString1, paramString2), new MiniAppProxyImpl.8(this, paramAsyncResult));
     return true;
   }
   
@@ -303,7 +303,7 @@ public class MiniAppProxyImpl
   
   public boolean chooseLocation(Context paramContext, AsyncResult paramAsyncResult)
   {
-    beil.a().a(new MiniAppProxyImpl.10(this, paramAsyncResult));
+    bejc.a().a(new MiniAppProxyImpl.10(this, paramAsyncResult));
     paramAsyncResult = new Intent(paramContext, MapActivity.class);
     paramAsyncResult.putExtra("key_type", 2);
     ((BaseActivity)paramContext).startActivityForResult(paramAsyncResult, 3);
@@ -320,7 +320,7 @@ public class MiniAppProxyImpl
       localActivity = this.miniRuntime.a();
     } while ((!(localActivity instanceof GameActivity1)) || (this.isMiniMsgTabShow));
     MiniAppInfo localMiniAppInfo = this.miniRuntime.a();
-    beru localberu = this.miniRuntime.a();
+    besl localbesl = this.miniRuntime.a();
     boolean bool1;
     Object localObject;
     boolean bool2;
@@ -332,11 +332,11 @@ public class MiniAppProxyImpl
       if ((bool1) || (localObject == null)) {
         break label557;
       }
-      bool2 = ((amgo)localObject).a();
+      bool2 = ((amgn)localObject).a();
       if (!bool2) {
         break label552;
       }
-      if (!((amgo)localObject).c()) {
+      if (!((amgn)localObject).c()) {
         break label542;
       }
       i = 2;
@@ -350,13 +350,13 @@ public class MiniAppProxyImpl
       ((Intent)localObject).putExtra("miniAppName", localMiniAppInfo.name);
       ((Intent)localObject).putExtra("isOpenMonitorPanel", isMonitorPanelShowing);
       ((Intent)localObject).putExtra("debugEnable", getEnableDebug(localMiniAppInfo.appId));
-      ((Intent)localObject).putExtra("showDebug", localberu.b);
-      ((Intent)localObject).putExtra("showMonitor", localberu.c);
+      ((Intent)localObject).putExtra("showDebug", localbesl.b);
+      ((Intent)localObject).putExtra("showMonitor", localbesl.c);
       ((Intent)localObject).putExtra("menuStyle", MiniAppEnv.g().getMenuStyle());
-      ((Intent)localObject).putExtra("showShareQQ", localberu.e);
-      ((Intent)localObject).putExtra("showShareQzone", localberu.d);
-      ((Intent)localObject).putExtra("showShareWeChatFriends", localberu.f);
-      ((Intent)localObject).putExtra("showShareWeChatMoment", localberu.g);
+      ((Intent)localObject).putExtra("showShareQQ", localbesl.e);
+      ((Intent)localObject).putExtra("showShareQzone", localbesl.d);
+      ((Intent)localObject).putExtra("showShareWeChatFriends", localbesl.f);
+      ((Intent)localObject).putExtra("showShareWeChatMoment", localbesl.g);
       ((Intent)localObject).putExtra("topType", localMiniAppInfo.topType);
       ((Intent)localObject).putExtra("showDetail", true);
       ((Intent)localObject).putExtra("showSetting", true);
@@ -366,7 +366,7 @@ public class MiniAppProxyImpl
       {
         ((Intent)localObject).putExtra("addShortcut", bool2);
         ((Intent)localObject).putExtra("showBackHome", -1);
-        ((Intent)localObject).putExtra("isLandscape", localberu.a);
+        ((Intent)localObject).putExtra("isLandscape", localbesl.a);
         ((Intent)localObject).putExtra("isSpecialMiniApp", false);
         ((Intent)localObject).putExtra("showKingcardTip", shouldShowKingCardTip(localMiniAppInfo));
         ((Intent)localObject).putExtra("key_mini_msgtab_type", 1);
@@ -376,9 +376,9 @@ public class MiniAppProxyImpl
         ((Intent)localObject).putExtra("key_mini_app_is_game", true);
         ((Intent)localObject).putExtra("key_color_note", i);
         ((Intent)localObject).putExtra("is_limited_access_app", bool1);
-        beil.a().a(new MiniAppProxyImpl.6(this));
+        bejc.a().a(new MiniAppProxyImpl.6(this));
         MiniChatActivity.a(localActivity, (Intent)localObject, 9527);
-        besl.a("MiniAppProxyImpl", "set isMiniMsgTabShow true");
+        betc.a("MiniAppProxyImpl", "set isMiniMsgTabShow true");
         this.isMiniMsgTabShow = true;
         return;
         bool1 = false;
@@ -412,7 +412,7 @@ public class MiniAppProxyImpl
   public boolean enterQRCode(Context paramContext, boolean paramBoolean, AsyncResult paramAsyncResult)
   {
     BaseActivity localBaseActivity = (BaseActivity)paramContext;
-    if (!ahok.a(localBaseActivity))
+    if (!ahoi.a(localBaseActivity))
     {
       paramAsyncResult.onReceiveResult(false, null);
       return true;
@@ -463,12 +463,12 @@ public class MiniAppProxyImpl
   
   public String getAppVersion()
   {
-    return "8.2.8.4440";
+    return "8.3.0.4480";
   }
   
   public String getDeviceInfo()
   {
-    return bgxq.a().c();
+    return bgyh.a().c();
   }
   
   public Drawable getDrawable(Context paramContext, String paramString, int paramInt1, int paramInt2, Drawable paramDrawable)
@@ -479,7 +479,7 @@ public class MiniAppProxyImpl
     paramContext.mRequestHeight = paramInt2;
     paramContext.mFailedDrawable = paramDrawable;
     paramContext.mLoadingDrawable = paramDrawable;
-    if (bewx.a(paramString)) {
+    if (bexo.a(paramString)) {
       return URLDrawable.getDrawable(paramString, paramContext);
     }
     return URLDrawable.getFileDrawable(paramString, paramContext);
@@ -487,7 +487,7 @@ public class MiniAppProxyImpl
   
   public boolean getEnableDebug(String paramString)
   {
-    return bfgv.a().getBoolean(paramString + "_debug", false);
+    return bfhm.a().getBoolean(paramString + "_debug", false);
   }
   
   public boolean getLocation(Context paramContext, String paramString, boolean paramBoolean, AsyncResult paramAsyncResult)
@@ -510,12 +510,12 @@ public class MiniAppProxyImpl
     return 0;
   }
   
-  public bffl getMoreItemSelectedListener()
+  public bfgc getMoreItemSelectedListener()
   {
     return null;
   }
   
-  public List<MoreItem> getMoreItems(bffj parambffj)
+  public List<MoreItem> getMoreItems(bfga parambfga)
   {
     return null;
   }
@@ -563,12 +563,12 @@ public class MiniAppProxyImpl
   
   public String getPlatformQUA()
   {
-    return bgxr.a();
+    return bgyi.a();
   }
   
   public String getPlatformVersionString()
   {
-    return bbct.c();
+    return bbdh.c();
   }
   
   public String getSoPath()
@@ -635,43 +635,43 @@ public class MiniAppProxyImpl
   
   public void notifyMiniAppInfo(MiniAppInfo paramMiniAppInfo) {}
   
-  public boolean onCapsuleButtonCloseClick(besi parambesi)
+  public boolean onCapsuleButtonCloseClick(besz parambesz)
   {
     return true;
   }
   
-  public boolean onCapsuleButtonMoreClick(besi parambesi)
+  public boolean onCapsuleButtonMoreClick(besz parambesz)
   {
-    besl.a("MiniAppProxyImpl", "onCapsuleButtonMoreClick");
-    if (parambesi == null)
+    betc.a("MiniAppProxyImpl", "onCapsuleButtonMoreClick");
+    if (parambesz == null)
     {
-      besl.c("MiniAppProxyImpl", "miniRuntime is null, no need to response more button");
+      betc.c("MiniAppProxyImpl", "miniRuntime is null, no need to response more button");
       return false;
     }
-    Object localObject = parambesi.a();
+    Object localObject = parambesz.a();
     if ((localObject == null) || (((Activity)localObject).isFinishing()))
     {
-      besl.c("MiniAppProxyImpl", "Activity is not exiting, no need to response more button");
+      betc.c("MiniAppProxyImpl", "Activity is not exiting, no need to response more button");
       return false;
     }
-    localObject = parambesi.a();
+    localObject = parambesz.a();
     if (localObject == null)
     {
-      besl.c("MiniAppProxyImpl", "MiniAppInfo is null, no need to response more button");
+      betc.c("MiniAppProxyImpl", "MiniAppInfo is null, no need to response more button");
       return false;
     }
-    beru localberu = parambesi.a();
+    besl localbesl = parambesz.a();
     if (((MiniAppInfo)localObject).verType != 3)
     {
-      localberu.b = true;
-      localberu.c = true;
+      localbesl.b = true;
+      localbesl.c = true;
     }
-    if (belj.a("MiniApp", "mini_app_share_to_wx_switcher", 1) != 1)
+    if (bema.a("MiniApp", "mini_app_share_to_wx_switcher", 1) != 1)
     {
-      localberu.f = false;
-      localberu.g = false;
+      localbesl.f = false;
+      localbesl.g = false;
     }
-    showShareView(parambesi);
+    showShareView(parambesz);
     return true;
   }
   
@@ -685,7 +685,7 @@ public class MiniAppProxyImpl
     paramIChoosePhotoListner.putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "micro_api_choose_image");
     paramIChoosePhotoListner.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     paramActivity.startActivity(paramIChoosePhotoListner);
-    bbbj.a(paramActivity, false, true);
+    bbbx.a(paramActivity, false, true);
     return true;
   }
   
@@ -727,7 +727,7 @@ public class MiniAppProxyImpl
   
   public boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2)
   {
-    bahx.a(paramContext, paramString1, paramString2);
+    bail.a(paramContext, paramString1, paramString2);
     return true;
   }
   
@@ -748,23 +748,23 @@ public class MiniAppProxyImpl
   
   public void setEnableDebug(String paramString, boolean paramBoolean)
   {
-    bfgv.a().edit().putBoolean(paramString + "_debug", paramBoolean).apply();
+    bfhm.a().edit().putBoolean(paramString + "_debug", paramBoolean).apply();
   }
   
-  public void showShareView(besi parambesi)
+  public void showShareView(besz parambesz)
   {
-    this.miniRuntime = parambesi;
+    this.miniRuntime = parambesz;
     this.mHandler.sendEmptyMessageDelayed(1000, 500L);
-    MiniAppInfo localMiniAppInfo = parambesi.a();
+    MiniAppInfo localMiniAppInfo = parambesz.a();
     int i = 3;
-    parambesi = null;
+    parambesz = null;
     if (localMiniAppInfo != null)
     {
       i = localMiniAppInfo.verType;
-      parambesi = localMiniAppInfo.appId;
+      parambesz = localMiniAppInfo.appId;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putString("appid", parambesi);
+    localBundle.putString("appid", parambesz);
     localBundle.putInt("verType", i);
     QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_mini_app_data", localBundle, new MiniAppProxyImpl.5(this, localMiniAppInfo));
   }
@@ -792,16 +792,16 @@ public class MiniAppProxyImpl
   
   public boolean tianshuReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
-    bhzv.a().a(newTianShuReportData(paramAdItem, paramString, paramInt));
+    biam.a().a(newTianShuReportData(paramAdItem, paramString, paramInt));
     return true;
   }
   
   public boolean tianshuRequestAdv(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, AsyncResult paramAsyncResult)
   {
-    paramContext = new bhzt();
+    paramContext = new biak();
     paramContext.jdField_a_of_type_Int = paramInt2;
     paramContext.b = paramInt3;
-    bhzv.a().a(Collections.singletonList(paramContext), new MiniAppProxyImpl.11(this, paramAsyncResult));
+    biam.a().a(Collections.singletonList(paramContext), new MiniAppProxyImpl.11(this, paramAsyncResult));
     return true;
   }
 }

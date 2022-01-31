@@ -1,36 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageForLocationShare;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class arwe
-  implements arxd
+public class arwe
+  implements View.OnClickListener
 {
-  arwe(arwd paramarwd, String paramString) {}
+  private MessageForLocationShare a;
+  public boolean a;
   
-  public void a(List<LocationRoom.Venue> paramList)
+  public arwe()
   {
-    if ((arwd.a(this.jdField_a_of_type_Arwd) != null) && (arwd.a(this.jdField_a_of_type_Arwd).size() > 0)) {}
-    for (int i = 1;; i = 0)
-    {
-      arwd.a(this.jdField_a_of_type_Arwd, paramList);
-      this.jdField_a_of_type_Arwd.notifyDataSetChanged();
-      arwd.a(this.jdField_a_of_type_Arwd, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-      if ((arwd.a(this.jdField_a_of_type_Arwd).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        if (i == 0) {
-          this.jdField_a_of_type_Arwd.a(0);
-        }
-      }
-      while (arwd.a(this.jdField_a_of_type_Arwd) == null) {
-        return;
-      }
-      paramList = arwd.a(this.jdField_a_of_type_Arwd);
-      if (arwd.a(this.jdField_a_of_type_Arwd).size() > 0) {}
-      for (i = 3;; i = 2)
-      {
-        paramList.a(i);
-        return;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationMessageModule", 2, new Object[] { "realClick: invoked. 屏蔽消息双击事件 messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
+    }
+    LocationShareFragment.a(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.frienduin, 2);
+    axqy.b(null, "CliOper", "", "", "0X800A766", "0X800A766", 0, 0, "", "0", "0", "");
+  }
+  
+  public void a(MessageForLocationShare paramMessageForLocationShare)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare = paramMessageForLocationShare;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. ", " v: ", paramView, " messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. disable click in chat history", " v: ", paramView });
       }
     }
+    do
+    {
+      do
+      {
+        return;
+        if (!xen.a("LocationMessageModule")) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. 屏蔽消息双击事件", " v: ", paramView });
+      return;
+    } while ((BaseActivity.sTopActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.isSharingLocation));
+    a();
   }
 }
 

@@ -1,61 +1,54 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class tke
-  extends syv<tkf>
+  extends tba
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  private ArrayList<String> a;
   
-  static
+  public tke(ArrayList<String> paramArrayList)
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StoryGroupSvc.convert_group_id");
+    this.a = paramArrayList;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return sxm.a("StorySvc.batch_get_user_icon_info");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public tbb a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
     try
     {
-      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
-      return new tkf(localRspConvertGroupId);
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new tkf(localRspIconPostfix);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
+      ved.d("GetUserIconHandler", "" + paramArrayOfByte);
     }
     return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
-    localReqConvertGroupId.convert_from.set(this.c);
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
-        localGroupId.group_uin.set(Long.valueOf(str).longValue());
-        localReqConvertGroupId.group_req_list.add(localGroupId);
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
       }
     }
-    return localReqConvertGroupId.toByteArray();
+    return localReqIconPostfix.toByteArray();
   }
 }
 

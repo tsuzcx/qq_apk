@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.utils;
 
 import android.widget.Toast;
-import beqy;
+import berp;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 public final class DomainUtil$2
   implements Runnable
 {
-  public DomainUtil$2(int paramInt, beqy parambeqy) {}
+  public DomainUtil$2(int paramInt, berp paramberp) {}
   
   public void run()
   {
-    Toast.makeText(MiniAppEnv.g().getContext(), bffv.a()[this.jdField_a_of_type_Int] + "域名不合法，请配置：" + this.jdField_a_of_type_Beqy, 1).show();
+    Toast.makeText(MiniAppEnv.g().getContext(), bfgm.a()[this.jdField_a_of_type_Int] + "域名不合法，请配置：" + this.jdField_a_of_type_Berp, 1).show();
   }
 }
 

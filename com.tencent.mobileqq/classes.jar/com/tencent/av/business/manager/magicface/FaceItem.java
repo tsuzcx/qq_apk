@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.magicface;
 
-import lhq;
+import lhl;
 
 public class FaceItem
-  extends lhq
+  extends lhl
 {
   private String attr;
   private String compress_res_md5;

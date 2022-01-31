@@ -1,45 +1,29 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class anlt
-  extends DataReportViewer
+public class anlt
+  implements Animator.AnimatorListener
 {
-  anlt(anls paramanls, Context paramContext1, Context paramContext2)
+  public anlt(DataReportViewer paramDataReportViewer) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext1);
+    this.a.a.setVisibility(0);
+    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
+    paramAnimator.setFillAfter(true);
+    paramAnimator.setDuration(200L);
+    this.a.a.startAnimation(paramAnimator);
+    paramAnimator.setAnimationListener(new anlu(this));
   }
   
-  public void d()
-  {
-    int j = bawz.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = bawz.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      anls.a(this.jdField_a_of_type_Anls).updateViewLayout(anls.a(this.jdField_a_of_type_Anls), localLayoutParams);
-      return;
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void e()
-  {
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (int i = 2038;; i = 2003)
-    {
-      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
-      localLayoutParams.gravity = 51;
-      localLayoutParams.x = 0;
-      localLayoutParams.y = bawz.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-      anls.a(this.jdField_a_of_type_Anls).updateViewLayout(anls.a(this.jdField_a_of_type_Anls), localLayoutParams);
-      return;
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

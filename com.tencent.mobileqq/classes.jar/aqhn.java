@@ -1,64 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.HotChatFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment.2.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aqhn
-  extends BroadcastReceiver
+  extends atzp
 {
-  public aqhn(HotChatFragment paramHotChatFragment) {}
+  aqhn(aqhm paramaqhm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
+    if (this.a.a.getActivity() != null)
     {
-      paramContext = paramIntent.getStringExtra("content");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label31;
-      }
+      DeleteFaceFragment.a(this.a.a).postDelayed(new DeleteFaceFragment.2.1.1(this), 500L);
+      return;
     }
-    label31:
-    do
+    QLog.e("DeleteFaceFragment", 1, "delete success, activity is null");
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e("DeleteFaceFragment", 1, "delete face error");
+    if (this.a.a.getActivity() != null)
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
-          if (paramContext != null)
-          {
-            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
-            int j = paramContext.length();
-            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-            int i = 0;
-            while (i < j)
-            {
-              paramIntent = paramContext.getJSONObject(i);
-              Rect localRect = new Rect();
-              localRect.top = ((int)(paramIntent.getInt("top") * f));
-              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
-              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
-              i += 1;
-            }
-            this.a.d = true;
-            return;
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+      bcql.a(this.a.a.getActivity(), 1, this.a.a.getString(2131692123), 0).b(this.a.a.a());
+      return;
+    }
+    QLog.e("DeleteFaceFragment", 1, "delete falied, activity is null");
   }
 }
 

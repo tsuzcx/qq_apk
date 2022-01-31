@@ -1,33 +1,44 @@
-import java.util.ArrayList;
+import android.util.SparseArray;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectMutexManager.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class lhn
+  extends lhd
 {
-  int jdField_a_of_type_Int = 0;
-  public String a;
-  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  final lhq jdField_a_of_type_Lhq;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
+  private volatile SparseArray<lho> a;
   
-  lhn(lhq paramlhq, ArrayList<String> paramArrayList, boolean paramBoolean)
+  protected lhn(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Lhq = paramlhq;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
   }
   
-  boolean a()
+  public void a(int paramInt, lho paramlho)
   {
-    return this.jdField_a_of_type_Int >= 3;
+    if (paramlho == null) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramlho);
   }
   
-  public String toString()
+  protected boolean a(String paramString)
   {
-    return "ItemRecord{" + this.jdField_a_of_type_Lhq + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
+    return false;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.automator;
 
-import aklb;
+import akla;
 
 public class ParallGroup
   extends StepGroup
-  implements aklb
+  implements akla
 {
   protected int d;
   

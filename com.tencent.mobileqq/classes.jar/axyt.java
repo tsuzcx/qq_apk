@@ -1,23 +1,56 @@
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.image.URLImageView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.qphone.base.util.QLog;
 
 class axyt
+  extends URLDrawableDownListener.Adapter
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  RelativeLayout c;
+  axyt(axys paramaxys) {}
   
-  axyt(axyq paramaxyq) {}
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  {
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.S, 2, "onLoadCancelled");
+    }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.S, 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.S, 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.S, 2, "onLoadSuccessed");
+  }
 }
 
 

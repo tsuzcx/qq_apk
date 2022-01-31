@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-public class absb
-  extends WebViewClient
+public final class absb
+  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
 {
-  public absb(PreloadWebService paramPreloadWebService) {}
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    return true;
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

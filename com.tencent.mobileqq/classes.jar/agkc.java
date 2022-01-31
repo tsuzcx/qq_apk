@@ -1,41 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class agkc
-  extends Handler
+  implements Animation.AnimationListener
 {
-  private WeakReference<DialogBaseActivity> a;
+  public agkc(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
   
-  public agkc(DialogBaseActivity paramDialogBaseActivity)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localDialogBaseActivity.a(i, bool);
-        return;
-        bool = false;
-      }
-    }
-    localDialogBaseActivity.finish();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

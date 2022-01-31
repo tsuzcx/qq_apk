@@ -1,84 +1,28 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.graphics.drawable.Drawable;
 
 public class rqu
-  extends rqq
+  implements Comparable<rqu>
 {
-  public rqu(Context paramContext)
+  public int a;
+  public Drawable a;
+  public String a;
+  
+  public rqu(String paramString, int paramInt, Drawable paramDrawable)
   {
-    super(paramContext);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  public int a()
+  public int a(rqu paramrqu)
   {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298637);
-  }
-  
-  public View a(ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      this.jdField_a_of_type_Xed = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559459, paramViewGroup, false));
+    if (this.jdField_a_of_type_Int < paramrqu.jdField_a_of_type_Int) {
+      return -1;
     }
-    return (View)this.jdField_a_of_type_Xed;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
+    if (this.jdField_a_of_type_Int > paramrqu.jdField_a_of_type_Int) {
+      return 1;
     }
-    this.jdField_a_of_type_Xed.a(0L);
-    this.jdField_a_of_type_Xed.ao_();
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    super.a(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    if (paramInt == 100)
-    {
-      this.jdField_a_of_type_Xed.b(0L);
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Xed.ao_();
-      return;
-    }
-    this.jdField_a_of_type_Xed.c(0L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    this.jdField_a_of_type_Xed.a(0L);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      this.jdField_a_of_type_Xed.a(0, paramString);
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Xed.a(0);
-      return;
-    }
-    this.jdField_a_of_type_Xed.a(2);
+    return 0;
   }
 }
 

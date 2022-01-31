@@ -1,15 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 class azpz
   implements DialogInterface.OnClickListener
 {
-  azpz(azpt paramazpt, azpg paramazpg) {}
+  azpz(azpv paramazpv, azpi paramazpi) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bajk.a(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpt.jdField_a_of_type_Long).b(this.jdField_a_of_type_Azpg);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (azpv.a(this.jdField_a_of_type_Azpv) == 0);
+    TroopFileTransferManager.a(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpv.jdField_a_of_type_Long).c(this.jdField_a_of_type_Azpi.a);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import arsq;
+import arss;
 
 public class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(arsq paramarsq) {}
+  public LyricsController$1(arss paramarss) {}
   
   public void run()
   {

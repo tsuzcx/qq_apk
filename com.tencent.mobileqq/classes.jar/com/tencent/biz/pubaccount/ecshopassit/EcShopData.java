@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class EcShopData
-  extends aukm
+  extends auko
 {
   public static final String TABLE_NAME = "EcShopData";
   public long bindUin;
@@ -12,7 +12,7 @@ public class EcShopData
   public String mImgInfo = "";
   public long mLastDraftTime;
   public long mLastMsgTime;
-  @auma
+  @aumc
   public String mUin;
   public String msgId;
 }

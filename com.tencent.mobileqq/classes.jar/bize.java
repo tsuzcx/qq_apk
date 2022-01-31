@@ -1,6 +1,8 @@
-class bize
+public abstract interface bize
 {
-  private static bizc a = new bizc(null);
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

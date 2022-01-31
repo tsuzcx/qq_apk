@@ -1,8 +1,19 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-public abstract interface bkqu
+class bkqu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  bkqu(bkqp parambkqp) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    bkqp.a(this.a).q = true;
+    bkqp.b(this.a).setSelected(true);
+    bkqp.a(this.a).d(3002);
+  }
 }
 
 

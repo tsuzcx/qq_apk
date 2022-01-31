@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class almx
   implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public almx(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
+  public almx(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
   
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
@@ -17,16 +17,19 @@ public class almx
       paramBundle = new Intent();
       paramBundle.putExtra("detectType", 2);
       paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
-      paramBundle.putExtra("filePath", this.b);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
+      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
     }
-    ((alla)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Alkn).b(false);
+    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
+    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
+    ((alkz)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
   }
 }
 

@@ -2,9 +2,7 @@ public abstract interface aqae
 {
   public abstract void a(int paramInt);
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

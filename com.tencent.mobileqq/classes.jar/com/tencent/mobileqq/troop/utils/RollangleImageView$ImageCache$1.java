@@ -3,14 +3,14 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
-import bahy;
-import baia;
+import baim;
+import baio;
 import java.util.LinkedList;
 
 public class RollangleImageView$ImageCache$1
   implements Runnable
 {
-  public RollangleImageView$ImageCache$1(bahy parambahy) {}
+  public RollangleImageView$ImageCache$1(baim parambaim) {}
   
   public void run()
   {
@@ -26,25 +26,25 @@ public class RollangleImageView$ImageCache$1
         label19:
         synchronized (this.this$0)
         {
-          if (bahy.a(this.this$0) == null) {
+          if (baim.a(this.this$0) == null) {
             return;
           }
         }
         if (localObject2 != null) {
-          bahy.a(this.this$0).poll();
+          baim.a(this.this$0).poll();
         }
-        if (bahy.a(this.this$0).isEmpty()) {
+        if (baim.a(this.this$0).isEmpty()) {
           return;
         }
-        baia localbaia = (baia)bahy.a(this.this$0).peek();
-        ??? = RollangleImageView.a(localbaia.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localbaia;
+        baio localbaio = (baio)baim.a(this.this$0).peek();
+        ??? = RollangleImageView.a(localbaio.jdField_a_of_type_JavaLangString);
+        Object localObject3 = localbaio;
         if (??? == null) {
           continue;
         }
-        RollangleImageView.a.put("troopfileimage://" + localbaia.jdField_a_of_type_JavaLangString, ???);
-        bahy.a(this.this$0).obtainMessage(0, new Object[] { localbaia.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbaia.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localbaia;
+        RollangleImageView.a.put("troopfileimage://" + localbaio.jdField_a_of_type_JavaLangString, ???);
+        baim.a(this.this$0).obtainMessage(0, new Object[] { localbaio.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localbaio.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
+        localObject3 = localbaio;
       }
       catch (InterruptedException localInterruptedException)
       {

@@ -1,28 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
 
 public class auav
-  implements TextWatcher
+  extends aueh
 {
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
   public auav(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.b.setEnabled(false);
-      this.a.a.setEnabled(false);
-      return;
+    super.a(paramMotionEvent);
+    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
+      auad.a("0X800AC97", 0);
     }
-    this.a.b.setEnabled(true);
-    this.a.a.setEnabled(true);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.b = true;
+    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
 }
 
 

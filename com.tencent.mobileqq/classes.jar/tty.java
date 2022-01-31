@@ -1,24 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
 public class tty
-  extends ssy
+  implements View.OnTouchListener
 {
-  public tty(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public tty(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void a(boolean paramBoolean, sst paramsst)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramsst);
-    }
-    if (paramBoolean)
-    {
-      if (paramsst != null) {
-        this.a.a(paramsst.a);
-      }
-      return;
-    }
-    this.a.e();
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

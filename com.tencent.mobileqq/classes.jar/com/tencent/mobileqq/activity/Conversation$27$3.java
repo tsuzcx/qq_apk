@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aawi;
-import ahmx;
+import aawe;
+import ahmv;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public class Conversation$27$3
   implements Runnable
 {
-  public Conversation$27$3(aawi paramaawi, HashSet paramHashSet) {}
+  public Conversation$27$3(aawe paramaawe, HashSet paramHashSet) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aawi.a.a != null)
+    if (this.jdField_a_of_type_Aawe.a.a != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.jdField_a_of_type_Aawi.a.a.a(str, false);
+        this.jdField_a_of_type_Aawe.a.a.a(str, false);
       }
     }
   }

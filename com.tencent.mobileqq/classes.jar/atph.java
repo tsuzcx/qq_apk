@@ -1,58 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.ShowExternalTroop;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract class atph
-  extends atpg
+public class atph
+  implements View.OnClickListener
 {
-  public boolean a;
+  public atph(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public atph(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext);
+    if ((this.a.b != null) && (!this.a.isFinishing()))
+    {
+      this.a.b.dismiss();
+      this.a.b = null;
+    }
+    this.a.a(300L);
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(NearbyPeopleCard paramNearbyPeopleCard);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
 }
 
 

@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-
-public class azwy
-  implements DialogInterface.OnClickListener
+public class azwy<F, S>
 {
-  public azwy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public F a;
+  public S b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  azwy(F paramF, S paramS)
+  {
+    this.a = paramF;
+    this.b = paramS;
+  }
 }
 
 

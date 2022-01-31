@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class wzx
-  implements DialogInterface.OnDismissListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  wzx(wzw paramwzw) {}
+  wzx(wzt paramwzt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onGlobalLayout()
   {
-    this.a.a.deleteObserver(this.a);
+    int i = this.a.d.getMeasuredWidth();
+    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bbdv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
+    this.a.c.setMaxWidth(i);
+    this.a.c.setText(new ayjw(this.a.jdField_a_of_type_Azpg.h, 16).a());
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.qphone.base.util.QLog;
-import nnf;
-import scu;
+import nnc;
+import scr;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment$1$1
   implements Runnable
 {
-  public PublicAccountBrowser$PublicAccountBrowserFragment$1$1(nnf paramnnf) {}
+  public PublicAccountBrowser$PublicAccountBrowserFragment$1$1(nnc paramnnc) {}
   
   public void run()
   {
     try
     {
-      boolean bool = scu.a(this.a.a.a, false, this.a.a.h);
+      boolean bool = scr.a(this.a.a.a, false, this.a.a.h);
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
       }

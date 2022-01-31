@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import afgk;
+import afgl;
 import afgm;
-import afgn;
-import afgo;
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,12 +16,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import bcpw;
+import bcql;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import sfh;
+import sfe;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -30,7 +30,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new afgo(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new afgm(this);
   }
   
   private void a(String paramString)
@@ -53,7 +53,7 @@ public class SearchContactsActivity
         }
       }
       paramString = String.format("tbs_download:%s\ntbs_enable:%s\ntbsCoreVersion:%d\ntbsSdkVersion:%d", new Object[] { paramString, str1, Integer.valueOf(QbSdk.getTbsVersion(this)), Integer.valueOf(WebView.getTbsSDKVersion(this)) });
-      bcpw.a(getActivity().getApplicationContext(), paramString, 0).b(getTitleBarHeight());
+      bcql.a(getActivity().getApplicationContext(), paramString, 0).b(getTitleBarHeight());
     }
   }
   
@@ -72,7 +72,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajyc.a(2131713609) + sfh.a(this.app, getApplicationContext()) + ajyc.a(2131713608));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131713620) + sfe.a(this.app, getApplicationContext()) + ajya.a(2131713619));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -81,19 +81,19 @@ public class SearchContactsActivity
     else
     {
       if (this.h == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajyc.a(2131713616));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131713627));
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new afgm(this, bool));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new afgk(this, bool));
       String str2 = getResources().getString(2131690596);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new afgn(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new afgl(this));
       if (AppSetting.d)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
           break label263;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajyc.a(2131713618));
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajya.a(2131713629));
       }
     }
     for (;;)
@@ -102,10 +102,10 @@ public class SearchContactsActivity
         break label278;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajyc.a(2131713615));
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131713626));
       break;
       label263:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajyc.a(2131713614));
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajya.a(2131713625));
     }
     label278:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);

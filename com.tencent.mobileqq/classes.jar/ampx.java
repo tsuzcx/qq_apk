@@ -1,195 +1,173 @@
-import java.io.Serializable;
+import java.io.File;
 
 class ampx
-  implements ampc<String, T>
+  implements ampb<T, String>
 {
-  ampx(ampw paramampw, String paramString, Serializable paramSerializable) {}
+  ampx(ampv paramampv, File paramFile, String paramString) {}
   
   /* Error */
-  public String a(java.io.File paramFile, T paramT)
+  public T a(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 15	ampx:jdField_a_of_type_Ampw	Lampw;
-    //   4: aload_0
-    //   5: getfield 17	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: ldc 37
-    //   10: invokevirtual 42	ampw:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   13: astore_2
-    //   14: aconst_null
-    //   15: astore 4
-    //   17: aconst_null
-    //   18: astore_1
-    //   19: aconst_null
-    //   20: astore_3
-    //   21: new 44	java/io/ObjectOutputStream
-    //   24: dup
-    //   25: new 46	java/io/BufferedOutputStream
-    //   28: dup
-    //   29: new 48	java/io/FileOutputStream
-    //   32: dup
-    //   33: aload_2
-    //   34: invokespecial 51	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   37: invokespecial 54	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   40: invokespecial 55	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   43: astore_2
-    //   44: aload_2
-    //   45: astore_1
-    //   46: aload_2
-    //   47: aload_0
-    //   48: getfield 19	ampx:jdField_a_of_type_JavaIoSerializable	Ljava/io/Serializable;
-    //   51: invokevirtual 59	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   54: aload_2
-    //   55: astore_1
-    //   56: aload_2
-    //   57: invokevirtual 62	java/io/ObjectOutputStream:flush	()V
-    //   60: aload_2
-    //   61: ifnull +7 -> 68
-    //   64: aload_2
-    //   65: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   68: ldc 67
-    //   70: areturn
-    //   71: astore_3
-    //   72: aconst_null
-    //   73: astore_2
-    //   74: aload_2
-    //   75: astore_1
-    //   76: ldc 69
-    //   78: iconst_1
-    //   79: new 71	java/lang/StringBuilder
-    //   82: dup
-    //   83: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   86: ldc 74
-    //   88: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: aload_0
-    //   92: getfield 17	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   95: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: aload_3
-    //   102: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   105: aload_2
-    //   106: ifnull -38 -> 68
-    //   109: aload_2
-    //   110: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   113: goto -45 -> 68
-    //   116: astore_1
-    //   117: goto -49 -> 68
-    //   120: astore_1
-    //   121: aload_3
-    //   122: astore_2
-    //   123: aload_1
-    //   124: astore_3
-    //   125: aload_2
-    //   126: astore_1
-    //   127: ldc 69
-    //   129: iconst_1
-    //   130: new 71	java/lang/StringBuilder
-    //   133: dup
-    //   134: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   137: ldc 74
-    //   139: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: aload_0
-    //   143: getfield 17	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   146: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: aload_3
-    //   153: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   156: aload_2
-    //   157: ifnull -89 -> 68
-    //   160: aload_2
-    //   161: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   164: goto -96 -> 68
-    //   167: astore_1
-    //   168: goto -100 -> 68
-    //   171: astore_3
-    //   172: aload 4
-    //   174: astore_2
-    //   175: aload_2
-    //   176: astore_1
-    //   177: ldc 69
-    //   179: iconst_1
-    //   180: new 71	java/lang/StringBuilder
-    //   183: dup
-    //   184: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   187: ldc 74
-    //   189: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: aload_0
-    //   193: getfield 17	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   196: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: aload_3
-    //   203: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   206: aload_2
-    //   207: ifnull -139 -> 68
-    //   210: aload_2
-    //   211: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   214: goto -146 -> 68
-    //   217: astore_1
-    //   218: goto -150 -> 68
-    //   221: astore_3
-    //   222: aload_1
-    //   223: astore_2
-    //   224: aload_3
-    //   225: astore_1
-    //   226: aload_2
-    //   227: ifnull +7 -> 234
-    //   230: aload_2
-    //   231: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   234: aload_1
-    //   235: athrow
-    //   236: astore_1
-    //   237: goto -169 -> 68
-    //   240: astore_2
-    //   241: goto -7 -> 234
-    //   244: astore_3
-    //   245: aload_1
-    //   246: astore_2
-    //   247: aload_3
-    //   248: astore_1
-    //   249: goto -23 -> 226
-    //   252: astore_3
-    //   253: goto -78 -> 175
-    //   256: astore_3
-    //   257: goto -132 -> 125
-    //   260: astore_3
-    //   261: goto -187 -> 74
+    //   0: new 32	java/io/ObjectInputStream
+    //   3: dup
+    //   4: new 34	java/io/BufferedInputStream
+    //   7: dup
+    //   8: new 36	java/io/FileInputStream
+    //   11: dup
+    //   12: aload_0
+    //   13: getfield 17	ampx:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   16: invokespecial 39	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 42	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 43	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   25: astore_2
+    //   26: aload_2
+    //   27: astore_1
+    //   28: aload_2
+    //   29: invokevirtual 47	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   32: checkcast 49	java/io/Serializable
+    //   35: astore_3
+    //   36: aload_2
+    //   37: ifnull +7 -> 44
+    //   40: aload_2
+    //   41: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   44: aload_3
+    //   45: areturn
+    //   46: astore_3
+    //   47: aconst_null
+    //   48: astore_2
+    //   49: aload_2
+    //   50: astore_1
+    //   51: ldc 54
+    //   53: iconst_1
+    //   54: new 56	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   61: ldc 59
+    //   63: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: aload_0
+    //   67: getfield 19	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   70: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: aload_3
+    //   77: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   80: aload_2
+    //   81: ifnull +142 -> 223
+    //   84: aload_2
+    //   85: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   88: aconst_null
+    //   89: areturn
+    //   90: astore_1
+    //   91: aconst_null
+    //   92: areturn
+    //   93: astore_3
+    //   94: aconst_null
+    //   95: astore_2
+    //   96: aload_2
+    //   97: astore_1
+    //   98: ldc 54
+    //   100: iconst_1
+    //   101: new 56	java/lang/StringBuilder
+    //   104: dup
+    //   105: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   108: ldc 59
+    //   110: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: aload_0
+    //   114: getfield 19	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   117: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: aload_3
+    //   124: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   127: aload_2
+    //   128: ifnull +95 -> 223
+    //   131: aload_2
+    //   132: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   135: aconst_null
+    //   136: areturn
+    //   137: astore_1
+    //   138: aconst_null
+    //   139: areturn
+    //   140: astore_3
+    //   141: aconst_null
+    //   142: astore_2
+    //   143: aload_2
+    //   144: astore_1
+    //   145: ldc 54
+    //   147: iconst_1
+    //   148: new 56	java/lang/StringBuilder
+    //   151: dup
+    //   152: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   155: ldc 59
+    //   157: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: aload_0
+    //   161: getfield 19	ampx:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   164: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: aload_3
+    //   171: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   174: aload_2
+    //   175: ifnull +48 -> 223
+    //   178: aload_2
+    //   179: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   182: aconst_null
+    //   183: areturn
+    //   184: astore_1
+    //   185: aconst_null
+    //   186: areturn
+    //   187: astore_2
+    //   188: aconst_null
+    //   189: astore_1
+    //   190: aload_1
+    //   191: ifnull +7 -> 198
+    //   194: aload_1
+    //   195: invokevirtual 52	java/io/ObjectInputStream:close	()V
+    //   198: aload_2
+    //   199: athrow
+    //   200: astore_1
+    //   201: aload_3
+    //   202: areturn
+    //   203: astore_1
+    //   204: goto -6 -> 198
+    //   207: astore_2
+    //   208: goto -18 -> 190
+    //   211: astore_3
+    //   212: goto -69 -> 143
+    //   215: astore_3
+    //   216: goto -120 -> 96
+    //   219: astore_3
+    //   220: goto -171 -> 49
+    //   223: aconst_null
+    //   224: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	264	0	this	ampx
-    //   0	264	1	paramFile	java.io.File
-    //   0	264	2	paramT	T
-    //   20	1	3	localObject1	Object
-    //   71	51	3	localNotSerializableException1	java.io.NotSerializableException
-    //   124	29	3	localFile	java.io.File
-    //   171	32	3	localIOException1	java.io.IOException
-    //   221	4	3	localObject2	Object
-    //   244	4	3	localObject3	Object
-    //   252	1	3	localIOException2	java.io.IOException
-    //   256	1	3	localFileNotFoundException	java.io.FileNotFoundException
-    //   260	1	3	localNotSerializableException2	java.io.NotSerializableException
-    //   15	158	4	localObject4	Object
+    //   0	225	0	this	ampx
+    //   0	225	1	paramFile	File
+    //   0	225	2	paramString	String
+    //   35	10	3	localSerializable	java.io.Serializable
+    //   46	31	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   93	31	3	localIOException1	java.io.IOException
+    //   140	62	3	localClassNotFoundException1	java.lang.ClassNotFoundException
+    //   211	1	3	localClassNotFoundException2	java.lang.ClassNotFoundException
+    //   215	1	3	localIOException2	java.io.IOException
+    //   219	1	3	localFileNotFoundException2	java.io.FileNotFoundException
     // Exception table:
     //   from	to	target	type
-    //   21	44	71	java/io/NotSerializableException
-    //   109	113	116	java/io/IOException
-    //   21	44	120	java/io/FileNotFoundException
-    //   160	164	167	java/io/IOException
-    //   21	44	171	java/io/IOException
-    //   210	214	217	java/io/IOException
-    //   21	44	221	finally
-    //   127	156	221	finally
-    //   177	206	221	finally
-    //   64	68	236	java/io/IOException
-    //   230	234	240	java/io/IOException
-    //   46	54	244	finally
-    //   56	60	244	finally
-    //   76	105	244	finally
-    //   46	54	252	java/io/IOException
-    //   56	60	252	java/io/IOException
-    //   46	54	256	java/io/FileNotFoundException
-    //   56	60	256	java/io/FileNotFoundException
-    //   46	54	260	java/io/NotSerializableException
-    //   56	60	260	java/io/NotSerializableException
+    //   0	26	46	java/io/FileNotFoundException
+    //   84	88	90	java/io/IOException
+    //   0	26	93	java/io/IOException
+    //   131	135	137	java/io/IOException
+    //   0	26	140	java/lang/ClassNotFoundException
+    //   178	182	184	java/io/IOException
+    //   0	26	187	finally
+    //   40	44	200	java/io/IOException
+    //   194	198	203	java/io/IOException
+    //   28	36	207	finally
+    //   51	80	207	finally
+    //   98	127	207	finally
+    //   145	174	207	finally
+    //   28	36	211	java/lang/ClassNotFoundException
+    //   28	36	215	java/io/IOException
+    //   28	36	219	java/io/FileNotFoundException
   }
 }
 

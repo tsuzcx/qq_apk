@@ -1,59 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
 
 public class aaee
-  implements aaea
+  implements DialogInterface.OnClickListener
 {
-  aaeb jdField_a_of_type_Aaeb;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  public aaee(TestAppFragment paramTestAppFragment) {}
   
-  private void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
-        {
-          IntentFilter localIntentFilter = new IntentFilter();
-          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
-          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
-          aaef localaaef = new aaef(this);
-          BaseApplicationImpl.getContext().registerReceiver(localaaef, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localaaef;
-        }
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  public void a(aaeb paramaaeb)
-  {
-    this.jdField_a_of_type_Aaeb = paramaaeb;
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key", paramString1);
-    localBundle.putInt("type", paramInt);
-    localBundle.putString("appid", paramString2);
-    aabs.a(2, localBundle, null);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key", paramString1);
-    localBundle.putInt("type", paramInt);
-    localBundle.putString("appid", paramString2);
-    localBundle.putString("api", paramString3);
-    aabs.a(3, localBundle, null);
+    paramDialogInterface.dismiss();
   }
 }
 

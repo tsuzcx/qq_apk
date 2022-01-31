@@ -1,100 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.1;
-import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class yvu
+class yvu
+  implements DialogInterface.OnClickListener
 {
-  protected Context a;
-  protected Handler a;
-  public yvm a;
+  yvu(yvs paramyvs) {}
   
-  protected yvu(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public static void a(View paramView)
-  {
-    if ((paramView == null) || (paramView.getVisibility() != 0)) {
-      return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(200L);
-    paramView.startAnimation(localAlphaAnimation);
-    paramView.setVisibility(8);
-  }
-  
-  private void a(yvm paramyvm)
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramyvm.h.getLayoutParams();
-    localLayoutParams.height = paramyvm.n;
-    localLayoutParams.width = paramyvm.o;
-    localLayoutParams.addRule(3, 0);
-    localLayoutParams.addRule(12, 0);
-    localLayoutParams.addRule(14);
-    localLayoutParams.addRule(15);
-    paramyvm.h.setLayoutParams(localLayoutParams);
-    paramyvm.h.postInvalidate();
-  }
-  
-  public static void b(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(100L);
-    paramView.startAnimation(localAlphaAnimation);
-    paramView.setVisibility(0);
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Yvm == null) || (this.jdField_a_of_type_Yvm.g == null)) {
-      return;
-    }
-    a(this.jdField_a_of_type_Yvm.g);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.1(this), 300L);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView, paramInt1, paramInt2, -1);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramView == null) {
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-    int i = localLayoutParams.topMargin;
-    int j = localLayoutParams.leftMargin;
-    int k = localLayoutParams.rightMargin;
-    a(paramView);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.2(this, localLayoutParams, i, paramInt1, j, paramInt2, paramInt3, k, paramView), 200L);
-  }
-  
-  protected void a(yvm paramyvm, View paramView)
-  {
-    paramyvm.h = paramView;
-    paramyvm.o = yze.a(470, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    paramyvm.n = yze.a(470, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidContentContext = null;
+    yxp.b("GdtMvViewController", " DialogInterface onClick confirm");
+    yvs.a(this.a, false);
+    yvs.b(this.a);
   }
 }
 

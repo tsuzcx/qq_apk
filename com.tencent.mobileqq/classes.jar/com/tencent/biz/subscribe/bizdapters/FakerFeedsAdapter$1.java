@@ -2,12 +2,12 @@ package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import java.util.ArrayList;
-import wlg;
+import wld;
 
 public class FakerFeedsAdapter$1
   implements Runnable
 {
-  public FakerFeedsAdapter$1(wlg paramwlg, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
+  public FakerFeedsAdapter$1(wld paramwld, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
   
   public void run()
   {

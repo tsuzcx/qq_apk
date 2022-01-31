@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import aqua;
+import aquc;
 import java.util.ArrayList;
 
 public class QQGameFeedWebFragment$MessageQGameReceiver$1
   implements Runnable
 {
-  public QQGameFeedWebFragment$MessageQGameReceiver$1(aqua paramaqua, ArrayList paramArrayList) {}
+  public QQGameFeedWebFragment$MessageQGameReceiver$1(aquc paramaquc, ArrayList paramArrayList) {}
   
   public void run()
   {
-    QQGameFeedWebFragment.a(this.jdField_a_of_type_Aqua.a, this.jdField_a_of_type_JavaUtilArrayList);
+    QQGameFeedWebFragment.a(this.jdField_a_of_type_Aquc.a, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aukn;
-import bail;
+import aukp;
+import baiz;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 
 public class TroopAppMgr$4
   implements Runnable
 {
-  public TroopAppMgr$4(bail parambail, aukn paramaukn, TroopAIOAppInfo paramTroopAIOAppInfo) {}
+  public TroopAppMgr$4(baiz parambaiz, aukp paramaukp, TroopAIOAppInfo paramTroopAIOAppInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aukn.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo);
-    this.jdField_a_of_type_Aukn.a();
+    this.jdField_a_of_type_Aukp.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo);
+    this.jdField_a_of_type_Aukp.a();
   }
 }
 

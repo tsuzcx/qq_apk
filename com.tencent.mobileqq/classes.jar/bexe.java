@@ -1,38 +1,37 @@
-import android.media.MediaDataSource;
-import android.support.annotation.RequiresApi;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-@RequiresApi(api=23)
-class bexe
-  extends MediaDataSource
+public final class bexe
+  implements View.OnClickListener
 {
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  public bexe(Dialog paramDialog, Context paramContext, String paramString1, MiniAppProxy paramMiniAppProxy, TianShuAccess.AdItem paramAdItem, String paramString2) {}
   
-  public bexe(bexd parambexd, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public void close() {}
-  
-  public long getSize()
-  {
-    if (this.jdField_a_of_type_ArrayOfByte == null) {
-      return -1L;
-    }
-    return this.jdField_a_of_type_ArrayOfByte.length;
-  }
-  
-  public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    while ((paramLong < 0L) || (paramLong >= this.jdField_a_of_type_ArrayOfByte.length)) {
-      return -1;
-    }
-    if (paramInt2 + paramLong < this.jdField_a_of_type_ArrayOfByte.length) {}
-    for (long l = paramInt2;; l = this.jdField_a_of_type_ArrayOfByte.length - paramLong)
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, (int)paramLong, paramArrayOfByte, paramInt1, (int)l);
-      return (int)l;
+      if (!bfgx.a(this.jdField_a_of_type_JavaLangString)) {
+        break label69;
+      }
+      behj.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2094, null);
+    }
+    for (;;)
+    {
+      MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.b, 102);
+      return;
+      label69:
+      paramView = new Intent();
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyMiniAppProxy.startBrowserActivity((Activity)this.jdField_a_of_type_AndroidContentContext, paramView);
     }
   }
 }

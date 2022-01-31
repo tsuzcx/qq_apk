@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
-
-class asuv
-  implements DialogInterface.OnClickListener
+public abstract interface asuv
 {
-  asuv(asuu paramasuu, List paramList) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_JavaUtilList, false);
-  }
+  public abstract void a(asus paramasus);
+  
+  public abstract void a(asus paramasus, int paramInt);
+  
+  public abstract void b(asus paramasus);
 }
 
 

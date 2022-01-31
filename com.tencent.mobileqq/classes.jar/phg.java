@@ -1,33 +1,21 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
 class phg
-  implements ViewBase.OnClickListener
+  implements View.OnClickListener
 {
-  phg(pgz parampgz, pax parampax, ViewBase paramViewBase) {}
+  phg(pgw parampgw, pau parampau, Container paramContainer, ram paramram) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_Pax.a().mSocialFeedInfo.jdField_a_of_type_Qcy.a) && (this.jdField_a_of_type_Pax.a().mSocialFeedInfo.jdField_a_of_type_Qcr != null)) {
-        onk.a(paramViewBase.getNativeView().getContext(), this.jdField_a_of_type_Pax.a().mSocialFeedInfo.jdField_a_of_type_Qcr.a.h, null);
-      }
-      paramViewBase = this.jdField_a_of_type_Pax.a();
-      if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
-      {
-        paramViewBase.click_area = 11;
-        onk.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
-      }
-      return;
-    }
-    catch (NullPointerException paramViewBase)
-    {
-      QLog.e("PgcShortContentProteusItem", 1, paramViewBase.getLocalizedMessage());
+    Object localObject = this.jdField_a_of_type_Pau.a();
+    ((ArticleInfo)localObject).click_area = 8;
+    onh.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
+    localObject = this.jdField_a_of_type_Ram.a();
+    if (localObject != null) {
+      ((rbr)localObject).a(paramView, this.jdField_a_of_type_Pau.a(), 2);
     }
   }
 }

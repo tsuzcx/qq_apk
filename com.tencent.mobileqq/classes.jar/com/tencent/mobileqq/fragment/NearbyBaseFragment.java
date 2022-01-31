@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import bcal;
-import bfnk;
+import bcaz;
+import bfob;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
@@ -35,31 +35,31 @@ public class NearbyBaseFragment
   public NearbyBaseFragment()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new bfnk(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
   }
   
-  public bcal a()
+  public bcaz a()
   {
     return null;
   }
   
   public void a()
   {
-    bcal localbcal = a();
-    if ((localbcal == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+    bcaz localbcaz = a();
+    if ((localbcaz == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
     try
     {
-      int i = localbcal.mWebview.getWebScrollY();
-      int j = localbcal.mWebview.getHeight();
+      int i = localbcaz.mWebview.getWebScrollY();
+      int j = localbcaz.mWebview.getHeight();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyBaseFragment", 2, "gotoFragmentHead, scrollY=" + i + ", webH=" + j + ", maxV=" + this.c);
       }
       if (i > j)
       {
-        localbcal.mWebview.getView().scrollTo(0, j);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbcal), 60L);
+        localbcaz.mWebview.getView().scrollTo(0, j);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyBaseFragment.1(this, localbcaz), 60L);
         return;
       }
     }

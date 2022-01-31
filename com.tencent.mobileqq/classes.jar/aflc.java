@@ -1,5 +1,5 @@
 public class aflc
-  extends afjx
+  extends afjv
 {}
 
 

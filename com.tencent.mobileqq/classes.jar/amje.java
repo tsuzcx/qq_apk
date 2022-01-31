@@ -1,33 +1,42 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import cooperation.qqreader.QRBridgeActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
 
 public class amje
-  implements amjh
+  implements View.OnClickListener
 {
-  public String a()
-  {
-    return ajyc.a(2131717066);
-  }
+  public amje(HistoryFormItem paramHistoryFormItem) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramView == null) {}
-    Context localContext;
-    do
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (amgr.a())
     {
-      do
+      i = 1;
+      if ((i != 0) && (this.a.a()))
       {
-        return;
-      } while (paramInt != 16908289);
-      localContext = paramView.getContext();
-    } while (localContext == null);
-    paramView = new Intent(paramView.getContext(), QRBridgeActivity.class);
-    paramView.putExtra("readtype", "18");
-    paramView.addFlags(268435456);
-    localContext.startActivity(paramView);
-    axqw.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 3, 0, "", "", "", "");
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label112;
+        }
+      }
+    }
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      return;
+      amhh.a(paramView.getContext());
+      i = 0;
+      break;
+      label112:
+      bool = false;
+    }
   }
 }
 

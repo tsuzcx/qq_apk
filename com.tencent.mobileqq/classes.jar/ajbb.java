@@ -1,38 +1,12 @@
-import org.json.JSONObject;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
 
 public class ajbb
-  implements ajbp
+  implements AVCallback
 {
-  private int a;
+  public ajbb(CmGameAvHandler.11 param11) {}
   
-  public ajbb()
-  {
-    int i = ajbo.a;
-    ajbo.a = i + 1;
-    this.a = i;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public JSONObject a(ajbo paramajbo, JSONObject paramJSONObject)
-  {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
-    {
-      paramJSONObject = new ajao(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramajbo != null) {
-        paramajbo.a(paramJSONObject);
-      }
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.a;
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

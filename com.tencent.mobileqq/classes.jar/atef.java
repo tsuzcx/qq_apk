@@ -1,16 +1,10 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atef
-  extends DataSetObserver
+final class atef
+  implements DialogInterface.OnClickListener
 {
-  public atef(PlayerInvitePanel paramPlayerInvitePanel) {}
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    this.a.a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

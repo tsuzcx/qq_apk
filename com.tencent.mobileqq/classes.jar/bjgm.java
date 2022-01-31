@@ -1,112 +1,103 @@
-import android.graphics.Canvas;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class bjgm
-  extends DynamicTextItem
+  implements bjbx
 {
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private float jdField_b_of_type_Float;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
+  public static final String[] a;
+  public int a;
+  public bjbw a;
+  bjgn a;
+  public String a;
+  public int b;
   
-  public bjgm(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface)
+  static
   {
-    super(paramInt, paramList);
-    if (paramTypeface != null)
-    {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(actn.a(22.0F, BaseApplicationImpl.getContext().getResources()));
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-      this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStrokeJoin(Paint.Join.ROUND);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(actn.a(22.0F, BaseApplicationImpl.getContext().getResources()));
-      this.jdField_b_of_type_AndroidTextTextPaint.setColor(-16777216);
-      this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(actn.a(6.0F, BaseApplicationImpl.getContext().getResources()));
-      if (!paramList.isEmpty()) {
-        a(0, (String)paramList.get(0));
-      }
-      return;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
-    }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "NoNeedDown", "NoFound", "NeedDown" };
   }
   
   public int a()
   {
-    return 1;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    String str = super.b(paramInt);
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "　　";
-    }
-    paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(ajyc.a(2131701155));
-    this.jdField_b_of_type_AndroidTextStaticLayout = bjig.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
-    this.jdField_a_of_type_AndroidTextStaticLayout = bjig.a(paramString, 0, paramString.length(), this.jdField_b_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
-    this.jdField_a_of_type_Float = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-    this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
-    {
-      paramCanvas.save();
-      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      if (b(0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-        this.jdField_a_of_type_AndroidGraphicsRectF.right = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    bjbw localbjbw = a();
+    int i;
+    if (localbjbw != null) {
+      if (localbjbw.a() == 2) {
+        i = 2;
       }
-      paramCanvas.restore();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMPredownManager", 2, String.format("getState %s %s %s %s ", new Object[] { toString(), "" + localbjbw, jdField_a_of_type_ArrayOfJavaLangString[i], bjgo.jdField_a_of_type_ArrayOfJavaLangString[this.b] }));
+      }
+      return i;
+      i = 0;
+      continue;
+      i = 1;
     }
   }
   
-  public boolean a()
+  public bjbw a()
   {
-    return true;
+    Object localObject1 = this.jdField_a_of_type_Bjbw;
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      switch (this.b)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjbw = ((bjbw)localObject1);
+      localObject2 = localObject1;
+      return localObject2;
+      localObject1 = ((bjcb)bjav.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = ((bjcb)bjav.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = bjfh.a(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = bjfh.a("", this.jdField_a_of_type_JavaLangString, "forPredownlaod", 0.0F, 0.0F, 0.0F);
+      continue;
+      localObject1 = bjfh.b(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = bjfh.a(this.jdField_a_of_type_JavaLangString, new ArrayList(), 0.0F, 0.0F, 0.0F);
+    }
   }
   
-  public float b()
+  public void a()
   {
-    return this.jdField_b_of_type_Float;
+    bjbw localbjbw = a();
+    if (localbjbw != null)
+    {
+      localbjbw.a(this);
+      localbjbw.b();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPredownManager", 2, "starDownload: " + this + localbjbw);
+    }
+  }
+  
+  public void a(bjbw parambjbw) {}
+  
+  public void a(bjbw parambjbw, int paramInt)
+  {
+    this.jdField_a_of_type_Bjgn.a(false, this);
+  }
+  
+  public void a(bjgn parambjgn)
+  {
+    this.jdField_a_of_type_Bjgn = parambjgn;
+  }
+  
+  public void b(bjbw parambjbw)
+  {
+    this.jdField_a_of_type_Bjgn.a(true, this);
+  }
+  
+  public String toString()
+  {
+    return "QIMPredownJob{" + this.jdField_a_of_type_Int + "," + bjgo.jdField_a_of_type_ArrayOfJavaLangString[this.b] + "," + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

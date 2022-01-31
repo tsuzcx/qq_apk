@@ -1,20 +1,29 @@
-import android.hardware.camera2.CameraCharacteristics;
-import android.text.TextUtils;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
 public class axfx
+  extends CameraCaptureSession.CaptureCallback
 {
-  public CameraCharacteristics a;
-  public String a;
+  public axfx(Camera2Control paramCamera2Control) {}
   
-  public axfx(String paramString, CameraCharacteristics paramCameraCharacteristics)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
+    axgf.a(1, "[Camera2]captureStillPicture completed!");
+    Camera2Control.a(this.a, 0L);
+    Camera2Control.e(this.a, false);
+    Camera2Control.a(this.a).a(0);
+    Camera2Control.b(this.a);
   }
   
-  public boolean a()
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
+    axgf.a(1, "[Camera2]captureStillPicture failed!");
+    Camera2Control.a(this.a, 0L);
   }
 }
 

@@ -1,31 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 class aioh
-  extends bfvp
+  implements DialogInterface.OnClickListener
 {
-  aioh(aiof paramaiof, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  aioh(aiod paramaiod) {}
   
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = 0;
-    if ((paramArrayOfbfvo == null) || (paramArrayOfbfvo.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfbfvo.length < 0)
-      {
-        paramArrayOfbfvo[0].b = 0;
-        paramArrayOfbfvo[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbfvo.length)
-      {
-        paramArrayOfbfvo[paramInt].b = -1;
-        paramArrayOfbfvo[paramInt].a = -1;
-        paramInt += 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
     }
+    if (bbfj.d(aiod.a(this.a)))
+    {
+      axqy.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
+      aiod.b(this.a);
+      this.a.a.a().a().f();
+      ((FriendListHandler)this.a.a.a(1)).i();
+      return;
+    }
+    bcql.a(aiod.a(this.a), 2131694621, 0).a();
   }
 }
 

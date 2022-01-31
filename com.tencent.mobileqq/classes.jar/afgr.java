@@ -1,20 +1,22 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class afgr
-  implements afik
+  implements afhm
 {
   public afgr(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void a(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
-      this.a.a(paramString, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
     }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 80000001) {
+      awwa.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
+    }
+    this.a.a(paramString, false);
   }
 }
 

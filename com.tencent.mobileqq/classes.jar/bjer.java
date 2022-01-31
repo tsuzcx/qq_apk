@@ -1,115 +1,35 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bjer
-  extends bjbf
+  implements bjeq
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private bkyv jdField_a_of_type_Bkyv = new bjes(this);
-  private bkyy jdField_a_of_type_Bkyy = (bkyy)bjae.a(3);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bjae.a();
-  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = this.jdField_a_of_type_Bkyy.a(paramString);
-  private int d = 2;
+  private float jdField_a_of_type_Float;
+  private File jdField_a_of_type_JavaIoFile;
   
-  public bjer(String paramString)
+  public void a()
   {
-    super(null);
-    if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)) {
-      this.d = 3;
-    }
-    while (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) {
+    if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("OriginalBgmRecognizer", 2, "recognize: invoked. info: audioFile not exist. mTargetAudioFile = " + this.jdField_a_of_type_JavaIoFile);
+      }
       return;
     }
-    this.d = 3;
+    bjeu localbjeu = (bjeu)bjav.a().c(10);
+    localbjeu.a(this.jdField_a_of_type_Float);
+    localbjeu.a(this.jdField_a_of_type_JavaIoFile);
+    localbjeu.c();
   }
   
-  public float a()
+  public void a(float paramFloat)
   {
-    try
-    {
-      float f = this.jdField_a_of_type_Float;
-      return f;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public int a()
+  public void a(File paramFile)
   {
-    try
-    {
-      int i = this.d;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131363833);
-    if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) && (paramActivity != null))
-    {
-      String str = bkyy.a + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
-      paramActivity.setFaceEffect(str);
-      this.jdField_a_of_type_Bkyy.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, 111);
-      this.jdField_a_of_type_Bkyy.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId, str);
-      return 0;
-    }
-    return -1;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131363833);
-    if ((paramActivity != null) && (!paramActivity.k()))
-    {
-      paramActivity.setFaceEffect("");
-      this.jdField_a_of_type_Bkyy.a("0", 0, "");
-      bjan.c = 0;
-    }
-  }
-  
-  public int b()
-  {
-    for (;;)
-    {
-      try
-      {
-        int i;
-        if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo == null)
-        {
-          this.d = 3;
-          i = this.d;
-          return i;
-        }
-        if (!this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)
-        {
-          this.jdField_a_of_type_Bkyy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_Bkyv);
-          a();
-          this.d = 1;
-          i = this.d;
-          continue;
-        }
-        if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading)
-        {
-          this.d = 1;
-          continue;
-        }
-        this.jdField_a_of_type_Float = 1.0F;
-      }
-      finally {}
-      this.d = 3;
-      b();
-    }
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 

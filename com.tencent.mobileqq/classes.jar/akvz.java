@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akvz
-  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
+public class akvz
 {
-  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
+  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
-  }
-  
-  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
-  {
-    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
+    }
+    switch (paramInt)
+    {
+    }
+    return true;
   }
 }
 

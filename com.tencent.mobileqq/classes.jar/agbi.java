@@ -1,28 +1,39 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class agbi
-  extends ajxl
+public class agbi
 {
-  agbi(agbh paramagbh) {}
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public agbi(String paramString)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(1, paramString);
+    try
+    {
+      paramString = amoq.a(paramString, "troop_member_list_config");
+      if (paramString != null)
+      {
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
+      }
+      return;
     }
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramBoolean) {
-      this.a.a(1, paramString);
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a(2, null);
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

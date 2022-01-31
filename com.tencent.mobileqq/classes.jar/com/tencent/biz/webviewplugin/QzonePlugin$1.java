@@ -1,17 +1,17 @@
 package com.tencent.biz.webviewplugin;
 
 import com.tencent.smtt.sdk.WebView;
-import xmh;
+import xme;
 
 public class QzonePlugin$1
   implements Runnable
 {
-  public QzonePlugin$1(xmh paramxmh, byte[] paramArrayOfByte) {}
+  public QzonePlugin$1(xme paramxme, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (xmh.a(this.this$0) != null) {
-      xmh.a(this.this$0).postUrl(xmh.a(this.this$0), this.a);
+    if (xme.a(this.this$0) != null) {
+      xme.a(this.this$0).postUrl(xme.a(this.this$0), this.a);
     }
   }
 }

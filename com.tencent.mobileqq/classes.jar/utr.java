@@ -1,35 +1,51 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class utr
-  extends QQUIEventReceiver<utn, utq>
+  implements IEventReceiver
 {
-  public utr(utn paramutn)
+  public int a;
+  public QQUserUIItem a;
+  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  protected ssv a;
+  private utt jdField_a_of_type_Utt;
+  private utu jdField_a_of_type_Utu;
+  
+  public utr(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
   {
-    super(paramutn);
+    this.jdField_a_of_type_Ssv = new uts(this);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(@NonNull utn paramutn, @NonNull utq paramutq)
+  public void a()
   {
-    if (paramutq.jdField_a_of_type_Boolean)
-    {
-      if (paramutq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-      {
-        utn.a(paramutn, paramutq.jdField_a_of_type_JavaUtilList, true);
-        utn.a(paramutn).a(true);
-      }
-      return;
-    }
-    utn.a(paramutn, paramutq);
-    utn.a(paramutn).remove(utn.b());
-    utn.a(paramutn);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((tdl)tcz.a(2)).b(this.jdField_a_of_type_JavaLangString);
+    tsr.a().addObserver(this.jdField_a_of_type_Ssv);
+    this.jdField_a_of_type_Utt = new utt(this);
+    stb.a().registerSubscriber(this.jdField_a_of_type_Utt);
+    this.jdField_a_of_type_Utu = new utu(this);
+    stb.a().registerSubscriber(this.jdField_a_of_type_Utu);
   }
   
-  public Class acceptEventClass()
+  public void b()
   {
-    return utq.class;
+    tsr.a().removeObserver(this.jdField_a_of_type_Ssv);
+    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Utt);
+    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Utu);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

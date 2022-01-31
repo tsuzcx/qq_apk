@@ -1,8 +1,19 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public abstract interface alxk
+public final class alxk
+  implements Parcelable.Creator<POIInfo>
 {
-  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap);
+  public POIInfo a(Parcel paramParcel)
+  {
+    return new POIInfo(paramParcel);
+  }
+  
+  public POIInfo[] a(int paramInt)
+  {
+    return new POIInfo[paramInt];
+  }
 }
 
 

@@ -1,25 +1,76 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
 public class asnd
-  implements bcsv
+  implements DialogInterface.OnClickListener
 {
-  public asnd(MsgBackupQRFragment paramMsgBackupQRFragment) {}
+  public asnd(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    asoi.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
+    aslg.a().a().c();
+    aslg.a().a().a(null);
+    if (this.a.jdField_a_of_type_Boolean) {
+      if ((!this.a.e) && (this.a.b == 1))
+      {
+        this.a.a(this.a.getActivity());
+        if (!this.a.f)
+        {
+          if (this.a.b != 1) {
+            break label189;
+          }
+          if (this.a.e) {
+            asog.a("0X800A267", 2);
+          }
+        }
+        label141:
+        if (this.a.f)
+        {
+          if (this.a.b != 1) {
+            break label309;
+          }
+          if (this.a.e) {
+            asog.a("0X800A267", 3);
+          }
+        }
+      }
+    }
+    label189:
+    while (this.a.b != 2)
     {
-    default: 
       return;
+      this.a.m();
+      break;
+      if (this.a.b != 2) {
+        break label141;
+      }
+      asog.a("0X800A289", 1);
+      break label141;
+      if (this.a.e) {
+        if (this.a.getActivity() != null)
+        {
+          this.a.getActivity().setResult(1001);
+          this.a.getActivity().finish();
+        }
+      }
+      for (;;)
+      {
+        if ((this.a.f) || (this.a.b != 1) || (!this.a.e)) {
+          break label307;
+        }
+        asog.a("0X800A267", 1);
+        break;
+        this.a.a(this.a.getActivity());
+      }
+      break label141;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
-    }
-    asle.a().d();
-    this.a.onBackEvent();
-    asoe.a("0X800A242", 4);
+    label307:
+    label309:
+    asog.a("0X800A289", 2);
   }
 }
 

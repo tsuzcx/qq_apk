@@ -1,51 +1,22 @@
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
 public class awyb
-  implements awwo
+  extends awyg
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public View a;
+  public LinearLayout a;
+  public TextView a;
   
-  public awyb(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
+  public awyb(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
-    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776);
-    if ((paramViewGroup != null) && (paramInt2 > 0)) {
-      paramViewGroup.setImageResource(paramInt2);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368844));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365043));
-    if (paramInt3 == 12) {
-      this.b.setText(ajyc.a(2131713654) + sfh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + ajyc.a(2131713653));
-    }
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public List<awwp> a()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559126, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131366596));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131366598));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131365282);
   }
 }
 

@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-
 public abstract interface akvc
 {
-  public abstract void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, akva paramakva);
+  public abstract void a(int paramInt, akuz paramakuz);
 }
 
 

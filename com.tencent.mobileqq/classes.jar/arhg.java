@@ -1,33 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class arhg
-  extends BroadcastReceiver
+  extends Handler
 {
-  arhg(arhb paramarhb) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  arhg(arhd paramarhd, Looper paramLooper)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    if ((paramContext.equals(arfw.a(arhb.b(this.a)))) || (paramContext.equals(arfw.d(arhb.b(this.a)))))
-    {
-      i = paramIntent.getIntExtra("key_state", -1);
-      paramContext = arhb.a(this.a, i);
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 9: 
-    case 100: 
-      this.a.callJs("notifyJsCallback", new String[] { paramContext.toString() });
-      return;
-    }
-    arhh.a.a = 0L;
+    super(paramLooper);
   }
+  
+  public void handleMessage(Message paramMessage) {}
 }
 
 

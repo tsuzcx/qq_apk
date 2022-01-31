@@ -1,27 +1,27 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import behe;
-import behf;
-import beho;
-import behq;
-import beka;
-import besl;
+import behv;
+import behw;
+import beif;
+import beih;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy.AuthListResult;
 import java.util.List;
 
 class BaseJsPluginEngine$2
   implements ChannelProxy.AuthListResult
 {
-  BaseJsPluginEngine$2(BaseJsPluginEngine paramBaseJsPluginEngine, behf parambehf, String paramString1, String paramString2, beka parambeka) {}
+  BaseJsPluginEngine$2(BaseJsPluginEngine paramBaseJsPluginEngine, behw parambehw, String paramString1, String paramString2, bekr parambekr) {}
   
-  public void onReceiveResult(boolean paramBoolean, List<beho> paramList, List<behq> paramList1)
+  public void onReceiveResult(boolean paramBoolean, List<beif> paramList, List<beih> paramList1)
   {
     if (paramBoolean)
     {
       this.val$authState.a(paramList, paramList1);
       this.val$authState.a();
       paramBoolean = this.val$authState.a(this.val$scope);
-      if (behe.a(this.val$appId)) {
+      if (behv.a(this.val$appId)) {
         paramBoolean = true;
       }
       if (paramBoolean)
@@ -32,7 +32,7 @@ class BaseJsPluginEngine$2
       BaseJsPluginEngine.access$300(this.this$0, this.val$req, this.val$scope);
       return;
     }
-    besl.d("JsPluginEngine[AuthGuard]", "getSetting-getAuthStateList failed");
+    betc.d("JsPluginEngine[AuthGuard]", "getSetting-getAuthStateList failed");
   }
 }
 

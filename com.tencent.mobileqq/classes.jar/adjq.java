@@ -1,48 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
 import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class adjq
-  implements adih
+  implements baow
 {
-  private BaseChatPie a;
+  adjq(adjp paramadjp) {}
   
-  public adjq(BaseChatPie paramBaseChatPie)
+  public void a(String paramString)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.a != null) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 4: 
-      a();
-      return;
-    }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 4, 9 };
+    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
   }
 }
 

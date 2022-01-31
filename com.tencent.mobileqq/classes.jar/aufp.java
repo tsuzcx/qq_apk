@@ -1,17 +1,20 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.view.ViewGroup;
 
 class aufp
   implements ValueAnimator.AnimatorUpdateListener
 {
-  aufp(aufh paramaufh, View paramView) {}
+  aufp(aufj paramaufj) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * actn.a(25.0F, aufh.a(this.jdField_a_of_type_Aufh)));
+    if (aufj.a(this.a) != null)
+    {
+      aufj.a(this.a).setAlpha(f);
+      aufj.a(this.a).setTranslationY((1.0F - f) * actj.a(25.0F, aufj.a(this.a)));
+    }
   }
 }
 

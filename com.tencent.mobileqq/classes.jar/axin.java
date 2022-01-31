@@ -1,14 +1,40 @@
 public class axin
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  public int a;
+  private int b;
+  private int c;
   
-  static
+  public int a()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
+    int i = this.b;
+    this.b = (i + 1);
+    return i;
+  }
+  
+  public void a()
+  {
+    this.b = 0;
+    this.a = 0;
+    this.c = 0;
+  }
+  
+  public int b()
+  {
+    int i = this.c;
+    this.c = (i + 1);
+    return i;
+  }
+  
+  public void b()
+  {
+    this.b = 0;
+    this.a = 0;
+    this.c = 0;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 

@@ -1,52 +1,151 @@
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
-import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import com.tencent.widget.XEditTextEx;
 
 public class abuo
-  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
+  extends Handler
 {
-  public abuo(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public abuo(QQLSActivity paramQQLSActivity, Looper paramLooper)
   {
-    String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
-    localMessage.arg1 = 24;
-    localMessage.obj = str;
-    if (paramInt == 3) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
-    }
-    for (;;)
-    {
-      QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
-    }
+    super(paramLooper);
   }
   
-  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
-    paramYTLiveStyleReq.app_id = "10164651";
-    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
-    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
-    paramLiveStyleResponse.arg1 = 23;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
-    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {}
-    do
+    switch (paramMessage.what)
     {
+    default: 
+    case 5: 
+    case 6: 
+    case 4: 
+    case 3: 
+    case 1: 
+    case 2: 
+    case 16: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+      do
+      {
+        boolean bool;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                } while (QQLSActivity.b(this.a));
+                if (hasMessages(5)) {
+                  removeMessages(5);
+                }
+                QQLSActivity.b(this.a);
+                if (QQLSActivity.a(this.a) != null) {
+                  ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+                }
+                QQLSActivity.b(this.a).setVisibility(0);
+                paramMessage = obtainMessage(3);
+                if (hasMessages(3)) {
+                  removeMessages(3);
+                }
+                sendMessageDelayed(paramMessage, 1200L);
+                return;
+              } while (QQLSActivity.b(this.a));
+              if (hasMessages(6)) {
+                removeMessages(6);
+              }
+              QQLSActivity.b(this.a);
+              if (QQLSActivity.a(this.a) != null) {
+                ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+              }
+              QQLSActivity.a(this.a).setVisibility(0);
+              paramMessage = obtainMessage(4);
+              if (hasMessages(4)) {
+                removeMessages(4);
+              }
+              sendMessageDelayed(paramMessage, 1200L);
+              return;
+              QQLSActivity.a(this.a).setVisibility(4);
+              return;
+              QQLSActivity.b(this.a).setVisibility(4);
+              return;
+              this.a.c();
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message send finish");
+              }
+              QQLSActivity.a(this.a);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message finish activity finish");
+              }
+              this.a.finish();
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message finish activity finish, enter aio");
+              }
+              this.a.finish();
+              return;
+            } while ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a)));
+            if (QLog.isColorLevel()) {
+              QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
+            }
+            QQLSActivity.c(this.a);
+            return;
+            this.a.a();
+            return;
+          } while (QQLSActivity.a(this.a));
+          axqy.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
+          paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
+          this.a.startActivity(paramMessage);
+          return;
+          paramMessage = new Intent(this.a, QQLSActivity.class);
+          paramMessage.addFlags(131072);
+          this.a.startActivity(paramMessage);
+          return;
+          bool = QQLSActivity.e(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "LS MSG_CHECKISLOCK" + bool);
+          }
+        } while (bool);
+        this.a.finish();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "check sensor HasCallBack ====" + QQLSActivity.c(this.a));
+        }
+        if (QQLSActivity.c(this.a))
+        {
+          QQLSActivity.d(this.a);
+          return;
+        }
+      } while (!QQLSActivity.d(this.a));
+      QQLSActivity.c(this.a);
       return;
-      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
+    case 13: 
+      QQLSActivity.e(this.a);
+      return;
+    case 14: 
+      QQLSActivity.a(this.a, false);
+      return;
+    case 15: 
+      QQLSActivity.f(this.a);
+      return;
+    }
+    this.a.a.a(QQLSActivity.a(this.a), (String)paramMessage.obj, 1008, false, -1, false);
+    this.a.b();
   }
 }
 

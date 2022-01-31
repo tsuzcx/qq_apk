@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akwl;
-import akwn;
+import akwk;
+import akwm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anql;
-import anqp;
-import bbbd;
-import bbdm;
-import bcbo;
-import bcci;
-import bcdb;
-import bchj;
-import bcpq;
+import anqq;
+import anqu;
+import bbbr;
+import bbea;
+import bccc;
+import bccw;
+import bcdp;
+import bchx;
+import bcqf;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -25,12 +25,12 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import java.net.URLDecoder;
 import java.util.Arrays;
-import nax;
+import nau;
 import org.json.JSONObject;
 
 public class MQPSecJsPlugin
   extends VasWebviewJsPlugin
-  implements akwl, bcbo
+  implements akwk, bccc
 {
   public static final String NAMESPACE_DEV_LOCK = "EquipLockManager";
   public static final String NAMESPACE_PUZZLE_VERIFY_CODE = "CAPTCHA";
@@ -44,13 +44,13 @@ public class MQPSecJsPlugin
   private boolean mOpenDevlockCalled;
   private int mSeq = -1;
   boolean needResult;
-  private bcpq progressDialog;
+  private bcqf progressDialog;
   String resultMobileMask;
   boolean resultSetMobile = false;
   String resultSppkey = null;
   int resultState = 1;
   String resultUin;
-  akwn smsContent = null;
+  akwm smsContent = null;
   String subAccountUin;
   String tagRequest;
   private boolean waittingResponse;
@@ -162,7 +162,7 @@ public class MQPSecJsPlugin
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("title", paramString2);
           localJSONObject.put("wording", paramString3);
-          localJSONObject.put("image_res_id", 2130844267);
+          localJSONObject.put("image_res_id", 2130844268);
           localJSONObject.put("btn_text", paramVarArgs);
           localJSONObject.put("jump_text", localObject);
           localJSONObject.put("jump_url", "");
@@ -184,7 +184,7 @@ public class MQPSecJsPlugin
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    paramString1 = bbbd.c(paramString1, paramString2);
+    paramString1 = bbbr.c(paramString1, paramString2);
     if ((paramString1 != null) && (paramString1.length() > 0)) {
       callJs("_pushInputVcode", new String[] { paramString1 });
     }
@@ -221,19 +221,19 @@ public class MQPSecJsPlugin
         localObject = ((Intent)localObject).getStringExtra("uin");
         Bundle localBundle = new Bundle();
         localBundle.putString("uin", (String)localObject);
-        sendRemoteReq(anqp.a("getA2", "", this.mOnRemoteResp.key, localBundle), true, false);
+        sendRemoteReq(anqu.a("getA2", "", this.mOnRemoteResp.key, localBundle), true, false);
         hideProgressDialog();
         return;
       }
     } while ((0x200000 & l) == 0L);
-    sendRemoteReq(anqp.a("puzzle_verify_code_clearProgressDialog", "", this.mOnRemoteResp.key, new Bundle()), true, false);
+    sendRemoteReq(anqu.a("puzzle_verify_code_clearProgressDialog", "", this.mOnRemoteResp.key, new Bundle()), true, false);
   }
   
   public void onCreate()
   {
     super.onCreate();
-    bcci localbcci = this.mRuntime.a(this.mRuntime.a());
-    if ((localbcci != null) && ((localbcci instanceof bchj))) {
+    bccw localbccw = this.mRuntime.a(this.mRuntime.a());
+    if ((localbccw != null) && ((localbccw instanceof bchx))) {
       this.activity = this.mRuntime.a();
     }
   }
@@ -264,7 +264,7 @@ public class MQPSecJsPlugin
       QLog.d("MQPSecJsPlugin", 2, "SetPwdJsPlugin onLoadIsSetPsw isSet =" + paramString);
     }
     if ((paramString != null) && (paramString.equals("1"))) {
-      sendRemoteReq(anqp.a("setHasSetPwd", "", this.mOnRemoteResp.key, new Bundle()), true, false);
+      sendRemoteReq(anqu.a("setHasSetPwd", "", this.mOnRemoteResp.key, new Bundle()), true, false);
     }
   }
   
@@ -340,7 +340,7 @@ public class MQPSecJsPlugin
         } while (!QLog.isColorLevel());
         QLog.i("MQPSecJsPlugin", 2, "url is empty.");
         return;
-        localObject2 = nax.b((String)localObject1);
+        localObject2 = nau.b((String)localObject1);
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           break;
         }
@@ -363,7 +363,7 @@ public class MQPSecJsPlugin
           localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("result", 0);
           ((JSONObject)localObject2).put("devlockIsOpen", bool1);
-          ((JSONObject)localObject2).put("sigDA2", bbdm.a((byte[])localObject1));
+          ((JSONObject)localObject2).put("sigDA2", bbea.a((byte[])localObject1));
           if (QLog.isColorLevel()) {
             QLog.i("MQPSecJsPlugin", 2, "openDevLock callJS: " + ((JSONObject)localObject2).toString());
           }
@@ -442,7 +442,7 @@ public class MQPSecJsPlugin
             ((Bundle)localObject).putInt("register_uin_msg", i);
             ((Bundle)localObject).putString("register_uin_class", paramString);
           }
-          sendRemoteReq(anqp.a("puzzle_verify_code_setTicket", "", this.mOnRemoteResp.key, (Bundle)localObject), true, false);
+          sendRemoteReq(anqu.a("puzzle_verify_code_setTicket", "", this.mOnRemoteResp.key, (Bundle)localObject), true, false);
           if (this.activity != null) {
             this.activity.finish();
           }
@@ -479,7 +479,7 @@ public class MQPSecJsPlugin
       QLog.d("MQPSecJsPlugin", 2, "SetPwdJsPlugin onWebMakeSureFinishBack isSuccess =" + paramString);
     }
     if ((paramString != null) && (paramString.equals("1"))) {
-      sendRemoteReq(anqp.a("setHasSetPwd", "", this.mOnRemoteResp.key, new Bundle()), true, false);
+      sendRemoteReq(anqu.a("setHasSetPwd", "", this.mOnRemoteResp.key, new Bundle()), true, false);
     }
     hideProgressDialog();
   }
@@ -506,7 +506,7 @@ public class MQPSecJsPlugin
     while ((l & 0x200000) == 0L) {
       try
       {
-        this.smsContent = new akwn(null);
+        this.smsContent = new akwm(null);
         this.smsContent.a(this.activity, this);
         paramCustomWebView = (TextView)this.activity.findViewById(2131368429);
         if (paramCustomWebView != null) {
@@ -536,7 +536,7 @@ public class MQPSecJsPlugin
     for (;;)
     {
       localBundle.putBoolean("devlock_show_auth_dev_list", paramBoolean);
-      sendRemoteReq(anqp.a("openDevLock", paramString3, this.mOnRemoteResp.key, localBundle), true, false);
+      sendRemoteReq(anqu.a("openDevLock", paramString3, this.mOnRemoteResp.key, localBundle), true, false);
       return;
       localBundle.putString("devlock_open_source", "Unknown");
     }
@@ -558,7 +558,7 @@ public class MQPSecJsPlugin
     paramString3.putString("uin", paramString1);
     paramString3.putString("mobileMask", paramString2);
     paramString3.putByteArray("sppkey", arrayOfByte);
-    sendRemoteReq(anqp.a("openEquipmentLock", "", this.mOnRemoteResp.key, paramString3), true, false);
+    sendRemoteReq(anqu.a("openEquipmentLock", "", this.mOnRemoteResp.key, paramString3), true, false);
   }
   
   public void pushMobileResult(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -617,7 +617,7 @@ public class MQPSecJsPlugin
   
   public void queryDevLockStatus()
   {
-    sendRemoteReq(anqp.a("queryDevLockStatus", "", this.mOnRemoteResp.key, null), true, false);
+    sendRemoteReq(anqu.a("queryDevLockStatus", "", this.mOnRemoteResp.key, null), true, false);
   }
   
   public void updateResult(String paramString1, String paramString2, String paramString3, String paramString4)

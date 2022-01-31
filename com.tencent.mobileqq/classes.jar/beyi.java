@@ -1,11 +1,19 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04884.1;
-
 public class beyi
 {
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  private beyi a;
+  public boolean a;
+  
+  public beyi a()
   {
-    beyo.a().a().post(new MiniProgramLpReportDC04884.1(paramString2, paramString1, paramString3));
+    return this.jdField_a_of_type_Beyi;
+  }
+  
+  public void a(beyi parambeyi, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramBoolean)) {
+      throw new RuntimeException("WTF");
+    }
+    this.jdField_a_of_type_Beyi = parambeyi;
   }
 }
 

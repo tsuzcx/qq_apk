@@ -5,9 +5,13 @@ import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 public class whb
   implements DialogInterface.OnClickListener
 {
-  public whb(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  public whb(QRLoginMgrActivity paramQRLoginMgrActivity, wid paramwid) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Wid.a);
+    axqy.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Wid.c, 0, "", "", "", "");
+  }
 }
 
 

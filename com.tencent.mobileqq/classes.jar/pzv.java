@@ -1,6 +1,8 @@
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+
 public abstract interface pzv
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
 }
 
 

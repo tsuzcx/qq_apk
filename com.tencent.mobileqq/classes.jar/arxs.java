@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.graphics.Bitmap;
 
 class arxs
-  implements View.OnClickListener
 {
-  arxs(arxr paramarxr, arxh paramarxh) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh.a()) {
-      return;
-    }
-    arxh.a(this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh).c(true);
-    arxh.a(this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh);
-    axqw.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
-  }
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

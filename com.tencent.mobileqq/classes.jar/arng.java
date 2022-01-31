@@ -1,86 +1,74 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.jsp.QQApiPlugin.3;
 
-class arng
-  implements BusinessObserver
+public class arng
+  implements ooc
 {
-  arng(arnc paramarnc, Intent paramIntent) {}
+  public arng(QQApiPlugin.3 param3) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Arnc.a.dismiss();
-    if (paramBoolean) {}
+    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    boolean bool;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      wij.a(1, 2131719487);
+      bool = false;
+    }
     for (;;)
     {
-      try
+      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
       {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
+        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
+        return;
+        wij.a(2, 2131719506);
+        if ((this.a.this$0.jdField_a_of_type_Bcig != null) && (this.a.this$0.jdField_a_of_type_Bcij != null))
         {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          int i;
+          label171:
+          String str1;
+          String str2;
+          String str3;
+          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
           {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = xmt.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
+            i = 1009;
+            paramBaseResp = this.a.this$0.jdField_a_of_type_Bcig.f();
+            str1 = this.a.this$0.jdField_a_of_type_Bcig.g();
+            str2 = this.a.b;
+            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bcij.b());
+            String str4 = this.a.this$0.jdField_a_of_type_Bcig.h();
+            if ((str4 == null) || ("".equals(str4))) {
+              break label314;
             }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+            nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bcij.b(), str3, false);
           }
+          for (;;)
+          {
+            bool = true;
+            break;
+            i = 1004;
+            break label171;
+            label314:
+            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
+              i = 1003;
+            }
+            nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
+          }
+          bool = false;
         }
       }
-      catch (Exception paramBundle)
+      else
       {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QQApi", 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        this.jdField_a_of_type_Arnc.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
+        return;
       }
-      paramBundle = axuy.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQApi", 2, "build struct msg fail");
-      }
-      return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
+      bool = true;
     }
   }
 }

@@ -8,39 +8,39 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import onk;
-import ozr;
+import onh;
+import ozo;
+import qbn;
+import qbo;
 import qbq;
-import qbr;
-import qbt;
 import tencent.im.oidb.cmd0xa6e.oidb_cmd0xa6e.TopicInfo;
 
 public class ArticleInfoModule$49
   implements Runnable
 {
-  public ArticleInfoModule$49(ozr paramozr, int paramInt, Set paramSet, List paramList) {}
+  public ArticleInfoModule$49(ozo paramozo, int paramInt, Set paramSet, List paramList) {}
   
   public void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)ozr.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)ozo.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
     Iterator localIterator1 = this.jdField_a_of_type_JavaUtilSet.iterator();
     while (localIterator1.hasNext())
     {
       ArticleInfo localArticleInfo = (ArticleInfo)localConcurrentHashMap.get(Long.valueOf(((Long)localIterator1.next()).longValue()));
-      if ((localArticleInfo != null) && (onk.o(localArticleInfo)) && (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null))
+      if ((localArticleInfo != null) && (onh.o(localArticleInfo)) && (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null))
       {
         Iterator localIterator2 = localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator2.hasNext())
         {
-          qbr localqbr = (qbr)localIterator2.next();
-          if (localqbr.a != null)
+          qbo localqbo = (qbo)localIterator2.next();
+          if (localqbo.a != null)
           {
             Iterator localIterator3 = this.jdField_a_of_type_JavaUtilList.iterator();
             while (localIterator3.hasNext())
             {
               oidb_cmd0xa6e.TopicInfo localTopicInfo = (oidb_cmd0xa6e.TopicInfo)localIterator3.next();
-              if (localqbr.a.b == localTopicInfo.uint64_topic_id.get()) {
-                localqbr.a.jdField_a_of_type_Int = localTopicInfo.uint32_pv.get();
+              if (localqbo.a.b == localTopicInfo.uint64_topic_id.get()) {
+                localqbo.a.jdField_a_of_type_Int = localTopicInfo.uint32_pv.get();
               }
             }
           }

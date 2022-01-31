@@ -1,71 +1,118 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Context;
+import android.view.SurfaceHolder;
 
 public class bhys
-  extends bhyx
 {
-  public bhys(String paramString, View paramView)
+  private Object a = bhom.a("com.tencent.tar.TarInterface", null, new Object[0]);
+  
+  public int a()
   {
-    super(paramString, paramView);
+    Object localObject = bhom.a(this.a, "getConfigWith", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
+    }
+    return -1;
   }
   
-  private ImageView.ScaleType a(String paramString)
+  public int a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
+    paramSurfaceHolder = bhom.a(this.a, "onDrawFrame", false, a(new Class[] { SurfaceHolder.class, Boolean.TYPE }), new Object[] { paramSurfaceHolder, Boolean.valueOf(paramBoolean) });
+    if ((paramSurfaceHolder instanceof Integer)) {
+      return ((Integer)paramSurfaceHolder).intValue();
     }
-    if ("center_crop".equals(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("fit_center".equals(paramString)) {
-      return ImageView.ScaleType.FIT_CENTER;
-    }
-    return ImageView.ScaleType.CENTER_CROP;
+    return 0;
   }
   
-  protected void a(String paramString)
+  public void a()
   {
-    if (!bfng.a(paramString)) {}
-    do
+    bhom.a(this.a, "onResume", false, null, new Object[0]);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    bhom.a(this.a, "setTrackingPoint", false, a(new Class[] { Float.TYPE, Float.TYPE }), new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    bhom.a(this.a, "onSurfaceChanged", false, a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    bhom.a(this.a, "init", false, a(new Class[] { Context.class, Integer.TYPE }), new Object[] { paramContext, Integer.valueOf(paramInt) });
+  }
+  
+  public float[] a()
+  {
+    Object localObject = bhom.a(this.a, "getModelMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public Class[] a(Class... paramVarArgs)
+  {
+    Class[] arrayOfClass = new Class[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      return;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
-      {
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-        localURLDrawableOptions.mRequestHeight = this.b;
-      }
-      localURLDrawableOptions.mLoadingDrawable = aywk.a;
-      localURLDrawableOptions.mFailedDrawable = aywk.a;
-      localURLDrawableOptions.mPlayGifImage = false;
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    } while (paramString == null);
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+      arrayOfClass[i] = paramVarArgs[i];
+      i += 1;
+    }
+    return arrayOfClass;
   }
   
-  protected void a(String paramString1, String paramString2)
+  public int b()
   {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
-    do
-    {
-      return;
-      if ("content".equals(paramString1))
-      {
-        a(paramString2);
-        return;
-      }
-    } while (!"scale_type".equals(paramString1));
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+    Object localObject = bhom.a(this.a, "getConfigHeight", false, null, new Object[0]);
+    if ((localObject instanceof Integer)) {
+      return ((Integer)localObject).intValue();
+    }
+    return -1;
   }
   
-  protected void b()
+  public void b()
   {
-    super.b();
+    bhom.a(this.a, "onStop", false, null, new Object[0]);
+  }
+  
+  public float[] b()
+  {
+    Object localObject = bhom.a(this.a, "getViewMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    bhom.a(this.a, "onDestroy", false, null, new Object[0]);
+  }
+  
+  public float[] c()
+  {
+    Object localObject = bhom.a(this.a, "getProjectionMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
+  }
+  
+  public void d()
+  {
+    bhom.a(this.a, "onSurfaceCreated", false, null, new Object[0]);
+  }
+  
+  public float[] d()
+  {
+    Object localObject = bhom.a(this.a, "getScaleMatrix", false, null, new Object[0]);
+    if ((localObject instanceof float[])) {
+      return (float[])localObject;
+    }
+    return null;
   }
 }
 

@@ -1,49 +1,33 @@
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
 
 public class ajit
-  implements Comparable<ajit>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
+  public ajit(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
   
-  public int a(ajit paramajit)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramajit == null) {}
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
+        break label42;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajiq.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    }
+    label42:
     do
     {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramajit.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramajit.c);
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajiq.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        return;
       }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajiq.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
   }
 }
 

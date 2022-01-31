@@ -1,24 +1,41 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abuj
-  implements avts
+  extends BroadcastReceiver
 {
-  public abuj(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public abuj(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void a(float paramFloat)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramFloat < 0.0F)
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
     {
-      this.a.a(this.a.getString(2131694420));
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
+      {
+        paramContext = new Intent();
+        paramIntent = new Bundle();
+        paramIntent.putInt("ret", 204);
+        paramIntent.putString("errMsg", armr.a);
+        paramContext.putExtra("data", paramIntent);
+        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
+        QQIdentiferLegacy.a(this.a).finish();
+      }
+    }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    {
+      int i;
       return;
     }
-    if (paramFloat > 175.0F)
-    {
-      this.a.a(this.a.getString(2131694419));
-      return;
-    }
-    QQIdentiferActivity.a(this.a).setText("");
+    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
+    QQIdentiferLegacy.a(this.a).finish();
   }
 }
 

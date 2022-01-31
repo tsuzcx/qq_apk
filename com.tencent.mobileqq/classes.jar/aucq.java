@@ -1,24 +1,16 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import java.util.Comparator;
 
-public class aucq
-  implements TextView.OnEditorActionListener
+class aucq
+  implements Comparator<String>
 {
-  public aucq(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  aucq(aucp paramaucp) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public int a(String paramString1, String paramString2)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
     }
-    return false;
+    return paramString2.length() - paramString1.length();
   }
 }
 

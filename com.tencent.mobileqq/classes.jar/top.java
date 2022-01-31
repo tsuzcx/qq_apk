@@ -1,44 +1,45 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class top
-  extends syq
+  extends syn
 {
-  public long a;
-  public String a;
-  public ArrayList<ShareGroupCollectionItem> a;
-  public boolean a;
-  public int b;
+  public final List<tnc> a = new ArrayList();
   
-  public top(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
+  public top(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
   {
-    super(paramRspShareVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
-    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
-    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
+    super(paramRspStoryPlayerTagInfo.result);
+    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
+    Object localObject;
+    String str;
+    qqstory_struct.TagInfoBase localTagInfoBase;
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_Boolean = bool;
-      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
-      while (paramRspShareVideoCollectionList.hasNext())
-      {
-        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
-        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
-        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
+      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
+      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
+      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
+      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
+        break label163;
       }
-      bool = false;
+    }
+    label163:
+    for (paramRspStoryPlayerTagInfo = new vuw((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
+    {
+      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
+      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
+      {
+        this.a.add(new tnc(str, new vve(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
+        break;
+        return;
+      }
     }
   }
 }

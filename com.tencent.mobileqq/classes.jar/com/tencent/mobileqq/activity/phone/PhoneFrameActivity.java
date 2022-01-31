@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.phone;
 
-import actn;
-import agkl;
-import agkm;
-import ajyc;
+import actj;
+import agkj;
+import agkk;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axqw;
+import axqy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -38,7 +38,7 @@ public class PhoneFrameActivity
   
   private void a()
   {
-    Intent localIntent = actn.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = actj.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -63,16 +63,16 @@ public class PhoneFrameActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375327);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375329);
     this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368429));
     this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368431));
     this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368457));
-    this.rightViewText.setText(2131695049);
-    this.rightViewText.setOnClickListener(new agkl(this));
+    this.rightViewText.setText(2131695050);
+    this.rightViewText.setOnClickListener(new agkj(this));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368441));
     if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131707998));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131708009));
     }
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidViewView);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
@@ -81,7 +81,7 @@ public class PhoneFrameActivity
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131371426));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new agkm(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new agkk(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_req_type", this.jdField_a_of_type_Int);
@@ -136,7 +136,7 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     a();
-    axqw.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    axqy.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void doOnPause()

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.doutu;
 
-import anod;
-import aukn;
+import anoi;
+import aukp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class DoutuManager$9
   implements Runnable
 {
-  public DoutuManager$9(anod paramanod, List paramList) {}
+  public DoutuManager$9(anoi paramanoi, List paramList) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class DoutuManager$9
     {
       synchronized (this.this$0)
       {
-        if (anod.a(this.this$0) != null)
+        if (anoi.a(this.this$0) != null)
         {
-          anod.a(this.this$0).a(DoutuData.class);
+          anoi.a(this.this$0).a(DoutuData.class);
           Iterator localIterator = this.a.iterator();
           if (localIterator.hasNext())
           {
             DoutuData localDoutuData = (DoutuData)localIterator.next();
-            anod.a(this.this$0).b(localDoutuData);
+            anoi.a(this.this$0).b(localDoutuData);
           }
         }
       }

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.weishi_new.net;
 
-import slt;
+import slq;
 
 public class WeishiTask$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Slt.a(this.jdField_a_of_type_Sli);
+    this.jdField_a_of_type_Slq.a(this.jdField_a_of_type_Slf);
   }
 }
 

@@ -1,34 +1,22 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
 public class bcru
-  extends Dialog
+  implements Animator.AnimatorListener
 {
-  private TextView a;
+  public bcru(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
-  public bcru(Context paramContext)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext, 2131755160);
-    getWindow().setFlags(16, 16);
-    getWindow().setFlags(8, 8);
-    getWindow().setGravity(17);
-    setContentView(2131561135);
-    this.a = ((TextView)findViewById(2131377522));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      this.a.setTextColor(Color.parseColor("#FF737373"));
-    }
-    setCancelable(false);
+    SlideDownFrameLayout.a(this.a).a();
   }
   
-  public void a(String paramString)
-  {
-    this.a.setText(paramString);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

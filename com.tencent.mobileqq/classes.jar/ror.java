@@ -1,28 +1,39 @@
-import android.view.View;
 import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import mqq.util.WeakReference;
 
 class ror
-  implements URLDrawableDownListener
 {
-  ror(rom paramrom) {}
+  private static Map<AbstractGifImage, List<WeakReference<rot>>> a = new WeakHashMap();
+  private static Map<AbstractGifImage, ros> b = new WeakHashMap();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a()
   {
-    AbstractGifImage.resumeAll();
-    rom.a(this.a).setVisibility(0);
-    this.a.a("0X800920C", new JSONObject());
+    a.clear();
+    b.clear();
+  }
+  
+  void a(rot paramrot, URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
+    {
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
+      paramURLDrawable = new ros(localAbstractGifImage);
+      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
+      b.put(localAbstractGifImage, paramURLDrawable);
+      List localList = (List)a.get(localAbstractGifImage);
+      paramURLDrawable = localList;
+      if (localList == null) {
+        paramURLDrawable = new ArrayList();
+      }
+      paramURLDrawable.add(new WeakReference(paramrot));
+      a.put(localAbstractGifImage, paramURLDrawable);
+    }
   }
 }
 

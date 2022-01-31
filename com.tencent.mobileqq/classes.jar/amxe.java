@@ -1,56 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amxe
-  extends ampb<amxd>
 {
-  public static amxd a()
+  private Map<String, amxf> a = new HashMap();
+  
+  public static amxe a(amph[] paramArrayOfamph)
   {
-    return (amxd)ampm.a().a(484);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
+    }
+    localamxe = new amxe();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
+      Iterator localIterator = paramArrayOfamph.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = paramArrayOfamph.getJSONObject(str);
+        localamxe.a.put(str, amxf.a(localJSONObject));
+      }
+      return localamxe;
+    }
+    catch (JSONException paramArrayOfamph) {}
   }
   
-  public int a()
+  public static amxf a(String paramString)
   {
-    return 484;
-  }
-  
-  @NonNull
-  public amxd a(int paramInt)
-  {
-    return new amxd();
-  }
-  
-  @Nullable
-  public amxd a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return amxd.a(paramArrayOfampi);
+    if ((!TextUtils.isEmpty(paramString)) && (amxb.a() != null)) {
+      return (amxf)amxb.a().a().get(paramString);
     }
     return null;
   }
   
-  public Class<amxd> a()
+  public Map<String, amxf> a()
   {
-    return amxd.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amxd paramamxd) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 

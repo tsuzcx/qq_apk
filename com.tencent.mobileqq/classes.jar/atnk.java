@@ -1,19 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.AnimationPoint;
 
-class atnk
-  implements Animation.AnimationListener
+public class atnk
+  extends Dialog
 {
-  atnk(atni paramatni) {}
+  protected TextView a;
+  protected AnimationPoint a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public atnk(Context paramContext)
   {
-    this.a.dismiss();
+    super(paramContext, 2131755014);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561308, null);
+    paramContext.setOnTouchListener(new atnl(this));
+    super.setContentView(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362546));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367281));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(-1L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new atnm(this));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
+  }
 }
 
 

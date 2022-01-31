@@ -1,23 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-import cooperation.qzone.report.lp.LpReportInfo_dc00321;
+import NS_MOBILE_MAIN_PAGE.PhotoWall;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_del_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bgym
-  implements View.OnClickListener
+  extends QzoneExternalRequest
 {
-  public bgym(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  public JceStruct a;
   
-  public void onClick(View paramView)
+  public bgym(long paramLong1, long paramLong2, String paramString, Long paramLong)
   {
-    if (!this.a.b)
-    {
-      if (1 == this.a.c) {
-        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
-      }
-      this.a.a(false, false);
-      this.a.b();
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_del_photo_wall_req localmobile_sub_del_photo_wall_req = new mobile_sub_del_photo_wall_req();
+    PhotoWall localPhotoWall = new PhotoWall();
+    localPhotoWall.photoId = paramString;
+    localPhotoWall.ctime = paramLong.longValue();
+    localmobile_sub_del_photo_wall_req.vecUrls = new ArrayList();
+    localmobile_sub_del_photo_wall_req.vecUrls.add(localPhotoWall);
+    this.a = localmobile_sub_del_photo_wall_req;
+  }
+  
+  public static JceStruct a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    return decode(paramArrayOfByte, "delPhotoWall");
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.delPhotoWall";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "delPhotoWall";
   }
 }
 

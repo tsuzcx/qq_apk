@@ -1,23 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class aeog
-  implements View.OnClickListener
+  extends ajsy
 {
-  aeog(aeoe paramaeoe, String paramString) {}
+  aeog(aeoc paramaeoc) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    if ((aeoe.a(this.jdField_a_of_type_Aeoe) != null) && (aeoe.a(this.jdField_a_of_type_Aeoe).isShowing())) {
-      aeoe.a(this.jdField_a_of_type_Aeoe).dismiss();
-    }
-    if ((this.jdField_a_of_type_Aeoe.a != null) && (this.jdField_a_of_type_Aeoe.a.isShowing()))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Aeoe.a.dismiss();
-      this.jdField_a_of_type_Aeoe.a = null;
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        aeoc.a(this.a);
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      bbdj.a(paramString1, 230, paramString1.getString(2131689957), null, null, paramString1.getString(2131719551), new aeoh(this, paramString1), null).show();
+      return;
     }
-    aeoe.a(this.jdField_a_of_type_Aeoe, this.jdField_a_of_type_JavaLangString);
+    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
   }
 }
 

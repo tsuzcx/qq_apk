@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import abtt;
-import actn;
-import ahpf;
-import ahpq;
-import ajyc;
-import akav;
+import abtp;
+import actj;
+import ahpd;
+import ahpo;
+import ajya;
+import akat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -26,13 +26,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import auko;
-import axqw;
-import bfol;
-import bfoy;
-import bfvg;
-import bfwv;
-import bhvh;
+import aukq;
+import axqy;
+import bfpc;
+import bfpp;
+import bfvx;
+import bfxm;
+import bhvy;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.ui.CustomGuideView;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -56,51 +56,51 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import mze;
-import noo;
+import mzb;
+import nol;
+import sbm;
+import sbn;
+import sbo;
 import sbp;
 import sbq;
 import sbr;
 import sbs;
 import sbt;
 import sbu;
-import sbv;
-import sbw;
-import sbx;
+import scc;
+import scd;
+import sce;
 import scf;
-import scg;
-import sch;
-import sci;
-import scu;
-import sdd;
-import sdf;
-import sfh;
-import sgj;
-import sgx;
+import scr;
+import sda;
+import sdc;
+import sfe;
+import sgg;
+import sgu;
 
 public class SubscriptFeedsActivity
   extends IphoneTitleBarActivity
-  implements ahpq, View.OnClickListener, bfvg, Observer
+  implements ahpo, View.OnClickListener, bfvx, Observer
 {
   private float jdField_a_of_type_Float;
   protected int a;
   public long a;
-  akav jdField_a_of_type_Akav = new sbr(this);
+  akat jdField_a_of_type_Akat = new sbo(this);
   public View a;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private bfwv jdField_a_of_type_Bfwv = new sbp(this);
+  private bfxm jdField_a_of_type_Bfxm = new sbm(this);
   private CustomGuideView jdField_a_of_type_ComTencentBizUiCustomGuideView;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   protected DragFrameLayout a;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   private ArrayList<ReadInJoyArticle> jdField_a_of_type_JavaUtilArrayList;
-  private List<sdd> jdField_a_of_type_JavaUtilList;
+  private List<sda> jdField_a_of_type_JavaUtilList;
   public MqqHandler a;
-  private sbx jdField_a_of_type_Sbx;
-  private sch jdField_a_of_type_Sch = new sbt(this);
-  private sci jdField_a_of_type_Sci;
-  public scu a;
+  private sbu jdField_a_of_type_Sbu;
+  private sce jdField_a_of_type_Sce = new sbq(this);
+  private scf jdField_a_of_type_Scf;
+  public scr a;
   protected boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -120,23 +120,23 @@ public class SubscriptFeedsActivity
   public SubscriptFeedsActivity()
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_MqqOsMqqHandler = new sbs(this, ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_MqqOsMqqHandler = new sbp(this, ThreadManager.getSubThreadLooper());
   }
   
-  private void a(List<sdd> paramList)
+  private void a(List<sda> paramList)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {}
-    while ((this.jdField_a_of_type_Sbx == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+    while ((this.jdField_a_of_type_Sbu == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
       return;
     }
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilList = paramList;
     }
-    this.jdField_a_of_type_Sbx.a(this.jdField_a_of_type_JavaUtilList);
-    if (((this.jdField_a_of_type_Sbx.g == -1) || (this.jdField_a_of_type_Sbx.f == -1)) && (((!this.g) && (scu.a(this.app))) || (sgj.a(this.app))))
+    this.jdField_a_of_type_Sbu.a(this.jdField_a_of_type_JavaUtilList);
+    if (((this.jdField_a_of_type_Sbu.g == -1) || (this.jdField_a_of_type_Sbu.f == -1)) && (((!this.g) && (scr.a(this.app))) || (sgg.a(this.app))))
     {
-      this.jdField_a_of_type_Sbx.g = 0;
-      this.jdField_a_of_type_Sbx.f = 0;
+      this.jdField_a_of_type_Sbu.g = 0;
+      this.jdField_a_of_type_Sbu.f = 0;
       if (QLog.isColorLevel()) {
         QLog.d("SubscriptFeedsActivity", 2, "subscript inner recommend need show !");
       }
@@ -173,14 +173,14 @@ public class SubscriptFeedsActivity
     if ((paramBoolean1) || (paramBoolean2) || (paramBoolean3))
     {
       this.d = true;
-      this.jdField_a_of_type_Sbx.b();
-      this.jdField_a_of_type_Sbx.notifyDataSetChanged();
+      this.jdField_a_of_type_Sbu.b();
+      this.jdField_a_of_type_Sbu.notifyDataSetChanged();
       g();
     }
-    if ((this.jdField_a_of_type_Scu != null) && (this.jdField_a_of_type_Sbx != null) && (!this.i) && (this.jdField_a_of_type_Scu.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Sbx.g == 0) && (this.jdField_a_of_type_Sbx.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Sbx.f == 0))
+    if ((this.jdField_a_of_type_Scr != null) && (this.jdField_a_of_type_Sbu != null) && (!this.i) && (this.jdField_a_of_type_Scr.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Sbu.g == 0) && (this.jdField_a_of_type_Sbu.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Sbu.f == 0))
     {
       this.i = true;
-      this.jdField_a_of_type_Scu.a();
+      this.jdField_a_of_type_Scr.a();
     }
   }
   
@@ -190,18 +190,18 @@ public class SubscriptFeedsActivity
     boolean bool1 = false;
     Object localObject;
     if (paramArrayList != null) {
-      localObject = bhvh.a(this.app, 1);
+      localObject = bhvy.a(this.app, 1);
     }
     for (;;)
     {
       try
       {
-        paramArrayList = scf.a(paramArrayList);
+        paramArrayList = scc.a(paramArrayList);
         if (!TextUtils.isEmpty(paramArrayList))
         {
           localObject = ((SharedPreferences)localObject).edit();
           ((SharedPreferences.Editor)localObject).putString("subscript_feeds_readinjoy_articles", paramArrayList);
-          bhvh.a((SharedPreferences.Editor)localObject, true);
+          bhvy.a((SharedPreferences.Editor)localObject, true);
           bool1 = bool2;
           return bool1;
         }
@@ -223,8 +223,8 @@ public class SubscriptFeedsActivity
   private void d()
   {
     int j = 1;
-    Object localObject = "8.2.8" + this.app.c() + "subscript_guid";
-    if ((this.app.getPreferences().getBoolean((String)localObject, true)) && (scu.f(this.app))) {
+    Object localObject = "8.3.0" + this.app.c() + "subscript_guid";
+    if ((this.app.getPreferences().getBoolean((String)localObject, true)) && (scr.f(this.app))) {
       if (j != 0) {
         break label71;
       }
@@ -243,15 +243,15 @@ public class SubscriptFeedsActivity
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView = new CustomGuideView(this);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.g = ((Resources)localObject).getColor(2131167028);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.f = ((Resources)localObject).getColor(2131167029);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Float = actn.a(2, 14, (Resources)localObject);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.e = actn.a(12.0F, (Resources)localObject);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Int = actn.a(30.0F, (Resources)localObject);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_b_of_type_Int = actn.a(7.0F, (Resources)localObject);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.h = actn.a(12.0F, (Resources)localObject);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_c_of_type_Int = actn.a(3.0F, (Resources)localObject);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_JavaLangString = ajyc.a(2131714670);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Float = actj.a(2, 14, (Resources)localObject);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.e = actj.a(12.0F, (Resources)localObject);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Int = actj.a(30.0F, (Resources)localObject);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_b_of_type_Int = actj.a(7.0F, (Resources)localObject);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.h = actj.a(12.0F, (Resources)localObject);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_c_of_type_Int = actj.a(3.0F, (Resources)localObject);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_JavaLangString = ajya.a(2131714681);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.setOnClickListener(this);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.setId(2131376677);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.setId(2131376679);
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_ComTencentBizUiCustomGuideView);
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
@@ -287,32 +287,32 @@ public class SubscriptFeedsActivity
   private void f()
   {
     ThreadManager.executeOnSubThread(new SubscriptFeedsActivity.7(this));
-    if (sdf.a().a(this.app)) {
-      sdf.a().a(this.app.getEntityManagerFactory().createEntityManager(), this.app);
+    if (sdc.a().a(this.app)) {
+      sdc.a().a(this.app.getEntityManagerFactory().createEntityManager(), this.app);
     }
-    addObserver(this.jdField_a_of_type_Akav);
-    addObserver(this.jdField_a_of_type_Sch);
+    addObserver(this.jdField_a_of_type_Akat);
+    addObserver(this.jdField_a_of_type_Sce);
     this.app.a().addObserver(this);
-    if ((bhvh.b(this.app)) && ((scg)this.app.a(64) != null)) {}
-    mze.b("2278", this.app, true, new sbw(this));
+    if ((bhvy.b(this.app)) && ((scd)this.app.a(64) != null)) {}
+    mzb.b("2278", this.app, true, new sbt(this));
   }
   
   private void g()
   {
     boolean bool = ThemeUtil.isInNightMode(this.app);
-    if (this.jdField_a_of_type_Sbx.getCount() == 0)
+    if (this.jdField_a_of_type_Sbu.getCount() == 0)
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377747)).setText(2131698054);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377747)).setText(2131698064);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       if (!bool) {
         this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165975);
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2130849549);
+        this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2130849558);
         this.jdField_a_of_type_ComTencentWidgetSwipListView.setEnabled(false);
-        if (this.jdField_a_of_type_Scu != null) {
-          this.jdField_a_of_type_Scu.d();
+        if (this.jdField_a_of_type_Scr != null) {
+          this.jdField_a_of_type_Scr.d();
         }
         return;
         this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165976);
@@ -334,31 +334,31 @@ public class SubscriptFeedsActivity
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Scu.g();
+      this.jdField_a_of_type_Scr.g();
       this.jdField_a_of_type_Boolean = false;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Sbx.a(this.jdField_a_of_type_Scu);
+      this.jdField_a_of_type_Sbu.a(this.jdField_a_of_type_Scr);
       return;
-      this.jdField_a_of_type_Scu.h();
+      this.jdField_a_of_type_Scr.h();
     }
   }
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_Int = ((Integer)paramView.getTag(2131376682)).intValue();
+    this.jdField_b_of_type_Int = ((Integer)paramView.getTag(2131376684)).intValue();
     a(false);
   }
   
   public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131378645))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131378650))
     {
-      paramDragFrameLayout = (sdd)paramDragFrameLayout.a().getTag(2131376679);
+      paramDragFrameLayout = (sda)paramDragFrameLayout.a().getTag(2131376681);
       if (paramDragFrameLayout != null)
       {
-        axqw.b(null, "dc00899", "Pb_account_lifeservice", paramDragFrameLayout.jdField_a_of_type_JavaLangString, "0X80064D1", "0X80064D1", 0, 0, "" + paramDragFrameLayout.jdField_b_of_type_Int, "", "", "");
+        axqy.b(null, "dc00899", "Pb_account_lifeservice", paramDragFrameLayout.jdField_a_of_type_JavaLangString, "0X80064D1", "0X80064D1", 0, 0, "" + paramDragFrameLayout.jdField_b_of_type_Int, "", "", "");
         paramDragFrameLayout.a();
         c();
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1002);
@@ -402,7 +402,7 @@ public class SubscriptFeedsActivity
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if ((this.jdField_a_of_type_ComTencentWidgetSwipListView == null) || (this.jdField_a_of_type_Sbx == null)) {
+    if ((this.jdField_a_of_type_ComTencentWidgetSwipListView == null) || (this.jdField_a_of_type_Sbu == null)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     Object localObject;
@@ -423,9 +423,9 @@ public class SubscriptFeedsActivity
       this.h = false;
       int j = this.jdField_a_of_type_ComTencentWidgetSwipListView.getHeight();
       if (f2 >= this.jdField_c_of_type_Int) {
-        if ((this.jdField_a_of_type_Scu != null) && (this.jdField_a_of_type_Scu.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Scu.jdField_a_of_type_AndroidViewView != null))
+        if ((this.jdField_a_of_type_Scr != null) && (this.jdField_a_of_type_Scr.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Scr.jdField_a_of_type_AndroidViewView != null))
         {
-          localObject = this.jdField_a_of_type_Scu.jdField_a_of_type_AndroidViewView.findViewById(2131375643);
+          localObject = this.jdField_a_of_type_Scr.jdField_a_of_type_AndroidViewView.findViewById(2131375645);
           int[] arrayOfInt = new int[2];
           ((View)localObject).getLocationOnScreen(arrayOfInt);
           if (f2 >= arrayOfInt[1])
@@ -442,12 +442,12 @@ public class SubscriptFeedsActivity
           if (j != -1)
           {
             j -= this.jdField_a_of_type_ComTencentWidgetSwipListView.getHeaderViewsCount();
-            if ((j >= 0) && (j < this.jdField_a_of_type_Sbx.getCount()))
+            if ((j >= 0) && (j < this.jdField_a_of_type_Sbu.getCount()))
             {
               if (j == this.jdField_b_of_type_Int) {
                 this.h = true;
               }
-              if (this.jdField_a_of_type_Sbx.getItem(j).equals("SubscriptRecommendController"))
+              if (this.jdField_a_of_type_Sbu.getItem(j).equals("SubscriptRecommendController"))
               {
                 this.h = true;
                 continue;
@@ -480,7 +480,7 @@ public class SubscriptFeedsActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    sgx.a(null, "SUBSCRIPT_FEEDS_COST");
+    sgu.a(null, "SUBSCRIPT_FEEDS_COST");
     super.doOnCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
@@ -496,17 +496,17 @@ public class SubscriptFeedsActivity
     this.jdField_a_of_type_Int = super.getIntent().getIntExtra("come_from", 0);
     this.jdField_c_of_type_Long = super.getIntent().getLongExtra("start_time", 0L);
     this.f = super.getIntent().getBooleanExtra("has_red_hot", false);
-    this.jdField_a_of_type_Sci = new sci();
-    setTitle(sfh.a(this.app, getApplicationContext()));
+    this.jdField_a_of_type_Scf = new scf();
+    setTitle(sfe.a(this.app, getApplicationContext()));
     c();
-    boolean bool = scu.f(this.app);
+    boolean bool = scr.f(this.app);
     this.rightViewText.setText(2131691957);
     if (bool)
     {
       this.rightViewText.setVisibility(0);
       this.rightViewImg.setVisibility(8);
       this.rightViewText.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131365676);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131365675);
       this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131366191));
       SwipListView localSwipListView = this.jdField_a_of_type_ComTencentWidgetSwipListView;
       if (!ThemeUtil.isInNightMode(this.app)) {
@@ -516,22 +516,22 @@ public class SubscriptFeedsActivity
       label281:
       localSwipListView.setDivider(paramBundle);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setDividerHeight(getResources().getDimensionPixelSize(2131296771));
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnScrollListener(new sbu(this));
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setDrawFinishedListener(this.jdField_a_of_type_Bfwv);
-      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562362, null);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnScrollListener(new sbr(this));
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setDrawFinishedListener(this.jdField_a_of_type_Bfxm);
+      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562361, null);
       this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
-      ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131363480)).setVisibility(8);
-      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378334)).setText(String.format(getResources().getString(2131696792), new Object[] { sfh.a(this.app, getApplicationContext()) }));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131365764));
+      ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131363479)).setVisibility(8);
+      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378337)).setText(String.format(getResources().getString(2131696793), new Object[] { sfe.a(this.app, getApplicationContext()) }));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131365763));
       this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new sbv(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new sbs(this));
       this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(this.jdField_b_of_type_AndroidViewView);
       d();
-      this.jdField_a_of_type_Sbx = new sbx(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, getLayoutInflater());
-      this.jdField_a_of_type_Sbx.a(this);
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Sbx);
-      this.jdField_a_of_type_Sbx.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      this.jdField_a_of_type_Sbx.a(this.jdField_a_of_type_Sci);
+      this.jdField_a_of_type_Sbu = new sbu(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, getLayoutInflater());
+      this.jdField_a_of_type_Sbu.a(this);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Sbu);
+      this.jdField_a_of_type_Sbu.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+      this.jdField_a_of_type_Sbu.a(this.jdField_a_of_type_Scf);
       if (ThemeUtil.isInNightMode(this.app)) {
         break label658;
       }
@@ -543,8 +543,8 @@ public class SubscriptFeedsActivity
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
       ThreadManager.executeOnSubThread(new SubscriptFeedsActivity.5(this));
       f();
-      if (this.jdField_a_of_type_Scu == null) {
-        this.jdField_a_of_type_Scu = new scu(this, this.app, this.jdField_a_of_type_Sci);
+      if (this.jdField_a_of_type_Scr == null) {
+        this.jdField_a_of_type_Scr = new scr(this, this.app, this.jdField_a_of_type_Scf);
       }
       this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
       return true;
@@ -568,8 +568,8 @@ public class SubscriptFeedsActivity
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_MqqOsMqqHandler = null;
     }
-    removeObserver(this.jdField_a_of_type_Akav);
-    removeObserver(this.jdField_a_of_type_Sch);
+    removeObserver(this.jdField_a_of_type_Akat);
+    removeObserver(this.jdField_a_of_type_Sce);
     if ((this.app != null) && (this.app.a() != null)) {
       this.app.a().deleteObserver(this);
     }
@@ -578,19 +578,19 @@ public class SubscriptFeedsActivity
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(null);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setDrawFinishedListener(null);
     }
-    if (this.jdField_a_of_type_Sbx != null)
+    if (this.jdField_a_of_type_Sbu != null)
     {
-      this.jdField_a_of_type_Sbx.a();
-      this.jdField_a_of_type_Sbx = null;
+      this.jdField_a_of_type_Sbu.a();
+      this.jdField_a_of_type_Sbu = null;
     }
     this.jdField_a_of_type_JavaUtilList = null;
     this.jdField_a_of_type_JavaUtilArrayList = null;
-    if (this.jdField_a_of_type_Scu != null) {
-      this.jdField_a_of_type_Scu.f();
+    if (this.jdField_a_of_type_Scr != null) {
+      this.jdField_a_of_type_Scr.f();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this);
-    this.jdField_a_of_type_Sci.a();
-    this.jdField_a_of_type_Sci = null;
+    this.jdField_a_of_type_Scf.a();
+    this.jdField_a_of_type_Scf = null;
     if (this.jdField_c_of_type_Long != 0L)
     {
       this.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_c_of_type_Long);
@@ -601,7 +601,7 @@ public class SubscriptFeedsActivity
     label286:
     for (int j = 1;; j = 0)
     {
-      axqw.b(this.app, "dc00899", "Pb_account_lifeservice", "0", "0X80064CC", "0X80064CC", 0, 0, "" + j, "" + this.jdField_c_of_type_Long, "", "");
+      axqy.b(this.app, "dc00899", "Pb_account_lifeservice", "0", "0X80064CC", "0X80064CC", 0, 0, "" + j, "" + this.jdField_c_of_type_Long, "", "");
       this.jdField_c_of_type_Long = 0L;
       this.f = false;
       super.doOnDestroy();
@@ -620,7 +620,7 @@ public class SubscriptFeedsActivity
   public void doOnResume()
   {
     super.doOnResume();
-    boolean bool = scu.c(this.app);
+    boolean bool = scr.c(this.app);
     Object localObject = super.findViewById(2131368459);
     if (bool) {}
     for (int j = 0;; j = 8)
@@ -628,12 +628,12 @@ public class SubscriptFeedsActivity
       ((View)localObject).setVisibility(j);
       if (this.jdField_b_of_type_Boolean)
       {
-        if ((bhvh.b(this.app)) && ((scg)this.app.a(64) != null)) {}
+        if ((bhvy.b(this.app)) && ((scd)this.app.a(64) != null)) {}
         this.jdField_b_of_type_Boolean = false;
       }
       if (this.g)
       {
-        String str = scu.a(this.app);
+        String str = scr.a(this.app);
         Intent localIntent = new Intent(this, PublicAccountBrowser.class);
         localObject = str;
         if (TextUtils.isEmpty(str)) {
@@ -643,9 +643,9 @@ public class SubscriptFeedsActivity
         localIntent.putExtra("uin", this.app.c());
         localIntent.putExtra("fromLocalUrl", true);
         localIntent.putExtra("hide_operation_bar", true);
-        localIntent.putExtra("assignBackText", ajyc.a(2131714658));
+        localIntent.putExtra("assignBackText", ajya.a(2131714669));
         localIntent.putExtra("hideRightButton", true);
-        localIntent.putExtra("assignBackText", sfh.a(this.app, this));
+        localIntent.putExtra("assignBackText", sfe.a(this.app, this));
         localIntent.putExtra("call_from", 1001);
         startActivity(localIntent);
         overridePendingTransition(2130772177, 2130771980);
@@ -653,7 +653,7 @@ public class SubscriptFeedsActivity
           QLog.d("SubscriptFeedsActivity", 2, "subscript full recommend need show !");
         }
         this.g = false;
-        axqw.b(this.app, "CliOper", "", "", "0X8006505", "0X8006505", 0, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", "", "0X8006505", "0X8006505", 0, 0, "", "", "", "");
       }
       a();
       b();
@@ -664,7 +664,7 @@ public class SubscriptFeedsActivity
   public void finish()
   {
     super.finish();
-    sdf.a().d(this.app);
+    sdc.a().d(this.app);
   }
   
   public void onClick(View paramView)
@@ -677,25 +677,25 @@ public class SubscriptFeedsActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131376677: 
+    case 2131376679: 
     case 2131368457: 
-    case 2131376676: 
+    case 2131376678: 
       do
       {
         return;
-        axqw.b(this.app, "CliOper", "", "", "0X8006572", "0X8006572", 0, 0, "", "", "", "");
-        abtt.a(this, sfh.a(this.app, this), null, "http://dyzx.mp.qq.com/static/v8/page/subscribecategory.html?_wv=1027&_bid=2278");
-        scu.b(this.app, false);
+        axqy.b(this.app, "CliOper", "", "", "0X8006572", "0X8006572", 0, 0, "", "", "", "");
+        abtp.a(this, sfe.a(this.app, this), null, "http://dyzx.mp.qq.com/static/v8/page/subscribecategory.html?_wv=1027&_bid=2278");
+        scr.b(this.app, false);
         e();
         return;
-        axqw.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8005734", "0X8005734", 0, 0, "", "", "", "");
-        abtt.a(this, sfh.a(this.app, this), null, "http://dyzx.mp.qq.com/static/v8/page/subscribecategory.html?_wv=1027&_bid=2278");
-        scu.b(this.app, false);
+        axqy.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8005734", "0X8005734", 0, 0, "", "", "", "");
+        abtp.a(this, sfe.a(this.app, this), null, "http://dyzx.mp.qq.com/static/v8/page/subscribecategory.html?_wv=1027&_bid=2278");
+        scr.b(this.app, false);
         e();
         return;
-      } while (((Integer)paramView.getTag(2131376680)).intValue() != sbx.d);
-      localObject2 = paramView.getTag(2131376679);
-      Object localObject3 = paramView.getTag(2131376688);
+      } while (((Integer)paramView.getTag(2131376682)).intValue() != sbu.d);
+      localObject2 = paramView.getTag(2131376681);
+      Object localObject3 = paramView.getTag(2131376690);
       if (localObject3 != null)
       {
         localObject1 = (String)localObject3;
@@ -707,16 +707,16 @@ public class SubscriptFeedsActivity
         if (((Integer)localObject2).intValue() <= 0) {
           break label541;
         }
-        axqw.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800572E", "0X800572E", 0, 0, "", "", "", "");
-        axqw.b(this.app, "CliOper", "", "", "0X8006240", "0X8006240", 0, 0, "", "", "", "");
-        if (TextUtils.isEmpty(sdf.a().a((String)localObject1)))
+        axqy.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800572E", "0X800572E", 0, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", "", "0X8006240", "0X8006240", 0, 0, "", "", "", "");
+        if (TextUtils.isEmpty(sdc.a().a((String)localObject1)))
         {
           localObject3 = (PublicAccountHandler)this.app.a(11);
           if (localObject3 != null) {
             ((PublicAccountHandler)localObject3).a();
           }
         }
-        paramView = paramView.getTag(2131376681);
+        paramView = paramView.getTag(2131376683);
         if (paramView == null) {
           break label580;
         }
@@ -736,7 +736,7 @@ public class SubscriptFeedsActivity
         break;
         j = 0;
         break label306;
-        axqw.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800572F", "0X800572F", 0, 0, "", "", "", "");
+        axqy.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800572F", "0X800572F", 0, 0, "", "", "", "");
         break label356;
       }
     case 2131368782: 
@@ -744,7 +744,7 @@ public class SubscriptFeedsActivity
     case 2131368784: 
     case 2131368785: 
     case 2131368798: 
-      axqw.b(null, "CliOper", "", "", "0X8006155", "0X8006155", 0, 0, "", "", "", "");
+      axqy.b(null, "CliOper", "", "", "0X8006155", "0X8006155", 0, 0, "", "", "", "");
       localObject1 = new Intent("android.intent.action.MAIN");
       ((Intent)localObject1).putExtra("channel_id", 0);
       ((Intent)localObject1).putExtra("readinjoy_launch_source", 9);
@@ -773,7 +773,7 @@ public class SubscriptFeedsActivity
       for (;;)
       {
         this.jdField_b_of_type_Boolean = true;
-        bhvh.a(this.app, this, (Intent)localObject1);
+        bhvy.a(this.app, this, (Intent)localObject1);
         e();
         return;
         l = -1L;
@@ -784,59 +784,59 @@ public class SubscriptFeedsActivity
           QLog.d("SubscriptFeedsActivity", 2, "subscription folder jump to readinjoy with ReadInJoyArticles wrong param");
         }
       }
-    case 2131369932: 
-    case 2131369938: 
+    case 2131369931: 
+    case 2131369937: 
       label536:
       label541:
       label580:
-      paramView = paramView.getTag(2131376688);
+      paramView = paramView.getTag(2131376690);
       if (paramView != null)
       {
         paramView = (String)paramView;
-        if (sdf.a().a(paramView, this.app)) {
+        if (sdc.a().a(paramView, this.app)) {
           break label1092;
         }
-        sdf.a().b(paramView, this.app);
-        noo.a(null, "CliOper", "", "", "0X8006112", "0X8006112", 0, 0, "", "", "", "");
-        k = sdf.a().a();
+        sdc.a().b(paramView, this.app);
+        nol.a(null, "CliOper", "", "", "0X8006112", "0X8006112", 0, 0, "", "", "", "");
+        k = sdc.a().a();
         localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
         do
         {
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
-          localObject2 = (sdd)((Iterator)localObject1).next();
-        } while ((((sdd)localObject2).jdField_a_of_type_JavaLangString == null) || (!((sdd)localObject2).jdField_a_of_type_JavaLangString.equals(paramView)));
+          localObject2 = (sda)((Iterator)localObject1).next();
+        } while ((((sda)localObject2).jdField_a_of_type_JavaLangString == null) || (!((sda)localObject2).jdField_a_of_type_JavaLangString.equals(paramView)));
       }
       break;
     }
-    for (int j = ((sdd)localObject2).jdField_b_of_type_Int;; j = 0)
+    for (int j = ((sda)localObject2).jdField_b_of_type_Int;; j = 0)
     {
-      axqw.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064CD", "0X80064CD", 0, 0, "" + j, "" + k, "", "");
+      axqy.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064CD", "0X80064CD", 0, 0, "" + j, "" + k, "", "");
       b();
       return;
       paramView = "";
       break;
       label1092:
-      sdf.a().c(paramView, this.app);
-      k = sdf.a().a();
+      sdc.a().c(paramView, this.app);
+      k = sdc.a().a();
       localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
       do
       {
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject2 = (sdd)((Iterator)localObject1).next();
-      } while ((((sdd)localObject2).jdField_a_of_type_JavaLangString == null) || (!((sdd)localObject2).jdField_a_of_type_JavaLangString.equals(paramView)));
-      for (j = ((sdd)localObject2).jdField_b_of_type_Int;; j = 0)
+        localObject2 = (sda)((Iterator)localObject1).next();
+      } while ((((sda)localObject2).jdField_a_of_type_JavaLangString == null) || (!((sda)localObject2).jdField_a_of_type_JavaLangString.equals(paramView)));
+      for (j = ((sda)localObject2).jdField_b_of_type_Int;; j = 0)
       {
-        axqw.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064CE", "0X80064CE", 0, 0, "" + j, "" + k, "", "");
+        axqy.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064CE", "0X80064CE", 0, 0, "" + j, "" + k, "", "");
         break;
-        localObject1 = paramView.getTag(2131376688);
+        localObject1 = paramView.getTag(2131376690);
         if (localObject1 != null)
         {
           localObject1 = (String)localObject1;
-          paramView = paramView.getTag(2131376681);
+          paramView = paramView.getTag(2131376683);
           if (paramView == null) {
             break label1359;
           }
@@ -844,26 +844,26 @@ public class SubscriptFeedsActivity
         label1359:
         for (paramView = (String)paramView;; paramView = "")
         {
-          localObject2 = (bfol)bfoy.a(this, null);
-          ((bfol)localObject2).a(String.format(getResources().getString(2131696796), new Object[] { paramView }));
-          ((bfol)localObject2).a(2131696741, 3);
-          ((bfol)localObject2).c(2131690596);
-          ((bfol)localObject2).a(new sbq(this, (String)localObject1, (bfol)localObject2));
-          ((bfol)localObject2).show();
+          localObject2 = (bfpc)bfpp.a(this, null);
+          ((bfpc)localObject2).a(String.format(getResources().getString(2131696797), new Object[] { paramView }));
+          ((bfpc)localObject2).a(2131696742, 3);
+          ((bfpc)localObject2).c(2131690596);
+          ((bfpc)localObject2).a(new sbn(this, (String)localObject1, (bfpc)localObject2));
+          ((bfpc)localObject2).show();
           return;
           localObject1 = "";
           break;
         }
-        paramView = paramView.getTag(2131376688);
+        paramView = paramView.getTag(2131376690);
         if (paramView != null)
         {
           paramView = (String)paramView;
-          axqw.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8005730", "0X8005730", 0, 0, "", "", "", "");
-          axqw.b(this.app, "CliOper", "", "", "0X8006241", "0X8006241", 0, 0, "", "", "", "");
-          sdf.a().a(paramView, this.app);
+          axqy.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8005730", "0X8005730", 0, 0, "", "", "", "");
+          axqy.b(this.app, "CliOper", "", "", "0X8006241", "0X8006241", 0, 0, "", "", "", "");
+          sdc.a().a(paramView, this.app);
           b();
-          j = sgj.b(this.app, paramView);
-          ahpf.b(this.app, paramView, j);
+          j = sgg.b(this.app, paramView);
+          ahpd.b(this.app, paramView, j);
           this.app.a().c(paramView, 1008);
           localObject1 = this.app.getHandler(Conversation.class);
           if (localObject1 != null) {
@@ -875,12 +875,12 @@ public class SubscriptFeedsActivity
             if (!((Iterator)localObject1).hasNext()) {
               break;
             }
-            localObject2 = (sdd)((Iterator)localObject1).next();
-          } while ((((sdd)localObject2).jdField_a_of_type_JavaLangString == null) || (!((sdd)localObject2).jdField_a_of_type_JavaLangString.equals(paramView)));
+            localObject2 = (sda)((Iterator)localObject1).next();
+          } while ((((sda)localObject2).jdField_a_of_type_JavaLangString == null) || (!((sda)localObject2).jdField_a_of_type_JavaLangString.equals(paramView)));
         }
-        for (j = ((sdd)localObject2).jdField_b_of_type_Int;; j = 0)
+        for (j = ((sda)localObject2).jdField_b_of_type_Int;; j = 0)
         {
-          axqw.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064D0", "0X80064D0", 0, 0, "" + j, "", "", "");
+          axqy.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064D0", "0X80064D0", 0, 0, "" + j, "", "", "");
           return;
           paramView = "";
           break;

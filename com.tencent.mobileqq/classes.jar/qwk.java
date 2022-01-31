@@ -1,44 +1,25 @@
 class qwk
-  extends qwp
+  extends qwm
 {
-  private final float jdField_a_of_type_Float;
-  private final qwn jdField_a_of_type_Qwn;
-  private final qwn b;
+  private final float a;
   
   public qwk(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Qwn = new qwn(this.jdField_a_of_type_Float);
-    this.b = new qwn(this.jdField_a_of_type_Float);
+    this.a = paramFloat;
   }
   
   public long a(long paramLong)
   {
-    this.jdField_a_of_type_Qwn.a(paramLong);
-    paramLong = this.jdField_a_of_type_Qwn.b;
-    this.b.a(paramLong);
-    long l = this.b.b;
-    float f = this.jdField_a_of_type_Float / (1.0F - this.jdField_a_of_type_Float);
-    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Qwn.a();
-    this.b.a();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Qwn.b();
-    this.b.b();
+    long l = paramLong;
+    if (this.b > 0L) {
+      l = (this.a * (float)paramLong + (1.0F - this.a) * (float)this.b);
+    }
+    return l;
   }
   
   public String toString()
   {
-    return "DoubleExponentialPredictor(" + this.jdField_a_of_type_Float + ')';
+    return "ExponentialPredictor(" + this.a + ')';
   }
 }
 

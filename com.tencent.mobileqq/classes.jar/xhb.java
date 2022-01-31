@@ -1,90 +1,125 @@
-import NS_COMM.COMM.StCommonExt;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import NS_COMM.COMM.Entry;
+import android.content.Context;
+import android.os.Handler;
+import android.provider.Settings.Secure;
+import android.support.annotation.NonNull;
+import com.tencent.biz.videostory.support.VSReporter.1;
+import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
+import com.tencent.mobileqq.mini.report.MiniProgramReporter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class xhb
-  extends MSFServlet
 {
-  public String a()
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  
+  public static long a()
   {
-    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
+    return jdField_a_of_type_Long;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  @NonNull
+  public static String a(int paramInt, String... paramVarArgs)
   {
-    try
-    {
-      Bundle localBundle = new Bundle();
-      if (paramFromServiceMsg != null)
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          localBundle.putParcelable("KEY_FOR_AIO_STORY_FEED_DATA", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1010, true, localBundle, atzo.class);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneAioStoryFeedServlet", 2, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-        }
-        notifyObserver(paramIntent, 1010, false, localBundle, atzo.class);
-        return;
-      }
+    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
+      return "";
     }
-    catch (Throwable paramIntent)
-    {
-      QLog.e("QzoneAioStoryFeedServlet", 1, paramIntent + "onReceive error");
-      notifyObserver(null, 1010, false, null, atzo.class);
-    }
+    return paramVarArgs[paramInt];
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static List<COMM.Entry> a()
   {
-    long l1 = paramIntent.getLongExtra("key_last_aio_story_create_time", 0L);
-    long l2 = paramIntent.getLongExtra("key_friend_uid", -1L);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject = null;
-    if (arrayOfByte != null) {
-      localObject = new COMM.StCommonExt();
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("uin", String.valueOf(bcyb.a().a())), MiniProgramReportHelper.newEntry("timestamp", String.valueOf(System.currentTimeMillis())), MiniProgramReportHelper.newEntry("qua", bgyi.a()), MiniProgramReportHelper.newEntry("version", "8.3.0.4480"), MiniProgramReportHelper.newEntry("imei", bdjp.c()), MiniProgramReportHelper.newEntry("idfa", ""), MiniProgramReportHelper.newEntry("idfv", ""), MiniProgramReportHelper.newEntry("android_id", Settings.Secure.getString(bcyb.a().a().getContentResolver(), "android_id")) }));
+  }
+  
+  public static List<COMM.Entry> a(int paramInt, long paramLong1, String paramString1, long paramLong2, String paramString2)
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("ret_code", String.valueOf(paramInt)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong1)), MiniProgramReportHelper.newEntry("url", paramString1), MiniProgramReportHelper.newEntry("file_size", String.valueOf(paramLong2)), MiniProgramReportHelper.newEntry("element_id", paramString2) }));
+  }
+  
+  public static List<COMM.Entry> a(long paramLong1, long paramLong2)
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("ret_code", String.valueOf(paramLong1)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong2)) }));
+  }
+  
+  public static List<COMM.Entry> a(long paramLong1, long paramLong2, String paramString, long paramLong3)
+  {
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("ret_code", String.valueOf(paramLong1)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong2)), MiniProgramReportHelper.newEntry("url", paramString), MiniProgramReportHelper.newEntry("file_size", String.valueOf(paramLong3)) }));
+  }
+  
+  public static List<COMM.Entry> a(ArrayList<COMM.Entry> paramArrayList, HashMap<String, Object> paramHashMap)
+  {
+    Object localObject = paramArrayList;
+    if (paramArrayList == null) {
+      localObject = new ArrayList();
     }
-    try
+    if ((paramHashMap != null) && (paramHashMap.keySet().size() > 0))
     {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new xgz((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, -1, a());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
-      }
-      paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
-      paramPacket.putSendData(bblm.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      paramArrayList = paramHashMap.keySet().iterator();
+      while (paramArrayList.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QzoneAioStoryFeedServlet", 2, "onSend. mergeFrom exception!");
-        }
-        localInvalidProtocolBufferMicroException.printStackTrace();
+        String str = (String)paramArrayList.next();
+        ((ArrayList)localObject).add(MiniProgramReportHelper.newEntry(str, String.valueOf(paramHashMap.get(str))));
       }
     }
+    return localObject;
+  }
+  
+  public static List<COMM.Entry> a(HashMap<String, Object> paramHashMap)
+  {
+    return a(null, paramHashMap);
+  }
+  
+  public static List<COMM.Entry> a(List<COMM.Entry> paramList)
+  {
+    if (paramList != null) {
+      paramList.add(MiniProgramReportHelper.newEntry("unique_id", String.valueOf(a())));
+    }
+    return paramList;
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_Long = System.currentTimeMillis() / 1000L << 32 | jdField_a_of_type_Int;
+    jdField_a_of_type_Int += 1;
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    a("", paramString1, paramString2, paramInt1, paramInt2, paramVarArgs);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    axqy.b(null, "dc00898", "", paramString1, paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+  }
+  
+  public static void a(String paramString, List<COMM.Entry> paramList)
+  {
+    MiniProgramReporter.getInstance().getReportHandler().post(new VSReporter.1(paramString, paramList));
+  }
+  
+  public static List<COMM.Entry> b(HashMap<String, Object> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.keySet().size() > 0)) {
+      return a(a(paramHashMap));
+    }
+    return null;
+  }
+  
+  public static void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    b("", paramString1, paramString2, paramInt1, paramInt2, paramVarArgs);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    axrx.a(null, paramString1, paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
   }
 }
 

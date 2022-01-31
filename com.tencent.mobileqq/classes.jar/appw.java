@@ -1,16 +1,32 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.5.1;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
-public class appw
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+class appw
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  appw(appp paramappp) {}
+  appw(appt paramappt) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.a.a.runOnUiThread(new VideoFilePresenter.5.1(this));
+    if (paramInt == -2) {
+      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
+        appt.a(this.a);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) || (this.a.jdField_a_of_type_AndroidAppActivity == null) || (!(this.a.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).isResume()));
+      appt.b(this.a);
+      return;
+    } while ((paramInt != -1) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
+    appt.a(this.a);
   }
 }
 

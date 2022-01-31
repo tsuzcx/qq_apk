@@ -1,10 +1,11 @@
-public abstract class twt
-  implements tws
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
+
+public abstract interface twt
 {
-  public boolean a(twp paramtwp)
-  {
-    return true;
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<twl> paramList);
+  
+  public abstract void a(List<twm> paramList, boolean paramBoolean);
 }
 
 

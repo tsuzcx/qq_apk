@@ -1,15 +1,17 @@
-class tic
-  extends ajsg
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class tic
+  extends DataSetObserver
 {
-  tic(thy paramthy) {}
+  tic(thv paramthv) {}
   
-  protected void a(int paramInt)
+  public void onChanged()
   {
-    if (paramInt == 1)
-    {
-      veg.b(thy.b() + ".VASH", "Friend Cache Inited!");
-      thy.h = true;
-      this.a.a.notifyDataSetChanged();
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
     }
   }
 }

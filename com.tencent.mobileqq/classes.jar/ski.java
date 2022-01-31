@@ -1,105 +1,32 @@
 import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
-import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadPresenter.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.data.RockDownloadInfo;
 
-public class ski
+final class ski
+  implements DialogInterface.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-  private RockDownloadListener jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener;
+  ski(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt1, int paramInt2) {}
   
-  public ski(Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private RockDownloadListener a(RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener = new RockDownloadPresenter.1(this, paramRockDownloadListenerWrapper);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener;
-  }
-  
-  public static String a()
-  {
-    return "https://weseeugg.qq.com/download?channelid=204002177";
-  }
-  
-  public RockDownloadInfo a()
-  {
-    int i = skb.a().e();
-    String str2 = skb.a().c();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = a();
-    }
-    return new RockDownloadInfo("biz_src_jc_gzh_weishi", "weishi_gzh", "com.tencent.weishi", str1, i);
-  }
-  
-  public void a(Activity paramActivity, RockDownloadInfo paramRockDownloadInfo, int paramInt, WSDownloadParams paramWSDownloadParams, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
-  {
-    if ((paramActivity != null) && (paramInt == 3)) {
-      skj.a(paramActivity);
-    }
-    if (skq.c())
+    if (vzw.a(this.jdField_a_of_type_AndroidAppActivity))
     {
-      sne.d("RockDownloader", "已有正在下载的任务，不响应");
+      snd.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+      smn.a(114, this.jdField_a_of_type_Int, this.b, null);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      smp.b(112, 1, 0);
       return;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem == null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem = smn.a();
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.downloadscene = skn.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.comment_loctaion = this.b;
+      skn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
     }
-    paramActivity = paramWSDownloadParams;
-    if (paramWSDownloadParams == null) {
-      paramActivity = new WSDownloadParams();
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramActivity;
-    sms.a(paramActivity, 1);
-    WSPublicAccReport.getInstance().reportDownload(paramActivity.mEventId, paramInt, 1, 1, 0);
-    if (paramInt == 1)
-    {
-      amas.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
-      sne.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
-      return;
-    }
-    sni.a(paramActivity.mScheme);
-    amas.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
-    sne.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
-  }
-  
-  public boolean a(RockDownloadInfo paramRockDownloadInfo)
-  {
-    boolean bool = amas.a(paramRockDownloadInfo);
-    if (bool)
-    {
-      sne.b("RockDownloader", "rockdownload deleteSuccess");
-      return bool;
-    }
-    if (paramRockDownloadInfo.realVersionCode == 333)
-    {
-      sne.b("RockDownloader", "rockdownload 模拟 deleteFail");
-      return bool;
-    }
-    sne.b("RockDownloader", "rockdownload deleteFail");
-    return bool;
-  }
-  
-  public boolean a(RockDownloadInfo paramRockDownloadInfo, int paramInt)
-  {
-    boolean bool = amas.b(paramRockDownloadInfo);
-    int i = skq.b();
-    if (bool)
-    {
-      sne.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
-      sms.a(paramInt, 1);
-      WSPublicAccReport.getInstance().reportDownload(skq.a(), i, 2, 1, 1);
-      return bool;
-    }
-    sne.d("RockDownloader", "rockdownload installFail,eventType = " + i);
-    return bool;
   }
 }
 

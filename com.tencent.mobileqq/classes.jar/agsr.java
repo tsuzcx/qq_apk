@@ -1,39 +1,9 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import java.util.HashMap;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class agsr
-  extends agsq
+public abstract interface agsr
 {
-  public vug a;
-  public HashMap<String, PhotoSendParams> b;
-  public HashMap<String, PhotoSendParams> c;
-  public String d;
-  public HashMap<String, PicInfo> d;
-  public int e;
-  public String e;
-  public HashMap<String, PicInfo> e;
-  public boolean e;
-  public int f;
-  public String f;
-  public HashMap<String, byte[]> f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public boolean h;
-  public int i;
-  public boolean i;
-  public int j = 1052;
-  public boolean j;
-  public int k;
-  public boolean k;
-  public boolean l;
-  public boolean m;
-  public boolean n;
-  public boolean o;
-  public boolean p;
-  public boolean q;
+  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

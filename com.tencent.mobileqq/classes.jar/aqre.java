@@ -1,40 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
 class aqre
-  extends Handler
+  implements Animation.AnimationListener
 {
-  aqre(aqrd paramaqrd) {}
+  aqre(aqqy paramaqqy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    case 5: 
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      aqrd.a(this.a);
-      return;
-    case 6: 
-      aqrd.b(this.a);
-      return;
-    case 2: 
-      aqrd.c(this.a);
-      return;
-    case 3: 
-      aqrd.d(this.a);
-      return;
-    case 4: 
-      aqrd.e(this.a);
-      return;
-    }
-    aqrd.f(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.c();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

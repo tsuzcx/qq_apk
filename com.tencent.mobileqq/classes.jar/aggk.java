@@ -1,65 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class aggk
-  extends ampb
+class aggk
+  implements Comparator<RecentBaseData>
 {
-  public static aggj a()
-  {
-    return (aggj)ampm.a().a(470);
-  }
+  aggk(aggj paramaggj) {}
   
-  public int a()
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    return 470;
-  }
-  
-  @NonNull
-  public aggj a(int paramInt)
-  {
-    return new aggj();
-  }
-  
-  @Nullable
-  public aggj a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfampi[0].a);
+    int j = 0;
+    int i = j;
+    long l1;
+    long l2;
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
+    {
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
+      {
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
+        }
+        i = -1;
+      }
     }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return aggj.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<aggj> a()
-  {
-    return aggj.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    label83:
+    do
+    {
+      return i;
+      i = j;
+    } while (l1 >= l2);
+    return 1;
   }
 }
 

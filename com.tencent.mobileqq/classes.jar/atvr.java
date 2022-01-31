@@ -1,14 +1,8 @@
-class atvr
-  implements atwh
+import java.util.List;
+
+public abstract interface atvr
 {
-  atvr(atvq paramatvq, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_Atvq.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
-  }
+  public abstract void a(boolean paramBoolean, List<atwx> paramList);
 }
 
 

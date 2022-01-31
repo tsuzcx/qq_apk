@@ -1,77 +1,23 @@
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.HashSet;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 
-public class xdt
-  extends bfwn
+class xdt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private HashSet<Integer> a = new HashSet();
+  xdt(xdq paramxdq, View paramView) {}
   
-  private void a(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramView instanceof ProteusItemView))
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
     {
-      paramView = ((ProteusItemView)paramView).a();
-      localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
-      localValueAnimator.setDuration(300L);
-      localValueAnimator.addUpdateListener(new xdv(this, paramView));
-      localValueAnimator.start();
+      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
     }
-    do
-    {
-      return;
-      paramView = paramView.findViewById(2131375491);
-    } while (paramView == null);
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
-    localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new xdw(this, paramView));
-    localValueAnimator.start();
-  }
-  
-  protected View a(View paramView, int paramInt)
-  {
-    View localView;
-    if (paramView == null) {
-      localView = null;
-    }
-    do
-    {
-      return localView;
-      localView = paramView;
-    } while (!this.a.contains(Integer.valueOf(paramInt)));
-    this.a.remove(Integer.valueOf(paramInt));
-    paramView.getViewTreeObserver().addOnPreDrawListener(new xdu(this, paramView));
-    return paramView;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.a.add(Integer.valueOf(paramInt));
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
   }
 }
 

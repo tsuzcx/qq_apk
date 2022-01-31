@@ -1,26 +1,18 @@
-import android.util.Property;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
-class bkms
-  extends Property<bkmo, Integer>
+public class bkms
+  implements View.OnLayoutChangeListener
 {
-  bkms(bkmo parambkmo, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bkms(SlideBottomPanel paramSlideBottomPanel) {}
   
-  public Integer a(bkmo parambkmo)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (parambkmo != null) {
-      return Integer.valueOf(bkmo.b(parambkmo));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bkmo parambkmo, Integer paramInteger)
-  {
-    if (parambkmo != null) {
-      bkmo.b(parambkmo, paramInteger.intValue());
-    }
+    paramView.setTop(paramInt6);
+    paramView.setBottom(paramInt8);
+    paramView.setLeft(paramInt5);
+    paramView.setRight(paramInt7);
   }
 }
 

@@ -1,54 +1,19 @@
 import android.view.View;
-import com.tencent.device.msg.data.MessageForDevPtt;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
-class yei
-  implements bfoq
+public class yei
+  implements View.OnClickListener
 {
-  yei(yeh paramyeh, MessageForPtt paramMessageForPtt, bfol parambfol) {}
+  public yei(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
-    paramView = null;
-    if (this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-    {
-      paramView = axaq.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-      ((MessageForPtt)paramView).fileSize = -3L;
-      this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (!bbfj.g(this.a)) {
+      bcql.a(this.a, ajya.a(2131703239), 2000).a();
     }
-    if (paramView != null)
-    {
-      if (!"device_groupchat".equals(paramView.extStr)) {
-        break label256;
-      }
-      if ((!bbev.d(BaseApplication.getContext())) && ((paramView instanceof MessageForDevPtt)))
-      {
-        paramView = (MessageForDevPtt)paramView;
-        paramView.fileSize = -1L;
-        paramView.extraflag = 32768;
-        paramView.extStr = "device_groupchat";
-        paramView.serial();
-        this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
-        this.jdField_a_of_type_Yeh.b();
-        this.jdField_a_of_type_Bfol.dismiss();
-        return;
-      }
-      aenv.a(((yak)this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength), paramView);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Yeh.b();
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      label256:
-      ((yeu)this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(yeu.f, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, Long.parseLong(this.jdField_a_of_type_Yeh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), paramView.uniseq, paramView.istroop, (int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime / 1000);
-    }
+    DeviceTipActivity.a(this.a, 2);
+    this.a.finish();
   }
 }
 

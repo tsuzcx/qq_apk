@@ -1,28 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
 
 public class aklk
-  extends akdo
+  implements Comparator<File>
 {
-  private aklk(CheckPublicAccount paramCheckPublicAccount) {}
+  public aklk(CleanCache.1 param1) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      this.a.a.a.edit().putBoolean("isPublicAccountListOK", true).commit();
-      this.a.a(7);
-    }
-    while (paramInt == 0) {
-      return;
-    }
-    this.a.a(6);
+    return 0;
   }
 }
 

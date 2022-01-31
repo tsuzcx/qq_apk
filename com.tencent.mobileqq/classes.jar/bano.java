@@ -1,30 +1,35 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.tencentmap.mapsdk.maps.model.Marker;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
 public class bano
-  extends TextView
+  extends Handler
 {
-  public bano(FollowImageTextView paramFollowImageTextView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public bano(AutoLocationMapView paramAutoLocationMapView) {}
   
-  protected void onDraw(Canvas paramCanvas)
+  public void handleMessage(Message paramMessage)
   {
-    if (FollowImageTextView.a(this.a))
+    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
+    this.a.getMap().clear();
+    if (paramMessage.arg1 == 0)
     {
-      super.onDraw(paramCanvas);
-      return;
+      this.a.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
+      this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
+      Bitmap localBitmap = baxi.a(this.a.getContext().getResources(), 2130841973);
+      this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).snippet("").position(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D))).showInfoWindow();
     }
-    Object localObject = getPaint();
-    ((TextPaint)localObject).setColor(getCurrentTextColor());
-    ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((banr)localObject).a(FollowImageTextView.a(this.a) - 1);
-    ((banr)localObject).a(paramCanvas);
+    if (this.a.a != null) {
+      this.a.a.a(paramMessage.arg1, localGeoPoint);
+    }
   }
 }
 

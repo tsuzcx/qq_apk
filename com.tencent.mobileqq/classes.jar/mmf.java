@@ -1,14 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 class mmf
   implements View.OnClickListener
 {
-  mmf(mme parammme) {}
+  mmf(mmb parammmb) {}
   
   public void onClick(View paramView)
   {
-    mme.a(this.a);
+    if ((mmb.a(this.a) != null) && (mmb.a(this.a).isShown()))
+    {
+      this.a.e();
+      return;
+    }
+    mmb.c(this.a);
   }
 }
 

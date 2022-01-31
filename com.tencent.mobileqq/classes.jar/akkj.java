@@ -1,18 +1,17 @@
-import android.support.v4.app.FragmentActivity;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
 
 public class akkj
-  implements View.OnClickListener
+  extends ClickableSpan
 {
   public akkj(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
   public void onClick(View paramView)
   {
-    akkb.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
-    axqw.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
+    PermisionPrivacyActivity.a(NewFriendVerifyBlockedListFragment.a(this.a));
+    axqy.b(null, "dc00898", "", "", "0X800A3AA", "0X800A3AA", 0, 0, "", "", "", "");
   }
 }
 

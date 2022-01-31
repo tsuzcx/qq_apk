@@ -8,8 +8,8 @@ public final class PobingUpdateCallback$1
   public PobingUpdateCallback$1()
   {
     put(Integer.valueOf(2131371793), "addgroup_preview.png");
-    put(Integer.valueOf(2131378859), "addgroup_edit_head.png");
-    put(Integer.valueOf(2131378854), "addgroup_edit_background.png");
+    put(Integer.valueOf(2131378864), "addgroup_edit_head.png");
+    put(Integer.valueOf(2131378859), "addgroup_edit_background.png");
   }
 }
 

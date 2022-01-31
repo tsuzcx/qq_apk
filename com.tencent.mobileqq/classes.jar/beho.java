@@ -1,8 +1,6 @@
-public class beho
+public abstract interface beho
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void onRuntimeMessage(int paramInt, Object paramObject);
 }
 
 

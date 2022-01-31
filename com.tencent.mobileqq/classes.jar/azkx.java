@@ -1,14 +1,16 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class azkx
-  implements bcpl
+  extends ajxj
 {
   public azkx(NewTroopContactView paramNewTroopContactView) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

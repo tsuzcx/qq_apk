@@ -1,250 +1,107 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.Window;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
 public class avth
-  implements DialogInterface.OnDismissListener, avvt
 {
-  public static final int[] a;
-  ahwl a;
-  public View a;
-  public AppInterface a;
-  public CaptureVideoFilterViewPager a;
-  public EffectsCameraCaptureView a;
+  public int a;
+  private long jdField_a_of_type_Long;
+  private final int[] jdField_a_of_type_ArrayOfInt = new int[256];
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c = 125;
   
-  static
+  public void a()
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 25, 43, 60, 78, 95 };
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null) && (paramInt >= 0) && (paramInt <= 5))
-    {
-      BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putInt("sv_beauty_level", paramInt).commit();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setBeauty(jdField_a_of_type_ArrayOfInt[paramInt]);
-      if (QLog.isColorLevel()) {
-        QLog.d("sv_beauty_level", 2, "beauty level : " + jdField_a_of_type_ArrayOfInt[paramInt]);
-      }
-      avtb.b(paramInt);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeChecker", 2, "refreshTimer ");
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, avti paramavti)
   {
-    SubtitleLayout localSubtitleLayout = (SubtitleLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376705);
-    if (localSubtitleLayout != null)
-    {
-      ahzh.a().c = ahyc.a(paramInt);
-      if (paramInt == 0)
-      {
-        localSubtitleLayout.setAnimType(0, null, null, 0, 0);
-        localSubtitleLayout.setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    localSubtitleLayout.setVisibility(0);
-    localSubtitleLayout.setAnimType(paramInt, paramString, null, 0, 0);
-  }
-  
-  public void a(FilterCategoryItem paramFilterCategoryItem)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.setCurrentItem(paramFilterCategoryItem);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFilter(paramFilterCategoryItem);
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
-  {
-    if (paramPtvTemplateInfo == null) {
-      return;
-    }
-    axqw.b(null, "dc00898", "", "", "0X800859F", "0X800859F", 1, 0, "", "", paramPtvTemplateInfo.id, "");
-    if (paramPtvTemplateInfo.popup)
-    {
-      boolean bool = a(paramPtvTemplateInfo.androidopenurlheader);
-      if (bool) {}
-      for (String str = "1";; str = "0")
-      {
-        axqw.b(null, "dc00898", "", "", "0X80085A0", "0X80085A0", 1, 0, str, "", "", "");
-        if (!bool) {
-          break;
-        }
-        a(paramPtvTemplateInfo.popupimgurl, paramPtvTemplateInfo.popupcontent, paramPtvTemplateInfo.popupbtn, paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl, paramPtvTemplateInfo.buttonbgcolor, 1, bool);
-        return;
-      }
-      a(paramPtvTemplateInfo.popupimgurl, paramPtvTemplateInfo.popupcontent2, paramPtvTemplateInfo.popupbtn2, paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl, paramPtvTemplateInfo.buttonbgcolor, 1, bool);
-      return;
-    }
-    a(paramPtvTemplateInfo.androidopenurlheader, paramPtvTemplateInfo.openurl, paramPtvTemplateInfo.storeurl);
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString)
-  {
-    EffectsCameraCaptureView localEffectsCameraCaptureView;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView != null)
-    {
-      avrt.a();
-      if (axjq.a(avrt.a))
-      {
-        localEffectsCameraCaptureView = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView;
-        if (paramPtvTemplateInfo.funcType != PtvTemplateManager.PtvTemplateInfo.FUNC_REDBAG_GET) {
-          break label53;
-        }
-      }
-    }
-    label53:
-    for (boolean bool = true;; bool = false)
-    {
-      localEffectsCameraCaptureView.g(bool);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect(paramString);
-      return;
-    }
-  }
-  
-  void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_AndroidViewView.getContext() != null)) {}
-    try
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidViewView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      this.jdField_a_of_type_AndroidViewView.getContext().startActivity(localIntent);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("EffectsListenerController", 1, "start QQBrowserActivity catch an Exception.", paramString);
-    }
-  }
-  
-  void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!bbjw.a(paramString2)) {}
-      for (paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString2)); paramString1 != null; paramString1 = this.jdField_a_of_type_AndroidViewView.getContext().getPackageManager().getLaunchIntentForPackage(paramString1))
-      {
-        paramString1.addCategory("android.intent.category.DEFAULT");
-        this.jdField_a_of_type_AndroidViewView.getContext().startActivity(paramString1);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("EffectsListenerController", 1, "TryJumpToQIM catch an Exception.", paramString1);
-      new bcqc(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()).a(ajyc.a(2131703987), 100, 0, 1);
-    }
-  }
-  
-  void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (a(paramString1))
-    {
-      a(paramString1, paramString2);
-      return;
-    }
-    a(paramString3);
-  }
-  
-  void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Ahwl == null))
-    {
-      ahwl localahwl = new ahwl(this.jdField_a_of_type_AndroidViewView.getContext());
-      this.jdField_a_of_type_Ahwl = localahwl;
-      localahwl.a(paramString1, paramString2, paramString3, paramString7);
-      localahwl.a(new avti(this, paramInt, paramBoolean, paramString4, paramString5, paramString6));
-      localahwl.a();
-      this.jdField_a_of_type_Ahwl.setOnDismissListener(this);
-      this.jdField_a_of_type_Ahwl.show();
-      paramString1 = this.jdField_a_of_type_Ahwl.getWindow().getAttributes();
-      paramString1.width = -1;
-      paramString1.height = -1;
-      this.jdField_a_of_type_Ahwl.getWindow().setAttributes(paramString1);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    QLog.d("EffectsListenerController", 1, "start CheckJumpAPPisInstall appPackageName is " + paramString);
-    if (bbjw.a(paramString)) {}
+    if ((paramavti == null) || (paramArrayOfByte == null)) {}
+    int[] arrayOfInt;
     do
     {
-      return false;
-      try
+      do
       {
-        paramString = this.jdField_a_of_type_AndroidViewView.getContext().getPackageManager().getPackageInfo(paramString, 1);
-        if (paramString == null)
-        {
-          QLog.d("EffectsListenerController", 1, "CheckJumpAPPisInstall PackageInfo is null");
-          return false;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("EffectsListenerController", 1, "CheckJumpAPPisInstall catch an Exception.", paramString);
-        return false;
-      }
-      paramString = paramString.activities[0].name;
-      QLog.d("EffectsListenerController", 1, "start CheckJumpAPPisInstall qqAppActivity is " + paramString);
-    } while (paramString == null);
-    return true;
-  }
-  
-  public void b(FilterCategoryItem paramFilterCategoryItem)
-  {
-    if (paramFilterCategoryItem == null) {
-      return;
-    }
-    axqw.b(null, "dc00898", "", "", "0X800859F", "0X800859F", 2, 0, "", "", paramFilterCategoryItem.a, "");
-    if (paramFilterCategoryItem.b)
+        return;
+        arrayOfInt = ShortVideoUtils.a();
+      } while (arrayOfInt[0] != 1);
+      this.jdField_a_of_type_Int += 1;
+    } while (this.jdField_a_of_type_Int % 8 != 0);
+    this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
+    this.c = arrayOfInt[2];
+    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
+    int i = 1;
+    while (i < paramInt2)
     {
-      boolean bool = a(paramFilterCategoryItem.g);
-      if (bool) {}
-      for (String str = "1";; str = "0")
+      int j = 1;
+      while (j < paramInt1)
       {
-        axqw.b(null, "dc00898", "", "", "0X80085A0", "0X80085A0", 2, 0, str, "", "", "");
-        if (!bool) {
+        if (i * paramInt1 + j < paramArrayOfByte.length)
+        {
+          arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+          int k = paramArrayOfByte[(i * paramInt1 + j)] & 0xFF;
+          arrayOfInt[k] += 64;
+        }
+        j += 8;
+      }
+      i += 8;
+    }
+    i = 0;
+    paramInt2 = 255;
+    paramInt1 = 255;
+    label172:
+    if (paramInt1 >= 51)
+    {
+      i += this.jdField_a_of_type_ArrayOfInt[paramInt1];
+      if (i < this.jdField_b_of_type_Int) {}
+    }
+    for (;;)
+    {
+      if (paramInt1 <= this.c)
+      {
+        QLog.w("DarkModeChecker", 1, "darkmode = true!");
+        this.jdField_b_of_type_Long = 0L;
+        if (this.jdField_a_of_type_Long == 0L)
+        {
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          return;
+          paramInt2 = paramInt1;
+          paramInt1 -= 1;
+          break label172;
+        }
+        if ((this.jdField_a_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L)) {
           break;
         }
-        a(paramFilterCategoryItem.k, paramFilterCategoryItem.l, paramFilterCategoryItem.m, paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i, paramFilterCategoryItem.p, 2, bool);
+        this.jdField_a_of_type_Long = -1L;
+        QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
+        this.jdField_b_of_type_Long = 0L;
+        paramavti.a(true);
         return;
       }
-      a(paramFilterCategoryItem.k, paramFilterCategoryItem.n, paramFilterCategoryItem.o, paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i, paramFilterCategoryItem.p, 2, bool);
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_a_of_type_Long = 0L;
+      }
+      if (this.jdField_b_of_type_Long == 0L)
+      {
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        return;
+      }
+      if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long < 2000L)) {
+        break;
+      }
+      this.jdField_b_of_type_Long = -1L;
+      QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
+      this.jdField_a_of_type_Long = 0L;
+      paramavti.a(false);
       return;
+      paramInt1 = paramInt2;
     }
-    a(paramFilterCategoryItem.g, paramFilterCategoryItem.h, paramFilterCategoryItem.i);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Ahwl = null;
   }
 }
 

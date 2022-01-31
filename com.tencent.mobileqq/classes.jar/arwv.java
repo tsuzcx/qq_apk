@@ -1,29 +1,18 @@
-import android.view.KeyEvent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class arwv
-  implements View.OnKeyListener
+  implements View.OnClickListener
 {
-  public arwv(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public arwv(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-      return true;
-    }
-    if ((paramInt == 84) || (paramInt == 66))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    axqy.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
   }
 }
 

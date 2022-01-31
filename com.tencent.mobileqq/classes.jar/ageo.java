@@ -1,18 +1,18 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 class ageo
-  implements View.OnTouchListener
+  implements bfpu
 {
-  ageo(agei paramagei) {}
+  ageo(ageg paramageg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    }
+    return true;
   }
 }
 

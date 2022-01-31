@@ -1,16 +1,25 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class atjn
-  implements View.OnClickListener
+  implements bfph
 {
-  public atjn(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public atjn(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ((Activity)this.a.getContext()).finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bfpc != null) {
+        this.jdField_a_of_type_Bfpc.dismiss();
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
   }
 }
 

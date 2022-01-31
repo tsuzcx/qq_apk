@@ -1,29 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class num
-  extends Handler
+  implements ViewFactory.FoundClickableViewListener
 {
-  private WeakReference<nuj> a;
+  num(nuk paramnuk, TemplateBean paramTemplateBean) {}
   
-  public num(nuj paramnuj)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a = new WeakReference(paramnuj);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    nuj localnuj = (nuj)this.a.get();
-    if ((localnuj == null) || (!localnuj.b())) {
-      return;
-    }
-    switch (paramMessage.what)
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-    default: 
-      return;
     }
-    localnuj.b();
+    do
+    {
+      return;
+    } while (!(paramViewBase instanceof pno));
+    ((pno)paramViewBase).a(new nun(this, paramViewBase));
   }
 }
 

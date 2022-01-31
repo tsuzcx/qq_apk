@@ -1,18 +1,29 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import mqq.app.Foreground;
 
 public class akdg
-  extends RecyclablePool.Recyclable
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
-  public long d;
-  
-  public void recycle()
+  public static String a()
   {
-    super.recycle();
+    Activity localActivity = Foreground.getTopActivity();
+    String str;
+    if (localActivity != null)
+    {
+      str = localActivity.getClass().getName();
+      if ((localActivity instanceof SplashActivity))
+      {
+        if (SplashActivity.a == 1) {
+          return str + "_" + ((SplashActivity)localActivity).a();
+        }
+        return str + "_ChatFragment";
+      }
+    }
+    else
+    {
+      return "Null";
+    }
+    return str;
   }
 }
 

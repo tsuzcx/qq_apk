@@ -1,14 +1,15 @@
-public abstract interface askm
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
+
+class askm
+  implements askr<Pair<String, Integer>, EmoticonPackage>
 {
-  public abstract void a(int paramInt);
+  askm(askf paramaskf) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  {
+    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+  }
 }
 
 

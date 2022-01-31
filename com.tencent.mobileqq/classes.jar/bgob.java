@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bgob
-  implements DialogInterface.OnClickListener
+final class bgob
+  implements View.OnClickListener
 {
-  public bgob(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bgob(Dialog paramDialog, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bgmt.a(this.a, 5, null);
-    this.a.finish();
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

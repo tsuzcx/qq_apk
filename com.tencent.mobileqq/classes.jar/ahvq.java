@@ -1,27 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvq
-  implements Animation.AnimationListener
+  implements aiai
 {
   public ahvq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a_(String paramString)
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    ahub.a("", "0X8007C05", this.a.c + "", "", "", "");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
   }
 }
 

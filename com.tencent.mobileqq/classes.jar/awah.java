@@ -1,50 +1,83 @@
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.1;
-import java.nio.Buffer;
-import java.nio.IntBuffer;
+import android.media.MediaMetadataRetriever;
 
 public class awah
 {
-  public static String a(String paramString)
+  private static String a = "MediaUtil";
+  
+  @TargetApi(10)
+  public static long a(String paramString)
   {
-    return paramString + ".thumb.png";
+    long l1 = 0L;
+    localMediaMetadataRetriever = new MediaMetadataRetriever();
+    try
+    {
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = localMediaMetadataRetriever.extractMetadata(9);
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      long l2;
+      ved.c(a, "getVideoDuration path=" + paramString + " exists=" + vyf.e(paramString), localRuntimeException);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    catch (Error localError)
+    {
+      label32:
+      ved.c(a, "getVideoDuration path=" + paramString + " exists=" + vyf.e(paramString), localError);
+      localMediaMetadataRetriever.release();
+      return 0L;
+    }
+    try
+    {
+      l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+      break label32;
+    }
+    localMediaMetadataRetriever.release();
+    return l1;
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, avyy paramavyy, awaj paramawaj)
+  @TargetApi(10)
+  public static Bitmap a(String paramString, int paramInt)
   {
-    int[] arrayOfInt1 = new int[paramInt2 * paramInt3];
-    int[] arrayOfInt2 = new int[paramInt2 * paramInt3];
-    Object localObject1 = IntBuffer.wrap(arrayOfInt1);
-    ((IntBuffer)localObject1).position(0);
-    Object localObject2;
-    if (paramInt1 != 0)
+    Object localObject = null;
+    if (!vyf.e(paramString))
     {
-      localObject2 = new int[1];
-      GLES20.glGenFramebuffers(1, (int[])localObject2, 0);
-      GLES20.glBindFramebuffer(36160, localObject2[0]);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glDeleteFramebuffers(1, (int[])localObject2, 0);
-      localObject2[0] = 0;
-      localObject2 = paramavyy.jdField_a_of_type_Awai;
-      if (localObject2 == null) {
-        break label169;
-      }
-      paramavyy = ((awai)localObject2).jdField_a_of_type_JavaLangString;
-      localObject1 = ((awai)localObject2).jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat;
+      ved.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
+      return null;
     }
-    for (paramInt1 = ((awai)localObject2).jdField_a_of_type_Int;; paramInt1 = 100)
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    long l = paramInt * 1000;
+    try
     {
-      ThreadManager.executeOnFileThread(new ThumbnailUtil.1(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, paramavyy, (Bitmap.CompressFormat)localObject1, paramInt1, paramawaj));
-      return;
-      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
-      break;
-      label169:
-      paramavyy = a(paramavyy.jdField_a_of_type_JavaLangString);
-      localObject1 = Bitmap.CompressFormat.PNG;
+      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
+      localMediaMetadataRetriever.release();
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        ved.c(a, "getFrameAtTime", paramString);
+        paramString = localObject;
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1, 0);
+    if (paramString1 != null) {
+      vxv.a(paramString1, Bitmap.CompressFormat.JPEG, 80, paramString2);
     }
   }
 }

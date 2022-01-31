@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import beku;
-import bels;
-import belt;
+import bell;
+import bemj;
+import bemk;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.Inet4Address;
@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class UDPJsPlugin$UDPTask
-  implements belt
+  implements bemk
 {
   private final DatagramChannel channel;
   private final ByteBuffer receiveBuffer;
@@ -47,7 +47,7 @@ class UDPJsPlugin$UDPTask
     try
     {
       this.channel.socket().bind(null);
-      bels.a().a(this.channel, 1, this);
+      bemj.a().a(this.channel, 1, this);
       onListening();
       int i = this.channel.socket().getLocalPort();
       return i;
@@ -134,7 +134,7 @@ class UDPJsPlugin$UDPTask
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("udpTaskId", this.taskId);
       localJSONObject.put("event", "message");
-      beku.a(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, beku.a, "message", localJSONObject);
+      bell.a(UDPJsPlugin.access$400(this.this$0), paramArrayOfByte, 0, paramInt, bell.a, "message", localJSONObject);
       paramArrayOfByte = new JSONObject();
       InetAddress localInetAddress;
       if ((paramSocketAddress instanceof InetSocketAddress))

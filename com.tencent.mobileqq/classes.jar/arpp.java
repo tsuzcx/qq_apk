@@ -1,22 +1,58 @@
-import com.tencent.widget.AbsListView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
+import mqq.os.MqqHandler;
 
-public abstract interface arpp
+class arpp
+  implements Handler.Callback
 {
-  public abstract int a();
+  arpp(arpo paramarpo) {}
   
-  public abstract void a();
+  private void a()
+  {
+    if (arpo.a(this.a) != null) {
+      arpo.a(this.a).setRefreshing(false);
+    }
+    if (arpo.a(this.a) != null) {
+      arpo.a(this.a).setRefresh(false);
+    }
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(arpr paramarpr);
-  
-  public abstract void a(AbsListView paramAbsListView, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 3: 
+      bcql.a(this.a.a(), 1, 2131719799, 0).b(arpo.a(this.a));
+      a();
+      return false;
+    case 4: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label134;
+        }
+        arpo.a(this.a);
+        if (arpo.a(this.a) == null) {
+          break;
+        }
+        arpo.a(this.a).a(0);
+        this.a.a.sendEmptyMessageDelayed(5, 800L);
+        return false;
+      }
+      label134:
+      a();
+      bcql.a(this.a.a(), 1, 2131719799, 0).b(arpo.a(this.a));
+      return false;
+    }
+    a();
+    return false;
+  }
 }
 
 

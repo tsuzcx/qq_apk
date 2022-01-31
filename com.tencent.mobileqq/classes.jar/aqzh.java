@@ -1,59 +1,74 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class aqzh
-  extends BroadcastReceiver
+  extends aqyw
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
-  
-  public aqzh(HotPicPageView paramHotPicPageView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static URL b(String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      HotPicPageView.b = true;
-    }
-    label49:
-    do
+    try
     {
-      do
+      paramString = new URL("hot_pic_origin", "", paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected String a(HotPicData paramHotPicData)
+  {
+    return paramHotPicData.originalUrl;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    File localFile = a(str);
+    if (localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
+      }
+      return localFile;
+    }
+    localFile.getParentFile().mkdirs();
+    if ((bbbr.a()) && (bbbr.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bbbr.b());
+    }
+    Object localObject = new File(a);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
+    }
+    int i = a(str, localFile);
+    if (i == 0)
+    {
+      localObject = aurn.a(localFile.getAbsolutePath());
+      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
       {
-        do
-        {
-          do
-          {
-            break label49;
-            break label49;
-            do
-            {
-              return;
-            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
-            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-            {
-              HotPicPageView.b = true;
-              return;
-            }
-          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
-          paramContext = paramIntent.getStringExtra("reason");
-          if (paramContext != null) {
-            break;
-          }
-        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
-      } while (paramContext == null);
-      paramContext.d();
-      return;
-    } while (!paramContext.equals("homekey"));
-    HotPicPageView.b = true;
+        localFile.delete();
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+        return null;
+      }
+      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      }
+      return localFile;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+    }
+    return null;
   }
 }
 

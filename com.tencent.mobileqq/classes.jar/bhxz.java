@@ -1,20 +1,14 @@
-import cooperation.qzone.util.QZLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-class bhxz
-  extends bdsm
+public abstract interface bhxz
 {
-  bhxz(bhxy parambhxy) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bdsn.b.get());
-  }
+  public abstract void a(String paramString, double paramDouble);
   
-  public void b()
-  {
-    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bdsn.b.get());
-  }
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
 }
 
 

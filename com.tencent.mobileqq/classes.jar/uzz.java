@@ -1,6 +1,8 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
 public abstract interface uzz
 {
-  public abstract void a();
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 

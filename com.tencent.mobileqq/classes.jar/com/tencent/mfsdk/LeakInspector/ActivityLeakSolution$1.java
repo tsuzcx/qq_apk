@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.Choreographer;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import zzs;
+import zzp;
 
 public final class ActivityLeakSolution$1
   implements Runnable
@@ -16,7 +16,7 @@ public final class ActivityLeakSolution$1
     try
     {
       Choreographer localChoreographer = Choreographer.getInstance();
-      zzs.a.set(localChoreographer, this.a.getApplicationContext());
+      zzp.a.set(localChoreographer, this.a.getApplicationContext());
       return;
     }
     catch (Throwable localThrowable)

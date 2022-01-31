@@ -1,91 +1,178 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.1;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.2;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.3;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.4;
+import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.5;
+import java.lang.ref.WeakReference;
 
-final class yud
-  extends LinearLayout
-  implements ytv
+public final class yud
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private yts jdField_a_of_type_Yts;
-  private int jdField_b_of_type_Int = -2147483648;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private volatile int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long = -2147483648L;
+  private ArkAppMgr.IGetAppPathByNameCallback jdField_a_of_type_ComTencentArkOpenArkAppMgr$IGetAppPathByNameCallback = new yue(this);
+  private WeakReference<yuf> jdField_a_of_type_JavaLangRefWeakReference;
+  private yuc jdField_a_of_type_Yuc;
+  private boolean jdField_a_of_type_Boolean;
   
-  public yud(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public yud(WeakReference<yuf> paramWeakReference, yuc paramyuc, long paramLong)
   {
-    super(paramContext);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
-    {
-      yxs.d("GdtBannerViewForCreativeSize194", "constructor");
-      return;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.jdField_a_of_type_Yuc = paramyuc;
+    this.jdField_a_of_type_Long = paramLong;
+    a();
+  }
+  
+  private String a()
+  {
+    String str = null;
+    if (a()) {
+      str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.jdField_a_of_type_Yuc.a, "", null, false);
     }
-    setOrientation(0);
-    setGravity(16);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Yts = new yts(paramContext, paramString1);
-    this.jdField_a_of_type_Yts.setId(2131366951);
-    addView(this.jdField_a_of_type_Yts);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366954);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131366950);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
-    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#666666"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView);
+    yxp.b("GdtArkPreDownloadTask", String.format("getPath %s", new Object[] { str }));
+    return str;
   }
   
-  public View a()
+  private void a()
   {
-    return this;
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.1(this), 4);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Yts == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.4(this, paramInt), 0);
+  }
+  
+  private void a(int paramInt1, int paramInt2, long paramLong)
+  {
+    AdThreadManager.INSTANCE.postDelayed(new GdtArkPreDownloadTask.3(this, paramInt1, paramInt2), 0, paramLong);
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Yuc != null) && (this.jdField_a_of_type_Yuc.a());
+  }
+  
+  private static boolean a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0)
     {
-      yxs.d("GdtBannerViewForCreativeSize194", "setSize error");
-      return;
+      if ((paramInt2 != 1) && (paramInt2 != 1)) {}
     }
-    yua localyua = new yua(getContext(), paramInt1, paramInt2);
-    paramInt1 = Double.valueOf(1.0D * (paramInt2 - localyua.jdField_b_of_type_Int * 2) / this.jdField_b_of_type_Int * this.jdField_a_of_type_Int + localyua.jdField_b_of_type_Int * 2).intValue();
-    this.jdField_a_of_type_Yts.setPadding(localyua.jdField_b_of_type_Int, localyua.jdField_b_of_type_Int, localyua.jdField_b_of_type_Int, localyua.jdField_b_of_type_Int);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-    this.jdField_a_of_type_Yts.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.leftMargin = localyua.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localyua.d);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = localyua.c;
-    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, localyua.d);
+    else {
+      do
+      {
+        return true;
+        if (paramInt1 != 1) {
+          break;
+        }
+      } while ((paramInt2 == 2) || (paramInt2 == 3));
+    }
+    do
+    {
+      do
+      {
+        yxp.d("GdtArkPreDownloadTask", String.format("checkStatus result:false oldStatus:%d newStatus:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        return false;
+      } while (paramInt1 != 2);
+      if (paramInt2 == 3) {
+        break;
+      }
+    } while (paramInt2 != 4);
+    return true;
   }
   
-  public void a(Context paramContext) {}
+  private void b()
+  {
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.2(this), 0);
+  }
   
-  public void b(Context paramContext) {}
+  /* Error */
+  private void b(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 23	yud:jdField_a_of_type_Int	I
+    //   4: istore_2
+    //   5: iload_2
+    //   6: iload_1
+    //   7: if_icmpeq +30 -> 37
+    //   10: aload_0
+    //   11: monitorenter
+    //   12: iload_2
+    //   13: iload_1
+    //   14: if_icmpeq +21 -> 35
+    //   17: iload_2
+    //   18: iload_1
+    //   19: invokestatic 143	yud:a	(II)Z
+    //   22: ifeq +54 -> 76
+    //   25: aload_0
+    //   26: iload_1
+    //   27: putfield 23	yud:jdField_a_of_type_Int	I
+    //   30: aload_0
+    //   31: iload_1
+    //   32: invokespecial 145	yud:a	(I)V
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: ldc 65
+    //   39: ldc 147
+    //   41: iconst_3
+    //   42: anewarray 4	java/lang/Object
+    //   45: dup
+    //   46: iconst_0
+    //   47: iload_2
+    //   48: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   51: aastore
+    //   52: dup
+    //   53: iconst_1
+    //   54: iload_1
+    //   55: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   58: aastore
+    //   59: dup
+    //   60: iconst_2
+    //   61: aload_0
+    //   62: getfield 23	yud:jdField_a_of_type_Int	I
+    //   65: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   68: aastore
+    //   69: invokestatic 73	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   72: invokestatic 79	yxp:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   75: return
+    //   76: aload_0
+    //   77: iconst_1
+    //   78: ldc 148
+    //   80: lconst_0
+    //   81: invokespecial 121	yud:a	(IIJ)V
+    //   84: goto -49 -> 35
+    //   87: astore_3
+    //   88: aload_0
+    //   89: monitorexit
+    //   90: aload_3
+    //   91: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	92	0	this	yud
+    //   0	92	1	paramInt	int
+    //   4	44	2	i	int
+    //   87	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   17	35	87	finally
+    //   35	37	87	finally
+    //   76	84	87	finally
+    //   88	90	87	finally
+  }
   
-  public void c(Context paramContext) {}
+  private void c()
+  {
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.5(this), 4);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
 }
 
 

@@ -1,18 +1,22 @@
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.view.View.OnKeyListener;
 import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class tus
-  implements ViewTreeObserver.OnPreDrawListener
+  implements View.OnKeyListener
 {
-  public tus(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
+  public tus(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public boolean onPreDraw()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    tzb.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new tut(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    if (paramInt == 4)
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.finish();
+      }
+      return true;
+    }
     return false;
   }
 }

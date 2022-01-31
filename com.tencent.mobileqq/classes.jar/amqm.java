@@ -1,17 +1,24 @@
 public class amqm
-  extends amql
+  extends amqk
 {
-  private amrd a;
+  private amrd jdField_a_of_type_Amrd;
+  private amrn jdField_a_of_type_Amrn;
   
-  amqm(String paramString, amrd paramamrd)
+  public amqm(String paramString, amrd paramamrd, amrn paramamrn)
   {
     super(paramString);
-    this.a = paramamrd;
+    this.jdField_a_of_type_Amrd = paramamrd;
+    this.jdField_a_of_type_Amrn = paramamrn;
   }
   
   public amrd a()
   {
-    return this.a;
+    return this.jdField_a_of_type_Amrd;
+  }
+  
+  public amrn a()
+  {
+    return this.jdField_a_of_type_Amrn;
   }
 }
 

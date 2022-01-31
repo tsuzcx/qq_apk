@@ -1,105 +1,36 @@
-import android.content.Context;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
 
-public abstract class rsa<T>
-  extends rrz<T>
+class rsa
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  protected Context a;
-  protected List<T> a;
-  protected int b;
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
   
-  protected rsa(Context paramContext, int paramInt)
+  rsa(rrz paramrrz, View paramView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  private void c(List<T> paramList)
+  public boolean onPreDraw()
   {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(int paramInt)
-  {
+    this.jdField_a_of_type_Rrz.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a) + rrz.a(this.jdField_a_of_type_Rrz));
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Rrz.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Rrz.a) + rrz.b(this.jdField_a_of_type_Rrz));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a, this.jdField_a_of_type_Rrz.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a)));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a).setVisibility(4);
+    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Rrz.a, this.jdField_a_of_type_Int, this.b);
     return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt < getCount())
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < getCount())
-    {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void b(T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramT);
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<T> paramList)
-  {
-    c();
-    c(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void c()
-  {
-    b();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 

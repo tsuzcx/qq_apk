@@ -1,6 +1,7 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class autq
@@ -11,7 +12,7 @@ public class autq
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     paramValueAnimator.height = i;
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }

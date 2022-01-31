@@ -1,13 +1,13 @@
-import android.text.method.TransformationMethod;
+import android.view.View;
 
-public abstract interface bfwe
-  extends TransformationMethod
+public class bfwe
 {
-  public abstract void a(boolean paramBoolean);
+  public bfwf[] a;
+  public View g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfwe
  * JD-Core Version:    0.7.0.1
  */

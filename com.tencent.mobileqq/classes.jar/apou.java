@@ -1,26 +1,53 @@
-import android.view.View;
+import android.graphics.drawable.Drawable;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.os.MqqHandler;
 
-class apou
-  implements View.OnClickListener
+public class apou
+  implements apjj
 {
-  apou(apos paramapos) {}
+  private AdapterView.OnItemClickListener a;
   
-  public void onClick(View paramView)
+  apou(apos paramapos)
   {
-    int i = this.a.a.h();
-    if ((i == 2) || (i == 3))
-    {
-      i = apvk.b(this.a.a.e());
-      axqw.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new apov(this);
+  }
+  
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Apos.jdField_a_of_type_Apkr != null) {
+      this.jdField_a_of_type_Apos.jdField_a_of_type_Apkr.a(paramBoolean);
     }
-    while ((i != 1) || (this.a.a.a() == null)) {
+    if ((this.jdField_a_of_type_Apos.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.jdField_a_of_type_Apos.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
+    }
+    while ((this.jdField_a_of_type_Apos.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
       return;
     }
-    this.a.a.a().a();
+    this.jdField_a_of_type_Apos.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_Apos.jdField_a_of_type_Apnb.a());
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.jdField_a_of_type_Apos.jdField_a_of_type_Apkr != null)) {
+      this.jdField_a_of_type_Apos.jdField_a_of_type_Apkr.a();
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Apos.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.jdField_a_of_type_Apos.jdField_a_of_type_Apnb.c(), this);
+      this.jdField_a_of_type_Apos.jdField_a_of_type_Boolean = false;
+      if ((this.jdField_a_of_type_Apos.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity))
+      {
+        bcql.a(this.jdField_a_of_type_Apos.jdField_a_of_type_AndroidAppActivity, 2, 2131692416, 1).a();
+        new MqqHandler().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
+      }
+    }
   }
 }
 

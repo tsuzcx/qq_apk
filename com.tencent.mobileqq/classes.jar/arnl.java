@@ -1,36 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
+import QMF_PROTOCAL.RetryInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class arnl
-  extends Handler
+  extends QzoneExternalRequest
 {
-  arnk a;
+  private JceStruct a;
   
-  protected arnl(arnk paramarnk)
+  public arnl(String paramString)
   {
-    this.a = paramarnk;
+    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
+    localmobile_get_urlinfo_req.url = paramString;
+    this.a = localmobile_get_urlinfo_req;
   }
   
-  protected void a()
+  public String getCmdString()
   {
-    this.a = null;
+    return "QzoneNewService.getUrlInfo";
   }
   
-  public void handleMessage(Message paramMessage)
+  public JceStruct getReq()
   {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-      return;
-    }
-    this.a.a();
+    return this.a;
+  }
+  
+  public Object getRetryInfo()
+  {
+    return new RetryInfo((short)0, 0, System.currentTimeMillis());
+  }
+  
+  public String uniKey()
+  {
+    return "getUrlInfo";
   }
 }
 

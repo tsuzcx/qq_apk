@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class tun
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Dispatcher.Event
 {
-  public tun(StoryPlayerActivity paramStoryPlayerActivity, View paramView) {}
+  public final AnimationParam a;
+  public final String a;
   
-  public boolean onPreDraw()
+  public tun(AnimationParam paramAnimationParam, String paramString)
   {
-    tzb.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity.a, new tuo(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

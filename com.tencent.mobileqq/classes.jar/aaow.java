@@ -1,21 +1,22 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class aaow
   implements DialogInterface.OnClickListener
 {
-  public aaow(aaqe paramaaqe, aaqf paramaaqf) {}
+  public aaow(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aaqe != null) {
-      this.jdField_a_of_type_Aaqe.a();
-    }
-    mqz.e(true, false);
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    axqy.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    mqz.b(this.jdField_a_of_type_Aaqf.a);
   }
 }
 

@@ -1,16 +1,15 @@
 import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class awea
-  implements awff
+public class awea
+  implements bfpj
 {
-  awea(awdz paramawdz) {}
+  public awea(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void a(String paramString)
+  public void onDismiss()
   {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
-    }
-    SignatureHistoryFragment.a(this.a.a, paramString);
+    SignatureHistoryFragment.a(this.a, null);
+    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

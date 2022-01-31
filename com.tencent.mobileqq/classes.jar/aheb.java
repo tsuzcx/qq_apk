@@ -1,10 +1,23 @@
-public abstract interface aheb
+import com.tencent.qphone.base.util.QLog;
+
+class aheb
+  implements ahfe
 {
-  public abstract void a();
+  aheb(ahea paramahea, ahed paramahed) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ahea.a(this.jdField_a_of_type_Ahea, ahea.a(this.jdField_a_of_type_Ahea), this.jdField_a_of_type_Ahed, true);
+    }
+    while (this.jdField_a_of_type_Ahed == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ahed.a(false);
+  }
 }
 
 

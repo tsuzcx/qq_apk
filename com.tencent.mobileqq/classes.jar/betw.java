@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
 
-class betw
-  implements DialogInterface.OnClickListener
+public final class betw
+  implements Parcelable.Creator<EngineVersion>
 {
-  betw(betv parambetv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public EngineVersion a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    Process.killProcess(Process.myPid());
+    EngineVersion localEngineVersion = new EngineVersion();
+    localEngineVersion.a = paramParcel.readString();
+    localEngineVersion.b = paramParcel.readString();
+    return localEngineVersion;
+  }
+  
+  public EngineVersion[] a(int paramInt)
+  {
+    return new EngineVersion[paramInt];
   }
 }
 

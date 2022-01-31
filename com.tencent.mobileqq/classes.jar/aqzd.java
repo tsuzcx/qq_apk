@@ -1,26 +1,22 @@
-import java.io.File;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
-class aqzd
-  implements Comparator<File>
+public class aqzd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aqzd(aqzc paramaqzc) {}
+  public aqzd(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
-    do
-    {
-      return -1;
-      if (paramFile1.lastModified() != paramFile2.lastModified()) {
-        break;
-      }
-      if (paramFile1.length() > paramFile2.length()) {
-        return 1;
-      }
-    } while (paramFile1.length() < paramFile2.length());
-    return 0;
-    return 1;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
+    }
+    XPanelContainer.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
   }
 }
 

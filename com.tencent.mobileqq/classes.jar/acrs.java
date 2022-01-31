@@ -1,33 +1,29 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import mqq.util.WeakReference;
 
 public class acrs
-  implements ArkViewImplement.LoadCallback
+  implements View.OnClickListener
 {
-  public acrs(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
+  public acrs(PositionActivatePage paramPositionActivatePage) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    if (paramInt == 1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
-      }
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    {
+      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
+      paramView.putExtra("ENTER_TIME", System.currentTimeMillis());
+      paramView.putExtra("FROM_WHERE", 1002);
+      paramView.putExtra("is_skip_nearby_guide", true);
+      paramView.setFlags(67108864);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(paramView);
+      axqy.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
     }
-    while (paramInt != -1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
-    }
-    this.a.a(false);
-    BirthdayActivatePageArkView.a(this.a).setText(ajyc.a(2131701141));
   }
 }
 

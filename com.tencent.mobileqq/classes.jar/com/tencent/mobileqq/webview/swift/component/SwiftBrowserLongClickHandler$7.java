@@ -2,15 +2,15 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Bundle;
 import android.util.Base64;
-import bbdj;
-import bced;
+import bbdx;
+import bcer;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 
 public class SwiftBrowserLongClickHandler$7
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$7(bced parambced, String paramString, IX5WebViewExtension paramIX5WebViewExtension) {}
+  public SwiftBrowserLongClickHandler$7(bcer parambcer, String paramString, IX5WebViewExtension paramIX5WebViewExtension) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SwiftBrowserLongClickHandler$7
     {
       try
       {
-        localObject2 = bbdj.a(this.jdField_a_of_type_JavaLangString);
+        localObject2 = bbdx.a(this.jdField_a_of_type_JavaLangString);
         if (localObject2 == null) {
           continue;
         }

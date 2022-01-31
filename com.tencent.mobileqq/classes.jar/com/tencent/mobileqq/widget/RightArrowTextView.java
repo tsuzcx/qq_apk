@@ -29,7 +29,7 @@ public class RightArrowTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    Drawable localDrawable = getResources().getDrawable(2130849159);
+    Drawable localDrawable = getResources().getDrawable(2130849168);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
     SpannableString localSpannableString = new SpannableString(paramCharSequence.toString() + "[arrow]");
     localSpannableString.setSpan(new ImageSpan(localDrawable, 1), paramCharSequence.length(), paramCharSequence.length() + "[arrow]".length(), 17);

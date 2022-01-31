@@ -1,48 +1,133 @@
-import android.content.Intent;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.FriendInfo;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aahx
-  implements View.OnClickListener
+  extends akat
 {
-  public aahx(AddFriendVerifyActivity paramAddFriendVerifyActivity, EditText paramEditText, int paramInt1, int paramInt2, int paramInt3) {}
+  public aahx(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString)
   {
-    if ("".equals(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim())) {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690059), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+    if (AddRequestActivity.d(this.a))
+    {
+      paramString = this.a.getString(2131720004);
+      bcql.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
     }
     for (;;)
     {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.b), String.valueOf(this.c), "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.b + " subSourceId = " + this.c);
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 1, "", "", "", "");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.b, this.jdField_a_of_type_Int);
+      AddRequestActivity.a(this.a, false);
       return;
-      if (bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
-      {
-        paramView = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app.a(1);
-        String str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getStringExtra("extra");
-        String str2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getIntExtra("sub_source_id", 0);
-        String str3 = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getStringExtra("src_name");
-        paramView.a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity), str1, this.jdField_a_of_type_Int, (byte)0, str2, this.b, i, false, null, false, null, str3, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getBundleExtra("flc_extra_param"));
-      }
-      else
-      {
-        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131694609), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.AddRequestActivity", 2, "onSendSystemMsgActionError");
       }
     }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.a.dismissDialog(2);
+    }
+    this.a.a(2130839315, this.a.getString(2131719543));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (!AddRequestActivity.b(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.AddRequestActivity", 2, "onSendSystemMsgActionFin");
+      }
+      return;
+    }
+    long l2 = aydc.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    structmsg.StructMsg localStructMsg;
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      localStructMsg = aydc.a().a(Long.valueOf(l1));
+      if (!paramBoolean) {
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          bcql.a(this.a, 1, paramString3, 0).b(this.a.getTitleBarHeight());
+          if (ayde.a(localStructMsg, paramInt3, paramString2, paramString4)) {
+            this.a.finish();
+          }
+          AddRequestActivity.a(this.a, false);
+          return;
+        }
+      }
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+        l1 = l2;
+        continue;
+        paramString3 = this.a.getResources().getString(2131719262);
+      }
+      ayde.a(localStructMsg, paramInt1, paramString2, paramInt2);
+      if ((AddRequestActivity.c(this.a)) && (localStructMsg != null)) {
+        localStructMsg.msg.friend_info.msg_blacklist.setHasFlag(false);
+      }
+      paramString2 = null;
+      if (paramInt1 != 1) {
+        break label257;
+      }
+    }
+    this.a.setResult(-1);
+    this.a.finish();
+    paramString1 = this.a.getResources().getString(2131692794);
+    label257:
+    do
+    {
+      do
+      {
+        bcql.a(this.a, 2, paramString1, 0).b(this.a.getTitleBarHeight());
+        break;
+        paramString1 = paramString2;
+      } while (paramInt1 != 0);
+      paramString1 = paramString2;
+    } while (localStructMsg == null);
+    paramString2 = this.a.getResources().getString(2131692782);
+    paramString3 = new Bundle();
+    paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
+    paramString1 = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      paramString1 = this.a.jdField_a_of_type_JavaLangString;
+    }
+    paramString3.putString("base_nick", paramString1);
+    paramString3.putInt("verfy_type", AddRequestActivity.b(this.a));
+    paramString3.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString3.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
+      paramString1 = paramString2;
+      break;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.a.dismissDialog(2);
+    }
+    this.a.a(2130839315, this.a.getString(2131719528));
   }
 }
 

@@ -1,63 +1,27 @@
 import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class azow
-  extends azou
+public abstract class azow
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    for (;;)
+    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
+    try
     {
-      int i;
-      int j;
-      try
-      {
-        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-        i = 0;
-        if (i >= localJSONArray.length()) {
-          break label200;
-        }
-        paramJSONObject = localJSONArray.getJSONObject(i);
-        j = paramJSONObject.getInt("type");
-        if (j == 0)
-        {
-          localTroopFeedItem.content = paramJSONObject.getString("value");
-        }
-        else if (j == 3)
-        {
-          if (!paramJSONObject.has("pic_url")) {
-            break label203;
-          }
-          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
-        }
+      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
+      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
+      localTroopFeedItem.tag = paramJSONObject.getString("tag");
+      if (paramJSONObject.has("pub_uin")) {
+        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
-      if (j == 10)
-      {
-        localTroopFeedItem.title = paramJSONObject.getString("value");
-      }
-      else if ((j == 6) && (bbjw.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
-      {
-        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-        break label203;
-        label200:
-        return localTroopFeedItem;
-      }
-      label203:
-      i += 1;
+      return localTroopFeedItem;
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localTroopFeedItem;
   }
 }
 

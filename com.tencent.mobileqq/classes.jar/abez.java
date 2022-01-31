@@ -1,19 +1,32 @@
-import android.content.Intent;
+import android.view.animation.Animation;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class abez
-  implements akil
+  extends bfmx
 {
-  public abez(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
+  public abez(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    if (this.a.d == null) {
+      return;
     }
+    if (paramAnimation == FriendProfileCardActivity.b(this.a)) {
+      this.a.i(1);
+    }
+    this.a.d.clearAnimation();
+    this.a.a.clearAnimation();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.d == null) {}
+    while (paramAnimation != FriendProfileCardActivity.a(this.a)) {
+      return;
+    }
+    this.a.i(0);
   }
 }
 

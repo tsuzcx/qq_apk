@@ -1,162 +1,81 @@
-import android.support.v4.util.ArraySet;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Base64;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import mqq.app.Foreground;
 
 public class amax
+  implements amaf, amak
 {
-  public int a;
-  public ArraySet<String> a;
-  public boolean a;
-  public int b;
-  private ArraySet<String> b;
-  private ArraySet<String> c = new ArraySet();
+  @Nullable
+  private Object jdField_a_of_type_JavaLangObject;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public amax()
+  amax(Context paramContext, @Nullable amaf paramamaf)
   {
-    this.jdField_a_of_type_Int = 10000;
-    this.jdField_b_of_type_Int = 5000;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
-    this.jdField_b_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramamaf;
   }
   
-  private void a(String paramString)
+  amax(Context paramContext, @Nullable amak paramamak)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TeleScreenConfig", 2, "telescreen config: " + paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramamak;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof amak)) {
+      ((amak)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
     }
-    if (TextUtils.isEmpty(paramString))
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof amaf)) {
+      ((amaf)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof amaf)) {
+      return ((amaf)this.jdField_a_of_type_JavaLangObject).a();
+    }
+    return false;
+  }
+  
+  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
+    a(paramBoolean, paramInt1, paramInt2, paramString);
+  }
+  
+  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
+  {
+    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
+    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
+    if (((this.jdField_a_of_type_JavaLangObject instanceof amaf)) && (!((amaf)this.jdField_a_of_type_JavaLangObject).a())) {}
+    Context localContext;
+    do
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
-      this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
+      return;
+      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString2);
+    if ((localContext instanceof Activity)) {}
+    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
+    {
+      localIntent.addFlags(268435456);
+      localContext.startActivity(localIntent);
       return;
     }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((int)(paramString.optDouble("download_timeout") * 1000.0D));
-        if (this.jdField_a_of_type_Int <= 0)
-        {
-          i = 10000;
-          this.jdField_a_of_type_Int = i;
-          this.jdField_b_of_type_Int = ((int)(paramString.optDouble("jump_timeout") * 1000.0D));
-          if (this.jdField_b_of_type_Int <= 0)
-          {
-            i = 5000;
-            this.jdField_b_of_type_Int = i;
-            if (paramString.optInt("use_block_mode", 1) != 0) {
-              break label385;
-            }
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-            localJSONArray = paramString.optJSONArray("check_white_list");
-            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
-            if (localJSONArray == null) {
-              continue;
-            }
-            i = localJSONArray.length() - 1;
-            if (i < 0) {
-              continue;
-            }
-            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
-              break label378;
-            }
-            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
-            break label378;
-          }
-        }
-        else
-        {
-          i = this.jdField_a_of_type_Int;
-          continue;
-        }
-        i = this.jdField_b_of_type_Int;
-        continue;
-        JSONArray localJSONArray = paramString.optJSONArray("scheme_white_list");
-        this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
-        if (localJSONArray != null)
-        {
-          i = localJSONArray.length() - 1;
-          if (i >= 0)
-          {
-            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
-              break label390;
-            }
-            this.jdField_b_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
-            break label390;
-          }
-        }
-        paramString = paramString.optJSONArray("md5");
-        this.c.clear();
-        if (paramString == null) {
-          break;
-        }
-        i = paramString.length() - 1;
-        if (i < 0) {
-          break;
-        }
-        if (!TextUtils.isEmpty(paramString.getString(i))) {
-          this.c.add(new String(Base64.decode(paramString.getString(i), 0)));
-        }
-        i -= 1;
-        continue;
-        i -= 1;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("TeleScreenConfig", 1, paramString, new Object[0]);
-        return;
-      }
-      label378:
-      continue;
-      label385:
-      boolean bool = false;
-      continue;
-      label390:
-      i -= 1;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.startsWith((String)localIterator.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(paramString1)) {
-      return true;
-    }
-    if (paramString2 != null)
-    {
-      paramString1 = this.jdField_b_of_type_AndroidSupportV4UtilArraySet.iterator();
-      while (paramString1.hasNext()) {
-        if (paramString2.startsWith((String)paramString1.next())) {
-          return true;
-        }
-      }
-    }
-    return false;
+    paramString1.startActivity(localIntent);
   }
 }
 

@@ -17,7 +17,7 @@ class QRDisplayActivity$4
     LinearLayout.LayoutParams localLayoutParams;
     if (j < i)
     {
-      localView = this.this$0.findViewById(2131373430);
+      localView = this.this$0.findViewById(2131373432);
       localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
       if (this.this$0.jdField_c_of_type_Int != 2) {
         break label96;

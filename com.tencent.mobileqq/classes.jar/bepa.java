@@ -1,259 +1,125 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.util.Log;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
 
-class bepa
-  implements beoy
+public class bepa
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private IBinder a;
+  private VideoGestureRelativeLayout b;
   
-  bepa(IBinder paramIBinder)
+  public bepa(VideoGestureRelativeLayout paramVideoGestureRelativeLayout1, VideoGestureRelativeLayout paramVideoGestureRelativeLayout2)
   {
-    this.a = paramIBinder;
+    this.b = paramVideoGestureRelativeLayout2;
   }
   
-  public Bundle a(String paramString1, String paramString2, Bundle paramBundle)
+  public boolean onContextClick(MotionEvent paramMotionEvent)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
-        localParcel1.writeString(paramString1);
-        localParcel1.writeString(paramString2);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          this.a.transact(6, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramString1 = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
-            return paramString1;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramString1 = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+    Log.d("gesturetest", "onContextClick: ");
+    return true;
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onDoubleTap: ");
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).b(paramMotionEvent);
     }
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  public void a()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    Log.d("gesturetest", "onDoubleTapEvent: ");
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onDown: ");
+    VideoGestureRelativeLayout.a(this.a, false);
+    VideoGestureRelativeLayout.a(this.a, 0);
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).c(paramMotionEvent);
     }
-    finally
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    Log.d("gesturetest", "onFling: ");
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    Log.d("gesturetest", "onLongPress: ");
+    super.onLongPress(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    Log.d("gesturetest", "onScroll: e1:" + paramMotionEvent1.getX() + "," + paramMotionEvent1.getY());
+    Log.d("gesturetest", "onScroll: e2:" + paramMotionEvent2.getX() + "," + paramMotionEvent2.getY());
+    Log.d("gesturetest", "onScroll: X:" + paramFloat1 + "  Y:" + paramFloat2);
+    switch (VideoGestureRelativeLayout.a(this.a))
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    default: 
+      return true;
+    case 0: 
+      Log.d("gesturetest", "NONE: ");
+      if (Math.abs(paramFloat1) - Math.abs(paramFloat2) > VideoGestureRelativeLayout.b(this.a))
+      {
+        VideoGestureRelativeLayout.a(this.a, 3);
+        return true;
+      }
+      if (paramMotionEvent1.getX() < this.a.getWidth() / 2)
+      {
+        VideoGestureRelativeLayout.a(this.a, 2);
+        return true;
+      }
+      VideoGestureRelativeLayout.a(this.a, 1);
+      return true;
+    case 1: 
+      if (VideoGestureRelativeLayout.a(this.a) != null) {
+        VideoGestureRelativeLayout.a(this.a).b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      Log.d("gesturetest", "VOLUME: ");
+      return true;
+    case 2: 
+      if (VideoGestureRelativeLayout.a(this.a) != null) {
+        VideoGestureRelativeLayout.a(this.a).a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      }
+      Log.d("gesturetest", "BRIGHTNESS: ");
+      return true;
     }
-  }
-  
-  public void a(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
-        localParcel1.writeInt(paramInt);
-        localParcel1.writeString(paramString);
-        if (paramMiniAppInfo != null)
-        {
-          localParcel1.writeInt(1);
-          paramMiniAppInfo.writeToParcel(localParcel1, 0);
-          if (paramBundle != null)
-          {
-            localParcel1.writeInt(1);
-            paramBundle.writeToParcel(localParcel1, 0);
-            this.a.transact(4, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        localParcel1.writeInt(0);
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).c(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
+    VideoGestureRelativeLayout.a(this.a, true);
+    Log.d("gesturetest", "FF_REW: ");
+    return true;
   }
   
-  /* Error */
-  public void a(MiniAppInfo paramMiniAppInfo)
+  public void onShowPress(MotionEvent paramMotionEvent)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +41 -> 56
-    //   18: aload_2
-    //   19: iconst_1
-    //   20: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   23: aload_1
-    //   24: aload_2
-    //   25: iconst_0
-    //   26: invokevirtual 72	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   29: aload_0
-    //   30: getfield 15	bepa:a	Landroid/os/IBinder;
-    //   33: iconst_3
-    //   34: aload_2
-    //   35: aload_3
-    //   36: iconst_0
-    //   37: invokeinterface 48 5 0
-    //   42: pop
-    //   43: aload_3
-    //   44: invokevirtual 51	android/os/Parcel:readException	()V
-    //   47: aload_3
-    //   48: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   51: aload_2
-    //   52: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   55: return
-    //   56: aload_2
-    //   57: iconst_0
-    //   58: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   61: goto -32 -> 29
-    //   64: astore_1
-    //   65: aload_3
-    //   66: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   69: aload_2
-    //   70: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   73: aload_1
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	bepa
-    //   0	75	1	paramMiniAppInfo	MiniAppInfo
-    //   3	67	2	localParcel1	Parcel
-    //   7	59	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	64	finally
-    //   18	29	64	finally
-    //   29	47	64	finally
-    //   56	61	64	finally
+    Log.d("gesturetest", "onShowPress: ");
+    super.onShowPress(paramMotionEvent);
   }
   
-  public void a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
-        if (paramMiniAppInfo != null)
-        {
-          localParcel1.writeInt(1);
-          paramMiniAppInfo.writeToParcel(localParcel1, 0);
-          if (paramBundle != null)
-          {
-            localParcel1.writeInt(1);
-            paramBundle.writeToParcel(localParcel1, 0);
-            if (paramResultReceiver == null) {
-              break label131;
-            }
-            localParcel1.writeInt(1);
-            paramResultReceiver.writeToParcel(localParcel1, 0);
-            this.a.transact(2, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        localParcel1.writeInt(0);
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
-      continue;
-      label131:
-      localParcel1.writeInt(0);
+    Log.d("gesturetest", "onSingleTapConfirmed: ");
+    if (VideoGestureRelativeLayout.a(this.a) != null) {
+      VideoGestureRelativeLayout.a(this.a).a(paramMotionEvent);
     }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
   
-  public void a(String paramString1, String paramString2, Bundle paramBundle, bepd parambepd)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.qqmini.sdk.ipc.IAppMainService");
-        localParcel1.writeString(paramString1);
-        localParcel1.writeString(paramString2);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          if (parambepd != null)
-          {
-            paramString1 = parambepd.asBinder();
-            localParcel1.writeStrongBinder(paramString1);
-            this.a.transact(5, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramString1 = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    Log.d("gesturetest", "onSingleTapUp: ");
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

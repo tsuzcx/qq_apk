@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
+import android.os.Build;
 import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mje
-  implements View.OnClickListener
+  extends msu
 {
   public mje(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    mqz.c(paramView.getId());
-    AVActivity localAVActivity = this.a.a();
-    if (localAVActivity != null) {
-      localAVActivity.BtnOnClick(paramView);
+    this.a.m();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (!this.a.h) {
+      this.a.e(0);
     }
+    if ("GT-I9100G".equals(Build.MODEL))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
+      }
+      return;
+    }
+    this.a.F();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import avpq;
+import avps;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AvatarPendantActivity$5
@@ -10,8 +10,8 @@ class AvatarPendantActivity$5
   
   public void run()
   {
-    avpq localavpq = (avpq)this.this$0.app.getManager(36);
-    this.this$0.a = localavpq.a("100100.100125.100127");
+    avps localavps = (avps)this.this$0.app.getManager(36);
+    this.this$0.a = localavps.a("100100.100125.100127");
     this.this$0.runOnUiThread(new AvatarPendantActivity.5.1(this));
   }
 }

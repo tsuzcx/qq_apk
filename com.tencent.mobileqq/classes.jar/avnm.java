@@ -1,353 +1,151 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Looper;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager.3;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class avnm
-  implements View.OnTouchListener, avnv, Manager
 {
-  public static final float a;
-  private static avnm jdField_a_of_type_Avnm;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private avnp jdField_a_of_type_Avnp;
-  private avnq jdField_a_of_type_Avnq = new avnq(this, Looper.getMainLooper());
-  private bbxj jdField_a_of_type_Bbxj;
-  private bhus jdField_a_of_type_Bhus;
-  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private ParticleDropView jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView;
-  private ParticleExplodeView jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleExplodeView;
-  private WeakReference<FrameLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<String, amwr> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private bhus jdField_b_of_type_Bhus;
+  private static final Pattern a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
   
-  static
+  public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString)
   {
-    jdField_a_of_type_Float = bbkx.a() / 720.0F;
+    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, bgyi.a(), null);
   }
   
-  public static avnm a()
+  public static newest_feeds_req a(Intent paramIntent)
   {
-    if (jdField_a_of_type_Avnm == null) {}
-    try
-    {
-      if (jdField_a_of_type_Avnm == null) {
-        jdField_a_of_type_Avnm = new avnm();
-      }
-      return jdField_a_of_type_Avnm;
+    if (paramIntent == null) {
+      return new newest_feeds_req();
     }
-    finally {}
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof newest_feeds_req))) {
+      return (newest_feeds_req)paramIntent;
+    }
+    return new newest_feeds_req();
   }
   
-  private bhus a(String paramString, int paramInt)
+  public static Intent a(Intent paramIntent, newest_feeds_req paramnewest_feeds_req)
   {
-    if (TextUtils.isEmpty(paramString))
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.putExtra("req", paramnewest_feeds_req);
+    return localIntent;
+  }
+  
+  public static String a(String paramString)
+  {
+    if ("".equals(paramString)) {}
+    int j;
+    int i;
+    do
     {
-      QLog.e("QzoneGiftManager", 1, "createAnimationDrawable mZipPath = null");
       return null;
-    }
-    bhus localbhus = new bhus();
-    String str = avns.a(paramString);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("QzoneGiftManager", 4, "createAnimationDrawable mZipPath = " + paramString + " resUrl = " + str);
-    }
-    localbhus.a(str, paramInt);
-    localbhus.a(jdField_a_of_type_Float);
-    localbhus.a();
-    return localbhus;
-  }
-  
-  private void a(int paramInt)
-  {
-    a(paramInt, 0);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Avnq == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Avnq.hasMessages(paramInt1)) {
-      this.jdField_a_of_type_Avnq.removeMessages(paramInt1);
-    }
-    this.jdField_a_of_type_Avnq.sendEmptyMessageDelayed(paramInt1, paramInt2);
-  }
-  
-  private void a(amwq paramamwq, String paramString1, String paramString2)
-  {
-    Object localObject = new StringBuilder().append("loadVipARConfig bean == null ");
-    boolean bool;
-    if (paramamwq == null)
-    {
-      bool = true;
-      QLog.i("VipAR", 1, bool + " giftName = " + paramString1);
-      if (paramamwq != null) {
-        break label65;
+      int k = paramString.indexOf("uin:");
+      j = paramString.indexOf(",");
+      i = 0;
+      if (k != -1) {
+        i = k + 4;
       }
-      QLog.e("VipAR", 1, "checkARGift loadVipARConfig error VipARConfBean = null ");
+    } while ((i == 0) || (j == -1));
+    return paramString.substring(i, j);
+  }
+  
+  public static String a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
+      localObject = null;
     }
-    for (;;)
+    Matcher localMatcher;
+    do
     {
-      return;
-      bool = false;
+      return localObject;
+      localMatcher = a.matcher(paramString);
+      localObject = paramString;
+    } while (!localMatcher.find());
+    String str2 = localMatcher.group();
+    String str3 = a(str2);
+    String str1 = "";
+    Object localObject = str1;
+    if (!TextUtils.isEmpty(str3))
+    {
+      ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
+      localObject = str1;
+      if (localajxl != null)
+      {
+        localObject = localajxl.e(str3);
+        if (localObject == null) {
+          break label153;
+        }
+      }
+    }
+    label151:
+    label153:
+    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = b(str2);
+      }
+      for (;;)
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label151;
+        }
+        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
+        break;
+      }
       break;
-      label65:
-      if ((paramamwq.jdField_a_of_type_Int != 1) || (paramamwq.jdField_a_of_type_JavaUtilArrayList == null)) {
-        break label146;
-      }
-      paramamwq = paramamwq.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramamwq.hasNext())
-      {
-        localObject = (amwr)paramamwq.next();
-        if ((localObject != null) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equalsIgnoreCase(((amwr)localObject).jdField_a_of_type_JavaLangString))) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, localObject);
-        }
-      }
-    }
-    label146:
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString2);
-    QLog.i("VipAR", 1, "checkARGift not AR gift switch = " + paramamwq.jdField_a_of_type_Int + " configlist == null " + paramamwq.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Avnp != null) && (this.jdField_a_of_type_Avnp.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Avnp.d));
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Avnq == null) {}
-    for (;;)
-    {
-      return;
-      int i = 1;
-      while (i < 9)
-      {
-        if (this.jdField_a_of_type_Avnq.hasMessages(i)) {
-          this.jdField_a_of_type_Avnq.removeMessages(i);
-        }
-        i += 1;
-      }
     }
   }
   
-  private void e()
+  public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader == null) || (!a()))
-    {
-      QLog.e("QzoneGiftManager", 1, "preloadLottieZip error");
-      return;
-    }
-    String str = QzoneZipCacheHelper.getBasePath("aio_lottie_gift", String.valueOf(this.jdField_a_of_type_Avnp.d.hashCode())) + ".zip";
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneGiftManager", 2, " preloadLottieZip local path = " + str + " zipUrl = " + this.jdField_a_of_type_Avnp.d);
-    }
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(this.jdField_a_of_type_Avnp.d, str, new avnn(this));
-  }
-  
-  private void f()
-  {
-    bbxj localbbxj = new bbxj(null, BaseApplicationImpl.getContext());
-    localbbxj.a((int)(MemoryManager.a() / 2L));
-    this.jdField_a_of_type_Bbxj = localbbxj;
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = new DiniFlyAnimationView(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(false);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new avno(this));
-  }
-  
-  private void h()
-  {
-    if (!a()) {
-      return;
-    }
-    f();
-    g();
-    String str = QzoneZipCacheHelper.getBasePath("aio_lottie_gift", String.valueOf(this.jdField_a_of_type_Avnp.d.hashCode())) + ".zip";
-    this.jdField_a_of_type_Bbxj.a(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_Avnp.d, str, true);
-    a(1);
-  }
-  
-  public amwr a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    paramQQAppInterface = (ajxl)paramQQAppInterface.getManager(51);
+    if (paramQQAppInterface == null) {
       return null;
     }
-    try
+    Object localObject = paramQQAppInterface.d();
+    if (localObject != null)
     {
-      paramString = new JSONObject(paramString).optString("giftZipUrl");
-      if (QLog.isColorLevel()) {
-        QLog.i("VipAR", 2, "isNeedARShow gift key = " + paramString + " map = " + this.jdField_a_of_type_JavaUtilHashMap.toString());
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      paramQQAppInterface = new ArrayList(((ArrayList)localObject).size());
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if ((localEntry != null) && (!TextUtils.isEmpty((CharSequence)localEntry.getKey())) && (paramString.contains((CharSequence)localEntry.getKey())))
-        {
-          paramString = (amwr)localEntry.getValue();
-          return paramString;
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
+          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
         }
       }
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      return paramQQAppInterface;
+      paramQQAppInterface = null;
     }
-    return null;
   }
   
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Avnp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Avnp.b)) || (TextUtils.isEmpty(this.jdField_a_of_type_Avnp.c)))
-    {
-      QLog.e("QzoneGiftManager", 1, "onSuccess show fail : data = null ");
-      return;
-    }
-    this.jdField_a_of_type_Bhus = a(this.jdField_a_of_type_Avnp.jdField_a_of_type_JavaLangString, 10);
-    this.jdField_b_of_type_Bhus = a(this.jdField_a_of_type_Avnp.b, 10);
-    if (this.jdField_b_of_type_Bhus != null)
-    {
-      this.jdField_b_of_type_Bhus.b(true);
-      this.jdField_b_of_type_Bhus.a(false);
-    }
-    String str = avns.a(this.jdField_a_of_type_Avnp.c, "qzone_aio_gift");
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QzoneGiftManager", 4, "show Gift giftLocalPath = " + str);
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(str);
-    }
-    a(1);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneGiftManager", 2, " preload data = " + paramString);
-    }
-    this.jdField_a_of_type_Avnp = avnp.a(paramString);
-    if (a())
-    {
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_Avnp != null)
-    {
-      avns.a(null, this.jdField_a_of_type_Avnp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Avnp.b, this.jdField_a_of_type_Avnp.c);
-      return;
-    }
-    QLog.e("QzoneGiftManager", 1, "preloadGiftData error with data = null");
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Avnp == null)
-    {
-      QLog.e("QzoneGiftManager", 1, "onFail show fail mGiftData = null");
-      return;
-    }
-    QLog.e("QzoneGiftManager", 1, "onFail show fail mGiftData = " + this.jdField_a_of_type_Avnp.toString());
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneGiftManager", 2, " startPlay data = " + paramString);
-    }
-    this.jdField_a_of_type_Avnp = avnp.a(paramString);
-    if (a())
-    {
-      h();
-      return;
-    }
-    if (this.jdField_a_of_type_Avnp != null)
-    {
-      avns.a(this, this.jdField_a_of_type_Avnp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Avnp.b, this.jdField_a_of_type_Avnp.c);
-      return;
-    }
-    QLog.e("QzoneGiftManager", 1, "preloadGiftData error with data = null");
-  }
-  
-  public void c()
-  {
-    QLog.i("QzoneGiftManager", 1, "onLoading");
-  }
-  
-  public void c(String paramString)
+  public static String b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    int j;
+    int i;
+    do
     {
-      return;
-      try
-      {
-        Object localObject = new JSONObject(paramString).optJSONObject("giftData");
-        if (localObject != null)
-        {
-          paramString = ((JSONObject)localObject).optString("giftName");
-          localObject = ((JSONObject)localObject).optString("giftZipUrl");
-          ThreadManager.getFileThreadHandler().post(new QzoneGiftManager.3(this, paramString, (String)localObject));
-          QLog.i("VipARGiftManager", 1, "checkIsNeedARGiftShow key gift = " + (String)localObject);
-          return;
-        }
+      return null;
+      int k = paramString.indexOf(",nick:");
+      j = paramString.indexOf("}");
+      i = 0;
+      if (k != -1) {
+        i = k + 6;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        QLog.e("VipARGiftManager", 1, "checkIsNeedARGiftShow exception msg = " + paramString.getMessage());
-      }
-    }
-  }
-  
-  public void onDestroy()
-  {
-    d();
-    a(8);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      d();
-      a(8);
-    }
-    return true;
+    } while ((j == -1) || (i == 0));
+    return paramString.substring(i, j);
   }
 }
 

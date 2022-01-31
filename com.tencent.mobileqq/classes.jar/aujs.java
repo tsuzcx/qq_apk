@@ -1,55 +1,156 @@
-import android.net.Uri;
+import com.tencent.qphone.base.util.Cryptor;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aujs
+public class aujs
 {
-  public static final Uri a;
-  public static final String[] a;
-  public static final Uri b;
-  public static final String[] b;
-  public static final Uri c;
-  public static final String[] c;
-  public static final Uri d;
-  public static final String[] d;
-  public static final Uri e;
-  public static final String[] e;
-  public static final Uri f;
-  public static final String[] f;
-  public static final Uri g;
-  public static final String[] g;
-  public static final Uri h;
-  public static final String[] h;
-  public static final Uri i;
-  public static final String[] i;
-  public static final Uri j;
-  public static final String[] j;
-  public static final Uri k;
-  public static final String[] k;
-  public static final String[] l = { "msg_type", "rs_code", "msgSummary" };
+  public int a;
+  public long a;
+  private Cryptor jdField_a_of_type_ComTencentQphoneBaseUtilCryptor;
+  public String a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  public long b;
+  public String b;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private int c;
+  public String c;
+  private int d;
+  private int e;
   
-  static
+  public aujs(aujr paramaujr)
   {
-    jdField_a_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/query_msg");
-    jdField_b_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/query_face");
-    jdField_c_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/query_nick");
-    jdField_d_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/reg_receiver");
-    jdField_e_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/send_msg");
-    jdField_f_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/set_readed");
-    jdField_g_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/openaio");
-    jdField_h_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/decodesilk");
-    jdField_i_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/download_media");
-    jdField_j_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/exchange_uin");
-    jdField_k_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/paycode_channel");
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "rs_code" };
-    jdField_b_of_type_ArrayOfJavaLangString = aujv.jdField_a_of_type_ArrayOfJavaLangString;
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "media_path" };
-    jdField_d_of_type_ArrayOfJavaLangString = new String[] { "nick" };
-    jdField_e_of_type_ArrayOfJavaLangString = new String[] { "rs_code", "sessionkey", "uin" };
-    jdField_f_of_type_ArrayOfJavaLangString = new String[] { "msgid" };
-    jdField_g_of_type_ArrayOfJavaLangString = new String[] { "rs_code" };
-    jdField_h_of_type_ArrayOfJavaLangString = new String[] { "rs_code" };
-    jdField_i_of_type_ArrayOfJavaLangString = new String[] { "rs_code", "sampleRate" };
-    jdField_j_of_type_ArrayOfJavaLangString = new String[] { "mediaStatus" };
-    jdField_k_of_type_ArrayOfJavaLangString = new String[] { "rs_code", "uin" };
+    this.jdField_a_of_type_JavaLangString = paramaujr.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramaujr.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramaujr.jdField_a_of_type_Int;
+    this.d = paramaujr.jdField_b_of_type_Int;
+    this.e = paramaujr.jdField_c_of_type_Int;
+    if (paramaujr.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Long = paramaujr.d;
+      this.jdField_a_of_type_ArrayOfByte = a(paramaujr.jdField_c_of_type_Long);
+      this.jdField_b_of_type_Long = paramaujr.jdField_b_of_type_Long;
+      this.jdField_b_of_type_ArrayOfByte = a(paramaujr.jdField_a_of_type_Long);
+      return;
+    }
+    this.jdField_a_of_type_Long = paramaujr.jdField_b_of_type_Long;
+    this.jdField_a_of_type_ArrayOfByte = a(paramaujr.jdField_a_of_type_Long);
+  }
+  
+  private byte[] a(long paramLong)
+  {
+    for (Object localObject = this.jdField_a_of_type_JavaLangString; ((String)localObject).length() < 16; localObject = (String)localObject + (String)localObject) {}
+    byte[] arrayOfByte1 = ((String)localObject).getBytes();
+    byte[] arrayOfByte2 = String.valueOf(paramLong).getBytes();
+    if (arrayOfByte1.length > arrayOfByte2.length) {}
+    for (localObject = arrayOfByte1;; localObject = arrayOfByte2)
+    {
+      int i = 0;
+      while (i < Math.min(arrayOfByte1.length, arrayOfByte2.length))
+      {
+        localObject[i] = ((byte)(arrayOfByte1[i] ^ arrayOfByte2[i]));
+        i += 1;
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor == null)
+    {
+      this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor = new Cryptor();
+      this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.enableResultRandom(false);
+    }
+    return localObject;
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String a(String paramString)
+  {
+    Object localObject = null;
+    try
+    {
+      paramString = bbea.a(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.encrypt(paramString.getBytes(), this.jdField_a_of_type_ArrayOfByte));
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        paramString = localObject;
+      } while (!QLog.isColorLevel());
+      QLog.d("OpenApi.App", 2, "encrypt", localException);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_b_of_type_Int = (this.d & paramInt1);
+    this.jdField_c_of_type_Int = (this.e & paramInt2);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (this.jdField_a_of_type_Int & paramInt) > 0;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return ((this.e & paramInt1) > 0) && ((this.d & paramInt2) > 0);
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String b(String paramString)
+  {
+    try
+    {
+      paramString = bbea.a(paramString);
+      paramString = new String(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.decrypt(paramString, this.jdField_a_of_type_ArrayOfByte));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenApi.App", 2, "decrypt", paramString);
+      }
+    }
+    return null;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return ((this.jdField_c_of_type_Int & paramInt) > 0) && ((this.jdField_b_of_type_Int & 0x40000000) > 0);
+  }
+  
+  public boolean b(int paramInt1, int paramInt2)
+  {
+    return ((this.jdField_c_of_type_Int & paramInt1) > 0) && ((this.jdField_b_of_type_Int & paramInt2) > 0);
+  }
+  
+  public String c(String paramString)
+  {
+    try
+    {
+      paramString = bbea.a(paramString);
+      paramString = new String(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.decrypt(paramString, this.jdField_b_of_type_ArrayOfByte));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenApi.App", 2, "decryptLastData", paramString);
+      }
+    }
+    return null;
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return (this.e & paramInt) > 0;
   }
 }
 

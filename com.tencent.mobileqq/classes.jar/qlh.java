@@ -1,43 +1,19 @@
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-final class qlh
-  implements qlp
+class qlh
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  qlh(qli paramqli) {}
+  qlh(qlg paramqlg) {}
   
-  public void a(int paramInt, String paramString, HashMap<Integer, qlq> paramHashMap, long paramLong)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "执行结果，onResult code = " + paramInt);
+      QLog.d(qlg.a(), 2, "播放器状态回调 onCompletion");
     }
-    try
-    {
-      int i = qlf.a().optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-      qlf.a().put("KEY_LOCAL_RESULT_SUCC_COUNT", i + 1);
-      bhvh.a("kandian_video_extract_frame_local_result", qlf.a().toString());
-      label66:
-      qlf.a(System.currentTimeMillis() - qlf.a());
-      qlf.b(paramLong);
-      qlf.a(BaseApplication.getContext(), this.a, paramInt, paramString, paramHashMap);
-      if (!qlf.a().compareAndSet(false, true)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoExtractFrame", 2, "任务已销毁，直接返回");
-        }
-      }
-      while (qlf.a() == null) {
-        return;
-      }
-      qlf.a().b();
-      qlf.a(null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label66;
+    if (qlg.a(this.a) != null) {
+      qlg.a(this.a).a(1, null, qlg.a(this.a), System.currentTimeMillis() - qlg.a(this.a));
     }
   }
 }

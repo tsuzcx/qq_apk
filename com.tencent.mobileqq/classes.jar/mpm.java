@@ -1,6 +1,15 @@
-abstract interface mpm
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class mpm
+  implements View.OnClickListener
 {
-  public abstract void a(mpl parammpl);
+  mpm(mpk parammpk) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(false, 1);
+  }
 }
 
 

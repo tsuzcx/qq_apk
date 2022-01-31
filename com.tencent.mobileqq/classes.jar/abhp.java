@@ -1,8 +1,8 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
 
 public class abhp
   implements View.OnClickListener
@@ -11,8 +11,9 @@ public class abhp
   
   public void onClick(View paramView)
   {
-    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
-    axqw.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
+    paramView = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(paramView);
+    axqy.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
   }
 }
 

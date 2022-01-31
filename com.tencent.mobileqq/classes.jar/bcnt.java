@@ -1,44 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
 public class bcnt
-  implements ValueAnimator.AnimatorUpdateListener
+  extends URLDrawableDownListener.Adapter
 {
-  public bcnt(ParticipleView paramParticipleView) {}
+  public bcnt(NewStyleDropdownView paramNewStyleDropdownView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    long l = System.currentTimeMillis();
-    paramValueAnimator = ParticipleView.a(this.a).iterator();
-    int i = 1;
-    if (paramValueAnimator.hasNext())
-    {
-      bcnx localbcnx = (bcnx)paramValueAnimator.next();
-      float f = Math.min((float)(l - bcnx.a(localbcnx)) / ParticipleView.a(this.a), 1.0F);
-      bcnx.a(localbcnx, f);
-      if (f < 1.0F) {
-        i = 0;
-      }
-      for (;;)
-      {
-        break;
-        paramValueAnimator.remove();
-      }
+    paramView = paramURLDrawable.getCurrDrawable();
+    if ((paramView instanceof ApngDrawable)) {
+      VasFaceManager.a(null, (ApngDrawable)paramView);
     }
-    if (i != 0)
-    {
-      ParticipleView.a(this.a).cancel();
-      ParticipleView.a(this.a, null);
-      ParticipleView.a(this.a).clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
-      }
-    }
-    this.a.invalidate();
   }
 }
 

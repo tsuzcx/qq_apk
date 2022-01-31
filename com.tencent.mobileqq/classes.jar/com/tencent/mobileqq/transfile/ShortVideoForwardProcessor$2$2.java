@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import ayuu;
-import ayuv;
+import ayuw;
+import ayux;
 
 public class ShortVideoForwardProcessor$2$2
   implements Runnable
 {
-  public ShortVideoForwardProcessor$2$2(ayuv paramayuv, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public ShortVideoForwardProcessor$2$2(ayux paramayux, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayuv.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_Ayux.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

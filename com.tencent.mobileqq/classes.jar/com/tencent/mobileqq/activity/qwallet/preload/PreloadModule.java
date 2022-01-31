@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahca;
-import ahiy;
+import ahby;
+import ahiw;
 import android.net.Uri;
 import android.text.TextUtils;
-import bbwf;
+import bbwt;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import mze;
+import mzb;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -75,7 +75,7 @@ public class PreloadModule
       paramString.printStackTrace();
       return;
     }
-    mze.b(paramString, paramAppRuntime, true, new ahca(this));
+    mzb.b(paramString, paramAppRuntime, true, new ahby(this));
   }
   
   private boolean a(String paramString)
@@ -185,7 +185,7 @@ public class PreloadModule
     }
   }
   
-  public void downloadModule(boolean paramBoolean1, bbwf parambbwf, PreloadManager paramPreloadManager, boolean paramBoolean2)
+  public void downloadModule(boolean paramBoolean1, bbwt parambbwt, PreloadManager paramPreloadManager, boolean paramBoolean2)
   {
     if (this.name.equals("wallet_offline")) {
       handleHtmlOffline(paramPreloadManager.a);
@@ -206,7 +206,7 @@ public class PreloadModule
           }
           else if (localPreloadResource.isTimeToDownload(paramPreloadManager, this))
           {
-            localPreloadResource.startDownload(paramPreloadManager, this, parambbwf, paramBoolean2);
+            localPreloadResource.startDownload(paramPreloadManager, this, parambbwt, paramBoolean2);
           }
         }
       }
@@ -272,7 +272,7 @@ public class PreloadModule
     while (localIterator.hasNext())
     {
       PreloadResource localPreloadResource = (PreloadResource)localIterator.next();
-      if (ahiy.c(localPreloadResource.mResId, paramString)) {
+      if (ahiw.c(localPreloadResource.mResId, paramString)) {
         return localPreloadResource;
       }
     }
@@ -304,7 +304,7 @@ public class PreloadModule
   {
     boolean bool2 = false;
     boolean bool1;
-    if (!ahiy.c(this.mid, paramPreloadModule.mid))
+    if (!ahiw.c(this.mid, paramPreloadModule.mid))
     {
       bool1 = true;
       return bool1;
@@ -312,7 +312,7 @@ public class PreloadModule
     if (this.mBackControl != paramPreloadModule.mBackControl) {
       return true;
     }
-    if (!ahiy.c(this.name, paramPreloadModule.name)) {
+    if (!ahiw.c(this.name, paramPreloadModule.name)) {
       return true;
     }
     if (this.option != paramPreloadModule.option) {
@@ -327,7 +327,7 @@ public class PreloadModule
     if (this.mRetryCount != paramPreloadModule.mRetryCount) {
       return true;
     }
-    if (!ahiy.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
+    if (!ahiw.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
       return true;
     }
     List localList = getResList();

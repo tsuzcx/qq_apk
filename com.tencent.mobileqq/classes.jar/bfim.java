@@ -1,16 +1,17 @@
-public class bfim
+final class bfim
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  int jdField_a_of_type_Int;
+  bfjb jdField_a_of_type_Bfjb;
+  bfjc jdField_a_of_type_Bfjc;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
   public String toString()
   {
-    return "[type:" + this.jdField_a_of_type_Int + ",cate:" + this.b + ",subcate:" + this.c + ",expire:" + this.jdField_a_of_type_Long + ",act:" + this.d + ",iscache:" + this.jdField_a_of_type_Boolean + "]";
+    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Bfjb.toString() + "]";
   }
 }
 

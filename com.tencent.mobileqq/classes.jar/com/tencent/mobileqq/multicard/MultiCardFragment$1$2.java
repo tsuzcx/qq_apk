@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import asro;
-import axqw;
+import asrq;
+import axqy;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +21,7 @@ class MultiCardFragment$1$2
     if ((this.jdField_a_of_type_JavaUtilMap.size() > 0) && (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a))
     {
       MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a = false;
-      axqw.b(null, "dc00898", "", "", "0X800A213", "0X800A213", 0, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", "0X800A213", "0X800A213", 0, 0, "", "", "", "");
     }
     MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0);
     if (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0)) {

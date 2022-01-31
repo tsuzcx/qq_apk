@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentActivity;
-import bdem;
+import bdfb;
 import com.tencent.qphone.base.util.QLog;
 
 class OpenAuthorityFragment$2
@@ -21,7 +21,7 @@ class OpenAuthorityFragment$2
       localFragmentActivity2 = this.this$0.getActivity();
       if (localFragmentActivity2 != null)
       {
-        Bitmap localBitmap2 = bdem.a(localFragmentActivity2, localBitmap1, 63, 63);
+        Bitmap localBitmap2 = bdfb.a(localFragmentActivity2, localBitmap1, 63, 63);
         if (localBitmap1 != null) {
           localBitmap1.recycle();
         }

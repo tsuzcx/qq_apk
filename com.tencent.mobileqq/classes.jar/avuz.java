@@ -1,8 +1,14 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.3;
 
-public abstract interface avuz
+public class avuz
+  implements avtm
 {
-  public abstract void a(Bitmap paramBitmap);
+  public avuz(EffectsCameraCaptureView.3 param3) {}
+  
+  public void a()
+  {
+    bips.a().a();
+  }
 }
 
 

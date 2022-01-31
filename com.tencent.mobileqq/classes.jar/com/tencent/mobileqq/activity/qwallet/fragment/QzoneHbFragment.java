@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import agwp;
-import agzf;
-import agzn;
+import agwn;
+import agzd;
+import agzl;
+import agzu;
+import agzv;
 import agzw;
 import agzx;
 import agzy;
 import agzz;
-import ahaa;
-import ahab;
-import ahje;
-import ajyc;
+import ahjc;
+import ajya;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -35,11 +35,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axjo;
-import baxt;
-import bbcv;
-import bbgg;
-import bgwk;
+import axjq;
+import bayh;
+import bbdj;
+import bbgu;
+import bgxb;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
 import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView.OnRollListener;
@@ -54,12 +54,12 @@ import org.json.JSONObject;
 
 public class QzoneHbFragment
   extends BaseHbFragment
-  implements agzn, View.OnClickListener, RollNumberView.OnRollListener
+  implements agzl, View.OnClickListener, RollNumberView.OnRollListener
 {
   private int jdField_a_of_type_Int = 1;
   private long jdField_a_of_type_Long;
-  agwp jdField_a_of_type_Agwp = new agzy(this);
-  private ahaa jdField_a_of_type_Ahaa = new ahaa(this);
+  agwn jdField_a_of_type_Agwn = new agzw(this);
+  private agzy jdField_a_of_type_Agzy = new agzy(this);
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   protected TextWatcher a;
   private View jdField_a_of_type_AndroidViewView;
@@ -86,7 +86,7 @@ public class QzoneHbFragment
   
   public QzoneHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new agzw(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new agzu(this);
   }
   
   private String a()
@@ -186,22 +186,22 @@ public class QzoneHbFragment
     if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372639);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372668));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372640));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131372637));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131372638));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375843));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131375501);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372641);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372670));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372642));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131372639));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131372640));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375845));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131375503);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getActivity(), 2130772185);
     this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367337);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetRollNumberView = ((RollNumberView)paramView.findViewById(2131372669));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetRollNumberView = ((RollNumberView)paramView.findViewById(2131372671));
   }
   
   private boolean a()
   {
-    this.jdField_a_of_type_Int = ((agzf)this.mQApp.getManager(245)).a("grap_hb_verify", 1, new String[] { "videoRedMinValue" });
-    return Integer.valueOf(bgwk.a(this.jdField_b_of_type_JavaLangString)).intValue() >= this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = ((agzd)this.mQApp.getManager(245)).a("grap_hb_verify", 1, new String[] { "videoRedMinValue" });
+    return Integer.valueOf(bgxb.a(this.jdField_b_of_type_JavaLangString)).intValue() >= this.jdField_a_of_type_Int;
   }
   
   private boolean b()
@@ -215,7 +215,7 @@ public class QzoneHbFragment
       if ((!TextUtils.isEmpty(str)) && (str.indexOf('.') != 0)) {
         if ((str.indexOf('.') > 0) && (str.indexOf('.') < str.length() - 3))
         {
-          str = getString(2131697069);
+          str = getString(2131697070);
           if (str != null)
           {
             this.mActivity.b(str);
@@ -276,8 +276,8 @@ public class QzoneHbFragment
         this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_b_of_type_JavaLangString);
       }
       this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(baxt.a(this.mQApp, 1, this.d));
-      this.jdField_a_of_type_Ahaa.postDelayed(new QzoneHbFragment.2(this), 10L);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bayh.a(this.mQApp, 1, this.d));
+      this.jdField_a_of_type_Agzy.postDelayed(new QzoneHbFragment.2(this), 10L);
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetRollNumberView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(0);
       return;
@@ -295,7 +295,7 @@ public class QzoneHbFragment
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((isAdded()) && (localFragmentActivity != null)) {
-      this.jdField_c_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new agzz(this, localFragmentActivity));
+      this.jdField_c_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new agzx(this, localFragmentActivity));
     }
   }
   
@@ -396,12 +396,12 @@ public class QzoneHbFragment
           this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("comment");
           this.jdField_a_of_type_OrgJsonJSONArray = paramJSONObject.optJSONArray("money_array");
           this.jdField_b_of_type_JavaLangString = a();
-          if (!axjo.a(this.jdField_b_of_type_JavaLangString)) {
+          if (!axjq.a(this.jdField_b_of_type_JavaLangString)) {
             this.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
           }
-          paramJSONObject = this.jdField_a_of_type_Ahaa.obtainMessage();
+          paramJSONObject = this.jdField_a_of_type_Agzy.obtainMessage();
           paramJSONObject.what = 100;
-          this.jdField_a_of_type_Ahaa.sendMessage(paramJSONObject);
+          this.jdField_a_of_type_Agzy.sendMessage(paramJSONObject);
           return;
         }
         catch (Exception paramJSONObject)
@@ -419,7 +419,7 @@ public class QzoneHbFragment
       return;
     }
     getActivity();
-    String str = ahje.jdField_c_of_type_JavaLangString + this.e + "/hbThemeConfig.cfg";
+    String str = ahjc.jdField_c_of_type_JavaLangString + this.e + "/hbThemeConfig.cfg";
     ThreadManager.getFileThreadHandler().post(new QzoneHbFragment.7(this, str));
   }
   
@@ -428,9 +428,9 @@ public class QzoneHbFragment
     if (QLog.isColorLevel()) {
       QLog.d("QzoneHbFragment", 2, "complete---");
     }
-    Message localMessage = this.jdField_a_of_type_Ahaa.obtainMessage();
+    Message localMessage = this.jdField_a_of_type_Agzy.obtainMessage();
     localMessage.what = 101;
-    this.jdField_a_of_type_Ahaa.sendMessage(localMessage);
+    this.jdField_a_of_type_Agzy.sendMessage(localMessage);
   }
   
   public void onClick(View paramView)
@@ -469,20 +469,20 @@ public class QzoneHbFragment
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131711906));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131711917));
         this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(true);
         this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
         this.jdField_a_of_type_AndroidWidgetEditText.setText("");
         if (this.channel != 32768) {
           this.mActivity.a(300, "rewardhongbao.wrap.custom", 2);
         }
-        a(this.jdField_a_of_type_Ahaa, this.jdField_a_of_type_AndroidWidgetEditText);
+        a(this.jdField_a_of_type_Agzy, this.jdField_a_of_type_AndroidWidgetEditText);
         return;
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_c_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131711904));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131711915));
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
       return;
       l = System.currentTimeMillis();
@@ -493,7 +493,7 @@ public class QzoneHbFragment
     }
     paramView = this.mActivity.a();
     paramView.put("total_num", "1");
-    paramView.put("total_amount", bgwk.a(this.jdField_b_of_type_JavaLangString));
+    paramView.put("total_amount", bgxb.a(this.jdField_b_of_type_JavaLangString));
     paramView.put("wishing", "");
     paramView.put("channel", this.channel + "");
     paramView.put("feeds_name", this.f);
@@ -502,9 +502,9 @@ public class QzoneHbFragment
     {
       if (!a())
       {
-        paramView = bgwk.a(this.jdField_a_of_type_Int + "", 0, true);
-        paramView = ajyc.a(2131711907) + paramView + ajyc.a(2131711905);
-        bbcv.a(getActivity(), 230, null, paramView, null, getString(2131696611), new agzx(this), null).show();
+        paramView = bgxb.a(this.jdField_a_of_type_Int + "", 0, true);
+        paramView = ajya.a(2131711918) + paramView + ajya.a(2131711916);
+        bbdj.a(getActivity(), 230, null, paramView, null, getString(2131696612), new agzv(this), null).show();
         return;
       }
       if (!this.h.equals("1")) {
@@ -532,7 +532,7 @@ public class QzoneHbFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.mActivity.getWindow().setSoftInputMode(32);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561515, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561514, null);
     a(paramLayoutInflater);
     d();
     c();

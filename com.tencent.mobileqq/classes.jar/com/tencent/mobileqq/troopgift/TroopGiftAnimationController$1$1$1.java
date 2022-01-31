@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troopgift;
 
-import bara;
-import barb;
+import baro;
+import barp;
 
 public class TroopGiftAnimationController$1$1$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1$1$1(barb parambarb) {}
+  public TroopGiftAnimationController$1$1$1(barp parambarp) {}
   
   public void run()
   {

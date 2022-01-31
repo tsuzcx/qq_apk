@@ -1,41 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.4;
 import com.tencent.qphone.base.util.QLog;
 
 public class auwi
-  extends ajtq
+  extends bbwt
 {
-  public auwi(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
+  public auwi(VipProfileCardPreviewActivity.4 param4) {}
   
-  public void reqShoppingInfo(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public void onDone(bbwu parambbwu)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "user binding shoppingNo = " + paramString1 + "Threadid=" + Thread.currentThread().getId());
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { parambbwu.jdField_a_of_type_JavaLangString, Integer.valueOf(parambbwu.jdField_a_of_type_Int) }));
     }
-    if ((this.a.app == null) || (this.a.isFinishing())) {}
-    do
-    {
-      return;
-      this.a.app.removeObserver(this);
-      this.a.b = null;
-    } while (!paramBoolean);
-    if ("0".equals(paramString1))
-    {
-      paramString1 = this.a.a;
-      paramString2 = this.a.a;
-      paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
-      paramString1.putBoolean(this.a.e, false);
-      paramString1.commit();
-      return;
+  }
+  
+  public void onProgress(bbwu parambbwu)
+  {
+    int i = (int)parambbwu.jdField_a_of_type_Float;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { parambbwu.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
     }
-    paramString1 = this.a.a;
-    paramString2 = this.a.a;
-    paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
-    paramString1.putBoolean(this.a.e, true);
-    paramString1.commit();
+  }
+  
+  public boolean onStart(bbwu parambbwu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { parambbwu.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    }
+    return true;
   }
 }
 

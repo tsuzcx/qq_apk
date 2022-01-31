@@ -1,47 +1,39 @@
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcel;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Bundle;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class amht
-  implements amhn
+  implements amhm
 {
-  private String a = "ReadInJoyLauncher";
+  private Bundle a;
+  
+  public amht() {}
+  
+  public amht(Bundle paramBundle)
+  {
+    this.a = paramBundle;
+  }
   
   public void a(Context paramContext, ColorNote paramColorNote)
   {
-    paramColorNote = paramColorNote.getReserve();
-    if (paramColorNote == null) {
-      return;
+    Intent localIntent = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent.putExtra("readtype", "16");
+    localIntent.putExtra("stay", "1");
+    if (this.a != null) {
+      localIntent.putExtras(this.a);
     }
-    try
+    paramColorNote = paramColorNote.getSubType().split("_");
+    if (paramColorNote.length > 1)
     {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = new ArticleInfo(localParcel);
-      if (paramColorNote == null)
-      {
-        QLog.d(this.a, 2, "init color error something is null");
-        return;
+      localIntent.putExtra("nbid", paramColorNote[0]);
+      if (paramColorNote[0].startsWith("-")) {
+        localIntent.putExtra("isLocal", true);
       }
     }
-    catch (Exception paramColorNote)
-    {
-      for (;;)
-      {
-        QLog.e(this.a, 2, "unmarshall error");
-        paramColorNote.printStackTrace();
-        paramColorNote = null;
-      }
-      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
-      paramColorNote = ont.b(paramContext, paramColorNote);
-      paramColorNote.addFlags(268435456);
-      paramColorNote.putExtra("from_color_note", true);
-      paramContext.startActivity(paramColorNote);
-    }
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

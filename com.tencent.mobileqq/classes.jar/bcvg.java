@@ -1,14 +1,6 @@
-import android.content.Context;
-import android.view.ViewGroup.LayoutParams;
-
-public class bcvg
+public abstract interface bcvg
 {
-  public float a = 0.5F;
-  public Context a;
-  public ViewGroup.LayoutParams a;
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
+  public abstract void a(bbjs parambbjs, bcvf parambcvf);
 }
 
 

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bkur;
+import bkvi;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.NavigationBarInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -60,7 +60,7 @@ public class NavigatorBarForMiniGame
       this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131364688);
+      this.mCapsuleButton.setId(2131364687);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
       ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(getContext(), 9.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
@@ -100,7 +100,7 @@ public class NavigatorBarForMiniGame
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mCapsuleButton.getLayoutParams();
     int j = DisplayUtil.dip2px(getContext(), 9.0F);
-    if (bkur.b()) {}
+    if (bkvi.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
     {
       localLayoutParams.topMargin = (i + j);

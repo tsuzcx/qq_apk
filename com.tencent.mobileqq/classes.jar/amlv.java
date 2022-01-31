@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.widget.RoundImageView;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-class amlv
+@Deprecated
+public abstract class amlv
+  extends IBaseActionListener.Stub
 {
-  public angd a;
-  public RoundImageView a;
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
   
-  public amlv(amlr paramamlr, RoundImageView paramRoundImageView, angd paramangd)
+  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = paramRoundImageView;
-    this.jdField_a_of_type_Angd = paramangd;
+    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlv
  * JD-Core Version:    0.7.0.1
  */

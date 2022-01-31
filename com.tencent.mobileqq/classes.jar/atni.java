@@ -1,44 +1,6 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.AnimationPoint;
-
-public class atni
-  extends Dialog
+public abstract interface atni
 {
-  protected TextView a;
-  protected AnimationPoint a;
-  
-  public atni(Context paramContext)
-  {
-    super(paramContext, 2131755014);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561309, null);
-    paramContext.setOnTouchListener(new atnj(this));
-    super.setContentView(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362547));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367281));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(-1L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new atnk(this));
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
-  }
-  
-  public void show()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
-  }
+  public abstract void a();
 }
 
 

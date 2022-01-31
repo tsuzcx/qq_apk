@@ -1,83 +1,108 @@
-import android.content.Context;
-import android.os.Handler;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class atnx
-  extends AbstractImageAdapter
-  implements atod
+  extends atoa
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private atod jdField_a_of_type_Atod;
+  private int jdField_a_of_type_Int;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public atnx(Context paramContext)
+  public atnx(PicBrowserActivity paramPicBrowserActivity, xpj paramxpj)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramPicBrowserActivity, paramxpj);
   }
   
-  public void a(int paramInt)
+  protected RelativeLayout a()
   {
-    int i = nam.a();
-    if ((i != 1) && (i != 4)) {}
-    atob localatob;
-    do
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559337, null);
+  }
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super.a(paramAdapterView, paramView, paramInt, paramLong);
+    c(paramInt);
+  }
+  
+  public void b(ViewGroup paramViewGroup)
+  {
+    super.b(paramViewGroup);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131375937));
+    this.b = ((TextView)paramViewGroup.findViewById(2131364987));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+  }
+  
+  protected void c(int paramInt)
+  {
+    if (paramInt == this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    for (;;)
     {
-      return;
-      localatob = (atob)getItem(paramInt + 1);
-      if (localatob != null) {
-        localatob.a();
+      if (this.jdField_a_of_type_Atog.a() <= 1)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.b.setVisibility(8);
       }
-      localatob = (atob)getItem(paramInt - 1);
-    } while (localatob == null);
-    localatob.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    ((atob)getItem(paramInt)).a(paramView, paramInt, this);
-  }
-  
-  public void a(atod paramatod)
-  {
-    this.jdField_a_of_type_Atod = paramatod;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null) {
-      return paramView;
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
-    paramView = (atob)getItem(paramInt);
-    paramViewGroup = paramView.a;
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
-      ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(paramViewGroup.a);
+  }
+  
+  public void j()
+  {
+    ArrayList localArrayList = this.jdField_a_of_type_Atog.a();
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int < localArrayList.size())) {
+      localArrayList.add(0, (PicInfo)localArrayList.remove(this.jdField_a_of_type_Int));
     }
-    paramView = paramView.a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
-    paramView.setTag(2131296390, Boolean.valueOf(true));
-    return paramView;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("intent_param_pic_infos", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserActivity.setResult(-1, localIntent);
+    super.j();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131375937: 
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Atog.b();
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      bcql.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694574), 0).a();
+      return;
+    }
+    int i = this.jdField_a_of_type_Atog.b();
+    if (i < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Int -= 1;
+    }
+    for (;;)
+    {
+      g();
+      c(this.jdField_a_of_type_Atog.b());
+      return;
+      if (i == this.jdField_a_of_type_Int) {
+        if (i == this.jdField_a_of_type_Atog.a() - 1) {
+          this.jdField_a_of_type_Int = (i - 1);
+        } else {
+          this.jdField_a_of_type_Int = i;
+        }
+      }
+    }
   }
 }
 

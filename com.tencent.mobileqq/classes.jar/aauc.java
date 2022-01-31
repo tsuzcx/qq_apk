@@ -1,34 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aauc
-  implements ncf
+  implements DialogInterface.OnClickListener
 {
-  public aauc(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aauc(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
-  public void a() {}
-  
-  public void a(ArrayList<TroopAppInfo> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      askq localaskq = (askq)this.a.app.getManager(37);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localaskq.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
-      }
-      localaskq.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.i);
+    if (this.jdField_a_of_type_Boolean) {
+      axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 

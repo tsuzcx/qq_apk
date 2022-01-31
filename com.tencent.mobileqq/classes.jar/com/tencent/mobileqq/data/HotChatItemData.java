@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class HotChatItemData
-  extends aukm
+  extends auko
 {
   public String mADsContent;
   public long mDraftSec;
@@ -16,7 +16,7 @@ public class HotChatItemData
   public long mLatestMsgSec;
   public long mMakeTopTime;
   public int mState;
-  @auma
+  @aumc
   public String mTroopUin;
 }
 

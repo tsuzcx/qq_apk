@@ -1,10 +1,15 @@
-public abstract interface avyo
+import android.os.Handler;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+
+public class avyo
+  implements avyw
 {
-  public abstract void a();
+  public avyo(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
+  public void a()
+  {
+    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+  }
 }
 
 

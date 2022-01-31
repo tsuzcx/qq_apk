@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class afte
-  extends View.AccessibilityDelegate
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public afte(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
   }
 }
 

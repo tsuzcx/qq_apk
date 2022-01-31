@@ -1,14 +1,30 @@
-public class aiyq
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class aiyq
+  implements EIPCResultCallback
 {
-  public String a;
-  public String b;
-  public String c;
+  aiyq(aiyp paramaiyp) {}
   
-  public aiyq(String paramString1, String paramString2, String paramString3)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
+      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + aiyp.a(this.a));
+      if (!aiyp.a(this.a).equals(paramEIPCResult))
+      {
+        aiyp.a(this.a).removeMessages(1);
+        aiyp.a(this.a).sendEmptyMessage(1);
+      }
+      return;
+    }
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
+    aiyp.a(this.a).removeMessages(1);
+    aiyp.a(this.a).sendEmptyMessage(1);
   }
 }
 

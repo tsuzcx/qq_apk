@@ -1,23 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ajhi
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
   public ajhi(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    ApolloGameActivity.a(this.a).d();
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.d(this.a);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

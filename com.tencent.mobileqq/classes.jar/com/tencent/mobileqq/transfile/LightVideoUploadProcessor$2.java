@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import aysg;
+import aysi;
 
 public class LightVideoUploadProcessor$2
   implements Runnable
 {
-  public LightVideoUploadProcessor$2(aysg paramaysg) {}
+  public LightVideoUploadProcessor$2(aysi paramaysi) {}
   
   public void run()
   {
-    aysg.a(this.this$0, 1003);
+    aysi.a(this.this$0, 1003);
   }
 }
 

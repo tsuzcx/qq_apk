@@ -4,12 +4,12 @@ import android.content.DialogInterface.OnClickListener;
 class atsp
   implements DialogInterface.OnClickListener
 {
-  atsp(atsm paramatsm, bbgg parambbgg) {}
+  atsp(atso paramatso, bbgu parambbgu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
-    this.jdField_a_of_type_Atsm.a.f();
+    this.jdField_a_of_type_Bbgu.dismiss();
+    this.jdField_a_of_type_Atso.a.f();
   }
 }
 

@@ -1,76 +1,136 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.14.1.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeSwitcher;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 public class bbtk
-  implements View.OnTouchListener
+  extends bbtc
 {
-  bbtk(bbtj parambbtj) {}
+  public static final bbtk a = new bbtk();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void _onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    paramView = this.a.a.e.keySet().iterator();
-    while (paramView.hasNext())
+    if (!ThemeUtil.isIOSTheme(paramString1))
     {
-      paramMotionEvent = (String)paramView.next();
-      Object localObject = (FrameLayout)this.a.a.e.get(paramMotionEvent);
-      localObject = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetSeekBar;
-      TextView localTextView1 = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetTextView;
-      TextView localTextView2 = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetTextView;
-      ImageView localImageView1 = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetImageView;
-      ImageView localImageView2 = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetImageView;
-      TextView localTextView3 = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetTextView;
-      ImageView localImageView3 = ((bbtr)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetImageView;
-      if (QLog.isColorLevel()) {
-        QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
-      }
-      if (((SeekBar)localObject).getVisibility() == 4)
+      ThemeSwitcher.a(paramString1, paramInt1);
+      if (paramInt1 != 0)
       {
-        ((SeekBar)localObject).setVisibility(0);
-        localTextView1.setVisibility(0);
-        localTextView2.setVisibility(0);
-        localImageView3.setVisibility(0);
-        if (((TVK_IMediaPlayer)this.a.a.d.get(paramMotionEvent)).isPlaying()) {}
-        for (int i = 2130847675;; i = 2130848221)
+        paramQQAppInterface = ThemeUtil.getIDFromSCID(paramString1);
+        bbrq.a(null, "individual_v2_theme_download_fail", String.valueOf(paramInt1), "from" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2, paramQQAppInterface, String.valueOf(paramInt2), null, 0.0F, 0.0F);
+        paramQQAppInterface = new HashMap();
+        paramQQAppInterface.put("reportKey", "errorCode:" + paramInt1);
+        axrn.a(BaseApplication.getContext()).a("", "individual_v2_theme_download_fail", false, 0L, -1L, paramQQAppInterface, "", true);
+      }
+      return;
+    }
+    QLog.e("ThemeUpdateCallback", 1, "onCompleted ignore ios theme:" + paramString1);
+  }
+  
+  protected void _onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    if (!ThemeUtil.isIOSTheme(paramString1)) {
+      ThemeSwitcher.a(paramString1, paramLong2, paramLong3);
+    }
+  }
+  
+  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if (paramQQAppInterface != null) {
+      if (!ThemeUtil.isIOSTheme(paramString))
+      {
+        Object localObject = ThemeUtil.getIDFromSCID(paramString);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          localImageView1.setImageResource(i);
-          localImageView1.setVisibility(0);
-          this.a.a.jdField_f_of_type_Boolean = true;
-          localImageView2.setVisibility(4);
-          localTextView3.setVisibility(4);
-          this.a.a.c.removeCallbacksAndMessages(null);
-          paramMotionEvent = new HealthBusinessPlugin.14.1.1(this, (SeekBar)localObject, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-          this.a.a.c.postDelayed(paramMotionEvent, 3000L);
-          break;
+          localObject = new aymj().a((String)localObject);
+          if (paramString.startsWith("theme.android.")) {}
+          for (paramQQAppInterface = ((aymj)localObject).a(paramQQAppInterface.getApp(), paramString, "").c();; paramQQAppInterface = ((aymj)localObject).b(paramQQAppInterface.getApp()))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ThemeUpdateCallback", 2, "deleteFiles: " + paramQQAppInterface);
+            }
+            return new File(paramQQAppInterface).delete();
+          }
         }
       }
-      ((SeekBar)localObject).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView3.setVisibility(4);
-      localImageView1.setVisibility(4);
-      this.a.a.jdField_f_of_type_Boolean = false;
-      localImageView2.setVisibility(0);
-      localTextView3.setVisibility(0);
+      else
+      {
+        QLog.e("ThemeUpdateCallback", 1, "deleteFiles ignore ios theme:" + paramString);
+      }
+    }
+    return false;
+  }
+  
+  public long getBID()
+  {
+    return 3L;
+  }
+  
+  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if (paramQQAppInterface != null)
+    {
+      VasQuickUpdateEngine.TagItemInfo localTagItemInfo;
+      if ("theme_mapping_config_android".equals(paramString))
+      {
+        localTagItemInfo = new VasQuickUpdateEngine.TagItemInfo();
+        localTagItemInfo.bPreConfig = false;
+        localTagItemInfo.bSaveInDir = false;
+        localTagItemInfo.strSavePath = getSavePath(paramQQAppInterface.getApp(), paramString);
+        return localTagItemInfo;
+      }
+      if (!ThemeUtil.isIOSTheme(paramString))
+      {
+        Object localObject = ThemeUtil.getIDFromSCID(paramString);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localTagItemInfo = new VasQuickUpdateEngine.TagItemInfo();
+          localObject = new aymj().a((String)localObject);
+          if (paramString.startsWith("theme.android."))
+          {
+            localTagItemInfo.bPreConfig = false;
+            localTagItemInfo.bSaveInDir = false;
+            localTagItemInfo.strSavePath = ((aymj)localObject).a(paramQQAppInterface.getApp(), paramString, "").c();
+            return localTagItemInfo;
+          }
+          localTagItemInfo.bPreConfig = true;
+          localTagItemInfo.bSaveInDir = false;
+          localTagItemInfo.strSavePath = ((aymj)localObject).b(paramQQAppInterface.getApp());
+          return localTagItemInfo;
+        }
+      }
+      else
+      {
+        QLog.e("ThemeUpdateCallback", 1, "getItemInfo ignore ios theme:" + paramString);
+      }
+    }
+    return null;
+  }
+  
+  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (!ThemeUtil.isIOSTheme(paramString)))
+    {
+      Object localObject = ThemeUtil.getIDFromSCID(paramString);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new aymj().a((String)localObject);
+        if (paramString.startsWith("theme.android.")) {}
+        for (paramQQAppInterface = ((aymj)localObject).a(paramQQAppInterface.getApp(), paramString, "").c();; paramQQAppInterface = ((aymj)localObject).b(paramQQAppInterface.getApp())) {
+          return new File(paramQQAppInterface).exists();
+        }
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbtk
  * JD-Core Version:    0.7.0.1
  */

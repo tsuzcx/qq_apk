@@ -1,24 +1,24 @@
 package cooperation.gmersdk_warper;
 
-import bega;
-import bgiz;
-import bgjb;
-import bgjg;
+import begr;
+import bgjq;
+import bgjs;
+import bgjx;
 
 public class GMEAVEngineWalper$2$1
   implements Runnable
 {
-  public GMEAVEngineWalper$2$1(bgjb parambgjb) {}
+  public GMEAVEngineWalper$2$1(bgjs parambgjs) {}
   
   public void run()
   {
-    boolean bool = bgjg.a(this.a.a.jdField_a_of_type_AndroidContentContext).a();
-    if (this.a.a.jdField_a_of_type_Bega != null) {
-      this.a.a.jdField_a_of_type_Bega.a(bool, 0);
+    boolean bool = bgjx.a(this.a.a.jdField_a_of_type_AndroidContentContext).a();
+    if (this.a.a.jdField_a_of_type_Begr != null) {
+      this.a.a.jdField_a_of_type_Begr.a(bool, 0);
     }
-    bool = bgjg.a(this.a.a.jdField_a_of_type_AndroidContentContext).b();
-    if (this.a.a.jdField_a_of_type_Bega != null) {
-      this.a.a.jdField_a_of_type_Bega.b(bool, 0);
+    bool = bgjx.a(this.a.a.jdField_a_of_type_AndroidContentContext).b();
+    if (this.a.a.jdField_a_of_type_Begr != null) {
+      this.a.a.jdField_a_of_type_Begr.b(bool, 0);
     }
   }
 }

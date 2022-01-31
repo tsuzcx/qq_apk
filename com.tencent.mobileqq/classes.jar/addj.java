@@ -1,11 +1,16 @@
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-public abstract interface addj
+public class addj
+  implements adfb
 {
-  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
+  public addj(DoodlePanel paramDoodlePanel) {}
   
-  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
+  public void a(adfa paramadfa)
+  {
+    this.a.a(paramadfa);
+    paramadfa = "" + paramadfa.a + ";" + paramadfa.b + ";" + paramadfa.c;
+    bbax.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramadfa);
+  }
 }
 
 

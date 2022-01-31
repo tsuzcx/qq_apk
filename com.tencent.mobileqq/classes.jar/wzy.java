@@ -1,26 +1,50 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class wzy
-  extends Handler
+  implements URLDrawable.URLDrawableListener
 {
-  wzy(wzw paramwzw) {}
+  wzy(wzt paramwzt, DisplayMetrics paramDisplayMetrics) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Wzt.c = false;
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Wzt.c = false;
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    float f1 = paramURLDrawable.getIntrinsicHeight();
+    float f2 = paramURLDrawable.getIntrinsicWidth();
+    paramURLDrawable = this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    int i = 0;
+    if (f2 != 0.0F) {
+      if (f1 <= bbdv.a(this.jdField_a_of_type_Wzt.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
+        break label109;
+      }
+    }
+    label109:
+    for (i = (int)bbdv.a(this.jdField_a_of_type_Wzt.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - bbdv.a(this.jdField_a_of_type_Wzt.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
     {
-    default: 
+      if (i > 0)
+      {
+        paramURLDrawable.height = i;
+        this.jdField_a_of_type_Wzt.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Azpe + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Azpf);
-    }
-    if (this.a.jdField_a_of_type_Azpf != null) {
-      this.a.a(this.a.jdField_a_of_type_Azpf);
-    }
-    this.a.a();
   }
 }
 

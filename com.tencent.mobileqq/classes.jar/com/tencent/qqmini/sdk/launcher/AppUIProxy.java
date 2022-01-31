@@ -4,17 +4,17 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
-import begv;
-import begw;
-import bepo;
-import beps;
-import bepv;
-import bepy;
-import besl;
+import behm;
+import behn;
+import beqf;
+import beqj;
+import beqm;
+import beqp;
+import betc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppUIProxy
-  extends bepy
+  extends beqp
 {
   private AppUIProxy.LoadingUI mLoadingUI;
   
@@ -24,7 +24,7 @@ public class AppUIProxy
       return;
     }
     this.mMainHandler.post(new AppUIProxy.1(this));
-    begv.a(System.currentTimeMillis());
+    behm.a(System.currentTimeMillis());
   }
   
   public void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
@@ -35,7 +35,7 @@ public class AppUIProxy
   
   public void onDestroy(Activity paramActivity)
   {
-    besl.b("UIProxy", "onDestroy");
+    betc.b("UIProxy", "onDestroy");
     if (this.mActivity == paramActivity)
     {
       this.mActivity = null;
@@ -44,15 +44,15 @@ public class AppUIProxy
         this.mRuntime.a(paramActivity);
       }
     }
-    if (bepo.a().a() != null) {
-      bepo.a().a().notifyRuntimeEvent(62, new Object[0]);
+    if (beqf.a().a() != null) {
+      beqf.a().a().notifyRuntimeEvent(62, new Object[0]);
     }
   }
   
   public void onRuntimeReady()
   {
     if (!this.mActivatedRuntimeLoader.dismissLoadingAfterLoaded()) {
-      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new beps(this));
+      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new beqj(this));
     }
     for (;;)
     {
@@ -62,20 +62,20 @@ public class AppUIProxy
     }
   }
   
-  public void resumeRuntime(bepv parambepv)
+  public void resumeRuntime(beqm parambeqm)
   {
     if (this.mActivity == null) {
-      besl.c("UIProxy", "Failed to resumeRuntime. Activity is null");
+      betc.c("UIProxy", "Failed to resumeRuntime. Activity is null");
     }
     do
     {
       return;
-      if (parambepv == null)
+      if (parambeqm == null)
       {
-        besl.c("UIProxy", "Failed to resumeRuntime. runtime loader is null");
+        betc.c("UIProxy", "Failed to resumeRuntime. runtime loader is null");
         return;
       }
-      this.mActivatedRuntimeLoader = parambepv;
+      this.mActivatedRuntimeLoader = parambeqm;
       this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
       this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
       hideLoading();

@@ -1,16 +1,19 @@
-public class azbx
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import mqq.app.QQPermissionCallback;
+
+class azbx
+  implements QQPermissionCallback
 {
-  public long a;
-  public String a;
-  public String b;
+  azbx(azbw paramazbw) {}
   
-  public azbx() {}
-  
-  public azbx(long paramLong, String paramString1, String paramString2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

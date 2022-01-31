@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.data;
 
-import akhq;
-import azoa;
-import azoe;
-import azok;
+import akhp;
+import azoc;
+import azog;
+import azom;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -12,12 +12,12 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopCreateLogic$4$1
   implements Runnable
 {
-  public TroopCreateLogic$4$1(azoe paramazoe, String paramString, TroopInfo paramTroopInfo, int paramInt) {}
+  public TroopCreateLogic$4$1(azog paramazog, String paramString, TroopInfo paramTroopInfo, int paramInt) {}
   
   public void run()
   {
-    ((akhq)this.jdField_a_of_type_Azoe.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).j(this.jdField_a_of_type_JavaLangString);
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_Azoe.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString);
+    ((akhp)this.jdField_a_of_type_Azog.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).j(this.jdField_a_of_type_JavaLangString);
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_Azog.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString);
     if (localTroopInfo == null) {
       localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
     }
@@ -28,9 +28,9 @@ public class TroopCreateLogic$4$1
       int i;
       if (localTroopInfo != null)
       {
-        localTroopInfo.dwGroupClassExt = this.jdField_a_of_type_Azoe.a.jdField_a_of_type_Azok.jdField_a_of_type_Int;
-        localTroopInfo.mRichFingerMemo = this.jdField_a_of_type_Azoe.a.jdField_a_of_type_Azok.d;
-        localObject = this.jdField_a_of_type_Azoe.a.jdField_a_of_type_Azok.e.split("\\|");
+        localTroopInfo.dwGroupClassExt = this.jdField_a_of_type_Azog.a.jdField_a_of_type_Azom.jdField_a_of_type_Int;
+        localTroopInfo.mRichFingerMemo = this.jdField_a_of_type_Azog.a.jdField_a_of_type_Azom.d;
+        localObject = this.jdField_a_of_type_Azog.a.jdField_a_of_type_Azom.e.split("\\|");
         if (localObject.length != 4) {
           break label323;
         }
@@ -46,13 +46,13 @@ public class TroopCreateLogic$4$1
         localTroopInfo.hasSetNewTroopName = false;
         localTroopInfo.wMemberNum = this.jdField_a_of_type_Int;
         localTroopInfo.wMemberNumClient = localTroopInfo.wMemberNum;
-        localTroopInfo.troopowneruin = this.jdField_a_of_type_Azoe.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        localTroopInfo.troopowneruin = this.jdField_a_of_type_Azog.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
         localTroopInfo.troopCreateTime = (System.currentTimeMillis() / 1000L);
         if (QLog.isColorLevel()) {
           QLog.d("TroopCreateLogic", 2, "onGetTroopCreate wMemberNumClient:" + localTroopInfo.wMemberNumClient + "  wMemberNum:" + localTroopInfo.wMemberNum + " troopUin:" + localTroopInfo.troopuin);
         }
         this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAdditionalFlag = 1L;
-        localObject = (TroopManager)this.jdField_a_of_type_Azoe.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        localObject = (TroopManager)this.jdField_a_of_type_Azog.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         if (localObject != null) {
           ((TroopManager)localObject).b(localTroopInfo);
         }

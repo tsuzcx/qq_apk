@@ -49,9 +49,9 @@ public class PickerView
       localWindow.setGravity(80);
     }
     this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131370987));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378078));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378081));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378108));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378111));
     this.mConfirmTextView.setOnClickListener(this);
     setNumpickerDiverColor(this.mNumPicker);
     setOnCancelListener(this);
@@ -127,14 +127,14 @@ public class PickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378078)
+    if (paramView.getId() == 2131378081)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131378108) {
+    while (paramView.getId() != 2131378111) {
       return;
     }
     if (this.mOnConfirmListener != null) {

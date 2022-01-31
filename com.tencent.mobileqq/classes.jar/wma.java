@@ -1,25 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 
 class wma
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  wma(wlx paramwlx) {}
+  wma(wlu paramwlu) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a() != null)
-    {
-      paramView = this.a.a().a();
-      if (paramView != null) {
-        this.a.d(paramView);
-      }
+    if (paramMotionEvent.getAction() == 0) {
+      wlu.a(this.a, 0);
     }
-    else
-    {
-      return;
+    if (wlu.a(this.a) != null) {
+      wlu.a(this.a).a(paramMotionEvent);
     }
-    bcpw.a(wlx.a(this.a), 1, ajyc.a(2131714648), 0).a();
+    return true;
   }
 }
 

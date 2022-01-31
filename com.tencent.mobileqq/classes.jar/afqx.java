@@ -1,17 +1,26 @@
+import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
 public class afqx
-  extends ajuv
+  extends yag
 {
   public afqx(DeviceFragment paramDeviceFragment) {}
   
-  protected void b()
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    if (this.a.a == null) {
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_Afqs != null) {
+        this.a.jdField_a_of_type_Afqs.a(this.a.b(), true, null);
+      }
+    }
+    if (this.a.jdField_a_of_type_Afpj == null) {
       return;
     }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
+    this.a.jdField_a_of_type_Afpj.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_Afpj.notifyDataSetChanged();
   }
 }
 

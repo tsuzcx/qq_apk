@@ -1,50 +1,56 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-public class xms
-  extends WebViewPlugin
+class xms
+  implements bcww
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  xms(xmq paramxmq, String paramString) {}
+  
+  public void a(BaseResp paramBaseResp)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.security_verify", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if (!"userVerify".equals(paramString2)) {}
-    do
-    {
-      return false;
-      paramJsBridgeListener = this.mRuntime.a();
-    } while (paramJsBridgeListener == null);
-    if ("setTicket".equals(paramString3)) {}
+    if ((this.jdField_a_of_type_Xmq.o == null) || (!this.jdField_a_of_type_Xmq.o.equals(paramBaseResp.transaction))) {}
+    int i;
+    String str1;
+    String str2;
+    String str3;
     for (;;)
     {
-      try
+      return;
+      BaseApplicationImpl.getContext();
+      switch (paramBaseResp.errCode)
       {
-        paramString1 = new JSONObject(paramVarArgs[0]).optString("ticket");
-        int i = paramJsBridgeListener.getIntent().getIntExtra("verify_type", -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.security_verify", 2, String.format("verifyTicket: %s, verifyType: %s", new Object[] { paramString1, Integer.valueOf(i) }));
+      case -2: 
+      case -1: 
+      default: 
+        wij.a(1, 2131719487);
+        return;
+      }
+      wij.a(2, 2131719506);
+      if ((this.jdField_a_of_type_Xmq.a instanceof bccs))
+      {
+        paramBaseResp = ((bccs)this.jdField_a_of_type_Xmq.a).b();
+        if (this.jdField_a_of_type_Xmq.e == 1) {}
+        for (i = 1009; paramBaseResp != null; i = 1004)
+        {
+          str1 = paramBaseResp.k;
+          str2 = paramBaseResp.j;
+          str3 = AccountDetailActivity.a(paramBaseResp.h);
+          String str4 = paramBaseResp.l;
+          if ((str4 == null) || ("".equals(str4))) {
+            break label200;
+          }
+          nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.h, str3, false);
+          return;
         }
-        paramString2 = new Intent();
-        paramString2.putExtra("ticket", paramString1);
-        paramJsBridgeListener.setResult(-1, paramString2);
-        paramJsBridgeListener.finish();
       }
-      catch (Exception paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        QLog.d("Q.security_verify", 1, "handleJsRequest", paramJsBridgeListener);
-        continue;
-      }
-      return bool;
-      bool = false;
     }
+    label200:
+    if (this.jdField_a_of_type_Xmq.e == 1) {
+      i = 1003;
+    }
+    nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 

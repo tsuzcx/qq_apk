@@ -1,23 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.widget.Scroller;
 import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class adsx
-  extends AnimatorListenerAdapter
 {
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public Scroller a;
+  public boolean a;
+  public float b;
+  public int b;
+  public Scroller b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  
   public adsx(HeartCombolEffectView paramHeartCombolEffectView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
-  }
 }
 
 

@@ -1,17 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 final class aylj
   implements DialogInterface.OnClickListener
 {
-  aylj(aylk paramaylk) {}
+  aylj(String paramString1, String paramString2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aylf.a("0X800A5CA");
-    if (this.a != null) {
-      this.a.onCancel();
+    paramDialogInterface = aylh.a();
+    if (paramDialogInterface != null) {
+      ((akhe)paramDialogInterface.a(14)).a(this.a, this.b);
     }
+    aylh.a("0X800A5B6");
   }
 }
 

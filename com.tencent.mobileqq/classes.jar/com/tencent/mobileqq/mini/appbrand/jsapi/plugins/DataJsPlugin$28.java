@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ysx;
+import ysu;
 
 class DataJsPlugin$28
   implements MiniAppCmdInterface
@@ -35,7 +35,7 @@ class DataJsPlugin$28
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, (JSONObject)localObject, this.val$callBackId);
         DataJsPlugin.access$600(this.this$0, paramJSONObject, this.val$adType);
         paramJSONObject = new GdtAd(DataJsPlugin.access$700(this.this$0, paramJSONObject));
-        ysx.a().a(paramJSONObject);
+        ysu.a().a(paramJSONObject);
         return;
       }
       catch (JSONException localJSONException)

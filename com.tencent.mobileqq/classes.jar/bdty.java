@@ -1,50 +1,73 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.BmqqAccountType;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.view.Surface;
 
+@TargetApi(16)
 public class bdty
-  extends ajtq
+  extends bdtv
 {
-  public bdty(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public int a;
+  public SurfaceTexture a;
+  private Surface a;
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public bdty(bdtx parambdtx, bdtw parambdtw, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    this.a.a();
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    super(parambdtx, parambdtw);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+  }
+  
+  protected String a()
+  {
+    return "Q.qqstory.mediadecoderMediaCodecVideoRender";
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    boolean bool = true;
+    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
+    switch (i)
     {
-      this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
-      if (QidianProfileCardActivity.b(this.a)) {
-        this.a.a(this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+    default: 
+      if ((paramBufferInfo.flags & 0x4) != 0)
+      {
+        ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
+        this.jdField_b_of_type_Boolean = true;
       }
+      if (paramBufferInfo.size == 0) {
+        break;
+      }
+    }
+    for (;;)
+    {
+      paramMediaCodec.releaseOutputBuffer(i, bool);
+      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
+      return;
+      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
+      return;
+      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
+      return;
+      ved.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
+      return;
+      bool = false;
     }
   }
   
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  protected void a(bdtw parambdtw, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Auuw != null) && (this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.c = paramBmqqAccountType.getAccountType();
-      this.a.b();
-      if (this.a.c == 1) {
-        this.a.jdField_a_of_type_Bdto.b(this.a, paramBmqqAccountType);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.a();
+    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdty
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import amep;
+import ameo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class BusinessCard
-  extends aukm
+  extends auko
   implements Parcelable
 {
   public static final int CARD_SRC_AB = 3;
@@ -23,41 +23,41 @@ public class BusinessCard
   public static final int CARD_SRC_FX = 2;
   public static final int CARD_SRC_SS = 1;
   public static final int CARD_SRC_ZL = 5;
-  public static final Parcelable.Creator<BusinessCard> CREATOR = new amep();
+  public static final Parcelable.Creator<BusinessCard> CREATOR = new ameo();
   public static final int TYPE_CARD_ADD = 2;
   public static final int TYPE_CARD_MINE = 1;
   public static final int TYPE_CARD_MINE_ADD = 3;
   public static final int TYPE_CARD_OTHER = 0;
-  @aulx
+  @aulz
   public CardOCRInfo OCRInfo;
   public String OCRInfoPacked;
   public String allPinyin;
   public String bindMobile;
   public String bindUin;
-  @auma
+  @aumc
   public String cardId;
   public String cardName;
   public int cardSrc = 1;
   public int cardType;
   public String company;
-  @aulx
+  @aulz
   public List<String> descs = new ArrayList();
   public String descsPacked;
-  @aulx
+  @aulz
   public String firstPinyin;
   public int lastUpdateTime;
-  @aulx
+  @aulz
   public List<CardMobileInfo> mobileInfos = new ArrayList();
-  @aulx
+  @aulz
   public List<String> mobilesNum = new ArrayList();
   public String moblieInfoPacked;
   public String mobulesNumPacked;
   public String picUrl;
-  @aulx
+  @aulz
   public List<String> qqNum = new ArrayList();
   public String sortDesc;
   public String uinInfoPacked;
-  @aulx
+  @aulz
   public List<CardUinInfo> uinInfos = new ArrayList();
   
   public BusinessCard() {}

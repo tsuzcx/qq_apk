@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
 
 public class asmj
   implements DialogInterface.OnClickListener
 {
-  public asmj(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  public asmj(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().setResult(1001);
+      this.a.getActivity().finish();
+    }
   }
 }
 

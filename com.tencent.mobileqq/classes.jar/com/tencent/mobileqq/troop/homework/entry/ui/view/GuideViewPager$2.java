@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import bcpw;
+import bcql;
 
 class GuideViewPager$2
   implements Runnable
@@ -9,7 +9,7 @@ class GuideViewPager$2
   
   public void run()
   {
-    bcpw.a(this.this$0.getContext(), "playOnce", 0).a();
+    bcql.a(this.this$0.getContext(), "playOnce", 0).a();
   }
 }
 

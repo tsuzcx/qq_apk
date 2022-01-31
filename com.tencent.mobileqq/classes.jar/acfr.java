@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
 
 public class acfr
-  implements DialogInterface.OnDismissListener
+  implements bfru
 {
-  public acfr(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  public acfr(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    this.a.getActivity().finish();
+    return true;
   }
 }
 

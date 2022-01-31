@@ -1,42 +1,18 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
 class agex
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  agex(aget paramaget) {}
+  agex(ager paramager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(aget.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_Ager;
-    if (this.a.jdField_a_of_type_Ager == null) {
-      return;
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 2131364825: 
-      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((ager)localObject).a.msg);
-      return;
-    }
-    paramView = new Bundle();
-    paramView.putInt("forward_type", -1);
-    paramView.putString("forward_text", ((ager)localObject).a.msg);
-    localObject = new Intent();
-    ((Intent)localObject).putExtras(paramView);
-    aqbc.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

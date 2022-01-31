@@ -1,6 +1,19 @@
-public abstract interface bckx
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
+
+public class bckx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(int paramInt);
+  public bckx(ContainerView paramContainerView) {}
+  
+  public void onGlobalLayout()
+  {
+    if (!ContainerView.a(this.a))
+    {
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
+    }
+  }
 }
 
 

@@ -1,33 +1,70 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
 public class ajss
-  implements EIPCResultCallback
+  extends BroadcastReceiver
 {
-  public ajss(BaseActivity paramBaseActivity) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramEIPCResult.data == null) {}
-    do
+    int j = 0;
+    int i = 0;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
+      }
+    }
+    for (;;)
     {
       return;
-      switch (paramEIPCResult.data.getInt("param_cmd"))
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
       {
-      default: 
-        return;
+        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
+        {
+          BaseActivity.mAppForground = false;
+          GesturePWDUtils.setAppForground(paramContext, BaseActivity.mAppForground);
+          BaseActivity.isUnLockSuccess = false;
+          if (BaseActivity.access$300() == null) {
+            continue;
+          }
+          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131695284), "qqsetting_screenshot_key", false)) {
+            break label169;
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label172;
+          }
+          localBaseActivity.turnOffShake();
+          return;
+          localBaseActivity.receiveScreenOff();
+          break;
+          label169:
+          i = 1;
+        }
       }
-    } while (paramEIPCResult.code != 0);
-    paramEIPCResult = paramEIPCResult.data;
-    if (QLog.isDevelopLevel())
-    {
-      int i = paramEIPCResult.getInt("param_proc_badge_count");
-      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
+      else
+      {
+        label172:
+        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
+        {
+          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131695284), "qqsetting_screenshot_key", false)) {}
+          for (i = j; i != 0; i = 1)
+          {
+            localBaseActivity.turnOnShake();
+            return;
+          }
+        }
+      }
     }
-    this.a.doRefreshMiniBadge(paramEIPCResult);
   }
 }
 

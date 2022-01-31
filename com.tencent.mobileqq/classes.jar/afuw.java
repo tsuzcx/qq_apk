@@ -1,15 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.image.AbstractGifImage;
 
 class afuw
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  afuw(afur paramafur, int paramInt) {}
+  afuw(afup paramafup) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_Int);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

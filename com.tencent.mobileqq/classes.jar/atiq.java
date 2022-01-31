@@ -2,28 +2,28 @@ import android.text.TextUtils;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class atiq
-  implements bcwh
+final class atiq
+  implements bcww
 {
-  atiq(atip paramatip) {}
+  atiq(String paramString, atiu paramatiu) {}
   
   public void a(BaseResp paramBaseResp)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
       WXShareHelper.a().b(this);
       if (paramBaseResp.errCode != 0) {
-        break label59;
+        break label50;
       }
-      if (this.a.jdField_a_of_type_Atis != null) {
-        this.a.jdField_a_of_type_Atis.a(true);
+      if (this.jdField_a_of_type_Atiu != null) {
+        this.jdField_a_of_type_Atiu.a(true);
       }
     }
-    label59:
-    while (this.a.jdField_a_of_type_Atis == null) {
+    label50:
+    while (this.jdField_a_of_type_Atiu == null) {
       return;
     }
-    this.a.jdField_a_of_type_Atis.a(false);
+    this.jdField_a_of_type_Atiu.a(false);
   }
 }
 

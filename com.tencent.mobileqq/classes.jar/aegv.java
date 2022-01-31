@@ -1,27 +1,38 @@
-import com.tencent.widget.Gallery;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.qphone.base.util.QLog;
 
 class aegv
-  implements aptu
+  implements DialogInterface.OnClickListener
 {
-  aegv(aegu paramaegu) {}
+  aegv(aegs paramaegs, int paramInt, Object paramObject, aeiy paramaeiy) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    switch (this.jdField_a_of_type_Int)
     {
-      this.a.a(true);
-      this.a.jdField_a_of_type_Aejd.a(this.a.jdField_a_of_type_Aeht.jdField_a_of_type_Long, this.a.jdField_a_of_type_Aeht.jdField_a_of_type_Int, 20);
-      aegu.a(this.a).b(true);
-      aegu.b(this.a).a(true);
-      return;
+    case 2: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+      }
+      break;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void b()
-  {
-    this.a.a(false);
-    this.a.c(true);
+    do
+    {
+      do
+      {
+        return;
+      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
+      aegs.a(this.jdField_a_of_type_Aegs, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aeiy);
+      this.jdField_a_of_type_Aegs.u();
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
+    aegs.a(this.jdField_a_of_type_Aegs, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aeiy);
+    this.jdField_a_of_type_Aeiy.a.a = true;
+    this.jdField_a_of_type_Aegs.u();
   }
 }
 

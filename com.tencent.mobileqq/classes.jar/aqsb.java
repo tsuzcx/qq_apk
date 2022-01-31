@@ -1,31 +1,34 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
+import android.annotation.SuppressLint;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 import com.tencent.qphone.base.util.QLog;
 
+@SuppressLint({"NewApi"})
 public class aqsb
-  implements ArkViewImplement.LoadCallback
+  extends ViewOutlineProvider
 {
-  public aqsb(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public aqsb(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    onLoadState(paramInt1);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
   
-  public void onLoadState(int paramInt)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    if ((QLog.isColorLevel()) || (paramInt == -1)) {
-      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOutlineProvider", 1, "----->getOutline");
     }
-    if (paramInt == 1) {
-      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    }
-    while (paramInt != -1) {
-      return;
-    }
-    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
-    QQGamePadFaceFragment.b(this.a);
+    paramView.getGlobalVisibleRect(new Rect());
+    paramOutline.setRoundRect(new Rect(this.c, this.a, this.d, this.b), 0.0F);
   }
 }
 

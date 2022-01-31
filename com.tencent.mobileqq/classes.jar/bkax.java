@@ -1,20 +1,10 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class bkax
-  implements bkay
+public abstract interface bkax
 {
-  public void a(List<bkav> paramList, DoodleView paramDoodleView)
-  {
-    bjzt localbjzt = new bjzt(paramDoodleView);
-    bjzr localbjzr = new bjzr(paramDoodleView);
-    bkaf localbkaf = new bkaf(paramDoodleView);
-    paramDoodleView = new bkaj(paramDoodleView);
-    paramList.add(localbjzt);
-    paramList.add(localbjzr);
-    paramList.add(localbkaf);
-    paramList.add(paramDoodleView);
-  }
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

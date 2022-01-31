@@ -1,17 +1,36 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.OverlappingImgLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ThemeImageView;
+import java.util.List;
 
-class afmi
-  extends aimv
+public class afmi
+  implements baxz
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public afmi(OverlappingImgLayout paramOverlappingImgLayout) {}
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    do
+    {
+      return;
+      paramInt1 = 0;
+      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
+      {
+        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
+        {
+          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          if (QLog.isColorLevel()) {
+            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
+          }
+        }
+        paramInt1 += 1;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+  }
 }
 
 

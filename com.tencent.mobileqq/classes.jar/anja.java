@@ -1,16 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-
-public class anja
-  implements DialogInterface.OnClickListener
+public final class anja
 {
-  public anja(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public String a;
+  public String b;
 }
 
 

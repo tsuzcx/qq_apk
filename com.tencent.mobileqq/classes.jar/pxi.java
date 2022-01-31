@@ -1,106 +1,40 @@
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class pxi
-  extends osp
+  implements pbx
 {
-  public pxi(ComponentHeaderPolymeric paramComponentHeaderPolymeric) {}
+  public pxi(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public void a(long paramLong, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
+    ComponentHeaderRecommend.a(this.a).setText(ajya.a(2131702302));
+    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
+    ComponentHeaderRecommend.a(this.a).setEnabled(false);
+    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    label32:
     ArticleInfo localArticleInfo;
-    do
+    String str;
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
     {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterSmallVideoTopicFollow topicId = " + paramLong + " isFollow = " + paramBoolean);
+      localArticleInfo = this.a.a.a.a();
+      str = onh.a(localArticleInfo.mAlgorithmID, onh.a(localArticleInfo), this.a.a.a.e(), 0, 0, bbfj.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+      if (!shu.a(this.a.a.a.e())) {
+        break label305;
       }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.f != paramLong));
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
+    }
+    label305:
+    for (paramString = "0X800941D";; paramString = "0X80080EC")
     {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-        ((qdv)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 1;
-      }
-      if (localArticleInfo.mPolymericInfo != null)
-      {
-        localArticleInfo.mPolymericInfo.e = 2;
-        return;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
+      nol.a(null, ComponentHeaderRecommend.a(this.a) + "", paramString, paramString, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), str, false);
       return;
     }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-      ((qdv)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 0;
-    }
-    if (localArticleInfo.mPolymericInfo != null)
-    {
-      localArticleInfo.mPolymericInfo.e = 1;
-      return;
-    }
-    QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.b != paramLong));
-    SocializeFeedsInfo localSocializeFeedsInfo = localArticleInfo.mSocialFeedInfo;
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if (localSocializeFeedsInfo != null) {
-        localSocializeFeedsInfo.h = 2;
-      }
-      localArticleInfo.mPolymericInfo.e = 2;
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if (localSocializeFeedsInfo != null) {
-      localSocializeFeedsInfo.h = 1;
-    }
-    localArticleInfo.mPolymericInfo.e = 1;
   }
 }
 

@@ -1,35 +1,68 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
 import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import javax.annotation.Nonnull;
 
 public class amar
-  extends amam
 {
-  public amar(RockDownloaderManager.2 param2) {}
-  
-  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
+  @android.support.annotation.Nullable
+  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
-    }
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return amam.a(localRockDownloaderTask);
   }
   
-  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable amal paramamal)
   {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setQueryAPKListener(paramamal);
+    amam.b(localRockDownloaderTask);
+  }
+  
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
+  {
+    if (!bbfj.a(BaseApplicationImpl.context))
     {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      if (paramRockDownloadListener != null)
+      {
+        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, ajya.a(2131713501), 10009);
+        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
       }
-      boolean bool = amas.b(localRockDownloadInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
-      }
+      return;
     }
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
+    amam.a(localRockDownloaderTask);
+  }
+  
+  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  {
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return amam.b(localRockDownloaderTask);
+  }
+  
+  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  {
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return amam.a(localRockDownloaderTask);
   }
 }
 

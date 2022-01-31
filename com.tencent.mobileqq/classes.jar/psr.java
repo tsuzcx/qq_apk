@@ -1,105 +1,14 @@
-import android.content.Context;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.widget.AbsListView.LayoutParams;
-
-public class psr
-  extends pqt
+class psr
+  implements pvo
 {
-  public psr(Context paramContext, baxk parambaxk, rap paramrap)
-  {
-    super(paramContext, parambaxk, paramrap);
-  }
+  psr(psq parampsq) {}
   
-  public pqt a()
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Rap, this.jdField_a_of_type_Baxk).q().l().n().h().g().j();
-  }
-  
-  public pqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    rbr localrbr = this.a.jdField_a_of_type_Ram.a();
+    if (localrbr != null) {
+      localrbr.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
-    }
-    if ((this.jdField_a_of_type_Pqs != null) && ((this.jdField_a_of_type_Pqs instanceof ComponentContentBig)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
-    {
-      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout1.setPadding(actn.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, actn.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      localLinearLayout2.addView((ComponentContentBig)this.jdField_a_of_type_Pqs);
-      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject).setMargins(0, actn.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, actn.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localLinearLayout2.addView(localRelativeLayout2);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(actn.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, actn.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localLinearLayout2.setBackgroundResource(2130842329);
-      localLinearLayout2.setOnClickListener(new pss(this));
-      localRelativeLayout1.addView(localLinearLayout2);
-      localLinearLayout1.addView(localRelativeLayout1);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public pqt e()
-  {
-    return null;
-  }
-  
-  public pqt g()
-  {
-    this.jdField_a_of_type_Pqs = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public pqt o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
   }
 }
 

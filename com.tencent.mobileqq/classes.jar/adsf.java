@@ -1,16 +1,15 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class adsf
-  implements aput
+  implements apuv
 {
-  adsf(adqy paramadqy) {}
+  adsf(adqw paramadqw) {}
   
   public void onClick(View paramView)
   {
-    apue.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    paramView = apei.a();
+    apug.b(this.a.a, paramView);
+    apue.a("0X8007FA2");
   }
 }
 

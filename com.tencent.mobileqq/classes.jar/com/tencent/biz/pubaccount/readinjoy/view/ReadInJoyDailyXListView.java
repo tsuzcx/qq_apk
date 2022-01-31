@@ -13,8 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bftk;
-import bhvh;
+import bfub;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
@@ -22,29 +22,29 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-import noo;
-import ntu;
-import olm;
-import olr;
-import onk;
-import onr;
-import oox;
+import nol;
+import ntr;
+import olj;
+import olo;
+import onh;
+import ono;
+import oou;
 import org.json.JSONException;
-import rap;
-import rca;
-import rcf;
-import rcg;
-import ren;
-import rpu;
-import rqq;
+import ram;
+import rbx;
+import rcc;
+import rcd;
+import rek;
+import rpr;
+import rqn;
 
 public class ReadInJoyDailyXListView
   extends ReadInJoyXListView
-  implements ren
+  implements rek
 {
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-1);
   private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  public List<bftk> a;
+  public List<bfub> a;
   private boolean f;
   private boolean g;
   
@@ -77,27 +77,27 @@ public class ReadInJoyDailyXListView
     if (this.g) {
       return;
     }
-    onr localonr = onk.a();
+    ono localono = onh.a();
     String str2 = "0";
     String str1;
-    if (ntu.a() == 1) {
+    if (ntr.a() == 1) {
       str1 = "1";
     }
     for (;;)
     {
-      localonr.b("is_jump", str1);
-      localonr.b("cmd", bhvh.g());
+      localono.b("is_jump", str1);
+      localono.b("cmd", bhvy.g());
       if ("1".equals(str1)) {
-        localonr.b("jump_src", oox.b());
+        localono.b("jump_src", oou.b());
       }
       this.g = true;
-      noo.a(null, "", "0X8009882", "0X8009882", 0, 0, "", "", "", localonr.a(), false);
+      nol.a(null, "", "0X8009882", "0X8009882", 0, 0, "", "", "", localono.a(), false);
       return;
       str1 = str2;
-      if (!TextUtils.isEmpty(oox.a()))
+      if (!TextUtils.isEmpty(oou.a()))
       {
         str1 = str2;
-        if (ntu.a() == 3) {
+        if (ntr.a() == 3) {
           str1 = "1";
         }
       }
@@ -109,7 +109,7 @@ public class ReadInJoyDailyXListView
     return this.mTouchMode;
   }
   
-  public rqq a(int paramInt)
+  public rqn a(int paramInt)
   {
     return super.a(paramInt);
   }
@@ -122,13 +122,13 @@ public class ReadInJoyDailyXListView
     if (paramInt != 4)
     {
       setFooterView(true);
-      if (this.jdField_a_of_type_Rca != null)
+      if (this.jdField_a_of_type_Rbx != null)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718668);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718679);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         this.c = 1;
-        this.jdField_a_of_type_Rca.b(this, paramInt);
+        this.jdField_a_of_type_Rbx.b(this, paramInt);
       }
     }
     for (;;)
@@ -137,12 +137,12 @@ public class ReadInJoyDailyXListView
       return;
       setFooterView(true);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718668);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718679);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      if (this.jdField_a_of_type_Rca != null)
+      if (this.jdField_a_of_type_Rbx != null)
       {
         this.c = 1;
-        this.jdField_a_of_type_Rca.b(this, paramInt);
+        this.jdField_a_of_type_Rbx.b(this, paramInt);
       }
     }
   }
@@ -159,7 +159,7 @@ public class ReadInJoyDailyXListView
     super.a(paramContext, paramAttributeSet);
     setNeedShowHeaderView(true);
     a(this);
-    if (ntu.a() != 2)
+    if (ntr.a() != 2)
     {
       a(this);
       return;
@@ -169,14 +169,14 @@ public class ReadInJoyDailyXListView
   
   public void a(View paramView, ListView paramListView, int paramInt) {}
   
-  public void a(bftk parambftk)
+  public void a(bfub parambfub)
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      super.setOverScrollListener(new rcg(this));
+      super.setOverScrollListener(new rcd(this));
     }
-    this.jdField_a_of_type_JavaUtilList.add(parambftk);
+    this.jdField_a_of_type_JavaUtilList.add(parambfub);
   }
   
   public void a(boolean paramBoolean)
@@ -241,18 +241,18 @@ public class ReadInJoyDailyXListView
     TemplateBean localTemplateBean = null;
     try
     {
-      rpu localrpu = rpu.a("default_feeds", true);
-      if (localrpu != null) {
-        localTemplateBean = localrpu.getTemplateBean(oox.a());
+      rpr localrpr = rpr.a("default_feeds", true);
+      if (localrpr != null) {
+        localTemplateBean = localrpr.getTemplateBean(oou.a());
       }
       if ((localTemplateBean != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null))
       {
-        if (onk.i())
+        if (onh.i())
         {
-          olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, null, localTemplateBean);
+          olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, null, localTemplateBean);
           return;
         }
-        onk.b().post(new ReadInJoyDailyXListView.2(this, localTemplateBean));
+        onh.b().post(new ReadInJoyDailyXListView.2(this, localTemplateBean));
         return;
       }
     }
@@ -278,7 +278,7 @@ public class ReadInJoyDailyXListView
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     if (paramInt == 0) {
-      olm.a(8);
+      olj.a(8);
     }
   }
   
@@ -295,8 +295,8 @@ public class ReadInJoyDailyXListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(paramListAdapter);
-    if ((paramListAdapter != null) && ((paramListAdapter instanceof rap))) {
-      ((rap)paramListAdapter).a(new rcf(this));
+    if ((paramListAdapter != null) && ((paramListAdapter instanceof ram))) {
+      ((ram)paramListAdapter).a(new rcc(this));
     }
   }
   
@@ -342,10 +342,10 @@ public class ReadInJoyDailyXListView
   
   public void setNoMoreData(boolean paramBoolean) {}
   
-  public void setOverScrollListener(bftk parambftk)
+  public void setOverScrollListener(bfub parambfub)
   {
-    if (parambftk != null) {
-      this.jdField_a_of_type_JavaUtilList.add(parambftk);
+    if (parambfub != null) {
+      this.jdField_a_of_type_JavaUtilList.add(parambfub);
     }
   }
   

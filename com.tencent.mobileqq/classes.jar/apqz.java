@@ -1,14 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
-class apqz
-  implements View.OnClickListener
+public class apqz
+  implements apjr
 {
-  apqz(apqx paramapqx, String paramString) {}
+  public apqz(SimpleFileViewer paramSimpleFileViewer) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    apue.b(this.jdField_a_of_type_Apqx.a, this.jdField_a_of_type_JavaLangString);
+    if (SimpleFileViewer.d(this.a) != null) {
+      SimpleFileViewer.d(this.a).setVisibility(8);
+    }
   }
 }
 

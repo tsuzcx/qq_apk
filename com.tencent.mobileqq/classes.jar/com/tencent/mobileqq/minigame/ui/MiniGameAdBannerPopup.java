@@ -17,10 +17,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcxm;
-import bhzt;
-import bhzv;
-import bhzw;
+import bcyb;
+import biak;
+import biam;
+import bian;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -235,11 +235,11 @@ public class MiniGameAdBannerPopup
     }
     try
     {
-      bhzt localbhzt = new bhzt();
-      localbhzt.jdField_a_of_type_Int = 258;
-      localbhzt.b = 1;
+      biak localbiak = new biak();
+      localbiak.jdField_a_of_type_Int = 258;
+      localbiak.b = 1;
       GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
-      bhzv.a().a(Collections.singletonList(localbhzt), GET_AD_CALLBACK);
+      biam.a().a(Collections.singletonList(localbiak), GET_AD_CALLBACK);
       return;
     }
     catch (Exception paramContext)
@@ -449,20 +449,20 @@ public class MiniGameAdBannerPopup
   }
   
   @NotNull
-  private static bhzw newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  private static bian newTianShuReportData(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    bhzw localbhzw = new bhzw();
-    localbhzw.b = (String.valueOf(bcxm.a().a()) + '_' + i);
-    localbhzw.d = paramInt;
-    localbhzw.jdField_e_of_type_Int = 1;
-    localbhzw.g = String.valueOf(paramAdItem.iAdId.get());
-    localbhzw.n = paramString;
-    localbhzw.jdField_a_of_type_Long = i;
-    localbhzw.jdField_a_of_type_Int = 1;
-    localbhzw.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localbhzw.i = "";
-    return localbhzw;
+    bian localbian = new bian();
+    localbian.b = (String.valueOf(bcyb.a().a()) + '_' + i);
+    localbian.d = paramInt;
+    localbian.jdField_e_of_type_Int = 1;
+    localbian.g = String.valueOf(paramAdItem.iAdId.get());
+    localbian.n = paramString;
+    localbian.jdField_a_of_type_Long = i;
+    localbian.jdField_a_of_type_Int = 1;
+    localbian.jdField_e_of_type_JavaLangString = "tianshu.81";
+    localbian.i = "";
+    return localbian;
   }
   
   private static void performReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
@@ -482,9 +482,9 @@ public class MiniGameAdBannerPopup
       localObject = (Activity)paramContext;
     } while ((((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())));
     View localView = LayoutInflater.from(paramContext).inflate(2131559276, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131370261);
-    TextView localTextView = (TextView)localView.findViewById(2131370264);
-    Object localObject = (LinearLayout)localView.findViewById(2131370262);
+    ImageView localImageView = (ImageView)localView.findViewById(2131370260);
+    TextView localTextView = (TextView)localView.findViewById(2131370263);
+    Object localObject = (LinearLayout)localView.findViewById(2131370261);
     Dialog localDialog = new Dialog(paramContext);
     localDialog.setCancelable(false);
     if (localDialog.getWindow() != null)

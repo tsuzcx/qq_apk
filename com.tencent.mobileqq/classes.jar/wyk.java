@@ -1,74 +1,54 @@
 import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import tencent.im.group.nearbybanner.nearbybanner.Banners;
+import tencent.im.group.nearbybanner.nearbybanner.RspBody;
 
-public class wyk
-  extends osp
+class wyk
+  implements BusinessObserver
 {
-  public wyk(TroopMemberApiService paramTroopMemberApiService) {}
+  wyk(wyj paramwyj, Bundle paramBundle) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("rowKey", paramString1);
-    localBundle.putString("action", paramString2);
-    localBundle.putInt("seq", paramInt);
-    localBundle.putString("processName", wxu.a());
-    this.a.a(135, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    if (paramBoolean)
+    this.jdField_a_of_type_AndroidOsBundle.remove("data");
+    if (!paramBoolean)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("action", paramString3);
-      localBundle.putInt("seq", paramInt1);
-      localBundle.putInt("totalDeleteCount", paramInt2);
-      localBundle.putString("processName", wxu.a());
-      this.a.a(134, localBundle);
+      this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
-  {
-    if (paramBoolean)
+    paramBundle = paramBundle.getByteArray("data");
+    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
+    try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("commentContent", paramString3);
-      localBundle.putInt("commentLevel", paramInt1);
-      localBundle.putString("action", paramString4);
-      localBundle.putString("parentCommentId", paramString5);
-      localBundle.putInt("seq", paramInt2);
-      localBundle.putString("processName", wxu.a());
-      this.a.a(132, localBundle);
+      localRspBody.mergeFrom(paramBundle);
+      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
+      {
+        this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
-  {
-    if (paramBoolean)
+    catch (InvalidProtocolBufferMicroException paramBundle)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("rowKey", paramString1);
-      localBundle.putString("commentId", paramString2);
-      localBundle.putString("likeStatus", paramString3);
-      localBundle.putString("action", paramString4);
-      localBundle.putInt("seq", paramInt);
-      localBundle.putString("processName", wxu.a());
-      this.a.a(133, localBundle);
+      this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
+      if (!paramBundle.rpt_banner_info.has())
+      {
+        this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
+      }
     }
-  }
-  
-  public void g(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", paramInt);
-    localBundle.putString("processName", wxu.a());
-    this.a.a(136, localBundle);
+    catch (Exception paramBundle)
+    {
+      this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
+    this.jdField_a_of_type_Wyj.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

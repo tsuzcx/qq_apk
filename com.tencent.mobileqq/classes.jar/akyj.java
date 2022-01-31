@@ -1,59 +1,86 @@
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class akyj
+  extends alxm
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  public akyj(Context paramContext)
+  public String a(alxq paramalxq)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560642, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379506));
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "attachToRootViewGroup");
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    paramalxq = ((akyo)paramalxq.a).jdField_d_of_type_JavaLangString;
+    if (AudioHelper.e()) {
+      QLog.w(akyx.a, 1, "getUnzipDirPath, path[" + paramalxq + "]");
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = actn.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
-    this.jdField_a_of_type_Boolean = true;
+    return paramalxq;
   }
   
-  public void a(String paramString)
+  public boolean a(alxq paramalxq)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void b(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      return;
+    akyo localakyo = (akyo)paramalxq.a;
+    localakyo.jdField_d_of_type_Int = 0;
+    boolean bool1 = super.a(paramalxq);
+    String str1 = "ARPromotionRDHandler, needDownload[" + bool1 + "], zipItem[" + localakyo;
+    String str4;
+    File localFile;
+    boolean bool2;
+    String str3;
+    if (bool1)
+    {
+      str4 = ausb.a("20180426_803_worldcupXXX", localakyo.b);
+      if (!TextUtils.isEmpty(str4))
+      {
+        localFile = new File(str4);
+        bool2 = localFile.exists();
+        str3 = str1 + "], prePath[" + str4 + "], exists[" + bool2;
+        if (!bool2) {}
+      }
     }
-    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Boolean = false;
+    for (;;)
+    {
+      String str2;
+      try
+      {
+        str1 = bfko.a(localFile);
+        str3 = str3 + "], preMd5[" + str1;
+        if (TextUtils.equals(localakyo.b, str1))
+        {
+          str1 = str3 + ajya.a(2131700733);
+          bool2 = bbdx.d(str4, b(paramalxq));
+          bool1 = super.a(paramalxq);
+          paramalxq = str1 + ", copyFile[" + bool2 + "], reCheck[" + bool1 + "]";
+          if (!bool1) {
+            localakyo.jdField_d_of_type_Int = 1;
+          }
+          QLog.w(akyx.a, 1, paramalxq);
+          return bool1;
+        }
+      }
+      catch (Exception localException)
+      {
+        str2 = "Exception";
+        continue;
+        paramalxq = str3 + ajya.a(2131700732);
+        continue;
+      }
+      paramalxq = str3;
+      continue;
+      paramalxq = str2;
+    }
+  }
+  
+  public boolean a(alxq paramalxq, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public String b(alxq paramalxq)
+  {
+    paramalxq = ((akyo)paramalxq.a).c;
+    if (AudioHelper.e()) {
+      QLog.w(akyx.a, 1, "getDownloadPath, path[" + paramalxq + "]");
+    }
+    return paramalxq;
   }
 }
 

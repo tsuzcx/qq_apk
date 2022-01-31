@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begz;
+import behq;
 
 public abstract interface ILifeCycle
 {
-  public abstract void onCreate(begz parambegz);
+  public abstract void onCreate(behq parambehq);
   
   public abstract void onDestroy();
   

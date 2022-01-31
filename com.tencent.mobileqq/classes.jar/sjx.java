@@ -1,6 +1,13 @@
-class sjx
+import org.json.JSONObject;
+
+public abstract class sjx
 {
-  private static final sjv a = new sjv(null);
+  public sjx(JSONObject paramJSONObject)
+  {
+    a(paramJSONObject);
+  }
+  
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

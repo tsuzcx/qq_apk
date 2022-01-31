@@ -3,51 +3,60 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class amwg
-  extends ampb<amwe>
+  extends ampa<amwh>
 {
   public int a()
   {
-    return 418;
+    return 535;
   }
   
   @NonNull
-  public amwe a(int paramInt)
+  public amwh a(int paramInt)
   {
-    return new amwe();
+    return new amwh();
   }
   
   @Nullable
-  public amwe a(ampi[] paramArrayOfampi)
+  public amwh a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      new amwe();
-      return amwe.a(paramArrayOfampi);
+      amwh localamwh = amwh.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localamwh;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
     }
     return null;
   }
   
-  public Class<amwe> a()
+  public Class<amwh> a()
   {
-    return amwe.class;
+    return amwh.class;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(amwe paramamwe)
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramamwe.toString());
+      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  public boolean a()
+  public void a(amwh paramamwh)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramamwh.toString());
+    }
   }
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
+    }
     return 0;
   }
   

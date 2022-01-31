@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.widget.media.live;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import bhnv;
+import bhom;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -86,12 +86,12 @@ public class TXLivePlayerJSAdapter
   public TXLivePlayerJSAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.txLivePlayConfig = bhnv.a("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
-    this.txLivePlayer = bhnv.a("com.tencent.rtmp.WXLivePlayer", bhnv.a(new Class[] { Context.class }), new Object[] { this.mContext });
+    this.txLivePlayConfig = bhom.a("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
+    this.txLivePlayer = bhom.a("com.tencent.rtmp.WXLivePlayer", bhom.a(new Class[] { Context.class }), new Object[] { this.mContext });
     txLivePlayer_enableHardwareDecode(Boolean.valueOf(true));
     try
     {
-      bhnv.a(this.txLivePlayer, "setConfig", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
+      bhom.a(this.txLivePlayer, "setConfig", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
       paramContext = Class.forName("com.tencent.rtmp.ITXLivePlayListener");
       Object localObject = new TXLivePlayerJSAdapter.InnerTXLivePlayListenerImpl(this);
       txLivePlayer_setPlayListener(Proxy.newProxyInstance(TXLivePlayerJSAdapter.class.getClassLoader(), new Class[] { paramContext }, (InvocationHandler)localObject));
@@ -252,39 +252,39 @@ public class TXLivePlayerJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean)
   {
-    bhnv.a(this.txCloudVideoView, "disableLog", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txCloudVideoView, "disableLog", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txCloudVideoView_showLog(Boolean paramBoolean)
   {
-    bhnv.a(this.txCloudVideoView, "showLog", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txCloudVideoView, "showLog", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setAutoAdjustCacheTime(Boolean paramBoolean)
   {
-    bhnv.a(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setCacheTime(float paramFloat)
   {
-    bhnv.a(this.txLivePlayConfig, "setCacheTime", false, bhnv.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bhom.a(this.txLivePlayConfig, "setCacheTime", false, bhom.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlayConfig_setMaxAutoAdjustCacheTime(float paramFloat)
   {
-    bhnv.a(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, bhnv.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bhom.a(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, bhom.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlayConfig_setMinAutoAdjustCacheTime(float paramFloat)
   {
-    bhnv.a(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, bhnv.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    bhom.a(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, bhom.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlay_snapshot(Object paramObject)
   {
     try
     {
-      bhnv.a(this.txLivePlayer, "snapshot", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
+      bhom.a(this.txLivePlayer, "snapshot", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -295,17 +295,17 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_enableAudioVolumeEvaluation(int paramInt)
   {
-    bhnv.a(this.txLivePlayer, "enableAudioVolumeEvaluation", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(this.txLivePlayer, "enableAudioVolumeEvaluation", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_enableHardwareDecode(Boolean paramBoolean)
   {
-    bhnv.a(this.txLivePlayer, "enableHardwareDecode", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txLivePlayer, "enableHardwareDecode", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private boolean txLivePlayer_isPlaying()
   {
-    Object localObject = bhnv.a(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
+    Object localObject = bhom.a(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
     if (localObject != null) {
       return ((Boolean)localObject).booleanValue();
     }
@@ -314,34 +314,34 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_muteAudio(Boolean paramBoolean)
   {
-    bhnv.a(this.txLivePlayer, "muteAudio", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txLivePlayer, "muteAudio", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_muteVideo(Boolean paramBoolean)
   {
-    bhnv.a(this.txLivePlayer, "muteVideo", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txLivePlayer, "muteVideo", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_pause()
   {
-    bhnv.a(this.txLivePlayer, "pause", false, null, new Object[0]);
+    bhom.a(this.txLivePlayer, "pause", false, null, new Object[0]);
   }
   
   private void txLivePlayer_resume()
   {
-    bhnv.a(this.txLivePlayer, "resume", false, null, new Object[0]);
+    bhom.a(this.txLivePlayer, "resume", false, null, new Object[0]);
   }
   
   private void txLivePlayer_setAudioRoute(int paramInt)
   {
-    bhnv.a(this.txLivePlayer, "setAudioRoute", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(this.txLivePlayer, "setAudioRoute", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setAudioVolumeEvaluationListener(Object paramObject)
   {
     try
     {
-      bhnv.a(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
+      bhom.a(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -354,7 +354,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bhnv.a(this.txLivePlayer, "setConfig", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
+      bhom.a(this.txLivePlayer, "setConfig", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -367,7 +367,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bhnv.a(this.txLivePlayer, "setPlayListener", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
+      bhom.a(this.txLivePlayer, "setPlayListener", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -380,7 +380,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bhnv.a(this.txLivePlayer, "setPlayerView", false, bhnv.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
+      bhom.a(this.txLivePlayer, "setPlayerView", false, bhom.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -391,22 +391,22 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_setRenderMode(int paramInt)
   {
-    bhnv.a(this.txLivePlayer, "setRenderMode", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(this.txLivePlayer, "setRenderMode", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setRenderRotation(int paramInt)
   {
-    bhnv.a(this.txLivePlayer, "setRenderRotation", false, bhnv.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    bhom.a(this.txLivePlayer, "setRenderRotation", false, bhom.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_showDebugLog(Boolean paramBoolean)
   {
-    bhnv.a(this.txLivePlayer, "showDebugLog", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txLivePlayer, "showDebugLog", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private int txLivePlayer_startPlay(String paramString, int paramInt)
   {
-    paramString = bhnv.a(this.txLivePlayer, "startPlay", false, bhnv.a(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
+    paramString = bhom.a(this.txLivePlayer, "startPlay", false, bhom.a(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
     if (paramString != null) {
       return ((Integer)paramString).intValue();
     }
@@ -415,7 +415,7 @@ public class TXLivePlayerJSAdapter
   
   private int txLivePlayer_stopPlay(Boolean paramBoolean)
   {
-    paramBoolean = bhnv.a(this.txLivePlayer, "stopPlay", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    paramBoolean = bhom.a(this.txLivePlayer, "stopPlay", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
     if (paramBoolean != null) {
       return ((Integer)paramBoolean).intValue();
     }
@@ -424,7 +424,7 @@ public class TXLivePlayerJSAdapter
   
   private void txPlayConfig_setEnableMessage(Boolean paramBoolean)
   {
-    bhnv.a(this.txLivePlayConfig, "setEnableMessage", false, bhnv.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    bhom.a(this.txLivePlayConfig, "setEnableMessage", false, bhom.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   public Bundle createBundleFromJsonObject(JSONObject paramJSONObject)

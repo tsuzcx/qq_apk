@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import olr;
+import olo;
 
 public final class ArticleInfoModule$47
   implements Runnable
@@ -10,7 +10,7 @@ public final class ArticleInfoModule$47
   
   public void run()
   {
-    olr.a(this.a);
+    olo.a(this.a);
   }
 }
 

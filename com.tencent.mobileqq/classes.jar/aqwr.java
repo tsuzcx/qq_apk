@@ -1,32 +1,16 @@
-import QC.SetFontBubbleRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aqwr
-  extends akfz
+class aqwr
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<BaseChatPie> a;
+  aqwr(aqwp paramaqwp) {}
   
-  public aqwr(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramBaseChatPie);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      aqwn.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
-    }
-  }
-  
-  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      aqwn.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
-    }
+    aqwp.a(this.a, null);
+    aqwp.b(this.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 

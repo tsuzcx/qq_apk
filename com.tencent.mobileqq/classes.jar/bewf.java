@@ -1,81 +1,33 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import org.json.JSONObject;
 
-@begt(a="MiniAppInfoLoadTask")
-public class bewf
-  extends bfeq
+final class bewf
+  implements AsyncResult
 {
-  private MiniAppInfo a;
+  bewf(MiniAppInfo paramMiniAppInfo, beuv parambeuv) {}
   
-  public bewf(Context paramContext, bepv parambepv)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    super(paramContext, parambepv);
-  }
-  
-  private void g()
-  {
-    String str1;
-    if (this.a.launchParam.c == null)
+    betc.a("JsApiUpdateManager", "onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
+    if ((paramJSONObject != null) && (paramBoolean))
     {
-      str1 = "";
-      if (this.a.launchParam.i != null) {
-        break label77;
-      }
-    }
-    label77:
-    for (String str2 = "";; str2 = this.a.launchParam.i)
-    {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.a.appId, str1, str2, new bewg(this));
-      return;
-      str1 = this.a.launchParam.c;
-      break;
-    }
-  }
-  
-  private void h()
-  {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.a.link, this.a.linkType, new bewh(this));
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    besl.b("MiniAppInfoLoadTask", "start executing");
-    if (this.a == null)
-    {
-      besl.d("MiniAppInfoLoadTask", "MiniAppInfo must not be null");
-      f();
-      return;
-    }
-    if (this.a.isShortcutFakeApp())
-    {
-      besl.b("MiniAppInfoLoadTask", "Start from shortcut, download MiniAppInfo ");
-      g();
-      return;
-    }
-    if (this.a.isFakeAppInfo())
-    {
-      if (this.a.link != null)
+      bewe.a((MiniAppInfo)paramJSONObject.opt("mini_app_info_data"));
+      if (bewe.a() != null)
       {
-        h();
+        if (bela.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bewe.a()))
+        {
+          bewe.a(this.jdField_a_of_type_Beuv, true);
+          bewe.a(this.jdField_a_of_type_Beuv, bewe.a());
+          return;
+        }
+        bewe.a(this.jdField_a_of_type_Beuv, false);
         return;
       }
-      g();
+      betc.d("JsApiUpdateManager", "onCmdListener newMiniAppInfo = null");
       return;
     }
-    c();
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.a = paramMiniAppInfo;
+    betc.d("JsApiUpdateManager", "onCmdListener success = " + paramBoolean + " ret = " + paramJSONObject);
   }
 }
 

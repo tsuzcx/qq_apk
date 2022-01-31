@@ -1,15 +1,10 @@
-import android.text.TextUtils;
-
-public final class yuf
+public abstract interface yuf
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(yuc paramyuc);
   
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
-  }
+  public abstract void a(yuc paramyuc, int paramInt);
+  
+  public abstract void a(yuc paramyuc, int paramInt1, int paramInt2);
 }
 
 

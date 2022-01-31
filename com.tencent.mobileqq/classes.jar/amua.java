@@ -1,64 +1,55 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.image.SafeBitmapFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class amua
-  extends ampb<amtz>
+  extends ampa<amub>
 {
   public int a()
   {
-    return 251;
+    return 530;
   }
   
   @NonNull
-  public amtz a(int paramInt)
+  public amub a(int paramInt)
   {
-    return new amtz();
+    return new amub();
   }
   
   @Nullable
-  public amtz a(ampi[] paramArrayOfampi)
+  public amub a(amph[] paramArrayOfamph)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
+      QLog.d("PicShareToWXConfigProcessor", 2, "onParsed");
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfampi != null)
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfampi.length > 0) {
-        localObject1 = amtz.a(paramArrayOfampi);
+      paramArrayOfamph = paramArrayOfamph[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfamph);
       }
+      return amub.a(paramArrayOfamph);
     }
-    return localObject1;
+    return new amub();
   }
   
-  public Class<amtz> a()
+  public Class a()
   {
-    return amtz.class;
+    return amub.class;
   }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("PicShareToWXConfigProcessor", 2, "onReqFailed");
     }
   }
   
-  public void a(amtz paramamtz)
+  public void a(amub paramamub)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramamtz.toString());
+      QLog.d("PicShareToWXConfigProcessor", 2, "onUpdate");
     }
-    SafeBitmapFactory.setNeedRegionDecode(paramamtz.jdField_a_of_type_Boolean);
-    SafeBitmapFactory.setPxThreshoidToSp(paramamtz.jdField_a_of_type_Long);
-    SafeBitmapFactory.setRamThreshoidToSp(paramamtz.jdField_a_of_type_Int);
-    SafeBitmapFactory.setThreadCountToSp(paramamtz.jdField_b_of_type_Int);
-    ayxc.a(paramamtz.jdField_b_of_type_Long);
-    ayxc.b(paramamtz.jdField_c_of_type_Long);
-    ayxa.a(paramamtz.jdField_c_of_type_Int);
   }
   
   public int b()
@@ -72,11 +63,6 @@ public class amua
   }
   
   public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
   {
     return true;
   }

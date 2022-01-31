@@ -1,17 +1,9 @@
-class nto
-  implements oti
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.List;
+
+public abstract interface nto
 {
-  nto(ntk paramntk) {}
-  
-  public void l()
-  {
-    ntk.d(this.a);
-  }
-  
-  public void m()
-  {
-    ntk.e(this.a);
-  }
+  public abstract void a(List<TabChannelCoverInfo> paramList);
 }
 
 

@@ -1,417 +1,134 @@
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class bbei
+class bbei
+  extends mxj
 {
-  private static bbei jdField_a_of_type_Bbei;
-  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  bbei(bbeg parambbeg, String paramString1, String paramString2, String paramString3) {}
   
-  private bbei()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str = a();
-    int i = a();
-    if (!TextUtils.isEmpty(str))
+    if (paramInt == 0) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "LocalConfig: version= " + i);
+      aqgj.a("KEY_STAGE_2_GO_TO_CHAT_D55", bool1);
+      this.jdField_a_of_type_Bbeg.c();
+      if (!this.jdField_a_of_type_Bbeg.c) {
+        break;
       }
-      b(str);
+      axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.getString(2131699571), "");
+      bcql.a(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, 1, 2131699571, 1).a();
+      paramArrayOfByte = new Intent(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+      paramArrayOfByte.addFlags(67108864);
+      paramArrayOfByte.addFlags(268435456);
+      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
+      bbeg.c(this.jdField_a_of_type_Bbeg);
+      return;
     }
-  }
-  
-  public static int a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getInt("jump_pkg_toast_cfg_version", 0);
-  }
-  
-  public static bbei a()
-  {
-    if (jdField_a_of_type_Bbei == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bbei == null) {
-        jdField_a_of_type_Bbei = new bbei();
-      }
-      return jdField_a_of_type_Bbei;
+    if (this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    finally {}
-  }
-  
-  private static String a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg", 4);
-    if (!TextUtils.isEmpty(((SharedPreferences)localObject).getString("short_video_res_config_key", ""))) {
-      ((SharedPreferences)localObject).edit().putString("short_video_res_config_key", "").commit();
+    if (paramInt == 0) {
+      paramInt = 0;
     }
-    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg_798", 4).getString("short_video_res_config_key", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    try
-    {
-      localObject = aqwc.b((String)localObject);
-      return localObject;
-    }
-    catch (XorCipherException localXorCipherException) {}
-    return null;
-    return "";
-  }
-  
-  public static String a(Activity paramActivity)
-  {
+    boolean bool2;
     Object localObject;
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      localObject = null;
-      return localObject;
-    }
-    if (Build.VERSION.SDK_INT >= 22) {}
     for (;;)
     {
-      for (;;)
+      if (paramInt <= 1)
       {
-        try
+        paramBundle = (String)this.jdField_a_of_type_Bbeg.jdField_a_of_type_JavaUtilHashMap.get("uin");
+        if ((paramBundle == null) || (paramBundle.length() < 5) || (SearchBaseActivity.b.matcher(paramBundle).matches()))
         {
-          localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
-          ((Field)localObject).setAccessible(true);
-          localObject = (String)((Field)localObject).get(paramActivity);
-          localObject = a().a((String)localObject);
-          bool = TextUtils.isEmpty((CharSequence)localObject);
-          if (!bool) {
-            break;
-          }
-        }
-        catch (Exception localException2)
-        {
-          boolean bool;
-          String str;
-          continue;
-        }
-        try
-        {
-          localObject = paramActivity.getReferrer();
-          if (localObject != null)
-          {
-            localObject = ((Uri)localObject).getAuthority();
-            localObject = a().a((String)localObject);
-            bool = TextUtils.isEmpty((CharSequence)localObject);
-            if (!bool) {
-              break;
-            }
-          }
-        }
-        catch (Exception localException1) {}
-      }
-      try
-      {
-        str = paramActivity.getCallingPackage();
-        localObject = str;
-        if (TextUtils.isEmpty(str))
-        {
-          paramActivity = paramActivity.getCallingActivity();
-          localObject = str;
-          if (paramActivity != null) {
-            localObject = paramActivity.getPackageName();
-          }
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramActivity = a().a((String)localObject);
-          return paramActivity;
-        }
-      }
-      catch (Exception paramActivity) {}
-    }
-    return null;
-  }
-  
-  public static HashSet<String> a(Activity paramActivity)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {
-      return null;
-    }
-    HashSet localHashSet = new HashSet();
-    if (Build.VERSION.SDK_INT >= 22) {}
-    try
-    {
-      Object localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
-      ((Field)localObject).setAccessible(true);
-      localObject = (String)((Field)localObject).get(paramActivity);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localHashSet.add(localObject);
-      }
-      for (;;)
-      {
-        try
-        {
-          label67:
-          localObject = paramActivity.getReferrer();
-          if (localObject != null)
-          {
-            localObject = ((Uri)localObject).getAuthority();
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localHashSet.add(localObject);
-            }
-          }
-        }
-        catch (Exception localException1)
-        {
-          String str;
-          continue;
-        }
-        try
-        {
-          str = paramActivity.getCallingPackage();
-          localObject = str;
-          if (TextUtils.isEmpty(str))
-          {
-            paramActivity = paramActivity.getCallingActivity();
-            localObject = str;
-            if (paramActivity != null) {
-              localObject = paramActivity.getPackageName();
-            }
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            localHashSet.add(localObject);
-          }
-        }
-        catch (Exception paramActivity) {}
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "getCallerReferrerPkg :");
-      }
-      return localHashSet;
-    }
-    catch (Exception localException2)
-    {
-      break label67;
-    }
-  }
-  
-  public static final boolean a(Activity paramActivity)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while ((!a().a()) || (TextUtils.isEmpty(a(paramActivity)))) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "needHidePreview true");
-    }
-    return true;
-  }
-  
-  public static final boolean a(Activity paramActivity, boolean paramBoolean)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    for (;;)
-    {
-      return true;
-      try
-      {
-        if (a().a())
-        {
-          String str = a(paramActivity);
-          if (!TextUtils.isEmpty(str))
-          {
-            if (paramBoolean) {
-              bcpw.a(paramActivity, 1, str, 1000).b(paramActivity.getResources().getDimensionPixelSize(2131298865));
-            }
-            paramActivity.moveTaskToBack(true);
-            if (QLog.isColorLevel()) {
-              QLog.d("JumpForwardPkgManager", 2, "checkAllowShare false");
-            }
-            return false;
-          }
-        }
-      }
-      catch (Throwable paramActivity) {}
-    }
-    return true;
-  }
-  
-  private static boolean a(String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("jump_pkg_toast_cfg_798", 4).edit();
-    try
-    {
-      paramString = aqwc.a(paramString);
-      localEditor.putString("short_video_res_config_key", paramString);
-      localEditor.putInt("jump_pkg_toast_cfg_version", paramInt);
-      return localEditor.commit();
-    }
-    catch (XorCipherException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  private boolean b(String paramString)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONArray(paramString);
-        int j = paramString.length();
-        if (j <= 0) {
-          return false;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = paramString.getJSONObject(i);
-          String str = ((JSONObject)localObject).optString("pkgName");
-          localObject = ((JSONObject)localObject).optString("toastWording");
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+          bcql.a(BaseApplicationImpl.getApplication(), 1, 2131699569, 1).a();
+          axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.getString(2131699572), "");
+          bbeg.c(this.jdField_a_of_type_Bbeg);
+          return;
+          if (paramInt == 25501) {
+            paramInt = 1;
+          } else {
+            paramInt = 2;
           }
         }
         else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("JumpForwardPkgManager", 2, "parseConfigData list size= " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+          bool2 = ((ajxl)bbeg.a(this.jdField_a_of_type_Bbeg).getManager(51)).b(paramBundle);
+          paramArrayOfByte = bbcz.a(bbeg.a(this.jdField_a_of_type_Bbeg), paramBundle);
+          if ((bool2) && (paramInt == 0))
+          {
+            localObject = new Intent(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+            ((Intent)localObject).putExtra("uin", paramBundle);
+            ((Intent)localObject).putExtra("uintype", 0);
+            ((Intent)localObject).putExtra("openid", this.jdField_a_of_type_JavaLangString);
+            ((Intent)localObject).putExtra("appid", this.b);
+            ((Intent)localObject).putExtra("thridparty_pull_aio", true);
+            paramBundle = actj.a((Intent)localObject, new int[] { 2 });
+            paramBundle.putExtra("pull_aio_audio", this.c.equals("audio_chat"));
+            paramBundle.putExtra("pull_aio_video", this.c.equals("video_chat"));
+            if (paramArrayOfByte != null) {
+              paramBundle.putExtra("uinname", paramArrayOfByte);
+            }
+            this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
           }
-          return true;
         }
       }
-      catch (Exception paramString)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpForwardPkgManager", 2, "parseConfigData[JSONException]", paramString);
-        }
-        return false;
-      }
-      i += 1;
     }
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "getPkgShareToast: ");
-      }
-    } while ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0));
-    return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "clearConfig list size= " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    a("", paramInt);
-  }
-  
-  public void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer|received version: " + paramInt);
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| version=" + paramInt + ",config_content is null, clear");
-      }
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!b(paramString)) {
-          break;
-        }
-        bool = a(paramString, paramInt);
-      } while (!QLog.isColorLevel());
-      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| saveContentOK=" + bool);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| parseConfigData false");
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0);
-  }
-  
-  public boolean a(String paramString)
-  {
     for (;;)
     {
-      boolean bool1;
-      try
+      bbeg.c(this.jdField_a_of_type_Bbeg);
+      return;
+      if (paramInt == 1)
       {
-        String str = Uri.parse(paramString).getHost();
-        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str))) {
-          break label129;
-        }
-        if (!a()) {
-          break label112;
-        }
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-          break label133;
-        }
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-          break label107;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("JumpForwardPkgManager", 1, paramString, new Object[0]);
-        return false;
-      }
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("JumpForwardPkgManager", 2, new Object[] { "contain :", Boolean.valueOf(bool1) });
-        return bool1;
-        label107:
-        bool1 = false;
-        continue;
-        label112:
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpForwardPkgManager", 2, "needCheckPkg false");
-        }
-        return false;
-        label129:
-        bool2 = false;
-      }
-      else
-      {
-        return bool2;
-        label133:
         bool1 = true;
+        localObject = new Bundle();
+        ((Bundle)localObject).putBoolean("pull_show_open_id_diff_main", bool1);
+        ((Bundle)localObject).putString("uin", paramBundle);
+        ((Bundle)localObject).putInt("uintype", 0);
+        if (paramArrayOfByte != null) {
+          ((Bundle)localObject).putString("uinname", paramArrayOfByte);
+        }
+        ((Bundle)localObject).putString("openid", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putString("appid", this.b);
+        axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A40F", "0X800A40F", 0, 0, "", "", "", "");
+        if (!bool2) {
+          break label658;
+        }
+        ((Bundle)localObject).putBoolean("thridparty_pull_aio", true);
+        ((Bundle)localObject).putBoolean("pull_aio_audio", this.c.equals("audio_chat"));
+        ((Bundle)localObject).putBoolean("pull_aio_video", this.c.equals("video_chat"));
       }
+      for (;;)
+      {
+        bbeg.a(this.jdField_a_of_type_Bbeg, (Bundle)localObject);
+        bbeg.c(this.jdField_a_of_type_Bbeg);
+        return;
+        bool1 = false;
+        break;
+        label658:
+        ((Bundle)localObject).putInt("fragment_id", 1);
+        ((Bundle)localObject).putBoolean("pull_add_friend_tip", true);
+      }
+      paramArrayOfByte = ajwj.a(paramArrayOfByte);
+      axqy.a(bbeg.a(this.jdField_a_of_type_Bbeg), "inter", "skip", "inter_fail", "", 1, "", paramArrayOfByte, "", "", "", "", "", "", "");
+      paramBundle = new Bundle();
+      paramBundle.putBoolean("pull_app_not_privilege", true);
+      paramBundle.putString("pull_app_not_privilege_string", paramArrayOfByte);
+      bbeg.a(this.jdField_a_of_type_Bbeg, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbei
  * JD-Core Version:    0.7.0.1
  */

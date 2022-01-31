@@ -1,22 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-class bcbx
-  implements TouchWebView.OnScrollChangedListener
+public abstract interface bcbx
 {
-  bcbx(bcbv parambcbv) {}
+  public abstract void buildBottomBar();
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.a.b = paramInt2;
-    this.a.a(this.a.b, this.a.f);
-    paramView = this.a.a.a();
-    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
-      paramView.callJs(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
-    }
-  }
+  public abstract void buildContentView(Bundle paramBundle);
+  
+  public abstract void buildData();
+  
+  public abstract void buildLayout();
+  
+  public abstract void buildTitleBar();
+  
+  public abstract void buildWebView(AppInterface paramAppInterface);
+  
+  public abstract void preInitWebviewPlugin();
 }
 
 

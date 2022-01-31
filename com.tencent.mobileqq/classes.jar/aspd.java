@@ -1,20 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
 public class aspd
-  implements View.OnClickListener
+  implements akbb
 {
   public aspd(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
-    }
-    this.a.getActivity().finish();
+    MultiAIOFragment.a(this.a).a(paramString, paramInt);
   }
 }
 

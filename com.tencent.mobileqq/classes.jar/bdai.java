@@ -1,36 +1,33 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardHeadLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdai
-  implements bfpc
+  extends Handler
 {
-  public bdai(FriendChooser paramFriendChooser) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bdai(CardHeadLayout paramCardHeadLayout, Looper paramLooper)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bddv.a(paramAdapterView.a))) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Bddv.c() >= this.a.jdField_a_of_type_Int)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.h();
-      return;
     }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_Bddv.a(paramAdapterView.a);
-    this.a.e();
-    paramView.g();
-    this.a.b(false);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("CardHeadLayout", 2, "-->handleMessage MSG_UPDATE");
+      }
+      CardHeadLayout.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
   }
 }
 

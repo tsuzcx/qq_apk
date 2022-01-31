@@ -1,23 +1,16 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class bftf
-  extends ReplacementSpan
+class bftf
+  implements View.OnKeyListener
 {
-  private int a;
+  bftf(bftd parambftd) {}
   
-  public bftf(int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return this.a;
+    this.a.c();
+    return true;
   }
 }
 

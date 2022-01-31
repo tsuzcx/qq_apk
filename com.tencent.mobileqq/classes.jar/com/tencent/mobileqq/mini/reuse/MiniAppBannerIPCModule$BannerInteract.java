@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import ahma;
-import axqw;
+import ahly;
+import axqy;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 
 class MiniAppBannerIPCModule$BannerInteract
-  implements ahma
+  implements ahly
 {
   private MiniAppConfig mAppConfig;
   
@@ -22,7 +22,7 @@ class MiniAppBannerIPCModule$BannerInteract
   
   public void onClose()
   {
-    axqw.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A124", "0X800A124", 4, 0, "", "", "", "");
+    axqy.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A124", "0X800A124", 4, 0, "", "", "", "");
   }
   
   public void onEnter()
@@ -31,7 +31,7 @@ class MiniAppBannerIPCModule$BannerInteract
       this.mAppConfig.launchParam.scene = 2056;
     }
     MiniAppController.startApp(null, this.mAppConfig, null);
-    axqw.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A123", "0X800A123", 4, 0, "", "", "", "");
+    axqy.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A123", "0X800A123", 4, 0, "", "", "", "");
   }
   
   public void onOverride() {}

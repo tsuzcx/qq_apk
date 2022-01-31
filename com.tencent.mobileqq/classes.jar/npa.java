@@ -1,66 +1,79 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.QueryKdVideoColumnReq;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class npa
-  implements BusinessObserver
+public class npa
+  extends ajtb
 {
-  private NewIntent a;
+  public static final String a = npa.class.getSimpleName();
   
-  npa(NewIntent paramNewIntent)
+  public npa(AppInterface paramAppInterface)
   {
-    this.a = paramNewIntent;
+    super(paramAppInterface);
   }
   
-  private void a()
+  private void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QualityReporter", 2, "onSuccess: ");
-    }
+    oidb_0xd4b.ReqBody localReqBody = new oidb_0xd4b.ReqBody();
+    localReqBody.msg_subscribe_video_column_req.uint32_video_column_id.set(paramInt);
+    localReqBody.msg_query_kd_video_column_req.uint32_query_sub_status.set(1);
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, localReqBody.toByteArray()));
   }
   
-  private void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
-    }
+    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt), 16, null, true);
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected Class<? extends ajte> observerClass()
   {
-    this.a.setObserver(null);
-    if (paramBoolean)
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
-      try
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "onReceive() isSuccess = " + bool);
+      }
+      if (bool)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null)
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        try
         {
-          a(-123, "data null");
-          return;
+          paramToServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramToServiceMsg.uint32_result.has())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
+            return;
+          }
         }
-        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
-        localReportInfoRsp.mergeFrom(paramBundle);
-        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
+        catch (InvalidProtocolBufferMicroException paramToServiceMsg)
         {
-          a();
-          return;
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
+          }
         }
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
       return;
     }
-    a(-123, "success=false");
   }
 }
 

@@ -1,17 +1,25 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
 
-final class altv
-  implements ark.PlayerStubFactory
+public class altv
 {
-  public ark.PlayerStub CreateStub()
+  protected static boolean a = false;
+  
+  public static void a()
   {
-    return new altu();
+    if (!a) {
+      a = true;
+    }
+  }
+  
+  public static void a(altx paramaltx)
+  {
+    ThreadManager.post(new ArkMessageServerLogic.1(paramaltx), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     altv
  * JD-Core Version:    0.7.0.1
  */

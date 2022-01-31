@@ -1,6 +1,10 @@
-public abstract interface lxw
+import android.os.Binder;
+import com.tencent.av.service.UtilsServiceForAV;
+
+public class lxw
+  extends Binder
 {
-  public abstract void a(lxv paramlxv);
+  public lxw(UtilsServiceForAV paramUtilsServiceForAV) {}
 }
 
 

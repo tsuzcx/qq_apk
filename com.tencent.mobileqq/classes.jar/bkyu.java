@@ -1,6 +1,9 @@
+import android.graphics.Bitmap;
+
 public class bkyu
 {
-  public void a() {}
+  public long a;
+  public Bitmap a;
 }
 
 

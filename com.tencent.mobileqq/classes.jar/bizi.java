@@ -1,6 +1,8 @@
-class bizi
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+
+public abstract interface bizi
 {
-  private static bizg a = new bizg(null);
+  public abstract void a(NodeItem paramNodeItem);
 }
 
 

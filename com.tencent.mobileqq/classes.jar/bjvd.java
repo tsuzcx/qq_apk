@@ -1,27 +1,11 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-class bjvd
-  implements bjxi
+public abstract interface bjvd
+  extends bjxm
 {
-  bjvd(bjvc parambjvc) {}
-  
-  public void a()
-  {
-    veg.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    veg.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bkfj.b = bool;
-      return;
-    }
-  }
+  @NonNull
+  public abstract List<String> a(int paramInt);
 }
 
 

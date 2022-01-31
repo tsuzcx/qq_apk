@@ -1,11 +1,6 @@
-import android.media.MediaPlayer;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-
 public abstract interface xhs
 {
-  public abstract void a(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2);
-  
-  public abstract void a(MediaPlayer paramMediaPlayer, VsMusicItemInfo paramVsMusicItemInfo);
+  public abstract void a(long paramLong);
 }
 
 

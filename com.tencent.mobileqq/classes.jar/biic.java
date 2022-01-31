@@ -1,9 +1,17 @@
-import java.io.File;
-
 public class biic
 {
-  public static final String a = biia.b + File.separator + "camera";
-  public static final String b = a + File.separator + "photo_compress";
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

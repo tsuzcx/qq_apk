@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajyc;
+import ajya;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,7 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     long l = paramIntent.getLongExtra(PathTraceService.c, 0L);
     double d = paramIntent.getDoubleExtra(PathTraceService.d, 0.0D);
     if (i == 1) {
-      PathTraceService.a(this.a).setTextViewText(2131370954, ajyc.a(2131707901));
+      PathTraceService.a(this.a).setTextViewText(2131370954, ajya.a(2131707912));
     }
     PathTraceService.a(this.a).setChronometer(2131370955, SystemClock.elapsedRealtime() - l * 1000L, null, false);
     paramContext = new DecimalFormat("######0.00");

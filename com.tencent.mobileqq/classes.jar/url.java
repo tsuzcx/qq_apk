@@ -1,42 +1,24 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class url
-  extends sth<uqy, upw>
+public class url
+  extends ste<uqv, tce>
 {
-  url(uqy paramuqy)
+  public url(uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull upw paramupw)
+  public void a(@NonNull uqv paramuqv, @NonNull tce paramtce)
   {
-    if ((!paramupw.jdField_a_of_type_Boolean) || (!paramupw.jdField_a_of_type_JavaLangString.equals(uqy.a(paramuqy))) || (paramupw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (uqy.a(paramuqy) == null))
-    {
-      veg.b(this.TAG, "ignore this like list event. %s.", paramupw.toString());
-      return;
-    }
-    veg.a(this.TAG, "receive like list event. %s.", paramupw.toString());
-    boolean bool2 = uqy.a(paramuqy);
-    if (paramupw.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      uqy.a(paramuqy).b(bool1, paramupw.b);
-      uqy.a(paramuqy).b(paramupw.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
-      }
-      paramuqy.a();
-      return;
-    }
+    uqv.a(paramuqv, paramtce.a, this.TAG);
   }
   
   public Class acceptEventClass()
   {
-    return upw.class;
+    return tce.class;
   }
   
-  public void b(@NonNull uqy paramuqy, @NonNull upw paramupw) {}
+  public void b(@NonNull uqv paramuqv, @NonNull tce paramtce) {}
 }
 
 

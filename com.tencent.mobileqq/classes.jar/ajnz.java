@@ -1,14 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ajnz
-  extends ajof
+public abstract interface ajnz
 {
-  ajnz(ajnx paramajnx) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

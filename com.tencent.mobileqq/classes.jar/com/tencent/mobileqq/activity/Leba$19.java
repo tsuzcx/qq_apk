@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import arpq;
+import arps;
 
 class Leba$19
   implements Runnable

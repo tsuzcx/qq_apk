@@ -1,25 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class azxv
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
   public azxv(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMotionEvent.getAction())
+    if (this.a.a != null)
     {
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
+      }
+      this.a.a.b(102);
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
     }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.b(102);
   }
 }
 

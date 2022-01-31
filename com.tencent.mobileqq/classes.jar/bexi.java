@@ -1,14 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class bexi
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  bexi(bexg parambexg) {}
+  final String jdField_a_of_type_JavaLangString = "reason";
+  final String b = "globalactions";
+  final String c = "recentapps";
+  final String d = "homekey";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bexi(bexh parambexh) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bexg.a(this.a);
+    if (paramIntent == null) {}
+    for (;;)
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      if ("action.qq.miniapp.show.monitorview".equals(paramContext))
+      {
+        boolean bool = paramIntent.getBooleanExtra("show", true);
+        bexh.a(this.jdField_a_of_type_Bexh).a(bool);
+      }
+      if ("android.intent.action.CLOSE_SYSTEM_DIALOGS".equals(paramContext))
+      {
+        paramIntent = paramIntent.getStringExtra("reason");
+        if ((paramIntent != null) && (bexh.a(this.jdField_a_of_type_Bexh) != null))
+        {
+          if (!paramIntent.equals("homekey")) {
+            break label113;
+          }
+          bexh.a(this.jdField_a_of_type_Bexh).a();
+        }
+      }
+      while ("android.intent.action.SCREEN_OFF".equals(paramContext))
+      {
+        bexh.a(this.jdField_a_of_type_Bexh).c();
+        return;
+        label113:
+        if (paramIntent.equals("recentapps")) {
+          bexh.a(this.jdField_a_of_type_Bexh).b();
+        }
+      }
+    }
   }
 }
 

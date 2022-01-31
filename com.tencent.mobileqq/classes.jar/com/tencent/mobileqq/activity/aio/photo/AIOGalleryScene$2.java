@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegu;
-import aeie;
-import aeja;
-import agqx;
+import aegs;
+import aeic;
+import aeiy;
+import agqv;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
@@ -12,12 +12,12 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOGalleryScene$2
   implements Runnable
 {
-  public AIOGalleryScene$2(aegu paramaegu) {}
+  public AIOGalleryScene$2(aegs paramaegs) {}
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_Aeie.a();
-    if ((localObject == null) || (((aeja)localObject).a == null)) {}
+    Object localObject = this.this$0.jdField_a_of_type_Aeic.a();
+    if ((localObject == null) || (((aeiy)localObject).a == null)) {}
     ImageView localImageView;
     do
     {
@@ -27,31 +27,31 @@ public class AIOGalleryScene$2
         {
           return;
           localImageView = (ImageView)this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371129);
-          if ((!(((aeja)localObject).a instanceof AIOShortVideoData)) || (((AIOShortVideoData)((aeja)localObject).a).b != 1)) {
+          if ((!(((aeiy)localObject).a instanceof AIOShortVideoData)) || (((AIOShortVideoData)((aeiy)localObject).a).b != 1)) {
             break;
           }
-          localObject = aegu.a(this.this$0);
+          localObject = aegs.a(this.this$0);
         } while ((localImageView == null) || (localObject == null));
         localObject = ((AIOGalleryAdapter.GalleryImageStruct)localObject).a();
       } while (!(localObject instanceof URLDrawable));
       if (((URLDrawable)localObject).getPlayState() == 2)
       {
-        localImageView.setImageResource(2130845266);
+        localImageView.setImageResource(2130845268);
         return;
       }
-      localImageView.setImageResource(2130845265);
+      localImageView.setImageResource(2130845267);
       return;
-    } while ((localImageView == null) || (this.this$0.jdField_a_of_type_Agqx == null));
-    int i = this.this$0.jdField_a_of_type_Agqx.a();
+    } while ((localImageView == null) || (this.this$0.jdField_a_of_type_Agqv == null));
+    int i = this.this$0.jdField_a_of_type_Agqv.a();
     if (QLog.isColorLevel()) {
       QLog.d("AIOGalleryScene", 2, "mVideoStateChecker, long video，videoState =  " + i);
     }
     if ((i == 1) || (i == 2) || (i == 3) || (i == 7))
     {
-      localImageView.setImageResource(2130845266);
+      localImageView.setImageResource(2130845268);
       return;
     }
-    localImageView.setImageResource(2130845265);
+    localImageView.setImageResource(2130845267);
   }
 }
 

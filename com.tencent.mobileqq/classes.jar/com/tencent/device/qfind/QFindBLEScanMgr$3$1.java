@@ -5,52 +5,52 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ygb;
-import ygk;
+import yfy;
+import ygh;
 
 public class QFindBLEScanMgr$3$1
   implements Runnable
 {
-  public QFindBLEScanMgr$3$1(ygk paramygk, BluetoothDevice paramBluetoothDevice, byte[] paramArrayOfByte) {}
+  public QFindBLEScanMgr$3$1(ygh paramygh, BluetoothDevice paramBluetoothDevice, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    ygb localygb = new ygb();
-    localygb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getName();
-    localygb.b = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getAddress();
-    localygb.jdField_a_of_type_Boolean = false;
-    ygb.a(this.jdField_a_of_type_ArrayOfByte, localygb);
-    if ((localygb.jdField_a_of_type_JavaUtilList != null) && (localygb.jdField_a_of_type_JavaUtilList.contains("0000feba-0000-1000-8000-00805f9b34fb")))
+    yfy localyfy = new yfy();
+    localyfy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getName();
+    localyfy.b = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getAddress();
+    localyfy.jdField_a_of_type_Boolean = false;
+    yfy.a(this.jdField_a_of_type_ArrayOfByte, localyfy);
+    if ((localyfy.jdField_a_of_type_JavaUtilList != null) && (localyfy.jdField_a_of_type_JavaUtilList.contains("0000feba-0000-1000-8000-00805f9b34fb")))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QFindBLE_ex", 2, "onLeScan name=" + localygb.jdField_a_of_type_JavaLangString + " pid:" + localygb.jdField_a_of_type_Int + " address:" + localygb.b + " ; blePeerInfo.ble_id = " + localygb.c);
+        QLog.i("QFindBLE_ex", 2, "onLeScan name=" + localyfy.jdField_a_of_type_JavaLangString + " pid:" + localyfy.jdField_a_of_type_Int + " address:" + localyfy.b + " ; blePeerInfo.ble_id = " + localyfy.c);
       }
-      if ((localygb.jdField_a_of_type_Int == 0) || (localygb.jdField_a_of_type_ArrayOfByte == null) || (!this.jdField_a_of_type_Ygk.a.b.contains(new Long(localygb.jdField_a_of_type_Int)))) {}
+      if ((localyfy.jdField_a_of_type_Int == 0) || (localyfy.jdField_a_of_type_ArrayOfByte == null) || (!this.jdField_a_of_type_Ygh.a.b.contains(new Long(localyfy.jdField_a_of_type_Int)))) {}
     }
     for (;;)
     {
       try
       {
-        QFindBLEScanMgr.b(this.jdField_a_of_type_Ygk.a);
-        boolean bool1 = QFindBLEScanMgr.a(this.jdField_a_of_type_Ygk.a, localygb);
-        bool2 = QFindBLEScanMgr.a(this.jdField_a_of_type_Ygk.a, localygb, bool1);
+        QFindBLEScanMgr.b(this.jdField_a_of_type_Ygh.a);
+        boolean bool1 = QFindBLEScanMgr.a(this.jdField_a_of_type_Ygh.a, localyfy);
+        bool2 = QFindBLEScanMgr.a(this.jdField_a_of_type_Ygh.a, localyfy, bool1);
         if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE_ex", 2, "onLeScan blePeerInfo.ble_id = " + localygb.c + " ; needReportLoc = " + bool1 + " ; needReport = " + bool2);
+          QLog.i("QFindBLE_ex", 2, "onLeScan blePeerInfo.ble_id = " + localyfy.c + " ; needReportLoc = " + bool1 + " ; needReport = " + bool2);
         }
         if ((!bool2) || (!bool1)) {
           continue;
         }
-        QFindBLEScanMgr.a(this.jdField_a_of_type_Ygk.a, localygb.jdField_a_of_type_Int, localygb.a());
+        QFindBLEScanMgr.a(this.jdField_a_of_type_Ygh.a, localyfy.jdField_a_of_type_Int, localyfy.a());
       }
       catch (Exception localException)
       {
         boolean bool2;
         continue;
       }
-      this.jdField_a_of_type_Ygk.a.a.postDelayed(new QFindBLEScanMgr.3.1.1(this), this.jdField_a_of_type_Ygk.a.i);
+      this.jdField_a_of_type_Ygh.a.a.postDelayed(new QFindBLEScanMgr.3.1.1(this), this.jdField_a_of_type_Ygh.a.i);
       return;
       if (bool2) {
-        QFindBLEScanMgr.a(this.jdField_a_of_type_Ygk.a, localygb, null, false);
+        QFindBLEScanMgr.a(this.jdField_a_of_type_Ygh.a, localyfy, null, false);
       }
     }
   }

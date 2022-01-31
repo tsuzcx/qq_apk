@@ -1,104 +1,95 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class biad
-  extends bial
 {
-  public biad(QzoneHuangzuanVipIconShow paramQzoneHuangzuanVipIconShow, VipResourcesListener paramVipResourcesListener, int paramInt1, biaa parambiaa, int paramInt2, int paramInt3, boolean paramBoolean1, String paramString, int paramInt4, boolean paramBoolean2, int paramInt5) {}
+  private static biad jdField_a_of_type_Biad;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
+  private boolean b;
   
-  public void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable)
+  private int a()
   {
-    switch (paramInt)
-    {
+    if (this.b) {
+      return this.jdField_a_of_type_Int;
     }
-    for (;;)
-    {
-      if (this.mCount <= 0)
-      {
-        QzoneHuangzuanVipIconShow.access$100(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, this.jdField_a_of_type_Biaa, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_Boolean, this.e);
-        if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
-          this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onLoaded(this.jdField_a_of_type_Biaa);
-        }
-      }
-      return;
-      if (paramDrawable != null)
-      {
-        paramDrawable.setBounds(0, 0, QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int));
-        this.jdField_a_of_type_Biaa.a(paramDrawable);
-        continue;
-        if (paramDrawable != null)
-        {
-          paramDrawable.setBounds(QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth(), this.jdField_a_of_type_Int) / 2, QzoneHuangzuanVipIconShow.access$000(-QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_AVATAR_TOP, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE + paramDrawable.getIntrinsicWidth(), this.jdField_a_of_type_Int) / 2, QzoneHuangzuanVipIconShow.access$000(paramDrawable.getIntrinsicHeight() - QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_AVATAR_TOP, this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_Biaa.d(paramDrawable);
-          continue;
-          if (paramDrawable != null)
-          {
-            paramDrawable.setBounds(0, 0, QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int));
-            this.jdField_a_of_type_Biaa.b(paramDrawable);
-            continue;
-            if (paramDrawable != null)
-            {
-              paramDrawable.setBounds(0, QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.RIBBON_ICON_LEVEL_MARGIN_TOP, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE + QzoneHuangzuanVipIconShow.RIBBON_ICON_LEVEL_MARGIN_TOP, this.jdField_a_of_type_Int));
-              this.jdField_a_of_type_Biaa.b(paramDrawable);
-              continue;
-              if (paramDrawable != null)
-              {
-                paramDrawable.setBounds(QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE / 2, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_ADJUST_ANNUALVIP_MARGIN_TOP, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_ANNUALVIP_WIDTH + QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE / 2 + QzoneHuangzuanVipIconShow.ANUAL_ICON_MARGIN_LEFT, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_ADJUST_ANNUALVIP_MARGIN_TOP + QzoneHuangzuanVipIconShow.ICON_ANNUALVIP_HEIGHT, this.jdField_a_of_type_Int));
-                this.jdField_a_of_type_Biaa.c(paramDrawable);
-                continue;
-                if (paramDrawable != null)
-                {
-                  paramDrawable.setBounds(QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_ANUAL_LEFT, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicHeight(), this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_ANUAL_LEFT + paramDrawable.getIntrinsicWidth(), this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int));
-                  this.jdField_a_of_type_Biaa.c(paramDrawable);
-                  biag.b("@vipIcon", "left" + QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE / 2 + " width = " + paramDrawable.getIntrinsicWidth() + " defualt_width =" + QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE + " height = " + paramDrawable.getIntrinsicHeight());
-                  continue;
-                  if (paramDrawable != null)
-                  {
-                    paramDrawable.setBounds(0, QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_LV_MARGIN_TOP, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_LV_WIDTH, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_LV_HEIGHT + QzoneHuangzuanVipIconShow.PERSONALIZED_ICON_LV_MARGIN_TOP, this.jdField_a_of_type_Int));
-                    this.jdField_a_of_type_Biaa.b(paramDrawable);
-                    continue;
-                    if (paramDrawable != null)
-                    {
-                      paramDrawable.setBounds(QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_GUAN_ICON_MARGIN_LEFT, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_GUAN_ICON_MARGIN_TOP, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_GUAN_ICON_WIDTH + QzoneHuangzuanVipIconShow.LV9_GUAN_ICON_MARGIN_LEFT, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_GUAN_ICON_HEIGHT + QzoneHuangzuanVipIconShow.LV9_GUAN_ICON_MARGIN_TOP, this.jdField_a_of_type_Int));
-                      this.jdField_a_of_type_Biaa.d(paramDrawable);
-                      continue;
-                      if (paramDrawable != null)
-                      {
-                        paramDrawable.setBounds(QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_WINDS_MARGIN_LEFT, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_WINDS_MARGIN_TOP, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_WINDS_WIDTH + QzoneHuangzuanVipIconShow.LV9_WINDS_MARGIN_LEFT, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.LV9_WINDS_HEIGHT + QzoneHuangzuanVipIconShow.LV9_WINDS_MARGIN_TOP, this.jdField_a_of_type_Int));
-                        this.jdField_a_of_type_Biaa.e(paramDrawable);
-                        continue;
-                        if (paramDrawable != null)
-                        {
-                          paramDrawable.setBounds(QzoneHuangzuanVipIconShow.access$000((QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth()) / 2, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicHeight(), this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000((QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE + paramDrawable.getIntrinsicWidth()) / 2, this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE, this.jdField_a_of_type_Int));
-                          this.jdField_a_of_type_Biaa.f(paramDrawable);
-                          biag.b("@vipIcon KINGBG", "left=" + (QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE - paramDrawable.getIntrinsicWidth()) / 2 + " width = " + paramDrawable.getIntrinsicWidth() + " defualt_width =" + QzoneHuangzuanVipIconShow.ICON_DEFAULT_SIZE + " height = " + paramDrawable.getIntrinsicHeight() + " bitmapwith =" + (int)(((BitmapDrawable)paramDrawable).getBitmap().getWidth() / 2 * bbkx.a()) + "bitmapheight =" + (int)(((BitmapDrawable)paramDrawable).getBitmap().getHeight() / 2 * bbkx.a()));
-                          continue;
-                          if (paramDrawable != null)
-                          {
-                            paramDrawable.setBounds(0, 0, QzoneHuangzuanVipIconShow.access$000(paramDrawable.getIntrinsicWidth(), this.jdField_a_of_type_Int), QzoneHuangzuanVipIconShow.access$000(paramDrawable.getIntrinsicHeight(), this.jdField_a_of_type_Int));
-                            this.jdField_a_of_type_Biaa.g(paramDrawable);
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    this.b = true;
+    long l = a(BaseApplicationImpl.getApplication());
+    if (b(BaseApplicationImpl.getApplication()) > l) {}
+    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
+      return this.jdField_a_of_type_Int;
     }
   }
   
-  public void onFailed(String paramString1, int paramInt, String paramString2)
+  public static long a(Context paramContext)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
-      this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onFailed();
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
+      return l;
     }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public static biad a()
+  {
+    if (jdField_a_of_type_Biad == null) {}
+    try
+    {
+      if (jdField_a_of_type_Biad == null) {
+        jdField_a_of_type_Biad = new biad();
+      }
+      return jdField_a_of_type_Biad;
+    }
+    finally {}
+  }
+  
+  private void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
+    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
+    localEditor.apply();
+  }
+  
+  public static long b(Context paramContext)
+  {
+    String str = paramContext.getPackageName();
+    try
+    {
+      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
+      return l;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
+    }
+    while (a() != 1) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
+    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
+    a();
   }
 }
 

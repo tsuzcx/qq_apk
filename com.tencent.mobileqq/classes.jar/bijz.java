@@ -1,15 +1,6 @@
-public class bijz
-  extends bijy
+public abstract interface bijz
 {
-  public int a(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt > 0;
-  }
+  public abstract void a();
 }
 
 

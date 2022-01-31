@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yte;
-import ytf;
+import ytb;
+import ytc;
 
 class AppBoxPlugin$MiniAppBox$2
   implements MiniAppCmdInterface
@@ -79,7 +79,7 @@ class AppBoxPlugin$MiniAppBox$2
       }
     }
     this.this$0.destroy();
-    AppBoxPlugin.MiniAppBox.access$002(this.this$0, yte.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
+    AppBoxPlugin.MiniAppBox.access$002(this.this$0, ytb.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
     AppBoxPlugin.MiniAppBox.access$100(this.this$0, true, "operateAppBox", this.val$compId, i, this.val$callbackId);
     AppBoxPlugin.MiniAppBox.access$500(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
     return;

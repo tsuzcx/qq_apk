@@ -1,22 +1,7 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-
 public class aiju
-  implements Animation.AnimationListener
 {
-  public aiju(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String a;
+  public String b;
 }
 
 

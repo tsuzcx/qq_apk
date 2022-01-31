@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.data.PhoneContactAdd;
+import java.util.ArrayList;
 
 public class atzh
-  extends atyy
+  extends atza
 {
-  public PhoneContactAdd a;
+  public ArrayList<aflw> a;
+  public boolean a;
   
-  public atzh(PhoneContactAdd paramPhoneContactAdd)
+  public atzh(ArrayList<aflw> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
-    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()

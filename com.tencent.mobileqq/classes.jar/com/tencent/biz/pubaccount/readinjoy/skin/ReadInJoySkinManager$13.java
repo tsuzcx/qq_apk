@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
-import pzi;
+import pzf;
 
 public class ReadInJoySkinManager$13
   implements Runnable
 {
-  public ReadInJoySkinManager$13(pzi parampzi, int paramInt, String paramString, boolean paramBoolean) {}
+  public ReadInJoySkinManager$13(pzf parampzf, int paramInt, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    pzi.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    pzf.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

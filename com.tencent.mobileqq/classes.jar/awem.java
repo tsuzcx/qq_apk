@@ -1,62 +1,77 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class awem
-  implements BusinessObserver
+class awem
+  implements EIPCResultCallback
 {
-  public awem(StatusJsHandler paramStatusJsHandler) {}
+  awem(awek paramawek) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.a(2131695568);
-    }
-    for (;;)
+    Object localObject = paramEIPCResult.data;
+    if (localObject == null) {}
+    do
     {
-      this.a.a(this.a.c, "false");
-      return;
-      try
+      do
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        do
         {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          do
           {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null))
+            return;
+            switch (((Bundle)localObject).getInt("notify_type"))
             {
-              paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
-              this.a.a(localBaseActivity, paramBundle);
-              StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+            case 6: 
+            case 7: 
+            default: 
+              return;
+            case 4: 
+              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
             }
-          }
-          else {
-            this.a.a(2131695568);
-          }
-        }
-        else
-        {
-          this.a.a(2131695568);
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
+          } while (!(paramEIPCResult instanceof RichStatus));
+          awek.c(this.a);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(Integer.valueOf(5));
+          ((ArrayList)localObject).add(paramEIPCResult);
+          this.a.notifyObservers(localObject);
+          return;
+          localObject = new HashMap();
+          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
+          i = paramEIPCResult.data.getInt("result");
+          int j = paramEIPCResult.data.getInt("type");
+          awek.d(this.a);
+          paramEIPCResult = new ArrayList();
+          paramEIPCResult.add(Integer.valueOf(6));
+          paramEIPCResult.add(Integer.valueOf(i));
+          paramEIPCResult.add(localObject);
+          paramEIPCResult.add(Integer.valueOf(j));
+          this.a.notifyObservers(paramEIPCResult);
+          return;
+          ((Bundle)localObject).getLong("bid");
+          paramEIPCResult = ((Bundle)localObject).getString("scid");
+        } while (TextUtils.isEmpty(paramEIPCResult));
+        i = ((Bundle)localObject).getInt("download_result");
+      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
+      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
+    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
+    int i = Integer.parseInt(paramEIPCResult);
+    awek.e(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(7));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
+    return;
+    i = ((Bundle)localObject).getInt("key_history_signature_num");
+    awek.f(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(8));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
   }
 }
 

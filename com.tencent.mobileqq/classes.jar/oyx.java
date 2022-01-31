@@ -1,24 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import tencent.im.oidb.oidb_0xc90.RspBody;
 
-public class oyx
+class oyx
+  extends mxg
 {
-  public static void a(List<ArticleInfo> paramList)
+  oyx(oyv paramoyv, rod paramrod) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
-          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
-        }
+      paramBundle = new oidb_0xc90.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Rod != null) {
+        this.jdField_a_of_type_Rod.a(true, paramInt, paramBundle);
       }
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(oyv.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
     }
   }
 }

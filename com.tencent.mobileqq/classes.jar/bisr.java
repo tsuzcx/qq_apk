@@ -1,45 +1,27 @@
-import android.support.annotation.Nullable;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
+import mqq.os.MqqHandler;
 
-class bisr
-  implements bjob<bisc>
+public class bisr
+  implements birh
 {
-  bisr(biso parambiso) {}
+  bisr(bisp parambisp) {}
   
-  public void a(@Nullable bisc parambisc)
+  public void a(MetaMaterial paramMetaMaterial)
   {
-    biso.a(this.a).a().a(biso.a(this.a));
-    bisc localbisc;
-    if (parambisc != null)
-    {
-      localbisc = parambisc;
-      if (parambisc.jdField_a_of_type_JavaLangString != null) {}
-    }
-    else
-    {
-      localbisc = new bisc();
-      localbisc.jdField_a_of_type_JavaLangString = "default";
-    }
-    parambisc = (String)biso.a(this.a).get(localbisc.jdField_a_of_type_JavaLangString);
-    if (!localbisc.jdField_a_of_type_JavaLangString.equals("default")) {
-      parambisc = ajyc.a(2131699988) + parambisc + ajyc.a(2131699981);
-    }
-    for (;;)
-    {
-      biso.a(this.a).setText(parambisc);
-      if ((biso.a(this.a).size() == 0) && (!biso.a(this.a)))
-      {
-        biso.a(this.a).addAll(localbisc.jdField_a_of_type_JavaUtilList);
-        this.a.b();
-        biso.a(this.a, true);
-      }
-      return;
-      parambisc = ajyc.a(2131699977);
-      localbisc.jdField_a_of_type_JavaUtilList.addAll(biso.jdField_a_of_type_JavaUtilList);
-    }
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
+  }
+  
+  public void a(MetaMaterial paramMetaMaterial, int paramInt)
+  {
+    bisp.a(this.a).a(new birm(paramMetaMaterial, 1, paramInt));
+  }
+  
+  public void b(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
   }
 }
 

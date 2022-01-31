@@ -1,87 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
 
 public class bhcs
-  extends ayog
+  extends Scroller
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public int a;
+  
+  public bhcs(Context paramContext, Interpolator paramInterpolator)
   {
-    if (paramDownloadParams == null) {
-      return null;
-    }
-    String str = paramDownloadParams.url.getHost();
-    paramOutputStream = new File(str);
-    if (paramOutputStream.exists()) {}
-    for (;;)
-    {
-      return paramOutputStream;
-      paramURLDrawableHandler = paramDownloadParams.url.getFile();
-      if (TextUtils.isEmpty(paramURLDrawableHandler))
-      {
-        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url err, url=" + paramURLDrawableHandler + ", path=" + str);
-        return null;
-      }
-      paramDownloadParams = paramURLDrawableHandler;
-      if (paramURLDrawableHandler.startsWith(File.separator)) {
-        paramDownloadParams = paramURLDrawableHandler.substring(1);
-      }
-      if (!paramDownloadParams.startsWith("http"))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url has no http err, url=" + paramDownloadParams + ", path=" + str);
-        return null;
-      }
-      int i = bbwi.a(new bbwg(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
-      if (i == 0)
-      {
-        if (!paramOutputStream.exists())
-        {
-          QLog.e("qzonecontentboxdownloader", 1, "downloadImage file not exists, url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
-          paramOutputStream = null;
-        }
-      }
-      else
-      {
-        QLog.e("qzonecontentboxdownloader", 1, "downloadImage Error url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
-        paramOutputStream = null;
-      }
-    }
+    super(paramContext, paramInterpolator);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(int paramInt)
   {
-    Object localObject = null;
-    paramURLDrawableHandler = null;
-    if ((paramFile != null) && (paramFile.exists()) && (paramDownloadParams != null) && (paramDownloadParams.useApngImage) && (ApngDrawable.isApngFile(paramFile)))
-    {
-      if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
-        paramURLDrawableHandler = (Bundle)paramDownloadParams.mExtraInfo;
-      }
-      paramDownloadParams = new ApngImage(paramFile, true, paramURLDrawableHandler);
-      if (paramDownloadParams.firstFrame == null) {
-        ChatBackgroundManager.a(paramFile.getAbsolutePath());
-      }
-      paramFile = paramDownloadParams;
-    }
-    do
-    {
-      return paramFile;
-      paramFile = localObject;
-    } while (paramDownloadParams == null);
-    paramDownloadParams.useApngImage = false;
-    return null;
+    this.a = paramInt;
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

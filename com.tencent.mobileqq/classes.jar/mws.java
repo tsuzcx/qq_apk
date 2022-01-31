@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.PoiMapActivity;
 
 public class mws
-  implements View.OnClickListener
+  extends mxc
 {
-  public mws(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public mws(PoiMapActivity paramPoiMapActivity)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    super(paramPoiMapActivity);
   }
 }
 

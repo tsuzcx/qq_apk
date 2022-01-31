@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aavy;
+import aavu;
 import android.os.Message;
 
 class Conversation$1$4$1

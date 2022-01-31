@@ -1,17 +1,6 @@
-import java.util.ArrayList;
-
 public class atzf
-  extends atyy
+  extends atza
 {
-  public ArrayList<afly> a;
-  public boolean a;
-  
-  public atzf(ArrayList<afly> paramArrayList, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
   public boolean a()
   {
     return true;

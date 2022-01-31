@@ -1,38 +1,31 @@
-public class alga
+public abstract class alga
+  extends algo
 {
-  public float a;
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c = -1;
+  private int a = 1;
+  private int b = 1;
   
-  public alga()
+  public alga(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
+    this(paramInt1, paramInt2, 5);
   }
   
-  public String toString()
+  public alga(int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str2 = "";
-      }
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
+  
+  public static boolean a(alga paramalga)
+  {
+    return (paramalga != null) && (paramalga.a());
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public abstract boolean a();
 }
 
 

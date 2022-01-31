@@ -1,12 +1,10 @@
-import android.support.annotation.UiThread;
-
-public abstract interface twq
+public abstract class twq
+  implements twp
 {
-  @UiThread
-  public abstract void a();
-  
-  @UiThread
-  public abstract void a(two paramtwo, String paramString, boolean paramBoolean);
+  public boolean a(twm paramtwm)
+  {
+    return true;
+  }
 }
 
 

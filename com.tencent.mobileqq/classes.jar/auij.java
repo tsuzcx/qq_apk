@@ -1,19 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
 
 class auij
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  auij(auib paramauib, int paramInt) {}
+  auij(auid paramauid, AutoReplyText paramAutoReplyText) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    auib.a(this.jdField_a_of_type_Auib, this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+    this.jdField_a_of_type_Auid.a(i);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

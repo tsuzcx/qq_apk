@@ -1,388 +1,342 @@
-import android.os.Environment;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface ajsf
+public class ajsf
+  extends WebViewPlugin
 {
-  public static final String A;
-  public static final String B;
-  public static final String C;
-  public static final String D;
-  public static final String E;
-  public static final String F;
-  public static final String G;
-  public static final String H;
-  public static final String I;
-  public static final String J;
-  public static final String K;
-  public static final String L;
-  public static final String M;
-  public static final String N;
-  public static final String O;
-  public static final String P;
-  public static final String Q;
-  public static final String R;
-  public static final String S;
-  public static final String T;
-  public static final String U;
-  public static final String V;
-  public static final String W;
-  public static final String X;
-  public static final String Y;
-  public static final String Z;
-  public static final String aA;
-  public static final String aB;
-  public static final String aC;
-  public static final String aD;
-  public static final String aE;
-  public static final String aF;
-  public static final String aG;
-  public static final String aH;
-  public static final String aI;
-  public static final String aJ;
-  public static final String aK;
-  public static final String aL;
-  public static final String aM;
-  public static final String aN;
-  public static final String aO;
-  public static final String aP;
-  public static final String aQ;
-  public static final String aR;
-  public static final String aS;
-  public static final String aT;
-  public static final String aU;
-  public static final String aV;
-  public static final String aW;
-  public static final String aX;
-  public static final String aY;
-  public static final String aZ;
-  public static final String aa;
-  public static final String ab;
-  public static final String ac;
-  public static final String ad;
-  public static final String ae;
-  public static final String af;
-  public static final String ag;
-  public static final String ah;
-  public static final String ai;
-  public static final String aj;
-  public static final String ak;
-  public static final String al;
-  public static final String am;
-  public static final String an;
-  public static final String ao;
-  public static final String ap;
-  public static final String aq;
-  public static final String ar;
-  public static final String as;
-  public static final String at;
-  public static final String au;
-  public static final String av;
-  public static final String aw;
-  public static final String ax;
-  public static final String ay;
-  public static final String az;
-  public static final String bA;
-  public static final String bB;
-  public static final String bC;
-  public static final String bD;
-  public static final String bE;
-  public static final String bF;
-  public static final String bG;
-  public static final String bH;
-  public static final String bI;
-  public static final String bJ;
-  public static final String bK;
-  public static final String bL;
-  public static final String bM;
-  public static final String bN;
-  public static final String bO;
-  public static final String bP;
-  public static final String bQ;
-  public static final String bR;
-  public static final String bS;
-  public static final String bT;
-  public static final String bU;
-  public static final String bV;
-  public static final String bW;
-  public static final String bX;
-  public static final String bY;
-  public static final String bZ;
-  public static final String ba;
-  public static final String bb;
-  public static final String bc;
-  public static final String bd;
-  public static final String be;
-  public static final String bf;
-  public static final String bg;
-  public static final String bh;
-  public static final String bi;
-  public static final String bj;
-  public static final String bk;
-  public static final String bl;
-  public static final String bm;
-  public static final String bn;
-  public static final String bo;
-  public static final String bp;
-  public static final String bq;
-  public static final String br;
-  public static final String bs;
-  public static final String bt;
-  public static final String bu;
-  public static final String bv;
-  public static final String bw;
-  public static final String bx;
-  public static final String by;
-  public static final String bz;
-  public static final String[] c;
-  public static final String cA;
-  public static final String cB;
-  public static final String cC;
-  public static final String cD;
-  public static final String cE;
-  public static final String cF;
-  public static final String cG;
-  public static final String cH;
-  public static final String cI;
-  public static final String cJ;
-  public static final String cK;
-  public static final String cL;
-  public static final String cM;
-  public static final String cN;
-  public static final String cO;
-  public static final String cP;
-  public static final String cQ;
-  public static final String cR;
-  public static final String cS;
-  public static final String cT;
-  public static final String cU;
-  public static final String cV;
-  public static final String ca;
-  public static final String cb;
-  public static final String cc;
-  public static final String cd;
-  public static final String ce;
-  public static final String cf;
-  public static final String cg;
-  public static final String ch;
-  public static final String ci;
-  public static final String cj;
-  public static final String ck;
-  public static final String cl;
-  public static final String cm;
-  public static final String cn;
-  public static final String co;
-  public static final String cp;
-  public static final String cq;
-  public static final String cr;
-  public static final String cs;
-  public static final String ct;
-  public static final String cu;
-  public static final String cv;
-  public static final String cw;
-  public static final String cx;
-  public static final String cy;
-  public static final String cz;
-  public static final long l;
-  public static final String u = String.valueOf(2068467417L);
-  public static final String v;
-  public static final String w;
-  public static final String x;
-  public static final String y;
-  public static final String z;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ajsg(this);
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new ajsh(this);
+  private String jdField_a_of_type_JavaLangString;
   
-  static
+  public ajsf()
   {
-    l = Math.pow(10.0D, 16.0D);
-    v = String.valueOf(9990L);
-    w = String.valueOf(9991L);
-    x = String.valueOf(9992L);
-    y = String.valueOf(9971L);
-    z = String.valueOf(9993L);
-    A = String.valueOf(9962L);
-    B = String.valueOf(9978L);
-    C = String.valueOf(9994L);
-    D = String.valueOf(9995L);
-    E = String.valueOf(9996L);
-    F = String.valueOf(9997L);
-    G = String.valueOf(9998L);
-    H = String.valueOf(9999L);
-    I = String.valueOf(9929L);
-    J = String.valueOf(10000L);
-    K = String.valueOf(9989L);
-    L = String.valueOf(9988L);
-    M = String.valueOf(9987L);
-    N = String.valueOf(9986L);
-    O = String.valueOf(9915L);
-    P = String.valueOf(9985L);
-    Q = String.valueOf(9914L);
-    R = String.valueOf(9984L);
-    S = String.valueOf(9983L);
-    T = String.valueOf(9982L);
-    U = String.valueOf(9981L);
-    V = String.valueOf(9951L);
-    W = String.valueOf(9980L);
-    X = String.valueOf(9976L);
-    Y = String.valueOf(9979L);
-    Z = String.valueOf(9977L);
-    aa = String.valueOf(9972L);
-    ab = String.valueOf(9974L);
-    ac = String.valueOf(9975L);
-    ad = String.valueOf(9973L);
-    ae = String.valueOf(9970L);
-    af = String.valueOf(9969L);
-    ag = String.valueOf(9921L);
-    ah = String.valueOf(9968L);
-    ai = String.valueOf(9967L);
-    aj = String.valueOf(9966L);
-    ak = String.valueOf(9965L);
-    al = String.valueOf(9949L);
-    am = String.valueOf(9950L);
-    an = String.valueOf(9919L);
-    ao = String.valueOf(9918L);
-    ap = String.valueOf(9917L);
-    aq = String.valueOf(9957L);
-    ar = String.valueOf(9964L);
-    as = String.valueOf(9963L);
-    at = String.valueOf(9961L);
-    au = String.valueOf(9960L);
-    av = String.valueOf(9959L);
-    aw = String.valueOf(9958L);
-    ax = String.valueOf(9955L);
-    ay = String.valueOf(3338705755L);
-    az = String.valueOf(2171946401L);
-    aA = String.valueOf(9954L);
-    aB = String.valueOf(9953L);
-    aC = String.valueOf(66600000L);
-    aD = String.valueOf(9952L);
-    aE = String.valueOf(9952L);
-    aF = String.valueOf(9949L);
-    aG = String.valueOf(1042L);
-    aH = String.valueOf(1043L);
-    aI = String.valueOf(1044L);
-    aJ = String.valueOf(9948L);
-    aK = String.valueOf(9946L);
-    aL = String.valueOf(9947L);
-    aM = String.valueOf(9945L);
-    aN = String.valueOf(9944L);
-    aO = String.valueOf(9930L);
-    aP = String.valueOf(2062433139L);
-    aQ = String.valueOf(2173223560L);
-    aR = String.valueOf(3434959637L);
-    aS = String.valueOf(9922L);
-    aT = String.valueOf(9916L);
-    aU = String.valueOf(3606676177L);
-    aV = Environment.getExternalStorageDirectory().getAbsolutePath();
-    aW = aV + "/Tencent/MobileQQ/";
-    aX = aV + "/Tencent/MobileQQ/ChatRecord/";
-    aY = aW + "emoji/";
-    aZ = aW + "hotimage/";
-    ba = aV + "/Tencent/blob/";
-    bb = aW + "log/";
-    bc = aV + "/Tencent/QQ_Images/";
-    bd = bc + "QQEditPic/OriginPic/";
-    be = aV + "/DCIM/QQPhoto/";
-    bf = aV + "/Tencent/QQ_Shortvideos/";
-    bg = aV + "/Tencent/AIO_FORWARD/";
-    bh = bbuv.a(aV + "/Tencent/QQ_Favorite/");
-    bi = bbuv.a(aV + "/Tencent/QQ_CameraEmo/");
-    bj = aV + "/DCIM/Camera/";
-    bk = bbuv.a(aV + "/Tencent/QQ_Collection/");
-    bl = bbuv.a(aV + "/Tencent/QQfile_recv/");
-    bm = bl + ".thumbnails/";
-    bn = bl + ".tmp/";
-    bo = bl + ".trooptmp/";
-    bp = aV + "/Tencent/QQ_Secretfile/";
-    bq = bbuv.a(aV + "/Tencent/QQ_Video/");
-    br = aV + "/Tencent/QQfile_share/";
-    bs = aV + "/Tencent/QQHomework_recv/";
-    bt = aV + "/Tencent/QQHomework_attach/";
-    bu = aW + "Troop_reward/";
-    bv = bbuv.a(aW + "ar_cloud_img/");
-    bw = bbuv.a(aW + "ar_cloud_marker_feature/");
-    bx = bbuv.a(aW + "ar_cloud_marker_config/");
-    by = bbuv.a(aW + "ar_cloud_marker_model/");
-    bz = bbuv.a(aW + "ARRelationShip/");
-    bA = bbuv.a(aW + "ar_cloud_transfer/");
-    bB = bbuv.a(aW + "qqmusic/");
-    bC = aW + "pe";
-    bD = aW + "poke";
-    bE = aW + "newpoke";
-    if (BaseApplicationImpl.getContext().doesHasSDCardPermission()) {}
-    for (String str = aW;; str = "/sdcard/Android/data/com.tencent.mobileqq/files/Tencent/MobileQQ/")
+    this.mPluginNameSpace = "babyQ";
+  }
+  
+  private void a(String paramString, Bundle paramBundle)
+  {
+    ajsl.a().a(paramString, paramBundle, this.jdField_a_of_type_EipcEIPCResultCallback);
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (!TextUtils.isEmpty(paramString1))
     {
-      bF = str;
-      bG = bbuv.a(bF + "head/");
-      bH = bbuv.a(aW + "head/");
-      bI = bG + "_hd/";
-      bJ = bG + "_thd/";
-      bK = bG + "_stranger/";
-      bL = bG + "_st/";
-      bM = bG + "_dhd/";
-      bN = bG + "_SSOhd/";
-      bO = bbuv.a(bF + ".starHead/");
-      bP = bbuv.a(bF + ".pendant/");
-      bQ = aW + ".secmsgPic/";
-      bR = bbuv.a(aW + ".emotionsm/");
-      bS = aW + ".emoQFace/";
-      bT = bbuv.a(aW + ".diy/");
-      bU = bbuv.a(aW + ".indivAnim/");
-      bV = bbuv.a(new StringBuilder().append(aW).append("pddata/vas/").toString()) + "individual_sign/";
-      bW = bV + "stickers/";
-      bX = aW + "foward_urldrawable/";
-      bY = aW + ".billd_urldrawable/";
-      bZ = aW + ".map_roam/";
-      ca = aW + "device/";
-      cb = aW + "location/";
-      cc = bbuv.a(aW + "system_background/");
-      cd = cc + "QQPicConfig.xml";
-      ce = aW + "lyric/";
-      cf = aW + "/dynamic_profile/";
-      cg = aW + "/audioCache/";
-      ch = aW + ".mini_wangka/";
-      ci = cc + "thumbnail/";
-      cj = cc + "resource/";
-      ck = aW + "turnbrand/";
-      cl = bbuv.a(aW + "Scribble/");
-      cm = bbuv.a(aW + ".profilecard" + "/");
-      cn = aW + "card/";
-      co = aW + "card/starfans/";
-      cp = aW + "card/individbanners/";
-      cq = aW + "data/";
-      cr = aW + "troop/activity/";
-      cs = aW + "photo/watermark_temp.jpg";
-      ct = bbuv.a(aW + ".gift/");
-      cu = aW + "robot/";
-      cv = aW + ".nearby_lottie/";
-      cw = aW + ".nearby_flower/";
-      cx = aW + "pubaccount/";
-      cy = cx + "screenshots/";
-      cz = aW + "readinjoy/";
-      cA = cz + "record/";
-      cB = cA + "template/";
-      cC = aW + "viola/template/";
-      cD = cz + "offline/tmp/";
-      cE = aV + "/Tencent/MobileQQ/.story/";
-      cF = cE + "animation/";
-      cG = bbuv.a(cx + "preload/");
-      cH = bbuv.a(cx + "preimg/");
-      cI = aV + "/DCIM/Video/";
-      cJ = aV + ajyc.a(2131700602);
-      cK = aV + ajyc.a(2131700603);
-      cL = aV + "/Camera/Video/";
-      cM = cx + "imagecollection/";
-      cN = aW + "/newerGuide/";
-      cO = aW + "/qim_theme_aio/";
-      cP = aW + "hotpic";
-      cQ = aW + "/nearby_profile_now_video/";
-      cR = aW + "/tim_theme_aio/";
-      cS = aW + "minirecog/";
-      cT = aW + "troopphoto/";
-      cU = aW + "subscribe_draft" + File.separator;
-      cV = aW + "subscribe_draft_simple" + File.separator;
-      c = new String[] { "NONE", "WIFI", "2G", "3G", "4G", "CABLE" };
+      paramString1 = paramString1 + "(" + paramString2 + ");";
+      callJs(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.i("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb callback js api: jsapi=" + paramString3 + ", script=" + paramString1);
+      }
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb handleJsRequest url =", paramString1, ",method=", paramString3 });
+    }
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("babyQ")) || (TextUtils.isEmpty(paramString3)) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.jdField_a_of_type_AndroidAppActivity == null)) {
+      return false;
+    }
+    paramString2 = null;
+    paramString1 = null;
+    long l2 = 0L;
+    long l1 = l2;
+    paramJsBridgeListener = paramString1;
+    if (paramVarArgs != null)
+    {
+      l1 = l2;
+      paramJsBridgeListener = paramString1;
+      if (paramVarArgs.length > 0) {
+        paramString1 = paramString2;
+      }
+    }
+    try
+    {
+      localJSONObject = new JSONObject(paramVarArgs[0]);
+      paramString1 = paramString2;
+      paramString2 = localJSONObject.optString("callback");
+      l1 = l2;
+      paramJsBridgeListener = paramString2;
+      paramString1 = paramString2;
+      if (paramString3.equals("setPushStatus"))
+      {
+        paramString1 = paramString2;
+        i = localJSONObject.optInt("pushStatus");
+        l1 = i;
+        paramJsBridgeListener = paramString2;
+      }
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      JSONObject localJSONObject;
+      int i;
+      Bundle localBundle;
+      Object localObject;
+      for (;;)
+      {
+        l1 = l2;
+        paramJsBridgeListener = paramString1;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb " + paramString3 + " req error args msg: " + paramVarArgs[0]);
+          l1 = l2;
+          paramJsBridgeListener = paramString1;
+        }
+      }
+      if (!paramString3.equals("setFriendStatus")) {
+        break label495;
+      }
+      if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+        break label1287;
+      }
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("callback");
+        i = paramJsBridgeListener.optInt("user_type");
+        int j = paramJsBridgeListener.optInt("from_type");
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          this.jdField_a_of_type_JavaLangString = paramString1;
+          paramJsBridgeListener = new Intent("com.tencent.mobileqq.babyq.add");
+          paramJsBridgeListener.putExtra("user_type", i);
+          paramJsBridgeListener.putExtra("from_type", j);
+          paramJsBridgeListener.setPackage(this.jdField_a_of_type_AndroidAppActivity.getPackageName());
+          this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(paramJsBridgeListener);
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaLangString = null;
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (!QLog.isColorLevel()) {
+          break label1287;
+        }
+      }
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb setFriendStatus req error args msg: " + paramVarArgs[0]);
+      break label1287;
+      label495:
+      if (!paramString3.equals("getZanVoteCount")) {
+        break label575;
+      }
+      paramString2 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getZanVoteCount", localBundle);
+      if (!paramString2.isSuccess()) {
+        break label565;
+      }
+      l1 = paramString2.data.getLong("key_get_zan_vote_count");
+      paramString1 = "{ \"ret\": 0, \"votecount\": " + l1 + "}";
+      label565:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label575:
+      if (!paramString3.equals("requestZan")) {
+        break label663;
+      }
+      paramVarArgs = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "requestZan", localBundle);
+      paramString1 = paramString2;
+      if (!paramVarArgs.isSuccess()) {
+        break label653;
+      }
+      l1 = paramVarArgs.data.getLong("key_request_zan_vote_result", 2L);
+      paramString1 = "{\"ret\":" + l1 + "}";
+      label653:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label663:
+      if (!paramString3.equals("addFriend")) {
+        break label706;
+      }
+      startActivityForResult(AddFriendLogicActivity.a(this.mRuntime.a(), 2, ajsd.aC, null, 3001, 12, "babyQ", null, null, null, null), (byte)1);
+      return true;
+      label706:
+      if (!paramString3.equals("sendmsg")) {
+        break label810;
+      }
+      paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "sendmsg", localBundle);
+      if (!paramJsBridgeListener.isSuccess()) {
+        break label808;
+      }
+      paramJsBridgeListener = (ProfileActivity.AllInOne)paramJsBridgeListener.data.getParcelable("key_parcel_allinone");
+      paramString1 = new auuy();
+      paramString1.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = paramJsBridgeListener;
+      paramString1.jdField_a_of_type_ComTencentMobileqqDataCard = new Card();
+      paramString1.jdField_a_of_type_ComTencentMobileqqDataCard.uin = ajsd.aC;
+      FriendProfileCardActivity.a(this.mRuntime.a(), paramString1, ajsd.aC, 0, paramJsBridgeListener.h);
+      label808:
+      return true;
+      label810:
+      if (!paramString3.equals("deleteFriend")) {
+        break label864;
+      }
+      if (!QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "deleteFriend", localBundle).isSuccess()) {
+        break label862;
+      }
+      BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_CLOSE"), "com.tencent.msg.permission.pushnotify");
+      label862:
+      return true;
+      label864:
+      if (!paramString3.equals("getFriendGrouping")) {
+        break label950;
+      }
+      paramString2 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getFriendGrouping", localBundle);
+      paramString1 = localJSONObject;
+      if (!paramString2.isSuccess()) {
+        break label940;
+      }
+      paramString1 = paramString2.data.getString("key_handle_set_get_group");
+      paramString1 = "{ \"ret\": 0, \"group\": \"" + paramString1 + "\"}";
+      label940:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label950:
+      if (!paramString3.equals("setFriendGrouping")) {
+        break label1087;
+      }
+      paramString1 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "setFriendGrouping", localBundle);
+      if (!paramString1.isSuccess()) {
+        break label1076;
+      }
+      paramJsBridgeListener = paramString1.data.getString("friendUin");
+      byte b = paramString1.data.getByte("mgid");
+      paramString1 = this.mRuntime.a();
+      paramString2 = new Intent(paramString1, MoveToGroupActivity.class);
+      paramString2.putExtra("friendUin", paramJsBridgeListener);
+      paramString2.putExtra("mgid", b);
+      paramString2.putExtra("key_from_babyq_web_plugin", true);
+      paramString1.startActivity(paramString2);
+      if (!QLog.isColorLevel()) {
+        break label1076;
+      }
+      QLog.i("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb set group begin");
+      label1076:
+      a("setFriendGrouping", localBundle);
+      return true;
+      label1087:
+      if (!paramString3.equals("reportFriend")) {
+        break label1163;
+      }
+      paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "reportFriend", localBundle);
+      if (!paramJsBridgeListener.isSuccess()) {
+        break label1161;
+      }
+      paramJsBridgeListener = paramJsBridgeListener.data.getString("key_report_msg");
+      xkn.a((BaseActivity)this.mRuntime.a(), ajsd.aC, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 21001, paramJsBridgeListener);
+      label1161:
+      return true;
+      label1163:
+      if (!paramString3.equals("getPushStatus")) {
+        break label1250;
+      }
+      paramString2 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getPushStatus", localBundle);
+      paramString1 = localObject;
+      if (!paramString2.isSuccess()) {
+        break label1240;
+      }
+      l1 = paramString2.data.getLong("key_request_zan_vote_result", 0L);
+      paramString1 = "{ \"ret\": 0, \"pushStatus\": " + l1 + "}";
+      label1240:
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+      label1250:
+      if (!paramString3.equals("setPushStatus")) {
+        break label1280;
+      }
+      localBundle.putLong("key_push_status", l1);
+      a("setPushStatus", localBundle);
+      return true;
+      label1280:
+      return false;
+    }
+    localBundle = new Bundle();
+    localBundle.putString("web_js_call_back_id", paramJsBridgeListener);
+    paramString2 = null;
+    localJSONObject = null;
+    localObject = null;
+    paramString1 = null;
+    if (paramString3.equals("getFriendStatus"))
+    {
+      paramString1 = QIPCClientHelper.getInstance().getClient().callServer("BabyQIPCModule", "getFriendStatus", localBundle);
+      if (!paramString1.isSuccess()) {
+        break label1282;
+      }
+      l1 = paramString1.data.getLong("key_get_friend_status");
+    }
+    label1282:
+    for (paramString1 = "{ \"ret\": 0, \"response\": { \"has_add\":" + l1 + "}}";; paramString1 = null)
+    {
+      a(paramJsBridgeListener, paramString1, paramString3);
+      return true;
+    }
+    label1287:
+    return true;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, String.format("babyqWeb onActivityResult requestCode=%s resultCode=%s intent=%s", new Object[] { Byte.valueOf(paramByte), Integer.valueOf(paramInt), paramIntent }));
+    }
+  }
+  
+  public void onCreate()
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("com.tencent.mobileqq.babyq.added");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebViewPlugin onCreate:" + this);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebViewPlugin onDestroy:" + this);
+    }
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      label54:
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
       return;
+    }
+    catch (Exception localException)
+    {
+      break label54;
     }
   }
 }

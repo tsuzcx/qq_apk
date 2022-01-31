@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.app;
 
-import amgr;
+import amgq;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class AppUIProxy$2
-  extends amgr
+  extends amgq
 {
   AppUIProxy$2(AppUIProxy paramAppUIProxy, BaseActivity paramBaseActivity) {}
   

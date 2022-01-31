@@ -1,19 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeaj
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animator.AnimatorListener
 {
-  public aeaj(SixCombolEffectView paramSixCombolEffectView, aeay paramaeay) {}
+  public aeaj(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_Aeay.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Aeay.b) && (this.jdField_a_of_type_Aeay.a < 0.52F)) {
-      this.jdField_a_of_type_Aeay.b = true;
-    }
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

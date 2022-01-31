@@ -5,7 +5,7 @@ import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ytw;
+import ytt;
 
 class BannerAdPlugin$5
   implements Runnable
@@ -21,7 +21,7 @@ class BannerAdPlugin$5
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", "resize");
       localJSONObject.put("width", this.val$resizeValue);
-      localJSONObject.put("height", ytw.a(0, this.val$resizeValue));
+      localJSONObject.put("height", ytt.a(0, this.val$resizeValue));
       BannerAdPlugin.access$300(this.this$0, this.val$webview, localJSONObject, "onBannerAdStateChange");
       QLog.i("[minigame] BannerAdPlugin", 1, "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
       return;

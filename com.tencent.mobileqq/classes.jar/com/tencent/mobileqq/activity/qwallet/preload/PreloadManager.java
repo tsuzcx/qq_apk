@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.DownloadChooseReq;
-import agwv;
-import agxc;
+import agwt;
+import agxa;
+import agzb;
 import agzd;
-import agzf;
-import agzj;
-import ahbh;
+import agzh;
+import ahbf;
+import ahbi;
+import ahbj;
 import ahbk;
 import ahbl;
 import ahbm;
 import ahbn;
 import ahbo;
 import ahbp;
-import ahbq;
 import ahbr;
+import ahbs;
 import ahbt;
 import ahbu;
-import ahbv;
-import ahbw;
-import ahcw;
-import ahiy;
-import ampi;
-import amud;
+import ahcu;
+import ahiw;
+import amph;
+import amuc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -30,8 +30,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import axlx;
-import bbwf;
+import axlz;
+import bbwt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -52,8 +52,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PreloadManager
-  extends ahbv
-  implements agzj, INetInfoHandler, Manager
+  extends ahbt
+  implements agzh, INetInfoHandler, Manager
 {
   private int jdField_a_of_type_Int = 30;
   private Handler jdField_a_of_type_AndroidOsHandler;
@@ -82,13 +82,13 @@ public class PreloadManager
     }
   }
   
-  public static ahbv a()
+  public static ahbt a()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
       return (PreloadManager)((QQAppInterface)localAppRuntime).getManager(151);
     }
-    return ahbw.a();
+    return ahbu.a();
   }
   
   public static PreloadManager.PathResult a(DownloadParam paramDownloadParam)
@@ -121,14 +121,14 @@ public class PreloadManager
   
   public static ResourceInfo a(String paramString, boolean paramBoolean, int paramInt)
   {
-    ResourceInfo localResourceInfo = ahcw.a(paramString, paramBoolean, 0, paramInt);
+    ResourceInfo localResourceInfo = ahcu.a(paramString, paramBoolean, 0, paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManager", 2, "getResInfoByUrl :" + paramString + "|" + paramBoolean + "|" + localResourceInfo);
     }
     return localResourceInfo;
   }
   
-  private List<PreloadModule> a(List<PreloadModule> paramList, bbwf parambbwf)
+  private List<PreloadModule> a(List<PreloadModule> paramList, bbwt parambbwt)
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
@@ -139,7 +139,7 @@ public class PreloadManager
         QLog.d("PreloadManager", 2, "delayLargerModulesAndReturnSmallerModules|begin delay download:" + this.jdField_a_of_type_Int + "|" + this.b + "|" + localArrayList2);
       }
       paramList = new WeakReference(this);
-      ThreadManager.getTimer().schedule(new PreloadManager.4(this, paramList, localArrayList2, parambbwf), this.jdField_a_of_type_Int * 1000);
+      ThreadManager.getTimer().schedule(new PreloadManager.4(this, paramList, localArrayList2, parambbwt), this.jdField_a_of_type_Int * 1000);
     }
     return localArrayList1;
   }
@@ -149,9 +149,9 @@ public class PreloadManager
     ResourceInfo localResourceInfo = a(paramString, paramBoolean, paramInt);
     if (localResourceInfo != null)
     {
-      ahcw.b(paramString, paramInt);
-      ahiy.a(localResourceInfo.filePath);
-      ahiy.a(localResourceInfo.folderPath);
+      ahcu.b(paramString, paramInt);
+      ahiw.a(localResourceInfo.filePath);
+      ahiw.a(localResourceInfo.folderPath);
     }
   }
   
@@ -176,7 +176,7 @@ public class PreloadManager
     }
   }
   
-  private void a(List<PreloadModule> paramList, bbwf parambbwf)
+  private void a(List<PreloadModule> paramList, bbwt parambbwt)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
     for (;;)
@@ -184,12 +184,12 @@ public class PreloadManager
       return;
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        ((PreloadModule)paramList.next()).downloadModule(false, parambbwf, this, true);
+        ((PreloadModule)paramList.next()).downloadModule(false, parambbwt, this, true);
       }
     }
   }
   
-  private void a(List<PreloadModule> paramList, bbwf parambbwf, boolean paramBoolean)
+  private void a(List<PreloadModule> paramList, bbwt parambbwt, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadBackControlConfig == null) {
       return;
@@ -199,14 +199,14 @@ public class PreloadManager
       DownloadChooseReq localDownloadChooseReq = new DownloadChooseReq();
       localDownloadChooseReq.iUin = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
       localDownloadChooseReq.vecResInfo = PreloadConfig.modulesToResInfos(paramList);
-      agwv.a(localDownloadChooseReq, new ahbl(this, paramList, parambbwf, paramBoolean));
+      agwt.a(localDownloadChooseReq, new ahbj(this, paramList, parambbwt, paramBoolean));
       return;
     }
     paramList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig.resInfosToModules(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadBackControlConfig.getLastBackResInfos());
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManager", 2, "downloadBackControlModules|choose res:" + paramList);
     }
-    b(paramList, parambbwf, paramBoolean);
+    b(paramList, parambbwt, paramBoolean);
   }
   
   private boolean a()
@@ -219,7 +219,7 @@ public class PreloadManager
     long l1 = 0L;
     if (!TextUtils.isEmpty(str))
     {
-      long l2 = axlx.a(str);
+      long l2 = axlz.a(str);
       l1 = l2;
       if (l2 > 104857600L)
       {
@@ -269,7 +269,7 @@ public class PreloadManager
   
   public static String b(String paramString)
   {
-    ResourceInfo localResourceInfo = ahcw.a(paramString, false, 0, 0);
+    ResourceInfo localResourceInfo = ahcu.a(paramString, false, 0, 0);
     paramString = null;
     if (localResourceInfo != null) {
       paramString = localResourceInfo.folderPath;
@@ -277,7 +277,7 @@ public class PreloadManager
     return paramString;
   }
   
-  private void b(List<PreloadModule> paramList, bbwf parambbwf, boolean paramBoolean)
+  private void b(List<PreloadModule> paramList, bbwt parambbwt, boolean paramBoolean)
   {
     Object localObject = paramList;
     if (paramBoolean)
@@ -285,9 +285,9 @@ public class PreloadManager
       if (QLog.isColorLevel()) {
         QLog.d("PreloadManager", 2, "downloadModules|afterGetConfig");
       }
-      localObject = a(paramList, parambbwf);
+      localObject = a(paramList, parambbwt);
     }
-    a((List)localObject, parambbwf);
+    a((List)localObject, parambbwt);
   }
   
   public static String c(String paramString)
@@ -320,8 +320,8 @@ public class PreloadManager
   
   private void d()
   {
-    int i = agxc.a(this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin() + "", "deal_delay_interval", 30);
-    int j = agxc.a(this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin() + "", "need_wait_size", 1024);
+    int i = agxa.a(this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin() + "", "deal_delay_interval", 30);
+    int j = agxa.a(this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin() + "", "need_wait_size", 1024);
     a(i, j);
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManager", 2, "initPreloadHelpConfig|" + i + "|" + j + "|" + this.jdField_a_of_type_Int + "|" + this.b);
@@ -341,7 +341,7 @@ public class PreloadManager
   private void g()
   {
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new ahbo(this, ThreadManager.getSubThreadLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new ahbm(this, ThreadManager.getSubThreadLooper());
     }
   }
   
@@ -378,7 +378,7 @@ public class PreloadManager
         localObject1 = localObject2;
       } while (!localIterator2.hasNext());
       localObject1 = (PreloadResource)localIterator2.next();
-      if (!ahiy.c(paramString, ((PreloadResource)localObject1).mResId)) {
+      if (!ahiw.c(paramString, ((PreloadResource)localObject1).mResId)) {
         break label100;
       }
     }
@@ -412,10 +412,10 @@ public class PreloadManager
   
   public void a()
   {
-    if (!ahbv.b) {
-      ahcw.a(0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig);
+    if (!ahbt.b) {
+      ahcu.a(0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig);
     }
-    ahcw.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig);
+    ahcu.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -437,7 +437,7 @@ public class PreloadManager
   }
   
   /* Error */
-  public void a(agzd paramagzd)
+  public void a(agzb paramagzb)
   {
     // Byte code:
     //   0: aload_0
@@ -450,7 +450,7 @@ public class PreloadManager
     //   12: ifnull +18 -> 30
     //   15: ldc_w 510
     //   18: aload_1
-    //   19: getfield 514	agzd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   19: getfield 514	agzb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   22: invokevirtual 518	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   25: istore_3
     //   26: iload_3
@@ -468,7 +468,7 @@ public class PreloadManager
     //   49: ldc_w 520
     //   52: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: aload_1
-    //   56: getfield 522	agzd:jdField_a_of_type_Long	J
+    //   56: getfield 522	agzb:jdField_a_of_type_Long	J
     //   59: invokevirtual 363	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   62: ldc 183
     //   64: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -479,12 +479,12 @@ public class PreloadManager
     //   77: ldc 183
     //   79: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: aload_1
-    //   83: getfield 527	agzd:b	Ljava/lang/String;
+    //   83: getfield 527	agzb:b	Ljava/lang/String;
     //   86: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   92: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   95: aload_1
-    //   96: getfield 522	agzd:jdField_a_of_type_Long	J
+    //   96: getfield 522	agzb:jdField_a_of_type_Long	J
     //   99: lstore 4
     //   101: aload_0
     //   102: getfield 41	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig	Lcom/tencent/mobileqq/activity/qwallet/preload/PreloadConfig;
@@ -497,7 +497,7 @@ public class PreloadManager
     //   118: new 529	org/json/JSONObject
     //   121: dup
     //   122: aload_1
-    //   123: getfield 527	agzd:b	Ljava/lang/String;
+    //   123: getfield 527	agzb:b	Ljava/lang/String;
     //   126: invokespecial 530	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   129: ldc_w 532
     //   132: invokevirtual 536	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
@@ -531,7 +531,7 @@ public class PreloadManager
     //   185: aload_0
     //   186: getfield 41	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig	Lcom/tencent/mobileqq/activity/qwallet/preload/PreloadConfig;
     //   189: aload_1
-    //   190: getfield 522	agzd:jdField_a_of_type_Long	J
+    //   190: getfield 522	agzb:jdField_a_of_type_Long	J
     //   193: putfield 525	com/tencent/mobileqq/activity/qwallet/preload/PreloadConfig:moggyConfigVersion	J
     //   196: invokestatic 121	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   199: ifeq +32 -> 231
@@ -559,7 +559,7 @@ public class PreloadManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	246	0	this	PreloadManager
-    //   0	246	1	paramagzd	agzd
+    //   0	246	1	paramagzb	agzb
     //   138	26	2	i	int
     //   25	2	3	bool	boolean
     //   99	12	4	l1	long
@@ -582,7 +582,7 @@ public class PreloadManager
     //   231	238	241	finally
   }
   
-  public void a(amud paramamud)
+  public void a(amuc paramamuc)
   {
     for (;;)
     {
@@ -590,14 +590,14 @@ public class PreloadManager
       try
       {
         JSONArray localJSONArray = new JSONArray();
-        if ((paramamud != null) && (paramamud.a != null))
+        if ((paramamuc != null) && (paramamuc.a != null))
         {
-          paramamud = paramamud.a;
-          int k = paramamud.length;
+          paramamuc = paramamuc.a;
+          int k = paramamuc.length;
           i = 0;
           if (i < k)
           {
-            Object localObject = paramamud[i].jdField_a_of_type_JavaLangString;
+            Object localObject = paramamuc[i].jdField_a_of_type_JavaLangString;
             if (QLog.isColorLevel()) {
               QLog.d("PreloadManager", 2, "receiveAllConfigs|type: 68,content: " + (String)localObject);
             }
@@ -629,7 +629,7 @@ public class PreloadManager
   }
   
   /* Error */
-  public void a(bbwf parambbwf, boolean paramBoolean)
+  public void a(bbwt parambbwt, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
@@ -706,7 +706,7 @@ public class PreloadManager
     //   160: aload 6
     //   162: aload_1
     //   163: iload_2
-    //   164: invokespecial 338	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:b	(Ljava/util/List;Lbbwf;Z)V
+    //   164: invokespecial 338	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:b	(Ljava/util/List;Lbbwt;Z)V
     //   167: aload 5
     //   169: invokeinterface 200 1 0
     //   174: ifle +44 -> 218
@@ -727,7 +727,7 @@ public class PreloadManager
     //   211: aload 5
     //   213: aload_1
     //   214: iload_2
-    //   215: invokespecial 237	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:a	(Ljava/util/List;Lbbwf;Z)V
+    //   215: invokespecial 237	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:a	(Ljava/util/List;Lbbwt;Z)V
     //   218: aload_0
     //   219: getfield 41	com/tencent/mobileqq/activity/qwallet/preload/PreloadManager:jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig	Lcom/tencent/mobileqq/activity/qwallet/preload/PreloadConfig;
     //   222: invokevirtual 559	com/tencent/mobileqq/activity/qwallet/preload/PreloadConfig:savePreloadConfig	()V
@@ -740,7 +740,7 @@ public class PreloadManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	233	0	this	PreloadManager
-    //   0	233	1	parambbwf	bbwf
+    //   0	233	1	parambbwt	bbwt
     //   0	233	2	paramBoolean	boolean
     //   64	2	3	bool	boolean
     //   87	21	4	localList	List
@@ -757,11 +757,11 @@ public class PreloadManager
     //   218	225	228	finally
   }
   
-  public void a(DownloadParam paramDownloadParam, ahbt paramahbt)
+  public void a(DownloadParam paramDownloadParam, ahbr paramahbr)
   {
     if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {
-      if (paramahbt != null) {
-        paramahbt.onResult(1, PreloadManager.PathResult.getFailRes(null));
+      if (paramahbr != null) {
+        paramahbr.onResult(1, PreloadManager.PathResult.getFailRes(null));
       }
     }
     ResourceInfo localResourceInfo;
@@ -780,31 +780,31 @@ public class PreloadManager
       if (!bool) {
         break;
       }
-    } while (paramahbt == null);
+    } while (paramahbr == null);
     PreloadManager.PathResult localPathResult = new PreloadManager.PathResult();
     localPathResult.url = paramDownloadParam.url;
     localPathResult.filePath = localResourceInfo.filePath;
     localPathResult.folderPath = localResourceInfo.folderPath;
     localPathResult.isAlreadyExist = true;
-    paramahbt.onResult(0, localPathResult);
+    paramahbr.onResult(0, localPathResult);
     return;
     if (localResourceInfo != null)
     {
-      ahcw.b(paramDownloadParam.url, paramDownloadParam.filePos);
-      ahiy.a(localResourceInfo.filePath);
-      ahiy.a(localResourceInfo.folderPath);
+      ahcu.b(paramDownloadParam.url, paramDownloadParam.filePos);
+      ahiw.a(localResourceInfo.filePath);
+      ahiw.a(localResourceInfo.folderPath);
     }
-    b(paramDownloadParam, paramahbt);
+    b(paramDownloadParam, paramahbr);
   }
   
-  public void a(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bbwf parambbwf)
+  public void a(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bbwt parambbwt)
   {
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       g();
     }
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     localMessage.what = 1;
-    localMessage.obj = new ahbq(paramPreloadResource, paramPreloadModule, parambbwf);
+    localMessage.obj = new ahbo(paramPreloadResource, paramPreloadModule, parambbwt);
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
@@ -821,9 +821,9 @@ public class PreloadManager
     finally {}
   }
   
-  public void a(String paramString, ahbt paramahbt)
+  public void a(String paramString, ahbr paramahbr)
   {
-    a(paramString, "", paramahbt);
+    a(paramString, "", paramahbr);
   }
   
   public void a(String paramString, ResultReceiver paramResultReceiver)
@@ -849,7 +849,7 @@ public class PreloadManager
             continue;
           }
           localObject2 = (PreloadResource)localIterator2.next();
-          if (ahiy.c(paramString, ((PreloadResource)localObject2).mResId)) {
+          if (ahiw.c(paramString, ((PreloadResource)localObject2).mResId)) {
             localObject1 = a(((PreloadResource)localObject2).getResDownloadUrl(localPreloadModule), ((PreloadResource)localObject2).getFilePos());
           }
         }
@@ -874,20 +874,20 @@ public class PreloadManager
     }
   }
   
-  public void a(String paramString1, String paramString2, agzd paramagzd)
+  public void a(String paramString1, String paramString2, agzb paramagzb)
   {
-    if (ahiy.c(paramString1, "preload"))
+    if (ahiw.c(paramString1, "preload"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PreloadManager", 2, "configFromMoggy onUpdate");
       }
-      a(paramagzd);
+      a(paramagzb);
       f();
     }
   }
   
   @Deprecated
-  public void a(String paramString1, String paramString2, ahbp paramahbp)
+  public void a(String paramString1, String paramString2, ahbn paramahbn)
   {
     String str = null;
     for (;;)
@@ -918,7 +918,7 @@ public class PreloadManager
           continue;
         }
         localObject2 = (PreloadResource)localIterator2.next();
-        if (!ahiy.c(paramString1, ((PreloadResource)localObject2).mResId)) {
+        if (!ahiw.c(paramString1, ((PreloadResource)localObject2).mResId)) {
           break label265;
         }
         localObject1 = localObject2;
@@ -928,18 +928,18 @@ public class PreloadManager
       if (QLog.isColorLevel()) {
         QLog.d("PreloadManager", 2, "downloadRes ERR_CONFIG_NOT_EXIST");
       }
-      paramahbp.onDownloadResFinished(null, -7, null, null);
+      paramahbn.onDownloadResFinished(null, -7, null, null);
       return;
       if (!a())
       {
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "downloadRes|disk space not enough");
         }
-        paramahbp.onDownloadResFinished(null, -4, null, null);
+        paramahbn.onDownloadResFinished(null, -4, null, null);
       }
       else
       {
-        ((PreloadResource)localObject2).startDownload(this, str, new ahbm(this, paramahbp), false);
+        ((PreloadResource)localObject2).startDownload(this, str, new ahbk(this, paramahbn), false);
         continue;
         label265:
         continue;
@@ -951,15 +951,15 @@ public class PreloadManager
     }
   }
   
-  public void a(String paramString1, String paramString2, ahbt paramahbt)
+  public void a(String paramString1, String paramString2, ahbr paramahbr)
   {
     Object localObject;
     long l;
     if (!TextUtils.isEmpty(paramString2))
     {
-      localObject = (agzf)this.jdField_a_of_type_MqqAppAppRuntime.getManager(245);
+      localObject = (agzd)this.jdField_a_of_type_MqqAppAppRuntime.getManager(245);
       if (localObject != null) {
-        l = ((agzf)localObject).a();
+        l = ((agzd)localObject).a();
       }
     }
     for (;;)
@@ -969,7 +969,7 @@ public class PreloadManager
       ((DownloadParam)localObject).md5 = paramString2;
       ((DownloadParam)localObject).md5Time = l;
       ((DownloadParam)localObject).isForceUnzip = true;
-      a((DownloadParam)localObject, paramahbt);
+      a((DownloadParam)localObject, paramahbr);
       return;
       l = 0L;
       continue;
@@ -990,28 +990,28 @@ public class PreloadManager
     finally {}
   }
   
-  public void a(LinkedList<DownloadParam> paramLinkedList, ahbu paramahbu)
+  public void a(LinkedList<DownloadParam> paramLinkedList, ahbs paramahbs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "getResPath: params" + paramLinkedList + ",OnGetPathsListener=" + paramahbu);
+      QLog.d("PreloadManager", 2, "getResPath: params" + paramLinkedList + ",OnGetPathsListener=" + paramahbs);
     }
     if (paramLinkedList == null)
     {
-      if (paramahbu != null) {
-        paramahbu.a(1, null);
+      if (paramahbs != null) {
+        paramahbs.a(1, null);
       }
       return;
     }
-    new ahbr(this, paramLinkedList, paramahbu).a();
+    new ahbp(this, paramLinkedList, paramahbs).a();
   }
   
-  public void a(List<String> paramList, ahbt paramahbt)
+  public void a(List<String> paramList, ahbr paramahbr)
   {
     if (paramList != null)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        c((String)paramList.next(), paramahbt);
+        c((String)paramList.next(), paramahbr);
       }
     }
   }
@@ -1079,14 +1079,14 @@ public class PreloadManager
     }
   }
   
-  public void b(DownloadParam paramDownloadParam, ahbt paramahbt)
+  public void b(DownloadParam paramDownloadParam, ahbr paramahbr)
   {
-    paramahbt = new ahbk(this, paramDownloadParam, paramahbt, new WeakReference(this));
+    paramahbr = new ahbi(this, paramDownloadParam, paramahbr, new WeakReference(this));
     if (TextUtils.isEmpty(paramDownloadParam.filePath)) {
       paramDownloadParam.filePath = b(paramDownloadParam.url, paramDownloadParam.filePos);
     }
     paramDownloadParam.isPreDownload = false;
-    ahbh.a().a(paramDownloadParam, paramahbt, null);
+    ahbf.a().a(paramDownloadParam, paramahbr, null);
   }
   
   public void b(String paramString)
@@ -1103,13 +1103,13 @@ public class PreloadManager
     }
   }
   
-  public void b(String paramString, ahbt paramahbt)
+  public void b(String paramString, ahbr paramahbr)
   {
-    b(paramString, "", paramahbt);
+    b(paramString, "", paramahbr);
   }
   
   @Deprecated
-  public void b(String paramString1, String paramString2, ahbp paramahbp)
+  public void b(String paramString1, String paramString2, ahbn paramahbn)
   {
     for (;;)
     {
@@ -1121,7 +1121,7 @@ public class PreloadManager
         if (!TextUtils.isEmpty(paramString2))
         {
           boolean bool = TextUtils.isEmpty(paramString1);
-          if ((!bool) && (paramahbp != null)) {}
+          if ((!bool) && (paramahbn != null)) {}
         }
         else
         {
@@ -1135,7 +1135,7 @@ public class PreloadManager
           if (QLog.isColorLevel()) {
             QLog.d("PreloadManager", 2, "downloadModule|json wrong");
           }
-          paramahbp.onDownloadResFinished(paramString1, -7, null, null);
+          paramahbn.onDownloadResFinished(paramString1, -7, null, null);
           continue;
         }
         if (a()) {
@@ -1146,22 +1146,22 @@ public class PreloadManager
       if (QLog.isColorLevel()) {
         QLog.d("PreloadManager", 2, "downloadModule|disk space not enough");
       }
-      paramahbp.onDownloadResFinished(paramString1, -4, null, null);
+      paramahbn.onDownloadResFinished(paramString1, -4, null, null);
       continue;
       label171:
-      paramString2.downloadModule(true, new ahbn(this, paramString1, paramahbp), this, false);
+      paramString2.downloadModule(true, new ahbl(this, paramString1, paramahbn), this, false);
     }
   }
   
-  public void b(String paramString1, String paramString2, ahbt paramahbt)
+  public void b(String paramString1, String paramString2, ahbr paramahbr)
   {
     Object localObject;
     long l;
     if (!TextUtils.isEmpty(paramString2))
     {
-      localObject = (agzf)this.jdField_a_of_type_MqqAppAppRuntime.getManager(245);
+      localObject = (agzd)this.jdField_a_of_type_MqqAppAppRuntime.getManager(245);
       if (localObject != null) {
-        l = ((agzf)localObject).a();
+        l = ((agzd)localObject).a();
       }
     }
     for (;;)
@@ -1171,7 +1171,7 @@ public class PreloadManager
       ((DownloadParam)localObject).md5 = paramString2;
       ((DownloadParam)localObject).md5Time = l;
       ((DownloadParam)localObject).isForceUnzip = false;
-      a((DownloadParam)localObject, paramahbt);
+      a((DownloadParam)localObject, paramahbr);
       return;
       l = 0L;
       continue;
@@ -1293,9 +1293,9 @@ public class PreloadManager
   public void onDestroy()
   {
     this.jdField_a_of_type_Boolean = true;
-    agzf localagzf = (agzf)this.jdField_a_of_type_MqqAppAppRuntime.getManager(245);
-    if (localagzf != null) {
-      localagzf.d("preload", this);
+    agzd localagzd = (agzd)this.jdField_a_of_type_MqqAppAppRuntime.getManager(245);
+    if (localagzd != null) {
+      localagzd.d("preload", this);
     }
     AppNetConnInfo.unregisterNetInfoHandler(this);
     if (this.jdField_a_of_type_AndroidOsHandler != null) {

@@ -1,6 +1,28 @@
-public abstract interface afqm
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class afqm
+  extends ajto
 {
-  public abstract void b(boolean paramBoolean);
+  private afqm(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+  }
 }
 
 

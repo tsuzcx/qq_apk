@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amsy;
 import amsz;
-import amta;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -14,8 +14,8 @@ class BaseJsPluginEngine$4
   
   public void run()
   {
-    amsz localamsz = amta.a();
-    if ((localamsz != null) && (localamsz.a() != null) && (localamsz.a().contains(this.val$eventName))) {
+    amsy localamsy = amsz.a();
+    if ((localamsy != null) && (localamsy.a() != null) && (localamsy.a().contains(this.val$eventName))) {
       MiniProgramLpReportDC04239.reportApiInvoke(this.this$0.appBrandRuntime.getApkgInfo().appConfig, this.val$eventName);
     }
   }

@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aukm;
+import auko;
 
 public class ReadInJoyEntityManagerFactory$VerifyEntity
-  extends aukm
+  extends auko
 {
   public String flags = "readinjoy_message_node_verify_entity";
   public String name = "";

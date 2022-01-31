@@ -1,14 +1,14 @@
 final class wsk
-  implements bfos
+  implements bfpj
 {
-  wsk(bfol parambfol, wsp paramwsp) {}
+  wsk(wsn paramwsn, bfpc parambfpc) {}
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_Bfol.dismiss();
-    if (this.jdField_a_of_type_Wsp != null) {
-      this.jdField_a_of_type_Wsp.a(true);
+    if (this.jdField_a_of_type_Wsn != null) {
+      this.jdField_a_of_type_Wsn.a(false);
     }
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

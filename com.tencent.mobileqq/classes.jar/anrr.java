@@ -1,6 +1,8 @@
-class anrr
+public abstract interface anrr
 {
-  private static anrq a = new anrq();
+  public abstract anqr a();
+  
+  public abstract void h();
 }
 
 

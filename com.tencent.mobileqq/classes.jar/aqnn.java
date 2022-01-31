@@ -13,12 +13,12 @@ class aqnn
     default: 
       return;
     case 1: 
-      bcpw.a(this.a.a.a, 2131719554, 0).a();
+      bcql.a(this.a.a.a, 2131719565, 0).a();
       return;
     }
     paramMessage = (String)paramMessage.obj;
-    bbdr.a(this.a.a.a, paramMessage);
-    bcpw.a(this.a.a.a, 2, ajyc.a(2131700132), 0).a();
+    bbef.a(this.a.a.a, paramMessage);
+    bcql.a(this.a.a.a, 2, ajya.a(2131700029), 0).a();
   }
 }
 

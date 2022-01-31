@@ -1,157 +1,55 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.inputstatus.InputStatusPushManager.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 import java.lang.ref.WeakReference;
-import mqq.manager.Manager;
+import tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp;
 
-public class ardv
-  implements Manager
+final class ardv
+  extends ardw
 {
-  private static final String jdField_a_of_type_JavaLangString = ardv.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusPushManager.1(this);
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ardt> a;
   
-  public ardv(QQAppInterface paramQQAppInterface)
+  private ardv(ardt paramardt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = new WeakReference(paramardt);
   }
   
-  private Handler a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  private ardr a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      return (ardr)((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(16);
-    }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof aequ))) {
-      return c();
-    }
-    return b();
-  }
-  
-  private boolean b()
-  {
-    try
+    if (((paramObject instanceof cmd0xcd4.InputNotifyRsp)) && (paramBoolean))
     {
-      ardp localardp = (ardp)ampm.a().a(445);
-      if (localardp != null)
-      {
-        boolean bool = localardp.a;
-        return bool;
+      paramObject = (cmd0xcd4.InputNotifyRsp)paramObject;
+      int i = paramObject.sint32_result.get();
+      int j = paramObject.uint32_interval.get();
+      paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
+      if (i != 0) {
+        break label84;
+      }
+      if ((j > 0) && (this.a.get() != null)) {
+        ((ardt)this.a.get()).a = (j * 1000);
       }
     }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return false;
+    return;
+    label84:
+    QLog.d(ardt.a(), 1, "send input status fail : " + paramObject);
   }
   
-  private boolean c()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    try
+    if ((paramBoolean1) && (this.a.get() != null))
     {
-      ardp localardp = (ardp)ampm.a().a(445);
-      if (localardp != null)
+      if ((!ardt.a((ardt)this.a.get())) && (paramBoolean2))
       {
-        boolean bool = localardp.b;
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return true;
-  }
-  
-  void a()
-  {
-    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "receive fromUin =" + paramLong1 + "，toUin，timeStamp =" + paramLong3 + "，interval =" + paramInt1 + "，showTime =" + paramInt2 + "，eventType = " + paramInt3 + "，statusText =" + paramString);
-    }
-    String str1;
-    boolean bool;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (a()))
-    {
-      a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (a() != null)
-      {
-        a().a = (paramInt1 * 1000);
-        a().b = paramLong3;
-      }
-      str1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      String str2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if ((TextUtils.equals(str1, String.valueOf(paramLong1))) && (TextUtils.equals(str2, String.valueOf(paramLong2))))
-      {
-        if (paramInt3 == 2) {
-          break label284;
+        if (ardt.a((ardt)this.a.get()) != null) {
+          ardt.a((ardt)this.a.get()).a(ardt.a((ardt)this.a.get()));
         }
-        bool = true;
-        if (!bool) {
-          break label300;
-        }
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString))
-        {
-          if (paramInt3 != 1) {
-            break label290;
-          }
-          str1 = ajyc.a(2131705786);
-        }
-        label246:
-        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
+        ardt.a((ardt)this.a.get()).a.addTextChangedListener(ardt.a((ardt)this.a.get()));
       }
-    }
-    for (;;)
-    {
-      if (a() != null) {
-        a().a(bool, str1);
-      }
-      return;
-      label284:
-      bool = false;
-      break;
-      label290:
-      str1 = ajyc.a(2131705787);
-      break label246;
-      label300:
-      str1 = "";
-    }
-  }
-  
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      ardt.a((ardt)this.a.get(), paramBoolean2);
     }
   }
 }

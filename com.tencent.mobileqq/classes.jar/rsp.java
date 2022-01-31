@@ -1,23 +1,10 @@
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.List;
-
-class rsp
-  extends bfmg
+public abstract interface rsp
 {
-  rsp(rsn paramrsn) {}
+  public abstract void a(boolean paramBoolean, String paramString);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    super.onAnimationEnd(paramAnimation);
-    if (rsm.a(this.a.a) != null)
-    {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(rsm.a(this.a.a));
-      rsm.a(this.a.a).a(paramAnimation, rsm.a(this.a.a));
-      bcpw.a(this.a.a.a, 2, 2131718450, 0).a();
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  
+  public abstract void b(boolean paramBoolean, String paramString);
 }
 
 

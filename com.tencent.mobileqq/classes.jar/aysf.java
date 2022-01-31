@@ -1,294 +1,355 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.animation.AnimationUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.startup.step.InitUrlDrawable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Iterator;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.CookieStore;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.conn.params.ConnManagerParams;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.scheme.SocketFactory;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.cookie.CookieSpec;
-import org.apache.http.cookie.CookieSpecRegistry;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
+import mqq.manager.ProxyIpManager;
 
 public class aysf
-  extends ProtocolDownloader.Adapter
+  extends aypg
 {
-  private DefaultHttpClient a;
-  
-  public aysf()
+  public aysf(ayvx paramayvx, aywc paramaywc)
   {
-    SchemeRegistry localSchemeRegistry = new SchemeRegistry();
-    localSchemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-    try
+    super(paramayvx, paramaywc);
+    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(3)).getProxyIp(4);
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      d(1001);
+    }
+    this.jdField_a_of_type_Ayqo.a();
+    if ((this.jdField_a_of_type_ArrayOfByte == null) && (!j()))
     {
-      Object localObject = SSLSocketFactory.getSocketFactory();
-      ((SSLSocketFactory)localObject).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
-      localSchemeRegistry.register(new Scheme("https", (SocketFactory)localObject, 443));
-      label60:
-      localObject = new BasicHttpParams();
-      ConnManagerParams.setTimeout((HttpParams)localObject, 3000L);
-      HttpConnectionParams.setConnectionTimeout((HttpParams)localObject, 30000);
-      HttpConnectionParams.setSoTimeout((HttpParams)localObject, 30000);
-      this.a = new DefaultHttpClient(new ThreadSafeClientConnManager(new BasicHttpParams(), localSchemeRegistry), null);
+      d();
       return;
     }
-    catch (Exception localException)
-    {
-      break label60;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    paramString = Utils.Crc64String(paramString);
-    paramString = InitUrlDrawable.a.a(paramString);
-    if (paramString.exists()) {
-      return paramString.getAbsolutePath();
-    }
-    return null;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = bcxm.a().a().getSharedPreferences("http_lastmodify", 0).edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.commit();
-  }
-  
-  private String b(String paramString)
-  {
-    return bcxm.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    Object localObject1 = paramDownloadParams.urlStr;
-    String str = Utils.Crc64String((String)localObject1);
-    Object localObject2 = InitUrlDrawable.a.a(str);
-    if ((localObject2 != null) && (((File)localObject2).exists())) {}
-    for (int i = 1;; i = 0)
-    {
-      str = ((String)localObject1).replace("gamead", "http");
-      localObject1 = new HttpGet(str);
-      Object localObject3;
-      if (paramDownloadParams.cookies != null)
+    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
+      try
       {
-        localObject3 = this.a.getCookieSpecs().getCookieSpec("best-match").formatCookies(paramDownloadParams.cookies.getCookies()).iterator();
-        while (((Iterator)localObject3).hasNext()) {
-          ((HttpGet)localObject1).addHeader((Header)((Iterator)localObject3).next());
-        }
-      }
-      int j;
-      if ((paramDownloadParams.headers != null) && (paramDownloadParams.headers.length > 0))
-      {
-        localObject3 = paramDownloadParams.headers;
-        int k = localObject3.length;
-        j = 0;
-        while (j < k)
+        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_Aywc.i, "r");
+        if (this.jdField_a_of_type_JavaIoRandomAccessFile == null)
         {
-          ((HttpGet)localObject1).addHeader(localObject3[j]);
-          j += 1;
+          b(9303, "read file error");
+          d();
+          return;
         }
       }
-      if (i != 0) {
-        ((HttpGet)localObject1).addHeader("If-Modified-Since", b(Utils.Crc64String(str)));
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        for (;;)
+        {
+          localFileNotFoundException.printStackTrace();
+          this.jdField_a_of_type_JavaIoRandomAccessFile = null;
+        }
+      }
+    }
+    f();
+  }
+  
+  private int d()
+  {
+    b("uiParam", this.jdField_a_of_type_Aywc.toString());
+    String str = this.jdField_a_of_type_Aywc.i;
+    if ((str == null) || ("".equals(str)))
+    {
+      b(9302, a(new Exception("filePath null")));
+      d();
+      return -1;
+    }
+    if (str != null)
+    {
+      File localFile = new File(str);
+      if (!localFile.exists())
+      {
+        b(9042, a(new Exception("sendFile not exist " + str)));
+        d();
+        return -1;
+      }
+      if (!localFile.canRead())
+      {
+        b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Ayqo.jdField_c_of_type_JavaLangString)));
+        d();
+        return -1;
+      }
+      this.e = "amr";
+      long l = localFile.length();
+      this.jdField_a_of_type_Ayqo.a = l;
+      this.q = l;
+      if (l <= 0L)
+      {
+        b(9071, a(new Exception("file size 0 " + str)));
+        d();
+        return -1;
+      }
+    }
+    return 0;
+  }
+  
+  protected String a(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    ayuq localayuq = (ayuq)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    localStringBuilder.append("http://");
+    localStringBuilder.append(localayuq.jdField_a_of_type_JavaLangString);
+    if (localayuq.jdField_a_of_type_Int != 80)
+    {
+      localStringBuilder.append(":");
+      localStringBuilder.append(localayuq.jdField_a_of_type_Int);
+    }
+    localStringBuilder.append("/qqcommfileupload?ver=");
+    localStringBuilder.append(100);
+    localStringBuilder.append("&ukey=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("&filekey=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("&filesize=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("&bmd5=");
+    localStringBuilder.append(MD5.toMD5(paramArrayOfByte));
+    localStringBuilder.append("&range=");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append("&voice_codec=0");
+    paramArrayOfByte = a(localStringBuilder.toString(), this.jdField_a_of_type_JavaUtilArrayList);
+    aypb.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
+    return paramArrayOfByte;
+  }
+  
+  public void a(ayyp paramayyp, ayze paramayze)
+  {
+    this.jdField_a_of_type_Ayyp = null;
+    if (paramayze != null)
+    {
+      int i = 0;
+      if (i < paramayze.jdField_a_of_type_JavaUtilList.size())
+      {
+        paramayyp = (ayzi)paramayze.jdField_a_of_type_JavaUtilList.get(i);
+        if (QLog.isColorLevel()) {
+          b("procUrl", paramayyp.toString());
+        }
+        this.i = paramayyp.d;
+        if (QLog.isColorLevel()) {
+          QLog.e("http_sideway", 2, "JSPttUpProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
+        }
+        a(this.jdField_a_of_type_Aypd, paramayyp);
+        if (paramayyp.jdField_c_of_type_Int == 0)
+        {
+          if (paramayyp.jdField_a_of_type_Boolean) {
+            this.jdField_f_of_type_JavaLangString = paramayyp.jdField_a_of_type_JavaLangString;
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            this.jdField_f_of_type_JavaLangString = paramayyp.jdField_a_of_type_JavaLangString;
+            this.m = paramayyp.b;
+            this.jdField_a_of_type_JavaUtilArrayList = paramayyp.jdField_a_of_type_JavaUtilArrayList;
+            this.s = 0L;
+            this.jdField_t_of_type_Long = paramayyp.jdField_a_of_type_Int;
+            sfh.c(this.jdField_f_of_type_JavaLangString);
+            aP_();
+          }
+        }
+        d();
+      }
+    }
+  }
+  
+  public void aR_()
+  {
+    super.aR_();
+    b(false);
+  }
+  
+  public int c()
+  {
+    super.c();
+    return d();
+  }
+  
+  void d()
+  {
+    super.d();
+    d(1005);
+    a(false);
+  }
+  
+  void e()
+  {
+    super.e();
+    d(1003);
+    a(true);
+  }
+  
+  void f()
+  {
+    this.jdField_a_of_type_Aypd.a();
+    ayyp localayyp = new ayyp();
+    ayyz localayyz = new ayyz();
+    localayyz.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Aywc.b;
+    localayyz.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Aywc.jdField_c_of_type_JavaLangString;
+    localayyz.e = this.jdField_a_of_type_Aywc.jdField_d_of_type_JavaLangString;
+    localayyz.jdField_f_of_type_Int = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
+    localayyz.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    localayyz.b = ((int)this.q);
+    localayyz.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localayyz.jdField_c_of_type_Int = 0;
+    localayyz.jdField_a_of_type_Int = 1;
+    localayyz.jdField_d_of_type_Int = this.jdField_a_of_type_Aywc.n;
+    localayyp.jdField_a_of_type_Ayzw = this;
+    localayyp.jdField_a_of_type_JavaLangString = "c2c_ptt_up";
+    localayyp.jdField_a_of_type_JavaUtilList.add(localayyz);
+    localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProtoReqManager();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Aypd);
+      d();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localayyp.toString());
+      }
+    } while (!f());
+    this.jdField_a_of_type_Ayyp = localayyp;
+    ayzv.a(localayyp);
+  }
+  
+  protected void n()
+  {
+    if ((this.jdField_a_of_type_Aysy != null) && ((this.jdField_a_of_type_Aysy instanceof ayrx))) {
+      ((ayrx)this.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCu", ((ayrx)this.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onResp(aysz paramaysz)
+  {
+    Object localObject1 = null;
+    super.onResp(paramaysz);
+    this.jdField_a_of_type_Aysy = null;
+    int i = paramaysz.jdField_c_of_type_Int;
+    for (;;)
+    {
+      long l2;
+      try
+      {
+        if (paramaysz.jdField_a_of_type_Int != 0) {
+          break label505;
+        }
+        if (paramaysz.jdField_a_of_type_JavaUtilHashMap.get("User-ReturnCode") == null) {
+          break label579;
+        }
+        l3 = Long.parseLong((String)paramaysz.jdField_a_of_type_JavaUtilHashMap.get("User-ReturnCode"));
+        if ((l3 != 0L) && (l3 != 9223372036854775807L))
+        {
+          a(this.b, paramaysz, false);
+          a(-9527, null, a(i, l3), this.b);
+          d();
+          return;
+        }
+        str2 = (String)paramaysz.jdField_a_of_type_JavaUtilHashMap.get("Range");
+        if (str2 == null) {
+          break label587;
+        }
+      }
+      catch (Exception paramaysz)
+      {
+        String str2;
+        String str1;
+        a(9343, ayoj.a(new Exception("decode unknown exception")), "", this.b);
+        d();
+        return;
       }
       try
       {
-        localObject3 = this.a.execute((HttpUriRequest)localObject1);
-        j = ((HttpResponse)localObject3).getStatusLine().getStatusCode();
-        if (QLog.isColorLevel()) {
-          QLog.d("LastModifySupportDownloader", 2, "-->status code: " + j);
-        }
-        if ((j != 200) && (j != 304)) {
-          throw new IOException(paramDownloadParams.url + " response error! response code: " + j + " . reason: " + ((HttpResponse)localObject3).getStatusLine().getReasonPhrase());
-        }
-      }
-      finally
-      {
-        ((HttpGet)localObject1).abort();
-      }
-      HttpEntity localHttpEntity = ((HttpResponse)localObject3).getEntity();
-      if (j == 200)
-      {
-        if (i != 0) {
-          ((File)localObject2).delete();
-        }
-        paramDownloadParams = new BufferedInputStream(localHttpEntity.getContent(), 4096);
-        long l1 = 0L;
-        try
+        i = Integer.parseInt(str2);
+        l1 = i;
+        l2 = l1;
+        if (l1 == 9223372036854775807L)
         {
-          localObject2 = new byte[4096];
-          for (;;)
-          {
-            i = paramDownloadParams.read((byte[])localObject2);
-            if (i == -1) {
-              break;
-            }
-            paramOutputStream.write((byte[])localObject2, 0, i);
-            long l2 = l1 + i;
-            l1 = l2;
-            if (AnimationUtils.currentAnimationTimeMillis() - 0L > 100L)
-            {
-              paramURLDrawableHandler.publishProgress((int)((float)l2 / (float)localHttpEntity.getContentLength() * 9500.0F));
-              l1 = l2;
-            }
-          }
-          if (!((HttpResponse)localObject3).containsHeader("Last-Modified")) {
-            break label522;
-          }
+          str1 = (String)paramaysz.jdField_a_of_type_JavaUtilHashMap.get("X-Range");
+          localObject1 = str1;
+          l2 = l1;
+          if (str1 == null) {}
         }
-        finally
-        {
-          paramDownloadParams.close();
-        }
-        paramOutputStream = ((HttpResponse)localObject3).getFirstHeader("Last-Modified").getValue();
-        a(Utils.Crc64String(str), paramOutputStream);
-        label522:
-        paramDownloadParams.close();
       }
-      for (;;)
+      catch (Exception localException2)
       {
-        ((HttpGet)localObject1).abort();
-        return null;
-        if ((j != 304) && (paramURLDrawableHandler != null)) {
-          paramURLDrawableHandler.publishProgress(10000);
-        }
+        localException2.printStackTrace();
       }
+      try
+      {
+        i = Integer.parseInt(str1);
+        l2 = i;
+        localObject1 = str1;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        l2 = 9223372036854775807L;
+        Object localObject2 = localException2;
+        continue;
+        b("decodeHttpResp", "from " + this.s + " to " + l2 + " userReturnCode:" + l3);
+        if (l2 > this.s) {
+          break label420;
+        }
+        if (this.jdField_t_of_type_Int >= 3) {
+          break label460;
+        }
+        b("procHttpRespBody", "server offset rollback");
+        this.jdField_t_of_type_Int += 1;
+        this.jdField_a_of_type_Ayqo.e = l2;
+        this.s = l2;
+        a(this.b, paramaysz, true);
+        if (l2 >= this.q) {
+          break label500;
+        }
+        aP_();
+        return;
+        a(this.b, paramaysz, false);
+        a(-9527, "", a(this.h, this.jdField_f_of_type_Int), this.b);
+        d();
+        return;
+        e();
+        return;
+      }
+      if (l2 == 9223372036854775807L)
+      {
+        a(this.b, paramaysz, false);
+        a(-9527, "no header range:" + str2 + " x-range:" + localObject1, a(this.h, this.g), this.b);
+        aytn.b(true);
+        d();
+        return;
+      }
+      label420:
+      label460:
+      label500:
+      label505:
+      if ((paramaysz.b == 9364) && (this.l < 3))
+      {
+        b("[netChg]", "failed.but net change detect.so retry");
+        this.l += 1;
+        m();
+        f();
+        return;
+      }
+      a(this.b, paramaysz, false);
+      b(paramaysz.b, paramaysz.jdField_a_of_type_JavaLangString);
+      d();
+      return;
+      label579:
+      long l3 = 9223372036854775807L;
+      continue;
+      label587:
+      long l1 = 9223372036854775807L;
     }
-  }
-  
-  /* Error */
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: getfield 152	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
-    //   4: invokestatic 86	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
-    //   7: astore_3
-    //   8: getstatic 91	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Layqc;
-    //   11: aload_3
-    //   12: invokevirtual 357	ayqc:a	(Ljava/lang/String;)Layqd;
-    //   15: astore 5
-    //   17: new 359	java/io/FileOutputStream
-    //   20: dup
-    //   21: aload 5
-    //   23: getfield 364	ayqd:a	Ljava/io/File;
-    //   26: iconst_0
-    //   27: invokespecial 367	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   30: astore 4
-    //   32: aload 4
-    //   34: astore_3
-    //   35: aload_0
-    //   36: aload 4
-    //   38: aload_1
-    //   39: aload_2
-    //   40: invokevirtual 369	aysf:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   43: pop
-    //   44: aload 4
-    //   46: astore_3
-    //   47: aload 5
-    //   49: invokevirtual 372	ayqd:a	()Ljava/io/File;
-    //   52: astore_1
-    //   53: aload 4
-    //   55: ifnull +8 -> 63
-    //   58: aload 4
-    //   60: invokevirtual 373	java/io/OutputStream:close	()V
-    //   63: aload_1
-    //   64: areturn
-    //   65: astore_2
-    //   66: aconst_null
-    //   67: astore_1
-    //   68: aload 5
-    //   70: ifnull +11 -> 81
-    //   73: aload_1
-    //   74: astore_3
-    //   75: aload 5
-    //   77: iconst_0
-    //   78: invokevirtual 376	ayqd:a	(Z)V
-    //   81: aload_1
-    //   82: astore_3
-    //   83: invokestatic 245	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   86: ifeq +15 -> 101
-    //   89: aload_1
-    //   90: astore_3
-    //   91: ldc 247
-    //   93: iconst_2
-    //   94: ldc_w 378
-    //   97: aload_2
-    //   98: invokestatic 381	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   101: aload_1
-    //   102: astore_3
-    //   103: aload_2
-    //   104: athrow
-    //   105: astore_1
-    //   106: aload_3
-    //   107: ifnull +7 -> 114
-    //   110: aload_3
-    //   111: invokevirtual 373	java/io/OutputStream:close	()V
-    //   114: aload_1
-    //   115: athrow
-    //   116: astore_2
-    //   117: aload_1
-    //   118: areturn
-    //   119: astore_2
-    //   120: goto -6 -> 114
-    //   123: astore_1
-    //   124: aconst_null
-    //   125: astore_3
-    //   126: goto -20 -> 106
-    //   129: astore_2
-    //   130: aload 4
-    //   132: astore_1
-    //   133: goto -65 -> 68
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	136	0	this	aysf
-    //   0	136	1	paramDownloadParams	DownloadParams
-    //   0	136	2	paramURLDrawableHandler	URLDrawableHandler
-    //   7	119	3	localObject	Object
-    //   30	101	4	localFileOutputStream	java.io.FileOutputStream
-    //   15	61	5	localayqd	ayqd
-    // Exception table:
-    //   from	to	target	type
-    //   17	32	65	java/lang/Exception
-    //   35	44	105	finally
-    //   47	53	105	finally
-    //   75	81	105	finally
-    //   83	89	105	finally
-    //   91	101	105	finally
-    //   103	105	105	finally
-    //   58	63	116	java/io/IOException
-    //   110	114	119	java/io/IOException
-    //   17	32	123	finally
-    //   35	44	129	java/lang/Exception
-    //   47	53	129	java/lang/Exception
   }
 }
 

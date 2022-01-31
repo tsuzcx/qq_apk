@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpq;
-import adpr;
+import adpo;
+import adpp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class FileTimDocGrayTipsItemBuilder$1
   implements Runnable
 {
-  public FileTimDocGrayTipsItemBuilder$1(adpq paramadpq, adpr paramadpr) {}
+  public FileTimDocGrayTipsItemBuilder$1(adpo paramadpo, adpp paramadpp) {}
   
   public void run()
   {

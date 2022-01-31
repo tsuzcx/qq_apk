@@ -15,7 +15,7 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -38,6 +38,7 @@ public class MiniAppTextArea1
   private int curInputId = -1;
   private String curValue;
   private WebviewContainer curWebviewContainer;
+  private int cursorPositation = -1;
   private String data;
   private boolean disable;
   private boolean hasConfirm;
@@ -134,21 +135,20 @@ public class MiniAppTextArea1
   
   private void hideCurrentInput(String paramString)
   {
+    QLog.d("MiniAppTextArea1", 1, "hideCurrentInput : " + isFocused());
     Object localObject;
     if ((this.curWebviewContainer != null) && (isFocused()))
     {
       clearFocus();
       localObject = (InputMethodManager)this.curWebviewContainer.getContext().getSystemService("input_method");
-      if (localObject != null) {}
-    }
-    else
-    {
-      return;
-    }
-    ((InputMethodManager)localObject).hideSoftInputFromWindow(this.curWebviewContainer.getWindowToken(), 0);
-    if (this.curWebviewContainer != null) {
-      if (this.hasConfirm) {
-        this.curWebviewContainer.appBrandRuntime.getCurPage().hideKeyBoardConfirmView();
+      if (localObject == null) {
+        return;
+      }
+      ((InputMethodManager)localObject).hideSoftInputFromWindow(this.curWebviewContainer.getWindowToken(), 0);
+      if (this.curWebviewContainer != null) {
+        if (this.hasConfirm) {
+          this.curWebviewContainer.appBrandRuntime.getCurPage().hideKeyBoardConfirmView();
+        }
       }
     }
     try
@@ -286,7 +286,7 @@ public class MiniAppTextArea1
   
   private void updateTextareaHeight()
   {
-    if ((this.autoSize) && (getLayout().getHeight() > this.textAreaMinHeight))
+    if ((this.autoSize) && (getLayout() != null) && (getLayout().getHeight() > this.textAreaMinHeight))
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)getLayoutParams();
       localLayoutParams.height = getLayout().getHeight();
@@ -368,56 +368,66 @@ public class MiniAppTextArea1
     {
       str = paramJSONObject.optString("value");
       this.curValue = str;
+      setText(str);
       if (!TextUtils.isEmpty(str)) {
-        setText(str);
-      }
-    }
-    int i;
-    if (paramJSONObject.has("maxLength"))
-    {
-      i = paramJSONObject.optInt("maxLength");
-      if (i > 0) {
-        setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
-      }
-    }
-    if (paramJSONObject.has("placeholder"))
-    {
-      str = paramJSONObject.optString("placeholder");
-      if (!bbjw.a(str)) {
-        setHint(str);
-      }
-    }
-    if (paramJSONObject.has("placeholderStyle"))
-    {
-      this.placeholderStyle = paramJSONObject.optJSONObject("placeholderStyle");
-      if ((this.placeholderStyle != null) && (this.placeholderStyle.has("color")))
-      {
-        str = this.placeholderStyle.optString("color");
-        if (!TextUtils.isEmpty(str)) {
-          setHintTextColor(ColorUtils.parseColor(str));
+        if (this.cursorPositation == -1) {
+          break label495;
         }
       }
     }
-    if ((paramJSONObject.has("selectionStart")) || (paramJSONObject.has("selectionEnd")))
+    label495:
+    for (int i = this.cursorPositation;; i = str.length())
     {
-      i = paramJSONObject.optInt("selectionStart", -1);
-      int j = paramJSONObject.optInt("selectionEnd", -1);
-      if ((i != -1) && (j != -1) && (j > i)) {
-        setSelection(i, j);
+      QLog.d("miniapp-textarea", 1, "updatevalue set cursor : " + i);
+      setSelection(i);
+      this.cursorPositation = -1;
+      if (paramJSONObject.has("maxLength"))
+      {
+        i = paramJSONObject.optInt("maxLength");
+        if (i > 0) {
+          setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
+        }
       }
-    }
-    if (paramJSONObject.has("cursor"))
-    {
-      i = paramJSONObject.optInt("cursor", -1);
-      if (i > 0) {
-        setSelection(i);
+      if (paramJSONObject.has("placeholder"))
+      {
+        str = paramJSONObject.optString("placeholder");
+        if (!bbkk.a(str)) {
+          setHint(str);
+        }
       }
-    }
-    paramJSONObject = paramJSONObject.optJSONObject("style");
-    if (paramJSONObject != null)
-    {
-      this.style = paramJSONObject;
-      updateStyle(paramJSONObject, paramBoolean);
+      if (paramJSONObject.has("placeholderStyle"))
+      {
+        this.placeholderStyle = paramJSONObject.optJSONObject("placeholderStyle");
+        if ((this.placeholderStyle != null) && (this.placeholderStyle.has("color")))
+        {
+          str = this.placeholderStyle.optString("color");
+          if (!TextUtils.isEmpty(str)) {
+            setHintTextColor(ColorUtils.parseColor(str));
+          }
+        }
+      }
+      if ((paramJSONObject.has("selectionStart")) || (paramJSONObject.has("selectionEnd")))
+      {
+        i = paramJSONObject.optInt("selectionStart", -1);
+        int j = paramJSONObject.optInt("selectionEnd", -1);
+        if ((i != -1) && (j != -1) && (j > i)) {
+          setSelection(i, j);
+        }
+      }
+      if (paramJSONObject.has("cursor"))
+      {
+        i = paramJSONObject.optInt("cursor", -1);
+        if (i > 0) {
+          setSelection(i);
+        }
+      }
+      paramJSONObject = paramJSONObject.optJSONObject("style");
+      if (paramJSONObject != null)
+      {
+        this.style = paramJSONObject;
+        updateStyle(paramJSONObject, paramBoolean);
+      }
+      return;
     }
   }
   

@@ -1,19 +1,21 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pgc
-  implements pnq
+  implements ViewBase.OnClickListener
 {
-  pgc(pgb parampgb, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  pgc(pfy parampfy, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a != null)
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
+    if (paramViewBase != null)
     {
-      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
-      qol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
-      pgb.a(this.jdField_a_of_type_Pgb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, localUrlJumpInfo.e, "");
+      qoi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      pfy.a(this.jdField_a_of_type_Pfy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
     }
   }
 }

@@ -1,651 +1,393 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.NinePatch;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.NinePatchDrawable;
-import android.preference.PreferenceManager;
-import android.support.v4.util.MQLruCache;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.1;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.2;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.5;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qwallet.plugin.QWalletPicHelper;
+import org.json.JSONObject;
 
 public class aekr
+  implements aekw
 {
-  private static aekr jdField_a_of_type_Aekr;
-  public static String a;
-  private static final String jdField_b_of_type_JavaLangString = ajsf.cO + "icons/";
-  private static final String jdField_c_of_type_JavaLangString = ajsf.cO + "zip/";
-  private static final String jdField_d_of_type_JavaLangString = ajyc.a(2131709850);
-  private volatile int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 0;
-  private String e = "";
-  private String f = "";
-  private String g = "";
-  private String h = jdField_d_of_type_JavaLangString;
-  private String i = "";
+  protected int a;
+  protected long a;
+  protected acvf a;
+  public aelj a;
+  protected Context a;
+  protected CustomizeStrategyFactory.RedPacketInfo a;
+  protected QQAppInterface a;
+  public MessageForQQWalletMsg a;
+  public QQWalletRedPacketMsg a;
+  public QQWalletTransferMsgElem a;
+  protected boolean a;
+  protected int b;
+  protected CustomizeStrategyFactory.RedPacketInfo b;
+  boolean b;
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected int g;
+  protected int h;
+  protected int i;
+  protected int j = 2130846326;
+  protected int k;
   
-  static
+  public aekr(QQAppInterface paramQQAppInterface, aelj paramaelj, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvf paramacvf)
   {
-    jdField_a_of_type_JavaLangString = "qim_need_show_text_bubble";
-  }
-  
-  private int a(String paramString1, String paramString2)
-  {
+    this.jdField_a_of_type_Long = bbdh.i();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aelj = paramaelj;
+    this.jdField_a_of_type_AndroidContentContext = paramaelj.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem = paramQQWalletTransferMsgElem;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)paramaelj.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    this.k = paramInt;
+    this.jdField_a_of_type_Acvf = paramacvf;
+    float f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = ((int)(160.0F * f1 + 0.5F));
+    this.jdField_b_of_type_Int = ((int)(240.0F * f1 + 0.5F));
+    this.c = ((int)(90.0F * f1 + 0.5F));
+    this.d = ((int)(17.0F * f1 + 0.5F));
+    this.e = ((int)(40.0F * f1 + 0.5F));
+    this.g = ((int)(f1 * 24.0F + 0.5F));
+    this.f = (this.jdField_a_of_type_Int - this.d);
+    this.h = paramQQWalletTransferMsgElem.skinId;
+    this.i = paramQQWalletTransferMsgElem.effectsId;
+    this.jdField_b_of_type_Boolean = c();
+    if (this.jdField_b_of_type_Boolean) {
+      this.i = 0;
+    }
+    this.jdField_a_of_type_Boolean = RedPacketManager.getInstance().isRiskSwitchOpen();
     if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, " doDowndLoadQimThemeZip zipUrl " + paramString1);
+      QLog.d("BaseViewHolder", 2, "isRedPacketOpened=" + this.jdField_b_of_type_Boolean + ",isRiskWritchOpen=" + this.jdField_a_of_type_Boolean + ",skinId=" + this.h + ",effectsId=" + this.i + ",elem=" + paramQQWalletTransferMsgElem + ",qqWalletMsg=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
     }
-    File localFile = new File(jdField_b_of_type_JavaLangString);
-    paramString2 = new File(jdField_c_of_type_JavaLangString);
-    if (!localFile.exists())
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      localFile.mkdirs();
-      localFile = new File(jdField_b_of_type_JavaLangString + ".nomedia");
+      this.h = 0;
+      this.i = 0;
     }
-    for (;;)
-    {
-      try
-      {
-        localFile.createNewFile();
-        if (paramString2.exists()) {
-          break label183;
-        }
-        paramString2.mkdirs();
-        paramString1 = new bbwg(paramString1, new File(jdField_c_of_type_JavaLangString + "android_qim_theme_icons.zip"));
-        paramString1.f = "profileCardDownload";
-        paramString1.e = "VIP_profilecard";
-        return bbwi.a(paramString1, null);
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-        continue;
-      }
-      bbdj.b(jdField_b_of_type_JavaLangString);
-      continue;
-      label183:
-      bbdj.b(jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  public static aekr a()
-  {
-    if (jdField_a_of_type_Aekr == null) {
-      jdField_a_of_type_Aekr = new aekr();
-    }
-    return jdField_a_of_type_Aekr;
-  }
-  
-  private List<String> a()
-  {
-    int j = 0;
-    ArrayList localArrayList = new ArrayList();
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("qim_theme_icon_names_sp", 0).getString("android_qim_theme_icon_names", "");
-    String[] arrayOfString = null;
-    if (!TextUtils.isEmpty(str)) {
-      arrayOfString = str.split("\\|");
-    }
-    if ((arrayOfString != null) && (arrayOfString.length > 0)) {
-      while (j < arrayOfString.length)
-      {
-        localArrayList.add(arrayOfString[j]);
-        j += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void a()
-  {
-    int j = 0;
-    Object localObject = new File(jdField_b_of_type_JavaLangString);
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-    {
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qim_theme_icon_names_sp", 0).edit();
-      localObject = ((File)localObject).list();
-      StringBuilder localStringBuilder = new StringBuilder();
-      while (j < localObject.length)
-      {
-        String str = localObject[j].substring(localObject[j].lastIndexOf("/") + 1);
-        localStringBuilder.append(str + "|");
-        j += 1;
-      }
-      localEditor.putString("android_qim_theme_icon_names", localStringBuilder.toString());
-      localEditor.apply();
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      String str = paramQQAppInterface.getAccount();
-      if ((!this.jdField_b_of_type_Boolean) || (!this.i.equals(str)))
-      {
-        paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
-        if (paramQQAppInterface.contains(str + "_" + "qim_user_special_config_version"))
-        {
-          this.jdField_b_of_type_Int = paramQQAppInterface.getInt(str + "_" + "qim_user_special_config_avatar_switch", 0);
-          this.jdField_c_of_type_Int = paramQQAppInterface.getInt(str + "_" + "qim_user_special_config_title_bg_switch", 0);
-          this.jdField_d_of_type_Int = paramQQAppInterface.getInt(str + "_" + "qim_user_special_config_bubble_switch", 0);
-          this.e = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_resources_url", "");
-          this.g = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_resources_md5", "");
-          this.f = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_qim_website", "");
-          this.h = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_online_wording", jdField_d_of_type_JavaLangString);
-          this.jdField_c_of_type_Boolean = paramQQAppInterface.getBoolean("qim_user_special_need_force_download", false);
-        }
-        this.i = str;
-        this.jdField_b_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("QIMUserManager", 2, String.format("readAllConfigFromSp, first init,avatarSwitch %d, titleBarSwitch : %d, bubbleSwitch: %d, resourceUrl:%s ,md5:%s , onlineWording:%s, needForceDownload:%b, mQimWebsite:%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), this.e, this.g, this.h, Boolean.valueOf(this.jdField_c_of_type_Boolean), this.f }));
-        }
-      }
-    }
-  }
-  
-  /* Error */
-  private boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: new 104	java/io/File
-    //   3: dup
-    //   4: new 25	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   11: getstatic 49	aekr:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc 122
-    //   19: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
-    //   28: astore_2
-    //   29: aload_2
-    //   30: invokevirtual 110	java/io/File:exists	()Z
-    //   33: ifne +5 -> 38
-    //   36: iconst_0
-    //   37: ireturn
-    //   38: aload_2
-    //   39: invokevirtual 313	java/io/File:getPath	()Ljava/lang/String;
-    //   42: invokestatic 316	bbdj:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   45: astore_3
-    //   46: aload_3
-    //   47: invokestatic 177	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   50: ifne -14 -> 36
-    //   53: aload_3
-    //   54: aload_1
-    //   55: invokevirtual 319	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   58: ifeq -22 -> 36
-    //   61: getstatic 45	aekr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   64: invokestatic 143	bbdj:b	(Ljava/lang/String;)V
-    //   67: aload_2
-    //   68: getstatic 45	aekr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   71: invokestatic 324	nay:a	(Ljava/io/File;Ljava/lang/String;)V
-    //   74: iconst_1
-    //   75: ireturn
-    //   76: astore_1
-    //   77: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   80: ifeq -44 -> 36
-    //   83: aload_1
-    //   84: invokevirtual 325	java/lang/UnsatisfiedLinkError:printStackTrace	()V
-    //   87: iconst_0
-    //   88: ireturn
-    //   89: astore_1
-    //   90: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   93: ifeq -57 -> 36
-    //   96: aload_1
-    //   97: invokevirtual 326	java/lang/Exception:printStackTrace	()V
-    //   100: iconst_0
-    //   101: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	aekr
-    //   0	102	1	paramString	String
-    //   28	40	2	localFile	File
-    //   45	9	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   38	46	76	java/lang/UnsatisfiedLinkError
-    //   61	74	89	java/lang/Exception
-  }
-  
-  private void b()
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("qim_theme_icon_names_sp", 0).edit().remove("android_qim_theme_icon_names");
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface);
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public Drawable a(int paramInt)
-  {
-    Object localObject = null;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    switch (paramInt)
-    {
-    }
-    Drawable localDrawable;
     do
     {
-      return localObject;
-      localDrawable = (Drawable)BaseApplicationImpl.sImageCache.get("skin_header_bar.png");
-      localObject = localDrawable;
-    } while (localDrawable != null);
-    localObject = bbdr.a(jdField_b_of_type_JavaLangString + "skin_header_bar.png", localOptions);
-    if (localObject != null)
-    {
-      localObject = new BitmapDrawable((Bitmap)localObject);
-      BaseApplicationImpl.sImageCache.put("skin_header_bar.png", localObject);
-      return localObject;
-    }
-    return BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface);
-    return this.e;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, int paramInt3)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.e = paramString1;
-    this.f = paramString2;
-    this.g = paramString3;
-    this.h = paramString4;
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    this.jdField_d_of_type_Int = paramInt3;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMUserManager", 2, String.format("setQimUserSpecial, first init,avatarSwitch %d, titleBarSwitch : %d, bubbleSwitch: %d, resourceUrl:%s ,md5:%s , onlineWording:%s, needForceDownload:%b, qimWebsite:%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), this.e, this.g, this.h, Boolean.valueOf(this.jdField_c_of_type_Boolean), paramString2 }));
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    paramQQAppInterface = b(paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, "jumpToQimWebsite: invoked. info: qimWebsiteUrl = " + paramQQAppInterface);
-    }
-    if ((!TextUtils.isEmpty(paramQQAppInterface)) && (paramContext != null)) {}
-    try
-    {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramQQAppInterface);
-      paramContext.startActivity(localIntent);
       return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QIMUserManager", 2, "jumpToQimWebsite: Failed. info: exception = ", paramQQAppInterface);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    boolean bool2 = true;
-    Object localObject = (ajxn)paramQQAppInterface.getManager(51);
-    if (localObject != null)
-    {
-      localObject = ((ajxn)localObject).e(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if ((localObject != null) && (((Friends)localObject).netTypeIconId == 11))
+      if (this.h > 0)
       {
-        paramSessionInfo.jdField_a_of_type_Boolean = true;
-        if (paramSessionInfo.jdField_a_of_type_Boolean)
-        {
-          paramSessionInfo.jdField_c_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
-          if ((c(paramQQAppInterface) == 1) || (a(paramQQAppInterface) == 1))
-          {
-            if (!a(paramQQAppInterface)) {
-              break label178;
-            }
-            a(paramQQAppInterface, true, a(paramQQAppInterface), c(paramQQAppInterface));
-          }
-          boolean bool3 = a();
-          if ((c(paramQQAppInterface) != 1) || (!bool3)) {
-            break label204;
-          }
-          bool1 = true;
-          label129:
-          paramSessionInfo.d = bool1;
-          if ((a(paramQQAppInterface) != 1) || (!bool3)) {
-            break label209;
-          }
-          bool1 = true;
-          label150:
-          paramSessionInfo.f = bool1;
-          if ((b(paramQQAppInterface) != 1) || (!bool3)) {
-            break label214;
-          }
-        }
+        localRedPacketInfo = new CustomizeStrategyFactory.RedPacketInfo();
+        localRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
+        localRedPacketInfo.type = 5;
+        localRedPacketInfo.skinId = this.h;
+        localRedPacketInfo.skinType = 1;
+        localRedPacketInfo.isHideTitle = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.getIsHideTitleDefault();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo = CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRedPacketInfo, this.jdField_a_of_type_Acvf);
       }
-    }
-    label178:
-    label204:
-    label209:
-    label214:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramSessionInfo.h = bool1;
-      return;
-      if (a()) {
-        break;
-      }
-      a(paramQQAppInterface, false, a(paramQQAppInterface), c(paramQQAppInterface));
-      break;
-      bool1 = false;
-      break label129;
-      bool1 = false;
-      break label150;
-    }
+    } while ((this.i <= 0) || (this.jdField_a_of_type_Long <= 720L));
+    CustomizeStrategyFactory.RedPacketInfo localRedPacketInfo = new CustomizeStrategyFactory.RedPacketInfo();
+    localRedPacketInfo.jdField_a_of_type_Long = System.currentTimeMillis();
+    localRedPacketInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
+    localRedPacketInfo.type = 5;
+    localRedPacketInfo.bigAnimId = this.i;
+    localRedPacketInfo.skinType = 3;
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo = CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRedPacketInfo, this.jdField_a_of_type_Acvf);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString1, String paramString2)
+  protected boolean a()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, "startDownLoadQimTheme QimIconsState " + this.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_Int = 1;
-    b();
-    if (paramBoolean)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.icon != null))
     {
-      ThreadManager.post(new QIMUserManager.1(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
-      return;
-    }
-    if (a(paramString2))
-    {
-      a();
-      this.jdField_a_of_type_Int = 2;
-      return;
-    }
-    ThreadManager.post(new QIMUserManager.2(this, paramString1, paramString2, paramBoolean), 8, null, true);
-  }
-  
-  public void a(ArrayList<aeks> paramArrayList, ArrayList<int[]> paramArrayList1)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0) && (paramArrayList1 != null) && (paramArrayList1.size() > 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      int j = 0;
-      while (j < paramArrayList1.size())
-      {
-        localArrayList.add(((int[])paramArrayList1.get(j)).clone());
-        j += 1;
-      }
-      ThreadManager.postImmediately(new QIMUserManager.5(this, paramArrayList, localArrayList), null, true);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      bool2 = bool1;
-      return bool2;
-    }
-    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, "isQimIconsOk QimIconsState " + this.jdField_a_of_type_Int);
-    }
-    Object localObject2 = new File(jdField_b_of_type_JavaLangString);
-    if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory()))
-    {
-      Object localObject1 = a();
-      ArrayList localArrayList = new ArrayList();
-      localObject2 = ((File)localObject2).list();
-      bool1 = bool2;
-      if (localObject2 != null)
-      {
-        bool1 = bool2;
-        if (localObject2.length > 0)
-        {
-          int j = 0;
-          while (j < localObject2.length)
-          {
-            localArrayList.add(localObject2[j].substring(localObject2[j].lastIndexOf("/") + 1));
-            j += 1;
-          }
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            if (!localArrayList.contains((String)((Iterator)localObject1).next())) {
-              bool1 = bool2;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      this.jdField_a_of_type_Int = 2;
-      return bool1;
-      bool1 = false;
-      continue;
-      bool1 = true;
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface);
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = ((ajxn)paramQQAppInterface.getManager(51)).e(paramString);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.netTypeIconId == 11;
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.e, this.e);
+      localLayoutParams.gravity = 17;
+      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      localImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.icon);
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView, localLayoutParams);
+      return true;
     }
     return false;
   }
   
-  public boolean a(Object paramObject, SessionInfo paramSessionInfo)
+  protected boolean a(agvw paramagvw)
   {
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramSessionInfo.jdField_a_of_type_Boolean)
-    {
-      bool1 = bool2;
-      if (paramSessionInfo.h) {
-        bool1 = true;
-      }
+    boolean bool1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg == null)) {
+      bool1 = true;
     }
-    return bool1;
-  }
-  
-  public boolean a(Object paramObject, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool3 = "2".equals(paramChatMessage.getExtInfoFromExtStr("app_qim_tail_id"));
-    boolean bool1 = bool2;
-    if (a().a(paramQQAppInterface) == 1)
-    {
-      bool1 = bool2;
-      if (!paramChatMessage.isSend()) {
-        if (!bool3)
-        {
-          bool1 = bool2;
-          if (!a().a(paramQQAppInterface, paramChatMessage.senderuin)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(Object paramObject, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, boolean paramBoolean)
-  {
-    if ((!paramBoolean) && ((!(paramObject instanceof aebz)) || ((paramObject instanceof aeci)))) {}
     do
     {
-      return false;
-      paramBoolean = "2".equals(paramChatMessage.getExtInfoFromExtStr("app_qim_tail_id"));
-    } while ((a().b(paramQQAppInterface) != 1) || (paramChatMessage.isSend()) || ((!paramBoolean) && (!a().a(paramQQAppInterface, paramChatMessage.senderuin))));
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramagvw == null);
+        if (paramagvw.jdField_a_of_type_Boolean) {
+          return true;
+        }
+        bool1 = bool2;
+      } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop != 1);
+      bool1 = bool2;
+    } while (ahbc.a(2, paramagvw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg) == null);
     return true;
   }
   
-  public int b(QQAppInterface paramQQAppInterface)
+  public void b()
   {
-    a(paramQQAppInterface);
-    return this.jdField_d_of_type_Int;
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.c == null)) {}
+    Object localObject2;
+    do
+    {
+      return;
+      try
+      {
+        Object localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Aelj.c.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).width = this.jdField_a_of_type_Int;
+        ((RelativeLayout.LayoutParams)localObject1).height = this.jdField_b_of_type_Int;
+        localObject2 = this.jdField_a_of_type_Aelj.c.getChildAt(0);
+        localObject1 = BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDrawable(2130846317);
+        if (!(localObject2 instanceof RoundImageView)) {
+          break label193;
+        }
+        localObject2 = (RoundImageView)localObject2;
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.background == null)) {
+          break;
+        }
+        ((RoundImageView)localObject2).setmRadius(0, false);
+        ((RoundImageView)localObject2).setImageDrawable(QWalletPicHelper.getDrawableForAIO(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.background, (Drawable)localObject1));
+        return;
+      }
+      catch (Throwable localThrowable) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("BaseViewHolder", 1, "handleBackgroud throw exception: " + localThrowable.getLocalizedMessage());
+    return;
+    if (Build.VERSION.SDK_INT >= 18) {
+      ((RoundImageView)localObject2).setmRadius(vzl.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), false);
+    }
+    ((RoundImageView)localObject2).setImageDrawable(localThrowable);
+    return;
+    label193:
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.background != null))
+    {
+      Drawable localDrawable = QWalletPicHelper.getDrawableForAIO(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.background, localThrowable);
+      if (Build.VERSION.SDK_INT < 16)
+      {
+        this.jdField_a_of_type_Aelj.c.setBackgroundDrawable(localDrawable);
+        return;
+      }
+      this.jdField_a_of_type_Aelj.c.setBackground(localDrawable);
+      return;
+    }
+    this.jdField_a_of_type_Aelj.c.setBackgroundResource(2130846317);
   }
   
-  public Drawable b(int paramInt)
+  public boolean b()
   {
-    Object localObject2 = null;
-    Bitmap localBitmap = null;
-    Object localObject3 = new BitmapFactory.Options();
-    Object localObject1;
-    switch (paramInt)
+    String str1 = null;
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView == null)) {
+      return false;
+    }
+    this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+    this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setTag(null);
+    String str2;
+    String str3;
+    if (!this.jdField_a_of_type_Boolean)
     {
-    default: 
-      localObject1 = null;
+      JSONObject localJSONObject = RedPacketManager.getInstance().getTail(this.h, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.messageType);
+      if (localJSONObject == null) {
+        break label220;
+      }
+      str2 = localJSONObject.optString("word", "");
+      str3 = localJSONObject.optString("color", "");
+      str1 = localJSONObject.optString("url", "");
     }
     for (;;)
     {
-      return localObject1;
-      localObject2 = (Drawable)BaseApplicationImpl.sImageCache.get("skin_aio_qim_header_flag.png");
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localBitmap = bbdr.a(jdField_b_of_type_JavaLangString + "skin_aio_qim_header_flag.png", (BitmapFactory.Options)localObject3);
-        localObject1 = localObject2;
-        if (localBitmap != null)
-        {
-          localObject1 = new BitmapDrawable(localBitmap);
-          BaseApplicationImpl.sImageCache.put("skin_aio_qim_header_flag.png", localObject1);
-          continue;
-          localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get("title_bg_round.9.png");
-          if (localBitmap == null)
-          {
-            localObject1 = bbdr.a(jdField_b_of_type_JavaLangString + "title_bg_round.9.png", (BitmapFactory.Options)localObject3);
-            if (localObject1 == null) {
-              break;
-            }
-            BaseApplicationImpl.sImageCache.put("title_bg_round.9.png", localObject1);
-            localObject2 = ((Bitmap)localObject1).getNinePatchChunk();
-            if ((localObject2 == null) || (!NinePatch.isNinePatchChunk((byte[])localObject2))) {
-              break label501;
-            }
-            localObject1 = new NinePatchDrawable((Bitmap)localObject1, (byte[])localObject2, new Rect(), null);
-            continue;
-          }
-          localObject3 = localBitmap.getNinePatchChunk();
-          localObject1 = localObject2;
-          if (localObject3 != null)
-          {
-            localObject1 = localObject2;
-            if (NinePatch.isNinePatchChunk((byte[])localObject3)) {
-              localObject1 = new NinePatchDrawable(localBitmap, (byte[])localObject3, new Rect(), null);
-            }
-          }
-          continue;
-          localObject2 = (Drawable)BaseApplicationImpl.sImageCache.get("aio_qim_online_icon.png");
-          localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            localBitmap = bbdr.a(jdField_b_of_type_JavaLangString + "aio_qim_online_icon.png", (BitmapFactory.Options)localObject3);
-            localObject1 = localObject2;
-            if (localBitmap != null)
-            {
-              localObject1 = new BitmapDrawable(localBitmap);
-              BaseApplicationImpl.sImageCache.put("skin_aio_qim_header_flag.png", localObject1);
-              continue;
-              localObject1 = localBitmap;
-              if ((Drawable)BaseApplicationImpl.sImageCache.get("qim_title_immersive_bar.png") == null)
-              {
-                localObject2 = bbdr.a(jdField_b_of_type_JavaLangString + "qim_title_immersive_bar.png", (BitmapFactory.Options)localObject3);
-                localObject1 = localBitmap;
-                if (localObject2 != null)
-                {
-                  return new BitmapDrawable((Bitmap)localObject2);
-                  localObject2 = (Drawable)BaseApplicationImpl.sImageCache.get("aio_qim_user_online_title_icon.png");
-                  localObject1 = localObject2;
-                  if (localObject2 == null)
-                  {
-                    localObject1 = bbdr.a(jdField_b_of_type_JavaLangString + "aio_qim_user_online_title_icon.png", (BitmapFactory.Options)localObject3);
-                    localObject1 = new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), (Bitmap)localObject1);
-                    ((Drawable)localObject1).setBounds(0, 0, axli.a(13.0F), axli.a(13.0F));
-                    continue;
-                    label501:
-                    localObject1 = null;
-                  }
-                }
-              }
-            }
-          }
-        }
+      if (!TextUtils.isEmpty(str2)) {
+        if (TextUtils.isEmpty(str3)) {}
       }
+      for (;;)
+      {
+        try
+        {
+          m = Color.parseColor(str3);
+          this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setTextColor(m);
+          if (!TextUtils.isEmpty(str1)) {
+            this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setTag(str1);
+          }
+          this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
+          m = 1;
+          if (m != 0) {
+            return true;
+          }
+          this.jdField_a_of_type_Aelj.jdField_b_of_type_AndroidWidgetTextView.setText("QQ红包");
+          return false;
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          continue;
+        }
+        int m = 0;
+      }
+      label220:
+      Object localObject = null;
+      str2 = null;
     }
   }
   
-  public String b(QQAppInterface paramQQAppInterface)
+  public void c()
   {
-    a(paramQQAppInterface);
-    return this.f;
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.g == null)) {}
+    while (this.jdField_a_of_type_Aelj.g.getChildCount() == 0) {
+      return;
+    }
+    this.jdField_a_of_type_Aelj.g.removeAllViews();
   }
   
-  public int c(QQAppInterface paramQQAppInterface)
+  protected boolean c()
   {
-    a(paramQQAppInterface);
-    return this.jdField_c_of_type_Int;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg == null)) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.isOpened) || ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop == 1) && (ahbc.a(2, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.redPacketId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg) != null))) {
+      return true;
+    }
+    return false;
   }
   
-  public String c(QQAppInterface paramQQAppInterface)
+  protected void d()
   {
-    a(paramQQAppInterface);
-    return this.g;
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout == null)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      ((RelativeLayout.LayoutParams)this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams()).topMargin = this.e;
+    } while (this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == 0);
+    this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+  }
+  
+  public void e()
+  {
+    d();
+    if (!a())
+    {
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.e, this.e);
+      localLayoutParams.gravity = 17;
+      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      localImageView.setImageResource(this.j);
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView, localLayoutParams);
+    }
+  }
+  
+  public void f()
+  {
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetTextView == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title)))
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.isHideTitle == 1) && (!this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        return;
+      }
+      int n = bbkk.a(this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title);
+      int m = 18;
+      if (n <= 8)
+      {
+        n = this.f / 4;
+        m = n;
+        if (n > this.g) {
+          m = this.g;
+        }
+        m = baxn.b(this.jdField_a_of_type_AndroidContentContext, m);
+      }
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetTextView.setTextSize(m);
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title);
+      return;
+    }
+    this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
+  
+  public void g()
+  {
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView == null) || (this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView == null)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.stop();
+      this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView.stop();
+      if (this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_Aelj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setVisibility(8);
+      this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView.setVisibility(8);
+      AnimationView.Player localPlayer = this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.getPlayer();
+      if ((localPlayer instanceof aelk)) {
+        ((aelk)localPlayer).a(this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView);
+      }
+      localPlayer = this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView.getPlayer();
+      if ((localPlayer instanceof aelk)) {
+        ((aelk)localPlayer).a(this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView);
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.animInfo != null))
+      {
+        this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setVisibility(0);
+        this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationFromInfo(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.animInfo);
+        this.jdField_a_of_type_Aelj.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.play();
+      }
+    } while ((this.jdField_b_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo == null) || (this.jdField_b_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.specailBackgroundAnimInfo == null));
+    this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView.setVisibility(0);
+    this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationFromInfo(this.jdField_b_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.specailBackgroundAnimInfo);
+    this.jdField_a_of_type_Aelj.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView.play();
+  }
+  
+  public void h()
+  {
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.f == null)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Aelj.f.setVisibility(8);
+    } while (this.jdField_a_of_type_Aelj.f.getChildCount() <= 0);
+    this.jdField_a_of_type_Aelj.f.removeAllViews();
+  }
+  
+  public void i()
+  {
+    if ((this.jdField_a_of_type_Aelj == null) || (this.jdField_a_of_type_Aelj.d == null)) {
+      return;
+    }
+    if (!c())
+    {
+      this.jdField_a_of_type_Aelj.d.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_Aelj.d.setVisibility(0);
   }
 }
 

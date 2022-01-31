@@ -1,22 +1,13 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-class armd
-  implements wxw
+public class armd
 {
-  armd(armc paramarmc, String paramString) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Armc.isDestroy) {}
-    do
-    {
-      return;
-      paramBundle = String.format("{\"result\":%d, \"errMsg\":\"%s\", \"uin\":\"%s\"}", new Object[] { Integer.valueOf(paramBundle.getInt("result", -1)), paramBundle.getString("errMsg"), paramBundle.getString("retUin") });
-      this.jdField_a_of_type_Armc.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    } while (!QLog.isColorLevel());
-    QLog.e("ConnectApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-  }
+  public double a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
 }
 
 

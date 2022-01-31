@@ -4,12 +4,12 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 class bkap
   implements ValueAnimator.AnimatorUpdateListener
 {
-  bkap(bkam parambkam) {}
+  bkap(bkao parambkao) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
+    this.a.b.k();
   }
 }
 

@@ -1,295 +1,273 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vrk
-  extends BaseAdapter
 {
-  protected static int a;
-  protected static int b;
-  protected static int c;
-  protected Context a;
-  protected GridView a;
-  protected ArrayList<vrn> a;
-  protected vrn a;
-  protected boolean a;
-  protected ArrayList<vrn> b;
+  public static final vrk a;
+  public static final vrk b;
+  public static final vrk c;
+  int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  String c;
+  public int d;
+  public String d;
+  public int e;
+  String e;
+  public int f;
+  String f;
+  public String g;
   
-  public vrk(Context paramContext, GridView paramGridView, boolean paramBoolean1, boolean paramBoolean2)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetGridView = paramGridView;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    jdField_a_of_type_Int = actn.a(80.0F, paramContext);
-    jdField_b_of_type_Int = actn.a(10.0F, paramContext);
-    c = actn.a(5.0F, paramContext);
-    this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(jdField_a_of_type_Int);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList.add(vrn.jdField_a_of_type_Vrn);
-    if (!paramBoolean1) {
-      this.jdField_b_of_type_JavaUtilArrayList.add(vrn.jdField_b_of_type_Vrn);
-    }
-    if (paramBoolean2) {
-      this.jdField_b_of_type_JavaUtilArrayList.add(vrn.c);
-    }
+    jdField_a_of_type_Vrk = new vrk(0, ajya.a(2131710948));
+    jdField_b_of_type_Vrk = new vrk(1, ajya.a(2131710945));
+    jdField_c_of_type_Vrk = new vrk(2, "QQ音乐曲库");
   }
   
-  public int a()
+  public vrk()
   {
-    return this.jdField_b_of_type_JavaUtilArrayList.size();
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  public int a(vrn paramvrn)
+  public vrk(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramvrn);
-    }
-    return -1;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public vrn a()
+  public vrk(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_Vrn;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
   }
   
-  public void a()
+  public vrk(qqstory_struct.MusicConfigInfo paramMusicConfigInfo)
   {
-    int j = 0;
-    int i = j;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = paramMusicConfigInfo.title.get().toStringUtf8();
+    this.jdField_d_of_type_JavaLangString = paramMusicConfigInfo.audio_url.get().toStringUtf8();
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramMusicConfigInfo.id.get());
+  }
+  
+  public vrk(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = null;
+    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    try
     {
-      i = j;
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(vrn.c))
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("title");
+      this.jdField_d_of_type_JavaLangString = paramString.optString("audio_url");
+      if (paramString.has("type")) {}
+      for (this.jdField_b_of_type_Int = paramString.optInt("type");; this.jdField_b_of_type_Int = 2)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(vrn.c);
-        this.jdField_b_of_type_JavaUtilArrayList.remove(vrn.c);
-        i = 1;
+        this.jdField_a_of_type_JavaLangString = paramString.optString("id");
+        return;
       }
+      return;
     }
-    if (i != 0) {
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void a(ArrayList<vrn> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(0, this.jdField_b_of_type_JavaUtilArrayList);
-    int i = getCount();
-    this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(i);
-    paramArrayList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
-    int j = jdField_a_of_type_Int;
-    paramArrayList.width = ((i - 1) * jdField_b_of_type_Int + j * i + this.jdField_a_of_type_AndroidWidgetGridView.getPaddingLeft() + this.jdField_a_of_type_AndroidWidgetGridView.getPaddingRight());
-    this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams(paramArrayList);
-  }
-  
-  public void a(vrn paramvrn)
-  {
-    this.jdField_a_of_type_Vrn = paramvrn;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    vrn localvrn = (vrn)getItem(paramInt);
-    if (localvrn == null) {
-      return null;
-    }
-    TextView localTextView;
-    Object localObject;
-    if (paramView == null)
+    catch (JSONException paramString)
     {
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      localTextView.setGravity(17);
-      localTextView.setSingleLine();
-      localTextView.setTextSize(12.0F);
-      localTextView.setLayoutParams(new AbsListView.LayoutParams(jdField_a_of_type_Int, jdField_a_of_type_Int));
-      localTextView.setPadding(c, jdField_b_of_type_Int, c, 0);
-      localTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localObject = localTextView;
-      localTextView.setText(localvrn.jdField_b_of_type_JavaLangString);
-      if (localvrn.jdField_b_of_type_Int != 0) {
-        break label213;
+      if (QLog.isColorLevel()) {
+        QLog.e("MusicInfo", 2, QLog.getStackTraceString(paramString));
       }
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130845749, 0, 0);
-      if (localvrn.equals(this.jdField_a_of_type_Vrn)) {
-        localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166345), PorterDuff.Mode.MULTIPLY);
-      }
-      localTextView.setTag(null);
     }
-    for (;;)
+  }
+  
+  /* Error */
+  public static final ArrayList<vrk> a(Context paramContext)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ldc 135
+    //   3: invokestatic 140	bbax:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   6: astore_0
+    //   7: new 142	org/json/JSONArray
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 143	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   15: astore 4
+    //   17: aload 4
+    //   19: invokevirtual 146	org/json/JSONArray:length	()I
+    //   22: istore_2
+    //   23: new 148	java/util/ArrayList
+    //   26: dup
+    //   27: iload_2
+    //   28: invokespecial 151	java/util/ArrayList:<init>	(I)V
+    //   31: astore_0
+    //   32: iconst_0
+    //   33: istore_1
+    //   34: aload_0
+    //   35: astore_3
+    //   36: iload_1
+    //   37: iload_2
+    //   38: if_icmpge +53 -> 91
+    //   41: aload_0
+    //   42: new 2	vrk
+    //   45: dup
+    //   46: aload 4
+    //   48: iload_1
+    //   49: invokevirtual 153	org/json/JSONArray:optString	(I)Ljava/lang/String;
+    //   52: invokespecial 154	vrk:<init>	(Ljava/lang/String;)V
+    //   55: invokevirtual 158	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   58: pop
+    //   59: iload_1
+    //   60: iconst_1
+    //   61: iadd
+    //   62: istore_1
+    //   63: goto -29 -> 34
+    //   66: astore 4
+    //   68: aconst_null
+    //   69: astore_0
+    //   70: aload_0
+    //   71: astore_3
+    //   72: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   75: ifeq +16 -> 91
+    //   78: ldc 125
+    //   80: iconst_2
+    //   81: aload 4
+    //   83: invokestatic 129	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   86: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   89: aload_0
+    //   90: astore_3
+    //   91: aload_3
+    //   92: areturn
+    //   93: astore 4
+    //   95: goto -25 -> 70
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	paramContext	Context
+    //   33	30	1	i	int
+    //   22	17	2	j	int
+    //   35	57	3	localContext	Context
+    //   15	32	4	localJSONArray	JSONArray
+    //   66	16	4	localJSONException1	JSONException
+    //   93	1	4	localJSONException2	JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   7	32	66	org/json/JSONException
+    //   41	59	93	org/json/JSONException
+  }
+  
+  public static final void a(Context paramContext, ArrayList<vrk> paramArrayList)
+  {
+    Object localObject = null;
+    if (paramArrayList != null)
     {
-      label648:
-      label673:
-      if (localvrn.equals(this.jdField_a_of_type_Vrn))
+      int j = paramArrayList.size();
+      localObject = new JSONArray();
+      int i = 0;
+      while (i < j)
       {
-        localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166345));
-        return localObject;
-        localTextView = (TextView)paramView;
-        localObject = paramView;
-        break;
-        label213:
-        if (localvrn.jdField_b_of_type_Int == 1)
-        {
-          localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130845753, 0, 0);
-          if (localvrn.equals(this.jdField_a_of_type_Vrn)) {
-            localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166345), PorterDuff.Mode.MULTIPLY);
-          }
-          localTextView.setTag(null);
-        }
-        else if (localvrn.jdField_b_of_type_Int == 2)
-        {
-          localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130845746, 0, 0);
-          if ((this.jdField_a_of_type_Vrn != null) && (this.jdField_a_of_type_Vrn.jdField_b_of_type_Int == 2)) {
-            localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166345), PorterDuff.Mode.MULTIPLY);
-          }
-          localTextView.setTag(null);
-        }
-        else
-        {
-          Resources localResources;
-          if (localvrn.jdField_b_of_type_Int == 4)
-          {
-            paramView = null;
-            paramInt = (int)bbdh.a(this.jdField_a_of_type_AndroidContentContext, 36.0F);
-            if (localvrn.jdField_a_of_type_Int > 0)
-            {
-              paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(localvrn.jdField_a_of_type_Int);
-              paramView.setBounds(0, 0, paramInt, paramInt);
-              localTextView.setCompoundDrawables(null, paramView, null, null);
-            }
-            for (;;)
-            {
-              if (!localvrn.equals(this.jdField_a_of_type_Vrn)) {
-                break label648;
-              }
-              localTextView.getCompoundDrawables()[1].setColorFilter(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166346), PorterDuff.Mode.SRC_ATOP);
-              break;
-              localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-              for (;;)
-              {
-                try
-                {
-                  paramViewGroup = localvrn.g;
-                  if (TextUtils.isEmpty(paramViewGroup)) {
-                    continue;
-                  }
-                  localFile = new File(paramViewGroup);
-                  if ((!localFile.exists()) || (!localFile.isFile())) {
-                    continue;
-                  }
-                  long l = localFile.length();
-                  if (l <= 0L) {
-                    continue;
-                  }
-                }
-                catch (Exception paramView)
-                {
-                  File localFile;
-                  byte[] arrayOfByte;
-                  paramView = localResources.getDrawable(2130846563);
-                  continue;
-                  boolean bool = false;
-                  continue;
-                  paramView = localResources.getDrawable(2130846563);
-                  continue;
-                  paramView = localResources.getDrawable(2130846563);
-                  continue;
-                }
-                try
-                {
-                  arrayOfByte = bbdj.b(localFile);
-                  paramViewGroup = paramView;
-                  if (arrayOfByte != null) {
-                    paramViewGroup = Drawable.createFromStream(new ByteArrayInputStream(arrayOfByte), "voiceChangeIcon");
-                  }
-                }
-                catch (Exception paramViewGroup)
-                {
-                  paramViewGroup.printStackTrace();
-                  paramViewGroup = paramView;
-                }
-              }
-              paramView = paramViewGroup;
-              if (paramViewGroup == null)
-              {
-                paramView = URLDrawable.URLDrawableOptions.obtain();
-                paramView.mFailedDrawable = localResources.getDrawable(2130846563);
-                paramView.mLoadingDrawable = localResources.getDrawable(2130846563);
-                paramView = URLDrawable.getDrawable(localFile, paramView);
-                if ("drawable not null: " + paramView == null) {
-                  break label673;
-                }
-                bool = true;
-                QLog.e("blessVoiceIcon", 1, new Object[] { Boolean.valueOf(bool) });
-              }
-              paramView.setBounds(0, 0, paramInt, paramInt);
-              localTextView.setCompoundDrawables(null, paramView, null, null);
-            }
-          }
-          else
-          {
-            if (localvrn.equals(this.jdField_a_of_type_Vrn)) {
-              localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130845748, 0, 0);
-            }
-            for (;;)
-            {
-              localTextView.setTag(localvrn);
-              break;
-              localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130845747, 0, 0);
-            }
-          }
+        ((JSONArray)localObject).put(((vrk)paramArrayList.get(i)).a());
+        i += 1;
+      }
+      localObject = ((JSONArray)localObject).toString();
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      bbax.a(paramContext, "qqstory_savedMusicList");
+      return;
+    }
+    bbax.a(paramContext, "qqstory_savedMusicList", (String)localObject);
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("title", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("audio_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("type", 3);
+      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MusicInfo", 2, QLog.getStackTraceString(localJSONException));
         }
       }
     }
-    if ((localvrn.jdField_b_of_type_Int == 2) && (this.jdField_a_of_type_Vrn != null) && (this.jdField_a_of_type_Vrn.jdField_b_of_type_Int == 2))
+  }
+  
+  public void a(vrk paramvrk)
+  {
+    this.jdField_a_of_type_JavaLangString = paramvrk.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramvrk.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = paramvrk.jdField_c_of_type_JavaLangString;
+    this.jdField_d_of_type_JavaLangString = paramvrk.jdField_d_of_type_JavaLangString;
+    this.jdField_e_of_type_JavaLangString = paramvrk.jdField_e_of_type_JavaLangString;
+    this.jdField_f_of_type_JavaLangString = paramvrk.jdField_f_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramvrk.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramvrk.jdField_b_of_type_Int;
+    this.jdField_c_of_type_Int = paramvrk.jdField_c_of_type_Int;
+    this.g = paramvrk.g;
+    this.jdField_d_of_type_Int = paramvrk.jdField_d_of_type_Int;
+    this.jdField_e_of_type_Int = paramvrk.jdField_e_of_type_Int;
+    this.jdField_f_of_type_Int = paramvrk.jdField_f_of_type_Int;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166345));
-      return localObject;
+      return false;
+      if (paramObject == this) {
+        return true;
+      }
+    } while (paramObject.getClass() != getClass());
+    vrk localvrk = (vrk)paramObject;
+    if ((localvrk.jdField_b_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0)) {
+      return true;
     }
-    localTextView.setTextColor(-1);
-    localTextView.getCompoundDrawables()[1].clearColorFilter();
-    return localObject;
+    if ((localvrk.jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int == 1)) {
+      return true;
+    }
+    if ((localvrk.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (localvrk.jdField_b_of_type_JavaLangString != null) && (localvrk.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (localvrk.jdField_d_of_type_JavaLangString != null) && (localvrk.jdField_d_of_type_JavaLangString.equals(this.jdField_d_of_type_JavaLangString))) {
+      return true;
+    }
+    return super.equals(paramObject);
   }
 }
 

@@ -1,13 +1,15 @@
+import org.apache.http.HttpResponse;
+
 public class bdix
 {
-  public static final String a = ajyc.a(2131702443);
-  public static final String b = ajyc.a(2131702441);
-  public static final String c = ajyc.a(2131702449);
-  public static final String d = ajyc.a(2131702444);
-  public static final String e = ajyc.a(2131702447);
-  public static final String f = ajyc.a(2131702445);
-  public static final String g = ajyc.a(2131702442);
-  public static final String h = ajyc.a(2131702448);
+  public int a;
+  public HttpResponse a;
+  
+  public bdix(HttpResponse paramHttpResponse, int paramInt)
+  {
+    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

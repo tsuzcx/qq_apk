@@ -1,6 +1,6 @@
-class alkx
+public abstract interface alkx
 {
-  private static final alkv a = new alkv(null);
+  public abstract boolean a(byte[] paramArrayOfByte);
 }
 
 

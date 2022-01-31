@@ -1,43 +1,18 @@
-import android.graphics.Bitmap;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
 
-public class berx
-  implements Cloneable
+public final class berx
+  implements Parcelable.Creator<MiniGamePluginInfo>
 {
-  public Bitmap a;
-  public String a;
-  public Bitmap b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public static berx a(JSONObject paramJSONObject)
+  public MiniGamePluginInfo a(Parcel paramParcel)
   {
-    berx localberx = new berx();
-    if (paramJSONObject != null)
-    {
-      localberx.jdField_a_of_type_JavaLangString = paramJSONObject.optString("pagePath");
-      localberx.jdField_b_of_type_JavaLangString = paramJSONObject.optString("text");
-      localberx.c = paramJSONObject.optString("iconData");
-      localberx.d = paramJSONObject.optString("selectedIconData");
-      localberx.jdField_a_of_type_AndroidGraphicsBitmap = berw.a(localberx.c);
-      localberx.jdField_b_of_type_AndroidGraphicsBitmap = berw.a(localberx.d);
-    }
-    return localberx;
+    return new MiniGamePluginInfo(paramParcel);
   }
   
-  public berx a()
+  public MiniGamePluginInfo[] a(int paramInt)
   {
-    try
-    {
-      berx localberx = (berx)super.clone();
-      return localberx;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return null;
+    return new MiniGamePluginInfo[paramInt];
   }
 }
 

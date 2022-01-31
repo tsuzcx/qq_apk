@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afaz;
+import afax;
 
 public class BlessManager$4
   implements Runnable
 {
-  public BlessManager$4(afaz paramafaz) {}
+  public BlessManager$4(afax paramafax) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
+    //   1: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
     //   4: iconst_1
-    //   5: invokestatic 25	afaz:b	(Lafaz;Z)Z
+    //   5: invokestatic 25	afax:b	(Lafax;Z)Z
     //   8: pop
     //   9: aload_0
-    //   10: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   13: invokevirtual 29	afaz:c	()Ljava/lang/String;
+    //   10: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   13: invokevirtual 29	afax:c	()Ljava/lang/String;
     //   16: astore_1
     //   17: aload_1
     //   18: ifnonnull +13 -> 31
     //   21: aload_0
-    //   22: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
+    //   22: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
     //   25: iconst_0
-    //   26: invokestatic 25	afaz:b	(Lafaz;Z)Z
+    //   26: invokestatic 25	afax:b	(Lafax;Z)Z
     //   29: pop
     //   30: return
     //   31: new 31	java/io/File
@@ -38,12 +38,12 @@ public class BlessManager$4
     //   48: dup
     //   49: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   52: aload_0
-    //   53: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   56: getfield 44	afaz:b	Ljava/lang/String;
+    //   53: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   56: getfield 44	afax:b	Ljava/lang/String;
     //   59: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: aload_0
-    //   63: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   66: invokestatic 52	afaz:a	(Lafaz;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   63: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   66: invokestatic 52	afax:a	(Lafax;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
     //   69: getfield 57	com/tencent/mobileqq/activity/bless/BlessTask:starVideoCoverFolderName	Ljava/lang/String;
     //   72: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: getstatic 60	java/io/File:separator	Ljava/lang/String;
@@ -56,8 +56,8 @@ public class BlessManager$4
     //   92: aload_3
     //   93: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   96: aload_0
-    //   97: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   100: invokestatic 52	afaz:a	(Lafaz;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   97: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   100: invokestatic 52	afax:a	(Lafax;)Lcom/tencent/mobileqq/activity/bless/BlessTask;
     //   103: getfield 66	com/tencent/mobileqq/activity/bless/BlessTask:starVideoCoverFileName	Ljava/lang/String;
     //   106: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -125,8 +125,8 @@ public class BlessManager$4
     //   222: aload 5
     //   224: invokevirtual 110	android/media/MediaMetadataRetriever:release	()V
     //   227: aload_0
-    //   228: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   231: invokestatic 112	afaz:a	(Lafaz;)V
+    //   228: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   231: invokestatic 112	afax:a	(Lafax;)V
     //   234: aload_2
     //   235: ifnull +7 -> 242
     //   238: aload_2
@@ -138,9 +138,9 @@ public class BlessManager$4
     //   251: ldc 124
     //   253: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   256: aload_0
-    //   257: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
+    //   257: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
     //   260: iconst_0
-    //   261: invokestatic 25	afaz:b	(Lafaz;Z)Z
+    //   261: invokestatic 25	afax:b	(Lafax;Z)Z
     //   264: pop
     //   265: return
     //   266: astore_1
@@ -193,8 +193,8 @@ public class BlessManager$4
     //   364: invokevirtual 69	java/io/File:delete	()Z
     //   367: pop
     //   368: aload_0
-    //   369: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   372: invokestatic 112	afaz:a	(Lafaz;)V
+    //   369: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   372: invokestatic 112	afax:a	(Lafax;)V
     //   375: aload_3
     //   376: ifnull -134 -> 242
     //   379: aload_3
@@ -220,8 +220,8 @@ public class BlessManager$4
     //   425: aconst_null
     //   426: astore_1
     //   427: aload_0
-    //   428: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafaz;
-    //   431: invokestatic 112	afaz:a	(Lafaz;)V
+    //   428: getfield 12	com/tencent/mobileqq/activity/bless/BlessManager$4:this$0	Lafax;
+    //   431: invokestatic 112	afax:a	(Lafax;)V
     //   434: aload_1
     //   435: ifnull +7 -> 442
     //   438: aload_1

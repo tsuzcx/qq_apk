@@ -1,46 +1,53 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class ncb
-  implements SensorEventListener
+class ncb
+  implements BusinessObserver
 {
-  protected byte a;
-  protected String a;
+  ncb(nbz paramnbz) {}
   
-  public ncb(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    switch (this.jdField_a_of_type_Byte)
-    {
-    default: 
-      return;
-    case 0: 
-      f1 = paramSensorEvent.values[0];
-      float f2 = paramSensorEvent.values[1];
-      float f3 = paramSensorEvent.values[2];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
-      return;
-    case 1: 
-      f1 = paramSensorEvent.values[0];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+    if (this.a.a) {
       return;
     }
-    float f1 = paramSensorEvent.values[0];
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nbz.a(this.a);
+      return;
+    }
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          nbz.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        nbz.a(this.a);
+        return;
+      }
+      paramBundle = nbz.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    nbz.a(this.a, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ncb
  * JD-Core Version:    0.7.0.1
  */

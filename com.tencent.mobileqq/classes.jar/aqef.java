@@ -1,42 +1,97 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class aqef
-  extends aqeg
+public class aqef
+  extends RecyclerView.Adapter<aqei>
 {
-  public ImageView a;
-  public TextView a;
+  Context jdField_a_of_type_AndroidContentContext;
+  baxy jdField_a_of_type_Baxy;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public aqef(View paramView)
+  public aqef(QQAppInterface paramQQAppInterface, Context paramContext, baxy parambaxy)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = aqdz.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368031));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378524));
-    paramView.setTag(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Baxy = parambaxy;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(String paramString1, String paramString2, baxk parambaxk)
+  public aqei a(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new ayki((CharSequence)localObject, 2));
-    localObject = parambaxk.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
+    if (paramInt == aqeb.b)
     {
-      localObject = bbdr.a();
-      paramString2 = (String)localObject;
-      if (!parambaxk.a())
-      {
-        parambaxk.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
-      }
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296976)));
+      return new aqei(paramViewGroup);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    return new aqeh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559069, paramViewGroup, false));
+  }
+  
+  public void a(aqei paramaqei, int paramInt)
+  {
+    if (paramaqei.a == aqeb.b) {}
+    Pair localPair;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramaqei.a != aqeb.a);
+      paramInt -= 1;
+      if (paramInt < 0) {
+        QLog.e("Forward.Preview.Dialog", 2, "type normal in wrong index");
+      }
+      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    } while (!(paramaqei instanceof aqeh));
+    ((aqeh)paramaqei).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Baxy);
+  }
+  
+  public void a(List<Pair<String, String>> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return aqeb.b;
+    }
+    return aqeb.a;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new aqeg(this));
+    }
   }
 }
 

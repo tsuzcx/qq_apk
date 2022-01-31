@@ -1,74 +1,47 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class akza
-  extends akyr
+class akza
+  extends BroadcastReceiver
 {
-  static PromotionConfigInfo b;
-  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
+  akza(akyz paramakyz) {}
   
-  public akza(AppInterface paramAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramAppInterface);
-    a(paramAppInterface);
-    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
-  }
-  
-  public void a(AppInterface paramAppInterface, akyt paramakyt)
-  {
-    if (a("snycGetConfig", paramAppInterface, paramakyt)) {
-      return;
-    }
-    paramakyt.a(a());
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString)
-  {
-    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
-  }
-  
-  void a(PromotionConfigInfo paramPromotionConfigInfo)
-  {
-    super.a(paramPromotionConfigInfo);
-    try
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      int i;
+      int j;
+      do
+      {
+        do
+        {
+          return;
+        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
+        switch (paramIntent.getIntExtra("event", 0))
+        {
+        default: 
+          return;
+        case 1: 
+          paramContext = paramIntent.getStringExtra("bussinessSubName");
+          i = paramIntent.getIntExtra("download_Index", 0);
+          j = paramIntent.getIntExtra("download_Progress", 0);
+          if (AudioHelper.e()) {
+            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+          }
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(paramContext, i, j);
       return;
-    }
-    finally {}
-  }
-  
-  boolean a(AppInterface paramAppInterface)
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
-    return paramAppInterface.getApp().registerReceiver(new akzb(this), localIntentFilter) != null;
-  }
-  
-  void b(AppInterface paramAppInterface) {}
-  
-  void b(String paramString)
-  {
-    try
-    {
-      paramString = bblp.a(this.jdField_b_of_type_JavaLangString, paramString);
-      a(paramString);
-      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+      paramContext = paramIntent.getStringExtra("config_Content");
+      this.a.b(paramContext);
+    } while (this.a.a == null);
+    this.a.a.b();
   }
 }
 

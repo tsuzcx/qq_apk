@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.config;
 
-import aukm;
+import auko;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CategoryMaterialStoryEntity
-  extends aukm
+  extends auko
 {
   public String additionalFields;
   public String bigId;

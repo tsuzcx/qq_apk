@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import axqw;
+import axqy;
 
 public final class NearbyFlowerManager$1
   implements Runnable
@@ -12,7 +12,7 @@ public final class NearbyFlowerManager$1
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
     }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 1, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 1, 0, "", "", "", "");
   }
 }
 

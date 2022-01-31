@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
-import asvj;
 import asvl;
-import bbct;
-import bbjw;
+import asvn;
+import bbdh;
+import bbkk;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -63,14 +63,14 @@ public class AudioJsPlugin
   private JSONObject mBgAudioState;
   private BridgeInfo mBgMusicBridge;
   private volatile AudioJsPlugin.BgMusicManager mBgMusicManager;
-  private asvj mCallback = new AudioJsPlugin.2(this);
+  private asvl mCallback = new AudioJsPlugin.2(this);
   private ServiceConnection mConn = new AudioJsPlugin.1(this);
   private int mCurrentSongDuration = -1;
   private SongInfo mCurrentSongInfo;
   private int mCurrentSongPosition = -1;
   private volatile SparseArray<AudioJsPlugin.InnerAudioManager> mInnerAudioManagers = new SparseArray();
   private int mPlayState;
-  private asvl mService;
+  private asvn mService;
   
   public AudioJsPlugin()
   {
@@ -143,7 +143,7 @@ public class AudioJsPlugin
     {
       if (i != 0)
       {
-        localObject = bbct.b();
+        localObject = bbdh.b();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           return bool;
@@ -153,14 +153,14 @@ public class AudioJsPlugin
           i = 0;
           continue;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131719049));
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131719060));
       }
     }
     for (;;)
     {
       bool = false;
       break;
-      QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131694693));
+      QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131694694));
     }
   }
   
@@ -648,7 +648,7 @@ public class AudioJsPlugin
     try
     {
       paramString = new JSONObject(paramString).optString("filePath");
-      if (!bbjw.a(paramString))
+      if (!bbkk.a(paramString))
       {
         paramString = MiniAppFileManager.getInstance().getAbsolutePath(paramString);
         getAudioManager().playVoice(paramString, paramBridgeInfo);
@@ -671,7 +671,7 @@ public class AudioJsPlugin
       Object localObject = new JSONObject(paramString);
       getInnerAudioManager((JSONObject)localObject).setAudioContext((JSONObject)localObject);
       String str = ((JSONObject)localObject).optString("src");
-      if (!bbjw.a(str))
+      if (!bbkk.a(str))
       {
         ((JSONObject)localObject).put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
         boolean bool = ((JSONObject)localObject).optBoolean("autoplay");
@@ -706,7 +706,7 @@ public class AudioJsPlugin
       JSONObject localJSONObject = new JSONObject(paramString);
       String str = localJSONObject.optString("src");
       Log.i("[mini] AudioJsPlugin", "setBackgroundAudioState: " + paramString);
-      if (!bbjw.a(str))
+      if (!bbkk.a(str))
       {
         localJSONObject.put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
         this.mBgAudioState = localJSONObject;

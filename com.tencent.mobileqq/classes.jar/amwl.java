@@ -1,73 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amwl
-  extends ampb<amwj>
 {
-  public int a()
-  {
-    return 553;
-  }
+  public int a;
+  public int b;
   
-  @NonNull
-  public amwj a(int paramInt)
+  public static amwl a(amph[] paramArrayOfamph)
   {
-    return new amwj();
-  }
-  
-  @Nullable
-  public amwj a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    amwl localamwl = new amwl();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      amwj localamwj = amwj.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherEntryConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      int j = paramArrayOfamph.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfamph[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((amph)localObject).a;
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            if (((JSONObject)localObject).has("gtcSwitch")) {
+              localamwl.a = ((JSONObject)localObject).optInt("gtcSwitch");
+            }
+            if (((JSONObject)localObject).has("groupMemberCount")) {
+              localamwl.b = ((JSONObject)localObject).optInt("groupMemberCount");
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localamwl.toString());
+          }
+        }
       }
-      return localamwj;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "onParsed is null");
-    }
-    return null;
+    return localamwl;
   }
   
-  public Class<amwj> a()
+  public String toString()
   {
-    return amwj.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amwj paramamwj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "onUpdate " + paramamwj.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherEntryConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.a).append(", groupMemberCount: ").append(this.b).append("]");
+    return localStringBuilder.toString();
   }
 }
 

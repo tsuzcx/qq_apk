@@ -1,6 +1,6 @@
 public abstract interface angn
 {
-  public abstract int a();
+  public abstract void a();
 }
 
 

@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acon
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public acon(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bdht.b("qqBaseActivity", bdeu.a(10010, 1, 2, 200));
-    bdes.a().a(17, bdeu.a(10010, 1, 2, 200));
     this.a.finish();
   }
 }

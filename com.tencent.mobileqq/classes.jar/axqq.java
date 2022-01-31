@@ -1,92 +1,153 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
 
 public class axqq
 {
-  public static boolean a;
+  static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  static boolean jdField_a_of_type_Boolean;
+  public static int b;
+  private static long jdField_b_of_type_Long;
+  private static String jdField_b_of_type_JavaLangString = "MultiVideoRichActionReportCollection";
+  public static int c;
+  private static long jdField_c_of_type_Long;
+  private static String jdField_c_of_type_JavaLangString = "";
+  public static int d;
+  private static long jdField_d_of_type_Long;
+  private static String jdField_d_of_type_JavaLangString = "";
+  private static int jdField_e_of_type_Int;
+  private static String jdField_e_of_type_JavaLangString = "";
+  private static String f = "";
   
-  private static String a(QQAppInterface paramQQAppInterface)
+  static
   {
-    if (paramQQAppInterface == null) {
-      return "unknown";
-    }
-    switch (bbev.b(paramQQAppInterface.getApp()))
-    {
-    default: 
-      return "unknown";
-    case 0: 
-      return "none";
-    case 1: 
-      return "Wi-Fi";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
-    }
-    return "5G";
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_Int = 1;
+    jdField_c_of_type_Int = 2;
+    jdField_d_of_type_Int = 3;
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, axqr paramaxqr)
+  public static void a(int paramInt, String paramString)
   {
-    paramaxqr.a = bbct.d();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
-      paramaxqr.c = localSosoLbsInfo.a.e;
+    lcg.a(jdField_b_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangString = paramString;
+    if ((jdField_a_of_type_Int == 4) || (jdField_a_of_type_Int == 3)) {
+      jdField_e_of_type_Int = jdField_d_of_type_Int;
     }
-    paramaxqr.b = a(paramQQAppInterface);
-    return paramaxqr.toString();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, axqr paramaxqr)
-  {
-    paramaxqr = a(paramQQAppInterface, paramaxqr);
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, "reportPushEvent detail=" + paramaxqr);
-    }
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PushReportController", 1, "not Rumtime");
-      }
-      paramQQAppInterface = new Intent();
-      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramQQAppInterface.putExtra("reporting_tag", "dc03266");
-      paramQQAppInterface.putExtra("reporting_detail", paramaxqr);
-      paramQQAppInterface.putExtra("reporting_count", 1);
-      paramQQAppInterface.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
+    while ((jdField_a_of_type_Int != 2) && (jdField_a_of_type_Int != 1)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, " Rumtime");
-    }
-    axqw.b(paramQQAppInterface, "dc03266", paramaxqr, 1);
+    jdField_e_of_type_Int = jdField_c_of_type_Int;
   }
   
-  public static void a(String paramString, axqr paramaxqr)
+  public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("&")))
+    int i = 0;
+    if (paramVideoAppInterface != null) {
+      i = paramVideoAppInterface.b("BEAUTY_SKIN");
+    }
+    if (i > 0) {
+      d(i + "");
+    }
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int)
     {
-      paramString = paramString.split("&");
-      int i = 0;
-      while (i < paramString.length)
+      if (jdField_a_of_type_Long == 0L) {
+        a("0X8007F32");
+      }
+      if (jdField_a_of_type_Long == 0L) {
+        a("0X8007F34");
+      }
+      if (jdField_c_of_type_Long == 0L) {
+        a("0X8007F36");
+      }
+      if (jdField_d_of_type_Long == 0L) {
+        a("0X8007E69");
+      }
+    }
+    do
+    {
+      do
       {
-        if (paramString[i].contains("pushfrom"))
-        {
-          String[] arrayOfString = paramString[i].split("=");
-          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-            paramaxqr.g = arrayOfString[1];
-          }
-        }
-        i += 1;
+        return;
+      } while (jdField_e_of_type_Int != jdField_d_of_type_Int);
+      if (jdField_a_of_type_Long == 0L) {
+        a("0X8007F38");
+      }
+      if (jdField_b_of_type_Long == 0L) {
+        a("0X8007F3A");
+      }
+      if (jdField_c_of_type_Long == 0L) {
+        a("0X8007F3C");
+      }
+    } while (jdField_d_of_type_Long != 0L);
+    a("0X8007E65");
+  }
+  
+  public static void a(String paramString)
+  {
+    lcg.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString, "", jdField_a_of_type_JavaLangString }));
+    axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", jdField_a_of_type_JavaLangString, "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    lcg.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent id = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_a_of_type_JavaLangString }));
+    axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
+  }
+  
+  public static void b(String paramString)
+  {
+    jdField_c_of_type_JavaLangString = paramString;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public static void c(String paramString)
+  {
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+      a("0X8007F33", paramString);
+    }
+    for (;;)
+    {
+      jdField_d_of_type_JavaLangString = paramString;
+      jdField_b_of_type_Long = System.currentTimeMillis();
+      return;
+      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
+        a("0X8007F39", paramString);
+      }
+    }
+  }
+  
+  public static void d(String paramString)
+  {
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+      a("0X8007F35", paramString);
+    }
+    for (;;)
+    {
+      jdField_e_of_type_JavaLangString = paramString;
+      jdField_c_of_type_Long = System.currentTimeMillis();
+      return;
+      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
+        a("0X8007F3B", paramString);
+      }
+    }
+  }
+  
+  public static void e(String paramString)
+  {
+    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+      a("0X8007E6A", paramString);
+    }
+    for (;;)
+    {
+      f = paramString;
+      jdField_d_of_type_Long = System.currentTimeMillis();
+      return;
+      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
+        a("0X8007E66", paramString);
       }
     }
   }

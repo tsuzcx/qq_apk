@@ -1,31 +1,6 @@
-public abstract class algb
-  extends algp
+public abstract interface algb
 {
-  private int a = 1;
-  private int b = 1;
-  
-  public algb(int paramInt1, int paramInt2)
-  {
-    this(paramInt1, paramInt2, 5);
-  }
-  
-  public algb(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(algb paramalgb)
-  {
-    return (paramalgb != null) && (paramalgb.a());
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public abstract boolean a();
+  public abstract byte[] a();
 }
 
 

@@ -1,32 +1,22 @@
-import android.widget.TextView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment.2.1.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqhl
-  extends atzn
+  implements View.OnClickListener
 {
-  aqhl(aqhk paramaqhk) {}
+  public aqhl(DeleteFaceFragment paramDeleteFaceFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a.getActivity() != null)
-    {
-      DeleteFaceFragment.a(this.a.a).postDelayed(new DeleteFaceFragment.2.1.1(this), 500L);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
     }
-    QLog.e("DeleteFaceFragment", 1, "delete success, activity is null");
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e("DeleteFaceFragment", 1, "delete face error");
-    if (this.a.a.getActivity() != null)
-    {
-      bcpw.a(this.a.a.getActivity(), 1, this.a.a.getString(2131692123), 0).b(this.a.a.a());
-      return;
+    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
+      DeleteFaceFragment.a(this.a).dismiss();
     }
-    QLog.e("DeleteFaceFragment", 1, "delete falied, activity is null");
   }
 }
 

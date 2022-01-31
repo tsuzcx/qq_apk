@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnDismissListener;
 class nfz
   implements DialogInterface.OnDismissListener
 {
-  nfz(nfu paramnfu) {}
+  nfz(nfr paramnfr) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {

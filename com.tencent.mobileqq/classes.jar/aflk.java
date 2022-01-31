@@ -1,31 +1,42 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
+import android.util.SparseArray;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 
 public class aflk
-  extends Handler
+  implements rtw
 {
   public aflk(SystemMsgListView paramSystemMsgListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(rub paramrub)
   {
-    switch (paramMessage.what)
+    int j;
+    if (paramrub != null)
     {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramrub.a() + " tabid = " + (Integer)paramrub.a());
+      }
+      SystemMsgListView.a(this.a).a(((Integer)paramrub.a()).intValue(), paramrub.a());
+      i = SystemMsgListView.a(this.a).b();
+      paramrub = (afmh)SystemMsgListView.a(this.a).get(i);
+      if (paramrub == null) {
+        break label141;
+      }
+      j = paramrub.b;
     }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131719981);
-    bcpw.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    for (int i = paramrub.c;; i = SystemMsgListView.a(this.a).c)
+    {
+      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
+      SystemMsgListView.a(this.a).a(0L);
+      return;
+      label141:
+      j = SystemMsgListView.a(this.a).b;
+    }
   }
+  
+  public void b(rub paramrub) {}
+  
+  public void c(rub paramrub) {}
 }
 
 

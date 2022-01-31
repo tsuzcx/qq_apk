@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class aeui
-  implements DialogInterface.OnClickListener
+public class aeui
+  extends akit
 {
-  aeui(aeuh paramaeuh) {}
+  public aeui(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    this.a.e(65536);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import acsq;
-import acsr;
+import acsm;
+import acsn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import anql;
-import anqp;
-import anvl;
-import bbjw;
-import bcdb;
+import anqq;
+import anqu;
+import anvq;
+import bbkk;
+import bcdp;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
@@ -42,7 +42,7 @@ public class QWalletMixJsPlugin
   private Context mContext;
   private FakeUrl mFakeUrl;
   private Handler mMainHandler = new Handler(Looper.getMainLooper());
-  private acsr mReminderDataManager;
+  private acsn mReminderDataManager;
   
   public QWalletMixJsPlugin()
   {
@@ -53,12 +53,12 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bbjw.a(str)) || (bbjw.a(str)))
+    if ((bbkk.a(str)) || (bbkk.a(str)))
     {
       handJsError("4", "params error");
       return;
     }
-    acsq.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
+    acsm.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
   }
   
   private void doCallback(String paramString)
@@ -129,8 +129,8 @@ public class QWalletMixJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("busiid", paramString1);
     localBundle.putString("msgid", paramString2);
-    paramString1 = anqp.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    anvl.a().a(paramString1);
+    paramString1 = anqu.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    anvq.a().a(paramString1);
   }
   
   private void parseCallback(String paramString)
@@ -153,7 +153,7 @@ public class QWalletMixJsPlugin
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bbjw.a(str1)) || (bbjw.a(str1))) {
+    if ((bbkk.a(str1)) || (bbkk.a(str1))) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
@@ -220,8 +220,8 @@ public class QWalletMixJsPlugin
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "is QQAppInterface: " + (this.app instanceof QQAppInterface));
         }
-        this.mReminderDataManager = new acsr(this.app);
-        acsq.a(this.app);
+        this.mReminderDataManager = new acsn(this.app);
+        acsm.a(this.app);
         this.mContext = localActivity.getApplicationContext();
       }
     }
@@ -238,7 +238,7 @@ public class QWalletMixJsPlugin
     if (this.mMainHandler != null) {
       this.mMainHandler.removeCallbacksAndMessages(null);
     }
-    acsq.a();
+    acsm.a();
     super.onDestroy();
   }
   

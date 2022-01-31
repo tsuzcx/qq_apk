@@ -1,14 +1,11 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class awqx
-  implements View.OnClickListener
+public class awqx
+  implements awrd
 {
-  awqx(awqw paramawqw, awpp paramawpp) {}
-  
-  public void onClick(View paramView)
+  public void a(awog paramawog, awws paramawws)
   {
-    this.jdField_a_of_type_Awpp.a(paramView);
+    paramawws.a().setVisibility(8);
   }
 }
 

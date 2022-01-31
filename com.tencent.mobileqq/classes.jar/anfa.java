@@ -14,7 +14,7 @@ class anfa
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     if (!TextUtils.isEmpty(paramCharSequence)) {
-      this.a.c();
+      this.a.a();
     }
   }
 }

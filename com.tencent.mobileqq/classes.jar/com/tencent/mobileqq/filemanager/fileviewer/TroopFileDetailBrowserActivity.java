@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import amyl;
-import amym;
-import amyo;
+import amys;
+import amyt;
+import amyv;
 import android.content.Context;
 import android.content.Intent;
 import android.text.method.LinkMovementMethod;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aouj;
-import aozc;
-import apih;
-import apkm;
-import apkt;
-import apku;
-import apue;
-import axqw;
-import bbev;
-import bbwx;
+import aoun;
+import aozg;
+import apil;
+import apkq;
+import apkx;
+import apky;
+import apug;
+import axqy;
+import bbfj;
+import bbxl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public final class TroopFileDetailBrowserActivity
   extends FileBrowserActivity
-  implements apkm
+  implements apkq
 {
-  protected aouj a;
+  protected aoun a;
   public ForwardFileInfo b;
   
   public TroopFileDetailBrowserActivity()
   {
-    this.jdField_a_of_type_Aouj = new apkt(this);
+    this.jdField_a_of_type_Aoun = new apkx(this);
   }
   
   private int a(Context paramContext)
   {
-    if (!bbev.g(paramContext)) {
+    if (!bbfj.g(paramContext)) {
       return 2;
     }
-    if (bbev.h(paramContext)) {
+    if (bbfj.h(paramContext)) {
       return 0;
     }
     return 1;
@@ -48,44 +48,44 @@ public final class TroopFileDetailBrowserActivity
   protected boolean a(Intent paramIntent)
   {
     if (this.app != null) {
-      this.app.a().addObserver(this.jdField_a_of_type_Aouj);
+      this.app.a().addObserver(this.jdField_a_of_type_Aoun);
     }
-    apku localapku = new apku(this.app);
-    if (!localapku.a(paramIntent, this)) {}
+    apky localapky = new apky(this.app);
+    if (!localapky.a(paramIntent, this)) {}
     do
     {
       return false;
       this.b = ((ForwardFileInfo)super.getIntent().getParcelableExtra("fileinfo"));
-      if (this.jdField_a_of_type_Apih == null)
+      if (this.jdField_a_of_type_Apil == null)
       {
-        this.jdField_a_of_type_Apih = new apih(this, this, localapku.a(this));
-        this.jdField_a_of_type_Apih.a(this.jdField_a_of_type_Apkn);
+        this.jdField_a_of_type_Apil = new apil(this, this, localapky.a(this));
+        this.jdField_a_of_type_Apil.a(this.jdField_a_of_type_Apkr);
       }
       int i = paramIntent.getIntExtra("file_enter_file_browser_type", 0);
       paramIntent = paramIntent.getBundleExtra("file_browser_extra_params");
-      if (this.jdField_a_of_type_Apih.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
+      if (this.jdField_a_of_type_Apil.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("FileBrowserActivity<FileAssistant>", 2, "error. can not create a fileviewer from FileBrowserManager");
     return false;
-    if (localapku.a() == 1) {
-      axqw.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", apue.b(apue.a(this.b.d())));
+    if (localapky.a() == 1) {
+      axqy.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", apug.b(apug.a(this.b.d())));
     }
     for (;;)
     {
       if (a(getBaseContext()) == 1)
       {
         paramIntent = (TextView)findViewById(2131367237);
-        if ((paramIntent != null) && (amyo.c().c.a) && (!bbwx.a().b()))
+        if ((paramIntent != null) && (amyv.c().c.a) && (!bbxl.a().b()))
         {
-          paramIntent.setText(amyo.c().c.a(this, ""));
+          paramIntent.setText(amyv.c().c.a(this, ""));
           paramIntent.setMovementMethod(LinkMovementMethod.getInstance());
           paramIntent.setVisibility(0);
         }
       }
       return true;
-      axqw.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", apue.b(apue.a(this.b.d())));
+      axqy.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", apug.b(apug.a(this.b.d())));
     }
   }
   
@@ -110,7 +110,7 @@ public final class TroopFileDetailBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.a().deleteObserver(this.jdField_a_of_type_Aouj);
+    this.app.a().deleteObserver(this.jdField_a_of_type_Aoun);
   }
 }
 

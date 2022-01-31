@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
-class abcv
+public class abcv
   implements View.OnClickListener
 {
-  abcv(abcu paramabcu) {}
+  public abcv(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    abcu.a(this.a, (ailx)paramView);
+    ForwardTroopListFragment.a(this.a);
   }
 }
 

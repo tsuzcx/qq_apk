@@ -1,137 +1,356 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import android.content.Intent;
+import android.os.Handler;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoLoginHelper.1;
+import com.tencent.mobileqq.activity.AutoLoginHelper.5;
+import com.tencent.mobileqq.activity.AutoLoginHelper.6;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Locale;
 import mqq.app.AppRuntime;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import mqq.observer.AccountObserver;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
 
 public class aalo
-  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public aalo(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  aumg jdField_a_of_type_Aumg = new aalq(this);
+  private bbyp jdField_a_of_type_Bbyp;
+  private bcqf jdField_a_of_type_Bcqf;
+  private RegisterNewBaseActivity jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aalr(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aalp(this);
+  public boolean a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  public String b;
+  public boolean b;
+  private byte[] b;
+  public String c;
+  public boolean c;
+  private String d;
+  public boolean d;
+  private String jdField_e_of_type_JavaLangString;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
+  private boolean g;
+  private boolean h = true;
+  private boolean i = true;
+  private boolean j;
+  private boolean k;
+  private boolean l;
   
-  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public aalo(QQAppInterface paramQQAppInterface, RegisterNewBaseActivity paramRegisterNewBaseActivity, Intent paramIntent)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
-        }
-      }
-      setSeq(paramInt1);
-      paramInt2 = 60;
-      paramInt1 = paramInt2;
-      if (paramDevlockInfo != null)
-      {
-        paramInt1 = paramInt2;
-        if (paramDevlockInfo.TimeLimit > 0) {
-          paramInt1 = paramDevlockInfo.TimeLimit;
-        }
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131717132);
-    this.a.a(paramString, 1);
+    this.jdField_b_of_type_JavaLangString = "86";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  private void h()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt2 == 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity == null) {}
+    Object localObject;
+    do
     {
+      return;
+      this.jdField_d_of_type_Boolean = true;
+      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
+      ((Intent)localObject).putExtra("fragment_id", 1);
+      ((Intent)localObject).putExtra("afterRegAndAutoLogin", true);
+      ((Intent)localObject).addFlags(67108864);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity((Intent)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(LoginActivity.class);
+    } while (localObject == null);
+    ((MqqHandler)localObject).sendEmptyMessage(20140325);
+  }
+  
+  private void i()
+  {
+    aumk.a().a(true);
+    aumk.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+  }
+  
+  private void j()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.post(new AutoLoginHelper.5(this));
+  }
+  
+  private void k()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.post(new AutoLoginHelper.6(this));
+  }
+  
+  public Intent a()
+  {
+    return this.jdField_a_of_type_AndroidContentIntent;
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      bbyl.a(getClass().getSimpleName(), a());
+    }
+    this.g = a().getBooleanExtra("key_register_from_quick_register", false);
+    if (this.g) {
+      this.jdField_e_of_type_JavaLangString = a().getStringExtra("key_register_secret_phone");
+    }
+    this.jdField_a_of_type_JavaLangString = a().getStringExtra("phonenum");
+    this.jdField_c_of_type_JavaLangString = a().getStringExtra("invite_code");
+    this.jdField_b_of_type_JavaLangString = a().getStringExtra("key");
+    this.jdField_a_of_type_Boolean = a().getBooleanExtra("key_register_is_phone_num_registered", false);
+    this.jdField_b_of_type_Boolean = a().getBooleanExtra("key_register_has_pwd", true);
+    this.jdField_d_of_type_JavaLangString = a().getStringExtra("uin");
+    this.jdField_a_of_type_ArrayOfByte = a().getByteArrayExtra("key_register_sign");
+    Locale localLocale;
+    String str2;
+    String str3;
+    if (QLog.isDevelopLevel())
+    {
+      localLocale = Locale.getDefault();
+      str2 = this.jdField_d_of_type_JavaLangString;
+      str3 = com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte);
+      if (this.jdField_c_of_type_JavaLangString != null) {
+        break label310;
+      }
+    }
+    label310:
+    for (String str1 = "";; str1 = this.jdField_c_of_type_JavaLangString)
+    {
+      QLog.d("AutoLoginHelper", 4, String.format(localLocale, "onCreate  uin: %s, sign: %s inviteCode: %s", new Object[] { str2, str3, str1 }));
+      str1 = a().getStringExtra("key_register_password");
+      if (str1 != null) {
+        this.jdField_b_of_type_ArrayOfByte = com.tencent.mobileqq.mqsafeedit.MD5.toMD5Byte(str1);
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
+        QLog.d("AutoLoginHelper", 2, "onCreate ,pwd = " + str1 + ",mPassByte = " + this.jdField_b_of_type_ArrayOfByte);
       }
-      setSeq(paramInt1);
+      this.f = a().getBooleanExtra("key_register_unbind", false);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        break;
+      }
+      QLog.d("AutoLoginHelper", 2, "onCreate app is null");
       return;
     }
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Aumg);
+    this.h = a().getBooleanExtra("key_register_result", true);
+    this.i = a().getBooleanExtra("key_register_is_lh", false);
+    if ((this.h) && (this.i))
     {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
+      this.k = false;
+      this.l = true;
+      this.jdField_a_of_type_Bbyp = new bbyp(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, null);
+      this.jdField_a_of_type_Bbyp.a(this.jdField_d_of_type_JavaLangString, new aals(this));
     }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131717132);
-    this.a.a(paramString, 1);
+    this.jdField_d_of_type_Boolean = false;
+    b();
   }
   
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if ((paramString == null) || (!paramString.equals(this.jdField_d_of_type_JavaLangString))) {
+      return;
+    }
+    this.j = paramBoolean;
+    if ((!this.j) && (this.k))
+    {
+      k();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131717131, 0);
+    }
+    for (;;)
+    {
+      this.k = false;
+      this.l = false;
+      return;
+      if ((this.j) && (this.k)) {
+        if (this.f) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
+        } else {
+          aumi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterChooseLoginActivity.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(105);
+    }
+    localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterPhoneNumActivity.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(103);
+    }
+    localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterPersonalInfoActivity.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(109);
+    }
+    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterSendUpSms))
+    {
+      localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterSendUpSms.class);
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(107);
+      }
+    }
+    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterVerifyCodeActivity))
+    {
+      localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterVerifyCodeActivity.class);
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(106);
+      }
+    }
+    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterByNicknameAndPwdActivity))
+    {
+      localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(RegisterByNicknameAndPwdActivity.class);
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(110);
+      }
+    }
+  }
+  
+  public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
+      QLog.d("AutoLoginHelper", 2, "onAccountChanged success");
     }
-    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
+    if (this.f)
     {
-      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aumg);
+      if (this.g)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime());
+        LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      }
+      j();
+      h();
     }
-    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+    do
+    {
+      return;
+      if (aumk.a().a()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AutoLoginHelper", 2, "onAccountChanged not phonenum login");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aumg);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Aumg);
+    if (this.jdField_e_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new AutoLoginHelper.1(this));
+      bcql.a(BaseApplicationImpl.sApplication, ajya.a(2131700839), 0).a();
+    }
+    j();
+    LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    h();
   }
   
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  public void d()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onDestroy");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Aumg);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+    k();
+  }
+  
+  public void e()
+  {
+    if (!this.h) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
       }
     }
-    if (this.a.isFinishing())
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
+      return;
+      if (this.g) {
+        axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
       }
+      if (bbfj.d(BaseApplication.getContext())) {
+        break;
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131692321, 0);
+    return;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = false;
+    if ((this.i) && (!this.j))
+    {
+      if (!this.l)
+      {
+        this.l = true;
+        if (this.jdField_a_of_type_Bbyp == null) {
+          this.jdField_a_of_type_Bbyp = new bbyp(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, null);
+        }
+        this.jdField_a_of_type_Bbyp.a(this.jdField_d_of_type_JavaLangString, new aals(this));
+      }
+      this.k = true;
+      j();
       return;
     }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    this.a.setResult(-1);
-    this.a.finish();
-    aoen.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "bindUinWithPhone start to getVerifyBindPhoneUin");
+    }
+    j();
+    if (QLog.isColorLevel())
+    {
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        break label275;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoLoginHelper", 2, "swz mSign = " + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+      }
+    }
+    while (this.f)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
+      return;
+      label275:
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoLoginHelper", 2, "swz mSign = null");
+      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.jdField_d_of_type_JavaLangString, com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte) }));
+    }
+    aumi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
   }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AutoLoginHelper", 2, "onResume， isStartingMain=" + this.jdField_d_of_type_Boolean);
+    }
+    if (!this.jdField_d_of_type_Boolean) {
+      k();
+    }
+  }
+  
+  public void g() {}
 }
 
 

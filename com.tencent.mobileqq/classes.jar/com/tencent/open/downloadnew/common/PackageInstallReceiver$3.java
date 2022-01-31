@@ -1,9 +1,9 @@
 package com.tencent.open.downloadnew.common;
 
-import bdes;
-import bdht;
-import bdkp;
-import bdme;
+import bdfh;
+import bdii;
+import bdle;
+import bdmt;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$3
@@ -13,20 +13,20 @@ class PackageInstallReceiver$3
   
   public void run()
   {
-    bdht.c(this.this$0.a, "ACTION_PACKAGE_ADDED >> " + this.a);
-    DownloadInfo localDownloadInfo = bdme.a().a(this.b);
+    bdii.c(this.this$0.a, "ACTION_PACKAGE_ADDED >> " + this.a);
+    DownloadInfo localDownloadInfo = bdmt.a().a(this.b);
     if (localDownloadInfo != null)
     {
-      bdht.c(this.this$0.a, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.c + " " + localDownloadInfo.e);
-      bdkp.a().d(localDownloadInfo);
-      bdes.a().a(101, localDownloadInfo);
+      bdii.c(this.this$0.a, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.c + " " + localDownloadInfo.e);
+      bdle.a().d(localDownloadInfo);
+      bdfh.a().a(101, localDownloadInfo);
     }
     for (;;)
     {
-      bdkp.a().a(6, localDownloadInfo);
+      bdle.a().a(6, localDownloadInfo);
       return;
       localDownloadInfo = new DownloadInfo("", this.b);
-      bdht.c(this.this$0.a, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
+      bdii.c(this.this$0.a, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
     }
   }
 }

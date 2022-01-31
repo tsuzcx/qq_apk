@@ -1,80 +1,151 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.util.SparseArray;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
+import java.util.Date;
 
-public abstract class avpj
-  extends avpi
+public class avpj
 {
-  public ResultReceiver a;
+  private static bfnj<Integer> jdField_a_of_type_Bfnj;
+  private static String jdField_a_of_type_JavaLangString = "ReceiptUtil";
+  private static boolean jdField_a_of_type_Boolean;
   
-  public static avpj a(Bundle paramBundle)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    if (paramBundle == null) {
-      return null;
+    if (!jdField_a_of_type_Boolean) {
+      b(paramQQAppInterface);
     }
-    int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
-    Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if (localObject != null)
+    return acsx.a;
+  }
+  
+  private static long a(String paramString)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (NumberFormatException paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("BaseReq getReq", 2, "class name is " + ((Class)localObject).getName());
-      }
-      try
-      {
-        localObject = (avpj)((Class)localObject).newInstance();
-        ((avpj)localObject).b(paramBundle);
-        return localObject;
-      }
-      catch (Exception paramBundle)
-      {
-        return null;
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
       }
     }
-    return null;
+    return -1L;
   }
   
-  public void a(Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (!jdField_a_of_type_Boolean) {
+      b(paramQQAppInterface);
+    }
+    int i = c(paramQQAppInterface) + 1;
+    a(paramQQAppInterface, i);
+    if (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "increaseSentNum with result:  " + Integer.toString(i));
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "setSentNum: " + paramInt);
+    }
+    jdField_a_of_type_Bfnj.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(paramInt));
+    paramQQAppInterface.getPreferences().edit().putInt("receipt_msg_sent_num", paramInt).apply();
+  }
+  
+  public static boolean a()
+  {
+    return acsx.b;
+  }
+  
+  private static boolean a(long paramLong1, long paramLong2)
+  {
+    boolean bool = false;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong2);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    Date localDate = localCalendar.getTime();
+    localCalendar.setTimeInMillis(paramLong1);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    if (localDate.compareTo(localCalendar.getTime()) == 0) {
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, paramLong1 + " and " + paramLong2 + "isToday? " + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessageRecord != null)
     {
-      Parcel localParcel = Parcel.obtain();
-      this.jdField_a_of_type_AndroidOsResultReceiver.writeToParcel(localParcel, 0);
-      localParcel.setDataPosition(0);
-      ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-      localParcel.recycle();
-      paramBundle.putParcelable("redpoint.fromReceiverKey", localResultReceiver);
-    }
-  }
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Bundle paramBundle);
-  
-  public final boolean a(Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (this.jdField_a_of_type_AndroidOsResultReceiver == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
+      bool1 = bool2;
+      if ((paramMessageRecord instanceof MessageForStructing))
+      {
+        bool1 = bool2;
+        if (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 107) {
+          bool1 = true;
+        }
       }
-      return false;
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
-    return true;
+    return bool1;
   }
   
-  public void b(Bundle paramBundle)
+  public static int b(QQAppInterface paramQQAppInterface)
   {
-    super.b(paramBundle);
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
+    if (!jdField_a_of_type_Boolean) {
+      b(paramQQAppInterface);
+    }
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
+    long l1 = localSharedPreferences.getLong("receipt_msg_store_time", 0L);
+    long l2 = NetConnInfoCenter.getServerTime() * 1000L;
+    if (!a(l1, l2))
+    {
+      a(paramQQAppInterface, 0);
+      localSharedPreferences.edit().putLong("receipt_msg_store_time", l2).apply();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getLeftNum max is " + a(paramQQAppInterface));
+    }
+    return a(paramQQAppInterface) - c(paramQQAppInterface);
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
+    jdField_a_of_type_Bfnj = new bfnj(1);
+    int i = localSharedPreferences.getInt("receipt_msg_sent_num", 0);
+    jdField_a_of_type_Bfnj.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(i));
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  private static int c(QQAppInterface paramQQAppInterface)
+  {
+    int i = ((Integer)jdField_a_of_type_Bfnj.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(0))).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getSentNum is " + i);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avpj
  * JD-Core Version:    0.7.0.1
  */

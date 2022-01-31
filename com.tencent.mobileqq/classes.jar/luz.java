@@ -1,96 +1,49 @@
+import android.graphics.Rect;
+
 public class luz
-  extends lur
+  extends lva
 {
-  public boolean a;
+  public luv a;
+  public int b;
+  public int c;
+  
+  public luz(luv paramluv)
+  {
+    this.jdField_b_of_type_Long = 1800L;
+    this.a = paramluv;
+  }
   
   public void a(long paramLong)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
-    int i;
-    float f;
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramLong <= 1400L)
-      {
-        i = 255;
-        if (paramLong > 250L) {
-          break label104;
-        }
-        f = -0.0016F * (float)paramLong + 1.0F;
-      }
+    super.a(paramLong);
+    Rect localRect = this.a.a();
+    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+    int j = (localRect.top + localRect.bottom - this.c) / 2;
+    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+    int m = localRect.top;
+    a(i, j, k, (localRect.bottom + m + this.c) / 2);
+    if (this.a.a != null) {
+      a(this.a.a());
     }
-    label262:
     for (;;)
     {
-      a(i);
-      b(f);
+      b(this.a.a());
       return;
-      i = j;
-      if (paramLong <= 1400L) {
-        break;
-      }
-      i = j;
-      if (paramLong >= 1500L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 1500L) / -100L);
-      break;
-      label104:
-      if ((paramLong > 250L) && (paramLong <= 400L))
-      {
-        f = 0.004666667F * (float)paramLong - 0.5666665F;
-      }
-      else if ((paramLong > 400L) && (paramLong <= 1250L))
-      {
-        f = 1.3F;
-      }
-      else if ((paramLong > 1250L) && (paramLong <= 1500L))
-      {
-        f = -0.0052F * (float)paramLong + 7.8F;
-      }
-      else
-      {
-        f = 0.0F;
-        continue;
-        if (paramLong <= 800L) {
-          i = 255;
-        }
-        for (;;)
-        {
-          if (paramLong > 250L) {
-            break label262;
-          }
-          f = -0.0016F * (float)paramLong + 1.0F;
-          break;
-          i = k;
-          if (paramLong > 800L)
-          {
-            i = k;
-            if (paramLong < 900L) {
-              i = (int)(255L * (paramLong - 900L) / -100L);
-            }
-          }
-        }
-        if ((paramLong > 250L) && (paramLong <= 400L)) {
-          f = 0.004666667F * (float)paramLong - 0.5666665F;
-        } else if ((paramLong > 400L) && (paramLong <= 650L)) {
-          f = 1.3F;
-        } else if ((paramLong > 650L) && (paramLong <= 900L)) {
-          f = -0.0052F * (float)paramLong + 4.68F;
-        } else {
-          f = 0.0F;
-        }
-      }
+      a(0);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void b()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super.b();
+    this.a = null;
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 152 / 160);
+    this.c = (paramInt1 * 152 / 160);
+  }
 }
 
 

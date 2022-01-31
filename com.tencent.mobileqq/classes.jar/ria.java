@@ -1,19 +1,32 @@
-import android.os.Handler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ria
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
   public ria(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.d = true;
-    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
-    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
+    super.onAnimationCancel(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
+    SlideActiveAnimController.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
+    }
   }
 }
 

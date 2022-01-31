@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
-import qya;
+import qxx;
 
 public class MultiVideoNormalItemHolder$6
   implements Runnable
 {
-  public MultiVideoNormalItemHolder$6(qya paramqya) {}
+  public MultiVideoNormalItemHolder$6(qxx paramqxx) {}
   
   public void run()
   {

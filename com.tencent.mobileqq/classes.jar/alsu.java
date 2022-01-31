@@ -1,29 +1,18 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public final class alsu
-  implements ArkEnvironmentManager.Log
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public void d(String paramString1, String paramString2)
+  public boolean Load()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
   }
   
-  public void e(String paramString1, String paramString2)
+  public boolean isLibraryLoad()
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
+    return ArkAppCenter.b;
   }
 }
 

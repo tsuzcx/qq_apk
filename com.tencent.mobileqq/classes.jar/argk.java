@@ -1,43 +1,20 @@
-import android.content.Context;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.huayang.Monitor.1;
 
 public class argk
 {
-  private static final String jdField_a_of_type_JavaLangString = "PTT|" + argk.class.getSimpleName();
-  argm jdField_a_of_type_Argm;
-  private argn jdField_a_of_type_Argn;
-  private argn b = new argl(this);
+  public static boolean a = true;
   
-  public argk(Context paramContext, int paramInt)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_Argm = new argm(this, paramContext);
+    if (a) {
+      b(paramString);
+    }
   }
   
-  public int a()
+  public static void b(String paramString)
   {
-    this.jdField_a_of_type_Argm.a();
-    return 0;
-  }
-  
-  public String a()
-  {
-    return ".m4a";
-  }
-  
-  public void a(String paramString, argn paramargn)
-  {
-    this.jdField_a_of_type_Argn = paramargn;
-    this.jdField_a_of_type_Argm.a(paramString, this.b);
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Argm.b();
-    return 0;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Argm.a();
+    ThreadManager.executeOnNetWorkThread(new Monitor.1("https://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
   }
 }
 

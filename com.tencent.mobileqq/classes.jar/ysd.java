@@ -1,31 +1,35 @@
-import android.app.Activity;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import java.lang.ref.WeakReference;
+import com.tencent.ad.tangram.log.AdLogAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public final class ysd
-  implements AdCanvasAdapter
+  implements AdLogAdapter
 {
-  public AdError show(AdCanvasAdapter.Params paramParams)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      yxs.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
     }
-    GdtCanvasData localGdtCanvasData = yzi.a((GdtAd)GdtAd.class.cast(paramParams.ad), paramParams.autoDownload);
-    if ((localGdtCanvasData == null) || (!localGdtCanvasData.isValid()))
-    {
-      yxs.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
     }
-    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, localGdtCanvasData, paramParams.extrasForIntent);
-    return new AdError(0);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
   }
 }
 

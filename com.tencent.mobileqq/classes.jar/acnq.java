@@ -1,17 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-
 public class acnq
-  implements View.OnClickListener
 {
-  public acnq(TroopTransferActivity paramTroopTransferActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.dismiss();
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 

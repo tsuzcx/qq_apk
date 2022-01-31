@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axdc;
-import axet;
-import axeu;
-import axlc;
+import axde;
+import axev;
+import axew;
+import axle;
 import java.io.File;
 
 public final class PendantVersionManager$1
@@ -11,10 +11,10 @@ public final class PendantVersionManager$1
 {
   public void run()
   {
-    String str1 = axlc.a(VideoEnvironment.a());
-    String str2 = axdc.a();
+    String str1 = axle.a(VideoEnvironment.a());
+    String str2 = axde.a();
     File[] arrayOfFile = new File(str1).listFiles();
-    int i = axdc.a().length;
+    int i = axde.a().length;
     int j;
     Object localObject1;
     Object localObject2;
@@ -34,10 +34,10 @@ public final class PendantVersionManager$1
           k += 1;
           break;
           localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!axdc.b((String)localObject2)))
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!axde.b((String)localObject2)))
           {
-            localObject3 = axet.a((String)localObject2);
-            m = ((axeu)localObject3).a();
+            localObject3 = axev.a((String)localObject2);
+            m = ((axew)localObject3).a();
             if (m == 0) {
               break label218;
             }
@@ -49,7 +49,7 @@ public final class PendantVersionManager$1
           }
         }
         label218:
-        localObject3 = ((axeu)localObject3).b();
+        localObject3 = ((axew)localObject3).b();
       }
     }
     label418:

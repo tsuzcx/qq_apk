@@ -1,26 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-class stt
-  extends SimpleJob<Object>
+public class stt
 {
-  stt(sto paramsto, String paramString1, String paramString2, stx paramstx)
-  {
-    super(paramString1);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    sto.a(this.jdField_a_of_type_Sto, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Stx);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 4;
-  }
+  public void a() {}
 }
 
 

@@ -1,40 +1,20 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class qab
-  extends ayog
+public abstract interface qab
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = paramDownloadParams.urlStr;
-    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
-      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
-    }
-    for (;;)
-    {
-      paramOutputStream = new File(paramOutputStream);
-      if (!paramOutputStream.exists()) {
-        break;
-      }
-      return paramOutputStream;
-      paramOutputStream = paramDownloadParams;
-      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
-        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
-      }
-    }
-    return null;
-  }
+  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new qac(this, paramFile, false, false, 0, 0, 0.0F);
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qab
  * JD-Core Version:    0.7.0.1
  */

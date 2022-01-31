@@ -2,23 +2,26 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextPaint;
+import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.lang.ref.WeakReference;
 
 class adso
   extends ClickableSpan
 {
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private WeakReference<Context> b;
   
-  adso(adqy paramadqy, QQAppInterface paramQQAppInterface, Context paramContext)
+  adso(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
   
   public void onClick(View paramView)
@@ -26,52 +29,35 @@ class adso
     paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     Object localObject = (Context)this.b.get();
     if ((paramView == null) || (localObject == null)) {}
-    long l;
+    boolean bool;
     do
     {
       do
       {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!bbev.d((Context)localObject))
-      {
-        bcpw.a((Context)localObject, 2131692321, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298865));
-        return;
-      }
-      l = System.currentTimeMillis();
-      if ((adqy.a(this.jdField_a_of_type_Adqy) == 0L) || (l <= adqy.a(this.jdField_a_of_type_Adqy)) || (l - adqy.a(this.jdField_a_of_type_Adqy) > 800L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    adqy.a(this.jdField_a_of_type_Adqy, l);
-    if (bbev.h((Context)localObject))
+        do
+        {
+          return;
+          axqy.b(paramView, "dc00898", "", "", "0X800906D", "0X800906D", 0, 0, "", "", "", "");
+        } while (!(localObject instanceof Activity));
+        if (!bbfj.d((Context)localObject))
+        {
+          bcql.a((Context)localObject, 2131692321, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298865));
+          return;
+        }
+      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.b.get() == null));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
+      bool = Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", (String)localObject);
+    localBundle.putString("tdsourcetag", "s_qq_aio_grey");
+    TeamWorkDocEditBrowserActivity.a((Context)this.b.get(), localBundle, false);
+    if (!bool)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(bdkm.b, "100868074");
-      localBundle.putString(bdkm.j, "https://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
-      localBundle.putString(bdkm.f, "com.sohu.inputmethod.sogou");
-      localBundle.putInt(bdkm.k, 2);
-      localBundle.putString(bdkm.i, "ANDROIDQQ.MSG.SOUGOU");
-      localBundle.putString(bdkm.l, ajyc.a(2131705322));
-      localBundle.putBoolean(bdkm.x, false);
-      bdki.a((Activity)localObject, localBundle, "biz_src_yyb", null, 0);
-    }
-    for (;;)
-    {
-      axqw.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
+      axqy.b(paramView, "CliOper", "", "", "0X8008A35", "0X8008A35", 0, 0, "", "", "", "");
       return;
-      localObject = bbej.a(paramView, (Context)localObject, "qapp://detail?param=" + adqy.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
-      if (localObject != null) {
-        ((bbds)localObject).c();
-      }
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    axqy.b(paramView, "CliOper", "", "", "0X8009075", "0X8009075", 0, 0, "", "", "", "");
   }
 }
 

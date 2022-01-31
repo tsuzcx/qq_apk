@@ -1,38 +1,69 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class aafd
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new aafe(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  View jdField_a_of_type_AndroidViewView;
-  
   public aafd(AccountManageActivity paramAccountManageActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
-    }
-    if (i == 0)
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    View localView2;
+    do
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
+      do
+      {
+        return;
+        localView1 = AccountManageActivity.a(this.a, paramView);
+        localView2 = AccountManageActivity.b(this.a, paramView);
+        if (AccountManageActivity.a(this.a) != null) {
+          break;
+        }
+        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        ((RotateSwitchImageView)paramView).b();
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).b();
+        }
+      } while (!AppSetting.d);
+      paramView.setContentDescription(this.a.getString(2131691106));
+      return;
+      if (AccountManageActivity.a(this.a) != paramView) {
+        break;
       }
+      AccountManageActivity.a(this.a).a();
+      localLayoutParams = localView2.getLayoutParams();
+      localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
+      localView2.setLayoutParams(localLayoutParams);
+      if ((localView1 instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView1).f();
+      }
+      AccountManageActivity.a(this.a, null);
+    } while (!AppSetting.d);
+    paramView.setContentDescription(this.a.getString(2131691118));
+    return;
+    AccountManageActivity.a(this.a).a();
+    ((RotateSwitchImageView)paramView).b();
+    AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
+    ViewGroup.LayoutParams localLayoutParams = localView2.getLayoutParams();
+    localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
+    localView2.setLayoutParams(localLayoutParams);
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).b();
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
+    View localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).f();
     }
-    return false;
+    AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
   }
 }
 

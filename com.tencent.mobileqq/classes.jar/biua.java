@@ -1,328 +1,202 @@
-import android.app.Dialog;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.graphics.Color;
+import android.app.FragmentTransaction;
+import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import dov.com.qq.im.ae.gif.AEStoryGIFPreviewActivity;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.10;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.4;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.5;
+import android.widget.TextView;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import dov.com.qq.im.BaseVMPeakActivity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class biua
   extends Fragment
+  implements bito
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
+  public static double a;
+  public static List<List<List<PointF>>> a;
+  public static List<List<float[]>> b;
+  private long jdField_a_of_type_Long = 9223372036854775807L;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bbgg jdField_a_of_type_Bbgg;
-  private biso jdField_a_of_type_Biso;
-  private bitg jdField_a_of_type_Bitg;
-  private bium jdField_a_of_type_Bium;
-  bius jdField_a_of_type_Bius;
-  private AEStoryGIFPreviewActivity jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bitj jdField_a_of_type_Bitj;
+  private bivf jdField_a_of_type_Bivf;
+  private bivi jdField_a_of_type_Bivi;
+  private bivj jdField_a_of_type_Bivj;
+  private bivs jdField_a_of_type_Bivs;
+  private bivt jdField_a_of_type_Bivt;
+  private BaseVMPeakActivity jdField_a_of_type_DovComQqImBaseVMPeakActivity;
   private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
   private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 1.0F;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private float c = 0.82F;
-  private float d = 0.16F;
+  private TextView b;
+  private List<bita> c = new ArrayList();
   
-  private int a(char paramChar)
+  static
   {
-    if ((paramChar == '\n') || (paramChar == '\r')) {
-      return 0;
-    }
-    if (paramChar < '') {
-      return 1;
-    }
-    return 2;
+    jdField_a_of_type_Double = 1.0D;
   }
   
-  public static biua a(String paramString, boolean paramBoolean)
+  public static biua a(String paramString, long paramLong)
   {
     biua localbiua = new biua();
     Bundle localBundle = new Bundle();
-    localBundle.putString("KEY_PNG_DIR_PATH", paramString);
-    localBundle.putBoolean("KEY_IS_MULTIPLE", paramBoolean);
+    localBundle.putString("KEY_PREVIEW_SOURCE_PATH", paramString);
+    localBundle.putLong("KEY_AVAILABLE_EMO_COUNT", paramLong);
     localbiua.setArguments(localBundle);
     return localbiua;
   }
   
-  public static biua a(String paramString, boolean paramBoolean, View paramView)
+  private void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
   {
-    paramString = a(paramString, paramBoolean);
-    paramString.a(paramView);
-    return paramString;
-  }
-  
-  private void a()
-  {
-    ((InputMethodManager)this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.getSystemService("input_method")).toggleSoftInput(1, 2);
-  }
-  
-  private void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  private void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {
-      return;
-    }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    localMarginLayoutParams.topMargin = paramInt;
-    paramView.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  private void a(bium parambium)
-  {
-    this.jdField_a_of_type_Bium = parambium;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    bizg.a().i(paramString1);
-    bizg.a().j(paramString2);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    if (paramBoolean)
-    {
-      if (str.equals(""))
-      {
-        if (this.jdField_a_of_type_Biso != null) {
-          this.jdField_a_of_type_Biso.d();
-        }
-        this.jdField_a_of_type_Bius.a();
-        a("none", this.jdField_a_of_type_Bitg.a());
-        getFragmentManager().popBackStack();
-        return;
-      }
-      d();
-      b(str);
-      return;
-    }
-    getFragmentManager().popBackStack();
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        h();
-        Object localObject = (bivb)this.jdField_a_of_type_Bius.c().a();
-        if ((localObject != null) && (((bivb)localObject).jdField_a_of_type_JavaLangString != null)) {
-          bbdj.a(((bivb)localObject).jdField_a_of_type_JavaLangString);
-        }
-        localObject = new bivi(this.jdField_b_of_type_JavaLangString);
-        b();
-        String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-        ((bivi)localObject).a(str, 55, this.jdField_a_of_type_Bitg.a(), this.jdField_a_of_type_Bitg.b(), bawz.a(getActivity(), 4.0F), this.jdField_a_of_type_Float, this.c, this.jdField_b_of_type_Float, this.d);
-        ((bivi)localObject).a(new biug(this, str));
-        return;
-      }
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.runOnUiThread(new AEGIFTextEditFragment.4(this));
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    e();
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("qipc_param_camera_emo_png_dirs", paramArrayList1);
+    localBundle.putStringArrayList("qipc_param_camera_emo_texts", paramArrayList2);
+    localBundle.putStringArrayList("qipc_param_camera_emo_snapshots", paramArrayList3);
+    QIPCClientHelper.getInstance().callServer("CameraEmoIpcServer", "qipc_action_camera_emo_create_gif_and_upload", localBundle, new biuj(this));
+    getActivity().setResult(201);
+    getActivity().finish();
   }
   
   private void b()
   {
-    if (((AEGIFOutlineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371163) != null) && (this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().indexOf('\n') > 0))
-    {
-      this.c = 0.73F;
-      this.d = 0.3F;
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    AppInterface localAppInterface = QQStoryContext.a();
-    biqf localbiqf = (biqf)localAppInterface.getBusinessHandler(3);
-    localAppInterface.addObserver(new biuc(this, localAppInterface));
-    localbiqf.c(paramString);
-  }
-  
-  private void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        h();
-        getFragmentManager().popBackStack();
-        return;
-      }
-      this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.runOnUiThread(new AEGIFTextEditFragment.5(this));
-      return;
-    }
-    e();
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375455);
+    ViewGroup.LayoutParams localLayoutParams = localRelativeLayout.getLayoutParams();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = ((int)(DeviceUtils.getScreenHeight(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity) * 0.08F));
+    localRelativeLayout.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367062).setOnClickListener(new biuc(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378375));
+    int i = (int)(DeviceUtils.getScreenWidth(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity) * 0.04F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, baxn.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 9.0F), 0, baxn.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 9.0F));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375564));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new biud(this));
+    c();
   }
   
   private void c()
   {
-    ((InputMethodManager)this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.getWindow().getDecorView().getRootView().getWindowToken(), 0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375558));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, 2));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new biue(this));
+    d();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity, 2131755791);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559121);
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    Object localObject = new bita();
+    ((bita)localObject).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
+    ((bita)localObject).jdField_a_of_type_JavaLangString = null;
+    ((bita)localObject).b = 2;
+    this.c.add(0, new bita());
+    this.jdField_a_of_type_Bitj = new bitj(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, this.c);
+    this.jdField_a_of_type_Bitj.a(this);
+    this.jdField_a_of_type_Bitj.a(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bitj);
+    localObject = new bivq();
+    ((bivq)localObject).a = 0;
+    this.jdField_a_of_type_Bivt.a((bivq)localObject);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity, 230);
-    this.jdField_a_of_type_Bbgg.setMessage(ajyc.a(2131699972));
-    this.jdField_a_of_type_Bbgg.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bbgg.setPositiveButton(ajyc.a(2131699971), new biuh(this));
-    this.jdField_a_of_type_Bbgg.show();
+    this.jdField_a_of_type_Bivj = ((bivj)bijo.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity).a(bivj.class));
+    this.jdField_a_of_type_Bitj.a(this.jdField_a_of_type_Bivj, this.jdField_a_of_type_DovComQqImBaseVMPeakActivity);
+    this.jdField_a_of_type_Bivj.b().a("");
+    this.jdField_a_of_type_Bivj.a().a(new bitd("#ccffffff", "#000000"));
+    this.jdField_a_of_type_Bivj.c().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new biuf(this));
+    this.jdField_a_of_type_Bivj.a();
+    this.jdField_a_of_type_Bivf = ((bivf)bijo.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity).a(bivf.class));
+    this.jdField_a_of_type_Bivi = ((bivi)bijo.a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, bjnf.a()).a(bivi.class));
+    this.jdField_a_of_type_Bivi.a().a(this.jdField_a_of_type_DovComQqImBaseVMPeakActivity, new biug(this));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Bius = ((bius)biix.a(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity).a(bius.class));
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375337));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375422));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363684));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375553));
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_Bitg = new bitg(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Bitg.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bitg);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377088).setOnClickListener(new biui(this));
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377089).setOnClickListener(new biuj(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new biuk(this));
-  }
-  
-  private void h()
-  {
-    String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str2 = this.jdField_a_of_type_Bitg.a();
-    int i = this.jdField_a_of_type_Bitg.a();
-    String str3 = this.jdField_a_of_type_Bitg.b();
-    if (this.jdField_a_of_type_Biso != null) {
-      this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.runOnUiThread(new AEGIFTextEditFragment.10(this, str1, str2, str3, i));
-    }
-    this.jdField_a_of_type_Bius.a(str1, i);
-    a(str1, str2);
+    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(0);
+    localObject = biur.a(this.jdField_a_of_type_JavaLangString, true, (View)localObject);
+    getFragmentManager().beginTransaction().add(2131366671, (Fragment)localObject).addToBackStack(null).commit();
   }
   
   protected int a()
   {
-    return 2131558525;
+    return 2131558519;
   }
   
-  public void a(View paramView1, View paramView2, View paramView3)
+  public void a()
   {
-    paramView1.getViewTreeObserver().addOnGlobalLayoutListener(new biud(this, paramView1, paramView3, paramView2));
-  }
-  
-  public void a(biso parambiso)
-  {
-    this.jdField_a_of_type_Biso = parambiso;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376297));
-    this.jdField_a_of_type_Bitg.a(this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor(paramString));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
-    if ((this.jdField_a_of_type_AndroidWidgetEditText.length() > 0) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new biul(this) });
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new biue(this));
+    f();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_b_of_type_JavaLangString = getArguments().getString("KEY_PNG_DIR_PATH");
-    this.jdField_b_of_type_Boolean = getArguments().getBoolean("KEY_IS_MULTIPLE", false);
-    this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity = ((AEStoryGIFPreviewActivity)getActivity());
-    f();
+    this.jdField_a_of_type_DovComQqImBaseVMPeakActivity = ((BaseVMPeakActivity)getActivity());
+    paramBundle = getArguments().getString("KEY_PREVIEW_SOURCE_PATH");
+    this.jdField_a_of_type_Long = getArguments().getLong("KEY_AVAILABLE_EMO_COUNT");
+    QLog.d("AEGIFChunkPreviewFragment", 4, "availableEmoCount = " + this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bivt = new bivt(paramBundle, jdField_a_of_type_JavaUtilList, jdField_b_of_type_JavaUtilList, jdField_a_of_type_Double, getActivity());
+    this.jdField_a_of_type_Bivt.a(new biub(this));
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashMap.put("happy", ajya.a(2131699968));
+    this.jdField_a_of_type_JavaUtilHashMap.put("neutral", ajya.a(2131699969));
+    this.jdField_a_of_type_JavaUtilHashMap.put("sad", ajya.a(2131699974));
+    this.jdField_a_of_type_JavaUtilHashMap.put("anger", ajya.a(2131699972));
+    this.jdField_a_of_type_JavaUtilHashMap.put("disgust", ajya.a(2131699970));
+    this.jdField_a_of_type_JavaUtilHashMap.put("fear", ajya.a(2131699977));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(a(), paramViewGroup, false));
-    g();
-    if (this.jdField_a_of_type_Biso != null)
+    b();
+    e();
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    bivt localbivt;
+    if (this.jdField_a_of_type_Bivt != null)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Biso.a();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Biso.a();
+      localbivt = this.jdField_a_of_type_Bivt;
+      if (this.jdField_a_of_type_Boolean) {
+        break label31;
+      }
     }
-    for (;;)
+    label31:
+    for (boolean bool = true;; bool = false)
     {
-      a(this.jdField_a_of_type_Bitg.a());
-      a();
-      return this.jdField_a_of_type_AndroidViewViewGroup;
-      this.jdField_a_of_type_JavaLangString = ((String)this.jdField_a_of_type_Bius.b().a());
+      localbivt.a(bool);
+      return;
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    c();
+    bizt.a().H();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-  }
-  
-  public void onViewCreated(View paramView, Bundle paramBundle)
-  {
-    super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new biub(this));
-    a(new biuf(this));
-    a(this.jdField_a_of_type_DovComQqImAeGifAEStoryGIFPreviewActivity.findViewById(2131375337), this.jdField_a_of_type_AndroidWidgetEditText, this.jdField_b_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_a_of_type_Boolean = false;
+    bizx.a().j();
   }
 }
 

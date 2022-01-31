@@ -1,17 +1,18 @@
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
 
-public class ahuo
-  implements Camera.FaceDetectionListener
+class ahuo
+  implements View.OnLayoutChangeListener
 {
-  public ahuo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  ahuo(ahun paramahun) {}
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (QLog.isColorLevel()) {}
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setText(ajya.a(2131707456) + this.a.jdField_a_of_type_Int + "%");
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setVisibility(0);
   }
 }
 

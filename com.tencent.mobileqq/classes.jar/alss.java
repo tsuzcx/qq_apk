@@ -1,12 +1,13 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public final class alss
-  implements FileFilter
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public boolean accept(File paramFile)
+  public HandlerThread createHanderThread(String paramString)
   {
-    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 

@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
 class alsg
-  implements ajtg
+  implements alsj
 {
-  alsg(alsc paramalsc) {}
+  alsg(alsb paramalsb) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(alsm paramalsm, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
-      return;
-    }
-    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
+    this.a.a((alsn)paramalsm, paramBoolean, paramArrayOfByte);
   }
 }
 

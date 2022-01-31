@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahab;
+import agzz;
+import ahef;
+import aheg;
 import aheh;
 import ahei;
 import ahej;
 import ahek;
-import ahel;
-import ahem;
-import ahiy;
-import ajyc;
+import ahiw;
+import ajya;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,9 +21,9 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbjw;
-import bgwk;
-import bgwr;
+import bbkk;
+import bgxb;
+import bgxi;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -49,7 +49,7 @@ public class DrawHbFragment
   
   public DrawHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new ahem(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new ahek(this);
   }
   
   private void a()
@@ -68,24 +68,24 @@ public class DrawHbFragment
       a(false);
       return;
     }
-    if ((bgwk.a(str1) <= 0.0F) || (bgwk.a(str2) <= 0.0F))
+    if ((bgxb.a(str1) <= 0.0F) || (bgxb.a(str2) <= 0.0F))
     {
       a(false);
       return;
     }
     a(true);
-    str1 = getString(2131697062) + str2 + ajyc.a(2131703529);
+    str1 = getString(2131697063) + str2 + ajya.a(2131703540);
     this.jdField_a_of_type_AndroidWidgetButton.setText(str1);
   }
   
   private void a(View paramView, Bundle paramBundle)
   {
-    bgwr.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo);
+    bgxi.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo);
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131370982));
-    this.b = ((EditText)paramView.findViewById(2131362530));
+    this.b = ((EditText)paramView.findViewById(2131362529));
     this.b.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363566));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378380));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363565));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378385));
     try
     {
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.drawParam))
@@ -101,7 +101,7 @@ public class DrawHbFragment
       if (QLog.isColorLevel()) {
         QLog.i("DrawHbFragment", 2, "bizParams:" + paramBundle);
       }
-      if (!bbjw.a(paramBundle))
+      if (!bbkk.a(paramBundle))
       {
         paramBundle = new JSONObject(paramBundle).optString("subject", "");
         if ((!TextUtils.isEmpty(paramBundle)) && (a(paramBundle))) {
@@ -116,22 +116,22 @@ public class DrawHbFragment
         paramBundle.printStackTrace();
         continue;
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.people_num)) {
-          this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajyc.a(2131703530) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.people_num + ajyc.a(2131703531));
+          this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131703541) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.people_num + ajya.a(2131703542));
         }
         this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       }
     }
-    if (bgwr.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.recv_type))
+    if (bgxi.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
       paramView.findViewById(2131377644).setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ahei(this));
-      ahiy.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aheg(this));
+      ahiw.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368965));
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView = new ChooseItemView(getActivity());
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.drawParam, new ahej(this), new ahek(this), new ahel(this, paramView));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.drawParam, new aheh(this), new ahei(this), new ahej(this, paramView));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
       paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.getLayoutParams();
       paramView.width = -1;
@@ -147,7 +147,7 @@ public class DrawHbFragment
   {
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697062));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697063));
     }
   }
   
@@ -206,7 +206,7 @@ public class DrawHbFragment
     localMap.put("wishing", this.jdField_a_of_type_JavaLangString);
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bgwk.a(str2));
+    localMap.put("total_amount", bgxb.a(str2));
     localMap.put("channel", "" + this.channel);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.skinId)) {
       localMap.put("skin_id", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawHbFragment$DrawHbBundleInfo.skinId);
@@ -228,8 +228,8 @@ public class DrawHbFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561551, null);
-    paramLayoutInflater.setOnClickListener(new aheh(this));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561550, null);
+    paramLayoutInflater.setOnClickListener(new ahef(this));
     a(paramLayoutInflater, getArguments());
     return paramLayoutInflater;
   }

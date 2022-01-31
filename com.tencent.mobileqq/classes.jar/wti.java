@@ -1,22 +1,23 @@
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.qphone.base.util.QLog;
 
-class wti
-  extends akdo
+public class wti
 {
-  WeakReference<wtk> a;
+  private static SharedPreferences a;
   
-  public wti(wtk paramwtk)
+  public static SharedPreferences a(Context paramContext)
   {
-    this.a = new WeakReference(paramwtk);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    wtk localwtk = (wtk)this.a.get();
-    if (localwtk != null) {
-      localwtk.a(paramBoolean, paramString, false);
+    if (a == null)
+    {
+      if (paramContext == null)
+      {
+        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
+        return null;
+      }
+      a = paramContext.getSharedPreferences("biz_subscribe", 0);
     }
+    return a;
   }
 }
 

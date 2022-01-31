@@ -1,25 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class agjd
-  implements agjx
+  implements DialogInterface.OnClickListener
 {
   public agjd(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
-    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("bind_mobile", this.a.a());
-      localIntent.putExtra("check_permission_result", paramContext);
-      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      return;
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

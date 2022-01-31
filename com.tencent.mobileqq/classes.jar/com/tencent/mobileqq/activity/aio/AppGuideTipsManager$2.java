@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acts;
-import bbfd;
+import acto;
+import bbfr;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AppGuideTipsManager$2
   implements Runnable
 {
-  public AppGuideTipsManager$2(acts paramacts) {}
+  public AppGuideTipsManager$2(acto paramacto) {}
   
   public void run()
   {
-    acts.b(this.this$0, bbfd.a(acts.a(this.this$0).getApp(), "com.tencent.tim"));
+    acto.b(this.this$0, bbfr.a(acto.a(this.this$0).getApp(), "com.tencent.tim"));
   }
 }
 

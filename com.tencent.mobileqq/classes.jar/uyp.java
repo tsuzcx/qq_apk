@@ -1,11 +1,24 @@
-final class uyp
-  extends ThreadLocal<StringBuilder>
+import java.io.File;
+import java.lang.ref.WeakReference;
+
+public class uyp
 {
-  protected StringBuilder a()
+  private static final String jdField_a_of_type_JavaLangString = ajsd.aV + "/Tencent/com/tencent/mobileqq/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
+  
+  public static void a(uys<Integer> paramuys)
   {
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    localStringBuilder.setLength(0);
-    return localStringBuilder;
+    paramuys = new WeakReference(paramuys);
+    uzk localuzk = new uzk(null);
+    localuzk.a(new uyq(paramuys));
+    localuzk.a(new uyr(paramuys));
+    localuzk.a();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
   }
 }
 

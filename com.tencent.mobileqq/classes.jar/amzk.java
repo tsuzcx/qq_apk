@@ -1,45 +1,56 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amzk
+  extends amyp<amzj>
 {
-  private int a = 1;
-  
-  @NonNull
-  public static amzk a()
+  public int a()
   {
-    return new amzk();
+    return 465;
   }
   
   @NonNull
-  public static amzk a(@Nullable String paramString)
+  public amzj a()
   {
-    amzk localamzk = new amzk();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
+    }
+    return new amzj();
+  }
+  
+  @NonNull
+  public amzj a(@NonNull amph[] paramArrayOfamph)
+  {
+    amzj localamzj = new amzj();
     try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        localamzk.a = new JSONObject(paramString).getInt("use_apm");
-      }
+      localamzj.a = new JSONObject(paramArrayOfamph[0].a).optBoolean("showVipIcon", false);
       if (QLog.isColorLevel()) {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localamzk.toString());
+        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localamzj.a);
       }
-      return localamzk;
+      return localamzj;
     }
-    catch (Exception paramString)
+    catch (JSONException paramArrayOfamph)
     {
-      for (;;)
-      {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
-      }
+      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfamph);
     }
+    return localamzj;
   }
   
-  public String toString()
+  public Class<amzj> a()
   {
-    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
+    return amzj.class;
+  }
+  
+  @NonNull
+  public amzj b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
+    }
+    return new amzj();
   }
 }
 

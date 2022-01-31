@@ -1,36 +1,33 @@
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public class tly
+public class tly<REQ extends MessageMicro>
+  extends sys<tnw>
 {
-  public int a;
-  public String a;
-  public List<LikeEntry> a;
-  public int b;
+  public final Bundle a;
+  public final REQ a;
+  public final String a;
   
-  public boolean equals(Object paramObject)
+  public tly(String paramString, REQ paramREQ, Bundle paramBundle)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (tly)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public int hashCode()
+  public String a()
   {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public syn a(byte[] paramArrayOfByte)
+  {
+    return new tnw(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
   }
 }
 

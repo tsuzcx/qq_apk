@@ -1,46 +1,51 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
-class osu
-  implements osy
+public class osu
+  implements Handler.Callback
 {
-  osu(ost paramost) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final osv jdField_a_of_type_Osv;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public int a(Bundle paramBundle)
+  public osu(osv paramosv)
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
+    this.jdField_a_of_type_Osv = paramosv;
+    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Osv.a(paramBundle))
+        {
+        }
       }
-      onk.a(onk.a(), true, j, System.currentTimeMillis() - l);
-      return i;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.j(paramBundle);
-      continue;
-      i = this.a.k(paramBundle);
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

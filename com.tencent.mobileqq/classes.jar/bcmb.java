@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
+import android.view.animation.Interpolator;
 
 public class bcmb
-  implements View.OnClickListener
+  implements Interpolator
 {
-  public bcmb(GridListView paramGridListView) {}
-  
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    int i = ((Integer)paramView.getTag(2131361809)).intValue();
-    this.a.a.onItemClick(this.a, paramView, i, 0L);
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
   }
 }
 

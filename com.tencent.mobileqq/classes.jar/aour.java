@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.concurrent.Executor;
-
 class aour
-  implements apua
+  extends aowr
 {
-  aour(aouq paramaouq, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
+  aour(aouo paramaouo, aout paramaout) {}
   
-  public void a(String paramString)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
-    apuq.a().execute(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aout.a(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Aout.a(paramInt, paramString1);
   }
 }
 

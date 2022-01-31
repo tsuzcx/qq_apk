@@ -1,54 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
+import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import mqq.os.MqqHandler;
 
 public class qjd
+  implements ITMAssistantDownloadClientListener
 {
-  public static void a(long paramLong, KandianUrlImageView paramKandianUrlImageView)
+  public qjd(ADVideoAppDownloadManager paramADVideoAppDownloadManager) {}
+  
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2) {}
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new qje(paramLong, paramKandianUrlImageView));
-    if (localReadInJoyUserInfo != null) {
-      b(localReadInJoyUserInfo, paramKandianUrlImageView);
-    }
+    ThreadManager.getSubThreadHandler().post(new ADVideoAppDownloadManager.5.1(this, paramString1, paramInt1));
   }
   
-  private static void b(ReadInJoyUserInfo paramReadInJoyUserInfo, KandianUrlImageView paramKandianUrlImageView)
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
   {
-    if (paramReadInJoyUserInfo == null) {
-      QLog.d("ReadInJoyVIconHelper", 2, "[setVIconWithUserInfo], userInfo is null.");
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramKandianUrlImageView == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("ReadInJoyVIconHelper", 2, "[refreshVIcon], userInfo = " + paramReadInJoyUserInfo);
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
-        {
-          paramKandianUrlImageView.setImageResource(2130841262);
-          paramKandianUrlImageView.setVisibility(0);
-          paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.smallIconUrl));
-          return;
-        }
-      }
-      catch (MalformedURLException paramReadInJoyUserInfo)
-      {
-        QLog.e("ReadInJoyVIconHelper", 1, "[refreshVIcon], e = " + paramReadInJoyUserInfo);
-        return;
-      }
-    } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
-    paramKandianUrlImageView.setImageResource(2130841262);
-    paramKandianUrlImageView.setVisibility(0);
-    paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.largeIconUrl));
+    QLog.e("ADVideoAppDownloadManager", 1, "[UniformDL] ABSdkdownload service invalid ");
   }
 }
 

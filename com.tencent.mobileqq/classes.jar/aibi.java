@@ -1,6 +1,16 @@
-public abstract interface aibi
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+
+public class aibi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString);
+  public aibi(RotationSeekBar paramRotationSeekBar) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+  }
 }
 
 

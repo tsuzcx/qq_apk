@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfwa;
+import bfwr;
 import com.tencent.common.app.BaseApplicationImpl;
-import vzo;
+import vzl;
 
 public class AdvancedTipsBar
   extends TipsBar
@@ -26,7 +26,7 @@ public class AdvancedTipsBar
   
   public void a()
   {
-    if (!bfwa.a()) {}
+    if (!bfwr.a()) {}
     for (int i = Color.parseColor("#03081A");; i = Color.parseColor("#FFFFFF"))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
@@ -49,7 +49,7 @@ public class AdvancedTipsBar
     {
       this.b.setId(2131377344);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      localLayoutParams.rightMargin = vzo.a(BaseApplicationImpl.context, 16.0F);
+      localLayoutParams.rightMargin = vzl.a(BaseApplicationImpl.context, 16.0F);
       this.b.setLayoutParams(localLayoutParams);
     }
   }
@@ -63,8 +63,8 @@ public class AdvancedTipsBar
       this.jdField_a_of_type_AndroidWidgetButton.setId(2131377343);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = vzo.a(BaseApplicationImpl.context, 44.0F);
-      if (bfwa.a()) {
+      localLayoutParams.rightMargin = vzl.a(BaseApplicationImpl.context, 44.0F);
+      if (bfwr.a()) {
         break label110;
       }
     }

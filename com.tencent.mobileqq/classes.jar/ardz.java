@@ -1,46 +1,237 @@
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
 import java.io.File;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicLong;
 
-class ardz
-  implements arhs
+public class ardz
+  implements PluginManagerUpdater
 {
-  ardz(ardx paramardx, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
+  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("IVShadowCdnPmUpdater", 0);
+  ardy jdField_a_of_type_Ardy;
+  private final IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+  private final File jdField_a_of_type_JavaIoFile;
+  private final String jdField_a_of_type_JavaLangString;
+  private Future<File> jdField_a_of_type_JavaUtilConcurrentFuture;
+  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(System.currentTimeMillis() - 180000L);
+  private final boolean jdField_a_of_type_Boolean;
+  private final File jdField_b_of_type_JavaIoFile;
+  private final String jdField_b_of_type_JavaLangString;
+  private final String c;
+  private final String d;
+  private String e;
   
-  public void a()
+  public ardz(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
-    if (!ardx.a(this.jdField_a_of_type_Ardx).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(ajyc.a(2131701457) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    }
-    if (ardx.b(this.jdField_a_of_type_Ardx)) {}
-    for (String str = "33669797";; str = "33669802")
+    this.e = paramString3;
+    this.jdField_b_of_type_JavaIoFile = new File(new File(paramContext.getFilesDir(), "IVShadowCdnPmUpdater"), paramString1);
+    this.jdField_b_of_type_JavaIoFile.mkdirs();
+    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_b_of_type_JavaIoFile, paramString1 + this.e + "_pm.temp");
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = ("pm_name_" + paramString1 + "_" + paramString2 + "_" + this.e);
+    this.d = ("wasUpdate_" + paramString1 + "_" + this.e);
+    this.jdField_a_of_type_Boolean = "Now".equals(paramString1);
+    this.jdField_a_of_type_Ardy = new ardy(paramContext, paramString1, paramString3);
+    if (this.jdField_a_of_type_Boolean)
     {
-      argi.b(str);
-      ardx.a(this.jdField_a_of_type_Ardx).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      paramContext = "9";
+      if (!bbkk.a(paramString2)) {
+        paramContext = paramString2.substring(paramString2.length() - 1);
+      }
+      this.jdField_a_of_type_JavaLangString = ("http://dlied5.qq.com/now/pluginmanager/" + "" + this.e + "/ShadowPluginManager_nowPlugin_" + paramContext);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "use cdnupdater url = " + this.jdField_a_of_type_JavaLangString);
+      }
       return;
+      if (!"Reader".equals(paramString1)) {
+        break;
+      }
+      if ((paramString2 != null) && (paramString2.endsWith("0"))) {
+        this.jdField_a_of_type_JavaLangString = "http://down.qq.com/reading/android/plugin/release/4/reader-plugin-manager-release-gray.apk";
+      } else {
+        this.jdField_a_of_type_JavaLangString = "http://down.qq.com/reading/android/plugin/release/4/reader-plugin-manager-release.apk";
+      }
+    }
+    if ((paramString2 != null) && (paramString2.endsWith("0"))) {}
+    for (paramContext = "_A";; paramContext = "_B")
+    {
+      this.jdField_a_of_type_JavaLangString = ("http://dldir1.qq.com/huayang/Android/ShadowPluginManager1_1_" + paramString1 + paramContext);
+      break;
     }
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  private void a(File paramFile)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.c, paramFile.getAbsolutePath()).apply();
+  }
+  
+  @SuppressLint({"ApplySharedPref"})
+  private void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.d, paramBoolean).commit();
     if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed ");
-    }
-    if (ardx.b(this.jdField_a_of_type_Ardx)) {}
-    for (paramString = "33669798";; paramString = "33669803")
-    {
-      argi.b(paramString);
-      ardx.a(this.jdField_a_of_type_Ardx).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+      QLog.i("shadow::CdnPmUpdater", 2, "setWasUpdating:" + paramBoolean);
     }
   }
   
-  public void a(long paramLong1, long paramLong2, int paramInt) {}
+  private boolean a()
+  {
+    boolean bool1 = true;
+    boolean bool2 = true;
+    File localFile = getLatest();
+    if (localFile == null) {}
+    for (;;)
+    {
+      return bool2;
+      long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+      if (l <= 180000L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("shadow::CdnPmUpdater", 2, "短时间内不重复检测interval==" + l);
+        }
+        return false;
+      }
+      try
+      {
+        localObject1 = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
+        if ((localObject1 instanceof HttpURLConnection)) {
+          break label148;
+        }
+        throw new Error(this.jdField_a_of_type_JavaLangString + ajya.a(2131701469));
+      }
+      finally
+      {
+        localObject1 = null;
+      }
+      label135:
+      if (localObject1 != null) {
+        ((HttpURLConnection)localObject1).disconnect();
+      }
+      throw localObject2;
+      label148:
+      Object localObject1 = (HttpURLConnection)localObject1;
+      try
+      {
+        if (((HttpURLConnection)localObject1).getResponseCode() != 200) {
+          throw new Error(ajya.a(2131701471) + 200 + ajya.a(2131701472) + ((HttpURLConnection)localObject1).getResponseCode());
+        }
+        l = localObject2.length();
+        int i = ((HttpURLConnection)localObject1).getContentLength();
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+        if (l != i) {}
+        for (;;)
+        {
+          bool2 = bool1;
+          if (localObject1 == null) {
+            break;
+          }
+          ((HttpURLConnection)localObject1).disconnect();
+          return bool1;
+          bool1 = false;
+        }
+        break label135;
+      }
+      finally {}
+    }
+  }
+  
+  private boolean b()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.d, false);
+  }
+  
+  public File a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("shadow::CdnPmUpdater", 2, "start download ");
+    }
+    File localFile = new File(this.jdField_b_of_type_JavaIoFile, this.jdField_b_of_type_JavaLangString + "_" + Long.valueOf(new StringBuilder().append(System.currentTimeMillis()).append("").toString(), 36) + ".apk");
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Exception[] arrayOfException = new Exception[1];
+    long l = System.currentTimeMillis();
+    arhw localarhw = new arhw();
+    localarhw.a(BaseApplicationImpl.getContext());
+    localarhw.a(this.jdField_a_of_type_JavaLangString, new areb(this, localFile, arrayOfException, l, localCountDownLatch));
+    localarhw.b(arhy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+    localCountDownLatch.await();
+    if (arrayOfException[0] == null)
+    {
+      localFile.setLastModified(localFile.lastModified() + 1000L);
+      a(localFile);
+      return localFile;
+    }
+    throw arrayOfException[0];
+  }
+  
+  protected void a()
+  {
+    File localFile = getLatest();
+    if (localFile != null) {
+      localFile.delete();
+    }
+  }
+  
+  public File getLatest()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, null);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {
+        return localObject;
+      }
+    }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    throw new UnsupportedOperationException(ajya.a(2131701470));
+  }
+  
+  public Future<File> update()
+  {
+    a(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::CdnPmUpdater", 2, "update");
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "33669796";; str = "33669801")
+    {
+      argk.b(str);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("update").report();
+      if ((this.jdField_a_of_type_JavaUtilConcurrentFuture == null) || (this.jdField_a_of_type_JavaUtilConcurrentFuture.isDone())) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "上一次update还没结束，返回相同Future");
+      }
+      return this.jdField_a_of_type_JavaUtilConcurrentFuture;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = akhk.a(192).submit(new area(this));
+    return this.jdField_a_of_type_JavaUtilConcurrentFuture;
+  }
+  
+  public boolean wasUpdating()
+  {
+    return b();
+  }
 }
 
 

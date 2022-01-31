@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richstatus.sign;
 
-import awfk;
+import awfm;
 
 public class BaseSignViewHolder$3
   implements Runnable
 {
-  public BaseSignViewHolder$3(awfk paramawfk) {}
+  public BaseSignViewHolder$3(awfm paramawfm) {}
   
   public void run()
   {

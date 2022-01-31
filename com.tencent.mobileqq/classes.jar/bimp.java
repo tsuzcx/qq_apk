@@ -1,14 +1,6 @@
-class bimp
-  implements xfd
+public abstract interface bimp
 {
-  bimp(bimj parambimj, Runnable paramRunnable) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract int a();
 }
 
 

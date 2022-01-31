@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.util.SparseArray;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,14 +16,14 @@ class HotChatCenterItemBuilder$1
   public void run()
   {
     ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.this$0).get()).getEntityManagerFactory().createEntityManager();
-    HotChatCenterItemBuilder.a(this.this$0, ApolloGameUtil.a((aukn)???));
+    HotChatCenterItemBuilder.a(this.this$0, ApolloGameUtil.a((aukp)???));
     if ((HotChatCenterItemBuilder.a(this.this$0) != null) && (HotChatCenterItemBuilder.a(this.this$0).size() > 0))
     {
       SparseArray localSparseArray = (SparseArray)HotChatCenterItemBuilder.a(this.this$0).get(this.a);
       if ((localSparseArray != null) && (localSparseArray.size() > 0))
       {
         if ((HotChatCenterItemBuilder.a(this.this$0) != null) && (HotChatCenterItemBuilder.a(this.this$0).get() != null)) {
-          ApolloGameUtil.a((aukn)???, ApolloUtil.a(localSparseArray));
+          ApolloGameUtil.a((aukp)???, ApolloUtil.a(localSparseArray));
         }
         synchronized (HotChatCenterItemBuilder.a(this.this$0))
         {

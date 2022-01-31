@@ -1,16 +1,39 @@
-import android.os.SystemClock;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class yzu
-  implements admv
 {
-  public yzu(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
+  public float a;
+  public adlj a;
+  public SessionInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a() {}
-  
-  public void b()
+  public yzu(Bundle paramBundle)
   {
-    GdtCanvasFormComponentView.a(this.a, SystemClock.elapsedRealtime());
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
+    this.b = paramBundle.getString("appView");
+    this.c = paramBundle.getString("appMinVersion");
+    this.d = paramBundle.getString("metaData");
+    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 0.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+  }
+  
+  public static Bundle a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, String paramString5, Bundle paramBundle)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    localBundle.putString("appName", paramString1);
+    localBundle.putString("appMinVersion", paramString3);
+    localBundle.putString("appView", paramString2);
+    localBundle.putString("metaData", paramString4);
+    localBundle.putFloat("scale", paramFloat);
+    localBundle.putString("troopUin", paramString5);
+    return localBundle;
   }
 }
 

@@ -1,20 +1,23 @@
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class biwk
+class biwk
+  implements bjos<Boolean>
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  biwk(biwh parambiwh) {}
   
-  public biwk() {}
-  
-  public biwk(@NonNull biwk parambiwk)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a = parambiwk.a;
-    this.b = parambiwk.b;
-    this.c = parambiwk.c;
-    this.d = parambiwk.d;
+    if (paramBoolean == null) {
+      return;
+    }
+    View localView = biwh.a(this.a);
+    if ((paramBoolean.booleanValue()) && (biwh.b(this.a))) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
 }
 

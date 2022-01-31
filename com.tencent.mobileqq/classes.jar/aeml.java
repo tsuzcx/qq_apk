@@ -1,21 +1,23 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import java.util.List;
 
 class aeml
-  implements xeb
+  extends ajvq
 {
-  aeml(aemj paramaemj) {}
+  aeml(aemh paramaemh) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    actn.n = true;
-    this.a.p.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
-    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
-    aoee.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
+    if (paramBoolean)
+    {
+      this.a.b = aoej.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.t(false);
+      }
+    }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,12 +1,18 @@
-class aadq
-  implements aacl
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
+
+public class aadq
+  extends aabm
 {
-  aadq(aadp paramaadp) {}
-  
-  public void a(asiu paramasiu, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabi paramaabi)
   {
-    aadp.a(this.a, paramasiu);
-    aadp.a(this.a, paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    aaep.a(paramaabi, aabk.a);
+    return true;
   }
 }
 

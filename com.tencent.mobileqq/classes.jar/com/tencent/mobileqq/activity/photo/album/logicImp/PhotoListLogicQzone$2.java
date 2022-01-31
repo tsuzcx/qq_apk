@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agug;
+import ague;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
@@ -11,7 +11,7 @@ import mqq.util.WeakReference;
 public class PhotoListLogicQzone$2
   implements Runnable
 {
-  public PhotoListLogicQzone$2(agug paramagug, List paramList) {}
+  public PhotoListLogicQzone$2(ague paramague, List paramList) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class PhotoListLogicQzone$2
           i += 1;
           break;
           if ((localLocalMediaInfo.mediaWidth / localLocalMediaInfo.mediaHeight == 2.0F) || (localLocalMediaInfo.mediaWidth / localLocalMediaInfo.mediaHeight >= 4.0F) || (localLocalMediaInfo.mediaHeight / localLocalMediaInfo.mediaWidth >= 4.0F)) {
-            agug.a(this.this$0, localLocalMediaInfo);
+            ague.a(this.this$0, localLocalMediaInfo);
           } else {
             localLocalMediaInfo.panoramaPhotoType = 3;
           }

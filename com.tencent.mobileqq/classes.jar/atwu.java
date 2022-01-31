@@ -1,8 +1,11 @@
 public class atwu
-  extends atwv
+  extends atwx
 {
+  public int a;
   public String a;
+  public int b;
   public String b;
+  public int c;
 }
 
 

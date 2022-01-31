@@ -1,22 +1,23 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class aqhj
   implements View.OnClickListener
 {
-  public aqhj(DeleteFaceFragment paramDeleteFaceFragment) {}
+  public aqhj(CommonTabFragment paramCommonTabFragment) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeleteFaceFragment", 2, "user cancel delete");
-    }
-    if ((DeleteFaceFragment.a(this.a) != null) && (DeleteFaceFragment.a(this.a).isShowing())) {
-      DeleteFaceFragment.a(this.a).dismiss();
-    }
+    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
+    do
+    {
+      return;
+      paramView = this.a.a.mWebview.getPluginEngine();
+    } while (paramView == null);
+    paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
   }
 }
 

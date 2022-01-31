@@ -1,10 +1,8 @@
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -14,132 +12,163 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class axwx
-  extends axuo
+  extends axuq
 {
+  private void a(Context paramContext, View paramView, axwy paramaxwy, Bundle paramBundle)
+  {
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
+    {
+      paramContext = paramContext.getResources();
+      if (paramaxwy.a != null)
+      {
+        paramBundle = new RelativeLayout.LayoutParams(-1, -1);
+        paramaxwy.a.setId(2131362849);
+        paramBundle.addRule(9, -1);
+        ((RelativeLayout)paramView).addView(paramaxwy.a);
+      }
+      if (paramaxwy.b != null)
+      {
+        paramBundle = new RelativeLayout.LayoutParams(-1, -2);
+        paramBundle.addRule(9);
+        if (ajwc.a() <= 16.0F) {
+          break label146;
+        }
+      }
+    }
+    label146:
+    for (int i = actj.a(5.0F, paramContext);; i = actj.a(10.0F, paramContext))
+    {
+      paramBundle.setMargins(actj.a(20.0F, paramContext), 0, actj.a(20.0F, paramContext), i);
+      paramBundle.addRule(12);
+      ((RelativeLayout)paramView).addView(paramaxwy.b, paramBundle);
+      return;
+    }
+  }
+  
   protected int b()
   {
-    return 11;
+    return 10;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject4 = paramContext.getResources();
-    float f;
+    axwy localaxwy;
+    Object localObject1;
     if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof axwy)))
     {
-      localObject1 = (axwy)paramView.getTag();
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (axun)((Iterator)localObject2).next();
-        ((axun)localObject3).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject4 = ((axun)localObject3).jdField_a_of_type_JavaLangString;
-        if ("title".equals(localObject4))
-        {
-          localObject3 = (StructMsgItemTitle)localObject3;
-          ((StructMsgItemTitle)localObject3).b("#ffffff");
-          f = ajwe.a() / 16.0F;
-          if (f > 1.0F) {
-            ((StructMsgItemTitle)localObject3).c("" + (int)(36 / f));
-          }
-          for (;;)
-          {
-            ((StructMsgItemTitle)localObject3).a(paramContext, ((axwy)localObject1).b, paramBundle);
-            break;
-            ((StructMsgItemTitle)localObject3).c(String.valueOf(36));
-          }
-        }
-        if ("pavideo".equals(localObject4)) {
-          ((axun)localObject3).a(paramContext, ((axwy)localObject1).a, paramBundle);
-        }
-      }
-      if ((localObject1 != null) && (((axwy)localObject1).b != null)) {
-        ((TextView)((axwy)localObject1).b).setMaxLines(2);
-      }
-      return paramView;
-    }
-    Object localObject2 = new RelativeLayout(paramContext);
-    int i = (int)((BaseChatItemLayout.a - actn.a(46.0F, (Resources)localObject4)) / 1.8D) + actn.a(30.0F, (Resources)localObject4);
-    ((RelativeLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, i));
-    int j = actn.a(15.0F, (Resources)localObject4);
-    ((RelativeLayout)localObject2).setPadding(j, j, j, j);
-    Object localObject3 = new axwy();
-    Object localObject1 = null;
-    paramView = null;
-    Object localObject5 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    axun localaxun;
-    String str;
-    if (((Iterator)localObject5).hasNext())
-    {
-      localaxun = (axun)((Iterator)localObject5).next();
-      localaxun.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      str = localaxun.jdField_a_of_type_JavaLangString;
-      if ("title".equals(str))
-      {
-        localObject1 = (StructMsgItemTitle)localaxun;
-        ((StructMsgItemTitle)localObject1).b("#ffffff");
-        f = ajwe.a() / 16.0F;
-        if (f > 1.0F)
-        {
-          ((StructMsgItemTitle)localObject1).c("" + (int)(36 / f));
-          label439:
-          localObject1 = ((StructMsgItemTitle)localObject1).a(paramContext, null, paramBundle);
-          ((View)localObject1).setId(1001);
-        }
-      }
+      localaxwy = (axwy)paramView.getTag();
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     }
     for (;;)
     {
-      break;
-      ((StructMsgItemTitle)localObject1).c(String.valueOf(36));
-      break label439;
-      if ("pavideo".equals(str))
+      axup localaxup;
+      Object localObject2;
+      String str;
+      int j;
+      int i;
+      if (((Iterator)localObject1).hasNext())
       {
-        paramView = localaxun.a(paramContext, null, paramBundle);
-        paramView.setId(1003);
+        localaxup = (axup)((Iterator)localObject1).next();
+        localaxup.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+        localObject2 = localaxup.jdField_a_of_type_JavaLangString;
+        if ("title".equals(localObject2))
+        {
+          localObject2 = (StructMsgItemTitle)localaxup;
+          str = ((StructMsgItemTitle)localObject2).c();
+          j = ((StructMsgItemTitle)localObject2).f();
+          i = j;
+          if (TextUtils.isEmpty(str)) {}
+        }
+      }
+      try
+      {
+        i = Integer.parseInt(str);
+        f = ajwc.a() / 16.0F;
+        if (i * f > 36.0F) {
+          ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
+        }
+        for (;;)
+        {
+          localaxwy.b = localaxup.a(paramContext, localaxwy.b, paramBundle);
+          break;
+          ((StructMsgItemTitle)localObject2).c(str);
+        }
+        if (!"paaudio".equals(localObject2)) {
+          continue;
+        }
+        localaxwy.a = localaxup.a(paramContext, localaxwy.a, paramBundle);
         continue;
-        if (paramView != null) {
-          ((RelativeLayout)localObject2).addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
+        paramContext = localaxwy;
+        if (paramContext.b != null) {
+          ((TextView)paramContext.b).setMaxLines(1);
         }
-        paramBundle = new View(paramContext);
-        i = (int)(i * 0.32D);
-        paramBundle.setBackgroundResource(2130841311);
-        localObject5 = new RelativeLayout.LayoutParams(-1, i);
-        ((RelativeLayout.LayoutParams)localObject5).addRule(12, -1);
-        ((RelativeLayout)localObject2).addView(paramBundle, (ViewGroup.LayoutParams)localObject5);
-        if (localObject1 != null)
+        paramView.setTag(paramContext);
+        return paramView;
+        localObject1 = paramContext.getResources();
+        localaxwy = new axwy();
+        paramView = new RelativeLayout(paramContext);
+        i = actj.a(15.0F, (Resources)localObject1);
+        paramView.setPadding(i, i, i, i);
+        i = (int)((BaseChatItemLayout.a - actj.a(46.0F, (Resources)localObject1)) * 26.0F / 63.0F);
+        paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, actj.a(30.0F, (Resources)localObject1) + i));
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (((Iterator)localObject1).hasNext())
         {
-          paramBundle = new RelativeLayout.LayoutParams(-1, -2);
-          paramBundle.addRule(12, -1);
-          paramBundle.bottomMargin = actn.a(11.5F, (Resources)localObject4);
-          paramBundle.leftMargin = actn.a(20.0F, (Resources)localObject4);
-          paramBundle.rightMargin = actn.a(20.0F, (Resources)localObject4);
-          ((RelativeLayout)localObject2).addView((View)localObject1, paramBundle);
+          localaxup = (axup)((Iterator)localObject1).next();
+          localaxup.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject2 = localaxup.jdField_a_of_type_JavaLangString;
+          if ("title".equals(localObject2))
+          {
+            localObject2 = (StructMsgItemTitle)localaxup;
+            str = ((StructMsgItemTitle)localObject2).c();
+            j = ((StructMsgItemTitle)localObject2).f();
+            i = j;
+            if (TextUtils.isEmpty(str)) {}
+          }
         }
-        paramBundle = new RelativeLayout.LayoutParams(actn.a(52.5F, (Resources)localObject4), actn.a(52.5F, (Resources)localObject4));
-        paramBundle.addRule(15, -1);
-        paramContext = new ImageView(paramContext);
-        paramContext.setImageResource(2130841244);
-        paramContext.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        paramBundle.addRule(14, -1);
-        ((RelativeLayout)localObject2).addView(paramContext, paramBundle);
-        if (paramView != null) {
-          ((axwy)localObject3).a = paramView;
-        }
-        if (localObject1 != null)
+      }
+      catch (Exception localException1)
+      {
+        try
         {
-          ((axwy)localObject3).b = ((View)localObject1);
-          ((TextView)((axwy)localObject3).b).setMaxLines(1);
+          for (;;)
+          {
+            i = Integer.parseInt(str);
+            float f = ajwc.a() / 16.0F;
+            if (i * f > 36.0F) {
+              ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
+            }
+            for (;;)
+            {
+              localaxwy.b = localaxup.a(paramContext, localaxwy.b, paramBundle);
+              break;
+              ((StructMsgItemTitle)localObject2).c(str);
+            }
+            if ("paaudio".equals(localObject2))
+            {
+              localaxwy.a = localaxup.a(paramContext, localaxwy.a, paramBundle);
+              continue;
+              a(paramContext, paramView, localaxwy, paramBundle);
+              paramContext = localaxwy;
+            }
+          }
+          localException1 = localException1;
+          i = j;
         }
-        ((RelativeLayout)localObject2).setTag(localObject3);
-        return localObject2;
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            i = j;
+          }
+        }
       }
     }
   }
   
   public String b()
   {
-    return "Layout11";
+    return "Layout10";
   }
 }
 

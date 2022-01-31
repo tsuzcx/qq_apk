@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abjs;
-import ajvi;
+import abjo;
+import ajvg;
 import android.graphics.Bitmap;
 
 public class JoinDiscussionActivity$MyDiscussionObserver$1
   implements Runnable
 {
-  public JoinDiscussionActivity$MyDiscussionObserver$1(abjs paramabjs) {}
+  public JoinDiscussionActivity$MyDiscussionObserver$1(abjo paramabjo) {}
   
   public void run()
   {

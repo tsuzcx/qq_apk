@@ -1,62 +1,72 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import EncounterSvc.RespEncounterInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.1.1;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.1.2;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.1.3;
+import java.util.ArrayList;
 import java.util.List;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0x876.oidb_0x876.ReqBody;
-import tencent.im.oidb.cmd0x877.oidb_0x877.ReqBody;
-import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
-import tencent.nearby.now.nearby_now_anchor.ReqBatchGetAnchorStatus;
 
 public class anmr
+  extends ajzk
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public anmr(MsgBoxListActivity paramMsgBoxListActivity) {}
+  
+  protected void d(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    localReqBody.uid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    localReqBody.tinyid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(paramQQAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(paramQQAppInterface.getCurrentAccountUin());
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    if ((paramBoolean) && (paramArrayOfObject != null) && ((paramArrayOfObject instanceof Object[])) && (MsgBoxListActivity.a(this.a) != null))
     {
-      localReqBody.a2.set(str);
-      localReqBody.platform.set(1);
-      localReqBody.version.set("8.2.8");
-      localReqBody.original_id.set(paramQQAppInterface.getCurrentAccountUin());
-      localReqBody.original_key.set((String)localObject);
-      localReqBody.original_id_type.set(1);
+      MsgBoxListActivity.a(this.a).a((List)paramArrayOfObject[0], 0, (ArrayList)paramArrayOfObject[1]);
+      this.a.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig = MsgBoxListActivity.a(this.a).a();
+      this.a.app.getPreferences().edit().putLong("sp_key_dating_config_time", System.currentTimeMillis()).commit();
+      this.a.runOnUiThread(new MsgBoxListActivity.1.3(this));
     }
-    localReqBody.cmd.set(24727);
-    localReqBody.subcmd.set(6);
-    mxi.a(paramQQAppInterface, new anms(), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, anmt paramanmt)
+  protected void e(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    oidb_0x877.ReqBody localReqBody = new oidb_0x877.ReqBody();
-    localReqBody.uint32_refer.set(paramInt);
-    mxi.a(paramQQAppInterface, paramanmt, localReqBody.toByteArray(), "OidbSvc.0x877_0", 2167, 0);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, anmu paramanmu)
-  {
-    mxi.a(paramQQAppInterface, paramanmu, new oidb_0x876.ReqBody().toByteArray(), "OidbSvc.0x876_" + paramInt, 2166, paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<Long> paramList, Bundle paramBundle, anmv paramanmv)
-  {
-    nearby_now_anchor.ReqBatchGetAnchorStatus localReqBatchGetAnchorStatus = new nearby_now_anchor.ReqBatchGetAnchorStatus();
-    localReqBatchGetAnchorStatus.uint64_uin.set(paramList);
-    paramList = paramBundle;
-    if (paramBundle == null) {
-      paramList = new Bundle();
+    int i;
+    LinearLayout localLinearLayout;
+    if (paramBoolean)
+    {
+      if (paramArrayOfObject == null) {
+        break label101;
+      }
+      i = 1;
+      if (((i & paramArrayOfObject instanceof Object[]) != 0) && (this.a.d != null) && (this.a.jdField_a_of_type_Atyq != null) && (((Integer)paramArrayOfObject[1]).intValue() == 1))
+      {
+        paramArrayOfObject = (List)paramArrayOfObject[0];
+        localLinearLayout = (LinearLayout)this.a.d.findViewById(2131372168);
+        if (localLinearLayout.getChildCount() != 0) {
+          break label106;
+        }
+        this.a.runOnUiThread(new MsgBoxListActivity.1.1(this, paramArrayOfObject));
+      }
     }
-    mxi.a(paramQQAppInterface, paramanmv, localReqBatchGetAnchorStatus.toByteArray(), "NearbyNowTips.batch_get_anchor_stats", paramList);
+    for (;;)
+    {
+      return;
+      label101:
+      i = 0;
+      break;
+      label106:
+      if (localLinearLayout.getChildCount() == paramArrayOfObject.size())
+      {
+        i = 0;
+        while (i < localLinearLayout.getChildCount())
+        {
+          View localView = localLinearLayout.getChildAt(i);
+          RespEncounterInfo localRespEncounterInfo = (RespEncounterInfo)paramArrayOfObject.get(i);
+          this.a.runOnUiThread(new MsgBoxListActivity.1.2(this, localView, localRespEncounterInfo));
+          i += 1;
+        }
+      }
+    }
   }
 }
 

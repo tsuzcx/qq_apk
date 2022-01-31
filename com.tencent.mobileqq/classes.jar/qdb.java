@@ -1,20 +1,11 @@
 public class qdb
-  implements Cloneable
 {
-  public int a = 0;
-  public long a;
-  public long b;
-  
-  public qdb a()
-  {
-    try
-    {
-      qdb localqdb = (qdb)super.clone();
-      return localqdb;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

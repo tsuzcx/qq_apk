@@ -1,15 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.net.URL;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-class aywq
-  implements ayww
+public class aywq
+  extends NativeGifImage
 {
-  aywq(aywp paramaywp) {}
-  
-  public Bitmap a(URL paramURL)
+  public aywq(aywp paramaywp, File paramFile, boolean paramBoolean, float paramFloat)
   {
-    return ShortVideoUtils.a(null, paramURL.getPath());
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentFrameIndex >= 1) {
+      return;
+    }
+    super.executeNewTask();
   }
 }
 

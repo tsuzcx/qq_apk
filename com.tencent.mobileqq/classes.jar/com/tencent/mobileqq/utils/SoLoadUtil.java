@@ -7,7 +7,7 @@ import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import axrl;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.BaseConstants;
@@ -143,14 +143,14 @@ public class SoLoadUtil
   
   private static final void a(HashMap<String, String> paramHashMap)
   {
-    axrl.a(BaseApplication.getContext()).a("", "loadSo", false, 0L, 0L, paramHashMap, "");
+    axrn.a(BaseApplication.getContext()).a("", "loadSo", false, 0L, 0L, paramHashMap, "");
   }
   
   private static final void a(HashMap<String, String> paramHashMap, int paramInt, String paramString, long paramLong)
   {
     paramHashMap.put("message", paramString);
     paramHashMap.put("costTime", paramLong + "");
-    axrl.a(paramHashMap, paramInt);
+    axrn.a(paramHashMap, paramInt);
     a(paramHashMap);
   }
   

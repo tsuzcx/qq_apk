@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
 import android.content.Intent;
-import bbca;
+import bbco;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sfn;
+import sfk;
 
 public class PublicAccountH5AbilityPlugin$4
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$4(sfn paramsfn, String[] paramArrayOfString) {}
+  public PublicAccountH5AbilityPlugin$4(sfk paramsfk, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -42,7 +42,7 @@ public class PublicAccountH5AbilityPlugin$4
         int m = ((JSONObject)localObject2).optInt("ugcPushType");
         try
         {
-          str1 = new String(bbca.decode((String)localObject1, 0));
+          str1 = new String(bbco.decode((String)localObject1, 0));
           localObject1 = str1;
         }
         catch (Exception localException)

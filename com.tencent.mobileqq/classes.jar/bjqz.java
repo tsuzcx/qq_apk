@@ -1,19 +1,6 @@
-public class bjqz
-  extends ssk
+public abstract interface bjqz
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
-  
-  public bjqz(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract void b();
 }
 
 

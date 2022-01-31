@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpf;
-import alph;
-import alvk;
+import alpe;
+import alpg;
+import alvj;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppModuleReg$ModuleQQ$19$1
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$19$1(alph paramalph, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$19$1(alpg paramalpg, String paramString) {}
   
   public void run()
   {
-    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Alph.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Alph.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Alpg.jdField_a_of_type_Alpe.a(this.jdField_a_of_type_Alpg.jdField_a_of_type_Long);
     if (localVariantWrapper1 == null)
     {
-      alvk.a().a(null);
+      alvj.a().a(null);
       return;
     }
     ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
@@ -28,7 +28,7 @@ public class ArkAppModuleReg$ModuleQQ$19$1
     localVariantWrapper2.Reset();
     localVariantWrapper1.Reset();
     QLog.i("ArkApp", 1, "QQ.ChooseImage callback : " + this.jdField_a_of_type_JavaLangString);
-    alvk.a().a(null);
+    alvj.a().a(null);
   }
 }
 

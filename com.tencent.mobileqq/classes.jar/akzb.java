@@ -1,47 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-class akzb
-  extends BroadcastReceiver
+public final class akzb
+  implements Parcelable.Creator<ARRecognition>
 {
-  akzb(akza paramakza) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ARRecognition a(Parcel paramParcel)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
-    {
-      int i;
-      int j;
-      do
-      {
-        do
-        {
-          return;
-        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
-        switch (paramIntent.getIntExtra("event", 0))
-        {
-        default: 
-          return;
-        case 1: 
-          paramContext = paramIntent.getStringExtra("bussinessSubName");
-          i = paramIntent.getIntExtra("download_Index", 0);
-          j = paramIntent.getIntExtra("download_Progress", 0);
-          if (AudioHelper.e()) {
-            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
-          }
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(paramContext, i, j);
-      return;
-      paramContext = paramIntent.getStringExtra("config_Content");
-      this.a.b(paramContext);
-    } while (this.a.a == null);
-    this.a.a.b();
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
   }
 }
 

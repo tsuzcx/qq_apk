@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahop;
-import axnv;
+import ahon;
+import axnx;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
-import xos;
+import xop;
 
 public class LoadData
   extends Step
@@ -15,11 +15,11 @@ public class LoadData
     boolean bool2 = true;
     AppActivity localAppActivity = this.mDirector.a;
     long l = System.currentTimeMillis();
-    xos.a = l;
+    xop.a = l;
     if (localAppActivity != null)
     {
-      if (xos.a(BaseApplicationImpl.sApplication)) {
-        ahop.a(BaseApplicationImpl.sApplication, true);
+      if (xop.a(BaseApplicationImpl.sApplication)) {
+        ahon.a(BaseApplicationImpl.sApplication, true);
       }
     }
     else {

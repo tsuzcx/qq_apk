@@ -1,17 +1,20 @@
-public class oxr
-  implements oxo
+public abstract interface oxr
 {
-  private static oxr a = new oxr();
+  public abstract void B_();
   
-  public static oxr a()
-  {
-    return a;
-  }
+  public abstract void C_();
   
-  public void a(String paramString, oxp paramoxp)
-  {
-    onx.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new oxs(this, paramoxp));
-  }
+  public abstract void D_();
+  
+  public abstract boolean a();
+  
+  public abstract void d();
+  
+  public abstract void setMediaCoverUrl(String paramString);
+  
+  public abstract void setMediaPlayUrl(String paramString);
+  
+  public abstract void setMediaPlayVid(String paramString);
 }
 
 

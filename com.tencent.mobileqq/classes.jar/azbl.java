@@ -1,26 +1,30 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.TVKSDKInstallRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class azbl
-  implements View.OnClickListener
+public class azbl
+  implements TVK_SDKMgr.InstallListener
 {
-  azbl(azbk paramazbk, int paramInt) {}
+  public azbl(TribeVideoListPlayerFragment.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat)
   {
-    paramView = new Intent(this.jdField_a_of_type_Azbk.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", ((azbx)this.jdField_a_of_type_Azbk.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).b);
-    this.jdField_a_of_type_Azbk.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
-    if (this.jdField_a_of_type_Azbk.jdField_a_of_type_Azbz.c == 31) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      axqw.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_tribe", 0, 0, this.jdField_a_of_type_Azbk.jdField_a_of_type_Azbz.d, ((azbx)this.jdField_a_of_type_Azbk.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a + "", "", paramView);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 1, "plugin success");
     }
   }
 }

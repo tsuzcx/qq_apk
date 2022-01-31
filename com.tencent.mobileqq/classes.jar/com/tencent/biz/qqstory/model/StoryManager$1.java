@@ -5,15 +5,15 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import ste;
-import tcz;
-import tlk;
-import tll;
+import stb;
+import tcw;
+import tlh;
+import tli;
 
 public class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(tcz paramtcz, String paramString) {}
+  public StoryManager$1(tcw paramtcw, String paramString) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class StoryManager$1
     {
       localObject = new ArrayList(1);
       ((List)localObject).add(this.a);
-      new tlk((List)localObject, true).a();
+      new tlh((List)localObject, true).a();
       return;
     }
-    tll localtll = new tll();
-    localtll.a = Collections.singletonList(localObject);
-    ste.a().dispatch(localtll);
+    tli localtli = new tli();
+    localtli.a = Collections.singletonList(localObject);
+    stb.a().dispatch(localtli);
   }
 }
 

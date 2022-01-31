@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.audio;
 
 import android.media.AudioRecord;
-import avrq;
+import avrs;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioCapture$2

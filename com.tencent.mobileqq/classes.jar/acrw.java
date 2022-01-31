@@ -1,29 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
+import cooperation.qwallet.plugin.FakeUrl.FakeListener;
 
 public class acrw
-  implements View.OnClickListener
+  implements FakeUrl.FakeListener
 {
-  public acrw(PositionActivatePage paramPositionActivatePage) {}
+  public acrw(QQNotifySettingBaseFragment.2.1 param1) {}
   
-  public void onClick(View paramView)
+  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
-    {
-      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
-      paramView.putExtra("ENTER_TIME", System.currentTimeMillis());
-      paramView.putExtra("FROM_WHERE", 1002);
-      paramView.putExtra("is_skip_nearby_guide", true);
-      paramView.setFlags(67108864);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(paramView);
-      axqw.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
-    }
+    return false;
+  }
+  
+  public boolean onClickUrl(String paramString)
+  {
+    return false;
   }
 }
 

@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import rkb;
-import rmq;
+import rjy;
+import rmn;
 
 public class BaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<BaseData> CREATOR = new rkb();
+  public static final Parcelable.Creator<BaseData> CREATOR = new rjy();
   public final float a;
   public FastWebArticleInfo a;
   public float b;
@@ -52,8 +52,8 @@ public class BaseData
       return 2.0F;
       return 3.0F;
       return paramBaseData.jdField_b_of_type_Float;
-      return rmq.a(paramBaseData, false);
-      return rmq.a(paramBaseData, true);
+      return rmn.a(paramBaseData, false);
+      return rmn.a(paramBaseData, true);
       return 9.0F;
       return 10.0F;
       return 11.0F;

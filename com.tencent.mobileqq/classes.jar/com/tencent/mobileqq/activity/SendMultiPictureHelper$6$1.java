@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity;
 
-import acaz;
-import acbf;
-import acbg;
-import aozc;
-import bbev;
-import bbgg;
+import acav;
+import acbb;
+import acbc;
+import aozg;
+import bbfj;
+import bbgu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
 public class SendMultiPictureHelper$6$1
   implements Runnable
 {
-  public SendMultiPictureHelper$6$1(acbf paramacbf) {}
+  public SendMultiPictureHelper$6$1(acbb paramacbb) {}
   
   public void run()
   {
-    if (bbev.d(this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
+    if (bbfj.d(this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
       return;
     }
     this.a.a.jdField_d_of_type_Boolean = true;
-    acaz.a(this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.a.a.jdField_a_of_type_Aouj);
+    acav.a(this.a.a);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.a.a.jdField_a_of_type_Aoun);
     int i = 1;
     while (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      this.a.a.a((acbg)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i), this.a.a.c, this.a.a.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangString);
-      this.a.a.jdField_a_of_type_Bbgg.setMessage(String.format(this.a.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_Int + i), Integer.valueOf(this.a.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+      this.a.a.a((acbc)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i), this.a.a.c, this.a.a.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangString);
+      this.a.a.jdField_a_of_type_Bbgu.setMessage(String.format(this.a.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_Int + i), Integer.valueOf(this.a.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
       i += 1;
     }
     this.a.a.c();

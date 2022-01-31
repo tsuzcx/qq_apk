@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.ViewGroup.LayoutParams;
-import apih;
+import apil;
 
 class FileBrowserActivity$4
   implements Runnable

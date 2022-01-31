@@ -1,18 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class bfte
-  extends bfvf
+class bfte
+  implements PopupWindow.OnDismissListener
 {
-  public Drawable a;
+  bfte(bftd parambftd) {}
   
-  public void a(SpannableString paramSpannableString)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[ImageStyle] start:" + this.b + " end:" + this.c);
-    }
-    paramSpannableString.setSpan(new bftd(this.a, 1), this.b, this.c, 17);
+    this.a.jdField_a_of_type_Bfth = null;
+    this.a.jdField_a_of_type_Bftg = null;
+    this.a.c();
+    onh.a = false;
   }
 }
 

@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlResult;
 
-final class bicv
-  implements bcvx
+public final class bicv
+  implements Parcelable.Creator<WadlResult>
 {
-  bicv(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
-  
-  public void a(int paramInt)
+  public WadlResult a(Parcel paramParcel)
   {
-    if (paramInt == 2) {
-      apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
-    }
+    return new WadlResult(paramParcel);
+  }
+  
+  public WadlResult[] a(int paramInt)
+  {
+    return new WadlResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicv
  * JD-Core Version:    0.7.0.1
  */

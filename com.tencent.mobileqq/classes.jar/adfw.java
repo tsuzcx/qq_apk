@@ -1,18 +1,52 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class adfw
-  extends acwp
+public class adfw
+  extends ampa<adfx>
 {
-  adfw(adfv paramadfv, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
+  public int a()
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+    return 592;
   }
   
-  public void j()
+  @NonNull
+  public adfx a(int paramInt)
   {
-    this.a.a(true);
+    return new adfx();
+  }
+  
+  @Nullable
+  public adfx a(amph[] paramArrayOfamph)
+  {
+    adfx localadfx = new adfx();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
+      adfx.a(localadfx, paramArrayOfamph[0].a);
+    }
+    return localadfx;
+  }
+  
+  public Class<adfx> a()
+  {
+    return adfx.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(adfx paramadfx) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

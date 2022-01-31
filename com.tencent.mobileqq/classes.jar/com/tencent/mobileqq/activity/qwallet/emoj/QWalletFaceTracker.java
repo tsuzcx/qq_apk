@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahbv;
+import ahbt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -9,9 +9,9 @@ import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ltu;
-import ltv;
-import ltw;
+import ltp;
+import ltq;
+import ltr;
 
 public class QWalletFaceTracker
 {
@@ -24,7 +24,7 @@ public class QWalletFaceTracker
   public String[] modelPathsDetector = { "net_1_bin.rpnproto", "net_1.rpnmodel", "net_2_bin.rpnproto", "net_2.rpnmodel", "net_3_bin.rpnproto", "net_3.rpnmodel" };
   public String[] modelPathsPose = { "meshBasis.bin", "rotBasis.bin", "pdm.txt", "pdm_82.txt" };
   private long nativePtr;
-  public ltv normalFaceExpression;
+  public ltq normalFaceExpression;
   public final String[] soFileNames = { "libYTIllumination.so", "libfacetrackwrap.so" };
   public final String[] soNames = { "YTIllumination", "facetrackwrap" };
   
@@ -34,11 +34,11 @@ public class QWalletFaceTracker
   
   private native void NativeDestructor();
   
-  private boolean checkMoreLikeNormalFaceExpression(float paramFloat, double paramDouble, double[] paramArrayOfDouble, int[] paramArrayOfInt, ltv paramltv, List<PointF> paramList, float[] paramArrayOfFloat)
+  private boolean checkMoreLikeNormalFaceExpression(float paramFloat, double paramDouble, double[] paramArrayOfDouble, int[] paramArrayOfInt, ltq paramltq, List<PointF> paramList, float[] paramArrayOfFloat)
   {
-    paramltv.expressionWeight = paramArrayOfDouble;
-    paramltv.a = paramArrayOfInt;
-    return ltu.a(paramltv, paramList, paramArrayOfFloat).a * paramDouble - paramFloat > 0.0D;
+    paramltq.expressionWeight = paramArrayOfDouble;
+    paramltq.a = paramArrayOfInt;
+    return ltp.a(paramltq, paramList, paramArrayOfFloat).a * paramDouble - paramFloat > 0.0D;
   }
   
   public static QWalletFaceTracker getInstance()
@@ -70,11 +70,11 @@ public class QWalletFaceTracker
   {
     try
     {
-      ahbv localahbv = PreloadManager.a();
+      ahbt localahbt = PreloadManager.a();
       DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = paramString1;
-      localahbv.a(localDownloadParam, new QWalletFaceTracker.1(this, paramString1, paramString2, paramContext, paramIBaseRecognizer));
+      localahbt.a(localDownloadParam, new QWalletFaceTracker.1(this, paramString1, paramString2, paramContext, paramIBaseRecognizer));
       return;
     }
     catch (Throwable paramContext)

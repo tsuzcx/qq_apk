@@ -1,21 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AgentActivity;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-class bcxp
-  implements DialogInterface.OnClickListener
+public class bcxp
 {
-  bcxp(bcxo parambcxo, int paramInt, String paramString) {}
+  public Context a;
+  public bcxm a;
+  private Map<String, Object> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcxp(Context paramContext, bcxm parambcxm)
   {
-    paramDialogInterface.dismiss();
-    AgentActivity.a(this.jdField_a_of_type_Bcxo.a.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bcxm = parambcxm;
+  }
+  
+  public Object a(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (TextUtils.isEmpty(paramString)) {
+      return localObject2;
+    }
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+    }
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    if (TextUtils.equals(paramString, "intchk")) {
+      localObject1 = new bcxs(this);
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
+      return localObject1;
+      if (TextUtils.equals(paramString, "app_scan")) {
+        localObject1 = new bcxr(this);
+      } else if (TextUtils.equals(paramString, "sig_check")) {
+        localObject1 = new bcxu(this);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcxp
  * JD-Core Version:    0.7.0.1
  */

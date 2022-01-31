@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 
-public final class afgy
-  implements Parcelable.Creator<SearchResultItem>
+public class afgy
+  implements afsw
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
+  public afgy(TroopView paramTroopView) {}
   
-  public SearchResultItem[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new SearchResultItem[paramInt];
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).a(paramInt1, paramInt2);
+    }
+    if (paramInt1 >= paramInt2) {
+      if (!TroopView.a(this.a))
+      {
+        TroopView.a(this.a, true);
+        if (this.a.a != null) {
+          this.a.a.a(TroopView.a(this.a));
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!TroopView.a(this.a));
+      TroopView.a(this.a, false);
+    } while (this.a.a == null);
+    this.a.a.a(TroopView.a(this.a));
   }
 }
 

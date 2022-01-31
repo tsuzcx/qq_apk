@@ -1,138 +1,330 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
+import com.tencent.weiyun.utils.IOUtils;
+
 public class bifg
+  implements Handler.Callback
 {
+  private final bifh jdField_a_of_type_Bifh;
+  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  
+  public bifg(bifh parambifh, ReleaseLooperHandler paramReleaseLooperHandler)
+  {
+    this.jdField_a_of_type_Bifh = parambifh;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
+  }
+  
   /* Error */
-  public static long a(java.lang.String paramString, long paramLong)
+  private String a(String paramString)
   {
     // Byte code:
-    //   0: lconst_0
-    //   1: lstore 9
-    //   3: sipush 8192
-    //   6: newarray byte
-    //   8: astore 13
-    //   10: new 10	java/util/zip/CRC32
-    //   13: dup
-    //   14: invokespecial 14	java/util/zip/CRC32:<init>	()V
-    //   17: astore 14
-    //   19: new 16	java/io/FileInputStream
-    //   22: dup
-    //   23: aload_0
-    //   24: invokespecial 19	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   27: astore_0
-    //   28: lload_1
-    //   29: lstore 5
-    //   31: lconst_0
-    //   32: lstore 7
-    //   34: aload_0
-    //   35: aload 13
-    //   37: invokevirtual 25	java/io/InputStream:read	([B)I
-    //   40: istore 4
-    //   42: iload 4
-    //   44: ifle +52 -> 96
-    //   47: iload 4
-    //   49: istore_3
-    //   50: lload 5
-    //   52: iload 4
-    //   54: i2l
-    //   55: lcmp
-    //   56: ifge +7 -> 63
-    //   59: lload 5
-    //   61: l2i
-    //   62: istore_3
-    //   63: aload 14
-    //   65: aload 13
-    //   67: iconst_0
-    //   68: iload_3
-    //   69: invokevirtual 29	java/util/zip/CRC32:update	([BII)V
-    //   72: lload 7
-    //   74: iload_3
-    //   75: i2l
-    //   76: ladd
-    //   77: lstore 7
-    //   79: lload_1
-    //   80: lload 7
-    //   82: lsub
-    //   83: lstore 11
-    //   85: lload 11
-    //   87: lstore 5
-    //   89: lload 11
-    //   91: lconst_0
-    //   92: lcmp
-    //   93: ifgt -59 -> 34
-    //   96: aload_0
-    //   97: invokevirtual 32	java/io/InputStream:close	()V
-    //   100: aload 14
-    //   102: invokevirtual 36	java/util/zip/CRC32:getValue	()J
-    //   105: lstore_1
-    //   106: lload_1
-    //   107: lstore 5
-    //   109: aload_0
-    //   110: ifnull +10 -> 120
-    //   113: aload_0
-    //   114: invokevirtual 32	java/io/InputStream:close	()V
-    //   117: lload_1
-    //   118: lstore 5
-    //   120: lload 5
-    //   122: lreturn
-    //   123: astore_0
-    //   124: aconst_null
-    //   125: astore_0
-    //   126: lload 9
-    //   128: lstore 5
-    //   130: aload_0
-    //   131: ifnull -11 -> 120
-    //   134: aload_0
-    //   135: invokevirtual 32	java/io/InputStream:close	()V
-    //   138: lconst_0
-    //   139: lreturn
-    //   140: astore_0
-    //   141: lconst_0
-    //   142: lreturn
-    //   143: astore 13
-    //   145: aconst_null
-    //   146: astore_0
-    //   147: aload_0
-    //   148: ifnull +7 -> 155
-    //   151: aload_0
-    //   152: invokevirtual 32	java/io/InputStream:close	()V
-    //   155: aload 13
-    //   157: athrow
-    //   158: astore_0
-    //   159: lload_1
-    //   160: lreturn
-    //   161: astore_0
-    //   162: goto -7 -> 155
-    //   165: astore 13
-    //   167: goto -20 -> 147
-    //   170: astore 13
-    //   172: goto -46 -> 126
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore_2
+    //   8: invokestatic 34	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   11: iconst_1
+    //   12: invokevirtual 38	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
+    //   15: astore 7
+    //   17: aload 7
+    //   19: ifnonnull +5 -> 24
+    //   22: aconst_null
+    //   23: areturn
+    //   24: iconst_4
+    //   25: invokestatic 44	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   28: astore_3
+    //   29: new 46	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   36: ldc 49
+    //   38: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: ldc 55
+    //   43: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: ldc 57
+    //   48: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: ldc 59
+    //   53: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: astore 4
+    //   61: aload 7
+    //   63: ldc 64
+    //   65: iconst_1
+    //   66: anewarray 66	java/lang/String
+    //   69: dup
+    //   70: iconst_0
+    //   71: ldc 68
+    //   73: aastore
+    //   74: aload 4
+    //   76: iconst_2
+    //   77: anewarray 66	java/lang/String
+    //   80: dup
+    //   81: iconst_0
+    //   82: aload_1
+    //   83: aastore
+    //   84: dup
+    //   85: iconst_1
+    //   86: aload_3
+    //   87: aastore
+    //   88: aconst_null
+    //   89: aconst_null
+    //   90: ldc 70
+    //   92: invokevirtual 76	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   95: astore_3
+    //   96: aload_3
+    //   97: ifnull +237 -> 334
+    //   100: aload_3
+    //   101: invokeinterface 82 1 0
+    //   106: ifeq +228 -> 334
+    //   109: aload_3
+    //   110: iconst_0
+    //   111: invokeinterface 85 2 0
+    //   116: astore_2
+    //   117: aload_3
+    //   118: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   121: aload_2
+    //   122: astore_3
+    //   123: aload_2
+    //   124: invokestatic 97	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   127: ifeq +148 -> 275
+    //   130: aload 5
+    //   132: astore_3
+    //   133: aload 6
+    //   135: astore 4
+    //   137: iconst_4
+    //   138: invokestatic 44	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   141: astore 8
+    //   143: aload 5
+    //   145: astore_3
+    //   146: aload 6
+    //   148: astore 4
+    //   150: new 46	java/lang/StringBuilder
+    //   153: dup
+    //   154: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   157: ldc 99
+    //   159: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: ldc 55
+    //   164: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: ldc 57
+    //   169: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: ldc 59
+    //   174: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: astore 9
+    //   182: aload 5
+    //   184: astore_3
+    //   185: aload 6
+    //   187: astore 4
+    //   189: aload 7
+    //   191: ldc 101
+    //   193: iconst_1
+    //   194: anewarray 66	java/lang/String
+    //   197: dup
+    //   198: iconst_0
+    //   199: ldc 68
+    //   201: aastore
+    //   202: aload 9
+    //   204: iconst_2
+    //   205: anewarray 66	java/lang/String
+    //   208: dup
+    //   209: iconst_0
+    //   210: aload_1
+    //   211: aastore
+    //   212: dup
+    //   213: iconst_1
+    //   214: aload 8
+    //   216: aastore
+    //   217: aconst_null
+    //   218: aconst_null
+    //   219: ldc 70
+    //   221: invokevirtual 76	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   224: astore 5
+    //   226: aload_2
+    //   227: astore_1
+    //   228: aload 5
+    //   230: ifnull +38 -> 268
+    //   233: aload_2
+    //   234: astore_1
+    //   235: aload 5
+    //   237: astore_3
+    //   238: aload 5
+    //   240: astore 4
+    //   242: aload 5
+    //   244: invokeinterface 82 1 0
+    //   249: ifeq +19 -> 268
+    //   252: aload 5
+    //   254: astore_3
+    //   255: aload 5
+    //   257: astore 4
+    //   259: aload 5
+    //   261: iconst_0
+    //   262: invokeinterface 85 2 0
+    //   267: astore_1
+    //   268: aload 5
+    //   270: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   273: aload_1
+    //   274: astore_3
+    //   275: invokestatic 34	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   278: aload 7
+    //   280: invokevirtual 105	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
+    //   283: aload_3
+    //   284: areturn
+    //   285: astore_2
+    //   286: aconst_null
+    //   287: astore_2
+    //   288: aload_2
+    //   289: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   292: aconst_null
+    //   293: astore_2
+    //   294: goto -173 -> 121
+    //   297: astore_1
+    //   298: aload_2
+    //   299: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   302: aload_1
+    //   303: athrow
+    //   304: astore_1
+    //   305: aload_3
+    //   306: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   309: aload_2
+    //   310: astore_3
+    //   311: goto -36 -> 275
+    //   314: astore_1
+    //   315: aload 4
+    //   317: invokestatic 91	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   320: aload_1
+    //   321: athrow
+    //   322: astore_1
+    //   323: aload_3
+    //   324: astore_2
+    //   325: goto -27 -> 298
+    //   328: astore_2
+    //   329: aload_3
+    //   330: astore_2
+    //   331: goto -43 -> 288
+    //   334: aconst_null
+    //   335: astore_2
+    //   336: goto -219 -> 117
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	175	0	paramString	java.lang.String
-    //   0	175	1	paramLong	long
-    //   49	26	3	i	int
-    //   40	13	4	j	int
-    //   29	100	5	l1	long
-    //   32	49	7	l2	long
-    //   1	126	9	l3	long
-    //   83	7	11	l4	long
-    //   8	58	13	arrayOfByte	byte[]
-    //   143	13	13	localObject1	Object
-    //   165	1	13	localObject2	Object
-    //   170	1	13	localIOException	java.io.IOException
-    //   17	84	14	localCRC32	java.util.zip.CRC32
+    //   0	339	0	this	bifg
+    //   0	339	1	paramString	String
+    //   7	227	2	str1	String
+    //   285	1	2	localThrowable1	java.lang.Throwable
+    //   287	38	2	localObject1	Object
+    //   328	1	2	localThrowable2	java.lang.Throwable
+    //   330	6	2	localObject2	Object
+    //   28	302	3	localObject3	Object
+    //   59	257	4	localObject4	Object
+    //   1	268	5	localCursor	android.database.Cursor
+    //   4	182	6	localObject5	Object
+    //   15	264	7	localJobDbWrapper	com.tencent.weiyun.transmission.db.JobDbWrapper
+    //   141	74	8	str2	String
+    //   180	23	9	str3	String
     // Exception table:
     //   from	to	target	type
-    //   19	28	123	java/io/IOException
-    //   134	138	140	java/io/IOException
-    //   19	28	143	finally
-    //   113	117	158	java/io/IOException
-    //   151	155	161	java/io/IOException
-    //   34	42	165	finally
-    //   63	72	165	finally
-    //   96	106	165	finally
-    //   34	42	170	java/io/IOException
-    //   63	72	170	java/io/IOException
-    //   96	106	170	java/io/IOException
+    //   24	96	285	java/lang/Throwable
+    //   24	96	297	finally
+    //   137	143	304	java/lang/Throwable
+    //   150	182	304	java/lang/Throwable
+    //   189	226	304	java/lang/Throwable
+    //   242	252	304	java/lang/Throwable
+    //   259	268	304	java/lang/Throwable
+    //   137	143	314	finally
+    //   150	182	314	finally
+    //   189	226	314	finally
+    //   242	252	314	finally
+    //   259	268	314	finally
+    //   100	117	322	finally
+    //   100	117	328	java/lang/Throwable
+  }
+  
+  private void b(biem parambiem)
+  {
+    boolean bool = true;
+    if (parambiem == null) {}
+    Object localObject;
+    do
+    {
+      String str2;
+      String str3;
+      String str4;
+      do
+      {
+        do
+        {
+          do
+          {
+            long l1;
+            long l2;
+            do
+            {
+              do
+              {
+                return;
+                str2 = parambiem.d();
+                str3 = parambiem.a().c;
+                str4 = parambiem.b();
+                l1 = parambiem.a().a;
+                l2 = parambiem.a().b;
+              } while (parambiem.d());
+              if ((!TextUtils.isEmpty(str2)) && (TextUtils.equals(str3, IOUtils.getFileSha1(str2))))
+              {
+                this.jdField_a_of_type_Bifh.a(parambiem.a(), true, false, false, str2);
+                return;
+              }
+            } while (parambiem.d());
+            if (!IOUtils.ensureStorageSpace(str4, l1 - l2))
+            {
+              this.jdField_a_of_type_Bifh.a(parambiem.a(), false, false, true, "");
+              return;
+            }
+          } while (parambiem.d());
+          if (!IOUtils.ensureWritable(str4))
+          {
+            this.jdField_a_of_type_Bifh.a(parambiem.a(), false, true, false, "");
+            return;
+          }
+        } while (parambiem.d());
+        localObject = IOUtils.ensureFilePath(str4, parambiem.a().b);
+      } while (parambiem.d());
+      String str1 = a(str3);
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.equals(str2, str1)) && (TextUtils.equals(str3, IOUtils.getFileSha1(str1))))
+      {
+        if (TextUtils.equals(str4, IOUtils.getParentDir(str1))) {
+          localObject = str1;
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Bifh.a(parambiem.a(), bool, false, false, (String)localObject);
+          return;
+          bool = IOUtils.copyFileAndNotifyOS(WeiyunTransmissionGlobal.getInstance().getContext(), str1, (String)localObject);
+        }
+      }
+    } while (parambiem.d());
+    this.jdField_a_of_type_Bifh.a(parambiem.a(), false, false, false, (String)localObject);
+  }
+  
+  public void a(biem parambiem)
+  {
+    if (parambiem == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 11, parambiem));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 11)
+    {
+      b((biem)paramMessage.obj);
+      return true;
+    }
+    return false;
   }
 }
 

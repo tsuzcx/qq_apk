@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import amkf;
 import amkg;
-import amkh;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity1$4
-  implements amkh
+  implements amkg
 {
   GameActivity1$4(GameActivity1 paramGameActivity1) {}
   
   public void onServiceSyncSucc(boolean paramBoolean)
   {
-    amkg.a(BaseApplicationImpl.getContext(), 2, false);
+    amkf.a(BaseApplicationImpl.getContext(), 2, false);
   }
 }
 

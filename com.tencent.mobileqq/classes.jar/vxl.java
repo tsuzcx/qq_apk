@@ -1,17 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 class vxl
-  implements View.OnClickListener
+  extends JobSegment<Integer, uvu>
 {
-  vxl(vxk paramvxk, int paramInt) {}
+  private uvt a;
   
-  public void onClick(View paramView)
+  public vxl(@NonNull uvt paramuvt)
   {
-    if (this.jdField_a_of_type_Vxk.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Vxk.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Vxk.jdField_b_of_type_ComTencentImageURLImageView);
+    this.a = paramuvt;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((uvu)localObject).a.size() > 0) || (((uvu)localObject).b))
+    {
+      ved.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
+    localObject = new tne();
+    ((tne)localObject).a = this.a.a();
+    syo.a().a((sys)localObject, new vxm(this, paramJobContext, paramInteger));
   }
 }
 

@@ -1,19 +1,15 @@
 import com.tencent.mobileqq.activity.NearbyActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.NearbyActivity.3;
 
 public class abno
-  implements QQPermissionCallback
+  implements arhs
 {
-  public abno(NearbyActivity paramNearbyActivity) {}
+  public abno(NearbyActivity.3 param3) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a();
+    this.a.this$0.d = paramInt;
+    NearbyActivity.a(this.a.this$0.b, this.a.this$0.d);
   }
 }
 

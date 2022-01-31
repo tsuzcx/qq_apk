@@ -6,7 +6,7 @@ import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
 import java.util.List;
 
 public class alxz
-  extends alyc
+  extends alyb
 {
   private float jdField_a_of_type_Float = -1.0F;
   boolean jdField_a_of_type_Boolean = false;
@@ -14,76 +14,68 @@ public class alxz
   private float c = -1.0F;
   private float[] d = new float[3];
   private float[] e = new float[3];
-  private float[] f = new float[3];
-  private float[] g = new float[3];
-  private float[] h = new float[16];
-  private float[] i = new float[3];
+  private float[] f = new float[16];
   
-  public alxz(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
+  public alxz(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxu);
+    super(paramContext, paramInt, paramSensorManager, paramalxt);
     paramContext = paramSensorManager.getDefaultSensor(1);
-    paramSensorManager = paramSensorManager.getDefaultSensor(2);
-    if ((paramContext != null) && (paramSensorManager != null))
+    if (paramContext != null)
     {
       this.jdField_a_of_type_JavaUtilList.add(paramContext);
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager);
       return;
     }
-    throw new OrientationProviderNotFound("1,2");
+    throw new OrientationProviderNotFound(String.valueOf(1));
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.jdField_a_of_type_Alxu == null) {
+    if (this.jdField_a_of_type_Alxt == null) {
       return;
     }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 2.0F)
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
     {
       this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Alxu.updateAzimuth(paramFloat1);
+      this.jdField_a_of_type_Alxt.updateAzimuth(paramFloat1);
     }
-    if (Math.abs(paramFloat2 - this.b) > 2.0F)
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
     {
       this.b = paramFloat2;
-      this.jdField_a_of_type_Alxu.updatePitch(paramFloat2);
+      this.jdField_a_of_type_Alxt.updatePitch(paramFloat2);
     }
-    if (Math.abs(paramFloat3 - this.c) > 2.0F)
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
     {
       this.c = paramFloat3;
-      this.jdField_a_of_type_Alxu.updateRoll(paramFloat3);
+      this.jdField_a_of_type_Alxt.updateRoll(paramFloat3);
     }
-    this.jdField_a_of_type_Alxu.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_Alxt.updateSensor(paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (paramSensorEvent.sensor.getType() == 2)
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-      System.arraycopy(paramSensorEvent.values, 0, this.d, 0, 3);
-      alxv.a(this.d, this.g);
-      System.arraycopy(this.d, 0, this.g, 0, 3);
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
+      this.d[1] = (-(float)Math.atan2(f2, f3));
+      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
+      if (this.jdField_a_of_type_Boolean) {
+        this.d = alxu.a(this.d, this.e);
+      }
+      System.arraycopy(this.d, 0, this.e, 0, 3);
       this.jdField_a_of_type_Boolean = true;
+      alxv.a(alxv.a(this.d), this.f);
+      if (this.jdField_a_of_type_Int != 1) {
+        super.a(this.f);
+      }
     }
-    for (;;)
+    else
     {
-      if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
-      {
-        SensorManager.getOrientation(this.h, this.i);
-        if (this.jdField_a_of_type_Int == 1) {
-          break;
-        }
-        super.a(this.h);
-      }
       return;
-      if (paramSensorEvent.sensor.getType() == 1)
-      {
-        System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
-        alxv.a(this.e, this.f);
-        System.arraycopy(this.e, 0, this.f, 0, 3);
-      }
     }
-    a((float)(Math.toDegrees(this.i[0] + a()) + 360.0D) % 360.0F, (float)(this.i[1] * 180.0F / 3.141592653589793D), (float)(this.i[2] * 180.0F / 3.141592653589793D));
+    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.device.msg.activities;
 
-import yee;
+import yeb;
 
 public class DeviceMsgSettingActivity$2$1
   implements Runnable
 {
-  public DeviceMsgSettingActivity$2$1(yee paramyee) {}
+  public DeviceMsgSettingActivity$2$1(yeb paramyeb) {}
   
   public void run()
   {

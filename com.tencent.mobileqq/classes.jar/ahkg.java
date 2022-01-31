@@ -1,29 +1,27 @@
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 class ahkg
-  implements askm
+  implements View.OnClickListener
 {
-  ahkg(ahkf paramahkf) {}
+  ahkg(ahkd paramahkd, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    ahkf.a(this.a).removeMessages(11);
-    ahkf.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt & 0x1) != 0)
-    {
-      ahkf.a(this.a).removeMessages(11);
-      ahkf.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
     }
+    paramView = (QQAppInterface)ahkd.a(this.jdField_a_of_type_Ahkd).getAppRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
+    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
+    ahkd.a(this.jdField_a_of_type_Ahkd).obtainMessage(20).sendToTarget();
+    axqy.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
   }
 }
 

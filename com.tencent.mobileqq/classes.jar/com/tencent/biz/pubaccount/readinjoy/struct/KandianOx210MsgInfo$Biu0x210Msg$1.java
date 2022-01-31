@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvh;
+import bhvy;
 import com.tencent.mobileqq.app.QQAppInterface;
-import qbk;
+import qbh;
 
 public class KandianOx210MsgInfo$Biu0x210Msg$1
   implements Runnable
 {
-  public KandianOx210MsgInfo$Biu0x210Msg$1(qbk paramqbk, QQAppInterface paramQQAppInterface) {}
+  public KandianOx210MsgInfo$Biu0x210Msg$1(qbh paramqbh, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bhvh.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bhvy.a(this.a, true, false).edit();
     localEditor.putLong("kandian_biu_0x210_seq", this.this$0.jdField_a_of_type_Long);
     localEditor.putLong("kandian_biu_0x210_uin", this.this$0.b);
     localEditor.putInt("kandian_biu_0x210_status", this.this$0.jdField_a_of_type_Int);
-    bhvh.a(localEditor, true);
+    bhvy.a(localEditor, true);
   }
 }
 

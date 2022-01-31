@@ -1,285 +1,104 @@
-import AvatarInfo.QQHeadInfo;
-import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
 
 public class bazf
-  extends FaceDecodeTask
+  implements Handler.Callback
 {
-  NearbyAppInterface a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public bazf(NearbyAppInterface paramNearbyAppInterface, FaceInfo paramFaceInfo, baxh parambaxh)
+  public bazf(QQAppInterface paramQQAppInterface)
   {
-    super(paramNearbyAppInterface, paramFaceInfo, parambaxh);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bfnk(ThreadManager.getFileThreadLooper(), this);
   }
   
-  public void a()
+  public Setting a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap bengin.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString);
+  }
+  
+  public String a()
+  {
+    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
+    localMessage.what = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("headType", paramInt1);
+    localBundle.putString("id", paramString);
+    localBundle.putInt("idType", paramInt2);
+    localMessage.setData(localBundle);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(Setting paramSetting)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramSetting);
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localaukp.b(paramSetting);
+    localaukp.a();
+  }
+  
+  public void a(ArrayList<String> paramArrayList, long paramLong)
+  {
+    if (paramLong <= 0L) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.p);
-    do
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    aukr localaukr = localaukp.a();
+    localaukr.a();
+    int i = 0;
+    try
     {
-      for (;;)
+      while (i < paramArrayList.size())
       {
-        try
+        Setting localSetting = (Setting)localaukp.a(Setting.class, (String)paramArrayList.get(i));
+        if (localSetting != null)
         {
-          bayd localbayd = (bayd)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216);
-          if (!localbayd.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo))
-          {
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-            if (!this.jdField_a_of_type_Boolean) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap file not exist.. needDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo != null) {
-              localbayd.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          }
+          localSetting.updateTimestamp = paramLong;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localSetting);
+          localaukp.a(localSetting);
         }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          boolean bool;
-          Object localObject3;
-          Object localObject2;
-          int i;
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 1, "doDecodeBitmap OutOfMemoryError. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localOutOfMemoryError);
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            b.add(this);
-            if (jdField_a_of_type_MqqOsMqqHandler == null) {
-              continue;
-            }
-            jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            return;
-          }
-          catch (Exception localException6) {}
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException6);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 1, "doDecodeBitmap exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localThrowable);
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            b.add(this);
-            if (jdField_a_of_type_MqqOsMqqHandler == null) {
-              continue;
-            }
-            jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            return;
-          }
-          catch (Exception localException7) {}
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException7);
-          return;
-        }
-        finally
-        {
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            b.add(this);
-            if (jdField_a_of_type_MqqOsMqqHandler != null) {
-              jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            }
-            throw localObject1;
-          }
-          catch (Exception localException8)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException8);
-            continue;
-          }
-          continue;
-        }
-        try
-        {
-          b.add(this);
-          if (jdField_a_of_type_MqqOsMqqHandler != null) {
-            jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-          }
-          return;
-          bool = false;
-        }
-        catch (Exception localException1)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException1);
-          return;
-        }
-        localObject3 = "stranger_" + Integer.toString(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
-        localObject2 = localException1.a((String)localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap key=" + (String)localObject3 + ",faceinfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",setting=" + localObject2);
-        }
-        if (localObject2 == null) {
-          continue;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo == null) {
-          continue;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dwTimestamp > ((Setting)localObject2).headImgTimestamp)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          localException1.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            b.add(this);
-            if (jdField_a_of_type_MqqOsMqqHandler == null) {
-              continue;
-            }
-            jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            return;
-          }
-          catch (Exception localException2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException2);
-          }
-        }
-        else
-        {
-          if (!this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Boolean) {
-            continue;
-          }
-          localObject3 = (alyz)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(180);
-          if (!((alyz)localObject3).a(((alyz)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString), (Setting)localObject2, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int)) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.dynamicAvatar", 2, "NearbyFaceDecodeTask isNeed2UpdateSettingInfo.");
-          }
-          this.jdField_a_of_type_Boolean = true;
-          localException2.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            b.add(this);
-            if (jdField_a_of_type_MqqOsMqqHandler != null)
-            {
-              jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-              return;
-            }
-          }
-          catch (Exception localException3) {}
-        }
+        i += 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException3);
-    return;
-    if (Math.abs(System.currentTimeMillis() - ((Setting)localObject2).updateTimestamp) > 86400000L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap need to checkupdate.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_b_of_type_Byte = 1;
-      ((ajvy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+      return;
     }
-    localObject2 = new bawv();
-    localObject3 = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject3).inPreferredConfig = baxf.a;
-    i = 0;
-    do
+    catch (Exception paramArrayList)
     {
-      bawu.a(localException3.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo), (BitmapFactory.Options)localObject3, (bawv)localObject2);
-      if (((bawv)localObject2).jdField_a_of_type_Int == 1)
-      {
-        NearbyAppInterface localNearbyAppInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-        NearbyAppInterface.b();
-      }
-      i += 1;
-    } while ((i < 2) && (((bawv)localObject2).jdField_a_of_type_Int == 1));
-    if ((QLog.isColorLevel()) || (((bawv)localObject2).jdField_a_of_type_Int != 0)) {
-      QLog.i("Q.qqhead.NearByFaceDecodeTask", 1, "doDecodeBitmap decode bitmap.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",result=" + ((bawv)localObject2).jdField_a_of_type_Int + ", bmp=" + ((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    if (((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    switch (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c)
-    {
-    case 2: 
-    case 1: 
-    case 3: 
-      for (((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = bbdr.c(((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, 50, 50);; ((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, 50, 50))
-      {
-        for (;;)
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = ((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap;
-            localException3.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(), ((bawv)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, (byte)1);
-            if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-              QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap fail. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-            try
-            {
-              b.add(this);
-              if (jdField_a_of_type_MqqOsMqqHandler == null) {
-                break;
-              }
-              jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-              return;
-            }
-            catch (Exception localException4) {}
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException4);
-          return;
-          this.jdField_a_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap setting is null. faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo != null) {
-            localException4.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a(FaceInfo.q);
-          try
-          {
-            b.add(this);
-            if (jdField_a_of_type_MqqOsMqqHandler == null) {
-              break;
-            }
-            jdField_a_of_type_MqqOsMqqHandler.sendMessageAtFrontOfQueue(jdField_a_of_type_MqqOsMqqHandler.obtainMessage(jdField_a_of_type_Int, this));
-            return;
-          }
-          catch (Exception localException5) {}
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("Q.qqhead.NearByFaceDecodeTask", 2, "doDecodeBitmap sendMessage exception. uin=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, localException5);
-        return;
-      }
+      paramArrayList.printStackTrace();
+      localaukr.c();
+      localaukr.b();
     }
   }
   
-  public boolean a()
+  public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null;
+    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramMessage.what = 4139;
+      ConnectNearbyProcService.a(paramMessage);
+    }
   }
 }
 

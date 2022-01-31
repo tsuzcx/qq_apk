@@ -1,37 +1,30 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
+import com.tencent.image.QQLiveDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class uyd
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public uxz a;
-  public int b;
+  public uyd(AutoPlayImageView paramAutoPlayImageView) {}
   
-  public String a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "?";
+    if (AutoPlayImageView.a(this.a) == 2) {
+      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
+      }
     }
-    if (this.jdField_a_of_type_Uxz == null) {
-      return this.jdField_a_of_type_JavaLangString;
+    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+      return;
     }
-    return uyo.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Uxz.a() });
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return a().equals(((uyd)paramObject).a());
-  }
-  
-  public int hashCode()
-  {
-    return a().hashCode();
-  }
-  
-  public String toString()
-  {
-    return a();
+    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
   }
 }
 

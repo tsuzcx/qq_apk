@@ -1,38 +1,54 @@
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.List;
 
-public class axvt
-  extends Animation
+class axvt
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  axvt(axvs paramaxvs) {}
   
-  public axvt(ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    if (axvs.a(this.a) == null) {
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = Integer.parseInt(String.valueOf(paramView.getTag()));
+        i = 0;
+        if (i >= this.a.a.size()) {
+          break;
+        }
+        paramView = (View)axvs.a(this.a).get(i);
+        if (paramView == null) {
+          break label156;
+        }
+        if (i != j)
+        {
+          axup localaxup = (axup)this.a.a.get(i);
+          if ((localaxup != null) && ((localaxup instanceof axvu))) {
+            ((axvu)localaxup).a();
+          } else {
+            paramView.setVisibility(8);
+          }
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      paramView = (axup)this.a.a.get(i);
+      if ((paramView != null) && ((paramView instanceof axvu))) {
+        ((axvu)paramView).b();
+      }
+      label156:
+      i += 1;
+    }
   }
 }
 

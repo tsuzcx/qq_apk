@@ -1,36 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatPie.82;
-import com.tencent.mobileqq.activity.BaseChatPie.82.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
 public class aank
-  implements Animation.AnimationListener
+  implements QQPermissionCallback
 {
-  public aank(BaseChatPie.82 param82) {}
+  public aank(BaseChatPie paramBaseChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-    this.a.this$0.jdField_a_of_type_MqqOsMqqHandler.post(new BaseChatPie.82.2.1(this));
+    bbdj.b(this.a.a());
+    ((adje)this.a.a(29)).b(2);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
+    aeft.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

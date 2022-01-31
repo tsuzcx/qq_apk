@@ -1,21 +1,46 @@
+import android.content.Intent;
+import android.content.IntentFilter;
 import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class alnx
-  implements alou
+public class alnx
+  implements alni
 {
-  alnx(alnk paramalnk, long paramLong) {}
+  private alnx(alng paramalng) {}
   
-  public void a(long paramLong)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnk.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
+    for (;;)
+    {
+      return false;
+      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = new Intent();
+      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
+      paramString.putExtra("from", alng.class.getName());
+      paramString.putExtra("finishAfterSucc", true);
+      if (alng.a(this.a) != null) {}
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(alng.a(this.a));
+        label105:
+        alng.a(this.a, null);
+        alng.a(this.a, new alny(this, l));
+        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
+        BaseApplicationImpl.getApplication().registerReceiver(alng.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
+        if (paramArrayOfVariantWrapper == null) {
+          continue;
+        }
+        paramArrayOfVariantWrapper.startActivity(paramString);
+        return false;
+      }
+      catch (Exception paramArrayOfVariantWrapper)
+      {
+        break label105;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    alnh.a(this.jdField_a_of_type_Alnk.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

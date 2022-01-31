@@ -1,60 +1,35 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoDataManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoFragment;
 
 public class qxj
+  extends RecyclerView.OnScrollListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private npt jdField_a_of_type_Npt;
-  private npu jdField_a_of_type_Npu;
-  private qxb jdField_a_of_type_Qxb;
-  private qxu jdField_a_of_type_Qxu;
+  private int jdField_a_of_type_Int = 0;
   
-  qxj(Activity paramActivity, qxb paramqxb, qxu paramqxu)
+  private qxj(MultiVideoFragment paramMultiVideoFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Qxb = paramqxb;
-    this.jdField_a_of_type_Qxu = paramqxu;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    b();
+    if (paramInt == 0) {}
+    qxl.a(MultiVideoFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoFragment), new qxk(this, paramInt));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void b()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Npt = ((npt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(99));
-    this.jdField_a_of_type_Npu = new qxk(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Npu);
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new MultiVideoDataManager.1(this, paramInt1, paramInt2), 1, null, true);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Npu);
-  }
-  
-  void a(int paramInt1, int paramInt2)
-  {
-    int i = paramInt1;
-    while ((i < paramInt1 + paramInt2) && (i < this.jdField_a_of_type_Qxu.a().size()))
-    {
-      VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_Qxu.a().get(i);
-      if (localVideoInfo.s == 0) {
-        this.jdField_a_of_type_Npt.a(localVideoInfo.a, localVideoInfo.g);
-      }
-      i += 1;
+    paramRecyclerView = (RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoFragment.getActivity().getWindow().getDecorView().findViewById(2131363284);
+    if ((paramRecyclerView != null) && (paramRecyclerView.getVisibility() != 4)) {
+      paramRecyclerView.setVisibility(4);
     }
-    b(paramInt1, paramInt2);
+    paramRecyclerView = (RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoFragment.getActivity().getWindow().getDecorView().findViewById(2131363285);
+    if ((paramRecyclerView != null) && (paramRecyclerView.getVisibility() != 4)) {
+      paramRecyclerView.setVisibility(4);
+    }
   }
 }
 

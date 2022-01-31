@@ -1,57 +1,49 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 import org.json.JSONObject;
 
-class xmp
-  extends anql
+public class xmp
+  extends WebViewPlugin
 {
-  xmp(xmo paramxmo) {}
-  
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i;
-    Object localObject;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == xmo.a(this.a).key))
-    {
-      i = paramBundle.getInt("failcode");
-      localObject = paramBundle.getBundle("request");
-      if (i == 1000) {
-        break label80;
-      }
-      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
+    if (!"userVerify".equals(paramString2)) {}
+    do
+    {
+      return false;
+      paramJsBridgeListener = this.mRuntime.a();
+    } while (paramJsBridgeListener == null);
+    if ("setTicket".equals(paramString3)) {}
     for (;;)
     {
-      return;
-      label80:
-      String str = paramBundle.getString("cmd");
-      paramBundle = paramBundle.getBundle("response");
-      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
+      try
       {
-        localObject = ((Bundle)localObject).getString("callback");
-        i = paramBundle.getInt("retCode");
-        paramBundle = new JSONObject();
-        try
-        {
-          paramBundle.put("retCode", i);
-          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
-            return;
-          }
+        paramString1 = new JSONObject(paramVarArgs[0]).optString("ticket");
+        int i = paramJsBridgeListener.getIntent().getIntExtra("verify_type", -1);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.security_verify", 2, String.format("verifyTicket: %s, verifyType: %s", new Object[] { paramString1, Integer.valueOf(i) }));
         }
-        catch (Throwable paramBundle)
-        {
-          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
-        }
+        paramString2 = new Intent();
+        paramString2.putExtra("ticket", paramString1);
+        paramJsBridgeListener.setResult(-1, paramString2);
+        paramJsBridgeListener.finish();
       }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        QLog.d("Q.security_verify", 1, "handleJsRequest", paramJsBridgeListener);
+        continue;
+      }
+      return bool;
+      bool = false;
     }
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.open.downloadnew;
 
 import android.content.DialogInterface.OnClickListener;
-import bdlc;
-import bdlq;
+import bdlr;
+import bdmf;
 
 public class MyAppApi$13
   implements Runnable
 {
-  public MyAppApi$13(bdlc parambdlc, DialogInterface.OnClickListener paramOnClickListener, bdlq parambdlq) {}
+  public MyAppApi$13(bdlr parambdlr, DialogInterface.OnClickListener paramOnClickListener, bdmf parambdmf) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdlq, 0);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdmf, 0);
   }
 }
 

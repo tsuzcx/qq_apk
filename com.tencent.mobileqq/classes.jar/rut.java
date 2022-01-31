@@ -1,22 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
-
-public class rut
-  implements ruw
+public abstract interface rut
 {
-  public rut(ChannelTopBanner paramChannelTopBanner) {}
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
-  }
+  public abstract void a(int paramInt);
 }
 
 

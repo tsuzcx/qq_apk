@@ -11,24 +11,24 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import begz;
-import beip;
-import bejs;
-import bejw;
-import bejy;
+import behq;
+import bejg;
 import bekj;
-import belf;
-import belg;
-import bend;
-import besl;
-import bfas;
-import bfbb;
-import bfbc;
-import bfbd;
-import bfbf;
-import bfbk;
-import bfbr;
-import bfgv;
+import bekn;
+import bekp;
+import bela;
+import belw;
+import belx;
+import benu;
+import betc;
+import bfbj;
+import bfbs;
+import bfbt;
+import bfbu;
+import bfbw;
+import bfcb;
+import bfci;
+import bfhm;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -43,39 +43,39 @@ import org.json.JSONObject;
 
 public class AppBrandPageContainer
   extends FrameLayout
-  implements bend, bfbk
+  implements benu, bfcb
 {
   public int a;
-  private begz jdField_a_of_type_Begz;
-  private bejy jdField_a_of_type_Bejy;
-  private belf jdField_a_of_type_Belf;
-  bfas jdField_a_of_type_Bfas;
-  private bfbr jdField_a_of_type_Bfbr;
+  private behq jdField_a_of_type_Behq;
+  private bekp jdField_a_of_type_Bekp;
+  private belw jdField_a_of_type_Belw;
+  bfbj jdField_a_of_type_Bfbj;
+  private bfci jdField_a_of_type_Bfci;
   private LinkedList<AppBrandPage> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private List<belg> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private List<belx> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private int b = -1;
   
-  public AppBrandPageContainer(begz parambegz, bfas parambfas)
+  public AppBrandPageContainer(behq parambehq, bfbj parambfbj)
   {
-    super(parambegz.a());
-    this.jdField_a_of_type_Begz = parambegz;
-    this.jdField_a_of_type_Bfas = parambfas;
-    this.jdField_a_of_type_Belf = new belf(this);
-    this.jdField_a_of_type_Bfbr = new bfbr(parambegz);
-    this.jdField_a_of_type_Belf.a(new bfbb(this));
+    super(parambehq.a());
+    this.jdField_a_of_type_Behq = parambehq;
+    this.jdField_a_of_type_Bfbj = parambfbj;
+    this.jdField_a_of_type_Belw = new belw(this);
+    this.jdField_a_of_type_Bfci = new bfci(parambehq);
+    this.jdField_a_of_type_Belw.a(new bfbs(this));
   }
   
   private boolean a(String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Bejy != null)
+    if (this.jdField_a_of_type_Bekp != null)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Bejy.a(paramString, this.jdField_a_of_type_Begz.a()))
+      if (this.jdField_a_of_type_Bekp.a(paramString, this.jdField_a_of_type_Behq.a()))
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_Bejy.c(paramString)) {
+        if (this.jdField_a_of_type_Bekp.c(paramString)) {
           bool1 = true;
         }
       }
@@ -96,26 +96,26 @@ public class AppBrandPageContainer
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = this.jdField_a_of_type_Bfbr.a(this.jdField_a_of_type_Begz, this);
+      localObject2 = this.jdField_a_of_type_Bfci.a(this.jdField_a_of_type_Behq, this);
     }
     return localObject2;
   }
   
-  private String b(bejs parambejs)
+  private String b(bekj parambekj)
   {
-    if ("setEnableDebug".equals(parambejs.jdField_a_of_type_JavaLangString)) {
+    if ("setEnableDebug".equals(parambekj.jdField_a_of_type_JavaLangString)) {
       try
       {
-        boolean bool = new JSONObject(parambejs.b).optBoolean("enableDebug");
-        if (bool != Boolean.valueOf(bfgv.a().getBoolean(this.jdField_a_of_type_Begz.a().appId + "_debug", false)).booleanValue()) {
-          this.jdField_a_of_type_Begz.a().runOnUiThread(new AppBrandPageContainer.4(this, bool));
+        boolean bool = new JSONObject(parambekj.b).optBoolean("enableDebug");
+        if (bool != Boolean.valueOf(bfhm.a().getBoolean(this.jdField_a_of_type_Behq.a().appId + "_debug", false)).booleanValue()) {
+          this.jdField_a_of_type_Behq.a().runOnUiThread(new AppBrandPageContainer.4(this, bool));
         } else {
-          parambejs.a();
+          parambekj.a();
         }
       }
       catch (JSONException localJSONException)
       {
-        parambejs.b();
+        parambekj.b();
       }
     }
     return null;
@@ -129,19 +129,19 @@ public class AppBrandPageContainer
       localJSONObject.put("index", paramInt);
       localJSONObject.put("pagePath", paramString1);
       localJSONObject.put("text", paramString2);
-      this.jdField_a_of_type_Begz.a(bejw.a("onTabItemTap", localJSONObject.toString(), c()));
+      this.jdField_a_of_type_Behq.a(bekn.a("onTabItemTap", localJSONObject.toString(), c()));
       return;
     }
     catch (Throwable paramString1)
     {
-      besl.d("AppBrandPageContainer", "onTabItemClick error,", paramString1);
+      betc.d("AppBrandPageContainer", "onTabItemClick error,", paramString1);
     }
   }
   
   private void b(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    beip.a().a(this.jdField_a_of_type_Begz.a(), paramString1, new bfbd(this, paramString1, localWeakReference, paramString2));
+    bejg.a().a(this.jdField_a_of_type_Behq.a(), paramString1, new bfbu(this, paramString1, localWeakReference, paramString2));
   }
   
   public int a()
@@ -158,9 +158,9 @@ public class AppBrandPageContainer
     return this;
   }
   
-  public bfbr a()
+  public bfci a()
   {
-    return this.jdField_a_of_type_Bfbr;
+    return this.jdField_a_of_type_Bfci;
   }
   
   public AppBrandPage a()
@@ -180,12 +180,12 @@ public class AppBrandPageContainer
     return null;
   }
   
-  public String a(bejs parambejs)
+  public String a(bekj parambekj)
   {
     Object localObject2 = null;
     Object localObject1;
-    if (parambejs.jdField_a_of_type_Int == 3) {
-      localObject1 = b(parambejs);
+    if (parambekj.jdField_a_of_type_Int == 3) {
+      localObject1 = b(parambekj);
     }
     Object localObject3;
     do
@@ -200,27 +200,27 @@ public class AppBrandPageContainer
             localObject3 = a();
             localObject1 = localObject2;
           } while (localObject3 == null);
-          if (parambejs.jdField_a_of_type_Int == 0) {
-            return ((AppBrandPage)localObject3).a(parambejs);
+          if (parambekj.jdField_a_of_type_Int == 0) {
+            return ((AppBrandPage)localObject3).a(parambekj);
           }
           localObject3 = ((AppBrandPage)localObject3).a();
           localObject1 = localObject2;
         } while (localObject3 == null);
-        if (parambejs.jdField_a_of_type_Int == 1) {
-          return ((PageWebviewContainer)localObject3).a(parambejs);
+        if (parambekj.jdField_a_of_type_Int == 1) {
+          return ((PageWebviewContainer)localObject3).a(parambekj);
         }
         localObject3 = ((PageWebviewContainer)localObject3).a();
         localObject1 = localObject2;
       } while (localObject3 == null);
       localObject1 = localObject2;
-    } while (parambejs.jdField_a_of_type_Int != 2);
-    return ((NativeViewContainer)localObject3).a(parambejs);
+    } while (parambekj.jdField_a_of_type_Int != 2);
+    return ((NativeViewContainer)localObject3).a(parambekj);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bfas != null) {
-      this.jdField_a_of_type_Bfas.a("onAppEnterBackground", null, 0);
+    if (this.jdField_a_of_type_Bfbj != null) {
+      this.jdField_a_of_type_Bfbj.a("onAppEnterBackground", null, 0);
     }
   }
   
@@ -243,26 +243,26 @@ public class AppBrandPageContainer
     }
   }
   
-  public void a(belg parambelg)
+  public void a(belx parambelx)
   {
-    if ((parambelg == null) || (this.jdField_a_of_type_JavaUtilList == null)) {
+    if ((parambelx == null) || (this.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.remove(parambelg);
+    this.jdField_a_of_type_JavaUtilList.remove(parambelx);
   }
   
   public void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
   {
     String str1;
-    if ((paramBoolean) && (this.jdField_a_of_type_Bfas != null) && (this.jdField_a_of_type_Bfas.a()) && (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.c)))
+    if ((paramBoolean) && (this.jdField_a_of_type_Bfbj != null) && (this.jdField_a_of_type_Bfbj.a()) && (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.c)))
     {
       paramBoolean = true;
       str1 = paramMiniAppInfo.launchParam.c;
-      this.jdField_a_of_type_Bfas.a(paramMiniAppInfo.launchParam.c);
+      this.jdField_a_of_type_Bfbj.a(paramMiniAppInfo.launchParam.c);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bfas != null) && (this.jdField_a_of_type_Bfas.a()))
+      if ((this.jdField_a_of_type_Bfbj != null) && (this.jdField_a_of_type_Bfbj.a()))
       {
         String str2 = str1;
         if (TextUtils.isEmpty(str1))
@@ -273,21 +273,21 @@ public class AppBrandPageContainer
           }
         }
         if (!TextUtils.isEmpty(str2)) {
-          paramMiniAppInfo = bekj.a(str2, paramMiniAppInfo);
+          paramMiniAppInfo = bela.a(str2, paramMiniAppInfo);
         }
       }
       try
       {
         paramMiniAppInfo.put("reLaunch", paramBoolean);
-        besl.b("AppBrandPageContainer", "appLaunchInfo : " + paramMiniAppInfo.toString());
-        this.jdField_a_of_type_Bfas.a("onAppEnterForeground", paramMiniAppInfo.toString(), 0);
+        betc.b("AppBrandPageContainer", "appLaunchInfo : " + paramMiniAppInfo.toString());
+        this.jdField_a_of_type_Bfbj.a("onAppEnterForeground", paramMiniAppInfo.toString(), 0);
         return;
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          besl.d("AppBrandPageContainer", "appLaunchInfo error.", localThrowable);
+          betc.d("AppBrandPageContainer", "appLaunchInfo error.", localThrowable);
         }
       }
       Object localObject = null;
@@ -297,8 +297,8 @@ public class AppBrandPageContainer
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_Bfbr != null) {
-      this.jdField_a_of_type_Bfbr.a(this.jdField_a_of_type_Begz, this);
+    if (this.jdField_a_of_type_Bfci != null) {
+      this.jdField_a_of_type_Bfci.a(this.jdField_a_of_type_Behq, this);
     }
   }
   
@@ -308,7 +308,7 @@ public class AppBrandPageContainer
     AppBrandPage localAppBrandPage = b();
     localAppBrandPage.setVisibility(4);
     this.jdField_a_of_type_JavaUtilLinkedList.push(localAppBrandPage);
-    localAppBrandPage.a(paramString, "switchTab", this.jdField_a_of_type_Bfas);
+    localAppBrandPage.a(paramString, "switchTab", this.jdField_a_of_type_Bfbj);
     localAppBrandPage.setVisibility(0);
   }
   
@@ -317,7 +317,7 @@ public class AppBrandPageContainer
     if (this.jdField_a_of_type_Int > 10)
     {
       Toast.makeText(getContext(), "打开页面超过上限，请返回", 0).show();
-      besl.d("AppBrandPageContainer", "打开WebView数量超过上限");
+      betc.d("AppBrandPageContainer", "打开WebView数量超过上限");
       return;
     }
     if (!a(paramString))
@@ -325,10 +325,10 @@ public class AppBrandPageContainer
       b(paramString, "navigateTo");
       return;
     }
-    AppBrandPage localAppBrandPage = this.jdField_a_of_type_Bfbr.a(this.jdField_a_of_type_Begz, this);
+    AppBrandPage localAppBrandPage = this.jdField_a_of_type_Bfci.a(this.jdField_a_of_type_Behq, this);
     localAppBrandPage.setVisibility(4);
     this.jdField_a_of_type_JavaUtilLinkedList.push(localAppBrandPage);
-    localAppBrandPage.a(paramString, "navigateTo", this.jdField_a_of_type_Bfas);
+    localAppBrandPage.a(paramString, "navigateTo", this.jdField_a_of_type_Bfbj);
     addView(localAppBrandPage, new FrameLayout.LayoutParams(-1, -1));
   }
   
@@ -339,9 +339,9 @@ public class AppBrandPageContainer
       b(paramString1, paramString2);
       return;
     }
-    AppBrandPage localAppBrandPage = this.jdField_a_of_type_Bfbr.a(this.jdField_a_of_type_Begz, this);
+    AppBrandPage localAppBrandPage = this.jdField_a_of_type_Bfci.a(this.jdField_a_of_type_Behq, this);
     this.jdField_a_of_type_JavaUtilLinkedList.push(localAppBrandPage);
-    localAppBrandPage.a(paramString1, paramString2, this.jdField_a_of_type_Bfas);
+    localAppBrandPage.a(paramString1, paramString2, this.jdField_a_of_type_Bfbj);
     addView(localAppBrandPage, new FrameLayout.LayoutParams(-1, -1));
   }
   
@@ -382,7 +382,7 @@ public class AppBrandPageContainer
     while (localIterator.hasNext())
     {
       AppBrandPage localAppBrandPage = (AppBrandPage)localIterator.next();
-      if ((localAppBrandPage != null) && ((!paramBoolean) || (this.jdField_a_of_type_Bejy == null) || (!this.jdField_a_of_type_Bejy.a(localAppBrandPage.a()))))
+      if ((localAppBrandPage != null) && ((!paramBoolean) || (this.jdField_a_of_type_Bekp == null) || (!this.jdField_a_of_type_Bekp.a(localAppBrandPage.a()))))
       {
         localAppBrandPage.b();
         removeView(localAppBrandPage);
@@ -409,7 +409,7 @@ public class AppBrandPageContainer
       {
         localObject = (AppBrandPage)this.jdField_a_of_type_JavaUtilLinkedList.peek();
         if (localObject != null) {
-          this.jdField_a_of_type_Bfas.b("navigateBack", ((AppBrandPage)localObject).a(), ((AppBrandPage)localObject).b());
+          this.jdField_a_of_type_Bfbj.b("navigateBack", ((AppBrandPage)localObject).a(), ((AppBrandPage)localObject).b());
         }
         return true;
       }
@@ -418,7 +418,7 @@ public class AppBrandPageContainer
         AppBrandPage localAppBrandPage = (AppBrandPage)((Iterator)localObject).next();
         Animation localAnimation = AnimationUtils.loadAnimation(MiniAppEnv.g().getContext(), 2130772086);
         localAnimation.setDuration(200L);
-        localAnimation.setAnimationListener(new bfbc(this, localAppBrandPage));
+        localAnimation.setAnimationListener(new bfbt(this, localAppBrandPage));
         localAppBrandPage.startAnimation(localAnimation);
         ((Iterator)localObject).remove();
       }
@@ -452,12 +452,12 @@ public class AppBrandPageContainer
         removeView(localAppBrandPage);
       }
     }
-    AppBrandPage localAppBrandPage = this.jdField_a_of_type_Bfbr.a(this.jdField_a_of_type_Begz, this);
+    AppBrandPage localAppBrandPage = this.jdField_a_of_type_Bfci.a(this.jdField_a_of_type_Behq, this);
     if (!localAppBrandPage.b()) {
       localAppBrandPage.setVisibility(4);
     }
     this.jdField_a_of_type_JavaUtilLinkedList.push(localAppBrandPage);
-    localAppBrandPage.a(paramString, "redirectTo", this.jdField_a_of_type_Bfas);
+    localAppBrandPage.a(paramString, "redirectTo", this.jdField_a_of_type_Bfbj);
     addView(localAppBrandPage, new FrameLayout.LayoutParams(-1, -1));
   }
   
@@ -471,10 +471,10 @@ public class AppBrandPageContainer
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bfbr != null)
+    if (this.jdField_a_of_type_Bfci != null)
     {
-      this.jdField_a_of_type_Bfbr.a();
-      this.jdField_a_of_type_Bfbr = null;
+      this.jdField_a_of_type_Bfci.a();
+      this.jdField_a_of_type_Bfci = null;
     }
   }
   
@@ -488,9 +488,9 @@ public class AppBrandPageContainer
     this.b = -1;
   }
   
-  public void setApkgInfo(bejy parambejy)
+  public void setApkgInfo(bekp parambekp)
   {
-    this.jdField_a_of_type_Bejy = parambejy;
+    this.jdField_a_of_type_Bekp = parambekp;
   }
   
   public void setCurShowingInputId(int paramInt)
@@ -498,15 +498,15 @@ public class AppBrandPageContainer
     this.b = paramInt;
   }
   
-  public void setSoftKeyboardStateListener(belg parambelg)
+  public void setSoftKeyboardStateListener(belx parambelx)
   {
-    if (parambelg == null) {
+    if (parambelx == null) {
       return;
     }
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(parambelg);
+    this.jdField_a_of_type_JavaUtilList.add(parambelx);
   }
 }
 

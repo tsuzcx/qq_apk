@@ -1,49 +1,24 @@
-import android.text.Layout;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
 
 public class banl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends RecyclerView.OnScrollListener
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public banl(AddedRobotView paramAddedRobotView) {}
   
-  public banl(TextView paramTextView, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_a_of_type_Int + 1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(false);
-  }
-  
-  public void onGlobalLayout()
-  {
-    int i;
-    String str;
-    CharSequence localCharSequence1;
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() > this.jdField_a_of_type_Int)
-    {
-      i = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      str = "...";
-      localCharSequence1 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      AddedRobotView.a(this.a).c();
     }
-    try
-    {
-      localCharSequence1 = localCharSequence1.subSequence(0, i - 3);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence1);
-      this.jdField_a_of_type_AndroidWidgetTextView.append(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    while (!AddedRobotView.a(this.a).a()) {
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        str = "";
-        CharSequence localCharSequence2 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      }
-    }
+    AddedRobotView.a(this.a).b();
+    AddedRobotView.a(this.a).notifyDataSetChanged();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,7 +15,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bbkx;
+import bbll;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -24,14 +24,14 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import nmf;
-import nya;
-import nyg;
-import oau;
+import nmc;
+import nxx;
+import nyd;
+import oar;
 import org.json.JSONObject;
-import qmd;
-import qqo;
-import sht;
+import qma;
+import qql;
+import shq;
 
 public class ReadInJoyAdGestureView
   extends RelativeLayout
@@ -47,7 +47,7 @@ public class ReadInJoyAdGestureView
   Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoyAdGestureView.1(this);
   String jdField_a_of_type_JavaLangString;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private nya jdField_a_of_type_Nya;
+  private nxx jdField_a_of_type_Nxx;
   boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float = 0.0F;
   Paint jdField_b_of_type_AndroidGraphicsPaint = null;
@@ -91,10 +91,10 @@ public class ReadInJoyAdGestureView
     a();
   }
   
-  private long a(nya paramnya)
+  private long a(nxx paramnxx)
   {
-    if ((paramnya != null) && (paramnya.jdField_c_of_type_Long > 0L)) {
-      return paramnya.jdField_c_of_type_Long;
+    if ((paramnxx != null) && (paramnxx.jdField_c_of_type_Long > 0L)) {
+      return paramnxx.jdField_c_of_type_Long;
     }
     return 500L;
   }
@@ -104,8 +104,8 @@ public class ReadInJoyAdGestureView
     if (BaseApplicationImpl.getContext() == null) {
       return;
     }
-    int n = bbkx.a();
-    int i1 = bbkx.b();
+    int n = bbll.a();
+    int i1 = bbll.b();
     if ((i1 == 0) || (n == 0)) {
       QLog.e("ReadInJoyAdGestureView", 2, "initStartPostionXY get Screen width and high error screenHigh:" + i1 + " screenWidth:" + n);
     }
@@ -118,15 +118,15 @@ public class ReadInJoyAdGestureView
     for (;;)
     {
       this.jdField_g_of_type_Float = (f2 * paramFloat1 + n / 2);
-      this.jdField_h_of_type_Float = (f1 * paramFloat2 + i1 / 2 - actn.a(58.0F, BaseApplicationImpl.getContext().getResources()));
+      this.jdField_h_of_type_Float = (f1 * paramFloat2 + i1 / 2 - actj.a(58.0F, BaseApplicationImpl.getContext().getResources()));
       return;
       f1 = n / 0.5625F;
     }
   }
   
-  private void a(nya paramnya, MotionEvent paramMotionEvent)
+  private void a(nxx paramnxx, MotionEvent paramMotionEvent)
   {
-    if ((paramnya == null) || (paramMotionEvent == null)) {}
+    if ((paramnxx == null) || (paramMotionEvent == null)) {}
     do
     {
       return;
@@ -146,7 +146,7 @@ public class ReadInJoyAdGestureView
         this.jdField_a_of_type_Boolean = true;
         this.k = this.jdField_a_of_type_Float;
         this.l = this.jdField_b_of_type_Float;
-        postDelayed(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdGestureView$LongPressRunnable, a(paramnya));
+        postDelayed(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInJoyAdGestureView$LongPressRunnable, a(paramnxx));
         invalidate();
         return;
       }
@@ -224,9 +224,9 @@ public class ReadInJoyAdGestureView
     }
   }
   
-  private void b(nya paramnya, MotionEvent paramMotionEvent)
+  private void b(nxx paramnxx, MotionEvent paramMotionEvent)
   {
-    if ((paramnya == null) || (paramMotionEvent == null)) {}
+    if ((paramnxx == null) || (paramMotionEvent == null)) {}
     do
     {
       float f1;
@@ -244,7 +244,7 @@ public class ReadInJoyAdGestureView
           f4 = this.jdField_b_of_type_Float;
           f5 = Math.abs(f1 - f3);
           f6 = Math.abs(f2 - f4);
-          if (((this.jdField_a_of_type_Int == 1) && ((f5 >= paramnya.jdField_b_of_type_Int) || (f6 >= paramnya.jdField_b_of_type_Int))) || ((this.jdField_a_of_type_Int == 2) && ((f5 >= 40.0F) || (f6 >= 40.0F))) || ((this.jdField_a_of_type_Int == 3) && ((f5 >= 40.0F) || (f6 >= 40.0F)))) {
+          if (((this.jdField_a_of_type_Int == 1) && ((f5 >= paramnxx.jdField_b_of_type_Int) || (f6 >= paramnxx.jdField_b_of_type_Int))) || ((this.jdField_a_of_type_Int == 2) && ((f5 >= 40.0F) || (f6 >= 40.0F))) || ((this.jdField_a_of_type_Int == 3) && ((f5 >= 40.0F) || (f6 >= 40.0F)))) {
             this.jdField_g_of_type_Boolean = true;
           }
           switch (this.jdField_a_of_type_Int)
@@ -263,16 +263,16 @@ public class ReadInJoyAdGestureView
         invalidate();
         return;
       } while (!this.jdField_b_of_type_Boolean);
-      paramnya = a(f1, f2);
-      this.i = paramnya[0];
-      this.j = paramnya[1];
+      paramnxx = a(f1, f2);
+      this.i = paramnxx[0];
+      this.j = paramnxx[1];
     } while ((this.i == -1.0F) || (this.j == -1.0F));
     invalidate();
   }
   
-  private void c(nya paramnya, MotionEvent paramMotionEvent)
+  private void c(nxx paramnxx, MotionEvent paramMotionEvent)
   {
-    if ((paramnya == null) || (paramMotionEvent == null)) {}
+    if ((paramnxx == null) || (paramMotionEvent == null)) {}
     do
     {
       do
@@ -310,7 +310,7 @@ public class ReadInJoyAdGestureView
       {
       case 1: 
         if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(actn.a(9.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(actj.a(9.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
         }
         if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_AndroidGraphicsPaint == null)) {
           return;
@@ -356,24 +356,24 @@ public class ReadInJoyAdGestureView
     this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth(24.0F);
   }
   
-  public void a(nya paramnya)
+  public void a(nxx paramnxx)
   {
-    if ((paramnya == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+    if ((paramnxx == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
       return;
     }
-    this.jdField_a_of_type_Int = paramnya.jdField_a_of_type_Int;
-    this.jdField_c_of_type_Float = ((float)paramnya.jdField_c_of_type_Double);
-    this.jdField_d_of_type_Float = ((float)paramnya.d);
-    this.jdField_e_of_type_Float = actn.a((float)paramnya.jdField_b_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    this.jdField_f_of_type_Float = actn.a((float)paramnya.jdField_a_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    this.jdField_a_of_type_Int = paramnxx.jdField_a_of_type_Int;
+    this.jdField_c_of_type_Float = ((float)paramnxx.jdField_c_of_type_Double);
+    this.jdField_d_of_type_Float = ((float)paramnxx.d);
+    this.jdField_e_of_type_Float = actj.a((float)paramnxx.jdField_b_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    this.jdField_f_of_type_Float = actj.a((float)paramnxx.jdField_a_of_type_Double, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
     a(this.jdField_c_of_type_Float, this.jdField_d_of_type_Float);
     this.i = a(this.jdField_g_of_type_Float + this.jdField_e_of_type_Float / 2.0F, this.jdField_h_of_type_Float + this.jdField_f_of_type_Float / 2.0F)[0];
     this.j = a(this.jdField_g_of_type_Float + this.jdField_e_of_type_Float / 2.0F, this.jdField_h_of_type_Float + this.jdField_f_of_type_Float / 2.0F)[1];
-    this.jdField_a_of_type_JavaLangString = paramnya.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramnya.jdField_c_of_type_JavaLangString;
-    paramnya = paramnya.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaLangString = paramnxx.jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramnxx.jdField_c_of_type_JavaLangString;
+    paramnxx = paramnxx.jdField_a_of_type_JavaLangString;
     d();
-    ThreadManager.getSubThreadHandler().post(new ReadInJoyAdGestureView.2(this, paramnya));
+    ThreadManager.getSubThreadHandler().post(new ReadInJoyAdGestureView.2(this, paramnxx));
   }
   
   public void a(boolean paramBoolean)
@@ -422,8 +422,8 @@ public class ReadInJoyAdGestureView
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null))
     {
-      this.jdField_c_of_type_Boolean = sht.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), nmf.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo), null, 3, false, null);
-      nmf.a(new nyg().a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(nmf.jdField_a_of_type_Int).b(nmf.P).a(nmf.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo)).e(oau.a(1, this.jdField_a_of_type_Int)).a());
+      this.jdField_c_of_type_Boolean = shq.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), nmc.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo), null, 3, false, null);
+      nmc.a(new nyd().a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(nmc.jdField_a_of_type_Int).b(nmc.P).a(nmc.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo)).e(oar.a(1, this.jdField_a_of_type_Int)).a());
     }
   }
   
@@ -479,39 +479,39 @@ public class ReadInJoyAdGestureView
     for (;;)
     {
       return true;
-      a(this.jdField_a_of_type_Nya, paramMotionEvent);
+      a(this.jdField_a_of_type_Nxx, paramMotionEvent);
       continue;
-      b(this.jdField_a_of_type_Nya, paramMotionEvent);
+      b(this.jdField_a_of_type_Nxx, paramMotionEvent);
       continue;
-      c(this.jdField_a_of_type_Nya, paramMotionEvent);
+      c(this.jdField_a_of_type_Nxx, paramMotionEvent);
     }
   }
   
-  public void setGestureAdInfo(qmd paramqmd, Context paramContext)
+  public void setGestureAdInfo(qma paramqma, Context paramContext)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     }
-    if ((!this.jdField_d_of_type_Boolean) && (paramqmd != null) && (paramqmd.a != null) && (paramqmd.a.a != null) && (paramqmd.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null)) {
+    if ((!this.jdField_d_of_type_Boolean) && (paramqma != null) && (paramqma.a != null) && (paramqma.a.a != null) && (paramqma.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null)) {
       try
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo = paramqmd.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
+        this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo = paramqma.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
         if (this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo == null) {
           return;
         }
-        paramqmd = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.v);
-        if (paramqmd != null)
+        paramqma = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.v);
+        if (paramqma != null)
         {
-          this.jdField_a_of_type_Nya = nya.a(paramqmd.optJSONObject("GesturesAd_info"));
-          a(this.jdField_a_of_type_Nya);
+          this.jdField_a_of_type_Nxx = nxx.a(paramqma.optJSONObject("GesturesAd_info"));
+          a(this.jdField_a_of_type_Nxx);
         }
         this.jdField_d_of_type_Boolean = true;
         invalidate();
         return;
       }
-      catch (Exception paramqmd)
+      catch (Exception paramqma)
       {
-        paramqmd.printStackTrace();
+        paramqma.printStackTrace();
       }
     }
   }

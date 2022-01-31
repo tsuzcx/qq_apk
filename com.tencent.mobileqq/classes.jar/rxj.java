@@ -1,26 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class rxj
-  implements bfos
+public class rxj
+  implements DialogInterface.OnDismissListener
 {
-  rxj(rxh paramrxh, String paramString) {}
+  public rxj(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onDismiss()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    JSONObject localJSONObject = new JSONObject();
+    paramDialogInterface = new JSONObject();
     try
     {
-      localJSONObject.put("index", -1);
-      localJSONObject.put("type", 1);
-      if (rxh.a(this.jdField_a_of_type_Rxh) != null) {
-        ((BridgeModule)rxh.a(this.jdField_a_of_type_Rxh).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      paramDialogInterface.put("type", -1);
+      paramDialogInterface.put("action", "close");
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       }
       return;
     }
-    catch (JSONException localJSONException) {}
+    catch (JSONException paramDialogInterface) {}
   }
 }
 

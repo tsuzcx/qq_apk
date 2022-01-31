@@ -1,12 +1,12 @@
 package com.tencent.gdtad.adapter;
 
 import com.tencent.mobileqq.app.ThreadManager;
-import ysl;
+import ysi;
 
 public class GdtThreadManagerAdapter$2
   implements Runnable
 {
-  public GdtThreadManagerAdapter$2(ysl paramysl, Runnable paramRunnable, int paramInt) {}
+  public GdtThreadManagerAdapter$2(ysi paramysi, Runnable paramRunnable, int paramInt) {}
   
   public void run()
   {

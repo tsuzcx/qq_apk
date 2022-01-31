@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
+import com.tencent.aladdin.config.utils.AladdinLogger;
+import com.tencent.qphone.base.util.QLog;
 
-public final class oog
-  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
+public class oog
+  implements AladdinLogger
 {
-  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
+  public void d(String paramString1, String paramString2)
   {
-    return new AladdinConfigServlet.ConfigResult(paramParcel);
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
+  public void e(String paramString1, String paramString2)
   {
-    return new AladdinConfigServlet.ConfigResult[paramInt];
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
   }
 }
 

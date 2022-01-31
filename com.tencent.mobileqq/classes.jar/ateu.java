@@ -1,22 +1,28 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.1;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class ateu
-  extends atcb
+  implements View.OnClickListener
 {
   public ateu(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new NearbyGuideActivity.3.1(this, paramBoolean, paramInt1, paramArrayList));
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new NearbyGuideActivity.3.2(this, paramBoolean, paramInt1, paramArrayList));
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.d(ajya.a(2131707190));
+      if (this.a.jdField_a_of_type_Atbz == null) {
+        this.a.jdField_a_of_type_Atbz = ((atbz)this.a.app.a(60));
+      }
+      this.a.jdField_a_of_type_Atbz.a(NearbyPeopleProfileActivity.c, 5);
+      this.a.e("0X8005909");
+    }
   }
 }
 

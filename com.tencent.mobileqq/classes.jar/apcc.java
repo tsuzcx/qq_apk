@@ -1,14 +1,14 @@
 class apcc
-  extends apbq
+  extends apbu
 {
-  public apcc(apbe paramapbe)
+  public apcc(apbi paramapbi)
   {
-    super(paramapbe);
+    super(paramapbi);
   }
   
   protected String a()
   {
-    return "StateSaveToWeiYunByPC";
+    return "StateRefuseByPC";
   }
 }
 

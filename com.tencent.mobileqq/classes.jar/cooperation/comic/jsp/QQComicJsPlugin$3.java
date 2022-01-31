@@ -2,8 +2,8 @@ package cooperation.comic.jsp;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bghs;
 import bgij;
+import bgja;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -13,21 +13,21 @@ import org.json.JSONObject;
 public class QQComicJsPlugin$3
   implements Runnable
 {
-  public QQComicJsPlugin$3(bghs parambghs, long paramLong, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  public QQComicJsPlugin$3(bgij parambgij, long paramLong, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQComicDebug", 2, "waitPluginAndHandleJsCall start");
     }
-    if (!bgij.a)
+    if (!bgja.a)
     {
-      bgij.a(BaseApplication.getContext());
-      for (long l = 0L; (!bgij.a) && (l < this.jdField_a_of_type_Long); l += 50L) {
+      bgja.a(BaseApplication.getContext());
+      for (long l = 0L; (!bgja.a) && (l < this.jdField_a_of_type_Long); l += 50L) {
         SystemClock.sleep(50L);
       }
     }
-    if (bgij.a) {
+    if (bgja.a) {
       ThreadManager.getUIHandler().post(new QQComicJsPlugin.3.1(this));
     }
     for (;;)
@@ -44,7 +44,7 @@ public class QQComicJsPlugin$3
       {
         localJSONObject.put("code", 2001);
         localJSONObject.put("message", "QQComic is not ready");
-        bghs.b(this.this$0, this.b, new String[] { localJSONObject.toString() });
+        bgij.b(this.this$0, this.b, new String[] { localJSONObject.toString() });
       }
       catch (Exception localException)
       {

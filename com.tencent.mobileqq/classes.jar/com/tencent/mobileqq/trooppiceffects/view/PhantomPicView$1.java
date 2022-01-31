@@ -7,7 +7,7 @@ import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.widget.FrameLayout;
-import batq;
+import baue;
 
 public class PhantomPicView$1
   implements Runnable
@@ -35,7 +35,7 @@ public class PhantomPicView$1
     ((AnimatorSet)localObject3).play((Animator)localObject1).with((Animator)localObject4).with((Animator)localObject2);
     ((AnimatorSet)localObject3).start();
     this.this$0.b.setTag(localObject3);
-    ((AnimatorSet)localObject3).addListener(new batq(this));
+    ((AnimatorSet)localObject3).addListener(new baue(this));
   }
 }
 

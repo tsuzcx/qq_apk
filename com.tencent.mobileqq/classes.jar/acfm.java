@@ -1,33 +1,15 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class acfm
-  implements PopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public acfm(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public acfm(TranslucentTRansferFragment paramTranslucentTRansferFragment, bbgu parambbgu) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
-    {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
-    }
-    label76:
-    for (int i = 2130844792;; i = 2130845297)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
-      return;
-    }
+    this.jdField_a_of_type_Bbgu.dismiss();
   }
 }
 

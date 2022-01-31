@@ -1,24 +1,23 @@
-import android.os.AsyncTask;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-class nie
-  extends AsyncTask<Void, Void, Void>
+public class nie
+  implements View.OnClickListener
 {
-  nie(nid paramnid, abgm paramabgm) {}
+  public nie(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Nid.a.a(this.jdField_a_of_type_Abgm);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_Nid.a.a(-1);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nie
  * JD-Core Version:    0.7.0.1
  */

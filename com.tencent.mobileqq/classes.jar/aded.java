@@ -1,11 +1,8 @@
-import java.util.List;
-import java.util.Map;
+import android.graphics.Bitmap;
 
 public abstract interface aded
 {
-  public abstract void a(String paramString, int paramInt, addv paramaddv, List<adeq> paramList, Map<Integer, Integer> paramMap);
-  
-  public abstract boolean a(String paramString);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

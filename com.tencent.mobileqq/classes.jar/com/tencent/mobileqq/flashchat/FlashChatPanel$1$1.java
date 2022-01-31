@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.flashchat;
 
-import apys;
+import apyu;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class FlashChatPanel$1$1
   implements Runnable
 {
-  public FlashChatPanel$1$1(apys paramapys) {}
+  public FlashChatPanel$1$1(apyu paramapyu) {}
   
   public void run()
   {

@@ -1,47 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.widget.ExpandableListView;
-import java.util.List;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
 
 public class qhg
-  extends qhn
+  implements TextWatcher
 {
-  private qhx a;
+  public qhg(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public qhg(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, qhx paramqhx)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
-    this.jdField_a_of_type_Qhx = paramqhx;
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_Qhx != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qhx.b()))
+    if (paramEditable.length() > 0)
     {
-      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718554, new Object[] { String.valueOf(this.jdField_a_of_type_Qhx.c()) });
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
+      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
+        this.a.getChildFragmentManager().beginTransaction().add(2131366671, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+      }
+      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
+    }
+    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
       return;
     }
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718548), 0).a();
+    this.a.getChildFragmentManager().popBackStackImmediate();
   }
   
-  protected void a(qhv paramqhv, Friends paramFriends)
-  {
-    if ((paramFriends == null) || (this.jdField_a_of_type_Qhx == null) || (this.jdField_a_of_type_Qhx.a() == null) || (this.jdField_a_of_type_Qhx.a().isEmpty())) {
-      return;
-    }
-    paramqhv.a.setBackgroundResource(2130848410);
-    if (this.jdField_a_of_type_Qhx.a().contains(paramFriends.uin))
-    {
-      paramqhv.a.setEnabled(false);
-      return;
-    }
-    paramqhv.a.setEnabled(true);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

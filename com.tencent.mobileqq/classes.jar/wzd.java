@@ -1,27 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
-class wzd
-  extends wzr
+public class wzd
 {
-  wzd(wyw paramwyw, wze paramwze, String paramString1, String paramString2)
-  {
-    super(paramwyw);
-  }
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public ArrayList<String> a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public ArrayList<String> b;
+  boolean b;
+  public String c;
+  public ArrayList<File> c = new ArrayList();
+  public String d;
+  public String e;
   
-  public void a(boolean paramBoolean)
+  public wzd(wyt paramwyt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyw.a));
-      this.jdField_a_of_type_Wyw.a = System.currentTimeMillis();
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Wze.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
-      return;
-    }
-    this.jdField_a_of_type_Wze.a(this.b, false, "cmobine auido video done.");
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

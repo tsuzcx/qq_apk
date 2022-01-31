@@ -1,29 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.widget.AdapterView;
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bczj
-  implements bfpc
+  extends naq
 {
-  public bczj(BindGroupFragment paramBindGroupFragment) {}
+  public bczj(BindGroupActivity paramBindGroupActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    paramAdapterView = ((bczb)paramView.getTag()).a;
-    if (paramAdapterView.isThirdAppBind())
-    {
-      BindGroupFragment.b(this.a, ajyc.a(2131701115));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
     }
-    if (paramAdapterView.isNewTroop())
+    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
+    do
     {
-      BindGroupFragment.a(this.a, ajyc.a(2131701101), paramAdapterView.troopuin);
       return;
-    }
-    BindGroupFragment.a(this.a, ajyc.a(2131701104));
-    ((akhq)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue(), Long.valueOf(paramAdapterView.troopuin).longValue(), BindGroupFragment.c(this.a));
+      this.a.jdField_b_of_type_Bcqf.hide();
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BindGroupActivity", 2, "openIdObserver success");
+        }
+        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
+        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
+        {
+          this.a.b();
+          return;
+        }
+        this.a.a();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
   }
 }
 

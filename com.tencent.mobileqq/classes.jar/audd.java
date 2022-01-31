@@ -1,13 +1,20 @@
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class audd
+  extends auda
 {
-  public int a;
-  public String a;
-  public List<aubd> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, aucw paramaucw, aucy paramaucy)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if ((paramView != null) && (((aucy)paramView.getTag()).a == paramaucy.a)) {
+      return paramView;
+    }
+    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559615, null);
+    paramView.setTag(paramaucy);
+    return paramView;
+  }
 }
 
 

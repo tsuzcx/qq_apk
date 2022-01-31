@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adps;
+import adpq;
 import android.os.Handler;
-import aoza;
-import apue;
-import apvb;
+import aoze;
+import apug;
+import apvd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class FileVideoItemBuilder$1
   implements Runnable
 {
-  public FileVideoItemBuilder$1(adps paramadps, FileManagerEntity paramFileManagerEntity) {}
+  public FileVideoItemBuilder$1(adpq paramadpq, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    apue.d(this.a);
-    if (apvb.b(this.a.strLargeThumPath))
+    apug.d(this.a);
+    if (apvd.b(this.a.strLargeThumPath))
     {
       this.this$0.a.a().c(this.a);
       this.this$0.b.post(new FileVideoItemBuilder.1.1(this));

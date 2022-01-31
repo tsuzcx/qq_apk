@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhad;
+import bhau;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.smtt.sdk.WebView;
@@ -40,8 +40,8 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = a(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130847640));
-      localImageView.setOnClickListener(new bhad(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130847646));
+      localImageView.setOnClickListener(new bhau(this));
     }
   }
   
@@ -53,8 +53,8 @@ public class QzoneTranslucentBrowserFragment
   
   public int d(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Bcfj != null) {
-      this.jdField_a_of_type_Bcfj.d = true;
+    if (this.jdField_a_of_type_Bcfx != null) {
+      this.jdField_a_of_type_Bcfx.d = true;
     }
     int i = super.d(paramBundle);
     if (this.jdField_a_of_type_AndroidContentIntent != null)

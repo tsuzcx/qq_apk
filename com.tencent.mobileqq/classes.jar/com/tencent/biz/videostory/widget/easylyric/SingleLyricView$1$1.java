@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.widget.easylyric;
 
-import xhw;
-import xid;
+import xht;
+import xia;
 
 public class SingleLyricView$1$1
   implements Runnable
 {
-  public SingleLyricView$1$1(xid paramxid, long paramLong) {}
+  public SingleLyricView$1$1(xia paramxia, long paramLong) {}
   
   public void run()
   {
-    SingleLyricView.a(this.jdField_a_of_type_Xid.a).a(this.jdField_a_of_type_Long);
+    SingleLyricView.a(this.jdField_a_of_type_Xia.a).a(this.jdField_a_of_type_Long);
   }
 }
 

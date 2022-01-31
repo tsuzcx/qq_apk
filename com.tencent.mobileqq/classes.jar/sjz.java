@@ -1,7 +1,4 @@
-class sjz
-{
-  private static final sjy a = new sjy(null);
-}
+class sjz {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

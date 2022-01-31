@@ -1,15 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class amie
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnTouchListener
 {
-  amie(amic paramamic) {}
+  amie(amib paramamib) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    amic.a(this.a);
-    return true;
+    return amib.a(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 

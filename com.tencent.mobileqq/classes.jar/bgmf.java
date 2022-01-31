@@ -1,10 +1,6 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.RecvMsg;
-
 public abstract interface bgmf
-  extends IInterface
 {
-  public abstract void a(RecvMsg paramRecvMsg);
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

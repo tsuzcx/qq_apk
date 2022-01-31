@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.os.Handler;
-import bcpw;
+import bcql;
 
 class AppLoadingUI$11$3
   implements Runnable
@@ -12,7 +12,7 @@ class AppLoadingUI$11$3
   
   public void run()
   {
-    bcpw.a(this.this$1.this$0.getActivity().getApplicationContext(), ajyc.a(2131700610), 0).a();
+    bcql.a(this.this$1.this$0.getActivity().getApplicationContext(), ajya.a(2131700621), 0).a();
     this.this$1.this$0.uiHandler.postDelayed(new AppLoadingUI.11.3.1(this), 1000L);
   }
 }

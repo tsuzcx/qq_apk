@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
-public final class bfqw
-  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
+public class bfqw
+  implements TypeEvaluator<Rect>
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
+  public bfqw(DynamicGridView paramDynamicGridView) {}
+  
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 

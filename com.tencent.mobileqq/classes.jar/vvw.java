@@ -1,24 +1,85 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class vvw
+  extends BaseAdapter
 {
-  public static final int[] a;
-  public static final int[] b;
-  public int a;
-  public Drawable a;
-  public int b;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private vvy jdField_a_of_type_Vvy;
+  private int b;
+  private int c;
   
-  static
+  public vvw(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130845871, 2130845869, 2130845872, 2130845870, 2130845875, 2130845874, 2130845878, 2130845873, 2130845876 };
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public vvw(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public Bitmap a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vvy = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (this.jdField_a_of_type_Vvy == null) {
+      return;
+    }
+    this.jdField_a_of_type_Vvy.a(paramLocalMediaInfo);
+  }
+  
+  public void a(vvy paramvvy)
+  {
+    this.jdField_a_of_type_Vvy = paramvvy;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = (int)(vjo.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
+      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
+      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView.setLayoutParams(paramViewGroup);
+      paramViewGroup = new vvx();
+      paramViewGroup.a = paramView;
+      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Vvy.a(paramViewGroup.a, Integer.valueOf(paramInt));
+      return paramView;
+      paramViewGroup = (vvx)paramView.getTag();
+    }
   }
 }
 

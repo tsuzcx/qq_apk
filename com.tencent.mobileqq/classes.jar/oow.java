@@ -1,18 +1,41 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class oow
-  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
+  public static String a()
+  {
+    return (String)bhvy.a("double_short_video_font_size", "14");
+  }
+  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
-    bhvh.a("daily_header_proteus_bid", paramString);
-    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
-    return bool;
+    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
+    try
+    {
+      paramString = (String)paramString.get("double_videocard_textsize");
+      if (!TextUtils.isEmpty(paramString)) {
+        bhvy.a("double_short_video_font_size", paramString);
+      }
+      label55:
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      break label55;
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bhvy.a("double_short_video_font_size", "14");
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
+    }
   }
 }
 

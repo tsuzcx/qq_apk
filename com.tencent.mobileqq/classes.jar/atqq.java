@@ -1,44 +1,28 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class atqq
-  extends BaseAdapter
+class atqq
+  implements View.OnClickListener
 {
-  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  atqq(atpk paramatpk, String paramString) {}
   
-  public atqq(List<PicInfo> paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    int j = i * 6;
-    int i = j;
-    while ((i < paramInt.size()) && (i < j + 6))
+    Intent localIntent = new Intent(this.jdField_a_of_type_Atpk.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    paramView = this.jdField_a_of_type_Atpk.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atpk.a.j)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
-      i += 1;
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_Atpk.a.startActivity(localIntent);
+      axqy.b(this.jdField_a_of_type_Atpk.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Atpk.a.l = true;
+      return;
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_Atpi.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
 }
 

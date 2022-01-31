@@ -1,18 +1,17 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public class bcgv
-  extends LruCache<String, WebSoService.WebSoState>
+class bcgv
+  implements View.OnClickListener
 {
-  public bcgv(WebSoService paramWebSoService, int paramInt)
-  {
-    super(paramInt);
-  }
+  bcgv(bcgu parambcgu) {}
   
-  protected WebSoService.WebSoState a(String paramString)
+  public void onClick(View paramView)
   {
-    return new WebSoService.WebSoState();
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
   }
 }
 

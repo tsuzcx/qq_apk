@@ -1,42 +1,60 @@
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class aiun
-  extends bbqu
+public abstract class aiun
+  implements aiur
 {
-  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
+  protected int[] a;
   
-  public aiun(FriendCardApolloViewController paramFriendCardApolloViewController)
+  public aiun(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
   }
   
-  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  private int[] a(int[] paramArrayOfInt)
   {
-    if (paramBoolean) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
-        }
-        paramObject = new JSONObject((String)paramObject);
-        if (paramObject.optInt("entry_id", -1) != 2) {
-          return;
-        }
-        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
-        if (localFriendCardApolloViewController == null) {
-          return;
-        }
-        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
-        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
-        return;
-      }
-      catch (Exception paramObject) {}
-    } else if (QLog.isColorLevel()) {
-      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
+    if ((GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 2) && (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 3)) {
+      return paramArrayOfInt;
+    }
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
+    }
+    for (;;)
+    {
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
+  }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

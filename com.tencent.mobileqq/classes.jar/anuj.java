@@ -1,68 +1,71 @@
 import android.os.Bundle;
-import android.os.Handler;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.8.1;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.TipsInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class anuj
-  implements awcg
+  extends ayfd
 {
   public anuj(MessengerService paramMessengerService) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    if (this.a.b != null)
+    Bundle localBundle;
+    int i;
+    String str;
+    if (this.a.a != null)
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
-      paramRichStatus = new Bundle();
-      paramRichStatus.putInt("result", paramInt);
-      paramRichStatus.putBoolean("hasTipsInfo", false);
-      if ((paramObject instanceof TipsInfo))
-      {
-        paramObject = (TipsInfo)paramObject;
-        if (paramObject.type > 0)
-        {
-          paramRichStatus.putInt("result", paramObject.ret);
-          paramRichStatus.putBoolean("hasTipsInfo", true);
-          paramRichStatus.putInt("tips_type", paramObject.type);
-          paramRichStatus.putString("tips_titleWording", paramObject.titleWording);
-          paramRichStatus.putString("tips_wording", paramObject.wording);
-          paramRichStatus.putString("tips_rightBtnWording", paramObject.rightBtnWording);
-          paramRichStatus.putString("tips_leftBtnWording", paramObject.leftBtnWording);
-          paramRichStatus.putString("tips_vipType", paramObject.vipType);
-          paramRichStatus.putInt("tips_vipMonth", paramObject.vipMonth);
-          paramRichStatus.putString("tips_url", paramObject.url);
-        }
+      localBundle = new Bundle();
+      localBundle.putString("url", null);
+      if (paramTeamWorkFileImportInfo == null) {
+        break label115;
       }
-      this.a.b.putBundle("response", paramRichStatus);
-      this.a.a(this.a.b);
-      this.a.b = null;
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.8.1(this));
+      i = paramTeamWorkFileImportInfo.f;
+      localBundle.putInt("retCode", i);
+      if (paramTeamWorkFileImportInfo == null) {
+        break label120;
+      }
+      str = paramTeamWorkFileImportInfo.h;
+      label53:
+      localBundle.putString("errorStr", str);
+      if (paramTeamWorkFileImportInfo == null) {
+        break label126;
       }
     }
-    while (this.a.c == null) {
+    label115:
+    label120:
+    label126:
+    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
+    {
+      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
+      this.a.a.putBundle("response", localBundle);
+      this.a.a(this.a.a);
+      this.a.a = null;
       return;
+      i = 0;
+      break;
+      str = "";
+      break label53;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSync", paramBoolean);
-    this.a.c.putBundle("response", localBundle);
-    this.a.a(this.a.c);
-    this.a.c = null;
   }
   
-  public void b(int paramInt, boolean paramBoolean) {}
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
+    }
+    if (this.a.a != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("url", paramString);
+      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
+        localBundle.putBoolean("needRefresh", true);
+      }
+      this.a.a.putBundle("response", localBundle);
+      this.a.a(this.a.a);
+      this.a.a = null;
+    }
+  }
 }
 
 

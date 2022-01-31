@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ahwt;
+import ahwr;
 import java.io.File;
 
 class CameraFilterGLView$3$1
@@ -10,7 +10,7 @@ class CameraFilterGLView$3$1
   
   public void run()
   {
-    ahwt.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    ahwr.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
   }
 }
 

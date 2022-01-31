@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-
 public class bhag
-  implements View.OnClickListener
 {
-  public bhag(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public bhaf a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
-  {
-    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
-    {
-      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
-      QzoneVerticalVideoDownloadActivity.access$400(this.a);
-    }
-  }
+  public bhag(bhac parambhac) {}
 }
 
 

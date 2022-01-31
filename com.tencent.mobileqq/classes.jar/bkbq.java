@@ -1,19 +1,15 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
 
-public class bkbq
-  extends ssk
+public abstract interface bkbq
 {
-  public final int a;
-  @NonNull
-  public final List<teh> a;
+  public abstract void a();
   
-  public bkbq(int paramInt, @NonNull List<teh> paramList)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-  }
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,33 +1,59 @@
-import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class besc
+  implements Cloneable
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public besr a;
   
-  public besc a()
+  public static besc a()
   {
     besc localbesc = new besc();
-    localbesc.a = this.a;
-    localbesc.b = this.b;
-    localbesc.c = this.c;
-    localbesc.d = this.d;
-    localbesc.e = this.e;
-    localbesc.f = this.f;
-    localbesc.g = this.g;
-    localbesc.h = this.h;
+    localbesc.a = besr.a();
     return localbesc;
   }
   
-  public boolean a()
+  public void a(JSONObject paramJSONObject)
   {
-    return (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e));
+    besr localbesr;
+    if (this.a != null)
+    {
+      localbesr = this.a;
+      if (paramJSONObject != null) {
+        break label24;
+      }
+    }
+    label24:
+    for (paramJSONObject = null;; paramJSONObject = paramJSONObject.optJSONObject("window"))
+    {
+      localbesr.a(paramJSONObject);
+      return;
+    }
+  }
+  
+  public besc b()
+  {
+    try
+    {
+      localbesc = (besc)super.clone();
+      localThrowable1.printStackTrace();
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        localbesc.a = this.a.b();
+        return localbesc;
+      }
+      catch (Throwable localThrowable2)
+      {
+        besc localbesc;
+        break label24;
+      }
+      localThrowable1 = localThrowable1;
+      localbesc = null;
+    }
+    label24:
+    return localbesc;
   }
 }
 

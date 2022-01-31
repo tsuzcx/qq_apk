@@ -1,62 +1,64 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amwf
+  extends ampa<amwd>
 {
-  private String jdField_a_of_type_JavaLangString = "1108338344";
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "pages/list/list";
-  private String c = "";
-  
-  public static amwf a(JSONObject paramJSONObject)
+  public int a()
   {
-    boolean bool = true;
-    amwf localamwf = new amwf();
-    if (paramJSONObject.has("enableOpenMiniCode")) {
-      if (paramJSONObject.getInt("enableOpenMiniCode") != 1) {
-        break label93;
-      }
-    }
-    for (;;)
+    return 418;
+  }
+  
+  @NonNull
+  public amwd a(int paramInt)
+  {
+    return new amwd();
+  }
+  
+  @Nullable
+  public amwd a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localamwf.jdField_a_of_type_Boolean = bool;
-      if (paramJSONObject.has("miniCodeAppid")) {
-        localamwf.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
-      }
-      if (paramJSONObject.has("miniCodePage")) {
-        localamwf.b = paramJSONObject.getString("miniCodePage");
-      }
-      if (paramJSONObject.has("miniCodeEnvVersion")) {
-        localamwf.c = paramJSONObject.getString("miniCodeEnvVersion");
-      }
-      return localamwf;
-      label93:
-      bool = false;
+      new amwd();
+      return amwd.a(paramArrayOfamph);
     }
+    return null;
   }
   
-  public String a()
+  public Class<amwd> a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return amwd.class;
   }
   
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
+  public void a(int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void a(amwd paramamwd)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramamwd.toString());
+    }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return true;
   }
   
-  public String b()
+  public int b()
   {
-    return this.b;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

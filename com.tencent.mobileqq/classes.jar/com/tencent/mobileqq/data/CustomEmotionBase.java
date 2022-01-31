@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class CustomEmotionBase
-  extends aukm
+  extends auko
 {
   public String RomaingType = "init";
-  @auma
+  @aumc
   public int emoId;
   public String emoOriginalPath;
   public String emoPath;

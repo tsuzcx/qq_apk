@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahsl;
-import ahua;
-import ajyc;
+import ahsj;
+import ahty;
+import ajya;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
@@ -12,11 +12,11 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import axgh;
-import axhn;
+import axgj;
 import axhp;
-import axhs;
-import axik;
+import axhr;
+import axhu;
+import axim;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -25,7 +25,7 @@ public class CameraPreviewNew
   implements Camera.PreviewCallback, SurfaceHolder.Callback
 {
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder = getHolder();
-  private axgh jdField_a_of_type_Axgh = new ahsl(this);
+  private axgj jdField_a_of_type_Axgj = new ahsj(this);
   private boolean jdField_a_of_type_Boolean;
   
   public CameraPreviewNew(Context paramContext)
@@ -58,55 +58,55 @@ public class CameraPreviewNew
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     if (Build.VERSION.SDK_INT <= 10) {
-      axhp.a().b();
+      axhr.a().b();
     }
-    if (!axhp.a().e())
+    if (!axhr.a().e())
     {
-      this.jdField_a_of_type_Axgh.a(2, new Object[] { "set preview format failed" });
-      a(2002, ajyc.a(2131701311), false);
+      this.jdField_a_of_type_Axgj.a(2, new Object[] { "set preview format failed" });
+      a(2002, ajya.a(2131701322), false);
     }
     do
     {
       return;
-      paramSurfaceHolder = axhp.a().c(axik.j, axik.k, paramInt2, paramInt3, false);
-      if ((paramSurfaceHolder == null) || (!axhp.a().a(paramSurfaceHolder)))
+      paramSurfaceHolder = axhr.a().c(axim.j, axim.k, paramInt2, paramInt3, false);
+      if ((paramSurfaceHolder == null) || (!axhr.a().a(paramSurfaceHolder)))
       {
-        this.jdField_a_of_type_Axgh.a(2, new Object[] { "set preview size failed" });
-        a(2002, ajyc.a(2131701314), false);
+        this.jdField_a_of_type_Axgj.a(2, new Object[] { "set preview size failed" });
+        a(2002, ajya.a(2131701325), false);
         return;
       }
-      if (!axhp.a().a(axik.g))
+      if (!axhr.a().a(axim.g))
       {
-        this.jdField_a_of_type_Axgh.a(2, new Object[] { "set preview fps failed" });
-        a(2002, ajyc.a(2131701321), false);
+        this.jdField_a_of_type_Axgj.a(2, new Object[] { "set preview fps failed" });
+        a(2002, ajya.a(2131701332), false);
         return;
       }
-      if (!axhp.a().c())
+      if (!axhr.a().c())
       {
-        this.jdField_a_of_type_Axgh.a(2, new Object[] { "set display orientation failed" });
-        a(2002, ajyc.a(2131701320), false);
+        this.jdField_a_of_type_Axgj.a(2, new Object[] { "set display orientation failed" });
+        a(2002, ajya.a(2131701331), false);
         return;
       }
-      paramSurfaceHolder = axhp.a().a();
-      paramInt1 = axhp.a().a();
-      axhs localaxhs = axhp.a().a();
-      this.jdField_a_of_type_Axgh.a(2, new Object[] { localaxhs, Integer.valueOf(paramInt1), paramSurfaceHolder });
-    } while (axhp.a().a(this, this.jdField_a_of_type_AndroidViewSurfaceHolder));
+      paramSurfaceHolder = axhr.a().a();
+      paramInt1 = axhr.a().a();
+      axhu localaxhu = axhr.a().a();
+      this.jdField_a_of_type_Axgj.a(2, new Object[] { localaxhu, Integer.valueOf(paramInt1), paramSurfaceHolder });
+    } while (axhr.a().a(this, this.jdField_a_of_type_AndroidViewSurfaceHolder));
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceChanged");
     }
-    a(2002, ajyc.a(2131701315), false);
-    this.jdField_a_of_type_Axgh.a(3, new Object[] { "start preview failed" });
+    a(2002, ajya.a(2131701326), false);
+    this.jdField_a_of_type_Axgj.a(3, new Object[] { "start preview failed" });
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    int i = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", ahua.a);
+    int i = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", ahty.a);
     if (this.jdField_a_of_type_Boolean) {
       i = 1;
     }
     int j = i;
-    if (!axhn.c())
+    if (!axhp.c())
     {
       j = i;
       if (i == 1) {
@@ -116,23 +116,23 @@ public class CameraPreviewNew
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceCreated sCurrentCamera=" + j);
     }
-    if (axhp.a().a(j) != 0)
+    if (axhr.a().a(j) != 0)
     {
-      this.jdField_a_of_type_Axgh.a(1, new Object[] { "open camera failed" });
-      a(2002, ajyc.a(2131701313), false);
+      this.jdField_a_of_type_Axgj.a(1, new Object[] { "open camera failed" });
+      a(2002, ajya.a(2131701324), false);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceCreated");
     }
-    this.jdField_a_of_type_Axgh.a(1, new Object[] { Boolean.valueOf(true) });
+    this.jdField_a_of_type_Axgj.a(1, new Object[] { Boolean.valueOf(true) });
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     paramSurfaceHolder.removeCallback(this);
-    axhp.a().b();
-    axhp.a().b();
+    axhr.a().b();
+    axhr.a().b();
     if (QLog.isColorLevel()) {
       QLog.d("CameraPreviewNew", 2, "surfaceDestroyed");
     }

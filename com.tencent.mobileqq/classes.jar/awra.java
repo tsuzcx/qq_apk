@@ -1,11 +1,71 @@
-import android.graphics.Bitmap;
+import android.widget.TextView;
 
-public abstract interface awra<M extends awod, V extends awwn>
-  extends awrb<M, V>
+public class awra
+  extends awsa
 {
-  public abstract void a(M paramM, V paramV);
+  public awra(baxy parambaxy)
+  {
+    super(parambaxy);
+  }
   
-  public abstract void a(M paramM, V paramV, Bitmap paramBitmap);
+  public void b(awoi paramawoi, awwr paramawwr)
+  {
+    super.b(paramawoi, paramawwr);
+    TextView localTextView;
+    CharSequence localCharSequence;
+    if ((paramawoi instanceof awlx))
+    {
+      awlx localawlx = (awlx)paramawoi;
+      localTextView = ((awwn)paramawwr).e();
+      paramawoi = ((awwn)paramawwr).f();
+      paramawwr = ((awwn)paramawwr).g();
+      if (localTextView != null)
+      {
+        localCharSequence = localawlx.e();
+        if (localCharSequence != null) {
+          break label96;
+        }
+        localTextView.setText("");
+        if (paramawwr != null) {
+          paramawwr.setVisibility(8);
+        }
+      }
+      if (paramawoi != null)
+      {
+        paramawwr = localawlx.f();
+        if (paramawwr != null) {
+          break label115;
+        }
+        paramawoi.setText("");
+      }
+    }
+    label96:
+    label115:
+    do
+    {
+      do
+      {
+        return;
+        localTextView.setText(localCharSequence);
+        if (paramawwr == null) {
+          break;
+        }
+        paramawwr.setVisibility(0);
+        break;
+        paramawoi.setText(paramawwr);
+        return;
+      } while (!(paramawoi instanceof awlw));
+      paramawoi = (awlw)paramawoi;
+      paramawwr = ((awwn)paramawwr).h();
+    } while (paramawwr == null);
+    paramawoi = paramawoi.e();
+    if (paramawoi == null)
+    {
+      paramawwr.setText("");
+      return;
+    }
+    paramawwr.setText(paramawoi);
+  }
 }
 
 

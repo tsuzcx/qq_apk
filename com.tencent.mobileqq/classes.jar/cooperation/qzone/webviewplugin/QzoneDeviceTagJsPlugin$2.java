@@ -1,14 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
-import bhkl;
-import bhkn;
+import bhlc;
+import bhle;
 
 public final class QzoneDeviceTagJsPlugin$2
   implements Runnable
 {
   public void run()
   {
-    bhkl.a().a().m();
+    bhlc.a().a().m();
   }
 }
 

@@ -1,19 +1,22 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class pgu
-  implements ViewBase.OnClickListener
+  implements pvn
 {
-  pgu(pgs parampgs, Container paramContainer, pax parampax, int paramInt) {}
+  pgu(pgp parampgp, pau parampau, Container paramContainer, int paramInt) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt)
   {
-    pgs.a(this.jdField_a_of_type_Pgs, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pax, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pax.a() + " position = " + this.jdField_a_of_type_Int);
+    Object localObject = this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((qcv)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
     }
+    localObject = (qcw)((qcv)localObject).a.get(paramInt);
+    pgp.a(this.jdField_a_of_type_Pgp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pau.a(), (int)((qcw)localObject).a, this.jdField_a_of_type_Pau.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pau.a());
   }
 }
 

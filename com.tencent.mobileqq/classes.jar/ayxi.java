@@ -1,80 +1,31 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public class ayxi
+class ayxi
+  implements EIPCOnGetConnectionListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  ayxi(ayxg paramayxg) {}
   
-  public ayxi() {}
-  
-  public ayxi(String paramString, int paramInt1, int paramInt2)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    if (paramEIPCConnection != null) {
+      ayxg.a(this.a, paramEIPCConnection.procName);
+    }
+    ayxg.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectBind");
+    }
   }
   
-  public static String a(List<ayxi> paramList)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    if (paramList == null) {
-      return null;
+    if (paramEIPCConnection != null) {
+      ayxg.a(this.a, paramEIPCConnection.procName);
     }
-    try
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ayxi localayxi = (ayxi)paramList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("i", localayxi.jdField_a_of_type_JavaLangString);
-        if (localayxi.jdField_a_of_type_Int != 80) {
-          localJSONObject.put("p", localayxi.jdField_a_of_type_Int);
-        }
-        if (localayxi.c != 1) {
-          localJSONObject.put("t", localayxi.c);
-        }
-        localJSONArray.put(localJSONObject);
-      }
-      paramList = localJSONArray.toString();
-    }
-    catch (Exception paramList)
-    {
-      paramList.printStackTrace();
-      return null;
-    }
-    return paramList;
-  }
-  
-  public static ArrayList<ayxi> a(String paramString)
-  {
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      JSONArray localJSONArray = new JSONArray(paramString);
-      int i = 0;
-      for (;;)
-      {
-        paramString = localArrayList;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        paramString = localJSONArray.getJSONObject(i);
-        localArrayList.add(new ayxi(paramString.getString("i"), paramString.optInt("p", 80), paramString.optInt("t", 1)));
-        i += 1;
-      }
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      paramString = null;
+    ayxg.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectUnbind");
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import aiwn;
-import aiwo;
-import aizw;
-import ajhw;
-import bbqp;
+import airx;
+import aiwl;
+import aiwm;
+import aizu;
+import ajhu;
+import bbrd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class ApolloManager$11
   implements Runnable
 {
-  public ApolloManager$11(airz paramairz, List paramList) {}
+  public ApolloManager$11(airx paramairx, List paramList) {}
   
   public void run()
   {
@@ -42,59 +42,59 @@ public class ApolloManager$11
         {
           localStringBuilder = new StringBuilder();
           if (QLog.isColorLevel()) {
-            localStringBuilder.append("updateUserDress uin: ").append(localApolloBaseInfo.uin).append(", dress info: ").append(((aiwn)localObject4).toString());
+            localStringBuilder.append("updateUserDress uin: ").append(localApolloBaseInfo.uin).append(", dress info: ").append(((aiwl)localObject4).toString());
           }
           j = -1;
-          l = this.this$0.a(1, ((aiwn)localObject4).jdField_a_of_type_Int) / 1000L;
+          l = this.this$0.a(1, ((aiwl)localObject4).jdField_a_of_type_Int) / 1000L;
           i = j;
-          if (l != ((aiwn)localObject4).jdField_a_of_type_Long)
+          if (l != ((aiwl)localObject4).jdField_a_of_type_Long)
           {
             i = j;
-            if (!localArrayList1.contains(Integer.valueOf(((aiwn)localObject4).jdField_a_of_type_Int)))
+            if (!localArrayList1.contains(Integer.valueOf(((aiwl)localObject4).jdField_a_of_type_Int)))
             {
-              j = ((aiwn)localObject4).jdField_a_of_type_Int;
-              localArrayList1.add(Integer.valueOf(((aiwn)localObject4).jdField_a_of_type_Int));
+              j = ((aiwl)localObject4).jdField_a_of_type_Int;
+              localArrayList1.add(Integer.valueOf(((aiwl)localObject4).jdField_a_of_type_Int));
               i = j;
               if (QLog.isColorLevel())
               {
-                localStringBuilder.append("\nrole id: ").append(((aiwn)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwn)localObject4).jdField_a_of_type_Long);
+                localStringBuilder.append("\nrole id: ").append(((aiwl)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwl)localObject4).jdField_a_of_type_Long);
                 i = j;
               }
             }
           }
           localObject2 = null;
           localObject1 = localObject2;
-          if (((aiwn)localObject4).jdField_a_of_type_JavaUtilHashMap != null)
+          if (((aiwl)localObject4).jdField_a_of_type_JavaUtilHashMap != null)
           {
             localObject3 = new ArrayList();
-            localObject1 = ((aiwn)localObject4).jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+            localObject1 = ((aiwl)localObject4).jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject4 = (aiwo)((Map.Entry)((Iterator)localObject1).next()).getValue();
-              l = this.this$0.a(2, ((aiwo)localObject4).jdField_a_of_type_Int) / 1000L;
-              if ((l != ((aiwo)localObject4).jdField_a_of_type_Long) && (!localArrayList2.contains(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int))))
+              localObject4 = (aiwm)((Map.Entry)((Iterator)localObject1).next()).getValue();
+              l = this.this$0.a(2, ((aiwm)localObject4).jdField_a_of_type_Int) / 1000L;
+              if ((l != ((aiwm)localObject4).jdField_a_of_type_Long) && (!localArrayList2.contains(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int))))
               {
-                ((ArrayList)localObject3).add(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int));
-                localArrayList2.add(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int));
+                ((ArrayList)localObject3).add(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int));
+                localArrayList2.add(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int));
                 if (QLog.isColorLevel()) {
-                  localStringBuilder.append("\ndress id: ").append(((aiwo)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwo)localObject4).jdField_a_of_type_Long);
+                  localStringBuilder.append("\ndress id: ").append(((aiwm)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwm)localObject4).jdField_a_of_type_Long);
                 }
               }
             }
             localObject1 = localApolloBaseInfo.getApolloPetDress();
-            if ((localObject1 != null) && (((aiwn)localObject1).jdField_a_of_type_JavaUtilHashMap != null))
+            if ((localObject1 != null) && (((aiwl)localObject1).jdField_a_of_type_JavaUtilHashMap != null))
             {
-              localObject1 = ((aiwn)localObject1).jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+              localObject1 = ((aiwl)localObject1).jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
               while (((Iterator)localObject1).hasNext())
               {
-                localObject4 = (aiwo)((Map.Entry)((Iterator)localObject1).next()).getValue();
-                l = this.this$0.a(2, ((aiwo)localObject4).jdField_a_of_type_Int) / 1000L;
-                if ((l != ((aiwo)localObject4).jdField_a_of_type_Long) && (!localArrayList2.contains(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int))))
+                localObject4 = (aiwm)((Map.Entry)((Iterator)localObject1).next()).getValue();
+                l = this.this$0.a(2, ((aiwm)localObject4).jdField_a_of_type_Int) / 1000L;
+                if ((l != ((aiwm)localObject4).jdField_a_of_type_Long) && (!localArrayList2.contains(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int))))
                 {
-                  ((ArrayList)localObject3).add(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int));
-                  localArrayList2.add(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int));
+                  ((ArrayList)localObject3).add(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int));
+                  localArrayList2.add(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int));
                   if (QLog.isColorLevel()) {
-                    localStringBuilder.append("\npet dress id: ").append(((aiwo)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwo)localObject4).jdField_a_of_type_Long);
+                    localStringBuilder.append("\npet dress id: ").append(((aiwm)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwm)localObject4).jdField_a_of_type_Long);
                   }
                 }
               }
@@ -135,48 +135,48 @@ public class ApolloManager$11
           }
           localStringBuilder = new StringBuilder();
           if (QLog.isColorLevel()) {
-            localStringBuilder.append("3d updateUserDress uin: ").append(localApolloBaseInfo.uin).append(", dress info: ").append(((aiwn)localObject4).toString());
+            localStringBuilder.append("3d updateUserDress uin: ").append(localApolloBaseInfo.uin).append(", dress info: ").append(((aiwl)localObject4).toString());
           }
           k = -1;
-          l = this.this$0.a(1, ((aiwn)localObject4).jdField_a_of_type_Int) / 1000L;
+          l = this.this$0.a(1, ((aiwl)localObject4).jdField_a_of_type_Int) / 1000L;
           j = k;
-          if (l != ((aiwn)localObject4).jdField_a_of_type_Long)
+          if (l != ((aiwl)localObject4).jdField_a_of_type_Long)
           {
             j = k;
-            if (!localArrayList1.contains(Integer.valueOf(((aiwn)localObject4).jdField_a_of_type_Int)))
+            if (!localArrayList1.contains(Integer.valueOf(((aiwl)localObject4).jdField_a_of_type_Int)))
             {
-              k = ((aiwn)localObject4).jdField_a_of_type_Int;
-              localArrayList1.add(Integer.valueOf(((aiwn)localObject4).jdField_a_of_type_Int));
+              k = ((aiwl)localObject4).jdField_a_of_type_Int;
+              localArrayList1.add(Integer.valueOf(((aiwl)localObject4).jdField_a_of_type_Int));
               j = k;
               if (QLog.isColorLevel())
               {
-                localStringBuilder.append("\n3d role id: ").append(((aiwn)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwn)localObject4).jdField_a_of_type_Long);
+                localStringBuilder.append("\n3d role id: ").append(((aiwl)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwl)localObject4).jdField_a_of_type_Long);
                 j = k;
               }
             }
           }
           localObject2 = null;
           localObject1 = localObject2;
-          if (((aiwn)localObject4).jdField_a_of_type_JavaUtilHashMap == null) {
+          if (((aiwl)localObject4).jdField_a_of_type_JavaUtilHashMap == null) {
             break label1223;
           }
           localObject3 = new ArrayList();
-          localObject1 = ((aiwn)localObject4).jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          localObject1 = ((aiwl)localObject4).jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject4 = (aiwo)((Map.Entry)((Iterator)localObject1).next()).getValue();
-            l = this.this$0.a(2, ((aiwo)localObject4).jdField_a_of_type_Int) / 1000L;
-            if ((l != ((aiwo)localObject4).jdField_a_of_type_Long) && (!localArrayList2.contains(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int))))
+            localObject4 = (aiwm)((Map.Entry)((Iterator)localObject1).next()).getValue();
+            l = this.this$0.a(2, ((aiwm)localObject4).jdField_a_of_type_Int) / 1000L;
+            if ((l != ((aiwm)localObject4).jdField_a_of_type_Long) && (!localArrayList2.contains(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int))))
             {
-              ((ArrayList)localObject3).add(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int));
-              localArrayList2.add(Integer.valueOf(((aiwo)localObject4).jdField_a_of_type_Int));
+              ((ArrayList)localObject3).add(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int));
+              localArrayList2.add(Integer.valueOf(((aiwm)localObject4).jdField_a_of_type_Int));
               if (QLog.isColorLevel()) {
-                localStringBuilder.append("\n3d dress id: ").append(((aiwo)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwo)localObject4).jdField_a_of_type_Long);
+                localStringBuilder.append("\n3d dress id: ").append(((aiwm)localObject4).jdField_a_of_type_Int).append(", local TS: ").append(l).append(", svr TS: ").append(((aiwm)localObject4).jdField_a_of_type_Long);
               }
             }
           }
           label1108:
-          ajhw.a(this.this$0.a, localApolloBaseInfo.uin, this.this$0.a(), i, (int[])localObject1, -1, -1, true);
+          ajhu.a(this.this$0.a, localApolloBaseInfo.uin, this.this$0.a(), i, (int[])localObject1, -1, -1, true);
           if (QLog.isColorLevel()) {
             localStringBuilder.append("\ndown load dress");
           }
@@ -218,12 +218,12 @@ public class ApolloManager$11
           }
           localObject1 = new ArrayList(1);
           ((ArrayList)localObject1).add(localApolloBaseInfo.uin);
-          localObject2 = (bbqp)this.this$0.a.a(71);
-          ((bbqp)localObject2).notifyUI(2, true, localObject1);
-          aizw.a().a((ArrayList)localObject1);
-          ((bbqp)localObject2).a(localApolloBaseInfo.uin, localApolloBaseInfo);
+          localObject2 = (bbrd)this.this$0.a.a(71);
+          ((bbrd)localObject2).notifyUI(2, true, localObject1);
+          aizu.a().a((ArrayList)localObject1);
+          ((bbrd)localObject2).a(localApolloBaseInfo.uin, localApolloBaseInfo);
           break;
-          ajhw.a(this.this$0.a, localApolloBaseInfo.uin, this.this$0.a(), j, (int[])localObject1, -1, -1, true);
+          ajhu.a(this.this$0.a, localApolloBaseInfo.uin, this.this$0.a(), j, (int[])localObject1, -1, -1, true);
           j = i;
           if (QLog.isColorLevel())
           {

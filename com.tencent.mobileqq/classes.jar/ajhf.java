@@ -1,20 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
 public class ajhf
-  implements EIPCResultCallback
+  extends aizd
 {
   public ajhf(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    boolean bool1 = paramEIPCResult.getBoolean("isOpen");
-    boolean bool2 = paramEIPCResult.getBoolean("display", false);
-    this.a.a(bool2, bool1, ApolloGameActivity.a(this.a).mTempAIOUin);
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
+    }
   }
 }
 

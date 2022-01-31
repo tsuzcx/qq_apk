@@ -1,68 +1,42 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class atmf
-  implements atig
+class atmf
+  implements atii
 {
-  atmf(atlu paramatlu) {}
+  atmf(atlw paramatlw) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
       paramBundle = new oidb_0xada.RspBody();
-      try
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + atlw.c(this.a));
+      }
+      if (paramBundle.busi_buf.has())
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
         if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + atlu.c(this.a));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + atlu.c(this.a));
-          }
-          if (paramArrayOfByte.ret.get() == 0)
-          {
-            atlu.c(this.a, true);
-            if (atlu.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
-              atlu.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new ativ().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (aszd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            bcpw.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
+          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + atlw.c(this.a));
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

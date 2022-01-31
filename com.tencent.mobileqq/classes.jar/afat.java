@@ -1,21 +1,6 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class afat
-  implements MediaPlayer.OnCompletionListener
+public abstract interface afat
 {
-  public afat(BlessActivity paramBlessActivity) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
-    }
-    BlessActivity.a(this.a, true);
-    axqw.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
-  }
+  public abstract void a();
 }
 
 

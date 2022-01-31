@@ -1,8 +1,8 @@
 package com.tencent.util;
 
-import ajsf;
-import bbdj;
-import bbdr;
+import ajsd;
+import bbdx;
+import bbef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import gp;
 import java.io.File;
 import java.io.IOException;
-import vyi;
+import vyf;
 
 public final class AutoSaveUtils$1
   implements Runnable
@@ -21,12 +21,12 @@ public final class AutoSaveUtils$1
   {
     File localFile = new File(this.jdField_a_of_type_JavaLangString);
     Object localObject1 = localFile.getAbsolutePath();
-    String str2 = ajsf.bj;
+    String str2 = ajsd.bj;
     new File(str2).mkdirs();
     String str1 = Utils.Crc64String((String)localObject1);
     if (!str1.contains(".")) {
       if (this.jdField_a_of_type_Boolean) {
-        localObject1 = bbdj.b((String)localObject1);
+        localObject1 = bbdx.b((String)localObject1);
       }
     }
     Object localObject2;
@@ -42,7 +42,7 @@ public final class AutoSaveUtils$1
             if (!this.jdField_a_of_type_Boolean) {
               continue;
             }
-            bbdr.a(BaseApplicationImpl.getApplication(), (File)localObject1);
+            bbef.a(BaseApplicationImpl.getApplication(), (File)localObject1);
             FileProvider7Helper.savePhotoToSysAlbum(BaseApplicationImpl.getApplication(), (File)localObject1);
             if (QLog.isColorLevel()) {
               QLog.d("AutoSaveUtils", 2, "autoSavePic success:" + ((File)localObject1).getAbsolutePath());
@@ -58,9 +58,9 @@ public final class AutoSaveUtils$1
           QLog.e("AutoSaveUtils", 2, "autoSavePic", localIOException);
           return;
         }
-        localObject1 = bbdj.a((String)localObject1);
+        localObject1 = bbdx.a((String)localObject1);
         break;
-        vyi.a(BaseApplicationImpl.getApplication(), (File)localObject1);
+        vyf.a(BaseApplicationImpl.getApplication(), (File)localObject1);
       }
     }
   }

@@ -1,30 +1,13 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.List;
 
 class aocc
-  implements asko<EmoticonPackage>
+  implements askq<List<aoam>>
 {
-  aocc(aocb paramaocb, int paramInt1, int paramInt2, EditText paramEditText, QQAppInterface paramQQAppInterface) {}
+  aocc(aobz paramaobz) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void a(List<aoam> paramList)
   {
-    char[] arrayOfChar1 = anqu.a(this.jdField_a_of_type_Int, this.b);
-    char[] arrayOfChar2 = new char[5];
-    arrayOfChar2[0] = '\024';
-    arrayOfChar2[1] = arrayOfChar1[3];
-    arrayOfChar2[2] = arrayOfChar1[2];
-    arrayOfChar2[3] = arrayOfChar1[1];
-    arrayOfChar2[4] = arrayOfChar1[0];
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
-      arrayOfChar2[1] = 'ǿ';
-    }
-    int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717E", 0, 0, this.jdField_a_of_type_Int + "", this.b + "", "", "");
+    this.a.a(paramList);
   }
 }
 

@@ -1,17 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class acyh
+public final class acyh
+  implements Parcelable.Creator<SessionInfo>
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  public SessionInfo a(Parcel paramParcel)
+  {
+    return new SessionInfo(paramParcel);
+  }
+  
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
+  }
 }
 
 

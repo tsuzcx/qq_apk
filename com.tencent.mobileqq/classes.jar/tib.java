@@ -1,15 +1,38 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class tib
-  extends atzm
+class tib
+  extends RecyclerView.OnScrollListener
 {
-  tib(thy paramthy) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  protected void a(Object paramObject)
+  tib(thv paramthv) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
-    veg.b(thy.b(), "freshRedPoint, showStoryNode");
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
+    {
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Thv.jdField_a_of_type_Thh.d();
+      }
+      return;
+    }
+    thv.a(this.jdField_a_of_type_Thv);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    {
+      if (this.jdField_a_of_type_Thv.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Thv.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+      }
+      return;
+    }
   }
 }
 

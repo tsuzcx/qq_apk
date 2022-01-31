@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import ajyf;
-import aukn;
-import auko;
+import ajyd;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.data.HotChatItemData;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotChatCenterManager$1
   implements Runnable
 {
-  public HotChatCenterManager$1(ajyf paramajyf, HotChatItemData paramHotChatItemData) {}
+  public HotChatCenterManager$1(ajyd paramajyd, HotChatItemData paramHotChatItemData) {}
   
   public void run()
   {
     Object localObject3 = null;
-    aukn localaukn2 = null;
-    localaukn1 = localaukn2;
+    aukp localaukp2 = null;
+    localaukp1 = localaukp2;
     localObject1 = localObject3;
     for (;;)
     {
@@ -25,11 +25,11 @@ public class HotChatCenterManager$1
         if (localQQAppInterface != null) {
           continue;
         }
-        localaukn1 = localaukn2;
+        localaukp1 = localaukp2;
         localObject1 = localObject3;
         if (QLog.isColorLevel())
         {
-          localaukn1 = localaukn2;
+          localaukp1 = localaukp2;
           localObject1 = localObject3;
           QLog.d("HotChatCenterManager", 2, "saveHotChatItemData app = null");
         }
@@ -40,12 +40,12 @@ public class HotChatCenterManager$1
       catch (Throwable localThrowable)
       {
         QQAppInterface localQQAppInterface;
-        localObject1 = localaukn1;
+        localObject1 = localaukp1;
         QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
-        if (localaukn1 == null) {
+        if (localaukp1 == null) {
           continue;
         }
-        localaukn1.a();
+        localaukp1.a();
         return;
       }
       finally
@@ -53,42 +53,42 @@ public class HotChatCenterManager$1
         if (localObject1 == null) {
           continue;
         }
-        ((aukn)localObject1).a();
+        ((aukp)localObject1).a();
       }
       return;
-      localaukn1 = localaukn2;
+      localaukp1 = localaukp2;
       localObject1 = localObject3;
-      localaukn2 = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localaukn1 = localaukn2;
-      localObject1 = localaukn2;
+      localaukp2 = localQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localaukp1 = localaukp2;
+      localObject1 = localaukp2;
       if (this.a.getStatus() == 1000)
       {
-        localaukn1 = localaukn2;
-        localObject1 = localaukn2;
-        localaukn2.a(this.a);
-        localaukn1 = localaukn2;
-        localObject1 = localaukn2;
+        localaukp1 = localaukp2;
+        localObject1 = localaukp2;
+        localaukp2.a(this.a);
+        localaukp1 = localaukp2;
+        localObject1 = localaukp2;
         if (QLog.isColorLevel())
         {
-          localaukn1 = localaukn2;
-          localObject1 = localaukn2;
+          localaukp1 = localaukp2;
+          localObject1 = localaukp2;
           QLog.d("HotChatCenterManager", 2, new Object[] { "saveHotChatItemData [persist],code:", this.a.mHotChatCode });
         }
-        if (localaukn2 != null) {
-          localaukn2.a();
+        if (localaukp2 != null) {
+          localaukp2.a();
         }
       }
       else
       {
-        localaukn1 = localaukn2;
-        localObject1 = localaukn2;
-        localaukn2.a(this.a);
-        localaukn1 = localaukn2;
-        localObject1 = localaukn2;
+        localaukp1 = localaukp2;
+        localObject1 = localaukp2;
+        localaukp2.a(this.a);
+        localaukp1 = localaukp2;
+        localObject1 = localaukp2;
         if (QLog.isColorLevel())
         {
-          localaukn1 = localaukn2;
-          localObject1 = localaukn2;
+          localaukp1 = localaukp2;
+          localObject1 = localaukp2;
           QLog.d("HotChatCenterManager", 2, new Object[] { "saveHotChatItemData [update],code:", this.a.mHotChatCode });
         }
       }

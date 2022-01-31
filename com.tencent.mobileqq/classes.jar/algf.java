@@ -1,42 +1,55 @@
 import com.tencent.qphone.base.util.QLog;
 
 public class algf
+  extends alht
 {
   public float a;
   public int a;
   public String a;
-  public byte[] a;
   public int b;
   public String b;
-  public int c = -1;
+  public int c;
+  public String c;
   
   public algf()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_b_of_type_Long = 64L;
+  }
+  
+  public static boolean a(algf paramalgf)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramalgf != null)
+    {
+      bool1 = bool2;
+      if (paramalgf.a())
+      {
+        bool1 = bool2;
+        if (paramalgf.b()) {
+          bool1 = true;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
+    }
+    return bool1;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Int == 1;
   }
   
   public String toString()
   {
-    try
-    {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
-        }
-        String str2 = "";
-      }
-    }
+    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
   }
 }
 

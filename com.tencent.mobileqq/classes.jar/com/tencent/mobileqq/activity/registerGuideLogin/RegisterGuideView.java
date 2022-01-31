@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import ahrd;
-import ahre;
-import akcz;
+import ahrb;
+import ahrc;
+import akcy;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,7 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import axqw;
+import axqy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -55,39 +55,39 @@ public class RegisterGuideView
       localObject = getActivity();
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
       for (str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = "") {
-        return akcz.a((Context)localObject, str);
+        return akcy.a((Context)localObject, str);
       }
     }
     Object localObject = BaseApplicationImpl.getContext();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
     for (String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = "") {
-      return akcz.a((Context)localObject, str);
+      return akcy.a((Context)localObject, str);
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131363579) && (i == 2131363629)) {}
+    if ((i != 2131363578) && (i == 2131363628)) {}
     switch (paramView.getId())
     {
     default: 
-    case 2131363579: 
+    case 2131363578: 
       do
       {
         return;
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
-        axqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA26", "0X800AA26", 0, 0, "", "", "", "");
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
+        axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA26", "0X800AA26", 0, 0, "", "", "", "");
         paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
         paramView.putExtra("from_register_guide", true);
         paramView.putExtra("is_need_show_logo_animation", true);
-        paramView = ahre.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      } while (this.jdField_a_of_type_Ahrd == null);
-      this.jdField_a_of_type_Ahrd.a(paramView);
+        paramView = ahrc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      } while (this.jdField_a_of_type_Ahrb == null);
+      this.jdField_a_of_type_Ahrb.a(paramView);
       return;
     }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
-    axqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA25", "0X800AA25", 0, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
+    axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA25", "0X800AA25", 0, 0, "", "", "", "");
     paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterPhoneNumActivity.class);
     paramView.putExtra("key_register_from", 2);
     paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131690572));
@@ -98,13 +98,13 @@ public class RegisterGuideView
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramViewGroup = paramLayoutInflater.inflate(2131559198, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131363340);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131363339);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131363579));
-    this.b = ((Button)paramViewGroup.findViewById(2131363629));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131363578));
+    this.b = ((Button)paramViewGroup.findViewById(2131363628));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    paramBundle = (ImageView)paramViewGroup.findViewById(2131376396);
+    paramBundle = (ImageView)paramViewGroup.findViewById(2131376398);
     paramLayoutInflater = "splash.jpg";
     for (;;)
     {
@@ -124,7 +124,7 @@ public class RegisterGuideView
       try
       {
         paramLayoutInflater.close();
-        axqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA24", "0X800AA24", 0, 0, "", "", "", "");
+        axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA24", "0X800AA24", 0, 0, "", "", "", "");
         return paramViewGroup;
       }
       catch (Throwable paramLayoutInflater)

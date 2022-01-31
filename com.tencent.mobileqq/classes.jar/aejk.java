@@ -1,56 +1,46 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class aejk
-  extends Binder
-  implements aejj
+public class aejk
 {
-  public aejk()
+  private static int a;
+  public ConcurrentHashMap<Long, aejn> a;
+  
+  static
   {
-    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    jdField_a_of_type_Int = 900000;
   }
   
-  public static aejj a(IBinder paramIBinder)
+  private aejk()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof aejj))) {
-      return (aejj)localIInterface;
-    }
-    return new aejl(paramIBinder);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public IBinder asBinder()
+  public static final aejk a()
   {
-    return this;
+    return aejm.a();
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public aejn a(long paramLong)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (aejn)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-    return true;
+    return null;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(" LongVideoUrlCacheManager", 2, "LongVideoUrlCacheManager,clearCache");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new aejn(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 

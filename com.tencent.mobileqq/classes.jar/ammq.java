@@ -1,24 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.widget.MultiImageTextView;
 
 public class ammq
-  extends ajzm
+  implements DialogInterface.OnDismissListener
 {
   public ammq(LocationSelectActivity paramLocationSelectActivity) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
+    LocationSelectActivity.a(this.a).setRightTextColor(2);
+    if (AppSetting.d)
     {
-      this.a.a(paramBoolean, paramLBSInfo);
+      LocationSelectActivity.b(this.a).setContentDescription(ajya.a(2131706309) + LocationSelectActivity.a(this.a).name);
+      LocationSelectActivity.a(this.a).setContentDescription(ajya.a(2131706307) + LocationSelectActivity.a(this.a).a().getText());
+    }
+    paramDialogInterface = LocationSelectActivity.a(this.a);
+    if (LocationSelectActivity.a(this.a) == 0)
+    {
+      axqy.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
       return;
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    axqy.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
   }
 }
 

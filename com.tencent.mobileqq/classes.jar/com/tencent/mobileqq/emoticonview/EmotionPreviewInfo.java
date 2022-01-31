@@ -3,12 +3,12 @@ package com.tencent.mobileqq.emoticonview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aoar;
+import aoaw;
 
 public class EmotionPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new aoar();
+  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new aoaw();
   public String a;
   public boolean a;
   

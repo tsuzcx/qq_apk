@@ -1,36 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
 class lyr
-  extends akim
+  implements bfph
 {
-  String jdField_a_of_type_JavaLangString;
+  lyr(lyn paramlyn, long paramLong, bfpc parambfpc) {}
   
-  private lyr(lyn paramlyn) {}
-  
-  protected void a(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Lyn.a + "]");
     }
-  }
-  
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
-  {
-    if (paramTroopInfo == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_Lyn.a == null) {
       return;
-      paramTroopInfo = paramTroopInfo.troopuin;
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
-    this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    if (this == this.jdField_a_of_type_Lyn.jdField_a_of_type_Lyr) {
-      this.jdField_a_of_type_Lyn.jdField_a_of_type_Lyr = null;
     }
-    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
-    this.jdField_a_of_type_Lyn.a();
+    paramView = paramView.getContext();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.jdField_a_of_type_Lyn.b(this.jdField_a_of_type_Long, paramView);
+      continue;
+      this.jdField_a_of_type_Lyn.a(this.jdField_a_of_type_Long, paramView);
+    }
   }
 }
 

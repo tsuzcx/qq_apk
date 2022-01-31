@@ -1,32 +1,79 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class aqnb
 {
   public int a;
   public String a;
-  public ArrayList<aqmz> a;
-  public HashMap<String, String> a;
-  public int b;
-  public String b;
-  public ArrayList<String> b;
+  public ArrayList<aqnc> a;
+  private boolean a;
+  public int b = -1;
   public int c;
-  public String c;
   public int d;
-  public String d;
-  public int e;
   
-  public aqnb()
+  private int a(aqnc paramaqnc1, aqnc paramaqnc2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    int i = Math.abs(paramaqnc2.jdField_a_of_type_Int - paramaqnc1.jdField_a_of_type_Int);
+    int j = Math.abs(paramaqnc2.b - paramaqnc1.b);
+    return (int)Math.ceil(Math.sqrt(i * i + j * j));
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
+      return 0;
+    }
+    aqnc localaqnc1 = (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    aqnc localaqnc2 = (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+    int i = localaqnc2.jdField_a_of_type_Int - localaqnc1.jdField_a_of_type_Int;
+    int j = localaqnc2.b - localaqnc1.b;
+    double d1 = Math.sqrt(i * i + j * j);
+    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
+    if (localaqnc2.jdField_a_of_type_Int < localaqnc1.jdField_a_of_type_Int) {
+      if (f > 0.0F) {
+        f = 180.0F - f;
+      }
+    }
+    for (;;)
+    {
+      return Math.round(f);
+      f = -(180.0F + f);
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        ((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int = ((int)(((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int * paramFloat));
+        ((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b = ((int)(((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b * paramFloat));
+        i += 1;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public int b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
+      return 0;
+    }
+    return a((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(0), (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(2));
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
+      return 0;
+    }
+    return a((aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(0), (aqnc)this.jdField_a_of_type_JavaUtilArrayList.get(3));
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mMd5= ").append(this.jdField_a_of_type_JavaLangString).append("\n").append("baseWidth= ").append(this.jdField_a_of_type_Int).append("\n").append("baseHeight= ").append(this.jdField_b_of_type_Int).append("\n").append("mLanguage= ").append(this.jdField_b_of_type_JavaLangString).append("\n");
-    return localStringBuilder.toString();
+    return "PicOcrResult{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", confidence=" + this.jdField_a_of_type_Int + ", coorPoints=" + this.jdField_a_of_type_JavaUtilArrayList + ", arc=" + a() + '}';
   }
 }
 

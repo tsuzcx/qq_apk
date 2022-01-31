@@ -1,12 +1,6 @@
-import android.view.animation.Interpolator;
-
-public class bclm
-  implements Interpolator
+public abstract interface bclm
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
-  }
+  public abstract void a(int paramInt);
 }
 
 

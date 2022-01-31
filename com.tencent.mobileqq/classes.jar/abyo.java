@@ -1,11 +1,11 @@
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class abyo
-  extends MqqHandler
+  extends Handler
 {
-  public abyo(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public abyo(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
@@ -13,7 +13,17 @@ public class abyo
     {
     default: 
       return;
+    case 101: 
+      this.a.c();
+      String str = paramMessage.obj.toString();
+      paramMessage = str;
+      if (str == null) {
+        paramMessage = this.a.getString(2131720659);
+      }
+      this.a.a(paramMessage, 1);
+      return;
     }
+    this.a.c();
     this.a.finish();
   }
 }

@@ -1,29 +1,18 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import java.util.ArrayList;
 
 public class bkum
   implements DialogInterface.OnClickListener
 {
-  public bkum(CaptureQmcfSoDownloadFragment.7 param7) {}
+  public bkum(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.this$0.getActivity();
-    if (paramInt == 1)
-    {
-      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
-      paramDialogInterface.startActivity(localIntent);
-      return;
-    }
-    paramDialogInterface.finish();
+    PhotoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
   }
 }
 

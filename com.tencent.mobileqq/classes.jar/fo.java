@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 import java.lang.ref.WeakReference;
 
 class fo
-  implements aput
+  implements apuv
 {
   fo(fk paramfk, DataLineMsgRecord paramDataLineMsgRecord) {}
   
@@ -26,9 +26,9 @@ class fo
           return;
           paramView = new WeakReference(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext);
         } while (!(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext instanceof Activity));
-        if (!bbev.d(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext))
+        if (!bbfj.d(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext))
         {
-          bcpw.a(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext, 2131692321, 0).b(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
+          bcql.a(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext, 2131692321, 0).b(this.jdField_a_of_type_Fk.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
           return;
         }
       } while ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord == null) || (paramView.get() == null));

@@ -1,33 +1,37 @@
+import android.support.annotation.Nullable;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import java.util.Iterator;
+import java.util.List;
 
-public class bisj
+class bisj
+  implements bjos<birm>
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
-  private boolean a;
-  public int b;
-  public String b;
-  public String c = "";
+  bisj(bise parambise) {}
   
-  public bisj()
+  public void a(@Nullable birm parambirm)
   {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    if (parambirm == null) {
+      return;
+    }
+    birj localbirj;
+    do
+    {
+      Iterator localIterator;
+      do
+      {
+        localIterator = bise.a(this.a).iterator();
+      } while (!localIterator.hasNext());
+      localbirj = (birj)localIterator.next();
+      if (!localbirj.jdField_a_of_type_JavaLangString.equals(parambirm.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)) {
+        break;
+      }
+      if (localbirj.jdField_a_of_type_Int != parambirm.jdField_a_of_type_Int)
+      {
+        localbirj.jdField_a_of_type_Int = parambirm.jdField_a_of_type_Int;
+        bise.a(this.a).notifyItemChanged(bise.a(this.a).indexOf(localbirj) + 1);
+      }
+    } while ((localbirj.jdField_a_of_type_Int != 2) || (!localbirj.jdField_a_of_type_JavaLangString.equals(bise.a(this.a))));
+    bise.a(this.a).b(localbirj);
   }
 }
 

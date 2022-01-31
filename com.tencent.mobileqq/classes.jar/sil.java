@@ -1,28 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
 
-class sil
-  extends ajuv
+public class sil
+  implements axof
 {
-  sil(sik paramsik) {}
+  public sil(ShareImageUtils.2 param2) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(sik.a(this.a))))
-    {
-      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
-      if (paramBoolean) {
-        bcpw.a(BaseApplicationImpl.getApplication(), 2, 2131719264, 0).b(paramLong.getResources().getDimensionPixelSize(2131298865));
-      }
-    }
-    else
-    {
-      return;
-    }
-    bcpw.a(BaseApplicationImpl.getApplication(), 1, 2131719251, 0).b(paramLong.getResources().getDimensionPixelSize(2131298865));
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 

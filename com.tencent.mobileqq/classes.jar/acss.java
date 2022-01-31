@@ -1,27 +1,8 @@
-import java.io.File;
-import java.util.Comparator;
+import android.os.Bundle;
 
-class acss
-  implements Comparator<File>
+public abstract interface acss
 {
-  acss(acsr paramacsr) {}
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = acsr.a(this.a, paramFile1) - acsr.a(this.a, paramFile2);
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return true;
-  }
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 

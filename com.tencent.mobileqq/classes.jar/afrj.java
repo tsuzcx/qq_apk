@@ -1,53 +1,48 @@
 import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
 public class afrj
-  implements Comparator<afrm>
+  extends akdn
 {
   public afrj(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public int a(afrm paramafrm1, afrm paramafrm2)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    paramafrm1 = paramafrm1.a.name;
-    paramafrm2 = paramafrm2.a.name;
-    if ((paramafrm1 == null) && (paramafrm2 == null)) {}
-    int j;
-    int k;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      return 0;
-      if ((paramafrm1 == null) && (paramafrm2 != null)) {
-        return -1;
-      }
-      if ((paramafrm1 != null) && (paramafrm2 == null)) {
-        return 1;
-      }
-      j = paramafrm1.length();
-      k = paramafrm2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
+      if (PublicAccountFragment.a(this.a))
       {
-        char c1 = paramafrm1.charAt(i);
-        char c2 = paramafrm2.charAt(i);
-        if (c1 != c2)
-        {
-          paramafrm1 = ChnToSpell.a(c1, i);
-          paramafrm2 = ChnToSpell.a(c2, i);
-          if (paramafrm1.jdField_a_of_type_Int == paramafrm2.jdField_a_of_type_Int) {
-            return paramafrm1.jdField_a_of_type_JavaLangString.compareTo(paramafrm2.jdField_a_of_type_JavaLangString);
-          }
-          return paramafrm1.jdField_a_of_type_Int - paramafrm2.jdField_a_of_type_Int;
+        if (this.a.a != null) {
+          this.a.a.a(this.a.b(), true, null);
         }
-        i += 1;
+        PublicAccountFragment.a(this.a, false);
       }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+      this.a.i();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
   }
 }
 

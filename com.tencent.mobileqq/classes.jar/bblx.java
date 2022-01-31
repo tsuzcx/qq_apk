@@ -1,12 +1,10 @@
 public abstract interface bblx
 {
-  public abstract bbly a(float paramFloat1, float paramFloat2);
+  public abstract void a();
   
-  public abstract void a(bbly parambbly, float paramFloat1, float paramFloat2);
+  public abstract void a(String paramString, long paramLong, boolean paramBoolean);
   
-  public abstract void a(bblz parambblz, bbly parambbly, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(bbly parambbly, float paramFloat1, float paramFloat2);
+  public abstract boolean a();
 }
 
 

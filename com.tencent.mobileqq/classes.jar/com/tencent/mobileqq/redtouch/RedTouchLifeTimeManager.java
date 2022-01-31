@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import avpp;
-import bhzv;
-import bhzw;
+import avpr;
+import biam;
+import bian;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.UEC;
@@ -21,7 +21,7 @@ public class RedTouchLifeTimeManager
 {
   private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
   private long jdField_a_of_type_Long;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new avpp(this);
+  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new avpr(this);
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -62,16 +62,16 @@ public class RedTouchLifeTimeManager
     this.jdField_a_of_type_Boolean = false;
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.i("RedTouchLifeTimeManager", 1, "triggleReport time = " + l + " class name " + this.jdField_a_of_type_JavaLangString);
-    bhzw localbhzw = new bhzw();
-    localbhzw.d = 133;
-    localbhzw.jdField_e_of_type_Int = ((int)l);
-    localbhzw.g = String.valueOf(this.c);
-    localbhzw.b = String.valueOf(this.d);
-    localbhzw.jdField_a_of_type_Int = 1;
-    localbhzw.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    localbhzw.jdField_e_of_type_JavaLangString = "vab_red";
-    localbhzw.f = "vab_red";
-    bhzv.a().a(localbhzw);
+    bian localbian = new bian();
+    localbian.d = 133;
+    localbian.jdField_e_of_type_Int = ((int)l);
+    localbian.g = String.valueOf(this.c);
+    localbian.b = String.valueOf(this.d);
+    localbian.jdField_a_of_type_Int = 1;
+    localbian.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    localbian.jdField_e_of_type_JavaLangString = "vab_red";
+    localbian.f = "vab_red";
+    biam.a().a(localbian);
   }
   
   public void a(String paramString)

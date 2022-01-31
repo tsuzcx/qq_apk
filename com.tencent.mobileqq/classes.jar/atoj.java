@@ -1,56 +1,163 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class atoj
-  extends atoh
-  implements View.OnClickListener
+public abstract class atoj
 {
-  protected int a()
+  public static final int[] a;
+  public static final String[] a;
+  public static final int[] b;
+  public static final String[] b;
+  public static final String[] c = { ajya.a(2131705975), ajya.a(2131705977), ajya.a(2131705971), ajya.a(2131705976), ajya.a(2131705974), ajya.a(2131705972), ajya.a(2131705973) };
+  public static final String[] d = { "0X800554B", "0X800554C", "0X800554D", "0X800554E", "0X800554F", "0X8005550", "0X8005551" };
+  protected Context a;
+  protected LayoutInflater a;
+  protected LinearLayout a;
+  protected atfm a;
+  
+  static
   {
-    return 2131560849;
+    jdField_a_of_type_ArrayOfInt = new int[] { 5, 6, 7, 1, 2, 3, 4, 8 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130840978, 2130840987, 2130840973, 2130840981, 2130840969, 2130840963, 2130840986 };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#DCEBFF" };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#4B83D3" };
   }
   
-  protected LabelContainer a(View paramView, int paramInt1, atfk paramatfk, int paramInt2)
+  public static int a(int paramInt)
   {
-    ((TextView)paramView.findViewById(2131378553)).setText(c[paramInt1]);
-    paramInt1 = vpp.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    int i = vpp.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131368874);
-    localLabelContainer.setSpace(paramInt1, i);
-    paramView.setTag(paramatfk);
-    paramView.setOnClickListener(this);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
+    int i = 0;
+    while (i < jdField_a_of_type_ArrayOfInt.length)
     {
-      paramInt1 = vpp.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      paramView.setBackgroundResource(2130839176);
-      paramView.setPadding(0, paramInt1, 0, paramInt1);
+      if (paramInt == jdField_a_of_type_ArrayOfInt[i]) {
+        return i;
+      }
+      i += 1;
     }
-    return localLabelContainer;
+    return -1;
+  }
+  
+  protected abstract int a();
+  
+  protected View a(int paramInt1, atfm paramatfm, int paramInt2)
+  {
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(a(), this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    a(paramInt1, a(localView, paramInt1, paramatfm, paramInt2), paramatfm.jdField_a_of_type_JavaUtilArrayList);
+    return localView;
+  }
+  
+  protected abstract LabelContainer a(View paramView, int paramInt1, atfm paramatfm, int paramInt2);
+  
+  protected void a(int paramInt, LabelContainer paramLabelContainer, ArrayList<InterestTagInfo> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      int j = vpm.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      int k = vpm.b(this.jdField_a_of_type_AndroidContentContext, 5.0F);
+      int m = vpm.b(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramArrayList.next();
+        TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+        localTextView.setIncludeFontPadding(false);
+        localTextView.setTextSize(1, 14.0F);
+        localTextView.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
+        GradientDrawable localGradientDrawable = new GradientDrawable();
+        localGradientDrawable.setColor(Color.parseColor(jdField_a_of_type_ArrayOfJavaLangString[paramInt]));
+        localGradientDrawable.setCornerRadius(m);
+        localTextView.setBackgroundDrawable(localGradientDrawable);
+        localTextView.setTextColor(Color.parseColor(jdField_b_of_type_ArrayOfJavaLangString[paramInt]));
+        if (this.jdField_a_of_type_Atfm != null)
+        {
+          int i = 0;
+          while (i < this.jdField_a_of_type_Atfm.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            if (((InterestTagInfo)this.jdField_a_of_type_Atfm.jdField_a_of_type_JavaUtilArrayList.get(i)).tagName.equals(localInterestTagInfo.tagName))
+            {
+              localTextView.setTextColor(Color.parseColor(jdField_b_of_type_ArrayOfJavaLangString[7]));
+              localTextView.setBackgroundColor(Color.parseColor(jdField_a_of_type_ArrayOfJavaLangString[7]));
+              this.jdField_a_of_type_Atfm.jdField_a_of_type_JavaUtilArrayList.remove(i);
+            }
+            i += 1;
+          }
+        }
+        if (localInterestTagInfo.tagName != null)
+        {
+          localInterestTagInfo.tagName = localInterestTagInfo.tagName.replaceAll("\005", "");
+          localInterestTagInfo.tagName = localInterestTagInfo.tagName.replaceAll("\006", "");
+        }
+        localTextView.setText(localInterestTagInfo.tagName);
+        localTextView.setPadding(j, k, j, k);
+        localTextView.setGravity(17);
+        paramLabelContainer.addView(localTextView);
+      }
+    }
+  }
+  
+  public void a(Context paramContext, LinearLayout paramLinearLayout)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void a(atfm paramatfm)
+  {
+    this.jdField_a_of_type_Atfm = paramatfm;
   }
   
   protected boolean a()
   {
-    return true;
+    return false;
   }
   
-  public void onClick(View paramView)
+  public boolean a(atfm[] paramArrayOfatfm)
   {
-    if ((paramView.getTag() instanceof atfk))
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    boolean bool2;
+    if ((paramArrayOfatfm == null) || (paramArrayOfatfm.length == 0)) {
+      bool2 = false;
+    }
+    int i;
+    boolean bool1;
+    do
     {
-      paramView = (atfk)paramView.getTag();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChooseInterestTagActivity.class);
-      localIntent.putExtra("interest_tag_type", paramView.jdField_a_of_type_Int);
-      localIntent.putExtra("is_from_judge", false);
-      localIntent.putExtra("is_from_nearby", true);
-      localIntent.putExtra("from_where", "NearbyPeopleProfileActivity");
-      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.jdField_a_of_type_JavaUtilArrayList);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 11);
+      return bool2;
+      i = 0;
+      bool1 = false;
+      bool2 = bool1;
+    } while (i >= jdField_a_of_type_ArrayOfInt.length);
+    int j = 0;
+    for (;;)
+    {
+      bool2 = bool1;
+      if (j < paramArrayOfatfm.length)
+      {
+        if ((jdField_a_of_type_ArrayOfInt[i] == paramArrayOfatfm[j].jdField_a_of_type_Int) && ((a()) || ((paramArrayOfatfm[j].jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayOfatfm[j].jdField_a_of_type_JavaUtilArrayList.size() > 0))))
+        {
+          View localView = a(i, paramArrayOfatfm[j], paramArrayOfatfm.length);
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
+          bool2 = true;
+        }
+      }
+      else
+      {
+        i += 1;
+        bool1 = bool2;
+        break;
+      }
+      j += 1;
     }
   }
 }

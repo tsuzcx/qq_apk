@@ -1,169 +1,50 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-public abstract class bijs
+public class bijs
+  extends biqp
 {
-  protected double a;
-  protected int a;
-  private long jdField_a_of_type_Long;
-  protected SurfaceTexture a;
-  private bijh jdField_a_of_type_Bijh;
-  protected bijr a;
-  protected volatile boolean a;
-  protected final float[] a;
-  protected int[] a;
-  protected double b;
-  protected int b;
-  private long jdField_b_of_type_Long = ((Long)xfr.a().a("SmartCutPicSpacing", Long.valueOf(500L))).longValue();
-  private boolean jdField_b_of_type_Boolean;
-  protected float[] b;
-  protected int c;
-  private boolean c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
-  protected int k;
-  protected int l = 90;
-  protected final int m = 1080;
-  
-  public bijs()
+  public bijs(AECameraGLSurfaceView paramAECameraGLSurfaceView, Context paramContext)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_b_of_type_ArrayOfFloat = new float[16];
+    super(paramContext);
   }
   
-  public SurfaceTexture a()
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.jdField_b_of_type_Boolean) {
-      return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-    }
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.k = arrayOfInt[0];
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.k);
-    this.jdField_b_of_type_Boolean = true;
-    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  }
-  
-  protected abstract void a();
-  
-  public abstract void a(float paramFloat);
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.i = paramInt1;
-    this.j = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    this.jdField_b_of_type_Double = (paramInt1 / paramInt2);
-    if ((paramInt3 > 0) && (paramInt4 > 0))
-    {
-      this.g = paramInt3;
-      this.h = paramInt4;
-      this.jdField_a_of_type_Double = (this.g / this.h);
-    }
-    this.e = paramInt5;
-    this.f = ((int)(this.e / this.jdField_b_of_type_Double));
-    this.jdField_c_of_type_Int = paramInt5;
-    this.d = ((int)(this.jdField_c_of_type_Int / this.jdField_b_of_type_Double));
-    this.jdField_a_of_type_Int = 1080;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / this.jdField_b_of_type_Double));
-  }
-  
-  public void a(bijh parambijh)
-  {
-    this.jdField_a_of_type_Bijh = parambijh;
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public void a(boolean paramBoolean, int paramInt, bijr parambijr)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.l = paramInt;
-    this.jdField_a_of_type_Bijr = parambijr;
-  }
-  
-  public void a(float[] paramArrayOfFloat)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        System.arraycopy(paramArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0, 16);
-      }
-      return;
-    }
-    catch (Exception paramArrayOfFloat)
-    {
-      paramArrayOfFloat.printStackTrace();
+    if (AECameraGLSurfaceView.a(this.a) != null) {
+      AECameraGLSurfaceView.a(this.a).a(paramFloat3);
     }
   }
   
-  public int[] a()
+  public void a(int paramInt)
   {
-    return new int[] { this.jdField_c_of_type_Int, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int };
-  }
-  
-  public abstract int[] a(int paramInt1, int paramInt2);
-  
-  protected abstract void b();
-  
-  public abstract void c();
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bijh != null)
-    {
-      long l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long)
-      {
-        this.jdField_a_of_type_Bijh.a(GlUtil.captureFrame(paramInt, this.e, this.f, 0));
-        this.jdField_a_of_type_Long = l1;
+    int i = 0;
+    AECameraGLSurfaceView.a(this.a, paramInt);
+    bika.a().b(paramInt);
+    if (paramInt == -1) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AECameraGLSurfaceView", 2, "OrientationEventListener unknown");
       }
     }
-  }
-  
-  public void d()
-  {
-    if (!this.jdField_c_of_type_Boolean)
+    for (int j = 90;; j = 0)
     {
-      a();
-      this.jdField_c_of_type_Boolean = true;
+      if ((paramInt > 315) || (paramInt < 45)) {
+        i = 90;
+      }
+      for (;;)
+      {
+        AECameraGLSurfaceView.b(this.a, i);
+        return;
+        if ((paramInt > 45) && (paramInt < 135)) {
+          i = 180;
+        } else if ((paramInt > 135) && (paramInt < 225)) {
+          i = 270;
+        } else if ((paramInt <= 225) || (paramInt >= 315)) {
+          i = j;
+        }
+      }
     }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.k;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-      this.jdField_b_of_type_Boolean = false;
-    }
-    if (this.jdField_c_of_type_Boolean)
-    {
-      b();
-      this.jdField_c_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean e()
-  {
-    return (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean);
   }
 }
 

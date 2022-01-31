@@ -1,23 +1,38 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.widgets.TabLayout;
 
-class xoe
-  implements View.OnClickListener
+public class xoe
+  implements Animator.AnimatorListener
 {
-  xoe(xoc paramxoc, DialogInterface.OnClickListener paramOnClickListener) {}
+  public xoe(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xoc, -1);
-    }
-    this.jdField_a_of_type_Xoc.dismiss();
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xoe
  * JD-Core Version:    0.7.0.1
  */

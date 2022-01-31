@@ -1,14 +1,8 @@
-import com.tencent.widget.pull2refresh.XRecyclerView;
-
-public class bfzn
-  extends ThreadLocal<Boolean>
+public abstract interface bfzn
 {
-  public bfzn(XRecyclerView paramXRecyclerView) {}
+  public abstract boolean a(boolean paramBoolean);
   
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public abstract void c();
 }
 
 

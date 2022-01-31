@@ -1,25 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-class xdh
-  implements View.OnClickListener
+public abstract interface xdh
 {
-  xdh(xde paramxde, TroopGiftPanel paramTroopGiftPanel) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Xde.c();
-    this.jdField_a_of_type_Xde.b();
-    if (this.jdField_a_of_type_Xde.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
-    {
-      this.jdField_a_of_type_Xde.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
-      return;
-    }
-    ((BaseChatPie)this.jdField_a_of_type_Xde.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aU();
-  }
+  public abstract void a(List<bals> paramList, xce paramxce);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import bcpw;
+import bcql;
 
 class MiniProgramShareUtils$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class MiniProgramShareUtils$1$1
   
   public void run()
   {
-    bcpw.a(this.this$0.val$activity, 1, 2131719476, 0).a();
+    bcql.a(this.this$0.val$activity, 1, 2131719487, 0).a();
   }
 }
 

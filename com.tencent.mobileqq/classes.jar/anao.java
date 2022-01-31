@@ -1,30 +1,83 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class anao
+  extends ampa<anan>
 {
-  public static int a = 1;
-  public static int b = 2;
-  public int c = b;
-  
-  private static anao b(String paramString)
+  public int a()
   {
-    anao localanao = new anao();
-    try
-    {
-      localanao.c = new JSONObject(paramString).optInt("action", b);
-      return localanao;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
-    }
-    return localanao;
+    return 434;
   }
   
-  public boolean a()
+  @NonNull
+  public anan a(int paramInt)
   {
-    return this.c == a;
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new anan();
+  }
+  
+  @Nullable
+  public anan a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
+      }
+      return anan.a(paramArrayOfamph[0]);
+    }
+    return null;
+  }
+  
+  public Class<anan> a()
+  {
+    return anan.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(anan paramanan)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramanan == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramanan = paramanan.toString();; paramanan = " empty")
+    {
+      QLog.d("SearchBusinessConfProcessor", 2, paramanan);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

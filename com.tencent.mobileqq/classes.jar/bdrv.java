@@ -1,25 +1,19 @@
-import android.util.Log;
+import java.util.Arrays;
 
-public class bdrv
+public final class bdrv
 {
-  public void a(String paramString1, String paramString2)
-  {
-    Log.d(paramString1, paramString2);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public String toString()
   {
-    Log.d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    Log.w(paramString1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Log.d(paramString1, paramString2);
+    return "MultiParams{mRelationType=" + this.jdField_a_of_type_Int + ", mMultiAVType=" + this.b + ", mMultiAVSubType=" + this.c + ", mRoomId=" + this.d + ", mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSourceId=" + this.e + ", mSig=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + '}';
   }
 }
 

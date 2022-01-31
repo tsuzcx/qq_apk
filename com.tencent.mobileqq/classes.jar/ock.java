@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ock
-  implements View.OnClickListener
+public abstract interface ock
 {
-  ock(oci paramoci) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public abstract void a();
 }
 
 

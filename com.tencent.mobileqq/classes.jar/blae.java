@@ -1,31 +1,41 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.ArrayList;
 
 public class blae
+  implements Comparable<blae>
 {
-  public static int a;
-  public static boolean a;
+  public int a;
+  public bkzz a;
+  public blaa a;
+  public blai a;
+  public blam a;
+  public MessageForShortVideo a;
+  public String a;
+  public ArrayList<blaa> a;
+  public int b;
+  public String b;
+  public int c = 201;
   
-  static
+  public blae()
   {
-    jdField_a_of_type_Int = 1500;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = aunv.a();
   }
   
-  public static boolean a()
+  public int a(blae paramblae)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
+    if (this.c < paramblae.c) {
+      return -1;
     }
-    boolean bool = axho.a(axho.r);
-    if (bool) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
-      }
+    if (this.c > paramblae.c) {
+      return 1;
     }
-    while (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    return jdField_a_of_type_Boolean;
+    return 0;
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
   }
 }
 

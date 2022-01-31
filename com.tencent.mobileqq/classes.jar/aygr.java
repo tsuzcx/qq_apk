@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.util.SparseArray;
+import android.view.View;
 import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
-class aygr
-  implements DialogInterface.OnClickListener
+public class aygr
+  implements bfph
 {
-  aygr(aygq paramaygq, TimDocSSOMsg.UinRightInfo paramUinRightInfo) {}
+  public aygr(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Aygq.a.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aygq.a.jdField_a_of_type_Aydy.b(String.valueOf(this.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get()));
-    this.jdField_a_of_type_Aygq.a.jdField_a_of_type_Aydy.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Aygq.a.b == 1) {
-      axqw.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_Aygq.a), "dc00898", "", "", "0x8007CFD", "0x8007CFD", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    {
+      paramInt = -1;
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+      if (this.jdField_a_of_type_Bfpc.isShowing()) {
+        this.jdField_a_of_type_Bfpc.dismiss();
+      }
+      return;
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      break;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
+      continue;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
     }
   }
 }

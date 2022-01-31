@@ -1,15 +1,35 @@
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 
 class adsh
-  implements aput
+  extends ClickableSpan
 {
-  adsh(adqy paramadqy) {}
+  adsh(adqw paramadqw, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    paramView = apee.a();
-    apue.b(this.a.a, paramView);
-    apuc.a("0X8007FA2");
+    if ((this.jdField_a_of_type_Adqw.a instanceof Activity))
+    {
+      paramView = bfpc.a(this.jdField_a_of_type_Adqw.a);
+      paramView.b(2131691945);
+      paramView.c(2131690596);
+      paramView.a(new adsi(this, paramView));
+      paramView.show();
+      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Adqw.a).getChatFragment().a();
+      if ((localBaseChatPie instanceof aeoc)) {
+        ((aeoc)localBaseChatPie).a = paramView;
+      }
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

@@ -1,32 +1,66 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-class pfu
-  implements ViewBase.OnClickListener
+public class pfu
+  implements php
 {
-  pfu(pfs parampfs, int paramInt, pax parampax, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    boolean bool;
-    rap localrap;
-    if (this.jdField_a_of_type_Int == 1150)
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramInt == 103) {
+      return pdx.a(paramBaseArticleInfo);
+    }
+    if (paramInt == 102) {
+      return pdv.a(paramBaseArticleInfo);
+    }
+    return pdw.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    Object localObject = (pju)localViewBase.findViewBaseByName("id_info_avator");
+    if (localObject != null)
     {
-      bool = true;
-      localrap = this.jdField_a_of_type_Pax.a();
-      if (!bool) {
-        break label43;
+      ((pju)localObject).a(parampau, false);
+      parampau = parampau.a();
+      localObject = (NativeAvatarView)((pju)localObject).getNativeView();
+      if ((onh.b(parampau)) && (parampau.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampau.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
+        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130845457));
       }
     }
-    label43:
-    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
+    parampau = localViewBase.findViewBaseByName("id_view_nickname");
+    if ((paramContainer != null) && (parampau != null))
     {
-      localrap.b(bool, paramViewBase);
-      return;
-      bool = false;
-      break;
+      paramContainer = (NativeTextImp)paramContainer.getNativeView();
+      parampau = parampau.getNativeView();
+      if ((paramContainer != null) && (parampau != null)) {
+        parampau.post(new GalleryProteusItem.1(this, parampau, paramContainer));
+      }
     }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

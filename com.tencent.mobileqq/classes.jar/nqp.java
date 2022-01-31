@@ -1,212 +1,183 @@
-import android.net.Uri;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessReporter.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
-public class nqp
+class nqp
+  extends BroadcastReceiver
 {
-  private static List<List<String>> a;
-  private static List<Map<String, Integer>> b;
+  nqp(nqn paramnqn) {}
   
-  public static void a()
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    if ((b != null) || (a != null)) {}
-    do
-    {
-      return;
-      b = new ArrayList();
-      a = new ArrayList();
-      localObject1 = new File(nqq.f);
-    } while ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()));
-    Object localObject1 = bbdj.a((File)localObject1);
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
     for (;;)
     {
-      int i;
-      try
+      return;
+      ??? = paramIntent.getAction();
+      Object localObject;
+      if ("action_get_PA_head".equals(???))
       {
-        localObject1 = new JSONArray((String)localObject1);
-        i = 0;
-        if (i >= ((JSONArray)localObject1).length()) {
-          break;
+        ??? = paramIntent.getStringExtra("uin");
+        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_Baxy == null)) {
+          continue;
         }
-        Object localObject2 = ((JSONArray)localObject1).getJSONObject(0);
-        if (((JSONObject)localObject2).getInt("repflag") != 0)
+        paramIntent = this.a.jdField_a_of_type_Baxy.a(1, ???);
+        if (paramIntent != null)
         {
-          Object localObject3 = new ArrayList();
-          HashMap localHashMap = new HashMap();
-          JSONArray localJSONArray = ((JSONObject)localObject2).getJSONArray("entrance");
-          int j = 0;
-          if (j < localJSONArray.length())
-          {
-            ((List)localObject3).add(localJSONArray.getString(j));
-            j += 1;
-            continue;
-          }
-          a.add(localObject3);
-          localObject2 = ((JSONObject)localObject2).getJSONArray("report");
-          j = 0;
-          if (j < ((JSONArray)localObject2).length())
-          {
-            localObject3 = ((JSONArray)localObject2).getJSONObject(j);
-            localHashMap.put(((JSONObject)localObject3).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject3).getInt("tvalue")));
-            j += 1;
-            continue;
-          }
-          b.add(localHashMap);
+          localObject = new Intent("action_decode_finish");
+          ((Intent)localObject).putExtra("bitmap", paramIntent);
+          ((Intent)localObject).putExtra("uin", ???);
+          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
+          return;
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("BusinessReporter", 1, "parse report json error:" + localException);
+        this.a.jdField_a_of_type_Baxy.a(???, 1, true);
         return;
       }
-      i += 1;
-    }
-  }
-  
-  public static void a(CustomWebView paramCustomWebView)
-  {
-    String str;
-    WebViewPlugin localWebViewPlugin;
-    if ((paramCustomWebView != null) && (paramCustomWebView.getPluginEngine() != null))
-    {
-      str = paramCustomWebView.getUrl();
-      paramCustomWebView = paramCustomWebView.getPluginEngine();
-      localWebViewPlugin = paramCustomWebView.a("JD_REPORT");
-      if (localWebViewPlugin != null) {
-        break label75;
-      }
-      if (a()) {
-        break label54;
-      }
-      ThreadManager.post(new BusinessReporter.1(str, paramCustomWebView), 5, null, true);
-    }
-    label54:
-    while (!a(str)) {
-      return;
-    }
-    paramCustomWebView.a(new String[] { "JD_REPORT" });
-    return;
-    label75:
-    ((xjz)localWebViewPlugin).b(str);
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((!(paramAppInterface instanceof BrowserAppInterface)) || (TextUtils.isEmpty(paramString1)) || (b == null)) {}
-    String str;
-    do
-    {
-      return;
-      str = Uri.parse(paramString2).getHost();
-    } while (TextUtils.isEmpty(str));
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    Object localObject1 = null;
-    Object localObject2 = localObject1;
-    if (i < a.size())
-    {
-      localObject2 = ((List)a.get(i)).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        if (str.contains((String)((Iterator)localObject2).next())) {
-          localObject1 = (Map)b.get(i);
-        }
-      }
-    }
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0)
+      int i;
+      boolean bool;
+      long l;
+      if ("action_shop_set_read".equals(???))
       {
-        localObject2 = localObject1;
-        if ((localObject2 == null) || (((Map)localObject2).isEmpty())) {
-          break;
+        localObject = paramIntent.getStringExtra("uin");
+        i = paramIntent.getIntExtra("unReadNum", 0);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          continue;
         }
-        localObject1 = ((Map)localObject2).entrySet().iterator();
-      }
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label346;
-        }
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        str = (String)((Map.Entry)localObject2).getKey();
-        i = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
-        if (!TextUtils.isEmpty(str))
+        bool = paramIntent.getBooleanExtra("needDelete", false);
+        synchronized (nqn.a(this.a))
         {
-          if (paramString1.startsWith("https://" + str))
+          paramIntent = (EcShopData)nqn.a(this.a).get(localObject);
+          if (paramIntent == null) {
+            continue;
+          }
+          ??? = null;
+          paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+          if (paramIntent != null) {
+            ??? = paramIntent.a((String)localObject, 1008);
+          }
+          if (??? != null)
           {
-            localObject2 = (nri)paramAppInterface.getBusinessHandler(0);
-            if (localObject2 == null) {
-              break label339;
+            ahpd.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
+            paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+            if (paramIntent != null) {
+              paramIntent.a(???.frienduin, ???.istroop, true);
             }
-            ((nri)localObject2).a(i, null, paramString2, null, null, 0L, false);
+          }
+          if (!bool) {
+            continue;
+          }
+          this.a.b((String)localObject);
+          if (((String)localObject).equals(nqn.g))
+          {
+            l = nqn.a().getLong("ad_id", 0L);
+            ((nrf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134246438, null, null, null, null, l, false);
+            ??? = nqn.a().edit();
+            ???.remove("ad_id");
+            ???.putBoolean("is_ad_added", false);
+            ???.commit();
+            nqn.g = "";
             return;
-            i += 1;
-            break;
           }
-          localStringBuilder.setLength(0);
-          if (paramString1.startsWith("http://" + str))
-          {
-            localObject2 = (nri)paramAppInterface.getBusinessHandler(0);
-            if (localObject2 != null)
-            {
-              ((nri)localObject2).a(i, null, paramString2, null, null, 0L, false);
-              return;
-            }
-          }
-          label339:
-          localStringBuilder.setLength(0);
         }
+        axqy.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
+        return;
       }
-      label346:
-      break;
-    }
-  }
-  
-  public static boolean a()
-  {
-    return a != null;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((a == null) || (a.isEmpty()) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    paramString = Uri.parse(paramString).getHost();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator2;
-    do
-    {
-      Iterator localIterator1 = a.iterator();
-      while (!localIterator2.hasNext())
+      if ("action_folder_set_read".equals(???))
       {
-        if (!localIterator1.hasNext()) {
-          break;
+        ??? = paramIntent.getStringExtra("uin");
+        if (!TextUtils.isEmpty(???))
+        {
+          ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(???, 1008);
+          if (??? != null) {
+            this.a.a(???.time);
+          }
         }
-        localIterator2 = ((List)localIterator1.next()).iterator();
+        ??? = nqn.a();
+        this.a.e = false;
+        if (???.getBoolean("folder_reddot", false)) {
+          ???.edit().putBoolean("folder_reddot", false).commit();
+        }
+        ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        if (??? == null) {
+          continue;
+        }
+        ???.sendEmptyMessage(1009);
+        return;
       }
-    } while (!paramString.contains((String)localIterator2.next()));
-    return true;
-    return false;
+      if ("action_folder_destroy".equals(???))
+      {
+        if (paramIntent.getLongExtra("stay_time", 0L) >= this.a.jdField_a_of_type_Long) {
+          nqn.a().edit().putLong("last_stay_folder", System.currentTimeMillis());
+        }
+        this.a.f = false;
+        return;
+      }
+      if ("action_folder_msg_change".equals(???))
+      {
+        ??? = paramIntent.getStringExtra("msg");
+        i = paramIntent.getIntExtra("type", -1);
+        paramIntent = this.a.a();
+        if ((TextUtils.isEmpty(???)) || (paramIntent == null)) {
+          continue;
+        }
+        paramIntent = nqn.a().edit();
+        paramIntent.putString("str_ecshop_diy", ???);
+        paramIntent.putInt("last_show_time1", (int)(System.currentTimeMillis() / 1000L));
+        paramIntent.putInt("FOLDER_MSG_TYPE", i);
+        paramIntent.putString("PUSH_JUMP_URL", "");
+        paramIntent.commit();
+        return;
+      }
+      if ("action_set_folder_tab_red".equals(???))
+      {
+        nqn.a().edit().putBoolean("folder_tab_red", true).commit();
+        return;
+      }
+      if (!"action_follow_status".equals(???)) {
+        continue;
+      }
+      ??? = paramIntent.getStringExtra("puin");
+      if (TextUtils.isEmpty(???)) {
+        continue;
+      }
+      try
+      {
+        l = Long.parseLong(???);
+        if (l == -1L) {
+          continue;
+        }
+        bool = ((akdh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
+        paramIntent = new Intent("action_follow_status_finish");
+        paramIntent.putExtra("isFollow", bool);
+        paramIntent.putExtra("uin", String.valueOf(l));
+        BaseApplicationImpl.getContext().sendBroadcast(paramIntent);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("EcShopAssistantManager", 2, "follow_status uin:" + ??? + ",isfollow:" + bool);
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          l = -1L;
+        }
+      }
+    }
   }
 }
 

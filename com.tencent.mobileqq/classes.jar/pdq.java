@@ -1,47 +1,121 @@
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.net.URL;
 import org.json.JSONObject;
 
 public class pdq
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public static JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
+    int j = 1;
     JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("id_test", new JSONObject());
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("large_video_icon", "pa_video_play.png");
+    localJSONObject1.put("id_large_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("large_video_cover", "mengceng.png");
+    localJSONObject1.put("id_large_video_cover", localObject);
     JSONObject localJSONObject2 = new JSONObject();
-    Object localObject;
-    if (paramBaseArticleInfo.mSinglePicture != null)
+    localObject = paramBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
+    label157:
+    int i;
+    label239:
+    boolean bool;
+    if (localObject != null)
     {
-      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localObject = ((URL)localObject).getFile();
       localJSONObject2.put("article_large_imge_url", localObject);
       localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajyc.a(2131712856));
-      localJSONObject1.put("id_gallery_cnt", localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject1.put("id_gallery_img", localObject);
-      localJSONObject1.put("id_gallery_bg", new JSONObject());
-      pen.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label207;
+      localJSONObject2 = new JSONObject();
+      if ((!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) || (((AdvertisementInfo)paramBaseArticleInfo).mImaxShowAdType != 1001) || (paramBaseArticleInfo.mVideoDuration != 0)) {
+        break label526;
       }
-      pen.a(paramBaseArticleInfo, localJSONObject1);
-      pen.b(paramBaseArticleInfo, localJSONObject1);
+      localObject = "";
+      localJSONObject2.put("large_video_duration", localObject);
+      localJSONObject1.put("id_large_video_duration", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("video_play_icon", "video_play_icon");
+      localJSONObject1.put("id_video_play_icon", localObject);
+      localJSONObject1.put("id_video_paly_text", new JSONObject());
+      if ((!((AdvertisementInfo)paramBaseArticleInfo).isIMaxAndNewStyle) || (paramInt != 115)) {
+        break label538;
+      }
+      i = 1;
+      if (i != 0) {
+        break label543;
+      }
+      bool = true;
+      label246:
+      pek.a(paramBaseArticleInfo, localJSONObject1, bool, "3");
+      if (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label584;
+      }
+      pek.d(paramBaseArticleInfo, localJSONObject1);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_view_AdDownloadView", localObject);
+      if (!TextUtils.isEmpty(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg))
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
+        localObject = URLDrawable.getDrawable(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg, (URLDrawable.URLDrawableOptions)localObject);
+        if (localObject != null) {
+          ((URLDrawable)localObject).startDownload();
+        }
+      }
+      if (new JSONObject(((AdvertisementInfo)paramBaseArticleInfo).mAdExtInfo).optInt("is_video_new") != 1) {
+        break label549;
+      }
+      paramInt = j;
     }
     for (;;)
     {
-      pen.m(paramBaseArticleInfo, localJSONObject1);
-      pen.e(paramBaseArticleInfo, localJSONObject1);
-      pen.g(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-      pen.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label207:
-      pen.d(paramBaseArticleInfo, localJSONObject1);
+      label384:
+      pek.m(paramBaseArticleInfo, localJSONObject1);
+      pek.e(paramBaseArticleInfo, localJSONObject1);
+      oar.b(paramBaseArticleInfo, localJSONObject1);
+      oar.a(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("activity_img_path", "free_netflow_icon");
+      localJSONObject1.put("id_large_video_activity_img", localObject);
+      localJSONObject1.put("id_large_video_activity_label", new JSONObject());
+      localJSONObject1.put("id_view_Ad_CompleteGudie", new JSONObject());
+      localJSONObject1.put("id_video_cell_container", new JSONObject());
+      if (i != 0) {
+        localJSONObject1.put("style_ID", "ReadInjoy_ad_video_imax_cell");
+      }
+      for (;;)
+      {
+        pek.a(localJSONObject1, paramBaseArticleInfo);
+        return localJSONObject1;
+        localObject = null;
+        break;
+        label526:
+        localObject = omr.a(paramBaseArticleInfo.mVideoDuration);
+        break label157;
+        label538:
+        i = 0;
+        break label239;
+        label543:
+        bool = false;
+        break label246;
+        label549:
+        paramInt = 0;
+        break label384;
+        if (paramInt != 0) {
+          localJSONObject1.put("style_ID", "ReadInjoy_ad_video_cell_new_division");
+        } else {
+          localJSONObject1.put("style_ID", "ReadInjoy_ad_video_cell");
+        }
+      }
+      label584:
+      paramInt = 0;
     }
   }
 }

@@ -4,8 +4,8 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lgf;
-import mat;
+import lga;
+import mao;
 
 class DoubleVideoCtrlUI$2
   implements Runnable
@@ -26,7 +26,7 @@ class DoubleVideoCtrlUI$2
         }
         this.this$0.j(l);
         this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
-        mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
+        mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
       }
       this.this$0.f(l, 65535);
     } while (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().g);

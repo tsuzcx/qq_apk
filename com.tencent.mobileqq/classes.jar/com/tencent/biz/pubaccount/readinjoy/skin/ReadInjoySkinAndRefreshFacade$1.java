@@ -1,68 +1,68 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
 import com.tencent.common.app.AppInterface;
-import pyx;
-import pzb;
+import pyu;
+import pyy;
+import pyz;
 import pzc;
 import pzf;
-import pzi;
-import pzw;
-import qaa;
+import pzt;
+import pzx;
 
 public class ReadInjoySkinAndRefreshFacade$1
   implements Runnable
 {
-  public ReadInjoySkinAndRefreshFacade$1(pzw parampzw) {}
+  public ReadInjoySkinAndRefreshFacade$1(pzt parampzt) {}
   
   public void run()
   {
-    Object localObject = (pzc)this.this$0.a.getManager(270);
-    int i = pzw.a(this.this$0);
-    RefreshData localRefreshData = ((pzc)localObject).a(this.this$0.a.getApp(), i);
+    Object localObject = (pyz)this.this$0.a.getManager(270);
+    int i = pzt.a(this.this$0);
+    RefreshData localRefreshData = ((pyz)localObject).a(this.this$0.a.getApp(), i);
     int j = (int)(System.currentTimeMillis() / 1000L);
     boolean bool;
-    pzi localpzi;
+    pzf localpzf;
     SkinData localSkinData;
-    if ((localRefreshData != null) && (localRefreshData.isShowInSource(pzw.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime)) {
-      if (qaa.a(localRefreshData.id)) {
+    if ((localRefreshData != null) && (localRefreshData.isShowInSource(pzt.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime)) {
+      if (pzx.a(localRefreshData.id)) {
         if (localRefreshData.isShown)
         {
-          ((pzc)localObject).a(1, localRefreshData.id, localRefreshData.seq, i);
-          ((pzc)localObject).a(true);
+          ((pyz)localObject).a(1, localRefreshData.id, localRefreshData.seq, i);
+          ((pyz)localObject).a(true);
           bool = true;
-          localObject = (GuideData)((pzb)this.this$0.a.getManager(271)).a("operation_guide");
-          localpzi = (pzi)this.this$0.a.getManager(261);
-          localSkinData = localpzi.a(this.this$0.a.getApp());
+          localObject = (GuideData)((pyy)this.this$0.a.getManager(271)).a("operation_guide");
+          localpzf = (pzf)this.this$0.a.getManager(261);
+          localSkinData = localpzf.a(this.this$0.a.getApp());
           if ((localSkinData == null) || (j < localSkinData.beginTime) || (j > localSkinData.endTime)) {
             break label361;
           }
-          if (!pyx.a(localSkinData.id)) {
+          if (!pyu.a(localSkinData.id)) {
             break label341;
           }
-          localpzi.a(1, localSkinData.id, bool);
+          localpzf.a(1, localSkinData.id, bool);
         }
       }
     }
     for (;;)
     {
-      ((pzf)this.this$0.a.getBusinessHandler(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject, pzw.a(this.this$0));
+      ((pzc)this.this$0.a.getBusinessHandler(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject, pzt.a(this.this$0));
       return;
-      ((pzc)localObject).a(0, "", -1L, i);
+      ((pyz)localObject).a(0, "", -1L, i);
       bool = false;
       break;
-      ((pzc)localObject).a(0, "", -1L, i);
-      ((pzc)localObject).a(localRefreshData, pzw.a(this.this$0));
+      ((pyz)localObject).a(0, "", -1L, i);
+      ((pyz)localObject).a(localRefreshData, pzt.a(this.this$0));
       bool = false;
       break;
-      ((pzc)localObject).a(0, "", -1L, i);
+      ((pyz)localObject).a(0, "", -1L, i);
       bool = false;
       break;
       label341:
-      localpzi.a(0, "", bool);
-      localpzi.a(localSkinData);
+      localpzf.a(0, "", bool);
+      localpzf.a(localSkinData);
       continue;
       label361:
-      localpzi.a(0, "", bool);
+      localpzf.a(0, "", bool);
     }
   }
 }

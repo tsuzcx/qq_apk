@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class som
-  implements View.OnSystemUiVisibilityChangeListener
+  implements Animation.AnimationListener
 {
   public som(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 4102) {}
-    while (!bfni.e()) {
-      return;
-    }
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
+    paramAnimation = (ImageView)this.a.findViewById(2131378755);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131378756);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,9 +1,22 @@
-final class addw
-  implements adek<addv>
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+
+public class addw
+  implements addy
 {
-  public addv a(adeh paramadeh)
+  public addw(DoodleView paramDoodleView) {}
+  
+  public void a()
   {
-    return new addv(paramadeh);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 

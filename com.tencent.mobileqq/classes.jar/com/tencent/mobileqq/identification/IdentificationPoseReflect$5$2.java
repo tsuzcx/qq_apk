@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
-import arcs;
 import arcu;
-import arcx;
+import arcw;
+import arcz;
 
 public class IdentificationPoseReflect$5$2
   implements Runnable
 {
-  public IdentificationPoseReflect$5$2(arcu paramarcu) {}
+  public IdentificationPoseReflect$5$2(arcw paramarcw) {}
   
   public void run()
   {

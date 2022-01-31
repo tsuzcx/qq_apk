@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
-
-public class alnc
-  implements alnd
+public abstract interface alnc
 {
-  public alnc(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
-  
-  public void a(int paramInt)
-  {
-    if (ScanEntryProviderContainerView.a(this.a) != null) {
-      ScanEntryProviderContainerView.a(this.a).c(paramInt);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

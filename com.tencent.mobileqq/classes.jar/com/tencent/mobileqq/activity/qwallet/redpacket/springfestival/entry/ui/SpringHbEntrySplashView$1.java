@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import alwx;
+import alww;
 import android.view.View;
 import android.widget.ProgressBar;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ class SpringHbEntrySplashView$1
         }
         this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
         this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.this$0.jdField_a_of_type_Alwx.c(0);
+        this.this$0.jdField_a_of_type_Alww.c(0);
         return;
       }
     }

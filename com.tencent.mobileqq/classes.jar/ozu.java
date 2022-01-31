@@ -1,9 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.LinkedHashMap;
 
-public abstract interface ozu
+public class ozu
 {
-  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
+  private ArrayDeque<String> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
+  private LinkedHashMap<String, Object> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  
+  public String toString()
+  {
+    return "AtlasStackInfo{stackGalleryMap=" + this.jdField_a_of_type_JavaUtilLinkedHashMap + "mScanStack=" + this.jdField_a_of_type_JavaUtilArrayDeque.toString() + '}';
+  }
 }
 
 

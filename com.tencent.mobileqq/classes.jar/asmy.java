@@ -1,36 +1,23 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
 public class asmy
-  implements bcsv
+  implements bctk
 {
-  public asmy(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
+  public asmy(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
   public void a(View paramView, int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    if (paramInt == 1)
     {
-      asog.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(asle.c) });
-      asnx.a().c();
-      if (!TextUtils.isEmpty(this.a.a)) {
-        break label93;
+      if (MsgBackupPCAuthFragment.a(this.a)) {
+        this.a.k();
       }
-      this.a.a(this.a.getActivity());
-      if (this.a.b != 2) {
-        break label104;
-      }
-      asoe.a("0X800A282");
-    }
-    label93:
-    label104:
-    while (!asle.c)
-    {
-      return;
       this.a.onBackEvent();
-      break;
     }
-    asoe.a("0X800A266", 4);
+    while (paramInt != 2) {
+      return;
+    }
   }
 }
 

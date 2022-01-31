@@ -1,10 +1,6 @@
 public abstract interface aiae
 {
-  public abstract int a(int paramInt1, int paramInt2, ahzx paramahzx);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

@@ -1,14 +1,14 @@
-import android.util.Pair;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.List;
 
 class askg
-  implements askp<Pair<String, Integer>, EmoticonPackage>
+  implements askr<Integer, List<EmoticonPackage>>
 {
-  askg(askd paramaskd) {}
+  askg(askf paramaskf) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public List<EmoticonPackage> a(Integer paramInteger)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    return this.a.a(paramInteger.intValue());
   }
 }
 

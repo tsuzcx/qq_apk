@@ -1,26 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.comment.CommentView;
-import com.tencent.biz.subscribe.comment.ReplyContainer;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.subscribe.comment.EmoView;
 
 public class wod
-  implements View.OnClickListener
+  extends Handler
 {
-  public wod(CommentView paramCommentView) {}
+  public wod(EmoView paramEmoView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
+    int i;
+    if (paramMessage.what == 0)
     {
-      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
-      this.a.jdField_a_of_type_Woe.b.setVisibility(8);
-      this.a.jdField_a_of_type_Woe.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
+      i = EmoView.a(this.a) + 1;
+      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
     }
+    else
+    {
+      return;
+    }
+    EmoView.a(this.a, i);
+    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
   }
 }
 

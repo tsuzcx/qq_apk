@@ -1,10 +1,10 @@
 package com.tencent.av.smallscreen;
 
-import axqw;
+import axqy;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lgf;
-import mat;
+import lga;
+import mao;
 
 class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
   implements Runnable
@@ -16,13 +16,13 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
     {
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.f();
-      mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-      mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-      mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131696174);
+      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+      mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131696175);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().a(this.this$0.jdField_a_of_type_Long, true, true);
       this.this$0.a(true, false, true);
       if (this.this$0.d == 2) {
-        axqw.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
+        axqy.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {

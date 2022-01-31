@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
+import org.json.JSONObject;
 
 public abstract interface aybw
 {
-  public abstract Bitmap a(aybd paramaybd, String paramString1, String paramString2);
+  public abstract aybh[] a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, float paramFloat);
 }
 
 

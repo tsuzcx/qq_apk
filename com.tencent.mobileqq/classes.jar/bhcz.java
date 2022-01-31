@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.event.ExoticEvent;
+import android.view.animation.Animation;
+import cooperation.qzone.contentbox.PlusMenuContainer;
 
-public final class bhcz
-  implements Parcelable.Creator<ExoticEvent>
+public class bhcz
+  extends bfmx
 {
-  public ExoticEvent a(Parcel paramParcel)
-  {
-    return new ExoticEvent(paramParcel, null);
-  }
+  public bhcz(PlusMenuContainer paramPlusMenuContainer) {}
   
-  public ExoticEvent[] a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new ExoticEvent[paramInt];
+    this.a.setVisibility(4);
+    PlusMenuContainer.a(this.a, false);
   }
 }
 

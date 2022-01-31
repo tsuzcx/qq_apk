@@ -1,19 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qlink.QlinkLeakHelper.2.1;
 
-public class bgnz
-  extends BroadcastReceiver
+public final class bgnz
+  implements View.OnClickListener
 {
-  public bgnz(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131709894) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("qlink-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new QlinkLeakHelper.2.1(this));
     }
   }
 }

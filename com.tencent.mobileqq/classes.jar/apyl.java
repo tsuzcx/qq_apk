@@ -1,16 +1,16 @@
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class apyl
-  implements aptu
+class apyl
+  implements bcwm
 {
-  public apyl(SendBottomBar paramSendBottomBar) {}
+  apyl(apyi paramapyi) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    SendBottomBar.c(this.a);
+    if (paramInt == 2) {
+      this.a.a.c();
+    }
   }
-  
-  public void b() {}
 }
 
 

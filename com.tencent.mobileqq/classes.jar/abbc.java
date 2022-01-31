@@ -1,25 +1,32 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.Iterator;
+import java.util.List;
 
 public class abbc
-  implements View.OnClickListener
+  implements askq<List<EmoticonPackage>>
 {
   public abbc(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(View paramView)
+  public void a(List<EmoticonPackage> paramList)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    while (!anqu.a(this.a)) {
-      return;
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      this.a.g.setVisibility(8);
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
-    axqw.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+    do
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
+        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+          this.a.c = true;
+        }
+      }
+    } while (this.a.c);
+    this.a.g.setVisibility(8);
   }
 }
 

@@ -6,8 +6,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aoli;
-import bbkx;
+import aoln;
+import bbll;
 import java.util.List;
 
 public class LabelLayout
@@ -36,25 +36,25 @@ public class LabelLayout
     setOrientation(0);
   }
   
-  public void setLabels(List<aoli> paramList)
+  public void setLabels(List<aoln> paramList)
   {
     if (paramList != null)
     {
       removeAllViews();
-      int j = bbkx.a(4.0F);
-      int k = bbkx.a(1.0F);
-      int m = bbkx.a(6.0F);
-      int n = bbkx.a(5.0F);
-      int i1 = bbkx.a(25.0F);
+      int j = bbll.a(4.0F);
+      int k = bbll.a(1.0F);
+      int m = bbll.a(6.0F);
+      int n = bbll.a(5.0F);
+      int i1 = bbll.a(25.0F);
       int i2 = paramList.size();
       int i = 0;
       while (i < i2)
       {
-        Object localObject = (aoli)paramList.get(i);
+        Object localObject = (aoln)paramList.get(i);
         LabelTextView localLabelTextView = new LabelTextView(getContext());
-        localLabelTextView.setParam(((aoli)localObject).jdField_a_of_type_Int, ((aoli)localObject).b, j);
+        localLabelTextView.setParam(((aoln)localObject).jdField_a_of_type_Int, ((aoln)localObject).b, j);
         localLabelTextView.setTextSize(12);
-        localLabelTextView.setText(((aoli)localObject).jdField_a_of_type_JavaLangString);
+        localLabelTextView.setText(((aoln)localObject).jdField_a_of_type_JavaLangString);
         localLabelTextView.setPadding(m, k, m, k);
         localLabelTextView.setMinWidthCheck(i1);
         localObject = new LinearLayout.LayoutParams(-2, -2);

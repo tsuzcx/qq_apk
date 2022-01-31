@@ -1,36 +1,93 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
-class bakl
-  extends akim
+public class bakl
+  extends xaz
 {
-  bakl(bakk parambakk) {}
+  public bakl(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    if (QLog.isColorLevel())
+    long l = paramBundle.getLong("troopUin");
+    try
     {
-      StringBuilder localStringBuilder = new StringBuilder(150);
-      localStringBuilder.append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
-      QLog.i("TroopGagMgr", 2, localStringBuilder.toString());
-    }
-    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      paramString1 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      if (paramString1 == null)
       {
-        paramString = (oidb_0x899.memberlist)paramList.next();
-        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
+        if (QLog.isDevelopLevel()) {
+          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
+        }
+        return;
+      }
+      paramString3 = paramBundle.getString("itemKey");
+      if (paramString3 == null) {
+        return;
+      }
+      paramBundle = UUID.fromString(paramString3);
+      try
+      {
+        paramString2 = (TroopFileTransferManager.Item)paramString1.a.get(paramBundle);
+        if (paramString2 == null)
         {
-          paramLong2 = paramString.uint32_shutup_timestap.get();
-          long l = paramString.uint64_member_uin.get();
-          ((TroopManager)this.a.a.getManager(52)).a(paramLong1 + "", l + "", paramLong2);
+          if (QLog.isDevelopLevel()) {
+            QLog.i("TroopFileTransferManager", 4, "bad item key" + paramString3);
+          }
+          return;
+        }
+      }
+      finally {}
+    }
+    finally {}
+    if (paramBoolean)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
+      }
+      if (paramString2.BusId == 25) {
+        label445:
+        for (;;)
+        {
+          try
+          {
+            bicz.a(paramInt1);
+            if (paramInt1 == 0)
+            {
+              this.a.b.remove(paramBundle);
+              if (this.a.b.size() != 0) {
+                break label330;
+              }
+              paramString3 = new bajv(paramString2.FileName, this.a.e, 5, 604);
+              this.a.a(paramString2, 5, paramString3);
+              return;
+            }
+          }
+          finally {}
+          this.a.b.put(paramBundle, Integer.valueOf(paramInt1));
+          continue;
+          label330:
+          paramString3 = this.a.b.keySet().iterator();
+          do
+          {
+            if (!paramString3.hasNext()) {
+              break;
+            }
+            paramBundle = (UUID)paramString3.next();
+          } while (((Integer)this.a.b.get(paramBundle)).intValue() != 2147483647);
+          for (paramInt1 = 0;; paramInt1 = 1)
+          {
+            if (paramInt1 == 0) {
+              break label445;
+            }
+            paramString3 = new bajv(paramString2.FileName, this.a.e, 5, 605);
+            this.a.a(paramString2, 5, paramString3);
+            break;
+          }
         }
       }
     }

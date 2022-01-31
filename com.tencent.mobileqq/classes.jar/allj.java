@@ -1,256 +1,170 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.SurfaceTexture;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.nio.ByteBuffer;
 
 public class allj
+  implements IVideoViewBase
 {
-  public static Pair<Long, String> a(String paramString)
+  private allk jdField_a_of_type_Allk;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  
+  public allj(SurfaceTexture paramSurfaceTexture)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoUtil", 2, "parseFileSize, str=" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return null;
-      paramString = paramString.split("\\|");
-      if ((paramString == null) || (paramString.length != 2)) {
-        continue;
-      }
-      try
-      {
-        l = Long.parseLong(paramString[0]);
-        if (l == -1L) {
-          continue;
-        }
-        return new Pair(Long.valueOf(l), paramString[1]);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            localException.printStackTrace();
-          }
-          long l = -1L;
-        }
-      }
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+  }
+  
+  public void a(allk paramallk)
+  {
+    this.jdField_a_of_type_Allk = paramallk;
+  }
+  
+  public void addViewCallBack(IVideoViewBase.IVideoViewCallBack paramIVideoViewCallBack)
+  {
+    QLog.d("AROnlineVideoView", 1, "addViewCallBack");
+  }
+  
+  public void chooseDisplayView(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "chooseDisplayView");
+  }
+  
+  public void doCacheSurfaceTexture() {}
+  
+  public void doRecoverSurfaceTexture() {}
+  
+  public void doRotate(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    QLog.d("AROnlineVideoView", 1, "doRotate");
+  }
+  
+  public void drawFrame(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, ByteBuffer paramByteBuffer3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "drawFrame-hardware");
+  }
+  
+  public void drawFrame(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean, int paramInt5, int paramInt6)
+  {
+    if (this.jdField_a_of_type_Allk != null) {
+      this.jdField_a_of_type_Allk.a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt1, paramInt2, paramInt3, paramInt4, paramFloat, paramBoolean);
     }
   }
   
-  private static String a()
+  public View getCurrentDisplayView()
   {
-    if (bbay.a()) {
-      return bbuv.a(ajsf.aW + "iar" + File.separator);
-    }
-    return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "iar" + File.separator;
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = bdhv.d(paramString);
-      paramString = a() + paramString;
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AROnlineVideoUtil", 2, "getStorageDir, Exception");
-        paramString.printStackTrace();
-      }
-    }
+    QLog.d("AROnlineVideoView", 1, "getCurrentDisplayView");
     return null;
   }
   
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
+  public Object getRenderObject()
   {
-    boolean bool;
-    if (bbev.b(BaseApplication.getContext()) == 1)
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload, isWifi=" + bool);
-      }
-      if (bool) {
-        break label53;
-      }
-    }
-    label53:
-    Object localObject1;
-    label127:
-    Object localObject2;
-    label157:
-    label191:
-    int i;
-    label193:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                bool = false;
-                break;
-              } while (paramQQAppInterface == null);
-              paramQQAppInterface = (alci)paramQQAppInterface.getManager(168);
-            } while (paramQQAppInterface == null);
-            paramQQAppInterface = paramQQAppInterface.a();
-          } while ((paramQQAppInterface == null) || (paramQQAppInterface.aREnd < NetConnInfoCenter.getServerTimeMillis()) || (paramQQAppInterface.mArCloudConfigInfos.size() == 0));
-          localObject1 = TVK_SDKMgr.getProxyFactory();
-          if (localObject1 != null) {
-            break label127;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("AROnlineVideoUtil", 2, "preload, factory == null");
-        return;
-        localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(paramContext);
-        if (localObject1 != null) {
-          break label157;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AROnlineVideoUtil", 2, "preload, factory == null");
-      return;
-      localObject2 = new File(a());
-      if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile())) {
-        break label271;
-      }
-      ((File)localObject2).delete();
-      i = 0;
-      if (i >= paramQQAppInterface.mArCloudConfigInfos.size()) {
-        break label269;
-      }
-      localObject2 = (ArCloudConfigInfo)paramQQAppInterface.mArCloudConfigInfos.get(i);
-    } while (localObject2 == null);
-    if ((((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int != 4) || ((((ArCloudConfigInfo)localObject2).a.size() < 1) && (!TextUtils.isEmpty(((ArVideoResourceInfo)((ArCloudConfigInfo)localObject2).a.get(0)).jdField_d_of_type_JavaLangString)))) {}
-    for (;;)
-    {
-      i += 1;
-      break label193;
-      label269:
-      break;
-      label271:
-      if (((File)localObject2).exists()) {
-        break label191;
-      }
-      ((File)localObject2).mkdirs();
-      break label191;
-      localObject2 = ((ArVideoResourceInfo)((ArCloudConfigInfo)localObject2).a.get(0)).jdField_d_of_type_JavaLangString;
-      String str = a((String)localObject2);
-      bool = a(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload, url=" + (String)localObject2 + ", videoPath=" + str + ", isCached=" + bool);
-      }
-      if (!bool)
-      {
-        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-        localTVK_PlayerVideoInfo.setConfigMap("file_dir", str);
-        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "60");
-        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
-        localTVK_PlayerVideoInfo.setVid(bdhv.d((String)localObject2));
-        ((TVK_ICacheMgr)localObject1).preLoadVideoByUrl(paramContext, (String)localObject2, null, localTVK_PlayerVideoInfo);
-      }
-    }
+    QLog.d("AROnlineVideoView", 1, "getRenderObject");
+    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   }
   
-  public static void a(Context paramContext, ArVideoResourceInfo paramArVideoResourceInfo)
+  public String getSeriableNO()
   {
-    boolean bool = true;
-    if ((paramArVideoResourceInfo == null) || (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) || (paramArVideoResourceInfo.jdField_d_of_type_Int != 4)) {}
-    label312:
-    for (;;)
-    {
-      return;
-      if (bbev.b(BaseApplication.getContext()) == 1) {}
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AROnlineVideoUtil", 2, "preload for multi, isWifi=" + bool);
-        }
-        if (!bool) {
-          break;
-        }
-        localObject1 = TVK_SDKMgr.getProxyFactory();
-        if (localObject1 != null) {
-          break label98;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AROnlineVideoUtil", 2, "preload for multi, factory == null");
-        return;
-        bool = false;
-      }
-      label98:
-      Object localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(paramContext);
-      if (localObject1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AROnlineVideoUtil", 2, "preload for multi, factory == null");
-        }
-      }
-      else
-      {
-        Object localObject2 = new File(a());
-        if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-          ((File)localObject2).delete();
-        }
-        for (;;)
-        {
-          if (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) {
-            break label312;
-          }
-          paramArVideoResourceInfo = paramArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-          localObject2 = a(paramArVideoResourceInfo);
-          bool = a((String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.d("AROnlineVideoUtil", 2, "preload for multi, url=" + paramArVideoResourceInfo + ", videoPath=" + (String)localObject2 + ", isCached=" + bool);
-          }
-          if (bool) {
-            break;
-          }
-          TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-          localTVK_PlayerVideoInfo.setConfigMap("file_dir", (String)localObject2);
-          localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "60");
-          localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
-          localTVK_PlayerVideoInfo.setVid(bdhv.d(paramArVideoResourceInfo));
-          ((TVK_ICacheMgr)localObject1).preLoadVideoByUrl(paramContext, paramArVideoResourceInfo, null, localTVK_PlayerVideoInfo);
-          return;
-          if (!((File)localObject2).exists()) {
-            ((File)localObject2).mkdirs();
-          }
-        }
-      }
-    }
+    QLog.d("AROnlineVideoView", 1, "getSeriableNO");
+    return null;
   }
   
-  private static boolean a(String paramString)
+  public int getViewHeight()
   {
-    paramString = new File(paramString);
-    return (paramString.exists()) && (paramString.length() > 0L);
+    QLog.d("AROnlineVideoView", 1, "getViewHeight, h=0");
+    return 0;
+  }
+  
+  public int getViewWidth()
+  {
+    QLog.d("AROnlineVideoView", 1, "getViewWidth, w=0");
+    return 0;
+  }
+  
+  public int getXOnScreen()
+  {
+    return 0;
+  }
+  
+  public int getYOnScreen()
+  {
+    return 0;
+  }
+  
+  public boolean isSurfaceReady()
+  {
+    QLog.d("AROnlineVideoView", 1, "isSurfaceReady");
+    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null;
+  }
+  
+  public void onResume()
+  {
+    QLog.d("AROnlineVideoView", 1, "onResume");
+  }
+  
+  public void removeViewCallBack(IVideoViewBase.IVideoViewCallBack paramIVideoViewCallBack)
+  {
+    QLog.d("AROnlineVideoView", 1, "removeViewCallBack");
+  }
+  
+  public void resetView()
+  {
+    QLog.d("AROnlineVideoView", 1, "resetView");
+  }
+  
+  public void setDegree(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "setDegree");
+  }
+  
+  public void setEnableAntDis(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setEnableAntDis");
+  }
+  
+  public void setEnableVREyeControl(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setEnableVREyeControl");
+  }
+  
+  public void setFixedSize(int paramInt1, int paramInt2)
+  {
+    QLog.d("AROnlineVideoView", 1, "setFixedSize");
+  }
+  
+  public void setGypSensor(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setGypSensor");
+  }
+  
+  public void setLogTag(String paramString) {}
+  
+  public void setRadio(int paramInt1, int paramInt2) {}
+  
+  public void setScaleParam(int paramInt1, int paramInt2, float paramFloat)
+  {
+    QLog.d("AROnlineVideoView", 1, "setScaleParam");
+  }
+  
+  public void setSubtitleString(String paramString)
+  {
+    QLog.d("AROnlineVideoView", 1, "setSubtitleString");
+  }
+  
+  public void setVREnable(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setVREnable");
+  }
+  
+  public void setVrViewPattern(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "setVrViewPattern");
+  }
+  
+  public void setXYaxis(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "setXYaxis");
   }
 }
 

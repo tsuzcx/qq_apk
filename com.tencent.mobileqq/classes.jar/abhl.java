@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
 
 public class abhl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abhl(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
+  public abhl(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramDialogInterface instanceof bbgg)) {
-      ((bbgg)paramDialogInterface).setOnDismissListener(null);
-    }
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
+    axqy.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
   }
 }
 

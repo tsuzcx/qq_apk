@@ -1,10 +1,6 @@
 public abstract interface amff
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(amfb paramamfb);
-  
-  public abstract void b(int paramInt);
+  public abstract void a(byte[] paramArrayOfByte, amfh paramamfh);
 }
 
 

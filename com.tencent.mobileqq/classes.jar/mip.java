@@ -1,15 +1,52 @@
-import android.app.Activity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 
 class mip
-  implements wht
+  implements Animator.AnimatorListener
 {
-  mip(mio parammio, Activity paramActivity, long paramLong) {}
+  mip(min parammin) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Mio.b(this.jdField_a_of_type_AndroidAppActivity);
-    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
+    }
+    this.a.b(3, false);
+    if (min.a(this.a) != null) {
+      min.a(this.a).requestLayout();
+    }
+    min.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
+    }
+    this.a.c(3);
+    if (min.a(this.a) != null) {
+      min.a(this.a).requestLayout();
+    }
+    min.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
+    }
+    min.a(this.a).setVisibility(0);
+    min.a(this.a).setAlpha(0.0F);
+    min.a(this.a).setVisibility(0);
+    min.a(this.a).setAlpha(0.0F);
+    min.a(this.a).height = -2;
+    min.a(this.a).width = -2;
   }
 }
 

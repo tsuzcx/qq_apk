@@ -1,34 +1,21 @@
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingReq;
-import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import NS_MINI_INTERFACE.INTERFACE.StGetFormIdReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
 public class bezz
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StJudgeTimingReq a = new INTERFACE.StJudgeTimingReq();
+  private INTERFACE.StGetFormIdReq a = new INTERFACE.StGetFormIdReq();
   
-  public bezz(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3)
+  public bezz(String paramString)
   {
-    this.a.appid.set(paramString1);
-    this.a.appType.set(paramInt1);
-    this.a.scene.set(paramInt2);
-    this.a.factType.set(paramInt3);
-    this.a.reportTime.set(paramLong);
-    this.a.totalTime.set(paramInt4);
-    this.a.launchId.set(paramString2);
-    this.a.afterCertify.set(paramInt5);
-    this.a.via.set(paramString3);
+    this.a.appid.set(paramString);
   }
   
   protected String a()
   {
-    return "mini_app_growguard";
+    return "mini_app_userapp";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -36,27 +23,22 @@ public class bezz
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StJudgeTimingRsp localStJudgeTimingRsp = new INTERFACE.StJudgeTimingRsp();
+    INTERFACE.StGetFormIdRsp localStGetFormIdRsp = new INTERFACE.StGetFormIdRsp();
     try
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStJudgeTimingRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStJudgeTimingRsp != null)
+      localStGetFormIdRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetFormIdRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStJudgeTimingRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        paramArrayOfByte.put("formId", localStGetFormIdRsp.formId.get());
         return paramArrayOfByte;
       }
-      besl.a("JudgeTimingRequest", "onResponse fail.rsp = null");
+      betc.a("GetFormIdRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("JudgeTimingRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetFormIdRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
@@ -68,7 +50,7 @@ public class bezz
   
   protected String b()
   {
-    return "JudgeTiming";
+    return "GetFormId";
   }
 }
 

@@ -1,8 +1,7 @@
-import android.graphics.Bitmap.Config;
-
-public abstract interface baxf
+abstract class baxf
 {
-  public static final Bitmap.Config a = Bitmap.Config.ARGB_8888;
+  public int a;
+  public byte[] a;
 }
 
 

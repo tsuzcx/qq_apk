@@ -1,253 +1,79 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.1;
-import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.2;
-import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.3;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.observer.BusinessObserver;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aits
-  implements BusinessObserver
+  implements GLSurfaceView.EGLContextFactory
 {
-  private static aits jdField_a_of_type_Aits;
-  private long jdField_a_of_type_Long;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloStoreStabilityReportManager.3(this);
-  private ArrayList<HashMap> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private aits(ApolloSurfaceView paramApolloSurfaceView) {}
   
-  public static aits a()
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    try
-    {
-      if (jdField_a_of_type_Aits == null) {
-        jdField_a_of_type_Aits = new aits();
-      }
-      aits localaits = jdField_a_of_type_Aits;
-      return localaits;
-    }
-    finally {}
+    QLog.d("ApolloSurfaceView", 1, "[createContext], id:" + Thread.currentThread().getId());
+    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    this.a.mIsDestroy.set(false);
+    return paramEGL10;
   }
   
-  public static AppInterface a()
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
+    QLog.d("ApolloSurfaceView", 1, "[destroyContext], id:" + Thread.currentThread().getId());
+    Object localObject;
+    if (ApolloSurfaceView.access$700(this.a))
     {
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof ToolAppRuntime))
+      localObject = ajac.a();
+      if (localObject != null)
       {
-        localObject = ((AppRuntime)localObject).getAppRuntime("modular_web");
-        if ((localObject instanceof AppInterface)) {
-          return (AppInterface)localObject;
+        if (!(localObject instanceof QQAppInterface)) {
+          break label161;
         }
+        localObject = ApolloCmdChannel.getChannel((QQAppInterface)localObject);
       }
     }
-    return null;
-  }
-  
-  private void a()
-  {
-    ThreadManagerV2.excute(new ApolloStoreStabilityReportManager.1(this), 64, null, true);
-  }
-  
-  private void a(HashMap paramHashMap)
-  {
-    try
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramHashMap);
-      return;
-    }
-    finally
-    {
-      paramHashMap = finally;
-      throw paramHashMap;
-    }
-  }
-  
-  private void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (paramInt == 1000) {}
-    for (int i = 1;; i = 0)
-    {
-      int j;
-      if (paramInt == -1001)
+      if (localObject != null)
       {
-        j = 3001;
-        i = 1;
+        ((ApolloCmdChannel)localObject).callbackDirect(this.a.isJsRuntime(), this.a.getLuaState(), 0, "sc.force_stop_game.local", "{}");
+        ((ApolloCmdChannel)localObject).destroyMusic();
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloSurfaceView", 2, "destroyContext, closeGame)");
+        }
       }
       for (;;)
       {
-        if (paramInt == -1002)
-        {
-          j = 3000;
-          i = 1;
+        this.a.mIsDestroy.set(true);
+        if (this.a.mRender != null) {
+          this.a.mRender.onDestroy();
         }
-        if (i != 0)
-        {
-          ajlq.a(40);
-          ajlq.a(40, 1, j, new Object[] { paramString });
-          ajlq.b(40);
+        if (paramEGL10 != null) {
+          paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
         }
         return;
-        j = 0;
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errcode", Integer.valueOf(paramInt1));
-    if (!TextUtils.isEmpty(paramString1)) {
-      localHashMap.put("cmd", paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      localHashMap.put("url", paramString2);
-    }
-    localHashMap.put("cost", Integer.valueOf(paramInt2));
-    a(localHashMap);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. add one task. count:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    a(paramString1, paramInt1);
-    if (!bbev.g(null)) {
-      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "reportApolloStoreStabilityData. network not available. cmd:" + paramString1);
-    }
-    while (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new ApolloStoreStabilityReportManager.2(this), 10000L);
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      HashSet localHashSet = ajmq.a();
-      if (localHashSet != null)
-      {
-        if (localHashSet.contains(paramString)) {
-          break label103;
+        label161:
+        if (!(localObject instanceof CmGameAppInterface)) {
+          break label226;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. filter one cmd:" + paramString + " cmdSet:" + localHashSet.toString());
+        QLog.i("cmgame_process.", 1, "[destroyContext] in game.");
+        localObject = ajac.a();
+        break;
+        if ((this.a.mApolloWorker != null) && (this.a.mApolloWorker.a != null)) {
+          this.a.mApolloWorker.a.a("if(\"undefined\" != typeof clearSprite && clearSprite){clearSprite();}");
         }
       }
-      do
-      {
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  cmdSet is null. filter all reporting cmd");
-        }
-      } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 30000L);
-      a();
-      return false;
-    }
-    label103:
-    return true;
-  }
-  
-  public boolean b(String paramString)
-  {
-    HashSet localHashSet;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localHashSet = ajmq.b();
-      if (localHashSet != null)
-      {
-        Iterator localIterator = localHashSet.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-        } while (!paramString.contains((String)localIterator.next()));
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. filter one url:" + paramString + " urlSet:" + localHashSet.toString());
-        }
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  urlSet is null. filter all reporting url");
-        }
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
-          a();
-        }
-        return false;
-      }
-      return true;
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          Object localObject = new WebSsoBody.WebSsoResponseBody();
-          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("onReceive upload success retcode:");
-          ((StringBuilder)localObject).append(paramInt);
-          ((StringBuilder)localObject).append(" retJson:");
-          ((StringBuilder)localObject).append(paramBundle);
-          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, ((StringBuilder)localObject).toString());
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "onReceive upload success. data is null");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "onReceive upload success. parse response failed.", paramBundle);
-        return;
-      }
-    } else {
-      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "onReceive upload failed.");
+      label226:
+      localObject = null;
     }
   }
 }

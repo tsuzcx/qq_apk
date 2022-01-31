@@ -1,5 +1,6 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -9,41 +10,49 @@ public class opd
 {
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    QLog.d("KingcardConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = oof.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if ((str1.equals("md5")) && (str2 != null))
+      String str1;
+      String str2;
+      try
       {
-        olj.a(onk.a(), "sp_key_latest_app_md5", str2.toLowerCase());
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "kingcard_switch")) {
+            bhvy.o(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
       }
-      else if (str1.equals("version_name"))
+      catch (Throwable paramString)
       {
-        olj.a(onk.a(), "sp_key_latest_app_version_name", str2);
+        paramString.printStackTrace();
       }
-      else if ((str1.equals("download_url")) && (str2 != null))
-      {
-        str1 = oni.a(str2);
-        olj.a(onk.a(), "sp_key_kb_download_url", str1);
-      }
-      else if (str1.equals("enable_predownload"))
-      {
-        olj.a(onk.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
+      if (TextUtils.equals(str1, "kingcard_guide_url")) {
+        bhvy.i(str2);
+      } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
+        bhvy.j(str2);
+      } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
+        bhvy.k(str2);
       }
     }
-    if (!paramString.containsKey("md5")) {
-      olj.a(onk.a(), "sp_key_latest_app_md5", null);
-    }
-    olj.a();
-    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    olj.a(onk.a(), "sp_key_latest_app_md5", null);
-    olj.a(onk.a(), "sp_key_latest_app_version_name", null);
+    bhvy.o(0);
+    bhvy.i("");
+    bhvy.j("");
+    bhvy.k("");
   }
 }
 

@@ -1,29 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import cooperation.liveroom.LiveRoomGiftCallback;
-
-class bbzz
-  implements MediaPlayer.OnCompletionListener
+public abstract interface bbzz
 {
-  bbzz(bbzy parambbzy) {}
+  public abstract void a();
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (bbzy.a(this.a)) {
-      this.a.a.start();
-    }
-    for (;;)
-    {
-      if (bbzy.a(this.a) != null) {
-        bbzy.a(this.a).onCall(7, "");
-      }
-      return;
-      bbzy.a(this.a, false);
-      if (bbzy.a(this.a) != null) {
-        bbzy.a(this.a).onCompletion(this.a.a);
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

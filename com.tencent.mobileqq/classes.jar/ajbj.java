@@ -1,11 +1,15 @@
-import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import java.util.Comparator;
 
-class ajbj
-  implements AVCallback
+public class ajbj
+  implements Comparator<ajbk>
 {
-  ajbj(ajbc paramajbc) {}
+  public ajbj(CmGameCmdChannel paramCmGameCmdChannel) {}
   
-  public void onComplete(int paramInt, String paramString) {}
+  public int a(ajbk paramajbk1, ajbk paramajbk2)
+  {
+    return paramajbk1.a() - paramajbk2.a();
+  }
 }
 
 

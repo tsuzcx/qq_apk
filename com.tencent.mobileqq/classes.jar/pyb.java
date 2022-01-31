@@ -1,16 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import com.tencent.qphone.base.util.QLog;
 
 public class pyb
-  implements View.OnClickListener
+  implements oxm
 {
-  public pyb(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  public pyb(ComponentPGCShortContentBig paramComponentPGCShortContentBig, qcx paramqcx) {}
   
-  public void onClick(View paramView)
+  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    pdb.a(2, this.jdField_a_of_type_JavaLangString);
-    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    if ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) != null) && ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) instanceof VideoView)))
+    {
+      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
+      {
+        paramArrayOfString2 = paramArrayOfString2[0];
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Qcx.e)) && (this.jdField_a_of_type_Qcx.e.equals(paramArrayOfString1[0])) && (this.jdField_a_of_type_Qcx.e.equals(((MediaVideoView)ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig)).a())))
+        {
+          ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig, paramArrayOfString2);
+          return;
+        }
+        QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not current video");
+        return;
+      }
+      QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "urls null");
+      return;
+    }
+    QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not vieoview");
   }
 }
 

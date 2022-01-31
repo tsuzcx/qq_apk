@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
-
-public final class qjw
-  implements Parcelable.Creator<LikeAnimationInfo>
+public abstract interface qjw
 {
-  public LikeAnimationInfo a(Parcel paramParcel)
-  {
-    return new LikeAnimationInfo(paramParcel);
-  }
-  
-  public LikeAnimationInfo[] a(int paramInt)
-  {
-    return new LikeAnimationInfo[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

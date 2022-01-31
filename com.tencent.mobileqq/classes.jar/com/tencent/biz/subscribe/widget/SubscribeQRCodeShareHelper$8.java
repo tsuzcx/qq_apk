@@ -2,24 +2,24 @@ package com.tencent.biz.subscribe.widget;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import axli;
+import axlk;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import wuu;
+import wur;
 
 public class SubscribeQRCodeShareHelper$8
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$8(wuu paramwuu, int paramInt) {}
+  public SubscribeQRCodeShareHelper$8(wur paramwur, int paramInt) {}
   
   public void run()
   {
-    wuu.d(this.this$0);
-    if ((wuu.a(this.this$0) != null) && (!wuu.a(this.this$0).isFinishing()) && (wuu.a(this.this$0)))
+    wur.d(this.this$0);
+    if ((wur.a(this.this$0) != null) && (!wur.a(this.this$0).isFinishing()) && (wur.a(this.this$0)))
     {
-      String str = wuu.a(this.this$0, wuu.a(this.this$0));
-      Bitmap localBitmap = wuu.b(this.this$0).a();
-      wuu.b(this.this$0, String.valueOf(System.currentTimeMillis()));
-      WXShareHelper.a().a(str, localBitmap, axli.a(270.0F) / 2, this.a, wuu.c(this.this$0));
+      String str = wur.a(this.this$0, wur.a(this.this$0));
+      Bitmap localBitmap = wur.b(this.this$0).a();
+      wur.b(this.this$0, String.valueOf(System.currentTimeMillis()));
+      WXShareHelper.a().a(str, localBitmap, axlk.a(270.0F) / 2, this.a, wur.c(this.this$0));
     }
   }
 }

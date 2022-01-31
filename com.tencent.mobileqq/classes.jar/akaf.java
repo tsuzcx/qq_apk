@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class akaf
-  implements askm
+  implements BusinessObserver
 {
-  akaf(akac paramakac) {}
+  akaf(akaa paramakaa, String paramString) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool1 = akac.b(this.a);
-    akac.a(this.a, false);
-    boolean bool2 = this.a.a();
     if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
-    }
-    if (bool1 != bool2) {
-      ((FriendListHandler)akac.a(this.a).a(1)).notifyUI(92, true, null);
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
   }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
 }
 
 

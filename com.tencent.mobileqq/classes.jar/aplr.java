@@ -1,73 +1,52 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import android.content.res.Resources;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
+import java.util.Map;
 
 class aplr
-  extends xbd
+  implements apux
 {
-  aplr(aplq paramaplq, apab paramapab) {}
+  aplr(aplq paramaplq, long paramLong, boolean paramBoolean, String paramString1, String paramString2, short paramShort, String paramString3) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    if (paramDownloadFileRspBody == null)
+    if (paramBoolean)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("VideoForTroop<QFile>", 4, "error DownloadFileRspBody is null!!!!!");
+      localObject1 = new HashMap();
+      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
+      localObject2 = new TVK_PlayerVideoInfo();
+      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
+      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
+      this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.aD_();
+      return;
+    }
+    if (this.jdField_a_of_type_Long == -100001L) {}
+    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
+    {
+      long l = 9360L;
+      if (this.jdField_a_of_type_Long == 0L) {
+        l = 9048L;
       }
-      this.jdField_a_of_type_Apab.a(-1, "");
+      this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((int)l, BaseApplication.getContext().getResources().getString(2131690922));
       return;
+      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
+      {
+        this.jdField_a_of_type_Aplq.jdField_a_of_type_Aplp.a(true);
+        this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692889));
+        return;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690922));
+        return;
+      }
     }
-    paramBundle = TroopFileTransferManager.a(aplq.a(this.jdField_a_of_type_Aplq).b);
-    if (paramBundle == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: onReqDownloadFileResult: get troopFileTransferManager failed.");
-      return;
-    }
-    paramBundle = paramBundle.a(aplq.a(this.jdField_a_of_type_Aplq));
-    if (paramBundle == null)
-    {
-      this.jdField_a_of_type_Apab.a(-2, "");
-      return;
-    }
-    paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-    QLog.e("VideoForTroop<QFile>", 1, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-    if (paramDownloadFileRspBody.bytes_cookie_val.has())
-    {
-      paramBundle.cookieValue = bbdm.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-      paramBundle.cookieValue = paramBundle.cookieValue.toLowerCase();
-    }
-    paramBundle.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-    paramBundle.DownloadUrl = bbdm.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-    paramBundle.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-    paramBundle.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      this.jdField_a_of_type_Apab.a(paramInt, "");
-      return;
-    }
-    if ((paramInt == -103) || (paramInt == -301))
-    {
-      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
-      return;
-    }
-    paramDownloadFileRspBody = apjx.a(paramBundle.DownloadIp, paramBundle.DownloadUrl, paramBundle.FilePath, paramBundle.cookieValue, "");
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + paramBundle.cookieValue);
-    }
-    if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-    {
-      this.jdField_a_of_type_Apab.a(paramDownloadFileRspBody, paramBundle.cookieValue);
-      return;
-    }
-    this.jdField_a_of_type_Apab.a(-3, "");
+    Object localObject1 = this.b;
+    Object localObject2 = "http://" + this.jdField_a_of_type_JavaLangString + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
+    this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((String)localObject2, (String)localObject1);
   }
 }
 

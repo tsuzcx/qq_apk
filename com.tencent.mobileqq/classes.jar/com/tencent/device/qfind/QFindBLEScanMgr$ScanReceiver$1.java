@@ -1,11 +1,11 @@
 package com.tencent.device.qfind;
 
-import ygl;
+import ygi;
 
 public class QFindBLEScanMgr$ScanReceiver$1
   implements Runnable
 {
-  public QFindBLEScanMgr$ScanReceiver$1(ygl paramygl) {}
+  public QFindBLEScanMgr$ScanReceiver$1(ygi paramygi) {}
   
   public void run()
   {

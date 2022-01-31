@@ -1,37 +1,13 @@
 public class amzn
 {
-  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
   
-  public String a()
+  public amzn()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = ajya.a(2131711273);
   }
 }
 

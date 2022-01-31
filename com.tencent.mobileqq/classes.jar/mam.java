@@ -1,16 +1,18 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class mam
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class mam
+  extends ClickableSpan
 {
-  mam(mal parammal) {}
+  mam(mar parammar) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (this.a.a == null) {
-      return;
+    View.OnClickListener localOnClickListener = this.a.a();
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
-    this.a.a(false);
   }
 }
 

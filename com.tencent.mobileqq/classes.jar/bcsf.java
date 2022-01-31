@@ -1,29 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcsf
-  extends Handler
+public final class bcsf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bcsf(WorkSpaceView paramWorkSpaceView) {}
+  public float a;
+  private final TabDragAnimationView a;
+  public boolean a;
+  public boolean b = false;
   
-  public void handleMessage(Message paramMessage)
+  public bcsf(TabDragAnimationView paramTabDragAnimationView)
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f - this.jdField_a_of_type_Float > 0.0F) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((axuh)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
-      }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
+    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
+      this.b = false;
+    }
+    this.jdField_a_of_type_Float = f;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+    if (QLog.isColorLevel()) {
+      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
     }
   }
 }

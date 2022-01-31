@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-class abvr
-  implements DialogInterface.OnClickListener
+public class abvr
+  implements View.OnClickListener
 {
-  abvr(abvq paramabvq) {}
+  public abvr(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.u();
+    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+  }
 }
 
 

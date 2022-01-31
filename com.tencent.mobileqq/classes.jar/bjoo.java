@@ -1,92 +1,164 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import dov.com.qq.im.lifecycle.livedata.LiveData.1;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
-public class bjoo
+public abstract class bjoo<T>
 {
-  public static HashMap<String, Integer> a = new HashMap();
-  public static HashMap<String, Integer> b;
+  private static final Object jdField_b_of_type_JavaLangObject = new Object();
+  private int jdField_a_of_type_Int;
+  private bjoh<bjos<? super T>, bjoo<T>.bjoq> jdField_a_of_type_Bjoh = new bjoh();
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new LiveData.1(this);
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private boolean jdField_b_of_type_Boolean;
+  private volatile Object c = jdField_b_of_type_JavaLangObject;
+  private volatile Object d = jdField_b_of_type_JavaLangObject;
   
-  static
+  private void a(bjoo<T>.bjoq parambjoo)
   {
-    a.put("actLbsSendPoiListFailure", Integer.valueOf(100));
-    a.put("actLbsSendGetPidFailure", Integer.valueOf(100));
-    a.put("actLbsPayBridgeFailure", Integer.valueOf(100));
-    a.put("actLbsPoiListFailure", Integer.valueOf(10000));
-    a.put("actLbsPackListFailure", Integer.valueOf(1000));
-    a.put("actLbsGetPackFailure", Integer.valueOf(100));
-    a.put("actLbsCaiShenResourceFailure", Integer.valueOf(100));
-    b = new HashMap();
-    b.put("actLbsSendPoiListFailure", Integer.valueOf(10000));
-    b.put("actLbsSendGetPidFailure", Integer.valueOf(10000));
-    b.put("actLbsPayBridgeFailure", Integer.valueOf(10000));
-    b.put("actLbsPoiListFailure", Integer.valueOf(100000));
-    b.put("actLbsPackListFailure", Integer.valueOf(10000));
-    b.put("actLbsGetPackFailure", Integer.valueOf(10000));
-    b.put("actLbsCaiShenResourceFailure", Integer.valueOf(10000));
+    if (!parambjoo.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      if (!parambjoo.a())
+      {
+        parambjoo.a(false);
+        return;
+      }
+    } while (parambjoo.jdField_a_of_type_Int >= this.jdField_b_of_type_Int);
+    parambjoo.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    parambjoo.jdField_a_of_type_Bjos.a(this.c);
   }
   
-  public static void a(String paramString)
+  private static void a(String paramString)
   {
-    try
+    if (!bjoa.a().a()) {
+      throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
+    }
+  }
+  
+  private void b(@Nullable bjoo<T>.bjoq parambjoo)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      HashMap localHashMap = new HashMap();
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (b(paramString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
-        }
-        axrl.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
-      }
+      this.jdField_b_of_type_Boolean = true;
       return;
     }
-    catch (Throwable paramString)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
+    bjoo<T>.bjoq localbjoo;
+    if (parambjoo != null)
     {
-      paramString.printStackTrace();
+      a(parambjoo);
+      localbjoo = null;
+    }
+    for (;;)
+    {
+      parambjoo = localbjoo;
+      if (this.jdField_b_of_type_Boolean) {
+        break;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      bjol localbjol = this.jdField_a_of_type_Bjoh.a();
+      do
+      {
+        localbjoo = parambjoo;
+        if (!localbjol.hasNext()) {
+          break;
+        }
+        a((bjoq)((Map.Entry)localbjol.next()).getValue());
+      } while (!this.jdField_b_of_type_Boolean);
+      localbjoo = parambjoo;
     }
   }
   
-  public static void a(String paramString, int paramInt)
+  @Nullable
+  public T a()
   {
-    try
+    Object localObject = this.c;
+    if (localObject != jdField_b_of_type_JavaLangObject) {
+      return localObject;
+    }
+    return null;
+  }
+  
+  protected void a() {}
+  
+  public void a(@NonNull bjns parambjns)
+  {
+    a("removeObservers");
+    Iterator localIterator = this.jdField_a_of_type_Bjoh.iterator();
+    while (localIterator.hasNext())
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      if ((!TextUtils.isEmpty(str)) && (a(paramString)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
-        }
-        axrl.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((bjoq)localEntry.getValue()).a(parambjns)) {
+        a((bjos)localEntry.getKey());
       }
+    }
+  }
+  
+  public void a(@NonNull bjns parambjns, @NonNull bjos<? super T> parambjos)
+  {
+    a("observe");
+    if (parambjns.a().a() == bjnq.a) {}
+    bjop localbjop;
+    do
+    {
+      return;
+      localbjop = new bjop(this, parambjns, parambjos);
+      parambjos = (bjoq)this.jdField_a_of_type_Bjoh.a(parambjos, localbjop);
+      if ((parambjos != null) && (!parambjos.a(parambjns))) {
+        throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
+      }
+    } while (parambjos != null);
+    parambjns.a().a(localbjop);
+  }
+  
+  public void a(@NonNull bjos<? super T> parambjos)
+  {
+    a("removeObserver");
+    parambjos = (bjoq)this.jdField_a_of_type_Bjoh.a(parambjos);
+    if (parambjos == null) {
       return;
     }
-    catch (Throwable paramString)
+    parambjos.a();
+    parambjos.a(false);
+  }
+  
+  protected void a(T paramT)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      paramString.printStackTrace();
+      int i;
+      if (this.d == jdField_b_of_type_JavaLangObject)
+      {
+        i = 1;
+        this.d = paramT;
+        if (i == 0) {
+          QLog.d("debug", 4, "!postTask");
+        }
+      }
+      else
+      {
+        i = 0;
+      }
     }
+    bjoa.a().b(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public static boolean a(String paramString)
-  {
-    paramString = (Integer)a.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return (int)(Math.random() * paramString.intValue()) == 1;
-  }
+  protected void b() {}
   
-  public static boolean b(String paramString)
+  public void b(T paramT)
   {
-    paramString = (Integer)b.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return (int)(Math.random() * paramString.intValue()) == 1;
+    a("setValue");
+    this.jdField_b_of_type_Int += 1;
+    this.c = paramT;
+    b(null);
   }
 }
 

@@ -1,15 +1,11 @@
 import android.view.animation.Animation;
-import android.widget.ImageView;
 
 class alwy
-  extends bfmg
+  extends bfmx
 {
-  alwy(alwx paramalwx) {}
+  alwy(alww paramalww) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(0);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
 }
 
 

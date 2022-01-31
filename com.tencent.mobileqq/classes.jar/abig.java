@@ -1,25 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class abig
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public abig(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public abig(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramIntent != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
-      }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
-    }
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

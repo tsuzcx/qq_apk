@@ -1,21 +1,20 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class vhs
-  implements bfoq
+  extends SimpleJob<Object>
 {
-  vhs(vhp paramvhp, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  vhs(vhm paramvhm, String paramString)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_Vhp.c();
-    }
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vej.a("0X80076BC");
+    return null;
   }
 }
 

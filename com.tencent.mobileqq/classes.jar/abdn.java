@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.11.2;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class abdn
-  implements DialogInterface.OnClickListener
+  extends atzn
 {
-  public abdn(FriendProfileCardActivity.11.2 param2) {}
+  public abdn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_Ajtk.h();
-    this.a.jdField_a_of_type_Ajtk.a(this.a.jdField_a_of_type_Abdl.a.a.a.a, "");
+    ThreadManager.post(new FriendProfileCardActivity.15.1(this), 5, null, false);
   }
 }
 

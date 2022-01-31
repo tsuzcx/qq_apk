@@ -3,21 +3,21 @@ package dov.com.qq.im.ae.play;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
-import bbkx;
-import biwl;
+import bbll;
+import bixc;
 import com.tencent.qphone.base.util.QLog;
 
 public class AEPlayShowGridViewHolder$1
   implements Runnable
 {
-  public AEPlayShowGridViewHolder$1(biwl parambiwl, View paramView) {}
+  public AEPlayShowGridViewHolder$1(bixc parambixc, View paramView) {}
   
   public void run()
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.a.getLayoutParams();
     ViewGroup localViewGroup = (ViewGroup)this.a.getParent();
-    int k = bbkx.a(10.0F);
-    int j = bbkx.a() - k * 2;
+    int k = bbll.a(10.0F);
+    int j = bbll.a() - k * 2;
     int i = localViewGroup.getHeight() - k;
     if (j * 16 / 9 > i) {
       j = i * 9 / 16;
@@ -28,7 +28,7 @@ public class AEPlayShowGridViewHolder$1
       localMarginLayoutParams.height = i;
       k += (localViewGroup.getWidth() - j - k * 2) / 2;
       if (QLog.isDevelopLevel()) {
-        QLog.d("AEPlayShowGridViewHolder", 4, "one itemHeight " + i + " itemWidth: " + j + " screenWidth: " + bbkx.a() + " viewWidth: " + localViewGroup.getWidth() + " padding: " + k);
+        QLog.d("AEPlayShowGridViewHolder", 4, "one itemHeight " + i + " itemWidth: " + j + " screenWidth: " + bbll.a() + " viewWidth: " + localViewGroup.getWidth() + " padding: " + k);
       }
       this.a.setLayoutParams(localMarginLayoutParams);
       localViewGroup.setPadding(k, 0, 0, 0);

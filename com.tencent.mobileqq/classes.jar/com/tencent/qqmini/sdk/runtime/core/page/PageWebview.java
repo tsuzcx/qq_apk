@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import begz;
-import bejw;
-import besl;
-import bfbo;
+import behq;
+import bekn;
+import betc;
+import bfcf;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,14 +13,14 @@ import org.json.JSONObject;
 public class PageWebview
   extends BasePageWebview
 {
-  private begz a;
-  public ArrayList<bfbo> a;
+  private behq a;
+  public ArrayList<bfcf> a;
   public int c;
   
-  public PageWebview(begz parambegz, AppBrandPageContainer paramAppBrandPageContainer)
+  public PageWebview(behq parambehq, AppBrandPageContainer paramAppBrandPageContainer)
   {
-    super(parambegz.a(), paramAppBrandPageContainer);
-    this.jdField_a_of_type_Begz = parambegz;
+    super(parambehq.a(), paramAppBrandPageContainer);
+    this.jdField_a_of_type_Behq = parambehq;
     a();
   }
   
@@ -32,10 +32,10 @@ public class PageWebview
     }
   }
   
-  public void a(bfbo parambfbo)
+  public void a(bfcf parambfcf)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(parambfbo))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parambfbo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(parambfcf))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambfcf);
     }
   }
   
@@ -46,7 +46,7 @@ public class PageWebview
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext()) {
-        ((bfbo)localIterator.next()).a(paramInt2);
+        ((bfcf)localIterator.next()).a(paramInt2);
       }
     }
     this.c = paramInt2;
@@ -62,7 +62,7 @@ public class PageWebview
       localJSONObject2.put("windowWidth", paramInt1);
       localJSONObject2.put("windowHeight", paramInt2);
       localJSONObject1.put("size", localJSONObject2);
-      this.jdField_a_of_type_Begz.a(bejw.a("onViewDidResize", localJSONObject1.toString(), b()));
+      this.jdField_a_of_type_Behq.a(bekn.a("onViewDidResize", localJSONObject1.toString(), b()));
       return;
     }
     catch (JSONException localJSONException)
@@ -70,17 +70,17 @@ public class PageWebview
       for (;;)
       {
         localJSONException.printStackTrace();
-        besl.d("PageWebview", "onSizeChanged, JSONException!", localJSONException);
+        betc.d("PageWebview", "onSizeChanged, JSONException!", localJSONException);
       }
     }
   }
   
-  public void setOnWebviewScrollListener(bfbo parambfbo)
+  public void setOnWebviewScrollListener(bfcf parambfcf)
   {
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambfbo);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambfcf);
   }
 }
 

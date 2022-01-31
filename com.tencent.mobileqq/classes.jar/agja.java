@@ -1,61 +1,51 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
+import android.os.Handler;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class agja
-  extends aume
+  extends aumg
 {
-  public agja(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
+  public agja(BindVerifyActivity paramBindVerifyActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected void c(boolean paramBoolean, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
+    }
+    BindVerifyActivity.a(this.a, false);
+    BindVerifyActivity.a(this.a).removeMessages(4);
     this.a.b();
-    int i;
-    if (paramBoolean)
+    if (!paramBoolean)
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0))
-      {
-        paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        paramBundle.putExtra("k_country_code", this.a.b);
-        if ((paramBundle != null) && (!this.a.isFinishing()))
-        {
-          paramBundle.addFlags(536870912);
-          this.a.startActivityForResult(paramBundle, 1);
-        }
-      }
+      this.a.a("dc00898", "0X8009F19", 0);
+      this.a.a(1, this.a.getString(2131718748));
     }
     for (;;)
     {
-      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
-      BindNumberFromPcActivity.a(this.a, null);
+      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
+      BindVerifyActivity.b(this.a, null);
       return;
-      if (i == 107)
+      if ((paramInt == 0) || (paramInt == 106))
       {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("k_country_code", this.a.b);
-        paramBundle = localIntent;
-        break;
+        this.a.a();
       }
-      if (i == 106)
+      else if (paramInt == 213)
       {
-        this.a.setResult(-1);
-        this.a.finish();
-        paramBundle = null;
-        break;
+        this.a.a("dc00898", "0X8009F19", 0);
+        this.a.a(1, ajya.a(2131701147));
+        BindVerifyActivity.a(this.a).setEnabled(true);
       }
-      this.a.a(a(i));
-      paramBundle = null;
-      break;
-      this.a.b(2131718737);
+      else
+      {
+        this.a.a("dc00898", "0X8009F19", 0);
+        String str = ajya.a(2131701142);
+        if (paramInt == 107) {
+          str = ajya.a(2131701144);
+        }
+        this.a.a(ajya.a(2131701148), str);
+      }
     }
   }
 }

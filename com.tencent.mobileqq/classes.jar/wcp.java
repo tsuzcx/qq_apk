@@ -1,13 +1,16 @@
-import android.database.DataSetObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 
-class wcp
-  extends DataSetObserver
+public class wcp
+  implements View.OnClickListener
 {
-  wcp(wco paramwco) {}
+  public wcp(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    wco.a(this.a, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

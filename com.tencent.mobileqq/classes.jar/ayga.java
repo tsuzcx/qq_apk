@@ -1,79 +1,48 @@
-import android.app.Activity;
-import java.lang.ref.WeakReference;
-import java.net.URLDecoder;
-import org.json.JSONObject;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.manager.TicketManager;
 
 public class ayga
-  implements ajtg
+  extends ajtb
+  implements Handler.Callback
 {
-  public WeakReference<Activity> a;
+  private String[] a = { "docs.qq.com" };
   
-  public ayga(Activity paramActivity)
+  public ayga(QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(paramActivity);
+    super(paramQQAppInterface);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private void a(Runnable paramRunnable)
   {
-    switch (paramInt)
-    {
+    if (this.app == null) {}
+    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new aygb(this, paramRunnable)) == null) {
+      return;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 2);
-            a((String)paramObject[0], (String)paramObject[1]);
-            return;
-            a();
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        try
-        {
-          paramObject = (JSONObject)paramObject[0];
-          String str = paramObject.optString("url");
-          paramInt = paramObject.optInt("ret");
-          paramObject = URLDecoder.decode(str, "UTF-8");
-          if ((paramInt == 0) && (paramObject.length() > 0))
-          {
-            a(paramBoolean, paramObject);
-            return;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          paramObject.printStackTrace();
-          a(paramObject.toString(), "");
-          return;
-        }
-        a(paramInt + "", "");
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
+  
+  public void a(String paramString)
+  {
+    a(new TenDocOCRExportHandler.1(this, paramString));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return aygc.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

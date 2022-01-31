@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aukm;
-import qbz;
+import auko;
+import qbw;
 
 public class RecommendFollowInfoTitle
-  extends aukm
+  extends auko
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qbz();
+  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qbw();
   public boolean isAllFollowed;
   public String title;
   

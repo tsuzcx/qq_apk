@@ -183,7 +183,7 @@ public class o
         this.jdField_b_of_type_AndroidGraphicsRect.set(-i, -j, this.jdField_b_of_type_ArrayOfInt[0] + i, j + this.jdField_b_of_type_ArrayOfInt[1]);
       }
     }
-    a(ajyc.a(2131704855));
+    a(ajya.a(2131704866));
     return false;
   }
   

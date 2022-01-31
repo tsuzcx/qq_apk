@@ -1,19 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class agzu
-  implements ahdu
+  extends ahaa
 {
-  public agzu(LingHbFragment paramLingHbFragment) {}
+  public agzu(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void a(int paramInt)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt == 0)
-    {
-      this.a.a.findViewById(2131368064).setVisibility(8);
-      return;
-    }
-    this.a.a.findViewById(2131368064).setVisibility(0);
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
   }
 }
 

@@ -1,22 +1,23 @@
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
 
 class ahck
-  implements IRedPacket.OnGetSkinListener
+  implements ajua
 {
-  ahck(ahci paramahci, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
+  ahck(ahcg paramahcg, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, ajtw paramajtw) {}
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
     }
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Ajtw.d(this);
+      return;
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
     }
   }
 }

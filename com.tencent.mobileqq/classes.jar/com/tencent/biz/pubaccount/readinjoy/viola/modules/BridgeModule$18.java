@@ -10,7 +10,7 @@ import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import onk;
+import onh;
 
 class BridgeModule$18
   implements Runnable
@@ -19,7 +19,7 @@ class BridgeModule$18
   
   public void run()
   {
-    int i = HttpDownloadUtil.a((QQAppInterface)onk.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+    int i = HttpDownloadUtil.a((QQAppInterface)onh.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
     if (QLog.isColorLevel()) {
       QLog.d(BridgeModule.TAG, 2, "saveImageToLocal imageUrl code=" + i + ",url= " + this.jdField_a_of_type_JavaLangString);
     }

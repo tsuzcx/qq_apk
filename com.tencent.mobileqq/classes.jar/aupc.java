@@ -1,14 +1,16 @@
-public final class aupc
-  extends aupb
+class aupc
 {
-  protected int c()
+  int a;
+  int b;
+  
+  public String toString()
   {
-    return 496;
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aupc
  * JD-Core Version:    0.7.0.1
  */

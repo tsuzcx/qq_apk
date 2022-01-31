@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import besl;
+import betc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
@@ -15,7 +15,7 @@ final class HttpServer$1
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    besl.b("HttpServer", "code = " + paramInt + ", errorMsg = " + paramString);
+    betc.b("HttpServer", "code = " + paramInt + ", errorMsg = " + paramString);
     if (this.val$listener != null) {
       this.val$listener.onReply(paramInt, null, paramString);
     }

@@ -1,19 +1,17 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class vwz
-  implements View.OnLongClickListener
+public abstract interface vwz
 {
-  public vwz(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  public abstract void a();
   
-  public boolean onLongClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-    return true;
-  }
+  public abstract void a(int paramInt, View paramView);
+  
+  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
+  
+  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
+  
+  public abstract boolean a(View paramView, int paramInt);
 }
 
 

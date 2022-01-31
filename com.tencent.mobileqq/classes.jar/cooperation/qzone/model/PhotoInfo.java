@@ -6,19 +6,19 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhes;
-import bhod;
+import bhfj;
+import bhou;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
-import xpy;
+import xpv;
 
 public class PhotoInfo
-  extends xpy
+  extends xpv
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bhes();
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bhfj();
   public static int l;
   public static int m;
   public static int n;
@@ -180,7 +180,7 @@ public class PhotoInfo
   
   public boolean b()
   {
-    if (!bhod.a().b()) {}
+    if (!bhou.a().b()) {}
     while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
       return false;
     }

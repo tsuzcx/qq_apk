@@ -1,19 +1,67 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.PicShareToWX.2.1;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import mqq.os.MqqHandler;
 
-public final class aunx
-  implements EIPCResultCallback
+public class aunx
+  extends QIPCModule
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  private static volatile aunx a;
+  
+  public aunx(String paramString)
+  {
+    super(paramString);
+  }
+  
+  public static aunx a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aunx("PicSTWXQIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWX", 2, "onCallback, eipcResult.code = " + paramEIPCResult.code);
+      QLog.d("PicSTWXQIPCModule", 2, "onCall, action = " + paramString);
     }
-    ThreadManager.getUIHandler().post(new PicShareToWX.2.1(this, paramEIPCResult));
+    paramString = paramBundle.getString("param_pic_path", "");
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PicSTWXQIPCModule", 2, "path is empty");
+      }
+    }
+    int i;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicSTWXQIPCModule", 2, "onCall, path = " + paramString);
+      }
+      i = paramBundle.getInt("param_from_type", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicSTWXQIPCModule", 2, "onCall, fromType = " + i);
+      }
+      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramBundle instanceof QQAppInterface)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PicSTWXQIPCModule", 2, "cannot get QQAppInterface.");
+    return null;
+    paramBundle = (QQAppInterface)paramBundle;
+    PicShareToWX.a().a(this, paramInt, paramBundle, paramString, i);
+    return null;
   }
 }
 

@@ -252,13 +252,13 @@ public class QuickSendProgressView
     this.h = a(2.0F, getResources());
     this.jdField_g_of_type_Int = a(3.0F, getResources());
     this.i = a(1.0F, getResources());
-    this.jdField_a_of_type_JavaLangString = getResources().getString(2131692755);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845250);
+    this.jdField_a_of_type_JavaLangString = getResources().getString(2131692756);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845252);
     this.jdField_c_of_type_Int = Color.parseColor("#19BAFF");
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845252);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845254);
     this.jdField_e_of_type_Int = Color.parseColor("#3300CAFC");
     this.jdField_f_of_type_Int = Color.parseColor("#33FF596A");
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845248);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845250);
     this.jdField_d_of_type_Int = Color.parseColor("#FF596A");
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.h);
@@ -273,9 +273,9 @@ public class QuickSendProgressView
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845251);
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845254);
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845249);
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845253);
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845256);
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845251);
     setContentDescription(getResources().getString(2131690745));
   }
   
@@ -477,7 +477,7 @@ public class QuickSendProgressView
       }
       if (this.jdField_a_of_type_Int == 2)
       {
-        setContentDescription(getResources().getString(2131718750));
+        setContentDescription(getResources().getString(2131718761));
         break label42;
       }
       if (this.jdField_a_of_type_JavaLangString == null) {

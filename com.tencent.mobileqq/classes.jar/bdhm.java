@@ -1,22 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+
 public class bdhm
-  extends bdhn
+  implements DialogInterface.OnClickListener
 {
-  private String n;
+  public bdhm(DownloadManagerV2.19 param19) {}
   
-  public static bdhm a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new bdhm();
-  }
-  
-  public bdhm a(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c() + "|" + this.n;
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdlb.r, false);
+    bdho.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 

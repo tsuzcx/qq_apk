@@ -1,25 +1,49 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
-public class aiiu
-  extends akfb
+class aiiu
+  implements DialogInterface.OnDismissListener
 {
-  public aiiu(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  aiiu(aiit paramaiit, aksk paramaksk) {}
   
-  public void a(Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
     }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    if (bbfj.g(this.jdField_a_of_type_Aiit.a))
     {
-    default: 
-      return;
+      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a).a();
+      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Aiit.a).a();
+      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a);
+      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a);
+      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a);
+      paramDialogInterface.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
+      paramDialogInterface = this.jdField_a_of_type_Aiit.a.a.obtainMessage(8193);
+      paramDialogInterface.obj = this.jdField_a_of_type_Aiit.a.getString(2131699496);
+      this.jdField_a_of_type_Aiit.a.a.sendMessage(paramDialogInterface);
+      if ((bool1) && (bool2))
+      {
+        paramDialogInterface = "0";
+        axqy.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
+      }
     }
-    QQSpecialCareSettingActivity.a(this.a);
+    for (;;)
+    {
+      this.jdField_a_of_type_Aksk.a();
+      return;
+      paramDialogInterface = "1";
+      break;
+      paramDialogInterface = this.jdField_a_of_type_Aiit.a.a.obtainMessage(8195);
+      paramDialogInterface.arg1 = 0;
+      paramDialogInterface.arg2 = 2131692321;
+      this.jdField_a_of_type_Aiit.a.a.sendMessage(paramDialogInterface);
+    }
   }
 }
 

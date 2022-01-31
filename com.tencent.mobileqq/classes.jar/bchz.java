@@ -1,17 +1,9 @@
-import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
 
-public class bchz
-  implements View.OnClickListener
+public abstract interface bchz
+  extends bccw
 {
-  public bchz(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 

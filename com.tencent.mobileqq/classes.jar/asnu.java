@@ -1,99 +1,66 @@
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.text.TextUtils;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class asnu
-  extends asnt<MessageForShortVideo>
+  extends asnp
 {
-  public asnu(MessageForShortVideo paramMessageForShortVideo)
-  {
-    super(paramMessageForShortVideo);
-  }
+  public static String b = ajsd.aW + "ptt" + File.separator;
+  private static final String c = azac.a(asoc.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
+  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
+  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
   
-  protected int a()
+  public asnu(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    return 2;
-  }
-  
-  protected MsgBackupResEntity a(String paramString, int paramInt)
-  {
-    if (!a(paramString)) {
-      return null;
+    super(paramMsgBackupResEntity);
+    if (this.d == null) {
+      this.d = "";
     }
-    MsgBackupResEntity localMsgBackupResEntity = a();
-    localMsgBackupResEntity.msgSubType = paramInt;
-    localMsgBackupResEntity.filePath = paramString;
-    a(paramString, localMsgBackupResEntity);
-    paramString = a(paramInt);
-    paramString.put("selfuin", ((MessageForShortVideo)this.a).selfuin);
-    paramString.put("md5", ((MessageForShortVideo)this.a).md5);
-    paramString.put("thumbMd5", ((MessageForShortVideo)this.a).thumbMD5);
-    localMsgBackupResEntity.extraDataStr = a(paramString);
-    return localMsgBackupResEntity;
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
+      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
+    }
   }
   
-  public List<MsgBackupResEntity> a()
+  public static String a(String paramString1, String paramString2)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = ShortVideoUtils.a((MessageForShortVideo)this.a, "mp4");
-    Object localObject1 = ShortVideoUtils.a(((MessageForShortVideo)this.a).thumbMD5, "jpg");
-    int j;
-    int i;
-    if ((this.a instanceof MessageForLightVideo))
+    return azac.a(b + paramString2 + File.separator + paramString1);
+  }
+  
+  public aslo a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    String str = a();
+    boolean bool = a(str);
+    if (QLog.isColorLevel()) {
+      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
+    }
+    localObject = new aslo();
+    if (!bool) {}
+    for (bool = true;; bool = false)
     {
-      j = 6;
-      i = 9;
+      ((aslo)localObject).jdField_a_of_type_Boolean = bool;
+      ((aslo)localObject).jdField_a_of_type_JavaLangString = str;
+      return localObject;
     }
-    for (;;)
-    {
-      localObject2 = a((String)localObject2, j);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      localObject1 = a((String)localObject1, i);
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
-      }
-      return localArrayList;
-      if ((((MessageForShortVideo)this.a).busiType == 0) || (((MessageForShortVideo)this.a).busiType == 1))
-      {
-        j = 4;
-        i = 7;
-      }
-      else
-      {
-        if (((MessageForShortVideo)this.a).subBusiType != 2) {
-          break;
-        }
-        j = 5;
-        i = 8;
-      }
-    }
-    return null;
   }
   
-  public void a()
+  public String a()
   {
-    im_msg_body.RichText localRichText = ((MessageForShortVideo)this.a).getRichText();
-    ((MessageForShortVideo)this.a).richText = localRichText;
+    return c + this.d + this.e + this.f;
   }
   
-  public void b()
+  public String b()
   {
-    if (((MessageForShortVideo)this.a).isSendFromLocal()) {
-      ((MessageForShortVideo)this.a).issend = 2;
-    }
-    if ((this.a instanceof MessageForLightVideo))
-    {
-      ((MessageForLightVideo)this.a).isLightVideoRead = true;
-      ((MessageForShortVideo)this.a).saveExtInfoToExtStr(axad.u, "1");
-    }
-    ((MessageForShortVideo)this.a).serial();
+    return a(this.d, this.f);
   }
 }
 

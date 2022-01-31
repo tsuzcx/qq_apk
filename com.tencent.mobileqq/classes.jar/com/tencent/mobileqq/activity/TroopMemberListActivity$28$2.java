@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acjz;
+import acjv;
 
 public class TroopMemberListActivity$28$2
   implements Runnable
 {
-  public TroopMemberListActivity$28$2(acjz paramacjz) {}
+  public TroopMemberListActivity$28$2(acjv paramacjv) {}
   
   public void run()
   {

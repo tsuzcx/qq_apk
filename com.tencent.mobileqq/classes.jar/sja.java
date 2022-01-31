@@ -1,37 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class sja
-  implements View.OnTouchListener
+class sja
+  implements URLDrawable.URLDrawableListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  sja(siy paramsiy, String paramString, ImageView paramImageView) {}
   
-  private sja(FPSSuspendedBall paramFPSSuspendedBall) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x;
-      this.jdField_b_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      continue;
-      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
-      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
-      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).updateViewLayout(paramView, FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall));
-    }
+    snb.c("813", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841259);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    snb.d("813", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841259);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    snb.a("813", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    siy.a(this.jdField_a_of_type_Siy, paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetImageView);
+    skq.b(3);
   }
 }
 

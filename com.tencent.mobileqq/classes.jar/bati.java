@@ -1,23 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
 class bati
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bati(bath parambath) {}
+  bati(batg parambatg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("selfSet_leftViewText", ajyc.a(2131715693));
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
-    this.a.a.startActivity(localIntent);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
+    if (paramValueAnimator.intValue() <= -batg.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865))
+    {
+      if (this.a.jdField_a_of_type_Azno != null) {
+        this.a.jdField_a_of_type_Azno.a(false);
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+    }
   }
 }
 

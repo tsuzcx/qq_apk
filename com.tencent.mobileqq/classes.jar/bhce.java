@@ -1,17 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.MsgMoreView;
+import GIFT_MALL_PROTOCOL.DouFuInfo;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bhce
-  implements View.OnClickListener
+class bhce
+  extends atzq
 {
-  public bhce(MsgMoreView paramMsgMoreView) {}
+  public WeakReference<QQAppInterface> a;
   
-  public void onClick(View paramView)
+  protected void j(boolean paramBoolean, Bundle paramBundle)
   {
-    if (MsgMoreView.a(this.a) != null) {
-      MsgMoreView.a(this.a).a(MsgMoreView.a(this.a), paramView, 5);
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData appRef==null");
+      }
     }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.a.get();
+      if (localQQAppInterface != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData app == null ");
+    return;
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof doufu_piece_rsp)))
+    {
+      paramBundle = ((doufu_piece_rsp)paramBundle).doufu.iterator();
+      while (paramBundle.hasNext()) {
+        bhcd.a(localQQAppInterface, (DouFuInfo)paramBundle.next());
+      }
+    }
+    localQQAppInterface.unRegistObserver(bhcd.a());
   }
 }
 

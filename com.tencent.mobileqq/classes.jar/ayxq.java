@@ -1,64 +1,50 @@
-import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
 
 public class ayxq
-  implements Manager
+  extends ayxp
+  implements aysc
 {
-  private ayxu jdField_a_of_type_Ayxu;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  public ayrx a;
+  private ayxr a;
   
-  public ayxq(QQAppInterface paramQQAppInterface)
+  public ayxq(QQAppInterface paramQQAppInterface, String paramString, ayxr paramayxr, ayrx paramayrx)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("serializePreDownload", true);
-    this.jdField_a_of_type_Ayxu = ((ayxu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(233));
-    this.jdField_a_of_type_Ayxu.b(this.jdField_a_of_type_Boolean);
+    super(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_Ayrx = paramayrx;
+    this.jdField_a_of_type_Ayxr = paramayxr;
   }
   
-  public static String a(int paramInt, String paramString, boolean paramBoolean)
+  public void onResp(aysz paramaysz)
   {
-    return ayxu.a(paramInt, paramString, paramBoolean);
+    this.jdField_a_of_type_Ayxr.onResp(paramaysz);
+    this.ctrl.a(this);
   }
   
-  public static ArrayList<String> a(int paramInt1, int paramInt2)
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    return new ArrayList(5);
+    this.jdField_a_of_type_Ayxr.onUpdateProgeress(paramaysy, paramLong1, paramLong2);
   }
   
-  public ayxn a(String paramString)
+  protected void realCancel()
   {
-    return this.jdField_a_of_type_Ayxu.a(paramString);
+    this.app.getNetEngine(0).b(this.jdField_a_of_type_Ayrx);
   }
   
-  void a(ayxn paramayxn)
+  protected void realStart()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Controller", 2, "onTaskEnd: " + paramayxn);
+      QLog.d("PreDownload.Task", 2, "start: " + this);
     }
-    this.jdField_a_of_type_Ayxu.a(paramayxn);
+    this.app.getNetEngine(0).a(this.jdField_a_of_type_Ayrx);
+    this.jdField_a_of_type_Ayrx.jdField_a_of_type_Aysc = this;
+    this.jdField_a_of_type_Ayxr.a(this);
   }
   
-  public void a(String paramString, long paramLong)
+  public String toString()
   {
-    this.jdField_a_of_type_Ayxu.a(paramString, paramLong);
+    return super.toString() + "[" + this.jdField_a_of_type_Ayrx.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_Ayxr + "]";
   }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, ayxn paramayxn)
-  {
-    return this.jdField_a_of_type_Ayxu.a(paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4, paramInt3, paramInt4, paramBoolean, paramayxn);
-  }
-  
-  public void onDestroy() {}
 }
 
 

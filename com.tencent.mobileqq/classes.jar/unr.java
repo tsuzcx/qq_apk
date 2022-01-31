@@ -1,32 +1,31 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import java.util.List;
 
-class unr
+public class unr
+  implements Subscriber
 {
-  public TextView a;
-  public StoryPickerHorizontalListView a;
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public unr(unq paramunq, View paramView, unp paramunp)
+  public unr(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364925));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131367610));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramunp);
-    paramView = (unj)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
-    paramView.a(paramunq.jdField_a_of_type_Uno);
-    paramView.a(paramunq.jdField_a_of_type_Unn);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
   }
   
-  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(vyb.b(paramVideoCollectionItem.collectionTime));
-    this.jdField_a_of_type_Unq.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
+    paramList.add(vxx.class);
+  }
+  
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  {
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
+    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.screendetect;
 
-import awgi;
+import awgk;
 
 public class ScreenShotDetector$MediaContentObserver$1
   implements Runnable
 {
-  public ScreenShotDetector$MediaContentObserver$1(awgi paramawgi) {}
+  public ScreenShotDetector$MediaContentObserver$1(awgk paramawgk) {}
   
   public void run()
   {
-    ScreenShotDetector.a(this.a.a, awgi.a(this.a));
+    ScreenShotDetector.a(this.a.a, awgk.a(this.a));
   }
 }
 

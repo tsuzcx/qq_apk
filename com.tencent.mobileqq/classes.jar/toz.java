@@ -1,23 +1,40 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class toz
-  extends syq
+  extends syn
 {
-  public stm a = new stm();
+  public List<tcq> a;
   
-  public toz(qqstory_service.RspAuthKey paramRspAuthKey)
+  public toz(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
   {
-    super(paramRspAuthKey.result);
-    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
-    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
-    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
-    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
-    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
-    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
-    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
+    super(paramRspWatchVideoBatch.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
+    if (paramRspWatchVideoBatch == null) {}
+    for (;;)
+    {
+      return;
+      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
+      while (paramRspWatchVideoBatch.hasNext())
+      {
+        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
+        tcq localtcq = new tcq();
+        localtcq.a = localVideoItem.vid.get().toStringUtf8();
+        this.jdField_a_of_type_JavaUtilList.add(localtcq);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
   }
 }
 

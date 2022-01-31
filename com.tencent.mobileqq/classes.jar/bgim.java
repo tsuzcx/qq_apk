@@ -1,9 +1,10 @@
-public class bgim
+import org.json.JSONObject;
+
+public abstract interface bgim
 {
-  public int a = -1;
-  public long a;
-  public bgil a;
-  public long b;
+  public abstract void a();
+  
+  public abstract boolean a(String paramString, JSONObject paramJSONObject);
 }
 
 

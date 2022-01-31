@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
-import actn;
-import acun;
-import ambe;
-import ambh;
-import ambj;
-import amcd;
+import actj;
+import acuj;
+import ambd;
+import ambg;
+import ambi;
+import amcc;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Pair;
@@ -18,29 +18,29 @@ import java.util.Iterator;
 public class BubbleInterActiveAnim$2
   implements Runnable
 {
-  public BubbleInterActiveAnim$2(ambj paramambj, long paramLong1, long paramLong2) {}
+  public BubbleInterActiveAnim$2(ambi paramambi, long paramLong1, long paramLong2) {}
   
   public void run()
   {
     Object localObject3 = null;
-    Object localObject1 = actn.a(actn.a(ambj.a(this.this$0), actn.a(this.a, ambj.b(this.this$0).getAdapter())));
-    if ((localObject1 != null) && ((localObject1 instanceof acun))) {}
-    for (localObject1 = (acun)localObject1;; localObject1 = null)
+    Object localObject1 = actj.a(actj.a(ambi.a(this.this$0), actj.a(this.a, ambi.b(this.this$0).getAdapter())));
+    if ((localObject1 != null) && ((localObject1 instanceof acuj))) {}
+    for (localObject1 = (acuj)localObject1;; localObject1 = null)
     {
-      Object localObject4 = actn.a(actn.a(ambj.c(this.this$0), actn.a(this.b, ambj.d(this.this$0).getAdapter())));
+      Object localObject4 = actj.a(actj.a(ambi.c(this.this$0), actj.a(this.b, ambi.d(this.this$0).getAdapter())));
       Object localObject2 = localObject3;
       if (localObject4 != null)
       {
         localObject2 = localObject3;
-        if ((localObject4 instanceof acun)) {
-          localObject2 = (acun)localObject4;
+        if ((localObject4 instanceof acuj)) {
+          localObject2 = (acuj)localObject4;
         }
       }
-      if ((localObject1 == null) || (localObject2 == null) || (((acun)localObject1).a == null) || (((acun)localObject2).a == null)) {
+      if ((localObject1 == null) || (localObject2 == null) || (((acuj)localObject1).a == null) || (((acuj)localObject2).a == null)) {
         return;
       }
       int i;
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acun)localObject1).a.a, 8)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acun)localObject2).a.a, 8))) {
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acuj)localObject1).a.a, 8)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acuj)localObject2).a.a, 8))) {
         i = 1;
       }
       while (i != 0)
@@ -49,23 +49,23 @@ public class BubbleInterActiveAnim$2
         localObject4 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
         ((Message)localObject4).obj = localObject3;
         this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject4);
-        localObject4 = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acun)localObject1).a.a, false);
-        localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acun)localObject2).a.a, false);
-        localObject4 = ((ambe)localObject4).b.values().iterator();
+        localObject4 = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acuj)localObject1).a.a, false);
+        localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acuj)localObject2).a.a, false);
+        localObject4 = ((ambd)localObject4).b.values().iterator();
         for (;;)
         {
           if (((Iterator)localObject4).hasNext())
           {
-            this.this$0.a((amcd)((Iterator)localObject4).next(), ((acun)localObject1).a.a);
+            this.this$0.a((amcc)((Iterator)localObject4).next(), ((acuj)localObject1).a.a);
             continue;
             i = 0;
             break;
           }
         }
-        this.this$0.a((amcd)((ambe)localObject3).b.get("passive_animation"), ((acun)localObject2).a.a);
+        this.this$0.a((amcc)((ambd)localObject3).b.get("passive_animation"), ((acuj)localObject2).a.a);
         return;
       }
-      QLog.e("BubbleInterActiveAnim", 1, "resource is not all ready, originalMsg: " + this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acun)localObject1).a.a, 8) + ", target msg: " + this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acun)localObject2).a.a, 8));
+      QLog.e("BubbleInterActiveAnim", 1, "resource is not all ready, originalMsg: " + this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acuj)localObject1).a.a, 8) + ", target msg: " + this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(((acuj)localObject2).a.a, 8));
       return;
     }
   }

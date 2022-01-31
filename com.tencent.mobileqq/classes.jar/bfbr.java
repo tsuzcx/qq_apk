@@ -1,56 +1,32 @@
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-public class bfbr
+public class bfbr<E>
 {
-  private bfbs jdField_a_of_type_Bfbs;
-  private final ConcurrentLinkedQueue<AppBrandPage> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private bfbp<T, E>.bfbq<T> jdField_a_of_type_Bfbq;
+  private E jdField_a_of_type_JavaLangObject;
+  private bfbp<T, E>.bfbq<T> b;
   
-  public bfbr(begz parambegz)
+  public bfbr(bfbp parambfbp) {}
+  
+  public bfbp<T, E>.bfbq<T> a()
   {
-    this.jdField_a_of_type_Bfbs = new bfbs(parambegz);
+    return this.jdField_a_of_type_Bfbq;
   }
   
-  public bfbs a()
+  public bfbr a(bfbp<T, E>.bfbq<T> parambfbp)
   {
-    return this.jdField_a_of_type_Bfbs;
+    this.jdField_a_of_type_Bfbq = parambfbp;
+    return this;
   }
   
-  public AppBrandPage a(begz parambegz, AppBrandPageContainer paramAppBrandPageContainer)
+  public bfbr a(E paramE)
   {
-    besl.a("AppBrandPagePool", "mBrandPageList size : " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-    AppBrandPage localAppBrandPage = (AppBrandPage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-    if (localAppBrandPage == null)
-    {
-      besl.b("AppBrandPagePool", "getAppBrandPage form new BrandPageWebview.");
-      return new AppBrandPage(parambegz, paramAppBrandPageContainer);
-    }
-    besl.b("AppBrandPagePool", "getAppBrandPage from cache.");
-    return localAppBrandPage;
+    this.jdField_a_of_type_JavaLangObject = paramE;
+    return this;
   }
   
-  public void a()
+  public bfbr b(bfbp<T, E>.bfbq<T> parambfbp)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    }
-    if (this.jdField_a_of_type_Bfbs != null) {
-      this.jdField_a_of_type_Bfbs.a();
-    }
-  }
-  
-  public void a(begz parambegz, AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) || (parambegz == null)) {}
-    do
-    {
-      return;
-      besl.a("AppBrandPagePool", "preLoadAppBrandPage");
-      parambegz = new AppBrandPage(parambegz, paramAppBrandPageContainer);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambegz);
-    } while (this.jdField_a_of_type_Bfbs == null);
-    this.jdField_a_of_type_Bfbs.a(paramAppBrandPageContainer);
+    this.b = parambfbp;
+    return this;
   }
 }
 

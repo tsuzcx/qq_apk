@@ -1,28 +1,16 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 
-@TargetApi(21)
-public class bfpy
-  extends ViewOutlineProvider
+public abstract interface bfpy
 {
-  private float a;
+  public abstract View a(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
   
-  public bfpy(float paramFloat)
-  {
-    this.a = paramFloat;
-  }
-  
-  public void getOutline(View paramView, Outline paramOutline)
-  {
-    paramOutline.setRoundRect(new Rect(0, 0, paramView.getWidth(), paramView.getHeight()), this.a);
-  }
+  public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfpy
  * JD-Core Version:    0.7.0.1
  */

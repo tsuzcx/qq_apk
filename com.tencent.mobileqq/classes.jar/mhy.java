@@ -1,30 +1,14 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
+import android.widget.RelativeLayout;
+import com.tencent.av.ui.QavPanel;
 
 public class mhy
-  implements mlx
+  implements mif
 {
-  public mhy(QavOperationMenuView paramQavOperationMenuView) {}
+  public mhy(QavPanel paramQavPanel) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    case 1: 
-    default: 
-    case 2: 
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(paramString, paramInt2, false);
-      return;
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramInt2, true);
-    }
-    mqz.c(2131372388);
-  }
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
 }
 
 

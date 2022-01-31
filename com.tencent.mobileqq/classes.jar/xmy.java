@@ -1,15 +1,9 @@
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public final class xmy
+public class xmy
+  extends WebViewPlugin
 {
-  public PBStringField a;
-  public PBStringField b;
-  
-  public xmy(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
-  {
-    this.a = paramPBStringField1;
-    this.b = paramPBStringField2;
-  }
+  public static String[] a = { "http://htdata.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080", "http://htdata2.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080" };
 }
 
 

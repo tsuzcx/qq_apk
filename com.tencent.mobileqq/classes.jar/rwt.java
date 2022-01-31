@@ -1,124 +1,201 @@
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.adapter.JSAPIAdapter.1;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.adapter.ViolaReportDelegate.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.adapter.IJSApiAdapter;
-import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
-import com.tencent.viola.core.ViolaInstance;
-import com.tencent.viola.core.ViolaSDKManager;
-import org.json.JSONException;
+import com.tencent.viola.commons.IReportDelegate;
+import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.viola.utils.ViolaUtils;
+import java.net.URLEncoder;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public class rwt
-  implements IJSApiAdapter
+  implements IReportDelegate
 {
+  public static String a;
+  public HashMap<String, String> a;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "ViolaReportDelegate";
+  }
+  
+  public rwt()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
   private JSONObject a(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+    try
+    {
+      localJSONObject.put(ViolaEnvironment.COMMON_UIN, onh.a());
+      localJSONObject.put(ViolaEnvironment.COMMON_NET, Integer.toString(onh.a(BaseApplication.getContext())));
+      localJSONObject.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bbdh.e());
+      localJSONObject.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.3.0");
+      localJSONObject.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+      String str2 = ViolaEnvironment.COMMON_BIZ;
+      if (TextUtils.isEmpty(str1)) {}
+      for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + mzb.a(str1))
+      {
+        localJSONObject.put(str2, URLEncoder.encode(str1));
+        localJSONObject.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+        localJSONObject.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(rvx.a));
+        if (!TextUtils.isEmpty(paramString)) {
+          localJSONObject.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+        }
+        localJSONObject.put(ViolaEnvironment.COMMON_RELEASE, "1");
+        return localJSONObject;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "initCommonDataJson Exception:" + paramString.getMessage());
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new ViolaReportDelegate.2(this), 8, null, true);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ThreadManager.post(new ViolaReportDelegate.1(this, paramString, paramInt), 8, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1)) && (paramString2.equals(this.jdField_a_of_type_JavaUtilHashMap.get(paramString1)))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+    }
+  }
+  
+  public void addReportData(String paramString1, String paramString2)
+  {
+    if ((ViolaEnvironment.KEY_SO.equals(paramString1)) && (ViolaEnvironment.SO_START.equals(paramString2)))
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 2)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+  }
+  
+  public void dropFrameMonitor(int paramInt, String paramString)
+  {
+    if (paramInt == 0)
+    {
+      zzz.a().a(paramString, false);
+      return;
+    }
+    zzz.a().a(paramString);
+  }
+  
+  public HashMap<String, String> getBaseReportData(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    String str1 = Uri.parse(paramString).getQueryParameter("v_bid");
+    localHashMap.put(ViolaEnvironment.COMMON_UIN, onh.a());
+    localHashMap.put(ViolaEnvironment.COMMON_NET, Integer.toString(onh.a(BaseApplication.getContext())));
+    localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, bbdh.e());
+    localHashMap.put(ViolaEnvironment.COMMON_QQ_VERSION, "8.3.0");
+    localHashMap.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
+    String str2 = ViolaEnvironment.COMMON_BIZ;
+    if (TextUtils.isEmpty(str1)) {}
+    for (str1 = paramString;; str1 = paramString + "&offlineVersion=" + mzb.a(str1))
+    {
+      localHashMap.put(str2, URLEncoder.encode(str1));
+      localHashMap.put(ViolaEnvironment.COMMON_PLATFORM, "0");
+      localHashMap.put(ViolaEnvironment.COMMON_OPEN_COUNT, Integer.toString(rvx.a));
+      if (!TextUtils.isEmpty(paramString)) {
+        localHashMap.put(ViolaEnvironment.COMMON_PAGE_NAME, ViolaUtils.getPageName(paramString));
+      }
+      localHashMap.put(ViolaEnvironment.COMMON_RELEASE, "1");
+      localHashMap.put(ViolaEnvironment.COMMON_APPLICATION, "1");
+      return localHashMap;
+    }
+  }
+  
+  public void reportData(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(ViolaEnvironment.COMMON_UIN)) {
+        this.jdField_a_of_type_JavaUtilHashMap.putAll(getBaseReportData(paramString));
+      }
+      paramString = ViolaUtils.copyMap(this.jdField_a_of_type_JavaUtilHashMap);
+      if (!paramString.isEmpty()) {
+        onh.a(onh.a(), true, paramString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+  }
+  
+  public void reportHttpData(HashMap<String, String> paramHashMap, String paramString)
+  {
+    paramHashMap.putAll(getBaseReportData(paramString));
+    onh.b(onh.a(), true, paramHashMap);
+  }
+  
+  public void reportJsError(boolean paramBoolean, int paramInt, String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("fail", "exception");
-      localJSONObject.put("msg", paramString);
-      return localJSONObject;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("JSAPIAdapter", 2, "exceptionCall JSONException" + paramString.getMessage());
-    }
-    return localJSONObject;
-  }
-  
-  private static void b(Context paramContext, String paramString, Bundle paramBundle)
-  {
-    if ((paramContext == null) || (paramString == null)) {
+      localJSONObject.put("error_code", paramInt);
+      localJSONObject.put("error_msg", paramString);
+      localJSONObject.put("is_renderJs", paramBoolean);
+      nol.a(null, null, "0X800AC69", "0X800AC69", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
-    if ((paramString.startsWith("http://clientui.3g.qq.com/mqqapi/")) || (paramString.startsWith("http://clientui.3g.qq.com/mqq/")) || (paramString.startsWith("http://qm.qq.com/cgi-bin/")) || (paramString.startsWith("https://buluo.qq.com/cgi-bin/bar/jump?jump_type=xqquncard"))) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("url", paramString);
-        localBundle.putBoolean("hide_operation_bar", true);
-        paramString = new Intent(paramContext, QQBrowserActivity.class);
-        paramString.setFlags(268435456);
-        paramString.putExtras(localBundle);
-        if (paramBundle != null) {
-          paramString.putExtras(paramBundle);
-        }
-        paramString.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-        paramContext.startActivity(paramString);
-        return;
-      }
-      paramBundle = new Intent(paramContext, JumpActivity.class);
-      paramBundle.setFlags(268435456);
-      paramString = Uri.parse(paramString);
-      paramBundle.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-      paramBundle.setData(paramString);
-      paramContext.startActivity(paramBundle);
-      return;
-    }
-  }
-  
-  public void invoke(String paramString, JSONObject paramJSONObject, IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    catch (Exception paramString)
     {
       for (;;)
       {
-        return;
-        if ("openUrl".equals(paramString))
-        {
-          paramString = new JSAPIAdapter.1(this, paramJSONObject);
-          ViolaSDKManager.getInstance().postOnUiThread(paramString, 0L);
-          return;
-        }
-        if ("getCache".equals(paramString))
-        {
-          try
-          {
-            if ((!paramJSONObject.has("url")) || (!paramJSONObject.has("key")) || (!paramJSONObject.has("host")) || (!paramJSONObject.has("path"))) {
-              continue;
-            }
-            paramJSONObject.put("callid", 0);
-            qke.a().a(paramJSONObject.getString("url"), paramJSONObject.toString(), new rwu(paramOnInovkeCallback));
-            return;
-          }
-          catch (JSONException paramString)
-          {
-            paramOnInovkeCallback.callback(a(paramString.getMessage()));
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("JSAPIAdapter", 2, "METHOD_GET_CACHE JSONException" + paramString.getMessage());
-          }
-        }
-        else if ("writeCache".equals(paramString))
-        {
-          try
-          {
-            if ((paramJSONObject.has("url")) && (paramJSONObject.has("key")) && (paramJSONObject.has("host")) && (paramJSONObject.has("path")) && (paramJSONObject.has("data")))
-            {
-              paramJSONObject.put("callid", 0);
-              qke.a().a(paramJSONObject.getString("url"), paramJSONObject.toString(), null, paramJSONObject);
-              return;
-            }
-          }
-          catch (JSONException paramString)
-          {
-            paramOnInovkeCallback.callback(a(paramString.getMessage()));
-          }
-        }
+        paramString.printStackTrace();
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("JSAPIAdapter", 2, "METHOD_WRITE_CACHE fail" + paramString.getMessage());
+    }
+  }
+  
+  public void reportPageProcess(String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      paramString3 = a(paramString3);
+      if (paramString3 != null)
+      {
+        paramString3.put(paramString1, paramString2);
+        onh.a(onh.a(), true, paramString3);
+        a();
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "reportPageProcessNew Exception:" + paramString1.getMessage());
+    }
+  }
+  
+  public void reportRunningData(HashMap<String, String> paramHashMap, String paramString)
+  {
+    paramHashMap.putAll(getBaseReportData(paramString));
+    onh.c(onh.a(), true, paramHashMap);
   }
 }
 

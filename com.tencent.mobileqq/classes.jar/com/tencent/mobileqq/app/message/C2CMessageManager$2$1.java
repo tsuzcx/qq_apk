@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.message;
 
 import android.support.v4.app.FragmentActivity;
-import bcpw;
+import bcql;
 
 class C2CMessageManager$2$1
   implements Runnable
@@ -10,7 +10,7 @@ class C2CMessageManager$2$1
   
   public void run()
   {
-    bcpw.a(this.a.a, 2131697936, 0).b(this.a.a.getTitleBarHeight());
+    bcql.a(this.a.a, 2131697946, 0).b(this.a.a.getTitleBarHeight());
   }
 }
 

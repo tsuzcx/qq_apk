@@ -1,14 +1,14 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
 class ufv
-  implements MediaPlayer.OnPreparedListener
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  ufv(ufu paramufu, ufp paramufp) {}
+  ufv(ufr paramufr, ufn paramufn) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Ufp.a_(this.jdField_a_of_type_Ufu);
+    this.jdField_a_of_type_Ufn.a(this.jdField_a_of_type_Ufr);
   }
 }
 

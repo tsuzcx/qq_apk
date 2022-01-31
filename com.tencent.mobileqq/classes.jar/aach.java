@@ -1,23 +1,6 @@
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tribe.async.async.JobSegment;
-
-class aach
-  extends asix<JobSegment>
+public abstract interface aach
 {
-  aach(aacg paramaacg, JobSegment paramJobSegment)
-  {
-    super(paramJobSegment);
-  }
-  
-  public void a(JobSegment paramJobSegment, boolean paramBoolean, asiu paramasiu)
-  {
-    if (paramBoolean)
-    {
-      aacg.a(this.a, paramasiu);
-      return;
-    }
-    aacg.a(this.a, new AppInfoError(5, "appInfo error"));
-  }
+  public abstract void a(asiw paramasiw, int paramInt);
 }
 
 

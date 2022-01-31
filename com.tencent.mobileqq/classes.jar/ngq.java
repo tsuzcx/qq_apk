@@ -1,60 +1,23 @@
-import android.content.SharedPreferences;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
 class ngq
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  ngq(nfu paramnfu) {}
+  ngq(nfr paramnfr, nms paramnms) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMessage.what)
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
-        }
-        bool1 = bool2;
-      } while (!this.a.b);
-      bool1 = bool2;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
-    int i;
-    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        break;
-      }
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int <= -1) {
-        break;
-      }
-      nfu.b(this.a, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new ngr(this));
-      return true;
-      i = -10000;
-    }
+    paramView = new Intent((Context)this.jdField_a_of_type_Nfr.a.get(), ScannerActivity.class);
+    paramView.putExtra("from", this.jdField_a_of_type_Nfr.a.getClass().getName());
+    paramView.putExtra("finishAfterSucc", true);
+    ((BaseActivity)this.jdField_a_of_type_Nfr.a.get()).startActivity(paramView);
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.a);
   }
 }
 

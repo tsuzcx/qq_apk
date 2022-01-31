@@ -1,6 +1,16 @@
-public abstract interface rwi
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+
+public class rwi
+  implements rxa
 {
-  public abstract void a();
+  public rwi(ViolaFragment paramViolaFragment) {}
+  
+  public void a(int paramInt)
+  {
+    if (ViolaFragment.a(this.a) != null) {
+      ViolaFragment.a(this.a).a(paramInt);
+    }
+  }
 }
 
 

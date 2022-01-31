@@ -2,9 +2,7 @@ public abstract interface awaz
 {
   public abstract void a(long paramLong);
   
-  public abstract void a(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(Object paramObject);
+  public abstract void a(long paramLong, int paramInt);
 }
 
 

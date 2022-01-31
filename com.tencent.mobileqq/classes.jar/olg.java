@@ -1,443 +1,308 @@
 import android.content.Context;
-import android.os.Build.VERSION;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.common.KBPDUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
+import com.tencent.biz.pubaccount.util.Achilles;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
+import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import tencent.im.oidb.gallery.gallery_report.GalleryExpReported;
-import tencent.im.oidb.gallery.gallery_report.GallerySocialReported;
 
 public class olg
 {
-  private static boolean a;
+  private static long jdField_a_of_type_Long;
+  private static olh jdField_a_of_type_Olh = new olh(null);
+  private static oli jdField_a_of_type_Oli = new oli(null);
   
-  public static int a(int paramInt)
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
   {
-    if ((paramInt == 48) || (paramInt == 51)) {
-      return 1;
-    }
-    if ((paramInt == 49) || (paramInt == 52)) {
-      return 2;
-    }
-    if (paramInt == 78) {
-      return 5;
-    }
-    if (paramInt == 79) {
-      return 6;
-    }
-    if (paramInt == 80) {
-      return 7;
-    }
-    if (paramInt == 1005) {
-      return 9;
-    }
-    if (paramInt == 1006) {
-      return 10;
-    }
-    if (paramInt == 1007) {
-      return 11;
-    }
-    return 3;
-  }
-  
-  public static int a(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (paramInt1 == 0) {
-      if ((paramInt2 == 48) || (paramInt2 == 49) || (paramInt2 == 50) || (paramInt2 == 78)) {
-        paramInt2 = 1;
-      }
-    }
-    do
+    if (paramAppRuntime == null)
     {
-      return paramInt2;
-      return 4;
-      if (paramInt1 == 70)
-      {
-        if ((paramInt2 == 48) || (paramInt2 == 49) || (paramInt2 == 50) || (paramInt2 == 78)) {
-          return 5;
-        }
-        return 6;
-      }
-      paramInt2 = i;
-    } while (!onk.a(paramInt1));
-    return 3;
+      QLog.e("KBPreDownloadUtils", 1, "getSharedPreferences: return null for runtime is null");
+      return null;
+    }
+    paramAppRuntime = "readinjoy_sp_kb_predownload_" + paramAppRuntime.getAccount();
+    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
   }
   
-  public static String a()
+  private static String a()
   {
-    return (int)Math.ceil(Float.valueOf((float)bbct.d()).floatValue() / 1024.0F / 1024.0F / 1024.0F) + "";
-  }
-  
-  public static String a(Context paramContext)
-  {
-    paramContext = bbct.a(paramContext).a;
-    if (!TextUtils.isEmpty(paramContext))
-    {
-      if (paramContext.equals("WIFI")) {
-        return "1";
-      }
-      if ((paramContext.equals("4G")) || (paramContext.equals("3G"))) {
-        return "2";
-      }
-      return "0";
-    }
-    return "0";
-  }
-  
-  public static String a(Context paramContext, long paramLong1, int paramInt1, long paramLong2, long paramLong3, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4)
-  {
-    return a(paramContext, paramLong1, paramInt1, paramLong2, paramLong3, paramInt2, paramString1, paramString2, paramInt3, paramInt4, null);
-  }
-  
-  public static String a(Context paramContext, long paramLong1, int paramInt1, long paramLong2, long paramLong3, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4, String paramString3)
-  {
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", npx.a);
-      localJSONObject.put("os", "1");
-      localJSONObject.put("uin", paramLong1 + "");
-      localJSONObject.put("source", paramInt1 + "");
-      localJSONObject.put("mem_size", a());
-      localJSONObject.put("article_id", paramLong2 + "");
-      localJSONObject.put("city", b());
-      localJSONObject.put("exptime", paramLong3 + "");
-      localJSONObject.put("pos", paramInt2 + "");
-      localJSONObject.put("rowkey", paramString1);
-      localJSONObject.put("proxy_bytes", paramString2);
-      localJSONObject.put("card_type", paramInt3 + "");
-      localJSONObject.put("imei", onk.f());
-      localJSONObject.put("imsi", onk.g());
-      localJSONObject.put("channel_id", paramInt4);
-      if (!TextUtils.isEmpty(paramString3)) {
-        localJSONObject.put("source_rowkey", paramString3);
-      }
-      paramContext = localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      do
-      {
-        paramContext = str;
-      } while (!QLog.isColorLevel());
-      QLog.d("GalleryReportedUtils", 2, "galleryExpReport:" + paramString1.toString());
-    }
-    return paramContext;
-    return "";
-  }
-  
-  public static String a(Context paramContext, long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2)
-  {
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", npx.a);
-      localJSONObject.put("os", "1");
-      localJSONObject.put("uin", paramLong + "");
-      localJSONObject.put("source", paramInt1 + "");
-      localJSONObject.put("city", b() + "");
-      localJSONObject.put("rowkey", paramString2);
-      if (!TextUtils.isEmpty(paramString1)) {
-        localJSONObject.put("topic_id", paramString1);
-      }
-      localJSONObject.put("pattern", paramInt2);
-      paramContext = localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      do
-      {
-        paramContext = str;
-      } while (!QLog.isColorLevel());
-      QLog.d("GalleryReportedUtils", 2, "operationReport:" + paramString1.toString());
-    }
-    return paramContext;
-    return "";
-  }
-  
-  public static String a(Context paramContext, String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, JSONObject paramJSONObject)
-  {
-    return a(paramContext, paramString1, paramInt1, paramLong, paramInt2, paramString2, paramString3, paramInt3, paramInt4, paramInt5, paramJSONObject, null);
-  }
-  
-  public static String a(Context paramContext, String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, JSONObject paramJSONObject, String paramString4)
-  {
-    String str = "";
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {}
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", npx.a + "");
-      localJSONObject.put("os", "1");
-      localJSONObject.put("uin", paramString1);
-      localJSONObject.put("source", paramInt1 + "");
-      localJSONObject.put("mem_size", a());
-      localJSONObject.put("article_id", paramLong + "");
-      localJSONObject.put("city", b());
-      localJSONObject.put("exptime", System.currentTimeMillis() + "");
-      localJSONObject.put("pos", paramInt2 + "");
-      localJSONObject.put("rowkey", paramString2);
-      localJSONObject.put("proxy_bytes", paramString3);
-      localJSONObject.put("card_type", paramInt3);
-      localJSONObject.put("pic_click", paramInt4 + "");
-      localJSONObject.put("imei", onk.f());
-      localJSONObject.put("imsi", onk.g());
-      localJSONObject.put("channel_id", paramInt5);
-      if (!TextUtils.isEmpty(paramString4)) {
-        localJSONObject.put("source_rowkey", paramString4);
-      }
-      paramContext = localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      do
-      {
-        paramContext = str;
-      } while (!QLog.isColorLevel());
-      QLog.d("GalleryReportedUtils", 2, "galleryClickReport:" + paramString1.toString());
-    }
-    return paramContext;
-    return "";
-  }
-  
-  public static String a(Context paramContext, String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    return a(paramContext, paramString1, paramInt1, paramLong, paramString2, paramInt2, paramInt3, paramBoolean, null);
-  }
-  
-  public static String a(Context paramContext, String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, int paramInt3, boolean paramBoolean, Boolean paramBoolean1)
-  {
-    int i = 1;
-    String str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("os", "1");
-      localJSONObject.put("source", paramInt1 + "");
-      localJSONObject.put("uin", paramString1);
-      localJSONObject.put("rowkey", paramString2);
-      localJSONObject.put("version", npx.a);
-      if (paramBoolean) {
-        localJSONObject.put("cancel", String.valueOf(1));
-      }
-      if (paramInt2 >= 0) {
-        localJSONObject.put("sourcefrom", paramInt2 + "");
-      }
-      if (paramInt3 >= 0) {
-        localJSONObject.put("share_unit", paramInt3 + "");
-      }
-      if (paramBoolean1 != null)
-      {
-        paramInt1 = i;
-        if (paramBoolean1.booleanValue()) {
-          paramInt1 = 0;
-        }
-        localJSONObject.put("result", paramInt1);
-      }
-      paramContext = localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      do
-      {
-        paramContext = str;
-      } while (!QLog.isColorLevel());
-      QLog.d("GalleryReportedUtils", 2, "shareReport:" + paramString1.toString());
-    }
-    return paramContext;
-    return "";
-  }
-  
-  public static JSONObject a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", npx.a + "");
-      localJSONObject.put("os", "1");
-      localJSONObject.put("uin", onk.a() + "");
-      localJSONObject.put("source", String.valueOf(paramInt2));
-      localJSONObject.put("mem_size", a());
-      localJSONObject.put("article_id", paramArticleInfo.mArticleID);
-      localJSONObject.put("city", b());
-      localJSONObject.put("pos", String.valueOf(paramInt3));
-      localJSONObject.put("rowkey", shx.a(paramArticleInfo));
-      localJSONObject.put("channel_id", String.valueOf(paramInt1));
-      return localJSONObject;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return localJSONObject;
-  }
-  
-  public static void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.mIsGallery = true;
-    localReportInfo.mUin = paramLong;
-    localReportInfo.mAlgorithmId = paramInt2;
-    localReportInfo.mOperation = paramInt1;
-    gallery_report.GallerySocialReported localGallerySocialReported = new gallery_report.GallerySocialReported();
-    localGallerySocialReported.action.set(paramInt3);
-    localGallerySocialReported.phone_type.set(1);
-    localGallerySocialReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.2.8"));
-    localGallerySocialReported.source.set(paramInt4);
-    if (!TextUtils.isEmpty(b())) {
-      localGallerySocialReported.city.set(ByteStringMicro.copyFromUtf8(b()));
-    }
-    localGallerySocialReported.pos.set(paramInt5);
-    localGallerySocialReported.is_read_end.set(paramInt6);
-    if (!TextUtils.isEmpty(paramString1)) {
-      localGallerySocialReported.rowkey.set(ByteStringMicro.copyFromUtf8(paramString1));
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      localGallerySocialReported.proxy_bytes.set(ByteStringMicro.copyFromUtf8(paramString2));
-    }
-    localReportInfo.mGalleryReportInfo = localGallerySocialReported.toByteArray();
-    localArrayList.add(localReportInfo);
-    osj.a().a(localArrayList);
-  }
-  
-  public static void a(int paramInt1, long paramLong1, int paramInt2, int paramInt3, long paramLong2, int paramInt4, String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.mIsGallery = true;
-    localReportInfo.mUin = paramLong1;
-    localReportInfo.mAlgorithmId = paramInt2;
-    localReportInfo.mOperation = paramInt1;
-    gallery_report.GalleryExpReported localGalleryExpReported = new gallery_report.GalleryExpReported();
-    localGalleryExpReported.phone_type.set(1);
-    if (!TextUtils.isEmpty("8.2.8")) {
-      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("8.2.8"));
-    }
-    localGalleryExpReported.source.set(paramInt3);
-    if (!TextUtils.isEmpty(a())) {
-      localGalleryExpReported.mem_size.set(Float.valueOf(a()).floatValue());
-    }
-    if (!TextUtils.isEmpty(b())) {
-      localGalleryExpReported.city.set(ByteStringMicro.copyFromUtf8(b()));
-    }
-    localGalleryExpReported.exptime.set(paramLong2);
-    localGalleryExpReported.pos.set(paramInt4);
-    if (!TextUtils.isEmpty(paramString1)) {
-      localGalleryExpReported.rowkey.set(ByteStringMicro.copyFromUtf8(paramString1));
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      localGalleryExpReported.proxy_bytes.set(ByteStringMicro.copyFromUtf8(paramString2));
-    }
-    localReportInfo.mGalleryReportInfo = localGalleryExpReported.toByteArray();
-    localArrayList.add(localReportInfo);
-    osj.a().a(localArrayList);
-  }
-  
-  public static void a(Context paramContext, ArticleInfo paramArticleInfo, String paramString, JSONObject paramJSONObject)
-  {
-    int i = onk.a(paramArticleInfo);
-    i = a((int)paramArticleInfo.mChannelID, i);
-    if (paramJSONObject == null) {
-      paramJSONObject = new JSONObject();
-    }
+    label235:
     for (;;)
     {
       try
       {
-        paramJSONObject.put("pics", paramArticleInfo.mGalleryPicNumber);
-        paramContext = a(paramContext, onk.a() + "", i, paramArticleInfo.mArticleID, 0, paramArticleInfo.innerUniqueID, paramArticleInfo.galleryReprotExdData, a(onk.a(paramArticleInfo)), 0, (int)paramArticleInfo.mChannelID, paramJSONObject);
-        noo.a(null, "" + paramArticleInfo.publishUin, paramString, paramString, 0, 0, "", paramArticleInfo.mArticleID + "", paramArticleInfo.mAlgorithmID + "", paramContext, false);
-        return;
+        bhvy.d();
+        Object localObject2 = Achilles.a();
+        if ((localObject2 == null) || (((Set)localObject2).isEmpty()))
+        {
+          QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] empty param set.");
+          return "";
+        }
+        Object localObject1 = null;
+        Iterator localIterator = ((Set)localObject2).iterator();
+        if (localIterator.hasNext())
+        {
+          localObject2 = (AchillesParams)localIterator.next();
+          if (TextUtils.equals(((AchillesParams)localObject2).getPackageName(), "com.tencent.reading"))
+          {
+            localObject1 = localObject2;
+            break label235;
+          }
+        }
+        else
+        {
+          if (localObject1 == null)
+          {
+            QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] param not found for com.tencent.reading");
+            return "";
+          }
+          localObject2 = bdmt.a().a("com.tencent.reading");
+          boolean bool;
+          if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).l)))
+          {
+            bool = new File(((DownloadInfo)localObject2).l).exists();
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("app_id", "101480433");
+            ((JSONObject)localObject2).put("download_url", localObject1.getDownloadUrl());
+            if (bool)
+            {
+              i = 1;
+              ((JSONObject)localObject2).put("download_finished", i);
+              if (!localObject1.isEnable()) {
+                continue;
+              }
+              i = 1;
+              ((JSONObject)localObject2).put("enable_predownload", i);
+              return ((JSONObject)localObject2).toString();
+            }
+          }
+          else
+          {
+            QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] download info not found");
+            bool = false;
+            continue;
+          }
+          int i = 0;
+          continue;
+          i = 0;
+          continue;
+        }
       }
-      catch (JSONException localJSONException)
+      catch (Exception localException)
       {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, ArticleInfo paramArticleInfo, rap paramrap)
-  {
-    if ((onk.d(paramArticleInfo)) || (onk.d(paramArticleInfo)) || (onk.b(paramArticleInfo)))
-    {
-      paramContext = a(paramContext, onk.a() + "", ComponentContentGalleryBiu.a(paramArticleInfo, paramrap), paramArticleInfo.mArticleID, paramrap.a().indexOf(paramArticleInfo), paramArticleInfo.innerUniqueID, paramArticleInfo.galleryReprotExdData, a(onk.a(paramArticleInfo)), 0, (int)paramArticleInfo.mChannelID, null);
-      noo.a(null, "" + paramArticleInfo.publishUin, "0X8008E2F", "0X8008E2F", 0, 0, "", paramArticleInfo.mArticleID + "", paramArticleInfo.mAlgorithmID + "", paramContext, false);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt1, int paramInt2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", npx.a + "");
-      localJSONObject.put("os", "1");
-      localJSONObject.put("uin", onk.a() + "");
-      localJSONObject.put("mem_size", a());
-      localJSONObject.put("city", b());
-      localJSONObject.put("channel_id", String.valueOf(paramInt1));
-      localJSONObject.put("sub_channel_id", paramInt2);
-      noo.a(null, "", paramString, paramString, 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-    }
-  }
-  
-  public static void a(oli paramoli)
-  {
-    noo.a(null, paramoli.a, paramoli.b, paramoli.c, 0, 0, "", paramoli.e, paramoli.f, paramoli.g, false);
-  }
-  
-  public static String b()
-  {
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null) && (!TextUtils.isEmpty(localSosoLbsInfo.a.e))) {
-      return localSosoLbsInfo.a.e;
-    }
-    if (!a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("GalleryReportedUtils", 2, "locationInfo is empty");
-      }
-      if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
+        QLog.e("KBPreDownloadUtils", 1, "[queryKBDownloadInfo] ", localException);
         return "";
       }
-      a = true;
-      SosoInterface.a(new olh(3, true, true, 300000L, false, false, "GalleryReportedUtils"));
     }
-    return "";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime)
+  {
+    Object localObject = a();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return localObject;
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("app_id", "101480433");
+      ((JSONObject)localObject).put("download_url", b(paramAppRuntime, "sp_key_kb_download_url"));
+      if (a())
+      {
+        i = 1;
+        ((JSONObject)localObject).put("download_finished", i);
+        if (!b(paramAppRuntime, "sp_key_enable_pre_download")) {
+          break label90;
+        }
+      }
+      label90:
+      for (int i = 1;; i = 0)
+      {
+        ((JSONObject)localObject).put("enable_predownload", i);
+        paramAppRuntime = ((JSONObject)localObject).toString();
+        return paramAppRuntime;
+        i = 0;
+        break;
+      }
+      return "";
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[queryKBDownloadInfo] ", paramAppRuntime);
+    }
+  }
+  
+  public static void a()
+  {
+    int i = new Random().nextInt(5000);
+    QLog.i("KBPreDownloadUtils", 1, "[maybePDKB] delay= " + i + "ms");
+    ThreadManager.getFileThreadHandler().postDelayed(new KBPDUtils.1(), i);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    if (paramString2 == null)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[setString] val for key: " + paramString1 + " is null.");
+      return;
+    }
+    QLog.d("KBPreDownloadUtils", 2, "[setString] set: " + paramString1 + " to: " + String.valueOf(paramString2));
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[setString] sp is null");
+      return;
+    }
+    paramAppRuntime.edit().putString(paramString1, paramString2).apply();
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
+  {
+    QLog.d("KBPreDownloadUtils", 2, "[setBoolean] set: " + paramString + " to: " + paramBoolean);
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[setBoolean] sp is null");
+      return;
+    }
+    paramAppRuntime.edit().putBoolean(paramString, paramBoolean).apply();
+  }
+  
+  private static boolean a()
+  {
+    String str = b(onh.a(), "sp_key_local_apk_path");
+    QLog.d("KBPreDownloadUtils", 2, "[isPkgExist] localApkPath=" + str);
+    return (!TextUtils.isEmpty(str)) && (new File(str).exists());
+  }
+  
+  private static String b(AppRuntime paramAppRuntime, String paramString)
+  {
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[getString] sp is null");
+      return null;
+    }
+    return paramAppRuntime.getString(paramString, null);
+  }
+  
+  private static void b(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
+    if (paramContext != null)
+    {
+      a(onh.a(), "sp_key_current_app_version_name", paramContext.versionName);
+      QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] versionName: " + paramContext.versionName);
+      paramContext = bdik.a(paramString);
+      if (paramContext == null) {
+        break label129;
+      }
+    }
+    label129:
+    for (paramContext = paramContext.toLowerCase();; paramContext = null)
+    {
+      a(onh.a(), "sp_key_local_apk_path", paramString);
+      a(onh.a(), "sp_key_current_app_md5", paramContext);
+      QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] md5: " + paramContext);
+      return;
+      QLog.e("KBPreDownloadUtils", 1, "[saveVersionInfo] package info is null");
+      break;
+    }
+  }
+  
+  private static void b(String paramString1, String paramString2)
+  {
+    QLog.d("KBPreDownloadUtils", 2, "[persistDownloadInfo] url=" + paramString1 + " savedPath=" + paramString2);
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.c = "101480433";
+    localDownloadInfo.g = 2;
+    localDownloadInfo.jdField_d_of_type_JavaLangString = paramString1;
+    localDownloadInfo.l = paramString2;
+    localDownloadInfo.e = "com.tencent.reading";
+    localDownloadInfo.h = "ANDROIDQQ.QNREADING";
+    localDownloadInfo.a = false;
+    localDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
+    localDownloadInfo.jdField_d_of_type_Boolean = false;
+    localDownloadInfo.m = "biz_src_feeds_kandian";
+    bdmt.a().a(localDownloadInfo);
+  }
+  
+  private static void b(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    String str = onh.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    axrn.a(onh.a().getApplication()).a(str, "actKBPreDownload", paramBoolean, paramLong, 0L, localHashMap, null, false);
+  }
+  
+  private static boolean b(Context paramContext)
+  {
+    paramContext = b(onh.a(), "sp_key_current_app_version_name");
+    String str1 = b(onh.a(), "sp_key_latest_app_version_name");
+    String str2 = b(onh.a(), "sp_key_current_app_md5");
+    String str3 = b(onh.a(), "sp_key_latest_app_md5");
+    QLog.d("KBPreDownloadUtils", 2, "[isCurrentVersionLatest] currentAppVersion: " + paramContext + " latestAppVersion: " + str1 + " currentAppMd5: " + str2 + " latestAppMd5: " + str3);
+    if ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str1))) {}
+    do
+    {
+      return true;
+      if (!a())
+      {
+        QLog.i("KBPreDownloadUtils", 1, "[isCurrentVersionLatest] pkg not exists");
+        return false;
+      }
+      if ((str3 != null) && (str2 != null) && (!TextUtils.equals(str3.toLowerCase(), str2.toLowerCase()))) {
+        return false;
+      }
+    } while ((TextUtils.isEmpty(paramContext)) || (TextUtils.isEmpty(str1)) || (Achilles.a(paramContext, str1) >= 0));
+    return false;
+  }
+  
+  private static boolean b(AppRuntime paramAppRuntime, String paramString)
+  {
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[getBoolean] sp is null");
+      return false;
+    }
+    return paramAppRuntime.getBoolean(paramString, false);
+  }
+  
+  private static void c()
+  {
+    try
+    {
+      String str = b(onh.a(), "sp_key_local_apk_path");
+      if (str != null) {
+        bbdx.d(str);
+      }
+      for (;;)
+      {
+        bdmt.a().a("101480433");
+        return;
+        QLog.i("KBPreDownloadUtils", 1, "[clearDownloadInfo] won't delete since apkPath is null");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("KBPreDownloadUtils", 1, "[clearDownloadInfo] ", localException);
+    }
   }
 }
 

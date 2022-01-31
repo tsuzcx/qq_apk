@@ -1,15 +1,11 @@
 class shp
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  
-  public shp(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  String a;
+  String b;
+  String c;
+  String d;
+  String e;
+  String f;
 }
 
 

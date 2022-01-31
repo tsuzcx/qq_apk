@@ -1,7 +1,7 @@
 public abstract interface alot
-  extends alow
+  extends alov
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

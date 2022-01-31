@@ -3,7 +3,6 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class akdy
   extends BroadcastReceiver
@@ -13,25 +12,14 @@ public class akdy
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (this.a.l) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
+      }
     }
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (axch)this.a.getManager(10);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
+    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
       return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((avfa)this.a.getManager(104)).b();
+    }
+    QQAppInterface.a(this.a, paramIntent);
   }
 }
 

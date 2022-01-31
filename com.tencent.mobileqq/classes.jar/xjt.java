@@ -1,113 +1,163 @@
-import android.os.Bundle;
-import android.support.v4.util.ArrayMap;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.util.List;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class xjt
-  extends ProxyWebViewClientExtension
+public class xjt
+  extends WebViewPlugin
 {
-  private ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  private final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static xjt jdField_a_of_type_Xjt;
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
+  protected final byte a;
+  protected SensorManager a;
+  protected xju a;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
   
-  public xjt(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView)
+  public xjt()
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    this.jdField_a_of_type_Byte = 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 2, "init");
+    }
+    jdField_a_of_type_Xjt = this;
   }
   
-  private void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  public static final void b()
   {
-    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
-    if (localWebViewPluginEngine != null)
+    b = true;
+    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startRender. isStartRender = " + b);
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      jdField_a_of_type_Xjt.callJs(jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true) });
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 1, "stop motion");
+    }
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Xju != null))
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Xju);
+      this.jdField_a_of_type_Xju = null;
+    }
+    jdField_a_of_type_Boolean = false;
+    b = false;
+  }
+  
+  public void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime notifyRenderReady. callbackStartRender = " + jdField_a_of_type_JavaLangString);
+    paramString = this.mRuntime.a();
+    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
+      ((ScanTorchActivity)paramString).i();
+    }
+  }
+  
+  public final boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 1, "start motion");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    int i;
+    if (albf.a())
+    {
+      i = 15;
+      localObject = ((SensorManager)localObject).getSensorList(i);
+      Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+      if ((((List)localObject).size() <= 0) || (localSensor == null)) {
+        break label211;
       }
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
-      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
+      localObject = (Sensor)((List)localObject).get(0);
+      if (this.jdField_a_of_type_Xju != null) {
+        a();
+      }
+      this.jdField_a_of_type_Xju = new xju(this, (byte)3, paramString);
+      if (!Build.MODEL.equalsIgnoreCase("Nexus 5X")) {
+        break label194;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Xju, (Sensor)localObject, 3);
+      label141:
+      if (QLog.isColorLevel()) {
+        QLog.d("ARTransparentWebviewPlugin", 2, "support gyroscope");
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    for (;;)
+    {
+      jdField_a_of_type_Boolean = true;
+      QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startMotion. isRenderReady = " + jdField_a_of_type_Boolean);
+      return true;
+      i = 11;
+      break;
+      label194:
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Xju, (Sensor)localObject, 1);
+      break label141;
+      label211:
+      callJs(paramString, new String[] { "false" });
+      if (QLog.isColorLevel()) {
+        QLog.d("ARTransparentWebviewPlugin", 2, "not support gyroscope");
+      }
     }
-    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
   }
   
-  public void computeScroll(View paramView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle)
-  {
-    bcfe localbcfe = (bcfe)this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a.a(16);
-    if (localbcfe != null) {
-      return localbcfe.a(paramString, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    return null;
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
-      a(paramObject1, paramObject2, paramObject3, paramObject4);
+    if ("sensor".equals(paramString2))
+    {
+      if ("startMotion".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+          return a(paramJsBridgeListener.optString("callback"));
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return false;
+        }
+      }
+      if ("stopMotion".equals(paramString3))
+      {
+        a();
+        return true;
+      }
+      if ("notifyRenderReady".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+          a(paramJsBridgeListener.optString("callback"));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return false;
+        }
+      }
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
     }
-    return null;
-  }
-  
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
-  }
-  
-  public void onPrefetchResourceHit(boolean paramBoolean)
-  {
-    QLog.i("WebLog_WebViewBase", 1, "now prefetchResource is hit: " + paramBoolean);
-  }
-  
-  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
-  {
-    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
-  }
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
-  }
-  
-  public void onUrlChange(String paramString1, String paramString2)
-  {
-    SwiftBrowserCookieMonster.d();
-    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a(paramString1, paramString2);
-  }
-  
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

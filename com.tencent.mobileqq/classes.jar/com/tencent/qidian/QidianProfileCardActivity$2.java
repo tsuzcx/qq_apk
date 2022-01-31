@@ -1,8 +1,8 @@
 package com.tencent.qidian;
 
-import ajtk;
-import ajxn;
-import auuw;
+import ajti;
+import ajxl;
+import auuy;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,7 +15,7 @@ class QidianProfileCardActivity$2
   
   public void run()
   {
-    Object localObject2 = this.this$0.jdField_a_of_type_Ajxn.e(this.a);
+    Object localObject2 = this.this$0.jdField_a_of_type_Ajxl.e(this.a);
     String str1 = "";
     Object localObject1 = str1;
     if (localObject2 != null)
@@ -27,16 +27,16 @@ class QidianProfileCardActivity$2
         localObject1 = str1;
         if (((Friends)localObject2).remark.equals(((Friends)localObject2).name))
         {
-          localObject1 = this.this$0.jdField_a_of_type_Ajtk;
+          localObject1 = this.this$0.jdField_a_of_type_Ajti;
           localObject2 = this.this$0.app.getCurrentAccountUin();
-          String str2 = this.this$0.jdField_a_of_type_Auuw.a.a;
-          long l = ProfileActivity.a(this.this$0.jdField_a_of_type_Auuw.a, false);
-          ((ajtk)localObject1).a((String)localObject2, str2, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
+          String str2 = this.this$0.jdField_a_of_type_Auuy.a.a;
+          long l = ProfileActivity.a(this.this$0.jdField_a_of_type_Auuy.a, false);
+          ((ajti)localObject1).a((String)localObject2, str2, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
           localObject1 = str1;
         }
       }
     }
-    this.this$0.jdField_a_of_type_Auuw.a.i = ((String)localObject1);
+    this.this$0.jdField_a_of_type_Auuy.a.i = ((String)localObject1);
   }
 }
 

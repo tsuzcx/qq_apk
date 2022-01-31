@@ -1,32 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
-public class bjdy
-  implements bjdz
+public abstract interface bjdy
 {
-  private File a;
+  public abstract void a();
   
-  public void a()
-  {
-    try
-    {
-      bjed localbjed = (bjed)bjae.a().c(10);
-      localbjed.a(this.a);
-      localbjed.a(7000.0F);
-      localbjed.c();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("HumVoiceRecognizer", 2, "recognize: invoked. info: throwable = " + localThrowable);
-    }
-  }
+  public abstract void a(int paramInt, MusicItemInfo paramMusicItemInfo);
   
-  public void a(File paramFile)
-  {
-    this.a = paramFile;
-  }
+  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  
+  public abstract void b(int paramInt, MusicItemInfo paramMusicItemInfo);
+  
+  public abstract void b(MusicItemInfo paramMusicItemInfo);
+  
+  public abstract void c(int paramInt, MusicItemInfo paramMusicItemInfo);
+  
+  public abstract void d(int paramInt, MusicItemInfo paramMusicItemInfo);
 }
 
 

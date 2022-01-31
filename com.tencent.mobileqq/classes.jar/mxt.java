@@ -1,18 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-class mxt
-  extends akav
+public class mxt
+  implements INetInfoHandler
 {
-  mxt(mxq parammxq) {}
+  protected WeakReference<mxn> a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public mxt(mxn parammxn)
   {
-    if (105 == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
-      }
-      this.a.notifyUI(105, true, paramObject);
+    this.a = new WeakReference(parammxn);
+  }
+  
+  public void onNetMobile2None()
+  {
+    mxn localmxn = (mxn)this.a.get();
+    if (localmxn != null) {
+      localmxn.a = 2;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    mxn localmxn = (mxn)this.a.get();
+    if (localmxn != null) {
+      localmxn.a = 2;
     }
   }
 }

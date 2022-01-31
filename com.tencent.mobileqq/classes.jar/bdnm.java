@@ -1,22 +1,12 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-
-public class bdnm
+public abstract class bdnm
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
-  {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.length() != 0) {}
-    }
-    else
-    {
-      str = "sdk_preference";
-    }
-    return paramContext.getSharedPreferences(str, 4);
-  }
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

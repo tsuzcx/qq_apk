@@ -1,32 +1,32 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
 
-public final class andf
-  extends ampb<ande>
+public class andf
+  extends ampa<ande>
 {
-  public static void b()
+  public static ande a()
   {
-    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
-    ande.a(false, (ande)ampm.a().a(501));
+    return (ande)ampl.a().a(344);
   }
   
   public int a()
   {
-    return 501;
+    return 344;
   }
   
   @NonNull
   public ande a(int paramInt)
   {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
     return new ande();
   }
   
   @Nullable
-  public ande a(ampi[] paramArrayOfampi)
+  public ande a(amph[] paramArrayOfamph)
   {
-    return ande.a(paramArrayOfampi);
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return ande.a(paramArrayOfamph);
+    }
+    return null;
   }
   
   public Class<ande> a()
@@ -34,21 +34,9 @@ public final class andf
     return ande.class;
   }
   
-  public void a(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
+  public void a(int paramInt) {}
   
-  public void a(ande paramande)
-  {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
-    ande.a(true, paramande);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public void a(ande paramande) {}
   
   public int b()
   {
@@ -62,7 +50,7 @@ public final class andf
   
   public boolean c()
   {
-    return true;
+    return false;
   }
 }
 

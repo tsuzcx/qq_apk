@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.data;
 
-import biqk;
-import biqn;
-import biqy;
+import birb;
+import bire;
+import birp;
 import com.tencent.common.app.AppInterface;
 
 public class AEMaterialManager$3
   implements Runnable
 {
-  public AEMaterialManager$3(biqk parambiqk, AppInterface paramAppInterface, String paramString, biqn parambiqn, biqy parambiqy) {}
+  public AEMaterialManager$3(birb parambirb, AppInterface paramAppInterface, String paramString, bire parambire, birp parambirp) {}
   
   public void run()
   {
-    biqk.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Biqn, this.jdField_a_of_type_Biqy);
+    birb.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bire, this.jdField_a_of_type_Birp);
   }
 }
 

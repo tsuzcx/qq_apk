@@ -10,18 +10,18 @@ public class ek
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Ajuo.a != null)
+    if (this.a.jdField_a_of_type_Ajum.a != null)
     {
-      List localList = this.a.jdField_a_of_type_Ajuo.a.a();
+      List localList = this.a.jdField_a_of_type_Ajum.a.a();
       if ((localList == null) || (localList.size() > 0)) {
         break label79;
       }
-      this.a.findViewById(2131365660).setVisibility(0);
+      this.a.findViewById(2131365659).setVisibility(0);
       this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Ajuo.a.a();
+      this.a.jdField_a_of_type_Ajum.a.a();
       return;
       label79:
       PrinterSubOptionActivity.a(this.a);

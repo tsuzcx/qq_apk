@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import beka;
+import bekr;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class RewardedVideoAdPlugin$2
   implements Runnable
 {
-  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, beka parambeka) {}
+  RewardedVideoAdPlugin$2(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, String paramString, boolean paramBoolean, bekr parambekr) {}
   
   public void run()
   {

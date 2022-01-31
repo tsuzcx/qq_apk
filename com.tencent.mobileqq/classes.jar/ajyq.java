@@ -1,16 +1,6 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-final class ajyq
-  implements DialogInterface.OnDismissListener
+public abstract interface ajyq
 {
-  ajyq(Activity paramActivity, int paramInt) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
-  }
+  public abstract void a();
 }
 
 

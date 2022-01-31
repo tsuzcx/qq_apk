@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
-import bbct;
-import bbjw;
-import bcpw;
+import bbdh;
+import bbkk;
+import bcql;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
@@ -30,9 +30,9 @@ import com.tencent.smtt.sdk.WebSettings.PluginState;
 import com.tencent.smtt.sdk.WebView;
 import java.io.File;
 import java.util.Set;
-import nae;
+import nab;
 import org.json.JSONObject;
-import vyi;
+import vyf;
 
 public class ProgressWebView
   extends WebView
@@ -67,7 +67,7 @@ public class ProgressWebView
   public int htmlId;
   private Activity mActivity;
   private AppBrandRuntime mAppBrandRuntime;
-  private nae mFileChooserHelper;
+  private nab mFileChooserHelper;
   private String miniAppWebviewStr;
   private Set<String> supportApiMap;
   private WebView webView;
@@ -77,7 +77,7 @@ public class ProgressWebView
     super(paramActivity);
     this.mActivity = paramActivity;
     paramActivity = getSettings();
-    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bbct.c() + " miniProgram miniprogramhtmlwebview");
+    paramActivity.setUserAgent(paramActivity.getUserAgentString() + " QQ/" + bbdh.c() + " miniProgram miniprogramhtmlwebview");
     paramActivity.setSavePassword(false);
     paramActivity.setSaveFormData(false);
     paramActivity.setBuiltInZoomControls(true);
@@ -179,12 +179,12 @@ public class ProgressWebView
     if ((this.mActivity == null) || (this.mActivity.isFinishing()))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of mActivity is empty");
-      bcpw.a(this.mActivity, 1, ajyc.a(2131708509), 0).a();
+      bcql.a(this.mActivity, 1, ajya.a(2131708520), 0).a();
     }
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of sourceUrl is empty");
-      bcpw.a(this.mActivity, 1, ajyc.a(2131708512), 0).a();
+      bcql.a(this.mActivity, 1, ajya.a(2131708523), 0).a();
       return;
     }
     Object localObject;
@@ -394,20 +394,20 @@ public class ProgressWebView
     {
       Object localObject = new File(paramString);
       localObject = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject).getName();
-      if (vyi.a(this.mActivity, paramString, (String)localObject))
+      if (vyf.a(this.mActivity, paramString, (String)localObject))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ProgressWebView", 2, "savaPicToAlbum success.");
         }
-        bcpw.a(this.mActivity, 2, ajyc.a(2131708499), 0).a();
+        bcql.a(this.mActivity, 2, ajya.a(2131708510), 0).a();
         return;
       }
       QLog.e("ProgressWebView", 1, "savaPicToAlbum failed.");
-      bcpw.a(this.mActivity, 1, ajyc.a(2131708502), 0).a();
+      bcql.a(this.mActivity, 1, ajya.a(2131708513), 0).a();
       return;
     }
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed. activity error.");
-    bcpw.a(this.mActivity, 1, ajyc.a(2131708506), 0).a();
+    bcql.a(this.mActivity, 1, ajya.a(2131708517), 0).a();
   }
   
   private void sharePicToQQ(String paramString)
@@ -418,7 +418,7 @@ public class ProgressWebView
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of sourceUrl is empty");
-      bcpw.a(this.mActivity, 1, ajyc.a(2131708510), 0).a();
+      bcql.a(this.mActivity, 1, ajya.a(2131708521), 0).a();
       return;
     }
     Object localObject;
@@ -487,7 +487,7 @@ public class ProgressWebView
   public void init(AppBrandRuntime paramAppBrandRuntime)
   {
     this.mAppBrandRuntime = paramAppBrandRuntime;
-    if (bbjw.a(this.miniAppWebviewStr)) {
+    if (bbkk.a(this.miniAppWebviewStr)) {
       this.miniAppWebviewStr = AppLoaderFactory.getAppLoaderManager().getMiniAppWebviewStr();
     }
     this.webView = this;

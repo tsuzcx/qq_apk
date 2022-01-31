@@ -1,20 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
-
-public class awfh
-  extends awey
+public abstract interface awfh
 {
-  public awfh(LikesView paramLikesView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
-      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

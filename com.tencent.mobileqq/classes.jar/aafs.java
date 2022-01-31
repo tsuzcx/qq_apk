@@ -1,62 +1,86 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import com.tencent.mobileqq.activity.AccountManageActivity.4.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import mqq.os.MqqHandler;
 
 public class aafs
   implements View.OnClickListener
 {
-  public aafs(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
+  public aafs(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    QLog.flushLog();
-    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364181)).isChecked();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131718625), "qqsetting_receivemsg_whenexit_key", bool);
-    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().b();
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().a();
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
-    paramView.putInt("unread", i + j);
-    paramView.commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
-    com.tencent.mobileqq.activity.MainFragment.c = true;
-    if (QQPlayerService.a())
-    {
-      paramView = new Intent();
-      paramView.setAction("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast(paramView);
-    }
-    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
-    paramView = new Intent("QQ_ACTION_MENU_QUIT");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
-    paramView.addFlags(67108864);
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity(paramView);
-      label265:
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
+    if (!this.a.b) {
       return;
     }
-    catch (Exception paramView)
+    paramView = this.a;
+    boolean bool;
+    label102:
+    int i;
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      break label265;
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label214;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692601);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166933));
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = 0;
+      label173:
+      if (i >= j) {
+        break label321;
+      }
+      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if ((paramView != null) && (paramView.getTag() != null)) {
+        break label274;
+      }
     }
+    for (;;)
+    {
+      i += 1;
+      break label173;
+      bool = false;
+      break;
+      label214:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131691961);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166862));
+      break label102;
+      label274:
+      paramView = paramView.findViewById(2131370650);
+      if (paramView != null)
+      {
+        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
+        paramView.setLayoutParams(localLayoutParams);
+      }
+    }
+    label321:
+    this.a.b();
+    this.a.a(this.a.jdField_a_of_type_Boolean);
+    this.a.b = false;
+    AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.4.1(this), 400L);
   }
 }
 

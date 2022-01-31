@@ -1,57 +1,133 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aahu
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public aahu(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt) {}
+  int jdField_a_of_type_Int;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  int b;
+  int c;
   
-  public void onClick(View paramView)
+  public aahu(int paramInt, EditText paramEditText)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    String str2 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    Object localObject2;
+    String str3;
+    String str1;
+    Object localObject1;
+    if (str2.getBytes().length > this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      localObject2 = "";
+      str3 = "";
+      str1 = "";
+      paramEditable = str1;
+      localObject1 = str3;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length() > 30)
+    try
     {
-      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131755791);
-      paramView.setContentView(2131562356);
-      ((TextView)paramView.findViewById(2131365147)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691095));
-      ((ProgressBar)paramView.findViewById(2131366570)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131378673)).setImageResource(2130839317);
-      paramView.show();
-    }
-    for (;;)
-    {
-      return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131692078).equals(paramView)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      if (this.jdField_a_of_type_Int == 0) {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800796F", "0X800796F", 0, 0, "", "", "", "");
-      }
-      while (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c))
+      String str4 = str2.substring(0, this.b);
+      paramEditable = str1;
+      localObject1 = str3;
+      localObject2 = str4;
+      String str5 = str2.substring(this.b + this.c, str2.length());
+      paramEditable = str1;
+      localObject1 = str5;
+      localObject2 = str4;
+      str1 = str2.substring(this.b, this.b + this.c);
+      paramEditable = str1;
+      localObject1 = str5;
+      localObject2 = str4;
+      if (str4.getBytes().length + str5.getBytes().length <= this.jdField_a_of_type_Int)
       {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-        return;
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8007976", "0X8007976", 0, 0, "", "", "", "");
+        for (;;)
+        {
+          paramEditable = str1;
+          localObject1 = str5;
+          localObject2 = str4;
+          if (str2.getBytes().length <= this.jdField_a_of_type_Int) {
+            break;
+          }
+          paramEditable = str1;
+          localObject1 = str5;
+          localObject2 = str4;
+          if (str1.length() <= 0) {
+            break;
+          }
+          paramEditable = str1;
+          localObject1 = str5;
+          localObject2 = str4;
+          str1 = str1.substring(0, str1.length() - 1);
+          paramEditable = str1;
+          localObject1 = str5;
+          localObject2 = str4;
+          str2 = str4 + str1 + str5;
+        }
+        paramEditable = str1;
+        localObject1 = str5;
+        localObject2 = str4;
+        byte[] arrayOfByte = String.valueOf(str2.charAt(str2.length() - 1)).getBytes("UTF-16BE");
+        str3 = str2;
+        paramEditable = str1;
+        localObject1 = str5;
+        localObject2 = str4;
+        if (arrayOfByte.length == 2)
+        {
+          str3 = str2;
+          paramEditable = str1;
+          localObject1 = str5;
+          localObject2 = str4;
+          if (str2.length() > 1)
+          {
+            int i = (char)(arrayOfByte[0] & 0xFF);
+            i = (char)((char)(arrayOfByte[1] & 0xFF) | i << 8);
+            str3 = str2;
+            if (i >= 55296)
+            {
+              str3 = str2;
+              if (i <= 55359)
+              {
+                paramEditable = str1;
+                localObject1 = str5;
+                localObject2 = str4;
+                str3 = str2.substring(0, str2.length() - 1);
+              }
+            }
+          }
+        }
+        paramEditable = str1;
+        localObject1 = str5;
+        localObject2 = str4;
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(str3);
+        paramEditable = str1;
+        localObject1 = str5;
+        localObject2 = str4;
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str3.length());
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("AddFriendVerifyActivity", 2, "afterTextChanged, headStr:" + (String)localObject2 + ", tailStr = " + (String)localObject1 + ", insert = " + paramEditable, localThrowable);
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.b = paramInt1;
+    this.c = paramInt3;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

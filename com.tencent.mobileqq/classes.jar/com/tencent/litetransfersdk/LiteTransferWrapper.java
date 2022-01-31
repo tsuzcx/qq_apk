@@ -2,8 +2,8 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import apti;
-import aysy;
+import aptm;
+import ayta;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
@@ -91,7 +91,7 @@ public class LiteTransferWrapper
   
   public static int getNetType()
   {
-    return aysy.a().a();
+    return ayta.a().a();
   }
   
   public void CancelAll(int paramInt, boolean paramBoolean)
@@ -390,26 +390,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(apti.a().b());
+      File localFile = new File(aptm.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(apti.a().b());
-      localFile = new File(apti.a().d());
+      SetDefaultPath(aptm.a().b());
+      localFile = new File(aptm.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(apti.a().d());
-      localFile = new File(apti.a().c());
+      SetThumbPath(aptm.a().d());
+      localFile = new File(aptm.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(apti.a().c());
-      localFile = new File(apti.a().c());
+      SetTempPath(aptm.a().c());
+      localFile = new File(aptm.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(apti.a().c());
+      SetThumbTempPath(aptm.a().c());
       return;
     }
     catch (Exception localException) {}

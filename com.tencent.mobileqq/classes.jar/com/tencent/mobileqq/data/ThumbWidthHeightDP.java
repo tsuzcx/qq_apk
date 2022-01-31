@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import actn;
+import actj;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import aywk;
+import aywm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
@@ -30,8 +30,8 @@ public class ThumbWidthHeightDP
   
   public static ThumbWidthHeightDP getThumbWidthHeightDP(boolean paramBoolean)
   {
-    int i = aywk.d(paramBoolean);
-    int j = aywk.c(paramBoolean);
+    int i = aywm.d(paramBoolean);
+    int j = aywm.c(paramBoolean);
     return new ThumbWidthHeightDP(i, i, j, j);
   }
   
@@ -52,25 +52,25 @@ public class ThumbWidthHeightDP
     {
       f3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
       i8 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().densityDpi;
-      j = aywk.b(paramBoolean);
-      i = aywk.b(paramBoolean);
-      k = aywk.a(paramBoolean);
-      m = aywk.a(paramBoolean);
+      j = aywm.b(paramBoolean);
+      i = aywm.b(paramBoolean);
+      k = aywm.a(paramBoolean);
+      m = aywm.a(paramBoolean);
       if (paramThumbWidthHeightDP != null)
       {
-        j = actn.a(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
-        i = actn.a(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
-        k = actn.a(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
-        m = actn.a(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
+        j = actj.a(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
+        i = actj.a(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
+        k = actj.a(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
+        m = actj.a(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
       }
       i6 = paramBitmap.getWidth();
       i7 = paramBitmap.getHeight();
       paramDownloadParams = new Paint(1);
       paramDownloadParams.setColor(-16777216);
-      i5 = aywk.d(paramBoolean);
-      i4 = aywk.d(paramBoolean);
-      i3 = aywk.c(paramBoolean);
-      i2 = aywk.c(paramBoolean);
+      i5 = aywm.d(paramBoolean);
+      i4 = aywm.d(paramBoolean);
+      i3 = aywm.c(paramBoolean);
+      i2 = aywm.c(paramBoolean);
       if (paramThumbWidthHeightDP == null) {
         break label449;
       }
@@ -97,7 +97,7 @@ public class ThumbWidthHeightDP
     for (;;)
     {
       label240:
-      paramThumbWidthHeightDP = Bitmap.createBitmap(j, i, aywk.b);
+      paramThumbWidthHeightDP = Bitmap.createBitmap(j, i, aywm.b);
       paramThumbWidthHeightDP.setDensity(i8);
       new Canvas(paramThumbWidthHeightDP).drawBitmap(paramBitmap, new Rect(0, 0, i1, n), new Rect(0, 0, j, i), paramDownloadParams);
       return new RoundRectBitmap(paramThumbWidthHeightDP, 12.0F * f3);
@@ -163,12 +163,12 @@ public class ThumbWidthHeightDP
   
   public int maxPx()
   {
-    return actn.a((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return actj.a((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public int minPx()
   {
-    return actn.a((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return actj.a((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public String toString()

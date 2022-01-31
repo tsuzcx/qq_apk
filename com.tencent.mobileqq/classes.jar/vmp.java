@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
 
 class vmp
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  vmp(vmj paramvmj) {}
+  private vmp(vmg paramvmg) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.dismiss();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 4);
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
     }
-    vem.a("0X80076C6");
-    vem.b("0X80075DA");
+    this.a.jdField_a_of_type_Vmn.a(this.a.a());
   }
 }
 

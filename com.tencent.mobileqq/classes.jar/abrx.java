@@ -1,6 +1,16 @@
-public abstract interface abrx
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+
+public class abrx
+  extends WebViewClient
 {
-  public abstract void a();
+  public abrx(PreloadWebService paramPreloadWebService) {}
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return true;
+  }
 }
 
 

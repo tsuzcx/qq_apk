@@ -1,43 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import org.json.JSONObject;
 
-final class bfhp
-  extends bfht
+public class bfhp
 {
-  bfhp(bfho parambfho)
+  public static int a()
   {
-    super(null);
+    return bema.a("MiniGame", "MiniGameBannerAdMinWidth", 300);
   }
   
-  public boolean a(String paramString, bfim parambfim)
+  public static BaseLibInfo a()
   {
-    if (this.a.size() >= this.a.maxSize())
-    {
-      bfho.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+    Object localObject = bema.a("MiniGame", "MiniGameBaseLib", "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20190708174635_6988/lib-1.4.7.zip\",\"key2\":\"\",\"key3\":\"1.4.7\",\"key4\": {\"file_length\": 6336933},\"key5\":2}");
+    betc.b("minigame", "MiniEng getWnsGameBaseLibInfo " + (String)localObject);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
+      {
+        localObject = BaseLibInfo.fromJSON(new JSONObject((String)localObject));
+        return localObject;
       }
-      return false;
-    }
-    if (parambfim.a > new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambfim.toString() }));
-      }
-      this.a.put(paramString, parambfim);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambfim.toString() }));
+      catch (Exception localException)
+      {
+        betc.d("minigame", "MiniEng getWnsGameBaseLibInfo failed", localException);
       }
     }
+    return null;
+  }
+  
+  public static String a()
+  {
+    return bema.a("MiniGame", "MiniGameDefaultShareImg", "https://qzonestyle.gtimg.cn/aoi/sola/20190510161934_LYAUVguqnV.png");
+  }
+  
+  public static String a(String paramString)
+  {
+    return bema.a("MiniGame", "MiniGameEngineVersion", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfhp
  * JD-Core Version:    0.7.0.1
  */

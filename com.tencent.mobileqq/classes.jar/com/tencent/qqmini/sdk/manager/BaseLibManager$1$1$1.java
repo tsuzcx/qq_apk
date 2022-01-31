@@ -1,39 +1,39 @@
 package com.tencent.qqmini.sdk.manager;
 
-import besl;
-import besn;
-import beso;
-import besz;
-import beub;
+import betc;
+import bete;
+import betf;
+import betq;
+import beus;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 import org.json.JSONObject;
 
 public class BaseLibManager$1$1$1
   implements Runnable
 {
-  public BaseLibManager$1$1$1(beso parambeso, JSONObject paramJSONObject) {}
+  public BaseLibManager$1$1$1(betf parambetf, JSONObject paramJSONObject) {}
   
   public void run()
   {
     BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(2)));
     JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON(localJSONObject);
-    besl.b("miniapp-process_BaseLibManager", "[MiniEng] gameEngineLib " + localBaseLibInfo2 + ", miniAppEnginLib " + localJSONObject);
-    if (!beub.a().b()) {
+    betc.b("miniapp-process_BaseLibManager", "[MiniEng] gameEngineLib " + localBaseLibInfo2 + ", miniAppEnginLib " + localJSONObject);
+    if (!beus.a().b()) {
       if (localBaseLibInfo2 != null) {
-        besz.a().a(localBaseLibInfo2, null);
+        betq.a().a(localBaseLibInfo2, null);
       }
     }
     for (;;)
     {
       if (localBaseLibInfo1 != null) {
-        besz.a().a(localBaseLibInfo1, null);
+        betq.a().a(localBaseLibInfo1, null);
       }
       return;
-      localBaseLibInfo2 = besn.a();
-      besl.b("miniapp-process_BaseLibManager", "[MiniEng]MiniEng QQSpeed gameEngineLib " + localBaseLibInfo2);
+      localBaseLibInfo2 = bete.a();
+      betc.b("miniapp-process_BaseLibManager", "[MiniEng]MiniEng QQSpeed gameEngineLib " + localBaseLibInfo2);
       if ((localBaseLibInfo2 != null) && (localBaseLibInfo2.baseLibType == 2)) {
-        besz.a().a(localBaseLibInfo2, null);
+        betq.a().a(localBaseLibInfo2, null);
       }
     }
   }

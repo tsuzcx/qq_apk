@@ -1,21 +1,17 @@
-import com.tencent.image.URLDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class accm
+class accm
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  accm(accj paramaccj, int paramInt) {}
   
-  public accm(acck paramacck, String paramString1, String paramString2, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Boolean = false;
+    paramView = axmq.b[this.jdField_a_of_type_Accj.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int];
+    if (!aylh.a(accg.a(this.jdField_a_of_type_Accj.a), paramView, new accn(this))) {
+      accj.a(this.jdField_a_of_type_Accj, this.jdField_a_of_type_Int);
+    }
   }
 }
 

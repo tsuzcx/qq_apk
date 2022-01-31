@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
 
-class uaf
-  implements DialogInterface.OnClickListener
+public class uaf
+  implements tyw
 {
-  uaf(uae paramuae) {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

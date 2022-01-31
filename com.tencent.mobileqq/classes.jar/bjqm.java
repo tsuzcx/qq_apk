@@ -1,67 +1,26 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
 public class bjqm
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  private bjqn jdField_a_of_type_Bjqn;
-  private bjqq jdField_a_of_type_Bjqq;
-  public String a;
-  public int b = 100;
-  public int c = 2;
-  private int d;
+  public bjqm(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public bjqm(int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = 10000;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public bjqn a()
-  {
-    return this.jdField_a_of_type_Bjqn;
-  }
-  
-  public bjqq a()
-  {
-    return this.jdField_a_of_type_Bjqq;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void a(bjqn parambjqn)
-  {
-    this.jdField_a_of_type_Bjqn = parambjqn;
-    if (parambjqn.a() != null) {
-      this.b = parambjqn.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation  140ms translate end");
     }
+    this.a.a.d = 4;
   }
   
-  public void a(bjqq parambjqq)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Bjqq = parambjqq;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public int c()
-  {
-    return this.b;
+    this.a.a.a = SystemClock.uptimeMillis();
+    this.a.a.b = 140L;
   }
 }
 

@@ -1,57 +1,33 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-final class ajzx
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public class ajzx
+  implements ajtd
 {
-  public void onThreadMonitorEnd(int paramInt)
+  private List<String> a = new ArrayList();
+  
+  public List<String> a(AppInterface paramAppInterface)
   {
-    if (paramInt == 0)
-    {
-      Looper.getMainLooper().setMessageLogging(null);
-      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
     }
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("AutoMonitor", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
-      return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
+    }
   }
 }
 

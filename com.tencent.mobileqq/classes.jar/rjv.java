@@ -1,8 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 
-public abstract interface rjv
+public final class rjv
+  implements Parcelable.Creator<AdData>
 {
-  public abstract void a(int paramInt, View paramView);
+  public AdData a(Parcel paramParcel)
+  {
+    return new AdData(paramParcel);
+  }
+  
+  public AdData[] a(int paramInt)
+  {
+    return new AdData[paramInt];
+  }
 }
 
 

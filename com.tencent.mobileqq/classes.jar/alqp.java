@@ -1,26 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.6;
-
-public class alqp
-  implements DialogInterface.OnClickListener
+abstract interface alqp
 {
-  public alqp(ArkAppYYBDownloadModule.6 param6) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      bdgv.a().a(10, this.a.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

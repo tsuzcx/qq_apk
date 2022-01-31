@@ -1,25 +1,16 @@
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageForStarLeague;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aeba
-  implements View.OnClickListener
+public class aeba
+  extends StructingMsgItemBuilder
 {
-  aeba(aeaz paramaeaz) {}
-  
-  public void onClick(View paramView)
+  public aeba(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((aebb)actn.a(paramView)).a;
-    if (!asji.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
-      paramView.getContext().startActivity(localIntent);
-    }
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
 }
 

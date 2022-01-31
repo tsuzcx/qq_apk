@@ -1,17 +1,9 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
-
-class adct
-  implements View.OnClickListener
+public class adct
 {
-  adct(adcs paramadcs) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a().finish();
-  }
+  long a;
+  long b;
+  long c;
+  long d;
 }
 
 

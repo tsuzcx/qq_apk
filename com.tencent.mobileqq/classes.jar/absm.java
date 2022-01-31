@@ -1,74 +1,23 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class absm
-  extends akgi
+  extends ajto
 {
-  public absm(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public absm(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
+    if (paramBoolean)
+    {
+      this.a.setResult(-1);
+      this.a.b(2131720050);
     }
     for (;;)
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bbbd.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, false);
+      this.a.a = false;
+      this.a.finish();
       return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bbbd.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
-      return;
+      this.a.b(2131720048);
     }
   }
 }

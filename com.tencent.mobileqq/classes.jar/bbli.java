@@ -1,75 +1,31 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
 
-public class bbli
-  implements View.OnTouchListener
+final class bbli
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public bbli(QQAppInterface paramQQAppInterface, boolean paramBoolean1, ImageView paramImageView, String paramString, int paramInt, boolean paramBoolean2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
+    QQAppInterface localQQAppInterface;
+    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
     {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
+      switch (paramMessage.what)
+      {
+      }
     }
     for (;;)
     {
       return true;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
-        }
-        else
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          continue;
-          if (Build.VERSION.SDK_INT >= 16) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
-          }
-          for (;;)
-          {
-            if (!this.b) {
-              break label192;
-            }
-            VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-            axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
-            break;
-            this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          }
-          label192:
-          VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        }
-      }
+      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716058), 0).a();
+      continue;
+      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716057), 0).a();
+      continue;
+      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716056), 0).a();
+      continue;
+      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716059), 0).a();
     }
   }
 }

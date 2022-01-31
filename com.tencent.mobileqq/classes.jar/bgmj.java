@@ -1,54 +1,24 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class bgmj
-  extends Binder
-  implements bgmi
+class bgmj
+  implements DialogInterface.OnClickListener
 {
-  public bgmj()
+  private String jdField_a_of_type_JavaLangString;
+  
+  private bgmj(bgmh parambgmh, String paramString)
   {
-    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static bgmi a(IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if ((localIInterface != null) && ((localIInterface instanceof bgmi))) {
-      return (bgmi)localIInterface;
-    }
-    return new bgmk(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    switch (paramInt)
     {
     default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
-      return true;
+      return;
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    this.jdField_a_of_type_Bgmh.cancelInstall(this.jdField_a_of_type_JavaLangString);
   }
 }
 

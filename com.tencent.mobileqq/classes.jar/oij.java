@@ -1,33 +1,36 @@
 import android.graphics.Color;
 import android.text.TextPaint;
+import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
+import org.jetbrains.annotations.NotNull;
 
 class oij
   extends ClickableSpan
 {
-  oij(oii paramoii, SubCommentData paramSubCommentData) {}
+  oij(oif paramoif, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onClick(@NotNull View paramView)
   {
-    ohi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
-    paramView = new ofv(this.jdField_a_of_type_Oii).a().a();
-    noo.a(null, ohi.a(this.jdField_a_of_type_Oii.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Oii.a.mArticleID), String.valueOf(this.jdField_a_of_type_Oii.a.mAlgorithmID), this.jdField_a_of_type_Oii.a.innerUniqueID, paramView, false);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
+      ohf.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
+    }
+    for (;;)
+    {
+      nol.a(null, ohf.a(this.jdField_a_of_type_Oif.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Oif.a.mArticleID), String.valueOf(this.jdField_a_of_type_Oif.a.mAlgorithmID), this.jdField_a_of_type_Oif.a.innerUniqueID, this.b, false);
+      return;
+      ohf.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void updateDrawState(@NotNull TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
-    for (String str = "#FF8444";; str = "#737373")
-    {
-      paramTextPaint.setColor(Color.parseColor(str));
-      paramTextPaint.setUnderlineText(false);
-      return;
-    }
+    paramTextPaint.setColor(Color.parseColor("#376099"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

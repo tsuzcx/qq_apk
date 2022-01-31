@@ -1,26 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-final class bjkg
-  implements ValueAnimator.AnimatorUpdateListener
+class bjkg
+  extends RecyclerView.OnScrollListener
 {
-  float jdField_a_of_type_Float = 1.0F;
-  final View jdField_a_of_type_AndroidViewView;
+  boolean jdField_a_of_type_Boolean = false;
   
-  bjkg(View paramView)
+  bjkg(bjkf parambjkf) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bjkf.a();
+    }
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    if ((paramInt1 != 0) || (paramInt2 != 0)) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

@@ -1,19 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class ovy
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ovy(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public RelativeLayout a;
+  public URLImageView a;
+  public DragTextView a;
+  public DragTextView b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ovy(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
+    this.b = paramDragTextView2;
   }
 }
 

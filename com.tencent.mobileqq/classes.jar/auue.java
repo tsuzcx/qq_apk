@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
 public final class auue
-  implements Parcelable.Creator<PersonalityLabelPhoto>
+  implements Parcelable.Creator<PersonalityLabelInfo>
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
+  public PersonalityLabelInfo a(Parcel paramParcel)
   {
-    return new PersonalityLabelPhoto(paramParcel);
+    return new PersonalityLabelInfo(paramParcel);
   }
   
-  public PersonalityLabelPhoto[] a(int paramInt)
+  public PersonalityLabelInfo[] a(int paramInt)
   {
-    return new PersonalityLabelPhoto[paramInt];
+    return new PersonalityLabelInfo[paramInt];
   }
 }
 

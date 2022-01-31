@@ -1,21 +1,48 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class uik
-  extends Job<Object, Object, Object>
+public class uik
+  extends QQUIEventReceiver<uhw, tth>
 {
-  uik(uij paramuij, String paramString, tch paramtch)
+  public uik(@NonNull uhw paramuhw)
   {
-    super(paramString);
+    super(paramuhw);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void a(@NonNull uhw paramuhw, @NonNull tth paramtth)
   {
-    ste.a().dispatch(this.jdField_a_of_type_Tch);
-    return null;
+    if (!TextUtils.equals(paramtth.b, String.valueOf(paramuhw.hashCode()))) {
+      return;
+    }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramuhw.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramuhw.l();
+    if (paramtth.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ved.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramtth.jdField_a_of_type_JavaLangString);
+      if (paramtth.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        ttf.a().a(paramuhw.b(), paramtth.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      ttf.a().a(paramuhw.b(), paramtth.jdField_a_of_type_JavaLangString, paramtth.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramuhw.hashCode());
+      return;
+    }
+    ved.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706888), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tth.class;
   }
 }
 

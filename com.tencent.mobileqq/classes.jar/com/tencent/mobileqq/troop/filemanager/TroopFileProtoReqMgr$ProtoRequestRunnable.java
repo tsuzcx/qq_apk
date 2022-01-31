@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import akaw;
-import azsf;
-import azsg;
-import azsr;
+import akau;
+import azsh;
+import azsi;
+import azst;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.NewIntent;
 
@@ -11,7 +11,7 @@ public class TroopFileProtoReqMgr$ProtoRequestRunnable
   implements Runnable
 {
   long jdField_a_of_type_Long;
-  azsg jdField_a_of_type_Azsg;
+  azsi jdField_a_of_type_Azsi;
   NewIntent jdField_a_of_type_MqqAppNewIntent;
   boolean jdField_a_of_type_Boolean = false;
   long jdField_b_of_type_Long;
@@ -27,13 +27,13 @@ public class TroopFileProtoReqMgr$ProtoRequestRunnable
   public void run()
   {
     int i = this.jdField_a_of_type_MqqAppNewIntent.getIntExtra("key_runnable_index", 0);
-    azsr.c("TroopFileProtoReqMgr", azsr.a, "cookie<" + this.jdField_a_of_type_Azsg.jdField_a_of_type_Azsf.jdField_b_of_type_Long + "> sendToMsf. scheduleIndex:" + i + " timeOut:" + this.jdField_a_of_type_Long);
+    azst.c("TroopFileProtoReqMgr", azst.a, "cookie<" + this.jdField_a_of_type_Azsi.jdField_a_of_type_Azsh.jdField_b_of_type_Long + "> sendToMsf. scheduleIndex:" + i + " timeOut:" + this.jdField_a_of_type_Long);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("timeout", this.jdField_a_of_type_Long);
-    akaw localakaw = this.jdField_a_of_type_Azsg.jdField_a_of_type_Akaw;
-    localakaw.c += 1;
-    TroopFileProtoReqMgr.a(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_Azsg);
+    akau localakau = this.jdField_a_of_type_Azsi.jdField_a_of_type_Akau;
+    localakau.c += 1;
+    TroopFileProtoReqMgr.a(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_Azsi);
     this.this$0.a(this.jdField_a_of_type_MqqAppNewIntent);
   }
 }

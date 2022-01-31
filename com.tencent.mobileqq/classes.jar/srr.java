@@ -1,48 +1,76 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.image.QQLiveDrawable.ErrorInfo;
+import com.tencent.image.QQLiveDrawable.OnDownloadListener;
+import com.tencent.image.QQLiveDrawable.OnStateListener;
+import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.lang.ref.WeakReference;
 
 class srr
-  extends Handler
+  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
 {
-  public srr(srn paramsrn, Looper paramLooper)
+  WeakReference<srk> a;
+  
+  public srr(srk paramsrk)
   {
-    super(paramLooper);
+    this.a = new WeakReference(paramsrk);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
   {
-    switch (paramMessage.what)
-    {
+    int i = -1;
+    if ((this.a.get() == null) || (srk.a((srk)this.a.get()) != 2)) {
+      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
     }
-    do
-    {
-      return;
-      veg.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
-    } while ((srn.a(this.a) != 1) || (srn.a(this.a) == null));
-    Object localObject = srn.a(this.a);
-    int i = srn.a(this.a, (List)localObject, srn.c(this.a));
-    int j = srn.a(this.a, (List)localObject, i + 1);
-    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
-    {
-      srn.b(this.a);
-      veg.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
+    while (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    srn.a(this.a, j);
-    paramMessage = (sqc)((List)localObject).get(i);
-    localObject = (sqc)((List)localObject).get(j);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, srn.a(this.a));
-    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((sqc)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, srn.a(this.a));
-    paramMessage = AnimationUtils.loadAnimation(srn.a(this.a), 2130772219);
-    paramMessage.setAnimationListener(new srs(this));
-    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
-    veg.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
+    if ((paramString2.contains("\"callBackType\":\"4\"")) && (srk.b((srk)this.a.get()) != -1))
+    {
+      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
+      if (bbfj.d(BaseApplication.getContext())) {
+        break label209;
+      }
+      srk.a((srk)this.a.get());
+    }
+    for (;;)
+    {
+      srk.a((srk)this.a.get(), i);
+      ((srk)this.a.get()).a();
+      return;
+      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (srk.b((srk)this.a.get()) == 0)) {
+        break;
+      }
+      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
+      srk.a((srk)this.a.get(), 0);
+      ((srk)this.a.get()).a();
+      return;
+      label209:
+      i = -2;
+    }
+  }
+  
+  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
+  {
+    if ((this.a.get() == null) || (srk.a((srk)this.a.get()) != 2)) {
+      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
+    }
+    while (paramInt != 5) {
+      return;
+    }
+    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
+    {
+      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
+      if ((paramString.model != 122) || (paramString.what != 204)) {}
+    }
+    for (paramInt = -1;; paramInt = -2)
+    {
+      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
+      srk.a((srk)this.a.get());
+      srk.a((srk)this.a.get(), paramInt);
+      ((srk)this.a.get()).a();
+      return;
+    }
   }
 }
 

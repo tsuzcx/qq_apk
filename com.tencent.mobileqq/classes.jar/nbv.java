@@ -1,22 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class nbv
-  extends Handler
+  implements myy
 {
-  public nbv(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public nbv(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void loaded(String paramString, int paramInt)
   {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
-    }
-    while (paramMessage.what != 291) {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    this.a.updateMicStatus((String)paramMessage.obj);
+    if (QLog.isColorLevel()) {
+      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

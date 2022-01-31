@@ -1,34 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class assa
-  implements asqh
+  implements View.OnClickListener
 {
   public assa(MultiCardFragment paramMultiCardFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (MultiCardFragment.a(this.a) != null)
-    {
-      MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      MultiCardFragment.a(this.a).setScrollState(2);
-      MultiCardFragment.a(this.a).fling(-paramInt);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (MultiCardFragment.a(this.a) != null) {
-      return MultiCardFragment.a(this.a).a();
-    }
-    return true;
   }
 }
 

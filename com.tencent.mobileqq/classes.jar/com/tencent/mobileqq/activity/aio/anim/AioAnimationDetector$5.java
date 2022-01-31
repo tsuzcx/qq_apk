@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyt;
-import acyu;
-import acyv;
+import acyq;
+import acyr;
+import acys;
 import android.graphics.drawable.Drawable;
 
 public class AioAnimationDetector$5
   implements Runnable
 {
-  public AioAnimationDetector$5(acyt paramacyt, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, acyu paramacyu) {}
+  public AioAnimationDetector$5(acyq paramacyq, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, acyr paramacyr) {}
   
   public void run()
   {
     AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
     Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (this.jdField_a_of_type_Acyu.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_Acyu.a.a)
+    if (this.jdField_a_of_type_Acyr.a == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_Acyr.a.a)
     {
       localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(0), Integer.valueOf(i) });
       return;

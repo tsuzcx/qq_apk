@@ -1,19 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 import java.util.List;
 
-public abstract interface aqwv<T>
+public class aqwv
+  implements askq<List<FontBubble>>
 {
-  public abstract int a();
+  public aqwv(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public abstract String a(Context paramContext);
-  
-  public abstract String a(FontBubble paramFontBubble);
-  
-  public abstract List<FontBubble> a(QQAppInterface paramQQAppInterface, T paramT);
-  
-  public abstract void a(akfw paramakfw);
+  public void a(List<FontBubble> paramList)
+  {
+    FontBubblePanelView.a(this.a, paramList);
+    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

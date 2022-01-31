@@ -1,7 +1,14 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
+import QMF_PROTOCAL.QmfDownstream;
+import QzoneCombine.ClientOnlineNotfiyRsp;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.WNSStream;
+import java.io.IOException;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
 
@@ -10,53 +17,72 @@ public class axcn
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int i;
-    if (paramFromServiceMsg != null)
-    {
-      i = paramFromServiceMsg.getResultCode();
-      if (i != 1000) {
-        break label83;
-      }
-      paramIntent = bhkc.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent == null) {
-        break label68;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
-      }
+    if (paramFromServiceMsg == null) {
+      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
     }
-    label68:
-    label83:
-    while (!QLog.isColorLevel())
+    for (;;)
     {
-      do
-      {
-        return;
-        i = -1;
-        break;
-      } while (!QLog.isColorLevel());
-      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
       return;
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label192;
+      }
+      Object localObject = new WNSStream();
+      paramFromServiceMsg = bbma.b(paramFromServiceMsg.getWupBuffer());
+      try
+      {
+        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg = (ClientOnlineNotfiyRsp)bggm.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
+          if (paramFromServiceMsg != null)
+          {
+            localObject = paramFromServiceMsg.AttachInfo;
+            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
+            localObject = bbea.a((byte[])localObject);
+            paramIntent = paramIntent.getStringExtra("key_uin");
+            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
+            }
+            if (Build.VERSION.SDK_INT >= 9)
+            {
+              paramFromServiceMsg.apply();
+              return;
+            }
+          }
+        }
+      }
+      catch (IOException paramIntent)
+      {
+        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
+        return;
+      }
     }
-    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    paramFromServiceMsg.commit();
+    return;
+    label192:
+    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    long l = paramIntent.getLongExtra("uin", 0L);
-    int i = paramIntent.getIntExtra("appId", 0);
-    int j = paramIntent.getIntExtra("taskId", 0);
-    Object localObject = paramIntent.getStringExtra("message");
-    bhkc localbhkc = new bhkc(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
-    localObject = localbhkc.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
+    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
+    paramIntent = paramIntent.getStringExtra("key_uin");
+    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
+    byte[] arrayOfByte = bbea.a(paramIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
+    }
+    bgxm localbgxm = new bgxm(l, arrayOfByte);
+    arrayOfByte = localbgxm.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
     {
-      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbhkc.uniKey());
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbgxm.uniKey());
       paramIntent = new byte[4];
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbhkc.uniKey());
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbgxm.uniKey());
     paramPacket.putSendData(paramIntent);
   }
 }

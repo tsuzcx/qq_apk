@@ -1,15 +1,15 @@
 package cooperation.qzone.plugin;
 
-import bhjf;
+import bhjw;
 
 public class QZonePluginManager$2
   implements Runnable
 {
-  public QZonePluginManager$2(bhjf parambhjf) {}
+  public QZonePluginManager$2(bhjw parambhjw) {}
   
   public void run()
   {
-    bhjf.a(this.this$0, false);
+    bhjw.a(this.this$0, false);
   }
 }
 

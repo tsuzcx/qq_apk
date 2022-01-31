@@ -1,9 +1,77 @@
+import android.content.Context;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.List;
 
-class aved
+public class aved
+  extends BaseAdapter
 {
-  public TextView a;
-  public TextView b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
+  
+  public aved(Context paramContext, List<PhoneContact> paramList)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560680, null);
+    avef localavef = new avef(null);
+    localavef.a = ((TextView)paramViewGroup.findViewById(2131373003));
+    localavef.b = ((TextView)paramViewGroup.findViewById(2131373002));
+    paramViewGroup.setTag(localavef);
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (avef)paramView.getTag();
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = localPhoneContact.type;
+    paramView = null;
+    if (paramInt == 0) {
+      paramView = localPhoneContact.label;
+    }
+    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
+    paramViewGroup.a.setText(paramView);
+    paramViewGroup.b.setText(localPhoneContact.mobileNo);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 20) {
+      return 20;
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = a(paramInt, paramViewGroup);
+    }
+    a(paramInt, localView, paramViewGroup);
+    return localView;
+  }
 }
 
 

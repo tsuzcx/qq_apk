@@ -1,36 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class too
-  extends syq
+  extends syn
 {
-  public List<ShareGroupItem> a;
+  public List<StoryVideoItem> a = new ArrayList();
   
-  public too(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
+  public too(qqstory_service.RspSimpleInfoList paramRspSimpleInfoList)
   {
-    super(paramRspGetShareGroupInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspGetShareGroupInfo.share_group_info_list.has())
+    super(paramRspSimpleInfoList.result);
+    paramRspSimpleInfoList = paramRspSimpleInfoList.video_list.get();
+    if (paramRspSimpleInfoList != null)
     {
-      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
-      while (paramRspGetShareGroupInfo.hasNext())
+      paramRspSimpleInfoList = paramRspSimpleInfoList.iterator();
+      while (paramRspSimpleInfoList.hasNext())
       {
-        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
-        ShareGroupItem localShareGroupItem = new ShareGroupItem();
-        localShareGroupItem.convertFrom(localShareGroupInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
+        qqstory_struct.StoryVideoSimpleInfo localStoryVideoSimpleInfo = (qqstory_struct.StoryVideoSimpleInfo)paramRspSimpleInfoList.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.net:GetSimpleInfoListResponse", localStoryVideoSimpleInfo);
+        this.a.add(localStoryVideoItem);
       }
     }
   }
   
   public String toString()
   {
-    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "GetSimpleInfoListResponse{mVideoItemList=" + this.a + '}';
   }
 }
 

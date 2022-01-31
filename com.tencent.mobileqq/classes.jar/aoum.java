@@ -1,21 +1,21 @@
+import android.app.Activity;
+import android.view.View;
+
 class aoum
-  extends aown
+  implements bfph
 {
-  aoum(aouk paramaouk, aoup paramaoup) {}
+  aoum(aoul paramaoul, String paramString, azqv paramazqv) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aoup.a(paramString2);
-      return;
-    }
-    this.jdField_a_of_type_Aoup.a(paramInt, paramString1);
+    axqy.b(this.jdField_a_of_type_Aoul.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
+    new azpv(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aoul.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aoul.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Azqv.a);
+    this.jdField_a_of_type_Aoul.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoum
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.os.Handler;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.capture.view.StoryToastView;
 
-class bjly
-  implements swm
+public class bjly
+  extends AnimatorListenerAdapter
 {
-  bjly(bjlx parambjlx) {}
+  public bjly(StoryToastView paramStoryToastView) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.b();
-    if (paramInt == 0)
-    {
-      this.a.a.a.sendEmptyMessage(3);
-      return;
-    }
-    this.a.a.a.sendEmptyMessage(5);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.setVisibility(8);
   }
 }
 

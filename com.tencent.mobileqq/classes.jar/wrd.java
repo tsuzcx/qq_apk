@@ -1,8 +1,6 @@
-public class wrd
+public abstract interface wrd<T>
 {
-  public static String a = "Initialed";
-  public static String b = "Loading";
-  public static String c = "Done";
+  public abstract void a(T... paramVarArgs);
 }
 
 

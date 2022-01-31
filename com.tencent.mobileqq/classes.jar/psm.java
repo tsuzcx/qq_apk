@@ -1,19 +1,59 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Context;
 import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class psm
-  implements View.OnTouchListener
+public class psm
+  extends pqq
 {
-  psm(psi parampsi, LinearLayout paramLinearLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public psm(Context paramContext, baxy parambaxy, ram paramram)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
+  
+  public void b()
+  {
+    super.b();
+    ((ComponentContentNoteCard)this.jdField_a_of_type_Pqp).c();
+  }
+  
+  public pqq d()
+  {
+    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+    localReadInJoyLifeCycleLinearLayout.setOrientation(1);
+    localReadInJoyLifeCycleLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentNoteCard))) {
+      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.jdField_a_of_type_Pqp);
     }
-    return false;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localReadInJoyLifeCycleLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localReadInJoyLifeCycleLinearLayout);
+    return this;
+  }
+  
+  public pqq e()
+  {
+    return this;
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentNoteCard(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ram);
+    return this;
+  }
+  
+  public pqq o()
+  {
+    super.o();
+    return this;
   }
 }
 

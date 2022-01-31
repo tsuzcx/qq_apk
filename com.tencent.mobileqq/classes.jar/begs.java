@@ -1,87 +1,68 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.ui.MiniTranslucentFragmentActivity;
+import java.util.HashMap;
+import java.util.Map;
 
 public class begs
 {
-  private static beqj a = new beqj();
+  private static begs jdField_a_of_type_Begs;
+  long jdField_a_of_type_Long = 1L;
+  Map<Long, begt> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public static void a(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
+  public static begs a()
   {
-    a(paramActivity, paramMiniAppInfo, null, null);
+    if (jdField_a_of_type_Begs == null) {
+      jdField_a_of_type_Begs = new begs();
+    }
+    return jdField_a_of_type_Begs;
   }
   
-  public static void a(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  long a()
   {
-    besl.b("minisdk-start_MiniSDK", "startMiniApp miniappInfo:" + paramMiniAppInfo);
-    beqj localbeqj = a;
-    if (paramActivity != null) {}
-    for (Context localContext = paramActivity.getApplicationContext();; localContext = null)
-    {
-      localbeqj.a(localContext);
-      a.a(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
-      return;
+    return this.jdField_a_of_type_Long % 1000L + 1L;
+  }
+  
+  public void a(int paramInt, begt parambegt)
+  {
+    long l = a();
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), parambegt);
+    parambegt = ajac.a();
+    if (parambegt != null) {
+      parambegt.a("apollo_game_av.get_av_ctrl_param", paramInt, l);
     }
   }
   
-  public static void a(Activity paramActivity, String paramString, int paramInt, ResultReceiver paramResultReceiver)
+  public void a(long paramLong, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    a(paramActivity, paramString, paramInt, new LaunchParam(), paramResultReceiver);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt, LaunchParam paramLaunchParam, ResultReceiver paramResultReceiver)
-  {
-    a(paramActivity, paramString, paramInt, null, null, paramLaunchParam, paramResultReceiver);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, LaunchParam paramLaunchParam, ResultReceiver paramResultReceiver)
-  {
-    besl.b("minisdk-start_MiniSDK", "startMiniApp appId:" + paramString1);
-    beqj localbeqj = a;
-    if (paramActivity != null) {}
-    for (Object localObject = paramActivity.getApplicationContext();; localObject = null)
+    begt localbegt;
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      localbeqj.a((Context)localObject);
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("mini_appid", paramString1);
-      paramLaunchParam.a = paramInt;
-      ((Intent)localObject).putExtra("mini_entryPath", paramString2);
-      ((Intent)localObject).putExtra("mini_envVersion", paramString3);
-      ((Intent)localObject).putExtra("mini_launch_param", paramLaunchParam);
-      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      ((Intent)localObject).putExtra("mini_receiver", paramResultReceiver);
-      MiniTranslucentFragmentActivity.a(paramActivity, (Intent)localObject, a.a());
-      paramActivity.overridePendingTransition(0, 0);
+      localbegt = (begt)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (!paramBoolean) {
+        break label62;
+      }
+      localbegt.a(paramArrayOfByte);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
       return;
+      label62:
+      localbegt.a(1, "Event");
     }
   }
   
-  public static void a(Context paramContext)
+  public void a(byte[] paramArrayOfByte, String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong, begt parambegt)
   {
-    a.a(paramContext);
-  }
-  
-  public static void a(Context paramContext, Bundle paramBundle)
-  {
-    besl.b("minisdk-start_MiniSDK", "preloadMiniApp");
-    a.a(paramContext);
-    a.a(paramContext, paramBundle);
-  }
-  
-  public static void b(Context paramContext)
-  {
-    besl.b("minisdk-start_MiniSDK", "preloadMiniApp");
-    a(paramContext, new Bundle());
+    long l = a();
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), parambegt);
+    paramString1 = ajac.a();
+    if (paramString1 != null) {
+      paramString1.a("apollo_game_av.join_av_room", paramInt1, paramInt2, paramLong, paramString2, paramArrayOfByte, l);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begs
  * JD-Core Version:    0.7.0.1
  */

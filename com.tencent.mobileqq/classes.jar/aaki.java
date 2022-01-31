@@ -1,63 +1,27 @@
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
 import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class aaki
-  extends ajtq
+  implements View.OnClickListener
 {
   public aaki(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
-    int i;
-    if (paramBoolean)
+    if (paramView.getParent() == null) {}
+    do
     {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
-      }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131699488;
-    }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
-      }
-      AssociatedAccountManageActivity.a(this.a);
-      ayao.a(this.a.app, bool2);
-      return;
-      i = 1;
-      break;
-      label128:
-      i = 2131699487;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131719856;
-      } else {
-        i = 2131719855;
-      }
-    }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
-      return;
-    }
+      do
+      {
+        return;
+        paramView = (View)paramView.getParent().getParent();
+      } while ((paramView == null) || (paramView.getTag() == null));
+      axqy.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SimpleAccount));
+    this.a.a((SimpleAccount)paramView.getTag());
   }
 }
 

@@ -1,36 +1,36 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class bazh
-  extends ajvz
+public class bazh
 {
-  bazh(bazg parambazg) {}
+  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
+  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  public bazh(int paramInt)
   {
+    paramInt = Math.max(paramInt, 5);
     if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
     }
-    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Ajvz != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Ajvz);
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bazi(this, paramInt * 1024 * 1024);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
     {
-      paramFaceInfo = this.a.b();
-      if (paramFaceInfo != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
-        return;
-      }
-      this.a.a();
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
     }
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
   }
 }
 

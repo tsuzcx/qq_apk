@@ -1,34 +1,73 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amsb
+  extends ampa<amsa>
 {
-  public int a;
-  
-  public static amsb a(String paramString)
+  public int a()
   {
-    if (paramString == null) {}
-    do
+    return 528;
+  }
+  
+  @NonNull
+  public amsa a(int paramInt)
+  {
+    return new amsa();
+  }
+  
+  @Nullable
+  public amsa a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      return null;
-      try
-      {
-        amsb localamsb = new amsb();
-        localamsb.a = new JSONObject(paramString).optInt("kDeviceManageShowMuteKey", 0);
-        QLog.d("DeviceManageConfProcessor", 2, "confBean = " + localamsb.toString());
-        return localamsb;
+      amsa localamsa = amsa.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("DeviceManageConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      return localamsa;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
+    }
     return null;
   }
   
-  public String toString()
+  public Class<amsa> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kDeviceManageShowMuteKey:").append(this.a);
-    return localStringBuilder.toString();
+    return amsa.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(amsa paramamsa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramamsa.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

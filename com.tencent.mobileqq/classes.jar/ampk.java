@@ -1,39 +1,56 @@
-final class ampk
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.Iterator;
+import java.util.Set;
+
+public class ampk
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  private final String c;
-  
-  public ampk(int paramInt, String paramString1, long paramLong, String paramString2)
+  public static amum a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
+    ampi.a().a(419, 0L, false);
+    amun localamun = new amun();
+    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
+    if (paramBaseApplicationImpl != null) {
+      try
+      {
+        paramBaseApplicationImpl = localamun.a(paramBaseApplicationImpl);
+        if (paramBaseApplicationImpl != null) {
+          return paramBaseApplicationImpl;
+        }
+      }
+      catch (Exception paramBaseApplicationImpl) {}
+    }
+    return new amum();
   }
   
-  public boolean equals(Object paramObject)
+  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (!(paramObject instanceof ampk)) {}
-    do
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
+  }
+  
+  private static amph[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    Object localObject1 = a(0L, paramBaseApplicationImpl);
+    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
+    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
+    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
+      return null;
+    }
+    localObject1 = new amph[((Set)localObject2).size()];
+    localObject2 = ((Set)localObject2).iterator();
+    int i = 0;
+    while (((Iterator)localObject2).hasNext())
     {
-      return false;
-      paramObject = (ampk)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
+      String str = (String)((Iterator)localObject2).next();
+      localObject1[i] = new amph(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
+      i += 1;
+    }
+    return localObject1;
   }
   
-  public int hashCode()
+  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
   {
-    return this.c.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
+    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
   }
 }
 

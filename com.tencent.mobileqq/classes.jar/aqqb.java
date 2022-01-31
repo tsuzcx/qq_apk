@@ -1,18 +1,11 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
-class aqqb
-  extends RecyclerView.ViewHolder
+public class aqqb
+  extends aqoo
 {
-  aqqb(aqqa paramaqqa, View paramView)
-  {
-    super(paramView);
-  }
+  public GalleryUrlImageView a;
   
-  public String toString()
-  {
-    return super.toString();
-  }
+  public aqqb(aqpt paramaqpt) {}
 }
 
 

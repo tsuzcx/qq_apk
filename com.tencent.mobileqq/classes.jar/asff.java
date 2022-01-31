@@ -1,18 +1,58 @@
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class asff
-  extends aoeu
 {
-  public asff(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  private static asff a;
   
-  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
+  public static asff a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MatchChatMsgListFragment", 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (a == null) {
+      a = new asff();
     }
-    MatchChatMsgListFragment.a(this.a, paramArrayList);
+    return a;
+  }
+  
+  public static void a()
+  {
+    if (a != null) {
+      a = null;
+    }
+  }
+  
+  public void a(aukp paramaukp, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
+  }
+  
+  public void a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
+    localTroopRemindSettingData.troopUin = paramString;
+    localTroopRemindSettingData.isOpenState = 1;
+    paramQQAppInterface.b(localTroopRemindSettingData);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
+  }
+  
+  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    paramString = (TroopRemindSettingData)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(TroopRemindSettingData.class, paramString);
+    return (paramString != null) && (paramString.isOpenState == 0);
+  }
+  
+  public void b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
   }
 }
 

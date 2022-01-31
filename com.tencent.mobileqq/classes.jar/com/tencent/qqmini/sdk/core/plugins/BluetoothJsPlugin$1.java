@@ -2,20 +2,20 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import beil;
-import beim;
-import beka;
-import besl;
+import bejc;
+import bejd;
+import bekr;
+import betc;
 
 class BluetoothJsPlugin$1
-  implements beim
+  implements bejd
 {
-  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, beka parambeka) {}
+  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, bekr parambekr) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     boolean bool = false;
-    besl.a("BluetoothJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    betc.a("BluetoothJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
     if (paramInt1 == 6)
     {
       BluetoothJsPlugin.access$002(this.this$0, false);
@@ -26,7 +26,7 @@ class BluetoothJsPlugin$1
     }
     for (;;)
     {
-      beil.a().b(this);
+      bejc.a().b(this);
       bool = true;
       return bool;
       label99:

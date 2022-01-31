@@ -1,185 +1,101 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.1;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.2;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugLogFragment;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import mqq.os.MqqHandler;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class aiwu
+  implements View.OnTouchListener
 {
-  public static final String[] a;
-  public static final String[] b;
-  public static final String[] c;
-  private WeakReference<aiwv> jdField_a_of_type_JavaLangRefWeakReference;
-  private BlockingQueue<aixd> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(100);
+  private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
-  private BlockingQueue<aixd> b;
-  private BlockingQueue<aixd> c;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
   
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Log", "Tool" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "All", "Log", "Info", "Error", "Game" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#000000", "#6a59d6", "#FF0000", "#556B2F" };
-  }
+  public aiwu(CmGameDebugView paramCmGameDebugView) {}
   
-  public aiwu()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
-    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
-  }
-  
-  public static CmGameDebugBaseFragment a(int paramInt)
-  {
-    switch (paramInt)
+    if (paramView == CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView))
     {
-    default: 
-      return new CmGameDebugLogFragment();
-    case 0: 
-      return new CmGameDebugLogFragment();
-    }
-    return new CmGameDebugToolFragment();
-  }
-  
-  private void a(aixd paramaixd)
-  {
-    if (paramaixd == null) {
-      return;
-    }
-    switch (paramaixd.a)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(paramaixd);
-      if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() == 100) {
-        this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
-      }
-      ThreadManager.getUIHandler().post(new CmGameDebugManager.1(this, paramaixd));
-      return;
-      this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.offer(paramaixd);
-      if (this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.size() == 50)
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+      this.b = ((int)paramMotionEvent.getRawY());
+      switch (paramMotionEvent.getAction())
       {
-        this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.poll();
-        continue;
-        this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.offer(paramaixd);
-        if (this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.size() == 50) {
-          this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.poll();
+      default: 
+      case 0: 
+        for (;;)
+        {
+          return true;
+          this.c = this.jdField_a_of_type_Int;
+          this.d = this.b;
+        }
+      case 2: 
+        int i = this.jdField_a_of_type_Int - this.c;
+        int j = this.b - this.d;
+        this.e = (paramView.getLeft() + i);
+        this.f = (paramView.getTop() + j);
+        this.g = (i + paramView.getRight());
+        this.h = (paramView.getBottom() + j);
+        if (this.e < 0)
+        {
+          this.e = 0;
+          this.g = (this.e + paramView.getWidth());
+          label173:
+          if (this.f >= 0) {
+            break label355;
+          }
+          this.f = 0;
+          this.h = (this.f + paramView.getHeight());
+        }
+        for (;;)
+        {
+          paramMotionEvent = (FrameLayout.LayoutParams)paramView.getLayoutParams();
+          paramMotionEvent.setMargins(this.e, this.f, 0, 0);
+          paramView.setLayoutParams(paramMotionEvent);
+          if ((!this.jdField_a_of_type_Boolean) && ((Math.abs(this.jdField_a_of_type_Int - this.c) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F) || (Math.abs(this.b - this.d) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F))) {
+            this.jdField_a_of_type_Boolean = true;
+          }
+          this.c = this.jdField_a_of_type_Int;
+          this.d = this.b;
+          break;
+          if (this.g <= this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int) {
+            break label173;
+          }
+          this.g = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int;
+          this.e = (this.g - paramView.getWidth());
+          break label173;
+          label355:
+          if (this.h > this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b)
+          {
+            this.h = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b;
+            this.f = (this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b - paramView.getHeight());
+          }
         }
       }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    ajcq localajcq = ajae.a();
-    if (localajcq != null) {
-      return localajcq.a(paramInt);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).getVisibility() == 0) {
+          break label434;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.at_();
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        break;
+        label434:
+        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b();
+      }
     }
     return false;
-  }
-  
-  public static boolean a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramStartCheckParam != null)
-    {
-      bool1 = bool2;
-      if (paramStartCheckParam.isWhiteUsr)
-      {
-        bool1 = bool2;
-        if (a(paramStartCheckParam.gameId)) {
-          bool1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0).getBoolean("game_debug_tool_switch", true);
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private List<aixd> b(int paramInt)
-  {
-    Object localObject = Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aixd[0]));
-    if (paramInt == 0) {
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      aixd localaixd = (aixd)((Iterator)localObject).next();
-      if (localaixd.a == paramInt) {
-        localArrayList.add(localaixd);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<aixd> a(int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    switch (paramInt)
-    {
-    default: 
-      return localArrayList;
-    case 0: 
-      return Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aixd[0]));
-    case 1: 
-      return b(1);
-    case 2: 
-      return b(2);
-    case 3: 
-      return Arrays.asList(this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aixd[0]));
-    }
-    return Arrays.asList(this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.toArray(new aixd[0]));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    a(false);
-  }
-  
-  public void a(aiwv paramaiwv)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaiwv);
-  }
-  
-  public void a(String paramString, int paramInt, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    localStringBuilder.append(paramString).append(" | ");
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      paramString = paramVarArgs[i];
-      if (paramString != null) {
-        localStringBuilder.append(paramString.toString());
-      }
-      i += 1;
-    }
-    a(new aixd(localStringBuilder.toString(), paramInt));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.clear();
-    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
-      ThreadManager.getUIHandler().post(new CmGameDebugManager.2(this));
-    }
   }
 }
 

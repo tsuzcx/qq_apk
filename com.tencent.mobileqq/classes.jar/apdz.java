@@ -1,37 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
 class apdz
-  extends aouj
+  implements bigd
 {
-  apdz(apdy paramapdy) {}
+  apdz(apdn paramapdn) {}
   
-  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + apee.a + "]");
-    }
-    if (apee.a)
-    {
-      paramString4 = "183.61.37.13";
-      paramString5 = "443";
-      if (this.a.jdField_a_of_type_Aool != null) {}
-    }
-    else
-    {
-      if ((paramString4 != null) && (paramString4.length() > 0)) {}
-      for (;;)
-      {
-        paramString5 = String.valueOf(paramInt2);
-        break;
-        paramString4 = paramString5;
-      }
-    }
-    this.a.jdField_a_of_type_Aool.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
+    apdn.b(this.a, false);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    apdn.a(this.a, true);
+    apdn.b(this.a, false);
+    bidb.a(apdn.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apdz
  * JD-Core Version:    0.7.0.1
  */

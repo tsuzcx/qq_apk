@@ -1,33 +1,6 @@
-public class uzw
-  extends uzu
+public abstract interface uzw
 {
-  public Object a;
-  public String a;
-  
-  public uzw(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    d();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
+  public abstract void a();
 }
 
 

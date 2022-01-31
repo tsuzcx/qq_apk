@@ -13,7 +13,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
-import auko;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -44,7 +44,7 @@ public class MiniAppInterface
   static final String TAG = "MiniAppInterface";
   private BroadcastReceiver accountReceiver = new MiniAppInterface.2(this);
   private HashMap<String, AuthorizeCenter> authorizeMap = new HashMap();
-  private auko mFactory;
+  private aukq mFactory;
   private List<Activity> mForegroundActivitys = new ArrayList();
   
   public MiniAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -190,7 +190,7 @@ public class MiniAppInterface
     return getAccount();
   }
   
-  public auko getEntityManagerFactory(String paramString)
+  public aukq getEntityManagerFactory(String paramString)
   {
     if (this.mFactory == null) {
       this.mFactory = new QQEntityManagerFactory(getAccount());

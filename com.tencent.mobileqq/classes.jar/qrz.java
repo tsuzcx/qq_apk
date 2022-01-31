@@ -1,16 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class qrz
-  implements DialogInterface.OnShowListener
+  implements DialogInterface.OnCancelListener
 {
-  qrz(qrw paramqrw) {}
+  qrz(qrt paramqrt) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    qrw.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    qrw.a(this.a).getWindow().clearFlags(8);
+    qrt.a(this.a, "mShareActionSheet cancle button OnClick");
+    if (qrt.a(this.a) != null) {
+      qrt.a(this.a).c();
+    }
+    paramDialogInterface = qrt.a(this.a);
+    qrt.a(this.a, paramDialogInterface, paramDialogInterface.j, paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
   }
 }
 

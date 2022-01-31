@@ -1,37 +1,40 @@
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
 public class aotv
-  extends apvd
+  extends apvf
 {
-  public aotv(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
+  public aotv(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void a() {}
+  public void a()
+  {
+    this.a.a.a().b();
+  }
   
-  public void b() {}
+  public void b()
+  {
+    this.a.a.a().p();
+  }
   
-  public void c() {}
+  public void c()
+  {
+    this.a.a.a().q();
+  }
   
-  public void d() {}
+  public void d()
+  {
+    this.a.a.a().r();
+  }
   
   public void e()
   {
-    Object localObject = apeh.b();
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (apef.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
-          axqw.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    this.a.a.a().s();
   }
   
-  public void f() {}
+  public void f()
+  {
+    this.a.a.a().t();
+  }
   
   public void g()
   {

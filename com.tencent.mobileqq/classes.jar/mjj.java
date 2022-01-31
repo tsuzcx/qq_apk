@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
 
 public class mjj
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public mjj(VideoControlUI paramVideoControlUI, long paramLong) {}
+  public mjj(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionNormalDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 

@@ -1,106 +1,344 @@
-import android.os.RemoteException;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.PluginRecord;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
-public class aokj
-  implements bhjk
+@SuppressLint({"ViewConstructor"})
+public abstract class aokj
+  extends LoadingLayoutBase
 {
-  public static volatile aokj a;
-  private bhhr jdField_a_of_type_Bhhr;
-  private String jdField_a_of_type_JavaLangString = "qzone_live_video_plugin_hack.apk";
-  private volatile boolean jdField_a_of_type_Boolean;
+  protected static final Interpolator a;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  protected final ImageView a;
+  protected final ProgressBar a;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected final PullToRefreshBase.Mode a;
+  protected final PullToRefreshBase.Orientation a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private boolean jdField_a_of_type_Boolean;
+  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private CharSequence c;
+  private CharSequence d;
   
-  public static aokj a()
+  static
   {
-    if (jdField_a_of_type_Aokj == null) {}
-    try
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
+  }
+  
+  public aokj(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.Orientation paramOrientation, TypedArray paramTypedArray)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode = paramMode;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Orientation = paramOrientation;
+    FrameLayout.LayoutParams localLayoutParams;
+    int i;
+    switch (aokk.a[paramOrientation.ordinal()])
     {
-      if (jdField_a_of_type_Aokj == null) {
-        jdField_a_of_type_Aokj = new aokj();
+    default: 
+      LayoutInflater.from(paramContext).inflate(2131559407, this);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366334));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372164));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372162));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372163));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131372159));
+      localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      switch (aokk.b[paramMode.ordinal()])
+      {
+      default: 
+        if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL)
+        {
+          i = 80;
+          label179:
+          localLayoutParams.gravity = i;
+          this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131695629);
+          this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131695630);
+          this.c = paramContext.getString(2131695631);
+          if (paramTypedArray.hasValue(7))
+          {
+            paramOrientation = paramTypedArray.getDrawable(7);
+            if (paramOrientation != null) {
+              aokl.a(this, paramOrientation);
+            }
+          }
+          if (paramTypedArray.hasValue(11))
+          {
+            paramOrientation = new TypedValue();
+            paramTypedArray.getValue(11, paramOrientation);
+            b(paramOrientation.data);
+          }
+          if (paramTypedArray.hasValue(21))
+          {
+            paramOrientation = new TypedValue();
+            paramTypedArray.getValue(21, paramOrientation);
+            a(paramOrientation.data);
+          }
+          if (paramTypedArray.hasValue(12))
+          {
+            paramOrientation = paramTypedArray.getColorStateList(12);
+            if (paramOrientation != null) {
+              b(paramOrientation);
+            }
+          }
+          if (paramTypedArray.hasValue(10))
+          {
+            paramOrientation = paramTypedArray.getColorStateList(10);
+            if (paramOrientation != null) {
+              a(paramOrientation);
+            }
+          }
+          paramOrientation = null;
+          if (paramTypedArray.hasValue(2)) {
+            paramOrientation = paramTypedArray.getDrawable(2);
+          }
+          switch (aokk.b[paramMode.ordinal()])
+          {
+          default: 
+            if (paramTypedArray.hasValue(5)) {
+              paramMode = paramTypedArray.getDrawable(5);
+            }
+            break;
+          }
+        }
+        break;
       }
-      return jdField_a_of_type_Aokj;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      if (bhjq.a() != 1) {}
-    }
-    else
-    {
-      return;
-    }
-    bhji.a(BaseApplicationImpl.getContext(), this);
-  }
-  
-  public void onQzonePluginClientReady(bhhr parambhhr)
-  {
-    QLog.i("ECPreInstallLiveVideoApk", 1, "onQzonePluginClientReady start");
-    if (parambhhr == null) {
-      bhji.a(BaseApplicationImpl.getContext(), this);
+      break;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
+      paramOrientation = paramMode;
+      if (paramMode == null) {
+        paramOrientation = paramContext.getResources().getDrawable(b());
+      }
+      setLoadingDrawable(paramOrientation);
+      g();
       return;
-      QQAppInterface localQQAppInterface2 = (QQAppInterface)QQStoryContext.a();
-      QQAppInterface localQQAppInterface1 = localQQAppInterface2;
-      if (localQQAppInterface2 == null)
+      LayoutInflater.from(paramContext).inflate(2131559406, this);
+      break;
+      if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL) {}
+      for (i = 48;; i = 3)
       {
-        QLog.i("ECPreInstallLiveVideoApk", 1, "onQzonePluginClientReady: getAppRuntime return null.");
-        localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        localLayoutParams.gravity = i;
+        this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131695626);
+        this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131695627);
+        this.c = paramContext.getString(2131695628);
+        break;
       }
-      if (localQQAppInterface1 != null) {
-        bhjs.a().a(localQQAppInterface1);
-      }
-      this.jdField_a_of_type_Bhhr = parambhhr;
-      parambhhr = this.jdField_a_of_type_Bhhr.a(this.jdField_a_of_type_JavaLangString);
-      if (parambhhr != null)
+      i = 5;
+      break label179;
+      paramMode = paramOrientation;
+      if (paramTypedArray.hasValue(6))
       {
-        if (parambhhr.state == 4)
+        paramMode = paramTypedArray.getDrawable(6);
+        continue;
+        if (paramTypedArray.hasValue(4))
         {
-          this.jdField_a_of_type_Boolean = false;
-          QLog.i("ECPreInstallLiveVideoApk", 1, "onQzonePluginClientReady installed");
-          return;
-        }
-        if (parambhhr.state == 2)
-        {
-          try
-          {
-            this.jdField_a_of_type_Bhhr.a(this.jdField_a_of_type_JavaLangString, null, 0);
-          }
-          catch (RemoteException parambhhr)
-          {
-            QLog.e("ECPreInstallLiveVideoApk", 1, parambhhr, new Object[0]);
-          }
+          paramMode = paramTypedArray.getDrawable(4);
         }
         else
         {
-          QLog.d("ECPreInstallLiveVideoApk", 1, " has not installed");
-          if (bhjf.b()) {
-            try
-            {
-              this.jdField_a_of_type_Bhhr.a(this.jdField_a_of_type_JavaLangString, null, 0);
-            }
-            catch (RemoteException parambhhr)
-            {
-              QLog.e("ECPreInstallLiveVideoApk", 1, "installPluginSilence", parambhhr);
-            }
+          paramMode = paramOrientation;
+          if (paramTypedArray.hasValue(3)) {
+            paramMode = paramTypedArray.getDrawable(3);
           }
         }
       }
-      else
-      {
-        QLog.d("ECPreInstallLiveVideoApk", 1, "record is null");
-      }
     }
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    }
+  }
+  
+  private void a(ColorStateList paramColorStateList)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    }
+  }
+  
+  private void a(CharSequence paramCharSequence)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    }
+  }
+  
+  private void b(ColorStateList paramColorStateList)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    }
+  }
+  
+  public final int a()
+  {
+    switch (aokk.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Orientation.ordinal()])
+    {
+    default: 
+      return this.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();
+    }
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
+  }
+  
+  public final void a(float paramFloat)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      b(paramFloat);
+    }
+  }
+  
+  protected abstract void a(Drawable paramDrawable);
+  
+  protected abstract int b();
+  
+  protected abstract void b(float paramFloat);
+  
+  public final void d()
+  {
+    g();
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    i();
+  }
+  
+  public final void e()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
+    }
+    k();
+  }
+  
+  public final void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+    }
+    for (;;)
+    {
+      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      return;
+      j();
+    }
+  }
+  
+  public final void g()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.jdField_a_of_type_Boolean) {
+      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+    }
+    for (;;)
+    {
+      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
+          break;
+        }
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      return;
+      l();
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public final void h()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+    }
+  }
+  
+  protected abstract void i();
+  
+  protected abstract void j();
+  
+  protected abstract void k();
+  
+  protected abstract void l();
+  
+  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  {
+    a(paramCharSequence);
+  }
+  
+  public final void setLoadingDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.jdField_a_of_type_Boolean = (paramDrawable instanceof AnimationDrawable);
+    a(paramDrawable);
+  }
+  
+  public void setPullLabel(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  {
+    this.d = paramCharSequence;
+  }
+  
+  public void setRefreshingLabel(CharSequence paramCharSequence)
+  {
+    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public void setReleaseLabel(CharSequence paramCharSequence)
+  {
+    this.c = paramCharSequence;
+  }
+  
+  public void setTextTypeface(Typeface paramTypeface)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramTypeface);
   }
 }
 

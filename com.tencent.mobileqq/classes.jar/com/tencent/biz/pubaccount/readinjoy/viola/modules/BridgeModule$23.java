@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class BridgeModule$23
@@ -11,7 +11,7 @@ class BridgeModule$23
   
   public void run()
   {
-    bcpw.a(BaseActivity.sTopActivity, 0, BaseActivity.sTopActivity.getResources().getString(2131718551), 0).a();
+    bcql.a(BaseActivity.sTopActivity, 0, BaseActivity.sTopActivity.getResources().getString(2131718562), 0).a();
   }
 }
 

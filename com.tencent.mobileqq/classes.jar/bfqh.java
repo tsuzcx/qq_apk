@@ -1,24 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.widget.DynamicGridView;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.widget.BubblePopupWindow;
+import java.lang.ref.WeakReference;
 
 public class bfqh
-  extends AnimatorListenerAdapter
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public bfqh(DynamicGridView paramDynamicGridView, View paramView) {}
+  public bfqh(BubblePopupWindow paramBubblePopupWindow) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScrollChanged()
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    if (BubblePopupWindow.a(this.a) != null) {}
+    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
+    {
+      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
+      {
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
+        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
+        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
+      }
+      return;
+    }
   }
 }
 

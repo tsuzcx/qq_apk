@@ -1,145 +1,25 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.NinePatch;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import java.util.ArrayList;
 
 public class bjzo
-  extends bkhw
+  implements xhg
 {
-  public int a;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  public String a;
-  int jdField_b_of_type_Int;
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
+  public bjzo(LocalVideoSelectActivity paramLocalVideoSelectActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
-  public bjzo(bjzn parambjzn, @NonNull String paramString1, @NonNull Drawable paramDrawable, @NonNull String paramString2, @NonNull String paramString3, @NonNull bjzq parambjzq)
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    super(parambjzq.jdField_a_of_type_AndroidGraphicsPointF, parambjzq.jdField_a_of_type_Float, parambjzq.jdField_b_of_type_Float, parambjzq.jdField_c_of_type_Float, parambjzq.jdField_d_of_type_Float, parambjzq.jdField_a_of_type_Int, parambjzq.jdField_b_of_type_Int, false);
-    this.jdField_a_of_type_Int = parambjzq.jdField_c_of_type_Int;
-    try
+    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.isFinishing())
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(parambjzn.jdField_a_of_type_AndroidContentContext.getResources(), 2130845491);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(parambjzn.jdField_a_of_type_AndroidContentContext.getResources(), 2130845492);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, (int)this.u, (int)this.v);
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_c_of_type_JavaLangString = paramString3;
-      this.jdField_b_of_type_Int = parambjzq.e;
-      this.jdField_c_of_type_Int = parambjzq.jdField_d_of_type_Int;
-      return;
-    }
-    catch (OutOfMemoryError parambjzn)
-    {
-      for (;;)
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity.b();
+      Bundle localBundle = new Bundle();
+      if (paramArrayList != null)
       {
-        veg.c(bjzn.jdField_a_of_type_JavaLangString, "BitmapFactory.decodeResource outOfMemoryError : %s.", parambjzn);
+        localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
+        localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
       }
-    }
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("u", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("n", this.jdField_c_of_type_JavaLangString);
-        localJSONObject.put("o", this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Int != 0) {
-          continue;
-        }
-        i = (int)((this.jdField_b_of_type_AndroidGraphicsPointF.x + this.s - this.u / 2.0F) / this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidGraphicsRect.width() * 1000.0F);
-        int j = (int)((this.jdField_b_of_type_AndroidGraphicsPointF.y + this.t) / this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidGraphicsRect.height() * 1000.0F);
-        localJSONObject.put("x", i);
-        localJSONObject.put("y", j);
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        float f1;
-        float f2;
-        float f3;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      veg.c(bjzn.jdField_a_of_type_JavaLangString, "AtItem toJsonObject:" + localJSONObject.toString());
-      return localJSONObject;
-      f1 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
-      f2 = this.s;
-      f3 = this.u / 2.0F;
-      i = this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidGraphicsRect.width();
-      i = (int)((f1 + f2 + f3) / i * 1000.0F);
-    }
-  }
-  
-  public void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    veg.c(bjzn.jdField_a_of_type_JavaLangString, "AtItem draw start.");
-    paramCanvas.save();
-    paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-    NinePatch localNinePatch;
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      localNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk(), null);
-      localNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect);
-      paramCanvas.restore();
-      paramCanvas.save();
-      float f2 = (this.v - this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2.0F;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label344;
-      }
-      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-      f1 = actn.a(10.0F, this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidContentContext.getResources());
-      label136:
-      paramCanvas.translate(f1, f2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-      paramCanvas.save();
-      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-      if (this.jdField_a_of_type_Int != 0) {
-        break label383;
-      }
-    }
-    label344:
-    label383:
-    for (float f1 = actn.a(36.0F, this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidContentContext.getResources());; f1 = actn.a(8.0F, this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidContentContext.getResources()))
-    {
-      this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
-      int i = (int)this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-      paramCanvas.translate(f1, (this.v - this.jdField_a_of_type_AndroidTextStaticLayout.getHeight()) / 2.0F);
-      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      paramCanvas.restore();
-      veg.c(bjzn.jdField_a_of_type_JavaLangString, "AtItem draw end.");
-      return;
-      localNinePatch = new NinePatch(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap.getNinePatchChunk(), null);
-      break;
-      paramCanvas.translate(this.u / 2.0F, -this.v / 2.0F);
-      f1 = -actn.a(30.0F, this.jdField_a_of_type_Bjzn.jdField_a_of_type_AndroidContentContext.getResources());
-      break label136;
+      bkpv.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity, LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), LocalVideoSelectActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.jdField_a_of_type_Int, this.b, this.c, this.d, 0, "", "", false, LocalVideoSelectActivity.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalVideoSelectActivity), this.e, localBundle);
     }
   }
 }

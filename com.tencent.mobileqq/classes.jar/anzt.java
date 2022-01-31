@@ -1,13 +1,18 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ProgressButton;
-
-public class anzt
-  extends anxe
+public abstract class anzt
 {
-  public TextView a;
-  public URLImageView a;
-  public ProgressButton a;
+  public int b;
+  
+  public anzt(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a() {}
+  
+  public int b()
+  {
+    return 0;
+  }
 }
 
 

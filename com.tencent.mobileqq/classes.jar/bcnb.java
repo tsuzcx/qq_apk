@@ -1,139 +1,98 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Path;
 import android.graphics.Rect;
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 
 public class bcnb
+  extends Drawable
 {
-  private static boolean b;
-  private int jdField_a_of_type_Int = 10;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
+  private ColorMatrixColorFilter jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private Path jdField_b_of_type_AndroidGraphicsPath;
+  private Paint c;
   
-  public bcnb(int paramInt)
+  public bcnb()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.argb(200, 0, 0, 0));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.c.setStyle(Paint.Style.FILL);
+    this.c.setColor(0);
   }
   
-  public void a(Canvas paramCanvas)
+  public void a(int paramInt)
   {
-    long l = SystemClock.uptimeMillis();
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth() / this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight() / this.jdField_a_of_type_Int;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != i) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != j))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MosaicEffect", 2, "draw: try to alloc bitmap w x h=[" + i + "x" + j + "]");
-      }
-      if (i > 0) {
-        break label406;
-      }
-      QLog.e("MosaicEffect", 1, "draw: mosaicWidth <= 0");
-      i = 1;
+    this.c.setColor(paramInt);
+    invalidateSelf();
+  }
+  
+  public void a(ColorMatrixColorFilter paramColorMatrixColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter = paramColorMatrixColorFilter;
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(paramColorMatrixColorFilter);
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_b_of_type_AndroidGraphicsPath.reset();
+    Rect localRect = getBounds();
+    int i = localRect.width();
+    int j = localRect.height();
+    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((j - i) / 2.0F + i);
+    this.jdField_a_of_type_AndroidGraphicsRectF.top = ((j - i) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
+    this.jdField_a_of_type_AndroidGraphicsRectF.right = i;
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, 0.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
+    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, j / 2.0F);
+    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, j);
+    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j);
+    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(i, j / 2.0F);
+    this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
+    this.jdField_b_of_type_AndroidGraphicsPath.close();
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.c.getColor() != 0) {
+      paramCanvas.drawCircle(i / 2.0F, j / 2.0F, i / 2.0F, this.c);
     }
-    label406:
-    for (;;)
+    if (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter != null)
     {
-      if (j <= 0)
-      {
-        QLog.e("MosaicEffect", 1, "draw: mosaicHeight <= 0");
-        j = 1;
-      }
-      for (;;)
-      {
-        try
-        {
-          this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-          {
-            QLog.e("MosaicEffect", 1, "draw: Bitmap is NULL");
-            return;
-          }
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("MosaicEffect", 1, "draw: createBitmap failed ", localException1);
-          try
-          {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
-          }
-          catch (Exception localException2)
-          {
-            QLog.e("MosaicEffect", 1, "draw: alloc memory failed, do nothing", localException2);
-          }
-          continue;
-          this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(0);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-          this.jdField_a_of_type_AndroidViewView.computeScroll();
-          i = this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-          float f = 1.0F / this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_AndroidGraphicsCanvas.scale(f, f);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-this.jdField_a_of_type_AndroidViewView.getScrollX(), -this.jdField_a_of_type_AndroidViewView.getScrollY());
-          this.jdField_a_of_type_Boolean = false;
-          if ((this.jdField_a_of_type_AndroidViewView instanceof bcnc)) {
-            ((bcnc)this.jdField_a_of_type_AndroidViewView).b(this.jdField_a_of_type_AndroidGraphicsCanvas);
-          }
-          this.jdField_a_of_type_AndroidGraphicsCanvas.restoreToCount(i);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
-          this.jdField_a_of_type_Boolean = true;
-          if ((this.jdField_a_of_type_AndroidViewView instanceof bcnc)) {
-            ((bcnc)this.jdField_a_of_type_AndroidViewView).b(paramCanvas);
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("MosaicEffect", 2, "draw: " + (SystemClock.uptimeMillis() - l) + " ms");
-            return;
-          }
-        }
-      }
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
     }
   }
   
-  public void a(View paramView)
+  public int getOpacity()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    return 0;
   }
   
-  public void b(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        if (!paramCanvas.getClipBounds(this.jdField_a_of_type_AndroidGraphicsRect)) {
-          break label159;
-        }
-        if ((!paramCanvas.isHardwareAccelerated()) && (this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getWidth() < this.jdField_a_of_type_AndroidGraphicsRect.width()) || (this.jdField_a_of_type_AndroidViewView.getHeight() < this.jdField_a_of_type_AndroidGraphicsRect.height()))) {
-          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight());
-        }
-        if (b)
-        {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-          paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    }
-    label159:
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof bcnc))
-    {
-      return;
-      QLog.e("MosaicEffect", 1, "onDraw: clipBound is empty " + this.jdField_a_of_type_AndroidGraphicsRect);
-      return;
-    }
-    ((bcnc)this.jdField_a_of_type_AndroidViewView).c(this.jdField_a_of_type_AndroidGraphicsCanvas);
-  }
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

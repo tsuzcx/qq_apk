@@ -5,8 +5,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import bhxr;
-import bhye;
+import bhyi;
+import bhyv;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.app.AppActivity;
 import mqq.app.QQPermissionCallback;
@@ -17,7 +17,7 @@ public class VipARShowActivity
   implements QQPermissionCallback
 {
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bhxr jdField_a_of_type_Bhxr;
+  private bhyi jdField_a_of_type_Bhyi;
   
   private void a()
   {
@@ -39,21 +39,21 @@ public class VipARShowActivity
   private void b()
   {
     if ("value_refer_aio".equalsIgnoreCase(getIntent().getStringExtra("key_refer"))) {
-      bhye.a("ar_aio_click", "1");
+      bhyv.a("ar_aio_click", "1");
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_Bhxr = new bhxr(this, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Bhxr.a();
+    this.jdField_a_of_type_Bhyi = new bhyi(this, this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_Bhyi.a();
     Intent localIntent = getIntent();
-    this.jdField_a_of_type_Bhxr.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
+    this.jdField_a_of_type_Bhyi.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Toast.makeText(this, 2131695950, 0).show();
+    Toast.makeText(this, 2131695951, 0).show();
     ThreadManager.getUIHandler().postDelayed(new VipARShowActivity.1(this), 2000L);
   }
   
@@ -63,7 +63,7 @@ public class VipARShowActivity
     a();
     b();
     setContentView(2131558459);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362717));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362716));
     c();
     return true;
   }
@@ -71,38 +71,38 @@ public class VipARShowActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bhxr != null) {
-      this.jdField_a_of_type_Bhxr.f();
+    if (this.jdField_a_of_type_Bhyi != null) {
+      this.jdField_a_of_type_Bhyi.f();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bhxr != null) {
-      this.jdField_a_of_type_Bhxr.c();
+    if (this.jdField_a_of_type_Bhyi != null) {
+      this.jdField_a_of_type_Bhyi.c();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bhxr != null) {
-      this.jdField_a_of_type_Bhxr.d();
+    if (this.jdField_a_of_type_Bhyi != null) {
+      this.jdField_a_of_type_Bhyi.d();
     }
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    if (this.jdField_a_of_type_Bhxr != null) {
-      this.jdField_a_of_type_Bhxr.e();
+    if (this.jdField_a_of_type_Bhyi != null) {
+      this.jdField_a_of_type_Bhyi.e();
     }
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Bhxr.b();
+    this.jdField_a_of_type_Bhyi.b();
   }
 }
 

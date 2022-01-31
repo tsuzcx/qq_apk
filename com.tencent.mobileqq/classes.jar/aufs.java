@@ -1,8 +1,17 @@
-public abstract interface aufs
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+class aufs
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  aufs(aufj paramaufj, View paramView) {}
   
-  public abstract void b();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    aufj.a(this.jdField_a_of_type_Aufj).removeView(this.jdField_a_of_type_AndroidViewView);
+  }
 }
 
 

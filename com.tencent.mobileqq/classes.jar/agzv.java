@@ -1,28 +1,15 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class agzv
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public agzv(LingHbFragment paramLingHbFragment) {}
+  public agzv(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
-      }
-      return;
-      LingHbFragment.a(this.a).a();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

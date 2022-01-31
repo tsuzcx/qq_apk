@@ -1,33 +1,47 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1;
+import com.tencent.widget.XEditTextEx;
 
 public class auxx
-  extends RecyclerView.OnScrollListener
+  implements TextWatcher
 {
-  public auxx(StickyNoteShopLayout paramStickyNoteShopLayout) {}
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public auxx(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramInt == 0)
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (aylc.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
     {
-      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
-      int i = 0;
-      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
-      {
-        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
-        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
-        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
-      }
-      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
-      {
-        this.a.a(true);
-        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
-      }
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690312, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
+    paramEditable = auxf.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
+    if ((TextUtils.isEmpty(paramEditable)) || (TextUtils.isEmpty(paramEditable.trim()))) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
+    }
+    for (;;)
+    {
+      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
+        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

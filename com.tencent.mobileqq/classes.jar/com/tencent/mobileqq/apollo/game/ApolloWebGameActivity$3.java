@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.game;
 
-import ajch;
+import ajcf;
 import android.content.Intent;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;

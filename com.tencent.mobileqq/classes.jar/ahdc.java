@@ -1,12 +1,19 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class ahdc
+public final class ahdc
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
+  public RedPacketInfoBase a(Parcel paramParcel)
+  {
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
+  }
 }
 
 

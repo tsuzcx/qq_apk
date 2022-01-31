@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.plugin.PluginIphoneTitleBarActivity;
+import cooperation.plugin.PluginInfo;
 
-public class bglp
-  implements View.OnClickListener
+public abstract interface bglp
 {
-  public bglp(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a();
-  }
+  public abstract void a(String paramString, PluginInfo paramPluginInfo, bglh parambglh);
 }
 
 

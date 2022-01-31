@@ -1,13 +1,17 @@
 import android.widget.ImageView;
 import android.widget.TextView;
 
-class nep
+public class nep
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
   TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
   
-  nep(ned paramned) {}
+  nep(nea paramnea) {}
 }
 
 

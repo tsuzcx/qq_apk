@@ -1,123 +1,112 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
 public class adbj
-  extends BaseAdapter
+  extends Handler
 {
-  public int a;
-  Context a;
-  public View.OnClickListener a;
-  public ArrayList<bbzn> a;
-  public boolean a;
-  public int b;
-  
-  public adbj(Context paramContext)
+  public adbj(ListenChangeVoicePanel paramListenChangeVoicePanel, Looper paramLooper)
   {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramLooper);
   }
   
-  public int getCount()
+  public void handleMessage(Message arg1)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return (this.jdField_a_of_type_JavaUtilArrayList.size() + this.jdField_a_of_type_Int - 1) / this.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int j = this.jdField_a_of_type_Int;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    if (paramView == null)
+    switch (???.what)
     {
-      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
-      ((LinearLayout)localObject1).setOrientation(0);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      i = 0;
-      while (i < this.jdField_a_of_type_Int)
+    case 102: 
+    default: 
+    case 101: 
+    case 103: 
+    case 104: 
+    case 105: 
+    case 106: 
+      do
       {
-        localObject2 = new LinearLayout.LayoutParams(-1, -2);
-        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-        paramViewGroup = paramView;
-        if (paramView == null) {
-          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-        }
-        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560611, null), (ViewGroup.LayoutParams)localObject2);
-        i += 1;
-        paramView = paramViewGroup;
-      }
-      paramView = (View)localObject1;
-    }
-    for (;;)
-    {
-      localObject1 = (ViewGroup)paramView;
-      if (paramInt == 0) {
-        ((ViewGroup)localObject1).setPadding(actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      }
-      int k;
-      for (;;)
-      {
-        i = 0;
-        for (;;)
+        do
         {
-          if (i >= this.jdField_a_of_type_Int) {
-            break label397;
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                ListenChangeVoicePanel.a(this.a, -1);
+                this.a.jdField_a_of_type_Adbg.b = 0;
+                this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView = null;
+                synchronized (this.a.b)
+                {
+                  this.a.jdField_a_of_type_Adbg.a = this.a.b;
+                  this.a.jdField_a_of_type_Adbg.notifyDataSetChanged();
+                  return;
+                }
+              } while ((???.obj == null) || (!(???.obj instanceof Bundle)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null));
+              ??? = (Bundle)???.obj;
+            } while (??? == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(???.getInt("progress"), ???.getInt("playTime"), ???.getInt("level"));
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+          return;
+          if (ListenChangeVoicePanel.a(this.a).get() != null) {
+            bcql.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), "播放变音error", 0);
           }
-          k = j * paramInt + i;
-          localObject2 = (ChangeVoiceView)((ViewGroup)localObject1).getChildAt(i);
-          if (localObject2 != null) {
-            break;
-          }
-          QLog.e("ChangeVoiceListAdapter", 1, "getView view == null,view=" + ((ViewGroup)localObject1).getChildAt(i));
-          i += 1;
-        }
-        ((ViewGroup)localObject1).setPadding(actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      }
-      ((ChangeVoiceView)localObject2).b = this.b;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (k < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-      for (paramViewGroup = (bbzn)this.jdField_a_of_type_JavaUtilArrayList.get(k);; paramViewGroup = null)
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+        return;
+      } while ((ListenChangeVoicePanel.a(this.a).get() == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      bcad.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), ListenChangeVoicePanel.a(this.a), PressToChangeVoicePanel.a, this.a);
+      int k = (int)ListenChangeVoicePanel.a(this.a);
+      String str;
+      QQRecorder.RecorderParam localRecorderParam;
+      if (!avcq.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).a((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ListenChangeVoicePanel.a(this.a)))
       {
-        ((ChangeVoiceView)localObject2).a(paramViewGroup);
-        if (this.jdField_a_of_type_Boolean) {
-          ((ChangeVoiceView)localObject2).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("PttPreSendManager", 2, "presend not hit, do origin logic");
         }
-        if (paramViewGroup != null)
+        ??? = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        str = ListenChangeVoicePanel.a(this.a);
+        localRecorderParam = ListenChangeVoicePanel.a(this.a);
+        if (ListenChangeVoicePanel.a(this.a) <= 0) {
+          break label677;
+        }
+      }
+      label677:
+      for (int i = 1;; i = 0)
+      {
+        ???.a(str, 4, 0, localRecorderParam, i, false, 0);
+        ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).b(ListenChangeVoicePanel.a(this.a), null);
+        if (ListenChangeVoicePanel.jdField_a_of_type_Avcc != null)
         {
-          ((ChangeVoiceView)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          break;
+          ListenChangeVoicePanel.jdField_a_of_type_Avcc.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), ListenChangeVoicePanel.a(this.a));
+          if (ListenChangeVoicePanel.a(this.a) > 0) {
+            axqy.b((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), "CliOper", "", "", "changevoice", "0X8006F7C", 0, 0, "" + ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a.a, "" + ListenChangeVoicePanel.a(this.a), "", "");
+          }
         }
-        ((ChangeVoiceView)localObject2).setOnClickListener(null);
-        break;
-        label397:
-        return paramView;
+        this.a.i();
+        int j = ListenChangeVoicePanel.b(this.a);
+        i = j;
+        if (this.a.jdField_a_of_type_Boolean) {
+          i = j + 10;
+        }
+        j = ListenChangeVoicePanel.a(this.a);
+        int m = ListenChangeVoicePanel.c(this.a);
+        this.a.a(j, m, k, i);
+        return;
       }
     }
+    this.a.a(???.arg1, ???.arg2, ???.obj, true);
   }
 }
 

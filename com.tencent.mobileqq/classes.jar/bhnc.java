@@ -1,32 +1,53 @@
-import android.os.Looper;
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
+import cooperation.qzone.util.NetworkState;
 
 public class bhnc
-  implements Printer
+  extends bhmw
 {
-  public bhnc(BaseHandler paramBaseHandler) {}
+  public static final String a = bhnc.class.getName();
+  public int b = -1;
   
-  public void println(String paramString)
+  public bhnc(String paramString)
   {
-    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
-    do
+    super(paramString);
+  }
+  
+  public static boolean a()
+  {
+    if (bhnk.a() == null) {
+      return false;
+    }
+    return NetworkState.isWap();
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    if (this.b == -1)
     {
-      return;
-      if (!BaseHandler.access$000())
+      int j = super.a(paramString, paramInt);
+      int i = j;
+      if (a())
       {
-        Looper.myLooper().setMessageLogging(null);
-        return;
+        if (j != 0)
+        {
+          this.b = 1;
+          i = super.a(paramString, paramInt);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseHandler", 2, paramString);
+      else {
+        return i;
       }
-      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
-        BaseHandler.access$100(this.a);
-      }
-    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
-    BaseHandler.access$200(this.a);
+      this.b = 0;
+      return j;
+    }
+    return super.a(paramString, paramInt);
+  }
+  
+  public bhmy a()
+  {
+    if ((a()) && (this.b == 1)) {
+      return bhmy.a;
+    }
+    return null;
   }
 }
 

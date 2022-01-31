@@ -1,25 +1,25 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aaxr
+class aaxr
+  extends ajyr
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
-  private final String c;
+  aaxr(aaxq paramaaxq, BaseActivity paramBaseActivity) {}
   
-  public aaxr(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public void a()
-  {
-    aaxs localaaxs = new aaxs(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, ajyc.a(2131702590), ajyc.a(2131702594), localaaxs, localaaxs);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_Aaxq.a != null) && (this.jdField_a_of_type_Aaxq.a.isShowing())) {
+        this.jdField_a_of_type_Aaxq.a.dismiss();
+      }
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, ajya.a(2131702603), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      return;
+    }
+    if ((this.jdField_a_of_type_Aaxq.a != null) && (this.jdField_a_of_type_Aaxq.a.isShowing())) {
+      this.jdField_a_of_type_Aaxq.a.dismiss();
+    }
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, ajya.a(2131702604), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

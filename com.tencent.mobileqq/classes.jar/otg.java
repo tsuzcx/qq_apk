@@ -1,14 +1,39 @@
-final class otg
-  implements oti
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+class otg
 {
-  public void l()
+  public long a;
+  public ArrayList<Pair<BaseArticleInfo, Float>> a;
+  public long b;
+  
+  private otg(osx paramosx)
   {
-    ooe.a(9, "", "", "", "");
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void m()
+  public ArrayList<Long> a()
   {
-    ooe.a(9, "", "", "", "", otd.c, "", false);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
+    }
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Pair localPair = (Pair)localIterator.next();
+      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+    }
+    return localStringBuilder.toString();
   }
 }
 

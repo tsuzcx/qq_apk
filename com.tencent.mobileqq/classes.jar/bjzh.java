@@ -1,20 +1,7 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class bjzh
-  implements Animation.AnimationListener
+public class bjzh
+  implements bkyz
 {
-  bjzh(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  bjzh(bjzg parambjzg) {}
 }
 
 

@@ -1,26 +1,49 @@
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import android.support.annotation.NonNull;
 
-public abstract interface twl
+public class twl
 {
-  public abstract twm a(@Nullable two paramtwo, int paramInt);
+  public String a;
+  public String b;
   
-  @UiThread
-  public abstract twr a();
+  public twl(@NonNull String paramString)
+  {
+    this.a = paramString;
+    vxp.a(paramString);
+  }
   
-  public abstract void a();
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (twl)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
   
-  @UiThread
-  public abstract void a(@Nullable two paramtwo, int paramInt1, int paramInt2, String paramString);
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
   
-  @UiThread
-  public abstract void a(@Nullable two paramtwo, String paramString);
-  
-  public abstract void a(twq paramtwq);
-  
-  public abstract void b();
-  
-  public abstract void b(twq paramtwq);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b == null) {}
+    for (String str = "";; str = this.b) {
+      return str + this.a;
+    }
+  }
 }
 
 

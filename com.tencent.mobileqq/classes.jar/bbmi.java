@@ -1,16 +1,20 @@
-public abstract interface bbmi
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+
+public class bbmi
+  implements bfqm
 {
-  public abstract void a(bbmg parambbmg1, bbmg parambbmg2);
+  public bbmi(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(bbmg parambbmg1, bbmg parambbmg2, int paramInt);
-  
-  public abstract void b(bbmg parambbmg1, bbmg parambbmg2);
+  public void a()
+  {
+    if (aibn.a().c()) {
+      aibn.a().d();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbmi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
+import auko;
 
 public class ShareGroupListEntry
-  extends aukm
+  extends auko
 {
   public static final int LIST_TYPE_PICKER = 0;
   public int listType = 0;

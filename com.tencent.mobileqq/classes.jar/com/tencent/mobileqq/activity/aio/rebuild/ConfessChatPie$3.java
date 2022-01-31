@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeno;
-import aenr;
+import aenm;
+import aenp;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 
 public class ConfessChatPie$3
   implements Runnable
 {
-  public ConfessChatPie$3(aeno paramaeno) {}
+  public ConfessChatPie$3(aenm paramaenm) {}
   
   public void run()
   {
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.this$0.jdField_a_of_type_AndroidContentContext, "qq_confess_holmes_progress_lottie.json", new aenr(this));
+      LottieComposition.Factory.fromAssetFileName(this.this$0.jdField_a_of_type_AndroidContentContext, "qq_confess_holmes_progress_lottie.json", new aenp(this));
       return;
     }
     catch (Exception localException)

@@ -1,108 +1,178 @@
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.content.IntentFilter;
+import android.util.SparseArray;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.manager.TicketManager;
+import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class xjy
   extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private static int jdField_a_of_type_Int = 1;
+  private SparseArray<WeakReference<xka>> jdField_a_of_type_AndroidUtilSparseArray;
+  
+  public xjy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountRelease", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    this.mPluginNameSpace = "redEnvelope";
+  }
+  
+  private static int a()
+  {
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    return i;
+  }
+  
+  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    paramString1 = new Intent(paramString1);
+    paramString1.putExtra("portal_type_key", paramInt1);
+    paramString1.putExtra("portal_agrs", paramString2);
+    paramString1.putExtra("bc_seq", paramInt2);
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().sendBroadcast(paramString1, "com.tencent.msg.permission.pushnotify");
     }
-    if (!"accountRelease".equals(paramString2)) {
+  }
+  
+  int a(String paramString)
+  {
+    if ("getRankingList".endsWith(paramString)) {
+      return 1008;
+    }
+    if ("getHead".endsWith(paramString)) {
+      return 1009;
+    }
+    if ("getJumpBtnState".endsWith(paramString)) {
+      return 1010;
+    }
+    if ("getNick".endsWith(paramString)) {
+      return 1011;
+    }
+    if ("takePhoto".endsWith(paramString)) {
+      return 1012;
+    }
+    return -1;
+  }
+  
+  xka a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(12);
+    }
+    Object localObject = new xka(this, null);
+    ((xka)localObject).jdField_a_of_type_Int = paramInt;
+    localObject = new WeakReference(localObject);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    return (xka)((WeakReference)localObject).get();
+  }
+  
+  void a(BroadcastReceiver paramBroadcastReceiver, String paramString)
+  {
+    paramString = new IntentFilter(paramString);
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().registerReceiver(paramBroadcastReceiver, paramString, "com.tencent.msg.permission.pushnotify", null);
+    }
+  }
+  
+  void a(String paramString, String... paramVarArgs)
+  {
+    callJs(paramString, paramVarArgs);
+  }
+  
+  boolean a(int paramInt)
+  {
+    if (paramInt <= 0) {
       return false;
     }
-    if ("onReleaseSuccess".equals(paramString3))
-    {
-      paramJsBridgeListener = this.mRuntime.a();
-      if (paramJsBridgeListener != null)
-      {
-        paramJsBridgeListener.setResult(-1, null);
-        paramJsBridgeListener.finish();
-      }
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      return false;
     }
-    while (!"getToken".equals(paramString3)) {
+    Object localObject = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (xka)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return false;
+    }
+    try
+    {
+      this.mRuntime.a().unregisterReceiver((BroadcastReceiver)localObject);
+      return true;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        return false;
-        QLog.d("AccountRelease", 1, "release success, activity == null");
-      }
-    }
-    paramJsBridgeListener = this.mRuntime.a();
-    paramString1 = this.mRuntime.a();
-    boolean bool = false;
-    if (paramString1 != null) {
-      bool = paramString1.getIntent().getBooleanExtra("is_release_account", false);
-    }
-    for (;;)
-    {
-      if ((bool) && (paramJsBridgeListener != null))
-      {
-        paramString1 = (TicketManager)paramJsBridgeListener.getManager(2);
-        paramJsBridgeListener = paramJsBridgeListener.getCurrentAccountUin();
-        paramString1 = paramString1.getA2(paramJsBridgeListener);
-        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString1)))
-        {
-          paramString1 = bbdm.a(paramString1);
-          long l = Long.valueOf(paramJsBridgeListener).longValue();
-          paramJsBridgeListener = new byte[76];
-          paramJsBridgeListener[3] = ((byte)(int)(0xFF & l));
-          paramJsBridgeListener[2] = ((byte)(int)(l >>> 8 & 0xFF));
-          paramJsBridgeListener[1] = ((byte)(int)(l >>> 16 & 0xFF));
-          paramJsBridgeListener[0] = ((byte)(int)(l >>> 24 & 0xFF));
-          int i = 0;
-          for (;;)
-          {
-            if (i < paramString1.length)
-            {
-              paramJsBridgeListener[(i + 4)] = paramString1[i];
-              i += 1;
-              continue;
-              QLog.d("AccountRelease", 1, "getToken, activity == null");
-              break;
-            }
-          }
-          paramJsBridgeListener = bdhv.a(paramJsBridgeListener);
-          if (QLog.isColorLevel()) {
-            QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
-          }
-          paramString1 = new JSONObject();
+        if (QLog.isColorLevel()) {
+          localException.printStackTrace();
         }
       }
     }
-    for (;;)
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("PortalManager.HbEventPlugin", 2, "handleJsRequest: " + paramString3 + "," + paramVarArgs);
+    }
+    boolean bool1 = bool2;
+    int i;
+    if ("redEnvelope".endsWith(paramString2)) {
+      if ((!"getRankingList".endsWith(paramString3)) && (!"getHead".endsWith(paramString3)) && (!"getJumpBtnState".endsWith(paramString3)) && (!"getNick".endsWith(paramString3)))
+      {
+        bool1 = bool2;
+        if (!"takePhoto".endsWith(paramString3)) {}
+      }
+      else
+      {
+        i = a();
+        paramJsBridgeListener = a(i);
+        a(paramJsBridgeListener, "com.tencent.portal.resp.action");
+        if (paramVarArgs == null) {}
+      }
+    }
+    try
     {
-      try
+      if (paramVarArgs.length > 0)
       {
-        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-          break label465;
-        }
-        paramString1.put("token", "");
-        callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramString1.toString() });
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener.jdField_a_of_type_JavaLangString = paramString1.getString("callback");
+        paramJsBridgeListener.b = paramString1.getJSONObject("params").toString();
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-      }
-      break;
-      QLog.d("AccountRelease", 1, "uin or a2 is empty, uin:" + paramJsBridgeListener + ",a2:" + paramString1);
+      a("com.tencent.portal.req.action", a(paramString3), i, paramJsBridgeListener.b);
+      bool1 = true;
+      return bool1;
+    }
+    catch (JSONException paramString1)
+    {
       for (;;)
       {
-        paramJsBridgeListener = "";
-        break;
-        QLog.d("AccountRelease", 1, "getToken, app == null or flag: " + bool);
+        paramString1.printStackTrace();
       }
-      label465:
-      paramString1.put("token", paramJsBridgeListener);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+      {
+        xka localxka = (xka)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
+        if (localxka != null) {
+          a(localxka.jdField_a_of_type_Int);
+        }
+        i += 1;
+      }
     }
   }
 }

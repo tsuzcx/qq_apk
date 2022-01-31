@@ -1,125 +1,43 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aigt
 {
-  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
+  public static AtomicBoolean a;
+  public static String[] a;
+  
+  static
   {
-    int i = 0;
-    if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
-      i = -1;
-    }
-    do
-    {
-      for (;;)
-      {
-        return i;
-        double d = paramPublishVideoEntry.recordTime / 1000.0D;
-        int j = paramPublishVideoEntry.videoMaxrate;
-        try
-        {
-          j = bhpo.a(new String[] { "-threads", "1", "-ss", "0.0", "-accurate_seek", "-i", paramString1, "-t", String.valueOf(d), "-vf", "null", "-metadata:s", "rotate=0", "-acodec", "aac", "-vcodec", "libx264", "-movflags", "faststart", "-preset", "veryfast", "-tune", "psnr", "-profile:v", "high", "-level", "3.0", "-b:v", String.valueOf(j), "-y", paramString2 });
-          return j;
-        }
-        catch (Exception paramString1)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: ", paramString1);
-            return 0;
-          }
-        }
-        catch (Error paramString1) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: error", paramString1);
-    return 0;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
   }
   
-  public static aigu a(String paramString)
+  public static void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
       try
       {
-        Object localObject = new File(paramString);
-        aigu localaigu = new aigu();
-        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        if (Integer.valueOf(paramString).intValue() == 0)
         {
-          String str = a((File)localObject);
-          localObject = b((File)localObject);
-          if (TextUtils.isEmpty(str)) {
-            return null;
+          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
           }
-          localaigu.a = str;
-          localaigu.b = ((String)localObject);
-          localaigu.c = paramString;
-          return localaigu;
+          return;
         }
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        continue;
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("EncodeVideoUtil", 2, "getVideoInfoByPath error", paramString);
-        }
+        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        continue;
       }
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    return null;
-  }
-  
-  @NonNull
-  private static String a(File paramFile)
-  {
-    paramFile = paramFile.listFiles();
-    if ((paramFile != null) && (paramFile.length > 0))
-    {
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramFile[i];
-        if (localObject.getName().endsWith(".mp4")) {
-          return localObject.getAbsolutePath();
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      paramString = ShortVideoUtils.a(new File(paramString).getParentFile());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
-    }
-    return null;
-  }
-  
-  @NonNull
-  private static String b(File paramFile)
-  {
-    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
-    if ((paramFile.exists()) && (paramFile.isDirectory()))
-    {
-      paramFile = paramFile.listFiles();
-      if ((paramFile != null) && (paramFile.length > 0)) {
-        return paramFile[0].getAbsolutePath();
-      }
-    }
-    return null;
   }
 }
 

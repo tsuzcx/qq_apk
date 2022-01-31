@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bhkl;
-import bhkn;
-import bhsv;
+import bhlc;
+import bhle;
+import bhtm;
 
 public class QzoneVideoTabJsPlugin$4
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$4(bhsv parambhsv) {}
+  public QzoneVideoTabJsPlugin$4(bhtm parambhtm) {}
   
   public void run()
   {
-    bhkl.a().a().n();
+    bhlc.a().a().n();
   }
 }
 

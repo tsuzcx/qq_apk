@@ -1,12 +1,6 @@
-import java.util.Observable;
-
-public class aqum
-  extends Observable
+public abstract interface aqum
 {
-  public void setChanged()
-  {
-    super.setChanged();
-  }
+  public abstract void a(String paramString);
 }
 
 

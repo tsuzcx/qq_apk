@@ -1,21 +1,40 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
 
-class bjrm
-  implements Animator.AnimatorListener
+public abstract interface bjrm
 {
-  bjrm(bjrh parambjrh) {}
+  public abstract View a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bjrh.b(this.a, this.a.d);
-  }
+  public abstract void a(Intent paramIntent);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void a(Bundle paramBundle);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
+  
+  public abstract void b(Bundle paramBundle);
+  
+  public abstract void b_(int paramInt1, int paramInt2);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void p();
+  
+  public abstract void s();
+  
+  public abstract void t();
 }
 
 

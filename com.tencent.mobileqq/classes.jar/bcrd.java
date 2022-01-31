@@ -1,18 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.RotateableView;
 
 public class bcrd
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  public bcrd(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  public bcrd(RotateableView paramRotateableView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SlideDownFrameLayout.a(this.a).a().setY(f);
-    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
+    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
+    if (RotateableView.a(this.a) >= 360.0F) {
+      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
+    }
+    this.a.invalidate();
   }
 }
 

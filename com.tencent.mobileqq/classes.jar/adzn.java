@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class adzn
-  implements bcvx
+  implements DialogInterface.OnClickListener
 {
-  adzn(adzh paramadzh, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
+  adzn(adzf paramadzf) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Adzh.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      axdo.jdField_a_of_type_Boolean = true;
-    }
-    while ((paramInt != 3) && (paramInt != 1)) {
-      return;
-    }
-    axdo.jdField_a_of_type_Long = 0L;
+    axdq.a = 0L;
   }
 }
 

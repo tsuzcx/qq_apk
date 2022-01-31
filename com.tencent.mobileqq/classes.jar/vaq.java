@@ -1,12 +1,22 @@
-class vaq
-  implements uzz
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+
+public abstract interface vaq
 {
-  vaq(vaf paramvaf) {}
+  public abstract StoryInputBarView a();
   
-  public void a()
-  {
-    veg.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
-  }
+  public abstract wco a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

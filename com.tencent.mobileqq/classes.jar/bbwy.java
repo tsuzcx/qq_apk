@@ -1,6 +1,16 @@
-public abstract interface bbwy
+public class bbwy
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public boolean a;
+  
+  public bbwy()
+  {
+    this.a = false;
+  }
+  
+  public bbwy(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
 }
 
 

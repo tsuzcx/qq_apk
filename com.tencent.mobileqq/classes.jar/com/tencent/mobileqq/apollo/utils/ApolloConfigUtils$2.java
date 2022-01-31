@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import airz;
+import airx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Map;
 
@@ -11,7 +11,7 @@ public final class ApolloConfigUtils$2
   
   public void run()
   {
-    ((airz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a(this.jdField_a_of_type_JavaUtilMap);
+    ((airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

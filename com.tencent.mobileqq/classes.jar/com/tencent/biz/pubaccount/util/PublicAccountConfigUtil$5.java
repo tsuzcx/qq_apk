@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.util;
 
 import com.tencent.commonsdk.cache.QQHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import sfh;
-import sfi;
+import sfe;
+import sff;
 
 public final class PublicAccountConfigUtil$5
-  extends QQHashMap<Integer, sfi>
+  extends QQHashMap<Integer, sff>
 {
   public PublicAccountConfigUtil$5(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -16,7 +16,7 @@ public final class PublicAccountConfigUtil$5
   public void clearMemory()
   {
     clear();
-    sfh.a().set(false);
+    sfe.a().set(false);
   }
 }
 

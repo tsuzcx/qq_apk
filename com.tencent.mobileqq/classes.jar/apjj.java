@@ -1,53 +1,13 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.kwstudio.office.preview.TdsReaderView.OpenCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTdsViewManager.OpenCallbackImpl.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
 
-public final class apjj
-  implements TdsReaderView.OpenCallback
+public abstract interface apjj
 {
-  private final int jdField_a_of_type_Int;
-  private final apji jdField_a_of_type_Apji;
-  private final WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
   
-  private apjj(Activity paramActivity, boolean paramBoolean, apji paramapji)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Apji = paramapji;
-    if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
-    for (int i = (int)paramActivity.getResources().getDimension(2131298865);; i = 0)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void onCallBackAction(Integer paramInteger, Object paramObject, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      QLog.i("TdsReaderView_LocalTdsViewManager", 1, "onCallBackAction actionType[" + paramInteger + "]");
-    }
-    Activity localActivity;
-    do
-    {
-      do
-      {
-        return;
-        localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while ((localActivity == null) || (localActivity.isFinishing()));
-      if (paramInteger.intValue() != 1001) {
-        break;
-      }
-    } while (paramBundle == null);
-    paramBundle.putInt("result_", this.jdField_a_of_type_Int);
-    return;
-    localActivity.runOnUiThread(new LocalTdsViewManager.OpenCallbackImpl.1(this, paramInteger, paramObject, paramBundle));
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

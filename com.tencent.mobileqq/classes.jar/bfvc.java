@@ -1,19 +1,12 @@
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
+import android.view.animation.Interpolator;
 
-public class bfvc
-  extends StaticLayout
+public final class bfvc
+  implements Interpolator
 {
-  public bfvc(CharSequence paramCharSequence, int paramInt1, int paramInt2, TextPaint paramTextPaint, int paramInt3, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt4)
+  public float getInterpolation(float paramFloat)
   {
-    super(paramCharSequence, paramInt1, paramInt2, paramTextPaint, paramInt3, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt4);
-  }
-  
-  public int getParagraphDirection(int paramInt)
-  {
-    return 1;
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

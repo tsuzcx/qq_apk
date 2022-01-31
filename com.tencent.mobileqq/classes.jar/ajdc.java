@@ -1,43 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class ajdc
+class ajdc
+  implements aiwi
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  ajdc(ajdb paramajdb) {}
   
-  public String a()
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.d == 0) {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    ajdb localajdb = this.a;
+    if (ajdb.a(this.a).jdField_b_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      paramStartCheckParam = ajdb.a(this.a).e;
+      ajdb.a(localajdb, paramStartCheckParam);
+      if (!"message".equals(ajdb.a(this.a).f)) {
+        break label101;
       }
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
+    }
+    label101:
+    for (int i = 1;; i = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(ajdb.a(this.a).jdField_b_of_type_Int) });
+      return;
+      paramStartCheckParam = ajdb.a(this.a).d;
+      break;
     }
   }
   
-  public String toString()
+  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
-    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mActivityId=").append(this.b);
-    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mAIOType=").append(this.c);
-    localStringBuffer.append(", mShareTo=").append(this.d);
-    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mShareRet=").append(this.e);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (ajdb.a(this.a) != null) {
+      ajdb.a(this.a).c(-10001, ajdb.a(this.a).jdField_b_of_type_JavaLangString);
+    }
   }
 }
 

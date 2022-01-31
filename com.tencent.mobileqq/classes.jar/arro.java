@@ -1,8 +1,20 @@
-public abstract interface arro
+public class arro
 {
-  public abstract void a();
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public abstract void b();
+  public arro(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public String toString()
+  {
+    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
+  }
 }
 
 

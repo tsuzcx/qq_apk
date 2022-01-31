@@ -1,34 +1,33 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public abstract interface begz
+public class begz
+  implements View.OnFocusChangeListener
 {
-  public abstract int a();
+  public begz(Login paramLogin) {}
   
-  public abstract int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract Activity a();
-  
-  public abstract Context a();
-  
-  public abstract MiniAppInfo a();
-  
-  public abstract <T> T a(beju<T> parambeju);
-  
-  public abstract String a();
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract boolean b();
-  
-  public abstract boolean e();
-  
-  public abstract boolean f();
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
+    {
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      }
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begz
  * JD-Core Version:    0.7.0.1
  */

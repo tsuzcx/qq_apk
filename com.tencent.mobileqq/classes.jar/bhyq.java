@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class bhyq
-  implements Parcelable.Creator<AlumBasicData>
+class bhyq
+  extends bdtd
 {
-  public AlumBasicData a(Parcel paramParcel)
+  bhyq(bhyp parambhyp) {}
+  
+  public void a()
   {
-    return new AlumBasicData(paramParcel);
+    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bdte.b.get());
   }
   
-  public AlumBasicData[] a(int paramInt)
+  public void b()
   {
-    return new AlumBasicData[paramInt];
+    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bdte.b.get());
   }
 }
 

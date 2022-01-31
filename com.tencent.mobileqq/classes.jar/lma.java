@@ -1,18 +1,8 @@
-import com.tencent.av.core.VcControllerImpl;
-
-public class lma
+public abstract interface lma
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public byte[] b;
-  public long c;
-  public long d;
+  public abstract void a(int paramInt);
   
-  public lma(VcControllerImpl paramVcControllerImpl) {}
+  public abstract void invalidate();
 }
 
 

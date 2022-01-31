@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 
-class abxd
-  implements QQPermissionCallback
+public class abxd
+  extends atzn
 {
-  abxd(abxc paramabxc) {}
+  public abxd(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
-    bbcv.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
-    this.a.a.g();
+    QQSettingSettingActivity.a(this.a);
+    QQSettingSettingActivity.b(this.a);
   }
 }
 

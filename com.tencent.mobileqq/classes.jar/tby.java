@@ -1,20 +1,72 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class tby
-  implements tck
+public abstract class tby<DATA>
 {
-  protected AtomicBoolean c = new AtomicBoolean(false);
+  public static final String a;
+  protected DATA a;
+  protected List<tbz<DATA>> a;
   
-  public void a() {}
+  static
+  {
+    jdField_a_of_type_JavaLangString = tby.class.getName();
+  }
+  
+  public tby()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull tbz<DATA> paramtbz)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramtbz)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramtbz);
+    }
+  }
+  
+  protected abstract void a(ter paramter);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((tbz)localIterator.next()).a(paramBoolean, paramDATA);
+    }
+  }
   
   public void b()
   {
-    this.c.set(true);
+    ved.b(jdField_a_of_type_JavaLangString, "onInit");
   }
   
-  public boolean b()
+  public void b(@NonNull tbz<DATA> paramtbz)
   {
-    return this.c.get();
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramtbz)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramtbz);
+    }
+  }
+  
+  public void b(ter paramter)
+  {
+    a(paramter);
+  }
+  
+  public void c()
+  {
+    ved.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
 
 public class adbl
-  implements QQPermissionCallback
+  extends AccessibilityDelegateCompat
 {
-  public adbl(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  public adbl(ListenPanel paramListenPanel) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    bbcv.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (ListenPanel.a(this.a) < 1000.0D) {}
+    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691104));
+      return;
+    }
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

@@ -1,14 +1,6 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
-
-public final class alhj
-  implements AVGestureWrapper.AVUploadReport
+public abstract interface alhj
 {
-  public void avGestureUploadReport(String paramString1, String paramString2)
-  {
-    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
-  }
+  public abstract void a(alhk paramalhk);
 }
 
 

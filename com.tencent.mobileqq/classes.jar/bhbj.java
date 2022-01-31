@@ -1,13 +1,43 @@
+import java.io.IOException;
+import java.nio.ByteBuffer;
+
 public class bhbj
 {
-  public static int a;
-  public static int b = 480;
-  public static int c = 360;
-  public static int d = 270;
-  public static int e = 200;
-  public static int f = 150;
-  public static int g = 200;
-  public static int h = 150;
+  public final int a;
+  public final long a;
+  public final int b;
+  public final long b;
+  public final long c;
+  public final long d;
+  public final long e;
+  public final long f;
+  
+  private bhbj(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.c = paramByteBuffer.getInt();
+      this.d = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.f = paramByteBuffer.getInt();
+      return;
+    }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+    this.c = paramByteBuffer.getLong();
+    this.d = paramByteBuffer.getLong();
+    this.e = paramByteBuffer.getLong();
+    this.f = paramByteBuffer.getLong();
+  }
 }
 
 

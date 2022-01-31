@@ -1,19 +1,35 @@
-import android.view.View;
-import com.tencent.av.camera.CameraUtils;
 import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class mbd
-  implements bfoq
+  extends lfb
 {
   public mbd(AVActivity paramAVActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a.b();
+    if (this.a.isDestroyed()) {
+      return;
     }
+    this.a.a.a(paramLong1, this.a, 4, 0);
+  }
+  
+  protected void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    paramLong = AudioHelper.b();
+    this.a.a.a(paramLong, this.a, 3, 2);
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
   }
 }
 

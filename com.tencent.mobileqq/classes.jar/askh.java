@@ -1,17 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MarkFaceMessage;
 
 class askh
-  extends akfz
+  implements askr<MarkFaceMessage, aobp>
 {
-  askh(askd paramaskd) {}
+  askh(askf paramaskf, MarkFaceMessage paramMarkFaceMessage) {}
   
-  public void a()
+  public aobp a(MarkFaceMessage paramMarkFaceMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
-    }
-    super.a();
-    this.a.d();
+    return this.jdField_a_of_type_Askf.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
   }
 }
 

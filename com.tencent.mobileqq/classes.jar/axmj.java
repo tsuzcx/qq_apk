@@ -1,23 +1,6 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-
-public class axmj
-  extends axmm
+public abstract interface axmj
 {
-  public axmj(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
-  }
+  public abstract void a(int paramInt);
 }
 
 

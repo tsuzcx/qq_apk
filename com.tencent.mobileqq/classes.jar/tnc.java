@@ -1,59 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-
 public class tnc
-  extends syv
 {
-  public static final String a;
-  public teu a;
-  public String b;
+  public final String a;
+  public final vuw a;
+  public final vve a;
+  public final String b;
   
-  static
+  public tnc(String paramString1, vve paramvve, vuw paramvuw, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.homepage_batch_feeds_720");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Vve = paramvve;
+    this.jdField_a_of_type_Vuw = paramvuw;
+    this.b = paramString2;
   }
   
-  public String a()
+  public String toString()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public syq a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
-    try
-    {
-      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new tnd(localRspStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
-    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_Teu != null)
-    {
-      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Teu.c);
-      localReqStoryFeedIdList.gps.setHasFlag(true);
-      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Teu.a);
-      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Teu.b);
-    }
-    localReqStoryFeedIdList.client_version.set(6);
-    return localReqStoryFeedIdList.toByteArray();
+    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Vve + ", comInfo=" + this.jdField_a_of_type_Vuw + ", extCfgInfo=" + this.b + '}';
   }
 }
 

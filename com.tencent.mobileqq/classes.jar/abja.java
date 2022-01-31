@@ -1,15 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.OvershootInterpolator;
 import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.portal.SanHuaView;
 
 public class abja
-  implements View.OnClickListener
+  extends OvershootInterpolator
 {
+  private boolean jdField_a_of_type_Boolean;
+  
   public abja(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    HongbaoShowerActivity.a(this.a);
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      HongbaoShowerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHongbaoShowerActivity).a();
+    }
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 

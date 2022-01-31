@@ -1,15 +1,24 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import org.jetbrains.annotations.NotNull;
 
 public class aruk
 {
-  private int jdField_a_of_type_Int;
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int = -1;
+  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
   private String jdField_a_of_type_JavaLangString;
   
-  public aruk(int paramInt, String paramString)
+  public aruk(String paramString, LatLng paramLatLng, double paramDouble)
   {
-    this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
   }
   
   public int a()
@@ -17,36 +26,50 @@ public class aruk
     return this.jdField_a_of_type_Int;
   }
   
+  public LatLng a()
+  {
+    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
   public String a()
   {
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a(int paramInt, String paramString)
+  public void a()
   {
-    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(LatLng paramLatLng, Double paramDouble)
+  {
+    if (paramLatLng != null) {
+      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    }
+    if (paramDouble != null) {
+      this.jdField_a_of_type_Double = paramDouble.doubleValue();
+    }
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (!(paramObject instanceof aruk)) {}
-    do
+    if ((paramObject instanceof aruk))
     {
-      return false;
       paramObject = (aruk)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
-    return true;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+    }
+    return super.equals(paramObject);
   }
   
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  @NonNull
+  @NotNull
   public String toString()
   {
-    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
+    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
-import bfol;
+import ajya;
+import bfpc;
 
 class ContactJsPlugin$2
   implements Runnable
@@ -10,11 +10,11 @@ class ContactJsPlugin$2
   
   public void run()
   {
-    bfol localbfol = bfol.a(this.this$0.jsPluginEngine.getActivityContext());
-    localbfol.a(ajyc.a(2131702475), 7);
-    localbfol.a(ajyc.a(2131702471), 7);
-    localbfol.a(new ContactJsPlugin.2.1(this, localbfol));
-    localbfol.show();
+    bfpc localbfpc = bfpc.a(this.this$0.jsPluginEngine.getActivityContext());
+    localbfpc.a(ajya.a(2131702486), 7);
+    localbfpc.a(ajya.a(2131702482), 7);
+    localbfpc.a(new ContactJsPlugin.2.1(this, localbfpc));
+    localbfpc.show();
   }
 }
 

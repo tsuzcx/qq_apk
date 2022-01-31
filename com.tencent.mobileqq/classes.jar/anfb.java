@@ -1,9 +1,9 @@
 import android.os.Handler;
 
 class anfb
-  implements mxo
+  implements mxl
 {
-  anfb(anez paramanez, mxn[] paramArrayOfmxn) {}
+  anfb(anez paramanez, mxk[] paramArrayOfmxk) {}
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
@@ -11,8 +11,8 @@ class anfb
     {
       anez.a(this.jdField_a_of_type_Anez).removeCallbacks(anez.a(this.jdField_a_of_type_Anez));
       anez.a(this.jdField_a_of_type_Anez).run();
-      if (this.jdField_a_of_type_ArrayOfMxn[0] != null) {
-        this.jdField_a_of_type_ArrayOfMxn[0].a();
+      if (this.jdField_a_of_type_ArrayOfMxk[0] != null) {
+        this.jdField_a_of_type_ArrayOfMxk[0].a();
       }
     }
   }

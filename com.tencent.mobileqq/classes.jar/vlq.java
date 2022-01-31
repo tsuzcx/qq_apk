@@ -1,36 +1,53 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+
 public class vlq
 {
-  private int jdField_a_of_type_Int;
-  private vlm jdField_a_of_type_Vlm = new vll();
-  private int b;
+  private static vlq a = new vlq();
   
-  public vlo a()
+  public static vlq a()
   {
-    return new vlo(this, null);
+    return a;
   }
   
-  public vlq a(int paramInt)
+  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
+    {
+      ved.e("ImageLoader", "ImageView or uri is null.");
+      return;
     }
-    return this;
-  }
-  
-  public vlq a(vlm paramvlm)
-  {
-    if (paramvlm != null) {
-      this.jdField_a_of_type_Vlm = paramvlm;
+    ved.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    paramContext = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      paramContext.mRequestWidth = paramInt1;
+      paramContext.mRequestHeight = paramInt2;
     }
-    return this;
-  }
-  
-  public vlq b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
+    paramContext.mFailedDrawable = aywm.a;
+    paramContext.mLoadingDrawable = aywm.a;
+    paramContext.mUseAutoScaleParams = false;
+    paramContext = URLDrawable.getDrawable(paramString, paramContext);
+    if (paramURLDrawableListener != null)
+    {
+      if (paramContext.getStatus() != 1) {
+        break label154;
+      }
+      ved.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramContext);
     }
-    return this;
+    for (;;)
+    {
+      paramContext.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramContext);
+      return;
+      label154:
+      ved.b("ImageLoader", "start load URLDrawable.");
+    }
   }
 }
 

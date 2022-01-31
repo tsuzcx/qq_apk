@@ -1,8 +1,15 @@
-public abstract interface lmf
+import android.os.SystemClock;
+
+public class lmf
 {
-  public abstract void a(int paramInt);
+  public float a;
+  public long a;
   
-  public abstract void invalidate();
+  public lmf(lme paramlme, float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
 }
 
 

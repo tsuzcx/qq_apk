@@ -1,34 +1,71 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public abstract class lqh
-  extends lql
+public class lqh
 {
-  protected Handler a;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = null;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = 0;
+  String jdField_c_of_type_JavaLangString = null;
+  int d = 0;
+  int e = 0;
   
-  public lqh()
+  public void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, FilterDesc paramFilterDesc, VideoMaterial paramVideoMaterial, PendantItem paramPendantItem, lpp paramlpp, int paramInt4)
   {
-    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
-    localHandlerThread.start();
-    this.a = new lqi(localHandlerThread.getLooper(), this);
-  }
-  
-  protected abstract void a(Message paramMessage);
-  
-  protected void b()
-  {
-    super.b();
-    Process.setThreadPriority(0);
-    lcl.c("GLContextThread", "init: ");
-  }
-  
-  protected void d()
-  {
-    super.e();
-    this.a.getLooper().quit();
+    String str;
+    label34:
+    label43:
+    StringBuilder localStringBuilder;
+    if ((paramFilterDesc == null) || (paramFilterDesc.name == null))
+    {
+      paramFilterDesc = "null";
+      if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
+        break label522;
+      }
+      str = "null";
+      if (paramVideoMaterial != null) {
+        break label532;
+      }
+      paramVideoMaterial = "null";
+      if ((paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int) || (paramInt3 != this.jdField_c_of_type_Int) || (paramBoolean != this.jdField_b_of_type_Boolean) || (this.d != paramlpp.jdField_a_of_type_ArrayOfByte.length) || (this.jdField_a_of_type_Boolean != paramlpp.jdField_a_of_type_Boolean) || (this.e != paramInt4) || (!TextUtils.equals(paramFilterDesc, this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)) || (!TextUtils.equals(paramVideoMaterial, this.jdField_c_of_type_JavaLangString)))
+      {
+        localStringBuilder = new StringBuilder().append("RenderInfoLog, frameIndex[").append(paramLong).append("], width[").append(this.jdField_a_of_type_Int).append("->").append(paramInt1).append("], height[").append(this.jdField_b_of_type_Int).append("->").append(paramInt2).append("], angle[").append(this.jdField_c_of_type_Int).append("->").append(paramInt3).append("], needfacedata[").append(this.jdField_b_of_type_Boolean).append("->").append(paramBoolean).append("], mDataLen[").append(this.d).append("->").append(paramlpp.jdField_a_of_type_ArrayOfByte.length).append("], mBeautyLevel[").append(this.e).append("->").append(paramInt4).append("], isFront[").append(this.jdField_a_of_type_Boolean).append("->").append(paramlpp.jdField_a_of_type_Boolean).append("], getFrameAngle[").append(lpy.a(paramlpp.jdField_a_of_type_Boolean)).append("], fAngle[").append((paramlpp.d - lpy.a(paramlpp.jdField_a_of_type_Boolean) - 1 + 4) % 4).append("], strFilterDesc[").append(paramFilterDesc).append("], strPendantItem[").append(str).append("], pendantItem[");
+        if ((paramPendantItem != null) && (paramPendantItem.getId() != null)) {
+          break label542;
+        }
+      }
+    }
+    label522:
+    label532:
+    label542:
+    for (paramPendantItem = "null";; paramPendantItem = paramPendantItem.getId())
+    {
+      QLog.w(paramString, 1, paramPendantItem + "], strFilters[" + paramVideoMaterial + "]");
+      this.jdField_a_of_type_Boolean = paramlpp.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.jdField_c_of_type_Int = paramInt3;
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_JavaLangString = paramFilterDesc;
+      this.jdField_b_of_type_JavaLangString = str;
+      this.jdField_c_of_type_JavaLangString = paramVideoMaterial;
+      this.d = paramlpp.jdField_a_of_type_ArrayOfByte.length;
+      this.e = paramInt4;
+      return;
+      paramFilterDesc = paramFilterDesc.name;
+      break;
+      str = paramPendantItem.getId();
+      break label34;
+      paramVideoMaterial = paramVideoMaterial.toString();
+      break label43;
+    }
   }
 }
 

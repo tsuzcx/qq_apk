@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aqpz
-  extends aqom
+class aqpz
+  implements DialogInterface.OnClickListener
 {
-  public GalleryUrlImageView a;
+  aqpz(aqpt paramaqpt) {}
   
-  public aqpz(aqpr paramaqpr) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.o();
+    }
+  }
 }
 
 

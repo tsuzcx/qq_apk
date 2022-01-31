@@ -1,39 +1,12 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
-public class bhks
-  extends MSFServlet
+public abstract interface bhks
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {
-      bhkr.a().c(paramFromServiceMsg.getResultCode());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2, ArrayList<Integer> paramArrayList);
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = paramIntent.getSerializableExtra("list");
-    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
-    bhkq localbhkq = new bhkq(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
-    byte[] arrayOfByte = localbhkq.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbhkq.uniKey());
-    paramPacket.putSendData(paramIntent);
-  }
+  public abstract void a(Bundle paramBundle, String paramString, QQAppInterface paramQQAppInterface);
 }
 
 

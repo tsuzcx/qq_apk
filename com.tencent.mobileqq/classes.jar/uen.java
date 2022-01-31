@@ -1,14 +1,11 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
-
 class uen
-  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
+  implements ufj
 {
-  uen(ueg paramueg) {}
+  uen(uem paramuem, uda paramuda) {}
   
-  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(ufh paramufh)
   {
-    veg.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    this.jdField_a_of_type_Uda.a(this.jdField_a_of_type_Uem);
   }
 }
 

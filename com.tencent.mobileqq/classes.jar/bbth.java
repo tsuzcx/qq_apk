@@ -1,76 +1,144 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.graphics.drawable.NinePatchDrawable;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemView;
+import com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import common.config.service.QzoneConfig;
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
 
 public class bbth
-  implements SeekBar.OnSeekBarChangeListener
+  extends bbtc
 {
-  public bbth(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
+  public static final bbth a;
+  public static final HashMap<Integer, String> a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  static
   {
-    Iterator localIterator;
-    if (((paramSeekBar.getProgress() == paramSeekBar.getMax()) || (this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int > paramSeekBar.getProgress())) && (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b)) {
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
-    }
-    while (localIterator.hasNext())
+    jdField_a_of_type_Bbth = new bbth();
+    jdField_a_of_type_JavaUtilHashMap = new PobingUpdateCallback.1();
+  }
+  
+  public static NinePatchDrawable a(Resources paramResources, Bitmap paramBitmap)
+  {
+    int i = 0;
+    int[] arrayOfInt1 = new int[2];
+    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
+    arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
+    int[] arrayOfInt2 = new int[2];
+    arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
+    arrayOfInt2[1] = (paramBitmap.getHeight() / 2 + 1);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfInt1.length * 4 + arrayOfInt2.length * 4 + 36 + 32).order(ByteOrder.nativeOrder());
+    localByteBuffer.put((byte)1);
+    localByteBuffer.put((byte)2);
+    localByteBuffer.put((byte)2);
+    localByteBuffer.put((byte)9);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(arrayOfInt1[0]);
+    localByteBuffer.putInt(arrayOfInt1[1]);
+    localByteBuffer.putInt(arrayOfInt2[0]);
+    localByteBuffer.putInt(arrayOfInt2[1]);
+    while (i < 9)
     {
-      Object localObject1 = (String)localIterator.next();
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).seekTo(0);
-      paramSeekBar.setProgress(0);
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
-      Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_JavaUtilHashMap.get(localObject1);
-      localObject1 = (SeekBar)((FrameLayout)localObject2).findViewById(2131375774);
-      TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131373122);
-      TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131373121);
-      ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131373120);
-      ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131373119);
-      localObject2 = (TextView)((FrameLayout)localObject2).findViewById(2131373118);
-      localImageView1.setImageResource(2130848221);
-      localImageView1.setVisibility(0);
-      ((SeekBar)localObject1).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView2.setVisibility(4);
-      ((TextView)localObject2).setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = 0;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
+      localByteBuffer.putInt(1);
+      i += 1;
     }
+    return new NinePatchDrawable(paramResources, paramBitmap, localByteBuffer.array(), new Rect(), "");
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public static String a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onStartTrackingTouch");
-    }
+    return "pobing.preview.cache." + paramInt;
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public static boolean a()
   {
-    int i = paramSeekBar.getProgress();
-    long l = ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getDuration();
-    i = (int)(i / 100.0D * l);
-    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).seekTo(i);
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "mLastprogressTime1:" + this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int);
+    return QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasfeaturedisable", 0L) == 0L;
+  }
+  
+  public Bitmap a(Context paramContext, int paramInt, String paramString)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = 320;
+    localOptions.inTargetDensity = 320;
+    paramContext = getDir(paramContext, getScid(paramInt));
+    paramContext = paramContext + File.separator + paramString;
+    paramString = new baxj();
+    baxi.a(paramContext, localOptions, paramString);
+    if (paramString.jdField_a_of_type_Int != 0)
+    {
+      QLog.e("PobingUpdateCallback", 1, paramContext + " decodeFail: " + paramString.jdField_a_of_type_Int);
+      return null;
     }
+    return paramString.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public boolean a(Context paramContext, int paramInt)
+  {
+    Object localObject = "newComeCard." + paramInt;
+    paramContext = jdField_a_of_type_Bbth.getDir(paramContext, (String)localObject);
+    if (!new File(paramContext).exists()) {
+      return false;
+    }
+    if (paramInt == 2000) {
+      return new File(paramContext, "addgroup_preview.png").exists();
+    }
+    localObject = TroopPobingItemView.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    File localFile;
+    while (((Iterator)localObject).hasNext())
+    {
+      localFile = new File(paramContext, (String)((Iterator)localObject).next());
+      if (!localFile.exists())
+      {
+        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
+        return false;
+      }
+    }
+    localObject = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localFile = new File(paramContext, (String)((Iterator)localObject).next());
+      if (!localFile.exists())
+      {
+        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public long getBID()
+  {
+    return 40L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "newComeCard";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "newComeCard.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbth
  * JD-Core Version:    0.7.0.1
  */

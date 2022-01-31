@@ -1,30 +1,45 @@
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.quic.QuicResDownload;
+import java.util.Properties;
+import mqq.app.MobileQQ;
 
 public class axen
+  implements axeq
 {
-  public int a;
-  ayrv jdField_a_of_type_Ayrv;
-  public String a;
-  public ArrayList<axeo> a;
-  public int b = 0;
+  public axen(ShortVideoResourceManager.3 param3) {}
   
-  public axen(ShortVideoResourceManager paramShortVideoResourceManager, ayrv paramayrv)
+  public void G_()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_Ayrv = paramayrv;
-    this.b = 0;
+    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
   }
   
-  public void a()
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
+    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
+      QuicResDownload.a = true;
     }
-    this.b = 1;
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_Ayrv);
+    try
+    {
+      Properties localProperties = new Properties();
+      localProperties.put("version", "8.3.0.4480");
+      localProperties.put("appid", String.valueOf(AppSetting.a()));
+      localProperties.put("release", String.valueOf(true));
+      localProperties.put("name", paramString);
+      axqn.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

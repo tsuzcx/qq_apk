@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection;
 
-final class amiw
-  extends amgr
+public class amiw
+  implements amit
 {
-  amiw(amgp paramamgp, ColorNote paramColorNote) {}
+  public amiw(ColorNoteSettingBaseSection paramColorNoteSettingBaseSection) {}
   
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_Amgp.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.parseBundle());
+    this.a.a();
   }
 }
 

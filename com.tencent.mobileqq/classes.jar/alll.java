@@ -1,6 +1,20 @@
-public abstract interface alll
+import android.os.Bundle;
+
+public final class alll
 {
-  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean);
+  public static Bundle a(Bundle paramBundle)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new allq(localBundle);
+    paramBundle.a(10L);
+    paramBundle.b(true);
+    paramBundle.a(true);
+    paramBundle.b(4096L);
+    return paramBundle.a();
+  }
 }
 
 

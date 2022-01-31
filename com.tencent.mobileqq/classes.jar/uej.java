@@ -1,18 +1,82 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class uej
-  implements TVK_IMediaPlayer.OnErrorListener
+class uej
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  uej(ueg paramueg) {}
+  uej(ued paramued) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void OnDownloadCallback(String paramString)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    ved.a(this.a.jdField_a_of_type_JavaLangString, "on tvk download callback. %s", paramString);
+    do
+    {
+      do
+      {
+        Object localObject2;
+        try
+        {
+          udp localudp = (udp)JsonORM.a(new JSONObject(paramString), udp.class);
+          if (localudp == null)
+          {
+            ved.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback fail. %s", new Object[] { paramString });
+            return;
+          }
+        }
+        catch (JsonORM.JsonParseException localJsonParseException)
+        {
+          for (;;)
+          {
+            localJsonParseException.printStackTrace();
+            Object localObject1 = null;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          do
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+              localObject2 = null;
+            }
+            switch (localObject2.d)
+            {
+            default: 
+              ved.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 未知. %s", new Object[] { paramString });
+              return;
+            case 1: 
+              ved.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 文件大小. %s", new Object[] { paramString });
+              return;
+            case 2: 
+              ved.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 progress. offset = %d / %d, speedKBS = %d, clipNo = %d", new Object[] { Integer.valueOf(localObject2.c), Long.valueOf(localObject2.jdField_a_of_type_Long), Integer.valueOf(localObject2.b), Integer.valueOf(localObject2.jdField_a_of_type_Int) });
+              ued.a(this.a).jdField_a_of_type_Long = localObject2.jdField_a_of_type_Long;
+              ued.a(this.a).jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localObject2.b));
+            }
+          } while ((TextUtils.isEmpty(this.a.c)) || (this.a.jdField_a_of_type_Udb == null));
+          this.a.jdField_a_of_type_Udb.a(this.a.d, new File(this.a.c), localObject2.c, null);
+          return;
+          ved.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 DONE.");
+          return;
+        }
+        ved.e(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载出错. errorCode=%d, errorDetailCode=%d, errorMsg=%s", new Object[] { Integer.valueOf(localObject2.e), Integer.valueOf(localObject2.f), localObject2.jdField_a_of_type_JavaLangString });
+        this.a.jdField_a_of_type_Udb.a(this.a.b, this.a.d, localObject2.e);
+        return;
+        ved.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 存储文件完整下载完成.");
+        if (TextUtils.isEmpty(this.a.c)) {
+          break;
+        }
+      } while (this.a.jdField_a_of_type_Udb == null);
+      this.a.jdField_a_of_type_Udb.a(this.a.b, this.a.d, new File(this.a.c));
+      return;
+    } while (this.a.jdField_a_of_type_Udb == null);
+    this.a.jdField_a_of_type_Udb.a(this.a.b, this.a.d, null);
   }
 }
 

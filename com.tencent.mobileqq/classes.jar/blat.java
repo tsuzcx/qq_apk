@@ -1,14 +1,11 @@
-public class blat
+class blat
+  implements blbq
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  blat(blas paramblas) {}
   
-  static
+  public boolean a(double paramDouble)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
+    return blas.a(this.a);
   }
 }
 

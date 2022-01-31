@@ -1,22 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aeto
-  extends BroadcastReceiver
+  implements baos
 {
-  private aeto(aerv paramaerv) {}
+  aeto(aetn paramaetn) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      aerv.a(this.a, 1);
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    {
+      paramString = (adjp)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
     }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+    do
+    {
       return;
-    }
-    aerv.a(this.a, 1);
+      paramString = (adjp)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

@@ -1,31 +1,27 @@
-import java.util.List;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public abstract class wda<T>
+public class wda
+  extends AccessibilityDelegateCompat
 {
-  private int jdField_a_of_type_Int;
-  private List<T> jdField_a_of_type_JavaUtilList;
+  public wda(LeftTabBarView paramLeftTabBarView) {}
   
-  public wda(int paramInt, List<T> paramList)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
+    }
   }
   
-  public int a()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public abstract void a(int paramInt, T paramT, vas paramvas);
-  
-  public void a(int paramInt, vas paramvas)
-  {
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramvas);
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

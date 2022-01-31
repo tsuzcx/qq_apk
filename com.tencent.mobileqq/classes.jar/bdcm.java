@@ -1,10 +1,25 @@
-import android.content.Intent;
+import android.view.View;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.widget.AdapterView;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface bdcm
+public class bdcm
+  implements bfpt
 {
-  public abstract void a(Intent paramIntent);
+  public bdcm(OpenCardContainer paramOpenCardContainer) {}
   
-  public abstract void a(bddy parambddy);
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = bdct.a(this.a.jdField_a_of_type_Bdct).iterator();
+    while (paramAdapterView.hasNext()) {
+      ((bdcw)paramAdapterView.next()).a = false;
+    }
+    ((bdcw)bdct.a(this.a.jdField_a_of_type_Bdct).get(paramInt)).a = true;
+    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
+    this.a.jdField_a_of_type_Bdct.notifyDataSetChanged();
+  }
 }
 
 

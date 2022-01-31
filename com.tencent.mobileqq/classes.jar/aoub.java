@@ -1,199 +1,197 @@
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aoub
+public class aoub
+  extends aouf
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected aoud a;
-  protected QQAppInterface a;
-  
   public aoub(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aouc(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramContext);
   }
   
-  private void a(acun paramacun, boolean paramBoolean)
+  protected CircleFileStateView a(acuj paramacuj)
   {
-    paramacun = a(paramacun);
-    if (paramBoolean) {
-      if (paramacun != null)
-      {
-        paramacun.setVisibility(0);
-        paramacun.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      }
+    if (paramacuj == null) {}
+    while (!(paramacuj instanceof adwy)) {
+      return null;
     }
-    while (paramacun == null) {
+    return ((adwy)paramacuj).a;
+  }
+  
+  protected void a(acuj paramacuj, CircleFileStateView paramCircleFileStateView)
+  {
+    if (paramacuj == null) {}
+    while (!(paramacuj instanceof adwy)) {
       return;
     }
-    paramacun.setVisibility(8);
-    paramacun.setOnClickListener(null);
+    ((adwy)paramacuj).a = paramCircleFileStateView;
   }
   
-  protected abstract CircleFileStateView a(acun paramacun);
-  
-  public void a(acun paramacun, View paramView, ChatMessage paramChatMessage)
+  protected void a(View paramView, acuj paramacuj, ChatMessage paramChatMessage, int paramInt)
   {
-    a(paramacun, false);
-    CircleFileStateView localCircleFileStateView;
-    int i;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (a(paramChatMessage))
+    if (paramChatMessage == null) {}
+    do
     {
-      localObject = a(paramacun);
-      if (localObject == null)
+      do
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-        localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-        localCircleFileStateView.setState(2);
-        localCircleFileStateView.setId(2131364114);
-        localCircleFileStateView.setProgressRingWidth(0.0F);
-        localCircleFileStateView.setCenterBgColor(-1);
-        a(paramacun, localCircleFileStateView);
-        i = actn.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296289);
-        localLayoutParams.addRule(8, 2131364110);
-        if (paramChatMessage.isSend())
+        do
         {
-          localLayoutParams.addRule(0, 2131364110);
-          localLayoutParams.addRule(1, 0);
-          if ((paramView instanceof ViewGroup)) {
-            ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
-          }
-          a(paramacun, true);
-        }
-      }
-    }
-    while (!b(paramChatMessage))
-    {
-      for (;;)
+          return;
+          QLog.i("OfflineFileBubbleDownloadHandler", 1, "handleDownloadClick: type[" + paramInt + "]");
+        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
+        paramView = (MessageForFile)paramChatMessage;
+        paramView = apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
+      } while (paramView == null);
+      if (paramInt == 0)
       {
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A888", "0X800A888", 0, 0, "", "", "", "");
+        if (paramView.getCloudType() == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.nSessionId);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.nSessionId);
         return;
-        localLayoutParams.addRule(1, 2131364110);
-        localLayoutParams.addRule(0, 0);
       }
-      ((CircleFileStateView)localObject).setState(2);
-      paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-      if (paramView == null)
-      {
-        i = actn.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramView = new RelativeLayout.LayoutParams(i, i);
-        if (paramChatMessage.isSend())
-        {
-          paramView.addRule(0, 2131364110);
-          paramView.addRule(1, 0);
-        }
-        for (;;)
-        {
-          ((CircleFileStateView)localObject).setLayoutParams(paramView);
-          break;
-          paramView.addRule(1, 2131364110);
-          paramView.addRule(0, 0);
-        }
-      }
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364110);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364110);
-        paramView.addRule(0, 0);
-      }
-    }
-    Object localObject = a(paramacun);
-    if (localObject == null)
-    {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-      localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-      localCircleFileStateView.setState(1);
-      localCircleFileStateView.setId(2131364114);
-      localCircleFileStateView.setCenterBgColor(-1);
-      a(paramacun, localCircleFileStateView);
-      localCircleFileStateView.setProgressRingWidth(0.0F);
-      i = actn.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-      localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296289);
-      localLayoutParams.addRule(8, 2131364110);
-      if (paramChatMessage.isSend())
-      {
-        localLayoutParams.addRule(0, 2131364110);
-        localLayoutParams.addRule(1, 0);
-      }
-      for (;;)
-      {
-        if ((paramView instanceof ViewGroup)) {
-          ((ViewGroup)paramView).addView(localCircleFileStateView, localLayoutParams);
-        }
-        a(paramacun, true);
-        return;
-        localLayoutParams.addRule(1, 2131364110);
-        localLayoutParams.addRule(0, 0);
-      }
-    }
-    ((CircleFileStateView)localObject).setState(1);
-    paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
-    if (paramView == null)
-    {
-      i = actn.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramView = new RelativeLayout.LayoutParams(i, i);
-      if (paramChatMessage.isSend())
-      {
-        paramView.addRule(0, 2131364110);
-        paramView.addRule(1, 0);
-      }
-      for (;;)
-      {
-        ((CircleFileStateView)localObject).setLayoutParams(paramView);
-        break;
-        paramView.addRule(1, 2131364110);
-        paramView.addRule(0, 0);
-      }
-    }
-    if (paramChatMessage.isSend())
-    {
-      paramView.addRule(0, 2131364110);
-      paramView.addRule(1, 0);
-    }
-    for (;;)
-    {
-      ((CircleFileStateView)localObject).setLayoutParams(paramView);
-      break;
-      paramView.addRule(1, 2131364110);
-      paramView.addRule(0, 0);
-    }
-  }
-  
-  protected abstract void a(acun paramacun, CircleFileStateView paramCircleFileStateView);
-  
-  protected void a(View paramView, acun paramacun, ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(aoud paramaoud)
-  {
-    this.jdField_a_of_type_Aoud = paramaoud;
+    } while (paramInt != 1);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A887", "0X800A887", 0, 0, "", "", "", "");
+    aptd.a(paramView).a(false, this.jdField_a_of_type_AndroidContentContext, new aouc(this, paramView));
   }
   
   protected boolean a(ChatMessage paramChatMessage)
   {
-    return false;
+    boolean bool3 = true;
+    if (paramChatMessage == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+          } while (!(paramChatMessage instanceof MessageForFile));
+          paramChatMessage = (MessageForFile)paramChatMessage;
+          paramChatMessage = apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+        } while (paramChatMessage == null);
+        i = apug.a(paramChatMessage.fileName);
+      } while ((i == 0) || (i == 2));
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubbleDownloadHandler", 1, "needShowDownloadIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "] fileName[" + paramChatMessage.fileName + "] uniseq[" + paramChatMessage.uniseq + "]");
+      }
+    } while (16 == paramChatMessage.status);
+    if ((paramChatMessage.nOpType == -1) && (paramChatMessage.status == -1)) {}
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if (paramChatMessage.nOpType != 0)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.nOpType != 11) {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (paramChatMessage.getCloudType() == 1)
+        {
+          bool1 = bool2;
+          if (paramChatMessage.status == 1) {
+            bool1 = true;
+          }
+        }
+      }
+      bool2 = bool1;
+      if (paramChatMessage.nOpType == 11)
+      {
+        bool2 = bool1;
+        if (paramChatMessage.getCloudType() == 1)
+        {
+          bool2 = bool1;
+          if (paramChatMessage.status == 13) {
+            bool2 = true;
+          }
+        }
+      }
+      if ((paramChatMessage.nOpType != 7) && (paramChatMessage.nOpType != 28) && (paramChatMessage.nOpType != 21) && (paramChatMessage.nOpType != 22) && (paramChatMessage.nOpType != 3) && (paramChatMessage.nOpType != 24))
+      {
+        bool1 = bool2;
+        if (paramChatMessage.nOpType != 25) {}
+      }
+      else if (paramChatMessage.status != 1)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.status != -1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (paramChatMessage.nOpType == 1) {}
+      switch (paramChatMessage.status)
+      {
+      default: 
+        bool2 = bool1;
+        label383:
+        bool1 = bool2;
+        if (paramChatMessage.nOpType == 0) {
+          if (paramChatMessage.status != 1)
+          {
+            bool1 = bool2;
+            if (paramChatMessage.status != -1) {
+              break;
+            }
+          }
+          else
+          {
+            if (bbdx.b(paramChatMessage.strFilePath)) {
+              break label447;
+            }
+          }
+        }
+        break;
+      }
+      label447:
+      for (boolean bool1 = bool3; (!bool1) || (!bbdx.b(paramChatMessage.strFilePath)); bool1 = false)
+      {
+        return bool1;
+        bool2 = true;
+        break label383;
+      }
+    }
   }
   
   protected boolean b(ChatMessage paramChatMessage)
   {
-    return false;
+    if (paramChatMessage == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+          } while (!(paramChatMessage instanceof MessageForFile));
+          paramChatMessage = (MessageForFile)paramChatMessage;
+          paramChatMessage = apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+        } while (paramChatMessage == null);
+        i = apug.a(paramChatMessage.fileName);
+      } while ((i == 0) || (i == 2));
+      if (QLog.isColorLevel()) {
+        QLog.i("OfflineFileBubbleDownloadHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      }
+    } while ((paramChatMessage.nOpType != 1) || ((paramChatMessage.status != 2) && (paramChatMessage.status != 18)));
+    return true;
   }
 }
 

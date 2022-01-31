@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class abuf
-  implements bcrn
+  implements avtu
 {
-  final WeakReference<QQBrowserActivity> a;
+  public abuf(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public abuf(QQBrowserActivity paramQQBrowserActivity)
+  public void a(float paramFloat)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
+    if (paramFloat < 0.0F)
+    {
+      this.a.a(this.a.getString(2131694421));
       return;
     }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
+    if (paramFloat > 175.0F)
+    {
+      this.a.a(this.a.getString(2131694420));
+      return;
+    }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

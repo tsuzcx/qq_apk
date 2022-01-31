@@ -1,10 +1,9 @@
 public class atwy
-  extends atwx
+  extends atwz
 {
   public int a;
   public String a;
   public int b;
-  public long b;
 }
 
 

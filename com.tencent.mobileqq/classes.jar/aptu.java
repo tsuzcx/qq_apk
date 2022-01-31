@@ -1,8 +1,15 @@
-public abstract interface aptu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class aptu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  aptu(aptw paramaptw) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a();
+  }
 }
 
 

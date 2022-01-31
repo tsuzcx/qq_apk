@@ -3,12 +3,12 @@ package com.tencent.device.datadef;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import yad;
+import yaa;
 
 public class ProductInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductInfo> CREATOR = new yad();
+  public static final Parcelable.Creator<ProductInfo> CREATOR = new yaa();
   public static final int DeviceOSType_Android = 2;
   public static final int DeviceOSType_Linux = 1;
   public static final int DeviceOSType_RTOS = 3;

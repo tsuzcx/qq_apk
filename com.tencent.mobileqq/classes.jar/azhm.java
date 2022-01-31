@@ -1,88 +1,36 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 
 public class azhm
-  extends Handler
 {
-  public azhm(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public azhm(Activity paramActivity, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (this.a.isFinishing()) {}
-    do
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = "0")
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (paramMessage.what)
-            {
-            case 1002: 
-            case 1007: 
-            default: 
-              return;
-            case 1001: 
-              this.a.a(false);
-              if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-                this.a.jdField_a_of_type_Bcpq.dismiss();
-              }
-              bcpw.a(this.a, 2131696566, 1).b(this.a.getTitleBarHeight());
-            }
-          } while (!(paramMessage.obj instanceof String));
-          paramMessage = (String)paramMessage.obj;
-          try
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-            return;
-          }
-          catch (UnsupportedOperationException paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopBar", 2, paramMessage.toString());
-        return;
-        if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-          this.a.jdField_a_of_type_Bcpq.dismiss();
-        }
-        this.a.a(false);
-        this.a.a();
-        return;
-        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-        }
-      } while ((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing()));
-      this.a.a();
-      return;
-      this.a.a(false);
-      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-        this.a.jdField_a_of_type_Bcpq.dismiss();
-      }
-      bcpw.a(this.a, 2131696544, 1).b(this.a.getTitleBarHeight());
-      return;
-      if ((paramMessage.obj instanceof String))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-    return;
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
-    {
-      this.a.requestPermissions(new azhn(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      this.jdField_a_of_type_JavaLangString = paramBundle;
+      this.jdField_a_of_type_AndroidContentSharedPreferences = paramActivity.getSharedPreferences("tribeInvokeFrom", 0);
       return;
     }
-    TroopBarReplyActivity.a(this.a, 4);
+  }
+  
+  public Boolean a()
+  {
+    return Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_JavaLangString, false));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
 }
 

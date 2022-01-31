@@ -1,17 +1,17 @@
 package cooperation.groupvideo;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import bcpq;
-import bgjw;
-import bgjx;
-import bgkq;
-import bgkz;
+import bcqf;
+import bgkn;
+import bgko;
+import bglh;
+import bglq;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import cooperation.plugin.PluginInfo;
@@ -23,32 +23,32 @@ public class GVideoProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    paramActivity = new bcpq(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298865));
-    paramActivity.a(ajyc.a(2131705426));
-    paramActivity.setOnDismissListener(new bgjw());
+    paramActivity = new bcqf(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298865));
+    paramActivity.a(ajya.a(2131705437));
+    paramActivity.setOnDismissListener(new bgkn());
     return paramActivity;
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    bgkz localbgkz = new bgkz(1);
-    localbgkz.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
-    localbgkz.d = PluginInfo.k;
-    localbgkz.jdField_a_of_type_JavaLangString = paramString2;
-    localbgkz.e = paramString1;
-    localbgkz.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
+    bglq localbglq = new bglq(1);
+    localbglq.jdField_b_of_type_JavaLangString = "group_video_plugin.apk";
+    localbglq.d = PluginInfo.k;
+    localbglq.jdField_a_of_type_JavaLangString = paramString2;
+    localbglq.e = paramString1;
+    localbglq.jdField_a_of_type_JavaLangClass = GVideoProxyActivity.class;
     paramString1 = paramIntent;
     if (paramIntent == null) {
       paramString1 = new Intent();
     }
-    localbgkz.jdField_a_of_type_AndroidContentIntent = paramString1;
-    localbgkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    localbgkz.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    localbgkz.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    localbgkz.jdField_b_of_type_Int = paramInt;
-    localbgkz.c = 20000;
-    localbgkz.f = null;
-    bgkq.a(paramActivity, localbgkz);
+    localbglq.jdField_a_of_type_AndroidContentIntent = paramString1;
+    localbglq.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localbglq.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
+    localbglq.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
+    localbglq.jdField_b_of_type_Int = paramInt;
+    localbglq.c = 20000;
+    localbglq.f = null;
+    bglh.a(paramActivity, localbglq);
   }
   
   public String getPluginID()
@@ -72,7 +72,7 @@ public class GVideoProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     if (getIntent().getExtras() != null) {
-      this.a = new bgjx(this);
+      this.a = new bgko(this);
     }
     super.onCreate(paramBundle);
   }

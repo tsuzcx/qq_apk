@@ -1,11 +1,8 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-
 public abstract interface raa
 {
-  public abstract void a(View paramView, int paramInt, ArticleInfo paramArticleInfo, ArrayList<DislikeInfo> paramArrayList);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

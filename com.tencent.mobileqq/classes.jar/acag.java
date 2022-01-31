@@ -1,33 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class acag
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class acag
+  implements View.OnTouchListener
 {
-  acad jdField_a_of_type_Acad;
-  Button jdField_a_of_type_AndroidWidgetButton;
+  public acag(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public acag(acaf paramacaf, View paramView, acad paramacad)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.jdField_a_of_type_Acad = paramacad;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373475));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Acad != null) {
-      this.jdField_a_of_type_Acad.a(paramView, getPosition());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

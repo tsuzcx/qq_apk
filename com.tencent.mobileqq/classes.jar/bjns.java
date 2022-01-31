@@ -1,20 +1,9 @@
-class bjns<K, V>
-  extends bjnv<K, V>
+import android.support.annotation.NonNull;
+
+public abstract interface bjns
 {
-  bjns(bjnt<K, V> parambjnt1, bjnt<K, V> parambjnt2)
-  {
-    super(parambjnt1, parambjnt2);
-  }
-  
-  bjnt<K, V> a(bjnt<K, V> parambjnt)
-  {
-    return parambjnt.b;
-  }
-  
-  bjnt<K, V> b(bjnt<K, V> parambjnt)
-  {
-    return parambjnt.a;
-  }
+  @NonNull
+  public abstract bjno a();
 }
 
 

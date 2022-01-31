@@ -3,17 +3,17 @@ package com.tencent.biz.subscribe.bizdapters;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
-import wkv;
+import wks;
 
 public class CommodityAdapter$2
   implements Runnable
 {
-  public CommodityAdapter$2(wkv paramwkv) {}
+  public CommodityAdapter$2(wks paramwks) {}
   
   public void run()
   {
-    this.this$0.a((ArrayList)wkv.a(this.this$0).goods.get());
-    this.this$0.a(wkv.a(this.this$0));
+    this.this$0.a((ArrayList)wks.a(this.this$0).goods.get());
+    this.this$0.a(wks.a(this.this$0));
   }
 }
 

@@ -1,13 +1,28 @@
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import java.lang.ref.WeakReference;
 
-public abstract interface asta
+public class asta
+  implements bfsa
 {
-  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
+  public asta(MultiCardRootLayout paramMultiCardRootLayout) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionMasked();
+    if (MultiCardRootLayout.a(this.a) != null)
+    {
+      astc localastc = (astc)MultiCardRootLayout.a(this.a).get();
+      if ((localastc != null) && (localastc.a(i))) {
+        return true;
+      }
+    }
+    if (MultiCardRootLayout.a(this.a) != null) {
+      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    }
+    return false;
+  }
 }
 
 

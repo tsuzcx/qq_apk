@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import aqhk;
-import aqhl;
+import aqhm;
+import aqhn;
 
 public class DeleteFaceFragment$2$1$1
   implements Runnable
 {
-  public DeleteFaceFragment$2$1$1(aqhl paramaqhl) {}
+  public DeleteFaceFragment$2$1$1(aqhn paramaqhn) {}
   
   public void run()
   {

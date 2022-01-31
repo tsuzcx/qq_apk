@@ -1,25 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
 class acwr
-  implements DialogInterface.OnClickListener
+  implements adkd
 {
-  acwr(acwp paramacwp) {}
+  acwr(acwl paramacwl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    if ((!TextUtils.isEmpty(this.a.a)) && (acwp.a(this.a) != null))
-    {
-      if (acwp.a(this.a) == 1) {
-        acwp.b(this.a, this.a.a);
-      }
-    }
-    else {
-      return;
-    }
-    acwp.a(this.a, this.a.a, acwp.a(this.a).maskType);
+    acwl.a(this.a);
   }
 }
 

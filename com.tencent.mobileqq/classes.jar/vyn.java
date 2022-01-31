@@ -1,17 +1,20 @@
-import java.lang.reflect.Field;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public final class vyn
+final class vyn
+  implements INetEventHandler
 {
-  public final int a;
-  public final String a;
-  public final Field a;
+  vyn(Context paramContext) {}
   
-  public vyn(String paramString, int paramInt, Field paramField)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
+    if (paramBoolean)
+    {
+      vym.a(this.a);
+      return;
+    }
+    vym.a("");
+    vym.b("");
   }
 }
 

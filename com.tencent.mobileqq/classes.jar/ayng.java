@@ -1,9 +1,15 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class ayng
+class ayng
+  implements DialogInterface.OnClickListener
 {
-  public final Bundle a = new Bundle();
-  public Object a;
+  ayng(aync paramaync) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

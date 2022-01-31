@@ -1,12 +1,10 @@
-class aqwb
-  implements bfwt
+import android.net.Uri;
+
+public abstract interface aqwb
 {
-  aqwb(aqwa paramaqwa) {}
+  public abstract void a(Uri paramUri);
   
-  public void a()
-  {
-    this.a.a = true;
-  }
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

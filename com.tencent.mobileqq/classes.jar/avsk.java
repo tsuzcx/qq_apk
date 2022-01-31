@@ -1,15 +1,26 @@
-public class avsk
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class avsk
+  implements aysc
 {
-  public int a;
-  public String a;
-  public String b;
+  avsk(avsf paramavsf) {}
   
-  public avsk(int paramInt, String paramString1, String paramString2)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    FilterDesc localFilterDesc = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
+    if (paramaysz.jdField_a_of_type_Int != 0)
+    {
+      lcg.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+      return;
+    }
+    if ((avsf.a(this.a).decrementAndGet() == 0) && (avsf.a(this.a) != null)) {
+      avsf.a(this.a).a(true);
+    }
+    lcg.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

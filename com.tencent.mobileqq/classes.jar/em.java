@@ -52,7 +52,7 @@ public class em
       if (paramViewGroup.jdField_a_of_type_Int == 1)
       {
         paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559400, null);
-        paramViewGroup = (TextView)paramView.findViewById(2131377043);
+        paramViewGroup = (TextView)paramView.findViewById(2131377045);
       }
     }
     for (;;)
@@ -66,8 +66,8 @@ public class em
       if (paramViewGroup.jdField_a_of_type_Int == 2)
       {
         paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559401, null);
-        View localView = paramView.findViewById(2131363963);
-        paramViewGroup = (TextView)paramView.findViewById(2131363964);
+        View localView = paramView.findViewById(2131363962);
+        paramViewGroup = (TextView)paramView.findViewById(2131363963);
         localView.setClickable(true);
         localView.setEnabled(true);
         localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark;
 
-import altj;
-import altm;
+import alti;
+import altl;
 import android.text.TextUtils;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +21,7 @@ public class ArkAppPreDownloadMgr$3$1
       if (QLog.isColorLevel()) {
         QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp begin app = ", this.a.a.a });
       }
-      ArkAppMgr.getInstance().getAppPathByName(this.a.a.a, "", "0.0.0.1", null, new altj(this));
+      ArkAppMgr.getInstance().getAppPathByName(this.a.a.a, "", "0.0.0.1", null, new alti(this));
     }
     label106:
     while (!QLog.isColorLevel()) {

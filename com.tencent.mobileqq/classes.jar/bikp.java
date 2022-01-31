@@ -1,8 +1,16 @@
-public abstract interface bikp
+public abstract class bikp
 {
-  public abstract void a(bikt parambikt);
+  public static bikp a(int paramInt)
+  {
+    if (paramInt > 0) {
+      return new bikq();
+    }
+    return new bikr();
+  }
   
-  public abstract void a(String paramString);
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

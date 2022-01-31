@@ -3,8 +3,8 @@ package com.tencent.av;
 import android.content.Context;
 import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.QLog;
-import ldu;
-import lgf;
+import ldp;
+import lga;
 
 public class VideoController$AnyChatReqTimeoutRunnable
   implements Runnable
@@ -23,7 +23,7 @@ public class VideoController$AnyChatReqTimeoutRunnable
           QLog.e(VideoController.a, 2, "AnyChatReqTimeoutRunnable show dialog!");
         }
         Context localContext = this.this$0.a();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131720739), 0, 2131720772, new ldu(this), null);
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131720750), 0, 2131720783, new ldp(this), null);
       }
       return;
     }

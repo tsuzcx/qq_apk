@@ -1,8 +1,16 @@
-public abstract interface nju
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+
+public class nju
+  implements View.OnClickListener
 {
-  public abstract boolean a(int paramInt);
+  public nju(VideoCoverView paramVideoCoverView) {}
   
-  public abstract boolean b(int paramInt);
+  public void onClick(View paramView)
+  {
+    VideoCoverView.a(this.a, true);
+  }
 }
 
 

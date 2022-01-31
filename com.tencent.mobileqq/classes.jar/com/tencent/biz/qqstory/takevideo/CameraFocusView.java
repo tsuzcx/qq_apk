@@ -18,7 +18,7 @@ public class CameraFocusView
   public CameraFocusView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setDrawableRes(2130845616);
+    setDrawableRes(2130845622);
   }
   
   public boolean a(float paramFloat1, float paramFloat2)

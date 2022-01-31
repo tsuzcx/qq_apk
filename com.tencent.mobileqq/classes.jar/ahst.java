@@ -1,47 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.widget.Toast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahst
-  implements MediaPlayer.OnPreparedListener
+  implements DialogInterface.OnClickListener
 {
   public ahst(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
-    }
-    EditLocalVideoActivity.a(this.a).removeMessages(9999);
-    EditLocalVideoActivity.h(this.a);
-    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
-    EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
-    EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
-    int i;
-    int j;
-    if (!EditLocalVideoActivity.a(this.a).a())
-    {
-      EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
-      if ((bhnq.a(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
-        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
-      }
-      i = paramMediaPlayer.getVideoWidth();
-      j = paramMediaPlayer.getVideoHeight();
-      if ((i <= 0) || (j <= 0)) {
-        Toast.makeText(this.a.getApplicationContext(), ajyc.a(2131703638), 1).show();
-      }
-    }
-    else
-    {
-      return;
-    }
-    EditLocalVideoActivity.e(this.a, i);
-    EditLocalVideoActivity.f(this.a, j);
-    EditLocalVideoActivity.a(this.a, i, j);
+    this.a.finish();
   }
 }
 

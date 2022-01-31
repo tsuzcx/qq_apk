@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
 import java.io.File;
-import java.util.Comparator;
+import java.io.FilenameFilter;
 
 public class akln
-  implements Comparator<File>
+  implements FilenameFilter
 {
-  public akln(CleanCache.1 param1) {}
+  public akln(CleanCache paramCleanCache) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 

@@ -36,8 +36,8 @@ public class VConsoleView
   private void a()
   {
     LayoutInflater.from(getContext()).inflate(2131559311, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370271));
-    this.jdField_a_of_type_AndroidWebkitWebView = ((WebView)findViewById(2131370266));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370270));
+    this.jdField_a_of_type_AndroidWebkitWebView = ((WebView)findViewById(2131370265));
     this.jdField_a_of_type_AndroidWebkitWebView.getSettings().setJavaScriptEnabled(true);
     if (Build.VERSION.SDK_INT >= 11)
     {

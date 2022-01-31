@@ -1,308 +1,394 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.KBPDUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
-import com.tencent.biz.pubaccount.util.Achilles;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.common.KandianDailyReportUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.common.KandianDailyReportUtils.3;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.DailyFloatingWindowData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import java.io.File;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class olj
 {
-  private static long jdField_a_of_type_Long;
-  private static olk jdField_a_of_type_Olk = new olk(null);
-  private static oll jdField_a_of_type_Oll = new oll(null);
+  private static volatile int jdField_a_of_type_Int;
+  public static long a;
+  public static String a;
+  private static ArrayList<ReportInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static Map<Long, Pair<Long, Long>> a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static Map<String, String> b = new HashMap();
   
-  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  static
   {
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "getSharedPreferences: return null for runtime is null");
-      return null;
-    }
-    paramAppRuntime = "readinjoy_sp_kb_predownload_" + paramAppRuntime.getAccount();
-    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    b();
   }
   
-  private static String a()
+  public static int a()
   {
-    label235:
-    for (;;)
+    Object localObject1 = ahnl.a().a;
+    if (localObject1 == null) {
+      return 2147483647;
+    }
+    localObject1 = new ArrayList((Collection)localObject1);
+    Object localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      try
-      {
-        bhvh.d();
-        Object localObject2 = Achilles.a();
-        if ((localObject2 == null) || (((Set)localObject2).isEmpty()))
-        {
-          QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] empty param set.");
-          return "";
-        }
-        Object localObject1 = null;
-        Iterator localIterator = ((Set)localObject2).iterator();
-        if (localIterator.hasNext())
-        {
-          localObject2 = (AchillesParams)localIterator.next();
-          if (TextUtils.equals(((AchillesParams)localObject2).getPackageName(), "com.tencent.reading"))
-          {
-            localObject1 = localObject2;
-            break label235;
-          }
-        }
-        else
-        {
-          if (localObject1 == null)
-          {
-            QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] param not found for com.tencent.reading");
-            return "";
-          }
-          localObject2 = bdme.a().a("com.tencent.reading");
-          boolean bool;
-          if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).l)))
-          {
-            bool = new File(((DownloadInfo)localObject2).l).exists();
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("app_id", "101480433");
-            ((JSONObject)localObject2).put("download_url", localObject1.getDownloadUrl());
-            if (bool)
-            {
-              i = 1;
-              ((JSONObject)localObject2).put("download_finished", i);
-              if (!localObject1.isEnable()) {
-                continue;
-              }
-              i = 1;
-              ((JSONObject)localObject2).put("enable_predownload", i);
-              return ((JSONObject)localObject2).toString();
-            }
-          }
-          else
-          {
-            QLog.e("KBPreDownloadUtils", 1, "[queryKBPreDownloadInfoAladdin] download info not found");
-            bool = false;
-            continue;
-          }
-          int i = 0;
-          continue;
-          i = 0;
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("KBPreDownloadUtils", 1, "[queryKBDownloadInfo] ", localException);
-        return "";
+      RecentUserBaseData localRecentUserBaseData = (RecentUserBaseData)((Iterator)localObject2).next();
+      if ((localRecentUserBaseData != null) && (localRecentUserBaseData.mUser != null) && (localRecentUserBaseData.mUser.getType() == 1008) && (saz.b((QQAppInterface)onh.a(), localRecentUserBaseData.mUser.uin))) {
+        ((Iterator)localObject2).remove();
       }
     }
-  }
-  
-  public static String a(AppRuntime paramAppRuntime)
-  {
-    Object localObject = a();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      return localObject;
-    }
-    try
+    int i = 0;
+    if (i < ((List)localObject1).size())
     {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("app_id", "101480433");
-      ((JSONObject)localObject).put("download_url", b(paramAppRuntime, "sp_key_kb_download_url"));
-      if (a())
+      localObject2 = (RecentUserBaseData)((List)localObject1).get(i);
+      if (localObject2 == null) {}
+      while ((((RecentUserBaseData)localObject2).mUser == null) || (((RecentUserBaseData)localObject2).mUser.getType() != 1008) || (!TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, ajsd.aR)))
       {
-        i = 1;
-        ((JSONObject)localObject).put("download_finished", i);
-        if (!b(paramAppRuntime, "sp_key_enable_pre_download")) {
-          break label90;
-        }
-      }
-      label90:
-      for (int i = 1;; i = 0)
-      {
-        ((JSONObject)localObject).put("enable_predownload", i);
-        paramAppRuntime = ((JSONObject)localObject).toString();
-        return paramAppRuntime;
-        i = 0;
+        i += 1;
         break;
       }
-      return "";
+      return i;
     }
-    catch (Exception paramAppRuntime)
+    return -1;
+  }
+  
+  public static Pair<Long, Long> a(long paramLong)
+  {
+    if (jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      return (Pair)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    if (b != null) {}
+    for (String str1 = (String)b.get("folder_status");; str1 = "1")
     {
-      QLog.e("KBPreDownloadUtils", 1, "[queryKBDownloadInfo] ", paramAppRuntime);
+      String str2;
+      if (str1 != null)
+      {
+        str2 = str1;
+        if (!TextUtils.isEmpty(str1)) {}
+      }
+      else
+      {
+        str2 = "1";
+      }
+      return str2;
     }
+  }
+  
+  public static Map<String, String> a()
+  {
+    return b;
   }
   
   public static void a()
   {
-    int i = new Random().nextInt(5000);
-    QLog.i("KBPreDownloadUtils", 1, "[maybePDKB] delay= " + i + "ms");
-    ThreadManager.getFileThreadHandler().postDelayed(new KBPDUtils.1(), i);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
-  {
-    if (paramString2 == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[setString] val for key: " + paramString1 + " is null.");
-      return;
-    }
-    QLog.d("KBPreDownloadUtils", 2, "[setString] set: " + paramString1 + " to: " + String.valueOf(paramString2));
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[setString] sp is null");
-      return;
-    }
-    paramAppRuntime.edit().putString(paramString1, paramString2).apply();
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[setBoolean] set: " + paramString + " to: " + paramBoolean);
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[setBoolean] sp is null");
-      return;
-    }
-    paramAppRuntime.edit().putBoolean(paramString, paramBoolean).apply();
-  }
-  
-  private static boolean a()
-  {
-    String str = b(onk.a(), "sp_key_local_apk_path");
-    QLog.d("KBPreDownloadUtils", 2, "[isPkgExist] localApkPath=" + str);
-    return (!TextUtils.isEmpty(str)) && (new File(str).exists());
-  }
-  
-  private static String b(AppRuntime paramAppRuntime, String paramString)
-  {
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[getString] sp is null");
-      return null;
-    }
-    return paramAppRuntime.getString(paramString, null);
-  }
-  
-  private static void b(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
-    if (paramContext != null)
-    {
-      a(onk.a(), "sp_key_current_app_version_name", paramContext.versionName);
-      QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] versionName: " + paramContext.versionName);
-      paramContext = bdhv.a(paramString);
-      if (paramContext == null) {
-        break label129;
-      }
-    }
-    label129:
-    for (paramContext = paramContext.toLowerCase();; paramContext = null)
-    {
-      a(onk.a(), "sp_key_local_apk_path", paramString);
-      a(onk.a(), "sp_key_current_app_md5", paramContext);
-      QLog.d("KBPreDownloadUtils", 2, "[saveVersionInfo] md5: " + paramContext);
-      return;
-      QLog.e("KBPreDownloadUtils", 1, "[saveVersionInfo] package info is null");
-      break;
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[persistDownloadInfo] url=" + paramString1 + " savedPath=" + paramString2);
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.c = "101480433";
-    localDownloadInfo.g = 2;
-    localDownloadInfo.jdField_d_of_type_JavaLangString = paramString1;
-    localDownloadInfo.l = paramString2;
-    localDownloadInfo.e = "com.tencent.reading";
-    localDownloadInfo.h = "ANDROIDQQ.QNREADING";
-    localDownloadInfo.a = false;
-    localDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
-    localDownloadInfo.jdField_d_of_type_Boolean = false;
-    localDownloadInfo.m = "biz_src_feeds_kandian";
-    bdme.a().a(localDownloadInfo);
-  }
-  
-  private static void b(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    String str = onk.a();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    axrl.a(onk.a().getApplication()).a(str, "actKBPreDownload", paramBoolean, paramLong, 0L, localHashMap, null, false);
-  }
-  
-  private static boolean b(Context paramContext)
-  {
-    paramContext = b(onk.a(), "sp_key_current_app_version_name");
-    String str1 = b(onk.a(), "sp_key_latest_app_version_name");
-    String str2 = b(onk.a(), "sp_key_current_app_md5");
-    String str3 = b(onk.a(), "sp_key_latest_app_md5");
-    QLog.d("KBPreDownloadUtils", 2, "[isCurrentVersionLatest] currentAppVersion: " + paramContext + " latestAppVersion: " + str1 + " currentAppMd5: " + str2 + " latestAppMd5: " + str3);
-    if ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str1))) {}
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
+    if (localQQAppInterface == null) {}
+    MessageRecord localMessageRecord;
     do
     {
-      return true;
-      if (!a())
-      {
-        QLog.i("KBPreDownloadUtils", 1, "[isCurrentVersionLatest] pkg not exists");
-        return false;
-      }
-      if ((str3 != null) && (str2 != null) && (!TextUtils.equals(str3.toLowerCase(), str2.toLowerCase()))) {
-        return false;
-      }
-    } while ((TextUtils.isEmpty(paramContext)) || (TextUtils.isEmpty(str1)) || (Achilles.a(paramContext, str1) >= 0));
-    return false;
+      return;
+      localMessageRecord = localQQAppInterface.a().b(ajsd.aR, 1008);
+    } while ((localMessageRecord == null) || (localMessageRecord.isread) || (localMessageRecord.extLong != 1));
+    ThreadManager.post(new KandianDailyReportUtils.1(localMessageRecord, localQQAppInterface), 8, null, false);
+    a(1, "0X8009867", localMessageRecord);
+    b();
   }
   
-  private static boolean b(AppRuntime paramAppRuntime, String paramString)
+  public static void a(int paramInt)
   {
-    paramAppRuntime = a(paramAppRuntime);
-    if (paramAppRuntime == null)
-    {
-      QLog.e("KBPreDownloadUtils", 1, "[getBoolean] sp is null");
-      return false;
+    jdField_a_of_type_Int |= paramInt;
+    if (oou.b(oou.b())) {
+      osx.e(1);
     }
-    return paramAppRuntime.getBoolean(paramString, false);
+    QLog.d("KandianDailyReportUtils", 2, "set operation flag : " + paramInt);
   }
   
-  private static void c()
+  private static void a(int paramInt, String paramString, MessageRecord paramMessageRecord)
   {
-    try
-    {
-      String str = b(onk.a(), "sp_key_local_apk_path");
-      if (str != null) {
-        bbdj.d(str);
+    String str4 = sgg.a(ajsd.aR) + "";
+    Object localObject3 = null;
+    String str1 = null;
+    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(paramMessageRecord, "kandian_daily_red_pnt");
+    String str3;
+    String str2;
+    if (localKandianRedDotInfo != null) {
+      if ((localKandianRedDotInfo.articleIDList != null) && (!localKandianRedDotInfo.articleIDList.isEmpty()))
+      {
+        localObject1 = localKandianRedDotInfo.articleIDList.get(0) + "";
+        str1 = localKandianRedDotInfo.strategyID + "";
+        str3 = localKandianRedDotInfo.forderStatus;
+        str2 = localKandianRedDotInfo.algorithmID + "";
+        localObject3 = localObject1;
       }
+    }
+    label580:
+    label590:
+    Object localObject2;
+    for (Object localObject1 = str3;; localObject2 = null)
+    {
+      if ((paramInt == 0) && (paramMessageRecord.isread)) {
+        localObject1 = "1";
+      }
+      int i;
       for (;;)
       {
-        bdme.a().a("101480433");
-        return;
-        QLog.i("KBPreDownloadUtils", 1, "[clearDownloadInfo] won't delete since apkPath is null");
+        if (sgg.b(ajsd.aR) > 0) {}
+        for (i = 1;; i = 0)
+        {
+          str3 = KandianDailyManager.jdField_a_of_type_JavaLangString;
+          if ((paramMessageRecord instanceof MessageForStructing)) {
+            str3 = KandianDailyManager.a((MessageForStructing)paramMessageRecord);
+          }
+          JSONObject localJSONObject = new JSONObject();
+          try
+          {
+            localJSONObject.put("folder_status", localObject1);
+            localJSONObject.put("message_status", i);
+            localJSONObject.put("algorithm_id", str2);
+            localJSONObject.put("name", str3);
+            localJSONObject.put("time", NetConnInfoCenter.getServerTimeMillis());
+            localJSONObject.put("version", npu.jdField_a_of_type_JavaLangString);
+            localJSONObject.put("os", "1");
+            localJSONObject.put("channel_id", b());
+            if (localKandianRedDotInfo != null)
+            {
+              if (!TextUtils.isEmpty(localKandianRedDotInfo.floatingWinData.rowkey)) {
+                localJSONObject.put("push_rowkey", localKandianRedDotInfo.floatingWinData.rowkey);
+              }
+              localJSONObject.put("push_type", localKandianRedDotInfo.floatingWinData.type);
+              if (!TextUtils.isEmpty(localKandianRedDotInfo.floatingWinData.topicID)) {
+                localJSONObject.put("push_topic", localKandianRedDotInfo.floatingWinData.topicID);
+              }
+            }
+          }
+          catch (Exception localException2)
+          {
+            for (;;)
+            {
+              localException2.printStackTrace();
+              continue;
+              if (paramInt == 0)
+              {
+                i = 21;
+                continue;
+                l = Long.valueOf("").longValue();
+              }
+            }
+          }
+          nol.a(null, "CliOper", "", "", paramString, paramString, 0, 0, str4, localObject3, str1, localJSONObject.toString(), false);
+          if (!paramMessageRecord.isread)
+          {
+            paramString = new ArrayList();
+            paramMessageRecord = new ReportInfo();
+            i = 20;
+            if (paramInt != 1) {
+              break label580;
+            }
+            i = 20;
+            paramMessageRecord.mOperation = i;
+            paramMessageRecord.mOpSource = 16;
+            paramMessageRecord.mUin = onh.a();
+          }
+          try
+          {
+            paramMessageRecord.mSourceArticleId = Long.valueOf(localObject3).longValue();
+            paramMessageRecord.mAlgorithmId = Integer.valueOf(str2).intValue();
+            paramMessageRecord.mStrategyId = Integer.valueOf(str1).intValue();
+            if (!TextUtils.isEmpty("")) {
+              break label590;
+            }
+            l = -1L;
+            paramMessageRecord.mPuin = l;
+            paramMessageRecord.mFolderStatus = Integer.valueOf((String)localObject1).intValue();
+          }
+          catch (Exception localException1)
+          {
+            for (;;)
+            {
+              long l;
+              localException1.printStackTrace();
+            }
+          }
+          paramString.add(paramMessageRecord);
+          new pbu(null, null, por.a(), null).a(paramString);
+          return;
+          localObject1 = null;
+          break;
+        }
       }
+      str2 = null;
+    }
+  }
+  
+  public static void a(Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramIntent.getIntExtra("launch_from", 5);
+      } while ((i != 6) && (i != 9));
+      paramIntent = (KandianRedDotInfo)paramIntent.getSerializableExtra("kandian_feeds_red_pnt_info");
+      a(paramIntent);
+    } while (i != 6);
+    onh.a(paramIntent);
+  }
+  
+  public static void a(KandianRedDotInfo paramKandianRedDotInfo)
+  {
+    if (paramKandianRedDotInfo == null) {
       return;
     }
-    catch (Exception localException)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("folder_status", paramKandianRedDotInfo.forderStatus);
+    localHashMap.put("algorithm_id", paramKandianRedDotInfo.algorithmID + "");
+    localHashMap.put("strategy_id", paramKandianRedDotInfo.strategyID + "");
+    b = localHashMap;
+  }
+  
+  public static void a(ReportInfo paramReportInfo)
+  {
+    ThreadManager.executeOnSubThread(new KandianDailyReportUtils.3(paramReportInfo));
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a(0, "0X8009868", paramMessageRecord);
+  }
+  
+  public static void a(List<ArticleInfo> paramList, List<Long> paramList1, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList1 == null)) {}
+    StringBuilder localStringBuilder;
+    do
     {
-      QLog.e("KBPreDownloadUtils", 1, "[clearDownloadInfo] ", localException);
+      return;
+      Collections.sort(paramList, new olk());
+      localStringBuilder = new StringBuilder(1024);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+        if ((onh.a(localArticleInfo) > 0) && (paramList1.contains(Long.valueOf(localArticleInfo.mRecommendSeq))))
+        {
+          Map localMap = jdField_a_of_type_JavaUtilMap;
+          long l2 = localArticleInfo.mArticleID;
+          long l3 = jdField_a_of_type_Long;
+          jdField_a_of_type_Long = l3 + 1L;
+          if (paramBoolean) {}
+          for (long l1 = 1L;; l1 = 0L)
+          {
+            localMap.put(Long.valueOf(l2), new Pair(Long.valueOf(l3), Long.valueOf(l1)));
+            localStringBuilder.append("articleID : " + localArticleInfo.mArticleID + ", pos : " + (jdField_a_of_type_Long - 1L) + "\n");
+            break;
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("KandianDailyReportUtils", 2, localStringBuilder.toString());
+  }
+  
+  public static void a(AppRuntime paramAppRuntime)
+  {
+    long l1 = 0L;
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_JavaUtilMap.clear();
+    if (paramAppRuntime == null) {}
+    for (;;)
+    {
+      long l2 = System.currentTimeMillis();
+      jdField_a_of_type_JavaLangString = String.valueOf(l1) + "_" + String.valueOf(l2);
+      return;
+      l1 = paramAppRuntime.getLongAccountUin();
     }
+  }
+  
+  public static int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    return "" + bhvy.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505));
+  }
+  
+  private static Map<String, String> b()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("folder_status", "1");
+    localHashMap.put("algorithm_id", "0");
+    localHashMap.put("strategy_id", "0");
+    Object localObject = (QQAppInterface)onh.a();
+    if (localObject == null) {
+      return localHashMap;
+    }
+    localObject = ((QQAppInterface)localObject).a().b(ajsd.aR, 1008);
+    if (localObject == null) {
+      return localHashMap;
+    }
+    if (((MessageRecord)localObject).isread) {
+      return localHashMap;
+    }
+    if ((localObject instanceof MessageForStructing))
+    {
+      localObject = (MessageForStructing)localObject;
+      if (!((MessageForStructing)localObject).mIsParsed) {
+        ((MessageForStructing)localObject).parse();
+      }
+      if (((MessageForStructing)localObject).structingMsg == null) {
+        return localHashMap;
+      }
+      localHashMap.put("folder_status", ((MessageForStructing)localObject).structingMsg.reportEventFolderStatusValue);
+      localHashMap.put("algorithm_id", ((MessageForStructing)localObject).structingMsg.mAlgorithmIds);
+      localHashMap.put("strategy_id", ((MessageForStructing)localObject).structingMsg.mStrategyIds);
+    }
+    return localHashMap;
+  }
+  
+  public static void b()
+  {
+    Map localMap = b();
+    if (localMap != null) {
+      b = localMap;
+    }
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Int = 0;
+    QLog.d("KandianDailyReportUtils", 2, "reset operation flag : ");
   }
 }
 

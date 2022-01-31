@@ -1,82 +1,50 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
 
-public abstract class ayxz
-  implements ayth, ayzv
+public class ayxz
+  extends ayyd
 {
-  int b = 0;
-  
-  public static int a()
+  void a(int paramInt, ayza paramayza, cmd0x352.ReqBody paramReqBody)
   {
-    return a(aysy.a().a());
+    paramayza = (ayyy)paramayza;
+    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
+    localTryUpImgReq.uint64_file_id.set(paramInt);
+    localTryUpImgReq.setHasFlag(true);
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(paramayza.jdField_c_of_type_JavaLangString).longValue());
+    localTryUpImgReq.uint64_file_size.set(paramayza.jdField_a_of_type_Long);
+    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramayza.jdField_a_of_type_ArrayOfByte));
+    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(paramayza.jdField_a_of_type_JavaLangString));
+    localTryUpImgReq.uint32_src_term.set(5);
+    localTryUpImgReq.bool_address_book.set(paramayza.jdField_c_of_type_Boolean);
+    localTryUpImgReq.uint32_platform_type.set(9);
+    localTryUpImgReq.uint32_bu_type.set(1);
+    localTryUpImgReq.bool_pic_original.set(paramayza.b);
+    localTryUpImgReq.uint32_pic_width.set(paramayza.jdField_c_of_type_Int);
+    localTryUpImgReq.uint32_pic_height.set(paramayza.d);
+    localTryUpImgReq.uint32_pic_type.set(paramayza.jdField_a_of_type_Int);
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(ayuk.a()));
+    localTryUpImgReq.bool_reject_tryfast.set(true);
+    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
   }
   
-  public static int a(int paramInt)
+  public void a(ayyp paramayyp)
   {
-    int j = 6;
-    int i = j;
-    switch (paramInt)
+    if ((paramayyp != null) && (paramayyp.jdField_a_of_type_JavaUtilList != null) && (paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
     {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      String str = aysy.a().a();
-      paramInt = i;
-      if (str != null)
-      {
-        paramInt = i;
-        if (str.contains("wap")) {
-          paramInt = 5;
-        }
-      }
-      return paramInt;
-      i = 3;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
+      aytk localaytk = new aytk();
+      localaytk.jdField_a_of_type_JavaLangString = "LongConn.ArtisticFilter";
+      localaytk.jdField_a_of_type_ArrayOfByte = a(paramayyp.jdField_a_of_type_JavaUtilList);
+      localaytk.jdField_a_of_type_JavaLangObject = paramayyp;
+      localaytk.jdField_a_of_type_Aytj = this;
+      a(paramayyp, localaytk);
     }
   }
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, akaw paramakaw, ayzp paramayzp)
-  {
-    paramayzp.c = paramInt1;
-    paramayzp.d = paramInt2;
-    paramayzp.h = paramString1;
-    paramayzp.g = paramString2;
-    if (paramInt1 == 0)
-    {
-      paramayzp.e = 1;
-      paramayzp.f = (paramakaw.c - 1);
-      return;
-    }
-    paramayzp.e = 0;
-    paramayzp.f = paramakaw.c;
-    QLog.d("Q.richmedia.BaseHandler", 1, "result:" + paramInt1 + " errCode:" + paramInt2 + " reason:" + paramString1 + " errStr:" + paramString2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, akaw paramakaw, List<ayzp> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a(paramInt1, paramInt2, paramString1, paramString2, paramakaw, (ayzp)paramList.next());
-    }
-  }
-  
-  void a(ayyn paramayyn, ayti paramayti)
-  {
-    b(paramayyn);
-    paramayyn.jdField_a_of_type_Ayti = paramayti;
-    if (paramayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null) {
-      paramayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramayti);
-    }
-  }
-  
-  abstract void b(ayyn paramayyn);
 }
 
 

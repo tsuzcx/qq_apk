@@ -1,69 +1,20 @@
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class apfx
-  implements awrb<awog, awwp>
+  implements View.OnTouchListener
 {
-  private apgc a;
+  public apfx(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
   
-  public void a(apgc paramapgc)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramapgc;
-  }
-  
-  public void a(awog paramawog, awwp paramawwp)
-  {
-    if ((paramawwp.a() != null) && (!TextUtils.isEmpty(paramawog.a())))
-    {
-      paramawwp.a().setVisibility(0);
-      paramawwp.a().setText(paramawog.a());
-    }
-    if ((paramawwp.b() != null) && (!TextUtils.isEmpty(paramawog.b())))
-    {
-      paramawwp.b().setVisibility(0);
-      paramawwp.b().setText(paramawog.b());
-    }
-    if ((paramawwp.c() != null) && (!TextUtils.isEmpty(paramawog.c())))
-    {
-      paramawwp.c().setVisibility(0);
-      paramawwp.c().setText(paramawog.c());
-    }
-    if ((paramawog.d() == null) && (paramawwp.d() != null)) {
-      paramawwp.d().setVisibility(8);
-    }
-    if ((paramawwp.d() != null) && (paramawog.d() != null))
-    {
-      paramawwp.d().setVisibility(0);
-      paramawwp.d().setText(paramawog.d());
-    }
-    apfw localapfw = (apfw)paramawog;
-    View localView = paramawwp.a();
-    paramawwp = (AsyncImageView)paramawwp.b();
-    String str = localapfw.c();
-    int i = localapfw.e();
-    if (!TextUtils.isEmpty(str))
-    {
-      apue.a(paramawwp, str, i);
-      paramawwp.setOnClickListener(new apfy(this, paramawog));
-      paramawwp = (CheckBox)localView.findViewById(2131366225);
-      if (localapfw.d() <= 1) {
-        break label336;
-      }
-      paramawwp.setVisibility(8);
-    }
-    for (;;)
-    {
-      paramawwp.setChecked(localapfw.b());
-      localView.setOnClickListener(new apfz(this, paramawog));
-      return;
-      paramawwp.setDefaultImage(apue.a(i));
-      break;
-      label336:
-      paramawwp.setVisibility(0);
-    }
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

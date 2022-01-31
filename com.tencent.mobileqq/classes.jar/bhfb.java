@@ -1,18 +1,29 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedCommInfo;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
 public final class bhfb
-  implements Parcelable.Creator<WeishiFeedCommInfo>
+  implements Parcelable.Creator<CoverCacheData.PackageInfo>
 {
-  public WeishiFeedCommInfo a(Parcel paramParcel)
+  public CoverCacheData.PackageInfo a(Parcel paramParcel)
   {
-    return new WeishiFeedCommInfo(paramParcel);
+    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
+    if (paramParcel != null)
+    {
+      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localPackageInfo.d = paramParcel.readString();
+    }
+    return localPackageInfo;
   }
   
-  public WeishiFeedCommInfo[] a(int paramInt)
+  public CoverCacheData.PackageInfo[] a(int paramInt)
   {
-    return new WeishiFeedCommInfo[paramInt];
+    return null;
   }
 }
 

@@ -1,40 +1,35 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 final class bgwl
-  implements WtTicketPromise
+  extends bgvi
 {
-  bgwl(bgwm parambgwm, String paramString) {}
+  bgwl(Context paramContext) {}
   
-  public void Done(Ticket paramTicket)
+  public void b(@NonNull bgvj parambgvj)
   {
+    boolean bool2 = false;
     if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "get pskey async success!");
+      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
     }
-    if (this.jdField_a_of_type_Bgwm != null) {
-      this.jdField_a_of_type_Bgwm.a(0, new String[] { bgwk.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    parambgvj = parambgvj.a();
+    boolean bool1 = bool2;
+    if (parambgvj != null)
+    {
+      parambgvj = bgwk.a("on_off", parambgvj);
+      if (parambgvj == null) {
+        bool1 = bool2;
+      }
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    else
+    {
+      bgwj.a(this.a, bool1);
+      return;
     }
-    if (this.jdField_a_of_type_Bgwm != null) {
-      this.jdField_a_of_type_Bgwm.a(-1, new String[] { paramErrMsg.getMessage() });
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
-    }
-    if (this.jdField_a_of_type_Bgwm != null) {
-      this.jdField_a_of_type_Bgwm.a(-1, new String[] { paramErrMsg.getMessage() });
+    if (((Integer)parambgvj).intValue() == 1) {}
+    for (bool1 = true;; bool1 = false) {
+      break;
     }
   }
 }

@@ -1,42 +1,11 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
-import java.lang.reflect.Field;
-
 public class atxv
-  extends Scroller
 {
-  public atxv(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  public T a;
   
-  public void a()
+  public atxv(T paramT)
   {
-    try
-    {
-      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 

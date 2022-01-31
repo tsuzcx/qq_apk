@@ -1,20 +1,10 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import com.tencent.image.URLImageView;
 
-public class avar
-  implements Animation.AnimationListener
+class avar
 {
-  public avar(VipProfileSimpleView paramVipProfileSimpleView, Animation paramAnimation) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  avar(avaq paramavaq) {}
 }
 
 

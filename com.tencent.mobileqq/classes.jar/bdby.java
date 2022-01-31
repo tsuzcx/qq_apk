@@ -1,18 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bdby
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bdcq
 {
-  public bdby(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  public bdby(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(long paramLong)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
+    if (!bbfj.g(BaseApplicationImpl.getApplication()))
+    {
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bdom);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import arkh;
-import arkt;
+import arkj;
+import arkv;
 
 public class TogetherBusinessForWebPlugin$1
   implements Runnable
 {
-  public TogetherBusinessForWebPlugin$1(arkh paramarkh) {}
+  public TogetherBusinessForWebPlugin$1(arkj paramarkj) {}
   
   public void run()
   {
-    arkt.a().a();
+    arkv.a().a();
   }
 }
 

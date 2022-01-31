@@ -1,151 +1,36 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMBeautyItem;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class bkyx
+  implements GLSurfaceView.EGLContextFactory
 {
-  private static bkyx jdField_a_of_type_Bkyx;
-  public static String a;
-  private List<QIMBeautyItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private int jdField_a_of_type_Int = 12440;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "QIMBeautyManager";
-  }
+  public bkyx(HWVideoPlayView paramHWVideoPlayView) {}
   
-  private bkyx()
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    a();
-  }
-  
-  public static bkyx a()
-  {
-    if (jdField_a_of_type_Bkyx == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bkyx == null) {
-        jdField_a_of_type_Bkyx = new bkyx();
-      }
-      return jdField_a_of_type_Bkyx;
-    }
-    finally {}
-  }
-  
-  private String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_beauty_config", 0).getString("short_video_beauty_content", "");
+    int i = this.jdField_a_of_type_Int;
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "take  config content= " + str);
+      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
     }
-    return str;
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
   }
   
-  public int a(Context paramContext)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    return paramContext.getSharedPreferences("short_video_beauty_config", 0).getInt("short_video_beauty_version", 0);
-  }
-  
-  public List<QIMBeautyItem> a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      a();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    try
-    {
-      Object localObject = a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return;
-      }
-      localObject = new JSONObject((String)localObject);
-      if (((JSONObject)localObject).has("category"))
-      {
-        localObject = ((JSONObject)localObject).getJSONArray("category");
-        if (localObject != null)
-        {
-          int k = ((JSONArray)localObject).length();
-          if (k > 0)
-          {
-            int i = 0;
-            while (i < k)
-            {
-              JSONObject localJSONObject1 = ((JSONArray)localObject).getJSONObject(i);
-              if (localJSONObject1.has("content"))
-              {
-                JSONArray localJSONArray = localJSONObject1.getJSONArray("content");
-                if (localJSONArray == null) {
-                  break;
-                }
-                int m = localJSONArray.length();
-                if (m <= 0) {
-                  break;
-                }
-                int j = 0;
-                while (j < m)
-                {
-                  QIMBeautyItem localQIMBeautyItem = new QIMBeautyItem();
-                  JSONObject localJSONObject2 = localJSONArray.getJSONObject(j);
-                  if (localJSONObject2.has("iconUrl")) {
-                    localQIMBeautyItem.c = localJSONObject2.getString("iconUrl");
-                  }
-                  if (localJSONObject2.has("id")) {
-                    localQIMBeautyItem.jdField_a_of_type_JavaLangString = localJSONObject2.getString("id");
-                  }
-                  if (localJSONObject2.has("name")) {
-                    localQIMBeautyItem.b = localJSONObject2.getString("name");
-                  }
-                  if (localJSONObject2.has("jump_app")) {
-                    localQIMBeautyItem.d = localJSONObject2.getString("jump_app");
-                  }
-                  this.jdField_a_of_type_JavaUtilList.add(localQIMBeautyItem);
-                  j += 1;
-                }
-              }
-              if (localJSONObject1.has("downloadInfo"))
-              {
-                vzz.jdField_a_of_type_JavaLangString = localJSONObject1.getString("downloadInfo");
-                if (QLog.isColorLevel()) {
-                  QLog.e(jdField_a_of_type_JavaLangString, 2, "QIMBeautyManager WeishiGuideUtils.DOWNLOAD_JSON=  " + vzz.jdField_a_of_type_JavaLangString);
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "parse sv config error, stacktrace :  " + QLog.getStackTraceString(localException));
-      }
-    }
-  }
-  
-  public boolean a(String paramString, int paramInt, Context paramContext)
-  {
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.a();
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "savebeautyConfig :  " + paramString);
+      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-    paramContext = paramContext.getSharedPreferences("short_video_beauty_config", 0).edit();
-    paramContext.putString("short_video_beauty_content", paramString);
-    paramContext.putInt("short_video_beauty_version", paramInt);
-    paramContext.commit();
-    return true;
   }
 }
 

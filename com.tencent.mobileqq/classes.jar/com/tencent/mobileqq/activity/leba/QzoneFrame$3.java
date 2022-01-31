@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.leba;
 
-import bgxy;
+import bgyp;
 
 class QzoneFrame$3
   implements Runnable
@@ -9,7 +9,7 @@ class QzoneFrame$3
   
   public void run()
   {
-    bgxy.a(this.this$0.a, "Leba");
+    bgyp.a(this.this$0.a, "Leba");
   }
 }
 

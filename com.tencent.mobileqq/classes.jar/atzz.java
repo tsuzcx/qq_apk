@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.mobileqq.ocr.view.OcrImageTextView;
 
 public class atzz
-  implements View.OnClickListener
+  implements audl
 {
   public atzz(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    auab.a("0X800AADF", 0);
-    this.a.onBackEvent();
+    auad.a("0X800AAE1", 0);
+    if (OCRPerformFragment.a(this.a).a()) {
+      OCRPerformFragment.a(this.a).setShowTextMask(false);
+    }
+  }
+  
+  public void b()
+  {
+    if (!OCRPerformFragment.a(this.a).a()) {
+      OCRPerformFragment.a(this.a).setShowTextMask(true);
+    }
   }
 }
 

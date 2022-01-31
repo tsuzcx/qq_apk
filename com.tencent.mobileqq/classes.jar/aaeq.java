@@ -1,26 +1,26 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aaeq
+public class aaeq
   implements View.OnClickListener
 {
-  aaeq(aaeo paramaaeo, View.OnClickListener paramOnClickListener) {}
+  public aaeq(AboutActivity paramAboutActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
-    {
-      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    axqw.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
+    axqy.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaeq
  * JD-Core Version:    0.7.0.1
  */

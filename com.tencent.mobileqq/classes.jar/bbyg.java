@@ -1,61 +1,43 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bbyg
+  implements DownloadParams.DecodeHandler
 {
-  public int a;
-  public String a;
-  public List<bbyi> a;
-  public boolean a;
-  public String b;
-  public String c;
+  private int a;
+  private int b;
   
-  public bbyg()
+  public bbyg(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -30009;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public bbyg(JSONObject paramJSONObject)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
-    if (paramJSONObject.optInt("openflag") == 1)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-      this.c = paramJSONObject.optString("content");
-      this.b = paramJSONObject.optString("url");
-      paramJSONObject = paramJSONObject.optString("list");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        break label96;
-      }
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      return null;
     }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label96:
-      paramJSONObject = new JSONArray(paramJSONObject);
-      int j = paramJSONObject.length();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < j)
-      {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
-        if (localJSONObject != null) {
-          this.jdField_a_of_type_JavaUtilList.add(new bbyi(localJSONObject.optString("num"), localJSONObject.optString("light")));
-        }
-        i += 1;
-      }
-    }
+    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
+    Paint localPaint = new Paint();
+    localPaint.setStyle(Paint.Style.STROKE);
+    localPaint.setAntiAlias(true);
+    Canvas localCanvas = new Canvas(paramDownloadParams);
+    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
+    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
+    return paramDownloadParams;
   }
   
   public String toString()
   {
-    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
+    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
   }
 }
 

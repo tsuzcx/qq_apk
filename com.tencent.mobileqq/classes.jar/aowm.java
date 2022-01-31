@@ -1,7 +1,6 @@
-public abstract class aowm
-  extends aowl
+public abstract interface aowm
 {
-  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  public abstract void a(boolean paramBoolean);
 }
 
 

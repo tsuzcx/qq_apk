@@ -1,27 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class ubq
-  extends ubv<StoryVideoItem>
+  implements View.OnClickListener
 {
-  public ubq(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  public ubq(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void onClick(View paramView)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    veg.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    if (!bbfj.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
+    {
+      bcql.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694608, 0).a();
+      return;
+    }
+    ved.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a(10, true, "retry play");
   }
 }
 

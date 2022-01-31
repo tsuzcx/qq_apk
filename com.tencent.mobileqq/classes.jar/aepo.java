@@ -1,12 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
 class aepo
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aepo(aepg paramaepg) {}
+  aepo(aepe paramaepe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.b(1);
   }

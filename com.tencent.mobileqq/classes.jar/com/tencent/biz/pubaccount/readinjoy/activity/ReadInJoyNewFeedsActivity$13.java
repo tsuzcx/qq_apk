@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import bbay;
+import bbbm;
 
 class ReadInJoyNewFeedsActivity$13
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyNewFeedsActivity$13
   
   public void run()
   {
-    bbay.b();
+    bbbm.b();
     this.this$0.runOnUiThread(new ReadInJoyNewFeedsActivity.13.1(this));
   }
 }

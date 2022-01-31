@@ -1,18 +1,10 @@
-import java.util.ArrayList;
+import android.content.pm.ResolveInfo;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
-public class aqvo
+public abstract interface aqvo
 {
-  public List<aqvn> a;
-  public Set<String> a;
-  
-  public aqvo()
-  {
-    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable);
 }
 
 

@@ -1,73 +1,61 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
 
 class alok
-  implements bibq
+  implements INetInfoHandler
 {
-  alok(alob paramalob) {}
+  alok(aloa paramaloa) {}
   
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
+  public void onNetMobile2None()
   {
-    if ((QLog.isColorLevel()) && (paramArrayList != null)) {
-      QLog.i("ark.download.module", 2, "onQueryCallback:" + paramArrayList.toString());
-    }
-    if (alob.a(this.a) != null)
-    {
-      yod.a(paramArrayList);
-      alob.a(this.a).a(paramArrayList);
-    }
-  }
-  
-  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
-  {
-    if ((QLog.isColorLevel()) && (paramArrayList != null)) {
-      QLog.i("ark.download.module", 2, "onQueryCallbackVia:" + paramArrayList.toString());
-    }
-    if (alob.a(this.a) != null)
-    {
-      yod.a(paramArrayList);
-      alob.a(this.a).a(paramArrayList);
-    }
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    if (alob.a(this.a) != null)
-    {
-      yod.a(paramWadlResult);
-      alob.a(this.a).a(paramWadlResult);
-      if (paramWadlResult != null) {}
-    }
-    else
-    {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("ark.download.module", 2, "onWadlTaskStatusChanged:" + paramWadlResult.toString());
+      QLog.e("ark.download.module", 2, "onNetMobile2None");
     }
-    if (paramWadlResult.a != null) {}
-    for (String str = paramWadlResult.a.a;; str = "") {
-      switch (paramWadlResult.b)
-      {
-      case 8: 
-      case 10: 
-      case 11: 
-      case 12: 
-      case 13: 
-      default: 
-        return;
-      case 6: 
-        axqw.a(null, "dc00898", "", "", "0X8009E14", "0X8009E14", 0, 0, "", "", str, "");
-        return;
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetMobile2Wifi", paramString });
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetNone2Mobile", paramString });
+    }
+    paramString = BaseActivity.sTopActivity;
+    if ((aloa.a(this.a)) && (!aloa.b(this.a)) && (paramString != null))
+    {
+      paramString = paramString.getString(2131690232);
+      if (aloa.a(this.a, paramString)) {
+        aloa.b(this.a, true);
       }
     }
-    axqw.a(null, "dc00898", "", "", "0X8009E15", "0X8009E15", 0, 0, "", "", str, "");
-    return;
-    axqw.a(null, "dc00898", "", "", "0X8009E17", "0X8009E17", 0, 0, "", "", str, "");
-    return;
-    axqw.a(null, "dc00898", "", "", "0X8009E18", "0X8009E18", 0, 0, "", "", str, "");
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetNone2Wifi", paramString });
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetWifi2Mobile", paramString });
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, "onNetWifi2None");
+    }
   }
 }
 

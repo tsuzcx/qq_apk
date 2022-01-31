@@ -1,20 +1,17 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.widget.AbsListView;
 
 public class ttz
-  extends uyl
+  implements bfos
 {
-  public ttz(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public ttz(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      sxp.a(this.a.a, 10, paramView.uid);
-    }
+    this.a.a = paramInt1;
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

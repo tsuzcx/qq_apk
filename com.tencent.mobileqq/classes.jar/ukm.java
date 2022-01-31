@@ -1,40 +1,36 @@
-public class ukm
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+
+class ukm
+  extends SimpleObserver<Bitmap>
 {
-  public static void a(String paramString1, String paramString2)
+  ukm(ukl paramukl) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    veg.b(paramString1, paramString2);
+    super.onNext(paramBitmap);
+    ukj.b(ukl.a(this.a), "onNext, oldResult=%s, newResult=%s", ukl.a(this.a), paramBitmap);
+    ukl.a(this.a, paramBitmap);
+    ukl.a(this.a, true);
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public void onCancel()
   {
-    veg.a(paramString1, paramString2, paramObject);
+    super.onCancel();
+    ukj.a(ukl.a(this.a), "onCancel");
+    onError(new ErrorMessage(-1, "onCancel"));
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
-  
-  public static void b(String paramString1, String paramString2)
+  public void onError(@NonNull Error paramError)
   {
-    veg.d(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    veg.a(paramString1, paramString2, paramObject);
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    veg.a(paramString1, paramString2, paramObject1, paramObject2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    veg.e(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    veg.a(paramString1, paramString2, paramObject1, paramObject2);
+    super.onError(paramError);
+    ukj.c(ukl.a(this.a), "onError, oldError=%s, newError=%s", ukl.a(this.a), paramError);
+    ukl.a(this.a, paramError);
+    ukl.a(this.a, SystemClock.uptimeMillis());
+    ukl.a(this.a, false);
   }
 }
 

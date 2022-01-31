@@ -1,21 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-final class ajca
-  implements EIPCResultCallback
+public class ajca
+  implements TVK_SDKMgr.InstallListener
 {
-  ajca(long paramLong) {}
+  public ajca(CmGameAppInterface paramCmGameAppInterface) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onInstallProgress(float paramFloat)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    ajae.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
-    }
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
 }
 

@@ -1,12 +1,37 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 class tqm
-  extends tpy
+  extends tpj
 {
-  tqm(tqk paramtqk, trr paramtrr) {}
+  tqm(tqh paramtqh, StoryVideoItem paramStoryVideoItem)
+  {
+    super(paramStoryVideoItem);
+  }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trr.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    Object localObject = (String)a("result");
+    try
+    {
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
+      }
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      ved.c(this.b, "Error: 评分投票失败", localURISyntaxException);
+    }
+    return false;
   }
 }
 

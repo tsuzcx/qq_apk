@@ -1,18 +1,159 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdmv
-  implements DialogInterface.OnClickListener
+  implements bdld
 {
-  public bdmv(ApkFileDownloadButton paramApkFileDownloadButton) {}
+  protected static bdmv a;
+  protected bdmx a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static bdmv a()
   {
-    this.a.b(false, true);
-    paramDialogInterface.dismiss();
-    bdhk.b(bdhm.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
+    try
+    {
+      if (jdField_a_of_type_Bdmv == null) {
+        jdField_a_of_type_Bdmv = new bdmv();
+      }
+      bdmv localbdmv = jdField_a_of_type_Bdmv;
+      return localbdmv;
+    }
+    finally {}
   }
+  
+  public void a(Looper paramLooper)
+  {
+    this.jdField_a_of_type_Bdmx = new bdmx(paramLooper);
+  }
+  
+  protected void a(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Bdmx == null) {
+      this.jdField_a_of_type_Bdmx = new bdmx();
+    }
+    this.jdField_a_of_type_Bdmx.sendMessage(paramMessage);
+  }
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    bdii.a("NoticeDownloadListener", "onInstallSucceed ,appId" + paramString1);
+    paramString1 = bdle.a().b(paramString2);
+    if (paramString1 != null)
+    {
+      paramString2 = this.jdField_a_of_type_Bdmx.obtainMessage();
+      paramString2.what = 6;
+      Bundle localBundle = new Bundle();
+      localBundle.putString(bdlb.b, paramString1.jdField_c_of_type_JavaLangString);
+      paramString2.setData(localBundle);
+      a(paramString2);
+    }
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    bdii.a("NoticeDownloadListener", "onDownloadError ,downloadInfo" + paramDownloadInfo);
+    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
+    while (paramDownloadInfo.b) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
+    localMessage.what = -2;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    localMessage.obj = paramString;
+    localMessage.arg2 = paramInt2;
+    a(localMessage);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    bdii.a("NoticeDownloadListener", "onDownloadFinish ");
+    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
+    while (paramDownloadInfo.b) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
+    localMessage.what = 4;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    a(localMessage);
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {}
+    do
+    {
+      return;
+      bdii.a("NoticeDownloadListener", "onDownloadPause " + paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    } while ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (paramDownloadInfo.b));
+    Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
+    localMessage.what = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    localMessage.setData(localBundle);
+    a(localMessage);
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    bdii.a("NoticeDownloadListener", "onDownloadUpdate notify enter infos=" + paramList.size());
+    paramList = paramList.iterator();
+    for (;;)
+    {
+      DownloadInfo localDownloadInfo;
+      if (paramList.hasNext())
+      {
+        localDownloadInfo = (DownloadInfo)paramList.next();
+        if ((localDownloadInfo == null) || (localDownloadInfo.jdField_c_of_type_Int == 1)) {
+          continue;
+        }
+        if (!localDownloadInfo.b) {}
+      }
+      else
+      {
+        return;
+      }
+      Message localMessage = this.jdField_a_of_type_Bdmx.obtainMessage();
+      localMessage.what = 2;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("appId", localDownloadInfo.jdField_c_of_type_JavaLangString);
+      localMessage.setData(localBundle);
+      a(localMessage);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
+    while (paramDownloadInfo.b) {
+      return;
+    }
+    Object localObject2 = new StringBuilder().append("onDownloadWait notify enter info.id=");
+    if (paramDownloadInfo == null) {}
+    for (Object localObject1 = "";; localObject1 = paramDownloadInfo.jdField_c_of_type_JavaLangString)
+    {
+      bdii.a("NoticeDownloadListener", (String)localObject1);
+      localObject1 = this.jdField_a_of_type_Bdmx.obtainMessage();
+      ((Message)localObject1).what = 20;
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("appId", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      ((Message)localObject1).setData((Bundle)localObject2);
+      a((Message)localObject1);
+      return;
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

@@ -1,17 +1,6 @@
-import android.widget.PopupWindow.OnDismissListener;
-
-class bfsn
-  implements PopupWindow.OnDismissListener
+public abstract interface bfsn
 {
-  bfsn(bfsm parambfsm) {}
-  
-  public void onDismiss()
-  {
-    this.a.jdField_a_of_type_Bfsq = null;
-    this.a.jdField_a_of_type_Bfsp = null;
-    this.a.c();
-    onk.a = false;
-  }
+  public abstract void a();
 }
 
 

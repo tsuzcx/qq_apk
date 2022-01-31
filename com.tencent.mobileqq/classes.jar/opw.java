@@ -1,158 +1,254 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.data.ReadInJoyActivityDAUInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.UEC;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class opw
+  implements Handler.Callback, axsb, Manager
 {
-  private static long jdField_a_of_type_Long = 2000L;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static boolean jdField_a_of_type_Boolean;
+  private aukp jdField_a_of_type_Aukp;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, ReadInJoyActivityDAUInfo> jdField_a_of_type_JavaUtilHashMap;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public static void a()
+  public opw(QQAppInterface paramQQAppInterface)
   {
-    QLog.i("DailyTipsFoldUtils", 2, "[init]");
-    jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bbdc(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView)
+  private String a()
   {
-    if ((paramBaseArticleInfo == null) || (!oox.c((int)paramBaseArticleInfo.mChannelID))) {
-      QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], articleInfo is null or not daily channel.");
+    return new SimpleDateFormat("yyyyMMdd").format(new Date());
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    try
+    {
+      arrayOfString = paramString2.split("\\|");
+      if (arrayOfString == null) {
+        return paramString1;
+      }
+      i = 0;
     }
-    do
+    catch (Exception localException1)
+    {
+      try
+      {
+        String[] arrayOfString;
+        int i;
+        if (i >= arrayOfString.length) {
+          break label165;
+        }
+        String str1 = arrayOfString[i];
+        int j = str1.indexOf("+");
+        int k = str1.indexOf(":");
+        paramString2 = paramString1;
+        if (j > 0)
+        {
+          paramString2 = paramString1;
+          if (k > 0)
+          {
+            paramString2 = str1.substring(0, j);
+            String str2 = str1.substring(j + 1, k);
+            str1 = str1.substring(k + 1);
+            paramString2 = UEC.a(paramString1, paramString2, Integer.valueOf(str2).intValue(), Integer.valueOf(str1).intValue());
+          }
+        }
+        i += 1;
+        paramString1 = paramString2;
+      }
+      catch (Exception localException2)
+      {
+        label129:
+        break label129;
+      }
+      localException1 = localException1;
+      paramString2 = paramString1;
+      if (!QLog.isColorLevel()) {
+        break label165;
+      }
+      QLog.d("Q.activity_dau", 2, "saveToDB|preActivityList error:" + localException1);
+      paramString2 = paramString1;
+    }
+    paramString2 = paramString1;
+    label165:
+    return paramString2;
+    return paramString1;
+  }
+  
+  public void a(ArrayList<UEC.UECItem> paramArrayList)
+  {
+    if (bbkb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    {
+      Message localMessage = new Message();
+      localMessage.what = 0;
+      localMessage.obj = paramArrayList;
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Object localObject2;
+    Object localObject3;
+    if (paramMessage.what == 0)
+    {
+      paramMessage = (ArrayList)paramMessage.obj;
+      if (paramMessage != null)
+      {
+        paramMessage = paramMessage.iterator();
+        label308:
+        while (paramMessage.hasNext())
+        {
+          localObject2 = (UEC.UECItem)paramMessage.next();
+          localObject1 = ((UEC.UECItem)localObject2).jdField_a_of_type_JavaLangString;
+          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1))
+          {
+            localObject3 = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+            ((ReadInJoyActivityDAUInfo)localObject3).count += 1;
+            ((ReadInJoyActivityDAUInfo)localObject3).showTime += ((UEC.UECItem)localObject2).jdField_a_of_type_Long;
+            ((ReadInJoyActivityDAUInfo)localObject3).displayCount += ((UEC.UECItem)localObject2).jdField_b_of_type_Int;
+            ((ReadInJoyActivityDAUInfo)localObject3).preActivityList = a(((ReadInJoyActivityDAUInfo)localObject3).preActivityList, ((UEC.UECItem)localObject2).jdField_b_of_type_JavaLangString);
+            ((ReadInJoyActivityDAUInfo)localObject3).activeDate = a();
+          }
+          for (;;)
+          {
+            if (!QLog.isColorLevel()) {
+              break label308;
+            }
+            localObject2 = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+            if (localObject2 == null) {
+              break;
+            }
+            QLog.d("Q.activity_dau", 2, "reportInternal|activityName:" + (String)localObject1 + " count:" + ((ReadInJoyActivityDAUInfo)localObject2).count + " time:" + ((ReadInJoyActivityDAUInfo)localObject2).showTime + " dis:" + ((ReadInJoyActivityDAUInfo)localObject2).displayCount + " pre:" + ((ReadInJoyActivityDAUInfo)localObject2).preActivityList);
+            break;
+            localObject3 = new ReadInJoyActivityDAUInfo();
+            ((ReadInJoyActivityDAUInfo)localObject3).count = 1;
+            ((ReadInJoyActivityDAUInfo)localObject3).activityName = ((String)localObject1);
+            ((ReadInJoyActivityDAUInfo)localObject3).showTime = ((UEC.UECItem)localObject2).jdField_a_of_type_Long;
+            ((ReadInJoyActivityDAUInfo)localObject3).displayCount = ((UEC.UECItem)localObject2).jdField_b_of_type_Int;
+            ((ReadInJoyActivityDAUInfo)localObject3).preActivityList = ((UEC.UECItem)localObject2).jdField_b_of_type_JavaLangString;
+            ((ReadInJoyActivityDAUInfo)localObject3).activeDate = a();
+            this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localObject3);
+          }
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 4)
+      {
+        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+      }
+    }
+    while (paramMessage.what != 1)
     {
       do
       {
-        return;
-        if (paramReadInJoyXListView == null)
-        {
-          QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], listView is null.");
-          return;
-        }
-      } while (!a(paramBaseArticleInfo));
-      jdField_a_of_type_JavaLangRunnable = new DailyTipsFoldUtils.1(paramReadInJoyXListView);
-    } while (jdField_a_of_type_Boolean);
-    paramBaseArticleInfo = Aladdin.getConfig(208);
-    if (paramBaseArticleInfo != null)
-    {
-      jdField_a_of_type_Long = paramBaseArticleInfo.getIntegerFromString("delay_duration", 2000);
-      QLog.i("DailyTipsFoldUtils", 2, "[foldDailyTips], delayFoldTime = " + jdField_a_of_type_Long);
-    }
-    paramReadInJoyXListView.postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
-  }
-  
-  public static void a(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
-  {
-    if (paramReadInJoyXListView == null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], listView is null.");
-      return;
-    }
-    if (!oox.c(paramInt))
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], is not daily feeds, channelID = " + paramInt);
-      return;
-    }
-    if (jdField_a_of_type_JavaLangRunnable != null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], removeCallbacks");
-      paramReadInJoyXListView.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    }
-    jdField_a_of_type_JavaLangRunnable = null;
-  }
-  
-  private static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    boolean bool5 = false;
-    boolean bool4 = false;
-    boolean bool3 = false;
-    if ((paramBaseArticleInfo == null) || (!oox.c((int)paramBaseArticleInfo.mChannelID))) {
+        return false;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1));
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 120000L);
       return false;
     }
-    paramBaseArticleInfo = paramBaseArticleInfo.proteusItemsData;
-    bool1 = bool5;
-    if (paramBaseArticleInfo != null) {
-      bool2 = bool4;
+    try
+    {
+      if (this.jdField_a_of_type_Aukp != null) {
+        break label418;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
+        return false;
+      }
     }
+    finally {}
+    this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    label418:
+    paramMessage = this.jdField_a_of_type_JavaUtilHashMap.keySet();
+    Object localObject1 = this.jdField_a_of_type_Aukp.a();
     for (;;)
     {
       try
       {
-        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo);
-        bool2 = bool4;
-        Object localObject = paramBaseArticleInfo.optString("style_ID");
-        bool2 = bool4;
-        QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], styleID = " + (String)localObject);
-        bool1 = bool5;
-        bool2 = bool4;
-        if (TextUtils.equals("ReadInjoy_daily_check_card", (CharSequence)localObject))
-        {
-          bool2 = bool4;
-          paramBaseArticleInfo = paramBaseArticleInfo.optJSONArray("datas");
-          bool1 = bool3;
-          if (paramBaseArticleInfo != null)
-          {
-            bool1 = bool3;
-            bool2 = bool4;
-            if (paramBaseArticleInfo.length() == 1)
-            {
-              bool2 = bool4;
-              localObject = paramBaseArticleInfo.getJSONObject(0);
-              bool1 = bool3;
-              if (localObject != null)
-              {
-                bool2 = bool4;
-                bool1 = TextUtils.equals("1", ((JSONObject)localObject).optString("is_day_tip"));
-              }
-            }
-          }
-          bool2 = bool1;
-          localObject = new StringBuilder().append("[isFirstCardDailyTips], data length = ");
-          if (paramBaseArticleInfo == null) {
-            continue;
-          }
-          bool2 = bool1;
-          paramBaseArticleInfo = Integer.valueOf(paramBaseArticleInfo.length());
-          bool2 = bool1;
-          QLog.i("DailyTipsFoldUtils", 1, paramBaseArticleInfo);
+        ((aukr)localObject1).a();
+        localObject2 = paramMessage.iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break label745;
         }
+        localObject3 = (String)((Iterator)localObject2).next();
+        localReadInJoyActivityDAUInfo = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3);
+        paramMessage = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_Aukp.a(ReadInJoyActivityDAUInfo.class, (String)localObject3);
+        if (paramMessage != null) {
+          continue;
+        }
+        paramMessage = new ReadInJoyActivityDAUInfo();
+        paramMessage.activityName = ((String)localObject3);
+        paramMessage.count = localReadInJoyActivityDAUInfo.count;
+        paramMessage.showTime = localReadInJoyActivityDAUInfo.showTime;
+        paramMessage.displayCount = localReadInJoyActivityDAUInfo.displayCount;
+        paramMessage.preActivityList = localReadInJoyActivityDAUInfo.preActivityList;
+        paramMessage.activeDate = a();
       }
-      catch (JSONException paramBaseArticleInfo)
+      catch (Exception paramMessage)
       {
-        QLog.e("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], e = " + paramBaseArticleInfo);
-        bool1 = bool2;
+        ReadInJoyActivityDAUInfo localReadInJoyActivityDAUInfo;
+        paramMessage.printStackTrace();
+        ((aukr)localObject1).b();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.activity_dau", 2, "saveToDB|cache size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        return false;
+        paramMessage.count += localReadInJoyActivityDAUInfo.count;
+        paramMessage.showTime += localReadInJoyActivityDAUInfo.showTime;
+        paramMessage.displayCount += localReadInJoyActivityDAUInfo.displayCount;
+        paramMessage.preActivityList = a(paramMessage.preActivityList, localReadInJoyActivityDAUInfo.preActivityList);
+        paramMessage.activeDate = a();
         continue;
       }
-      QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips] res = " + bool1);
-      return bool1;
-      paramBaseArticleInfo = "0";
+      finally
+      {
+        ((aukr)localObject1).b();
+      }
+      if (paramMessage.getStatus() == 1000)
+      {
+        this.jdField_a_of_type_Aukp.b(paramMessage);
+      }
+      else if ((paramMessage.getStatus() == 1001) || (paramMessage.getStatus() == 1002))
+      {
+        this.jdField_a_of_type_Aukp.a(paramMessage);
+        continue;
+        label745:
+        ((aukr)localObject1).c();
+        ((aukr)localObject1).b();
+      }
     }
   }
   
-  public static void b(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
+  public void onDestroy()
   {
-    if (paramReadInJoyXListView == null)
+    if (this.jdField_a_of_type_Aukp != null) {}
+    try
     {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], listView is null.");
+      this.jdField_a_of_type_Aukp.a();
       return;
     }
-    if (!oox.c(paramInt))
+    catch (Exception localException)
     {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], is not daily feeds, channelID = " + paramInt);
-      return;
+      localException.printStackTrace();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DailyTipsFoldUtils", 2, "[touchDailyFeeds], cancelFoldDailyTipsRunnable.");
-    }
-    jdField_a_of_type_Boolean = true;
-    a(paramReadInJoyXListView, paramInt);
   }
 }
 

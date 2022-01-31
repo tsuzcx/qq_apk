@@ -1,246 +1,359 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import android.text.TextUtils;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApproval;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Set;
 
 public class adli
-  extends BaseBubbleBuilder
-  implements acwf
+  extends adlj
 {
-  Handler b = new Handler();
+  private static final Set<WeakReference<adli>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  public WeakReference<MessageForArkApp> a;
+  public boolean a;
+  protected WeakReference<adli> b = new WeakReference(this);
+  private WeakReference<ArkBabyqCardInfo> jdField_e_of_type_JavaLangRefWeakReference;
+  private boolean jdField_e_of_type_Boolean;
+  private WeakReference<RecommendCommonMessage> f;
+  private WeakReference<RecommendCommonMessage.ArkMsgAppInfo> g;
   
-  public adli(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public adli()
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    adlo.a();
+    adlo.a(this.b);
   }
   
-  private void a(adlj paramadlj, MessageForApproval paramMessageForApproval, View paramView, acxn paramacxn)
+  public static MessageForArkApp a(String paramString)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramadlj.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramadlj.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    if (paramMessageForApproval.isSend())
+    synchronized (jdField_a_of_type_JavaUtilSet)
     {
-      localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-    }
-    for (localLayoutParams1.leftMargin = ((int)(16.0F * this.jdField_a_of_type_Float));; localLayoutParams1.leftMargin = ((int)(24.0F * this.jdField_a_of_type_Float)))
-    {
-      paramadlj.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-      paramadlj.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
-      paramadlj.jdField_a_of_type_AndroidWidgetLinearLayout.invalidate();
-      paramadlj.jdField_a_of_type_AndroidWidgetTextView.invalidate();
-      paramView.setOnLongClickListener(paramacxn);
-      paramView.setOnTouchListener(paramacxn);
-      paramView.setOnClickListener(this);
-      return;
-      localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
-      localLayoutParams.rightMargin = 0;
+      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Object localObject;
+      label42:
+      MessageForArkApp localMessageForArkApp;
+      do
+      {
+        if (localIterator.hasNext())
+        {
+          localObject = (WeakReference)localIterator.next();
+          if (localObject != null) {
+            break label42;
+          }
+        }
+        do
+        {
+          do
+          {
+            do
+            {
+              return null;
+              localObject = (adli)((WeakReference)localObject).get();
+            } while (localObject == null);
+            localObject = ((adli)localObject).jdField_a_of_type_JavaLangRefWeakReference;
+          } while (localObject == null);
+          localMessageForArkApp = (MessageForArkApp)((WeakReference)localObject).get();
+        } while (localMessageForArkApp == null);
+      } while ((!paramString.equals(localMessageForArkApp.getExtInfoFromExtStr("pa_msgId"))) && (!paramString.equals(String.valueOf(localMessageForArkApp.uniseq))));
+      paramString = (MessageForArkApp)((WeakReference)localObject).get();
+      return paramString;
     }
   }
   
-  private void a(MessageForApproval paramMessageForApproval, adlj paramadlj)
+  public static void a(int paramInt)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format(Locale.CHINA, "doArkAppEvent type:%d", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (paramInt == 2)
+    {
+      adlo.a();
+      adlo.a();
+    }
     for (;;)
     {
-      int i;
-      Object localObject5;
-      Object localObject3;
-      Object localObject4;
-      try
+      synchronized (jdField_a_of_type_JavaUtilSet)
       {
-        paramadlj.d.setText(paramMessageForApproval.summary);
-        String[] arrayOfString = paramMessageForApproval.title.split("\002");
-        if (arrayOfString.length == 1)
-        {
-          paramadlj.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageForApproval.title.substring(3));
-          paramadlj.c.setVisibility(8);
-          return;
+        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+        if (!localIterator.hasNext()) {
+          break;
         }
-        localObject1 = ajyc.a(2131700618);
-        int j = arrayOfString.length;
-        String str1 = "";
-        paramMessageForApproval = "";
-        localObject2 = "";
-        i = 0;
-        if (i < j)
+        localObject2 = (WeakReference)localIterator.next();
+        if ((localObject2 == null) || (((WeakReference)localObject2).get() == null))
         {
-          String str2 = arrayOfString[i];
-          if (str2.startsWith("000"))
-          {
-            localObject5 = (String)localObject1 + str2.substring(3);
-            localObject3 = paramMessageForApproval;
-            localObject4 = localObject2;
+          if (QLog.isColorLevel()) {
+            QLog.d("ArkApp.ArkAioContainerWrapper", 4, "doArkAppEvent.(item == null || item.get() == null)");
           }
-          else if (str2.startsWith("001"))
-          {
-            localObject4 = str2.substring(3);
-            localObject3 = paramMessageForApproval;
-            localObject5 = localObject1;
-          }
-          else if (str2.startsWith("002"))
-          {
-            localObject3 = str2.substring(3);
-            localObject4 = localObject2;
-            localObject5 = localObject1;
-          }
-          else
-          {
-            localObject3 = paramMessageForApproval;
-            localObject4 = localObject2;
-            localObject5 = localObject1;
-            if (str2.startsWith("003"))
-            {
-              str1 = str2.substring(3);
-              localObject3 = paramMessageForApproval;
-              localObject4 = localObject2;
-              localObject5 = localObject1;
-            }
-          }
-        }
-        else
-        {
-          localObject3 = paramMessageForApproval;
-          if ("1".equalsIgnoreCase(str1) == true) {
-            localObject3 = paramMessageForApproval + ajyc.a(2131700615);
-          }
-          paramadlj.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          paramadlj.c.setText((String)localObject2 + (String)localObject3);
-          return;
+          localIterator.remove();
         }
       }
-      catch (Exception paramMessageForApproval)
-      {
-        if (QLog.isDevelopLevel())
-        {
-          paramadlj.jdField_b_of_type_AndroidWidgetTextView.setText(ajyc.a(2131700619));
-          paramadlj.c.setText(ajyc.a(2131700616));
-        }
-        QLog.e("ApprovalMsgBuilder", 1, paramMessageForApproval.toString());
-        return;
+      Object localObject2 = (adli)((WeakReference)localObject2).get();
+      ((adli)localObject2).doOnEvent(paramInt);
+      if (paramInt == 2) {
+        b((adli)localObject2);
       }
-      i += 1;
-      paramMessageForApproval = (MessageForApproval)localObject3;
-      Object localObject2 = localObject4;
-      Object localObject1 = localObject5;
+    }
+    if (paramInt == 2) {
+      jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
-  private void d(View paramView)
+  public static void a(adli paramadli)
   {
-    paramView = (MessageForApproval)actn.a(paramView);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public acun a()
-  {
-    return new adlj(this);
-  }
-  
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acxn paramacxn)
-  {
-    paramChatMessage = (ViewGroup)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramacxn);
-    paramView = (adlj)paramChatMessage.getTag();
-    paramView.jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.d;
-    if (e) {}
-    try
-    {
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.jdField_b_of_type_AndroidWidgetTextView.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append(paramView.c.getText());
-      paramView.jdField_b_of_type_JavaLangStringBuilder.append("审批");
-      paramChatMessage.setContentDescription(paramView.jdField_b_of_type_JavaLangStringBuilder.toString());
-      return paramChatMessage;
-    }
-    catch (Exception paramView) {}
-    return paramChatMessage;
-  }
-  
-  public View a(ChatMessage paramChatMessage, acun paramacun, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acxn paramacxn)
-  {
-    paramacun = (adlj)paramacun;
-    paramBaseChatItemLayout = (MessageForApproval)paramChatMessage;
-    paramBaseChatItemLayout.parse();
-    paramChatMessage = paramView;
-    if (paramView == null)
-    {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558726, null);
-      paramacun.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131369758));
-      paramacun.c = ((TextView)paramChatMessage.findViewById(2131376701));
-      paramacun.d = ((TextView)paramChatMessage.findViewById(2131376710));
-      paramacun.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramChatMessage.findViewById(2131370513));
-      paramacun.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131368404));
-    }
-    a(paramacun, paramBaseChatItemLayout, paramChatMessage, paramacxn);
-    a(paramBaseChatItemLayout, paramacun);
-    return paramChatMessage;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    if (bbet.a(paramChatMessage.issend)) {
-      return ajyc.a(2131700617);
-    }
-    return ajyc.a(2131700620);
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    switch (paramInt)
-    {
-    default: 
+    if (paramadli == null) {
       return;
     }
-    aaod.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2)
-  {
-    paramView = (adlj)actn.a(paramView);
-    a((MessageForApproval)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView);
-  }
-  
-  public bblt[] a(View paramView)
-  {
-    paramView = new bblr();
-    aaod.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.c(paramView, this.jdField_a_of_type_AndroidContentContext);
-    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
-  }
-  
-  public void onClick(View paramView)
-  {
-    actn.n = true;
-    if (super.a()) {
-      return;
-    }
-    super.onClick(paramView);
-    switch (paramView.getId())
+    synchronized (jdField_a_of_type_JavaUtilSet)
     {
-    case 2131364118: 
-    default: 
+      jdField_a_of_type_JavaUtilSet.remove(paramadli.b);
       return;
     }
-    d(paramView);
+  }
+  
+  public static void b(adli paramadli)
+  {
+    WeakReference localWeakReference = paramadli.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((MessageForArkApp)localWeakReference.get()).arkContainer = null;
+    }
+    localWeakReference = paramadli.f;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((RecommendCommonMessage)localWeakReference.get()).mOldAppInfo.mArkContainer = null;
+    }
+    localWeakReference = paramadli.g;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((RecommendCommonMessage.ArkMsgAppInfo)localWeakReference.get()).mArkContainer = null;
+    }
+    paramadli = paramadli.jdField_e_of_type_JavaLangRefWeakReference;
+    if ((paramadli != null) && (paramadli.get() != null)) {
+      ((ArkBabyqCardInfo)paramadli.get()).mArkBabyqContainer = null;
+    }
+  }
+  
+  public SessionInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return "";
+    }
+    MessageForArkApp localMessageForArkApp = (MessageForArkApp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMessageForArkApp == null) {
+      return "";
+    }
+    return localMessageForArkApp.ark_app_message.config;
+  }
+  
+  public String a(String paramString)
+  {
+    if (paramString == null) {
+      localObject = "";
+    }
+    MessageForArkApp localMessageForArkApp;
+    do
+    {
+      do
+      {
+        do
+        {
+          return localObject;
+          localObject = paramString;
+        } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
+        localMessageForArkApp = (MessageForArkApp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = paramString;
+      } while (localMessageForArkApp == null);
+      localObject = paramString;
+    } while (localMessageForArkApp.ark_app_message == null);
+    String str2 = localMessageForArkApp.ark_app_message.appName;
+    String str1 = ArkAppMgr.loadAppDesc(str2);
+    Object localObject = str1;
+    if (TextUtils.isEmpty(str1)) {
+      if (!ArkAppMgr.isValidAppName(str2)) {
+        break label180;
+      }
+    }
+    label180:
+    for (localObject = str2;; localObject = "")
+    {
+      str1 = paramString;
+      if (localMessageForArkApp.ark_app_message.appDesc != null) {
+        str1 = paramString.replace("%APP_DESC%", (CharSequence)localObject).replace("$APP_DESC$", (CharSequence)localObject);
+      }
+      paramString = str1;
+      if (localMessageForArkApp.ark_app_message.appName != null) {
+        paramString = str1.replace("%APP_NAME%", str2).replace("$APP_NAME$", str2);
+      }
+      localObject = paramString;
+      if (localMessageForArkApp.ark_app_message.promptText == null) {
+        break;
+      }
+      return paramString.replace("%PROMPT%", localMessageForArkApp.ark_app_message.promptText).replace("$PROMPT$", localMessageForArkApp.ark_app_message.promptText);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, ArkBabyqCardInfo paramArkBabyqCardInfo, SessionInfo paramSessionInfo)
+  {
+    this.jdField_e_of_type_Boolean = false;
+    if (paramArkBabyqCardInfo != null) {
+      this.jdField_e_of_type_JavaLangRefWeakReference = new WeakReference(paramArkBabyqCardInfo);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    this.d = true;
+    adlo.a();
+    adlo.a(this.b);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, MessageForArkApp paramMessageForArkApp, SessionInfo paramSessionInfo)
+  {
+    this.jdField_e_of_type_Boolean = false;
+    if (paramMessageForArkApp != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessageForArkApp);
+      a(paramSessionInfo, paramMessageForArkApp.senderuin);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    adlo.a();
+    adlo.a(this.b);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, RecommendCommonMessage.ArkMsgAppInfo paramArkMsgAppInfo, SessionInfo paramSessionInfo)
+  {
+    if (paramArkMsgAppInfo != null) {
+      this.g = new WeakReference(paramArkMsgAppInfo);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    adlo.a();
+    adlo.a(this.b);
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, RecommendCommonMessage paramRecommendCommonMessage, SessionInfo paramSessionInfo)
+  {
+    if (paramRecommendCommonMessage != null)
+    {
+      this.f = new WeakReference(paramRecommendCommonMessage);
+      a(paramSessionInfo, paramRecommendCommonMessage.senderuin);
+    }
+    if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat, paramSessionInfo))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format("super.init return false!!! wrapper: %h.", new Object[] { this }));
+      }
+      return false;
+    }
+    jdField_a_of_type_JavaUtilSet.add(this.b);
+    adlo.a();
+    adlo.a(this.b);
+    return true;
+  }
+  
+  public void activateView(boolean paramBoolean)
+  {
+    boolean bool = this.mIsActivated;
+    super.activateView(paramBoolean);
+    if (bool == this.mIsActivated) {
+      return;
+    }
+    if (this.mIsActivated)
+    {
+      adlo.a();
+      adlo.a(this.b);
+      return;
+    }
+    adlo.a();
+    adlo.b(this.b);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_e_of_type_Boolean) {
+      super.doOnEvent(2);
+    }
+  }
+  
+  public void destroy()
+  {
+    super.destroy();
+    adlo.a();
+    adlo.c(this.b);
+  }
+  
+  public void doOnEvent(int paramInt)
+  {
+    if ((paramInt == 2) && (this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_e_of_type_Boolean = true;
+      return;
+    }
+    super.doOnEvent(paramInt);
+  }
+  
+  public String getViewId()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    MessageForArkApp localMessageForArkApp = (MessageForArkApp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMessageForArkApp == null) {
+      return null;
+    }
+    String str = localMessageForArkApp.getExtInfoFromExtStr("pa_msgId");
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return String.valueOf(localMessageForArkApp.uniseq);
   }
 }
 

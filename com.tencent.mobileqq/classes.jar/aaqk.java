@@ -1,20 +1,15 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 
-class aaqk
-  implements DialogInterface.OnCancelListener
+public class aaqk
+  implements View.OnClickListener
 {
-  aaqk(aaqj paramaaqj) {}
+  public aaqk(ChatHistory paramChatHistory) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a(12, true);
   }
 }
 

@@ -1,47 +1,33 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import com.tencent.qphone.base.util.QLog;
 
 public class acro
-  extends akjz
+  implements ArkViewImplement.LoadCallback
 {
-  public acro(ActivateFriendView paramActivateFriendView) {}
+  public acro(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
   
-  public void b()
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    if ((ActivateFriendView.a(this.a) == null) || (ActivateFriendView.b(this.a) == null)) {}
-    do
-    {
-      return;
-      ActivateFriendView.a(this.a, 0);
-      int i = 0;
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        if (this.a.a.c(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-        {
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689585));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (this.a.a.b(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin, 2))
-          {
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(false);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689588));
-          }
-          else
-          {
-            ActivateFriendView.b(this.a);
-            ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setChecked(true);
-          }
-        }
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt == 1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
       }
-    } while (ActivateFriendView.a(this.a) == null);
-    ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
+    }
+    this.a.a(false);
+    BirthdayActivatePageArkView.a(this.a).setText(ajya.a(2131701152));
   }
 }
 

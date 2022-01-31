@@ -1,18 +1,26 @@
-import android.view.View;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class wcj
-  implements bfvi
+  extends SimpleJob
 {
-  public wcj(SegmentList paramSegmentList) {}
-  
-  public void a_(View paramView) {}
-  
-  public void e() {}
-  
-  public void e(boolean paramBoolean)
+  public wcj(SegmentList paramSegmentList, String paramString)
   {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
+    }
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
   }
 }
 

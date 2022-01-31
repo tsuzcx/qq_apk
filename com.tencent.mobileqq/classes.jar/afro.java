@@ -1,32 +1,73 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class afro
-  implements View.OnClickListener
+public class afro
+  extends ajxj
 {
-  afro(afrn paramafrn) {}
+  public afro(RecommendFriendFragment paramRecommendFriendFragment) {}
   
-  public void onClick(View paramView)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
     }
-    String str;
-    do
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      return;
-      str = (String)paramView.getTag(-1);
-      paramView = (String)paramView.getTag(-2);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
-        break;
+      if (this.a.jdField_a_of_type_Afpu != null) {
+        this.a.jdField_a_of_type_Afpu.notifyDataSetChanged();
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
-    return;
-    nbc.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+      }
+    }
   }
 }
 

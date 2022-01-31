@@ -1,30 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-class atlr
-  implements atgx
+public abstract interface atlr
 {
-  atlr(atlq paramatlq) {}
+  public abstract int a();
   
-  public void a()
-  {
-    if (atlq.a(this.a) != null)
-    {
-      atlq.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696676));
-      atlq.a(this.a).b();
-      atlq.a(this.a).c();
-    }
-  }
+  public abstract void a();
   
-  public void a(Comments paramComments)
-  {
-    if (atlq.a(this.a) != null)
-    {
-      atlq.a(this.a);
-      atlq.a(this.a).a(paramComments);
-      atlq.a(this.a).b();
-    }
-  }
+  public abstract void a(Comments.Comment paramComment);
+  
+  public abstract void b();
+  
+  public abstract void b(Comments.Comment paramComment);
+  
+  public abstract void c();
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajyc;
+import ajya;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import axqw;
-import ayeo;
-import ayfh;
-import ayhk;
+import axqy;
+import ayeq;
+import ayfj;
+import ayhm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -15,23 +15,23 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$1
   implements Runnable
 {
-  public TeamWorkFileImportHandler$1(ayeo paramayeo, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$1(ayeq paramayeq, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a.c)))
     {
-      ayhk.a("TeamWorkFileImportHandler", "import fail", "filePath is null or app is null", this.a.k);
+      ayhm.a("TeamWorkFileImportHandler", "import fail", "filePath is null or app is null", this.a.k);
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = ayfh.a(this.a, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = ayfj.a(this.a, this.this$0.app.getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     Object localObject2 = "";
     boolean bool;
     if (localObject1 != null)
     {
-      bool = ayeo.a(this.this$0, (String)localObject1, this.a);
+      bool = ayeq.a(this.this$0, (String)localObject1, this.a);
       try
       {
         localObject1 = new JSONObject((String)localObject1).getString("url");
@@ -47,7 +47,7 @@ public class TeamWorkFileImportHandler$1
           QLog.e("TeamWorkFileImportHandler", 1, localException.toString());
         }
       }
-      localObject1 = ajyc.a(2131714798);
+      localObject1 = ajya.a(2131714809);
       if (this.a.e != 3) {
         break label304;
       }
@@ -63,16 +63,16 @@ public class TeamWorkFileImportHandler$1
     label361:
     for (int i = 1;; i = 2)
     {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "0X8009955", "0X8009955", j, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
-      if ((bool) || (ayeo.a(this.this$0) == null)) {
+      axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009955", "0X8009955", j, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
+      if ((bool) || (ayeq.a(this.this$0) == null)) {
         break;
       }
-      localObject1 = ayeo.a(this.this$0).obtainMessage(8002);
+      localObject1 = ayeq.a(this.this$0).obtainMessage(8002);
       ((Message)localObject1).obj = this.a;
-      ayeo.a(this.this$0).sendMessage((Message)localObject1);
+      ayeq.a(this.this$0).sendMessage((Message)localObject1);
       return;
       this.a.f = -1000;
-      ayhk.a("TeamWorkFileImportHandler", "import fail", "local file network fail", this.a.k);
+      ayhm.a("TeamWorkFileImportHandler", "import fail", "local file network fail", this.a.k);
       bool = false;
       break label112;
       if (this.a.e == 6)

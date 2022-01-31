@@ -1,69 +1,127 @@
-public class ahyl
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+
+class ahyl
 {
-  private int jdField_a_of_type_Int;
-  private short[] jdField_a_of_type_ArrayOfShort;
-  private int b;
+  public float a;
+  public int a;
+  public ahyk a;
+  private ahym a;
+  public Bitmap a;
+  public boolean a;
   
-  public ahyl(int paramInt)
+  public ahyl(String paramString, ahym paramahym, Typeface paramTypeface)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_ArrayOfShort = new short[paramInt];
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Ahym = paramahym;
+    this.jdField_a_of_type_Ahyk = new ahyk(paramString, this.jdField_a_of_type_Ahym.c, this.jdField_a_of_type_Ahym.b, this.jdField_a_of_type_Ahym.e, this.jdField_a_of_type_Ahym.f, 0.0F, (this.jdField_a_of_type_Ahym.jdField_a_of_type_Float - this.jdField_a_of_type_Ahym.b) / 2.0F, paramTypeface);
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      b(paramString);
+      return;
     }
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
   }
   
-  public void a()
+  private boolean a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ArrayOfShort == null) {}
+    if ((paramString1 == null) && (paramString2 == null)) {}
     do
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int < paramInt2) {
-          break;
-        }
-        System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, paramInt2);
-        this.jdField_a_of_type_Int += paramInt2;
-        if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        this.b += paramInt2;
-      } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-      this.b = this.jdField_a_of_type_ArrayOfShort.length;
-      return;
-      System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int);
-      System.arraycopy(paramArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length + paramInt1 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort, 0, paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Int = (paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-        this.jdField_a_of_type_Int = 0;
+      return true;
+      if ((paramString1 == null) || (paramString2 == null)) {
+        return false;
       }
-      this.b += paramInt2;
-    } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-    this.b = this.jdField_a_of_type_ArrayOfShort.length;
+    } while (paramString1.equals(paramString2));
+    return false;
   }
   
-  public short[] a()
+  private void b(String paramString)
   {
-    if ((this.jdField_a_of_type_ArrayOfShort == null) || (this.b == 0) || (this.b > this.jdField_a_of_type_ArrayOfShort.length)) {
-      return null;
-    }
-    short[] arrayOfShort = new short[this.b];
-    if (this.jdField_a_of_type_Int >= this.b)
+    if (TextUtils.isEmpty(paramString))
     {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int - this.b, arrayOfShort, 0, this.b);
-      return arrayOfShort;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      if (this.jdField_a_of_type_Int != -1)
+      {
+        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = -1;
+      }
+      return;
     }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length - (this.b - this.jdField_a_of_type_Int), arrayOfShort, 0, this.b - this.jdField_a_of_type_Int);
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, 0, arrayOfShort, this.b - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    return arrayOfShort;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = -1;
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ahyq.a(this.jdField_a_of_type_Ahyk.c, this.jdField_a_of_type_Ahym.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Ahyk.jdField_a_of_type_Float = 0.0F;
+      this.jdField_a_of_type_Ahyk.a(paramString);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = -1;
+      return;
+      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Ahyk.c + "-" + this.jdField_a_of_type_Ahym.jdField_a_of_type_Float);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.jdField_a_of_type_Ahyk.jdField_a_of_type_Float = paramFloat1;
+      paramFloat1 = this.jdField_a_of_type_Ahyk.b;
+      ahyk localahyk = this.jdField_a_of_type_Ahyk;
+      localahyk.b += paramFloat2;
+      this.jdField_a_of_type_Ahyk.a(paramCanvas);
+      this.jdField_a_of_type_Ahyk.b = paramFloat1;
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
+  {
+    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+    } while (this.jdField_a_of_type_Int < 0);
+    ahyq.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ahyk.c, this.jdField_a_of_type_Ahym.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (!a(paramString, this.jdField_a_of_type_Ahyk.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_Ahyk.a(paramString);
+        b(paramString);
+      }
+      return;
+    }
   }
 }
 

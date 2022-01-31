@@ -1,8 +1,19 @@
-public abstract interface rhu
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.widget.AbsListView;
+
+public class rhu
+  implements bfos
 {
-  public abstract void a(rva paramrva);
+  public rhu(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public abstract void b(rva paramrva);
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0) {
+      this.a.e = false;
+    }
+  }
 }
 
 

@@ -1,22 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-public class abfw
-  implements Animation.AnimationListener
+class abfw
+  implements bfph
 {
-  public abfw(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  abfw(abfv paramabfv, abgi paramabgi, bfpc parambfpc) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.jdField_a_of_type_Abfv.a.b(this.jdField_a_of_type_Abgi);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

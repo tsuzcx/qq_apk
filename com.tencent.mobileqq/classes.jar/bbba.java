@@ -1,31 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.util.Comparator;
 
 final class bbba
-  extends Handler
+  implements Comparator
 {
-  bbba(Looper paramLooper)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bbaz.a();
-      return;
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
     }
-    bbaz.b();
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbba
  * JD-Core Version:    0.7.0.1
  */

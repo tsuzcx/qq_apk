@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.io.Serializable;
-import pbk;
+import pbh;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
   implements Serializable
@@ -10,11 +10,11 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
   private long friendStatus;
   private long uin;
   
-  private ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq(pbk parampbk)
+  private ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq(pbh parampbh)
   {
-    this.accountType = pbk.a(parampbk);
-    this.uin = pbk.a(parampbk);
-    this.friendStatus = pbk.b(parampbk);
+    this.accountType = pbh.a(parampbh);
+    this.uin = pbh.a(parampbh);
+    this.friendStatus = pbh.b(parampbh);
   }
   
   public String toString()

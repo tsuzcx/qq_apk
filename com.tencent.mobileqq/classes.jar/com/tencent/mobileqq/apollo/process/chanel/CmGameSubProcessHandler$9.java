@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajbq;
-import ajnl;
+import ajbo;
+import ajnj;
 
 public class CmGameSubProcessHandler$9
   implements Runnable
 {
-  public CmGameSubProcessHandler$9(ajbq paramajbq) {}
+  public CmGameSubProcessHandler$9(ajbo paramajbo) {}
   
   public void run()
   {
-    if (ajbq.a(this.this$0) != null) {
-      ajbq.a(this.this$0).a();
+    if (ajbo.a(this.this$0) != null) {
+      ajbo.a(this.this$0).a();
     }
   }
 }

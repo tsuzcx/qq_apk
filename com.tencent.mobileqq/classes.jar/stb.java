@@ -1,17 +1,12 @@
-import android.support.annotation.Nullable;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
-class stb
-  extends FutureListener.SimpleFutureListener<Progress, Result>
+public class stb
 {
-  stb(sta paramsta, Worker paramWorker) {}
-  
-  public void onFutureDone(@Nullable Result paramResult)
+  public static Dispatcher a()
   {
-    ste.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
+    return Dispatchers.get(ThreadManager.getSubThreadLooper());
   }
 }
 

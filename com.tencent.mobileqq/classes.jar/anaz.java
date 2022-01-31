@@ -1,56 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import java.util.ArrayList;
 
 public class anaz
-  extends ampb<anay>
 {
-  public static anay a()
+  private anba jdField_a_of_type_Anba;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public anaz()
   {
-    return (anay)ampm.a().a(500);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Anba = new anba();
   }
   
-  public int a()
+  public anaz(String paramString, anba paramanba)
   {
-    return 500;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Anba = paramanba;
   }
   
-  @NonNull
-  public anay a(int paramInt)
+  public anba a()
   {
-    return new anay();
+    return this.jdField_a_of_type_Anba;
   }
   
-  @Nullable
-  public anay a(ampi[] paramArrayOfampi)
+  public boolean a()
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anay.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<anay> a()
-  {
-    return anay.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anay paramanay) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return (this.jdField_a_of_type_Anba == null) || (this.jdField_a_of_type_Anba.a == null) || (this.jdField_a_of_type_Anba.a.size() <= 0);
   }
 }
 

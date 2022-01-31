@@ -1,6 +1,16 @@
-public abstract interface awcb
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.EditActivity;
+
+public class awcb
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public awcb(EditActivity paramEditActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a();
+  }
 }
 
 

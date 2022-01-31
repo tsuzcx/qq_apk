@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import ayve;
+import ayvg;
 
 public class ShortVideoUploadProcessor$2$2
   implements Runnable
 {
-  public ShortVideoUploadProcessor$2$2(ayve paramayve, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public ShortVideoUploadProcessor$2$2(ayvg paramayvg, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayve.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_Ayvg.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

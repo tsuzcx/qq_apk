@@ -1,15 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class afre
-  implements awcd
+  implements Handler.Callback
 {
-  private afre(FriendFragment paramFriendFragment) {}
+  public afre(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      FriendFragment.a(this.a, 1400L, false);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.i();
     }
   }
 }

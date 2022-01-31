@@ -1,17 +1,6 @@
-import android.graphics.Bitmap;
-
-class aipg
-  extends akim
+public abstract interface aipg
 {
-  aipg(aipf paramaipf) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    Bitmap localBitmap = this.a.a.a(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

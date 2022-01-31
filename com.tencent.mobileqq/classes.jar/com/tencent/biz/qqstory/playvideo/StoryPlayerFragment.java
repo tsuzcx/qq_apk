@@ -18,19 +18,19 @@ import android.view.WindowManager.LayoutParams;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.immersive.SystemBarCompact;
+import tup;
+import tur;
 import tus;
-import tuu;
-import tuv;
-import tuw;
-import tve;
+import tut;
+import tvb;
 
 public class StoryPlayerFragment
   extends Fragment
-  implements tve
+  implements tvb
 {
   private int jdField_a_of_type_Int;
   public AnimationParam a;
-  protected tuw a;
+  protected tut a;
   private boolean jdField_a_of_type_Boolean;
   
   @NonNull
@@ -53,20 +53,20 @@ public class StoryPlayerFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Tuw.a(paramBundle, getArguments());
+    this.jdField_a_of_type_Tut.a(paramBundle, getArguments());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Tuw.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Tut.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_Tuw = new tuw();
-    this.jdField_a_of_type_Tuw.a(this);
+    this.jdField_a_of_type_Tut = new tut();
+    this.jdField_a_of_type_Tut.a(this);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -77,7 +77,7 @@ public class StoryPlayerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561326, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561325, paramViewGroup, false);
     paramViewGroup = getActivity();
     this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
     if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
@@ -91,16 +91,16 @@ public class StoryPlayerFragment
       }
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
-      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new tus(this, paramLayoutInflater));
+      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new tup(this, paramLayoutInflater));
     }
-    paramLayoutInflater.setOnTouchListener(new tuu(this));
+    paramLayoutInflater.setOnTouchListener(new tur(this));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Tuw.g();
+    this.jdField_a_of_type_Tut.g();
   }
   
   public void onDestroyView()
@@ -121,28 +121,28 @@ public class StoryPlayerFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Tuw.e();
+    this.jdField_a_of_type_Tut.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Tuw.d();
+    this.jdField_a_of_type_Tut.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Tuw.c();
+    this.jdField_a_of_type_Tut.c();
     getView().setFocusableInTouchMode(true);
     getView().requestFocus();
-    getView().setOnKeyListener(new tuv(this));
+    getView().setOnKeyListener(new tus(this));
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Tuw.f();
+    this.jdField_a_of_type_Tut.f();
   }
 }
 

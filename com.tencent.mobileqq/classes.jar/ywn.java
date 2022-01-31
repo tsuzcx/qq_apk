@@ -1,191 +1,158 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-public class ywn
-  extends VasWebviewJsPlugin
+public abstract class ywn
+  extends PublicBaseFragment
 {
+  protected LinearLayout a;
   private GdtAppReceiver a;
+  protected ysy a;
   
-  public ywn()
+  protected ywn()
   {
-    this.mPluginNameSpace = "qq_gdt_ad";
-    if (a() != null) {}
-    for (Object localObject = a();; localObject = BaseApplicationImpl.getApplication())
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
+    this.jdField_a_of_type_Ysy = new ywq(this);
+  }
+  
+  public static void a(Activity paramActivity, JSONObject paramJSONObject, Class<? extends ywn> paramClass)
+  {
+    if ((paramActivity == null) || (paramJSONObject == null))
     {
-      yyw.a().a((Context)localObject, new yyx());
+      yxp.b("GdtBaseBannerFragment", "start error");
       return;
     }
+    yxp.b("GdtBaseBannerFragment", "start");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("params", paramJSONObject.toString());
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("public_fragment_window_feature", 1);
+    paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    paramJSONObject.putExtras(localBundle);
+    abtq.a(paramActivity, paramJSONObject, PublicFragmentActivityForTool.class, paramClass);
   }
   
-  private void a()
+  protected abstract GdtAd a();
+  
+  protected abstract void a();
+  
+  protected abstract void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams);
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    if ((this.a != null) || (this.mRuntime == null)) {
+    super.initWindowStyleAndAnimation(paramActivity);
+    if (paramActivity == null) {
       return;
     }
-    yxs.b("GdtAdWebPlugin", "registerReceiverForApp");
-    this.a = new GdtAppReceiver();
-    this.a.register(a());
+    paramActivity.getWindow().addFlags(1024);
   }
   
-  private void b()
+  public boolean isWrapContent()
   {
-    if ((this.a == null) || (this.mRuntime == null)) {
-      return;
-    }
-    yxs.b("GdtAdWebPlugin", "unregisterReceiverForApp");
-    this.a.unregister(a());
-    this.a = null;
+    return false;
   }
   
-  public Activity a()
+  public boolean needImmersive()
   {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
-    {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
-      }
-      return localActivity2;
-    }
+    return false;
   }
   
-  public GdtAppReceiver a()
+  public boolean needStatusTrans()
   {
-    return this.a;
+    return false;
   }
   
-  public String a()
+  public void onCreate(Bundle paramBundle)
   {
-    Activity localActivity = a();
-    if (localActivity == null) {}
-    while (!(localActivity instanceof QQBrowserActivity)) {
+    super.onCreate(paramBundle);
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    paramLayoutInflater = null;
+    if (getArguments() == null) {
       return null;
     }
-    return ((QQBrowserActivity)QQBrowserActivity.class.cast(localActivity)).getCurrentUrl();
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramJsBridgeListener = null;
+    paramViewGroup = getArguments().getString("params");
     try
     {
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
-      if ("loadAd".equals(paramString3))
-      {
-        paramJsBridgeListener = ywl.a().a(5);
-        if (paramJsBridgeListener != null) {
-          paramJsBridgeListener.a(this, paramString1, paramVarArgs);
-        }
-        return true;
+      Object localObject = new JSONObject(paramViewGroup);
+      paramBundle = ((JSONObject)localObject).getJSONObject("requestParams");
+      localObject = ((JSONObject)localObject).getJSONObject("clickParams");
+      boolean bool1 = ((JSONObject)localObject).getBoolean("reportForClick");
+      boolean bool2 = ((JSONObject)localObject).getBoolean("appAutoDownload");
+      boolean bool3 = ((JSONObject)localObject).optBoolean("videoCeilingSupported", false);
+      paramBundle = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(yxo.a(new qq_ad_get.QQAdGet(), paramBundle));
+      localObject = new GdtHandler.Params();
+      ((GdtHandler.Params)localObject).c = 1;
+      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
+      ((GdtHandler.Params)localObject).jdField_a_of_type_Boolean = bool1;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_Boolean = bool2;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+      if (bool3) {
+        paramLayoutInflater = GdtVideoCeilingFragmentForJS.class;
       }
+      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangClass = paramLayoutInflater;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
+      a(paramViewGroup, paramBundle, (GdtHandler.Params)localObject);
     }
-    catch (Exception paramString1)
+    catch (JSONException paramLayoutInflater)
     {
       for (;;)
       {
-        yxs.d("GdtAdWebPlugin", "GdtAdWebPlugin handleJsCallRequest error ", paramString1);
-        paramString1 = null;
-        continue;
-        if ("doAdReport".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(3);
-        }
-        else if ("doAppJump".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(1);
-        }
-        else if ("showVideoCeiling".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(2);
-        }
-        else if ("getLocation".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(4);
-        }
-        else if ("showCanvas".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(6);
-        }
-        else if ("getDeviceId".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(7);
-        }
-        else if ("getMacAddress".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(8);
-        }
-        else if ("getCarrier".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(9);
-        }
-        else if ("getNetType".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(10);
-        }
-        else if ("getOSVersion".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(11);
-        }
-        else if ("handleClick".equals(paramString3))
-        {
-          a();
-          paramJsBridgeListener = ywl.a().a(12);
-        }
-        else if ("showBanner".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(13);
-        }
-        else if ("showInterstitial".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(19);
-        }
-        else if ("showInterstitialForJS".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(20);
-        }
-        else if ("getDeviceInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(14);
-        }
-        else if ("c2sReport".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(15);
-        }
-        else if ("openMotiveVideoAd".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(16);
-        }
-        else if ("getUserInfo".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(17);
-        }
-        else if ("preLoadAfterAdLoaded".equals(paramString3))
-        {
-          paramJsBridgeListener = ywl.a().a(18);
-        }
+        yxp.d("GdtBaseBannerFragment", "createParams error", paramLayoutInflater);
       }
     }
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    yxs.b("GdtAdWebPlugin", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Byte.valueOf(paramByte), Integer.valueOf(paramInt) }));
+    paramLayoutInflater = new Button(getActivity());
+    paramLayoutInflater.setText("load");
+    paramLayoutInflater.setOnClickListener(new ywo(this));
+    paramViewGroup = new Button(getActivity());
+    paramViewGroup.setText("show");
+    paramViewGroup.setOnClickListener(new ywp(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getActivity());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramLayoutInflater);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
+    paramLayoutInflater = new ScrollView(getActivity());
+    paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getActivity());
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getActivity());
     super.onDestroy();
-    b();
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
   }
 }
 

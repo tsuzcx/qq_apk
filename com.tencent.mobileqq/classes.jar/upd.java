@@ -1,52 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.parallel.ParallelStream;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.parallel.SimpleParallelObserver;
+import mqq.os.MqqHandler;
 
 public class upd
-  extends JobSegment<ups, ups>
+  extends SimpleParallelObserver
 {
-  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
-  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
-  private ups jdField_a_of_type_Ups;
+  upd(upa paramupa) {}
   
-  private void a(String paramString)
+  public void onAllFunctionComplete(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new upl(this), paramString);
-    uvr localuvr1;
-    uvr localuvr2;
-    if (this.jdField_a_of_type_Ups.a())
-    {
-      localuvr1 = new uvr(paramString, 2, "", 0);
-      localuvr2 = new uvr(paramString, 2, "", 1);
-    }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new upj(this, 0), paramString).map(new upj(this, 1), paramString).map(new uph(this), localuvr1).map(new uph(this), localuvr2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new upj(this, -1), paramString).map(new uph(this), localuvr1))
-    {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new upg(this));
-      return;
-      localuvr1 = new uvr(paramString, 2, "");
-    }
-  }
-  
-  protected void a(JobContext paramJobContext, ups paramups)
-  {
-    if ((paramups == null) || (paramups.a == null) || (TextUtils.isEmpty(paramups.a.feedId)))
-    {
-      veg.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
-      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
-      return;
-    }
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-    this.jdField_a_of_type_Ups = paramups;
-    a(paramups.a.feedId);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
+    super.onAllFunctionComplete(paramBoolean);
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
   }
 }
 

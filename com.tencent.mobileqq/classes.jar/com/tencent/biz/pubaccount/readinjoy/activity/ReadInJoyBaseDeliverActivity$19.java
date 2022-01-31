@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import bcpw;
+import bcql;
 
 class ReadInJoyBaseDeliverActivity$19
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyBaseDeliverActivity$19
   
   public void run()
   {
-    bcpw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangCharSequence, 0).b(this.this$0.getTitleBarHeight());
+    bcql.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangCharSequence, 0).b(this.this$0.getTitleBarHeight());
   }
 }
 

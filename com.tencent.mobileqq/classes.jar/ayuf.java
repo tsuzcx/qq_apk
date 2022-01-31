@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-
-class ayuf
-  implements ajvb
+public class ayuf
 {
-  ayuf(ayue paramayue) {}
+  private int a = 480000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 20000;
+  private int e = 40000;
+  private int f = 5000;
   
-  public void a(boolean paramBoolean)
+  public int a()
   {
-    if (paramBoolean)
-    {
-      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
-      this.a.a(str);
-    }
+    return this.d;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 

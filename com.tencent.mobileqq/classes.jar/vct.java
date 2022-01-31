@@ -1,11 +1,20 @@
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+
 class vct
-  implements vzt<uzc>
+  extends uyi
 {
-  vct(vcs paramvcs) {}
+  vct(vcp paramvcp) {}
   
-  public uzc a()
+  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
   {
-    return new uzc();
+    if (vzl.b()) {}
+    while (paramView.getId() != 2131377059) {
+      return;
+    }
+    vei.a("mystory", "clk_all_story", 0, 0, new String[0]);
+    paramView = QQStoryContext.a().b();
+    sxm.a(vcp.c(this.a), 1, paramView);
   }
 }
 

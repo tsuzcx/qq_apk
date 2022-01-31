@@ -1,29 +1,19 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class agyn
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
-  public agyn(TransactionActivity paramTransactionActivity) {}
+  public agyn(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      if (TransactionActivity.a(this.a).isEnabled()) {
-        TransactionActivity.a(this.a).performClick();
-      }
-      if (TransactionActivity.a(this.a) != null) {
-        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
-      }
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
-    return false;
   }
 }
 

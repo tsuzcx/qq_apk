@@ -1,18 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class aazm
-  implements View.OnTouchListener
+  implements Comparator<aazk>
 {
-  public aazm(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
+  private aazm(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(aazk paramaazk1, aazk paramaazk2)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return paramaazk1.c.compareToIgnoreCase(paramaazk2.c);
   }
 }
 

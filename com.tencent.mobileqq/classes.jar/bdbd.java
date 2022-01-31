@@ -1,24 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenAuthorityAccountView.DelAccountRunnable;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public class bdbd
-  implements DialogInterface.OnClickListener
+class bdbd
+  implements bdeq
 {
-  public bdbd(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
+  bdbd(bdbc parambdbc, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new OpenAuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a = null;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

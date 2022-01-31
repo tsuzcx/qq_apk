@@ -1,32 +1,16 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
 final class skl
-  implements DialogInterface.OnClickListener
+  extends bbdt
 {
-  skl(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt1, int paramInt2) {}
+  skl(WSDownloadParams paramWSDownloadParams) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (vzz.a(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      sng.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-      smq.a(114, this.jdField_a_of_type_Int, this.b, null);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      sms.b(112, 1, 0);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem = smq.a();
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.downloadscene = skq.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mStReportItem.comment_loctaion = this.b;
-      skq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
-    }
+    paramDialogInterface.dismiss();
+    skg.a(126, this.a);
+    smp.a(this.a.mScene, false, false);
   }
 }
 

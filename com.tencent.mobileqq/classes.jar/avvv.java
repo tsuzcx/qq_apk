@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class avvv
-  implements View.OnClickListener
+public abstract interface avvv
 {
-  public avvv(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void b(FilterCategoryItem paramFilterCategoryItem);
 }
 
 

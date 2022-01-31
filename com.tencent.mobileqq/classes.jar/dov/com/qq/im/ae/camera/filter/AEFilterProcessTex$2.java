@@ -1,28 +1,28 @@
 package dov.com.qq.im.ae.camera.filter;
 
-import bijp;
+import bikg;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 
 public class AEFilterProcessTex$2
   implements Runnable
 {
-  public AEFilterProcessTex$2(bijp parambijp, boolean paramBoolean) {}
+  public AEFilterProcessTex$2(bikg parambikg, boolean paramBoolean) {}
   
   public void run()
   {
-    if (bijp.a(this.this$0) != null)
+    if (bikg.a(this.this$0) != null)
     {
-      bijp.a(this.this$0).switchFilterOn(111, this.a);
+      bikg.a(this.this$0).switchFilterOn(111, this.a);
       if (this.a) {
-        bijp.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 0);
+        bikg.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 0);
       }
     }
     else
     {
       return;
     }
-    bijp.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 50);
+    bikg.a(this.this$0).setBeautyOrTransformLevel(BeautyRealConfig.TYPE.COLOR_TONE, 50);
   }
 }
 

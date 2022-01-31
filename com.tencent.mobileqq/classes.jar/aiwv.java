@@ -1,6 +1,29 @@
-public abstract interface aiwv
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
+import com.tencent.widget.HorizontalListView;
+
+public class aiwv
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt);
+  public aiwv(CmGameDebugView paramCmGameDebugView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (CmGameDebugView.a(this.a))
+    {
+      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
+      CmGameDebugView.a(this.a, false);
+    }
+    if (CmGameDebugView.b(this.a)) {
+      CmGameDebugView.b(this.a, 0);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

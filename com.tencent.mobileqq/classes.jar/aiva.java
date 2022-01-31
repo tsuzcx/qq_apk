@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-
-public class aiva
-  extends aiuq
+public abstract interface aiva
 {
-  public aiva(GLTextureView paramGLTextureView, boolean paramBoolean) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
 }
 
 

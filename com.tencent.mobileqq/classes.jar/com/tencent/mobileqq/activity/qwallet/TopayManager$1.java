@@ -11,7 +11,7 @@ public final class TopayManager$1
     // Byte code:
     //   0: ldc 27
     //   2: astore_1
-    //   3: invokestatic 32	ahiy:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   3: invokestatic 32	ahiw:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +8 -> 16
@@ -21,7 +21,7 @@ public final class TopayManager$1
     //   16: new 40	java/lang/StringBuilder
     //   19: dup
     //   20: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   23: getstatic 47	ahje:e	Ljava/lang/String;
+    //   23: getstatic 47	ahjc:e	Ljava/lang/String;
     //   26: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: aload_1
     //   30: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -68,7 +68,7 @@ public final class TopayManager$1
     //   113: invokevirtual 68	java/io/File:exists	()Z
     //   116: ifeq +81 -> 197
     //   119: aload_1
-    //   120: invokestatic 73	bbdj:a	(Ljava/lang/String;)[B
+    //   120: invokestatic 73	bbdx:a	(Ljava/lang/String;)[B
     //   123: astore_1
     //   124: aload_1
     //   125: ifnull +72 -> 197
@@ -92,8 +92,8 @@ public final class TopayManager$1
     //   158: aload_2
     //   159: invokevirtual 91	Wallet/PfaFriendRsp:readFrom	(Lcom/qq/taf/jce/JceInputStream;)V
     //   162: iconst_0
-    //   163: putstatic 94	agyc:jdField_a_of_type_Int	I
-    //   166: getstatic 97	agyc:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   163: putstatic 94	agya:jdField_a_of_type_Int	I
+    //   166: getstatic 97	agya:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   169: new 99	com/tencent/mobileqq/activity/qwallet/TopayManager$1$1
     //   172: dup
     //   173: aload_0

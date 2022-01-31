@@ -1,98 +1,100 @@
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class nmu
+  extends BaseAdapter
 {
-  public int a;
-  public List<nmv> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  List<nms> jdField_a_of_type_JavaUtilList;
   
-  public nmu()
+  public nmu(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public nmu(int paramInt, mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  public void a(List<nms> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramConfigGroupInfo == null) {}
-    for (;;)
-    {
-      return;
-      paramConfigGroupInfo = paramConfigGroupInfo.config_info.get();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramConfigGroupInfo.size());
-      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
-      while (paramConfigGroupInfo.hasNext()) {
-        this.jdField_a_of_type_JavaUtilList.add(new nmv((mobileqq_mp.ConfigInfo)paramConfigGroupInfo.next()));
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public nmu(mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  public int getCount()
   {
-    this(0, paramConfigGroupInfo);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
   
-  public static List<nmu> a(List<mobileqq_mp.ConfigGroupInfo> paramList)
+  public Object getItem(int paramInt)
   {
-    if (paramList == null) {
-      return null;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new nmu((mobileqq_mp.ConfigGroupInfo)paramList.next()));
-    }
-    return localArrayList;
+    return null;
   }
   
-  public static List<nmu> a(JSONArray paramJSONArray)
+  public long getItemId(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray == null) {
-      return localArrayList;
-    }
+    return paramInt;
+  }
+  
+  @TargetApi(16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
     for (;;)
     {
       try
       {
-        int k = paramJSONArray.length();
-        int i = 0;
-        if (i >= k) {
-          break;
-        }
-        Object localObject = paramJSONArray.getJSONObject(i);
-        nmu localnmu = new nmu();
-        localnmu.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
-        localObject = ((JSONObject)localObject).getJSONArray("config");
-        int m = ((JSONArray)localObject).length();
-        int j = 0;
-        if (j < m)
+        paramViewGroup = new JSONArray(((nms)this.jdField_a_of_type_JavaUtilList.get(paramInt)).e);
+        if (paramViewGroup.length() > 0)
         {
-          nmv localnmv = nmv.a(((JSONArray)localObject).getJSONObject(j));
-          if (localnmv != null) {
-            localnmu.jdField_a_of_type_JavaUtilList.add(localnmv);
+          paramViewGroup = paramViewGroup.optString(0);
+          if (paramView == null)
+          {
+            localnmv = new nmv(this);
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559389, null);
+            paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
+            localnmv.a = ((URLImageView)paramView.findViewById(2131371583));
+            paramView.setTag(localnmv);
+            localnmv.a.setTag(new ausw(25, Integer.valueOf(paramInt)));
+            if (!TextUtils.isEmpty(paramViewGroup)) {
+              continue;
+            }
+            localnmv.a.setImageResource(2130839282);
+            return paramView;
           }
         }
-        else
-        {
-          localArrayList.add(localnmu);
-          i += 1;
-          continue;
-        }
-        j += 1;
       }
-      catch (Exception paramJSONArray)
+      catch (Exception paramViewGroup)
       {
-        paramJSONArray.printStackTrace();
-        return localArrayList;
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountDetail.PhotoWallViewForAccountDetail", 2, "RICH_PIC_TEXT:pic json error!");
+        }
+        paramViewGroup.printStackTrace();
+        paramViewGroup = null;
+        continue;
+        nmv localnmv = (nmv)paramView.getTag();
+        continue;
+        paramViewGroup = URLDrawable.getDrawable(paramViewGroup);
+        localnmv.a.setImageDrawable(paramViewGroup);
+        return paramView;
       }
+      paramViewGroup = null;
     }
   }
 }

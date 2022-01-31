@@ -1,33 +1,25 @@
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abqs
-  extends ardu
+  implements awci
 {
   public abqs(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131719375, 1);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
-    }
-    axqw.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void b(int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131719386);
     }
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

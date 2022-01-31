@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerl;
+import aerj;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
 public class NearbyChatPie$6
   implements Runnable
 {
-  public NearbyChatPie$6(aerl paramaerl) {}
+  public NearbyChatPie$6(aerj paramaerj) {}
   
   public void run()
   {
     Intent localIntent = this.this$0.a.getIntent();
     localIntent.putExtra("uintype", 0);
-    aerl.a(this.this$0, localIntent);
+    aerj.a(this.this$0, localIntent);
   }
 }
 

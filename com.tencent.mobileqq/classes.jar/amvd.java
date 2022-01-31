@@ -1,23 +1,67 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvd
+  extends ampa<amvb>
 {
-  public String a;
-  public boolean a;
-  
-  public amvd(amvc paramamvc)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return 534;
+  }
+  
+  @NonNull
+  public amvb a(int paramInt)
+  {
+    return new amvb();
+  }
+  
+  @Nullable
+  public amvb a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
+    {
+      amvb localamvb = amvb.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfamph[0].a);
+      }
+      return localamvb;
+    }
+    return null;
+  }
+  
+  public Class<amvb> a()
+  {
+    return amvb.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amvb paramamvb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramamvb.toString());
+    }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    return false;
   }
   
-  public String toString()
+  public int b()
   {
-    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

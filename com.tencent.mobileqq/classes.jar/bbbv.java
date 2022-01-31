@@ -1,14 +1,9 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-
-final class bbbv
-  implements MediaPlayer.OnCompletionListener
+public class bbbv
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer.release();
-    bbbr.a = null;
-  }
+  public int a;
+  public String a;
+  public int b = -3000;
+  public int c;
 }
 
 

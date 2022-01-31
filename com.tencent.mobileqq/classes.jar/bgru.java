@@ -1,55 +1,99 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.content.Intent;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import java.lang.ref.WeakReference;
 
-public abstract class bgru
-  extends Binder
-  implements bgrt
+public class bgru
+  extends bgrn
 {
-  public bgru()
+  private WeakReference<LocationDetailActivity> a;
+  
+  public bgru(LocationDetailActivity paramLocationDetailActivity)
   {
-    attachInterface(this, "cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
+    this.a = new WeakReference(paramLocationDetailActivity);
   }
   
-  public static bgrt a(IBinder paramIBinder)
+  public void a()
   {
-    if (paramIBinder == null) {
-      return null;
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof bgrt))) {
-      return (bgrt)localIInterface;
+    localLocationDetailActivity.b(true);
+    bgqi.a(null, "User_Modify", 7, 0, localLocationDetailActivity.getIntent().getIntExtra("category", 1));
+  }
+  
+  public void a(String paramString)
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {}
+    while (localLocationDetailActivity.getString(2131692983).compareTo(paramString) != 0) {
+      return;
     }
-    return new bgrv(paramIBinder);
   }
   
-  public IBinder asBinder()
+  public void c()
   {
-    return this;
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {}
+    while (!localLocationDetailActivity.d()) {
+      return;
+    }
+    localLocationDetailActivity.finish();
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void d()
   {
-    switch (paramInt1)
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    localLocationDetailActivity.A();
+  }
+  
+  public void e()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if ((localLocationDetailActivity == null) || (localLocationDetailActivity.a == null)) {}
+    while (!localLocationDetailActivity.c()) {
+      return;
+    }
+    int i;
+    if (localLocationDetailActivity.e())
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-      return true;
+      i = 256;
+      if (!localLocationDetailActivity.e()) {
+        break label98;
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-    paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    label98:
+    for (String str = localLocationDetailActivity.getString(2131698119);; str = localLocationDetailActivity.getString(2131698095))
     {
-      a(paramInt1, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+      if (!localLocationDetailActivity.a.a(Integer.valueOf(128))) {
+        break label108;
+      }
+      localLocationDetailActivity.a.a(Integer.valueOf(128), Integer.valueOf(i), str);
+      return;
+      i = 128;
+      break;
     }
+    label108:
+    localLocationDetailActivity.a.a(Integer.valueOf(256), Integer.valueOf(i), str);
+  }
+  
+  public void f()
+  {
+    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
+    if (localLocationDetailActivity == null) {
+      return;
+    }
+    if ((localLocationDetailActivity.r != null) && (localLocationDetailActivity.s != null))
+    {
+      Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
+      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent.getStringExtra("latitude")).putExtra("forward_longitude", localIntent.getStringExtra("longitude")).putExtra("forward_location", localLocationDetailActivity.m).putExtra("forward_location_string", localLocationDetailActivity.m).putExtra("forward_thumb", ajsd.cb + localLocationDetailActivity.r + "_" + localLocationDetailActivity.s + ".png").putExtra("isFromFavorites", true).putExtra("title", localLocationDetailActivity.l).putExtra("summary", localLocationDetailActivity.m);
+      aqbe.a(localLocationDetailActivity, localIntent, 103);
+      return;
+    }
+    bcql.a(localLocationDetailActivity, 2131692345, 1, 2000).b(5);
   }
 }
 

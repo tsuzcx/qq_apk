@@ -1,15 +1,14 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wnd
-  implements Dispatcher.Dispatchable
+class wnd
+  implements View.OnClickListener
 {
-  public int a;
-  public Object a;
+  wnd(wnb paramwnb) {}
   
-  public wnd(int paramInt, Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
+    this.a.dismiss();
   }
 }
 

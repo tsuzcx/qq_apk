@@ -1,11 +1,39 @@
-import java.util.concurrent.Executor;
-
-final class bjnl
-  implements Executor
+class bjnl
+  implements bjnn
 {
-  public void execute(Runnable paramRunnable)
+  private final bjnk a;
+  
+  bjnl(bjnk parambjnk)
   {
-    bjnj.a().a(paramRunnable);
+    this.a = parambjnk;
+  }
+  
+  public void a(bjns parambjns, bjnp parambjnp)
+  {
+    switch (parambjnp.a)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a(parambjns);
+      return;
+    case 1: 
+      this.a.b(parambjns);
+      return;
+    case 2: 
+      this.a.c(parambjns);
+      return;
+    case 3: 
+      this.a.d(parambjns);
+      return;
+    case 4: 
+      this.a.e(parambjns);
+      return;
+    case 5: 
+      this.a.f(parambjns);
+      return;
+    }
+    throw new IllegalArgumentException("ON_ANY must not been send by anybody");
   }
 }
 

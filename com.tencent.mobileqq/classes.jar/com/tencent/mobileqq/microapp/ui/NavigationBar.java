@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.ui;
 
 import Wallet.ApkgConfig;
-import ahiu;
+import ahis;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -419,14 +419,14 @@ public class NavigationBar
         if (!com.tencent.mobileqq.microapp.b.a.a(i1)) {
           break label141;
         }
-        if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 22) && (!ahiu.a()))
+        if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 22) && (!ahis.a()))
         {
           ((Activity)localObject).getWindow().clearFlags(67108864);
           ((Activity)localObject).getWindow().addFlags(-2147483648);
           ((Activity)localObject).getWindow().setStatusBarColor(637534208);
         }
         UtilProxy.setStatusTextColor(true, ((Activity)localObject).getWindow());
-        if ((ahiu.e()) && (Build.VERSION.SDK_INT >= 23)) {
+        if ((ahis.e()) && (Build.VERSION.SDK_INT >= 23)) {
           ((Activity)localObject).getWindow().getDecorView().setSystemUiVisibility(9216);
         }
       }
@@ -436,14 +436,14 @@ public class NavigationBar
       localView.setBackgroundColor(i1);
       return;
       label141:
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 22) && (!ahiu.a()))
+      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 22) && (!ahis.a()))
       {
         ((Activity)localObject).getWindow().clearFlags(-2147483648);
         ((Activity)localObject).getWindow().addFlags(67108864);
         ((Activity)localObject).getWindow().setStatusBarColor(0);
       }
       UtilProxy.setStatusTextColor(false, ((Activity)localObject).getWindow());
-      if ((ahiu.e()) && (Build.VERSION.SDK_INT >= 16)) {
+      if ((ahis.e()) && (Build.VERSION.SDK_INT >= 16)) {
         ((Activity)localObject).getWindow().getDecorView().setSystemUiVisibility(1280);
       }
     }

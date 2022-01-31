@@ -1,6 +1,6 @@
 package dov.com.qq.im.story;
 
-import bjrb;
+import bjrs;
 import com.tencent.qphone.base.util.QLog;
 
 public class StoryGameAudioMixManager$1
@@ -12,7 +12,7 @@ public class StoryGameAudioMixManager$1
     if (QLog.isColorLevel()) {
       QLog.d("StoryGameAudioMixManager", 2, "bgmBytes start");
     }
-    if (bjrb.a(this.a, this.b))
+    if (bjrs.a(this.a, this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("StoryGameAudioMixManager", 2, "conver succeed");

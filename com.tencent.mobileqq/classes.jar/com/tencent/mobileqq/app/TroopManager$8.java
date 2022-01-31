@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app;
 
 import android.os.Handler;
 import android.os.Looper;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.ArrayList;
 
@@ -16,15 +16,15 @@ class TroopManager$8
   {
     Object localObject = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      ((aukn)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      ((aukp)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      ((aukn)localObject).a();
+      ((aukp)localObject).a();
       localObject = this.this$0.c(this.jdField_a_of_type_JavaLangString);
       new Handler(Looper.getMainLooper()).post(new TroopManager.8.1(this, (ArrayList)localObject));
       return;
-      ((aukn)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      ((aukp)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

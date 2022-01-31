@@ -1,33 +1,54 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class qja
-  implements MediaPlayer.OnPreparedListener
+public class qja
 {
-  qja(qiz paramqiz) {}
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public static void a(long paramLong, KandianUrlImageView paramKandianUrlImageView)
   {
-    try
-    {
-      paramMediaPlayer.start();
-      qiz.a(this.a).a = true;
-      paramMediaPlayer = (qjc)qiz.a(this.a).get();
-      if (paramMediaPlayer != null)
-      {
-        paramMediaPlayer.a(qiz.a(this.a));
-        this.a.a(true, "ugc voice play");
-      }
-      return;
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new qjb(paramLong, paramKandianUrlImageView));
+    if (localReadInJoyUserInfo != null) {
+      b(localReadInJoyUserInfo, paramKandianUrlImageView);
     }
-    catch (Exception paramMediaPlayer)
-    {
-      for (;;)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
+  }
+  
+  private static void b(ReadInJoyUserInfo paramReadInJoyUserInfo, KandianUrlImageView paramKandianUrlImageView)
+  {
+    if (paramReadInJoyUserInfo == null) {
+      QLog.d("ReadInJoyVIconHelper", 2, "[setVIconWithUserInfo], userInfo is null.");
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramKandianUrlImageView == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("ReadInJoyVIconHelper", 2, "[refreshVIcon], userInfo = " + paramReadInJoyUserInfo);
+      }
+      try
+      {
+        if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
+        {
+          paramKandianUrlImageView.setImageResource(2130841259);
+          paramKandianUrlImageView.setVisibility(0);
+          paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.smallIconUrl));
+          return;
+        }
+      }
+      catch (MalformedURLException paramReadInJoyUserInfo)
+      {
+        QLog.e("ReadInJoyVIconHelper", 1, "[refreshVIcon], e = " + paramReadInJoyUserInfo);
+        return;
+      }
+    } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
+    paramKandianUrlImageView.setImageResource(2130841259);
+    paramKandianUrlImageView.setVisibility(0);
+    paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.largeIconUrl));
   }
 }
 

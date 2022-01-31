@@ -1,25 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.text.Editable;
 import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
-public final class bddu
-  implements Parcelable.Creator<Friend>
+class bddu
+  implements Comparator<Friend>
 {
-  public Friend a(Parcel paramParcel)
-  {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
-  }
+  bddu(bddt parambddt, Editable paramEditable) {}
   
-  public Friend[] a(int paramInt)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    return new Friend[paramInt];
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
   }
 }
 

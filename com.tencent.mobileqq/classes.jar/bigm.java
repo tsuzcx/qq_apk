@@ -1,25 +1,14 @@
-import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bigm
-  implements CosFunHelper.CountDownListener
+final class bigm
+  implements DialogInterface.OnDismissListener
 {
-  public bigm(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onCountDownEnd()
-  {
-    QIMEffectCameraCaptureUnit.a(this.a);
-  }
-  
-  public void onCountDownStart(VideoMaterial paramVideoMaterial)
-  {
-    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class axzf
-  extends axun
+class axzf
+  extends URLDrawableDownListener.Adapter
 {
-  private int k;
+  axzf(axzd paramaxzd) {}
   
-  public axzf()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a = "progress";
-  }
-  
-  public axzf(int paramInt)
-  {
-    this.k = paramInt;
-    this.a = "progress";
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {}
-    for (paramContext = (ProgressBar)paramView;; paramContext = paramView)
-    {
-      paramContext.setTag(this);
-      paramContext.setProgress(this.k);
-      if (this.k == paramContext.getMax()) {
-        paramContext.setVisibility(8);
-      }
-      return paramContext;
-      paramView = new ProgressBar(paramContext, null, 16842872);
-      paramView.setId(2131376562);
-      paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837727));
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
     }
   }
   
-  public String a()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return "Progress";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.k = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.k);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "progress");
-    paramXmlSerializer.text(String.valueOf(this.k));
-    paramXmlSerializer.endTag(null, "progress");
-  }
-  
-  public boolean a(axwe paramaxwe)
-  {
-    paramaxwe = axuy.a(paramaxwe);
-    try
-    {
-      this.k = Integer.valueOf(paramaxwe).intValue();
-      return true;
-    }
-    catch (NumberFormatException paramaxwe)
-    {
-      for (;;)
-      {
-        this.k = 0;
-      }
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
   }
   
-  public int b()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    return this.k;
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
+    }
   }
   
-  public void b(int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.k = paramInt;
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
+    }
   }
 }
 

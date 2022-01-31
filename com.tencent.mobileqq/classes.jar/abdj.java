@@ -1,23 +1,18 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.11.2;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class abdj
-  extends auud
+  implements DialogInterface.OnClickListener
 {
-  public abdj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public abdj(FriendProfileCardActivity.11.2 param2) {}
   
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
-    this.a.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Auuw, true, new String[] { "map_key_personality_label_board" });
+    this.a.jdField_a_of_type_Ajti.h();
+    this.a.jdField_a_of_type_Ajti.a(this.a.jdField_a_of_type_Abdh.a.a.a.a, "");
   }
 }
 

@@ -1,28 +1,17 @@
 import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
 public class aaxi
-  implements bfoq
+  implements View.OnLayoutChangeListener
 {
   public aaxi(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bfol.e();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
-      }
-      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).f();
-    }
+    Conversation.a(this.a).removeOnLayoutChangeListener(this);
+    Conversation.f(this.a);
   }
 }
 

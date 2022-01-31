@@ -1,17 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.widget.Switch;
 
 class ainn
-  implements CompoundButton.OnCheckedChangeListener
+  extends View.AccessibilityDelegate
 {
-  ainn(ainm paramainm, RedTouch paramRedTouch, andx paramandx) {}
+  ainn(aink paramaink) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (!AppSetting.d) {
-      ainm.a(this.jdField_a_of_type_Ainm, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Andx, paramBoolean);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (paramView != null)
+    {
+      paramView = (Switch)paramView.findViewById(2131363672);
+      if ((paramView != null) && (paramView.getVisibility() != 8))
+      {
+        paramAccessibilityNodeInfo.setCheckable(true);
+        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
+        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
+      }
     }
   }
 }

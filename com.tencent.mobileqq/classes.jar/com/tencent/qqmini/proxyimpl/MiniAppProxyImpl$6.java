@@ -3,12 +3,12 @@ package com.tencent.qqmini.proxyimpl;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import beil;
-import beim;
-import besl;
+import bejc;
+import bejd;
+import betc;
 
 class MiniAppProxyImpl$6
-  implements beim
+  implements bejd
 {
   MiniAppProxyImpl$6(MiniAppProxyImpl paramMiniAppProxyImpl) {}
   
@@ -17,12 +17,12 @@ class MiniAppProxyImpl$6
     if (paramInt1 != 9527) {
       return false;
     }
-    beil.a().b(this);
-    besl.a("MiniAppProxyImpl", "set isMiniMsgTabShow false");
+    bejc.a().b(this);
+    betc.a("MiniAppProxyImpl", "set isMiniMsgTabShow false");
     MiniAppProxyImpl.access$802(this.this$0, false);
     if (paramInt2 != -1)
     {
-      besl.c("MiniAppProxyImpl", "onShareActivityResult, resultCode not Activity.RESULT_OK, but " + paramInt2);
+      betc.c("MiniAppProxyImpl", "onShareActivityResult, resultCode not Activity.RESULT_OK, but " + paramInt2);
       return true;
     }
     paramInt1 = paramIntent.getIntExtra("clickID", -1);

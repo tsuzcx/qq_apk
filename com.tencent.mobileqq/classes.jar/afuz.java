@@ -1,27 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 
 class afuz
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  afuz(afur paramafur, int paramInt) {}
+  afuz(afup paramafup) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      if (!afur.a(this.jdField_a_of_type_Afur)) {
-        break label28;
-      }
-      afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      return true;
-      label28:
-      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue());
-      afur.a(this.jdField_a_of_type_Afur);
+    if (paramInt == 0) {
+      afup.a(this.a);
     }
   }
 }

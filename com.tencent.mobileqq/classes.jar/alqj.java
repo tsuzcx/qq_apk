@@ -1,25 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class alqj
   implements DialogInterface.OnClickListener
 {
-  public alqj(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bbgg parambbgg) {}
+  public alqj(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bbgu parambbgu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
-    ArkAppCenter.a(paramDialogInterface);
-    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {}
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bbgg.dismiss();
+      this.jdField_a_of_type_Bbgu.dismiss();
       return;
     }
     catch (Exception paramDialogInterface) {}

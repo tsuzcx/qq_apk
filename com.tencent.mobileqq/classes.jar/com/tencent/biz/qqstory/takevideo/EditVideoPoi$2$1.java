@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import vic;
-import vie;
+import vhz;
+import vib;
 
 public class EditVideoPoi$2$1
   implements Runnable
 {
-  public EditVideoPoi$2$1(vie paramvie) {}
+  public EditVideoPoi$2$1(vib paramvib) {}
   
   public void run()
   {
-    vic.a(this.a.a, 0);
+    vhz.a(this.a.a, 0);
   }
 }
 

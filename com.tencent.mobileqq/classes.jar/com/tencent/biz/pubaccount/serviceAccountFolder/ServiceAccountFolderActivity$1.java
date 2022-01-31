@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import mqq.os.MqqHandler;
-import sbc;
+import saz;
 
 class ServiceAccountFolderActivity$1
   implements Runnable
@@ -10,8 +10,8 @@ class ServiceAccountFolderActivity$1
   
   public void run()
   {
-    sbc localsbc = sbc.a();
-    ServiceAccountFolderActivity.a(this.this$0, localsbc.a());
+    saz localsaz = saz.a();
+    ServiceAccountFolderActivity.a(this.this$0, localsaz.a());
     ServiceAccountFolderActivity.a(this.this$0).sendEmptyMessage(101);
   }
 }

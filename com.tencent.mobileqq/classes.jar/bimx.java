@@ -1,29 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Point;
 
-public class bimx
+abstract interface bimx
 {
-  public String a;
-  public String b = "null";
-  public String c = "null";
+  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
   
-  public bimx(@NonNull String paramString)
-  {
-    this.a = paramString;
-  }
+  public abstract int a(int paramInt);
   
-  public bimx(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public abstract int a(int paramInt1, int paramInt2);
   
-  @NonNull
-  public String toString()
-  {
-    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
-  }
+  public abstract void a(int paramInt, xfi paramxfi);
+  
+  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
+  
+  public abstract void a(bikp parambikp, int paramInt, Point paramPoint);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(bimn parambimn);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract int b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c(int paramInt1, int paramInt2);
 }
 
 

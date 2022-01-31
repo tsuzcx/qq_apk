@@ -1,14 +1,17 @@
-final class bbwj
-  extends bbwf
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.thumbplayer.api.ITPModuleLoader;
+import org.jetbrains.annotations.NotNull;
+
+class bbwj
+  implements ITPModuleLoader
 {
-  public void onDone(bbwg parambbwg)
-  {
-    super.onDone(parambbwg);
-  }
+  bbwj(bbwh parambbwh) {}
   
-  public boolean onStart(bbwg parambbwg)
+  public void loadLibrary(@NotNull String paramString1, @NotNull String paramString2)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("[VideoPlatForm]VideoPlaySDKManager", 2, "loadLibrary, libName = " + paramString1 + " , apkSoVer = " + paramString2);
+    }
   }
 }
 

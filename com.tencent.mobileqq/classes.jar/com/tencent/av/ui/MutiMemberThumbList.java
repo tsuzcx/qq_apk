@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ldw;
+import ldr;
 import mqq.os.MqqHandler;
 
 public class MutiMemberThumbList
@@ -25,9 +25,9 @@ public class MutiMemberThumbList
   private View jdField_a_of_type_AndroidViewView;
   private VideoController jdField_a_of_type_ComTencentAvVideoController;
   private final String jdField_a_of_type_JavaLangString = "%d名成员被邀请";
-  private final ArrayList<ldw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final ArrayList<ldr> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131372377, 2131372378, 2131372379, 2131372380, 2131372381, 2131372382, 2131372383 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131372379, 2131372380, 2131372381, 2131372382, 2131372383, 2131372384, 2131372385 };
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long = -1L;
   private final String jdField_b_of_type_JavaLangString = "%d+";
@@ -49,7 +49,7 @@ public class MutiMemberThumbList
     b();
   }
   
-  private void a(int paramInt, ArrayList<ldw> paramArrayList)
+  private void a(int paramInt, ArrayList<ldr> paramArrayList)
   {
     QLog.d("MutiMemberThumbList", 1, "doDisplay " + paramInt);
     ThreadManager.getSubThreadHandler().post(new MutiMemberThumbList.1(this, paramInt, paramArrayList));
@@ -78,7 +78,7 @@ public class MutiMemberThumbList
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
   }
   
-  public void setDisPlayList(ArrayList<ldw> paramArrayList)
+  public void setDisPlayList(ArrayList<ldr> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -92,8 +92,8 @@ public class MutiMemberThumbList
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      ldw localldw = (ldw)paramArrayList.next();
-      this.jdField_a_of_type_JavaUtilArrayList.add(localldw);
+      ldr localldr = (ldr)paramArrayList.next();
+      this.jdField_a_of_type_JavaUtilArrayList.add(localldr);
     }
     a(this.jdField_a_of_type_JavaUtilArrayList.size(), (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
   }
@@ -105,7 +105,7 @@ public class MutiMemberThumbList
   
   public void setMoreInfoDrawableColor(String paramString)
   {
-    int i = actn.a(32.0F, getResources());
+    int i = actj.a(32.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString));

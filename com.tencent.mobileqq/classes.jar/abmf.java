@@ -1,19 +1,17 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class abmf
-  extends ClickableSpan
+  implements View.OnCreateContextMenuListener
 {
-  private abmf(LoginInfoActivity paramLoginInfoActivity) {}
+  public abmf(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    paramContextMenu.clear();
   }
 }
 

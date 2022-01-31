@@ -1,25 +1,20 @@
 import java.util.Comparator;
 
 class awmc
-  implements Comparator<awme>
+  implements Comparator<awmg>
 {
-  awmc(awlz paramawlz) {}
+  awmc(awmb paramawmb) {}
   
-  public int a(awme paramawme1, awme paramawme2)
+  public int a(awmg paramawmg1, awmg paramawmg2)
   {
-    int j = Long.signum(paramawme1.jdField_a_of_type_Int - paramawme2.jdField_a_of_type_Int);
+    int j = Long.signum(paramawmg1.b - paramawmg2.b);
     int i = j;
     if (j == 0)
     {
-      j = Long.signum(paramawme1.b - paramawme2.b);
+      j = Long.signum(paramawmg1.c - paramawmg2.c);
       i = j;
-      if (j == 0)
-      {
-        j = Long.signum(paramawme1.c - paramawme2.c);
-        i = j;
-        if (j == 0) {
-          i = Long.signum(-paramawme1.jdField_a_of_type_Long + paramawme2.jdField_a_of_type_Long);
-        }
+      if (j == 0) {
+        i = Long.signum(-paramawmg1.a + paramawmg2.a);
       }
     }
     return i;

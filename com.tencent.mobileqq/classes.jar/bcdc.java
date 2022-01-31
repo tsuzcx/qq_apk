@@ -1,11 +1,38 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract interface bcdc
+public class bcdc
+  implements View.OnTouchListener
 {
-  public abstract int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
+  public bcdc(WebViewFragment paramWebViewFragment) {}
   
-  public abstract int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+    } while (paramView != this.a.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "vg onTouch");
+    }
+    paramView = new HashMap(2);
+    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
+    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
+    this.a.a(8589934606L, paramView);
+    return true;
+  }
 }
 
 

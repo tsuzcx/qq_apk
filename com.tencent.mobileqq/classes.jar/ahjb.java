@@ -1,19 +1,6 @@
-import Wallet.ReportHBGameRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-final class ahjb
-  implements BusinessObserver
+public abstract interface ahjb
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
-  }
+  public abstract void a(String paramString);
 }
 
 

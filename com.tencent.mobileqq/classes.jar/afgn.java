@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class afgn
-  implements View.OnClickListener
+  extends akuo
 {
-  public afgn(SearchContactsActivity paramSearchContactsActivity) {}
-  
-  public void onClick(View paramView)
+  public afgn(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.setResult(0);
-    this.a.finish();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
+    {
+      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
+      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
+    }
   }
 }
 

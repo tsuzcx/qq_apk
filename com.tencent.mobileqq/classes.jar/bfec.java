@@ -1,23 +1,49 @@
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
+import android.content.Context;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bfec
-  implements DatePicker.OnDateChangedListener
+@behk(a="BaselibLoadAsyncTask")
+public class bfec
+  extends bffh
 {
-  bfec(bfeb parambfeb) {}
+  private best a;
   
-  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
+  public bfec(Context paramContext, beqm parambeqm)
   {
-    if (paramDatePicker != null)
+    super(paramContext, parambeqm);
+  }
+  
+  public void a()
+  {
+    beyq.a(204, "", a().getMiniAppInfoForReport());
+    betc.a("AppRuntimeLoader", "startLoadBaseLib.");
+    boolean bool = a();
+    if (a().getMiniAppInfoForReport() != null) {}
+    for (String str = a().getMiniAppInfoForReport().appId; bool; str = "")
     {
-      bfeb.a(this.a, paramDatePicker.getYear());
-      bfeb.b(this.a, paramDatePicker.getMonth());
-      bfeb.c(this.a, paramDatePicker.getDayOfMonth());
+      c();
       return;
     }
-    bfeb.a(this.a, paramInt1);
-    bfeb.b(this.a, paramInt2);
-    bfeb.c(this.a, paramInt3);
+    bezi.a(beze.a(), 10, "0");
+    beys.b(str, true);
+    MiniAppEnv.g().getBaselibLoader().loadBaselib(a(), new bfed(this));
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.a());
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.a = null;
+  }
+  
+  public void c()
+  {
+    super.c();
+    beyq.a(205, "", a().getMiniAppInfoForReport());
   }
 }
 

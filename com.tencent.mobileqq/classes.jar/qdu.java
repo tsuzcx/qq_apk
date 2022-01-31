@@ -1,7 +1,19 @@
-public class qdu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+
+public final class qdu
+  implements Parcelable.Creator<UrlJumpInfo>
 {
-  public String a = "";
-  public String b = "";
+  public UrlJumpInfo a(Parcel paramParcel)
+  {
+    return new UrlJumpInfo(paramParcel);
+  }
+  
+  public UrlJumpInfo[] a(int paramInt)
+  {
+    return new UrlJumpInfo[paramInt];
+  }
 }
 
 

@@ -1,12 +1,18 @@
 public class awos
-  implements awoe
 {
-  public static final String a = awos.class.getSimpleName();
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public int b;
+  public CharSequence b;
+  public String b;
+  public int c;
+  public CharSequence c;
+  public String c;
+  public int d;
   
-  public static boolean a(int paramInt)
-  {
-    return (paramInt > 0) && (paramInt < 3);
-  }
+  public awos(awor paramawor) {}
 }
 
 

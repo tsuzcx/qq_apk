@@ -1,37 +1,67 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-class axzr
-  implements View.OnClickListener
+public class axzr
+  extends axup
 {
-  axzr(axzq paramaxzq) {}
+  public int k;
   
-  public void onClick(View paramView)
+  public axzr()
   {
-    Context localContext = paramView.getContext();
-    if (bbev.a(localContext) == 1)
-    {
-      axzq.a(this.a, localContext, paramView);
-      if ((localContext instanceof BaseActivity)) {
-        axqw.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
-      }
+    this.a = "type";
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return "type";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.k = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.k);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "type");
+    paramXmlSerializer.text(this.k + "");
+    paramXmlSerializer.endTag(null, "type");
+  }
+  
+  public boolean a(axwg paramaxwg)
+  {
+    if (paramaxwg == null) {
+      return false;
     }
-    for (;;)
+    try
     {
-      axqw.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-      return;
-      if (!bbev.g(localContext))
+      this.k = Integer.valueOf(axau.a(axva.a(paramaxwg), false)).intValue();
+      return true;
+    }
+    catch (Exception paramaxwg)
+    {
+      for (;;)
       {
-        bcpw.a(localContext, 2131692321, 0).a();
-      }
-      else
-      {
-        Resources localResources = localContext.getResources();
-        bbcv.a(localContext, 232, "", ajyc.a(2131714589), localResources.getString(2131690596), localResources.getString(2131694793), new axzs(this, localContext, paramView), new axzt(this)).show();
+        if (QLog.isColorLevel()) {
+          QLog.e("StructMsgItemType", 2, paramaxwg, new Object[0]);
+        }
       }
     }
   }

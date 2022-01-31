@@ -1,34 +1,39 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amsu
 {
-  public String a = "";
-  
-  public amsu() {}
-  
-  public amsu(String paramString)
-  {
-    this.a = paramString;
-  }
+  private String a = "";
+  private String b = "";
   
   public static amsu a(String paramString)
   {
-    try
+    if (paramString == null) {}
+    do
     {
-      paramString = new JSONObject(paramString).optString("ShowLocaleEntrance");
-      if (QLog.isColorLevel()) {
-        QLog.e("LocaleConfProcessor", 2, "manager parse, showEntrance: " + paramString);
+      return null;
+      try
+      {
+        amsu localamsu = new amsu();
+        paramString = new JSONObject(paramString);
+        localamsu.a = paramString.optString("dest_icon", "");
+        localamsu.b = paramString.optString("avatar_pendant", "");
+        return localamsu;
       }
-      paramString = new amsu(paramString.trim());
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

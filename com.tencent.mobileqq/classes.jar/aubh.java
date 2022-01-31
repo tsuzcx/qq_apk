@@ -1,26 +1,10 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import java.util.List;
 
-class aubh
-  extends OrientationEventListener
+public class aubh
 {
-  aubh(aubg paramaubg, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void onOrientationChanged(int paramInt)
-  {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
-    {
-      return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
-  }
+  public List<aubf> a;
+  public boolean a;
+  public List<audf> b;
 }
 
 

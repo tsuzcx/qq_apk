@@ -1,14 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
-final class nse
-  extends bavi
+class nse
+  implements View.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  nse(nsc paramnsc, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
-    bbju.a(paramDownloadParams, 40);
-    return paramDownloadParams;
+    if ((nsc.a(this.jdField_a_of_type_Nsc) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      onh.a(nsc.a(this.jdField_a_of_type_Nsc).getContext(), this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

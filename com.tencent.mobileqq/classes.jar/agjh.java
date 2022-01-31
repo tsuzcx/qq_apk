@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.widget.XListView;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimTipsInfo;
 
 public class agjh
-  implements View.OnClickListener
+  implements bgte
 {
   public agjh(ContactListView paramContactListView) {}
   
-  public void onClick(View paramView)
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
-    ContactListView.a(this.a, null);
-    bgsu.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
+    if (paramQQPimTipsInfo == null) {
+      return;
+    }
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    bgtl.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

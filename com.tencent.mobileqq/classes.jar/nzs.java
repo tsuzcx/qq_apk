@@ -1,45 +1,26 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
 
-public class nzs
+class nzs
+  extends Handler
 {
-  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo)
+  nzs(nzr paramnzr, Looper paramLooper)
   {
-    if (paramVideoInfo == null) {
-      return;
-    }
-    AdvertisementInfo localAdvertisementInfo = nmf.a(paramVideoInfo.a);
-    if (paramVideoInfo.a(paramActivity))
-    {
-      nmf.a(new nyg().a(paramActivity).a(nmf.a).b(nmf.P).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
-      return;
-    }
-    nmf.a(new nyg().a(paramActivity).a(nmf.a).b(nmf.N).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+    super(paramLooper);
   }
   
-  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, ADVideoAppDownloadManager paramADVideoAppDownloadManager)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramVideoInfo.c)
+    switch (paramMessage.what)
     {
-      if (!paramADVideoAppDownloadManager.a(paramVideoInfo)) {
-        break label33;
-      }
-      sht.b(paramActivity, paramAdvertisementInfo, null, 3, true, null);
     }
-    for (;;)
+    do
     {
-      a(paramActivity, paramInt, paramVideoInfo);
       return;
-      label33:
-      if (paramAdvertisementInfo != null) {
-        paramAdvertisementInfo.setClickPos(paramInt);
-      }
-      paramADVideoAppDownloadManager = new nyc();
-      paramADVideoAppDownloadManager.c = true;
-      sht.b(paramActivity, paramAdvertisementInfo, null, 3, true, paramADVideoAppDownloadManager);
-    }
+    } while ((this.a.a == null) || (this.a.a.a == null));
+    this.a.a.a.a();
   }
 }
 

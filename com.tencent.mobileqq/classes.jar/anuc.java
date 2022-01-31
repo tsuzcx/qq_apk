@@ -1,63 +1,22 @@
-import com.tencent.av.VideoController;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class anuc
-  extends bduv
+  implements ajte
 {
-  public anuc(MessengerService paramMessengerService) {}
+  public void a(Object paramObject) {}
   
-  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void b(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
+    switch (paramInt)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
-      if (localQQAppInterface != null)
-      {
-        localQQAppInterface.removeObserver(this);
-        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
-        {
-          Object localObject = (byte[])paramHashMap.get("sigmsg");
-          String str1 = String.valueOf(paramHashMap.get("request_type"));
-          String str2 = String.valueOf(paramHashMap.get("uin"));
-          if (localObject != null) {
-            localQQAppInterface.a().c(str2, (byte[])localObject);
-          }
-          int j = nbc.b(localQQAppInterface, str2);
-          localObject = "";
-          if (j == 0) {
-            localObject = bbcl.i(localQQAppInterface, str2);
-          }
-          for (;;)
-          {
-            int i = j;
-            if (j != 1024)
-            {
-              i = j;
-              if (j != 1025) {
-                i = VideoController.a(j, false, 1);
-              }
-            }
-            paramBoolean = str1.equals("audio");
-            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
-            return;
-            if (paramHashMap.containsKey("nickname")) {
-              localObject = String.valueOf(paramHashMap.get("nickname"));
-            }
-          }
-        }
-      }
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramObject);
       return;
     }
-    catch (Exception paramHashMap)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
-      }
-    }
+    b(paramObject);
   }
 }
 

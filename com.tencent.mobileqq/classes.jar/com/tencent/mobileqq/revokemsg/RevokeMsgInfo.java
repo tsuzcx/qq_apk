@@ -3,14 +3,14 @@ package com.tencent.mobileqq.revokemsg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avqx;
+import avqz;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class RevokeMsgInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new avqx();
+  public static final Parcelable.Creator<RevokeMsgInfo> CREATOR = new avqz();
   public int a;
   public long a;
   public String a;

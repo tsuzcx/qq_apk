@@ -1,55 +1,50 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class txu
-  extends twt
+class txu
+  implements View.OnClickListener
 {
-  private VidListPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo;
-  private two jdField_a_of_type_Two;
+  txu(txt paramtxt) {}
   
-  public txu(VidListPlayInfo paramVidListPlayInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo = paramVidListPlayInfo;
-    this.jdField_a_of_type_Two = new two("vidList");
-  }
-  
-  public List<twv> a(List<two> paramList)
-  {
-    return null;
-  }
-  
-  public twr a()
-  {
-    return new twr(this.jdField_a_of_type_Two, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVideoFeedId);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, twu paramtwu)
-  {
-    ArrayList localArrayList = new ArrayList();
-    twp localtwp = new twp(this.jdField_a_of_type_Two);
-    localArrayList.add(localtwp);
-    localtwp.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList;
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.size();
-    paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.size())
+    if ((txt.a(this.a) != null) && (txt.a(this.a).a()))
     {
-      if (paramInt < i) {}
-      for (String str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(paramInt);; str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(i - 1))
+      txt.a(this.a).c();
+      int i;
+      if (txt.a(this.a) != null)
       {
-        localtwp.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.get(paramInt), str);
-        paramInt += 1;
+        i = vei.a(txt.a(this.a).a);
+        if (!this.a.a()) {
+          break label121;
+        }
+      }
+      label121:
+      for (paramView = "1";; paramView = "2")
+      {
+        vei.a("home_page", "cancel_reply", i, 0, new String[] { paramView, vei.a(txt.a(this.a)), "5", txt.a(this.a) });
+        return;
+        i = 0;
         break;
       }
     }
-    paramtwu.b(new ErrorMessage(), localArrayList, true);
+    this.a.a();
+    if (this.a.a())
+    {
+      paramView = "2";
+      if (!this.a.b()) {
+        break label188;
+      }
+    }
+    label188:
+    for (String str = "2";; str = "1")
+    {
+      vei.a("play_video", "close_reply", 0, 3, new String[] { paramView, str });
+      return;
+      paramView = "1";
+      break;
+    }
   }
-  
-  public void b() {}
 }
 
 

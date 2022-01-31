@@ -1,12 +1,11 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface svc
+public class svc
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
-  
-  public abstract void b(String paramString, int paramInt);
+  public double a;
+  public int a;
+  public long a;
+  public boolean a;
+  public double b;
+  public int b;
 }
 
 

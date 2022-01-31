@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bcpq;
+import bcqf;
 
 class DataJsPlugin$30$1
   implements Runnable
 {
-  DataJsPlugin$30$1(DataJsPlugin.30 param30, bcpq parambcpq) {}
+  DataJsPlugin$30$1(DataJsPlugin.30 param30, bcqf parambcqf) {}
   
   public void run()
   {

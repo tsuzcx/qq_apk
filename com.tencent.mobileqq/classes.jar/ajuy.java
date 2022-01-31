@@ -1,39 +1,44 @@
-import com.tencent.mobileqq.app.DataMigrationService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.HashMap;
 
 public class ajuy
-  extends WtloginListener
+  extends BroadcastReceiver
 {
-  public ajuy(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
+  public ajuy(DeviceProfileManager paramDeviceProfileManager) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.e("DeviceProfileManager", 4, "onReceive");
     }
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
-    }
-    if (paramInt2 != 0)
+    if (paramIntent == null) {}
+    do
     {
-      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
-    }
-    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = paramIntent.getExtras();
+          if (paramContext != null)
+          {
+            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
+            if (DeviceProfileManager.a() != null)
+            {
+              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

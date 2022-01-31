@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ApolloFavActionData
-  extends aukm
+  extends auko
 {
   public int acitonId;
   public int audioId;
   public float audioStartTime;
-  @auma
+  @aumc
   public long favId;
   public int playOriginalAudio;
   public String text;

@@ -1,81 +1,98 @@
 import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class ojy
   implements BusinessObserver
 {
-  ojy(ojx paramojx, BaseCommentData paramBaseCommentData) {}
+  ojy(oju paramoju, BaseCommentData paramBaseCommentData) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     int i = 1;
+    String str = "";
     if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label249;
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        if (arrayOfByte == null) {
+          break label229;
         }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
-        }
-        paramBundle = new JSONObject(paramBundle);
-        if (paramInt != 0)
+        paramBundle = new WebSsoBody.WebSsoResponseBody();
+        try
         {
-          paramBundle.optString("msg");
-          paramInt = 0;
-          i = paramInt;
-          if ((i == 0) && (ojx.a(this.jdField_a_of_type_Ojx) != null)) {
-            ojx.a(this.jdField_a_of_type_Ojx).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
+          paramBundle.mergeFrom(arrayOfByte);
+          paramInt = paramBundle.ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
+          }
+          if (paramInt == 0) {
+            break label179;
+          }
+          try
+          {
+            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
+            paramInt = 0;
+          }
+          catch (JSONException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            paramInt = 0;
+            paramBundle = str;
+            continue;
+          }
+          if ((paramInt == 0) && (oju.a(this.jdField_a_of_type_Oju) != null)) {
+            oju.a(this.jdField_a_of_type_Oju).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
           }
           return;
         }
-        paramInt = paramBundle.optInt("ret");
-        if (paramInt != 0) {
-          break label249;
-        }
-        paramInt = i;
-        try
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          if (ojx.a(this.jdField_a_of_type_Ojx) == null) {
-            continue;
-          }
-          ojx.a(this.jdField_a_of_type_Ojx).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
-          paramInt = i;
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
         }
-        catch (Exception paramBundle)
-        {
-          paramInt = 1;
-        }
+        paramBundle.printStackTrace();
       }
       catch (Exception paramBundle)
       {
         paramInt = 0;
-        continue;
       }
-      paramBundle.getLocalizedMessage();
-      paramBundle.printStackTrace();
-      i = paramInt;
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label249:
-        paramInt = 0;
+        for (;;)
+        {
+          paramBundle = str;
+          break;
+          label179:
+          paramBundle = str;
+          paramInt = i;
+          try
+          {
+            if (oju.a(this.jdField_a_of_type_Oju) == null) {
+              break;
+            }
+            oju.a(this.jdField_a_of_type_Oju).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+            paramBundle = str;
+            paramInt = i;
+          }
+          catch (Exception paramBundle)
+          {
+            paramInt = 1;
+          }
+        }
       }
+      label229:
+      paramInt = 0;
+      paramBundle = str;
     }
   }
 }

@@ -1,72 +1,74 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class anan
-  extends ampb<anao>
 {
-  public int a()
+  private int a;
+  private int b = 1;
+  private int c = 1;
+  
+  public anan()
   {
-    return 589;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  @NonNull
-  public anao a(int paramInt)
+  public static anan a(amph paramamph)
   {
-    return new anao();
-  }
-  
-  @Nullable
-  public anao a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      anao localanao = anao.a(paramArrayOfampi[0].a);
+    anan localanan = new anan();
+    if (paramamph != null) {
       if (QLog.isColorLevel()) {
-        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfampi[0].a);
+        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramamph.jdField_a_of_type_Int + " content->" + paramamph.jdField_a_of_type_JavaLangString);
       }
-      return localanao;
     }
-    return new anao();
+    try
+    {
+      paramamph = new JSONObject(paramamph.jdField_a_of_type_JavaLangString);
+      localanan.a(paramamph.optInt("business_switch_message", 1));
+      localanan.b(paramamph.optInt("business_switch_contact", 1));
+      localanan.c(paramamph.optInt("business_switch_dongtai", 1));
+      return localanan;
+    }
+    catch (Exception paramamph)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramamph.toString());
+    }
+    return localanan;
   }
   
-  public Class<anao> a()
+  void a(int paramInt)
   {
-    return anao.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
-    }
-  }
-  
-  public void a(anao paramanao)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public int b()
+  void b(int paramInt)
   {
-    return 0;
+    this.b = paramInt;
   }
   
   public boolean b()
   {
-    return false;
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
   }
   
   public boolean c()
   {
-    return true;
+    return this.c == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 

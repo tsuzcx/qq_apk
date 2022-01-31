@@ -1,24 +1,42 @@
-import android.animation.TypeEvaluator;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.widget.XPanelContainer;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
-public class bkcr
-  implements TypeEvaluator<bkcp>
+class bkcr
+  implements bjhq
 {
-  private bkcp a;
+  bkcr(bkcm parambkcm) {}
   
-  public bkcp a(float paramFloat, bkcp parambkcp1, bkcp parambkcp2)
+  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
   {
-    float f1 = parambkcp1.a + (parambkcp2.a - parambkcp1.a) * paramFloat;
-    float f2 = parambkcp1.b + (parambkcp2.b - parambkcp1.b) * paramFloat;
-    float f3 = parambkcp1.c + (parambkcp2.c - parambkcp1.c) * paramFloat;
-    paramFloat = parambkcp1.d + (parambkcp2.d - parambkcp1.d) * paramFloat;
-    if (this.a == null) {
-      this.a = new bkcp(f1, f2, f3, paramFloat);
-    }
-    for (;;)
+    if ((paramDynamicTextItem != null) && (paramInt > -1))
     {
-      return this.a;
-      this.a.a(f1, f2, f3, paramFloat);
+      paramView = paramDynamicTextItem.a(paramInt);
+      if (paramView != null)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
+        if (!paramView.equals(bjhi.a(paramDynamicTextItem.c(), paramInt))) {
+          break label139;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(bkcm.a(this.a));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
+        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+        }
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
+          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
+        }
+        return;
+        label139:
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
+      }
     }
+    this.a.a(false);
   }
 }
 

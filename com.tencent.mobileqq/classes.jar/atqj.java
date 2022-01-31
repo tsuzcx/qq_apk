@@ -1,32 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.ProgressButton;
 
 class atqj
-  implements apwk
+  implements DialogInterface.OnClickListener
 {
-  atqj(atpi paramatpi, String paramString) {}
+  atqj(atpk paramatpk) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
-    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
-    paramBundle.edit().putInt("state", 1);
-    paramBundle.edit().putString("filePath", paramString);
+    if (paramInt == 1)
+    {
+      if (this.a.jdField_a_of_type_Atum != null) {
+        this.a.jdField_a_of_type_Atum.a(2);
+      }
+      if (atpk.a(this.a) != null)
+      {
+        if (!this.a.m) {
+          break label88;
+        }
+        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
+      }
+    }
+    label88:
+    do
+    {
+      do
+      {
+        return;
+        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
+        return;
+      } while (paramInt != 0);
+      if (this.a.jdField_a_of_type_Atum != null) {
+        this.a.jdField_a_of_type_Atum.a(10);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698941);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
+      }
+      this.a.jdField_a_of_type_Int = 2;
+    } while (atpk.a(this.a) == null);
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
   }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

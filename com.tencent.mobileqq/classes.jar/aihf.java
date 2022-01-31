@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14;
 
 public class aihf
   implements DialogInterface.OnClickListener
 {
-  public aihf(ShortVideoPlayActivity.14 param14) {}
+  public aihf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.s();
+    this.a.finish();
   }
 }
 

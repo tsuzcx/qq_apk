@@ -1,7 +1,10 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class afzf
   implements View.OnClickListener
@@ -10,15 +13,21 @@ public class afzf
   
   public void onClick(View paramView)
   {
-    this.a.g = true;
-    this.a.d.setVisibility(8);
-    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131368431));
-    this.a.d.setVisibility(0);
-    this.a.d.setText(ajyc.a(2131701650));
-    this.a.d.setOnClickListener(new afzg(this));
-    ChatHistoryTroopMemberFragment.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((this.a.d == 15) && (ChatHistoryTroopMemberFragment.a(this.a).size() > 0))
+    {
+      paramView = new Intent();
+      paramView.putExtra("param_deleted_uins", ChatHistoryTroopMemberFragment.a(this.a));
+      this.a.getActivity().setResult(-1, paramView);
+      if ((this.a.f == null) || (!this.a.f.equals(this.a.getActivity().app.getCurrentAccountUin()))) {
+        break label171;
+      }
+    }
+    label171:
+    for (int i = 0;; i = 1)
+    {
+      axqy.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.c, "" + i, "1", ChatHistoryTroopMemberFragment.a(this.a).toString());
+      this.a.getActivity().finish();
+      return;
     }
   }
 }

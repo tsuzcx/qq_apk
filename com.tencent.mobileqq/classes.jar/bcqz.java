@@ -1,20 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-
-public class bcqz
-  implements Animation.AnimationListener
+public abstract interface bcqz
 {
-  public bcqz(ShaderAnimLayout paramShaderAnimLayout) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(float paramFloat);
 }
 
 

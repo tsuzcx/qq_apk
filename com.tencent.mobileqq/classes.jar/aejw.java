@@ -1,14 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class aejw
-  implements bcvx
+  implements DialogInterface.OnClickListener
 {
-  public aejw(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  public aejw(PhotoListPanel paramPhotoListPanel) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
   }
 }

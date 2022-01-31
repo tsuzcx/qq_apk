@@ -1,14 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
 public class ott
-  implements View.OnClickListener
+  implements ohj
 {
   public ott(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.a.onBackEvent();
+      return;
+    }
+    this.a.a(this.a.a);
+  }
+  
   public void onClick(View paramView)
   {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
     this.a.onBackEvent();
   }
 }

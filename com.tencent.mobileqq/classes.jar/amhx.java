@@ -1,53 +1,50 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
 import java.util.List;
 
-public class amhx
-  extends RecyclerView.Adapter<amib>
+class amhx
+  implements View.OnClickListener
 {
-  private amia jdField_a_of_type_Amia;
-  private amin jdField_a_of_type_Amin;
-  private List<ColorNote> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  amhw jdField_a_of_type_Amhw;
+  amia jdField_a_of_type_Amia;
   
-  public amib a(ViewGroup paramViewGroup, int paramInt)
+  amhx(amhw paramamhw, amia paramamia)
   {
-    return new amib(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558806, paramViewGroup, false));
-  }
-  
-  public void a(amia paramamia)
-  {
+    this.jdField_a_of_type_Amhw = paramamhw;
     this.jdField_a_of_type_Amia = paramamia;
   }
   
-  public void a(amib paramamib, int paramInt)
+  public void onClick(View paramView)
   {
-    amgo.a((ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramamib, paramInt, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(amin paramamin)
-  {
-    this.jdField_a_of_type_Amin = paramamin;
-  }
-  
-  void a(List<ColorNote> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    int i = this.jdField_a_of_type_Amia.getAdapterPosition();
+    ColorNote localColorNote = (ColorNote)amhw.a(this.jdField_a_of_type_Amhw).get(i);
+    amgr.b(localColorNote.mServiceType, localColorNote.mSubType);
+    amhw.a(this.jdField_a_of_type_Amhw).remove(i);
+    this.jdField_a_of_type_Amhw.notifyDataSetChanged();
+    switch (localColorNote.getServiceType())
+    {
+    default: 
+      if (amhh.b(localColorNote))
+      {
+        if ((amhg.a().a()) && (amgt.b())) {
+          amhw.a(this.jdField_a_of_type_Amhw).a(paramView);
+        }
+        axqy.b(null, "dc00898", "", "", "0X800A8AC", "0X800A8AC", 0, 0, "", "", "", "");
+      }
+      break;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Amhw.getItemCount() == 0) && (amhw.a(this.jdField_a_of_type_Amhw) != null)) {
+        amhw.a(this.jdField_a_of_type_Amhw).a();
+      }
+      return;
+      QQPlayerService.c(paramView.getContext());
+      break;
+      axqy.b(null, "dc00898", "", "", "0X800A747", "0X800A747", amgm.a(localColorNote.getServiceType()), 0, "", "", "", "");
+    }
   }
 }
 

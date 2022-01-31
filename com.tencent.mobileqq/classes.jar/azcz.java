@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.net.Uri;
 import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
 public class azcz
-  implements Animation.AnimationListener
+  implements azhl
 {
   public azcz(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(Uri paramUri)
   {
-    this.a.a.clearAnimation();
+    this.a.a = paramUri;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

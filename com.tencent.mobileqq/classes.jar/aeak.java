@@ -5,11 +5,12 @@ import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 public class aeak
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public aeak(SixCombolEffectView paramSixCombolEffectView, aeay paramaeay) {}
+  public aeak(SixCombolEffectView paramSixCombolEffectView, aeaw paramaeaw) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Aeay.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_Aeaw.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 

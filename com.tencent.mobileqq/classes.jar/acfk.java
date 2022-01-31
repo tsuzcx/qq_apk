@@ -1,32 +1,35 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfk
-  implements PopupWindow.OnDismissListener
+  extends Handler
 {
-  public acfk(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
-  
-  public void onDismiss()
+  public acfk(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    this.a.b = null;
-    Object localObject;
-    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = this.a.findViewById(2131377232);
+    if (paramMessage != null) {}
+    try
     {
-      localObject = this.a.getResources();
-      if (!TextPreviewTranslateActivity.a(this.a)) {
-        break label76;
-      }
-    }
-    label76:
-    for (int i = 2130844792;; i = 2130845297)
-    {
-      localObject = ((Resources)localObject).getDrawable(i);
-      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      paramMessage.setBackgroundResource(2130849464);
+      axqy.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
       return;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
+      }
     }
   }
 }

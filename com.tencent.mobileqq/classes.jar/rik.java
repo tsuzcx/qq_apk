@@ -1,21 +1,24 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class rik
-  implements InvocationHandler
+  implements ogo
 {
-  public rik(FastWebActivity.1 param1) {}
+  public rik(FastWebActivity paramFastWebActivity) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void a(long paramLong)
   {
-    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
-    return null;
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).b = paramLong;
+      if (FastWebActivity.a(this.a).b <= 0L)
+      {
+        FastWebActivity.a(this.a).b = 0L;
+        this.a.e();
+      }
+      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
+    }
   }
 }
 

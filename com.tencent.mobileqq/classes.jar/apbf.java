@@ -1,19 +1,23 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 class apbf
-  extends apbq
+  extends Handler
 {
-  public apbf(apbe paramapbe)
+  apbf(apbc paramapbc, Looper paramLooper)
   {
-    super(paramapbe);
+    super(paramLooper);
   }
   
-  protected String a()
+  public void handleMessage(Message paramMessage)
   {
-    return "StateAcceptByPC";
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apbf
  * JD-Core Version:    0.7.0.1
  */

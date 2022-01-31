@@ -1,69 +1,76 @@
-import android.widget.TextView;
+import android.os.Message;
 import com.tencent.mobileqq.activity.phone.ContactListView;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimTipsInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import mqq.app.TicketManagerImpl;
+import mqq.os.MqqHandler;
 
 public class agjl
-  extends aume
+  extends MqqHandler
 {
-  private agjl(ContactListView paramContactListView) {}
+  private WeakReference<ContactListView> a;
   
-  protected void a(boolean paramBoolean)
+  public agjl(ContactListView paramContactListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
-      this.a.j();
-    }
+    this.a = new WeakReference(paramContactListView);
   }
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean) || (!bbev.d(this.a.getContext())))
-    {
-      this.a.i();
-      this.a.g();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
-    if (!paramBoolean1)
-    {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_Aqbc instanceof aqgb))) && (this.a.b == 0)) {
-        this.a.a(2131718737, 3000L);
+    ContactListView localContactListView = (ContactListView)this.a.get();
+    if (localContactListView == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
       }
     }
     do
     {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        case 3: 
+        case 7: 
+        default: 
+          throw new RuntimeException("Unknown message: " + paramMessage.what);
+        case 1: 
+          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e()))
+          {
+            localContactListView.g();
+            ContactListView.a(localContactListView, false);
+          }
+          localContactListView.j();
+          return;
+        case 2: 
+          localContactListView.j();
+        }
+      } while (bbfj.d(localContactListView.getContext()));
+      localContactListView.i();
+      localContactListView.b(ajya.a(2131702505));
       return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e());
-    this.a.a(2131719281, 0L, false);
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      this.a.i();
-      ContactListView.a(this.a, true);
-      if ((paramInt & 0x1) == 0) {
-        this.a.g();
-      }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Int == 6) {
-        this.a.f();
-      }
+      localContactListView.b = ((List)paramMessage.obj);
+      localContactListView.jdField_a_of_type_Aimf.a(localContactListView.b);
+      localContactListView.jdField_a_of_type_Aimf.notifyDataSetChanged();
       return;
-      this.a.g();
+      paramMessage = ContactListView.a(localContactListView).getAccount();
+      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
+    } while (localObject == null);
+    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
     }
+    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
+    return;
+    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
+    return;
+    localContactListView.i();
+    localContactListView.l();
   }
 }
 

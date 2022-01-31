@@ -1,43 +1,57 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class aofe
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements aysc
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  aoiw jdField_a_of_type_Aoiw;
-  public biay a;
-  public ExtendFriendFeedView a;
+  public aofe(ExtendFriendResourceDownloader.4 param4) {}
   
-  public aofe(View paramView, Context paramContext, aoiw paramaoiw, biay parambiay)
+  public void onResp(aysz paramaysz)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_Biay = parambiay;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aoiw = paramaoiw;
-    if (this.jdField_a_of_type_Biay != null) {
-      this.jdField_a_of_type_Biay.a(this.jdField_a_of_type_Biay.a(), new aoff(this));
-    }
-  }
-  
-  public void a(aofe paramaofe, aogh paramaogh, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView != null) && (paramaogh != null))
+    int i = 0;
+    aoey localaoey = (aoey)paramaysz.jdField_a_of_type_Aysy.a();
+    if (localaoey != null)
     {
-      int i = paramaofe.getPosition();
-      paramaofe.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView.setFeedBgParams(i, paramaogh.mVoiceUrl, paramInt, false);
+      if (paramaysz.jdField_a_of_type_Int == 0) {
+        break label147;
+      }
+      QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + localaoey.b);
     }
-    if ((this.jdField_a_of_type_Biay != null) && (paramaogh != null) && (paramaogh.mAlumbasicdata != null)) {
-      paramaofe.jdField_a_of_type_Biay.a(paramaogh.mAlumbasicdata, paramaofe.getAdapterPosition());
+    for (;;)
+    {
+      if ((i != 0) && (aofa.a(this.a.this$0, localaoey)))
+      {
+        ((aoet)aofa.a(this.a.this$0).a(127)).notifyUI(8, true, Boolean.valueOf(true));
+        QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  needNotifyUi  .");
+      }
+      aofa.a(this.a.this$0, localaoey);
+      return;
+      label147:
+      if (!localaoey.c.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
+      {
+        QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed: " + localaoey.b + "md5 is not match. ：" + SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c) + " infomd5:" + localaoey.c);
+        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener resFile success. file: " + localaoey.jdField_a_of_type_JavaLangString + localaoey.b);
+        }
+        String str = aojm.c();
+        boolean bool = aofa.b(this.a.this$0, paramaysz.jdField_a_of_type_Aysy.c, str);
+        i = bool;
+        if (!bool)
+        {
+          QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  unzip file failed.");
+          i = bool;
+        }
+      }
     }
   }
   
-  public void onClick(View paramView) {}
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

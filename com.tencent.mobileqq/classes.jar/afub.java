@@ -1,42 +1,76 @@
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import java.util.List;
 
 public class afub
-  extends RecyclerView.OnScrollListener
+  extends BaseAdapter
 {
-  public afub(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<afud> jdField_a_of_type_JavaUtilList;
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public afub(Context paramContext)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
-    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
-    if ((str != null) && (paramInt2 != 0))
-    {
-      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
-      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
-      EmoticonGroupStoreFragment.a(this.a).setText(str);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void a(List<afud> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    if (paramInt2 < 0)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
-      if (paramRecyclerView != null)
-      {
-        float f = paramRecyclerView.getY();
-        if ((paramInt1 == 0) && (0.0F == f))
-        {
-          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
-          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
-          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
-        }
+      paramViewGroup = new afue(this, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561501, null, false);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367958));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367957));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378472));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378473));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      afud localafud = (afud)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localafud.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localafud.b);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localafud.jdField_a_of_type_Int + ajya.a(2131704608));
+      if (!localafud.jdField_a_of_type_Boolean) {
+        break;
       }
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838946));
+      return paramView;
+      paramViewGroup = (afue)paramView.getTag();
     }
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838948));
+    return paramView;
   }
 }
 

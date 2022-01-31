@@ -1,28 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-
 public class adbv
-  extends Handler
 {
-  public adbv(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
+  public String a;
+  public boolean a;
+  
+  public adbv(String paramString, boolean paramBoolean)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.j(1);
-    this.a.b();
-    bcpw.a(this.a.a.a(), this.a.a.a().getString(2131698543), 1).a();
+    return "ResultBean{rtext='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isFinish=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

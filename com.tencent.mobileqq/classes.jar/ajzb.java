@@ -1,59 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.tools.MD5;
-import org.json.JSONObject;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ajzb
 {
-  String a;
-  String b;
-  String c;
+  static SimpleDateFormat a;
+  static SimpleDateFormat b;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
   
-  public static ajzb a(String paramString)
+  static
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      paramString = null;
-    }
-    for (;;)
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    jdField_b_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  }
+  
+  public static long a(String paramString)
+  {
+    try
     {
-      return paramString;
+      l = jdField_a_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      long l;
+      localException.printStackTrace();
       try
       {
-        ajzb localajzb = new ajzb();
-        paramString = new JSONObject(paramString);
-        localajzb.a = paramString.getString("url");
-        if (localajzb.a != null)
-        {
-          localajzb.a = localajzb.a.trim();
-          localajzb.c = MD5.toMD5(localajzb.a);
-        }
-        localajzb.b = paramString.getString("md5");
-        if (localajzb.b != null) {
-          localajzb.b = localajzb.b.trim();
-        }
-        paramString = localajzb;
-        if (QLog.isDevelopLevel())
-        {
-          atbp.a("HotchatSCMng", "parse ConfigData", new Object[] { localajzb });
-          return localajzb;
-        }
+        l = jdField_b_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
+        return l;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
-        return null;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
       }
     }
-    return null;
+    return 0L;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[url:").append(this.a).append(",").append("md5:").append(this.b).append("]");
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_b_of_type_Long).append("]");
     return localStringBuilder.toString();
   }
 }

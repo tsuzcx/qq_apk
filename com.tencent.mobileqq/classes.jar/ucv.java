@@ -1,8 +1,11 @@
-import android.view.View;
-
-public abstract interface ucv
+public class ucv
+  implements ucq
 {
-  public abstract void a(View paramView, float paramFloat);
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt) {}
 }
 
 

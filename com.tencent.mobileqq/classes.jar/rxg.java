@@ -1,12 +1,27 @@
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface rxg
+class rxg
+  implements bfpj
 {
-  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
+  rxg(rxe paramrxe, String paramString) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
+  public void onDismiss()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("index", -1);
+      localJSONObject.put("type", 1);
+      if (rxe.a(this.jdField_a_of_type_Rxe) != null) {
+        ((BridgeModule)rxe.a(this.jdField_a_of_type_Rxe).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      }
+      return;
+    }
+    catch (JSONException localJSONException) {}
+  }
 }
 
 

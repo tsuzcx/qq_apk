@@ -1,80 +1,157 @@
+import android.os.Message;
 import android.support.annotation.NonNull;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.ViewStub;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class viq
-  extends vhn
+  extends vhk
+  implements vfq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  public SubtitleLayout a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public viq(@NonNull vhp paramvhp)
+  public viq(@NonNull vhm paramvhm, byte[] paramArrayOfByte)
   {
-    super(paramvhp);
+    super(paramvhm);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  private void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.getVisibility() == paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setVisibility(paramInt);
+      return;
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.getVisibility() == paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setVisibility(paramInt);
+  }
+  
+  public void V_()
+  {
+    super.V_();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.d();
+    }
   }
   
   public void a()
   {
-    super.a();
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Vhp.a.a("shareGroupId");
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Vhp.a.a("shareGroupName");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_Vhp.a.a("shareGroupType", 0);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_Vhp.a.a("groupUin", -1L);
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Vhp.a.a("ignorePersonalPublish", false);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Vhp.a.a("add_video_source", 0);
-    veg.a("EditVideoShareGroup", "shareGroupId=%s, shareGroupName=%s, ignorePersonalPublish=%s, source=%d", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131376004));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new vir(this));
-    if (this.jdField_a_of_type_JavaLangString == null)
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131376705));
+    QQStoryContext.a();
+    QQStoryContext.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null)
     {
-      veg.e("EditVideoShareGroup", "shareGroupId should not be null");
-      a().a(0, null, 0, 0);
+      ved.b("Q.qqstory.publish.edit.Subtitle", "makeSureInitLayout");
+      ViewParent localViewParent = this.jdField_a_of_type_AndroidViewViewStub.getParent();
+      if ((localViewParent == null) || (!(localViewParent instanceof ViewGroup))) {
+        break label95;
+      }
+    }
+    label95:
+    for (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)a(2131376704)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(this.jdField_a_of_type_ArrayOfByte);
+      a(vfq.class, this);
+      return;
     }
   }
   
-  public void a(int paramInt, @NonNull vsd paramvsd)
+  public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    synchronized (this.jdField_a_of_type_Vhp)
+    a(0);
+  }
+  
+  public void a(int paramInt, @NonNull vsa paramvsa)
+  {
+    super.a(paramInt, paramvsa);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null) || (this.jdField_a_of_type_ArrayOfByte == null)) {
+      ved.d("Q.qqstory.publish.edit.Subtitle", "editVideoPrePublish but subtitle layout is null");
+    }
+    for (;;)
     {
-      qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-      byte[] arrayOfByte = paramvsd.a.spreadGroupBytes;
-      if (arrayOfByte != null) {}
+      return;
       try
       {
-        localVideoSpreadGroupList.mergeFrom(paramvsd.a.spreadGroupBytes);
-        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-        localVideoSpreadGroupList.visibility_sharegroup_type.set(2);
-        localVideoSpreadGroupList.setHasFlag(true);
-        paramvsd.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
-        if (this.jdField_a_of_type_Int == 1) {
-          paramvsd.a.putExtra("groupUin", Long.valueOf(this.jdField_a_of_type_Long));
-        }
-        veg.d("EditVideoShareGroup", "editVideoPrePublish fragment index = %d, share-group %s %s %s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
-        paramvsd.a.putExtra("ignorePersonalPublish", Boolean.valueOf(this.jdField_a_of_type_Boolean));
-        paramvsd.a.putExtra("add_video_source", Integer.valueOf(this.jdField_b_of_type_Int));
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
+        String str = Base64.encodeToString(this.jdField_a_of_type_ArrayOfByte, 0);
+        if (!TextUtils.isEmpty(str))
         {
-          veg.c("EditVideoShareGroup", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
+          paramvsa.a.putExtra("subtitleData", str);
+          QLog.e("Q.qqstory.publish.edit.Subtitle", 2, "subtitle base64 encode :" + str.length());
+          return;
         }
       }
+      catch (Exception paramvsa)
+      {
+        QLog.e("Q.qqstory.publish.edit.Subtitle", 2, "subtitle base64 encode exception:" + paramvsa.toString());
+      }
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setTimeStamp(paramLong);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return super.a(paramMessage);
+    }
+    a(0);
+    return true;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.publish.edit.Subtitle", 2, "videoplayer start");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.e();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.f();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = null;
+    }
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.c();
     }
   }
 }

@@ -1,18 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import java.util.ArrayList;
 
 public class acsc
-  implements View.OnClickListener
+  implements acss
 {
   public acsc(ReminderListFragment paramReminderListFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (ReminderListFragment.a(this.a) != null) {
-      ReminderListFragment.a(this.a).dismiss();
+    if (paramBoolean)
+    {
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
+        {
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
+        }
+        ReminderListFragment.b(this.a);
+        return;
+      }
+      ReminderListFragment.b(this.a);
+      return;
     }
+    ReminderListFragment.a(this.a, ajya.a(2131713389));
   }
 }
 

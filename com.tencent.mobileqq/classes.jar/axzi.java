@@ -1,20 +1,13 @@
-import android.content.Context;
+import android.graphics.Color;
 import android.text.TextUtils;
-import android.widget.TextView;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.util.HashMap;
 import org.xmlpull.v1.XmlSerializer;
 
 public class axzi
-  extends axup
+  extends axur
 {
-  public boolean c;
-  public boolean d = true;
-  public int k;
-  public int l = 48;
-  public int m = 1;
-  public int n = 1;
+  String ai;
   
   public axzi()
   {
@@ -23,106 +16,71 @@ public class axzi
   
   public axzi(String paramString)
   {
-    super(paramString, "td");
-  }
-  
-  public TextView a(Context paramContext)
-  {
-    return new TextView(paramContext);
+    super(paramString, "remark");
   }
   
   public String a()
   {
-    return "td";
+    return "Remark";
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.n = paramObjectInput.readInt();
-    this.l = paramObjectInput.readInt();
+    this.ai = paramObjectInput.readUTF();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.n);
-    paramObjectOutput.writeInt(this.l);
+    if (this.ai == null) {}
+    for (String str = "";; str = this.ai)
+    {
+      paramObjectOutput.writeUTF(str);
+      return;
+    }
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, this.a);
-    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.n));
-    paramXmlSerializer.attribute(null, "align", String.valueOf(this.l));
-    paramXmlSerializer.endTag(null, this.a);
     super.a(paramXmlSerializer);
+    if (!TextUtils.isEmpty(this.ai)) {
+      paramXmlSerializer.attribute(null, "url", this.ai);
+    }
   }
   
-  public boolean a(axwe paramaxwe)
+  public boolean a(axwg paramaxwg)
   {
-    try
-    {
-      Object localObject = paramaxwe.a("weight");
-      if (localObject != null) {}
-      for (int i = Integer.parseInt((String)localObject);; i = 0)
-      {
-        this.n = i;
-        localObject = paramaxwe.a("align");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("\\|");
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("left", Integer.valueOf(3));
-        localHashMap.put("right", Integer.valueOf(5));
-        localHashMap.put("top", Integer.valueOf(48));
-        localHashMap.put("bottom", Integer.valueOf(80));
-        localHashMap.put("center", Integer.valueOf(17));
-        i = 0;
-        while (i < localObject.length)
-        {
-          if (!TextUtils.isEmpty(localObject[i]))
-          {
-            String str = localObject[i].toLowerCase();
-            if (localHashMap.containsKey(str))
-            {
-              int j = this.l;
-              this.l = (((Integer)localHashMap.get(str)).intValue() | j);
-            }
-          }
-          i += 1;
-        }
-      }
-      return super.a(paramaxwe);
+    if (paramaxwg == null) {
+      return true;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      this.n = 1;
-    }
+    this.ai = paramaxwg.a("bgColor");
+    return super.a(paramaxwg);
   }
   
   public int b()
   {
-    return this.m;
+    return 1;
   }
   
-  protected int c()
+  public int c()
   {
-    return 2131378362;
+    return 2131378322;
   }
   
   public int e()
   {
-    if ((this.c) && (this.k != 0)) {
-      return -1;
-    }
-    return -16777216;
+    return Color.rgb(128, 128, 128);
   }
   
   public int f()
   {
-    return 28;
+    return 24;
+  }
+  
+  public String g()
+  {
+    return this.ai;
   }
 }
 

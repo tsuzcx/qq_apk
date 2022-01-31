@@ -1,33 +1,12 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class awgt
-  implements Comparable<awgt>
+final class awgt
+  implements View.OnClickListener
 {
-  public int a;
-  public MessageForScribble a;
-  
-  awgt(MessageForScribble paramMessageForScribble, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 200;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
-    if (paramInt >= 200)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    QLog.e("ScribbleDownloadInfo", 1, "err priority");
-  }
-  
-  public int a(awgt paramawgt)
-  {
-    if (this.jdField_a_of_type_Int < paramawgt.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramawgt.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    awgs.a(paramView.getContext(), (String)paramView.getTag());
   }
 }
 

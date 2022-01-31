@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.managers;
 
-import aksf;
-import ampm;
-import amup;
-import asep;
+import akse;
+import ampl;
+import amuo;
+import aser;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PushNotificationManager$1
   implements Runnable
 {
-  public PushNotificationManager$1(asep paramasep, QQAppInterface paramQQAppInterface) {}
+  public PushNotificationManager$1(aser paramaser, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    asep.a(this.this$0, (amup)ampm.a().a(390));
-    aksf.a(this.a);
+    aser.a(this.this$0, (amuo)ampl.a().a(390));
+    akse.a(this.a);
   }
 }
 

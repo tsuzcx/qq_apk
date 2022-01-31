@@ -8,11 +8,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import beiw;
-import bekr;
-import bers;
-import berz;
-import besl;
+import bejn;
+import beli;
+import besj;
+import besq;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -24,11 +24,11 @@ import org.json.JSONObject;
 class ShareProxyDefault$3
   implements AsyncResult
 {
-  ShareProxyDefault$3(ShareProxyDefault paramShareProxyDefault, Activity paramActivity, bers parambers, MiniAppInfo paramMiniAppInfo, String paramString, AsyncResult paramAsyncResult, int paramInt) {}
+  ShareProxyDefault$3(ShareProxyDefault paramShareProxyDefault, Activity paramActivity, besj parambesj, MiniAppInfo paramMiniAppInfo, String paramString, AsyncResult paramAsyncResult, int paramInt) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    besl.a("ShareProxy", "startShareToWeChat. isSuc:" + paramBoolean);
+    betc.a("ShareProxy", "startShareToWeChat. isSuc:" + paramBoolean);
     Object localObject3 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     if ((paramBoolean) && (paramJSONObject != null))
     {
@@ -38,15 +38,15 @@ class ShareProxyDefault$3
       }
       try
       {
-        localObject1 = this.val$activity.getResources().getDrawable(2130847466);
-        localObject3 = bekr.a(((MiniAppProxy)localObject3).getDrawable(this.val$activity, this.val$shareData.b, 0, 0, (Drawable)localObject1));
+        localObject1 = this.val$activity.getResources().getDrawable(2130847472);
+        localObject3 = beli.a(((MiniAppProxy)localObject3).getDrawable(this.val$activity, this.val$shareData.b, 0, 0, (Drawable)localObject1));
         localObject1 = localObject3;
         if (localObject3 != null)
         {
           localObject1 = new ByteArrayOutputStream();
           ((Bitmap)localObject3).compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject1);
           localObject1 = ((ByteArrayOutputStream)localObject1).toByteArray();
-          besl.a("ShareProxy", "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length original:" + localObject1.length);
+          betc.a("ShareProxy", "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length original:" + localObject1.length);
           int i = 0;
           while ((i < 10) && (localObject1.length > 32768))
           {
@@ -56,10 +56,10 @@ class ShareProxyDefault$3
             localObject1 = new ByteArrayOutputStream();
             ((Bitmap)localObject3).compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject1);
             localObject1 = ((ByteArrayOutputStream)localObject1).toByteArray();
-            besl.a("ShareProxy", "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length compressTo:" + localObject1.length);
+            betc.a("ShareProxy", "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length compressTo:" + localObject1.length);
             i += 1;
           }
-          besl.a("ShareProxy", "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length done:" + localObject1.length);
+          betc.a("ShareProxy", "startShareToWeChat. ImageUtil.drawableToBitmap, out.toByteArray().length done:" + localObject1.length);
           localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
         }
       }
@@ -68,28 +68,28 @@ class ShareProxyDefault$3
         for (;;)
         {
           Object localObject1;
-          besl.d("ShareProxy", "startShareToWeChat. get an exception when handling URLbmp:" + localException);
-          localObject2 = bekr.a(this.val$activity.getResources().getDrawable(2130847466));
+          betc.d("ShareProxy", "startShareToWeChat. get an exception when handling URLbmp:" + localException);
+          localObject2 = beli.a(this.val$activity.getResources().getDrawable(2130847472));
           continue;
           if (this.val$shareType == 4) {
-            this.this$0.shareToWxTimeline(this.val$activity, (berz)localObject3);
+            this.this$0.shareToWxTimeline(this.val$activity, (besq)localObject3);
           }
         }
       }
-      localObject3 = new berz();
-      ((berz)localObject3).b = this.val$miniAppInfo.name;
-      ((berz)localObject3).c = this.val$finalDescription;
-      ((berz)localObject3).jdField_a_of_type_Boolean = false;
-      ((berz)localObject3).jdField_a_of_type_JavaLangString = this.val$shareData.b;
-      ((berz)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-      ((berz)localObject3).d = str;
-      ((berz)localObject3).e = this.val$miniAppInfo.appId;
-      ((berz)localObject3).f = this.val$miniAppInfo.name;
-      ((berz)localObject3).g = this.val$miniAppInfo.iconUrl;
-      ((berz)localObject3).jdField_a_of_type_Bert = new ShareProxyDefault.3.1(this, paramJSONObject);
+      localObject3 = new besq();
+      ((besq)localObject3).b = this.val$miniAppInfo.name;
+      ((besq)localObject3).c = this.val$finalDescription;
+      ((besq)localObject3).jdField_a_of_type_Boolean = false;
+      ((besq)localObject3).jdField_a_of_type_JavaLangString = this.val$shareData.b;
+      ((besq)localObject3).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
+      ((besq)localObject3).d = str;
+      ((besq)localObject3).e = this.val$miniAppInfo.appId;
+      ((besq)localObject3).f = this.val$miniAppInfo.name;
+      ((besq)localObject3).g = this.val$miniAppInfo.iconUrl;
+      ((besq)localObject3).jdField_a_of_type_Besk = new ShareProxyDefault.3.1(this, paramJSONObject);
       if (this.val$shareType == 3)
       {
-        this.this$0.shareToWxSession(this.val$activity, (berz)localObject3);
+        this.this$0.shareToWxSession(this.val$activity, (besq)localObject3);
         if (this.val$result != null) {
           this.val$result.onReceiveResult(true, paramJSONObject);
         }
@@ -112,10 +112,10 @@ class ShareProxyDefault$3
       }
       if (this.val$activity == null)
       {
-        besl.d("ShareProxy", "startShareToWe activity is null?!!");
+        betc.d("ShareProxy", "startShareToWe activity is null?!!");
         return;
       }
-      beiw.c().post(new ShareProxyDefault.3.2(this, l, (String)localObject2));
+      bejn.c().post(new ShareProxyDefault.3.2(this, l, (String)localObject2));
       return;
       paramBoolean = false;
     }

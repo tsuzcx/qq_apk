@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajbc;
+import ajba;
 
 public class CmGameAvHandler$3
   implements Runnable
 {
-  public CmGameAvHandler$3(ajbc paramajbc) {}
+  public CmGameAvHandler$3(ajba paramajba) {}
   
   public void run()
   {
-    ajbc.a(this.this$0, true);
+    ajba.a(this.this$0, true);
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface ufa
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
+
+public class ufa
+  implements uex
 {
-  public abstract void a(uey paramuey);
+  public ufa(MediaPlayer paramMediaPlayer) {}
+  
+  public void a(uev paramuev)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Uet.b() < 2000000L) && (!this.a.jdField_a_of_type_Uet.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Ufb.sendMessage(this.a.jdField_a_of_type_Ufb.obtainMessage(200, 701, 0));
+    }
+  }
 }
 
 

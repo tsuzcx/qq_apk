@@ -1,13 +1,12 @@
 class atvt
-  implements atwf
+  implements atwj
 {
-  atvt(atvq paramatvq, atvv paramatvv) {}
+  atvt(atvs paramatvs, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Atvq.c(paramString);
-    if (this.jdField_a_of_type_Atvv != null) {
-      this.jdField_a_of_type_Atvv.a(paramBoolean, paramString);
+    if (paramBoolean) {
+      this.jdField_a_of_type_Atvs.a(this.jdField_a_of_type_JavaLangString, paramInt);
     }
   }
 }

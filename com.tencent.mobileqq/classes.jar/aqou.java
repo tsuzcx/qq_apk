@@ -1,41 +1,34 @@
-import android.app.Activity;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.gallery.model.GalleryBaseData;
 import com.tencent.mobileqq.gallery.model.pic.AIOFilePicData;
-import java.util.Locale;
+import com.tencent.widget.Gallery;
 
 class aqou
-  implements MessageQueue.IdleHandler
+  implements aptw
 {
-  aqou(aqor paramaqor) {}
+  aqou(aqot paramaqot, AIOFilePicData paramAIOFilePicData) {}
   
-  public boolean queueIdle()
+  public void a()
   {
-    Object localObject = this.a.jdField_a_of_type_Aqnf.a();
-    if ((localObject != null) && (((aqmg)localObject).a != null) && (((aqmg)localObject).a.a() == 3))
+    try
     {
-      localObject = (AIOFilePicData)((aqmg)localObject).a;
-      aqmn localaqmn = new aqmn();
-      if ((localObject != null) && (localaqmn.a((AIOFilePicData)localObject, 20)) && (localaqmn.a((AIOFilePicData)localObject, 20) == null))
+      this.jdField_a_of_type_Aqot.j();
+      this.jdField_a_of_type_Aqot.a.b(this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOFilePicData.jdField_a_of_type_Int, 20);
+      if (this.jdField_a_of_type_Aqot.a.a() != null)
       {
-        if ((!((AIOFilePicData)localObject).g) || (!bbet.a(((AIOFilePicData)localObject).d))) {
-          break label146;
-        }
-        this.a.e(true);
-        this.a.j();
+        this.jdField_a_of_type_Aqot.a.a().b(true);
+        this.jdField_a_of_type_Aqot.a.a().a(true);
       }
+      return;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      this.a.a(String.format(Locale.CHINA, this.a.jdField_a_of_type_AndroidAppActivity.getString(2131695341), new Object[] { apvb.a(((AIOFilePicData)localObject).e) }));
-      return false;
-      label146:
-      if (((AIOFilePicData)localObject).h) {
-        this.a.e(false);
-      } else {
-        this.a.e(true);
-      }
+      aqmd.a().a().a("AIOGalleryFilePicView", 4, "showFlowDialog exception = " + localException.getMessage());
     }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aqot.j();
+    this.jdField_a_of_type_Aqot.e(true);
   }
 }
 

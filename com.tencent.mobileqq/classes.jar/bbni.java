@@ -1,116 +1,74 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayDeque;
+import android.os.IBinder;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-public class bbni
-  extends aywl
+public final class bbni
 {
-  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bbnm jdField_a_of_type_Bbnm = new bbnm(this);
-  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new bbnj(this);
-  private ArrayDeque<bbnk> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private boolean jdField_a_of_type_Boolean = true;
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Method b;
+  private static Method c;
+  private static Method d;
   
-  public bbni(ImageView paramImageView)
+  static
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    if ((paramImageView instanceof URLImageView)) {
-      ((URLImageView)paramImageView).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-    }
-  }
-  
-  private Drawable a()
-  {
-    Object localObject = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if (localDrawable != null)
+    try
     {
-      localObject = localDrawable;
-      if ((localDrawable instanceof URLDrawable)) {
-        localObject = ((URLDrawable)localDrawable).getCurrDrawable();
-      }
-      return localObject;
-    }
-    return localObject;
-  }
-  
-  private void b()
-  {
-    Object localObject = (bbnk)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      localObject = ((bbnk)localObject).a(a());
-      if (((URLDrawable)localObject).getStatus() == 1)
-      {
-        b();
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    } while ((this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView));
-    ((URLDrawable)localObject).setURLDrawableListener(this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(bbnk parambbnk)
-  {
-    this.jdField_a_of_type_JavaUtilArrayDeque.add(parambbnk);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    a(new bbnl(paramString, paramInt));
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ApngQueuePlayer", 1, "onLoadFialed: ", paramThrowable);
-    b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = ((ApngDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-    if (paramURLDrawable.mFrameCount <= 1)
-    {
-      b();
+      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
+      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
+      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
+      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
+      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
       return;
     }
-    if ((paramURLDrawable.apngLoop > 0) && (paramURLDrawable.currentApngLoop >= paramURLDrawable.apngLoop)) {
-      paramURLDrawable.replay();
-    }
-    if (paramURLDrawable.apngLoop != 0)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      this.jdField_a_of_type_Bbnm.a(paramURLDrawable);
+      localClassNotFoundException.printStackTrace();
       return;
     }
-    b();
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
+  }
+  
+  public static IBinder a(String paramString)
+  {
+    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
+  }
+  
+  private static Object a(Method paramMethod, Object... paramVarArgs)
+  {
+    try
+    {
+      paramMethod = paramMethod.invoke(null, paramVarArgs);
+      return paramMethod;
+    }
+    catch (IllegalArgumentException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramMethod)
+    {
+      paramMethod.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramMethod)
+    {
+      paramMethod.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbni
  * JD-Core Version:    0.7.0.1
  */

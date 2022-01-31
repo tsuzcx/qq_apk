@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
 import android.content.Context;
-import begz;
-import beiw;
-import beka;
-import besl;
+import behq;
+import bejn;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.lang.ref.WeakReference;
@@ -30,9 +30,9 @@ public class JsPluginEngine
     super(paramContext);
   }
   
-  private static String buildMessage(String paramString, beka parambeka)
+  private static String buildMessage(String paramString, bekr parambekr)
   {
-    return paramString + "eventName=" + parambeka.jdField_a_of_type_JavaLangString + ", " + "jsonParams=" + parambeka.jdField_b_of_type_JavaLangString + ", " + "callbackId=" + parambeka.jdField_b_of_type_Int + "jsService=" + parambeka.jdField_a_of_type_Begy;
+    return paramString + "eventName=" + parambekr.jdField_a_of_type_JavaLangString + ", " + "jsonParams=" + parambekr.jdField_b_of_type_JavaLangString + ", " + "callbackId=" + parambekr.jdField_b_of_type_Int + "jsService=" + parambekr.jdField_a_of_type_Behp;
   }
   
   /* Error */
@@ -42,11 +42,11 @@ public class JsPluginEngine
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 87	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbegz;
+    //   3: getfield 87	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbehq;
     //   6: ifnonnull +16 -> 22
     //   9: ldc 8
     //   11: ldc 89
-    //   13: invokestatic 95	besl:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   13: invokestatic 95	betc:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   16: aconst_null
     //   17: astore_3
     //   18: aload_0
@@ -64,7 +64,7 @@ public class JsPluginEngine
     //   40: aload 4
     //   42: ifnonnull -24 -> 18
     //   45: aload_1
-    //   46: invokestatic 108	bekz:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   46: invokestatic 108	belq:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   49: astore_3
     //   50: aload_3
     //   51: instanceof 103
@@ -83,7 +83,7 @@ public class JsPluginEngine
     //   76: invokevirtual 124	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:injectPluginProxyServices	(Lcom/tencent/qqmini/sdk/core/plugins/IJsPlugin;Ljava/util/Map;)V
     //   79: aload_3
     //   80: aload_0
-    //   81: getfield 87	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbegz;
+    //   81: getfield 87	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbehq;
     //   84: invokeinterface 128 2 0
     //   89: aload_0
     //   90: getfield 28	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
@@ -97,7 +97,7 @@ public class JsPluginEngine
     //   107: aload_1
     //   108: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   111: aload_1
-    //   112: invokestatic 139	besl:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   112: invokestatic 139	betc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   115: aconst_null
     //   116: astore_3
     //   117: goto -99 -> 18
@@ -123,21 +123,21 @@ public class JsPluginEngine
     //   105	115	120	finally
   }
   
-  public String dispatchRequestEvent(beka parambeka)
+  public String dispatchRequestEvent(bekr parambekr)
   {
-    IJsPlugin localIJsPlugin = getEventHandler(parambeka.jdField_a_of_type_JavaLangString);
+    IJsPlugin localIJsPlugin = getEventHandler(parambekr.jdField_a_of_type_JavaLangString);
     if (localIJsPlugin == null)
     {
-      besl.c("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest failed, event not support!", parambeka));
+      betc.c("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest failed, event not support!", parambekr));
       return "";
     }
-    if (localIJsPlugin.onInterceptJsEvent(parambeka))
+    if (localIJsPlugin.onInterceptJsEvent(parambekr))
     {
-      besl.b("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest aborted, event is intercepted", parambeka));
+      betc.b("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest aborted, event is intercepted", parambekr));
       return "";
     }
-    reportApiInvoke(this.mMiniAppContext.a(), parambeka.jdField_a_of_type_JavaLangString);
-    str1 = JsPluginList.getMethodName(localIJsPlugin, parambeka.jdField_a_of_type_JavaLangString);
+    reportApiInvoke(this.mMiniAppContext.a(), parambekr.jdField_a_of_type_JavaLangString);
+    str1 = JsPluginList.getMethodName(localIJsPlugin, parambekr.jdField_a_of_type_JavaLangString);
     try
     {
       str2 = localIJsPlugin.getClass().getName() + "." + str1;
@@ -152,29 +152,29 @@ public class JsPluginEngine
       String str2;
       Object localObject1;
       Object localObject3;
-      besl.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambeka.jdField_a_of_type_JavaLangString + " failed, can NOT find declared method " + str1, localNoSuchMethodException);
-      parambeka.b();
+      betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, can NOT find declared method " + str1, localNoSuchMethodException);
+      parambekr.b();
       return "";
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       for (;;)
       {
-        besl.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambeka.jdField_a_of_type_JavaLangString + " failed, " + str1 + " access exception " + localIllegalAccessException.getMessage(), localIllegalAccessException);
+        betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, " + str1 + " access exception " + localIllegalAccessException.getMessage(), localIllegalAccessException);
       }
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
       for (;;)
       {
-        besl.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambeka.jdField_a_of_type_JavaLangString + " failed, " + str1 + " invoke exception " + localInvocationTargetException.getMessage(), localInvocationTargetException);
+        betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, " + str1 + " invoke exception " + localInvocationTargetException.getMessage(), localInvocationTargetException);
       }
     }
     catch (RuntimeException localRuntimeException)
     {
       for (;;)
       {
-        besl.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambeka.jdField_a_of_type_JavaLangString + " failed, " + str1 + " runtime exception " + localRuntimeException.getMessage(), localRuntimeException);
+        betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, " + str1 + " runtime exception " + localRuntimeException.getMessage(), localRuntimeException);
         continue;
         Object localObject2 = null;
       }
@@ -182,11 +182,11 @@ public class JsPluginEngine
     localObject3 = localObject1;
     if (localObject1 == null)
     {
-      localObject3 = localIJsPlugin.getClass().getDeclaredMethod(str1, new Class[] { beka.class });
+      localObject3 = localIJsPlugin.getClass().getDeclaredMethod(str1, new Class[] { bekr.class });
       ((Method)localObject3).setAccessible(true);
       this.mMethodCache.put(str2, new WeakReference(localObject3));
     }
-    localObject1 = ((Method)localObject3).invoke(localIJsPlugin, new Object[] { parambeka });
+    localObject1 = ((Method)localObject3).invoke(localIJsPlugin, new Object[] { parambekr });
     if (localObject1 == null) {
       return "";
     }
@@ -210,13 +210,13 @@ public class JsPluginEngine
     return createJsPlugin(str);
   }
   
-  public void onCreate(begz parambegz)
+  public void onCreate(behq parambehq)
   {
-    super.onCreate(parambegz);
-    this.mEventPluginMap.putAll(JsPluginList.getEventPluginMap(parambegz.e()));
-    parambegz = JsPluginList.getPreloadPlugins(parambegz.e()).iterator();
-    while (parambegz.hasNext()) {
-      createJsPlugin((String)parambegz.next());
+    super.onCreate(parambehq);
+    this.mEventPluginMap.putAll(JsPluginList.getEventPluginMap(parambehq.e()));
+    parambehq = JsPluginList.getPreloadPlugins(parambehq.e()).iterator();
+    while (parambehq.hasNext()) {
+      createJsPlugin((String)parambehq.next());
     }
   }
   
@@ -253,7 +253,7 @@ public class JsPluginEngine
   
   public void reportApiInvoke(MiniAppInfo paramMiniAppInfo, String paramString)
   {
-    beiw.a(new JsPluginEngine.1(this, paramString, paramMiniAppInfo), 16, null, true);
+    bejn.a(new JsPluginEngine.1(this, paramString, paramMiniAppInfo), 16, null, true);
   }
 }
 

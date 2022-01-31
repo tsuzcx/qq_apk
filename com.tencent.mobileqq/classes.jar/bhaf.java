@@ -1,27 +1,6 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-
-public class bhaf
-  implements URLDrawable.URLDrawableListener
+public abstract interface bhaf
 {
-  public bhaf(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
-  }
+  public abstract void a();
 }
 
 

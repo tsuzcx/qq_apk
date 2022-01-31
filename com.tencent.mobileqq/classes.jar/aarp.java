@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
-class aarp
-  implements View.OnClickListener
+public class aarp
 {
-  aarp(aarj paramaarj, MessageRecord paramMessageRecord) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public void onClick(View paramView)
-  {
-    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aarj.a.a, xpx.a(paramView));
-  }
+  protected aarp(ChatHistory paramChatHistory) {}
 }
 
 

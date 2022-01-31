@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class ason
   implements DialogInterface.OnClickListener
 {
-  ason(asoh paramasoh) {}
+  ason(asoj paramasoj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

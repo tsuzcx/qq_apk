@@ -1,16 +1,6 @@
-import android.support.annotation.Nullable;
-
-class bito
-  implements bjob<bivb>
+public abstract interface bito
 {
-  bito(bitj parambitj) {}
-  
-  public void a(@Nullable bivb parambivb)
-  {
-    if (parambivb != null) {
-      bitj.a(this.a, parambivb);
-    }
-  }
+  public abstract void a();
 }
 
 

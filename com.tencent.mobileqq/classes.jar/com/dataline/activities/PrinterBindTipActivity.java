@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,7 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import ymw;
+import ymt;
 
 public class PrinterBindTipActivity
   extends IphoneTitleBarActivity
@@ -25,9 +25,9 @@ public class PrinterBindTipActivity
     super.doOnCreate(paramBundle);
     super.getWindow().setBackgroundDrawableResource(2131165360);
     super.setContentView(2131559399);
-    super.setTitle(ajyc.a(2131708420));
+    super.setTitle(ajya.a(2131708431));
     super.setLeftViewName(2131691612);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363230));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363229));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = super.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("printer_bind_url");
@@ -37,8 +37,8 @@ public class PrinterBindTipActivity
   
   public void onClick(View paramView)
   {
-    ymw.a();
-    ymw.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
+    ymt.a();
+    ymt.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       paramView = new Intent(this, QQBrowserActivity.class);

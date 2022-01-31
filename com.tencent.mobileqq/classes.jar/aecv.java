@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
 public class aecv
-  implements View.OnClickListener
+  extends aecw
 {
-  public aecv(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public aecv(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder)
   {
-    aecz localaecz = (aecz)actn.a(paramView);
-    if (paramView == localaecz.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localaecz);
+    super(paramTribeShortVideoItemBuilder);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
     }
-    while (paramView != localaecz.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-      return;
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
     }
-    this.a.a(localaecz);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Aecx, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Aecx, this.jdField_a_of_type_Long);
   }
 }
 

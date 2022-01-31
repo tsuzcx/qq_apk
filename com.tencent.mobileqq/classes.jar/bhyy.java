@@ -1,70 +1,36 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import org.json.JSONObject;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.3;
 
 public class bhyy
+  implements ModuleDownloadListener
 {
-  public View a(Context paramContext, String paramString)
+  public bhyy(VipARUtils.3 param3) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return null;
-      if ("text_view".equals(paramString)) {
-        return new TextView(paramContext);
-      }
-      if ("image_view".equals(paramString)) {
-        return new ImageView(paramContext);
-      }
-      if ("layout".equals(paramString)) {
-        return new RelativeLayout(paramContext);
-      }
-      if ("lottie_view".equals(paramString)) {
-        return new DiniFlyAnimationView(paramContext);
-      }
-    } while (!"mask_view".equals(paramString));
-    return new ImageView(paramContext);
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public bhyx a(View paramView)
+  public void onDownloadFailed(String paramString)
   {
-    if ((paramView == null) || (paramView.getClass() == null)) {
-      return null;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
     }
-    if (RelativeLayout.class.isInstance(paramView)) {
-      return new bhyv("layout", paramView);
-    }
-    return new bhyx(paramView);
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhyv.a(), " onDownloadSucceed = ", bhyv.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bhyv.b());
   }
-  
-  public bhyx a(String paramString, View paramView)
-  {
-    if ((paramView == null) || (paramView.getClass() == null)) {}
-    do
-    {
-      return null;
-      if ("text_view".equals(paramString)) {
-        return new bhyw(paramString, paramView);
-      }
-      if ("image_view".equals(paramString)) {
-        return new bhys(paramString, paramView);
-      }
-      if ("layout".equals(paramString)) {
-        return new bhyv(paramString, paramView);
-      }
-      if ("lottie_view".equals(paramString)) {
-        return new bhyt(paramString, paramView);
-      }
-    } while (!"mask_view".equals(paramString));
-    return new bhyu(paramString, paramView);
-  }
-  
-  public void a(bhyx parambhyx, JSONObject paramJSONObject) {}
 }
 
 

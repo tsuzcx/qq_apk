@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ajyc;
-import alie;
-import bcpw;
+import ajya;
+import alid;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ARMarkerResourceManager$1
   implements Runnable
 {
-  public ARMarkerResourceManager$1(alie paramalie) {}
+  public ARMarkerResourceManager$1(alid paramalid) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131700719), 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131700730), 1).a();
   }
 }
 

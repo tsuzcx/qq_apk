@@ -1,31 +1,24 @@
 import android.graphics.Rect;
-import java.util.ArrayList;
 import java.util.Comparator;
 
 class amof
   implements Comparator<Rect>
 {
-  amof(amoe paramamoe) {}
+  amof(amod paramamod) {}
   
   public int a(Rect paramRect1, Rect paramRect2)
   {
-    if (this.a.g.contains(paramRect1)) {}
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
     do
     {
-      do
-      {
-        return 1;
-        if (this.a.g.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
+      return 1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
         return -1;
       }
-    } while (paramRect1.width() < paramRect2.width());
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return -1;
+    }
     return 0;
   }
 }

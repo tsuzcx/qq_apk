@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.soload.config;
 
 import android.text.TextUtils;
-import axnf;
+import axnh;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -124,7 +124,7 @@ public class SoConfig$SoInfo
       do
       {
         return 1;
-        if (!axnf.a()) {
+        if (!axnh.a()) {
           break;
         }
       } while (paramSoInfo.arm64Info == null);

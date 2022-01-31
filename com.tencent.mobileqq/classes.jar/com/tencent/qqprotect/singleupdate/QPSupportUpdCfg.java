@@ -2,8 +2,8 @@ package com.tencent.qqprotect.singleupdate;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bfjx;
-import bfjy;
+import bfko;
+import bfkp;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class QPSupportUpdCfg
         try
         {
           if (a(localFile)) {
-            str = bfjx.a(this.fileItem[i].strFilePath);
+            str = bfko.a(this.fileItem[i].strFilePath);
           }
           if (!TextUtils.isEmpty(str))
           {
@@ -117,7 +117,7 @@ public class QPSupportUpdCfg
   
   public boolean IsFileInConfigFile(String paramString)
   {
-    paramString = bfjy.a(paramString);
+    paramString = bfkp.a(paramString);
     if (this.fileItem == null) {}
     for (;;)
     {
@@ -126,7 +126,7 @@ public class QPSupportUpdCfg
       int i = 0;
       while (i < j)
       {
-        if (paramString.equalsIgnoreCase(bfjy.a(this.fileItem[i].strFilePath))) {
+        if (paramString.equalsIgnoreCase(bfkp.a(this.fileItem[i].strFilePath))) {
           return true;
         }
         i += 1;
@@ -745,7 +745,7 @@ public class QPSupportUpdCfg
     this.fileItem[(i - 1)].strFileHash = "00000000000000000000000000000000";
     if (a(paramFile))
     {
-      paramString1 = bfjx.a(paramString1);
+      paramString1 = bfko.a(paramString1);
       if (paramString1 != null) {
         this.fileItem[(i - 1)].strFileHash = paramString1;
       }
@@ -783,7 +783,7 @@ public class QPSupportUpdCfg
       arrayOfQPUpdFileItem[i].strFileHash = "00000000000000000000000000000000";
       if (a(paramFile))
       {
-        paramString = bfjx.a(paramString);
+        paramString = bfko.a(paramString);
         if (paramString != null) {
           arrayOfQPUpdFileItem[i].strFileHash = paramString;
         }
@@ -798,7 +798,7 @@ public class QPSupportUpdCfg
   
   public String getFileDstPath(String paramString)
   {
-    paramString = bfjy.a(paramString);
+    paramString = bfkp.a(paramString);
     if (this.fileItem == null) {}
     for (;;)
     {
@@ -807,7 +807,7 @@ public class QPSupportUpdCfg
       int i = 0;
       while (i < j)
       {
-        if (paramString.equalsIgnoreCase(bfjy.a(this.fileItem[i].strFilePath))) {
+        if (paramString.equalsIgnoreCase(bfkp.a(this.fileItem[i].strFilePath))) {
           return this.fileItem[i].strFilePath;
         }
         i += 1;
@@ -826,7 +826,7 @@ public class QPSupportUpdCfg
   
   public int getFileIndexInConfigFile(String paramString)
   {
-    paramString = bfjy.a(paramString);
+    paramString = bfkp.a(paramString);
     if (this.fileItem == null) {}
     for (;;)
     {
@@ -835,7 +835,7 @@ public class QPSupportUpdCfg
       int i = 0;
       while (i < j)
       {
-        if (paramString.equalsIgnoreCase(bfjy.a(this.fileItem[i].strFilePath)))
+        if (paramString.equalsIgnoreCase(bfkp.a(this.fileItem[i].strFilePath)))
         {
           paramString = this.fileItem[i].strFilePath;
           return i;
@@ -861,7 +861,7 @@ public class QPSupportUpdCfg
     int i = 0;
     label10:
     if (i < this.fileItem.length) {
-      if (!bfjy.a(this.fileItem[i].strFilePath).equalsIgnoreCase("SupportUpd.cfg")) {
+      if (!bfkp.a(this.fileItem[i].strFilePath).equalsIgnoreCase("SupportUpd.cfg")) {
         break label46;
       }
     }
@@ -875,7 +875,7 @@ public class QPSupportUpdCfg
       this.fileItem[i].strFileHash = "00000000000000000000000000000000";
       if (a((File)localObject))
       {
-        localObject = bfjx.a(this.fileItem[i].strFilePath);
+        localObject = bfko.a(this.fileItem[i].strFilePath);
         if (localObject != null) {
           this.fileItem[i].strFileHash = ((String)localObject);
         }

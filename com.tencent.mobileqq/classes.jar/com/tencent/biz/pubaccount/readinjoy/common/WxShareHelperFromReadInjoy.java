@@ -34,12 +34,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import mqq.util.WeakReference;
-import nap;
-import noo;
-import oof;
+import nam;
+import nol;
+import ooc;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wim;
+import wij;
 
 public class WxShareHelperFromReadInjoy
   extends BroadcastReceiver
@@ -50,7 +50,7 @@ public class WxShareHelperFromReadInjoy
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxeaef4303c20f3dea", true);
   private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<oof> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private ArrayList<ooc> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
   
   private WxShareHelperFromReadInjoy()
@@ -92,7 +92,7 @@ public class WxShareHelperFromReadInjoy
     {
       localJSONObject.put("from_source", paramString);
       localJSONObject.put("from_rowkey", localObject);
-      noo.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
+      nol.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException paramString)
@@ -115,7 +115,7 @@ public class WxShareHelperFromReadInjoy
     if (paramBoolean2)
     {
       Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, 100, 100);
-      localObject1 = nap.a(localBitmap);
+      localObject1 = nam.a(localBitmap);
       localBitmap.recycle();
     }
     for (;;)
@@ -127,7 +127,7 @@ public class WxShareHelperFromReadInjoy
       }
       paramBitmap.recycle();
       return localObject1;
-      localObject1 = nap.a((Bitmap)localObject2);
+      localObject1 = nam.a((Bitmap)localObject2);
     }
   }
   
@@ -175,7 +175,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString))
     {
-      wim.a(1, 2131696768);
+      wij.a(1, 2131696769);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -231,12 +231,12 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
-  public void a(oof paramoof)
+  public void a(ooc paramooc)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramoof)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramoof);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramooc)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramooc);
       }
       return;
     }
@@ -276,12 +276,12 @@ public class WxShareHelperFromReadInjoy
     c(paramString1, paramString2, paramBitmap, paramString3, paramString4, "/pages/index/index?share=1&share_type=1&channel_id=10&rowkey=" + paramString5);
   }
   
-  public void b(oof paramoof)
+  public void b(ooc paramooc)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramoof)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramoof);
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramooc)) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramooc);
       }
       return;
     }
@@ -352,7 +352,7 @@ public class WxShareHelperFromReadInjoy
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((oof)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
+          ((ooc)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
           i -= 1;
         }
         return;

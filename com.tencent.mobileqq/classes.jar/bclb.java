@@ -1,18 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
+@TargetApi(16)
 public class bclb
-  extends ListView
+  implements bfqj
 {
-  public bclb(DraggableGridView paramDraggableGridView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  bclb(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void a()
   {
-    super.setOverScrollMode(2);
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
+    }
+    for (;;)
+    {
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
+    }
   }
 }
 

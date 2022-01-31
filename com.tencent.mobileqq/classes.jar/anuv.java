@@ -1,26 +1,39 @@
-import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.Messenger;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class anuv
-  implements aiyu
+  implements IBinder.DeathRecipient
 {
-  anuv(anul paramanul, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  anuv(anuq paramanuq) {}
   
-  public void a()
+  public void binderDied()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
+      MessengerService.a((MessengerService)this.a.a.get());
+      MessengerService.b((MessengerService)this.a.a.get());
+    }
+    MessengerService localMessengerService;
+    if (this.a.a != null)
+    {
+      localMessengerService = (MessengerService)this.a.a.get();
+      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
+    }
+    try
+    {
+      localMessengerService.a.getBinder().unlinkToDeath(anuq.a(this.a), 0);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+    }
   }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result", paramInt);
-    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-  }
-  
-  public void b() {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.redtouch;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -21,8 +21,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baxt;
-import bbdr;
+import bayh;
+import bbef;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -125,7 +125,7 @@ public class RedTouch
     paramImageView.setLayoutParams(localLayoutParams);
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130849288);
+    paramImageView.setImageResource(2130849297);
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 49;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -259,7 +259,7 @@ public class RedTouch
     paramImageView.setPadding(a(i1), a(i1), a(i1), a(i1));
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130849288);
+    paramImageView.setImageResource(2130849297);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 53;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -298,7 +298,7 @@ public class RedTouch
         case 0: 
           localObject = new JSONObject(paramRedTypeInfo.red_desc.get());
           break;
-          paramRedTypeInfo = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378600);
+          paramRedTypeInfo = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378605);
           if (paramRedTypeInfo != null) {
             paramRedTypeInfo.setVisibility(0);
           }
@@ -504,16 +504,16 @@ public class RedTouch
           }
           if (paramString1 != null)
           {
-            paramString1 = baxt.a(paramString1, 1, 4, paramString2);
+            paramString1 = bayh.a(paramString1, 1, 4, paramString2);
             if (paramString1 != null) {
               localURLImageView.setImageDrawable(paramString1);
             } else {
-              localURLImageView.setImageBitmap(bbdr.a(true));
+              localURLImageView.setImageBitmap(bbef.a(true));
             }
           }
           else
           {
-            localURLImageView.setImageBitmap(bbdr.a(true));
+            localURLImageView.setImageBitmap(bbef.a(true));
           }
         }
         else
@@ -546,7 +546,7 @@ public class RedTouch
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     try
     {
-      localImageView.setImageResource(2130849288);
+      localImageView.setImageResource(2130849297);
       localImageView.setBackgroundColor(paramInt);
       a();
       localImageView.setLayoutParams(a());
@@ -589,7 +589,7 @@ public class RedTouch
           break;
         }
         localTextView.setIncludeFontPadding(false);
-        localTextView.setBackgroundResource(2130849294);
+        localTextView.setBackgroundResource(2130849303);
         localTextView.setLayoutParams(a());
         if (this.jdField_b_of_type_Boolean)
         {
@@ -607,7 +607,7 @@ public class RedTouch
       {
         localTextView.setText(paramString.trim());
         continue;
-        localTextView.setBackgroundResource(2130849292);
+        localTextView.setBackgroundResource(2130849301);
         continue;
         label179:
         localTextView.setTextSize(13.0F);
@@ -760,7 +760,7 @@ public class RedTouch
       {
         this.jdField_g_of_type_Boolean = paramBoolean;
         Object localObject2 = (ViewGroup)getParent();
-        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131377197);
+        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131377199);
         if ((localObject1 != null) && ((localObject2 instanceof LinearLayout)))
         {
           removeView(this.jdField_a_of_type_AndroidViewView);
@@ -768,21 +768,21 @@ public class RedTouch
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298620));
           RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
           ((ViewGroup)localObject2).addView(localRelativeLayout, localLayoutParams);
-          localObject2 = new RelativeLayout.LayoutParams(actn.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+          localObject2 = new RelativeLayout.LayoutParams(actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
           ((RelativeLayout.LayoutParams)localObject2).addRule(9);
           ((RelativeLayout.LayoutParams)localObject2).addRule(15);
           localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject2);
           localObject2 = new RelativeLayout.LayoutParams(((TextView)localObject1).getLayoutParams());
           ((RelativeLayout.LayoutParams)localObject2).addRule(1, this.jdField_a_of_type_AndroidViewView.getId());
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((RelativeLayout.LayoutParams)localObject2).leftMargin = actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           localObject1 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject1).addRule(1, this.jdField_a_of_type_AndroidViewView.getId());
           ((RelativeLayout.LayoutParams)localObject1).addRule(6, this.jdField_a_of_type_AndroidViewView.getId());
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = actn.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ((RelativeLayout.LayoutParams)localObject1).topMargin = actn.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = actj.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((RelativeLayout.LayoutParams)localObject1).topMargin = actj.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848687);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848693);
           localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
           return;
         }

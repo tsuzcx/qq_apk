@@ -1,71 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.widget.AbsListView;
 
 class aior
-  extends ajxl
+  implements bfos
 {
-  aior(aiop paramaiop) {}
+  aior(aion paramaion) {}
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_Aiod != null) && ((this.a.jdField_a_of_type_Aiod instanceof aioe))) {
-        ((aioe)this.a.jdField_a_of_type_Aiod).a(paramString);
-      }
-      aiop.a(this.a);
-    }
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramBoolean) {
-      aiop.a(this.a);
+    if (paramInt != 0) {
+      return;
     }
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      aiop.a(this.a);
-    }
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      aiop.a(this.a);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      this.a.notifyDataSetChanged();
-      if (aiop.a(this.a) != null)
-      {
-        aiop.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        aiop.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
-      }
-    }
+    this.a.d();
   }
 }
 

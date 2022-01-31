@@ -1,24 +1,22 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
 class nsn
-  extends osp
+  implements ViewBase.OnClickListener
 {
-  nsn(nsf paramnsf) {}
+  nsn(nsm paramnsm) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
-    if (!paramBoolean)
+    if (paramViewBase.getEventAttachedData() == null)
     {
-      if ((nsf.a(this.a) == -1) || (nsf.a(this.a) == 0))
-      {
-        nsf.a(this.a, 0);
-        return;
-      }
-      nsf.a(this.a, 4);
+      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
       return;
     }
-    nsf.a(this.a, 1);
+    nsc.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    onh.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

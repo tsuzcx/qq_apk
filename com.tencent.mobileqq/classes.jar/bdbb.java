@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class bdbb
-  implements View.OnClickListener
+  implements Comparator<Friend>
 {
-  public bdbb(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
+  public bdbb(FriendChooser paramFriendChooser) {}
   
-  public void onClick(View paramView)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof String))) {
-      this.a.b((String)paramView);
-    }
+    return paramFriend1.g.compareToIgnoreCase(paramFriend2.g);
   }
 }
 

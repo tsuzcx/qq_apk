@@ -1,38 +1,25 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bdss
-  extends BaseJsModule
+  extends bdsq
 {
-  public String getModuleName()
+  private static bdss jdField_a_of_type_Bdss;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  
+  public static bdss a()
   {
-    return "mqq";
+    if (jdField_a_of_type_Bdss == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Bdss == null) {
+        jdField_a_of_type_Bdss = new bdss();
+      }
+      return jdField_a_of_type_Bdss;
+    }
   }
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public void a()
   {
-    boolean bool = false;
-    if ("getQQVersion".equals(paramString)) {
-      paramString = new JSONObject();
-    }
-    while (!"getQQVersionSync".equals(paramString)) {
-      try
-      {
-        paramString.putOpt("version", "8.2.8");
-        bool = paramInvokeCallback.exec(0, paramString);
-        return bool;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-    }
-    return false;
+    super.a();
+    jdField_a_of_type_Bdss = null;
   }
 }
 

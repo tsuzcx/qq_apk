@@ -1,33 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class mhi
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  mhi(mhh parammhh) {}
+  mhi(mha parammha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mhf.a(this.a.a, false);
-    if (paramInt == 1)
-    {
-      axqw.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.a.c();
-      if (!muf.a(mhf.a(this.a.a))) {
-        mhf.a(this.a.a).a(mhf.a(this.a.a));
-      }
-    }
-    while (paramInt != 0)
-    {
-      return;
-      mhf.a(this.a.a).b(mhf.a(this.a.a));
-      return;
-    }
-    mhf.a(this.a.a, mhf.a(this.a.a).a().v);
+    this.a.d();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

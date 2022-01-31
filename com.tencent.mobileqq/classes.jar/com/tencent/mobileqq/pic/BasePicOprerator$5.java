@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.pic;
 
-import aump;
-import aunt;
-import auob;
+import aumr;
+import aunv;
+import auod;
 
 public class BasePicOprerator$5
   implements Runnable
 {
-  public BasePicOprerator$5(aump paramaump, aunt paramaunt, auob paramauob) {}
+  public BasePicOprerator$5(aumr paramaumr, aunv paramaunv, auod paramauod) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Aunt, this.jdField_a_of_type_Auob);
+    this.this$0.a(this.jdField_a_of_type_Aunv, this.jdField_a_of_type_Auod);
   }
 }
 

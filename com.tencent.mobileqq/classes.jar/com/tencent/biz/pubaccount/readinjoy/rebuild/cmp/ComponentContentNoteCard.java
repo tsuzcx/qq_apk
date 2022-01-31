@@ -19,9 +19,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbct;
-import bcpw;
-import bfob;
+import bbdh;
+import bcql;
+import bfos;
 import com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
@@ -33,26 +33,26 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import mqq.app.AppRuntime;
-import muf;
-import oqe;
+import muc;
+import oqb;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pax;
-import pce;
-import pcf;
-import pqr;
-import prb;
-import pvw;
-import pvx;
-import pvy;
-import qce;
-import rad;
-import rap;
+import pau;
+import pcb;
+import pcc;
+import pqo;
+import pqy;
+import pvt;
+import pvu;
+import pvv;
+import qcb;
+import raa;
+import ram;
 
 public class ComponentContentNoteCard
   extends RelativeLayout
-  implements bfob, pcf, pqr, rad
+  implements bfos, pcc, pqo, raa
 {
   private int jdField_a_of_type_Int = 0;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -64,7 +64,7 @@ public class ComponentContentNoteCard
   private ReadInJoyXListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
   private Object jdField_a_of_type_JavaLangObject;
-  private qce jdField_a_of_type_Qce;
+  private qcb jdField_a_of_type_Qcb;
   private boolean jdField_a_of_type_Boolean;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -89,10 +89,10 @@ public class ComponentContentNoteCard
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public ComponentContentNoteCard(Context paramContext, rap paramrap)
+  public ComponentContentNoteCard(Context paramContext, ram paramram)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)paramrap.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)paramram.a());
     a(paramContext);
   }
   
@@ -198,7 +198,7 @@ public class ComponentContentNoteCard
     //   97: aload_0
     //   98: invokevirtual 217	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentNoteCard:getContext	()Landroid/content/Context;
     //   101: fload 6
-    //   103: invokestatic 222	vpp:b	(Landroid/content/Context;F)I
+    //   103: invokestatic 222	vpm:b	(Landroid/content/Context;F)I
     //   106: i2f
     //   107: fstore 6
     //   109: fload 8
@@ -208,7 +208,7 @@ public class ComponentContentNoteCard
     //   117: aload_0
     //   118: invokevirtual 217	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentNoteCard:getContext	()Landroid/content/Context;
     //   121: fload 8
-    //   123: invokestatic 222	vpp:b	(Landroid/content/Context;F)I
+    //   123: invokestatic 222	vpm:b	(Landroid/content/Context;F)I
     //   126: istore 9
     //   128: iload 9
     //   130: i2f
@@ -407,37 +407,37 @@ public class ComponentContentNoteCard
     //   117	128	463	java/lang/Exception
   }
   
-  private void a(qce paramqce)
+  private void a(qcb paramqcb)
   {
     for (;;)
     {
       try
       {
-        a(this.jdField_a_of_type_AndroidWidgetTextView, new JSONObject(paramqce.jdField_a_of_type_JavaLangString), 18.0F);
-        a(this.jdField_b_of_type_AndroidWidgetTextView, new JSONObject(paramqce.b), 15.0F);
+        a(this.jdField_a_of_type_AndroidWidgetTextView, new JSONObject(paramqcb.jdField_a_of_type_JavaLangString), 18.0F);
+        a(this.jdField_b_of_type_AndroidWidgetTextView, new JSONObject(paramqcb.b), 15.0F);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramqce.jdField_d_of_type_JavaLangString);
-        String str = pce.c();
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramqcb.jdField_d_of_type_JavaLangString);
+        String str = pcb.c();
         Context localContext = getContext();
         if ((Build.VERSION.SDK_INT >= 23) && (localContext != null)) {
           if (localContext.checkSelfPermission("android.permission.RECORD_AUDIO") == 0)
           {
             i = 1;
-            if ((i != 0) || (pce.a() != 1)) {
+            if ((i != 0) || (pcb.a() != 1)) {
               continue;
             }
-            this.jdField_d_of_type_AndroidWidgetTextView.setText(getContext().getString(2131718506));
-            this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new pvw(this));
-            a(this.jdField_a_of_type_AndroidWidgetImageView, paramqce.e);
-            a(this.jdField_b_of_type_AndroidWidgetImageView, paramqce.c);
-            this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new pvx(this));
+            this.jdField_d_of_type_AndroidWidgetTextView.setText(getContext().getString(2131718517));
+            this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new pvt(this));
+            a(this.jdField_a_of_type_AndroidWidgetImageView, paramqcb.e);
+            a(this.jdField_b_of_type_AndroidWidgetImageView, paramqcb.c);
+            this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new pvu(this));
             this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
             if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
               this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
             }
-            if (TextUtils.isEmpty(paramqce.f)) {}
+            if (TextUtils.isEmpty(paramqcb.f)) {}
           }
         }
       }
@@ -445,23 +445,23 @@ public class ComponentContentNoteCard
       {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = oqe.a(paramqce.f);
+          this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = oqb.a(paramqcb.f);
           this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
           return;
           localJSONException = localJSONException;
           localJSONException.printStackTrace();
-          QLog.e("ComponentContentNoteCard", 1, "json error: " + paramqce.jdField_a_of_type_JavaLangString + "\n" + paramqce.b);
+          QLog.e("ComponentContentNoteCard", 1, "json error: " + paramqcb.jdField_a_of_type_JavaLangString + "\n" + paramqcb.b);
           continue;
           i = 0;
           continue;
           this.jdField_d_of_type_AndroidWidgetTextView.setText(localJSONException);
         }
-        catch (Exception paramqce)
+        catch (Exception paramqcb)
         {
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.e("ComponentContentNoteCard", 1, paramqce, new Object[0]);
+          QLog.e("ComponentContentNoteCard", 1, paramqcb, new Object[0]);
           return;
         }
       }
@@ -469,9 +469,9 @@ public class ComponentContentNoteCard
     }
   }
   
-  private void b(qce paramqce)
+  private void b(qcb paramqcb)
   {
-    paramqce.g = paramqce.g.replace("#$%", pce.a());
+    paramqcb.g = paramqcb.g.replace("#$%", pcb.a());
     Object localObject = getContext();
     if ((Build.VERSION.SDK_INT >= 23) && (localObject != null)) {
       if (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {}
@@ -479,18 +479,18 @@ public class ComponentContentNoteCard
     for (int i = 1;; i = 1) {
       for (;;)
       {
-        if ((i == 0) && (pce.a() == 1))
+        if ((i == 0) && (pcb.a() == 1))
         {
-          localObject = paramqce.h.replace("#$%", getContext().getString(2131718505));
-          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pvy(this));
+          localObject = paramqcb.h.replace("#$%", getContext().getString(2131718516));
+          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pvv(this));
         }
         try
         {
           for (;;)
           {
-            a(this.jdField_a_of_type_AndroidWidgetTextView, new JSONObject(paramqce.g), 18.0F);
+            a(this.jdField_a_of_type_AndroidWidgetTextView, new JSONObject(paramqcb.g), 18.0F);
             a(this.jdField_b_of_type_AndroidWidgetTextView, new JSONObject((String)localObject), 15.0F);
-            a(this.jdField_b_of_type_AndroidWidgetImageView, paramqce.i);
+            a(this.jdField_b_of_type_AndroidWidgetImageView, paramqcb.i);
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
             this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
             this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -498,7 +498,7 @@ public class ComponentContentNoteCard
             return;
             i = 0;
             break;
-            localObject = paramqce.h.replace("#$%", pce.b());
+            localObject = paramqcb.h.replace("#$%", pcb.b());
           }
         }
         catch (JSONException localJSONException)
@@ -506,7 +506,7 @@ public class ComponentContentNoteCard
           for (;;)
           {
             localJSONException.printStackTrace();
-            QLog.e("ComponentContentNoteCard", 1, "json error: " + paramqce.g + "\n" + paramqce.h);
+            QLog.e("ComponentContentNoteCard", 1, "json error: " + paramqcb.g + "\n" + paramqcb.h);
           }
         }
       }
@@ -517,7 +517,7 @@ public class ComponentContentNoteCard
   {
     try
     {
-      muf.a((Activity)getContext());
+      muc.a((Activity)getContext());
       return;
     }
     catch (Exception localException)
@@ -530,8 +530,8 @@ public class ComponentContentNoteCard
   private void e()
   {
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    localLayoutParams.width = ((int)bbct.k());
-    localLayoutParams.height = ((int)(bbct.k() * 0.5625D));
+    localLayoutParams.width = ((int)bbdh.k());
+    localLayoutParams.height = ((int)(bbdh.k() * 0.5625D));
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
     }
@@ -563,12 +563,12 @@ public class ComponentContentNoteCard
   public void F_()
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (pce.a(getContext(), str) < qce.jdField_d_of_type_Int)
+    if (pcb.a(getContext(), str) < qcb.jdField_d_of_type_Int)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.c(7);
       return;
     }
-    bcpw.a(getContext(), 0, getContext().getString(2131718583), 0).a();
+    bcql.a(getContext(), 0, getContext().getString(2131718594), 0).a();
   }
   
   public View a(Context paramContext)
@@ -591,19 +591,19 @@ public class ComponentContentNoteCard
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a();
     }
     Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if ((this.jdField_a_of_type_Boolean) && (pce.a() != 0))
+    if ((this.jdField_a_of_type_Boolean) && (pcb.a() != 0))
     {
-      i = pce.b(getContext(), (String)localObject);
-      int k = pce.c(getContext(), (String)localObject);
-      if ((i < pce.b()) && (k < pce.c()))
+      i = pcb.b(getContext(), (String)localObject);
+      int k = pcb.c(getContext(), (String)localObject);
+      if ((i < pcb.b()) && (k < pcb.c()))
       {
-        this.jdField_a_of_type_Qce.jdField_a_of_type_Int = 2;
-        pce.a(getContext(), (String)localObject, i + 1);
-        pce.b(getContext(), (String)localObject, k + 1);
+        this.jdField_a_of_type_Qcb.jdField_a_of_type_Int = 2;
+        pcb.a(getContext(), (String)localObject, i + 1);
+        pcb.b(getContext(), (String)localObject, k + 1);
       }
     }
     a(this.jdField_a_of_type_JavaLangObject);
-    if ((pce.a() == 1) && (pce.b(getContext(), (String)localObject) > 0))
+    if ((pcb.a() == 1) && (pcb.b(getContext(), (String)localObject) > 0))
     {
       localObject = getContext();
       i = j;
@@ -636,13 +636,13 @@ public class ComponentContentNoteCard
   public void a(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370920));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369756));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376633));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369755));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376635));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370917));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369105));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369103));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375269));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369592));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375271));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369591));
     this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370919));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131370911));
     e();
@@ -651,10 +651,10 @@ public class ComponentContentNoteCard
   public void a(Object paramObject)
   {
     this.jdField_a_of_type_JavaLangObject = paramObject;
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = ((pax)paramObject).a().scripCmsInfo;
-      this.jdField_a_of_type_Qce = paramObject;
+      paramObject = ((pau)paramObject).a().scripCmsInfo;
+      this.jdField_a_of_type_Qcb = paramObject;
       if (paramObject != null)
       {
         if ((paramObject.jdField_a_of_type_Int != 1) && ((!TextUtils.isEmpty(paramObject.g)) || (!TextUtils.isEmpty(paramObject.h)))) {
@@ -668,10 +668,10 @@ public class ComponentContentNoteCard
     b(paramObject);
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(paramprb);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampqy);
     }
   }
   

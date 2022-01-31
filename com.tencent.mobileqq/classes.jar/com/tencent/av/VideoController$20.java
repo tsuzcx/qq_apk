@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import lgf;
+import lga;
 
 class VideoController$20
   implements Runnable

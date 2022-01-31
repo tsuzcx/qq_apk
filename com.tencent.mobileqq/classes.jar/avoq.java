@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avoq
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+  extends avpi<ReceiptMessageDetailFragment>
 {
-  public avoq(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
-  
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public avoq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
+    super(paramReceiptMessageDetailFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
     }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
+      }
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      return;
     }
-    return 1;
+    if (paramInt != 1281)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      return;
+    }
+    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 

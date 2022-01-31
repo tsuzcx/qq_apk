@@ -1,33 +1,13 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import java.io.File;
+import org.json.JSONObject;
 
-public class udb
-  implements Animation.AnimationListener
+public abstract interface udb
 {
-  public udb(ExploreAnimalView paramExploreAnimalView) {}
+  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation = (ImageView)this.a.findViewById(2131365318);
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365319);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362792);
-    this.a.a(paramAnimation, 100L);
-    this.a.a(localImageView1, 240L);
-    this.a.a(localImageView2, 360L);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

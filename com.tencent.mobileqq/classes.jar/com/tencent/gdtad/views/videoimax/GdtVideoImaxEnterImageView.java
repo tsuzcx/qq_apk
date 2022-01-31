@@ -6,7 +6,7 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import yxs;
+import yxp;
 
 public class GdtVideoImaxEnterImageView
   extends ImageView
@@ -30,7 +30,7 @@ public class GdtVideoImaxEnterImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    yxs.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
+    yxp.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
     if (this.a != null)
     {
       int i = paramCanvas.save();

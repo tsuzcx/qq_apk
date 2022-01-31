@@ -1,42 +1,6 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-
-final class arci
-  extends atzn
+public abstract interface arci
 {
-  arci(Activity paramActivity, String paramString, Runnable paramRunnable) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131699011), 0).a();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      return;
-      bcpw.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
-    }
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
-    localIntent.putExtra("k_from", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
-    {
-      localIntent.putExtra("phone_num", paramRspBody);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
-      return;
-    }
-  }
+  public abstract void a(vto paramvto);
 }
 
 

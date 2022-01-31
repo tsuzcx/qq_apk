@@ -1,27 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-public class ajqb
+class ajqb
+  implements ImageAssetDelegate
 {
-  public ajpz a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public ImageView b;
-  public RelativeLayout b;
-  public TextView b;
-  public ImageView c;
-  public RelativeLayout c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
+  ajqb(ajqa paramajqa) {}
+  
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    if (this.a.a.a() == null) {
+      return null;
+    }
+    return (Bitmap)this.a.a.a().get(paramLottieImageAsset.getKey());
+  }
 }
 
 

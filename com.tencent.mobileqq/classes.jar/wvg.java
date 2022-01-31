@@ -1,6 +1,19 @@
-public abstract interface wvg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+
+public final class wvg
+  implements Parcelable.Creator<CommodityBean>
 {
-  public abstract void a(boolean paramBoolean);
+  public CommodityBean a(Parcel paramParcel)
+  {
+    return new CommodityBean(paramParcel);
+  }
+  
+  public CommodityBean[] a(int paramInt)
+  {
+    return new CommodityBean[paramInt];
+  }
 }
 
 

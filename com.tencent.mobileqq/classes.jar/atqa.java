@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class atqa
-  implements DialogInterface.OnClickListener
+  implements atar
 {
-  atqa(atpi paramatpi) {}
+  atqa(atpk paramatpk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.a.d(true);
-    axqw.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
   }
 }
 

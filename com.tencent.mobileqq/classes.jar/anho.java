@@ -1,15 +1,38 @@
+import android.os.SystemClock;
+
 public class anho
 {
   private long a;
+  private long b;
+  private long c;
   
   public long a()
   {
     return this.a;
   }
   
-  public void a(long paramLong)
+  public void a()
   {
-    this.a = paramLong;
+    this.a = 0L;
+    this.b = 0L;
+  }
+  
+  public long b()
+  {
+    this.b = (SystemClock.uptimeMillis() - this.c);
+    this.a += this.b;
+    b();
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.c = SystemClock.uptimeMillis();
+  }
+  
+  public long c()
+  {
+    return this.b;
   }
 }
 

@@ -1,116 +1,61 @@
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
 public class pjs
+  extends TextBase
 {
-  public static void a(@NonNull View paramView, String paramString)
+  private final int jdField_a_of_type_Int = -654311424;
+  private NativeCommentView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView;
+  private final int b = 5;
+  
+  public pjs(VafContext paramVafContext)
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramView, localJSONObject);
-      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
-    }
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView = new NativeCommentView(paramVafContext.getContext());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setTextColor(-654311424);
   }
   
-  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
+  public void a(pau parampau)
   {
-    int i = paramView.getLeft();
-    int j = paramView.getRight();
-    int k = paramView.getTop();
-    int m = paramView.getBottom();
-    Object localObject1 = paramView.getClass().getSimpleName();
-    Object localObject2 = new Rect(i, k, j, m);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject1);
-    localJSONObject.put("visibility", paramView.getVisibility());
-    localJSONObject.put("bounds", localObject2);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramView instanceof ViewGroup))
-    {
-      j = ((ViewGroup)paramView).getChildCount();
-      localObject1 = new JSONArray();
-      i = 0;
-      while (i < j)
-      {
-        localObject2 = new JSONObject();
-        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
-        ((JSONArray)localObject1).put(localObject2);
-        i += 1;
-      }
-      paramJSONObject.put("children", localObject1);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setModel(parampau);
   }
   
-  public static void a(@NonNull ViewBase paramViewBase, String paramString)
+  public int getComMeasuredHeight()
   {
-    if (a()) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramViewBase, localJSONObject);
-      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramViewBase)
-    {
-      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getComMeasuredHeight();
   }
   
-  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
+  public int getComMeasuredWidth()
   {
-    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
-    Object localObject2 = paramViewBase.getClass().getSimpleName();
-    Object localObject3 = paramViewBase.getName();
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", localObject2);
-    localJSONObject.put("id", localObject3);
-    localJSONObject.put("visibility", paramViewBase.getVisibility());
-    localJSONObject.put("bounds", localObject1);
-    paramJSONObject.put("view", localJSONObject);
-    if ((paramViewBase instanceof Layout))
-    {
-      localObject1 = ((Layout)paramViewBase).getSubViews();
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        paramViewBase = new JSONArray();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ViewBase)((Iterator)localObject1).next();
-          localObject3 = new JSONObject();
-          a((ViewBase)localObject2, (JSONObject)localObject3);
-          paramViewBase.put(localObject3);
-        }
-        paramJSONObject.put("children", paramViewBase);
-      }
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getComMeasuredWidth();
   }
   
-  public static void a(String paramString1, String paramString2)
+  public View getNativeView()
   {
-    QLog.d(paramString1, 1, paramString2);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView;
   }
   
-  public static boolean a()
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return true;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setBackgroundColor(this.mBackground);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setTextSize(0, this.mTextSize);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setIncludeFontPadding(false);
   }
 }
 

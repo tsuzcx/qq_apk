@@ -1,96 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amxd
+  extends ampa<amxc>
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int = -1;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int = -1;
-  private String jdField_d_of_type_JavaLangString = "";
-  private String e = "";
-  
-  public static amxd a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      return null;
-    }
-    amxd localamxd = new amxd();
-    try
-    {
-      paramArrayOfampi = new JSONObject(paramArrayOfampi[0].jdField_a_of_type_JavaLangString);
-      localamxd.jdField_a_of_type_Int = paramArrayOfampi.getInt("check_day");
-      localamxd.jdField_b_of_type_Int = paramArrayOfampi.getInt("check_time");
-      localamxd.jdField_c_of_type_Int = paramArrayOfampi.getInt("album_days");
-      localamxd.jdField_d_of_type_Int = paramArrayOfampi.getInt("photos_limit");
-      localamxd.jdField_a_of_type_JavaLangString = paramArrayOfampi.getString("tips");
-      localamxd.jdField_b_of_type_JavaLangString = paramArrayOfampi.getString("jump_text");
-      localamxd.jdField_c_of_type_JavaLangString = paramArrayOfampi.getString("t_show");
-      localamxd.jdField_d_of_type_JavaLangString = paramArrayOfampi.getString("t_click");
-      localamxd.e = paramArrayOfampi.getString("t_close");
-      localamxd.jdField_a_of_type_Boolean = true;
-      return localamxd;
-    }
-    catch (JSONException paramArrayOfampi)
-    {
-      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfampi);
-    }
-    return localamxd;
-  }
-  
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 484;
   }
   
-  public String a()
+  @NonNull
+  public amxc a(int paramInt)
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return new amxc();
   }
   
-  public boolean a()
+  @Nullable
+  public amxc a(amph[] paramArrayOfamph)
   {
-    return this.jdField_a_of_type_Boolean;
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return amxc.a(paramArrayOfamph);
+    }
+    return null;
   }
+  
+  public Class<amxc> a()
+  {
+    return amxc.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amxc paramamxc) {}
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return 0;
   }
   
-  public String b()
+  public boolean b()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return false;
   }
   
-  public int c()
+  public boolean c()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String e()
-  {
-    return this.e;
+    return true;
   }
 }
 

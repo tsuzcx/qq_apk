@@ -1,22 +1,8 @@
-import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.graphics.Bitmap;
 
-public class bcne
-  extends URLDrawableDownListener.Adapter
+public abstract interface bcne
 {
-  public bcne(NewStyleDropdownView paramNewStyleDropdownView) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a(null, (ApngDrawable)paramView);
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

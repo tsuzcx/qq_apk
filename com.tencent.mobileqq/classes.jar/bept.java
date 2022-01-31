@@ -1,21 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ProgressBar;
-import com.tencent.qqmini.sdk.launcher.AppUIProxy.LoadingUI;
+import android.os.Bundle;
 
-public class bept
-  implements Animation.AnimationListener
+class bept
+  implements beti
 {
-  public bept(AppUIProxy.LoadingUI paramLoadingUI) {}
+  bept(beps parambeps, bepu parambepu, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    AppUIProxy.LoadingUI.a(this.a).setVisibility(0);
+    if (this.jdField_a_of_type_Bepu == null) {
+      return;
+    }
+    if ((paramInt == 0) || (paramInt == 1)) {
+      try
+      {
+        this.jdField_a_of_type_Bepu.a(true, new Bundle());
+        return;
+      }
+      catch (Exception localException)
+      {
+        betc.d("MiniAppCmdServlet", "cmd response exception. cmd=" + this.jdField_a_of_type_JavaLangString, localException);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Bepu.a(false, new Bundle());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,6 @@
-import android.graphics.Point;
-
-final class bbko
-  implements bbkr<Point>
+public abstract interface bbko
 {
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
-  {
-    float f1 = paramPoint1.x;
-    float f2 = paramPoint1.y;
-    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,113 +1,90 @@
-import android.os.SystemClock;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.mobileqq.statistics.UnifiedMonitor.StackGetterJob;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
 public class axsd
 {
-  public static LinkedList<axse> a = new LinkedList();
+  public float a;
+  public int a;
+  public long a;
+  public volatile UnifiedMonitor.StackGetterJob a;
+  public volatile String a;
+  public AbstractUnifiedMonitor.ThreadMonitorCallback a;
+  public boolean a;
+  public float b;
+  public int b;
+  public volatile long b;
+  public volatile boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e = 5;
+  public int f = 300;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
   
-  public static axse a(Class paramClass, int paramInt)
+  public axsd()
   {
-    if (paramClass == null) {
-      return null;
-    }
-    int i = a.size() - 1;
-    while (i >= 0)
-    {
-      axse localaxse = (axse)a.get(i);
-      if ((paramClass == localaxse.jdField_a_of_type_JavaLangClass) && (paramInt == localaxse.jdField_a_of_type_Long))
-      {
-        a.remove(i);
-        return localaxse;
-      }
-      i -= 1;
-    }
-    return null;
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Float = 0.001F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 500;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
   }
   
-  public static void a(long paramLong)
+  public axsd(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
   {
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      axse localaxse = (axse)localIterator.next();
-      localaxse.b += paramLong;
-    }
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Float = 0.001F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 500;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.i = paramInt4;
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString, int paramInt2)
+  public void a(int paramInt)
   {
-    a(paramAppInterface, paramClass, paramInt1, paramString, paramInt2, "");
-  }
-  
-  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    if (paramClass == null) {
-      return;
-    }
-    int i = a.size();
-    if (i > 0)
+    if ((UnifiedMonitor.d()) && (paramInt != 9) && (this.jdField_a_of_type_Float > 0.0F))
     {
-      i -= 1;
-      if (i >= 0)
-      {
-        axse localaxse = (axse)a.get(i);
-        if (localaxse.jdField_a_of_type_JavaLangClass == paramClass)
-        {
-          if (!(paramAppInterface instanceof QQAppInterface)) {
-            break label123;
-          }
-          axqw.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localaxse.jdField_a_of_type_JavaLangString, localaxse.jdField_a_of_type_JavaLangString, localaxse.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localaxse.b), "", "");
-        }
-        for (;;)
-        {
-          a.remove(i);
-          i -= 1;
-          break;
-          label123:
-          if (paramAppInterface != null) {
-            paramAppInterface.reportClickEvent("CliOper", "", "", localaxse.jdField_a_of_type_JavaLangString, localaxse.jdField_a_of_type_JavaLangString, localaxse.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localaxse.b), "", "");
-          } else {
-            axqw.b(null, "CliOper", "", "", localaxse.jdField_a_of_type_JavaLangString, localaxse.jdField_a_of_type_JavaLangString, localaxse.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localaxse.b), "", "");
-          }
-        }
-      }
+      this.jdField_a_of_type_Float = 1.0F;
+      this.jdField_b_of_type_Float = 1.0F;
+      this.jdField_b_of_type_Int = 2147483647;
     }
-    paramAppInterface = new axse();
-    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
-    paramAppInterface.jdField_a_of_type_Long = paramInt1;
-    paramAppInterface.b = SystemClock.elapsedRealtime();
-    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
-    paramAppInterface.jdField_a_of_type_Int = paramInt2;
-    a.add(paramAppInterface);
-  }
-  
-  public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((paramClass == null) || (paramString == null)) {
-      return;
-    }
-    if (paramString.contains("/qunactivity/")) {}
-    for (String str = "0X8004EC8";; str = null)
+    if (Math.random() <= this.jdField_a_of_type_Float) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (paramString.contains("/hotchat/"))
-      {
-        str = "0X8004410";
-        paramInt2 = 2;
-      }
-      if (str == null) {
-        break;
-      }
-      a(null, paramClass, paramInt1, str, paramInt2);
+      this.jdField_a_of_type_Boolean = bool;
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axsd
  * JD-Core Version:    0.7.0.1
  */

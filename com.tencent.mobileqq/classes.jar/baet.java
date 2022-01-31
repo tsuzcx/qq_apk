@@ -1,8 +1,15 @@
-public abstract interface baet
+import android.text.Editable;
+import java.util.Comparator;
+
+final class baet
+  implements Comparator
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  baet(Editable paramEditable) {}
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+  }
 }
 
 

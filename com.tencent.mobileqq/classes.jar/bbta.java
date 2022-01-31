@@ -1,15 +1,18 @@
-public class bbta
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class bbta
+  implements Handler.Callback
 {
-  String a;
-  String b;
-  String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  bbta(bbsz parambbsz) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if ((paramMessage != null) && (paramMessage.obj != null)) {
+      bbtb.a(paramMessage.obj.toString());
+    }
+    return false;
+  }
 }
 
 

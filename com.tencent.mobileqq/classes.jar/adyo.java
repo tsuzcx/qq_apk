@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 class adyo
-  implements DialogInterface.OnClickListener
+  extends aece
 {
-  adyo(adyh paramadyh) {}
+  protected ViewGroup a;
+  protected ImageView a;
+  protected TextView a;
+  protected ETTextView a;
+  protected BubbleImageView a;
+  protected TextView b;
+  protected ETTextView b;
+  protected TextView c;
+  public int e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  adyo(adyf paramadyf) {}
 }
 
 

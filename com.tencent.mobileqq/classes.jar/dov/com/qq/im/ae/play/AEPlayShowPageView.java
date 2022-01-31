@@ -10,75 +10,75 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bbkx;
-import biim;
-import biqn;
-import biwb;
-import biwh;
-import biwk;
-import biwp;
-import biwq;
-import bizc;
-import bizg;
-import bizq;
+import bbll;
+import bijd;
+import bire;
+import biws;
+import biwy;
+import bixb;
+import bixg;
+import bixh;
+import bizt;
+import bizx;
+import bjah;
 import java.util.List;
 
 public class AEPlayShowPageView
   extends FrameLayout
 {
-  private static final biwk jdField_a_of_type_Biwk = a(1);
-  private static final biwk b = a(2);
+  private static final bixb jdField_a_of_type_Bixb = a(1);
+  private static final bixb b = a(2);
   private int jdField_a_of_type_Int = 2;
   private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private biwb jdField_a_of_type_Biwb;
-  private biwh jdField_a_of_type_Biwh;
-  private List<biqn> jdField_a_of_type_JavaUtilList;
+  private biws jdField_a_of_type_Biws;
+  private biwy jdField_a_of_type_Biwy;
+  private List<bire> jdField_a_of_type_JavaUtilList;
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull biwb parambiwb, int paramInt2, @NonNull List<biqn> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull biws parambiws, int paramInt2, @NonNull List<bire> paramList)
   {
     super(paramContext, paramAttributeSet, paramInt1);
-    a(parambiwb, paramInt2, paramList);
+    a(parambiws, paramInt2, paramList);
     a(paramContext);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull biwb parambiwb, int paramInt, @NonNull List<biqn> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull biws parambiws, int paramInt, @NonNull List<bire> paramList)
   {
-    this(paramContext, paramAttributeSet, 0, parambiwb, paramInt, paramList);
+    this(paramContext, paramAttributeSet, 0, parambiws, paramInt, paramList);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull biwb parambiwb, int paramInt, @NonNull List<biqn> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull biws parambiws, int paramInt, @NonNull List<bire> paramList)
   {
-    this(paramContext, null, parambiwb, paramInt, paramList);
+    this(paramContext, null, parambiws, paramInt, paramList);
   }
   
-  private static biwk a(int paramInt)
+  private static bixb a(int paramInt)
   {
-    int j = bbkx.a(10.0F);
-    int k = bbkx.a(4.0F);
+    int j = bbll.a(10.0F);
+    int k = bbll.a(4.0F);
     int m = (int)(k * 0.96F);
     if (paramInt == 1) {}
-    for (int i = bbkx.a() - j * 2 - k * 2;; i = (bbkx.a() - j * 2 - k * 4) / 2)
+    for (int i = bbll.a() - j * 2 - k * 2;; i = (bbll.a() - j * 2 - k * 4) / 2)
     {
       int n = (int)(i * 0.96F * 59.0F / 34.0F);
-      biwk localbiwk = new biwk();
-      localbiwk.jdField_a_of_type_Int = (i + k * 2);
-      localbiwk.b = (m * 2 + n);
-      localbiwk.c = k;
-      localbiwk.d = m;
+      bixb localbixb = new bixb();
+      localbixb.jdField_a_of_type_Int = (i + k * 2);
+      localbixb.b = (m * 2 + n);
+      localbixb.c = k;
+      localbixb.d = m;
       if (paramInt == 1) {
-        localbiwk.d = j;
+        localbixb.d = j;
       }
-      return localbiwk;
+      return localbixb;
     }
   }
   
   private void a(@NonNull Context paramContext)
   {
     LayoutInflater.from(paramContext).inflate(2131558517, this, true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131362176));
-    bizq.a("AEPlayShowPart", "rv toString " + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new biwp(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131362175));
+    bjah.a("AEPlayShowPart", "rv toString " + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bixg(this));
     if (this.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 1, 1, false);
@@ -88,11 +88,11 @@ public class AEPlayShowPageView
       }
     }
     label198:
-    for (biwk localbiwk = new biwk(jdField_a_of_type_Biwk);; localbiwk = new biwk(b))
+    for (bixb localbixb = new bixb(jdField_a_of_type_Bixb);; localbixb = new bixb(b))
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new biwq(this, localbiwk));
-      this.jdField_a_of_type_Biwh = new biwh(paramContext, this.jdField_a_of_type_Biwb, localbiwk, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Biwh);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new bixh(this, localbixb));
+      this.jdField_a_of_type_Biwy = new biwy(paramContext, this.jdField_a_of_type_Biws, localbixb, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Biwy);
       a(this.jdField_a_of_type_JavaUtilList);
       return;
       this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 2, 1, false);
@@ -100,33 +100,33 @@ public class AEPlayShowPageView
     }
   }
   
-  private void a(@NonNull biwb parambiwb, int paramInt, @NonNull List<biqn> paramList)
+  private void a(@NonNull biws parambiws, int paramInt, @NonNull List<bire> paramList)
   {
-    this.jdField_a_of_type_Biwb = parambiwb;
+    this.jdField_a_of_type_Biws = parambiws;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Biwb == null) {}
+    if (this.jdField_a_of_type_Biws == null) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        localObject = this.jdField_a_of_type_Biwb.a(65537, new Object[0]);
-      } while (!(localObject instanceof biim));
-      localObject = (biim)localObject;
-    } while ((((biim)localObject).a() == null) || (((biim)localObject).a().getIntent() == null));
-    ((biim)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
-    ((biim)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
+        localObject = this.jdField_a_of_type_Biws.a(65537, new Object[0]);
+      } while (!(localObject instanceof bijd));
+      localObject = (bijd)localObject;
+    } while ((((bijd)localObject).a() == null) || (((bijd)localObject).a().getIntent() == null));
+    ((bijd)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
+    ((bijd)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Biwh.a();
+    this.jdField_a_of_type_Biwy.a();
   }
   
   public void a(int paramInt)
@@ -136,15 +136,15 @@ public class AEPlayShowPageView
       if (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager != null) {
         this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.scrollToPositionWithOffset(paramInt, 0);
       }
-      bizq.a("AEPlayShowPart", "out........" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
+      bjah.a("AEPlayShowPart", "out........" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new AEPlayShowPageView.3(this, paramInt));
     }
   }
   
-  public void a(@NonNull List<biqn> paramList)
+  public void a(@NonNull List<bire> paramList)
   {
-    if (this.jdField_a_of_type_Biwh != null) {
-      this.jdField_a_of_type_Biwh.a(paramList);
+    if (this.jdField_a_of_type_Biwy != null) {
+      this.jdField_a_of_type_Biwy.a(paramList);
     }
   }
   
@@ -158,10 +158,10 @@ public class AEPlayShowPageView
       return;
       while ((i < this.jdField_a_of_type_JavaUtilList.size()) && (i <= j))
       {
-        biqn localbiqn = (biqn)this.jdField_a_of_type_JavaUtilList.get(i);
-        bizg.a().c(localbiqn.f);
-        bizg.a().b(i + 1);
-        bizc.a().e(localbiqn.a);
+        bire localbire = (bire)this.jdField_a_of_type_JavaUtilList.get(i);
+        bizx.a().c(localbire.f);
+        bizx.a().b(i + 1);
+        bizt.a().e(localbire.a);
         i += 1;
       }
     }
@@ -179,14 +179,14 @@ public class AEPlayShowPageView
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(null);
     }
-    if (this.jdField_a_of_type_Biwh != null) {
-      this.jdField_a_of_type_Biwh.b();
+    if (this.jdField_a_of_type_Biwy != null) {
+      this.jdField_a_of_type_Biwy.b();
     }
   }
   
   public void setTabId(String paramString)
   {
-    this.jdField_a_of_type_Biwh.a(paramString);
+    this.jdField_a_of_type_Biwy.a(paramString);
   }
 }
 

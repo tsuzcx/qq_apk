@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
+import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
 
 public final class npm
-  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
+  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
 {
-  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
+  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
   {
-    return new VideoInfo.GameAdDownloadInfo(paramParcel);
+    return new VideoInfo.LikeActionDownloadBar(paramParcel);
   }
   
-  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
+  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
   {
-    return new VideoInfo.GameAdDownloadInfo[paramInt];
+    return new VideoInfo.LikeActionDownloadBar[paramInt];
   }
 }
 

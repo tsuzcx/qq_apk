@@ -1,26 +1,11 @@
-import android.view.View;
-import java.util.List;
-
 class adir
-  implements bfoq
+  implements amci
 {
-  adir(adiq paramadiq, List paramList, bfol parambfol) {}
+  adir(adiq paramadiq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      adiq.a(this.jdField_a_of_type_Adiq, this.jdField_a_of_type_JavaUtilList);
-      adgb.a(adiq.a(this.jdField_a_of_type_Adiq), this.jdField_a_of_type_JavaUtilList, 3);
-      continue;
-      this.jdField_a_of_type_Adiq.a(this.jdField_a_of_type_JavaUtilList, 0);
-      adgb.a(adiq.a(this.jdField_a_of_type_Adiq), this.jdField_a_of_type_JavaUtilList, 3);
-    }
+    adiq.a(this.a);
   }
 }
 

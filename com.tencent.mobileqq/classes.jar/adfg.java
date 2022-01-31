@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
-
-public class adfg
-  implements View.OnClickListener
+public abstract interface adfg
 {
-  public adfg(ColorView paramColorView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (ColorView.a(this.a) != null) {
-      ColorView.a(this.a).a();
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

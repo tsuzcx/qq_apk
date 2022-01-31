@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import alqg;
-import aynn;
+import alqf;
+import aynp;
 import java.util.Map;
 
 public class ArkAppSchemeCenter$QQSchemeHandler$1
   implements Runnable
 {
-  public ArkAppSchemeCenter$QQSchemeHandler$1(alqg paramalqg, Map paramMap1, Map paramMap2) {}
+  public ArkAppSchemeCenter$QQSchemeHandler$1(alqf paramalqf, Map paramMap1, Map paramMap2) {}
   
   public void run()
   {
-    aynn.a(2, this.a, this.b);
+    aynp.a(2, this.a, this.b);
   }
 }
 

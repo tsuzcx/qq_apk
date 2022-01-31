@@ -1,18 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pre
-  extends prd
+class pre
+  implements View.OnTouchListener
 {
-  public pre(Context paramContext, baxk parambaxk, rap paramrap)
-  {
-    super(paramContext, parambaxk, paramrap);
-  }
+  pre(prc paramprc, LinearLayout paramLinearLayout) {}
   
-  public pqt g()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Pqs = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

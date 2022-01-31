@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
 public final class aldu
-  implements Parcelable.Creator<ARCommonConfigInfo>
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public ARCommonConfigInfo a(Parcel paramParcel)
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    return new ARCommonConfigInfo(paramParcel);
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
   }
   
-  public ARCommonConfigInfo[] a(int paramInt)
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
   {
-    return new ARCommonConfigInfo[paramInt];
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 

@@ -1,19 +1,23 @@
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aops
-  implements aptu
+  implements URLDrawable.URLDrawableListener
 {
-  public aops(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public aops(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
   
-  public void a()
-  {
-    UniformDownloadActivity.a(this.a);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void b()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

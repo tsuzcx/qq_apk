@@ -1,6 +1,30 @@
-public abstract interface ytq
+import com.tencent.image.URLDrawable;
+import java.net.URL;
+
+class ytq
+  implements zaz
 {
-  public abstract void b(yto paramyto);
+  ytq(ytp paramytp) {}
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      yxp.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
+      return;
+    }
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      yxp.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
+      return;
+    }
+  }
 }
 
 

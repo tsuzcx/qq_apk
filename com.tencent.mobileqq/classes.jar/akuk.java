@@ -1,33 +1,16 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public final class akuk
-  implements Handler.Callback
+  extends akui
 {
-  public boolean handleMessage(Message paramMessage)
+  public akuk(String paramString, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
-      }
-      SosoInterface.c();
-      SosoInterface.d();
-      continue;
-      if (SosoInterface.a().hasMessages(1001))
-      {
-        SosoInterface.a().removeMessages(1001);
-        SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
-      }
-    }
+    super(paramString, paramBoolean);
   }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 

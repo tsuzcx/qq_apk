@@ -1,135 +1,102 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amye
-  implements ampd<String>, amxq
+  extends ampa<amyd>
 {
-  static boolean jdField_a_of_type_Boolean = true;
-  static boolean b = true;
-  private long jdField_a_of_type_Long = 20971520L;
-  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
-  public String a;
-  private boolean c;
-  
-  public amye()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return 555;
   }
   
-  private void a()
+  @NonNull
+  public amyd a(int paramInt)
   {
-    this.jdField_a_of_type_Long = 20971520L;
-    this.c = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+    return new amyd();
   }
   
-  private void a(JSONObject paramJSONObject)
+  @Nullable
+  public amyd a(amph[] paramArrayOfamph)
   {
-    try
-    {
-      this.c = paramJSONObject.getBoolean("enableaqq");
-      paramJSONObject = paramJSONObject.getJSONObject("config");
-      if (paramJSONObject != null)
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed");
+    if (paramArrayOfamph != null) {
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
-        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
-      }
-      for (;;)
-      {
-        QLog.i("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
-        return;
-        this.jdField_a_of_type_Long = 20971520L;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
-      }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
-    }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ExcitingTransferUploadChnConfigInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    int k = 0;
-    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
-      a();
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (paramString.length() == 0)
-      {
-        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-        a();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    JSONArray localJSONArray = paramString.names();
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < localJSONArray.length())
-      {
-        Object localObject = localJSONArray.getString(i).trim();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        if (paramArrayOfamph.length > 0)
         {
-          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
-          if (localObject != null)
-          {
-            a((JSONObject)localObject);
-            j = 1;
-          }
+          paramArrayOfamph = (amyd)ampv.a(paramArrayOfamph[0].a, amyd.class);
+          return paramArrayOfamph;
         }
       }
-      else
+      catch (QStorageInstantiateException paramArrayOfamph)
       {
-        if (j != 0) {
-          break;
-        }
-        QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Upload config, use default value");
-        a();
-        return;
+        QLog.e("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfamph.getMessage());
       }
-      i += 1;
+    }
+    return null;
+  }
+  
+  public Class<amyd> a()
+  {
+    return amyd.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(amyd paramamyd)
+  {
+    if (paramamyd != null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label152;
+      }
+    }
+    label152:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        if (TextUtils.isEmpty(paramamyd.a)) {
+          paramamyd.a = "{}";
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingdownload_" + ((QQAppInterface)localObject).c(), 0).edit();
+        localEditor.putString("qfile_groupfile_excitingdownload", paramamyd.a);
+        localEditor.apply();
+        QLog.i("QFileExcitingGroupDownloadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Download config [" + paramamyd.a + "]");
+        localObject = (aoww)((QQAppInterface)localObject).getManager(317);
+        if (localObject != null) {
+          ((aoww)localObject).a(paramamyd);
+        }
+      }
+      return;
     }
   }
   
-  public boolean a()
+  public int b()
   {
-    return this.c;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

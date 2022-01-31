@@ -1,29 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class bjzz
-  extends AnimatorListenerAdapter
+final class bjzz
+  implements Animation.AnimationListener
 {
-  bjzz(bjzx parambjzx) {}
+  bjzz(View paramView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    veg.b(bjzt.a, "scaleAnimator cancel!");
+    this.a.setAnimation(null);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    veg.b(bjzt.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.j = false;
-    this.a.b.k();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    veg.b(bjzt.a, "scaleAnimator start!");
-    this.a.j = true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

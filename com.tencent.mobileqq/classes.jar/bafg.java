@@ -1,52 +1,137 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
 public class bafg
-  implements ajtg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  protected QQAppInterface a;
+  public static int a;
+  public static boolean a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private bafh jdField_a_of_type_Bafh;
+  private int b = 1;
+  private int c;
   
-  public bafg(QQAppInterface paramQQAppInterface)
+  public bafg(Activity paramActivity)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt) {}
-  
-  protected void b(long paramLong, boolean paramBoolean) {}
-  
-  protected void c(long paramLong, boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static int a(Activity paramActivity)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      b(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
-      return;
-    case 1: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
-      return;
-    case 5: 
-      c(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
-      return;
+    paramActivity = paramActivity.getWindow().getDecorView();
+    int i = paramActivity.getHeight();
+    if (a(paramActivity) > i * 3 / 4) {
+      return 2;
     }
-    a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+    return 1;
+  }
+  
+  public static int a(View paramView)
+  {
+    Rect localRect = new Rect();
+    paramView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
+    jdField_a_of_type_Boolean = a(paramActivity);
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    }
+    return localRect.top == 0;
+  }
+  
+  @RequiresApi(api=16)
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      this.b = 1;
+      this.jdField_a_of_type_Bafh = null;
+      this.c = 0;
+      return;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(bafh parambafh)
+  {
+    if (parambafh != null) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
+    }
+    this.b = 1;
+    this.jdField_a_of_type_Bafh = parambafh;
+    this.c = 0;
+  }
+  
+  public void onGlobalLayout()
+  {
+    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localView == null) {}
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return;
+      i = localView.getHeight();
+      j = a(localView);
+      k = i - j;
+      if (this.jdField_a_of_type_AndroidViewView != null)
+      {
+        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+        if ((m != this.c) && (this.jdField_a_of_type_Bafh != null)) {
+          this.jdField_a_of_type_Bafh.b(this.b, j, this.c);
+        }
+        this.c = m;
+      }
+    } while (j == this.c);
+    if (k > i / 4)
+    {
+      this.b = 1;
+      if (this.jdField_a_of_type_Bafh != null) {
+        this.jdField_a_of_type_Bafh.a(this.b, j, k);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
+      }
+      this.c = j;
+      return;
+      if (k < i * 3 / 4)
+      {
+        this.b = 2;
+        if (this.jdField_a_of_type_Bafh != null) {
+          this.jdField_a_of_type_Bafh.a(this.b, j, k);
+        }
+      }
+    }
   }
 }
 

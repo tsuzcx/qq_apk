@@ -1,53 +1,195 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
+import com.tencent.image.RoundRectDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardPreviewMixedMsgController.1;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.MaxHeightRelativelayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqdx
-  extends aqdt
+  extends aqdv
 {
-  private int jdField_a_of_type_Int;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
+  private int a;
+  protected LinearLayout a;
+  protected QQAppInterface a;
   
-  public aqdx(bbgg parambbgg)
+  public aqdx(bbgu parambbgu, QQAppInterface paramQQAppInterface)
   {
-    super(parambbgg);
+    super(parambbgu);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(ChatMessage paramChatMessage)
+  {
+    if ((paramChatMessage instanceof MessageForMixedMsg))
+    {
+      paramChatMessage = (MessageForMixedMsg)paramChatMessage;
+      if (paramChatMessage.msgElemList != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardPreviewMixedMsgController", 2, " initMixMsgLayout size:" + paramChatMessage.msgElemList.size());
+        }
+        int i = bbll.a(4.0F);
+        paramChatMessage = new ArrayList(paramChatMessage.msgElemList).iterator();
+        while (paramChatMessage.hasNext())
+        {
+          Object localObject2 = (MessageRecord)paramChatMessage.next();
+          Object localObject1;
+          if ((localObject2 instanceof MessageForText))
+          {
+            localObject1 = new AnimationTextView(this.jdField_a_of_type_AndroidContentContext);
+            ((AnimationTextView)localObject1).setTextSize(17.0F);
+            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165579));
+            ((AnimationTextView)localObject1).setSpannableFactory(aykk.a);
+            if (!TextUtils.isEmpty(((MessageForText)localObject2).sb2)) {
+              ((AnimationTextView)localObject1).setText(new aykk(((MessageForText)localObject2).sb2.toString(), 5, 20));
+            }
+            for (;;)
+            {
+              localObject2 = new LinearLayout.LayoutParams(-2, -2);
+              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+              break;
+              if (!TextUtils.isEmpty(((MessageForText)localObject2).sb)) {
+                ((AnimationTextView)localObject1).setText(new aykk(((MessageForText)localObject2).sb.toString(), 5, 20));
+              } else if (!TextUtils.isEmpty(((MessageForText)localObject2).msg)) {
+                ((AnimationTextView)localObject1).setText(new aykk(((MessageForText)localObject2).msg, 5, 20));
+              }
+            }
+          }
+          if ((localObject2 instanceof MessageForPic))
+          {
+            localObject2 = (MessageForPic)localObject2;
+            localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+            localObject2 = advs.a(this.jdField_a_of_type_AndroidContentContext, (MessageForPic)localObject2);
+            if (localObject2 != null)
+            {
+              if (((((URLDrawable)localObject2).getCurrDrawable() instanceof RoundRectDrawable)) && (a()))
+              {
+                RoundRectDrawable localRoundRectDrawable = (RoundRectDrawable)((URLDrawable)localObject2).getCurrDrawable();
+                ((ImageView)localObject1).setImageDrawable(new anoz(0, localRoundRectDrawable.getIntrinsicWidth(), localRoundRectDrawable.getIntrinsicHeight()));
+                ((ImageView)localObject1).postDelayed(new ForwardPreviewMixedMsgController.1(this, (ImageView)localObject1, (URLDrawable)localObject2), 300L);
+              }
+              for (;;)
+              {
+                ((ImageView)localObject1).setAdjustViewBounds(true);
+                localObject2 = new LinearLayout.LayoutParams(-2, -2);
+                ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+                ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+                this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+                break;
+                ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
+              }
+            }
+          }
+          else if ((localObject2 instanceof MessageForReplyText))
+          {
+            localObject2 = (MessageForReplyText)localObject2;
+            localObject1 = new AnimationTextView(this.jdField_a_of_type_AndroidContentContext);
+            ((AnimationTextView)localObject1).setTextSize(17.0F);
+            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165579));
+            ((AnimationTextView)localObject1).setSpannableFactory(aykk.a);
+            if (!TextUtils.isEmpty(((MessageForReplyText)localObject2).sb))
+            {
+              ((AnimationTextView)localObject1).setText(new aykk(((MessageForReplyText)localObject2).sb.toString(), 5, 20));
+              ((AnimationTextView)localObject1).setVisibility(0);
+            }
+            for (;;)
+            {
+              localObject2 = new LinearLayout.LayoutParams(-2, -2);
+              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+              break;
+              ((AnimationTextView)localObject1).setVisibility(8);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new aqdy(this));
+    }
+  }
+  
+  private boolean a()
+  {
+    String str = Build.MODEL;
+    if ((str.equals("vivo X20A")) || (str.equals("vivo X20")) || (str.equals("vivo X20Plus A")) || (str.equals("vivo X20Plus")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardPreviewMixedMsgController", 2, "isVivoBlackModel  ");
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() >= bbll.a(this.jdField_a_of_type_Int + 1))
+    {
+      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(bbll.a(450.0F));
+      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.requestLayout();
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardPreviewMixedMsgController", 2, " reset height ");
+      }
+    }
   }
   
   protected int a()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bbgg.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296975)) / bbkx.a));
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_Bbgu.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296975)) / bbll.a));
     }
     return this.jdField_a_of_type_Int;
   }
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558888, null));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377043));
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new aqdy(this));
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    ScrollView localScrollView = new ScrollView(this.jdField_a_of_type_AndroidContentContext);
+    localScrollView.setOverScrollMode(2);
+    localScrollView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    int i = bbll.a(15.0F);
+    int j = bbll.a(8.0F);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, j, i, j);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    localScrollView.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new ViewGroup.LayoutParams(-1, -2));
+    return localScrollView;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(String paramString, MessageForMixedMsg paramMessageForMixedMsg)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardPreviewTextController", 2, " bindData ");
+      QLog.d("ForwardPreviewMixedMsgController", 2, " bindData ");
     }
-    if (paramString1 != null) {
-      a(paramString1);
+    if (paramString != null) {
+      a(paramString);
     }
-    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new ayki(paramString2, 5, 20));
+    if ((paramMessageForMixedMsg != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+      a(paramMessageForMixedMsg);
     }
   }
 }

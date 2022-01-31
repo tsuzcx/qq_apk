@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.theme.diy;
 
-import ayms;
+import aymu;
 
 class ThemeDIYActivity$DataLoading$1
-  implements ayms
+  implements aymu
 {
   ThemeDIYActivity$DataLoading$1(ThemeDIYActivity.DataLoading paramDataLoading) {}
   

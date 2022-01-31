@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,19 +18,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 import java.io.File;
-import rae;
-import raf;
+import rab;
+import rac;
 
 public class KandianProgressView
   extends LinearLayout
 {
   public Bundle a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rae(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rab(this);
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public String a;
-  public raf a;
+  public rac a;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   String jdField_b_of_type_JavaLangString = "";
@@ -39,12 +39,12 @@ public class KandianProgressView
   TextView d;
   TextView e;
   
-  public KandianProgressView(Context paramContext, Bundle paramBundle, raf paramraf)
+  public KandianProgressView(Context paramContext, Bundle paramBundle, rac paramrac)
   {
     super(paramContext);
     LayoutInflater.from(paramContext).inflate(2131560100, this);
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("mTaskID");
-    this.jdField_a_of_type_Raf = paramraf;
+    this.jdField_a_of_type_Rac = paramrac;
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("arg_video_cover");
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     b();
@@ -65,14 +65,14 @@ public class KandianProgressView
   private void b()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365893));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375561));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375208));
-    this.d = ((TextView)findViewById(2131365011));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375563));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375210));
+    this.d = ((TextView)findViewById(2131365010));
     this.e = ((TextView)findViewById(2131370940));
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372004));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364803));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375200));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364996));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364802));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375202));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364995));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -103,7 +103,7 @@ public class KandianProgressView
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-    this.e.setText(ajyc.a(2131705934) + paramInt + "%");
+    this.e.setText(ajya.a(2131705945) + paramInt + "%");
     a(true);
   }
   
@@ -115,8 +115,8 @@ public class KandianProgressView
       Object localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-      int i = actn.a(100.0F, getResources());
-      int k = actn.a(100.0F, getResources());
+      int i = actj.a(100.0F, getResources());
+      int k = actj.a(100.0F, getResources());
       float f1 = ((BitmapFactory.Options)localObject).outWidth / i;
       float f2 = ((BitmapFactory.Options)localObject).outHeight / k;
       i = j;

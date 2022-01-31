@@ -1,17 +1,17 @@
 package cooperation.qzone.share;
 
-import bcpw;
-import bhlr;
+import bcql;
+import bhmi;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class WXShareFromQZHelper$3
   implements Runnable
 {
-  public WXShareFromQZHelper$3(bhlr parambhlr) {}
+  public WXShareFromQZHelper$3(bhmi parambhmi) {}
   
   public void run()
   {
-    bcpw.a(BaseApplication.getContext(), 2131718025, 0).a();
+    bcql.a(BaseApplication.getContext(), 2131718036, 0).a();
   }
 }
 

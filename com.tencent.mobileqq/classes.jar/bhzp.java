@@ -1,59 +1,70 @@
-import BOSSStrategyCenter.tAdvDesc;
+import android.content.Context;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import org.json.JSONObject;
 
 public class bhzp
-  extends ahmr
 {
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public bhzp(tAdvDesc paramtAdvDesc)
+  public View a(Context paramContext, String paramString)
   {
-    super(paramtAdvDesc);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
-    }
-    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
-    try
-    {
-      Object localObject = new JSONObject(str);
-      this.c = ((JSONObject)localObject).optString("topText");
-      this.d = ((JSONObject)localObject).optString("bottomText");
-      this.e = ((JSONObject)localObject).optString("textColor");
-      this.f = ((JSONObject)localObject).optString("cartoon");
-      this.g = ((JSONObject)localObject).optString("cartoon_md5");
-      this.h = ((JSONObject)localObject).optString("cartoonNum");
-      localObject = new bhzr(this, null);
-      ((ahms)localObject).a = this.f;
-      ((ahms)localObject).b = this.g;
-      if (!TextUtils.isEmpty(this.f)) {
-        ((ahms)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.f.hashCode())) + ".zip");
+      return null;
+      if ("text_view".equals(paramString)) {
+        return new TextView(paramContext);
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      bhkd.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
-    }
+      if ("image_view".equals(paramString)) {
+        return new ImageView(paramContext);
+      }
+      if ("layout".equals(paramString)) {
+        return new RelativeLayout(paramContext);
+      }
+      if ("lottie_view".equals(paramString)) {
+        return new DiniFlyAnimationView(paramContext);
+      }
+    } while (!"mask_view".equals(paramString));
+    return new ImageView(paramContext);
   }
+  
+  public bhzo a(View paramView)
+  {
+    if ((paramView == null) || (paramView.getClass() == null)) {
+      return null;
+    }
+    if (RelativeLayout.class.isInstance(paramView)) {
+      return new bhzm("layout", paramView);
+    }
+    return new bhzo(paramView);
+  }
+  
+  public bhzo a(String paramString, View paramView)
+  {
+    if ((paramView == null) || (paramView.getClass() == null)) {}
+    do
+    {
+      return null;
+      if ("text_view".equals(paramString)) {
+        return new bhzn(paramString, paramView);
+      }
+      if ("image_view".equals(paramString)) {
+        return new bhzj(paramString, paramView);
+      }
+      if ("layout".equals(paramString)) {
+        return new bhzm(paramString, paramView);
+      }
+      if ("lottie_view".equals(paramString)) {
+        return new bhzk(paramString, paramView);
+      }
+    } while (!"mask_view".equals(paramString));
+    return new bhzl(paramString, paramView);
+  }
+  
+  public void a(bhzo parambhzo, JSONObject paramJSONObject) {}
 }
 
 

@@ -1,21 +1,12 @@
+import android.view.View;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class atox
-  implements ajuc
+  implements atyh
 {
   public atox(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.a.a();
-    if (!paramBoolean) {
-      this.a.b(this.a.getString(2131691028));
-    }
-    while ((this.a.e != 1) || (paramInt != 2)) {
-      return;
-    }
-    NearbyPeopleProfileActivity.a(this.a).c();
-  }
+  public void onClick(View paramView) {}
 }
 
 

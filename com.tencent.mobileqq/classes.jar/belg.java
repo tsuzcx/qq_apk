@@ -1,8 +1,18 @@
-public abstract interface belg
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import java.io.File;
+
+public class belg
 {
-  public abstract void onSoftKeyboardClosed();
-  
-  public abstract void onSoftKeyboardOpened(int paramInt);
+  public static Uri a(Context paramContext, File paramFile)
+  {
+    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+    paramFile = Uri.fromFile(paramFile);
+    localIntent.setData(paramFile);
+    paramContext.sendBroadcast(localIntent);
+    return paramFile;
+  }
 }
 
 

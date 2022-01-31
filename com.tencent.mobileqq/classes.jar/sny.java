@@ -1,17 +1,17 @@
-import android.view.View;
+import android.view.KeyEvent;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class sny
+  implements TextView.OnEditorActionListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public ZImageView a;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public sny(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return paramKeyEvent.getKeyCode() == 66;
+  }
 }
 
 

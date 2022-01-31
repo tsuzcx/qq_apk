@@ -1,44 +1,53 @@
 import android.view.View;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import java.util.List;
 
 public class awnw
-  implements awof
+  implements awoh
 {
-  public static final String a;
-  private final List<awog> a;
-  private final String b;
+  protected int a;
+  private String a;
+  public List<awoi> a;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131705382);
-  }
-  
-  public awnw(List<awog> paramList, String paramString)
+  public awnw(List<awoi> paramList, String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public int a()
   {
-    return 2147483647;
+    return 3;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return ajya.a(2131705396);
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(View paramView) {}
+  public void a(View paramView)
+  {
+    awsq.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
+    String str = awwa.a("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
+    str = awwa.a("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
+    str = "mqqapi://microapp/open?url=" + str;
+    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
   public String b()
   {
-    return this.b;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

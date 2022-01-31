@@ -1,18 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.widget.TextView;
 import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class xie
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
   public xie(SingleLyricView paramSingleLyricView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    super.onAnimationCancel(paramAnimator);
     if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(f);
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
   }
 }

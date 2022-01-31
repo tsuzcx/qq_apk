@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface ucs
 {
-  public abstract boolean a();
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

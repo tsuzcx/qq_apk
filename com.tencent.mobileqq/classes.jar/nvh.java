@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.Editable.Factory;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nvh
-  implements View.OnClickListener
+  extends Editable.Factory
 {
   public nvh(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onClick(View paramView)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.a.m = true;
-    ReadInJoyBaseDeliverActivity.a(this.a);
-    this.a.a();
+    if ((paramCharSequence instanceof odp)) {
+      return (Editable)paramCharSequence;
+    }
+    return new odp(paramCharSequence, 3, 20);
   }
 }
 

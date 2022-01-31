@@ -1,12 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
-final class beko
-  extends AnimatorListenerAdapter
+public class beko
+  implements bekl<Boolean>
 {
-  public void onAnimationEnd(Animator paramAnimator)
+  private int a;
+  
+  public static beko a(int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
+    beko localbeko = new beko();
+    localbeko.a = paramInt;
+    return localbeko;
+  }
+  
+  public Boolean a(behn parambehn)
+  {
+    switch (this.a)
+    {
+    default: 
+      return Boolean.valueOf(false);
+    case 2: 
+      return Boolean.valueOf(parambehn.c());
+    }
+    return Boolean.valueOf(parambehn.d());
   }
 }
 

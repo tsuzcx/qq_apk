@@ -1,17 +1,22 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import java.util.List;
+import com.tencent.widget.AbsListView;
 
-public class arpr
+public abstract interface arpr
 {
-  public Context a;
-  public View a;
-  public arpt a;
-  public QQAppInterface a;
-  public FPSXListView a;
-  public List<andx> a;
+  public abstract int a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(arpt paramarpt);
+  
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

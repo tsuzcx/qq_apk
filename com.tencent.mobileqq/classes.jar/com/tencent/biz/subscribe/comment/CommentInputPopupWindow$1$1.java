@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
-import wne;
-import wnf;
+import wnb;
+import wnc;
 
 public class CommentInputPopupWindow$1$1
   implements Runnable
 {
-  public CommentInputPopupWindow$1$1(wnf paramwnf) {}
+  public CommentInputPopupWindow$1$1(wnc paramwnc) {}
   
   public void run()
   {

@@ -1,85 +1,18 @@
-import android.text.TextUtils;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aate
-  extends akgi
+  implements DialogInterface.OnClickListener
 {
   public aate(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!ChatSettingActivity.c(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.c(this.a));
-      }
-      return;
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131719532;; i = 2131719520)
-    {
-      bcpw.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.c(this.a) + ", mShieldUin=" + ChatSettingActivity.d(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (aser)this.a.app.getManager(16);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      ChatSettingActivity.b(this.a);
-      if (ChatSettingActivity.a(this.a))
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        ChatSettingActivity.a(this.a);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131719519;; i = 2131719518)
-    {
-      bcpw.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (aser)this.a.app.getManager(16);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131719518, 1);
   }
 }
 

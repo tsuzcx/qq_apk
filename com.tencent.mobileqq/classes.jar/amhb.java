@@ -1,29 +1,65 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class amhb
+public final class amhb
 {
-  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  
+  public amhb()
   {
-    paramView.setPivotX(paramView.getWidth());
-    paramView.setPivotY(paramView.getHeight() / 2);
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    localAnimatorSet.setDuration(paramInt);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
-    localAnimatorSet.start();
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public amhb a(int paramInt)
   {
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
-    localAnimatorSet.setDuration(paramInt);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
-    localAnimatorSet.start();
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public amhb a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public amhb a(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
+  }
+  
+  public ColorNote a()
+  {
+    return new ColorNote(this);
+  }
+  
+  public amhb b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public amhb b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public amhb c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public amhb d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

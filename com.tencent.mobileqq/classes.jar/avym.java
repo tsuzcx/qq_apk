@@ -1,14 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
+import java.util.Comparator;
 
 public class avym
-  implements avyu
+  implements Comparator<avxs>
 {
-  public avym(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  public avym(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
   
-  public void a()
+  public int a(avxs paramavxs1, avxs paramavxs2)
   {
-    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+    if (paramavxs2.a() > paramavxs1.a()) {
+      return -1;
+    }
+    if (paramavxs2.a() == paramavxs1.a()) {
+      return 0;
+    }
+    return 1;
   }
 }
 

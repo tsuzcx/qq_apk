@@ -1,205 +1,249 @@
-import NearbyGroup.Attr;
-import NearbyGroup.Cell;
-import NearbyGroup.GPS;
-import NearbyGroup.LBSInfo;
-import NearbyGroup.Wifi;
-import appoint.define.appoint_define.Cell;
-import appoint.define.appoint_define.GPS;
-import appoint.define.appoint_define.LBSInfo;
-import appoint.define.appoint_define.Wifi;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class asyx
 {
-  public static LBSInfo a()
+  public static Drawable a(Resources paramResources, int paramInt)
   {
-    return a(false, SosoInterface.a());
+    Drawable localDrawable = null;
+    if (paramInt == 0) {
+      localDrawable = banb.a(paramResources, paramResources.getColor(2131166129));
+    }
+    while (paramInt != 1) {
+      return localDrawable;
+    }
+    return banb.a(paramResources, paramResources.getColor(2131166127));
   }
   
-  public static LBSInfo a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static String a(int paramInt)
   {
-    Attr localAttr = null;
-    if (paramSosoLbsInfo == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1;
-    Object localObject2;
-    if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList != null)
+    String str = ajyg.c;
+    switch (paramInt)
     {
-      localObject1 = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (SosoInterface.SosoCell)((Iterator)localObject1).next();
-        localArrayList.add(new Cell((short)((SosoInterface.SosoCell)localObject2).jdField_a_of_type_Int, (short)((SosoInterface.SosoCell)localObject2).b, ((SosoInterface.SosoCell)localObject2).c, ((SosoInterface.SosoCell)localObject2).d, (short)((SosoInterface.SosoCell)localObject2).e));
+    case 3: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return ajyg.c;
+    case 2: 
+      return ajya.a(2131705608);
+    case 4: 
+      return ajya.a(2131705606);
+    case 5: 
+      return ajya.a(2131705607);
+    }
+    return ajya.a(2131705609);
+  }
+  
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    Object localObject2 = null;
+    int k = 0;
+    if ((paramContext == null) || (paramQQAppInterface == null) || (paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0)) {
+      return;
+    }
+    boolean bool = paramString2.equals(paramQQAppInterface.getCurrentAccountUin());
+    Object localObject1;
+    int i;
+    if (!bool)
+    {
+      localObject1 = (ajxl)paramQQAppInterface.getManager(51);
+      if ((localObject1 != null) && (((ajxl)localObject1).b(paramString2))) {
+        i = 1;
       }
     }
     for (;;)
     {
-      try
+      HotChatManager localHotChatManager = paramQQAppInterface.a(false);
+      if (localHotChatManager != null)
       {
-        if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null) {
-          break label313;
-        }
-        if (!paramBoolean) {
-          continue;
-        }
-        localObject1 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b * 1000000.0D), -1, 1);
-      }
-      catch (Exception localException)
-      {
-        Iterator localIterator;
-        SosoInterface.SosoWifi localSosoWifi;
-        localGPS = null;
-        continue;
-        if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute == null) {
-          continue;
-        }
-        localAttr = new Attr(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.b, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.c);
-        return new LBSInfo(localGPS, (ArrayList)localObject2, localArrayList, localAttr);
-      }
-      localObject2 = new ArrayList();
-      if (paramSosoLbsInfo.b != null)
-      {
-        localIterator = paramSosoLbsInfo.b.iterator();
-        if (localIterator.hasNext())
+        HotChatInfo localHotChatInfo = localHotChatManager.a(paramString1);
+        localObject1 = localHotChatInfo;
+        paramQQAppInterface = localObject2;
+        if (localHotChatInfo != null)
         {
-          localSosoWifi = (SosoInterface.SosoWifi)localIterator.next();
-          if (localSosoWifi == null) {
-            continue;
-          }
-          ((ArrayList)localObject2).add(new Wifi(localSosoWifi.jdField_a_of_type_Long, (short)localSosoWifi.jdField_a_of_type_Int));
-          continue;
-          localObject1 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D), -1, 0);
-          continue;
+          paramQQAppInterface = localHotChatInfo.troopCode;
+          localObject1 = localHotChatInfo;
         }
       }
-      label313:
-      GPS localGPS = null;
+      for (;;)
+      {
+        int j = k;
+        if (localHotChatManager != null)
+        {
+          j = k;
+          if (((HotChatInfo)localObject1).isGameRoom) {
+            j = 1;
+          }
+        }
+        if ((bool) || (i == 0))
+        {
+          if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat()))
+          {
+            i = 86;
+            label173:
+            paramString2 = new ProfileActivity.AllInOne(paramString2, i);
+            paramString2.h = 33;
+            paramString2.d = paramString1;
+            paramString2.c = paramQQAppInterface;
+            paramQQAppInterface = new Intent(paramContext, NearbyPeopleProfileActivity.class);
+            paramQQAppInterface.putExtra("AllInOne", paramString2);
+            if (!bool) {
+              break label268;
+            }
+          }
+          label268:
+          for (i = 2;; i = 3)
+          {
+            paramQQAppInterface.putExtra("param_mode", i);
+            if (j != 0) {
+              paramQQAppInterface.putExtra("is_from_werewolves", true);
+            }
+            paramContext.startActivity(paramQQAppInterface);
+            return;
+            i = 0;
+            break;
+            i = 42;
+            break label173;
+          }
+        }
+        paramString2 = new ProfileActivity.AllInOne(paramString2, 20);
+        paramString2.a = 20;
+        paramString2.d = paramString1;
+        paramString2.c = paramQQAppInterface;
+        if (j != 0) {}
+        for (i = 113;; i = 4)
+        {
+          paramString2.h = i;
+          ProfileActivity.b(paramContext, paramString2);
+          return;
+        }
+        localObject1 = null;
+        paramQQAppInterface = localObject2;
+      }
+      i = 0;
     }
   }
   
-  public static appoint_define.LBSInfo a(String paramString)
+  public static void a(TextView paramTextView, int paramInt)
   {
-    Object localObject1 = SosoInterface.a();
-    if ((localObject1 == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a == 0.0D) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b == 0.0D)) {
-      SosoInterface.a(60000L, paramString);
-    }
-    for (paramString = SosoInterface.a();; paramString = (String)localObject1)
+    if (paramTextView == null) {}
+    Drawable localDrawable;
+    do
     {
-      if (paramString != null)
+      return;
+      localDrawable = a(BaseApplication.getContext().getResources(), paramInt);
+    } while (localDrawable == null);
+    paramTextView.setBackgroundDrawable(localDrawable);
+  }
+  
+  public static void a(axae paramaxae, long paramLong, String paramString, int paramInt)
+  {
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+    }
+    for (;;)
+    {
+      if (bool) {
+        paramaxae.a(0, paramString, paramLong, 1);
+      }
+      if (QLog.isColorLevel()) {
+        atbr.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("needUpdateLocal:%b\tfrom:%d\t msgSeq:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt), Long.valueOf(paramLong) }) });
+      }
+      return;
+      long l = paramaxae.a(0, paramString);
+      if (1L + l == paramLong)
       {
-        localObject1 = new appoint_define.LBSInfo();
-        Object localObject2;
-        Object localObject3;
-        Object localObject4;
-        if (paramString.b != null)
-        {
-          localObject2 = paramString.b.iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (SosoInterface.SosoWifi)((Iterator)localObject2).next();
-            if (localObject3 != null)
-            {
-              localObject4 = new appoint_define.Wifi();
-              ((appoint_define.Wifi)localObject4).uint64_mac.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Long);
-              ((appoint_define.Wifi)localObject4).int32_rssi.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Int);
-              ((appoint_define.LBSInfo)localObject1).rpt_msg_wifis.add((MessageMicro)localObject4);
-            }
-          }
-        }
-        if (paramString.jdField_a_of_type_JavaUtilArrayList != null)
-        {
-          localObject2 = paramString.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (SosoInterface.SosoCell)((Iterator)localObject2).next();
-            if (localObject3 != null)
-            {
-              localObject4 = new appoint_define.Cell();
-              ((appoint_define.Cell)localObject4).int32_cellid.set(((SosoInterface.SosoCell)localObject3).d);
-              ((appoint_define.Cell)localObject4).int32_lac.set(((SosoInterface.SosoCell)localObject3).c);
-              ((appoint_define.Cell)localObject4).int32_rssi.set(((SosoInterface.SosoCell)localObject3).e);
-              ((appoint_define.Cell)localObject4).int32_mcc.set(((SosoInterface.SosoCell)localObject3).jdField_a_of_type_Int);
-              ((appoint_define.Cell)localObject4).int32_mnc.set(((SosoInterface.SosoCell)localObject3).b);
-              ((appoint_define.LBSInfo)localObject1).rpt_msg_cells.add((MessageMicro)localObject4);
-            }
-          }
-        }
-        if (paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null)
-        {
-          localObject2 = new appoint_define.GPS();
-          ((appoint_define.GPS)localObject2).int32_lon.set((int)(paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D));
-          ((appoint_define.GPS)localObject2).int32_lat.set((int)(paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D));
-          ((appoint_define.GPS)localObject2).int32_type.set(0);
-          ((appoint_define.LBSInfo)localObject1).msg_gps.set((MessageMicro)localObject2);
-          return localObject1;
-        }
+        bool = true;
       }
       else
       {
-        atbp.a("getLbsInfo", new Object[] { "lbs is null" });
-        return null;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        atbr.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("not continuous seq local:%d\tmsgseq:%d\tfrom:%d", new Object[] { Long.valueOf(l), Long.valueOf(paramLong), Integer.valueOf(paramInt) }) });
+        bool = false;
+        continue;
+        bool = true;
       }
-      return localObject1;
     }
   }
   
-  public static String a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString) {}
+  
+  public static void a(HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
   {
-    if (paramSosoLbsInfo == null) {
-      return null;
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", bfnx.a(bfnx.a(bfnx.a(bfnx.a(bfnx.a("http://nearby.qq.com/hot_chat/member_list.html?_wv=3&_bid=2581", "_wv", "3"), "_bid", "2581"), "gc", paramHotChatInfo.troopUin), "rid", paramHotChatInfo.uuid), "from", String.valueOf(0)));
+    paramHotChatInfo = new Bundle();
+    paramHotChatInfo.putBoolean("hide_left_button", true);
+    localIntent.putExtras(paramHotChatInfo);
+    paramActivity.startActivity(localIntent);
+    if (paramInt == 0) {
+      akbj.a(paramQQAppInterface, "0X800638B");
     }
-    JSONObject localJSONObject = new JSONObject();
-    JSONArray localJSONArray;
-    Object localObject;
-    try
+    while (paramInt != 1) {
+      return;
+    }
+    akbj.a(paramQQAppInterface, "0X800638C");
+  }
+  
+  public static boolean a(int paramInt, String paramString)
+  {
+    if (paramInt == 1) {
+      return ((HotChatManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(60)).b(paramString);
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramRecentUser == null) || (paramRecentUser.getType() != 1) || (TextUtils.isEmpty(paramRecentUser.uin))) {
+      bool = false;
+    }
+    do
     {
-      localJSONObject.put("lat", (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a * 1000000.0D));
-      localJSONObject.put("lon", (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b * 1000000.0D));
-      localJSONArray = new JSONArray();
-      localObject = paramSosoLbsInfo.b.iterator();
-      while (((Iterator)localObject).hasNext())
+      return bool;
+      if ((paramRecentUser.lFlag & 1L) == 0L)
       {
-        SosoInterface.SosoWifi localSosoWifi = (SosoInterface.SosoWifi)((Iterator)localObject).next();
-        localJSONArray.put(new JSONObject().put("mac", localSosoWifi.jdField_a_of_type_Long).put("rssi", localSosoWifi.jdField_a_of_type_Int));
-        continue;
-        return localJSONObject.toString();
+        paramQQAppInterface = paramQQAppInterface.a(false);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.b(paramRecentUser.uin))) {
+          paramRecentUser.lFlag |= 1L;
+        }
       }
+    } while ((paramRecentUser.lFlag & 1L) == 1L);
+    return false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord.istroop == 1) {
+      return ((HotChatManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(60)).b(paramMessageRecord.frienduin);
     }
-    catch (JSONException paramSosoLbsInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LbsUtils", 2, "lbsInfo to json exception", paramSosoLbsInfo);
-      }
-    }
-    for (;;)
-    {
-      localJSONObject.put("wifis", localJSONArray);
-      localJSONArray = new JSONArray();
-      paramSosoLbsInfo = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramSosoLbsInfo.hasNext())
-      {
-        localObject = (SosoInterface.SosoCell)paramSosoLbsInfo.next();
-        localJSONArray.put(new JSONObject().put("mcc", ((SosoInterface.SosoCell)localObject).jdField_a_of_type_Int).put("mnc", ((SosoInterface.SosoCell)localObject).b).put("lac", ((SosoInterface.SosoCell)localObject).c).put("cellid", ((SosoInterface.SosoCell)localObject).d).put("rssi", ((SosoInterface.SosoCell)localObject).e));
-      }
-      localJSONObject.put("cells", localJSONArray);
-    }
+    return false;
   }
 }
 

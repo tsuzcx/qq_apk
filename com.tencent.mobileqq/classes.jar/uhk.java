@@ -5,11 +5,13 @@ import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 class uhk
   implements DialogInterface.OnDismissListener
 {
-  uhk(uhj paramuhj, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  uhk(uhj paramuhj) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
   }
 }
 

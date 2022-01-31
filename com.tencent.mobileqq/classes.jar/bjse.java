@@ -1,13 +1,16 @@
-import android.graphics.Canvas;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public abstract interface bjse
-  extends bjwv
+class bjse
+  extends AnimatorListenerAdapter
 {
-  public abstract int a(int paramInt);
+  bjse(bjry parambjry) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bjry.a(this.a).setVisibility(8);
+  }
 }
 
 

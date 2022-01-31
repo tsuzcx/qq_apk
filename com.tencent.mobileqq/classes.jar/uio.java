@@ -1,36 +1,53 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qphone.base.util.QLog;
 
-public final class uio
-  extends QQUIEventReceiver<uhz, tjr>
+public class uio
+  extends uaf
 {
-  public uio(@NonNull uhz paramuhz)
-  {
-    super(paramuhz);
-  }
+  public uio(uhw paramuhw) {}
   
-  public void a(@NonNull uhz paramuhz, @NonNull tjr paramtjr)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramtjr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjr.jdField_a_of_type_JavaUtilList != null) && (paramuhz.a != null))
+    Object localObject = this.a.a();
+    if ((localObject == null) || (!this.a.jdField_a_of_type_Twl.equals(localObject))) {}
+    do
     {
-      paramtjr = paramtjr.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramtjr.hasNext())
+      return;
+      if (paramInt1 == this.a.hashCode())
       {
-        tef localtef = (tef)paramtjr.next();
-        if (TextUtils.equals(paramuhz.a.b, localtef.a)) {
-          paramuhz.i();
+        ved.b(this.a.b, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        if (localObject != null) {
+          ((VideoViewVideoHolder)localObject).c(false);
+        }
+        if (paramInt2 == -1) {
+          ttf.a().a(paramIntent.getExtras());
         }
       }
-    }
+      if ((paramInt1 == 10002) && (paramInt2 == -1))
+      {
+        svl.b(this.a.b + " onActivityResult");
+        bcql.a(this.a.b(), this.a.b().getString(2131719515), 1).a();
+      }
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (uhw.a(this.a) != null)) {
+        uhw.a(this.a).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+      }
+    } while (this.a.jdField_a_of_type_Tpb == null);
+    this.a.jdField_a_of_type_Tpb.a(paramInt1, paramInt2, paramIntent);
   }
   
-  public Class acceptEventClass()
+  public void g()
   {
-    return tjr.class;
+    super.g();
+    if (uhw.a(this.a) != null) {
+      uhw.a(this.a).a();
+    }
   }
 }
 

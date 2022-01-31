@@ -1,6 +1,6 @@
 public abstract interface ajix
 {
-  public abstract void a(String paramString);
+  public abstract void a(String paramString1, boolean paramBoolean, long paramLong, Object paramObject, String paramString2);
 }
 
 

@@ -1,30 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class abys
-  extends Handler
+  implements abmm
 {
-  public abys(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public abys(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 101: 
-      this.a.c();
-      String str = paramMessage.obj.toString();
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131720648);
-      }
-      this.a.a(paramMessage, 1);
-      return;
-    }
-    this.a.c();
-    this.a.finish();
+    RegisterPhoneNumActivity.a(this.a).b();
+  }
+  
+  public void b()
+  {
+    RegisterPhoneNumActivity.a(this.a).b();
   }
 }
 

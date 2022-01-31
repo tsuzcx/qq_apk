@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bfwg;
+import bfwx;
 import com.tencent.widget.PullToZoomListView;
 
 class LikeRankingListActivity$8
@@ -13,10 +13,10 @@ class LikeRankingListActivity$8
   
   public void run()
   {
-    bfwg localbfwg = new bfwg(this.this$0, this.a, this.this$0.b.getWidth(), this.this$0.b.getHeight());
+    bfwx localbfwx = new bfwx(this.this$0, this.a, this.this$0.b.getWidth(), this.this$0.b.getHeight());
     this.this$0.b.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.this$0.b.setImageDrawable(localbfwg);
-    localbfwg.a();
+    this.this$0.b.setImageDrawable(localbfwx);
+    localbfwx.a();
     this.this$0.a.a(false);
   }
 }

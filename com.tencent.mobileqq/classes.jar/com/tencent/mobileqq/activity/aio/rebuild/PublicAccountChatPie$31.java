@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
+import aert;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PublicAccountMenuEntity;
@@ -13,19 +13,19 @@ import com.tencent.qphone.base.util.QLog;
 public class PublicAccountChatPie$31
   implements Runnable
 {
-  public PublicAccountChatPie$31(aerv paramaerv, SharedPreferences paramSharedPreferences, String paramString) {}
+  public PublicAccountChatPie$31(aert paramaert, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {
     try
     {
-      aukn localaukn = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localaukn.a(PublicAccountMenuEntity.class, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      aukp localaukp = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localaukp.a(PublicAccountMenuEntity.class, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       if (localPublicAccountMenuEntity != null) {
-        localaukn.b(localPublicAccountMenuEntity);
+        localaukp.b(localPublicAccountMenuEntity);
       }
-      if (localaukn != null) {
-        localaukn.a();
+      if (localaukp != null) {
+        localaukp.a();
       }
     }
     catch (Exception localException)

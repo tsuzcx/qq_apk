@@ -1,21 +1,21 @@
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
+
 public class apud
+  implements Comparator<FileInfo>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 1;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  private String e;
-  
-  public apud()
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.jdField_a_of_type_JavaLangString = "share_file";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
+    if (paramFileInfo1.c())
+    {
+      if (!paramFileInfo2.c()) {
+        return -1000;
+      }
+    }
+    else if (paramFileInfo2.c()) {
+      return 1000;
+    }
+    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
 }
 

@@ -1032,12 +1032,12 @@ public class TbsShareManager
     //   308: astore_3
     //   309: goto -108 -> 201
     //   312: astore 4
-    //   314: aload_0
+    //   314: aload_3
     //   315: astore 5
-    //   317: aload_3
-    //   318: astore_0
+    //   317: aload_0
+    //   318: astore_3
     //   319: aload 5
-    //   321: astore_3
+    //   321: astore_0
     //   322: goto -121 -> 201
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1048,17 +1048,17 @@ public class TbsShareManager
     //   254	1	3	localException1	Exception
     //   262	1	3	localException2	Exception
     //   266	28	3	localException3	Exception
-    //   298	24	3	localContext1	Context
-    //   1	1	4	localObject2	Object
+    //   298	21	3	localObject2	Object
+    //   1	1	4	localObject3	Object
     //   194	48	4	localThrowable1	Throwable
-    //   277	1	4	localContext2	Context
-    //   285	6	4	localObject3	Object
-    //   294	1	4	localObject4	Object
+    //   277	1	4	localContext	Context
+    //   285	6	4	localObject4	Object
+    //   294	1	4	localObject5	Object
     //   302	1	4	localThrowable2	Throwable
     //   312	1	4	localThrowable3	Throwable
-    //   4	195	5	localObject5	Object
-    //   274	6	5	localObject6	Object
-    //   288	32	5	localContext3	Context
+    //   4	195	5	localObject6	Object
+    //   274	6	5	localObject7	Object
+    //   288	32	5	localObject8	Object
     //   69	100	6	localProperties	java.util.Properties
     //   103	31	7	str1	String
     //   13	147	8	localFile	File

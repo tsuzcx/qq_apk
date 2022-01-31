@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bkaf;
-import bkef;
-import bkfc;
+import bkaw;
+import bkew;
+import bkft;
 
 class DoodleLayout$13
   implements Runnable
 {
-  DoodleLayout$13(DoodleLayout paramDoodleLayout, bkaf parambkaf, int paramInt, int[] paramArrayOfInt) {}
+  DoodleLayout$13(DoodleLayout paramDoodleLayout, bkaw parambkaw, int paramInt, int[] paramArrayOfInt) {}
   
   public void run()
   {
-    ((bkfc)this.jdField_a_of_type_Bkaf.a.a(102)).b(this.jdField_a_of_type_Int);
+    ((bkft)this.jdField_a_of_type_Bkaw.a.a(102)).b(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ArrayOfInt[0] = 1;
   }
 }

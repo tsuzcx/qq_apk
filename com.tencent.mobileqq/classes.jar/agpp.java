@@ -1,68 +1,27 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agpp
-  implements aabm
+  implements DialogInterface.OnClickListener
 {
-  agpp(agpn paramagpn, String paramString) {}
+  agpp(agpl paramagpl, QQAppInterface paramQQAppInterface) {}
   
-  public void onComplete()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onComplete");
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
-    if ((agpn.a(this.jdField_a_of_type_Agpn).isFinishing()) || (this.jdField_a_of_type_Agpn.b)) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Agpl.a.dismiss();
       return;
-    }
-    this.jdField_a_of_type_Agpn.d();
-    if (agpn.a(this.jdField_a_of_type_Agpn) != null) {
-      agpn.a(this.jdField_a_of_type_Agpn).removeCallbacks(agpn.a(this.jdField_a_of_type_Agpn));
-    }
-    this.jdField_a_of_type_Agpn.a(ajyc.a(2131713587), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    if ((agpn.a(this.jdField_a_of_type_Agpn).isFinishing()) || (this.jdField_a_of_type_Agpn.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Agpn.d();
-    if (agpn.a(this.jdField_a_of_type_Agpn) != null) {
-      agpn.a(this.jdField_a_of_type_Agpn).removeCallbacks(agpn.a(this.jdField_a_of_type_Agpn));
-    }
-    this.jdField_a_of_type_Agpn.a(ajyc.a(2131713591), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
-    }
-    if ((agpn.a(this.jdField_a_of_type_Agpn).isFinishing()) || (this.jdField_a_of_type_Agpn.b)) {
-      return;
-    }
-    if (agpn.a(this.jdField_a_of_type_Agpn) != null) {
-      agpn.a(this.jdField_a_of_type_Agpn).removeCallbacks(agpn.a(this.jdField_a_of_type_Agpn));
-    }
-    agpn.a(this.jdField_a_of_type_Agpn);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onTrigger");
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Agpl.b();
+      agpl.a(this.jdField_a_of_type_Agpl, agpl.a(this.jdField_a_of_type_Agpl), true, Long.valueOf(agpl.b(this.jdField_a_of_type_Agpl)).longValue(), false);
+      continue;
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+      agpl.a(this.jdField_a_of_type_Agpl, agpl.a(this.jdField_a_of_type_Agpl), true, Long.valueOf(agpl.b(this.jdField_a_of_type_Agpl)).longValue(), true);
     }
   }
 }

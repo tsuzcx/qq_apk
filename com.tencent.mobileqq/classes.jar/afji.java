@@ -1,34 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afji
-  extends ajxl
+public abstract interface afji
 {
-  public afji(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment) {}
+  public abstract QQAppInterface a();
   
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddRequestSuspiciousMsgFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if ((AddRequestSuspiciousMsgFragment.a(this.a) != null) && (AddRequestSuspiciousMsgFragment.a(this.a).uin == paramLong))
-    {
-      AddRequestSuspiciousMsgFragment.a(this.a);
-      if (paramBoolean)
-      {
-        bcpw.a(this.a.getActivity(), ajyc.a(2131699866), 0).a();
-        AddRequestSuspiciousMsgFragment.b(this.a);
-        this.a.getActivity().finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    bcpw.a(this.a.getActivity(), ajyc.a(2131699867), 0).a();
-  }
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract Activity getActivity();
 }
 
 

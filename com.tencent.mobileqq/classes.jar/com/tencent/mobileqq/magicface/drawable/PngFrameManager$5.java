@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import ascc;
+import asce;
 import java.util.HashMap;
 
 public class PngFrameManager$5
   implements Runnable
 {
-  public PngFrameManager$5(ascc paramascc, long paramLong) {}
+  public PngFrameManager$5(asce paramasce, long paramLong) {}
   
   public void run()
   {

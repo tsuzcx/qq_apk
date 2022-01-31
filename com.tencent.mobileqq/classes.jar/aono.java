@@ -1,16 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import android.widget.TextView;
 
-public class aono
-  implements View.OnClickListener
+class aono
+  extends aimt
 {
-  public aono(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.i();
-  }
+  TextView a;
 }
 
 

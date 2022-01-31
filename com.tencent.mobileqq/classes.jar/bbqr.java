@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import java.util.ArrayList;
 
-public abstract interface bbqr
+public class bbqr
 {
-  public abstract boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo);
-  
-  public abstract boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo);
+  public int a;
+  public String a;
+  public ArrayList<bbqs> a = new ArrayList();
 }
 
 

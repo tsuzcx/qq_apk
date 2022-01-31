@@ -1,14 +1,15 @@
-import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class afyn
-  implements agbx
+  extends ajsy
 {
   public afyn(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  protected void a(Object paramObject)
   {
-    this.a.a.a(paramMotionEvent);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

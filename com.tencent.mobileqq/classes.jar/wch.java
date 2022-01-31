@@ -1,8 +1,20 @@
-public abstract interface wch
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+
+public class wch
+  implements bfvx
 {
-  public abstract void a(wcg paramwcg);
+  public wch(SegmentList paramSegmentList) {}
   
-  public abstract void a(wcg paramwcg, String paramString);
+  public void a(View paramView)
+  {
+    this.a.a.b(paramView);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.a.c(paramView);
+  }
 }
 
 

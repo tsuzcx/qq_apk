@@ -1,60 +1,57 @@
+import android.os.SystemClock;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.HashMap;
 
 class ayus
-  implements ayrz
+  implements ITransactionCallback
 {
-  ayus(ayur paramayur) {}
+  ayus(ayur paramayur, long paramLong) {}
   
-  public void a(aysw paramaysw, aysx paramaysx)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if ((paramaysw == null) || (paramaysx == null)) {}
-    label8:
-    ayrv localayrv;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label8;
-          do
-          {
-            return;
-          } while (!(paramaysw instanceof ayrv));
-          localayrv = (ayrv)paramaysw;
-          if (ayur.a(this.a))
-          {
-            File localFile = new File(paramaysw.d);
-            if (paramaysx.c == localFile.length())
-            {
-              paramaysx.c = 0L;
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoDownloadProcessor", 2, "fixProgressiveRange, mStartDownOffset = " + paramaysw.jdField_a_of_type_Long);
-              }
-            }
-          }
-          localayrv.jdField_a_of_type_Long += paramaysx.c;
-          if (0L != localayrv.b) {
-            break;
-          }
-          paramaysx.c = 0L;
-          paramaysw = "bytes=" + localayrv.jdField_a_of_type_Long + "-";
-          localayrv.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysw);
-          paramaysw = localayrv.jdField_a_of_type_JavaLangString;
-        } while (!paramaysw.contains("range="));
-        paramaysw = paramaysw.substring(0, paramaysw.lastIndexOf("range="));
-        localayrv.jdField_a_of_type_JavaLangString = (paramaysw + "range=" + localayrv.jdField_a_of_type_Long);
-        return;
-      } while ((localayrv.jdField_a_of_type_Long <= 0L) || (localayrv.b <= 0L) || (localayrv.jdField_a_of_type_Long >= localayrv.b));
-      paramaysx.c = 0L;
-      paramaysw = "bytes=" + localayrv.jdField_a_of_type_Long + "-" + localayrv.b;
-      localayrv.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysw);
-      paramaysw = localayrv.jdField_a_of_type_JavaLangString;
-    } while (!paramaysw.contains("range="));
-    paramaysw = paramaysw.substring(0, paramaysw.lastIndexOf("range="));
-    localayrv.jdField_a_of_type_JavaLangString = (paramaysw + "range=" + localayrv.jdField_a_of_type_Long + "-" + localayrv.b);
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
+    }
+    this.jdField_a_of_type_Ayur.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Ayur.b);
+    this.jdField_a_of_type_Ayur.d();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Ayur.b.b();
+    this.jdField_a_of_type_Ayur.b.a = 1;
+    this.jdField_a_of_type_Ayur.s = this.jdField_a_of_type_Ayur.q;
+    this.jdField_a_of_type_Ayur.a.a = paramArrayOfByte;
+    this.jdField_a_of_type_Ayur.e();
+    this.jdField_a_of_type_Ayur.a.a();
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
+    }
+    this.jdField_a_of_type_Ayur.b.a();
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    ayur localayur = this.jdField_a_of_type_Ayur;
+    ayqo localayqo = this.jdField_a_of_type_Ayur.a;
+    long l = paramInt;
+    localayqo.e = l;
+    localayur.s = l;
+    if ((paramInt < this.jdField_a_of_type_Ayur.q) && (!this.jdField_a_of_type_Ayur.o) && (!this.jdField_a_of_type_Ayur.k)) {
+      this.jdField_a_of_type_Ayur.i();
+    }
   }
 }
 

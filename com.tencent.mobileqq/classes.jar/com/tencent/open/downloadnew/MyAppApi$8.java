@@ -1,21 +1,21 @@
 package com.tencent.open.downloadnew;
 
-import bdjc;
-import bdkh;
-import bdlc;
-import yod;
+import bdjr;
+import bdkw;
+import bdlr;
+import yoa;
 
 public class MyAppApi$8
   implements Runnable
 {
-  public MyAppApi$8(bdlc parambdlc, String paramString1, String paramString2) {}
+  public MyAppApi$8(bdlr parambdlr, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bdjc.a("100", bdjc.a(this.a, "NEWYYB"), this.b);
-    bdkh.a();
+    bdjr.a("100", bdjr.a(this.a, "NEWYYB"), this.b);
+    bdkw.a();
     if (("ANDROID.QQ.YYBXZGAMECENTER".equals(this.a)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(this.a))) {
-      yod.a(null, "765", "205008", this.b, "76501", "1", "156");
+      yoa.a(null, "765", "205008", this.b, "76501", "1", "156");
     }
   }
 }

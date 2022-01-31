@@ -4,13 +4,13 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PromoteTaskEntry;
 import java.util.Collections;
 import java.util.List;
-import tbt;
-import tda;
+import tbq;
+import tcx;
 
 public class DebugPromoteTaskCode$4
   implements Runnable
 {
-  public DebugPromoteTaskCode$4(tbt paramtbt, String paramString1, String paramString2) {}
+  public DebugPromoteTaskCode$4(tbq paramtbq, String paramString1, String paramString2) {}
   
   public void run()
   {

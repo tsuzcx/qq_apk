@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class rwj
-  implements View.OnClickListener
+  implements TopGestureLayout.OnGestureListener
 {
-  public rwj(ViolaFragment paramViolaFragment) {}
+  public rwj(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
   
-  public void onClick(View paramView)
+  public void flingLToR()
   {
-    this.a.a.d();
-    this.a.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a.a(this.jdField_a_of_type_AndroidViewViewGroup, true);
   }
+  
+  public void flingRToL() {}
 }
 
 

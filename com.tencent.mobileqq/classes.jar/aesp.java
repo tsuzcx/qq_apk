@@ -1,21 +1,49 @@
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
-class aesp
-  implements xeb
+public class aesp
+  implements BusinessObserver
 {
-  aesp(aerv paramaerv) {}
+  aesp(aert paramaert) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((advq.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (paramInt1 == 0))
-    {
-      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
     }
-    actn.n = true;
-    this.a.jdField_a_of_type_Nnx.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, aerv.a(this.a), aerv.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    akwv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, aerv.e(this.a), paramInt1);
+    if (!paramBoolean) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          continue;
+        }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0) {
+          paramBundle.mergeFrom(arrayOfByte);
+        }
+        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = sgg.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
+        {
+          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.34.1(this, paramBundle), 10L);
+          return;
+        }
+        return;
+      }
+      catch (Exception paramBundle) {}
+    }
   }
 }
 

@@ -1,18 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 class aufm
   implements View.OnClickListener
 {
-  aufm(aufh paramaufh, aufw paramaufw) {}
+  aufm(aufj paramaufj, aufy paramaufy) {}
   
   public void onClick(View paramView)
   {
-    aufh.a(this.jdField_a_of_type_Aufh).removeMessages(101);
-    aufh.a(this.jdField_a_of_type_Aufh).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Aufw.a.b();
+    this.jdField_a_of_type_Aufy.a.b();
   }
 }
 

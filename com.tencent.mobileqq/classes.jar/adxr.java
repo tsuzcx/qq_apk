@@ -1,46 +1,24 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.qphone.base.util.QLog;
 
 public class adxr
-  extends adxt
+  implements sur
 {
-  public adxr(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  long jdField_a_of_type_Long;
+  adxs jdField_a_of_type_Adxs;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void a(adxs paramadxs, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
-    }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-    do
-    {
-      return;
-      paramString1 = ((tcz)tdc.a(5)).a(paramString1);
-      if (paramString1 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_a_of_type_Long, paramString1, false);
+    this.jdField_a_of_type_Adxs = paramadxs;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_a_of_type_Long);
-  }
+  public void a(String paramString1, String paramString2, int paramInt) {}
   
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxu, this.jdField_a_of_type_Long);
-  }
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

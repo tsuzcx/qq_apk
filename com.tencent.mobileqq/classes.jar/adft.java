@@ -1,20 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class adft
-  implements MessageQueue.IdleHandler
+  extends acwl
 {
-  adft(adfs paramadfs) {}
-  
-  public boolean queueIdle()
+  adft(adfs paramadfs, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, "queueIdle");
-    }
-    if (adfq.b()) {
-      adfs.a(this.a);
-    }
-    return false;
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+  }
+  
+  public void j()
+  {
+    this.a.a(true);
   }
 }
 

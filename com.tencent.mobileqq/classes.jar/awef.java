@@ -1,10 +1,14 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View;
 
-public class awef
+class awef
+  implements bfqj
 {
-  public ProgressBar a;
-  public TextView a;
+  awef(awee paramawee, View paramView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

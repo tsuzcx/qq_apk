@@ -1,6 +1,6 @@
 public abstract interface axgl
 {
-  public abstract int a(axgl paramaxgl, boolean paramBoolean, int paramInt1, int paramInt2);
+  public abstract void a(Object paramObject, int paramInt, Object... paramVarArgs);
 }
 
 

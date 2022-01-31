@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
+import ahpp;
+import ahpq;
 import ahpr;
-import ahps;
-import ahpt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,12 +18,12 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(19)
 public class DragTextView
   extends TextView
-  implements ahps
+  implements ahpq
 {
   private static int jdField_a_of_type_Int;
   private static int b;
   private static int c;
-  private ahpt jdField_a_of_type_Ahpt;
+  private ahpr jdField_a_of_type_Ahpr;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private View jdField_a_of_type_AndroidViewView;
   private boolean jdField_a_of_type_Boolean;
@@ -94,10 +94,10 @@ public class DragTextView
   {
     if ((this.d != -1) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Ahpt != null)
+      if (this.jdField_a_of_type_Ahpr != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Ahpt.a(this, this.d);
+        this.jdField_a_of_type_Ahpr.a(this, this.d);
         return true;
       }
       return super.onTouchEvent(paramMotionEvent);
@@ -117,23 +117,23 @@ public class DragTextView
     if (this.jdField_a_of_type_AndroidViewView == null) {
       this.jdField_a_of_type_AndroidViewView = ((ViewGroup)getParent());
     }
-    if ((this.jdField_a_of_type_Ahpt != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_Ahpr != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ahpr(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ahpp(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   
-  public void setOnModeChangeListener(ahpt paramahpt)
+  public void setOnModeChangeListener(ahpr paramahpr)
   {
-    this.jdField_a_of_type_Ahpt = paramahpt;
+    this.jdField_a_of_type_Ahpr = paramahpr;
     if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramahpt);
+      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramahpr);
     }
-    if ((this.jdField_a_of_type_Ahpt != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_Ahpr != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ahpr(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ahpp(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   

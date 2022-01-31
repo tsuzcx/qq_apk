@@ -1,11 +1,25 @@
-class blac
-  implements blaz
+public class blac
 {
-  blac(blab paramblab) {}
+  public aunr a;
   
-  public boolean a(double paramDouble)
+  public String a()
   {
-    return blab.a(this.a);
+    return null;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new aunr();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+    aung.b(this, paramString1, paramString2);
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

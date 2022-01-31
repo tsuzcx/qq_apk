@@ -1,6 +1,18 @@
-public abstract interface aftc
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+
+public class aftc
+  extends View.AccessibilityDelegate
 {
-  public abstract void a(int paramInt);
+  public aftc(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
+  }
 }
 
 

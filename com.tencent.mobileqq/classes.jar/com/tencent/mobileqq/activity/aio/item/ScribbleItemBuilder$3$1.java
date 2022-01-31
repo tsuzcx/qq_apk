@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adza;
-import bcpf;
+import adyy;
+import bcpu;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScribbleItemBuilder$3$1
   implements Runnable
 {
-  public ScribbleItemBuilder$3$1(adza paramadza, bcpf parambcpf) {}
+  public ScribbleItemBuilder$3$1(adyy paramadyy, bcpu parambcpu) {}
   
   public void run()
   {

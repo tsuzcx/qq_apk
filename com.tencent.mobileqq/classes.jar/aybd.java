@@ -1,8 +1,6 @@
-import android.graphics.Bitmap;
-
-public abstract interface aybd<T extends aybe>
+public abstract interface aybd
 {
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  public abstract String a();
 }
 
 

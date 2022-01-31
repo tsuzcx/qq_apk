@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.TemplateData;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public final class bjch
-  implements Parcelable.Creator<TemplateData>
+public class bjch
+  implements BusinessObserver
 {
-  public TemplateData a(Parcel paramParcel)
-  {
-    return new TemplateData(paramParcel);
-  }
+  public void a() {}
   
-  public TemplateData[] a(int paramInt)
+  public void a(Bundle paramBundle) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new TemplateData[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 967: 
+      b();
+      return;
+    case 968: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 969: 
+      c();
+      return;
+    case 970: 
+      a(paramBundle);
+      return;
+    }
+    a();
   }
 }
 

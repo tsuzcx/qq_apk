@@ -1,16 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class afvp
-  extends RecyclerView.ViewHolder
+  extends BroadcastReceiver
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  afvp(afvo paramafvo) {}
   
-  afvp(afvo paramafvo, View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376417));
+    if (paramIntent.getBooleanExtra("recording_time_out", false))
+    {
+      bcql.a(this.a.mRuntime.a(), 2131699027, 0).a();
+      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("target_media_url");
+    afvo.a(this.a, paramContext);
   }
 }
 

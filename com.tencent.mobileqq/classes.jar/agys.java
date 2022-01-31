@@ -1,22 +1,47 @@
-import android.support.annotation.Nullable;
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
 public class agys
-  implements OnCompositionLoadedListener
+  implements IRedPacket.OnGetAvailableListListener
 {
   public agys(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(ajya.a(2131715807));
+      }
+    }
+    do
+    {
+      return;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 

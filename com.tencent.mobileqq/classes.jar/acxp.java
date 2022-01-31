@@ -1,19 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.graphics.drawable.Drawable;
 
 public class acxp
 {
   public int a;
-  public ImageView a;
-  public TextView a;
-  public RedTouch a;
+  public Drawable a;
   public String a;
   public boolean a;
   public int b;
-  public ImageView b;
   public String b;
   public String c;
+  public String d;
+  public String e;
 }
 
 

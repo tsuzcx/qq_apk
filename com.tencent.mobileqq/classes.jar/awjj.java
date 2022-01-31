@@ -1,6 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class awjj
   implements View.OnClickListener
@@ -9,7 +11,8 @@ public class awjj
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a.setText("");
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
   }
 }
 

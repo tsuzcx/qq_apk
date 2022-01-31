@@ -1,17 +1,19 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
 class afjc
-  extends GridLayoutManager.SpanSizeLookup
+  implements View.OnLongClickListener
 {
-  afjc(afjb paramafjb, GridLayoutManager paramGridLayoutManager) {}
+  afjc(afiz paramafiz, afjf paramafjf) {}
   
-  public int getSpanSize(int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Afjb.a(paramInt)) || (this.jdField_a_of_type_Afjb.b(paramInt)) || (this.jdField_a_of_type_Afjb.c(paramInt)) || (this.jdField_a_of_type_Afjb.b())) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
+    if (this.jdField_a_of_type_Afiz.a != null)
+    {
+      int i = this.jdField_a_of_type_Afjf.getAdapterPosition();
+      return this.jdField_a_of_type_Afiz.a.a(paramView, this.jdField_a_of_type_Afjf, i);
     }
-    return 1;
+    return false;
   }
 }
 

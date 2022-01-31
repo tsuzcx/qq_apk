@@ -1,10 +1,40 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface akax
+class akax
+  extends bbwt
 {
-  public static final String a = anqu.a("VIP_roam_msg_search_cfg", "http://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
-  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
+  akax(akaw paramakaw) {}
+  
+  public void onDone(bbwu parambbwu)
+  {
+    super.onDone(parambbwu);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambbwu.f + ", url: " + parambbwu.a);
+    }
+    int i = parambbwu.a.indexOf("?");
+    String str;
+    if (i == -1)
+    {
+      str = parambbwu.a;
+      if (!akav.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(parambbwu);
+    }
+    label105:
+    do
+    {
+      return;
+      str = parambbwu.a.substring(0, i - 1);
+      break;
+      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(parambbwu);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambbwu.a);
+  }
 }
 
 

@@ -1,43 +1,13 @@
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
 
-public class bkee
+public abstract interface bkee
 {
-  public int a;
+  public abstract void a(Animation paramAnimation);
   
-  public bkee(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract Bitmap b();
   
-  public String a()
-  {
-    switch (this.a)
-    {
-    default: 
-      return ajyc.a(2131703408);
-    case 101: 
-      return ajyc.a(2131703404);
-    case 102: 
-      return ajyc.a(2131703406);
-    case 103: 
-      return ajyc.a(2131703407);
-    case 104: 
-      return ajyc.a(2131703405);
-    }
-    return ajyc.a(2131703409);
-  }
-  
-  public JSONObject a()
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public boolean a(int paramInt)
-  {
-    return this.a == paramInt;
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 

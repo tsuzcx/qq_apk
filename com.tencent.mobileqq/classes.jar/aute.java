@@ -1,19 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
 
-public final class aute
-  implements Parcelable.Creator<PersonalityLabel>
+public class aute
 {
-  public PersonalityLabel a(Parcel paramParcel)
-  {
-    return new PersonalityLabel(paramParcel);
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  aywc jdField_a_of_type_Aywc;
+  public PersonalityLabelPhoto a;
+  public int b = 0;
+  public int c = 0;
   
-  public PersonalityLabel[] a(int paramInt)
-  {
-    return new PersonalityLabel[paramInt];
-  }
+  aute(autd paramautd) {}
 }
 
 

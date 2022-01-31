@@ -1,15 +1,15 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bjws;
+import bjxj;
 
 public class EditVideoMultiSegment$2
   implements Runnable
 {
-  public EditVideoMultiSegment$2(bjws parambjws) {}
+  public EditVideoMultiSegment$2(bjxj parambjxj) {}
   
   public void run()
   {
-    bjws.a(this.this$0, false);
+    bjxj.a(this.this$0, false);
   }
 }
 

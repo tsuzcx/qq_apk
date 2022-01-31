@@ -14,10 +14,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbca;
-import bbev;
-import bcpw;
-import bhvh;
+import bbco;
+import bbfj;
+import bcql;
+import bhvy;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -33,31 +33,31 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import noo;
-import omm;
-import onk;
+import nol;
+import omj;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
+import osg;
 import osj;
 import osm;
-import osp;
-import pax;
-import pbx;
-import pqr;
-import prb;
-import pvb;
-import pvz;
+import pau;
+import pbu;
+import pqo;
+import pqy;
+import puy;
+import pvw;
+import pvx;
 import pwa;
+import pwb;
+import pwc;
 import pwd;
-import pwe;
-import pwf;
-import pwg;
-import qca;
-import rap;
+import qbx;
+import ram;
 
 public class ComponentContentRecommend
   extends FrameLayout
-  implements pqr
+  implements pqo
 {
   private static int jdField_a_of_type_Int = -1;
   public static final String a;
@@ -69,8 +69,8 @@ public class ComponentContentRecommend
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private ListViewForListview jdField_a_of_type_ComTencentBizWidgetsListViewForListview;
   private ArrayList<RecommendFollowInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  protected osp a;
-  private pvb jdField_a_of_type_Pvb;
+  protected osm a;
+  private puy jdField_a_of_type_Puy;
   
   static
   {
@@ -80,14 +80,14 @@ public class ComponentContentRecommend
   public ComponentContentRecommend(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Osp = new pwg(this);
+    this.jdField_a_of_type_Osm = new pwd(this);
     b(paramContext);
   }
   
   public ComponentContentRecommend(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Osp = new pwg(this);
+    this.jdField_a_of_type_Osm = new pwd(this);
     b(paramContext);
   }
   
@@ -99,7 +99,7 @@ public class ComponentContentRecommend
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("algorithm_id", paramLong2 + "");
-        localJSONObject.put("folder_status", onk.d + "");
+        localJSONObject.put("folder_status", onh.d + "");
         localJSONObject.put("feeds_type", "70");
         localJSONObject.put("time", System.currentTimeMillis());
         localJSONObject.put("channel_id", paramInt1);
@@ -109,18 +109,18 @@ public class ComponentContentRecommend
         paramInt1 = 2;
         localJSONObject.put("network_type", paramInt1);
         localJSONObject.put("feeds_source", paramLong1 + "");
-        localJSONObject.put("imei", onk.f());
-        localJSONObject.put("imsi", onk.g());
+        localJSONObject.put("imei", onh.f());
+        localJSONObject.put("imsi", onh.g());
         localJSONObject.put("idfa", "");
         localJSONObject.put("rowkey", paramBaseArticleInfo.innerUniqueID + "");
         localJSONObject.put("comment", 0);
-        if (bhvh.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+        if (bhvy.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
           break label430;
         }
         paramInt1 = 1;
         localJSONObject.put("reddot_style", paramInt1);
         localJSONObject.put("tab_source", paramInt4);
-        localJSONObject.put("kandian_mode", onk.e());
+        localJSONObject.put("kandian_mode", onh.e());
         if (paramInt3 != 0) {
           localJSONObject.put("select_num", paramInt3);
         }
@@ -181,37 +181,37 @@ public class ComponentContentRecommend
   public static void a(String paramString, int paramInt1, long paramLong1, BaseArticleInfo paramBaseArticleInfo, long paramLong2, int paramInt2)
   {
     String str = a(paramInt1, paramLong1, paramBaseArticleInfo, paramLong2, 1, 0, jdField_a_of_type_Int, null);
-    noo.a(null, onk.a() + "", paramString, paramString, 0, 0, paramBaseArticleInfo.mRecommendFollowId + "", paramBaseArticleInfo.mArticleID + "", paramInt2 + "", str, false);
+    nol.a(null, onh.a() + "", paramString, paramString, 0, 0, paramBaseArticleInfo.mRecommendFollowId + "", paramBaseArticleInfo.mArticleID + "", paramInt2 + "", str, false);
   }
   
   private void a(String paramString, RecommendFollowInfo paramRecommendFollowInfo)
   {
     int j = 0;
     int i = j;
-    if (this.jdField_a_of_type_Pvb != null)
+    if (this.jdField_a_of_type_Puy != null)
     {
       i = j;
-      if (this.jdField_a_of_type_Pvb.a() != null)
+      if (this.jdField_a_of_type_Puy.a() != null)
       {
         i = j;
-        if (this.jdField_a_of_type_Pvb.a().a() != null) {
-          i = this.jdField_a_of_type_Pvb.a().a().a();
+        if (this.jdField_a_of_type_Puy.a().a() != null) {
+          i = this.jdField_a_of_type_Puy.a().a().a();
         }
       }
     }
     a(paramString, i, paramRecommendFollowInfo.uin, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramRecommendFollowInfo.algorithmId, paramRecommendFollowInfo.strategyId);
   }
   
-  private void a(pax parampax)
+  private void a(pau parampau)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = parampax.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = parampau.a();
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
     do
     {
       return;
-      jdField_a_of_type_Int = onk.d();
-      parampax = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowInfos;
-      if ((parampax != null) && (parampax.jdField_a_of_type_JavaUtilList != null) && (parampax.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      jdField_a_of_type_Int = onh.d();
+      parampau = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowInfos;
+      if ((parampau != null) && (parampau.jdField_a_of_type_JavaUtilList != null) && (parampau.jdField_a_of_type_JavaUtilList.size() > 0)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -225,9 +225,9 @@ public class ComponentContentRecommend
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRecommendFollowInfos.jdField_a_of_type_JavaUtilList);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-      parampax = new pvz(this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(parampax);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(parampax);
+      parampau = new pvw(this);
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(parampau);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(parampau);
       return;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
@@ -235,8 +235,8 @@ public class ComponentContentRecommend
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Pvb != null) && (this.jdField_a_of_type_Pvb.a() != null) && (this.jdField_a_of_type_Pvb.a().a() != null)) {}
-    for (int i = this.jdField_a_of_type_Pvb.a().a().a();; i = 0)
+    if ((this.jdField_a_of_type_Puy != null) && (this.jdField_a_of_type_Puy.a() != null) && (this.jdField_a_of_type_Puy.a().a() != null)) {}
+    for (int i = this.jdField_a_of_type_Puy.a().a().a();; i = 0)
     {
       a("0X8009494", i, 0L, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0L, 0);
       return;
@@ -245,7 +245,7 @@ public class ComponentContentRecommend
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Pvb = new pvb();
+    this.jdField_a_of_type_Puy = new puy();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
     a();
@@ -258,7 +258,7 @@ public class ComponentContentRecommend
   
   protected BaseAdapter a()
   {
-    return new pwa(this);
+    return new pvx(this);
   }
   
   public void a() {}
@@ -271,9 +271,9 @@ public class ComponentContentRecommend
   public void a(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368991));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368528));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378086));
-    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)paramView.findViewById(2131369613));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368527));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378089));
+    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)paramView.findViewById(2131369612));
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = a();
     this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
   }
@@ -293,8 +293,8 @@ public class ComponentContentRecommend
   
   public void a(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    if (!bbev.g(getContext())) {
-      bcpw.a(getContext(), 1, 2131718502, 0).a();
+    if (!bbfj.g(getContext())) {
+      bcql.a(getContext(), 1, 2131718513, 0).a();
     }
     do
     {
@@ -303,7 +303,7 @@ public class ComponentContentRecommend
         QLog.d(jdField_a_of_type_JavaLangString, 1, "jumpToProfile, info = " + paramRecommendFollowInfo);
       }
     } while (paramRecommendFollowInfo == null);
-    paramRecommendFollowInfo = omm.k + bbca.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
+    paramRecommendFollowInfo = omj.k + bbco.encodeToString(String.valueOf(paramRecommendFollowInfo.uin).getBytes(), 2);
     Intent localIntent = new Intent(getContext(), PublicAccountBrowser.class);
     localIntent.putExtra("url", paramRecommendFollowInfo);
     localIntent.putExtra("hide_operation_bar", true);
@@ -313,7 +313,7 @@ public class ComponentContentRecommend
   
   public void a(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
   {
-    if (bbev.g(getContext()))
+    if (bbfj.g(getContext()))
     {
       if (paramBoolean)
       {
@@ -337,32 +337,32 @@ public class ComponentContentRecommend
         }
       }
     }
-    bcpw.a(getContext(), 1, 2131718502, 0).a();
+    bcql.a(getContext(), 1, 2131718513, 0).a();
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = (pax)paramObject;
-      this.jdField_a_of_type_Pvb.a(paramObject);
+      paramObject = (pau)paramObject;
+      this.jdField_a_of_type_Puy.a(paramObject);
       a(paramObject);
     }
   }
   
-  public void a(prb paramprb) {}
+  public void a(pqy parampqy) {}
   
   public void b(RecommendFollowInfo paramRecommendFollowInfo)
   {
-    osm.a().b(paramRecommendFollowInfo.uin, paramRecommendFollowInfo.isFollowed);
-    osj.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    osj.a().b(paramRecommendFollowInfo.uin, paramRecommendFollowInfo.isFollowed);
+    osg.a().c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
     ThreadManager.post(new ComponentContentRecommend.6(this, paramRecommendFollowInfo), 5, null, true);
   }
   
   protected void b(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    osj.a().a().a(localQQAppInterface.getCurrentAccountUin(), paramRecommendFollowInfo.uin + "", paramBoolean, new pwd(this, paramRecommendFollowInfo), 2);
+    osg.a().a().a(localQQAppInterface.getCurrentAccountUin(), paramRecommendFollowInfo.uin + "", paramBoolean, new pwa(this, paramRecommendFollowInfo), 2);
   }
   
   protected void c(RecommendFollowInfo paramRecommendFollowInfo, boolean paramBoolean)
@@ -370,22 +370,22 @@ public class ComponentContentRecommend
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (paramBoolean)
     {
-      osj.a().a().a(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, true, new pwe(this, paramRecommendFollowInfo), 1);
+      osg.a().a().a(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, true, new pwb(this, paramRecommendFollowInfo), 1);
       return;
     }
-    osj.a().a().a(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, false, new pwf(this, paramRecommendFollowInfo), 1);
+    osg.a().a().a(localQQAppInterface.getAccount(), paramRecommendFollowInfo.uin, false, new pwc(this, paramRecommendFollowInfo), 1);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    osm.a().a(this.jdField_a_of_type_Osp);
+    osj.a().a(this.jdField_a_of_type_Osm);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    osm.a().b(this.jdField_a_of_type_Osp);
+    osj.a().b(this.jdField_a_of_type_Osm);
   }
 }
 

@@ -1,56 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.16.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
 public class abgr
-  extends BroadcastReceiver
+  extends ajtn
 {
   public abgr(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
   {
-    paramContext = paramIntent.getAction();
-    String str1 = paramIntent.getStringExtra("event");
-    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
+    if (paramInt != 0)
     {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label67;
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
       }
-    }
-    for (;;)
-    {
       return;
-      try
-      {
-        label67:
-        paramContext = new JSONObject(paramContext);
-        paramIntent = paramContext.optString("groupCode");
-        if (TextUtils.equals(this.a.a, paramIntent))
-        {
-          paramContext.optString("content");
-          paramIntent = paramContext.optString("source");
-          int i = paramContext.optInt("rankId", 333);
-          str1 = paramContext.optString("nickName");
-          String str2 = paramContext.optString("uin");
-          String str3 = paramContext.optString("course");
-          paramContext = paramContext.optString("name");
-          if ("qqProfile".equals(paramIntent))
-          {
-            ThreadManager.post(new FriendProfileMoreInfoActivity.16.1(this, str2, str1, i, str3, paramContext), 8, null, false);
-            return;
-          }
-        }
-      }
-      catch (JSONException paramContext) {}
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
+    }
+    FriendProfileMoreInfoActivity.a(this.a).clear();
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
+      paramInt += 1;
+    }
+    this.a.a.sendEmptyMessage(1003);
   }
 }
 

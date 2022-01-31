@@ -1,36 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class akex
-  implements ajtg
+  extends ajtb
 {
-  private Handler a;
-  
-  public akex(Handler paramHandler)
+  public akex(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramHandler;
+    super(paramQQAppInterface);
   }
   
-  public void a()
+  protected Class<? extends ajte> observerClass()
   {
-    this.a = null;
+    return akey.class;
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 1;
-    if (this.a == null) {}
-    while ((paramInt != 1) && (paramInt != 0)) {
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (;;)
+    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
     {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-      i = 0;
+      if (paramObject == null) {
+        notifyUI(1, false, null);
+      }
     }
+    else {
+      return;
+    }
+    notifyUI(1, true, null);
   }
 }
 

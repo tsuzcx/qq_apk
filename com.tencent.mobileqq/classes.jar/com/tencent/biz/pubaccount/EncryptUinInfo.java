@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nkz;
+import nkw;
 
 public class EncryptUinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EncryptUinInfo> CREATOR = new nkz();
+  public static final Parcelable.Creator<EncryptUinInfo> CREATOR = new nkw();
   public int a;
   public long a;
   public String a;

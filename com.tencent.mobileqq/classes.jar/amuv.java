@@ -1,13 +1,83 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.io.File;
 
-class amuv
-  implements bjip
+public class amuv
+  extends ampa<bjjh>
 {
-  amuv(amuu paramamuu) {}
-  
-  public void a(String paramString)
+  public int a()
   {
-    bkqo.a(BaseApplicationImpl.getContext(), paramString);
+    return 305;
+  }
+  
+  @NonNull
+  public bjjh a(int paramInt)
+  {
+    return new bjjh();
+  }
+  
+  @Nullable
+  public bjjh a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      return null;
+    }
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onParsed, content:" + paramArrayOfamph);
+    }
+    return new bjje().a(paramArrayOfamph, QIMMusicConfigManager.a.getAbsolutePath(), "temp_music_zip", new amuw(this));
+  }
+  
+  public Class<bjjh> a()
+  {
+    return bjjh.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onReqFailed");
+    }
+  }
+  
+  public void a(bjjh parambjjh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!QIMMusicConfigManager.a()) {
+      return 0;
+    }
+    return bbkb.B(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!QIMMusicConfigManager.a())
+    {
+      QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
+      ampl.a().a(305, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark;
 
-import aluc;
-import aluh;
+import alub;
+import alug;
 import java.lang.ref.WeakReference;
 
 public class ArkTipsManager$4
   implements Runnable
 {
-  public ArkTipsManager$4(aluc paramaluc, long paramLong) {}
+  public ArkTipsManager$4(alub paramalub, long paramLong) {}
   
   public void run()
   {
-    if ((aluc.a(this.this$0) != null) && (this.a == aluc.a(this.this$0).b))
+    if ((alub.a(this.this$0) != null) && (this.a == alub.a(this.this$0).b))
     {
-      aluc.a(this.this$0, this.a);
-      aluc.a(this.this$0, new WeakReference(aluc.a(this.this$0).a));
+      alub.a(this.this$0, this.a);
+      alub.a(this.this$0, new WeakReference(alub.a(this.this$0).a));
       this.this$0.b();
     }
   }

@@ -1,49 +1,32 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 class usr
-  extends tpk
+  extends JobSegment<Integer, uvu>
 {
-  usr(usp paramusp) {}
+  private uvt a;
   
-  public void a()
+  public usr(@NonNull uvt paramuvt)
   {
-    super.a();
-    StoryMemoriesFragment.a(this.a.a, null);
+    this.a = paramuvt;
   }
   
-  public void a(int paramInt)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    super.a(paramInt);
-    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-    int i;
-    int j;
-    String str1;
-    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((uvu)localObject).a.size() > 0) || (((uvu)localObject).b))
     {
-      i = 1;
-      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
-      if (!bool) {
-        break label124;
-      }
-      str1 = "1";
-      label76:
-      if (i != 1) {
-        break label131;
-      }
-    }
-    label131:
-    for (String str2 = "1";; str2 = "2")
-    {
-      vel.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
+      ved.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
       return;
-      i = 0;
-      break;
-      label124:
-      str1 = "2";
-      break label76;
     }
+    localObject = new tmq();
+    ((tmq)localObject).a = this.a.a();
+    ((tmq)localObject).b = QQStoryContext.a().b();
+    syo.a().a((sys)localObject, new uss(this, paramJobContext, paramInteger));
   }
 }
 

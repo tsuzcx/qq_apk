@@ -1,41 +1,19 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
+import com.tencent.qphone.base.util.QLog;
 
-class avrf
-  implements ServiceConnection
+public class avrf
 {
-  avrf(avre paramavre) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public static int a(String paramString1, String paramString2)
   {
-    avrd.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Avra.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
-    {
-      this.a.b.send(paramComponentName);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, "##" + paramString2);
     }
-    catch (RemoteException paramComponentName)
-    {
-      avrd.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
+    return 0;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public static int b(String paramString1, String paramString2)
   {
-    this.a.b = null;
+    QLog.e(paramString1, 2, "##" + paramString2);
+    return 0;
   }
 }
 

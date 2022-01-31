@@ -1,25 +1,27 @@
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
 
-public class wzg
+class wzg
+  implements wzb
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public ArrayList<String> a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
-  public ArrayList<String> b;
-  boolean b;
-  public String c;
-  public ArrayList<File> c = new ArrayList();
-  public String d;
-  public String e;
+  wzg(wzf paramwzf, long paramLong) {}
   
-  public wzg(wyw paramwyw)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineMp4_M4a end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineMp4_M4aTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    paramString1 = new File(paramString1);
+    if ((paramBoolean) && (paramString1.exists()))
+    {
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Wzf.a.a(paramString1, this.jdField_a_of_type_Wzf.a.b, new wzh(this, l));
+      return;
+    }
+    this.jdField_a_of_type_Wzf.a.d = paramString2;
+    this.jdField_a_of_type_Wzf.a.a.a(this.jdField_a_of_type_Wzf.a);
   }
 }
 

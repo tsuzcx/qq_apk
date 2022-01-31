@@ -1,20 +1,20 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 
 class afsd
-  extends aoeu
+  extends ajxj
 {
-  afsd(afsa paramafsa) {}
+  afsd(afry paramafry) {}
   
-  protected void c(boolean paramBoolean)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    afrw localafrw = this.a.a(2);
-    localafrw.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
-    if ((localafrw.c) && (paramBoolean)) {
-      afsa.a(this.a);
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localafrw.jdField_a_of_type_Int), Boolean.valueOf(localafrw.c), Boolean.valueOf(paramBoolean) }));
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      afry.a(this.a, true);
+      afry.a(this.a);
     }
   }
 }

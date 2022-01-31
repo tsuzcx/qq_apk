@@ -1,25 +1,25 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-public class aqxm
-  extends akav
+final class aqxm
+  implements aqxc
 {
-  private WeakReference<Context> a;
-  
-  public aqxm(Context paramContext)
+  public String a()
   {
-    this.a = new WeakReference(paramContext);
+    return aqxb.b;
   }
   
-  protected void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.HiBoomManager", 2, "onHiBoomAuthResult errorCode = " + paramInt);
-    }
-    Context localContext = (Context)this.a.get();
-    if ((paramInt != 0) && (localContext != null)) {
-      aqxh.a(localContext, paramArrayOfByte, 0);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
+      localObject = ((aqxj)((AppRuntime)localObject).getManager(219)).a(paramInt);
+      ((aqxi)localObject).b = true;
+      ((aqxi)localObject).c = 0;
     }
   }
 }

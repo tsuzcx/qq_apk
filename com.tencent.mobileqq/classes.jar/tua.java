@@ -1,12 +1,12 @@
 import android.app.Dialog;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
 public class tua
   extends GestureDetector.SimpleOnGestureListener
 {
-  public tua(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public tua(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
@@ -20,8 +20,8 @@ public class tua
       paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
       float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
       double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
-        this.a.a.dismiss();
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
     }
     return false;

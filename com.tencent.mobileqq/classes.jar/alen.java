@@ -1,79 +1,18 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-class alen
-  implements alel
+public abstract interface alen
+  extends IInterface
 {
-  private IBinder a;
+  public abstract void a();
   
-  alen(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
+  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 

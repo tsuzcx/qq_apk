@@ -1,27 +1,9 @@
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
-
-class bcid
-  implements bcij<oidb_0x8ed.RspBody>
+public abstract interface bcid
+  extends bccw
 {
-  bcid(bcic parambcic, bcij parambcij, HotChatInfo paramHotChatInfo) {}
+  public abstract boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8);
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
-  {
-    if (this.jdField_a_of_type_Bcij != null) {
-      this.jdField_a_of_type_Bcij.a(paramInt, paramRspBody);
-    }
-    paramRspBody = (HotChatManager)this.jdField_a_of_type_Bcic.app.getManager(60);
-    List localList = paramRspBody.a();
-    if (localList != null) {
-      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
-    }
-    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
-  }
+  public abstract String b(String paramString);
 }
 
 

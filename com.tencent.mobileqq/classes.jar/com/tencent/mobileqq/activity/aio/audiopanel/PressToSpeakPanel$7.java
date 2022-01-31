@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajyc;
+import ajya;
 import android.widget.TextView;
-import avbq;
+import avbs;
 
 class PressToSpeakPanel$7
   implements Runnable
@@ -18,15 +18,15 @@ class PressToSpeakPanel$7
     {
       if (this.this$0.b())
       {
-        PressToSpeakPanel.a(this.this$0).setText(ajyc.a(2131708406));
+        PressToSpeakPanel.a(this.this$0).setText(ajya.a(2131708417));
         return;
       }
-      PressToSpeakPanel.a(this.this$0).setText(ajyc.a(2131708404));
+      PressToSpeakPanel.a(this.this$0).setText(ajya.a(2131708415));
       return;
     }
     if (PressToSpeakPanel.c(this.this$0) == 2)
     {
-      PressToSpeakPanel.a(this.this$0).setText(ajyc.a(2131708401));
+      PressToSpeakPanel.a(this.this$0).setText(ajya.a(2131708412));
       return;
     }
     PressToSpeakPanel.a(this.this$0).setText(AudioPanel.a(this.jdField_a_of_type_Double));

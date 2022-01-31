@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
 import com.tencent.biz.qqstory.database.CommentEntry;
-import uqh;
+import uqe;
 
 public class DetailCommentHelper$4
   implements Runnable
 {
-  public DetailCommentHelper$4(uqh paramuqh, CommentEntry paramCommentEntry, int paramInt) {}
+  public DetailCommentHelper$4(uqe paramuqe, CommentEntry paramCommentEntry, int paramInt) {}
   
   public void run()
   {
-    uqh.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+    uqe.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
   }
 }
 

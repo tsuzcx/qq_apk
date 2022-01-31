@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class azee
-  implements DialogInterface.OnClickListener
+  extends akuo
 {
-  public azee(QLifeCommentActivity paramQLifeCommentActivity, bbgg parambbgg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azee(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.cancel();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
     }
+    if (paramSosoLbsInfo != null)
+    {
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
+    }
+    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
   }
 }
 

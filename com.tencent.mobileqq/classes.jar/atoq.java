@@ -1,33 +1,21 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
+import java.util.List;
 
 public class atoq
-  implements Animation.AnimationListener
+  implements auwx
 {
-  public atoq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public atoq(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, auww paramauww, int paramInt2, String paramString)
   {
-    NearbyPeopleProfileActivity.a(this.a).removeView(NearbyPeopleProfileActivity.a(this.a));
-    NearbyPeopleProfileActivity.a(this.a).a();
-    NearbyPeopleProfileActivity.a(this.a, null);
-    NearbyPeopleProfileActivity.a(this.a, null);
-    if (NearbyPeopleProfileActivity.a(this.a) == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
     {
-      NearbyPeopleProfileActivity.a(this.a, this.a.a(this.a.j));
-      NearbyPeopleProfileActivity.b(this.a, NearbyPeopleProfileActivity.a(this.a).a());
-      NearbyPeopleProfileActivity.a(this.a).a();
-      NearbyPeopleProfileActivity.a(this.a).addView(NearbyPeopleProfileActivity.b(this.a), new FrameLayout.LayoutParams(-1, -1));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
     }
-    NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

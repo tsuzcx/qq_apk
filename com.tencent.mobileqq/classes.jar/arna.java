@@ -1,82 +1,23 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 import org.json.JSONObject;
 
 public class arna
-  extends WebViewPlugin
+  implements QQPermissionCallback
 {
-  String jdField_a_of_type_JavaLangString;
-  myp jdField_a_of_type_Myp = new arnb(this);
-  wxu jdField_a_of_type_Wxu;
+  public arna(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
-  public arna()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.mPluginNameSpace = "push";
+    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
+    bbdj.a(this.jdField_a_of_type_MqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        i = paramJsBridgeListener.optInt("appid");
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-        this.jdField_a_of_type_Wxu.a().a(i, this.jdField_a_of_type_Myp);
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-        }
-        return false;
-      }
-      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          i = paramJsBridgeListener.optInt("appid");
-          this.jdField_a_of_type_Wxu.a().a(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    if (this.jdField_a_of_type_Wxu == null)
-    {
-      this.jdField_a_of_type_Wxu = wxu.a();
-      this.jdField_a_of_type_Wxu.a();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_Wxu != null) {
-      this.jdField_a_of_type_Wxu.b();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
   }
 }
 

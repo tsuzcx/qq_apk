@@ -1,43 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmt
-  extends syv
+  extends syn
 {
-  public String a;
-  public String b;
+  public List<MomeriesYearNode> a = new ArrayList();
   
-  public String a()
-  {
-    return sxp.a("StorySvc.get_profile_feed_id_list");
-  }
+  public tmt() {}
   
-  public syq a(byte[] paramArrayOfByte)
+  public tmt(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
   {
-    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
-    try
+    super(paramRspProfileYearNodeList.result);
+    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
+    while (paramRspProfileYearNodeList.hasNext())
     {
-      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new tmu(localRspProfileStoryFeedIdList);
+      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
+      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
+      localMomeriesYearNode.convertFrom(localYearNodeInfo);
+      this.a.add(localMomeriesYearNode);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
-    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqProfileStoryFeedIdList.toByteArray();
   }
 }
 

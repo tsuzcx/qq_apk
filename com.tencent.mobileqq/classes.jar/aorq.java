@@ -1,37 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class aorq
-  implements View.OnTouchListener
 {
-  public aorq(FileAssistantActivity paramFileAssistantActivity, URLImageView paramURLImageView, View paramView) {}
+  public int a;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
+  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  public int b;
+  ImageView b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = (int)paramMotionEvent.getRawX();
-    int j = (int)paramMotionEvent.getRawY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_ComTencentImageURLImageView.setColorFilter(null);
-      if ((Math.abs(i - this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity.e) < 10) || (Math.abs(j - this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity.f) < 10))
-      {
-        this.jdField_a_of_type_AndroidViewView.callOnClick();
-        continue;
-        FileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity, this.jdField_a_of_type_ComTencentImageURLImageView);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity.e = i;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantFileAssistantActivity.f = j;
-        continue;
-        this.jdField_a_of_type_ComTencentImageURLImageView.setColorFilter(null);
-      }
-    }
-  }
+  public aorq(aorp paramaorp) {}
 }
 
 

@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
 public class asnl
-  extends asnt<MessageRecord>
+  implements DialogInterface.OnClickListener
 {
-  public asnl(MessageRecord paramMessageRecord)
-  {
-    super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
-  }
+  public asnl(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  protected int a()
-  {
-    return 0;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    return null;
-  }
-  
-  public void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

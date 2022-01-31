@@ -1,27 +1,27 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class uiq
-  extends QQUIEventReceiver<uhz, tkn>
+class uiq
+  implements suz
 {
-  public uiq(@NonNull uhz paramuhz)
+  uiq(uip paramuip) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    super(paramuhz);
+    ved.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { uip.a(this.a).mVid });
+    tsr.a(uip.a(this.a), uip.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
   
-  public void a(@NonNull uhz paramuhz, @NonNull tkn paramtkn)
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
-    if (paramtkn.a.isSuccess())
-    {
-      veg.a(paramuhz.b, "receive user info event. %s.", paramtkn.toString());
-      paramuhz.i();
-    }
+    ved.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { uip.a(this.a).mVid, paramErrorMessage.toString() });
+    tsr.a(uip.a(this.a), uip.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
   
-  public Class acceptEventClass()
+  public void b(String paramString, int paramInt)
   {
-    return tkn.class;
+    ved.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { uip.a(this.a).mVid });
+    tsr.a(uip.a(this.a), uip.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
 }
 

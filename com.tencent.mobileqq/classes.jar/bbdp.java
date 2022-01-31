@@ -1,10 +1,27 @@
-public abstract interface bbdp
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+
+final class bbdp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt);
+  bbdp(Activity paramActivity, axof paramaxof) {}
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
-  
-  public abstract void b(String paramString, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+    }
+    while (this.jdField_a_of_type_Axof == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axof.b();
+  }
 }
 
 

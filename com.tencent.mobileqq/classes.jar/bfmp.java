@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.mobileqq.widget.RandomCoverView;
+import android.graphics.Point;
+import java.util.ArrayList;
 
-final class bfmp
-  extends VasQuickUpdateManager.CallBacker
+public final class bfmp
 {
-  bfmp(BaseActivity paramBaseActivity, Card paramCard, RandomCoverView paramRandomCoverView, ajxg paramajxg, boolean paramBoolean) {}
+  ArrayList<Point> a;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public int a()
   {
-    bfmo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVasQuickUpdateManager.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView, this.jdField_a_of_type_Ajxg, this.jdField_a_of_type_Boolean);
-    paramVasQuickUpdateManager.removeCallBacker(this);
+    return this.a.size();
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
+      return 0;
+    }
+    if (paramInt2 == 0) {
+      return ((Point)this.a.get(paramInt1)).x;
+    }
+    return ((Point)this.a.get(paramInt1)).y;
   }
 }
 

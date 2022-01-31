@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import mqq.app.QQPermissionCallback;
 
 public class amej
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public amej(CardPicGalleryActivity paramCardPicGalleryActivity, bfol parambfol) {}
+  public amej(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQAppInterface localQQAppInterface;
-    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
-    {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
-      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
-        break label63;
-      }
-    }
-    label63:
-    for (paramView = "1";; paramView = "2")
-    {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, paramView, "", "", "");
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    }
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

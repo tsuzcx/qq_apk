@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="userUin,friendUin")
 public class UinPair
-  extends aukm
+  extends auko
 {
   public String friendUin;
   public String userUin;

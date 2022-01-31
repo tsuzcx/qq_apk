@@ -1,6 +1,6 @@
 package com.tencent.av.core;
 
-import lco;
+import lcj;
 
 public class SDKConfigInfo
 {
@@ -8,7 +8,7 @@ public class SDKConfigInfo
   private boolean isDebugVersion = false;
   private boolean isGrayVersion = false;
   private boolean isPublicVersion = true;
-  private String logDir = lco.k();
+  private String logDir = lcj.k();
   private String processName = "";
   private int terminalType = 4;
   

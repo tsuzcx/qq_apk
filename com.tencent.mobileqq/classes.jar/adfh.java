@@ -1,6 +1,11 @@
-public abstract interface adfh
+import android.view.View;
+import android.widget.ImageView;
+
+public class adfh
+  extends adfm
 {
-  public abstract void a();
+  public View a;
+  public ImageView a;
 }
 
 

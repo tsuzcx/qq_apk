@@ -1,28 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class bftu
-  implements View.OnTouchListener
+  extends ImageSpan
 {
-  public bftu(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bftu(Drawable paramDrawable, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_Bfrd == null) || (!this.a.jdField_a_of_type_Bfrd.a(this.a, paramView, i, this.a.jdField_a_of_type_Bftw.getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
-    }
-    return true;
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

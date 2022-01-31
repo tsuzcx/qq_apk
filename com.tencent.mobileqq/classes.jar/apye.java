@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class apye
-  implements DialogInterface.OnClickListener
+public class apye
+  implements View.OnClickListener
 {
-  apye(apyc paramapyc) {}
+  public apye(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a.isShowing()) {
-      this.a.a.a.dismiss();
+    String str1 = ajya.a(2131713799) + apel.b() + ajya.a(2131713805);
+    paramView = null;
+    String str2 = ajya.a(2131713817);
+    if (SendBottomBar.a(this.a).g() != -1)
+    {
+      str1 = ajya.a(2131713823);
+      paramView = ajya.a(2131713819);
+      str2 = ajya.a(2131713816);
     }
+    this.a.a = bbdj.a(SendBottomBar.a(this.a), 230, paramView, str1, ajya.a(2131713815), str2, new apyf(this), new apyg(this));
+    this.a.a.show();
   }
 }
 

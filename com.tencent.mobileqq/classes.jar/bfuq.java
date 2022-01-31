@@ -1,38 +1,28 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView;
 
 public class bfuq
+  implements View.OnTouchListener
 {
-  public int a;
-  public Bitmap a;
-  public int b;
+  public bfuq(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
   
-  public bfuq(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    a(paramInt1, paramInt2);
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      return 0;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
-    this.b = (paramInt2 - j / 2);
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
+    return true;
   }
 }
 

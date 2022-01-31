@@ -1,23 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-
-public class asru
-  extends AnimatorListenerAdapter
+public abstract interface asru
 {
-  public asru(MultiCardFragment paramMultiCardFragment) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.b(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.b(this.a);
-  }
+  public abstract void a(asrs paramasrs);
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
+import afqq;
+import afqr;
 import afqs;
-import afqt;
-import afqu;
-import afsx;
+import afsv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -13,7 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bfob;
+import bfos;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,12 +22,12 @@ import com.tencent.widget.AbsListView;
 
 public abstract class ContactsBaseFragment
   extends Fragment
-  implements afsx, bfob
+  implements afsv, bfos
 {
   public static Rect a;
   private int a;
-  protected afqt a;
-  public afqu a;
+  protected afqr a;
+  public afqs a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -49,14 +49,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(afqt paramafqt)
+  public void a(afqr paramafqr)
   {
-    this.jdField_a_of_type_Afqt = paramafqt;
+    this.jdField_a_of_type_Afqr = paramafqr;
   }
   
-  public void a(afqu paramafqu)
+  public void a(afqs paramafqs)
   {
-    this.jdField_a_of_type_Afqu = paramafqu;
+    this.jdField_a_of_type_Afqs = paramafqs;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -147,7 +147,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new afqs(this));
+      paramLayoutInflater.setAccessibilityDelegate(new afqq(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -168,8 +168,8 @@ public abstract class ContactsBaseFragment
     super.onDestroy();
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Afqt != null) {
-      this.jdField_a_of_type_Afqt.d(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Afqr != null) {
+      this.jdField_a_of_type_Afqr.d(this.jdField_a_of_type_Int);
     }
   }
   

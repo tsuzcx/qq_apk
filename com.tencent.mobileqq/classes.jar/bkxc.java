@@ -1,15 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder.BgmAudioPlayRunnable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class bkxc
-  implements MediaPlayer.OnPreparedListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bkxc(AudioDecoder.BgmAudioPlayRunnable paramBgmAudioPlayRunnable) {}
+  public bkxc(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.e();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

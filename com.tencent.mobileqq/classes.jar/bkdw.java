@@ -1,48 +1,24 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class bkdw
-  implements bkay
+  implements Animation.AnimationListener
 {
-  ArrayList<bkav> a = null;
+  public bkdw(DoodleLayout paramDoodleLayout) {}
   
-  public bkdw(bkav... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = new ArrayList(paramVarArgs.length);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      bkav localbkav = paramVarArgs[i];
-      if (localbkav != null) {
-        this.a.add(localbkav);
-      }
-      i += 1;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.jdField_a_of_type_Bkee != null) {
+      this.a.jdField_a_of_type_Bkee.a(null);
     }
   }
   
-  public bkav a(String paramString)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (((bkav)this.a.get(i)).a().equals(paramString)) {
-        return (bkav)this.a.get(i);
-      }
-      i += 1;
-    }
-    return null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(List<bkav> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(this.a);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

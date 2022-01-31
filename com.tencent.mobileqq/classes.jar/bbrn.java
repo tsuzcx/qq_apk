@@ -1,16 +1,14 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-
-class bbrn
-  extends bbwf
+class bbrn<E>
 {
-  bbrn(bbrm parambbrm) {}
+  public bbrm<E> a;
+  public Object a;
+  public String a;
   
-  @TargetApi(9)
-  public void onDone(bbwg parambbwg)
+  public bbrn(bbrm<E> parambbrm, Object paramObject, String paramString)
   {
-    super.onDone(parambbwg);
-    bbrm.a(this.a).sendMessage(bbrm.a(this.a).obtainMessage(10002, parambbwg.a(), 0, parambbwg.a()));
+    this.jdField_a_of_type_Bbrm = parambbrm;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

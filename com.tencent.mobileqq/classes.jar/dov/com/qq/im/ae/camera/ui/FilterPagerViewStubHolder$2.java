@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import avsu;
-import bikb;
+import avsw;
+import biks;
 
 public class FilterPagerViewStubHolder$2
   implements Runnable
 {
-  public FilterPagerViewStubHolder$2(bikb parambikb, avsu paramavsu) {}
+  public FilterPagerViewStubHolder$2(biks parambiks, avsw paramavsw) {}
   
   public void run()
   {
-    this.a.a(bikb.a(this.this$0));
+    this.a.a(biks.a(this.this$0));
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import afvs;
+import afvq;
 import android.os.Handler;
 
 public class QFaceUnlockCameraCaptureUnit$1
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$1(afvs paramafvs) {}
+  public QFaceUnlockCameraCaptureUnit$1(afvq paramafvq) {}
   
   public void run()
   {
-    if (afvs.a(this.this$0) != 1) {
+    if (afvq.a(this.this$0) != 1) {
       return;
     }
-    afvs.b(this.this$0);
-    afvs.a(this.this$0).postDelayed(this, 1000L);
+    afvq.b(this.this$0);
+    afvq.a(this.this$0).postDelayed(this, 1000L);
   }
 }
 

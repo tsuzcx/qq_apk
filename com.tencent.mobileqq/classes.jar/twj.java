@@ -1,80 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class twj
-  implements tvx
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final boolean jdField_a_of_type_Boolean;
-  private int b = -1;
+  public ErrorMessage a;
+  public List<twm> a;
+  public boolean a;
+  public ErrorMessage b;
+  public boolean b;
+  public boolean c;
   
-  public twj(boolean paramBoolean)
+  public twj()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public List<String> a()
+  public String toString()
   {
-    veg.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, ArrayList<uav> paramArrayList, two paramtwo)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      veg.b("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "close , set data invalidate");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      uav localuav = (uav)paramArrayList.next();
-      if ((!localuav.a()) && (!TextUtils.isEmpty(localuav.a))) {
-        localArrayList.add(localuav.a);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    this.jdField_a_of_type_Int = paramInt;
-    int i;
-    if ((paramtwo instanceof txc))
-    {
-      paramArrayList = (txc)paramtwo;
-      if (paramArrayList.a != null)
-      {
-        i = paramArrayList.a.jdField_a_of_type_Int;
-        this.b = i;
-        label129:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        if (paramtwo != null) {
-          break label186;
-        }
-      }
-    }
-    label186:
-    for (paramArrayList = "";; paramArrayList = paramtwo.toString())
-    {
-      veg.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
-      return;
-      i = -1;
-      break;
-      this.b = -1;
-      break label129;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.b == 12;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 13;
+    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

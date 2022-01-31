@@ -1,38 +1,42 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class vjy
-  extends ayxn
+  implements Comparable<vjy>
 {
-  public vjy(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
+  public int a;
+  public String a;
+  int b;
+  public String b;
+  public String c;
+  
+  public vjy()
   {
-    super(paramQQAppInterface, paramString1);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  protected void realCancel()
+  public vjy(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realCancel download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
   }
   
-  protected void realStart()
+  public int a(vjy paramvjy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
-    }
-    bbwl localbbwl = ((bbwi)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(47)).a(1);
-    bbwg localbbwg = new bbwg(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localbbwg.n = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("md5", this.c);
-    localBundle.putString("path", this.b);
-    localbbwl.a(localbbwg, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
+    if (paramvjy == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_b_of_type_Int < paramvjy.jdField_b_of_type_Int) {
+        return 1;
+      }
+    } while (this.jdField_b_of_type_Int != paramvjy.jdField_b_of_type_Int);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
   }
 }
 

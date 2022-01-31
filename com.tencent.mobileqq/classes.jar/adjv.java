@@ -1,69 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class adjv
-  implements adih
+public abstract interface adjv
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public abstract View a();
   
-  public adjv(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
+  public abstract void a();
   
-  private void a()
-  {
-    asep localasep;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      localasep = (asep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308);
-      if (localasep == null) {
-        break label93;
-      }
-      switch (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
-      {
-      }
-    }
-    label93:
-    while (!QLog.isColorLevel())
-    {
-      return;
-      localasep.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, asep.b);
-      return;
-      localasep.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, asep.c);
-      return;
-    }
-    QLog.d("UnreadCountHelper", 2, "PushNotificationManager is null");
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a();
-  }
+  public abstract void b();
   
-  public int[] a()
-  {
-    return new int[] { 5 };
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void i();
+  
+  public abstract void o();
 }
 
 

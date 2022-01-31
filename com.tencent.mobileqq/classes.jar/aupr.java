@@ -1,9 +1,9 @@
 public final class aupr
-  extends aupf
+  extends auph
 {
   protected int c()
   {
-    return 520;
+    return 508;
   }
 }
 

@@ -1,23 +1,17 @@
-class bjtl
-  implements bjfu
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+
+public class bjtl
+  extends bkzl
 {
-  bjtl(bjtg parambjtg) {}
+  public bjtl(EditPicActivity paramEditPicActivity) {}
   
-  public void aW_()
+  public void a()
   {
-    bjtg.a(this.a).d();
-  }
-  
-  public void b()
-  {
-    bjtg.a(this.a).d();
-    bjtg.a(this.a).a();
-    bjtg.a(this.a).a(bjtg.a(this.a));
-  }
-  
-  public void c()
-  {
-    bjtg.a(this.a).d();
+    ved.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    bjsu localbjsu = (bjsu)this.a.a.a(bjsu.class);
+    if (localbjsu != null) {
+      localbjsu.b();
+    }
   }
 }
 

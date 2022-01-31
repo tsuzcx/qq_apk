@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import besn;
+import bete;
 
 class AppBrandLaunchManager$1
   implements Runnable
@@ -9,7 +9,7 @@ class AppBrandLaunchManager$1
   
   public void run()
   {
-    besn.a().a();
+    bete.a().a();
   }
 }
 

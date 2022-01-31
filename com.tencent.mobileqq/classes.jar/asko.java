@@ -1,6 +1,14 @@
-public abstract interface asko<R>
+public abstract interface asko
 {
-  public abstract void postQuery(R paramR);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

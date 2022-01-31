@@ -1,43 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
 class atkr
-  implements atkz
+  implements atla
 {
-  atkr(atkm paramatkm) {}
+  atkr(atko paramatko) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void a(atkz paramatkz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    if (this.a.jdField_a_of_type_Atkx != null) {
+      this.a.jdField_a_of_type_Atkx.a();
     }
-    if (this.a.jdField_a_of_type_Atjf != null) {
-      this.a.jdField_a_of_type_Atjf.a(paramString1, 199, paramInt, "use sdk download error");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramatkz = atko.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
+    {
+      atiy.a(paramatkz, i);
+      return;
     }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    this.a.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Long = paramLong1;
-    if (paramLong2 > this.a.b) {
-      this.a.b = paramLong2;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
-    }
-    atkm.a(paramFile);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Bundle;
 import android.os.Process;
-import aquz;
-import aqva;
-import awzw;
-import axqw;
-import ayfv;
+import aqvb;
+import aqvc;
+import awzy;
+import axqy;
+import ayfx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
@@ -18,16 +18,16 @@ public final class TeamWorkUtils$1
   public void run()
   {
     Process.setThreadPriority(10);
-    aquz localaquz = new aquz(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, 1, -5020, 3276804, awzw.a());
+    aqvb localaqvb = new aqvb(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, 1, -5020, 3276804, awzy.a());
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_action", 42);
-    ((Bundle)localObject).putString("key_action_DATA", ayfv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 1));
+    ((Bundle)localObject).putString("key_action_DATA", ayfx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 1));
     ((Bundle)localObject).putString("key_a_action_DATA", this.c);
-    localaquz.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.d.length(), (Bundle)localObject);
+    localaqvb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.d.length(), (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaquz);
-    aqva.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaqvb);
+    aqvc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
   }
 }
 

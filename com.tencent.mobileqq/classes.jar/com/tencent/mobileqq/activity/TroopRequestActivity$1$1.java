@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajtk;
-import bbjn;
+import ajti;
+import bbkb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
@@ -13,7 +13,7 @@ class TroopRequestActivity$1$1
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.isFinishing()) {}
-    ajtk localajtk;
+    ajti localajti;
     do
     {
       do
@@ -23,10 +23,10 @@ class TroopRequestActivity$1$1
           TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0, this.jdField_a_of_type_ComTencentMobileqqDataCard);
         }
       } while ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel > 0));
-      localajtk = (ajtk)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.app.a(2);
-    } while (localajtk == null);
-    byte b = (byte)bbjn.W(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.getApplication(), this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.app.getCurrentAccountUin());
-    localajtk.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.b, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", 1L, 10004, new byte[] { 0 }, b);
+      localajti = (ajti)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.app.a(2);
+    } while (localajti == null);
+    byte b = (byte)bbkb.W(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.getApplication(), this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.app.getCurrentAccountUin());
+    localajti.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity$1.this$0.b, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", 1L, 10004, new byte[] { 0 }, b);
   }
 }
 

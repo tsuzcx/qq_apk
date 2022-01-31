@@ -1,6 +1,14 @@
-public abstract interface bhub
+import android.app.Activity;
+
+class bhub
+  implements bgzv
 {
-  public abstract void a();
+  bhub(bhty parambhty, int paramInt) {}
+  
+  public void onFail(Activity paramActivity, String paramString)
+  {
+    bcql.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+  }
 }
 
 

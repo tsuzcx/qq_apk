@@ -1,16 +1,24 @@
-public abstract interface mnr
+import com.tencent.qphone.base.util.QLog;
+
+final class mnr
+  implements mnb
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  public void a(int paramInt)
+  {
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
+    mnp.a(false, paramInt);
+  }
   
-  public abstract void a(String paramString);
+  public void a(String paramString)
+  {
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
+  }
   
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void b(String paramString)
+  {
+    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
+    mnp.a(true, 0);
+  }
 }
 
 

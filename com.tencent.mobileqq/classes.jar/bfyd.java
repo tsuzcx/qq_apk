@@ -1,46 +1,58 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.graphics.Rect;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class bfyd
-  extends GestureDetector.SimpleOnGestureListener
+public class bfyd
 {
-  bfyd(bfxw parambfxw) {}
+  private int jdField_a_of_type_Int;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  private bfyd(Activity paramActivity)
   {
-    return true;
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new bfye(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  private int a()
   {
-    Object localObject = this.a.findChildView(paramMotionEvent);
-    if (localObject != null)
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    int j;
+    int k;
+    if (i != this.jdField_a_of_type_Int)
     {
-      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
-      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
-        break label57;
+      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      k = j - i;
+      if (k <= j / 4) {
+        break label66;
       }
     }
-    label57:
-    do
+    label66:
+    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k + ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity));; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
     {
-      do
-      {
-        return;
-      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
-      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      this.a.mInitialTouchX = f1;
-      this.a.mInitialTouchY = f2;
-      paramMotionEvent = this.a;
-      this.a.mDy = 0.0F;
-      paramMotionEvent.mDx = 0.0F;
-    } while (!this.a.mCallback.isLongPressDragEnabled());
-    this.a.select((RecyclerView.ViewHolder)localObject, 2);
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    new bfyd(paramActivity);
   }
 }
 

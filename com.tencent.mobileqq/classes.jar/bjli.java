@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.TransitionProviderView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjli
-  extends bjde
+  implements Animator.AnimatorListener
 {
-  public bjli(TransitionProviderView paramTransitionProviderView) {}
+  public bjli(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void a(int paramInt) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(String paramString) {}
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public void a(String paramString, int paramInt) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
-      this.a.jdField_a_of_type_Bfnk.sendEmptyMessage(1);
-    }
+    this.a.c.setVisibility(8);
   }
 }
 

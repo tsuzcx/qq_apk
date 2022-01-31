@@ -1,13 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ahsk
   implements DialogInterface.OnClickListener
 {
-  public ahsk(CameraPreviewNew.1 param1) {}
+  public ahsk(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

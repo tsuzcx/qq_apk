@@ -1,87 +1,21 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import java.util.Observable;
-import java.util.Observer;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
 
-public abstract class azmo
-  extends Observable
+final class azmo
+  implements TextUtils.EllipsizeCallback
 {
-  public static int a;
-  public static int b;
-  public static int c = 3;
-  public acut a;
-  public Context a;
-  protected View a;
-  public RelativeLayout a;
-  public SessionInfo a;
-  public QQAppInterface a;
-  public ChatXListView a;
-  public ScrollerRunnable a;
-  public Observer a;
-  public boolean a;
-  public Observer b;
+  azmo(azmp paramazmp, String paramString) {}
   
-  static
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      d();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    deleteObservers();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, acut paramacut, ChatXListView paramChatXListView, ScrollerRunnable paramScrollerRunnable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372953);
-    }
-    this.jdField_a_of_type_Acut = paramacut;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
-    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = paramScrollerRunnable;
-    deleteObservers();
-    addObserver(paramObserver);
-    paramQQAppInterface = (HotChatManager)paramQQAppInterface.getManager(60);
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000))
+    if (paramInt1 == paramInt2)
     {
-      this.jdField_a_of_type_Boolean = true;
-      c();
+      this.jdField_a_of_type_Azmp.c.setText(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_Azmp.c.setText(new aykk(naj.b(naj.c(str + "...")), 3, 14));
   }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_JavaUtilObserver != null) {
-      this.jdField_b_of_type_JavaUtilObserver.update(null, null);
-    }
-  }
-  
-  protected abstract void c();
-  
-  protected abstract void d();
 }
 
 

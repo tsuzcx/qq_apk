@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajyc;
+import ajya;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nxi;
-import nxk;
-import onk;
-import qin;
-import qio;
+import nxf;
+import nxh;
+import onh;
+import qik;
+import qil;
 
 public class ReadInJoyUploadAvatarActivity
   extends IphoneTitleBarActivity
@@ -24,7 +24,7 @@ public class ReadInJoyUploadAvatarActivity
   public static String a;
   protected ProgressDialog a;
   protected Handler a;
-  qin a;
+  qik a;
   
   static
   {
@@ -34,13 +34,13 @@ public class ReadInJoyUploadAvatarActivity
   public ReadInJoyUploadAvatarActivity()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Qin = new nxk(this);
+    this.jdField_a_of_type_Qik = new nxh(this);
   }
   
   private void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
-    new qio(getApplicationContext(), localQQAppInterface, this.jdField_a_of_type_Qin).a(paramString, true, 2);
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
+    new qil(getApplicationContext(), localQQAppInterface, this.jdField_a_of_type_Qik).a(paramString, true, 2);
   }
   
   private void a(String paramString, Handler paramHandler, int paramInt)
@@ -53,7 +53,7 @@ public class ReadInJoyUploadAvatarActivity
     switch (paramInt1)
     {
     default: 
-      a(paramString, new nxi(this, Looper.getMainLooper()), paramInt2);
+      a(paramString, new nxf(this, Looper.getMainLooper()), paramInt2);
     }
     for (;;)
     {
@@ -67,8 +67,8 @@ public class ReadInJoyUploadAvatarActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(new View(this));
-    setTitle(ajyc.a(2131712883), ajyc.a(2131712883));
-    setLeftViewName(2131695079);
+    setTitle(ajya.a(2131712894), ajya.a(2131712894));
+    setLeftViewName(2131695080);
     this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarActivity.1(this));
     paramBundle = getIntent();
     ArrayList localArrayList = paramBundle.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -78,7 +78,7 @@ public class ReadInJoyUploadAvatarActivity
       Intent localIntent = getIntent();
       Bundle localBundle = new Bundle();
       localBundle.putInt("retCode", 2);
-      localBundle.putString("msg", ajyc.a(2131712864));
+      localBundle.putString("msg", ajya.a(2131712875));
       localIntent.putExtra("Bundle", localBundle);
       setResult(-1, localIntent);
       finish();

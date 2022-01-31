@@ -1,28 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-final class aeem
-  implements mzb
+public class aeem
+  extends aeed
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
-    }
-    if ((paramInt == 0) && (paramString == null))
-    {
-      paramString = aeei.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((aeen)((Map.Entry)paramString.next()).getValue()).a(paramInt);
-      }
-      aeei.a.clear();
-    }
-  }
-  
-  public void progress(int paramInt) {}
+  public TroopSignVideoView a;
+  public View e;
+  public View f;
 }
 
 

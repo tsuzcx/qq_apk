@@ -1,29 +1,36 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class nik
-  implements bfoq
+  implements ViewPager.OnPageChangeListener
 {
   public nik(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    if (paramView != null)
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-      }
-      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(this.a.getResources().getString(2131693368))))
-      {
-        ardb.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-        axqw.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-      }
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
     }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 

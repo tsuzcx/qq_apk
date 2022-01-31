@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.dating.DatingFilters;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
 
-public final class anmc
-  implements Parcelable.Creator<DatingFilters>
+public class anmc
+  extends ajxj
 {
-  public DatingFilters a(Parcel paramParcel)
+  public anmc(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return new DatingFilters(paramParcel, null);
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
   }
   
-  public DatingFilters[] a(int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new DatingFilters[paramInt];
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
   }
 }
 

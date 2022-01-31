@@ -1,73 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amsc
-  extends ampb<amsb>
 {
-  public int a()
-  {
-    return 528;
-  }
+  private int a;
   
-  @NonNull
-  public amsb a(int paramInt)
+  public static amsc a(String paramString)
   {
-    return new amsb();
-  }
-  
-  @Nullable
-  public amsb a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
-    {
-      amsb localamsb = amsb.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      }
-      return localamsb;
+    if (paramString == null) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
+    try
+    {
+      amsc localamsc = new amsc();
+      localamsc.a = new JSONObject(paramString).optInt("open_don_disturb", 0);
+      return localamsc;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
     return null;
   }
   
-  public Class<amsb> a()
+  public int a()
   {
-    return amsb.class;
+    return this.a;
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amsb paramamsb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramamsb.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return super.toString() + " showDonDisturb=" + this.a;
   }
 }
 

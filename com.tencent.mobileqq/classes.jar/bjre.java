@@ -1,98 +1,96 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import dov.com.qq.im.ae.SessionWrap;
 
 public class bjre
 {
-  public static bjre a;
   public int a;
-  protected Object a;
-  boolean a;
-  public int b = 0;
+  private SessionWrap a;
+  public String a;
+  public boolean a;
+  public int b;
+  private String b;
+  public boolean b;
+  private int c;
+  public boolean c;
+  private int jdField_d_of_type_Int = 11;
+  private boolean jdField_d_of_type_Boolean = true;
+  private int jdField_e_of_type_Int = 1;
+  private boolean jdField_e_of_type_Boolean;
+  private int jdField_f_of_type_Int;
+  private boolean jdField_f_of_type_Boolean;
   
-  public bjre()
+  private bjre(bjrg parambjrg)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_DovComQqImAeSessionWrap = bjrg.a(parambjrg);
+    this.jdField_b_of_type_JavaLangString = bjrg.a(parambjrg);
+    this.jdField_c_of_type_Int = bjrg.a(parambjrg);
+    this.jdField_d_of_type_Int = bjrg.b(parambjrg);
+    this.jdField_e_of_type_Int = bjrg.c(parambjrg);
+    this.jdField_d_of_type_Boolean = bjrg.a(parambjrg);
+    this.jdField_a_of_type_JavaLangString = bjrg.b(parambjrg);
+    this.jdField_f_of_type_Int = bjrg.d(parambjrg);
+    this.jdField_e_of_type_Boolean = bjrg.b(parambjrg);
+    this.jdField_a_of_type_Boolean = parambjrg.jdField_a_of_type_Boolean;
+    this.jdField_f_of_type_Boolean = parambjrg.jdField_b_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = parambjrg.jdField_c_of_type_Boolean;
+    this.jdField_c_of_type_Boolean = parambjrg.jdField_d_of_type_Boolean;
+    this.jdField_b_of_type_Int = parambjrg.jdField_a_of_type_Int;
   }
   
-  public static bjre a()
+  public int a()
   {
-    if (jdField_a_of_type_Bjre == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bjre == null) {
-        jdField_a_of_type_Bjre = new bjre();
-      }
-      return jdField_a_of_type_Bjre;
-    }
-    finally {}
+    return this.jdField_c_of_type_Int;
   }
   
-  public static String a(String paramString)
+  public SessionWrap a()
   {
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      int i = paramString.lastIndexOf('.');
-      if ((i > -1) && (i < paramString.length() - 1)) {
-        return paramString.substring(0, i) + ".pcm";
-      }
-    }
-    return null;
+    return this.jdField_a_of_type_DovComQqImAeSessionWrap;
   }
   
-  public void a(String paramString1, String paramString2)
+  public String a()
   {
-    byte[] arrayOfByte = bbdj.a(new File(paramString1));
-    Object localObject = null;
-    if (arrayOfByte == null)
-    {
-      QLog.e("StoryGameAudioMixManager", 1, "录音文件为空");
-      return;
-    }
-    String str = a(paramString2);
-    if (str != null)
-    {
-      localObject = new File(str);
-      if (!((File)localObject).exists())
-      {
-        if (!bjrb.a(new File(paramString2), new File(str))) {
-          break label135;
-        }
-        this.jdField_a_of_type_Int = 2;
-        if (QLog.isColorLevel()) {
-          QLog.d("StoryGameAudioMixManager", 2, "convert mp3 in publish now");
-        }
-      }
-      localObject = bbdj.a((File)localObject);
-    }
-    else
-    {
-      if (localObject != null) {
-        break label144;
-      }
-      QLog.e("StoryGameAudioMixManager", 1, "bgm为空" + str);
-      return;
-    }
-    label135:
-    QLog.e("StoryGameAudioMixManager", 1, "bgm conver fail");
-    return;
-    label144:
-    paramString2 = new byte[arrayOfByte.length];
-    if (bjrb.a(paramString2, (byte[])localObject, arrayOfByte, arrayOfByte.length, 0.0D))
-    {
-      if (!QLog.isColorLevel()) {
-        break label185;
-      }
-      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes succedd");
-    }
-    for (;;)
-    {
-      bbdj.a(paramString2, paramString1);
-      return;
-      label185:
-      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes fail");
-    }
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_f_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    return this.jdField_f_of_type_Int;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

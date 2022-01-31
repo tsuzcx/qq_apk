@@ -1,67 +1,96 @@
-import android.view.View;
-import java.util.List;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
 
-class bgqu
-  implements bfoq
+public class bgqu
+  extends awsa
 {
-  bgqu(bgqs parambgqs) {}
+  private BitmapFactory.Options a = new BitmapFactory.Options();
   
-  public void OnClick(View paramView, int paramInt)
+  public bgqu(baxy parambaxy)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_Bgqv == null)) {
+    super(parambaxy);
+  }
+  
+  public void a(awoi paramawoi, awwr paramawwr)
+  {
+    paramawwr.a().setMaxWidth(800);
+    bgqt localbgqt = (bgqt)paramawoi;
+    ImageView localImageView = paramawwr.b();
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    if ((5 == localbgqt.f) || (localbgqt.jdField_a_of_type_Boolean))
+    {
+      localImageView.setImageResource(2130843370);
+      if (localbgqt.jdField_d_of_type_JavaLangString == null) {
+        break label186;
+      }
+      paramawoi = URLDrawable.URLDrawableOptions.obtain();
+      paramawoi.mRequestHeight = paramawwr.b().getHeight();
+      paramawoi.mRequestWidth = paramawwr.b().getWidth();
+      if ((5 != localbgqt.f) && (!localbgqt.jdField_a_of_type_Boolean)) {
+        break label136;
+      }
+      localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localbgqt.jdField_d_of_type_JavaLangString, paramawoi));
+    }
+    label136:
+    do
+    {
+      return;
+      localImageView.setImageDrawable(null);
+      localImageView.setBackgroundDrawable(null);
+      break;
+      try
+      {
+        localImageView.setImageDrawable(URLDrawable.getDrawable(localbgqt.jdField_d_of_type_JavaLangString, paramawoi));
+        return;
+      }
+      catch (Exception paramawoi) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("FavoriteSearchResultPresenter", 2, "bindFace exception = " + paramawoi.toString());
+    return;
+    label186:
+    if (localbgqt.jdField_d_of_type_Int != 0)
+    {
+      if ((5 == localbgqt.f) || (localbgqt.jdField_a_of_type_Boolean))
+      {
+        localImageView.setBackgroundResource(localbgqt.jdField_d_of_type_Int);
+        return;
+      }
+      localImageView.setImageResource(localbgqt.jdField_d_of_type_Int);
       return;
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
+    if (localbgqt.jdField_a_of_type_ArrayOfByte != null)
     {
-      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-      if (paramInt == 16) {
-        this.a.jdField_a_of_type_Bgqv.h();
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bfol.dismiss();
-      return;
-      if (paramInt == 32)
+      this.a.inJustDecodeBounds = true;
+      BitmapFactory.decodeByteArray(localbgqt.jdField_a_of_type_ArrayOfByte, 0, localbgqt.jdField_a_of_type_ArrayOfByte.length, this.a);
+      this.a.inJustDecodeBounds = false;
+      this.a.inSampleSize = (this.a.outWidth / paramawwr.b().getMeasuredWidth());
+      try
       {
-        this.a.jdField_a_of_type_Bgqv.a();
-      }
-      else if (paramInt == 1)
-      {
-        this.a.jdField_a_of_type_Bgqv.f();
-        bgqs.a(this.a);
-      }
-      else if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_Bgqv.i();
-      }
-      else if (paramInt == 4)
-      {
-        this.a.jdField_a_of_type_Bgqv.j();
-      }
-      else if (paramInt == 8)
-      {
-        this.a.jdField_a_of_type_Bgqv.g();
-      }
-      else if (paramInt == 64)
-      {
-        this.a.jdField_a_of_type_Bgqv.b();
-      }
-      else if (paramInt == 128)
-      {
-        this.a.jdField_a_of_type_Bgqv.c();
-      }
-      else if (paramInt == 256)
-      {
-        this.a.jdField_a_of_type_Bgqv.d();
-        continue;
-        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
-        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-          this.a.jdField_a_of_type_Bgqv.a((String)this.a.b.get(paramInt));
+        paramawoi = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localbgqt.jdField_a_of_type_ArrayOfByte, 0, localbgqt.jdField_a_of_type_ArrayOfByte.length, this.a));
+        if ((5 == localbgqt.f) || (localbgqt.jdField_a_of_type_Boolean))
+        {
+          localImageView.setBackgroundDrawable(paramawoi);
+          return;
         }
       }
+      catch (OutOfMemoryError paramawoi)
+      {
+        for (;;)
+        {
+          paramawoi = null;
+        }
+        localImageView.setImageDrawable(paramawoi);
+        return;
+      }
     }
+    super.a(paramawoi, paramawwr);
   }
 }
 

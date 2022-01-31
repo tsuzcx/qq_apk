@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rht;
+import rhq;
 
 public class RecommendFeedsDiandianEntranceManager$ExtraInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ExtraInfo> CREATOR = new rht();
+  public static final Parcelable.Creator<ExtraInfo> CREATOR = new rhq();
   public String a;
   
   public RecommendFeedsDiandianEntranceManager$ExtraInfo() {}

@@ -1,257 +1,129 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
-import msf.msgsvc.msg_svc.RoutingHead;
-import msf.msgsvc.msg_svc.Trans0x211;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.msg.im_msg_head.InstCtrl;
-import tencent.im.msg.im_msg_head.InstInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11a.submsgtype0x11a.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11a.submsgtype0x11a.UserData;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11b.submsgtype0x11b.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.GenericSubCmd;
+import java.util.ArrayList;
+import java.util.List;
 
 public class askv
 {
-  private static askv a;
+  private static askv jdField_a_of_type_Askv;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
   public static askv a()
   {
-    if (a == null) {}
+    if (jdField_a_of_type_Askv == null) {}
     try
     {
-      if (a == null) {
-        a = new askv();
+      if (jdField_a_of_type_Askv == null) {
+        jdField_a_of_type_Askv = new askv();
       }
-      return a;
+      return jdField_a_of_type_Askv;
     }
     finally {}
   }
   
-  private MsgBackupUserData a(submsgtype0x11a.UserData paramUserData)
+  private String[] a(Context paramContext)
   {
-    asmd localasmd = new asmd();
-    if (paramUserData.bytes_ip.has()) {
-      localasmd.a(paramUserData.bytes_ip.get().toStringUtf8());
+    String[] arrayOfString = new String[2];
+    paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getConnectionInfo();
+      arrayOfString[0] = paramContext.getSSID();
+      arrayOfString[1] = paramContext.getBSSID();
     }
-    if (paramUserData.rpt_fixed32_port.has()) {
-      localasmd.a(paramUserData.rpt_fixed32_port.get());
-    }
-    if (paramUserData.bytes_bssid.has()) {
-      localasmd.c(paramUserData.bytes_bssid.get().toStringUtf8());
-    }
-    if (paramUserData.bytes_ssid.has()) {
-      localasmd.b(paramUserData.bytes_ssid.get().toStringUtf8());
-    }
-    if (paramUserData.enum_platform.has()) {
-      localasmd.a(paramUserData.enum_platform.get());
-    }
-    return localasmd.a();
+    return arrayOfString;
   }
   
-  private String a()
+  public int a()
   {
-    Object localObject = new JSONArray();
-    JSONObject localJSONObject = new JSONObject();
-    try
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    Object localObject2 = a(BaseApplicationImpl.getContext());
+    Object localObject1 = new asmf();
+    ((asmf)localObject1).c(localObject2[1]);
+    ((asmf)localObject1).b(localObject2[0]);
+    localObject2 = new ArrayList(2);
+    if (this.jdField_a_of_type_Int == 1)
     {
-      localJSONObject.put("cmd", "exit");
-      localJSONObject.put("sig", askt.a().a());
-      ((JSONArray)localObject).put(localJSONObject);
-      localObject = ((JSONArray)localObject).toString();
+      ((asmf)localObject1).a(asoi.a(asnz.a().d().ipv4));
+      ((List)localObject2).add(Integer.valueOf(asnz.a().d().port));
+      ((List)localObject2).add(Integer.valueOf(asnz.a().c().port));
+    }
+    for (;;)
+    {
+      ((asmf)localObject1).a(4);
+      ((asmf)localObject1).a((List)localObject2);
+      localObject1 = ((asmf)localObject1).a();
+      ((asku)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(162)).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupPushHandler", 2, "getExitJsonStr create: " + (String)localObject);
+        QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, "confirmQrReq, userData: " + localObject1 + ", biztype = " + this.jdField_a_of_type_Int + ", qr_sig = " + this.jdField_a_of_type_JavaLangString);
       }
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      return;
+      if (this.jdField_a_of_type_Int == 2)
       {
-        localJSONException.printStackTrace();
+        ((asmf)localObject1).a(asoi.a(asnz.a().b().ipv4));
+        ((List)localObject2).add(Integer.valueOf(asnz.a().b().port));
+        ((List)localObject2).add(Integer.valueOf(asnz.a().a().port));
+      }
+      else
+      {
+        ((asmf)localObject1).a(asoi.a(asnz.a().b().ipv4));
+        ((List)localObject2).add(Integer.valueOf(asnz.a().b().port));
+        ((List)localObject2).add(Integer.valueOf(asnz.a().a().port));
       }
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnlinePush0x211 receive: res.getResultCode() = " + paramFromServiceMsg.getResultCode());
-    }
-    if (paramFromServiceMsg.getResultCode() != 1000) {
-      a(a());
-    }
+    asog.a();
+    asog.a.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(String paramString)
   {
-    Object localObject1 = new SubMsgType0x7.MsgBody.GenericSubCmd();
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint64_sessionid.set(1L);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_size.set(1);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_index.set(0);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_type.set(7);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).bytes_buf.set(ByteStringMicro.copyFrom(paramString.getBytes()));
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_support_auth.set(1);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).setHasFlag(true);
-    Object localObject2 = new SubMsgType0x7.MsgBody();
-    ((SubMsgType0x7.MsgBody)localObject2).uint32_sub_cmd.set(4);
-    paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new ProtocolHelper(paramString, 0).fillMsgHeader(((SubMsgType0x7.MsgBody)localObject2).msg_header, Long.valueOf(paramString.getCurrentAccountUin()).longValue());
-    ((SubMsgType0x7.MsgBody)localObject2).msg_subcmd_0x4_generic.set((MessageMicro)localObject1);
-    ((SubMsgType0x7.MsgBody)localObject2).setHasFlag(true);
-    localObject1 = new axav();
-    localObject2 = ((SubMsgType0x7.MsgBody)localObject2).toByteArray();
-    ((axav)localObject1).jdField_a_of_type_Int = 7;
-    ((axav)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject2);
-    long l1 = apue.b();
-    long l2 = apue.a();
-    localObject1 = axao.a(paramString, 13, paramString.c(), (axav)localObject1, l2, axas.b(l1));
-    localObject2 = new im_msg_head.InstInfo();
-    ((im_msg_head.InstInfo)localObject2).uint32_apppid.set(1);
-    ((im_msg_head.InstInfo)localObject2).uint32_instid.set(0);
-    ((im_msg_head.InstInfo)localObject2).enum_device_type.set(2);
-    ((im_msg_head.InstInfo)localObject2).setHasFlag(true);
-    ((msg_svc.PbSendMsgReq)localObject1).routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add((MessageMicro)localObject2);
-    localObject2 = new im_msg_head.InstInfo();
-    ((im_msg_head.InstInfo)localObject2).uint32_apppid.set(1001);
-    ((im_msg_head.InstInfo)localObject2).uint32_instid.set(AppSetting.a());
-    ((im_msg_head.InstInfo)localObject2).enum_device_type.set(2);
-    ((im_msg_head.InstInfo)localObject2).setHasFlag(true);
-    ((msg_svc.PbSendMsgReq)localObject1).routing_head.trans_0x211.inst_ctrl.msg_from_inst = ((im_msg_head.InstInfo)localObject2);
-    ((msg_svc.PbSendMsgReq)localObject1).routing_head.trans_0x211.inst_ctrl.setHasFlag(true);
-    localObject2 = new ToServiceMsg("mobileqq.service", paramString.getCurrentAccountUin(), "MessageSvc.PbSendMsg");
-    ((ToServiceMsg)localObject2).putWupBuffer(((msg_svc.PbSendMsgReq)localObject1).toByteArray());
-    ((ToServiceMsg)localObject2).extraData.putBoolean("req_pb_protocol_flag", true);
-    ((ToServiceMsg)localObject2).extraData.putBoolean("exit_push_0x211_key", true);
-    paramString.sendToService((ToServiceMsg)localObject2);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(submsgtype0x11a.MsgBody paramMsgBody)
+  public void a(boolean paramBoolean)
   {
-    int i;
-    if (paramMsgBody != null)
-    {
-      aslp localaslp = new aslp();
-      if (paramMsgBody.enum_result.has())
-      {
-        i = paramMsgBody.enum_result.get();
-        if (i != 0) {
-          break label180;
-        }
-        if (paramMsgBody.bytes_token.has()) {
-          localaslp.a(paramMsgBody.bytes_token.get().toStringUtf8());
-        }
-        if (paramMsgBody.bytes_encrypt_key.has()) {
-          localaslp.b(paramMsgBody.bytes_encrypt_key.get().toStringUtf8());
-        }
-        if (paramMsgBody.msg_user_data.has()) {
-          localaslp.a(a((submsgtype0x11a.UserData)paramMsgBody.msg_user_data.get()));
-        }
-        if (paramMsgBody.enum_biz_type.has()) {
-          localaslp.a(paramMsgBody.enum_biz_type.get());
-        }
-        paramMsgBody = localaslp.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive processOnLinePush0x11a response = " + paramMsgBody);
-        }
-        asle.a().a(paramMsgBody);
-      }
-    }
-    label180:
-    do
-    {
-      return;
-      if (i == 6)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive 0x210_0x11a， 对端拒绝了！");
-        }
-        asle.a().a(Integer.valueOf(6));
-        return;
-      }
-    } while (i != 20);
+    Object localObject2 = a(BaseApplicationImpl.getContext());
+    Object localObject1 = new asmf();
+    ((asmf)localObject1).c(localObject2[1]);
+    ((asmf)localObject1).b(localObject2[0]);
+    localObject2 = new ArrayList(2);
+    ((asmf)localObject1).a(asoi.a(asnz.a().d().ipv4));
+    ((List)localObject2).add(Integer.valueOf(asnz.a().d().port));
+    ((List)localObject2).add(Integer.valueOf(asnz.a().c().port));
+    ((asmf)localObject1).a(4);
+    ((asmf)localObject1).a((List)localObject2);
+    localObject1 = ((asmf)localObject1).a();
+    ((asku)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(162)).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_Int, paramBoolean);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive 0x210_0x11a， 内部错误");
+      QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, "requestQR, userData: " + localObject1 + ", biztype = " + this.jdField_a_of_type_Int + ", ispush = " + paramBoolean);
     }
-    asle.a().a(Integer.valueOf(20));
   }
   
-  public void a(submsgtype0x11b.MsgBody paramMsgBody)
+  public void b(String paramString)
   {
-    if (paramMsgBody != null)
-    {
-      aslx localaslx = new aslx();
-      if (paramMsgBody.bytes_qr_sig.has()) {
-        localaslx.a(paramMsgBody.bytes_qr_sig.get().toStringUtf8());
-      }
-      if (paramMsgBody.enum_biz_type.has()) {
-        localaslx.a(paramMsgBody.enum_biz_type.get());
-      }
-      paramMsgBody = localaslx.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive processOnLinePush0x11b " + paramMsgBody);
-      }
-      asle.a().a(paramMsgBody);
-      return;
-    }
-    asle.a().a(null);
-  }
-  
-  public void a(SubMsgType0x7.MsgBody.GenericSubCmd paramGenericSubCmd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processExit0x7-------------->");
-    }
-    if (paramGenericSubCmd.bytes_buf.has())
-    {
-      paramGenericSubCmd = paramGenericSubCmd.bytes_buf.get().toStringUtf8();
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processExit0x7, genericSubCmd: " + paramGenericSubCmd);
-      }
-      if (TextUtils.isEmpty(paramGenericSubCmd)) {}
-    }
-    try
-    {
-      paramGenericSubCmd = new JSONArray(paramGenericSubCmd);
-      if (paramGenericSubCmd.length() == 1)
-      {
-        paramGenericSubCmd = (JSONObject)paramGenericSubCmd.get(0);
-        if ("exit".equals(paramGenericSubCmd.optString("cmd")))
-        {
-          paramGenericSubCmd = paramGenericSubCmd.optString("sig");
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup.MsgBackupPushHandler", 2, "-------------------exit-------------------");
-          }
-          if (TextUtils.equals(paramGenericSubCmd, askt.a().a())) {
-            asnx.a().b(true);
-          }
-        }
-      }
-      return;
-    }
-    catch (JSONException paramGenericSubCmd)
-    {
-      QLog.e("MsgBackup.MsgBackupPushHandler", 2, "processExit0x7 parse json error!", paramGenericSubCmd);
-    }
+    this.b = paramString;
   }
 }
 

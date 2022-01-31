@@ -1,25 +1,41 @@
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.widget.ProtectedWebView;
 
-class awbt
-  implements View.OnClickListener
+public class awbt
+  extends WebViewClient
 {
-  awbt(awbs paramawbs) {}
+  private awbt(ActionUrlActivity paramActionUrlActivity) {}
   
-  public void onClick(View paramView)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    paramView = new Intent(awbs.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, PublicFragmentActivity.class);
-    paramView.putExtra("key_uin", awbs.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putExtra("key_uin_name", awbs.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    paramView.putExtra("key_open_via", "history-liaotian");
-    abtu.a(awbs.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramView, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-    awbs.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X800A66B");
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
+    this.a.a();
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    ActionUrlActivity.a(this.a).clearView();
+    ActionUrlActivity.a(this.a).setVisibility(8);
+    ActionUrlActivity.a(this.a).setVisibility(0);
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
   }
 }
 

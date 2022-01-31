@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.data.KplCard;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class abkd
-  extends ajtq
+  extends ResourcePluginListener
 {
-  public abkd(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public abkd(Leba paramLeba) {}
   
-  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
+  public void a(byte paramByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
     }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
-    {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
     }
   }
 }

@@ -1,78 +1,37 @@
 import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
 
 public class alkb
+  extends alkd
 {
-  private int jdField_a_of_type_Int;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private int[] jdField_b_of_type_ArrayOfInt;
+  public int a;
+  public int b;
+  public int c;
   
-  private void b(int paramInt1, int paramInt2)
+  public alkb(int paramInt)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      throw new IllegalArgumentException("width & height should > 0!");
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
-    if (this.jdField_b_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
-      this.jdField_b_of_type_ArrayOfInt = null;
-    }
-    this.jdField_a_of_type_ArrayOfInt = new int[1];
-    this.jdField_b_of_type_ArrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
-    GLES20.glBindTexture(3553, 0);
-    GLES20.glBindFramebuffer(36160, 0);
+    super(paramInt);
+    this.e = "uniform float u_threshold;\nuniform float u_clipBlack;\nuniform float u_clipWhite;\nfloat rgb2cb(float r, float g, float b){\n    return 0.5 + -0.168736*r - 0.331264*g + 0.5*b;\n}\nfloat rgb2cr(float r, float g, float b){\n    return 0.5 + 0.5*r - 0.418688*g - 0.081312*b;\n}\nfloat smoothclip(float low, float high, float x){\n    if (x <= low){\n        return 0.0;\n    }\n    if(x >= high){\n        return 1.0;\n    }\n    return (x-low)/(high-low);\n}\nvec4 greenscreen(vec4 color, float Cb_key,float Cr_key, float tola,float tolb, float clipBlack, float clipWhite){\n    float cb = rgb2cb(color.r,color.g,color.b);\n    float cr = rgb2cr(color.r,color.g,color.b);\n    float alpha = distance(vec2(cb, cr), vec2(Cb_key, Cr_key));\n    alpha = smoothclip(tola, tolb, alpha);\n    float r = max(gl_FragColor.r - (1.0-alpha)*u_screenColor.r, 0.0);\n    float g = max(gl_FragColor.g - (1.0-alpha)*u_screenColor.g, 0.0);\n    float b = max(gl_FragColor.b - (1.0-alpha)*u_screenColor.b, 0.0);\n    if(alpha < clipBlack){\n        alpha = r = g = b = 0.0;\n    }\n    if(alpha > clipWhite){\n        alpha = 1.0;\n    }\n    if(clipWhite < 1.0){\n        alpha = alpha/max(clipWhite, 0.9);\n    }\n    return vec4(r,g,b, alpha);\n}\n";
+    this.j = "    float tola = 0.0;\n    float tolb = u_threshold/2.0;\n    float cb_key = rgb2cb(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    float cr_key = rgb2cr(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    gl_FragColor = greenscreen(gl_FragColor, cb_key, cr_key, tola, tolb, u_clipBlack, u_clipWhite);\n";
   }
   
-  public int a()
+  protected void a()
   {
-    int i = 0;
-    if (this.jdField_b_of_type_ArrayOfInt != null) {
-      i = this.jdField_b_of_type_ArrayOfInt[0];
-    }
-    return i;
+    this.a = GLES20.glGetUniformLocation(this.d, "u_threshold");
+    alkh.a("glGetAttribLocation u_threshold");
+    this.b = GLES20.glGetUniformLocation(this.d, "u_clipBlack");
+    alkh.a("glGetAttribLocation u_clipBlack");
+    this.c = GLES20.glGetUniformLocation(this.d, "u_clipWhite");
+    alkh.a("glGetAttribLocation u_clipWhite");
   }
   
-  public void a()
+  protected void a(alkg paramalkg)
   {
-    if (this.jdField_b_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
-      this.jdField_b_of_type_ArrayOfInt = null;
+    if (paramalkg == null) {
+      return;
     }
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
-    {
-      long l = System.currentTimeMillis();
-      b(paramInt1, paramInt2);
-      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
-    }
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glUniform1f(this.a, paramalkg.f);
+    GLES20.glUniform1f(this.b, paramalkg.g);
+    GLES20.glUniform1f(this.c, paramalkg.h);
   }
 }
 

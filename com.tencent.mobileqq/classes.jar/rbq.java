@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class rbq
-  implements View.OnClickListener
+public abstract interface rbq
 {
-  rbq(rap paramrap, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    noo.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-  }
+  public abstract void c();
 }
 
 

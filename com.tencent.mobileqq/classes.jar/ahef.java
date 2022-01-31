@@ -1,6 +1,19 @@
-public abstract interface ahef
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+
+public class ahef
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public ahef(DrawHbFragment paramDrawHbFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
 }
 
 

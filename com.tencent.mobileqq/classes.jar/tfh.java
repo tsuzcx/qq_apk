@@ -1,11 +1,17 @@
+import java.util.Comparator;
+
 public class tfh
-  extends ssk
+  implements Comparator<tff>
 {
-  public final String a;
-  
-  public tfh(String paramString)
+  public int a(tff paramtff1, tff paramtff2)
   {
-    this.a = paramString;
+    if (paramtff1.c < paramtff2.c) {
+      return 1;
+    }
+    if (paramtff1.c > paramtff2.c) {
+      return -1;
+    }
+    return 0;
   }
 }
 

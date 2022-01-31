@@ -1,17 +1,21 @@
 import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.Comparator;
 
 public class avos
-  implements bcrn
+  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
   public avos(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
   {
-    if (paramInt1 == paramInt2) {
-      return;
+    if (paramMemberInfo1.a == paramMemberInfo2.a) {
+      return 0;
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
+    if (paramMemberInfo1.a < paramMemberInfo2.a) {
+      return -1;
+    }
+    return 1;
   }
 }
 

@@ -1,25 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aegq
-  implements VideoDrawable.OnPlayRepeatListener
+final class aegq
+  implements DialogInterface.OnClickListener
 {
-  public AIOGalleryAdapter a;
+  aegq(Activity paramActivity) {}
   
-  public aegq(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramAIOGalleryAdapter;
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt != 1) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
+    this.a.finish();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahud;
+import ahub;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public abstract class FlowActivity
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected ahud a()
+  protected ahub a()
   {
     return null;
   }

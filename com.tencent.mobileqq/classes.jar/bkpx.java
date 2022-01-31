@@ -1,24 +1,20 @@
-import android.os.Bundle;
+import android.os.Handler;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1.1.1;
 
-class bkpx
-  implements bjbn
+public class bkpx
+  implements bkri
 {
-  bkpx(bkpw parambkpw) {}
+  public bkpx(QzoneEditPictureActivity.1 param1) {}
   
-  public void a(bjbz parambjbz) {}
-  
-  public void a(bjbz parambjbz, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bjcc parambjcc, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void l(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      this.a.a_(4001, null);
+    if (QzoneEditPictureActivity.a(this.a.this$0).a != null) {
+      QzoneHandlerThreadFactory.getMainHandler().post(new QzoneEditPictureActivity.1.1.1(this));
     }
   }
-  
-  public void a(bjcj parambjcj, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bkqp parambkqp) {}
 }
 
 

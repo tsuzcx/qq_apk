@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.os.Build.VERSION;
-import aqvc;
-import axpj;
+import aqve;
 import axpl;
-import bbuw;
-import bdhd;
+import axpn;
+import bbvk;
+import bdhs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.InjectUtils;
@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.tmdownloader.notify.DownloadTaskNotifier;
 import mqq.os.MqqHandler;
-import xoq;
-import zck;
+import xon;
+import zch;
 
 public class LoadDex
   extends Step
@@ -23,7 +23,7 @@ public class LoadDex
   protected boolean doStep()
   {
     if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-      zck.a(BaseApplicationImpl.sApplication);
+      zch.a(BaseApplicationImpl.sApplication);
     }
     label83:
     label88:
@@ -54,8 +54,8 @@ public class LoadDex
     } while (!"Success".equals(BaseApplicationImpl.sInjectResult));
     try
     {
-      zck.a(BaseApplicationImpl.sApplication);
-      bbuw.a().a(BaseApplicationImpl.sApplication);
+      zch.a(BaseApplicationImpl.sApplication);
+      bbvk.a().a(BaseApplicationImpl.sApplication);
       if (BaseApplicationImpl.sProcessId == 1)
       {
         eipc.EIPCContentProvider.sIsDexInjectFinish = true;
@@ -63,20 +63,20 @@ public class LoadDex
       }
       if (BaseApplicationImpl.sProcessId != 4)
       {
-        axpj.a();
         axpl.a();
+        axpn.a();
       }
       if (2 != BaseApplicationImpl.sProcessId)
       {
         if ((7 != BaseApplicationImpl.sProcessId) && (11 != BaseApplicationImpl.sProcessId)) {
           break label425;
         }
-        ThreadManager.getSubThreadHandler().post(axpj.b(13, this.mDirector, null));
+        ThreadManager.getSubThreadHandler().post(axpl.b(13, this.mDirector, null));
       }
       for (;;)
       {
         if ((1 == BaseApplicationImpl.sProcessId) || (2 == BaseApplicationImpl.sProcessId) || (8 == BaseApplicationImpl.sProcessId) || (7 == BaseApplicationImpl.sProcessId) || (10 == BaseApplicationImpl.sProcessId)) {
-          axpj.b(15, this.mDirector, null).step();
+          axpl.b(15, this.mDirector, null).step();
         }
         if (1 == BaseApplicationImpl.sProcessId) {
           ThreadManager.getFileThreadHandler().post(new LoadDex.1(this));
@@ -89,21 +89,21 @@ public class LoadDex
         }
         ThreadManager.getSubThreadHandler().postDelayed(new LoadDex.4(this), 3000L);
         if ((BaseApplicationImpl.processName != null) && (Build.VERSION.SDK_INT >= 21) && (BaseApplicationImpl.processName.endsWith("TMAssistantDownloadSDKService"))) {
-          DownloadTaskNotifier.get().addListener(bdhd.a());
+          DownloadTaskNotifier.get().addListener(bdhs.a());
         }
         if (BaseApplicationImpl.sProcessId == 1) {
-          axpj.b(7, this.mDirector, null).step();
+          axpl.b(7, this.mDirector, null).step();
         }
         ThreadManager.getSubThreadHandler().postDelayed(new LoadDex.6(this), 5000L);
         if (BaseApplicationImpl.sProcessId != 1) {
           UnifiedMonitor.d();
         }
-        aqvc.a();
-        xoq.a();
+        aqve.a();
+        xon.a();
         return true;
         label425:
         if (1 != BaseApplicationImpl.sProcessId) {
-          ThreadManager.getSubThreadHandler().postDelayed(axpj.b(13, this.mDirector, null), 3000L);
+          ThreadManager.getSubThreadHandler().postDelayed(axpl.b(13, this.mDirector, null), 3000L);
         }
       }
       return true;

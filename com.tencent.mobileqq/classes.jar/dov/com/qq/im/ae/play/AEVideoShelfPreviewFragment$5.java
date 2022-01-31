@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
-import birc;
-import bjzb;
+import birt;
+import bjzs;
 import java.util.Timer;
 
 class AEVideoShelfPreviewFragment$5
@@ -25,7 +25,7 @@ class AEVideoShelfPreviewFragment$5
         AEVideoShelfPreviewFragment.a(this.this$0, false);
         AEVideoShelfPreviewFragment.a(this.this$0.getActivity(), false);
       }
-      bjzb.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), birc.b(this.this$0.getActivity()), "caller_aecamera");
+      bjzs.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), birt.b(this.this$0.getActivity()), "caller_aecamera");
       return;
       AEVideoShelfPreviewFragment.b(this.this$0);
     }

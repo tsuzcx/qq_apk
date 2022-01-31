@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import axhv;
-import axhw;
+import axhx;
+import axhy;
 
 public class CameraExceptionHandler$2
   implements Runnable

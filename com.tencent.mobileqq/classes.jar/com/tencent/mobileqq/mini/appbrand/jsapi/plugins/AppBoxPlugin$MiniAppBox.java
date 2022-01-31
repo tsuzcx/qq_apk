@@ -22,7 +22,7 @@ import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import yte;
+import ytb;
 
 class AppBoxPlugin$MiniAppBox
 {
@@ -31,7 +31,7 @@ class AppBoxPlugin$MiniAppBox
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniAppBox";
-  private yte adBox;
+  private ytb adBox;
   private String adUnitId;
   private int appBoxId;
   private BaseJsPluginEngine jsPluginEngine;

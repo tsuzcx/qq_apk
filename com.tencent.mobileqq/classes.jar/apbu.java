@@ -1,14 +1,16 @@
 class apbu
-  extends apbq
+  extends apbm
 {
-  public apbu(apbe paramapbe)
+  apbu(apbi paramapbi)
   {
-    super(paramapbe);
+    super(paramapbi);
+    this.a = true;
+    this.b = true;
   }
   
   protected String a()
   {
-    return "StateGotoOffFileProcess";
+    return "StateEnd";
   }
 }
 

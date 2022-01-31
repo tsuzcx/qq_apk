@@ -1,21 +1,10 @@
-import android.graphics.Rect;
-import android.hardware.Camera.Size;
-import java.io.File;
-
 public class axht
 {
-  public int a;
-  public aiak a;
-  public Rect a;
-  public Camera.Size a;
-  public File a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  int jdField_a_of_type_Int = -1;
+  int b = -1;
+  int c = -1;
   
-  private axht(axhp paramaxhp) {}
+  public axht(axhr paramaxhr) {}
 }
 
 

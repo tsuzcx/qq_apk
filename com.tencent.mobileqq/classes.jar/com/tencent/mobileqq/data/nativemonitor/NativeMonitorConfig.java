@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.data.nativemonitor;
 
-import arlx;
+import arlz;
 
 public class NativeMonitorConfig
 {
-  @arlx(a="androidVersionBlackList")
+  @arlz(a="androidVersionBlackList")
   private String androidVersionBlackList;
-  @arlx(a="countLimted")
+  @arlz(a="countLimted")
   private long countLimted = 1000L;
-  @arlx(a="memoryLimited")
+  @arlz(a="memoryLimited")
   private long memoryLimited = 5242880L;
-  @arlx(a="nativeMonitorOpened")
+  @arlz(a="nativeMonitorOpened")
   private int nativeMonitorOpened;
-  @arlx(a="processBlackList")
+  @arlz(a="processBlackList")
   private String processBlackList;
-  @arlx(a="soHook")
+  @arlz(a="soHook")
   public int soHook;
-  @arlx(a="soWhiteList")
+  @arlz(a="soWhiteList")
   private String soWhiteList;
-  @arlx(a="switchFlag")
+  @arlz(a="switchFlag")
   private long switchFlag;
-  @arlx(a="timeLimited")
+  @arlz(a="timeLimited")
   private long timeLimited = 1000000L;
-  @arlx(a="tmChance")
+  @arlz(a="tmChance")
   private long tmChance;
   
   public String getAndroidVersionBlackList()

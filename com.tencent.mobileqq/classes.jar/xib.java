@@ -1,10 +1,20 @@
-public abstract interface xib
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+
+public class xib
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public xib(SingleLyricView paramSingleLyricView) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(f);
+    }
+  }
 }
 
 

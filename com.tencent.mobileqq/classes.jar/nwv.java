@@ -1,23 +1,13 @@
-import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nwv
-  implements bfoq
+  implements bfpj
 {
   public nwv(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.b(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.d(this.a, false);
-      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
-    }
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 

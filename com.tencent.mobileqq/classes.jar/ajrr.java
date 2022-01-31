@@ -1,7 +1,4 @@
-public abstract interface ajrr
-{
-  public abstract void a();
-}
+public abstract interface ajrr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar

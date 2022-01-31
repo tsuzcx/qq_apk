@@ -9,7 +9,7 @@ public class aeaq
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.a.invalidate();
   }
 }

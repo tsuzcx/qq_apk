@@ -1,15 +1,18 @@
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 class arbs
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  arbs(arbn paramarbn) {}
+  arbs(arbp paramarbp) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.a.a.start();
-    this.a.c = 2;
+    this.a.c = 7;
+    if (arbp.a(this.a) != null) {
+      arbp.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 

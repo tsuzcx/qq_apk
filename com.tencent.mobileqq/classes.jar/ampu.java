@@ -1,27 +1,15 @@
-import com.qq.android.dexposed.XC_MethodHook;
-import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
-import com.tencent.mobileqq.config.QConfigureException;
-import com.tencent.qphone.base.util.QLog;
-
-final class ampu
-  extends XC_MethodHook
+public class ampu
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
-  {
-    try
-    {
-      paramMethodHookParam = ampp.a();
-      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
-        ampp.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
-      }
-      return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
-    }
-  }
+  public static String a = "com.tencent.map.WelcomeActivity";
+  public static String b = "com.google.android.maps.MapsActivity";
+  public static String c = "com.tencent.map";
+  public static String d = "com.autonavi.minimap";
+  public static String e = "com.google.android.apps.maps";
+  public static String f = "com.baidu.BaiduMap";
+  public static String g = "http://softroute.map.qq.com/downloadfile?cid=00214";
+  public static String h = ajsd.bn + "tencentmap.apk";
+  public static String i = "QQMAP_DEFAULT";
+  public static String j = "Location";
 }
 
 

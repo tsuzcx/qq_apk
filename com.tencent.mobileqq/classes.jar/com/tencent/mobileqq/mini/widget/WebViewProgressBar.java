@@ -68,12 +68,12 @@ public class WebViewProgressBar
       return;
       label164:
       if (this.mBackgroundDrawable == null) {
-        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130849003);
+        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130849009);
       }
       this.mBackgroundDrawable.setBounds(0, 0, getWidth(), getHeight());
       this.mBackgroundDrawable.draw(paramCanvas);
       if (this.mProgressDrawable == null) {
-        this.mProgressDrawable = getContext().getResources().getDrawable(2130849004);
+        this.mProgressDrawable = getContext().getResources().getDrawable(2130849010);
       }
       j = (int)this.mController.getCurrWidth();
       if (this.mEnableAlpha) {

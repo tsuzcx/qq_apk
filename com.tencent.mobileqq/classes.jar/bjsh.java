@@ -1,17 +1,18 @@
-import android.graphics.Bitmap;
-
-public abstract interface bjsh
-  extends bjwv
+class bjsh
+  implements bblz
 {
-  public abstract Bitmap a();
+  bjsh(bjry parambjry) {}
   
-  public abstract bkiq a();
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (bjry.a(this.a) != null) {
+      bjry.a(this.a, paramString);
+    }
+  }
   
-  public abstract void a(bkae parambkae, float paramFloat1, float paramFloat2);
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  public abstract void a_(int paramInt, bkkm parambkkm);
-  
-  public abstract void b();
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

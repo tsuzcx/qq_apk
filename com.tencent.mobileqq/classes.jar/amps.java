@@ -10,16 +10,16 @@ final class amps
   {
     try
     {
-      paramMethodHookParam = ampp.a();
-      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
-        ampp.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
+      paramMethodHookParam = ampo.a();
+      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed"))) {
+        ampo.a(new QConfigureException(paramMethodHookParam), "Can not switch thread when parsing config.", "QConfigWatchDog_threadswitch");
       }
       return;
     }
     catch (Exception paramMethodHookParam)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+      QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
     }
   }
 }

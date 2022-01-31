@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
 public final class smf
-  implements Parcelable.Creator<WSPushOpDialogModel>
+  implements Parcelable.Creator<WSPushStrategyInfo>
 {
-  public WSPushOpDialogModel a(Parcel paramParcel)
+  public WSPushStrategyInfo a(Parcel paramParcel)
   {
-    return new WSPushOpDialogModel(paramParcel);
+    return new WSPushStrategyInfo(paramParcel);
   }
   
-  public WSPushOpDialogModel[] a(int paramInt)
+  public WSPushStrategyInfo[] a(int paramInt)
   {
-    return new WSPushOpDialogModel[paramInt];
+    return new WSPushStrategyInfo[paramInt];
   }
 }
 

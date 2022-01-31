@@ -1,52 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
 
-class bcve
+public class bcve
+  implements Animator.AnimatorListener
 {
-  private final Drawable a;
-  private final Drawable b;
+  public bcve(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
   
-  bcve(Context paramContext)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramContext = paramContext.getResources();
-    int i = 2130837549;
-    if (bfwa.a()) {
-      i = 2130837548;
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_Bkmg != null) {
+      this.a.jdField_a_of_type_Bkmg.displayPanelFinish();
     }
-    this.a = paramContext.getDrawable(i);
-    this.b = paramContext.getDrawable(2130837553);
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_Bkmg != null) {
+      this.a.jdField_a_of_type_Bkmg.displayPanelFinish();
+    }
   }
   
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

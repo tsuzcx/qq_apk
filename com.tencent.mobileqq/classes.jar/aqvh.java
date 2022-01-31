@@ -1,17 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import java.lang.ref.WeakReference;
 
-class aqvh
-  implements DialogInterface.OnClickListener
+public class aqvh
+  implements amaf
 {
-  aqvh(aqvg paramaqvg) {}
+  public aqvh(JefsClass paramJefsClass, Runnable paramRunnable, WeakReference paramWeakReference, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
-    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+    if ((!paramBoolean1) || ((paramBoolean2) && (this.jdField_a_of_type_JavaLangRunnable != null)))
+    {
+      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_JavaLangRunnable);
+      return;
+    }
+    paramString1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString1 != null) {
+      if ((paramString1 instanceof BaseActivity))
+      {
+        paramString1 = ((BaseActivity)paramString1).app;
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (paramString2 = "";; paramString2 = this.jdField_a_of_type_JavaLangString)
+    {
+      axqy.b(paramString1, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramString2, "");
+      return;
+      paramString1 = null;
+      break;
+      paramString1 = null;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRunnable != null;
   }
 }
 

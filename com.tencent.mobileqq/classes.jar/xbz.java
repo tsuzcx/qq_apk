@@ -1,19 +1,7 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
-
 public class xbz
-  extends RadioButton
 {
-  public xbz(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    return true;
-  }
+  public String a;
+  public boolean a;
 }
 
 

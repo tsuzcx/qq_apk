@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import ajae;
+import ajac;
 import java.util.HashMap;
 import java.util.Map;
-import yod;
+import yoa;
 
 class QQGameFeedWebFragment$8
   implements Runnable
@@ -16,7 +16,7 @@ class QQGameFeedWebFragment$8
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(24), "1");
     localHashMap.put(Integer.valueOf(3), "20");
-    yod.a(ajae.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
+    yoa.a(ajac.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
   }
 }
 

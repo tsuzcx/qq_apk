@@ -10,14 +10,14 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.FrameLayout;
-import ayay;
-import aybe;
-import aycd;
-import ayci;
-import aycj;
+import ayba;
+import aybg;
+import aycf;
 import ayck;
 import aycl;
 import aycm;
+import aycn;
+import ayco;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -28,15 +28,15 @@ import java.util.List;
 
 public class SpriteGLView
   extends FrameLayout
-  implements aybe<ayci>
+  implements aybg<ayck>
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   protected View a;
-  private aycl jdField_a_of_type_Aycl;
+  private aycn jdField_a_of_type_Aycn;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private final LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private final List<ayay> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private final List<ayba> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   public boolean a;
   private final Object jdField_b_of_type_JavaLangObject = new Object();
   private List<Runnable> jdField_b_of_type_JavaUtilList = new LinkedList();
@@ -89,7 +89,7 @@ public class SpriteGLView
       ((GLSurfaceView)localObject).setEGLContextClientVersion(2);
       ((GLSurfaceView)localObject).getHolder().setFormat(-3);
       ((GLSurfaceView)localObject).setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-      ((GLSurfaceView)localObject).setRenderer(new aycm(this, null));
+      ((GLSurfaceView)localObject).setRenderer(new ayco(this, null));
       ((GLSurfaceView)localObject).setZOrderOnTop(true);
     }
     for (;;)
@@ -99,7 +99,7 @@ public class SpriteGLView
       localObject = a(getContext());
       this.jdField_a_of_type_AndroidViewView = ((View)localObject);
       addView((View)localObject, -1, -1);
-      ((GLTextureView)localObject).setRenderer(new aycm(this, null));
+      ((GLTextureView)localObject).setRenderer(new ayco(this, null));
     }
   }
   
@@ -108,7 +108,7 @@ public class SpriteGLView
     return new GLTextureView(paramContext);
   }
   
-  public List<ayay> a()
+  public List<ayba> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -140,38 +140,38 @@ public class SpriteGLView
     }
   }
   
-  public void a(int paramInt, ayci paramayci)
+  public void a(int paramInt, ayck paramayck)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramayci)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramInt, paramayci);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramayck)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramInt, paramayck);
       }
       return;
     }
   }
   
-  public void a(aycd paramaycd)
+  public void a(aycf paramaycf)
   {
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(paramaycd);
-    }
-  }
-  
-  public void a(ayci paramayci)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramayci)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramayci);
-      }
-      return;
+      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(paramaycf);
     }
   }
   
   public void a(ayck paramayck)
   {
-    a(paramayck);
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramayck)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramayck);
+      }
+      return;
+    }
+  }
+  
+  public void a(aycm paramaycm)
+  {
+    a(paramaycm);
   }
   
   public void a(Runnable paramRunnable)
@@ -197,19 +197,19 @@ public class SpriteGLView
     }
   }
   
-  public void b(aycd paramaycd)
+  public void b(aycf paramaycf)
   {
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(paramaycd);
+      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(paramaycf);
     }
   }
   
-  public void b(ayci paramayci)
+  public void b(ayck paramayck)
   {
-    if (paramayci.a()) {
-      paramayci.a();
+    if (paramayck.a()) {
+      paramayck.a();
     }
-    this.jdField_a_of_type_JavaUtilList.remove(paramayci);
+    this.jdField_a_of_type_JavaUtilList.remove(paramayck);
   }
   
   public void b(Runnable paramRunnable)
@@ -223,8 +223,8 @@ public class SpriteGLView
   
   public int c()
   {
-    if (this.jdField_a_of_type_Aycl != null) {
-      return this.jdField_a_of_type_Aycl.a();
+    if (this.jdField_a_of_type_Aycn != null) {
+      return this.jdField_a_of_type_Aycn.a();
     }
     return (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
   }
@@ -249,8 +249,8 @@ public class SpriteGLView
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof ayci)) {
-        ((ayci)localObject).b();
+      if ((localObject instanceof ayck)) {
+        ((ayck)localObject).b();
       }
       i += 1;
     }
@@ -267,8 +267,8 @@ public class SpriteGLView
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof ayci)) {
-        ((ayci)localObject).c();
+      if ((localObject instanceof ayck)) {
+        ((ayck)localObject).c();
       }
       i += 1;
     }
@@ -295,7 +295,7 @@ public class SpriteGLView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((ayci)localIterator.next()).aO_();
+      ((ayck)localIterator.next()).aO_();
     }
   }
   
@@ -311,7 +311,7 @@ public class SpriteGLView
     int i = arrayOfObject.length - 1;
     while (i >= 0)
     {
-      if (((arrayOfObject[i] instanceof aycj)) && (((aycj)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
+      if (((arrayOfObject[i] instanceof aycl)) && (((aycl)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
         return true;
       }
       i -= 1;
@@ -347,9 +347,9 @@ public class SpriteGLView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setVideoTimeGetter(aycl paramaycl)
+  public void setVideoTimeGetter(aycn paramaycn)
   {
-    this.jdField_a_of_type_Aycl = paramaycl;
+    this.jdField_a_of_type_Aycn = paramaycn;
   }
 }
 

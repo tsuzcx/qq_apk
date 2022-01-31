@@ -1,19 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
+import SummaryCard.CondFitUser;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import java.util.List;
 
 public class ammd
-  extends Handler
+  implements ajuc
 {
   public ammd(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
-    {
-      this.a.a();
-      bcpw.a(this.a, 2131691028, 0).b(this.a.getTitleBarHeight());
+    this.a.a();
+    if (paramInt != 1) {
+      return;
     }
+    if (!paramBoolean1)
+    {
+      bcql.a(this.a, 2131691016, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      bcql.a(this.a, 2131691019, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Ajtw.b(), this.a.jdField_a_of_type_Ajtw.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 

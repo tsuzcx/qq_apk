@@ -1,14 +1,27 @@
-public abstract interface blcs
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import dov.com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
+
+public class blcs
+  implements TVK_SDKMgr.InstallListener
 {
-  public abstract blct a(int paramInt1, int paramInt2);
+  public blcs(ShortVideoGuideUtil.1 param1) {}
   
-  public abstract void a();
+  public void onInstallProgress(float paramFloat) {}
   
-  public abstract void a(int paramInt);
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(blcr.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+  }
   
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(blcr.a, 2, "installSDK onInstalledSuccessed=");
+    }
+  }
 }
 
 

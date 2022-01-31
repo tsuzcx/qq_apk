@@ -1,13 +1,13 @@
 package com.tencent.open.base.img;
 
 import android.text.TextUtils;
-import bcxm;
-import bdey;
-import bdhq;
-import bdht;
-import bdhv;
-import bdis;
-import bdit;
+import bcyb;
+import bdfn;
+import bdif;
+import bdii;
+import bdik;
+import bdjh;
+import bdji;
 import java.io.File;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ImageCache
 {
-  protected static bdis a;
+  protected static bdjh a;
   public static final String a;
   protected static ThreadPoolExecutor a;
   protected static final String b = File.separator + "tencent" + File.separator + "qzone" + File.separator + "ImgCache2" + File.separator;
@@ -26,11 +26,11 @@ public class ImageCache
     jdField_a_of_type_JavaLangString = File.separator + "tencent" + File.separator + "qzone" + File.separator + ".AppCenterImgCache" + File.separator;
     try
     {
-      File localFile = new File(bdey.e() + b);
+      File localFile = new File(bdfn.e() + b);
       if (localFile.exists()) {
-        localFile.renameTo(new File(bdey.e() + jdField_a_of_type_JavaLangString));
+        localFile.renameTo(new File(bdfn.e() + jdField_a_of_type_JavaLangString));
       }
-      jdField_a_of_type_Bdis = new bdis(bcxm.a().a());
+      jdField_a_of_type_Bdjh = new bdjh(bcyb.a().a());
       jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 5, 120L, TimeUnit.SECONDS, new ArrayBlockingQueue(100));
       return;
     }
@@ -45,7 +45,7 @@ public class ImageCache
   
   public static String a(String paramString1, String paramString2)
   {
-    return bdey.e() + jdField_a_of_type_JavaLangString + paramString1 + File.separator + bdhq.a(paramString2);
+    return bdfn.e() + jdField_a_of_type_JavaLangString + paramString1 + File.separator + bdif.a(paramString2);
   }
   
   protected static void a(ImageCache.UpdateTask paramUpdateTask)
@@ -53,12 +53,12 @@ public class ImageCache
     try
     {
       if (jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(paramUpdateTask)) {
-        bdht.a("ImageCache", "download task already exist, return. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
+        bdii.a("ImageCache", "download task already exist, return. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
       }
       for (;;)
       {
         return;
-        bdht.a("ImageCache", "add download task to queue. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
+        bdii.a("ImageCache", "add download task to queue. key= " + paramUpdateTask.jdField_a_of_type_JavaLangString + " url=" + paramUpdateTask.c);
         jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramUpdateTask);
       }
     }
@@ -66,9 +66,9 @@ public class ImageCache
     {
       for (;;)
       {
-        bdht.c("ImageCache", "execute>>> ", localException);
-        if (paramUpdateTask.jdField_a_of_type_Bdit != null) {
-          paramUpdateTask.jdField_a_of_type_Bdit.b(paramUpdateTask.jdField_a_of_type_JavaLangString, paramUpdateTask.b, paramUpdateTask.c);
+        bdii.c("ImageCache", "execute>>> ", localException);
+        if (paramUpdateTask.jdField_a_of_type_Bdji != null) {
+          paramUpdateTask.jdField_a_of_type_Bdji.b(paramUpdateTask.jdField_a_of_type_JavaLangString, paramUpdateTask.b, paramUpdateTask.c);
         }
       }
     }
@@ -84,21 +84,21 @@ public class ImageCache
     }
     catch (Exception paramString)
     {
-      bdht.c("ImageCache", "-->delete image file failed.", paramString);
+      bdii.c("ImageCache", "-->delete image file failed.", paramString);
     }
   }
   
-  public static void a(String paramString1, String paramString2, bdit parambdit)
+  public static void a(String paramString1, String paramString2, bdji parambdji)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    a(bdhv.b(paramString2), paramString1, paramString2, parambdit);
+    a(bdik.b(paramString2), paramString1, paramString2, parambdji);
   }
   
-  protected static void a(String paramString1, String paramString2, String paramString3, bdit parambdit)
+  protected static void a(String paramString1, String paramString2, String paramString3, bdji parambdji)
   {
-    a(new ImageCache.UpdateTask(paramString1, paramString2, paramString3, parambdit));
+    a(new ImageCache.UpdateTask(paramString1, paramString2, paramString3, parambdji));
   }
 }
 

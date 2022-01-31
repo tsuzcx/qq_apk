@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lcl;
+import lcg;
 
 public class EffectFilterTextPager$FilterTextAdapter
   extends PagerAdapter
@@ -89,14 +89,14 @@ public class EffectFilterTextPager$FilterTextAdapter
     if (localContext != null)
     {
       ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559595, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131372248);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131372250);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       if (localObject != null) {}
       for (localObject = ((FilterItem)localObject).getIconurl();; localObject = null)
       {
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          lcl.c("EffectFilterTextPager", "decodeFile url is null.");
+          lcg.c("EffectFilterTextPager", "decodeFile url is null.");
           localImageView.setImageDrawable(null);
         }
         for (;;)

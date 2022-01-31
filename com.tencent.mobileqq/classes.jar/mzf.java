@@ -1,14 +1,15 @@
-final class mzf
-  implements mzb
+import java.io.InputStream;
+
+public class mzf
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if ((paramInt == 0) && (mze.a.a())) {
-      mze.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
-    }
-  }
+  public InputStream a;
+  public String a;
   
-  public void progress(int paramInt) {}
+  public mzf(String paramString, InputStream paramInputStream)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+  }
 }
 
 

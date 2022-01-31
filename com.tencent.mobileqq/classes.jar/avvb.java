@@ -1,6 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface avvb
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

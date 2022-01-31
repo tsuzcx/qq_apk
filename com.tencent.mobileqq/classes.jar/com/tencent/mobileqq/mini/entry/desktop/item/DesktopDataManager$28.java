@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -23,7 +23,7 @@ class DesktopDataManager$28
       return;
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    if (DesktopDataManager.access$3300(this.this$0, (aukn)localObject, this.val$entity))
+    if (DesktopDataManager.access$3300(this.this$0, (aukp)localObject, this.val$entity))
     {
       QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
       return;

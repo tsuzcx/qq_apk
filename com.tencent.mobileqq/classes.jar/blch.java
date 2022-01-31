@@ -1,78 +1,21 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-public class blch
+class blch
 {
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private blce[] jdField_a_of_type_ArrayOfBlce;
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  public int b;
   
-  private boolean b()
+  private blch()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
   }
   
-  public blce a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!b()) {
-      return null;
-    }
-    int i = 0;
-    blce localblce;
-    if (i < this.jdField_a_of_type_ArrayOfBlce.length) {
-      if (this.jdField_a_of_type_ArrayOfBlce[i].b() == 0)
-      {
-        localblce = this.jdField_a_of_type_ArrayOfBlce[i];
-        localblce.c();
-      }
-    }
-    for (;;)
-    {
-      return localblce;
-      i += 1;
-      break;
-      localblce = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!b()) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBlce.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfBlce[i].a() == 3) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public blce b()
-  {
-    if (!b()) {
-      return null;
-    }
-    int i = 0;
-    blce localblce;
-    if (i < this.jdField_a_of_type_ArrayOfBlce.length)
-    {
-      if (this.jdField_a_of_type_ArrayOfBlce[i].c() == 0) {}
-      while (this.jdField_a_of_type_ArrayOfBlce[i].a() != 0)
-      {
-        i += 1;
-        break;
-      }
-      localblce = this.jdField_a_of_type_ArrayOfBlce[i];
-      localblce.c();
-    }
-    for (;;)
-    {
-      return localblce;
-      localblce = null;
-    }
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
   }
 }
 

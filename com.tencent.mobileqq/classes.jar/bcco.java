@@ -1,37 +1,46 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class bcco
-  implements View.OnTouchListener
+class bcco
+  implements TouchWebView.OnScrollChangedListener
 {
-  public bcco(WebViewFragment paramWebViewFragment) {}
+  int jdField_a_of_type_Int = 0;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bcco(bccj parambccj) {}
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != this.a.a.a);
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "vg onTouch");
+      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
     }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    for (paramInt1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; paramInt1 = 0)
+    {
+      paramInt1 = paramInt1 + baxn.a(BaseApplicationImpl.getApplication(), 50.0F) + 180;
+      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
+        if (paramInt2 < paramInt1 / 3) {
+          this.jdField_a_of_type_Bccj.a.t = true;
+        }
+      }
+      while (paramInt2 >= paramInt1 / 3) {
+        for (;;)
+        {
+          this.jdField_a_of_type_Int = paramInt2;
+          this.jdField_a_of_type_Bccj.g();
+          return;
+          if (paramInt2 >= paramInt1) {
+            this.jdField_a_of_type_Bccj.a.t = false;
+          }
+        }
+      }
+      this.jdField_a_of_type_Bccj.a.t = true;
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_a_of_type_Bccj.g();
+      return;
+    }
   }
 }
 

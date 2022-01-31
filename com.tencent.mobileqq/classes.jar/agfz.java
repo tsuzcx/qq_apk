@@ -1,47 +1,58 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.support.v4.util.SparseArrayCompat;
 
 public class agfz
-  extends adtg
 {
-  boolean a;
+  private SparseArrayCompat<SparseArrayCompat<adif>> a = new SparseArrayCompat(15);
+  private SparseArrayCompat<adie> b = new SparseArrayCompat();
   
-  public agfz(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public agfz(aggw paramaggw)
   {
-    super(paramContext, paramQQAppInterface, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-    this.jdField_a_of_type_Boolean = false;
+    a(1, new aghk(paramaggw));
+    a(2, new aggv(paramaggw));
+    a(3, new aggd(paramaggw));
   }
   
-  private boolean a(int paramInt)
+  private void a(int paramInt, adif paramadif)
   {
-    return (paramInt == 62) || (paramInt == 96) || (paramInt == 75);
-  }
-  
-  public acvd a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage))) {
-      if (this.jdField_a_of_type_Aggd == null) {
-        this.jdField_a_of_type_Aggd = new aggd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-      }
-    }
-    for (paramChatMessage = a(this.jdField_a_of_type_Aggd, paramBaseAdapter);; paramChatMessage = super.a(paramChatMessage, paramBaseAdapter))
+    this.b.put(paramInt, paramadif);
+    int[] arrayOfInt = paramadif.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      if ((paramChatMessage instanceof BaseBubbleBuilder)) {
-        ((BaseBubbleBuilder)paramChatMessage).b = true;
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
+      {
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
       }
-      return paramChatMessage;
+      localSparseArrayCompat1.put(paramInt, paramadif);
+      i += 1;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public <T extends adie> T a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return (adie)this.b.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
+    if (localSparseArrayCompat == null) {}
+    for (;;)
+    {
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((adif)localSparseArrayCompat.valueAt(i)).a(paramInt);
+        i += 1;
+      }
+    }
   }
 }
 

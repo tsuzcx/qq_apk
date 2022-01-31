@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.logic;
 
-import bado;
+import baec;
 
 public class TroopFeedsCenterLogic$2
   implements Runnable
 {
-  public TroopFeedsCenterLogic$2(bado parambado) {}
+  public TroopFeedsCenterLogic$2(baec parambaec) {}
   
   public void run()
   {

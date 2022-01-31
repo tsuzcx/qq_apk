@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import ajyc;
+import ajya;
 import android.widget.Toast;
-import biku;
+import bill;
 
 public class VideoStoryAIScenePart$15
   implements Runnable
 {
-  public VideoStoryAIScenePart$15(biku parambiku) {}
+  public VideoStoryAIScenePart$15(bill parambill) {}
   
   public void run()
   {
-    Toast.makeText(biku.e(this.this$0), ajyc.a(2131716408), 0).show();
+    Toast.makeText(bill.e(this.this$0), ajya.a(2131716419), 0).show();
   }
 }
 

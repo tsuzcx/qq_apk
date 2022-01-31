@@ -1,61 +1,119 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadVideoThumbJob;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 class bhxu
-  implements View.OnTouchListener
+  implements bhxi
 {
-  private float jdField_a_of_type_Float;
-  boolean jdField_a_of_type_Boolean = false;
-  private float b;
+  bhxu(bhxt parambhxt) {}
   
-  bhxu(bhxr parambhxr) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (paramMotionEvent.getActionMasked() == 6) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    boolean bool = bhxr.a(this.jdField_a_of_type_Bhxr).onTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
+    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bhxs.c, this.a.jdField_a_of_type_Int, this.a.b, "uploading", "", 0);
+    try
     {
+      if (this.a.b == 2)
+      {
+        float f2 = paramInt / 100.0F * 0.85F + 0.1F;
+        f1 = f2;
+        if (f2 <= 1.0F) {}
+      }
+      for (float f1 = 1.0F;; f1 = paramInt / 100.0F)
+      {
+        localJSONObject.put("progress", f1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TroopHWJsPlugin", 4, "id = " + this.a.jdField_a_of_type_Int + " progress = " + paramInt + " realProgress = " + f1);
+        }
+        this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bhxs.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.a.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      return;
     }
-    do
+    catch (Exception localException)
     {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHWJsPlugin", 2, "onComplete id = " + this.a.jdField_a_of_type_Int + " url = " + paramString);
+    }
+    if (this.a.b == 0) {}
+    for (int i = 11;; i = 0)
+    {
+      Object localObject = "uploaded";
+      if (this.a.b == 2) {
+        localObject = "uploading";
+      }
+      localObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bhxs.c, this.a.jdField_a_of_type_Int, this.a.b, (String)localObject, paramString, i);
+      this.a.jdField_a_of_type_JavaLangString = paramString;
       do
       {
-        do
+        for (;;)
         {
-          do
+          try
           {
-            return bool;
-            this.jdField_a_of_type_Float = paramMotionEvent.getX();
-            this.b = paramMotionEvent.getY();
-          } while (bhxr.a(this.jdField_a_of_type_Bhxr) == null);
-          bhxr.a(this.jdField_a_of_type_Bhxr).a("onActionDown", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
-          return bool;
-        } while ((bhxr.a(this.jdField_a_of_type_Bhxr).isInProgress()) || (paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_Boolean) || (bhxr.a(this.jdField_a_of_type_Bhxr) == null));
-        bhxr.a(this.jdField_a_of_type_Bhxr).a("onActionMove", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
-        return bool;
-        if ((Math.abs(this.jdField_a_of_type_Float - f1) > ViewConfiguration.getTouchSlop()) || (Math.abs(this.b - f2) > ViewConfiguration.getTouchSlop())) {
-          break;
+            ((JSONObject)localObject).put("result", 0);
+            if (2 == this.a.b)
+            {
+              ((JSONObject)localObject).put("progress", 0.949999988079071D);
+              if (this.a.b != 2) {
+                this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bhxs.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+              }
+              this.a.jdField_a_of_type_Boolean = false;
+              if (!this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+                break;
+              }
+              return;
+            }
+            if (this.a.b == 1)
+            {
+              ((JSONObject)localObject).put("progress", 1.0D);
+              ((JSONObject)localObject).put("size", "[0,400,694,1000]");
+              continue;
+            }
+            if (this.a.b != 0) {
+              continue;
+            }
+          }
+          catch (Exception paramString)
+          {
+            paramString.printStackTrace();
+            return;
+          }
+          ((JSONObject)localObject).put("progress", 1.0D);
         }
-        paramView = bhxr.a(this.jdField_a_of_type_Bhxr, paramMotionEvent.getX(), paramMotionEvent.getY());
-        if (bhxr.a(this.jdField_a_of_type_Bhxr) != null) {
-          bhxr.a(this.jdField_a_of_type_Bhxr).a(paramView[0], paramView[1]);
-        }
-      } while (!bhxr.d(this.jdField_a_of_type_Bhxr));
-      bhye.a("ar_activity_click", "1");
-      bhxr.c(this.jdField_a_of_type_Bhxr, false);
-      return bool;
-      this.jdField_a_of_type_Boolean = false;
-    } while (bhxr.a(this.jdField_a_of_type_Bhxr) == null);
-    bhxr.a(this.jdField_a_of_type_Bhxr).a("onActionUp", new float[] { 0.0F, 0.0F });
-    return bool;
+      } while (this.a.b != 2);
+      paramString = new bhxv(this);
+      ThreadManager.postImmediately(new TroopHWJsPlugin.UploadVideoThumbJob(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, this.a, paramString, TroopHWJsPlugin.a(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin)), null, false);
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    QLog.d("TroopHWJsPlugin", 1, "upload failed! errorCode = " + paramInt);
+    this.a.jdField_a_of_type_Boolean = false;
+    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bhxs.c, this.a.jdField_a_of_type_Int, this.a.b, "uploaded", "", 0);
+    try
+    {
+      localJSONObject.put("result", paramInt);
+      this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bhxs.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("TroopHWJsPlugin", 1, "upload error!", localException);
+      }
+    }
   }
 }
 

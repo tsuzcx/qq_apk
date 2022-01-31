@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import osj;
-import rlq;
+import osg;
+import rln;
 
 public class WebFastTitleViewCreator$TitleViewHolder$1
   implements Runnable
 {
   public void run()
   {
-    rlq.a(this.this$0, osj.a().b(Long.valueOf(rlq.a(this.this$0))));
+    rln.a(this.this$0, osg.a().b(Long.valueOf(rln.a(this.this$0))));
     ThreadManager.getUIHandler().post(new WebFastTitleViewCreator.TitleViewHolder.1.1(this));
   }
 }

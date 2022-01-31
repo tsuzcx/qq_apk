@@ -1,108 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
 
-public class nkv
-  extends akow
+public abstract class nkv
+  implements ajte
 {
-  public nkv(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
-  {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
+  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   
-  public ArrayList<MessageRecord> a(long paramLong, List<msg_comm.Msg> paramList)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramList = b(paramLong, paramList);
-    ArrayList localArrayList = new ArrayList();
-    a(paramList, localArrayList, true);
-    paramList.clear();
-    return localArrayList;
-  }
-  
-  public void a(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    paramList = a(paramLong, paramList);
-    nnx localnnx;
-    long l2;
-    long l1;
-    String str;
-    if ((paramList != null) && (paramList.size() > 0))
+    if (paramObject != null) {}
+    try
     {
-      localnnx = nnx.a();
-      l2 = localnnx.a(this.a, String.valueOf(paramLong));
-      l1 = l2;
-      if (l2 == 0L) {
-        l1 = 9223372036854775807L;
-      }
-      Iterator localIterator = paramList.iterator();
-      if (localIterator.hasNext())
-      {
-        str = ((MessageRecord)localIterator.next()).getExtInfoFromExtStr("pa_msgId");
-        if (TextUtils.isEmpty(str)) {
-          break label176;
-        }
-      }
-    }
-    label176:
-    for (;;)
-    {
-      try
-      {
-        long l3 = Long.parseLong(str);
-        l2 = l1;
-        if (l3 < l1)
-        {
-          l2 = l1;
-          if (l3 != 0L)
-          {
-            localnnx.a(this.a, String.valueOf(paramLong), l3);
-            l2 = l3;
-          }
-        }
-        l1 = l2;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      this.a.a().a(paramList, this.a.getCurrentAccountUin(), true);
+      paramObject = (Bundle)paramObject;
+      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
       return;
     }
-  }
-  
-  public ArrayList<MessageRecord> b(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    Object localObject1 = new ArrayList();
-    a(paramList, (List)localObject1);
-    paramList = new ArrayList();
-    awzu localawzu = new awzu(this.a.getLongAccountUin(), paramLong, true, true, false, false);
-    localawzu.h = true;
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (msg_comm.Msg)((Iterator)localObject1).next();
-      try
-      {
-        localObject2 = a((msg_comm.Msg)localObject2, localawzu);
-        if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
-          continue;
-        }
-        paramList.addAll((Collection)localObject2);
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel()) {
-        QLog.w("DynamicMsgProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
-      }
-    }
-    return paramList;
+    catch (Exception paramObject) {}
+    a(false, null, new Bundle());
+    return;
   }
 }
 

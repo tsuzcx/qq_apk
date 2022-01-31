@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aoio;
-import aoiu;
+import aoit;
+import aoiz;
 
 public class ExtendFriendSquareFragment$2$1
   implements Runnable
 {
-  public ExtendFriendSquareFragment$2$1(aoio paramaoio) {}
+  public ExtendFriendSquareFragment$2$1(aoit paramaoit) {}
   
   public void run()
   {

@@ -1,14 +1,17 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
 class askj
-  implements askp<Pair<String, String>, Emoticon>
+  extends akfy
 {
-  askj(askd paramaskd) {}
+  askj(askf paramaskf) {}
   
-  public Emoticon a(Pair<String, String> paramPair)
+  public void a()
   {
-    return this.a.a((String)paramPair.first, (String)paramPair.second);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
+    }
+    super.a();
+    this.a.d();
   }
 }
 

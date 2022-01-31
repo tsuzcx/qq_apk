@@ -1,31 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
 
 public class auzl
-  extends bfmg
+  implements View.OnTouchListener
 {
-  public auzl(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
+  public auzl(ProfileHeaderView paramProfileHeaderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772246);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int < 4)
+    switch (paramMotionEvent.getAction())
     {
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
-      paramAnimation.jdField_a_of_type_Int += 1;
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bfmt.obtainMessage(ProfileHeaderView.b);
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bfmt.sendMessageDelayed(paramAnimation, 4000L);
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

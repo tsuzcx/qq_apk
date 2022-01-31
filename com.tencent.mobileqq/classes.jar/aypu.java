@@ -1,34 +1,44 @@
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
+import java.io.File;
 import java.io.OutputStream;
 import java.net.URL;
 
 public class aypu
+  extends ayrp
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  public aunl a;
-  public auob a;
-  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
-  URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public MessageForPic a;
-  OutputStream jdField_a_of_type_JavaIoOutputStream;
-  String jdField_a_of_type_JavaLangString;
-  URL jdField_a_of_type_JavaNetURL;
-  boolean jdField_a_of_type_Boolean;
-  public int b = 1;
-  String b;
-  public int c;
-  public String c;
-  public int d = -1;
-  
-  public aypu(aypt paramaypt)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = aunt.a();
+    paramDownloadParams.url = new URL(paramDownloadParams.url.getFile());
+    paramDownloadParams.urlStr = paramDownloadParams.url.toString();
+    return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = new BitmapFactory.Options();
+    paramURLDrawableHandler.inJustDecodeBounds = true;
+    paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramURLDrawableHandler);
+    float f = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
+    paramURLDrawableHandler.inSampleSize = (Math.min(paramURLDrawableHandler.outWidth, paramURLDrawableHandler.outHeight) / (int)(f * 70.0F + 0.5F));
+    paramURLDrawableHandler.inJustDecodeBounds = false;
+    try
+    {
+      paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramURLDrawableHandler);
+      return bbef.c(bbef.b(paramFile), 70, 70);
+    }
+    catch (OutOfMemoryError paramFile)
+    {
+      for (;;)
+      {
+        paramFile = paramDownloadParams;
+      }
+    }
   }
 }
 

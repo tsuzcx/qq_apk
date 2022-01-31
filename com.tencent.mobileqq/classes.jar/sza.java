@@ -1,22 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import android.text.TextUtils;
 
-class sza
-  extends Job<Object, Object, Object>
+public class sza
 {
-  sza(syz paramsyz, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
+  public int a;
+  public final long a;
+  public final String a;
+  public final String b;
+  
+  public boolean equals(Object paramObject)
   {
-    super(paramString);
+    if ((paramObject instanceof sza)) {
+      return TextUtils.equals(((sza)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public String toString()
   {
-    veg.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Syz.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("\n");
+    localStringBuilder.append("-t ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("  -dt ");
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 

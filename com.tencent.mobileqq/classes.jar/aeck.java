@@ -1,33 +1,23 @@
+import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.mobileqq.widget.RotateableView;
 
-class aeck
-  implements Animation.AnimationListener
+public class aeck
+  extends aece
 {
-  aeck(aeci paramaeci, aecm paramaecm, CharSequence paramCharSequence) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
+  boolean jdField_a_of_type_Boolean = false;
+  public long b;
+  String b;
+  long jdField_c_of_type_Long;
+  View jdField_c_of_type_AndroidViewView;
+  String jdField_c_of_type_JavaLangString;
+  int e;
+  int f;
+  int g;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Aecm.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Aecm.d.startAnimation(this.jdField_a_of_type_Aeci.a);
-    this.jdField_a_of_type_Aecm.a.requestLayout();
-    this.jdField_a_of_type_Aecm.g = 0;
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Aecm.a.getLayoutParams();
-    paramAnimation.width = -2;
-    paramAnimation.height = -2;
-    this.jdField_a_of_type_Aecm.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Aecm.g = 0;
-    this.jdField_a_of_type_Aecm.d.startAnimation(this.jdField_a_of_type_Aeci.b);
-  }
+  public aeck(aecg paramaecg) {}
 }
 
 

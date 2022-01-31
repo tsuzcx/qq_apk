@@ -1,31 +1,35 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-final class adyk
-  extends axfa
+class adyk
+  implements View.OnClickListener
 {
-  adyk(MessageForShortVideo paramMessageForShortVideo, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ChatThumbView paramChatThumbView) {}
+  adyk(adyf paramadyf) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, axes paramaxes)
+  public void onClick(View paramView)
   {
-    if (paramaxes.jdField_a_of_type_Int == 0)
+    switch (paramView.getId())
     {
-      paramaxes = (aumz)paramaxes.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath = paramaxes.b;
-      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setSourceMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      ((MessageForReplyText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
-      adyh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView);
+    default: 
       return;
     }
-    QLog.d("ReplyTextItemBuilder", 2, "reply render get thumbPath Fail");
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView))
+    {
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", paramView);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771997, 0);
+    }
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
   }
 }
 

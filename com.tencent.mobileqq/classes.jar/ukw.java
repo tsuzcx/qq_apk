@@ -1,18 +1,20 @@
-import android.util.LruCache;
+import android.support.annotation.NonNull;
 
-class ukw
-  extends LruCache<String, uko>
+public abstract class ukw
+  implements ukn
 {
-  ukw(ukv paramukv, int paramInt)
+  protected void a(Error paramError) {}
+  
+  protected void a(ukk paramukk) {}
+  
+  public final void a(@NonNull ukl paramukl)
   {
-    super(paramInt);
+    a(new ukk(paramukl.a()));
   }
   
-  protected void a(boolean paramBoolean, String paramString, uko paramuko1, uko paramuko2)
+  public final void b(@NonNull ukl paramukl)
   {
-    super.entryRemoved(paramBoolean, paramString, paramuko1, paramuko2);
-    ukm.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
-    paramuko1.a();
+    a(paramukl.a());
   }
 }
 

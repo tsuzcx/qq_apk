@@ -1,15 +1,6 @@
-import android.text.Editable;
-import java.util.Comparator;
-
-final class baeh
-  implements Comparator
+public abstract interface baeh
 {
-  baeh(Editable paramEditable) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
-  }
+  public abstract void a(baff parambaff);
 }
 
 

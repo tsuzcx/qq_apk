@@ -1,87 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity.2.2;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class qex
+  implements oem
 {
-  private int jdField_a_of_type_Int = 9;
-  private long[] jdField_a_of_type_ArrayOfLong = new long[this.jdField_a_of_type_Int];
-  private long[] b = new long[this.jdField_a_of_type_Int];
-  private long[] c = new long[this.jdField_a_of_type_Int];
-  private long[] d = new long[this.jdField_a_of_type_Int];
-  private long[] e = new long[this.jdField_a_of_type_Int];
-  private long[] f = new long[this.jdField_a_of_type_Int];
+  public qex(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public qex(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void a(int paramInt, long paramLong)
+  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.2(this));
   }
   
-  public long[] a()
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    return this.c;
-  }
-  
-  public void b(int paramInt, long paramLong)
-  {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      this.b[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] b()
-  {
-    return this.d;
-  }
-  
-  public void c(int paramInt, long paramLong)
-  {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      this.c[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] c()
-  {
-    return this.b;
-  }
-  
-  public void d(int paramInt, long paramLong)
-  {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      this.d[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] d()
-  {
-    return this.jdField_a_of_type_ArrayOfLong;
-  }
-  
-  public void e(int paramInt, long paramLong)
-  {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      this.e[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] e()
-  {
-    return this.f;
-  }
-  
-  public void f(int paramInt, long paramLong)
-  {
-    if (paramInt < this.jdField_a_of_type_Int) {
-      this.f[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] f()
-  {
-    return this.e;
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
+    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new ReadInJoyDeliverVideoActivity.2.1(this));
   }
 }
 

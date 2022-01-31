@@ -1,34 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
+import android.text.TextUtils;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.widget.QQViewPager;
 
 public class anyw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements askr<String, Integer>
 {
-  public anyw(EmoticonMainPanel paramEmoticonMainPanel, ImageView paramImageView) {}
+  public anyw(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
   
-  public void onGlobalLayout()
+  public Integer a(String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getMeasuredHeight() != 0)
-      {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-        localLayoutParams.height = ((int)(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getMeasuredHeight() * 0.6F));
-        localLayoutParams.width = ((int)(localLayoutParams.height * 1.3F));
-        localLayoutParams.topMargin = ((int)(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getMeasuredHeight() * 0.08F));
-        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    return Integer.valueOf(i);
   }
 }
 

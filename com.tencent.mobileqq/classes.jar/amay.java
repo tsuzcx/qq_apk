@@ -1,81 +1,66 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.Foreground;
+import android.os.Bundle;
+import android.util.SparseArray;
+import mqq.observer.BusinessObserver;
 
 public class amay
-  implements amag, amal
+  implements BusinessObserver
 {
-  @Nullable
-  private Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private static amay jdField_a_of_type_Amay;
+  private int jdField_a_of_type_Int;
+  private final SparseArray<amax> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  amay(Context paramContext, @Nullable amag paramamag)
+  public static amay a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramamag;
-  }
-  
-  amay(Context paramContext, @Nullable amal paramamal)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramamal;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof amal)) {
-      ((amal)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof amag)) {
-      ((amag)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof amag)) {
-      return ((amag)this.jdField_a_of_type_JavaLangObject).a();
-    }
-    return false;
-  }
-  
-  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-    a(paramBoolean, paramInt1, paramInt2, paramString);
-  }
-  
-  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
-    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    if (((this.jdField_a_of_type_JavaLangObject instanceof amag)) && (!((amag)this.jdField_a_of_type_JavaLangObject).a())) {}
-    Context localContext;
-    do
+    if (jdField_a_of_type_Amay == null) {}
+    try
     {
-      return;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
-    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString2);
-    if ((localContext instanceof Activity)) {}
-    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
-    {
-      localIntent.addFlags(268435456);
-      localContext.startActivity(localIntent);
-      return;
+      if (jdField_a_of_type_Amay == null) {
+        jdField_a_of_type_Amay = new amay();
+      }
+      return jdField_a_of_type_Amay;
     }
-    paramString1.startActivity(localIntent);
+    finally {}
+  }
+  
+  public int a(amax paramamax)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, paramamax);
+      i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public int a(Context paramContext, amaf paramamaf)
+  {
+    return a(new amax(paramContext, paramamaf));
+  }
+  
+  public int a(Context paramContext, amak paramamak)
+  {
+    return a(new amax(paramContext, paramamak));
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("req_id");
+    amax localamax = (amax)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+      return;
+      localamax.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
+      continue;
+      localamax.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
+    }
   }
 }
 

@@ -1,81 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
 import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.Timer;
 
 public class wxl
-  extends Handler
 {
-  private WeakReference<TribeVideoPlugin> a;
-  
-  public wxl(TribeVideoPlugin paramTribeVideoPlugin)
-  {
-    this.a = new WeakReference(paramTribeVideoPlugin);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    Object localObject = paramMessage.obj;
-    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                return;
-              case 1: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
-                return;
-              case 2: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
-                return;
-              case 3: 
-                paramMessage = (wxo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-              }
-            } while ((paramMessage == null) || (wxo.c(paramMessage)));
-            if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
-            }
-            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
-            wxo.b(paramMessage, true);
-            return;
-            paramMessage = (wxo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-          } while (paramMessage == null);
-          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
-          {
-            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + wxo.a(paramMessage));
-            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
-            TribeVideoPlugin.a(localTribeVideoPlugin, true);
-          }
-          TribeVideoPlugin.a(localTribeVideoPlugin, wxo.a(paramMessage), 1);
-          return;
-          paramMessage = (wxo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-        } while (paramMessage == null);
-        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
-        return;
-        paramMessage = (wxo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-      } while (paramMessage == null);
-      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
-      return;
-      paramMessage = (wxo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-    } while (paramMessage == null);
-    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
-    return;
-    TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject);
-  }
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private wxj jdField_a_of_type_Wxj;
+  private boolean jdField_a_of_type_Boolean;
+  private double jdField_b_of_type_Double;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private double jdField_c_of_type_Double;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private double jdField_d_of_type_Double;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private double jdField_e_of_type_Double;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private double jdField_f_of_type_Double;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
 }
 
 

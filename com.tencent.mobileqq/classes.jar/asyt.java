@@ -1,36 +1,103 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class asyt
 {
-  public long a;
   public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  private boolean a;
+  public String b = "";
   public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
   public asyt()
   {
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public asyt(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString1, String paramString2, String paramString3)
+  public static asyt a(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
+    try
+    {
+      paramString = (String)atbi.a(paramString, "cike_guide_content", "");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = new JSONObject(paramString);
+        if (paramInt == 0) {
+          paramString = paramString.optJSONObject("publish_menu_alert_config");
+        }
+        for (;;)
+        {
+          return a(paramContext, paramString);
+          if (paramInt == 1) {
+            paramString = paramString.optJSONObject("sendmsg_alert_config");
+          } else {
+            paramString = paramString.optJSONObject("authenticated_user_alert_config");
+          }
+        }
+      }
+      QLog.e("CikeConfigData", 1, "parseManageConfig, get config failed");
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("CikeConfigData", 1, "parseManageConfig, exception: " + paramContext.getMessage());
+      }
+    }
+    return null;
   }
   
-  public boolean a()
+  public static asyt a(Context paramContext, JSONObject paramJSONObject)
   {
-    long l = NetConnInfoCenter.getServerTime();
-    return (this.jdField_a_of_type_Long <= 0L) || (l > this.jdField_a_of_type_Long);
+    if (paramJSONObject != null)
+    {
+      asyt localasyt = new asyt();
+      localasyt.jdField_a_of_type_JavaLangString = paramJSONObject.optString("iconurl");
+      localasyt.b = paramJSONObject.optString("title_text");
+      if (a(paramContext))
+      {
+        localasyt.jdField_a_of_type_Boolean = true;
+        localasyt.c = paramJSONObject.optString("download_installapp_text");
+      }
+      for (localasyt.d = paramJSONObject.optString("jump_app_scheme");; localasyt.d = paramJSONObject.optString("download_url_android"))
+      {
+        localasyt.e = paramJSONObject.optString("moreurl");
+        return localasyt;
+        localasyt.jdField_a_of_type_Boolean = false;
+        localasyt.c = paramJSONObject.optString("download_text");
+      }
+    }
+    QLog.e("CikeConfigData", 1, "parseJson, config is null");
+    return null;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return bbfr.a(paramContext, "com.tencent.litenow");
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramLong != 0L) && (!TextUtils.isEmpty(this.d)))
+    {
+      if (this.d.contains("?")) {
+        this.d = (this.d + "&uid=" + paramLong);
+      }
+    }
+    else {
+      return;
+    }
+    this.d = (this.d + "?uid=" + paramLong);
+  }
+  
+  public String toString()
+  {
+    return "imageUrl:" + this.jdField_a_of_type_JavaLangString + " titleTxt:" + this.b + " btnTxt:" + this.c + " btnUrl:" + this.d + " moreUrl:" + this.e + " d1:" + this.f + " toUin: " + this.g;
   }
 }
 

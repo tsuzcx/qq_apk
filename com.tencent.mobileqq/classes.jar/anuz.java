@@ -1,36 +1,28 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 class anuz
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements ajic
 {
-  anuz(anul paramanul, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anuz(anuq paramanuq, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    Bundle localBundle;
-    if (paramBundle != null) {
-      localBundle = new Bundle();
-    }
-    try
+    paramString = new Bundle();
+    if (paramBoolean)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
-      if (!paramBoolean) {
-        localJSONObject.put("msg", paramBundle.getString("errMsg"));
-      }
-      localBundle.putString("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      paramString.putInt("apollo_result", 0);
+      paramString.putInt("apollo_roleId", paramInt1);
+      paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
+      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
       this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
-    }
+    paramString.putInt("apollo_result", 1);
+    paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

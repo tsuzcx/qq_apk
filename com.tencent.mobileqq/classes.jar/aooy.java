@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class aooy
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   public aooy(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
+    this.a.a.a(null);
     LocalFileBrowserActivity.a(this.a);
   }
 }

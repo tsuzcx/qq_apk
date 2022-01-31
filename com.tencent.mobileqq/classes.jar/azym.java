@@ -1,23 +1,8 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import java.lang.ref.WeakReference;
-
-class azym
-  implements aycb
+public abstract interface azym
 {
-  final WeakReference<SpriteVideoView> a;
+  public abstract void a();
   
-  private azym(SpriteVideoView paramSpriteVideoView)
-  {
-    this.a = new WeakReference(paramSpriteVideoView);
-  }
-  
-  public void a()
-  {
-    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
-    if (localSpriteVideoView != null) {
-      localSpriteVideoView.setVisibility(8);
-    }
-  }
+  public abstract void b();
 }
 
 

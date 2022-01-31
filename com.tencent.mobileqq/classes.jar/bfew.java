@@ -1,38 +1,22 @@
-import com.tencent.qqmini.sdk.task.TaskThreadPool.2;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 
-public class bfew
+class bfew
+  implements NumberPicker.OnValueChangeListener
 {
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new TaskThreadPool.2(this);
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private final RejectedExecutionHandler jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler = new bfex(this);
-  private final ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService = Executors.newScheduledThreadPool(1);
-  protected final ScheduledFuture<?> a;
-  private final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
+  private int jdField_a_of_type_Int;
   
-  public bfew(String paramString, int paramInt1, int paramInt2)
+  public bfew(bfev parambfev, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.scheduleAtFixedRate(this.jdField_a_of_type_JavaLangRunnable, 0L, 100L, TimeUnit.MILLISECONDS);
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 5000L, TimeUnit.SECONDS, new ArrayBlockingQueue(100), new bfey(paramString), this.jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private boolean a()
+  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
   {
-    return !this.jdField_a_of_type_JavaUtilQueue.isEmpty();
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (paramRunnable != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramRunnable);
+    if ((bfev.a(this.jdField_a_of_type_Bfev) != null) && (bfev.a(this.jdField_a_of_type_Bfev).length > this.jdField_a_of_type_Int))
+    {
+      bfev.a(this.jdField_a_of_type_Bfev)[this.jdField_a_of_type_Int] = paramInt2;
+      bfev.a(this.jdField_a_of_type_Bfev).onValChange(this.jdField_a_of_type_Int, paramInt2);
     }
   }
 }

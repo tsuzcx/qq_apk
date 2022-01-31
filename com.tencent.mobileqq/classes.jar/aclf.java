@@ -1,63 +1,127 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity.11.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aclf
-  extends aimv
+  extends akil
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TroopHonorView a;
-  public TroopMemberListSlideItem a;
-  public boolean a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public View f;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
-  public TextView k;
+  public aclf(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public aclf(View paramView, boolean paramBoolean)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378173));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378220));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131377838));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376268);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364983);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131364984);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368584));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378256));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378257));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378262));
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131378329);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368622));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378044));
-    this.g = ((TextView)paramView.findViewById(2131363572));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131375298);
-    this.h = ((TextView)paramView.findViewById(2131378643));
-    this.i = ((TextView)paramView.findViewById(2131362792));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364191));
-    this.j = ((TextView)paramView.findViewById(2131378199));
-    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362093);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView = ((TroopHonorView)paramView.findViewById(2131377794));
-    if (paramBoolean) {
-      this.k = ((TextView)paramView.findViewById(2131375101));
+    if ((paramInt1 == 4) || (paramInt1 == 5) || (paramInt1 == 6) || (paramInt1 == 7)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     }
-    this.jdField_a_of_type_Boolean = false;
+    if (paramInt1 == 8) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramInt1 == 4) || (paramInt1 == 5) || (paramInt1 == 6) || (paramInt1 == 7))
+    {
+      if (paramInt2 != 0) {
+        break label68;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      this.a.finish();
+    }
+    for (;;)
+    {
+      if (paramInt1 == 8)
+      {
+        if (paramInt2 != 0) {
+          break;
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      }
+      return;
+      label68:
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (this.a.jdField_a_of_type_JavaLangString == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString.trim();
+        try
+        {
+          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
+          if (paramLong != l) {}
+        }
+        catch (NumberFormatException paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel())
+            {
+              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_1_Ret=>NumberFormatException");
+              continue;
+              bcql.a(this.a.app.getApplication(), 2131720506, 0).b(this.a.getTitleBarHeight());
+            }
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        }
+      }
+      this.a.i();
+      if (!paramBoolean) {
+        break label215;
+      }
+      if ((paramTroopInfo.cGroupOption == 4) || (paramTroopInfo.cGroupOption == 5))
+      {
+        this.a.o = paramTroopInfo.joinTroopQuestion;
+        this.a.p = paramTroopInfo.joinTroopAnswer;
+      }
+      this.a.jdField_a_of_type_Short = paramTroopInfo.cGroupOption;
+      if (this.a.jdField_a_of_type_Short == 3) {
+        break;
+      }
+      TroopRequestActivity.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.systemmsg.TroopRequestActivity", 2, "troop.cGroupOption = " + paramTroopInfo.cGroupOption);
+    return;
+    label215:
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (this.a.jdField_a_of_type_JavaLangString == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString.trim();
+          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
+          if (paramLong != l) {}
+        }
+        catch (NumberFormatException paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_10_Ret=>NumberFormatException");
+            }
+          }
+        }
+      }
+      this.a.i();
+    } while ((!paramBoolean) || (paramTroopInfo == null));
+    ThreadManager.post(new TroopRequestActivity.11.1(this, paramTroopInfo), 8, null, true);
   }
 }
 

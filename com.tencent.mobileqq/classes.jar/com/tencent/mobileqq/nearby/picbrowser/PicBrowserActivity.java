@@ -4,27 +4,27 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import atnw;
+import atny;
 import com.tencent.image.AbstractVideoImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import xpz;
+import xpw;
 
 public class PicBrowserActivity
   extends BaseActivity
 {
   protected ImmersiveTitleBar2 a;
-  public xpz a;
+  public xpw a;
   public int b;
   public ArrayList<PicInfo> b;
   public boolean b;
   
   public PicBrowserActivity()
   {
-    this.jdField_a_of_type_Xpz = new atnw(this);
+    this.jdField_a_of_type_Xpw = new atny(this);
   }
   
   protected void a()
@@ -44,7 +44,7 @@ public class PicBrowserActivity
   
   public void doOnBackPressed()
   {
-    if (!this.jdField_a_of_type_Xpz.b()) {
+    if (!this.jdField_a_of_type_Xpw.b()) {
       super.doOnBackPressed();
     }
   }
@@ -54,22 +54,22 @@ public class PicBrowserActivity
     this.mActNeedImmersive = false;
     this.mNeedStatusTrans = true;
     super.doOnCreate(paramBundle);
-    setContentView(2131560889);
+    setContentView(2131560888);
     d();
     a();
-    this.jdField_a_of_type_Xpz.a(this);
+    this.jdField_a_of_type_Xpw.a(this);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Xpz.c(this);
+    this.jdField_a_of_type_Xpw.c(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Xpz.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_Xpw.a(paramInt, paramKeyEvent)) {
       return super.doOnKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -78,20 +78,20 @@ public class PicBrowserActivity
   public void doOnPause()
   {
     AbstractVideoImage.pauseAll();
-    this.jdField_a_of_type_Xpz.b();
+    this.jdField_a_of_type_Xpw.b();
   }
   
   public void doOnResume()
   {
     AbstractVideoImage.resumeAll();
-    this.jdField_a_of_type_Xpz.c();
+    this.jdField_a_of_type_Xpw.c();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Xpz.b(this);
+      this.jdField_a_of_type_Xpw.b(this);
     }
   }
   

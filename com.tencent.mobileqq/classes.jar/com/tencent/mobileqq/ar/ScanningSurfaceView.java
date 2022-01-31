@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
-import ajyc;
-import akxi;
-import alcl;
-import alcq;
-import alda;
+import ajya;
+import akxh;
+import alck;
+import alcp;
+import alcz;
+import aldo;
 import aldp;
 import aldq;
-import aldr;
-import aldt;
+import alds;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +36,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View.OnTouchListener;
-import aufh;
-import axqw;
-import bbdr;
+import aufj;
+import axqy;
+import bbef;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
@@ -56,18 +56,18 @@ public class ScanningSurfaceView
 {
   private float jdField_a_of_type_Float = 1.0F;
   private long jdField_a_of_type_Long = 50L;
-  public alcq a;
+  public alcp a;
   BlurMaskFilter jdField_a_of_type_AndroidGraphicsBlurMaskFilter;
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aldq(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aldp(this);
   private ScanningData jdField_a_of_type_ComTencentMobileqqArScanningData;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable = new ScanningSurfaceView.4(this);
-  private List<alcl> jdField_a_of_type_JavaUtilList;
+  private List<alck> jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap<Integer, ScanningData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private CopyOnWriteArrayList<ScanningData> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   volatile boolean jdField_a_of_type_Boolean = false;
@@ -187,7 +187,7 @@ public class ScanningSurfaceView
     label371:
     label3707:
     label3839:
-    while ((j == 0) || (this.jdField_a_of_type_Alcq.a.a() == 0))
+    while ((j == 0) || (this.jdField_a_of_type_Alcp.a.a() == 0))
     {
       ScanningData localScanningData2;
       return;
@@ -395,7 +395,7 @@ public class ScanningSurfaceView
         if ((!localScanningData2.jdField_a_of_type_Boolean) || (!localScanningData2.jdField_f_of_type_Boolean) || (localScanningData2.C == 0.0F)) {
           break label3883;
         }
-        localScanningData2.aF = (localScanningData2.jdField_a_of_type_Float - localScanningData2.jdField_f_of_type_Float * localScanningData2.jdField_g_of_type_Float - localScanningData2.jdField_i_of_type_Float - localScanningData2.aS - aldp.jdField_e_of_type_Int);
+        localScanningData2.aF = (localScanningData2.jdField_a_of_type_Float - localScanningData2.jdField_f_of_type_Float * localScanningData2.jdField_g_of_type_Float - localScanningData2.jdField_i_of_type_Float - localScanningData2.aS - aldo.jdField_e_of_type_Int);
         localScanningData2.x = (localScanningData2.aG - localScanningData2.aC);
         localScanningData2.z = (localScanningData2.jdField_b_of_type_Float + localScanningData2.B * localScanningData2.C + localScanningData2.E);
         localScanningData2.A = (localScanningData2.jdField_a_of_type_Float + localScanningData2.B * localScanningData2.C + localScanningData2.E);
@@ -543,7 +543,7 @@ public class ScanningSurfaceView
           break label5760;
         }
         i = 0;
-        j = this.jdField_a_of_type_Alcq.a.a();
+        j = this.jdField_a_of_type_Alcp.a.a();
         if (!localScanningData2.jdField_f_of_type_Boolean) {
           break label5729;
         }
@@ -551,7 +551,7 @@ public class ScanningSurfaceView
         if (j == 3) {
           break label5760;
         }
-        this.jdField_a_of_type_Alcq.a.a(3, localScanningData2.jdField_g_of_type_JavaLangString, localScanningData2.jdField_h_of_type_JavaLangString, new aldr(this, localScanningData2));
+        this.jdField_a_of_type_Alcp.a.a(3, localScanningData2.jdField_g_of_type_JavaLangString, localScanningData2.jdField_h_of_type_JavaLangString, new aldq(this, localScanningData2));
         i = 0;
         if ((localScanningData2.jdField_g_of_type_Boolean) && ((localScanningData2.jdField_a_of_type_Boolean) || (localScanningData2.jdField_c_of_type_Boolean)) && (localScanningData2.jdField_f_of_type_Boolean) && (!localScanningData2.jdField_e_of_type_Boolean) && (localScanningData2.bH > 0.0F))
         {
@@ -568,7 +568,7 @@ public class ScanningSurfaceView
             localScanningData2.bJ = localScanningData2.bI;
             localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap = a(localScanningData2.jdField_b_of_type_AndroidGraphicsBitmap, localScanningData2.bI, localScanningData2.bI);
             if (localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-              localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap, localScanningData2.bI / 2.0F, (int)localScanningData2.bI, (int)localScanningData2.bI);
+              localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a(localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap, localScanningData2.bI / 2.0F, (int)localScanningData2.bI, (int)localScanningData2.bI);
             }
           }
           if (localScanningData2.jdField_a_of_type_AndroidGraphicsBitmap != null) {
@@ -620,7 +620,7 @@ public class ScanningSurfaceView
         k = i;
         if (j != 2)
         {
-          this.jdField_a_of_type_Alcq.a.a(2, localScanningData2.jdField_g_of_type_JavaLangString, false);
+          this.jdField_a_of_type_Alcp.a.a(2, localScanningData2.jdField_g_of_type_JavaLangString, false);
           k = i;
         }
         i = k;
@@ -630,7 +630,7 @@ public class ScanningSurfaceView
     }
     label401:
     label487:
-    this.jdField_a_of_type_Alcq.a.a();
+    this.jdField_a_of_type_Alcp.a.a();
     label517:
     label3023:
     label3292:
@@ -681,7 +681,7 @@ public class ScanningSurfaceView
           b(localMotionEvent.jdField_b_of_type_JavaLangString);
         }
         if (j != 0) {
-          axqw.b(null, "dc00898", "", "", "0X8008356", "0X8008356", 0, 0, "", "", "", "");
+          axqy.b(null, "dc00898", "", "", "0X8008356", "0X8008356", 0, 0, "", "", "", "");
         }
         while (i == 0)
         {
@@ -691,7 +691,7 @@ public class ScanningSurfaceView
           j += 1;
           break label136;
         }
-        axqw.b(null, "dc00898", "", "", "0X800834D", "0X800834D", 0, 0, "", "", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800834D", "0X800834D", 0, 0, "", "", "", "");
         return;
         j = 0;
       }
@@ -788,7 +788,7 @@ public class ScanningSurfaceView
       Intent localIntent = new Intent(getContext(), QQBrowserActivity.class);
       localIntent.putExtra("url", paramString);
       getContext().startActivity(localIntent);
-      axqw.b(null, "dc00898", "", "", "0X800834F", "0X800834F", 0, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", "0X800834F", "0X800834F", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception paramString)
@@ -938,56 +938,56 @@ public class ScanningSurfaceView
     Object localObject2;
     int k;
     Object localObject1;
-    alcl localalcl;
+    alck localalck;
     RectF localRectF;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
       if (a() == null)
       {
         if (this.jdField_a_of_type_JavaUtilList.get(0) != null) {}
-        for (f1 = ((alcl)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Float;; f1 = 0.0F)
+        for (f1 = ((alck)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Float;; f1 = 0.0F)
         {
           i = 1;
           for (j = 0; i < this.jdField_a_of_type_JavaUtilList.size(); j = k)
           {
-            localObject2 = (alcl)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject2 = (alck)this.jdField_a_of_type_JavaUtilList.get(i);
             k = j;
             if (localObject2 != null)
             {
               k = j;
-              if (((alcl)localObject2).jdField_a_of_type_Float > f1) {
+              if (((alck)localObject2).jdField_a_of_type_Float > f1) {
                 k = i;
               }
             }
             if ((localObject2 != null) && (QLog.isColorLevel()))
             {
-              localObject1 = ajyc.a(2131713511);
-              if (!TextUtils.isEmpty(((alcl)localObject2).jdField_a_of_type_JavaLangString)) {
-                localObject1 = ((alcl)localObject2).jdField_a_of_type_JavaLangString;
+              localObject1 = ajya.a(2131713522);
+              if (!TextUtils.isEmpty(((alck)localObject2).jdField_a_of_type_JavaLangString)) {
+                localObject1 = ((alck)localObject2).jdField_a_of_type_JavaLangString;
               }
-              QLog.d("ScanningSurfaceView", 2, "name = " + (String)localObject1 + ",confidence = " + ((alcl)localObject2).jdField_a_of_type_Float + ",faceId = " + ((alcl)localObject2).jdField_a_of_type_Int + ",isTmpFace = " + ((alcl)localObject2).jdField_e_of_type_Boolean);
+              QLog.d("ScanningSurfaceView", 2, "name = " + (String)localObject1 + ",confidence = " + ((alck)localObject2).jdField_a_of_type_Float + ",faceId = " + ((alck)localObject2).jdField_a_of_type_Int + ",isTmpFace = " + ((alck)localObject2).jdField_e_of_type_Boolean);
             }
             i += 1;
           }
         }
-        localObject1 = (alcl)this.jdField_a_of_type_JavaUtilList.get(j);
+        localObject1 = (alck)this.jdField_a_of_type_JavaUtilList.get(j);
         if (localObject1 != null) {
-          ((alcl)localObject1).jdField_a_of_type_Boolean = true;
+          ((alck)localObject1).jdField_a_of_type_Boolean = true;
         }
       }
       j = 0;
       if (j < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localalcl = (alcl)this.jdField_a_of_type_JavaUtilList.get(j);
-        if (localalcl != null)
+        localalck = (alck)this.jdField_a_of_type_JavaUtilList.get(j);
+        if (localalck != null)
         {
-          localRectF = localalcl.a();
+          localRectF = localalck.a();
           i = 0;
           if (i >= this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()) {
             break label1702;
           }
           localObject2 = (ScanningData)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if ((localObject2 != null) && (((ScanningData)localObject2).jdField_f_of_type_Int == localalcl.jdField_a_of_type_Int) && (((ScanningData)localObject2).jdField_e_of_type_Boolean == localalcl.jdField_e_of_type_Boolean)) {
+          if ((localObject2 != null) && (((ScanningData)localObject2).jdField_f_of_type_Int == localalck.jdField_a_of_type_Int) && (((ScanningData)localObject2).jdField_e_of_type_Boolean == localalck.jdField_e_of_type_Boolean)) {
             i = 1;
           }
         }
@@ -997,7 +997,7 @@ public class ScanningSurfaceView
     {
       localObject1 = localObject2;
       k = i;
-      if (!localalcl.jdField_e_of_type_Boolean)
+      if (!localalck.jdField_e_of_type_Boolean)
       {
         localObject1 = localObject2;
         k = i;
@@ -1005,15 +1005,15 @@ public class ScanningSurfaceView
         {
           localObject1 = localObject2;
           k = i;
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localalcl.jdField_a_of_type_Int)))
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localalck.jdField_a_of_type_Int)))
           {
-            localObject2 = (ScanningData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localalcl.jdField_a_of_type_Int));
+            localObject2 = (ScanningData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localalck.jdField_a_of_type_Int));
             localObject1 = localObject2;
             k = i;
             if (localObject2 != null)
             {
               b((ScanningData)localObject2);
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(localalcl.jdField_a_of_type_Int));
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(localalck.jdField_a_of_type_Int));
               k = 1;
               localObject1 = localObject2;
             }
@@ -1023,26 +1023,26 @@ public class ScanningSurfaceView
       label522:
       boolean bool;
       if (k == 0) {
-        if ((localalcl.jdField_a_of_type_Boolean) && (localalcl.jdField_b_of_type_Boolean) && (!localalcl.jdField_e_of_type_Boolean))
+        if ((localalck.jdField_a_of_type_Boolean) && (localalck.jdField_b_of_type_Boolean) && (!localalck.jdField_e_of_type_Boolean))
         {
-          localObject1 = new alda(getContext());
-          ((ScanningData)localObject1).jdField_e_of_type_Boolean = localalcl.jdField_e_of_type_Boolean;
-          ((ScanningData)localObject1).jdField_f_of_type_Int = localalcl.jdField_a_of_type_Int;
-          if (!localalcl.jdField_e_of_type_Boolean)
+          localObject1 = new alcz(getContext());
+          ((ScanningData)localObject1).jdField_e_of_type_Boolean = localalck.jdField_e_of_type_Boolean;
+          ((ScanningData)localObject1).jdField_f_of_type_Int = localalck.jdField_a_of_type_Int;
+          if (!localalck.jdField_e_of_type_Boolean)
           {
-            ((ScanningData)localObject1).jdField_a_of_type_Boolean = localalcl.jdField_a_of_type_Boolean;
+            ((ScanningData)localObject1).jdField_a_of_type_Boolean = localalck.jdField_a_of_type_Boolean;
             if (QLog.isColorLevel()) {
               QLog.d("ScanningSurfaceView", 2, "1=" + ((ScanningData)localObject1).jdField_a_of_type_Boolean);
             }
-            ((ScanningData)localObject1).jdField_d_of_type_JavaLangString = localalcl.jdField_b_of_type_JavaLangString;
-            ((ScanningData)localObject1).jdField_e_of_type_JavaLangString = localalcl.jdField_a_of_type_JavaLangString;
-            ((ScanningData)localObject1).jdField_f_of_type_JavaLangString = localalcl.jdField_c_of_type_JavaLangString;
-            ((ScanningData)localObject1).jdField_b_of_type_JavaLangString = localalcl.jdField_f_of_type_JavaLangString;
-            ((ScanningData)localObject1).jdField_f_of_type_Boolean = localalcl.jdField_b_of_type_Boolean;
-            ((ScanningData)localObject1).jdField_g_of_type_Boolean = localalcl.jdField_c_of_type_Boolean;
+            ((ScanningData)localObject1).jdField_d_of_type_JavaLangString = localalck.jdField_b_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_e_of_type_JavaLangString = localalck.jdField_a_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_f_of_type_JavaLangString = localalck.jdField_c_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_b_of_type_JavaLangString = localalck.jdField_f_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_f_of_type_Boolean = localalck.jdField_b_of_type_Boolean;
+            ((ScanningData)localObject1).jdField_g_of_type_Boolean = localalck.jdField_c_of_type_Boolean;
             ((ScanningData)localObject1).jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-            ((ScanningData)localObject1).jdField_a_of_type_JavaLangString = localalcl.jdField_h_of_type_JavaLangString;
-            ((ScanningData)localObject1).jdField_c_of_type_JavaLangString = localalcl.jdField_g_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_a_of_type_JavaLangString = localalck.jdField_h_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_c_of_type_JavaLangString = localalck.jdField_g_of_type_JavaLangString;
             if ((!((ScanningData)localObject1).jdField_g_of_type_Boolean) || (TextUtils.isEmpty(((ScanningData)localObject1).jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(((ScanningData)localObject1).jdField_a_of_type_JavaLangString))) {
               break label1044;
             }
@@ -1052,8 +1052,8 @@ public class ScanningSurfaceView
             if (!((ScanningData)localObject1).jdField_f_of_type_Boolean) {
               break label1050;
             }
-            ((ScanningData)localObject1).jdField_g_of_type_JavaLangString = localalcl.jdField_d_of_type_JavaLangString;
-            ((ScanningData)localObject1).jdField_h_of_type_JavaLangString = localalcl.jdField_e_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_g_of_type_JavaLangString = localalck.jdField_d_of_type_JavaLangString;
+            ((ScanningData)localObject1).jdField_h_of_type_JavaLangString = localalck.jdField_e_of_type_JavaLangString;
             label751:
             if ((!((ScanningData)localObject1).jdField_d_of_type_Boolean) && (QLog.isColorLevel()))
             {
@@ -1082,13 +1082,13 @@ public class ScanningSurfaceView
               continue;
               i += 1;
               break;
-              localObject1 = new aldt(getContext());
+              localObject1 = new alds(getContext());
               break label522;
               label1044:
               bool = false;
               break label716;
               label1050:
-              localObject2 = akxi.a(getContext()).a();
+              localObject2 = akxh.a(getContext()).a();
               if (localObject2 == null) {
                 break label751;
               }
@@ -1102,7 +1102,7 @@ public class ScanningSurfaceView
           f1 = localRectF.centerX();
           float f2 = localRectF.centerY();
           this.jdField_a_of_type_ComTencentMobileqqArScanningData = ((ScanningData)localObject1);
-          if ((Math.abs(f1 - ((ScanningData)localObject1).jdField_a_of_type_Float) > aldp.jdField_j_of_type_Int) || (Math.abs(f2 - ((ScanningData)localObject1).jdField_b_of_type_Float) > aldp.jdField_j_of_type_Int))
+          if ((Math.abs(f1 - ((ScanningData)localObject1).jdField_a_of_type_Float) > aldo.jdField_j_of_type_Int) || (Math.abs(f2 - ((ScanningData)localObject1).jdField_b_of_type_Float) > aldo.jdField_j_of_type_Int))
           {
             ((ScanningData)localObject1).jdField_a_of_type_Float = f1;
             ((ScanningData)localObject1).jdField_b_of_type_Float = f2;
@@ -1161,8 +1161,8 @@ public class ScanningSurfaceView
           if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
             break label1693;
           }
-          localObject2 = (alcl)this.jdField_a_of_type_JavaUtilList.get(j);
-          if ((localObject2 == null) || (localObject1 == null) || (((ScanningData)localObject1).jdField_f_of_type_Int != ((alcl)localObject2).jdField_a_of_type_Int) || (((ScanningData)localObject1).jdField_e_of_type_Boolean != ((alcl)localObject2).jdField_e_of_type_Boolean)) {}
+          localObject2 = (alck)this.jdField_a_of_type_JavaUtilList.get(j);
+          if ((localObject2 == null) || (localObject1 == null) || (((ScanningData)localObject1).jdField_f_of_type_Int != ((alck)localObject2).jdField_a_of_type_Int) || (((ScanningData)localObject1).jdField_e_of_type_Boolean != ((alck)localObject2).jdField_e_of_type_Boolean)) {}
         }
         label1693:
         for (j = 1;; j = 0)
@@ -1191,8 +1191,8 @@ public class ScanningSurfaceView
             return;
             c();
             QLog.e("ScanningSurfaceView", 1, "lost the face data.");
-          } while (this.jdField_a_of_type_Alcq.a.a() == 0);
-          this.jdField_a_of_type_Alcq.a.a();
+          } while (this.jdField_a_of_type_Alcp.a.a() == 0);
+          this.jdField_a_of_type_Alcp.a.a();
           return;
         }
       }
@@ -1208,13 +1208,13 @@ public class ScanningSurfaceView
     this.jdField_c_of_type_Boolean = false;
     a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    if ((this.jdField_a_of_type_Alcq != null) && (this.jdField_a_of_type_Alcq.a != null) && (this.jdField_a_of_type_Alcq.a.a() != 0)) {
-      this.jdField_a_of_type_Alcq.a.a();
+    if ((this.jdField_a_of_type_Alcp != null) && (this.jdField_a_of_type_Alcp.a != null) && (this.jdField_a_of_type_Alcp.a.a() != 0)) {
+      this.jdField_a_of_type_Alcp.a.a();
     }
     QLog.d("ScanningSurfaceView", 1, "clear the animation and face data.");
   }
   
-  public void setFaceData(List<alcl> paramList)
+  public void setFaceData(List<alck> paramList)
   {
     try
     {

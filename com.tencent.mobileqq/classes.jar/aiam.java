@@ -1,18 +1,22 @@
-public abstract interface aiam
+public class aiam
 {
-  public abstract void Q();
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
   
-  public abstract void R();
+  private aiam()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
   
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
-  
-  public abstract int c();
-  
-  public abstract void d(int paramInt);
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+  }
 }
 
 

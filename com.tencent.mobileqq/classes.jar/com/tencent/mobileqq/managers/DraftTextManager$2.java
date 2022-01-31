@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.managers;
 
-import asei;
-import aukm;
-import aukn;
+import asek;
 import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 
 public class DraftTextManager$2
   implements Runnable
 {
-  public DraftTextManager$2(asei paramasei, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public DraftTextManager$2(asek paramasek, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class DraftTextManager$2
     localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     try
     {
-      ((aukn)localObject3).b((aukm)localObject1);
+      ((aukp)localObject3).b((auko)localObject1);
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ public class DraftTextManager$2
     }
     finally
     {
-      ((aukn)localObject3).a();
+      ((aukp)localObject3).a();
     }
   }
 }

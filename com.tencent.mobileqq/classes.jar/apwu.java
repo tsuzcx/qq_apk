@@ -1,98 +1,118 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
 
-class apwu
-  implements apwv
+public class apwu
 {
-  apwu(apwt paramapwt) {}
+  public static String b;
+  protected int a;
+  protected Object a;
+  protected int b;
+  protected long b;
+  protected Object b;
+  protected int c;
+  protected final long c;
+  protected Object c;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public void a(int paramInt, Bundle paramBundle)
+  static
   {
-    this.a.b(paramInt);
-    if ((apwt.a(this.a) != null) && (paramInt - this.a.g() > 0))
+    jdField_b_of_type_JavaLangString = "UniformDownloaderAssinfo<FileAssistant>";
+  }
+  
+  public apwu(long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangObject = new Object();
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public int a(String paramString, Bundle paramBundle)
+  {
+    if (a()) {
+      return 0;
+    }
+    if ((paramString == null) || (paramBundle == null)) {
+      try
+      {
+        QLog.e(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "]. init param error");
+        return -1;
+      }
+      finally {}
+    }
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramBundle.getString("_PARAM_FILEPATH");
+    this.f = paramBundle.getString("_PARAM_TMP_FILEPATH");
+    this.d = paramBundle.getString("_PARAM_FILENAME");
+    this.jdField_b_of_type_Long = paramBundle.getLong("_PARAM_FILESIZE");
+    this.g = paramBundle.getString("_PARAM_COOKIE");
+    QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] init. ST:" + e() + " PGR:" + h());
+    c(1);
+    return 0;
+  }
+  
+  protected void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.a.a(paramInt);
-      apwt.a(this.a).b(paramInt, paramBundle);
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  protected boolean a()
   {
-    apwt.a(this.a);
-    this.a.c(5);
-    if (apwt.a(this.a) != null) {
-      apwt.a(this.a).a(paramInt, paramString, paramBundle);
+    return e() >= 1;
+  }
+  
+  protected void b(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_Int = paramInt;
+      return;
     }
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  protected void c(int paramInt)
   {
-    apwt.a(this.a);
-    this.a.c(4);
-    if (bbdj.a(this.a.e)) {
-      this.a.e = apue.b(this.a.e);
-    }
-    QLog.i(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. >>>Download SUCCESS.  save file to: =" + this.a.e);
-    int i = 1;
-    long l2;
-    long l1;
-    if (paramBundle != null)
+    synchronized (this.jdField_c_of_type_JavaLangObject)
     {
-      l2 = paramBundle.getLong("EXT_TRANS_SIZE ");
-      l1 = paramBundle.getLong("EXT_TTRANS_SIZE ");
-      i = paramBundle.getInt("EXT_AUTOTRY_COUNT");
+      QLog.i(jdField_b_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] setStatus. " + this.jdField_c_of_type_Int + "->" + paramInt);
+      this.jdField_c_of_type_Int = paramInt;
+      return;
     }
-    for (;;)
+  }
+  
+  public int e()
+  {
+    synchronized (this.jdField_c_of_type_JavaLangObject)
     {
-      if (!bbdj.b(new File(this.a.f), new File(this.a.e)))
-      {
-        QLog.e(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed.temppath=" + this.a.f + " path=" + this.a.e);
-        this.a.c(5);
-        paramString = apwh.a(7);
-        QQAppInterface localQQAppInterface = apcy.a().a();
-        if (localQQAppInterface != null)
-        {
-          apue.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          apue.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          axrk.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-          if (apwt.a(this.a) != null) {
-            apwt.a(this.a).a(7, paramString, paramBundle);
-          }
-        }
-      }
-      for (;;)
-      {
-        return;
-        QLog.w(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 5");
-        break;
-        apvz.a().a(this.a.jdField_c_of_type_JavaLangString);
-        paramString = apcy.a().a();
-        if (paramString != null)
-        {
-          apue.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          apue.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          axrk.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_1");
-        }
-        while (apwt.a(this.a) != null)
-        {
-          l1 = paramLong;
-          if (this.a.b > 0L)
-          {
-            l1 = paramLong;
-            if (paramLong <= 0L) {
-              l1 = this.a.b;
-            }
-          }
-          apwt.a(this.a).a(this.a.e, l1, paramBundle);
-          return;
-          QLog.i(apwt.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 0");
-        }
-      }
-      l1 = paramLong;
-      l2 = paramLong;
+      int i = this.jdField_c_of_type_Int;
+      return i;
+    }
+  }
+  
+  protected int g()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      int i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public int h()
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      int i = this.jdField_b_of_type_Int;
+      return i;
     }
   }
 }

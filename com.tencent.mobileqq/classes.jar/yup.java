@@ -1,15 +1,40 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-class yup
-  implements EIPCResultCallback
+final class yup
+  extends QIPCModule
 {
-  yup(yuo paramyuo) {}
+  private static volatile yup a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private yup(String paramString)
   {
-    yxs.b("GdtInterstitialPreDownloader", "preDownloadOnMainProcess onCallback");
-    paramEIPCResult.code = 0;
+    super(paramString);
+  }
+  
+  public static yup a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new yup("gdt_server_ipc");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    yxp.b("GdtInterstitialPreDownloader", String.format("onCall action:%s", new Object[] { paramString }));
+    if (TextUtils.equals(paramString, "PRELOAD_INTERSTITIAL_MAIN_TO_TOOL")) {
+      yul.b(yul.a());
+    }
+    paramString = new EIPCResult();
+    paramString.code = 0;
+    return paramString;
   }
 }
 

@@ -1,27 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bjpu
-  extends AnimatorListenerAdapter
+class bjpu
+  implements DialogInterface.OnClickListener
 {
-  public bjpu(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  bjpu(bjpq parambjpq) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView 50ms end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.setStatus(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation mProgressView begin");
-    }
+    this.a.a.a(2);
   }
 }
 

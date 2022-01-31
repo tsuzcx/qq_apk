@@ -1,20 +1,13 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import mqq.util.WeakReference;
-
 class agtg
-  implements aptu
+  implements bcwm
 {
-  agtg(agtf paramagtf) {}
+  agtg(agta paramagta, Runnable paramRunnable) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.a.h();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).b.setClickable(true);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

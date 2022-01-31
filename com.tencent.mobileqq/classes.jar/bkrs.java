@@ -1,20 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class bkrs
+  extends bkru
 {
-  public int a;
-  public Bitmap a;
-  
-  protected void finalize()
+  public void a()
   {
-    super.finalize();
-    if ((this.a != null) && (!this.a.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Frames", 2, "recycle bitmap");
-      }
-      this.a.recycle();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.d();
     }
   }
 }

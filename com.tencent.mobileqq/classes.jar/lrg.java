@@ -1,164 +1,71 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.util.Log;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.model.SizeI;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.libpag.PAGComposition;
-import org.libpag.PAGFile;
-import org.libpag.PAGImage;
-import org.libpag.PAGLayer;
-import org.libpag.PAGRenderer;
-import org.libpag.PAGSurface;
 
 public class lrg
-  extends lrh
 {
-  private int jdField_a_of_type_Int = 720;
-  private long jdField_a_of_type_Long;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  private final String jdField_a_of_type_JavaLangString = "PAGFilter-" + Integer.toHexString(hashCode());
-  private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
-  private PAGRenderer jdField_a_of_type_OrgLibpagPAGRenderer;
-  private PAGSurface jdField_a_of_type_OrgLibpagPAGSurface;
-  private int jdField_b_of_type_Int = 1280;
-  private long jdField_b_of_type_Long;
+  private int jdField_a_of_type_Int;
+  public Frame a;
+  private String jdField_a_of_type_JavaLangString = "RefFrame-" + Integer.toHexString(hashCode());
+  public List<lrh> a;
   
-  public lrg(int paramInt1, int paramInt2)
+  private lrg(Frame paramFrame)
   {
-    super(1);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
   }
   
-  private void d()
+  private lrg(Frame paramFrame, List<lrh> paramList)
   {
-    if (this.jdField_a_of_type_OrgLibpagPAGFile != null)
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public static lrg a(Frame paramFrame)
+  {
+    return new lrg(paramFrame);
+  }
+  
+  public static lrg a(Frame paramFrame, List<lrh> paramList)
+  {
+    return new lrg(paramFrame, paramList);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.unlock();
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Int == 0)
     {
-      if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
-      {
-        this.jdField_a_of_type_OrgLibpagPAGSurface.release();
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
-        this.jdField_a_of_type_OrgLibpagPAGSurface = null;
-      }
-      if (this.jdField_a_of_type_OrgLibpagPAGRenderer == null) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "applyPag: not inited yet");
-      }
-    }
-    else
-    {
+      b();
       return;
     }
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
-    this.jdField_a_of_type_OrgLibpagPAGSurface = PAGSurface.FromTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: create surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()));
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(this.jdField_a_of_type_OrgLibpagPAGSurface);
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_OrgLibpagPAGFile.duration() / 1000L);
+    b(1);
   }
   
-  @NotNull
-  protected Frame a(List<lrl> paramList, long paramLong)
+  public void a(int paramInt)
   {
-    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_b_of_type_Long > paramLong)) {
-      this.jdField_b_of_type_Long = paramLong;
-    }
-    int j = Math.min(this.jdField_a_of_type_OrgLibpagPAGFile.numImages(), paramList.size());
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = ((lrl)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-      localObject = PAGImage.FromTexture(((Frame)localObject).getTextureId(), 3553, ((Frame)localObject).width, ((Frame)localObject).height, true);
-      if (localObject != null)
-      {
-        ((PAGImage)localObject).setScaleMode(3);
-        this.jdField_a_of_type_OrgLibpagPAGRenderer.replaceImage(i, (PAGImage)localObject);
-      }
-      i += 1;
-    }
-    double d = (paramLong - this.jdField_b_of_type_Long) % this.jdField_a_of_type_Long / this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.setProgress(d);
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.flush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    this.jdField_a_of_type_Int += paramInt;
   }
   
-  public SizeI a()
+  public boolean a()
   {
-    return new SizeI(this.jdField_a_of_type_OrgLibpagPAGFile.width(), this.jdField_a_of_type_OrgLibpagPAGFile.height());
+    return (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty());
   }
   
-  public List<Pair<RectF, Matrix>> a()
+  void b(int paramInt)
   {
-    int k = 0;
-    PAGComposition localPAGComposition = this.jdField_a_of_type_OrgLibpagPAGRenderer.getRootComposition();
-    int n = this.jdField_a_of_type_OrgLibpagPAGFile.numImages();
-    int m = localPAGComposition.numLayers();
-    ArrayList localArrayList = new ArrayList(n);
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= n) {
-        break;
-      }
-      localArrayList.add(null);
-      i += 1;
+    if (paramInt > this.jdField_a_of_type_Int) {
+      Log.e(this.jdField_a_of_type_JavaLangString, "unlock: count=" + paramInt + ", ref=" + this.jdField_a_of_type_Int);
     }
-    while (j < m)
+    do
     {
-      PAGLayer localPAGLayer = localPAGComposition.getLayerAt(j);
-      if (localPAGLayer.layerType() == 5) {
-        localArrayList.set(localPAGLayer.editableIndex(), new Pair(localPAGLayer.getBounds(), localPAGLayer.getTotalMatrix()));
-      }
-      j += 1;
-    }
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit");
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == null)
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(-1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0.0D);
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()));
-    }
-    this.jdField_a_of_type_OrgLibpagPAGRenderer = new PAGRenderer();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create render#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGRenderer.hashCode()));
-    d();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_OrgLibpagPAGFile = PAGFile.Load(paramString);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString + " loaded, width=" + this.jdField_a_of_type_OrgLibpagPAGFile.width() + ", height=" + this.jdField_a_of_type_OrgLibpagPAGFile.height());
-    d();
-  }
-  
-  protected void b()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy");
-    if (this.jdField_a_of_type_OrgLibpagPAGRenderer != null)
-    {
-      this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(null);
-      this.jdField_a_of_type_OrgLibpagPAGRenderer = null;
-    }
-    if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
-    {
-      this.jdField_a_of_type_OrgLibpagPAGSurface.release();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
-      this.jdField_a_of_type_OrgLibpagPAGSurface = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null)
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()) + " cleared");
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
-    }
+      return;
+      this.jdField_a_of_type_Int -= paramInt;
+    } while (this.jdField_a_of_type_Int != 0);
+    b();
   }
 }
 

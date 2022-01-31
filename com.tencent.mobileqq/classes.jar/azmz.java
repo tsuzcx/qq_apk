@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 class azmz
-  extends aznf
+  implements Animation.AnimationListener
 {
-  azmz(azmy paramazmy) {}
+  azmz(azmw paramazmw, boolean paramBoolean) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.a.a.this$0.a) {}
-    do
+    if (azmw.a(this.jdField_a_of_type_Azmw) != null)
     {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    azmu.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+      azmw.a(this.jdField_a_of_type_Azmw).a.clearAnimation();
+      azmw.a(this.jdField_a_of_type_Azmw).a.setVisibility(8);
+    }
+    azmw.a(this.jdField_a_of_type_Azmw, false);
+    azmw.a(this.jdField_a_of_type_Azmw, null);
+    azmw.a(this.jdField_a_of_type_Azmw, null);
+    azmw.a(this.jdField_a_of_type_Azmw, -1);
+    if ((!this.jdField_a_of_type_Boolean) && (!azmw.b(this.jdField_a_of_type_Azmw)))
+    {
+      ThreadManager.getUIHandler().post(azmw.a(this.jdField_a_of_type_Azmw));
+      azmw.b(this.jdField_a_of_type_Azmw, true);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

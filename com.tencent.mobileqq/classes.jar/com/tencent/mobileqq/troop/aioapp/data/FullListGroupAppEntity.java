@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.troop.aioapp.data;
 
-import aukm;
-import aulx;
-import azjv;
+import auko;
+import aulz;
+import azjx;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FullListGroupAppEntity
-  extends aukm
+  extends auko
 {
   private static final String TAG = "FullListGroupAppEntity";
-  @aulx
+  @aulz
   public List<TroopAIOAppInfo> troopAIOAppInfos = new ArrayList(20);
   public byte[] troopAIOAppInfosData;
   
   public void postRead()
   {
     super.postRead();
-    Object localObject = azjv.a(this.troopAIOAppInfosData);
+    Object localObject = azjx.a(this.troopAIOAppInfosData);
     if (localObject != null) {}
     try
     {
@@ -36,7 +36,7 @@ public class FullListGroupAppEntity
   public void prewrite()
   {
     super.prewrite();
-    this.troopAIOAppInfosData = azjv.a(this.troopAIOAppInfos);
+    this.troopAIOAppInfosData = azjx.a(this.troopAIOAppInfos);
   }
 }
 

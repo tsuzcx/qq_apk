@@ -1,17 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.net.Uri;
 
-public class augu
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface augu
 {
-  public augu(ScanIconAnimateView paramScanIconAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void a(Uri paramUri);
 }
 
 

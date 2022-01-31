@@ -1,105 +1,168 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.1;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class azpe
+  implements baic
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  azpe(azpc paramazpc) {}
   
-  public azpe()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public static azpe a(QQAppInterface paramQQAppInterface, String paramString, JSONObject paramJSONObject)
-  {
-    boolean bool2 = true;
-    if ((paramJSONObject == null) || (!paramJSONObject.has("msg"))) {}
-    azpe localazpe;
-    JSONObject localJSONObject;
-    do
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      do
+      try
       {
-        return null;
-        localazpe = new azpe();
-        localazpe.jdField_a_of_type_JavaLangString = paramJSONObject.optString("fid");
-        localJSONObject = paramJSONObject.optJSONObject("msg");
-      } while (localJSONObject == null);
-      localazpe.jdField_c_of_type_JavaLangString = localJSONObject.optString("text_face");
-      if (localazpe.jdField_c_of_type_JavaLangString != null) {
-        localazpe.jdField_c_of_type_JavaLangString = localazpe.jdField_c_of_type_JavaLangString.replace("&#10;", "<br/>");
+        if (paramJSONObject.optInt("retcode") == 0) {
+          break label723;
+        }
+        i = paramJSONObject.optInt("ec");
+        if (i == 0) {
+          break label723;
+        }
+        i = 0;
+        if (i == 0)
+        {
+          if ((paramInt == 1000) || (paramInt == 1002))
+          {
+            azpc.e(this.a);
+            this.a.notifyObservers(Integer.valueOf(103));
+            if (paramInt == 1002) {
+              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
+          }
+          return;
+        }
       }
-      localazpe.jdField_b_of_type_JavaLangString = localJSONObject.optString("title");
-      if (localazpe.jdField_b_of_type_JavaLangString != null) {
-        localazpe.jdField_b_of_type_JavaLangString = localazpe.jdField_b_of_type_JavaLangString.replace("&#10;", "<br/>");
-      }
-    } while ((localazpe.jdField_b_of_type_JavaLangString == null) || (localazpe.jdField_c_of_type_JavaLangString == null));
-    localazpe.i = paramJSONObject.optString("fid");
-    Object localObject = localJSONObject.optJSONArray("pics");
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-    {
-      localObject = ((JSONArray)localObject).optJSONObject(0);
-      if (localObject != null)
+      catch (Exception paramBundle)
       {
-        localazpe.d = ("http://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/628");
-        localazpe.e = ("http://gdynamic.qpic.cn/gdynamic/" + ((JSONObject)localObject).optString("id") + "/");
+        paramBundle = paramBundle;
+        paramBundle.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
+        }
+        if (paramInt == 1000)
+        {
+          ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.1(this, paramJSONObject));
+          return;
+        }
       }
-    }
-    localObject = paramJSONObject.optJSONObject("settings");
-    if (localObject != null)
-    {
-      if (((JSONObject)localObject).optInt("is_show_edit_card", 0) != 1) {
-        break label424;
-      }
-      bool1 = true;
-      localazpe.jdField_a_of_type_Boolean = bool1;
-      if (((JSONObject)localObject).optInt("tip_window_type", 0) != 0) {
-        break label429;
-      }
-      bool1 = true;
-      label303:
-      localazpe.jdField_b_of_type_Boolean = bool1;
-      if (((JSONObject)localObject).optInt("confirm_required", 0) != 1) {
-        break label434;
-      }
-    }
-    label424:
-    label429:
-    label434:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localazpe.jdField_c_of_type_Boolean = bool1;
-      if (localJSONObject.has("v"))
+      finally {}
+      if (paramInt == 1002)
       {
-        localJSONObject = localJSONObject.optJSONObject("v");
-        localazpe.f = localJSONObject.optString("l");
-        localazpe.d = localJSONObject.optString("bi");
+        ThreadManager.getSubThreadHandler().post(new TroopFeedsDataManager.3.2(this, paramJSONObject));
+        return;
       }
-      localazpe.g = paramJSONObject.optString("u");
-      localazpe.h = bbcl.h(paramQQAppInterface, paramString, localazpe.g);
-      localazpe.jdField_a_of_type_Long = paramJSONObject.optLong("pubt");
-      localazpe.jdField_b_of_type_Int = paramJSONObject.optInt("read_num");
-      return localazpe;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label303;
+      if (paramInt == 1007)
+      {
+        this.a.b = paramJSONObject;
+        azpc.f(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_TROOP_NOTICE, msg = NOTIFY_REMIND_NOTICE");
+        }
+        this.a.notifyObservers(Integer.valueOf(1011));
+        return;
+      }
+      Object localObject;
+      JSONObject localJSONObject;
+      if ((paramInt == 1004) || (paramInt == 1003))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "cgi return. requestCode: GET_NOR_NOTICE");
+        }
+        localObject = paramJSONObject.optJSONArray("feeds");
+        paramBundle = paramJSONObject.optJSONArray("inst");
+        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
+        {
+          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
+          this.a.b = localJSONObject;
+          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
+          paramInt = 1;
+        }
+      }
+      for (;;)
+      {
+        i = paramInt;
+        if (paramBundle != null)
+        {
+          i = paramInt;
+          if (paramBundle.length() > 0)
+          {
+            paramBundle = paramBundle.optJSONObject(0);
+            long l2 = paramBundle.optLong("pubt");
+            long l1 = 0L;
+            if (this.a.b != null) {
+              l1 = this.a.b.optLong("pubt");
+            }
+            i = paramInt;
+            if (l2 > l1)
+            {
+              this.a.b = paramBundle;
+              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
+              i = 1;
+            }
+          }
+        }
+        if (i != 0)
+        {
+          azpc.g(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFeedsDataManager", 2, "cgi return. NOTIFY_NOR_NOTICE");
+          }
+          this.a.notifyObservers(Integer.valueOf(1007));
+          return;
+          if ((localObject != null) && (((JSONArray)localObject).length() == 2))
+          {
+            localJSONObject = ((JSONArray)localObject).optJSONObject(0);
+            localObject = ((JSONArray)localObject).optJSONObject(1);
+            if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
+              this.a.b = localJSONObject;
+            }
+            for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
+            {
+              paramInt = 1;
+              break;
+              this.a.b = ((JSONObject)localObject);
+            }
+          }
+        }
+        else
+        {
+          azpc.h(this.a);
+          this.a.notifyObservers(Integer.valueOf(1012));
+          return;
+          if ((paramInt != 1005) && (paramInt != 1006)) {
+            break;
+          }
+          paramJSONObject = azot.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramBundle = (List)paramJSONObject[0];
+          paramJSONObject = (List)paramJSONObject[1];
+          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
+          azpc.i(this.a);
+          if (paramInt == 1005)
+          {
+            this.a.notifyObservers(Integer.valueOf(1008));
+            return;
+          }
+          this.a.notifyObservers(Integer.valueOf(1009));
+          return;
+        }
+        paramInt = 0;
+      }
+      label723:
+      int i = 1;
     }
   }
 }

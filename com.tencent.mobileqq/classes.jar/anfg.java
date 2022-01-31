@@ -1,6 +1,21 @@
+import android.os.Handler;
+
 class anfg
+  implements mxl
 {
-  private static final anfe a = new anfe(null);
+  anfg(anfe paramanfe, mxk[] paramArrayOfmxk) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (!paramBoolean)
+    {
+      anfe.a(this.jdField_a_of_type_Anfe).removeCallbacks(anfe.a(this.jdField_a_of_type_Anfe));
+      anfe.a(this.jdField_a_of_type_Anfe).run();
+      if (this.jdField_a_of_type_ArrayOfMxk[0] != null) {
+        this.jdField_a_of_type_ArrayOfMxk[0].a();
+      }
+    }
+  }
 }
 
 

@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import org.json.JSONObject;
 
 public class xch
 {
   public int a;
   public String a;
+  public int b;
   public String b;
+  public int c;
   public String c;
   
-  public xch(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
+  public xch(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
-    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
-    this.b = paramEmptyPackagePage.jump_wording.get();
-    this.c = paramEmptyPackagePage.jump_url.get();
+    if (paramJSONObject.has("title")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    }
+    if (paramJSONObject.has("tabID")) {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    }
+    if (paramJSONObject.has("icon")) {
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    }
+    if (paramJSONObject.has("jumpUrl")) {
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    }
+    if (paramJSONObject.has("width")) {
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    }
+    if (paramJSONObject.has("height")) {
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    }
   }
 }
 

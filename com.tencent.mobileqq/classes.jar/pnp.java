@@ -1,8 +1,15 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public abstract interface pnp
+class pnp
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  pnp(pno parampno) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+  }
 }
 
 

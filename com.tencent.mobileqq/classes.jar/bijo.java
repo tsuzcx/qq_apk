@@ -1,15 +1,16 @@
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+
 public class bijo
 {
-  private static bijp a;
-  
-  public static bijp a()
+  public static bjox a(@NonNull bjpc parambjpc)
   {
-    return a;
+    return new bjox(parambjpc, bjoy.a(BaseApplicationImpl.getApplication()));
   }
   
-  public static void a(bijp parambijp)
+  public static bjox a(@NonNull bjpc parambjpc, bjoz parambjoz)
   {
-    a = parambijp;
+    return new bjox(parambjpc, parambjoz);
   }
 }
 

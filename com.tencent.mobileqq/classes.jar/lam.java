@@ -1,139 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.io.IOException;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpResponseException;
-import org.apache.http.entity.BufferedHttpEntity;
-import org.apache.http.util.EntityUtils;
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
 public class lam
+  implements lbm
 {
-  private Handler a;
+  public lam(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, aeck paramaeck, String paramString2, Language paramLanguage, lbl paramlbl, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  public lam()
+  public void a(TranslateError paramTranslateError, Long paramLong)
   {
-    if (Looper.myLooper() != null) {
-      this.a = new lan(this);
-    }
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aeck, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbl, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
   }
   
-  protected Message a(int paramInt, Object paramObject)
+  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
   {
-    if (this.a != null) {
-      return this.a.obtainMessage(paramInt, paramObject);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = paramInt;
-    localMessage.obj = paramObject;
-    return localMessage;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString) {}
-  
-  protected void a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      paramMessage = (Object[])paramMessage.obj;
-      c(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], (String)paramMessage[2]);
-      return;
-    case 1: 
-      paramMessage = (Object[])paramMessage.obj;
-      c((Throwable)paramMessage[0], (String)paramMessage[1]);
-      return;
-    case 2: 
-      a();
-      return;
-    }
-    b();
-  }
-  
-  public void a(Throwable paramThrowable, String paramString) {}
-  
-  public void a(Throwable paramThrowable, byte[] paramArrayOfByte)
-  {
-    b(a(1, new Object[] { paramThrowable, paramArrayOfByte }));
-  }
-  
-  public void a(HttpResponse paramHttpResponse)
-  {
-    Object localObject3 = null;
-    StatusLine localStatusLine = paramHttpResponse.getStatusLine();
-    try
-    {
-      HttpEntity localHttpEntity = paramHttpResponse.getEntity();
-      localObject1 = localObject3;
-      if (localHttpEntity != null) {
-        localObject1 = EntityUtils.toString(new BufferedHttpEntity(localHttpEntity), "UTF-8");
-      }
-    }
-    catch (IOException localIOException)
-    {
-      Object localObject2;
-      for (;;)
-      {
-        Object localObject1;
-        b(localIOException, (String)null);
-        localObject2 = localObject3;
-      }
-      b(localStatusLine.getStatusCode(), paramHttpResponse.getAllHeaders(), localObject2);
-    }
-    if (localStatusLine.getStatusCode() >= 300)
-    {
-      b(new HttpResponseException(localStatusLine.getStatusCode(), localStatusLine.getReasonPhrase()), (String)localObject1);
-      return;
-    }
-  }
-  
-  public void b() {}
-  
-  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
-  {
-    b(a(0, new Object[] { new Integer(paramInt), paramArrayOfHeader, paramString }));
-  }
-  
-  protected void b(Message paramMessage)
-  {
-    if (this.a != null)
-    {
-      this.a.sendMessage(paramMessage);
-      return;
-    }
-    a(paramMessage);
-  }
-  
-  public void b(Throwable paramThrowable, String paramString)
-  {
-    b(a(1, new Object[] { paramThrowable, paramString }));
-  }
-  
-  public void c()
-  {
-    b(a(2, null));
-  }
-  
-  protected void c(int paramInt, Header[] paramArrayOfHeader, String paramString)
-  {
-    a(paramInt, paramArrayOfHeader, paramString);
-  }
-  
-  protected void c(Throwable paramThrowable, String paramString)
-  {
-    a(paramThrowable, paramString);
-  }
-  
-  public void d()
-  {
-    b(a(3, null));
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aeck, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbl, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 

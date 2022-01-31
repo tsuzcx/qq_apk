@@ -1,66 +1,33 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import java.util.HashMap;
 
-class bjff
-  implements aysa
+final class bjff
+  implements URLDrawable.URLDrawableListener
 {
-  bjff(bjfe parambjfe) {}
+  bjff(String paramString1, String paramString2, bkgj parambkgj, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bjcu parambjcu, int paramInt3) {}
   
-  public void onResp(aysx paramaysx)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    bkfm localbkfm = (bkfm)paramaysx.a.a();
-    String str1 = localbkfm.e;
+    bjfe.a.remove(this.jdField_b_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "onResp ,url is :" + str1 + " http status:" + paramaysx.c);
+      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
     }
-    Object localObject;
-    String str2;
-    if (paramaysx.c == 200)
-    {
-      localObject = bjfa.a(localbkfm);
-      QLog.d("QIMInformationPasterManager", 1, "info paster path:" + (String)localObject);
-      str2 = bbdj.c((String)localObject);
-      if ((localbkfm.f == null) || (!localbkfm.f.equalsIgnoreCase(str2))) {}
-    }
-    for (boolean bool = bjfe.a(this.a).c(localbkfm);; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "onResp:" + paramaysx.c + ",isSuccess:" + bool);
-      }
-      paramaysx = ((ArrayList)bjfe.a(this.a).get(str1)).iterator();
-      while (paramaysx.hasNext())
-      {
-        localObject = (WeakReference)paramaysx.next();
-        if (((WeakReference)localObject).get() != null) {
-          ((bjfd)((WeakReference)localObject).get()).a(bool, str1, localbkfm);
-        }
-      }
-      bbdj.a((String)localObject, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "info paster res md5 error, res md5:" + localbkfm.f + ",file md5:" + str2);
-      }
-    }
-    bjfe.a(this.a).remove(str1);
   }
   
-  public void onUpdateProgeress(aysw arg1, long paramLong1, long paramLong2)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    String str = ((bkfm)???.a()).e;
-    float f = (float)(100L * paramLong1 / paramLong2);
-    synchronized (bjfe.a(this.a))
-    {
-      Iterator localIterator = ((ArrayList)bjfe.a(this.a).get(str)).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((bjfd)localWeakReference.get()).a(f, str, 0);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
     }
+    bjfe.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bkgj, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_Bjcu, this.jdField_c_of_type_Int);
+    bjfe.a.remove(this.jdField_b_of_type_JavaLangString);
   }
 }
 

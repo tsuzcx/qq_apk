@@ -1,53 +1,22 @@
-import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import android.view.View.OnTouchListener;
 
-public class atmq
-  implements GestureDetector.OnDoubleTapListener
+class atmq
+  implements View.OnTouchListener
 {
-  atmq(atlu paramatlu) {}
+  atmq(atlw paramatlw) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (System.currentTimeMillis() - atlu.a(this.a) >= 500L)
-    {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
-        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178)).a(i, j);
-      }
-      if (!atlu.a(this.a)) {
-        break label98;
-      }
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131370403).setAlpha(0.5F);
     }
     for (;;)
     {
-      atlu.a(this.a, System.currentTimeMillis());
-      return true;
-      label98:
-      if ((!atlu.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178).getVisibility() == 0))
-      {
-        atlu.a(this.a, false);
-        this.a.c(null);
-        new ativ().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (aszd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-      }
+      return false;
+      this.a.a.findViewById(2131370403).setAlpha(1.0F);
     }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
   }
 }
 

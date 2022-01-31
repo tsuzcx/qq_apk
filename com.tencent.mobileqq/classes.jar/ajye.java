@@ -1,13 +1,22 @@
+import com.tencent.mobileqq.data.HotChatItemData;
+import java.util.Comparator;
+
 class ajye
-  implements ajvb
+  implements Comparator<HotChatItemData>
 {
   ajye(ajyd paramajyd) {}
   
-  public void a(boolean paramBoolean)
+  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
   {
-    if (paramBoolean) {
-      this.a.a();
+    long l1 = paramHotChatItemData1.mMakeTopTime;
+    long l2 = paramHotChatItemData2.mMakeTopTime;
+    if (l1 < l2) {
+      return 1;
     }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

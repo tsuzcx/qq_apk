@@ -1,36 +1,83 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class amdc
-  implements bfoq
+public class amdc
+  implements baic
 {
-  amdc(amdb paramamdb, Context paramContext, bfol parambfol) {}
+  public amdc(WordMatchManager paramWordMatchManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramJSONObject != null) {}
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      do
+      int j = paramJSONObject.getInt("retcode");
+      if (j != 0) {
+        i = 0;
+      }
+      if (i == 0)
       {
+        if (QLog.isColorLevel()) {
+          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
+        }
+        this.a.a(false);
         return;
-        paramView = this.jdField_a_of_type_Amdb.b + this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangString;
-      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if ((this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        axqw.b((QQAppInterface)this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Amdb.jdField_a_of_type_JavaLangString, "");
       }
     }
+    catch (JSONException paramBundle)
+    {
+      paramBundle = paramBundle;
+      paramBundle.printStackTrace();
+      paramBundle = new amdd();
+      try
+      {
+        if (paramJSONObject.has("result"))
+        {
+          paramJSONObject = paramJSONObject.getJSONObject("result");
+          if (paramJSONObject.has("id")) {
+            paramBundle.c = paramJSONObject.getString("id");
+          }
+          if (paramJSONObject.has("md5")) {
+            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
+          }
+          if (paramJSONObject.has("type")) {
+            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
+          }
+          if (paramJSONObject.has("need_flag")) {
+            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
+          }
+          if (paramJSONObject.has("delay")) {
+            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
+          }
+          if (paramJSONObject.has("base_md5")) {
+            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
+          }
+        }
+        this.a.a(paramBundle);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
+      }
+      if (paramBundle.jdField_a_of_type_Int != paramInt)
+      {
+        this.a.a(false);
+        return;
+      }
+    }
+    finally {}
   }
 }
 

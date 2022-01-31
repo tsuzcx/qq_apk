@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -18,11 +18,11 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import arsl;
-import arsm;
 import arsn;
 import arso;
-import aywk;
+import arsp;
+import arsq;
+import aywm;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
@@ -39,7 +39,7 @@ public class FloatIconLayout
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  DownloadParams.DecodeHandler jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new arsm(this);
+  DownloadParams.DecodeHandler jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new arso(this);
   URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   String jdField_a_of_type_JavaLangString;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -72,7 +72,7 @@ public class FloatIconLayout
     }
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { f1, paramFloat });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration((Math.abs(paramFloat - f1) * 200.0F / 28.0F));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new arsl(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new arsn(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -93,8 +93,8 @@ public class FloatIconLayout
       int i = this.jdField_d_of_type_Int;
       paramString.mRequestWidth = i;
       paramString.mRequestHeight = i;
-      paramString.mFailedDrawable = aywk.a;
-      paramString.mLoadingDrawable = aywk.a;
+      paramString.mFailedDrawable = aywm.a;
+      paramString.mLoadingDrawable = aywm.a;
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
       {
         this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
@@ -118,21 +118,21 @@ public class FloatIconLayout
   
   private void f()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131560623, null);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131560622, null);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131367701));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364275));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370561));
-    this.c = ((ImageView)((View)localObject).findViewById(2131370562));
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131375519);
-    this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131370582);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364274));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370560));
+    this.c = ((ImageView)((View)localObject).findViewById(2131370561));
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131375521);
+    this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131370581);
     addView((View)localObject, new FrameLayout.LayoutParams(-2, -2));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131704622));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131704623));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131704633));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131704634));
     this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297158));
     this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131297157));
-    this.jdField_d_of_type_Int = actn.a(40.0F, getResources());
+    this.jdField_d_of_type_Int = actj.a(40.0F, getResources());
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
@@ -141,14 +141,14 @@ public class FloatIconLayout
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(10000L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_a_of_type_AndroidViewView.setPivotX(actn.a(40.0F, getResources()) / 2);
-    this.jdField_a_of_type_AndroidViewView.setPivotY(actn.a(40.0F, getResources()) / 2);
+    this.jdField_a_of_type_AndroidViewView.setPivotX(actj.a(40.0F, getResources()) / 2);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(actj.a(40.0F, getResources()) / 2);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
     this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
-    this.jdField_b_of_type_AndroidViewView.setPivotX(actn.a(20.0F, getResources()));
-    this.jdField_b_of_type_AndroidViewView.setPivotY(actn.a(3.0F, getResources()));
+    this.jdField_b_of_type_AndroidViewView.setPivotX(actj.a(20.0F, getResources()));
+    this.jdField_b_of_type_AndroidViewView.setPivotY(actj.a(3.0F, getResources()));
     this.jdField_b_of_type_AndroidViewView.setRotation(-28.0F);
     this.f = 0.0F;
     h();
@@ -190,31 +190,31 @@ public class FloatIconLayout
     this.c.setVisibility(0);
   }
   
-  public int a(arso paramarso)
+  public int a(arsq paramarsq)
   {
-    return paramarso.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
+    return paramarsq.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
   }
   
-  public void a(arso paramarso)
+  public void a(arsq paramarsq)
   {
-    if (paramarso == null) {
+    if (paramarsq == null) {
       return;
     }
-    if ((paramarso.f) && (!paramarso.g) && (paramarso.jdField_c_of_type_Boolean)) {
-      a(paramarso.jdField_a_of_type_JavaLangString);
+    if ((paramarsq.f) && (!paramarsq.g) && (paramarsq.jdField_c_of_type_Boolean)) {
+      a(paramarsq.jdField_a_of_type_JavaLangString);
     }
-    paramarso.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-    paramarso.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
+    paramarsq.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+    paramarsq.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
   }
   
-  public boolean a(arso paramarso)
+  public boolean a(arsq paramarsq)
   {
     boolean bool1 = true;
-    if (paramarso == null) {
+    if (paramarsq == null) {
       return false;
     }
     boolean bool2 = c();
-    if ((paramarso.f) && (!paramarso.g) && (paramarso.jdField_c_of_type_Boolean)) {
+    if ((paramarsq.f) && (!paramarsq.g) && (paramarsq.jdField_c_of_type_Boolean)) {
       if (a()) {}
     }
     for (;;)
@@ -231,9 +231,9 @@ public class FloatIconLayout
     }
   }
   
-  public int b(arso paramarso)
+  public int b(arsq paramarsq)
   {
-    return paramarso.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
+    return paramarsq.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
   }
   
   public void b()
@@ -317,11 +317,11 @@ public class FloatIconLayout
       do
       {
         return;
-      } while (this.jdField_a_of_type_Arsn == null);
-      this.jdField_a_of_type_Arsn.d();
+      } while (this.jdField_a_of_type_Arsp == null);
+      this.jdField_a_of_type_Arsp.d();
       return;
-    } while (this.jdField_a_of_type_Arsn == null);
-    this.jdField_a_of_type_Arsn.c();
+    } while (this.jdField_a_of_type_Arsp == null);
+    this.jdField_a_of_type_Arsp.c();
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable) {}

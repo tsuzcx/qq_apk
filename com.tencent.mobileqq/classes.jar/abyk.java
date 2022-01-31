@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import mqq.os.MqqHandler;
 
 public class abyk
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public abyk(RegisterActivity paramRegisterActivity) {}
+  public abyk(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

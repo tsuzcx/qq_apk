@@ -1,55 +1,129 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.os.Bundle;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
 public class nhr
-  implements bfoq
+  implements BusinessObserver
 {
   public nhr(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.p) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "success:" + String.valueOf(paramBoolean));
     }
-    this.a.p = true;
-    switch (paramInt)
-    {
+    if (!paramBoolean) {
+      if (this.a.jdField_c_of_type_Boolean)
+      {
+        if (this.a.jdField_a_of_type_Nea == null) {
+          break label112;
+        }
+        this.a.jdField_a_of_type_Nea.b(false);
+        this.a.jdField_a_of_type_Nea.notifyDataSetChanged();
+      }
     }
-    label273:
-    label277:
     for (;;)
     {
-      this.a.b.dismiss();
+      paramBundle = this.a;
+      paramBundle.jdField_c_of_type_Int -= 1;
+      if (this.a.jdField_c_of_type_Int == 0) {
+        this.a.L();
+      }
       return;
-      this.a.j = false;
-      this.a.x();
-      if (((nqq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88)).a(this.a.d)) {
-        ((nri)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134243868, this.a.d, null, null, null, 2L, false);
-      }
-      actn.n = false;
-      if ("2290230341".equals(this.a.d))
+      label112:
+      this.a.d(2131695569);
+      continue;
+      for (;;)
       {
-        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
-        label177:
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
-          break label273;
+        byte[] arrayOfByte;
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
+        try
+        {
+          arrayOfByte = paramBundle.getByteArray("data");
+          paramInt = paramBundle.getInt("type", 0);
+          if (arrayOfByte == null) {
+            break label518;
+          }
+          paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+          if (paramInt != 0) {
+            break label352;
+          }
+          paramBundle.mergeFrom(arrayOfByte);
+          paramBoolean = true;
+          if (!paramBoolean) {
+            break label462;
+          }
+          if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
+            break label450;
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno))) {
+            break label376;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + paramBundle.seqno.get());
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
+          paramBundle = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+          if ((!this.a.e) || (paramBundle.followType != 1)) {
+            break label364;
+          }
+          this.a.a(paramBundle, false);
         }
-      }
-      for (paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name;; paramView = "")
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
-          break label277;
+        catch (Exception paramBundle)
+        {
+          this.a.d(2131695569);
+          QLog.w("com.tencent.biz.pubaccount.AccountDetailActivity", 4, paramBundle.getMessage(), paramBundle);
         }
-        ahoq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, paramView);
         break;
-        if (!TextUtils.equals(String.valueOf(2062433139L), this.a.d)) {
-          break label177;
+        label352:
+        paramBoolean = sgg.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
+      }
+      label364:
+      this.a.a(paramBundle, true);
+      continue;
+      label376:
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "sendPublicAccountDetailInfoRequest: seqno is same, no need to update, seqno = " + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno);
+      }
+      label518:
+      if ((this.a.e) && (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1))
+      {
+        this.a.f();
+        continue;
+        label450:
+        this.a.d(2131695569);
+        continue;
+        label462:
+        if (this.a.jdField_c_of_type_Boolean) {
+          if (this.a.jdField_a_of_type_Nea != null)
+          {
+            this.a.jdField_a_of_type_Nea.b(false);
+            this.a.jdField_a_of_type_Nea.notifyDataSetChanged();
+          }
+          else
+          {
+            this.a.d(2131695569);
+            continue;
+            if (this.a.jdField_c_of_type_Boolean) {
+              if (this.a.jdField_a_of_type_Nea != null)
+              {
+                this.a.jdField_a_of_type_Nea.b(false);
+                this.a.jdField_a_of_type_Nea.notifyDataSetChanged();
+              }
+              else
+              {
+                this.a.d(2131695569);
+              }
+            }
+          }
         }
-        noo.a(null, null, "0X800929F", "0X800929F", 0, 0, "", "", "", npx.a(null), false);
-        break label177;
       }
     }
   }

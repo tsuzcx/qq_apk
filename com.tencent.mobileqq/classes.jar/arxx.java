@@ -1,61 +1,21 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.view.View.OnClickListener;
 
 class arxx
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  arxx(arxt paramarxt, arxj paramarxj) {}
   
-  arxx(arxh paramarxh, View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378822);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378824));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378821));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378826));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378823);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131378825);
-    if (bfwa.a())
-    {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130844530);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130844528);
-      if ((this.jdField_b_of_type_AndroidViewView instanceof TextView)) {
-        ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
+    if (this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj.a()) {}
+    while (paramView.isSelected()) {
+      return;
     }
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  void a(LocationRoom.Venue paramVenue)
-  {
-    LocationRoom.Venue localVenue = paramVenue;
-    if (paramVenue == null) {
-      localVenue = arxh.a(this.jdField_a_of_type_Arxh).a();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(arxh.a(this.jdField_a_of_type_Arxh).getResources().getString(2131694016), new Object[] { localVenue.b }));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-    aryd.a(arxh.a(this.jdField_a_of_type_Arxh, localVenue.a), arxh.a(this.jdField_a_of_type_Arxh).getResources().getString(2131694017), this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new arxy(this));
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new arxz(this));
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Arxt.a(paramView);
+    this.jdField_a_of_type_Arxt.jdField_a_of_type_Int = 2;
+    arxj.a(this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj, Integer.valueOf(2));
+    axqy.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 3, 0, "0", "0", "0", "");
   }
 }
 

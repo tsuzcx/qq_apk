@@ -1,47 +1,31 @@
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class akmf
-  extends akav
+public final class akmf
+  implements aysb
 {
-  private akmf(GetTroopAssisMsg paramGetTroopAssisMsg) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
-    }
-    if (paramLong2 == 1L) {
-      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1; i == 0; i = 0)
+    if ((paramaysy == null) || (paramaysz == null)) {}
+    do
     {
-      this.a.a(6);
-      return;
-    }
-    this.a.a(7);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
-    }
-    bfmu.a().h();
-    this.a.a(7);
-  }
-  
-  protected void g(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      this.a.a(6);
-    }
+      do
+      {
+        return;
+      } while (!(paramaysy instanceof ayrx));
+      paramaysy = (ayrx)paramaysy;
+      paramaysy.jdField_a_of_type_Long += paramaysz.c;
+      paramaysz.c = 0L;
+      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
+      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
+      if (paramaysz.contains("range="))
+      {
+        String str = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
+        paramaysy.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysy.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + paramaysz);
   }
 }
 

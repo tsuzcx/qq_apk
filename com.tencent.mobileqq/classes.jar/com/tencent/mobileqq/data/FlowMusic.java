@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import NS_QQ_STORY_META.META.StMusic;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
 public class FlowMusic
-  extends aukm
+  extends auko
   implements Comparable<FlowMusic>
 {
   public static final int SOURCE_CUSTOM_ADD = 0;
@@ -21,14 +21,14 @@ public class FlowMusic
   public String albumUrl;
   public int duration = -1;
   public String path;
-  @aulx
+  @aulz
   public int playable = 1;
   public int singerId;
   public String singerMid;
   public String singerName;
-  @aulx
+  @aulz
   public long size = -1L;
-  @auma
+  @aumc
   public int songId;
   public String songMid;
   public String songName;
@@ -37,7 +37,7 @@ public class FlowMusic
   public long storeTimeStamp = -1L;
   public int tryBegin = -1;
   public int tryEnd = -1;
-  @aulx
+  @aulz
   public String url;
   public int userOwnRule;
   

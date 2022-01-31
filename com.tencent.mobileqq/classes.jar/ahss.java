@@ -1,66 +1,36 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.os.Build;
-import android.text.TextUtils;
-import android.widget.Toast;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class ahss
-  implements MediaPlayer.OnErrorListener
+  implements View.OnTouchListener
 {
   public ahss(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  private String[] a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = QzoneConfig.getInstance().getConfig("VideoEdit", "VideoLoadErrorReturnCode");
-    if (str == null) {
-      return null;
-    }
-    return str.split(",");
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    QLog.e("EditLocalVideoActivity", 2, "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2);
-    for (;;)
+    if (paramMotionEvent.getAction() == 0)
     {
-      try
-      {
-        Toast.makeText(this.a.getApplicationContext(), ajyc.a(2131703644), 1).show();
-        paramMediaPlayer = a();
-        if (paramMediaPlayer == null)
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.b(this.a))
         {
-          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
-          this.a.setResult(0);
-          return true;
+          EditLocalVideoActivity.b(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.a(this.a).setVisibility(0);
         }
-        int k = paramMediaPlayer.length;
-        int i = 0;
-        int j = 1;
-        if (i < k)
-        {
-          if (TextUtils.equals(paramMediaPlayer[i], paramInt1 + "-" + paramInt2)) {
-            j = 0;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            continue;
-          }
-          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
-          continue;
-        }
-        i += 1;
       }
-      catch (Exception paramMediaPlayer)
-      {
-        QLog.e("EditLocalVideoActivity", 2, "VideoView onError", paramMediaPlayer);
+      while (!EditLocalVideoActivity.b(this.a)) {
         return true;
       }
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      return true;
     }
+    return false;
   }
 }
 

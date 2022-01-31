@@ -1,20 +1,8 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
-public class bkrl
-  implements MediaPlayer.OnCompletionListener
+public abstract interface bkrl
 {
-  public bkrl(FixedSizeVideoView paramFixedSizeVideoView) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (this.a.a != null)
-    {
-      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
-      this.a.a.a(paramMediaPlayer);
-    }
-  }
+  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
 }
 
 

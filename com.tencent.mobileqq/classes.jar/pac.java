@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import java.util.Comparator;
 
-public class pac
-  implements Comparator<TabChannelCoverInfo>
+class pac
+  implements Comparator<ChannelInfo>
 {
-  public pac(ChannelCoverInfoModule.4 param4) {}
+  pac(paa parampaa) {}
   
-  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
+    }
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
+    }
+    return 1;
   }
 }
 

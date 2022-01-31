@@ -1,27 +1,32 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.confess.ConfessPlugin.5;
+import com.tencent.mobileqq.confess.ConfessPlugin.5.1;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class amnv
-  implements alxk
+  implements bcww
 {
-  public amnv(ConfessPlugin paramConfessPlugin) {}
+  public amnv(ConfessPlugin.5.1 param1) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
-      {
-        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
-        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      ConfessPlugin.a(this.a.a.this$0, false);
+      ConfessPlugin.a(this.a.a.this$0, 1, 2131719487);
+      return;
+    case 0: 
+      ConfessPlugin.a(this.a.a.this$0, true);
+      ConfessPlugin.a(this.a.a.this$0, 2, 2131719506);
+      return;
+    }
+    ConfessPlugin.a(this.a.a.this$0, false);
   }
 }
 

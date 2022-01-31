@@ -1,29 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class atir
-  implements bcwh
+final class atir
+  implements URLDrawable.URLDrawableListener
 {
-  atir(atip paramatip) {}
+  atir(String paramString1, atiu paramatiu, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Atis != null) {
-        this.a.jdField_a_of_type_Atis.a(true);
-      }
+    paramURLDrawable = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);
+    WXShareHelper.a().a(new atit(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new atix().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    Bitmap localBitmap = atij.a(paramURLDrawable);
+    paramURLDrawable = localBitmap;
+    if (localBitmap == null) {
+      paramURLDrawable = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);
     }
-    label59:
-    while (this.a.jdField_a_of_type_Atis == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Atis.a(false);
+    WXShareHelper.a().a(new atis(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new atix().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

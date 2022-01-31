@@ -1,8 +1,13 @@
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+
 public abstract interface aftk
 {
-  public abstract void a();
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public abstract void a(float paramFloat);
+  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
+  
+  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
 }
 
 

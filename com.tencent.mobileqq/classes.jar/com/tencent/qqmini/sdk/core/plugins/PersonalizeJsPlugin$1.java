@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class PersonalizeJsPlugin$1
   implements AsyncResult
 {
-  PersonalizeJsPlugin$1(PersonalizeJsPlugin paramPersonalizeJsPlugin, beka parambeka) {}
+  PersonalizeJsPlugin$1(PersonalizeJsPlugin paramPersonalizeJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    besl.b("PersonalizeJsPlugin", "setPersonalizeInfo result:" + paramBoolean);
+    betc.b("PersonalizeJsPlugin", "setPersonalizeInfo result:" + paramBoolean);
     if (paramBoolean)
     {
       this.val$req.a();

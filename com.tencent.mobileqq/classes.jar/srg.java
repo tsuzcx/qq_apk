@@ -1,55 +1,40 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
 
 public class srg
+  implements Comparable<srg>
 {
-  private double a;
-  private double b;
+  public int a;
+  Bitmap a;
+  public spz a;
   
-  public srg(double paramDouble1, double paramDouble2)
+  public int a(@NonNull srg paramsrg)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    return (int)(this.jdField_a_of_type_Spz.b - paramsrg.jdField_a_of_type_Spz.b);
   }
   
-  public double a()
+  public Bitmap a(Context paramContext)
   {
-    return this.a;
-  }
-  
-  public qqstory_struct.GpsMsg a()
-  {
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.setHasFlag(true);
-    localGpsMsg.lat.set((int)(a() * 1000000.0D));
-    localGpsMsg.lng.set((int)(b() * 1000000.0D));
-    return localGpsMsg;
-  }
-  
-  public double b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    BitmapFactory.Options localOptions;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      localOptions = new BitmapFactory.Options();
     }
-    if (!(paramObject instanceof srg)) {
-      return false;
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Spz.a(paramContext, 1, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = srh.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    return (((srg)paramObject).a == this.a) && (((srg)paramObject).b == this.b);
-  }
-  
-  public int hashCode()
-  {
-    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
-  }
-  
-  public String toString()
-  {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        ved.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
+      }
+    }
   }
 }
 

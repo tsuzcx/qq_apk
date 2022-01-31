@@ -1,8 +1,12 @@
-public abstract interface agwp
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class agwp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  agwp(agwo paramagwo) {}
   
-  public abstract void a(Object paramObject);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

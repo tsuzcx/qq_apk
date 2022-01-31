@@ -1,8 +1,6 @@
-import android.hardware.Camera;
-
 public abstract interface avvl
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  public abstract void a(String paramString);
 }
 
 

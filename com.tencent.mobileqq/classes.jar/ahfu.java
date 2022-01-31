@@ -1,32 +1,69 @@
-import android.text.TextUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahfu
+  extends ahfm<SpringFestivalRedpakcetPreviewConfBean>
 {
-  public JSONArray a = new JSONArray();
-  
-  public static ahfu a(String paramString)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    ahfu localahfu = new ahfu();
-    localahfu.a = a(new JSONObject(paramString));
-    return localahfu;
+    return 548;
   }
   
-  private static JSONArray a(JSONObject paramJSONObject)
+  @NonNull
+  public SpringFestivalRedpakcetPreviewConfBean a(int paramInt)
   {
-    JSONArray localJSONArray = new JSONArray();
-    paramJSONObject = paramJSONObject.optJSONArray("module_config");
-    int i = 0;
-    while (i < paramJSONObject.length())
+    return new SpringFestivalRedpakcetPreviewConfBean();
+  }
+  
+  protected SpringFestivalRedpakcetPreviewConfBean a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localJSONArray.put(paramJSONObject.optJSONObject(i));
-      i += 1;
+      paramArrayOfamph = paramArrayOfamph[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.i("springHb_SpringFestivalRedpacketPreviewProcessor", 2, "onParsed " + paramArrayOfamph);
+      }
+      return SpringFestivalRedpakcetPreviewConfBean.a(paramArrayOfamph);
     }
-    return localJSONArray;
+    return null;
+  }
+  
+  public Class<SpringFestivalRedpakcetPreviewConfBean> a()
+  {
+    return SpringFestivalRedpakcetPreviewConfBean.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+  }
+  
+  public void a(SpringFestivalRedpakcetPreviewConfBean paramSpringFestivalRedpakcetPreviewConfBean)
+  {
+    super.a(paramSpringFestivalRedpakcetPreviewConfBean);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public SpringFestivalRedpakcetPreviewConfBean b(amph[] paramArrayOfamph)
+  {
+    return (SpringFestivalRedpakcetPreviewConfBean)super.b(paramArrayOfamph);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

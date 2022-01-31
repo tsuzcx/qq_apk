@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders;
 
-import rqb;
-import rqp;
+import rpy;
+import rqm;
 
 public class StyleLoaderHelper$DummyCallback$1
   implements Runnable
 {
-  public StyleLoaderHelper$DummyCallback$1(rqb paramrqb, int paramInt, String paramString) {}
+  public StyleLoaderHelper$DummyCallback$1(rpy paramrpy, int paramInt, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Rqb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Rpy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    rqp.a(rqb.a(this.jdField_a_of_type_Rqb), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    rqm.a(rpy.a(this.jdField_a_of_type_Rpy), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

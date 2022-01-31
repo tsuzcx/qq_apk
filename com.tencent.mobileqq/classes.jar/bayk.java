@@ -1,10 +1,6 @@
-import java.util.List;
-
 public abstract interface bayk
 {
-  public abstract void a(int paramInt, List<bayl> paramList);
-  
-  public abstract void a(bayl parambayl);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
 }
 
 

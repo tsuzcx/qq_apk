@@ -1,159 +1,95 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.media.MediaPlayer;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.Renderer;
-import android.util.Log;
-import android.view.Surface;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import com.tencent.filter.SurfaceTextureFilter;
-import com.tencent.ttpic.openapi.filter.SpaceFilter;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageView;
 
-public class biuv
-  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
+class biuv
+  implements TextWatcher
 {
-  private static final String jdField_a_of_type_JavaLangString = biuv.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
-  private biut jdField_a_of_type_Biut = new biut();
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
-  private SpaceFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter = new SpaceFilter();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private float jdField_b_of_type_Float;
-  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  boolean jdField_a_of_type_Boolean = false;
   
-  public biuv(GLSurfaceView paramGLSurfaceView)
-  {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
-  }
+  biuv(biur parambiur) {}
   
-  private void a(Frame paramFrame)
+  public void afterTextChanged(Editable paramEditable)
   {
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
-    GLES20.glClear(16384);
-    GLES20.glEnable(3042);
-    GLES20.glBlendFunc(770, 771);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.RenderProcess(paramFrame.getTextureId(), (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, 0, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
-    GLES20.glDisable(3042);
-  }
-  
-  private void b()
-  {
-    Object localObject = new int[1];
-    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
-    this.jdField_a_of_type_Int = localObject[0];
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-  }
-  
-  private void c()
-  {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.apply();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRotationAndFlip(0, 0, 1);
-    this.jdField_a_of_type_Biut.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    c();
-    this.jdField_a_of_type_Biut.b();
-  }
-  
-  public void a(MediaPlayer paramMediaPlayer)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-  }
-  
-  public void a(biuu parambiuu)
-  {
-    if (this.jdField_a_of_type_Biut != null) {
-      this.jdField_a_of_type_Biut.a(parambiuu);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Biut != null) {
-      this.jdField_a_of_type_Biut.a(paramBoolean);
-    }
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    int j;
+    int i;
+    int m;
+    int k;
+    if (paramEditable.length() > 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Int, (int)(2.0F * this.jdField_a_of_type_Float), (int)this.jdField_b_of_type_Float, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      biur.a(this.jdField_a_of_type_Biur).setVisibility(0);
+      j = 1;
+      i = 0;
+      m = 0;
+      k = 0;
     }
-    if (GLES20.glIsTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId()))
+    char c;
+    label55:
+    int n;
+    for (;;)
     {
-      a(this.jdField_a_of_type_Biut.a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float));
+      if (i < paramEditable.length())
+      {
+        c = paramEditable.charAt(i);
+        if (c == '\n')
+        {
+          return;
+          biur.a(this.jdField_a_of_type_Biur).setVisibility(4);
+          j = 1;
+          i = 0;
+          m = 0;
+          k = 0;
+        }
+        else
+        {
+          n = j;
+          if (c == ' ')
+          {
+            if (j == 0) {
+              break label244;
+            }
+            n = 0;
+            m = i;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      k += biur.a(this.jdField_a_of_type_Biur, c);
+      if ((k > 16) && (!this.jdField_a_of_type_Boolean))
+      {
+        biur.a(this.jdField_a_of_type_Biur).removeTextChangedListener(this);
+        if (n == 0) {
+          biur.a(this.jdField_a_of_type_Biur).setText(paramEditable.insert(m, "\r\n"));
+        }
+        for (;;)
+        {
+          biur.a(this.jdField_a_of_type_Biur).setSelection(paramEditable.length());
+          this.jdField_a_of_type_Boolean = true;
+          biur.a(this.jdField_a_of_type_Biur).addTextChangedListener(this);
+          return;
+          biur.a(this.jdField_a_of_type_Biur).setText(paramEditable.insert(i, "\r\n"));
+        }
+      }
+      i += 1;
+      j = n;
+      break;
+      if (k > 16) {
+        break label55;
+      }
+      this.jdField_a_of_type_Boolean = false;
       return;
-    }
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
-    GLES20.glClear(16384);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.requestRender();
-      return;
-    }
-    finally
-    {
-      paramSurfaceTexture = finally;
-      throw paramSurfaceTexture;
+      label244:
+      m = i;
+      n = j;
     }
   }
   
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
-  {
-    Log.d(jdField_a_of_type_JavaLangString, "onSurfaceChanged width = " + paramInt1 + "  height = " + paramInt2);
-    this.jdField_a_of_type_Float = paramInt1;
-    this.jdField_b_of_type_Float = paramInt2;
-    this.jdField_a_of_type_Biut.a(paramInt1, paramInt2);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    b();
-    d();
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

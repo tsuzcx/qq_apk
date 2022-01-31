@@ -1,76 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import java.util.Set;
 
 public class baaj
-  implements babp
+  implements bfpt
 {
-  public baaj(XMediaEditor paramXMediaEditor) {}
+  public baaj(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt1 == paramInt2) {
-      return;
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
     }
-    paramInt1 = paramInt2 - paramInt1;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
-    }
-    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = ((babr)paramViewHolder).jdField_a_of_type_Baas;
-    this.a.a(paramViewHolder.c);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    if (XMediaEditor.a(this.a) != this.a.a.a())
+    for (;;)
     {
-      paramViewHolder = this.a;
-      if (XMediaEditor.a(this.a)) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      XMediaEditor.a(paramViewHolder, paramBoolean);
-      if (XMediaEditor.a(this.a) != null) {
-        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
-      }
+      this.a.jdField_a_of_type_Baal.notifyDataSetChanged();
+      this.a.e();
       return;
-    }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    int i = ((babr)paramViewHolder).jdField_a_of_type_Baas.c;
-    if (i == 0) {}
-    while (this.a.a.a(i - 1).b() == -1) {
-      return;
-    }
-    this.a.a(i - 1);
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bacg)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a = false;
-    }
-    XMediaEditor.a(this.a, (babb)paramViewHolder.jdField_a_of_type_Baas);
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
-    }
-  }
-  
-  public void d(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bacg)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
+      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
     }
   }
 }

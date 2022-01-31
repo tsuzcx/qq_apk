@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahab;
-import ajyc;
+import agzz;
+import ajya;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,11 +16,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import aywk;
-import bbjw;
-import bcpw;
-import bgwk;
-import bgwr;
+import aywm;
+import bbkk;
+import bcql;
+import bgxb;
+import bgxi;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
@@ -73,7 +73,7 @@ public class EmojiFragment
       try
       {
         JSONObject localJSONObject;
-        if (bbjw.a(paramString1))
+        if (bbkk.a(paramString1))
         {
           localJSONObject = getHbPannelConfig(8);
           paramString1 = localTemplateInfo;
@@ -133,9 +133,9 @@ public class EmojiFragment
   {
     try
     {
-      bgwr.a(paramBundle, this.bundleInfo);
+      bgxi.a(paramBundle, this.bundleInfo);
       paramView.findViewById(2131368724).setOnClickListener(this);
-      this.emoticonTemplateRecyclerView = ((EmoticonTemplateRecyclerView)paramView.findViewById(2131376945));
+      this.emoticonTemplateRecyclerView = ((EmoticonTemplateRecyclerView)paramView.findViewById(2131376947));
       paramBundle = new EmojiFragment.TemplateListAdapter(this, this.mActivity);
       this.mTemplateBundleInfos = initData(this.bundleInfo.heartList, this.bundleInfo.prefix);
       paramBundle.addTempList(this.mTemplateBundleInfos);
@@ -143,10 +143,10 @@ public class EmojiFragment
       this.emoticonTemplateRecyclerView.setLayoutManager(new GridLayoutManager(this.mActivity, 4, 1, false));
       paramBundle = new EmojiFragment.TempGridItemLayoutDecoration(this, this.mActivity, 4);
       this.emoticonTemplateRecyclerView.addItemDecoration(paramBundle);
-      this.mAmoutTxt = ((EditText)paramView.findViewById(2131362530));
+      this.mAmoutTxt = ((EditText)paramView.findViewById(2131362529));
       this.mAmoutTxt.addTextChangedListener(this.mTextWatcher);
       this.numTxt = ((EditText)paramView.findViewById(2131370982));
-      if (bgwr.b.contains(this.bundleInfo.recv_type))
+      if (bgxi.b.contains(this.bundleInfo.recv_type))
       {
         this.numTxt.setText("1");
         paramView.findViewById(2131377644).setVisibility(8);
@@ -157,18 +157,18 @@ public class EmojiFragment
           setSelected((EmojiFragment.TemplateInfo)this.mTemplateBundleInfos.get(0));
         }
         paramBundle = this.bundleInfo.biz_params;
-        if (!bbjw.a(paramBundle)) {
+        if (!bbkk.a(paramBundle)) {
           this.mTempId = new JSONObject(paramBundle).optString("temp_id");
         }
-        if (!bbjw.a(this.mTempId)) {
+        if (!bbkk.a(this.mTempId)) {
           processDefaultTmpException(this.mTempId);
         }
-        this.confirm = ((Button)paramView.findViewById(2131364611));
+        this.confirm = ((Button)paramView.findViewById(2131364610));
         this.confirm.setOnClickListener(this);
         freshConfirmBtn();
         return;
         if (!TextUtils.isEmpty(this.bundleInfo.people_num)) {
-          this.numTxt.setHint(ajyc.a(2131704008) + this.bundleInfo.people_num + ajyc.a(2131704009));
+          this.numTxt.setHint(ajya.a(2131704019) + this.bundleInfo.people_num + ajya.a(2131704020));
         }
         this.numTxt.addTextChangedListener(this.mTextWatcher);
       }
@@ -197,7 +197,7 @@ public class EmojiFragment
           setSelected(localTemplateInfo);
           i = 1;
           if (i == 0) {
-            bcpw.a(getActivity(), 2131696985, 0).a();
+            bcql.a(getActivity(), 2131696986, 0).a();
           }
           return;
         }
@@ -205,7 +205,7 @@ public class EmojiFragment
       catch (Exception paramString)
       {
         QLog.e("EmojiFragment", 1, "processDefaultTmpSelected occur an exception: " + paramString);
-        bcpw.a(getActivity(), 2131696985, 0).a();
+        bcql.a(getActivity(), 2131696986, 0).a();
         return;
       }
       int i = 0;
@@ -264,17 +264,17 @@ public class EmojiFragment
     {
       QLog.i("EmojiFragment", 2, "info is not complete...");
       this.confirm.setEnabled(false);
-      this.confirm.setText(getString(2131697062));
+      this.confirm.setText(getString(2131697063));
       return;
     }
-    if ((bgwk.a((String)localObject) <= 0.0F) || (bgwk.a(str) <= 0.0F))
+    if ((bgxb.a((String)localObject) <= 0.0F) || (bgxb.a(str) <= 0.0F))
     {
       this.confirm.setEnabled(false);
-      this.confirm.setText(getString(2131697062));
+      this.confirm.setText(getString(2131697063));
       return;
     }
     localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(getString(2131697062));
+    ((StringBuffer)localObject).append(getString(2131697063));
     ((StringBuffer)localObject).append(str);
     ((StringBuffer)localObject).append("元");
     this.confirm.setText(((StringBuffer)localObject).toString());
@@ -301,13 +301,13 @@ public class EmojiFragment
           QLog.i("EmojiFragment", 2, "thread name: " + Thread.currentThread().getName());
         }
       } while (paramImageView == null);
-      Object localObject = QWalletPicHelper.getNetDrawableForQWallet(paramURLDrawable, aywk.a, aywk.a, localBundle);
+      Object localObject = QWalletPicHelper.getNetDrawableForQWallet(paramURLDrawable, aywm.a, aywm.a, localBundle);
       paramImageView.setImageDrawable((Drawable)localObject);
       this.urlDrawableSparseArray.put(paramInt, localObject);
     } while (!paramBoolean);
     paramImageView = new Bundle();
     paramImageView.putBoolean("key_play_apng", false);
-    ThreadManager.excute(new EmojiFragment.2(this, QWalletPicHelper.getNetDrawableForQWallet(paramURLDrawable, aywk.a, aywk.a, paramImageView)), 16, null, true);
+    ThreadManager.excute(new EmojiFragment.2(this, QWalletPicHelper.getNetDrawableForQWallet(paramURLDrawable, aywm.a, aywm.a, paramImageView)), 16, null, true);
   }
   
   public void onClick(View paramView)
@@ -316,7 +316,7 @@ public class EmojiFragment
     {
     default: 
       return;
-    case 2131364611: 
+    case 2131364610: 
       onConfirmClick();
       return;
     }
@@ -339,7 +339,7 @@ public class EmojiFragment
     localMap.put("feedsid", String.valueOf(this.currentTempId));
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bgwk.a(str2));
+    localMap.put("total_amount", bgxb.a(str2));
     localMap.put("channel", this.channel + "");
     localMap.put("skin_id", this.currSkinId + "");
     this.mLogic.a(localMap);
@@ -349,7 +349,7 @@ public class EmojiFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.mActivity.getWindow().setSoftInputMode(32);
-    this.rootView = paramLayoutInflater.inflate(2131561497, null);
+    this.rootView = paramLayoutInflater.inflate(2131561496, null);
     initView(this.rootView, getArguments());
     return this.rootView;
   }
@@ -380,7 +380,7 @@ public class EmojiFragment
     if (this.mPrefImageView == paramImageView) {
       return;
     }
-    paramImageView.setBackgroundResource(2130842762);
+    paramImageView.setBackgroundResource(2130842763);
     if (this.mPrefImageView != null) {
       this.mPrefImageView.setBackgroundDrawable(null);
     }

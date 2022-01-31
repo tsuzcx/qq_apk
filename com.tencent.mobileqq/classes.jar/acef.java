@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class acef
-  implements DialogInterface.OnDismissListener
+  implements View.OnFocusChangeListener
 {
   public acef(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.b = false;
+    if (true == paramBoolean)
+    {
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

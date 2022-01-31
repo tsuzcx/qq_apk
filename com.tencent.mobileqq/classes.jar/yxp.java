@@ -1,40 +1,52 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class yxp
-  implements yxh
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public static void a(String paramString1, String paramString2)
   {
-    try
-    {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      yxs.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
-      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
-      ysx.a().a(paramVarArgs);
-      paramywn.callJs(paramString, null);
-      if (paramywn != null)
-      {
-        paramString = paramywn.a();
-        if (paramywn == null) {
-          break label99;
-        }
-      }
-      label99:
-      for (paramywn = paramywn.a();; paramywn = null)
-      {
-        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramywn, paramVarArgs);
-        return true;
-        paramString = null;
-        break;
-      }
-      return true;
+    a(paramString1, paramString2, null);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
     }
-    catch (Throwable paramywn)
-    {
-      paramywn.printStackTrace();
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
+  }
+  
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
     }
   }
 }

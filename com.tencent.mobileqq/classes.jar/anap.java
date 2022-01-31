@@ -1,67 +1,69 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import org.json.JSONObject;
 
 public class anap
 {
-  private HashMap<String, anaq> a = new HashMap();
+  private int a;
+  private int b;
+  private int c = 1;
   
-  public static anap a(ampi paramampi)
+  public static anap a(amph paramamph)
   {
     anap localanap = new anap();
-    if (paramampi != null) {
+    if (paramamph != null) {
       if (QLog.isColorLevel()) {
-        QLog.d("VerticalNavigationConfBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramamph.jdField_a_of_type_Int + " content->" + paramamph.jdField_a_of_type_JavaLangString);
       }
     }
     try
     {
-      paramampi = new JSONObject(paramampi.jdField_a_of_type_JavaLangString);
-      if (paramampi.has("emoji"))
-      {
-        paramampi = paramampi.optJSONObject("emoji");
-        if (paramampi != null)
-        {
-          anaq localanaq = new anaq();
-          localanaq.jdField_a_of_type_Int = paramampi.optInt("switch", 0);
-          localanaq.jdField_a_of_type_JavaLangString = paramampi.optString("url", "");
-          localanap.a.put("emoji", localanaq);
-        }
-      }
+      paramamph = new JSONObject(paramamph.jdField_a_of_type_JavaLangString);
+      localanap.a(paramamph.optInt("hotword_switch_message", 0));
+      localanap.b(paramamph.optInt("hotword_switch_contact", 0));
+      localanap.c(paramamph.optInt("hotword_switch_dongtai", 1));
+      return localanap;
     }
-    catch (Exception paramampi)
+    catch (Exception paramamph)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("VerticalNavigationConfBean", 2, "parse error->" + paramampi.toString());
+      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramamph.toString());
     }
-    return localanap;
     return localanap;
   }
   
-  public String a()
+  void a(int paramInt)
   {
-    anaq localanaq = (anaq)this.a.get("emoji");
-    if (localanaq != null) {
-      return localanaq.jdField_a_of_type_JavaLangString;
-    }
-    return "";
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public boolean a()
   {
-    anaq localanaq = (anaq)this.a.get("emoji");
-    if (localanaq != null) {
-      return localanaq.jdField_a_of_type_Int == 1;
-    }
-    return false;
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 1;
+  }
+  
+  void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 1;
   }
   
   public String toString()
   {
-    if (this.a != null) {}
-    for (String str = this.a.toString();; str = "null") {
-      return String.format("mConfigData:%s ", new Object[] { str });
-    }
+    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 

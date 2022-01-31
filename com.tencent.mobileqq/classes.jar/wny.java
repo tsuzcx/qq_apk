@@ -1,16 +1,17 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 class wny
   implements View.OnClickListener
 {
-  wny(wnv paramwnv, CertifiedAccountMeta.StComment paramStComment) {}
+  wny(wns paramwns, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
   public void onClick(View paramView)
   {
-    wnl.a(this.jdField_a_of_type_Wnv.a, wnl.a(this.jdField_a_of_type_Wnv.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
-    wnl.a(this.jdField_a_of_type_Wnv.a).dismiss();
+    wni.a(this.jdField_a_of_type_Wns.a, wni.a(this.jdField_a_of_type_Wns.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    wni.a(this.jdField_a_of_type_Wns.a).dismiss();
   }
 }
 

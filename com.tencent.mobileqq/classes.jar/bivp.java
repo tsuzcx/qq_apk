@@ -1,12 +1,8 @@
-public class bivp
+public abstract interface bivp
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
+  public abstract void a();
   
-  public bivp(bivm parambivm) {}
+  public abstract void a(String paramString);
 }
 
 

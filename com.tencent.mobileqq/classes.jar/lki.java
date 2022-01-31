@@ -1,51 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-
 public class lki
-  extends Handler
 {
-  public lki(CameraUtils paramCameraUtils, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public byte[] a;
   
-  public void handleMessage(Message paramMessage)
+  public lki(lkh paramlkh)
   {
-    boolean bool = true;
-    long l = mtm.a(paramMessage.obj);
-    if (AudioHelper.e()) {
-      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      CameraUtils.a(this.a, l);
-      return;
-    case 2: 
-      if (paramMessage.arg1 == 1) {}
-      for (;;)
-      {
-        CameraUtils.a(this.a, l, bool);
-        return;
-        bool = false;
-      }
-    case 3: 
-      i = paramMessage.arg1;
-      int j = paramMessage.arg2;
-      CameraUtils.a(this.a, l, i, j);
-      return;
-    case 4: 
-      CameraUtils.b(this.a, l);
-      return;
-    }
-    int i = paramMessage.arg1;
-    CameraUtils.a(this.a, l, i);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

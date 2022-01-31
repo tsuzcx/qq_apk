@@ -1,21 +1,6 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
-
-public class uvv
-  extends tjd
+public abstract interface uvv<T>
 {
-  public List<String> a = new ArrayList();
-  
-  public uvv(ErrorMessage paramErrorMessage)
-  {
-    super(paramErrorMessage);
-  }
-  
-  public String toString()
-  {
-    return "FeedData{" + super.toString() + '}';
-  }
+  public abstract void a(T paramT);
 }
 
 

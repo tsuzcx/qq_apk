@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.9.1;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import java.util.HashMap;
 
 public class auau
-  extends aqmy
+  extends atzx
 {
-  public auau(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public auau(OCRResultActivity paramOCRResultActivity) {}
   
-  protected void a(boolean paramBoolean, aqnb paramaqnb)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    if (!OCRResultFragmentNew.a(this.a)) {
+    if (OCRResultActivity.a(this.a)) {
       return;
     }
-    OCRResultFragmentNew.b(this.a, false);
-    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramaqnb));
+    this.a.runOnUiThread(new OCRResultActivity.9.1(this, paramBoolean, paramInt, paramTranslateResult));
+    HashMap localHashMap = new HashMap();
+    if (paramTranslateResult != null) {}
+    for (int i = paramTranslateResult.b;; i = 2000)
+    {
+      localHashMap.put("errCode", String.valueOf(i));
+      localHashMap.put("type", String.valueOf(paramInt));
+      axrn.a(BaseApplicationImpl.getContext()).a("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
+      return;
+    }
   }
 }
 

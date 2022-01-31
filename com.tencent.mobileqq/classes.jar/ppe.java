@@ -1,11 +1,11 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class ppe
+  implements ntx
 {
-  public void a(int paramInt, List<Long> paramList, long paramLong) {}
+  public ppe(PTSFragment paramPTSFragment) {}
   
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg) {}
+  public void a(String paramString) {}
 }
 
 

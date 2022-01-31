@@ -1,31 +1,15 @@
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aaml
-  implements bjos
+  implements DialogInterface.OnClickListener
 {
   public aaml(BaseChatPie paramBaseChatPie) {}
   
-  public Activity a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  }
-  
-  public SessionInfo a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public boolean a()
-  {
-    return this.a.c();
+    paramDialogInterface.dismiss();
   }
 }
 

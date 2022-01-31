@@ -1,182 +1,172 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.NotificationReportController;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class bfnp
-  implements Handler.Callback, NotificationReportController
 {
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  private List<bfnq> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public bfnp()
+  private static int a(int paramInt)
   {
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("NotificationReportControllerImpl", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return 2;
+    case 1: 
+      return 3;
+    case 2: 
+      return 1;
+    case 3: 
+      return 6;
+    }
+    return 7;
   }
   
-  private String a()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuffer.append((Integer)localIterator.next()).append(",");
+    if (paramInt == 7220) {}
+    try
+    {
+      a(paramQQAppInterface, "0X80098E4", "" + paramLong, "", "", "");
+      return;
     }
-    return localStringBuffer.substring(0, localStringBuffer.length() - 1);
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
   }
   
-  private void a()
+  public static void a(QQAppInterface paramQQAppInterface, anec paramanec, int paramInt1, int paramInt2)
   {
-    Object localObject;
-    if ((0 == 0) && (BaseApplicationImpl.sProcessId == 1))
+    try
     {
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
-    }
-    for (QQAppInterface localQQAppInterface = (QQAppInterface)localObject;; localQQAppInterface = null)
-    {
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          bfnq localbfnq = (bfnq)localIterator.next();
-          boolean bool = a(localQQAppInterface, localbfnq.b);
-          localObject = "";
-          switch (localbfnq.jdField_a_of_type_Int)
-          {
-          default: 
-            label132:
-            if ((localbfnq.c == 7200) || (localbfnq.c == 1008) || (localbfnq.c == 7220)) {
-              axqw.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localbfnq.jdField_a_of_type_JavaLangString, localbfnq.b + "", "" + localbfnq.c, "", "", "", "");
-            }
-            break;
-          }
-          while (QLog.isDevelopLevel())
-          {
-            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localbfnq.jdField_a_of_type_Int + "    frienduin:" + localbfnq.jdField_a_of_type_JavaLangString + "   uinType:" + localbfnq.c + "    nId:" + localbfnq.b);
-            break;
-            localObject = "info_arr";
-            break label132;
-            localObject = "clk";
-            break label132;
-            localObject = "lock_arr";
-            break label132;
-            localObject = "lock_clk";
-            break label132;
-            axqw.a(localQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localbfnq.b + "", "", "", "", "", "");
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.clear();
+      if (paramanec.a.strPkgName.equals("com.android.ReadInJoy")) {
+        a(paramQQAppInterface, "0X80098E6", "" + a(paramInt1), "" + paramInt2, "", "");
       }
       return;
     }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
   }
   
-  private boolean a(QQAppInterface paramQQAppInterface, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, MainFragment paramMainFragment, ajwk paramajwk, int paramInt)
   {
-    if (!this.b)
+    try
     {
-      Object localObject = paramQQAppInterface.getAccount();
-      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-      long l1 = localSharedPreferences.getLong("key_begintime_" + (String)localObject, 0L);
-      long l2 = bfnm.a().longValue();
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      if (l1 == l2)
+      if ((((paramajwk instanceof ReadinjoyTabFrame)) || (paramInt == MainFragment.h)) && ((ReadinjoyTabFrame)paramMainFragment.a(ReadinjoyTabFrame.class) != null) && (paramInt == MainFragment.h) && (paramMainFragment.getActivity().getIntent().getIntExtra("launch_from", 5) == 6)) {
+        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  {
+    try
+    {
+      if (((paramBaseActivity instanceof ReadInJoyNewFeedsActivity)) && (paramBaseActivity.getIntent().getIntExtra("launch_from", 5) == 6)) {
+        a(paramQQAppInterface, "0X80098E2", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      if ((paramMessageRecord.istroop == 7220) || ((paramMessageRecord.istroop == 1008) && (ajsd.az.equals(paramMessageRecord.frienduin)))) {
+        a(paramQQAppInterface, "0X80098E5", "" + paramMessageRecord.msgUid, "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    if (paramRecentUser != null) {}
+    try
+    {
+      if (paramRecentUser.getType() == 7220) {
+        a(paramQQAppInterface, "0X80098E3", "", "", "", "");
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, RecentBaseData paramRecentBaseData)
+  {
+    if (paramRecentUser != null) {
+      try
       {
-        localObject = localSharedPreferences.getString("kay_reported_notify_ids_" + (String)localObject, "");
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        if (paramRecentUser.getType() == 1008)
         {
-          localObject = ((String)localObject).split(",");
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            localSharedPreferences = localObject[i];
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(localSharedPreferences));
-            i += 1;
+          if (!"2173223560".equals(paramRecentBaseData.a())) {
+            break label145;
+          }
+          a(paramQQAppInterface, "0X80098E0", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+        }
+        while (paramRecentUser.getType() == 7220)
+        {
+          a(paramQQAppInterface, "0X80098DF", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
+          return;
+          label145:
+          if (ajsd.aR.equals(paramRecentBaseData.a())) {
+            a(paramQQAppInterface, "0X80098F2", "" + paramRecentBaseData.mUnreadFlag, "" + paramRecentBaseData.mUnreadNum, "", "");
           }
         }
+        return;
       }
-      else
+      catch (Throwable paramQQAppInterface)
       {
-        localSharedPreferences.edit().putLong("key_begintime_" + (String)localObject, l2).apply();
+        if (QLog.isColorLevel()) {
+          QLog.e("QQKRPUtil", 2, paramQQAppInterface, new Object[0]);
+        }
       }
-      this.b = true;
     }
-    if (!this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putString("kay_reported_notify_ids_" + paramQQAppInterface.getAccount(), a()).apply();
-      return true;
-    }
-    return false;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-      paramMessage = (bfnq)paramMessage.obj;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-        a();
-        return true;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    a();
-    return true;
-  }
-  
-  public void report(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotificationReportControllerImpl", 2, "msgType:" + paramInt1 + "frienduin:" + paramString + "   uinType:" + paramInt3 + "    nId:" + paramInt2);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = paramInt1;
-    localMessage.obj = new bfnq(paramInt1, paramInt2, paramString, paramInt3);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void reportAll()
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 5;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    axqy.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,41 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 
 public class ajpx
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, aeyx paramaeyx, AppInterface paramAppInterface, String paramString, ajpy paramajpy)
+  public float a;
+  public int a;
+  public ApolloActionData a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    a(paramBoolean, paramActivity, paramaeyx, paramAppInterface, paramString, paramajpy, true);
+    return aylc.a(paramContext.getResources(), this.h);
   }
   
-  public static void a(boolean paramBoolean1, Activity paramActivity, aeyx paramaeyx, AppInterface paramAppInterface, String paramString, ajpy paramajpy, boolean paramBoolean2)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public String toString()
   {
-    if (paramajpy == null)
+    if (this.a != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder("[");
+      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
+      return localStringBuilder.toString();
     }
-    if ((paramActivity == null) || (paramAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramajpy.a(false, null);
-      return;
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramaeyx = ajco.a(paramString);
-      if ((paramaeyx == null) || (paramaeyx.a == null) || (paramaeyx.a.get() != paramActivity))
-      {
-        paramajpy.a(false, paramaeyx);
-        return;
-      }
-      paramajpy.a(true, paramaeyx);
-      return;
-    }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramajpy));
+    return "ApolloActionData is null";
   }
 }
 

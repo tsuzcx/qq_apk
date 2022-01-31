@@ -1,28 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class azid
-  implements URLDrawable.URLDrawableListener
+  implements azih
 {
-  public azid(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, azif paramazif) {}
+  public azid(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Azif.a(null);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Azif.a(null);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bdhr.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Azif.a(paramURLDrawable);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bcww);
+    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

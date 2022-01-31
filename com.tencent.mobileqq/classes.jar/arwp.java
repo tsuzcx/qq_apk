@@ -1,31 +1,83 @@
-import android.app.Dialog;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class arwp
-  implements QQPermissionCallback
+class arwp
+  implements aryo
 {
-  public arwp(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
+  private long jdField_a_of_type_Long;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  arwp(arwj paramarwj, Activity paramActivity) {}
+  
+  public void a(LocationRoom.Venue paramVenue) {}
+  
+  public void a(LatLng paramLatLng)
   {
-    paramArrayOfString = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new arwq(this));
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
+      return;
     }
-    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
-    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
-    paramArrayOfInt = aruq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "onMapStable onClick: invoked. center: " + paramLatLng);
+    }
+    arwj.a(this.jdField_a_of_type_Arwj, paramLatLng);
+    arwj.a(this.jdField_a_of_type_Arwj).a(arwj.a(this.jdField_a_of_type_Arwj), arwj.a(this.jdField_a_of_type_Arwj).getMap(), paramLatLng, "");
+    axqy.b(null, "CliOper", "", "", "0X800A95D", "0X800A95D", 0, 0, "", "0", "0", "");
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+    if (paramList != null)
+    {
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
+      {
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.jdField_a_of_type_Arwj.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bbef.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+          arwj.a(this.jdField_a_of_type_Arwj).a(paramList, localBitmap);
+        }
+      }
+    }
   }
+  
+  public void a(boolean paramBoolean, Point paramPoint)
+  {
+    if (paramBoolean)
+    {
+      arwj.a(this.jdField_a_of_type_Arwj).setClickable(false);
+      if (bfwr.a()) {
+        arwj.a(this.jdField_a_of_type_Arwj).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840251));
+      }
+    }
+    Rect localRect;
+    do
+    {
+      return;
+      arwj.a(this.jdField_a_of_type_Arwj).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840250));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      arwj.a(this.jdField_a_of_type_Arwj).getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    arwj.a(this.jdField_a_of_type_Arwj).setClickable(true);
+    arwj.a(this.jdField_a_of_type_Arwj).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840252));
+  }
+  
+  public void a(boolean paramBoolean, aryp paramaryp) {}
 }
 
 

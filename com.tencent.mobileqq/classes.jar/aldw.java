@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
 public final class aldw
-  implements Parcelable.Creator<ARScanStarFaceActInfo>
+  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
 {
-  public ARScanStarFaceActInfo a(Parcel paramParcel)
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    return new ARScanStarFaceActInfo(paramParcel);
+    return new ARScanStarFaceConfigInfo(paramParcel);
   }
   
-  public ARScanStarFaceActInfo[] a(int paramInt)
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
   {
-    return new ARScanStarFaceActInfo[paramInt];
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 

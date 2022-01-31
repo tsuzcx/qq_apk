@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.music.humrecognition.view;
 
-import bdid;
-import bjdz;
-import bjto;
+import bdis;
+import bjeq;
+import bjuf;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -30,7 +30,7 @@ class BgmRecognitionProviderView$2
     if (QLog.isColorLevel()) {
       QLog.e("BgmRecognitionProviderView", 2, "run: invoked. info: Failed to get audioFile. audioFile = " + localFile);
     }
-    bdid.a().a(2131698307);
+    bdis.a().a(2131698317);
   }
 }
 

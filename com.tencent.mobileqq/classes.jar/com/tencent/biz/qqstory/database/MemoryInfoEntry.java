@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.text.TextUtils;
-import aukm;
-import auma;
-import ssl;
+import auko;
+import aumc;
+import ssi;
 
 public class MemoryInfoEntry
-  extends aukm
-  implements ssl
+  extends auko
+  implements ssi
 {
   public String cookie = "";
   public int isEnd = -1;
@@ -15,7 +15,7 @@ public class MemoryInfoEntry
   public long maxCollectionIndex = -1L;
   public long seq = -1L;
   public int timeZone = -1;
-  @auma
+  @aumc
   public String unionId = "";
   
   public MemoryInfoEntry() {}

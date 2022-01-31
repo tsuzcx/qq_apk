@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class aiia
-  implements DialogInterface.OnClickListener
+  implements aptw
 {
-  public aiia(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  public aiia(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
+  
+  public void b() {}
 }
 
 

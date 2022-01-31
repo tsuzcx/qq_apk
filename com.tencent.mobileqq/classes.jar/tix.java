@@ -1,31 +1,24 @@
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.widget.TextView;
 
-class tix
-  extends tiq
+public class tix
+  extends tiv
 {
-  public tix(ViewGroup paramViewGroup)
+  protected TextView c = (TextView)a(2131378649);
+  
+  public tix(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramViewGroup, 2131561302);
+    super(paramViewGroup, paramInt);
   }
   
-  public void a(String paramString)
+  public void a(tff paramtff)
   {
-    b(paramString);
-  }
-  
-  public void a(tfi paramtfi)
-  {
-    super.a(paramtfi);
-    veg.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramtfi);
-    a(vzl.b(paramtfi.g));
-    this.a.setNodeName(paramtfi.c, 2130845744);
-  }
-  
-  protected void b(tfi paramtfi)
-  {
-    this.a.setDisplayState(6);
-    this.a.a(paramtfi);
+    if (paramtff.b > 99)
+    {
+      this.c.setText("99+");
+      return;
+    }
+    this.c.setText(String.valueOf(paramtff.b));
   }
 }
 

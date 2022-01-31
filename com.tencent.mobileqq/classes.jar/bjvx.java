@@ -1,25 +1,77 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.List;
 
-@TargetApi(21)
-public class bjvx
-  extends ViewOutlineProvider
+class bjvx
+  implements bjmf
 {
-  private float a;
+  bjvx(bjvt parambjvt, int paramInt) {}
   
-  public bjvx(float paramFloat)
+  public void a()
   {
-    this.a = paramFloat;
+    VideoSegmentPickerProviderView localVideoSegmentPickerProviderView = (VideoSegmentPickerProviderView)this.jdField_a_of_type_Bjvt.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111);
+    boolean bool;
+    Object localObject;
+    if (localVideoSegmentPickerProviderView != null)
+    {
+      bool = this.jdField_a_of_type_Bjvt.jdField_a_of_type_Bjxn.a.a("extra_is_need_gaussion_blur", false);
+      if ((this.jdField_a_of_type_Bjvt.jdField_a_of_type_Bjxn.a.a instanceof EditTakeVideoSource))
+      {
+        localObject = (EditTakeVideoSource)this.jdField_a_of_type_Bjvt.jdField_a_of_type_Bjxn.a.a;
+        localVideoSegmentPickerProviderView.setVideo(((EditTakeVideoSource)localObject).jdField_a_of_type_JavaLangString, 0L, ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, ((EditTakeVideoSource)localObject).a(), ((EditTakeVideoSource)localObject).b(), ((EditTakeVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, true, bool);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if ((this.jdField_a_of_type_Bjvt.jdField_a_of_type_Bjxn.a.a instanceof EditLocalVideoSource))
+    {
+      localObject = (EditLocalVideoSource)this.jdField_a_of_type_Bjvt.jdField_a_of_type_Bjxn.a.a;
+      localVideoSegmentPickerProviderView.setVideo(((EditLocalVideoSource)localObject).jdField_a_of_type_JavaLangString, ((EditLocalVideoSource)localObject).jdField_a_of_type_Int, ((EditLocalVideoSource)localObject).b, ((EditLocalVideoSource)localObject).a(), ((EditLocalVideoSource)localObject).b(), ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, false, bool);
+      return;
+    }
+    throw new IllegalArgumentException("SegmentEdit init error");
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public void a(long paramLong)
   {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    bjtj localbjtj = (bjtj)this.jdField_a_of_type_Bjvt.a(bjtj.class);
+    if (localbjtj != null) {
+      localbjtj.a(this.jdField_a_of_type_Int + paramLong, true);
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    bjtj localbjtj = (bjtj)this.jdField_a_of_type_Bjvt.a(bjtj.class);
+    if (localbjtj != null) {
+      localbjtj.a(this.jdField_a_of_type_Int, false);
+    }
+    this.jdField_a_of_type_Bjvt.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.d();
+    this.jdField_a_of_type_Bjvt.jdField_a_of_type_Bjxn.a(0);
+  }
+  
+  public void a(List<Long> paramList)
+  {
+    bjtj localbjtj = (bjtj)this.jdField_a_of_type_Bjvt.a(bjtj.class);
+    if (localbjtj != null) {
+      localbjtj.a(paramList);
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    bjtj localbjtj = (bjtj)this.jdField_a_of_type_Bjvt.a(bjtj.class);
+    if (localbjtj != null) {
+      localbjtj.a(this.jdField_a_of_type_Int + paramLong, true);
+    }
   }
 }
 

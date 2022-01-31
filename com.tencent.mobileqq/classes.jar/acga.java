@@ -1,28 +1,28 @@
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class acga
-  extends akim
+  implements ThreadExcutor.IThreadListener
 {
   public acga(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onAdded()
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
-    }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    asfb.a().b(paramString, this.a.app);
-    this.a.c();
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
   
-  protected void b(String paramString)
+  public void onPostRun()
   {
-    this.a.c();
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 

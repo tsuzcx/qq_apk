@@ -1,7 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class awdc
   implements DialogInterface.OnClickListener
@@ -11,7 +10,6 @@ public class awdc
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_choose", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

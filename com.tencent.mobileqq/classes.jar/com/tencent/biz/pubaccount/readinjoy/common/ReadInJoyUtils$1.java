@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import onk;
+import onh;
 
 public final class ReadInJoyUtils$1
   implements Runnable
@@ -17,8 +17,8 @@ public final class ReadInJoyUtils$1
       do
       {
         return;
-      } while (!onk.y());
-      onk.e(this.a);
+      } while (!onh.y());
+      onh.e(this.a);
     } while (!QLog.isColorLevel());
     QLog.d("ReadInJoyUtils", 2, "handNet2Wifi is show conversation");
   }

@@ -1,8 +1,7 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agzr
   implements View.OnClickListener
@@ -11,8 +10,13 @@ public class agzr
   
   public void onClick(View paramView)
   {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
+    {
+      this.a.addUploadData(paramView, "");
+      return;
+    }
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
+import aiqx;
+import aiqy;
 import aiqz;
-import aira;
-import airb;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class DiyPendantFetcher$2
   implements Runnable
 {
-  public DiyPendantFetcher$2(aiqz paramaiqz, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$2(aiqx paramaiqx, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -28,13 +28,13 @@ public class DiyPendantFetcher$2
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        localObject1 = (airb)this.a.a(114);
+        localObject1 = (aiqz)this.a.a(114);
         localObject2 = new ArrayList();
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
         while (localIterator.hasNext()) {
           ((List)localObject2).add(Long.valueOf(Long.parseLong(((java.lang.String)localIterator.next()).split("_")[0])));
         }
-        ((airb)localObject1).a((List)localObject2, null);
+        ((aiqz)localObject1).a((List)localObject2, null);
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
       }
     }
@@ -44,12 +44,12 @@ public class DiyPendantFetcher$2
     Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (aira)((Iterator)localObject1).next();
-      if ((localObject2 == null) || (((aira)localObject2).a() == null)) {
+      localObject2 = (aiqy)((Iterator)localObject1).next();
+      if ((localObject2 == null) || (((aiqy)localObject2).a() == null)) {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
       }
     }
-    aiqz.jdField_a_of_type_Long = 0L;
+    aiqx.jdField_a_of_type_Long = 0L;
   }
 }
 

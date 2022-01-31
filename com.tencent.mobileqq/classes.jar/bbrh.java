@@ -1,46 +1,25 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bbrh
+class bbrh
+  implements INetInfoHandler
 {
-  private static final Comparator<bbrf> jdField_a_of_type_JavaUtilComparator = new bbri();
-  private List<bbrf> jdField_a_of_type_JavaUtilList;
+  public void onNetMobile2None() {}
   
-  public List<bbrf> a()
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+    bbrg.a();
   }
   
-  public void a(int[] paramArrayOfInt, int paramInt)
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
   {
-    Object localObject = new bbrg();
-    int i = 0;
-    while (i < paramArrayOfInt.length)
-    {
-      ((bbrg)localObject).a(paramArrayOfInt[i]);
-      while (((bbrg)localObject).jdField_a_of_type_JavaUtilList.size() > paramInt) {
-        ((bbrg)localObject).a();
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramArrayOfInt = ((bbrg)localObject).jdField_a_of_type_JavaUtilList.iterator();
-    while (paramArrayOfInt.hasNext())
-    {
-      localObject = (bbrf)paramArrayOfInt.next();
-      ((bbrf)localObject).jdField_a_of_type_Long = ((int)((float)((bbrf)localObject).jdField_a_of_type_Long / ((bbrf)localObject).jdField_a_of_type_Int));
-      ((bbrf)localObject).b = ((int)((float)((bbrf)localObject).b / ((bbrf)localObject).jdField_a_of_type_Int));
-      ((bbrf)localObject).c = ((int)((float)((bbrf)localObject).c / ((bbrf)localObject).jdField_a_of_type_Int));
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-    }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
+    bbrg.a();
   }
+  
+  public void onNetWifi2None() {}
 }
 
 

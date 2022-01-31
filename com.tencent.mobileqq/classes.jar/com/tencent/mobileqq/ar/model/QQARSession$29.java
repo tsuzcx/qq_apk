@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import alhc;
-import alkz;
+import alhb;
+import alky;
 
 public class QQARSession$29
   implements Runnable
 {
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!alkz.a(this.this$0))) {
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!alky.a(this.this$0))) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_Alhc != null) {
-      this.this$0.jdField_a_of_type_Alhc.a(false, alkz.a(this.this$0), alkz.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_Alhb != null) {
+      this.this$0.jdField_a_of_type_Alhb.a(false, alky.a(this.this$0), alky.b(this.this$0));
     }
-    alkz.a(this.this$0, 0);
+    alky.a(this.this$0, 0);
     this.this$0.c = false;
   }
 }

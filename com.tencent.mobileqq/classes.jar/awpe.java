@@ -6,14 +6,12 @@ import pb.unify.search.UnifySearchCommon.ResultItem;
 import pb.unite.search.DynamicSearch.ResultItem;
 
 public class awpe
-  extends awop
+  extends awor
 {
-  public static final String a = awpe.class.getSimpleName();
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  public boolean b;
   
   public awpe(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -27,20 +25,24 @@ public class awpe
   
   public void a(String paramString)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(a, 0, paramString.toString());
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_JavaLangCharSequence = awwa.a(paramString.optJSONArray("leftText"));
+        this.jdField_b_of_type_JavaLangCharSequence = awwa.a(paramString.optJSONArray("rightText"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
+        if (paramString.optInt("needCenter") == 1)
+        {
+          this.jdField_b_of_type_Boolean = bool;
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(c, 0, paramString.toString());
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 package dov.com.qq.im;
 
-import bbjn;
-import bihd;
-import bjqu;
+import bbkb;
+import bihu;
+import bjrl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -10,14 +10,14 @@ import mqq.os.MqqHandler;
 public class QIMReadinjoyEffectsCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMReadinjoyEffectsCameraCaptureUnit$2(bihd parambihd) {}
+  public QIMReadinjoyEffectsCameraCaptureUnit$2(bihu parambihu) {}
   
   public void run()
   {
-    if (!bbjn.t(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin()))
+    if (!bbkb.t(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin()))
     {
       ThreadManager.getUIHandler().post(new QIMReadinjoyEffectsCameraCaptureUnit.2.1(this));
-      bbjn.B(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin());
+      bbkb.B(this.this$0.a.a(), this.this$0.a.a().getCurrentAccountUin());
     }
   }
 }

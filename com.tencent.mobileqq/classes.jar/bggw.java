@@ -1,28 +1,72 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
-import cooperation.comic.VipComicHelper.2.1;
-import mqq.os.MqqHandler;
+import cooperation.buscard.BuscardHelper;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class bggw
-  implements WebBundleH5OptionListner
+public class bggw
+  implements ActivityLifecycle.ActivityLifecycleCallback
 {
-  bggw(SharedPreferences paramSharedPreferences) {}
-  
-  public void enableWebBundle(boolean paramBoolean)
+  public void onNewIntent(Activity paramActivity, Intent paramIntent)
   {
-    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
-    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
-    if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new VipComicHelper.2.1(this));
+    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
+      BuscardHelper.a("", paramActivity, paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
+    }
+  }
+  
+  public void onPause(Activity paramActivity)
+  {
+    try
+    {
+      BuscardHelper.a(paramActivity, true, "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
+      }
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      for (;;)
+      {
+        paramActivity.printStackTrace();
+      }
+    }
+  }
+  
+  public void onResume(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
+    }
+    try
+    {
+      if ((paramActivity instanceof AppActivity))
+      {
+        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
+        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
+        {
+          BuscardHelper.a(paramActivity, true, "", "", null);
+          return;
+        }
+        BuscardHelper.a(paramActivity, true, "", "");
+        return;
+      }
+    }
+    catch (Throwable paramActivity)
+    {
+      paramActivity.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bggw
  * JD-Core Version:    0.7.0.1
  */

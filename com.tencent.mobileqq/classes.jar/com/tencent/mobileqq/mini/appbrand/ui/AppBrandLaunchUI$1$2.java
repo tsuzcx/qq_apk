@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ class AppBrandLaunchUI$1$2
       str = this.val$ret.optString("errMsg");
     }
     QLog.e("miniapp-start_AppBrandLaunchUI", 1, "getAppInfoById failed. retCode=" + l + " errMsg=" + str);
-    bcpw.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
   }
 }
 

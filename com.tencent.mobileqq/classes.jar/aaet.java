@@ -1,119 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.1;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.2;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.3;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.qphone.base.util.BaseApplication;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class aaet
+  implements View.OnClickListener
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 7;
-    case 2: 
-      return 0;
-    case 3: 
-      return 9;
-    case 4: 
-      return 11;
-    case 5: 
-      return 12;
-    case 6: 
-      return 13;
-    }
-    return 14;
-  }
+  public aaet(AboutActivity paramAboutActivity) {}
   
-  public static String a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    int i = 2;
+    if (bdlr.a().b())
     {
-    case 1: 
-    default: 
-      return "android";
-    case 2: 
-      return "ark";
-    case 5: 
-      return "limi";
-    case 3: 
-      return "mini_game";
-    case 4: 
-      return "mini_app";
-    case 6: 
-      return "qqpay";
-    }
-    return "web";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
+      if (bbjm.a()) {
+        i = 1;
+      }
+      axqy.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      paramView.putExtra("activity_type", 4096);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(paramView);
       }
     }
     do
     {
-      return null;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
-    return null;
-    int i = paramString.indexOf('?');
-    int j = paramString.indexOf('#');
-    if (i == -1)
-    {
-      i = j;
-      if (j == -1) {
-        i = paramString.length();
-      }
-    }
-    for (;;)
-    {
-      return paramString.substring(0, i);
-      if (j != -1) {
-        i = Math.min(i, j);
-      }
-    }
-  }
-  
-  public static void a(aabm paramaabm, int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.4(paramaabm, paramInt));
-  }
-  
-  public static void a(aabm paramaabm, int paramInt, String paramString)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.2(paramaabm, paramInt, paramString));
-  }
-  
-  public static void a(aabm paramaabm, JSONObject paramJSONObject)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.1(paramaabm, paramJSONObject));
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.sProcessId == 1;
-  }
-  
-  public static void b(aabm paramaabm, JSONObject paramJSONObject)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramaabm, paramJSONObject));
+      do
+      {
+        return;
+        if ((AboutActivity.a(this.a).jdField_a_of_type_Akve == null) || (!bbjm.a(AboutActivity.a(this.a).jdField_a_of_type_Akve.a))) {
+          break;
+        }
+        if (bbjm.a()) {
+          i = 1;
+        }
+        axqy.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+        paramView.putExtra("activity_type", 4096);
+      } while (BaseActivity.sTopActivity == null);
+      BaseActivity.sTopActivity.startActivity(paramView);
+      return;
+    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akuz.a(), "");
+    UpgradeDetailActivity.a(this.a, akuz.a().a(), false, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaet
  * JD-Core Version:    0.7.0.1
  */

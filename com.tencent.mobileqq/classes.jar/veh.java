@@ -1,11 +1,16 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+
 public class veh
+  extends syn
 {
-  public static void a(int paramInt, String paramString)
+  public veh(qqstory_service.RspMonitorValue paramRspMonitorValue)
   {
-    vej localvej = new vej();
-    localvej.a(paramInt, 1);
-    localvej.a = paramString;
-    syr.a().a(localvej, new vei());
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bbkx;
-import bhce;
-import bhcw;
+import bbll;
+import bhcv;
+import bhdn;
 import cooperation.qzone.contentbox.model.MQBottomCell;
 import cooperation.qzone.contentbox.model.MQMsg;
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class MsgMoreView
   extends FrameLayout
 {
-  private static final int jdField_a_of_type_Int = bbkx.b(24.0F);
+  private static final int jdField_a_of_type_Int = bbll.b(24.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bhcw jdField_a_of_type_Bhcw;
+  private bhdn jdField_a_of_type_Bhdn;
   private MQMsg jdField_a_of_type_CooperationQzoneContentboxModelMQMsg;
   
   public MsgMoreView(@NonNull Context paramContext)
@@ -44,9 +44,9 @@ public class MsgMoreView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131561991, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131362965));
-    setOnClickListener(new bhce(this));
+    LayoutInflater.from(paramContext).inflate(2131561990, this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131362964));
+    setOnClickListener(new bhcv(this));
   }
   
   public void setData(MQMsg paramMQMsg, boolean paramBoolean)
@@ -77,13 +77,13 @@ public class MsgMoreView
       }
     }
     if (paramBoolean) {
-      ((TextView)findViewById(2131370438)).setTextColor(-7500397);
+      ((TextView)findViewById(2131370437)).setTextColor(-7500397);
     }
   }
   
-  public void setMsgOnClickListener(bhcw parambhcw)
+  public void setMsgOnClickListener(bhdn parambhdn)
   {
-    this.jdField_a_of_type_Bhcw = parambhcw;
+    this.jdField_a_of_type_Bhdn = parambhdn;
   }
 }
 

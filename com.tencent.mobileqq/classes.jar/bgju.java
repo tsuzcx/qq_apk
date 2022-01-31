@@ -1,37 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgju
-  extends Handler
+class bgju
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  public bgju(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bgju(bgjq parambgjq) {}
   
-  public void dispatchMessage(Message paramMessage)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        GVideoPluginInstallerActivity.a(this.a);
-        return;
-      }
-    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
-    this.a.a.setText((String)paramMessage.obj);
-    return;
-    GVideoPluginInstallerActivity.b(this.a);
-    return;
-    this.a.finish();
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
+    }
   }
 }
 

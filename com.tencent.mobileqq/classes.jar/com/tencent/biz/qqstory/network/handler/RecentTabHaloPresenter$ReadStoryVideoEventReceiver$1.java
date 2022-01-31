@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import tdu;
+import tdr;
+import tkp;
 import tks;
-import tkv;
 
 public class RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1
   implements Runnable
 {
-  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(tkv paramtkv, tks paramtks, tdu paramtdu) {}
+  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(tks paramtks, tkp paramtkp, tdr paramtdr) {}
   
   public void run()
   {
-    tkv.a(this.this$0, this.jdField_a_of_type_Tks, this.jdField_a_of_type_Tdu);
+    tks.a(this.this$0, this.jdField_a_of_type_Tkp, this.jdField_a_of_type_Tdr);
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.open.appcommon.js;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import bdff;
-import bdlq;
+import bdfu;
+import bdmf;
 
 public class AppInterface$2
   implements Runnable
@@ -14,17 +14,17 @@ public class AppInterface$2
   public void run()
   {
     Resources localResources = this.this$0.activity.getResources();
-    bdlq localbdlq = new bdlq(this.this$0.activity);
-    localbdlq.a(2131691668, this.a, true);
-    localbdlq.b(2131691669, this.a, true);
-    localbdlq.a(localResources.getString(2131691672));
-    localbdlq.b(localResources.getString(2131691657));
-    localbdlq.setCancelable(false);
-    localbdlq.setOnDismissListener(new bdff(this));
+    bdmf localbdmf = new bdmf(this.this$0.activity);
+    localbdmf.a(2131691668, this.a, true);
+    localbdmf.b(2131691669, this.a, true);
+    localbdmf.a(localResources.getString(2131691672));
+    localbdmf.b(localResources.getString(2131691657));
+    localbdmf.setCancelable(false);
+    localbdmf.setOnDismissListener(new bdfu(this));
     if ((this.this$0.activity != null) && (!this.this$0.activity.isFinishing())) {
-      localbdlq.show();
+      localbdmf.show();
     }
-    this.this$0.tipDialog = localbdlq;
+    this.this$0.tipDialog = localbdmf;
   }
 }
 

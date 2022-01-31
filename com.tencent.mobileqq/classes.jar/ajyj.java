@@ -1,24 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class ajyj
-  implements bcij<oidb_0x8e4.RspBody>
+final class ajyj
+  implements View.OnClickListener
 {
-  ajyj(ajyi paramajyi) {}
+  ajyj(Dialog paramDialog) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRspBody))
-      {
-        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
-        atcf.a().a(0, paramRspBody, 0L, null);
-      }
-    }
+    this.a.dismiss();
   }
 }
 

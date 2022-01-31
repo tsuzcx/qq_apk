@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-public class acau
-  implements View.OnClickListener
+public abstract interface acau
 {
-  public acau(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
+  public abstract void a(Editable paramEditable);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-  }
+  public abstract void a(ResultRecord paramResultRecord);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,27 +1,14 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSNavigateTo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Pattern;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
-public class ppy
-  implements IPTSNavigateTo
+class ppy
+  extends ppb
 {
-  private final String a = "PTSNavigateToModule";
+  ppy(ppx paramppx) {}
   
-  public void navigateTo(String paramString)
+  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
   {
-    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
-    paramString = Pattern.compile("\\/").split(paramString);
-    if ((paramString != null) && (paramString.length > 0))
-    {
-      paramString = paramString[(paramString.length - 1)];
-      Intent localIntent = new Intent();
-      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", paramString);
-      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
-    }
+    ppx.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
   }
 }
 

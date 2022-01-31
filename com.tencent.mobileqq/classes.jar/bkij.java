@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class bkij
-  implements DialogInterface.OnShowListener
+  extends Handler
 {
-  bkij(bkih parambkih, boolean paramBoolean) {}
+  private WeakReference<bkii> a;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public bkij(WeakReference<bkii> paramWeakReference)
   {
-    if (bkih.a(this.jdField_a_of_type_Bkih) != null) {
-      bkih.a(this.jdField_a_of_type_Bkih).onShow(paramDialogInterface);
+    this.a = paramWeakReference;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.get() != null) {
+      bkii.a((bkii)this.a.get());
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bkih.a(this.jdField_a_of_type_Bkih).b();
-      return;
-    }
-    bkih.a(this.jdField_a_of_type_Bkih).a(true);
   }
 }
 

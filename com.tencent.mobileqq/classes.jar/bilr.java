@@ -1,30 +1,15 @@
 import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
 class bilr
-  implements bjob<bivx>
+  implements bjos<biwo>
 {
-  bilr(bilj parambilj) {}
+  bilr(bill parambill) {}
   
-  public void a(@Nullable bivx parambivx)
+  public void a(@Nullable biwo parambiwo)
   {
-    if (parambivx == null) {}
-    do
-    {
-      return;
-      bilj.a(this.a).q();
-      if (parambivx == bivx.a)
-      {
-        bilj.a(this.a);
-        return;
-      }
-      if (parambivx == bivx.c)
-      {
-        bilj.a(this.a).setVisibility(8);
-        return;
-      }
-    } while (parambivx != bivx.b);
-    bilj.a(this.a).setVisibility(8);
+    if (parambiwo == biwo.b) {
+      bill.a(this.a);
+    }
   }
 }
 

@@ -1,48 +1,52 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public class tlx
-  extends syq
+  extends syn
 {
-  public List<tly> a;
+  public HashSet<String> a;
+  public List<uxm> a;
   
   public tlx(ErrorMessage paramErrorMessage)
   {
     super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
   
-  public tlx(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
+  public tlx(qqstory_service.RspStoryFeed paramRspStoryFeed)
   {
-    super(paramRspBatchFeedLike.result);
+    super(paramRspStoryFeed.result);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
-    while (paramRspBatchFeedLike.hasNext())
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    paramRspStoryFeed = paramRspStoryFeed.feed_list.get().iterator();
+    while (paramRspStoryFeed.hasNext())
     {
-      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
-      tly localtly = new tly();
-      localtly.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
-      localtly.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
-      localtly.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
-      localtly.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
+      qqstory_struct.StoryFeed localStoryFeed = (qqstory_struct.StoryFeed)paramRspStoryFeed.next();
+      int i = localStoryFeed.type.get();
+      uxm localuxm = uxm.a(i);
+      if (localuxm == null)
       {
-        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
-        localLikeEntry.feedId = localtly.jdField_a_of_type_JavaLangString;
-        localtly.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
+        ved.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "目前没有这个类型的Feed=" + i);
       }
-      this.jdField_a_of_type_JavaUtilList.add(localtly);
+      else if (localuxm.a(localStoryFeed))
+      {
+        if (localuxm.a() != null) {
+          this.jdField_a_of_type_JavaUtilHashSet.add(localuxm.a().feedId);
+        }
+        if ((!(localuxm instanceof uxl)) || (!uke.a((ShareGroupFeedItem)((uxl)localuxm).a()))) {
+          this.jdField_a_of_type_JavaUtilList.add(localuxm);
+        }
+      }
     }
   }
 }

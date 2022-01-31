@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
 public final class alea
-  implements Parcelable.Creator<ArConfigInfo>
+  implements Parcelable.Creator<ArEffectConfig>
 {
-  public ArConfigInfo a(Parcel paramParcel)
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    return new ArConfigInfo(paramParcel);
+    return new ArEffectConfig(paramParcel);
   }
   
-  public ArConfigInfo[] a(int paramInt)
+  public ArEffectConfig[] a(int paramInt)
   {
-    return new ArConfigInfo[paramInt];
+    return new ArEffectConfig[paramInt];
   }
 }
 

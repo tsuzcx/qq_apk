@@ -1,15 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
 
-public abstract interface arkd
+public final class arkd
+  implements Parcelable.Creator<SingTogetherSession>
 {
-  public abstract arkg a();
+  public SingTogetherSession a(Parcel paramParcel)
+  {
+    return new SingTogetherSession(paramParcel, null);
+  }
   
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
-  
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, arkf paramarkf);
-  
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, Bundle paramBundle, arkf paramarkf);
+  public SingTogetherSession[] a(int paramInt)
+  {
+    return new SingTogetherSession[paramInt];
+  }
 }
 
 

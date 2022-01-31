@@ -1,25 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class oxh
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+public abstract interface oxh
 {
-  public oxh(VideoView paramVideoView) {}
-  
-  public void OnDownloadCallback(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      paramString.getInt("callBackType");
-      int i = paramString.getInt("fileSize");
-      this.a.setFileSize(i);
-      return;
-    }
-    catch (JSONException paramString) {}
-  }
+  public abstract boolean a();
 }
 
 

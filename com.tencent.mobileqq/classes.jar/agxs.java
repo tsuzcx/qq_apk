@@ -1,20 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class agxs
-  implements bcjx
+  implements OnCompositionLoadedListener
 {
-  public agxs(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
+  public agxs(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
   }
 }
 

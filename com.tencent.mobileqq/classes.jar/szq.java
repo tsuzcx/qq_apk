@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class szq
-  extends ssk
+class szq
+  extends szr
 {
-  public int a;
-  public View a;
-  public ViewGroup a;
+  szq(szp paramszp) {}
   
-  public szq(szp paramszp) {}
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  {
+    this.a.a.a.e();
+    if (paramBoolean) {
+      this.a.a.a.a(true, paramCommentEntry);
+    }
+  }
 }
 
 

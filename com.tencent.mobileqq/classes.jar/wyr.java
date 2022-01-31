@@ -1,16 +1,42 @@
 import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class wyr
-  extends bbwf
+  implements axeq
 {
-  wyr(wym paramwym, Bundle paramBundle) {}
+  wyr(wyq paramwyq) {}
   
-  public void onDone(bbwg parambbwg)
+  public void G_()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Wym.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.jdField_a_of_type_Wyj.a.b = false;
   }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    {
+      if (paramInt == 0) {
+        break label152;
+      }
+      VideoEnvironment.a("TroopMemberApiService", ajya.a(2131715564) + paramInt + "]", null);
+      ShortVideoResourceManager.a(ajya.a(2131715618));
+      axdu.a(2, paramInt);
+      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    }
+    for (;;)
+    {
+      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      this.a.jdField_a_of_type_Wyj.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
+      this.a.jdField_a_of_type_Wyj.a.b = false;
+      return;
+      label152:
+      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

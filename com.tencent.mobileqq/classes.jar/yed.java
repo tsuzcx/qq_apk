@@ -1,21 +1,12 @@
 import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import mqq.app.QQPermissionCallback;
 
 public class yed
-  implements QQPermissionCallback
 {
-  public yed(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.b(this.a);
-    this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    DeviceMsgSettingActivity.a(this.a);
-  }
+  private yed(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
 }
 
 

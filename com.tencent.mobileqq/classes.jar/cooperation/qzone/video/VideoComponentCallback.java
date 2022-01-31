@@ -1,15 +1,15 @@
 package cooperation.qzone.video;
 
-import ahuc;
+import ahua;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcpw;
-import bgxy;
-import bgyf;
-import bhkl;
+import bcql;
+import bgyp;
+import bgyw;
+import bhlc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -19,11 +19,11 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QzonePluginProxyActivity;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import vtp;
-import vuc;
+import vtm;
+import vtz;
 
 public class VideoComponentCallback
-  implements ahuc
+  implements ahua
 {
   public static final String a = VideoComponentCallback.class.getName();
   private String b;
@@ -65,7 +65,7 @@ public class VideoComponentCallback
     for (paramInt1 = 213;; paramInt1 = 214)
     {
       paramString3.putInt("param.uploadEntrance", paramInt1);
-      paramString3.putInt("param.entranceSource", vtp.a().a());
+      paramString3.putInt("param.entranceSource", vtm.a().a());
       if (paramInt6 >= 0)
       {
         paramString3.putInt("extra_key_font_id", paramInt6);
@@ -77,7 +77,7 @@ public class VideoComponentCallback
         paramString3.putInt("extra_key_super_font_id", paramInt8);
         paramString3.putString("extra_key_super_font_info", paramString11);
       }
-      bhkl.a().a("cmd.publishVideoMood", paramString3, false);
+      bhlc.a().a("cmd.publishVideoMood", paramString3, false);
       return;
     }
   }
@@ -155,14 +155,14 @@ public class VideoComponentCallback
     try
     {
       boolean bool = LocalMultiProcConfig.getBool("support_trim", false);
-      localObject = bgyf.a();
-      ((bgyf)localObject).a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject = bgyw.a();
+      ((bgyw)localObject).a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       if (!bool) {
         break label296;
       }
       if ("cover_mall_record_video".equals(a()))
       {
-        bgxy.a(paramActivity, (bgyf)localObject, "", 0L, 1000, 2, "", a());
+        bgyp.a(paramActivity, (bgyw)localObject, "", 0L, 1000, 2, "", a());
         return;
       }
     }
@@ -173,8 +173,8 @@ public class VideoComponentCallback
     }
     Intent localIntent = new Intent(paramActivity, PhotoListActivity.class);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
-    localIntent.putExtra("qzone_uin", ((bgyf)localObject).a);
-    localIntent.putExtra("nickname", ((bgyf)localObject).b);
+    localIntent.putExtra("qzone_uin", ((bgyw)localObject).a);
+    localIntent.putExtra("nickname", ((bgyw)localObject).b);
     Object localObject = QzoneConfig.getInstance().getConfig("MiniVideo", "FileSizeLimit");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (long l = 1048576000L;; l = Long.valueOf((String)localObject).longValue())
@@ -185,7 +185,7 @@ public class VideoComponentCallback
       localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", bgxy.a());
+      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", bgyp.a());
       paramActivity.startActivity(localIntent);
       return;
     }
@@ -193,8 +193,8 @@ public class VideoComponentCallback
     if ("cover_mall_record_video".equals(a()))
     {
       int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865);
-      localObject = paramActivity.getString(2131718256);
-      bcpw.a(paramActivity, (CharSequence)localObject, 0).b(i);
+      localObject = paramActivity.getString(2131718267);
+      bcql.a(paramActivity, (CharSequence)localObject, 0).b(i);
       QLog.i(a, 2, "video cover,not support trim," + (String)localObject);
       return;
     }
@@ -203,8 +203,8 @@ public class VideoComponentCallback
     localIntent.putExtra("key_is_upload_video", true);
     localIntent.putExtra("key_need_load_photo_from_intent", false);
     localIntent.putExtra("key_trim_video_black_list", true);
-    localIntent.putExtra("uin", ((bgyf)localObject).a);
-    bgxy.b(paramActivity, (bgyf)localObject, localIntent, 1000);
+    localIntent.putExtra("uin", ((bgyw)localObject).a);
+    bgyp.b(paramActivity, (bgyw)localObject, localIntent, 1000);
   }
   
   public void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
@@ -298,7 +298,7 @@ public class VideoComponentCallback
       QLog.i(a, 2, "videoCover,record video open video preview activity.totalDuration=" + i);
       localBundle.putInt("sv_encode_ref_frame", i1);
       localBundle.putInt("sv_encode_smooth", i2);
-      bgxy.a(paramActivity, 0, null, true, str1, str2, k, m, i * 1000, 0L, i * 1000, 0L, n, localBundle, "", "", a(), "CustomVideoCover");
+      bgyp.a(paramActivity, 0, null, true, str1, str2, k, m, i * 1000, 0L, i * 1000, 0L, n, localBundle, "", "", a(), "CustomVideoCover");
       return;
     }
     if ("ref_h5_record_video".equals(a()))

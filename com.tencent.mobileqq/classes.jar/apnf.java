@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
-
-class apnf
-  implements INetEventHandler
+public abstract interface apnf
 {
-  apnf(apnd paramapnd) {}
+  public abstract void a(float paramFloat);
   
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    if (AppNetConnInfo.isWifiConn())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
-      }
-      bcpw.a(this.a.a, 2131694336, 0).a();
-    }
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

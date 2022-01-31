@@ -1,52 +1,59 @@
-import android.media.MediaPlayer;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import mqq.os.MqqHandler;
 
 public class bktp
-  implements SeekBar.OnSeekBarChangeListener
+  extends MqqHandler
 {
-  public bktp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bktp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void handleMessage(Message paramMessage)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
-    }
-    if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    switch (paramMessage.what)
     {
-      if (this.a.e == 2) {
-        this.a.d();
-      }
-      this.a.c.setImageResource(2130845266);
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b(1);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131694327);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          bcql.a(this.a, 2131719565, 0).a();
+          return;
+          String str = this.a.getString(2131719566);
+          paramMessage = (String)paramMessage.obj;
+          bcql.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
+          bbef.a(this.a, paramMessage);
+          return;
+          paramMessage = bbdj.a(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719598), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719597), 2131719580, 2131718724, new bktq(this), new bktr(this));
+          ShortVideoPlayActivity.a(this.a, paramMessage);
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
+          }
+        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
+        }
+        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
+        }
+        if ((this.a.b != 1) && (this.a.b != 2)) {
+          break;
+        }
+      } while (!this.a.b());
+      this.a.j();
+      this.a.r();
+      return;
+    } while (this.a.b != 0);
+    ShortVideoPlayActivity.a(this.a);
   }
 }
 

@@ -1,18 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class aayj
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public aayj(DialogActivity paramDialogActivity) {}
+  public aayj(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (baxl.a(paramIntent, paramContext))) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

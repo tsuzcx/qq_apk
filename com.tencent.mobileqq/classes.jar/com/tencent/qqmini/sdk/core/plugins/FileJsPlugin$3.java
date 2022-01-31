@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import begy;
-import beka;
-import bekt;
-import besl;
-import beyr;
+import behp;
+import bekr;
+import belk;
+import betc;
+import bezi;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
 import java.io.File;
 import java.util.List;
@@ -16,14 +16,14 @@ import org.json.JSONObject;
 class FileJsPlugin$3
   implements UploaderProxy.UploadListener
 {
-  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, beka parambeka, long paramLong, File paramFile) {}
+  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, bekr parambekr, long paramLong, File paramFile) {}
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
     if (this.this$0.mIsMiniGame) {}
     for (String str = "1";; str = "0")
     {
-      beyr.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
+      bezi.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
@@ -44,7 +44,7 @@ class FileJsPlugin$3
         reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
         this.val$req.a.a("onUploadTaskStateChange", localJSONObject.toString(), 0);
         return;
-        bekt.a("uploadFile", localJSONObject, paramInt);
+        belk.a("uploadFile", localJSONObject, paramInt);
       }
     }
     catch (JSONException paramString)
@@ -71,7 +71,7 @@ class FileJsPlugin$3
     }
     catch (Exception paramMap)
     {
-      besl.d("FileJsPlugin", "httpUpload--headersReceived fail---");
+      betc.d("FileJsPlugin", "httpUpload--headersReceived fail---");
     }
   }
   
@@ -131,7 +131,7 @@ class FileJsPlugin$3
       }
       catch (Exception paramArrayOfByte)
       {
-        besl.d("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
+        betc.d("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
         continue;
       }
       reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);

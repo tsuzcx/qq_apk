@@ -1,192 +1,115 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.GuardManager;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class aksk
-  extends AsyncTask<Void, Integer, Boolean>
+  extends Dialog
+  implements baxz
 {
-  WeakReference<QQAppInterface> a;
+  private static String jdField_a_of_type_JavaLangString = "MsgNotifyPushForSpecialCareDialog";
+  private static String b = ajya.a(2131706961);
+  private static String c = ajya.a(2131706958);
+  private alxf jdField_a_of_type_Alxf;
+  private alxj jdField_a_of_type_Alxj;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private baxy jdField_a_of_type_Baxy;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private RoundImageView jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
+  private String d;
   
-  public aksk(QQAppInterface paramQQAppInterface)
+  @TargetApi(14)
+  public aksk(Context paramContext, @Nullable QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.a = new WeakReference(paramQQAppInterface);
+    super(paramContext, 2131755791);
+    super.getWindow().setWindowAnimations(2131755124);
+    getWindow().setDimAmount(0.5F);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramString;
   }
   
-  protected Boolean a(Void... paramVarArgs)
+  public void a()
   {
+    if (this.jdField_a_of_type_Baxy != null) {
+      this.jdField_a_of_type_Baxy.d();
+    }
+    if (this.jdField_a_of_type_Alxf != null)
+    {
+      this.jdField_a_of_type_Alxf.b(this.jdField_a_of_type_Alxj);
+      this.jdField_a_of_type_Alxf.b();
+    }
+  }
+  
+  public void onBackPressed() {}
+  
+  @TargetApi(16)
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    super.setContentView(2131558915);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)findViewById(2131365139));
+    paramBundle = (TextView)findViewById(2131365150);
+    TextView localTextView = (TextView)findViewById(2131365118);
+    Button localButton = (Button)findViewById(2131365115);
+    ImageView localImageView = (ImageView)findViewById(2131364268);
+    Bitmap localBitmap;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_Baxy = new baxy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Baxy.a(this);
+      localBitmap = this.jdField_a_of_type_Baxy.a(1, this.d, 0);
+      if (localBitmap == null)
+      {
+        if (!this.jdField_a_of_type_Baxy.a()) {
+          this.jdField_a_of_type_Baxy.a(this.d, 1, true);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundDrawable(bbef.a());
+      }
+    }
     for (;;)
     {
-      try
-      {
-        Object localObject = (QQAppInterface)this.a.get();
-        if (localObject == null) {
-          return Boolean.valueOf(false);
-        }
-        if (!((QQAppInterface)localObject).isLogin()) {
-          return Boolean.valueOf(false);
-        }
-        if (!GuardManager.jdField_a_of_type_Boolean) {
-          return Boolean.valueOf(false);
-        }
-        aksf.a((QQAppInterface)localObject);
-        if ((!aksf.jdField_a_of_type_Boolean) || (aksf.jdField_c_of_type_Boolean) || (aksf.jdField_a_of_type_AndroidContentIntent == null)) {
-          return Boolean.valueOf(false);
-        }
-        if ((aksf.b != 0) && (Build.VERSION.SDK_INT > aksf.b)) {
-          return Boolean.valueOf(false);
-        }
-        paramVarArgs = ((QQAppInterface)localObject).c();
-        if (bcpw.a() == 0)
-        {
-          i = 1;
-          if (i != 0)
-          {
-            if (!aksf.a((QQAppInterface)localObject)) {
-              return Boolean.valueOf(false);
-            }
-            localObject = PreferenceManager.getDefaultSharedPreferences(((QQAppInterface)localObject).getApp());
-            long l3 = System.currentTimeMillis();
-            if (aksf.a() == -1L) {
-              aksf.a(((SharedPreferences)localObject).getLong("push_open_notify_lasttime", l3));
-            }
-            long l1 = 0L;
-            i = 0;
-            int n = ((SharedPreferences)localObject).getInt("push_open_notify_stage", 1);
-            int i1 = ((SharedPreferences)localObject).getInt("push_open_notify_stage_count", 0);
-            int i2 = ((SharedPreferences)localObject).getInt("push_msg_notify_count", 0);
-            if (n == 1)
-            {
-              l1 = aksf.jdField_c_of_type_Int * aksf.jdField_a_of_type_Long;
-              i = aksf.d;
-              j = i;
-              m = i1;
-              l2 = l1;
-              k = n;
-              if (i1 >= i)
-              {
-                SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-                n += 1;
-                localEditor.putInt("push_open_notify_stage", n);
-                localEditor.remove("push_open_notify_stage_count");
-                localEditor.commit();
-                i1 = 0;
-                if (n == 1)
-                {
-                  l2 = aksf.jdField_c_of_type_Int * aksf.jdField_a_of_type_Long;
-                  j = aksf.d;
-                  k = n;
-                  m = i1;
-                }
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PushOpenNotify", 2, new Object[] { "PopOpenMsgNotifation, stage:", Integer.valueOf(k), " stagecount:", Integer.valueOf(m), " count:", Integer.valueOf(i2), " countMax:", Integer.valueOf(j), " pushInteral:", Long.valueOf(l2), " timeDiff:", Long.valueOf(l3 - aksf.a()) });
-                }
-                if ((l3 - aksf.a() <= l2) && (i2 != 0)) {
-                  break label754;
-                }
-                aksf.a(l3);
-                localObject = ((SharedPreferences)localObject).edit();
-                i = m + 1;
-                ((SharedPreferences.Editor)localObject).putInt("push_open_notify_stage_count", i);
-                ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_count", i2 + 1);
-                ((SharedPreferences.Editor)localObject).putLong("push_open_notify_lasttime", l3);
-                if ((k == 1) && (i == 1))
-                {
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_count");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_open");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_cancle");
-                }
-                ((SharedPreferences.Editor)localObject).commit();
-                return Boolean.valueOf(true);
-              }
-            }
-            else
-            {
-              if (n == 2)
-              {
-                l1 = aksf.e * aksf.jdField_a_of_type_Long;
-                i = aksf.f;
-                continue;
-              }
-              if (n != 3) {
-                continue;
-              }
-              l1 = aksf.g * aksf.jdField_a_of_type_Long;
-              i = 2147483647;
-              continue;
-            }
-            if (n == 2)
-            {
-              l2 = aksf.e * aksf.jdField_a_of_type_Long;
-              j = aksf.f;
-              m = i1;
-              k = n;
-              continue;
-            }
-            int j = i;
-            int m = i1;
-            long l2 = l1;
-            int k = n;
-            if (n != 3) {
-              continue;
-            }
-            l1 = aksf.g;
-            l2 = aksf.jdField_a_of_type_Long;
-            l2 = l1 * l2;
-            j = 2147483647;
-            m = i1;
-            k = n;
-            continue;
-          }
-          return Boolean.valueOf(false);
-        }
-      }
-      catch (Exception paramVarArgs)
-      {
-        return Boolean.valueOf(false);
-      }
-      label754:
-      int i = 0;
+      paramBundle.setText(b);
+      localTextView.setText(c);
+      localButton.setText(ajya.a(2131706960));
+      localButton.setOnClickListener(new aksm(this));
+      localImageView.setOnClickListener(new aksn(this));
+      localImageView.setOnTouchListener(new akso(this, localImageView));
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      continue;
+      this.jdField_a_of_type_Alxf = new alxf(this.jdField_a_of_type_AndroidContentContext, 1);
+      this.jdField_a_of_type_Alxf.a();
+      this.jdField_a_of_type_Alxj = new aksl(this);
+      this.jdField_a_of_type_Alxf.a(this.jdField_a_of_type_Alxj);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(this.jdField_a_of_type_Alxf.a(this.d, true));
     }
   }
   
-  protected void a(Boolean paramBoolean)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-      if (paramBoolean.booleanValue())
-      {
-        if (localQQAppInterface == null) {
-          return;
-        }
-        paramBoolean = new Intent(localQQAppInterface.getApp(), DialogActivity.class);
-        paramBoolean.addFlags(268435456);
-        paramBoolean.addFlags(536870912);
-        paramBoolean.addFlags(67108864);
-        paramBoolean.addFlags(131072);
-        paramBoolean.putExtra("key_dialog_type", DialogActivity.jdField_c_of_type_Int);
-        localQQAppInterface.getApp().startActivity(paramBoolean);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "uin=" + paramString + ", type=" + paramInt2 + ",avatar= " + paramBitmap);
     }
-    catch (Exception paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PushOpenNotify", 2, "popOpenMsgNotifation, exception: ", paramBoolean);
-      }
+    if ((paramBitmap == null) || (this.jdField_a_of_type_Baxy.a())) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
   }
 }
 

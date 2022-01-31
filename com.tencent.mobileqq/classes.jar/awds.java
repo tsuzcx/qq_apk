@@ -1,22 +1,16 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class awds
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
   public awds(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if ((paramInt2 < paramInt6) && (this.a.a != null))
-    {
-      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
-      paramInt3 = this.a.a.getHeight();
-      if (paramInt1 + paramInt3 > paramInt2) {
-        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
-      }
-    }
+    axqy.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 2, 0, "0", "0", "", "");
+    SignatureHistoryFragment.a(this.a, true);
   }
 }
 

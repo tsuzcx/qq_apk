@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
 import NS_MOBILE_PHOTO.operation_red_touch_req;
-import avfa;
 import avfc;
-import avpq;
+import avfe;
+import avps;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -14,24 +14,24 @@ import mqq.app.NewIntent;
 public class QzoneAlbumRedTouchManager$1
   implements Runnable
 {
-  public QzoneAlbumRedTouchManager$1(avfa paramavfa) {}
+  public QzoneAlbumRedTouchManager$1(avfc paramavfc) {}
   
   public void run()
   {
     if (this.this$0.a == null) {
       return;
     }
-    Object localObject = (avpq)this.this$0.a.getManager(36);
+    Object localObject = (avps)this.this$0.a.getManager(36);
     String str = String.valueOf(100180);
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avpq)localObject).a(str);
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avps)localObject).a(str);
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
     {
-      ((avpq)localObject).c(str);
+      ((avps)localObject).c(str);
       LocalMultiProcConfig.putBool("key_photo_guide_is_red", false);
       QZoneClickReport.startReportImediately(this.this$0.a.getCurrentAccountUin(), "443", "2");
       return;
     }
-    localObject = new NewIntent(this.this$0.a.getApplication(), avfc.class);
+    localObject = new NewIntent(this.this$0.a.getApplication(), avfe.class);
     ((NewIntent)localObject).putExtra("req", new operation_red_touch_req(2L));
     this.this$0.a.startServlet((NewIntent)localObject);
   }

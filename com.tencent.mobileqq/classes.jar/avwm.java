@@ -1,143 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
-import android.util.SparseArray;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
 
 public class avwm
-  extends avxb
+  extends Handler
 {
-  private SparseArray<avwo> a = new SparseArray();
-  private Handler jdField_b_of_type_AndroidOsHandler = new avwn(this, a());
-  private String jdField_b_of_type_JavaLangString;
-  
-  public avwm(Context paramContext)
+  public avwm(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
   {
-    super(paramContext);
-    int i = ((Activity)paramContext).getIntent().getIntExtra("forward_source_uin_type", -1);
-    if (i == 0)
-    {
-      this.jdField_b_of_type_JavaLangString = "c2c";
-      return;
-    }
-    if (i == 1)
-    {
-      this.jdField_b_of_type_JavaLangString = "grp";
-      return;
-    }
-    if (i == 3000)
-    {
-      this.jdField_b_of_type_JavaLangString = "dis";
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = "other";
-  }
-  
-  private avwo a(int paramInt)
-  {
-    avwo localavwo2 = (avwo)this.a.get(paramInt);
-    avwo localavwo1 = localavwo2;
-    if (localavwo2 == null)
-    {
-      localavwo1 = new avwo(paramInt, this.jdField_b_of_type_JavaLangString);
-      this.a.put(paramInt, localavwo1);
-    }
-    return localavwo1;
+    super(paramLooper);
   }
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidOsHandler.obtainMessage().sendToTarget();
+    if (LiteTcpConnection.a(this.a) != null) {
+      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
+    }
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    avwo.a(a(paramInt));
+    avwm localavwm = LiteTcpConnection.a(this.a);
+    if (localavwm != null) {
+      localavwm.sendEmptyMessage(2);
+    }
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2)
+  public void handleMessage(Message paramMessage)
   {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    String str;
-    if (localavwo != null)
+    if (paramMessage.what == 1) {
+      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
+    }
+    do
     {
-      paramInt = avxd.a(paramLong1, paramLong2);
-      str = null;
-      switch (paramInt)
+      return;
+      if (paramMessage.what == 2)
       {
+        LiteTcpConnection.a(this.a);
+        return;
       }
-    }
-    for (;;)
-    {
-      avwo.b(localavwo, str);
-      return;
-      str = "long";
-      continue;
-      str = "small";
-      continue;
-      str = "mid";
-      continue;
-      str = "large";
-      continue;
-      str = "extra";
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    if (localavwo != null) {
-      avwo.d(localavwo, paramString);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    if (localavwo != null) {
-      avwo.a(localavwo, paramBoolean);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    if ((localavwo != null) && (avwo.a(localavwo))) {
-      avwo.b(localavwo);
-    }
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    if (localavwo != null) {
-      if (!paramBoolean) {
-        break label33;
-      }
-    }
-    label33:
-    for (String str = "dynamic";; str = "static")
-    {
-      avwo.c(localavwo, str);
-      return;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    if ((localavwo != null) && (avwo.a(localavwo))) {
-      avwo.c(localavwo);
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    avwo localavwo = (avwo)this.a.get(paramInt);
-    if ((localavwo != null) && (avwo.a(localavwo))) {
-      avwo.a(localavwo, "sender");
-    }
+    } while (paramMessage.what != 3);
+    LiteTcpConnection.a(this.a).quit();
+    LiteTcpConnection.a(this.a, null);
+    LiteTcpConnection.a(this.a, null);
   }
 }
 

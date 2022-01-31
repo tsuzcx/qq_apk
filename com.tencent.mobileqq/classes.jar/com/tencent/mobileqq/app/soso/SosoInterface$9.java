@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.soso;
 
 import android.text.TextUtils;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 final class SosoInterface$9
@@ -10,7 +10,7 @@ final class SosoInterface$9
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {
-      bcpw.a(BaseApplicationImpl.getContext(), this.a, 1).a();
+      bcql.a(BaseApplicationImpl.getContext(), this.a, 1).a();
     }
   }
 }

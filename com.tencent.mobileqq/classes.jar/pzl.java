@@ -1,12 +1,7 @@
 class pzl
-  extends pyw
+  extends pyt
 {
-  pzl(pzi parampzi) {}
-  
-  public int a()
-  {
-    return -15550475;
-  }
+  pzl(pzf parampzf) {}
 }
 
 

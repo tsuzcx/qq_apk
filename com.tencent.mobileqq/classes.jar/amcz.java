@@ -1,292 +1,343 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.NinePatch;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import android.util.StateSet;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.VipBubbleDrawable.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class amcz
-  extends Drawable
 {
-  private static final ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new ColorMatrixColorFilter(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -26.0F, 0.0F, 1.0F, 0.0F, 0.0F, -26.0F, 0.0F, 0.0F, 1.0F, 0.0F, -26.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F });
-  private static int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
-  private int jdField_a_of_type_Int = 160;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private NinePatch jdField_a_of_type_AndroidGraphicsNinePatch;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public String a;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private NinePatch jdField_b_of_type_AndroidGraphicsNinePatch;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
-  private boolean f;
-  
-  public amcz(Resources paramResources, NinePatch paramNinePatch1, NinePatch paramNinePatch2, int paramInt)
+  public static int a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_a_of_type_AndroidGraphicsNinePatch = paramNinePatch1;
-    this.jdField_b_of_type_AndroidGraphicsNinePatch = paramNinePatch2;
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    if (paramResources != null)
-    {
-      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
-      this.jdField_b_of_type_Int = actn.a(65.0F, paramResources);
-      this.jdField_c_of_type_Int = actn.a(57.0F, paramResources);
+    int i = 0;
+    int k = 0;
+    if (paramArrayOfByte.length != 4) {
+      return k;
     }
-  }
-  
-  private int a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return 0;
-    }
-    if (Build.VERSION.SDK_INT >= 12) {
-      return paramBitmap.getByteCount();
-    }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
-  }
-  
-  private void a(Canvas paramCanvas)
-  {
-    if (paramCanvas == null) {}
-    label261:
+    int j = 3;
     for (;;)
     {
-      return;
-      String str = "bubblebg://" + "0_local_default_" + this.jdField_b_of_type_Boolean;
-      Object localObject1;
-      if (BaseApplicationImpl.sImageCache != null)
-      {
-        localObject1 = (Pair)BaseApplicationImpl.sImageCache.get(str);
-        if (localObject1 != null)
-        {
-          localObject1 = (NinePatch)((Pair)localObject1).first;
-          if (localObject1 != null) {
-            ((NinePatch)localObject1).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-          }
-        }
+      k = i;
+      if (j < 0) {
+        break;
       }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label261;
-        }
-        if (this.jdField_b_of_type_Boolean) {}
-        for (i = 2130848752;; i = 2130848928) {
-          for (;;)
-          {
-            localObject1 = new BitmapFactory.Options();
-            ((BitmapFactory.Options)localObject1).inDensity = 320;
-            ((BitmapFactory.Options)localObject1).inTargetDensity = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
-            try
-            {
-              localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, i, (BitmapFactory.Options)localObject1);
-              if (localObject1 == null) {
-                break;
-              }
-              Object localObject2 = ((Bitmap)localObject1).getNinePatchChunk();
-              if (localObject2 == null) {
-                break;
-              }
-              localObject2 = new NinePatch((Bitmap)localObject1, (byte[])localObject2, null);
-              ((NinePatch)localObject2).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-              if (BaseApplicationImpl.sImageCache == null) {
-                break;
-              }
-              paramCanvas = new Pair(localObject2, Integer.valueOf(a((Bitmap)localObject1)));
-              BaseApplicationImpl.sImageCache.put(str, paramCanvas);
-              return;
-            }
-            catch (OutOfMemoryError paramCanvas)
-            {
-              QLog.e("VipBubbleDrawable", 1, "drawDefaultBubbleBg, decode default bubble bg error, bubbleId=" + this.jdField_d_of_type_Int, paramCanvas);
-              return;
-            }
-          }
-        }
+      k = paramArrayOfByte[j];
+      j -= 1;
+      i = k & 0xFF | i << 8;
+    }
+  }
+  
+  /* Error */
+  public static String a(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 16
+    //   2: invokestatic 22	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   5: astore_2
+    //   6: new 24	java/io/File
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: new 30	java/io/FileInputStream
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 33	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: astore_0
+    //   24: sipush 30720
+    //   27: newarray byte
+    //   29: astore_3
+    //   30: aload_0
+    //   31: aload_3
+    //   32: invokevirtual 36	java/io/FileInputStream:read	([B)I
+    //   35: istore_1
+    //   36: iload_1
+    //   37: ifge +27 -> 64
+    //   40: aload_0
+    //   41: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   44: aload_2
+    //   45: invokevirtual 44	java/security/MessageDigest:digest	()[B
+    //   48: invokestatic 50	bfko:b	([B)Ljava/lang/String;
+    //   51: areturn
+    //   52: astore_0
+    //   53: aload_0
+    //   54: invokevirtual 53	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   57: ldc 55
+    //   59: areturn
+    //   60: astore_0
+    //   61: ldc 55
+    //   63: areturn
+    //   64: aload_2
+    //   65: aload_3
+    //   66: iconst_0
+    //   67: iload_1
+    //   68: invokevirtual 59	java/security/MessageDigest:update	([BII)V
+    //   71: goto -41 -> 30
+    //   74: astore_2
+    //   75: aload_2
+    //   76: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   79: aload_0
+    //   80: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   83: ldc 55
+    //   85: areturn
+    //   86: astore_0
+    //   87: aload_0
+    //   88: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   91: ldc 55
+    //   93: areturn
+    //   94: astore_0
+    //   95: aload_0
+    //   96: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   99: goto -55 -> 44
+    //   102: astore_2
+    //   103: aload_0
+    //   104: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   107: aload_2
+    //   108: athrow
+    //   109: astore_0
+    //   110: aload_0
+    //   111: invokevirtual 60	java/io/IOException:printStackTrace	()V
+    //   114: goto -7 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	paramString	String
+    //   35	33	1	i	int
+    //   5	60	2	localMessageDigest	java.security.MessageDigest
+    //   74	2	2	localIOException	java.io.IOException
+    //   102	6	2	localObject	Object
+    //   29	37	3	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   0	6	52	java/security/NoSuchAlgorithmException
+    //   15	24	60	java/io/FileNotFoundException
+    //   24	30	74	java/io/IOException
+    //   30	36	74	java/io/IOException
+    //   64	71	74	java/io/IOException
+    //   79	83	86	java/io/IOException
+    //   40	44	94	java/io/IOException
+    //   24	30	102	finally
+    //   30	36	102	finally
+    //   64	71	102	finally
+    //   75	79	102	finally
+    //   103	107	109	java/io/IOException
+  }
+  
+  /* Error */
+  public static boolean a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 63	amcz:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: ldc 65
+    //   6: invokevirtual 71	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   9: ifne +19 -> 28
+    //   12: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   15: ifeq +11 -> 26
+    //   18: ldc 79
+    //   20: iconst_2
+    //   21: ldc 81
+    //   23: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: iconst_0
+    //   27: ireturn
+    //   28: new 87	java/io/FileOutputStream
+    //   31: dup
+    //   32: aload_1
+    //   33: invokespecial 88	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   36: astore 4
+    //   38: aconst_null
+    //   39: astore_3
+    //   40: new 90	java/util/zip/GZIPInputStream
+    //   43: dup
+    //   44: new 30	java/io/FileInputStream
+    //   47: dup
+    //   48: aload_0
+    //   49: invokespecial 91	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   52: invokespecial 94	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   55: astore_0
+    //   56: aload_0
+    //   57: astore_3
+    //   58: sipush 1024
+    //   61: newarray byte
+    //   63: astore 5
+    //   65: aload_0
+    //   66: astore_3
+    //   67: aload_0
+    //   68: aload 5
+    //   70: invokevirtual 95	java/util/zip/GZIPInputStream:read	([B)I
+    //   73: istore_2
+    //   74: iload_2
+    //   75: ifle +110 -> 185
+    //   78: aload_0
+    //   79: astore_3
+    //   80: aload 4
+    //   82: aload 5
+    //   84: iconst_0
+    //   85: iload_2
+    //   86: invokevirtual 98	java/io/FileOutputStream:write	([BII)V
+    //   89: goto -24 -> 65
+    //   92: astore_3
+    //   93: aload_0
+    //   94: astore_3
+    //   95: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq +30 -> 128
+    //   101: aload_0
+    //   102: astore_3
+    //   103: ldc 79
+    //   105: iconst_2
+    //   106: new 100	java/lang/StringBuilder
+    //   109: dup
+    //   110: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   113: ldc 104
+    //   115: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: aload_1
+    //   119: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: aload_0
+    //   129: ifnull +7 -> 136
+    //   132: aload_0
+    //   133: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   136: aload 4
+    //   138: ifnull -112 -> 26
+    //   141: aload 4
+    //   143: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   146: iconst_0
+    //   147: ireturn
+    //   148: astore_0
+    //   149: iconst_0
+    //   150: ireturn
+    //   151: astore_0
+    //   152: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   155: ifeq -129 -> 26
+    //   158: ldc 79
+    //   160: iconst_2
+    //   161: new 100	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   168: ldc 104
+    //   170: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: aload_1
+    //   174: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   183: iconst_0
+    //   184: ireturn
+    //   185: aload_0
+    //   186: ifnull +7 -> 193
+    //   189: aload_0
+    //   190: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   193: aload 4
+    //   195: ifnull +8 -> 203
+    //   198: aload 4
+    //   200: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   203: iconst_1
+    //   204: ireturn
+    //   205: astore_0
+    //   206: aload_3
+    //   207: astore_0
+    //   208: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq +11 -> 222
+    //   214: ldc 79
+    //   216: iconst_2
+    //   217: ldc 116
+    //   219: invokestatic 85	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   222: aload_0
+    //   223: ifnull +7 -> 230
+    //   226: aload_0
+    //   227: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   230: aload 4
+    //   232: ifnull -206 -> 26
+    //   235: aload 4
+    //   237: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   240: iconst_0
+    //   241: ireturn
+    //   242: astore_0
+    //   243: iconst_0
+    //   244: ireturn
+    //   245: astore_0
+    //   246: aconst_null
+    //   247: astore_3
+    //   248: aload_3
+    //   249: ifnull +7 -> 256
+    //   252: aload_3
+    //   253: invokevirtual 113	java/util/zip/GZIPInputStream:close	()V
+    //   256: aload 4
+    //   258: ifnull +8 -> 266
+    //   261: aload 4
+    //   263: invokevirtual 114	java/io/FileOutputStream:close	()V
+    //   266: aload_0
+    //   267: athrow
+    //   268: astore_0
+    //   269: goto -76 -> 193
+    //   272: astore_0
+    //   273: goto -70 -> 203
+    //   276: astore_0
+    //   277: goto -141 -> 136
+    //   280: astore_0
+    //   281: goto -51 -> 230
+    //   284: astore_1
+    //   285: goto -29 -> 256
+    //   288: astore_1
+    //   289: goto -23 -> 266
+    //   292: astore_0
+    //   293: goto -45 -> 248
+    //   296: astore_1
+    //   297: aload_0
+    //   298: astore_3
+    //   299: aload_1
+    //   300: astore_0
+    //   301: goto -53 -> 248
+    //   304: astore_1
+    //   305: goto -97 -> 208
+    //   308: astore_0
+    //   309: aconst_null
+    //   310: astore_0
+    //   311: goto -218 -> 93
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	314	0	paramString1	String
+    //   0	314	1	paramString2	String
+    //   73	13	2	i	int
+    //   39	41	3	str1	String
+    //   92	1	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   94	205	3	str2	String
+    //   36	226	4	localFileOutputStream	java.io.FileOutputStream
+    //   63	20	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   58	65	92	java/io/FileNotFoundException
+    //   67	74	92	java/io/FileNotFoundException
+    //   80	89	92	java/io/FileNotFoundException
+    //   141	146	148	java/io/IOException
+    //   28	38	151	java/io/FileNotFoundException
+    //   40	56	205	java/io/IOException
+    //   235	240	242	java/io/IOException
+    //   40	56	245	finally
+    //   189	193	268	java/io/IOException
+    //   198	203	272	java/io/IOException
+    //   132	136	276	java/io/IOException
+    //   226	230	280	java/io/IOException
+    //   252	256	284	java/io/IOException
+    //   261	266	288	java/io/IOException
+    //   58	65	292	finally
+    //   67	74	292	finally
+    //   80	89	292	finally
+    //   95	101	292	finally
+    //   103	128	292	finally
+    //   208	222	296	finally
+    //   58	65	304	java/io/IOException
+    //   67	74	304	java/io/IOException
+    //   80	89	304	java/io/IOException
+    //   40	56	308	java/io/FileNotFoundException
+  }
+  
+  public static String b(String paramString)
+  {
+    String str2 = "";
+    int i = paramString.lastIndexOf('.');
+    String str1 = str2;
+    if (i > 0)
+    {
+      str1 = str2;
+      if (i < paramString.length() - 1) {
+        str1 = paramString.substring(i + 1);
       }
     }
+    return str1;
   }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-    invalidateSelf();
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int[] paramArrayOfInt, String paramString2)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    this.e = paramBoolean;
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.jdField_b_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt;
-      this.jdField_c_of_type_JavaLangString = paramString2;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.f = paramBoolean2;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
-    }
-    for (;;)
-    {
-      invalidateSelf();
-      return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!this.e) {
-      return;
-    }
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new VipBubbleDrawable.1(this));
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    int i = paramCanvas.save();
-    Object localObject;
-    if ((this.f) && (this.jdField_b_of_type_AndroidGraphicsNinePatch != null))
-    {
-      localObject = this.jdField_b_of_type_AndroidGraphicsNinePatch;
-      if (localObject == null) {
-        break label153;
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
-      }
-      ((NinePatch)localObject).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    for (;;)
-    {
-      paramCanvas.restoreToCount(i);
-      localObject = (HashMap)ambf.a().a.get(Integer.valueOf(this.jdField_d_of_type_Int));
-      if ((localObject == null) || (((HashMap)localObject).size() <= 0)) {
-        return;
-      }
-      localObject = ((HashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((amcm)((Iterator)localObject).next()).a(this, paramCanvas);
-      }
-      localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
-      break;
-      label153:
-      QLog.e("VipBubbleDrawable", 1, "draw, ninePatch null, use default, mUseAnimationBg=" + this.f + ", mNormalNinePatch=" + this.jdField_a_of_type_AndroidGraphicsNinePatch + ", mAnimationNinePath" + this.jdField_b_of_type_AndroidGraphicsNinePatch + ", bubbleId=" + this.jdField_d_of_type_Int + ", drawable=" + this);
-      a(paramCanvas);
-    }
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public int getOpacity()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
-      if (!this.jdField_a_of_type_AndroidGraphicsNinePatch.hasAlpha()) {}
-    }
-    while ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))
-    {
-      return -3;
-      return -1;
-    }
-    return -1;
-  }
-  
-  public boolean isStateful()
-  {
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    boolean bool1 = false;
-    boolean bool2 = StateSet.stateSetMatches(jdField_a_of_type_ArrayOfInt, paramArrayOfInt);
-    if (this.jdField_c_of_type_Boolean != bool2)
-    {
-      this.jdField_c_of_type_Boolean = bool2;
-      if ((!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {
-        break label61;
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      invalidateSelf();
-      bool1 = true;
-      return bool1;
-      label61:
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
-    }
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    invalidateSelf();
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

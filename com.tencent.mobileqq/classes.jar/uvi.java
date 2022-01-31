@@ -1,32 +1,38 @@
+import java.util.List;
+
 public class uvi
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private ssp<uvo> a;
   
   public void a()
   {
-    this.a = null;
-    this.b = null;
-    this.c = null;
-    this.d = null;
+    try
+    {
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public void a(uvi paramuvi)
+  public void a(List<uvo> paramList)
   {
-    if (paramuvi.a != null) {
-      this.a = paramuvi.a;
+    try
+    {
+      if (this.a == null) {
+        this.a = new ssp(new uvk());
+      }
+      this.a.a(paramList);
+      return;
     }
-    if (paramuvi.b != null) {
-      this.b = paramuvi.b;
-    }
-    if (paramuvi.c != null) {
-      this.c = paramuvi.c;
-    }
-    if (paramuvi.d != null) {
-      this.d = paramuvi.d;
-    }
+    finally {}
   }
 }
 

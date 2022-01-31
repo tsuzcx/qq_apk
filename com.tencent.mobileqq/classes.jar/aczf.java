@@ -1,42 +1,74 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-class aczf
-  extends View
+public class aczf
+  extends AsyncTask<Long, Void, Void>
 {
-  public aczf(acza paramacza, Context paramContext)
+  private Object jdField_a_of_type_JavaLangObject;
+  
+  public aczf(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
   {
-    super(paramContext);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public void draw(Canvas paramCanvas)
+  protected Void a(Long... paramVarArgs)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
-    int j = arrayOfDrawable.length;
-    int i = 0;
-    while (i < j)
+    for (;;)
     {
-      arrayOfDrawable[i].draw(paramCanvas);
-      i += 1;
+      try
+      {
+        l1 = paramVarArgs[0].longValue();
+        long l2 = paramVarArgs[1].longValue();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
+        {
+          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
+          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
+            break label203;
+          }
+          l1 = 1000L;
+          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
+          return null;
+        }
+        if ((paramVarArgs != null) && (!isCancelled()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
+          l2 = SystemClock.uptimeMillis();
+          if (l2 < l1)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
+            return null;
+          }
+        }
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+        return null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+        return null;
+      }
+      catch (Throwable paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+      }
+      return null;
+      label203:
+      long l1 = 0L;
     }
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void a(Void paramVoid)
   {
-    paramInt1 = 0;
-    paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
-    paramInt4 = arrayOfDrawable.length;
-    paramInt2 = 0;
-    while (paramInt1 < paramInt4)
-    {
-      Drawable localDrawable = arrayOfDrawable[paramInt1];
-      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
-      paramInt2 += localDrawable.getIntrinsicWidth();
-      paramInt1 += 1;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Aczf = null;
   }
 }
 

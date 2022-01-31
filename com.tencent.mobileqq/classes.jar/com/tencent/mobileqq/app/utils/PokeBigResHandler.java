@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.utils;
 
-import ajsf;
-import ajtd;
-import ajtg;
-import akwh;
+import ajsd;
+import ajtb;
+import ajte;
+import akwg;
 import android.os.Looper;
 import android.text.TextUtils;
-import bbdj;
-import bbuv;
-import bfjx;
+import bbdx;
+import bbvj;
+import bfko;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,7 +19,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class PokeBigResHandler
-  extends ajtd
+  extends ajtb
 {
   public static final String a;
   public static boolean a;
@@ -33,12 +33,12 @@ public class PokeBigResHandler
   public static final String d;
   private static String e = "";
   private static String f = "";
-  private static final String g = bbuv.a(ajsf.aW + "/bigPoke");
-  private akwh jdField_a_of_type_Akwh = new akwh();
+  private static final String g = bbvj.a(ajsd.aW + "/bigPoke");
+  private akwg jdField_a_of_type_Akwg = new akwg();
   
   static
   {
-    jdField_a_of_type_JavaLangString = bbuv.a(ajsf.bE);
+    jdField_a_of_type_JavaLangString = bbvj.a(ajsd.bE);
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
     c = jdField_a_of_type_JavaLangString + "/poke_normal";
     d = c + "/dazhao/dazhao_move.png";
@@ -63,12 +63,12 @@ public class PokeBigResHandler
       return;
       try
       {
-        if (!TextUtils.isEmpty(bbuv.a(g)))
+        if (!TextUtils.isEmpty(bbvj.a(g)))
         {
-          bbdj.a(bbuv.a(jdField_a_of_type_JavaLangString), false);
-          bbdj.a(paramString, bbuv.a(jdField_a_of_type_JavaLangString), false);
+          bbdx.a(bbvj.a(jdField_a_of_type_JavaLangString), false);
+          bbdx.a(paramString, bbvj.a(jdField_a_of_type_JavaLangString), false);
         }
-        bbdj.a(paramString, false);
+        bbdx.a(paramString, false);
         long l2 = System.currentTimeMillis();
         if (!QLog.isColorLevel()) {
           continue;
@@ -258,7 +258,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bfjx.a(localFile);
+            paramString = bfko.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -282,7 +282,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = bfjx.a(localFile);
+            paramString = bfko.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -325,7 +325,7 @@ public class PokeBigResHandler
     }
   }
   
-  public Class<? extends ajtg> observerClass()
+  public Class<? extends ajte> observerClass()
   {
     return null;
   }

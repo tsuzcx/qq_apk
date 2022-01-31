@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bbil
-  implements Parcelable.Creator<QQRecorder.RecorderParam>
+class bbil
+  implements View.OnClickListener
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
-  {
-    return new QQRecorder.RecorderParam(paramParcel);
-  }
+  bbil(bbig parambbig, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public QQRecorder.RecorderParam[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QQRecorder.RecorderParam[paramInt];
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbig, 0);
+      this.jdField_a_of_type_Bbig.a();
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bbig.isShowing()) {
+        this.jdField_a_of_type_Bbig.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,252 +1,171 @@
 import android.text.TextUtils;
-import android.view.View;
+import com.tencent.image.GifDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.manager.Manager;
+import java.io.File;
 
 public class awan
-  implements awau, Manager
 {
-  private akav jdField_a_of_type_Akav;
-  private awal jdField_a_of_type_Awal;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, awar> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private QQAppInterface a;
   
   public awan(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
-  private awal a()
+  public static boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_Awal == null) {
-      this.jdField_a_of_type_Awal = new awal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return (paramInt == -2000) || (paramInt == -2022) || (paramInt == -1035) || (paramInt == -1036);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 1004) || (paramInt == 1005) || (paramInt == 2005) || (paramInt == 5001) || (paramInt == 5002);
+  }
+  
+  public int a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
+      if ((paramMessageRecord instanceof aypb)) {
+        return (int)((aypb)paramMessageRecord).c();
+      }
     }
-    return this.jdField_a_of_type_Awal;
+    return -1;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  public void a(MessageRecord paramMessageRecord)
   {
-    ((awan)paramQQAppInterface.getManager(326)).b(paramString, paramLong);
-  }
-  
-  public awar a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
+    if ((paramMessageRecord == null) || (this.a == null)) {}
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-        {
-          paramString = (awar)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          return paramString;
-        }
+      return;
+      long l = System.currentTimeMillis();
+      if (((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForLightVideo))) {
+        this.a.a().b(paramMessageRecord, this.a.getAccount());
       }
-      awar localawar = new awar(paramString, a());
-      localawar.a(this);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localawar);
-      paramString = localawar;
+      while (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addMsg cost:").append(System.currentTimeMillis() - l).append(" uniseq = ").append(paramMessageRecord.uniseq).append(", msgtype = ").append(paramMessageRecord.msgtype);
+        QLog.d("MediaMsgController", 2, localStringBuilder.toString());
+        return;
+        ((akfv)this.a.a(13)).a(paramMessageRecord);
+        this.a.a().a(paramMessageRecord, this.a.getCurrentAccountUin());
+      }
     }
   }
   
-  public void a()
+  public void a(MessageRecord paramMessageRecord, akat paramakat, awar paramawar)
   {
-    if (this.jdField_a_of_type_Akav == null)
-    {
-      this.jdField_a_of_type_Akav = new awao(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akav);
+    if (paramMessageRecord == null) {
+      return;
     }
+    if (paramawar != null) {
+      paramawar.a(paramMessageRecord);
+    }
+    this.a.a().b(paramMessageRecord, paramakat);
   }
   
-  public void a(MessageRecord paramMessageRecord, akav paramakav)
+  public boolean a(MessageRecord paramMessageRecord)
   {
-    a(paramMessageRecord, paramakav, null);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, akav paramakav, awap paramawap)
-  {
-    awar localawar = a(paramMessageRecord.frienduin);
-    String str = null;
+    if ((paramMessageRecord != null) && (paramMessageRecord.extraflag == 32768)) {
+      return true;
+    }
+    int i;
     if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      str = ((MessageForShortVideo)paramMessageRecord).videoFileName;
+      i = ((MessageForShortVideo)paramMessageRecord).videoFileStatus;
     }
-    while (localawar.a(paramMessageRecord.uniseq, str))
-    {
-      localawar.a(paramMessageRecord, paramakav, paramawap);
-      return;
-      if ((paramMessageRecord instanceof MessageForPic)) {
-        str = ((MessageForPic)paramMessageRecord).path;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrderMediaMsgManager", 2, "sendOrderMsg but not in queue, uniseq:" + paramMessageRecord.uniseq);
-    }
-    a().a(paramMessageRecord, paramakav, paramawap);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, String paramString)
-  {
-    Object localObject = a(paramMessageRecord.frienduin);
-    if (((awar)localObject).a(paramMessageRecord.uniseq, paramString))
-    {
-      ((awar)localObject).a(paramMessageRecord, paramMessageRecord.uniseq, paramString, true);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("addOrderMsg but not in queue, uniseq:").append(paramMessageRecord.uniseq).append(", path:").append(paramString);
-      QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)localObject).toString());
-    }
-    a().a(paramMessageRecord);
-  }
-  
-  public void a(String paramString)
-  {
-    awar localawar = null;
-    if (!TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      return b(i);
+      if (((paramMessageRecord instanceof MessageForPic)) && (((MessageForPic)paramMessageRecord).size <= 0L))
       {
-        localawar = (awar)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder();
-          StringBuilder localStringBuilder = ((StringBuilder)???).append("remove orderSession, suin = ").append(paramString).append(", addr = ");
-          if (localawar != null)
-          {
-            paramString = localawar.toString();
-            localStringBuilder.append(paramString);
-            QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)???).toString());
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      paramString = Integer.valueOf(0);
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    a(paramString).a(paramLong, "");
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    a(paramString).a(paramLong1, paramLong2);
-  }
-  
-  public void a(String paramString1, MessageRecord paramMessageRecord, String paramString2)
-  {
-    awar localawar = a(paramMessageRecord.frienduin);
-    if (!localawar.a(paramMessageRecord.uniseq, paramString2)) {
-      a(paramString1, paramMessageRecord.uniseq);
-    }
-    localawar.a(paramMessageRecord, paramMessageRecord.uniseq, paramString2, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (a().a(paramString2)) {
-      return;
-    }
-    a(paramString1).a(0L, paramString2);
-  }
-  
-  public void a(String paramString, ArrayList<ChatMessage> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      int i = 0;
-      int k;
-      for (int j = 0; paramArrayList.hasNext(); j = k)
-      {
-        ChatMessage localChatMessage = (ChatMessage)paramArrayList.next();
-        k = j + 1;
-        j = i;
-        if (awal.a(localChatMessage.msgtype))
-        {
-          j = i + 1;
-          a(paramString).a(localChatMessage.uniseq, "", a().a(localChatMessage));
-        }
+        int j = a(paramMessageRecord);
         i = j;
+        if (j == 0) {
+          return true;
+        }
       }
-      awaq.b(j, i);
+      else
+      {
+        i = 0;
+      }
     }
   }
   
   public boolean a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a()) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a().a(paramLong) == 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, View paramView, acwf paramacwf)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
-      return false;
-    }
-    return a(paramString).a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramView, paramacwf);
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    a(paramString).a(paramLong);
-  }
-  
-  public boolean b(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a().a(paramLong) != 2) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((awar)localIterator.next()).a();
+      return false;
+      File localFile = new File(paramString);
+      if ((localFile.exists()) && (GifDrawable.isGifFile(localFile)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaMsgController", 2, "isDoutuPic gifFile");
+        }
+        return true;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      i = bgky.a(paramString);
+    } while ((i != 2000) && (i != 3));
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaMsgController", 2, new Object[] { "isDoutuPic imageType:", Integer.valueOf(i) });
     }
-    if (this.jdField_a_of_type_Akav != null)
+    return true;
+  }
+  
+  public int b(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akav);
-      this.jdField_a_of_type_Akav = null;
+      paramMessageRecord = this.a.a().a(paramMessageRecord.frienduin, paramMessageRecord.uniseq);
+      if (!(paramMessageRecord instanceof aypb)) {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    for (int i = ((aypb)paramMessageRecord).e();; i = -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaMsgController", 2, new Object[] { "getUploadProgress:", Integer.valueOf(i) });
+      }
+      return i;
+    }
+  }
+  
+  public boolean b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForShortVideo))
+    {
+      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)paramMessageRecord;
+      if ((localMessageForShortVideo.busiType == 0) && (localMessageForShortVideo.videoFileStatus != 998) && (TextUtils.isEmpty(localMessageForShortVideo.md5)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaMsgController", 2, "isVideoNeedPreCompress is true, " + paramMessageRecord.uniseq);
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean c(MessageRecord paramMessageRecord)
+  {
+    boolean bool = false;
+    if (b(paramMessageRecord))
+    {
+      axfj localaxfj = new axfj(this.a, this.a.getApplication(), (MessageForShortVideo)paramMessageRecord, null);
+      axfi.a().a(paramMessageRecord.uniseq, localaxfj);
+      bool = true;
+    }
+    return bool;
   }
 }
 

@@ -14,7 +14,7 @@ import android.provider.MediaStore.Images.Media;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.WindowManager;
-import besl;
+import betc;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +44,14 @@ public class ScreenJsPlugin$ScreenShotListenManager
     {
       sScreenRealSize = getRealScreenSize();
       if (sScreenRealSize != null) {
-        besl.a("ScreenShotListenManager", "Screen Real Size: " + sScreenRealSize.x + " * " + sScreenRealSize.y);
+        betc.a("ScreenShotListenManager", "Screen Real Size: " + sScreenRealSize.x + " * " + sScreenRealSize.y);
       }
     }
     else
     {
       return;
     }
-    besl.c("ScreenShotListenManager", "Get screen real size failed.");
+    betc.c("ScreenShotListenManager", "Get screen real size failed.");
   }
   
   public static void assertInMainThread()
@@ -217,7 +217,7 @@ public class ScreenJsPlugin$ScreenShotListenManager
         }
         try
         {
-          besl.d("ScreenShotListenManager", "Deviant logic.");
+          betc.d("ScreenShotListenManager", "Deviant logic.");
           if ((paramUri != null) && (!paramUri.isClosed())) {
             paramUri.close();
           }
@@ -238,7 +238,7 @@ public class ScreenJsPlugin$ScreenShotListenManager
         break;
       }
       localObject1 = paramUri;
-      besl.a("ScreenShotListenManager", "Cursor no data.");
+      betc.a("ScreenShotListenManager", "Cursor no data.");
     } while ((paramUri == null) || (paramUri.isClosed()));
     paramUri.close();
     return;
@@ -288,13 +288,13 @@ public class ScreenJsPlugin$ScreenShotListenManager
   {
     if (checkScreenShot(paramString, paramLong, paramInt1, paramInt2))
     {
-      besl.a("ScreenShotListenManager", "ScreenShot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
+      betc.a("ScreenShotListenManager", "ScreenShot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
       if ((this.mListener != null) && (!checkCallback(paramString))) {
         this.mListener.onShot(paramString);
       }
       return;
     }
-    besl.c("ScreenShotListenManager", "Media content changed, but not screenshot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
+    betc.c("ScreenShotListenManager", "Media content changed, but not screenshot: path = " + paramString + "; size = " + paramInt1 + " * " + paramInt2 + "; date = " + paramLong);
   }
   
   public static ScreenShotListenManager newInstance(Context paramContext)

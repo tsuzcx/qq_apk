@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.qzonevip.gift;
 
-import ampm;
-import amwq;
-import avnm;
-import bhyk;
+import ampl;
+import amwp;
+import avno;
+import bhzb;
 
 public class QzoneGiftManager$3
   implements Runnable
 {
-  public QzoneGiftManager$3(avnm paramavnm, String paramString1, String paramString2) {}
+  public QzoneGiftManager$3(avno paramavno, String paramString1, String paramString2) {}
   
   public void run()
   {
-    amwq localamwq = (amwq)ampm.a().a(499);
-    avnm.a(this.this$0, localamwq, this.a, this.b);
-    bhyk.a().b(localamwq);
+    amwp localamwp = (amwp)ampl.a().a(499);
+    avno.a(this.this$0, localamwp, this.a, this.b);
+    bhzb.a().b(localamwp);
   }
 }
 

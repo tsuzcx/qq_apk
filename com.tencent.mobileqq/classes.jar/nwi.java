@@ -1,29 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
 import com.tencent.qphone.base.util.QLog;
 
 public class nwi
-  extends osp
+  implements myy
 {
-  public nwi(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nwi(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
-    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
   }
   
-  public void b(int paramInt)
-  {
-    this.a.f(paramInt);
-  }
-  
-  public void c(int paramInt) {}
+  public void progress(int paramInt) {}
 }
 
 

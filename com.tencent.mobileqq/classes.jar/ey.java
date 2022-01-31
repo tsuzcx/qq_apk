@@ -2,7 +2,7 @@ import com.tencent.device.datadef.DeviceInfo;
 import java.util.ArrayList;
 
 class ey
-  extends yaj
+  extends yag
 {
   ey(ew paramew) {}
   

@@ -1,58 +1,143 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.widget.EditText;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.notify.DownloadGlobalListener;
+import com.tencent.tmdownloader.notify.DownloadTaskInfo;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class bdhs
-  implements InputFilter
+  implements DownloadGlobalListener
 {
-  protected int a;
-  protected EditText a;
+  private static bdhs a;
   
-  public bdhs(EditText paramEditText, int paramInt)
+  private bdhs()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, "TMADownloadMonitor Init");
+    }
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static bdhs a()
   {
-    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
-    paramInt4 = this.jdField_a_of_type_Int - bdhz.a(paramSpanned.toString());
-    paramInt3 = bdhz.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
+    if (a != null) {
+      return a;
     }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
+    try
     {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bdhz.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      a = new bdhs();
+      bdhs localbdhs = a;
+      return localbdhs;
+    }
+    finally {}
+  }
+  
+  public static void a(Context paramContext, DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if ((paramDownloadTaskInfo == null) || (paramContext == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("UniformDownloadEvent", 2, "downloadTaskInfo is null or context==null");
       }
-      for (int i = 2;; i = 1)
+    }
+    label401:
+    for (;;)
+    {
+      return;
+      axtp.a().addDownloadURL(paramDownloadTaskInfo.url);
+      if (!a(paramDownloadTaskInfo.url))
       {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label161;
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("url", paramDownloadTaskInfo.url);
+        localHashMap.put("NetworkType", bbfj.b(paramContext) + "");
+        localHashMap.put("reportVia", "5");
+        if (paramDownloadTaskInfo.stackInfo.length() < 950)
+        {
+          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo);
+          localHashMap.put("_filesize_from_dlg", "0");
+          localHashMap.put("_filename_from_dlg", paramDownloadTaskInfo.pkgName);
+          if (paramDownloadTaskInfo.versionCode <= 0) {
+            break label364;
+          }
+          localHashMap.put("isAPK", "1");
+          label160:
+          localHashMap.put("VersionCode", paramDownloadTaskInfo.versionCode + "");
+          paramDownloadTaskInfo = paramDownloadTaskInfo.source;
+          if (!TextUtils.isEmpty(paramDownloadTaskInfo)) {
+            break label376;
+          }
+          axrn.a(paramContext).a(null, "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
         }
-        paramInt3 = i + paramInt3;
-        break;
-        j = bdhz.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+        for (;;)
+        {
+          if (!QLog.isColorLevel()) {
+            break label401;
+          }
+          paramContext = new StringBuilder();
+          paramDownloadTaskInfo = localHashMap.keySet().iterator();
+          while (paramDownloadTaskInfo.hasNext())
+          {
+            String str = (String)paramDownloadTaskInfo.next();
+            paramContext.append(str).append("=").append((String)localHashMap.get(str)).append("\n");
+          }
+          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo.substring(0, 950));
+          if (paramDownloadTaskInfo.stackInfo.length() < 1901)
+          {
+            localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950));
+            break;
+          }
+          localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950, 1900));
+          break;
+          label364:
+          localHashMap.put("isAPK", "0");
+          break label160;
+          label376:
+          localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramDownloadTaskInfo);
+          axrn.a(paramContext).a(null, "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
+        }
       }
     }
-    label161:
-    if (paramInt3 == paramInt1) {
-      return "";
+    QLog.d("UniformDownloadEvent", 2, paramContext.toString());
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith("patch")) || (paramString.endsWith("zip")) || (paramString.endsWith("7z")));
+  }
+  
+  public void onTaskCompleted(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskCompleted,", paramDownloadTaskInfo });
     }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
+  }
+  
+  public void onTaskFailed(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskFailed,", paramDownloadTaskInfo });
+    }
+  }
+  
+  public void onTaskPaused(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskPaused,", paramDownloadTaskInfo });
+    }
+  }
+  
+  public void onTaskStarted(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskStarted,", paramDownloadTaskInfo });
+    }
+    a(BaseApplicationImpl.getContext(), paramDownloadTaskInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhs
  * JD-Core Version:    0.7.0.1
  */

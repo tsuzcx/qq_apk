@@ -1,20 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
-
 public class bekn
+  implements bekl<String>
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
+  public static bekn a(String paramString1, String paramString2, int paramInt)
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramFloat1, paramFloat2 });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.setDuration(100L);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
-    localAnimatorSet.addListener(new beko());
-    localAnimatorSet.start();
+    bekn localbekn = new bekn();
+    localbekn.jdField_a_of_type_JavaLangString = paramString1;
+    localbekn.b = paramString2;
+    localbekn.jdField_a_of_type_Int = paramInt;
+    return localbekn;
+  }
+  
+  public String a(behn parambehn)
+  {
+    betc.a("RuntimeMessage", "SubscribeEvent " + "eventName = " + this.jdField_a_of_type_JavaLangString + "sourceWebViewId = " + this.jdField_a_of_type_Int);
+    parambehn = parambehn.a();
+    if (parambehn != null) {
+      parambehn.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+    }
+    return null;
   }
 }
 

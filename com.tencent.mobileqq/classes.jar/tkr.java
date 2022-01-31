@@ -1,25 +1,39 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tkr
-  extends ssk
+  extends QQUIEventReceiver<tkp, tko>
 {
-  private toy a;
-  public boolean a;
-  
-  public tkr(ErrorMessage paramErrorMessage)
+  public tkr(tkp paramtkp)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    super(paramtkp);
   }
   
-  public tkr(boolean paramBoolean)
+  public void a(@NonNull tkp paramtkp, @NonNull tko paramtko)
   {
-    this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramtkp.a()) {}
+    do
+    {
+      return;
+      if (paramtko.jdField_a_of_type_Boolean)
+      {
+        tkp.a(paramtkp);
+        return;
+      }
+      if ((paramtko.a() != null) && (!paramtko.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramtko.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    return;
+    tkp.a(paramtkp);
   }
   
-  public toy a()
+  public Class acceptEventClass()
   {
-    return this.jdField_a_of_type_Toy;
+    return tko.class;
   }
 }
 

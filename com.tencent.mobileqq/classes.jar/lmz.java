@@ -1,63 +1,63 @@
-import com.tencent.av.gameplay.GPNativeSoLoader.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class lmz
+class lmz
+  extends BroadcastReceiver
 {
-  public static boolean a;
-  private static boolean b;
+  lmz(lmy paramlmy) {}
   
-  public static byte a(String paramString)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    byte b1 = 0;
-    if (paramString == null) {
-      return -1;
-    }
-    lna locallna = lna.a();
-    String str = lni.a() + "lib" + paramString + ".so";
-    if (QLog.isColorLevel()) {
-      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
-    }
-    Object localObject = new File(str);
-    if ((!a) && (((File)localObject).exists())) {}
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
     for (;;)
     {
-      try
-      {
-        System.load(str);
-        b = true;
-        localObject = "null";
-        if (locallna != null) {
-          localObject = locallna.b;
-        }
-        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
-        return b1;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        b1 = -3;
-        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
+      return;
+      if (!"tencent.video.qavgameplaysomgr.notify".equals(paramIntent.getAction())) {
         continue;
       }
-      b1 = -2;
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (b) {}
-    do
-    {
-      return true;
-      if (!lnb.a().b()) {
-        break;
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
+      {
+        this.a.jdField_a_of_type_Lmv = lmv.a();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = lnd.a(this.a.jdField_a_of_type_Lmv);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("QavGPDownloadManager", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGameplay[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_Lmv }));
+          }
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((lmx)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
+        }
       }
-    } while (a("qavgameplayengine") == 0);
-    return false;
-    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
-    return false;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
+        }
+        ((lmx)???.next()).a(i);
+      }
+    }
   }
 }
 

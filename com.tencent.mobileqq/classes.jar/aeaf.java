@@ -1,17 +1,38 @@
-import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.CropBubbleVideoView;
 import com.tencent.mobileqq.widget.MessageProgressView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class aeaf
-  implements bcmw
+  extends acuj
 {
-  public aeaf(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, aeah paramaeah) {}
+  public ImageView a;
+  public TextView a;
+  public CropBubbleVideoView a;
+  public MessageProgressView a;
+  public ImageView b;
+  public int e;
+  public int f;
   
-  public void a(String paramString)
+  public aeaf(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  
+  public void a()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView != null)
+    {
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.a();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bbbt.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.a(true);
+      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView);
     }
   }
 }

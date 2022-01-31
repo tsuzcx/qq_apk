@@ -10,12 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import bcpw;
-import bdev;
-import bdki;
-import bdkm;
-import bdko;
-import bgxr;
+import bcql;
+import bdfk;
+import bdkx;
+import bdlb;
+import bdld;
+import bgyi;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -43,7 +43,7 @@ public class InternalJSPlugin
   private static final Set<String> S_EVENT_MAP = new InternalJSPlugin.1();
   public static final String TAG = "InternalJSPlugin";
   public Set<String> eventMap;
-  private bdko mDownloadListener = new InternalJSPlugin.6(this);
+  private bdld mDownloadListener = new InternalJSPlugin.6(this);
   private String mDownloadNativeAppId;
   private String mDownloadPackageName;
   private String mDownloadUrl;
@@ -59,16 +59,16 @@ public class InternalJSPlugin
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bdkm.b, paramString1);
-    localBundle.putString(bdkm.j, paramString4);
-    localBundle.putString(bdkm.f, paramString2);
-    localBundle.putInt(bdkm.k, 2);
-    localBundle.putString(bdkm.i, "MiniApp");
-    localBundle.putString(bdkm.l, paramString3);
-    localBundle.putInt(bdkm.H, 1);
-    bdki.a(this.mDownloadListener);
-    bdki.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
-    bcpw.a(paramActivity, "开始下载", 1).a();
+    localBundle.putString(bdlb.b, paramString1);
+    localBundle.putString(bdlb.j, paramString4);
+    localBundle.putString(bdlb.f, paramString2);
+    localBundle.putInt(bdlb.k, 2);
+    localBundle.putString(bdlb.i, "MiniApp");
+    localBundle.putString(bdlb.l, paramString3);
+    localBundle.putInt(bdlb.H, 1);
+    bdkx.a(this.mDownloadListener);
+    bdkx.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    bcql.a(paramActivity, "开始下载", 1).a();
     InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
   }
   
@@ -132,13 +132,13 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bdev.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bdfk.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bdev.b((Activity)paramContext, localBundle);
+      bdfk.b((Activity)paramContext, localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
@@ -413,7 +413,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", bgxr.a());
+          ((JSONObject)localObject1).put("qua", bgyi.a());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }

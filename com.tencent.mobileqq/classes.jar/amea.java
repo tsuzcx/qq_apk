@@ -1,20 +1,12 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class amea
-  implements View.OnClickListener
 {
-  public amea(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
-  {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      this.a.a(paramView);
-    }
-  }
+  public amea(BusinessCardEditActivity paramBusinessCardEditActivity) {}
 }
 
 

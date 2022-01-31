@@ -1,65 +1,60 @@
-import android.os.Binder;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
 
-public abstract class aylp
-  extends Binder
-  implements aylo
+class aylp
+  implements ayln
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
-  static final int TRANSACTION_beginSwitch = 1;
-  static final int TRANSACTION_doSwitch = 3;
-  static final int TRANSACTION_onProgress = 2;
-  static final int TRANSACTION_postSwitch = 4;
+  private IBinder a;
   
-  public aylp()
+  aylp(IBinder paramIBinder)
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
-  }
-  
-  public static aylo asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aylo))) {
-      return (aylo)localIInterface;
-    }
-    return new aylq(paramIBinder);
+    this.a = paramIBinder;
   }
   
   public IBinder asBinder()
   {
-    return this;
+    return this.a;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void onComplete(String paramString, int paramInt)
   {
-    switch (paramInt1)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      beginSwitch();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      doSwitch(paramParcel1.readString(), paramParcel1.readString());
-      return true;
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    postSwitch(paramParcel1.readInt());
-    return true;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
+      localParcel1.writeString(paramString);
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

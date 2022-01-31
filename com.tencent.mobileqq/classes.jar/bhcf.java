@@ -1,39 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.contentbox.MsgPhotoView;
+import GIFT_MALL_PROTOCOL.doufu_piece_req;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.Map;
 
 public class bhcf
-  implements View.OnClickListener
+  extends QzoneExternalRequest
 {
-  public bhcf(MsgPhotoView paramMsgPhotoView) {}
+  private doufu_piece_req a;
   
-  public void onClick(View paramView)
+  public bhcf(long paramLong, Map<String, String> paramMap)
   {
-    if (MsgPhotoView.a(this.a) != null)
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.needCompress = false;
+    this.a = new doufu_piece_req(paramLong, paramMap);
+  }
+  
+  public static doufu_piece_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  {
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    }
+    do
     {
-      if (paramView == MsgPhotoView.a(this.a)) {
-        MsgPhotoView.a(this.a).a(this.a.a, paramView, 1);
-      }
-    }
-    else {
-      return;
-    }
-    if (paramView == MsgPhotoView.b(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 2);
-      return;
-    }
-    if (paramView == MsgPhotoView.c(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 3);
-      return;
-    }
-    if (paramView == MsgPhotoView.d(this.a))
-    {
-      MsgPhotoView.a(this.a).a(this.a.a, paramView, 4);
-      return;
-    }
-    MsgPhotoView.a(this.a).a(this.a.a, paramView, 0);
+      return paramArrayOfByte;
+      paramArrayOfInt = (doufu_piece_rsp)decode(paramArrayOfByte, "getDofuPieceInfo", paramArrayOfInt);
+      paramArrayOfByte = paramArrayOfInt;
+    } while (paramArrayOfInt != null);
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getDofuPieceInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getDofuPieceInfo";
   }
 }
 

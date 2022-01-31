@@ -11,8 +11,8 @@ import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
-import yxr;
-import yxs;
+import yxo;
+import yxp;
 
 public class GdtAdBoxData
   implements Serializable
@@ -36,10 +36,10 @@ public class GdtAdBoxData
     Object localObject1;
     try
     {
-      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
+      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
       if ((paramString == null) || (paramString.isEmpty()))
       {
-        yxs.d("GdtAdBoxData", "convertJson2GdtAds() posAdInfos.isEmpty");
+        yxp.d("GdtAdBoxData", "convertJson2GdtAds() posAdInfos.isEmpty");
         return;
       }
       if (this.ads != null) {
@@ -55,13 +55,13 @@ public class GdtAdBoxData
         if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
           break;
         }
-        yxs.d("GdtAdBoxData", "convertJson2GdtAds() adInfos.isEmpty");
+        yxp.d("GdtAdBoxData", "convertJson2GdtAds() adInfos.isEmpty");
       }
       localObject1 = ((List)localObject1).iterator();
     }
     catch (Exception paramString)
     {
-      yxs.d("GdtAdBoxData", "convertJson2GdtAds", paramString);
+      yxp.d("GdtAdBoxData", "convertJson2GdtAds", paramString);
       return;
     }
     while (((Iterator)localObject1).hasNext())
@@ -75,7 +75,7 @@ public class GdtAdBoxData
     }
     label202:
     if (this.ads != null) {
-      yxs.a("GdtAdBoxData", "convertJson2GdtAds() result = [" + Arrays.toString(this.ads.toArray()) + "]");
+      yxp.a("GdtAdBoxData", "convertJson2GdtAds() result = [" + Arrays.toString(this.ads.toArray()) + "]");
     }
   }
   

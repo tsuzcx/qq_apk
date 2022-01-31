@@ -1,17 +1,19 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.widget.SwipListView;
 
-class afen
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class afen
+  implements bfvx
 {
-  afen(afem paramafem) {}
+  public afen(AddContactsView paramAddContactsView) {}
   
-  public void onGlobalLayout()
+  public void a(View paramView)
   {
-    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
+    AddContactsView.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    AddContactsView.a(this.a, true);
   }
 }
 

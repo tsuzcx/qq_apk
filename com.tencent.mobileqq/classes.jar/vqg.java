@@ -1,39 +1,23 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class vqg
-  extends vpu
+class vqg
+  implements TextView.OnEditorActionListener
 {
-  public int c;
+  vqg(vqf paramvqf) {}
   
-  public vqg(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public Class<? extends vpv> a()
-  {
-    return vqh.class;
-  }
-  
-  @NonNull
-  public vpv a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new vqh(this, paramContext, paramViewGroup);
-  }
-  
-  public void a(int paramInt)
-  {
-    veg.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (paramInt == 6)
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return false;
   }
 }
 

@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ste;
-import tdk;
-import tdl;
-import tdm;
+import stb;
+import tdh;
+import tdi;
+import tdj;
 
 public class TroopNickNameManager$1$1
   implements Runnable
 {
-  public TroopNickNameManager$1$1(tdl paramtdl, ArrayList paramArrayList) {}
+  public TroopNickNameManager$1$1(tdi paramtdi, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -26,8 +26,8 @@ public class TroopNickNameManager$1$1
     if (((Iterator)localObject).hasNext())
     {
       localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
-      str2 = tdk.a(str1, localTroopMemberCardInfo.memberuin);
-      if ((this.jdField_a_of_type_Tdl.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
+      str2 = tdh.a(str1, localTroopMemberCardInfo.memberuin);
+      if ((this.jdField_a_of_type_Tdi.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
         QLog.d("TroopNickNameManager", 2, "loading not match, return");
       }
     }
@@ -39,10 +39,10 @@ public class TroopNickNameManager$1$1
       localArrayList.add(localTroopMemberCardInfo.memberuin);
       break;
     }
-    localObject = new tdm();
-    ((tdm)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((tdm)localObject).jdField_a_of_type_JavaLangString = str1;
-    ste.a().dispatch((Dispatcher.Dispatchable)localObject);
+    localObject = new tdj();
+    ((tdj)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
+    ((tdj)localObject).jdField_a_of_type_JavaLangString = str1;
+    stb.a().dispatch((Dispatcher.Dispatchable)localObject);
   }
 }
 

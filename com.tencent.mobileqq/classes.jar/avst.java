@@ -1,111 +1,96 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
 import com.tencent.ttpic.openapi.filter.GLGestureListener;
 import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class avst
   implements GLGestureListener
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  int jdField_b_of_type_Int;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private final int c;
-  private final int d;
-  private final int e;
+  protected View a;
+  private avsu a;
+  protected ProviderContainerView a;
+  protected AEMaterialPanel a;
+  protected AEProviderContainerView a;
+  protected QIMProviderContainerView a;
   
-  public avst(Context paramContext)
+  public avst() {}
+  
+  public avst(QIMProviderContainerView paramQIMProviderContainerView)
   {
-    paramContext = ViewConfiguration.get(paramContext);
-    this.c = ViewConfiguration.getDoubleTapTimeout();
-    this.d = 1000;
-    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
-    this.e = paramContext.getScaledTouchSlop();
-    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView = paramQIMProviderContainerView;
   }
   
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(View paramView)
   {
-    int i = (int)paramFloat3 - (int)paramFloat1;
-    int j = (int)paramFloat4 - (int)paramFloat2;
-    return i * i + j * j > this.e;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
+  public void a(avsu paramavsu)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return false;
-      } while ((Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < this.d) || (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.c) || (a(paramMotionEvent1.getX(), paramMotionEvent1.getY(), paramMotionEvent2.getX(), paramMotionEvent2.getY())));
-      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
-      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
-    } while (i * i + j * j >= this.jdField_b_of_type_Int);
-    return true;
+    this.jdField_a_of_type_Avsu = paramavsu;
+  }
+  
+  public void a(AEMaterialPanel paramAEMaterialPanel)
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = paramAEMaterialPanel;
+  }
+  
+  public void a(AEProviderContainerView paramAEProviderContainerView)
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = paramAEProviderContainerView;
   }
   
   public int onGetPriority()
   {
-    return 0;
+    return 1060;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction();
-    if ((i == 1) && (!paramBoolean)) {}
-    switch (j & 0xFF)
+    int j = paramMotionEvent.getPointerCount();
+    int k = paramMotionEvent.getAction() & 0xFF;
+    Object localObject = new StringBuilder().append("action: ").append(k).append(" event Y: ").append(paramMotionEvent.getY()).append(" container view height: ");
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight())
     {
-    default: 
-      return false;
-    case 0: 
-      GLSurfaceView localGLSurfaceView;
-      if (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))
+      bjah.a("CameraProviderViewGesture", i);
+      if ((j == 1) && (!paramBoolean)) {}
+      switch (k)
       {
-        localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
-        if (localGLSurfaceView != null)
-        {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          if (!(localGLSurfaceView instanceof CameraCaptureView)) {
-            break label168;
-          }
-          ((CameraCaptureView)localGLSurfaceView).q();
-        }
-      }
-      for (;;)
-      {
-        vel.a("camera_clkdouble", avtb.jdField_a_of_type_Int, 0, new String[0]);
-        avtb.g();
-        if (QLog.isColorLevel()) {
-          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraSwitchGesture" });
-        }
-        if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
-          this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-        }
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      default: 
         return false;
-        label168:
-        if ((localGLSurfaceView instanceof AECameraGLSurfaceView)) {
-          ((AECameraGLSurfaceView)localGLSurfaceView).j();
-        }
       }
     }
-    if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
-      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+    if (this.jdField_a_of_type_AndroidViewView != null) {}
+    for (localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
+    {
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.getHeight())) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a();
+      }
+      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.getHeight()))
+      {
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(true);
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.c();
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(false);
+      }
+      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight()))
+      {
+        bjah.a("CameraProviderViewGesture", "in hide close panel.");
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
+      }
+      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.getHeight())) {
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.d();
+      }
+      if (this.jdField_a_of_type_Avsu == null) {
+        break;
+      }
+      this.jdField_a_of_type_Avsu.a();
+      return false;
     }
-    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    return false;
   }
 }
 

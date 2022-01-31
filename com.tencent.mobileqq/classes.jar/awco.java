@@ -1,25 +1,8 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-
-public class awco
-  implements awcg
+public abstract interface awco
 {
-  public awco(SignTextEditFragment paramSignTextEditFragment) {}
+  public abstract void a(bckn parambckn);
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    SignTextEditFragment.a(this.a, this.a.a, paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      bcpw.a(this.a.getActivity(), 2131719375, 1).a();
-    }
-    SignTextEditFragment.a(this.a, this.a.a, SignTextEditFragment.a(this.a).b());
-  }
+  public abstract boolean a(bckn parambckn);
 }
 
 

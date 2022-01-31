@@ -1,62 +1,11 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import java.util.ArrayList;
 
-public abstract class wpv
-  extends wpc
+public abstract interface wpv<T extends SimpleBaseEvent>
 {
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private BaseWidgetView jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
-  private boolean c = true;
+  public abstract ArrayList<Class<T>> a();
   
-  public wpv(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, wpc paramwpc);
-  
-  public void a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-    a().notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if (this.c) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null)
-    {
-      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
-      paramViewGroup = new wpb(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
-      paramViewGroup.setIsRecyclable(false);
-      a().getRecycledViewPool().setMaxRecycledViews(d(paramInt), 0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewGroup;
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  }
+  public abstract void a(SimpleBaseEvent paramSimpleBaseEvent);
 }
 
 

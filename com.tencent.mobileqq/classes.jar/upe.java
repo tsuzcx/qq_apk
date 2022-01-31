@@ -1,21 +1,24 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class upe
+class upe
+  extends ParallelJobSegment<uvo, upb>
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public boolean a;
-  public boolean b;
-  
-  public upe(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
+  public upe(upa paramupa)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this(paramupa, "RequestCommentListSegment");
+  }
+  
+  public upe(upa paramupa, String paramString)
+  {
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, uvo paramuvo)
+  {
+    tmg localtmg = new tmg();
+    localtmg.a = paramuvo;
+    syo.a().a(localtmg, new upf(this, paramJobContext, paramuvo));
   }
 }
 

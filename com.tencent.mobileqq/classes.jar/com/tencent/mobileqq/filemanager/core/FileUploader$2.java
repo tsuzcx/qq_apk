@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aozt;
+import aozx;
 
 public class FileUploader$2
   implements Runnable
 {
-  public FileUploader$2(aozt paramaozt) {}
+  public FileUploader$2(aozx paramaozx) {}
   
   public void run()
   {
-    if (aozt.a(this.this$0)) {
+    if (aozx.a(this.this$0)) {
       return;
     }
-    aozt.a(this.this$0, aozt.a(this.this$0));
+    aozx.a(this.this$0, aozx.a(this.this$0));
   }
 }
 

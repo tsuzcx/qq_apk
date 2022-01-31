@@ -1,6 +1,19 @@
-public abstract interface bgzk
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
+
+public final class bgzk
+  implements Parcelable.Creator<QZoneShareData>
 {
-  public abstract void a();
+  public QZoneShareData a(Parcel paramParcel)
+  {
+    return new QZoneShareData(paramParcel, null);
+  }
+  
+  public QZoneShareData[] a(int paramInt)
+  {
+    return new QZoneShareData[paramInt];
+  }
 }
 
 

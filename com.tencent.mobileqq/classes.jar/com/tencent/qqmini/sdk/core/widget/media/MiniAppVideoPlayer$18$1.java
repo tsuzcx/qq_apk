@@ -4,48 +4,48 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import benx;
-import besl;
+import beoo;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
 
 public class MiniAppVideoPlayer$18$1
   implements Runnable
 {
-  public MiniAppVideoPlayer$18$1(benx parambenx, Canvas paramCanvas, VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap) {}
+  public MiniAppVideoPlayer$18$1(beoo parambeoo, Canvas paramCanvas, VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if ((MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer) != null) && (MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getVisibility() == 0))
+    if ((MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer) != null) && (MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getVisibility() == 0))
     {
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(true);
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).buildDrawingCache();
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(false);
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(true);
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).buildDrawingCache();
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(false);
     }
-    if ((MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer) != null) && (MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getVisibility() == 0))
+    if ((MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer) != null) && (MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getVisibility() == 0))
     {
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(true);
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).buildDrawingCache();
-      Bitmap localBitmap = MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getDrawingCache();
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(true);
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).buildDrawingCache();
+      Bitmap localBitmap = MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).getDrawingCache();
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(Bitmap.createBitmap(localBitmap), 0.0F, 0.0F, null);
       }
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(false);
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setDrawingCacheEnabled(false);
     }
-    if (this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy$OnCaptureImageListener != null) {
-      this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy$OnCaptureImageListener.onCaptureImageSucceed(this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy$OnCaptureImageListener != null) {
+      this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy$OnCaptureImageListener.onCaptureImageSucceed(this.jdField_a_of_type_ComTencentQqminiSdkCoreProxyVideoPlayerProxy, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
     try
     {
-      MiniAppVideoPlayer.a(this.jdField_a_of_type_Benx.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setOnCaptureImageListener(null);
-      benx.a(this.jdField_a_of_type_Benx, true);
+      MiniAppVideoPlayer.a(this.jdField_a_of_type_Beoo.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaMiniAppVideoPlayer).setOnCaptureImageListener(null);
+      beoo.a(this.jdField_a_of_type_Beoo, true);
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        besl.d("MiniAppVideoPlayer", "onCaptureImageSucceed mVideoPlayer.setOnCaptureImageListener get a Throwable:", localThrowable);
+        betc.d("MiniAppVideoPlayer", "onCaptureImageSucceed mVideoPlayer.setOnCaptureImageListener get a Throwable:", localThrowable);
       }
     }
   }

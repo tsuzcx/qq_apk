@@ -1,60 +1,26 @@
-import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
+import java.util.HashMap;
 
 public final class apjt
-  implements aysa
+  implements aysb
 {
-  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  private apjt(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
-  }
-  
-  public void onResp(aysx paramaysx)
-  {
-    int i = 0;
-    if (paramaysx.jdField_a_of_type_Int == 3) {}
-    label74:
-    label80:
-    for (;;)
+    if ((paramaysy == null) || (paramaysz == null)) {}
+    do
     {
-      return;
-      boolean bool;
-      if (paramaysx.jdField_a_of_type_Int == 0)
+      do
       {
-        bool = true;
-        if (!bool) {
-          break label74;
-        }
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
-          break label80;
-        }
-        if (bool) {
-          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramaysx.jdField_a_of_type_Long, 1.0F);
-        }
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
         return;
-        bool = false;
-        break;
-        i = paramaysx.b;
-      }
-    }
-  }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 != 0L)
-    {
-      float f = (float)paramLong1 / (float)paramLong2;
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
-      }
-    }
+      } while (!(paramaysy instanceof ayrx));
+      paramaysy = (ayrx)paramaysy;
+      paramaysy.jdField_a_of_type_Long += paramaysz.c;
+      paramaysz.c = 0L;
+      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
+      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
+    } while (!paramaysz.contains("range="));
+    paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
+    paramaysy.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + paramaysy.jdField_a_of_type_Long);
   }
 }
 

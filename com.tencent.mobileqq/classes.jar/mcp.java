@@ -1,22 +1,38 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.qphone.base.util.QLog;
+
 public class mcp
-  extends mco
+  implements Animation.AnimationListener
 {
-  public final int a;
-  public final boolean a;
-  public final String c;
+  public mcp(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
-  public mcp(long paramLong, String paramString, boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(6100, null);
-    a(paramLong, null);
-    this.c = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
+    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
+    }
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if (paramAnimation != null) {
+      paramAnimation.g(this.jdField_a_of_type_Long);
+    }
   }
   
-  public String toString()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return "mId[" + this.c + "], mFrom[" + this.jdField_a_of_type_Int + "], mSender[" + this.jdField_a_of_type_Boolean + "], seq[" + a() + "]";
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if (paramAnimation != null) {
+      paramAnimation.g(this.jdField_a_of_type_Long);
+    }
   }
 }
 

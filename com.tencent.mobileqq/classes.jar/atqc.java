@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atqc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  atqc(atpi paramatpi) {}
+  atqc(atpk paramatpk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.b(false);
-    }
+    this.a.d(true);
+    axqy.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

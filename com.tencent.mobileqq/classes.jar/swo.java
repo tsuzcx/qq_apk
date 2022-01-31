@@ -1,4 +1,12 @@
-// INTERNAL ERROR //
+public class swo
+  extends swn
+{
+  public swo(swk paramswk)
+  {
+    super(paramswk);
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swo

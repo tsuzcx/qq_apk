@@ -1,12 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
-
-public class osa
-  extends bhvs
+public abstract interface osa
 {
-  protected void a(String paramString)
-  {
-    TaskManager.getInstance().accept(paramString);
-  }
+  public abstract void a();
 }
 
 

@@ -1,331 +1,254 @@
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class aukj
-  extends auky
+  extends aula
 {
   public aukj()
   {
-    this.a = 24;
+    this.a = 19;
   }
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramaukm = (Emoticon)paramaukm;
-    if (paramaukx == null)
+    boolean bool = true;
+    paramBoolean = true;
+    paramauko = (DiscussionInfo)paramauko;
+    if (paramaukz == null)
     {
-      paramaukm.eId = paramCursor.getString(paramCursor.getColumnIndex("eId"));
-      paramaukm.epId = paramCursor.getString(paramCursor.getColumnIndex("epId"));
-      paramaukm.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
-      paramaukm.encryptKey = paramCursor.getString(paramCursor.getColumnIndex("encryptKey"));
-      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("isSound")))
+      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramauko.infoSeq = paramCursor.getLong(paramCursor.getColumnIndex("infoSeq"));
+      paramauko.ownerUin = paramCursor.getString(paramCursor.getColumnIndex("ownerUin"));
+      paramauko.inheritOwnerUin = paramCursor.getString(paramCursor.getColumnIndex("inheritOwnerUin"));
+      paramauko.discussionName = paramCursor.getString(paramCursor.getColumnIndex("discussionName"));
+      paramauko.createTime = paramCursor.getLong(paramCursor.getColumnIndex("createTime"));
+      paramauko.timeSec = paramCursor.getLong(paramCursor.getColumnIndex("timeSec"));
+      paramauko.faceUinSet = paramCursor.getString(paramCursor.getColumnIndex("faceUinSet"));
+      paramauko.DiscussionFlag = paramCursor.getLong(paramCursor.getColumnIndex("DiscussionFlag"));
+      paramauko.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
+      paramauko.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
+      paramauko.mOrigin = paramCursor.getLong(paramCursor.getColumnIndex("mOrigin"));
+      paramauko.mOriginExtra = paramCursor.getLong(paramCursor.getColumnIndex("mOriginExtra"));
+      paramauko.mSelfRight = paramCursor.getInt(paramCursor.getColumnIndex("mSelfRight"));
+      paramauko.groupCode = paramCursor.getLong(paramCursor.getColumnIndex("groupCode"));
+      paramauko.groupUin = paramCursor.getLong(paramCursor.getColumnIndex("groupUin"));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("hasCollect"))) {}
+      for (;;)
       {
-        paramBoolean = true;
-        paramaukm.isSound = paramBoolean;
-        paramaukm.width = paramCursor.getInt(paramCursor.getColumnIndex("width"));
-        paramaukm.height = paramCursor.getInt(paramCursor.getColumnIndex("height"));
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("value"))) {
-          break label477;
-        }
-        paramBoolean = true;
-        label169:
-        paramaukm.value = paramBoolean;
-        paramaukm.magicValue = paramCursor.getString(paramCursor.getColumnIndex("magicValue"));
-        paramaukm.jobType = paramCursor.getInt(paramCursor.getColumnIndex("jobType"));
-        paramaukm.keyword = paramCursor.getString(paramCursor.getColumnIndex("keyword"));
-        paramaukm.keywords = paramCursor.getString(paramCursor.getColumnIndex("keywords"));
-        paramaukm.character = paramCursor.getString(paramCursor.getColumnIndex("character"));
-        paramaukm.extensionWidth = paramCursor.getInt(paramCursor.getColumnIndex("extensionWidth"));
-        paramaukm.extensionHeight = paramCursor.getInt(paramCursor.getColumnIndex("extensionHeight"));
-        paramaukm.businessExtra = paramCursor.getString(paramCursor.getColumnIndex("businessExtra"));
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isAPNG"))) {
-          break label482;
-        }
-      }
-      label477:
-      label482:
-      for (paramBoolean = bool1;; paramBoolean = false)
-      {
-        paramaukm.isAPNG = paramBoolean;
-        paramaukm.ipsiteUrl = paramCursor.getString(paramCursor.getColumnIndex("ipsiteUrl"));
-        paramaukm.ipsiteName = paramCursor.getString(paramCursor.getColumnIndex("ipsiteName"));
-        paramaukm.exposeNum = paramCursor.getInt(paramCursor.getColumnIndex("exposeNum"));
-        paramaukm.clickNum = paramCursor.getInt(paramCursor.getColumnIndex("clickNum"));
-        paramaukm.voicePrint = paramCursor.getString(paramCursor.getColumnIndex("voicePrint"));
-        paramaukm.backColor = paramCursor.getString(paramCursor.getColumnIndex("backColor"));
-        paramaukm.volumeColor = paramCursor.getString(paramCursor.getColumnIndex("volumeColor"));
-        return paramaukm;
+        paramauko.hasCollect = paramBoolean;
+        paramauko.createFrom = paramCursor.getInt(paramCursor.getColumnIndex("createFrom"));
+        paramauko.uiControlFlag = paramCursor.getLong(paramCursor.getColumnIndex("uiControlFlag"));
+        return paramauko;
         paramBoolean = false;
-        break;
-        paramBoolean = false;
-        break label169;
       }
     }
-    int i = paramCursor.getColumnIndex("eId");
+    int i = paramCursor.getColumnIndex("uin");
     if (i == -1)
     {
-      paramaukx.a(new NoColumnError("eId", String.class));
-      i = paramCursor.getColumnIndex("epId");
+      paramaukz.a(new NoColumnError("uin", String.class));
+      i = paramCursor.getColumnIndex("infoSeq");
       if (i != -1) {
-        break label1330;
+        break label1045;
       }
-      paramaukx.a(new NoColumnError("epId", String.class));
-      label555:
-      i = paramCursor.getColumnIndex("name");
+      paramaukz.a(new NoColumnError("infoSeq", Long.TYPE));
+      label438:
+      i = paramCursor.getColumnIndex("ownerUin");
       if (i != -1) {
-        break label1345;
+        break label1060;
       }
-      paramaukx.a(new NoColumnError("name", String.class));
-      label589:
-      i = paramCursor.getColumnIndex("encryptKey");
+      paramaukz.a(new NoColumnError("ownerUin", String.class));
+      label472:
+      i = paramCursor.getColumnIndex("inheritOwnerUin");
       if (i != -1) {
-        break label1360;
+        break label1075;
       }
-      paramaukx.a(new NoColumnError("encryptKey", String.class));
-      label623:
-      i = paramCursor.getColumnIndex("isSound");
+      paramaukz.a(new NoColumnError("inheritOwnerUin", String.class));
+      label506:
+      i = paramCursor.getColumnIndex("discussionName");
       if (i != -1) {
-        break label1375;
+        break label1090;
       }
-      paramaukx.a(new NoColumnError("isSound", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("width");
+      paramaukz.a(new NoColumnError("discussionName", String.class));
+      label540:
+      i = paramCursor.getColumnIndex("createTime");
       if (i != -1) {
-        break label1402;
+        break label1105;
       }
-      paramaukx.a(new NoColumnError("width", Integer.TYPE));
-      label693:
-      i = paramCursor.getColumnIndex("height");
+      paramaukz.a(new NoColumnError("createTime", Long.TYPE));
+      label575:
+      i = paramCursor.getColumnIndex("timeSec");
       if (i != -1) {
-        break label1417;
+        break label1120;
       }
-      paramaukx.a(new NoColumnError("height", Integer.TYPE));
-      label728:
-      i = paramCursor.getColumnIndex("value");
+      paramaukz.a(new NoColumnError("timeSec", Long.TYPE));
+      label610:
+      i = paramCursor.getColumnIndex("faceUinSet");
       if (i != -1) {
-        break label1432;
+        break label1135;
       }
-      paramaukx.a(new NoColumnError("value", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("magicValue");
+      paramaukz.a(new NoColumnError("faceUinSet", String.class));
+      label644:
+      i = paramCursor.getColumnIndex("DiscussionFlag");
       if (i != -1) {
-        break label1459;
+        break label1150;
       }
-      paramaukx.a(new NoColumnError("magicValue", String.class));
-      label797:
-      i = paramCursor.getColumnIndex("jobType");
+      paramaukz.a(new NoColumnError("DiscussionFlag", Long.TYPE));
+      label679:
+      i = paramCursor.getColumnIndex("mComparePartInt");
       if (i != -1) {
-        break label1474;
+        break label1165;
       }
-      paramaukx.a(new NoColumnError("jobType", Integer.TYPE));
-      label832:
-      i = paramCursor.getColumnIndex("keyword");
+      paramaukz.a(new NoColumnError("mComparePartInt", Integer.TYPE));
+      label714:
+      i = paramCursor.getColumnIndex("mCompareSpell");
       if (i != -1) {
-        break label1489;
+        break label1180;
       }
-      paramaukx.a(new NoColumnError("keyword", String.class));
-      label866:
-      i = paramCursor.getColumnIndex("keywords");
+      paramaukz.a(new NoColumnError("mCompareSpell", String.class));
+      label748:
+      i = paramCursor.getColumnIndex("mOrigin");
       if (i != -1) {
-        break label1504;
+        break label1195;
       }
-      paramaukx.a(new NoColumnError("keywords", String.class));
-      label900:
-      i = paramCursor.getColumnIndex("character");
+      paramaukz.a(new NoColumnError("mOrigin", Long.TYPE));
+      label783:
+      i = paramCursor.getColumnIndex("mOriginExtra");
       if (i != -1) {
-        break label1519;
+        break label1210;
       }
-      paramaukx.a(new NoColumnError("character", String.class));
-      label934:
-      i = paramCursor.getColumnIndex("extensionWidth");
+      paramaukz.a(new NoColumnError("mOriginExtra", Long.TYPE));
+      label818:
+      i = paramCursor.getColumnIndex("mSelfRight");
       if (i != -1) {
-        break label1534;
+        break label1225;
       }
-      paramaukx.a(new NoColumnError("extensionWidth", Integer.TYPE));
-      label969:
-      i = paramCursor.getColumnIndex("extensionHeight");
+      paramaukz.a(new NoColumnError("mSelfRight", Integer.TYPE));
+      label853:
+      i = paramCursor.getColumnIndex("groupCode");
       if (i != -1) {
-        break label1549;
+        break label1240;
       }
-      paramaukx.a(new NoColumnError("extensionHeight", Integer.TYPE));
-      label1004:
-      i = paramCursor.getColumnIndex("businessExtra");
+      paramaukz.a(new NoColumnError("groupCode", Long.TYPE));
+      label888:
+      i = paramCursor.getColumnIndex("groupUin");
       if (i != -1) {
-        break label1564;
+        break label1255;
       }
-      paramaukx.a(new NoColumnError("businessExtra", String.class));
-      label1038:
-      i = paramCursor.getColumnIndex("isAPNG");
+      paramaukz.a(new NoColumnError("groupUin", Long.TYPE));
+      label923:
+      i = paramCursor.getColumnIndex("hasCollect");
       if (i != -1) {
-        break label1579;
+        break label1270;
       }
-      paramaukx.a(new NoColumnError("isAPNG", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("ipsiteUrl");
+      paramaukz.a(new NoColumnError("hasCollect", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("createFrom");
       if (i != -1) {
-        break label1607;
+        break label1298;
       }
-      paramaukx.a(new NoColumnError("ipsiteUrl", String.class));
-      label1107:
-      i = paramCursor.getColumnIndex("ipsiteName");
-      if (i != -1) {
-        break label1622;
-      }
-      paramaukx.a(new NoColumnError("ipsiteName", String.class));
-      label1141:
-      i = paramCursor.getColumnIndex("exposeNum");
-      if (i != -1) {
-        break label1637;
-      }
-      paramaukx.a(new NoColumnError("exposeNum", Integer.TYPE));
-      label1176:
-      i = paramCursor.getColumnIndex("clickNum");
-      if (i != -1) {
-        break label1652;
-      }
-      paramaukx.a(new NoColumnError("clickNum", Integer.TYPE));
-      label1211:
-      i = paramCursor.getColumnIndex("voicePrint");
-      if (i != -1) {
-        break label1667;
-      }
-      paramaukx.a(new NoColumnError("voicePrint", String.class));
-      label1245:
-      i = paramCursor.getColumnIndex("backColor");
-      if (i != -1) {
-        break label1682;
-      }
-      paramaukx.a(new NoColumnError("backColor", String.class));
+      paramaukz.a(new NoColumnError("createFrom", Integer.TYPE));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("volumeColor");
+      i = paramCursor.getColumnIndex("uiControlFlag");
       if (i != -1) {
-        break label1697;
+        break label1313;
       }
-      paramaukx.a(new NoColumnError("volumeColor", String.class));
-      return paramaukm;
-      paramaukm.eId = paramCursor.getString(i);
+      paramaukz.a(new NoColumnError("uiControlFlag", Long.TYPE));
+      return paramauko;
+      paramauko.uin = paramCursor.getString(i);
       break;
-      label1330:
-      paramaukm.epId = paramCursor.getString(i);
-      break label555;
-      label1345:
-      paramaukm.name = paramCursor.getString(i);
-      break label589;
-      label1360:
-      paramaukm.encryptKey = paramCursor.getString(i);
-      break label623;
-      label1375:
+      label1045:
+      paramauko.infoSeq = paramCursor.getLong(i);
+      break label438;
+      label1060:
+      paramauko.ownerUin = paramCursor.getString(i);
+      break label472;
+      label1075:
+      paramauko.inheritOwnerUin = paramCursor.getString(i);
+      break label506;
+      label1090:
+      paramauko.discussionName = paramCursor.getString(i);
+      break label540;
+      label1105:
+      paramauko.createTime = paramCursor.getLong(i);
+      break label575;
+      label1120:
+      paramauko.timeSec = paramCursor.getLong(i);
+      break label610;
+      label1135:
+      paramauko.faceUinSet = paramCursor.getString(i);
+      break label644;
+      label1150:
+      paramauko.DiscussionFlag = paramCursor.getLong(i);
+      break label679;
+      label1165:
+      paramauko.mComparePartInt = paramCursor.getInt(i);
+      break label714;
+      label1180:
+      paramauko.mCompareSpell = paramCursor.getString(i);
+      break label748;
+      label1195:
+      paramauko.mOrigin = paramCursor.getLong(i);
+      break label783;
+      label1210:
+      paramauko.mOriginExtra = paramCursor.getLong(i);
+      break label818;
+      label1225:
+      paramauko.mSelfRight = paramCursor.getInt(i);
+      break label853;
+      label1240:
+      paramauko.groupCode = paramCursor.getLong(i);
+      break label888;
+      label1255:
+      paramauko.groupUin = paramCursor.getLong(i);
+      break label923;
+      label1270:
       if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      for (paramBoolean = bool;; paramBoolean = false)
       {
-        paramaukm.isSound = paramBoolean;
+        paramauko.hasCollect = paramBoolean;
         break;
       }
-      label1402:
-      paramaukm.width = paramCursor.getInt(i);
-      break label693;
-      label1417:
-      paramaukm.height = paramCursor.getInt(i);
-      break label728;
-      label1432:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramaukm.value = paramBoolean;
-        break;
-      }
-      label1459:
-      paramaukm.magicValue = paramCursor.getString(i);
-      break label797;
-      label1474:
-      paramaukm.jobType = paramCursor.getInt(i);
-      break label832;
-      label1489:
-      paramaukm.keyword = paramCursor.getString(i);
-      break label866;
-      label1504:
-      paramaukm.keywords = paramCursor.getString(i);
-      break label900;
-      label1519:
-      paramaukm.character = paramCursor.getString(i);
-      break label934;
-      label1534:
-      paramaukm.extensionWidth = paramCursor.getInt(i);
-      break label969;
-      label1549:
-      paramaukm.extensionHeight = paramCursor.getInt(i);
-      break label1004;
-      label1564:
-      paramaukm.businessExtra = paramCursor.getString(i);
-      break label1038;
-      label1579:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        paramaukm.isAPNG = paramBoolean;
-        break;
-      }
-      label1607:
-      paramaukm.ipsiteUrl = paramCursor.getString(i);
-      break label1107;
-      label1622:
-      paramaukm.ipsiteName = paramCursor.getString(i);
-      break label1141;
-      label1637:
-      paramaukm.exposeNum = paramCursor.getInt(i);
-      break label1176;
-      label1652:
-      paramaukm.clickNum = paramCursor.getInt(i);
-      break label1211;
-      label1667:
-      paramaukm.voicePrint = paramCursor.getString(i);
-      break label1245;
-      label1682:
-      paramaukm.backColor = paramCursor.getString(i);
+      label1298:
+      paramauko.createFrom = paramCursor.getInt(i);
     }
-    label1697:
-    paramaukm.volumeColor = paramCursor.getString(i);
-    return paramaukm;
+    label1313:
+    paramauko.uiControlFlag = paramCursor.getLong(i);
+    return paramauko;
   }
   
   public String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,eId TEXT ,epId TEXT ,name TEXT ,encryptKey TEXT ,isSound INTEGER ,width INTEGER ,height INTEGER ,value INTEGER ,magicValue TEXT ,jobType INTEGER ,keyword TEXT ,keywords TEXT ,character TEXT ,extensionWidth INTEGER ,extensionHeight INTEGER ,businessExtra TEXT ,isAPNG INTEGER ,ipsiteUrl TEXT ,ipsiteName TEXT ,exposeNum INTEGER ,clickNum INTEGER ,voicePrint TEXT ,backColor TEXT ,volumeColor TEXT,UNIQUE(eId,epId) ON CONFLICT IGNORE)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,infoSeq INTEGER ,ownerUin TEXT ,inheritOwnerUin TEXT ,discussionName TEXT ,createTime INTEGER ,timeSec INTEGER ,faceUinSet TEXT ,DiscussionFlag INTEGER ,mComparePartInt INTEGER ,mCompareSpell TEXT ,mOrigin INTEGER ,mOriginExtra INTEGER ,mSelfRight INTEGER ,groupCode INTEGER ,groupUin INTEGER ,hasCollect INTEGER ,createFrom INTEGER ,uiControlFlag INTEGER)");
     return localStringBuilder.toString();
   }
   
-  public void a(aukm paramaukm, ContentValues paramContentValues)
+  public void a(auko paramauko, ContentValues paramContentValues)
   {
-    paramaukm = (Emoticon)paramaukm;
-    paramContentValues.put("eId", paramaukm.eId);
-    paramContentValues.put("epId", paramaukm.epId);
-    paramContentValues.put("name", paramaukm.name);
-    paramContentValues.put("encryptKey", paramaukm.encryptKey);
-    paramContentValues.put("isSound", Boolean.valueOf(paramaukm.isSound));
-    paramContentValues.put("width", Integer.valueOf(paramaukm.width));
-    paramContentValues.put("height", Integer.valueOf(paramaukm.height));
-    paramContentValues.put("value", Boolean.valueOf(paramaukm.value));
-    paramContentValues.put("magicValue", paramaukm.magicValue);
-    paramContentValues.put("jobType", Integer.valueOf(paramaukm.jobType));
-    paramContentValues.put("keyword", paramaukm.keyword);
-    paramContentValues.put("keywords", paramaukm.keywords);
-    paramContentValues.put("character", paramaukm.character);
-    paramContentValues.put("extensionWidth", Integer.valueOf(paramaukm.extensionWidth));
-    paramContentValues.put("extensionHeight", Integer.valueOf(paramaukm.extensionHeight));
-    paramContentValues.put("businessExtra", paramaukm.businessExtra);
-    paramContentValues.put("isAPNG", Boolean.valueOf(paramaukm.isAPNG));
-    paramContentValues.put("ipsiteUrl", paramaukm.ipsiteUrl);
-    paramContentValues.put("ipsiteName", paramaukm.ipsiteName);
-    paramContentValues.put("exposeNum", Integer.valueOf(paramaukm.exposeNum));
-    paramContentValues.put("clickNum", Integer.valueOf(paramaukm.clickNum));
-    paramContentValues.put("voicePrint", paramaukm.voicePrint);
-    paramContentValues.put("backColor", paramaukm.backColor);
-    paramContentValues.put("volumeColor", paramaukm.volumeColor);
+    paramauko = (DiscussionInfo)paramauko;
+    paramContentValues.put("uin", paramauko.uin);
+    paramContentValues.put("infoSeq", Long.valueOf(paramauko.infoSeq));
+    paramContentValues.put("ownerUin", paramauko.ownerUin);
+    paramContentValues.put("inheritOwnerUin", paramauko.inheritOwnerUin);
+    paramContentValues.put("discussionName", paramauko.discussionName);
+    paramContentValues.put("createTime", Long.valueOf(paramauko.createTime));
+    paramContentValues.put("timeSec", Long.valueOf(paramauko.timeSec));
+    paramContentValues.put("faceUinSet", paramauko.faceUinSet);
+    paramContentValues.put("DiscussionFlag", Long.valueOf(paramauko.DiscussionFlag));
+    paramContentValues.put("mComparePartInt", Integer.valueOf(paramauko.mComparePartInt));
+    paramContentValues.put("mCompareSpell", paramauko.mCompareSpell);
+    paramContentValues.put("mOrigin", Long.valueOf(paramauko.mOrigin));
+    paramContentValues.put("mOriginExtra", Long.valueOf(paramauko.mOriginExtra));
+    paramContentValues.put("mSelfRight", Integer.valueOf(paramauko.mSelfRight));
+    paramContentValues.put("groupCode", Long.valueOf(paramauko.groupCode));
+    paramContentValues.put("groupUin", Long.valueOf(paramauko.groupUin));
+    paramContentValues.put("hasCollect", Boolean.valueOf(paramauko.hasCollect));
+    paramContentValues.put("createFrom", Integer.valueOf(paramauko.createFrom));
+    paramContentValues.put("uiControlFlag", Long.valueOf(paramauko.uiControlFlag));
   }
 }
 

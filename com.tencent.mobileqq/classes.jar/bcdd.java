@@ -1,17 +1,92 @@
-import android.util.LruCache;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class bcdd
-  extends LruCache<String, aadp>
+public class bcdd
+  implements MiniMsgUser.IMiniMsgActionCallback
 {
-  public bcdd(int paramInt)
+  public bcdd(WebViewFragment paramWebViewFragment) {}
+  
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    super(paramInt);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("action", paramString);
+      localJSONObject.put("options", paramJSONObject);
+      paramString = "javascript:mqq.dispatchEvent(\"miniAIOEvent\"," + localJSONObject.toString() + ");";
+      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, paramString, new Object[0]);
+    }
   }
   
-  protected void a(boolean paramBoolean, String paramString, aadp paramaadp1, aadp paramaadp2)
+  public void onFromMiniAIOToAIO()
   {
-    super.entryRemoved(paramBoolean, paramString, paramaadp1, paramaadp2);
-    paramaadp1.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "onFromMiniAIOToAIO ");
+    }
+    a("fromMiniAIOToAIO", new JSONObject());
+  }
+  
+  public void onGoToConversation()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_WebViewFragment", 2, "onGoToConversation ");
+      }
+      a("returnMsgList", new JSONObject());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
+    }
+  }
+  
+  public void onOpenMiniAIOCallback()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser == null) {
+      return;
+    }
+    WebViewFragment localWebViewFragment = this.a;
+    Object localObject1 = localWebViewFragment.r;
+    if (TextUtils.isEmpty(localWebViewFragment.r)) {
+      localObject1 = localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = localObject1;
+      if (!"‎".equals(localObject1)) {}
+    }
+    else
+    {
+      localObject2 = ajya.a(2131716904);
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
+    Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.a((Bundle)localObject1);
+    bcgq.a(((MiniMsgUserParam)localObject2).backConversationIntent);
+    try
+    {
+      a("entryClicked", new JSONObject());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
+    }
   }
 }
 

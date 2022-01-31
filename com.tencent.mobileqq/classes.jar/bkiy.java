@@ -1,196 +1,107 @@
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Rect;
+import android.content.DialogInterface.OnShowListener;
 import android.support.annotation.NonNull;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.TouchDelegate;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 import com.tencent.widget.XEditText;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.widget.XEditTextEx;
 
 public class bkiy
   extends Dialog
-  implements TextWatcher, View.OnClickListener, ViewTreeObserver.OnGlobalLayoutListener, TextView.OnEditorActionListener
+  implements TextWatcher, View.OnClickListener
 {
-  public static final String a;
-  int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
+  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  bkiz jdField_a_of_type_Bkiz;
+  private bjxn jdField_a_of_type_Bjxn;
   XEditText jdField_a_of_type_ComTencentWidgetXEditText;
-  boolean jdField_a_of_type_Boolean = false;
-  String b;
+  String jdField_a_of_type_JavaLangString;
+  private uqp jdField_a_of_type_Uqp;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131706104);
-  }
-  
-  public bkiy(@NonNull Context paramContext)
+  public bkiy(@NonNull Context paramContext, bjxn parambjxn)
   {
     super(paramContext, 2131755176);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bjxn = parambjxn;
   }
   
-  public void a(bjwq parambjwq)
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
+  }
+  
+  public void a()
   {
     Window localWindow = super.getWindow();
     WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
     localLayoutParams.width = -1;
-    localLayoutParams.height = vpp.b(getContext());
+    localLayoutParams.height = vpm.b(getContext());
     localLayoutParams.flags |= 0x20;
     localLayoutParams.gravity = 80;
     localWindow.setAttributes(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131559008, null));
+    localWindow.setSoftInputMode(34);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561227, null));
     this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365493));
-    this.jdField_a_of_type_ComTencentWidgetXEditText.setOnEditorActionListener(this);
+    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditTextEx)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365749));
     this.jdField_a_of_type_ComTencentWidgetXEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365492);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    setOnDismissListener(parambjwq);
-    this.jdField_a_of_type_Int = actn.a(100.0F, getContext().getResources());
-    this.jdField_a_of_type_Bkiz = parambjwq;
     setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_Uqp = new uqp(getContext(), this.jdField_a_of_type_AndroidViewViewGroup, new bkiz(this));
+    this.jdField_a_of_type_Uqp.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690575));
   }
   
-  public void a(String paramString)
+  public void a(String paramString, boolean paramBoolean)
   {
-    int j = 0;
-    int i = 0;
+    super.setOnShowListener(new bkja(this, paramBoolean));
     super.show();
     if (paramString != null)
     {
       this.jdField_a_of_type_ComTencentWidgetXEditText.setText(paramString);
-      XEditText localXEditText = this.jdField_a_of_type_ComTencentWidgetXEditText;
-      if (paramString == null) {}
-      for (;;)
-      {
-        localXEditText.setSelection(i);
-        i = Color.parseColor("#FF212226");
-        this.jdField_a_of_type_ComTencentWidgetXEditText.setTextColor(i);
-        this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this);
-        return;
-        i = paramString.length();
-      }
+      this.jdField_a_of_type_ComTencentWidgetXEditText.setSelection(paramString.length());
+      return;
     }
-    this.jdField_a_of_type_ComTencentWidgetXEditText.setText(this.b);
+    this.jdField_a_of_type_ComTencentWidgetXEditText.setText(this.jdField_a_of_type_JavaLangString);
     paramString = this.jdField_a_of_type_ComTencentWidgetXEditText;
-    if (this.b == null) {}
-    for (i = j;; i = this.b.length())
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaLangString.length())
     {
       paramString.setSelection(i);
-      break;
+      return;
     }
   }
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    int i = Color.parseColor("#FF212226");
-    this.jdField_a_of_type_ComTencentWidgetXEditText.setTextColor(i);
-    if (paramEditable != null)
-    {
-      if (paramEditable.length() == 0) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void dismiss()
   {
-    super.dismiss();
-    this.jdField_a_of_type_Boolean = false;
-    this.b = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
+    this.jdField_a_of_type_Uqp.c();
+    this.jdField_a_of_type_Uqp.a();
+    if (isShowing()) {
+      super.dismiss();
+    }
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      dismiss();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetXEditText.setText("");
-    bjwq.a("clk_kbdelete", this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 6) && (this.jdField_a_of_type_Bkiz != null))
-    {
-      bjwq.a("clk_kbfinish", this.jdField_a_of_type_AndroidContentContext);
-      paramTextView = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
-      if ((TextUtils.isEmpty(paramTextView)) || (!bbff.d.matcher(paramTextView).matches())) {
-        break label138;
-      }
-    }
-    label138:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0)
-      {
-        this.jdField_a_of_type_Bkiz.a(paramTextView);
-        this.b = null;
-        super.dismiss();
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        return true;
-      }
-      bjwq.a("exp_wronglink", this.jdField_a_of_type_AndroidContentContext);
-      bcpw.a(getContext(), jdField_a_of_type_JavaLangString, 0).a();
-      paramInt = Color.parseColor("#ff4222");
-      this.jdField_a_of_type_ComTencentWidgetXEditText.setTextColor(paramInt);
-      return true;
-    }
-  }
-  
-  public void onGlobalLayout()
-  {
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getBottom();
-    int j = this.jdField_a_of_type_AndroidViewViewGroup.getRootView().getBottom();
-    veg.b(getClass().getName(), "bottom = " + i + " , rootBottom = " + j + " , mMinKeyboardHeight = " + this.jdField_a_of_type_Int);
-    if (j - i > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      localObject = new Rect();
-      this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-      ((Rect)localObject).top -= vzo.a(getContext(), 5.0F);
-      ((Rect)localObject).bottom += vzo.a(getContext(), 5.0F);
-      localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
-    }
-    while (!this.jdField_a_of_type_Boolean)
-    {
-      Object localObject;
-      return;
-    }
     dismiss();
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
+  {
+    super.setOnShowListener(paramOnShowListener);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = paramOnShowListener;
+  }
 }
 
 

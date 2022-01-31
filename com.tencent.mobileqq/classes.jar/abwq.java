@@ -1,14 +1,16 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class abwq
-  implements awcb
+  extends ajuf
 {
   public abwq(QQSettingMe paramQQSettingMe) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.z();
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.o();
     }
   }
 }

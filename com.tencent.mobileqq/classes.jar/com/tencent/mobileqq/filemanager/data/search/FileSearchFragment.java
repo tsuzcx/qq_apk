@@ -5,20 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import apfh;
 import apfl;
-import awkc;
-import awog;
-import awus;
+import apfp;
+import awke;
+import awoi;
+import awuu;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.List;
 
 public class FileSearchFragment
-  extends BaseSearchFragment<awog>
+  extends BaseSearchFragment<awoi>
 {
   protected boolean a;
   public String b;
-  public List<awog> b;
+  public List<awoi> b;
   int c = -1;
   
   public FileSearchFragment()
@@ -26,19 +26,19 @@ public class FileSearchFragment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public awkc a()
+  public awke a()
   {
-    return new apfh(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new apfl(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxy, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public awus a()
+  public awuu a()
   {
     return new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
   }
   
   public String a()
   {
-    return apfl.jdField_b_of_type_JavaLangString;
+    return apfp.jdField_b_of_type_JavaLangString;
   }
   
   public void b(boolean paramBoolean)

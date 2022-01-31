@@ -1,147 +1,44 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class avbr
+public abstract class avbr
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, avbs> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
-  
-  private static void a(avbs paramavbs, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if ((paramavbs != null) && (paramavbs.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
-    {
-      File localFile;
-      if (paramavbs.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
-      {
-        if (paramavbs.jdField_a_of_type_JavaIoFile == null)
-        {
-          localFile = new File(paramavbs.jdField_a_of_type_JavaLangString + "~tmp");
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          paramavbs.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-          paramavbs.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        paramavbs.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramavbs.jdField_a_of_type_JavaIoFileOutputStream);
-      }
-      if (paramBoolean)
-      {
-        if (paramavbs.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          paramavbs.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramavbs.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramavbs.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        if (paramavbs.jdField_a_of_type_JavaIoFile != null)
-        {
-          localFile = new File(paramavbs.jdField_a_of_type_JavaLangString);
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          if (!paramavbs.jdField_a_of_type_JavaIoFile.renameTo(localFile))
-          {
-            bbdj.a(paramavbs.jdField_a_of_type_JavaIoFile, localFile);
-            paramavbs.jdField_a_of_type_JavaIoFile.delete();
-          }
-          paramavbs.jdField_a_of_type_JavaIoFile = null;
-        }
-      }
+    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("UserGuide", true).commit();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "markUserGuideFlag");
     }
   }
   
-  public static void a(String paramString)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    a(paramString, true);
+    boolean bool = false;
+    if (!BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("UserGuide", false)) {
+      bool = true;
+    }
+    return bool;
   }
   
-  private static void a(String paramString, boolean paramBoolean)
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    avbs localavbs = (avbs)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localavbs == null) || (localavbs.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      localavbs.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localavbs.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localavbs.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localavbs.jdField_a_of_type_JavaIoFileOutputStream = null;
-        if ((paramBoolean) && (localavbs.jdField_a_of_type_JavaIoFile != null))
-        {
-          localavbs.jdField_a_of_type_JavaIoFile.delete();
-          localavbs.jdField_a_of_type_JavaIoFile = null;
-        }
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        break label45;
-      }
-    }
-    catch (Exception localException2)
-    {
-      break label31;
+    long l = System.currentTimeMillis();
+    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("UserTips", l);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "markUserTipsFlag:" + l);
     }
   }
   
-  public static boolean a(String paramString)
+  public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    if ((avbs)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      avbs localavbs = new avbs();
-      localavbs.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localavbs);
+    boolean bool = false;
+    if (Math.abs(System.currentTimeMillis() - BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("UserTips", 0L)) >= 3600000L) {
+      bool = true;
     }
-    return true;
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramString = (avbs)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
-    {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    avbs localavbs = (avbs)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localavbs != null) && (localavbs.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localavbs, true);
-      label29:
-      localavbs.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      a(paramString, true);
-      return true;
-    }
-    catch (IOException localIOException)
-    {
-      break label29;
-    }
+    return bool;
   }
 }
 

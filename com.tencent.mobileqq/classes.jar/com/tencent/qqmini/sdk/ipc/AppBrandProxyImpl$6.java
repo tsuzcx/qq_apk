@@ -1,42 +1,42 @@
 package com.tencent.qqmini.sdk.ipc;
 
 import android.os.Bundle;
-import beou;
-import beoy;
-import bepd;
-import bepk;
-import besl;
+import bepl;
+import bepp;
+import bepu;
+import beqb;
+import betc;
 
 public class AppBrandProxyImpl$6
   implements Runnable
 {
-  public AppBrandProxyImpl$6(beou parambeou, String paramString, bepd parambepd, Bundle paramBundle) {}
+  public AppBrandProxyImpl$6(bepl parambepl, String paramString, bepu parambepu, Bundle paramBundle) {}
   
   public void run()
   {
     if (this.this$0.a() == null)
     {
-      besl.d("minisdk-start_AppBrandProxy", "sendCmd IAppBrandService Connection is Null 1. cmd=" + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Bepd != null) {}
+      betc.d("minisdk-start_AppBrandProxy", "sendCmd IAppBrandService Connection is Null 1. cmd=" + this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Bepu != null) {}
       try
       {
-        this.jdField_a_of_type_Bepd.a(false, new Bundle());
+        this.jdField_a_of_type_Bepu.a(false, new Bundle());
         return;
       }
       catch (Throwable localThrowable1)
       {
-        besl.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable1);
+        betc.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable1);
         return;
       }
     }
     try
     {
-      beou.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, bepk.a().a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bepd);
+      bepl.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, beqb.a().a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bepu);
       return;
     }
     catch (Throwable localThrowable2)
     {
-      besl.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable2);
+      betc.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable2);
     }
   }
 }

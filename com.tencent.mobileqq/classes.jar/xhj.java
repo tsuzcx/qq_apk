@@ -1,9 +1,15 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import java.util.ArrayList;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
-public abstract interface xhj
+class xhj
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
+  xhj(xhi paramxhi) {}
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    xhi.c(this.a);
+  }
 }
 
 

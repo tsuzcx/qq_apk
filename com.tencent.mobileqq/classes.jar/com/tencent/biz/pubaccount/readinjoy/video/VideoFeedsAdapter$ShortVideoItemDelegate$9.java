@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.widget.ImageView;
-import qmm;
-import qmr;
+import qmj;
+import qmo;
 
 public class VideoFeedsAdapter$ShortVideoItemDelegate$9
   implements Runnable
 {
-  public VideoFeedsAdapter$ShortVideoItemDelegate$9(qmm paramqmm) {}
+  public VideoFeedsAdapter$ShortVideoItemDelegate$9(qmj paramqmj) {}
   
   public void run()
   {
-    qmm.a(this.a).k.setVisibility(0);
-    qmm.a(this.a).m.setVisibility(8);
-    qmm.a(this.a).k.setImageResource(2130841217);
+    qmj.a(this.a).k.setVisibility(0);
+    qmj.a(this.a).m.setVisibility(8);
+    qmj.a(this.a).k.setImageResource(2130841214);
   }
 }
 

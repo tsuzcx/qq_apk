@@ -1,89 +1,42 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.webkit.URLUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.webviewwrapper.QzoneWebViewRuntime;
 
-public final class bhuw
-  extends Drawable.ConstantState
+public class bhuw
 {
-  int jdField_a_of_type_Int = 30;
-  bhuy jdField_a_of_type_Bhuy;
-  bhvf jdField_a_of_type_Bhvf;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  private static bhuw jdField_a_of_type_Bhuw;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private QzoneWebViewRuntime jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
   
-  private bhuw(bhus parambhus) {}
-  
-  public int a()
+  public static bhuw a()
   {
-    if (this.jdField_a_of_type_Bhuy == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Bhuy.a();
-  }
-  
-  public void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_Bhuy.a(paramRect);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (this.jdField_a_of_type_Bhuy == null)
+    if (jdField_a_of_type_Bhuw == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_Bhuy = new bhuy(BaseApplicationImpl.getApplication());
-      if (this.jdField_a_of_type_Bhvf == null) {
-        this.jdField_a_of_type_Bhvf = new bhux(this);
+      if (jdField_a_of_type_Bhuw == null) {
+        jdField_a_of_type_Bhuw = new bhuw();
       }
-      this.jdField_a_of_type_Bhuy.a(this.jdField_a_of_type_Bhvf);
-      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
+      return jdField_a_of_type_Bhuw;
+    }
+  }
+  
+  public QzoneWebViewRuntime a()
+  {
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null)
       {
-        if (!URLUtil.isNetworkUrl(paramString)) {
-          break label148;
-        }
-        this.jdField_a_of_type_Bhuy.a(paramString, -1, true);
+        QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
+        localQzoneWebViewRuntime.onCreate(null);
+        this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = localQzoneWebViewRuntime;
       }
-    }
-    for (;;)
-    {
-      if (paramInt > 0) {
-        this.jdField_a_of_type_Int = paramInt;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      this.jdField_a_of_type_Bhuy.a();
-      break;
-      label148:
-      this.jdField_a_of_type_Bhuy.a(paramString, true);
+      return this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
     }
   }
   
-  public int b()
+  public void a(QzoneWebViewRuntime paramQzoneWebViewRuntime)
   {
-    return a() * 1000 / this.jdField_a_of_type_Int;
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new bhus(this);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new bhus(this);
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = paramQzoneWebViewRuntime;
   }
 }
 

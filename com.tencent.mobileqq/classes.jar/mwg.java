@@ -1,32 +1,18 @@
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
 
 public class mwg
-  implements bfob
+  implements bble<Integer>
 {
   public mwg(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
-      }
-      if ((!this.a.f) && (this.a.d))
-      {
-        this.a.f = true;
-        paramAbsListView = this.a;
-        paramAbsListView.n += 1;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
-        }
-        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
-      }
-    }
+    parambbky = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    parambbky.bottomMargin = (this.a.o - paramInteger.intValue());
+    this.a.b.setLayoutParams(parambbky);
   }
 }
 

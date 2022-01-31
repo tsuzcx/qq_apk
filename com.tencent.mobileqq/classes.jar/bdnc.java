@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.AppInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
+import mqq.os.MqqHandler;
 
-public final class bdnc
-  implements Parcelable.Creator<AppInfo>
+public class bdnc
+  extends bdnm
 {
-  public AppInfo a(Parcel paramParcel)
-  {
-    return new AppInfo(paramParcel);
-  }
+  public bdnc(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public AppInfo[] a(int paramInt)
+  public void a()
   {
-    return new AppInfo[paramInt];
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
   }
 }
 

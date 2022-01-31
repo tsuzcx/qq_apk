@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.graphics.Bitmap;
 
-public class vno
-  implements vog
+public abstract interface vno
 {
-  public vno(DoodleLayout paramDoodleLayout) {}
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(vou paramvou);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt, Object paramObject);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void i();
 }
 
 

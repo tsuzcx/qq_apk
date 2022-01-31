@@ -1,23 +1,40 @@
-import android.content.Context;
-import android.view.View;
-
-class ukj
-  implements bfoq
+public class ukj
 {
-  ukj(uki paramuki, bfol parambfol, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bfol.e();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Uki.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
-      return;
-    }
-    this.jdField_a_of_type_Uki.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+    ved.b(paramString1, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject)
+  {
+    ved.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    ved.d(paramString1, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    ved.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    ved.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    ved.e(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    ved.a(paramString1, paramString2, paramObject1, paramObject2);
   }
 }
 

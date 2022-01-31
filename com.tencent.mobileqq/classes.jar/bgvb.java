@@ -1,44 +1,111 @@
-import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qqreader.js.JsCallParams;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bgvb
-  implements EnterCallback
 {
-  public bgvb(ReaderShadowImpl.1 param1, long paramLong) {}
+  private static long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bgvd(this, Looper.getMainLooper());
+  private bgtx jdField_a_of_type_Bgtx = new bgvc(this);
+  private bguy jdField_a_of_type_Bguy;
+  private List<bgve> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onCloseLoadingView()
+  bgvb(bguy parambguy)
   {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
-    }
-    bgvo.c("ReaderShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bguy = parambguy;
   }
   
-  public void onEnterComplete()
+  private boolean a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
-    }
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1002L) {
-      bgvr.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "0");
-    }
-    for (;;)
+    return (("JSbookshelf".equals(paramString1)) && ("kvStorageGet".equals(paramString2)) && (!this.jdField_a_of_type_Bguy.a())) || (("JSbookshelf".equals(paramString1)) && ("reportParams".equals(paramString2)));
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(100001);
+    d();
+  }
+  
+  private void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      bgvo.c("ReaderShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
-      return;
-      if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1003L) {
-        bgvr.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1");
+      bgve localbgve = (bgve)localIterator.next();
+      if (!localbgve.a()) {
+        this.jdField_a_of_type_Bguy.a(localbgve.a.a(), localbgve.a.b(), localbgve.a.c(), localbgve.a.a());
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  private void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      bgve localbgve = (bgve)localIterator.next();
+      if (localbgve.a())
+      {
+        if (!a(localbgve.a.b(), localbgve.a.c())) {
+          f();
+        }
+        localIterator.remove();
       }
     }
   }
   
-  public void onShowLoadingView(View paramView)
+  private void f()
   {
-    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long > 5000L)
+    {
+      jdField_a_of_type_Long = l;
+      bcql.a(BaseApplicationImpl.getApplication(), "插件正在加载中，请稍候...", 0).a();
     }
-    bgvo.c("ReaderShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
+  }
+  
+  private void g()
+  {
+    if (!bgtw.a().a()) {
+      bgtw.a().a(this.jdField_a_of_type_Bgtx);
+    }
+  }
+  
+  void a() {}
+  
+  void a(String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    paramString1 = new bgve(paramString1, paramString2, paramString3, 3000L, paramVarArgs);
+    paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString2.hasNext())
+    {
+      paramString3 = (bgve)paramString2.next();
+      if (paramString3.a(paramString1)) {
+        paramString3.a();
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_JavaUtilList.add(paramString1);
+      }
+      if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(100001)) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100001, 3000L);
+      }
+      g();
+      return;
+    }
+  }
+  
+  void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(100001);
   }
 }
 

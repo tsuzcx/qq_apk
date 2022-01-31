@@ -4,8 +4,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import bitj;
-import bitt;
+import biua;
+import biuk;
 import dov.com.qq.im.BaseVMPeakActivity;
 import dov.com.qq.im.ae.SessionWrap;
 
@@ -45,14 +45,14 @@ public class AEStoryGIFPreviewActivity
     long l = getIntent().getLongExtra("KEY_AVAILABLE_EMO_COUNT", 9223372036854775807L);
     FragmentManager localFragmentManager = getFragmentManager();
     if (i == 202) {
-      if (localFragmentManager.findFragmentByTag(bitj.class.getSimpleName()) == null) {
-        localFragmentManager.beginTransaction().add(2131366671, bitj.a(paramBundle, l), bitj.class.getSimpleName()).commit();
+      if (localFragmentManager.findFragmentByTag(biua.class.getSimpleName()) == null) {
+        localFragmentManager.beginTransaction().add(2131366671, biua.a(paramBundle, l), biua.class.getSimpleName()).commit();
       }
     }
-    while (localFragmentManager.findFragmentByTag(bitt.class.getSimpleName()) != null) {
+    while (localFragmentManager.findFragmentByTag(biuk.class.getSimpleName()) != null) {
       return;
     }
-    localFragmentManager.beginTransaction().add(2131366671, bitt.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), bitt.class.getSimpleName()).commit();
+    localFragmentManager.beginTransaction().add(2131366671, biuk.a(paramBundle, Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeSessionWrap, bool), biuk.class.getSimpleName()).commit();
   }
 }
 

@@ -1,7 +1,8 @@
-public class bdji
+public abstract interface bdji
 {
-  public static final String a = bcxm.a().f();
-  public static final String b = bcxm.a().f();
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 

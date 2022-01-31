@@ -1,34 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.FeedsManager.2.1;
 
-public final class anii
-  implements Parcelable.Creator
+public class anii
+  implements ThreadExcutor.IThreadListener
 {
-  public IPSiteModel.Game a(Parcel paramParcel)
+  public anii(FeedsManager paramFeedsManager) {}
+  
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    IPSiteModel.Game localGame = new IPSiteModel.Game();
-    localGame.cover = paramParcel.readString();
-    localGame.desc = paramParcel.readString();
-    localGame.id = paramParcel.readString();
-    localGame.jumpUrl = paramParcel.readString();
-    localGame.name = paramParcel.readString();
-    localGame.recommDesc = paramParcel.readString();
-    if (localGame.gameRiches == null) {
-      localGame.gameRiches = new ArrayList();
+    FeedsManager.access$102(this.a, true);
+    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
+    if (FeedsManager.access$300(this.a))
+    {
+      FeedsManager.access$302(this.a, false);
+      this.a.updateQzoneFeeds();
     }
-    localGame.gameRiches.clear();
-    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
-    return localGame;
   }
   
-  public IPSiteModel.Game[] a(int paramInt)
-  {
-    return new IPSiteModel.Game[paramInt];
-  }
+  public void onPreRun() {}
 }
 
 

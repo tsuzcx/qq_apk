@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-public class bdgn
-  implements View.OnClickListener
+public abstract interface bdgn
+  extends bdld
 {
-  public bdgn(CommonTitleBar paramCommonTitleBar) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
-    }
-  }
+  public abstract void a(DownloadInfo paramDownloadInfo, int paramInt);
+  
+  public abstract void a(List<DownloadInfo> paramList);
 }
 
 

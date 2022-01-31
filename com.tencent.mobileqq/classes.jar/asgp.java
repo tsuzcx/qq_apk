@@ -1,6 +1,26 @@
-public abstract interface asgp
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class asgp
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  asgp(asgo paramasgo, Looper paramLooper, asgn paramasgn)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (asgn.a(this.jdField_a_of_type_Asgo.jdField_a_of_type_Asgn))
+    {
+      asgr localasgr = asgn.a(this.jdField_a_of_type_Asgo.jdField_a_of_type_Asgn, (String)paramMessage.obj);
+      if (localasgr != null) {
+        localasgr.a(paramMessage.what);
+      }
+      return;
+    }
+  }
 }
 
 

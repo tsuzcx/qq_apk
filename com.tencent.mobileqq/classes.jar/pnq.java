@@ -1,6 +1,15 @@
-public abstract interface pnq
+import com.tencent.qphone.base.util.QLog;
+
+class pnq
+  implements poh
 {
-  public abstract void a();
+  pnq(pno parampno) {}
+  
+  public void a()
+  {
+    QLog.d(pno.a(this.a), 1, "onError  ");
+    pno.a(this.a);
+  }
 }
 
 

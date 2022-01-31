@@ -1,16 +1,24 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class alva
-  implements bfoq
+public class alva
+  implements View.OnClickListener
 {
-  alva(aluy paramaluy, bfol parambfol) {}
+  public alva(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aluy.a.d();
-    this.jdField_a_of_type_Aluy.a.b("本地APP已删除成功");
-    this.jdField_a_of_type_Bfol.dismiss();
+    paramView = (bfpc)bfpp.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690220));
+    paramView.a(2131690219, 3);
+    paramView.c(2131690218);
+    paramView.setOnDismissListener(new alvb(this, paramView));
+    paramView.a(new alvc(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
+    }
   }
 }
 

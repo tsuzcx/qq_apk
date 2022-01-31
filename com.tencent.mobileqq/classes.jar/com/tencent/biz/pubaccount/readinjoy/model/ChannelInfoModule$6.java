@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukn;
+import aukp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import pad;
+import paa;
 
 public class ChannelInfoModule$6
   implements Runnable
 {
-  public ChannelInfoModule$6(pad parampad, ChannelInfo paramChannelInfo) {}
+  public ChannelInfoModule$6(paa parampaa, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {

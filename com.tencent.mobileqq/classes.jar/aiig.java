@@ -1,47 +1,42 @@
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
 import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class aiig
-  implements SeekBar.OnSeekBarChangeListener
+  implements SurfaceHolder.Callback
 {
   public aiig(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.d();
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
     }
+    if ((this.a.h == 1) && (this.a.g > 0))
+    {
+      this.a.a(this.a.g);
+      this.a.g = 0;
+      this.a.h = 0;
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
     }
-    if (this.a.jdField_a_of_type_Bbva != null)
-    {
-      if (this.a.a() == 2) {
-        this.a.b();
-      }
-      this.a.c.setImageResource(2130845266);
-      this.a.jdField_a_of_type_Bbva.a();
-      this.a.jdField_a_of_type_Bbva.a(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
+    if (this.a.jdField_a_of_type_Bbvo != null) {
+      this.a.jdField_a_of_type_Bbvo.c();
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }

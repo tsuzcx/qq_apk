@@ -1,24 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahkk
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ahkk(ahkf paramahkf) {}
+  ahkk(ahki paramahki) {}
   
-  public void onClick(View paramView)
-  {
-    try
-    {
-      bbcv.a(ahkf.a(this.a), 0, null, ajyc.a(2131700907), 2131690596, 2131694793, new ahkl(this), new ahkm(this)).show();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

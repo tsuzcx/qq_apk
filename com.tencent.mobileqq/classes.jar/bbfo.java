@@ -1,31 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class bbfo
-  extends akim
+class bbfo
+  implements View.OnClickListener
 {
-  bbfo(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  bbfo(bbfk parambbfk) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Long != paramLong) {
-      return;
-    }
-    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
-    if ((paramInt1 & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
+    switch (bbfk.a(this.a))
     {
-      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-      if (paramInt1 != 480) {
-        break;
-      }
-      if (paramBoolean) {
-        bbfr.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    default: 
+      return;
+    case 1: 
+      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
+      bbfk.a(this.a);
+      return;
+    case 4: 
+      bbfk.b(this.a);
+      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+      return;
+    case 10: 
+      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+      return;
+    case 3: 
+      bbfk.c(this.a);
+      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+      return;
+    case 2: 
+      this.a.c();
+      bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
       return;
     }
+    bdii.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
   }
 }
 

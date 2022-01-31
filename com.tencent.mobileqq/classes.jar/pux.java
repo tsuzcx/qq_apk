@@ -4,14 +4,12 @@ import android.view.View.OnClickListener;
 class pux
   implements View.OnClickListener
 {
-  pux(puw parampuw) {}
+  pux(puv parampuv) {}
   
   public void onClick(View paramView)
   {
-    rbu localrbu = this.a.jdField_a_of_type_Rap.a();
-    if (localrbu != null) {
-      localrbu.a(paramView, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    onh.a(this.a.jdField_a_of_type_AndroidContentContext, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    ram.a(((pau)this.a.jdField_a_of_type_JavaLangObject).a(), ((pau)this.a.jdField_a_of_type_JavaLangObject).e());
   }
 }
 

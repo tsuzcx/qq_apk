@@ -1,30 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
-
-public class bcma
-  extends DataSetObserver
+public abstract interface bcma
 {
-  public bcma(GridListView paramGridListView) {}
+  public abstract void a(int paramInt);
   
-  public void onChanged()
-  {
-    if (this.a.jdField_a_of_type_Bcmd != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Bcmd.getCount());
-    }
-    if (this.a.jdField_a_of_type_Bcme != null) {
-      this.a.jdField_a_of_type_Bcme.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(int paramInt, float paramFloat);
   
-  public void onInvalidated()
-  {
-    if (this.a.jdField_a_of_type_Bcmd != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Bcmd.getCount());
-    }
-    if (this.a.jdField_a_of_type_Bcme != null) {
-      this.a.jdField_a_of_type_Bcme.notifyDataSetInvalidated();
-    }
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

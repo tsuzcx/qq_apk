@@ -1,76 +1,75 @@
-import MQQ.PrivExtV2Rsp;
-import MQQ.VipUserInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.29.1;
+import com.tencent.mobileqq.activity.QQSettingMe.32.1;
+import com.tencent.mobileqq.activity.QQSettingMe.32.2;
+import com.tencent.mobileqq.activity.QQSettingMe.32.3;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashSet;
 
 public class abws
-  extends akjp
+  extends ajxj
 {
   public abws(QQSettingMe paramQQSettingMe) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
   {
-    if ((paramBoolean) && (paramInt >= 0) && (this.a.a != null))
-    {
-      Object localObject = this.a.a.getPreferences();
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
-      }
-      localObject = this.a.a.getCurrentAccountUin();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
-      }
-      this.a.c((String)localObject);
+    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramHashSet.contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 1) {
-      if (paramBoolean)
-      {
-        paramObject = ((PrivExtV2Rsp)paramObject).vipInfo;
-        if ((paramObject != null) && (paramObject.bUpdate == 1))
-        {
-          paramObject = paramObject.sUri;
-          if (paramObject != null)
-          {
-            QQSettingMe.b(this.a, paramObject);
-            if (QLog.isColorLevel()) {
-              QLog.d("QQSettingRedesign", 2, "vip url = " + paramObject);
-            }
-            paramObject = this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramObject);
-            if (Build.VERSION.SDK_INT >= 9) {
-              break label170;
-            }
-            paramObject.commit();
-          }
-        }
-        paramObject = this.a.a.getCurrentAccountUin();
-        this.a.c(paramObject);
-        this.a.b.post(new QQSettingMe.29.1(this));
-      }
+    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bbbr.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.b(paramString);
     }
-    label170:
-    do
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bbbr.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.32.1(this));
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean2) && (paramBoolean1) && (this.a.c)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.32.2(this));
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    int k = 0;
+    String str;
+    int i;
+    if ((paramBoolean) && (this.a.c) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
-      return;
-      paramObject.apply();
-      break;
-      if (paramInt == 4)
+      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      i = 0;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (str != null)
       {
-        this.a.b.sendEmptyMessage(2);
-        return;
+        j = k;
+        if (i < paramArrayOfString.length)
+        {
+          if (!str.equals(paramArrayOfString[i])) {
+            break label97;
+          }
+          j = 1;
+        }
       }
-    } while (paramInt != 5);
-    this.a.b.sendMessage(this.a.b.obtainMessage(3, paramObject));
+      if (j != 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.32.3(this));
+      }
+      return;
+      label97:
+      i += 1;
+    }
   }
 }
 

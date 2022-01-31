@@ -1,85 +1,131 @@
-import android.content.Intent;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qq.effect.QEffectView;
 
 public class adiu
-  implements adih
+  implements adif
 {
+  private long jdField_a_of_type_Long;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  Map<Integer, Intent> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private QEffectView jdField_a_of_type_ComTencentQqEffectQEffectView;
   
-  adiu(BaseChatPie paramBaseChatPie)
+  public adiu(BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public Intent a(int paramInt)
+  public void a()
   {
-    return (Intent)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.pause();
+    }
   }
   
   public void a(int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
     case 2: 
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.hashCode());
+    default: 
+    case 11: 
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      StringBuilder localStringBuilder = new StringBuilder().append("destroy qeffect, duration:");
+      if (this.jdField_a_of_type_Long == 0L) {}
+      for (long l = this.jdField_a_of_type_Long;; l = System.currentTimeMillis() - this.jdField_a_of_type_Long)
+      {
+        QLog.i("QEffectBgProvider", 1, l);
+        if (this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl() != null) {
+          ((View)this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl()).destroyDrawingCache();
+        }
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        return;
+      }
+    case 12: 
+      a();
       return;
     }
-    b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.hashCode());
+    b();
   }
   
-  public void a(int paramInt, Intent paramIntent)
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    int j = 0;
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramIntent);
-    if (QLog.isColorLevel())
+    String str1;
+    if ((paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_Acur != null))
     {
-      if (paramIntent != null) {
-        break label54;
+      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null)
+      {
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView = new QEffectView(paramContext);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d.addView(this.jdField_a_of_type_ComTencentQqEffectQEffectView, 0, new ViewGroup.LayoutParams(-1, -1));
       }
-      QLog.d("PhotoListHelper", 2, "setSelectedPhotoData null, code=" + paramInt);
-    }
-    label54:
-    while (!paramIntent.hasExtra("PhotoConst.SELECTED_PATHS")) {
-      return;
-    }
-    Object localObject = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-    paramIntent = paramIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
-    StringBuilder localStringBuilder = new StringBuilder().append("setSelectedPhotoData checked size=");
-    if (localObject == null)
-    {
-      i = 0;
-      localObject = localStringBuilder.append(i).append(",checkedIndex size=");
-      if (paramIntent != null) {
-        break label153;
+      if (paramSessionInfo.jdField_a_of_type_Acur.a == null) {
+        break label335;
+      }
+      if ((paramSessionInfo.jdField_a_of_type_Acur.a instanceof anoy)) {
+        paramSessionInfo = "aio-bg-static";
       }
     }
-    label153:
-    for (int i = j;; i = paramIntent.size())
+    for (;;)
     {
-      QLog.d("PhotoListHelper", 2, i + ", code=" + paramInt);
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.setExtOptions(2, QEffectApngImageView.a(new int[] { 0 }, "-chatBg-"));
+      String str2 = paramQQAppInterface.c();
+      int i = ChatBackgroundManager.a(paramContext, str2, str1);
+      if ((i > 0) && (ChatBackgroundManager.a()))
+      {
+        ((bbrg)paramQQAppInterface.getManager(235)).a.a(i, new adiv(this, i));
+        paramSessionInfo = paramSessionInfo + "-effect";
+        label181:
+        MagnifierSDK.a("AIO背景", paramSessionInfo, zzx.class);
+      }
+      do
+      {
+        return;
+        if (!(paramSessionInfo.jdField_a_of_type_Acur.a instanceof URLDrawable)) {
+          break label335;
+        }
+        paramSessionInfo = "aio-bg-dynamic";
+        break;
+        if ((ChatBackgroundManager.a(paramContext, str2, str1)) && (ChatBackgroundManager.a()))
+        {
+          paramContext = acur.a(paramContext, str2, str1);
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.jdField_a_of_type_ComTencentQqEffectQEffectView.setSrc(paramContext.replace("aioImage", ""), "zip");
+          QLog.i("QEffectBgProvider", 1, "set qeffect for custom background aioImageID:" + ChatBackgroundManager.d(paramContext));
+          paramSessionInfo = paramSessionInfo + "-3d";
+          break label181;
+        }
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        break label181;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
       return;
-      i = ((ArrayList)localObject).size();
-      break;
+      label335:
+      paramSessionInfo = "aio-bg-default";
     }
   }
   
   public int[] a()
   {
-    return new int[] { 2, 11 };
+    return new int[] { 2, 11, 12, 13, 14 };
   }
   
-  public void b(int paramInt)
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListHelper", 2, "removeSelectedPhotoData code=" + paramInt);
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.resume();
     }
   }
 }

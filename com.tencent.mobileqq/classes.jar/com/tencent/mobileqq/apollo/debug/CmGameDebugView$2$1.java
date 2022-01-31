@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.debug;
 
-import aiwx;
+import aiwv;
 
 public class CmGameDebugView$2$1
   implements Runnable
 {
-  public CmGameDebugView$2$1(aiwx paramaiwx) {}
+  public CmGameDebugView$2$1(aiwv paramaiwv) {}
   
   public void run()
   {

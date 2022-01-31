@@ -1,13 +1,34 @@
-import android.view.View;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.smtt.sdk.ValueCallback;
+import java.lang.ref.WeakReference;
 
 final class apuo
-  implements bfoq
+  implements ValueCallback<String>
 {
-  apuo(bfol parambfol) {}
+  apuo(WeakReference paramWeakReference, Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString)
   {
-    this.a.cancel();
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    {
+      if (apdc.a().a() == null)
+      {
+        paramString = new Bundle();
+        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131694786));
+        paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
+        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+        localIntent.putExtra("param", paramString);
+        localIntent.putExtra("url", "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
+        localActivity.sendBroadcast(localIntent);
+      }
+    }
+    else {
+      return;
+    }
+    apug.c(localActivity, "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
 }
 

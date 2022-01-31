@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Set;
-import rpg;
-import rpi;
-import rpk;
+import rpd;
+import rpf;
+import rph;
 
 class RunningJob$2
   implements Runnable
 {
-  RunningJob$2(RunningJob paramRunningJob, rpg paramrpg) {}
+  RunningJob$2(RunningJob paramRunningJob, rpd paramrpd) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Rpk.a)
+    if (this.this$0.jdField_a_of_type_Rph.a)
     {
       this.a.a();
       return;
@@ -24,7 +24,7 @@ class RunningJob$2
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() != null) {
-        ((rpi)localWeakReference.get()).a(this.this$0.jdField_a_of_type_Rpk, this.a.a());
+        ((rpf)localWeakReference.get()).a(this.this$0.jdField_a_of_type_Rph, this.a.a());
       }
     }
     this.a.a();

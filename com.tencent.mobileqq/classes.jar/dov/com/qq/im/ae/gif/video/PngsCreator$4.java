@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bisg;
-import bivf;
+import bisx;
+import bivw;
 
 public class PngsCreator$4
   implements Runnable
 {
-  public PngsCreator$4(bivf parambivf, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public PngsCreator$4(bivw parambivw, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
   public void run()
   {
-    if (bivf.a(this.this$0) != null)
+    if (bivw.a(this.this$0) != null)
     {
-      bivf.a(this.this$0).a(true);
-      bivf.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
+      bivw.a(this.this$0).a(true);
+      bivw.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
     }
   }
 }

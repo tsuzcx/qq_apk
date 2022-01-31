@@ -1,66 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.YybHandleUtil.1;
-import java.io.File;
-import java.text.DecimalFormat;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 public class bdlz
+  implements DialogInterface.OnCancelListener
 {
-  public static String a = "YybHandleUtil";
-  public static String b = "APK/MobileAssistant_main.apk";
-  public static String c = "yyb.apk";
-  public static final String d = ajyc.a(2131717032);
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public static String a(int paramInt)
+  public bdlz(bdlr parambdlr, String paramString1, String paramString2)
   {
-    if (paramInt < 0) {
-      return null;
-    }
-    float f2 = paramInt;
-    paramInt = 0;
-    float f1;
-    String str2;
-    String str1;
-    if (f2 / 1048576.0F > 1.0F)
-    {
-      f1 = f2 / 1048576.0F;
-      paramInt = 2;
-      str2 = new DecimalFormat("#.#").format(f1);
-      if (paramInt != 2) {
-        break label92;
-      }
-      str1 = "MB";
-    }
-    for (;;)
-    {
-      return str2 + str1;
-      f1 = f2;
-      if (f2 / 1024.0F <= 1.0F) {
-        break;
-      }
-      f1 = f2 / 1024.0F;
-      paramInt = 1;
-      break;
-      label92:
-      if (paramInt == 1) {
-        str1 = "KB";
-      } else {
-        str1 = "B";
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = bdjr.a(paramString1, "NEWYYB");
+    this.b = paramString2;
   }
   
-  public static void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    bdht.c(a, "---deleteYYBApkPackage--");
-    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
-  }
-  
-  public static boolean a()
-  {
-    String str = bcxm.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
-    return bdiw.a(bcxm.a().a(), str);
+    this.jdField_a_of_type_Bdlr.a(this.b);
+    bdjr.a("720", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

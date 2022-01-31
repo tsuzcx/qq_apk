@@ -1,32 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
-public class wvl
+class wvl
   implements View.OnClickListener
 {
-  public wvl(CommodityItemView paramCommodityItemView) {}
+  wvl(wvk paramwvk, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
-      if (!(this.a.a() instanceof CommodityBean)) {
-        break label120;
-      }
-    }
-    label120:
-    for (paramView = ((CommodityBean)this.a.a()).mUrl;; paramView = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
+    if (this.jdField_a_of_type_Int < wvk.a(this.jdField_a_of_type_Wvk).size())
     {
-      if (CommodityItemView.a(this.a) != null) {
-        xhe.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + wva.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
+      wvk.b(this.jdField_a_of_type_Wvk).remove(this.jdField_a_of_type_Int);
+      ((ArrayList)this.jdField_a_of_type_Wvk.a.a()).remove(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Wvk.notifyDataSetChanged();
+      if (CommodityListView.a(this.jdField_a_of_type_Wvk.a) != null) {
+        CommodityListView.a(this.jdField_a_of_type_Wvk.a).a(wvk.c(this.jdField_a_of_type_Wvk).size());
       }
-      wiv.a(paramView, 8002);
-      return;
     }
   }
 }

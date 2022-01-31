@@ -1,34 +1,18 @@
-import com.tencent.pts.core.PTSJNIHandler;
+import android.text.TextUtils;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSReportTo1160;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-class ppw
-  extends ppe
+public class ppw
+  implements PTSNativeModuleRegistry.IPTSReportTo1160
 {
-  ppw(ppv paramppv) {}
+  public final String a = "PTSReportTo1160Module";
   
-  public void a(int paramInt, List<Long> paramList, long paramLong)
+  public void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
-    paramList = osj.a().a(Integer.valueOf(paramInt), paramList);
-    if (QLog.isColorLevel())
-    {
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
-        paramInt += 1;
-      }
-      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
+    QLog.i("PTSReportTo1160Module", 1, "[reportTo1160], event = " + paramString1 + ", toUin = " + paramString2 + ", r2 = " + paramLong + ", r3 = " + paramInt + ", r4 = " + paramString3 + ", r5 = " + paramString4);
+    if (!TextUtils.isEmpty(paramString1)) {
+      pqe.a(paramString1, "" + paramLong, "" + paramInt, paramString3, new pqf(paramString4).a());
     }
-    localObject = new Object[1];
-    localObject[0] = ppt.a(true, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
-    }
-    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
-    PTSJNIHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 

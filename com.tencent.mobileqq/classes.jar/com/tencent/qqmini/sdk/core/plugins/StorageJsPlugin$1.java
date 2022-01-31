@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beig;
-import beka;
+import beix;
+import bekr;
 
 class StorageJsPlugin$1
   implements Runnable
 {
-  StorageJsPlugin$1(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, String paramString3, beka parambeka) {}
+  StorageJsPlugin$1(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, String paramString3, bekr parambekr) {}
   
   public void run()
   {

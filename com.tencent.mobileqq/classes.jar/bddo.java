@@ -1,67 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.TroopAbilityUtils.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.open.widget.MaxHeightScrollView;
 
 public class bddo
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  public bddo(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  
+  public void onGlobalLayout()
   {
-    Object localObject = new StringBuilder().append("onThirdAppJoinAppFinished activity is null: ");
-    boolean bool;
-    if (paramActivity == null)
+    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
     {
-      bool = true;
-      QLog.i("TroopAbility.Utils", 1, bool);
-      if ((paramActivity != null) && (paramIntent != null) && (paramIntent.getExtras() != null)) {
-        break label59;
-      }
+      int i = QuickLoginAuthorityActivity.a(this.a).a();
+      int j = DisplayUtil.getNavigationBarHeight(this.a);
+      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
     }
-    label186:
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label59:
-      paramIntent = paramIntent.getExtras();
-      if (paramIntent.getBoolean("fromThirdAppByOpenSDK"))
-      {
-        String str1 = paramIntent.getString("appid");
-        paramIntent.getString("app_name");
-        String str2 = paramIntent.getString("pkg_name");
-        int i = paramIntent.getInt("action");
-        if (i == 1)
-        {
-          paramIntent = "bindGroup";
-          localObject = ajyc.a(2131715124);
-        }
-        for (;;)
-        {
-          if (paramActivity.isFinishing()) {
-            break label186;
-          }
-          ThreadManager.getUIHandler().postDelayed(new TroopAbilityUtils.1(paramActivity, paramBoolean, str1, paramIntent, str2, (String)localObject), 300L);
-          return;
-          if (i == 2)
-          {
-            paramIntent = "bindGroup";
-            localObject = ajyc.a(2131715125);
-          }
-          else
-          {
-            if (i != 3) {
-              break;
-            }
-            paramIntent = "joinGroup";
-            localObject = ajyc.a(2131715136);
-          }
-        }
-      }
-    }
+    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

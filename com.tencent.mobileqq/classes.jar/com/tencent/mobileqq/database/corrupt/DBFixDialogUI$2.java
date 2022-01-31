@@ -2,12 +2,12 @@ package com.tencent.mobileqq.database.corrupt;
 
 import android.app.Activity;
 import android.app.Dialog;
-import anki;
+import ankn;
 
 public class DBFixDialogUI$2
   implements Runnable
 {
-  public DBFixDialogUI$2(anki paramanki, Dialog paramDialog) {}
+  public DBFixDialogUI$2(ankn paramankn, Dialog paramDialog) {}
   
   public void run()
   {

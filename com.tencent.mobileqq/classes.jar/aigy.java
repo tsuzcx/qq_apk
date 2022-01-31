@@ -1,1120 +1,876 @@
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.io.FileInputStream;
 
 public class aigy
   extends AsyncTask<Void, Void, Integer>
 {
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
-  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
   String jdField_a_of_type_JavaLangString;
-  WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long;
-  public String b;
-  boolean jdField_b_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
   int jdField_c_of_type_Int;
   String jdField_c_of_type_JavaLangString;
   int jdField_d_of_type_Int;
   String jdField_d_of_type_JavaLangString;
   int jdField_e_of_type_Int;
   String jdField_e_of_type_JavaLangString;
-  String f;
+  int jdField_f_of_type_Int;
+  String jdField_f_of_type_JavaLangString;
   String g;
   
-  public aigy(BaseActivity paramBaseActivity, Intent paramIntent)
+  public aigy(Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    paramBaseActivity = paramBaseActivity.getIntent();
-    if (paramIntent != null) {}
-    for (;;)
-    {
-      this.jdField_b_of_type_JavaLangString = paramIntent.getExtras().getString("file_send_path");
-      this.jdField_a_of_type_JavaUtilArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS_BY_FILE");
-      this.jdField_b_of_type_Long = paramIntent.getExtras().getLong("file_send_duration");
-      this.jdField_a_of_type_Long = paramIntent.getExtras().getLong("file_send_size");
-      this.jdField_c_of_type_JavaLangString = paramIntent.getExtras().getString("uin");
-      this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", -1);
-      this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("file_source");
-      this.jdField_e_of_type_JavaLangString = paramIntent.getExtras().getString("file_shortvideo_md5");
-      this.jdField_a_of_type_JavaLangString = paramIntent.getExtras().getString("activity_before_enter_send_video");
-      this.jdField_a_of_type_Boolean = paramIntent.getExtras().getBoolean("send_in_background");
-      if (paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0) == 2) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.jdField_b_of_type_Boolean = bool;
-        if (QLog.isColorLevel()) {
-          QLog.d("SendVideoActivity", 2, " SendVideoTask(),  mVideoPath :" + this.jdField_b_of_type_JavaLangString + ", mDuration:" + this.jdField_b_of_type_Long + ", mFileSize:" + this.jdField_a_of_type_Long + ",mUin" + this.jdField_c_of_type_JavaLangString + ",mUinType:" + this.jdField_a_of_type_Int + ",mFileSource:" + this.jdField_d_of_type_JavaLangString + ",mSendBackground = " + this.jdField_a_of_type_Boolean + ", mSendRawVideo:" + this.jdField_b_of_type_Boolean);
-        }
-        return;
-      }
-      paramIntent = paramBaseActivity;
-    }
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, int paramInt, boolean paramBoolean)
-  {
-    bbgg localbbgg = bbcv.a(paramBaseActivity, 232, null, paramBaseActivity.getString(paramInt), new aigz(paramBoolean, paramBaseActivity), null);
-    if (!paramBaseActivity.isFinishing()) {
-      localbbgg.show();
+    this.jdField_b_of_type_JavaLangString = paramIntent.getExtras().getString("file_send_path");
+    this.jdField_b_of_type_Long = paramIntent.getExtras().getLong("file_send_duration");
+    this.jdField_a_of_type_Long = paramIntent.getExtras().getLong("file_send_size");
+    this.jdField_c_of_type_JavaLangString = paramIntent.getExtras().getString("uin");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", -1);
+    this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("file_source");
+    this.jdField_a_of_type_JavaLangString = paramIntent.getExtras().getString("activity_before_enter_send_video");
+    this.jdField_a_of_type_Boolean = paramIntent.getExtras().getBoolean("send_in_background");
+    this.jdField_f_of_type_Int = paramIntent.getExtras().getInt("short_video_msg_tail_type");
+    if (QLog.isColorLevel()) {
+      QLog.d("SendVideoActivity", 2, " SendVideoTask(),  mVideoPath :" + this.jdField_b_of_type_JavaLangString + ", mDuration:" + this.jdField_b_of_type_Long + ", mFileSize:" + this.jdField_a_of_type_Long + ",mUin" + this.jdField_c_of_type_JavaLangString + ",mUinType:" + this.jdField_a_of_type_Int + ",mFileSource:" + this.jdField_d_of_type_JavaLangString + ",mSendBackground = " + this.jdField_a_of_type_Boolean + ",mMsgTailType=" + this.jdField_f_of_type_Int);
     }
   }
   
   /* Error */
-  public int a()
+  int a(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 35	aigy:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   4: invokevirtual 199	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   7: checkcast 201	android/content/Context
-    //   10: astore 11
-    //   12: aload 11
-    //   14: ifnonnull +7 -> 21
-    //   17: iconst_5
-    //   18: istore_1
-    //   19: iload_1
-    //   20: ireturn
-    //   21: aload_0
-    //   22: getfield 65	aigy:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   25: ifnull +60 -> 85
-    //   28: aload_0
-    //   29: getfield 65	aigy:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   32: invokevirtual 206	java/util/ArrayList:isEmpty	()Z
-    //   35: ifne +50 -> 85
-    //   38: aload_0
-    //   39: getfield 35	aigy:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   42: invokevirtual 199	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   45: checkcast 37	com/tencent/mobileqq/app/BaseActivity
-    //   48: getfield 210	com/tencent/mobileqq/app/BaseActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   51: aload_0
-    //   52: getfield 65	aigy:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   55: aload_0
-    //   56: getfield 81	aigy:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   59: aload_0
-    //   60: getfield 89	aigy:jdField_a_of_type_Int	I
-    //   63: invokestatic 215	bbjb:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;Ljava/lang/String;I)V
-    //   66: aload_0
-    //   67: getfield 57	aigy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   70: ifnull +12 -> 82
+    //   0: iconst_5
+    //   1: istore_3
+    //   2: aload_1
+    //   3: ifnonnull +7 -> 10
+    //   6: iload_3
+    //   7: istore_2
+    //   8: iload_2
+    //   9: ireturn
+    //   10: invokestatic 151	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   13: getstatic 157	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:lvcc	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   16: invokevirtual 160	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   19: ldc 162
+    //   21: invokevirtual 165	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   24: astore 7
+    //   26: aload 7
+    //   28: ifnull +193 -> 221
+    //   31: aload 7
+    //   33: invokevirtual 171	java/lang/String:length	()I
+    //   36: ifle +185 -> 221
+    //   39: aload 7
+    //   41: ldc 173
+    //   43: invokevirtual 177	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   46: astore 7
+    //   48: aload 7
+    //   50: ifnull +171 -> 221
+    //   53: aload 7
+    //   55: arraylength
+    //   56: istore_2
+    //   57: iload_2
+    //   58: ifle +163 -> 221
+    //   61: aload 7
+    //   63: iconst_0
+    //   64: aaload
+    //   65: invokestatic 183	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   68: invokevirtual 186	java/lang/Integer:intValue	()I
+    //   71: istore_2
+    //   72: aload_1
     //   73: aload_0
-    //   74: getfield 57	aigy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   77: ldc 217
-    //   79: if_acmpne +6 -> 85
-    //   82: bipush 9
-    //   84: ireturn
-    //   85: sipush 1280
-    //   88: istore_2
-    //   89: invokestatic 223	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   92: invokevirtual 227	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   95: checkcast 229	com/tencent/mobileqq/app/QQAppInterface
-    //   98: astore 7
-    //   100: iload_2
-    //   101: istore_1
-    //   102: aload 7
-    //   104: ifnull +106 -> 210
-    //   107: aload 11
-    //   109: aload 7
-    //   111: invokevirtual 232	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   114: invokestatic 238	bbjn:o	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-    //   117: astore 7
-    //   119: iload_2
-    //   120: istore_1
-    //   121: aload 7
-    //   123: ifnull +87 -> 210
-    //   126: iload_2
-    //   127: istore_1
-    //   128: aload 7
-    //   130: invokevirtual 243	java/lang/String:length	()I
-    //   133: ifle +77 -> 210
-    //   136: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   139: ifeq +29 -> 168
-    //   142: ldc 124
-    //   144: iconst_2
-    //   145: new 126	java/lang/StringBuilder
-    //   148: dup
-    //   149: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   152: ldc 245
-    //   154: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: aload 7
-    //   159: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   168: aload 7
-    //   170: ldc 247
-    //   172: invokevirtual 251	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   175: astore 7
-    //   177: iload_2
-    //   178: istore_1
-    //   179: aload 7
-    //   181: ifnull +29 -> 210
-    //   184: aload 7
-    //   186: arraylength
-    //   187: istore_3
-    //   188: iload_2
-    //   189: istore_1
-    //   190: iload_3
-    //   191: iconst_5
-    //   192: if_icmplt +18 -> 210
-    //   195: aload 7
-    //   197: iconst_0
-    //   198: aaload
-    //   199: invokestatic 257	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   202: invokevirtual 260	java/lang/Integer:intValue	()I
-    //   205: istore_1
-    //   206: iload_1
-    //   207: ifle +1219 -> 1426
-    //   210: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   213: ifeq +29 -> 242
-    //   216: ldc 124
-    //   218: iconst_2
-    //   219: new 126	java/lang/StringBuilder
-    //   222: dup
-    //   223: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   226: ldc_w 262
-    //   229: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: iload_1
-    //   233: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   236: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   239: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   242: aload 11
-    //   244: aload_0
-    //   245: getfield 57	aigy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   248: iload_1
-    //   249: invokestatic 267	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   252: astore 8
-    //   254: aload 8
-    //   256: ifnonnull +1167 -> 1423
-    //   259: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   262: ifeq +12 -> 274
-    //   265: ldc 124
-    //   267: iconst_2
-    //   268: ldc_w 269
-    //   271: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   274: aload_0
-    //   275: getfield 273	aigy:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   278: ifnull +201 -> 479
-    //   281: aload_0
-    //   282: getfield 273	aigy:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   285: astore 8
-    //   287: aload_0
-    //   288: aload 8
-    //   290: invokevirtual 278	android/graphics/Bitmap:getWidth	()I
-    //   293: putfield 280	aigy:jdField_b_of_type_Int	I
-    //   296: aload_0
-    //   297: aload 8
-    //   299: invokevirtual 283	android/graphics/Bitmap:getHeight	()I
-    //   302: putfield 285	aigy:jdField_c_of_type_Int	I
-    //   305: aload_0
-    //   306: getfield 280	aigy:jdField_b_of_type_Int	I
-    //   309: ifeq +10 -> 319
-    //   312: aload_0
-    //   313: getfield 285	aigy:jdField_c_of_type_Int	I
-    //   316: ifne +201 -> 517
-    //   319: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   322: ifeq +12 -> 334
-    //   325: ldc 124
-    //   327: iconst_2
-    //   328: ldc_w 287
-    //   331: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   334: iconst_0
-    //   335: ifeq +11 -> 346
-    //   338: new 289	java/lang/NullPointerException
-    //   341: dup
-    //   342: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   345: athrow
-    //   346: iconst_0
-    //   347: ifeq +11 -> 358
-    //   350: new 289	java/lang/NullPointerException
-    //   353: dup
-    //   354: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   357: athrow
-    //   358: iconst_0
-    //   359: ifeq +11 -> 370
-    //   362: new 289	java/lang/NullPointerException
-    //   365: dup
-    //   366: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   369: athrow
-    //   370: iconst_2
-    //   371: ireturn
-    //   372: astore 7
-    //   374: iload_2
-    //   375: istore_1
-    //   376: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   379: ifeq -169 -> 210
-    //   382: ldc 124
-    //   384: iconst_2
-    //   385: ldc_w 292
-    //   388: aload 7
-    //   390: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   393: iload_2
-    //   394: istore_1
-    //   395: goto -185 -> 210
-    //   398: astore 11
-    //   400: aconst_null
+    //   74: getfield 38	aigy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   77: iload_2
+    //   78: invokestatic 191	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Landroid/content/Context;Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   81: astore 7
+    //   83: aload 7
+    //   85: astore 8
+    //   87: aload 7
+    //   89: ifnonnull +30 -> 119
+    //   92: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   95: ifeq +11 -> 106
+    //   98: ldc 97
+    //   100: iconst_2
+    //   101: ldc 193
+    //   103: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   106: aload_0
+    //   107: getfield 197	aigy:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   110: ifnull +116 -> 226
+    //   113: aload_0
+    //   114: getfield 197	aigy:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   117: astore 8
+    //   119: aload_0
+    //   120: aload 8
+    //   122: invokevirtual 202	android/graphics/Bitmap:getWidth	()I
+    //   125: putfield 204	aigy:jdField_b_of_type_Int	I
+    //   128: aload_0
+    //   129: aload 8
+    //   131: invokevirtual 207	android/graphics/Bitmap:getHeight	()I
+    //   134: putfield 209	aigy:jdField_c_of_type_Int	I
+    //   137: aload_0
+    //   138: getfield 204	aigy:jdField_b_of_type_Int	I
+    //   141: ifeq +10 -> 151
+    //   144: aload_0
+    //   145: getfield 209	aigy:jdField_c_of_type_Int	I
+    //   148: ifne +116 -> 264
+    //   151: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   154: ifeq +11 -> 165
+    //   157: ldc 97
+    //   159: iconst_2
+    //   160: ldc 211
+    //   162: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   165: iconst_0
+    //   166: ifeq +11 -> 177
+    //   169: new 213	java/lang/NullPointerException
+    //   172: dup
+    //   173: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   176: athrow
+    //   177: iconst_0
+    //   178: ifeq +11 -> 189
+    //   181: new 213	java/lang/NullPointerException
+    //   184: dup
+    //   185: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   188: athrow
+    //   189: iconst_0
+    //   190: ifeq +11 -> 201
+    //   193: new 213	java/lang/NullPointerException
+    //   196: dup
+    //   197: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   200: athrow
+    //   201: iconst_2
+    //   202: ireturn
+    //   203: astore 7
+    //   205: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   208: ifeq +13 -> 221
+    //   211: ldc 97
+    //   213: iconst_2
+    //   214: ldc 216
+    //   216: aload 7
+    //   218: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   221: iconst_0
+    //   222: istore_2
+    //   223: goto -151 -> 72
+    //   226: iconst_0
+    //   227: ifeq +11 -> 238
+    //   230: new 213	java/lang/NullPointerException
+    //   233: dup
+    //   234: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   237: athrow
+    //   238: iconst_0
+    //   239: ifeq +11 -> 250
+    //   242: new 213	java/lang/NullPointerException
+    //   245: dup
+    //   246: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   249: athrow
+    //   250: iconst_0
+    //   251: ifeq +11 -> 262
+    //   254: new 213	java/lang/NullPointerException
+    //   257: dup
+    //   258: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   261: athrow
+    //   262: iconst_2
+    //   263: ireturn
+    //   264: new 99	java/lang/StringBuilder
+    //   267: dup
+    //   268: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   271: ldc 221
+    //   273: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: invokestatic 227	java/lang/System:currentTimeMillis	()J
+    //   279: invokevirtual 111	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   282: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   285: ldc 229
+    //   287: invokestatic 230	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   290: astore 11
+    //   292: new 99	java/lang/StringBuilder
+    //   295: dup
+    //   296: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   299: invokestatic 232	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()Ljava/lang/String;
+    //   302: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: ldc 234
+    //   307: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokestatic 239	bbdx:c	(Ljava/lang/String;)V
+    //   316: new 241	java/io/File
+    //   319: dup
+    //   320: aload 11
+    //   322: invokespecial 243	java/io/File:<init>	(Ljava/lang/String;)V
+    //   325: astore 12
+    //   327: new 241	java/io/File
+    //   330: dup
+    //   331: aload 12
+    //   333: invokevirtual 246	java/io/File:getParent	()Ljava/lang/String;
+    //   336: invokespecial 243	java/io/File:<init>	(Ljava/lang/String;)V
+    //   339: astore 7
+    //   341: aload 7
+    //   343: invokevirtual 249	java/io/File:exists	()Z
+    //   346: ifeq +11 -> 357
+    //   349: aload 7
+    //   351: invokevirtual 252	java/io/File:isDirectory	()Z
+    //   354: ifne +9 -> 363
+    //   357: aload 7
+    //   359: invokevirtual 255	java/io/File:mkdirs	()Z
+    //   362: pop
+    //   363: aload 12
+    //   365: invokevirtual 249	java/io/File:exists	()Z
+    //   368: ifeq +11 -> 379
+    //   371: aload 12
+    //   373: invokevirtual 258	java/io/File:isFile	()Z
+    //   376: ifne +9 -> 385
+    //   379: aload 12
+    //   381: invokevirtual 261	java/io/File:createNewFile	()Z
+    //   384: pop
+    //   385: new 263	java/io/BufferedOutputStream
+    //   388: dup
+    //   389: new 265	java/io/FileOutputStream
+    //   392: dup
+    //   393: aload 12
+    //   395: invokespecial 268	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   398: invokespecial 271	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   401: astore 7
-    //   403: aconst_null
-    //   404: astore 10
-    //   406: aload 7
-    //   408: astore 9
-    //   410: aload 10
-    //   412: astore 8
-    //   414: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   417: ifeq +22 -> 439
-    //   420: aload 7
-    //   422: astore 9
-    //   424: aload 10
-    //   426: astore 8
-    //   428: ldc 124
-    //   430: iconst_2
-    //   431: ldc_w 297
-    //   434: aload 11
-    //   436: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   439: iconst_3
-    //   440: istore_1
-    //   441: iconst_0
-    //   442: ifeq +11 -> 453
-    //   445: new 289	java/lang/NullPointerException
-    //   448: dup
-    //   449: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   452: athrow
-    //   453: aload 7
-    //   455: ifnull +8 -> 463
-    //   458: aload 7
-    //   460: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   463: aload 10
-    //   465: ifnull -446 -> 19
-    //   468: aload 10
-    //   470: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   473: iconst_3
-    //   474: ireturn
-    //   475: astore 7
-    //   477: iconst_3
-    //   478: ireturn
-    //   479: iconst_0
-    //   480: ifeq +11 -> 491
-    //   483: new 289	java/lang/NullPointerException
-    //   486: dup
-    //   487: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   490: athrow
-    //   491: iconst_0
-    //   492: ifeq +11 -> 503
-    //   495: new 289	java/lang/NullPointerException
-    //   498: dup
-    //   499: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   502: athrow
-    //   503: iconst_0
-    //   504: ifeq +11 -> 515
-    //   507: new 289	java/lang/NullPointerException
-    //   510: dup
-    //   511: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   514: athrow
-    //   515: iconst_2
-    //   516: ireturn
-    //   517: new 126	java/lang/StringBuilder
-    //   520: dup
-    //   521: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   524: ldc 217
-    //   526: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   529: invokestatic 311	java/lang/System:currentTimeMillis	()J
-    //   532: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   535: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   538: ldc_w 313
-    //   541: invokestatic 316	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   544: astore 12
-    //   546: new 126	java/lang/StringBuilder
-    //   549: dup
-    //   550: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   553: invokestatic 318	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()Ljava/lang/String;
-    //   556: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   559: ldc_w 320
-    //   562: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   565: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   568: invokestatic 325	bbdj:c	(Ljava/lang/String;)V
-    //   571: new 327	java/io/File
-    //   574: dup
-    //   575: aload 12
-    //   577: invokespecial 329	java/io/File:<init>	(Ljava/lang/String;)V
-    //   580: astore 13
-    //   582: new 327	java/io/File
-    //   585: dup
-    //   586: aload 13
-    //   588: invokevirtual 332	java/io/File:getParent	()Ljava/lang/String;
-    //   591: invokespecial 329	java/io/File:<init>	(Ljava/lang/String;)V
-    //   594: astore 7
-    //   596: aload 7
-    //   598: invokevirtual 335	java/io/File:exists	()Z
-    //   601: ifeq +11 -> 612
-    //   604: aload 7
-    //   606: invokevirtual 338	java/io/File:isDirectory	()Z
-    //   609: ifne +9 -> 618
-    //   612: aload 7
-    //   614: invokevirtual 341	java/io/File:mkdirs	()Z
-    //   617: pop
-    //   618: aload 13
-    //   620: invokevirtual 335	java/io/File:exists	()Z
+    //   403: aload 8
+    //   405: getstatic 277	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   408: bipush 80
+    //   410: aload 7
+    //   412: invokevirtual 281	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   415: pop
+    //   416: aload 7
+    //   418: invokevirtual 284	java/io/BufferedOutputStream:flush	()V
+    //   421: new 286	java/io/FileInputStream
+    //   424: dup
+    //   425: aload 12
+    //   427: invokespecial 287	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   430: astore 8
+    //   432: aload 7
+    //   434: astore 10
+    //   436: aload 8
+    //   438: astore 9
+    //   440: aload 12
+    //   442: invokevirtual 289	java/io/File:length	()J
+    //   445: lstore 4
+    //   447: aload 7
+    //   449: astore 10
+    //   451: aload 8
+    //   453: astore 9
+    //   455: aload_0
+    //   456: aload 8
+    //   458: lload 4
+    //   460: invokestatic 295	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   463: invokestatic 301	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   466: putfield 303	aigy:g	Ljava/lang/String;
+    //   469: aload 7
+    //   471: astore 10
+    //   473: aload 8
+    //   475: astore 9
+    //   477: aload_0
+    //   478: getfield 303	aigy:g	Ljava/lang/String;
+    //   481: invokestatic 309	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   484: ifeq +93 -> 577
+    //   487: aload 7
+    //   489: astore 10
+    //   491: aload 8
+    //   493: astore 9
+    //   495: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   498: ifeq +40 -> 538
+    //   501: aload 7
+    //   503: astore 10
+    //   505: aload 8
+    //   507: astore 9
+    //   509: ldc 97
+    //   511: iconst_2
+    //   512: new 99	java/lang/StringBuilder
+    //   515: dup
+    //   516: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   519: ldc_w 311
+    //   522: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   525: aload_0
+    //   526: getfield 303	aigy:g	Ljava/lang/String;
+    //   529: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   535: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   538: iconst_0
+    //   539: ifeq +11 -> 550
+    //   542: new 213	java/lang/NullPointerException
+    //   545: dup
+    //   546: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   549: athrow
+    //   550: aload 7
+    //   552: ifnull +8 -> 560
+    //   555: aload 7
+    //   557: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   560: iload_3
+    //   561: istore_2
+    //   562: aload 8
+    //   564: ifnull -556 -> 8
+    //   567: aload 8
+    //   569: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   572: iconst_5
+    //   573: ireturn
+    //   574: astore_1
+    //   575: iconst_5
+    //   576: ireturn
+    //   577: aload 7
+    //   579: astore 10
+    //   581: aload 8
+    //   583: astore 9
+    //   585: aload_0
+    //   586: aload_0
+    //   587: getfield 303	aigy:g	Ljava/lang/String;
+    //   590: ldc 229
+    //   592: invokestatic 230	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   595: putfield 317	aigy:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   598: aload 7
+    //   600: astore 10
+    //   602: aload 8
+    //   604: astore 9
+    //   606: aload 11
+    //   608: aload_0
+    //   609: getfield 317	aigy:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   612: invokestatic 320	bbdx:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   615: istore 6
+    //   617: iload 6
+    //   619: ifne +42 -> 661
+    //   622: iconst_0
     //   623: ifeq +11 -> 634
-    //   626: aload 13
-    //   628: invokevirtual 344	java/io/File:isFile	()Z
-    //   631: ifne +9 -> 640
-    //   634: aload 13
-    //   636: invokevirtual 347	java/io/File:createNewFile	()Z
-    //   639: pop
-    //   640: new 299	java/io/BufferedOutputStream
-    //   643: dup
-    //   644: new 349	java/io/FileOutputStream
-    //   647: dup
-    //   648: aload 13
-    //   650: invokespecial 352	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   653: invokespecial 355	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   656: astore 7
-    //   658: aload 8
-    //   660: getstatic 361	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   663: bipush 80
-    //   665: aload 7
-    //   667: invokevirtual 365	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   670: pop
-    //   671: aload 7
-    //   673: invokevirtual 368	java/io/BufferedOutputStream:flush	()V
-    //   676: new 304	java/io/FileInputStream
-    //   679: dup
-    //   680: aload 13
-    //   682: invokespecial 369	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   685: astore 10
-    //   687: aload 7
-    //   689: astore 9
-    //   691: aload 10
-    //   693: astore 8
-    //   695: aload 13
-    //   697: invokevirtual 371	java/io/File:length	()J
-    //   700: lstore 4
-    //   702: aload 7
-    //   704: astore 9
-    //   706: aload 10
-    //   708: astore 8
-    //   710: aload_0
-    //   711: aload 10
-    //   713: lload 4
-    //   715: invokestatic 377	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   718: invokestatic 383	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   721: putfield 385	aigy:g	Ljava/lang/String;
+    //   626: new 213	java/lang/NullPointerException
+    //   629: dup
+    //   630: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   633: athrow
+    //   634: aload 7
+    //   636: ifnull +8 -> 644
+    //   639: aload 7
+    //   641: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   644: iload_3
+    //   645: istore_2
+    //   646: aload 8
+    //   648: ifnull -640 -> 8
+    //   651: aload 8
+    //   653: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   656: iconst_5
+    //   657: ireturn
+    //   658: astore_1
+    //   659: iconst_5
+    //   660: ireturn
+    //   661: aload 7
+    //   663: astore 10
+    //   665: aload 8
+    //   667: astore 9
+    //   669: aload_1
+    //   670: lload 4
+    //   672: invokestatic 326	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
+    //   675: astore_1
+    //   676: aload 7
+    //   678: astore 10
+    //   680: aload 8
+    //   682: astore 9
+    //   684: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   687: ifeq +37 -> 724
+    //   690: aload 7
+    //   692: astore 10
+    //   694: aload 8
+    //   696: astore 9
+    //   698: ldc 97
+    //   700: iconst_2
+    //   701: new 99	java/lang/StringBuilder
+    //   704: dup
+    //   705: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   708: ldc_w 328
+    //   711: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   714: aload_1
+    //   715: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   718: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   721: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   724: aload 7
-    //   726: astore 9
-    //   728: aload 10
-    //   730: astore 8
+    //   726: astore 10
+    //   728: aload 8
+    //   730: astore 9
     //   732: aload_0
-    //   733: getfield 385	aigy:g	Ljava/lang/String;
-    //   736: invokestatic 390	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   739: ifeq +88 -> 827
-    //   742: aload 7
-    //   744: astore 9
-    //   746: aload 10
-    //   748: astore 8
-    //   750: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   753: ifeq +40 -> 793
-    //   756: aload 7
-    //   758: astore 9
-    //   760: aload 10
-    //   762: astore 8
-    //   764: ldc 124
-    //   766: iconst_2
-    //   767: new 126	java/lang/StringBuilder
-    //   770: dup
-    //   771: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   774: ldc_w 392
-    //   777: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   780: aload_0
-    //   781: getfield 385	aigy:g	Ljava/lang/String;
-    //   784: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   787: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   790: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   793: iconst_0
-    //   794: ifeq +11 -> 805
-    //   797: new 289	java/lang/NullPointerException
-    //   800: dup
-    //   801: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   804: athrow
-    //   805: aload 7
-    //   807: ifnull +8 -> 815
-    //   810: aload 7
-    //   812: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   815: aload 10
-    //   817: ifnull +8 -> 825
-    //   820: aload 10
-    //   822: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   825: iconst_5
-    //   826: ireturn
-    //   827: aload 7
-    //   829: astore 9
-    //   831: aload 10
-    //   833: astore 8
-    //   835: aload_0
-    //   836: aload_0
-    //   837: getfield 385	aigy:g	Ljava/lang/String;
-    //   840: ldc_w 313
-    //   843: invokestatic 316	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   846: putfield 394	aigy:f	Ljava/lang/String;
-    //   849: aload 7
-    //   851: astore 9
-    //   853: aload 10
-    //   855: astore 8
-    //   857: aload 12
-    //   859: aload_0
-    //   860: getfield 394	aigy:f	Ljava/lang/String;
-    //   863: invokestatic 397	bbdj:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   866: istore 6
-    //   868: iload 6
-    //   870: ifne +37 -> 907
-    //   873: iconst_0
-    //   874: ifeq +11 -> 885
-    //   877: new 289	java/lang/NullPointerException
-    //   880: dup
-    //   881: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   884: athrow
-    //   885: aload 7
-    //   887: ifnull +8 -> 895
-    //   890: aload 7
-    //   892: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   895: aload 10
-    //   897: ifnull +8 -> 905
-    //   900: aload 10
-    //   902: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   905: iconst_5
-    //   906: ireturn
-    //   907: aload 7
-    //   909: astore 9
-    //   911: aload 10
-    //   913: astore 8
-    //   915: aload 11
-    //   917: lload 4
-    //   919: invokestatic 403	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
-    //   922: astore 11
-    //   924: aload 7
-    //   926: astore 9
-    //   928: aload 10
-    //   930: astore 8
-    //   932: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   935: ifeq +38 -> 973
-    //   938: aload 7
-    //   940: astore 9
-    //   942: aload 10
-    //   944: astore 8
-    //   946: ldc 124
-    //   948: iconst_2
-    //   949: new 126	java/lang/StringBuilder
-    //   952: dup
-    //   953: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   956: ldc_w 405
-    //   959: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   962: aload 11
-    //   964: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   967: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   970: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   973: aload 7
-    //   975: astore 9
-    //   977: aload 10
-    //   979: astore 8
-    //   981: aload_0
-    //   982: getfield 73	aigy:jdField_b_of_type_Long	J
-    //   985: lconst_0
-    //   986: lcmp
-    //   987: ifne +22 -> 1009
-    //   990: aload 7
-    //   992: astore 9
-    //   994: aload 10
-    //   996: astore 8
-    //   998: aload_0
-    //   999: aload_0
-    //   1000: getfield 57	aigy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1003: invokestatic 407	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;)J
-    //   1006: putfield 73	aigy:jdField_b_of_type_Long	J
-    //   1009: iconst_0
-    //   1010: ifeq +11 -> 1021
-    //   1013: new 289	java/lang/NullPointerException
-    //   1016: dup
-    //   1017: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   1020: athrow
-    //   1021: aload 7
-    //   1023: ifnull +8 -> 1031
-    //   1026: aload 7
-    //   1028: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   1031: aload 10
-    //   1033: ifnull +8 -> 1041
-    //   1036: aload 10
-    //   1038: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   1041: iconst_1
-    //   1042: ireturn
-    //   1043: astore 11
-    //   1045: aconst_null
-    //   1046: astore 7
-    //   1048: aconst_null
-    //   1049: astore 10
-    //   1051: aload 7
-    //   1053: astore 9
-    //   1055: aload 10
-    //   1057: astore 8
-    //   1059: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1062: ifeq +22 -> 1084
-    //   1065: aload 7
-    //   1067: astore 9
-    //   1069: aload 10
-    //   1071: astore 8
-    //   1073: ldc 124
-    //   1075: iconst_2
-    //   1076: ldc_w 297
-    //   1079: aload 11
-    //   1081: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1084: iconst_0
-    //   1085: ifeq +11 -> 1096
-    //   1088: new 289	java/lang/NullPointerException
-    //   1091: dup
-    //   1092: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   1095: athrow
-    //   1096: aload 7
-    //   1098: ifnull +8 -> 1106
-    //   1101: aload 7
-    //   1103: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   1106: aload 10
-    //   1108: ifnull +8 -> 1116
-    //   1111: aload 10
-    //   1113: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   1116: iconst_5
-    //   1117: ireturn
-    //   1118: astore 11
-    //   1120: aconst_null
-    //   1121: astore 7
-    //   1123: aconst_null
-    //   1124: astore 10
-    //   1126: aload 7
-    //   1128: astore 9
-    //   1130: aload 10
-    //   1132: astore 8
-    //   1134: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1137: ifeq +22 -> 1159
-    //   1140: aload 7
-    //   1142: astore 9
-    //   1144: aload 10
-    //   1146: astore 8
-    //   1148: ldc 124
-    //   1150: iconst_2
-    //   1151: ldc_w 409
-    //   1154: aload 11
-    //   1156: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1159: iconst_4
-    //   1160: istore_1
-    //   1161: iconst_0
-    //   1162: ifeq +11 -> 1173
-    //   1165: new 289	java/lang/NullPointerException
-    //   1168: dup
-    //   1169: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   1172: athrow
-    //   1173: aload 7
-    //   1175: ifnull +8 -> 1183
-    //   1178: aload 7
-    //   1180: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   1183: aload 10
-    //   1185: ifnull -1166 -> 19
-    //   1188: aload 10
-    //   1190: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   1193: iconst_4
-    //   1194: ireturn
-    //   1195: astore 7
-    //   1197: iconst_4
-    //   1198: ireturn
-    //   1199: astore 10
-    //   1201: aconst_null
-    //   1202: astore 7
-    //   1204: aconst_null
-    //   1205: astore 8
-    //   1207: iconst_0
-    //   1208: ifeq +11 -> 1219
-    //   1211: new 289	java/lang/NullPointerException
-    //   1214: dup
-    //   1215: invokespecial 290	java/lang/NullPointerException:<init>	()V
-    //   1218: athrow
-    //   1219: aload 7
-    //   1221: ifnull +8 -> 1229
-    //   1224: aload 7
-    //   1226: invokevirtual 302	java/io/BufferedOutputStream:close	()V
-    //   1229: aload 8
-    //   1231: ifnull +8 -> 1239
-    //   1234: aload 8
-    //   1236: invokevirtual 305	java/io/FileInputStream:close	()V
-    //   1239: aload 10
-    //   1241: athrow
-    //   1242: astore 7
-    //   1244: goto -753 -> 491
-    //   1247: astore 7
-    //   1249: goto -746 -> 503
-    //   1252: astore 7
-    //   1254: goto -739 -> 515
-    //   1257: astore 7
-    //   1259: goto -913 -> 346
-    //   1262: astore 7
-    //   1264: goto -906 -> 358
-    //   1267: astore 7
-    //   1269: goto -899 -> 370
-    //   1272: astore 8
-    //   1274: goto -469 -> 805
-    //   1277: astore 7
-    //   1279: goto -464 -> 815
-    //   1282: astore 7
-    //   1284: goto -459 -> 825
-    //   1287: astore 8
-    //   1289: goto -404 -> 885
-    //   1292: astore 7
-    //   1294: goto -399 -> 895
-    //   1297: astore 7
-    //   1299: goto -394 -> 905
-    //   1302: astore 8
-    //   1304: goto -283 -> 1021
-    //   1307: astore 7
-    //   1309: goto -278 -> 1031
-    //   1312: astore 7
-    //   1314: goto -273 -> 1041
-    //   1317: astore 8
-    //   1319: goto -866 -> 453
-    //   1322: astore 7
-    //   1324: goto -861 -> 463
-    //   1327: astore 8
-    //   1329: goto -233 -> 1096
-    //   1332: astore 7
-    //   1334: goto -228 -> 1106
-    //   1337: astore 7
-    //   1339: goto -223 -> 1116
-    //   1342: astore 8
-    //   1344: goto -171 -> 1173
-    //   1347: astore 7
-    //   1349: goto -166 -> 1183
-    //   1352: astore 9
-    //   1354: goto -135 -> 1219
-    //   1357: astore 7
-    //   1359: goto -130 -> 1229
-    //   1362: astore 7
-    //   1364: goto -125 -> 1239
-    //   1367: astore 10
-    //   1369: aconst_null
-    //   1370: astore 8
-    //   1372: goto -165 -> 1207
-    //   1375: astore 10
-    //   1377: aload 9
-    //   1379: astore 7
-    //   1381: goto -174 -> 1207
-    //   1384: astore 11
-    //   1386: aconst_null
-    //   1387: astore 10
-    //   1389: goto -263 -> 1126
-    //   1392: astore 11
-    //   1394: goto -268 -> 1126
-    //   1397: astore 11
-    //   1399: aconst_null
-    //   1400: astore 10
-    //   1402: goto -351 -> 1051
-    //   1405: astore 11
-    //   1407: goto -356 -> 1051
-    //   1410: astore 11
-    //   1412: aconst_null
-    //   1413: astore 10
-    //   1415: goto -1009 -> 406
-    //   1418: astore 11
-    //   1420: goto -1014 -> 406
-    //   1423: goto -1136 -> 287
-    //   1426: sipush 1280
-    //   1429: istore_1
-    //   1430: goto -1220 -> 210
+    //   733: getfield 46	aigy:jdField_b_of_type_Long	J
+    //   736: lconst_0
+    //   737: lcmp
+    //   738: ifne +22 -> 760
+    //   741: aload 7
+    //   743: astore 10
+    //   745: aload 8
+    //   747: astore 9
+    //   749: aload_0
+    //   750: aload_0
+    //   751: getfield 38	aigy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   754: invokestatic 330	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;)J
+    //   757: putfield 46	aigy:jdField_b_of_type_Long	J
+    //   760: iconst_0
+    //   761: ifeq +11 -> 772
+    //   764: new 213	java/lang/NullPointerException
+    //   767: dup
+    //   768: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   771: athrow
+    //   772: aload 7
+    //   774: ifnull +8 -> 782
+    //   777: aload 7
+    //   779: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   782: aload 8
+    //   784: ifnull +8 -> 792
+    //   787: aload 8
+    //   789: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   792: iconst_1
+    //   793: ireturn
+    //   794: astore_1
+    //   795: aconst_null
+    //   796: astore 7
+    //   798: aconst_null
+    //   799: astore 8
+    //   801: aload 7
+    //   803: astore 10
+    //   805: aload 8
+    //   807: astore 9
+    //   809: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   812: ifeq +21 -> 833
+    //   815: aload 7
+    //   817: astore 10
+    //   819: aload 8
+    //   821: astore 9
+    //   823: ldc 97
+    //   825: iconst_2
+    //   826: ldc_w 332
+    //   829: aload_1
+    //   830: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   833: iconst_3
+    //   834: istore_2
+    //   835: iconst_0
+    //   836: ifeq +11 -> 847
+    //   839: new 213	java/lang/NullPointerException
+    //   842: dup
+    //   843: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   846: athrow
+    //   847: aload 7
+    //   849: ifnull +8 -> 857
+    //   852: aload 7
+    //   854: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   857: aload 8
+    //   859: ifnull -851 -> 8
+    //   862: aload 8
+    //   864: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   867: iconst_3
+    //   868: ireturn
+    //   869: astore_1
+    //   870: iconst_3
+    //   871: ireturn
+    //   872: astore 8
+    //   874: aconst_null
+    //   875: astore 7
+    //   877: aconst_null
+    //   878: astore_1
+    //   879: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   882: ifeq +14 -> 896
+    //   885: ldc 97
+    //   887: iconst_2
+    //   888: ldc_w 332
+    //   891: aload 8
+    //   893: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   896: iconst_0
+    //   897: ifeq +11 -> 908
+    //   900: new 213	java/lang/NullPointerException
+    //   903: dup
+    //   904: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   907: athrow
+    //   908: aload 7
+    //   910: ifnull +8 -> 918
+    //   913: aload 7
+    //   915: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   918: iload_3
+    //   919: istore_2
+    //   920: aload_1
+    //   921: ifnull -913 -> 8
+    //   924: aload_1
+    //   925: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   928: iconst_5
+    //   929: ireturn
+    //   930: astore_1
+    //   931: iconst_5
+    //   932: ireturn
+    //   933: astore_1
+    //   934: aconst_null
+    //   935: astore 7
+    //   937: aconst_null
+    //   938: astore 8
+    //   940: aload 7
+    //   942: astore 10
+    //   944: aload 8
+    //   946: astore 9
+    //   948: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   951: ifeq +21 -> 972
+    //   954: aload 7
+    //   956: astore 10
+    //   958: aload 8
+    //   960: astore 9
+    //   962: ldc 97
+    //   964: iconst_2
+    //   965: ldc_w 334
+    //   968: aload_1
+    //   969: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   972: iconst_4
+    //   973: istore_2
+    //   974: iconst_0
+    //   975: ifeq +11 -> 986
+    //   978: new 213	java/lang/NullPointerException
+    //   981: dup
+    //   982: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   985: athrow
+    //   986: aload 7
+    //   988: ifnull +8 -> 996
+    //   991: aload 7
+    //   993: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   996: aload 8
+    //   998: ifnull -990 -> 8
+    //   1001: aload 8
+    //   1003: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   1006: iconst_4
+    //   1007: ireturn
+    //   1008: astore_1
+    //   1009: iconst_4
+    //   1010: ireturn
+    //   1011: astore_1
+    //   1012: aconst_null
+    //   1013: astore 7
+    //   1015: aconst_null
+    //   1016: astore 9
+    //   1018: iconst_0
+    //   1019: ifeq +11 -> 1030
+    //   1022: new 213	java/lang/NullPointerException
+    //   1025: dup
+    //   1026: invokespecial 214	java/lang/NullPointerException:<init>	()V
+    //   1029: athrow
+    //   1030: aload 7
+    //   1032: ifnull +8 -> 1040
+    //   1035: aload 7
+    //   1037: invokevirtual 314	java/io/BufferedOutputStream:close	()V
+    //   1040: aload 9
+    //   1042: ifnull +8 -> 1050
+    //   1045: aload 9
+    //   1047: invokevirtual 315	java/io/FileInputStream:close	()V
+    //   1050: aload_1
+    //   1051: athrow
+    //   1052: astore_1
+    //   1053: goto -815 -> 238
+    //   1056: astore_1
+    //   1057: goto -807 -> 250
+    //   1060: astore_1
+    //   1061: goto -799 -> 262
+    //   1064: astore_1
+    //   1065: goto -888 -> 177
+    //   1068: astore_1
+    //   1069: goto -880 -> 189
+    //   1072: astore_1
+    //   1073: goto -872 -> 201
+    //   1076: astore_1
+    //   1077: goto -527 -> 550
+    //   1080: astore_1
+    //   1081: goto -521 -> 560
+    //   1084: astore_1
+    //   1085: goto -451 -> 634
+    //   1088: astore_1
+    //   1089: goto -445 -> 644
+    //   1092: astore_1
+    //   1093: goto -321 -> 772
+    //   1096: astore_1
+    //   1097: goto -315 -> 782
+    //   1100: astore_1
+    //   1101: goto -309 -> 792
+    //   1104: astore_1
+    //   1105: goto -258 -> 847
+    //   1108: astore_1
+    //   1109: goto -252 -> 857
+    //   1112: astore 8
+    //   1114: goto -206 -> 908
+    //   1117: astore 7
+    //   1119: goto -201 -> 918
+    //   1122: astore_1
+    //   1123: goto -137 -> 986
+    //   1126: astore_1
+    //   1127: goto -131 -> 996
+    //   1130: astore 8
+    //   1132: goto -102 -> 1030
+    //   1135: astore 7
+    //   1137: goto -97 -> 1040
+    //   1140: astore 7
+    //   1142: goto -92 -> 1050
+    //   1145: astore_1
+    //   1146: aconst_null
+    //   1147: astore 9
+    //   1149: goto -131 -> 1018
+    //   1152: astore_1
+    //   1153: aload 10
+    //   1155: astore 7
+    //   1157: goto -139 -> 1018
+    //   1160: astore 8
+    //   1162: aload_1
+    //   1163: astore 9
+    //   1165: aload 8
+    //   1167: astore_1
+    //   1168: goto -150 -> 1018
+    //   1171: astore_1
+    //   1172: aconst_null
+    //   1173: astore 8
+    //   1175: goto -235 -> 940
+    //   1178: astore_1
+    //   1179: goto -239 -> 940
+    //   1182: astore 8
+    //   1184: aconst_null
+    //   1185: astore_1
+    //   1186: goto -307 -> 879
+    //   1189: astore 9
+    //   1191: aload 8
+    //   1193: astore_1
+    //   1194: aload 9
+    //   1196: astore 8
+    //   1198: goto -319 -> 879
+    //   1201: astore_1
+    //   1202: aconst_null
+    //   1203: astore 8
+    //   1205: goto -404 -> 801
+    //   1208: astore_1
+    //   1209: goto -408 -> 801
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1433	0	this	aigy
-    //   18	1412	1	i	int
-    //   88	306	2	j	int
-    //   187	6	3	k	int
-    //   700	218	4	l	long
-    //   866	3	6	bool	boolean
-    //   98	98	7	localObject1	Object
-    //   372	17	7	localNumberFormatException	java.lang.NumberFormatException
-    //   401	58	7	localObject2	Object
-    //   475	1	7	localIOException1	java.io.IOException
-    //   594	585	7	localObject3	Object
-    //   1195	1	7	localIOException2	java.io.IOException
-    //   1202	23	7	localObject4	Object
-    //   1242	1	7	localIOException3	java.io.IOException
-    //   1247	1	7	localIOException4	java.io.IOException
-    //   1252	1	7	localIOException5	java.io.IOException
-    //   1257	1	7	localIOException6	java.io.IOException
-    //   1262	1	7	localIOException7	java.io.IOException
-    //   1267	1	7	localIOException8	java.io.IOException
-    //   1277	1	7	localIOException9	java.io.IOException
-    //   1282	1	7	localIOException10	java.io.IOException
-    //   1292	1	7	localIOException11	java.io.IOException
-    //   1297	1	7	localIOException12	java.io.IOException
-    //   1307	1	7	localIOException13	java.io.IOException
-    //   1312	1	7	localIOException14	java.io.IOException
-    //   1322	1	7	localIOException15	java.io.IOException
-    //   1332	1	7	localIOException16	java.io.IOException
-    //   1337	1	7	localIOException17	java.io.IOException
-    //   1347	1	7	localIOException18	java.io.IOException
-    //   1357	1	7	localIOException19	java.io.IOException
-    //   1362	1	7	localIOException20	java.io.IOException
-    //   1379	1	7	localObject5	Object
-    //   252	983	8	localObject6	Object
-    //   1272	1	8	localIOException21	java.io.IOException
-    //   1287	1	8	localIOException22	java.io.IOException
-    //   1302	1	8	localIOException23	java.io.IOException
-    //   1317	1	8	localIOException24	java.io.IOException
-    //   1327	1	8	localIOException25	java.io.IOException
-    //   1342	1	8	localIOException26	java.io.IOException
-    //   1370	1	8	localObject7	Object
-    //   408	735	9	localObject8	Object
-    //   1352	26	9	localIOException27	java.io.IOException
-    //   404	785	10	localFileInputStream	java.io.FileInputStream
-    //   1199	41	10	localObject9	Object
-    //   1367	1	10	localObject10	Object
-    //   1375	1	10	localObject11	Object
-    //   1387	27	10	localObject12	Object
-    //   10	233	11	localContext	Context
-    //   398	518	11	localIOException28	java.io.IOException
-    //   922	41	11	str1	String
-    //   1043	37	11	localException1	Exception
-    //   1118	37	11	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   1384	1	11	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   1392	1	11	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   1397	1	11	localException2	Exception
-    //   1405	1	11	localException3	Exception
-    //   1410	1	11	localIOException29	java.io.IOException
-    //   1418	1	11	localIOException30	java.io.IOException
-    //   544	314	12	str2	String
-    //   580	116	13	localFile	java.io.File
+    //   0	1212	0	this	aigy
+    //   0	1212	1	paramContext	android.content.Context
+    //   7	967	2	i	int
+    //   1	918	3	j	int
+    //   445	226	4	l	long
+    //   615	3	6	bool	boolean
+    //   24	64	7	localObject1	java.lang.Object
+    //   203	14	7	localNumberFormatException	java.lang.NumberFormatException
+    //   339	697	7	localObject2	java.lang.Object
+    //   1117	1	7	localIOException1	java.io.IOException
+    //   1135	1	7	localIOException2	java.io.IOException
+    //   1140	1	7	localIOException3	java.io.IOException
+    //   1155	1	7	localObject3	java.lang.Object
+    //   85	778	8	localObject4	java.lang.Object
+    //   872	20	8	localException1	Exception
+    //   938	64	8	localObject5	java.lang.Object
+    //   1112	1	8	localIOException4	java.io.IOException
+    //   1130	1	8	localIOException5	java.io.IOException
+    //   1160	6	8	localObject6	java.lang.Object
+    //   1173	1	8	localObject7	java.lang.Object
+    //   1182	10	8	localException2	Exception
+    //   1196	8	8	localObject8	java.lang.Object
+    //   438	726	9	localObject9	java.lang.Object
+    //   1189	6	9	localException3	Exception
+    //   434	720	10	localObject10	java.lang.Object
+    //   290	317	11	str	String
+    //   325	116	12	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   195	206	372	java/lang/NumberFormatException
-    //   89	100	398	java/io/IOException
-    //   107	119	398	java/io/IOException
-    //   128	168	398	java/io/IOException
-    //   168	177	398	java/io/IOException
-    //   184	188	398	java/io/IOException
-    //   195	206	398	java/io/IOException
-    //   210	242	398	java/io/IOException
-    //   242	254	398	java/io/IOException
-    //   259	274	398	java/io/IOException
-    //   274	287	398	java/io/IOException
-    //   287	319	398	java/io/IOException
-    //   319	334	398	java/io/IOException
-    //   376	393	398	java/io/IOException
-    //   517	612	398	java/io/IOException
-    //   612	618	398	java/io/IOException
-    //   618	634	398	java/io/IOException
-    //   634	640	398	java/io/IOException
-    //   640	658	398	java/io/IOException
-    //   468	473	475	java/io/IOException
-    //   89	100	1043	java/lang/Exception
-    //   107	119	1043	java/lang/Exception
-    //   128	168	1043	java/lang/Exception
-    //   168	177	1043	java/lang/Exception
-    //   184	188	1043	java/lang/Exception
-    //   195	206	1043	java/lang/Exception
-    //   210	242	1043	java/lang/Exception
-    //   242	254	1043	java/lang/Exception
-    //   259	274	1043	java/lang/Exception
-    //   274	287	1043	java/lang/Exception
-    //   287	319	1043	java/lang/Exception
-    //   319	334	1043	java/lang/Exception
-    //   376	393	1043	java/lang/Exception
-    //   517	612	1043	java/lang/Exception
-    //   612	618	1043	java/lang/Exception
-    //   618	634	1043	java/lang/Exception
-    //   634	640	1043	java/lang/Exception
-    //   640	658	1043	java/lang/Exception
-    //   89	100	1118	java/lang/OutOfMemoryError
-    //   107	119	1118	java/lang/OutOfMemoryError
-    //   128	168	1118	java/lang/OutOfMemoryError
-    //   168	177	1118	java/lang/OutOfMemoryError
-    //   184	188	1118	java/lang/OutOfMemoryError
-    //   195	206	1118	java/lang/OutOfMemoryError
-    //   210	242	1118	java/lang/OutOfMemoryError
-    //   242	254	1118	java/lang/OutOfMemoryError
-    //   259	274	1118	java/lang/OutOfMemoryError
-    //   274	287	1118	java/lang/OutOfMemoryError
-    //   287	319	1118	java/lang/OutOfMemoryError
-    //   319	334	1118	java/lang/OutOfMemoryError
-    //   376	393	1118	java/lang/OutOfMemoryError
-    //   517	612	1118	java/lang/OutOfMemoryError
-    //   612	618	1118	java/lang/OutOfMemoryError
-    //   618	634	1118	java/lang/OutOfMemoryError
-    //   634	640	1118	java/lang/OutOfMemoryError
-    //   640	658	1118	java/lang/OutOfMemoryError
-    //   1188	1193	1195	java/io/IOException
-    //   89	100	1199	finally
-    //   107	119	1199	finally
-    //   128	168	1199	finally
-    //   168	177	1199	finally
-    //   184	188	1199	finally
-    //   195	206	1199	finally
-    //   210	242	1199	finally
-    //   242	254	1199	finally
-    //   259	274	1199	finally
-    //   274	287	1199	finally
-    //   287	319	1199	finally
-    //   319	334	1199	finally
-    //   376	393	1199	finally
-    //   517	612	1199	finally
-    //   612	618	1199	finally
-    //   618	634	1199	finally
-    //   634	640	1199	finally
-    //   640	658	1199	finally
-    //   483	491	1242	java/io/IOException
-    //   495	503	1247	java/io/IOException
-    //   507	515	1252	java/io/IOException
-    //   338	346	1257	java/io/IOException
-    //   350	358	1262	java/io/IOException
-    //   362	370	1267	java/io/IOException
-    //   797	805	1272	java/io/IOException
-    //   810	815	1277	java/io/IOException
-    //   820	825	1282	java/io/IOException
-    //   877	885	1287	java/io/IOException
-    //   890	895	1292	java/io/IOException
-    //   900	905	1297	java/io/IOException
-    //   1013	1021	1302	java/io/IOException
-    //   1026	1031	1307	java/io/IOException
-    //   1036	1041	1312	java/io/IOException
-    //   445	453	1317	java/io/IOException
-    //   458	463	1322	java/io/IOException
-    //   1088	1096	1327	java/io/IOException
-    //   1101	1106	1332	java/io/IOException
-    //   1111	1116	1337	java/io/IOException
-    //   1165	1173	1342	java/io/IOException
-    //   1178	1183	1347	java/io/IOException
-    //   1211	1219	1352	java/io/IOException
-    //   1224	1229	1357	java/io/IOException
-    //   1234	1239	1362	java/io/IOException
-    //   658	687	1367	finally
-    //   414	420	1375	finally
-    //   428	439	1375	finally
-    //   695	702	1375	finally
-    //   710	724	1375	finally
-    //   732	742	1375	finally
-    //   750	756	1375	finally
-    //   764	793	1375	finally
-    //   835	849	1375	finally
-    //   857	868	1375	finally
-    //   915	924	1375	finally
-    //   932	938	1375	finally
-    //   946	973	1375	finally
-    //   981	990	1375	finally
-    //   998	1009	1375	finally
-    //   1059	1065	1375	finally
-    //   1073	1084	1375	finally
-    //   1134	1140	1375	finally
-    //   1148	1159	1375	finally
-    //   658	687	1384	java/lang/OutOfMemoryError
-    //   695	702	1392	java/lang/OutOfMemoryError
-    //   710	724	1392	java/lang/OutOfMemoryError
-    //   732	742	1392	java/lang/OutOfMemoryError
-    //   750	756	1392	java/lang/OutOfMemoryError
-    //   764	793	1392	java/lang/OutOfMemoryError
-    //   835	849	1392	java/lang/OutOfMemoryError
-    //   857	868	1392	java/lang/OutOfMemoryError
-    //   915	924	1392	java/lang/OutOfMemoryError
-    //   932	938	1392	java/lang/OutOfMemoryError
-    //   946	973	1392	java/lang/OutOfMemoryError
-    //   981	990	1392	java/lang/OutOfMemoryError
-    //   998	1009	1392	java/lang/OutOfMemoryError
-    //   658	687	1397	java/lang/Exception
-    //   695	702	1405	java/lang/Exception
-    //   710	724	1405	java/lang/Exception
-    //   732	742	1405	java/lang/Exception
-    //   750	756	1405	java/lang/Exception
-    //   764	793	1405	java/lang/Exception
-    //   835	849	1405	java/lang/Exception
-    //   857	868	1405	java/lang/Exception
-    //   915	924	1405	java/lang/Exception
-    //   932	938	1405	java/lang/Exception
-    //   946	973	1405	java/lang/Exception
-    //   981	990	1405	java/lang/Exception
-    //   998	1009	1405	java/lang/Exception
-    //   658	687	1410	java/io/IOException
-    //   695	702	1418	java/io/IOException
-    //   710	724	1418	java/io/IOException
-    //   732	742	1418	java/io/IOException
-    //   750	756	1418	java/io/IOException
-    //   764	793	1418	java/io/IOException
-    //   835	849	1418	java/io/IOException
-    //   857	868	1418	java/io/IOException
-    //   915	924	1418	java/io/IOException
-    //   932	938	1418	java/io/IOException
-    //   946	973	1418	java/io/IOException
-    //   981	990	1418	java/io/IOException
-    //   998	1009	1418	java/io/IOException
+    //   61	72	203	java/lang/NumberFormatException
+    //   567	572	574	java/io/IOException
+    //   651	656	658	java/io/IOException
+    //   10	26	794	java/io/IOException
+    //   31	48	794	java/io/IOException
+    //   53	57	794	java/io/IOException
+    //   61	72	794	java/io/IOException
+    //   72	83	794	java/io/IOException
+    //   92	106	794	java/io/IOException
+    //   106	119	794	java/io/IOException
+    //   119	151	794	java/io/IOException
+    //   151	165	794	java/io/IOException
+    //   205	221	794	java/io/IOException
+    //   264	357	794	java/io/IOException
+    //   357	363	794	java/io/IOException
+    //   363	379	794	java/io/IOException
+    //   379	385	794	java/io/IOException
+    //   385	403	794	java/io/IOException
+    //   862	867	869	java/io/IOException
+    //   10	26	872	java/lang/Exception
+    //   31	48	872	java/lang/Exception
+    //   53	57	872	java/lang/Exception
+    //   61	72	872	java/lang/Exception
+    //   72	83	872	java/lang/Exception
+    //   92	106	872	java/lang/Exception
+    //   106	119	872	java/lang/Exception
+    //   119	151	872	java/lang/Exception
+    //   151	165	872	java/lang/Exception
+    //   205	221	872	java/lang/Exception
+    //   264	357	872	java/lang/Exception
+    //   357	363	872	java/lang/Exception
+    //   363	379	872	java/lang/Exception
+    //   379	385	872	java/lang/Exception
+    //   385	403	872	java/lang/Exception
+    //   924	928	930	java/io/IOException
+    //   10	26	933	java/lang/OutOfMemoryError
+    //   31	48	933	java/lang/OutOfMemoryError
+    //   53	57	933	java/lang/OutOfMemoryError
+    //   61	72	933	java/lang/OutOfMemoryError
+    //   72	83	933	java/lang/OutOfMemoryError
+    //   92	106	933	java/lang/OutOfMemoryError
+    //   106	119	933	java/lang/OutOfMemoryError
+    //   119	151	933	java/lang/OutOfMemoryError
+    //   151	165	933	java/lang/OutOfMemoryError
+    //   205	221	933	java/lang/OutOfMemoryError
+    //   264	357	933	java/lang/OutOfMemoryError
+    //   357	363	933	java/lang/OutOfMemoryError
+    //   363	379	933	java/lang/OutOfMemoryError
+    //   379	385	933	java/lang/OutOfMemoryError
+    //   385	403	933	java/lang/OutOfMemoryError
+    //   1001	1006	1008	java/io/IOException
+    //   10	26	1011	finally
+    //   31	48	1011	finally
+    //   53	57	1011	finally
+    //   61	72	1011	finally
+    //   72	83	1011	finally
+    //   92	106	1011	finally
+    //   106	119	1011	finally
+    //   119	151	1011	finally
+    //   151	165	1011	finally
+    //   205	221	1011	finally
+    //   264	357	1011	finally
+    //   357	363	1011	finally
+    //   363	379	1011	finally
+    //   379	385	1011	finally
+    //   385	403	1011	finally
+    //   230	238	1052	java/io/IOException
+    //   242	250	1056	java/io/IOException
+    //   254	262	1060	java/io/IOException
+    //   169	177	1064	java/io/IOException
+    //   181	189	1068	java/io/IOException
+    //   193	201	1072	java/io/IOException
+    //   542	550	1076	java/io/IOException
+    //   555	560	1080	java/io/IOException
+    //   626	634	1084	java/io/IOException
+    //   639	644	1088	java/io/IOException
+    //   764	772	1092	java/io/IOException
+    //   777	782	1096	java/io/IOException
+    //   787	792	1100	java/io/IOException
+    //   839	847	1104	java/io/IOException
+    //   852	857	1108	java/io/IOException
+    //   900	908	1112	java/io/IOException
+    //   913	918	1117	java/io/IOException
+    //   978	986	1122	java/io/IOException
+    //   991	996	1126	java/io/IOException
+    //   1022	1030	1130	java/io/IOException
+    //   1035	1040	1135	java/io/IOException
+    //   1045	1050	1140	java/io/IOException
+    //   403	432	1145	finally
+    //   440	447	1152	finally
+    //   455	469	1152	finally
+    //   477	487	1152	finally
+    //   495	501	1152	finally
+    //   509	538	1152	finally
+    //   585	598	1152	finally
+    //   606	617	1152	finally
+    //   669	676	1152	finally
+    //   684	690	1152	finally
+    //   698	724	1152	finally
+    //   732	741	1152	finally
+    //   749	760	1152	finally
+    //   809	815	1152	finally
+    //   823	833	1152	finally
+    //   948	954	1152	finally
+    //   962	972	1152	finally
+    //   879	896	1160	finally
+    //   403	432	1171	java/lang/OutOfMemoryError
+    //   440	447	1178	java/lang/OutOfMemoryError
+    //   455	469	1178	java/lang/OutOfMemoryError
+    //   477	487	1178	java/lang/OutOfMemoryError
+    //   495	501	1178	java/lang/OutOfMemoryError
+    //   509	538	1178	java/lang/OutOfMemoryError
+    //   585	598	1178	java/lang/OutOfMemoryError
+    //   606	617	1178	java/lang/OutOfMemoryError
+    //   669	676	1178	java/lang/OutOfMemoryError
+    //   684	690	1178	java/lang/OutOfMemoryError
+    //   698	724	1178	java/lang/OutOfMemoryError
+    //   732	741	1178	java/lang/OutOfMemoryError
+    //   749	760	1178	java/lang/OutOfMemoryError
+    //   403	432	1182	java/lang/Exception
+    //   440	447	1189	java/lang/Exception
+    //   455	469	1189	java/lang/Exception
+    //   477	487	1189	java/lang/Exception
+    //   495	501	1189	java/lang/Exception
+    //   509	538	1189	java/lang/Exception
+    //   585	598	1189	java/lang/Exception
+    //   606	617	1189	java/lang/Exception
+    //   669	676	1189	java/lang/Exception
+    //   684	690	1189	java/lang/Exception
+    //   698	724	1189	java/lang/Exception
+    //   732	741	1189	java/lang/Exception
+    //   749	760	1189	java/lang/Exception
+    //   403	432	1201	java/io/IOException
+    //   440	447	1208	java/io/IOException
+    //   455	469	1208	java/io/IOException
+    //   477	487	1208	java/io/IOException
+    //   495	501	1208	java/io/IOException
+    //   509	538	1208	java/io/IOException
+    //   585	598	1208	java/io/IOException
+    //   606	617	1208	java/io/IOException
+    //   669	676	1208	java/io/IOException
+    //   684	690	1208	java/io/IOException
+    //   698	724	1208	java/io/IOException
+    //   732	741	1208	java/io/IOException
+    //   749	760	1208	java/io/IOException
   }
   
   protected Integer a(Void... paramVarArgs)
   {
-    return Integer.valueOf(a());
-  }
-  
-  public void a()
-  {
-    Intent localIntent = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getIntent();
-    localIntent.putExtra("uin", this.jdField_c_of_type_JavaLangString);
-    localIntent.putExtra("uintype", this.jdField_a_of_type_Int);
-    localIntent.putExtra("file_send_path", this.jdField_b_of_type_JavaLangString);
-    localIntent.putExtra("file_send_size", this.jdField_a_of_type_Long);
-    localIntent.putExtra("file_send_duration", (int)(this.jdField_b_of_type_Long / 1000L));
-    localIntent.putExtra("file_source", this.jdField_d_of_type_JavaLangString);
-    localIntent.putExtra("thumbfile_send_path", this.f);
-    localIntent.putExtra("file_shortvideo_md5", this.jdField_e_of_type_JavaLangString);
-    localIntent.putExtra("thumbfile_send_width", this.jdField_b_of_type_Int);
-    localIntent.putExtra("thumbfile_send_height", this.jdField_c_of_type_Int);
-    localIntent.putExtra("thumbfile_md5", this.g);
-    localIntent.putExtra("file_width", this.jdField_d_of_type_Int);
-    localIntent.putExtra("file_height", this.jdField_e_of_type_Int);
-    localIntent.putExtra("file_raw_size", this.jdField_b_of_type_Boolean);
-    Object localObject1;
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(ShortVideoPreviewActivity.class.getName())))
-    {
-      localIntent.putExtra("file_send_business_type", 2);
-      localObject1 = axdo.a(0, 2);
-      ((axeg)localObject1).a(axdo.a(2, localIntent, (axeg)localObject1));
-      axdo.a((axeg)localObject1, ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app);
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        localObject1 = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getIntent();
-        if (((Intent)localObject1).getBooleanExtra("start_init_activity_after_sended", true))
-        {
-          localObject2 = ((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-          localIntent.setClassName(((Intent)localObject1).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.d("SendVideoActivity", 2, "SendVideoTask onPostExecute() INIT_ACTIVITY_CLASS_NAME=" + (String)localObject2);
-          }
-          localIntent.addFlags(603979776);
-          ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(localIntent);
-        }
-        ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-        ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).overridePendingTransition(0, 2130771980);
-      }
-      return;
-      localIntent.putExtra("file_send_business_type", 0);
-      Object localObject2 = axdo.a(0, 0);
-      localObject1 = axdo.a(0, localIntent, (axeg)localObject2);
-      ((axeg)localObject2).a((axew)localObject1);
-      localObject2 = new axcy(((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app);
-      localObject1 = ((axcy)localObject2).a((axew)localObject1);
-      if (((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app != null) {
-        ((awan)((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.getManager(326)).a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).uniseq);
-      }
-      ((axcy)localObject2).a((MessageRecord)localObject1);
-    }
-  }
-  
-  void a(Context paramContext, int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidAppProgressDialog == null) {
-          break label63;
-        }
-        b();
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-        if (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        return;
-      }
-      catch (Throwable paramContext) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("SendVideoActivity", 2, "showProgressDialog", paramContext);
-      return;
-      label63:
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131755791);
-      this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
-      this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559386);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557));
-    }
+    return Integer.valueOf(a(BaseApplicationImpl.getApplication()));
   }
   
   protected void a(Integer paramInteger)
   {
     super.onPostExecute(paramInteger);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    b();
     switch (paramInteger.intValue())
     {
-    case 7: 
-    case 8: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
     default: 
       return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-    case 6: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131719597, this.jdField_a_of_type_Boolean);
-      return;
-    case 3: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131719592, this.jdField_a_of_type_Boolean);
-      return;
-    case 4: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131719562, this.jdField_a_of_type_Boolean);
-      return;
-    case 5: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131719589, this.jdField_a_of_type_Boolean);
+    }
+    paramInteger = new Intent();
+    try
+    {
+      this.jdField_e_of_type_JavaLangString = bbea.a(MD5.toMD5Byte(new FileInputStream(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Long));
+      paramInteger.putExtra("uin", this.jdField_c_of_type_JavaLangString);
+      paramInteger.putExtra("uintype", this.jdField_a_of_type_Int);
+      paramInteger.putExtra("file_send_path", this.jdField_b_of_type_JavaLangString);
+      paramInteger.putExtra("file_send_size", this.jdField_a_of_type_Long);
+      paramInteger.putExtra("file_send_duration", (int)(this.jdField_b_of_type_Long / 1000L));
+      paramInteger.putExtra("file_source", this.jdField_d_of_type_JavaLangString);
+      paramInteger.putExtra("thumbfile_send_path", this.jdField_f_of_type_JavaLangString);
+      paramInteger.putExtra("file_shortvideo_md5", this.jdField_e_of_type_JavaLangString);
+      paramInteger.putExtra("thumbfile_send_width", this.jdField_b_of_type_Int);
+      paramInteger.putExtra("thumbfile_send_height", this.jdField_c_of_type_Int);
+      paramInteger.putExtra("thumbfile_md5", this.g);
+      paramInteger.putExtra("file_width", this.jdField_d_of_type_Int);
+      paramInteger.putExtra("file_height", this.jdField_e_of_type_Int);
+      paramInteger.putExtra("short_video_msg_tail_type", this.jdField_f_of_type_Int);
+      paramInteger.putExtra("file_send_business_type", 0);
+      axei localaxei = axdq.a(0, 0);
+      localaxei.a(axdq.a(0, paramInteger, localaxei));
+      axdq.a(localaxei, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
       return;
     }
-    ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    catch (Exception localException)
     {
-      return;
-      try
+      for (;;)
       {
-        if (this.jdField_a_of_type_AndroidAppProgressDialog != null)
-        {
-          this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.e("SendVideoActivity", 2, "", localException);
         }
       }
-      catch (Exception localException) {}
     }
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131695125);
   }
 }
 

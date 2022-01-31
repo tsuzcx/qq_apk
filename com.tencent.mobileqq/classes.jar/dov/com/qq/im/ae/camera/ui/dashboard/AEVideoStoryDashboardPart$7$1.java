@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bimz;
-import bing;
-import binh;
+import binq;
+import binx;
+import biny;
 import java.util.List;
 
 public class AEVideoStoryDashboardPart$7$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$7$1(bing parambing, List paramList) {}
+  public AEVideoStoryDashboardPart$7$1(binx parambinx, List paramList) {}
   
   public void run()
   {
-    bimz.a(this.jdField_a_of_type_Bing.a).a(this.jdField_a_of_type_JavaUtilList);
+    binq.a(this.jdField_a_of_type_Binx.a).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

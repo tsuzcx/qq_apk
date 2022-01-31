@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae;
 
 import android.view.View;
-import biim;
+import bijd;
 import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class AEPituCameraUnit$28
   implements Runnable
 {
-  public AEPituCameraUnit$28(biim parambiim, boolean paramBoolean) {}
+  public AEPituCameraUnit$28(bijd parambijd, boolean paramBoolean) {}
   
   public void run()
   {
-    AEProviderContainerView localAEProviderContainerView = (AEProviderContainerView)biim.a(this.this$0).findViewById(2131363123);
+    AEProviderContainerView localAEProviderContainerView = (AEProviderContainerView)bijd.a(this.this$0).findViewById(2131363122);
     if (localAEProviderContainerView != null) {
       if (this.a) {
         break label35;

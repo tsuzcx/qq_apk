@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.NativeGifFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class aoda
-  implements bcur
 {
-  public aoda(AIOEmotionFragment paramAIOEmotionFragment) {}
-  
-  public void a(bbje parambbje, bcuq parambcuq)
+  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
   {
-    this.a.a.b();
-    int i = parambbje.c;
-    this.a.a(i, parambbje);
+    try
+    {
+      if (NativeGifFactory.isUseNewGif()) {
+        return new aodc(paramFile, paramInt, paramBoolean);
+      }
+      paramFile = new aodb(paramFile, paramInt, paramBoolean);
+      return paramFile;
+    }
+    catch (IOException paramFile)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoda
  * JD-Core Version:    0.7.0.1
  */

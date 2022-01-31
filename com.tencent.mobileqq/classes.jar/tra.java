@@ -1,14 +1,16 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
 class tra
-  extends tps
+  extends tpj
 {
-  tra(tqk paramtqk, String paramString1, String paramString2, boolean paramBoolean, trq paramtrq)
+  tra(tqh paramtqh, StoryVideoItem paramStoryVideoItem, trq paramtrq)
   {
-    super(paramString1, paramString2, paramBoolean);
+    super(paramStoryVideoItem);
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trq.h = ((String)a("EncryptUrlJob_encryptedUrl"));
+    this.jdField_a_of_type_Trq.e = ((String)a("result"));
     return true;
   }
 }

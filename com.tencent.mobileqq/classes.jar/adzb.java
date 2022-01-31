@@ -1,16 +1,45 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.qphone.base.util.QLog;
 
-public class adzb
-  extends acun
+class adzb
+  implements View.OnClickListener
 {
-  public RelativeLayout a;
-  public DoodleMsgLayout a;
-  public MessageProgressView a;
+  adzb(adza paramadza) {}
   
-  public adzb(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
+    }
+    actj.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    if (SystemClock.uptimeMillis() - adza.a(this.a) < 3000L)
+    {
+      QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
+      return;
+    }
+    paramView = (MessageForShakeWindow)actj.a(paramView);
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
+    {
+      FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
+      adza.a(this.a, SystemClock.uptimeMillis());
+      localFragmentActivity.getChatFragment().a().ar();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
+  }
 }
 
 

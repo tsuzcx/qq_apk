@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ApolloActionPackage
-  extends aukm
+  extends auko
 {
   public static final int PACKAGE_ID_3D_SEGMENT = 300;
   public static final int PACKAGE_ID_COLLECT = 4;
@@ -21,7 +21,7 @@ public class ApolloActionPackage
   public String mIconSelectedUrl;
   public String mIconUnselectedUrl;
   public String name;
-  @auma
+  @aumc
   public int packageId;
   public int redFlowId;
   public long redInterval;

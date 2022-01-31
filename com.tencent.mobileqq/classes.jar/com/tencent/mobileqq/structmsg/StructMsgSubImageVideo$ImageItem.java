@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import axum;
-import axwe;
+import axuo;
+import axwg;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -16,23 +16,23 @@ public class StructMsgSubImageVideo$ImageItem
   public String schema;
   public String title;
   
-  private static ImageItem a(axwe paramaxwe)
+  private static ImageItem a(axwg paramaxwg)
   {
-    Iterator localIterator = paramaxwe.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramaxwg.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (axwe)localIterator.next();
-      if ("title".equals(((axwe)localObject3).b)) {
+      localObject3 = (axwg)localIterator.next();
+      if ("title".equals(((axwg)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("picture".equals(((axwe)localObject3).b))
+      if ("picture".equals(((axwg)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -42,11 +42,11 @@ public class StructMsgSubImageVideo$ImageItem
           return null;
         }
         localObject3 = new ImageItem();
-        ((ImageItem)localObject3).schema = paramaxwe.a("url");
+        ((ImageItem)localObject3).schema = paramaxwg.a("url");
         if (localObject2 == null) {}
-        for (paramaxwe = "";; paramaxwe = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramaxwg = "";; paramaxwg = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((ImageItem)localObject3).title = paramaxwe;
+          ((ImageItem)localObject3).title = paramaxwg;
           ((ImageItem)localObject3).imageUrl = localObject1.a("cover");
           return localObject3;
         }
@@ -61,19 +61,19 @@ public class StructMsgSubImageVideo$ImageItem
     this.schema = paramObjectInput.readUTF();
   }
   
-  public void toXml(axum paramaxum)
+  public void toXml(axuo paramaxuo)
   {
-    paramaxum.startTag(null, "item");
-    paramaxum.attribute(null, "apptype", "10");
-    paramaxum.attribute(null, "type", "0");
-    paramaxum.attribute(null, "url", this.schema);
-    paramaxum.startTag(null, "title");
+    paramaxuo.startTag(null, "item");
+    paramaxuo.attribute(null, "apptype", "10");
+    paramaxuo.attribute(null, "type", "0");
+    paramaxuo.attribute(null, "url", this.schema);
+    paramaxuo.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      paramaxum.text(str);
-      paramaxum.endTag(null, "title");
-      paramaxum.startTag(null, "picture");
+      paramaxuo.text(str);
+      paramaxuo.endTag(null, "title");
+      paramaxuo.startTag(null, "picture");
       if (this.imageUrl != null) {
         break label124;
       }
@@ -81,9 +81,9 @@ public class StructMsgSubImageVideo$ImageItem
     label124:
     for (String str = "";; str = this.imageUrl)
     {
-      paramaxum.attribute(null, "cover", str);
-      paramaxum.endTag(null, "picture");
-      paramaxum.endTag(null, "item");
+      paramaxuo.attribute(null, "cover", str);
+      paramaxuo.endTag(null, "picture");
+      paramaxuo.endTag(null, "item");
       return;
       str = this.title;
       break;

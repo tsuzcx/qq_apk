@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aamz;
+import aamv;
 
 public class BaseChatPie$75$1
   implements Runnable
 {
-  public BaseChatPie$75$1(aamz paramaamz) {}
+  public BaseChatPie$75$1(aamv paramaamv) {}
   
   public void run()
   {

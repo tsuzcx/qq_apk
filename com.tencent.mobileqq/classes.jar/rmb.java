@@ -1,16 +1,4 @@
-import android.view.View;
-
-class rmb
-  implements bfps
-{
-  rmb(rlz paramrlz) {}
-  
-  public void a()
-  {
-    this.a.a.setSelected(false);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rmb

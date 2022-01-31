@@ -1,72 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationBanner;
+import com.tencent.widget.SimpleTextView;
 
 class afmc
-  extends ajxl
+  extends bfwg
 {
-  afmc(afma paramafma) {}
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  afmc(afly paramafly, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(false);
-    }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  public View a(int paramInt, Object paramObject, bfwf parambfwf, View.OnClickListener paramOnClickListener)
   {
-    if (paramInt2 == afma.a(this.a)) {
-      this.a.a(false);
+    parambfwf = super.a(paramInt, paramObject, parambfwf, paramOnClickListener);
+    if ((parambfwf instanceof SimpleTextView)) {
+      parambfwf.setTag(paramObject);
     }
+    return parambfwf;
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
   {
-    if ((paramBoolean) && (afma.a(this.a) == 23)) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
+    int i = 0;
+    if ((paramArrayOfbfwf == null) || (paramArrayOfbfwf.length <= 0)) {}
+    for (;;)
     {
-      this.a.notifyDataSetChanged();
-      if (afma.a(this.a) != null)
+      return;
+      paramInt = i;
+      if (paramArrayOfbfwf.length < 0)
       {
-        afma.a(this.a).removeCallbacks(this.a.a);
-        afma.a(this.a).postDelayed(this.a.a, 1600L);
+        paramInt = i;
+        if (!(paramObject instanceof ConnectsExplorationBanner))
+        {
+          paramArrayOfbfwf[0].b = 0;
+          paramArrayOfbfwf[0].a = 0;
+          paramInt = 1;
+        }
+      }
+      while (paramInt < paramArrayOfbfwf.length)
+      {
+        paramArrayOfbfwf[paramInt].b = -1;
+        paramArrayOfbfwf[paramInt].a = -1;
+        paramInt += 1;
       }
     }
   }

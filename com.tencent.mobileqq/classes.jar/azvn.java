@@ -1,27 +1,22 @@
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ArithmeticCaptureView;
+import java.util.List;
 
-class azvn
-  extends vwj
+public class azvn
 {
-  azvn(azvm paramazvm, LayoutInflater paramLayoutInflater)
-  {
-    super(paramLayoutInflater);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public List<Long> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
   
-  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public String toString()
   {
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842960 });
-    int i = localTypedArray.getResourceId(0, -1);
-    localTypedArray.recycle();
-    if (i == 2131363833) {
-      return new ArithmeticCaptureView(paramContext, paramAttributeSet);
-    }
-    return super.a(paramView, paramString, paramContext, paramAttributeSet);
+    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
   }
 }
 

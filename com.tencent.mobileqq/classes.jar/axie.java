@@ -1,8 +1,6 @@
-import android.hardware.Camera;
-
 public abstract interface axie
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

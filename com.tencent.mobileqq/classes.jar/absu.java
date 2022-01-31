@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class absu
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public absu(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public absu(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    ProfileLabelEditorActivity.a(this.a);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

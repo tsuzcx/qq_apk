@@ -1,15 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class auil
+  implements Animation.AnimationListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
-  View c;
-  View d;
+  auil(auid paramauid, int paramInt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    auid.a(this.jdField_a_of_type_Auid, this.jdField_a_of_type_Int);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

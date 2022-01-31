@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.colornote.anim;
 
-import amgy;
+import amgx;
 import android.animation.Animator;
-import wez;
+import wew;
 
 public class EnterExitAnimHelper$1$1
   implements Runnable
 {
-  public EnterExitAnimHelper$1$1(amgy paramamgy, Animator paramAnimator) {}
+  public EnterExitAnimHelper$1$1(amgx paramamgx, Animator paramAnimator) {}
   
   public void run()
   {
-    ((wez)this.jdField_a_of_type_AndroidAnimationAnimator).a();
+    ((wew)this.jdField_a_of_type_AndroidAnimationAnimator).a();
   }
 }
 

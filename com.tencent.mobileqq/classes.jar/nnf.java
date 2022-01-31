@@ -1,53 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.app.ThreadManager;
 
 public class nnf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public nnf(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  public nnf(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      onClick(paramView);
-      return;
-    case 2131368457: 
-      if (!this.a.jdField_a_of_type_Bcfj.a.a)
-      {
-        paramView = this.a.jdField_a_of_type_Bcbv.c.getText().toString();
-        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
-        return;
-      }
-      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
-      {
-        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
-        this.a.getActivity().finish();
-        return;
-      }
-      onClick(paramView);
-      return;
-    }
-    if (!this.a.jdField_a_of_type_Bcfj.a.a)
-    {
-      paramView = this.a.jdField_a_of_type_Bcbv.a.getText().toString();
-      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
-      {
-        this.a.f();
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
-      return;
-    }
-    onClick(paramView);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,34 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.XListView;
 
-public class acxf
-  implements Animator.AnimatorListener
+public abstract interface acxf
 {
-  public acxf(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(0.0F);
-      this.a.b.setTranslationX(this.a.f);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f);
-    this.a.b.setTranslationX(0.0F);
-  }
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    onAnimationCancel(paramAnimator);
-    IntimateTitleSwitchView.f(this.a);
-  }
+  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayer paramAudioPlayer, int paramInt2);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract boolean b(ChatMessage paramChatMessage);
 }
 
 

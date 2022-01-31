@@ -1,10 +1,24 @@
-public abstract interface akbu
+public class akbu
 {
-  public abstract void ag_();
-  
-  public abstract void b();
-  
-  public abstract void i_(int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
 }
 
 

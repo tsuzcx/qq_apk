@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import antv;
+import anua;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ class EmoticonMainPanel$18
   {
     if (this.this$0.a != null)
     {
-      ((antv)this.this$0.a.getManager(141)).a();
+      ((anua)this.this$0.a.getManager(141)).a();
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonMainPanel", 2, "vipComicMqqManager.uploadInitComicEmoStructMsgInfo");
       }

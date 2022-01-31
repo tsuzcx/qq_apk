@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ngo
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  ngo(nfu paramnfu, nmv paramnmv, Switch paramSwitch) {}
+  ngo(ngn paramngn) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, this.jdField_a_of_type_ComTencentWidgetSwitch);
+    this.a.a.a(this.a.a.a);
   }
 }
 

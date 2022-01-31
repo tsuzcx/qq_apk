@@ -1,18 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
-public final class qbd
-  implements Parcelable.Creator<FusionBiuInfo>
+public class qbd
 {
-  public FusionBiuInfo a(Parcel paramParcel)
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public static qbd a(articlesummary.HotWordItem paramHotWordItem)
   {
-    return new FusionBiuInfo(paramParcel);
+    qbd localqbd = new qbd();
+    if (paramHotWordItem.hot_word.has()) {
+      localqbd.a = paramHotWordItem.hot_word.get().toStringUtf8();
+    }
+    if (paramHotWordItem.jump_url.has()) {
+      localqbd.b = paramHotWordItem.jump_url.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_word_color.has()) {
+      localqbd.c = paramHotWordItem.index_word_color.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_bg_color.has()) {
+      localqbd.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
+    }
+    return localqbd;
   }
   
-  public FusionBiuInfo[] a(int paramInt)
+  public articlesummary.HotWordItem a()
   {
-    return new FusionBiuInfo[paramInt];
+    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localHotWordItem;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof qbd)) && (!TextUtils.isEmpty(this.a)) && (this.a.equals(((qbd)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((qbd)paramObject).b));
   }
 }
 

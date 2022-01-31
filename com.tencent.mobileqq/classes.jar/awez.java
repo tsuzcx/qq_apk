@@ -1,146 +1,88 @@
-import java.lang.reflect.Array;
-import mqq.util.WeakReference;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.method.Touch;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
-public final class awez<T>
+public class awez
+  extends BaseMovementMethod
 {
-  private int jdField_a_of_type_Int = -1;
-  private WeakReference<T>[] jdField_a_of_type_ArrayOfMqqUtilWeakReference;
+  private int jdField_a_of_type_Int;
+  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+  public final String a;
+  private boolean jdField_a_of_type_Boolean = true;
+  private ClickableSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan;
+  private int b;
   
-  public awez()
+  public awez(int paramInt1, int paramInt2)
   {
-    this(16);
+    this.jdField_a_of_type_JavaLangString = "CommentMovementMethod";
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public awez(int paramInt)
+  private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ArrayOfMqqUtilWeakReference = ((WeakReference[])Array.newInstance(WeakReference.class, paramInt));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  /* Error */
-  public T a()
+  public boolean a()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload 4
-    //   7: astore_3
-    //   8: aload_0
-    //   9: getfield 19	awez:jdField_a_of_type_Int	I
-    //   12: iconst_m1
-    //   13: if_icmpeq +22 -> 35
-    //   16: aload_0
-    //   17: getfield 19	awez:jdField_a_of_type_Int	I
-    //   20: istore_1
-    //   21: aload_0
-    //   22: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
-    //   25: arraylength
-    //   26: istore_2
-    //   27: iload_1
-    //   28: iload_2
-    //   29: if_icmple +10 -> 39
-    //   32: aload 4
-    //   34: astore_3
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_3
-    //   38: areturn
-    //   39: aload_0
-    //   40: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
-    //   43: aload_0
-    //   44: getfield 19	awez:jdField_a_of_type_Int	I
-    //   47: aaload
-    //   48: invokevirtual 34	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   51: astore_3
-    //   52: aload_0
-    //   53: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
-    //   56: aload_0
-    //   57: getfield 19	awez:jdField_a_of_type_Int	I
-    //   60: aconst_null
-    //   61: aastore
-    //   62: aload_0
-    //   63: aload_0
-    //   64: getfield 19	awez:jdField_a_of_type_Int	I
-    //   67: iconst_1
-    //   68: isub
-    //   69: putfield 19	awez:jdField_a_of_type_Int	I
-    //   72: goto -37 -> 35
-    //   75: astore_3
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: aload_3
-    //   79: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	80	0	this	awez
-    //   20	10	1	i	int
-    //   26	4	2	j	int
-    //   7	45	3	localObject1	Object
-    //   75	4	3	localObject2	Object
-    //   1	32	4	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   8	27	75	finally
-    //   39	72	75	finally
+    return this.jdField_a_of_type_Boolean;
   }
   
-  /* Error */
-  public boolean a(T paramT)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 19	awez:jdField_a_of_type_Int	I
-    //   6: iconst_m1
-    //   7: if_icmpeq +17 -> 24
-    //   10: aload_0
-    //   11: getfield 19	awez:jdField_a_of_type_Int	I
-    //   14: aload_0
-    //   15: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
-    //   18: arraylength
-    //   19: iconst_1
-    //   20: isub
-    //   21: if_icmpge +36 -> 57
-    //   24: aload_0
-    //   25: aload_0
-    //   26: getfield 19	awez:jdField_a_of_type_Int	I
-    //   29: iconst_1
-    //   30: iadd
-    //   31: putfield 19	awez:jdField_a_of_type_Int	I
-    //   34: aload_0
-    //   35: getfield 30	awez:jdField_a_of_type_ArrayOfMqqUtilWeakReference	[Lmqq/util/WeakReference;
-    //   38: aload_0
-    //   39: getfield 19	awez:jdField_a_of_type_Int	I
-    //   42: new 21	mqq/util/WeakReference
-    //   45: dup
-    //   46: aload_1
-    //   47: invokespecial 40	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   50: aastore
-    //   51: iconst_1
-    //   52: istore_2
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: iload_2
-    //   56: ireturn
-    //   57: iconst_0
-    //   58: istore_2
-    //   59: goto -6 -> 53
-    //   62: astore_1
-    //   63: aload_0
-    //   64: monitorexit
-    //   65: aload_1
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	this	awez
-    //   0	67	1	paramT	T
-    //   52	7	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	62	finally
-    //   24	51	62	finally
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      int k = paramTextView.getTotalPaddingLeft();
+      int m = paramTextView.getTotalPaddingTop();
+      int n = paramTextView.getScrollX();
+      int i1 = paramTextView.getScrollY();
+      Layout localLayout = paramTextView.getLayout();
+      i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical(j - m + i1), i - k + n);
+      this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan = ((ClickableSpan[])paramSpannable.getSpans(i, i, ClickableSpan.class));
+      if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
+      {
+        a(false);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]));
+        this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(this.b);
+        paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), 33);
+      }
+    }
+    for (;;)
+    {
+      return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      a(true);
+      paramTextView.setBackgroundColor(this.jdField_a_of_type_Int);
+      continue;
+      if (i == 1)
+      {
+        if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
+        {
+          this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0].onClick(paramTextView);
+          if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan != null) {
+            paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+          }
+        }
+        Selection.removeSelection(paramSpannable);
+        paramTextView.setBackgroundResource(2131167087);
+      }
+      else if (i != 2)
+      {
+        if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan != null) {
+          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+        }
+        paramTextView.setBackgroundResource(2131167087);
+      }
+    }
   }
 }
 

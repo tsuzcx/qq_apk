@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import apfe;
+import apfi;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -16,15 +16,15 @@ import java.util.List;
 public class FileSearchDetailActivity
   extends IphoneTitleBarActivity
 {
-  static apfe a;
-  apfe b;
+  static apfi a;
+  apfi b;
   
-  public static void a(Context paramContext, String paramString, apfe paramapfe)
+  public static void a(Context paramContext, String paramString, apfi paramapfi)
   {
-    a = paramapfe;
-    paramapfe = new Intent(paramContext, FileSearchDetailActivity.class);
-    paramapfe.putExtra("keyword", paramString);
-    paramContext.startActivity(paramapfe);
+    a = paramapfi;
+    paramapfi = new Intent(paramContext, FileSearchDetailActivity.class);
+    paramapfi.putExtra("keyword", paramString);
+    paramContext.startActivity(paramapfi);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -52,7 +52,7 @@ public class FileSearchDetailActivity
     Object localObject = getSupportFragmentManager();
     paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
     localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131364706, paramBundle);
+    ((FragmentTransaction)localObject).replace(2131364705, paramBundle);
     ((FragmentTransaction)localObject).commit();
     return true;
   }

@@ -1,17 +1,11 @@
-import java.util.List;
+import android.app.Application;
 
-class aoay
-  implements aoaj
+public class aoay
+  extends ayop
 {
-  aoay(aoav paramaoav) {}
-  
-  public void a(List<aoah> paramList)
+  public aoay(Application paramApplication)
   {
-    if (paramList != null)
-    {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
-    }
+    super(paramApplication);
   }
 }
 

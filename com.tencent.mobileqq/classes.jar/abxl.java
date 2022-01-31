@@ -1,69 +1,60 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity.7.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 public class abxl
-  extends mxm
+  extends Dialog
 {
-  public abxl(QQSettingSettingActivity paramQQSettingSettingActivity) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public abxl(Context paramContext)
   {
-    int i = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (paramInt = 0;; paramInt = 1)
+    super(paramContext, 2131755648);
+    setContentView(2131561839);
+    getWindow().setFlags(1024, 2048);
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)findViewById(2131377350)).setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      if (paramInt != 0) {}
-      try
-      {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = i;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        if (paramInt == 1)
-        {
-          long l = 3600L;
-          paramArrayOfByte = "";
-          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
-            l = localQQProtectRisksResponse.uint32_cache_time.get();
-          }
-          if (localQQProtectRisksResponse.str_risk_exist.has()) {
-            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
-          }
-          paramBundle = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            paramBundle = paramArrayOfByte;
-            if (localQQProtectRisksResponse.risk_info_list.has())
-            {
-              paramBundle = paramArrayOfByte;
-              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
-                paramBundle = this.a.getString(2131699385);
-              }
-            }
-          }
-          QQSettingSettingActivity.a(this.a, l, paramBundle);
-          this.a.runOnUiThread(new QQSettingSettingActivity.7.1(this, paramBundle));
-        }
-        return;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        return;
-      }
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+    }
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (String str = null;; str = getContext().getResources().getString(paramInt))
+    {
+      a(str);
+      return;
+    }
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
     }
   }
 }

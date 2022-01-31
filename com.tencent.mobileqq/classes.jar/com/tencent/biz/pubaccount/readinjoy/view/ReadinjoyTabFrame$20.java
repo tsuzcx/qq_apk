@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bbdr;
+import bbef;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 import java.net.MalformedURLException;
@@ -14,7 +14,7 @@ class ReadinjoyTabFrame$20
     try
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(bbdr.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(bbef.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
       return;
     }
     catch (MalformedURLException localMalformedURLException)

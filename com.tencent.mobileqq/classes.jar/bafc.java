@@ -1,65 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.ThemeLabelTextView;
 
 public class bafc
-  extends ampb<bafb>
+  extends aimt
 {
-  public int a()
-  {
-    return 590;
-  }
+  int jdField_a_of_type_Int;
+  final View jdField_a_of_type_AndroidViewView;
+  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  public final TextView a;
+  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
+  TextView b;
   
-  @NonNull
-  public bafb a(int paramInt)
+  bafc(View paramView)
   {
-    QLog.d("TroopShortcutBarConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bafb();
-  }
-  
-  @Nullable
-  public bafb a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return bafb.a(paramArrayOfampi[0].a);
-    }
-    return null;
-  }
-  
-  public Class<bafb> a()
-  {
-    return bafb.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TroopShortcutBarConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public void a(bafb parambafb)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((baff)((QQAppInterface)localAppRuntime).getManager(355)).a(parambafb, false);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.c = ((ImageView)paramView.findViewById(2131368583));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368344));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370537));
+    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131378258));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378332);
+    this.b = ((TextView)paramView.findViewById(2131378354));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362514));
   }
 }
 

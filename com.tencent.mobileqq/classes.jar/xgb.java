@@ -1,73 +1,120 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.AnimationSet;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.component.media.image.ImageLoader;
 import com.tencent.qphone.base.util.QLog;
 
 public class xgb
-  extends ampb<xga>
 {
-  public int a()
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private ImageView b;
+  
+  private Drawable a(String paramString, View paramView)
   {
-    return 463;
+    return ImageLoader.getInstance().loadImage(paramString, new xgc(this, paramView));
   }
   
-  public Class<xga> a()
+  private AnimationSet a()
   {
-    return xga.class;
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.setFillAfter(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(200L);
+    localScaleAnimation.setStartOffset(280L);
+    localScaleAnimation.setAnimationListener(new xgd(this));
+    localAnimationSet.addAnimation(localScaleAnimation);
+    return localAnimationSet;
   }
   
-  @NonNull
-  public xga a(int paramInt)
+  private AnimationSet b()
   {
-    return new xga();
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.setFillAfter(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(200L);
+    localScaleAnimation.setStartOffset(2240L);
+    localScaleAnimation.setFillAfter(true);
+    localScaleAnimation.setAnimationListener(new xge(this));
+    localAnimationSet.addAnimation(localScaleAnimation);
+    return localAnimationSet;
   }
   
-  @Nullable
-  public xga a(ampi[] paramArrayOfampi)
+  private AnimationSet c()
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if (this.b != null)
     {
-      xga localxga = xga.a(paramArrayOfampi[0].a);
-      a(localxga);
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      return localxga;
+      AnimationSet localAnimationSet = new AnimationSet(false);
+      localAnimationSet.setFillAfter(true);
+      ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+      localScaleAnimation.setInterpolator(new OvershootInterpolator());
+      localScaleAnimation.setDuration(440L);
+      localScaleAnimation.setStartOffset(400L);
+      localScaleAnimation.setAnimationListener(new xgf(this));
+      localAnimationSet.addAnimation(localScaleAnimation);
+      localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+      localScaleAnimation.setDuration(320L);
+      localScaleAnimation.setStartOffset(2400L);
+      localAnimationSet.addAnimation(localScaleAnimation);
+      return localAnimationSet;
     }
     return null;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(xga paramxga)
+  public void a()
   {
-    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
-    if (paramxga != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramxga.toString());
-      xfr.a().a("subscribe_entrance_enable", paramxga.a());
-      xfr.a().a("is_open_sharing", paramxga.b());
-      xfr.a().a("subscribe_account_title", paramxga.c());
-      xfr.a().a("newfollowlist", paramxga.d());
-      xfr.a().a("subscribe_publish_entrance_enable", paramxga.e());
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
+      this.b.clearAnimation();
+      this.b.startAnimation(c());
+    }
+    for (;;)
+    {
+      QLog.d("Q.videostory.config.VSEntranceWidget", 1, "playWidgetAnimationset resourceReady:" + this.jdField_a_of_type_Boolean);
+      return;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
   }
   
-  public boolean a()
+  public void a(FrameLayout paramFrameLayout, View paramView, String paramString)
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramFrameLayout = xgj.a().a(paramString);
+    if ((paramFrameLayout == null) || (!paramFrameLayout.a()))
+    {
+      QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    if (paramView != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131363843));
+    paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
+    if (paramView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379438));
+    paramFrameLayout = a(paramFrameLayout.f, this.b);
+    if (paramFrameLayout != null) {
+      this.b.setImageDrawable(paramFrameLayout);
+    }
+    this.b.setVisibility(4);
   }
 }
 

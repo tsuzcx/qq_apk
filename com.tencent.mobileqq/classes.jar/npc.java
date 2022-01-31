@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
 
 public final class npc
-  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
+  implements Parcelable.Creator<VideoInfo.AdTagInfo>
 {
-  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
+  public VideoInfo.AdTagInfo a(Parcel paramParcel)
   {
-    return new VideoAdInfo.NegFeedback(paramParcel);
+    return new VideoInfo.AdTagInfo(paramParcel);
   }
   
-  public VideoAdInfo.NegFeedback[] a(int paramInt)
+  public VideoInfo.AdTagInfo[] a(int paramInt)
   {
-    return new VideoAdInfo.NegFeedback[paramInt];
+    return new VideoInfo.AdTagInfo[paramInt];
   }
 }
 

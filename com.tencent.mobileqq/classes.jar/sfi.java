@@ -1,85 +1,56 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.CustomWebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sfi
+class sfi
+  implements bblz
 {
-  int jdField_a_of_type_Int = 0;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
-  String c = "";
+  sfi(sfh paramsfh) {}
   
-  public sfi(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
-    this.b = "";
-    try
+    paramString = new JSONObject();
+    if (paramInt1 == 8) {}
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt3);
-      label66:
-      this.c = a(paramInt1);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      break label66;
-    }
-  }
-  
-  public sfi(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = a(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = sfh.a(paramContext, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mId: " + this.jdField_a_of_type_Int + " | mName: " + this.jdField_a_of_type_JavaLangString + " | mIconUrl: " + this.b + " | mUin : " + this.c);
-    }
-    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
-    {
-      paramString1 = abkz.b(paramContext, paramString2);
-      if (paramString1 != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
+      try
+      {
+        paramString.put("retCode", -1);
+        paramString.put("msg", "fail");
+        paramString.put("localId", this.a.d());
+        if (this.a.jdField_a_of_type_Bcdp.a() != null) {
+          this.a.jdField_a_of_type_Bcdp.a().callJs(sfk.h, new String[] { paramString.toString() });
+        }
+        axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
+        if (this.a.jdField_a_of_type_Bbly != null) {
+          this.a.jdField_a_of_type_Bbly.f();
+        }
+        this.a.jdField_a_of_type_Bbly = null;
+        return;
+      }
+      catch (JSONException localJSONException1)
+      {
+        localJSONException1.printStackTrace();
+        continue;
+      }
+      if (paramInt1 == 4) {
+        try
+        {
+          paramString.put("retCode", 0);
+          paramString.put("msg", ajya.a(2131708787) + this.a.d() + ajya.a(2131708781));
+          paramString.put("localId", this.a.d());
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      abkz.a(paramQQAppInterface, paramContext, paramString2, new abla(paramContext, new sfj(this, paramQQAppInterface, this.c), new Object[0]));
-      return;
-    }
-    QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
   }
   
-  private String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return String.valueOf(7210);
-    case 2: 
-      return String.valueOf(ajsf.az);
-    }
-    return String.valueOf(ajsf.aA);
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

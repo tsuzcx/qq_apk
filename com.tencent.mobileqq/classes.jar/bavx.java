@@ -1,5 +1,4 @@
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
@@ -9,28 +8,26 @@ final class bavx
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    try
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
     {
-      int i = paramBitmap.getHeight();
-      int j = paramBitmap.getWidth();
-      int k = paramDownloadParams.reqWidth;
-      int m = paramDownloadParams.reqHeight;
-      float f = k * 1.0F / j;
-      paramDownloadParams = new Matrix();
-      paramDownloadParams.setScale(f, f);
-      if (i * f > m) {}
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
-      {
-        QLog.d(bavi.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
-        break;
+      paramDownloadParams = (int[])paramDownloadParams;
+      float f2 = bbdh.a();
+      float f1 = f2;
+      if (f2 < 0.01F) {
+        f1 = 1.0F;
       }
-      return paramDownloadParams;
+      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+      return bbef.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
     }
-    catch (Exception paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-      return paramBitmap;
-    }
+    return bbef.c(paramBitmap, 50, 50);
   }
 }
 

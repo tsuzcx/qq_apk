@@ -1,23 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class aohz
-  extends ajxl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aohz(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public aohz(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSearchFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    paramString = this.a.a.a(this.a.c);
-    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new aoia(this, paramBoolean));
+    if (paramBoolean) {}
+    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
     {
-      paramString.mAddFriendVerified = true;
-      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.2.1(this));
+      axqy.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
+      return;
     }
   }
 }

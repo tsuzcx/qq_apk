@@ -10,35 +10,56 @@ public class opr
   extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
+  public static String a = "ViolaPicSerPreloadHandler";
+  public static String b = "viola_service_instance";
+  
+  public static boolean a()
+  {
+    return ((Boolean)bhvy.a(b, Boolean.valueOf(false))).booleanValue();
+  }
+  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoSdkConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = ooi.a(paramString);
-    Object localObject = paramString.keySet();
-    try
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = oof.a(paramString);
+    Object localObject = localMap.keySet();
+    for (;;)
     {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      try
       {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
-          bhvh.k(Integer.parseInt(str2));
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          String str2 = (String)((Iterator)localObject).next();
+          String str1 = (String)localMap.get(str2);
+          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
+            continue;
+          }
+          str2 = b;
+          if (Integer.parseInt(str1) == 1)
+          {
+            bool = true;
+            bhvy.a(str2, Boolean.valueOf(bool));
+          }
+        }
+        else
+        {
+          return true;
         }
       }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
+      catch (Throwable localThrowable)
+      {
+        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+      }
+      boolean bool = false;
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bhvh.k(6);
+    bhvy.a(b, Boolean.valueOf(false));
   }
 }
 

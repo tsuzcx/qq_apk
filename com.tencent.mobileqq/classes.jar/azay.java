@@ -1,22 +1,31 @@
 import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.23.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.21.2;
 
 public class azay
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements INetInfoHandler
 {
   public azay(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.23.1(this));
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.1(this));
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.21.2(this));
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

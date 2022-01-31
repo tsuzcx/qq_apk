@@ -1,70 +1,38 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import java.util.ArrayList;
 
-public class ajin
+public abstract interface ajin
 {
-  private double jdField_a_of_type_Double = 2147483647.0D;
-  private int jdField_a_of_type_Int;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
-  private int c;
-  private int d = -1;
+  public abstract String a();
   
-  private void b(double paramDouble)
-  {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    localApolloTextureView.getRender().mIsFrameMode = true;
-    localApolloTextureView.getRender().mDuration = paramDouble;
-    localApolloTextureView.getRenderImpl().a(0L);
-    String[] arrayOfString2 = ajkk.a(13, this.jdField_a_of_type_Int, this.b, true);
-    String[] arrayOfString1 = null;
-    if (this.c == 1) {
-      arrayOfString1 = ajkk.a(13, this.jdField_a_of_type_Int, this.b, false);
-    }
-    localApolloTextureView.getRenderImpl().a(this.jdField_a_of_type_Int, 0, arrayOfString2, arrayOfString1);
-  }
+  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Double = 2147483647.0D;
-  }
+  public abstract String a(ajik paramajik);
   
-  public void a(double paramDouble)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloVoiceDIYHelper", 2, "[renderFrame], curSec:" + paramDouble + ",lastDur:" + this.jdField_a_of_type_Double);
-    }
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    if (paramDouble <= this.jdField_a_of_type_Double) {
-      b(paramDouble);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Double = paramDouble;
-      return;
-      localApolloTextureView.queueEvent(new ApolloVoiceDIYHelper.1(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
-    }
-  }
+  public abstract String a(String paramString);
   
-  public void a(ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
-    if (paramInt1 != this.d) {
-      a();
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = this.jdField_a_of_type_Int;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
+  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
+  
+  public abstract String a(int[] paramArrayOfInt);
+  
+  public abstract void a(int paramInt, int[] paramArrayOfInt);
+  
+  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 

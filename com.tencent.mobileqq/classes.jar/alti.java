@@ -1,169 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.ark.ArkAppPreloader;
-import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.1;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.2;
 import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
+import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3.1;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
 
 public class alti
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private int jdField_a_of_type_Int;
-  private ArkAppPreloader.PreloadAppCallback jdField_a_of_type_ComTencentArkArkAppPreloader$PreloadAppCallback = new altk(this);
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentHashMap<String, altm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(8);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public alti(ArkAppPreDownloadMgr.3.1 param1) {}
   
-  public alti(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManagerV2.executeOnSubThread(new ArkAppPreDownloadMgr.1(this));
-  }
-  
-  private void a(altm paramaltm)
-  {
-    if (paramaltm == null)
-    {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, "profiling preDownloadApp failed for item null");
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new ArkAppPreDownloadMgr.3(this, paramaltm));
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, ArkAppPreloader.PreloadAppCallback paramPreloadAppCallback, int paramInt)
-  {
-    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-    String str3 = ArkEnvironmentManager.getInstance().getAppResPath(paramString1);
-    a(str3);
-    ArkAppPreloader.preloadApp(paramString1, paramString2, str2, str3, str1, paramPreloadAppCallback, paramInt);
-  }
-  
-  private void c()
-  {
-    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-    a(str1);
-    a(str2);
-    BaseApplicationImpl.sApplication.getApplicationContext();
-    ArkAppPreloader.preloadCommon(alta.a(), str2, str1);
-  }
-  
-  public void a()
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling startPredownload");
+      QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",retcode=", Integer.valueOf(paramInt), ",msg=", paramString });
     }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0) && (!this.jdField_a_of_type_Boolean))
+    paramString = (QQAppInterface)alth.a(this.a.a.this$0).get();
+    if (paramString != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 0;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      paramString = (ayxs)paramString.getManager(193);
+      if (paramString != null)
       {
-        altm localaltm = (altm)((Map.Entry)localIterator.next()).getValue();
-        if (!TextUtils.isEmpty(localaltm.a)) {
-          if (TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localaltm.a, "", null, false))) {
-            a(localaltm);
-          } else {
-            QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling ark app predowloaded,app=", localaltm.a });
-          }
+        if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.path == null)) {
+          break label211;
         }
+        long l = 0L;
+        paramAppPathInfo = new File(paramAppPathInfo.path);
+        if (paramAppPathInfo.exists()) {
+          l = paramAppPathInfo.length();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preDownloadApp app=", this.a.a.a.a, ",filesize=", Long.valueOf(l) });
+        }
+        paramString.a(this.a.a.a.a, l);
       }
     }
-  }
-  
-  public void a(amqq paramamqq)
-  {
-    if ((paramamqq != null) && (paramamqq.a() != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramamqq.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling updatePreloadConfig cfg is empty");
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-          if (bool) {}
-        }
-        else
-        {
-          return;
-        }
-        String str;
-        HashMap localHashMap;
-        try
-        {
-          SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_app_first_use", 0);
-          bool = localSharedPreferences.getBoolean(paramString, false);
-          if (bool) {
-            break label218;
-          }
-          str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-          localHashMap = new HashMap();
-          localHashMap.put("app_name", paramString);
-          if (!paramBoolean) {
-            break label193;
-          }
-          axrl.a(BaseApplicationImpl.getApplication()).a(str, "ark_app_predownload_first_hit", true, 0L, 0L, localHashMap, "", false);
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling reportPredownloadFirstHit app=", paramString, ",hasUsed=", Boolean.valueOf(bool), ",hasPreDownload=", Boolean.valueOf(paramBoolean) });
-          localSharedPreferences.edit().putBoolean(paramString, true).apply();
-        }
-        catch (Exception paramString)
-        {
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, "profiling reportPredownloadFirstHit exception=", paramString);
-        }
-        continue;
-        axrl.a(BaseApplicationImpl.getApplication()).a(str, "ark_app_predownload_first_hit", false, 0L, 0L, localHashMap, "", false);
-      }
-      finally {}
-      label193:
-      continue;
-      label218:
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling reportPredownloadFirstHit not first use app=", paramString });
-    }
-  }
-  
-  public void b()
-  {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling startPreload");
-    ArkAppCenter.a(new ArkAppPreDownloadMgr.2(this), 10000L);
+    return;
+    label211:
+    paramString.a(this.a.a.a.a, -1L);
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qjr;
-import qls;
-import qmi;
-import qrm;
+import qjo;
+import qlp;
+import qmf;
+import qrj;
 
 public class VideoFeedsAdapter$11
   implements Runnable
 {
-  public VideoFeedsAdapter$11(qls paramqls, boolean paramBoolean) {}
+  public VideoFeedsAdapter$11(qlp paramqlp, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((qls.a(this.this$0) != null) && (qls.a(this.this$0).a != null)) {
-      qls.a(this.this$0).a.g(this.a);
+    if ((qlp.a(this.this$0) != null) && (qlp.a(this.this$0).a != null)) {
+      qlp.a(this.this$0).a.g(this.a);
     }
     if (!this.a)
     {
-      qls.a(this.this$0).b();
+      qlp.a(this.this$0).b();
       this.this$0.g();
     }
-    while ((qls.a(this.this$0).d()) || (qls.a(this.this$0) == null)) {
+    while ((qlp.a(this.this$0).d()) || (qlp.a(this.this$0) == null)) {
       return;
     }
-    qls.a(this.this$0).b();
+    qlp.a(this.this$0).b();
   }
 }
 

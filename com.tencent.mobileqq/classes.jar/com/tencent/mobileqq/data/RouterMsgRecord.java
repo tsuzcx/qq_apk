@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
+import auko;
+import aulz;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
@@ -27,7 +27,7 @@ public class RouterMsgRecord
   public static final int status_transfer_pause = 5;
   public static final int status_transfer_suc = 3;
   public static final int status_transfering = 2;
-  @aulx
+  @aulz
   public long entityID;
   public long fileSize;
   public String filename;
@@ -68,7 +68,7 @@ public class RouterMsgRecord
     return null;
   }
   
-  public Class<? extends aukm> getClassForTable()
+  public Class<? extends auko> getClassForTable()
   {
     return RouterMsgRecord.class;
   }

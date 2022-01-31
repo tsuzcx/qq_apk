@@ -1,108 +1,23 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenCardContainer;
+import java.util.List;
 
 class bdcu
-  extends WtloginObserver
+  implements View.OnClickListener
 {
-  bdcu(bdcs parambdcs) {}
+  bdcu(bdct parambdct, int paramInt) {}
   
-  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrAgentLoginManager", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    paramArrayOfByte1 = BaseActivity.sTopActivity;
-    if (paramInt == 0)
-    {
-      if (bdem.a(paramArrayOfByte1)) {
-        paramArrayOfByte1.finish();
-      }
-      QIPCClientHelper.getInstance().callServer("QR_LOGIN_QIPC_MODULE_NAME", "QIPC_SHOW_TOAST_ACTION", null, null);
-    }
-    while (!bdem.a(paramArrayOfByte1)) {
+    if ((bdct.a(this.jdField_a_of_type_Bdct) == null) || (this.jdField_a_of_type_Int >= bdct.a(this.jdField_a_of_type_Bdct).size()) || (this.jdField_a_of_type_Int < 0)) {
       return;
     }
-    paramWUserSigInfo = new Intent(paramArrayOfByte1, QRLoginAuthActivity.class);
-    paramWUserSigInfo.putExtra("QR_CODE_STRING", BaseApplicationImpl.context.getSharedPreferences("SP_QR_AGENT_LOGIN", 4).getString("KEY_QR_AGENT_LOGIN_CODE" + paramString, ""));
-    paramWUserSigInfo.putExtra("KEY_QR_CODE_EXPIRED", true);
-    paramArrayOfByte1.startActivity(paramWUserSigInfo);
-    paramArrayOfByte1.finish();
-  }
-  
-  public void OnException(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrAgentLoginManager", 2, "OnException e=" + paramString);
+    if ((this.jdField_a_of_type_Bdct.a.a != null) && (bdct.a(this.jdField_a_of_type_Bdct).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bdct.a) != null)) {
+      OpenCardContainer.a(this.jdField_a_of_type_Bdct.a).a(((bdcw)bdct.a(this.jdField_a_of_type_Bdct).get(this.jdField_a_of_type_Int)).a);
     }
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrAgentLoginManager", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt + " appName: " + paramArrayOfByte1);
-    }
-    if (paramInt != 0) {
-      bdcs.a(this.a, paramArrayOfByte2);
-    }
-    while ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return;
-    }
-    paramInt = 0;
-    while (paramInt < paramArrayList.size()) {
-      try
-      {
-        paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
-        int i = util.buf_to_int16(paramString, 0);
-        int j = util.buf_to_int16(paramString, 2);
-        if (i == 54)
-        {
-          paramArrayOfByte1 = new byte[j];
-          System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
-          paramString = new String(paramArrayOfByte1);
-          if (QLog.isColorLevel()) {
-            QLog.i("QrAgentLoginManager", 2, "OnVerifyCode: invoked.  appidJson: " + paramString);
-          }
-          paramString = new JSONObject(paramString);
-          paramLong = paramString.optLong("open_appid");
-          paramArrayOfByte1 = paramString.optString("comefrom");
-          paramString = paramArrayOfByte1;
-          if ("app".equals(paramArrayOfByte1)) {
-            paramString = "android";
-          }
-          this.a.a(paramLong, paramString);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QrAgentLoginManager", 2, "OnVerifyCode: failed. ", paramString);
-        }
-        paramInt += 1;
-      }
-    }
-    paramString = BaseActivity.sTopActivity;
-    paramArrayOfByte1 = new Intent(paramString, QRLoginAuthActivity.class);
-    paramArrayOfByte1.putExtra("QR_CODE_STRING", bdcs.a(this.a));
-    if (paramString.getIntent().getBooleanExtra("QRDecode", false) == true)
-    {
-      paramString.startActivityForResult(paramArrayOfByte1, 2);
-      return;
-    }
-    paramString.startActivity(paramArrayOfByte1);
+    bdct.a(this.jdField_a_of_type_Bdct).remove(bdct.a(this.jdField_a_of_type_Bdct).get(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Bdct.notifyDataSetChanged();
   }
 }
 

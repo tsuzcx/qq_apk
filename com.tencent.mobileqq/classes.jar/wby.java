@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class wby
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  wby(wbu paramwbu) {}
+  wby(wbw paramwbw, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    vel.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
+        this.jdField_a_of_type_Wbw.dismiss();
+      }
+      return;
+    }
+    this.jdField_a_of_type_Wbw.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

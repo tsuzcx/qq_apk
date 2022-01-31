@@ -1,17 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
+import android.os.Handler;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.25.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class azbc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
   public azbc(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.1(this));
+      continue;
+      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.25.2(this));
+    }
   }
 }
 

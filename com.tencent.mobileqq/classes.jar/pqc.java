@@ -1,71 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
-import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.ui.PTSNodeInfo;
-import com.tencent.pts.ui.PTSNodeStyle;
-import com.tencent.pts.ui.vnode.PTSNodeVirtual;
-import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class pqc
-  extends PTSNodeVirtual<PTSImageView>
 {
-  public final String a = "PTSNodeImage";
-  
-  private pqc(PTSAppInstance paramPTSAppInstance)
+  public static void a()
   {
-    super(paramPTSAppInstance);
+    pqg.a.a();
   }
   
-  private String a(String paramString)
+  private static void a(Context paramContext)
   {
-    int i = getNodeInfo().getStyle().getWidth();
-    int j = getNodeInfo().getStyle().getHeight();
-    String str = paramString;
-    if (i > 0)
+    Intent localIntent = new Intent();
+    String str = pph.a().a("3978");
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", "daily_feeds");
+    ppj.a().getClass();
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppPath", str);
+    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
+    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (!pqg.a.b()) {}
+    do
     {
-      str = paramString;
-      if (j > 0) {
-        str = onk.a(paramString, i, j);
+      return false;
+      int i = oou.b();
+      if (!oou.a(i))
+      {
+        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
+        return false;
       }
-    }
-    return str;
-  }
-  
-  private void a(String paramString)
-  {
-    PTSTimeCostUtil.start("image-" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("pubaccount"))))
-    {
-      String str = a(paramString);
-      PTSLog.i("PTSNodeImage", "[setImageSrc], cropUrl = " + str);
-      ((PTSImageView)getView()).setImageSrc(str);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PTSNodeImage", 2, "[setImageSrc], path = " + paramString);
-    }
-    PTSTimeCostUtil.end("image-" + paramString);
-  }
-  
-  public PTSImageView a()
-  {
-    return new PTSImageView(this);
-  }
-  
-  public void resetAll() {}
-  
-  public boolean setAttribute(String paramString, Object paramObject)
-  {
-    if (super.setAttribute(paramString, paramObject)) {
-      return true;
-    }
-    if (("src".equals(paramString)) && ((paramObject instanceof String)))
-    {
-      a((String)paramObject);
-      return true;
-    }
-    return false;
+    } while ((!ppj.a().a()) || (!pph.a().a("daily_feeds")));
+    a(paramContext);
+    return true;
   }
 }
 

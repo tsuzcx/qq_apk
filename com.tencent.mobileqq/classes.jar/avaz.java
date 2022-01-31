@@ -1,40 +1,99 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.SystemClock;
+import android.view.animation.AccelerateInterpolator;
 
-class avaz
-  implements Animation.AnimationListener
+public class avaz
+  extends BitmapDrawable
 {
-  avaz(avay paramavay) {}
+  private static int d;
+  private static int e;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
+  private float jdField_b_of_type_Float = 0.5F;
+  private int jdField_b_of_type_Int = 50;
+  private int c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public avaz(Resources paramResources, Bitmap paramBitmap)
   {
-    if (!avay.a(this.a)) {
-      for (;;)
-      {
-        int j = (int)(avay.a(this.a) * (Math.random() * 2.0D - 1.0D));
-        int i = (int)Math.sqrt(avay.a(this.a) * avay.a(this.a) - j * j);
-        if (Math.random() > 0.5D) {}
-        while ((avay.b(this.a) + j) * (avay.b(this.a) + j) + (avay.c(this.a) + i) * (avay.c(this.a) + i) <= avay.d(this.a) * avay.d(this.a))
-        {
-          avay.a(this.a, new TranslateAnimation(avay.b(this.a), avay.b(this.a) + j, avay.c(this.a), avay.c(this.a) + i));
-          avay.a(this.a, j + avay.b(this.a));
-          avay.b(this.a, i + avay.c(this.a));
-          avay.a(this.a).setAnimationListener(avay.a(this.a));
-          avay.a(this.a).setDuration(avay.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
-          avay.a(this.a).startAnimation(avay.a(this.a));
-          return;
-          i = -i;
-        }
-      }
-    }
-    avay.a(this.a, false);
+    super(paramResources, paramBitmap);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static avaz[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (paramResources != null))
+    {
+      avaz[] arrayOfavaz2 = new avaz[paramInt];
+      e = paramBitmap.getWidth() / 2;
+      d = paramBitmap.getHeight() / 2;
+      int i = 0;
+      for (;;)
+      {
+        arrayOfavaz1 = arrayOfavaz2;
+        if (i >= paramInt) {
+          break;
+        }
+        arrayOfavaz2[i] = new avaz(paramResources, paramBitmap);
+        i += 1;
+      }
+    }
+    avaz[] arrayOfavaz1 = null;
+    return arrayOfavaz1;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Float = ((float)paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = 1;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    int j = 1;
+    int i = j;
+    switch (this.c)
+    {
+    default: 
+      i = j;
+    }
+    float f2;
+    for (;;)
+    {
+      if (i == 0) {
+        invalidateSelf();
+      }
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.c = 2;
+      i = 0;
+      continue;
+      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+      if (f2 <= 1.0F) {
+        break;
+      }
+      this.c = 3;
+      i = j;
+    }
+    paramCanvas.save();
+    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
+    if (f3 > 0.5F) {}
+    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
+    {
+      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
+      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, e, d);
+      setAlpha((int)(255.0F - f2 * 255.0F));
+      super.draw(paramCanvas);
+      paramCanvas.restore();
+      i = 0;
+      break;
+    }
+  }
 }
 
 

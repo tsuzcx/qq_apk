@@ -1,25 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
 import java.util.List;
 
 class apsa
-  implements DialogInterface.OnClickListener
+  implements aptw
 {
-  apsa(apry paramapry, List paramList, aprx paramaprx) {}
+  apsa(aprw paramaprw, List paramList, aouu paramaouu, apsb paramapsb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
+    aptx.d(aprw.a(this.jdField_a_of_type_Aprw).getString(2131692830));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      apry.a(this.jdField_a_of_type_Apry, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Aprx != null) {
-        this.jdField_a_of_type_Aprx.a(1, 0);
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bbdx.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Aouu.a(localFileManagerEntity.getFilePath(), "", aprw.a(this.jdField_a_of_type_Aprw).getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Aouu.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
       }
     }
-    while (this.jdField_a_of_type_Aprx == null) {
-      return;
+    if (this.jdField_a_of_type_Apsb != null) {
+      this.jdField_a_of_type_Apsb.a(4, 0);
     }
-    this.jdField_a_of_type_Aprx.a(1, 1);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Apsb != null) {
+      this.jdField_a_of_type_Apsb.a(4, 1);
+    }
   }
 }
 

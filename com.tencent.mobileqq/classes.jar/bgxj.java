@@ -1,29 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.WifiInfo;
-
-public final class bgxj
-  implements Parcelable.Creator<LbsDataV2.WifiInfo>
+public class bgxj
 {
-  public LbsDataV2.WifiInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
-    if (paramParcel != null)
-    {
-      localWifiInfo.mac = paramParcel.readString();
-      localWifiInfo.rssi = paramParcel.readInt();
-    }
-    return localWifiInfo;
-  }
+  public String biz_params;
+  public String bus_type;
+  public String people_num;
+  public String pick_entry;
+  public String recv_type;
   
-  public LbsDataV2.WifiInfo[] a(int paramInt)
+  public String toString()
   {
-    return null;
+    return new StringBuilder().append("people_num: ").append(this.people_num).toString() + new StringBuilder().append("recv_type: ").append(this.recv_type).toString() + new StringBuilder().append("bus_type: ").append(this.bus_type).toString() + new StringBuilder().append("pick_entry: ").append(this.pick_entry).toString() + new StringBuilder().append("biz_params: ").append(this.biz_params).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxj
  * JD-Core Version:    0.7.0.1
  */

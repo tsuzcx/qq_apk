@@ -1,21 +1,43 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class auxt
-  implements View.OnClickListener
+public final class auxt
+  implements anyg
 {
-  public auxt(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public auxt(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void a(anyh paramanyh)
   {
-    this.a.a(0);
-    this.a.b(false);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130848808);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690313));
+    if (paramanyh != null) {}
+    try
+    {
+      paramanyh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
+    }
+    catch (Throwable paramanyh) {}
   }
+  
+  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
+  
+  public boolean a(anyh paramanyh)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    aylc.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(anyh paramanyh) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

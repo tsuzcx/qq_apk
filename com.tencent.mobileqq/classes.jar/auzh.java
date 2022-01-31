@@ -1,29 +1,62 @@
-import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class auzh
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public auzh(ProfileHeaderView paramProfileHeaderView, String paramString, int paramInt, View paramView) {}
+  public auzh(ProfileHeaderView paramProfileHeaderView) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((awfy.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
-    {
-      paramView = new Bundle();
-      paramView.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
-      paramView.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
-      paramView.putInt("from_type", 2);
-      if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, paramView, -1);
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      auvq.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      axqw.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+    if (QLog.isDevelopLevel()) {
+      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
     }
+    if (ProfileHeaderView.jdField_b_of_type_Int == paramMessage.what)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.jdField_a_of_type_Int);
+      }
+      if ((this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        this.a.k(this.a.jdField_a_of_type_Auuy);
+      }
+    }
+    do
+    {
+      do
+      {
+        return true;
+      } while (ProfileHeaderView.c != paramMessage.what);
+      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
+    } while (!(localObject instanceof ImageView));
+    Object localObject = (ImageView)localObject;
+    paramMessage = (ExtensionInfo)paramMessage.obj;
+    if ((paramMessage != null) && (paramMessage.isPendantValid()))
+    {
+      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      ((ImageView)localObject).setVisibility(0);
+      if (bbcm.a(this.a.jdField_a_of_type_Long))
+      {
+        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+        return true;
+      }
+      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+      return true;
+    }
+    ((ImageView)localObject).setVisibility(4);
+    this.a.jdField_a_of_type_Long = 0L;
+    return true;
   }
 }
 

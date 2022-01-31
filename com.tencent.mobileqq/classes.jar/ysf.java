@@ -1,80 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Adapter;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.content.Context;
+import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
 
-public final class ysf
-  implements AdIPCManager.Adapter
+public class ysf
+  implements AdProgressDialogAdapter
 {
-  public AdIPCManager.Result receive(String paramString, AdIPCManager.Params paramParams)
+  private bcqf a;
+  
+  public void dismiss()
   {
-    boolean bool = false;
-    AdIPCManager.Result localResult2 = new AdIPCManager.Result();
-    AdIPCManager.Result localResult1;
-    if (TextUtils.isEmpty(paramString)) {
-      localResult1 = localResult2;
-    }
-    for (;;)
-    {
-      if (localResult1 != null) {
-        bool = localResult1.success;
-      }
-      yxs.b("GdtIPCAdapter", String.format("receive action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return localResult1;
-      Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-      localResult1 = localResult2;
-      if (localBoolean != null)
-      {
-        localResult1 = localResult2;
-        if (localBoolean.booleanValue())
-        {
-          localResult1 = localResult2;
-          if (QIPCClientHelper.getInstance() != null)
-          {
-            localResult1 = localResult2;
-            if (QIPCClientHelper.getInstance().getClient() != null) {
-              localResult1 = AdIPCManager.INSTANCE.receive(paramString, paramParams);
-            }
-          }
-        }
-      }
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
   }
   
-  public AdIPCManager.Result send(String paramString, AdIPCManager.Params paramParams)
+  public void show(Context paramContext, int paramInt)
   {
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    if (TextUtils.isEmpty(paramString)) {
-      if (localResult == null) {
-        break label148;
-      }
+    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
+      this.a = new bcqf(paramContext, paramInt);
     }
-    label148:
-    for (boolean bool = localResult.success;; bool = false)
-    {
-      yxs.b("GdtIPCAdapter", String.format("send action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return localResult;
-      Object localObject = AdProcessManager.INSTANCE.isOnMainProcess();
-      if ((localObject == null) || (((Boolean)localObject).booleanValue()) || (QIPCClientHelper.getInstance() == null) || (QIPCClientHelper.getInstance().getClient() == null)) {
-        break;
-      }
-      localObject = QIPCClientHelper.getInstance().getClient();
-      if (paramParams != null) {}
-      for (paramParams = paramParams.bundle;; paramParams = null)
-      {
-        paramParams = ((EIPCClient)localObject).callServer("gdt_ipc", paramString, paramParams);
-        if (paramParams == null) {
-          break;
-        }
-        localResult.success = paramParams.isSuccess();
-        localResult.bundle = paramParams.data;
-        break;
-      }
+    if (this.a != null) {
+      this.a.show();
     }
   }
 }

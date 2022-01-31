@@ -1,37 +1,23 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xny
-  implements SensorEventListener
+class xny
+  implements View.OnClickListener
 {
-  private WeakReference<ScannerView> a;
+  xny(xnw paramxnw, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public xny(ScannerView paramScannerView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramScannerView);
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    ScannerView localScannerView = (ScannerView)this.a.get();
-    if (localScannerView != null) {
-      localScannerView.a(paramSensorEvent);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnw, 1);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
+    this.jdField_a_of_type_Xnw.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xny
  * JD-Core Version:    0.7.0.1
  */

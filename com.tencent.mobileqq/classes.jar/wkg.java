@@ -1,25 +1,8 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
-
-public class wkg
-  implements wkj
+public abstract interface wkg
 {
-  public wkg(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
-      PopViewAnimationDrawableHelper.a(this.a).b();
-    }
-    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
-      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
-    }
-  }
-  
-  public void b()
-  {
-    PopViewAnimationDrawableHelper.a(this.a);
-  }
+  public abstract void b();
 }
 
 

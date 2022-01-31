@@ -1,8 +1,10 @@
-public abstract interface admi
+import com.tencent.mobileqq.ark.ArkHorizontalListView;
+
+public class admi
+  extends aece
 {
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
+  public ArkHorizontalListView a;
+  public String b;
 }
 
 

@@ -1,23 +1,25 @@
 import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
 import com.tencent.widget.ListView;
+import java.util.List;
 
 public class awlt
-  extends awkd<awog, awwp>
+  extends awls<awlw, awyh>
 {
-  public awlt(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, baxk parambaxk)
+  public awlt(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, baxy parambaxy, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    super(paramListView, parambaxk);
+    super(paramListView, parambaxy, paramList, paramString, paramFTSEntitySearchDetailActivity);
   }
   
-  protected awrb<awog, awwp> a(int paramInt)
+  protected awrd a(int paramInt)
   {
-    return new awqy(FTSEntitySearchFragment.a(this.a));
+    return new awra(FTSEntitySearchDetailFragment.a(this.a));
   }
   
-  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new awwl(paramViewGroup, 2131562387);
+    return new awwn(paramViewGroup, 2131562384);
   }
 }
 

@@ -1,55 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class acfd
-  extends bbwf
+  implements TextView.OnEditorActionListener
 {
-  public acfd(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public acfd(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onCancel(bbwg parambbwg)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwg);
-    }
-    super.onCancel(parambbwg);
-  }
-  
-  public void onDone(bbwg parambbwg)
-  {
-    super.onDone(parambbwg);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwg);
-    }
-    if (parambbwg.b()) {}
-    do
+    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
     {
-      return;
-      if (parambbwg.a() == -1)
-      {
-        parambbwg = new Message();
-        parambbwg.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambbwg);
-        return;
-      }
-      parambbwg = this.a.jdField_a_of_type_Ho.a(this.a.e);
-    } while (parambbwg == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambbwg;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwg);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
+      TextPreviewTranslateActivity.a(this.a);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
+      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      return true;
     }
-    return super.onStart(parambbwg);
+    return false;
   }
 }
 

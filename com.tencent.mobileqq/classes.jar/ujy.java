@@ -1,16 +1,26 @@
+import android.os.Bundle;
 import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ujy
-  extends ssy
+  extends mxj
 {
-  ujy(ujx paramujx) {}
+  ujy(uju paramuju, boolean paramBoolean) {}
   
-  public void c(boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ssw localssw = (ssw)this.a.a.app.getManager(181);
-    this.a.a(2, localssw.a());
-    this.a.a(3, localssw.b());
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(5, bool);
+        this.a.a(0, this.a.a.getString(2131720544));
+        return;
+      }
+    }
+    ((sst)this.a.a.app.getManager(181)).c(this.b);
   }
 }
 

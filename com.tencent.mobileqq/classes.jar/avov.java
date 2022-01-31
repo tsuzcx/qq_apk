@@ -1,56 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class avov
-  extends Handler
+  implements ViewPager.OnPageChangeListener
 {
-  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
+  public avov(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  private avov(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
-  {
-    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
-    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
-    do
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
     {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
       return;
-      switch (paramMessage.what)
-      {
-      case 0: 
-      default: 
-        return;
-      case -1: 
-        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
-        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      case 1: 
-        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
-        return;
-      }
-    } while (this.a.get() == null);
-    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
-      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
     }
-    for (;;)
-    {
-      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
-      return;
-      sendEmptyMessage(5);
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
-    return;
-    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
   }
 }
 

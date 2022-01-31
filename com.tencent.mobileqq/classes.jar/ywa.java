@@ -1,25 +1,13 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.app.Activity;
+import android.content.Intent;
 
-class ywa
-  implements TVK_SDKMgr.InstallListener
+public abstract interface ywa
 {
-  ywa(yvv paramyvv) {}
+  public abstract Activity a();
   
-  public void onInstallProgress(float paramFloat)
-  {
-    yxs.a("GdtMvViewController", "installSDK onInstallProgress arg0=" + paramFloat);
-  }
+  public abstract void a();
   
-  public void onInstalledFailed(int paramInt)
-  {
-    yxs.a("GdtMvViewController", "installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    yxs.a("GdtMvViewController", "installSDK onInstalledSuccessed");
-    yvv.a(this.a).sendEmptyMessage(3);
-  }
+  public abstract void a(int paramInt, Intent paramIntent);
 }
 
 

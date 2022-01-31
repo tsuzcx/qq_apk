@@ -20,8 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Switch;
 import android.widget.TextView;
-import besl;
-import bfgx;
+import betc;
+import bfho;
 import com.tencent.mobileqq.R.styleable;
 
 public class FormSwitchItem
@@ -35,10 +35,10 @@ public class FormSwitchItem
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   protected boolean a;
-  int jdField_b_of_type_Int = bfgx.a(16.0F);
+  int jdField_b_of_type_Int = bfho.a(16.0F);
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private boolean jdField_b_of_type_Boolean;
-  int c = bfgx.a(0.5F);
+  int c = bfho.a(0.5F);
   private int d;
   private int e;
   private int f;
@@ -80,7 +80,7 @@ public class FormSwitchItem
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    return paramResources.getDrawable(2130849239);
+    return paramResources.getDrawable(2130849248);
   }
   
   private void a()
@@ -166,8 +166,8 @@ public class FormSwitchItem
       }
       catch (Exception localException)
       {
-        if (besl.a()) {
-          besl.a("FormSwitchItem", localException.toString());
+        if (betc.a()) {
+          betc.a("FormSwitchItem", localException.toString());
         }
         setMinimumHeight(this.e);
         super.onMeasure(paramInt1, paramInt2);

@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
-import aetm;
-import akdi;
+import aert;
+import aetk;
+import akdh;
 import android.os.Handler;
 import android.text.TextUtils;
-import axqw;
+import axqy;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import nnx;
-import noo;
+import nnu;
+import nol;
 
 public class PublicAccountChatPie$7
   implements Runnable
 {
-  public PublicAccountChatPie$7(aerv paramaerv) {}
+  public PublicAccountChatPie$7(aert paramaert) {}
   
   public void run()
   {
     Object localObject = null;
-    akdi localakdi = (akdi)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-    if (localakdi != null) {
-      localObject = localakdi.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    akdh localakdh = (akdh)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+    if (localakdh != null) {
+      localObject = localakdh.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     }
     boolean bool;
     if (localObject == null)
     {
       bool = this.this$0.E();
       this.this$0.D();
-      if ((bool) && (TextUtils.isEmpty(this.this$0.g)) && (localakdi != null))
+      if ((bool) && (TextUtils.isEmpty(this.this$0.g)) && (localakdh != null))
       {
-        localObject = localakdi.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        localObject = localakdh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
         if ((localObject != null) && (!TextUtils.isEmpty(((AccountDetail)localObject).summary))) {
           this.this$0.g = ((AccountDetail)localObject).summary;
         }
@@ -41,9 +41,9 @@ public class PublicAccountChatPie$7
     }
     for (;;)
     {
-      if ((bool) || (aerv.c(this.this$0)))
+      if ((bool) || (aert.c(this.this$0)))
       {
-        noo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004EFB", "0X8004EFB", 0, 0, "", "", "", "", false);
+        nol.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004EFB", "0X8004EFB", 0, 0, "", "", "", "", false);
         this.this$0.U = true;
         this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
       }
@@ -57,10 +57,10 @@ public class PublicAccountChatPie$7
         if (QLog.isColorLevel()) {
           QLog.d("struct_log_tag", 2, "PublicAccountChatPie :CliOper|" + this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + "|0X8005619|0X8005619" + 0 + "|" + 0 + "|" + Long.toString(l) + "|" + (String)localObject);
         }
-        axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8005619", "0X8005619", 0, 0, Long.toString(l), (String)localObject, "", "");
+        axqy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8005619", "0X8005619", 0, 0, Long.toString(l), (String)localObject, "", "");
         return;
-        if (!aerv.d(this.this$0)) {
-          this.this$0.jdField_a_of_type_Nnx.a(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, new aetm(this));
+        if (!aert.d(this.this$0)) {
+          this.this$0.jdField_a_of_type_Nnu.a(this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, new aetk(this));
         }
       }
       bool = false;

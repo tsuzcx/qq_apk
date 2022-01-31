@@ -1,63 +1,24 @@
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.widget.DynamicGridView;
 
 public class bfqy
+  extends AnimatorListenerAdapter
 {
-  private static ArrayList<bfqy> a;
-  public int a;
-  public bfqz a;
-  public ExpandableListConnector.GroupMetadata a;
+  public bfqy(DynamicGridView paramDynamicGridView, View paramView) {}
   
-  static
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
   }
   
-  private static bfqy a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localbfqy = (bfqy)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localbfqy.b();
-        return localbfqy;
-      }
-      bfqy localbfqy = new bfqy();
-      return localbfqy;
-    }
-  }
-  
-  public static bfqy a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
-  {
-    bfqy localbfqy = a();
-    localbfqy.jdField_a_of_type_Bfqz = bfqz.a(paramInt2, paramInt3, paramInt4, paramInt1);
-    localbfqy.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
-    localbfqy.jdField_a_of_type_Int = paramInt5;
-    return localbfqy;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Bfqz = null;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
-      }
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
 }
 

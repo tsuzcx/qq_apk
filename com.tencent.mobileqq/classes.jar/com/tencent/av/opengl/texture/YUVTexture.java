@@ -9,18 +9,18 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
-import lpd;
-import lqt;
-import lqw;
-import lru;
-import lrw;
-import lsd;
-import lse;
-import lsv;
-import msq;
+import loy;
+import lqo;
+import lqr;
+import lrp;
+import lrr;
+import lry;
+import lrz;
+import lsq;
+import msn;
 
 public abstract class YUVTexture
-  extends lrw
+  extends lrr
 {
   public static float[] a;
   static boolean jdField_b_of_type_Boolean;
@@ -28,9 +28,9 @@ public abstract class YUVTexture
   private long jdField_a_of_type_Long;
   protected Context a;
   private final String jdField_a_of_type_JavaLangString;
-  private lpd jdField_a_of_type_Lpd;
-  private lsd jdField_a_of_type_Lsd;
-  private lse jdField_a_of_type_Lse;
+  private loy jdField_a_of_type_Loy;
+  private lry jdField_a_of_type_Lry;
+  private lrz jdField_a_of_type_Lrz;
   boolean jdField_a_of_type_Boolean = false;
   public float b;
   private long jdField_b_of_type_Long;
@@ -59,7 +59,7 @@ public abstract class YUVTexture
     this.jdField_b_of_type_Float = 1.93F;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_c_of_type_Boolean = msq.g();
+    this.jdField_c_of_type_Boolean = msn.g();
     QLog.d("YUVTexture", 1, "ray debug,YUVTexture, initial from config,upLoadWhenGetNewData = " + this.jdField_c_of_type_Boolean);
     if (AudioHelper.a(22) == 1) {
       this.jdField_c_of_type_Boolean = true;
@@ -75,12 +75,12 @@ public abstract class YUVTexture
         jdField_b_of_type_Boolean = true;
         Looper localLooper1 = Looper.myLooper();
         if (localLooper1 != null) {
-          this.jdField_a_of_type_Lsd = new lsd(this, localLooper1);
+          this.jdField_a_of_type_Lry = new lry(this, localLooper1);
         }
         try
         {
           if (jdField_b_of_type_Boolean) {
-            Init(lsv.a(paramContext), new WeakReference(this), paramLong);
+            Init(lsq.a(paramContext), new WeakReference(this), paramLong);
           }
           return;
         }
@@ -112,9 +112,9 @@ public abstract class YUVTexture
           continue;
           localLooper2 = Looper.getMainLooper();
           if (localLooper2 != null) {
-            this.jdField_a_of_type_Lsd = new lsd(this, localLooper2);
+            this.jdField_a_of_type_Lry = new lry(this, localLooper2);
           } else {
-            this.jdField_a_of_type_Lsd = null;
+            this.jdField_a_of_type_Lry = null;
           }
         }
       }
@@ -285,25 +285,25 @@ public abstract class YUVTexture
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_Lsd != null)
+    if (this.jdField_a_of_type_Lry != null)
     {
-      paramObject = this.jdField_a_of_type_Lsd.obtainMessage(paramInt1, 0, 0, paramObject);
+      paramObject = this.jdField_a_of_type_Lry.obtainMessage(paramInt1, 0, 0, paramObject);
       if (paramInt2 == 0) {
-        this.jdField_a_of_type_Lsd.sendMessage(paramObject);
+        this.jdField_a_of_type_Lry.sendMessage(paramObject);
       }
     }
     while (!QLog.isColorLevel())
     {
       return;
-      this.jdField_a_of_type_Lsd.sendMessageDelayed(paramObject, paramInt2);
+      this.jdField_a_of_type_Lry.sendMessageDelayed(paramObject, paramInt2);
       return;
     }
     QLog.e(this.jdField_a_of_type_JavaLangString, 2, "notifyUpdateUI|mEventHandler == null");
   }
   
-  public void a(lse paramlse)
+  public void a(lrz paramlrz)
   {
-    this.jdField_a_of_type_Lse = paramlse;
+    this.jdField_a_of_type_Lrz = paramlrz;
   }
   
   public void a(boolean paramBoolean)
@@ -314,7 +314,7 @@ public abstract class YUVTexture
     this.jdField_e_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a(lqt paramlqt)
+  public boolean a(lqo paramlqo)
   {
     if (AudioHelper.jdField_b_of_type_Boolean) {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -328,7 +328,7 @@ public abstract class YUVTexture
       i = 0;
       while (i < this.jdField_a_of_type_ArrayOfInt.length)
       {
-        this.jdField_a_of_type_ArrayOfInt[i] = paramlqt.a().a();
+        this.jdField_a_of_type_ArrayOfInt[i] = paramlqo.a().a();
         i += 1;
       }
     }
@@ -363,7 +363,7 @@ public abstract class YUVTexture
             this.jdField_b_of_type_Int = 1;
             if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
             {
-              this.m = paramlqt.a().a();
+              this.m = paramlqo.a().a();
               this.m = a(2130839732, this.m);
             }
             if (this.k == -1) {
@@ -390,10 +390,10 @@ public abstract class YUVTexture
     return getFrameTexture();
   }
   
-  public lru[] a(lqt paramlqt)
+  public lrp[] a(lqo paramlqo)
   {
     TextureProgram localTextureProgram = a();
-    paramlqt = super.a(paramlqt);
+    paramlqo = super.a(paramlqo);
     try
     {
       GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, getImgWidth());
@@ -404,18 +404,18 @@ public abstract class YUVTexture
         GLES20.glEnable(3042);
         GLES20.glBlendFunc(770, 771);
         GLES20.glActiveTexture(33987);
-        lsv.a();
+        lsq.a();
         GLES20.glBindTexture(g(), this.m);
-        lsv.a();
+        lsq.a();
         GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, 3);
-        lsv.a();
+        lsq.a();
         GLES20.glUniform1i(localTextureProgram.a()[12].jdField_a_of_type_Int, 1);
-        lsv.a();
+        lsq.a();
       }
-      return paramlqt;
+      return paramlqo;
     }
     catch (Exception localException) {}
-    return paramlqt;
+    return paramlqo;
   }
   
   public native boolean addYUVFrame(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9);
@@ -441,11 +441,11 @@ public abstract class YUVTexture
   
   public void e()
   {
-    if (this.jdField_a_of_type_Lse != null)
+    if (this.jdField_a_of_type_Lrz != null)
     {
       byte[] arrayOfByte = getFaceFeature();
       if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
-        this.jdField_a_of_type_Lse.a(arrayOfByte);
+        this.jdField_a_of_type_Lrz.a(arrayOfByte);
       }
     }
   }

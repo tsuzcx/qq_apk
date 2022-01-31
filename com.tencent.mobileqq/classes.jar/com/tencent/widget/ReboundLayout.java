@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bfuv;
+import bfvm;
 
 public class ReboundLayout
   extends LinearLayout
@@ -137,7 +137,7 @@ public class ReboundLayout
   
   public void onStopNestedScroll(View paramView)
   {
-    startAnimation(new bfuv(this, null));
+    startAnimation(new bfvm(this, null));
   }
   
   public void scrollTo(int paramInt1, int paramInt2)

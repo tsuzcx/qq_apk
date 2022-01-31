@@ -1,6 +1,6 @@
-public abstract class anwi
+public abstract interface anwi
 {
-  public void a(int paramInt) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alzl;
+import alzk;
 import com.tencent.common.app.AppInterface;
 
 public final class DynamicUtils$1
@@ -10,7 +10,7 @@ public final class DynamicUtils$1
   
   public void run()
   {
-    alzl.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    alzk.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,34 +1,18 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.CirclePageIndicator.SavedState;
 
-class bfqo
-  implements ViewTreeObserver.OnPreDrawListener
+public final class bfqo
+  implements Parcelable.Creator<CirclePageIndicator.SavedState>
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
-  
-  bfqo(bfqn parambfqn, int paramInt1, int paramInt2)
+  public CirclePageIndicator.SavedState a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return new CirclePageIndicator.SavedState(paramParcel, null);
   }
   
-  public boolean onPreDraw()
+  public CirclePageIndicator.SavedState[] a(int paramInt)
   {
-    this.jdField_a_of_type_Bfqn.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Bfqn.a, DynamicGridView.a(this.jdField_a_of_type_Bfqn.a) + bfqn.a(this.jdField_a_of_type_Bfqn));
-    DynamicGridView.b(this.jdField_a_of_type_Bfqn.a, DynamicGridView.b(this.jdField_a_of_type_Bfqn.a) + bfqn.b(this.jdField_a_of_type_Bfqn));
-    if (DynamicGridView.a(this.jdField_a_of_type_Bfqn.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Bfqn.a).setVisibility(0);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bfqn.a, this.jdField_a_of_type_Bfqn.a.a(DynamicGridView.a(this.jdField_a_of_type_Bfqn.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Bfqn.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Bfqn.a).setVisibility(4);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bfqn.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+    return new CirclePageIndicator.SavedState[paramInt];
   }
 }
 

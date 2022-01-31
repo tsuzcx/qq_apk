@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aivb;
+import aiuz;
 
 class SpriteUIHandler$SpriteVisibleRunnable$1
   implements Runnable
 {
-  SpriteUIHandler$SpriteVisibleRunnable$1(SpriteUIHandler.SpriteVisibleRunnable paramSpriteVisibleRunnable, aivb paramaivb) {}
+  SpriteUIHandler$SpriteVisibleRunnable$1(SpriteUIHandler.SpriteVisibleRunnable paramSpriteVisibleRunnable, aiuz paramaiuz) {}
   
   public void run()
   {

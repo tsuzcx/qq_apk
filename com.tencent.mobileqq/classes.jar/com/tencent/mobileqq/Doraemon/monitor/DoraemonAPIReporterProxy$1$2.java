@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
+import aadx;
 import aaeb;
-import aaef;
 import java.util.HashMap;
 
 public class DoraemonAPIReporterProxy$1$2
   implements Runnable
 {
-  public DoraemonAPIReporterProxy$1$2(aaef paramaaef, aaeb paramaaeb, String paramString, HashMap paramHashMap) {}
+  public DoraemonAPIReporterProxy$1$2(aaeb paramaaeb, aadx paramaadx, String paramString, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aaeb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Aadx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

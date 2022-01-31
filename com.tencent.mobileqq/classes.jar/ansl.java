@@ -1,60 +1,26 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.5;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ansl
-  implements URLDrawable.URLDrawableListener
+class ansl
+  implements Handler.Callback
 {
-  public ansl(EmoticonFromGroupManager.5 param5, URLDrawable paramURLDrawable, CustomEmotionData paramCustomEmotionData, anss paramanss, ansr paramansr) {}
+  ansl(ansk paramansk) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean handleMessage(Message paramMessage)
   {
-    ansh.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    ansh.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    ansh.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0.a(paramURLDrawable)) {}
-    String str;
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      do
-      {
-        return;
-        str = ansh.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager$5.this$0, paramURLDrawable);
-      } while ("".equals(str));
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = str;
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = paramURLDrawable;
-    } while ("".equals(str));
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EmoticonFromGroup_Manager", 4, "onLoadSuccessed upload emo " + paramURLDrawable);
-      }
-      this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      this.jdField_a_of_type_Anss.d(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Ansr.c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      return;
-    }
-    catch (IOException paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.d("EmoticonFromGroup_Manager", 1, paramURLDrawable, new Object[0]);
-    }
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    ansk.a(this.a).clear();
+    return true;
   }
 }
 

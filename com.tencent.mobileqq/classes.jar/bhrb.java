@@ -1,15 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bhrb
-  implements DialogInterface.OnClickListener
+public class bhrb
 {
-  bhrb(bbgg parambbgg) {}
+  public static String a;
+  public static String[] a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static final String i;
+  public static final String j;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    jdField_a_of_type_JavaLangString = "JsFamousShare";
+    b = "famousShareToQQFriend";
+    c = "famousShareToQzone";
+    d = "famousShareToWxFriend";
+    e = "famousShareToWxPengyouquan";
+    f = "famousJubao";
+    g = "setUserHomePageMsgBoardGate";
+    h = "writeMood";
+    i = ajya.a(2131711934);
+    j = ajya.a(2131711933);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int m = arrayOfString.length;
+    int k = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (k < m)
+      {
+        if (arrayOfString[k].equalsIgnoreCase(paramString)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      k += 1;
     }
   }
 }

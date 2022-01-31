@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aniv;
+import anja;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MessageForEnterTroop
   extends ChatMessage
 {
-  public List<aniv> mList = new ArrayList();
+  public List<anja> mList = new ArrayList();
   
   protected void doParse() {}
 }

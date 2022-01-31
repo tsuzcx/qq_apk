@@ -1,80 +1,89 @@
-import android.content.res.Resources;
-import android.os.Looper;
-import android.os.MessageQueue;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import dov.com.tencent.biz.qqstory.takevideo.linker.VipFrwrdLinkView;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
-public class bjyf
-  extends bjwu
+class bjyf
+  extends SimpleObserver<bkld>
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  VipFrwrdLinkView jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView;
-  private ter jdField_a_of_type_Ter;
-  private boolean jdField_a_of_type_Boolean;
+  bjyf(bjyd parambjyd, bkld parambkld) {}
   
-  public ter a()
+  public void a(bkld parambkld)
   {
-    return this.jdField_a_of_type_Ter;
-  }
-  
-  public void a(int paramInt, @NonNull bkkm parambkkm)
-  {
-    super.a(paramInt, parambkkm);
-    if (this.jdField_a_of_type_Ter != null) {
-      parambkkm.a.setLinkInfo(this.jdField_a_of_type_Ter);
-    }
-  }
-  
-  void d()
-  {
-    this.jdField_a_of_type_Bjww.a().d();
-    RelativeLayout.LayoutParams localLayoutParams;
+    super.onNext(parambkld);
+    this.jdField_a_of_type_Bjyd.a(5);
+    parambkld = this.jdField_a_of_type_Bkld.a;
+    ved.b("EditVideoSave", "publishParam = " + parambkld);
+    Intent localIntent1;
+    int j;
     int i;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView == null)
+    if (this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.getActivity() != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365314));
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-      {
-        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-        localLayoutParams.addRule(12, -1);
-        localLayoutParams.setMargins(0, 0, 0, a().getDimensionPixelSize(2131297902) + actn.a(17.0F, a()));
-        i = 0;
+      localIntent1 = this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.getActivity().getIntent();
+      if (localIntent1 == null) {
+        break label318;
       }
+      j = localIntent1.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent1.getIntExtra("sv_total_record_time", 0);
     }
     for (;;)
     {
-      if (i < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
+      Intent localIntent2 = SaveVideoActivity.a(this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.a(), parambkld.b, i, j, this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjxn.a.a());
+      bjyd.a(this.jdField_a_of_type_Bjyd, parambkld.b);
+      localIntent2.putExtra("mediacodec_encode_enable", true);
+      boolean bool;
+      if (parambkld.e != 0)
       {
-        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(i).getId() == 2131365316)
-        {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = new VipFrwrdLinkView(a());
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView, i, localLayoutParams);
+        bool = true;
+        localIntent2.putExtra("video_edit_flag", bool);
+        if (localIntent1 != null) {
+          localIntent2.putExtra("qqstory_slide_show_scene", localIntent1.getIntExtra("qqstory_slide_show_scene", -1));
         }
+        if (this.jdField_a_of_type_Bjyd.jdField_a_of_type_Int != 47) {
+          break label296;
+        }
+        this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.getActivity().startActivityForResult(localIntent2, 222);
       }
-      else {
+      for (;;)
+      {
+        this.jdField_a_of_type_Bjyd.jdField_a_of_type_Float = 5.0F;
+        this.jdField_a_of_type_Bjyd.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bjyd.b = (50000.0F / (float)parambkld.a);
+        if (this.jdField_a_of_type_Bjyd.b == 0.0F) {
+          this.jdField_a_of_type_Bjyd.b = 1.0F;
+        }
+        this.jdField_a_of_type_Bjyd.d();
         return;
+        bool = false;
+        break;
+        label296:
+        this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.getActivity().startActivityForResult(localIntent2, 111);
       }
-      i += 1;
+      label318:
+      i = 0;
+      j = 0;
     }
   }
   
-  public void f()
+  public void onCancel()
   {
-    super.f();
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    Looper.myQueue().addIdleHandler(new bjyg(this));
+    super.onCancel();
+    ved.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjxn.a(0);
+    this.jdField_a_of_type_Bjyd.j();
+    bcql.a(this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.a(), ajya.a(2131703835), 0).a();
   }
   
-  public void g()
+  public void onError(@NonNull Error paramError)
   {
-    super.g();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLinkerVipFrwrdLinkView = null;
+    super.onError(paramError);
+    ved.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjxn.a(0);
+    bcql.a(this.jdField_a_of_type_Bjyd.jdField_a_of_type_Bjyv.a(), 1, ajya.a(2131703744) + paramError, 0).a();
+    this.jdField_a_of_type_Bjyd.j();
   }
 }
 

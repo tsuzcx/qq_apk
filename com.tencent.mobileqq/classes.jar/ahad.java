@@ -1,23 +1,30 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import org.json.JSONObject;
+import java.util.List;
 
 public class ahad
-  implements View.OnClickListener
+  extends FragmentPagerAdapter
 {
-  public ahad(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
-  
-  public void onClick(View paramView)
+  public ahad(SendHbMainFragment paramSendHbMainFragment, FragmentManager paramFragmentManager)
   {
-    if (bgwk.a()) {}
-    do
-    {
-      return;
-      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    } while (TextUtils.isEmpty(paramView));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(paramView);
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return SendHbMainFragment.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return ((ahae)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment;
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return ((ahae)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
   }
 }
 

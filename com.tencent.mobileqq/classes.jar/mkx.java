@@ -1,13 +1,15 @@
 import com.tencent.av.ui.VideoLayerUI;
 
 public class mkx
-  implements lst
+  implements lso
 {
-  public mkx(VideoLayerUI paramVideoLayerUI) {}
+  public mkx(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void a()
   {
-    mqq.a("switch_camera", "onAnimationEnd", 2, new Object[0]);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
   }
 }
 

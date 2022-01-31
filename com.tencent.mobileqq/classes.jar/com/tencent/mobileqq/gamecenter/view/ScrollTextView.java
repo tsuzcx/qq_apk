@@ -15,8 +15,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import aqtl;
-import aqtm;
+import aqtn;
+import aqto;
 
 public class ScrollTextView
   extends TextSwitcher
@@ -25,11 +25,11 @@ public class ScrollTextView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 2000L;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private aqtm jdField_a_of_type_Aqtm;
+  private aqto jdField_a_of_type_Aqto;
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private aqtm jdField_b_of_type_Aqtm;
+  private aqto jdField_b_of_type_Aqto;
   
   public ScrollTextView(Context paramContext)
   {
@@ -42,13 +42,13 @@ public class ScrollTextView
     a();
   }
   
-  private aqtm a(boolean paramBoolean1, boolean paramBoolean2)
+  private aqto a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    aqtm localaqtm = new aqtm(this, paramBoolean1, paramBoolean2);
-    localaqtm.setDuration(this.jdField_b_of_type_Long);
-    localaqtm.setFillAfter(false);
-    localaqtm.setInterpolator(new AccelerateInterpolator());
-    return localaqtm;
+    aqto localaqto = new aqto(this, paramBoolean1, paramBoolean2);
+    localaqto.setDuration(this.jdField_b_of_type_Long);
+    localaqto.setFillAfter(false);
+    localaqto.setInterpolator(new AccelerateInterpolator());
+    return localaqto;
   }
   
   public Drawable a(int paramInt1, int paramInt2, int paramInt3)
@@ -59,21 +59,21 @@ public class ScrollTextView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new aqtl(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aqtn(this);
     setFactory(this);
-    this.jdField_a_of_type_Aqtm = a(true, true);
-    this.jdField_b_of_type_Aqtm = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Aqtm);
-    setOutAnimation(this.jdField_b_of_type_Aqtm);
+    this.jdField_a_of_type_Aqto = a(true, true);
+    this.jdField_b_of_type_Aqto = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Aqto);
+    setOutAnimation(this.jdField_b_of_type_Aqto);
   }
   
   public void b()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Aqtm) {
-      setInAnimation(this.jdField_a_of_type_Aqtm);
+    if (getInAnimation() != this.jdField_a_of_type_Aqto) {
+      setInAnimation(this.jdField_a_of_type_Aqto);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Aqtm) {
-      setOutAnimation(this.jdField_b_of_type_Aqtm);
+    if (getOutAnimation() != this.jdField_b_of_type_Aqto) {
+      setOutAnimation(this.jdField_b_of_type_Aqto);
     }
   }
   

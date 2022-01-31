@@ -1,16 +1,17 @@
-import android.support.annotation.Nullable;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 class bikz
-  implements bjob<bikb>
+  implements bkvr
 {
-  bikz(biku parambiku) {}
+  bikz(biky parambiky, bipq parambipq) {}
   
-  public void a(@Nullable bikb parambikb)
+  public void a()
   {
-    biku.a(this.a, parambikb);
-    if (biku.a(this.a) != null) {
-      biku.a(this.a).a(this.a);
+    if (bikt.a(this.jdField_a_of_type_Biky.a) != null) {
+      bikt.a(this.jdField_a_of_type_Biky.a).a(this.jdField_a_of_type_Bipq.a(), false);
     }
+    bikt.a(this.jdField_a_of_type_Biky.a).setTouchEnable(false);
   }
 }
 

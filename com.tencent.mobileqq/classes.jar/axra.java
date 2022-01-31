@@ -1,99 +1,34 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.statistics.ReportControllerImpl;
 
 public class axra
+  extends aksu
 {
-  protected int a;
-  protected QQAppInterface a;
-  protected String a;
-  protected List<String> a;
-  protected int b;
-  protected String b;
-  protected int c;
-  protected String c;
-  protected String d = "";
-  protected String e = "";
-  
-  public axra(QQAppInterface paramQQAppInterface)
+  public axra(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramProxyManager);
   }
   
-  public axra a(int paramInt)
+  protected void a()
   {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public axra a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public axra a(String... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(4);
+    axqy localaxqy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if ((localaxqy != null) && ((localaxqy instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localaxqy).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
     }
-    if (paramVarArgs != null) {
-      Collections.addAll(this.jdField_a_of_type_JavaUtilList, paramVarArgs);
+  }
+  
+  protected void b()
+  {
+    axqy localaxqy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if ((localaxqy != null) && ((localaxqy instanceof ReportControllerImpl))) {
+      ((ReportControllerImpl)localaxqy).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
     }
-    return this;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "", "", "", "");
-      return;
-    }
-    while (this.jdField_a_of_type_JavaUtilList.size() < 4) {
-      this.jdField_a_of_type_JavaUtilList.add("");
-    }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, (String)this.jdField_a_of_type_JavaUtilList.get(0), (String)this.jdField_a_of_type_JavaUtilList.get(1), (String)this.jdField_a_of_type_JavaUtilList.get(2), (String)this.jdField_a_of_type_JavaUtilList.get(3));
-  }
-  
-  public axra b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public axra b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public axra c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public axra d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public axra e(String paramString)
-  {
-    this.e = paramString;
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axra
  * JD-Core Version:    0.7.0.1
  */

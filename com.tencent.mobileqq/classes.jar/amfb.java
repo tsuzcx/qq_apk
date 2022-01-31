@@ -1,4 +1,7 @@
-public abstract interface amfb {}
+public abstract interface amfb
+{
+  public abstract void a(boolean paramBoolean, amfh paramamfh);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

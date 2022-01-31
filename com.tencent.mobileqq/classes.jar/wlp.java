@@ -1,17 +1,20 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class wlp
-  implements View.OnClickListener
+  implements wsm
 {
-  wlp(wlo paramwlo, CertifiedAccountMeta.StFeed paramStFeed) {}
+  wlp(wln paramwln) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (((this.jdField_a_of_type_Wlo.itemView instanceof RelativeFeedItemView)) && (wlj.a(this.jdField_a_of_type_Wlo.a) != null)) {
-      wlj.a(this.jdField_a_of_type_Wlo.a).a(this.jdField_a_of_type_Wlo.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      xhb.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Wll.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      return;
     }
   }
 }

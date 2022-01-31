@@ -1,14 +1,20 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
 public class uod
-  implements vjq
+  extends Handler
 {
-  public uod(QQStoryMainController paramQQStoryMainController) {}
+  private uod(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    vel.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a(false);
   }
 }
 

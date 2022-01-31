@@ -1,13 +1,9 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class rfy
+public class rfy
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  
-  private rfy(rfw paramrfw) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

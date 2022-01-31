@@ -1,182 +1,99 @@
-import android.annotation.SuppressLint;
-import android.os.Process;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
-import com.tencent.TMG.utils.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Arrays;
+import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
 
 public class aabb
-  extends aabc
 {
-  private static final String jdField_a_of_type_JavaLangString = "/proc/" + jdField_a_of_type_ArrayOfInt[0] + "/stat";
-  private static final int[] jdField_a_of_type_ArrayOfInt = { Process.myPid() };
-  @Nullable
-  private RandomAccessFile jdField_a_of_type_JavaIoRandomAccessFile;
-  @NonNull
-  private long[] jdField_a_of_type_ArrayOfLong = new long[5];
-  @Nullable
-  private RandomAccessFile b;
-  private boolean d = new File("/proc/stat").canRead();
-  private boolean e = new File(jdField_a_of_type_JavaLangString).canRead();
+  private static int jdField_a_of_type_Int = -1;
+  private static String jdField_a_of_type_JavaLangString = "";
   
-  @SuppressLint({"InstanceMethodCanBeStatic"})
-  @VisibleForTesting
-  private RandomAccessFile a(String paramString)
+  public static String a(Application paramApplication)
   {
-    return new RandomAccessFile(paramString, "r");
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaIoRandomAccessFile != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoRandomAccessFile.close();
-      label19:
-      if (this.jdField_b_of_type_JavaIoRandomAccessFile != null) {}
-      try
-      {
-        this.jdField_b_of_type_JavaIoRandomAccessFile.close();
-        return;
-      }
-      catch (IOException localIOException1) {}
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      return jdField_a_of_type_JavaLangString;
     }
-    catch (IOException localIOException2)
+    String str1 = "";
+    Context localContext = paramApplication.getApplicationContext();
+    Object localObject = str1;
+    if (a(paramApplication))
     {
-      break label19;
-    }
-  }
-  
-  @Nullable
-  public long[] a()
-  {
-    long l1;
-    long l2;
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      long[] arrayOfLong1;
-      if (!bool) {
-        arrayOfLong1 = null;
+      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
+      String str2 = paramApplication.getDeviceId();
+      localObject = str1;
+      if (!TextUtils.isEmpty(str2)) {
+        localObject = "" + str2;
       }
-      for (;;)
-      {
-        return arrayOfLong1;
-        Arrays.fill(this.jdField_a_of_type_ArrayOfLong, 0L);
-        try
-        {
-          if (!this.d) {
-            break label240;
-          }
-          if (this.jdField_b_of_type_JavaIoRandomAccessFile == null) {
-            this.jdField_b_of_type_JavaIoRandomAccessFile = a("/proc/stat");
-          }
-          this.jdField_b_of_type_JavaIoRandomAccessFile.seek(0L);
-          Arrays.fill(this.jdField_a_of_type_ArrayOfByte, (byte)-1);
-          if (this.jdField_b_of_type_JavaIoRandomAccessFile.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length) != -1) {
-            break;
-          }
-          throw new IOException("read sys stats error");
-        }
-        catch (IOException localIOException)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          QLog.d("StatFileInfoCollector", 1, "", localIOException);
-          a();
-          Object localObject1 = null;
-        }
+      str1 = paramApplication.getSubscriberId();
+      if (TextUtils.isEmpty(str1)) {
+        break label170;
       }
-      this.c = 0;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = true;
-      if (a())
-      {
-        a(' ');
-        a(' ');
-        l1 = a();
-        l2 = a();
-        long l3 = a();
-        long l4 = a();
-        long l5 = a();
-        long l6 = a();
-        long l7 = a();
-        this.jdField_a_of_type_ArrayOfLong[0] = (l1 + l2 + l3 + l4 + l5 + l6 + l7);
-        this.jdField_a_of_type_ArrayOfLong[1] = (this.jdField_a_of_type_ArrayOfLong[0] - l4);
-      }
-      label240:
-      if (!this.e) {
-        break label543;
-      }
-      if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
-        this.jdField_a_of_type_JavaIoRandomAccessFile = a(jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_JavaIoRandomAccessFile.seek(0L);
-      Arrays.fill(this.jdField_a_of_type_ArrayOfByte, (byte)-1);
-      if (this.jdField_a_of_type_JavaIoRandomAccessFile.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length) == -1) {
-        throw new IOException("read pid stats error");
-      }
-    }
-    finally {}
-    this.c = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = true;
-    int i = 0;
-    while ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (a()) && (i < 13))
-    {
-      a(' ');
-      i += 1;
-    }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
-    {
-      l1 = a();
-      l2 = a();
-      this.jdField_a_of_type_ArrayOfLong[2] = (l1 + l2);
-      break label557;
-      label414:
-      while ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (a()) && (i < 4))
-      {
-        a(' ');
-        i += 1;
-      }
-      if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
-        break label562;
-      }
-      this.jdField_a_of_type_ArrayOfLong[3] = a();
-      break label562;
+      paramApplication = (String)localObject + str1;
     }
     for (;;)
     {
-      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (a()) && (i < 3))
+      localObject = paramApplication;
+      if (TextUtils.isEmpty(paramApplication))
       {
-        a(' ');
-        i += 1;
+        localObject = paramApplication;
+        if (Build.VERSION.SDK_INT >= 23) {
+          localObject = bfnn.b();
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramApplication = (Application)localObject;
+        if (!((String)localObject).startsWith("012345678912345")) {}
       }
       else
       {
-        if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_ArrayOfLong[4] = a();
-        }
-        label543:
-        this.jdField_a_of_type_Boolean = true;
-        long[] arrayOfLong2 = this.jdField_a_of_type_ArrayOfLong;
-        break;
-        label557:
-        i = 0;
-        break label414;
-        label562:
-        i = 0;
+        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+      }
+      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
+      return jdField_a_of_type_JavaLangString;
+      label170:
+      str1 = paramApplication.getSimOperator();
+      paramApplication = (Application)localObject;
+      if (!TextUtils.isEmpty(str1)) {
+        paramApplication = (String)localObject + str1;
       }
     }
   }
   
-  protected void finalize()
+  private static boolean a(Application paramApplication)
   {
-    a();
+    boolean bool = true;
+    if (jdField_a_of_type_Int == -1)
+    {
+      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
+      if (bool) {
+        jdField_a_of_type_Int = 1;
+      }
+    }
+    while (jdField_a_of_type_Int > 0) {
+      for (;;)
+      {
+        return bool;
+        jdField_a_of_type_Int = 0;
+      }
+    }
+    return false;
+  }
+  
+  private static boolean a(Application paramApplication, String paramString)
+  {
+    if (paramApplication == null) {}
+    PackageManager localPackageManager;
+    do
+    {
+      return false;
+      localPackageManager = paramApplication.getPackageManager();
+    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
+    return true;
   }
 }
 

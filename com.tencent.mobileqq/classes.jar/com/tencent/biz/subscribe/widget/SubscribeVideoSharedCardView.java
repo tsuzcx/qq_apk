@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import wkp;
-import wuq;
+import wkm;
+import wun;
 
 public class SubscribeVideoSharedCardView
   extends SubscribeMultiPicSharedCardView
@@ -37,20 +37,20 @@ public class SubscribeVideoSharedCardView
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364022));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364021));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(wkp paramwkp, Bitmap paramBitmap, wuq paramwuq)
+  public void a(wkm paramwkm, Bitmap paramBitmap, wun paramwun)
   {
-    super.a(paramwkp, paramBitmap, paramwuq);
-    paramwkp = paramwkp.a();
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramwkp.cover.width.get(), paramwkp.cover.height.get());
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramwkp.poster.icon.get());
+    super.a(paramwkm, paramBitmap, paramwun);
+    paramwkm = paramwkm.a();
+    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramwkm.cover.width.get(), paramwkm.cover.height.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramwkm.poster.icon.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramwkp.cover.url.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramwkm.cover.url.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramwuq);
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramwun);
   }
 }
 

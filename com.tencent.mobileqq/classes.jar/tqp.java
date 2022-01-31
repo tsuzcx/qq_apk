@@ -1,37 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 class tqp
-  extends tpm
+  extends tpp
 {
-  tqp(tqk paramtqk, StoryVideoItem paramStoryVideoItem)
+  tqp(tqh paramtqh, String paramString1, String paramString2, boolean paramBoolean, trp paramtrp)
   {
-    super(paramStoryVideoItem);
+    super(paramString1, paramString2, paramBoolean);
   }
   
   public boolean b()
   {
-    Object localObject = (String)a("result");
-    try
-    {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      veg.c(this.b, "Error: 评分投票失败", localURISyntaxException);
-    }
-    return false;
+    this.jdField_a_of_type_Trp.c = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

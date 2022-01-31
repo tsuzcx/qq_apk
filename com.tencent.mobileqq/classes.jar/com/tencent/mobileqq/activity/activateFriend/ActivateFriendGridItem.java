@@ -36,11 +36,11 @@ public class ActivateFriendGridItem
   
   private void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LayoutInflater.from(paramContext).inflate(2131560598, this, true);
+    LayoutInflater.from(paramContext).inflate(2131560597, this, true);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367679));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371564));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370647));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363259));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363258));
     if (!paramBoolean2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setHorizontallyScrolling(false);
@@ -87,7 +87,7 @@ public class ActivateFriendGridItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843924);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843925);
     }
     for (;;)
     {
@@ -98,7 +98,7 @@ public class ActivateFriendGridItem
       }
       setContentDescription(str1);
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843926);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843927);
     }
   }
   

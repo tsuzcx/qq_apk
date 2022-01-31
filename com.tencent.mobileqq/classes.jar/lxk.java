@@ -1,35 +1,43 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.RemoteException;
+import com.tencent.av.service.LBSInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lxk
-  implements ServiceConnection
+  extends ajzk
 {
-  public lxk(QQServiceForAV paramQQServiceForAV) {}
+  private List<lwu> a = new ArrayList();
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public int a()
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
-    QQServiceForAV.b(this.a, true);
+    return this.a.size();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(lwu paramlwu)
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
-    QQServiceForAV.b(this.a, false);
-    try
-    {
-      BaseApplicationImpl.getContext().unbindService(this);
-      return;
+    if (paramlwu != null) {
+      this.a.add(paramlwu);
     }
-    catch (Throwable paramComponentName)
+  }
+  
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      QLog.e("QQServiceForAV", 1, "onServiceDisconnected unbindService exception:" + paramComponentName, paramComponentName);
+      lwu locallwu = (lwu)localIterator.next();
+      try
+      {
+        locallwu.a(paramBoolean, paramLBSInfo);
+      }
+      catch (RemoteException localRemoteException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
+      }
     }
+    this.a.clear();
   }
 }
 

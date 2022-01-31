@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
+import aigj;
 import aigl;
-import aign;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 public class EncodeVideoTask$2$2
   implements Runnable
 {
-  public EncodeVideoTask$2$2(aign paramaign, int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong) {}
+  public EncodeVideoTask$2$2(aigl paramaigl, int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aign.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Aigl.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Long);
   }
 }
 

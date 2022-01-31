@@ -9,11 +9,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import mqq.app.MobileQQ;
-import ssj;
-import ssv;
-import tcv;
-import tdc;
-import veg;
+import ssg;
+import sss;
+import tcs;
+import tcz;
+import ved;
 
 public class QQStoryContext$StoryBroadcastReceiver
   extends BroadcastReceiver
@@ -45,11 +45,11 @@ public class QQStoryContext$StoryBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    veg.a(jdField_a_of_type_JavaLangString, "onReceive, [context, intent=%s]", paramIntent);
+    ved.a(jdField_a_of_type_JavaLangString, "onReceive, [context, intent=%s]", paramIntent);
     paramIntent = paramIntent.getAction();
     if ("action_fire_create_story".equals(paramIntent)) {
       if (TextUtils.equals(paramContext.getPackageName(), MobileQQ.processName)) {
-        Bosses.get().postJob(new ssj(this, jdField_a_of_type_JavaLangString));
+        Bosses.get().postJob(new ssg(this, jdField_a_of_type_JavaLangString));
       }
     }
     do
@@ -57,14 +57,14 @@ public class QQStoryContext$StoryBroadcastReceiver
       return;
       if ("action_fire_get_config".equals(paramIntent))
       {
-        long l = ((tcv)tdc.a(10)).b();
+        long l = ((tcs)tcz.a(10)).b();
         if (Math.abs(System.currentTimeMillis() - l) > 3600000L)
         {
-          veg.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig update story config from server.");
-          ((ssv)QQStoryContext.a().a(98)).d();
+          ved.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig update story config from server.");
+          ((sss)QQStoryContext.a().a(98)).d();
           return;
         }
-        veg.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig do not need update story config from server.");
+        ved.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig do not need update story config from server.");
         return;
       }
     } while (!"action_fire_create_video_story".equals(paramIntent));

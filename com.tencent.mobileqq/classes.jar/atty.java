@@ -1,29 +1,29 @@
-import android.content.Intent;
+import android.annotation.TargetApi;
+import android.view.DragEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.view.View.OnDragListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class atty
-  implements View.OnClickListener
+@TargetApi(11)
+class atty
+  implements View.OnDragListener
 {
-  public atty(NearbyProfileFragment paramNearbyProfileFragment, String paramString, int paramInt) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public atty(attg paramattg, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(paramView);
-    axra localaxra = new axra(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_click");
-    String str1 = "" + (NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).gender + 1);
-    String str2 = "" + this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.e == 3) {}
-    for (paramView = "2";; paramView = "1")
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  {
+    switch (paramDragEvent.getAction())
     {
-      localaxra.a(new String[] { "", str1, str2, paramView }).a();
-      return;
+    }
+    for (;;)
+    {
+      return true;
+      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
     }
   }
 }

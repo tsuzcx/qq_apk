@@ -9,7 +9,7 @@ public class augy
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.a.invalidate();
   }
 }

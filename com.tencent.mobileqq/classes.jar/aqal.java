@@ -1,23 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.app.Activity;
+import android.content.Intent;
+import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class aqal
-  implements aqac
+public class aqal
 {
-  aqal(aqak paramaqak) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public static void a(Activity paramActivity, String paramString, Map<String, Object> paramMap)
   {
-    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString }));
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
-    localBundle.putString("KEY_INSTALL_DIR", paramString);
-    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
-    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "FlutterSubQIPCModule", "ACTION_INSTALL_RESULT", localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openPage: %s", new Object[] { paramString }));
+    }
+    boolean bool = aqyf.a("com.tencent.mobileqq:tool");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("click_millis", System.currentTimeMillis());
+    localIntent.putExtra("process_exist", bool);
+    if (paramMap != null)
+    {
+      paramString = new BoostFlutterActivity.SerializableMap();
+      paramString.setMap(paramMap);
+      localIntent.putExtra("params", paramString);
+    }
+    PublicFragmentActivityForTool.b(paramActivity, localIntent, QFlutterContainerFragment.class, 1000);
   }
 }
 

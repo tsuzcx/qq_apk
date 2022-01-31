@@ -1,17 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
 class nsw
-  implements Animation.AnimationListener
-{
-  nsw(nss paramnss) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-}
+  extends TabChannelCoverInfo
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

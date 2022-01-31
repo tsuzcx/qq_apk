@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.fpsreport;
 
-import aaad;
-import aaai;
+import aaae;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.widget.XListView;
+import zzz;
 
 public class FPSXListView
   extends XListView
 {
   private int jdField_a_of_type_Int;
-  private aaai jdField_a_of_type_Aaai;
+  private aaae jdField_a_of_type_Aaae;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = true;
   
@@ -32,8 +32,8 @@ public class FPSXListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Aaai != null) {
-      this.jdField_a_of_type_Aaai.a();
+    if (this.jdField_a_of_type_Aaae != null) {
+      this.jdField_a_of_type_Aaae.a();
     }
   }
   
@@ -45,41 +45,41 @@ public class FPSXListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aaai != null)) {
-      this.jdField_a_of_type_Aaai.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aaae != null)) {
+      this.jdField_a_of_type_Aaae.b();
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Aaai != null) {
-      this.jdField_a_of_type_Aaai.a(paramInt);
+    if (this.jdField_a_of_type_Aaae != null) {
+      this.jdField_a_of_type_Aaae.a(paramInt);
     }
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        aaad.a().a("list_leba_new", false);
+        zzz.a().a("list_leba_new", false);
       }
     }
     while (this.jdField_a_of_type_Int != 2)
     {
       return;
-      aaad.a().a("list_leba_new");
+      zzz.a().a("list_leba_new");
       return;
     }
     if (paramInt == 0)
     {
-      aaad.a().a("list_leba", false);
+      zzz.a().a("list_leba", false);
       return;
     }
-    aaad.a().a("list_leba");
+    zzz.a().a("list_leba");
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aaai = new aaai();
-    this.jdField_a_of_type_Aaai.a(paramString);
+    this.jdField_a_of_type_Aaae = new aaae();
+    this.jdField_a_of_type_Aaae.a(paramString);
   }
   
   public void setReportType(int paramInt)

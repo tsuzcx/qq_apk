@@ -1,6 +1,19 @@
-public abstract interface vnh
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+
+public class vnh
+  implements vvn
 {
-  public abstract void a(vps paramvps);
+  public vnh(DoodleLayout paramDoodleLayout) {}
+  
+  public void a()
+  {
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
+    }
+  }
 }
 
 

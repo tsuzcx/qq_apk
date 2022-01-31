@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import java.util.List;
-import osj;
+import osg;
 
 class FastWebActivity$19
   implements Runnable
@@ -10,7 +10,7 @@ class FastWebActivity$19
   
   public void run()
   {
-    osj.a().a(this.a);
+    osg.a().a(this.a);
   }
 }
 

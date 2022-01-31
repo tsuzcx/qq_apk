@@ -1,38 +1,49 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-public abstract class behd
+public class behd
+  extends MqqHandler
 {
-  private static MiniAppInfo a;
-  public static List<String> a;
+  public behd(Login paramLogin) {}
   
-  static
+  public void handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
-  }
-  
-  public static MiniAppInfo a()
-  {
-    if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {}
-    try
+    Bundle localBundle = paramMessage.getData();
+    this.a.d();
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
-      {
-        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-        localMiniAppInfo.appId = "0000000000";
-        localMiniAppInfo.launchParam.a = "0000000000";
-        jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = localMiniAppInfo;
-      }
-      return jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     }
-    finally {}
+    do
+    {
+      return;
+      this.a.a(String.format(this.a.getResources().getString(2131696782), new Object[] { this.a.getResources().getString(2131694906), Integer.valueOf(3100) }));
+      paramMessage = new HashMap();
+      paramMessage.put("error", "3100");
+      axrn.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+      return;
+      localBundle.getInt("ret");
+      int i = localBundle.getInt("code");
+      paramMessage = localBundle.getString("OTHER_ERROR");
+      if (localBundle.getBoolean("pwdblank", false)) {
+        this.a.b.setText("");
+      }
+      this.a.a(String.format(this.a.getResources().getString(2131696782), new Object[] { paramMessage, Integer.valueOf(i) }));
+      paramMessage = new HashMap();
+      paramMessage.put("error", "3101");
+      axrn.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+      return;
+    } while (this.a.isFinishing());
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     behd
  * JD-Core Version:    0.7.0.1
  */

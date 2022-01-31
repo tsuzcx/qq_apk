@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.widget.EditText;
-import babb;
-import baca;
-import bacg;
+import babp;
+import baco;
+import bacu;
 
 public class TextItem$6
   implements Runnable
 {
-  public TextItem$6(baca parambaca, bacg parambacg, babb parambabb) {}
+  public TextItem$6(baco parambaco, bacu parambacu, babp parambabp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bacg.a.requestFocus();
-    this.jdField_a_of_type_Bacg.a.findFocus();
-    this.jdField_a_of_type_Bacg.a.setSelection(this.jdField_a_of_type_Babb.a);
+    this.jdField_a_of_type_Bacu.a.requestFocus();
+    this.jdField_a_of_type_Bacu.a.findFocus();
+    this.jdField_a_of_type_Bacu.a.setSelection(this.jdField_a_of_type_Babp.a);
   }
 }
 

@@ -1,19 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PathMeasure;
-import com.tencent.mobileqq.doutu.combo.ComboMasterView;
-
-public class anon
-  implements ValueAnimator.AnimatorUpdateListener
+class anon
 {
-  public anon(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
+  long jdField_a_of_type_Long;
+  long b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public anon(anoi paramanoi, long paramLong1, long paramLong2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

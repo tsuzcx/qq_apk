@@ -1,18 +1,24 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-class pmu
-  implements View.OnClickListener
+public class pmu
+  implements URLDrawable.DownloadListener
 {
-  pmu(pmt parampmt) {}
+  public pmu(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public void onClick(View paramView)
+  public void onFileDownloadFailed(int paramInt)
   {
-    rce.a((Activity)pmt.a(this.a).getContext());
-    rce.a(2);
+    xdp localxdp = new xdp(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842195));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localxdp, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

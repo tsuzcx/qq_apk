@@ -1,319 +1,570 @@
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.Color;
+import android.graphics.PointF;
 import android.os.SystemClock;
-import com.tencent.av.AVFunChat.AVFunChatMessage;
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.av.report.AVReport;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.AVFunDrawing.DrawingInfo;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.av.AVFunDrawing.PointInfo;
+import com.tencent.av.AVFunDrawing.VersionInfo;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.doodle.DoodleLogic.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
-@SuppressLint({"HandlerLeak"})
 public class llz
-  extends Handler
 {
-  private final String jdField_a_of_type_JavaLangString = "VcControllerImpl_NativeEventHandler";
+  private static llz jdField_a_of_type_Llz;
+  static int f;
+  public float a;
+  public int a;
+  public VideoController a;
+  public ConcurrentLinkedQueue<lly> a;
+  public ReentrantLock a;
+  private lma jdField_a_of_type_Lma;
+  public lmc a;
+  public boolean a;
+  public lly[] a;
+  public boolean[] a;
+  public int b;
+  ConcurrentLinkedQueue<lmb> b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
   
-  public llz(VcControllerImpl paramVcControllerImpl, Looper paramLooper)
+  public llz()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_ArrayOfLly = new lly[2];
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -65536;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+    this.jdField_a_of_type_ArrayOfBoolean = new boolean[2];
+    this.jdField_a_of_type_ComTencentAvVideoController = VideoController.a();
+    this.jdField_a_of_type_Lmc = new lmc(this);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   }
   
-  public void handleMessage(Message paramMessage)
+  public static llz a()
   {
-    int i;
-    Object localObject;
-    long l1;
-    String str;
-    label759:
-    boolean bool;
-    for (;;)
+    try
     {
-      byte[] arrayOfByte;
-      try
+      if (jdField_a_of_type_Llz == null) {
+        jdField_a_of_type_Llz = new llz();
+      }
+      return jdField_a_of_type_Llz;
+    }
+    finally {}
+  }
+  
+  private void a(int paramInt)
+  {
+    lly locallly1 = this.jdField_a_of_type_ArrayOfLly[paramInt];
+    if (locallly1 != null)
+    {
+      locallly1.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      if (this.jdField_a_of_type_Lma != null) {
+        this.jdField_a_of_type_Lma.a(paramInt);
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      while (localIterator.hasNext())
       {
-        i = paramMessage.what;
-        localObject = (lma)paramMessage.obj;
-        if (localObject == null)
-        {
-          lcl.e("VcControllerImpl_NativeEventHandler", "p is null");
-          return;
-        }
-        paramMessage = ((lma)localObject).jdField_a_of_type_ArrayOfByte;
-        l1 = ((lma)localObject).jdField_a_of_type_Long;
-        str = mqx.a(((lma)localObject).jdField_b_of_type_Long);
-        arrayOfByte = ((lma)localObject).jdField_b_of_type_ArrayOfByte;
-        if ((i != 16) && (i != 100) && (i != 117) && (i != 120) && (i != 124)) {
-          lcl.d("VcControllerImpl_NativeEventHandler", "handleMessage eventId: " + i + ", info: " + l1 + ", fromUin:" + str);
-        }
-        QLog.d("Native-Event", 1, "<-- Native_Event_Handler() eventId = " + i);
-        switch (i)
-        {
-        case 71: 
-        case 1: 
-        case 2: 
-        case 60: 
-        case 61: 
-          VcControllerImpl.access$300(this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl, i, (lma)localObject);
-          break;
-        case 3: 
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(str);
+        lly locallly2 = (lly)localIterator.next();
+        if (locallly1.jdField_a_of_type_Long - locallly2.jdField_a_of_type_Long <= 1200L) {
+          locallly2.jdField_a_of_type_Long = locallly1.jdField_a_of_type_Long;
         }
       }
-      finally {}
-      continue;
-      if (l1 > 1000L) {}
-      int j;
-      for (this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mfAudio2VideoFlag = true;; this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mfAudio2VideoFlag = false)
-      {
-        i = (int)((lma)localObject).c;
-        j = (int)((lma)localObject).d;
-        if (((lma)localObject).jdField_b_of_type_ArrayOfByte == null) {
-          break label2594;
-        }
-        paramMessage = new String(((lma)localObject).jdField_b_of_type_ArrayOfByte);
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, i, j, paramMessage);
-        break;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(locallly1);
+    }
+    this.jdField_a_of_type_ArrayOfLly[paramInt] = null;
+    QLog.w("DoodleLogic", 1, "offerDoodle, index[" + paramInt + "], item[" + locallly1 + "], size[" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + "]");
+  }
+  
+  private void b(int paramInt)
+  {
+    int i = 0;
+    lly locallly = this.jdField_a_of_type_ArrayOfLly[0];
+    AVFunDrawing.PointInfo localPointInfo = new AVFunDrawing.PointInfo();
+    localPointInfo.uint32_type.set(paramInt);
+    AVFunDrawing.MessageBody localMessageBody = new AVFunDrawing.MessageBody();
+    localMessageBody.uint32_msg_type.set(2);
+    AVFunDrawing.DrawingInfo localDrawingInfo = new AVFunDrawing.DrawingInfo();
+    if (locallly != null) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      float f1 = locallly.jdField_a_of_type_AndroidGraphicsPointF.x;
+      float f2 = locallly.jdField_a_of_type_AndroidGraphicsPointF.y;
+      localPointInfo.float_x.set(f1);
+      localPointInfo.float_y.set(f2);
+      localDrawingInfo.uint32_pen_type.set(locallly.jdField_a_of_type_Int);
+      localDrawingInfo.str_pen_name.set(locallly.jdField_b_of_type_JavaLangString);
+      localDrawingInfo.str_pen_color.set("#" + Integer.toHexString(locallly.e));
+      localDrawingInfo.uint32_pen_width.set(locallly.jdField_b_of_type_Int);
+      localDrawingInfo.uint32_screen_width.set(locallly.c);
+      localDrawingInfo.uint32_screen_height.set(locallly.d);
+      localDrawingInfo.msg_point_info.add(localPointInfo);
+      localMessageBody.drawingInfo.set(localDrawingInfo);
+      i = a();
+      localMessageBody.uint32_seq.set(i);
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new lmb(localMessageBody));
+      if (paramInt != 3) {
+        break label290;
       }
-      long l2 = ((lma)localObject).c;
-      long l3 = ((lma)localObject).d;
-      if (l1 == 1L) {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, arrayOfByte, 1L);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(l2, l3, l1);
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, paramMessage, 0L);
-      }
-      if (((lma)localObject).c != 1L) {
-        break label2600;
-      }
-      bool = true;
-      label881:
-      i = (int)((lma)localObject).d;
-      try
-      {
-        paramMessage = new String(((lma)localObject).jdField_a_of_type_ArrayOfByte, "utf-8");
-        j = ((lma)localObject).jdField_a_of_type_Int;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(bool, i, paramMessage, j);
-      }
-      catch (UnsupportedEncodingException paramMessage)
-      {
-        for (;;)
-        {
-          paramMessage.printStackTrace();
-          paramMessage = "";
-        }
-      }
-      i = (int)l1;
-      paramMessage = new StringBuilder().append("EV_VOIP_CLOSED, Param0[").append(((lma)localObject).c).append("], Param1[").append(((lma)localObject).d).append("], Param2[").append(((lma)localObject).jdField_a_of_type_JavaLangString).append("], Param3[").append(((lma)localObject).jdField_a_of_type_Int).append("], Param4[").append(((lma)localObject).jdField_b_of_type_Int).append("], extraBuf[");
-      if (((lma)localObject).jdField_b_of_type_ArrayOfByte == null) {
-        break label2609;
-      }
-      bool = true;
-      label1033:
-      QLog.w("VcControllerImpl", 1, bool + "], reason[" + i + "]");
-      switch (i)
-      {
-      case 13: 
-        label1080:
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, i, ((lma)localObject).c);
-        for (;;)
-        {
-          lix.a(i, ((lma)localObject).c, ((lma)localObject).d, ((lma)localObject).jdField_a_of_type_JavaLangString);
-          break;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.i(str);
-        }
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, 12, 0L);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.e(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.f(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.j(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.k(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.l(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(i - 19, str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, true);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, false);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.m(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.n(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.o(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.p(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(true);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(false);
-        continue;
-        if (AVReport.a().a) {
-          AVReport.a().k = SystemClock.elapsedRealtime();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(true);
-          break;
-          AVReport.a().z = SystemClock.elapsedRealtime();
-        }
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(paramMessage, l1);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.t(str);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, (int)l1, ((lma)localObject).c, ((lma)localObject).jdField_a_of_type_ArrayOfByte);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (int)l1, ((lma)localObject).c, ((lma)localObject).jdField_a_of_type_ArrayOfByte);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, paramMessage, l1);
-        continue;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(str, paramMessage, l1);
-        continue;
-        switch ((int)((lma)localObject).c)
-        {
-        default: 
-          label1644:
-          QLog.i("VcControllerImpl", 1, "EV_VOIP_OTHER_TER_CHATING_STAUTS, extraParam0=" + ((lma)localObject).c);
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, ((lma)localObject).d, i);
-          continue;
-          i = (int)((lma)localObject).c;
-          j = (int)((lma)localObject).d;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, i, j);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.e(str, (int)l1);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c(str, (int)l1);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d(str, (int)l1);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.u(str);
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(2048);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(3);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(4);
-          continue;
-          i = (int)((lma)localObject).jdField_a_of_type_Long;
-          if (QLog.isColorLevel()) {
-            QLog.d("NativeEventHandler", 2, "SharpConfigPayload. version = " + i);
-          }
-          BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD").putExtra("version", i));
-          lwd.a().a("load", i);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, l1, paramMessage);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.onAudioData(paramMessage);
-          continue;
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.b(str, (int)l1, ((lma)localObject).jdField_a_of_type_ArrayOfByte);
-        }
-        break;
+      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() == 1) {
+        a(100L);
       }
     }
-    for (;;)
+    label290:
+    while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() != 1)
+    {
+      return;
+      lze.a("没有doodleItem");
+      break;
+    }
+    b();
+  }
+  
+  int a()
+  {
+    try
+    {
+      f += 1;
+      int i = f;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int a(byte[] paramArrayOfByte)
+  {
+    Object localObject1 = new AVFunDrawing.MessageBody();
+    int j = 0;
+    int i = 0;
+    int n = i;
+    int i1 = j;
+    try
+    {
+      paramArrayOfByte = (AVFunDrawing.MessageBody)((AVFunDrawing.MessageBody)localObject1).mergeFrom(paramArrayOfByte);
+      n = i;
+      i1 = j;
+      j = paramArrayOfByte.uint32_msg_type.get();
+      switch (j)
+      {
+      case 1: 
+        n = j;
+        i1 = j;
+        localObject1 = paramArrayOfByte.versionInfo;
+        n = j;
+        i1 = j;
+        this.e = ((AVFunDrawing.VersionInfo)localObject1).uint32_version.get();
+        n = j;
+        i1 = j;
+        if (((AVFunDrawing.VersionInfo)localObject1).uint32_support_drawing.get() == 0) {
+          break label245;
+        }
+        bool = true;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (int)l1, paramMessage);
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c((int)l1, new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d((int)l1, new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.e(paramMessage);
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.q(new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.s(new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.r(new String(paramMessage));
-        break;
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, new String(paramMessage));
-        break;
-        try
-        {
-          localObject = new AVFunChat.AVFunChatMessage();
-          ((AVFunChat.AVFunChatMessage)localObject).mergeFrom(paramMessage);
-          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (AVFunChat.AVFunChatMessage)localObject);
-        }
-        catch (InvalidProtocolBufferMicroException paramMessage)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("VcControllerImpl", 2, "EM_AVFUNCHATTYPE_CreativeCop InvalidProtocolBufferMicroException fail", paramMessage);
-        }
-        catch (Throwable paramMessage) {}
+        QLog.w("DoodleLogic", 1, "receiveDoodle, InvalidProtocolBufferMicroException", paramArrayOfByte);
+        return n;
+        boolean bool = false;
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      n = j;
+      i1 = j;
+      localObject1 = paramArrayOfByte.drawingInfo;
+      n = j;
+      i1 = j;
+      l1 = paramArrayOfByte.uint64_time.get();
+      n = j;
+      i1 = j;
+      l2 = AudioHelper.a();
+      if (l2 <= l1) {
+        break label837;
       }
-      QLog.i("VcControllerImpl", 2, "EM_AVFUNCHATTYPE_CreativeCop parse fail", paramMessage);
-      break;
-      i = (int)l1;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g(str, i);
-      if (!QLog.isColorLevel()) {
-        break;
+      k = (int)(l2 - l1);
+      n = j;
+      i1 = j;
+      if (((AVFunDrawing.DrawingInfo)localObject1).msg_point_info.size() <= 0) {
+        break label977;
       }
-      QLog.d("NativeEventHandler", 2, "EM_SDK_EVENT_ID_GROUND_GLASS_SWITCH. nSwitch = " + i + ", fromUin=" + str);
-      break;
-      i = (int)l1;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.h(str, i);
-      if (!QLog.isColorLevel()) {
-        break;
+      n = j;
+      i1 = j;
+      localObject2 = (AVFunDrawing.PointInfo)((AVFunDrawing.DrawingInfo)localObject1).msg_point_info.get(0);
+      n = j;
+      i1 = j;
+      m = ((AVFunDrawing.PointInfo)localObject2).uint32_type.get();
+      n = j;
+      i1 = j;
+      f1 = ((AVFunDrawing.PointInfo)localObject2).float_x.get();
+      n = j;
+      i1 = j;
+      f2 = ((AVFunDrawing.PointInfo)localObject2).float_y.get();
+      n = j;
+      i1 = j;
+      localObject2 = this.jdField_a_of_type_ArrayOfLly[1];
+      if (m != 1) {
+        break label850;
       }
-      QLog.d("NativeEventHandler", 2, "EM_SDK_EVENT_ID_GROUND_GLASS_WAIT_TIME. nTime = " + i + ", fromUin=" + str);
-      break;
-      i = (int)l1;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.f(i);
-      break;
-      QLog.d("NativeEventHandler", 1, "EM_SDK_EVENT_ID_CUSTOM_COMMAND: recv SDKCustomCommand from SDK, peerUin = " + str);
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, ((lma)localObject).c, ((lma)localObject).d, ((lma)localObject).jdField_b_of_type_Int);
-      break;
-      QLog.d("NativeEventHandler", 1, "NETWORK_CHECK: recv send network check request from SDK, peerUin = " + str);
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.H();
-      break;
-      axqw.b(null, "CliOper", "", "", "0X800A7A4", "0X800A7A4", 0, (int)((lma)localObject).c, "", "", "", "");
-      break;
-      axqw.b(null, "CliOper", "", "", "0X800A7A5", "0X800A7A5", 0, (int)((lma)localObject).c, "", "", "", "");
-      break;
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.g((int)((lma)localObject).c);
-      break;
-      break;
-      label2594:
-      paramMessage = "";
-      break label759;
-      label2600:
-      bool = false;
-      break label881;
-      break label1080;
-      label2609:
-      bool = false;
-      break label1033;
-      i = 0;
-      break label1644;
-      i = 2;
-      break label1644;
-      i = 1;
-      break label1644;
-      switch ((int)l1)
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLly[1] = lmd.a(((AVFunDrawing.DrawingInfo)localObject1).uint32_pen_type.get());
+      i = m;
+      n = j;
+      i1 = j;
+      QLog.w("DoodleLogic", 1, "receiveDoodle, point_type[" + m + "->" + i + "], pt[" + f1 + ", " + f2 + "], uint32_seq[" + paramArrayOfByte.uint32_seq.get() + "], offset[" + k + " = " + l2 + " - " + l1 + "], old[" + localObject2 + "], new[" + this.jdField_a_of_type_ArrayOfLly[1] + "]");
+      n = j;
+      i1 = j;
+      if (this.jdField_a_of_type_ArrayOfLly[1] == null) {
+        break label1058;
+      }
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLly[1].jdField_b_of_type_JavaLangString = ((AVFunDrawing.DrawingInfo)localObject1).str_pen_name.get();
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLly[1].e = Color.parseColor(((AVFunDrawing.DrawingInfo)localObject1).str_pen_color.get());
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLly[1].jdField_b_of_type_Int = ((AVFunDrawing.DrawingInfo)localObject1).uint32_pen_width.get();
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLly[1].c = ((AVFunDrawing.DrawingInfo)localObject1).uint32_screen_width.get();
+      n = j;
+      i1 = j;
+      this.jdField_a_of_type_ArrayOfLly[1].d = ((AVFunDrawing.DrawingInfo)localObject1).uint32_screen_height.get();
+      switch (i)
       {
+      case 1: 
+        n = j;
+        i1 = j;
+        QLog.w("DoodleLogic", 1, "receiveDoodle, after[" + this.jdField_a_of_type_ArrayOfLly[1] + "]");
       }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QLog.w("DoodleLogic", 1, "receiveDoodle, Exception", paramArrayOfByte);
+      return i1;
+    }
+    n = j;
+    i1 = j;
+    this.jdField_b_of_type_Boolean = bool;
+    n = j;
+    i1 = j;
+    QLog.w("DoodleLogic", 1, "receiveDoodle, mPeerVersion[" + this.e + "], mIsPeerSupport[" + this.jdField_b_of_type_Boolean + "], uint32_seq[" + paramArrayOfByte.uint32_seq.get() + "]");
+    n = j;
+    i1 = j;
+    lze.a();
+    label1058:
+    for (;;)
+    {
+      label245:
+      long l1;
+      long l2;
+      Object localObject2;
+      int m;
+      float f1;
+      float f2;
+      label837:
+      int k = 0 - (int)(l1 - l2);
+      continue;
+      label850:
+      if (localObject2 == null)
+      {
+        n = j;
+        i1 = j;
+        this.jdField_a_of_type_ArrayOfLly[1] = lmd.a(((AVFunDrawing.DrawingInfo)localObject1).uint32_pen_type.get());
+        if (m == 2)
+        {
+          i = 1;
+          continue;
+          n = j;
+          i1 = j;
+          this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(161) });
+          n = j;
+          i1 = j;
+          a(1, f1, f2);
+          continue;
+          n = j;
+          i1 = j;
+          b(1, f1, f2);
+          continue;
+          n = j;
+          i1 = j;
+          c(1, f1, f2);
+          continue;
+          n = j;
+          i1 = j;
+          QLog.w("DoodleLogic", 1, "receiveDoodle, msg_point_info[null], uint32_seq[" + paramArrayOfByte.uint32_seq.get() + "], offset[" + k + " = " + l2 + " - " + l1 + "]");
+          return j;
+          continue;
+        }
+        if (m != 3) {}
+      }
+      label977:
+      i = m;
+    }
+  }
+  
+  public lma a()
+  {
+    return this.jdField_a_of_type_Lma;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_ArrayOfLly[0] = null;
+    this.jdField_a_of_type_ArrayOfLly[1] = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.e = 0;
+    this.jdField_a_of_type_Int = -65536;
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_ArrayOfBoolean[1] = false;
+    int i = this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    QLog.w("DoodleLogic", 1, "resetDoodle, mSendQuene[" + i + "]", new Throwable("打印调用栈"));
+  }
+  
+  public void a(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    boolean bool = true;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        this.jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ArrayOfLly[0] = lmd.a(this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_ArrayOfLly[0].e = this.jdField_a_of_type_Int;
+          this.jdField_a_of_type_ArrayOfLly[0].jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+          this.jdField_a_of_type_ArrayOfLly[0].c = this.c;
+          this.jdField_a_of_type_ArrayOfLly[0].d = this.d;
+        }
+        QLog.w("DoodleLogic", 1, "touch_start, index[" + paramInt + "], item[" + this.jdField_a_of_type_ArrayOfLly[paramInt] + "], pt[" + paramFloat1 + ", " + paramFloat2 + "]");
+        this.jdField_a_of_type_ArrayOfLly[paramInt].a(paramFloat1, paramFloat2);
+        if (this.jdField_a_of_type_Boolean) {
+          b(1);
+        }
+        if (this.jdField_a_of_type_Lma != null) {
+          this.jdField_a_of_type_Lma.invalidate();
+        }
+        return;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      }
+      bool = false;
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    if (AudioHelper.e()) {
+      QLog.w("DoodleLogic", 1, "startSendDoodleHandle, delayMillis[" + paramLong + "]");
+    }
+    ThreadManager.getUIHandler().postDelayed(new DoodleLogic.1(this), paramLong);
+  }
+  
+  public void a(lma paramlma)
+  {
+    this.jdField_a_of_type_Lma = paramlma;
+  }
+  
+  public boolean a()
+  {
+    return this.e > 0;
+  }
+  
+  public void b()
+  {
+    lmb locallmb = (lmb)this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    if (locallmb == null) {
+      QLog.w("DoodleLogic", 1, "sendDoodle, 结束");
+    }
+    do
+    {
+      return;
+      AVFunDrawing.MessageBody localMessageBody = locallmb.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
+      long l = AudioHelper.a();
+      localMessageBody.uint64_time.set(l);
+      Object localObject = localMessageBody.toByteArray();
+      this.jdField_a_of_type_ComTencentAvVideoController.a(2, (byte[])localObject);
+      localObject = (AVFunDrawing.PointInfo)((AVFunDrawing.DrawingInfo)localMessageBody.drawingInfo.get()).msg_point_info.get(0);
+      float f1 = ((AVFunDrawing.PointInfo)localObject).float_x.get();
+      float f2 = ((AVFunDrawing.PointInfo)localObject).float_y.get();
+      int i = ((AVFunDrawing.PointInfo)localObject).uint32_type.get();
+      QLog.w("DoodleLogic", 1, "sendDoodle, sendtime[" + l + "], offset[" + (l - locallmb.jdField_a_of_type_Long) + "], pt[" + f1 + ", " + f2 + "], uint32_type[" + i + "], uint32_seq[" + localMessageBody.uint32_seq.get() + "], size[" + this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + "]");
+    } while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0);
+    a(1L);
+  }
+  
+  /* Error */
+  public void b(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 51	llz:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   4: invokevirtual 416	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   7: aload_0
+    //   8: getfield 36	llz:jdField_a_of_type_ArrayOfLly	[Llly;
+    //   11: iload_1
+    //   12: aaload
+    //   13: ifnull +58 -> 71
+    //   16: aload_0
+    //   17: getfield 36	llz:jdField_a_of_type_ArrayOfLly	[Llly;
+    //   20: iload_1
+    //   21: aaload
+    //   22: fload_2
+    //   23: fload_3
+    //   24: invokevirtual 479	lly:a	(FF)Z
+    //   27: ifeq +44 -> 71
+    //   30: iload_1
+    //   31: ifne +48 -> 79
+    //   34: iconst_1
+    //   35: istore 4
+    //   37: aload_0
+    //   38: iload 4
+    //   40: putfield 38	llz:jdField_a_of_type_Boolean	Z
+    //   43: aload_0
+    //   44: getfield 38	llz:jdField_a_of_type_Boolean	Z
+    //   47: ifeq +8 -> 55
+    //   50: aload_0
+    //   51: iconst_2
+    //   52: invokespecial 425	llz:b	(I)V
+    //   55: aload_0
+    //   56: getfield 86	llz:jdField_a_of_type_Lma	Llma;
+    //   59: ifnull +12 -> 71
+    //   62: aload_0
+    //   63: getfield 86	llz:jdField_a_of_type_Lma	Llma;
+    //   66: invokeinterface 428 1 0
+    //   71: aload_0
+    //   72: getfield 51	llz:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   75: invokevirtual 431	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   78: return
+    //   79: iconst_0
+    //   80: istore 4
+    //   82: goto -45 -> 37
+    //   85: astore 5
+    //   87: aload_0
+    //   88: getfield 51	llz:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   91: invokevirtual 431	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   94: aload 5
+    //   96: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	97	0	this	llz
+    //   0	97	1	paramInt	int
+    //   0	97	2	paramFloat1	float
+    //   0	97	3	paramFloat2	float
+    //   35	46	4	bool	boolean
+    //   85	10	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   7	30	85	finally
+    //   37	55	85	finally
+    //   55	71	85	finally
+  }
+  
+  public void b(long paramLong)
+  {
+    lly[] arrayOflly = this.jdField_a_of_type_ArrayOfLly;
+    int j = arrayOflly.length;
+    int i = 0;
+    while (i < j)
+    {
+      lly locallly = arrayOflly[i];
+      if (locallly != null) {
+        locallly.a(paramLong);
+      }
+      i += 1;
+    }
+  }
+  
+  public void c()
+  {
+    boolean bool = lmd.a();
+    Object localObject = new AVFunDrawing.MessageBody();
+    ((AVFunDrawing.MessageBody)localObject).uint32_msg_type.set(1);
+    AVFunDrawing.VersionInfo localVersionInfo = new AVFunDrawing.VersionInfo();
+    localVersionInfo.uint32_version.set(1);
+    PBUInt32Field localPBUInt32Field = localVersionInfo.uint32_support_drawing;
+    if (bool) {}
+    for (int i = 1;; i = 0)
+    {
+      localPBUInt32Field.set(i);
+      ((AVFunDrawing.MessageBody)localObject).versionInfo.set(localVersionInfo);
+      i = a();
+      ((AVFunDrawing.MessageBody)localObject).uint32_seq.set(i);
+      localObject = ((AVFunDrawing.MessageBody)localObject).toByteArray();
+      this.jdField_a_of_type_ComTencentAvVideoController.a(2, (byte[])localObject);
+      QLog.w("DoodleLogic", 1, "sendSelfIsSupport, isSelfSupport[" + bool + "], uint32_seq[" + i + "]");
+      lze.a();
+      return;
+    }
+  }
+  
+  public void c(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    boolean bool = true;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ArrayOfLly[paramInt] == null) {
+          break label170;
+        }
+        this.jdField_a_of_type_ArrayOfLly[paramInt].c(paramFloat1, paramFloat2);
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      }
+      this.jdField_a_of_type_Boolean = bool;
+      if (this.jdField_a_of_type_Boolean) {
+        b(3);
+      }
+      QLog.w("DoodleLogic", 1, "touch_up, index[" + paramInt + "], item[" + this.jdField_a_of_type_ArrayOfLly[paramInt] + "], pt[" + paramFloat1 + ", " + paramFloat2 + "]");
+      a(paramInt);
+      if (this.jdField_a_of_type_Lma != null) {
+        this.jdField_a_of_type_Lma.invalidate();
+      }
+      this.jdField_a_of_type_ArrayOfBoolean[paramInt] = false;
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return;
+      bool = false;
+      continue;
+      label170:
+      if (paramInt != 0) {}
     }
   }
 }

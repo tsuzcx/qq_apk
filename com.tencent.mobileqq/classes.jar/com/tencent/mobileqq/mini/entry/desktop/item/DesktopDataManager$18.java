@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import aukm;
-import aukn;
 import auko;
+import aukp;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -18,12 +18,12 @@ class DesktopDataManager$18
     if (localObject == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    aukn localaukn;
+    aukp localaukp;
     do
     {
       return;
-      localaukn = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localaukn == null);
+      localaukp = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localaukp == null);
     for (;;)
     {
       try
@@ -37,7 +37,7 @@ class DesktopDataManager$18
         if (localObject != null)
         {
           ((DeskTopAppEntity)localObject).setStatus(1000);
-          DesktopDataManager.access$3100(this.this$0, localaukn, (aukm)localObject);
+          DesktopDataManager.access$3100(this.this$0, localaukp, (auko)localObject);
           localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
         }
         if (!QLog.isColorLevel()) {

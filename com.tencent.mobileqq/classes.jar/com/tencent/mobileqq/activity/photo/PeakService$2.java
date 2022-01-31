@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agmi;
+import agmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ class PeakService$2
     if (QLog.isColorLevel()) {
       QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
     }
-    agmi.a(BaseApplicationImpl.getContext()).a();
+    agmg.a(BaseApplicationImpl.getContext()).a();
   }
 }
 

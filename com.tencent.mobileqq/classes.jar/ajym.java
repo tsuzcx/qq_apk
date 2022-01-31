@@ -1,18 +1,15 @@
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 final class ajym
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  ajym(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  ajym(Activity paramActivity, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

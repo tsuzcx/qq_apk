@@ -1,27 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class aaqg
-  implements Animation.AnimationListener
+class aaqg
+  implements DialogInterface.OnCancelListener
 {
-  public aaqg(ChatFragment paramChatFragment) {}
+  aaqg(aaqf paramaaqf) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

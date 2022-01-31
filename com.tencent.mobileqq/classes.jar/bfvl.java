@@ -1,15 +1,4 @@
-import android.view.View;
-
-public abstract interface bfvl
-{
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(View paramView);
-  
-  public abstract void e();
-}
+public class bfvl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

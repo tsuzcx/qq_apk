@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
+import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
 import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.MyMsgListener.1;
 
 public class lye
-  implements DialogInterface.OnDismissListener
+  extends lhb<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
 {
-  public lye(AVSchema paramAVSchema) {}
+  public lyd a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public lye(AVSchema paramAVSchema, lyd paramlyd)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    this.jdField_a_of_type_Lyd = paramlyd;
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
+  {
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
+      return;
     }
-    this.a.b();
+    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
   }
 }
 

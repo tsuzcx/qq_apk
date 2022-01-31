@@ -1,10 +1,27 @@
-public class wzv
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class wzv
+  extends Handler
 {
-  public wzv(wyw paramwyw) {}
+  wzv(wzt paramwzt) {}
   
-  public void a(wzu paramwzu) {}
-  
-  public void b(wzu paramwzu) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Azpg + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Azph);
+    }
+    if (this.a.jdField_a_of_type_Azph != null) {
+      this.a.a(this.a.jdField_a_of_type_Azph);
+    }
+    this.a.a();
+  }
 }
 
 

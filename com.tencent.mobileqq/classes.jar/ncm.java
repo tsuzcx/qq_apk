@@ -1,129 +1,131 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.huanjiplugin.TranslucentActivty;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.lebasearch.Utils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ncm
+  extends WebViewPlugin
 {
-  private static volatile ncm jdField_a_of_type_Ncm;
-  int jdField_a_of_type_Int = 0;
-  private bgkq jdField_a_of_type_Bgkq;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new ncn(this);
-  String jdField_a_of_type_JavaLangString;
-  nco jdField_a_of_type_Nco;
+  public ajte a;
+  bbgu jdField_a_of_type_Bbgu;
+  String jdField_a_of_type_JavaLangString = null;
+  wxr jdField_a_of_type_Wxr = null;
+  bbgu b = null;
   
-  public static ncm a()
+  public ncm()
   {
-    if (jdField_a_of_type_Ncm == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ncm == null) {
-        jdField_a_of_type_Ncm = new ncm();
-      }
-      return jdField_a_of_type_Ncm;
-    }
-    finally {}
+    this.jdField_a_of_type_Ajte = new ncn(this);
+    this.mPluginNameSpace = "lebaPlugin";
   }
   
-  public ncl a(String paramString1, String paramString2, String paramString3)
+  private void a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("HuanjiPlugin", 2, "queryStatuspackageName = " + paramString1 + "pluginId =" + paramString2 + "version = " + paramString3);
-    }
-    if ((this.jdField_a_of_type_Bgkq == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return null;
-    }
-    paramString1 = this.jdField_a_of_type_Bgkq.a("qhuanji_plugin.apk");
-    if ((paramString1 != null) && (QLog.isColorLevel())) {
-      QLog.w("HuanjiPlugin", 2, "queryPluginstate = " + paramString1.mState + "pluginSize =" + paramString1.mLength + "version = " + paramString1.mVersion);
-    }
-    paramString2 = new ncl();
-    if (paramString1 != null)
+    if ((this.mRuntime.a() == null) || (this.mRuntime.a().isFinishing())) {}
+    do
     {
-      if (paramString1.mState == 0) {
-        ncl.jdField_a_of_type_Int = 0;
+      return;
+      if (this.jdField_a_of_type_Bbgu == null) {
+        this.jdField_a_of_type_Bbgu = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, paramInt, paramLong, paramString1, paramString2);
       }
-      for (;;)
+    } while (this.jdField_a_of_type_Bbgu.isShowing());
+    this.jdField_a_of_type_Bbgu.show();
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    paramJsBridgeListener = paramVarArgs[0];
+    if (paramString3 == null) {
+      return false;
+    }
+    if (paramString3.equals("showOpenDialog")) {}
+    for (;;)
+    {
+      long l;
+      try
       {
-        ncl.jdField_a_of_type_Long = paramString1.mLength;
-        return paramString2;
-        if (paramString1.mState == 2) {
-          ncl.jdField_a_of_type_Int = 1;
-        } else if ((paramString1.mState == 4) && (paramString1.mVersion.equals(paramString3))) {
-          ncl.jdField_a_of_type_Int = 2;
-        } else if ((paramString1.mState == 4) && (!paramString1.mVersion.equals(paramString3))) {
-          ncl.jdField_a_of_type_Int = 3;
+        paramString1 = new JSONObject(paramJsBridgeListener);
+        l = paramString1.optLong("id", -1L);
+        paramJsBridgeListener = paramString1.optString("msg");
+        paramString1 = paramString1.optString("callback");
+        if (l != -1L)
+        {
+          paramString2 = new Bundle();
+          paramString2.putInt("reqCode", 10000);
+          paramString2.putLong("uiResId", l);
+          paramString2.putString("msg", paramJsBridgeListener);
+          paramString2.putString("callback", paramString1);
+          paramString2.putInt("dialogType", 1);
+          this.jdField_a_of_type_Wxr.a(18, paramString2, this.jdField_a_of_type_Ajte);
+        }
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        continue;
+      }
+      return true;
+      if (paramString3.equals("getPluginStatus")) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
+          l = paramJsBridgeListener.optLong("id", -1L);
+          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+          if (l == -1L) {
+            continue;
+          }
+          paramString1 = new Bundle();
+          paramString1.putInt("reqCode", 10002);
+          paramString1.putLong("uiResId", l);
+          paramString1.putString("callback", paramJsBridgeListener);
+          this.jdField_a_of_type_Wxr.a(18, paramString1, this.jdField_a_of_type_Ajte);
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+        }
+      } else if (paramString3.equals("search")) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramJsBridgeListener).optString("keyWord");
+          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          {
+            if (this.mRuntime.a() != null) {}
+            awwa.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
+          }
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
         }
       }
     }
-    ncl.jdField_a_of_type_Int = 0;
-    return paramString2;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onCreate()
   {
-    if (this.jdField_a_of_type_Nco != null) {
-      this.jdField_a_of_type_Nco.a(paramInt1, paramInt2, paramInt3);
-    }
+    super.onCreate();
+    this.jdField_a_of_type_Wxr = wxr.a();
+    this.jdField_a_of_type_Wxr.a();
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bgkq = ((bgkq)paramQQAppInterface.getManager(27));
-  }
-  
-  public boolean a(String paramString1, int paramInt, String paramString2, nco paramnco)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("HuanjiPlugin", 2, "huanjiDownloadstartParam = " + paramString2);
+    if (this.jdField_a_of_type_Wxr != null) {
+      this.jdField_a_of_type_Wxr.b();
     }
-    axra localaxra = new axra(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_huanji").c("Grp_download");
-    String str;
-    if (paramInt == 2)
-    {
-      str = "Clk_start";
-      localaxra.d(str).a(new String[] { paramString1 }).a();
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaLangString = paramString2;
-      paramString1 = this.jdField_a_of_type_Bgkq.a("qhuanji_plugin.apk");
-      this.jdField_a_of_type_Nco = paramnco;
-      if ((paramString1 == null) || (paramString1.mState == 4)) {
-        break label163;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("HuanjiPlugin", 2, "换机插件还未安装 installPlugin");
-      }
-      this.jdField_a_of_type_Bgkq.installPlugin("qhuanji_plugin.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener);
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.dismiss();
     }
-    label163:
-    do
-    {
-      return true;
-      str = "Clk_download";
-      break;
-      if (paramInt == 2)
-      {
-        paramString1 = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), TranslucentActivty.class);
-        paramString1.putExtra("startParam", paramString2);
-        paramString1.addFlags(268435456);
-        paramString1.putExtras(paramString1);
-        BaseApplicationImpl.getApplication().getApplicationContext().startActivity(paramString1);
-        return true;
-      }
-    } while (this.jdField_a_of_type_Nco == null);
-    this.jdField_a_of_type_Nco.a(3, 4, 100);
-    return true;
+    super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ncm
  * JD-Core Version:    0.7.0.1
  */

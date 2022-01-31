@@ -1,106 +1,53 @@
-import PUSH_COMM_STRUCT.BinaryPushInfo;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 import cooperation.qzone.util.QZLog;
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.zip.Inflater;
+import cooperation.qzone.util.exception.QZoneStartupFailException;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bhnw
+  extends Handler
 {
-  public static <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
+  public bhnw(QzoneThreadMonitor paramQzoneThreadMonitor, Looper paramLooper)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramT)
-    {
-      paramT.printStackTrace();
-    }
-    return null;
+    super(paramLooper);
   }
   
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
+    switch (paramMessage.what)
     {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramClass.readFrom(paramArrayOfByte);
-      return paramClass;
+    default: 
+      return;
     }
-    catch (Exception paramClass)
+    bhny localbhny = (bhny)paramMessage.obj;
+    if (!QzoneThreadMonitor.access$000(this.a).containsKey(localbhny.jdField_a_of_type_JavaLangString))
     {
-      paramClass.printStackTrace();
+      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage has been canceled. id=", localbhny.jdField_a_of_type_JavaLangString });
+      return;
     }
-    return null;
-  }
-  
-  public static byte[] a(JceStruct paramJceStruct)
-  {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("utf8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
-  }
-  
-  public static byte[] a(ArrayList paramArrayList)
-  {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("utf8");
-    localJceOutputStream.write(paramArrayList, 0);
-    return localJceOutputStream.toByteArray();
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    Object localObject1 = paramArrayOfByte;
-    Object localObject2;
-    if (paramArrayOfByte != null)
+    if (paramMessage.arg1 >= 10)
     {
-      localObject2 = (BinaryPushInfo)a(BinaryPushInfo.class, paramArrayOfByte);
-      if (((BinaryPushInfo)localObject2).compressType != 0L) {
-        break label32;
-      }
-      localObject1 = ((BinaryPushInfo)localObject2).pushBuffer;
+      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "stack check for too many times. id=", localbhny.jdField_a_of_type_JavaLangString });
+      return;
     }
-    label32:
-    do
-    {
-      return localObject1;
-      localObject1 = paramArrayOfByte;
-    } while (((BinaryPushInfo)localObject2).compressType != 2L);
-    ByteArrayOutputStream localByteArrayOutputStream;
-    try
-    {
-      localObject1 = new Inflater();
-      ((Inflater)localObject1).setInput(((BinaryPushInfo)localObject2).pushBuffer, 0, ((BinaryPushInfo)localObject2).pushBuffer.length);
-      localObject2 = new byte[4096];
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      while (!((Inflater)localObject1).finished()) {
-        localByteArrayOutputStream.write((byte[])localObject2, 0, ((Inflater)localObject1).inflate((byte[])localObject2));
-      }
-      localException.end();
+    Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localbhny.jdField_b_of_type_JavaLangString).getThread().getStackTrace(), localbhny.jdField_b_of_type_JavaLangString + " id=" + localbhny.jdField_a_of_type_JavaLangString + ": ");
+    QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localbhny.jdField_b_of_type_JavaLangString, " id=", localbhny.jdField_a_of_type_JavaLangString, " what=", Integer.valueOf(localbhny.jdField_a_of_type_Int), " msg.target=", localbhny.c, " msg.callback=", localbhny.d });
+    QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
+      bhph.a(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
     }
-    catch (Exception localException)
+    paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.a), 1, paramMessage.arg1 + 1, 0, localbhny);
+    localObject = QzoneThreadMonitor.access$200(this.a);
+    if (localbhny.jdField_b_of_type_Int == 1) {}
+    for (long l = 500L;; l = 250L)
     {
-      QZLog.e("JceUtils.inflateByte", "Push Buf decompresse error!", localException);
-      return paramArrayOfByte;
+      ((Handler)localObject).sendMessageDelayed(paramMessage, l);
+      return;
     }
-    byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-    return arrayOfByte;
   }
 }
 

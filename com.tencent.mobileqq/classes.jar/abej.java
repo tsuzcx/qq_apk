@@ -1,17 +1,14 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class abej
-  implements bfps
+  implements DialogInterface.OnClickListener
 {
-  abej(abeh paramabeh, View paramView) {}
+  abej(abeh paramabeh) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Abeh.a = false;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
-      this.jdField_a_of_type_Abeh.a((TextView)this.jdField_a_of_type_AndroidViewView);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

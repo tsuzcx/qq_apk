@@ -1,13 +1,13 @@
-import android.support.annotation.NonNull;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class vxz
+final class vxz
+  extends ThreadLocal<DateFormat>
 {
-  public void a(byte[] paramArrayOfByte) {}
-  
-  @NonNull
-  public byte[] a(int paramInt)
+  protected DateFormat a()
   {
-    return new byte[paramInt];
+    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
   }
 }
 

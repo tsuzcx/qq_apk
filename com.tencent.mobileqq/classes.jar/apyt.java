@@ -1,13 +1,35 @@
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class apyt
-  implements admv
+  implements BusinessObserver
 {
-  public apyt(FlashChatPanel paramFlashChatPanel) {}
-  
   public void a() {}
   
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
   public void b() {}
+  
+  public void b(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 967: 
+      b(paramBoolean, paramBundle);
+      return;
+    case 968: 
+      a(paramBoolean, paramBundle);
+      return;
+    case 969: 
+      b();
+      return;
+    }
+    a();
+  }
 }
 
 

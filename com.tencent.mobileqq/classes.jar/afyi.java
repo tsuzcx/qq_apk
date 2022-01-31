@@ -1,25 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-
-public class afyi
-  extends afxr
+public abstract interface afyi
 {
-  public static final int[] a = { 2131690735 };
-  public static final int[] b = { 2131364098 };
+  public abstract void a();
   
-  public afyi(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
+  public abstract void b();
   
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
-  }
+  public abstract void c();
 }
 
 

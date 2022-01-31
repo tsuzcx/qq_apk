@@ -1,19 +1,22 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mda
-  implements mht
+class mda
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public mda(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  mda(mcz parammcz, TextView paramTextView) {}
   
-  public void a()
+  public boolean onPreDraw()
   {
-    this.a.j = true;
-    this.a.L();
-  }
-  
-  public void b()
-  {
-    this.a.j = false;
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.jdField_a_of_type_Mcz.a.a().a().at = true;
+    muc.a(this.jdField_a_of_type_Mcz.a);
+    QLog.d("qav_face_guide", 1, "onPreDraw");
+    return false;
   }
 }
 

@@ -1,54 +1,22 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.widget.RatingBar;
 
 public class muz
+  implements View.OnClickListener
 {
-  public static String a;
-  public static String b = jdField_a_of_type_JavaLangString + "test/";
-  public static String c = "min_sdk";
-  public static String d = "disable_sdk";
-  public static String e = "flag";
-  public static String f = b + c;
-  public static String g = b + d;
-  public static String h = b + e;
-  @Deprecated
-  lle a;
+  public muz(RatingBar paramRatingBar) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
-  }
-  
-  public muz()
-  {
-    this.jdField_a_of_type_Lle = null;
-  }
-  
-  public int a(lle paramlle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
-    }
-    try
+    if (RatingBar.a(this.a))
     {
-      int[] arrayOfInt = paramlle.a(h);
-      if (arrayOfInt != null)
-      {
-        if ((arrayOfInt[0] & 0x1) != 1) {
-          return 0;
-        }
-        arrayOfInt = paramlle.a(f);
-        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
-        {
-          boolean bool = mqs.a(paramlle.a(g), Build.VERSION.SDK_INT);
-          if (!bool) {
-            return 1;
-          }
-        }
+      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
+      this.a.setStar(RatingBar.a(this.a), true);
+      if (RatingBar.a(this.a) != null) {
+        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
       }
     }
-    catch (Exception paramlle) {}
-    return 0;
   }
 }
 

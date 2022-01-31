@@ -1,18 +1,19 @@
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
 
 public class rhx
-  implements bfob
+  implements View.OnClickListener
 {
   public rhx(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.e = false;
-    }
+    this.a.d = true;
+    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
+    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
-import akwb;
+import ajya;
+import akwa;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -28,7 +28,7 @@ public class MessageForTroopFile
   {
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)akwb.a(this.msgData);
+      TroopFileData localTroopFileData = (TroopFileData)akwa.a(this.msgData);
       if (localTroopFileData != null)
       {
         this.url = localTroopFileData.fileUrl;
@@ -46,7 +46,7 @@ public class MessageForTroopFile
         this.height = localTroopFileData.height;
         this.duration = localTroopFileData.duration;
       }
-      this.msg = ajyc.a(2131706569);
+      this.msg = ajya.a(2131706580);
       return;
     }
     catch (Exception localException)
@@ -61,7 +61,7 @@ public class MessageForTroopFile
   
   public String getSummaryMsg()
   {
-    return ajyc.a(2131706618) + this.fileName;
+    return ajya.a(2131706629) + this.fileName;
   }
   
   public boolean isSupportReply()
@@ -98,7 +98,7 @@ public class MessageForTroopFile
     localTroopFileData.duration = this.duration;
     try
     {
-      this.msgData = akwb.a(localTroopFileData);
+      this.msgData = akwa.a(localTroopFileData);
       return;
     }
     catch (Exception localException)

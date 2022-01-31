@@ -1,13 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class atdh
-  implements DialogInterface.OnClickListener
+  implements bcix<oidb_0x8e4.RspBody>
 {
   public atdh(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  {
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.a = this.a.b;
+    }
+    for (;;)
+    {
+      this.a.a(true);
+      return;
+      paramRspBody = this.a;
+      GameRoomInviteActivity.a = null;
+      paramRspBody.b = null;
+    }
+  }
 }
 
 

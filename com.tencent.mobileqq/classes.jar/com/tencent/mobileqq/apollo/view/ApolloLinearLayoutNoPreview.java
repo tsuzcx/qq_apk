@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajpz;
+import ajpx;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -18,7 +18,7 @@ public class ApolloLinearLayoutNoPreview
     super(paramContext, paramAttributeSet, paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(BaseChatPie paramBaseChatPie, ajpz paramajpz) {}
+  public void a(BaseChatPie paramBaseChatPie, ajpx paramajpx) {}
 }
 
 

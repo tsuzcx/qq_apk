@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import QQService.EVIPSPEC;
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -16,15 +16,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import auuw;
-import axqw;
-import bazo;
-import bblf;
-import bblg;
-import bblh;
-import bbrt;
-import bcpd;
-import bfwa;
+import auuy;
+import axqy;
+import bbac;
+import bblt;
+import bblu;
+import bblv;
+import bbsh;
+import bcps;
+import bfwr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -122,15 +122,15 @@ public class ProfileQQLevelView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561010, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373395));
+    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561009, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373397));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368167));
-    this.b = ((ImageView)findViewById(2131379265));
+    this.b = ((ImageView)findViewById(2131379270));
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368155));
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)findViewById(2131368107));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369847));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)findViewById(2131369566));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bfwa.b);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369846));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)findViewById(2131369565));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(bfwr.b);
     setVisibility(8);
   }
   
@@ -156,7 +156,7 @@ public class ProfileQQLevelView
       String str2 = str1.substring(i, i + 1);
       if ("N".equals(str2))
       {
-        paramString = localResources.getDrawable(2130844986);
+        paramString = localResources.getDrawable(2130844987);
         paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
       }
       for (;;)
@@ -165,24 +165,24 @@ public class ProfileQQLevelView
           localSpannableString.setSpan(new VerticalCenterImageSpan(paramString, 1), i, i + 1, 33);
         }
         if ((paramString != null) && ((paramString instanceof URLDrawable))) {
-          ((URLDrawable)paramString).setURLDrawableListener(new bcpd(paramTextView));
+          ((URLDrawable)paramString).setURLDrawableListener(new bcps(paramTextView));
         }
         i += 1;
         break;
         if ("B".equals(str2))
         {
-          paramString = localResources.getDrawable(2130845026);
+          paramString = localResources.getDrawable(2130845027);
           paramString.setBounds(0, 0, (int)(10.0D * this.jdField_a_of_type_Double), paramString.getIntrinsicHeight());
         }
         else if ("P".equalsIgnoreCase(str2))
         {
-          paramString = getResources().getDrawable(2130844998);
+          paramString = getResources().getDrawable(2130844999);
           j = paramString.getIntrinsicHeight();
           paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), j);
         }
         else if ("G".equalsIgnoreCase(str2))
         {
-          paramString = getResources().getDrawable(2130844997);
+          paramString = getResources().getDrawable(2130844998);
           j = paramString.getIntrinsicHeight();
           paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), j);
         }
@@ -191,7 +191,7 @@ public class ProfileQQLevelView
     paramTextView.setText(localSpannableString);
   }
   
-  public void a(auuw paramauuw, boolean paramBoolean)
+  public void a(auuy paramauuy, boolean paramBoolean)
   {
     Card localCard;
     boolean bool6;
@@ -205,7 +205,7 @@ public class ProfileQQLevelView
     label89:
     long l;
     Object localObject1;
-    if (paramauuw == null)
+    if (paramauuy == null)
     {
       localCard = null;
       if (localCard == null) {
@@ -222,7 +222,7 @@ public class ProfileQQLevelView
         break label160;
       }
       bool3 = true;
-      if (!ProfileActivity.AllInOne.a(paramauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
+      if (!ProfileActivity.AllInOne.a(paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
         break label166;
       }
       bool1 = true;
@@ -242,7 +242,7 @@ public class ProfileQQLevelView
         }
         setVisibility(8);
         return;
-        localCard = paramauuw.jdField_a_of_type_ComTencentMobileqqDataCard;
+        localCard = paramauuy.jdField_a_of_type_ComTencentMobileqqDataCard;
         break;
         label154:
         bool2 = false;
@@ -270,33 +270,33 @@ public class ProfileQQLevelView
       if ((localCard == null) || (localCard.isHidePrettyGroutIdentity))
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramauuw = a(this.jdField_a_of_type_JavaLangStringBuilder, bool3, bool5, bool6, localCard);
+        paramauuy = a(this.jdField_a_of_type_JavaLangStringBuilder, bool3, bool5, bool6, localCard);
         ProfileActivity.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.b);
         ProfileActivity.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentImageURLImageView);
-        QLog.e("ProfileQQLevelView", 1, "update level view :" + paramauuw + " , " + l);
-        if (TextUtils.isEmpty(paramauuw)) {
+        QLog.e("ProfileQQLevelView", 1, "update level view :" + paramauuy + " , " + l);
+        if (TextUtils.isEmpty(paramauuy)) {
           break label1075;
         }
-        a(this.jdField_a_of_type_AndroidWidgetTextView, paramauuw);
+        a(this.jdField_a_of_type_AndroidWidgetTextView, paramauuy);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        int[] arrayOfInt = bblf.a(localQQAppInterface, localCard.uin);
-        bool7 = bblf.a(arrayOfInt[0]);
+        int[] arrayOfInt = bblt.a(localQQAppInterface, localCard.uin);
+        bool7 = bblt.a(arrayOfInt[0]);
         localObject2 = null;
         j = 0;
         i = j;
-        paramauuw = (auuw)localObject2;
+        paramauuy = (auuy)localObject2;
         if (bool7) {
           if (!localCard.uin.equals(localQQAppInterface.getCurrentAccountUin()))
           {
             i = j;
-            paramauuw = (auuw)localObject2;
-            if (bblf.b(arrayOfInt[1])) {}
+            paramauuy = (auuy)localObject2;
+            if (bblt.b(arrayOfInt[1])) {}
           }
           else
           {
-            paramauuw = bblf.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, bblg.a(arrayOfInt[0]), bblf.b(arrayOfInt[1]));
-            i = bblf.a(bblg.a(arrayOfInt[0]));
+            paramauuy = bblt.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, bblu.a(arrayOfInt[0]), bblt.b(arrayOfInt[1]));
+            i = bblt.a(bblu.a(arrayOfInt[0]));
           }
         }
         k = 0;
@@ -311,11 +311,11 @@ public class ProfileQQLevelView
           break label1087;
         }
         i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_QQVIP);
-        paramauuw = bblf.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
+        paramauuy = bblt.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
         if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-          QLog.d("ProfileQQLevelView", 1, "vip member icon show :" + paramauuw);
+          QLog.d("ProfileQQLevelView", 1, "vip member icon show :" + paramauuy);
         }
-        i = 2130846153;
+        i = 2130846159;
         j = 1;
         localObject1 = localObject2;
       }
@@ -323,11 +323,11 @@ public class ProfileQQLevelView
       {
         label579:
         k = i;
-        localObject2 = paramauuw;
+        localObject2 = paramauuy;
         if (!bool7)
         {
           k = i;
-          localObject2 = paramauuw;
+          localObject2 = paramauuy;
           if (j == 0)
           {
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -339,8 +339,8 @@ public class ProfileQQLevelView
               break label1538;
             }
             i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_SUPERVIP);
-            localObject2 = bblf.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
-            k = 2130846152;
+            localObject2 = bblt.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
+            k = 2130846158;
           }
         }
         label673:
@@ -348,28 +348,28 @@ public class ProfileQQLevelView
         {
           VipUtils.a(getResources(), this.b, (String)localObject2, getResources().getDrawable(k));
           this.b.setVisibility(0);
-          this.b.setContentDescription(ajyc.a(2131716807));
+          this.b.setContentDescription(ajya.a(2131716818));
           this.b.setFocusableInTouchMode(true);
-          paramauuw = bblh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, "VIA_PROFILECARD");
-          paramauuw.a();
-          this.b.setOnTouchListener(paramauuw);
+          paramauuy = bblv.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, "VIA_PROFILECARD");
+          paramauuy.a();
+          this.b.setOnTouchListener(paramauuy);
           if ((this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0) && (this.jdField_a_of_type_AndroidWidgetTextView.getText() != null) && ("N".equals(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()))) {
             this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
           }
           label816:
-          bbrt.a().a(this.jdField_a_of_type_ComTencentImageURLImageView, bool5, localCard.namePlateOfKingLoginTime, localCard.namePlateOfKingGameId, localCard.namePlateOfKingDan, localCard.namePlateOfKingDanDisplatSwitch, localCard.uin);
+          bbsh.a().a(this.jdField_a_of_type_ComTencentImageURLImageView, bool5, localCard.namePlateOfKingLoginTime, localCard.namePlateOfKingGameId, localCard.namePlateOfKingDan, localCard.namePlateOfKingDanDisplatSwitch, localCard.uin);
           if (localCard.iQQLevel < 0) {
             break label1618;
           }
           i = localCard.mQQLevelType;
-          paramauuw = bazo.a(getContext(), 10, i, localCard.iQQLevel, true);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(paramauuw, TextView.BufferType.SPANNABLE);
+          paramauuy = bbac.a(getContext(), 10, i, localCard.iQQLevel, true);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(paramauuy, TextView.BufferType.SPANNABLE);
           this.jdField_a_of_type_JavaLangStringBuilder.append(" 等级 ").append(localCard.iQQLevel).append("级 ");
           this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setVisibility(0);
           if (paramBoolean) {
             break label1630;
           }
-          this.jdField_a_of_type_ComTencentWidgetThemeImageView.setBackgroundResource(2130849622);
+          this.jdField_a_of_type_ComTencentWidgetThemeImageView.setBackgroundResource(2130849631);
         }
         for (;;)
         {
@@ -383,7 +383,7 @@ public class ProfileQQLevelView
           if (localCard.isPrettyGroupOwner)
           {
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A580", 0, 0, "", "", "", "");
+            axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A580", 0, 0, "", "", "", "");
             break label225;
           }
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -401,11 +401,11 @@ public class ProfileQQLevelView
             if (bool5)
             {
               i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_SUPERVIP);
-              paramauuw = bblf.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
+              paramauuy = bblt.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
               if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-                QLog.d("ProfileQQLevelView", 1, "svip member icon show :" + paramauuw);
+                QLog.d("ProfileQQLevelView", 1, "svip member icon show :" + paramauuy);
               }
-              i = 2130846152;
+              i = 2130846158;
               j = 1;
               localObject1 = localObject2;
               break label579;
@@ -424,8 +424,8 @@ public class ProfileQQLevelView
               if ((j & 0xF) == 1)
               {
                 i = VipUtils.a(localQQAppInterface, (String)localObject1, EVIPSPEC.E_SP_BIGCLUB);
-                paramauuw = bblf.a((i & 0xF) << 8 | i >> 8, localCard.iBigClubVipLevel, localCard.lBigClubTemplateId);
-                i = 2130846154;
+                paramauuy = bblt.a((i & 0xF) << 8 | i >> 8, localCard.iBigClubVipLevel, localCard.lBigClubTemplateId);
+                i = 2130846160;
                 label1360:
                 localObject1 = null;
                 k = 1;
@@ -439,8 +439,8 @@ public class ProfileQQLevelView
               j = k;
               break;
               i = VipUtils.a(localQQAppInterface, (String)localObject1, EVIPSPEC.E_SP_BIGCLUB);
-              paramauuw = bblf.a((i & 0xF) << 8 | i >> 8, localCard.iBigClubVipLevel, localCard.lBigClubTemplateId);
-              i = 2130846152;
+              paramauuy = bblt.a((i & 0xF) << 8 | i >> 8, localCard.iBigClubVipLevel, localCard.lBigClubTemplateId);
+              i = 2130846158;
               break label1360;
               localObject1 = "occur error: curMulType=" + l + " but bBigClubVipOpen userStatus=" + j;
               j = i;
@@ -454,13 +454,13 @@ public class ProfileQQLevelView
           break label618;
           label1538:
           k = i;
-          localObject2 = paramauuw;
+          localObject2 = paramauuy;
           if (!bool6) {
             break label673;
           }
           i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_QQVIP);
-          localObject2 = bblf.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
-          k = 2130846153;
+          localObject2 = bblt.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
+          k = 2130846159;
           break label673;
           this.b.setVisibility(8);
           this.b.setOnTouchListener(null);
@@ -469,7 +469,7 @@ public class ProfileQQLevelView
           this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setVisibility(8);
           break label928;
           label1630:
-          this.jdField_a_of_type_ComTencentWidgetThemeImageView.setBackgroundResource(2130849623);
+          this.jdField_a_of_type_ComTencentWidgetThemeImageView.setBackgroundResource(2130849632);
         }
         label1643:
         j = 0;

@@ -1,27 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhuk
-  extends Handler
 {
-  private final WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public bhuk(FastAnimationDrawable paramFastAnimationDrawable, Drawable paramDrawable)
+  public static void a(bcdp parambcdp, String... paramVarArgs)
   {
-    super(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDrawable);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    paramMessage = (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage != null) {
-      paramMessage.invalidateSelf();
+    paramVarArgs = new Intent("action_js2qzone");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", "CleanZebraNum");
+    paramVarArgs.putExtras(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, "actionString: " + paramVarArgs.getAction());
     }
+    bgyp.a(parambcdp.a(), bgyw.a(), paramVarArgs);
   }
 }
 

@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class acod
-  implements DialogInterface.OnClickListener
 {
-  public acod(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public int a;
+  public auko a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public acod(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, auko paramauko)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Auko = paramauko;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

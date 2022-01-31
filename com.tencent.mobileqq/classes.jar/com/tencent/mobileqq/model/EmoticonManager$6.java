@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
-import askd;
-import aukn;
+import askf;
+import aukp;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonManager$6
   implements Runnable
 {
-  public EmoticonManager$6(askd paramaskd, String paramString1, String paramString2) {}
+  public EmoticonManager$6(askf paramaskf, String paramString1, String paramString2) {}
   
   public void run()
   {

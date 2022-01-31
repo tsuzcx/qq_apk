@@ -17,8 +17,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bawi;
-import bclw;
+import baww;
+import bcml;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ import com.tencent.widget.Switch;
 
 public class StoryFormSwitchItem
   extends RelativeLayout
-  implements bclw
+  implements bcml
 {
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -99,8 +99,8 @@ public class StoryFormSwitchItem
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
     if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
     {
-      bawi.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-      bawi.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
+      baww.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      baww.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
       if (TextUtils.isEmpty(getContentDescription())) {
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }

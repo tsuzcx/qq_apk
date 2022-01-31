@@ -1,10 +1,11 @@
-class xhx
+import com.tencent.oskplayer.util.Singleton;
+
+public class xhx
+  extends Singleton<xhw>
 {
-  public long a;
-  
-  public xhx(long paramLong)
+  protected xhw a()
   {
-    this.a = paramLong;
+    return new xhw();
   }
 }
 

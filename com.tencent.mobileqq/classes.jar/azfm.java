@@ -1,13 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class azfm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public azfm(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364978: 
+      paramView = (bfpc)bfpp.a(this.a, null);
+      paramView.a(2131693381, 3);
+      paramView.c(2131690596);
+      paramView.a(new azfn(this, paramView));
+      paramView.show();
+      return;
+    case 2131362258: 
+      TroopAvatarWallPreviewActivity.d(this.a);
+      return;
+    }
+    TroopAvatarWallPreviewActivity.i(this.a);
+  }
 }
 
 

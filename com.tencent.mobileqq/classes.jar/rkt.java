@@ -1,64 +1,84 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AttachedAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastImageViewCreator.ImageViewHolder.1.1;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-class rkt
-  extends rkj
-  implements View.OnClickListener
+public class rkt
+  implements URLDrawableDownListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
+  rkt(rks paramrks) {}
   
-  public rkt(View paramView, BaseData paramBaseData)
-  {
-    super(paramView, paramBaseData);
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368406));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378378));
-    this.b = ((TextView)paramView.findViewById(2131378124));
-    sgw.a((FrameLayout)paramView.findViewById(2131366499), 0.0F, Color.parseColor("#dedfe0"), 1);
-    sgw.a((TextView)paramView.findViewById(2131378188), actn.a(2.0F, paramView.getResources()), Color.parseColor("#fa8726"), 1);
-    sgw.a((TextView)paramView.findViewById(2131378282), actn.a(2.0F, paramView.getResources()), Color.parseColor("#12b7f5"), 1);
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    switch (paramBaseData2.p)
+    if (paramURLDrawable == null) {
+      return;
+    }
+    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + rks.a(this.a));
+    paramThrowable = (ImageData)this.a.a;
+    boolean bool = rkr.a(paramURLDrawable.getURL().getFile());
+    if (bool) {}
+    for (paramView = rkr.a(paramThrowable.jdField_a_of_type_JavaLangString, paramThrowable);; paramView = paramThrowable.jdField_a_of_type_JavaLangString)
     {
-    default: 
-      throw new IllegalArgumentException();
+      paramView = sfa.a(paramView, 4);
+      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
+        break;
+      }
+      if (rks.b(this.a) < 2) {
+        rks.c(this.a);
+      }
+      rks.d(this.a);
+      if ((bool) && (rks.a(this.a) < 3))
+      {
+        paramThrowable.jdField_a_of_type_Boolean = false;
+        ThreadManager.getUIHandler().post(new WebFastImageViewCreator.ImageViewHolder.1.1(this, paramThrowable));
+      }
+      paramView = new HashMap();
+      paramView.put("isSharpP", String.valueOf(bool));
+      paramView.put("url", paramThrowable.jdField_a_of_type_JavaLangString);
+      axrn.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", false, 0L, 0L, paramView, "", true);
+      return;
     }
-    paramBaseData1 = (AttachedAdData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.j);
-    this.b.setText(paramBaseData1.k);
-    paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
-    paramBaseData2.mRequestWidth = actn.a(85.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    paramBaseData2.mRequestHeight = actn.a(72.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
-    paramBaseData2.mPlayGifImage = true;
-    paramBaseData2.mMemoryCacheKeySuffix = "fast_web";
-    paramBaseData1 = URLDrawable.getDrawable(sfd.a(paramBaseData1.l, 4), paramBaseData2);
-    if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
-      paramBaseData1.restartDownload();
-    }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
   }
   
-  public void onClick(View paramView)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    rnn.a((Activity)paramView.getContext(), (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    if (paramURLDrawable == null) {
+      return;
+    }
+    ImageData localImageData = (ImageData)this.a.a;
+    boolean bool = rkr.a(paramURLDrawable.getURL().getFile());
+    if (bool) {}
+    for (paramView = rkr.a(localImageData.jdField_a_of_type_JavaLangString, localImageData);; paramView = localImageData.jdField_a_of_type_JavaLangString)
+    {
+      paramView = sfa.a(paramView, 4);
+      if ((paramView == null) || (!paramView.equals(paramURLDrawable.getURL()))) {
+        break;
+      }
+      if ((localImageData.jdField_a_of_type_Int == 0) || (localImageData.b == 0))
+      {
+        rks.a(this.a, paramURLDrawable);
+        rks.a(this.a).setImageDrawable(paramURLDrawable);
+      }
+      paramView = new HashMap();
+      paramView.put("isSharpP", String.valueOf(bool));
+      paramView.put("url", localImageData.jdField_a_of_type_JavaLangString);
+      axrn.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", true, 0L, 0L, paramView, "", true);
+      return;
+    }
   }
 }
 

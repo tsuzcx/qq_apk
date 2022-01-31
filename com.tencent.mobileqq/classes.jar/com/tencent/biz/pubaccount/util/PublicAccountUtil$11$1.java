@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.data.OpenID;
-import sgj;
-import sgl;
+import sgg;
+import sgi;
 
 public class PublicAccountUtil$11$1
   implements Runnable
 {
-  public PublicAccountUtil$11$1(sgl paramsgl, Object paramObject) {}
+  public PublicAccountUtil$11$1(sgi paramsgi, Object paramObject) {}
   
   public void run()
   {
     if ((this.a instanceof OpenID))
     {
       OpenID localOpenID = (OpenID)this.a;
-      if (sgj.a(this.this$0.jdField_a_of_type_AndroidAppActivity, localOpenID, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams)) {
+      if (sgg.a(this.this$0.jdField_a_of_type_AndroidAppActivity, localOpenID, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams)) {
         break label77;
       }
     }
@@ -22,7 +22,7 @@ public class PublicAccountUtil$11$1
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        sgj.b(this.this$0.jdField_a_of_type_AndroidAppActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+        sgg.b(this.this$0.jdField_a_of_type_AndroidAppActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
       }
       return;
     }

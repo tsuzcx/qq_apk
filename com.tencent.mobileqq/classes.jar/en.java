@@ -12,7 +12,7 @@ class en
   
   public void onClick(View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131363964);
+    paramView = (TextView)paramView.findViewById(2131363963);
     el localel;
     if (paramView != null)
     {

@@ -1,44 +1,50 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqtl
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference<ScrollTextView> a;
+  public aqtl(QQGameStatusView paramQQGameStatusView) {}
   
-  public aqtl(ScrollTextView paramScrollTextView)
+  public void onClick(View paramView)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramScrollTextView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
-    if (localScrollTextView == null)
+    if ((QQGameStatusView.a(this.a) == null) || (QQGameStatusView.a(this.a))) {}
+    do
     {
-      removeCallbacksAndMessages(null);
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (ScrollTextView.a(localScrollTextView) != null)
-    {
-      localScrollTextView.b();
-      ScrollTextView.a(localScrollTextView);
-      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
-        ScrollTextView.a(localScrollTextView, 0);
+      do
+      {
+        return;
+        if (QQGameStatusView.a(this.a) == 1)
+        {
+          QQGameStatusView.a(this.a).b(QQGameStatusView.a(this.a));
+          return;
+        }
+        if (QQGameStatusView.a(this.a) == 2)
+        {
+          QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a));
+          return;
+        }
+        if (QQGameStatusView.a(this.a) == 3)
+        {
+          QQGameStatusView.a(this.a).c(QQGameStatusView.a(this.a));
+          return;
+        }
+        if (QQGameStatusView.a(this.a) == 5)
+        {
+          QQGameStatusView.a(this.a).d(QQGameStatusView.a(this.a));
+          return;
+        }
+      } while (QQGameStatusView.a(this.a) != 6);
+      if (!TextUtils.isEmpty(QQGameStatusView.b(this.a)))
+      {
+        QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a), QQGameStatusView.b(this.a));
+        return;
       }
-      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
-    }
-    removeMessages(9001);
-    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
+    } while (!QLog.isColorLevel());
+    QLog.d("QQGameStatusView", 1, "downloadFilePath is null,install faile");
   }
 }
 

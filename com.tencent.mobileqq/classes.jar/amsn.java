@@ -1,36 +1,68 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amsn
+  extends ampa<amsm>
 {
-  private boolean a;
-  
-  public static amsn a(String paramString)
+  public int a()
   {
-    if (paramString == null) {}
-    do
+    return 414;
+  }
+  
+  @NonNull
+  public amsm a(int paramInt)
+  {
+    return new amsm();
+  }
+  
+  @Nullable
+  public amsm a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      return null;
-      try
-      {
-        amsn localamsn = new amsn();
-        localamsn.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
-        return localamsn;
+      amsm localamsm = amsm.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      return localamsm;
+    }
     return null;
+  }
+  
+  public Class<amsm> a()
+  {
+    return amsm.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amsm paramamsm)
+  {
+    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramamsm.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramamsm.toString());
+    }
   }
   
   public boolean a()
   {
-    return this.a;
+    return false;
   }
   
-  public String toString()
+  public int b()
   {
-    return "needSeparate:" + this.a;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

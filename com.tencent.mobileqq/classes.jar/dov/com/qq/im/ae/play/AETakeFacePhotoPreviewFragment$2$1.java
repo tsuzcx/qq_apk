@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import biwy;
+import bixp;
 
 public class AETakeFacePhotoPreviewFragment$2$1
   implements Runnable
 {
-  public AETakeFacePhotoPreviewFragment$2$1(biwy parambiwy, boolean paramBoolean, int paramInt) {}
+  public AETakeFacePhotoPreviewFragment$2$1(bixp parambixp, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    AETakeFacePhotoPreviewFragment.a(this.jdField_a_of_type_Biwy.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    AETakeFacePhotoPreviewFragment.a(this.jdField_a_of_type_Bixp.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

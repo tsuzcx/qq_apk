@@ -1,16 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.EditText;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bjut
-  implements DialogInterface.OnDismissListener
+  implements bjhm
 {
-  bjut(bjun parambjun, bkih parambkih) {}
+  private int jdField_a_of_type_Int = -1;
+  private bjxn jdField_a_of_type_Bjxn;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public bjut(bjxn parambjxn)
   {
-    this.jdField_a_of_type_Bjun.a.a(0);
-    bjun.a(this.jdField_a_of_type_Bjun).setText(this.jdField_a_of_type_Bkih.a());
+    this.jdField_a_of_type_Bjxn = parambjxn;
+  }
+  
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EditVideoAblumList", 2, "download Res Finished , type id, " + this.jdField_a_of_type_Int + " isSuccess : " + paramBoolean + " url : " + paramString + " StickerStr : " + this.jdField_a_of_type_JavaLangString + " mParent : " + this.jdField_a_of_type_Bjxn);
+    }
+    if ((this.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bjxn != null)) {
+      this.jdField_a_of_type_Bjxn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -1,20 +1,10 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class atuq
-  implements View.OnClickListener
 {
-  atuq(atup paramatup) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(atup.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", "http://nearby.qq.com/nearby-topic/topicTags.html");
-    atup.a(this.a).startActivity(paramView);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
 }
 
 

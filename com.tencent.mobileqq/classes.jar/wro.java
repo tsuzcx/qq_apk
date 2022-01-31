@@ -1,73 +1,35 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_COMM.COMM.StCommonExt;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.Packet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class wro
-  extends wrm
+public abstract class wro
 {
-  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
-  {
-    paramBundle.putByteArray("key_data", paramArrayOfByte);
-    notifyObserver(paramIntent, this.a, true, paramBundle, null);
-  }
+  public static final AtomicInteger a = new AtomicInteger(0);
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public abstract byte[] a();
+  
+  public byte[] a(Intent paramIntent, int paramInt, String paramString)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    if (arrayOfByte != null) {}
-    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
-      for (;;)
-      {
-        try
-        {
-          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
-          i = paramIntent.getIntExtra("key_index", -1);
-          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
-          if (arrayOfByte == null) {}
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-        {
-          try
-          {
-            localObject1 = new CertifiedAccountMeta.StFeed();
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-          {
-            int i;
-            localObject1 = localObject3;
-          }
-          try
-          {
-            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
-            localObject2 = new wrn((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new byte[4];
-            }
-            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
-            paramPacket.putSendData(bblm.a((byte[])localObject1));
-            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
-            super.onSend(paramIntent, paramPacket);
-            return;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
-          {
-            break label166;
-          }
-          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
-          QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
-          continue;
-        }
-        label166:
-        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException("req traceId is null!");
     }
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(paramInt);
+    localStQWebReq.qua.set(bgyi.a());
+    localStQWebReq.deviceInfo.set(bgyh.a().c());
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    if (!TextUtils.isEmpty(paramString)) {
+      localStQWebReq.traceid.set(paramString);
+    }
+    if (paramIntent != null) {
+      paramIntent.putExtra("traceid", paramString);
+    }
+    return localStQWebReq.toByteArray();
   }
 }
 

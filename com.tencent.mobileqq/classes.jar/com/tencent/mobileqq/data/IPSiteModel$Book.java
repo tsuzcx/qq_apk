@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anif;
+import anik;
 
 public class IPSiteModel$Book
   implements Parcelable
 {
-  public static final Parcelable.Creator<Book> CREATOR = new anif();
+  public static final Parcelable.Creator<Book> CREATOR = new anik();
   public String authorName;
   public String cover;
   public String desc;

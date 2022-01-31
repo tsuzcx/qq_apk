@@ -1,20 +1,18 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
 
 public class audb
-  extends aucy
+  implements ndd
 {
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, aucu paramaucu, aucw paramaucw)
+  public audb(SearchResultFragment paramSearchResultFragment) {}
+  
+  public void a(int paramInt)
   {
-    paramViewGroup = paramViewGroup.getContext();
-    if ((paramView != null) && (((aucw)paramView.getTag()).a == paramaucw.a)) {
-      return paramView;
-    }
-    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559615, null);
-    paramView.setTag(paramaucw);
-    return paramView;
+    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
+    this.a.jdField_a_of_type_Auco.a(false);
   }
+  
+  public void b(int paramInt) {}
 }
 
 

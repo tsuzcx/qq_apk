@@ -1,11 +1,19 @@
+import android.os.Handler;
 import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
-final class asbh
-  extends asbp<TimerTaskManager, Void>
+public class asbh
 {
-  protected TimerTaskManager a(Void paramVoid)
+  private static final asbr<Handler, Void> a = new asbi();
+  private static asbr<TimerTaskManager, Void> b = new asbj();
+  
+  public static Handler a()
   {
-    return new TimerTaskManager();
+    return (Handler)a.b(null);
+  }
+  
+  public static TimerTaskManager a()
+  {
+    return (TimerTaskManager)b.b(null);
   }
 }
 

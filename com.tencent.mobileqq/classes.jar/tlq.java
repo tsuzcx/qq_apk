@@ -1,77 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class tlq
-  implements syt<tnu, tpd>
+  extends sys
 {
-  public Set<String> a = new HashSet();
+  private static final String jdField_a_of_type_JavaLangString = sxm.a("StorySvc.feed_comment_list_batch_775");
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int c;
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, long paramLong)
+  public tlq(List<String> paramList, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      this.c = i;
       return;
     }
-    tnu localtnu = new tnu();
-    localtnu.jdField_b_of_type_JavaLangString = paramString1;
-    localtnu.jdField_c_of_type_JavaLangString = paramString2;
-    localtnu.jdField_a_of_type_Boolean = paramBoolean;
-    localtnu.jdField_c_of_type_Int = paramInt;
-    localtnu.jdField_b_of_type_Long = paramLong;
-    syr.a().a(localtnu, this);
   }
   
-  public void a(@NonNull tnu paramtnu, @Nullable tpd paramtpd, @NonNull ErrorMessage paramErrorMessage)
+  public String a()
   {
-    tlr localtlr = new tlr();
-    localtlr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    localtlr.jdField_a_of_type_JavaLangString = paramtnu.jdField_b_of_type_JavaLangString;
-    if (vws.a(localtlr.jdField_a_of_type_JavaLangString)) {
-      paramtnu.jdField_c_of_type_JavaLangString = "4_10000";
-    }
-    localtlr.jdField_b_of_type_JavaLangString = paramtnu.jdField_c_of_type_JavaLangString;
-    localtlr.jdField_a_of_type_Boolean = paramtnu.jdField_a_of_type_Boolean;
-    tcz localtcz = (tcz)tdc.a(5);
-    if ((paramtnu.jdField_c_of_type_Int == 3) || (paramtnu.jdField_c_of_type_Int == 4) || (paramtnu.jdField_c_of_type_Int == 31) || (paramtnu.jdField_c_of_type_Int == 62))
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public syn a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
+    try
     {
-      localtlr.jdField_a_of_type_Int = localtcz.a("Q.qqstory.player.WatchVideoHandler", paramtnu.jdField_c_of_type_JavaLangString, paramtnu.jdField_b_of_type_JavaLangString);
-      StoryItem localStoryItem = localtcz.a(paramtnu.jdField_c_of_type_JavaLangString, 1);
-      if (localStoryItem != null)
+      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
+      return new tlr(localRspBatchFeedComment);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        if (localStoryItem.unReadCount == 0) {
-          break label281;
-        }
-        localStoryItem.unReadCount = localtlr.jdField_a_of_type_Int;
-        localtcz.a(paramtnu.jdField_c_of_type_JavaLangString, 1, localStoryItem);
-        veg.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramtnu.jdField_b_of_type_JavaLangString, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
+        paramArrayOfByte.printStackTrace();
       }
-      label210:
-      if ((paramtpd == null) || (!paramErrorMessage.isSuccess())) {
-        break label294;
-      }
-      this.a.add(paramtnu.jdField_b_of_type_JavaLangString);
-      ste.a().dispatch(localtlr);
     }
-    label281:
-    label294:
-    do
-    {
-      return;
-      localtlr.jdField_a_of_type_Int = localtcz.a(paramtnu.jdField_c_of_type_JavaLangString);
-      veg.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramtnu.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtnu.jdField_c_of_type_Int));
-      break;
-      localtcz.a(paramtnu.jdField_c_of_type_JavaLangString, 1);
-      break label210;
-      ste.a().dispatch(localtlr);
-      paramtpd = localtcz.a(paramtnu.jdField_b_of_type_JavaLangString);
-    } while (paramtpd == null);
-    ((tcs)tdc.a(13)).a(paramtnu.jdField_b_of_type_JavaLangString, paramtnu.jdField_c_of_type_JavaLangString, paramtnu.jdField_a_of_type_Boolean, paramtpd.mCreateTime, paramtnu.jdField_c_of_type_Int, paramtnu.d, true);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedComment.feed_id_list.set(localList);
+    localReqBatchFeedComment.source.set(this.c);
+    return localReqBatchFeedComment.toByteArray();
   }
 }
 

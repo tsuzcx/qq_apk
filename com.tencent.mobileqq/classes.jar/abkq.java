@@ -1,19 +1,19 @@
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.29.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class abkq
-  extends akud
+  extends ajto
 {
   public abkq(Leba paramLeba) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
     }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
-      this.a.a(new Leba.29.1(this));
+    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
+      this.a.a.sendEmptyMessage(11340002);
     }
   }
 }

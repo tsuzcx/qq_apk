@@ -1,6 +1,8 @@
-class bijn
+public class bijn
+  extends bjow
 {
-  public static bijj a = new bijj(null);
+  public final bjor<bioz> a = new bjor();
+  public final bjor<biks> b = new bjor();
 }
 
 

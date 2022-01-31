@@ -1,28 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class aajp
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public aajp(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
-    paramDialogInterface = amyv.c();
-    if (TextUtils.isEmpty(paramDialogInterface.a)) {
-      bbiq.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
-    }
-    for (;;)
-    {
-      this.a.b();
-      return;
-      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
-      bbiq.a(this.a, paramDialogInterface);
-    }
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
   }
 }
 

@@ -1,36 +1,42 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tribe.async.reactive.Stream;
 
-class tgv
-  implements thc
+public class tgv
 {
-  tgv(tgs paramtgs) {}
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
   
-  public void a(@Nullable tfi paramtfi, Error paramError)
+  public void a(@NonNull tff paramtff, tgz paramtgz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
-    }
-    this.a.b();
-  }
-  
-  public void a(@Nullable tfi paramtfi, @NonNull List<StoryVideoItem> paramList)
-  {
-    if (!paramList.isEmpty())
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      if (this.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
+        }
+        Stream.of(paramtff).map(new tfv("MsgTabPreloader")).map(new tfs(null)).subscribe(new tgw(this, paramtgz, paramtff));
       }
-      tgs.a(this.a, paramList);
+    }
+    else {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
     }
-    this.a.b();
+    Stream.of(paramtff).map(new tfv("MsgTabPreloader")).subscribe(new tgy(this, paramtgz, paramtff));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 

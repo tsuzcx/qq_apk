@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bhbp;
-import bhbr;
+import bhcg;
+import bhci;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class QzoneOfflineCacheHelper
   private static final int UPDATE_LRU_FILE_DELAY_TIME = 20000;
   private static final byte[] URL_LOCK = new byte[0];
   private static ConcurrentHashMap<String, ArrayList<Object>> downloadindUrlMap = new ConcurrentHashMap();
-  private static bhbr mFileCache;
+  private static bhci mFileCache;
   
   public static boolean checkFileIfExist(String paramString)
   {
@@ -59,7 +59,7 @@ public class QzoneOfflineCacheHelper
         str2 = urlKey2FileName(paramString1, true);
         if (!paramBoolean)
         {
-          str1 = bhbp.e().a("dressup");
+          str1 = bhcg.e().a("dressup");
           localFile1 = new File(str1);
           if (!localFile1.exists()) {
             localFile1.mkdirs();
@@ -154,10 +154,10 @@ public class QzoneOfflineCacheHelper
     }
   }
   
-  private static bhbr getFileCache()
+  private static bhci getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = bhbp.b();
+      mFileCache = bhcg.b();
     }
     return mFileCache;
   }

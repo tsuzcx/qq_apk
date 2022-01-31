@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osm;
-import pbq;
+import osj;
+import pbn;
 
 public class SelfInfoModule$1
   implements Runnable
 {
-  public SelfInfoModule$1(pbq parampbq, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
+  public SelfInfoModule$1(pbn parampbn, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
   
   public void run()
   {
-    osm.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    osj.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
   }
 }
 

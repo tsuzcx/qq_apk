@@ -1,21 +1,122 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class adbg
-  implements ValueAnimator.AnimatorUpdateListener
+public class adbg
+  extends BaseAdapter
 {
-  adbg(adbf paramadbf) {}
+  public int a;
+  Context a;
+  public View.OnClickListener a;
+  public ArrayList<bcab> a;
+  public boolean a;
+  public int b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public adbg(Context paramContext)
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (adbf.a(this.a) != null) {
-      adbf.a(this.a).setAlpha((float)d);
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return (this.jdField_a_of_type_JavaUtilArrayList.size() + this.jdField_a_of_type_Int - 1) / this.jdField_a_of_type_Int;
     }
-    if (adbf.a(this.a) != null) {
-      adbf.a(this.a).setAlpha((float)d * 2.0F);
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = this.jdField_a_of_type_Int;
+    Object localObject1;
+    int i;
+    Object localObject2;
+    if (paramView == null)
+    {
+      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+      ((LinearLayout)localObject1).setOrientation(0);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        paramViewGroup = paramView;
+        if (paramView == null) {
+          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+        }
+        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560610, null), (ViewGroup.LayoutParams)localObject2);
+        i += 1;
+        paramView = paramViewGroup;
+      }
+      paramView = (View)localObject1;
+    }
+    for (;;)
+    {
+      localObject1 = (ViewGroup)paramView;
+      if (paramInt == 0) {
+        ((ViewGroup)localObject1).setPadding(actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+      int k;
+      for (;;)
+      {
+        i = 0;
+        for (;;)
+        {
+          if (i >= this.jdField_a_of_type_Int) {
+            break label397;
+          }
+          k = j * paramInt + i;
+          localObject2 = (ChangeVoiceView)((ViewGroup)localObject1).getChildAt(i);
+          if (localObject2 != null) {
+            break;
+          }
+          QLog.e("ChangeVoiceListAdapter", 1, "getView view == null,view=" + ((ViewGroup)localObject1).getChildAt(i));
+          i += 1;
+        }
+        ((ViewGroup)localObject1).setPadding(actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+      ((ChangeVoiceView)localObject2).b = this.b;
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (k < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
+      for (paramViewGroup = (bcab)this.jdField_a_of_type_JavaUtilArrayList.get(k);; paramViewGroup = null)
+      {
+        ((ChangeVoiceView)localObject2).a(paramViewGroup);
+        if (this.jdField_a_of_type_Boolean) {
+          ((ChangeVoiceView)localObject2).a();
+        }
+        if (paramViewGroup != null)
+        {
+          ((ChangeVoiceView)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          break;
+        }
+        ((ChangeVoiceView)localObject2).setOnClickListener(null);
+        break;
+        label397:
+        return paramView;
+      }
     }
   }
 }

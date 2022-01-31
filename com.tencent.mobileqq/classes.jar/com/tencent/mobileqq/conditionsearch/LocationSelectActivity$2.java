@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.conditionsearch;
 
-import ammm;
+import amml;
 import android.os.Build.VERSION;
 
 public class LocationSelectActivity$2
@@ -12,7 +12,7 @@ public class LocationSelectActivity$2
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.this$0.requestPermissions(new ammm(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      this.this$0.requestPermissions(new amml(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
     LocationSelectActivity.a(this.this$0);

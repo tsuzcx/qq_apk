@@ -1,7 +1,6 @@
-public class ttc
+public abstract interface ttc
 {
-  public int a;
-  public long a;
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,32 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bgxh
-  implements Parcelable.Creator<LbsDataV2.GpsInfo>
+public class bgxh
+  extends bgxf
 {
-  public LbsDataV2.GpsInfo a(Parcel paramParcel)
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  
+  public String a()
   {
-    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    if (paramParcel != null)
+    try
     {
-      localGpsInfo.lat = paramParcel.readInt();
-      localGpsInfo.lon = paramParcel.readInt();
-      localGpsInfo.alt = paramParcel.readInt();
-      localGpsInfo.gpsType = paramParcel.readInt();
-      localGpsInfo.accuracy = paramParcel.readInt();
+      Object localObject = new JSONObject();
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("name", "pay");
+      localJSONObject1.put("identifier", this.i);
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("code", this.jdField_c_of_type_Int);
+      localJSONObject2.put("message", this.a);
+      ((JSONObject)localObject).put("action", localJSONObject1);
+      ((JSONObject)localObject).put("params", localJSONObject2);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    return localGpsInfo;
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return "";
   }
   
-  public LbsDataV2.GpsInfo[] a(int paramInt)
+  public void a(Bundle paramBundle)
   {
-    return null;
+    super.a(paramBundle);
+    paramBundle.putString("_mqqpay_payresp_paychanneltype", this.jdField_c_of_type_JavaLangString);
+    paramBundle.putString("_mqqpay_payresp_transactionid", this.d);
+    paramBundle.putString("_mqqpay_payresp_paytime", this.e);
+    paramBundle.putString("_mqqpay_payresp_totalfee", this.f);
+    paramBundle.putString("_mqqpay_payresp_callbackurl", this.g);
+    paramBundle.putString("_mqqpay_payresp_spdata", this.h);
+    paramBundle.putString("_mqqpay_payapi_serialnumber", this.i);
+    paramBundle.putString("_mqqpay_payapi_openid", this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxh
  * JD-Core Version:    0.7.0.1
  */

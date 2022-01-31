@@ -1,89 +1,45 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aygn
-  extends ayfl
 {
-  public aygn(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public static aygn a(JSONObject paramJSONObject)
   {
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      aptv.a(ajyc.a(2131714800));
+    if (paramJSONObject != null) {
+      try
+      {
+        if ((paramJSONObject.has("retcode")) && (paramJSONObject.getInt("retcode") == 0) && (paramJSONObject.has("data")))
+        {
+          aygn localaygn = new aygn();
+          paramJSONObject = paramJSONObject.getJSONObject("data");
+          if (paramJSONObject != null)
+          {
+            localaygn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
+            localaygn.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
+            localaygn.jdField_a_of_type_Int = paramJSONObject.optInt("localPadId");
+            localaygn.c = paramJSONObject.optString("localPadId");
+            localaygn.d = paramJSONObject.optString("doc_id");
+            localaygn.jdField_b_of_type_Int = paramJSONObject.optInt("doc_type");
+            localaygn.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isCache");
+          }
+          return localaygn;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("ImportFormData", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+      }
     }
-    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if ((0 == 0) && (QLog.isDevelopLevel())) {
-      QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
-    }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    if (0 != 0) {
-      throw new NullPointerException();
-    }
-    for (;;)
-    {
-      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-      TeamWorkAuthorizeSettingFragment.a(this.a);
-      TeamWorkAuthorizeSettingFragment.a(this.a, true);
-      return;
-      this.a.b = 2;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
-  {
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      aptv.a(ajyc.a(2131714788));
-    }
-    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.jdField_a_of_type_JavaUtilList.clear();
-    paramString = paramList.iterator();
-    while (paramString.hasNext())
-    {
-      paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
-      ayea localayea = new ayea();
-      localayea.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
-      localayea.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
-      this.a.jdField_a_of_type_Aydy.a(localayea);
-    }
-    this.a.b = paramInt;
-    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
-    TeamWorkAuthorizeSettingFragment.a(this.a);
-    TeamWorkAuthorizeSettingFragment.a(this.a, true);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    TeamWorkAuthorizeSettingFragment.a(this.a, true);
-    this.a.getRightTextView().setEnabled(true);
-    this.a.stopTitleProgress();
-    if (!paramBoolean) {
-      aptv.a(ajyc.a(2131714743));
-    }
-    Intent localIntent;
-    do
-    {
-      return;
-      aptv.b(ajyc.a(2131714745));
-      this.a.stopTitleProgress();
-      localIntent = new Intent();
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("type", paramInt);
-    } while (!this.a.isAdded());
-    this.a.getActivity().setResult(1122, localIntent);
-    this.a.getActivity().finish();
+    return null;
   }
 }
 

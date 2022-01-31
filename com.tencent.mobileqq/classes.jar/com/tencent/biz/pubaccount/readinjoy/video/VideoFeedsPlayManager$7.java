@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import noz;
-import onk;
-import qbx;
+import now;
+import onh;
+import qbu;
 
 class VideoFeedsPlayManager$7
   implements Runnable
 {
-  VideoFeedsPlayManager$7(VideoFeedsPlayManager paramVideoFeedsPlayManager, qbx paramqbx) {}
+  VideoFeedsPlayManager$7(VideoFeedsPlayManager paramVideoFeedsPlayManager, qbu paramqbu) {}
   
   public void run()
   {
-    onk.a(BaseApplicationImpl.getContext(), onk.a(), true, this.a.a());
-    noz.a(this.a);
-    onk.a(this.a.jdField_a_of_type_Boolean, this.a.d, this.a.f, this.a.jdField_a_of_type_Int, this.a.jdField_c_of_type_Long, 409409, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
+    onh.a(BaseApplicationImpl.getContext(), onh.a(), true, this.a.a());
+    now.a(this.a);
+    onh.a(this.a.jdField_a_of_type_Boolean, this.a.d, this.a.f, this.a.jdField_a_of_type_Int, this.a.jdField_c_of_type_Long, 409409, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

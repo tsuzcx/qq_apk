@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ajwa;
-import ansq;
-import ansr;
-import anss;
-import auoo;
-import auop;
-import aywa;
-import bizu;
+import ajvy;
+import ansv;
+import answ;
+import ansx;
+import auoq;
+import auor;
+import aywc;
+import bjal;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -18,12 +18,12 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class FavEmoSingleSend
   extends AsyncStep
-  implements auoo
+  implements auoq
 {
-  private ajwa jdField_a_of_type_Ajwa;
-  private ansr jdField_a_of_type_Ansr;
-  private anss jdField_a_of_type_Anss;
-  private aywa jdField_a_of_type_Aywa;
+  private ajvy jdField_a_of_type_Ajvy;
+  private answ jdField_a_of_type_Answ;
+  private ansx jdField_a_of_type_Ansx;
+  private aywc jdField_a_of_type_Aywc;
   private CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
@@ -34,17 +34,17 @@ public class FavEmoSingleSend
   {
     this.b = paramBoolean;
     this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
-    paramCustomEmotionData = (QQAppInterface)bizu.a();
-    this.jdField_a_of_type_Anss = ((anss)paramCustomEmotionData.getManager(103));
-    this.jdField_a_of_type_Ansr = ((ansr)paramCustomEmotionData.getManager(149));
-    this.jdField_a_of_type_Ajwa = ((ajwa)paramCustomEmotionData.a(72));
+    paramCustomEmotionData = (QQAppInterface)bjal.a();
+    this.jdField_a_of_type_Ansx = ((ansx)paramCustomEmotionData.getManager(103));
+    this.jdField_a_of_type_Answ = ((answ)paramCustomEmotionData.getManager(149));
+    this.jdField_a_of_type_Ajvy = ((ajvy)paramCustomEmotionData.a(72));
   }
   
   public int a()
   {
     QLog.d("FavEmoSingleSend", 1, new Object[] { "doStep, isResend: ", Boolean.valueOf(this.b), " ", this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData });
-    this.jdField_a_of_type_Aywa = this.jdField_a_of_type_Anss.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
-    if (this.jdField_a_of_type_Aywa == null)
+    this.jdField_a_of_type_Aywc = this.jdField_a_of_type_Ansx.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
+    if (this.jdField_a_of_type_Aywc == null)
     {
       QLog.d("FavEmoSingleSend", 1, "doStep, network not support");
       a("failed", 0, 3, 0);
@@ -73,7 +73,7 @@ public class FavEmoSingleSend
     return null;
   }
   
-  public void a(auop paramauop) {}
+  public void a(auor paramauor) {}
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -82,15 +82,15 @@ public class FavEmoSingleSend
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = paramString;
-      this.jdField_a_of_type_Ansr.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Ansr.a();
-      this.jdField_a_of_type_Ajwa.notifyUI(2, true, Integer.valueOf(paramInt1));
-      ansq.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
+      this.jdField_a_of_type_Answ.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_Answ.a();
+      this.jdField_a_of_type_Ajvy.notifyUI(2, true, Integer.valueOf(paramInt1));
+      ansv.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
       return;
     }
   }
   
-  public void b(auop arg1)
+  public void b(auor arg1)
   {
     int j = 7;
     if (QLog.isColorLevel()) {

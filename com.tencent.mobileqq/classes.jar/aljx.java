@@ -1,100 +1,33 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLES20;
 
 public class aljx
-  extends aljh
+  extends alkd
 {
-  aljd jdField_a_of_type_Aljd;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public int b;
   
-  public aljx(Handler paramHandler)
+  public aljx(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    super(paramInt);
+    this.e = "uniform float uA;\nuniform float uD;\n";
+    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
   }
   
-  public int a()
+  protected void a()
   {
-    try
-    {
-      long l = System.currentTimeMillis();
-      Object localObject = new int[2];
-      localObject[0] = 2;
-      localObject[1] = 1;
-      int i = bdsg.b(0, "ANY", "UTF-8");
-      int j = bdsg.b((int[])localObject, localObject.length);
-      localObject = bdsg.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("QRSession.QRRecog", 2, String.format("initQbar time cost:%sms, initResult=%s readerResult=%s version=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(j), localObject }));
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QRSession.QRRecog", 2, "initQbar fail!", localException);
-      }
-    }
-    return -1;
+    this.a = GLES20.glGetUniformLocation(this.d, "uA");
+    alkh.a("glGetAttribLocation uA");
+    this.b = GLES20.glGetUniformLocation(this.d, "uD");
+    alkh.a("glGetAttribLocation uD");
   }
   
-  public void a()
+  protected void a(alkg paramalkg)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        bdsg.b();
-        this.jdField_a_of_type_Boolean = false;
-      }
+    if (paramalkg == null) {
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QRSession.QRRecog", 2, "unInitQbar fail!", localException);
-    }
-  }
-  
-  public void a(alji paramalji)
-  {
-    this.jdField_a_of_type_Aljd = ((aljd)paramalji);
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    paramBoolean = false;
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    long l = System.currentTimeMillis();
-    if (bdsg.b(paramArrayOfByte, paramInt1, paramInt2, 0) == 1)
-    {
-      bdsg.b(localStringBuilder1, localStringBuilder2);
-      paramBoolean = true;
-    }
-    if (this.jdField_a_of_type_Aljd != null)
-    {
-      if (!paramBoolean) {
-        break label131;
-      }
-      this.jdField_a_of_type_Aljd.a(localStringBuilder1.toString(), localStringBuilder2.toString(), false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        if (!paramBoolean) {
-          break;
-        }
-        QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR suc. type=%s data=%s qrRecog minicode_timecost=%d", new Object[] { localStringBuilder1, localStringBuilder2, Long.valueOf(System.currentTimeMillis() - l) }));
-      }
-      return paramBoolean;
-      label131:
-      this.jdField_a_of_type_Aljd.a(false, 0.0F);
-    }
-    QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR failed. hasQR=%s qrAreaRatio=%s qrRecog minicode_timecost=%d", new Object[] { Boolean.valueOf(false), Float.valueOf(0.0F), Long.valueOf(System.currentTimeMillis() - l) }));
-    return paramBoolean;
+    GLES20.glUniform1f(this.a, paramalkg.d);
+    GLES20.glUniform1f(this.b, paramalkg.e);
   }
 }
 

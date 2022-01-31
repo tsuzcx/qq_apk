@@ -1,22 +1,64 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.AsyncTask;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 final class acxx
-  extends akim
+  extends AsyncTask<Void, Void, ImageInfo>
 {
-  acxx(SessionInfo paramSessionInfo) {}
+  acxx(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  protected ImageInfo a(Void... paramVarArgs)
   {
-    if (paramBoolean)
+    bbef.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "sessionInfo.handleScreenPhoto");
+    String str = bbef.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramVarArgs = new ImageInfo();
+    bbef.a(paramVarArgs, "compress_start", "sessionInfo.handleScreenPhoto");
+    bbef.a(3, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, str, true, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    if (!bbdx.b(paramVarArgs.b)) {
+      return null;
+    }
+    try
     {
-      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      agqd.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      return paramVarArgs;
+    }
+    catch (Exception localException) {}
+    return paramVarArgs;
+  }
+  
+  protected void a(ImageInfo paramImageInfo)
+  {
+    if (paramImageInfo != null)
+    {
+      Object localObject = new auoe();
+      ((auoe)localObject).a(paramImageInfo.b);
+      ((auoe)localObject).d(1027);
+      ((auoe)localObject).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (paramImageInfo.h == 2) {}
+      for (int i = ayvw.e;; i = ayvw.d)
+      {
+        ((auoe)localObject).c(i);
+        ((auoe)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        ((auoe)localObject).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((auoe)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        aunv localaunv = aunl.a(2, 1027);
+        localaunv.a(((auoe)localObject).a());
+        aunl.a(localaunv, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(paramImageInfo);
+        bbef.a(this.jdField_a_of_type_AndroidContentContext, (List)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        return;
       }
     }
+    bbef.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepared_failed", "sessionInfo.handleScreenPhoto");
+    bcql.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695185), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import java.lang.ref.WeakReference;
 
@@ -29,13 +29,13 @@ class MiniAppVideoPlayer$15
       localActivity = (Activity)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localActivity == null) || (MiniAppVideoPlayer.a(this.this$0) == null) || (!(this.this$0.getParent() instanceof CoverVideoView)) || (!this.this$0.c));
     MiniAppVideoPlayer.a(this.this$0, MiniAppVideoPlayer.a(this.this$0).getCurrentPostion());
-    besl.a("MiniAppVideoPlayer", "smallScreen current pos is: " + MiniAppVideoPlayer.a(this.this$0));
+    betc.a("MiniAppVideoPlayer", "smallScreen current pos is: " + MiniAppVideoPlayer.a(this.this$0));
     this.this$0.c = false;
     MiniAppVideoPlayer.j(this.this$0);
     MiniAppVideoPlayer.e(this.this$0).setVisibility(8);
     MiniAppVideoPlayer.d(this.this$0).setVisibility(8);
     localActivity.getWindow().clearFlags(1024);
-    if (this.this$0.jdField_a_of_type_Beml != null) {}
+    if (this.this$0.jdField_a_of_type_Benc != null) {}
     for (;;)
     {
       if (Build.VERSION.SDK_INT >= 16) {

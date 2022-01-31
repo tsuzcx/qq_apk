@@ -1,65 +1,61 @@
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.widget.XEditTextEx;
 
-public class tye
-  implements tyx
+class tye
+  extends ste<tyc, uoy>
 {
-  private tye(txw paramtxw) {}
-  
-  public void a()
+  tye(tyc paramtyc)
   {
-    if (!txw.b(this.a)) {
-      this.a.a();
-    }
+    super(paramtyc);
   }
   
-  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  public void a(@NonNull tyc paramtyc, @NonNull uoy paramuoy)
   {
-    if (txw.a(this.a) != null) {
-      txw.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
+    if ((!paramuoy.jdField_a_of_type_JavaLangString.equals(tyc.a(paramtyc))) || (paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (tyc.a(paramtyc) == null)) {
+      ved.b("Q.qqstory.player.CommentFloatDialogController", "ignore this comment list event. %s.", paramuoy.toString());
     }
-  }
-  
-  public void a(@NonNull ups paramups, ErrorMessage paramErrorMessage)
-  {
-    if (paramErrorMessage.isSuccess())
+    tyl localtyl;
+    do
     {
-      txw.a(this.a, paramups);
-      txw.a(this.a).setVisibility(0);
-      txw.a(this.a, new uqh(this.a.getContext(), txw.b(this.a), paramups, false, 4444, new tyb(this.a, null)));
-      if (txw.a(this.a).a != null) {
-        txw.a(this.a).a.setText(txw.a(this.a).a);
-      }
-      if (txw.a(this.a))
+      boolean bool2;
+      boolean bool1;
+      do
       {
-        txw.a(this.a, false);
-        txw.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
-      }
-      return;
-    }
-    txw.a(this.a).setVisibility(8);
+        return;
+        ved.a("Q.qqstory.player.CommentFloatDialogController", "receive comment list event. %s.", paramuoy.toString());
+        bool2 = paramtyc.a();
+        bool1 = true;
+        if (paramuoy.jdField_a_of_type_Int == 0) {
+          bool1 = false;
+        }
+        tyc.a(paramtyc).a(bool1);
+        tyc.a(paramtyc).a(bool1, paramuoy.b);
+        tyc.a(paramtyc).a(bool1, paramuoy.jdField_a_of_type_Boolean);
+        tyc.a(paramtyc).a(paramuoy.jdField_a_of_type_JavaUtilList, paramuoy.c, bool1);
+      } while (bool2 != bool1);
+      localtyl = paramtyc.a();
+    } while (localtyl == null);
+    localtyl.a(tyc.a(paramtyc), paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public Class acceptEventClass()
   {
-    if ((paramMotionEvent.getAction() == 1) && (txw.a(this.a) != null) && (txw.a(this.a).a()))
+    return uoy.class;
+  }
+  
+  public void b(@NonNull tyc paramtyc, @NonNull uoy paramuoy)
+  {
+    boolean bool2 = paramtyc.a();
+    boolean bool1 = true;
+    if (paramuoy.jdField_a_of_type_Int == 0) {
+      bool1 = false;
+    }
+    if (bool2 == bool1)
     {
-      txw.a(this.a).c();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
-  {
-    if (txw.a(this.a) != null) {
-      txw.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
+      paramuoy = paramtyc.a();
+      if (paramuoy != null) {
+        paramuoy.a(tyc.a(paramtyc), false);
+      }
     }
   }
 }

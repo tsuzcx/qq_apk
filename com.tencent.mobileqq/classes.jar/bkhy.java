@@ -1,35 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import java.util.ArrayList;
 
-public abstract class bkhy
+class bkhy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public String b;
+  bkhy(bkhx parambkhx) {}
   
-  public bkhy(int paramInt1, String paramString, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  @NonNull
-  public abstract bkhz a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  @NonNull
-  public abstract Class<? extends bkhz> a();
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Filter:{" + this.jdField_a_of_type_JavaLangString + "}";
+    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
+    this.a.a = paramValueAnimator;
+    this.a.invalidateSelf();
   }
 }
 

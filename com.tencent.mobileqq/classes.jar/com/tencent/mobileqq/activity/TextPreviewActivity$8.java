@@ -15,7 +15,7 @@ class TextPreviewActivity$8
     Drawable localDrawable = this.this$0.jdField_a_of_type_Ho.a(this.this$0.e);
     if (localDrawable == null)
     {
-      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bbwf);
+      TextPreviewActivity.a(this.this$0.e, this.this$0.app, this.this$0.jdField_a_of_type_Bbwt);
       return;
     }
     Message localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);

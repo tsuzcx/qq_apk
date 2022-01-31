@@ -1,39 +1,85 @@
-import android.os.SystemClock;
+import android.graphics.Canvas;
+import android.graphics.SurfaceTexture;
+import android.view.TextureView;
+import android.view.TextureView.SurfaceTextureListener;
+import android.view.View.OnTouchListener;
 
 public class anhj
+  implements TextureView.SurfaceTextureListener, anhg
 {
-  private long a;
-  private long b;
-  private long c;
+  private TextureView jdField_a_of_type_AndroidViewTextureView;
+  private anhh jdField_a_of_type_Anhh;
   
-  public long a()
+  public anhj(TextureView paramTextureView)
   {
-    return this.a;
+    this.jdField_a_of_type_AndroidViewTextureView = paramTextureView;
+    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
+    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(this);
   }
   
-  public void a()
+  public float a()
   {
-    this.a = 0L;
-    this.b = 0L;
+    return this.jdField_a_of_type_AndroidViewTextureView.getY();
   }
   
-  public long b()
+  public Canvas a()
   {
-    this.b = (SystemClock.uptimeMillis() - this.c);
-    this.a += this.b;
-    b();
-    return this.b;
+    return this.jdField_a_of_type_AndroidViewTextureView.lockCanvas();
+  }
+  
+  public void a() {}
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidViewTextureView.unlockCanvasAndPost(paramCanvas);
+  }
+  
+  public void a(View.OnTouchListener paramOnTouchListener)
+  {
+    this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(paramOnTouchListener);
+  }
+  
+  public void a(anhh paramanhh)
+  {
+    this.jdField_a_of_type_Anhh = paramanhh;
   }
   
   public void b()
   {
-    this.c = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Anhh = null;
+    if (this.jdField_a_of_type_AndroidViewTextureView != null)
+    {
+      this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(null);
+      this.jdField_a_of_type_AndroidViewTextureView = null;
+    }
   }
   
-  public long c()
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    return this.b;
+    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
+    if (this.jdField_a_of_type_Anhh != null)
+    {
+      this.jdField_a_of_type_Anhh.i();
+      this.jdField_a_of_type_Anhh.j();
+    }
   }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.jdField_a_of_type_Anhh != null) {
+      this.jdField_a_of_type_Anhh.k();
+    }
+    return false;
+  }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Anhh != null) {
+      this.jdField_a_of_type_Anhh.j();
+    }
+  }
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

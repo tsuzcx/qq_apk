@@ -1,6 +1,6 @@
 public abstract interface atla
 {
-  public abstract boolean a(atkx paramatkx, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  public abstract void a(atkz paramatkz);
 }
 
 

@@ -1,11 +1,11 @@
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
 public class adst
 {
   public int a;
   public String a;
   
-  public adst(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  public adst(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
 }
 
 

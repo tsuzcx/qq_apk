@@ -1,48 +1,99 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class ajok
-  implements ajie
+public class ajok
 {
-  ajok(String paramString, String[] paramArrayOfString, ajoh paramajoh, int paramInt) {}
+  private List<WeakReference<ajot>> a = new ArrayList();
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    if (this.a != null) {
+      this.a.clear();
     }
-    if (paramBoolean)
+  }
+  
+  public void a(ajot paramajot)
+  {
+    if (this.a != null)
     {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = ajoi.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (ajoi.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = ajoi.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Ajoh.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
-            return;
-            this.jdField_a_of_type_Ajoh.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Ajoh.a(-1, null, null);
+      Iterator localIterator = this.a.iterator();
+      WeakReference localWeakReference;
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
         }
-        catch (Exception paramString)
+        localWeakReference = (WeakReference)localIterator.next();
+      } while ((localWeakReference == null) || (localWeakReference.get() != paramajot));
+    }
+    return;
+    this.a.add(new WeakReference(paramajot));
+  }
+  
+  public void a(ApolloActionData paramApolloActionData)
+  {
+    if (this.a != null)
+    {
+      int i = 0;
+      while (i < this.a.size())
+      {
+        if (this.a.get(i) != null)
         {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
+          ajot localajot = (ajot)((WeakReference)this.a.get(i)).get();
+          if (localajot != null) {
+            localajot.a(paramApolloActionData);
+          }
         }
+        i += 1;
       }
     }
-    else
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if (this.a != null)
     {
-      this.jdField_a_of_type_Ajoh.a(-1, null, null);
+      int i = 0;
+      while (i < this.a.size())
+      {
+        if (this.a.get(i) != null)
+        {
+          ajot localajot = (ajot)((WeakReference)this.a.get(i)).get();
+          if (localajot != null) {
+            localajot.a(paramBoolean);
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (this.a != null)
+    {
+      int i = 0;
+      while (i < this.a.size())
+      {
+        if (this.a.get(i) != null)
+        {
+          ajot localajot = (ajot)((WeakReference)this.a.get(i)).get();
+          if (localajot != null) {
+            localajot.a();
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void b(ajot paramajot)
+  {
+    if (this.a != null) {
+      this.a.remove(paramajot);
     }
   }
 }

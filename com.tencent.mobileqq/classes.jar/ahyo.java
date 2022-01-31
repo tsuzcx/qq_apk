@@ -1,21 +1,8 @@
-class ahyo
+import java.nio.ByteBuffer;
+
+public abstract interface ahyo
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  
-  public ahyo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    this.a = paramFloat2;
-    this.b = paramFloat3;
-    this.c = paramFloat1;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.f = paramFloat6;
-  }
+  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
 }
 
 

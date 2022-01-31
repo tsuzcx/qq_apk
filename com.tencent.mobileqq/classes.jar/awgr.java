@@ -1,13 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class awgr
-  implements View.OnClickListener
+public class awgr
 {
-  public void onClick(View paramView)
-  {
-    awgq.a(paramView.getContext(), (String)paramView.getTag());
-  }
+  public ImageView a;
+  public TextView a;
+  public bbjs a;
 }
 
 

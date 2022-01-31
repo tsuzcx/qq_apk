@@ -1,89 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class bays
+class bays
+  extends ajvj
 {
-  aweo jdField_a_of_type_Aweo;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private bays(bayr parambayr) {}
   
-  public bays(QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public Bundle a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getStringArrayList("key");
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("key", paramBundle);
-    if ((paramBundle == null) || (paramBundle.size() == 0)) {
-      return localBundle;
-    }
-    if (this.jdField_a_of_type_Aweo == null) {
-      this.jdField_a_of_type_Aweo = ((aweo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
-    }
-    if (this.jdField_a_of_type_Aweo == null) {
-      return localBundle;
-    }
-    ArrayList localArrayList = new ArrayList(paramBundle.size());
-    Iterator localIterator = paramBundle.iterator();
-    String str1;
-    if (localIterator.hasNext())
-    {
-      String str2 = (String)localIterator.next();
-      str1 = "";
-      Object localObject;
-      if (str2 == null)
-      {
-        localObject = null;
-        label124:
-        paramBundle = str1;
-        if (localObject != null)
-        {
-          paramBundle = str1;
-          if (localObject.length != 3) {}
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          int j = Integer.parseInt(localObject[0]);
-          String str3 = localObject[1];
-          int i = Integer.parseInt(localObject[2]);
-          paramBundle = str1;
-          if (j == 1)
-          {
-            j = Integer.parseInt(str3);
-            localObject = this.jdField_a_of_type_Aweo.a(j);
-            paramBundle = str1;
-            if (localObject != null)
-            {
-              if (i != 201) {
-                continue;
-              }
-              paramBundle = ((awbk)localObject).a;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-          paramBundle = str1;
-          continue;
-        }
-        atbp.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
-        localArrayList.add(paramBundle);
-        break;
-        localObject = str2.split("_s_");
-        break label124;
-        paramBundle = ((awbk)localObject).b;
-      }
-    }
-    localBundle.putStringArrayList("path", localArrayList);
-    return localBundle;
+    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
   }
 }
 

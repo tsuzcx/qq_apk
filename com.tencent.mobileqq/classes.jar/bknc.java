@@ -1,25 +1,25 @@
 import android.util.Property;
 
 class bknc
-  extends Property<bkna, Integer>
+  extends Property<bknb, Integer>
 {
-  bknc(bkna parambkna, Class paramClass, String paramString)
+  bknc(bknb parambknb, Class paramClass, String paramString)
   {
     super(paramClass, paramString);
   }
   
-  public Integer a(bkna parambkna)
+  public Integer a(bknb parambknb)
   {
-    if (parambkna != null) {
-      return Integer.valueOf(bkna.a(parambkna));
+    if (parambknb != null) {
+      return Integer.valueOf(bknb.a(parambknb));
     }
     return Integer.valueOf(0);
   }
   
-  public void a(bkna parambkna, Integer paramInteger)
+  public void a(bknb parambknb, Integer paramInteger)
   {
-    if (parambkna != null) {
-      bkna.a(parambkna, paramInteger.intValue());
+    if (parambknb != null) {
+      bknb.a(parambknb, paramInteger.intValue());
     }
   }
 }

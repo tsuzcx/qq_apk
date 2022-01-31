@@ -1,4 +1,7 @@
-public class bftc {}
+public abstract interface bftc
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

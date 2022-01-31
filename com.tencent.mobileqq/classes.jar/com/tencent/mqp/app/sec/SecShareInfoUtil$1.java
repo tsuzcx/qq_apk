@@ -1,15 +1,15 @@
 package com.tencent.mqp.app.sec;
 
-import bcwv;
+import bcxk;
 
 public class SecShareInfoUtil$1
   implements Runnable
 {
-  public SecShareInfoUtil$1(bcwv parambcwv) {}
+  public SecShareInfoUtil$1(bcxk parambcxk) {}
   
   public void run()
   {
-    bcwv.a(this.this$0);
+    bcxk.a(this.this$0);
   }
 }
 

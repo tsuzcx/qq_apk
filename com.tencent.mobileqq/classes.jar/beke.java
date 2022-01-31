@@ -1,20 +1,18 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-
 public class beke
+  implements bekl<Integer>
 {
-  @TargetApi(14)
-  public static void a(View paramView, CharSequence paramCharSequence, String paramString)
+  public static beke a()
   {
-    if (Build.VERSION.SDK_INT >= 14) {
-      paramView.setAccessibilityDelegate(new bekf(paramCharSequence, paramString));
-    }
+    return new beke();
   }
   
-  public static void a(View paramView, String paramString)
+  public Integer a(behn parambehn)
   {
-    a(paramView, null, paramString);
+    parambehn = parambehn.a();
+    if (parambehn != null) {
+      return Integer.valueOf(parambehn.a());
+    }
+    return null;
   }
 }
 

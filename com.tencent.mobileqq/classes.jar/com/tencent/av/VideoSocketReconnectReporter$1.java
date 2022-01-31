@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import axrl;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public final class VideoSocketReconnectReporter$1
     HashMap localHashMap = new HashMap();
     localHashMap.put("policy_type", String.valueOf(this.a));
     localHashMap.put("net_type", String.valueOf(this.b));
-    axrl.a(BaseApplication.getContext()).a("", "av_socket_recon_request2", true, 0L, 0L, localHashMap, "");
+    axrn.a(BaseApplication.getContext()).a("", "av_socket_recon_request2", true, 0L, 0L, localHashMap, "");
   }
 }
 

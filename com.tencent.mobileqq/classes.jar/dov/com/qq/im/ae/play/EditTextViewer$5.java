@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bcpw;
+import bcql;
 
 class EditTextViewer$5
   implements Runnable
@@ -9,7 +9,7 @@ class EditTextViewer$5
   
   public void run()
   {
-    bcpw.a(this.this$0.getContext(), this.a, 1).a();
+    bcql.a(this.this$0.getContext(), this.a, 1).a();
   }
 }
 

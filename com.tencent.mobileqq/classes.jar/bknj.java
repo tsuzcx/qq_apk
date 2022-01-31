@@ -1,14 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.util.Property;
 
 class bknj
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Property<bknf, Integer>
 {
-  bknj(bknf parambknf) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bknj(bknf parambknf, Class paramClass, String paramString)
   {
-    this.a.invalidateSelf();
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(bknf parambknf)
+  {
+    if (parambknf != null) {
+      return Integer.valueOf(bknf.b(parambknf));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bknf parambknf, Integer paramInteger)
+  {
+    if (parambknf != null) {
+      bknf.b(parambknf, paramInteger.intValue());
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aavy;
-import bbuf;
+import aavu;
+import bbut;
 
 public class Conversation$1$8
   implements Runnable
 {
-  public Conversation$1$8(aavy paramaavy) {}
+  public Conversation$1$8(aavu paramaavu) {}
   
   public void run() {}
 }

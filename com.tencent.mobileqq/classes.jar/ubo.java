@@ -4,7 +4,7 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class ubo
-  extends ubv<StoryVideoItem>
+  extends ubs<StoryVideoItem>
 {
   public ubo(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
@@ -20,7 +20,7 @@ public class ubo
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    veg.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    ved.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
     VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }

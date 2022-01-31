@@ -1,21 +1,10 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-
-class bkfy
-  extends SoftReference<V>
+public abstract interface bkfy
 {
-  private K jdField_a_of_type_JavaLangObject;
+  public abstract void a();
   
-  public bkfy(K paramK, V paramV, ReferenceQueue<? super V> paramReferenceQueue)
-  {
-    super(paramReferenceQueue, localReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramV;
-  }
+  public abstract void a(String paramString);
   
-  public K a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
+  public abstract void b(String paramString);
 }
 
 

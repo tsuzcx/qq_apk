@@ -1,25 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.2;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import org.json.JSONObject;
 
 public class alqi
-  implements alqe
+  implements DialogInterface.OnClickListener
 {
-  public void a(String paramString)
+  public alqi(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bbgu parambbgu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
+    ArkAppCenter.a(paramDialogInterface);
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bbgu.dismiss();
       return;
     }
-    ArkAppCenter.a().postToMainThread(new ArkAppSchemeCenter.TelSchemeHandler.1(this, paramString));
-  }
-  
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
-  {
-    ArkAppCenter.a().send(paramString3, new ArkAppSchemeCenter.TelSchemeHandler.2(this, paramString3, paramString1, paramLong, paramString2));
-    return true;
+    catch (Exception paramDialogInterface) {}
   }
 }
 

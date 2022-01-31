@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apwc;
-import apwf;
+import apwe;
+import apwh;
 
 public final class UniformDownloadUtil$2
   implements Runnable
 {
-  public UniformDownloadUtil$2(String paramString, apwf paramapwf) {}
+  public UniformDownloadUtil$2(String paramString, apwh paramapwh) {}
   
   public void run()
   {
-    String str = apwc.a(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Apwf != null) {
-      this.jdField_a_of_type_Apwf.a(str);
+    String str = apwe.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Apwh != null) {
+      this.jdField_a_of_type_Apwh.a(str);
     }
   }
 }

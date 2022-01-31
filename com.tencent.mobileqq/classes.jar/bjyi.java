@@ -1,34 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bjyi
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  static
-  {
-    if (!bjyh.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  bjyi(bjyh parambjyh) {}
   
-  bjyi(bjyh parambjyh, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bkat localbkat = this.jdField_a_of_type_Bjyh.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbkat == null)) {
-      throw new AssertionError();
-    }
-    bjyh.a(paramDialogInterface, localbkat);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bjyh.a.a(35, paramDialogInterface);
-  }
+  public void onClick(View paramView) {}
 }
 
 

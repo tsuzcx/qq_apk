@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.support.annotation.NonNull;
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="busId,them,actId")
 public class AioPushData
-  extends aukm
+  extends auko
   implements Comparable<AioPushData>
 {
   public String actId;

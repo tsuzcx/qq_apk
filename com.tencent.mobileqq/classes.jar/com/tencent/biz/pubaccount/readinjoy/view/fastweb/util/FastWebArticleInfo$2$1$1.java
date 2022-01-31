@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import osm;
-import rmm;
+import osj;
+import rmj;
 
 public class FastWebArticleInfo$2$1$1
   implements Runnable
 {
-  public FastWebArticleInfo$2$1$1(rmm paramrmm) {}
+  public FastWebArticleInfo$2$1$1(rmj paramrmj) {}
   
   public void run()
   {
-    osm.a().c();
+    osj.a().c();
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface qvj
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
+
+class qvj
+  implements auoq
 {
-  public abstract void a(qty paramqty, int paramInt1, int paramInt2);
+  qvj(qvh paramqvh) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(auor paramauor) {}
+  
+  public void b(auor paramauor) {}
 }
 
 

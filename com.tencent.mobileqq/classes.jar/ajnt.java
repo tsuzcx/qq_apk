@@ -1,13 +1,11 @@
 public final class ajnt
-  implements ajoe
+  implements aisg
 {
-  public ajnt(ajod paramajod) {}
+  public ajnt(ajoa paramajoa) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
+    this.a.a(true);
   }
 }
 

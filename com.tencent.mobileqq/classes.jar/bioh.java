@@ -1,27 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bioh
-  implements Animation.AnimationListener
+class bioh
+  implements View.OnClickListener
 {
-  public bioh(AEProviderContainerView paramAEProviderContainerView) {}
+  bioh(biog parambiog, bioj parambioj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.setAlpha(1.0F);
-    this.a.setVisibility(8);
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(false, 150);
-    }
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
-    }
+    int i = this.jdField_a_of_type_Bioj.getLayoutPosition();
+    biog.a(this.jdField_a_of_type_Biog).a(this.jdField_a_of_type_Bioj.itemView, i);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

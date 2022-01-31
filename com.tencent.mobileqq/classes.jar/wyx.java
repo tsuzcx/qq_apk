@@ -1,38 +1,23 @@
-import com.tencent.biz.troop.VideoCombineHelper.2;
 import com.tencent.qphone.base.util.QLog;
 
-public class wyx
-  extends wzv
+class wyx
+  extends wzo
 {
-  public wyx(VideoCombineHelper.2 param2)
+  wyx(wyt paramwyt, wzb paramwzb, String paramString)
   {
-    super(param2.this$0);
+    super(paramwyt);
   }
   
-  public void a(wzu paramwzu)
+  public void a(boolean paramBoolean)
   {
-    if ((paramwzu instanceof wzp)) {
-      this.a.jdField_a_of_type_Wze.a("", false, "download failed! msg = " + paramwzu.d);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyt.a));
+      this.jdField_a_of_type_Wyt.a = System.currentTimeMillis();
     }
-    do
-    {
-      return;
-      if ((paramwzu instanceof wzh))
-      {
-        this.a.jdField_a_of_type_Wze.a("", false, "combine failed! msg = " + paramwzu.d);
-        return;
-      }
-    } while (!(paramwzu instanceof wzs));
-    this.a.jdField_a_of_type_Wze.a("", false, "sending failed! msg = " + paramwzu.d);
-  }
-  
-  public void b(wzu paramwzu)
-  {
-    if ((paramwzu instanceof wzs))
-    {
-      paramwzu = paramwzu.a();
-      this.a.jdField_a_of_type_Wze.a(paramwzu.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Wzb.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
     }
   }
 }

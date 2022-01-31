@@ -19,7 +19,7 @@ public class MiniAppDexLoader
   private String getDexPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-    String str2 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+    String str2 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
     if (!TextUtils.isEmpty(str1)) {
       return str1 + "api.jar";

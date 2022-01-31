@@ -1,11 +1,30 @@
-public class atxt
+import android.view.View;
+import com.tencent.widget.AdapterView;
+
+class atxt
+  implements bfpv
 {
-  public T a;
+  private atxt(atxp paramatxp) {}
   
-  public atxt(T paramT)
+  public void a(AdapterView<?> paramAdapterView)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    bfpv localbfpv = this.a.jdField_a_of_type_Atxo.a();
+    if (localbfpv != null) {
+      localbfpv.a(paramAdapterView);
+    }
+  }
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Int != 0)
+    {
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.a();
+    }
+    bfpv localbfpv = this.a.jdField_a_of_type_Atxo.a();
+    if (localbfpv != null) {
+      localbfpv.a(paramAdapterView, paramView, paramInt, paramLong);
+    }
   }
 }
 

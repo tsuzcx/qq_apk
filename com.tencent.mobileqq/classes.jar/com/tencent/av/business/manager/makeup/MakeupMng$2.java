@@ -2,19 +2,19 @@ package com.tencent.av.business.manager.makeup;
 
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lil;
-import nay;
+import lig;
+import nav;
 
 public class MakeupMng$2
   implements Runnable
 {
-  public MakeupMng$2(lil paramlil, File paramFile, String paramString) {}
+  public MakeupMng$2(lig paramlig, File paramFile, String paramString) {}
   
   public void run()
   {
     try
     {
-      nay.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+      nav.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception localException)

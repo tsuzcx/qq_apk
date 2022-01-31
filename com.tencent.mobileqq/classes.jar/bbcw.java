@@ -1,45 +1,81 @@
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.cache.Sizeable;
 
-final class bbcw
-  implements View.OnClickListener
+public class bbcw
 {
-  bbcw(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
-  
-  public void onClick(View paramView)
+  public static Bitmap a(String paramString)
   {
-    if (paramView.getId() == 2131365172) {}
-    for (;;)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (BaseApplicationImpl.sImageCache != null)
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
-        }
-        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if (paramView.getId() == 2131365178)
-      {
-        if (this.b != null) {
-          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
-        }
-        try
-        {
-          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
-          {
-            this.jdField_a_of_type_AndroidAppDialog.dismiss();
-            return;
-          }
-        }
-        catch (Exception paramView) {}
+      paramString = BaseApplicationImpl.sImageCache.get(paramString);
+      if ((paramString != null) && ((paramString instanceof Bitmap))) {
+        return (Bitmap)paramString;
       }
     }
+    return null;
+  }
+  
+  public static Sizeable a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      paramString = BaseApplicationImpl.sImageCache.get(paramString);
+      if ((paramString != null) && ((paramString instanceof Sizeable))) {
+        return (Sizeable)paramString;
+      }
+    }
+    return null;
+  }
+  
+  public static rpd a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      paramString = BaseApplicationImpl.sImageCache.get(paramString);
+      if ((paramString instanceof rpd)) {
+        return (rpd)paramString;
+      }
+    }
+    return null;
+  }
+  
+  public static void a(String paramString, Bitmap paramBitmap)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    while (BaseApplicationImpl.sImageCache == null) {
+      return;
+    }
+    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
+  }
+  
+  public static void a(String paramString, Sizeable paramSizeable)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
+    while (BaseApplicationImpl.sImageCache == null) {
+      return;
+    }
+    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
+  }
+  
+  public static void a(String paramString, rpd paramrpd)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramrpd == null)) {}
+    while (BaseApplicationImpl.sImageCache == null) {
+      return;
+    }
+    BaseApplicationImpl.sImageCache.put(paramString, paramrpd);
   }
 }
 

@@ -1,77 +1,57 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
 
 public class zbs
-  extends zbu
+  implements View.OnClickListener
 {
-  public zbs(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  public zbs(GdtMotiveVideoMockQzoneImaxFeedsFragment paramGdtMotiveVideoMockQzoneImaxFeedsFragment) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.onPageFinished(paramWebView, paramString);
-    yxs.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    yxs.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    yxs.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
-    GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    yxs.b("GdtVideoCeilingView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    for (;;)
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.c = 2;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getActivity());
+    Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
+    ((GdtAd)localObject).info.product_type.set(1000);
+    ((GdtAd)localObject).info.dest_info.dest_type.set(4);
+    ((GdtAd)localObject).info.display_info.video_info2.video_url.set(GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getVideoData().getUrl());
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
+    localParams.e = true;
+    localParams.jdField_a_of_type_Boolean = true;
+    localObject = new int[2];
+    paramView.getLocationInWindow((int[])localObject);
+    yxp.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationInWindow = [" + Arrays.toString((int[])localObject) + "]");
+    paramView.getLocationOnScreen((int[])localObject);
+    yxp.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationOnScreen = [" + Arrays.toString((int[])localObject) + "]");
+    localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
+    paramView = this.a.getActivity().getIntent();
+    if (TextUtils.isEmpty(paramView.getStringExtra("big_brother_ref_source_key"))) {}
+    for (paramView = paramView.getStringExtra("big_brother_source_key");; paramView = paramView.getStringExtra("big_brother_ref_source_key"))
     {
-      return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); mvv.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
-      {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
-        paramWebView.addFlags(268435456);
-        try
-        {
-          this.mContext.startActivity(paramWebView);
-          return true;
-        }
-        catch (ActivityNotFoundException paramWebView)
-        {
-          yxs.d("GdtVideoCeilingView", paramWebView.toString());
-          return true;
-        }
-      }
+      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramView);
+      localParams.f = true;
+      GdtHandler.a(localParams);
+      return;
     }
   }
 }

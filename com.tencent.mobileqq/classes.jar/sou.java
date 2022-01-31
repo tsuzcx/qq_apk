@@ -1,117 +1,155 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.SoftReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class sou
-  extends BaseAdapter
 {
-  public sou(sos paramsos) {}
+  public static ConcurrentHashMap<String, SoftReference<Bitmap>> a = new ConcurrentHashMap();
   
-  public spc a(int paramInt)
+  public static int a(ArticleInfo paramArticleInfo)
   {
-    if (sos.a != null) {
-      return (spc)sos.a.get(paramInt);
+    int i = 3;
+    if (paramArticleInfo == null) {
+      return 0;
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (sos.a != null) {
-      return sos.a.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    Object localObject2;
-    int i;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(sos.a()).inflate(2131559408, paramViewGroup, false);
-      paramViewGroup = new sov(this);
-      localObject1 = paramView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = ((sos.b() - actn.a(110.0F, sos.a().getResources())) / 3);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of item is" + ((ViewGroup.LayoutParams)localObject1).height);
-      }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374948));
-      localObject2 = paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).width = ((sos.c() - actn.a(2.0F, sos.a().getResources())) / 2);
-      ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of image is" + ((ViewGroup.LayoutParams)localObject2).height);
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374964));
-      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - actn.a(40.0F, sos.a().getResources()) > actn.a(16.0F, sos.a().getResources()))
-      {
-        i = 2;
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, " number is" + i);
-        }
-        if ((Build.MANUFACTURER.toLowerCase().contains("meizu")) && (Build.VERSION.SDK_INT <= 16))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "this is meizu");
-          }
-          localObject1 = new LinearLayout.LayoutParams(-1, -2);
-          ((LinearLayout.LayoutParams)localObject1).setMargins(12, 0, 12, 1);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(i);
-        paramView.setTag(paramViewGroup);
+    if (onh.a(paramArticleInfo)) {
+      if (paramArticleInfo.mVideoType == 0) {
+        i = 4;
       }
     }
     for (;;)
     {
-      localObject1 = a(paramInt);
-      if (localObject1 != null)
+      return i;
+      i = 5;
+      continue;
+      if (paramArticleInfo.mShowBigPicture)
       {
-        localObject2 = ((spc)localObject1).a;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#000000"));
-        localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
-        localURLDrawableOptions.mFailedDrawable = localColorDrawable;
-        localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
-        if ((localObject2 != null) && (((URLDrawable)localObject2).getStatus() == 2)) {
-          ((URLDrawable)localObject2).restartDownload();
-        }
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((spc)localObject1).b);
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "recommendInfo position = " + paramInt + "; url =" + localObject2 + "; title = " + ((spc)localObject1).b);
+        if (paramArticleInfo.mIsGallery == 0) {
+          i = 2;
+        } else {
+          i = 8;
         }
       }
-      return paramView;
-      i = 1;
-      break;
-      paramViewGroup = (sov)paramView.getTag();
+      else if ((paramArticleInfo.mPictures == null) || (paramArticleInfo.mPictures.length < 3)) {
+        if (TextUtils.isEmpty(paramArticleInfo.mFirstPagePicUrl)) {
+          i = 0;
+        } else if (paramArticleInfo.mIsGallery == 0) {
+          i = 1;
+        } else {
+          i = 7;
+        }
+      }
     }
+  }
+  
+  private static Bitmap a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return null;
+    }
+    try
+    {
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      localBitmap = paramBitmap;
+      if (i * j > 8000)
+      {
+        double d = Math.sqrt(8000.0D / (i * j));
+        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
+      }
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      for (;;)
+      {
+        System.gc();
+        paramBitmap.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
+        }
+        localBitmap = null;
+      }
+    }
+    catch (Exception paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
+        }
+        Bitmap localBitmap = null;
+      }
+    }
+    return localBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, int paramInt)
+  {
+    int j = 0;
+    if (paramString1 == null) {}
+    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    {
+      if (paramString2 == null) {}
+      for (paramString1 = "";; paramString1 = paramString2)
+      {
+        int i;
+        if (!WXShareHelper.a().a()) {
+          i = 2131720917;
+        }
+        for (;;)
+        {
+          if (i != -1)
+          {
+            wij.a(0, i);
+            if (QLog.isColorLevel()) {
+              QLog.d("PublicAccountImageCollectionUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", action=" + paramInt);
+            }
+            return;
+            if (!WXShareHelper.a().b()) {
+              i = 2131720918;
+            }
+          }
+          else
+          {
+            paramString2 = String.valueOf(System.currentTimeMillis());
+            Object localObject = new sov(paramString2);
+            WXShareHelper.a().a((bcww)localObject);
+            localObject = WXShareHelper.a();
+            paramBitmap = a(paramBitmap);
+            if (paramInt == 9) {}
+            for (i = j;; i = 1)
+            {
+              ((WXShareHelper)localObject).b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+              break;
+            }
+          }
+          i = -1;
+        }
+      }
+    }
+  }
+  
+  public static boolean a(Activity paramActivity, Intent paramIntent, String paramString)
+  {
+    if ((paramActivity == null) || (paramIntent == null)) {
+      return false;
+    }
+    paramIntent.putExtra("articleid", paramString);
+    paramActivity.startActivity(paramIntent);
+    return true;
+  }
+  
+  public static boolean a(ArticleInfo paramArticleInfo)
+  {
+    int i = a(paramArticleInfo);
+    return (i == 8) || (i == 7);
   }
 }
 

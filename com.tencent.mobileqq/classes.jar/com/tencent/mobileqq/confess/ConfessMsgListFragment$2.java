@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import ajsf;
+import ajsd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 
@@ -11,7 +11,7 @@ class ConfessMsgListFragment$2
   
   public void run()
   {
-    this.this$0.a.a().d(ajsf.aM, 1032);
+    this.this$0.a.a().d(ajsd.aM, 1032);
   }
 }
 

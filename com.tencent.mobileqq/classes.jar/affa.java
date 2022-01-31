@@ -1,8 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class affa
   implements View.OnClickListener
@@ -11,12 +11,13 @@ public class affa
   
   public void onClick(View paramView)
   {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
+    {
+      ClassificationSearchActivity.a(this.a);
+      return;
     }
-    this.a.setResult(1);
-    this.a.finish();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
 }
 

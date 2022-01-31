@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import adco;
-import ajyc;
+import adcl;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import bbjw;
-import bcpw;
+import bbkk;
+import bcql;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,7 +37,7 @@ class VoiceTextEditPanel$11
         return;
       }
     } while (VoiceTextEditPanel.a(this.this$0).get() != 4);
-    if (bbjw.a(VoiceTextEditPanel.a(this.this$0)))
+    if (bbkk.a(VoiceTextEditPanel.a(this.this$0)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceTextEditPanel", 2, "no word state= " + VoiceTextEditPanel.a(this.this$0).get());
@@ -51,7 +51,7 @@ class VoiceTextEditPanel$11
       }
       for (;;)
       {
-        bcpw.a(this.this$0.getContext(), ajyc.a(2131716849), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298865));
+        bcql.a(this.this$0.getContext(), ajya.a(2131716860), 0).b(this.this$0.getContext().getResources().getDimensionPixelSize(2131298865));
         return;
         this.this$0.setSendEnable(true);
       }

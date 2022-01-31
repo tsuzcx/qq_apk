@@ -1,30 +1,20 @@
-import cooperation.qzone.statistic.access.concept.Key;
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.List;
-
-final class bhmo
-  extends bhmn
+public class bhmo
 {
-  public String a(List<Statistic> paramList)
+  public int a;
+  public long a;
+  public bhmm a;
+  public boolean a;
+  public int b;
+  public bhmm b;
+  
+  bhmo(bhmn parambhmn)
   {
-    Key[] arrayOfKey = ((Statistic)paramList.get(0)).getKeys();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      Statistic localStatistic = (Statistic)paramList.get(i);
-      int k = arrayOfKey.length;
-      int j = 0;
-      while (j < k)
-      {
-        Key localKey = arrayOfKey[j];
-        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
-        j += 1;
-      }
-      localStringBuilder.append("\n");
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bhmm = null;
+    this.jdField_b_of_type_Bhmm = null;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
 import NS_COMM.COMM.StCommonExt;
-import ajyc;
-import amtc;
-import bcpw;
+import ajya;
+import amtb;
+import bcql;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -30,7 +30,7 @@ class MiniAppUserAppInfoListManager$3
       if (this.val$miniAppInfo.recommend == 1) {
         MiniAppUserAppInfoListManager.access$300(this.this$0, this.val$miniAppInfo);
       }
-      if (amtc.g())
+      if (amtb.g())
       {
         paramJSONObject = MiniAppUtils.getAppInterface();
         if (paramJSONObject != null) {
@@ -45,7 +45,7 @@ class MiniAppUserAppInfoListManager$3
       }
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendDelUserAppRequest, failed to delete miniapp!");
-    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131706832), 0).a();
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706843), 0).a();
   }
 }
 

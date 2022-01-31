@@ -1,8 +1,13 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.ArrayList;
 
-class azls
+public abstract interface azls
 {
-  TextView a;
+  public abstract ArrayList<ResultRecord> a();
+  
+  public abstract void a();
+  
+  public abstract ArrayList<String> b();
 }
 
 

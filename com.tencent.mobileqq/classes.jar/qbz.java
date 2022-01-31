@@ -1,28 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
+import java.util.List;
 
-public final class qbz
-  implements Parcelable.Creator<RecommendFollowInfoTitle>
+public class qbz
+  implements Cloneable
 {
-  public RecommendFollowInfoTitle a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
-    localRecommendFollowInfoTitle.title = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localRecommendFollowInfoTitle.isAllFollowed = bool;
-      return localRecommendFollowInfoTitle;
-      bool = false;
-    }
-  }
-  
-  public RecommendFollowInfoTitle[] a(int paramInt)
-  {
-    return new RecommendFollowInfoTitle[paramInt];
-  }
+  public int a;
+  public long a;
+  public List<Long> a;
+  public int b;
+  public long b;
 }
 
 

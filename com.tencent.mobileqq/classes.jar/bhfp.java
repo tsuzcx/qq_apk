@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoUrl;
 
-public class bhfp
-  implements DialogInterface.OnClickListener
+public final class bhfp
+  implements Parcelable.Creator<VideoUrl>
 {
-  public bhfp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public VideoUrl a(Parcel paramParcel)
   {
-    this.a.getPlayMode();
+    VideoUrl localVideoUrl = new VideoUrl();
+    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoUrl.b = paramParcel.readInt();
+    return localVideoUrl;
+  }
+  
+  public VideoUrl[] a(int paramInt)
+  {
+    return new VideoUrl[paramInt];
   }
 }
 

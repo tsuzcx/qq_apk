@@ -1,89 +1,27 @@
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lnm
-  extends MqqHandler
 {
-  WeakReference<AVNotifyCenter> a;
+  public int a;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
   
-  public lnm(Looper paramLooper, AVNotifyCenter paramAVNotifyCenter)
+  public lnm(AVNotifyCenter paramAVNotifyCenter) {}
+  
+  public boolean a()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramAVNotifyCenter);
+    return (this.jdField_b_of_type_Int == 2) && (this.jdField_c_of_type_Int == 2) && (this.d == 4);
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
-    if (localAVNotifyCenter == null) {}
-    while (!localAVNotifyCenter.i()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("AVNotifyCenter", 1, "handleMessage, msg[" + paramMessage.what + "]");
-    }
-    if ((paramMessage.what >= 10003) && (paramMessage.what <= 10009))
-    {
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 35);
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-    }
-    switch (paramMessage.what)
-    {
-    case 10006: 
-    case 10007: 
-    case 10008: 
-    case 10009: 
-    default: 
-      return;
-    case 10002: 
-      localAVNotifyCenter.b();
-      return;
-    case 10003: 
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 26);
-      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
-      localIntent.putExtra("memberUin", localAVNotifyCenter.a.getCurrentAccountUin());
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-      return;
-    case 10004: 
-      paramMessage = (Object[])paramMessage.obj;
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 24);
-      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
-      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
-      localIntent.putExtra("uins", (String[])paramMessage[2]);
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-      return;
-    case 10005: 
-      paramMessage = (Object[])paramMessage.obj;
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 31);
-      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
-      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
-      localIntent.putExtra("uins", (String[])paramMessage[2]);
-      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
-      return;
-    case 10010: 
-      localAVNotifyCenter.c(((Boolean)paramMessage.obj).booleanValue());
-      return;
-    }
-    Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
-    localIntent.putExtra("type", 34);
-    localIntent.putExtra("relationId", ((Long)paramMessage.obj).longValue());
-    localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
-    localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.jdField_c_of_type_Int + "], gameId[" + this.d + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.e + "], time[" + this.jdField_c_of_type_Long + "]";
   }
 }
 

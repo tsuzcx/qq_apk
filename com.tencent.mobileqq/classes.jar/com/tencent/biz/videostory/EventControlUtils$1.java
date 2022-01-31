@@ -1,12 +1,12 @@
 package com.tencent.biz.videostory;
 
 import java.util.TimerTask;
-import xep;
+import xem;
 
 public final class EventControlUtils$1
   extends TimerTask
 {
-  public EventControlUtils$1(xep paramxep) {}
+  public EventControlUtils$1(xem paramxem) {}
   
   public void run()
   {

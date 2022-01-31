@@ -1,28 +1,8 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 
-public class afdr
-  extends RecyclerView.ItemDecoration
+public abstract interface afdr
 {
-  private int a;
-  private int b;
-  
-  public afdr(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.left = this.b;
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

@@ -1,40 +1,73 @@
-import android.text.TextUtils;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.widget.ListView;
 
-public final class adga
+public class adga
 {
-  public HashMap<String, String> a = new HashMap();
+  private int a = -1;
+  private int b = -1;
   
-  private void a(String paramString)
+  private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
+    }
+    if (paramInt >= 0)
+    {
+      Object localObject = paramListView.getAdapter();
+      if ((localObject != null) && (paramInt < ((ListAdapter)localObject).getCount()))
+      {
+        localObject = ((ListAdapter)localObject).getItem(paramInt);
+        if ((localObject instanceof MessageRecord))
+        {
+          localObject = (MessageRecord)localObject;
+          adfy.a(paramListView.getContext(), paramQQAppInterface, (MessageRecord)localObject, 1);
+        }
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ListView paramListView)
+  {
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
+    }
+    int i = j;
+    while (i < j + k)
+    {
+      a(paramQQAppInterface, paramListView, i);
+      i += 1;
+    }
+    this.a = paramListView.mFirstPosition;
+    this.b = paramListView.getChildCount();
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, ListView paramListView)
+  {
+    int j = paramListView.mFirstPosition;
+    int k = paramListView.getChildCount();
+    if ((j == this.a) && (this.b == k)) {
+      return;
+    }
+    int i = -1;
+    if (j < this.a) {
+      i = j;
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
+        QLog.d("ListViewExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
       }
-      try
-      {
-        paramString = new JSONObject(paramString);
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = paramString.optString(str1, "");
-            if (!TextUtils.isEmpty(str2)) {
-              this.a.put(str1, str2);
-            }
-          }
-        }
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
+      this.a = j;
+      this.b = k;
+      a(paramQQAppInterface, paramListView, i);
+      return;
+      if (j + k > this.a + this.b) {
+        i = j + k - 1;
       }
     }
   }

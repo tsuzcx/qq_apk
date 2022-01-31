@@ -1,12 +1,12 @@
 package com.tencent.gdtad.api.interstitial;
 
 import java.lang.ref.WeakReference;
-import yum;
+import yuj;
 
 public class GdtInterstitialNotifyReg$6
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$6(yum paramyum, WeakReference paramWeakReference) {}
+  public GdtInterstitialNotifyReg$6(yuj paramyuj, WeakReference paramWeakReference) {}
   
   public void run()
   {

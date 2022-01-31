@@ -1,42 +1,24 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import java.lang.reflect.Field;
+import java.util.List;
 
 public class banf
-  extends Scroller
 {
-  public banf(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b = 0;
+  public String b;
   
-  public void a()
+  public String a(int paramInt)
   {
-    try
-    {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
+    if ((this.a == null) || (this.a.size() == 0)) {
+      return "";
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (paramInt < this.a.size()) {
+      return (String)this.a.get(paramInt);
     }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, 500);
+    return (String)this.a.get(this.a.size() - 1);
   }
 }
 

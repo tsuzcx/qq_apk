@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import abae;
+import abaa;
 import android.content.Intent;
-import bcpw;
+import bcql;
 
 public class EditInfoActivity$12$1
   implements Runnable
 {
-  public EditInfoActivity$12$1(abae paramabae, boolean paramBoolean, String paramString) {}
+  public EditInfoActivity$12$1(abaa paramabaa, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Abae.a.b(false);
+    this.jdField_a_of_type_Abaa.a.b(false);
     if (this.jdField_a_of_type_Boolean)
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("nick", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("edit_action", this.jdField_a_of_type_Abae.a.g);
-      this.jdField_a_of_type_Abae.a.setResult(-1, localIntent);
-      this.jdField_a_of_type_Abae.a.finish();
+      localIntent.putExtra("edit_action", this.jdField_a_of_type_Abaa.a.g);
+      this.jdField_a_of_type_Abaa.a.setResult(-1, localIntent);
+      this.jdField_a_of_type_Abaa.a.finish();
       return;
     }
-    bcpw.a(this.jdField_a_of_type_Abae.a, 2, 2131694298, 0).b(this.jdField_a_of_type_Abae.a.getTitleBarHeight());
-    this.jdField_a_of_type_Abae.a.onBackEvent();
+    bcql.a(this.jdField_a_of_type_Abaa.a, 2, 2131694299, 0).b(this.jdField_a_of_type_Abaa.a.getTitleBarHeight());
+    this.jdField_a_of_type_Abaa.a.onBackEvent();
   }
 }
 

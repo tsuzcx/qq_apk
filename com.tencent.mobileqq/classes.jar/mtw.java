@@ -1,18 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 class mtw
-  implements DialogInterface.OnShowListener
 {
-  mtw(mtt parammtt) {}
+  private Map<String, mtx> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public mtw(String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    if (paramArrayOfString != null)
+    {
+      int j = paramArrayOfString.length;
+      int i = 0;
+      if (i < j)
+      {
+        String str = paramArrayOfString[i];
+        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
+          this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841760, ajya.a(2131715045), str));
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if ("DEVICE_EARPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841762, ajya.a(2131715046), str));
+          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841765, ajya.a(2131715049), str));
+          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
+            this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841767, ajya.a(2131715047), str));
+          }
+        }
+      }
     }
-    axqw.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap.size();
+  }
+  
+  public mtx a(String paramString)
+  {
+    return (mtx)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      mtx localmtx = (mtx)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
+      if (localmtx != null) {
+        localmtx.b = (ajya.a(2131715048) + paramString + "）");
+      }
+    }
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

@@ -1,13 +1,8 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
-
 public abstract interface xns
 {
-  public abstract void a(List<LatLng> paramList, int paramInt);
+  public abstract void a(int paramInt);
   
-  public abstract boolean b();
-  
-  public abstract void l();
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

@@ -1,93 +1,32 @@
-import java.util.concurrent.atomic.AtomicInteger;
-
-class swi
-  implements wam
+public class swi
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public swi(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
+  public swi(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onFailure(String paramString)
+  public void a(String paramString)
   {
-    veg.d(swf.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    veg.d(swf.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 1: 
-        veg.e(swf.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
-        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
-      }
-    }
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-    if (paramBoolean)
-    {
-      label152:
-      localAtomicInteger.set(i);
-      for (;;)
-      {
-        label158:
-        return;
-        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (!paramBoolean) {
-          break;
-        }
-        i = j;
-        label174:
-        localAtomicInteger.set(i);
-      }
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!paramBoolean) {
-        break label248;
-      }
-    }
-    label248:
-    for (i = k;; i = 945001)
-    {
-      localAtomicInteger.set(i);
-      break label158;
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (paramBoolean) {}
-      for (i = m;; i = 944004)
-      {
-        localAtomicInteger.set(i);
-        break;
-      }
-      break;
-      i = 943004;
-      break label152;
-      i = 942004;
-      break label174;
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    veg.c(swf.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    veg.c(swf.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-public class qbl
+public final class qbl
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  public int a;
-  public long a;
-  public MessageRecord a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public String c = "";
+  public MultiBiuSameContent a(Parcel paramParcel)
+  {
+    return new MultiBiuSameContent(paramParcel);
+  }
+  
+  public MultiBiuSameContent[] a(int paramInt)
+  {
+    return new MultiBiuSameContent[paramInt];
+  }
 }
 
 

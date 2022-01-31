@@ -1,9 +1,8 @@
-import android.view.View;
-import java.util.List;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
 public abstract interface ahpo
 {
-  public abstract List<View> a();
+  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 

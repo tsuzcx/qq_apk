@@ -1,59 +1,37 @@
-import SummaryCard.CondFitUser;
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.Bitmap;
+import android.view.View;
 import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import java.util.List;
+import com.tencent.widget.XListView;
 
 public class ammu
-  implements ajue
+  implements awcf
 {
   public ammu(SearchResultActivity paramSearchResultActivity) {}
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int i = 1;
-    if (paramInt == 3) {
-      if (!paramBoolean1)
-      {
-        this.a.b = 3;
-        this.a.jdField_a_of_type_Ammw.notifyDataSetChanged();
-      }
-    }
-    while (paramInt != 2)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
       return;
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      paramList = this.a;
-      if (paramBoolean2) {}
-      for (paramInt = i;; paramInt = 0)
+      if (this.a.jdField_a_of_type_Int == 0)
       {
-        paramList.b = paramInt;
-        break;
+        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof ammw)))
+          {
+            paramBitmap = (ammw)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
       }
     }
-    if (paramBoolean1)
-    {
-      bbaz.a(true);
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      }
-      this.a.jdField_a_of_type_Ammw.notifyDataSetChanged();
-      bbaz.a(false);
-      SearchResultActivity.a(this.a).a(0);
-      paramList = Message.obtain();
-      paramList.what = 5;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
-      return;
-    }
-    SearchResultActivity.a(this.a).a(1);
-    paramList = Message.obtain();
-    paramList.what = 4;
-    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
   }
 }
 

@@ -1,40 +1,17 @@
-import NS_USER_ACTION_REPORT.ItemInfo;
-import NS_USER_ACTION_REPORT.PageInfo;
-import NS_USER_ACTION_REPORT.TraceInfo;
-import NS_USER_ACTION_REPORT.UserActionReport;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class bhed
+  implements EIPCResultCallback
 {
-  private bhea jdField_a_of_type_Bhea;
-  private ArrayList<ItemInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  bhed(bheb parambheb) {}
   
-  public UserActionReport a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    UserActionReport localUserActionReport = new UserActionReport();
-    Object localObject = new PageInfo();
-    ((PageInfo)localObject).appid = this.jdField_a_of_type_Bhea.c;
-    ((PageInfo)localObject).page_id = this.jdField_a_of_type_Bhea.d;
-    ((PageInfo)localObject).item_infos = this.jdField_a_of_type_JavaUtilArrayList;
-    localUserActionReport.page_info = ((PageInfo)localObject);
-    localObject = new TraceInfo();
-    ((TraceInfo)localObject).trace_id = this.jdField_a_of_type_Bhea.jdField_a_of_type_JavaLangString;
-    ((TraceInfo)localObject).trace_num = this.jdField_a_of_type_Bhea.jdField_a_of_type_Int;
-    ((TraceInfo)localObject).trace_detail = this.jdField_a_of_type_Bhea.a();
-    localUserActionReport.trace_info = ((TraceInfo)localObject);
-    return localUserActionReport;
-  }
-  
-  public bhed a(ItemInfo paramItemInfo)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramItemInfo);
-    return this;
-  }
-  
-  public bhed a(bhea parambhea)
-  {
-    this.jdField_a_of_type_Bhea = parambhea;
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "startFontSoDownload download so success");
+    }
   }
 }
 

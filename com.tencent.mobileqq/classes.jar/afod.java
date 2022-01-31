@@ -1,42 +1,42 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
 public class afod
-  extends baiy
+  extends RecyclerView.OnScrollListener
 {
-  public afod(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public afod(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    while (this.a.jdField_a_of_type_Bcpq == null) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
-        localStructMsg.mergeFrom(paramBundle);
-        TroopNotifyAndRecommendView.a(this.a, 1, localStructMsg);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        do
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopNotifyAndRecommendView", 2, "structMsg merge error");
-          }
-        } while (this.a.jdField_a_of_type_Bcpq == null);
-        this.a.jdField_a_of_type_Bcpq.dismiss();
-        bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697633), 0).b(this.a.a());
-        return;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
+        TroopSuspiciousFragment.a(this.a);
       }
     }
-    this.a.jdField_a_of_type_Bcpq.dismiss();
-    bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697633), 0).b(this.a.a());
+    if (this.a.jdField_a_of_type_Baxy != null)
+    {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_Baxy.a();
+      this.a.jdField_a_of_type_Baxy.c();
+    }
+    label94:
+    while (!this.a.jdField_a_of_type_Baxy.a()) {
+      return;
+    }
+    this.a.jdField_a_of_type_Baxy.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

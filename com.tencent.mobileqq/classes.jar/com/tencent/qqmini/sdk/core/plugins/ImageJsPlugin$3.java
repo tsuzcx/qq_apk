@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import beil;
-import beim;
-import beka;
+import bejc;
+import bejd;
+import bekr;
 import java.io.File;
 import java.util.ArrayList;
 
 class ImageJsPlugin$3
-  implements beim
+  implements bejd
 {
-  ImageJsPlugin$3(ImageJsPlugin paramImageJsPlugin, beka parambeka, File paramFile) {}
+  ImageJsPlugin$3(ImageJsPlugin paramImageJsPlugin, bekr parambekr, File paramFile) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -23,13 +23,13 @@ class ImageJsPlugin$3
         this.val$req.c();
       }
       this.val$imageFile.deleteOnExit();
-      beil.a().b(this);
+      bejc.a().b(this);
       return true;
     }
     paramIntent = new ArrayList();
     paramIntent.add(this.val$imageFile.getAbsolutePath());
     ImageJsPlugin.access$100(this.this$0, paramIntent, this.val$req);
-    beil.a().b(this);
+    bejc.a().b(this);
     return true;
   }
 }

@@ -1,87 +1,99 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amys
-  extends amyi<QQLevelIconConfig>
 {
-  public static QQLevelIconConfig c()
-  {
-    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)ampm.a().a(542);
-    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
-    if (localQQLevelIconConfig2 == null) {
-      localQQLevelIconConfig1 = new QQLevelIconConfig();
-    }
-    return localQQLevelIconConfig1;
-  }
-  
-  public int a()
-  {
-    return 542;
-  }
-  
   @NonNull
-  public QQLevelIconConfig a()
+  public final amyt a;
+  @NonNull
+  public final amyt b;
+  @NonNull
+  public final amyt c;
+  
+  private amys()
   {
-    return new QQLevelIconConfig();
+    this(a(null, ""), a(null, ""), a(null, ""));
   }
   
-  @NonNull
-  public QQLevelIconConfig a(ampi[] paramArrayOfampi)
+  private amys(amyt paramamyt1, amyt paramamyt2, amyt paramamyt3)
   {
-    boolean bool2 = false;
+    this.a = paramamyt1;
+    this.b = paramamyt2;
+    this.c = paramamyt3;
     if (QLog.isColorLevel()) {
-      QLog.d("QQLevelIconProcessor", 1, paramArrayOfampi[0].a);
+      QLog.d("KC.ConfigProcessor", 1, toString());
     }
-    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    for (;;)
+  }
+  
+  @NonNull
+  public static amys a()
+  {
+    return new amys();
+  }
+  
+  @NonNull
+  public static amys a(@Nullable String paramString)
+  {
+    try
     {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = new JSONObject(paramString);
+        return new amys(a(paramString, "AIO"), a(paramString, "group"), a(paramString, "download"));
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramString);
+        paramString = null;
+      }
+    }
+  }
+  
+  @NonNull
+  private static amyt a(JSONObject paramJSONObject, String paramString)
+  {
+    boolean bool = false;
+    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramString))) {
       try
       {
-        if (!TextUtils.isEmpty(paramArrayOfampi))
+        Object localObject = paramJSONObject.optJSONObject(paramString);
+        paramJSONObject = ((JSONObject)localObject).optString("content", null);
+        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyWords");
+        localObject = ((JSONObject)localObject).optJSONArray("actionUrls");
+        String[] arrayOfString1 = new String[localJSONArray.length()];
+        String[] arrayOfString2 = new String[localJSONArray.length()];
+        int i = 0;
+        while (i < localJSONArray.length())
         {
-          paramArrayOfampi = new JSONObject(paramArrayOfampi);
-          if (paramArrayOfampi.optInt("newguideswitch", 1) != 1) {
-            continue;
-          }
-          bool1 = true;
-          localQQLevelIconConfig.mIsEnableGuide = bool1;
-          bool1 = bool2;
-          if (paramArrayOfampi.optInt("rushfeeswitch", 1) == 1) {
-            bool1 = true;
-          }
-          localQQLevelIconConfig.mIsNotifyPayment = bool1;
-          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfampi.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
-          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfampi.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
+          arrayOfString1[i] = localJSONArray.optString(i, null);
+          arrayOfString2[i] = ((JSONArray)localObject).optString(i, null);
+          i += 1;
         }
+        if (paramJSONObject != null) {
+          bool = true;
+        }
+        paramJSONObject = new amyt(paramString, bool, paramJSONObject, arrayOfString1, arrayOfString2);
+        return paramJSONObject;
       }
-      catch (JSONException paramArrayOfampi)
+      catch (Exception paramJSONObject)
       {
-        boolean bool1;
-        veg.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfampi.getMessage());
-        continue;
+        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramJSONObject);
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
-      }
-      return localQQLevelIconConfig;
-      bool1 = false;
     }
+    return new amyt();
   }
   
-  public Class<QQLevelIconConfig> a()
+  public String toString()
   {
-    return QQLevelIconConfig.class;
-  }
-  
-  @NonNull
-  public QQLevelIconConfig b()
-  {
-    return new QQLevelIconConfig();
+    return "KingCardConfig{aio=" + this.a + ", group=" + this.b + ", download=" + this.c + '}';
   }
 }
 

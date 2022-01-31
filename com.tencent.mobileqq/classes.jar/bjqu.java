@@ -1,13 +1,12 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-
 public abstract interface bjqu
 {
-  public abstract Activity a();
+  public abstract void i();
   
-  public abstract AppInterface a();
+  public abstract void j();
   
-  public abstract void a();
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

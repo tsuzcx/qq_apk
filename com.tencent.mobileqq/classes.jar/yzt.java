@@ -1,27 +1,27 @@
-import com.tencent.gdtad.views.canvas.components.fixedbutton.GdtCanvasFixedButtonWithComplexStyle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import com.tencent.ark.ArkViewImplement.InputCallback;
+import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
+import java.lang.ref.WeakReference;
 
 public class yzt
-  implements zbc
+  implements ArkViewImplement.InputCallback
 {
-  public yzt(GdtCanvasFixedButtonWithComplexStyle paramGdtCanvasFixedButtonWithComplexStyle) {}
+  public yzt(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
   
-  public void a(URLDrawable paramURLDrawable)
+  public void onFocusChanged(View paramView, boolean paramBoolean)
   {
-    yxs.b(GdtCanvasFixedButtonWithComplexStyle.a(this.a), "onLoadSuccessful");
-    if ((GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null) && (GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null)) {
-      GdtCanvasFixedButtonWithComplexStyle.a(this.a).setImageDrawable(GdtCanvasFixedButtonWithComplexStyle.a(this.a).a());
+    GdtCanvasFormComponentView.a(this.a, paramBoolean);
+    if ((paramBoolean) || (GdtCanvasFormComponentView.a(this.a) == null) || (GdtCanvasFormComponentView.b(this.a).get() == null)) {
+      return;
     }
+    ((zad)GdtCanvasFormComponentView.c(this.a).get()).setPageViewTopMargin(0);
   }
   
-  public void b(URLDrawable paramURLDrawable)
-  {
-    yxs.b(GdtCanvasFixedButtonWithComplexStyle.a(this.a), "onLoadFailed");
-    if ((GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null) && (GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null)) {
-      GdtCanvasFixedButtonWithComplexStyle.a(this.a).setImageDrawable(GdtCanvasFixedButtonWithComplexStyle.a(this.a).a());
-    }
-  }
+  public void onHideMenu(View paramView) {}
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

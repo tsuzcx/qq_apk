@@ -5,21 +5,13 @@ import android.view.View.OnClickListener;
 class afvj
   implements View.OnClickListener
 {
-  afvj(afvi paramafvi, DialogInterface.OnClickListener paramOnClickListener) {}
+  afvj(afvg paramafvg, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
     if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afvi, 0);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afvg, 2);
     }
-    try
-    {
-      if (this.jdField_a_of_type_Afvi.isShowing()) {
-        this.jdField_a_of_type_Afvi.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
   }
 }
 

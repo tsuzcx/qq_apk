@@ -1,45 +1,72 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Application;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.io.File;
+import java.net.URL;
 
-class ayop
-  implements ITransactionCallback
+public class ayop
+  extends ProtocolDownloader.Adapter
 {
-  ayop(ayoo paramayoo) {}
+  public static int a = 200;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
-    }
-    this.a.jdField_a_of_type_Ayqm.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
-    }
-  }
+  public ayop(Application paramApplication) {}
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    this.a.d = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
+      throw new RuntimeException("Decode info is invalide");
     }
-    if (this.a.jdField_a_of_type_Vka.b.equals(this.a.jdField_a_of_type_Vkc.a))
+    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
+    for (;;)
     {
-      this.a.jdField_a_of_type_Vka.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.aQ_();
+      try
+      {
+        paramFile = paramDownloadParams.url.getRef();
+        if ("VIDEO".equals(paramFile))
+        {
+          paramFile = new agqr(localBaseApplicationImpl, paramURLDrawableHandler);
+          paramFile = aglb.a(localBaseApplicationImpl).a(paramDownloadParams.url, paramFile, paramDownloadParams);
+          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
+            break;
+          }
+          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
+          return paramFile;
+        }
+        if ("FLOW_THUMB".equals(paramFile))
+        {
+          paramFile = new aglq(localBaseApplicationImpl, paramURLDrawableHandler);
+          continue;
+        }
+        if (!"APP_VIDEO".equals(paramFile)) {
+          break label153;
+        }
       }
+      catch (NumberFormatException paramFile)
+      {
+        throw new RuntimeException("Decode type is invalid");
+      }
+      paramFile = new agld(localBaseApplicationImpl, paramURLDrawableHandler);
+      continue;
+      label153:
+      paramFile = new agqe(localBaseApplicationImpl, paramURLDrawableHandler);
     }
+    return paramFile;
   }
   
-  public void onSwitch2BackupChannel() {}
+  public boolean hasDiskFile(DownloadParams paramDownloadParams)
+  {
+    return true;
+  }
   
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new File(ajsd.aV);
+  }
 }
 
 

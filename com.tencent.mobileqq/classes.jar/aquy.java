@@ -1,13 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AutoBgImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aquy
-  extends actr
+class aquy
+  implements View.OnClickListener
 {
-  public AutoBgImageView a;
-  public TextView b;
+  aquy(aquw paramaquw, aqva paramaqva) {}
   
-  public aquy(aquu paramaquu) {}
+  public void onClick(View paramView)
+  {
+    aquw.a(this.jdField_a_of_type_Aquw, this.jdField_a_of_type_Aqva.a);
+  }
 }
 
 

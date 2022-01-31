@@ -1,20 +1,11 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class sxu
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
+  public static Drawable a(List<String> paramList)
   {
-    return syn.a(paramQQUserUIItem);
-  }
-  
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  public static String b(QQUserUIItem paramQQUserUIItem)
-  {
-    return syn.b(paramQQUserUIItem);
+    return ((uks)tcz.a(24)).a(paramList);
   }
 }
 

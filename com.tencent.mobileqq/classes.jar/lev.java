@@ -1,17 +1,49 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class lev
-  implements muu
+public class lev
 {
-  lev(leu paramleu, lez paramlez, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  lew jdField_a_of_type_Lew;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  static
   {
-    this.jdField_a_of_type_Lez.j = paramInt;
-    this.jdField_a_of_type_Lez.i = paramString2;
-    DeviceCapabilityExamination.a(this.jdField_a_of_type_Lez, this.jdField_a_of_type_Leu.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Leu.jdField_a_of_type_Les != null) {
-      this.jdField_a_of_type_Leu.jdField_a_of_type_Les.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
+  
+  public lev(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lew = new lew(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Lew);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver, Declare permissions");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    localIntentFilter.addAction("tencent.video.q2v.membersChange");
+    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Lew, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

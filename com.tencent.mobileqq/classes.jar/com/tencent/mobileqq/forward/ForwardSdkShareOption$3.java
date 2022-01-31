@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.forward;
 
-import aqfb;
+import aqfd;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
 public class ForwardSdkShareOption$3
   implements Runnable
 {
-  public ForwardSdkShareOption$3(aqfb paramaqfb, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
+  public ForwardSdkShareOption$3(aqfd paramaqfd, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
   
   public void run()
   {

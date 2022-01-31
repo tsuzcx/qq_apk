@@ -1,95 +1,310 @@
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.utils.SubscribeDraftManager.1;
+import com.tencent.biz.subscribe.utils.SubscribeDraftManager.2;
+import com.tencent.biz.subscribe.utils.SubscribeDraftManager.4;
+import com.tencent.biz.subscribe.utils.SubscribeDraftManager.5;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mm.vfs.VFSFileReader;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.Md5Utils;
+import com.tencent.util.Pair;
+import java.io.BufferedReader;
+
 public class wsw
 {
-  /* Error */
-  public static Object a(byte[] paramArrayOfByte)
+  public static String a;
+  private static wsw jdField_a_of_type_Wsw;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private String b = ajsd.cU;
+  private String c = ajsd.cV;
+  private String d = ".draft";
+  
+  static
   {
-    // Byte code:
-    //   0: new 10	java/io/ByteArrayInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 14	java/io/ByteArrayInputStream:<init>	([B)V
-    //   8: astore_1
-    //   9: new 16	java/io/ObjectInputStream
-    //   12: dup
-    //   13: aload_1
-    //   14: invokespecial 19	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   17: astore_2
-    //   18: aload_2
-    //   19: invokevirtual 23	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   22: astore_0
-    //   23: aload_1
-    //   24: invokevirtual 27	java/io/ByteArrayInputStream:close	()V
-    //   27: aload_2
-    //   28: invokevirtual 28	java/io/ObjectInputStream:close	()V
-    //   31: aload_0
-    //   32: areturn
-    //   33: astore_1
-    //   34: aconst_null
-    //   35: astore_0
-    //   36: aload_1
-    //   37: invokevirtual 31	java/lang/Exception:printStackTrace	()V
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_1
-    //   43: goto -7 -> 36
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	paramArrayOfByte	byte[]
-    //   8	16	1	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   33	4	1	localException1	java.lang.Exception
-    //   42	1	1	localException2	java.lang.Exception
-    //   17	11	2	localObjectInputStream	java.io.ObjectInputStream
-    // Exception table:
-    //   from	to	target	type
-    //   0	23	33	java/lang/Exception
-    //   23	31	42	java/lang/Exception
+    jdField_a_of_type_JavaLangString = "SubscribeDraftManager";
+  }
+  
+  private wsw()
+  {
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("SubscribeDraftManager", 0);
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+  }
+  
+  private Pair<String, String> a(String paramString)
+  {
+    String str = bdik.d(paramString);
+    paramString = this.b + str;
+    str = this.c + str;
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "createDraftDirectory currentFolder:" + paramString + " currentSimpleFolder:" + str);
+    try
+    {
+      bbdx.a(paramString);
+      bbdx.a(str);
+      paramString = new Pair(paramString, str);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  private Pair<String, String> a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "generate draft failed UID is empty");
+      return null;
+    }
+    Pair localPair = a(paramString1);
+    if (localPair != null)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "generate draft id:" + paramString2 + "\n,mUid =" + paramString1 + ", md5 = " + Md5Utils.getMD5(paramString1));
+      return new Pair((String)localPair.first + "/" + paramString2 + this.d, (String)localPair.second + "/" + paramString2 + this.d);
+    }
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "generate draft failed UID ,SDCARD generate folder failed");
+    return null;
+  }
+  
+  private String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    try
+    {
+      paramString = new BufferedReader(new VFSFileReader(new VFSFile(paramString)));
+      for (;;)
+      {
+        String str = paramString.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuilder.append(str);
+      }
+      return localStringBuilder.toString();
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    for (;;)
+    {
+      paramString.close();
+    }
+  }
+  
+  public static wsw a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Wsw == null) {
+        jdField_a_of_type_Wsw = new wsw();
+      }
+      wsw localwsw = jdField_a_of_type_Wsw;
+      return localwsw;
+    }
+    finally {}
+  }
+  
+  public void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, wta paramwta)
+  {
+    boolean bool = true;
+    if (Build.VERSION.SDK_INT >= 23) {
+      bool = akwf.a(paramActivity);
+    }
+    if (!bool)
+    {
+      bbdj.b(paramActivity);
+      return;
+    }
+    if ((!TextUtils.isEmpty(paramString1)) || (!TextUtils.isEmpty(paramString2)) || (!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.1(this, paramString1, paramString2, paramString3, paramString4, paramwta));
+      return;
+    }
+    if (paramwta != null) {
+      paramwta.a(3, false, paramString2, new Object[0]);
+    }
+    QLog.d(jdField_a_of_type_JavaLangString, 4, "modifyDraft failed because something is empty");
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, int paramInt, wth paramwth)
+  {
+    if (paramContext == null) {}
+    do
+    {
+      return;
+      paramContext = bfpc.a(paramContext);
+      paramContext.a(paramInt, 3);
+      paramContext.c(2131690596);
+      paramContext.a(new wsx(this, paramwth, paramString1, paramContext));
+      paramContext.a(new wsy(this, paramString1, paramString2, paramwth, paramContext));
+    } while (paramContext.isShowing());
+    paramContext.show();
+  }
+  
+  public void a(String paramString1, String paramString2, wta paramwta)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "deletDraft failed because uin or draftID is empty");
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.4(this, paramString1, paramString2, paramwta));
+  }
+  
+  public void a(String paramString, wta paramwta)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft failed because uin is empty");
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.2(this, paramString, paramwta));
+  }
+  
+  public boolean a(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString != null)
+    {
+      paramString = new VFSFile((String)paramString.second);
+      if ((paramString.exists()) && (paramString.isDirectory()))
+      {
+        paramString = paramString.listFiles();
+        return (paramString != null) && (paramString.length > 0);
+      }
+    }
+    return false;
   }
   
   /* Error */
-  public static byte[] a(Object paramObject)
+  public boolean a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 35	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: invokespecial 37	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore_1
-    //   8: new 39	java/io/ObjectOutputStream
-    //   11: dup
-    //   12: aload_1
-    //   13: invokespecial 42	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   16: astore_2
-    //   17: aload_2
-    //   18: aload_0
-    //   19: invokevirtual 46	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   22: aload_1
-    //   23: invokevirtual 50	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   26: astore_0
-    //   27: aload_1
-    //   28: invokevirtual 51	java/io/ByteArrayOutputStream:close	()V
-    //   31: aload_2
-    //   32: invokevirtual 52	java/io/ObjectOutputStream:close	()V
-    //   35: aload_0
-    //   36: areturn
-    //   37: astore_1
-    //   38: aconst_null
-    //   39: astore_0
-    //   40: aload_1
-    //   41: invokevirtual 31	java/lang/Exception:printStackTrace	()V
-    //   44: aload_0
-    //   45: areturn
-    //   46: astore_1
-    //   47: goto -7 -> 40
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aload 5
+    //   8: astore_3
+    //   9: new 147	com/tencent/mm/vfs/VFSFile
+    //   12: dup
+    //   13: aload_1
+    //   14: invokespecial 150	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   17: astore_1
+    //   18: aload 5
+    //   20: astore_3
+    //   21: aload_1
+    //   22: invokevirtual 259	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   25: ifne +11 -> 36
+    //   28: aload 5
+    //   30: astore_3
+    //   31: aload_1
+    //   32: invokevirtual 272	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
+    //   35: pop
+    //   36: aload 5
+    //   38: astore_3
+    //   39: new 274	com/tencent/mm/vfs/VFSFileOutputStream
+    //   42: dup
+    //   43: aload_1
+    //   44: invokespecial 275	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   47: astore_1
+    //   48: aload_1
+    //   49: aload_2
+    //   50: invokevirtual 279	java/lang/String:getBytes	()[B
+    //   53: invokevirtual 283	com/tencent/mm/vfs/VFSFileOutputStream:write	([B)V
+    //   56: aload_1
+    //   57: ifnull +7 -> 64
+    //   60: aload_1
+    //   61: invokevirtual 284	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   64: iconst_1
+    //   65: ireturn
+    //   66: astore_1
+    //   67: aload_1
+    //   68: invokevirtual 285	java/io/IOException:printStackTrace	()V
+    //   71: iconst_1
+    //   72: ireturn
+    //   73: astore_2
+    //   74: aload 4
+    //   76: astore_1
+    //   77: aload_1
+    //   78: astore_3
+    //   79: getstatic 17	wsw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   82: iconst_1
+    //   83: ldc_w 287
+    //   86: aload_2
+    //   87: invokestatic 290	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   90: aload_1
+    //   91: ifnull +7 -> 98
+    //   94: aload_1
+    //   95: invokevirtual 284	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   98: iconst_0
+    //   99: ireturn
+    //   100: astore_1
+    //   101: aload_1
+    //   102: invokevirtual 285	java/io/IOException:printStackTrace	()V
+    //   105: goto -7 -> 98
+    //   108: astore_1
+    //   109: aload_3
+    //   110: ifnull +7 -> 117
+    //   113: aload_3
+    //   114: invokevirtual 284	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   117: aload_1
+    //   118: athrow
+    //   119: astore_2
+    //   120: aload_2
+    //   121: invokevirtual 285	java/io/IOException:printStackTrace	()V
+    //   124: goto -7 -> 117
+    //   127: astore_2
+    //   128: aload_1
+    //   129: astore_3
+    //   130: aload_2
+    //   131: astore_1
+    //   132: goto -23 -> 109
+    //   135: astore_2
+    //   136: goto -59 -> 77
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	50	0	paramObject	Object
-    //   7	21	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   37	4	1	localException1	java.lang.Exception
-    //   46	1	1	localException2	java.lang.Exception
-    //   16	16	2	localObjectOutputStream	java.io.ObjectOutputStream
+    //   0	139	0	this	wsw
+    //   0	139	1	paramString1	String
+    //   0	139	2	paramString2	String
+    //   8	122	3	localObject1	Object
+    //   4	71	4	localObject2	Object
+    //   1	36	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   0	27	37	java/lang/Exception
-    //   27	35	46	java/lang/Exception
+    //   60	64	66	java/io/IOException
+    //   9	18	73	java/lang/Exception
+    //   21	28	73	java/lang/Exception
+    //   31	36	73	java/lang/Exception
+    //   39	48	73	java/lang/Exception
+    //   94	98	100	java/io/IOException
+    //   9	18	108	finally
+    //   21	28	108	finally
+    //   31	36	108	finally
+    //   39	48	108	finally
+    //   79	90	108	finally
+    //   113	117	119	java/io/IOException
+    //   48	56	127	finally
+    //   48	56	135	java/lang/Exception
+  }
+  
+  public void b(String paramString1, String paramString2, wta paramwta)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "deletDraft failed because uin or draftID is empty");
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.5(this, paramString1, paramString2, paramwta));
   }
 }
 

@@ -1,121 +1,213 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import com.tencent.widget.ListView;
+import java.util.List;
 
 public class acyw
+  extends acyl
 {
-  public static final int a;
-  String a;
-  int b;
+  private acyl jdField_a_of_type_Acyl;
+  private aczk jdField_a_of_type_Aczk;
+  private aczt jdField_a_of_type_Aczt;
   
-  static
+  public acyw(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    jdField_a_of_type_Int = (int)(32.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    super(paramInt, paramAIOAnimationConatiner, paramListView);
   }
   
-  public static int a(String paramString)
+  private boolean b(Object... paramVarArgs)
   {
-    if (paramString.equalsIgnoreCase("Emoji")) {
-      return 0;
-    }
-    if (paramString.equalsIgnoreCase("Face")) {
-      return 1;
-    }
-    if (paramString.equalsIgnoreCase("Image")) {
-      return 2;
-    }
-    return -1;
-  }
-  
-  public static Drawable a(Context paramContext, acyw paramacyw)
-  {
-    Object localObject = null;
-    switch (paramacyw.b)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramVarArgs.length == 4)
     {
-    default: 
-      paramContext = localObject;
-    case 0: 
-    case 1: 
-      do
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null)
       {
-        do
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ComTencentWidgetListView != null)
         {
-          int i;
-          do
-          {
-            return paramContext;
-            i = Integer.valueOf(paramacyw.jdField_a_of_type_JavaLangString).intValue();
-            paramContext = localObject;
-          } while (i < 0);
-          paramacyw = ayla.a(i);
-          paramContext = paramacyw;
-        } while (paramacyw == null);
-        paramacyw.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
-        return paramacyw;
-        paramacyw = a(paramacyw.jdField_a_of_type_JavaLangString);
-        paramContext = paramacyw;
-      } while (paramacyw == null);
-      paramacyw.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
-      return paramacyw;
-    }
-    String str2 = acys.jdField_a_of_type_JavaLangString + paramacyw.jdField_a_of_type_JavaLangString;
-    String str1 = "JumpImage:" + str2;
-    Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
-    localObject = localBitmap;
-    if (localBitmap == null)
-    {
-      localBitmap = bawu.a(str2);
-      if (localBitmap == null) {
-        break label248;
-      }
-      BaseApplicationImpl.sImageCache.put(str1, localBitmap);
-      localObject = localBitmap;
-    }
-    for (;;)
-    {
-      paramContext = new BitmapDrawable(paramContext.getResources(), localObject);
-      paramContext.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
-      return paramContext;
-      label248:
-      localObject = localBitmap;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramacyw.jdField_a_of_type_JavaLangString);
-        localObject = localBitmap;
-      }
-    }
-  }
-  
-  public static Drawable a(String paramString)
-  {
-    int j = ayjw.a.length;
-    int i = 0;
-    if (i < j) {
-      if (paramString.equals(ayjw.a[i]))
-      {
-        j = i;
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationRule", 2, "find str = " + paramString + ", index = " + i);
+          if (this.jdField_a_of_type_Acyl == null) {
+            this.jdField_a_of_type_Acyl = new ambv(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+          }
+          bool1 = this.jdField_a_of_type_Acyl.a(paramVarArgs);
         }
       }
     }
-    for (j = i;; j = -1)
+    return bool1;
+  }
+  
+  private boolean c(Object... paramVarArgs)
+  {
+    boolean bool1 = ((Boolean)paramVarArgs[4]).booleanValue();
+    if ((this.jdField_a_of_type_Aczk != null) && ((paramVarArgs[5] != null) || (bool1))) {
+      this.jdField_a_of_type_Aczk.a(true);
+    }
+    boolean bool2 = false;
+    bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null)
     {
-      if (j < 0)
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentWidgetListView != null)
       {
-        return null;
-        i += 1;
-        break;
+        this.jdField_a_of_type_Aczk = new aczk(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+        bool1 = this.jdField_a_of_type_Aczk.a(paramVarArgs);
       }
-      return ayla.a(j, false);
+    }
+    return bool1;
+  }
+  
+  private boolean d(Object... paramVarArgs)
+  {
+    Pair localPair = null;
+    if (paramVarArgs.length == 3) {
+      localPair = (Pair)paramVarArgs[2];
+    }
+    if ((localPair == null) || (localPair.first == null)) {
+      return false;
+    }
+    if (((ambh)localPair.first).a.e == 1)
+    {
+      if (this.jdField_a_of_type_Aczt != null) {
+        this.jdField_a_of_type_Aczt.e();
+      }
+      this.jdField_a_of_type_Aczt = new aczt(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+      return this.jdField_a_of_type_Aczt.a(paramVarArgs);
+    }
+    return false;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aczk != null) {
+      this.jdField_a_of_type_Aczk.a();
+    }
+  }
+  
+  protected void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Aczt != null) {
+      this.jdField_a_of_type_Aczt.a(paramInt);
+    }
+    if (this.jdField_a_of_type_Acyl != null) {
+      this.jdField_a_of_type_Acyl.a(paramInt);
+    }
+    if (this.jdField_a_of_type_Aczk != null) {
+      this.jdField_a_of_type_Aczk.a(paramInt);
+    }
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Acyl != null) {}
+    for (boolean bool2 = this.jdField_a_of_type_Acyl.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);; bool2 = false)
+    {
+      if (this.jdField_a_of_type_Aczt != null) {
+        if ((!this.jdField_a_of_type_Aczt.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) && (!bool2)) {}
+      }
+      for (bool1 = true;; bool1 = bool2)
+      {
+        if (this.jdField_a_of_type_Aczk != null) {
+          bool1 = this.jdField_a_of_type_Aczk.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+        }
+        return bool1;
+      }
+    }
+  }
+  
+  protected boolean a(Object... paramVarArgs)
+  {
+    if (paramVarArgs.length >= 2) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        long l = ((Long)paramVarArgs[1]).longValue();
+        if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getAdapter() != null) && (l > 0L))
+        {
+          ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
+          i = localListAdapter.getCount() - 1;
+          if (i < 0) {
+            break label243;
+          }
+          Object localObject1 = localListAdapter.getItem(i);
+          if ((localObject1 instanceof ChatMessage))
+          {
+            localObject1 = (ChatMessage)localObject1;
+            if (((ChatMessage)localObject1).uniseq == l)
+            {
+              if (localObject1 == null) {
+                break label162;
+              }
+              localObject1 = EmojiStickerManager.a().a((MessageRecord)localObject1);
+              if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
+                break label162;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.i("BubbleAnimation", 2, "contain sticker, so stop bubble animation!");
+              }
+              return false;
+            }
+          }
+          i -= 1;
+          continue;
+        }
+        i = ((Integer)paramVarArgs[0]).intValue();
+      }
+      catch (Exception localException)
+      {
+        QLog.e("BubbleAnimation", 1, "", localException);
+      }
+      label162:
+      boolean bool;
+      if ((i == 0) || (i == 1) || (i == 6)) {
+        bool = d(paramVarArgs);
+      }
+      for (;;)
+      {
+        return bool;
+        if ((i == 5) || (i == 3) || (i == 2)) {
+          bool = b(paramVarArgs);
+        } else if (i == 4) {
+          bool = c(paramVarArgs);
+        } else {
+          bool = false;
+        }
+      }
+      label243:
+      Object localObject2 = null;
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Aczk != null) {
+      this.jdField_a_of_type_Aczk.b();
+    }
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Aczt != null) {
+      this.jdField_a_of_type_Aczt.e();
+    }
+    if (this.jdField_a_of_type_Acyl != null) {
+      this.jdField_a_of_type_Acyl.c();
+    }
+    if (this.jdField_a_of_type_Aczk != null) {
+      this.jdField_a_of_type_Aczk.a(true);
     }
   }
 }

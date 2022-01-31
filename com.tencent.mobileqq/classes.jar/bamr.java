@@ -1,24 +1,32 @@
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bamr
+class bamr
+  extends mxj
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b = 0;
-  public String b;
+  bamr(bamk parambamk, bams parambams) {}
   
-  public String a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return "";
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bams.a(paramInt, paramBundle);
+      return;
     }
-    if (paramInt < this.a.size()) {
-      return (String)this.a.get(paramInt);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
     }
-    return (String)this.a.get(this.a.size() - 1);
   }
 }
 

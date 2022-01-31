@@ -1,10 +1,10 @@
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
 
 public class aotp
-  extends apvd
+  extends apvf
 {
-  public aotp(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  public aotp(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
   
   public void a()
   {

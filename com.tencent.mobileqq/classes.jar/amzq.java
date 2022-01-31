@@ -1,41 +1,32 @@
 import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amzq
-  extends amyi<amzp>
+  extends amyp<amzp>
 {
-  public static amzp a()
-  {
-    return (amzp)ampm.a().a(563);
-  }
-  
   public int a()
   {
-    return 563;
+    return 76;
   }
   
   @NonNull
-  public amzp a(@NonNull ampi[] paramArrayOfampi)
+  public amzp a()
   {
-    amzp localamzp = new amzp();
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    if (paramArrayOfampi != null) {}
-    try
-    {
-      if (!"".equals(paramArrayOfampi))
-      {
-        paramArrayOfampi = new JSONObject(paramArrayOfampi);
-        localamzp.a = paramArrayOfampi.getString("musicBoxUrl");
-        localamzp.b = paramArrayOfampi.getString("playerUrl");
-      }
-      return localamzp;
+    return new amzp();
+  }
+  
+  @NonNull
+  public amzp a(amph[] paramArrayOfamph)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    bbwo.a().a(localQQAppInterface.getApplication(), paramArrayOfamph, localQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfamph);
     }
-    catch (JSONException paramArrayOfampi)
-    {
-      paramArrayOfampi.printStackTrace();
-    }
-    return localamzp;
+    return new amzp();
   }
   
   public Class<amzp> a()
@@ -49,10 +40,9 @@ public class amzq
     return new amzp();
   }
   
-  @NonNull
-  public amzp c()
+  public boolean c()
   {
-    return new amzp();
+    return false;
   }
 }
 

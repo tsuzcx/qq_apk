@@ -1,24 +1,47 @@
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
 
 public class abfh
-  implements aqha
+  implements bfph
 {
-  public abfh(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public abfh(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bfpc parambfpc) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    bfmv localbfmv = bfmv.a;
-    if ((localbfmv != null) && (localbfmv.a()))
+    int i = 60;
+    if (paramInt == 0)
     {
-      if (!localbfmv.a(1)) {
-        localbfmv.b(1);
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, EditInfoActivity.class);
+      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("default_text", this.b);
+      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
+      paramView.putExtra("max_limit_mode", 1);
+      paramView.putExtra("edit_type", 2);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.putExtra("max_num", 60);
+        paramView.putExtra("isTroopNick", true);
+        paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1034);
       }
-      if ((!localbfmv.a(8)) && (localbfmv.a(5)) && (localbfmv.a(7))) {
-        localbfmv.b(8);
+    }
+    else
+    {
+      if (this.jdField_a_of_type_Bfpc != null) {
+        this.jdField_a_of_type_Bfpc.dismiss();
       }
-      if ((!localbfmv.a(9)) && (localbfmv.a(6)) && (localbfmv.a(7))) {
-        localbfmv.b(9);
-      }
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (paramInt = i;; paramInt = 36)
+    {
+      paramView.putExtra("max_num", paramInt);
+      paramView.putExtra("support_emotion", true);
+      break;
     }
   }
 }

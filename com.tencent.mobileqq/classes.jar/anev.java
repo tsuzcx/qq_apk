@@ -1,26 +1,94 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.accounts.AbstractAccountAuthenticator;
+import android.accounts.Account;
+import android.accounts.AccountAuthenticatorResponse;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class anev
-  implements TextWatcher
+public class anev
+  extends AbstractAccountAuthenticator
 {
-  anev(aneu paramaneu) {}
+  private Context a;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public anev(Context paramContext)
   {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      this.a.a();
+    super(paramContext);
+    this.a = paramContext;
+  }
+  
+  public Bundle addAccount(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString1, String paramString2, String[] paramArrayOfString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "addAccount");
     }
+    paramAccountAuthenticatorResponse = new Bundle();
+    paramAccountAuthenticatorResponse.putInt("errorCode", 6);
+    paramAccountAuthenticatorResponse.putString("errorMessage", "Manually add account is unsupported");
+    return paramAccountAuthenticatorResponse;
+  }
+  
+  public Bundle confirmCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "onfirmCredentials");
+    }
+    return null;
+  }
+  
+  public Bundle editProperties(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, String paramString)
+  {
+    return null;
+  }
+  
+  public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAccountRemovalAllowed");
+    }
+    if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
+      anem.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), paramAccount);
+    }
+    return super.getAccountRemovalAllowed(paramAccountAuthenticatorResponse, paramAccount);
+  }
+  
+  public Bundle getAuthToken(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    }
+    return null;
+  }
+  
+  public String getAuthTokenLabel(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthTokenLabel");
+    }
+    return "QQ通讯录同步@Authenticator";
+  }
+  
+  public Bundle hasFeatures(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "hasFeatures");
+    }
+    return null;
+  }
+  
+  public Bundle updateCredentials(AccountAuthenticatorResponse paramAccountAuthenticatorResponse, Account paramAccount, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Authenticator", 2, "getAuthToken");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anev
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 import java.io.Serializable;
 
 public class PushSwitchGrayTipsInfo
-  extends aukm
+  extends auko
   implements Serializable
 {
   public long lastShowTime;

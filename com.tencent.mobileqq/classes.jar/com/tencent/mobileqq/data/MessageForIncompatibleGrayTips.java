@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import akwb;
-import axqw;
+import akwa;
+import axqy;
 import com.tencent.qphone.base.util.QLog;
 import java.io.StringReader;
 import org.xmlpull.v1.XmlPullParser;
@@ -24,7 +24,7 @@ public class MessageForIncompatibleGrayTips
   {
     try
     {
-      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)akwb.a(this.msgData);
+      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)akwa.a(this.msgData);
       if (localIncompatibleGrayTipsMessage != null)
       {
         this.linkStart = localIncompatibleGrayTipsMessage.linkStart;
@@ -152,7 +152,7 @@ public class MessageForIncompatibleGrayTips
   public void prewrite()
   {
     serial();
-    axqw.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
+    axqy.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
   }
   
   public void serial()
@@ -164,7 +164,7 @@ public class MessageForIncompatibleGrayTips
     localIncompatibleGrayTipsMessage.url = this.url;
     try
     {
-      this.msgData = akwb.a(localIncompatibleGrayTipsMessage);
+      this.msgData = akwa.a(localIncompatibleGrayTipsMessage);
       return;
     }
     catch (Exception localException)

@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.pic.CompressInfo;
-
-public class auot
-  extends auos
+public abstract class auot
 {
-  auot(CompressInfo paramCompressInfo)
+  public static boolean a(int paramInt)
   {
-    super(paramCompressInfo);
-  }
-  
-  protected int a(CompressInfo paramCompressInfo)
-  {
-    return 2;
-  }
-  
-  protected boolean d()
-  {
-    return false;
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2);
   }
 }
 

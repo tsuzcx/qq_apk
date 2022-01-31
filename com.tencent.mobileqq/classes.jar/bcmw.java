@@ -1,6 +1,15 @@
-public abstract interface bcmw
+import android.widget.FrameLayout.LayoutParams;
+
+public class bcmw
+  extends FrameLayout.LayoutParams
 {
-  public abstract void a(String paramString);
+  public int a;
+  public int b;
+  
+  public bcmw(int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1, paramInt2, paramInt3);
+  }
 }
 
 

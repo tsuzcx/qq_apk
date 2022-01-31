@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.data;
 
 import android.text.TextUtils;
-import biqj;
-import biqk;
-import biqn;
+import bira;
+import birb;
+import bire;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
@@ -30,7 +30,7 @@ public class AEMaterialConfigParser
     return VideoSDKMaterialParser.parseVideoMaterial(paramString, "params");
   }
   
-  public static ArrayList<biqj> a(String paramString)
+  public static ArrayList<bira> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -53,66 +53,66 @@ public class AEMaterialConfigParser
     localObject1 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
     for (;;)
     {
-      biqj localbiqj;
+      bira localbira;
       label163:
       Object localObject3;
-      biqn localbiqn;
+      bire localbire;
       if (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (MetaCategory)((Iterator)localObject1).next();
-        localbiqj = new biqj();
-        localbiqj.b = ((MetaCategory)localObject2).name;
-        localbiqj.a = new ArrayList();
+        localbira = new bira();
+        localbira.b = ((MetaCategory)localObject2).name;
+        localbira.a = new ArrayList();
         localObject2 = ((MetaCategory)localObject2).materials.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (MetaMaterial)((Iterator)localObject2).next();
-          if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (biqk.a())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
+          if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (birb.a())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
             if ((paramString.containsKey(((MetaMaterial)localObject3).id)) && (paramString.get(((MetaMaterial)localObject3).id) != null))
             {
-              localObject3 = (biqn)paramString.get(((MetaMaterial)localObject3).id);
-              localbiqj.a.add(localObject3);
+              localObject3 = (bire)paramString.get(((MetaMaterial)localObject3).id);
+              localbira.a.add(localObject3);
             }
             else
             {
-              localbiqn = new biqn();
-              localbiqn.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
+              localbire = new bire();
+              localbire.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
             }
           }
         }
       }
       try
       {
-        localbiqn.jdField_c_of_type_Int = Integer.parseInt((String)((MetaMaterial)localObject3).additionalFields.get("kind"));
+        localbire.jdField_c_of_type_Int = Integer.parseInt((String)((MetaMaterial)localObject3).additionalFields.get("kind"));
         try
         {
           label348:
-          localbiqn.jdField_d_of_type_Int = Integer.parseInt((String)((MetaMaterial)localObject3).additionalFields.get("displayType"));
+          localbire.jdField_d_of_type_Int = Integer.parseInt((String)((MetaMaterial)localObject3).additionalFields.get("displayType"));
           try
           {
             label371:
-            localbiqn.g = ((String)((MetaMaterial)localObject3).additionalFields.get("qq_camera_top_title"));
+            localbire.g = ((String)((MetaMaterial)localObject3).additionalFields.get("qq_camera_top_title"));
             try
             {
               label391:
-              localbiqn.h = ((String)((MetaMaterial)localObject3).additionalFields.get("qq_camera_scheme"));
+              localbire.h = ((String)((MetaMaterial)localObject3).additionalFields.get("qq_camera_scheme"));
               try
               {
                 label411:
-                localbiqn.j = ((String)((MetaMaterial)localObject3).additionalFields.get("playshow_cover_img"));
+                localbire.j = ((String)((MetaMaterial)localObject3).additionalFields.get("playshow_cover_img"));
                 try
                 {
                   label431:
-                  localbiqn.k = ((String)((MetaMaterial)localObject3).additionalFields.get("playshow_display_text"));
+                  localbire.k = ((String)((MetaMaterial)localObject3).additionalFields.get("playshow_display_text"));
                   label451:
-                  localbiqn.a = ((MetaMaterial)localObject3).id;
-                  localbiqn.e = ((MetaMaterial)localObject3).packageMd5;
-                  localbiqn.f = ((MetaMaterial)localObject3).id;
-                  localbiqn.jdField_d_of_type_JavaLangString = ((MetaMaterial)localObject3).packageUrl;
-                  localbiqj.a.add(localbiqn);
-                  paramString.put(((MetaMaterial)localObject3).id, localbiqn);
+                  localbire.a = ((MetaMaterial)localObject3).id;
+                  localbire.e = ((MetaMaterial)localObject3).packageMd5;
+                  localbire.f = ((MetaMaterial)localObject3).id;
+                  localbire.jdField_d_of_type_JavaLangString = ((MetaMaterial)localObject3).packageUrl;
+                  localbira.a.add(localbire);
+                  paramString.put(((MetaMaterial)localObject3).id, localbire);
                   break label163;
-                  localArrayList.add(localbiqj);
+                  localArrayList.add(localbira);
                   continue;
                   return localArrayList;
                 }

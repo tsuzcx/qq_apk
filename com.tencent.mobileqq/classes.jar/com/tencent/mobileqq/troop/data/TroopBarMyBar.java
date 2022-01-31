@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aznq;
+import azns;
 
 public class TroopBarMyBar
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopBarMyBar> CREATOR = new aznq();
+  public static final Parcelable.Creator<TroopBarMyBar> CREATOR = new azns();
   public int a;
   public String a;
   public int b;

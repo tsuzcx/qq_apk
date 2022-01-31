@@ -9,8 +9,7 @@ public class agxy
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
+    this.a.finish();
   }
 }
 

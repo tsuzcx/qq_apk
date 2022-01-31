@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.Comparator;
-import java.util.Map;
-
-public final class awua
-  implements Comparator<awur>
+public class awua
 {
-  public int a(awur paramawur1, awur paramawur2)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  
+  public awua(int paramInt, String paramString)
   {
-    paramawur2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramawur2.a);
-    if (paramawur2 == null) {
-      paramawur2 = Integer.valueOf(0);
-    }
-    for (;;)
-    {
-      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramawur1.a);
-      paramawur1 = localInteger;
-      if (localInteger == null) {
-        paramawur1 = Integer.valueOf(0);
-      }
-      return Integer.signum(paramawur2.intValue() - paramawur1.intValue());
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

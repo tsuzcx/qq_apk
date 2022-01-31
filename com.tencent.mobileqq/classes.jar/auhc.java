@@ -1,8 +1,17 @@
-public abstract interface auhc
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+
+public class auhc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public auhc(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

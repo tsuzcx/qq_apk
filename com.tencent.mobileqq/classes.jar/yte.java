@@ -1,62 +1,15 @@
-import android.content.Context;
-import com.tencent.gdtad.api.adbox.GdtAdBoxData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class yte
+class yte
+  implements DialogInterface.OnDismissListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
-  private ytg jdField_a_of_type_Ytg;
-  private ytn jdField_a_of_type_Ytn;
+  yte(ytd paramytd) {}
   
-  public static ytf a(Context paramContext)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ytf(paramContext);
-  }
-  
-  public GdtAdBoxData a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Ytg = new ytm(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Ytg.a(this);
-    this.jdField_a_of_type_Ytg.show();
-  }
-  
-  void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  void a(GdtAdBoxData paramGdtAdBoxData)
-  {
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
-  }
-  
-  void a(ytn paramytn)
-  {
-    this.jdField_a_of_type_Ytn = paramytn;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Ytg != null) && (this.jdField_a_of_type_Ytg.isShowing()))
-    {
-      this.jdField_a_of_type_Ytg.dismiss();
-      this.jdField_a_of_type_Ytg = null;
-    }
-    this.jdField_a_of_type_Ytn = null;
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Ytn != null) {
-      this.jdField_a_of_type_Ytn.onDismiss();
-    }
+    this.a.jdField_a_of_type_Ytm.d();
+    this.a.jdField_a_of_type_Ytb.c();
   }
 }
 

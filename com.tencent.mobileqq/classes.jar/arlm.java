@@ -1,99 +1,64 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.view.WindowManager.BadTokenException;
+import android.view.accessibility.AccessibilityManager;
+import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.lang.reflect.Field;
 
-public class arlm
+final class arlm
+  implements HookMethodCallback
 {
-  private static xor a = new xor(BaseApplicationImpl.sApplication);
+  arlm(Class paramClass) {}
   
-  public static void a()
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    try
-    {
-      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new arln(90001) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException2)
-    {
-      try
-      {
-        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new arln(90002) });
-      }
-      catch (NoSuchMethodException localNoSuchMethodException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new arln(90003) });
-            try
-            {
-              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new arln(90004) });
-              return;
-            }
-            catch (NoSuchMethodException localNoSuchMethodException4)
-            {
-              bbbd.a(localNoSuchMethodException4);
-            }
-            localNoSuchMethodException1 = localNoSuchMethodException1;
-            bbbd.a(localNoSuchMethodException1);
-            continue;
-            localNoSuchMethodException2 = localNoSuchMethodException2;
-            bbbd.a(localNoSuchMethodException2);
-          }
-        }
-        catch (NoSuchMethodException localNoSuchMethodException3)
-        {
-          for (;;)
-          {
-            bbbd.a(localNoSuchMethodException3);
-          }
-        }
-      }
-    }
-  }
-  
-  private static void b(boolean paramBoolean, int paramInt)
-  {
-    String str = null;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
-    axrl.a(BaseApplicationImpl.getApplication()).a(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
-  }
-  
-  private static void c()
-  {
-    if (BaseApplicationImpl.sImageCache != null) {
-      BaseApplicationImpl.sImageCache.evictAll();
-    }
-    System.gc();
-    Thread.yield();
-    System.gc();
-    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
-    try
-    {
-      Thread.sleep(1000L);
+    if (paramMethodHookParam.throwable == null) {
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
+    Object localObject;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localObject = paramMethodHookParam.throwable.getCause();
+    }
+    while ((localObject instanceof WindowManager.BadTokenException)) {
+      try
+      {
+        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
+        ((Field)localObject).setAccessible(true);
+        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
+        Field localField = this.a.getDeclaredField("mAccessibilityManager");
+        localField.setAccessible(true);
+        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
+        return;
+      }
+      catch (NoSuchFieldException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+        localObject = paramMethodHookParam.throwable;
+      }
+      catch (IllegalArgumentException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+      }
     }
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

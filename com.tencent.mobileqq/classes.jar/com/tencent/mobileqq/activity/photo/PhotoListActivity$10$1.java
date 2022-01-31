@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agnc;
+import agna;
 import android.os.Handler;
 import android.os.Message;
-import bbdj;
+import bbdx;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class PhotoListActivity$10$1
   implements Runnable
 {
-  public PhotoListActivity$10$1(agnc paramagnc) {}
+  public PhotoListActivity$10$1(agna paramagna) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class PhotoListActivity$10$1
       localLocalMediaInfo.isSystemMeidaStore = false;
       PhotoListActivity.a().put(this.a.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
       this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage(localMessage);
-      bbdj.a(this.a.b);
+      bbdx.a(this.a.b);
       return;
     }
     catch (Exception localException)

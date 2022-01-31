@@ -1,14 +1,13 @@
-import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-public abstract interface qel
+public class qel
+  implements aywa
 {
-  public abstract void a(Bundle paramBundle, float paramFloat);
+  public qel(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
+  public void a(ArrayList<MessageRecord> paramArrayList) {}
 }
 
 

@@ -1,18 +1,16 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
 
 public class arwb
   implements DialogInterface.OnClickListener
 {
-  public arwb(LocationDialogUtil.9 param9) {}
+  public arwb(LocationDialogUtil.7 param7) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (arvk.a(this.a.a)) {
-      this.a.a.finish();
-    }
+    this.a.a.finish();
   }
 }
 

@@ -1,8 +1,13 @@
-public abstract interface ahpx
+import android.content.Context;
+
+public class ahpx
+  extends ahpz
 {
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract byte[] a();
+  public ahpx(Context paramContext)
+  {
+    this.a = paramContext.getString(2131697505);
+    this.b = this.a;
+  }
 }
 
 

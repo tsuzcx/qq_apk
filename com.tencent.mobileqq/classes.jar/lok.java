@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.gaudio.QQGAudioCtrl;
 
 public class lok
-  implements DialogInterface.OnClickListener
 {
-  public lok(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    mqz.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public lok(QQGAudioCtrl paramQQGAudioCtrl) {}
 }
 
 

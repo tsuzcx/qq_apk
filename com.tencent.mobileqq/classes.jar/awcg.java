@@ -1,12 +1,8 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.graphics.Bitmap;
 
 public abstract interface awcg
 {
-  public abstract void a(int paramInt, RichStatus paramRichStatus, Object paramObject);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt, boolean paramBoolean);
+  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3);
 }
 
 

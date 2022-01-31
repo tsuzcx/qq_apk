@@ -1,20 +1,10 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 public final class bgkn
-  implements Comparator<File>
+  implements DialogInterface.OnDismissListener
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 class fg
-  implements aptu
+  implements aptw
 {
   fg(ff paramff, DataLineMsgRecord paramDataLineMsgRecord, fh paramfh) {}
   

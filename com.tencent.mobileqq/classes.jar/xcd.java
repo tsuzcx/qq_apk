@@ -1,11 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
+import org.json.JSONObject;
 
 public class xcd
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public xcd(JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("iconGrid");
+    this.c = paramJSONObject.optString("jumpUrl");
+    this.d = paramJSONObject.optString("iconLoveGrid");
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import aune;
-import ayvv;
-import aywa;
-import bkzr;
+import aung;
+import ayvx;
+import aywc;
+import blai;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -12,11 +12,11 @@ import com.tencent.mobileqq.data.MessageRecord;
 class BaseShortVideoOprerator$SendShortVideoTask
   implements Runnable
 {
-  bkzr a;
+  blai a;
   
-  public BaseShortVideoOprerator$SendShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bkzr parambkzr)
+  public BaseShortVideoOprerator$SendShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, blai paramblai)
   {
-    this.a = parambkzr;
+    this.a = paramblai;
   }
   
   public void run()
@@ -25,39 +25,39 @@ class BaseShortVideoOprerator$SendShortVideoTask
     for (;;)
     {
       return;
-      bkzr localbkzr = this.a;
+      blai localblai = this.a;
       Object localObject;
       int i;
-      if (!localbkzr.jdField_a_of_type_Boolean)
+      if (!localblai.jdField_a_of_type_Boolean)
       {
-        localObject = (MessageForShortVideo)localbkzr.jdField_a_of_type_JavaLangObject;
+        localObject = (MessageForShortVideo)localblai.jdField_a_of_type_JavaLangObject;
         i = 0;
       }
       while (localObject != null)
       {
         this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
         long l = System.currentTimeMillis();
-        aywa localaywa = new aywa();
-        localaywa.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-        localaywa.c = ((MessageRecord)localObject).frienduin;
-        localaywa.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+        aywc localaywc = new aywc();
+        localaywc.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+        localaywc.c = ((MessageRecord)localObject).frienduin;
+        localaywc.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
         if ((((MessageRecord)localObject).istroop == 0) || (((MessageRecord)localObject).istroop == 1008))
         {
-          localaywa.jdField_b_of_type_Int = 6;
+          localaywc.jdField_b_of_type_Int = 6;
           label117:
-          localaywa.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-          localaywa.jdField_a_of_type_Boolean = true;
-          localaywa.jdField_e_of_type_Int = localbkzr.jdField_a_of_type_Int;
-          localaywa.f = localbkzr.e;
-          localaywa.i = (localbkzr.h + "QQ_&_MoblieQQ_&_QQ" + localbkzr.i + "QQ_&_MoblieQQ_&_QQ" + localbkzr.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localbkzr.jdField_g_of_type_JavaLangString);
-          localaywa.jdField_a_of_type_Auoo = this.this$0;
-          localaywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
-          localaywa.jdField_a_of_type_JavaLangObject = this.a;
-          localaywa.jdField_e_of_type_Boolean = localbkzr.jdField_f_of_type_Boolean;
-          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywa);
-          if (!localbkzr.d)
+          localaywc.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+          localaywc.jdField_a_of_type_Boolean = true;
+          localaywc.jdField_e_of_type_Int = localblai.jdField_a_of_type_Int;
+          localaywc.f = localblai.e;
+          localaywc.i = (localblai.h + "QQ_&_MoblieQQ_&_QQ" + localblai.i + "QQ_&_MoblieQQ_&_QQ" + localblai.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localblai.jdField_g_of_type_JavaLangString);
+          localaywc.jdField_a_of_type_Auoq = this.this$0;
+          localaywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
+          localaywc.jdField_a_of_type_JavaLangObject = this.a;
+          localaywc.jdField_e_of_type_Boolean = localblai.jdField_f_of_type_Boolean;
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywc);
+          if (!localblai.d)
           {
-            if (localbkzr.jdField_a_of_type_Boolean) {
+            if (localblai.jdField_a_of_type_Boolean) {
               break label470;
             }
             this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localObject);
@@ -65,30 +65,30 @@ class BaseShortVideoOprerator$SendShortVideoTask
         }
         for (;;)
         {
-          aune.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
-          aune.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doSendShortVideo.start", "TransferRequest: " + localaywa.toString());
+          aung.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+          aung.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doSendShortVideo.start", "TransferRequest: " + localaywc.toString());
           return;
-          if (localbkzr.jdField_g_of_type_Int == 0)
+          if (localblai.jdField_g_of_type_Int == 0)
           {
-            localObject = this.this$0.a(localbkzr);
+            localObject = this.this$0.a(localblai);
             i = 1;
             break;
           }
-          if (localbkzr.jdField_g_of_type_Int != 1) {
+          if (localblai.jdField_g_of_type_Int != 1) {
             break label486;
           }
-          localObject = (MessageForShortVideo)localbkzr.jdField_a_of_type_JavaLangObject;
+          localObject = (MessageForShortVideo)localblai.jdField_a_of_type_JavaLangObject;
           i = 0;
           break;
           if (((MessageRecord)localObject).istroop == 3000)
           {
-            localaywa.jdField_b_of_type_Int = 17;
+            localaywc.jdField_b_of_type_Int = 17;
             break label117;
           }
           if (((MessageRecord)localObject).istroop != 1) {
             break label117;
           }
-          localaywa.jdField_b_of_type_Int = 9;
+          localaywc.jdField_b_of_type_Int = 9;
           break label117;
           label470:
           if (i != 0) {

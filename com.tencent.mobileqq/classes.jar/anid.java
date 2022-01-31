@@ -1,28 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.FeedsManager.2.1;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class anid
-  implements ThreadExcutor.IThreadListener
+  implements ArkViewImplement.LoadCallback
 {
-  public anid(FeedsManager paramFeedsManager) {}
+  public anid(ArkBabyqCardInfo paramArkBabyqCardInfo, alts paramalts, alto paramalto, adli paramadli, int paramInt) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    FeedsManager.access$102(this.a, true);
-    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
-    if (FeedsManager.access$300(this.a))
-    {
-      FeedsManager.access$302(this.a, false);
-      this.a.updateQzoneFeeds();
-    }
+    onLoadState(paramInt1);
   }
   
-  public void onPreRun() {}
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Alts.b.setVisibility(0);
+      this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_Alts, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Alto.a(this.jdField_a_of_type_Adli, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Alts.b.setVisibility(8);
+    }
+  }
 }
 
 

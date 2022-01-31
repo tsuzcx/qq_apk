@@ -2,11 +2,11 @@ package com.tencent.mobileqq.apollo.data;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import aukm;
+import auko;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloGameRedDot
-  extends aukm
+  extends auko
   implements Comparable<ApolloGameRedDot>
 {
   public static final int REDDOT_ID_GAME_ACTIVITY = 1001;

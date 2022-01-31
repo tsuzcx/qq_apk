@@ -1,17 +1,15 @@
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
+
 public class bars
+  implements aycd
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  bars(baro parambaro) {}
+  
+  public void a()
+  {
+    this.a.a.post(new TroopGiftAnimationController.4.1(this));
+  }
 }
 
 

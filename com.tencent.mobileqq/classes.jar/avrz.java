@@ -1,6 +1,11 @@
-public abstract interface avrz
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class avrz
 {
-  public abstract void a();
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, avsc> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ArrayList<avsd> b = new ArrayList();
 }
 
 

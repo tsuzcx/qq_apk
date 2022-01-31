@@ -1,28 +1,17 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.NativeGifFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
 
 public class aocv
+  implements View.OnClickListener
 {
-  public static AbstractGifImage a(File paramFile, int paramInt, boolean paramBoolean)
+  public aocv(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
+  
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (NativeGifFactory.isUseNewGif()) {
-        return new aocx(paramFile, paramInt, paramBoolean);
-      }
-      paramFile = new aocw(paramFile, paramInt, paramBoolean);
-      return paramFile;
+    if (this.a.a != null) {
+      this.a.a.c();
     }
-    catch (IOException paramFile)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("VoiceGifFactory", 2, "getVoiceGifObject exception. msg:" + paramFile.getMessage());
-      }
-    }
-    return null;
   }
 }
 

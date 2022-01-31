@@ -1,50 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class bajl
-  extends Handler
+public class bajl
 {
-  bajl(bajk parambajk, Looper paramLooper)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, mxj parammxj)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      String str = (String)arrayOfObject[2];
-      long l = ((Long)arrayOfObject[3]).longValue();
-      this.a.a(paramMessage, bool, str, l);
-      return;
-    case 2: 
-      paramMessage = (azpg)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
-    case 3: 
-      paramMessage = (azpg)arrayOfObject[0];
-      this.a.g(paramMessage);
-      return;
-    case 4: 
-      paramMessage = (azpg)arrayOfObject[0];
-      this.a.h(paramMessage);
-      return;
-    case 5: 
-      int i = paramMessage.arg1;
-      this.a.a(i);
+    if (paramLong <= 0L) {
       return;
     }
-    paramMessage = (azpg)arrayOfObject[0];
-    this.a.j(paramMessage);
+    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.0,3,4480");
+    localGetPublicAccountDetailInfoRequest.version.set(1);
+    localGetPublicAccountDetailInfoRequest.seqno.set(0);
+    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramLong);
+    mxf.a(paramQQAppInterface, parammxj, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, mxj parammxj, Bundle paramBundle)
+  {
+    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
+    localFollowRequest.luin.set(paramLong);
+    localFollowRequest.ext.set("0");
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    mxf.a(paramQQAppInterface, parammxj, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
+    nol.a(paramQQAppInterface, "" + paramLong, 0);
   }
 }
 

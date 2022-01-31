@@ -1,17 +1,30 @@
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 class benl
   implements View.OnClickListener
 {
-  benl(benh parambenh) {}
+  int jdField_a_of_type_Int;
+  
+  public benl(bene parambene, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
-    if (benh.a(this.a) != null) {
-      benh.a(this.a).onDismiss();
+    if (this.jdField_a_of_type_Bene.a != null) {
+      this.jdField_a_of_type_Bene.a.onClick(this.jdField_a_of_type_Bene, this.jdField_a_of_type_Bene.a(this.jdField_a_of_type_Int));
     }
+    try
+    {
+      if (this.jdField_a_of_type_Bene.isShowing()) {
+        this.jdField_a_of_type_Bene.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

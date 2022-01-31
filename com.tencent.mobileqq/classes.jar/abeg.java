@@ -1,31 +1,53 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.31.3.1;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class abeg
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnClickListener
 {
-  public abeg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  abeg(abed paramabed) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
+    if (this.a.jdField_a_of_type_Ausw == null) {}
+    for (;;)
     {
-      paramString1 = this.a.a.obtainMessage();
-      paramString1.what = 7;
-      if (paramInt1 != 0) {
-        break label82;
-      }
-      paramString1.arg1 = 1;
-    }
-    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
-    {
-      if (this.a.a != null) {
-        this.a.a.sendMessage(paramString1);
-      }
       return;
-      label82:
-      paramString1.arg1 = 0;
+      if ((this.a.jdField_a_of_type_Ausw.a instanceof String)) {
+        paramView = (String)this.a.jdField_a_of_type_Ausw.a;
+      }
+      while (paramView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(paramView);
+        ThreadManager.post(new FriendProfileCardActivity.31.3.1(this), 5, null, true);
+        return;
+        if ((this.a.jdField_a_of_type_Ausw.a instanceof ProfileActivity.CardContactInfo))
+        {
+          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_Ausw.a;
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
+            paramView = paramView.c;
+          } else {
+            paramView = paramView.a + " " + paramView.c;
+          }
+        }
+        else if ((this.a.jdField_a_of_type_Ausw.a instanceof aush))
+        {
+          if ((paramView instanceof TextView)) {
+            paramView = ((aush)this.a.jdField_a_of_type_Ausw.a).a(((TextView)paramView).getText().toString());
+          } else {
+            paramView = ((aush)this.a.jdField_a_of_type_Ausw.a).a;
+          }
+        }
+        else
+        {
+          paramView = null;
+        }
+      }
     }
   }
 }

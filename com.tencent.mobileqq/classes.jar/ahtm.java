@@ -1,50 +1,38 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
 public class ahtm
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public ahtm(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ahtm(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (!this.a.m) {}
-    while (((!this.a.g) && (!this.a.c)) || (paramView.getId() != 2131366393)) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
+    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.m();
+      paramView = new ArrayList();
+      paramView.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
+      ahtz.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, paramView);
+      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
+      if (ahty.a == 1) {
+        ahtz.b("", "0X8005F5C", "0");
       }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.e();
-      }
-      this.a.b.setText(null);
-      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
+    else
+    {
+      return;
     }
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    if (this.a.b != null) {
-      this.a.b.setText(2131692636);
-    }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
+    ahtz.b("", "0X8005F5C", "1");
   }
 }
 

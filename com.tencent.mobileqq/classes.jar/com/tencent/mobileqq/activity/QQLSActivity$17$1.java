@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abut;
+import abup;
 import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
 public class QQLSActivity$17$1
   implements Runnable
 {
-  public QQLSActivity$17$1(abut paramabut) {}
+  public QQLSActivity$17$1(abup paramabup) {}
   
   public void run()
   {

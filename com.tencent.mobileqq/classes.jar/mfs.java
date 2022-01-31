@@ -1,17 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class mfs
-  extends lfu
+  implements DialogInterface.OnClickListener
 {
-  public mfs(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfs(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<ldw> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
+    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
+    {
+      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().ao = true;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

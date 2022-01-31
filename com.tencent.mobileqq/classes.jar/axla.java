@@ -1,6 +1,8 @@
-public class axla
+class axla
 {
-  public static boolean a = true;
+  public int a = -1;
+  public boolean a;
+  public int b;
 }
 
 

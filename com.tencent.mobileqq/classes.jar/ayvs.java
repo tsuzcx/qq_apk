@@ -1,100 +1,188 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngImage;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.mobileqq.theme.diy.ThemeBackground;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.scheme.LayeredSocketFactory;
-import org.apache.http.conn.ssl.StrictHostnameVerifier;
-import org.apache.http.params.HttpParams;
+import com.tencent.sharpP.SharpPUtil;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import org.apache.http.Header;
 
-@TargetApi(17)
 public class ayvs
-  implements LayeredSocketFactory
+  extends ayoi
 {
-  static final HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier = new StrictHostnameVerifier();
-  SSLCertificateSocketFactory jdField_a_of_type_AndroidNetSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(0, null);
-  private String jdField_a_of_type_JavaLangString;
-  
-  public ayvs(String paramString)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Socket connectSocket(Socket paramSocket, String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2, HttpParams paramHttpParams)
-  {
-    paramSocket.connect(new InetSocketAddress(paramString, paramInt1));
-    return paramSocket;
-  }
-  
-  public Socket createSocket()
-  {
-    return new Socket();
-  }
-  
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SNISocketFactory", 2, "createSocket " + paramSocket.toString() + " host:" + paramString + " port:" + paramInt + " autoClose:" + paramBoolean);
-    }
-    paramSocket = (SSLSocket)this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.createSocket(paramSocket, paramString, paramInt, paramBoolean);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    int i = 10;
-    if (Build.VERSION.SDK_INT >= 17)
+    Object localObject2 = null;
+    int j = 0;
+    paramURLDrawableHandler = paramDownloadParams.url.getFile();
+    String str = paramDownloadParams.url.getHost();
+    if (paramURLDrawableHandler.startsWith(File.separator))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SNISocketFactory", 2, "Setting SNI hostname");
+      paramURLDrawableHandler = paramURLDrawableHandler.substring(1);
+      for (;;)
+      {
+        Object localObject1 = new File(str);
+        int i;
+        Object localObject3;
+        if (((File)localObject1).exists())
+        {
+          i = 1;
+          paramOutputStream = (OutputStream)localObject1;
+          localObject3 = paramDownloadParams.getHeader("my_uin");
+          localObject1 = paramOutputStream;
+          if (localObject3 == null) {}
+        }
+        try
+        {
+          localObject1 = ((Header)localObject3).getValue();
+          localObject3 = (ayml)((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime((String)localObject1)).getManager(185);
+          localObject1 = paramOutputStream;
+          ResData localResData;
+          if (((ayml)localObject3).a != null)
+          {
+            Header localHeader = paramDownloadParams.getHeader("my_id");
+            localResData = new ResData();
+            localObject1 = localObject2;
+            if (localHeader != null) {
+              localObject1 = localHeader.getValue();
+            }
+            localResData.id = ((String)localObject1);
+            localResData.path = str;
+            localResData.url = paramURLDrawableHandler;
+            paramURLDrawableHandler = paramDownloadParams.getHeader("my_type");
+            if (paramURLDrawableHandler != null) {
+              j = Integer.parseInt(paramURLDrawableHandler.getValue());
+            }
+            localResData.type = j;
+            paramURLDrawableHandler = new Bundle();
+            paramDownloadParams = paramDownloadParams.getHeader("page_index");
+            if (paramDownloadParams == null) {
+              break label728;
+            }
+            j = Integer.parseInt(paramDownloadParams.getValue());
+            label236:
+            paramURLDrawableHandler.putInt("page_index", j);
+            paramDownloadParams = ((ayml)localObject3).a;
+            if (i == 0) {
+              break label734;
+            }
+          }
+          label669:
+          label728:
+          label734:
+          for (i = 4;; i = 8)
+          {
+            paramDownloadParams.callback(18, i, paramURLDrawableHandler, localResData);
+            localObject1 = paramOutputStream;
+            boolean bool;
+            do
+            {
+              return localObject1;
+              paramOutputStream = new File(bfkz.a((File)localObject1));
+              bool = paramDownloadParams.useSharpPImage;
+              if ((!bool) || (!paramOutputStream.exists())) {
+                break;
+              }
+              localObject1 = paramOutputStream;
+            } while (!QLog.isColorLevel());
+            QLog.d("themediydownloader", 2, "downloadImage shpFile.exists url=" + paramURLDrawableHandler + ", path=" + str);
+            return paramOutputStream;
+            if (QLog.isColorLevel()) {
+              QLog.d("themediydownloader", 2, "downloadImage download url=" + paramURLDrawableHandler + ", path=" + str + ", isSharpPAv=" + bool);
+            }
+            paramOutputStream = new bbwu(paramURLDrawableHandler, (File)localObject1);
+            paramOutputStream.k = bool;
+            paramOutputStream.p = false;
+            if (bbww.a(paramOutputStream, BaseApplicationImpl.sApplication.getRuntime()) == 0)
+            {
+              if ((((File)localObject1).exists()) && (!SignatureManager.a(((File)localObject1).getAbsolutePath())))
+              {
+                ((File)localObject1).delete();
+                QLog.e("themediydownloader", 1, "downloadImage file Error url=" + paramURLDrawableHandler + ", path=" + str);
+                paramOutputStream = null;
+                label503:
+                if (!(paramDownloadParams.mExtraInfo instanceof Integer)) {
+                  break label669;
+                }
+              }
+              for (;;)
+              {
+                try
+                {
+                  i = Integer.parseInt(String.valueOf(paramDownloadParams.mExtraInfo));
+                  QLog.i("themediydownloader", 1, "downloadImage onPostThemeChanged pageIndex: " + i + ", needUpdateThemeForBg=" + ThemeBackground.needUpdateThemeForBg);
+                  if ((ThemeBackground.needUpdateThemeForBg) && (100 == i))
+                  {
+                    ThemeBackground.needUpdateThemeForBg = false;
+                    localObject1 = new Intent("com.tencent.qplus.THEME_INVALIDATE");
+                    ((Intent)localObject1).putExtra("pid", Process.myPid());
+                    BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
+                  }
+                  i = 1;
+                }
+                catch (Exception localException)
+                {
+                  QLog.e("themediydownloader", 1, "downloadImage parseInt Error:" + localException.getMessage());
+                }
+                paramOutputStream = (OutputStream)localObject1;
+                if (!SharpPUtil.isSharpPFile((File)localObject1)) {
+                  break label503;
+                }
+                paramOutputStream = bfkz.a((File)localObject1);
+                break label503;
+                i = 0;
+              }
+            }
+            paramOutputStream = new File(ajsd.aW);
+            QLog.e("themediydownloader", 1, "downloadImage Error url=" + paramURLDrawableHandler + ", path=" + str);
+            i = 0;
+            break;
+            j = -1;
+            break label236;
+          }
+        }
+        catch (Exception paramDownloadParams)
+        {
+          QLog.e("themediydownloader", 1, "downloadImage Error:" + paramDownloadParams.getMessage());
+          return paramOutputStream;
+        }
       }
-      this.jdField_a_of_type_AndroidNetSSLCertificateSocketFactory.setHostname(paramSocket, paramString);
     }
-    for (;;)
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramURLDrawableHandler = null;
+    if (paramDownloadParams == null) {
+      paramDownloadParams = paramURLDrawableHandler;
+    }
+    do
     {
-      SSLSession localSSLSession = paramSocket.getSession();
-      if (jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(paramString, localSSLSession)) {
+      return paramDownloadParams;
+      if ((paramFile == null) || (!paramFile.exists()) || (!paramDownloadParams.useApngImage) || (!ChatBackgroundManager.a(paramFile))) {
         break;
       }
-      ayrn.a(i + 4, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
-      paramSocket.close();
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
-      if (QLog.isColorLevel()) {
-        QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
-      }
-      i = 20;
-      int j;
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
-      }
-      catch (Exception localException)
-      {
-        j = 30;
-        i = j;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("SNISocketFactory", 2, "SNI not useable");
-        i = j;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("SNISocketFactory", 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
-    }
-    ayrn.a(i, paramString, paramInt, this.jdField_a_of_type_JavaLangString);
-    return paramSocket;
-  }
-  
-  public boolean isSecure(Socket paramSocket)
-  {
-    if ((paramSocket instanceof SSLSocket)) {
-      return ((SSLSocket)paramSocket).isConnected();
-    }
-    return false;
+      paramDownloadParams = new Bundle();
+      paramDownloadParams.putBoolean("key_use_rect", true);
+      paramDownloadParams.putBoolean("key_double_bitmap", true);
+      paramDownloadParams.putIntArray("key_tagId_arr", new int[] { 0 });
+      paramURLDrawableHandler = new ApngImage(paramFile, true, paramDownloadParams);
+      paramDownloadParams = paramURLDrawableHandler;
+    } while (paramURLDrawableHandler.firstFrame != null);
+    ChatBackgroundManager.a(paramFile.getAbsolutePath());
+    return paramURLDrawableHandler;
+    paramDownloadParams.useApngImage = false;
+    return null;
   }
 }
 

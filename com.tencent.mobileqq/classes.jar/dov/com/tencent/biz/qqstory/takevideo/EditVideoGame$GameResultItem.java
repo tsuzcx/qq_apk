@@ -3,12 +3,12 @@ package dov.com.tencent.biz.qqstory.takevideo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjwe;
+import bjwv;
 
 public final class EditVideoGame$GameResultItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameResultItem> CREATOR = new bjwe();
+  public static final Parcelable.Creator<GameResultItem> CREATOR = new bjwv();
   public int a;
   public String a;
   public int b;

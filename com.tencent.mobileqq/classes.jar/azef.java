@@ -1,26 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 
 public class azef
-  extends ajxl
+  implements DialogInterface.OnClickListener
 {
-  public azef(TroopAdminList paramTroopAdminList) {}
+  public azef(QLifeCommentActivity paramQLifeCommentActivity, bbgu parambbgu) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.c();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.cancel();
     }
-  }
-  
-  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
-    }
-    this.a.c();
+    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
+    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.z);
   }
 }
 

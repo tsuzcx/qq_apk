@@ -1,15 +1,11 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.11.1;
-
-public class bimm
-  implements bijh
+class bimm
+  implements biqo
 {
-  bimm(bimj parambimj) {}
+  bimm(bima parambima) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a()
   {
-    ThreadManager.excute(new VideoStoryCapturePart.11.1(this, paramBitmap), 64, null, false);
+    bima.a(this.a).u();
   }
 }
 

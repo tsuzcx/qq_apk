@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.BitmapFactory.Options;
@@ -8,8 +8,8 @@ import android.media.MediaMetadataRetriever;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbdr;
-import bgyu;
+import bbef;
+import bgzl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -43,12 +43,12 @@ public class SharePlugin
   {
     String str1 = PublishMoodInfo.getFileSizeDesc(PublishMoodInfo.MOOD_MAX_SINGLE_PHOTO_SIZE);
     String str2 = PublishMoodInfo.getFileSizeDesc(PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_SIZE);
-    mTip.put(Integer.valueOf(1), ajyc.a(2131713955) + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + ajyc.a(2131713958));
-    mTip.put(Integer.valueOf(2), ajyc.a(2131713949) + str1 + ajyc.a(2131713959));
-    mTip.put(Integer.valueOf(4), ajyc.a(2131713948) + str2 + ajyc.a(2131713950));
-    mTip.put(Integer.valueOf(8), ajyc.a(2131713953) + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION / 60000 + ajyc.a(2131713954));
-    mTip.put(Integer.valueOf(16), ajyc.a(2131713952) + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + ajyc.a(2131713956));
-    mTip.put(Integer.valueOf(32), ajyc.a(2131713957) + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT + ajyc.a(2131713951));
+    mTip.put(Integer.valueOf(1), ajya.a(2131713966) + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + ajya.a(2131713969));
+    mTip.put(Integer.valueOf(2), ajya.a(2131713960) + str1 + ajya.a(2131713970));
+    mTip.put(Integer.valueOf(4), ajya.a(2131713959) + str2 + ajya.a(2131713961));
+    mTip.put(Integer.valueOf(8), ajya.a(2131713964) + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION / 60000 + ajya.a(2131713965));
+    mTip.put(Integer.valueOf(16), ajya.a(2131713963) + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + ajya.a(2131713967));
+    mTip.put(Integer.valueOf(32), ajya.a(2131713968) + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT + ajya.a(2131713962));
     QLog.i("[minigame] SharePlugin", 2, "textCount = " + PublishMoodInfo.MOOD_MAX_TEXT_COUNT + ", singlePhotoSize = " + PublishMoodInfo.MOOD_MAX_SINGLE_PHOTO_SIZE + ", singleVideoSize = " + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_SIZE + ", singleVideoDuration = " + PublishMoodInfo.MOOD_MAX_SINGLE_VIDEO_DURATION + ", videoCount = " + PublishMoodInfo.MOOD_MAX_VIDEO_COUNT + ", photoAndVideoCount = " + PublishMoodInfo.MOOD_MAX_PHOTO_AND_VIDEO_COUNT);
   }
   
@@ -67,7 +67,7 @@ public class SharePlugin
     localOptions.inJustDecodeBounds = true;
     try
     {
-      bbdr.a(paramString, localOptions);
+      bbef.a(paramString, localOptions);
       localLocalMediaInfo.mediaWidth = localOptions.outWidth;
       localLocalMediaInfo.mediaHeight = localOptions.outHeight;
       localLocalMediaInfo.mMimeType = PhotoUtils.a(paramString);
@@ -201,7 +201,7 @@ public class SharePlugin
     for (paramPublishMoodInfo = this.jsPluginEngine.appBrandRuntime.appId;; paramPublishMoodInfo = null)
     {
       localBundle.putString("key_mini_appid", paramPublishMoodInfo);
-      bgyu.a(paramActivity, localBundle, null, -1);
+      bgzl.a(paramActivity, localBundle, null, -1);
       return;
     }
   }

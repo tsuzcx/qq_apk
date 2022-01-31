@@ -1,127 +1,81 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import mqq.app.AppRuntime;
 
 public class nqe
-  implements ampd<String>
+  extends ampa<nqd>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b;
-  
-  public static nqe a(int paramInt, String paramString, boolean paramBoolean)
+  public int a()
   {
-    nqe localnqe = new nqe();
-    localnqe.jdField_a_of_type_Int = paramInt;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localnqe.b = paramInt;
-      localnqe.jdField_a_of_type_JavaLangString = paramString;
-      return localnqe;
-    }
+    return 70;
   }
   
-  public static nqe a(String paramString)
+  public Class<nqd> a()
   {
-    try
+    return nqd.class;
+  }
+  
+  @NonNull
+  public nqd a(int paramInt)
+  {
+    if (paramInt == 0)
     {
-      nqe localnqe = (nqe)ampw.a(paramString, nqe.class);
-      return localnqe;
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        sfe.a((QQAppInterface)localObject, sfe.a((QQAppInterface)localObject));
+        return nqd.a();
+      }
     }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+    return new nqd();
+  }
+  
+  @Nullable
+  public nqd a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return nqd.a(paramArrayOfamph);
     }
     return null;
   }
   
-  public static nqe a(ampi[] paramArrayOfampi)
+  public void a(int paramInt) {}
+  
+  public void a(nqd paramnqd)
   {
-    nqe localnqe = null;
-    int i = 0;
-    while (i < paramArrayOfampi.length)
-    {
-      localnqe = a(paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localnqe;
+    paramnqd.a();
+    paramnqd.b();
   }
   
-  public void a()
+  public boolean a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      int i = scu.a((QQAppInterface)localObject);
-      if (this.jdField_a_of_type_Int != i) {
-        break label47;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
-      }
-    }
-    label47:
-    do
-    {
-      return;
-      scu.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
-      scu.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-    } while (localObject == null);
-    ((WebProcessManager)localObject).e();
+    return true;
   }
   
-  public void a(String paramString)
+  public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return sfe.b((QQAppInterface)localAppRuntime);
     }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        NodeList localNodeList = paramString.getElementsByTagName("version");
-        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject instanceof QQAppInterface))
-        {
-          localObject = (QQAppInterface)localObject;
-          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
-          paramString = paramString.getElementsByTagName("public-account-folder");
-          if (paramString.getLength() > 0)
-          {
-            paramString = (Element)paramString.item(0);
-            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
-          }
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
-      }
-      paramString.printStackTrace();
-    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

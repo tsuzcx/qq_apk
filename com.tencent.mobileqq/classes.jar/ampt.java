@@ -10,16 +10,16 @@ final class ampt
   {
     try
     {
-      paramMethodHookParam = ampp.a();
-      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed"))) {
-        ampp.a(new QConfigureException(paramMethodHookParam), "Can not switch thread when parsing config.", "QConfigWatchDog_threadswitch");
+      paramMethodHookParam = ampo.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
+        ampo.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
       }
       return;
     }
     catch (Exception paramMethodHookParam)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
+      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
     }
   }
 }

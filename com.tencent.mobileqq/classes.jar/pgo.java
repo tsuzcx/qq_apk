@@ -1,34 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class pgo
-  implements ViewBase.OnClickListener
+  implements poi
 {
-  pgo(pgk parampgk, Container paramContainer) {}
+  pgo(pgm parampgm, List paramList, ArticleInfo paramArticleInfo, pau parampau) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    paramViewBase = BaseApplicationImpl.getContext();
-    int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
-      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        i = 1;
-      }
-    }
-    for (;;)
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
     {
-      if ((i == 0) && (pce.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-        pgk.a(this.jdField_a_of_type_Pgk, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
-      }
+      QLog.i("PackProteusItem", 1, "[onItemClick] position overflow, position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilList.size());
       return;
-      i = 0;
-      continue;
-      i = 1;
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+      paramTemplateBean = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      this.jdField_a_of_type_Pau.a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
+      return;
+    }
+    catch (Exception paramViewBase)
+    {
+      QLog.e("PackProteusItem", 1, "[onItemClick], e = " + paramViewBase);
     }
   }
 }

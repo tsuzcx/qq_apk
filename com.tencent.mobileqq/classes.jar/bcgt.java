@@ -1,16 +1,7 @@
-import com.tencent.mobileqq.webview.webso.WebSoService;
-
 public class bcgt
 {
-  public static void a(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    if ((bche.b(paramString)) && (!bche.d(paramString)) && (amzw.c().b > 0))
-    {
-      WebSoService.a().a(paramString, null, true);
-      bche.a("preload spned time = " + (System.currentTimeMillis() - l));
-    }
-  }
+  public static String a;
+  public static boolean a;
 }
 
 

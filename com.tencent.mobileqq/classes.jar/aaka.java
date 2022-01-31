@@ -1,159 +1,31 @@
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class aaka
-  extends ajxl
+  implements bfph
 {
-  public aaka(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public aaka(AssociatedAccountActivity paramAssociatedAccountActivity, bfpc parambfpc) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    boolean bool = false;
-    paramBoolean = bool;
-    Iterator localIterator;
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      paramBoolean = bool;
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        paramBoolean = false;
-        label55:
-        if (localIterator.hasNext())
-        {
-          if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
-            break label224;
-          }
-          paramBoolean = true;
-        }
-      }
+    this.jdField_a_of_type_Bfpc.cancel();
+    paramView = (ayax)this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.getManager(61);
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a.iterator();
+    while (localIterator.hasNext()) {
+      paramView.c(((SubAccountInfo)localIterator.next()).subuin);
     }
-    label129:
-    label221:
-    label224:
-    for (;;)
-    {
-      break label55;
-      bool = paramBoolean;
-      if (this.a.b != null)
-      {
-        bool = paramBoolean;
-        if (this.a.b.size() > 0)
-        {
-          localIterator = this.a.b.iterator();
-          if (localIterator.hasNext())
-          {
-            if (!TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
-              break label221;
-            }
-            paramBoolean = true;
-          }
-        }
-      }
-      for (;;)
-      {
-        break label129;
-        bool = paramBoolean;
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
-        }
-        if (!bool) {
-          break;
-        }
-        this.a.jdField_a_of_type_Ailf.notifyDataSetInvalidated();
-        return;
-      }
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
-    }
-    Iterator localIterator = this.a.c.iterator();
-    paramBoolean = false;
-    label66:
-    Object localObject3;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (localIterator.hasNext())
-    {
-      localObject3 = (ayam)localIterator.next();
-      if ((((ayam)localObject3).jdField_a_of_type_Int == 2) && (((ayam)localObject3).jdField_a_of_type_JavaLangObject != null) && ((((ayam)localObject3).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)))
-      {
-        bool = paramBoolean;
-        if (paramString.equals(((SubAccountInfo)((ayam)localObject3).jdField_a_of_type_JavaLangObject).subuin))
-        {
-          localObject2 = bbcl.c(this.a.app, paramString, true);
-          localObject1 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = paramString;
-          }
-          bool = paramBoolean;
-          if (!((String)localObject1).equals(((ayam)localObject3).jdField_a_of_type_JavaLangString))
-          {
-            ((ayam)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-            bool = true;
-          }
-        }
-      }
-    }
-    for (paramBoolean = bool;; paramBoolean = bool)
-    {
-      break label66;
-      bool = paramBoolean;
-      if (((ayam)localObject3).jdField_a_of_type_Int == 5)
-      {
-        bool = paramBoolean;
-        if (((ayam)localObject3).jdField_a_of_type_JavaLangObject != null)
-        {
-          bool = paramBoolean;
-          if ((((ayam)localObject3).jdField_a_of_type_JavaLangObject instanceof ArrayList))
-          {
-            localObject1 = ((ArrayList)((ayam)localObject3).jdField_a_of_type_JavaLangObject).iterator();
-            for (;;)
-            {
-              bool = paramBoolean;
-              if (!((Iterator)localObject1).hasNext()) {
-                break;
-              }
-              localObject2 = (ayam)((Iterator)localObject1).next();
-              localObject3 = (SimpleAccount)((ayam)localObject2).jdField_a_of_type_JavaLangObject;
-              if (paramString.equals(((SimpleAccount)localObject3).getUin()))
-              {
-                localObject3 = ayao.a(this.a.app, (SimpleAccount)localObject3);
-                if (!((String)localObject3).equals(((ayam)localObject2).jdField_a_of_type_JavaLangString))
-                {
-                  ((ayam)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject3);
-                  paramBoolean = true;
-                }
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo needUpdate = " + paramBoolean);
-            }
-            if (!paramBoolean) {
-              break;
-            }
-            this.a.jdField_a_of_type_Ailf.notifyDataSetInvalidated();
-            return;
-          }
-        }
-      }
-    }
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690809));
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
   }
 }
 

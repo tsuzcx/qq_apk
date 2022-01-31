@@ -1,71 +1,139 @@
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class beub
+abstract class beub
 {
-  private static volatile beub a;
-  public BaseLibInfo a;
-  public EngineVersion a;
+  private final INTERFACE.GuardInstruction jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$GuardInstruction;
+  private INTERFACE.StJudgeTimingRsp jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StJudgeTimingRsp;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+  private final MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
   
-  public beub()
+  beub(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    a();
-    b();
+    this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$GuardInstruction = paramGuardInstruction;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
   }
   
-  public static beub a()
+  static void a(Context paramContext, MiniAppInfo paramMiniAppInfo, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp, int paramInt)
   {
-    if (jdField_a_of_type_Beub == null) {}
-    try
+    if ((paramContext == null) || (paramStJudgeTimingRsp == null) || (paramStJudgeTimingRsp.timingInstructions.isEmpty())) {}
+    for (;;)
     {
-      if (jdField_a_of_type_Beub == null) {
-        jdField_a_of_type_Beub = new beub();
+      return;
+      try
+      {
+        if (paramInt >= paramStJudgeTimingRsp.timingInstructions.size()) {
+          continue;
+        }
+        Object localObject1 = (INTERFACE.GuardInstruction)paramStJudgeTimingRsp.timingInstructions.get(paramInt);
+        if (localObject1 == null) {
+          continue;
+        }
+        if (((INTERFACE.GuardInstruction)localObject1).type.get() == 1)
+        {
+          localObject1 = new beup((INTERFACE.GuardInstruction)localObject1, paramContext, paramMiniAppInfo);
+          if (localObject1 == null) {
+            continue;
+          }
+          ((beub)localObject1).a(paramStJudgeTimingRsp);
+          ((beub)localObject1).a(new beuc(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt));
+          ((beub)localObject1).a();
+          return;
+        }
       }
-      return jdField_a_of_type_Beub;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          betc.d("GameGrowthGuardianManager", "tryBuildAndShow", localException);
+          Object localObject2 = null;
+          continue;
+          if (((INTERFACE.GuardInstruction)localObject2).type.get() == 2)
+          {
+            localObject2 = new beuh((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
+          }
+          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 3)
+          {
+            localObject2 = new beuj((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
+          }
+          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 6)
+          {
+            localObject2 = new beuf((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
+          }
+          else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 7)
+          {
+            localObject2 = new beum((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppInfo);
+          }
+          else
+          {
+            betc.c("GameGrowthGuardianManager", "tryBuildAndShow not create and show dialog for " + ((INTERFACE.GuardInstruction)localObject2).type.get());
+            a(paramContext, paramMiniAppInfo, paramStJudgeTimingRsp, paramInt + 1);
+            localObject2 = null;
+          }
+        }
+      }
     }
-    finally {}
   }
   
-  private void a()
+  INTERFACE.GuardInstruction a()
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo = new BaseLibInfo();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibUrl = "assets://mini";
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibVersion = bfgy.a("1.12.1.00001");
-    besl.b("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo start");
-    long l = System.currentTimeMillis();
-    besl.b("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo cost=" + (System.currentTimeMillis() - l));
-    if (new boolean[] { false }[0] != 0) {}
-    for (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibDesc = ("{'file_length':" + new long[] { 0L }[0] + "}");; this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibDesc = "{'file_length':-1}")
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibKey = null;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType = 2;
+    return this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$GuardInstruction;
+  }
+  
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  protected beua a()
+  {
+    return null;
+  }
+  
+  public MiniAppInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  }
+  
+  void a()
+  {
+    if ((a() == null) || (a() == null)) {
       return;
     }
+    bene localbene = beld.a(a(), 230).a(a().title.get()).a(a().msg.get());
+    if (a() != null) {
+      localbene.b(a().a(), a().a());
+    }
+    if (b() != null) {
+      localbene.a(b().a(), b().a());
+    }
+    localbene.setOnShowListener(new beud(this));
+    localbene.setOnDismissListener(new beue(this));
+    localbene.setCancelable(false);
+    localbene.show();
   }
   
-  private void b()
+  public void a(INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = new EngineVersion(bfgy.a("1.12.1.00001"));
+    this.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StJudgeTimingRsp = paramStJudgeTimingRsp;
   }
   
-  private boolean c()
+  public void a(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    String str = MiniAppEnv.g().getContext().getPackageName();
-    besl.b("LocalGameEngine", "[MiniEng]isQQSpeedPackage " + str);
-    return (!TextUtils.isEmpty(str)) && (str.toLowerCase().startsWith("com.tencent.qqspeed"));
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = paramOnDismissListener;
   }
   
-  public boolean a()
+  protected beua b()
   {
-    return c();
-  }
-  
-  public boolean b()
-  {
-    return c();
+    return null;
   }
 }
 

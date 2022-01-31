@@ -1,40 +1,14 @@
-import android.os.SystemClock;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
-public class avbq
+public abstract interface avbq
 {
-  public long a;
-  private int[] a;
+  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
   
-  public avbq()
-  {
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 500, 700, 1000, 1500, 2100, 2800, 3500, 4200, 4800, 5000 };
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
   
-  public int a(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
-        return i;
-      }
-      i += 1;
-    }
-    return 1;
-  }
+  public abstract void g();
   
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 75L)
-    {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return true;
-    }
-    return false;
-  }
+  public abstract void h();
 }
 
 

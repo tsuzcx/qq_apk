@@ -1,8 +1,32 @@
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 
-public abstract interface atvp
+public class atvp
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract void a(boolean paramBoolean, List<atwv> paramList);
+  public atvp(NearbyMomentFragment paramNearbyMomentFragment) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 2) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (NearbyMomentFragment.a(this.a) == 2)
+    {
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyMomentFragment.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

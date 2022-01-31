@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aawg;
+import aawc;
 import android.widget.RelativeLayout;
 
 public class Conversation$18$2
   implements Runnable
 {
-  public Conversation$18$2(aawg paramaawg) {}
+  public Conversation$18$2(aawc paramaawc) {}
   
   public void run()
   {

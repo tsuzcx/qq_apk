@@ -1,33 +1,37 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class bghe
-  implements Comparable<bghe>
+final class bghe
+  implements OnPluginInstallListener
 {
-  int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  bghe(AppRuntime paramAppRuntime, bggz parambggz, bghf parambghf, int paramInt) {}
   
-  public int a(@NonNull bghe parambghe)
+  public IBinder asBinder()
   {
-    if (this.jdField_a_of_type_Int < parambghe.jdField_a_of_type_Int) {}
-    int i;
-    int j;
-    do
-    {
-      return -1;
-      if (this.jdField_a_of_type_Int > parambghe.jdField_a_of_type_Int) {
-        return 1;
-      }
-      i = bghd.a().indexOf(this.jdField_a_of_type_JavaLangString);
-      j = bghd.a().indexOf(parambghe.jdField_a_of_type_JavaLangString);
-    } while (i < j);
-    if (i > j) {
-      return 1;
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "pluginType:" + this.jdField_a_of_type_Bggz.b + " preload:fail:installerror");
     }
-    return 0;
+    bggx.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, this.jdField_a_of_type_Bggz.b, this.jdField_a_of_type_Bggz.c, 3, "preload:fail:installerror", this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Bggz.d) });
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
+    }
+    bggx.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_Bggz.b, this.jdField_a_of_type_Bggz.c, this.jdField_a_of_type_Bghf.jdField_a_of_type_Int, this.jdField_a_of_type_Bghf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Bggz.d) });
+    this.jdField_a_of_type_Bggz.a();
   }
 }
 

@@ -1,42 +1,43 @@
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+
 public class vkb
-  implements Comparable<vkb>
+  extends JobSegment<Bitmap, Bitmap>
 {
   public int a;
-  public String a;
-  int b;
-  public String b;
-  public String c;
   
   public vkb()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.a = 10;
   }
   
-  public vkb(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  public vkb(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
+    this.a = paramInt;
   }
   
-  public int a(vkb paramvkb)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
-    if (paramvkb == null) {}
-    do
+    if (paramBitmap == null) {
+      return null;
+    }
+    bbki.a(paramBitmap, paramInt);
+    return paramBitmap;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    long l = System.currentTimeMillis();
+    paramJobContext = a(paramBitmap, this.a, false);
+    ved.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
+    if (paramJobContext == null)
     {
-      return -1;
-      if (this.jdField_b_of_type_Int < paramvkb.jdField_b_of_type_Int) {
-        return 1;
-      }
-    } while (this.jdField_b_of_type_Int != paramvkb.jdField_b_of_type_Int);
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+      super.notifyError(new BitmapError("BlurJobSegment", 7));
+      return;
+    }
+    super.notifyResult(paramJobContext);
   }
 }
 

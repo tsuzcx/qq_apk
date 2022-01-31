@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nhj
-  implements bfoq
+  implements bfph
 {
   public nhj(AccountDetailActivity paramAccountDetailActivity) {}
   
@@ -23,7 +23,7 @@ public class nhj
       continue;
       this.a.E();
       continue;
-      this.a.G();
+      AccountDetailActivity.a(this.a, this.a.d);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import amgo;
+import amgn;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -61,16 +61,16 @@ public class OtherJsPlugin
       }
       while (localObject1 != null)
       {
-        if (((amgo)localObject1).c()) {
+        if (((amgn)localObject1).c()) {
           break label222;
         }
-        if (!((amgo)localObject1).b()) {
+        if (!((amgn)localObject1).b()) {
           break label209;
         }
         if (!paramBoolean) {
           break label196;
         }
-        AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.5(this, (amgo)localObject1));
+        AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.5(this, (amgn)localObject1));
         return;
         localObject1 = localObject2;
         if (this.jsPluginEngine.appBrandRuntime != null)
@@ -83,10 +83,10 @@ public class OtherJsPlugin
       }
     }
     label196:
-    AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.6(this, (amgo)localObject1));
+    AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.6(this, (amgn)localObject1));
     return;
     label209:
-    AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.7(this, (amgo)localObject1));
+    AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.7(this, (amgn)localObject1));
     return;
     label222:
     AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.8(this));
@@ -147,7 +147,7 @@ public class OtherJsPlugin
     //   0: iconst_0
     //   1: istore 5
     //   3: aload_1
-    //   4: invokestatic 254	ahok:a	(Lcom/tencent/mobileqq/app/BaseActivity;)Z
+    //   4: invokestatic 254	ahoi:a	(Lcom/tencent/mobileqq/app/BaseActivity;)Z
     //   7: ifne +21 -> 28
     //   10: aload_0
     //   11: getfield 75	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
@@ -296,7 +296,7 @@ public class OtherJsPlugin
     //   159	167	249	java/lang/Exception
   }
   
-  private void insertColorNote(amgo paramamgo)
+  private void insertColorNote(amgn paramamgn)
   {
     if (isMiniGameRuntime()) {
       if ((this.jsPluginEngine.appBrandRuntime.activity != null) && ((this.jsPluginEngine.appBrandRuntime.activity instanceof GameActivity))) {
@@ -305,7 +305,7 @@ public class OtherJsPlugin
     }
     for (;;)
     {
-      paramamgo.e();
+      paramamgn.e();
       return;
       if ((this.jsPluginEngine.appBrandRuntime != null) && ((this.jsPluginEngine.appBrandRuntime.activity instanceof AppBrandUI))) {
         ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).setColorNoteWithOutMoveTaskToBackThisTime();

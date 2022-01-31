@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import bfzp;
+import bgag;
 import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
@@ -14,22 +14,22 @@ import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import oqq;
+import oqn;
+import oqu;
+import oqw;
 import oqx;
-import oqz;
-import ora;
-import ori;
-import orj;
-import ork;
-import oro;
-import orq;
+import orf;
+import org;
+import orh;
+import orl;
+import orn;
 
 public class ReadInJoyCGIDynamicChannelFragment
   extends ReadInJoyDynamicChannelBaseFragment
 {
-  private bfzp jdField_a_of_type_Bfzp = new ora(this);
-  private oqx jdField_a_of_type_Oqx;
-  private orj jdField_a_of_type_Orj = new oqz(this);
+  private bgag jdField_a_of_type_Bgag = new oqx(this);
+  private oqu jdField_a_of_type_Oqu;
+  private org jdField_a_of_type_Org = new oqw(this);
   
   public static ReadInJoyCGIDynamicChannelFragment a(int paramInt1, int paramInt2, String paramString)
   {
@@ -42,7 +42,7 @@ public class ReadInJoyCGIDynamicChannelFragment
     return localReadInJoyCGIDynamicChannelFragment;
   }
   
-  private void a(int paramInt, List<orq> paramList)
+  private void a(int paramInt, List<orn> paramList)
   {
     if (paramInt != this.b) {}
     for (;;)
@@ -54,12 +54,12 @@ public class ReadInJoyCGIDynamicChannelFragment
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          orq localorq = (orq)paramList.next();
-          QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "channelID = ", Integer.valueOf(paramInt), ", styleID = ", localorq.a, ", proteusData = ", localorq.b });
-          if ((!TextUtils.isEmpty(localorq.a)) && (!TextUtils.isEmpty(localorq.b)))
+          orn localorn = (orn)paramList.next();
+          QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "channelID = ", Integer.valueOf(paramInt), ", styleID = ", localorn.a, ", proteusData = ", localorn.b });
+          if ((!TextUtils.isEmpty(localorn.a)) && (!TextUtils.isEmpty(localorn.b)))
           {
-            ProteusItemView localProteusItemView = oqq.a(this.jdField_a_of_type_Oqx.a(), a(), oqq.a(localorq.b));
-            oqq.a(localProteusItemView, this.jdField_a_of_type_Oqx.a(), a(), localorq.b);
+            ProteusItemView localProteusItemView = oqn.a(this.jdField_a_of_type_Oqu.a(), a(), oqn.a(localorn.b));
+            oqn.a(localProteusItemView, this.jdField_a_of_type_Oqu.a(), a(), localorn.b);
             a(localProteusItemView);
           }
         }
@@ -77,16 +77,16 @@ public class ReadInJoyCGIDynamicChannelFragment
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      Object localObject = ork.a();
+      Object localObject = orh.a();
       if (localObject != null) {
-        ((ork)localObject).a(this.b, 10);
+        ((orh)localObject).a(this.b, 10);
       }
-      localObject = oro.a();
+      localObject = orl.a();
       if (localObject != null)
       {
-        ((oro)localObject).a(this.b);
-        a(this.b, ((oro)localObject).a(this.b));
-        ((oro)localObject).b(this.b);
+        ((orl)localObject).a(this.b);
+        a(this.b, ((orl)localObject).a(this.b));
+        ((orl)localObject).b(this.b);
       }
       return;
     }
@@ -95,16 +95,16 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject = oro.a();
+    Object localObject = orl.a();
     if (localObject != null)
     {
-      localObject = ((oro)localObject).a(this.b);
+      localObject = ((orl)localObject).a(this.b);
       if ((paramInt >= 0) && (paramInt < ((List)localObject).size()))
       {
-        localObject = (orq)((List)localObject).get(paramInt);
+        localObject = (orn)((List)localObject).get(paramInt);
         paramViewHolder = (ProteusItemView)paramViewHolder.itemView;
         if ((localObject != null) && (paramViewHolder != null)) {
-          oqq.a(paramViewHolder, this.jdField_a_of_type_Oqx.a(), a(), ((orq)localObject).b);
+          oqn.a(paramViewHolder, this.jdField_a_of_type_Oqu.a(), a(), ((orn)localObject).b);
         }
       }
     }
@@ -112,28 +112,28 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   public void b()
   {
-    this.jdField_a_of_type_Oqx.notifyDataSetChanged();
+    this.jdField_a_of_type_Oqu.notifyDataSetChanged();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Oqx = new oqx(getActivity(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(), this.b);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setAdapter(this.jdField_a_of_type_Oqx);
+    this.jdField_a_of_type_Oqu = new oqu(getActivity(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(), this.b);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setAdapter(this.jdField_a_of_type_Oqu);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bfzp);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bgag);
   }
   
   public void i()
   {
     super.i();
-    if (this.jdField_a_of_type_Oqx != null)
+    if (this.jdField_a_of_type_Oqu != null)
     {
       QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "reportExposureAndClear, mChannelID = ", Integer.valueOf(this.b) });
-      a(this.jdField_a_of_type_Oqx.a());
-      this.jdField_a_of_type_Oqx.a();
+      a(this.jdField_a_of_type_Oqu.a());
+      this.jdField_a_of_type_Oqu.a();
       return;
     }
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "mAdapter is null.");
@@ -142,13 +142,13 @@ public class ReadInJoyCGIDynamicChannelFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ori.a().a(this.jdField_a_of_type_Orj);
+    orf.a().a(this.jdField_a_of_type_Org);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ori.a().b(this.jdField_a_of_type_Orj);
+    orf.a().b(this.jdField_a_of_type_Org);
   }
 }
 

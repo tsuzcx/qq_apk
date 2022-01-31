@@ -1,35 +1,42 @@
+import android.content.ComponentName;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 
 class ahkw
   implements View.OnClickListener
 {
-  ahkw(ahkf paramahkf) {}
+  ahkw(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
+    paramView = QQPlayerService.a();
+    int i;
+    if (paramView != null)
     {
-      if (this.a.jdField_b_of_type_Long == 77313L) {
-        this.a.jdField_b_of_type_Boolean = true;
+      ahkd.a(this.a).startActivity(paramView);
+      paramView = paramView.getComponent().getClassName();
+      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
+        break label125;
       }
-      this.a.c();
+      i = 0;
     }
-    do
+    for (;;)
     {
+      axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
       return;
-      paramView = new Intent(ahkf.a(this.a), QRLoginMgrActivity.class);
-      paramView.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
-      paramView.putExtra("appType", this.a.jdField_b_of_type_Int);
-      paramView.putExtra("subappid", this.a.a);
-      paramView.putExtra("clientType", this.a.jdField_b_of_type_Long);
-      ahkf.a(this.a).startActivity(paramView);
-      axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
-    } while (this.a.jdField_b_of_type_Long != 77313L);
-    axqw.b(ahkf.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
+      label125:
+      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
+    }
   }
 }
 

@@ -1,9 +1,49 @@
-import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1;
-import java.util.List;
+import VIP.GetQzoneMusicInfoRsp;
+import VIP.MusicInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class auxc
+class auxc
+  implements ajte
 {
-  public static final List<auxi> a = new StickyNotePublishConstant.1();
+  auxc(auxb paramauxb) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
+    {
+      paramObject = (GetQzoneMusicInfoRsp)paramObject;
+      if ((auxb.a(this.a)) || (!paramObject.mMusicList.containsKey(auxb.a(this.a).f))) {
+        break label101;
+      }
+      auxb.a(this.a).a = ((MusicInfo)paramObject.mMusicList.get(auxb.a(this.a).f)).sSongUrl;
+      this.a.a(BaseApplicationImpl.getContext(), auxb.a(this.a));
+    }
+    for (;;)
+    {
+      return;
+      label101:
+      SongInfo[] arrayOfSongInfo = QQPlayerService.a();
+      if (arrayOfSongInfo != null)
+      {
+        paramInt = 0;
+        while (paramInt < arrayOfSongInfo.length)
+        {
+          if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].f))
+          {
+            arrayOfSongInfo[paramInt].a = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].f)).sSongUrl;
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].f + " url:" + arrayOfSongInfo[paramInt].a);
+            }
+          }
+          paramInt += 1;
+        }
+      }
+    }
+  }
 }
 
 

@@ -5,12 +5,14 @@ import com.tencent.mobileqq.activity.BaseChatPie;
 class asoq
   implements DialogInterface.OnClickListener
 {
-  asoq(asoh paramasoh) {}
+  asoq(asoj paramasoj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bict.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, asoh.a(this.a), asoh.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      asoh.a(this.a).a(false, null, false);
+    paramDialogInterface.dismiss();
+    axqy.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
+    if (this.a.c()) {
+      asoj.a(this.a).a(false, null, false);
     }
   }
 }

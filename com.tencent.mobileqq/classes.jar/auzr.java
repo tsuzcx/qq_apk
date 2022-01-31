@@ -1,81 +1,60 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
 import android.widget.ToggleButton;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class auzr
-  extends BaseAdapter
 {
-  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
+  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
   
-  private auzr(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
-  
-  public void a(List<ProfileLabelInfo> paramList)
+  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    return (ToggleButton)this.a.get(paramProfileLabelInfo);
   }
   
-  public int getCount()
+  public Map<ProfileLabelInfo, ToggleButton> a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a;
   }
   
-  public Object getItem(int paramInt)
+  public void a()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.a.clear();
   }
   
-  public long getItemId(int paramInt)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
   {
-    return paramInt;
+    if (!a(paramProfileLabelInfo)) {
+      this.a.put(paramProfileLabelInfo, paramToggleButton);
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    ProfileLabelInfo localProfileLabelInfo;
-    if (paramView == null)
+    return this.a.get(paramProfileLabelInfo) != null;
+  }
+  
+  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  {
+    if (a(paramProfileLabelInfo)) {
+      this.a.remove(paramProfileLabelInfo);
+    }
+  }
+  
+  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
+  {
+    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
+      a(paramProfileLabelInfo, paramToggleButton);
+    }
+    for (;;)
     {
-      paramView = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
-      paramView.setBackgroundResource(2130849404);
-      paramViewGroup = (ToggleButton)paramView;
-      paramViewGroup.setGravity(17);
-      paramViewGroup.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427334));
-      paramViewGroup.setTextColor(Color.parseColor("#777777"));
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-      localProfileLabelInfo = (ProfileLabelInfo)getItem(paramInt);
-      if (localProfileLabelInfo == null) {
-        break label204;
-      }
-      paramViewGroup.setTag(localProfileLabelInfo);
-      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label198;
+      paramProfileLabelInfo.toggleStatus();
+      paramToggleButton.toggle();
+      return;
+      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
+        b(paramProfileLabelInfo, paramToggleButton);
       }
     }
-    label198:
-    for (boolean bool = true;; bool = false)
-    {
-      paramViewGroup.setChecked(bool);
-      paramViewGroup.setText(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOn(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOff(localProfileLabelInfo.labelName);
-      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Auzp.a(localProfileLabelInfo, paramViewGroup);
-      }
-      return paramView;
-      paramViewGroup = (ToggleButton)paramView;
-      break;
-    }
-    label204:
-    paramViewGroup.setVisibility(8);
-    return paramView;
   }
 }
 

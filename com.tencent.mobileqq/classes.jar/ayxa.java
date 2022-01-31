@@ -1,34 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 public class ayxa
+  extends aywx
+  implements ayww
 {
-  public static int a = -1;
+  String a;
   
-  public static void a(int paramInt)
+  public ayxa(String paramString)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
-    localEditor.putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
-    localEditor.commit();
-    a = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("PicUploadExifInfoSwitch", 2, "setSwitch:" + paramInt);
-    }
+    this.a = paramString;
   }
   
-  public static boolean a()
+  public Bitmap a(Bitmap paramBitmap)
   {
-    if (aqwd.a().g()) {}
-    do
-    {
-      return true;
-      if (a < 0) {
-        a = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
-      }
-    } while (a == 1);
-    return false;
+    int i = aywm.a(this.a);
+    if (i == 0) {
+      return b(paramBitmap);
+    }
+    Object localObject = new Matrix();
+    ((Matrix)localObject).setRotate(i, paramBitmap.getWidth() / 2.0F, paramBitmap.getHeight() / 2.0F);
+    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
+    if ((localObject == null) || (localObject == paramBitmap)) {
+      throw new OutOfMemoryError("OOM");
+    }
+    paramBitmap.recycle();
+    return b((Bitmap)localObject);
   }
 }
 

@@ -1,69 +1,194 @@
-import android.os.Handler;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.14.3;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.ColorClearableEditText;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class abag
-  extends bbqu
+  implements View.OnClickListener
 {
   public abag(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    paramView = this.a.a.getText();
+    if (paramView != null) {}
+    for (paramView = new aykk(paramView.toString(), 3);; paramView = null)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
-      this.a.c(true);
-      paramString = (akhq)this.a.app.a(20);
-      try
+      Object localObject1;
+      if (paramView == null)
       {
-        paramString.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
+        localObject1 = "";
+        if (paramView != null) {
+          break label90;
+        }
+        paramView = "";
+      }
+      for (;;)
+      {
+        if (!this.a.jdField_g_of_type_Boolean)
+        {
+          if (this.a.jdField_e_of_type_Int == 0)
+          {
+            this.a.e();
+            if (!this.a.a((String)localObject1, paramView))
+            {
+              return;
+              localObject1 = paramView.toString();
+              break;
+              label90:
+              paramView = paramView.c();
+              continue;
+            }
+            if ((this.a.b == null) || (this.a.b.length() == 0))
+            {
+              if ((paramView == null) || (paramView.length() == 0)) {
+                EditInfoActivity.a(this.a);
+              }
+            }
+            else {
+              if ((paramView != null) && (paramView.length() != 0)) {
+                break label228;
+              }
+            }
+            label228:
+            while (!this.a.b.equals(paramView))
+            {
+              localObject2 = paramView;
+              if (this.a.d != 3) {
+                break;
+              }
+              if (!TextUtils.isEmpty(paramView))
+              {
+                localObject1 = paramView;
+                if (paramView.length() >= 1) {}
+              }
+              else
+              {
+                localObject1 = "";
+              }
+              localObject2 = localObject1;
+              if (!this.a.a((String)localObject1)) {
+                break;
+              }
+              bcql.a(this.a, this.a.getString(2131693578), 0).b(this.a.getTitleBarHeight());
+              return;
+            }
+            EditInfoActivity.b(this.a);
+            return;
+            paramView = (View)localObject2;
+            if (localObject2 == null) {
+              paramView = "";
+            }
+            this.a.a(paramView);
+            return;
+          }
+          this.a.n();
+          return;
+        }
+      }
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_7", "", 1, 0, 0, "", "", "");
+      if (!bbfj.d(this.a.app.getApplication().getApplicationContext()))
+      {
+        bcql.a(this.a, 1, 2131694610, 0).b(this.a.getTitleBarHeight());
         return;
       }
-      catch (Exception paramString)
+      Object localObject2 = paramView;
+      abaq localabaq;
+      if (EditInfoActivity.a(this.a))
       {
-        this.a.b(false);
-        return;
+        localabaq = new abaq(null);
+        if (EditInfoActivity.a(this.a, localabaq))
+        {
+          this.a.b(true);
+          paramView = (bbrd)this.a.app.a(71);
+          localObject1 = ((ColorClearableEditText)this.a.a).a().iterator();
+          do
+          {
+            if (!((Iterator)localObject1).hasNext()) {
+              break;
+            }
+          } while (((bckp)((Iterator)localObject1).next()).c != 1);
+        }
       }
-    }
-    this.a.b(false);
-    String str;
-    if (paramInt == 1282)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
-      paramString = ajyc.a(2131703633);
-      str = ajyc.a(2131703627);
-      try
+      for (int i = 1;; i = 0)
       {
-        bbcv.a(this.a, 230, paramString, str, ajyc.a(2131703620), ajyc.a(2131703624), new abah(this), new abai(this)).show();
+        if (i == 0)
+        {
+          bcql.a(this.a, ajya.a(2131703630), 0).b(this.a.getTitleBarHeight());
+          return;
+        }
+        paramView.a(this.a.jdField_e_of_type_JavaLangString, ((ColorClearableEditText)this.a.a).a());
+        this.a.j = true;
         return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("EditInfoActivity", 1, "onSetColorNick", paramString);
-        return;
+        localObject2 = paramView;
+        if (localabaq.b)
+        {
+          localObject2 = paramView;
+          if (!localabaq.a) {
+            localObject2 = "";
+          }
+        }
+        if (((this.a.jdField_g_of_type_Int == 3) || (this.a.jdField_g_of_type_Int == 4)) && (TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+        {
+          bcql.a(this.a, this.a.getString(2131693455), 0).b(this.a.getTitleBarHeight());
+          return;
+        }
+        if (((TextUtils.isEmpty(this.a.b)) && (TextUtils.isEmpty((CharSequence)localObject2))) || ((!TextUtils.isEmpty(this.a.b)) && (this.a.b.equals(localObject2))))
+        {
+          EditInfoActivity.c(this.a);
+          return;
+        }
+        localObject1 = new TroopMemberCardInfo();
+        ((TroopMemberCardInfo)localObject1).name = ((String)localObject2);
+        ((TroopMemberCardInfo)localObject1).memberuin = this.a.f;
+        ((TroopMemberCardInfo)localObject1).troopuin = this.a.jdField_e_of_type_JavaLangString;
+        ((TroopMemberCardInfo)localObject1).email = "";
+        ((TroopMemberCardInfo)localObject1).memo = "";
+        ((TroopMemberCardInfo)localObject1).sex = -1;
+        ((TroopMemberCardInfo)localObject1).tel = "";
+        paramView = new ArrayList();
+        paramView.add(localObject1);
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(Integer.valueOf(1));
+        localObject2 = (akhp)this.a.app.a(20);
+        if ((localObject2 != null) && (!TextUtils.isEmpty(this.a.jdField_e_of_type_JavaLangString)))
+        {
+          this.a.b(true);
+          ((akhp)localObject2).a(this.a.jdField_e_of_type_JavaLangString, paramView, (ArrayList)localObject1);
+        }
+        paramView = (TroopManager)this.a.app.getManager(52);
+        if (paramView != null)
+        {
+          paramView = paramView.b(this.a.jdField_e_of_type_JavaLangString);
+          if (paramView != null) {
+            if ((!TextUtils.isEmpty(paramView.troopowneruin)) && (paramView.troopowneruin.equalsIgnoreCase(this.a.app.getAccount()))) {
+              i = 0;
+            }
+          }
+        }
+        for (;;)
+        {
+          this.a.j = true;
+          axqy.b(this.a.app, "P_CliOper", "Grp_manage", "", "modify_name", "complete", 0, 0, this.a.jdField_e_of_type_JavaLangString, i + "", "" + this.a.d, "");
+          return;
+          if ((!TextUtils.isEmpty(paramView.Administrator)) && (paramView.Administrator.contains(this.a.app.getAccount()))) {
+            i = 1;
+          } else {
+            i = 2;
+          }
+        }
       }
     }
-    if (1283 == paramInt)
-    {
-      bcpw.a(this.a, 1, ajyc.a(2131703623), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (1793 == paramInt)
-    {
-      EditInfoActivity localEditInfoActivity = this.a;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131693515);
-      }
-      bcpw.a(localEditInfoActivity, 1, str, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    bcpw.a(this.a, 1, 2131694298, 0).b(this.a.getTitleBarHeight());
-    this.a.a.postDelayed(new EditInfoActivity.14.3(this), 1500L);
   }
 }
 

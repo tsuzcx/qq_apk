@@ -1,188 +1,197 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngImage;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ResData;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPUtil;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import org.apache.http.Header;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryPic;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
-public class ayvq
-  extends ayog
+class ayvq
+  implements ITransactionCallback
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  ayvq(ayvp paramayvp, long paramLong) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    Object localObject2 = null;
-    int j = 0;
-    paramURLDrawableHandler = paramDownloadParams.url.getFile();
-    String str = paramDownloadParams.url.getHost();
-    if (paramURLDrawableHandler.startsWith(File.separator))
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = vyo.a((String)paramHashMap.get("upFlow_WiFi"), -1L);
+    long l3 = vyo.a((String)paramHashMap.get("dwFlow_WiFi"), -1L);
+    long l4 = vyo.a((String)paramHashMap.get("upFlow_Xg"), -1L);
+    long l5 = vyo.a((String)paramHashMap.get("dwFlow_Xg"), -1L);
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    ved.c(ayvp.jdField_a_of_type_JavaLangString, "Transaction End : Failed. take time:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Ayvp.a(l2, l3, l4, l5);
+    this.jdField_a_of_type_Ayvp.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd);
+    this.jdField_a_of_type_Ayvp.d();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
+    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
+    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
+    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
+    String str1 = (String)paramHashMap.get("tc_p:");
+    String str2 = (String)paramHashMap.get("rep_bdhTrans");
+    String str3 = (String)paramHashMap.get("segspercnt");
+    String str4 = (String)paramHashMap.get("param_conf_segSize");
+    String str5 = (String)paramHashMap.get("param_conf_segNum");
+    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    ved.c(ayvp.jdField_a_of_type_JavaLangString, "Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.jdField_a_of_type_Long + " transInfo:" + str2);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
+    this.jdField_a_of_type_Ayvp.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
+    this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd.b();
+    this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd.a = 1;
+    this.jdField_a_of_type_Ayvp.s = this.jdField_a_of_type_Ayvp.q;
+    ved.c(ayvp.jdField_a_of_type_JavaLangString, "ITransactionCallback.onSuccess()");
+    if (paramArrayOfByte == null) {
+      this.jdField_a_of_type_Ayvp.d();
+    }
+    for (;;)
     {
-      paramURLDrawableHandler = paramURLDrawableHandler.substring(1);
-      for (;;)
+      this.jdField_a_of_type_Ayvp.a(l2, l3, l4, l5);
+      this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.a();
+      return;
+      int i;
+      if (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196610)
       {
-        Object localObject1 = new File(str);
-        int i;
-        Object localObject3;
-        if (((File)localObject1).exists())
-        {
-          i = 1;
-          paramOutputStream = (OutputStream)localObject1;
-          localObject3 = paramDownloadParams.getHeader("my_uin");
-          localObject1 = paramOutputStream;
-          if (localObject3 == null) {}
-        }
+        paramHashMap = new qqstory_bhd_upload_pic.RspStoryPic();
         try
         {
-          localObject1 = ((Header)localObject3).getValue();
-          localObject3 = (aymj)((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime((String)localObject1)).getManager(185);
-          localObject1 = paramOutputStream;
-          ResData localResData;
-          if (((aymj)localObject3).a != null)
-          {
-            Header localHeader = paramDownloadParams.getHeader("my_id");
-            localResData = new ResData();
-            localObject1 = localObject2;
-            if (localHeader != null) {
-              localObject1 = localHeader.getValue();
-            }
-            localResData.id = ((String)localObject1);
-            localResData.path = str;
-            localResData.url = paramURLDrawableHandler;
-            paramURLDrawableHandler = paramDownloadParams.getHeader("my_type");
-            if (paramURLDrawableHandler != null) {
-              j = Integer.parseInt(paramURLDrawableHandler.getValue());
-            }
-            localResData.type = j;
-            paramURLDrawableHandler = new Bundle();
-            paramDownloadParams = paramDownloadParams.getHeader("page_index");
-            if (paramDownloadParams == null) {
-              break label728;
-            }
-            j = Integer.parseInt(paramDownloadParams.getValue());
-            label236:
-            paramURLDrawableHandler.putInt("page_index", j);
-            paramDownloadParams = ((aymj)localObject3).a;
-            if (i == 0) {
-              break label734;
-            }
+          paramHashMap.mergeFrom(paramArrayOfByte);
+          i = paramHashMap.retcode.get();
+          if (i != 0) {
+            break label567;
           }
-          label669:
-          label728:
-          label734:
-          for (i = 4;; i = 8)
-          {
-            paramDownloadParams.callback(18, i, paramURLDrawableHandler, localResData);
-            localObject1 = paramOutputStream;
-            boolean bool;
-            do
-            {
-              return localObject1;
-              paramOutputStream = new File(bfki.a((File)localObject1));
-              bool = paramDownloadParams.useSharpPImage;
-              if ((!bool) || (!paramOutputStream.exists())) {
-                break;
-              }
-              localObject1 = paramOutputStream;
-            } while (!QLog.isColorLevel());
-            QLog.d("themediydownloader", 2, "downloadImage shpFile.exists url=" + paramURLDrawableHandler + ", path=" + str);
-            return paramOutputStream;
-            if (QLog.isColorLevel()) {
-              QLog.d("themediydownloader", 2, "downloadImage download url=" + paramURLDrawableHandler + ", path=" + str + ", isSharpPAv=" + bool);
-            }
-            paramOutputStream = new bbwg(paramURLDrawableHandler, (File)localObject1);
-            paramOutputStream.k = bool;
-            paramOutputStream.p = false;
-            if (bbwi.a(paramOutputStream, BaseApplicationImpl.sApplication.getRuntime()) == 0)
-            {
-              if ((((File)localObject1).exists()) && (!SignatureManager.a(((File)localObject1).getAbsolutePath())))
-              {
-                ((File)localObject1).delete();
-                QLog.e("themediydownloader", 1, "downloadImage file Error url=" + paramURLDrawableHandler + ", path=" + str);
-                paramOutputStream = null;
-                label503:
-                if (!(paramDownloadParams.mExtraInfo instanceof Integer)) {
-                  break label669;
-                }
-              }
-              for (;;)
-              {
-                try
-                {
-                  i = Integer.parseInt(String.valueOf(paramDownloadParams.mExtraInfo));
-                  QLog.i("themediydownloader", 1, "downloadImage onPostThemeChanged pageIndex: " + i + ", needUpdateThemeForBg=" + ThemeBackground.needUpdateThemeForBg);
-                  if ((ThemeBackground.needUpdateThemeForBg) && (100 == i))
-                  {
-                    ThemeBackground.needUpdateThemeForBg = false;
-                    localObject1 = new Intent("com.tencent.qplus.THEME_INVALIDATE");
-                    ((Intent)localObject1).putExtra("pid", Process.myPid());
-                    BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
-                  }
-                  i = 1;
-                }
-                catch (Exception localException)
-                {
-                  QLog.e("themediydownloader", 1, "downloadImage parseInt Error:" + localException.getMessage());
-                }
-                paramOutputStream = (OutputStream)localObject1;
-                if (!SharpPUtil.isSharpPFile((File)localObject1)) {
-                  break label503;
-                }
-                paramOutputStream = bfki.a((File)localObject1);
-                break label503;
-                i = 0;
-              }
-            }
-            paramOutputStream = new File(ajsf.aW);
-            QLog.e("themediydownloader", 1, "downloadImage Error url=" + paramURLDrawableHandler + ", path=" + str);
-            i = 0;
-            break;
-            j = -1;
-            break label236;
+          this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString = paramHashMap.url.get().toStringUtf8();
+          ved.a(ayvp.jdField_a_of_type_JavaLangString, "upload file %s return url %s", this.jdField_a_of_type_Ayvp.d, this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString);
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString)) {
+            break label557;
           }
+          this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = 940010;
+          this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = String.format("return illegal arg url:%s", new Object[] { this.jdField_a_of_type_Ayvp.jdField_b_of_type_JavaLangString });
+          this.jdField_a_of_type_Ayvp.d();
+          paramHashMap = bbea.a(paramArrayOfByte);
+          str1 = ayvp.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = paramHashMap;
+          if (paramHashMap == null) {
+            paramArrayOfByte = "";
+          }
+          ved.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
         }
-        catch (Exception paramDownloadParams)
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
         {
-          QLog.e("themediydownloader", 1, "downloadImage Error:" + paramDownloadParams.getMessage());
-          return paramOutputStream;
+          ved.d(ayvp.jdField_a_of_type_JavaLangString, "parser buffer exception");
+          this.jdField_a_of_type_Ayvp.d();
         }
+        continue;
+        label557:
+        this.jdField_a_of_type_Ayvp.e();
+        continue;
+        label567:
+        this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = i;
+        this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
+        this.jdField_a_of_type_Ayvp.d();
+      }
+      else if ((this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196609) || (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 327681))
+      {
+        paramHashMap = new qqstory_bhd_upload_pic.RspStoryVideo();
+        try
+        {
+          paramHashMap.mergeFrom(paramArrayOfByte);
+          i = paramHashMap.retcode.get();
+          if (i != 0) {
+            break label872;
+          }
+          this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString = paramHashMap.cdn_url.get().toStringUtf8();
+          if (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196609) {
+            this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString = vzl.a(this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString, "authkey");
+          }
+          this.jdField_a_of_type_Ayvp.n = paramHashMap.file_key.get().toStringUtf8();
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Ayvp.n))) {
+            break label862;
+          }
+          this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = 940010;
+          this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = String.format("return illegal arg vid:%s, url:%s", new Object[] { this.jdField_a_of_type_Ayvp.n, this.jdField_a_of_type_Ayvp.jdField_o_of_type_JavaLangString });
+          this.jdField_a_of_type_Ayvp.d();
+          paramHashMap = bbea.a(paramArrayOfByte);
+          str1 = ayvp.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = paramHashMap;
+          if (paramHashMap == null) {
+            paramArrayOfByte = "";
+          }
+          ved.e(str1, "url not return %s", new Object[] { paramArrayOfByte });
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          ved.d(ayvp.jdField_a_of_type_JavaLangString, "parser buffer exception");
+          this.jdField_a_of_type_Ayvp.d();
+        }
+        continue;
+        label862:
+        this.jdField_a_of_type_Ayvp.e();
+        continue;
+        label872:
+        this.jdField_a_of_type_Ayvp.jdField_j_of_type_Int = i;
+        this.jdField_a_of_type_Ayvp.jdField_j_of_type_JavaLangString = paramHashMap.msg.get().toStringUtf8();
+        this.jdField_a_of_type_Ayvp.d();
+      }
+      else
+      {
+        this.jdField_a_of_type_Ayvp.d(1005);
+        this.jdField_a_of_type_Ayvp.d();
       }
     }
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
   {
-    paramURLDrawableHandler = null;
-    if (paramDownloadParams == null) {
-      paramDownloadParams = paramURLDrawableHandler;
-    }
-    do
+    ved.a(ayvp.jdField_a_of_type_JavaLangString, "onTransStart %s", this.jdField_a_of_type_Ayvp.jdField_a_of_type_Aywc.i);
+    long l1 = System.currentTimeMillis();
+    long l2 = ayvp.a(this.jdField_a_of_type_Ayvp);
+    String str2 = vei.a(BaseApplication.getContext());
+    if (this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo.b == 196610) {}
+    for (String str1 = "pic";; str1 = "video")
     {
-      return paramDownloadParams;
-      if ((paramFile == null) || (!paramFile.exists()) || (!paramDownloadParams.useApngImage) || (!ChatBackgroundManager.a(paramFile))) {
-        break;
-      }
-      paramDownloadParams = new Bundle();
-      paramDownloadParams.putBoolean("key_use_rect", true);
-      paramDownloadParams.putBoolean("key_double_bitmap", true);
-      paramDownloadParams.putIntArray("key_tagId_arr", new int[] { 0 });
-      paramURLDrawableHandler = new ApngImage(paramFile, true, paramDownloadParams);
-      paramDownloadParams = paramURLDrawableHandler;
-    } while (paramURLDrawableHandler.firstFrame != null);
-    ChatBackgroundManager.a(paramFile.getAbsolutePath());
-    return paramURLDrawableHandler;
-    paramDownloadParams.useApngImage = false;
-    return null;
+      vei.b("publish_story", "publish_bdh", 0, 0, new String[] { "", String.valueOf(l1 - l2), str2, str1 });
+      this.jdField_a_of_type_Ayvp.jdField_b_of_type_Aypd.a();
+      ayvp.a(this.jdField_a_of_type_Ayvp, System.currentTimeMillis());
+      return;
+    }
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    ayvp localayvp = this.jdField_a_of_type_Ayvp;
+    ayqo localayqo = this.jdField_a_of_type_Ayvp.jdField_a_of_type_Ayqo;
+    long l = paramInt;
+    localayqo.e = l;
+    localayvp.s = l;
+    if ((paramInt <= this.jdField_a_of_type_Ayvp.q) && (!this.jdField_a_of_type_Ayvp.jdField_o_of_type_Boolean) && (!this.jdField_a_of_type_Ayvp.k)) {
+      this.jdField_a_of_type_Ayvp.i();
+    }
   }
 }
 

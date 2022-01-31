@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhyq;
-import bhyr;
+import bhzh;
+import bhzi;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -29,11 +29,11 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class AlumBasicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bhyq();
+  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bhzh();
   public int a;
   public long a;
   public String a;
-  public List<bhyr> a;
+  public List<bhzi> a;
   public qq_ad_get.QQAdGetRsp.AdInfo a;
   public int b;
   public String b;
@@ -79,7 +79,7 @@ public class AlumBasicData
       this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.mergeFrom(arrayOfByte);
       this.h = paramParcel.readString();
       this.i = paramParcel.readString();
-      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bhyr.class.getClassLoader());
+      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bhzi.class.getClassLoader());
       this.jdField_d_of_type_Int = paramParcel.readInt();
       return;
     }
@@ -209,7 +209,7 @@ public class AlumBasicData
         k = m;
         while (k < ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().size())
         {
-          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bhyr.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().get(k)));
+          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bhzi.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().get(k)));
           k += 1;
         }
       }

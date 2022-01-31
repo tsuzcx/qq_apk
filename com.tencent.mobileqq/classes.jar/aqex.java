@@ -1,21 +1,16 @@
 import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqex
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  aqex(aqeq paramaqeq) {}
+  aqex(aqes paramaqes) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == 0) {
-      bcpw.a(this.a.a, ajyc.a(2131704804), 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
+    this.a.a(false);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
     this.a.a.finish();
   }
 }

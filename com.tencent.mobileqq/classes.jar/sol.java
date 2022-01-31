@@ -1,21 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class sol
-  extends Handler
+  implements Animation.AnimationListener
 {
   public sol(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.b(this.a);
+    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

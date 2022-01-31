@@ -2,11 +2,11 @@ package com.tencent.mobileqq.troop.homework.recite.data;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bazb;
-import bazc;
-import bazd;
-import bbbb;
-import bcpw;
+import bazp;
+import bazq;
+import bazr;
+import bbbp;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -22,22 +22,22 @@ public class ArticleInfo
   public static final int TYPE_GUSHI = 2;
   public static final int TYPE_SANWEN = 1;
   private static final String a = ArticleInfo.class.getSimpleName();
-  @bazc(a="author")
+  @bazq(a="author")
   public String author;
-  @bazc(a="grade")
+  @bazq(a="grade")
   public int grade;
-  @bazc(a="kid")
+  @bazq(a="kid")
   public String kid;
-  @bazc(a="level")
+  @bazq(a="level")
   public int level;
-  @bazc(a="paragraphs")
-  @bazd(a=ParagraphInfo.class)
+  @bazq(a="paragraphs")
+  @bazr(a=ParagraphInfo.class)
   public List<ParagraphInfo> paragraphs;
-  @bazc(a="title")
+  @bazq(a="title")
   public String title;
-  @bazc(a="type")
+  @bazq(a="type")
   public int type;
-  @bazc(a="version")
+  @bazq(a="version")
   public String version;
   
   public static ArticleInfo onHandleGetArticleDetail(Bundle paramBundle, JSONObject paramJSONObject)
@@ -72,7 +72,7 @@ public class ArticleInfo
         if (((JSONArray)localObject1).length() <= 0) {
           break label397;
         }
-        localObject1 = (ArticleInfo)bazb.b(((JSONArray)localObject1).getJSONObject(0), ArticleInfo.class);
+        localObject1 = (ArticleInfo)bazp.b(((JSONArray)localObject1).getJSONObject(0), ArticleInfo.class);
         str = "0";
         i = 1;
         localObject2 = localObject1;
@@ -102,7 +102,7 @@ public class ArticleInfo
           if (i != 0)
           {
             i = 1;
-            bbbb.a("Grp_edu", "publish_homework", "get_kewen_info", 0, i, new String[] { localObject2, paramBundle, localObject1 });
+            bbbp.a("Grp_edu", "publish_homework", "get_kewen_info", 0, i, new String[] { localObject2, paramBundle, localObject1 });
           }
         }
         else
@@ -114,7 +114,7 @@ public class ArticleInfo
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
             break label410;
           }
-          bcpw.a(BaseApplicationImpl.getContext(), 1, (CharSequence)localObject3, 1).a();
+          bcql.a(BaseApplicationImpl.getContext(), 1, (CharSequence)localObject3, 1).a();
           localObject1 = str;
           break label410;
           str = String.valueOf(i);
@@ -123,7 +123,7 @@ public class ArticleInfo
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
             break label410;
           }
-          bcpw.a(BaseApplicationImpl.getContext(), 1, (CharSequence)localObject3, 1).a();
+          bcql.a(BaseApplicationImpl.getContext(), 1, (CharSequence)localObject3, 1).a();
           localObject1 = str;
           break label410;
           if ((QLog.isColorLevel()) && (paramBundle != null)) {

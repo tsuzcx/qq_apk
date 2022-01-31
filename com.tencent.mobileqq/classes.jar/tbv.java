@@ -1,19 +1,20 @@
-class tbv
-  implements tey
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class tbv
+  implements tch
 {
-  tbv(tbu paramtbu) {}
+  protected AtomicBoolean c = new AtomicBoolean(false);
   
-  public void a(boolean paramBoolean, teu paramteu)
+  public void a() {}
+  
+  public void b()
   {
-    veg.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramteu != null))
-    {
-      veg.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramteu.b), Integer.valueOf(paramteu.a));
-      this.a.a(paramteu.b, paramteu.a);
-      return;
-    }
-    veg.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
-    this.a.a(false, null);
+    this.c.set(true);
+  }
+  
+  public boolean b()
+  {
+    return this.c.get();
   }
 }
 

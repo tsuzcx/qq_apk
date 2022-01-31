@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gallery.presenter;
 
-import aejd;
-import amll;
+import aejb;
+import amlk;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,18 +10,18 @@ import android.os.Looper;
 import android.support.annotation.RequiresApi;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import anfv;
-import aqlz;
-import aqmg;
-import aqmh;
-import aqmm;
-import aqnd;
-import aqne;
-import aqoe;
+import anga;
+import aqmb;
+import aqmi;
+import aqmj;
+import aqmo;
+import aqnf;
+import aqng;
 import aqog;
-import aqol;
-import avwm;
-import avwp;
+import aqoi;
+import aqon;
+import avwo;
+import avwr;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.comment.DanmuItemBean;
@@ -31,12 +31,12 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AIOGalleryBasePresenter
-  extends aqne
-  implements aqlz
+  extends aqng
+  implements aqmb
 {
   private Handler a;
-  public aqnd a;
-  public aqoe a;
+  public aqnf a;
+  public aqog a;
   public AIOGalleryBasePresenter.ImmersionTimerRunnable a;
   public ConcurrentHashMap<Integer, URLDrawable> a;
   public boolean a;
@@ -51,25 +51,25 @@ public class AIOGalleryBasePresenter
   
   public int a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.a();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.a();
     }
     return -1;
   }
   
   public int a(long paramLong, int paramInt)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      return localaejd.a(paramLong, paramInt);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      return localaejb.a(paramLong, paramInt);
     }
     return 0;
   }
   
   public int a(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a(paramLong, paramInt1, paramInt2, paramString);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a(paramLong, paramInt1, paramInt2, paramString);
     }
     return -1;
   }
@@ -79,143 +79,143 @@ public class AIOGalleryBasePresenter
     return 0L;
   }
   
-  public aejd a()
+  public aejb a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aejd;
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aejb;
     }
     return null;
   }
   
-  public amll a()
+  public amlk a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.a();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.a();
     }
     return null;
   }
   
   public Intent a(long paramLong, int paramInt)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      return localaejd.a(paramLong, paramInt);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      return localaejb.a(paramLong, paramInt);
     }
     return null;
   }
   
   public Intent a(long paramLong, int paramInt1, int paramInt2)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      return localaejd.a(paramLong, paramInt1, paramInt2);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      return localaejb.a(paramLong, paramInt1, paramInt2);
     }
     return null;
   }
   
   public ImageButton a()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.jdField_a_of_type_AndroidWidgetImageButton;
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.jdField_a_of_type_AndroidWidgetImageButton;
     }
     return null;
   }
   
   public RelativeLayout a()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.a();
     }
     return null;
   }
   
-  public aqmg a()
+  public aqmi a()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a();
     }
     return null;
   }
   
-  public aqmg a(int paramInt)
+  public aqmi a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a(paramInt);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.a(paramInt);
     }
     return null;
   }
   
-  public aqmg a(long paramLong)
+  public aqmi a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a(paramLong);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a(paramLong);
     }
     return null;
   }
   
-  public aqmg a(long paramLong1, long paramLong2)
+  public aqmi a(long paramLong1, long paramLong2)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a(paramLong1, paramLong2);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a(paramLong1, paramLong2);
     }
     return null;
   }
   
-  public aqmm a()
+  public aqmo a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.a();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.a();
     }
     return null;
   }
   
-  public avwm a()
+  public avwo a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.a();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.a();
     }
     return null;
   }
   
-  public avwp a()
+  public avwr a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.a();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.a();
     }
     return null;
   }
   
   public Gallery a()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.jdField_a_of_type_ComTencentWidgetGallery;
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.jdField_a_of_type_ComTencentWidgetGallery;
     }
     return null;
   }
   
-  public List<anfv> a(long paramLong, List<DanmuItemBean> paramList)
+  public List<anga> a(long paramLong, List<DanmuItemBean> paramList)
   {
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.f();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.f();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.a(paramInt);
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.a(paramInt1, paramInt2);
     }
   }
   
@@ -228,39 +228,39 @@ public class AIOGalleryBasePresenter
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.b(paramInt, paramBoolean);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.b(paramInt, paramBoolean);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.a(paramInt, paramBoolean, paramString1, paramString2, paramString3, paramString4);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.a(paramInt, paramBoolean, paramString1, paramString2, paramString3, paramString4);
     }
   }
   
   public void a(long paramLong)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.c(paramLong);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.c(paramLong);
     }
   }
   
   public void a(long paramLong, int paramInt)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.a(paramLong, paramInt);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.a(paramLong, paramInt);
     }
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a(paramLong, paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a(paramLong, paramInt1, paramInt2);
     }
   }
   
@@ -272,70 +272,70 @@ public class AIOGalleryBasePresenter
   
   public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.a(paramLong, paramInt, paramBundle);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.a(paramLong, paramInt, paramBundle);
     }
   }
   
   public void a(long paramLong1, long paramLong2, String paramString)
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.a(paramLong1, paramLong2, paramString);
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.a(paramLong1, paramLong2, paramString);
     }
   }
   
-  public void a(aqmg paramaqmg)
+  public void a(aqmi paramaqmi)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a(paramaqmg);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a(paramaqmi);
     }
   }
   
-  public void a(aqnd paramaqnd)
+  public void a(aqnf paramaqnf)
   {
-    this.jdField_a_of_type_Aqnd = paramaqnd;
+    this.jdField_a_of_type_Aqnf = paramaqnf;
   }
   
-  public void a(aqne paramaqne)
+  public void a(aqng paramaqng)
   {
-    if ((paramaqne instanceof aqnd)) {
-      a((aqnd)paramaqne);
+    if ((paramaqng instanceof aqnf)) {
+      a((aqnf)paramaqng);
     }
   }
   
-  public void a(aqol paramaqol)
+  public void a(aqon paramaqon)
   {
-    super.a(paramaqol);
-    if ((paramaqol instanceof aqoe)) {
-      this.jdField_a_of_type_Aqoe = ((aqoe)paramaqol);
+    super.a(paramaqon);
+    if ((paramaqon instanceof aqog)) {
+      this.jdField_a_of_type_Aqog = ((aqog)paramaqon);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.a(paramString, paramInt);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.a(paramString, paramInt);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.a(paramBoolean);
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.a(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.b());
+    return (this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.b());
   }
   
   public boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      return this.jdField_a_of_type_Aqnd.b(paramInt);
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.b(paramInt);
     }
     return false;
   }
@@ -360,30 +360,30 @@ public class AIOGalleryBasePresenter
   
   public void aG_()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.l();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.l();
     }
   }
   
   public void aH_()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.n();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.n();
     }
   }
   
   public int b()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a();
     }
     return 0;
   }
   
-  public aqmg b()
+  public aqmi b()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.b();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.b();
     }
     return null;
   }
@@ -392,54 +392,54 @@ public class AIOGalleryBasePresenter
   
   public void b(int paramInt)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.a(paramInt);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.a(paramInt);
     }
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a(paramInt, paramBoolean);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.a(paramInt, paramBoolean);
     }
   }
   
   public void b(long paramLong)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.d(paramLong);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.d(paramLong);
     }
   }
   
   public void b(long paramLong, int paramInt1, int paramInt2)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.a(paramLong, paramInt1, paramInt2);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.a(paramLong, paramInt1, paramInt2);
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a(paramBoolean);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.a(paramBoolean);
     }
   }
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.a();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.a();
     }
     return false;
   }
   
   public int c()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.b();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.b();
     }
     return 0;
   }
@@ -448,46 +448,46 @@ public class AIOGalleryBasePresenter
   
   public void c(long paramLong)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.e(paramLong);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.e(paramLong);
     }
   }
   
   public void c(long paramLong, int paramInt1, int paramInt2)
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      localaejd.b(paramLong, paramInt1, paramInt2);
+    aejb localaejb = a();
+    if (localaejb != null) {
+      localaejb.b(paramLong, paramInt1, paramInt2);
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.b(paramBoolean);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.b(paramBoolean);
     }
   }
   
   public boolean c()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.b();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.b();
     }
     return false;
   }
   
   public void d(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.c(paramBoolean);
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.c(paramBoolean);
     }
   }
   
   public boolean d()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh != null)) {
-      return this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqmh.a();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj != null)) {
+      return this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqmj.a();
     }
     return false;
   }
@@ -500,16 +500,16 @@ public class AIOGalleryBasePresenter
   
   public void e(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.b(paramBoolean);
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.b(paramBoolean);
     }
   }
   
   public boolean e()
   {
-    aejd localaejd = a();
-    if (localaejd != null) {
-      return localaejd.asBinder().pingBinder();
+    aejb localaejb = a();
+    if (localaejb != null) {
+      return localaejb.asBinder().pingBinder();
     }
     return false;
   }
@@ -548,45 +548,45 @@ public class AIOGalleryBasePresenter
   
   public void h()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.f();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.f();
     }
   }
   
   public void j()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null))
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null))
     {
-      this.jdField_a_of_type_Aqnd.r();
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.c();
+      this.jdField_a_of_type_Aqnf.r();
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.c();
     }
   }
   
   public void k()
   {
-    if ((this.jdField_a_of_type_Aqnd != null) && (this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog != null)) {
-      this.jdField_a_of_type_Aqnd.jdField_a_of_type_Aqog.g();
+    if ((this.jdField_a_of_type_Aqnf != null) && (this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi != null)) {
+      this.jdField_a_of_type_Aqnf.jdField_a_of_type_Aqoi.g();
     }
   }
   
   public void m()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.s();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.s();
     }
   }
   
   public void n()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.t();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.t();
     }
   }
   
   public void o()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.u();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.u();
     }
   }
   
@@ -619,22 +619,22 @@ public class AIOGalleryBasePresenter
   
   public void r()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.v();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.v();
     }
   }
   
   public void s()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.w();
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.w();
     }
   }
   
   public void t()
   {
-    if (this.jdField_a_of_type_Aqnd != null) {
-      this.jdField_a_of_type_Aqnd.c(g());
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.c(g());
     }
   }
 }

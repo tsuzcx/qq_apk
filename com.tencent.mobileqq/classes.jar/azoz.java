@@ -4,61 +4,72 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class azoz
-  extends azou
+  extends azow
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    int j = 0;
     TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
     if (localTroopFeedItem == null) {
       return null;
     }
-    localTroopFeedItem.type = 12;
-    for (;;)
+    Object localObject;
+    try
     {
-      int i;
-      try
+      localObject = paramJSONObject.getJSONArray("content");
+      if (((JSONArray)localObject).length() <= 0) {
+        break label333;
+      }
+      localObject = ((JSONArray)localObject).getJSONObject(0);
+      int i = ((JSONObject)localObject).getInt("type");
+      if (i == 5)
       {
-        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-        paramJSONObject = paramJSONObject.getJSONObject("vote");
-        if (paramJSONObject != null)
+        if (((JSONObject)localObject).has("file_path")) {
+          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
+        }
+        localTroopFeedItem.type = 131;
+        if (((JSONObject)localObject).has("sharesize")) {
+          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
+        }
+        boolean bool = ((JSONObject)localObject).has("bus_id");
+        if (bool) {}
+        try
         {
-          JSONArray localJSONArray = paramJSONObject.getJSONArray("opts");
-          i = 0;
-          if ((i >= localJSONArray.length()) || (j > 1))
-          {
-            paramJSONObject = paramJSONObject.getJSONArray("title");
-            if (paramJSONObject.length() > 0) {
-              localTroopFeedItem.title = paramJSONObject.getJSONObject(0).getString("value");
-            }
+          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
+          if (((JSONObject)localObject).has("sharefile")) {
+            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
           }
-          else
+          if (((JSONObject)localObject).has("shareexpire")) {
+            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
+          }
+          if (!((JSONObject)localObject).has("sharefromuin")) {
+            break label333;
+          }
+          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
+        }
+        catch (JSONException paramJSONObject)
+        {
+          for (;;)
           {
-            Object localObject = localJSONArray.getJSONArray(i);
-            k = j;
-            if (((JSONArray)localObject).length() <= 0) {
-              break label177;
-            }
-            localObject = ((JSONArray)localObject).getJSONObject(0);
-            if (j == 0) {
-              localTroopFeedItem.content = ((JSONObject)localObject).getString("value");
-            } else {
-              localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("value");
-            }
+            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
           }
         }
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
+      if (i != 4) {
+        break label333;
       }
-      return localTroopFeedItem;
-      int k = j + 1;
-      label177:
-      i += 1;
-      j = k;
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return null;
+    }
+    localTroopFeedItem.type = 132;
+    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
+    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
+    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
+    label333:
+    return localTroopFeedItem;
   }
 }
 

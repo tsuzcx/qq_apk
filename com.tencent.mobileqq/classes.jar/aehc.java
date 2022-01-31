@@ -1,17 +1,16 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.DialogInterface.OnClickListener;
 
 class aehc
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  aehc(aegu paramaegu) {}
+  aehc(aehb paramaehb) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (aegu.a(this.a) != null)) {
-      this.a.q();
-    }
+    paramDialogInterface.dismiss();
+    aegs.W(this.a.a).setResult(8001);
   }
 }
 

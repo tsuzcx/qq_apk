@@ -2,25 +2,47 @@ public class alic
 {
   public double a;
   public int a;
+  public alhy a;
   public String a;
-  public alid[] a;
+  public boolean a;
+  public byte[] a;
   public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g = "";
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfAlid != null) && (this.jdField_a_of_type_ArrayOfAlid.length > 0)) {
-      i = 0;
-    }
-    while (i < this.jdField_a_of_type_ArrayOfAlid.length)
+    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
+    if (this.jdField_a_of_type_JavaLangString != null)
     {
-      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAlid[i].toString()).append('\n');
-      i += 1;
-      continue;
-      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
+      str = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
+      if (this.jdField_a_of_type_Alhy == null) {
+        break label230;
+      }
+      str = this.jdField_a_of_type_Alhy.jdField_a_of_type_JavaLangString;
+      label56:
+      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        break label236;
+      }
     }
-    return localStringBuilder.toString();
+    label230:
+    label236:
+    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
+    {
+      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
+      str = "";
+      break;
+      str = "";
+      break label56;
+    }
   }
 }
 

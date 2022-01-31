@@ -1,18 +1,20 @@
+import android.annotation.TargetApi;
 import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
+import android.hardware.Camera.PreviewCallback;
 import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
 
 public class amfq
-  implements Camera.PictureCallback
+  implements Camera.PreviewCallback
 {
   private final amfg jdField_a_of_type_Amfg;
-  private final amfi jdField_a_of_type_Amfi;
+  private final amfh jdField_a_of_type_Amfh;
   private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
   }
 }
 

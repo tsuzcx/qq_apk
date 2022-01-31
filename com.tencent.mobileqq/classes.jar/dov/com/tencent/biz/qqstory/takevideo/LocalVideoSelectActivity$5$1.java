@@ -2,21 +2,21 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import bjyy;
-import veg;
+import bjzp;
+import ved;
 
 public class LocalVideoSelectActivity$5$1
   implements Runnable
 {
-  public LocalVideoSelectActivity$5$1(bjyy parambjyy, Bitmap paramBitmap) {}
+  public LocalVideoSelectActivity$5$1(bjzp parambjzp, Bitmap paramBitmap) {}
   
   public void run()
   {
-    veg.a("Q.qqstory.publish.edit.LocalVideoSelectActivity", "load cover completed and havePlaying=%s", Boolean.valueOf(LocalVideoSelectActivity.c(this.jdField_a_of_type_Bjyy.a)));
-    if (!LocalVideoSelectActivity.c(this.jdField_a_of_type_Bjyy.a))
+    ved.a("Q.qqstory.publish.edit.LocalVideoSelectActivity", "load cover completed and havePlaying=%s", Boolean.valueOf(LocalVideoSelectActivity.c(this.jdField_a_of_type_Bjzp.a)));
+    if (!LocalVideoSelectActivity.c(this.jdField_a_of_type_Bjzp.a))
     {
-      LocalVideoSelectActivity.a(this.jdField_a_of_type_Bjyy.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      LocalVideoSelectActivity.a(this.jdField_a_of_type_Bjyy.a).setVisibility(0);
+      LocalVideoSelectActivity.a(this.jdField_a_of_type_Bjzp.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      LocalVideoSelectActivity.a(this.jdField_a_of_type_Bjzp.a).setVisibility(0);
     }
   }
 }

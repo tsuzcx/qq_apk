@@ -3,33 +3,33 @@ package com.tencent.biz.qqstory.base.preload;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import suc;
-import sul;
-import svb;
-import svc;
-import veg;
+import stz;
+import sui;
+import suy;
+import suz;
+import ved;
 
 public class StorySingleFileDownloader$1
   implements Runnable
 {
-  public StorySingleFileDownloader$1(svb paramsvb) {}
+  public StorySingleFileDownloader$1(suy paramsuy) {}
   
   public void run()
   {
-    Iterator localIterator = svb.a(this.this$0).values().iterator();
+    Iterator localIterator = suy.a(this.this$0).values().iterator();
     while (localIterator.hasNext())
     {
-      sul localsul = (sul)localIterator.next();
-      svb.a(this.this$0).a(localsul);
-      Object localObject = localsul.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-      if ((localObject != null) && ((localObject instanceof svc)))
+      sui localsui = (sui)localIterator.next();
+      suy.a(this.this$0).a(localsui);
+      Object localObject = localsui.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
+      if ((localObject != null) && ((localObject instanceof suz)))
       {
-        svb.a(this.this$0, localsul.b, localsul.jdField_a_of_type_Int, (svc)localObject);
-        veg.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localsul.jdField_a_of_type_JavaLangString });
+        suy.a(this.this$0, localsui.b, localsui.jdField_a_of_type_Int, (suz)localObject);
+        ved.d("Q.qqstory.download:StorySingleFileDownloader", "task :%s cancel!  because stop", new Object[] { localsui.jdField_a_of_type_JavaLangString });
       }
     }
-    svb.a(this.this$0).clear();
-    veg.d("Q.qqstory.download:StorySingleFileDownloader", "stop!!");
+    suy.a(this.this$0).clear();
+    ved.d("Q.qqstory.download:StorySingleFileDownloader", "stop!!");
   }
 }
 

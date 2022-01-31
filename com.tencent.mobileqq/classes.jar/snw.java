@@ -1,41 +1,46 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
 class snw
-  implements spd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  snw(snq paramsnq, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
+  private snw(snn paramsnn) {}
   
-  public void a(URL paramURL, int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
-    }
-    snq.a(this.jdField_a_of_type_Snq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
+    snn.b(this.a);
+    return false;
   }
   
-  public void a(URL paramURL, Throwable paramThrowable)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
-    }
-    snq.a(this.jdField_a_of_type_Snq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    return super.onDoubleTapEvent(paramMotionEvent);
   }
   
-  public void a(URL paramURL, rpg paramrpg)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((!(snn.a(this.a).getTag() instanceof snu)) || (((snn.a(this.a).getTag() instanceof snu)) && (!snn.a(this.a).a(snn.a(this.a)).booleanValue()))) {
+      snn.c(this.a);
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
-    }
-    snq.a(this.jdField_a_of_type_Snq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    return false;
   }
 }
 

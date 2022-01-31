@@ -1,11 +1,11 @@
 package com.tencent.av.app;
 
-import lgl;
+import lgg;
 
 public class VideoObserver$1
   implements Runnable
 {
-  public VideoObserver$1(lgl paramlgl, Object paramObject) {}
+  public VideoObserver$1(lgg paramlgg, Object paramObject) {}
   
   public void run()
   {

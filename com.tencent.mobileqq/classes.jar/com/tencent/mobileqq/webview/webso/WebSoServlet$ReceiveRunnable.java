@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.Bundle;
-import bcgq;
+import bche;
 
 class WebSoServlet$ReceiveRunnable
   implements Runnable
@@ -19,7 +19,7 @@ class WebSoServlet$ReceiveRunnable
   
   public void run()
   {
-    bcgq.a().onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    bche.a().onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

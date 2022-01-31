@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import appoint.define.appoint_define.InterestItem;
-import atfm;
-import aukm;
+import atfo;
+import auko;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -15,10 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class InterestTagInfo
-  extends aukm
+  extends auko
   implements Parcelable
 {
-  public static final Parcelable.Creator<InterestTagInfo> CREATOR = new atfm();
+  public static final Parcelable.Creator<InterestTagInfo> CREATOR = new atfo();
   public long bid;
   public String tagBgColor;
   public String tagIconUrl;

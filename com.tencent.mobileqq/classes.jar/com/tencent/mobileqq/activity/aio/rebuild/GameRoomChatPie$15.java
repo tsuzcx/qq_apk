@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aepg;
+import aepe;
 import android.support.v4.app.FragmentActivity;
-import bcis;
+import bcjg;
 
 public class GameRoomChatPie$15
   implements Runnable
 {
-  public GameRoomChatPie$15(aepg paramaepg) {}
+  public GameRoomChatPie$15(aepe paramaepe) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
       return;
     }
-    this.this$0.jdField_a_of_type_Bcis.a();
+    this.this$0.jdField_a_of_type_Bcjg.a();
   }
 }
 

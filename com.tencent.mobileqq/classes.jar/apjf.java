@@ -1,13 +1,31 @@
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.view.Display;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.smtt.sdk.TbsReaderView;
 
-public abstract interface apjf
+class apjf
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener);
+  apjf(apje paramapje, int paramInt) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Int == 5018)
+    {
+      paramView = this.jdField_a_of_type_Apje.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      if (paramView.getWidth() > paramView.getHeight()) {}
+      for (int i = 0; i != 0; i = 1)
+      {
+        this.jdField_a_of_type_Apje.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+        return;
+      }
+      this.jdField_a_of_type_Apje.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      return;
+    }
+    apjd.a(this.jdField_a_of_type_Apje.jdField_a_of_type_Apjd).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+  }
 }
 
 

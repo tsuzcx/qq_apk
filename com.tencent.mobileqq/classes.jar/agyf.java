@@ -1,20 +1,16 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
+import java.util.List;
 
-public class agyf
+final class agyf
   implements DialogInterface.OnClickListener
 {
-  public agyf(TopayManager.5.1 param1) {}
+  agyf(Activity paramActivity, List paramList1, List paramList2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    paramDialogInterface.dismiss();
+    agya.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

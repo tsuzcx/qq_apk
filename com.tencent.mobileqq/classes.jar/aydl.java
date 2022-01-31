@@ -1,24 +1,28 @@
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import java.util.List;
 
 public class aydl
+  implements AdapterView.OnItemLongClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public aydl(TableQueryViewer paramTableQueryViewer, Context paramContext) {}
   
-  public aydl(TableQueryViewer paramTableQueryViewer, View paramView)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376829));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.b = ((TextView)paramView.findViewById(2131376827));
-    this.b.setTextSize(10.0F);
-    this.c = ((TextView)paramView.findViewById(2131376831));
-    this.c.setTextSize(10.0F);
-    this.d = ((TextView)paramView.findViewById(2131376824));
-    this.d.setTextSize(10.0F);
+    paramAdapterView = ((aydf)TableQueryViewer.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer).get(paramInt)).b;
+    paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
+    if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView)))
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("bigT", paramAdapterView));
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.getContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131690465), 0).a();
+    }
+    return true;
   }
 }
 

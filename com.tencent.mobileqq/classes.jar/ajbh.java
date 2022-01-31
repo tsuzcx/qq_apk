@@ -1,20 +1,11 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.TMG.sdk.AVCallback;
 
 class ajbh
-  implements QQPermissionCallback
+  implements AVCallback
 {
-  ajbh(ajbc paramajbc, AppActivity paramAppActivity) {}
+  ajbh(ajba paramajba) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Ajbc.grant();
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

@@ -1,18 +1,9 @@
-import android.view.View;
-import java.util.List;
-
 public abstract interface awof
-  extends awoe
+  extends awog
 {
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public abstract List<awog> a();
-  
-  public abstract void a(View paramView);
-  
   public abstract String b();
+  
+  public abstract int c();
 }
 
 

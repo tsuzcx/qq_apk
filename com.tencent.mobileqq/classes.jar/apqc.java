@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class apqc
-  implements View.OnClickListener
+public class apqc
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  apqc(apqa paramapqa) {}
+  apqc(appt paramappt) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    apue.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c());
+    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.7.1(this));
   }
 }
 

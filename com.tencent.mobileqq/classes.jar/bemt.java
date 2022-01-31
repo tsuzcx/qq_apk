@@ -1,32 +1,47 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
+import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-class bemt
+public class bemt
+  implements Iterator<E>
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  private int jdField_a_of_type_Int = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
+  private int b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
+  private int c = -1;
   
-  private void a()
+  private bemt(ArrayDeque paramArrayDeque) {}
+  
+  public boolean hasNext()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      return;
-    }
-    besl.c("BrandColorManager", "set band border-color fail");
+    return this.jdField_a_of_type_Int != this.b;
   }
   
-  void a(View paramView)
+  public E next()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
+    if (this.jdField_a_of_type_Int == this.b) {
+      throw new NoSuchElementException();
+    }
+    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int - 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
+    Object localObject = ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque)[this.jdField_a_of_type_Int];
+    if ((ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque) != this.b) || (localObject == null)) {
+      throw new ConcurrentModificationException();
+    }
+    this.c = this.jdField_a_of_type_Int;
+    return localObject;
+  }
+  
+  public void remove()
+  {
+    if (this.c < 0) {
+      throw new IllegalStateException();
+    }
+    if (!ArrayDeque.access$500(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque, this.c))
+    {
+      this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int + 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
+      this.b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
+    }
+    this.c = -1;
   }
 }
 

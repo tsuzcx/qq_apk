@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.jsp;
 
-import ajyc;
+import ajya;
 import android.app.ProgressDialog;
-import aroj;
-import bcdb;
-import bcpw;
+import arol;
+import bcdp;
+import bcql;
 import com.tencent.common.app.AppInterface;
 
 public class UiApiPlugin$23$2
   implements Runnable
 {
-  public UiApiPlugin$23$2(aroj paramaroj) {}
+  public UiApiPlugin$23$2(arol paramarol) {}
   
   public void run()
   {
     this.a.a.b.dismiss();
-    bcpw.a(this.a.a.mRuntime.a().getApplication(), 1, ajyc.a(2131715845), 0).a();
+    bcql.a(this.a.a.mRuntime.a().getApplication(), 1, ajya.a(2131715856), 0).a();
   }
 }
 

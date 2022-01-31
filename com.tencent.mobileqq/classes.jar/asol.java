@@ -1,14 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.List;
 
 class asol
-  implements DialogInterface.OnClickListener
+  implements asuu
 {
-  asol(asoh paramasoh) {}
+  asol(asoj paramasoj, asun paramasun, asuw paramasuw, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Asun.a(new asom(this));
+    this.jdField_a_of_type_Asun.show();
+  }
+  
+  public void a(asus paramasus)
+  {
+    if ((paramasus != null) && (asoj.a(this.jdField_a_of_type_Asoj) != null) && (asoj.a(this.jdField_a_of_type_Asoj).v())) {
+      switch (paramasus.a)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Asun.isShowing()) {
+        this.jdField_a_of_type_Asun.dismiss();
+      }
+      if (asoj.a(this.jdField_a_of_type_Asoj) != null) {
+        asoj.a(this.jdField_a_of_type_Asoj).a(false, null, false);
+      }
+      this.jdField_a_of_type_Asuw.b();
+      return;
+      asut.a(asoj.a(this.jdField_a_of_type_Asoj));
+      continue;
+      asut.b(asoj.a(this.jdField_a_of_type_Asoj));
+      continue;
+      asut.c(asoj.a(this.jdField_a_of_type_Asoj));
+    }
+  }
+  
+  public void a(asus paramasus, int paramInt)
+  {
+    this.jdField_a_of_type_Asun.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Asun.isShowing()) {
+      this.jdField_a_of_type_Asun.dismiss();
+    }
+    if (asoj.a(this.jdField_a_of_type_Asoj) != null) {
+      asoj.a(this.jdField_a_of_type_Asoj).a(false, null, false);
+    }
+    this.jdField_a_of_type_Asuw.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Asuw.a(asoj.a(this.jdField_a_of_type_Asoj), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

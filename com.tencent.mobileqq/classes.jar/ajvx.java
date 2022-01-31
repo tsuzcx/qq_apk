@@ -1,13 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.FaceDownloader;
 import com.tencent.mobileqq.util.FaceInfo;
 
 public class ajvx
+  implements ajte
 {
-  public Bitmap a;
-  public FaceInfo a;
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
   
-  public ajvx(FaceDownloader paramFaceDownloader) {}
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
+      {
+        paramObject = null;
+        a(paramBoolean, paramObject);
+      }
+    }
+    while (paramInt != 1) {
+      for (;;)
+      {
+        return;
+        paramObject = (FaceInfo)paramObject;
+      }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
+    {
+      b(paramBoolean, paramObject);
+      return;
+    }
+  }
 }
 
 

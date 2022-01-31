@@ -1,11 +1,33 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+
 public class spb
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a = 600;
-  public String a;
-  public boolean a;
-  public int b = 400;
-  public String b;
-  public String c;
+  private final spc jdField_a_of_type_Spc;
+  
+  public spb(PublicAccountImageView paramPublicAccountImageView, spc paramspc)
+  {
+    this.jdField_a_of_type_Spc = paramspc;
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

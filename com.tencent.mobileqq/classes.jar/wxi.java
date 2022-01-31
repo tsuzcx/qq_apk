@@ -1,27 +1,80 @@
-import android.view.SurfaceHolder;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.FrameLayout;
 import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class wxi
-  implements IVideoViewBase.IVideoViewCallBack
+  extends Handler
 {
-  public wxi(TribeVideoPlugin paramTribeVideoPlugin) {}
+  private WeakReference<TribeVideoPlugin> a;
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public wxi(TribeVideoPlugin paramTribeVideoPlugin)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
-    }
+    this.a = new WeakReference(paramTribeVideoPlugin);
   }
   
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
+    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
+    Object localObject = paramMessage.obj;
+    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              switch (paramMessage.what)
+              {
+              default: 
+                return;
+              case 1: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
+                return;
+              case 2: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
+                return;
+              case 3: 
+                paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+              }
+            } while ((paramMessage == null) || (wxl.c(paramMessage)));
+            if (QLog.isColorLevel()) {
+              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
+            }
+            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
+            wxl.b(paramMessage, true);
+            return;
+            paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+          } while (paramMessage == null);
+          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
+          {
+            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + wxl.a(paramMessage));
+            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
+            TribeVideoPlugin.a(localTribeVideoPlugin, true);
+          }
+          TribeVideoPlugin.a(localTribeVideoPlugin, wxl.a(paramMessage), 1);
+          return;
+          paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+        } while (paramMessage == null);
+        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
+        return;
+        paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+      } while (paramMessage == null);
+      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
+      return;
+      paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+    } while (paramMessage == null);
+    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
+    return;
+    TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject);
   }
 }
 

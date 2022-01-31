@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ausu;
-import auuw;
-import auvd;
+import ausw;
+import auuy;
+import auvf;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
@@ -38,28 +38,28 @@ public class ProfilePhotoView
   private float e;
   private float f;
   
-  public ProfilePhotoView(BaseActivity paramBaseActivity, auuw paramauuw)
+  public ProfilePhotoView(BaseActivity paramBaseActivity, auuy paramauuy)
   {
-    super(paramBaseActivity, paramauuw);
+    super(paramBaseActivity, paramauuy);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
-    this.jdField_a_of_type_Auuw = paramauuw;
-    d(paramauuw);
-    a(paramauuw);
+    this.jdField_a_of_type_Auuy = paramauuy;
+    d(paramauuy);
+    a(paramauuy);
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Auuw != null) {
-      super.b(this.jdField_a_of_type_Auuw, false);
+    if (this.jdField_a_of_type_Auuy != null) {
+      super.b(this.jdField_a_of_type_Auuy, false);
     }
   }
   
-  public void a(auuw paramauuw)
+  public void a(auuy paramauuy)
   {
     Object localObject1 = getContext();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)localObject1).inflate(2131561623, this, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)localObject1).inflate(2131561622, this, true);
     Object localObject2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367474);
     localObject2 = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368101);
     getResources().getDisplayMetrics();
@@ -71,60 +71,60 @@ public class ProfilePhotoView
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368093));
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368094));
-    auvd.a(this.jdField_b_of_type_AndroidWidgetImageView, "src", paramauuw.jdField_a_of_type_Auvd, "commonFaceBackground");
-    localObject2 = new ausu(1, null);
+    auvf.a(this.jdField_b_of_type_AndroidWidgetImageView, "src", paramauuy.jdField_a_of_type_Auvf, "commonFaceBackground");
+    localObject2 = new ausw(1, null);
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setTag(localObject2);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setOnClickListener(paramauuw.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setOnClickListener(paramauuy.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
     for (localObject1 = ((Context)localObject1).getString(2131691185);; localObject1 = ((Context)localObject1).getString(2131691184))
     {
       this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setContentDescription((CharSequence)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363080), false);
+      this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363079), false);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face", this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face_stoke", this.jdField_a_of_type_AndroidViewView.findViewById(2131368094));
-      super.a(paramauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+      super.a(paramauuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367931));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramauuw.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramauuy.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetImageView.setTag(localObject2);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_avatar_pendant", this.jdField_a_of_type_AndroidWidgetImageView);
-      super.b(paramauuw, true);
+      super.b(paramauuy, true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = ((ProfileNameView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368111));
-      auvd.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView, "color", paramauuw.jdField_a_of_type_Auvd, "photoNickNameColor");
+      auvf.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView, "color", paramauuy.jdField_a_of_type_Auvf, "photoNickNameColor");
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setClickable(true);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      super.f(paramauuw);
+      super.f(paramauuy);
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368102));
-      auvd.a(this.jdField_a_of_type_AndroidWidgetTextView, "color", paramauuw.jdField_a_of_type_Auvd, "photoAddressColor");
+      auvf.a(this.jdField_a_of_type_AndroidWidgetTextView, "color", paramauuy.jdField_a_of_type_Auvf, "photoAddressColor");
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sex_age_area", this.jdField_a_of_type_AndroidWidgetTextView);
-      super.b(paramauuw);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView = ((VoteView)findViewById(2131379323));
+      super.b(paramauuy);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView = ((VoteView)findViewById(2131379328));
       this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout = ((HeartLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367495));
       this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.setEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView.setHeartLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView);
-      super.e(paramauuw);
+      super.e(paramauuy);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_personal_like_tip", this.jdField_a_of_type_AndroidViewView.findViewById(2131371398));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView = ((QzonePhotoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373663));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramauuw);
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView = ((QzonePhotoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373665));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramauuy);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_qzonecover", this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView);
-      auvd.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, "background", paramauuw.jdField_a_of_type_Auvd, "commonMaskBackground");
+      auvf.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, "background", paramauuy.jdField_a_of_type_Auvf, "commonMaskBackground");
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368151));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_tips", this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      super.a(paramauuw);
-      super.g(paramauuw);
+      super.a(paramauuy);
+      super.g(paramauuy);
       return;
     }
   }
   
-  public void a(auuw paramauuw, boolean paramBoolean)
+  public void a(auuy paramauuy, boolean paramBoolean)
   {
-    super.e(paramauuw);
-    super.f(paramauuw);
-    super.b(paramauuw);
-    super.c(paramauuw);
-    super.b(paramauuw, false);
+    super.e(paramauuy);
+    super.f(paramauuy);
+    super.b(paramauuy);
+    super.c(paramauuy);
+    super.b(paramauuy, false);
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -132,7 +132,7 @@ public class ProfilePhotoView
     return this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a(paramView, paramMotionEvent);
   }
   
-  public void d(auuw paramauuw)
+  public void d(auuy paramauuy)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.FrdProfileCard", 2, "checkTemplateValid");
@@ -142,7 +142,7 @@ public class ProfilePhotoView
     localHashMap.put("photoNickNameColor", "color");
     localHashMap.put("photoAddressColor", "color");
     localHashMap.put("photoAddSrc", "drawable");
-    super.a(paramauuw, localHashMap);
+    super.a(paramauuy, localHashMap);
   }
 }
 

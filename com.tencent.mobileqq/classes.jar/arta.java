@@ -1,6 +1,12 @@
-public abstract interface arta
+class arta
+  implements bfpj
 {
-  public abstract void b(int paramInt1, int paramInt2);
+  arta(arss paramarss) {}
+  
+  public void onDismiss()
+  {
+    this.a.b(false);
+  }
 }
 
 

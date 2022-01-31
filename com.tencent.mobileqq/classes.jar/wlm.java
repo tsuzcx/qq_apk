@@ -1,32 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
 
 class wlm
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  wlm(wlj paramwlj) {}
+  wlm(wll paramwll, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.b(arrayOfInt[0]) <= 0) && (!wlj.b(this.a)))
-      {
-        wlj.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        wlj.a(this.a, false);
-      }
+    if (((this.jdField_a_of_type_Wll.itemView instanceof RelativeFeedItemView)) && (wlg.a(this.jdField_a_of_type_Wll.a) != null)) {
+      wlg.a(this.jdField_a_of_type_Wll.a).a(this.jdField_a_of_type_Wll.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
     }
   }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

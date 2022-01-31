@@ -1,31 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import java.util.List;
 
 public class atvl
-  implements URLDrawable.URLDrawableListener
+  implements atvy
 {
-  public atvl(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public atvl(NearbyMomentFragment paramNearbyMomentFragment, atvr paramatvr) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(boolean paramBoolean1, List<atwx> paramList, boolean paramBoolean2, int paramInt)
   {
-    if (NearbyMomentFragment.a(this.a) == 0) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 0)
-    {
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-    }
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
+    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Atvr);
   }
 }
 

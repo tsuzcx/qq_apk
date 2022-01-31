@@ -1,36 +1,46 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
 public class vje
-  extends avyn
+  extends vjr
 {
-  public vje(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public String a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
   
-  public void a()
+  public vje(int paramInt, Bitmap paramBitmap)
   {
-    super.a();
-    this.a.a.n();
-    this.a.l();
+    super(paramInt, paramBitmap);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public vje a(Bitmap paramBitmap)
   {
-    super.a(paramInt1, paramInt2);
+    paramBitmap = new vje(this.jdField_c_of_type_Int, paramBitmap);
+    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    this.jdField_a_of_type_Boolean = false;
+    return paramBitmap;
   }
   
-  public void a(long paramLong)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
-    }
-    super.a(paramLong);
-    try
-    {
-      this.a.a(1000L * paramLong);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
+    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

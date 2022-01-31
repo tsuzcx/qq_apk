@@ -1,25 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.ui.MiniAppDialog.1.1;
-
-public class bffd
-  implements Animation.AnimationListener
+public abstract interface bffd
 {
-  bffd(bffc parambffc) {}
+  public abstract void onTimeCancel();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    bffc.a(this.a, false);
-    bffc.a(this.a).post(new MiniAppDialog.1.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bffc.a(this.a, true);
-  }
+  public abstract void onTimeConfirm(String paramString1, String paramString2);
 }
 
 

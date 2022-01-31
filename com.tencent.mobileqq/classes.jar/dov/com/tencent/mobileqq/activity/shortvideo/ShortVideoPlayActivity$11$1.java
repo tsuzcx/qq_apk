@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import bkss;
+import bktj;
 
 public class ShortVideoPlayActivity$11$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$11$1(bkss parambkss) {}
+  public ShortVideoPlayActivity$11$1(bktj parambktj) {}
   
   public void run()
   {

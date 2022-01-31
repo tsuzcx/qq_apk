@@ -1,15 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aong
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aong(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
+  public aong(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.d();
+    this.a.setVisibility(4);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
+    this.a.c.setBackgroundDrawable(null);
+    this.a.jdField_a_of_type_Aonh.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
+    }
+    Face2FaceDetailBaseView.a(this.a, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
+    }
   }
 }
 

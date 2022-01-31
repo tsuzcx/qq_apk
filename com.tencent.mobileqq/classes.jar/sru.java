@@ -1,75 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnDownloadListener;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
 class sru
-  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
+  extends RecyclerView.OnScrollListener
 {
-  WeakReference<srn> a;
+  private long jdField_a_of_type_Long;
+  private final long b = 20L;
   
-  public sru(srn paramsrn)
+  sru(srs paramsrs) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a = new WeakReference(paramsrn);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 1) && (srs.b(this.jdField_a_of_type_Srs)))
+    {
+      ved.b("FredguoFix", "set needAnimated to false, break animation");
+      srs.a(this.jdField_a_of_type_Srs).a(srs.a(this.jdField_a_of_type_Srs));
+      srs.b(this.jdField_a_of_type_Srs, false);
+      srs.a(this.jdField_a_of_type_Srs, false);
+    }
+    if (paramInt == 0)
+    {
+      srs.d(this.jdField_a_of_type_Srs, false);
+      this.jdField_a_of_type_Long = 0L;
+      if (srs.a(this.jdField_a_of_type_Srs).a(paramRecyclerView.getLayoutManager()) == null) {
+        return;
+      }
+      if (srs.c(this.jdField_a_of_type_Srs))
+      {
+        ved.b("FredguoFix", "animated to false, play animation done");
+        srs.a(this.jdField_a_of_type_Srs, false);
+        srs.a(this.jdField_a_of_type_Srs).a(srs.a(this.jdField_a_of_type_Srs));
+      }
+      this.jdField_a_of_type_Srs.d();
+      return;
+    }
+    srs.d(this.jdField_a_of_type_Srs, true);
   }
   
-  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    int i = -1;
-    if ((this.a.get() == null) || (srn.a((srn)this.a.get()) != 2)) {
-      veg.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
-    }
-    while (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if ((paramString2.contains("\"callBackType\":\"4\"")) && (srn.b((srn)this.a.get()) != -1))
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) >= 20L)
     {
-      veg.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
-      if (bbev.d(BaseApplication.getContext())) {
-        break label209;
-      }
-      srn.a((srn)this.a.get());
-    }
-    for (;;)
-    {
-      srn.a((srn)this.a.get(), i);
-      ((srn)this.a.get()).a();
-      return;
-      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (srn.b((srn)this.a.get()) == 0)) {
-        break;
-      }
-      veg.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
-      srn.a((srn)this.a.get(), 0);
-      ((srn)this.a.get()).a();
-      return;
-      label209:
-      i = -2;
-    }
-  }
-  
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
-  {
-    if ((this.a.get() == null) || (srn.a((srn)this.a.get()) != 2)) {
-      veg.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
-    }
-    while (paramInt != 5) {
-      return;
-    }
-    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
-    {
-      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-      if ((paramString.model != 122) || (paramString.what != 204)) {}
-    }
-    for (paramInt = -1;; paramInt = -2)
-    {
-      veg.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
-      srn.a((srn)this.a.get());
-      srn.a((srn)this.a.get(), paramInt);
-      ((srn)this.a.get()).a();
-      return;
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Srs.d();
     }
   }
 }

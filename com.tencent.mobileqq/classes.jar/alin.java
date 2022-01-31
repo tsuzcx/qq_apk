@@ -1,28 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-final class alin
-  implements ayrz
+public abstract interface alin
 {
-  public void a(aysw paramaysw, aysx paramaysx)
-  {
-    if ((paramaysw == null) || (paramaysx == null)) {}
-    while (!(paramaysw instanceof ayrv)) {
-      return;
-    }
-    ayrv localayrv = (ayrv)paramaysw;
-    localayrv.jdField_a_of_type_Long += paramaysx.c;
-    paramaysx.c = 0L;
-    paramaysx = "bytes=" + localayrv.jdField_a_of_type_Long + "-";
-    localayrv.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
-    paramaysx = localayrv.jdField_a_of_type_JavaLangString;
-    if (paramaysx.contains("range="))
-    {
-      paramaysx = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
-      localayrv.jdField_a_of_type_JavaLangString = (paramaysx + "range=" + localayrv.jdField_a_of_type_Long);
-    }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((ayrv)paramaysw).jdField_a_of_type_JavaLangString + ", offset=" + localayrv.jdField_a_of_type_Long);
-  }
+  public abstract void a();
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, alio paramalio);
+  
+  public abstract void b();
 }
 
 

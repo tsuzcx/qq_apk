@@ -1,21 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class sur
-  extends SimpleJob
+public abstract interface sur
 {
-  sur(suq paramsuq, String paramString, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
-  {
-    this.jdField_a_of_type_Suq.b(this.jdField_a_of_type_Boolean);
-    return null;
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2, int paramInt);
 }
 
 

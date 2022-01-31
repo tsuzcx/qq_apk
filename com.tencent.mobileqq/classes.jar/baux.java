@@ -1,18 +1,25 @@
-public class baux
+import android.os.Handler;
+
+class baux
+  implements bauv
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  public final long b;
-  final String b;
+  baux(bauw parambauw) {}
   
-  public baux(baus parambaus, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    bauw.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    bauw.a(this.a).sendEmptyMessage(0);
+  }
+  
+  public void c()
+  {
+    if (bauw.a(this.a) != null) {
+      bauw.a(this.a).b();
+    }
   }
 }
 

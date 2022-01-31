@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import blbz;
+import blcq;
 
 public class LightWeightProgress
   extends View
@@ -27,7 +27,7 @@ public class LightWeightProgress
   int d;
   int e;
   int f = 2;
-  int g = blbz.a(14.0F);
+  int g = blcq.a(14.0F);
   protected int h;
   protected int i;
   protected int j;

@@ -3,9 +3,9 @@ import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 
 class aqni
-  implements aqlz
+  implements aqmb
 {
-  aqni(aqnh paramaqnh, URLDrawable paramURLDrawable, aqmg paramaqmg) {}
+  aqni(aqnh paramaqnh, URLDrawable paramURLDrawable, aqmi paramaqmi) {}
   
   public void a(int paramInt, URLDrawable paramURLDrawable) {}
   
@@ -16,11 +16,11 @@ class aqni
     {
       this.jdField_a_of_type_Aqnh.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
       paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
-      this.jdField_a_of_type_Aqmg.a = paramInt;
-      aqne.a(this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      this.jdField_a_of_type_Aqmi.a = paramInt;
+      aqng.a(this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
     }
-    bcpw.a(this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidAppActivity.getString(2131695340), 0).a();
+    bcql.a(this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqnh.a.jdField_a_of_type_AndroidAppActivity.getString(2131695341), 0).a();
   }
 }
 

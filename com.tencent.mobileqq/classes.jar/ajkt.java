@@ -1,10 +1,20 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ajkt
-  extends AVContext.StartParam
+  extends ajlm
 {
-  public int a;
-  public long a;
+  ajkt(ajks paramajks) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
+    }
+  }
 }
 
 

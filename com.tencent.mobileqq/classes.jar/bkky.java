@@ -1,69 +1,89 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bkky
-  extends bklc<bkkm, bkkm>
+  extends bkkv
 {
-  public WeakReference<bjsh> a;
+  private boolean d;
   
-  public bkky(bjsh parambjsh)
+  public bkky(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    this.a = new WeakReference(parambjsh);
+    super(paramContext, paramString1, paramString2, paramInt);
   }
   
-  protected void a(JobContext paramJobContext, bkkm parambkkm)
+  public int a()
   {
-    paramJobContext = (bjsh)this.a.get();
-    if (paramJobContext == null)
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561316, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131363974);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131363969);
+    TextView localTextView = (TextView)paramView.findViewById(2131363971);
+    paramView = paramView.findViewById(2131363965);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    switch (this.jdField_a_of_type_Int)
     {
-      veg.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "EditVideoInteract is null, return directly.");
-      notifyResult(parambkkm);
-      return;
-    }
-    paramJobContext = paramJobContext.a();
-    if (paramJobContext == null)
-    {
-      veg.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "interact bitmap is null, return directly.");
-      notifyResult(parambkkm);
-      return;
-    }
-    int i = bkkx.a(parambkkm);
-    Object localObject;
-    if (i != 0)
-    {
-      localObject = vzo.a(paramJobContext, i);
-      if (localObject != null)
-      {
-        paramJobContext.recycle();
-        paramJobContext = (JobContext)localObject;
+    case 10002: 
+    case 10003: 
+    default: 
+      if (this.jdField_a_of_type_Boolean) {
+        localImageView1.setVisibility(0);
       }
+      break;
     }
     for (;;)
     {
-      localObject = bklf.a(parambkkm.jdField_a_of_type_Int, parambkkm.b, ".png");
-      try
-      {
-        if (!vxy.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, (String)localObject)) {
-          break;
-        }
-        parambkkm.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("il_pic", localObject);
-        notifyResult(parambkkm);
-        return;
+      if (!this.d) {
+        break label177;
       }
-      catch (Exception paramJobContext)
-      {
-        veg.c("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "compressToFile Exception :", paramJobContext);
-        super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
-        return;
+      paramInt = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        paramInt = -16444373;
       }
-      veg.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "rotate vote bitmap failed. rotation=%s", new Object[] { Integer.valueOf(i) });
+      paramView.setBackgroundColor(paramInt);
+      paramView.setVisibility(0);
+      return;
+      localImageView2.setImageResource(2130845804);
+      break;
+      localImageView2.setImageResource(2130845800);
+      break;
+      localImageView2.setImageResource(2130845803);
+      break;
+      localImageView1.setVisibility(4);
     }
-    veg.e("Q.qqstory.publish.editHWEncodeGenerateInteractPasterImageSegment", "compressToFile failed.");
-    super.notifyError(new ErrorMessage(-1, "compress interact bitmap failed !"));
+    label177:
+    paramView.setVisibility(4);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
   }
 }
 

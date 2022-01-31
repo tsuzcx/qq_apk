@@ -1,7 +1,7 @@
 package dov.com.qq.im;
 
-import ajyc;
-import bihg;
+import ajya;
+import bihx;
 import dov.com.qq.im.capture.view.StoryImageToastView;
 import dov.com.qq.im.capture.view.StoryTextToastView;
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.List;
 public class QIMStoryEffectCameraCaptureUnit$3
   implements Runnable
 {
-  public QIMStoryEffectCameraCaptureUnit$3(bihg parambihg, boolean paramBoolean1, boolean paramBoolean2) {}
+  public QIMStoryEffectCameraCaptureUnit$3(bihx parambihx, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
     if ((this.a) && (!this.b)) {
-      bihg.a(this.this$0).b(String.format("%02d", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size() + 1) })).a(ajyc.a(2131709841)).a();
+      bihx.a(this.this$0).b(String.format("%02d", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size() + 1) })).a(ajya.a(2131709852)).a();
     }
     this.this$0.jdField_a_of_type_DovComQqImCaptureViewStoryImageToastView.b();
   }

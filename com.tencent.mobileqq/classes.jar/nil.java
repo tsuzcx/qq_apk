@@ -1,37 +1,47 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
 
 public class nil
-  implements bfoq
+  implements View.OnClickListener
 {
   public nil(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    if (paramView != null)
+    switch (paramView.getId())
     {
-      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-      }
-      if (!TextUtils.isEmpty(paramView))
+    default: 
+    case 2131378939: 
+    case 2131378959: 
+      do
       {
-        if (!paramView.equals(this.a.getResources().getString(2131692741))) {
-          break label91;
-        }
-        PublicAccountAdvertisementActivity.d(this.a);
-      }
-    }
-    label91:
-    while (!paramView.equals(this.a.getResources().getString(2131693368))) {
+        return;
+        PublicAccountAdvertisementActivity.a(this.a);
+        PublicAccountAdvertisementActivity.c(this.a);
+        PublicAccountAdvertisementActivity.b(this.a);
+        njb.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
+        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+        this.a.finish();
+        return;
+      } while ((!PublicAccountAdvertisementActivity.c(this.a)) || (PublicAccountAdvertisementActivity.a(this.a) == null));
+      PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
+      PublicAccountAdvertisementActivity.b(this.a, 1);
+      return;
+    case 2131378952: 
+      this.a.b();
+      return;
+    case 2131362043: 
+      axqy.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+      PublicAccountAdvertisementActivity.d(this.a);
+      return;
+    case 2131370412: 
+      PublicAccountAdvertisementActivity.a(this.a, 2);
       return;
     }
-    ardb.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
-    axqw.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    PublicAccountAdvertisementActivity.a(this.a, 1);
   }
 }
 

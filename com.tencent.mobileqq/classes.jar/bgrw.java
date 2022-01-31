@@ -1,78 +1,33 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.InputStream;
 
 public class bgrw
-  extends RemoteCommand
+  implements DialogInterface.OnClickListener
 {
-  private SparseArray<List<bgrx>> a = new SparseArray();
+  public bgrw(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
   
-  public bgrw(AppRuntime paramAppRuntime)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super("com.tencent.individuality.individualityremotecommand");
-    a(0, new bgry());
-  }
-  
-  public boolean a(int paramInt, bgrx parambgrx)
-  {
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
+    try
     {
-      localObject = new ArrayList();
-      this.a.put(paramInt, localObject);
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      return;
     }
-    if (!((List)localObject).contains(parambgrx)) {
-      return ((List)localObject).add(parambgrx);
-    }
-    return false;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
-    if (-1 != i)
+    catch (Exception paramDialogInterface)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
+      if (QLog.isColorLevel()) {
+        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
       }
-      paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
-      {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((bgrx)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
     }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
-        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      }
-    } while (!((bgrx)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgrw
  * JD-Core Version:    0.7.0.1
  */

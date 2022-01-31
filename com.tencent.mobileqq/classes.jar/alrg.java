@@ -1,18 +1,12 @@
-import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.widget.RelativeLayout;
 
-class alrg
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class alrg
 {
-  alrg(alrf paramalrf, alrh paramalrh) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   
-  public void callback(String paramString, Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_Alrh.a.setImageBitmap(paramBitmap);
-    }
-  }
+  public alrg(alre paramalre) {}
 }
 
 

@@ -1,17 +1,27 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.URLThemeImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aznb
+  extends aznh
 {
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public URLThemeImageView a;
-  public TextView b;
+  aznb(azna paramazna) {}
   
-  aznb(azmu paramazmu) {}
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  {
+    if (!this.a.a.this$0.a) {}
+    do
+    {
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    azmw.a(this.a.a.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+  }
 }
 
 

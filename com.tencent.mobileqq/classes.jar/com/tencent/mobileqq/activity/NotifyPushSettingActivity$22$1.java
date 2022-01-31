@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abpz;
-import ajyc;
+import abpv;
+import ajya;
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -12,15 +12,15 @@ import com.tencent.widget.MultiImageTextView;
 public class NotifyPushSettingActivity$22$1
   implements Runnable
 {
-  public NotifyPushSettingActivity$22$1(abpz paramabpz, String paramString) {}
+  public NotifyPushSettingActivity$22$1(abpv paramabpv, String paramString) {}
   
   public void run()
   {
     boolean bool = true;
-    bcpw.a(this.jdField_a_of_type_Abpz.a.getActivity(), 1, ajyc.a(2131707652), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-    NotifyPushSettingActivity.a(this.jdField_a_of_type_Abpz.a).a().setText(this.jdField_a_of_type_JavaLangString);
-    NotifyPushSettingActivity localNotifyPushSettingActivity = this.jdField_a_of_type_Abpz.a;
-    if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_Abpz.a).a()) {}
+    bcql.a(this.jdField_a_of_type_Abpv.a.getActivity(), 1, ajya.a(2131707663), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+    NotifyPushSettingActivity.a(this.jdField_a_of_type_Abpv.a).a().setText(this.jdField_a_of_type_JavaLangString);
+    NotifyPushSettingActivity localNotifyPushSettingActivity = this.jdField_a_of_type_Abpv.a;
+    if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_Abpv.a).a()) {}
     for (;;)
     {
       NotifyPushSettingActivity.a(localNotifyPushSettingActivity, bool);

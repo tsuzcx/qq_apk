@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
 
-public class ohb
-  implements View.OnClickListener
+public abstract interface ohb
 {
-  public ohb(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    QLog.d("ReadInJoyCommentListView", 2, "loadmore comment when network not available");
-    ReadInJoyCommentListView.a(this.a);
-  }
+  public abstract void a(int paramInt, String paramString, ojs paramojs, ojt paramojt);
+  
+  public abstract void a(int paramInt, ojs paramojs1, ojs paramojs2, ojt paramojt);
+  
+  public abstract void a(int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, int paramInt1, String paramString, int paramInt2);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2);
+  
+  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData);
+  
+  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData);
+  
+  public abstract void c(int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData);
 }
 
 

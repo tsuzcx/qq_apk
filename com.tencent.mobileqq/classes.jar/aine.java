@@ -1,10 +1,7 @@
-import android.widget.TextView;
-
 public class aine
+  extends aimt
 {
-  public int a;
-  public TextView a;
-  public TextView b;
+  public Object a;
 }
 
 

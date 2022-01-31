@@ -1,13 +1,9 @@
-public class axoq
+import com.tencent.qq.effect.engine.QEffectData;
+
+class axoq
+  extends QEffectData
 {
-  public long a;
-  public boolean a;
-  
-  public axoq()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-  }
+  axoq(axop paramaxop) {}
 }
 
 

@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
 
 public class aazq
-  implements Comparator<aazo>
+  extends ajvz
 {
-  private aazq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aazq(EditActivity paramEditActivity) {}
   
-  public int a(aazo paramaazo1, aazo paramaazo2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    return paramaazo1.c.compareToIgnoreCase(paramaazo2.c);
+    EditActivity.a(this.a);
+    if (paramBoolean)
+    {
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
+      {
+        ((ansx)this.a.app.getManager(103)).c(paramObject);
+        EditActivity.b(this.a);
+      }
+    }
+    while (!(paramObject instanceof String)) {
+      return;
+    }
+    bcql.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 

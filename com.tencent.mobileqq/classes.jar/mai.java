@@ -1,19 +1,19 @@
-import android.graphics.PointF;
-import java.util.ArrayList;
+import android.widget.LinearLayout;
 
-class mai
+abstract class mai
 {
-  int jdField_a_of_type_Int;
-  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  mee jdField_a_of_type_Mee;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
+  int jdField_a_of_type_Int = -1;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  int b = -552421387;
+  int c = -15550475;
+  int d = 14;
   
-  mai(mah parammah) {}
+  void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+    }
+  }
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.tmg_opensdk;
 
-import ajku;
-import ajkv;
-import ajlc;
+import ajks;
+import ajkt;
+import ajla;
 
 public class AVEngineWalper$1$1
   implements Runnable
 {
-  public AVEngineWalper$1$1(ajkv paramajkv) {}
+  public AVEngineWalper$1$1(ajkt paramajkt) {}
   
   public void run()
   {
-    ajlc.a(this.a.a.a).a(ajku.a(this.a.a));
+    ajla.a(this.a.a.a).a(ajks.a(this.a.a));
   }
 }
 

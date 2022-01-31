@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class cx
-  implements axod
+  implements axof
 {
   public cx(LiteActivity paramLiteActivity) {}
   

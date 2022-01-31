@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class akhg
-  extends aymm
+  implements bbqk
 {
-  akhg(akhf paramakhf) {}
+  akhg(akhe paramakhe, aymj paramaymj, Context paramContext, Bundle paramBundle) {}
   
-  public boolean a(aymh paramaymh)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    String str = ThemeUtil.getCurrentThemeId();
-    if (!paramaymh.a().equals(str)) {
-      bcpw.a(this.a.app.getApplication(), ajyc.a(2131714912), 4000).a();
+    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Aymj.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
+      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Aymj.d());
+      akhe.a(this.jdField_a_of_type_Akhe, this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-    return false;
+    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
+    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
+    akhe.a(this.jdField_a_of_type_Akhe, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

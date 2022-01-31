@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bawz;
-import bbdh;
+import baxn;
+import bbdv;
 import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import rrn;
-import rro;
+import rrk;
+import rrl;
 
 public class DisableSlideHorizontalListView
   extends HorizontalListView
@@ -19,21 +19,21 @@ public class DisableSlideHorizontalListView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private BezierSideBarView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView;
-  private rrn jdField_a_of_type_Rrn;
-  private rro jdField_a_of_type_Rro;
+  private rrk jdField_a_of_type_Rrk;
+  private rrl jdField_a_of_type_Rrl;
   private boolean jdField_a_of_type_Boolean;
   private float b;
   
   public DisableSlideHorizontalListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = ((int)bbdh.a(paramContext, 18.0F));
+    this.jdField_a_of_type_Int = ((int)bbdv.a(paramContext, 18.0F));
   }
   
   public DisableSlideHorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ((int)bbdh.a(paramContext, 18.0F));
+    this.jdField_a_of_type_Int = ((int)bbdv.a(paramContext, 18.0F));
   }
   
   private void a()
@@ -48,7 +48,7 @@ public class DisableSlideHorizontalListView
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView != null)
     {
       int i = getMeasuredHeight() / 2;
-      int j = actn.a(18.0F, getResources());
+      int j = actj.a(18.0F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView.a(paramInt, i - j);
     }
   }
@@ -76,7 +76,7 @@ public class DisableSlideHorizontalListView
       }
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.b;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bawz.a(getContext(), 5.0F)))
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > baxn.a(getContext(), 5.0F)))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
         a(getScrollX() - this.jdField_a_of_type_Int);
@@ -93,8 +93,8 @@ public class DisableSlideHorizontalListView
           QLog.d("DisableSlideHorizontalListView", 2, "dispatchTouchEvent:ACTION_CANCEL or UP. action=" + i + " mIsPress=" + this.jdField_a_of_type_Boolean);
         }
         this.jdField_a_of_type_Boolean = false;
-        if ((this.jdField_a_of_type_Rrn != null) && (i == 1) && (getScrollX() > this.jdField_a_of_type_Int)) {
-          this.jdField_a_of_type_Rrn.c();
+        if ((this.jdField_a_of_type_Rrk != null) && (i == 1) && (getScrollX() > this.jdField_a_of_type_Int)) {
+          this.jdField_a_of_type_Rrk.c();
         }
         a();
       }
@@ -104,16 +104,16 @@ public class DisableSlideHorizontalListView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jdField_a_of_type_Rro != null) {
-      this.jdField_a_of_type_Rro.a();
+    if (this.jdField_a_of_type_Rrl != null) {
+      this.jdField_a_of_type_Rrl.a();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Rro != null) {
-      this.jdField_a_of_type_Rro.b();
+    if (this.jdField_a_of_type_Rrl != null) {
+      this.jdField_a_of_type_Rrl.b();
     }
   }
   
@@ -128,14 +128,14 @@ public class DisableSlideHorizontalListView
     a(paramInt1 - this.jdField_a_of_type_Int);
   }
   
-  public void setOnOverScrollListener(rrn paramrrn)
+  public void setOnOverScrollListener(rrk paramrrk)
   {
-    this.jdField_a_of_type_Rrn = paramrrn;
+    this.jdField_a_of_type_Rrk = paramrrk;
   }
   
-  public void setOnViewWindowChangedListener(rro paramrro)
+  public void setOnViewWindowChangedListener(rrl paramrrl)
   {
-    this.jdField_a_of_type_Rro = paramrro;
+    this.jdField_a_of_type_Rrl = paramrrl;
   }
   
   public void setSideBarView(BezierSideBarView paramBezierSideBarView)

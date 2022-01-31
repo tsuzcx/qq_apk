@@ -1,135 +1,95 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.res.Configuration;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-public abstract class ntg
+class ntg
+  extends osm
 {
-  int jdField_a_of_type_Int;
-  protected Activity a;
-  protected Map<Integer, Set<Long>> a;
-  rhp jdField_a_of_type_Rhp;
-  protected Map<Integer, Boolean> b = new HashMap();
-  protected Map<Integer, Map<Long, qar>> c = new HashMap();
-  protected Map<Integer, qar> d = new HashMap();
+  ntg(nte paramnte) {}
   
-  protected ntg()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  protected ntg(Activity paramActivity)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public ViewGroup a()
-  {
-    return null;
-  }
-  
-  public Map<Long, qar> a(Integer paramInteger)
-  {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    paramInteger = (Map)this.c.get(paramInteger);
-    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
-      localConcurrentHashMap.putAll(paramInteger);
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramInt);
     }
-    return localConcurrentHashMap;
   }
   
-  public Set<Long> a(Integer paramInteger)
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
   {
-    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
-    Object localObject = localSet;
-    if (localSet == null)
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if ((nte.a(this.a) == 56) && (nte.a(this.a) != null))
     {
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
+      nte.a(this.a).d();
+      nte.a(this.a).e();
     }
-    return localObject;
-  }
-  
-  public qtu a()
-  {
-    return null;
-  }
-  
-  public qup a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    bhvh.e(true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(ViewGroup paramViewGroup) {}
-  
-  public void a(rhp paramrhp, int paramInt)
-  {
-    this.jdField_a_of_type_Rhp = paramrhp;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public boolean a(Integer paramInteger)
-  {
-    paramInteger = (Boolean)this.b.get(paramInteger);
-    if (paramInteger != null) {
-      return paramInteger.booleanValue();
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramConfiguration);
     }
-    return false;
   }
   
-  public Map<Long, qar> b(Integer paramInteger)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    Map localMap = (Map)this.c.get(paramInteger);
-    Object localObject = localMap;
-    if (localMap == null)
-    {
-      localObject = new ConcurrentHashMap();
-      this.c.put(paramInteger, localObject);
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramTopBannerInfo);
     }
-    return localObject;
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
   {
-    bhvh.e(false);
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
+    }
   }
   
-  public void e() {}
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
   
-  public void f() {}
+  public void ap_()
+  {
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).q();
+    }
+  }
   
-  public void g() {}
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).c(paramInt, paramList);
+    }
+  }
   
-  public void h() {}
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
   
-  public void k() {}
-  
-  public void o() {}
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((nte.a(this.a) != null) && ((nte.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nte.a(this.a)).b(paramInt, paramList);
+    }
+  }
 }
 
 

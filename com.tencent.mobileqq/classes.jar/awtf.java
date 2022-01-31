@@ -1,33 +1,15 @@
-import android.content.Context;
-import com.tencent.image.AbstractGifImage;
-
 public class awtf
-  extends awte
 {
-  protected awtc a(Context paramContext)
+  public int a;
+  
+  public awtf(int paramInt)
   {
-    return new awxr(this, paramContext);
+    this.a = paramInt;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public int a()
   {
-    super.a(paramString1, paramString2, paramString3);
-    paramString1 = a();
-    if (paramString1 != null) {
-      paramString1.e();
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void c()
-  {
-    super.c();
-    AbstractGifImage.resumeAll();
+    return this.a;
   }
 }
 

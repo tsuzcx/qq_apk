@@ -1,38 +1,56 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
 
 public class agah
-  implements View.OnClickListener
+  extends ajvj
 {
-  public agah(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
+  public agah(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    paramView = (akhq)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.a(20);
-    String str;
-    if (paramView != null)
+    if (this.a.c != null) {
+      this.a.c.dismiss();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
     {
-      paramView.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.o;
-      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label145;
+      axqy.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Agau != null) {
+        this.a.jdField_a_of_type_Agau.a();
+      }
+      if (this.a.k)
+      {
+        this.a.d(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Agaw != null) {
+          this.a.jdField_a_of_type_Agaw.notifyDataSetChanged();
+        }
       }
     }
-    label145:
-    for (paramView = "0";; paramView = "1")
+    for (;;)
     {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_JavaLangString, str, paramView, "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      if (this.a.c != null) {
+        this.a.c.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.w();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_c_of_type_AndroidAppDialog.show();
       return;
+      bcql.a(this.a.getActivity(), 1, this.a.getString(2131693711), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
+  {
+    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
   }
 }

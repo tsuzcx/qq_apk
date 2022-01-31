@@ -1,60 +1,31 @@
 import android.content.Context;
+import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
-public abstract class alyc
+public class alyc
   extends alyb
 {
-  public int a;
-  protected alyl a;
-  protected Context a;
-  public Matrix4 a;
-  public float[] b = new float[3];
-  public float[] c = new float[3];
+  private float[] d = new float[16];
   
-  public alyc(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
+  public alyc(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
   {
-    super(paramSensorManager, paramalxu);
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramContext);
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Alyl = new alyl();
-  }
-  
-  protected void a(float[] paramArrayOfFloat)
-  {
-    if ((this.jdField_a_of_type_Alxu == null) || (paramArrayOfFloat == null)) {}
-    do
+    super(paramContext, paramInt, paramSensorManager, paramalxt);
+    paramContext = paramSensorManager.getDefaultSensor(15);
+    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
-        this.jdField_a_of_type_Alyl.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          this.jdField_a_of_type_Alxu.updateAzimuth(this.c[0]);
-          return;
-        }
-        this.b[0] = this.c[1];
-        this.b[1] = (-this.c[0]);
-        this.b[2] = (-this.c[2]);
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          this.jdField_a_of_type_Alxu.updateRotation(this.b[0], this.b[1], this.b[2]);
-          return;
-        }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
-      this.jdField_a_of_type_Alxu.updateRotation(this.b[0], this.b[1], this.b[2]);
-    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
-    this.jdField_a_of_type_Alxu.onRotationUpdateOriginal(paramArrayOfFloat);
+      this.a.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(15));
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    alxv.a(this.d, paramSensorEvent);
+    super.a(this.d);
   }
 }
 

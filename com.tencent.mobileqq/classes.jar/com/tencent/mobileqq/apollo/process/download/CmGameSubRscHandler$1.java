@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import ajdh;
+import ajdf;
 
 public class CmGameSubRscHandler$1
   implements Runnable
 {
-  public CmGameSubRscHandler$1(ajdh paramajdh) {}
+  public CmGameSubRscHandler$1(ajdf paramajdf) {}
   
   public void run()
   {

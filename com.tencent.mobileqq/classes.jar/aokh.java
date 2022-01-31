@@ -1,19 +1,6 @@
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-
-@TargetApi(16)
-class aokh
+public abstract interface aokh
 {
-  public static void a(View paramView, Drawable paramDrawable)
-  {
-    paramView.setBackground(paramDrawable);
-  }
-  
-  public static void a(View paramView, Runnable paramRunnable)
-  {
-    paramView.postOnAnimation(paramRunnable);
-  }
+  public abstract void a();
 }
 
 

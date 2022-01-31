@@ -1,130 +1,122 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager.MiniAppSubProcessorInfo.1;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-class beqa
+public class beqa
 {
-  public List<beqd> a;
+  public int a;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  public MiniAppBaseInfo a;
+  public Class<?> a;
+  public Runnable a;
+  public final String a;
   public boolean a;
+  public Class<?> b;
+  public String b;
   
-  private beqa(Context paramContext)
+  public beqa(AppBrandLaunchManager paramAppBrandLaunchManager, String paramString, ProcessType paramProcessType, Class paramClass1, Class paramClass2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (a()) {
-      b(paramContext);
-    }
-    for (;;)
-    {
-      c(paramContext);
-      return;
-      a(paramContext);
-    }
+    this(paramAppBrandLaunchManager, paramString, paramClass1, paramClass2);
   }
   
-  private Class a(String paramString)
+  public beqa(AppBrandLaunchManager paramAppBrandLaunchManager, String paramString, Class paramClass1, Class paramClass2)
   {
-    return bepk.a().a(paramString);
+    this.jdField_a_of_type_JavaLangRunnable = new AppBrandLaunchManager.MiniAppSubProcessorInfo.1(this);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangClass = paramClass1;
+    this.jdField_b_of_type_JavaLangClass = paramClass2;
   }
   
-  private void a(Context paramContext)
+  public void a()
   {
-    if (paramContext == null) {
-      return;
-    }
     this.jdField_a_of_type_Boolean = false;
-    paramContext = paramContext.getPackageName();
-    a(paramContext + ":mini1", a("com.tencent.qqmini.sdk.ui.MiniActivity1"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver1"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini2", a("com.tencent.qqmini.sdk.ui.MiniActivity2"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver2"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini3", a("com.tencent.qqmini.sdk.ui.MiniActivity3"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver3"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini4", a("com.tencent.qqmini.sdk.ui.MiniActivity4"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver4"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini5", a("com.tencent.qqmini.sdk.ui.MiniActivity5"), a("com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver5"), ProcessType.MINI_GAME);
-    a(paramContext + ":mini_internal", a("com.tencent.qqmini.sdk.ui.InternalMiniActivity"), a("com.tencent.qqmini.sdk.receiver.InternalAppBrandMainReceiver"), ProcessType.MINI_INTERNAL);
-  }
-  
-  private void a(String paramString, Class paramClass1, Class paramClass2, ProcessType paramProcessType)
-  {
-    beqd localbeqd = new beqd();
-    localbeqd.jdField_a_of_type_JavaLangString = paramString;
-    localbeqd.jdField_a_of_type_JavaLangClass = paramClass1;
-    localbeqd.b = paramClass2;
-    localbeqd.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = paramProcessType;
-    this.jdField_a_of_type_JavaUtilList.add(localbeqd);
-  }
-  
-  private boolean a()
-  {
-    return a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration") != null;
-  }
-  
-  private void b(Context paramContext)
-  {
-    if (paramContext == null) {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) {
       return;
     }
-    paramContext = paramContext.getPackageName();
-    this.jdField_a_of_type_Boolean = ((Boolean)beqq.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("FLUTTER_ENABLED")).booleanValue();
-    Iterator localIterator = ((List)beqq.a("com.tencent.qqmini.sdk.core.generated.CustomConfiguration").a("MINI_PROCESS_LIST")).iterator();
-    label49:
-    Object localObject;
-    beqd localbeqd;
-    String str;
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame()) {}
+    for (long l = this.jdField_a_of_type_ComTencentQqminiSdkLauncherAppBrandLaunchManager.gameProcessRecycleTime;; l = this.jdField_a_of_type_ComTencentQqminiSdkLauncherAppBrandLaunchManager.appProcessRecycleTime)
     {
-      localObject = localIterator.next();
-      if ((localObject instanceof Map))
+      localHandler.postDelayed(localRunnable, l);
+      return;
+    }
+  }
+  
+  public boolean a(MiniAppBaseInfo paramMiniAppBaseInfo)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramMiniAppBaseInfo == null) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
       {
-        localObject = (Map)localObject;
-        localbeqd = new beqd();
-        localbeqd.jdField_a_of_type_JavaLangString = (paramContext + ":" + ((Map)localObject).get("name").toString());
-        str = ((Map)localObject).get("processType").toString();
-        if (!"MINI_GAME".equals(str)) {
-          break label210;
+        return bool1;
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId)) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.getEngineType() != paramMiniAppBaseInfo.getEngineType())) {
+          break;
         }
-        localbeqd.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_GAME;
+        bool1 = bool2;
+      } while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId.equals(paramMiniAppBaseInfo.appId));
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.link)) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.getEngineType() != paramMiniAppBaseInfo.getEngineType())) {
+        break;
+      }
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.link.equals(paramMiniAppBaseInfo.link));
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public String toString()
+  {
+    String str1;
+    String str2;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null)
+    {
+      str1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId;
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) {
+        break label166;
+      }
+      str2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.name;
+      label30:
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) {
+        break label172;
       }
     }
-    for (;;)
+    label166:
+    label172:
+    for (int i = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.getEngineType();; i = -1)
     {
-      localbeqd.jdField_a_of_type_JavaLangClass = a(((Map)localObject).get("ui").toString());
-      localbeqd.b = a(((Map)localObject).get("receiver").toString());
-      this.jdField_a_of_type_JavaUtilList.add(localbeqd);
-      break label49;
+      String str4 = this.jdField_a_of_type_JavaLangString;
+      String str3 = str4;
+      if (str4.contains(":")) {
+        str3 = str4.substring(str4.indexOf(":"));
+      }
+      return "pName:" + str3 + " pid:" + this.jdField_a_of_type_Int + " appId=" + str1 + " appName=" + str2 + " engineType=" + i + " reportType=" + -1 + " preloadType=" + this.jdField_b_of_type_JavaLangString;
+      str1 = "N/A";
       break;
-      label210:
-      if ("MINI_APP".equals(str)) {
-        localbeqd.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = ProcessType.MINI_APP;
-      }
-    }
-  }
-  
-  private void c(Context paramContext)
-  {
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-      while (i >= 0)
-      {
-        beqd localbeqd = (beqd)this.jdField_a_of_type_JavaUtilList.get(i);
-        Intent localIntent = new Intent();
-        localIntent.setClassName(paramContext.getPackageName(), localbeqd.jdField_a_of_type_JavaLangClass.getName());
-        if (localPackageManager.resolveActivity(localIntent, 0) == null)
-        {
-          besl.d("Configuration", "Not registered manifest. uiClass:" + localbeqd.jdField_a_of_type_JavaLangClass.getName());
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-        }
-        i -= 1;
-      }
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      besl.d("Configuration", "getDefaultConfiguration exception. ", paramContext);
+      str2 = "N/A";
+      break label30;
     }
   }
 }

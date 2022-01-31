@@ -1,29 +1,21 @@
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
+
 public class bajh
 {
   public int a;
-  public long a;
+  public AudioInfo a;
+  public TroopBarPOI a;
   public String a;
+  public ArrayList<String> a;
   public int b;
   public String b;
-  
-  public bajh(String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-  }
-  
-  public bajh(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
+  public ArrayList<TroopBarPOI> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
 }
 
 

@@ -1,6 +1,8 @@
-public abstract class qgu<C, T, A>
+class qgu
 {
-  public abstract void a(C paramC, T paramT, int paramInt, A paramA);
+  public int a;
+  public int b;
+  public int c;
 }
 
 

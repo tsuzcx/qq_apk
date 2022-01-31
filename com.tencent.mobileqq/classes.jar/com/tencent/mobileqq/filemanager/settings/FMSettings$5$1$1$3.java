@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import apth;
-import apti;
-import aptk;
 import aptl;
-import apue;
+import aptm;
+import apto;
+import aptp;
+import apug;
 
 public class FMSettings$5$1$1$3
   implements Runnable
 {
-  public FMSettings$5$1$1$3(aptl paramaptl) {}
+  public FMSettings$5$1$1$3(aptp paramaptp) {}
   
   public void run()
   {
-    apti.a(4, "-------onMovedOver-------");
-    apti.a(4, apue.a());
+    aptm.a(4, "-------onMovedOver-------");
+    aptm.a(4, apug.a());
     this.a.a.a.a.a();
     this.a.a.a.this$0.b();
   }

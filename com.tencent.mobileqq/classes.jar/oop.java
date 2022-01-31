@@ -1,25 +1,54 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class oop
   implements AladdinConfigHandler
 {
+  public static int a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    int i = 1;
+    if (paramAppRuntime == null)
+    {
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
+      return 0;
+    }
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
+    for (paramInt = i;; paramInt = 0) {
+      return paramInt;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    if (paramAppRuntime == null)
+    {
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
+      return;
+    }
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
+  }
+  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
+    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
     Iterator localIterator = paramString.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       String str2 = (String)paramString.get(str1);
-      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "commercialAd_feeds")) {
-        bhvh.a("ad_feeds_proteus_offline_bid", str2);
+      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
+        bhvy.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
     return true;
@@ -27,7 +56,7 @@ public class oop
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("ad_feeds_proteus_offline_bid", "0");
+    bhvy.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
   }
 }
 

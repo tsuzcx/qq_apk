@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import ahpf;
+import ahpd;
 import com.tencent.mobileqq.data.RecentUser;
 
 class QZoneMsgFragment$3
@@ -11,7 +11,7 @@ class QZoneMsgFragment$3
   public void run()
   {
     RecentUser localRecentUser = new RecentUser("2290230341", 1008);
-    ahpf.a(this.this$0.a, localRecentUser, true, true);
+    ahpd.a(this.this$0.a, localRecentUser, true, true);
   }
 }
 

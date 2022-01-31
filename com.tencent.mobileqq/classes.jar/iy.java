@@ -124,7 +124,7 @@ public class iy
     try
     {
       List localList = paramParameters.getSupportedFocusModes();
-      if ((localList.contains("continuous-video")) && (aldn.a().b)) {
+      if ((localList.contains("continuous-video")) && (aldm.a().b)) {
         str = "continuous-video";
       }
       for (;;)

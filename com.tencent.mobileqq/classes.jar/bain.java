@@ -1,20 +1,32 @@
-import android.util.SparseArray;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 class bain
-  extends baip
+  extends Handler
 {
-  bain(bail parambail) {}
-  
-  protected void a(boolean paramBoolean)
+  bain(baim parambaim, Looper paramLooper)
   {
-    if (paramBoolean) {}
-    synchronized (this.a.a)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
     {
-      this.a.a.clear();
-      this.a.b();
-      bail.a(this.a);
       return;
-    }
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
   }
 }
 

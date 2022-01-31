@@ -1,26 +1,32 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.smtt.sdk.TbsReaderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-class apjc
-  implements DialogInterface.OnClickListener
+final class apjc
+  implements View.OnClickListener
 {
-  apjc(apja paramapja, String paramString1, String paramString2) {}
+  apjc(apkq paramapkq, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    apiz.a(this.jdField_a_of_type_Apja.jdField_a_of_type_Apiz).userStatistics(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Apja.jdField_a_of_type_AndroidAppActivity.getString(2131694785));
-    paramDialogInterface.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
-    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-    paramDialogInterface.putString("big_brother_source_key", "biz_src_jc_file");
-    localIntent.putExtra("param", paramDialogInterface);
-    localIntent.putExtra("url", this.b);
-    this.jdField_a_of_type_Apja.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
+    try
+    {
+      paramView = bakx.a(this.jdField_a_of_type_Apkq.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      if (paramView.e == null) {
+        return;
+      }
+      if (bbfj.a(this.jdField_a_of_type_Apkq.getActivity()) == 0)
+      {
+        bajt.a(this.jdField_a_of_type_Apkq.getActivity(), this.jdField_a_of_type_Apkq.getActivity().getString(2131697863));
+        return;
+      }
+      bajt.a(this.jdField_a_of_type_Apkq.getActivity(), this.jdField_a_of_type_Apkq.getActivity().getString(2131692830), 0);
+      TroopFileTransferManager.a(this.jdField_a_of_type_Apkq.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

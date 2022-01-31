@@ -1,19 +1,12 @@
-final class wfc
+import android.os.Bundle;
+
+public abstract interface wfc
 {
-  public float a;
-  public float b;
-  public float c;
-  
-  public wfc(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfc
  * JD-Core Version:    0.7.0.1
  */

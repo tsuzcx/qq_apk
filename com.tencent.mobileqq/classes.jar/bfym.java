@@ -1,8 +1,23 @@
-import android.view.View;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public abstract interface bfym
+class bfym
+  implements bfyj
 {
-  public abstract void a(View paramView, int paramInt);
+  private final GestureDetector a;
+  
+  public bfym(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

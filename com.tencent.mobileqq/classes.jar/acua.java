@@ -1,53 +1,43 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.aio.AudioSenorManager;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class acua
-  implements SensorEventListener
+  implements anwh
 {
-  public acua(AudioSenorManager paramAudioSenorManager) {}
+  public acua(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(View paramView)
   {
-    int i = 1;
-    if (actn.b()) {}
-    label141:
-    label144:
+    String str = bbqd.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if ((localViewParent instanceof ChatXListView)) {
+      EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+    }
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
+    }
     for (;;)
     {
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
-      boolean bool;
-      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
-      {
-        bool = true;
-        label28:
-        QLog.d("AudioSenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
-        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
-          continue;
-        }
-        if (!bool) {
-          break label141;
-        }
-      }
-      for (;;)
-      {
-        if (i == AudioSenorManager.a(this.a)) {
-          break label144;
-        }
-        AudioSenorManager.a(this.a, i);
-        if (AudioSenorManager.a(this.a) == null) {
-          break;
-        }
-        AudioSenorManager.a(this.a).a(i);
-        return;
-        bool = false;
-        break label28;
-        i = 0;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
     }
   }

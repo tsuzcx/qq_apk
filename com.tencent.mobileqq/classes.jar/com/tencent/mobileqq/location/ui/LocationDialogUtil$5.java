@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import arvk;
-import arvw;
-import bbcv;
-import bbgg;
+import arvm;
+import arvy;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public final class LocationDialogUtil$5
@@ -14,8 +14,8 @@ public final class LocationDialogUtil$5
   
   public void run()
   {
-    bbgg localbbgg = bbcv.a(this.a, 230, null, this.a.getResources().getString(2131719601), 2131690596, 2131694793, new arvw(this), null);
-    arvk.a(this.a, localbbgg);
+    bbgu localbbgu = bbdj.a(this.a, 230, null, this.a.getResources().getString(2131719612), 2131690596, 2131694794, new arvy(this), null);
+    arvm.a(this.a, localbbgu);
   }
 }
 

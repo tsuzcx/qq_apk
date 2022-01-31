@@ -1,51 +1,45 @@
+import android.util.SparseArray;
 import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.MessageForApollo;
-import java.util.List;
+import java.util.Comparator;
 
-public class aizl
-  implements aizm
+class aizl
+  implements Comparator<ApolloGameData>
 {
-  public void a(int paramInt) {}
+  SparseArray<Long> a;
   
-  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2) {}
+  aizl(SparseArray paramSparseArray)
+  {
+    this.a = paramSparseArray;
+  }
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, int paramInt, long paramLong) {}
-  
-  public void a(String paramString, int paramInt, List<MessageForApollo> paramList) {}
-  
-  public void a(String paramString, aenn paramaenn) {}
-  
-  public void a(String paramString, aizo paramaizo) {}
-  
-  public void a(String paramString, List<ApolloGameData> paramList) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong) {}
-  
-  public void b(String paramString) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  public void d(String paramString) {}
-  
-  public void e(String paramString) {}
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
+    {
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
+      }
+    }
+    for (;;)
+    {
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+    }
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

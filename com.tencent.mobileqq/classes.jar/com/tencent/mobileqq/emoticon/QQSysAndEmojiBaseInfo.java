@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticon;
 
 import android.text.TextUtils;
-import anwm;
-import bbdj;
+import anwr;
+import bbdx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -32,11 +32,11 @@ public abstract class QQSysAndEmojiBaseInfo
         {
           String str = null;
           long l = System.currentTimeMillis();
-          File localFile = new File(anwm.b() + "face_config.json");
+          File localFile = new File(anwr.b() + "face_config.json");
           if (!localFile.exists()) {
             continue;
           }
-          str = bbdj.a(localFile);
+          str = bbdx.a(localFile);
           if (!TextUtils.isEmpty(str))
           {
             jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str);

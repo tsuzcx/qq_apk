@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import ajxn;
+import ajxl;
 import android.text.TextUtils;
-import aukm;
-import aulx;
+import auko;
+import aulz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -12,9 +12,9 @@ import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class ConversationInfo
-  extends aukm
+  extends auko
 {
-  @aulx
+  @aulz
   public static boolean publicaccountTypeErrorReported = false;
   private static final String tableName = "conversation_info";
   public byte[] extData;
@@ -63,7 +63,7 @@ public class ConversationInfo
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         if (localObject != null)
         {
-          paramString = ((ajxn)((AppRuntime)localObject).getManager(51)).c(paramString);
+          paramString = ((ajxl)((AppRuntime)localObject).getManager(51)).c(paramString);
           if ((paramString != null) && (paramString.isFriend()))
           {
             publicaccountTypeErrorReported = true;

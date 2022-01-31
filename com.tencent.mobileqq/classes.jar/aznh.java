@@ -1,29 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 
-class aznh
-  extends Handler
+public abstract class aznh
 {
-  aznh(azng paramazng, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while ((this.a.a == null) || (TextUtils.isEmpty(this.a.a.a)) || (!this.a.a.a.equals(this.a.b)));
-    this.a.h();
-  }
+  public void a(String paramString, Integer paramInteger) {}
 }
 
 

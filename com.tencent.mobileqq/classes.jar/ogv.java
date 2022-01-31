@@ -1,16 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-
-public class ogv
-  implements oki
+public abstract interface ogv
 {
-  public ogv(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt != 2) {
-      this.a.d();
-    }
-  }
+  public abstract void onViewCreated(boolean paramBoolean);
 }
 
 

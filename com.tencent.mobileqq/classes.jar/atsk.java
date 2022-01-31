@@ -1,37 +1,45 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import java.util.Calendar;
 
 class atsk
-  implements View.OnClickListener
+  implements amnf
 {
-  atsk(atsa paramatsa) {}
+  atsk(atsc paramatsc) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1)
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131699153);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0)
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131699153);
-      return;
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + ajya.a(2131707261);
+    case 1: 
+      return paramInt2 + 1 + ajya.a(2131707364);
     }
-    if (this.a.a())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131699143);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
+    return paramInt2 + 1 + ajya.a(2131707346);
   }
 }
 

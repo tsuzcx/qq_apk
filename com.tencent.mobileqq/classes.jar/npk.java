@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
 public final class npk
-  implements Parcelable.Creator<VideoInfo.EntranceDownloadInfo>
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  public VideoInfo.EntranceDownloadInfo a(Parcel paramParcel)
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    return new VideoInfo.EntranceDownloadInfo(paramParcel);
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
   }
   
-  public VideoInfo.EntranceDownloadInfo[] a(int paramInt)
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
   {
-    return new VideoInfo.EntranceDownloadInfo[paramInt];
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 

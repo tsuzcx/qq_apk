@@ -1,12 +1,9 @@
-public abstract interface bdgi
+import com.tencent.smtt.sdk.WebView;
+
+class bdgi
 {
-  public abstract void a(bdgj parambdgj);
-  
-  public abstract void b(bdgj parambdgj);
-  
-  public abstract void c(bdgj parambdgj);
-  
-  public abstract void d(bdgj parambdgj);
+  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  String jdField_a_of_type_JavaLangString;
 }
 
 

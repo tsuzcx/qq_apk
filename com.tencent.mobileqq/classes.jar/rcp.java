@@ -1,20 +1,17 @@
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 public class rcp
-  implements ViewFactory.FoundClickableViewListener
+  implements okf
 {
-  public rcp(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
+  public rcp(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, okf paramokf) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void a(int paramInt)
   {
-    if ((paramViewBase instanceof pkd)) {
-      ((pkd)paramViewBase).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, 2);
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
+    if (this.jdField_a_of_type_Okf != null) {
+      this.jdField_a_of_type_Okf.a(paramInt);
     }
-    paramViewBase.setOnClickListener(new rcq(this));
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.mfsdk.reporter;
 
-import aaah;
-import aaak;
+import aaad;
+import aaag;
 import com.tencent.mfsdk.MagnifierSDK;
 
 class DFObserver$InsertRunnable
   implements Runnable
 {
   private long jdField_a_of_type_Long;
-  private aaah jdField_a_of_type_Aaah;
+  private aaad jdField_a_of_type_Aaad;
   private String jdField_a_of_type_JavaLangString;
   
-  public DFObserver$InsertRunnable(long paramLong, String paramString, aaah paramaaah)
+  public DFObserver$InsertRunnable(long paramLong, String paramString, aaad paramaaad)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aaah = paramaaah;
+    this.jdField_a_of_type_Aaad = paramaaad;
   }
   
   public void run()
   {
     if (MagnifierSDK.a != null)
     {
-      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aaah);
-      this.jdField_a_of_type_Aaah.a();
+      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aaad);
+      this.jdField_a_of_type_Aaad.a();
     }
   }
 }

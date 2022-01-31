@@ -1,41 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import mqq.observer.ServerNotifyObserver;
 
 public class acpf
-  extends ServerNotifyObserver
+  implements View.OnClickListener
 {
   public acpf(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      bcpw.a(this.a.getApplicationContext(), 1, this.a.getString(2131720712), 0).a();
+    if (!this.a.b) {
+      this.a.a();
     }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bawu.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
-      return;
-    }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131720707), 1).show();
-  }
-  
-  public void onVerifyClose()
-  {
-    this.a.finish();
   }
 }
 

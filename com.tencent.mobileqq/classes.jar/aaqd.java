@@ -1,6 +1,27 @@
-public abstract interface aaqd
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+
+public class aaqd
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aaqd(ChatFragment paramChatFragment) {}
+  
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.b(paramMotionEvent);
+    }
+  }
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
+  }
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.manager;
 
-import betg;
-import beth;
+import betx;
+import bety;
 
 public class GameGrowthGuardianManager$2$1
   implements Runnable
 {
-  public GameGrowthGuardianManager$2$1(beth parambeth) {}
+  public GameGrowthGuardianManager$2$1(bety parambety) {}
   
   public void run()
   {
-    betg.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 12);
+    betx.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 12);
   }
 }
 

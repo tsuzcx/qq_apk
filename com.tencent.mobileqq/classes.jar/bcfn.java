@@ -1,10 +1,6 @@
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class bcfn
+public abstract interface bcfn
 {
-  public final CopyOnWriteArrayList<bcfo> a;
-  public final AtomicInteger a;
+  public abstract void a(String paramString);
 }
 
 

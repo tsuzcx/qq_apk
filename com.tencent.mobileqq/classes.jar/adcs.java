@@ -1,52 +1,31 @@
 import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-public class adcs
-  extends bcfj
+class adcs
+  implements wxt
 {
-  adcs(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
+  adcs(adcr paramadcr) {}
   
-  public void a()
+  public void a(Bundle paramBundle)
   {
-    WebView localWebView;
-    if (this.jdField_a_of_type_Bcdt.a() != null)
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
     {
-      localWebView = this.jdField_a_of_type_Bcdt.a();
-      localWebView.setId(2131379397);
-      if (this.b != -1) {
-        localWebView.setBackgroundColor(this.b);
-      }
-      Object localObject = (Activity)localWebView.getContext();
-      if ((localObject instanceof ConfessHalfScreenActivity))
-      {
-        localObject = (ConfessHalfScreenActivity)localObject;
-        ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
-      }
-      if (!(this.c instanceof RelativeLayout)) {
-        break label171;
-      }
-      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment));
-      ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      this.c.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
     }
-    for (;;)
+    else
     {
-      this.c.setOnClickListener(new adct(this));
       return;
-      label171:
-      this.c.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioConfessConfessHalfScreenActivity$ConfessBrowserFragment)));
     }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      bcql.a(BaseApplicationImpl.getApplication(), 2, 2131720410, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getApplication(), 1, 2131720407, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 

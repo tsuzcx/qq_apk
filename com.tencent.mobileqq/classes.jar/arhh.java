@@ -1,8 +1,4 @@
-public class arhh
-{
-  public static arhi a = new arhi();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     arhh

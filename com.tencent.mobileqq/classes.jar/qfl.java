@@ -1,18 +1,9 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class qfl
-  implements View.OnClickListener
+public abstract interface qfl
 {
-  qfl(qfk paramqfk) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (qfk.a(this.a) != null) {
-      qfk.a(this.a).a(paramView, i);
-    }
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

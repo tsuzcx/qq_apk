@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ozr;
-import ppd;
+import ozo;
+import ppa;
 
 public class ArticleInfoModule$17
   implements Runnable
 {
-  public ArticleInfoModule$17(ozr paramozr, int paramInt, List paramList, long paramLong) {}
+  public ArticleInfoModule$17(ozo paramozo, int paramInt, List paramList, long paramLong) {}
   
   public void run()
   {
-    ppd.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
+    ppa.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
   }
 }
 

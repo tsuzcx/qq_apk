@@ -1,17 +1,19 @@
-import android.opengl.GLES20;
-
 public class lrt
-  extends lru
 {
-  public lrt(String paramString)
+  private final int a;
+  private int b;
+  private int c;
+  
+  public lrt(int paramInt)
   {
-    super(paramString);
+    this.a = paramInt;
+    this.b = 1;
+    this.c = 1;
   }
   
-  public void a(int paramInt)
+  public void a(lqo paramlqo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
-    lsv.a();
+    paramlqo.a(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

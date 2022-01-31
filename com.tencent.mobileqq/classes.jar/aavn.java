@@ -1,125 +1,168 @@
-import android.content.Context;
+import android.app.Dialog;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
 
 public class aavn
-  extends BaseAdapter
-  implements baxl
+  extends ajxj
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  public aavn(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public aavn(ContactBindedActivity paramContactBindedActivity, Context paramContext)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844136);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public PhoneContact a(int paramInt)
-  {
-    return (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(paramInt);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) != null) && (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() > 0))
-      {
-        PhoneContact localPhoneContact = (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() - 1);
-        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity, localPhoneContact, false);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Bitmap localBitmap = null;
-    PhoneContact localPhoneContact = a(paramInt);
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2131559159, null);
-    }
-    paramViewGroup.setTag(localPhoneContact);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131365824);
-    paramView = localBitmap;
-    if (paramInt == getCount() - 1)
-    {
-      paramView = localBitmap;
-      if (this.jdField_a_of_type_Boolean) {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      }
-    }
-    localImageView.setImageDrawable(paramView);
-    localBitmap = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(11, localPhoneContact.unifiedCode);
-    paramView = localBitmap;
-    if (localBitmap == null)
-    {
-      ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).a(localPhoneContact.unifiedCode, 11, true, (byte)0);
-      paramView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity);
-    }
-    localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramView));
-    if (AppSetting.d) {
-      localImageView.setContentDescription(localPhoneContact.name);
-    }
-    return paramViewGroup;
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.notifyDataSetChanged();
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) == null) {}
-    for (;;)
+    int j = -10000;
+    if ((!paramString.equals(ContactSyncJumpActivity.a(this.a))) && (!paramString.equals(ContactSyncJumpActivity.b(this.a) + ContactSyncJumpActivity.c(this.a)))) {}
+    label103:
+    int i;
+    label132:
+    label161:
+    label189:
+    label216:
+    label358:
+    label364:
+    label372:
+    label380:
+    do
     {
       return;
-      paramInt1 = 0;
-      while (paramInt1 < ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildCount())
+      boolean bool;
+      if (QLog.isColorLevel())
       {
-        View localView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildAt(paramInt1);
-        Object localObject = localView.getTag();
-        if ((localObject != null) && ((localObject instanceof PhoneContact)) && (paramString.equals(((PhoneContact)localObject).unifiedCode))) {
-          ((ImageView)localView.findViewById(2131365824)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        paramString = new StringBuilder();
+        paramString.append("onGetOnlineInfo | isSuccess = ").append(paramBoolean);
+        localObject = paramString.append(" | resp = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label358;
         }
-        paramInt1 += 1;
+        bool = true;
+        ((StringBuilder)localObject).append(bool);
+        localObject = paramString.append(" | resp.result = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label364;
+        }
+        i = paramGetOnlineInfoResp.result;
+        ((StringBuilder)localObject).append(i);
+        localObject = paramString.append(" | resp.errorCode = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label372;
+        }
+        i = paramGetOnlineInfoResp.errorCode;
+        ((StringBuilder)localObject).append(i);
+        localObject = paramString.append(" | resp.iTermType = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label380;
+        }
+        paramLong = paramGetOnlineInfoResp.iTermType;
+        ((StringBuilder)localObject).append(paramLong);
+        localObject = paramString.append(" | resp.status = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label387;
+        }
+        paramLong = paramGetOnlineInfoResp.dwStatus;
+        ((StringBuilder)localObject).append(paramLong);
+        localObject = paramString.append(" | resp.ability = ");
+        if (paramGetOnlineInfoResp == null) {
+          break label394;
+        }
       }
+      for (paramLong = paramGetOnlineInfoResp.uAbiFlag;; paramLong = -10000L)
+      {
+        ((StringBuilder)localObject).append(paramLong);
+        localObject = paramString.append(" | resp.network = ");
+        i = j;
+        if (paramGetOnlineInfoResp != null) {
+          i = paramGetOnlineInfoResp.eNetworkType;
+        }
+        ((StringBuilder)localObject).append(i);
+        QLog.d("ContactSync.JumpActivity", 2, paramString.toString());
+        if ((paramBoolean) && (paramGetOnlineInfoResp != null)) {
+          break label401;
+        }
+        if ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2)) {
+          break;
+        }
+        paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365181);
+        paramString.setText(2131698727);
+        paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
+        bool = false;
+        break label103;
+        i = -10000;
+        break label132;
+        i = -10000;
+        break label161;
+        paramLong = -10000L;
+        break label189;
+        paramLong = -10000L;
+        break label216;
+      }
+      if (paramGetOnlineInfoResp.result == 1)
+      {
+        if ((paramGetOnlineInfoResp.errorCode == 60001) || (paramGetOnlineInfoResp.errorCode == -5535))
+        {
+          paramString = String.format(this.a.getResources().getString(2131698717), new Object[] { ContactSyncJumpActivity.d(this.a) });
+          ContactSyncJumpActivity.a(this.a).a(ContactSyncJumpActivity.e(this.a));
+          ContactSyncJumpActivity.a(this.a, 1, paramString);
+          return;
+        }
+        this.a.finish();
+        return;
+      }
+    } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) && (this.a.jdField_a_of_type_Int != 2));
+    label387:
+    label394:
+    label401:
+    paramString = "";
+    String str1 = ContactSyncJumpActivity.a(this.a).a(paramGetOnlineInfoResp);
+    String str2 = ContactSyncJumpActivity.a(this.a).b(paramGetOnlineInfoResp);
+    if (!TextUtils.isEmpty(str1)) {
+      paramString = str1;
+    }
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(str1))
+    {
+      localObject = paramString;
+      if (!TextUtils.isEmpty(str2))
+      {
+        paramString = paramString + "\n";
+        localObject = paramString + str2;
+      }
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      i = 1;
+      label642:
+      if (i != 0) {
+        break label760;
+      }
+    }
+    label760:
+    for (paramString = this.a.getResources().getString(2131698727);; paramString = (String)localObject)
+    {
+      localObject = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365181);
+      ((TextView)localObject).setText(paramString);
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if ((i == 0) || ((paramGetOnlineInfoResp.eNetworkType != 4) && (paramGetOnlineInfoResp.eNetworkType != 1))) {
+        break;
+      }
+      paramString = new Message();
+      paramString.what = 1000;
+      paramString.arg1 = 4;
+      ContactSyncJumpActivity.a(this.a).sendMessage(paramString);
+      return;
+      i = 0;
+      break label642;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,30 @@
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.security.KeyStore;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
 public class lal
-  implements X509TrustManager
+  implements lbm
 {
-  X509TrustManager a;
+  public lal(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, aeck paramaeck, String paramString2, Language paramLanguage, lbl paramlbl, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  lal()
+  public void a(TranslateError paramTranslateError, Long paramLong)
   {
-    try
-    {
-      Object localObject1 = KeyStore.getInstance("JKS");
-      if (localObject1 != null)
-      {
-        localObject4 = new FileInputStream("trustedCerts");
-        ((KeyStore)localObject1).load((InputStream)localObject4, "passphrase".toCharArray());
-        localObject3 = TrustManagerFactory.getInstance("SunX509", "SunJSSE");
-        ((TrustManagerFactory)localObject3).init((KeyStore)localObject1);
-        localObject3 = ((TrustManagerFactory)localObject3).getTrustManagers();
-        localObject1 = localObject4;
-        if (localObject1 != null) {
-          ((FileInputStream)localObject1).close();
-        }
-        i = 0;
-        if (i >= localObject3.length) {
-          break label137;
-        }
-        if (!(localObject3[i] instanceof X509TrustManager)) {
-          break label130;
-        }
-        this.a = ((X509TrustManager)localObject3[i]);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i;
-        Object localObject2 = null;
-        continue;
-        localObject2 = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-        ((TrustManagerFactory)localObject2).init((KeyStore)null);
-        Object localObject4 = ((TrustManagerFactory)localObject2).getTrustManagers();
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        continue;
-        label130:
-        i += 1;
-      }
-      label137:
-      throw new Exception("Couldn't initialize");
-    }
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aeck, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbl, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
   }
   
-  public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
+  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
   {
-    this.a.checkClientTrusted(paramArrayOfX509Certificate, paramString);
-  }
-  
-  public void checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
-  {
-    this.a.checkServerTrusted(paramArrayOfX509Certificate, paramString);
-  }
-  
-  public X509Certificate[] getAcceptedIssuers()
-  {
-    return this.a.getAcceptedIssuers();
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aeck, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbl, 0, AITranslator.TranslatorType.GOOGLE, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     lal
  * JD-Core Version:    0.7.0.1
  */

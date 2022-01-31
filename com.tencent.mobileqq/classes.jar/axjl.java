@@ -1,34 +1,36 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class axjl
 {
-  public static void a(int paramInt)
+  private axjh a;
+  
+  public axjl(axjj paramaxjj)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("crashKind", "" + paramInt);
-    axrl.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
+    this.a = new axjh(paramaxjj);
   }
   
-  public static void a(String paramString, long paramLong)
+  public void a(axjm paramaxjm, long paramLong)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("time", "" + paramLong);
-    localHashMap.put("filter_id", axjm.jdField_a_of_type_JavaLangString);
-    localHashMap.put("front_camera", String.valueOf(axjm.jdField_a_of_type_Boolean));
-    axrl.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, axgg.c, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + axjm.jdField_a_of_type_JavaLangString + " ; front_camera = " + axjm.jdField_a_of_type_Boolean);
+    switch (paramaxjm.jdField_a_of_type_Int)
+    {
+    case 4: 
+    default: 
+      return;
+    case 5: 
+      this.a.a(paramLong, paramaxjm.c, paramaxjm.jdField_a_of_type_Float, paramaxjm.jdField_b_of_type_Float, 5, paramaxjm.jdField_a_of_type_Long);
+      return;
+    case 0: 
+      this.a.a(paramLong, paramaxjm.jdField_a_of_type_ArrayOfInt[0], paramaxjm.jdField_a_of_type_ArrayOfFloat[0], paramaxjm.jdField_b_of_type_ArrayOfFloat[0], 0, paramaxjm.jdField_a_of_type_Long);
+      return;
+    case 2: 
+      this.a.a(paramLong, paramaxjm.jdField_a_of_type_ArrayOfInt, paramaxjm.jdField_a_of_type_ArrayOfFloat, paramaxjm.jdField_b_of_type_ArrayOfFloat, paramaxjm.jdField_a_of_type_Long);
+      return;
+    case 6: 
+      this.a.b(paramLong, paramaxjm.c, paramaxjm.jdField_a_of_type_Float, paramaxjm.jdField_b_of_type_Float, 6, paramaxjm.jdField_a_of_type_Long);
+      return;
+    case 1: 
+      this.a.b(paramLong, paramaxjm.jdField_a_of_type_ArrayOfInt[0], paramaxjm.jdField_a_of_type_ArrayOfFloat[0], paramaxjm.jdField_b_of_type_ArrayOfFloat[0], 1, paramaxjm.jdField_a_of_type_Long);
+      return;
     }
+    this.a.b(paramLong, paramaxjm.jdField_a_of_type_ArrayOfInt, paramaxjm.jdField_a_of_type_ArrayOfFloat, paramaxjm.jdField_b_of_type_ArrayOfFloat, paramaxjm.jdField_a_of_type_Long);
   }
 }
 

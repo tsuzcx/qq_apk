@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class aaih
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public aaih(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
-    this.a.b();
+    this.a.a.cancel();
   }
 }
 

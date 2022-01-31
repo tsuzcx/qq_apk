@@ -1,31 +1,23 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class aust
-  extends RecyclerView.ItemDecoration
+  extends RecyclerView.ViewHolder
 {
-  private int jdField_a_of_type_Int;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public aust(CustomCoverFragment paramCustomCoverFragment, int paramInt)
+  public aust(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    if (!(paramView.getTag() instanceof ausq))
-    {
-      paramRect.left = 0;
-      return;
-    }
-    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
-    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
-    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
-    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
+    super(paramView);
+    this.itemView.setTag(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366604));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366594));
+    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167134));
   }
 }
 

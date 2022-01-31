@@ -1,13 +1,65 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class okm
-  implements ViewBase.IBuilder
+  extends ViewBase
 {
-  public ViewBase build(VafContext paramVafContext)
+  private NativeExposeReplyCommentView a;
+  
+  public okm(VafContext paramVafContext)
   {
-    return new okl(paramVafContext);
+    super(paramVafContext);
+    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
+  }
+  
+  public void a(ogn paramogn)
+  {
+    this.a.setAdapter(paramogn);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return super.setAttribute(paramInt, paramObject);
+    } while ((!(paramObject instanceof oif)) || (((oif)paramObject).a == null));
+    this.a.a((oif)paramObject);
+    return true;
   }
 }
 

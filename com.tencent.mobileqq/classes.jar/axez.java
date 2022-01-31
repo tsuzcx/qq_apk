@@ -1,14 +1,8 @@
-import java.util.ArrayList;
-
-public abstract interface axez
+public class axez
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, axes paramaxes);
-  
-  public abstract void a(int paramInt, ArrayList<axes> paramArrayList);
-  
-  public abstract void b(int paramInt, axes paramaxes);
+  public long a;
+  public long b;
+  public long c;
 }
 
 

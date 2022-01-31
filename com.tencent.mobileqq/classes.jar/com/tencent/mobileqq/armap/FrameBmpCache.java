@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import alxf;
+import alxe;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -20,7 +20,7 @@ public class FrameBmpCache
 {
   public int a;
   private long jdField_a_of_type_Long = 1000 / this.jdField_a_of_type_Int;
-  private alxf jdField_a_of_type_Alxf;
+  private alxe jdField_a_of_type_Alxe;
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache<String, Object> a;
@@ -214,8 +214,8 @@ public class FrameBmpCache
       }
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Alxf != null) {
-        this.jdField_a_of_type_Alxf.a(null);
+      if (this.jdField_a_of_type_Alxe != null) {
+        this.jdField_a_of_type_Alxe.a(null);
       }
     } while (!this.jdField_d_of_type_Boolean);
     return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
@@ -299,9 +299,9 @@ public class FrameBmpCache
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
   }
   
-  public void a(alxf paramalxf)
+  public void a(alxe paramalxe)
   {
-    this.jdField_a_of_type_Alxf = paramalxf;
+    this.jdField_a_of_type_Alxe = paramalxe;
   }
   
   public void a(List<String> paramList)

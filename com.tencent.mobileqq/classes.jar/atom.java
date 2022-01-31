@@ -1,29 +1,29 @@
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class atom
-  implements bfoq
+  implements alyr
 {
-  public atom(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, bfol parambfol) {}
+  public atom(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
       return;
-      atbr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
-      continue;
-      paramView = (atbx)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
-      if (paramView != null) {
-        paramView.a("", 0, false);
-      }
     }
+    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

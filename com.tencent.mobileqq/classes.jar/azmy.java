@@ -1,27 +1,29 @@
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
 import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import java.util.List;
 
-public class azmy
-  extends aznf
+class azmy
+  implements Animation.AnimationListener
 {
-  public azmy(TroopAioKeywordTipBar.4 param4, List paramList, aznc paramaznc) {}
+  azmy(azmw paramazmw) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (azmu.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
-    this.jdField_a_of_type_Aznc.a(this.jdField_a_of_type_JavaUtilList, null, 2, new azmz(this));
-    return;
-    azmu.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    if (azmw.a(this.a) != null) {
+      azmw.a(this.a).a.clearAnimation();
+    }
+    azmw.a(this.a);
+    if ((azmw.a(this.a) != null) && (!azmw.a(this.a).isSend())) {
+      ((azne)this.a.a.getManager(225)).a(this.a.a.getCurrentAccountUin(), azmw.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(azmw.a(this.a).ruleId));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

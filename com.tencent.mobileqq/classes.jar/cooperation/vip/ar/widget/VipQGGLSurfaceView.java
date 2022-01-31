@@ -1,10 +1,10 @@
 package cooperation.vip.ar.widget;
 
 import android.content.Context;
-import bdsh;
-import bdsk;
-import bdss;
-import bhyd;
+import bdsy;
+import bdtb;
+import bdtj;
+import bhyu;
 import com.tencent.qg.sdk.QGBitmapLoader;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.QGReporter;
@@ -17,7 +17,7 @@ public class VipQGGLSurfaceView
   extends QGGLSurfaceView
 {
   private static String jdField_a_of_type_JavaLangString = "VipQGGLSurfaceView";
-  private bdss jdField_a_of_type_Bdss;
+  private bdtj jdField_a_of_type_Bdtj;
   private ModuleEngine jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine;
   
   public VipQGGLSurfaceView(Context paramContext)
@@ -34,19 +34,19 @@ public class VipQGGLSurfaceView
   
   public void a()
   {
-    GLog.init(new bhyd());
-    QGBitmapLoader.setBitmapLoader(new bdsh());
-    QGReporter.setReporter(new bdsk());
+    GLog.init(new bhyu());
+    QGBitmapLoader.setBitmapLoader(new bdsy());
+    QGReporter.setReporter(new bdtb());
     this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine = new ModuleEngine();
-    this.jdField_a_of_type_Bdss = new bdss();
-    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(this.jdField_a_of_type_Bdss);
+    this.jdField_a_of_type_Bdtj = new bdtj();
+    this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.registerJsModule(this.jdField_a_of_type_Bdtj);
     setModuleEngin(this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine != null) && (this.jdField_a_of_type_Bdss != null)) {
-      this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.unRegisterJsModule(this.jdField_a_of_type_Bdss);
+    if ((this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine != null) && (this.jdField_a_of_type_Bdtj != null)) {
+      this.jdField_a_of_type_ComTencentQgSdkInvokeModuleEngine.unRegisterJsModule(this.jdField_a_of_type_Bdtj);
     }
   }
 }

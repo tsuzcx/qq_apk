@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.receipt;
 
-import avpe;
+import avpg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class ReceiptMsgManager$3
   implements Runnable
 {
-  public ReceiptMsgManager$3(avpe paramavpe, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ReceiptMsgManager$3(avpg paramavpg, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    avpe.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    avpg.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

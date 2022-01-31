@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import mqq.app.QQPermissionCallback;
 
 public class auby
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
   public auby(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
-    {
-      ScanOcrActivity.a(this.a).a();
-      ScanOcrActivity.a(this.a, false);
-      ScanOcrActivity.b(this.a);
-      return;
-    }
-    this.a.finish();
+    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 

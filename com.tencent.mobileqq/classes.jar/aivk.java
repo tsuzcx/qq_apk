@@ -1,16 +1,31 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class aivk
-  extends akav
+  extends ahmv
 {
-  public aivk(HotChatCenterFragment paramHotChatCenterFragment) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public aivk(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ahmo paramahmo, int paramInt)
   {
-    this.a.b();
+    super(paramContext, paramQQAppInterface, paramXListView, paramahmo, paramInt);
   }
   
-  protected void b() {}
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
+  
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
+    }
+  }
 }
 
 

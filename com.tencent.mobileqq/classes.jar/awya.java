@@ -1,34 +1,28 @@
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.ArrayList;
 
 public class awya
-  extends awye
+  extends awyc
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  
-  public awya() {}
+  public LinearLayout a;
   
   public awya(ViewGroup paramViewGroup)
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562376, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370418);
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562373, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131370397));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131369348));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131370417);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368844));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365043));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131369348));
   }
   
   public LinearLayout a()
   {
-    return this.jdField_b_of_type_AndroidWidgetLinearLayout;
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
 }
 

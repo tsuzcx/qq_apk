@@ -1,35 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjkl
-  extends AnimatorListenerAdapter
+  extends bjdt
 {
-  public bjkl(QIMCircleProgress paramQIMCircleProgress) {}
+  public bjkl(MusicProviderView paramMusicProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void b()
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
-    }
+    this.a.a(false);
   }
 }
 

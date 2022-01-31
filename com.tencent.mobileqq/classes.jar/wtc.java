@@ -1,13 +1,12 @@
-class wtc
-  implements wtd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+final class wtc
+  implements DialogInterface.OnDismissListener
 {
-  wtc(wtb paramwtb) {}
-  
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.jdField_a_of_type_Wtk != null) {
-      this.a.jdField_a_of_type_Wtk.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
-    }
+    wtb.a(false);
   }
 }
 

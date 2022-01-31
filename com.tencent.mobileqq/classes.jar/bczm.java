@@ -1,16 +1,8 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
-
 public class bczm
-  implements bdeb
 {
-  public bczm(BragActivity paramBragActivity) {}
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
-  {
-    this.a.a.setImageBitmap(paramBitmap);
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

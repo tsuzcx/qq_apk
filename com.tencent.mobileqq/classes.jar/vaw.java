@@ -1,27 +1,57 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import mqq.os.MqqHandler;
 
 public class vaw
-  implements wcn
+  implements svz
 {
-  public void a(SegmentList paramSegmentList)
+  public MessageProgressView a;
+  private String a;
+  
+  public vaw(MessageProgressView paramMessageProgressView)
   {
-    if (!(paramSegmentList instanceof MystoryListView)) {
-      throw new IllegalArgumentException("arg should match type!");
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramMessageProgressView;
+  }
+  
+  private void b(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(vzl.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(paramInt);
+  }
+  
+  public void a(bcnl parambcnl)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(parambcnl);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+    if (paramInt >= 100) {
+      ThreadManager.getUIHandler().postDelayed(new StoryUploadProgressView.1(this), 500L);
     }
-    paramSegmentList = (MystoryListView)paramSegmentList;
-    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-    Object localObject = paramSegmentList.jdField_a_of_type_Vat;
-    boolean bool = paramSegmentList.a();
-    paramSegmentList.a(sxp.a(localActivity, 5));
-    paramSegmentList.a(new vcs(localActivity, (vat)localObject));
-    paramSegmentList.a(new vcr(localActivity));
-    paramSegmentList.a(new vci(localActivity));
-    localObject = new vbd(localActivity, localActivity, 10, (vat)localObject, bool);
-    paramSegmentList.a((wcr)localObject);
-    paramSegmentList.a(new vdl(localActivity, "FeedSegment", ajyc.a(2131707053) + ssi.a + "\n拍摄一段视频，分享眼前的世界", 2130845698, 2130845699));
-    ((vbd)localObject).e_(true);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
   }
 }
 

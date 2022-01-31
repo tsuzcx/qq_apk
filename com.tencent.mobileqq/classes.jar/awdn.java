@@ -1,43 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.ArrayList;
 
-public final class awdn
-  implements anyb
+public class awdn
+  implements View.OnClickListener
 {
-  public awdn(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public awdn(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void a(anyc paramanyc)
+  public void onClick(View paramView)
   {
-    if (paramanyc != null) {}
-    try
+    String str = (String)paramView.getTag();
+    if (SignatureHistoryFragment.a(this.a).contains(str))
     {
-      paramanyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
+      SignatureHistoryFragment.a(this.a).remove(str);
+      ((CheckBox)paramView).setChecked(false);
     }
-    catch (Throwable paramanyc) {}
+    for (;;)
+    {
+      SignatureHistoryFragment.b(this.a, false);
+      return;
+      if (SignatureHistoryFragment.a(this.a).size() >= 200)
+      {
+        this.a.a(1, 2131719651);
+        ((CheckBox)paramView).setChecked(false);
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.a).add(str);
+        ((CheckBox)paramView).setChecked(true);
+      }
+    }
   }
-  
-  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
-  
-  public boolean a(anyc paramanyc)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    ayla.a(this.jdField_a_of_type_AndroidWidgetEditText);
-  }
-  
-  public void b(anyc paramanyc) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

@@ -1,93 +1,84 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.robotchat.RobotChatPanelLayout;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class awfz
-  implements bame
 {
-  public awfz(RobotChatPanelLayout paramRobotChatPanelLayout, long paramLong, int paramInt, String paramString, baoe parambaoe) {}
+  public static final String a;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  static
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramInt == 0)
+    jdField_a_of_type_JavaLangString = ajya.a(2131715037);
+  }
+  
+  private static void a(BaseChatPie paramBaseChatPie, long paramLong, String paramString)
+  {
+    MessageForText localMessageForText = new MessageForText();
+    localMessageForText.selfuin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localMessageForText.frienduin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    localMessageForText.istroop = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    localMessageForText.senderuin = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (paramLong != 0L) {}
+    for (;;)
     {
-      if (RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout) == null) {
-        if (QLog.isColorLevel()) {
-          QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
-        }
-      }
-      do
-      {
-        return;
-        if (paramRspBody.robot_uin.get() == this.jdField_a_of_type_Long) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("RobotChatPanelLayout", 2, "data not match :" + this.jdField_a_of_type_Long);
+      localMessageForText.time = paramLong;
+      localMessageForText.msg = paramString;
+      localMessageForText.uniseq = 0L;
+      localMessageForText.msgUid = -1L;
+      localMessageForText.shmsgseq = 1L;
+      localMessageForText.sb = paramString;
+      paramBaseChatPie.d(localMessageForText);
       return;
-      paramInt = paramRspBody.version.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList oldVer:" + this.jdField_a_of_type_Int + " newVer:" + paramInt);
-      }
-      if (this.jdField_a_of_type_Int != paramInt)
-      {
-        RobotChatPanelLayout.b(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout).a("1", this.jdField_a_of_type_JavaLangString, paramRspBody);
-        paramRspBody = RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, paramRspBody);
-        if ((paramRspBody != null) && (paramRspBody.size() > 0))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(paramRspBody, true);
-          paramRspBody = this.jdField_a_of_type_Baoe;
-          if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() <= 0) {
-            break label297;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramRspBody.a(bool1, this.jdField_a_of_type_JavaLangString);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(true);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("RobotChatPanelLayout", 2, "listDatas is null in new version");
-        break;
-        if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RobotChatPanelLayout", 2, "item count == 0");
-          }
-          RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.c();
-        break;
-        label297:
-        bool1 = false;
-      }
+      paramLong = NetConnInfoCenter.getServerTime();
     }
-    RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() > 0) {}
-    for (bool1 = bool2;; bool1 = false)
+  }
+  
+  public static final boolean a(BaseChatPie paramBaseChatPie, Intent paramIntent)
+  {
+    paramIntent.getStringExtra("key_aio_reply_time");
+    String str = paramIntent.getStringExtra("key_aio_reply_content");
+    paramIntent.getIntExtra("key_aio_reply_type", 0);
+    return (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
+  }
+  
+  public static final boolean b(BaseChatPie paramBaseChatPie, Intent paramIntent)
+  {
+    String str2 = paramIntent.getStringExtra("key_aio_reply_time");
+    String str1 = paramIntent.getStringExtra("key_aio_reply_content");
+    int i = paramIntent.getIntExtra("key_aio_reply_type", 0);
+    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      return false;
+    }
+    long l1 = 0L;
+    try
     {
-      this.jdField_a_of_type_Baoe.a(bool1, this.jdField_a_of_type_JavaLangString);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList: errorCode = " + paramInt + " hasdata:" + bool1);
-      return;
+      long l2 = Long.valueOf(str2).longValue();
+      l1 = l2;
     }
+    catch (Exception paramIntent)
+    {
+      label62:
+      break label62;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicReplyUtil", 2, String.format("checkAIOReplyNInsert [%s, %d, %s]", new Object[] { paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Long.valueOf(l1), str1 }));
+    }
+    paramIntent = str1;
+    if (i == 0) {
+      paramIntent = jdField_a_of_type_JavaLangString + str1;
+    }
+    a(paramBaseChatPie, l1, paramIntent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     awfz
  * JD-Core Version:    0.7.0.1
  */

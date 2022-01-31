@@ -1,6 +1,6 @@
 public abstract interface ufm
 {
-  public abstract void a(ufk paramufk);
+  public abstract void a_(ufh paramufh);
 }
 
 

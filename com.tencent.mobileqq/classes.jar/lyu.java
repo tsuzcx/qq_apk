@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
-class lyu
-  implements DialogInterface.OnDismissListener
+public class lyu
+  extends PhoneStateListener
 {
-  lyu(lys paramlys) {}
+  public lyu(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lyx + "]");
-    }
-    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lyx != null)) {
-      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
-    }
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 

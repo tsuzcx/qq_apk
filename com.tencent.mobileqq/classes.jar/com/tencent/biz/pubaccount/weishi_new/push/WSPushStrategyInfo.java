@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.weishi_new.push;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import sme;
-import smi;
+import smb;
+import smf;
 
 public class WSPushStrategyInfo
-  extends sme
+  extends smb
   implements IWSPushStrategy
 {
-  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new smi();
+  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new smf();
   public String mScheme;
   public WSPushOpModel mWSPushModel;
   public WSPushOpDialogModel mWSPushOpDialogModel;

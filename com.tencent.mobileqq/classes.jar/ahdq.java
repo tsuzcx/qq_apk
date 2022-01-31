@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
 public class ahdq
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public ahdq(ChooseItemView paramChooseItemView) {}
+  public ahdq(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.friends.intimate;
 
 import android.graphics.Bitmap;
-import aqkp;
+import aqkr;
 import com.tencent.widget.ThemeImageView;
 
 public class IntimatePlayTogetherMiniGameCardView$3$1
   implements Runnable
 {
-  public IntimatePlayTogetherMiniGameCardView$3$1(aqkp paramaqkp, Bitmap paramBitmap) {}
+  public IntimatePlayTogetherMiniGameCardView$3$1(aqkr paramaqkr, Bitmap paramBitmap) {}
   
   public void run()
   {

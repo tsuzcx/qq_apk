@@ -2,19 +2,19 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aopk;
+import aopp;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class UniformDownloadActivity$10$2
   implements Runnable
 {
-  public UniformDownloadActivity$10$2(aopk paramaopk, DownloadInfo paramDownloadInfo) {}
+  public UniformDownloadActivity$10$2(aopp paramaopp, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Aopk.a).setVisibility(0);
-    UniformDownloadActivity.a(this.jdField_a_of_type_Aopk.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Aopk.a).setText(this.jdField_a_of_type_Aopk.a.getString(2131691939, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + "%" }));
+    UniformDownloadActivity.b(this.jdField_a_of_type_Aopp.a).setVisibility(0);
+    UniformDownloadActivity.a(this.jdField_a_of_type_Aopp.a).setVisibility(0);
+    UniformDownloadActivity.b(this.jdField_a_of_type_Aopp.a).setText(this.jdField_a_of_type_Aopp.a.getString(2131691939, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f + "%" }));
   }
 }
 

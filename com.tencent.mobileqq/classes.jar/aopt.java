@@ -1,34 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aopt
-  extends aouj
+  implements bfpj
 {
-  public aopt(VerifyPwdView paramVerifyPwdView) {}
+  public aopt(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  protected void a(int paramInt, String paramString)
+  public void onDismiss()
   {
-    aptv.a(paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
-    }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    aptv.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void e()
-  {
-    VerifyPwdView.a(this.a);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

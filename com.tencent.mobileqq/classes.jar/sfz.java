@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
 
 public class sfz
-  implements DialogInterface.OnClickListener
+  implements bcqh
 {
-  public sfz(PublicAccountH5AbilityPlugin.5 param5) {}
+  public sfz(PublicAccountH5AbilityPlugin.5 param5, qpb paramqpb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0.a.b(this.jdField_a_of_type_Qpb);
+  }
 }
 
 

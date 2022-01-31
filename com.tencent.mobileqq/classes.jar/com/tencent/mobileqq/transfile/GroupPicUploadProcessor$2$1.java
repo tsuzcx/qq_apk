@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import ayrd;
-import ayre;
+import ayrf;
+import ayrg;
 
 public class GroupPicUploadProcessor$2$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$2$1(ayre paramayre, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public GroupPicUploadProcessor$2$1(ayrg paramayrg, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayre.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.jdField_a_of_type_Ayrg.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
   }
 }
 

@@ -1,26 +1,19 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
 
 final class apiu
   implements View.OnClickListener
 {
-  apiu(FileManagerEntity paramFileManagerEntity, apkm paramapkm) {}
+  apiu(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    try
-    {
-      if (bgta.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
-      {
-        bgta.a().a(this.jdField_a_of_type_Apkm.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, false);
-        return;
-      }
-      QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath);
-      return;
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
     }
-    catch (Exception paramView) {}
   }
 }
 

@@ -1,22 +1,25 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.guide.GuideHelper;
+import java.lang.ref.WeakReference;
 
-class mdf
-  implements ViewTreeObserver.OnPreDrawListener
+public class mdf
+  implements View.OnClickListener
 {
-  mdf(mde parammde, TextView paramTextView) {}
+  public mdf(EffectSettingUi paramEffectSettingUi) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_Mde.a.a().a().at = true;
-    muf.a(this.jdField_a_of_type_Mde.a);
-    QLog.d("qav_face_guide", 1, "onPreDraw");
-    return false;
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
+    this.a.b(-1007L, true);
+    mbm.b();
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      paramView = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramView.a.a(-1007L, paramView, 99, 0);
+    }
   }
 }
 

@@ -1,25 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.Window;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class asfg
-  implements View.OnClickListener
 {
-  public asfg(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
-  
-  public void onClick(View paramView)
+  public static ProgressDialog a(Context paramContext, String paramString)
   {
-    axqw.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
-    paramView = new Intent();
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, MatchChatSettingFragment.class);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130848555);
+    paramContext = new ProgressDialog(paramContext, 2131755791);
+    paramContext.show();
+    paramContext.getWindow().setContentView(2131558428);
+    paramContext.setContentView(2131558428);
+    ((TextView)paramContext.findViewById(2131365146)).setText(paramString);
+    ((ProgressBar)paramContext.findViewById(2131366570)).setIndeterminateDrawable(localDrawable);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     asfg
  * JD-Core Version:    0.7.0.1
  */

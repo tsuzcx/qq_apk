@@ -1,25 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class bjah
-  implements View.OnClickListener
 {
-  public bjah(CaptureModeAdapter paramCaptureModeAdapter) {}
-  
-  public void onClick(View paramView)
+  public static void a(@NonNull String paramString1, @NonNull String paramString2)
   {
-    Integer localInteger = (Integer)paramView.getTag();
-    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
-    do
-    {
-      return;
-      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
-      CaptureModeAdapter.a(this.a, localInteger.intValue());
-    } while (CaptureModeAdapter.a(this.a) == null);
-    CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
+    QLog.d("MODULE_GY_AECAMERA :" + paramString1, 4, paramString2);
+  }
+  
+  public static void a(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public static void b(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.i("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
+  
+  public static void c(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.w("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
+  }
+  
+  public static void d(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    QLog.e("MODULE_GY_AECAMERA :" + paramString1, 1, paramString2);
   }
 }
 

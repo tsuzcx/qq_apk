@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import ahic;
+import ahia;
 import com.tencent.qphone.base.util.QLog;
 
 class SpringHbReportManager$4
@@ -17,7 +17,7 @@ class SpringHbReportManager$4
         if (QLog.isColorLevel()) {
           QLog.i("springHb_report_SpringHbReportManager", 2, "[report] " + this.a + ",over:" + SpringHbReportManager.a(this.this$0) + ",level:" + SpringHbReportManager.a(this.this$0) + ",levelTime:" + SpringHbReportManager.a(this.this$0));
         }
-        ahic.a(this.a);
+        ahia.a(this.a);
         if (SpringHbReportManager.a(this.this$0, this.a))
         {
           if (!QLog.isColorLevel()) {

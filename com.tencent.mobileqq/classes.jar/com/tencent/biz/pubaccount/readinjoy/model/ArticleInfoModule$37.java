@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osm;
-import ozr;
+import osj;
+import ozo;
 
 public class ArticleInfoModule$37
   implements Runnable
 {
-  public ArticleInfoModule$37(ozr paramozr, int paramInt, long paramLong) {}
+  public ArticleInfoModule$37(ozo paramozo, int paramInt, long paramLong) {}
   
   public void run()
   {
-    osm localosm = osm.a();
+    osj localosj = osj.a();
     if (this.jdField_a_of_type_Int == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localosm.a(bool, this.jdField_a_of_type_Long);
+      localosj.a(bool, this.jdField_a_of_type_Long);
       return;
     }
   }

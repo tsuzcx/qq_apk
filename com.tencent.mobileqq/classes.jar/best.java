@@ -1,18 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
 
 public class best
-  extends Handler
 {
-  public best(Looper paramLooper)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  public best a()
   {
-    super(paramLooper);
+    best localbest = new best();
+    localbest.a = this.a;
+    localbest.b = this.b;
+    localbest.c = this.c;
+    localbest.d = this.d;
+    localbest.e = this.e;
+    localbest.f = this.f;
+    localbest.g = this.g;
+    localbest.h = this.h;
+    return localbest;
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a()
   {
-    super.handleMessage(paramMessage);
+    return (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e));
   }
 }
 

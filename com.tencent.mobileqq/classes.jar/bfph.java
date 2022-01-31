@@ -1,16 +1,12 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 public abstract interface bfph
 {
-  public abstract View a(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
-  
-  public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
+  public abstract void OnClick(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfph
  * JD-Core Version:    0.7.0.1
  */

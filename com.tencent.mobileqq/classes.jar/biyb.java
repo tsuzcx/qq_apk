@@ -1,14 +1,13 @@
-import dov.com.qq.im.ae.play.EditTextViewer;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
 public class biyb
-  implements biya
+  implements bcpw
 {
-  public biyb(EditTextViewer paramEditTextViewer) {}
+  public biyb(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
+  public void a(bcpu parambcpu) {}
+  
+  public void a(bcpu parambcpu, int paramInt1, int paramInt2) {}
 }
 
 

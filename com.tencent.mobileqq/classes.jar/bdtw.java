@@ -1,36 +1,16 @@
-import android.view.View;
-import com.tencent.qidian.QidianProfileCardActivity;
-
 public class bdtw
-  implements bfoq
 {
-  public bdtw(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  public String a;
+  public String b;
   
-  public void OnClick(View paramView, int paramInt)
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    return "[MediaCodecInfo] name : " + this.a + " ;path = " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdtw
  * JD-Core Version:    0.7.0.1
  */

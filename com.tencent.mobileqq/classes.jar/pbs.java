@@ -1,8 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-
-public abstract interface pbs
+class pbs
+  extends akdn
 {
-  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
+  pbs(pbr parampbr) {}
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    this.a.f();
+  }
 }
 
 

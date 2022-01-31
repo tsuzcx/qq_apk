@@ -1,37 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class aonz
-  implements apxd
+  extends BroadcastReceiver
 {
-  public aonz(FilePreviewActivity paramFilePreviewActivity) {}
+  public aonz(FMActivity paramFMActivity) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Apep != null)
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
     {
-      this.a.jdField_a_of_type_Apep.l = "3";
-      this.a.jdField_a_of_type_Apep.e = System.currentTimeMillis();
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

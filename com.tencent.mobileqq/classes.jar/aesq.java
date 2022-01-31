@@ -1,31 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.35.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class aesq
-  implements View.OnClickListener
+public class aesq
+  implements DialogInterface.OnClickListener
 {
-  aesq(aerv paramaerv) {}
+  aesq(aert paramaert, PublicAccountInfo paramPublicAccountInfo, akdh paramakdh) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    actn.n = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
-    }
-    if (this.a.i != null) {
-      this.a.i.setVisibility(0);
-    }
-    if (this.a.j != null) {
-      this.a.j.setVisibility(0);
-    }
-    this.a.aB();
-    if (this.a.jdField_a_of_type_Nnx.b(this.a.a()) != 0) {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Akdh.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Aert.a(1, null);
+    paramDialogInterface = new PublicAccountChatPie.35.1(this);
+    this.jdField_a_of_type_Aert.a.a(paramDialogInterface);
+    aert.c(this.jdField_a_of_type_Aert);
   }
 }
 

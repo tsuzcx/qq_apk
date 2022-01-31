@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bemw;
+import benn;
 
 class MiniAppInfoLoadingFragment$3
   implements Runnable
@@ -9,7 +9,7 @@ class MiniAppInfoLoadingFragment$3
   
   public void run()
   {
-    bemw.a(this.this$0.getActivity(), 1, "启动失败，小程序包配置错误", 1).a();
+    benn.a(this.this$0.getActivity(), 1, "启动失败，小程序包配置错误", 1).a();
   }
 }
 

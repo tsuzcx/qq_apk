@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbcl;
+import bbcz;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class QQSettingMe$14
@@ -10,7 +10,7 @@ class QQSettingMe$14
   
   public void run()
   {
-    String str2 = bbcl.i(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
+    String str2 = bbcz.i(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
     String str1;
     if (str2 != null)
     {

@@ -1,10 +1,27 @@
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x934.cmd0x934.Item;
+import tencent.im.oidb.cmd0x934.cmd0x934.List;
 
-class baox
+public class baox
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public String a;
+  public ArrayList<baou> a;
   
-  baox(baow parambaow) {}
+  public static baox a(cmd0x934.List paramList)
+  {
+    baox localbaox = new baox();
+    localbaox.jdField_a_of_type_JavaLangString = paramList.name.get();
+    localbaox.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList.items.size());
+    int i = 0;
+    while (i < paramList.items.size())
+    {
+      localbaox.jdField_a_of_type_JavaUtilArrayList.add(baou.a((cmd0x934.Item)paramList.items.get(i)));
+      i += 1;
+    }
+    return localbaox;
+  }
 }
 
 

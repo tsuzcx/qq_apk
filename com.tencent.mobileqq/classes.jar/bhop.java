@@ -1,19 +1,19 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-public final class bhop
+final class bhop
+  implements QQPermissionCallback
 {
-  public int a;
-  public Map<String, String> a;
+  bhop(String paramString1, String paramString2, Activity paramActivity) {}
   
-  public bhop()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    bbdj.b(bhoo.a(this.jdField_a_of_type_AndroidAppActivity));
   }
   
-  public String toString()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
+    bhoo.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

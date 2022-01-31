@@ -1,54 +1,73 @@
-import android.os.Message;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class oge
-  extends ayvz
+  implements anyg
 {
   public oge(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(anyh paramanyh)
   {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if ((localayqm == null) || (localayqm.b != 24) || (localayqm.c != 10)) {
+    if ((paramanyh instanceof aobp))
+    {
+      paramanyh = (aobp)paramanyh;
+      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramanyh.a(localContext, localContext.getResources().getDisplayMetrics().density));
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      ReadInJoyCommentComponentFragment.a(this.a);
       return;
     }
-    switch (paramMessage.what)
+    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramanyh, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+  }
+  
+  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
+  
+  public boolean a(anyh paramanyh)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
+    for (;;)
     {
-    default: 
       return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send finished!");
+      try
+      {
+        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
+        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
       }
-      break;
-    }
-    try
-    {
-      ReadInJoyCommentComponentFragment.a(this.a).c = true;
-      ReadInJoyCommentComponentFragment.a(this.a).f = localayqm.i;
-      ReadInJoyCommentComponentFragment.a(this.a).g = localayqm.f;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
-      label172:
-      this.a.f();
-      ReadInJoyCommentComponentFragment.a(this.a).setResult(-1, ReadInJoyCommentComponentFragment.a(this.a));
-      ReadInJoyCommentComponentFragment.a(this.a).finish();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
-      }
-      this.a.f();
-      this.a.a(1, this.a.getString(2131718414));
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      break label172;
     }
   }
+  
+  public void b(anyh paramanyh) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

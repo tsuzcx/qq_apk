@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alfo;
-import alfu;
-import alfw;
-import algo;
+import alfn;
+import alft;
+import alfv;
+import algn;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -11,27 +11,27 @@ import com.tencent.qphone.base.util.QLog;
 public class ARCloudControl$8
   implements Runnable
 {
-  public ARCloudControl$8(alfo paramalfo) {}
+  public ARCloudControl$8(alfn paramalfn) {}
   
   public void run()
   {
-    if ((alfo.a(this.this$0) != null) && (alfo.e(this.this$0)))
+    if ((alfn.a(this.this$0) != null) && (alfn.e(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      SosoInterface.b(this.this$0.jdField_a_of_type_Akup);
-      if (!alfo.a(this.this$0)) {}
+      SosoInterface.b(this.this$0.jdField_a_of_type_Akuo);
+      if (!alfn.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    alfw localalfw = new alfw();
-    localalfw.a = 2;
-    algo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, alfo.a(this.this$0), localalfw);
-    if (alfo.a(this.this$0) != null) {
-      alfo.a(this.this$0).a(0, alfo.a(this.this$0));
+    alfv localalfv = new alfv();
+    localalfv.a = 2;
+    algn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, alfn.a(this.this$0), localalfv);
+    if (alfn.a(this.this$0) != null) {
+      alfn.a(this.this$0).a(0, alfn.a(this.this$0));
     }
-    alfo.a(this.this$0, null);
+    alfn.a(this.this$0, null);
   }
 }
 

@@ -1,8 +1,17 @@
-public abstract interface adeb
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
+
+public class adeb
+  implements Comparator
 {
-  public abstract void a();
+  public adeb(LoadDataJob paramLoadDataJob) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    paramObject1 = (aden)paramObject1;
+    paramObject2 = (aden)paramObject2;
+    return paramObject1.a - paramObject2.a;
+  }
 }
 
 

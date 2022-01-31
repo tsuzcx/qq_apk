@@ -1,48 +1,48 @@
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.Matrix;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bawg
+final class bawg
   implements DownloadParams.DecodeHandler
 {
-  private int a;
-  
-  public bawg(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    int k = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int m = paramDownloadParams.reqHeight;
-    int i = k * m / j;
-    if (m >= j) {
-      i = k;
-    }
-    for (;;)
+    Object localObject;
+    if (paramBitmap == null)
     {
-      try
+      localObject = null;
+      return localObject;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
+    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
+    {
+      int j;
+      int k;
+      boolean bool;
+      if (i != 0)
       {
-        paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
-        new Canvas(paramDownloadParams).drawBitmap(paramBitmap, null, new Rect(0, 0, i, j), new Paint(7));
-        bbju.a(paramDownloadParams, this.a);
+        paramDownloadParams = new Matrix();
+        paramDownloadParams.postRotate(i);
+        j = paramBitmap.getWidth();
+        k = paramBitmap.getHeight();
+        if (i % 90 != 0) {
+          bool = true;
+        }
+      }
+      label84:
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
+      {
+        localObject = paramDownloadParams;
+        if (paramDownloadParams == paramBitmap) {
+          break;
+        }
+        paramBitmap.recycle();
         return paramDownloadParams;
+        bool = false;
+        break label84;
       }
-      catch (OutOfMemoryError paramDownloadParams)
-      {
-        return paramBitmap;
-      }
-      catch (Exception paramDownloadParams)
-      {
-        return paramBitmap;
-      }
-      j = m;
     }
   }
 }

@@ -1,20 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aajc
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aajc(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
+  public aajc(AssistantSettingActivity paramAssistantSettingActivity, ahfx paramahfx) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
-    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
+    this.jdField_a_of_type_Ahfx.a(paramBoolean);
+    paramCompoundButton = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton.put("ext1", i + "");
+      ahif.a("sq.sz.dzkg", 1, 0, paramCompoundButton);
+      return;
+    }
   }
 }
 

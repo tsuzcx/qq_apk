@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvh
-  implements DialogInterface.OnClickListener
+  implements axie
 {
   public ahvh(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    vel.a("video_shoot", "down_now", 0, 0, new String[0]);
-    arii.b(null);
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
+    }
+    ahvx.a(paramBoolean1);
+    if (paramBoolean1)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.g();
   }
 }
 

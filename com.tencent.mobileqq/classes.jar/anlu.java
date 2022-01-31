@@ -1,25 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.HashMap;
 
 class anlu
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  anlu(anls paramanls) {}
+  anlu(anlt paramanlt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (anlv)anls.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
-    {
-      this.a.a();
-      anls.a(this.a).a(paramContext);
-    }
+    this.a.a.a.setVisibility(8);
+    this.a.a.d();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

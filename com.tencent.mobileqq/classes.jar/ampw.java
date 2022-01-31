@@ -1,243 +1,195 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.mobileqq.config.QStorageSafeDeleteException;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
-public final class ampw
+class ampw
+  implements ampb<String, T>
 {
-  public static ConcurrentHashMap<String, ampw> a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "flashchat" };
-  Context jdField_a_of_type_AndroidContentContext;
-  File jdField_a_of_type_JavaIoFile;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  private ampw(Context paramContext, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramString2;
-    paramContext = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath() + File.separator + this.b + File.separator + "qstorage" + File.separator + "objs");
-    if (!paramContext.exists()) {
-      paramContext.mkdirs();
-    }
-    this.jdField_a_of_type_JavaIoFile = paramContext;
-  }
-  
-  public static <T extends ampd<Y>, Y> T a(Y paramY, Class<T> paramClass)
-  {
-    ampd localampd = (ampd)ampm.a(paramClass);
-    try
-    {
-      localampd.a(paramY);
-      return localampd;
-    }
-    catch (Exception paramY)
-    {
-      ampp.a().a(paramClass, paramY);
-      throw new QStorageInstantiateException("readJsonOrXml exception too much", paramY);
-    }
-  }
-  
-  public static ampw a(String paramString)
-  {
-    if (!a(paramString)) {
-      QLog.d("QStorage", 1, "buildQStorage notRegister " + paramString);
-    }
-    Object localObject = (ampw)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject == null) {
-      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        ampw localampw = (ampw)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject = localampw;
-        if (localampw == null)
-        {
-          localObject = new ampw(BaseApplicationImpl.getContext(), paramString, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
-        }
-        return localObject;
-      }
-    }
-    return localObject;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (TextUtils.equals(arrayOfString[i], paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public File a(String paramString1, String paramString2)
-  {
-    return new File(this.jdField_a_of_type_JavaIoFile, paramString1 + paramString2);
-  }
-  
-  public <T extends Serializable> T a(String paramString, Class<T> paramClass, int paramInt)
-  {
-    File localFile = a(paramString, ".serial");
-    return (Serializable)a(localFile, "", paramClass, paramInt, new ampy(this, localFile, paramString));
-  }
-  
-  public <JavaBean, Param> JavaBean a(File paramFile, Param paramParam, Class<JavaBean> paramClass, int paramInt, ampc<JavaBean, Param> paramampc)
-  {
-    Object localObject = null;
-    if (paramFile != null) {}
-    String str2;
-    for (;;)
-    {
-      try
-      {
-        String str1 = paramFile.getCanonicalPath();
-        if ((paramInt == 1) || (str1 == null) || (!ampj.a().a(this.jdField_a_of_type_JavaLangString, this.b, str1)) || (paramFile.exists())) {
-          break;
-        }
-        throw new QStorageSafeDeleteException();
-      }
-      catch (IOException localIOException)
-      {
-        str2 = null;
-        continue;
-      }
-      str2 = null;
-    }
-    try
-    {
-      paramParam = paramampc.a(paramFile, paramParam);
-      paramFile = paramParam;
-    }
-    catch (Exception paramParam)
-    {
-      for (;;)
-      {
-        ampp.a().a(paramampc, paramFile, paramParam);
-        QLog.d("QStorage", 1, "readFile " + paramFile.getAbsolutePath(), paramParam);
-        paramFile = localObject;
-        continue;
-        paramParam = paramFile;
-        if (str2 != null)
-        {
-          ampj.a().a(this.jdField_a_of_type_JavaLangString, this.b, str2);
-          paramParam = paramFile;
-        }
-      }
-    }
-    if (paramFile == null)
-    {
-      paramParam = ampm.a(paramClass);
-      if (paramParam != null) {
-        return paramParam;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QStorage", 2, "readFile ");
-      }
-      throw new QStorageInstantiateException("readSerializable exception too much", new NullPointerException());
-    }
-    return paramParam;
-  }
+  ampw(ampv paramampv, String paramString, Serializable paramSerializable) {}
   
   /* Error */
-  public <DATA> void a(File paramFile, DATA paramDATA, ampc<String, DATA> paramampc)
+  public String a(java.io.File paramFile, T paramT)
   {
     // Byte code:
-    //   0: aload_3
-    //   1: aload_1
-    //   2: aload_2
-    //   3: invokeinterface 201 3 0
-    //   8: pop
-    //   9: aload_1
-    //   10: ifnull +49 -> 59
-    //   13: aload_1
-    //   14: invokevirtual 72	java/io/File:exists	()Z
-    //   17: istore 4
-    //   19: iload 4
-    //   21: ifeq +38 -> 59
-    //   24: aload_1
-    //   25: invokevirtual 185	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   28: astore_2
-    //   29: invokestatic 190	ampj:a	()Lampj;
-    //   32: aload_0
-    //   33: getfield 32	ampw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   36: aload_0
-    //   37: getfield 36	ampw:b	Ljava/lang/String;
-    //   40: aload_2
-    //   41: invokevirtual 224	ampj:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   44: invokestatic 190	ampj:a	()Lampj;
+    //   0: aload_0
+    //   1: getfield 15	ampw:jdField_a_of_type_Ampv	Lampv;
+    //   4: aload_0
+    //   5: getfield 17	ampw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   8: ldc 37
+    //   10: invokevirtual 42	ampv:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   13: astore_2
+    //   14: aconst_null
+    //   15: astore 4
+    //   17: aconst_null
+    //   18: astore_1
+    //   19: aconst_null
+    //   20: astore_3
+    //   21: new 44	java/io/ObjectOutputStream
+    //   24: dup
+    //   25: new 46	java/io/BufferedOutputStream
+    //   28: dup
+    //   29: new 48	java/io/FileOutputStream
+    //   32: dup
+    //   33: aload_2
+    //   34: invokespecial 51	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   37: invokespecial 54	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   40: invokespecial 55	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   43: astore_2
+    //   44: aload_2
+    //   45: astore_1
+    //   46: aload_2
     //   47: aload_0
-    //   48: getfield 32	ampw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   51: aload_0
-    //   52: getfield 36	ampw:b	Ljava/lang/String;
-    //   55: aload_2
-    //   56: invokevirtual 220	ampj:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   59: return
-    //   60: astore_2
-    //   61: ldc 113
-    //   63: iconst_1
-    //   64: new 40	java/lang/StringBuilder
-    //   67: dup
-    //   68: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   71: ldc 226
-    //   73: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: aload_1
-    //   77: invokevirtual 51	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   80: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: aload_2
-    //   87: invokestatic 217	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   90: invokestatic 95	ampp:a	()Lampp;
-    //   93: aload_3
-    //   94: aload_1
-    //   95: aload_2
-    //   96: invokevirtual 214	ampp:a	(Lampc;Ljava/io/File;Ljava/lang/Exception;)V
-    //   99: return
-    //   100: astore_1
-    //   101: return
+    //   48: getfield 19	ampw:jdField_a_of_type_JavaIoSerializable	Ljava/io/Serializable;
+    //   51: invokevirtual 59	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   54: aload_2
+    //   55: astore_1
+    //   56: aload_2
+    //   57: invokevirtual 62	java/io/ObjectOutputStream:flush	()V
+    //   60: aload_2
+    //   61: ifnull +7 -> 68
+    //   64: aload_2
+    //   65: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   68: ldc 67
+    //   70: areturn
+    //   71: astore_3
+    //   72: aconst_null
+    //   73: astore_2
+    //   74: aload_2
+    //   75: astore_1
+    //   76: ldc 69
+    //   78: iconst_1
+    //   79: new 71	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   86: ldc 74
+    //   88: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: aload_0
+    //   92: getfield 17	ampw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   95: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: aload_3
+    //   102: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   105: aload_2
+    //   106: ifnull -38 -> 68
+    //   109: aload_2
+    //   110: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   113: goto -45 -> 68
+    //   116: astore_1
+    //   117: goto -49 -> 68
+    //   120: astore_1
+    //   121: aload_3
+    //   122: astore_2
+    //   123: aload_1
+    //   124: astore_3
+    //   125: aload_2
+    //   126: astore_1
+    //   127: ldc 69
+    //   129: iconst_1
+    //   130: new 71	java/lang/StringBuilder
+    //   133: dup
+    //   134: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   137: ldc 74
+    //   139: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: aload_0
+    //   143: getfield 17	ampw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   146: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: aload_3
+    //   153: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   156: aload_2
+    //   157: ifnull -89 -> 68
+    //   160: aload_2
+    //   161: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   164: goto -96 -> 68
+    //   167: astore_1
+    //   168: goto -100 -> 68
+    //   171: astore_3
+    //   172: aload 4
+    //   174: astore_2
+    //   175: aload_2
+    //   176: astore_1
+    //   177: ldc 69
+    //   179: iconst_1
+    //   180: new 71	java/lang/StringBuilder
+    //   183: dup
+    //   184: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   187: ldc 74
+    //   189: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: aload_0
+    //   193: getfield 17	ampw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   196: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: aload_3
+    //   203: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   206: aload_2
+    //   207: ifnull -139 -> 68
+    //   210: aload_2
+    //   211: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   214: goto -146 -> 68
+    //   217: astore_1
+    //   218: goto -150 -> 68
+    //   221: astore_3
+    //   222: aload_1
+    //   223: astore_2
+    //   224: aload_3
+    //   225: astore_1
+    //   226: aload_2
+    //   227: ifnull +7 -> 234
+    //   230: aload_2
+    //   231: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   234: aload_1
+    //   235: athrow
+    //   236: astore_1
+    //   237: goto -169 -> 68
+    //   240: astore_2
+    //   241: goto -7 -> 234
+    //   244: astore_3
+    //   245: aload_1
+    //   246: astore_2
+    //   247: aload_3
+    //   248: astore_1
+    //   249: goto -23 -> 226
+    //   252: astore_3
+    //   253: goto -78 -> 175
+    //   256: astore_3
+    //   257: goto -132 -> 125
+    //   260: astore_3
+    //   261: goto -187 -> 74
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	102	0	this	ampw
-    //   0	102	1	paramFile	File
-    //   0	102	2	paramDATA	DATA
-    //   0	102	3	paramampc	ampc<String, DATA>
-    //   17	3	4	bool	boolean
+    //   0	264	0	this	ampw
+    //   0	264	1	paramFile	java.io.File
+    //   0	264	2	paramT	T
+    //   20	1	3	localObject1	Object
+    //   71	51	3	localNotSerializableException1	java.io.NotSerializableException
+    //   124	29	3	localFile	java.io.File
+    //   171	32	3	localIOException1	java.io.IOException
+    //   221	4	3	localObject2	Object
+    //   244	4	3	localObject3	Object
+    //   252	1	3	localIOException2	java.io.IOException
+    //   256	1	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   260	1	3	localNotSerializableException2	java.io.NotSerializableException
+    //   15	158	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   0	9	60	java/lang/Exception
-    //   13	19	60	java/lang/Exception
-    //   24	59	60	java/lang/Exception
-    //   24	59	100	java/io/IOException
-  }
-  
-  public <T extends Serializable> void a(String paramString, T paramT)
-  {
-    a(a(paramString, ".serial"), paramT, new ampx(this, paramString, paramT));
+    //   21	44	71	java/io/NotSerializableException
+    //   109	113	116	java/io/IOException
+    //   21	44	120	java/io/FileNotFoundException
+    //   160	164	167	java/io/IOException
+    //   21	44	171	java/io/IOException
+    //   210	214	217	java/io/IOException
+    //   21	44	221	finally
+    //   127	156	221	finally
+    //   177	206	221	finally
+    //   64	68	236	java/io/IOException
+    //   230	234	240	java/io/IOException
+    //   46	54	244	finally
+    //   56	60	244	finally
+    //   76	105	244	finally
+    //   46	54	252	java/io/IOException
+    //   56	60	252	java/io/IOException
+    //   46	54	256	java/io/FileNotFoundException
+    //   56	60	256	java/io/FileNotFoundException
+    //   46	54	260	java/io/NotSerializableException
+    //   56	60	260	java/io/NotSerializableException
   }
 }
 

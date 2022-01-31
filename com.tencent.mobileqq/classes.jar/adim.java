@@ -1,17 +1,26 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.ArrayList;
+import java.util.List;
 
 class adim
-  extends arzs
+  implements DialogInterface.OnClickListener
 {
-  adim(adik paramadik) {}
+  adim(adil paramadil, List paramList, BaseChatPie paramBaseChatPie) {}
   
-  public void a() {}
-  
-  public void a(aruk paramaruk)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((adik.a(this.a) != null) && (adik.a(this.a).equals(paramaruk)) && (adik.a(this.a) == adik.a(this.a).a().a())) {
-      adik.a(this.a).a().a();
+    switch (paramInt)
+    {
     }
+    do
+    {
+      return;
+      paramDialogInterface = asuh.a(adil.a(this.jdField_a_of_type_Adil), (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
+    adil.a(this.jdField_a_of_type_Adil, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
   }
 }
 

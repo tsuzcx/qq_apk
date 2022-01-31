@@ -1,132 +1,107 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract class awke<M extends awod, V extends awwn>
-  extends awkd<M, V>
+public abstract class awke<M extends awog, V extends awws>
+  extends BaseAdapter
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-  private String jdField_a_of_type_JavaLangString;
-  private List<awoj> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
+  private List<M> a = new ArrayList();
   
-  public awke(ListView paramListView, baxk parambaxk, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
+  public M a(int paramInt)
   {
-    super(paramListView, parambaxk);
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
-      this.jdField_a_of_type_JavaLangString = paramSearchResultItem.user.uin;
-      this.e = paramSearchResultItem.user.getType();
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
+    if (paramInt >= this.a.size()) {
+      return null;
     }
-    catch (NullPointerException paramListView)
+    return (awog)this.a.get(paramInt);
+  }
+  
+  protected abstract awrd<M, V> a(int paramInt);
+  
+  protected abstract awws a(int paramInt, ViewGroup paramViewGroup);
+  
+  public void a(List<M> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.BaseMvpAdapter", 2, "setDataList");
+    }
+    this.a.clear();
+    if (paramList != null)
     {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "BaseMvpMessageAdapter init e:", paramListView.toString() });
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.BaseMvpAdapter", 2, "setDataList， size:" + paramList.size());
       }
+      this.a.addAll(paramList);
     }
-  }
-  
-  private void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.msgtype == -2011)
-    {
-      AbsStructMsg localAbsStructMsg = axuy.a(paramMessageRecord.msgData);
-      if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg)))
-      {
-        paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mContentTitle;
-        if ((TextUtils.isEmpty(paramMessageRecord.msg)) && ((localAbsStructMsg instanceof AbsStructMsg))) {
-          paramMessageRecord.msg = ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
-        }
-      }
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
-      a();
-    }
-  }
-  
-  public void a()
-  {
-    label177:
     for (;;)
     {
-      try
-      {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        int i;
-        if (j + 50 < this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size())
-        {
-          i = j + 50;
-          if (j < i)
-          {
-            MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.e, ((Long)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.get(j)).longValue());
-            if (localMessageRecord == null) {
-              break label177;
-            }
-            a(localMessageRecord);
-            if (localMessageRecord.msg == null) {
-              break label177;
-            }
-            this.jdField_a_of_type_JavaUtilList.add(new awoj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user, localMessageRecord));
-            break label177;
-          }
+      paramList = this.a.iterator();
+      while (paramList.hasNext()) {
+        if (paramList.next() == null) {
+          paramList.remove();
         }
-        else
-        {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
-          continue;
-        }
-        j += 1;
       }
-      catch (NullPointerException localNullPointerException)
-      {
-        QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "initData e:", localNullPointerException.toString() });
-        super.a(this.jdField_a_of_type_JavaUtilList);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.BaseMvpAdapter", 2, "setDataList， null");
       }
     }
+    super.notifyDataSetChanged();
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(List<M> paramList, boolean paramBoolean)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
+    a(paramList);
+    super.notifyDataSetChanged();
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public int getCount()
   {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    b();
+    return this.a.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    awog localawog = a(paramInt);
+    if (localawog == null)
+    {
+      QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, "getView model is null. position=" + paramInt + " list size = " + this.a.size());
+      return null;
+    }
+    awrd localawrd;
+    if (paramView == null)
+    {
+      paramViewGroup = a(paramInt, paramViewGroup);
+      paramView = paramViewGroup.a();
+      localawrd = a(paramInt);
+      paramView.setTag(2131379215, localawrd);
+      paramView.setTag(2131379218, paramViewGroup);
+    }
+    for (;;)
+    {
+      paramView.setTag(2131379213, localawog);
+      if (paramViewGroup.a() != null)
+      {
+        paramViewGroup.a().setTag(2131379214, Integer.valueOf(paramInt));
+        paramViewGroup.a().setTag(2131379212, Integer.valueOf(getCount()));
+      }
+      localawrd.a(localawog, paramViewGroup);
+      return paramView;
+      paramViewGroup = (awws)paramView.getTag(2131379218);
+      localawrd = (awrd)paramView.getTag(2131379215);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awke
  * JD-Core Version:    0.7.0.1
  */

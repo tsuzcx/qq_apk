@@ -1,25 +1,21 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
+import NS_MINI_INTERFACE.INTERFACE.StCheckSessionReq;
+import NS_MINI_INTERFACE.INTERFACE.StCheckSessionRsp;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
 public class bezq
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetRobotUinReq a = new INTERFACE.StGetRobotUinReq();
+  private INTERFACE.StCheckSessionReq a = new INTERFACE.StCheckSessionReq();
   
-  public bezq(COMM.StCommonExt paramStCommonExt, String paramString)
+  public bezq(String paramString)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
     this.a.appid.set(paramString);
   }
   
   protected String a()
   {
-    return "mini_app_info";
+    return "mini_program_auth";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -27,34 +23,31 @@ public class bezq
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
+    INTERFACE.StCheckSessionRsp localStCheckSessionRsp = new INTERFACE.StCheckSessionRsp();
     try
     {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("robotUin", localStGetRobotUinRsp.uin.get());
-        return paramArrayOfByte;
+      localStCheckSessionRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStCheckSessionRsp != null) {
+        return new JSONObject();
       }
-      besl.a("GetRobotUinRequest", "onResponse fail.rsp = null");
+      betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetRobotUinRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  protected byte[] a()
+  public byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "GetRobotUin";
+    return "CheckSession";
   }
 }
 

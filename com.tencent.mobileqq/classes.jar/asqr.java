@@ -1,22 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
 
-public class asqr
-  implements Comparator<View>
+public final class asqr
+  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
 {
-  public int a(View paramView1, View paramView2)
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  {
+    return new MultiAIOBaseViewPager.SavedState[paramInt];
   }
 }
 

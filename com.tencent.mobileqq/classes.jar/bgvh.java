@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import android.support.annotation.NonNull;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bgvh
-  implements View.OnClickListener
+public abstract interface bgvh
 {
-  public bgvh(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public abstract void a(@NonNull bgvj parambgvj);
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public abstract void a(BaseCgiTask paramBaseCgiTask, String paramString);
+  
+  public abstract void b(@NonNull bgvj parambgvj);
 }
 
 

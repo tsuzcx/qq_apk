@@ -1,13 +1,13 @@
 package com.tencent.biz.videostory.network.observer;
 
 import com.tencent.qphone.base.util.QLog;
-import xgw;
-import xgx;
+import xgt;
+import xgu;
 
 public class VSDispatchObserver$5
   implements Runnable
 {
-  public VSDispatchObserver$5(xgw paramxgw, xgx paramxgx) {}
+  public VSDispatchObserver$5(xgt paramxgt, xgu paramxgu) {}
   
   public void run()
   {

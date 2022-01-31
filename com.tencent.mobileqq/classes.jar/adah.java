@@ -1,14 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class adah
-  implements View.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  adah(adag paramadag) {}
+  adah(adad paramadad) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.a.b();
+    adad.a(this.a, paramLottieComposition);
   }
 }
 

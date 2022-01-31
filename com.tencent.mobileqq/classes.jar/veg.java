@@ -1,207 +1,60 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class veg
+  extends sys
 {
-  private static vee a = ;
+  public String a;
+  private int c;
+  private int d;
   
-  private static String a(String paramString, Object... paramVarArgs)
+  public String a()
   {
-    return String.format(null, paramString, paramVarArgs);
+    return sxm.a("StoryMonitorSvc.client_monitor_report");
   }
   
-  public static void a(String paramString1, String paramString2)
+  public syn a(byte[] paramArrayOfByte)
   {
-    if (a.a(2)) {
-      a.a(paramString1, paramString2);
+    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
+    try
+    {
+      localRspMonitorValue.mergeFrom(paramArrayOfByte);
+      return new veh(localRspMonitorValue);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
+    localReqMonitorValue.ID.set(this.c);
+    if (this.d > 0) {
+      localReqMonitorValue.Value.set(this.d);
+    }
+    for (;;)
+    {
+      if (this.a != null) {
+        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      }
+      return localReqMonitorValue.toByteArray();
+      localReqMonitorValue.Value.set(1);
     }
   }
   
-  public static void a(String paramString1, String paramString2, Object paramObject)
+  public String toString()
   {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a.a(3)) {
-      a.a(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(2)) {
-      a.a(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(3)) {
-      a(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void a(vee paramvee)
-  {
-    if (paramvee == null) {
-      throw new IllegalArgumentException();
-    }
-    a = paramvee;
-  }
-  
-  public static boolean a()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    if (a.a(3)) {
-      a.b(paramString1, paramString2);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2 }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3 }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, new Object[] { paramObject1, paramObject2, paramObject3, paramObject4 }));
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a.a(5)) {
-      a.c(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(3)) {
-      b(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void b(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(4)) {
-      a.b(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, paramString2);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a.a(6)) {
-      a.d(paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(4)) {
-      a.c(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void c(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(5)) {
-      a.c(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if (a.a(5)) {
-      a.d(paramString1, paramString2);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(5)) {
-      a.d(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void d(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(6)) {
-      a.d(paramString1, a(paramString2, paramVarArgs), paramThrowable);
-    }
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    if (a.a(6)) {
-      a.e(paramString1, paramString2);
-    }
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (a.a(6)) {
-      a.e(paramString1, a(paramString2, paramVarArgs));
-    }
-  }
-  
-  public static void f(String paramString1, String paramString2)
-  {
-    if (a.a(6)) {
-      a.e(paramString1, paramString2);
-    }
+    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
   }
 }
 

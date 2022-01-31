@@ -1,16 +1,11 @@
 class apnk
-  implements aple
+  implements aope
 {
-  apnk(apnd paramapnd) {}
+  apnk(apnh paramapnh) {}
   
-  public void a()
+  public void a(long paramLong)
   {
-    this.a.a(false, apsz.a(this.a.a.a()), this.a.c(), new apnl(this));
-  }
-  
-  public void b()
-  {
-    this.a.t();
+    apnh.b(this.a, paramLong);
   }
 }
 

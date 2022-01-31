@@ -1,18 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdw
-  extends oyg
+  extends oyd
 {
-  public rdw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
+  public rdw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
+    paramoxx.e();
   }
 }
 

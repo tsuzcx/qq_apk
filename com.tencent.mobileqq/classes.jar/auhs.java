@@ -1,35 +1,15 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.4;
+import android.view.View.OnClickListener;
 
-public class auhs
-  implements Animation.AnimationListener
+class auhs
+  implements View.OnClickListener
 {
-  public auhs(AccountPanel.4 param4) {}
+  auhs(auhk paramauhk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    try
-    {
-      this.a.this$0.dismiss();
-      paramAnimation.setAnimationListener(null);
-      auhi.a(this.a.this$0).clearAnimation();
-      auhi.a(this.a.this$0, true);
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      for (;;)
-      {
-        paramAnimation.printStackTrace();
-      }
-    }
+    bbpo.a(auhk.a(this.a), "panel");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

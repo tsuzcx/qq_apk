@@ -1,15 +1,15 @@
 package dov.com.qq.im.ptv;
 
-import bjoz;
+import bjpq;
 
 public class LightWeightCameraCaptureUnit$4
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$4(bjoz parambjoz) {}
+  public LightWeightCameraCaptureUnit$4(bjpq parambjpq) {}
   
   public void run()
   {
-    bjoz.a(this.this$0).setShadowColor(65535);
+    bjpq.a(this.this$0).setShadowColor(65535);
   }
 }
 

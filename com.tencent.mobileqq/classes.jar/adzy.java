@@ -1,16 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.AudioAnimationView;
-import com.tencent.mobileqq.widget.CircleProgressView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adzy
-  extends acun
+  implements View.OnClickListener
 {
-  adzv jdField_a_of_type_Adzv;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
-  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
+  public adzy(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, QQAppInterface paramQQAppInterface) {}
   
-  public adzy(adzs paramadzs) {}
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 500L)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+    axjs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a);
+    ahtz.b("", "0X8008CEB");
+  }
 }
 
 

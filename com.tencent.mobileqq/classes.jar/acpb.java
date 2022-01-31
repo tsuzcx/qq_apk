@@ -1,38 +1,46 @@
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import mqq.observer.ServerNotifyObserver;
 
 public class acpb
-  extends WebChromeClient
+  extends ServerNotifyObserver
 {
-  private acpb(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  public acpb(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
   {
-    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
-    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+    this.a.b = false;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+      bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131720723), 0).a();
+    }
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
+      VerifyCodeActivity.a(this.a, true);
+    }
+    if (paramArrayOfByte != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(baxi.a(paramArrayOfByte, 0, paramArrayOfByte.length));
+      this.a.a(false);
+      return;
+    }
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131720718), 1).show();
   }
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void onVerifyClose()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
-    }
-    this.a.setTitle(paramString);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acpb
  * JD-Core Version:    0.7.0.1
  */

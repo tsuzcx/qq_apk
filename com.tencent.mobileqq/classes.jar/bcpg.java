@@ -1,45 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
-class bcpg
-  extends Handler
+public class bcpg
+  implements View.OnClickListener
 {
-  public int a;
+  public bcpg(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
   
-  bcpg(bcpf parambcpf) {}
-  
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (!this.jdField_a_of_type_Bcpf.isVisible())
-    {
-      this.jdField_a_of_type_Bcpf.b = this.jdField_a_of_type_Int;
-      return;
-    }
-    if (this.jdField_a_of_type_Bcpf.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Bcpf.c(this.jdField_a_of_type_Bcpf.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bcpf.e);
-      return;
-    }
-    if (this.jdField_a_of_type_Bcpf.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_Bcpf.b + this.jdField_a_of_type_Bcpf.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bcpf.c(i);
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bcpf.e);
-        return;
-        this.jdField_a_of_type_Bcpf.c(this.jdField_a_of_type_Int);
-      }
-    }
-    removeMessages(0);
+    auvs.a().b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

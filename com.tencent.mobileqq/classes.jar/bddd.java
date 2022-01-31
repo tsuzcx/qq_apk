@@ -1,16 +1,22 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenSelectPermissionFragment;
+import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
 
 public class bddd
-  implements Comparator<Friend>
+  extends bdom
 {
-  public bddd(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
+  public bddd(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
+    if (this.a.getActivity() == null)
+    {
+      QLog.e("OpenSelectPermissionFragment", 1, "onDoAuthorize activity is null");
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new OpenSelectPermissionFragment.4.1(this, paramBoolean, paramAuthorizeResponse, paramInt));
   }
 }
 

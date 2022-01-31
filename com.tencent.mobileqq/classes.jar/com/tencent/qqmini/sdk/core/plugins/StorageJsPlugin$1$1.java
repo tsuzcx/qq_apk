@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beii;
-import beka;
+import beiz;
+import bekr;
 
 class StorageJsPlugin$1$1
-  implements beii
+  implements beiz
 {
   StorageJsPlugin$1$1(StorageJsPlugin.1 param1) {}
   

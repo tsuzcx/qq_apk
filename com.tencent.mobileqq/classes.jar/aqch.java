@@ -1,52 +1,12 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqch
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  aqch(aqce paramaqce) {}
+  aqch(aqcg paramaqcg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = aqce.a(this.a);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      paramMotionEvent = paramView.findViewById(2131366637);
-      if (paramMotionEvent != null) {
-        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-      if (i != 1) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (i != 3);
-            paramView = (ImageView)paramView.findViewById(2131366643);
-          } while (paramView == null);
-          paramView.setImageResource(2130839614);
-          return false;
-        } while (paramMotionEvent.getAction() != 1);
-        paramMotionEvent = paramView.findViewById(2131366637);
-        if (paramMotionEvent != null) {
-          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        }
-      } while ((i == 1) || (i != 3));
-      paramView = (ImageView)paramView.findViewById(2131366643);
-    } while (paramView == null);
-    paramView.setImageResource(2130839613);
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

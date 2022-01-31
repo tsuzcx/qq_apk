@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy;
 
-import akkr;
+import akkq;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;

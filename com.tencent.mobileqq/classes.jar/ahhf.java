@@ -1,55 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
 class ahhf
-  implements ahbt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhf(ahhd paramahhd, ahgi paramahgi) {}
+  ahhf(ahhb paramahhb) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadActivityRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
-    }
-    int i;
-    if (paramInt == 0)
-    {
-      i = 1;
-      if (paramPathResult == null) {
-        break label156;
-      }
-    }
-    for (;;)
-    {
-      if (((j & i) == 0) || (bbjw.a(paramPathResult.folderPath))) {
-        break label162;
-      }
-      ahhd.a(this.jdField_a_of_type_Ahhd, paramPathResult.folderPath + File.separator + "pendant" + File.separator);
-      ahhd.b(this.jdField_a_of_type_Ahhd);
-      if (!ahhd.b()) {
-        break label162;
-      }
-      ahhd.a(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
-      ahhd.c(this.jdField_a_of_type_Ahhd);
-      ahhd.d(this.jdField_a_of_type_Ahhd);
-      return;
-      i = 0;
-      break;
-      label156:
-      j = 0;
-    }
-    label162:
-    if (!bbjw.a(this.jdField_a_of_type_Ahgi.a)) {
-      ahhd.c(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
-    }
-    for (;;)
-    {
-      QLog.e("springHb_SpringHbEntryPendantHolder", 2, "tryLoadActivityRes --> PreloadFailed，resCode：" + paramInt);
-      return;
-      ahhd.b(this.jdField_a_of_type_Ahhd, this.jdField_a_of_type_Ahgi);
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ahhb.a(this.a, (int)(paramValueAnimator.floatValue() * -ahhb.a(this.a)));
+    this.a.a(this.a.jdField_a_of_type_Int + ahhb.b(this.a));
+    this.a.jdField_a_of_type_AndroidViewView.invalidate();
   }
 }
 

@@ -1,29 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 public class arom
-  extends BroadcastReceiver
+  extends bbwt
 {
-  public arom(UiApiPlugin paramUiApiPlugin) {}
+  public arom(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDone(bbwu parambbwu)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return;
+    }
+    if (parambbwu.a == 0)
     {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
+      parambbwu = ayoi.d(this.jdField_a_of_type_JavaLangString);
+      if (new File(parambbwu).exists())
       {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.a(paramContext, paramIntent);
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
         }
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, parambbwu, 0);
+        return;
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
   }
 }
 

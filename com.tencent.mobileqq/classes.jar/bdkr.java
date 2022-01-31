@@ -1,19 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
-public class bdkr
-  implements DialogInterface.OnClickListener
+class bdkr
+  implements bdkp
 {
-  public bdkr(DownloadManager.17 param17) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdkm.r, false);
-    bdki.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-  }
+  bdkr(bdkq parambdkq) {}
 }
 
 

@@ -1,47 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.viola.adapter.IBridgeAdapter;
-import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.adapter.ILogAdapter;
 
 public class rws
-  implements IBridgeAdapter
+  implements ILogAdapter
 {
-  public rws()
+  public void callLog(String paramString1, int paramInt, String paramString2)
   {
-    registerModuleFunction();
-  }
-  
-  public ArrayList<String> getAdapterUnRegisterFunction()
-  {
-    return null;
-  }
-  
-  public void registerModuleFunction() {}
-  
-  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
-  {
-    if (paramViolaInstance == null) {
-      break label5;
-    }
-    for (;;)
+    switch (paramInt)
     {
-      label5:
-      return;
-      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
-      {
-        paramString = paramViolaInstance.getFragment();
-        if (paramString == null) {
-          break;
-        }
-        if ((paramString instanceof ViolaFragment)) {}
-        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
-        {
-          paramString.a(((Boolean)paramObject).booleanValue());
-          return;
-        }
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString1, 2, paramString2);
       }
+      break;
     }
+    do
+    {
+      do
+      {
+        return;
+        QLog.e(paramString1, 2, paramString2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.w(paramString1, 2, paramString2);
   }
 }
 

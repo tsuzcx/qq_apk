@@ -1,16 +1,15 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-public class adgr
-  implements View.OnClickListener
+public final class adgr
+  implements bfph
 {
-  public adgr(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public adgr(Activity paramActivity, bfpc parambfpc, String paramString, adgw paramadgw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    AIOLongShotHelper.c(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DEC");
+    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bfpc, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adgw);
   }
 }
 

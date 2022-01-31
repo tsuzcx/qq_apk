@@ -1,39 +1,34 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
 
-class ahhg
-  implements ahbt
+public class ahhg
+  extends View
 {
-  ahhg(ahhd paramahhd) {}
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public ahhg(ahhb paramahhb, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
-    }
-    if (paramInt == 0)
-    {
-      paramInt = 1;
-      if (paramPathResult == null) {
-        break label154;
-      }
-    }
-    for (;;)
-    {
-      if (((i & paramInt) != 0) && (!bbjw.a(paramPathResult.folderPath)))
-      {
-        ahhd.b(this.a, paramPathResult.folderPath + File.separator + "logo" + File.separator);
-        ahhd.e(this.a);
-      }
-      QLog.i("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes -->mLogoDrawableLoaded：" + ahhd.b(this.a));
-      return;
-      paramInt = 0;
-      break;
-      label154:
-      i = 0;
-    }
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
   }
 }
 

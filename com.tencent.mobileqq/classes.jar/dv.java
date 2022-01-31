@@ -18,7 +18,7 @@ public class dv
     for (;;)
     {
       return null;
-      paramVarArgs = (ajuo)this.a.app.a(8);
+      paramVarArgs = (ajum)this.a.app.a(8);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {

@@ -1,11 +1,18 @@
-class sea
-  implements shf
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
+
+public class sea
 {
-  sea(sdz paramsdz, int paramInt1, int paramInt2) {}
+  private static int a;
   
-  public void a(boolean paramBoolean)
+  public static void a()
   {
-    sdv.a(this.jdField_a_of_type_Sdz.a, this.jdField_a_of_type_Int, this.b, false, Boolean.valueOf(paramBoolean));
+    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+  }
+  
+  public static void b()
+  {
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
   }
 }
 

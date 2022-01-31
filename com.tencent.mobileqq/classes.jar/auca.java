@@ -1,30 +1,23 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
 
 public class auca
-  implements SurfaceHolder.Callback
+  implements View.OnClickListener
 {
   public auca(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onClick(View paramView)
   {
-    ScanOcrActivity.a(this.a, paramSurfaceHolder);
-    if (ScanOcrActivity.a(this.a) == null)
+    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
     {
-      ScanOcrActivity.a(this.a, new aubg(this.a, this.a.jdField_a_of_type_Aubl, ScanOcrActivity.a(this.a)));
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
-      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
-      if (ScanOcrActivity.a(this.a)) {
-        ScanOcrActivity.a(this.a).a();
-      }
+      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.a(this.a, false);
+      ScanOcrActivity.b(this.a);
+      return;
     }
+    this.a.finish();
   }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 

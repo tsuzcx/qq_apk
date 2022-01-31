@@ -1,29 +1,22 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
 public class pmv
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public pmv(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
+  public pmv(NativeAwesomeCommentView paramNativeAwesomeCommentView, qam paramqam) {}
   
   public void onClick(View paramView)
   {
-    if (NativeAwesomeCommentView.a(this.a) != null)
-    {
-      long l = NativeAwesomeCommentView.a(this.a).a;
-      NativeAwesomeCommentView.a(this.a, true);
-      ohi.a(l + "", this.a.getContext());
+    if (NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView)) {
+      NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView, false);
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    while (this.jdField_a_of_type_Qam == null) {
+      return;
+    }
+    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getContext(), this.jdField_a_of_type_Qam.a, this.jdField_a_of_type_Qam.c);
+    qam.a(NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).a, "0X8009B77");
   }
 }
 

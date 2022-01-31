@@ -1,22 +1,22 @@
 import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-public class aefa
-  implements adnz
+class aefa
+  implements adnx
 {
-  public aefa(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  aefa(aeez paramaeez) {}
   
   public void a()
   {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
+    UnlimitedBladeWorks.a(this.a.a).b = true;
+    UnlimitedBladeWorks.a(this.a.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a.a) != null)
     {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
+      UnlimitedBladeWorks.a(this.a.a).a();
+      if (UnlimitedBladeWorks.b(this.a.a))
       {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
+        UnlimitedBladeWorks.a(this.a.a, 0);
       }
     }
   }

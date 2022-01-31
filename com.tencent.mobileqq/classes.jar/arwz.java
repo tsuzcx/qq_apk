@@ -1,16 +1,33 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.view.View.OnHoverListener;
+import android.view.accessibility.AccessibilityManager;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class arwz
-  implements View.OnClickListener
+  implements View.OnHoverListener
 {
-  public arwz(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public arwz(LocationPickFragment paramLocationPickFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
+    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
+    {
+      if (paramView.requestFocus()) {
+        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
+      }
+      if (!LocationPickFragment.a(this.a).b())
+      {
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
+      }
+      axqy.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+    }
+    return false;
   }
 }
 

@@ -1,20 +1,26 @@
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 class aaaf
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+  extends AsyncTask<Void, Void, Void>
 {
-  aaaf(aaad paramaaad) {}
+  aaaf(aaae paramaaae) {}
   
-  public void onThreadMonitorEnd(int paramInt)
+  protected Void a(Void... paramVarArgs)
   {
-    if (paramInt == 10) {
-      aaad.a(this.a);
+    paramVarArgs = aaae.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
+    aaae.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaaf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,33 @@
-public abstract interface avwf
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
+public class avwf
 {
-  public abstract void a(long paramLong);
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public abstract void a(boolean paramBoolean);
+  private void a()
+  {
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
+  }
   
-  public abstract void g();
+  private void a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
+  }
 }
 
 

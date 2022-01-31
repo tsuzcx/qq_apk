@@ -1,30 +1,16 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
-
-class qac
-  extends NativeGifImage
+public class qac
 {
-  qac(qab paramqab, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
+  public static qab a(int paramInt)
   {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
-  
-  public void executeNewTask()
-  {
-    if (this.mCurrentLoop == 1) {
-      return;
+    if (paramInt == qaa.a) {
+      return new qae();
     }
-    super.executeNewTask();
-  }
-  
-  public void reset()
-  {
-    super.reset();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qac
  * JD-Core Version:    0.7.0.1
  */

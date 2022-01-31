@@ -1,95 +1,70 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class bhzm
+  extends bhzo
 {
-  private static bhzm jdField_a_of_type_Bhzm;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
-  private boolean b;
-  
-  private int a()
+  public bhzm(String paramString, View paramView)
   {
-    if (this.b) {
-      return this.jdField_a_of_type_Int;
-    }
-    this.b = true;
-    long l = a(BaseApplicationImpl.getApplication());
-    if (b(BaseApplicationImpl.getApplication()) > l) {}
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
-      return this.jdField_a_of_type_Int;
-    }
+    super(paramString, paramView);
   }
   
-  public static long a(Context paramContext)
+  private int b(String paramString)
   {
-    String str = paramContext.getPackageName();
-    try
-    {
-      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
-      return l;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    if ("center".equals(paramString)) {
+      return 13;
     }
-    return 0L;
+    if ("center_horizontal".equals(paramString)) {
+      return 14;
+    }
+    if ("center_vertical".equals(paramString)) {
+      return 15;
+    }
+    return 9;
   }
   
-  public static bhzm a()
+  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_Bhzm == null) {}
-    try
+    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.a instanceof RelativeLayout)) {}
+  }
+  
+  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    super.a(paramString1, paramString2, paramLayoutParams);
+    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
+    if ("gravity".equals(paramString1)) {
+      paramLayoutParams.addRule(b(paramString2));
+    }
+    do
     {
-      if (jdField_a_of_type_Bhzm == null) {
-        jdField_a_of_type_Bhzm = new bhzm();
+      do
+      {
+        do
+        {
+          return;
+        } while (!"relative".equals(paramString1));
+        paramString1 = paramString2.split(" ");
+      } while ((paramString1 == null) || (paramString1.length != 2));
+      if ("bottom".equals(paramString1[1]))
+      {
+        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
+        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
+        return;
       }
-      return jdField_a_of_type_Bhzm;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
-    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
-    localEditor.apply();
-  }
-  
-  public static long b(Context paramContext)
-  {
-    String str = paramContext.getPackageName();
-    try
-    {
-      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
-      return l;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
-    }
-    while (a() != 1) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
-    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
-    a();
+    } while (!"right".equals(paramString1[1]));
+    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
   }
 }
 

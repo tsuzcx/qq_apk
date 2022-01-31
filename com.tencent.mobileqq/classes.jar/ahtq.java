@@ -1,18 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.23;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
 public class ahtq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public ahtq(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  public ahtq(FlowCameraActivity2.23 param23) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    paramDialogInterface = this.a.this$0.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.this$0.setResult(1001, paramDialogInterface);
+    paramDialogInterface = null;
+    if (this.a.this$0.g) {
+      paramDialogInterface = this.a.this$0.a.jdField_a_of_type_Ahxm;
+    }
+    this.a.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.this$0.d, this.a.this$0.e, this.a.this$0.n, this.a.this$0.g, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 

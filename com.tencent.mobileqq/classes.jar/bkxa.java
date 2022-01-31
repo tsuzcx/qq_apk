@@ -1,6 +1,17 @@
-public abstract interface bkxa
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+
+public class bkxa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString);
+  public bkxa(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(this.a.c);
+  }
 }
 
 

@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class ahtn
-  implements View.OnClickListener
+  implements axhy
 {
-  public ahtn(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  public ahtn(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(View paramView)
+  public void a(Exception paramException)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.m();
-    if (((!QLog.isColorLevel()) || (!bbdj.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (ahua.a == 1))
-    {
-      ahub.b("", "0X8005F5B", "0");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
     }
-    ahub.b("", "0X8005F5B", "1");
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 

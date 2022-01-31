@@ -1,15 +1,9 @@
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
 public class baod
-  implements bame
 {
-  public baod(RobotPanelLayoutBase paramRobotPanelLayoutBase, baog parambaog) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  int jdField_a_of_type_Int;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  int b;
+  int c;
 }
 
 

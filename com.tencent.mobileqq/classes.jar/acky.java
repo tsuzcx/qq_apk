@@ -1,148 +1,126 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import java.util.List;
+
 public class acky
+  extends aims
 {
-  public double a = -100.0D;
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b = "";
-  public boolean b;
-  public int c;
-  public long c;
-  public String c = "";
-  public boolean c;
-  public int d;
-  public long d;
-  public String d = "";
-  public boolean d;
-  public int e;
-  public String e = "";
-  public int f;
-  public String f = "";
-  public int g;
-  public String g = "";
-  public int h;
-  public String h = "";
-  public int i;
-  public String i = "";
-  public int j;
-  public String j = "";
-  public int k;
-  public String k = "";
-  public int l;
-  public String l = "";
-  public int m;
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u;
-  public String v;
+  public List<acku> a;
   
-  public void a(String paramString)
+  public acky(List<acku> paramList)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.d = str;
+    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void b(String paramString)
+  public int getCount()
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    this.g = str;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void c(String paramString)
+  public Object getItem(int paramInt)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    this.h = str;
+    return null;
   }
   
-  public void d(String paramString)
+  public long getItemId(int paramInt)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.i = str;
+    return paramInt;
   }
   
-  public void e(String paramString)
+  public int getItemViewType(int paramInt)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if (TroopMemberListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))
+    {
+      acku localacku = (acku)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((TextUtils.isEmpty(localacku.m)) && (!TextUtils.isEmpty(localacku.p)) && (!TextUtils.isEmpty(localacku.g)) && (!localacku.g.equals(localacku.p))) {
+        return 1;
+      }
     }
-    this.j = str;
+    return 0;
   }
   
-  public void f(String paramString)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    int i = getItemViewType(paramInt);
+    Object localObject;
+    label54:
+    boolean bool;
+    if (paramView == null) {
+      if (i == 0)
+      {
+        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562550, paramViewGroup, false);
+        paramView = new aclb(paramViewGroup, false);
+        paramViewGroup.setTag(paramView);
+        localObject = paramView;
+        paramView = paramViewGroup;
+        paramViewGroup = (ViewGroup)localObject;
+        localObject = (acku)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramViewGroup.g.setTag(((acku)localObject).a);
+        paramViewGroup.b.setTag(((acku)localObject).a);
+        paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(((acku)localObject).a);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem.setTag(Integer.valueOf(paramInt));
+        TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+        Bitmap localBitmap = a(1, ((acku)localObject).a);
+        if (i != 1) {
+          break label307;
+        }
+        bool = true;
+        label143:
+        localTroopMemberListActivity.a(paramViewGroup, (acku)localObject, localBitmap, true, bool);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 12)
+        {
+          if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Ackw.jdField_a_of_type_JavaUtilList.contains(localObject)) {
+            break label313;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
     }
-    this.k = str;
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Ajry != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Ajry.a(paramViewGroup, (acku)localObject);
+        if (paramViewGroup.f.getVisibility() == 0)
+        {
+          paramInt = VipUtils.d(2);
+          paramViewGroup.e.setMaxWidth(paramInt);
+          TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, paramViewGroup.e, paramViewGroup.d, ((acku)localObject).a, paramInt);
+        }
+      }
+      return paramView;
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562554, paramViewGroup, false);
+      paramView = new aclb(paramViewGroup, true);
+      break;
+      paramViewGroup = (aclb)paramView.getTag();
+      break label54;
+      label307:
+      bool = false;
+      break label143;
+      label313:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
   
-  public void g(String paramString)
+  public int getViewTypeCount()
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.p = str;
-  }
-  
-  public void h(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.l = str;
-  }
-  
-  public void i(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.m = str;
-  }
-  
-  public void j(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.n = str;
-  }
-  
-  public void k(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.o = str;
+    return 2;
   }
 }
 

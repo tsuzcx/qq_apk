@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import actn;
+import actj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ final class ShareUtils$1
   {
     if ((paramInt1 == 1010) && (paramInt2 == -1) && (this.val$activity != null) && (!this.val$activity.isFinishing()))
     {
-      Intent localIntent = actn.a(new Intent(this.val$activity, SplashActivity.class), null);
+      Intent localIntent = actj.a(new Intent(this.val$activity, SplashActivity.class), null);
       Bundle localBundle = new Bundle();
       localBundle.putString("key_mini_report_event_action_type", "user_click");
       localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");

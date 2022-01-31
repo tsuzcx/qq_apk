@@ -5,12 +5,11 @@ import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 public class agng
   implements DialogInterface.OnClickListener
 {
-  public agng(PhotoListActivity paramPhotoListActivity) {}
+  public agng(PhotoListActivity paramPhotoListActivity, Runnable paramRunnable) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

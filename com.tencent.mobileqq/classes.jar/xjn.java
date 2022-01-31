@@ -1,67 +1,23 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.qphone.base.util.QLog;
-import dalvik.system.DexClassLoader;
-import java.io.File;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-class xjn
-  implements mzc
+public class xjn
+  extends xjr
 {
-  xjn(xjm paramxjm, long paramLong, Context paramContext, boolean paramBoolean, mzc parammzc) {}
-  
-  public void loaded(int paramInt, String paramString)
+  public xjn(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    this.jdField_a_of_type_Xjm.d = mze.a(this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangString);
-    String str = mzk.a(this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_Xjm.b;
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_Xjm.c);
-      if (!this.jdField_a_of_type_Xjm.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_Xjm.a(this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_Xjm.d))
-      {
-        if (!((File)localObject).exists()) {
-          break label379;
-        }
-        bbdj.a(((File)localObject).getAbsolutePath());
-        this.jdField_a_of_type_Xjm.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_Xjm.a(this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangString), mze.a(this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangString)).commit();
-        ((File)localObject).mkdirs();
-      }
-      for (;;)
-      {
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Xjm.b).getCanonicalPath();
-        this.jdField_a_of_type_Xjm.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_Xjm.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-        this.jdField_a_of_type_Xjm.jdField_a_of_type_Xjh = new xjh(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Mzc == null) {
-          break;
-        }
-        this.jdField_a_of_type_Mzc.loaded(paramInt, paramString);
-        return;
-        label379:
-        ((File)localObject).mkdirs();
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
-      }
-    }
+    super(paramAbsBaseWebViewActivity, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xjn
  * JD-Core Version:    0.7.0.1
  */

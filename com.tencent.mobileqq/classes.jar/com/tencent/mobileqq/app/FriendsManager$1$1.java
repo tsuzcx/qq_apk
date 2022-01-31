@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import ajxn;
-import ajxo;
+import ajxl;
+import ajxm;
 
 public class FriendsManager$1$1
   implements Runnable
 {
-  public FriendsManager$1$1(ajxo paramajxo, String paramString1, String paramString2) {}
+  public FriendsManager$1$1(ajxm paramajxm, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajxo.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Ajxm.a.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

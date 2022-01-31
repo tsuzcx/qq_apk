@@ -1,19 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import mqq.app.AppRuntime;
 
-class odi
-  implements DialogInterface.OnClickListener
+public class odi
 {
-  odi(odg paramodg, boolean paramBoolean) {}
+  private View a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public odi(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (odg.a(this.jdField_a_of_type_Odg)) {}
-    while ((!yyq.a()) || (this.jdField_a_of_type_Boolean)) {
+    if (onh.a() != null)
+    {
+      paramArkAppMessage = onh.a().getApplication();
+      if (paramArkAppMessage != null) {}
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_Odg.g();
+    this.a = new View(paramArkAppMessage);
+    this.a.setVisibility(8);
   }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a() {}
+  
+  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

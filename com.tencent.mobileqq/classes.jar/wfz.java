@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class wfz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public wfz(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    this.a.f = false;
   }
 }
 

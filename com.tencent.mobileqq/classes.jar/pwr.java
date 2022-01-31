@@ -1,24 +1,41 @@
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwr
-  extends osp
+  implements View.OnClickListener
 {
-  public pwr(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  public pwr(ComponentContentUGCVoice paramComponentContentUGCVoice) {}
   
-  public void b(long paramLong, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ComponentContentRecommendFollowList.6.1 local1 = new ComponentContentRecommendFollowList.6.1(this, paramLong, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
+    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((ComponentContentUGCVoice.a(this.a) != null) && (!TextUtils.isEmpty(ComponentContentUGCVoice.a(this.a).jdField_a_of_type_JavaLangString))) {
+      if (ComponentContentUGCVoice.a(this.a).jdField_a_of_type_Boolean)
+      {
+        nol.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "2", "", false);
+        qiw.a().a();
+      }
+    }
+    while (!QLog.isColorLevel())
     {
-      ThreadManager.getUIHandler().post(local1);
+      return;
+      if (qnl.a().a())
+      {
+        bcql.a(this.a.getContext(), ajya.a(2131702294), 0).a();
+        return;
+      }
+      nol.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);
+      qiw.a().a(this.a, ComponentContentUGCVoice.a(this.a));
       return;
     }
-    local1.run();
+    QLog.d(ComponentContentUGCVoice.jdField_a_of_type_JavaLangString, 2, "mUGCVoiceInfo or its voiceUrl is null");
   }
 }
 

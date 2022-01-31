@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 
 public class rho
-  implements View.OnClickListener
 {
-  public rho(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public ReadInJoyBaseFragment a;
+  public qzg a;
+  public boolean a;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public rho()
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public ReadInJoyBaseFragment a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
   }
 }
 

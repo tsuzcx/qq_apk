@@ -1,12 +1,24 @@
-import android.app.Activity;
+import android.content.Context;
+import android.util.Size;
+import java.nio.FloatBuffer;
 
 public abstract interface alfd
 {
-  public abstract alfe a();
+  public abstract Size a();
+  
+  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
   
   public abstract boolean a();
   
-  public abstract boolean a(Activity paramActivity);
+  public abstract boolean a(Context paramContext);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

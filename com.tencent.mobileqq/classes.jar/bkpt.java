@@ -1,28 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import java.util.ArrayList;
 
-class bkpt
-  extends bjde
+public class bkpt
 {
-  bkpt(bkps parambkps) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      bkps.a(this.a, true);
-      bkps.a(this.a);
-      return;
-    }
-    QLog.i("EditPicQzComment", 2, "download music fail" + paramInt);
-  }
+  public double a;
+  public int a;
+  public ahua a;
+  public Activity a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public double b;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
 }
 
 

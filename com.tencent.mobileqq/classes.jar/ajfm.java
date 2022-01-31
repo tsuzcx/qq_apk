@@ -1,10 +1,12 @@
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+
 public abstract interface ajfm
 {
-  public abstract void a();
+  public abstract void a(int paramInt);
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public abstract void a(SpriteTaskParam paramSpriteTaskParam);
   
-  public abstract void b();
+  public abstract boolean a();
 }
 
 

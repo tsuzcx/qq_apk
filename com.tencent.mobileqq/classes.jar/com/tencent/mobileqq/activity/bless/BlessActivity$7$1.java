@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afas;
+import afaq;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.widget.QQVideoView;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BlessActivity$7$1
   implements Runnable
 {
-  public BlessActivity$7$1(afas paramafas) {}
+  public BlessActivity$7$1(afaq paramafaq) {}
   
   public void run()
   {

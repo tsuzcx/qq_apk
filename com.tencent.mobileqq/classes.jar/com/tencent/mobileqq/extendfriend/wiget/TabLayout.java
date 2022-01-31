@@ -11,14 +11,14 @@ import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aoll;
+import aolq;
 
 public class TabLayout
   extends HorizontalScrollView
 {
   protected float a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aoll jdField_a_of_type_Aoll;
+  private aolq jdField_a_of_type_Aolq;
   protected float b;
   protected float c;
   protected float d;
@@ -55,14 +55,14 @@ public class TabLayout
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
-  public void a(aoll paramaoll)
+  public void a(aolq paramaolq)
   {
     int i = 1;
     int k = 0;
     int m;
-    if (paramaoll != null)
+    if (paramaolq != null)
     {
-      m = paramaoll.a();
+      m = paramaolq.a();
       if (m > 0) {
         break label23;
       }
@@ -71,21 +71,21 @@ public class TabLayout
     {
       return;
       label23:
-      this.jdField_a_of_type_Aoll = paramaoll;
+      this.jdField_a_of_type_Aolq = paramaolq;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
       int j;
-      if (m <= paramaoll.b())
+      if (m <= paramaolq.b())
       {
         setFillViewport(true);
         j = 0;
       }
       while (k < m)
       {
-        View localView = paramaoll.a(k);
+        View localView = paramaolq.a(k);
         if (localView != null)
         {
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, -1, i);
-          Rect localRect = paramaoll.a(k);
+          Rect localRect = paramaolq.a(k);
           localLayoutParams.leftMargin = localRect.left;
           localLayoutParams.topMargin = localRect.top;
           localLayoutParams.rightMargin = localRect.right;
@@ -94,7 +94,7 @@ public class TabLayout
         }
         k += 1;
         continue;
-        j = paramaoll.c();
+        j = paramaolq.c();
         setFillViewport(false);
         i = 0;
       }

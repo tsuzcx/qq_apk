@@ -1,16 +1,8 @@
-class axhy
-  implements axfy
+public abstract interface axhy
 {
-  axhy(axhx paramaxhx, axic paramaxic) {}
+  public abstract void a(Exception paramException);
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramInt == 1) && (this.jdField_a_of_type_Axic != null)) {
-      this.jdField_a_of_type_Axic.a(paramBoolean, true);
-    }
-  }
+  public abstract void a(RuntimeException paramRuntimeException);
 }
 
 

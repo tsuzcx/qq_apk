@@ -1,13 +1,46 @@
-import android.os.IBinder.DeathRecipient;
-
-class lgd
-  implements IBinder.DeathRecipient
+public class lgd
+  extends lej
 {
-  lgd(lgc paramlgc) {}
+  protected int ac;
+  protected long l;
   
-  public void binderDied()
+  public long b()
   {
-    lcl.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
+    return this.l;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.ac = paramInt;
+  }
+  
+  public void d(long paramLong)
+  {
+    this.l = paramLong;
+  }
+  
+  public int e()
+  {
+    return this.ac;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (lgd)paramObject;
+    } while (this.l == paramObject.l);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (int)(this.l ^ this.l >>> 32);
   }
 }
 

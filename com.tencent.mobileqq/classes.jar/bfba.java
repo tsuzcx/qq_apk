@@ -1,32 +1,68 @@
-public class bfba<E>
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
+
+public class bfba
+  extends bfau
 {
-  private bfay<T, E>.bfaz<T> jdField_a_of_type_Bfaz;
-  private E jdField_a_of_type_JavaLangObject;
-  private bfay<T, E>.bfaz<T> b;
+  private CloudStorage.StSetUserCloudStorageReq a = new CloudStorage.StSetUserCloudStorageReq();
   
-  public bfba(bfay parambfay) {}
-  
-  public bfay<T, E>.bfaz<T> a()
+  public bfba(HashMap<String, String> paramHashMap, String paramString)
   {
-    return this.jdField_a_of_type_Bfaz;
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
+      CloudStorage.StKVData localStKVData = new CloudStorage.StKVData();
+      localStKVData.key.set((String)localEntry.getKey());
+      localStKVData.value.set((String)localEntry.getValue());
+      this.a.KVDataList.add(localStKVData);
+    }
+    this.a.appid.set(paramString);
   }
   
-  public bfba a(bfay<T, E>.bfaz<T> parambfay)
+  protected String a()
   {
-    this.jdField_a_of_type_Bfaz = parambfay;
-    return this;
+    return "mini_app_cloudstorage";
   }
   
-  public bfba a(E paramE)
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangObject = paramE;
-    return this;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
+    try
+    {
+      localStSetUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStSetUserCloudStorageRsp != null) {
+        return new JSONObject();
+      }
+      betc.a("SetCloudStorageRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public bfba b(bfay<T, E>.bfaz<T> parambfay)
+  protected byte[] a()
   {
-    this.b = parambfay;
-    return this;
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "SetUserCloudStorage";
   }
 }
 

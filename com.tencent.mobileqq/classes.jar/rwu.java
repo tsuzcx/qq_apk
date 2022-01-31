@@ -1,22 +1,10 @@
-import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
-import org.json.JSONObject;
-
-class rwu
-  implements qki
+public class rwu
 {
-  IJSApiAdapter.OnInovkeCallback a;
-  
-  public rwu(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
-  {
-    this.a = paramOnInovkeCallback;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (this.a != null) {
-      this.a.callback(paramJSONObject);
-    }
-  }
+  public static String a = "tag";
+  public static String b = "result";
+  public static String c = "dataTag";
+  public static String d = "dataResult";
+  public static String e = "dataName";
 }
 
 

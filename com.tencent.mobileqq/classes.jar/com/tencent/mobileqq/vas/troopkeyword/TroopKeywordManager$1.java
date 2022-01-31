@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.vas.troopkeyword;
 
-import bbtc;
+import bbtq;
 
 public class TroopKeywordManager$1
   implements Runnable
 {
-  public TroopKeywordManager$1(bbtc parambbtc) {}
+  public TroopKeywordManager$1(bbtq parambbtq) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   4: invokestatic 25	bbtc:a	(Lbbtc;)Ljava/lang/Object;
+    //   1: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   4: invokestatic 25	bbtq:a	(Lbbtq;)Ljava/lang/Object;
     //   7: astore_1
     //   8: aload_1
     //   9: monitorenter
     //   10: aload_0
-    //   11: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   14: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
-    //   17: invokevirtual 33	aukn:a	()Laukp;
-    //   20: invokevirtual 37	aukp:a	()V
+    //   11: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   14: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
+    //   17: invokevirtual 33	aukp:a	()Laukr;
+    //   20: invokevirtual 37	aukr:a	()V
     //   23: aload_0
-    //   24: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   27: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
+    //   24: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   27: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
     //   30: ldc 39
-    //   32: invokevirtual 42	aukn:a	(Ljava/lang/Class;)Z
+    //   32: invokevirtual 42	aukp:a	(Ljava/lang/Class;)Z
     //   35: pop
     //   36: aload_0
-    //   37: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   40: invokestatic 45	bbtc:a	(Lbbtc;)Ljava/util/concurrent/ConcurrentHashMap;
+    //   37: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   40: invokestatic 45	bbtq:a	(Lbbtq;)Ljava/util/concurrent/ConcurrentHashMap;
     //   43: invokevirtual 51	java/util/concurrent/ConcurrentHashMap:values	()Ljava/util/Collection;
     //   46: invokeinterface 57 1 0
     //   51: astore_2
@@ -50,10 +50,10 @@ public class TroopKeywordManager$1
     //   91: checkcast 39	com/tencent/mobileqq/data/TroopKeyWord
     //   94: astore 4
     //   96: aload_0
-    //   97: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   100: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
+    //   97: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   100: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
     //   103: aload 4
-    //   105: invokevirtual 74	aukn:b	(Laukm;)V
+    //   105: invokevirtual 74	aukp:b	(Lauko;)V
     //   108: goto -32 -> 76
     //   111: astore_2
     //   112: ldc 76
@@ -62,23 +62,23 @@ public class TroopKeywordManager$1
     //   117: aload_2
     //   118: invokestatic 84	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   121: aload_0
-    //   122: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   125: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
-    //   128: invokevirtual 33	aukn:a	()Laukp;
-    //   131: invokevirtual 86	aukp:b	()V
+    //   122: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   125: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
+    //   128: invokevirtual 33	aukp:a	()Laukr;
+    //   131: invokevirtual 86	aukr:b	()V
     //   134: aload_1
     //   135: monitorexit
     //   136: return
     //   137: aload_0
-    //   138: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   141: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
-    //   144: invokevirtual 33	aukn:a	()Laukp;
-    //   147: invokevirtual 89	aukp:c	()V
+    //   138: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   141: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
+    //   144: invokevirtual 33	aukp:a	()Laukr;
+    //   147: invokevirtual 89	aukr:c	()V
     //   150: aload_0
-    //   151: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   154: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
-    //   157: invokevirtual 33	aukn:a	()Laukp;
-    //   160: invokevirtual 86	aukp:b	()V
+    //   151: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   154: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
+    //   157: invokevirtual 33	aukp:a	()Laukr;
+    //   160: invokevirtual 86	aukr:b	()V
     //   163: goto -29 -> 134
     //   166: astore_2
     //   167: aload_1
@@ -87,10 +87,10 @@ public class TroopKeywordManager$1
     //   170: athrow
     //   171: astore_2
     //   172: aload_0
-    //   173: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtc;
-    //   176: invokestatic 28	bbtc:a	(Lbbtc;)Laukn;
-    //   179: invokevirtual 33	aukn:a	()Laukp;
-    //   182: invokevirtual 86	aukp:b	()V
+    //   173: getfield 12	com/tencent/mobileqq/vas/troopkeyword/TroopKeywordManager$1:this$0	Lbbtq;
+    //   176: invokestatic 28	bbtq:a	(Lbbtq;)Laukp;
+    //   179: invokevirtual 33	aukp:a	()Laukr;
+    //   182: invokevirtual 86	aukr:b	()V
     //   185: aload_2
     //   186: athrow
     // Local variable table:

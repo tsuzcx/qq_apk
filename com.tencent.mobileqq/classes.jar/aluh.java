@@ -1,36 +1,44 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import com.tencent.mobileqq.ark.ArkTopGestureLayout;
 
 public class aluh
+  extends TopGestureLayout.TopGestureDetector
 {
-  public int a;
-  public long a;
-  public adlk a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference<TipsBar> a;
-  public long b;
-  public String b;
-  public WeakReference<aexl> b;
-  public String c;
-  public String d;
-  
-  aluh(adlk paramadlk, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public aluh(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
   {
-    a(paramadlk, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+    super(paramArkTopGestureLayout, paramContext);
   }
   
-  void a(adlk paramadlk, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Adlk = paramadlk;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+            if (!this.a.hasGestureFlag(1)) {
+              break;
+            }
+          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+          this.a.setGestureFlag(-1);
+        } while (ArkTopGestureLayout.a(this.a));
+        this.a.mOnFlingGesture.flingLToR();
+        return false;
+      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+      this.a.setGestureFlag(-1);
+    } while (ArkTopGestureLayout.b(this.a));
+    this.a.mOnFlingGesture.flingRToL();
+    return false;
   }
 }
 

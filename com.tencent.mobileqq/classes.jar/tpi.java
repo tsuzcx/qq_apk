@@ -1,10 +1,10 @@
 public abstract interface tpi
 {
-  public abstract void a(trp paramtrp);
+  public abstract void a(trm paramtrm);
   
-  public abstract void b(trp paramtrp);
+  public abstract void b(trm paramtrm);
   
-  public abstract void c(trp paramtrp);
+  public abstract void c(trm paramtrm);
 }
 
 

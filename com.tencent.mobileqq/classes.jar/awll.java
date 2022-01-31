@@ -1,25 +1,28 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class awll
-  extends awke<awoj, awyf>
+  extends akjb
 {
-  public awll(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, baxk parambaxk, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
+  public awll(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramListView, parambaxk, paramSearchResultItem, paramString, paramQQAppInterface);
+    super.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
+    }
   }
   
-  protected awrb a(int paramInt)
+  public void a(int paramInt, List<BusinessGroupWord> paramList)
   {
-    return new awry(MessageSearchDetailFragment.a(this.a));
-  }
-  
-  protected awwq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new awyf(paramViewGroup, 2131562389);
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    }
   }
 }
 

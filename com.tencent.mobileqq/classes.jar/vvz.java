@@ -1,84 +1,132 @@
-import android.content.Context;
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
+import android.graphics.Bitmap.Config;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaMetadataRetriever;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.maxvideo.trim.TrimNative;
 
 public class vvz
-  extends BaseAdapter
+  extends wcd
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private vwb jdField_a_of_type_Vwb;
-  private int b;
-  private int c;
+  private long jdField_a_of_type_Long;
+  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private vwa jdField_a_of_type_Vwa;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private int d;
   
-  public vvz(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public vvz(ImageView paramImageView, MediaMetadataRetriever paramMediaMetadataRetriever, Integer paramInteger, int paramInt1, int paramInt2, long paramLong, int paramInt3, boolean paramBoolean1, vwa paramvwa, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super(paramImageView);
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = paramMediaMetadataRetriever;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramInt3;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Vwa = paramvwa;
+    this.jdField_c_of_type_Boolean = paramBoolean2;
   }
   
-  public Bitmap a(int paramInt)
+  public String a()
   {
-    return null;
+    return String.valueOf(this.jdField_a_of_type_JavaLangInteger);
   }
   
+  @TargetApi(10)
   public void a()
   {
-    this.jdField_a_of_type_Vwb = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (this.jdField_a_of_type_Vwb == null) {
-      return;
+    ved.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround:%s", new Object[] { a() });
+    long l3 = System.currentTimeMillis();
+    if ((vzl.a()) && (this.jdField_c_of_type_Boolean)) {
+      ved.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative:%s", new Object[] { a() });
     }
-    this.jdField_a_of_type_Vwb.a(paramLocalMediaInfo);
-  }
-  
-  public void a(vwb paramvwb)
-  {
-    this.jdField_a_of_type_Vwb = paramvwb;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    long l1;
+    Object localObject;
+    Bitmap localBitmap2;
+    for (;;)
     {
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = (int)(vjr.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
-      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
-      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramView.setLayoutParams(paramViewGroup);
-      paramViewGroup = new vwa();
-      paramViewGroup.a = paramView;
-      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
-      paramView.setTag(paramViewGroup);
+      try
+      {
+        Bitmap localBitmap1;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          localBitmap1 = Bitmap.createBitmap(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+          l1 = this.jdField_a_of_type_JavaLangInteger.intValue() * this.d;
+          long l2 = (this.jdField_a_of_type_JavaLangInteger.intValue() + 1) * this.d;
+          l1 = l2;
+          if (l2 > this.jdField_a_of_type_Long) {
+            l1 = this.jdField_a_of_type_Long;
+          }
+          if (TrimNative.getThumbnail(0L, l1, localBitmap1) == 0)
+          {
+            Bitmap localBitmap3 = localBitmap1.copy(Bitmap.Config.RGB_565, true);
+            localObject = localBitmap3;
+            if (this.jdField_b_of_type_Boolean) {
+              localObject = vzl.a(localBitmap3, 90.0F);
+            }
+            a(new BitmapDrawable((Bitmap)localObject));
+            localBitmap1.recycle();
+            l1 = System.currentTimeMillis() - l3;
+            ved.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
+            this.jdField_a_of_type_Vwa.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
+          }
+        }
+        else
+        {
+          localBitmap1 = Bitmap.createBitmap(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
+          continue;
+        }
+        if ((localBitmap1 == null) || (localBitmap1.isRecycled())) {
+          continue;
+        }
+        localBitmap1.recycle();
+      }
+      catch (Exception localException)
+      {
+        ved.e("Q.qqstory.frameWidget.FrameLoader", "create bitmap width=%s,height=%s,error:%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), localException });
+        continue;
+        localBitmap2 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(this.jdField_a_of_type_JavaLangInteger.intValue() * this.d * 1000L);
+        if (localBitmap2 != null) {
+          continue;
+        }
+        ved.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever return null!");
+        return;
+        localObject = new Matrix();
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever == null)
+      {
+        ved.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever is null!");
+        return;
+        ved.e("Q.qqstory.frameWidget.FrameLoader", "TrimNative return error!");
+      }
+      else
+      {
+        float f1 = this.jdField_b_of_type_Int / localBitmap2.getHeight();
+        float f2 = this.jdField_c_of_type_Int / localBitmap2.getWidth();
+        ((Matrix)localObject).postRotate(90.0F);
+        ((Matrix)localObject).postScale(f1, f2);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Vwb.a(paramViewGroup.a, Integer.valueOf(paramInt));
-      return paramView;
-      paramViewGroup = (vwa)paramView.getTag();
+      localObject = Bitmap.createBitmap(localBitmap2, 0, 0, localBitmap2.getWidth(), localBitmap2.getHeight(), (Matrix)localObject, true);
+      localBitmap2.recycle();
+      a(new BitmapDrawable((Bitmap)localObject));
+      l1 = System.currentTimeMillis() - l3;
+      ved.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: mRetriever 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
+      this.jdField_a_of_type_Vwa.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
+      return;
+      ((Matrix)localObject).postScale(this.jdField_b_of_type_Int / localBitmap2.getWidth(), this.jdField_c_of_type_Int / localBitmap2.getHeight());
     }
   }
 }

@@ -1,18 +1,36 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder.3.1;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class adph
-  extends acun
+  implements bfph
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public int e;
+  adph(adpg paramadpg, int paramInt, MessageForFile paramMessageForFile, bfpc parambfpc, BaseChatItemLayout paramBaseChatItemLayout, adpn paramadpn) {}
   
-  public adph(adoz paramadoz) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Int != -1) {
+      this.jdField_a_of_type_Adpg.b.post(new FilePicItemBuilder.3.1(this));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.cancel();
+      return;
+      paramView = apug.a(this.jdField_a_of_type_Adpg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      if (paramView.status == 16)
+      {
+        aptx.a(2131692857);
+        this.jdField_a_of_type_Bfpc.cancel();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      apug.a(this.jdField_a_of_type_Adpg.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Adpg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      this.jdField_a_of_type_Adpg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adpn, paramView, false);
+    }
+  }
 }
 
 

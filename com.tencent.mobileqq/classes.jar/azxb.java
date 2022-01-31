@@ -1,28 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class azxb
-  implements View.OnClickListener
+  implements azyi
 {
   public azxb(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(4) >= 6)
+    long l = azye.a(this.a.a, paramInt1, paramInt2, paramInt3) / 1000L;
+    if (!PublishHomeWorkFragment.a(this.a, l))
     {
-      bcpw.a(this.a.getActivity(), String.format(ajyc.a(2131708840), new Object[] { Integer.valueOf(6) }), 0).a();
+      azye.a(this.a.a, (azye)this.a.a.a());
       return;
     }
-    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidViewViewGroup.getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
-    SearchReciteArticleFragment.a(this.a.getActivity(), this.a.b);
-    bbbb.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { this.a.b });
+    this.a.c = l;
+    this.a.a.b();
+    this.a.b.setRightText(this.a.a(l));
   }
 }
 

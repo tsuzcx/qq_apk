@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begy;
-import besl;
+import behp;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 import org.json.JSONObject;
 
@@ -12,7 +12,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
   
   public void onDismiss()
   {
-    besl.b("SDK_MiniInterstitialAd", "onDismiss");
+    betc.b("SDK_MiniInterstitialAd", "onDismiss");
     if (InterstitialAdPlugin.MiniInterstitialAd.access$500(this.this$1) != null)
     {
       JSONObject localJSONObject = InterstitialAdPlugin.MiniInterstitialAd.access$600(this.this$1, this.val$compId, -1);
@@ -22,21 +22,21 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
   
   public void onError(int paramInt, String paramString)
   {
-    besl.b("SDK_MiniInterstitialAd", "onError, errCode = " + paramInt + ", errMsg = " + paramString);
+    betc.b("SDK_MiniInterstitialAd", "onError, errCode = " + paramInt + ", errMsg = " + paramString);
     InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, true, "operateInterstitialAd", this.val$compId, paramInt, this.val$callbackId);
     InterstitialAdPlugin.MiniInterstitialAd.access$402(this.this$1, false);
   }
   
   public void onLoad()
   {
-    besl.b("SDK_MiniInterstitialAd", "onLoad");
+    betc.b("SDK_MiniInterstitialAd", "onLoad");
     InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
     InterstitialAdPlugin.MiniInterstitialAd.access$402(this.this$1, false);
   }
   
   public void onShow()
   {
-    besl.b("SDK_MiniInterstitialAd", "onShow");
+    betc.b("SDK_MiniInterstitialAd", "onShow");
   }
 }
 

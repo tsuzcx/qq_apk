@@ -1,10 +1,21 @@
-public abstract interface rtz
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class rtz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(rue paramrue);
+  rtz(rty paramrty, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public abstract void b(rue paramrue);
+  int a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+  }
   
-  public abstract void c(rue paramrue);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = paramValueAnimator.getAnimatedFraction();
+    this.jdField_a_of_type_Rty.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
+  }
 }
 
 

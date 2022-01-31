@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.troop.utils.TroopFileManager.5.1;
+import java.util.List;
 
 public class bakd
-  implements apac
+  extends xas
 {
-  public bakd(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  bakd(bajy parambajy) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<azpi> paramList, Bundle paramBundle)
   {
-    aozx.a(new aplq(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
+    ThreadManager.post(new TroopFileManager.5.1(this, paramBundle, paramInt2, paramByteStringMicro, paramBoolean1, paramList, paramBoolean2, paramInt3, paramInt1), 8, null, true);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
@@ -11,12 +11,12 @@ import android.text.style.ForegroundColorSpan;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import bbgg;
+import bbgu;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ShortcutUtils$PermissionDialog
-  extends bbgg
+  extends bbgu
 {
   private static final String CONFIG_SHORTCUT_DIALOG_HIDE = "mini_shortcut_dialog_hide";
   private static final String CONFIG_SHORTCUT_HELP_URL = "mini_shortcut_help_url";
@@ -60,8 +60,8 @@ class ShortcutUtils$PermissionDialog
   
   public CharSequence getMessageContent()
   {
-    String str1 = ajyc.a(2131714003);
-    String str2 = ajyc.a(2131714007);
+    String str1 = ajya.a(2131714014);
+    String str2 = ajya.a(2131714018);
     SpannableString localSpannableString = new SpannableString(str1 + str2);
     localSpannableString.setSpan(new ShortcutUtils.PermissionDialog.2(this), str1.length(), str1.length() + str2.length(), 33);
     localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
@@ -75,7 +75,7 @@ class ShortcutUtils$PermissionDialog
     this.text.setText(getMessageContent());
     this.mCheckBoxLayout = ((ViewGroup)findViewById(2131368929));
     this.mCheckBox = ((CheckBox)findViewById(2131377619));
-    this.mCheckText = ((TextView)findViewById(2131378452));
+    this.mCheckText = ((TextView)findViewById(2131378457));
     this.mCheckText.setOnClickListener(new ShortcutUtils.PermissionDialog.1(this));
   }
   

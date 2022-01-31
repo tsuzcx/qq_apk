@@ -1,25 +1,18 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
 
-class acwg
+public final class acwg
+  implements Parcelable.Creator<ForwardUtils.Section_Text>
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<acwf> b;
-  
-  public acwg(acwd paramacwd, View paramView, acwf paramacwf)
+  public ForwardUtils.Section_Text a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramacwf);
+    return new ForwardUtils.Section_Text(paramParcel);
   }
   
-  public acwf a()
+  public ForwardUtils.Section_Text[] a(int paramInt)
   {
-    return (acwf)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return new ForwardUtils.Section_Text[paramInt];
   }
 }
 

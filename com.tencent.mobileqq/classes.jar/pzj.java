@@ -1,13 +1,11 @@
-import android.graphics.drawable.Drawable;
-
 class pzj
-  extends pyx
+  extends pyu
 {
-  pzj(pzi parampzi) {}
+  pzj(pzf parampzf) {}
   
-  public Drawable a()
+  public int a()
   {
-    return a("readinjoy_diandian_icon_foreground");
+    return a("tab_select_color");
   }
 }
 

@@ -1,16 +1,6 @@
-import java.util.List;
-
-class apsb
-  implements aptu
+public abstract interface apsb
 {
-  apsb(apry paramapry, List paramList) {}
-  
-  public void a()
-  {
-    apvk.a(apry.a(this.jdField_a_of_type_Apry), this.jdField_a_of_type_JavaUtilList, apry.a(this.jdField_a_of_type_Apry), apry.a(this.jdField_a_of_type_Apry));
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

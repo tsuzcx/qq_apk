@@ -1,12 +1,14 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.common.app.AppInterface;
 
 class arho
-  implements BusinessObserver
+  implements arhr
 {
-  arho(arhi paramarhi) {}
+  arho(arhk paramarhk, AppInterface paramAppInterface, arhs paramarhs) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Arhk.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Arhs);
+  }
 }
 
 

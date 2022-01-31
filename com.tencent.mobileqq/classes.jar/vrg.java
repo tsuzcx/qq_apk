@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class vrg
-  implements DialogInterface.OnClickListener
 {
-  public vrg(EditVideoMusicDialog paramEditVideoMusicDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static vrk a(Context paramContext, String paramString)
   {
-    paramDialogInterface.dismiss();
+    paramContext = vrk.a(paramContext);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        vrk localvrk = (vrk)paramContext.next();
+        if (TextUtils.equals(paramString, localvrk.a)) {
+          return localvrk;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return !TextUtils.isEmpty(bbax.a(paramContext, "qqstory_savedMusicList"));
   }
 }
 

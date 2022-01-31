@@ -5,9 +5,9 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auwe;
-import bazo;
-import bbdr;
+import auwg;
+import bbac;
+import bbef;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -27,7 +27,7 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bazo.b(this), bazo.a(this), bazo.b(this), bazo.a(this), bazo.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bbac.b(this), bbac.a(this), bbac.b(this), bbac.a(this), bbac.c());
   }
   
   private void b()
@@ -36,7 +36,7 @@ public class VipProfileCardPhotoHandlerActivity
     {
       if (checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        requestPermissions(new auwe(this), 1, new String[] { "android.permission.CAMERA" });
+        requestPermissions(new auwg(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
@@ -47,11 +47,11 @@ public class VipProfileCardPhotoHandlerActivity
   
   protected void a(Uri paramUri)
   {
-    paramUri = bbdr.b(this, paramUri);
+    paramUri = bbef.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bazo.b(this), bazo.a(this), bazo.b(this), bazo.a(this), paramUri, bazo.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bbac.b(this), bbac.a(this), bbac.b(this), bbac.a(this), paramUri, bbac.c());
   }
   
   protected void a(String paramString)

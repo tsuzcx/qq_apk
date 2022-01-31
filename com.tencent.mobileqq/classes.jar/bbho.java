@@ -1,20 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.widget.TextView;
 
 class bbho
-  implements View.OnClickListener
 {
-  bbho(bbhl parambbhl, Activity paramActivity) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    paramView = (ResultRecord)paramView.getTag();
-    this.jdField_a_of_type_Bbhl.hideSoftInputFromWindow();
-    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a, paramView.b, 0.86F, this.jdField_a_of_type_Bbhl.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
-  }
+  private bbho(bbhi parambbhi) {}
 }
 
 

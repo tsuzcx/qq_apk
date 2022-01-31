@@ -17,13 +17,13 @@ import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bclw;
+import bcml;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.MultiImageTextView;
 
 public class FormSimpleItem
   extends RelativeLayout
-  implements bclw
+  implements bcml
 {
   protected static boolean b;
   private int jdField_a_of_type_Int;
@@ -352,7 +352,7 @@ public class FormSimpleItem
       if (jdField_b_of_type_Boolean) {
         return paramResources.getDrawable(2130839169);
       }
-      return paramResources.getDrawable(2130849239);
+      return paramResources.getDrawable(2130849248);
     }
     switch (paramInt)
     {
@@ -362,22 +362,22 @@ public class FormSimpleItem
       if (jdField_b_of_type_Boolean) {
         return paramResources.getDrawable(2130839169);
       }
-      return paramResources.getDrawable(2130849239);
+      return paramResources.getDrawable(2130849248);
     case 1: 
       if (jdField_b_of_type_Boolean) {
         return paramResources.getDrawable(2130839179);
       }
-      return paramResources.getDrawable(2130849253);
+      return paramResources.getDrawable(2130849262);
     case 2: 
       if (jdField_b_of_type_Boolean) {
         return paramResources.getDrawable(2130839179);
       }
-      return paramResources.getDrawable(2130849253);
+      return paramResources.getDrawable(2130849262);
     }
     if (jdField_b_of_type_Boolean) {
       return paramResources.getDrawable(2130839176);
     }
-    return paramResources.getDrawable(2130849244);
+    return paramResources.getDrawable(2130849253);
   }
   
   private boolean a()

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class TroopAssistantData
-  extends aukm
+  extends auko
 {
   public long lastdrafttime;
   public long lastmsgtime;
-  @auma
+  @aumc
   public String troopUin;
 }
 

@@ -1,10 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface ahez
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

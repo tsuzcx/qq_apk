@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 class azqd
-  implements DialogInterface.OnClickListener
+  implements bcwm
 {
-  azqd(azpt paramazpt, FileManagerEntity paramFileManagerEntity) {}
+  azqd(azpv paramazpv, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (paramInt == 1) {
-      azpt.a(this.jdField_a_of_type_Azpt, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
   }
 }

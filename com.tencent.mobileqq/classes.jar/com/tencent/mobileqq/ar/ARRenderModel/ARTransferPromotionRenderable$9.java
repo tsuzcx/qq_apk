@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akyb;
-import alam;
-import alao;
+import akya;
+import alal;
+import alan;
 
 public class ARTransferPromotionRenderable$9
   implements Runnable
 {
-  public ARTransferPromotionRenderable$9(alam paramalam) {}
+  public ARTransferPromotionRenderable$9(alal paramalal) {}
   
   public void run()
   {
-    if ((alam.a(this.this$0) != null) && (alam.a(this.this$0) == 6)) {
-      alam.a(this.this$0).a(alam.a(this.this$0).c + "doorOpen.mp3", false);
+    if ((alal.a(this.this$0) != null) && (alal.a(this.this$0) == 6)) {
+      alal.a(this.this$0).a(alal.a(this.this$0).c + "doorOpen.mp3", false);
     }
   }
 }

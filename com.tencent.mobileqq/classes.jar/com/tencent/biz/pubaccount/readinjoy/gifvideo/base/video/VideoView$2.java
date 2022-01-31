@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 
 import android.view.ViewTreeObserver;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import oxd;
+import oxa;
 
 public class VideoView$2
   implements Runnable
@@ -16,7 +16,7 @@ public class VideoView$2
       VideoView.a(this.this$0).setOutputMute(VideoView.a(this.this$0));
       VideoView.a(this.this$0).setXYaxis(VideoView.a(this.this$0));
       if (this.this$0.getViewTreeObserver() != null) {
-        this.this$0.getViewTreeObserver().addOnGlobalLayoutListener(new oxd(this));
+        this.this$0.getViewTreeObserver().addOnGlobalLayoutListener(new oxa(this));
       }
       if (this.a) {
         this.this$0.E_();

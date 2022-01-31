@@ -1,26 +1,26 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class accs
-  extends RecyclerView.ItemDecoration
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int jdField_a_of_type_Int;
+  public accs(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
   
-  public accs(acck paramacck, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.jdField_a_of_type_Int;
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.left = this.jdField_a_of_type_Int;
-    if (paramRecyclerView.getChildPosition(paramView) != 0) {
-      paramRect.right = this.jdField_a_of_type_Int;
+    paramCompoundButton = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramCompoundButton.putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), paramBoolean);
+    paramCompoundButton.commit();
+    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      axqy.b(paramCompoundButton, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
+      return;
     }
   }
 }

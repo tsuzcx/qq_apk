@@ -1,19 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
-final class agqa
-  implements DialogInterface.OnClickListener
+public class agqa
+  implements MessageQueue.IdleHandler
 {
-  agqa(Activity paramActivity, String paramString1, String paramString2) {}
+  public agqa(SendPhotoActivity paramSendPhotoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean queueIdle()
   {
-    if (paramInt == 0)
-    {
-      agpv.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    aung.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
+    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
+    return false;
   }
 }
 

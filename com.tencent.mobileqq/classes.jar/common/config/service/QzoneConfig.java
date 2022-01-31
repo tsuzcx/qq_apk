@@ -5,9 +5,9 @@ import android.database.ContentObserver;
 import android.graphics.Rect;
 import android.os.Looper;
 import android.text.TextUtils;
-import bgfo;
-import bgfs;
-import bgft;
+import bggf;
+import bggj;
+import bggk;
 import com.tencent.common.config.provider.QZoneConfigProvider;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import xpc;
+import xoz;
 
 public class QzoneConfig
 {
@@ -186,6 +186,7 @@ public class QzoneConfig
   public static final String DEFAULT_SECONDARY_VIDEO_HERO_PLAYER_LIBS_URL = "http://d3g.qq.com/sngapp/app/update/20161019162548_6237/libheroplayer_2.jar";
   public static final String DEFAULT_SELECT_TEMPLATE_DYNAMIC_ALBUM_URL = "https://h5.qzone.qq.com/dynamic/album/coverList?source=1&_ws=9&preview=1&_wv=2098179&_dynamicalbum=1&_proxy=1";
   public static final String DEFAULT_SELF_PRAISE_ANIMATION_RES_URL = "https://d3g.qq.com/sngapp/app/update/20190307193443_9744/selfPraise.zip";
+  public static final int DEFAULT_SETTING_ME_MINI_GAME_ENABLE = 1;
   public static final String DEFAULT_SET_COOKIIE_HOST = "https://open.mp.qq.com";
   public static final String DEFAULT_SHARE_ALBUM_INVITE_TO_FEEDS_URL = "https://h5.qzone.qq.com/manyPeopleAlbum/invite/{albumUin}/{albumid}?uin={loginUin}&_proxy=1&_wv=3&_wvv=4";
   public static final int DEFAULT_SHARE_ALBUM_TO_WEIXIN_MINI_PROGRAM_NEED_SK_VALUE = 1;
@@ -214,7 +215,7 @@ public class QzoneConfig
   public static final String DEFAULT_SWEET_MAIN_PAGE_JUMP_URL_FOR_GUEST = "mqqapi://miniapp/open?_atype=0&_mappid=1108789561&_mvid=&_path=%2Fpages%2Fhome_v2%2Floverindex%2Floverindex&_vt=3&referer=brandonlin&via=brandonlin&_sig=5769d092f16fddbe05f75e679074639954b1554710aee3060cedc8545b5c5f4b";
   public static final String DEFAULT_SWEET_SETTING_RED_DOT_ANIMATION_SRC = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/love_zone_setting_src/setting_me_love_zone_frame_ani.zip";
   public static final long DEFAULT_TIME_DELAY_TO_GET_GUIDE_QBOSS_ADV = 86400000L;
-  public static String DEFAULT_TISSUE_BASELIB_URL = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200226132247_5009/tissue_lib_7764001_2020022613202208.zip\",\"key2\":\"\",\"key3\":\"1.6.7\",\"key4\": {\"file_length\": 7764001},\"key5\":99}";
+  public static String DEFAULT_TISSUE_BASELIB_URL = "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200309144401_2553/tissue_lib_6748781_2020030920173108.zip\",\"key2\":\"\",\"key3\":\"1.6.8\",\"key4\": {\"file_length\": 6748781},\"key5\":99}";
   public static final String DEFAULT_TRAVEL_ALBUM_LEFT_BG_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20191104215206_PfBsCode7B.png";
   public static final String DEFAULT_TRAVEL_ALBUM_RIGHT_BG_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20191104215206_8O4HN8FsAI.png";
   public static final int DEFAULT_TROOP_GRAY_TIPS_COOL_DOWN_HOURS = 24;
@@ -1170,6 +1171,10 @@ public class QzoneConfig
   public static final String SECONDARY_KEY_SEARCH_MOOD_TIPS_SECOND_LINE = "search_mood_tips_second_line";
   public static final String SECONDARY_KEY_SELF_PRAISE_ANIMATION_RES_URL = "self_praise_animation_res_url";
   public static final String SECONDARY_KEY_SELF_PRAISE_ANIMATION_SWITCH = "self_praise_animation_switch";
+  public static final String SECONDARY_KEY_SETTING_ME_MINI_GAME_ENABLE = "settingMeMiniGameEnable";
+  public static final String SECONDARY_KEY_SETTING_ME_MINI_GAME_ICON_URL = "settingMeMiniGameIconUrl";
+  public static final String SECONDARY_KEY_SETTING_ME_MINI_GAME_JUMP_URL = "settingMeMiniGameJumpUrl";
+  public static final String SECONDARY_KEY_SETTING_ME_MINI_GAME_NAME_TEXT = "settingMeMiniGameNameText";
   public static final String SECONDARY_KEY_SETTING_RED_DOT_ANIMATION_SRC = "love_zone_red_dot_frame_ani";
   public static final String SECONDARY_KEY_SHARE_ALBUM_TO_WEIXIN_MINI_PROGRAM_NEED_SK = "share_album_to_wx_miniprogram_need_sk";
   public static final String SECONDARY_KEY_SHARING_OWNERS_LIST_TITLE_BABY = "SharingOwnersListTitleBaby";
@@ -2339,8 +2344,8 @@ public class QzoneConfig
   private ConcurrentHashMap<String, ConcurrentHashMap<String, String>> configMap = new ConcurrentHashMap();
   private ContentObserver configUpdateObserver;
   private volatile int loadstatus = 0;
-  private ArrayList<WeakReference<bgft>> mCallback = new ArrayList();
-  private bgfo mStringHelper;
+  private ArrayList<WeakReference<bggk>> mCallback = new ArrayList();
+  private bggf mStringHelper;
   
   static
   {
@@ -2373,13 +2378,13 @@ public class QzoneConfig
   private void init()
   {
     registObserver();
-    this.mStringHelper = new bgfo();
+    this.mStringHelper = new bggf();
   }
   
   private void initConfigUpdateObserver()
   {
     if (this.configUpdateObserver == null) {
-      this.configUpdateObserver = new bgfs(this, null);
+      this.configUpdateObserver = new bggj(this, null);
     }
   }
   
@@ -2440,9 +2445,9 @@ public class QzoneConfig
     getInstance().notifyConfigChange();
   }
   
-  public void addListener(bgft parambgft)
+  public void addListener(bggk parambggk)
   {
-    if (parambgft == null) {}
+    if (parambggk == null) {}
     for (;;)
     {
       return;
@@ -2460,19 +2465,19 @@ public class QzoneConfig
             localObject = (WeakReference)localIterator.next();
             if (localObject != null)
             {
-              localObject = (bgft)((WeakReference)localObject).get();
+              localObject = (bggk)((WeakReference)localObject).get();
               if (localObject != null) {
                 break;
               }
               localIterator.remove();
             }
           }
-        } while (!parambgft.equals(localObject));
+        } while (!parambggk.equals(localObject));
       }
       finally {}
       continue;
       label77:
-      this.mCallback.add(new WeakReference(parambgft));
+      this.mCallback.add(new WeakReference(parambggk));
     }
   }
   
@@ -2672,7 +2677,7 @@ public class QzoneConfig
         String str1 = str2;
         if (TextUtils.isEmpty(str2))
         {
-          paramString2 = xpc.a(paramString2, paramString1);
+          paramString2 = xoz.a(paramString2, paramString1);
           str1 = paramString2;
           if (!TextUtils.isEmpty(paramString2))
           {
@@ -2718,7 +2723,7 @@ public class QzoneConfig
       this.loadstatus = 1;
       try
       {
-        if (xpc.a(this.configMap))
+        if (xoz.a(this.configMap))
         {
           this.loadstatus = 2;
           return;
@@ -2754,9 +2759,9 @@ public class QzoneConfig
       }
       QLog.e("QzoneConfig", 1, "notifyConfigChange error", localThrowable);
     }
-    bgft localbgft = (bgft)localbgft.get();
-    if (localbgft != null) {
-      localbgft.onConfigChange();
+    bggk localbggk = (bggk)localbggk.get();
+    if (localbggk != null) {
+      localbggk.onConfigChange();
     }
     label74:
     label95:
@@ -2768,8 +2773,8 @@ public class QzoneConfig
         if (i >= j) {
           break label95;
         }
-        localbgft = localThrowable[i];
-        if (localbgft != null) {
+        localbggk = localThrowable[i];
+        if (localbggk != null) {
           break;
         }
         i += 1;
@@ -2820,7 +2825,7 @@ public class QzoneConfig
   }
   
   /* Error */
-  public void removeListener(bgft parambgft)
+  public void removeListener(bggk parambggk)
   {
     // Byte code:
     //   0: aload_0
@@ -2831,30 +2836,30 @@ public class QzoneConfig
     //   7: monitorexit
     //   8: return
     //   9: aload_0
-    //   10: getfield 6564	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
-    //   13: invokevirtual 6679	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   10: getfield 6577	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
+    //   13: invokevirtual 6692	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   16: astore_2
     //   17: aload_2
-    //   18: invokeinterface 6684 1 0
+    //   18: invokeinterface 6697 1 0
     //   23: ifeq -17 -> 6
     //   26: aload_2
-    //   27: invokeinterface 6688 1 0
-    //   32: checkcast 6690	java/lang/ref/WeakReference
+    //   27: invokeinterface 6701 1 0
+    //   32: checkcast 6703	java/lang/ref/WeakReference
     //   35: astore_3
     //   36: aload_3
     //   37: ifnull -20 -> 17
     //   40: aload_3
-    //   41: invokevirtual 6693	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   44: checkcast 6695	bgft
+    //   41: invokevirtual 6706	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   44: checkcast 6708	bggk
     //   47: astore_3
     //   48: aload_3
     //   49: ifnull +11 -> 60
     //   52: aload_1
     //   53: aload_3
-    //   54: invokevirtual 6702	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   54: invokevirtual 6715	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   57: ifeq -40 -> 17
     //   60: aload_2
-    //   61: invokeinterface 6698 1 0
+    //   61: invokeinterface 6711 1 0
     //   66: goto -49 -> 17
     //   69: astore_1
     //   70: aload_0
@@ -2864,7 +2869,7 @@ public class QzoneConfig
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	74	0	this	QzoneConfig
-    //   0	74	1	parambgft	bgft
+    //   0	74	1	parambggk	bggk
     //   16	45	2	localIterator	Iterator
     //   35	19	3	localObject	Object
     // Exception table:

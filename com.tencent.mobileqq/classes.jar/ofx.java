@@ -1,8 +1,4 @@
-public class ofx
-{
-  public static int a = 1;
-  public static int b = 1;
-}
+class ofx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar

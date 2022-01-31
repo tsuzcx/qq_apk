@@ -1,21 +1,45 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-final class osr
-  extends akuj
+class osr
+  implements osv
 {
-  osr(String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  osr(osq paramosq) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public int a(Bundle paramBundle)
   {
-    osq.a(false);
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      sgj.a(100, new ArrayList());
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
+      }
+      onh.a(onh.a(), true, j, System.currentTimeMillis() - l);
+      return i;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+      continue;
+      i = this.a.g(paramBundle);
+      continue;
+      i = this.a.h(paramBundle);
+      continue;
+      i = this.a.i(paramBundle);
+      continue;
+      i = this.a.j(paramBundle);
+      continue;
+      i = this.a.k(paramBundle);
     }
   }
 }

@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class aain
-  implements amnf
+  implements View.OnClickListener
 {
-  public aain(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public aain(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
-      AgeSelectionActivity.a(this.a).dismiss();
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      altc.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, altc.c, 0, 0);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AgeSelectionActivity.a(this.a);
-      AgeSelectionActivity.b(this.a);
-      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        AgeSelectionActivity.a(this.a).a(2);
-      }
-      return;
-      AgeSelectionActivity.a(this.a, paramInt2);
-      continue;
-      AgeSelectionActivity.b(this.a, paramInt2);
-      continue;
-      AgeSelectionActivity.c(this.a, paramInt2);
-    }
+    this.a.a();
   }
 }
 

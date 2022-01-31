@@ -1,22 +1,16 @@
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import java.util.List;
 
 public class qge
-  extends osp
+  implements View.OnClickListener
 {
   public qge(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void c(List<TagInfo> paramList)
+  public void onClick(View paramView)
   {
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
-    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
-    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
-    if (paramList.isEmpty()) {
-      bcpw.a(this.a.getActivity(), 2131718576, 0).a();
-    }
+    this.a.getActivity().finish();
   }
 }
 

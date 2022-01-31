@@ -1,6 +1,15 @@
-public abstract interface bkjd<ERROR_TYPE, DATA_TYPE>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bkjd
+  implements DialogInterface.OnClickListener
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  bkjd(bkjb parambkjb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

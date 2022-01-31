@@ -1,10 +1,33 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-
-public abstract interface aiwk
+public class aiwk
 {
-  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof aiwk))) {}
+    do
+    {
+      return false;
+      paramObject = (aiwk)paramObject;
+    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    localStringBuilder.append("positionX:").append(this.a);
+    localStringBuilder.append(", positionY:").append(this.b);
+    localStringBuilder.append(", width:").append(this.c);
+    localStringBuilder.append(", height:").append(this.d);
+    localStringBuilder.append(", align:").append(this.e);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
 }
 
 

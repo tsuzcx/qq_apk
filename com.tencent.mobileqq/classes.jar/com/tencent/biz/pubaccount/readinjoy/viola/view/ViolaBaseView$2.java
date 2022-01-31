@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import rwa;
-import rzw;
+import rvx;
+import rzt;
 
 public class ViolaBaseView$2
   implements Runnable
@@ -18,7 +18,7 @@ public class ViolaBaseView$2
         QLog.e(ViolaBaseView.a(), 2, "ThreadManager 执行");
       }
       long l = System.currentTimeMillis();
-      rwa.a(this.a, ViolaBaseView.a(this.this$0), ViolaBaseView.a(this.this$0), new rzw(this, l));
+      rvx.a(this.a, ViolaBaseView.a(this.this$0), ViolaBaseView.a(this.this$0), new rzt(this, l));
       return;
     }
     catch (Exception localException)

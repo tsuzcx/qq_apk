@@ -1,19 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-
-public class afwg
-  implements View.OnClickListener
-{
-  public afwg(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    axqw.b(this.a.a, "dc00898", "", "", "0X800A16A", "0X800A16A", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", "");
-    ayfv.a(this.a.getActivity(), "s_qq_history_tab", 1121);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afwg

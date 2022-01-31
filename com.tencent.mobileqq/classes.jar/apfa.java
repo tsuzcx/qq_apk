@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class apfa
-  extends apfe
+public final class apfa
+  implements Parcelable.Creator<WeiYunFileInfo>
 {
-  public CharSequence c()
+  public WeiYunFileInfo a(Parcel paramParcel)
   {
-    Object localObject = (FileManagerEntity)this.a.get(0);
-    String str1 = apvu.b(((FileManagerEntity)localObject).srvTime);
-    String str2 = apue.b((FileManagerEntity)localObject);
-    localObject = apvb.a(((FileManagerEntity)localObject).fileSize);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
-    this.b = localStringBuilder;
-    return localStringBuilder;
+    return new WeiYunFileInfo(paramParcel);
+  }
+  
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
   }
 }
 

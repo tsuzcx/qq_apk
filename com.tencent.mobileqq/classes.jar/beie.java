@@ -1,43 +1,14 @@
-import java.io.Closeable;
-import java.io.InputStream;
+import java.util.Map;
 
-public final class beie
-  implements Closeable
+public abstract interface beie
 {
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private final long[] jdField_a_of_type_ArrayOfLong;
-  private final InputStream[] jdField_a_of_type_ArrayOfJavaIoInputStream;
+  public abstract Map<String, beib> a();
   
-  private beie(behy parambehy, String paramString, long paramLong, InputStream[] paramArrayOfInputStream, long[] paramArrayOfLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfJavaIoInputStream = paramArrayOfInputStream;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
-  }
+  public abstract boolean a();
   
-  public InputStream a(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaIoInputStream[paramInt];
-  }
+  public abstract Map<String, beib> b();
   
-  public String a(int paramInt)
-  {
-    return behy.a(a(paramInt));
-  }
-  
-  public void close()
-  {
-    InputStream[] arrayOfInputStream = this.jdField_a_of_type_ArrayOfJavaIoInputStream;
-    int j = arrayOfInputStream.length;
-    int i = 0;
-    while (i < j)
-    {
-      beif.a(arrayOfInputStream[i]);
-      i += 1;
-    }
-  }
+  public abstract Map<String, beia> c();
 }
 
 

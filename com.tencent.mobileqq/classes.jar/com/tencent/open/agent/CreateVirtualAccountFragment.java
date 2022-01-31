@@ -1,11 +1,11 @@
 package com.tencent.open.agent;
 
-import agqs;
-import ajyc;
+import agqq;
+import ajya;
+import amtp;
 import amtq;
 import amtr;
 import amts;
-import amtt;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -23,16 +23,16 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import bavi;
-import bbdr;
-import bcpq;
-import bczz;
-import bdaa;
-import bdac;
-import bdno;
-import bdnx;
-import bfol;
-import bfoy;
+import bavw;
+import bbef;
+import bcqf;
+import bdao;
+import bdap;
+import bdar;
+import bdod;
+import bdom;
+import bfpc;
+import bfpp;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -58,14 +58,14 @@ public class CreateVirtualAccountFragment
   public Uri a;
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  protected bcpq a;
-  private bdno jdField_a_of_type_Bdno;
-  private bdnx jdField_a_of_type_Bdnx = new bdac(this);
+  protected bcqf a;
+  private bdod jdField_a_of_type_Bdod;
+  private bdom jdField_a_of_type_Bdom = new bdar(this);
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   SystemBarCompact jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-  private List<amts> jdField_a_of_type_JavaUtilList;
+  private List<amtr> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -81,9 +81,9 @@ public class CreateVirtualAccountFragment
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      amts localamts = (amts)localIterator.next();
-      if (TextUtils.equals(localamts.jdField_c_of_type_JavaLangString, paramString)) {
-        return localamts.jdField_b_of_type_JavaLangString;
+      amtr localamtr = (amtr)localIterator.next();
+      if (TextUtils.equals(localamtr.jdField_c_of_type_JavaLangString, paramString)) {
+        return localamtr.jdField_b_of_type_JavaLangString;
       }
     }
     return "";
@@ -105,7 +105,7 @@ public class CreateVirtualAccountFragment
         paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
         if (paramString != null)
         {
-          paramString.setDecodeHandler(bavi.a);
+          paramString.setDecodeHandler(bavw.a);
           if (paramString.getStatus() == 2)
           {
             QLog.d("CreateVirtualAccountFragment", 1, "setVirtualIcon restartDownload");
@@ -156,7 +156,7 @@ public class CreateVirtualAccountFragment
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      if (TextUtils.equals(((amts)localIterator.next()).jdField_c_of_type_JavaLangString, paramString)) {
+      if (TextUtils.equals(((amtr)localIterator.next()).jdField_c_of_type_JavaLangString, paramString)) {
         return true;
       }
     }
@@ -167,54 +167,54 @@ public class CreateVirtualAccountFragment
   {
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      a(ajyc.a(2131702618), false);
+      a(ajya.a(2131702629), false);
       QLog.d("CreateVirtualAccountFragment", 1, "randomInfo config is null");
       return;
     }
     int i = this.jdField_b_of_type_Int;
     int j = this.jdField_a_of_type_JavaUtilList.size();
-    amts localamts = (amts)this.jdField_a_of_type_JavaUtilList.get(i % j);
-    if (localamts == null)
+    amtr localamtr = (amtr)this.jdField_a_of_type_JavaUtilList.get(i % j);
+    if (localamtr == null)
     {
       QLog.d("CreateVirtualAccountFragment", 1, " current randomInfo is null");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(localamts.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(localamts.jdField_c_of_type_JavaLangString))
+    this.jdField_a_of_type_AndroidWidgetEditText.setText(localamtr.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(localamtr.jdField_c_of_type_JavaLangString))
     {
-      this.jdField_b_of_type_JavaLangString = localamts.jdField_c_of_type_JavaLangString;
-      a(this.jdField_a_of_type_ComTencentImageURLImageView, localamts.jdField_c_of_type_JavaLangString);
+      this.jdField_b_of_type_JavaLangString = localamtr.jdField_c_of_type_JavaLangString;
+      a(this.jdField_a_of_type_ComTencentImageURLImageView, localamtr.jdField_c_of_type_JavaLangString);
     }
     this.jdField_b_of_type_Int += 1;
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Bcpq != null)
+    if (this.jdField_a_of_type_Bcqf != null)
     {
-      if (this.jdField_a_of_type_Bcpq.isShowing()) {
+      if (this.jdField_a_of_type_Bcqf.isShowing()) {
         return;
       }
-      this.jdField_a_of_type_Bcpq.show();
+      this.jdField_a_of_type_Bcqf.show();
       return;
     }
-    this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), 0, 2131561035, 17);
-    this.jdField_a_of_type_Bcpq.a(-1);
-    this.jdField_a_of_type_Bcpq.show();
+    this.jdField_a_of_type_Bcqf = new bcqf(getActivity(), 0, 2131561034, 17);
+    this.jdField_a_of_type_Bcqf.a(-1);
+    this.jdField_a_of_type_Bcqf.show();
   }
   
   public void a()
   {
-    bfol localbfol = (bfol)bfoy.a(getActivity(), null);
+    bfpc localbfpc = (bfpc)bfpp.a(getActivity(), null);
     String[] arrayOfString = super.getResources().getStringArray(2130968634);
-    localbfol.c(arrayOfString[24]);
-    localbfol.c(arrayOfString[13]);
-    localbfol.d(arrayOfString[16]);
-    localbfol.a(new bdaa(this, localbfol));
+    localbfpc.c(arrayOfString[24]);
+    localbfpc.c(arrayOfString[13]);
+    localbfpc.d(arrayOfString[16]);
+    localbfpc.a(new bdap(this, localbfpc));
     try
     {
       if (!getActivity().isFinishing()) {
-        localbfol.show();
+        localbfpc.show();
       }
       return;
     }
@@ -239,12 +239,12 @@ public class CreateVirtualAccountFragment
     if (getActivity() == null) {
       QLog.e("CreateVirtualAccountFragment", 1, "dismissDialogProgress activity is null");
     }
-    while ((getActivity().isFinishing()) || (this.jdField_a_of_type_Bcpq == null) || (!this.jdField_a_of_type_Bcpq.isShowing())) {
+    while ((getActivity().isFinishing()) || (this.jdField_a_of_type_Bcqf == null) || (!this.jdField_a_of_type_Bcqf.isShowing())) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_Bcpq.dismiss();
+      this.jdField_a_of_type_Bcqf.dismiss();
       return;
     }
     catch (Exception localException)
@@ -322,9 +322,9 @@ public class CreateVirtualAccountFragment
     {
       return;
       paramIntent = this.jdField_a_of_type_AndroidNetUri;
-      paramIntent = bbdr.b(getActivity(), paramIntent);
+      paramIntent = bbef.b(getActivity(), paramIntent);
     } while (TextUtils.isEmpty(paramIntent));
-    agqs.a(getActivity(), paramIntent, 103);
+    agqq.a(getActivity(), paramIntent, 103);
   }
   
   public void onClick(View paramView)
@@ -333,7 +333,7 @@ public class CreateVirtualAccountFragment
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       if (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText())) {
-        a(ajyc.a(2131702615), false);
+        a(ajya.a(2131702626), false);
       }
     }
     do
@@ -345,19 +345,19 @@ public class CreateVirtualAccountFragment
       {
         QLog.d("CreateVirtualAccountFragment", 2, "========> doCreateVirtualAccount nickName = " + paramView + " headId==" + jdField_a_of_type_JavaLangString);
         f();
-        this.jdField_a_of_type_Bdno.a(this.jdField_b_of_type_Long, paramView, jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdnx);
+        this.jdField_a_of_type_Bdod.a(this.jdField_b_of_type_Long, paramView, jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bdom);
         return;
       }
       if (a(this.jdField_b_of_type_JavaLangString))
       {
         QLog.d("CreateVirtualAccountFragment", 2, "========> doCreateVirtualAccount nickName = " + paramView + " headId==" + a(this.jdField_b_of_type_JavaLangString));
         f();
-        this.jdField_a_of_type_Bdno.a(this.jdField_b_of_type_Long, paramView, a(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Bdnx);
+        this.jdField_a_of_type_Bdod.a(this.jdField_b_of_type_Long, paramView, a(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Bdom);
         return;
       }
       f();
       QLog.d("CreateVirtualAccountFragment", 2, "========> doUploadAvatarAndCreateVirtualAccount localPath = " + this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(String.valueOf(this.jdField_b_of_type_Long), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bdnx);
+      this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(String.valueOf(this.jdField_b_of_type_Long), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bdom);
       return;
       if (paramView == this.d)
       {
@@ -389,13 +389,13 @@ public class CreateVirtualAccountFragment
       QLog.d("CreateVirtualAccountFragment", 2, "-->onCreate--");
     }
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getActivity().getAppRuntime());
-    this.e = paramLayoutInflater.findViewById(2131362989);
+    this.e = paramLayoutInflater.findViewById(2131362988);
     this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131367689);
     this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131370654);
-    this.d = paramLayoutInflater.findViewById(2131374683);
-    this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131375572);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131379285));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131379289));
+    this.d = paramLayoutInflater.findViewById(2131374685);
+    this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131375574);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131379290));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131379294));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramLayoutInflater.findViewById(2131377439));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(0);
@@ -404,8 +404,8 @@ public class CreateVirtualAccountFragment
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.d.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    this.jdField_a_of_type_Bdno = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a();
-    paramViewGroup = amtt.b(466);
+    this.jdField_a_of_type_Bdod = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a();
+    paramViewGroup = amts.b(466);
     if ((paramViewGroup != null) && (paramViewGroup.a() != null))
     {
       this.jdField_a_of_type_JavaUtilList = paramViewGroup.a().a;
@@ -413,14 +413,14 @@ public class CreateVirtualAccountFragment
         this.jdField_b_of_type_Int = Math.abs(new Random().nextInt(this.jdField_a_of_type_JavaUtilList.size()));
       }
     }
-    this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), 0, 2131561035, 17);
-    this.jdField_a_of_type_Bcpq.a(-1);
+    this.jdField_a_of_type_Bcqf = new bcqf(getActivity(), 0, 2131561034, 17);
+    this.jdField_a_of_type_Bcqf.a(-1);
     paramViewGroup = getActivity().getIntent();
     try
     {
       this.jdField_b_of_type_Long = Long.parseLong(paramViewGroup.getStringExtra("appid"));
       QLog.d("CreateVirtualAccountFragment", 1, new Object[] { "========> init appid = ", Long.valueOf(this.jdField_b_of_type_Long), ", mRandIndex=", Integer.valueOf(this.jdField_b_of_type_Int) });
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new bczz(this) });
+      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new bdao(this) });
       this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new CreateVirtualAccountFragment.2(this), 300L);
       return paramLayoutInflater;
     }
@@ -436,8 +436,8 @@ public class CreateVirtualAccountFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bdnx = null;
-    this.jdField_a_of_type_Bdno = null;
+    this.jdField_a_of_type_Bdom = null;
+    this.jdField_a_of_type_Bdod = null;
   }
   
   public void onNewIntent(Intent paramIntent)

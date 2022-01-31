@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acuw;
-import akpv;
-import akpy;
-import akqs;
+import acus;
+import akpu;
+import akpx;
+import akqr;
 import android.os.SystemClock;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -79,12 +79,12 @@ class TroopChatPie$6
         QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "now pull more message for troop!");
       }
       TroopChatPie.a(this.this$0, SystemClock.uptimeMillis());
-      ((acuw)TroopChatPie.a(this.this$0).a).a(TroopChatPie.a(this.this$0));
-      TroopChatPie.b(this.this$0).e = akpy.c((List)localObject);
+      ((acus)TroopChatPie.a(this.this$0).a).a(TroopChatPie.a(this.this$0));
+      TroopChatPie.b(this.this$0).e = akpx.c((List)localObject);
       TroopChatPie.c(this.this$0).f = true;
     } while (TroopChatPie.d(this.this$0).c != 0);
     localObject = TroopChatPie.e(this.this$0);
-    ((akqs)localObject).c += 1;
+    ((akqr)localObject).c += 1;
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 15, TroopChatPie.f(this.this$0));
   }
 }

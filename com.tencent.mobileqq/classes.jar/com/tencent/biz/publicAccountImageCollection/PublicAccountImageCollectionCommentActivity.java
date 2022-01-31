@@ -11,12 +11,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.BaseActivity;
+import snx;
+import sny;
+import snz;
 import soa;
 import sob;
 import soc;
-import sod;
-import soe;
-import sof;
 
 public class PublicAccountImageCollectionCommentActivity
   extends BaseActivity
@@ -71,19 +71,19 @@ public class PublicAccountImageCollectionCommentActivity
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
     super.setContentView(2131559429);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364449);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364446));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364448);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131364445));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new soa(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new sob(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131364440).setOnClickListener(new soc(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new sod(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375835));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new soe(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new snx(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new sny(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131364439).setOnClickListener(new snz(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new soa(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375837));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new sob(this));
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("anonymous", false);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362554));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362553));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new sof(this));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new soc(this));
     paramBundle = getIntent().getStringExtra("comment");
     if (!TextUtils.isEmpty(paramBundle))
     {

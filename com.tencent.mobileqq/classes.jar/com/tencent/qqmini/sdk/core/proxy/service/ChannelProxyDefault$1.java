@@ -3,9 +3,9 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import beho;
-import behq;
-import besl;
+import beif;
+import beih;
+import betc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -41,11 +41,11 @@ class ChannelProxyDefault$1
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (INTERFACE.StUserAuthInfo)((Iterator)localObject1).next();
-            beho localbeho = new beho();
-            localbeho.jdField_a_of_type_JavaLangString = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
-            localbeho.b = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
-            localbeho.jdField_a_of_type_Int = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
-            localArrayList1.add(localbeho);
+            beif localbeif = new beif();
+            localbeif.jdField_a_of_type_JavaLangString = ((INTERFACE.StUserAuthInfo)localObject2).scope.get();
+            localbeif.b = ((INTERFACE.StUserAuthInfo)localObject2).desc.get();
+            localbeif.jdField_a_of_type_Int = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
+            localArrayList1.add(localbeif);
           }
           if (this.val$result == null) {
             break label207;
@@ -53,7 +53,7 @@ class ChannelProxyDefault$1
         }
         catch (InvalidProtocolBufferMicroException paramJSONObject)
         {
-          besl.d("ChannelProxyDefault", "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
+          betc.d("ChannelProxyDefault", "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
           paramJSONObject.printStackTrace();
         }
       }
@@ -67,10 +67,10 @@ class ChannelProxyDefault$1
       while (paramJSONObject.hasNext())
       {
         localObject1 = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
-        localObject2 = new behq();
-        ((behq)localObject2).jdField_a_of_type_JavaLangString = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
-        ((behq)localObject2).jdField_a_of_type_Int = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
-        ((behq)localObject2).b = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
+        localObject2 = new beih();
+        ((beih)localObject2).jdField_a_of_type_JavaLangString = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
+        ((beih)localObject2).jdField_a_of_type_Int = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
+        ((beih)localObject2).b = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
       }
     } while (this.val$result == null);
     this.val$result.onReceiveResult(true, localArrayList1, localArrayList2);

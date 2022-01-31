@@ -1,39 +1,30 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.ui.MoreFragment;
+
 public class bffx
+  implements Animation.AnimationListener
 {
-  public static final byte[] a;
-  private static final char[] a;
+  public bffx(MoreFragment paramMoreFragment, int paramInt, Bundle paramBundle) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-    jdField_a_of_type_ArrayOfByte = new byte[0];
+    paramAnimation = MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment);
+    paramAnimation.putExtra("miniAppID", MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment));
+    paramAnimation.putExtra("more_item_id", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      paramAnimation.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().setResult(-1, paramAnimation);
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().finish();
   }
   
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    try
-    {
-      while (i < paramArrayOfByte.length)
-      {
-        int j = paramArrayOfByte[i];
-        arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-        j = (byte)(j >>> 4);
-        arrayOfChar[(i * 2 + 0)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-        i += 1;
-      }
-      return new String(arrayOfChar);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      besl.a("HexUtil", " === bytes2HexStr error === " + paramArrayOfByte.toString());
-      return null;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

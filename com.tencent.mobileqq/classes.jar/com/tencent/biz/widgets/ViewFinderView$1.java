@@ -1,11 +1,11 @@
 package com.tencent.biz.widgets;
 
-import xok;
+import xoh;
 
 public class ViewFinderView$1
   implements Runnable
 {
-  public ViewFinderView$1(xok paramxok, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ViewFinderView$1(xoh paramxoh, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {

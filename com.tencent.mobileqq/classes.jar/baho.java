@@ -1,9 +1,15 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.6.1.1;
 
-public abstract interface baho
+public class baho
+  implements aycd
 {
-  public abstract void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle);
+  baho(bahn parambahn) {}
+  
+  public void a()
+  {
+    this.a.a.a.post(new AIOAnimationControlManager.6.1.1(this));
+  }
 }
 
 

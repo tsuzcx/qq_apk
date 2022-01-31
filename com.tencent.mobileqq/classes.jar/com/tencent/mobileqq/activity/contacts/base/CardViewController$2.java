@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contacts.base;
 
-import afqa;
+import afpy;
 import java.util.ArrayList;
 
 public class CardViewController$2
   implements Runnable
 {
-  public CardViewController$2(afqa paramafqa) {}
+  public CardViewController$2(afpy paramafpy) {}
   
   public void run()
   {
-    ArrayList localArrayList = afqa.a(this.this$0);
-    afqa.a(this.this$0, localArrayList);
+    ArrayList localArrayList = afpy.a(this.this$0);
+    afpy.a(this.this$0, localArrayList);
   }
 }
 

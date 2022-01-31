@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import ajsd;
+import ajsb;
 
 public class AddFrdStateMng$1
   implements Runnable
 {
-  public AddFrdStateMng$1(ajsd paramajsd) {}
+  public AddFrdStateMng$1(ajsb paramajsb) {}
   
   public void run()
   {
-    ajsd.a(this.this$0);
+    ajsb.a(this.this$0);
     this.this$0.c = false;
   }
 }

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import akbo;
-import akbu;
+import akbn;
+import akbt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class NewFriendManager$5
   implements Runnable
 {
-  public NewFriendManager$5(akbo paramakbo, int paramInt) {}
+  public NewFriendManager$5(akbn paramakbn, int paramInt) {}
   
   public void run()
   {
-    synchronized (akbo.a(this.this$0))
+    synchronized (akbn.a(this.this$0))
     {
-      Iterator localIterator = akbo.a(this.this$0).iterator();
+      Iterator localIterator = akbn.a(this.this$0).iterator();
       if (localIterator.hasNext()) {
-        ((akbu)localIterator.next()).i_(this.a);
+        ((akbt)localIterator.next()).i_(this.a);
       }
     }
   }

@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class asml
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public asml(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  public asml(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (MsgBackupDateFragment.a(this.a) == 0) {
-      asoe.a("0X800A236");
-    }
-    for (;;)
-    {
-      this.a.onBackEvent();
-      return;
-      if (asle.c) {
-        asoe.a("0X800A25B");
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

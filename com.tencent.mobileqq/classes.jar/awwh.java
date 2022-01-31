@@ -1,60 +1,13 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class awwh
-  implements awwo
+public final class awwh
+  implements DialogInterface.OnClickListener
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awwp jdField_a_of_type_Awwp;
-  private List<awwp> jdField_a_of_type_JavaUtilList;
-  private TextView b;
-  
-  public awwh() {}
-  
-  public awwh(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370398));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369348));
-    this.jdField_a_of_type_Awwp = new awwj(this.jdField_a_of_type_AndroidViewView.findViewById(2131368306));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public awwp a()
-  {
-    return this.jdField_a_of_type_Awwp;
-  }
-  
-  public List<awwp> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.b;
+    com.tencent.mobileqq.search.util.VADHelper.c = false;
+    paramDialogInterface.dismiss();
   }
 }
 

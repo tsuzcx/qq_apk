@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +28,7 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
     try
     {
       MiniAppController.launchMiniAppByAppInfo((Activity)this.val$activity.get(), MiniAppDesktopAdapter.SearchViewHolder.access$2800(this.this$0).mAppInfo, paramView);
-      paramView = ajyc.a(2131706793);
+      paramView = ajya.a(2131706804);
       if (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText() != null) {
         paramView = MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).getText().toString();
       }

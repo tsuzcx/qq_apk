@@ -1,74 +1,26 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Comparator;
 
-public class aqzf
-  extends aqyu
+class aqzf
+  implements Comparator<File>
 {
-  public static URL b(String paramString)
-  {
-    try
-    {
-      paramString = new URL("hot_pic_origin", "", paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
+  aqzf(aqze paramaqze) {}
   
-  protected String a(HotPicData paramHotPicData)
+  public int a(File paramFile1, File paramFile2)
   {
-    return paramHotPicData.originalUrl;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
-    String str = a(paramDownloadParams);
-    File localFile = a(str);
-    if (localFile.exists())
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
+      return -1;
+      if (paramFile1.lastModified() != paramFile2.lastModified()) {
+        break;
       }
-      return localFile;
-    }
-    localFile.getParentFile().mkdirs();
-    if ((bbbd.a()) && (bbbd.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bbbd.b());
-    }
-    Object localObject = new File(a);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
-    }
-    int i = a(str, localFile);
-    if (i == 0)
-    {
-      localObject = aurl.a(localFile.getAbsolutePath());
-      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
-      {
-        localFile.delete();
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-        return null;
+      if (paramFile1.length() > paramFile2.length()) {
+        return 1;
       }
-      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
-      }
-      return localFile;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
-    }
-    return null;
+    } while (paramFile1.length() < paramFile2.length());
+    return 0;
+    return 1;
   }
 }
 

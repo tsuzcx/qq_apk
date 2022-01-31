@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.location.ui;
 
-import arwd;
-import arwh;
-import bcpw;
+import arwf;
+import arwj;
+import bcql;
 
 public class LocationPickController$3
   implements Runnable
 {
-  public LocationPickController$3(arwh paramarwh) {}
+  public LocationPickController$3(arwj paramarwj) {}
   
   public void run()
   {
-    if (arwh.a(this.this$0).getCount() <= 0) {
-      arwh.a(this.this$0);
+    if (arwj.a(this.this$0).getCount() <= 0) {
+      arwj.a(this.this$0);
     }
-    bcpw.a(arwh.a(this.this$0), 1, 2131694001, 0).a();
+    bcql.a(arwj.a(this.this$0), 1, 2131694002, 0).a();
   }
 }
 

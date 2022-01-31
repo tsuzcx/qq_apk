@@ -1,16 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class aihz
-  implements bcvx
+  implements DialogInterface.OnClickListener
 {
-  public aihz(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  public aihz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

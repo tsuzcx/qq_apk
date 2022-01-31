@@ -1,52 +1,58 @@
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 class aeta
-  extends akup
+  extends akdn
 {
-  aeta(aerv paramaerv, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  aeta(aert paramaert) {}
+  
+  public void a(int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a.D(paramInt);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    double d3 = 0.0D;
-    String str;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
+    if (paramInt == 0)
     {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label211;
+      if ((paramPublicAccountInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramPublicAccountInfo.getUin()))) {
+        this.a.b(1);
       }
     }
-    label211:
-    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
+    else {
+      return;
+    }
+    this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+    }
+    if ((paramBoolean) && (!aert.d(this.a)))
     {
-      double d2 = d3;
-      if (paramSosoLbsInfo != null)
-      {
-        d2 = d3;
-        if (paramSosoLbsInfo.a != null) {
-          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-        }
+      localObject = (akdh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      if (localObject == null) {
+        break label102;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2 + ", address=" + str);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, d1, d2, str);
+    }
+    label102:
+    for (Object localObject = ((akdh)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
+    {
+      if ((localObject != null) && (this.a.o != null) && (!aert.e(this.a))) {
+        this.a.bq();
       }
       return;
-      str = "";
-      break;
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
     }
   }
 }

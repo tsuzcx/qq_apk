@@ -1,65 +1,137 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
 
 public class akyp
 {
-  public final int a;
-  long jdField_a_of_type_Long = 0L;
-  alxs jdField_a_of_type_Alxs = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  boolean jdField_a_of_type_Boolean = true;
-  public int b;
-  long b;
-  public String b;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  public String c;
-  int d;
-  public String d;
-  public final String e;
+  static int jdField_a_of_type_Int = -1;
+  static final String jdField_a_of_type_JavaLangString = akyx.jdField_a_of_type_JavaLangString;
+  static int b = -1;
   
-  public akyp(String paramString, int paramInt)
+  public static boolean a()
   {
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = -1;
-    this.e = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    return (c()) && (d()) && (b());
   }
   
-  void a()
+  public static boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i = bbdh.a();
+    if (i < paramInt2)
     {
-      if (this.jdField_c_of_type_Int == 1) {
-        return;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error OSversion[" + paramInt2 + "->" + i + "]");
+      return false;
+    }
+    paramInt2 = bbdh.b();
+    if (paramInt2 < paramInt1)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpucount[" + paramInt1 + "->" + paramInt2 + "]");
+      return false;
+    }
+    long l = bbdh.a();
+    if (l < paramLong1)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpuFrequency[" + paramLong1 + "->" + l + "]");
+      return false;
+    }
+    paramLong1 = bbdh.d();
+    if (paramLong1 < paramLong2)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error memory[" + paramLong2 + "->" + paramLong1 + "]");
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean b()
+  {
+    return (!Build.MODEL.equalsIgnoreCase("ATH-AL00")) && (!Build.MODEL.equalsIgnoreCase("BND-AL10"));
+  }
+  
+  public static boolean c()
+  {
+    if (jdField_a_of_type_Int == -1) {
+      if (Build.VERSION.SDK_INT <= 20) {
+        break label118;
       }
-      if (this.jdField_c_of_type_Int == -1) {
-        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
+    }
+    label111:
+    label116:
+    label118:
+    for (int i = 1;; i = 0)
+    {
+      int j;
+      if ((a(8, 1367L, 2800000000L, 15)) || (a(4, 2099L, 2800000000L, 15)))
+      {
+        j = 1;
+        if ((j == 0) || (i == 0)) {
+          break label111;
+        }
       }
-      a(0);
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_c_of_type_Long = 0L;
-      return;
+      for (i = 1;; i = 0)
+      {
+        jdField_a_of_type_Int = i;
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "isDevicesSupport, DeviceSupportFromLocal[" + jdField_a_of_type_Int + "]");
+        if (jdField_a_of_type_Int != 1) {
+          break label116;
+        }
+        return true;
+        j = 0;
+        break;
+      }
+      return false;
     }
   }
   
-  void a(int paramInt)
+  public static boolean d()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    String str;
+    Object localObject;
+    int j;
+    boolean bool;
+    if (b == -1)
     {
-      this.jdField_c_of_type_Int = paramInt;
-      return;
+      str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
+      if (TextUtils.isEmpty(str)) {
+        break label160;
+      }
+      localObject = new String[13];
+      j = DeviceProfileManager.a(str, (Object[])localObject, new ajvc());
+      if (localObject.length <= 12) {
+        break label173;
+      }
+      localObject = localObject[12];
+      if (TextUtils.equals((CharSequence)localObject, "1")) {
+        break label150;
+      }
+      bool = true;
     }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
+    for (;;)
+    {
+      if (bool) {}
+      for (int i = 1;; i = 0)
+      {
+        b = i;
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, isEnable[" + bool + "], arCfg[" + str + "], size[" + j + "], params[" + (String)localObject + "]");
+        if (b != 1) {
+          break label171;
+        }
+        return true;
+        label150:
+        bool = false;
+        break;
+      }
+      label160:
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, 没拉到dpc配置");
+      return true;
+      label171:
+      return false;
+      label173:
+      localObject = null;
+      bool = true;
+    }
   }
 }
 

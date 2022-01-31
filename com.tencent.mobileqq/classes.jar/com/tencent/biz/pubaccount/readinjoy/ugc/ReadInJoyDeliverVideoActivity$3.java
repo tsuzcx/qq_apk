@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import ajyc;
-import bbcv;
-import bbgg;
-import qfb;
+import ajya;
+import bbdj;
+import bbgu;
+import qey;
 
 public class ReadInJoyDeliverVideoActivity$3
   implements Runnable
@@ -15,7 +15,7 @@ public class ReadInJoyDeliverVideoActivity$3
     if (ReadInJoyDeliverVideoActivity.b(this.this$0)) {
       return;
     }
-    bbcv.a(this.this$0, 233, ajyc.a(2131712901), this.this$0.getString(2131718400), new qfb(this), null).show();
+    bbdj.a(this.this$0, 233, ajya.a(2131712912), this.this$0.getString(2131718411), new qey(this), null).show();
   }
 }
 

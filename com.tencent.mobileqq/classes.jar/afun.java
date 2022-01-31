@@ -1,17 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-
-public class afun
-  extends RecyclerView.ViewHolder
+public abstract interface afun
 {
-  TextView a;
-  
-  afun(View paramView)
-  {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131378487));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,36 +1,71 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amqc
+  extends ampa<amqd>
 {
-  private boolean a;
-  
-  public static amqc a(String paramString)
+  public int a()
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        amqc localamqc = new amqc();
-        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localamqc.a = bool;
-          return localamqc;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
-    }
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    return 537;
   }
   
-  public boolean a()
+  @NonNull
+  public amqd a(int paramInt)
   {
-    return this.a;
+    return new amqd();
+  }
+  
+  @Nullable
+  public amqd a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      paramArrayOfamph = paramArrayOfamph[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfamph);
+      }
+      return amqd.a(paramArrayOfamph);
+    }
+    return new amqd();
+  }
+  
+  public Class a()
+  {
+    return amqd.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
+    }
+  }
+  
+  public void a(amqd paramamqd)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
+    }
+    axuk.a().a(paramamqd);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

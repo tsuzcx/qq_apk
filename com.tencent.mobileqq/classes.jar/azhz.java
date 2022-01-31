@@ -1,30 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import java.util.ArrayList;
 
 public class azhz
-  implements bcwh
+  extends BroadcastReceiver
 {
-  public azhz(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  public azhz(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
     {
-    case -1: 
-    default: 
-      bcpw.a(BaseApplicationImpl.getContext(), 2, 2131719476, 1).a();
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      }
     }
-    for (;;)
+    do
     {
-      WXShareHelper.a().b(this);
+      do
+      {
+        return;
+        if (!"key_audio_delete_action".equals(paramContext)) {
+          break;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+      } while (!this.a.k);
+      bajf.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
       return;
-      bcpw.a(BaseApplicationImpl.getContext(), 2, 2131719495, 1).a();
-    }
+    } while (!"key_photo_add_action".equals(paramContext));
+    this.a.h();
   }
 }
 

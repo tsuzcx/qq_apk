@@ -1,86 +1,50 @@
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ayfl
-  implements ajtg
+  extends MiniMsgUser
 {
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  int jdField_a_of_type_Int = -1;
+  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
+  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
-  
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ayfl(BaseActivity paramBaseActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
   {
-    switch (paramInt)
-    {
-    }
+    super(paramBaseActivity, paramMiniMsgUserParam);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.b = paramString2;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
+    int i;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                      } while (paramObject == null);
-                      paramObject = (Object[])paramObject;
-                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                      return;
-                    } while (paramObject == null);
-                    paramObject = (Object[])paramObject;
-                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
-                  return;
-                } while (paramObject == null);
-                a(paramBoolean, (Object[])paramObject);
-                return;
-                if (paramObject != null) {
-                  b(paramBoolean, (Object[])paramObject);
-                }
-              } while (paramObject == null);
-              c(paramBoolean, (Object[])paramObject);
-              return;
-            } while (paramObject == null);
-            d(paramBoolean, (Object[])paramObject);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 2);
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
+      }
+      paramView = this.jdField_a_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Int;
+    } while ((i == -1) || (TextUtils.isEmpty(paramView)));
+    MiniChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, paramView, this.b);
+    hideUnread();
+  }
+  
+  public void updateUnreadCountSync(int paramInt)
+  {
+    super.updateUnreadCountSync(0);
   }
 }
 

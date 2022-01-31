@@ -1,27 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.ptv.LWMotionEvent;
 
-public class bjpk
-  extends AnimatorListenerAdapter
+public final class bjpk
+  implements Parcelable.Creator<LWMotionEvent>
 {
-  public bjpk(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public LWMotionEvent a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
-    }
-    this.a.j();
-    arql.b();
+    return new LWMotionEvent(paramParcel, null);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public LWMotionEvent[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
-    }
+    return new LWMotionEvent[paramInt];
   }
 }
 

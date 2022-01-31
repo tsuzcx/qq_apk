@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
+import akya;
 import akyb;
-import akyc;
 import android.media.SoundPool;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -13,29 +13,29 @@ import java.util.Set;
 public class ARPromotionSoundPlayer$1
   implements Runnable
 {
-  public ARPromotionSoundPlayer$1(akyb paramakyb) {}
+  public ARPromotionSoundPlayer$1(akya paramakya) {}
   
   public void run()
   {
     try
     {
-      if (akyb.a(this.this$0) != null)
+      if (akya.a(this.this$0) != null)
       {
-        if (akyb.a(this.this$0).isPlaying()) {
-          akyb.a(this.this$0).stop();
+        if (akya.a(this.this$0).isPlaying()) {
+          akya.a(this.this$0).stop();
         }
-        akyb.a(this.this$0).release();
-        akyb.a(this.this$0, null);
+        akya.a(this.this$0).release();
+        akya.a(this.this$0, null);
       }
-      Iterator localIterator = akyb.a(this.this$0).entrySet().iterator();
+      Iterator localIterator = akya.a(this.this$0).entrySet().iterator();
       while (localIterator.hasNext())
       {
-        akyc localakyc = (akyc)((Map.Entry)localIterator.next()).getValue();
-        if (localakyc != null) {
-          akyb.a(this.this$0).stop(localakyc.a);
+        akyb localakyb = (akyb)((Map.Entry)localIterator.next()).getValue();
+        if (localakyb != null) {
+          akya.a(this.this$0).stop(localakyb.a);
         }
       }
-      akyb.a(this.this$0).release();
+      akya.a(this.this$0).release();
     }
     catch (Exception localException)
     {
@@ -45,7 +45,7 @@ public class ARPromotionSoundPlayer$1
       }
       return;
     }
-    akyb.a(this.this$0).clear();
+    akya.a(this.this$0).clear();
   }
 }
 

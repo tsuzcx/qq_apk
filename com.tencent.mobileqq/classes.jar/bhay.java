@@ -1,18 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-class bhay
-  implements bhoc
+public class bhay
+  implements View.OnClickListener
 {
-  bhay(bhax parambhax, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
+  public bhay(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void onNetworkConnect(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
-    }
-    bhax.a(this.jdField_a_of_type_Bhax, paramBoolean);
-    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
+    QzoneVerticalVideoDownloadActivity.access$502(this.a, true);
+    QzoneVerticalVideoDownloadActivity.access$600(this.a);
+    this.a.finish();
   }
 }
 

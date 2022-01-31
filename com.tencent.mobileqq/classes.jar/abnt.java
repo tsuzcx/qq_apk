@@ -1,76 +1,89 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment;
 import com.tencent.mobileqq.fragment.NearbyBaseFragment;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.fragment.NearbyMsgFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
 import java.util.ArrayList;
 
 public class abnt
-  implements ViewPager.OnPageChangeListener
+  extends FragmentPagerAdapter
 {
-  public abnt(NearbyActivity paramNearbyActivity) {}
+  public HotChatFragment a;
+  public NearbyHybridFragment a;
+  NearbyMsgFragment jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment;
+  public NowLiveFragment a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public abnt(NearbyActivity paramNearbyActivity, FragmentManager paramFragmentManager)
   {
-    if (QLog.isColorLevel()) {
-      atbp.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.jdField_h_of_type_Int), Integer.valueOf(paramInt) });
-    }
-    Object localObject = this.a;
-    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
-    ((NearbyActivity)localObject).b = i;
-    NearbyBaseFragment.b = i;
-    if ((this.a.jdField_h_of_type_Long == 0L) && (this.a.b == 2))
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(paramInt);
+    Object localObject2 = localObject1;
+    NearbyActivity.TabInfo localTabInfo;
+    if (localObject1 == null)
     {
-      this.a.jdField_h_of_type_Long = System.currentTimeMillis();
-      if (QLog.isDevelopLevel()) {
-        atbp.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_h_of_type_Long) });
+      localTabInfo = (NearbyActivity.TabInfo)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.get(paramInt);
+      if (localTabInfo.tabType != 2) {
+        break label82;
       }
-    }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
-    {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isDevelopLevel()) {
-        atbp.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment = new NowLiveFragment();
       }
-    }
-    if (this.a.jdField_h_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
-    }
-    if (this.a.jdField_h_of_type_Int != -1)
-    {
-      i = this.a.jdField_h_of_type_Int;
-      if (this.a.jdField_h_of_type_Int != this.a.c) {
-        break label411;
-      }
-      i = 9;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
     }
     for (;;)
     {
-      if (TextUtils.equals(ajyc.a(2131707090), ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
-        i = 11;
-      }
-      int j = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
-      if (j != 0)
+      localObject2 = localObject1;
+      if (localObject1 != null)
       {
-        if (QLog.isColorLevel()) {
-          atbp.a("report_switch_tab", new Object[] { ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
+        ((NearbyBaseFragment)localObject1).a(localTabInfo);
+        localObject2 = localObject1;
+      }
+      return localObject2;
+      label82:
+      if (localTabInfo.tabType == 3)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment = new HotChatFragment();
         }
-        i = j;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
       }
-      atbp.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
-      localObject = this.a.a(paramInt);
-      if (localObject != null) {
-        ((NearbyBaseFragment)localObject).aT_();
+      else if (localTabInfo.tabType == 4)
+      {
+        localObject1 = new CommonTabFragment();
       }
-      return;
-      label411:
-      i += 1;
+      else if (localTabInfo.tabType == 5)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = new NearbyHybridFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
+      }
+      else if (localTabInfo.tabType == 6)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment = new NearbyMsgFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment;
+      }
+      else if (localTabInfo.tabType == 7)
+      {
+        localObject1 = new CommonTabFragment();
+      }
     }
   }
 }

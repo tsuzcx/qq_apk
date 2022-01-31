@@ -1,45 +1,76 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 public class bcra
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public bcra(SlideDetectListView paramSlideDetectListView) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public bcra(Bitmap paramBitmap)
   {
-    if (!this.a.jdField_c_of_type_Boolean) {}
-    do
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public bcra(Bitmap paramBitmap, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = (paramInt % 360);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public Matrix a()
+  {
+    Matrix localMatrix = new Matrix();
+    if (this.jdField_a_of_type_Int != 0)
     {
-      return false;
-      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
-      {
-        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          this.a.setPressed(false);
-          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (SlideDetectListView.a(this.a) != null)
-          {
-            int i = this.a.jdField_b_of_type_Int;
-            int j = this.a.getHeaderViewsCount();
-            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
-          }
-          this.a.jdField_a_of_type_Int = 0;
-        }
-        for (;;)
-        {
-          return true;
-          this.a.jdField_b_of_type_Boolean = true;
-        }
-      }
-    } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
+      int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      localMatrix.preTranslate(-i, -j);
+      localMatrix.postRotate(this.jdField_a_of_type_Int);
+      localMatrix.postTranslate(c() / 2, b() / 2);
+    }
+    return localMatrix;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int / 90 % 2 != 0;
+  }
+  
+  public int b()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+  }
+  
+  public int c()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
   }
 }
 

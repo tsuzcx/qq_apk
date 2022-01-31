@@ -1,75 +1,42 @@
+import android.annotation.TargetApi;
 import android.view.View;
 
-public final class ameu
+@TargetApi(11)
+final class ameu
 {
-  public static void a(View paramView, float paramFloat)
+  static void a(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).a(paramFloat);
-      return;
-    }
-    amev.c(paramView, paramFloat);
+    paramView.setPivotX(paramFloat);
   }
   
-  public static void b(View paramView, float paramFloat)
+  static void b(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).d(paramFloat);
-      return;
-    }
-    amev.d(paramView, paramFloat);
+    paramView.setPivotY(paramFloat);
   }
   
-  public static void c(View paramView, float paramFloat)
+  static void c(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).e(paramFloat);
-      return;
-    }
-    amev.e(paramView, paramFloat);
+    paramView.setAlpha(paramFloat);
   }
   
-  public static void d(View paramView, float paramFloat)
+  static void d(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).b(paramFloat);
-      return;
-    }
-    amev.a(paramView, paramFloat);
+    paramView.setScaleX(paramFloat);
   }
   
-  public static void e(View paramView, float paramFloat)
+  static void e(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).c(paramFloat);
-      return;
-    }
-    amev.b(paramView, paramFloat);
+    paramView.setScaleY(paramFloat);
   }
   
-  public static void f(View paramView, float paramFloat)
+  static void f(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).g(paramFloat);
-      return;
-    }
-    amev.f(paramView, paramFloat);
+    paramView.setTranslationY(paramFloat);
   }
   
-  public static void g(View paramView, float paramFloat)
+  static void g(View paramView, float paramFloat)
   {
-    if (amet.a)
-    {
-      amet.a(paramView).h(paramFloat);
-      return;
-    }
-    amev.g(paramView, paramFloat);
+    paramView.setX(paramFloat);
   }
 }
 

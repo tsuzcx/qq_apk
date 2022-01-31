@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aabk;
-import actf;
-import actg;
+import aabg;
+import actb;
+import actc;
 import android.os.Build;
-import axrl;
-import bbjv;
+import axrn;
+import bbkj;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -13,30 +13,30 @@ import java.util.HashMap;
 public class AIOTimeReporter$1
   implements Runnable
 {
-  public AIOTimeReporter$1(actg paramactg) {}
+  public AIOTimeReporter$1(actc paramactc) {}
   
   public void run()
   {
-    Object localObject = actf.a();
-    actg.a(this.this$0, ((actf)localObject).a());
-    if (bbjv.a <= 0L)
+    Object localObject = actb.a();
+    actc.a(this.this$0, ((actb)localObject).a());
+    if (bbkj.a <= 0L)
     {
-      actg.a(this.this$0);
+      actc.a(this.this$0);
       return;
     }
     String str = "";
-    switch (actg.a(this.this$0))
+    switch (actc.a(this.this$0))
     {
     default: 
       return;
     case 1: 
-      switch (((actf)localObject).a)
+      switch (((actb)localObject).a)
       {
       default: 
-        if (aabk.a().a())
+        if (aabg.a().a())
         {
           localObject = new HashMap();
-          ((HashMap)localObject).put("hcState", String.valueOf(aabk.a().a()));
+          ((HashMap)localObject).put("hcState", String.valueOf(aabg.a().a()));
           ((HashMap)localObject).put("model", Build.MODEL);
         }
         break;
@@ -45,65 +45,65 @@ public class AIOTimeReporter$1
     }
     for (;;)
     {
-      axrl.a(BaseApplication.getContext()).a(null, str, true, bbjv.a, 0L, (HashMap)localObject, "");
+      axrn.a(BaseApplication.getContext()).a(null, str, true, bbkj.a, 0L, (HashMap)localObject, "");
       if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.a, 4, "reportAIOTime: " + str + " cost : " + bbjv.a);
+        QLog.d(this.this$0.a, 4, "reportAIOTime: " + str + " cost : " + bbkj.a);
       }
-      actg.a(this.this$0);
+      actc.a(this.this$0);
       return;
-      if (!actg.a(this.this$0).equalsIgnoreCase("0"))
+      if (!actc.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = actg.a();
+        str = actc.a();
         break;
       }
-      str = actg.b();
+      str = actc.b();
       break;
-      if (!actg.a(this.this$0).equalsIgnoreCase("0"))
+      if (!actc.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = actg.c();
+        str = actc.c();
         break;
       }
-      str = actg.d();
+      str = actc.d();
       break;
-      switch (((actf)localObject).a)
+      switch (((actb)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!actg.a(this.this$0).equalsIgnoreCase("0"))
+        if (!actc.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = actg.e();
+          str = actc.e();
         }
         else
         {
-          str = actg.f();
+          str = actc.f();
           continue;
-          if (!actg.a(this.this$0).equalsIgnoreCase("0")) {
-            str = actg.g();
+          if (!actc.a(this.this$0).equalsIgnoreCase("0")) {
+            str = actc.g();
           } else {
-            str = actg.h();
+            str = actc.h();
           }
         }
       }
-      switch (((actf)localObject).a)
+      switch (((actb)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!actg.a(this.this$0).equalsIgnoreCase("0"))
+        if (!actc.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = actg.i();
+          str = actc.i();
         }
         else
         {
-          str = actg.j();
+          str = actc.j();
           continue;
-          if (!actg.a(this.this$0).equalsIgnoreCase("0")) {
-            str = actg.k();
+          if (!actc.a(this.this$0).equalsIgnoreCase("0")) {
+            str = actc.k();
           } else {
-            str = actg.l();
+            str = actc.l();
           }
         }
       }

@@ -1,63 +1,60 @@
 import android.content.Intent;
-import android.os.Build.VERSION;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.open.agent.BindGroupFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdaa
-  implements bfoq
+  extends akil
 {
-  public bdaa(CreateVirtualAccountFragment paramCreateVirtualAccountFragment, bfol parambfol) {}
+  public bdaa(BindGroupFragment paramBindGroupFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong)
   {
-    switch (paramInt)
+    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onBindTroopForThirdApp, isSuccess: " + paramBoolean + " bindFlag: " + paramInt + "  troopUin: " + paramLong);
+    BindGroupFragment.a(this.a);
+    if (paramBoolean)
     {
+      BindGroupFragment.c(this.a, ajya.a(2131701116));
+      BindGroupFragment.a(this.a, String.valueOf(paramLong), 1);
+      BindGroupFragment.a(this.a).finish();
+      return;
     }
-    for (;;)
+    BindGroupFragment.b(this.a, ajya.a(2131701122));
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onGetOnePageTroopInfo, isSuccess: " + paramBoolean1 + " isLastPage: " + paramBoolean2);
+    if (paramBoolean1)
     {
-      try
+      if (paramBoolean2)
       {
-        this.jdField_a_of_type_Bfol.dismiss();
+        BindGroupFragment.a(this.a);
+        if (BindGroupFragment.a(this.a) != null) {
+          BindGroupFragment.a(this.a).notifyDataSetChanged();
+        }
         return;
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      paramView = new Intent();
-      paramInt = bazo.b(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity());
-      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      paramView.putExtra("Business_Origin", 103);
-      paramView.putExtra("BUSINESS_ORIGIN_NEW", 103);
-      paramView.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
-      paramView.putExtra("fromWhereClick", 11);
-      PhotoUtils.a(paramView, this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), PublicFragmentActivityForOpenSDK.class.getName(), paramInt, paramInt, 1080, 1080, bazo.a());
-      continue;
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if (this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().checkSelfPermission("android.permission.CAMERA") != 0)
-        {
-          paramInt = 1;
-          if (paramInt != 0) {
-            this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().requestPermissions(new bdab(this), 2, new String[] { "android.permission.CAMERA" });
-          }
-        }
-        else
-        {
-          paramInt = 0;
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
-      }
+      BindGroupFragment.b(this.a);
+      return;
     }
+    BindGroupFragment.a(this.a);
+    BindGroupFragment.b(this.a, ajya.a(2131701125));
+  }
+  
+  protected void g(boolean paramBoolean, String paramString)
+  {
+    QLog.i("TroopAbility.BindGroup.Fragment", 1, "onGetCreateTroopTokenForThirdApp isSuccess: " + paramBoolean + " url: " + paramString);
+    BindGroupFragment.a(this.a);
+    if (paramBoolean)
+    {
+      Intent localIntent = new Intent(BindGroupFragment.a(this.a), QQBrowserActivity.class);
+      localIntent.putExtra("url", bfnx.a(paramString, "gname", BindGroupFragment.c(this.a)));
+      this.a.startActivity(localIntent);
+      return;
+    }
+    BindGroupFragment.b(this.a, ajya.a(2131701111));
   }
 }
 

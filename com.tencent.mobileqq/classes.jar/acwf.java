@@ -1,8 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
 
-public abstract interface acwf
+public final class acwf
+  implements Parcelable.Creator<ForwardUtils.Section_Pic>
 {
-  public abstract void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2);
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
+  {
+    return new ForwardUtils.Section_Pic(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Pic[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Pic[paramInt];
+  }
 }
 
 

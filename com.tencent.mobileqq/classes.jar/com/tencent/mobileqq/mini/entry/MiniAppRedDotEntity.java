@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class MiniAppRedDotEntity
-  extends aukm
+  extends auko
 {
   public static final String TAG = "MiniAppRedDotEntity";
-  @auma
+  @aumc
   public String appId;
   public int publicAccountRedDotNum;
   public int wnsPushRedDotNum;

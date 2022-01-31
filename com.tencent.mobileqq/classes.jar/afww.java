@@ -1,59 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
 
 public class afww
-  extends AccountObserver
+  implements akay
 {
-  public afww(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, boolean paramBoolean) {}
+  public afww(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    int j = 1;
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
-      {
-        i = 0;
-        QLog.d("Q.history.C2CAllFragment", 2, i);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
     }
-    else
+    this.a.o();
+    if (paramBoolean)
     {
-      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
-        break label133;
-      }
-      i = 1;
-      label67:
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(39);
-      if (i == 0) {
-        break label139;
-      }
-      i = 1;
-      label88:
-      paramString1.arg1 = i;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label145;
-      }
-    }
-    label133:
-    label139:
-    label145:
-    for (int i = j;; i = 0)
-    {
-      paramString1.arg2 = i;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramString1);
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
       return;
-      i = paramString2.length();
-      break;
-      i = 0;
-      break label67;
-      i = 0;
-      break label88;
     }
+    this.a.c(this.a.getString(2131690722));
   }
 }
 

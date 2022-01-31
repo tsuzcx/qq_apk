@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.data.search.selector;
 
 import android.view.View;
-import apfr;
+import apfv;
 
 public class FileSelectorSearchFragment$FileSelectorSearchAdapter$4
   implements Runnable
 {
-  public FileSelectorSearchFragment$FileSelectorSearchAdapter$4(apfr paramapfr) {}
+  public FileSelectorSearchFragment$FileSelectorSearchAdapter$4(apfv paramapfv) {}
   
   public void run()
   {

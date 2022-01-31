@@ -1,23 +1,19 @@
-import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForceLogoutActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class abbo
-  extends aebz
+  implements View.OnClickListener
 {
-  public abbo(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public abbo(ForceLogoutActivity paramForceLogoutActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.a.finish();
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
   }
-  
-  public void a(acun paramacun, ChatMessage paramChatMessage) {}
-  
-  public void b(View paramView) {}
 }
 
 

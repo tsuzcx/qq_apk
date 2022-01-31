@@ -1,312 +1,563 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.JpegExifReader;
+import com.tencent.mobileqq.transfile.RichMediaUtil.1;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Timer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.app.AppRuntime;
+import mqq.manager.ServerConfigManager.ConfigType;
+import mqq.manager.TicketManager;
 
 public class ayuk
-  extends ayou
 {
-  MessageForScribble a;
-  private int jdField_c_of_type_Int;
-  private ArrayList<String> jdField_c_of_type_JavaUtilArrayList;
-  String e = "";
-  private int p;
+  private static int jdField_a_of_type_Int = -1;
+  public static String a;
+  private static HashMap<String, ayul> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static Random jdField_a_of_type_JavaUtilRandom;
+  public static final Pattern a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "T", "U", "L" };
+  public static final Pattern b;
+  private static final String[] b;
+  private static String[] c;
+  private static String[] d;
   
-  public ayuk(ayvv paramayvv, aywa paramaywa)
+  static
   {
-    super(paramayvv, paramaywa);
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "c2c", "grp", "dis" };
+    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("https?://(\\d{1,3}\\.){3}\\d{1,3}(:\\d{1,5})?[/\\?].*");
+    jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("https?://[^/]*/{1}");
+    jdField_a_of_type_JavaUtilRandom = new Random();
   }
   
-  private void a(MessageForScribble paramMessageForScribble)
+  public static int a(int paramInt)
   {
-    if (paramMessageForScribble != null)
+    switch (paramInt)
     {
-      paramMessageForScribble.prewrite();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+    case 65537: 
+    default: 
+      return 65537;
+    case 1: 
+      return 1;
     }
+    return 131075;
   }
   
-  private void g()
+  public static ayuq a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-      return;
+    if ((jdField_a_of_type_JavaUtilRegexPattern == null) || (paramString == null)) {}
+    while ((!jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches()) || (paramString.split("/").length < 3)) {
+      return null;
     }
-    String str = awhf.a(this.jdField_a_of_type_Aywa.h);
-    if (str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5))
+    ayuq localayuq = new ayuq();
+    paramString = paramString.split("/")[2].split(":");
+    localayuq.jdField_a_of_type_JavaLangString = paramString[0];
+    if (paramString.length == 2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
+      localayuq.jdField_a_of_type_Int = Integer.valueOf(paramString[1]).intValue();
+      return localayuq;
+    }
+    localayuq.jdField_a_of_type_Int = 80;
+    return localayuq;
+  }
+  
+  /* Error */
+  public static String a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 107	ayuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   6: ifnull +12 -> 18
+    //   9: getstatic 107	ayuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   12: astore_0
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: aload_0
+    //   17: areturn
+    //   18: ldc 109
+    //   20: putstatic 107	ayuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   23: invokestatic 115	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   26: invokevirtual 119	com/tencent/qphone/base/util/BaseApplication:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   29: invokestatic 115	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   32: invokevirtual 122	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
+    //   35: iconst_0
+    //   36: invokevirtual 128	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   39: astore_0
+    //   40: new 130	java/lang/StringBuilder
+    //   43: dup
+    //   44: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   47: aload_0
+    //   48: getfield 136	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
+    //   51: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: ldc 142
+    //   56: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: aload_0
+    //   60: getfield 145	android/content/pm/PackageInfo:versionCode	I
+    //   63: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: putstatic 107	ayuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   72: getstatic 107	ayuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   75: astore_0
+    //   76: goto -63 -> 13
+    //   79: astore_0
+    //   80: ldc 109
+    //   82: putstatic 107	ayuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   85: aload_0
+    //   86: invokevirtual 154	java/lang/Exception:printStackTrace	()V
+    //   89: goto -17 -> 72
+    //   92: astore_0
+    //   93: ldc 2
+    //   95: monitorexit
+    //   96: aload_0
+    //   97: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	64	0	localObject1	Object
+    //   79	7	0	localException	java.lang.Exception
+    //   92	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   23	72	79	java/lang/Exception
+    //   3	13	92	finally
+    //   18	23	92	finally
+    //   23	72	92	finally
+    //   72	76	92	finally
+    //   80	89	92	finally
+  }
+  
+  public static String a(int paramInt)
+  {
+    String str = "" + paramInt;
+    switch (paramInt)
+    {
+    default: 
+      return str;
+    case 0: 
+      return "dw";
+    case 1: 
+      return "up";
+    }
+    return "fw";
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = paramString;
+    if (paramString != null)
+    {
+      Matcher localMatcher = Pattern.compile("http://([^/\\s]*)/").matcher(paramString);
+      str = paramString;
+      if (localMatcher.find()) {
+        str = localMatcher.group(0);
       }
-      int i = awgw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-      if (i == awgw.d)
+    }
+    return str;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1 != null)
+    {
+      str = paramString1;
+      if (paramString2 != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
+        str = paramString1;
+        if (paramString2.length() > 0) {
+          str = paramString1.replaceFirst("https?://[^/\\s]*/", paramString2);
+        }
+      }
+    }
+    return str;
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Q.richmedia.");
+    localStringBuilder.append(paramString4).append(".");
+    localStringBuilder.append(paramString1).append(".");
+    localStringBuilder.append(paramString2).append(".");
+    localStringBuilder.append(paramString3);
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    if ((a(paramString) == null) && (!paramBoolean)) {}
+    Matcher localMatcher;
+    do
+    {
+      return paramString;
+      localMatcher = jdField_b_of_type_JavaUtilRegexPattern.matcher(paramString);
+    } while (!localMatcher.find());
+    return paramString.replace(localMatcher.group(), "");
+  }
+  
+  private static ArrayList<String> a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString1 = jdField_b_of_type_ArrayOfJavaLangString;
+    int k = arrayOfString1.length;
+    int i = 0;
+    while (i < k)
+    {
+      String str1 = arrayOfString1[i];
+      String[] arrayOfString2 = jdField_a_of_type_ArrayOfJavaLangString;
+      int m = arrayOfString2.length;
+      int j = 0;
+      while (j < m)
+      {
+        String str2 = arrayOfString2[j];
+        localArrayList.add(a(str1, "pic", paramString, str2));
+        localArrayList.add(a(str1, "raw", paramString, str2));
+        localArrayList.add(a(str1, "thu", paramString, str2));
+        j += 1;
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a("ptt_recv", paramInt, a(), 10000, 600000L);
+  }
+  
+  public static void a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    a("T", b(paramInt1), paramBoolean, c(paramInt2), paramString1, paramString2, paramString3, null);
+  }
+  
+  public static void a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    a("U", b(paramInt1), paramBoolean, c(paramInt2), paramString1, paramString2, paramString3, paramThrowable);
+  }
+  
+  public static void a(String paramString, int paramInt1, String[] paramArrayOfString, int paramInt2, long paramLong)
+  {
+    synchronized (jdField_a_of_type_JavaUtilHashMap)
+    {
+      if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+        return;
+      }
+      if ((paramInt2 < 2) || (jdField_a_of_type_JavaUtilRandom.nextInt(paramInt2) == 1) || (b())) {
+        synchronized (jdField_a_of_type_JavaUtilHashMap)
         {
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = true;
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
+          jdField_a_of_type_Boolean = true;
+          if ((QLog.isColorLevel()) || (jdField_a_of_type_Boolean)) {
+            QLog.d("RichMediaUtil", 2, "activeReport start : " + paramString);
+          }
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, new ayul(paramInt1, paramArrayOfString));
+          QLog.startColorLog(paramArrayOfString);
+          paramString = new RichMediaUtil.1(paramString);
+          new Timer().schedule(paramString, paramLong);
+          return;
         }
-        e();
-        return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Throwable paramThrowable)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id:");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append(" \tstep:");
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append(" \tcont:");
+    localStringBuilder.append(paramString6);
+    localStringBuilder.append(" \tver:");
+    localStringBuilder.append(a());
+    if ("T".equals(paramString1))
+    {
+      localStringBuilder.append(" \ttid:");
+      localStringBuilder.append(Thread.currentThread().getId());
+    }
+    paramString1 = a(paramString2, paramString3, "fw", paramString1);
+    if (paramThrowable != null) {
+      QLog.e(paramString1, 1, localStringBuilder.toString(), paramThrowable);
+    }
+    while ((!QLog.isColorLevel()) && (!jdField_a_of_type_Boolean)) {
+      return;
+    }
+    QLog.d(paramString1, 2, localStringBuilder.toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, String paramString5, String paramString6, Throwable paramThrowable)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id:");
+    localStringBuilder.append(paramString4);
+    if (paramBoolean)
+    {
+      paramString4 = "up";
+      localStringBuilder.append(" \tstep:");
+      localStringBuilder.append(paramString5);
+      localStringBuilder.append(" \tcont:");
+      localStringBuilder.append(paramString6);
+      localStringBuilder.append(" \tver:");
+      localStringBuilder.append(a());
+      if ("T".equals(paramString1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
+        localStringBuilder.append(" \ttid:");
+        localStringBuilder.append(Thread.currentThread().getId());
       }
-      b(9303, a(new Exception("SpliteCombineFile illegal result: " + i)));
-      d();
+      paramString1 = a(paramString2, paramString3, paramString4, paramString1);
+      if (paramThrowable == null) {
+        break label150;
+      }
+      QLog.e(paramString1, 1, localStringBuilder.toString(), paramThrowable);
+    }
+    label150:
+    while ((!QLog.isColorLevel()) && (!jdField_a_of_type_Boolean))
+    {
       return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
-    }
-    b(9041, a(new Exception("SpliteCombineFile illegal md5String: " + str + "  msg.combineFileMd5:  " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
-    d();
-  }
-  
-  public void aR_()
-  {
-    super.aR_();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 3;
-    }
-    String str;
-    if ((this.e != null) && (!this.e.startsWith("https")))
-    {
-      str = ayxe.a(this.e);
-      this.jdField_c_of_type_JavaUtilArrayList = ayxe.a().a(str, 1018);
-    }
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      str = "ipListFromInnerDns : ";
-      int i = 0;
-      while (i < this.jdField_c_of_type_JavaUtilArrayList.size())
-      {
-        str = str + " " + (String)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ScribblePicDownloadProcessor", 2, str);
-      }
-    }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945A", "0X800945A", 0, 0, "", "", "", "");
-    f();
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScribblePicDownloadProcessor", 2, "resume()");
-    }
-    if (this.k)
-    {
-      this.k = false;
-      this.o = false;
-      this.jdField_j_of_type_Int = 0;
-      this.jdField_j_of_type_JavaLangString = "";
-      this.jdField_a_of_type_Ayox.a.post(new ScribblePicDownloadProcessor.1(this));
-    }
-    return 0;
-  }
-  
-  public int c()
-  {
-    super.c();
-    b("uiParam", this.jdField_a_of_type_Aywa.toString());
-    if ((this.jdField_a_of_type_Aywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && ((this.jdField_a_of_type_Aywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForScribble)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = ((MessageForScribble)this.jdField_a_of_type_Aywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      this.e = this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.equals("")) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileUrl.startsWith("http")))
-    {
-      b(9302, a(new Exception("combineFileUrl illegal " + this.e)));
-      d();
-      return -1;
-    }
-    this.jdField_a_of_type_Aywa.h = awgw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Aywa.h))
-    {
-      b(9302, a(new Exception("combineFileMd5 illegal " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.combineFileMd5)));
-      d();
-      return -1;
-    }
-    return 0;
-  }
-  
-  void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 2;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    d(2005);
-    awgu localawgu = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localawgu != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-        break label92;
-      }
-      localawgu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
-    for (;;)
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945B", "0X800945B", 0, 0, "", "", "", "");
-      return;
-      label92:
-      localawgu.a(null);
-    }
-  }
-  
-  void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 1;
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    d(2003);
-    awgu localawgu = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localawgu != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble == null) {
-        break label92;
-      }
-      localawgu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
-    for (;;)
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945C", "0X800945C", 0, 0, "", "", "", "");
-      return;
-      label92:
-      localawgu.a(null);
-    }
-  }
-  
-  public void f()
-  {
-    QLog.i("ScribblePicDownloadProcessor", 2, "scribble download start ");
-    this.jdField_b_of_type_Aypb.a();
-    String str1 = this.e;
-    d(2001);
-    ayrv localayrv = new ayrv();
-    localayrv.jdField_a_of_type_Aysa = this;
-    localayrv.jdField_a_of_type_JavaLangString = str1;
-    localayrv.jdField_a_of_type_Int = 0;
-    localayrv.c = this.jdField_a_of_type_Aywa.h;
-    localayrv.e = String.valueOf(this.jdField_a_of_type_Aywa.jdField_a_of_type_Long);
-    localayrv.g = this.jdField_a_of_type_Aywa.jdField_a_of_type_Int;
-    localayrv.f = this.jdField_a_of_type_Aywa.jdField_b_of_type_Int;
-    localayrv.jdField_a_of_type_Long = 0L;
-    localayrv.k = true;
-    localayrv.l = true;
-    String str2;
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_c_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()))
-    {
-      str2 = (String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int);
-      str2 = ayxe.a(localayrv.jdField_a_of_type_JavaLangString, str2);
-      if ((str2 != null) && (!str2.equals(localayrv.jdField_a_of_type_JavaLangString))) {
-        localayrv.jdField_a_of_type_JavaLangString = str2;
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945D", "0X800945D", 0, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        str2 = ayui.a(str1);
-        if (QLog.isColorLevel()) {
-          QLog.i("ScribblePicDownloadProcessor", 2, "httpDownRespDomain: " + str2 + "reqUrl : " + str1 + " " + localayrv.jdField_a_of_type_JavaLangString + " uuid:" + this.jdField_a_of_type_Aywa.e + " downOffset:" + localayrv.jdField_a_of_type_Long);
-        }
-        QLog.i("ScribblePicDownloadProcessor", 2, "index:" + this.jdField_c_of_type_Int + str1);
-        if (f()) {
-          break;
-        }
-        return;
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800945E", "0X800945E", 0, 0, "", "", "", "");
-      }
-      this.jdField_a_of_type_Aysw = localayrv;
-      n();
-      this.jdField_a_of_type_Ayry.a(localayrv);
-      return;
-    }
-  }
-  
-  public void onResp(aysx paramaysx)
-  {
-    super.onResp(paramaysx);
-    this.jdField_a_of_type_Aysw = null;
-    Object localObject = new StringBuilder().append(" result:");
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      bool = true;
-      b("onHttpResp", bool);
-      localObject = this.jdField_b_of_type_Aypb;
-      if (paramaysx.jdField_a_of_type_Int != 0) {
-        break label179;
-      }
-    }
-    label179:
-    for (boolean bool = true;; bool = false)
-    {
-      a((aypb)localObject, paramaysx, bool);
-      this.jdField_a_of_type_Long = paramaysx.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (paramaysx.jdField_b_of_type_Long + paramaysx.jdField_a_of_type_Aysw.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += paramaysx.c;
-      QLog.i("ScribblePicDownloadProcessor", 2, "scribble download onResp resp.mResult = " + paramaysx.jdField_a_of_type_Int);
-      if (paramaysx.jdField_a_of_type_Int != 0) {
-        break label184;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = true;
-      }
-      g();
-      return;
-      bool = false;
+      paramString4 = "dw";
       break;
     }
-    label184:
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null)
+    QLog.d(paramString1, 2, localStringBuilder.toString());
+  }
+  
+  public static void a(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    synchronized (jdField_a_of_type_JavaUtilHashMap)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mCombineFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mDataFileExist = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mExistInfo.mInit = true;
+      if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+      {
+        if ((QLog.isColorLevel()) || (jdField_a_of_type_Boolean)) {
+          QLog.d("RichMediaUtil", 2, "activeReport stop : " + paramString1 + ", " + paramBoolean);
+        }
+        ayul localayul = (ayul)jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+        if (localayul != null)
+        {
+          paramString1 = BaseApplicationImpl.sApplication.getRuntime();
+          if (paramString1 != null)
+          {
+            TicketManager localTicketManager = (TicketManager)paramString1.getManager(2);
+            String str = paramString1.getAccount();
+            paramString1 = "";
+            if (localTicketManager != null) {
+              paramString1 = localTicketManager.getSkey(str);
+            }
+            QLog.endColorLog(localayul.jdField_a_of_type_ArrayOfJavaLangString, localayul.jdField_a_of_type_Int, paramBoolean, paramString2, str, paramString1);
+          }
+        }
+        if (jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+          jdField_a_of_type_Boolean = false;
+        }
+      }
+      return;
     }
-    if (this.p < 5)
+  }
+  
+  public static void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    a("T", paramString1, paramBoolean, paramString2, paramString3, paramString4, paramString5, null);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "image_sending";
+    }
+    a("image_sending", paramBoolean, str);
+  }
+  
+  public static final boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool = false;
+    int j;
+    if (bbdx.b(paramString))
     {
-      this.p += 1;
-      if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_c_of_type_Int < this.jdField_c_of_type_JavaUtilArrayList.size()))
+      j = JpegExifReader.getRotationDegree(paramString);
+      if (j != 90)
       {
-        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry by changeIp");
-        m();
-        paramaysx = ayxe.a(this.e);
-        ayxe.a().a(paramaysx, (String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_Int), 1018);
-        this.jdField_c_of_type_Int += 1;
-        f();
-        return;
+        i = j;
+        if (j != 270) {}
       }
-      if ((paramaysx.jdField_b_of_type_Int == 9364) && (this.l < 3))
+      else
       {
-        b("[netChg]", "failed.but net change detect.so retry");
-        QLog.e("ScribblePicDownloadProcessor", 2, "scribble download  retry");
-        this.l += 1;
-        m();
-        f();
-        return;
+        bool = true;
       }
     }
-    d();
+    for (int i = j;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RichMediaUtil", 2, "isPicLandscape .result =  " + bool + ",degree = " + i + ",path = " + paramString);
+      }
+      return bool;
+    }
+  }
+  
+  public static String[] a()
+  {
+    if (d != null) {
+      return d;
+    }
+    ArrayList localArrayList = b("dw");
+    d = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    return d;
+  }
+  
+  public static String b(int paramInt)
+  {
+    String str = "" + paramInt;
+    switch (paramInt)
+    {
+    default: 
+      return str;
+    case 0: 
+      return "c2c";
+    case 1: 
+      return "grp";
+    }
+    return "dis";
+  }
+  
+  private static ArrayList<String> b(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString1 = jdField_b_of_type_ArrayOfJavaLangString;
+    int k = arrayOfString1.length;
+    int i = 0;
+    while (i < k)
+    {
+      String str = arrayOfString1[i];
+      String[] arrayOfString2 = jdField_a_of_type_ArrayOfJavaLangString;
+      int m = arrayOfString2.length;
+      int j = 0;
+      while (j < m)
+      {
+        localArrayList.add(a(str, "ptt", paramString, arrayOfString2[j]));
+        j += 1;
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static void b(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    a("U", b(paramInt1), paramBoolean, c(paramInt2), paramString1, paramString2, paramString3, null);
+  }
+  
+  public static void b(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    b("L", b(paramInt1), paramBoolean, c(paramInt2), paramString1, paramString2, paramString3, paramThrowable);
+  }
+  
+  public static void b(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, String paramString5, String paramString6, Throwable paramThrowable)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id:");
+    localStringBuilder.append(paramString4);
+    if (paramBoolean)
+    {
+      paramString4 = "up";
+      localStringBuilder.append(" \tstep:");
+      localStringBuilder.append(paramString5);
+      localStringBuilder.append(" \tcont:");
+      localStringBuilder.append(paramString6);
+      localStringBuilder.append(" \tver:");
+      localStringBuilder.append(a());
+      if ("T".equals(paramString1))
+      {
+        localStringBuilder.append(" \ttid:");
+        localStringBuilder.append(Thread.currentThread().getId());
+      }
+      paramString1 = a(paramString2, paramString3, paramString4, paramString1);
+      if (paramThrowable == null) {
+        break label150;
+      }
+      QLog.e(paramString1, 2, localStringBuilder.toString(), paramThrowable);
+    }
+    label150:
+    while ((!QLog.isColorLevel()) && (!jdField_a_of_type_Boolean))
+    {
+      return;
+      paramString4 = "dw";
+      break;
+    }
+    QLog.e(paramString1, 2, localStringBuilder.toString());
+  }
+  
+  public static void b(boolean paramBoolean, String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "ptt_recv";
+    }
+    a("ptt_recv", paramBoolean, str);
+  }
+  
+  private static boolean b()
+  {
+    if (jdField_a_of_type_Int == -1)
+    {
+      String str = bbjc.a(ServerConfigManager.ConfigType.app, "active_log_upload");
+      if ((str == null) || (!str.equals("1"))) {
+        break label44;
+      }
+    }
+    label44:
+    for (jdField_a_of_type_Int = 1; jdField_a_of_type_Int == 1; jdField_a_of_type_Int = 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static String[] b()
+  {
+    if (c != null) {
+      return c;
+    }
+    ArrayList localArrayList = a("up");
+    localArrayList.addAll(a("dw"));
+    c = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    return c;
+  }
+  
+  public static String c(int paramInt)
+  {
+    String str = "" + paramInt;
+    switch (paramInt)
+    {
+    default: 
+      return str;
+    case 65537: 
+      return "thu";
+    case 1: 
+      return "pic";
+    case 65538: 
+      return "emo";
+    case 131075: 
+      return "raw";
+    case 2: 
+      return "ptt";
+    case 0: 
+      return "fil";
+    case 131078: 
+      return "msg";
+    case 131076: 
+      return "url";
+    }
+    return "shortvideo";
+  }
+  
+  public static void c(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    a("L", b(paramInt1), paramBoolean, c(paramInt2), paramString1, paramString2, paramString3, null);
   }
 }
 

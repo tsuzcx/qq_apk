@@ -1,26 +1,22 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class agiu
-  extends aume
+  implements DialogInterface.OnClickListener
 {
   public agiu(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.b(paramBoolean);
-    if (paramBoolean) {
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
     }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.b);
-      this.a.b = null;
-      return;
-      this.a.b();
-      this.a.b(2131718737);
-    }
+    this.a.a("dc00898", "0X8009F16", 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
+    this.a.a(2131719292, 1000L, true);
   }
 }
 

@@ -2,24 +2,24 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bhch;
-import bhxo;
+import bhcy;
+import bhyf;
 import java.lang.ref.WeakReference;
 
 public class MsgPhotoView$WeakVipResourcesListener$1
   implements Runnable
 {
-  public MsgPhotoView$WeakVipResourcesListener$1(bhch parambhch, Drawable paramDrawable) {}
+  public MsgPhotoView$WeakVipResourcesListener$1(bhcy parambhcy, Drawable paramDrawable) {}
   
   public void run()
   {
-    ImageView localImageView = (ImageView)bhch.a(this.this$0).get();
+    ImageView localImageView = (ImageView)bhcy.a(this.this$0).get();
     if ((localImageView != null) && (this.a != null))
     {
       localImageView.setImageDrawable(this.a);
       localImageView.setVisibility(0);
-      if (!bhch.a(this.this$0)) {
-        if (bhch.a(this.this$0) != 2) {
+      if (!bhcy.a(this.this$0)) {
+        if (bhcy.a(this.this$0) != 2) {
           break label68;
         }
       }
@@ -27,7 +27,7 @@ public class MsgPhotoView$WeakVipResourcesListener$1
     label68:
     for (int i = 11;; i = 10)
     {
-      bhxo.a(i, 1);
+      bhyf.a(i, 1);
       return;
     }
   }

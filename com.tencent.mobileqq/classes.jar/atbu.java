@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atbu
-  extends AccountObserver
+final class atbu
+  implements atyh
 {
-  atbu(atbt paramatbt) {}
+  atbu(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
+    atbt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 

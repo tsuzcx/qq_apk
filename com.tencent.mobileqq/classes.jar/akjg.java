@@ -1,7 +1,6 @@
-public class akjg
-  implements ajtg
+public abstract interface akjg
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public abstract void q(int paramInt);
 }
 
 

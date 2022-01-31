@@ -1,34 +1,32 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.os.Message;
+import android.content.Context;
 import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
 class qso
-  extends MqqHandler
+  implements shc
 {
-  private qso(qrw paramqrw) {}
+  private int jdField_a_of_type_Int;
+  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
+  private int c;
+  private int d;
   
-  public void handleMessage(Message paramMessage)
+  public qso(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      qrt.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.c, this.d, false, paramBoolean);
     }
-    do
-    {
-      return;
-      bcpw.a(qrw.a(this.a), 2131719554, 0).a();
-      return;
-      String str = qrw.a(this.a).getString(2131719555);
-      paramMessage = (String)paramMessage.obj;
-      bcpw.a(qrw.a(this.a), 2, str + paramMessage, 0).a();
-      bbdr.a(qrw.a(this.a), paramMessage);
-      return;
-    } while ((qrw.a(this.a) == null) || (qrw.a(this.a).jdField_a_of_type_Int != 0));
-    paramMessage = ShortVideoUtils.a(qrw.a(this.a).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    bbcv.a(qrw.a(this.a), 232, qrw.a(this.a).getResources().getString(2131719587), qrw.a(this.a).getResources().getString(2131719586), 2131719569, 2131718713, new qsp(this, paramMessage), new qsq(this)).show();
   }
 }
 

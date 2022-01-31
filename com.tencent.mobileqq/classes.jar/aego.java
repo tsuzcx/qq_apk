@@ -1,6 +1,26 @@
-public abstract interface aego
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
+
+public class aego
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public abstract void a(int paramInt);
+  public AIOGalleryAdapter a;
+  
+  public aego(AIOGalleryAdapter paramAIOGalleryAdapter)
+  {
+    this.a = paramAIOGalleryAdapter;
+  }
+  
+  public void onPlayRepeat(int paramInt)
+  {
+    if (paramInt != 1) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
+  }
 }
 
 

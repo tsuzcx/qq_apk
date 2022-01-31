@@ -1,30 +1,8 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-
-class birp
-  implements bjob<bivx>
+public abstract interface birp
 {
-  birp(birn parambirn) {}
+  public abstract void a(bire parambire, int paramInt);
   
-  public void a(@Nullable bivx parambivx)
-  {
-    if (parambivx == null) {}
-    do
-    {
-      return;
-      if (parambivx == bivx.a)
-      {
-        birn.a(this.a).setVisibility(8);
-        return;
-      }
-      if (parambivx == bivx.c)
-      {
-        birn.a(this.a);
-        return;
-      }
-    } while (parambivx != bivx.b);
-    birn.a(this.a).setVisibility(8);
-  }
+  public abstract void a(bire parambire, boolean paramBoolean);
 }
 
 

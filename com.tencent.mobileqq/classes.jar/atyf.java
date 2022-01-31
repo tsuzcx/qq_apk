@@ -1,8 +1,15 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface atyf
+class atyf
+  implements View.OnClickListener
 {
-  public abstract void onClick(View paramView);
+  atyf(atye paramatye) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 

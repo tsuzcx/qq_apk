@@ -1,255 +1,283 @@
+import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Layyy;>;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.ExtensionReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
+import tencent.im.cs.cmd0x352.cmd0x352.RspBody;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
+import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgRsp;
 
 public class ayyd
-  extends ayxz
+  extends ayyb
 {
-  private static int a;
+  int a;
   
-  public void a(aytj paramaytj, ayti paramayti)
+  public static boolean a(int paramInt)
   {
-    Object localObject2 = paramaytj.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject1 = paramaytj.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    ayyn localayyn = (ayyn)paramayti.jdField_a_of_type_JavaLangObject;
-    ayzc localayzc = localayyn.jdField_a_of_type_Ayzc;
-    akaw localakaw = paramaytj.jdField_a_of_type_Akaw;
-    int i;
-    if (((FromServiceMsg)localObject2).getResultCode() != 1000)
+    return (paramInt != 196) && (paramInt != 197) && (paramInt != 199) && (paramInt != 201) && (paramInt != 202) && (paramInt != 206) && (paramInt != 207) && (paramInt != 208);
+  }
+  
+  void a(int paramInt, ayza paramayza, cmd0x352.ReqBody paramReqBody)
+  {
+    ayyy localayyy = (ayyy)paramayza;
+    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
+    localTryUpImgReq.uint64_file_id.set(paramInt);
+    localTryUpImgReq.setHasFlag(true);
+    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(localayyy.jdField_c_of_type_JavaLangString).longValue());
+    try
     {
-      i = ((FromServiceMsg)localObject2).getResultCode();
-      if ((i == 1002) || (i == 1013))
+      String str = localayyy.jdField_d_of_type_JavaLangString;
+      paramayza = str;
+      if (str.startsWith("+")) {
+        paramayza = str.substring(1);
+      }
+      long l = Long.valueOf(paramayza).longValue();
+      localTryUpImgReq.uint64_dst_uin.set(l);
+    }
+    catch (Exception paramayza)
+    {
+      for (;;)
       {
-        localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-        paramayti = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-        paramaytj = paramayti;
-        if (paramayti == null) {
-          paramaytj = "";
-        }
-        a(-1, 9311, (String)localObject1, paramaytj, localakaw, localayzc.jdField_a_of_type_JavaUtilList);
+        paramayza.printStackTrace();
       }
     }
-    cmd0x346.ApplyUploadRsp localApplyUploadRsp;
-    ayzg localayzg;
+    localTryUpImgReq.uint64_file_size.set(localayyy.jdField_a_of_type_Long);
+    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(localayyy.jdField_a_of_type_ArrayOfByte));
+    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(localayyy.jdField_a_of_type_JavaLangString));
+    localTryUpImgReq.uint32_src_term.set(5);
+    localTryUpImgReq.bool_address_book.set(localayyy.jdField_c_of_type_Boolean);
+    localTryUpImgReq.uint32_platform_type.set(9);
+    a(localTryUpImgReq);
+    localTryUpImgReq.bool_pic_original.set(localayyy.jdField_b_of_type_Boolean);
+    localTryUpImgReq.uint32_pic_width.set(localayyy.jdField_c_of_type_Int);
+    localTryUpImgReq.uint32_pic_height.set(localayyy.jdField_d_of_type_Int);
+    localTryUpImgReq.uint32_pic_type.set(localayyy.jdField_a_of_type_Int);
+    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(ayuk.a()));
+    localTryUpImgReq.bool_reject_tryfast.set(false);
+    localTryUpImgReq.uint32_srv_upload.set(localayyy.e);
+    if (!TextUtils.isEmpty(localayyy.jdField_b_of_type_JavaLangString)) {
+      localTryUpImgReq.bytes_transfer_url.set(ByteStringMicro.copyFromUtf8(localayyy.jdField_b_of_type_JavaLangString));
+    }
+    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
+  }
+  
+  protected void a(aytk paramaytk)
+  {
+    paramaytk.jdField_a_of_type_JavaLangString = "LongConn.OffPicUp";
+  }
+  
+  public void a(aytl paramaytl, aytk paramaytk)
+  {
+    FromServiceMsg localFromServiceMsg = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    byte[] arrayOfByte = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
+    ayyp localayyp = (ayyp)paramaytk.jdField_a_of_type_JavaLangObject;
+    ayze localayze = localayyp.jdField_a_of_type_Ayze;
+    akau localakau = paramaytl.jdField_a_of_type_Akau;
+    int i;
+    if (localFromServiceMsg.getResultCode() != 1000)
+    {
+      paramaytl = (String)localFromServiceMsg.getAttribute("_tag_socket_connerror", "");
+      if ((paramaytl.equals("conSucc")) || (paramaytl.equals("")))
+      {
+        i = localFromServiceMsg.getResultCode();
+        if ((i == 1002) || (i == 1013))
+        {
+          localObject = MessageHandler.b(localFromServiceMsg);
+          paramaytk = localFromServiceMsg.getBusinessFailMsg();
+          paramaytl = paramaytk;
+          if (paramaytk == null) {
+            paramaytl = "";
+          }
+          a(-1, 9311, (String)localObject, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
+        }
+      }
+    }
     for (;;)
     {
-      ayzt.a(localayyn, localayzc);
+      ayzv.a(localayyp, localayze);
       return;
-      localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-      paramayti = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-      paramaytj = paramayti;
-      if (paramayti == null) {
-        paramaytj = "";
+      paramaytk = localFromServiceMsg.getBusinessFailMsg();
+      paramaytl = paramaytk;
+      if (paramaytk == null) {
+        paramaytl = "";
       }
-      a(-1, 9044, (String)localObject1, paramaytj, localakaw, localayzc.jdField_a_of_type_JavaUtilList);
+      a(-1, 9044, String.valueOf(i), paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
+      continue;
+      a(-1, 9313, paramaytl, localFromServiceMsg.getBusinessFailMsg(), localakau, localayze.jdField_a_of_type_JavaUtilList);
       continue;
       try
       {
-        paramaytj = new cmd0x346.RspBody();
-        paramaytj.mergeFrom((byte[])localObject1);
-        localApplyUploadRsp = (cmd0x346.ApplyUploadRsp)paramaytj.msg_apply_upload_rsp.get();
-        localayzg = (ayzg)localayzc.jdField_a_of_type_JavaUtilList.get(0);
-        if ((localayzg != null) && (localObject2 != null) && (((FromServiceMsg)localObject2).getAttributes().containsKey("_attr_send_by_quickHttp"))) {
-          localayzg.d = ((Boolean)((FromServiceMsg)localObject2).getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
+        paramaytl = ((cmd0x352.RspBody)new cmd0x352.RspBody().mergeFrom(arrayOfByte)).rpt_msg_tryup_img_rsp.get();
+        if ((paramaytl != null) && (paramaytl.size() != 0)) {
+          break label314;
         }
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttUpHandler.onProtoResp:isSendByQuickHttp=" + localayzg.d);
-        }
-        i = localApplyUploadRsp.int32_ret_code.get();
-        if (i != 0) {
-          break label577;
-        }
-        localayzg.jdField_a_of_type_JavaLangString = localApplyUploadRsp.bytes_uuid.get().toStringUtf8();
-        if ((!localApplyUploadRsp.bool_file_exist.has()) || (!localApplyUploadRsp.bool_file_exist.get())) {
-          break;
-        }
-        localayzg.jdField_a_of_type_Boolean = true;
+        throw new Exception("resps null");
       }
-      catch (Exception paramaytj)
+      catch (Exception paramaytl)
       {
-        a(-1, -9527, ayoz.a("P", -9529L), paramaytj.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localakaw, localayzc.jdField_a_of_type_JavaUtilList);
+        a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakau, localayze.jdField_a_of_type_JavaUtilList);
+      }
+      continue;
+      label314:
+      Iterator localIterator = paramaytl.iterator();
+      while (localIterator.hasNext())
+      {
+        paramaytl = (cmd0x352.TryUpImgRsp)localIterator.next();
+        try
+        {
+          localObject = (ayzg)localayze.jdField_a_of_type_JavaUtilList.get((int)paramaytl.uint64_file_id.get());
+          if (localObject == null) {
+            continue;
+          }
+          try
+          {
+            if (localFromServiceMsg.getAttributes().containsKey("_attr_send_by_quickHttp")) {
+              ((ayzg)localObject).jdField_d_of_type_Boolean = ((Boolean)localFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
+            }
+            i = paramaytl.uint32_result.get();
+            if (i != 0) {
+              break label500;
+            }
+            a(paramaytl, (ayzg)localObject);
+            a(0, 0, "", "", localakau, (ayzr)localObject);
+          }
+          catch (Exception paramaytl) {}
+        }
+        catch (Exception paramaytl)
+        {
+          for (;;)
+          {
+            localObject = null;
+          }
+        }
+        a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakau, (ayzr)localObject);
+        continue;
+        label500:
+        if (a(i))
+        {
+          this.b += 1;
+          if (this.b < 2)
+          {
+            localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramaytk);
+            return;
+          }
+        }
+        a(-1, -9527, aypb.a(i), "", localakau, (ayzr)localObject);
       }
     }
-    if (localApplyUploadRsp.uint32_pack_size.has()) {
-      localayzg.jdField_a_of_type_Int = localApplyUploadRsp.uint32_pack_size.get();
+  }
+  
+  public void a(ayyp paramayyp)
+  {
+    if ((paramayyp != null) && (paramayyp.jdField_a_of_type_JavaUtilList != null) && (paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      aytk localaytk = new aytk();
+      a(localaytk);
+      localaytk.jdField_a_of_type_ArrayOfByte = a(paramayyp.jdField_a_of_type_JavaUtilList);
+      localaytk.jdField_a_of_type_JavaLangObject = paramayyp;
+      localaytk.jdField_a_of_type_Aytj = this;
+      a(paramayyp, localaytk);
     }
-    localObject2 = HexUtil.bytes2HexStr(localApplyUploadRsp.bytes_upload_key.get().toByteArray());
-    localayzg.b = ((String)localObject2);
-    paramayti = localApplyUploadRsp.str_upload_ip.get();
-    paramaytj = paramayti;
-    if (paramayti == null) {
-      paramaytj = localApplyUploadRsp.str_upload_domain.get();
+  }
+  
+  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
+  {
+    paramTryUpImgReq.uint32_bu_type.set(1);
+  }
+  
+  void a(cmd0x352.TryUpImgRsp paramTryUpImgRsp, ayzg paramayzg)
+  {
+    boolean bool = true;
+    if (paramTryUpImgRsp.bytes_up_resid.has()) {
+      paramayzg.jdField_a_of_type_JavaLangString = paramTryUpImgRsp.bytes_up_resid.get().toStringUtf8();
+    }
+    if (paramTryUpImgRsp.bytes_up_uuid.has()) {
+      paramayzg.jdField_b_of_type_JavaLangString = paramTryUpImgRsp.bytes_up_uuid.get().toStringUtf8();
+    }
+    paramayzg.jdField_a_of_type_Long = paramTryUpImgRsp.uint64_up_offset.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("BDH_LOG", 2, " TryUpLoad : Offset:" + paramayzg.jdField_a_of_type_Long + " Value:" + paramTryUpImgRsp.uint64_up_offset.get());
+    }
+    if ((paramTryUpImgRsp.bool_file_exit.has()) && (paramTryUpImgRsp.bool_file_exit.get()))
+    {
+      paramayzg.jdField_a_of_type_Boolean = true;
+      if (paramTryUpImgRsp.bytes_original_down_para.has()) {
+        paramayzg.jdField_d_of_type_JavaLangString = paramTryUpImgRsp.bytes_original_down_para.get().toStringUtf8();
+      }
+      return;
+    }
+    paramayzg.jdField_c_of_type_JavaLangString = HexUtil.bytes2HexStr(paramTryUpImgRsp.bytes_up_ukey.get().toByteArray());
+    paramayzg.jdField_a_of_type_Int = ((int)paramTryUpImgRsp.uint64_block_size.get());
+    if (ayta.a().a() != this.jdField_a_of_type_Int) {}
+    for (;;)
+    {
+      paramayzg.jdField_b_of_type_Boolean = bool;
+      break;
+      bool = false;
+    }
+  }
+  
+  byte[] a(List<ayza> paramList)
+  {
+    cmd0x352.ReqBody localReqBody = new cmd0x352.ReqBody();
+    localReqBody.setHasFlag(true);
+    localReqBody.uint32_subcmd.set(1);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      a(i, (ayza)paramList.get(i), localReqBody);
+      i += 1;
+    }
+    i = ayta.a().a();
+    this.jdField_a_of_type_Int = i;
+    switch (i)
+    {
+    default: 
+      i = 6;
     }
     for (;;)
     {
-      label473:
-      throw new Exception("ukey or ip missing");
-      label577:
-      do
+      paramList = ayta.a().a();
+      int j = i;
+      if (paramList != null)
       {
-        paramaytj = localApplyUploadRsp.rpt_str_uploadip_list.get();
-        if ((paramaytj != null) && (paramaytj.size() > 0))
-        {
-          paramaytj = paramaytj.iterator();
-          while (paramaytj.hasNext())
-          {
-            paramayti = (String)paramaytj.next();
-            localObject2 = new ayuo();
-            ((ayuo)localObject2).jdField_a_of_type_JavaLangString = paramayti;
-            localayzg.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-          }
+        j = i;
+        if (paramList.contains("wap")) {
+          j = 5;
         }
-        a(0, 0, "", "", localakaw, localayzg);
-        break;
-        a(-1, -9527, ayoz.a(i), "", localakaw, localayzg);
-        break;
-        if (localObject2 == null) {
-          break label473;
-        }
-      } while (paramaytj != null);
+      }
+      localReqBody.uint32_net_type.set(j);
+      return localReqBody.toByteArray();
+      i = 3;
+      continue;
+      i = 6;
+      continue;
+      i = 7;
+      continue;
+      i = 8;
     }
   }
   
-  public void a(ayyn paramayyn)
+  void b(ayyp paramayyp)
   {
-    if ((paramayyn != null) && (paramayyn.jdField_a_of_type_JavaUtilList != null) && (paramayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      ayti localayti = new ayti();
-      localayti.jdField_a_of_type_JavaLangString = "PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500";
-      localayti.jdField_a_of_type_ArrayOfByte = a(paramayyn.jdField_a_of_type_JavaUtilList);
-      localayti.jdField_a_of_type_JavaLangObject = paramayyn;
-      localayti.jdField_a_of_type_Ayth = this;
-      a(paramayyn, localayti);
-    }
-  }
-  
-  byte[] a(List<ayyy> paramList)
-  {
-    int j = 0;
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(500);
-    Object localObject = localReqBody.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    ((PBUInt32Field)localObject).set(i);
-    localReqBody.uint32_business_id.set(17);
-    localReqBody.uint32_client_type.set(104);
-    ayyx localayyx;
-    if (paramList.size() == 1)
-    {
-      localayyx = (ayyx)paramList.get(0);
-      cmd0x346.ApplyUploadReq localApplyUploadReq = new cmd0x346.ApplyUploadReq();
-      localApplyUploadReq.uint64_sender_uin.set(Long.parseLong(localayyx.jdField_c_of_type_JavaLangString));
-      try
-      {
-        localObject = localayyx.jdField_d_of_type_JavaLangString;
-        paramList = (List<ayyy>)localObject;
-        if (((String)localObject).startsWith("+")) {
-          paramList = ((String)localObject).substring(1);
-        }
-        long l = Long.valueOf(paramList).longValue();
-        localApplyUploadReq.uint64_recver_uin.set(l);
-      }
-      catch (Exception paramList)
-      {
-        for (;;)
-        {
-          paramList.printStackTrace();
-          continue;
-          i = j;
-          if (localayyx.jdField_a_of_type_Boolean)
-          {
-            i = 500;
-            continue;
-            paramList.str_dst_phonenum.set(localayyx.jdField_d_of_type_JavaLangString);
-            i = 102;
-            continue;
-            i = 104;
-            continue;
-            i = 104;
-            continue;
-            i = 105;
-            continue;
-            i = 101;
-            continue;
-            i = 103;
-            continue;
-            i = 114;
-            continue;
-            if (localayyx.f == 9999) {
-              paramList.uint32_file_type.set(102);
-            }
-          }
-        }
-      }
-      localApplyUploadReq.uint32_file_type.set(2);
-      localApplyUploadReq.str_file_name.set(localayyx.jdField_a_of_type_JavaLangString);
-      localApplyUploadReq.uint64_file_size.set(localayyx.b);
-      localApplyUploadReq.bytes_10m_md5.set(ByteStringMicro.copyFrom(localayyx.jdField_a_of_type_ArrayOfByte));
-      localReqBody.msg_apply_upload_req.set(localApplyUploadReq);
-      paramList = new cmd0x346.ExtensionReq();
-      paramList.uint64_id.set(3L);
-      paramList.uint32_ptt_format.set(localayyx.jdField_c_of_type_Int);
-      paramList.uint32_ptt_time.set(localayyx.jdField_a_of_type_Int);
-      i = a();
-      paramList.uint32_net_type.set(i);
-      paramList.uint32_voice_type.set(localayyx.jdField_d_of_type_Int);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RecordParams", 2, "C2CPttUp: panel[" + localayyx.jdField_d_of_type_Int + "] type[" + localayyx.jdField_c_of_type_Int + "] length[" + localayyx.jdField_a_of_type_Int + "] size[" + localayyx.b + "]");
-        if (QLog.isColorLevel()) {
-          QLog.d("RecordParams", 2, "C2CPttUp: net[" + i + "]");
-        }
-      }
-      i = j;
-      switch (localayyx.f)
-      {
-      default: 
-        i = j;
-      case 1005: 
-      case 1023: 
-      case 1024: 
-        paramList.uint64_type.set(i);
-        if (localayyx.f == 1008)
-        {
-          paramList.uint32_file_type.set(3);
-          localReqBody.msg_extension_req.set(paramList);
-          return localReqBody.toByteArray();
-        }
-        break;
-      }
-    }
-    throw new RuntimeException("only support one request");
-  }
-  
-  void b(ayyn paramayyn)
-  {
-    ayzc localayzc = paramayyn.jdField_a_of_type_Ayzc;
-    localayzc.jdField_a_of_type_JavaUtilList.clear();
+    ayze localayze = paramayyp.jdField_a_of_type_Ayze;
+    localayze.jdField_a_of_type_JavaUtilList.clear();
     int i = 0;
-    while (i < paramayyn.jdField_a_of_type_JavaUtilList.size())
+    while (i < paramayyp.jdField_a_of_type_JavaUtilList.size())
     {
       ayzg localayzg = new ayzg();
-      localayzc.jdField_a_of_type_JavaUtilList.add(i, localayzg);
+      localayze.jdField_a_of_type_JavaUtilList.add(i, localayzg);
       i += 1;
     }
   }

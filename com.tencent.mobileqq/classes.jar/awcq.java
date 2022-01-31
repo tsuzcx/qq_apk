@@ -1,17 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class awcq
-  implements View.OnTouchListener
+  implements awci
 {
   public awcq(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    bfmr.b(paramView);
-    return false;
+    SignTextEditFragment.a(this.a, this.a.a, paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      bcql.a(this.a.getActivity(), 2131719386, 1).a();
+    }
+    SignTextEditFragment.a(this.a, this.a.a, SignTextEditFragment.a(this.a).b());
   }
 }
 

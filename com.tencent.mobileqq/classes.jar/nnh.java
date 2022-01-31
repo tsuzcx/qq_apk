@@ -1,18 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 public class nnh
-  implements DialogInterface.OnClickListener
 {
-  public nnh(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
+  public nnh(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, true, this.b);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    SosoInterface.a(new nnt(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
   }
 }
 

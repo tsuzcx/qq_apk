@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class awcs
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
   public awcs(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    SignTextEditFragment.a(this.a, "");
-    paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(6, null).sendToTarget();
+    bfni.b(paramView);
+    return false;
   }
 }
 

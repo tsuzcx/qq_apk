@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aifu;
-import aifv;
+import aifs;
+import aift;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import mxm;
+import mxj;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
@@ -22,7 +22,7 @@ import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
 public class TroopListAdapter$1$1
   implements Runnable
 {
-  public TroopListAdapter$1$1(aifv paramaifv, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
+  public TroopListAdapter$1$1(aift paramaift, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
   
   public void run()
   {
@@ -58,7 +58,7 @@ public class TroopListAdapter$1$1
       localArrayList = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
       if (localArrayList != null)
       {
-        aifu.a((QQAppInterface)aifu.a(this.jdField_a_of_type_Aifv.a).b.get(), aifu.a(this.jdField_a_of_type_Aifv.a), localArrayList);
+        aifs.a((QQAppInterface)aifs.a(this.jdField_a_of_type_Aift.a).b.get(), aifs.a(this.jdField_a_of_type_Aift.a), localArrayList);
         return;
       }
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopListAdapter.1.1.1(this));

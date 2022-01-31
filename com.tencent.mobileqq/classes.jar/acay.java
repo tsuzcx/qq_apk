@@ -1,17 +1,25 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface acay
+class acay
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Editable paramEditable);
+  acay(acav paramacav) {}
   
-  public abstract void a(ResultRecord paramResultRecord);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Bbgu.cancel();
+      this.a.b = true;
+      acav.a(this.a);
+      this.a.b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acay
  * JD-Core Version:    0.7.0.1
  */

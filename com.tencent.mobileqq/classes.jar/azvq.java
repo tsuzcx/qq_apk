@@ -1,100 +1,47 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public class azvq
+class azvq
+  implements View.OnKeyListener
 {
-  public int a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<azvr> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private azvq(azvo paramazvo) {}
   
-  public static azvq a(String paramString)
+  public void a()
   {
-    azvq localazvq = new azvq();
-    localazvq.a(paramString);
-    return localazvq;
+    Activity localActivity = this.a.a();
+    if (localActivity != null)
+    {
+      this.a.a().finish();
+      localActivity.overridePendingTransition(2130772036, 2130772218);
+    }
   }
   
-  private void a(String paramString)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    long l = System.currentTimeMillis();
-    this.jdField_b_of_type_JavaLangString = paramString;
-    new ArrayList();
-    JSONObject localJSONObject1 = new JSONObject(paramString);
-    this.jdField_b_of_type_Int = localJSONObject1.optInt("errorcode");
-    this.jdField_a_of_type_JavaLangString = localJSONObject1.optString("errormsg");
-    JSONArray localJSONArray = localJSONObject1.optJSONArray("items");
-    int i = 0;
-    while (i < localJSONArray.length())
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
     {
-      JSONObject localJSONObject2 = localJSONArray.getJSONObject(i);
-      azvr localazvr = new azvr();
-      localazvr.jdField_a_of_type_JavaLangString = localJSONObject2.optString("itemstring");
-      localazvr.jdField_a_of_type_Boolean = "YES".equalsIgnoreCase(localJSONObject2.optString("item"));
-      localazvr.jdField_a_of_type_Int = localJSONObject2.optInt("itemconf");
-      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("itemcoord");
-      localazvr.jdField_b_of_type_Int = localJSONObject3.optInt("x");
-      localazvr.c = localJSONObject3.optInt("y");
-      localazvr.d = localJSONObject3.optInt("width");
-      localazvr.e = localJSONObject3.optInt("height");
-      if (!localazvr.a())
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+      switch (paramKeyEvent.getAction())
       {
-        veg.e("QQ.Troop.homework.ArithResult", "arith homework json error!! all json=" + paramString);
-        vxs.a("arith homework json error!! json=" + localJSONObject2, new Object[0]);
+      case 0: 
+      default: 
+        break;
+      case 1: 
+        bool1 = bool2;
       }
-      if (!localazvr.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Int += 1;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localazvr);
-      i += 1;
-    }
-    this.jdField_a_of_type_OrgJsonJSONArray = localJSONArray;
-    this.jdField_a_of_type_OrgJsonJSONObject = localJSONObject1;
-    veg.d("QQ.Troop.homework.ArithResult", "parse json cost=" + (System.currentTimeMillis() - l));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public azvr a(int paramInt)
-  {
-    return (azvr)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public String a()
-  {
-    veg.d("QQ.Troop.homework.ArithResult", "toJson:" + this.jdField_a_of_type_Boolean);
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = (azvr)this.jdField_a_of_type_JavaUtilList.get(i);
-        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i);
-        if (((azvr)localObject).jdField_a_of_type_Boolean) {}
-        for (localObject = "YES";; localObject = "NO")
-        {
-          localJSONObject.put("item", localObject);
-          i += 1;
-          break;
-        }
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("items", this.jdField_a_of_type_OrgJsonJSONArray);
-    }
-    for (Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.toString();; localObject = this.jdField_b_of_type_JavaLangString)
-    {
-      veg.d("QQ.Troop.homework.ArithResult", "toJSON cost=" + (System.currentTimeMillis() - l));
-      return localObject;
-    }
+    } while (paramKeyEvent.isCanceled());
+    a();
+    return true;
   }
 }
 

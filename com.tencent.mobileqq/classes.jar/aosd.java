@@ -1,45 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aosd
-  implements View.OnClickListener
 {
-  public aosd(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, apkq paramapkq)
   {
-    if (paramView == null)
+    String str1 = paramFileManagerEntity.getFilePath();
+    if (QLog.isColorLevel()) {
+      QLog.i("<FileAssistant>FileViewerFacade", 2, "open[" + str1 + "]");
+    }
+    if ((str1 != null) && (str1.lastIndexOf(".rename") > 0))
     {
+      String str3 = str1.replace(".rename", "");
+      String str2 = str3.substring(0, str3.lastIndexOf("."));
+      str3 = str3.substring(str3.lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
+      str2 = str2 + str3;
       if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+        QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
       }
+      aptt.a(paramActivity, paramActivity.getString(2131692883), 2131692870, new aose(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramapkq));
       return;
     }
-    FileInfo localFileInfo = (FileInfo)paramView.getTag();
-    if (localFileInfo != null)
+    if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
     {
-      if (this.a.jdField_a_of_type_Aopw != null) {
-        this.a.jdField_a_of_type_Aopw.a(null);
-      }
-      if (!apvb.c(localFileInfo.c())) {
-        break label99;
-      }
-      this.a.a(localFileInfo);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Aopw.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.f();
+      aptt.a(paramActivity, paramActivity.getString(2131692883), 2131692851, new aosf(paramActivity, paramFileManagerEntity));
       return;
-      label99:
-      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692412);
-      aptv.a(apue.d(localFileInfo.d()) + str);
     }
+    apug.a(paramActivity, paramFileManagerEntity.getFilePath());
   }
 }
 

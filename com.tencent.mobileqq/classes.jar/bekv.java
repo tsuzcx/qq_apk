@@ -1,46 +1,20 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
 
 public class bekv
 {
-  public static final String a = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini/";
-  public static final String b = a + "navigateback_appid";
-  
-  public static void a(String paramString)
+  @TargetApi(14)
+  public static void a(View paramView, CharSequence paramCharSequence, String paramString)
   {
-    Object localObject = new File(b);
-    do
-    {
-      try
-      {
-        localObject = new BufferedWriter(new FileWriter((File)localObject));
-        besl.d("NavigateBackUtils", "getTagAppid exception!", paramString);
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          ((BufferedWriter)localObject).write(paramString);
-          ((BufferedWriter)localObject).close();
-          return;
-        }
-        catch (Exception paramString)
-        {
-          continue;
-        }
-        paramString = paramString;
-        localObject = null;
-      }
-    } while (localObject == null);
-    try
-    {
-      ((BufferedWriter)localObject).close();
-      return;
+    if (Build.VERSION.SDK_INT >= 14) {
+      paramView.setAccessibilityDelegate(new bekw(paramCharSequence, paramString));
     }
-    catch (Exception paramString) {}
+  }
+  
+  public static void a(View paramView, String paramString)
+  {
+    a(paramView, null, paramString);
   }
 }
 

@@ -1,12 +1,8 @@
-import java.net.URL;
-
 public abstract interface spd
 {
-  public abstract void a(URL paramURL, int paramInt);
+  public abstract void a();
   
-  public abstract void a(URL paramURL, Throwable paramThrowable);
-  
-  public abstract void a(URL paramURL, rpg paramrpg);
+  public abstract void b();
 }
 
 

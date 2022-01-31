@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupMenu;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class augn
-  implements View.OnClickListener
+  implements axgs
 {
-  augn(augj paramaugj) {}
+  augn(augl paramaugl, AppInterface paramAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = new PopupMenu(augj.a(this.a), paramView);
-    this.a.a(augj.a(this.a).b, paramView);
-    paramView.show();
+    this.jdField_a_of_type_Augl.jdField_a_of_type_ArrayOfInt[3] = paramInt;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    QLog.w(augl.jdField_a_of_type_JavaLangString, 1, "onDownloadProgress, index[3], bDownloadSuc[" + paramBoolean1 + "]");
+    int[] arrayOfInt = this.jdField_a_of_type_Augl.jdField_a_of_type_ArrayOfInt;
+    if (paramBoolean1) {}
+    for (paramInt = 100;; paramInt = -1)
+    {
+      arrayOfInt[3] = paramInt;
+      if (this.jdField_a_of_type_Augl.a() == 100) {
+        augl.a(this.jdField_a_of_type_Augl, "onDownloadProgress1", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
+      }
+      return;
+    }
   }
 }
 

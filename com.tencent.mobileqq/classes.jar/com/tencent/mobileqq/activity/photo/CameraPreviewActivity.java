@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aeiy;
+import aeiw;
+import aglg;
+import aglh;
 import agli;
 import aglj;
 import aglk;
 import agll;
 import aglm;
-import agln;
-import aglo;
-import agqf;
+import agqd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -23,11 +23,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ayxc;
-import bbcv;
-import bbgg;
-import bbkx;
-import bcpw;
+import ayxe;
+import bbdj;
+import bbgu;
+import bbll;
+import bcql;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -40,10 +40,10 @@ public class CameraPreviewActivity
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private aglo jdField_a_of_type_Aglo;
+  private aglm jdField_a_of_type_Aglm;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public bbgg a;
+  public bbgu a;
   private Gallery jdField_a_of_type_ComTencentWidgetGallery;
   String jdField_a_of_type_JavaLangString = null;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -57,7 +57,7 @@ public class CameraPreviewActivity
     Intent localIntent = getIntent();
     this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("callFromFastImage", false);
     if (this.jdField_b_of_type_Boolean) {
-      agqf.c();
+      agqd.c();
     }
     for (;;)
     {
@@ -69,7 +69,7 @@ public class CameraPreviewActivity
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.CUSTOM_SENDBTN_TEXT");
       return;
-      agqf.a();
+      agqd.a();
     }
   }
   
@@ -79,26 +79,26 @@ public class CameraPreviewActivity
     String str2;
     if (paramInt == 6)
     {
-      str1 = getString(2131719051);
-      str2 = getString(2131719050);
+      str1 = getString(2131719062);
+      str2 = getString(2131719061);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bbgg = bbcv.a(this, 230, str1, str2, new agll(this), null);
-      this.jdField_a_of_type_Bbgg.setOnCancelListener(new aglm(this));
-      this.jdField_a_of_type_Bbgg.setOnDismissListener(new agln(this));
-      this.jdField_a_of_type_Bbgg.show();
+      this.jdField_a_of_type_Bbgu = bbdj.a(this, 230, str1, str2, new aglj(this), null);
+      this.jdField_a_of_type_Bbgu.setOnCancelListener(new aglk(this));
+      this.jdField_a_of_type_Bbgu.setOnDismissListener(new agll(this));
+      this.jdField_a_of_type_Bbgu.show();
       return;
       if (paramInt == 7)
       {
-        str1 = getString(2131719053);
-        str2 = getString(2131719052);
+        str1 = getString(2131719064);
+        str2 = getString(2131719063);
       }
       else
       {
-        if (this.jdField_a_of_type_Bbgg != null)
+        if (this.jdField_a_of_type_Bbgu != null)
         {
-          this.jdField_a_of_type_Bbgg.dismiss();
+          this.jdField_a_of_type_Bbgu.dismiss();
           return;
         }
         str1 = null;
@@ -114,7 +114,7 @@ public class CameraPreviewActivity
       a(7);
       return true;
     }
-    if (aeiy.a() < 10L)
+    if (aeiw.a() < 10L)
     {
       a(6);
       return true;
@@ -125,9 +125,9 @@ public class CameraPreviewActivity
   private boolean a(String paramString)
   {
     boolean bool = false;
-    if (new File(paramString).length() > ayxc.a())
+    if (new File(paramString).length() > ayxe.a())
     {
-      bcpw.a(this, getResources().getString(2131695112), 0).b(getResources().getDimensionPixelSize(2131298865));
+      bcql.a(this, getResources().getString(2131695113), 0).b(getResources().getDimensionPixelSize(2131298865));
       bool = true;
     }
     return bool;
@@ -138,17 +138,17 @@ public class CameraPreviewActivity
     this.jdField_a_of_type_ComTencentWidgetGallery = new Gallery(this);
     this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297009));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery, -1, -1);
-    this.jdField_a_of_type_Aglo = new aglo(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Aglo);
+    this.jdField_a_of_type_Aglm = new aglm(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Aglm);
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.hide();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.hide();
     }
-    this.jdField_a_of_type_Bbgg = null;
+    this.jdField_a_of_type_Bbgu = null;
   }
   
   public void doOnPause()
@@ -193,9 +193,9 @@ public class CameraPreviewActivity
     this.jdField_b_of_type_Int = getResources().getDisplayMetrics().heightPixels;
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
     if (this.jdField_a_of_type_Boolean) {
-      setRightButton(2131695139, new agli(this));
+      setRightButton(2131695140, new aglg(this));
     }
-    setTitle(2131695336);
+    setTitle(2131695337);
     this.leftView.setVisibility(8);
     this.leftViewNotBack = ((TextView)findViewById(2131368431));
     this.leftViewNotBack.setVisibility(8);
@@ -208,21 +208,21 @@ public class CameraPreviewActivity
       if (Build.MODEL.equals("PAFM00"))
       {
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.setMargins(0, 0, bbkx.b(12.0F), 0);
+        localLayoutParams.setMargins(0, 0, bbll.b(12.0F), 0);
         localLayoutParams.addRule(11);
         paramBundle.setLayoutParams(localLayoutParams);
       }
     }
-    paramBundle.setOnClickListener(new aglj(this));
+    paramBundle.setOnClickListener(new aglh(this));
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371553);
     if (Build.MODEL.equals("PAFM00"))
     {
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(9);
-      localLayoutParams.setMargins(bbkx.b(12.0F), 0, 0, 0);
+      localLayoutParams.setMargins(bbll.b(12.0F), 0, 0, 0);
       paramBundle.setLayoutParams(localLayoutParams);
     }
-    paramBundle.setOnClickListener(new aglk(this));
+    paramBundle.setOnClickListener(new agli(this));
   }
 }
 

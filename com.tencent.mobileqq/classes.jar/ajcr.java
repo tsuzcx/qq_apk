@@ -1,19 +1,23 @@
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import java.lang.ref.WeakReference;
 
-class ajcr
-  implements Comparator<ajct>
+public class ajcr
 {
-  ajcr(ajcq paramajcq) {}
+  public int a;
+  public long a;
+  public CmGameStartChecker.StartCheckParam a;
+  public String a;
+  public WeakReference<Activity> a;
   
-  public int a(ajct paramajct1, ajct paramajct2)
+  public String toString()
   {
-    if (paramajct1.a == paramajct2.a) {
-      return 0;
-    }
-    if (paramajct1.a > paramajct2.a) {
-      return 1;
-    }
-    return -1;
+    StringBuffer localStringBuffer = new StringBuffer("GameRunningTask{");
+    localStringBuffer.append("mStartCheckParam=").append(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    localStringBuffer.append(", mActivityRef=").append(this.jdField_a_of_type_JavaLangRefWeakReference);
+    localStringBuffer.append(", mActivityState=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

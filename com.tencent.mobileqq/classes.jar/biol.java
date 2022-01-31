@@ -1,236 +1,349 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewStub;
-import com.tencent.aekit.api.standard.AEModule;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
-import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.AR_MATERIAL_TYPE;
-import dov.com.qq.im.ae.camera.ui.tips.AETipsViewController.2;
-import java.io.File;
+import dov.com.qq.im.ae.camera.ui.panel.AEGridView;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialAdapter.1;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialAdapter.2;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialAdapter.3;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialAdapter.4;
+import java.util.ArrayList;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class biol
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  implements View.OnClickListener, axgl, birp
 {
-  private static final String jdField_a_of_type_JavaLangString = biol.class.getSimpleName();
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private biim jdField_a_of_type_Biim;
-  private bion jdField_a_of_type_Bion;
-  private bioo jdField_a_of_type_Bioo;
-  private biop jdField_a_of_type_Biop;
-  private bivx jdField_a_of_type_Bivx = bivx.jdField_a_of_type_Bivx;
-  private bivy jdField_a_of_type_Bivy;
-  private bjob<bivx> jdField_a_of_type_Bjob = new biom(this);
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private bios jdField_a_of_type_Bios;
+  private birb jdField_a_of_type_Birb;
+  public bire a;
+  private AEGridView jdField_a_of_type_DovComQqImAeCameraUiPanelAEGridView;
+  public ArrayList<bire> a;
   private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  private boolean g;
   
-  public biol(View paramView, biwb parambiwb)
+  public biol(Context paramContext, AEGridView paramAEGridView, bios parambios, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Biim = ((biim)parambiwb.a(65537, new Object[0]));
-    this.jdField_a_of_type_Bivy = ((bivy)biix.a(this.jdField_a_of_type_Biim).a(bivy.class));
-    this.jdField_a_of_type_Bioo = new bioo((ViewStub)paramView.findViewById(2131376593));
-    this.jdField_a_of_type_Bion = new bion((ViewStub)paramView.findViewById(2131376594));
-    this.jdField_a_of_type_Biop = new biop((ViewStub)paramView.findViewById(2131376602));
-    this.jdField_a_of_type_Bivy.a().a(this.jdField_a_of_type_Biim, this.jdField_a_of_type_Bjob);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Birb = ((birb)bjav.a(18));
+    this.jdField_a_of_type_Bios = parambios;
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEGridView = paramAEGridView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private String a(int paramInt)
+  private int a(bire parambire)
   {
-    if (paramInt == PTFaceAttr.PTExpression.MOUTH_OPEN.value) {
-      return "张开你的嘴";
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((bire)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(parambire.jdField_a_of_type_JavaLangString)) {
+        return i;
+      }
+      i += 1;
     }
-    if (paramInt == PTFaceAttr.PTExpression.EYEBROWS_RAISE.value) {
-      return "挑动你的眉毛";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.BLINK.value) {
-      return "眨眨你的眼睛";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.HEAD_SHAKE.value) {
-      return "摇一摇你的头";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.KISS.value) {
-      return "嘟起你的嘴";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.BLINK_LEFT_EYE.value) {
-      return "眨眨你的左眼";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.BLINK_RIGHT_EYE.value) {
-      return "眨眨你的右眼";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.HEAD_NOD.value) {
-      return "点一点你的头";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.HEAD_SHAKE_NEW.value) {
-      return "摇一摇你的头";
-    }
-    if (paramInt == PTFaceAttr.PTExpression.TRY_CLICK_SCREEN.value) {
-      return "点击屏幕试试";
-    }
-    return null;
+    return 0;
   }
   
-  private void b(VideoMaterial paramVideoMaterial)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    g();
-    if (paramVideoMaterial == null) {}
-    String str;
-    do
+    paramObject = (VideoMaterial)paramObject;
+    if (paramObject == null) {}
+    for (;;)
     {
       return;
-      str = paramVideoMaterial.getTipsText();
-      if (TextUtils.isEmpty(str)) {
-        break;
-      }
-      this.jdField_b_of_type_JavaLangString = str;
-      str = paramVideoMaterial.getTipsIcon();
-    } while (TextUtils.isEmpty(str));
-    this.jdField_c_of_type_JavaLangString = (paramVideoMaterial.getDataPath() + File.separator + str);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.jdField_c_of_type_JavaLangString, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-    return;
-    int j = paramVideoMaterial.getTriggerType();
-    int i = j;
-    if (j <= 0)
-    {
-      i = j;
-      if (paramVideoMaterial.getArParticleType() == VideoMaterialUtil.AR_MATERIAL_TYPE.CLICKABLE.value) {
-        i = PTFaceAttr.PTExpression.TRY_CLICK_SCREEN.value;
-      }
-    }
-    this.jdField_b_of_type_JavaLangString = a(i);
-  }
-  
-  private void d()
-  {
-    ThreadManager.getUIHandler().post(new AETipsViewController.2(this));
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bivx == bivx.b) {
-      a();
-    }
-    do
-    {
-      return;
-      if (this.f)
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        a();
-        return;
-      }
-      if (this.jdField_a_of_type_Bivx == bivx.jdField_a_of_type_Bivx)
-      {
-        this.jdField_a_of_type_Bion.c();
-        if (this.jdField_b_of_type_Boolean)
+        if ((paramObject.getId() != null) && (paramObject.getId().equals(((bire)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString)))
         {
-          if (this.d)
-          {
-            this.jdField_a_of_type_Bioo.c();
-            f();
-            return;
-          }
-          this.jdField_a_of_type_Bioo.b();
+          ((bire)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean = paramBoolean;
+          notifyItemChanged(i, Integer.valueOf(1));
           return;
         }
-        this.jdField_a_of_type_Bioo.c();
-        f();
-        return;
+        i += 1;
       }
-    } while (this.jdField_a_of_type_Bivx != bivx.c);
-    this.jdField_a_of_type_Bioo.c();
-    if (this.jdField_b_of_type_Boolean)
+    }
+  }
+  
+  private void b(bire parambire)
+  {
+    if (parambire == null) {}
+    while ((parambire.e) || (TextUtils.isEmpty(parambire.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Birb == null)) {
+      return;
+    }
+    if (!bbfj.b(this.jdField_a_of_type_AndroidContentContext))
     {
-      if (this.d)
+      d(parambire);
+      return;
+    }
+    c(parambire);
+  }
+  
+  private void b(bire parambire, int paramInt)
+  {
+    boolean bool = true;
+    if (parambire == null) {}
+    label408:
+    for (;;)
+    {
+      return;
+      bizx.a().b(-1);
+      bizx.a().g("none");
+      bizx.a().f("1");
+      bizx.a().c(0);
+      Object localObject;
+      if (parambire != null)
       {
-        this.jdField_a_of_type_Bion.c();
-        f();
+        bizt.a().b(parambire.jdField_a_of_type_JavaLangString);
+        bjah.b("AEMaterialAdapter", "【Select Material】：" + parambire.jdField_a_of_type_JavaLangString);
+        bjah.b("AEMaterialAdapter", "【Select Material】Usable :" + parambire.d);
+        if ((parambire != null) && (!TextUtils.isEmpty(parambire.jdField_a_of_type_JavaLangString)) && (!bire.a(parambire))) {
+          break label215;
+        }
+        if (this.jdField_a_of_type_Bios != null) {
+          this.jdField_a_of_type_Bios.a();
+        }
+        parambire = this.jdField_a_of_type_Birb;
+        localObject = bire.jdField_a_of_type_Bire;
+        if (this.jdField_a_of_type_Boolean) {
+          break label210;
+        }
+      }
+      label210:
+      for (bool = true;; bool = false)
+      {
+        parambire.a((bire)localObject, bool);
+        QLog.d("AEMaterialAdapter", 4, "### [material panel] select material none");
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().removeExtra("widgetinfo");
+        return;
+        bizt.a().b("null");
+        bjah.b("AEMaterialAdapter", "【Select Material】：null");
+        break;
+      }
+      label215:
+      if (parambire.a())
+      {
+        vzw.a(this.jdField_a_of_type_AndroidContentContext, parambire);
         return;
       }
-      this.jdField_a_of_type_Bion.b();
-      return;
+      if (parambire.d)
+      {
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().putExtra("widgetinfo", "camera^" + parambire.jdField_a_of_type_JavaLangString);
+        if (!FeatureManager.isBasicFeaturesFunctionReady())
+        {
+          bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131709829), 0).a();
+          ThreadManager.excute(new AEMaterialAdapter.1(this), 64, null, true);
+          return;
+        }
+        if (this.jdField_a_of_type_Bios != null) {
+          this.jdField_a_of_type_Bios.a(parambire);
+        }
+        localObject = this.jdField_a_of_type_Birb;
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          ((birb)localObject).a(parambire, bool);
+          QLog.d("AEMaterialAdapter", 4, "### [material panel] select material " + parambire.jdField_a_of_type_JavaLangString);
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          break label408;
+        }
+        this.jdField_a_of_type_Birb.a(parambire);
+        return;
+        bool = false;
+        break;
+        b(parambire);
+      }
     }
-    this.jdField_a_of_type_Bion.c();
-    f();
   }
   
-  private void f()
+  private void c(bire parambire)
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Biop.b();
-    }
-    while (this.g) {
-      return;
-    }
-    biop localbiop = this.jdField_a_of_type_Biop;
-    String str = this.jdField_b_of_type_JavaLangString;
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
-    for (Bitmap localBitmap = null;; localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap)
+    parambire = bbdj.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(ajya.a(2131709832)).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131698327)).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131694794), new bion(this, parambire)).setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690596), new biom(this));
+    if (parambire != null) {}
+    try
     {
-      localbiop.a(str, localBitmap, true);
-      this.g = true;
+      if (!parambire.isShowing()) {
+        parambire.show();
+      }
       return;
     }
+    catch (Throwable parambire) {}
   }
   
-  private void g()
+  private void d(bire parambire)
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
+    this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_Birb.a(), parambire, this);
   }
   
-  public void a()
+  public void a(bire parambire)
   {
-    this.jdField_a_of_type_Bioo.c();
-    this.jdField_a_of_type_Bion.c();
-    this.jdField_a_of_type_Biop.a(null, null, false);
+    b(parambire, a(parambire));
   }
   
-  public void a(VideoMaterial paramVideoMaterial)
+  public void a(bire parambire, int paramInt)
   {
-    this.g = false;
-    b(paramVideoMaterial);
-    d();
+    paramInt = a(parambire);
+    ThreadManager.getUIHandler().post(new AEMaterialAdapter.4(this, paramInt));
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(bire parambire, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.d = paramBoolean2;
-    if ((this.jdField_b_of_type_Boolean != this.jdField_c_of_type_Boolean) || (this.d != this.e))
+    if (parambire == null) {}
+    do
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "### onDetectStateChange, materialNeedFace=" + paramBoolean1 + ", hasFaceDetected=" + paramBoolean2);
-      this.jdField_c_of_type_Boolean = this.jdField_b_of_type_Boolean;
-      this.e = this.d;
-      d();
+      int i;
+      do
+      {
+        return;
+        i = a(parambire);
+      } while (i <= 0);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().putExtra("widgetinfo", "camera^" + parambire.jdField_a_of_type_JavaLangString);
+      ThreadManager.getUIHandler().post(new AEMaterialAdapter.2(this, i, parambire, paramBoolean));
+    } while (paramBoolean);
+    ThreadManager.getUIHandler().post(new AEMaterialAdapter.3(this));
+  }
+  
+  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt == 113) {
+      if (birb.a() != null) {
+        notifyDataSetChanged();
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramInt != 111) {
+            break;
+          }
+        } while ((paramVarArgs == null) || (paramVarArgs.length != 1) || (!this.jdField_a_of_type_Boolean));
+        a(((bira)paramVarArgs[0]).a);
+        notifyDataSetChanged();
+        return;
+        if (paramInt != 114) {
+          break;
+        }
+      } while ((paramVarArgs == null) || (paramVarArgs.length != 1));
+      a(true, paramVarArgs[0]);
+      return;
+    } while ((paramInt != 115) || (paramVarArgs == null) || (paramVarArgs.length != 1));
+    a(false, paramVarArgs[0]);
+  }
+  
+  public void a(List<bire> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.add(bire.jdField_a_of_type_Bire);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    bire localbire = (bire)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (localbire == null) {}
+    do
+    {
+      return;
+      if ((paramViewHolder instanceof bipa))
+      {
+        paramViewHolder = (bipa)paramViewHolder;
+        if (localbire.equals(birb.a()))
+        {
+          paramViewHolder.a();
+          return;
+        }
+        paramViewHolder.b();
+        return;
+      }
+    } while (!(paramViewHolder instanceof bipb));
+    paramViewHolder = (bipb)paramViewHolder;
+    if ((localbire.equals(birb.a())) && (localbire.d))
+    {
+      paramViewHolder.a(2, localbire);
+      return;
+    }
+    localbire.jdField_a_of_type_Boolean = false;
+    paramViewHolder.a(1, localbire);
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEGridView.getChildAdapterPosition(paramView);
+    if (i == -1) {
+      return;
+    }
+    paramView = (bire)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+    if ((this.jdField_a_of_type_Bire != null) && (!this.jdField_a_of_type_Bire.equals(paramView)))
+    {
+      this.jdField_a_of_type_Bire.b = false;
+      this.jdField_a_of_type_Bire.c = false;
+    }
+    this.jdField_a_of_type_Bire = paramView;
+    if (paramView.b) {
+      paramView.c = true;
+    }
+    for (;;)
+    {
+      b(paramView, i);
+      return;
+      paramView.b = true;
     }
   }
   
-  public void b()
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Bioo.d();
-    this.jdField_a_of_type_Bion.d();
-  }
-  
-  public void c()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "### onChangeCamera");
-    if (this.jdField_a_of_type_Boolean) {
-      d();
+    View localView;
+    if (paramInt == 0)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558488, paramViewGroup, false);
+      paramViewGroup = new bipa(localView);
+    }
+    for (;;)
+    {
+      localView.setOnClickListener(this);
+      return paramViewGroup;
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558487, paramViewGroup, false);
+      paramViewGroup = new bipb(localView);
+      paramViewGroup.a(this.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

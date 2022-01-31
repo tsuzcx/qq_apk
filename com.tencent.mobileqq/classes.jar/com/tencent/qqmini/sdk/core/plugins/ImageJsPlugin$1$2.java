@@ -2,10 +2,10 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import begz;
-import beka;
-import bemw;
-import bfgt;
+import behq;
+import bekr;
+import benn;
+import bfhk;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 
 class ImageJsPlugin$1$2
@@ -17,7 +17,7 @@ class ImageJsPlugin$1$2
   {
     if (!ImageJsPlugin.access$200(this.this$1.this$0).openChoosePhotoActivity(this.this$1.this$0.mMiniAppContext.a(), this.this$1.val$count, new ImageJsPlugin.1.2.1(this)))
     {
-      bemw.a(this.this$1.this$0.mMiniAppContext.a(), 0, "暂不支持在" + bfgt.a(this.this$1.this$0.mContext) + "中选择图片", 1);
+      benn.a(this.this$1.this$0.mMiniAppContext.a(), 0, "暂不支持在" + bfhk.a(this.this$1.this$0.mContext) + "中选择图片", 1);
       this.this$1.val$req.b();
     }
     if (paramDialogInterface != null) {

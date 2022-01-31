@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import nlz;
-import qny;
+import nlw;
+import qnv;
 
 public class ADVideoFeedsVideoAppDownlodManager$1
   implements Runnable
 {
-  public ADVideoFeedsVideoAppDownlodManager$1(nlz paramnlz, qny paramqny, int paramInt1, int paramInt2) {}
+  public ADVideoFeedsVideoAppDownlodManager$1(nlw paramnlw, qnv paramqnv, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Qny != null) {
-      this.jdField_a_of_type_Qny.a(this.jdField_a_of_type_Int, this.b);
+    if (this.jdField_a_of_type_Qnv != null) {
+      this.jdField_a_of_type_Qnv.a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

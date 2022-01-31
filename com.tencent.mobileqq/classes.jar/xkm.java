@@ -1,23 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
 class xkm
+  implements bahu
 {
   xkm(xkl paramxkl, String paramString) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Xkl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    akug.a(new xkn(this, "webview"));
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
+    if (bahf.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_Xkl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
   }
 }

@@ -1,23 +1,12 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
-
-public class vri
-  implements tcc<tbx>
+public abstract interface vri
 {
-  public vri(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(boolean paramBoolean, tbx paramtbx)
-  {
-    veg.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramtbx != null))
-    {
-      veg.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramtbx);
-      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramtbx));
-      return;
-    }
-    veg.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

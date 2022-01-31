@@ -12,24 +12,24 @@ import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ndh;
-import tcq;
-import tdc;
-import tgc;
-import tsg;
-import tvf;
-import vel;
+import nde;
+import tcn;
+import tcz;
+import tfz;
+import tsd;
+import tvc;
+import vei;
 
 public class StoryMsgNotificationReceiver
   extends BroadcastReceiver
 {
   public static final Intent a(Context paramContext)
   {
-    ((tcq)tdc.a(18)).a();
+    ((tcn)tcz.a(18)).a();
     if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.protocol", 2, "getMainIntent() isNowTabAdded = " + ndh.c);
+      QLog.w("Q.qqstory.protocol", 2, "getMainIntent() isNowTabAdded = " + nde.c);
     }
-    if (ndh.c)
+    if (nde.c)
     {
       paramContext = new Intent(paramContext, SplashActivity.class);
       paramContext.putExtra("fragment_id", 1);
@@ -53,7 +53,7 @@ public class StoryMsgNotificationReceiver
     if ("com.tencent.biz.qqstory.notification.qqstory_delete_notify".equals(localObject))
     {
       i = paramIntent.getIntExtra("push_type", 0);
-      tsg.a().a(paramContext, i);
+      tsd.a().a(paramContext, i);
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "delete type = " + i);
       }
@@ -82,7 +82,7 @@ public class StoryMsgNotificationReceiver
     }
     for (localObject = "9999";; localObject = ((StoryPushMsg)localObject).jdField_a_of_type_JavaLangString)
     {
-      vel.a("notice_msg", "clk_push", 0, 0, new String[] { localObject, paramIntent, "", "" });
+      vei.a("notice_msg", "clk_push", 0, 0, new String[] { localObject, paramIntent, "", "" });
       if ((i != 0) || (localIntent == null)) {
         break;
       }
@@ -92,19 +92,19 @@ public class StoryMsgNotificationReceiver
       localIntent.putExtra("action", 8);
       localIntent.putExtra("pushType", i);
       localIntent.putExtra("extra_feedid", ((StoryPushMsg)localObject).d);
-      vel.a("notice_msg", "clk_notice", 0, 0, new String[] { "", "", "", "" });
+      vei.a("notice_msg", "clk_notice", 0, 0, new String[] { "", "", "", "" });
       i = 0;
       break label310;
-      if (((tgc)QQStoryContext.a().getManager(252)).a)
+      if (((tfz)QQStoryContext.a().getManager(252)).a)
       {
-        tvf.a(paramContext, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e);
-        vel.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
+        tvc.a(paramContext, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e);
+        vei.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
         i = 1;
         break label310;
       }
       localIntent.putExtra("EXTRA_PLAY_INFO", new SingleFeedPlayInfo(((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e, 1, true));
       localIntent.putExtra("action", 9);
-      vel.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
+      vei.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
       i = 0;
       break label310;
       i = 0;
@@ -149,7 +149,7 @@ public class StoryMsgNotificationReceiver
       localIntent.putExtra("webStyle", "noBottomBar");
       i = 0;
       break label310;
-      tvf.b(paramContext, ((StoryPushMsg)localObject).e, ((StoryPushMsg)localObject).d, 29);
+      tvc.b(paramContext, ((StoryPushMsg)localObject).e, ((StoryPushMsg)localObject).d, 29);
       i = 1;
       break label310;
     }

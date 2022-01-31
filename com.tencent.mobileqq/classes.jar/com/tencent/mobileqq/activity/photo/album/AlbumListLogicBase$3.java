@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aglx;
-import agrd;
-import agrl;
-import agro;
-import bben;
+import aglv;
+import agrb;
+import agrj;
+import agrm;
+import bbfb;
 import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
@@ -12,24 +12,24 @@ import mqq.util.WeakReference;
 public class AlbumListLogicBase$3
   implements Runnable
 {
-  public AlbumListLogicBase$3(agrl paramagrl, agro paramagro, aglx paramaglx) {}
+  public AlbumListLogicBase$3(agrj paramagrj, agrm paramagrm, aglv paramaglv) {}
   
   public void run()
   {
-    bben.a();
-    QQAlbumInfo localQQAlbumInfo = this.jdField_a_of_type_Agro.b(((AlbumListFragment)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.this$0.jdField_a_of_type_Agrd.c, this.this$0.jdField_a_of_type_Agrd.jdField_b_of_type_Int, this.jdField_a_of_type_Aglx, this.this$0.jdField_a_of_type_Agrd.d, this.this$0.jdField_a_of_type_Agrd.jdField_b_of_type_Boolean, this.this$0.jdField_a_of_type_Agrd.a);
-    this.jdField_a_of_type_Agro.b(localQQAlbumInfo);
-    bben.a("PEAK", "queryRecentBucket");
-    bben.a();
-    if ((this.jdField_a_of_type_Aglx != null) && (this.jdField_a_of_type_Aglx.b()))
+    bbfb.a();
+    QQAlbumInfo localQQAlbumInfo = this.jdField_a_of_type_Agrm.b(((AlbumListFragment)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.this$0.jdField_a_of_type_Agrb.c, this.this$0.jdField_a_of_type_Agrb.jdField_b_of_type_Int, this.jdField_a_of_type_Aglv, this.this$0.jdField_a_of_type_Agrb.d, this.this$0.jdField_a_of_type_Agrb.jdField_b_of_type_Boolean, this.this$0.jdField_a_of_type_Agrb.a);
+    this.jdField_a_of_type_Agrm.b(localQQAlbumInfo);
+    bbfb.a("PEAK", "queryRecentBucket");
+    bbfb.a();
+    if ((this.jdField_a_of_type_Aglv != null) && (this.jdField_a_of_type_Aglv.b()))
     {
-      localQQAlbumInfo = this.jdField_a_of_type_Agro.a(((AlbumListFragment)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
-      this.jdField_a_of_type_Agro.d(localQQAlbumInfo);
+      localQQAlbumInfo = this.jdField_a_of_type_Agrm.a(((AlbumListFragment)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
+      this.jdField_a_of_type_Agrm.d(localQQAlbumInfo);
       if (QLog.isColorLevel()) {
         QLog.d("AlbumModule", 2, "queryAlbumList() run postVideoAlbum()， videoAlbumInfo.count=" + localQQAlbumInfo.mMediaFileCount);
       }
     }
-    bben.a("PEAK", "queryVideoBucket");
+    bbfb.a("PEAK", "queryVideoBucket");
   }
 }
 

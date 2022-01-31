@@ -1,31 +1,43 @@
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class bjds
-  extends bjde
+class bjds
+  extends bjdv
 {
-  public bjds(HummingActivity paramHummingActivity) {}
+  bjds(bjdr parambjdr) {}
   
   public void a(int paramInt) {}
   
   public void a(String paramString) {}
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a(String arg1, int paramInt)
   {
-    bdid.a().a(ajyc.a(2131705663) + HummingActivity.a(this.a), 0);
+    synchronized (this.a)
+    {
+      this.a.a.mProgress = paramInt;
+      return;
+    }
   }
+  
+  public void a(String paramString, boolean paramBoolean) {}
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).getLocalPath().equals(paramString)))
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
+    }
+    paramString = this.a;
+    if (paramBoolean) {}
+    for (;;)
     {
-      paramString = new Intent();
-      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramString);
-      this.a.finish();
+      try
+      {
+        this.a.a.mProgress = 100;
+        this.a.b();
+        return;
+      }
+      finally {}
+      this.a.a.mProgress = -1;
+      this.a.a(4);
     }
   }
 }

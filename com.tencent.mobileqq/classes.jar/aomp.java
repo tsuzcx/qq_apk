@@ -1,14 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aomp
+public class aomp
   implements DialogInterface.OnClickListener
 {
-  aomp(aomn paramaomn) {}
+  public aomp(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aomn.a(this.a).dismiss();
+    this.a.a = false;
+    this.a.l = false;
+    this.a.doOnBackPressed();
   }
 }
 

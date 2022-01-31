@@ -1,20 +1,32 @@
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-class tae
-  extends tpk
+public class tae
+  extends ssh
 {
-  tae(tac paramtac) {}
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
   
-  public void a()
+  public tae(int paramInt1, String paramString, int paramInt2)
   {
-    super.a();
-    tab.a(this.a.a, null);
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
-  public void a(int paramInt)
+  public tae(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
   {
-    super.a(paramInt);
-    vel.a("home_page", "suc_share", 1, paramInt, new String[] { vel.b(this.a.a.a) + "", vel.a(this.a.a.a) + "", this.a.a.a.feedId });
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public String toString()
+  {
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 

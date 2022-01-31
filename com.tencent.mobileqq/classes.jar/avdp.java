@@ -1,139 +1,76 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
+import java.io.File;
+import java.lang.ref.SoftReference;
 
 public class avdp
+  implements aysc
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  String jdField_a_of_type_JavaLangString;
+  SoftReference<QQAppInterface> jdField_a_of_type_JavaLangRefSoftReference;
+  String b;
+  String c;
+  String d;
+  
+  public avdp(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString3;
+    this.c = paramString2;
+    this.d = paramString4;
+  }
+  
+  public void onResp(aysz paramaysz)
+  {
+    try
     {
-      try
+      if (paramaysz.a == 0)
       {
-        ayxq localayxq = (ayxq)paramQQAppInterface.getManager(193);
-        if (localayxq.a())
-        {
-          int i = 2;
-          String str = "qboss_splash_ad_res_png";
-          if (paramInt == 2)
-          {
-            i = 1;
-            str = "qboss_splash_ad_res_video";
-            j = 10082;
-            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("qbossSplashresAppid", paramString1);
-            a("qbossSplashrequest", localHashMap);
-            localayxq.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new avdq(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
-          }
-        }
-        else
-        {
-          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
+        QLog.i("QbossPreDownloadManager", 1, "ResFile has download!");
+        if (TextUtils.isEmpty(this.c)) {
           return;
         }
-      }
-      catch (Exception paramQQAppInterface)
-      {
+        if (apvd.b(this.c))
+        {
+          paramaysz = new File(this.c);
+          File localFile = new File(this.c.substring(0, this.c.lastIndexOf(".")));
+          if (!paramaysz.renameTo(localFile)) {
+            return;
+          }
+          long l = localFile.length();
+          paramaysz = (QQAppInterface)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+          if (paramaysz != null)
+          {
+            paramaysz = (ayxs)paramaysz.getManager(193);
+            if (paramaysz.a())
+            {
+              QLog.i("QbossPreDownloadManager", 1, "preDownloadSuccess");
+              paramaysz.a(this.b, l);
+            }
+          }
+          bhku.a().c(this.d, null);
+          return;
+        }
+        avdn.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "2");
+        QLog.i("QbossPreDownloadManager", 1, "ResFile check not exist");
         return;
       }
-      int j = 10081;
+    }
+    catch (Exception paramaysz)
+    {
+      QLog.e("QbossPreDownloadManager", 1, paramaysz, new Object[0]);
+      return;
+    }
+    if (paramaysz.a == 1)
+    {
+      avdn.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "1");
+      QLog.i("QbossPreDownloadManager", 1, "ResFile dowload faield");
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Collection<avdt> paramCollection)
-  {
-    for (;;)
-    {
-      avdt localavdt;
-      try
-      {
-        paramCollection = paramCollection.iterator();
-        if (!paramCollection.hasNext()) {
-          break label156;
-        }
-        localavdt = (avdt)paramCollection.next();
-        if (!localavdt.b())
-        {
-          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
-          continue;
-        }
-        switch (localavdt.a)
-        {
-        }
-      }
-      finally {}
-      a(paramQQAppInterface, localavdt.jdField_b_of_type_JavaLangString, localavdt.e, localavdt.h, 0, localavdt.k);
-      continue;
-      a(paramQQAppInterface, localavdt.jdField_b_of_type_JavaLangString, localavdt.e, localavdt.h, 2, localavdt.k);
-      continue;
-      a(paramQQAppInterface, localavdt.jdField_b_of_type_JavaLangString, localavdt.e, localavdt.h, 1, localavdt.k);
-      continue;
-      label156:
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    Object localObject = avdo.a(BaseApplicationImpl.getContext(), paramString1);
-    paramString1 = ((SharedPreferences)localObject).edit();
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
-    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
-    if (!bool)
-    {
-      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
-      localObject = avds.a;
-      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
-        ((avdt)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
-      }
-    }
-    paramString1.apply();
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    try
-    {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
-      {
-        axrl.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
-        }
-      }
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    try
-    {
-      paramAppInterface = (ayxq)paramAppInterface.getManager(193);
-      if (paramAppInterface.a()) {
-        paramAppInterface.a(paramString1, -1L);
-      }
-      paramString1 = new HashMap();
-      paramString1.put("qbossSplashresAppid", paramString2);
-      a("qbossSplashDownloadFailed", paramString1);
-      return;
-    }
-    catch (Exception paramString1) {}
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

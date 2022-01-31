@@ -1,10 +1,6 @@
 public abstract interface bcnh
 {
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public abstract void a(boolean paramBoolean);
 }
 
 

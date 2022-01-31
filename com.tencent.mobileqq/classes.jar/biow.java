@@ -1,22 +1,19 @@
-import android.support.annotation.Nullable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class biow
-  implements bjob<Boolean>
+public class biow
+  implements Animation.AnimationListener
 {
-  biow(bior parambior) {}
+  public biow(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bior localbior = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bior.a(localbior, bool);
-      return;
-    }
+    this.a.setVisibility(0);
   }
 }
 

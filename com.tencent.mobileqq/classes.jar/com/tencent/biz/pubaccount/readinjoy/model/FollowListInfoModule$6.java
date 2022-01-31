@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import osm;
-import paq;
+import osj;
+import pan;
 
 public class FollowListInfoModule$6
   implements Runnable
 {
-  public FollowListInfoModule$6(paq parampaq, List paramList, long paramLong, boolean paramBoolean) {}
+  public FollowListInfoModule$6(pan parampan, List paramList, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    osm.a().b(true, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    osj.a().b(true, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

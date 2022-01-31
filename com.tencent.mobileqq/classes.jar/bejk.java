@@ -1,56 +1,53 @@
-import android.content.Context;
-import android.os.Environment;
-import android.util.Log;
-import java.io.File;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import java.lang.ref.WeakReference;
 
 public class bejk
-  extends besb
 {
-  public void loadBaselib(Context paramContext, besd parambesd)
+  private static volatile bejk jdField_a_of_type_Bejk;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ViewGroup> b;
+  
+  public static bejk a()
   {
-    for (;;)
+    if (jdField_a_of_type_Bejk == null) {}
+    try
     {
-      besc localbesc;
-      try
-      {
-        if (isBaseLibInit())
-        {
-          if (parambesd != null) {
-            parambesd.a(0, "", this.mBaselibContent.a());
-          }
-          return;
-        }
-        localbesc = new besc();
-        localbesc.a = bekq.a(paramContext, "mini/QView.js");
-        File localFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QLogic.js");
-        if ((localFile.exists()) && (localFile.isFile()))
-        {
-          Log.i("InternalBaselibLoader", "load ServiceJs from " + localFile.getAbsolutePath());
-          localbesc.b = bekq.a(localFile);
-          localbesc.h = localFile.getAbsolutePath();
-          localbesc.c = bekq.a(paramContext, "mini/QVConsole.js");
-          localbesc.d = bekq.a(paramContext, "mini/QRemoteDebug.js");
-          localbesc.e = bekq.a(paramContext, "mini/QWebview.js");
-          localbesc.f = bekq.a(paramContext, "mini/QWorker.js");
-          setBaselib(localbesc);
-          if (parambesd == null) {
-            continue;
-          }
-          if (!isBaseLibInit()) {
-            break label256;
-          }
-          parambesd.a(0, "", this.mBaselibContent.a());
-          continue;
-        }
-        Log.i("InternalBaselibLoader", "load ServiceJs from assets");
+      if (jdField_a_of_type_Bejk == null) {
+        jdField_a_of_type_Bejk = new bejk();
       }
-      finally {}
-      localbesc.b = bekq.a(paramContext, "mini/QLogic.js");
-      localbesc.h = "assets://mini/QLogic.js";
-      continue;
-      label256:
-      parambesd.a(-1, "基础库加载失败", null);
+      return jdField_a_of_type_Bejk;
     }
+    finally {}
+  }
+  
+  public void a(Activity paramActivity, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramViewGroup);
+  }
+  
+  public void a(View paramView)
+  {
+    ViewGroup localViewGroup = (ViewGroup)this.b.get();
+    if (localViewGroup == null)
+    {
+      betc.d("GameVideoPlayerManager", "removePlayerView error: parent == null");
+      return;
+    }
+    localViewGroup.removeView(paramView);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if (this.b != null) {}
+    for (ViewGroup localViewGroup = (ViewGroup)this.b.get(); localViewGroup == null; localViewGroup = null)
+    {
+      betc.d("GameVideoPlayerManager", "addPlayerView error: parent == null");
+      return;
+    }
+    localViewGroup.addView(paramViewGroup);
   }
 }
 

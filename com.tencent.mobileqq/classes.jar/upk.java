@@ -1,42 +1,57 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.1;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import mqq.os.MqqHandler;
 
-class upk
-  implements syt<upx, upy>
+public class upk
 {
-  upk(upj paramupj, JobContext paramJobContext, String paramString) {}
+  private Stream<upp> jdField_a_of_type_ComTribeAsyncReactiveStream;
+  private String jdField_a_of_type_JavaLangString;
+  private upn jdField_a_of_type_Upn;
+  private upp jdField_a_of_type_Upp = new upp();
+  public boolean a;
+  private boolean b = true;
   
-  public void a(@NonNull upx paramupx, @Nullable upy paramupy, @NonNull ErrorMessage paramErrorMessage)
+  public upk(@NonNull String paramString, @NonNull upn paramupn, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      veg.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Upn = paramupn;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  private void a(upp paramupp, boolean paramBoolean, ErrorMessage paramErrorMessage)
+  {
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPuller.2(this, paramupp, paramBoolean, paramErrorMessage));
+  }
+  
+  public void a()
+  {
+    Bosses.get().postLightWeightJob(new DetailFeedAllInfoPuller.1(this), 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
-    if ((paramupy == null) || (paramErrorMessage.isFail()))
-    {
-      veg.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      upj.a(this.jdField_a_of_type_Upj, paramErrorMessage);
-      return;
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new upl(this, this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new upa());
     }
-    if (this.jdField_a_of_type_Upj.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      ((tco)tdc.a(15)).a(paramupy.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramupx = new upf(bool, paramupy.a, paramupy.b, paramupy.c);
-      try
-      {
-        upj.a(this.jdField_a_of_type_Upj, paramupx);
-        return;
-      }
-      catch (NullPointerException paramupx)
-      {
-        veg.c("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "notifyResult error :%s", paramupx);
-        upj.b(this.jdField_a_of_type_Upj, new ErrorMessage());
-        return;
-      }
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new upo(this));
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
   }
 }

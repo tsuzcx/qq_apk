@@ -1,32 +1,21 @@
-import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class xlp
-  implements bfoq
+  implements QQPermissionCallback
 {
-  xlp(xlo paramxlo) {}
+  xlp(xll paramxll) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      return;
-    case 0: 
-      xlo.a(this.a);
-      return;
-    case 1: 
-      xlo.b(this.a);
-      return;
-    case 2: 
-      xlo.c(this.a);
-      return;
-    }
-    xlo.d(this.a);
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bbdj.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    xll.g(this.a);
   }
 }
 

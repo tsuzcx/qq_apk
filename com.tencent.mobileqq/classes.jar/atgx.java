@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
 public abstract interface atgx
 {
-  public abstract void a();
+  public abstract void a(int paramInt, atgz paramatgz);
   
-  public abstract void a(Comments paramComments);
+  public abstract void a(Comments.Comment paramComment, atgy paramatgy);
+  
+  public abstract void a(Comments.Comment paramComment, atha paramatha);
 }
 
 

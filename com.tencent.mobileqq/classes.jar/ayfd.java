@@ -1,38 +1,87 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
-import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class ayfd
-  implements URLDrawableHandler
+  implements ajte
 {
-  public ayfd(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
+  public void a(int paramInt) {}
   
-  public void doCancel() {}
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
-  public boolean isCancelled()
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return false;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            return;
+                          } while (paramObject == null);
+                          b((TeamWorkFileImportInfo)paramObject);
+                          return;
+                        } while (paramObject == null);
+                        paramObject = (Object[])paramObject;
+                      } while (paramObject.length != 2);
+                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
+                      return;
+                    } while (paramObject == null);
+                    a((TeamWorkFileImportInfo)paramObject);
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 1);
+                a(((Integer)paramObject[0]).intValue());
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 1);
+            if (((Integer)paramObject[0]).intValue() > 0) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              a(paramBoolean);
+              return;
+            }
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 3);
+        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    c((TeamWorkFileImportInfo)paramObject[0]);
   }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
-    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
-  }
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

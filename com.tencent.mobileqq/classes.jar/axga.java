@@ -1,13 +1,8 @@
-import android.util.Size;
-import java.util.Comparator;
-
-public class axga
-  implements Comparator<Size>
+public abstract interface axga
 {
-  public int a(Size paramSize1, Size paramSize2)
-  {
-    return Long.signum(paramSize1.getWidth() * paramSize1.getHeight() - paramSize2.getWidth() * paramSize2.getHeight());
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

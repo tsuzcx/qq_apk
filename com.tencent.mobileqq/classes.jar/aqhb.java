@@ -1,32 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import android.app.Activity;
 
-public class aqhb
-  implements View.OnClickListener
+class aqhb
+  implements aaqa
 {
-  public aqhb(AppletsSettingFragment paramAppletsSettingFragment) {}
+  aqhb(aqha paramaqha) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (AppletsSettingFragment.a(this.a))
-    {
-      this.a.a();
-      return;
-    }
-    paramView = this.a;
-    if (!AppletsSettingFragment.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AppletsSettingFragment.a(paramView, bool);
-      AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
-      return;
-    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqhb
  * JD-Core Version:    0.7.0.1
  */

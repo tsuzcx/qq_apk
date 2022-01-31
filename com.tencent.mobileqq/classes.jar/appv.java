@@ -1,18 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.4.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.11;
 
 public class appv
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements DialogInterface.OnClickListener
 {
-  appv(appp paramappp) {}
+  public appv(VideoFilePresenter.11 param11) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.4.1(this, paramInt));
-    return false;
+    this.a.this$0.aC_();
   }
 }
 

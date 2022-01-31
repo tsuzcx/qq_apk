@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class OfflineWebRes
-  extends aukm
+  extends auko
 {
   public String bid;
   public String fileName;
   public String hashName;
   public int hitCount = 1;
-  @auma
+  @aumc
   public String md5;
 }
 

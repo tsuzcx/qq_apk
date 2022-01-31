@@ -1,56 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import java.util.Comparator;
 
 class awmd
-  extends ajxv
+  implements Comparator<FTSEntity>
 {
-  awmd(awlz paramawlz) {}
+  awmd(awmb paramawmb) {}
   
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
+  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
   {
-    super.a(paramBoolean, paramArrayList, paramArrayList1);
-    paramArrayList1 = (String)paramArrayList1.get(0);
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
+    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
+    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
+    long l1;
+    if (paramFTSEntity1 != null)
     {
-      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
-      while (paramArrayList.hasNext())
-      {
-        Object localObject = (String)paramArrayList.next();
-        if (((String)localObject).charAt(0) < '')
-        {
-          localObject = bbma.b((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
-          {
-            int j = localObject.length;
-            int i = 0;
-            while (i < j)
-            {
-              localStringBuilder.append(localObject[i]).append(" ");
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject).append(" ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
+      l1 = paramFTSEntity1.time;
+      if (paramFTSEntity2 == null) {
+        break label54;
       }
     }
-    awlz.a(this.a).put(paramArrayList1, localStringBuilder);
-    paramArrayList = awlz.b(this.a).get(paramArrayList1);
-    if (paramArrayList != null) {
-      try
-      {
-        paramArrayList.notify();
-        return;
-      }
-      finally {}
+    label54:
+    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
+    {
+      return Long.signum(l2 - l1);
+      l1 = 0L;
+      break;
     }
   }
 }

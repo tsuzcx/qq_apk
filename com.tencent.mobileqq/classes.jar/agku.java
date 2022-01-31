@@ -1,48 +1,30 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-class agku
-  implements DialogInterface.OnClickListener
+public class agku
+  extends aumg
 {
-  agku(agks paramagks) {}
+  public agku(SettingActivity2.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_Int == 2) {
-      this.a.a.a("0X8005B8A", 1);
-    }
-    for (;;)
+    if (this.a.this$0.c != null)
     {
-      paramDialogInterface.dismiss();
-      if (bbev.d(this.a.a)) {
-        break;
+      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+      this.a.this$0.c = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      if (this.a.this$0.c != null)
+      {
+        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+        this.a.this$0.c = null;
       }
-      this.a.a.b(2131694672);
-      return;
-      if (this.a.a.jdField_a_of_type_Int == 6) {
-        this.a.a.a("0X8005B8A", 2);
-      } else if (this.a.a.jdField_a_of_type_Int == 7) {
-        this.a.a.a("0X8005B8A", 3);
-      }
+      this.a.this$0.a();
+      this.a.this$0.setResult(-1);
     }
-    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
-    {
-      this.a.a.setResult(0);
-      this.a.a.finish();
-      return;
-    }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new agkv(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131719281, 300L, true);
   }
 }
 

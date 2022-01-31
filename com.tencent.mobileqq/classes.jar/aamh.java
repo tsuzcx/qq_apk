@@ -1,17 +1,31 @@
+import android.app.Activity;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aamh
-  implements bfxe
+  implements bjpj
 {
   public aamh(BaseChatPie paramBaseChatPie) {}
   
-  public void a(boolean paramBoolean)
+  public Activity a()
   {
-    if (paramBoolean)
-    {
-      BaseChatPie.a(this.a);
-      BaseChatPie.b(this.a);
-    }
+    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  }
+  
+  public SessionInfo a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public boolean a()
+  {
+    return this.a.c();
   }
 }
 

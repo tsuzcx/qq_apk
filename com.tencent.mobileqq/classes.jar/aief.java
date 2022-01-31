@@ -1,93 +1,57 @@
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Handler;
-import android.view.View;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.16.1;
 
 public class aief
-  extends akim
+  extends Handler
 {
-  public aief(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  protected void a(int paramInt1, int paramInt2)
+  public aief(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
   {
-    if (paramInt1 == 8)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add troop member fail");
-      }
-      SelectMemberActivity.a(this.a, paramInt2);
-    }
+    super(paramLooper);
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt1 == 8)
+    switch (paramMessage.what)
     {
-      if (paramInt2 == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add troop member success");
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          paramInt1 = this.a.b();
-          this.a.a(paramInt1 + 1);
-          axqw.b(this.a.app, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
-        }
-        ArrayList localArrayList = this.a.a();
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", Long.parseLong(paramString));
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set_for_out_Member ", localArrayList);
-        this.a.setResult(-1);
-      }
     }
-    else {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramInt2);
-    }
-    SelectMemberActivity.a(this.a, paramInt2);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
-  {
-    String str = String.valueOf(paramLong1);
-    if ((paramBoolean) && (str.equals(this.a.jdField_c_of_type_JavaLangString)))
+    do
     {
-      this.a.jdField_a_of_type_Long = paramLong2;
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + str + " get inviteNoAuthLimitNum = " + paramLong2);
-      }
-      if ((this.a.i >= this.a.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Long > 0L))
+      do
       {
-        this.a.d.setVisibility(0);
-        axqw.b(this.a.app, "dc00899", "invite_friend", "", "friend_list", "exp_needagree", 0, 0, str, mud.a(this.a.app, this.a.app.getCurrentAccountUin(), str) + "", "", "");
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, List<Long> paramList)
-  {
-    paramLong = String.valueOf(paramLong);
-    if ((paramBoolean) && (paramLong.equals(this.a.jdField_c_of_type_JavaLangString)))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+        return;
+      } while ((this.a.b == null) || (!this.a.b.isShowing()));
+      this.a.b.dismiss();
+      paramMessage = new Intent();
+      paramMessage.putExtra("select_member_add_request_ok", true);
+      this.a.setResult(-1, paramMessage);
+      if (!TextUtils.isEmpty(this.a.g))
       {
-        Long localLong = (Long)localIterator.next();
-        this.a.jdField_a_of_type_JavaUtilList.add(String.valueOf(localLong));
+        paramMessage = this.a.g;
+        bcql.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
+        postDelayed(new SelectMemberActivity.16.1(this), 1500L);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + paramLong + " get invitedUinList = " + paramList.toString());
+      if (this.a.c) {}
+      for (int i = 2131693679;; i = 2131693678)
+      {
+        paramMessage = this.a.getResources().getString(i);
+        break;
       }
+    } while ((this.a.b == null) || (!this.a.b.isShowing()));
+    this.a.b.dismiss();
+    String str = (String)paramMessage.obj;
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131693677);
     }
+    bcql.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
   }
 }
 

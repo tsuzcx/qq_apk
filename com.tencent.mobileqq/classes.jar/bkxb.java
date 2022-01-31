@@ -1,41 +1,21 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+
 public class bkxb
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public long a;
-  public axkf a;
-  public String a;
-  public boolean a;
-  public long b;
-  public axkf b;
-  public String b;
-  public boolean b;
-  public long c;
+  public bkxb(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout, boolean paramBoolean, float paramFloat) {}
   
-  public bkxb()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(bkxb parambkxb)
-  {
-    if (parambkxb == null) {
-      throw new NullPointerException();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.e();
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = parambkxb.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parambkxb.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Axkf = parambkxb.jdField_a_of_type_Axkf;
-    this.jdField_a_of_type_Boolean = parambkxb.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambkxb.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambkxb.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = parambkxb.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = parambkxb.jdField_b_of_type_Long;
-    this.c = parambkxb.c;
-  }
-  
-  public String toString()
-  {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.a(this.jdField_a_of_type_Float);
   }
 }
 

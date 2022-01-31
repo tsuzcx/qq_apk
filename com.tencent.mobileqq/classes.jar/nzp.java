@@ -1,24 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
 
 public class nzp
-  implements ajtg
 {
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (String)paramObject);
+    if (paramVideoInfo == null) {
       return;
     }
-    a(paramBoolean, (List)paramObject);
+    AdvertisementInfo localAdvertisementInfo = nmc.a(paramVideoInfo.a);
+    if (paramVideoInfo.a(paramActivity))
+    {
+      nmc.a(new nyd().a(paramActivity).a(nmc.a).b(nmc.P).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+      return;
+    }
+    nmc.a(new nyd().a(paramActivity).a(nmc.a).b(nmc.N).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+  }
+  
+  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, ADVideoAppDownloadManager paramADVideoAppDownloadManager)
+  {
+    if (paramVideoInfo.c)
+    {
+      if (!paramADVideoAppDownloadManager.a(paramVideoInfo)) {
+        break label33;
+      }
+      shq.b(paramActivity, paramAdvertisementInfo, null, 3, true, null);
+    }
+    for (;;)
+    {
+      a(paramActivity, paramInt, paramVideoInfo);
+      return;
+      label33:
+      if (paramAdvertisementInfo != null) {
+        paramAdvertisementInfo.setClickPos(paramInt);
+      }
+      paramADVideoAppDownloadManager = new nxz();
+      paramADVideoAppDownloadManager.c = true;
+      shq.b(paramActivity, paramAdvertisementInfo, null, 3, true, paramADVideoAppDownloadManager);
+    }
   }
 }
 

@@ -1,13 +1,22 @@
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class bixt
-  implements bcph
+  implements bizb
 {
-  public bixt(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  public bixt(AETemplateInfoFragment paramAETemplateInfoFragment, boolean[] paramArrayOfBoolean, String paramString) {}
   
-  public void a(bcpf parambcpf) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+  }
   
-  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    BitmapUtils.saveBitmap(paramBitmap, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

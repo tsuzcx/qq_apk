@@ -1,71 +1,23 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class pbt
+class pbt
+  extends Handler
 {
-  private static pbt jdField_a_of_type_Pbt;
-  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public static pbt a()
+  pbt(pbr parampbr, Looper paramLooper)
   {
-    if (jdField_a_of_type_Pbt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pbt == null) {
-        jdField_a_of_type_Pbt = new pbt();
-      }
-      return jdField_a_of_type_Pbt;
-    }
-    finally {}
+    super(paramLooper);
   }
   
-  public void a(List<Integer> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        int i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-      }
     }
-  }
-  
-  public void b(List<Integer> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-      int i = 0;
-      while (i < j)
-      {
-        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-        if ((!onk.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
-          localArrayList.add(Integer.valueOf(k));
-        }
-        i += 1;
-      }
-      paramList = localArrayList.iterator();
-      while (paramList.hasNext())
-      {
-        i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-      }
-    }
+    this.a.f();
   }
 }
 

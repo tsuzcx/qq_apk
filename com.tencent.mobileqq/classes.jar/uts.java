@@ -1,44 +1,46 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class uts
-  extends QQUIEventReceiver<utn, svy>
+class uts
+  extends ssv
 {
-  public uts(utn paramutn)
-  {
-    super(paramutn);
-  }
+  uts(utr paramutr) {}
   
-  public void a(@NonNull utn paramutn, @NonNull svy paramsvy)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if (paramsvy.a.isSuccess())
-    {
-      if (!paramsvy.a()) {
-        break label25;
-      }
-      veg.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
+      return;
     }
-    label25:
-    do
+    if (paramBoolean1)
     {
-      do
+      paramString = this.a.a;
+      if (paramBoolean2)
       {
-        return;
-        if (paramsvy.c())
-        {
-          veg.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramsvy.toString());
-          return;
+        paramString.isSubscribe = paramInt;
+        paramString = (sst)tsr.a().getManager(181);
+        if (!paramBoolean2) {
+          break label128;
         }
-      } while (!paramsvy.b());
-      veg.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramsvy.toString());
-    } while (paramsvy.b == null);
-    utn.a(paramutn, true);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svy.class;
+        if (!paramString.h()) {
+          paramString.b();
+        }
+        bcql.a(tsr.a(), 2, ajya.a(2131710950), 0).a();
+      }
+      for (;;)
+      {
+        utr.a(this.a).e();
+        utr.a(this.a).c();
+        return;
+        paramInt = 0;
+        break;
+        label128:
+        bcql.a(tsr.a(), 2, ajya.a(2131710946), 0).a();
+      }
+    }
+    bcql.a(tsr.a(), 1, ajya.a(2131710955), 0).a();
   }
 }
 

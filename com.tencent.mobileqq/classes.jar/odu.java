@@ -1,22 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class odu
-  extends ajxl
+  implements View.OnClickListener
 {
   public odu(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
+    {
+      this.a.d(ReadInJoyDeliverBiuActivity.l(this.a));
+      return;
     }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
-    }
+    nol.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    this.a.finish();
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

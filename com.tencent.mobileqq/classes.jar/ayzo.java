@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
 public class ayzo
-  extends ayzp
+  extends ayzr
 {
   public int a;
-  public String a;
-  public ArrayList<ayuo> a = new ArrayList();
-  public String b;
-  public ArrayList<ayuo> b = new ArrayList();
+  public ArrayList<ayuq> a = new ArrayList();
+  public byte[] a;
+  public int b;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
 }
 
 

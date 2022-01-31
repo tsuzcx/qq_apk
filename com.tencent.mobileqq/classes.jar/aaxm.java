@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aaxm
-  implements View.OnLayoutChangeListener
+  extends akfk
 {
-  public aaxm(Conversation paramConversation) {}
+  private WeakReference<Conversation> a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public aaxm(Conversation paramConversation)
   {
-    Conversation.a(this.a).removeOnLayoutChangeListener(this);
-    Conversation.f(this.a);
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
+    }
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
+    {
+      localConversation.f(false);
+      Conversation.g(localConversation);
+    }
   }
 }
 

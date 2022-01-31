@@ -1,23 +1,14 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 
 class ayji
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  ayji(ayjf paramayjf) {}
+  ayji(ayjh paramayjh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      bfmr.b(paramView);
-      this.a.d();
-    }
+    this.a.dismiss();
   }
 }
 

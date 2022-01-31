@@ -1,28 +1,25 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
+import android.graphics.drawable.Animatable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class wpm
-  extends RecyclerView.ItemDecoration
+  extends RecyclerView.ViewHolder
 {
-  public wpm(ComponentPageView paramComponentPageView, wpf paramwpf) {}
+  private Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public wpm(View paramView)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildLayoutPosition(paramView);
-    if ((this.a.a != null) && (this.a.a.b(i) != null)) {
-      this.a.a.b(i).a(paramRect, paramView, paramRecyclerView, paramState);
-    }
-  }
-  
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    super.onDraw(paramCanvas, paramRecyclerView, paramState);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371329));
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368868));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378380));
   }
 }
 

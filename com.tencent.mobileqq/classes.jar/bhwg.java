@@ -1,120 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import cooperation.readinjoy.content.ReadInJoyDataProvider;
 
 public class bhwg
-  extends RemoteCommand
+  extends SQLiteOpenHelper
 {
-  private QQAppInterface a;
+  public String a;
   
-  public bhwg(QQAppInterface paramQQAppInterface)
+  public bhwg(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
   {
-    super("troop.manage.get_app_interface_data");
-    this.a = paramQQAppInterface;
+    super(paramContext, "readinjoy_main_" + paramString, null, 84);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected Bundle a()
+  private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_rsp_upgrade_troop_url", bbpp.a("vipUpGroupLimit"));
-    return localBundle;
-  }
-  
-  protected Bundle a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
+    if ((paramString.equals("subscribe_msg_records")) || (paramString.equals("notify_msg_records"))) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "msgID" + " INTEGER UNIQUE NOT NULL, " + "subscribeID" + " TEXT NOT NULL, " + "msgURL" + " TEXT NOT NULL, " + "msgContent" + " TEXT NOT NULL, " + "msgTime" + " INTEGER NOT NULL, " + "bindUin" + " INTEGER NOT NULL);");
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_rsp_troop_owmer_field", ((bakk)this.a.getManager(48)).a(paramBundle.getString("req_troop_uin")));
-    return localBundle;
+    while (!paramString.equals("feeds_msg_records")) {
+      return;
+    }
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "pushTime" + " INTEGER NOT NULL, " + "notifyType" + " INTEGER NOT NULL, " + "feedsOwner" + " INTEGER NOT NULL, " + "feedsID" + " INTEGER NOT NULL, " + "feedsSubject" + " TEXT DEFAULT '', " + "deleteUin" + " INTEGER NOT NULL, " + "publishFail" + " INTEGER NOT NULL, " + "likeUin" + " INTEGER NOT NULL, " + "commentUin" + " INTEGER NOT NULL, " + "commentID" + " VARCHAR(32) DEFAULT '', " + "replyUin" + " INTEGER NOT NULL, " + "replyID" + " VARCHAR(32) DEFAULT '', " + "commentInfo" + " TEXT DEFAULT '', " + "isDelete" + " INTEGER DEFAULT 0, " + "processSeq" + " INTEGER DEFAULT 0, " + "receiveTime" + " INTEGER NOT NULL);");
   }
   
-  protected Bundle a(Bundle paramBundle, int paramInt)
+  private void b(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    String str = null;
-    if (paramBundle == null) {
-      return null;
+    if ("common_records".equalsIgnoreCase(paramString)) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "common_version" + " INTEGER NOT NULL, " + "common_key" + " TEXT DEFAULT '', " + "common_content" + " TEXT DEFAULT '');");
     }
-    Bundle localBundle = new Bundle();
-    if (paramInt == 5) {
-      str = bbcl.h(this.a, paramBundle.getString("req_troop_uin"), paramBundle.getString("memUin"));
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    a(paramSQLiteDatabase, "subscribe_msg_records");
+    a(paramSQLiteDatabase, "notify_msg_records");
+    a(paramSQLiteDatabase, "feeds_msg_records");
+    b(paramSQLiteDatabase, "common_records");
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < 80)
+    {
+      paramSQLiteDatabase.execSQL(aulp.a("subscribe_msg_records"));
+      paramSQLiteDatabase.execSQL(aulp.a("notify_msg_records"));
+      a(paramSQLiteDatabase, "subscribe_msg_records");
+      a(paramSQLiteDatabase, "notify_msg_records");
+    }
+    if (paramInt1 < 81) {
+      a(paramSQLiteDatabase, "feeds_msg_records");
     }
     for (;;)
     {
-      localBundle.putString("param_rsp_nick", str);
-      return localBundle;
-      if (paramInt == 6) {
-        str = bbcl.h(this.a, paramBundle.getString("memUin"));
+      if (paramInt1 < 84) {
+        b(paramSQLiteDatabase, "common_records");
+      }
+      return;
+      if (paramInt1 < 82) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "isDelete", "INTEGER DEFAULT 0" }));
+      }
+      if (paramInt1 < 83) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "processSeq", "INTEGER DEFAULT 0" }));
       }
     }
-  }
-  
-  protected Bundle b(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
-    }
-    paramBundle = new Bundle();
-    paramBundle.putInt("rep_unique_title_flag", ((TroopManager)this.a.getManager(52)).a());
-    return paramBundle;
-  }
-  
-  protected Bundle c(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
-    }
-    int i = paramBundle.getInt("set_unique_title_flag");
-    paramBundle = new Bundle();
-    ((TroopManager)this.a.getManager(52)).a(i);
-    return paramBundle;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if ((paramBundle == null) || (this.a == null)) {
-      return null;
-    }
-    try
-    {
-      paramOnInvokeFinishLinstener = new Bundle();
-      i = paramBundle.getInt("req_sub_cmd", 0);
-      switch (i)
-      {
-      case 1: 
-        paramBundle = b(paramBundle);
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      int i;
-      if (!QLog.isColorLevel()) {
-        break label198;
-      }
-      QLog.d("TroopManageCmd", 2, "invoke Exception hanppend! ExceptionClass = + " + paramBundle.getClass().getName() + "msg = " + paramBundle.getMessage());
-      axqw.b(this.a, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "plugin_cmd_exp", 0, 0, paramBundle.getClass().getName(), null, null, null);
-      return null;
-    }
-    return a(paramBundle, i);
-    return c(paramBundle);
-    return a(paramBundle);
-    paramBundle = (TroopInfo)paramBundle.getSerializable("troopInfo");
-    ((TroopManager)this.a.getManager(52)).b(paramBundle);
-    return paramOnInvokeFinishLinstener;
-    return a();
-    label198:
-    paramBundle = paramOnInvokeFinishLinstener;
-    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhwg
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.tribe.fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azbq;
+import azbs;
 
 class TribeVideoListPlayerFragment$27
   implements Runnable
@@ -12,8 +12,8 @@ class TribeVideoListPlayerFragment$27
   
   public void run()
   {
-    azbq localazbq = (azbq)((View)this.this$0.a).getTag();
-    if (localazbq == null) {
+    azbs localazbs = (azbs)((View)this.this$0.a).getTag();
+    if (localazbs == null) {
       return;
     }
     switch (TribeVideoListPlayerFragment.a(this.this$0).a)
@@ -21,19 +21,19 @@ class TribeVideoListPlayerFragment$27
     default: 
       return;
     case 0: 
-      localazbq.j.setVisibility(0);
-      localazbq.i.setVisibility(8);
-      localazbq.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+      localazbs.j.setVisibility(0);
+      localazbs.i.setVisibility(8);
+      localazbs.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     case 1: 
-      localazbq.f.setVisibility(0);
-      localazbq.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
-      localazbq.a.setVisibility(8);
+      localazbs.f.setVisibility(0);
+      localazbs.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
+      localazbs.a.setVisibility(8);
       return;
     }
-    localazbq.h.setVisibility(0);
-    localazbq.g.setVisibility(8);
-    localazbq.d.setVisibility(8);
+    localazbs.h.setVisibility(0);
+    localazbs.g.setVisibility(8);
+    localazbs.d.setVisibility(8);
   }
 }
 

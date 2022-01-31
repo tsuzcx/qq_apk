@@ -1,19 +1,10 @@
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
 
 public class aeiv
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public aeiv(aeiu paramaeiu) {}
+  public aeiv(aeis paramaeis) {}
 }
 
 

@@ -1,6 +1,17 @@
-public abstract interface aoig
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+
+public class aoig
+  implements aolc
 {
-  public abstract void n();
+  public aoig(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.a.a.setText(paramString);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a(paramString);
+  }
 }
 
 

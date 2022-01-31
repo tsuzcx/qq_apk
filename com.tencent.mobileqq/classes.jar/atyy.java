@@ -1,26 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract class atyy
+public class atyy
+  extends atza
 {
-  public long a;
-  public String a;
-  public boolean b;
-  
-  public String a()
+  public boolean a()
   {
-    return "";
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return this.a;
-  }
-  
-  public abstract boolean a();
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
+    return true;
   }
 }
 

@@ -1,120 +1,79 @@
 import Wallet.RedPackGrapInfo;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.ViewGroup;
-import android.widget.PopupWindow;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class agyw
-  extends RecyclerView.Adapter<agyx>
+  extends FrameLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
+  adxz jdField_a_of_type_Adxz;
+  Context jdField_a_of_type_AndroidContentContext;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  public agyw(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
+  public agyw(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, adxz paramadxz)
   {
+    super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Adxz = paramadxz;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = -2;
+    paramTroopUnAccalimedRedPacketList.height = -2;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130846577);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = vzl.a(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.height = vzl.a(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 1;
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = vzl.a(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.height = vzl.a(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 17;
   }
   
-  public agyx a(ViewGroup paramViewGroup, int paramInt)
+  public void a(RedPackGrapInfo paramRedPackGrapInfo)
   {
-    return new agyx(this, new agyy(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new adyb(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
-  }
-  
-  public void a(agyx paramagyx, int paramInt)
-  {
-    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramagyx.getPosition());
-    if (localRedPackGrapInfo == null) {}
-    do
+    Object localObject;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      return;
-      paramagyx = paramagyx.a;
-    } while (paramagyx == null);
-    paramagyx.a(localRedPackGrapInfo);
-  }
-  
-  void a(String paramString)
-  {
-    for (;;)
+      localObject = bayh.a(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    }
+    if (this.jdField_a_of_type_Adxz != null)
     {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label233;
-        }
-        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label234;
-        }
-        return;
+      this.jdField_a_of_type_Adxz.a(paramRedPackGrapInfo);
+      localObject = this.jdField_a_of_type_Adxz.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (localObject == null) {
+        break label120;
       }
-      catch (Throwable paramString)
-      {
-        RedPackGrapInfo localRedPackGrapInfo;
-        int j;
-        if (!QLog.isColorLevel()) {
-          break label233;
-        }
-        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
-        return;
-        i += 1;
-        continue;
-        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
-        return;
-        i = 0;
-        continue;
-      }
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
-        {
-          j = i;
-          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-            j = i - 1;
-          }
-          this.jdField_a_of_type_JavaUtilList.remove(j);
-          notifyItemRemoved(j);
-          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
-          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
-            break label233;
-          }
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-            continue;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
-            break label233;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
-        }
-      }
-      label233:
-      return;
-      label234:
-      int i = 0;
+      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.topMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 11.5F);
+      localLayoutParams.gravity = 16;
+      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Adxz.a((FrameLayout)localObject, paramRedPackGrapInfo, new agyx(this));
     }
-  }
-  
-  void a(List<RedPackGrapInfo> paramList)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    label120:
+    while (!QLog.isColorLevel())
+    {
+      LinearLayout.LayoutParams localLayoutParams;
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
   }
 }
 

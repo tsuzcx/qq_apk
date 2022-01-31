@@ -1,14 +1,18 @@
-public abstract interface atkh
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+
+public class atkh
+  implements View.OnTouchListener
 {
-  public abstract void f();
+  public atkh(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+  }
 }
 
 

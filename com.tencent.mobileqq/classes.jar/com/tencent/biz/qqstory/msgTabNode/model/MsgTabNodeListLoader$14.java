@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import tfn;
-import tkn;
+import tfk;
+import tkk;
 
 public class MsgTabNodeListLoader$14
   implements Runnable
 {
-  public MsgTabNodeListLoader$14(tfn paramtfn, tkn paramtkn) {}
+  public MsgTabNodeListLoader$14(tfk paramtfk, tkk paramtkk) {}
   
   public void run()
   {

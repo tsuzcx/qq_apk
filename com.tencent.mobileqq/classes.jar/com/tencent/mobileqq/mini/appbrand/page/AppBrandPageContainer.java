@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import bcpq;
+import bcqf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -93,11 +93,11 @@ public final class AppBrandPageContainer
       QLog.e("AppBrandPageContainer", 1, "executeDownSubPack return, activity is null or finishing.");
       return;
     }
-    bcpq localbcpq = new bcpq(this.appBrandRuntime.activity);
-    localbcpq.a(ajyc.a(2131700588));
-    localbcpq.setCancelable(false);
-    localbcpq.show();
-    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbcpq));
+    bcqf localbcqf = new bcqf(this.appBrandRuntime.activity);
+    localbcqf.a(ajya.a(2131700599));
+    localbcqf.setCancelable(false);
+    localbcqf.show();
+    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbcqf));
   }
   
   private AbsAppBrandPage getBrandPage()
@@ -375,7 +375,7 @@ public final class AppBrandPageContainer
     QLog.i("miniapp-start", 1, "navigateTo url=" + paramString + "; aliveWebViewCount : " + BaseAppBrandWebview.aliveWebViewCount);
     if (BaseAppBrandWebview.aliveWebViewCount > 11)
     {
-      Toast.makeText(getContext(), ajyc.a(2131700586), 0).show();
+      Toast.makeText(getContext(), ajya.a(2131700597), 0).show();
       QLog.e("AppBrandPageContainer", 4, "打开WebView数量超过上限");
       return;
     }

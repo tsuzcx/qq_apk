@@ -1,227 +1,384 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.1;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import com.tribe.async.dispatch.IEventReceiver;
+import dov.com.qq.im.capture.paster.CaptureComboInformationPaster.1;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.HashMap;
 
-@TargetApi(16)
 public class bjfa
-  extends bizw
+  extends bjbw
+  implements bkgc, IEventReceiver
 {
-  private static File jdField_a_of_type_JavaIoFile = new File(bjjc.a(), "information_paster");
-  private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public bjfe a;
-  private WeakReference<RelativeLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentLinkedQueue<bkfm> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  public static HashMap<String, Drawable> a;
+  private float jdField_a_of_type_Float;
+  private bjfc jdField_a_of_type_Bjfc;
+  private bjfr jdField_a_of_type_Bjfr;
+  bkga jdField_a_of_type_Bkga;
+  private bkgd jdField_a_of_type_Bkgd;
+  private final String jdField_a_of_type_JavaLangString;
+  private float jdField_b_of_type_Float;
+  private String jdField_b_of_type_JavaLangString;
+  private float jdField_c_of_type_Float;
+  private String jdField_c_of_type_JavaLangString;
+  int jdField_d_of_type_Int = 2;
+  private String jdField_d_of_type_JavaLangString;
   
-  public bjfa()
+  static
   {
-    this.jdField_a_of_type_Bjfe = null;
-    this.jdField_a_of_type_Bjfe = new bjfe(this);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static String a()
+  public bjfa(bkga parambkga, String paramString1, String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static String a(bkfm parambkfm)
-  {
-    parambkfm = parambkfm.g + "_" + parambkfm.f + ".zip";
-    return new File(jdField_a_of_type_JavaIoFile, parambkfm).getPath();
-  }
-  
-  public static String b(bkfm parambkfm)
-  {
-    return jdField_a_of_type_JavaLangString + parambkfm.g + "_" + parambkfm.f + File.separator + parambkfm.g;
-  }
-  
-  private boolean d(bkfm parambkfm)
-  {
-    if (jdField_a_of_type_JavaIoFile != null)
+    super(null);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Bkga = parambkga;
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_b_of_type_Float = paramFloat1;
+    this.jdField_c_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Bjfr = ((bjfr)bjav.a().c(12));
+    this.jdField_a_of_type_Bkgd = this.jdField_a_of_type_Bkga.a(paramString3);
+    this.jdField_c_of_type_JavaLangString = paramString1;
+    if (this.jdField_a_of_type_Bkgd != null)
     {
-      int i;
-      boolean bool1;
-      label44:
-      String str;
-      if (!jdField_a_of_type_JavaIoFile.exists())
-      {
-        jdField_a_of_type_JavaIoFile.mkdirs();
-        String[] arrayOfString = jdField_a_of_type_JavaIoFile.list();
-        if (arrayOfString == null) {
-          break label229;
-        }
-        int j = arrayOfString.length;
-        i = 0;
-        bool1 = false;
-        bool2 = bool1;
-        if (i >= j) {
-          break label232;
-        }
-        str = arrayOfString[i];
-        bool2 = bool1;
-        if (str.startsWith(parambkfm.g))
-        {
-          if (!str.endsWith(".zip")) {
-            break label151;
-          }
-          bbdj.a(jdField_a_of_type_JavaIoFile + str, false);
-          bool2 = bool1;
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        bool1 = bool2;
-        break label44;
-        if (jdField_a_of_type_JavaIoFile.isDirectory()) {
-          break;
-        }
-        jdField_a_of_type_JavaIoFile.delete();
-        jdField_a_of_type_JavaIoFile.mkdirs();
-        break;
-        label151:
-        if (str.endsWith(parambkfm.f))
-        {
-          bool2 = true;
-        }
-        else
-        {
-          bool2 = bool1;
-          if (!str.endsWith("png"))
-          {
-            bool2 = bool1;
-            if (!str.endsWith("tmp"))
-            {
-              bbdj.a(jdField_a_of_type_JavaLangString + str, false);
-              bool2 = bool1;
-            }
-          }
-        }
-      }
-      label229:
-      boolean bool2 = false;
-      label232:
-      return bool2;
+      this.jdField_a_of_type_Bkgd.a(this);
+      this.jdField_d_of_type_JavaLangString = ("CaptureComboInformationPaster_" + this.jdField_a_of_type_Bkgd.jdField_b_of_type_JavaLangString + "_" + this.jdField_a_of_type_Bkgd.jdField_a_of_type_JavaLangString);
     }
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureComboInformationPaster", 2, "package id=" + paramString2 + " posterId=" + paramString3);
+    }
   }
   
-  public void a()
+  private void a(Drawable paramDrawable, String paramString, int paramInt, bjcu parambjcu)
   {
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster w=" + paramDrawable.getIntrinsicWidth() + " px=" + this.jdField_b_of_type_Float + " py=" + this.jdField_c_of_type_Float + " scale=" + this.jdField_a_of_type_Float);
+    }
+    paramDrawable = new bkbv(this.jdField_a_of_type_Bkga.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, paramDrawable, paramInt);
+    paramInt = blcq.jdField_a_of_type_Int;
+    int i = blcq.b;
+    float f1 = paramInt;
+    float f2 = this.jdField_b_of_type_Float;
+    float f3 = i;
+    parambjcu.b(paramDrawable, f2 * f1, this.jdField_c_of_type_Float * f3, this.jdField_a_of_type_Float, paramString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
   }
   
-  public void a(bkfm parambkfm, bjfd parambjfd)
+  private void a(bkgd parambkgd, bjcu parambjcu)
   {
-    if (!bbev.g(this.jdField_a_of_type_AndroidContentContext))
+    int i = 7;
+    Object localObject3 = null;
+    Object localObject1 = bjfr.b(parambkgd);
+    int j;
+    if (parambkgd.jdField_a_of_type_Int == 8)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
+      j = Calendar.getInstance().get(7) - 1;
+      if (j != 0) {
+        break label361;
+      }
+    }
+    label279:
+    label311:
+    label323:
+    label361:
+    for (;;)
+    {
+      for (parambkgd = (String)localObject1 + File.separator + i + ".apng";; parambkgd = (String)localObject1 + File.separator + "city" + ".apng")
+      {
+        localObject1 = new File(parambkgd);
+        try
+        {
+          if (ApngDrawable.isApngFile((File)localObject1)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("CaptureComboInformationPaster", 2, "applyNormalPaster isApngFile not valid path=" + parambkgd);
+          }
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+          URLDrawable localURLDrawable = bbqz.a(BaseApplicationImpl.sApplication.getRuntime(), parambkgd, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+          Object localObject2 = localObject3;
+          if (localURLDrawable == null) {
+            break label279;
+          }
+          i = localURLDrawable.getStatus();
+          if (i == 1) {
+            break label323;
+          }
+          if (!QLog.isColorLevel()) {
+            break label238;
+          }
+          QLog.e("CaptureComboInformationPaster", 2, "urlDrawable is not  SUCCESSED :" + i);
+          localURLDrawable.setURLDrawableListener(new bjfb(this, parambkgd, localURLDrawable, parambjcu));
+          jdField_a_of_type_JavaUtilHashMap.put(parambkgd, localURLDrawable);
+          if (i != 2) {
+            break label311;
+          }
+          localURLDrawable.restartDownload();
+          localObject2 = localObject3;
+          while (localObject2 != null)
+          {
+            localObject2.setBounds(0, 0, localObject2.getIntrinsicWidth(), localObject2.getIntrinsicHeight());
+            a(localObject2, parambkgd, 1, parambjcu);
+            return;
+            localURLDrawable.startDownload();
+            localObject2 = localObject3;
+            continue;
+            localObject2 = localURLDrawable;
+          }
+          ved.e("CaptureComboInformationPaster", "can not create drawable from name:" + this.jdField_a_of_type_Bkga.jdField_b_of_type_JavaLangString);
+          return;
+        }
+      }
+      label238:
+      i = j;
+    }
+  }
+  
+  private void a(DoodleLayout paramDoodleLayout, bjcu parambjcu)
+  {
+    if (this.jdField_a_of_type_Bkgd.jdField_a_of_type_Int == 8)
+    {
+      if (paramDoodleLayout != null) {
+        ThreadManager.excute(new CaptureComboInformationPaster.1(this, parambjcu), 16, null, true);
       }
       return;
     }
-    ThreadManager.postImmediately(new QIMInformationPasterManager.1(this, parambkfm, parambjfd), null, true);
+    int i = blcq.jdField_a_of_type_Int;
+    int j = blcq.b;
+    paramDoodleLayout = this.jdField_a_of_type_Bkgd;
+    String str = this.jdField_d_of_type_JavaLangString;
+    float f1 = i;
+    float f2 = this.jdField_b_of_type_Float;
+    float f3 = j;
+    parambjcu.a(paramDoodleLayout, str, f2 * f1, this.jdField_c_of_type_Float * f3, this.jdField_a_of_type_Float);
   }
   
-  public void a(DoodleEmojiItem paramDoodleEmojiItem)
+  /* Error */
+  public float a()
   {
-    paramDoodleEmojiItem = paramDoodleEmojiItem.mInfoItemList.iterator();
-    while (paramDoodleEmojiItem.hasNext())
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 275	bjfa:jdField_a_of_type_Bjfc	Lbjfc;
+    //   6: ifnull +15 -> 21
+    //   9: aload_0
+    //   10: getfield 275	bjfa:jdField_a_of_type_Bjfc	Lbjfc;
+    //   13: invokevirtual 279	bjfc:a	()F
+    //   16: fstore_1
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: fload_1
+    //   20: freturn
+    //   21: fconst_1
+    //   22: fstore_1
+    //   23: goto -6 -> 17
+    //   26: astore_2
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: aload_2
+    //   30: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	31	0	this	bjfa
+    //   16	7	1	f	float
+    //   26	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	26	finally
+  }
+  
+  public int a()
+  {
+    for (;;)
     {
-      bkfm localbkfm = (bkfm)paramDoodleEmojiItem.next();
-      if ((localbkfm.b == 1) && (!a(localbkfm))) {
-        a(localbkfm, new bjfc(this));
+      try
+      {
+        if (this.jdField_a_of_type_Bkgd != null)
+        {
+          if (this.jdField_a_of_type_Bjfr.a(this.jdField_a_of_type_Bkgd)) {
+            this.jdField_d_of_type_Int = 3;
+          }
+        }
+        else
+        {
+          int i = this.jdField_d_of_type_Int;
+          return i;
+        }
+        if (this.jdField_a_of_type_Bjfr.b(this.jdField_a_of_type_Bkgd)) {
+          this.jdField_d_of_type_Int = 1;
+        } else {
+          this.jdField_d_of_type_Int = 2;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public int a(Activity paramActivity, int paramInt)
+  {
+    paramActivity = bjji.a().a(paramInt);
+    if ((paramActivity != null) && (this.jdField_a_of_type_Bkgd != null))
+    {
+      bjcu localbjcu = paramActivity.a();
+      if (localbjcu != null)
+      {
+        a(paramActivity, localbjcu);
+        if (QLog.isColorLevel()) {
+          QLog.d("CaptureComboInformationPaster", 2, "apply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString + " state=" + this.jdField_d_of_type_Int);
+        }
+      }
+    }
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_d_of_type_Int = 2;
+    super.a(paramInt);
+  }
+  
+  public void a(Activity paramActivity, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bkgd != null)
+    {
+      paramActivity = bjji.a().a(paramInt);
+      if (paramActivity != null) {
+        paramActivity.a().a(this.jdField_a_of_type_Bkga.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureComboInformationPaster", 2, "unApply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString + " state=" + this.jdField_d_of_type_Int);
+      }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureComboInformationPaster", 2, "unApply no item =" + this.jdField_b_of_type_JavaLangString);
       }
     }
   }
   
-  public void a(List<bkfm> paramList)
+  public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new QIMInformationPasterManager.2(this, paramList), null, true);
-  }
-  
-  public boolean a(bkfm parambkfm)
-  {
-    if (TextUtils.isEmpty(parambkfm.e)) {
-      if (parambkfm.a != 7) {}
+    if (!paramBoolean) {
+      a(0);
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          return true;
-        } while (!d(parambkfm));
-        localObject = b(parambkfm);
-        if (QLog.isColorLevel()) {
-          QLog.d("QIMInformationPasterManager", 2, "checkDir:" + (String)localObject);
-        }
-        localObject = new File((String)localObject);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length != bkfn.a(parambkfm)));
-    return true;
   }
   
-  public void b() {}
-  
-  public boolean b(bkfm parambkfm)
+  /* Error */
+  public int b()
   {
-    return this.jdField_a_of_type_Bjfe.a(parambkfm.e);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 68	bjfa:jdField_a_of_type_Bkgd	Lbkgd;
+    //   6: ifnull +103 -> 109
+    //   9: aload_0
+    //   10: getfield 275	bjfa:jdField_a_of_type_Bjfc	Lbjfc;
+    //   13: ifnonnull +15 -> 28
+    //   16: aload_0
+    //   17: new 277	bjfc
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 321	bjfc:<init>	(Lbjfa;)V
+    //   25: putfield 275	bjfa:jdField_a_of_type_Bjfc	Lbjfc;
+    //   28: aload_0
+    //   29: getfield 61	bjfa:jdField_a_of_type_Bjfr	Lbjfr;
+    //   32: aload_0
+    //   33: getfield 68	bjfa:jdField_a_of_type_Bkgd	Lbkgd;
+    //   36: aload_0
+    //   37: getfield 275	bjfa:jdField_a_of_type_Bjfc	Lbjfc;
+    //   40: invokevirtual 324	bjfr:a	(Lbkgd;Lbjfu;)V
+    //   43: aload_0
+    //   44: invokevirtual 326	bjfa:a	()V
+    //   47: aload_0
+    //   48: iconst_1
+    //   49: putfield 37	bjfa:jdField_d_of_type_Int	I
+    //   52: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   55: ifeq +45 -> 100
+    //   58: ldc 102
+    //   60: iconst_2
+    //   61: new 77	java/lang/StringBuilder
+    //   64: dup
+    //   65: invokespecial 78	java/lang/StringBuilder:<init>	()V
+    //   68: ldc_w 328
+    //   71: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: aload_0
+    //   75: getfield 37	bjfa:jdField_d_of_type_Int	I
+    //   78: invokevirtual 122	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   81: ldc_w 330
+    //   84: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: aload_0
+    //   88: getfield 39	bjfa:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   91: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   97: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   100: aload_0
+    //   101: getfield 37	bjfa:jdField_d_of_type_Int	I
+    //   104: istore_1
+    //   105: aload_0
+    //   106: monitorexit
+    //   107: iload_1
+    //   108: ireturn
+    //   109: aload_0
+    //   110: iconst_4
+    //   111: invokevirtual 318	bjfa:a	(I)V
+    //   114: goto -14 -> 100
+    //   117: astore_2
+    //   118: aload_0
+    //   119: monitorexit
+    //   120: aload_2
+    //   121: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	122	0	this	bjfa
+    //   104	4	1	i	int
+    //   117	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	28	117	finally
+    //   28	100	117	finally
+    //   100	105	117	finally
+    //   109	114	117	finally
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if ((this.jdField_a_of_type_Bkgd == null) || (this.jdField_a_of_type_Bkgd.jdField_a_of_type_Int != 7)) {}
+    bjcb localbjcb;
+    bjcq localbjcq;
+    do
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localRelativeLayout != null)
-      {
-        localRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-      }
-    }
+      return;
+      localbjcb = (bjcb)bjav.a(5);
+      localbjcq = localbjcb.a(this.jdField_c_of_type_JavaLangString);
+    } while (localbjcq == null);
+    localbjcq.a();
+    localbjcb.a(localbjcq);
   }
   
-  public boolean c(bkfm parambkfm)
+  public boolean isValidate()
   {
-    boolean bool = false;
-    try
-    {
-      File localFile = new File(jdField_a_of_type_JavaLangString + parambkfm.g + "_" + parambkfm.f);
-      if (!localFile.exists()) {
-        localFile.mkdir();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "unzipDir:" + localFile.getAbsolutePath());
-      }
-      nay.a(new File(a(parambkfm)), localFile.getAbsolutePath() + File.separator);
-      bool = true;
-    }
-    catch (Exception parambkfm)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIMInformationPasterManager", 2, parambkfm, new Object[0]);
-    }
-    return bool;
-    return false;
+    return this.jdField_d_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return "NP@" + this.jdField_a_of_type_JavaLangString + "@" + hashCode();
   }
 }
 

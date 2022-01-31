@@ -10,15 +10,15 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import vzo;
+import vzl;
 
 public class VideoCoverImgBorder
   extends ImageView
 {
-  private final int jdField_a_of_type_Int = vzo.a(getContext(), 1.0F);
+  private final int jdField_a_of_type_Int = vzl.a(getContext(), 1.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int jdField_b_of_type_Int = vzo.a(getContext(), 2.0F);
+  private final int jdField_b_of_type_Int = vzl.a(getContext(), 2.0F);
   private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   private int c = this.jdField_b_of_type_Int;
   private int d;

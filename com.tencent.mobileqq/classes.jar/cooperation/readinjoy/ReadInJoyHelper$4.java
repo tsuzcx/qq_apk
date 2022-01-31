@@ -1,9 +1,9 @@
 package cooperation.readinjoy;
 
-import bhvh;
+import bhvy;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import noo;
+import nol;
 import org.json.JSONObject;
 
 public final class ReadInJoyHelper$4
@@ -13,18 +13,18 @@ public final class ReadInJoyHelper$4
   
   public void run()
   {
-    Object localObject1 = bhvh.a("remote_kd_tab_switch");
-    Object localObject2 = bhvh.a("local_kd_tab_switch");
+    Object localObject1 = bhvy.a("remote_kd_tab_switch");
+    Object localObject2 = bhvy.a("local_kd_tab_switch");
     int k;
     int n;
     int i1;
     label63:
     int m;
-    if (bhvh.i())
+    if (bhvy.i())
     {
       k = 1;
-      n = bhvh.a("local_kd_tab_switch").intValue();
-      i1 = bhvh.a("local_kd_tab_switch_prefix").intValue();
+      n = bhvy.a("local_kd_tab_switch").intValue();
+      i1 = bhvy.a("local_kd_tab_switch_prefix").intValue();
       if (!(localObject1 instanceof Boolean)) {
         break label285;
       }
@@ -34,7 +34,7 @@ public final class ReadInJoyHelper$4
       i = 1;
       m = i;
       label66:
-      localObject1 = bhvh.a("local_kd_tab_has_set");
+      localObject1 = bhvy.a("local_kd_tab_has_set");
       if (!(localObject2 instanceof Boolean)) {
         break label346;
       }
@@ -60,8 +60,8 @@ public final class ReadInJoyHelper$4
           {
             ((JSONObject)localObject2).put("ui_cache_switch", String.valueOf(n));
             ((JSONObject)localObject2).put("db_cache_switch", String.valueOf(i1));
-            bhvh.a((JSONObject)localObject2);
-            noo.a(null, this.a.getAccount(), "0X8009663", "0X8009663", 0, 0, String.valueOf(i), String.valueOf(j), String.valueOf(k), ((JSONObject)localObject2).toString(), false);
+            bhvy.a((JSONObject)localObject2);
+            nol.a(null, this.a.getAccount(), "0X8009663", "0X8009663", 0, 0, String.valueOf(i), String.valueOf(j), String.valueOf(k), ((JSONObject)localObject2).toString(), false);
             QLog.d("ReadInJoyHelper", 1, this.a.getAccount() + " ui_switch:" + k + "  ui_cache_switch:" + n + "  db_cache_switch:" + i1 + "  remote_switch:" + m + " localSwitch:" + i + "  userHasSet:" + localObject1);
             return;
             k = 0;

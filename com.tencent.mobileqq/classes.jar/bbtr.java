@@ -1,20 +1,29 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import QC.UniLoginCheckRsp;
+import java.lang.ref.WeakReference;
 
-public class bbtr
+class bbtr
+  implements ajte
 {
-  public ImageView a;
-  public SeekBar a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  private WeakReference<bbtq> a;
+  
+  public bbtr(bbtq parambbtq)
+  {
+    this.a = new WeakReference(parambbtq);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    bbtq localbbtq = (bbtq)this.a.get();
+    if (localbbtq == null) {}
+    while (!(paramObject instanceof UniLoginCheckRsp)) {
+      return;
+    }
+    localbbtq.a(((UniLoginCheckRsp)paramObject).stKeyWord);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbtr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.SubAccountObserver;
 
 class akqg
-  implements lxw
+  extends SubAccountObserver
 {
-  akqg(akqf paramakqf, MsgType0x210 paramMsgType0x210) {}
+  akqg(akqe paramakqe, ayax paramayax) {}
   
-  public void a(lxv paramlxv)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    paramlxv.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
-    paramlxv.a();
+    if ((paramString3 == null) || (this.jdField_a_of_type_Akqe.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Akqe.a.getAccount())) {
+      return;
+    }
+    this.jdField_a_of_type_Ayax.a(paramString2, paramString3, true);
+    ayaq.a(this.jdField_a_of_type_Akqe.a, (byte)1, paramString2);
+    ayaq.a(this.jdField_a_of_type_Akqe.a, paramString2, false);
   }
 }
 

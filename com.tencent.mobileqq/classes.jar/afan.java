@@ -1,14 +1,23 @@
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
-abstract interface afan
+public class afan
+  extends BroadcastReceiver
 {
-  public abstract File a(String paramString);
+  public afan(BlessActivity paramBlessActivity) {}
   
-  public abstract String c();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      BlessActivity.a(this.a, true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afan
  * JD-Core Version:    0.7.0.1
  */

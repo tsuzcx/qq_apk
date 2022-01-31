@@ -1,16 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class afxw
-  implements aask
+  implements DialogInterface.OnClickListener
 {
-  public afxw(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
+  public afxw(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aasg paramaasg) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      bict.a(this.a.getActivity());
-    }
-    return false;
+    this.jdField_a_of_type_Aasg.a(true);
   }
 }
 

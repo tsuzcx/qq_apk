@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import actn;
-import agdk;
+import actj;
+import agdi;
 
 public class BaseMessageSearchDialog$2
   implements Runnable
 {
-  public BaseMessageSearchDialog$2(agdk paramagdk) {}
+  public BaseMessageSearchDialog$2(agdi paramagdi) {}
   
   public void run()
   {
-    actn.a(this.this$0.findViewById(2131365764));
+    actj.a(this.this$0.findViewById(2131365763));
   }
 }
 

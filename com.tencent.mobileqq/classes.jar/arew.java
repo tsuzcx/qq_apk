@@ -1,8 +1,34 @@
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface arew
+class arew
+  extends BroadcastReceiver
 {
-  public abstract void a(List<arfq> paramList);
+  arew(areu paramareu) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("command_type", 0);
+    QLog.i("GroupVideoManager|Communicate", 2, "get message from plugin: " + paramIntent.getExtras());
+    switch (i)
+    {
+    case 4: 
+    default: 
+      return;
+    case 1: 
+      areu.a(this.a, paramIntent, areu.a(this.a));
+      return;
+    case 2: 
+      areu.a(this.a, paramIntent, areu.b(this.a));
+      return;
+    case 3: 
+      areu.a(this.a, paramIntent);
+      return;
+    }
+    areu.a(this.a);
+  }
 }
 
 

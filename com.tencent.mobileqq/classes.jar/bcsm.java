@@ -1,20 +1,33 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.AbsListView.LayoutParams;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import android.widget.FrameLayout;
 
 public class bcsm
-  extends RecyclerView.ViewHolder
 {
-  final SimpleMonthView a;
+  private static long jdField_a_of_type_Long = 400L;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public bcsm(View paramView, bcsn parambcsn)
+  public static void a()
   {
-    super(paramView);
-    this.a = ((SimpleMonthView)paramView);
-    this.a.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-    this.a.setClickable(true);
-    this.a.setOnDayClickListener(parambcsn);
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public static void a(FrameLayout paramFrameLayout)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
+    paramFrameLayout.invalidate();
+    View localView = paramFrameLayout.getChildAt(1);
+    paramFrameLayout = paramFrameLayout.getChildAt(0);
+    bcld localbcld = new bcld(localView);
+    localbcld.setDuration(jdField_a_of_type_Long);
+    localbcld.setFillAfter(true);
+    bcle localbcle = new bcle(paramFrameLayout);
+    localbcle.setDuration(jdField_a_of_type_Long);
+    localbcle.setFillAfter(true);
+    localView.startAnimation(localbcld);
+    paramFrameLayout.startAnimation(localbcle);
   }
 }
 

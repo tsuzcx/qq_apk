@@ -1,21 +1,116 @@
-class aoul
-  extends aown
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.qphone.base.util.QLog;
+
+public class aoul
+  extends aoui
 {
-  aoul(aouk paramaouk, aoup paramaoup) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public aoul(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aoup.a(paramString2);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  protected ImageView a(acuj paramacuj)
+  {
+    if (paramacuj == null) {}
+    while (!(paramacuj instanceof adwy)) {
+      return null;
+    }
+    return ((adwy)paramacuj).a;
+  }
+  
+  protected void a(acuj paramacuj, ImageView paramImageView)
+  {
+    if (paramacuj == null) {}
+    while (!(paramacuj instanceof adwy)) {
       return;
     }
-    this.jdField_a_of_type_Aoup.a(paramInt, paramString1);
+    ((adwy)paramacuj).a = paramImageView;
+  }
+  
+  protected void a(View paramView, acuj paramacuj, ChatMessage paramChatMessage, int paramInt)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
+            } while (paramInt == -1);
+            paramacuj = (MessageForTroopFile)paramChatMessage;
+            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
+          } while (paramView == null);
+          paramacuj = bakx.a(this.a, paramacuj);
+        } while (paramacuj == null);
+        if (paramInt != 0) {
+          break;
+        }
+      } while ((paramacuj.b != 0) && (paramacuj.b != 1));
+      axqy.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
+      paramView.a(paramacuj.a);
+      return;
+    } while ((paramInt != 1) || (paramacuj.b != 2));
+    axqy.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
+    a(new aoum(this, paramChatMessage.frienduin, paramacuj));
+  }
+  
+  protected boolean a(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while (!(paramChatMessage instanceof MessageForTroopFile));
+        paramChatMessage = (MessageForTroopFile)paramChatMessage;
+        paramChatMessage = bakx.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
+      }
+    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
+    return true;
+  }
+  
+  protected boolean b(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+        } while (!(paramChatMessage instanceof MessageForTroopFile));
+        paramChatMessage = (MessageForTroopFile)paramChatMessage;
+        paramChatMessage = bakx.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
+      }
+    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoul
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.apollo.script;
 
-import airz;
-import aisr;
-import ajer;
-import ajfb;
+import airx;
+import aisp;
+import ajep;
+import ajez;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SpriteActionMessage$1
   implements Runnable
 {
-  public SpriteActionMessage$1(ajer paramajer, int paramInt, boolean paramBoolean) {}
+  public SpriteActionMessage$1(ajep paramajep, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((ajer.a(this.this$0) != null) && (ajer.a(this.this$0).a() != null))
+    if ((ajep.a(this.this$0) != null) && (ajep.a(this.this$0).a() != null))
     {
-      aisr localaisr = ((airz)ajer.a(this.this$0).a().getManager(153)).a();
-      if (localaisr != null)
+      aisp localaisp = ((airx)ajep.a(this.this$0).a().getManager(153)).a();
+      if (localaisp != null)
       {
-        localaisr.a.set(this.jdField_a_of_type_Int);
-        localaisr.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
+        localaisp.a.set(this.jdField_a_of_type_Int);
+        localaisp.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
       }
     }
   }

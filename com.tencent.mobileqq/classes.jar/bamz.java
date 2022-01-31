@@ -1,26 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class bamz
-  extends RecyclerView.ViewHolder
+public class bamz
+  extends banh
 {
-  protected ImageView a;
-  protected TextView a;
-  protected String a;
-  protected ImageView b;
-  protected TextView b;
-  protected ImageView c;
-  
-  public bamz(bamy parambamy, View paramView)
+  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
   {
-    super(paramView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364937));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367376));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367394));
-    this.c = ((ImageView)paramView.findViewById(2131375028));
+    if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED) || (this.a.a()))
+    {
+      this.a = ((TroopUploadingThread)bang.a(paramClass));
+      this.a.a(paramArrayList, paramHashMap, paramList, this);
+      this.a.start();
+    }
   }
 }
 

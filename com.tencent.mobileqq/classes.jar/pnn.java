@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
-
-public class pnn
-  implements View.OnClickListener
+public abstract interface pnn
 {
-  public pnn(NativeUsersCommentsView paramNativeUsersCommentsView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.callOnClick();
-  }
+  public abstract void a();
 }
 
 

@@ -10,7 +10,7 @@ class xob
   public void onClick(View paramView)
   {
     if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnz, 1);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnz, -1);
     }
     this.jdField_a_of_type_Xnz.dismiss();
   }

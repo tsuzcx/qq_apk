@@ -1,18 +1,42 @@
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class agde
-  extends akud
+public class agde
+  implements akba
 {
-  agde(agch paramagch) {}
+  agde(agcf paramagcf) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt)
+  {
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    this.a.a(32, 16, Integer.valueOf(paramInt));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    osx.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
+    if ((!paramBoolean) && (paramInt >= 0))
+    {
+      a(paramInt);
+      return;
     }
+    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
   }
 }
 

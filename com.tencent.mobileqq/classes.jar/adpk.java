@@ -1,30 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
 import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class adpk
-  implements bfoq
+  implements aptw
 {
-  adpk(adpi paramadpi, MessageForFile paramMessageForFile, bfol parambfol, BaseChatItemLayout paramBaseChatItemLayout, adpp paramadpp) {}
+  adpk(adpg paramadpg, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    paramView = this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
-    if (paramView != null)
-    {
-      if (paramView.status == 16)
-      {
-        aptv.a(2131692856);
-        this.jdField_a_of_type_Bfol.cancel();
-        return;
-      }
-      apue.a(this.jdField_a_of_type_Adpi.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Adpi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    }
-    this.jdField_a_of_type_Adpi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adpp, paramView, false);
-    this.jdField_a_of_type_Bfol.cancel();
+    apug.a(this.jdField_a_of_type_Adpg.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 

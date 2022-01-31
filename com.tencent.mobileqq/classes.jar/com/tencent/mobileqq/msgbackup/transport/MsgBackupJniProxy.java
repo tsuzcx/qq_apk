@@ -2,10 +2,10 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import asle;
-import asob;
-import asoe;
+import aslg;
+import asod;
 import asog;
+import asoi;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -434,17 +434,17 @@ public class MsgBackupJniProxy
     }
     if ((paramBoolean1) && (paramBoolean2))
     {
-      asoe.a();
-      asle.a().a.add(Long.valueOf(paramLong2));
-      asob localasob = asoe.a;
-      localasob.j += 1L;
+      asog.a();
+      aslg.a().a.add(Long.valueOf(paramLong2));
+      asod localasod = asog.a;
+      localasod.j += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
   
   public void a(long paramLong, String paramString)
   {
-    setEncryptKey(paramLong, paramString, asog.b);
+    setEncryptKey(paramLong, paramString, asoi.b);
   }
   
   public void b(long paramLong1, long paramLong2, long paramLong3, String paramString)

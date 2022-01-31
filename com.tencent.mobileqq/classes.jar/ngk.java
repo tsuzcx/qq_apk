@@ -1,41 +1,19 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
 class ngk
-  extends ajxl
+  implements View.OnClickListener
 {
-  ngk(nfu paramnfu) {}
+  ngk(nfr paramnfr, String paramString) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    label134:
-    for (;;)
-    {
-      return;
-      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label134;
-        }
-        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
-        {
-          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
-          return;
-        }
-        i += 1;
-      }
-    }
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ((BaseActivity)this.jdField_a_of_type_Nfr.a.get()).startActivity(paramView);
   }
 }
 

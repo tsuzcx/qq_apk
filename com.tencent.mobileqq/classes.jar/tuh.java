@@ -1,21 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.widget.AbsListView;
 
-class tuh
-  extends Handler
+public class tuh
+  implements bfos
 {
-  tuh(tug paramtug, Looper paramLooper)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  
+  public tuh(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramLooper);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.a.a) {
+    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
+      }
+    }
+    else {
       return;
     }
-    tug.a(this.a, this.a.c);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
+    tuj.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
 }
 

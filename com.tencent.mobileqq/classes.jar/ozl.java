@@ -1,11 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
+
 class ozl
-  implements pao
+  implements Comparator<AdvertisementInfo>
 {
   ozl(ozk paramozk) {}
   
-  public void a(int paramInt)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    ozj.a(this.a.a, paramInt);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

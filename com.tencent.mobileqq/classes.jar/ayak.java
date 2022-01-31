@@ -1,11 +1,4 @@
-import java.nio.ByteBuffer;
-
-class ayak
-{
-  public long a;
-  public ByteBuffer a;
-  public long b;
-}
+class ayak {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

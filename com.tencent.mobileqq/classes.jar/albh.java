@@ -1,21 +1,8 @@
-class albh
-  extends alxx
+public abstract interface albh
 {
-  albh(albg paramalbg) {}
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
-  {
-    if (albg.a(this.a) != null) {
-      albg.a(this.a).a(paramArrayOfFloat);
-    }
-  }
-  
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (albg.a(this.a) != null) {
-      albg.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    }
-  }
+  public abstract void a(float[] paramArrayOfFloat);
 }
 
 

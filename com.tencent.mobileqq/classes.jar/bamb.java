@@ -1,14 +1,6 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-class bamb
-  implements bame
+public abstract interface bamb
 {
-  bamb(balw parambalw, String paramString) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

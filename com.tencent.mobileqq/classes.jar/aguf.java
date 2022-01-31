@@ -1,31 +1,25 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
 import mqq.util.WeakReference;
 
-public class aguf
-  extends agsl
+class aguf
+  implements bfos
 {
-  protected aguf(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  aguf(ague paramague) {}
   
-  public static agse b(NewPhotoListActivity paramNewPhotoListActivity)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((a == null) || (a.a.get() != paramNewPhotoListActivity)) {}
-    try
-    {
-      if ((a == null) || (a.a.get() != paramNewPhotoListActivity)) {
-        a = new aguf(paramNewPhotoListActivity);
-      }
-      return a;
+    if ((ague.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.a.get()).jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (((NewPhotoListActivity)this.a.a.get()).jdField_a_of_type_Agrs != null) && (ague.a(this.a).a != null)) {
+      ague.a(this.a);
     }
-    finally {}
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
+    if (paramInt == 0)
+    {
+      zzz.a().a("list_photo", false);
+      return;
+    }
+    zzz.a().a("list_photo");
   }
 }
 

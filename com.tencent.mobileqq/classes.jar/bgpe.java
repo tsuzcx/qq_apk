@@ -1,6 +1,18 @@
-public abstract interface bgpe
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class bgpe
+  implements View.OnClickListener
 {
-  public abstract void b(boolean paramBoolean);
+  bgpe(Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+  }
 }
 
 

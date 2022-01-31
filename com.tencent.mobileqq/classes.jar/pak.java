@@ -1,23 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
 
-public class pak
+public abstract interface pak
 {
-  public void a(int paramInt, String paramString) {}
+  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
   
-  public void a(long paramLong, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void a(FusionBiuInfo paramFusionBiuInfo) {}
+  public abstract void a(int paramInt, pal parampal);
   
-  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString) {}
-  
-  public void a(FastWebArticleInfo paramFastWebArticleInfo, String paramString) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, rna paramrna) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
+  public abstract int[] a(int paramInt);
 }
 
 

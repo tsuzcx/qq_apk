@@ -1,81 +1,72 @@
-import com.tencent.av.VideoController;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class lfw
-  implements INetInfoHandler
+class lfw
+  extends lwp
 {
-  VideoAppInterface a;
+  lfw(lfv paramlfv) {}
   
-  public lfw(VideoAppInterface paramVideoAppInterface)
-  {
-    this.a = paramVideoAppInterface;
-  }
-  
-  public void onNetMobile2None()
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
+      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
     }
-    VideoController localVideoController = this.a.a();
-    if (localVideoController != null) {
-      localVideoController.a(0);
+    switch (paramInt1)
+    {
+    default: 
+      return null;
     }
+    paramString = new Bundle();
+    paramString.putString("camera_used_desc", lkj.a);
+    return paramString;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(RecvMsg paramRecvMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(1);
+    if (paramRecvMsg != null) {
+      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
     }
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
+    if (TextUtils.equals(paramString, "avChatRoom"))
+    {
+      lko locallko = this.a.a.a();
+      if (locallko != null) {
+        locallko.a(paramInt, paramArrayOfByte);
+      }
     }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(2);
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
+      if (paramArrayOfByte != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (paramInt = 0;; paramInt = paramArrayOfByte.length)
+    {
+      QLog.i("ChatRoomMng", 4, paramInt + "]");
+      return;
     }
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(1);
-    }
+    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(2);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
-    }
-    VideoController localVideoController = this.a.a();
-    if (localVideoController != null) {
-      localVideoController.a(0);
+    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
+      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
     }
   }
 }

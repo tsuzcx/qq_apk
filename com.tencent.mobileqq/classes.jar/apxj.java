@@ -1,12 +1,42 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class apxj
-  implements bcvx
+  implements View.OnClickListener
 {
-  apxj(apxg paramapxg) {}
+  apxj(apxi paramapxi) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.a.c();
+    if (!this.a.a) {
+      return;
+    }
+    int i = 4;
+    if (apxi.a(this.a) == 1)
+    {
+      i = 2;
+      if (!apxi.a(this.a).equals(ajsd.z)) {
+        break label131;
+      }
+      i = 3;
+    }
+    label131:
+    for (;;)
+    {
+      long l = apel.b();
+      axqy.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
+      if (apxi.a(this.a) == 1)
+      {
+        apxi.a(this.a);
+        return;
+        if (apxi.a(this.a) != 0) {
+          break;
+        }
+        i = 1;
+        break;
+      }
+      apxi.b(this.a);
+      return;
     }
   }
 }

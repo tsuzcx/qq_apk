@@ -1,31 +1,48 @@
+import java.util.ArrayList;
+
 class wac
+  extends waa
 {
-  final String jdField_a_of_type_JavaLangString;
-  final boolean jdField_a_of_type_Boolean;
-  boolean b;
+  wac(wab paramwab, waj paramwaj) {}
   
-  wac(boolean paramBoolean, String paramString)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Waj.onFailure(paramString);
   }
   
-  static wac a()
+  public void onFinish(boolean paramBoolean)
   {
-    return new wac(false, "");
-  }
-  
-  static wac a(Process paramProcess)
-  {
-    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
-    for (String str = wbd.a(paramProcess.getInputStream());; str = wbd.a(paramProcess.getErrorStream())) {
-      return new wac(a(Integer.valueOf(paramProcess.exitValue())), str);
+    wab localwab;
+    if (this.jdField_a_of_type_Wab.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    {
+      localwab = this.jdField_a_of_type_Wab;
+      if (!paramBoolean) {
+        break label44;
+      }
+    }
+    label44:
+    for (int i = 1;; i = 0)
+    {
+      localwab.jdField_a_of_type_Int = i;
+      wab.jdField_a_of_type_Wab = null;
+      this.jdField_a_of_type_Waj.onFinish(paramBoolean);
+      return;
     }
   }
   
-  static boolean a(Integer paramInteger)
+  public void onProgress(String paramString)
   {
-    return (paramInteger != null) && (paramInteger.intValue() == 0);
+    this.jdField_a_of_type_Waj.onProgress(paramString);
+  }
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Waj.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    this.jdField_a_of_type_Waj.onSuccess(paramString);
   }
 }
 

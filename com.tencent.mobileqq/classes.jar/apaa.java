@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class apaa
-  implements DialogInterface.OnClickListener
+public abstract interface apaa
 {
-  apaa(aozx paramaozx, apac paramapac) {}
+  public abstract int a(long paramLong1, long paramLong2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Apac.a();
-  }
+  public abstract void a();
 }
 
 

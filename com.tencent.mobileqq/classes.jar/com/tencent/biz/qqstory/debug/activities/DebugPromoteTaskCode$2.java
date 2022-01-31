@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.debug.activities;
 
-import tbt;
-import tda;
+import tbq;
+import tcx;
 
 public class DebugPromoteTaskCode$2
   implements Runnable
 {
-  public DebugPromoteTaskCode$2(tbt paramtbt) {}
+  public DebugPromoteTaskCode$2(tbq paramtbq) {}
   
   public void run()
   {

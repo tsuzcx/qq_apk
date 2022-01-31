@@ -1,13 +1,30 @@
-import android.content.Context;
-import com.tencent.widget.AdapterView;
+import android.content.Intent;
+import android.view.ViewGroup;
 
 public abstract class aqon
 {
-  public abstract void a(int paramInt);
+  private aqoo a;
   
-  public abstract void a(Context paramContext, aqoi paramaqoi, int paramInt);
+  public void a(Intent paramIntent) {}
   
-  public abstract void a(AdapterView paramAdapterView, int paramInt);
+  public void a(ViewGroup paramViewGroup) {}
+  
+  public void a(aqoo paramaqoo)
+  {
+    this.a = paramaqoo;
+  }
+  
+  public void b() {}
+  
+  public void b(ViewGroup paramViewGroup) {}
+  
+  public void d() {}
+  
+  public void p() {}
+  
+  public void q() {}
+  
+  public void r() {}
 }
 
 

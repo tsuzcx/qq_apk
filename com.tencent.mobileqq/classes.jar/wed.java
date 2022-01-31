@@ -1,13 +1,11 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Property;
 import android.view.View;
 
-class wed
-  extends RecyclerView.ViewHolder
+public class wed
 {
-  wed(wea paramwea, View paramView)
-  {
-    super(paramView);
-  }
+  public float a;
+  public Property<View, Float> a;
+  public float b;
 }
 
 

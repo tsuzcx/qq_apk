@@ -1,43 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaju
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aaju(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public aaju(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int j = 1;
-    if (!paramCompoundButton.isPressed()) {
-      return;
-    }
-    if (paramBoolean)
+    boolean bool = false;
+    axqy.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    paramView = (ayax)this.a.app.getManager(61);
+    if ((paramView != null) && (paramView.a() >= 2)) {}
+    for (;;)
     {
-      paramCompoundButton = "open_storyset";
-      vel.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
-      paramCompoundButton = new Integer[5];
-      paramCompoundButton[0] = Integer.valueOf(1);
-      if (!paramBoolean) {
-        break label106;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
       }
-    }
-    label106:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton[3] = Integer.valueOf(i);
-      this.a.app.a().a(paramCompoundButton);
-      paramCompoundButton = (ssv)this.a.app.a(98);
-      i = j;
-      if (paramBoolean) {
-        i = 2;
-      }
-      paramCompoundButton.a(i);
+      AssociatedAccountActivity.a(this.a, bool);
       return;
-      paramCompoundButton = "close_storyset";
-      break;
+      bool = true;
     }
   }
 }

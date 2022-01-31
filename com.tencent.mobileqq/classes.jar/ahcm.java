@@ -1,24 +1,17 @@
 import android.os.Bundle;
-import android.os.ResultReceiver;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import eipc.EIPCResult;
 
 class ahcm
-  implements ajuc
+  implements axno
 {
-  ahcm(ahci paramahci, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, ajty paramajty) {}
+  ahcm(ahcg paramahcg, int paramInt) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(SoConfig.SoInfo paramSoInfo)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Ajty.d(this);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("res", paramSoInfo);
+    this.jdField_a_of_type_Ahcg.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

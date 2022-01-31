@@ -1,17 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class atvz
-  implements athy
+public abstract class atvz
 {
-  atvz(atwg paramatwg, int paramInt) {}
+  public void a(String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-    if (this.jdField_a_of_type_Atwg != null) {
-      this.jdField_a_of_type_Atwg.a(false, null, true, this.jdField_a_of_type_Int);
-    }
-  }
+  public void a(String paramString, long paramLong) {}
+  
+  public void b(String paramString) {}
+  
+  public void b(String paramString, long paramLong) {}
+  
+  public void c(String paramString) {}
+  
+  public void c(String paramString, long paramLong) {}
 }
 
 

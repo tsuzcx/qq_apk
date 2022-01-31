@@ -1,44 +1,70 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class mlg
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public mlg(VideoLayerUI paramVideoLayerUI) {}
+  public int a;
+  public long a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public mlg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
-    }
-    if (VideoLayerUI.c(this.a) < 0) {
-      VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
-    }
-    if (VideoLayerUI.d(this.a) < 0) {
-      VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
-    }
-    float f = paramScaleGestureDetector.getScaleFactor();
-    this.a.jdField_a_of_type_ArrayOfMee[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
-    return true;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
-    }
-    float f1 = this.a.jdField_a_of_type_ArrayOfMee[0].c();
-    float f2 = this.a.jdField_a_of_type_ArrayOfMee[0].a();
-    float f3 = this.a.jdField_a_of_type_ArrayOfMee[0].b();
-    if (f1 < f2) {
-      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMee[0], f2 / f1, 60L);
-    }
-    while (f1 <= f3) {
-      return;
-    }
-    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfMee[0], f3 / f1, 60L);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.e;
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_b_of_type_Boolean) && (!this.c);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
+    localStringBuilder.append("isVideoIn:=").append(this.e).append(',');
+    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
+    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
+    return localStringBuilder.toString();
   }
 }
 

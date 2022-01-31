@@ -1,17 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class adpu
-  implements aptu
+public class adpu
+  extends acuj
 {
-  adpu(adps paramadps, ChatMessage paramChatMessage, Context paramContext) {}
+  public RelativeLayout a;
+  public URLDrawable a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  public void a()
-  {
-    apue.a(this.jdField_a_of_type_Adps.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void b() {}
+  public adpu(adpq paramadpq) {}
 }
 
 

@@ -1,181 +1,177 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.util.Log;
+import android.util.Pair;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import com.tencent.ttpic.model.SizeI;
-import com.tencent.util.Pair;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
-public class lrc
+public abstract class lrc
+  extends lrj
 {
-  private final int jdField_a_of_type_Int;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  private final String jdField_a_of_type_JavaLangString = "MultipleTextureProcessor-" + Integer.toHexString(hashCode());
-  private lqz jdField_a_of_type_Lqz;
+  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
+  private List<Pair<lrc, Integer>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Vector<lrg> jdField_a_of_type_JavaUtilVector;
   private lre jdField_a_of_type_Lre;
-  private lrh jdField_a_of_type_Lrh;
-  private final int jdField_b_of_type_Int;
-  private lrh jdField_b_of_type_Lrh;
+  private boolean jdField_a_of_type_Boolean;
   
-  public lrc(int paramInt1, int paramInt2)
+  public lrc(int paramInt)
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "MultipleTextureProcessor: " + paramInt1 + ", " + paramInt2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Lre = new lre();
-    this.jdField_a_of_type_Lre.a(new lrd(this));
-    this.jdField_a_of_type_Lre.d();
-    this.jdField_a_of_type_Lqz = new lqz(paramInt1, paramInt2);
-    this.jdField_a_of_type_Lre.a(this.jdField_a_of_type_Lqz);
+    this.jdField_a_of_type_JavaUtilVector = new Vector(paramInt);
+    this.jdField_a_of_type_JavaUtilVector.setSize(paramInt);
   }
   
-  private lrh a(String paramString)
+  private void a(lrg paramlrg, int paramInt, long paramLong)
   {
-    if (!FileUtils.exists(paramString))
+    if (a(paramlrg, paramInt))
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: " + paramString + " not exists");
-      return null;
+      a(this.jdField_a_of_type_JavaUtilVector, paramLong);
+      this.jdField_a_of_type_JavaUtilVector.clear();
+      this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
     }
-    lrg locallrg = new lrg(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: create filter#" + Integer.toHexString(locallrg.hashCode()));
-    locallrg.a(paramString);
-    return locallrg;
   }
   
-  private void a(List<lrf> paramList)
+  private boolean a(lrg paramlrg, int paramInt)
   {
-    if ((this.jdField_a_of_type_Lrh == null) || (!(this.jdField_a_of_type_Lrh instanceof lrg))) {}
-    Object localObject;
-    float f1;
-    do
+    this.jdField_a_of_type_JavaUtilVector.set(paramInt, paramlrg);
+    paramInt = 0;
+    while (paramInt < this.jdField_a_of_type_JavaUtilVector.size())
     {
-      return;
-      localObject = ((lrg)this.jdField_a_of_type_Lrh).a();
-      f1 = this.jdField_a_of_type_Int / ((SizeI)localObject).width;
-      localObject = ((lrg)this.jdField_a_of_type_Lrh).a();
-    } while (((List)localObject).size() != paramList.size());
+      if (this.jdField_a_of_type_JavaUtilVector.get(paramInt) == null) {
+        return false;
+      }
+      paramInt += 1;
+    }
+    return true;
+  }
+  
+  @NotNull
+  protected abstract Frame a(List<lrg> paramList, long paramLong);
+  
+  public lrc a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
+    return this;
+  }
+  
+  public lrc a(lrc paramlrc, int paramInt)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlrc);
+    if (paramInt >= paramlrc.jdField_a_of_type_JavaUtilVector.size())
+    {
+      Log.e(this.jdField_a_of_type_JavaLangString, "addTarget: targetIndex=" + paramInt + ", target inputCount=" + this.jdField_a_of_type_JavaUtilVector.size() + ", out of bounds");
+      return this;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(new Pair(paramlrc, Integer.valueOf(paramInt)));
+    paramlrc.a(this.jdField_a_of_type_Lri);
+    return this;
+  }
+  
+  protected abstract void a();
+  
+  public void a(List<lrg> paramList, long paramLong)
+  {
+    int j = 0;
+    Object localObject = a(paramList, paramLong);
+    lrg locallrg = null;
     int i = 0;
-    label74:
-    Pair localPair;
-    lrf locallrf;
     if (i < paramList.size())
     {
-      localPair = (Pair)((List)localObject).get(i);
-      locallrf = (lrf)paramList.get(i);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultipleTextureProcessor", 1, "convertFaceDataModel #" + i + " (" + locallrf.jdField_b_of_type_Int + ", " + locallrf.c + "), (" + locallrf.d + ", " + locallrf.e + ")");
+      if (((lrg)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == localObject) {
+        locallrg = (lrg)paramList.get(i);
       }
-      if ((locallrf.jdField_a_of_type_JavaUtilList != null) && (locallrf.e != 0) && (locallrf.d != 0)) {
-        break label234;
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((lrg)paramList.get(i)).a();
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if (this.jdField_a_of_type_Lri.a.a != null) {
+        this.jdField_a_of_type_Lri.a.a.a((Frame)localObject, this);
       }
     }
     for (;;)
     {
-      i += 1;
-      break label74;
-      break;
-      label234:
-      int j = 0;
-      while (j < locallrf.jdField_a_of_type_JavaUtilList.size())
+      return;
+      if (locallrg != null)
       {
-        float f2 = Math.max(((RectF)localPair.first).width() / locallrf.d, ((RectF)localPair.first).height() / locallrf.e);
-        locallrf.jdField_a_of_type_JavaUtilList.set(j, lrb.a((TTFaceOriginDataModel)locallrf.jdField_a_of_type_JavaUtilList.get(j), new RectF(0.0F, 0.0F, locallrf.d, locallrf.e), (RectF)localPair.first, (Matrix)localPair.second, f1, locallrf.jdField_a_of_type_Boolean));
-        locallrf.d = ((int)(locallrf.d * f2));
-        locallrf.e = ((int)(locallrf.e * f2));
-        j += 1;
-      }
-      if (locallrf.jdField_a_of_type_Boolean)
-      {
-        j = 0;
-        while (j < locallrf.jdField_a_of_type_JavaUtilList.size())
+        locallrg.a();
+        return;
+        if (locallrg == null)
         {
-          lrb.a((TTFaceOriginDataModel)locallrf.jdField_a_of_type_JavaUtilList.get(j));
-          j += 1;
+          locallrg = lrg.a((Frame)localObject);
+          locallrg.a(this.jdField_a_of_type_JavaUtilList.size());
+        }
+        for (;;)
+        {
+          localObject = new ArrayList();
+          i = j;
+          while (i < paramList.size())
+          {
+            if (((lrg)paramList.get(i)).jdField_a_of_type_JavaUtilList != null) {
+              ((List)localObject).addAll(((lrg)paramList.get(i)).jdField_a_of_type_JavaUtilList);
+            }
+            i += 1;
+          }
+          locallrg.a(this.jdField_a_of_type_JavaUtilList.size());
+          locallrg.a();
+        }
+        locallrg.jdField_a_of_type_JavaUtilList = ((List)localObject);
+        paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (Pair)paramList.next();
+          ((lrc)((Pair)localObject).first).a(locallrg, ((Integer)((Pair)localObject).second).intValue(), paramLong);
         }
       }
     }
   }
   
-  private lrh b(String paramString)
+  public void a(lri paramlri)
   {
-    if (!FileUtils.exists(paramString))
+    super.a(paramlri);
+    if (!this.jdField_a_of_type_Boolean)
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: " + paramString + " not exists");
-      return null;
+      Log.d(this.jdField_a_of_type_JavaLangString, "init: ");
+      a();
+      if (this.jdField_a_of_type_Lre != null)
+      {
+        this.jdField_a_of_type_Lre.a();
+        this.jdField_a_of_type_Lre = null;
+      }
+      this.jdField_a_of_type_Boolean = true;
     }
-    lqy locallqy = new lqy();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: create filter#" + Integer.toHexString(locallqy.hashCode()));
-    locallqy.a(paramString);
-    return locallqy;
-  }
-  
-  public Frame a(List<lrf> paramList, long paramLong)
-  {
-    a(paramList);
-    this.jdField_a_of_type_Lre.a(paramList, paramLong);
-    paramList = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
-    return paramList;
-  }
-  
-  public void a()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: ");
-    if (this.jdField_a_of_type_Lre != null)
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_Lre.e();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: source#" + Integer.toHexString(this.jdField_a_of_type_Lre.hashCode()));
-      this.jdField_a_of_type_Lre = null;
-    }
-    if (this.jdField_a_of_type_Lqz != null)
-    {
-      this.jdField_a_of_type_Lqz.c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lqz.hashCode()));
-      this.jdField_a_of_type_Lqz = null;
-    }
-    if (this.jdField_a_of_type_Lrh != null)
-    {
-      this.jdField_a_of_type_Lrh.c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lrh.hashCode()));
-      this.jdField_a_of_type_Lrh = null;
-    }
-    if (this.jdField_b_of_type_Lrh != null)
-    {
-      this.jdField_b_of_type_Lrh.c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_b_of_type_Lrh.hashCode()));
-      this.jdField_b_of_type_Lrh = null;
+      ((lrc)((Pair)this.jdField_a_of_type_JavaUtilList.get(i)).first).a(this.jdField_a_of_type_Lri);
+      i += 1;
     }
   }
   
-  public void a(String paramString)
+  protected abstract void b();
+  
+  public void c()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString);
-    lrh locallrh = a(paramString + File.separator + "pag" + File.separator + "pag");
-    Object localObject = locallrh;
-    if (locallrh == null) {
-      localObject = this.jdField_a_of_type_Lqz;
-    }
-    paramString = b(paramString + File.separator + "ae");
-    this.jdField_a_of_type_Lre.c();
-    if ((this.jdField_a_of_type_Lrh != null) && (this.jdField_a_of_type_Lrh != this.jdField_a_of_type_Lqz))
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Lrh.a().c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_a_of_type_Lrh.hashCode()));
+      Log.d(this.jdField_a_of_type_JavaLangString, "destroy: ");
+      b();
+      this.jdField_a_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_Lre.a((lrh)localObject);
-    this.jdField_a_of_type_Lrh = ((lrh)localObject);
-    if (this.jdField_b_of_type_Lrh != null)
-    {
-      this.jdField_b_of_type_Lrh.a().c();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_b_of_type_Lrh.hashCode()));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((lrc)((Pair)localIterator.next()).first).c();
     }
-    if (paramString != null) {
-      ((lrh)localObject).a(paramString, 0);
-    }
-    this.jdField_b_of_type_Lrh = paramString;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import aaod;
-import aaok;
+import aanz;
+import aaog;
+import akju;
 import akjv;
-import akjw;
-import akjz;
+import akjy;
 import android.os.Bundle;
-import bbcl;
+import bbcz;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ActivateFriendsManager$3
   implements Runnable
 {
-  public ActivateFriendsManager$3(akjw paramakjw, int paramInt1, long[] paramArrayOfLong1, String paramString, int paramInt2, long[] paramArrayOfLong2) {}
+  public ActivateFriendsManager$3(akjv paramakjv, int paramInt1, long[] paramArrayOfLong1, String paramString, int paramInt2, long[] paramArrayOfLong2) {}
   
   public void run()
   {
@@ -28,29 +28,29 @@ public class ActivateFriendsManager$3
         localSessionInfo = new SessionInfo();
         localSessionInfo.jdField_a_of_type_JavaLangString = String.valueOf(l);
         localSessionInfo.jdField_a_of_type_Int = 0;
-        localSessionInfo.d = bbcl.m(akjw.a(this.this$0), String.valueOf(l));
-        localaaok = new aaok();
-        localaaok.a = false;
-        aaod.a(akjw.a(this.this$0), akjw.a(this.this$0).getApp(), localSessionInfo, this.jdField_a_of_type_JavaLangString, null, localaaok);
+        localSessionInfo.d = bbcz.m(akjv.a(this.this$0), String.valueOf(l));
+        localaaog = new aaog();
+        localaaog.a = false;
+        aanz.a(akjv.a(this.this$0), akjv.a(this.this$0).getApp(), localSessionInfo, this.jdField_a_of_type_JavaLangString, null, localaaog);
         i += 1;
       }
       this.this$0.a(this.jdField_a_of_type_ArrayOfLong, 1);
       localObject = new Bundle();
       ((Bundle)localObject).putInt("key_rt_type", 0);
-      akjw.a(this.this$0).notifyObservers(akjz.class, 113, true, (Bundle)localObject);
+      akjv.a(this.this$0).notifyObservers(akjy.class, 113, true, (Bundle)localObject);
     }
-    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int == -1) || (akjv.a(akjw.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong, this.jdField_b_of_type_ArrayOfLong, this.jdField_b_of_type_Int)))
+    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int == -1) || (akju.a(akjv.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong, this.jdField_b_of_type_ArrayOfLong, this.jdField_b_of_type_Int)))
     {
       int j;
       int i;
       long l;
       SessionInfo localSessionInfo;
-      aaok localaaok;
+      aaog localaaog;
       return;
     }
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_rt_type", 2);
-    akjw.a(this.this$0).notifyObservers(akjz.class, 113, false, (Bundle)localObject);
+    akjv.a(this.this$0).notifyObservers(akjy.class, 113, false, (Bundle)localObject);
   }
 }
 

@@ -1,13 +1,8 @@
 public class lom
 {
-  public long a;
-  public long b;
-  
-  public lom(long paramLong1, long paramLong2)
-  {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

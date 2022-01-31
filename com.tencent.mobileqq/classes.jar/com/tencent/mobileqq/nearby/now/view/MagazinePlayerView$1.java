@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import atje;
-import atkv;
+import atjg;
+import atkx;
 
 public class MagazinePlayerView$1
   implements Runnable
 {
-  public MagazinePlayerView$1(atje paramatje) {}
+  public MagazinePlayerView$1(atjg paramatjg) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Atkv.b();
+    this.this$0.jdField_a_of_type_Atkx.b();
     this.this$0.jdField_a_of_type_Boolean = true;
-    this.this$0.jdField_a_of_type_Atkv.c();
+    this.this$0.jdField_a_of_type_Atkx.c();
   }
 }
 

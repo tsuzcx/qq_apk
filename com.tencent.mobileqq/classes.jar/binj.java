@@ -1,6 +1,6 @@
-class binj
+public abstract interface binj
 {
-  public CharSequence a;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

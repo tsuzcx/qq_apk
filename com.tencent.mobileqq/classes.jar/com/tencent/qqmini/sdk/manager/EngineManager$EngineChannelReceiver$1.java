@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.manager;
 
-import besz;
-import betc;
-import beub;
+import betq;
+import bett;
+import beus;
 
 public class EngineManager$EngineChannelReceiver$1
   implements Runnable
 {
-  public EngineManager$EngineChannelReceiver$1(betc parambetc, EngineChannel paramEngineChannel) {}
+  public EngineManager$EngineChannelReceiver$1(bett parambett, EngineChannel paramEngineChannel) {}
   
   public void run()
   {
-    besz.a(this.jdField_a_of_type_Betc.a, beub.a().a, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    betq.a(this.jdField_a_of_type_Bett.a, beus.a().a, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
   }
 }
 

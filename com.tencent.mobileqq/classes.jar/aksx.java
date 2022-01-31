@@ -3,12 +3,12 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aksx
-  extends aksz
+  extends aksy
 {
   public aksx(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
     super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(1);
+    this.a = DataLineMsgRecord.tableName(0);
   }
 }
 

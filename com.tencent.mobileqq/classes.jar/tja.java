@@ -1,24 +1,21 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class tja
-  extends tiy
+  extends ssh
 {
-  protected TextView c = (TextView)a(2131378644);
+  public boolean a;
+  public boolean b;
+  public boolean c = true;
+  public boolean d;
   
-  public tja(ViewGroup paramViewGroup, int paramInt)
+  public tja(ErrorMessage paramErrorMessage)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  public void a(tfi paramtfi)
+  public String toString()
   {
-    if (paramtfi.b > 99)
-    {
-      this.c.setText("99+");
-      return;
-    }
-    this.c.setText(String.valueOf(paramtfi.b));
+    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
   }
 }
 

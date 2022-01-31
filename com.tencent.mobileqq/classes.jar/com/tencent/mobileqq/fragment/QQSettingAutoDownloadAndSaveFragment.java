@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.fragment;
 
-import ajuf;
+import ajud;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aqiu;
-import aqiv;
 import aqiw;
 import aqix;
 import aqiy;
-import asdy;
-import auoe;
-import axqw;
-import bfmj;
-import bfni;
+import aqiz;
+import aqja;
+import asea;
+import auog;
+import axqy;
+import bfna;
+import bfnz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,51 +38,51 @@ public class QQSettingAutoDownloadAndSaveFragment
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.mContentView.findViewById(2131375652));
-    if (bfni.c()) {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.mContentView.findViewById(2131375654));
+    if (bfnz.c()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
     }
-    axqw.b(null, "dc00898", "", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "0X800ABAF", "0X800ABAF", 0, 1, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131362895));
-    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131362894));
-    this.c = ((FormSwitchItem)this.mContentView.findViewById(2131378663));
-    this.d = ((FormSwitchItem)this.mContentView.findViewById(2131362896));
-    this.e = ((FormSwitchItem)this.mContentView.findViewById(2131362897));
-    if (auoe.c == 0L)
+    axqy.b(null, "dc00898", "", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "0X800ABAF", "0X800ABAF", 0, 1, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131362894));
+    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131362893));
+    this.c = ((FormSwitchItem)this.mContentView.findViewById(2131378668));
+    this.d = ((FormSwitchItem)this.mContentView.findViewById(2131362895));
+    this.e = ((FormSwitchItem)this.mContentView.findViewById(2131362896));
+    if (auog.c == 0L)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-      if (!asdy.a()) {
+      if (!asea.a()) {
         break label439;
       }
       this.b.setVisibility(0);
     }
     for (;;)
     {
-      boolean bool = SettingCloneUtil.readValue(getActivity(), null, getString(2131695321), "qqsetting_auto_receive_pic_key", true);
+      boolean bool = SettingCloneUtil.readValue(getActivity(), null, getString(2131695322), "qqsetting_auto_receive_pic_key", true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aqiu(this));
-      bool = SettingCloneUtil.readValue(getActivity(), null, getString(2131695321), "qqsetting_auto_receive_magic_face_key", true);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aqiw(this));
+      bool = SettingCloneUtil.readValue(getActivity(), null, getString(2131695322), "qqsetting_auto_receive_magic_face_key", true);
       this.b.setChecked(bool);
-      this.b.setOnCheckedChangeListener(new aqiv(this));
-      bool = ajuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+      this.b.setOnCheckedChangeListener(new aqix(this));
+      bool = ajud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
       this.c.setChecked(bool);
-      this.c.setOnCheckedChangeListener(new aqiw(this));
-      bool = bfmj.a(true);
+      this.c.setOnCheckedChangeListener(new aqiy(this));
+      bool = bfna.a(true);
       this.d.setChecked(bool);
-      this.d.setOnCheckedChangeListener(new aqix(this));
-      bool = bfmj.a(false);
+      this.d.setOnCheckedChangeListener(new aqiz(this));
+      bool = bfna.a(false);
       this.e.setChecked(bool);
-      this.e.setOnCheckedChangeListener(new aqiy(this));
-      if (bfni.c()) {
+      this.e.setOnCheckedChangeListener(new aqja(this));
+      if (bfnz.c()) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
       }
       if (AppSetting.d)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719290));
-        this.b.setContentDescription(getString(2131719289));
-        this.c.setContentDescription(getString(2131720668));
-        this.d.setContentDescription(getString(2131719287));
-        this.e.setContentDescription(getString(2131719288));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719301));
+        this.b.setContentDescription(getString(2131719300));
+        this.c.setContentDescription(getString(2131720679));
+        this.d.setContentDescription(getString(2131719298));
+        this.e.setContentDescription(getString(2131719299));
       }
       return;
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
@@ -106,13 +106,13 @@ public class QQSettingAutoDownloadAndSaveFragment
   
   protected int getContentLayoutId()
   {
-    return 2131561067;
+    return 2131561066;
   }
   
   protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getActivity().getString(2131719300));
+    setTitle(getActivity().getString(2131719311));
     return localView;
   }
 }

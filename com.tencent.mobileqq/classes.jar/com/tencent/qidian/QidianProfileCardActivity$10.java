@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bdum;
+import bdvd;
 import com.tencent.image.URLImageView;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,7 +14,7 @@ class QidianProfileCardActivity$10
     if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int == 1) {}
     for (String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.d;; str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString)
     {
-      this.this$0.a.put(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString, new bdum(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, str));
+      this.this$0.a.put(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString, new bdvd(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, str));
       this.this$0.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
       return;
     }

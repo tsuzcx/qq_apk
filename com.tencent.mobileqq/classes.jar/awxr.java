@@ -1,55 +1,46 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class awxr
-  extends awtm
+  extends awwy
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private awxs jdField_a_of_type_Awxs;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public SquareImageView a;
+  public Button b;
+  public LinearLayout b;
+  public TextView b;
+  public LinearLayout c;
   
-  public awxr(awta paramawta, Context paramContext)
+  public awxr(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramawta, paramContext);
+    super(paramViewGroup, paramInt);
   }
   
-  private void a()
+  protected void a()
   {
-    String str = a();
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
-      }
-      this.jdField_a_of_type_Awxs.a();
-      this.jdField_a_of_type_Awxs.a(str);
-      this.jdField_a_of_type_Awxs.b();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
-  }
-  
-  private void b(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559623, null, false);
-    this.jdField_a_of_type_Awxs.a(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_Awxs = new awxs(paramContext);
-    b(paramContext);
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void e()
-  {
-    a();
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    a(localView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131375421));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363638));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368679));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369367));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369368));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378086));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378085));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131368521));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369366));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363480));
   }
 }
 

@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
 
 public class afls
-  extends ajtq
+  implements DialogInterface.OnDismissListener
 {
-  public afls(SystemMsgListView paramSystemMsgListView) {}
+  public afls(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
-      }
-      bcpw.a(this.a.getContext(), 2131699202, 3000).a();
-      return;
-    }
-    bcpw.a(this.a.getContext(), 2131699201, 1).a();
+    this.a.a = null;
   }
 }
 

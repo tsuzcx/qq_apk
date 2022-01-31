@@ -1,6 +1,27 @@
-public abstract interface bekc
+public class bekc
+  implements bekl
 {
-  public abstract String getNativeLibDir();
+  private int jdField_a_of_type_Int;
+  private Object jdField_a_of_type_JavaLangObject;
+  
+  public static bekc a(int paramInt)
+  {
+    return a(paramInt, null);
+  }
+  
+  public static bekc a(int paramInt, Object paramObject)
+  {
+    bekc localbekc = new bekc();
+    localbekc.jdField_a_of_type_Int = paramInt;
+    localbekc.jdField_a_of_type_JavaLangObject = paramObject;
+    return localbekc;
+  }
+  
+  public Object a(behn parambehn)
+  {
+    parambehn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
+    return null;
+  }
 }
 
 

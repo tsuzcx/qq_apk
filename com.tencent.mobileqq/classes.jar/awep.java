@@ -1,164 +1,76 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.AssetManager;
-import android.os.AsyncTask;
-import android.util.SparseArray;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-class awep
-  extends AsyncTask<Void, Integer, Integer>
+public class awep
+  implements BusinessObserver
 {
-  awep(aweo paramaweo) {}
+  public awep(StatusJsHandler paramStatusJsHandler) {}
   
-  private void a(long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l = aweo.a(this.a).getLong("k_icon", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
-    }
-    Object localObject;
-    if (l < paramLong)
-    {
-      localObject = null;
-      if (paramLong <= 104L) {
-        break label180;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        InputStream localInputStream = aweo.a(this.a).getApp().getAssets().open("rich_status.xml");
-        localObject = localInputStream;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-      }
-      localObject = (SparseArray)aweo.a(this.a, localObject)[0];
-      if (aweo.a(this.a, (SparseArray)localObject, aweo.a(this.a))) {
-        aweo.a(this.a).edit().putLong("k_icon", paramLong).commit();
-      }
+    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
       return;
-      try
-      {
-        label180:
-        FileInputStream localFileInputStream = new FileInputStream(new File(aweo.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
-        localObject = localFileInputStream;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        localFileNotFoundException.printStackTrace();
-      }
     }
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    long l = aweo.a(this.a).getLong("k_version", 0L);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
+      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
     }
-    if (l > 104L) {}
-    ArrayList localArrayList;
-    label221:
+    if (!paramBoolean)
+    {
+      this.a.a(2131695569);
+      this.a.a(this.a.c, "false");
+      return;
+    }
     for (;;)
     {
       try
       {
-        paramVarArgs = new FileInputStream(new File(aweo.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
-        if (paramVarArgs != null) {
-          break label221;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break;
         }
-        Object localObject;
-        paramVarArgs = null;
-      }
-      catch (FileNotFoundException paramVarArgs)
-      {
-        try
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        if ((!localFollowResponse.ret_info.has()) || (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has())) {
+          break label321;
+        }
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
         {
-          localObject = aweo.a(this.a).getApp().getAssets().open("rich_status.xml");
-          paramVarArgs = (Void[])localObject;
-          l = 104L;
-          localObject = aweo.a(this.a, paramVarArgs);
-          paramVarArgs = (SparseArray)localObject[0];
-          localArrayList = (ArrayList)localObject[1];
-          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
-            break;
-          }
-          publishProgress(new Integer[] { Integer.valueOf(-1) });
-          a(l);
-          return Integer.valueOf(100);
+          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
+          this.a.a(localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+          ((PublicAccountHandler)localBaseActivity.app.a(11)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+          nnu.a().a(localBaseActivity.getApplicationContext(), localBaseActivity.app, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, null, true);
+          this.a.a(this.a.c, "true");
+          return;
         }
-        catch (IOException localIOException)
+        if (paramInt == 58)
         {
-          localIOException.printStackTrace();
+          this.a.a(2131695566);
+          break;
         }
-        paramVarArgs = paramVarArgs;
-        paramVarArgs.printStackTrace();
-      }
-    }
-    for (;;)
-    {
-      synchronized (aweo.a(this.a))
-      {
-        if ((!isCancelled()) && (aweo.a(this.a).size() == 0))
+        if (paramInt == 65)
         {
-          aweo.a(this.a, paramVarArgs);
-          aweo.a(this.a).clear();
-          aweo.a(this.a).addAll(localArrayList);
-          publishProgress(new Integer[] { Integer.valueOf(102) });
+          this.a.a(2131695539);
+          break;
         }
+        this.a.a(2131695569);
       }
-      cancel(true);
+      catch (Exception paramBundle) {}
+      break;
+      label321:
+      paramInt = -1;
     }
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
-    }
-    aweo.a(this.a, null);
-    if (101 == aweo.a(this.a, false)) {
-      aweo.a(this.a);
-    }
-    this.a.a(false);
-  }
-  
-  protected void a(Integer... paramVarArgs)
-  {
-    int i = paramVarArgs[0].intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
-    }
-    if (aweo.a(this.a) != null)
-    {
-      paramVarArgs = aweo.a(this.a).iterator();
-      while (paramVarArgs.hasNext()) {
-        ((awcb)paramVarArgs.next()).a(i, 300);
-      }
-    }
-    hy.a().c(i, 300);
-  }
-  
-  protected void onCancelled()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
-    }
-    aweo.a(this.a, null);
   }
 }
 

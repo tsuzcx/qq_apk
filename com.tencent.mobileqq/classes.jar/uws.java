@@ -1,44 +1,50 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
-class uws
-  implements syt<tnc, tnd>
+final class uws
+  implements syq<tlq, tlr>
 {
-  uws(uwr paramuwr, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
+  uws(uxo paramuxo) {}
   
-  public void a(@NonNull tnc paramtnc, @Nullable tnd paramtnd, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull tlq paramtlq, @Nullable tlr paramtlr, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    ved.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
+    if (paramtlr == null)
     {
-      veg.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
+      new tlr(paramErrorMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramErrorMessage.isFail()) {
+          ved.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
+        }
+      } while ((paramtlr.jdField_a_of_type_JavaUtilList == null) || (paramtlr.jdField_a_of_type_JavaUtilList.isEmpty()));
+      paramtlq = (tbw)tcz.a(17);
+      paramtlr = (tls)paramtlr.jdField_a_of_type_JavaUtilList.get(0);
+    } while (paramtlr.jdField_a_of_type_JavaUtilList == null);
+    ved.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramtlr.jdField_a_of_type_JavaLangString, Integer.valueOf(paramtlr.jdField_a_of_type_Int), Integer.valueOf(paramtlr.jdField_a_of_type_JavaUtilList.size()) });
+    paramtlq.a(paramtlr.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
+    paramtlq = new uoy(paramErrorMessage, paramtlr.jdField_a_of_type_JavaLangString, 1);
+    paramtlq.jdField_a_of_type_JavaUtilList = paramtlr.jdField_a_of_type_JavaUtilList;
+    paramtlq.c = true;
+    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramtlq.jdField_a_of_type_Boolean = bool;
+      paramtlq.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
+      paramtlq.jdField_b_of_type_Int = paramtlr.jdField_a_of_type_Int;
+      stb.a().dispatch(paramtlq);
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramtnd == null))
-    {
-      veg.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      uwr.a(this.jdField_a_of_type_Uwr, paramErrorMessage);
-      return;
-    }
-    uwr.a(this.jdField_a_of_type_Uwr);
-    uwr.a(this.jdField_a_of_type_Uwr).a(paramtnd.jdField_a_of_type_JavaUtilList, paramtnd.jdField_a_of_type_JavaLangString, paramtnd.jdField_a_of_type_Boolean);
-    ((uwa)tdc.a(11)).a(paramtnd.jdField_a_of_type_JavaUtilList);
-    boolean bool = uwr.a(paramtnd, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-    veg.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramtnd.b), Integer.valueOf(uwr.b(this.jdField_a_of_type_Uwr)), Boolean.valueOf(bool) });
-    if ((!paramtnd.jdField_a_of_type_Boolean) && (uwr.b(this.jdField_a_of_type_Uwr) < 10) && ((!paramtnd.b) || (bool)))
-    {
-      veg.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
-      paramtnc.b = uwr.a(this.jdField_a_of_type_Uwr).a();
-      syr.a().a(paramtnc, this);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
-      uwr.a(this.jdField_a_of_type_Uwr).c();
-    }
-    paramtnc = uwr.a(this.jdField_a_of_type_Uwr).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    uwr.a(this.jdField_a_of_type_Uwr, paramtnc);
   }
 }
 

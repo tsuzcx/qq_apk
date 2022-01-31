@@ -1,45 +1,18 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abcn
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public abcn(ForwardRecentActivity paramForwardRecentActivity, ResultRecord paramResultRecord) {}
+  public abcn(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity)) {
-      if (ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, ajsf.z, 6000))
-      {
-        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity).a(false);
-        ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, ajsf.z, 6000);
-      }
+    if (!this.a.isFinishing()) {
+      this.a.finish();
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord));
-      ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity).a(true);
-      return;
-      paramView = new Bundle();
-      paramView.putString("uin", String.valueOf(ajsf.z));
-      paramView.putInt("uintype", -1);
-      paramView.putBoolean("forward_report_confirm", true);
-      paramView.putString("forward_report_confirm_action_name", "0X8005A13");
-      paramView.putString("forward_report_confirm_reverse2", "0");
-      paramView.putString("caller_name", this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.c);
-      this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Aqbc.a(aqas.f.intValue(), paramView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Aqbc.B();
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.app, "CliOper", "", "", "friendchoose", "0X8009D90", ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity), 0, "", "", "", "");
-    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_Boolean);
-    bded.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.app.getAccount(), "", this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.b, "1000", "34", "0", false);
   }
 }
 

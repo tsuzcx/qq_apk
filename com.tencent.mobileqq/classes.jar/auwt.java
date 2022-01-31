@@ -1,12 +1,15 @@
-import java.util.Vector;
+import android.view.animation.Interpolator;
 
-public class auwt
+final class auwt
+  implements Interpolator
 {
-  public String a;
-  public Vector<String> a;
-  public String b;
-  public String c;
-  public String d;
+  public float getInterpolation(float paramFloat)
+  {
+    if (paramFloat <= 0.3333333F) {
+      return 0.0F;
+    }
+    return (paramFloat - 0.3333333F) * 1.5F;
+  }
 }
 
 

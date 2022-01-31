@@ -1,7 +1,7 @@
 package com.tencent.kingkong;
 
-import zyz;
-import zzn;
+import zyw;
+import zzk;
 
 final class Common$2
   implements Runnable
@@ -12,7 +12,7 @@ final class Common$2
     {
       if ((!Common.jdField_a_of_type_Boolean) && (Common.b()) && (Common.c()) && (Common.d()))
       {
-        if (!Common.jdField_a_of_type_Zzn.a()) {
+        if (!Common.jdField_a_of_type_Zzk.a()) {
           return;
         }
         Common.a(true);
@@ -29,14 +29,14 @@ final class Common$2
         }
         Common.jdField_a_of_type_Boolean = true;
         Common.a(false);
-        Common.jdField_a_of_type_Zzn.a();
+        Common.jdField_a_of_type_Zzk.a();
         return;
       }
     }
     catch (Exception localException)
     {
       Common.jdField_a_of_type_Boolean = false;
-      zyz.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
+      zyw.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
     }
   }
 }

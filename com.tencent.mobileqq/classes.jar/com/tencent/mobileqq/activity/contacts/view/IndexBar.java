@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import afsz;
+import afsx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -20,7 +20,7 @@ public class IndexBar
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private afsz jdField_a_of_type_Afsz;
+  private afsx jdField_a_of_type_Afsx;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -187,8 +187,8 @@ public class IndexBar
     {
       return bool;
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Afsz != null) {
-        this.jdField_a_of_type_Afsz.c(false);
+      if (this.jdField_a_of_type_Afsx != null) {
+        this.jdField_a_of_type_Afsx.c(false);
       }
       invalidate();
       return true;
@@ -197,22 +197,22 @@ public class IndexBar
         if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfJavaLangString.length))
         {
           this.jdField_a_of_type_Int = i;
-          if (this.jdField_a_of_type_Afsz != null)
+          if (this.jdField_a_of_type_Afsx != null)
           {
             Rect localRect = new Rect();
             this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int], 0, this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int].length(), localRect);
             k = this.jdField_a_of_type_ArrayOfJavaLangString.length;
             f1 = this.e / k * (this.jdField_a_of_type_Int + 1);
             float f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]) / 2.0F;
-            this.jdField_a_of_type_Afsz.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
+            this.jdField_a_of_type_Afsx.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
           }
         }
         invalidate();
       }
     } while (paramMotionEvent.getAction() != 0);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Afsz != null) {
-      this.jdField_a_of_type_Afsz.c(true);
+    if (this.jdField_a_of_type_Afsx != null) {
+      this.jdField_a_of_type_Afsx.c(true);
     }
     invalidate();
     return true;
@@ -231,9 +231,9 @@ public class IndexBar
     invalidate();
   }
   
-  public void setOnIndexBarTouchListener(afsz paramafsz)
+  public void setOnIndexBarTouchListener(afsx paramafsx)
   {
-    this.jdField_a_of_type_Afsz = paramafsz;
+    this.jdField_a_of_type_Afsx = paramafsx;
   }
 }
 

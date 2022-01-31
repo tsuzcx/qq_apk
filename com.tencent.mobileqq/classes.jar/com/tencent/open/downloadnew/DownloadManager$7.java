@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
-import bdht;
-import bdjc;
-import bdkp;
+import bdii;
+import bdjr;
+import bdle;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManager$7
   implements Runnable
 {
-  public DownloadManager$7(bdkp parambdkp, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$7(bdle parambdle, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class DownloadManager$7
       TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        bdht.c("DownloadManager_", "onDownloadError taskInfo != null！info.writeCodeState = " + this.a.j);
+        bdii.c("DownloadManager_", "onDownloadError taskInfo != null！info.writeCodeState = " + this.a.j);
         this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
         this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
         this.this$0.e(this.a);
@@ -37,16 +37,16 @@ public class DownloadManager$7
       for (;;)
       {
         label184:
-        bdht.c("DownloadManager_", "downloadSDKClient>>>", localException);
+        bdii.c("DownloadManager_", "downloadSDKClient>>>", localException);
       }
     }
-    bdjc.a("300", this.a.h, this.a.jdField_c_of_type_JavaLangString, this.a.o);
+    bdjr.a("300", this.a.h, this.a.jdField_c_of_type_JavaLangString, this.a.o);
     if (this.a.a) {
       this.this$0.c(this.a);
     }
     return;
-    bdht.c("DownloadManager_", "onDownloadError taskInfo == null");
-    bdkp.a(this.this$0, this.a);
+    bdii.c("DownloadManager_", "onDownloadError taskInfo == null");
+    bdle.a(this.this$0, this.a);
   }
 }
 

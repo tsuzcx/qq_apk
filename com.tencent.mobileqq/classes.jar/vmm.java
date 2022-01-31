@@ -1,14 +1,21 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 class vmm
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  vmm(vmj paramvmj) {}
+  vmm(vmg paramvmg) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    veg.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
+    }
+    vej.a("0X80076C6");
+    vej.b("0X80075DA");
   }
 }
 

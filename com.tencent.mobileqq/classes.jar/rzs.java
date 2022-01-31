@@ -1,22 +1,24 @@
-import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaEnvironment;
 
 public class rzs
-  implements baxe
+  implements rzz
 {
-  public rzs(ViolaBaseView.10.1 param1) {}
+  public rzs(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public void onInfo(long paramLong, double paramDouble)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
-    {
-      ViolaBaseView.a(this.a.a.a, paramDouble);
-      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    new Handler().postDelayed(new ViolaBaseView.10.1.1.1(this), 500L);
+    if (QLog.isColorLevel()) {
+      ThreadManager.post(new ViolaBaseView.17.1(this, paramString), 8, null, true);
+    }
   }
 }
 

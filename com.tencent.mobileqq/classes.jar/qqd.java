@@ -1,41 +1,24 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity.2;
 
 public class qqd
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  public qqd(VideoFeedsPlayActivity.2 param2) {}
   
-  public qqd(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
+  public void onClick(View paramView)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
-    if (i == 1) {
-      VideoFeedsListView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, true);
-    }
-    for (;;)
+    qoi.a(this.a.this$0, this.a.a.a.d);
+    qzb localqzb = new qzb(this.a.a).h(this.a.a.g).u(this.a.a.a.a);
+    if (this.a.a.a.d != null) {}
+    for (paramView = this.a.a.a.d.e;; paramView = "")
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "RotationObserver.onChange() : rotateState=" + i);
-      }
+      nol.b(null, "", "0X800A18B", "0X800A18B", 0, 0, "", "", "", localqzb.p(paramView).a().a(), false);
       return;
-      VideoFeedsListView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, false);
     }
   }
 }

@@ -1,93 +1,136 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import cooperation.qqreader.QRBridgeUtil;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class bguw
+  extends QIPCModule
 {
-  private static int a = -1;
+  private static bguw a;
   
-  public static void a(Context paramContext)
+  public bguw(String paramString)
   {
-    bgva.a().enter(paramContext, 1002L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
+    super(paramString);
   }
   
-  public static void a(Context paramContext, Intent paramIntent, String paramString)
+  public static bguw a()
   {
-    a(paramContext, paramIntent, paramString, null);
-  }
-  
-  public static void a(Context paramContext, Intent paramIntent, String paramString, EnterCallback paramEnterCallback)
-  {
-    Bundle localBundle = paramIntent.getExtras();
-    paramIntent = localBundle;
-    if (localBundle == null) {
-      paramIntent = new Bundle();
-    }
-    paramIntent.putString("com.tencent.reader.plugin.KEY_ACTIVITY_CLASSNAME", paramString);
-    paramIntent.putLong("start_plugin_act_begin_time", System.currentTimeMillis());
-    bgva.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", paramIntent, paramEnterCallback);
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    if (bgtf.a().a())
+    if (a == null) {}
+    try
     {
-      bgvo.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = true ! mGrayState = " + a);
-      return;
-    }
-    bgvo.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = false, mGrayState = " + a + " isShadowOnly = " + paramBoolean);
-    if (a()) {
-      a(paramContext);
-    }
-    for (;;)
-    {
-      bgvr.a(paramContext, String.valueOf(a));
-      return;
-      if (paramBoolean) {
-        break;
+      if (a == null) {
+        a = new bguw("ReaderIPCModule");
       }
-      BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("qqreaderplugin.apk");
+      return a;
     }
+    finally {}
   }
   
-  public static boolean a()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    bgvo.e("ReaderPluginHelper", "[isUseShadow] mGrayState = " + a);
-    if (a == -1)
+    bgwf.e("ReaderIPCModule", "action = " + paramString);
+    if (paramBundle == null)
     {
-      a = bguy.a().getInt("KEY_SHADOW_GRAY", -1);
-      if (a == -1) {
-        a = 0;
+      bgwf.e("ReaderIPCModule", "Err params = null, action = " + paramString);
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      bgwf.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("getRedTouchInfo".equals(paramString))
+    {
+      paramString = (avps)((QQAppInterface)localObject).getManager(36);
+      localObject = paramBundle.getStringArrayList("pathList");
+      if ((paramString != null) && (localObject != null))
+      {
+        paramBundle = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
+          if (localAppInfo != null) {
+            paramBundle.add(avpv.a(localAppInfo));
+          }
+        }
+        paramString = new Bundle();
+        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
+        return EIPCResult.createResult(0, paramString);
       }
-      bgvo.c("ReaderPluginHelper", "[loadPluginRuntime] SP state = " + a);
     }
-    return a == 1;
-  }
-  
-  public static void b(Context paramContext)
-  {
-    boolean bool = bgtf.a().a();
-    bgvo.c("ReaderPluginHelper", "preloadPlugin: isPluginReady=" + bool + ", isUseShadow=" + a());
-    if (bool)
+    else if ("getSingleRedTouchInfo".equals(paramString))
     {
-      bgvo.c("ReaderPluginHelper", "[loadPluginRuntime] sIsPluginReady = true ! mGrayState = " + a);
-      return;
+      paramString = (avps)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramString = paramString.a(paramBundle.getString("path"));
+        if (paramString != null)
+        {
+          paramString = avpv.a(paramString);
+          paramBundle = new Bundle();
+          paramBundle.putParcelable("redTouchInfo", paramString);
+          if ((paramString != null) && (paramString.b() == 1)) {
+            bgwf.e("ReaderIPCModule", "path=" + paramString.b());
+          }
+          return EIPCResult.createResult(0, paramBundle);
+        }
+      }
     }
-    if (a())
+    else
     {
-      c(paramContext);
-      return;
+      if (!"reportRedTouchClick".equals(paramString)) {
+        break label396;
+      }
+      paramString = (avps)((QQAppInterface)localObject).getManager(36);
+      if (paramString != null)
+      {
+        paramBundle = paramBundle.getString("path");
+        paramString.b(paramBundle);
+      }
     }
-    BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("qqreaderplugin.apk");
-  }
-  
-  private static void c(Context paramContext)
-  {
-    bgva.a().enter(paramContext, 1001L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
+    label396:
+    do
+    {
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("service_type", 2);
+        ((JSONObject)localObject).put("act_id", 1002);
+        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
+        return null;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+      if ("download_reader_plugin".equals(paramString))
+      {
+        bgtt.a().a(((QQAppInterface)localObject).getApp());
+        return EIPCResult.createResult(0, new Bundle());
+      }
+      if ("get_skey".equals(paramString))
+      {
+        paramString = new Bundle();
+        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
+        return EIPCResult.createResult(0, paramString);
+      }
+    } while (!"action_get_account".equals(paramString));
+    paramString = new Bundle();
+    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
+    return EIPCResult.createResult(0, paramString);
   }
 }
 

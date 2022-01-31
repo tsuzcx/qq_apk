@@ -1,30 +1,44 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class abqt
-  extends ajzm
+  implements URLDrawable.URLDrawableListener
 {
   public abqt(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    if ((paramBoolean1) && (paramInt == 64)) {
-      this.a.a(paramBoolean2);
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    if (!paramBoolean1) {
-      this.a.a(2131719375, 1);
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
     }
-    this.a.a(paramBoolean2);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, vzl.a(this.a.app.getApp(), 47.0F), vzl.a(this.a.app.getApp(), 14.0F));
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
   }
 }
 

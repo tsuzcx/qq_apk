@@ -1,28 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class bhsz
-  extends BroadcastReceiver
+public class bhsz
+  extends bhsh
 {
-  bhsz(bhsy parambhsy) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void a(WebViewPlugin paramWebViewPlugin, bcdp parambcdp, String[] paramArrayOfString)
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (parambcdp == null)) {
       return;
     }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
+    QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
+    paramWebViewPlugin = new Intent("ReactNativeMsgDeliver");
+    paramWebViewPlugin.putExtra("args", paramArrayOfString[0]);
+    BaseApplication.getContext().sendBroadcast(paramWebViewPlugin);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!"deliverMsg".equalsIgnoreCase(paramString3)) {
+      return false;
     }
+    a(this.a, this.a.mRuntime, paramVarArgs);
+    return true;
   }
 }
 

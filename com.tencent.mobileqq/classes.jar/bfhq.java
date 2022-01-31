@@ -1,23 +1,10 @@
-final class bfhq
-  extends bfht
+public class bfhq
 {
-  public bfim a;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bfhq(bfho parambfho, String paramString)
+  public static void a(int paramInt1, int paramInt2)
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a(String paramString, bfim parambfim)
-  {
-    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Bfim = parambfim;
-      return false;
-    }
-    return true;
+    bfhw localbfhw = new bfhw();
+    localbfhw.a(paramInt1).a(paramInt2);
+    bfht.a(localbfhw.toString(), 103);
   }
 }
 

@@ -1,25 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class ahak
-  extends Handler
+public abstract class ahak
+  implements TextWatcher
 {
-  public ahak(ThemeHbFragment paramThemeHbFragment) {}
+  protected EditText a;
   
-  public void handleMessage(Message paramMessage)
+  public ahak(EditText paramEditText)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
-    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+    this.a = paramEditText;
   }
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

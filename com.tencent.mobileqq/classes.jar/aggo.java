@@ -1,24 +1,13 @@
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+
 public class aggo
 {
-  public String a;
-  private String b;
-  private String c;
-  
-  public aggo(String paramString1, String paramString2)
-  {
-    this.b = paramString1;
-    this.c = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public String b()
-  {
-    return this.c;
-  }
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

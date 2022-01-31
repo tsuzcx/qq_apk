@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajsf;
+import ajsd;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import axok;
-import axol;
 import axom;
 import axon;
+import axoo;
 import axop;
-import aymw;
-import ayqc;
-import bbuv;
+import axor;
+import aymy;
+import ayqe;
+import bbvj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.image.URLDrawable;
@@ -30,8 +30,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class InitUrlDrawable
   extends Step
 {
-  public static ayqc a;
-  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new axok();
+  public static ayqe a;
+  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new axom();
   private static List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   public static volatile boolean a;
   
@@ -127,8 +127,8 @@ public class InitUrlDrawable
     }
     jdField_a_of_type_Boolean = true;
     DiniFlyLog.setLog(jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog);
-    QEffectEngine.getInstance().setJsonConvert(new axon());
-    QEffectEngine.getInstance().registerLoad(new aymw());
+    QEffectEngine.getInstance().setJsonConvert(new axop());
+    QEffectEngine.getInstance().registerLoad(new aymy());
     QEffectEngine.getInstance().registerEffect(2, "a.png", QEffectApngImageView.class);
     QEffectEngine.getInstance().registerEffect(3, "lottie", QEffectLottieImageView.class);
     QEffectEngine.getInstance().registerEffect(8, "gif", QEffectGifImageView.class);
@@ -136,20 +136,20 @@ public class InitUrlDrawable
     URLDrawable.DEBUG = false;
     File localFile;
     if ("mounted".equals(Environment.getExternalStorageState())) {
-      localFile = new File(bbuv.a(ajsf.aW));
+      localFile = new File(bbvj.a(ajsd.aW));
     }
     try
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new axop(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new axor(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new axol());
+          URLDrawable.setDebuggableCallback(new axon());
         }
         localFile = new File(localFile, "diskcache");
-        jdField_a_of_type_Ayqc = new ayqc(localFile);
-        aywk.a = localFile;
-        JpegExifReader.initJpegExifReader(new axom());
+        jdField_a_of_type_Ayqe = new ayqe(localFile);
+        aywm.a = localFile;
+        JpegExifReader.initJpegExifReader(new axoo());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }

@@ -1,36 +1,34 @@
-import android.content.res.Resources;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.XListView;
 
 public class aatt
-  implements asko<bbtb>
+  implements bfph
 {
-  public aatt(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aatt(ChatSettingForTroop paramChatSettingForTroop, bfpc parambfpc) {}
   
-  public void a(bbtb parambbtb)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.f) {
-      return;
-    }
-    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    localFormSimpleItem.setRightText(parambbtb.jdField_a_of_type_JavaLangString);
-    localFormSimpleItem.setTag(2131373678, parambbtb);
-    if (parambbtb.jdField_a_of_type_Boolean)
+    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+    if (paramView != null)
     {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130841001));
-      if (!bbwv.a(this.a.app, "troop_keyword_scrolled", false))
+      paramInt = paramView.c;
+      switch (paramInt)
       {
-        bbwv.b(this.a.app, "troop_keyword_scrolled", true);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.addOnLayoutChangeListener(ChatSettingForTroop.a(this.a));
       }
     }
     for (;;)
     {
-      axqw.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambbtb.c, 1, 0, "", "", "", "");
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
-      localFormSimpleItem.setRightIcon(null);
+      paramInt = -1;
+      break;
+      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+      bbbp.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, bbbp.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a) });
+      continue;
+      banb.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
+      continue;
+      banb.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
     }
   }
 }

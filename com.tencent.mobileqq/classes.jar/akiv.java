@@ -1,167 +1,118 @@
-import android.content.Intent;
+import PayMQQ.UniPayRequest;
+import PayMQQ.UniPayResponse;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class akiv
-  extends MSFServlet
+  extends ajtb
 {
-  private byte[] a(byte paramByte, String paramString1, String paramString2)
+  private ArrayList<akiw> a = new ArrayList();
+  
+  public akiv(QQAppInterface paramQQAppInterface)
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1372);
-    localOIDBSSOPkg.uint32_service_type.set(1);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(9);
-    paramString1 = Long.valueOf(Long.parseLong(paramString1));
-    int i = (byte)(int)(paramString1.longValue() & 0xFF);
-    int j = (byte)(int)(paramString1.longValue() >> 8 & 0xFF);
-    int k = (byte)(int)(paramString1.longValue() >> 16 & 0xFF);
-    int m = (byte)(int)(paramString1.longValue() >> 24 & 0xFF);
-    paramString1 = Long.valueOf(Long.parseLong(paramString2));
-    int n = (byte)(int)(paramString1.longValue() & 0xFF);
-    int i1 = (byte)(int)(paramString1.longValue() >> 8 & 0xFF);
-    int i2 = (byte)(int)(paramString1.longValue() >> 16 & 0xFF);
-    int i3 = (byte)(int)(paramString1.longValue() >> 24 & 0xFF);
-    localByteBuffer.put(new byte[] { m, k, j, i }).put(new byte[] { i3, i2, i1, n }).put(paramByte);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localByteBuffer.array()));
-    paramString1 = localOIDBSSOPkg.toByteArray();
-    paramString2 = ByteBuffer.allocate(paramString1.length + 4);
-    paramString2.putInt(paramString1.length + 4);
-    paramString2.put(paramString1);
-    return paramString2.array();
+    super(paramQQAppInterface);
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private void a()
   {
-    boolean bool2 = false;
-    int i = paramIntent.getIntExtra("command", -1);
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    Bundle localBundle = new Bundle();
-    switch (i)
-    {
-    }
-    label120:
-    byte b;
-    for (;;)
-    {
-      notifyObserver(paramIntent, i, bool1, localBundle, akim.class);
-      return;
-      try
-      {
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        Object localObject1 = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get((byte[])localObject1);
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject1);
-        int j = paramFromServiceMsg.uint32_result.get();
-        if (j != 0) {
-          break label366;
-        }
-        bool1 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("set_troop_admin", 2, "resultCode: " + j);
-        }
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        if (bool1)
-        {
-          localObject1 = new byte[4];
-          paramFromServiceMsg.get((byte[])localObject1);
-          localObject1 = String.valueOf(bbbd.a((byte[])localObject1, 0));
-          Object localObject2 = new byte[4];
-          paramFromServiceMsg.get((byte[])localObject2);
-          localObject2 = String.valueOf(bbbd.a((byte[])localObject2, 0));
-          b = paramFromServiceMsg.get();
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder().append("set troop admin response. troopCode: ").append((String)localObject1).append(" memberUin: ").append((String)localObject2).append(" operation: ");
-            if (b != 0) {
-              break label372;
-            }
-            paramFromServiceMsg = "delete";
-            label269:
-            QLog.d("set_troop_admin", 2, paramFromServiceMsg);
-          }
-          if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (localObject2 == null) || (((String)localObject2).length() <= 0)) {
-            break label389;
-          }
-          localBundle.putString("troop_code", (String)localObject1);
-          localBundle.putString("troop_member_uin", (String)localObject2);
-          localBundle.putByte("operation", b);
-        }
-        else
-        {
-          localBundle.putInt("error_code", j);
-        }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        paramFromServiceMsg.printStackTrace();
-        bool1 = bool2;
-      }
-    }
-    for (;;)
-    {
-      break;
-      label366:
-      bool1 = false;
-      break label120;
-      label372:
-      if (b == 1)
-      {
-        paramFromServiceMsg = "add";
-        break label269;
-      }
-      paramFromServiceMsg = "unkonwn";
-      break label269;
-      label389:
-      bool1 = false;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((akiw)localIterator.next()).a();
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(akiw paramakiw)
   {
-    int i = paramIntent.getIntExtra("command", -1);
-    String str1 = null;
-    switch (i)
-    {
-    default: 
-      paramIntent = str1;
-      if (paramIntent != null) {
-        paramPacket.setSSOCommand(paramIntent);
-      }
+    if (paramakiw == null) {}
+    while (this.a.contains(paramakiw)) {
       return;
     }
-    byte b = paramIntent.getByteExtra("operation", (byte)0);
-    str1 = paramIntent.getStringExtra("troop_code");
-    String str2 = paramIntent.getStringExtra("troop_member_uin");
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("request set troop admin. troopCode: ").append(str1).append(" memberUin: ").append(str2).append(" operation: ");
-      if (b != 0) {
-        break label150;
-      }
-      paramIntent = "delete";
+    this.a.add(paramakiw);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.app == null) {
+      paramString = new UniPayRequest(this.mApp.getCurrentAccountUin(), "android" + paramString);
     }
-    for (;;)
+    for (ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "VipSTCheckServer.UinPay");; localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VipSTCheckServer.UinPay"))
     {
-      QLog.d("set_troop_admin", 2, paramIntent);
-      paramPacket.putSendData(a(b, str1, str2));
-      paramIntent = "OidbSvc.0x55c_1";
-      break;
-      label150:
-      if (b == 1) {
-        paramIntent = "add";
-      } else {
-        paramIntent = "unkonwn";
-      }
+      localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
+      super.send(localToServiceMsg);
+      return;
+      paramString = new UniPayRequest(this.app.getCurrentAccountUin(), "android" + paramString);
     }
+  }
+  
+  public void b(akiw paramakiw)
+  {
+    if ((paramakiw != null) && (this.a.contains(paramakiw))) {
+      this.a.remove(paramakiw);
+    }
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        str1 = paramToServiceMsg.getServiceCmd();
+      } while (TextUtils.isEmpty(str1));
+      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
+        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      }
+    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
+    paramFromServiceMsg = (UniPayResponse)paramObject;
+    paramToServiceMsg = paramFromServiceMsg.getSUin();
+    int i = paramFromServiceMsg.getIShowOpen();
+    int j = paramFromServiceMsg.getIUniPayType();
+    new HashMap();
+    Object localObject = paramFromServiceMsg.getMapResponse();
+    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
+    paramObject = (String)((Map)localObject).get("net_mobile_club");
+    String str1 = (String)((Map)localObject).get("open_month");
+    String str2 = (String)((Map)localObject).get("platform");
+    String str3 = (String)((Map)localObject).get("ret");
+    String str4 = (String)((Map)localObject).get("show_open");
+    String str5 = (String)((Map)localObject).get("uin");
+    localObject = (String)((Map)localObject).get("uin_pay_type");
+    if (QLog.isColorLevel()) {
+      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+    }
+    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
+    localEditor.putString("sUin", paramToServiceMsg);
+    localEditor.putInt("isShowOpen", i);
+    localEditor.putInt("iUinpPayType", j);
+    localEditor.putString("cur_st", paramFromServiceMsg);
+    localEditor.putString("net_mobile_club", paramObject);
+    localEditor.putString("open_month", str1);
+    localEditor.putString("platform", str2);
+    localEditor.putString("ret", str3);
+    localEditor.putString("show_open", str4);
+    localEditor.putString("uin", str5);
+    localEditor.putString("uin_pay_type", (String)localObject);
+    localEditor.commit();
+    a();
   }
 }
 

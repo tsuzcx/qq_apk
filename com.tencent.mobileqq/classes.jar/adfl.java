@@ -1,15 +1,13 @@
-public abstract class adfl
+public class adfl
 {
-  private boolean a;
+  public int a;
+  TItemViewHolder jdField_a_of_type_JavaLangObject;
   
-  public void a(boolean paramBoolean)
+  public adfl(int paramInt, TItemViewHolder paramTItemViewHolder)
   {
-    this.a = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
+    this.jdField_a_of_type_Int = paramTItemViewHolder;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 

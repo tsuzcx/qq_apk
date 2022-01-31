@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import agja;
-import ajyc;
+import agiy;
+import ajya;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import aume;
-import bbev;
+import aumg;
+import bbfj;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.text.SimpleDateFormat;
@@ -23,18 +23,18 @@ public class BindNumberFromPcActivity
 {
   public Button a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aume jdField_a_of_type_Aume;
+  private aumg jdField_a_of_type_Aumg;
   public String a;
   private boolean jdField_a_of_type_Boolean;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private aume jdField_b_of_type_Aume;
+  private aumg jdField_b_of_type_Aumg;
   public String b;
   private String c;
   
   private void a()
   {
-    setTitle(ajyc.a(2131701121));
+    setTitle(ajya.a(2131701132));
     if (this.jdField_a_of_type_Boolean) {
       setLeftButton(2131690832, null);
     }
@@ -43,7 +43,7 @@ public class BindNumberFromPcActivity
     String str = this.jdField_a_of_type_JavaLangString.substring(0, i - 5) + "****" + this.jdField_a_of_type_JavaLangString.substring(i - 1);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString + " " + str);
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371416));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695003, new Object[] { this.c }));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695004, new Object[] { this.c }));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371415));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371414));
@@ -52,19 +52,19 @@ public class BindNumberFromPcActivity
   
   private void b()
   {
-    if (!bbev.d(this))
+    if (!bbfj.d(this))
     {
-      b(2131694672);
+      b(2131694673);
       return;
     }
-    if (this.jdField_a_of_type_Aume == null)
+    if (this.jdField_a_of_type_Aumg == null)
     {
-      this.jdField_a_of_type_Aume = new agja(this);
-      this.app.registObserver(this.jdField_a_of_type_Aume);
+      this.jdField_a_of_type_Aumg = new agiy(this);
+      this.app.registObserver(this.jdField_a_of_type_Aumg);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    a(2131719281, 1000L, true);
+    a(2131719292, 1000L, true);
   }
   
   private void c()
@@ -112,7 +112,7 @@ public class BindNumberFromPcActivity
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
     if ((i != 5) || (paramBundle == null))
     {
-      a(ajyc.a(2131701120), ajyc.a(2131701123));
+      a(ajya.a(2131701131), ajya.a(2131701134));
       return;
     }
     this.jdField_b_of_type_JavaLangString = paramBundle.nationCode;
@@ -124,15 +124,15 @@ public class BindNumberFromPcActivity
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Aume != null)
+    if (this.jdField_a_of_type_Aumg != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aume);
-      this.jdField_a_of_type_Aume = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Aumg);
+      this.jdField_a_of_type_Aumg = null;
     }
-    if (this.jdField_b_of_type_Aume != null)
+    if (this.jdField_b_of_type_Aumg != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Aume);
-      this.jdField_b_of_type_Aume = null;
+      this.app.unRegistObserver(this.jdField_b_of_type_Aumg);
+      this.jdField_b_of_type_Aumg = null;
     }
     super.onDestroy();
   }

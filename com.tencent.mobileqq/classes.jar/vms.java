@@ -1,19 +1,36 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class vms
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  private vms(vmj paramvmj) {}
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onGlobalLayout()
+  vms(vmq paramvmq) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
     {
-      this.a.dismiss();
-      return;
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
     }
-    this.a.jdField_a_of_type_Vmq.a(this.a.a());
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

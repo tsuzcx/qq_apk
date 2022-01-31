@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -36,7 +36,7 @@ public class QFileSendBottomView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375831));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375833));
   }
   
   public View a(int paramInt)
@@ -56,7 +56,7 @@ public class QFileSendBottomView
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838514);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131378793));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131378798));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_a_of_type_ComTencentWidgetListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
@@ -73,7 +73,7 @@ public class QFileSendBottomView
   {
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.addView(new View(getContext()), new RelativeLayout.LayoutParams(-1, actn.a(50.0F, getResources())));
+    localRelativeLayout.addView(new View(getContext()), new RelativeLayout.LayoutParams(-1, actj.a(50.0F, getResources())));
     paramListView.addFooterView(localRelativeLayout);
     a();
   }

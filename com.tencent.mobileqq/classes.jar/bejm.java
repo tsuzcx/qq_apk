@@ -1,28 +1,6 @@
-public class bejm
-  implements beju<Boolean>
+class bejm
 {
-  private int a;
-  
-  public static bejm a(int paramInt)
-  {
-    bejm localbejm = new bejm();
-    localbejm.a = paramInt;
-    return localbejm;
-  }
-  
-  public Boolean a(begw parambegw)
-  {
-    switch (this.a)
-    {
-    }
-    for (;;)
-    {
-      return Boolean.valueOf(true);
-      parambegw.a();
-      continue;
-      parambegw.b();
-    }
-  }
+  private static final bejl a = new bejl(null);
 }
 
 

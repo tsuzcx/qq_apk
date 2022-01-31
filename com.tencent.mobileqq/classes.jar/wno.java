@@ -1,18 +1,36 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
 
-public class wno
-  implements View.OnLayoutChangeListener
+class wno
+  implements wnh
 {
-  wno(wnl paramwnl) {}
+  wno(wni paramwni, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a()
   {
-    QLog.d(wnl.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + wnl.c(this.a));
-    if ((wnl.a(this.a) != null) && (wnl.c(this.a))) {
-      wnl.a(this.a, new CommentPresenter.5.1(this));
+    wni.a(this.jdField_a_of_type_Wni, null);
+    if (wni.a(this.jdField_a_of_type_Wni) != null)
+    {
+      wni.a(this.jdField_a_of_type_Wni).b(null);
+      if ((wni.d(this.jdField_a_of_type_Wni)) && (wni.b(this.jdField_a_of_type_Wni) != null)) {
+        wni.b(this.jdField_a_of_type_Wni).setText(wni.a(this.jdField_a_of_type_Wni).a());
+      }
+      wsv.a().a(wni.a(this.jdField_a_of_type_Wni), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply, wni.a(this.jdField_a_of_type_Wni).a());
+      wni.a(this.jdField_a_of_type_Wni).a("");
+    }
+    if ((wni.e(this.jdField_a_of_type_Wni)) && (wni.a(this.jdField_a_of_type_Wni) != 0L))
+    {
+      wni.a(this.jdField_a_of_type_Wni, false);
+      wni.d(this.jdField_a_of_type_Wni, false);
+    }
+    if (wni.a(this.jdField_a_of_type_Wni) != null) {
+      wni.a(this.jdField_a_of_type_Wni).j();
+    }
+    if ((this.jdField_a_of_type_Wni.b != null) && (this.jdField_a_of_type_Wni.b.getVisibility() == 8)) {
+      wpt.a().a(new CommentListShowStateEvent(false));
     }
   }
 }

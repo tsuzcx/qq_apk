@@ -1,14 +1,30 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ajpm
   implements View.OnClickListener
 {
-  ajpm(ajpk paramajpk) {}
+  ajpm(ajpl paramajpl) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
+    if (ajpl.a(this.a) != null)
+    {
+      if (ajpl.a(this.a).a != 1036) {
+        break label62;
+      }
+      ((airx)ajpl.a(this.a).a.getManager(153)).a().c(ajpl.a(this.a).c());
+    }
+    label62:
+    do
+    {
+      return;
+      paramView = (airt)ajpl.a(this.a).getManager(211);
+    } while (paramView == null);
+    paramView.e();
   }
 }
 

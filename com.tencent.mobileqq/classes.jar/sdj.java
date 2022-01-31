@@ -1,35 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
+import java.util.Comparator;
 
-public final class sdj
-  implements sei
+final class sdj
+  implements Comparator<sdo>
 {
-  @NonNull
-  private final RecyclerView.Adapter a;
-  
-  public sdj(@NonNull RecyclerView.Adapter paramAdapter)
+  public int a(sdo paramsdo1, sdo paramsdo2)
   {
-    this.a = paramAdapter;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemMoved(paramInt1, paramInt2);
+    int j = paramsdo1.a - paramsdo2.a;
+    int i = j;
+    if (j == 0) {
+      i = paramsdo1.b - paramsdo2.b;
+    }
+    return i;
   }
 }
 

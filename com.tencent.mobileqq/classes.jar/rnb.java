@@ -1,571 +1,345 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.3;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.4;
-import com.tencent.common.app.AppInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONObject;
 
 public class rnb
 {
-  private bcpq jdField_a_of_type_Bcpq;
-  private bcwh jdField_a_of_type_Bcwh;
-  private final String jdField_a_of_type_JavaLangString = rnb.class.getSimpleName();
-  private String b;
-  
-  private void a(Activity paramActivity)
+  private static Bundle a(qtv paramqtv, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (this.jdField_a_of_type_Bcpq == null) {
-      this.jdField_a_of_type_Bcpq = new bcpq(paramActivity);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt, ArticleInfo paramArticleInfo)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramArticleInfo == null)) {
-      return;
-    }
-    paramContext = onk.a(paramContext, paramArticleInfo, (int)paramArticleInfo.mChannelID, "1");
-    try
-    {
-      paramContext.put("location", paramInt);
-      rnr.a(paramArticleInfo, paramString, paramContext.toString());
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt1, ArticleInfo paramArticleInfo, int paramInt2)
-  {
-    if (paramInt2 == -1)
-    {
-      a(paramContext, paramString, paramInt1, paramArticleInfo);
-      return;
-    }
-    paramContext = onk.a(paramContext, paramArticleInfo, (int)paramArticleInfo.mChannelID, "1", paramInt2);
-    try
-    {
-      paramContext.put("location", paramInt1);
-      rnr.a(paramArticleInfo, paramString, paramContext.toString());
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  private void a(ArticleInfo paramArticleInfo, int paramInt)
-  {
-    if (this.jdField_a_of_type_Bcwh != null) {
-      return;
-    }
-    this.jdField_a_of_type_Bcwh = new rnc(this, paramArticleInfo, paramInt);
-    WXShareHelper.a().a(this.jdField_a_of_type_Bcwh);
-  }
-  
-  public static boolean a()
-  {
-    return TextUtils.equals("1", (CharSequence)bhvh.a("kandian_daily_fast_web_bottom_share", "0"));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bcwh != null) {
-      WXShareHelper.a().b(this.jdField_a_of_type_Bcwh);
-    }
-    this.jdField_a_of_type_Bcpq = null;
-  }
-  
-  void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
-  {
-    Intent localIntent = new Intent();
-    String str = paramJSONObject.optString("toUin");
-    int i = paramJSONObject.optInt("uinType", 0);
-    if ((str != null) && (str.length() >= 5))
-    {
-      localIntent.setClass(paramActivity.getApplicationContext(), DirectForwardActivity.class);
-      localIntent.putExtra("toUin", str);
-      localIntent.putExtra("uinType", i);
-      localIntent.putExtra("key_flag_from_plugin", true);
-      str = paramString1;
-      if (paramString1 != null)
-      {
-        str = paramString1;
-        if (paramString1.length() > 45) {
-          str = paramString1.substring(0, 45) + "…";
-        }
-      }
-      paramString1 = paramString2;
-      if (paramString2 != null)
-      {
-        paramString1 = paramString2;
-        if (paramString2.length() > 60) {
-          paramString1 = paramString2.substring(0, 60) + "…";
-        }
-      }
-      i = paramInt;
-      if (paramInt <= 0) {
-        i = 13;
-      }
-      localIntent.putExtra("pluginName", "web_share");
-      localIntent.putExtra("title", str);
-      localIntent.putExtra("desc", paramString1);
-      localIntent.putExtra("detail_url", paramString3);
-      localIntent.putExtra("shareQQType", i);
-      localIntent.putExtra("forward_type", 1001);
-      localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
-      localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
-      localIntent.putExtra("image_url_remote", paramString4);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696697, new Object[] { str }));
-      localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
-      if (paramJSONObject.has("contentAction")) {
-        localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
-      }
-      if (paramJSONObject.has("actionData")) {
-        localIntent.putExtra("struct_share_key_content_action_DATA", paramJSONObject.getString("actionData"));
-      }
-      if (paramJSONObject.has("sourceAction")) {
-        localIntent.putExtra("struct_share_key_source_action", paramJSONObject.getString("sourceAction"));
-      }
-      if (paramJSONObject.has("isShareFlag")) {
-        localIntent.putExtra("is_share_flag", Integer.parseInt(paramJSONObject.getString("isShareFlag")));
-      }
-      if (paramJSONObject.has("srcActionData")) {
-        localIntent.putExtra("struct_share_key_source_action_data", paramJSONObject.getString("srcActionData"));
-      }
-      if (paramJSONObject.has("appName")) {
-        localIntent.putExtra("app_name", paramJSONObject.getString("appName"));
-      }
-      if (!"audio".equals(paramString5)) {
-        break label755;
-      }
-      paramInt = 2;
-      localIntent.putExtra("audio_url", paramString6);
-    }
+    Bundle localBundle1 = new Bundle();
+    label107:
     boolean bool;
-    long l;
+    label278:
+    label288:
+    int i;
+    label372:
+    Bundle localBundle2;
+    if (paramqtv.jdField_f_of_type_Int == 1)
+    {
+      localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", paramBaseArticleInfo.mSubscribeID);
+      localBundle1.putString("VIDEO_PUB_ACCOUNT_NAME", paramBaseArticleInfo.mSubscribeName);
+      if (paramqtv.jdField_f_of_type_Int != 6) {
+        break label881;
+      }
+      localBundle1.putString("VIDEO_H5_URL", ((qdc)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_b_of_type_JavaUtilArrayList.get(0)).h);
+      localBundle1.putString("VIDEO_CREATE_TIME", ong.a(((qdc)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_e_of_type_Int, true));
+      localBundle1.putString("VIDEO_TIME", String.valueOf(paramqtv.jdField_b_of_type_Int));
+      localBundle1.putString("VIDEO_WIDTH", String.valueOf(paramqtv.jdField_c_of_type_Int));
+      localBundle1.putString("VIDEO_HEIGHT", String.valueOf(paramqtv.jdField_d_of_type_Int));
+      localBundle1.putString("VIDEO_VID", paramqtv.jdField_c_of_type_JavaLangString);
+      localBundle1.putString("VIDEO_COVER", paramqtv.jdField_b_of_type_JavaLangString);
+      localBundle1.putString("VIDEO_TITLE", paramBaseArticleInfo.mTitle);
+      localBundle1.putString("VIDEO_SUMMARY", paramBaseArticleInfo.mTitle);
+      if (paramqtv.jdField_f_of_type_Int != 6) {
+        break label910;
+      }
+      localBundle1.putString("VIDEO_ARTICLE_ID", ((qdc)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_g_of_type_JavaLangString);
+      localBundle1.putLong("VIDEO_FEED_ID", paramBaseArticleInfo.mFeedId);
+      localBundle1.putInt("VIDEO_FEED_TYPE", paramBaseArticleInfo.mFeedType);
+      localBundle1.putString("VIDEO_TITLE", ((qdc)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_e_of_type_JavaLangString);
+      if (paramqtv.jdField_f_of_type_Int != 1) {
+        break label935;
+      }
+      bool = true;
+      localBundle1.putBoolean("VIDEO_IS_FROM_PUBLIC_ACCOUNT", bool);
+      localBundle1.putString("VIDEO_RECOMMEND_REASON", paramBaseArticleInfo.mRecommentdReason);
+      localBundle1.putBoolean("isFromKandian", true);
+      localBundle1.putLong("channelID", paramBaseArticleInfo.mChannelID);
+      localBundle1.putLong("algorithmID", paramBaseArticleInfo.mAlgorithmID);
+      localBundle1.putString("innderId", paramBaseArticleInfo.innerUniqueID);
+      localBundle1.putLong("strategyId", paramBaseArticleInfo.mStrategyId);
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
+        break label940;
+      }
+      i = 0;
+      localBundle1.putInt("interactionType", i);
+      localBundle1.putString("VIDEO_THIRD_ICON", paramqtv.jdField_d_of_type_JavaLangString);
+      localBundle1.putString("VIDEO_THIRD_NAME", paramqtv.jdField_e_of_type_JavaLangString);
+      localBundle1.putString("VIDEO_THIRD_ACTION", paramqtv.jdField_f_of_type_JavaLangString);
+      localBundle1.putString("VIDEO_THIRD_URL", paramqtv.jdField_g_of_type_JavaLangString);
+      localBundle1.putInt("VIDEO_ARTICLE_BUSITYPE", paramqtv.jdField_f_of_type_Int);
+      localBundle2 = new Bundle();
+      localBundle2.putString("VINFO", paramqtv.jdField_c_of_type_JavaLangString);
+      localBundle2.putString("TINFO", paramqtv.jdField_c_of_type_JavaLangString);
+      localBundle2.putInt("PREVIEW_VIDEO_TIME", paramqtv.jdField_b_of_type_Int);
+      localBundle2.putInt("PREVIEW_START_POSI", qtx.a(0, paramqtv.jdField_b_of_type_Int));
+      localBundle2.putInt("PREVIEW_VIDEO_WIDTH", paramqtv.jdField_c_of_type_Int);
+      localBundle2.putInt("PREVIEW_VIDEO_HEIGHT", paramqtv.jdField_d_of_type_Int);
+      localBundle2.putInt("FULL_VIDEO_TIME", paramqtv.jdField_b_of_type_Int);
+      localBundle2.putString("source_puin", paramBaseArticleInfo.mSubscribeID);
+      if (paramqtv.jdField_f_of_type_Int != 1) {
+        break label945;
+      }
+      localBundle2.putString("ACCOUNT_UIN", paramBaseArticleInfo.mSubscribeID);
+      localBundle2.putString("ACCOUNT_NAME", paramBaseArticleInfo.mSubscribeName);
+    }
     for (;;)
     {
-      i = paramInt;
-      if (paramInt == 1) {
-        i = 144;
-      }
-      localIntent.putExtra("req_type", i);
-      if (paramJSONObject.has("report")) {
-        localIntent.putExtra("report", paramJSONObject.getString("report"));
-      }
-      localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
-      bool = paramJSONObject.optBoolean("back", false);
-      if (paramJSONObject.has("k_back")) {
-        bool = paramJSONObject.getBoolean("k_back");
-      }
-      localIntent.putExtra("k_back", bool);
-      if (paramJSONObject.has("serviceID")) {
-        localIntent.putExtra("new_share_service_id", paramJSONObject.getString("serviceID"));
-      }
-      l = paramJSONObject.optLong("appid", 0L);
-      if (l <= 0L) {
-        break label798;
-      }
-      paramJSONObject = (AppInterface)onk.a();
-      if (paramJSONObject != null)
+      localBundle2.putInt("TYPE", paramqtv.jdField_f_of_type_Int);
+      localBundle2.putString("ARTICLE_ID", paramBaseArticleInfo.innerUniqueID);
+      localBundle2.putInt("layout_item", 5);
+      localBundle2.putBoolean("video_url_load", false);
+      localBundle2.putString("image_url_remote", paramqtv.jdField_b_of_type_JavaLangString);
+      localBundle2.putString("detail_url", paramBaseArticleInfo.mArticleContentUrl);
+      localBundle2.putString("video_url", paramqtv.jdField_c_of_type_JavaLangString);
+      localBundle2.putString("title", paramBaseArticleInfo.mTitle);
+      localBundle2.putString("req_create_time", ong.a(paramBaseArticleInfo.mTime));
+      localBundle2.putString("brief_key", paramBaseArticleInfo.mTitle);
+      localBundle2.putInt("req_type", 140);
+      localBundle1.putByteArray("STRUCT_MSG_BYTES", ((StructMsgForGeneralShare)axva.a(localBundle2)).getBytes());
+      return localBundle1;
+      if (paramqtv.jdField_f_of_type_Int == 6)
       {
-        a(paramActivity);
-        if (!this.jdField_a_of_type_Bcpq.isShowing())
-        {
-          this.jdField_a_of_type_Bcpq.c(2131694099);
-          this.jdField_a_of_type_Bcpq.show();
-        }
-        localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-        xmt.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new rnd(this, localIntent, paramActivity));
-      }
-      return;
-      localIntent.putExtra("isWebCompShare", true);
-      localIntent.setClass(paramActivity.getApplicationContext(), ForwardRecentActivity.class);
-      break;
-      label755:
-      i = paramJSONObject.optInt("req_type", 1);
-      paramInt = i;
-      if (i == 2)
-      {
-        localIntent.putExtra("audio_url", paramJSONObject.getString("audio_url"));
-        paramInt = i;
-      }
-    }
-    label798:
-    a(paramActivity);
-    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
-    {
-      l = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "dialog dimiss time :" + l);
-      }
-      this.jdField_a_of_type_Bcpq.dismiss();
-    }
-    paramString1 = paramJSONObject.optString("puin", null);
-    if (paramString1 == null) {
-      paramString1 = paramJSONObject.optString("oaUin");
-    }
-    label1060:
-    label1070:
-    label1714:
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        paramString2 = (AppInterface)onk.a();
-        paramString2 = paramString2.getEntityManagerFactory(paramString2.getAccount()).createEntityManager();
-        paramString5 = (AccountDetail)paramString2.a(AccountDetail.class, paramString1);
-        paramString2.a();
-        paramString4 = paramJSONObject.optString("src_action", "");
-        paramString2 = null;
-        if (TextUtils.isEmpty(paramString4)) {
-          if (paramString5 == null) {
-            break label1742;
-          }
-        }
-      }
-      label1080:
-      label1735:
-      label1742:
-      for (paramString2 = paramString5.name;; paramString2 = null)
-      {
-        paramString3 = paramString2;
-        if (TextUtils.isEmpty(paramString2))
-        {
-          paramString3 = paramString2;
-          if (paramJSONObject.has("sourceName")) {
-            paramString3 = paramJSONObject.optString("sourceName");
-          }
-        }
-        paramString2 = paramString3;
-        if (TextUtils.isEmpty(paramString3)) {
-          paramString2 = paramString1;
+        if (ram.a((ArticleInfo)paramBaseArticleInfo)) {
+          localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", "" + paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long);
         }
         for (;;)
         {
-          label1022:
-          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131699643)))
-          {
-            bool = paramString2.equalsIgnoreCase(paramActivity.getString(2131699643));
-            if (bool)
-            {
-              paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
-              if (!bool) {
-                break label1253;
-              }
-              paramString3 = "mqqapi://readinjoy/open?src_type=internal&version=1";
-              if (!bool) {
-                break label1261;
-              }
-              paramString4 = "http://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/kandian.png";
-              localIntent.putExtra("source_puin", paramString1);
-              localIntent.putExtra("struct_share_key_source_action", "plugin");
-              localIntent.putExtra("struct_share_key_source_a_action_data", paramJSONObject);
-              localIntent.putExtra("struct_share_key_source_i_action_data", paramString3);
-              localIntent.putExtra("struct_share_key_content_a_action_DATA", paramJSONObject);
-              localIntent.putExtra("struct_share_key_source_icon", paramString4);
-              localIntent.putExtra("app_name", paramString2);
-            }
+          localBundle1.putString("VIDEO_PUB_ACCOUNT_NAME", paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_b_of_type_JavaLangString);
+          if (ram.q((ArticleInfo)paramBaseArticleInfo)) {
+            break;
           }
-          for (;;)
-          {
-            paramJSONObject = axuy.a(localIntent.getExtras());
-            if (paramJSONObject != null) {
-              break label1714;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "build struct msg fail");
-            return;
-            if (paramJSONObject.has("sourceName")) {
-              paramString2 = paramJSONObject.optString("sourceName");
-            }
-            paramString3 = paramString2;
-            if (TextUtils.isEmpty(paramString2))
-            {
-              paramString3 = paramString2;
-              if (paramString5 != null) {
-                paramString3 = paramString5.name;
-              }
-            }
-            if (!TextUtils.isEmpty(paramString3)) {
-              break label1735;
-            }
-            paramString2 = paramString1;
-            break label1022;
-            paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&from=recent";
-            break label1060;
-            label1253:
-            paramString3 = "mqqapi://readinjoy/open?src_type=internal&version=1&from=recent";
-            break label1070;
-            label1261:
-            paramString4 = "http://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/dingyuehao.png";
-            break label1080;
-            paramString3 = paramJSONObject.optString("src_webActionUrl", "");
-            paramString5 = paramJSONObject.optString("src_actionData", "");
-            paramString6 = paramJSONObject.optString("src_a_actionData", "");
-            str = paramJSONObject.optString("src_i_actionData", "");
-            if ((TextUtils.isEmpty(paramString4)) || (("web".equals(paramString4)) && ((TextUtils.isEmpty(paramString3)) || (paramString3.contains("webcard.mp.qq.com")))) || ((!"web".equals(paramString4)) && (TextUtils.isEmpty(paramString5)) && ((TextUtils.isEmpty(paramString6)) || (TextUtils.isEmpty(str)))))
-            {
-              paramString3 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { paramString1 });
-              paramString4 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { paramString1 });
-              localIntent.putExtra("struct_share_key_source_action", "plugin");
-              localIntent.putExtra("struct_share_key_source_a_action_data", paramString3);
-              localIntent.putExtra("struct_share_key_source_i_action_data", paramString4);
-            }
-            for (;;)
-            {
-              localIntent.putExtra("source_puin", paramString1);
-              localIntent.putExtra("app_name", paramString2);
-              paramJSONObject = paramJSONObject.optString("src_iconUrl", "");
-              if (!TextUtils.isEmpty(paramJSONObject)) {
-                break label1615;
-              }
-              localIntent.putExtra("struct_share_key_source_icon", "http://url.cn/JS8oE7");
-              break;
-              localIntent.putExtra("struct_share_key_source_action", paramString4);
-              if ("web".equals(paramString4))
-              {
-                localIntent.putExtra("struct_share_key_source_url", paramString3);
-                localIntent.putExtra("source_url", paramString3);
-              }
-              else
-              {
-                if (!TextUtils.isEmpty(paramString5)) {
-                  localIntent.putExtra("struct_share_key_source_action_data", paramString5);
-                }
-                if (!TextUtils.isEmpty(paramString6)) {
-                  localIntent.putExtra("struct_share_key_source_a_action_data", paramString6);
-                }
-                if (!TextUtils.isEmpty(str)) {
-                  localIntent.putExtra("struct_share_key_source_i_action_data", str);
-                }
-              }
-            }
-            label1615:
-            localIntent.putExtra("struct_share_key_source_icon", paramJSONObject);
-            continue;
-            if (paramJSONObject.has("sourceName"))
-            {
-              paramString1 = paramJSONObject.optString("sourceName");
-              localIntent.putExtra("app_name", paramString1);
-              if (("手Q阅读".equals(paramString1)) && (paramJSONObject.has("srcIconUrl"))) {
-                localIntent.putExtra("struct_share_key_source_icon", paramJSONObject.optString("srcIconUrl"));
-              }
-            }
-            else
-            {
-              localIntent.putExtra("app_name", paramActivity.getString(2131696713));
-            }
-          }
-          localIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
-          paramActivity.startActivityForResult(localIntent, 1);
-          return;
-          paramString2 = paramString3;
+          localBundle1.putString("VIDEO_URL", ((qdc)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString);
+          break;
+          localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", "" + paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_a_of_type_Long);
         }
       }
+      localBundle1.putString("VIDEO_PUB_ACCOUNT_UIN", paramBaseArticleInfo.thirdUin);
+      localBundle1.putString("VIDEO_PUB_ACCOUNT_NAME", paramBaseArticleInfo.thirdUinName);
+      break;
+      label881:
+      localBundle1.putString("VIDEO_H5_URL", paramBaseArticleInfo.mArticleContentUrl);
+      localBundle1.putString("VIDEO_CREATE_TIME", ong.a(paramBaseArticleInfo.mTime, true));
+      break label107;
+      label910:
+      localBundle1.putString("VIDEO_ARTICLE_ID", paramBaseArticleInfo.innerUniqueID);
+      localBundle1.putString("VIDEO_TITLE", paramBaseArticleInfo.mTitle);
+      break label278;
+      label935:
+      bool = false;
+      break label288;
+      label940:
+      i = 1;
+      break label372;
+      label945:
+      localBundle2.putString("ACCOUNT_UIN", paramBaseArticleInfo.thirdUin);
+      localBundle2.putString("ACCOUNT_NAME", paramBaseArticleInfo.thirdUinName);
     }
   }
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppInterface localAppInterface = (AppInterface)onk.a();
-    String str5;
-    String str3;
-    String str4;
-    String str2;
-    String str1;
-    boolean bool;
+    String str = "http://puui.qpic.cn/qqvideo_ori/0/" + paramString1 + "_496_280/0";
+    onh.a(paramString1, paramString3, paramString2, paramString4, new rnc());
+    return str;
+  }
+  
+  public static void a(Activity paramActivity, ArticleInfo paramArticleInfo)
+  {
+    qtv localqtv = new qtv();
+    localqtv.jdField_c_of_type_Long = paramArticleInfo.mArticleID;
+    localqtv.jdField_e_of_type_Long = paramArticleInfo.mXGFileSize;
+    localqtv.h = paramArticleInfo.thirdUin;
+    localqtv.i = paramArticleInfo.thirdUinName;
+    localqtv.k = paramArticleInfo.mSubscribeID;
+    localqtv.jdField_g_of_type_Int = paramArticleInfo.mStrategyId;
+    localqtv.jdField_g_of_type_Long = paramArticleInfo.mAlgorithmID;
+    qbu localqbu = new qbu();
+    localqbu.jdField_a_of_type_JavaLangLong = Long.valueOf(paramArticleInfo.mArticleID);
+    localqbu.jdField_a_of_type_JavaLangString = paramArticleInfo.innerUniqueID;
+    localqtv.jdField_c_of_type_JavaLangString = paramArticleInfo.mVideoVid;
+    localqtv.jdField_f_of_type_Int = paramArticleInfo.busiType;
+    localqtv.jdField_c_of_type_Int = paramArticleInfo.mVideoJsonWidth;
+    localqtv.jdField_d_of_type_Int = paramArticleInfo.mVideoJsonHeight;
+    localqbu.jdField_a_of_type_Int = paramArticleInfo.busiType;
+    localqtv.jdField_b_of_type_Int = paramArticleInfo.mVideoDuration;
+    if (paramArticleInfo.mVideoCoverUrl == null) {}
+    for (String str = null;; str = paramArticleInfo.mVideoCoverUrl.getFile())
+    {
+      localqtv.jdField_b_of_type_JavaLangString = str;
+      localqtv.j = paramArticleInfo.innerUniqueID;
+      localqbu.jdField_b_of_type_JavaLangString = paramArticleInfo.mVideoVid;
+      localqtv.a = localqbu;
+      localqtv.jdField_d_of_type_JavaLangString = paramArticleInfo.thirdIcon;
+      localqtv.jdField_e_of_type_JavaLangString = paramArticleInfo.thirdName;
+      localqtv.jdField_f_of_type_JavaLangString = paramArticleInfo.thirdAction;
+      new qca().jdField_a_of_type_Int = 409409;
+      a(paramActivity, localqtv, paramArticleInfo);
+      return;
+    }
+  }
+  
+  public static void a(Activity paramActivity, qtv paramqtv, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "open full play activity, articleID : " + paramBaseArticleInfo.mArticleID + ", playPosition : " + paramqtv.jdField_d_of_type_Long + ",vid : " + paramqtv.jdField_c_of_type_JavaLangString);
+    }
+    Bundle localBundle = a(paramqtv, paramBaseArticleInfo);
+    if (paramqtv.jdField_f_of_type_Int == 2)
+    {
+      localObject = onu.a(paramqtv.jdField_c_of_type_JavaLangString);
+      if (localObject != null)
+      {
+        localBundle.putString("VIDEO_THIRD_VID_URL", ((ooa)localObject).jdField_a_of_type_JavaLangString);
+        localBundle.putLong("VIDEO_THIRD_VID_URL_TIME", ((ooa)localObject).jdField_a_of_type_Long);
+      }
+    }
+    localBundle.putBoolean("VIDEO_LIST_SCROLL_EXIT", true);
+    localBundle.putInt("REPORT_VIDEO_FEEDS_JUMP_FROM", 3);
+    localBundle.putInt("VIDEO_FROM_TYPE", 10);
+    Object localObject = new Intent(paramActivity, VideoFeedsPlayActivity.class);
+    ((Intent)localObject).addFlags(536870912);
+    if (BaseApplicationImpl.sProcessId != 1)
+    {
+      localBundle.putBoolean("param_needSmooth", qvk.a().d());
+      qvk.a().f(true);
+      localBundle.putBoolean("param_needAlertInXg", qkr.e());
+    }
+    if (paramqtv.jdField_f_of_type_Int == 6) {
+      localBundle.putParcelable("VIDEO_ARTICLE_INFO_FOR_BIU", (ArticleInfo)paramBaseArticleInfo);
+    }
+    ((Intent)localObject).putExtras(localBundle);
+    int i = 9091;
+    if (1 == paramBaseArticleInfo.mVideoType) {
+      i = 1;
+    }
     for (;;)
     {
+      localBundle.putString("KEY_VIDEO_JSON_LIST", paramBaseArticleInfo.mJsonVideoList);
+      int j = 0;
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString3);
-        str5 = localJSONObject.optString("share_type", "0");
-        str3 = localJSONObject.optString("title");
-        str4 = localJSONObject.optString("desc");
-        str2 = localJSONObject.optString("share_url");
-        str1 = localJSONObject.optString("image_url");
-        String str6 = localJSONObject.optString("shareElement");
-        String str7 = localJSONObject.optString("flash_url");
-        if ((!(paramActivity instanceof FastWebActivity)) || (!"2".equals(str5))) {
-          break label1056;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.e("BASKDLKFJHLKJ, ", 2, "activity instanceof FastWebActivity = " + (paramActivity instanceof FastWebActivity) + ", share_type = " + str5 + ", isShareToMiniProgram = " + bool + ", action = " + paramInt + ", shareJson = " + paramString3);
-        }
-        if (paramArticleInfo == null) {
-          break label1062;
-        }
-        paramString1 = paramArticleInfo.innerUniqueID;
-        label199:
-        i = localJSONObject.optInt("shareQQType", 13);
-        if (paramInt == 2)
-        {
-          a(paramActivity, localJSONObject, str3, str4, str2, str1, str6, str7, i);
-          a(localAppInterface.getApplication().getApplicationContext(), paramString2, 2, paramArticleInfo);
-          rnr.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 1, -1, false);
-          return;
-        }
-        if (paramInt != 3) {
-          break label1070;
-        }
-        paramString1 = new Bundle();
-        paramString1.putString("title", str3);
-        paramString1.putString("desc", str4);
-        paramString1.putString("detail_url", str2);
-        paramString1.putString("from", "qq");
-        if (localJSONObject != null) {
-          paramString1.putString("default_text", localJSONObject.optString("default_text"));
-        }
-        paramString3 = new ArrayList(1);
-        if ((TextUtils.isEmpty(str1)) && (paramArticleInfo != null) && (!TextUtils.isEmpty(paramArticleInfo.mFirstPagePicUrl)))
-        {
-          paramString3.add(paramArticleInfo.mFirstPagePicUrl);
-          paramString1.putStringArrayList("image_url", paramString3);
-          paramString1.putLong("req_share_id", 0L);
-          paramString1.putInt("iUrlInfoFrm", 1);
-          paramString1.putLong("share_begin_time", bcet.b);
-          if (bgyu.a((QQAppInterface)localAppInterface, paramActivity.getApplicationContext(), paramString1, null, 1)) {
-            break;
-          }
-          wim.a(1, 2131689512);
-          rnr.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 2, -1, false, false);
-          return;
-        }
+        boolean bool = ope.a(localBundle.getInt("VIDEO_FROM_TYPE", -1), Integer.valueOf(localBundle.getString("VIDEO_WIDTH")).intValue(), Integer.valueOf(localBundle.getString("VIDEO_HEIGHT")).intValue(), Integer.valueOf(localBundle.getString("VIDEO_TIME")).intValue());
+        j = bool;
       }
-      catch (Exception paramArticleInfo)
+      catch (Exception paramqtv)
       {
-        paramArticleInfo.printStackTrace();
-        return;
+        label321:
+        break label321;
       }
-      paramString3.add(str1);
-    }
-    a(localAppInterface.getApplication().getApplicationContext(), paramString2, 3, paramArticleInfo);
-    rnr.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 2, -1, false);
-    return;
-    label517:
-    paramString3 = new HashMap(1);
-    int j = -1;
-    if (paramInt == 4) {}
-    for (int i = 3;; i = 4)
-    {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720906;
+      if (j == 0) {
+        break;
       }
-      while (paramInt != -1)
-      {
-        wim.a(0, paramInt);
-        return;
-        paramInt = j;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131720907;
-        }
-      }
-      a(paramArticleInfo, i);
-      paramArticleInfo = new FastWebShareUtils.3(this, paramString3, bool, str3, str4, str2, paramString1, str5, localAppInterface, paramString2, paramArticleInfo, i);
-      if (TextUtils.isEmpty(str1))
-      {
-        paramArticleInfo.run();
-        return;
-      }
-      a(paramActivity);
-      this.jdField_a_of_type_Bcpq.c(2131694099);
-      this.jdField_a_of_type_Bcpq.show();
-      ThreadManager.post(new FastWebShareUtils.4(this, str1, bool, paramString3, localAppInterface, paramArticleInfo), 8, null, false);
+      paramqtv = new Intent();
+      paramqtv.putExtras(localBundle);
+      MultiVideoFragment.a(paramActivity, paramqtv, i);
+      paramActivity.overridePendingTransition(2130772010, 2130772011);
       return;
-      label1056:
-      label1062:
-      label1070:
+      if (0L == paramBaseArticleInfo.mChannelID) {
+        i = 1;
+      }
+    }
+    paramActivity.startActivityForResult((Intent)localObject, i);
+    paramActivity.overridePendingTransition(2130772067, 2130772068);
+  }
+  
+  public static void a(List<BaseData> paramList, String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramList == null) {}
+    Object localObject;
+    do
+    {
       do
       {
-        if (paramInt == 6)
+        do
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start!");
-          }
-          if ((TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str2)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
-            }
-            bcpw.a(BaseApplication.getContext(), 0, 2131719476, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-            return;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:false");
-          }
-          try
-          {
-            paramString1 = URLEncoder.encode(str3, "UTF-8");
-            paramString1 = "http://v.t.sina.com.cn/share/share.php?" + "title=" + paramString1;
-            paramString3 = URLEncoder.encode(str2, "UTF-8");
-            paramString1 = paramString1 + "&url=" + paramString3;
-            paramString3 = URLEncoder.encode(str1, "UTF-8");
-            paramString1 = paramString1 + "&pic=" + paramString3;
-            paramString1 = paramString1 + "&_wv=3";
-            paramString3 = new Intent(paramActivity, QQBrowserActivity.class);
-            paramString3.putExtra("url", paramString1);
-            paramActivity.startActivity(paramString3);
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start webview!");
-            }
-            a(localAppInterface.getApplication().getApplicationContext(), paramString2, 6, paramArticleInfo);
-            rnr.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 5, -1, false);
-          }
-          catch (Exception paramArticleInfo)
-          {
-            for (;;)
-            {
-              paramArticleInfo = paramArticleInfo;
-              bcpw.a(BaseApplication.getContext(), 0, 2131719476, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-              paramArticleInfo.printStackTrace();
-            }
-          }
-          finally {}
-          if (QLog.isColorLevel())
-          {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina end!");
-            return;
-          }
-        }
+          ;;
+          while (TextUtils.isEmpty(paramString)) {}
+          paramList = paramList.iterator();
+        } while (!paramList.hasNext());
+        localObject = (BaseData)paramList.next();
+      } while (!(localObject instanceof ProteusItemData));
+      localObject = (ProteusItemData)localObject;
+    } while (((ProteusItemData)localObject).s != 3);
+    a(((ProteusItemData)localObject).b, paramString, paramInt1, paramInt2);
+  }
+  
+  public static void a(JSONObject paramJSONObject, Activity paramActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    try
+    {
+      int i = paramJSONObject.getInt("mVideoJsonWidth");
+      int j = paramJSONObject.getInt("mVideoJsonHeight");
+      String str = paramJSONObject.getString("mVideoVid");
+      int k = paramJSONObject.getInt("busiType");
+      paramJSONObject = paramJSONObject.getString("mVideoCoverUrl");
+      ArticleInfo localArticleInfo = new ArticleInfo();
+      localArticleInfo.mVideoJsonWidth = i;
+      localArticleInfo.mVideoJsonHeight = j;
+      localArticleInfo.mVideoVid = str;
+      localArticleInfo.busiType = k;
+      localArticleInfo.mVideoCoverUrl = onh.a(paramJSONObject);
+      localArticleInfo.mArticleContentUrl = paramArticleInfo.mArticleContentUrl;
+      localArticleInfo.mTitle = paramArticleInfo.mTitle;
+      if (paramFastWebArticleInfo.c()) {}
+      for (paramJSONObject = "2";; paramJSONObject = "1")
+      {
+        paramJSONObject = onh.a(paramActivity, paramArticleInfo, 0, paramJSONObject);
+        paramJSONObject.put("vedio_rowkey", str);
+        rno.a(paramArticleInfo, "0X800898F", paramJSONObject.toString());
+        a(paramActivity, localArticleInfo);
         return;
-        bool = false;
-        break;
-        paramString1 = "";
-        break label199;
-        if (paramInt == 4) {
-          break label517;
-        }
-      } while (paramInt != 5);
-      break label517;
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("FastWebVideoItemUtils", 1, "handleVideoClick error! msg=" + paramJSONObject);
+    }
+  }
+  
+  private static void a(JSONObject paramJSONObject, String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    try
+    {
+      paramJSONObject.put("mVideoJsonWidth", paramInt1);
+      paramJSONObject.put("mVideoJsonHeight", paramInt2);
+      paramJSONObject.put("mVideoCoverUrl", paramString);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("FastWebVideoItemUtils", 1, "updateVideoInfo error! msg=" + paramJSONObject);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3)
+  {
+    try
+    {
+      paramJSONObject.put("articleImageUrl", paramString1);
+      paramJSONObject.put("play_icon", "video_play_icon");
+      paramJSONObject.put("style_ID", "ReadInjoy_article_video_cell");
+      paramJSONObject.put("lineup", "0");
+      paramJSONObject.put("vedio_rowkey", paramString2);
+      paramJSONObject.put("mVideoVid", paramString2);
+      paramJSONObject.put("busiType", paramInt3);
+      a(paramJSONObject, paramString1, paramInt1, paramInt2);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("FastWebVideoItemUtils", 1, "insertDynamicData error! msg=" + paramJSONObject);
     }
   }
 }

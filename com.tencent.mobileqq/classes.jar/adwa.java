@@ -1,17 +1,6 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
-
-public class adwa
-  extends acun
+public abstract interface adwa
 {
-  public ImageView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  
-  public adwa(advu paramadvu) {}
+  public abstract void a(int paramInt);
 }
 
 

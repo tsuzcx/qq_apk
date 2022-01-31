@@ -1,14 +1,16 @@
+import android.graphics.Bitmap;
+
 class trb
-  extends tps
+  extends tpz
 {
-  trb(tqk paramtqk, String paramString1, String paramString2, boolean paramBoolean, trt paramtrt)
+  trb(tqh paramtqh, boolean paramBoolean1, boolean paramBoolean2, trq paramtrq)
   {
-    super(paramString1, paramString2, paramBoolean);
+    super(paramBoolean1, paramBoolean2);
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trt.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    this.jdField_a_of_type_Trq.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
     return true;
   }
 }

@@ -1,20 +1,214 @@
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.utils.preference.PreferenceManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-public final class axqg
+public class axqg
 {
-  public static void a(Context paramContext, boolean paramBoolean)
+  public static boolean a = false;
+  public static boolean b;
+  public static boolean c;
+  private static boolean d;
+  
+  public static void a()
   {
-    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
-    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
-    paramContext.commit();
+    if (Build.VERSION.SDK_INT > 28) {}
+    for (;;)
+    {
+      return;
+      if (!c)
+      {
+        if (!PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext()).getBoolean("saveIDA", false)) {
+          d();
+        }
+        c = true;
+      }
+      if (b) {
+        continue;
+      }
+      Object localObject = acsx.a;
+      if ((localObject == null) || (((acsw)localObject).f != 1)) {
+        continue;
+      }
+      b = true;
+      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+      if (((SharedPreferences)localObject).getBoolean("FightReporter_deviceid", false)) {
+        continue;
+      }
+      ((SharedPreferences)localObject).edit().putBoolean("FightReporter_deviceid", true).apply();
+      String str2 = bfnn.a("0");
+      try
+      {
+        localObject = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("imei", str2);
+        localHashMap.put("androidID", localObject);
+        String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+        axrn.a(BaseApplicationImpl.getContext()).a(str3, "FightReporter_deviceid", true, 0L, 0L, localHashMap, null);
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("FightReporter_", 2, "rYU.i.A.report real...IMEI = " + str2 + ",androidID = " + (String)localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          String str1 = "";
+        }
+      }
+    }
   }
   
-  public static boolean a(Context paramContext, boolean paramBoolean)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
+    try
+    {
+      if (paramMessageRecord.msgtype == -2011)
+      {
+        paramMessageRecord = (MessageForStructing)paramMessageRecord;
+        if (paramMessageRecord.structingMsg != null)
+        {
+          int i = paramMessageRecord.structingMsg.mMsgServiceID;
+          a(paramMessageRecord.structingMsg);
+        }
+      }
+      return;
+    }
+    catch (Throwable paramMessageRecord)
+    {
+      QLog.d("FightReporter_", 1, paramMessageRecord, new Object[0]);
+    }
   }
+  
+  public static void a(AbsStructMsg paramAbsStructMsg)
+  {
+    acsw localacsw1;
+    do
+    {
+      try
+      {
+        int i = paramAbsStructMsg.mMsgServiceID;
+        if ((i < 0) || (i > 6)) {
+          break;
+        }
+        acsw localacsw2 = acsx.a;
+        localacsw1 = localacsw2;
+        if (!a) {
+          continue;
+        }
+        localacsw1 = localacsw2;
+        if (localacsw2 != null) {
+          continue;
+        }
+        localacsw1 = new acsw();
+        localacsw1.a = 1;
+        localacsw1.b = 1;
+        localacsw1.c = 5;
+      }
+      catch (Throwable paramAbsStructMsg)
+      {
+        QLog.d("FightReporter_", 1, paramAbsStructMsg, new Object[0]);
+        return;
+      }
+      if (localacsw1.a == 0) {
+        break;
+      }
+      a("FightReporter_structMsgServiceID", paramAbsStructMsg.getXml());
+      return;
+    } while (localacsw1 != null);
+  }
+  
+  public static void a(String paramString)
+  {
+    axpu.a(new Throwable(paramString));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    axpu.a(new Throwable(paramString1), paramString2);
+  }
+  
+  public static void b()
+  {
+    if (d) {}
+    do
+    {
+      return;
+      d = true;
+      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+    } while (((SharedPreferences)localObject).getBoolean("FightReporter_cpu_abi", false));
+    ((SharedPreferences)localObject).edit().putBoolean("FightReporter_cpu_abi", true).apply();
+    HashMap localHashMap = new HashMap();
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (Object localObject = Build.SUPPORTED_ABIS[0];; localObject = Build.CPU_ABI)
+    {
+      localHashMap.put("cpu_abi", localObject);
+      localHashMap.put("sdk", Build.VERSION.SDK_INT + "");
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      axrn.a(BaseApplicationImpl.getContext()).a(str, "FightReporter_cpu_abi", true, 0L, 0L, localHashMap, null);
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("FightReporter_", 2, "rYU.i.A.report real...cpu abi = " + (String)localObject + ",sdk = " + Build.VERSION.SDK_INT);
+      return;
+    }
+  }
+  
+  public static void c()
+  {
+    acsw localacsw = acsx.a;
+    if ((localacsw != null) && (localacsw.e == 1)) {
+      a("FightReporter_openthirdappnullinfo");
+    }
+  }
+  
+  public static void d()
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+    String str3 = SecurityUtile.a("d_iemi");
+    String str2 = SecurityUtile.a("d_idandroid");
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    String str4 = bfnn.a("0");
+    Object localObject = "";
+    try
+    {
+      str1 = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
+      localObject = str1;
+    }
+    catch (Exception localException)
+    {
+      String str1;
+      label52:
+      break label52;
+    }
+    str1 = SecurityUtile.a(str4);
+    localObject = SecurityUtile.a((String)localObject);
+    localEditor.putString(str3, str1);
+    localEditor.putString(str2, (String)localObject);
+    localEditor.putBoolean("saveIDA", true);
+    localEditor.apply();
+    if (QLog.isDevelopLevel())
+    {
+      localObject = localSharedPreferences.getString(str3, "");
+      str1 = localSharedPreferences.getString(str2, "");
+      QLog.d("FightReporter_", 4, "has save suc,spIMStr = " + (String)localObject + ", imei = " + SecurityUtile.a((String)localObject) + ",androidid = " + SecurityUtile.a(str1));
+    }
+  }
+  
+  public static void e() {}
 }
 
 

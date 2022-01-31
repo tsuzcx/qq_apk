@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class aqet
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  aqet(aqeq paramaqeq) {}
+  aqet(aqes paramaqes) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      paramDialogInterface.dismiss();
-      return;
+    default: 
+      return false;
     }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
+    if ((this.a.jdField_a_of_type_Bbgu != null) && (this.a.jdField_a_of_type_Bbgu.isShowing()) && (this.a.jdField_a_of_type_Aqfb != null)) {
+      this.a.jdField_a_of_type_Aqfb.a();
     }
+    return true;
   }
 }
 

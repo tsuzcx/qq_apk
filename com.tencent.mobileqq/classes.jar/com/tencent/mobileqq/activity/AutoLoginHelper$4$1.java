@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aals;
-import aalv;
+import aalo;
+import aalr;
 
 public class AutoLoginHelper$4$1
   implements Runnable
 {
-  public AutoLoginHelper$4$1(aalv paramaalv) {}
+  public AutoLoginHelper$4$1(aalr paramaalr) {}
   
   public void run()
   {
-    aals.a(this.a.a).a(2131717132, 1);
+    aalo.a(this.a.a).a(2131717143, 1);
   }
 }
 

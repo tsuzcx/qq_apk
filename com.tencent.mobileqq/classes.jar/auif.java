@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.TextView;
 
 class auif
-  implements View.OnClickListener
+  extends Editable.Factory
 {
-  auif(auib paramauib, AutoReplyText paramAutoReplyText) {}
+  auif(auid paramauid, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((auib.a(this.jdField_a_of_type_Auib) != null) && (paramView != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-      auib.a(this.jdField_a_of_type_Auib, (View)paramView.getParent(), i);
+    if ((paramCharSequence instanceof ayku)) {
+      return (Editable)paramCharSequence;
     }
+    return new ayku(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
   }
 }
 

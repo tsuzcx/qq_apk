@@ -1,19 +1,30 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
 
 class qsw
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qsw(qst paramqst, qms paramqms) {}
+  qsw(qsu paramqsu, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Qst.b(this.jdField_a_of_type_Qms);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    qst.a(this.jdField_a_of_type_Qst).setRepeatCount(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (!this.b) {
+        break label63;
+      }
+      qsu.a(this.jdField_a_of_type_Qsu).v.setVisibility(0);
+    }
+    for (;;)
+    {
+      qsu.a(this.jdField_a_of_type_Qsu).t.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+      return;
+      label63:
+      qsu.a(this.jdField_a_of_type_Qsu).u.setVisibility(0);
+    }
   }
 }
 

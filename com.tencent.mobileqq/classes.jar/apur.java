@@ -1,8 +1,24 @@
-import android.graphics.Bitmap;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public abstract interface apur
+final class apur
+  extends ClickableSpan
 {
-  public abstract void a(Bitmap paramBitmap);
+  apur(apuv paramapuv) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.onClick(paramView);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

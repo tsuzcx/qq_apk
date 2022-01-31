@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
 
 public final class npl
-  implements Parcelable.Creator<VideoInfo.GameAdComData>
+  implements Parcelable.Creator<VideoInfo.KdTagItem>
 {
-  public VideoInfo.GameAdComData a(Parcel paramParcel)
+  public VideoInfo.KdTagItem a(Parcel paramParcel)
   {
-    return new VideoInfo.GameAdComData(paramParcel);
+    return new VideoInfo.KdTagItem(paramParcel);
   }
   
-  public VideoInfo.GameAdComData[] a(int paramInt)
+  public VideoInfo.KdTagItem[] a(int paramInt)
   {
-    return new VideoInfo.GameAdComData[paramInt];
+    return new VideoInfo.KdTagItem[paramInt];
   }
 }
 

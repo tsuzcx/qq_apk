@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass.8;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 
-public class aqvj
+class aqvj
   implements DialogInterface.OnClickListener
 {
-  public aqvj(JefsClass.8 param8) {}
+  aqvj(aqvi paramaqvi) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable.a(2);
+    JefsClass.a(this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.a.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
   }
 }
 

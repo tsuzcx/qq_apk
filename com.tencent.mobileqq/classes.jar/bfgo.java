@@ -1,96 +1,38 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import java.util.concurrent.TimeUnit;
-
 public class bfgo
 {
-  public static MiniProgramShare.StAdaptShareInfoReq a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString4, String paramString5, String paramString6, String paramString7, COMM.StCommonExt paramStCommonExt, int paramInt5, String paramString8, int paramInt6, boolean paramBoolean, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
+  public static final byte[] a;
+  private static final char[] a;
+  
+  static
   {
-    MiniProgramShare.StAdaptShareInfoReq localStAdaptShareInfoReq = new MiniProgramShare.StAdaptShareInfoReq();
-    if (paramString1 != null) {
-      localStAdaptShareInfoReq.appid.set(paramString1);
+    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+    jdField_a_of_type_ArrayOfByte = new byte[0];
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
     }
-    if (paramString2 != null) {
-      localStAdaptShareInfoReq.title.set(paramString2);
-    }
-    if (paramString3 != null) {
-      localStAdaptShareInfoReq.desc.set(paramString3);
-    }
-    localStAdaptShareInfoReq.time.set(paramInt1);
-    localStAdaptShareInfoReq.scene.set(paramInt2);
-    localStAdaptShareInfoReq.templetType.set(paramInt3);
-    localStAdaptShareInfoReq.businessType.set(paramInt4);
-    if (paramString4 != null) {
-      localStAdaptShareInfoReq.picUrl.set(paramString4);
-    }
-    if (paramString5 != null) {
-      localStAdaptShareInfoReq.vidUrl.set(paramString5);
-    }
-    if (paramString6 != null) {
-      localStAdaptShareInfoReq.jumpUrl.set(paramString6);
-    }
-    if (paramString7 != null) {
-      localStAdaptShareInfoReq.iconUrl.set(paramString7);
-    }
-    if (paramStCommonExt != null) {
-      localStAdaptShareInfoReq.extInfo.set(paramStCommonExt);
-    }
-    localStAdaptShareInfoReq.verType.set(paramInt5);
-    if (paramString8 != null) {
-      localStAdaptShareInfoReq.versionId.set(paramString8);
-    }
-    localStAdaptShareInfoReq.shareType.set(paramInt6);
-    paramString1 = localStAdaptShareInfoReq.withShareTicket;
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int i = 0;
+    try
     {
-      paramString1.set(paramInt1);
-      if (paramString9 != null) {
-        localStAdaptShareInfoReq.webURL.set(paramString9);
-      }
-      if (paramString10 != null) {
-        localStAdaptShareInfoReq.appidRich.set(paramString10);
-      }
-      if ((paramString11 != null) && (paramString12 != null))
+      while (i < paramArrayOfByte.length)
       {
-        paramString1 = new MiniProgramShare.StTemplateInfo();
-        paramString1.templateId.set(paramString11);
-        paramString1.templateData.set(paramString12);
-        localStAdaptShareInfoReq.template.set(paramString1);
+        int j = paramArrayOfByte[i];
+        arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
+        j = (byte)(j >>> 4);
+        arrayOfChar[(i * 2 + 0)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
+        i += 1;
       }
-      if ((paramInt6 == 5) && (paramString13 != null)) {
-        localStAdaptShareInfoReq.rcvOpenId.set(paramString13);
-      }
-      return localStAdaptShareInfoReq;
+      return new String(arrayOfChar);
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, String paramString10, int paramInt5, AsyncResult paramAsyncResult)
-  {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getShareInfo(a(paramString1, paramString2, paramString3, (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7, null, paramInt4, paramString8, paramInt5, false, null, paramString10, null, null, paramString9), paramAsyncResult);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, String paramString10, AsyncResult paramAsyncResult)
-  {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getShareInfo(a(paramString1, paramString2, paramString3, (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7, null, paramInt4, paramString8, 1, false, null, paramString10, null, null, paramString9), paramAsyncResult);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, boolean paramBoolean, String paramString10, String paramString11, String paramString12, String paramString13, int paramInt5, AsyncResult paramAsyncResult)
-  {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getShareInfo(a(paramString1, paramString2, paramString3, (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7, null, paramInt4, paramString8, paramInt5, paramBoolean, paramString9, paramString13, paramString10, paramString11, paramString12), paramAsyncResult);
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, String paramString10, AsyncResult paramAsyncResult)
-  {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getShareInfo(a(paramString1, paramString2, paramString3, (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()), paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7, null, paramInt4, paramString8, 6, false, null, paramString10, null, null, paramString9), paramAsyncResult);
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("HexUtil", " === bytes2HexStr error === " + paramArrayOfByte.toString());
+      return null;
+    }
   }
 }
 

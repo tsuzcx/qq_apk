@@ -1,41 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import java.util.ArrayList;
-
 public class ayvz
-  extends Handler
 {
-  private ArrayList<Class<?>> filterList = new ArrayList();
+  public int a;
+  public String a;
   
   public ayvz()
   {
-    this.filterList.clear();
-  }
-  
-  public ayvz(Looper paramLooper)
-  {
-    super(paramLooper);
-    this.filterList.clear();
-  }
-  
-  public void addFilter(Class<?>... paramVarArgs)
-  {
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      this.filterList.add(paramVarArgs[i]);
-      i += 1;
-    }
-  }
-  
-  public ArrayList<Class<?>> getFilter()
-  {
-    return this.filterList;
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_a_of_type_JavaLangString = "unkown error";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayvz
  * JD-Core Version:    0.7.0.1
  */

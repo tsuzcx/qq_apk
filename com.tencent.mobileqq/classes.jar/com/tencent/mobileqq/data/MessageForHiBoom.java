@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import akwb;
+import akwa;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public class MessageForHiBoom
   {
     try
     {
-      this.mHiBoomMessage = ((HiBoomMessage)akwb.a(this.msgData));
+      this.mHiBoomMessage = ((HiBoomMessage)akwa.a(this.msgData));
       if ((this.msg == null) && (this.mHiBoomMessage != null)) {
         this.msg = this.mHiBoomMessage.text;
       }
@@ -36,7 +36,7 @@ public class MessageForHiBoom
     if (this.mHiBoomMessage != null) {}
     try
     {
-      this.msgData = akwb.a(this.mHiBoomMessage);
+      this.msgData = akwa.a(this.mHiBoomMessage);
       if (!TextUtils.isEmpty(this.mHiBoomMessage.text)) {
         this.msg = this.mHiBoomMessage.text;
       }

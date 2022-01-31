@@ -1,15 +1,28 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
 class nlo
-  implements View.OnClickListener
+  implements spa
 {
-  nlo(nll paramnll) {}
+  nlo(nln paramnln, View paramView, ResizeURLImageView paramResizeURLImageView) {}
   
-  public void onClick(View paramView)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    this.a.a.dismiss();
+    this.jdField_a_of_type_Nln.a = 3;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369489).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365892).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365892).setOnClickListener(new nlp(this));
+  }
+  
+  public void a(URL paramURL, rpd paramrpd)
+  {
+    this.jdField_a_of_type_Nln.a = 2;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369489).setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
+    nln.a(this.jdField_a_of_type_Nln, null);
   }
 }
 

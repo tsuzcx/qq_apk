@@ -1,8 +1,10 @@
+import android.view.View;
+
 public abstract interface rsg
 {
-  public abstract void a(int paramInt);
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

@@ -1,16 +1,36 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public final class akul
-  extends akuj
+  extends BroadcastReceiver
 {
-  public akul(String paramString, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramString, paramBoolean);
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+            break;
+          }
+          SosoInterface.a(true);
+        } while (!QLog.isColorLevel());
+        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
+        return;
+      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
+      SosoInterface.a(false);
+      SosoInterface.a().sendEmptyMessage(1002);
+    } while (!QLog.isColorLevel());
+    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
   }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
-  
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 

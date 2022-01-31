@@ -1,148 +1,57 @@
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class axwf
-  extends DefaultHandler
-  implements axuw
+  extends axup
 {
-  axwe jdField_a_of_type_Axwe;
-  private String jdField_a_of_type_JavaLangString;
-  Stack<axwe> jdField_a_of_type_JavaUtilStack = new Stack();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public int k;
   
-  public AbsStructMsg a()
+  public axwf()
   {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_Axwe == null) {}
-    label161:
-    for (;;)
-    {
-      return localObject1;
-      if (this.jdField_a_of_type_Axwe.a() > 0) {}
-      for (Object localObject2 = this.jdField_a_of_type_Axwe.a(0);; localObject2 = null)
-      {
-        if (localObject2 == null) {
-          break label161;
-        }
-        int i = Integer.parseInt(this.jdField_a_of_type_Axwe.a("serviceID"));
-        if (i == 2) {
-          return new StructMsgForAudioShare(this.jdField_a_of_type_Axwe);
-        }
-        if ((i == 3) || (i == 82) || (i == 120)) {
-          return new StructMsgForHypertext(this.jdField_a_of_type_Axwe, i);
-        }
-        if ((i == 5) || (i == 137)) {
-          return new StructMsgForImageShare(this.jdField_a_of_type_Axwe);
-        }
-        if (i == 150)
-        {
-          localObject2 = new StructMsgSubImageVideo(this.jdField_a_of_type_Axwe);
-          localObject1 = localObject2;
-          if (((StructMsgSubImageVideo)localObject2).isValid()) {
-            break;
-          }
-        }
-        return new StructMsgForGeneralShare(this.jdField_a_of_type_Axwe);
-      }
-    }
+    this.a = "voice";
   }
   
-  public void a(String paramString)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return null;
   }
   
-  public void a(boolean paramBoolean)
+  public String a()
   {
-    this.b = paramBoolean;
+    return null;
   }
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  public void a(ObjectInput paramObjectInput)
   {
-    super.characters(paramArrayOfChar, paramInt1, paramInt2);
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    axwe localaxwe;
-    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
-    {
-      localaxwe = (axwe)this.jdField_a_of_type_JavaUtilStack.peek();
-      if (localaxwe != null) {
-        if (localaxwe.jdField_a_of_type_JavaLangString != null) {
-          break label81;
-        }
-      }
-    }
-    for (;;)
-    {
-      localaxwe.jdField_a_of_type_JavaLangString = paramArrayOfChar;
-      localaxwe.jdField_a_of_type_JavaLangString = ayjw.b(localaxwe.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-      label81:
-      paramArrayOfChar = localaxwe.jdField_a_of_type_JavaLangString.concat(paramArrayOfChar);
-    }
+    super.a(paramObjectInput);
+    this.k = paramObjectInput.readInt();
   }
   
-  public void endDocument()
+  public void a(ObjectOutput paramObjectOutput)
   {
-    super.endDocument();
-    this.jdField_a_of_type_JavaUtilStack.clear();
-    this.jdField_a_of_type_JavaUtilStack = null;
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.k);
   }
   
-  public void endElement(String paramString1, String paramString2, String paramString3)
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    super.endElement(paramString1, paramString2, paramString3);
-    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
-    {
-      paramString1 = (axwe)this.jdField_a_of_type_JavaUtilStack.pop();
-      if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-        this.jdField_a_of_type_Axwe = paramString1;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if ((paramString1 != null) && (!"".equals(paramString1.jdField_a_of_type_JavaLangString))) {
-          paramString1.jdField_a_of_type_Int = 3;
-        }
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
+    paramXmlSerializer.startTag(null, "voice");
+    paramXmlSerializer.attribute(null, "length", String.valueOf(this.k));
+    paramXmlSerializer.endTag(null, "voice");
   }
   
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public boolean a(axwg paramaxwg)
   {
-    super.startElement(paramString1, paramString2, paramString3, paramAttributes);
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    while (i < paramAttributes.getLength())
-    {
-      localHashMap.put(paramAttributes.getLocalName(i), ayjw.b(paramAttributes.getValue(i), this.jdField_a_of_type_JavaLangString, this.b));
-      i += 1;
+    paramaxwg = paramaxwg.a("length");
+    if (!TextUtils.isEmpty(paramaxwg)) {
+      this.k = Integer.parseInt(paramaxwg);
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("StructMsg", 2, "StructMsgParserHandler startElement uri = " + paramString1 + ", localName = " + paramString2 + ", qName = " + paramString3 + ", map = " + localHashMap);
-    }
-    paramString1 = new axwe(paramString2, localHashMap);
-    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
-    {
-      paramString2 = (axwe)this.jdField_a_of_type_JavaUtilStack.peek();
-      if (paramString2 != null)
-      {
-        paramString1.jdField_a_of_type_Axwe = paramString2;
-        paramString2.a(paramString1);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-    this.jdField_a_of_type_Boolean = true;
+    return true;
   }
 }
 

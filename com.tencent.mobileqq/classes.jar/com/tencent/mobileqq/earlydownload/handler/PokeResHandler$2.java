@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import adwl;
-import anpq;
+import adwj;
+import anpv;
 
 public class PokeResHandler$2
   implements Runnable
 {
-  public PokeResHandler$2(anpq paramanpq) {}
+  public PokeResHandler$2(anpv paramanpv) {}
   
   public void run()
   {
-    adwl.a(this.this$0.a, null);
+    adwj.a(this.this$0.a, null);
   }
 }
 

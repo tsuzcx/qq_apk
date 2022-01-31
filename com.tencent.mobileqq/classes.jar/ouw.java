@@ -1,67 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import java.util.ArrayList;
 
-class ouw
-  implements View.OnClickListener
+public class ouw
+  extends BaseAdapter
 {
-  ouw(ouv paramouv, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  private ouw(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onClick(View paramView)
+  public ouv a(int paramInt)
   {
-    paramView = this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
-    Object localObject;
-    if (TextUtils.isEmpty(paramView))
+    return (ouv)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      localObject = this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
-      if (!TextUtils.isEmpty(paramView))
-      {
-        paramView = new Intent(this.jdField_a_of_type_Ouv.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("url", (String)localObject);
-        this.jdField_a_of_type_Ouv.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      }
+      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131562302, paramViewGroup, false);
+      paramView.setOnClickListener(new oux(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ouv.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ReadInJoyPicWaterFallFragment.c);
-      osj.a().a(this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID, System.currentTimeMillis());
-      paramView = olg.a(this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 16, this.jdField_a_of_type_Ouv.a(), (ArticleInfo)this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      try
-      {
-        paramView.put("card_type", 12);
-        localObject = new oli(this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-        ((oli)localObject).e = String.valueOf(this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
-        ((oli)localObject).f = String.valueOf(this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
-        ((oli)localObject).g = paramView.toString();
-        if (this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
-          ((oli)localObject).a = String.valueOf(this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
-        }
-        ((oli)localObject).b = "0X8008E2F";
-        ((oli)localObject).c = "0X8008E2F";
-        olg.a((oli)localObject);
-        ReadInJoyPicWaterFallFragment.a((ArticleInfo)this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Ouv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 1009);
-        return;
-      }
-      catch (JSONException paramView)
-      {
-        paramView.printStackTrace();
-      }
-      localObject = new Intent(this.jdField_a_of_type_Ouv.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_Ouv.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      paramViewGroup = (ouv)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramView.setTag(Integer.valueOf(paramInt));
+      ((TextView)paramView).setText(paramViewGroup.a());
+      this.a.jdField_a_of_type_Ola.a("exp_subchannel", paramViewGroup);
+      return paramView;
     }
   }
 }

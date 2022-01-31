@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aedl;
+import aedj;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.widget.BubbleImageView;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 public class TroopGiftMsgItemBuilder$3
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$3(aedl paramaedl, String paramString1, int paramInt, Bitmap paramBitmap, BubbleImageView paramBubbleImageView, String paramString2, SharedPreferences paramSharedPreferences, long paramLong) {}
+  public TroopGiftMsgItemBuilder$3(aedj paramaedj, String paramString1, int paramInt, Bitmap paramBitmap, BubbleImageView paramBubbleImageView, String paramString2, SharedPreferences paramSharedPreferences, long paramLong) {}
   
   /* Error */
   public void run()
@@ -24,18 +24,18 @@ public class TroopGiftMsgItemBuilder$3
     //   16: ldc 58
     //   18: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: aload_0
-    //   22: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
+    //   22: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
     //   25: aload_0
     //   26: getfield 22	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   29: aload_0
     //   30: getfield 24	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:jdField_a_of_type_Int	I
-    //   33: invokevirtual 67	aedl:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   33: invokevirtual 67	aedj:a	(Ljava/lang/String;I)Ljava/lang/String;
     //   36: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   42: invokestatic 75	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: aload_0
-    //   46: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   49: getfield 78	aedl:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   46: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   49: getfield 78	aedj:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   52: invokevirtual 84	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   55: invokevirtual 90	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
     //   58: invokevirtual 96	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
@@ -172,30 +172,30 @@ public class TroopGiftMsgItemBuilder$3
     //   301: ifeq +10 -> 311
     //   304: aload 9
     //   306: bipush 60
-    //   308: invokestatic 177	bbju:a	(Landroid/graphics/Bitmap;I)V
+    //   308: invokestatic 177	bbki:a	(Landroid/graphics/Bitmap;I)V
     //   311: new 179	java/io/File
     //   314: dup
     //   315: new 55	java/lang/StringBuilder
     //   318: dup
     //   319: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   322: getstatic 184	ajsf:aW	Ljava/lang/String;
+    //   322: getstatic 184	ajsd:aW	Ljava/lang/String;
     //   325: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   328: ldc 186
     //   330: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   333: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   336: invokestatic 191	bbuv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   336: invokestatic 191	bbvj:a	(Ljava/lang/String;)Ljava/lang/String;
     //   339: invokespecial 194	java/io/File:<init>	(Ljava/lang/String;)V
     //   342: invokevirtual 197	java/io/File:mkdirs	()Z
     //   345: pop
     //   346: new 179	java/io/File
     //   349: dup
     //   350: aload_0
-    //   351: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
+    //   351: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
     //   354: aload_0
     //   355: getfield 22	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   358: aload_0
     //   359: getfield 24	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:jdField_a_of_type_Int	I
-    //   362: invokevirtual 67	aedl:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   362: invokevirtual 67	aedj:a	(Ljava/lang/String;I)Ljava/lang/String;
     //   365: invokespecial 194	java/io/File:<init>	(Ljava/lang/String;)V
     //   368: astore 8
     //   370: aload 8
@@ -228,8 +228,8 @@ public class TroopGiftMsgItemBuilder$3
     //   426: invokevirtual 223	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   429: istore 4
     //   431: aload_0
-    //   432: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   435: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   432: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   435: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   438: aload_0
     //   439: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   442: iconst_0
@@ -253,9 +253,9 @@ public class TroopGiftMsgItemBuilder$3
     //   482: invokevirtual 244	java/io/File:delete	()Z
     //   485: pop
     //   486: aload_0
-    //   487: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   490: getfield 247	aedl:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   493: getstatic 248	aedl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   487: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   490: getfield 247	aedj:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   493: getstatic 248	aedj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   496: iconst_0
     //   497: invokevirtual 254	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   500: astore 5
@@ -286,7 +286,7 @@ public class TroopGiftMsgItemBuilder$3
     //   564: invokeinterface 260 1 0
     //   569: invokeinterface 269 1 0
     //   574: pop
-    //   575: invokestatic 272	aedl:a	()Landroid/os/Handler;
+    //   575: invokestatic 272	aedj:a	()Landroid/os/Handler;
     //   578: new 274	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3$1
     //   581: dup
     //   582: aload_0
@@ -294,8 +294,8 @@ public class TroopGiftMsgItemBuilder$3
     //   586: invokevirtual 283	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   589: pop
     //   590: aload_0
-    //   591: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   594: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   591: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   594: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   597: aload_0
     //   598: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   601: iconst_0
@@ -309,9 +309,9 @@ public class TroopGiftMsgItemBuilder$3
     //   619: goto -233 -> 386
     //   622: astore 5
     //   624: aload_0
-    //   625: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   628: getfield 247	aedl:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   631: getstatic 248	aedl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   625: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   628: getfield 247	aedj:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   631: getstatic 248	aedj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   634: iconst_0
     //   635: invokevirtual 254	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   638: astore 6
@@ -334,8 +334,8 @@ public class TroopGiftMsgItemBuilder$3
     //   683: invokevirtual 291	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   686: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   689: aload_0
-    //   690: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   693: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   690: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   693: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   696: aload_0
     //   697: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   700: iconst_0
@@ -358,9 +358,9 @@ public class TroopGiftMsgItemBuilder$3
     //   737: goto -269 -> 468
     //   740: astore 5
     //   742: aload_0
-    //   743: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   746: getfield 247	aedl:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   749: getstatic 248	aedl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   743: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   746: getfield 247	aedj:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   749: getstatic 248	aedj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   752: iconst_0
     //   753: invokevirtual 254	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   756: astore 6
@@ -383,8 +383,8 @@ public class TroopGiftMsgItemBuilder$3
     //   801: invokevirtual 296	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   804: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   807: aload_0
-    //   808: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   811: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   808: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   811: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   814: aload_0
     //   815: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   818: iconst_0
@@ -398,9 +398,9 @@ public class TroopGiftMsgItemBuilder$3
     //   834: aload 6
     //   836: astore 5
     //   838: aload_0
-    //   839: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   842: getfield 247	aedl:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   845: getstatic 248	aedl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   839: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   842: getfield 247	aedj:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   845: getstatic 248	aedj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   848: iconst_0
     //   849: invokevirtual 254	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   852: astore 9
@@ -431,8 +431,8 @@ public class TroopGiftMsgItemBuilder$3
     //   913: invokevirtual 291	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   916: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   919: aload_0
-    //   920: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   923: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   920: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   923: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   926: aload_0
     //   927: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   930: iconst_0
@@ -465,9 +465,9 @@ public class TroopGiftMsgItemBuilder$3
     //   990: aload 6
     //   992: astore 5
     //   994: aload_0
-    //   995: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   998: getfield 247	aedl:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   1001: getstatic 248	aedl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   995: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   998: getfield 247	aedj:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   1001: getstatic 248	aedj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1004: iconst_0
     //   1005: invokevirtual 254	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   1008: astore 9
@@ -498,8 +498,8 @@ public class TroopGiftMsgItemBuilder$3
     //   1069: invokevirtual 296	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   1072: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1075: aload_0
-    //   1076: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   1079: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   1076: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   1079: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   1082: aload_0
     //   1083: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   1086: iconst_0
@@ -523,8 +523,8 @@ public class TroopGiftMsgItemBuilder$3
     //   1128: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1131: goto +106 -> 1237
     //   1134: aload_0
-    //   1135: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   1138: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   1135: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   1138: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   1141: aload_0
     //   1142: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   1145: iconst_0
@@ -539,8 +539,8 @@ public class TroopGiftMsgItemBuilder$3
     //   1167: athrow
     //   1168: astore 5
     //   1170: aload_0
-    //   1171: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedl;
-    //   1174: getfield 226	aedl:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   1171: getfield 20	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:this$0	Laedj;
+    //   1174: getfield 226	aedj:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   1177: aload_0
     //   1178: getfield 30	com/tencent/mobileqq/activity/aio/item/TroopGiftMsgItemBuilder$3:b	Ljava/lang/String;
     //   1181: iconst_0

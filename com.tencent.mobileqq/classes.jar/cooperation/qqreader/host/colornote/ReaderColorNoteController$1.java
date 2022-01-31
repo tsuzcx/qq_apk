@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
-import amkj;
+import amki;
 
 class ReaderColorNoteController$1
-  implements amkj
+  implements amki
 {
   ReaderColorNoteController$1(ReaderColorNoteController paramReaderColorNoteController, OnColorNoteAnimFinishCallback paramOnColorNoteAnimFinishCallback) {}
   

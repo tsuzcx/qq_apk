@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alaf;
-import albd;
+import alae;
+import albc;
 
 public class OnlineVideoARRenderable$2
   implements Runnable
@@ -9,8 +9,8 @@ public class OnlineVideoARRenderable$2
   public void run()
   {
     this.this$0.f();
-    if (albd.a(this.this$0) != null) {
-      albd.a(this.this$0).b(1, albd.c(this.this$0) - albd.d(this.this$0));
+    if (albc.a(this.this$0) != null) {
+      albc.a(this.this$0).b(1, albc.c(this.this$0) - albc.d(this.this$0));
     }
   }
 }

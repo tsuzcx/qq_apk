@@ -5,13 +5,13 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import asbs;
+import asbu;
 import com.tencent.mobileqq.R.styleable;
 
 public class LyricView
   extends FrameLayout
 {
-  protected asbs a;
+  protected asbu a;
   protected LyricViewInternal a;
   protected LyricViewScroll a;
   protected boolean a;
@@ -21,8 +21,8 @@ public class LyricView
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ModuleLyricView, 0, 0);
-    this.jdField_a_of_type_Asbs = new asbs();
-    this.jdField_a_of_type_Asbs.a(paramContext);
+    this.jdField_a_of_type_Asbu = new asbu();
+    this.jdField_a_of_type_Asbu.a(paramContext);
     this.jdField_a_of_type_Boolean = paramContext.getBoolean(16, false);
     paramContext.recycle();
   }

@@ -1,25 +1,17 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class ailj
-  implements View.OnLayoutChangeListener
 {
-  ailj(ailh paramailh) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public VasAvatar a;
+  public ImageView b;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    View localView = paramView.findViewById(2131365290);
-    TextView localTextView = (TextView)paramView.findViewById(2131365289);
-    paramInt1 = ((ImageView)paramView.findViewById(2131376734)).getRight() - localView.getWidth();
-    if (paramInt1 > 0) {
-      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
-    }
-  }
+  public ailj(aili paramaili) {}
 }
 
 

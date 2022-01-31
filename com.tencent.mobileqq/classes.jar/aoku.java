@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.drawable.GradientDrawable;
 
-final class aoku
-  implements View.OnClickListener
+public class aoku
 {
-  aoku(Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    axqw.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setColor(paramInt);
+    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 });
+    return localGradientDrawable;
   }
 }
 

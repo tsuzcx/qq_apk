@@ -1,19 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-class bjvn
-  extends QQUIEventReceiver<bjvc, bkbq>
+public class bjvn
 {
-  public bjvn(@NonNull bjvc parambjvc)
-  {
-    super(parambjvc);
-  }
+  public final int a;
+  public final long a;
+  public final CharSequence a;
   
-  public void a(@NonNull bjvc parambjvc, @NonNull bkbq parambkbq) {}
-  
-  public Class acceptEventClass()
+  public bjvn(long paramLong, int paramInt, CharSequence paramCharSequence)
   {
-    return bkbq.class;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
 }
 

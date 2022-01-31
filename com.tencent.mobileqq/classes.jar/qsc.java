@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class qsc
-  implements DialogInterface.OnCancelListener
+  implements URLDrawable.URLDrawableListener
 {
-  qsc(qrw paramqrw) {}
+  qsc(qrt paramqrt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    qrw.a(this.a, "mShareActionSheet cancle button OnClick");
-    if (qrw.a(this.a) != null) {
-      qrw.a(this.a).c();
+    if ((qrt.a(this.a) != null) && (qrt.a(this.a).getStatus() == 1) && ((qrt.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)qrt.a(this.a).getCurrDrawable();
+      qrt.a(this.a, paramURLDrawable.getBitmap());
     }
-    paramDialogInterface = qrw.a(this.a);
-    qrw.a(this.a, paramDialogInterface, paramDialogInterface.j, paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
   }
 }
 

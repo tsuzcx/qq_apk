@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
 import android.media.MediaPlayer.OnCompletionListener;
-import bbbr;
-import bbbw;
+import bbcf;
+import bbck;
 
 public class AudioUtil$6$1
   implements Runnable
 {
-  public AudioUtil$6$1(bbbw parambbbw) {}
+  public AudioUtil$6$1(bbck parambbck) {}
   
   public void run()
   {
-    this.this$0.a.onCompletion(bbbr.a);
+    this.this$0.a.onCompletion(bbcf.a);
   }
 }
 

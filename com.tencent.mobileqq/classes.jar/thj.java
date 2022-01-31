@@ -1,56 +1,20 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import java.util.List;
-
-public class thj
-  extends tbg<tfi, tbj<tfi>>
+class thj
+  implements tgu
 {
-  private int a;
+  private long jdField_a_of_type_Long;
   
-  public thj(Context paramContext)
+  thj(thh paramthh) {}
+  
+  public void a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public int a(int paramInt)
+  public void b()
   {
-    tfi localtfi = (tfi)a(paramInt);
-    if (localtfi != null) {
-      return localtfi.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Long != 0L) {
+      vei.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
     }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    List localList = a();
-    int i = 0;
-    while (i < localList.size())
-    {
-      if (TextUtils.equals(((tfi)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
-        return b() + i;
-      }
-      i += 1;
-    }
-    return b();
-  }
-  
-  public void a(tbj<tfi> paramtbj)
-  {
-    super.onViewDetachedFromWindow(paramtbj);
-    paramtbj.a();
-  }
-  
-  public tbj b(ViewGroup paramViewGroup, int paramInt)
-  {
-    return tiw.a(paramViewGroup, paramInt);
-  }
-  
-  public void b(tbj paramtbj, int paramInt)
-  {
-    paramtbj.a((tfi)a(paramInt));
   }
 }
 

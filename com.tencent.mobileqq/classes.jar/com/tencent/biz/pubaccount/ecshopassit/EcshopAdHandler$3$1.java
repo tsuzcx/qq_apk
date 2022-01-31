@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import nqu;
+import nqw;
 import nqx;
-import nqz;
-import nra;
 
 public class EcshopAdHandler$3$1
   implements Runnable
 {
-  public EcshopAdHandler$3$1(nqz paramnqz, Object paramObject) {}
+  public EcshopAdHandler$3$1(nqw paramnqw, Object paramObject) {}
   
   public void run()
   {
     ChatMessage localChatMessage = (ChatMessage)this.a;
-    nqx localnqx = (nqx)this.this$0.a.getBusinessHandler(139);
-    nra localnra = new nra();
-    localnra.a = 10;
-    localnqx.a(nqx.a(localnra, localChatMessage), null);
+    nqu localnqu = (nqu)this.this$0.a.getBusinessHandler(139);
+    nqx localnqx = new nqx();
+    localnqx.a = 10;
+    localnqu.a(nqu.a(localnqx, localChatMessage), null);
   }
 }
 

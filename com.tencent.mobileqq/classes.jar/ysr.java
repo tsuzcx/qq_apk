@@ -1,6 +1,19 @@
-public abstract interface ysr
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+
+public final class ysr
+  implements Parcelable.Creator<GdtBaseAdItem>
 {
-  public abstract void onResponse(ysq paramysq);
+  public GdtBaseAdItem a(Parcel paramParcel)
+  {
+    return new GdtBaseAdItem(paramParcel);
+  }
+  
+  public GdtBaseAdItem[] a(int paramInt)
+  {
+    return new GdtBaseAdItem[paramInt];
+  }
 }
 
 

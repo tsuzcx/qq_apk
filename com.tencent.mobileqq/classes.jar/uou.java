@@ -1,97 +1,75 @@
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.ViewParent;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 public class uou
-  implements TextWatcher
+  extends usb
+  implements uyh
 {
-  public int a;
-  public Context a;
-  public BubbleTextView a;
-  public String a;
-  public uwa a;
-  public boolean a;
-  private int b;
-  public String b;
-  private int c;
-  
-  public uou(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public uou(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
   {
-    if ((!"1_".equals(paramString2)) && (!"2_".equals(paramString2))) {
-      throw new IllegalArgumentException("illegal textWatcher source");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Uwa = ((uwa)tdc.a(11));
+    super(paramContext, paramActivity, paramInt1, paramInt2);
+    super.a(this);
   }
   
-  public static void a(EditText paramEditText, Intent paramIntent)
+  public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
   {
-    if (paramIntent == null) {}
-    do
+    StringBuilder localStringBuilder1 = null;
+    StringBuilder localStringBuilder2;
+    if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
     {
-      return;
-      paramIntent = paramIntent.getStringExtra("at_video_text");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "on activity result, at video text=" + paramIntent);
-      }
-    } while ((paramEditText == null) || (TextUtils.isEmpty(paramIntent)));
-    paramEditText.getText().insert(paramEditText.getSelectionStart(), paramIntent);
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (this.c > 0)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null)
+      localStringBuilder2 = new StringBuilder();
+      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
       {
-        ViewParent localViewParent2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView.getParent();
-        ViewParent localViewParent1 = localViewParent2;
-        if (localViewParent2 != null)
+        localStringBuilder2.append(vzl.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
+        paramStoryVideoItem = localStringBuilder2;
+        paramVideoListFeedItem = localStringBuilder1;
+        if (localStringBuilder2.length() > 0)
         {
-          localViewParent1 = localViewParent2;
-          if (!(localViewParent2 instanceof RelativeLayout)) {
-            localViewParent1 = localViewParent2.getParent();
-          }
-        }
-        if ((localViewParent1 != null) && ((localViewParent1 instanceof RelativeLayout))) {
-          ((RelativeLayout)localViewParent1).removeView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView);
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = null;
-      }
-      if (('@' == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)) || (65312 == paramEditable.charAt(this.jdField_b_of_type_Int + this.c - 1)))
-      {
-        vel.a("home_page", "send_at", 0, 0, new String[0]);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.atvideo.AtVideoTextWatcher", 2, "trigger at video process");
-        }
-        if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_Boolean)) {
-          StoryAtVideoFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, (String)this.jdField_a_of_type_Uwa.a.get(this.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Int);
+          paramVideoListFeedItem = new Intent();
+          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
+          paramStoryVideoItem = localStringBuilder2;
         }
       }
     }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
+        if (paramStoryVideoItem != null) {
+          break label146;
+        }
+      }
+      label146:
+      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
+      {
+        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
+        paramActivity.setResult(-1, paramVideoListFeedItem);
+        return;
+        localStringBuilder2.append(vzl.b(paramStoryVideoItem.mCreateTime));
+        break;
+      }
+      paramStoryVideoItem = null;
+      paramVideoListFeedItem = localStringBuilder1;
+    }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
+    if (vzl.b()) {
+      return;
+    }
+    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
+    vei.a("home_page", "choose_video", 0, 0, new String[0]);
+    this.a.finish();
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
 }
 
 

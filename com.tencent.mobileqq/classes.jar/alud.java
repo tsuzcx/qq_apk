@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class alud
-  extends akav
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  alud(aluc paramaluc) {}
+  alud(alub paramalub, Context paramContext) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if ((aluc.a(this.a) != null) && (paramList != null))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if ((localMessageRecord != null) && (localMessageRecord.uniseq == aluc.a(this.a).b)) {
-          this.a.a(localMessageRecord.uniseq);
-        }
-      }
+    if (paramBitmap != null) {
+      alub.a(this.jdField_a_of_type_Alub, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

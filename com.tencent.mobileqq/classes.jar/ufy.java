@@ -1,14 +1,14 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.media.MediaPlayer.OnInfoListener;
 
 class ufy
-  implements MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnInfoListener
 {
-  ufy(ufu paramufu, ufq paramufq) {}
+  ufy(ufr paramufr, ufl paramufl) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Ufq.a(this.jdField_a_of_type_Ufu);
+    return this.jdField_a_of_type_Ufl.a_(this.jdField_a_of_type_Ufr, paramInt1, paramInt2);
   }
 }
 

@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
-class afmq
-  implements View.OnClickListener
+public class afmq
+  extends MqqHandler
 {
-  afmq(afmp paramafmp) {}
+  public afmq(NotificationView paramNotificationView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    afmr localafmr = (afmr)paramView.getTag();
-    if ((localafmr == null) || (!(localafmr instanceof afmr))) {
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Afmn == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Afmn.a = aydd.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Afmn.notifyDataSetChanged();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    paramView = (View)paramView.getParent();
-    if ((paramView instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)paramView).d();
-    }
-    afmp.a(this.a, localafmr.a);
-    this.a.jdField_a_of_type_JavaUtilList.add(afmp.a(this.a).remove(this.a.getCount() - localafmr.b - 1));
-    this.a.notifyDataSetChanged();
+    this.a.j();
   }
 }
 

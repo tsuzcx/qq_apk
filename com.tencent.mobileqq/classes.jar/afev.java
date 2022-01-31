@@ -1,25 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class afev
-  implements View.OnTouchListener
+  extends Handler
 {
   public afev(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent.isActive()) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
+      return;
     }
-    this.a.a.clearFocus();
-    paramView = this.a.a.getText().toString();
-    this.a.a.setSelection(paramView.length());
-    return false;
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

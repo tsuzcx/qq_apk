@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import absb;
+import abrx;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +33,7 @@ public class PreloadWebService
       if (this.a == null)
       {
         this.a = new CustomWebView(getBaseContext());
-        this.a.setWebViewClient(new absb(this));
+        this.a.setWebViewClient(new abrx(this));
         WebSettings localWebSettings = this.a.getSettings();
         localWebSettings.setJavaScriptEnabled(true);
         localWebSettings.setCacheMode(-1);

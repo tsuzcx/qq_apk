@@ -1,7 +1,4 @@
-public abstract interface azco
-{
-  public abstract void a(azcq paramazcq);
-}
+class azco {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

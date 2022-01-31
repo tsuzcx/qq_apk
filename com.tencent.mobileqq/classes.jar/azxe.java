@@ -1,39 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class azxe
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   public azxe(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (this.a.a != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label51;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
-      }
-      this.a.a.b(102);
-    }
-    label51:
-    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
-      return;
-    }
-    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
-      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
-    }
-    this.a.a.b(102);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

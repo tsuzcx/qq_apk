@@ -1,47 +1,43 @@
-import android.app.Activity;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
-import com.tencent.common.app.AppInterface;
-import dov.com.qq.im.ae.play.EditTextViewer;
-import dov.com.qq.im.ae.play.EditTextViewer.4.1;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import dov.com.qq.im.ae.play.ScaleMoveImageViewer;
 
 public class biyd
-  extends biqh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public biyd(EditTextViewer paramEditTextViewer, AppInterface paramAppInterface, String paramString) {}
+  public biyd(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, ScaleMoveImageViewer paramScaleMoveImageViewer, NodeItem paramNodeItem) {}
   
-  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramBoolean)
-    {
-      bool1 = bool2;
-      if (paramGetFontDataRsp != null)
-      {
-        if (paramGetFontDataRsp.Code != 0) {
-          break label74;
-        }
-        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, this.jdField_a_of_type_JavaLangString);
-        bool1 = true;
-        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, paramGetFontDataRsp);
-      }
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
     for (;;)
     {
-      EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer).runOnUiThread(new EditTextViewer.4.1(this, bool1));
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.getLayoutParams();
+      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      localMarginLayoutParams.leftMargin = i;
+      localMarginLayoutParams.topMargin = j;
+      localMarginLayoutParams.rightMargin = k;
+      localMarginLayoutParams.bottomMargin = m;
+      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
+      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
+      this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.setLayoutParams(localMarginLayoutParams);
+      AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment, this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer, AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment), AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
+      if (QLog.isDebugVersion()) {
+        QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "initAllNodeViewer onGlobalLayout: wxh=", Integer.valueOf(localMarginLayoutParams.width), "x", Integer.valueOf(localMarginLayoutParams.height) });
+      }
       return;
-      label74:
-      if (paramGetFontDataRsp.Code == -10002)
-      {
-        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, 2131689809);
-        bool1 = bool2;
-      }
-      else
-      {
-        EditTextViewer.a(this.jdField_a_of_type_DovComQqImAePlayEditTextViewer, 2131689811);
-        bool1 = bool2;
-      }
+      this.jdField_a_of_type_DovComQqImAePlayScaleMoveImageViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }

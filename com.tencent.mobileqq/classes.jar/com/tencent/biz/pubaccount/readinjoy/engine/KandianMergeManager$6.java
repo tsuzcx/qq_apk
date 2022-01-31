@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import com.tencent.aladdin.config.utils.DeviceInfoUtils;
 import com.tencent.qphone.base.util.QLog;
-import noo;
+import nol;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +23,7 @@ class KandianMergeManager$6
       localJSONObject.put("device_model", DeviceInfoUtils.getDeviceModel());
       localJSONObject.put("device_os_version", DeviceInfoUtils.getDeviceOSVersion());
       localJSONObject.put("os_version", DeviceInfoUtils.getOsVersion());
-      noo.a(null, "", "0X800A4A1", "0X800A4A1", 0, 0, "", "", "", localJSONObject.toString(), false);
+      nol.a(null, "", "0X800A4A1", "0X800A4A1", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)

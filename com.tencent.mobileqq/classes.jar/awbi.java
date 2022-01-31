@@ -1,151 +1,182 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class awbi
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private CopyOnWriteArrayList<Integer> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final Object jdField_b_of_type_JavaLangObject = new Object();
+  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(10);
   
-  public awbi(AppInterface paramAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    a("TransInfoCreate.CreateSession", new int[] { 0 });
-    a("TransInfo.JoinSession", new int[] { 0 });
-    a("TransInfo.ExitSession", new int[] { 0 });
-    a("TransInfo.ChangeSession", new int[] { 0 });
-    a("TransInfo.RawData", new int[] { 0 });
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
-  public AppInterface a()
+  public void a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, amlw paramamlw, Class<? extends MSFServlet> paramClass)
-  {
-    if (paramToServiceMsg.getWupBuffer() != null)
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      long l = paramToServiceMsg.getWupBuffer().length;
-      byte[] arrayOfByte = new byte[(int)l + 4];
-      bbmj.a(arrayOfByte, 0, 4L + l);
-      bbmj.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-      paramToServiceMsg.putWupBuffer(arrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
       }
-      paramToServiceMsg.actionListener = paramamlw;
-      paramamlw = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
-      paramamlw.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramamlw);
-      l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("sendtimekey", l);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
-  {
-    AppInterface localAppInterface = a();
-    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-    Object localObject;
-    int i;
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
-      }
-      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-      if ((!paramBoolean) || (!bool)) {
-        break label501;
-      }
-      localObject = paramFromServiceMsg.getServiceCmd();
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
-      }
-      if (paramFromServiceMsg.getWupBuffer() == null) {
-        break label502;
-      }
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      paramException = new byte[i];
-      bbmj.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      paramFromServiceMsg.putWupBuffer(paramException);
-    }
-    label226:
-    label501:
-    label502:
-    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
-    {
-      for (;;)
-      {
-        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
-        {
-          int j = arrayOfInt.length;
-          i = 0;
-          if (i >= j) {
-            break label501;
-          }
-          localObject = (ajtd)localAppInterface.getBusinessHandler(arrayOfInt[i]);
-          if (localObject != null) {}
-          try
-          {
-            ((ajtd)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
-            i += 1;
-            break label226;
-            if (paramException != null)
-            {
-              localObject = new ByteArrayOutputStream();
-              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
-              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("PeakMsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-              break;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.w("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              if (QLog.isColorLevel()) {
-                QLog.w("PeakMsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
-              }
-            }
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("PeakMsfServletProxy", 2, " handlerIds no map " + (String)localObject);
-      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(10);
       return;
     }
   }
   
-  protected boolean a(String paramString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString))
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
-      return true;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+      return;
     }
-    return false;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+  }
+  
+  public void b(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()))
+    {
+      int i;
+      synchronized (this.jdField_b_of_type_JavaLangObject)
+      {
+        i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).intValue();
+        if (!QLog.isColorLevel()) {
+          break label160;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        if (localIterator.hasNext())
+        {
+          int j = ((Integer)localIterator.next()).intValue();
+          localStringBuilder.append(j + ",");
+        }
+      }
+      QLog.d("PeakAudioTransHandler ChannelStateManager", 2, "getRecentTopEvent lastevent = " + i + "， eventlist = " + localObject2.toString());
+      label160:
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      return i;
+    }
+    return -1;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, Integer.valueOf(paramInt));
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 12;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 11;
+  }
+  
+  public boolean f()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 10;
+  }
+  
+  public boolean g()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 13;
+  }
+  
+  public boolean h()
+  {
+    boolean bool3 = true;
+    boolean bool1 = true;
+    boolean bool2 = false;
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    int j = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    switch (i)
+    {
+    default: 
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if ((!bool1) && (QLog.isColorLevel())) {
+        QLog.e("PeakAudioTransHandler ChannelStateManager", 2, "isLegalState , currentSessionState = " + i + " currentTCPState = " + j);
+      }
+      return bool1;
+      switch (j)
+      {
+      }
+      for (bool1 = false;; bool1 = false) {
+        break;
+      }
+      bool1 = bool2;
+      switch (j)
+      {
+      case 11: 
+      case 12: 
+      case 13: 
+      default: 
+        bool1 = bool2;
+        break;
+      case 10: 
+        bool1 = true;
+        continue;
+        bool1 = bool3;
+        switch (j)
+        {
+        default: 
+          bool1 = false;
+        }
+        continue;
+        bool1 = bool2;
+        switch (j)
+        {
+        case 11: 
+        case 12: 
+        case 13: 
+        default: 
+          bool1 = bool2;
+          break;
+        case 10: 
+          bool1 = true;
+        }
+        break;
+      }
+    }
   }
 }
 

@@ -1,23 +1,10 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.graphics.Bitmap;
 
 public abstract interface uxw
 {
-  public abstract void a();
+  public abstract Bitmap a(Bitmap paramBitmap);
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(@NonNull Activity paramActivity);
-  
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract String a();
 }
 
 

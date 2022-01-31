@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import acth;
+import actd;
+import aeyt;
 import aeyv;
-import aeyx;
 import android.view.View;
 import java.util.Observer;
 
 public class TipsManager$1
   implements Runnable
 {
-  public TipsManager$1(aeyx paramaeyx, aeyv paramaeyv, Object[] paramArrayOfObject) {}
+  public TipsManager$1(aeyv paramaeyv, aeyt paramaeyt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    View localView = this.jdField_a_of_type_Aeyv.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    aeyx.a(this.this$0).a(localView, this.jdField_a_of_type_Aeyv);
-    aeyx.a(this.this$0, this.jdField_a_of_type_Aeyv);
-    if (aeyx.a(this.this$0) != null) {
-      aeyx.a(this.this$0).update(null, null);
+    View localView = this.jdField_a_of_type_Aeyt.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    aeyv.a(this.this$0).a(localView, this.jdField_a_of_type_Aeyt);
+    aeyv.a(this.this$0, this.jdField_a_of_type_Aeyt);
+    if (aeyv.a(this.this$0) != null) {
+      aeyv.a(this.this$0).update(null, null);
     }
   }
 }

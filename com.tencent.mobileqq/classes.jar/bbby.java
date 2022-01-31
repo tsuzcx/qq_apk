@@ -1,499 +1,177 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.utils.AvatarPendantUtil.1;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import java.io.IOException;
 
-public final class bbby
+public class bbby
 {
-  public static int a;
-  private static long a;
-  public static String a;
-  public static final ArrayList<String> a;
-  public static ConcurrentHashMap<Long, Integer> a;
-  public static volatile boolean a;
-  public static final String b;
-  public static ConcurrentHashMap<Long, Integer> b;
-  public static String c;
+  private static boolean jdField_a_of_type_Boolean;
+  static final int[] jdField_a_of_type_ArrayOfInt = { 12, 13, 15, 17, 19, 20, 26, 31, 5, 0 };
+  private int jdField_a_of_type_Int = 14;
+  private long jdField_a_of_type_Long;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private byte[] jdField_b_of_type_ArrayOfByte = new byte[320];
+  private int jdField_c_of_type_Int;
+  private byte[] jdField_c_of_type_ArrayOfByte;
+  private byte[] d = new byte[1024];
   
-  static
+  public bbby(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/qqshow/admindata/comdata/AndroidIconZip/icon.zip";
-    jdField_b_of_type_JavaLangString = ajsf.aW + "avatarPendantIcons";
-    c = jdField_b_of_type_JavaLangString + "/icon";
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Int = 5000;
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public static float a(Paint paramPaint, Rect paramRect, String paramString)
-  {
-    int i = paramRect.width();
-    float f2;
-    if (i <= 0)
-    {
-      f2 = 0.0F;
-      return f2;
-    }
-    paramPaint = new TextPaint(paramPaint);
-    float f1 = paramRect.height();
-    paramPaint.setTextSize(f1);
-    for (;;)
-    {
-      if (paramPaint.measureText(paramString) <= i)
-      {
-        f2 = f1;
-        if (Math.ceil(paramPaint.getFontMetrics().descent - paramPaint.getFontMetrics().ascent) <= paramRect.height()) {
-          break;
-        }
-      }
-      f2 = f1;
-      if (f1 <= 0.0F) {
-        break;
-      }
-      f1 -= 1.0F;
-      paramPaint.setTextSize(f1);
-    }
-  }
-  
-  public static String a(long paramLong, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("pendant.");
-    localStringBuilder.append(paramLong);
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      localStringBuilder.append(".other.zip");
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append(".xydata.js");
-      continue;
-      localStringBuilder.append(".other.zip");
-      continue;
-      localStringBuilder.append(".aio_50.png");
-    }
-  }
-  
-  public static String a(File paramFile)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramFile != null)
-    {
-      str1 = str2;
-      if (!paramFile.exists()) {}
-    }
-    try
-    {
-      paramFile = new String(bbdj.a(paramFile));
-      int i = paramFile.indexOf("\"seriesID\":");
-      str1 = str2;
-      if (i != -1)
-      {
-        int j = paramFile.indexOf(",", i + 10);
-        str1 = str2;
-        if (j != -1) {
-          str1 = paramFile.substring(i + 11, j);
-        }
-      }
-      return str1;
-    }
-    catch (Exception paramFile) {}
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    return ajsf.bP + "font_info/" + paramString + File.separator + paramString + ".ttf";
-  }
-  
-  public static void a()
-  {
-    File localFile = new File(ajsf.aW + "avatarPendantDefaultHead");
-    if (!localFile.exists()) {
-      localFile.mkdir();
-    }
-    localFile = new File(ajsf.bP);
-    if (!localFile.exists()) {
-      localFile.mkdir();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, long paramLong)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantUtil", 2, "saveMarketOpenTime, entrance=" + paramString1 + ", uin=" + paramString2 + ", context=" + paramContext);
-      }
-    }
-    do
-    {
-      return;
-      paramContext = paramContext.getSharedPreferences(String.format("sp_pendant_market_open_time_%s", new Object[] { paramString2 }), 0);
-    } while (paramContext == null);
-    paramContext.edit().putLong(paramString1, paramLong).commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((paramQQAppInterface == null) || (jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, size=" + jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    long l = 0L;
-    boolean bool2;
-    label65:
-    boolean bool1;
-    if (jdField_a_of_type_JavaUtilArrayList.size() >= 5)
-    {
-      bool2 = true;
-      if (jdField_a_of_type_Long == -1L) {
-        break label225;
-      }
-      l = System.currentTimeMillis() - jdField_a_of_type_Long;
-      if (l < jdField_a_of_type_Int) {
-        break label173;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, thresholdReached=" + bool2 + ", intervalReached=" + bool1);
-      }
-      if ((!bool2) && (!bool1) && (jdField_a_of_type_Boolean))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, condition unavailable, abort");
-        return;
-        bool2 = false;
-        break label65;
-        label173:
-        bool1 = false;
-        continue;
-      }
-      paramQQAppInterface = new AvatarPendantUtil.1(paramQQAppInterface);
-      if ((bool2) || (bool1))
-      {
-        ThreadManagerV2.excute(paramQQAppInterface, 128, null, false);
-        return;
-      }
+    if ((!jdField_a_of_type_Boolean) && (SoLoadUtilNew.loadSoByName(paramContext, "amrnb"))) {
       jdField_a_of_type_Boolean = true;
-      ThreadManager.getUIHandler().postDelayed(paramQQAppInterface, jdField_a_of_type_Int - l);
-      return;
-      label225:
-      bool1 = true;
+    }
+    this.jdField_a_of_type_Int = a(paramInt);
+    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateDecoder();
+    this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrDecoderNew(this.jdField_a_of_type_Long);
+    AmrInputStreamWrapper.GsmAmrDecoderInitialize(this.jdField_b_of_type_Long);
+  }
+  
+  public static int a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < 8)) {
+      return jdField_a_of_type_ArrayOfInt[paramInt] + 1;
+    }
+    return 14;
+  }
+  
+  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 0L)) {
+      throw new IllegalStateException("not open");
+    }
+    if (AmrInputStreamWrapper.GsmAmrDecoderDecode(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
+      b();
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  /* Error */
+  public void a()
   {
-    a(paramQQAppInterface, paramContext, true, null);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 59	bbby:jdField_b_of_type_Long	J
+    //   4: lconst_0
+    //   5: lcmp
+    //   6: ifeq +14 -> 20
+    //   9: aload_0
+    //   10: getfield 53	bbby:jdField_a_of_type_Long	J
+    //   13: aload_0
+    //   14: getfield 59	bbby:jdField_b_of_type_Long	J
+    //   17: invokestatic 81	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrDecoderCleanup	(JJ)V
+    //   20: aload_0
+    //   21: getfield 59	bbby:jdField_b_of_type_Long	J
+    //   24: lconst_0
+    //   25: lcmp
+    //   26: ifeq +14 -> 40
+    //   29: aload_0
+    //   30: getfield 53	bbby:jdField_a_of_type_Long	J
+    //   33: aload_0
+    //   34: getfield 59	bbby:jdField_b_of_type_Long	J
+    //   37: invokestatic 84	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrDecoderDelete	(JJ)V
+    //   40: aload_0
+    //   41: lconst_0
+    //   42: putfield 59	bbby:jdField_b_of_type_Long	J
+    //   45: aload_0
+    //   46: invokevirtual 77	bbby:b	()V
+    //   49: return
+    //   50: astore_1
+    //   51: aload_0
+    //   52: lconst_0
+    //   53: putfield 59	bbby:jdField_b_of_type_Long	J
+    //   56: aload_1
+    //   57: athrow
+    //   58: astore_1
+    //   59: aload_0
+    //   60: getfield 59	bbby:jdField_b_of_type_Long	J
+    //   63: lconst_0
+    //   64: lcmp
+    //   65: ifeq +14 -> 79
+    //   68: aload_0
+    //   69: getfield 53	bbby:jdField_a_of_type_Long	J
+    //   72: aload_0
+    //   73: getfield 59	bbby:jdField_b_of_type_Long	J
+    //   76: invokestatic 84	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrDecoderDelete	(JJ)V
+    //   79: aload_0
+    //   80: lconst_0
+    //   81: putfield 59	bbby:jdField_b_of_type_Long	J
+    //   84: aload_1
+    //   85: athrow
+    //   86: astore_1
+    //   87: aload_0
+    //   88: lconst_0
+    //   89: putfield 59	bbby:jdField_b_of_type_Long	J
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	bbby
+    //   50	7	1	localObject1	Object
+    //   58	27	1	localObject2	Object
+    //   86	7	1	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   20	40	50	finally
+    //   0	20	58	finally
+    //   59	79	86	finally
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, aqyd paramaqyd)
+  public byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, entrance=" + paramString1 + ", uin=" + paramString2 + ", context=" + paramContext + ", app=" + paramQQAppInterface);
-      }
+    if (this.jdField_b_of_type_Int + paramInt > 1024) {
+      this.d = new byte[this.jdField_b_of_type_Int + paramInt];
     }
-    do
+    if (this.jdField_b_of_type_Int + paramInt < this.jdField_a_of_type_Int)
     {
-      long l;
-      do
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, this.jdField_b_of_type_Int, paramInt);
+      return null;
+    }
+    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.d, 0, this.jdField_b_of_type_Int);
+    System.arraycopy(paramArrayOfByte, 0, this.d, this.jdField_b_of_type_Int, paramInt);
+    this.jdField_c_of_type_Int = (this.jdField_b_of_type_Int + paramInt);
+    paramInt = this.jdField_c_of_type_Int % this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramInt;
+    if (paramInt != 0) {
+      System.arraycopy(this.d, this.jdField_c_of_type_Int - paramInt, this.jdField_c_of_type_ArrayOfByte, 0, paramInt);
+    }
+    paramArrayOfByte = new byte[this.jdField_c_of_type_Int / this.jdField_a_of_type_Int * 320];
+    int i = 0;
+    paramInt = 0;
+    while (this.jdField_c_of_type_Int >= this.jdField_a_of_type_Int)
+    {
+      System.arraycopy(this.d, paramInt, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
+      try
       {
-        do
-        {
-          return;
-        } while (paramQQAppInterface == null);
-        paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(13);
-        if (paramQQAppInterface == null) {
-          break;
-        }
-        l = paramContext.getSharedPreferences(String.format("sp_pendant_market_open_time_%s", new Object[] { paramString2 }), 0).getLong(paramString1, 0L);
-      } while (System.currentTimeMillis() - l >= 604800000L);
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, startWebProcess");
+        a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
+        System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
+        i += this.jdField_b_of_type_ArrayOfByte.length;
+        paramInt += this.jdField_a_of_type_Int;
+        this.jdField_c_of_type_Int -= this.jdField_a_of_type_Int;
       }
-      paramQQAppInterface.a(-1, new bbbz(paramaqyd));
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, web process alive aready");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, boolean paramBoolean, ProfileActivity.AllInOne paramAllInOne)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    Intent localIntent;
-    int i;
-    avpq localavpq;
-    int j;
-    label127:
-    int k;
-    label142:
-    int m;
-    label157:
-    int n;
-    label172:
-    int i1;
-    label187:
-    int i2;
-    if (paramAllInOne != null)
-    {
-      localIntent = new Intent(paramContext, AvatarPendantActivity.class);
-      localIntent.putExtra("AllInOne", paramAllInOne);
-      axbt localaxbt = (axbt)paramQQAppInterface.getManager(12);
-      i = localaxbt.a("100005.100006");
-      if ((i == 1) || (i == 0))
+      catch (IOException paramArrayOfByte)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("AvatarPendantUtil", 2, "Clear pendant red flag");
+          QLog.e("Amr2PcmWrapper", 2, "========mAmr2Pcm.amr2pcmParser==IOException=====", paramArrayOfByte);
         }
-        localIntent.putExtra("key_update_flag", true);
-        localavpq = (avpq)paramQQAppInterface.getManager(36);
-        localavpq.b("100005.100006");
-        if (localaxbt.a("100005.100003") == -1) {
-          break label445;
-        }
-        j = 1;
-        if (localaxbt.a("100005.100002") == -1) {
-          break label451;
-        }
-        k = 1;
-        if (localaxbt.a("100005.100001") == -1) {
-          break label457;
-        }
-        m = 1;
-        if (localaxbt.a("100005.100018") == -1) {
-          break label463;
-        }
-        n = 1;
-        if (localaxbt.a("100005.100020") == -1) {
-          break label469;
-        }
-        i1 = 1;
-        if (localaxbt.a("100005.100021") == -1) {
-          break label475;
-        }
-        i2 = 1;
-        label202:
-        if (!((ho)paramQQAppInterface.getManager(42)).jdField_a_of_type_Boolean) {
-          break label495;
-        }
-        if (localaxbt.a("100005.100011") == -1) {
-          break label481;
-        }
-        i = 1;
+        b();
+        return null;
       }
     }
-    for (;;)
-    {
-      label232:
-      if ((j == 0) && (k == 0) && (m == 0) && (n == 0) && (i == 0) && (i1 == 0) && (i2 == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarPendantUtil", 2, "Clear parent red flag");
-        }
-        localavpq.b("100005");
-      }
-      if (paramAllInOne == null)
-      {
-        localIntent.putExtra("hide_left_button", false);
-        localIntent.putExtra("show_right_close_button", false);
-        localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-        localIntent.putExtra("url", bbpp.a(paramContext, "pendant", ""));
-        localIntent.putExtra("business", 512L);
-        if (!paramBoolean) {
-          break label487;
-        }
-      }
-      label445:
-      label451:
-      label457:
-      label463:
-      label469:
-      label475:
-      label481:
-      label487:
-      for (i = 40202;; i = 40201)
-      {
-        localIntent.putExtra("individuation_url_type", i);
-        VasWebviewUtil.insertVasWbPluginToIntent(512L, localIntent);
-        localIntent.putExtra("isShowAd", false);
-        paramContext.startActivity(localIntent);
-        axqw.b(paramQQAppInterface, "CliOper", "", "", "PendantMarket", "OtherEntrance", 0, 0, "", "", "", "");
-        return;
-        localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        break;
-        j = 0;
-        break label127;
-        k = 0;
-        break label142;
-        m = 0;
-        break label157;
-        n = 0;
-        break label172;
-        i1 = 0;
-        break label187;
-        i2 = 0;
-        break label202;
-        i = 0;
-        break label232;
-      }
-      label495:
-      i = 0;
+    if (i == paramArrayOfByte.length) {
+      return paramArrayOfByte;
     }
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+    return arrayOfByte;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public void b()
   {
-    ((bbqp)paramQQAppInterface.a(71)).a(new String[] { paramString }, new int[] { 27235 });
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
-        return;
-      }
-    }
-    jdField_a_of_type_JavaUtilArrayList.add(paramString);
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    if (localInteger == null) {
-      return true;
-    }
-    if (localInteger.intValue() == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return new File(a(paramString)).exists();
-  }
-  
-  public static String b(long paramLong, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ajsf.bP).append(paramLong).append(File.separator);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("aio_50.png");
-      continue;
-      localStringBuilder.append("aio_file.zip");
-      continue;
-      localStringBuilder.append("aio_file");
-      continue;
-      localStringBuilder.append("preview_50.png");
-      continue;
-      localStringBuilder.append("market_dynamic_50.gif");
-      continue;
-      localStringBuilder.append("thumb_nail_50.png");
-      continue;
-      localStringBuilder.append("config.json");
-      continue;
-      localStringBuilder.append("avatarfit.png");
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    return ajsf.bP + "font_info/" + paramString + "/";
-  }
-  
-  public static boolean b(long paramLong)
-  {
-    Integer localInteger = (Integer)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantUtil", 2, "isDiy=" + localInteger);
-    }
-    if (localInteger == null) {
-      return true;
-    }
-    if ((localInteger.intValue() == 1) || (localInteger.intValue() == 2)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    paramString = paramString.replace("faceAddon.sticker.", "");
-    return new File(ajsf.bP + "sticker_info", paramString).exists();
-  }
-  
-  public static String c(long paramLong, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("https://i.gtimg.cn/qqshow/admindata/comdata/vipFaceAddon_").append(paramLong).append(File.separator);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return anqu.a("VIP_avatar", localStringBuilder.toString());
-      localStringBuilder.append("aio_50.png");
-      continue;
-      localStringBuilder.append("aio_file.zip");
-      continue;
-      localStringBuilder.append("list_50.png");
-      continue;
-      localStringBuilder.append("preview_50.gif");
-      continue;
-      localStringBuilder.append("thumb_nail_50.png");
-      continue;
-      localStringBuilder.append("xydata.js");
-      continue;
-      localStringBuilder.append("avatarfit.png");
-    }
-  }
-  
-  public static String c(String paramString)
-  {
-    return ajsf.bP + "sticker_info/" + paramString + ".png";
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

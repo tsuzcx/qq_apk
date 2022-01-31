@@ -1,16 +1,33 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class aabn
 {
-  public final int a;
-  public final Class<? extends aabq> a;
-  public final String a;
-  public final int b;
-  
-  public aabn(String paramString, int paramInt1, int paramInt2, Class<? extends aabq> paramClass)
+  public static aabm a(Class<? extends aabm> paramClass, aabl paramaabl)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    if (paramClass == aacm.class) {
+      paramClass = new aacm();
+    }
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramaabl);
+      }
+      return paramClass;
+      if (paramClass == aacs.class) {
+        paramClass = new aacs();
+      } else {
+        try
+        {
+          aabm localaabm = (aabm)paramClass.newInstance();
+          paramClass = localaabm;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
+      }
+    }
   }
 }
 

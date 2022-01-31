@@ -1,22 +1,35 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class acle
-  implements TextWatcher
+  extends Handler
 {
-  public acle(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public acle(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void handleMessage(Message paramMessage)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.c(paramEditable);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      bcql.a(this.a, this.a.getString(2131719275), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      bcql.a(this.a, this.a.getString(2131719262), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

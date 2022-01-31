@@ -1,30 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class azct
-  implements bfoq
+class azct
 {
-  public azct(AbsPublishActivity paramAbsPublishActivity, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.e();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_AndroidNetUri = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new azcu(this));
-      continue;
-      TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c);
-    }
-  }
+  public RelativeLayout a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azct
  * JD-Core Version:    0.7.0.1
  */

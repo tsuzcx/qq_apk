@@ -1,127 +1,139 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
 
 public class aujf
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static final AppRuntime.Status[] a = { AppRuntime.Status.online, AppRuntime.Status.qme, AppRuntime.Status.away, AppRuntime.Status.busy, AppRuntime.Status.dnd, AppRuntime.Status.invisiable };
+  
+  public static int a(AppRuntime.Status paramStatus)
   {
-    if (paramQQAppInterface != null) {
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDA", "0X8009DDA", 0, 0, "", "", "", "");
+    switch (aujg.a[paramStatus.ordinal()])
+    {
+    default: 
+      QLog.d("Q..online.status", 1, "getButtonId changed to online , status: " + paramStatus);
+    case 1: 
+      return 2131361870;
+    case 2: 
+      return 2131361871;
+    case 3: 
+      return 2131361866;
+    case 4: 
+      return 2131361867;
+    case 5: 
+      return 2131361868;
+    }
+    return 2131361869;
+  }
+  
+  public static Drawable a(AppRuntime.Status paramStatus)
+  {
+    return a(paramStatus, 0);
+  }
+  
+  public static Drawable a(AppRuntime.Status paramStatus, int paramInt)
+  {
+    Object localObject = null;
+    if (paramStatus != null) {}
+    try
+    {
+      switch (aujg.a[paramStatus.ordinal()])
+      {
+      case 1: 
+        QLog.d("Q..online.status", 1, "getStatusIcon, not find status: " + paramStatus);
+        paramStatus = localObject;
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+        for (;;)
+        {
+          if ((paramStatus != null) && (paramInt > 0)) {
+            paramStatus.setBounds(0, 0, paramInt, paramInt);
+          }
+          return paramStatus;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837543);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837545);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837534);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837536);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837539);
+          continue;
+          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837541);
+          continue;
+          QLog.d("Q..online.status", 1, "getStatusIcon, status == null");
+          paramStatus = localObject;
+        }
+      }
+    }
+    catch (Exception paramStatus)
+    {
+      for (;;)
+      {
+        QLog.d("Q..online.status", 1, "getStatusDrawable", paramStatus);
+        paramStatus = localObject;
+      }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  public static String a(AppRuntime.Status paramStatus)
   {
-    int i;
-    if ((paramQQAppInterface != null) && (paramStatus != null)) {
+    if (paramStatus != null)
+    {
       switch (aujg.a[paramStatus.ordinal()])
       {
       default: 
-        i = 0;
+        QLog.d("Q..online.status", 1, "getStatusName, not find status: " + paramStatus);
+        return "";
+      case 1: 
+        return BaseApplicationImpl.getContext().getString(2131719776);
+      case 2: 
+        return BaseApplicationImpl.getContext().getString(2131719777);
+      case 3: 
+        return BaseApplicationImpl.getContext().getString(2131719760);
+      case 4: 
+        return BaseApplicationImpl.getContext().getString(2131719763);
+      case 5: 
+        return BaseApplicationImpl.getContext().getString(2131719769);
       }
+      return BaseApplicationImpl.getContext().getString(2131719772);
     }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      if (j != 0) {
-        axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDB", "0X8009DDB", j, 0, "", "", "", "");
-      }
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
+    QLog.d("Q..online.status", 1, "getStatusName, status is null");
+    return "";
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong, AutoReplyText paramAutoReplyText)
+  public static AppRuntime.Status a(int paramInt)
   {
-    if ((paramQQAppInterface != null) && (paramAutoReplyText != null) && (aujd.a(paramStatus)))
+    switch (paramInt)
     {
-      int i = 1;
-      if (paramAutoReplyText.getTextId() == 2147483647) {
-        i = 2;
-      }
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDC", "0X8009DDC", i, 0, "", "", "", "");
+    default: 
+      return null;
+    case 1: 
+      return AppRuntime.Status.online;
+    case 2: 
+      return AppRuntime.Status.offline;
+    case 3: 
+      return AppRuntime.Status.away;
+    case 4: 
+      return AppRuntime.Status.invisiable;
+    case 5: 
+      return AppRuntime.Status.busy;
+    case 6: 
+      return AppRuntime.Status.qme;
     }
+    return AppRuntime.Status.dnd;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public static boolean a(AppRuntime.Status paramStatus)
   {
-    String str1;
-    if (paramQQAppInterface != null)
-    {
-      if (!paramBoolean) {
-        break label41;
-      }
-      str1 = "0X8009DDE";
-      if (!paramBoolean) {
-        break label47;
-      }
-    }
-    label41:
-    label47:
-    for (String str2 = "0X8009DDE";; str2 = "0X8009DDF")
-    {
-      axqw.b(paramQQAppInterface, "dc00898", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8009DDF";
-      break;
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null) {
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDD", "0X8009DDD", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
-  {
-    int i = -1;
-    switch (aujg.a[paramStatus.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X8009DE0", "0X8009DE0", 0, 0, String.valueOf(j), "", "", "");
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
+    return (paramStatus == AppRuntime.Status.away) || (paramStatus == AppRuntime.Status.busy) || (paramStatus == AppRuntime.Status.dnd);
   }
 }
 

@@ -1,12 +1,12 @@
-import android.graphics.Rect;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bbph
-  extends bbpj
+class bbph
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public acvh a;
-  public Rect a;
-  public String a;
+  bbph(bbpd parambbpd) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,69 +1,70 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class bkfw<PACKAGE extends bkfi>
-  extends BaseAdapter
+public class bkfw
+  extends bkev
 {
-  public int a;
-  protected Context a;
-  protected bjcd a;
-  protected PACKAGE a;
-  protected FaceListPage a;
+  public Path a;
+  ArrayList<bkfv> a;
+  public int b;
+  public int c;
   
-  public bkfw(Context paramContext, FaceListPage paramFaceListPage)
+  public bkfw(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage = paramFaceListPage;
+    super(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(bjcd parambjcd)
+  public bkfw(bkev parambkev, float paramFloat)
   {
-    this.jdField_a_of_type_Bjcd = parambjcd;
-  }
-  
-  public void a(PACKAGE paramPACKAGE)
-  {
-    this.jdField_a_of_type_Bkfi = paramPACKAGE;
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Bkfi == null)
+    super(parambkev.jdField_a_of_type_Int);
+    if ((parambkev instanceof bkfw))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceList", 2, "facePkg is null");
+      parambkev = (bkfw)parambkev;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(parambkev.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = parambkev.jdField_a_of_type_Int;
+      this.b = parambkev.b;
+      this.jdField_c_of_type_Int = ((int)(parambkev.jdField_c_of_type_Int * paramFloat));
+    }
+  }
+  
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("mode", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.b);
+      localJSONObject.put("lineWidth", this.jdField_c_of_type_Int);
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        bkfv localbkfv = (bkfv)localIterator.next();
+        localJSONArray.put(localbkfv.jdField_d_of_type_Int);
+        localJSONArray.put(localbkfv.a);
+        localJSONArray.put(localbkfv.b);
+        if (localbkfv.jdField_d_of_type_Int == bkfv.jdField_c_of_type_Int)
+        {
+          localJSONArray.put(localbkfv.jdField_c_of_type_Float);
+          localJSONArray.put(localbkfv.jdField_d_of_type_Float);
+        }
       }
-      return 0;
+      localJSONObject.put("points", localJSONArray);
+      return localJSONObject;
     }
-    int i = this.jdField_a_of_type_Bkfi.b();
-    int j = this.jdField_a_of_type_Bkfi.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if ((QLog.isColorLevel()) && (i == 0)) {
-      QLog.d("FaceList", 2, "totalFaceCount = 0");
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    catch (Exception localException) {}
+    return null;
   }
 }
 

@@ -1,11 +1,6 @@
 public abstract interface bgln
-  extends bglo
 {
-  public abstract void b(boolean paramBoolean, String paramString);
-  
-  public abstract void e(String paramString);
-  
-  public abstract void f(String paramString);
+  public abstract void a(boolean paramBoolean);
 }
 
 

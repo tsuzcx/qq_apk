@@ -1,44 +1,74 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import tencent.im.oidb.oidb_0xb60.ClientInfo;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeReq;
+import tencent.im.oidb.oidb_0xb60.ReqBody;
 
 class aacf
-  extends SimpleObserver<asiu>
+  extends JobSegment<asiw, asiw>
 {
-  aacf(aacb paramaacb, aacl paramaacl) {}
-  
-  public void a(asiu paramasiu)
+  protected void a(JobContext paramJobContext, asiw paramasiw)
   {
-    aacl localaacl = this.jdField_a_of_type_Aacl;
-    if (paramasiu.c == 1) {}
-    for (int i = 2;; i = 3)
+    if (paramasiw.a())
     {
-      localaacl.a(paramasiu, i);
-      return;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    int i;
-    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
-      i = 4;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aacl.a(null, i);
-      return;
-      if ((paramError instanceof AppInfoError)) {
-        i = ((AppInfoError)paramError).type;
-      } else {
-        i = 0;
+      notifyResult(paramasiw);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "cache is valid");
       }
     }
+    do
+    {
+      do
+      {
+        return;
+        paramJobContext = BaseApplicationImpl.getApplication().getRuntime();
+        if (paramJobContext != null) {
+          break;
+        }
+        notifyError(new AppInfoError(6, "jobApiPermission app is null"));
+      } while (!QLog.isColorLevel());
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "app is null");
+      return;
+      try
+      {
+        int i = Integer.parseInt(paramasiw.jdField_a_of_type_JavaLangString);
+        oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
+        localReqBody.get_privilege_req.setHasFlag(true);
+        localReqBody.get_privilege_req.appid.set(i);
+        localReqBody.get_privilege_req.app_type.set(paramasiw.jdField_a_of_type_Int);
+        if (paramasiw.jdField_a_of_type_Int == 1)
+        {
+          oidb_0xb60.ClientInfo localClientInfo = new oidb_0xb60.ClientInfo();
+          localClientInfo.platform.set(1);
+          if (!TextUtils.isEmpty(paramasiw.k)) {
+            localClientInfo.sdk_version.set(paramasiw.k);
+          }
+          if (!TextUtils.isEmpty(paramasiw.i)) {
+            localClientInfo.android_package_name.set(paramasiw.i);
+          }
+          if (!TextUtils.isEmpty(paramasiw.j)) {
+            localClientInfo.android_signature.set(paramasiw.j);
+          }
+          localReqBody.client_info.set(localClientInfo);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "send type=" + paramasiw.jdField_a_of_type_Int + ", appid=" + paramasiw.jdField_a_of_type_JavaLangString);
+        }
+        mxf.a(paramJobContext, new aacg(this, paramasiw), localReqBody.toByteArray(), "OidbSvc.0xb60_1", 2912, 1, null, 0L);
+        return;
+      }
+      catch (NumberFormatException paramJobContext)
+      {
+        notifyError(new AppInfoError(6, "jobApiPermission parse appid error"));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse appid error");
   }
 }
 

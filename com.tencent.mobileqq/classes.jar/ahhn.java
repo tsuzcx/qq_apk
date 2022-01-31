@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class ahhn
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public ahhn(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  public ahhn(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "点击视频");
+    QLog.i("springHb_SpringHbVideoView", 1, "mVideoPlayer is prepare");
+    SpringHbVideoView.a(this.a, true);
+    if (SpringHbVideoView.a(this.a) != null) {
+      SpringHbVideoView.a(this.a).a();
+    }
+    if (SpringHbVideoView.a(this.a)) {
+      this.a.a();
+    }
   }
 }
 

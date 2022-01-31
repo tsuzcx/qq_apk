@@ -1,8 +1,8 @@
 package cooperation.qqreader.host.colornote;
 
-import amgs;
-import amhk;
-import amkg;
+import amgr;
+import amhj;
+import amkf;
 import android.content.Context;
 
 public class ReaderColorNoteUtils
@@ -12,17 +12,17 @@ public class ReaderColorNoteUtils
   
   public static void deleteColorNote(int paramInt, String paramString)
   {
-    amgs.b(paramInt, paramString);
+    amgr.b(paramInt, paramString);
   }
   
   public static boolean getSyncState()
   {
-    return amhk.a().b();
+    return amhj.a().b();
   }
   
   public static void sendUpdateSmallScreenStateBroadcast(Context paramContext, boolean paramBoolean)
   {
-    amkg.a(paramContext, 2, paramBoolean);
+    amkf.a(paramContext, 2, paramBoolean);
   }
 }
 

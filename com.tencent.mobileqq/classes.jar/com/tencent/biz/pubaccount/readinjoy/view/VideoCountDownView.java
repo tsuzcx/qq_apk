@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.net.URL;
-import qjl;
-import qol;
+import qji;
+import qoi;
 
 public class VideoCountDownView
   extends RelativeLayout
@@ -27,7 +27,7 @@ public class VideoCountDownView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private qjl jdField_a_of_type_Qjl;
+  private qji jdField_a_of_type_Qji;
   private boolean jdField_a_of_type_Boolean;
   public final int b;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -60,20 +60,20 @@ public class VideoCountDownView
   private void d()
   {
     LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560087, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378377));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363632));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363610));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378380));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363631));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363609));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368727));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131366876);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368688));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368689));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368690));
-    this.d = ((ImageView)findViewById(2131368691));
-    this.e = ((ImageView)findViewById(2131368692));
-    Drawable localDrawable = getResources().getDrawable(2130842644);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368687));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368688));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368689));
+    this.d = ((ImageView)findViewById(2131368690));
+    this.e = ((ImageView)findViewById(2131368691));
+    Drawable localDrawable = getResources().getDrawable(2130842645);
     localDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
-    localDrawable = getResources().getDrawable(2130842640);
+    localDrawable = getResources().getDrawable(2130842641);
     localDrawable.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawables(localDrawable, null, null, null);
   }
@@ -85,7 +85,7 @@ public class VideoCountDownView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718615, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Qjl.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718626, new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_Qji.jdField_a_of_type_JavaLangString }));
   }
   
   public void a(URL paramURL)
@@ -118,21 +118,21 @@ public class VideoCountDownView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setNextVideoInfo(qjl paramqjl)
+  public void setNextVideoInfo(qji paramqji)
   {
-    this.jdField_a_of_type_Qjl = paramqjl;
-    if (this.jdField_a_of_type_Qjl == null) {
+    this.jdField_a_of_type_Qji = paramqji;
+    if (this.jdField_a_of_type_Qji == null) {
       return;
     }
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718616, new Object[] { this.jdField_a_of_type_Qjl.jdField_a_of_type_JavaLangString }));
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131718614, new Object[] { qol.b(paramqjl.jdField_a_of_type_Long) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718627, new Object[] { this.jdField_a_of_type_Qji.jdField_a_of_type_JavaLangString }));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131718625, new Object[] { qoi.b(paramqji.jdField_a_of_type_Long) }));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131718617));
+    this.jdField_b_of_type_AndroidWidgetButton.setText(getResources().getString(2131718628));
   }
   
   public void setOnCustomClickListener(View.OnClickListener paramOnClickListener)

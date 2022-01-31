@@ -1,8 +1,16 @@
-public abstract interface bkrq
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+
+public class bkrq
+  extends bkru
 {
-  public abstract void invalidate();
-  
-  public abstract void postInvalidate();
+  public void a()
+  {
+    RMVideoStateMgr.a().a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
+    }
+  }
 }
 
 

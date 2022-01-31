@@ -1,34 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
 
 public class azxd
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public azxd(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public azxd(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
-      if (!paramBoolean) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramCompoundButton = "on";; paramCompoundButton = "off")
-    {
-      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
-      this.a.e = paramBoolean;
-      if (this.a.e) {
-        this.a.a.setChecked(true);
-      }
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.d = false;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 

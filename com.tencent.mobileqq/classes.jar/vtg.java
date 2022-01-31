@@ -1,21 +1,32 @@
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
 public class vtg
-  implements Comparator<RecentUser>
 {
-  public vtg(ShareToActivity paramShareToActivity) {}
+  TroopInfo a;
+  public boolean a;
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public vtg(boolean paramBoolean, TroopInfo paramTroopInfo)
   {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+  }
+  
+  public static ArrayList<vtg> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  {
+    ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
+      vtg localvtg = new vtg(false, localTroopInfo);
+      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
+        localvtg.jdField_a_of_type_Boolean = true;
+      }
+      localArrayList.add(localvtg);
+      i += 1;
     }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
+    return localArrayList;
   }
 }
 

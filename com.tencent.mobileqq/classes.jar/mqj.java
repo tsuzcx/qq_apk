@@ -1,50 +1,80 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class mqj
 {
-  public long a;
-  public VideoAppInterface a;
-  public WeakReference<mpc> b;
-  public final String i = "AVRedBag_" + getClass().getSimpleName() + "_" + this.jdField_a_of_type_Long;
+  public int a;
+  ArrayList<mqh> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   
-  mqj(mpc parammpc)
+  public mqj()
   {
-    this.jdField_a_of_type_Long = AudioHelper.b();
-    this.b = new WeakReference(parammpc);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = parammpc.a();
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public AVActivity a()
+  public int a()
   {
-    mpc localmpc = (mpc)this.b.get();
-    if (localmpc != null) {
-      return localmpc.a();
+    int i = 0;
+    int k;
+    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
+    {
+      k = j;
+      if (((mqh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    return j;
+  }
+  
+  public ArrayList<mqh> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public mqh a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      mqh localmqh = (mqh)localIterator.next();
+      if (localmqh.a() == paramInt) {
+        return localmqh;
+      }
     }
     return null;
   }
   
-  public mpc a()
+  public void a(mqh parammqh)
   {
-    mpc localmpc = (mpc)this.b.get();
-    if (localmpc == null) {
-      QLog.d(this.i, 1, "getRedBagMgr[" + getClass().getName() + "] is null");
+    if (parammqh == null) {
+      return;
     }
-    return localmpc;
+    this.jdField_a_of_type_JavaUtilArrayList.add(parammqh);
   }
   
-  protected void finalize()
+  public void a(boolean paramBoolean)
   {
-    QLog.d(this.i, 1, "finalize, " + toString());
-    super.finalize();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String toString()
+  public boolean a()
   {
-    return super.toString();
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public ArrayList<mqh> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((mqh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      }
+      i += 1;
+    }
+    return localArrayList;
   }
 }
 

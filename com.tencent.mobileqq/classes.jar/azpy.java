@@ -1,33 +1,23 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-class azpy
-  implements bfoq
+public class azpy
+  implements DialogInterface.OnClickListener
 {
-  azpy(azpt paramazpt, boolean paramBoolean, azpg paramazpg, bfol parambfol) {}
+  public azpy(TroopFileItemOperation.10.1 param1) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    switch (paramInt)
     {
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      TroopFileTransferManager.a(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpt.jdField_a_of_type_Long).a(this.jdField_a_of_type_Azpg.a);
-      axqw.b(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Azpt.jdField_a_of_type_Long + "", "", "");
-      continue;
-      if (azpt.a(this.jdField_a_of_type_Azpt) != 0)
-      {
-        bajk.a(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpt.jdField_a_of_type_Long).b(this.jdField_a_of_type_Azpg);
-        axqw.b(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Azpt.jdField_a_of_type_Long + "", "", "");
-      }
-    }
+    } while (azpv.a(this.a.a.jdField_a_of_type_Azpv) == 0);
+    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Azpv.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Azpi.a);
   }
 }
 

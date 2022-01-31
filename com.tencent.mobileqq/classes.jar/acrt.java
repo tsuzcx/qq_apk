@@ -1,44 +1,96 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class acrt
+  extends Dialog
 {
-  public static long a(long paramLong)
+  Context jdField_a_of_type_AndroidContentContext = null;
+  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  
+  public acrt(Context paramContext)
   {
-    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
-    localCalendar.setTimeInMillis(paramLong);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis();
+    super(paramContext);
+    a(paramContext);
   }
   
-  public static String a(long paramLong, String paramString)
+  protected void a(Context paramContext)
   {
-    try
+    super.requestWindowFeature(1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setContentView(LayoutInflater.from(paramContext).inflate(2131560604, null));
+    paramContext = getWindow();
+    if (paramContext != null)
     {
-      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
-      return paramString;
+      paramContext.setLayout(-1, -1);
+      paramContext.setBackgroundDrawable(new ColorDrawable(0));
+      if (ImmersiveUtils.isSupporImmersive() == 1) {
+        paramContext.addFlags(67108864);
+      }
     }
-    catch (Exception paramString) {}
-    return "";
+    setCanceledOnTouchOutside(false);
+    paramContext = (ImageView)super.findViewById(2131372588);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setDuration(800L);
+    localTranslateAnimation.setRepeatCount(-1);
+    paramContext.startAnimation(localTranslateAnimation);
+    super.setCancelable(false);
   }
   
-  public static boolean a(long paramLong)
+  public void dismiss()
   {
-    return a(paramLong, "yyyy-MM-dd");
+    super.dismiss();
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+    }
   }
   
-  private static boolean a(long paramLong, String paramString)
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    Date localDate = new Date(paramLong);
-    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
-    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
+    if (paramInt == 4) {
+      try
+      {
+        dismiss();
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+        }
+        return false;
+      }
+      catch (Exception paramKeyEvent)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            paramKeyEvent.printStackTrace();
+          }
+        }
+      }
+    }
+    return super.onKeyDown(paramInt, paramKeyEvent);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839144));
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      }
+    }
   }
 }
 

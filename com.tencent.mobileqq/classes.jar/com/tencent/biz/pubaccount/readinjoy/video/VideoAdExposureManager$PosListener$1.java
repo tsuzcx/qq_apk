@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qks;
-import qkt;
+import qkp;
+import qkq;
 
 public class VideoAdExposureManager$PosListener$1
   implements Runnable
 {
-  public VideoAdExposureManager$PosListener$1(qkt paramqkt, qks paramqks, int paramInt) {}
+  public VideoAdExposureManager$PosListener$1(qkq paramqkq, qkp paramqkp, int paramInt) {}
   
   public void run()
   {
-    qks.a(this.jdField_a_of_type_Qks, this.jdField_a_of_type_Int);
+    qkp.a(this.jdField_a_of_type_Qkp, this.jdField_a_of_type_Int);
   }
 }
 

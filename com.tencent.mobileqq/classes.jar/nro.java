@@ -1,21 +1,60 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import java.util.Iterator;
+import java.util.List;
 
-class nro
+public class nro
+  extends BroadcastReceiver
 {
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  SingleLineTextView b;
+  public nro(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  nro(nrm paramnrm) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    do
+    {
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          paramContext = paramIntent.getAction();
+          localObject = paramIntent.getStringExtra("uin");
+          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+          if (!"action_decode_finish".equals(paramContext)) {
+            break;
+          }
+          if ((this.a.jdField_a_of_type_Nrd != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
+            this.a.jdField_a_of_type_Nrd.a((String)localObject, localBitmap);
+          }
+        } while (this.a.jdField_a_of_type_Nrj == null);
+        this.a.jdField_a_of_type_Nrj.a((String)localObject);
+        return;
+      } while (!"action_on_shop_msg_receive".equals(paramContext));
+      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
+      paramContext = this.a.getActivity();
+      if ((paramContext instanceof EcshopWebActivity)) {
+        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      }
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramIntent.hasNext())
+      {
+        localObject = (RecentShopParcel)paramIntent.next();
+        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
+          ((RecentShopParcel)localObject).b += 1;
+        }
+      }
+    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Nrj == null));
+    this.a.jdField_a_of_type_Nrj.a(this.a.jdField_a_of_type_JavaUtilList);
+  }
 }
 
 

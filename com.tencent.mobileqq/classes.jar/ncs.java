@@ -1,61 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class ncs
-  implements ajtg
+  implements View.OnTouchListener
 {
-  public ncs(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new nct(this);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ncs(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramObject == null) {
-      return;
+    if (paramMotionEvent.getAction() == 1) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
     }
-    paramObject = (Bundle)paramObject;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 17: 
-      paramBoolean = paramObject.getBoolean("result");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramBoolean)
-      {
-        paramObject = this.a.getString(2131696285);
-        localStringBuilder.append(paramObject);
-        localStringBuilder.append(this.a.getString(2131696283));
-        localStringBuilder.append(this.a.c);
-        if (!paramBoolean) {
-          break label233;
-        }
-        paramInt = 2;
-        label104:
-        bcpw.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
-        paramObject = this.a;
-        if (!paramBoolean) {
-          break label238;
-        }
-      }
-      break;
-    }
-    label233:
-    label238:
-    for (paramInt = -1;; paramInt = 0)
-    {
-      paramObject.setResult(paramInt);
-      return;
-      this.a.a = paramObject.getBoolean("isOpen");
-      this.a.c = paramObject.getString("name");
-      if (this.a.c != null) {
-        this.a.b = this.a.getString(2131696345, new Object[] { this.a.c });
-      }
-      LebaSearchMoreInfoActivity.a(this.a);
-      return;
-      paramObject = this.a.getString(2131696284);
-      break;
-      paramInt = 1;
-      break label104;
-    }
+    return false;
   }
 }
 

@@ -3,15 +3,15 @@ package com.tencent.mobileqq.troop.widget;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import bana;
-import banb;
+import bano;
+import banp;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
 
 public class AutoLocationMapView
   extends MapView
 {
-  Handler a = new bana(this);
-  public banb a;
+  Handler a = new bano(this);
+  public banp a;
   
   public AutoLocationMapView(Context paramContext)
   {

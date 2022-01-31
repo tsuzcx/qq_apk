@@ -24,21 +24,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
+import woz;
 import wpc;
 import wpf;
-import wpi;
+import wpt;
+import wpv;
 import wpw;
-import wpy;
-import wpz;
-import wsz;
-import wvy;
-import wvz;
-import wwa;
-import xhe;
+import wsw;
+import wvv;
+import wvw;
+import wvx;
+import xhb;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<wpi>
-  implements wpy
+  extends BaseWidgetView<wpf>
+  implements wpv
 {
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
@@ -47,9 +47,9 @@ public class RelativePersonalBottomView
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
-  private wpc jdField_a_of_type_Wpc;
-  private wpi jdField_a_of_type_Wpi;
-  private wwa jdField_a_of_type_Wwa;
+  private woz jdField_a_of_type_Woz;
+  private wpf jdField_a_of_type_Wpf;
+  private wvx jdField_a_of_type_Wvx;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -57,12 +57,12 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, wpc paramwpc)
+  public RelativePersonalBottomView(Context paramContext, woz paramwoz)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Wpc = paramwpc;
-    wpw.a().a(this);
+    this.jdField_a_of_type_Woz = paramwoz;
+    wpt.a().a(this);
   }
   
   private void a()
@@ -77,29 +77,29 @@ public class RelativePersonalBottomView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new wvy(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wvz(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new wvv(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wvw(this));
   }
   
   private void c()
   {
-    if (wsz.a().a(this.jdField_a_of_type_JavaLangString))
+    if (wsw.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Wpi != null) && ((this.jdField_a_of_type_Wpi.a instanceof wpz)))
+        if ((this.jdField_a_of_type_Wpf != null) && ((this.jdField_a_of_type_Wpf.a instanceof wpw)))
         {
-          wpz localwpz = (wpz)this.jdField_a_of_type_Wpi.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localwpz.jdField_a_of_type_JavaLangString, localwpz);
+          wpw localwpw = (wpw)this.jdField_a_of_type_Wpf.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localwpw.jdField_a_of_type_JavaLangString, localwpw);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        xhe.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        xhb.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Wwa.notifyDataSetChanged();
+        this.jdField_a_of_type_Wvx.notifyDataSetChanged();
       }
       this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838628));
     }
@@ -112,7 +112,7 @@ public class RelativePersonalBottomView
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Wwa.notifyDataSetChanged();
+        this.jdField_a_of_type_Wvx.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
@@ -120,12 +120,12 @@ public class RelativePersonalBottomView
   
   private void d()
   {
-    if ((this.jdField_a_of_type_Wpi != null) && ((this.jdField_a_of_type_Wpi.a instanceof wpz)))
+    if ((this.jdField_a_of_type_Wpf != null) && ((this.jdField_a_of_type_Wpf.a instanceof wpw)))
     {
-      Object localObject = (wpz)this.jdField_a_of_type_Wpi.a;
-      if (((((wpz)localObject).jdField_a_of_type_JavaUtilList == null) || (((wpz)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Wpc != null))
+      Object localObject = (wpw)this.jdField_a_of_type_Wpf.a;
+      if (((((wpw)localObject).jdField_a_of_type_JavaUtilList == null) || (((wpw)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Woz != null))
       {
-        localObject = this.jdField_a_of_type_Wpc.a().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_Woz.a().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -150,15 +150,15 @@ public class RelativePersonalBottomView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375228));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131375230));
     this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131371135));
-    this.b = ((RadioButton)paramView.findViewById(2131365380));
+    this.b = ((RadioButton)paramView.findViewById(2131365379));
     this.b.setVisibility(8);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131371394));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Wwa = new wwa(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_Wvx = new wvx(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     a();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Wwa);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Wvx);
     b();
   }
   
@@ -167,18 +167,18 @@ public class RelativePersonalBottomView
     ThreadManager.getUIHandler().post(new RelativePersonalBottomView.3(this, paramSimpleBaseEvent));
   }
   
-  public void a(wpi paramwpi)
+  public void a(wpf paramwpf)
   {
-    if ((paramwpi != null) && ((paramwpi.a instanceof wpz)))
+    if ((paramwpf != null) && ((paramwpf.a instanceof wpw)))
     {
-      this.jdField_a_of_type_Wpi = paramwpi;
-      paramwpi = (wpz)paramwpi.a;
+      this.jdField_a_of_type_Wpf = paramwpf;
+      paramwpf = (wpw)paramwpf.a;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramwpi.jdField_a_of_type_JavaLangString, paramwpi);
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramwpf.jdField_a_of_type_JavaLangString, paramwpf);
       }
       d();
-      if (paramwpi.b) {
+      if (paramwpf.b) {
         c();
       }
     }
@@ -195,13 +195,13 @@ public class RelativePersonalBottomView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    wpw.a().a(this);
+    wpt.a().a(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    wpw.a().b(this);
+    wpt.a().b(this);
   }
 }
 

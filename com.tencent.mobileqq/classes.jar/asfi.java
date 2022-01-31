@@ -1,51 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
 
 public class asfi
-  implements Handler.Callback
+  implements View.OnClickListener
 {
   public asfi(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    label196:
-    for (;;)
-    {
-      return false;
-      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
-        break;
-      }
-      this.a.jdField_a_of_type_Ahmx.a(this.a.jdField_b_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_Ahmx.a(21);
-      this.a.c();
-      if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
-        return false;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
+    axqy.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
+    paramView = new Intent();
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, MatchChatSettingFragment.class);
   }
 }
 

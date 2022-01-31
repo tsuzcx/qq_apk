@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork;
 
-import ayfv;
 import ayfx;
+import ayfz;
 
 public class TeamWorkUtils$TDFileQIPCModule$1
   implements Runnable
 {
-  public TeamWorkUtils$TDFileQIPCModule$1(ayfx paramayfx, String paramString) {}
+  public TeamWorkUtils$TDFileQIPCModule$1(ayfz paramayfz, String paramString) {}
   
   public void run()
   {
-    ayfv.a(this.a);
+    ayfx.a(this.a);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ajsf;
-import axaq;
+import ajsd;
+import axas;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import onk;
+import onh;
 
 class KandianSubscribeManager$4
   implements Runnable
@@ -14,15 +14,15 @@ class KandianSubscribeManager$4
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
     if (localQQAppInterface == null) {
       return;
     }
-    MessageRecord localMessageRecord2 = localQQAppInterface.a().b(ajsf.aQ, 1008);
+    MessageRecord localMessageRecord2 = localQQAppInterface.a().b(ajsd.aQ, 1008);
     MessageRecord localMessageRecord1;
     if (localMessageRecord2 != null)
     {
-      localMessageRecord1 = axaq.a(-1000);
+      localMessageRecord1 = axas.a(-1000);
       MessageRecord.copyMessageRecordBaseField(localMessageRecord1, localMessageRecord2);
       localMessageRecord1.msgtype = -1000;
     }
@@ -31,7 +31,7 @@ class KandianSubscribeManager$4
       KandianSubscribeManager.a(localMessageRecord1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
       localQQAppInterface.a().a(localMessageRecord1, localQQAppInterface.c());
       return;
-      localMessageRecord1 = axaq.a(-1000);
+      localMessageRecord1 = axas.a(-1000);
       localMessageRecord1.selfuin = localQQAppInterface.getCurrentAccountUin();
     }
   }

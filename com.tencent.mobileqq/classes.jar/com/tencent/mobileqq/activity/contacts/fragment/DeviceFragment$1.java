@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afpl;
+import afpj;
 import com.tencent.widget.XListView;
 
 class DeviceFragment$1
@@ -10,10 +10,10 @@ class DeviceFragment$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Afpl != null) && (this.this$0.jdField_a_of_type_Afpl.getCount() > 0))
+    if ((this.this$0.jdField_a_of_type_Afpj != null) && (this.this$0.jdField_a_of_type_Afpj.getCount() > 0))
     {
-      int i = this.this$0.jdField_a_of_type_Afpl.a();
-      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Afpl.getCount())) {
+      int i = this.this$0.jdField_a_of_type_Afpj.a();
+      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Afpj.getCount())) {
         this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
       }
     }

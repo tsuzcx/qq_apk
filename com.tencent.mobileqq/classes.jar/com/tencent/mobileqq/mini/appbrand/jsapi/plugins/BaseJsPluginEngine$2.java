@@ -28,7 +28,7 @@ class BaseJsPluginEngine$2
     }
     if ("0".equals(str))
     {
-      this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, new JSONObject(), this.this$0.getActivityContext().getString(2131694272), this.val$callbackId);
+      this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, new JSONObject(), this.this$0.getActivityContext().getString(2131694273), this.val$callbackId);
       return;
     }
     this.this$0.callbackJsEventFail(this.val$webview, this.val$eventName, paramJSONObject, this.val$callbackId);

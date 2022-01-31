@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axet;
-import axeu;
+import axev;
+import axew;
 import com.tencent.video.decode.ShortVideoSoLoad;
 import java.io.File;
 
@@ -19,7 +19,7 @@ final class VideoEnvironment$1
     if (((File)localObject1).exists()) {
       ((File)localObject1).delete();
     }
-    String str2 = axet.a();
+    String str2 = axev.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int i = VideoEnvironment.a().length;
     int j;
@@ -42,8 +42,8 @@ final class VideoEnvironment$1
           localObject2 = arrayOfFile[k].getName();
           if ((!str2.equalsIgnoreCase((String)localObject2)) && (!VideoEnvironment.a((String)localObject2)))
           {
-            localObject3 = axet.a((String)localObject2);
-            m = ((axeu)localObject3).a();
+            localObject3 = axev.a((String)localObject2);
+            m = ((axew)localObject3).a();
             if (m == 0) {
               break label306;
             }
@@ -55,7 +55,7 @@ final class VideoEnvironment$1
           }
         }
         label306:
-        localObject3 = ((axeu)localObject3).b();
+        localObject3 = ((axew)localObject3).b();
       }
     }
     label506:

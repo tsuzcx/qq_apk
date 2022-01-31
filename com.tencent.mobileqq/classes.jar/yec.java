@@ -1,29 +1,88 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.widget.CompoundButton;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class yec
-  implements bfoq
+public class yec
+  implements BusinessObserver
 {
-  yec(yeb paramyeb, MessageForShortVideo paramMessageForShortVideo, adzr paramadzr, bfol parambfol) {}
+  public yec(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    boolean bool2 = true;
+    int i = 1;
+    boolean bool1 = false;
+    this.a.jdField_a_of_type_Bcqf.dismiss();
+    if (!paramBoolean)
     {
+      paramBundle = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
+      paramBoolean = bool1;
+      if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
+        paramBoolean = true;
+      }
+      paramBundle.setChecked(paramBoolean);
+      bdis.a().a(this.a.getString(2131719339));
+      return;
+    }
+    if (paramBundle.getInt("cgiResultCode", -1) != 0)
+    {
+      bdis.a().a(this.a.getString(2131693022));
+      return;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_Yeb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      if ((bbev.d(BaseApplication.getContext())) && (this.jdField_a_of_type_Adzr != null) && (this.jdField_a_of_type_Adzr.a != null))
+      try
       {
-        this.jdField_a_of_type_Adzr.a.setFailedIconVisable(false, this.jdField_a_of_type_Yeb);
-        yeb.a(this.jdField_a_of_type_Yeb, this.jdField_a_of_type_Adzr, ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10), true);
+        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
+        if (paramBundle.optInt("ret", -1) != 0) {
+          break label280;
+        }
+        int j = ((Integer)this.a.jdField_a_of_type_AndroidWidgetCompoundButton.getTag()).intValue();
+        paramBundle = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (!paramBundle.hasNext()) {
+          break;
+        }
+        localObject = (yed)paramBundle.next();
+        if (((yed)localObject).a == j) {
+          if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked())
+          {
+            paramInt = 1;
+            ((yed)localObject).b = paramInt;
+          }
+          else
+          {
+            paramInt = 0;
+          }
+        }
       }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+    }
+    paramBundle = this.a.app;
+    long l = Long.parseLong(this.a.c);
+    paramInt = i;
+    if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
+      paramInt = 2;
+    }
+    ymt.a(paramBundle, l, "Usr_MsgMgr_Setting", paramInt, 0, Integer.parseInt(this.a.b));
+    return;
+    label280:
+    Object localObject = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
+    if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {}
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      ((CompoundButton)localObject).setChecked(paramBoolean);
+      bdii.a("DeviceMsgSettingActivity", "msg:" + paramBundle.optString("msg"));
+      bdis.a().a(this.a.getString(2131719339));
+      return;
     }
   }
 }

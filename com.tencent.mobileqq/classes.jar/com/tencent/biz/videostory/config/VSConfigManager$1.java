@@ -1,33 +1,33 @@
 package com.tencent.biz.videostory.config;
 
-import ampm;
+import ampl;
 import com.tencent.qphone.base.util.QLog;
-import xfr;
-import xfs;
-import xfy;
-import xga;
-import xgm;
+import xfo;
+import xfp;
+import xfv;
+import xfx;
+import xgj;
 
 public class VSConfigManager$1
   implements Runnable
 {
-  public VSConfigManager$1(xfr paramxfr) {}
+  public VSConfigManager$1(xfo paramxfo) {}
   
   public void run()
   {
-    Object localObject = (xfs)ampm.a().a(411);
+    Object localObject = (xfp)ampl.a().a(411);
     if (localObject != null) {
-      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((xfs)localObject).toString());
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((xfp)localObject).toString());
     }
-    localObject = (xga)ampm.a().a(463);
+    localObject = (xfx)ampl.a().a(463);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSSubscribeConfBean : " + localObject);
     }
-    localObject = (xfy)ampm.a().a(595);
+    localObject = (xfv)ampl.a().a(595);
     if (QLog.isColorLevel()) {
       QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSStickyNoteConfBean : " + localObject);
     }
-    xgm.a().a();
+    xgj.a().a();
   }
 }
 

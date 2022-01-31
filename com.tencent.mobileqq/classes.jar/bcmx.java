@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.ArrayList;
 
-public class bcmx
+class bcmx
 {
-  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
+  View jdField_a_of_type_AndroidViewView;
+  ArrayList<Pair<View, bcmw>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  int[] jdField_a_of_type_ArrayOfInt;
   
-  public bcmx(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public ChatThumbView a()
-  {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(ChatThumbView paramChatThumbView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
-  }
+  private bcmx(bcmu parambcmu) {}
 }
 
 

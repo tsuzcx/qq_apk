@@ -130,7 +130,7 @@
     <uses-permission android:name="com.tencent.smartdevice.permission.broadcast"/>
     <permission android:name="com.huawei.hwmultidisplay.permission.WINDOW_CAST_MODE" android:protectionLevel="normal"/>
     <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/pb" android:name="com.tencent.common.app.QFixApplicationImpl" android:networkSecurityConfig="@xml/f" android:resizeableActivity="true" android:theme="@style/d1" android:vmSafeMode="false">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="44c5fcc9-2d00-4168-ae2c-efc5be2dacd3"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="3214d055-2e1e-4a53-a899-4ce4a8d7ba22"/>
         <meta-data android:name="TencentOpenAbility" android:value="login_1,logout_1,newmsg_1,msgread_1,msgsend_1,querymsg_1,queryface_1,querynick_1,reg_1,sendmsg_1,setread_1,openaio_1"/>
         <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
         <meta-data android:name="TencentGeoLocationSDK" android:value="QQ2013,LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ"/>
@@ -144,7 +144,7 @@
         <meta-data android:name="android.max_aspect" android:value="2.4"/>
         <meta-data android:name="android.min_aspect" android:value="1.0"/>
         <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true"/>
-        <meta-data android:name="AppSetting_params" android:value="537063339#9807A128976E28DF#2002#YingYongBao#ffffffffffffffffffffffffff"/>
+        <meta-data android:name="AppSetting_params" android:value="537063521#520FF4F1281B71A4#2002#YingYongBao#ffffffffffffffffffffffffff"/>
         <meta-data android:name="com.huawei.ar.engine" android:value="optional"/>
         <service android:exported="false" android:name="com.tencent.mobileqq.msf.service.MsfService" android:process=":MSF">
             <intent-filter>

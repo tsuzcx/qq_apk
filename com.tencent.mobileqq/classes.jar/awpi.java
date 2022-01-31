@@ -3,9 +3,8 @@ public class awpi
   public int a;
   public CharSequence a;
   public String a;
-  public boolean a;
   
-  public awpi(awpf paramawpf) {}
+  public awpi(awph paramawph) {}
 }
 
 

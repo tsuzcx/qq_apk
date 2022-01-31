@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiInterestInfo;
 
-public class bhfu
-  implements DialogInterface.OnClickListener
+public final class bhfu
+  implements Parcelable.Creator<WeishiInterestInfo>
 {
-  public bhfu(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, bhfz parambhfz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public WeishiInterestInfo a(Parcel paramParcel)
   {
-    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    if (this.jdField_a_of_type_Bhfz != null) {
-      this.jdField_a_of_type_Bhfz.a();
-    }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
+    return new WeishiInterestInfo(paramParcel);
+  }
+  
+  public WeishiInterestInfo[] a(int paramInt)
+  {
+    return new WeishiInterestInfo[paramInt];
   }
 }
 

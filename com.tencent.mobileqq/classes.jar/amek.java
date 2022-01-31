@@ -1,21 +1,13 @@
-import com.tencent.image.URLDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import mqq.app.QQPermissionCallback;
 
 public class amek
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public amek(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
+  public amek(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

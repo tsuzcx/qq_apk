@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import ajae;
+import ajac;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.widget.RelativeLayout;
-import aqst;
+import aqsv;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import java.util.ArrayList;
-import yod;
+import yoa;
 
 class QQGamePubAccountFragment$10
   implements Runnable
@@ -34,8 +34,8 @@ class QQGamePubAccountFragment$10
       this.this$0.e();
       QQGamePubAccountFragment.a(this.this$0).setVisibility(0);
       QQGamePubAccountFragment.a(this.this$0).sendEmptyMessageDelayed(0, 3000L);
-      QQGamePubAccountFragment.a(this.this$0).setTag(aqst.a(this.a));
-      yod.a(ajae.a(), "769", "205030", "", "76901", "1", "160", new String[] { aqst.a(this.a), "", "8" });
+      QQGamePubAccountFragment.a(this.this$0).setTag(aqsv.a(this.a));
+      yoa.a(ajac.a(), "769", "205030", "", "76901", "1", "160", new String[] { aqsv.a(this.a), "", "8" });
       return;
     }
   }

@@ -1,34 +1,6 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-public final class ajfy
-  implements EIPCResultCallback
+public abstract interface ajfy
 {
-  public ajfy(ajga paramajga) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    boolean bool = true;
-    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
-    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
-    ajga localajga;
-    if (this.a != null)
-    {
-      localajga = this.a;
-      if (paramEIPCResult.code != 0) {
-        break label82;
-      }
-    }
-    for (;;)
-    {
-      localajga.a(bool);
-      return;
-      label82:
-      bool = false;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

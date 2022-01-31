@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import ajyc;
-import akxg;
-import albm;
-import alcb;
-import alfo;
+import ajya;
+import akxf;
+import albl;
+import alca;
+import alfn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atzt;
-import bcpq;
+import atzv;
+import bcqf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,7 +27,7 @@ public class ScanBaseActivity
   extends FragmentActivity
 {
   protected TextView a;
-  private bcpq a;
+  private bcqf a;
   public AppInterface a;
   public QQAppInterface a;
   public OcrConfig a;
@@ -44,10 +44,10 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = atzt.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = atzv.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = alfo.a();
+      boolean bool2 = alfn.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -55,16 +55,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((akxg)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
+    Object localObject = ((akxf)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      alcb localalcb = new alcb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!albm.a()) {
-        localalcb.a(localArrayList, (ArrayList)localObject, "arcloud");
+      alca localalca = new alca(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!albl.a()) {
+        localalca.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -82,7 +82,7 @@ public class ScanBaseActivity
     {
       localObject = localOcrConfig;
       if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((atzt)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
+        localObject = ((atzv)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
       }
     }
     if (QLog.isColorLevel()) {
@@ -104,7 +104,7 @@ public class ScanBaseActivity
       localView.setLayoutParams(localLayoutParams);
     }
     if (AppSetting.d) {
-      findViewById(2131368429).setContentDescription(ajyc.a(2131713504));
+      findViewById(2131368429).setContentDescription(ajya.a(2131713515));
     }
   }
   
@@ -123,8 +123,8 @@ public class ScanBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bcpq != null) {
-      this.jdField_a_of_type_Bcpq.dismiss();
+    if (this.jdField_a_of_type_Bcqf != null) {
+      this.jdField_a_of_type_Bcqf.dismiss();
     }
   }
   

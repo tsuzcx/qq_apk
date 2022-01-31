@@ -1,21 +1,21 @@
 package cooperation.vip.ar.util;
 
-import bhye;
-import bhyh;
+import bhyv;
+import bhyy;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class VipARUtils$3
   implements Runnable
 {
-  public VipARUtils$3(bhye parambhye) {}
+  public VipARUtils$3(bhyv parambhyv) {}
   
   public void run()
   {
-    if ((bhye.a("VipARUtils_JAR_md5", bhye.b())) || (!bhye.a())) {}
+    if ((bhyv.a("VipARUtils_JAR_md5", bhyv.b())) || (!bhyv.a())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("vip_tar_engine.jar", new bhyh(this));
+        QzoneModuleManager.getInstance().downloadModule("vip_tar_engine.jar", new bhyy(this));
       }
       return;
     }

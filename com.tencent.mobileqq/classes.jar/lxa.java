@@ -1,57 +1,19 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class lxa
-  extends Binder
-  implements lwz
+public class lxa
+  implements aveh
 {
-  public static lwz a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwz))) {
-      return (lwz)localIInterface;
-    }
-    return new lxb(paramIBinder);
-  }
+  public lxa(QQServiceForAV paramQQServiceForAV) {}
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(String paramString)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-      a(paramParcel1.readInt(), paramParcel1.readString());
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
-    {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label125;
-      }
-    }
-    label125:
-    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(bool, paramParcel1);
-      return true;
-      bool = false;
-      break;
-    }
+    new lxq(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxb(this, paramString));
   }
 }
 

@@ -22,8 +22,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import berf;
-import besl;
+import berw;
+import betc;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -49,7 +49,7 @@ public class MiniAppInfo
   implements Parcelable
 {
   public static final String APP_STORE_MINI_APP_ID = "1108291530";
-  public static final Parcelable.Creator<MiniAppInfo> CREATOR = new berf();
+  public static final Parcelable.Creator<MiniAppInfo> CREATOR = new berw();
   public static final String ENV_VERSION_DEVELOP = "develop";
   public static final String ENV_VERSION_RELEASE = "release";
   public static final String ENV_VERSION_TRIAL = "trial";
@@ -265,7 +265,7 @@ public class MiniAppInfo
     }
     if (paramStAppBasicInfo != null)
     {
-      besl.b("MiniAppInfo", "appid:" + paramString1 + ", usrFileSizeLimit:" + paramStAppBasicInfo.usrFileSizeLimit.get());
+      betc.b("MiniAppInfo", "appid:" + paramString1 + ", usrFileSizeLimit:" + paramStAppBasicInfo.usrFileSizeLimit.get());
       this.usrFileSizeLimit = paramStAppBasicInfo.usrFileSizeLimit.get();
       if (paramStAppBasicInfo.preCacheList != null)
       {
@@ -384,7 +384,7 @@ public class MiniAppInfo
           }
           catch (Exception paramStApiAppInfo)
           {
-            besl.d("MiniAppInfo", " parse reportData error.", paramStApiAppInfo);
+            betc.d("MiniAppInfo", " parse reportData error.", paramStApiAppInfo);
           }
         }
       }
@@ -700,7 +700,7 @@ public class MiniAppInfo
       }
       catch (Throwable paramJSONObject)
       {
-        besl.d("MiniAppInfo", "", paramJSONObject);
+        betc.d("MiniAppInfo", "", paramJSONObject);
         return null;
       }
     }
@@ -793,7 +793,7 @@ public class MiniAppInfo
       }
       localException2 = localException2;
       paramMap = (Map<String, String>)localObject1;
-      besl.d("MiniAppInfo", " getReportDataString error.", localException2);
+      betc.d("MiniAppInfo", " getReportDataString error.", localException2);
       return paramMap;
     }
   }

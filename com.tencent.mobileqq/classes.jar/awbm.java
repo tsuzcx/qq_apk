@@ -1,11 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.ArrayList;
 
 public class awbm
 {
   public int a;
-  public ImageView a;
-  public TextView a;
+  public String a;
+  public ArrayList<awbm> a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  
+  public awbm(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

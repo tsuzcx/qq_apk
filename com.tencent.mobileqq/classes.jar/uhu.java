@@ -1,85 +1,104 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.DetailVideoInfoWidget.SubscribeStatusReceiver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.HashMap;
+import java.util.Map;
 
 public class uhu
-  extends ssy
+  extends ugf
 {
-  public String a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private teo jdField_a_of_type_Teo;
+  private uas jdField_a_of_type_Uas;
+  private boolean c;
   
-  private uhu(uhj paramuhj) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public Map<Subscriber, String> a()
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    boolean bool = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString);
-    if (bool) {
-      this.jdField_a_of_type_JavaLangString = null;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(new uhv(this), "");
+    return localHashMap;
+  }
+  
+  public boolean a(View paramView)
+  {
+    if ((this.jdField_a_of_type_Teo == null) || (this.jdField_a_of_type_Teo.jdField_a_of_type_Int != 1)) {
+      return false;
     }
-    StoryVideoItem localStoryVideoItem;
-    if (this.jdField_a_of_type_Uhj.a != null)
+    if (!super.a(paramView)) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Teo.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
     {
-      localStoryVideoItem = this.jdField_a_of_type_Uhj.a.a();
-      if (localStoryVideoItem != null) {
-        break label64;
+      paramView = bbex.a(QQStoryContext.a(), this.jdField_a_of_type_Ugc.b(), this.jdField_a_of_type_Teo.jdField_a_of_type_JavaLangString);
+      if (paramView != null) {
+        paramView.c();
       }
+      return true;
     }
-    label64:
-    label326:
-    do
+    paramView = new Intent(this.jdField_a_of_type_Ugc.b(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Teo.a());
+    this.jdField_a_of_type_Ugc.b().startActivity(paramView);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Teo.d)) {}
+    for (paramView = "2";; paramView = "1")
     {
-      do
-      {
-        tdo localtdo;
-        QQUserUIItem localQQUserUIItem;
-        do
-        {
-          return;
-          localStoryVideoItem = null;
-          break;
-          localtdo = (tdo)tdc.a(2);
-          localQQUserUIItem = localtdo.b(localStoryVideoItem.mOwnerUid);
-        } while ((localQQUserUIItem == null) || (!TextUtils.equals(paramString, localQQUserUIItem.getUnionId())));
-        if (paramBoolean1)
-        {
-          if (paramBoolean2) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            localQQUserUIItem.isSubscribe = paramInt;
-            ThreadManager.post(new DetailVideoInfoWidget.SubscribeStatusReceiver.1(this, localtdo, localQQUserUIItem), 5, null, false);
-            if (paramBoolean2)
-            {
-              paramString = (ssw)tsu.a().getManager(181);
-              if (!paramString.g())
-              {
-                paramString.c();
-                bcpw.a(tsu.a(), 2, ajyc.a(2131703158), 0).a();
-              }
-              paramString = new uyr(2);
-              ste.a().dispatch(paramString);
-            }
-            uhj.a(this.jdField_a_of_type_Uhj, localStoryVideoItem, localQQUserUIItem);
-            if (!bool) {
-              break;
-            }
-            vel.a("play_video", "follow_suc", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
-            return;
-          }
-        }
-        if (!paramBoolean2) {
-          break label326;
-        }
-        bcpw.a(tsu.a(), 1, ajyc.a(2131703157), 0).a();
-      } while (!bool);
-      vel.a("play_video", "follow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
+      vei.a("play_video", "clk_linkbar", 0, 0, new String[] { paramView, "", "", this.jdField_a_of_type_JavaLangString });
+      return true;
+    }
+  }
+  
+  public void b(ugg paramugg, uas paramuas)
+  {
+    this.jdField_a_of_type_Uas = paramuas;
+    StoryVideoItem localStoryVideoItem = paramuas.a();
+    teo localteo = localStoryVideoItem.getVideoLinkInfo();
+    if ((localteo == null) || (localteo.jdField_a_of_type_Int != 1))
+    {
+      this.jdField_a_of_type_Ugc.k();
+      this.jdField_a_of_type_Uas = null;
       return;
-      bcpw.a(tsu.a(), 1, ajyc.a(2131703155), 0).a();
-    } while (!bool);
-    vel.a("play_video", "unfollow_fail", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
+    }
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramuas.jdField_a_of_type_JavaLangString))
+    {
+      this.c = false;
+      this.jdField_a_of_type_Teo = localteo;
+      this.jdField_a_of_type_Ugc.j();
+      paramugg.b.setVisibility(0);
+      paramugg.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramugg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (TextUtils.isEmpty(localteo.e)) {
+        break label184;
+      }
+      paramugg.b.setText(localteo.e);
+    }
+    for (;;)
+    {
+      paramugg.jdField_a_of_type_AndroidWidgetTextView.setText(localteo.b());
+      paramugg.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
+      if ((localteo.b != 1) || (!localStoryVideoItem.isUploading())) {
+        break label196;
+      }
+      paramugg.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845729);
+      return;
+      this.c = true;
+      this.jdField_a_of_type_JavaLangString = paramuas.jdField_a_of_type_JavaLangString;
+      break;
+      label184:
+      paramugg.b.setVisibility(8);
+    }
+    label196:
+    if (TextUtils.isEmpty(localteo.d))
+    {
+      paramugg.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839354);
+      return;
+    }
+    ugc.a(localteo.d, paramugg.jdField_a_of_type_AndroidWidgetImageView, paramugg.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramugg.jdField_a_of_type_Int, paramugg.jdField_a_of_type_Int);
   }
 }
 

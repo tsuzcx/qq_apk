@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 class bdlf
-  implements DialogInterface.OnDismissListener
+  implements bdji
 {
-  bdlf(bdlc parambdlc) {}
+  bdlf(bdle parambdle, DownloadInfo paramDownloadInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(String paramString1, String paramString2, String paramString3) {}
+  
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    this.a.a = null;
-    this.a.c = false;
-    this.a.c = false;
+    bdii.d("DownloadManager_", ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", bdig.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
   }
 }
 

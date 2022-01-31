@@ -1,19 +1,11 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.widget.ListView;
 
-class awkl
-  implements View.OnClickListener
+public class awkl
+  extends awkh
 {
-  awkl(awkk paramawkk, String paramString) {}
-  
-  public void onClick(View paramView)
+  public awkl(ListView paramListView, baxy parambaxy, bfos parambfos, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_Awkk.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Awkk.a.startActivity(paramView);
+    super(paramListView, parambaxy, parambfos, paramInt);
   }
 }
 

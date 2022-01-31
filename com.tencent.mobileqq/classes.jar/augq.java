@@ -1,28 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
-
-public class augq
-  extends QQBroadcastReceiver
+public abstract interface augq
 {
-  public augq(ScanTorchActivity paramScanTorchActivity) {}
+  public abstract void a(akyn paramakyn);
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
-    ScanTorchActivity.a(this.a);
-  }
+  public abstract void a(akyn paramakyn, boolean paramBoolean);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

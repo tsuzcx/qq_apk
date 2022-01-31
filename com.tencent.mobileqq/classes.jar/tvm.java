@@ -1,29 +1,27 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class tvm
-  implements TVK_ICacheMgr.IPreloadCallback
+final class tvm
+  extends SimpleJob<Object>
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  tvm(String paramString, stf paramstf, String[] paramArrayOfString, int paramInt, tvn paramtvn, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    synchronized ()
-    {
-      tvq localtvq = tvk.a();
-      tvk.a().post(new TVKPreloader.2.2(this, localtvq, paramString1, paramInt, paramString2));
-      return;
-    }
+    super(paramString);
   }
   
-  public void onPreLoadSucess(String arg1, String paramString2)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    synchronized ()
-    {
-      paramString2 = tvk.a();
-      tvk.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
+    paramJobContext = this.jdField_a_of_type_Stf.a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bfnx.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
     }
+    tvh.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Tvn);
+    return null;
   }
 }
 

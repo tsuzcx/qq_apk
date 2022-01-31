@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import com.tencent.qphone.base.util.QLog;
-import noo;
+import nol;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oyc;
+import oxz;
 
 public class FrameworkHandler$2
   implements Runnable
@@ -15,7 +15,7 @@ public class FrameworkHandler$2
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("channel_id", this.this$0.b());
-      noo.a(null, "", "0X8009415", "0X8009415", 0, 0, "", "", "", localJSONObject.toString(), false);
+      nol.a(null, "", "0X8009415", "0X8009415", 0, 0, "", "", "", localJSONObject.toString(), false);
       QLog.d("FrameworkHandler", 2, "back_to_top_btn : exposure ; channelID  : " + this.this$0.b());
       return;
     }

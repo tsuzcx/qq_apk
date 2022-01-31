@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apay;
+import apbc;
 
 public class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(apay paramapay, int paramInt) {}
+  public OnlineFileSessionCenter$3(apbc paramapbc, int paramInt) {}
   
   public void run()
   {

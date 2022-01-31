@@ -1,35 +1,35 @@
-import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
 
 public class abuh
-  implements avui
+  extends BroadcastReceiver
 {
   public abuh(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(avum paramavum) {}
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!paramBoolean)
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
     {
-      bbcv.a(this.a, 230, this.a.getString(2131698453), ajyc.a(2131710351), new abui(this), null).show();
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
+      {
+        QQIdentiferActivity.a(this.a, 204, armr.a);
+        QQIdentiferActivity.a(this.a, 204, armr.a);
+        this.a.finish();
+      }
+    }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    {
+      int i;
       return;
     }
-    QQIdentiferActivity.a(this.a).set(false);
-    QQIdentiferActivity.a(this.a).a();
+    this.a.finish();
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

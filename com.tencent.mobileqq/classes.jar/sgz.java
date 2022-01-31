@@ -1,11 +1,6 @@
-class sgz
-  implements sem
+public abstract interface sgz
 {
-  sgz(sgy paramsgy) {}
-  
-  public void a() {}
-  
-  public void b() {}
+  public abstract void a(int paramInt, float paramFloat);
 }
 
 

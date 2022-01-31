@@ -1,53 +1,45 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
-import java.util.List;
+import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdup
-  extends Handler
+  extends ajto
 {
   public bdup(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    this.a.a();
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
     {
+      this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
+      if (QidianProfileCardActivity.b(this.a)) {
+        this.a.a(this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      }
     }
-    for (;;)
+  }
+  
+  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  {
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    }
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Auuy != null) && (this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
     {
-      super.handleMessage(paramMessage);
+      this.a.c = paramBmqqAccountType.getAccountType();
+      this.a.b();
+      if (this.a.c == 1) {
+        this.a.jdField_a_of_type_Bduf.b(this.a, paramBmqqAccountType);
+      }
+    }
+    else
+    {
       return;
-      try
-      {
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
-      }
-      catch (Exception localException) {}
-      continue;
-      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
-      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
-      if (localObject != null)
-      {
-        this.a.b.addView((View)localObject);
-        continue;
-        localObject = paramMessage.getData().getParcelableArrayList("data");
-        localObject = this.a.a((List)localObject);
-        if (localObject != null)
-        {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.leftMargin = this.a.d;
-          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
-          this.a.b.addView((View)localObject, localLayoutParams);
-        }
-      }
     }
+    this.a.a();
   }
 }
 

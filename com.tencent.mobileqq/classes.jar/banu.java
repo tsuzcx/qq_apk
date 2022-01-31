@@ -1,18 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
-class banu
-  implements View.OnClickListener
+public class banu
 {
-  banu(bant parambant, banv parambanv, MediaPreviewInfo paramMediaPreviewInfo) {}
+  public View a;
+  public URLImageView a;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Banv.a.setVisibility(8);
-    this.jdField_a_of_type_Bant.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_Banv);
-  }
+  public banu(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
 }
 
 

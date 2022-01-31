@@ -1,141 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.opengl.EGLContext;
 
 public class axkz
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private avyz jdField_a_of_type_Avyz;
-  public avza a;
-  private String jdField_a_of_type_JavaLangString;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  public axlv a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  private static long a(int paramInt)
+  public void a()
   {
-    return paramInt * 1000000000L / 25L;
-  }
-  
-  private Bitmap a(Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = paramBitmap;
-    if (paramBitmap.getWidth() % 2 == 1)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localBitmap = Bitmap.createBitmap(paramBitmap.getWidth() + 1, paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawARGB(0, 0, 0, 0);
-      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-    }
-    return localBitmap;
-  }
-  
-  private void a()
-  {
-    veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "preparing.");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "bitmap's width = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", height = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    avyy localavyy = new avyy(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), 532480, 1, false, 0);
-    localavyy.d = 25;
-    this.jdField_a_of_type_Avza = new avza();
-    this.jdField_a_of_type_Avza.a(localavyy);
-    this.jdField_a_of_type_Avyz = new avyz();
-    this.jdField_a_of_type_Avyz.a(localavyy, this.jdField_a_of_type_Avza.a());
-    this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
-  }
-  
-  private void b()
-  {
-    veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "releasing.");
-    if (this.jdField_a_of_type_Avyz != null)
-    {
-      this.jdField_a_of_type_Avyz.a();
-      this.jdField_a_of_type_Avyz = null;
+      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
+      return;
     }
   }
   
-  public int a(String paramString1, String paramString2)
+  public void a(EGLContext paramEGLContext)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      throw new IllegalStateException("convert image to video failed. because input path or target path is null!");
-    }
-    veg.d("Q.qqstory.publish.upload.PicToVideoConverter", "input file path is %s. output file path is %s.", new Object[] { paramString1, paramString2 });
-    if (!vyi.c(paramString1))
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      veg.e("Q.qqstory.publish.upload.PicToVideoConverter", "input file does not exists or is empty.");
-      return 940007;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(paramString1);
-      l = System.currentTimeMillis();
-    }
-    catch (OutOfMemoryError paramString2)
-    {
-      try
-      {
-        for (;;)
-        {
-          a();
-          i = 0;
-          for (;;)
-          {
-            if (i < 75)
-            {
-              this.jdField_a_of_type_Avza.a();
-              this.jdField_a_of_type_Avyz.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null, a(i));
-              i += 1;
-              continue;
-              paramString2 = paramString2;
-              System.gc();
-              try
-              {
-                Thread.sleep(1000L);
-                this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(paramString1, 540, 960);
-                if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-                  this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(paramString1, 360, 640);
-                }
-                if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-                  break;
-                }
-                veg.e("Q.qqstory.publish.upload.PicToVideoConverter", "decode bitmap <%s> error:%s", new Object[] { paramString1, paramString2 });
-                return 942014;
-              }
-              catch (InterruptedException localInterruptedException)
-              {
-                for (;;)
-                {
-                  localInterruptedException.printStackTrace();
-                }
-              }
-            }
-          }
-        }
-        this.jdField_a_of_type_Avza.b();
-        b();
-        i = 0;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          long l;
-          veg.b("Q.qqstory.publish.upload.PicToVideoConverter", "convert picture to video error. %s.", paramString1);
-          int i = 942013;
-          this.jdField_a_of_type_Avza.c();
-          b();
-        }
-      }
-      finally
-      {
-        b();
-      }
-      veg.d("Q.qqstory.publish.upload.PicToVideoConverter", "convert image to video done. cost time %d. errorCode is %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i) });
-      return i;
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      return;
     }
   }
 }

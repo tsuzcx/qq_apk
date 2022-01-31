@@ -1,41 +1,20 @@
-import android.app.Activity;
-
-class tpg
-  implements tpi
+public abstract interface tpg
 {
-  tpg(tpe paramtpe) {}
+  public abstract void a();
   
-  public void a(trp paramtrp)
-  {
-    tpe.a(this.a).c();
-    Activity localActivity = tpe.a(this.a).a();
-    if (localActivity == null)
-    {
-      c(paramtrp);
-      return;
-    }
-    tsb.a(localActivity, paramtrp, tpe.a(this.a));
-  }
+  public abstract void a(int paramInt);
   
-  public void b(trp paramtrp)
-  {
-    tpe.a(this.a).c();
-    if (tpe.a(this.a) != null)
-    {
-      tpe.a(this.a).c(paramtrp.a);
-      tpe.a(this.a).a();
-    }
-  }
+  public abstract void b();
   
-  public void c(trp paramtrp)
-  {
-    tpe.a(this.a).c();
-    if (tpe.a(this.a) != null)
-    {
-      tpe.a(this.a).d(paramtrp.a);
-      tpe.a(this.a).a();
-    }
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
 }
 
 

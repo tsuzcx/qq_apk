@@ -1,33 +1,34 @@
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class asya
+final class asya
+  implements URLDrawable.URLDrawableListener
 {
-  public long a;
-  public asxz a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
+  asya(Resources paramResources, ImageView paramImageView) {}
   
-  public static asya a(JSONObject paramJSONObject)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    boolean bool = true;
-    if (paramJSONObject == null) {
-      return null;
-    }
-    asya localasya = new asya();
-    localasya.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
-    localasya.jdField_a_of_type_Long = asxk.b(localasya.jdField_a_of_type_JavaLangString);
-    localasya.jdField_b_of_type_Long = asxk.a(localasya.jdField_a_of_type_JavaLangString);
-    localasya.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
-    if (paramJSONObject.optInt("enable") == 1) {}
-    for (;;)
+    if (paramURLDrawable != null)
     {
-      localasya.jdField_a_of_type_Boolean = bool;
-      localasya.c = paramJSONObject.optString("ruleWording");
-      return localasya;
-      bool = false;
+      int i = actj.a(21.0F, this.jdField_a_of_type_AndroidContentResResources);
+      int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams.height = i;
+      localLayoutParams.width = j;
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
   }
 }

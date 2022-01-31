@@ -1,35 +1,76 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem.1;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem.2;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class bkoo
+  extends BaseAdapter
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<vvd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @Nullable
+  private vvd jdField_a_of_type_Vvd;
   
-  public void a(bkat parambkat, View paramView, boolean paramBoolean, int paramInt1, int paramInt2, Runnable paramRunnable)
+  public bkoo(Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  @Nullable
+  public vvd a()
+  {
+    return this.jdField_a_of_type_Vvd;
+  }
+  
+  public void a(List<vvd> paramList)
+  {
+    if (paramList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(@Nullable vvd paramvvd)
+  {
+    this.jdField_a_of_type_Vvd = paramvvd;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561379, null);
+      paramView = new bkop(paramViewGroup);
+      paramViewGroup.setTag(paramView);
     }
-    int i;
     for (;;)
     {
-      i = 0;
-      while (i < paramInt1 - paramInt2)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoteDashItem.1(this, parambkat, paramView), i);
-        i += paramInt2;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      paramView.a((vvd)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Vvd);
+      return paramView.a;
+      paramView = (bkop)paramView.getTag();
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new VoteDashItem.2(this, parambkat, paramBoolean, paramView, paramRunnable), i);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerb;
-import akqb;
+import aeqz;
+import akqa;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import aqbc;
-import asty;
-import asuf;
+import aqbe;
+import asua;
+import asuh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class MultiForwardChatPie$9
   implements Runnable
 {
-  public MultiForwardChatPie$9(aerb paramaerb, long paramLong) {}
+  public MultiForwardChatPie$9(aeqz paramaeqz, long paramLong) {}
   
   public void run()
   {
@@ -40,7 +40,7 @@ public class MultiForwardChatPie$9
         localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         localObject1 = localObject2;
         if (localObject3 != null) {
-          localObject1 = ((akqb)localObject3).a(this.a);
+          localObject1 = ((akqa)localObject3).a(this.a);
         }
       }
       localObject2 = localObject1;
@@ -49,18 +49,18 @@ public class MultiForwardChatPie$9
         localObject2 = localObject1;
         if (this.a == 0L)
         {
-          localObject3 = aerb.a(this.this$0);
-          asty.a().a.clear();
-          asty.a().a.addAll(aerb.a(this.this$0));
+          localObject3 = aeqz.a(this.this$0);
+          asua.a().a.clear();
+          asua.a().a.addAll(aeqz.a(this.this$0));
           HashMap localHashMap = new HashMap();
           int i = 0;
-          while (i < aerb.a(this.this$0).size())
+          while (i < aeqz.a(this.this$0).size())
           {
-            ChatMessage localChatMessage = (ChatMessage)aerb.a(this.this$0).get(i);
+            ChatMessage localChatMessage = (ChatMessage)aeqz.a(this.this$0).get(i);
             localObject2 = localChatMessage.getExtInfoFromExtStr("self_nickname");
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = asty.a().a(localChatMessage.senderuin, localChatMessage.msgseq, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              localObject1 = asua.a().a(localChatMessage.senderuin, localChatMessage.msgseq, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             }
             if (localObject1 != null)
             {
@@ -69,13 +69,13 @@ public class MultiForwardChatPie$9
             }
             else
             {
-              localObject2 = asuf.a(localChatMessage.senderuin);
+              localObject2 = asuh.a(localChatMessage.senderuin);
             }
             localHashMap.put(localChatMessage.senderuin, localObject2);
             i += 1;
           }
-          asty.a().b.clear();
-          asty.a().b.putAll(localHashMap);
+          asua.a().b.clear();
+          asua.a().b.putAll(localHashMap);
           localObject2 = localObject3;
         }
       }
@@ -93,7 +93,7 @@ public class MultiForwardChatPie$9
     ((Bundle)localObject1).putInt("accostType", ((MessageForStructing)localObject2).structingMsg.sourceAccoutType);
     localObject2 = new Intent();
     ((Intent)localObject2).putExtras((Bundle)localObject1);
-    aqbc.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, 24);
+    aqbe.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, 24);
   }
 }
 

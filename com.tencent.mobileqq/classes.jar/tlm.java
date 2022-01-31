@@ -1,62 +1,58 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class tlm
-  extends tjg
-  implements syt<tna, toq>
+  extends tje
+  implements syq<tnq, toz>
 {
-  protected String a;
-  protected List<String> a;
+  public static int a = 20;
+  private long c;
   
-  public tlm(String paramString, List<String> paramList)
+  public tnq a(int paramInt, ArrayList<tcq> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (paramArrayList.size() > a) {
+      ved.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
     }
+    tnq localtnq = new tnq();
+    localtnq.c = paramInt;
+    localtnq.a = paramArrayList;
+    syo.a().a(localtnq, this);
+    this.c = System.currentTimeMillis();
+    return localtnq;
   }
   
-  public void a()
+  public void a(@NonNull tnq paramtnq, @Nullable toz paramtoz, @NonNull ErrorMessage paramErrorMessage)
   {
-    tna localtna = new tna();
-    localtna.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    syr.a().a(localtna, this);
-  }
-  
-  public void a(@NonNull tna paramtna, @Nullable toq paramtoq, @NonNull ErrorMessage paramErrorMessage)
-  {
-    tlo localtlo = new tlo();
-    if ((paramtoq == null) || (paramErrorMessage.isFail()))
+    tcp localtcp = (tcp)tcz.a(13);
+    if ((paramtoz == null) || (paramErrorMessage.isFail()))
     {
-      c();
-      ste.a().dispatch(localtlo);
-      return;
+      ved.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
+      paramtoz = paramtnq.a.iterator();
     }
-    veg.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: request.count=" + paramtna.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramtna.jdField_a_of_type_JavaUtilList.toString());
-    veg.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: count=" + paramtoq.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramtoq.toString());
-    b();
-    paramtoq.jdField_a_of_type_JavaUtilList = ((tcz)tdc.a(5)).a(paramtoq.jdField_a_of_type_JavaUtilList);
-    localtlo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramtna = paramtoq.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtna.hasNext())
+    while (paramtoz.hasNext())
     {
-      paramtoq = (StoryVideoItem)paramtna.next();
-      paramtoq = new uuf(paramtoq.mVid, paramtoq);
-      localtlo.jdField_a_of_type_JavaUtilList.add(paramtoq);
+      localtcp.a((tcq)paramtoz.next(), false);
+      continue;
+      localtcp.a(paramtoz.a);
+      ved.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramtoz.a.size()), Integer.valueOf(paramtnq.a.size()) });
+      paramErrorMessage = paramtnq.a.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        tcq localtcq = (tcq)paramErrorMessage.next();
+        if (!paramtoz.a.contains(localtcq)) {
+          localtcp.a(localtcq, false);
+        }
+      }
+      if (paramtnq.a.size() > paramtoz.a.size()) {
+        vei.b("home_page", "batch_watch_video", 0, paramtnq.a.size() - paramtoz.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), vei.a(BaseApplication.getContext()) });
+      }
     }
-    ste.a().dispatch(localtlo);
-  }
-  
-  public String toString()
-  {
-    return "VidToShareGroupVideoInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    localtcp.a(paramtnq);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bcci;
-import bcdb;
-import bchu;
-import bcpq;
+import bccw;
+import bcdp;
+import bcii;
+import bcqf;
 
 class MQPSecJsPlugin$2
   implements Runnable
@@ -17,12 +17,12 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        bcci localbcci = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localbcci != null) && ((localbcci instanceof bchu)))
+        bccw localbccw = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+        if ((localbccw != null) && ((localbccw instanceof bcii)))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new bcpq(this.this$0.activity, ((bchu)localbcci).b()));
+          MQPSecJsPlugin.access$102(this.this$0, new bcqf(this.this$0.activity, ((bcii)localbccw).b()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131694930);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131694931);
         }
       }
     }

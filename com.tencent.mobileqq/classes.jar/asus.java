@@ -1,14 +1,13 @@
-public abstract interface asus
+public class asus
 {
-  public abstract void a();
-  
-  public abstract void a(asuq paramasuq);
-  
-  public abstract void a(asuq paramasuq, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public int a;
+  public asur a;
+  public asvj a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d = 0;
 }
 
 

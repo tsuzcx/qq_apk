@@ -1,29 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
 public class bagl
-  implements View.OnTouchListener
+  implements bany
 {
-  public bagl(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bagl(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    boolean bool1 = this.a.a.canScrollVertically(-1);
-    boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    default: 
-      return false;
-    }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    paramView.setVisibility(8);
   }
 }
 

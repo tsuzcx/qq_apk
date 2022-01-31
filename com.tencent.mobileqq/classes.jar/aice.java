@@ -1,42 +1,50 @@
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public abstract interface aice
 {
-  public abstract void bind(@Nullable aicg paramaicg);
+  public abstract int a();
   
-  public abstract void clearHighlightContent();
+  public abstract int a(int paramInt1, int paramInt2);
   
-  @Nullable
-  public abstract CharSequence content();
+  public abstract void a();
   
-  public abstract int contentLength();
+  public abstract void a(int paramInt);
   
-  @Nullable
-  public abstract aicg delegate();
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void doSelecting(ChatMessage paramChatMessage);
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public abstract boolean hasSelected();
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public abstract void highlightBackgroundColor(@ColorInt int paramInt);
+  public abstract void a(@NonNull aicg paramaicg);
   
-  public abstract void highlightContent();
+  public abstract void a(ChatMessage paramChatMessage);
   
-  public abstract void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean);
+  public abstract boolean a();
   
-  @Nullable
-  public abstract CharSequence selectContent();
+  public abstract int b();
   
-  public abstract void selectContent(int paramInt1, int paramInt2);
+  public abstract void b();
   
-  public abstract int touchIndex(int paramInt1, int paramInt2);
+  public abstract void b(@ColorInt int paramInt);
   
-  @NonNull
-  public abstract View view();
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(@ColorInt int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract void d();
 }
 
 

@@ -1,16 +1,27 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 
-class acco
-  extends AccessibilityDelegateCompat
+public class acco
+  extends RecyclerView.ItemDecoration
 {
-  acco(accn paramaccn) {}
+  private int jdField_a_of_type_Int;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public acco(accg paramaccg, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.left = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildPosition(paramView) != 0) {
+      paramRect.right = this.jdField_a_of_type_Int;
+    }
   }
 }
 

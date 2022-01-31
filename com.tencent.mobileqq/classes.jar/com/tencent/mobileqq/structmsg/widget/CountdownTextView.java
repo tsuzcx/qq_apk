@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.structmsg.widget;
 
-import agvr;
-import agvs;
+import agvp;
+import agvq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import ayac;
-import ayad;
+import ayae;
+import ayaf;
 
 public class CountdownTextView
   extends TextView
 {
-  private agvr jdField_a_of_type_Agvr = new agvr();
-  private agvs jdField_a_of_type_Agvs;
+  private agvp jdField_a_of_type_Agvp = new agvp();
+  private agvq jdField_a_of_type_Agvq;
   
   public CountdownTextView(Context paramContext)
   {
@@ -31,19 +31,19 @@ public class CountdownTextView
   
   public void a()
   {
-    agvr localagvr = this.jdField_a_of_type_Agvr;
-    if (localagvr != null) {
-      localagvr.b(this.jdField_a_of_type_Agvs);
+    agvp localagvp = this.jdField_a_of_type_Agvp;
+    if (localagvp != null) {
+      localagvp.b(this.jdField_a_of_type_Agvq);
     }
   }
   
-  public void a(long paramLong, ayad paramayad)
+  public void a(long paramLong, ayaf paramayaf)
   {
-    agvr localagvr = this.jdField_a_of_type_Agvr;
-    if (localagvr != null)
+    agvp localagvp = this.jdField_a_of_type_Agvp;
+    if (localagvp != null)
     {
-      this.jdField_a_of_type_Agvs = new ayac(this, paramLong, paramayad);
-      localagvr.a(this.jdField_a_of_type_Agvs);
+      this.jdField_a_of_type_Agvq = new ayae(this, paramLong, paramayaf);
+      localagvp.a(this.jdField_a_of_type_Agvq);
     }
   }
   

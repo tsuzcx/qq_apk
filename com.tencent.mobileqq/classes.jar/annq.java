@@ -1,39 +1,79 @@
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class annq
 {
+  private static anno a;
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  {
+    paramLong1 += 1L;
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    String str1 = paramQQAppInterface.getAccount();
+    a = annn.a(paramQQAppInterface);
+    int k = annp.a(localBaseApplication, str1);
+    long l = annp.a(localBaseApplication, str1);
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocGrayTipsUtils", 2, "addGrayTipMsg friendUin = " + paramString1 + ", senderUin = " + paramString2 + ", uinType = " + paramInt + ", selfUin = " + str1 + ", time = " + paramLong1 + ", msgseq = " + paramLong2 + ", msgUid = " + paramLong3 + ", times = " + k + ", lastShowTime = " + l);
+    }
+    int i;
+    if (AudioHelper.a(10) == 1)
+    {
+      i = 1;
+      j = i;
+      if (i != 0)
+      {
+        AudioHelper.a(ajya.a(2131714831) + a.jdField_a_of_type_JavaLangString);
+        if (TextUtils.isEmpty(a.jdField_a_of_type_JavaLangString)) {
+          break label483;
+        }
+      }
+    }
+    label483:
+    for (int j = 1;; j = 0)
+    {
+      if (((a.jdField_a_of_type_Boolean) && (k < a.jdField_a_of_type_Int) && (paramLong1 - l > 30L) && (!paramString2.equals(str1))) || (j != 0))
+      {
+        String str2 = a.jdField_a_of_type_JavaLangString;
+        String str3 = str2 + a.b;
+        paramString1 = new aqvb(paramString1, paramString2, str3, paramInt, -5040, 3276801, paramLong1);
+        paramString1.d = (String.valueOf(paramLong2) + "_" + String.valueOf(paramLong1));
+        if (QLog.isColorLevel()) {
+          QLog.d("TencentDocGrayTipsUtils", 2, "addGrayTipMsg grayTipParam.grayTipKey = " + paramString1.d);
+        }
+        paramString2 = new Bundle();
+        paramString2.putInt("key_action", 1);
+        paramString2.putString("key_action_DATA", a.c);
+        paramString1.a(str2.length(), str3.length(), paramString2);
+        paramString2 = new MessageForUniteGrayTip();
+        paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+        if (aqvc.a(paramQQAppInterface, paramString2))
+        {
+          annp.b(localBaseApplication, str1, k + 1);
+          annp.b(localBaseApplication, str1, paramLong1);
+          annv.a("0X80094AA");
+        }
+      }
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
   public static void a(String paramString)
   {
-    QLog.d("TencentDocUtils", 1, "WL_DEBUG reportClickEvent actionName = " + paramString);
-    axqw.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = annp.a(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
-    if (!bool) {
-      ((ajtk)paramQQAppInterface.a(2)).z();
+    if (a == null) {
+      a = annn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocUtils", 1, "WL_DEBUG updateTencentDocUser isUser = " + bool);
+    if (paramString.equals(a.c)) {
+      annv.a("0X80094AB");
     }
-    return bool;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    paramQQAppInterface = paramQQAppInterface.c();
-    paramBoolean = localBaseApplication.getSharedPreferences("call_tim_config_pre" + paramQQAppInterface, 0).getBoolean("call_tim_config_switch", false);
-    paramQQAppInterface = anda.a().a();
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocUtils", 2, "WL_DEBUG showInQQSettingMe enable = " + paramBoolean + ", isUser = " + false + ", userConfigMeURL = " + paramQQAppInterface);
-    }
-    return (!paramBoolean) && (paramBoolean);
   }
 }
 

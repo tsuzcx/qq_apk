@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import actn;
+import actj;
+import agyh;
+import agyi;
 import agyj;
 import agyk;
 import agyl;
 import agym;
-import agyn;
-import agyo;
-import ahiy;
+import ahiw;
+import ajxj;
 import ajxl;
-import ajxn;
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -41,13 +41,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import axrl;
-import bawx;
-import baxt;
-import bbcl;
-import bbcv;
-import bbgg;
-import bcpw;
+import axrn;
+import baxl;
+import bayh;
+import bbcz;
+import bbdj;
+import bbgu;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -76,7 +76,7 @@ public class TransactionActivity
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  ajxl jdField_a_of_type_Ajxl = new agyl(this);
+  ajxj jdField_a_of_type_Ajxj = new agyj(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private Intent jdField_a_of_type_AndroidContentIntent;
   protected TextWatcher a;
@@ -131,8 +131,8 @@ public class TransactionActivity
   
   public TransactionActivity()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new agyj(this);
-    this.jdField_b_of_type_AndroidTextTextWatcher = new agym(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new agyh(this);
+    this.jdField_b_of_type_AndroidTextTextWatcher = new agyk(this);
   }
   
   private Intent a()
@@ -151,19 +151,19 @@ public class TransactionActivity
   private String a(float paramFloat)
   {
     if ((paramFloat >= 1000.0F) && (paramFloat <= 9999.0F)) {
-      return ajyc.a(2131715040);
+      return ajya.a(2131715051);
     }
     if ((paramFloat >= 10000.0F) && (paramFloat <= 99999.0F)) {
-      return ajyc.a(2131715044);
+      return ajya.a(2131715055);
     }
     if ((paramFloat >= 100000.0F) && (paramFloat <= 999999.0F)) {
-      return ajyc.a(2131715043);
+      return ajya.a(2131715054);
     }
     if ((paramFloat >= 1000000.0F) && (paramFloat <= 9999999.0F)) {
-      return ajyc.a(2131715041);
+      return ajya.a(2131715052);
     }
     if ((paramFloat >= 10000000.0F) && (paramFloat < 1.0E+008F)) {
-      return ajyc.a(2131715039);
+      return ajya.a(2131715050);
     }
     return "";
   }
@@ -246,7 +246,7 @@ public class TransactionActivity
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130842712, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130842713, 0, 0, 0);
       return;
     }
     if ((!ImmersiveUtils.a(false, getWindow())) && (Build.VERSION.SDK_INT >= 21)) {
@@ -262,7 +262,7 @@ public class TransactionActivity
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130846463, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130846469, 0, 0, 0);
       return;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackground(localGradientDrawable);
     }
@@ -337,7 +337,7 @@ public class TransactionActivity
   
   private void f()
   {
-    TextView localTextView = (TextView)findViewById(2131376436);
+    TextView localTextView = (TextView)findViewById(2131376438);
     this.jdField_a_of_type_AndroidContentIntent = a();
     if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
@@ -367,12 +367,12 @@ public class TransactionActivity
     Object localObject1;
     try
     {
-      setContentView(2131561578);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375491));
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131372647);
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131372681);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131375501);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131363218);
+      setContentView(2131561577);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375493));
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131372649);
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131372683);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131375503);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131363217);
       e();
       f();
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
@@ -380,38 +380,38 @@ public class TransactionActivity
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
       this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377655));
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131370137);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131370136);
       this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377656));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362530));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362529));
       this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371301));
-      this.jdField_d_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131376994));
+      this.jdField_d_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131376996));
       this.jdField_d_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_AndroidTextTextWatcher);
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369876));
+      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369875));
       this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371312));
-      this.jdField_c_of_type_AndroidWidgetEditText.setOnEditorActionListener(new agyn(this));
+      this.jdField_c_of_type_AndroidWidgetEditText.setOnEditorActionListener(new agyl(this));
       this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377651));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131376988));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131376990));
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377013));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377012));
-      String str = ahiy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_d_of_type_JavaLangString, actn.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377015));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377014));
+      String str = ahiw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_d_of_type_JavaLangString, actj.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_c_of_type_AndroidWidgetTextView.getPaint());
       this.jdField_c_of_type_AndroidWidgetTextView.setText(str + "(" + this.jdField_f_of_type_JavaLangString + ")");
       this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377653));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368457));
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(ajyc.a(2131715042));
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(ajya.a(2131715053));
       this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
       if ("transferInput".equals(this.i))
       {
         a(false);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(2131697284);
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(2131697285);
         getWindow().setWindowAnimations(2131755453);
         this.jdField_d_of_type_AndroidWidgetEditText.requestFocus();
         if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
@@ -439,21 +439,21 @@ public class TransactionActivity
         new Handler().postDelayed(new TransactionActivity.7(this), 100L);
       }
       a(true);
-      localObject1 = (ajxn)this.app.getManager(51);
-      if (((ajxn)localObject1).e(this.jdField_f_of_type_JavaLangString) == null) {
+      localObject1 = (ajxl)this.app.getManager(51);
+      if (((ajxl)localObject1).e(this.jdField_f_of_type_JavaLangString) == null) {
         break label911;
       }
     }
     label728:
     Object localObject2;
-    if (((ajxn)localObject1).b(this.jdField_f_of_type_JavaLangString))
+    if (((ajxl)localObject1).b(this.jdField_f_of_type_JavaLangString))
     {
-      localObject1 = getString(2131697351);
+      localObject1 = getString(2131697352);
       if (this.jdField_a_of_type_Int != 2) {
         break label927;
       }
-      localObject2 = (String)localObject1 + getString(2131697355);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697358));
+      localObject2 = (String)localObject1 + getString(2131697356);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697359));
       label775:
       if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
         break label979;
@@ -474,11 +474,11 @@ public class TransactionActivity
     for (;;)
     {
       this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      localObject1 = baxt.a(this.app, 1, this.jdField_f_of_type_JavaLangString);
+      localObject1 = bayh.a(this.app, 1, this.jdField_f_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
       break;
       label911:
-      localObject1 = getString(2131697353);
+      localObject1 = getString(2131697354);
       this.jdField_d_of_type_Boolean = true;
       break label728;
       label927:
@@ -486,8 +486,8 @@ public class TransactionActivity
       if (this.jdField_a_of_type_Int != 5) {
         break label775;
       }
-      localObject2 = (String)localObject1 + getString(2131697354);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697363));
+      localObject2 = (String)localObject1 + getString(2131697355);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697364));
       break label775;
       label979:
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#f8f8f8"));
@@ -524,7 +524,7 @@ public class TransactionActivity
   public void a(CharSequence paramCharSequence)
   {
     if ((!this.jdField_c_of_type_Boolean) && (!isFinishing())) {
-      bcpw.a(this, paramCharSequence, 0).b(a(this.jdField_a_of_type_AndroidContentContext));
+      bcql.a(this, paramCharSequence, 0).b(a(this.jdField_a_of_type_AndroidContentContext));
     }
   }
   
@@ -543,7 +543,7 @@ public class TransactionActivity
     {
       paramString5.append(this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName);
       paramString5.append("|");
-      paramString5.append(bawx.a());
+      paramString5.append(baxl.a());
       paramString5.append("|");
       if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
       {
@@ -559,7 +559,7 @@ public class TransactionActivity
       }
       paramString5.append("|");
       VACDReportUtil.a(this.jdField_a_of_type_Long, null, paramString2, "op_type=" + paramInt1, 0, "");
-      axrl.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
+      axrn.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
       return;
     }
     catch (PackageManager.NameNotFoundException paramString1)
@@ -638,7 +638,7 @@ public class TransactionActivity
     for (;;)
     {
       this.jdField_a_of_type_AndroidContentContext = this;
-      addObserver(this.jdField_a_of_type_Ajxl);
+      addObserver(this.jdField_a_of_type_Ajxj);
       try
       {
         this.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
@@ -680,7 +680,7 @@ public class TransactionActivity
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Ajxl);
+    removeObserver(this.jdField_a_of_type_Ajxj);
     super.doOnDestroy();
     if (this.jdField_a_of_type_Long != 0L) {
       VACDReportUtil.endReport(this.jdField_a_of_type_Long, "transfer.qqid.destroy", null, 0, null);
@@ -833,9 +833,9 @@ public class TransactionActivity
     Object localObject1 = ((JSONObject)localObject1).optString("retmsg");
     paramIntent = (Intent)localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramIntent = getString(2131697175);
+      paramIntent = getString(2131697176);
     }
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext, paramIntent, 0).a();
+    bcql.a(this.jdField_a_of_type_AndroidContentContext, paramIntent, 0).a();
   }
   
   public void onClick(View paramView)
@@ -851,7 +851,7 @@ public class TransactionActivity
           this.jdField_d_of_type_JavaLangString = null;
           this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
           this.jdField_c_of_type_AndroidWidgetTextView.setText("");
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131697352);
+          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131697353);
         }
       }
     }
@@ -905,7 +905,7 @@ public class TransactionActivity
         l1 = System.currentTimeMillis();
       } while (this.jdField_b_of_type_Long + 1000L >= l1);
       if (getSharedPreferences("transfer", 0).getBoolean("is_need_dialog_" + this.jdField_a_of_type_JavaLangString + this.jdField_f_of_type_JavaLangString, true)) {
-        bbcv.a(this.jdField_a_of_type_AndroidContentContext, 233, null, getString(2131697359), 2131690596, 2131719544, new agyo(this), new agyk(this)).show();
+        bbdj.a(this.jdField_a_of_type_AndroidContentContext, 233, null, getString(2131697360), 2131690596, 2131719555, new agym(this), new agyi(this)).show();
       }
       for (;;)
       {
@@ -914,23 +914,23 @@ public class TransactionActivity
         a(this.jdField_a_of_type_JavaLangString, 128, "transfer.amount.go", "", "", this.jdField_a_of_type_Int, "");
         b();
       }
-      if (i1 == 2131376988)
+      if (i1 == 2131376990)
       {
         this.jdField_f_of_type_JavaLangString = this.jdField_d_of_type_AndroidWidgetEditText.getText().toString();
         a(true);
         this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-        this.jdField_d_of_type_JavaLangString = bbcl.b(this.app, this.jdField_f_of_type_JavaLangString, true);
-        paramView = ahiy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_d_of_type_JavaLangString, actn.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+        this.jdField_d_of_type_JavaLangString = bbcz.b(this.app, this.jdField_f_of_type_JavaLangString, true);
+        paramView = ahiw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_d_of_type_JavaLangString, actj.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_c_of_type_AndroidWidgetTextView.getPaint());
         this.jdField_c_of_type_AndroidWidgetTextView.setText(paramView + "(" + this.jdField_f_of_type_JavaLangString + ")");
-        paramView = baxt.a(this.app, 1, this.jdField_f_of_type_JavaLangString);
+        paramView = bayh.a(this.app, 1, this.jdField_f_of_type_JavaLangString);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
         a(this.jdField_a_of_type_JavaLangString, 128, "transfer.qqid.next", "", "", this.jdField_a_of_type_Int, "");
-        paramView = getString(2131697353) + getString(2131697355);
+        paramView = getString(2131697354) + getString(2131697356);
         if ("transferInput".equals(this.i))
         {
-          ajxn localajxn = (ajxn)this.app.getManager(51);
-          if ((localajxn.e(this.jdField_f_of_type_JavaLangString) != null) && (localajxn.b(this.jdField_f_of_type_JavaLangString))) {
-            paramView = getString(2131697351) + getString(2131697355);
+          ajxl localajxl = (ajxl)this.app.getManager(51);
+          if ((localajxl.e(this.jdField_f_of_type_JavaLangString) != null) && (localajxl.b(this.jdField_f_of_type_JavaLangString))) {
+            paramView = getString(2131697352) + getString(2131697356);
           }
         }
         for (this.jdField_d_of_type_Boolean = false;; this.jdField_d_of_type_Boolean = true)
@@ -949,7 +949,7 @@ public class TransactionActivity
         this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
       }
-    } while (i1 != 2131376436);
+    } while (i1 != 2131376438);
     try
     {
       startActivity(this.jdField_a_of_type_AndroidContentIntent);
@@ -959,7 +959,7 @@ public class TransactionActivity
     catch (Exception paramView)
     {
       QLog.e("qqBaseActivity", 1, "not found calculator exception is : " + paramView);
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext, "未找到计算器", 0).a();
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, "未找到计算器", 0).a();
     }
   }
   

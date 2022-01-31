@@ -1,26 +1,6 @@
-import mqq.os.MqqHandler;
-
-class anog
-  implements anob
+public abstract interface anog
 {
-  anog(anod paramanod, MqqHandler paramMqqHandler) {}
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
-  }
+  public abstract void a(int paramInt);
 }
 
 

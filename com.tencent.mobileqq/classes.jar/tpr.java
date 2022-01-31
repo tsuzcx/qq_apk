@@ -1,33 +1,44 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class tpr
-  implements ule
+public class tpr
+  extends trg
 {
-  tpr(tpq paramtpq, String paramString) {}
+  protected String a;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a()
   {
-    if (tpq.a(this.jdField_a_of_type_Tpq))
+    ShareGroupItem localShareGroupItem = ((umv)tcz.a(7)).a(this.a);
+    uks localuks = (uks)tcz.a(24);
+    ukk localukk = localuks.a(localShareGroupItem.headerUnionIdList);
+    if (localukk == null)
     {
-      paramString = bbdr.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-      if (paramString == null)
-      {
-        tpq.a(this.jdField_a_of_type_Tpq, false);
-        return;
-      }
-      bool = vxy.a(paramString, tpq.a(this.jdField_a_of_type_Tpq));
-      paramString.recycle();
-      tpq.b(this.jdField_a_of_type_Tpq, bool);
+      localuks.a(localShareGroupItem.headerUnionIdList, new tps(this));
       return;
     }
-    boolean bool = vxy.a(paramBitmap, tpq.a(this.jdField_a_of_type_Tpq));
-    tpq.c(this.jdField_a_of_type_Tpq, bool);
+    a(localukk);
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  protected void a(Error paramError)
   {
-    veg.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    tpq.d(this.jdField_a_of_type_Tpq, false);
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
+    }
+  }
+  
+  protected void a(ukk paramukk)
+  {
+    a("ShareGroupAvatarJob_sga", paramukk.a());
+    b(true);
   }
 }
 

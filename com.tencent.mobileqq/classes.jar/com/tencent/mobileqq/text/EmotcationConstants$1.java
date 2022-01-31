@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import ayjt;
+import ayjv;
 import java.io.File;
 
 public final class EmotcationConstants$1
@@ -16,7 +16,7 @@ public final class EmotcationConstants$1
     if (this.b.exists()) {
       this.b.delete();
     }
-    ayjt.a(this.c);
+    ayjv.a(this.c);
   }
 }
 

@@ -1,6 +1,21 @@
-public abstract interface bkvo
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+
+public class bkvo
+  extends Handler
 {
-  public abstract void m(boolean paramBoolean);
+  public bkvo(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    this.a.a(paramMessage);
+  }
 }
 
 

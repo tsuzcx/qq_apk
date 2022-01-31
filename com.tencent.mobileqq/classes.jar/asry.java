@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class asry
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
   public asry(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
-    }
+    super.onAnimationCancel(paramAnimator);
+    MultiCardFragment.c(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiCardFragment.c(this.a);
   }
 }
 

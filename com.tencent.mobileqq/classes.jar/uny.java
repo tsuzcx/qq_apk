@@ -1,49 +1,43 @@
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class uny
-  implements DialogInterface.OnClickListener
+public final class uny
+  implements View.OnClickListener
 {
-  public uny(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
+  public uny(unw paramunw, Activity paramActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    ved.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Unw);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Unw.c)) && (naj.a(this.jdField_a_of_type_Unw.c)))
     {
+      paramView = this.jdField_a_of_type_Unw.c;
+      if (this.jdField_a_of_type_Unw.a != 1) {
+        break label172;
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
-        }
-        nax.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
-        try
-        {
-          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
-          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
-            }
-            paramDialogInterface.send();
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
-          return;
-        }
-        catch (Throwable paramDialogInterface) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      vei.a("hall", "exp", 0, 0, new String[] { "" });
+      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label197;
+      }
+      vei.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
+      break;
+      label172:
+      if ((this.jdField_a_of_type_Unw.a == 2) || (this.jdField_a_of_type_Unw.a != 3)) {}
+    }
+    label197:
+    vei.a("home_page", "clk_find_entry", 0, 0, new String[0]);
   }
 }
 

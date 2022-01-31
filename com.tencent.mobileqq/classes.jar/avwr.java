@@ -1,71 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
+import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
 
-class avwr
-  extends avxa
+public class avwr
+  extends avxd
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
+  private avwt a;
+  private boolean b;
   
-  public HashMap<String, String> a(String paramString)
+  public avwr(Context paramContext)
   {
-    paramString = null;
-    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      paramString = new StringBuilder();
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
+    super(paramContext);
+  }
+  
+  public void a()
+  {
+    if ((this.a != null) && (!this.b))
     {
-      localHashMap.put("is_progressive", "progressive");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localHashMap.put("failure", "1");
-        if (QLog.isColorLevel())
-        {
-          paramString.append("progressive:\n");
-          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
-          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-          QLog.i(avxb.a, 2, paramString.toString());
-        }
-      }
+      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
+      DataReport.a().a(localReportTask);
+      this.b = true;
     }
-    label391:
-    for (;;)
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.a == null) && (!this.b))
     {
-      return localHashMap;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
-      }
-      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
-        break;
-      }
-      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-      break;
-      localHashMap.put("is_progressive", "baseline");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean) {
-        localHashMap.put("failure", "1");
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label391;
-        }
-        paramString.append("baseline:\n");
-        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-        QLog.i(avxb.a, 2, paramString.toString());
-        break;
-        if (this.c > this.jdField_a_of_type_Long) {
-          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-        }
-      }
+      avwt localavwt = new avwt(null);
+      avwt.a(localavwt, paramBoolean);
+      avwt.a(localavwt, SystemClock.uptimeMillis());
+      this.a = localavwt;
+    }
+  }
+  
+  public void b()
+  {
+    if ((this.a != null) && (!this.b)) {
+      avwt.b(this.a, SystemClock.uptimeMillis());
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.a != null) && (!this.b)) {
+      avwt.c(this.a, SystemClock.uptimeMillis());
+    }
+  }
+  
+  public void d()
+  {
+    if ((this.a != null) && (!this.b)) {
+      avwt.b(this.a, true);
     }
   }
 }

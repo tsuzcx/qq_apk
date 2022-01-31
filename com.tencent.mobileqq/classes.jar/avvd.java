@@ -1,15 +1,6 @@
-public class avvd
+public abstract interface avvd
 {
-  public int a;
-  public boolean a;
-  public boolean b = true;
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

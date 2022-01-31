@@ -1,57 +1,69 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.ArrayList;
 
 public class anlv
-  extends anku
+  extends BaseAdapter
 {
-  public anlw a;
-  public String b;
-  public boolean b;
+  public anlv(DataReportViewer paramDataReportViewer) {}
   
-  public static anlv a(JSONObject paramJSONObject)
+  public int getCount()
   {
-    anlv localanlv = new anlv();
-    localanlv.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localanlv.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localanlv.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localanlv.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localanlv;
+    return this.a.a.size();
   }
   
-  public JSONObject a()
+  public Object getItem(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    return this.a.a.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131559422, paramViewGroup, false);
+      paramViewGroup = new anlw(this.a, paramView);
+      paramView.setTag(paramViewGroup);
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      localJSONException.printStackTrace();
+      ReportData localReportData = (ReportData)this.a.a.get(paramInt);
+      paramViewGroup.a.setText(localReportData.table);
+      paramViewGroup.b.setText(localReportData.mainAction);
+      paramViewGroup.c.setText(localReportData.subAction);
+      paramViewGroup.d.setText(localReportData.actionName);
+      paramViewGroup.e.setText(String.valueOf(localReportData.opType));
+      paramViewGroup.f.setText(String.valueOf(localReportData.result));
+      paramViewGroup.g.setText(localReportData.r2);
+      paramViewGroup.h.setText(localReportData.r3);
+      paramViewGroup.i.setText(localReportData.r4);
+      paramViewGroup.j.setText(localReportData.r5);
+      if (!localReportData.isLightBlueBg) {
+        break;
+      }
+      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166439));
+      return paramView;
+      paramViewGroup = (anlw)paramView.getTag();
     }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Anlw == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Anlw.jdField_a_of_type_Boolean;
+    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167134));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anlv
  * JD-Core Version:    0.7.0.1
  */

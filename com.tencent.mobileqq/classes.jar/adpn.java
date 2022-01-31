@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class adpn
-  implements aptu
+public class adpn
+  extends acuj
 {
-  adpn(adpi paramadpi, FileManagerEntity paramFileManagerEntity) {}
+  public FrameLayout a;
+  public RelativeLayout a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public int e;
+  public int f;
   
-  public void a()
+  public adpn(adpg paramadpg)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_Adpi.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_Adpi.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_Boolean = true;
   }
-  
-  public void b() {}
 }
 
 

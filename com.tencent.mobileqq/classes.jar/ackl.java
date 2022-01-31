@@ -1,56 +1,39 @@
-import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.39.1;
 
 public class ackl
-  extends ajvl
+  implements View.OnClickListener
 {
-  public ackl(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ackl(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity)))
     {
-      axqw.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Acla != null) {
-        this.a.jdField_a_of_type_Acla.a();
-      }
-      if (this.a.h)
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
       {
-        this.a.b(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Aclc != null) {
-          this.a.jdField_a_of_type_Aclc.notifyDataSetChanged();
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        paramView.putExtra("member_uin", "0");
+        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, paramView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
+          axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
         }
+        return;
       }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, ajya.a(2131715635), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
       return;
-      bcpw.a(this.a, 1, this.a.getString(2131693710), 0).b(this.a.getTitleBarHeight());
     }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.runOnUiThread(new TroopMemberListActivity.39.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g))
+    {
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      return;
     }
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, ajya.a(2131715631), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
   }
 }
 

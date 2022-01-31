@@ -1,12 +1,16 @@
-public abstract interface apxt
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+
+public class apxt
+  implements aptw
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public apxt(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void a()
+  {
+    QfileEditBottomBar.a(this.a);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void b() {}
 }
 
 

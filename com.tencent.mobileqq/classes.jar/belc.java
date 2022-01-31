@@ -1,9 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public abstract interface belc
+class belc
+  implements FileFilter
 {
-  public abstract void a(Context paramContext, Intent paramIntent);
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+  }
 }
 
 

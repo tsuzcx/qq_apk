@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class abrp
-  implements DialogInterface.OnClickListener
+class abrp
+  extends aumg
 {
-  public abrp(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  abrp(abro paramabro) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
+    super.b(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      ((akco)this.a.a.a.app.getManager(102)).a(null);
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
     }
-    axqw.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
   }
 }
 

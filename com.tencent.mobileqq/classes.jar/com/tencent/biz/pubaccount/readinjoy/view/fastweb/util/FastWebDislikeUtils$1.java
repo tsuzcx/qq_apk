@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.net.URLEncoder;
-import onk;
+import onh;
 
 public final class FastWebDislikeUtils$1
   implements Runnable
@@ -18,7 +18,7 @@ public final class FastWebDislikeUtils$1
     try
     {
       str1 = "https://post.mp.qq.com/jubao/index?" + "articleId=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "&puin=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID + "&url=" + URLEncoder.encode(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, "utf-8") + "&key=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID + "&type=7&_wv=3";
-      onk.a(this.jdField_a_of_type_AndroidContentContext, str1);
+      onh.a(this.jdField_a_of_type_AndroidContentContext, str1);
       return;
     }
     catch (Exception localException)

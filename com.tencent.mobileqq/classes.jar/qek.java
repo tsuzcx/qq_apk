@@ -1,10 +1,20 @@
-public abstract interface qek
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import mqq.app.QQPermissionCallback;
+
+public class qek
+  implements QQPermissionCallback
 {
-  public abstract void a(String paramString, float paramFloat);
+  public qek(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public abstract void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
   
-  public abstract void a(String paramString, int paramInt, qij paramqij);
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.p();
+  }
 }
 
 

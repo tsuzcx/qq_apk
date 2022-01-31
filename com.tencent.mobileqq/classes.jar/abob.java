@@ -1,6 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class abob
   implements DialogInterface.OnClickListener
@@ -9,6 +11,8 @@ public class abob
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
     this.a.finish();
   }
 }

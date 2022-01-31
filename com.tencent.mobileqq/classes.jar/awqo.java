@@ -1,49 +1,79 @@
-import android.text.TextUtils;
-import android.widget.Button;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.List;
 
 public class awqo
-  extends awqq
+  extends awrx
 {
-  public awqo(baxk parambaxk, awqu paramawqu)
+  public awqo(baxy parambaxy)
   {
-    super(parambaxk, paramawqu);
+    super(parambaxy);
   }
   
-  public void b(awog paramawog, awwp paramawwp)
+  protected awrc<awoi, awwr> a(baxy parambaxy)
   {
-    super.b(paramawog, paramawwp);
-    if (TextUtils.isEmpty(paramawog.c()))
+    return new awqs(parambaxy);
+  }
+  
+  public void a(awog paramawog, awwq paramawwq)
+  {
+    paramawog = (awoh)paramawog;
+    LinearLayout localLinearLayout = ((awwj)paramawwq).a();
+    if (localLinearLayout != null)
     {
-      paramawwp.c().setVisibility(8);
-      ((awwi)paramawwp).a().setVisibility(0);
-    }
-    for (;;)
-    {
-      if (paramawwp.d() != null)
+      List localList = paramawog.a();
+      if (localList != null)
       {
-        paramawog = paramawog.d();
-        if (!TextUtils.isEmpty(paramawog)) {
-          break;
+        localLinearLayout.removeAllViews();
+        int k = Math.min(localList.size(), paramawog.a());
+        int i = 0;
+        if (i < k)
+        {
+          awoi localawoi = (awoi)localList.get(i);
+          View localView = LayoutInflater.from(paramawwq.a().getContext()).inflate(2131562382, null);
+          awwl localawwl = new awwl(localView);
+          localView.setTag(2131379213, localawoi);
+          localView.setTag(2131379218, localawwl);
+          localView.setTag(2131379214, Integer.valueOf(i));
+          localView.setTag(2131379212, Integer.valueOf(localList.size()));
+          localView.setTag(2131379215, this.a);
+          awwd.a(localawoi, k, i);
+          int m = localawoi.a();
+          int n = localawoi.b();
+          if ((localawoi instanceof awoj)) {}
+          for (int j = ((awoj)localawoi).r;; j = 0)
+          {
+            awwd.a(m, n, localView, j);
+            localLinearLayout.addView(localView);
+            this.a.a(localawoi, localawwl);
+            i += 1;
+            break;
+          }
         }
-        paramawwp.d().setVisibility(8);
       }
-      return;
-      paramawwp.c().setVisibility(0);
-      paramawwp.c().setText(paramawog.c());
-      ((awwi)paramawwp).a().setVisibility(8);
     }
-    paramawwp.d().setVisibility(0);
-    paramawwp.d().setText(paramawog);
+    if (paramawwq.b() != null) {
+      paramawwq.b().setVisibility(8);
+    }
+    if ((paramawog instanceof awns))
+    {
+      paramawog = ((awns)paramawog).a();
+      paramawwq = ((awwj)paramawwq).a();
+      if (paramawwq != null)
+      {
+        if (paramawog == null) {
+          break label325;
+        }
+        paramawwq.a().setVisibility(0);
+        this.a.a(paramawog, paramawwq);
+      }
+    }
+    return;
+    label325:
+    paramawwq.a().setVisibility(8);
   }
-  
-  protected void c(awog paramawog, awwp paramawwp)
-  {
-    super.c(paramawog, paramawwp);
-    ((awwi)paramawwp).a().setOnClickListener(new awqp(this, paramawog));
-  }
-  
-  public void d(awog paramawog, awwp paramawwp) {}
 }
 
 

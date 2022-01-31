@@ -114,10 +114,10 @@ public class SkinEngine
       bool = true;
       a = bool;
       if (Build.VERSION.SDK_INT < 24) {
-        break label621;
+        break label611;
       }
     }
-    label621:
+    label611:
     for (boolean bool = true;; bool = false)
     {
       b = bool;
@@ -127,11 +127,7 @@ public class SkinEngine
       IS_PROBLEM_CM11 = false;
       mIconResourceID = null;
       e = new String[][] { { "drawable-xhdpi/", "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/" }, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable/" }, { "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
-      int[] arrayOfInt1 = { 320, 640, 480, 240, 160, 160 };
-      int[] arrayOfInt2 = { 160, 160, 240, 320, 480, 640 };
-      int[] arrayOfInt3 = { 480, 640, 320, 240, 160, 160 };
-      int[] arrayOfInt4 = { 640, 480, 320, 240, 160, 160 };
-      f = new int[][] { arrayOfInt1, { 240, 320, 480, 640, 160, 160 }, arrayOfInt2, { 120, 160, 240, 320, 480, 640, 160 }, arrayOfInt3, arrayOfInt4 };
+      f = new int[][] { { 320, 640, 480, 240, 160, 160 }, { 240, 320, 480, 640, 160, 160 }, { 160, 160, 240, 320, 480, 640 }, { 120, 160, 240, 320, 480, 640, 160 }, { 480, 640, 320, 240, 160, 160 }, { 640, 480, 320, 240, 160, 160 } };
       g = 0;
       h = 1;
       i = 2;

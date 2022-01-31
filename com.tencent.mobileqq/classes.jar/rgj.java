@@ -1,12 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-public abstract interface rgj
+public class rgj
+  extends View.AccessibilityDelegate
 {
-  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
+  public rgj(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
-  
-  public abstract void m();
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
+  }
 }
 
 

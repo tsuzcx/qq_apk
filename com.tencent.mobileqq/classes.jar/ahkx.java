@@ -1,22 +1,24 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
 
 class ahkx
   implements View.OnClickListener
 {
-  ahkx(ahkf paramahkf) {}
+  ahkx(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(ahkf.a(this.a), TroopAssisSettingActivity.class);
-    ahkf.a(this.a).startActivityForResult(paramView, 9001);
-    ahkf.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    axqw.b(ahkf.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
-    axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
+    Intent localIntent = new Intent(ahkd.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("uin", ((QQAppInterface)ahkd.a(this.a).getAppRuntime()).getCurrentAccountUin());
+    paramView = (Pair)paramView.getTag();
+    if (paramView != null) {
+      ahkd.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    }
   }
 }
 

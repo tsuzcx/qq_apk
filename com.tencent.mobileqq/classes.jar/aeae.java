@@ -1,18 +1,46 @@
-import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeae
-  implements bcmw
+  implements aigo
 {
-  public aeae(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, aeah paramaeah) {}
+  public aeae(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Aeah.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = this.a;
+    if (ShortVideoRealItemBuilder.a(this.a) != null) {}
+    for (long l = ShortVideoRealItemBuilder.a(this.a).uniseq;; l = -1L)
+    {
+      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, l);
+      return;
     }
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte2 = new StringBuilder().append("onEncodeSuccess curMsg:");
+      if (ShortVideoRealItemBuilder.a(this.a) == null) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramString2 = Long.valueOf(ShortVideoRealItemBuilder.a(this.a).uniseq);; paramString2 = "")
+    {
+      QLog.i("ShortVideoRealItemBuilder", 2, paramString2);
+      if (ShortVideoRealItemBuilder.a(this.a) == null) {
+        break;
+      }
+      ShortVideoRealItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
+      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ShortVideoRealItemBuilder.a(this.a), paramString1, this.a).run();
+      return;
+    }
+    awai.a(new RuntimeException("onMediaMessageSend failed"));
   }
 }
 

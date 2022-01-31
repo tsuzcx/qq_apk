@@ -1,9 +1,7 @@
 public abstract interface bchw
-  extends bcci
+  extends bccw
 {
-  public abstract int b();
-  
-  public abstract boolean d();
+  public abstract String c();
 }
 
 

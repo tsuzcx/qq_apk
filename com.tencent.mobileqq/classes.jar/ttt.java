@@ -1,18 +1,17 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
-class ttt
-  implements ViewPager.OnPageChangeListener
+public class ttt
+  implements View.OnTouchListener
 {
-  ttt(ttr paramttr) {}
+  public ttt(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.setSelectedTab(paramInt, true);
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

@@ -1,222 +1,254 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.TextPaint;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaInitDelegate.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.adapter.VComponentAdapter;
-import com.tencent.viola.commons.ImageAdapterHolder;
-import com.tencent.viola.core.ViolaInstance;
-import com.tencent.viola.ui.component.image.ImageAction;
-import com.tencent.viola.ui.view.VImageView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.utils.ViolaLogUtils;
-import java.io.File;
-import java.net.URL;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.viola.core.ViolaSDKManager;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class rwy
-  implements VComponentAdapter
 {
-  private Set<URLDrawable> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private CommonSuspensionGestureLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout;
+  private ViolaFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment;
+  private ViolaBaseView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView;
+  private String jdField_a_of_type_JavaLangString;
+  private rxa jdField_a_of_type_Rxa;
   
-  private Bundle a(URLDrawable paramURLDrawable)
+  public rwy(ViolaFragment paramViolaFragment)
   {
-    Bundle localBundle = new Bundle();
-    if (paramURLDrawable == null) {}
-    do
-    {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment = paramViolaFragment;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      paramURLDrawable = paramURLDrawable.getFileInLocal();
-    } while ((paramURLDrawable == null) || (!paramURLDrawable.exists()));
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramURLDrawable.getAbsolutePath(), localOptions);
-    localBundle.putInt(ImageAdapterHolder.BUNDLE_WIDTH, localOptions.outWidth);
-    localBundle.putInt(ImageAdapterHolder.BUNDLE_HEIGHT, localOptions.outHeight);
-    return localBundle;
+    }
+    paramString = Uri.parse(paramString).getQueryParameter("_ckey");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime == null) {
+        return null;
+      }
+      paramString = bbdx.a("viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
+      if ((paramString instanceof String)) {
+        return (String)paramString;
+      }
+      return null;
+    }
+    return null;
   }
   
-  public static URLDrawable.URLDrawableOptions a(boolean paramBoolean, int paramInt1, int paramInt2)
+  private sab a(JSONObject paramJSONObject)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = aywk.a;
-    localURLDrawableOptions.mRequestWidth = paramInt1;
-    localURLDrawableOptions.mRequestHeight = paramInt2;
-    if (paramBoolean)
-    {
-      AbstractGifImage.resumeAll();
-      localURLDrawableOptions.mPlayGifImage = true;
-      return localURLDrawableOptions;
-    }
-    localURLDrawableOptions.mPlayGifImage = false;
-    return localURLDrawableOptions;
+    return new sab(this.jdField_a_of_type_JavaLangString, paramJSONObject, a(this.jdField_a_of_type_JavaLangString));
   }
   
-  private static StringBuilder a(String paramString)
+  private void b(ViewGroup paramViewGroup)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramString.length())
-    {
-      if ((paramString.charAt(i) == '\024') && (i + 2 < paramString.length()))
-      {
-        int j = (paramString.charAt(i + 1) - 'A') * 128 + paramString.charAt(i + 2) - 65;
-        if (QLog.isColorLevel()) {
-          QLog.d("ComponentAdapter", 2, "faceIndex:" + j);
-        }
-        if ((j >= 0) && (j < axas.b.length))
-        {
-          j = axas.b[j];
-          if (j >= 0)
-          {
-            localStringBuilder.append(paramString.charAt(i));
-            localStringBuilder.append((char)j);
-          }
-        }
-        i = i + 1 + 1;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append(paramString.charAt(i));
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout = new CommonSuspensionGestureLayout(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getArguments());
+    HashMap localHashMap = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.a();
+    if (localHashMap.containsKey(rxb.n)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setBorderRadius(((Integer)localHashMap.get(rxb.n)).intValue());
     }
-    return localStringBuilder;
+    if (localHashMap.containsKey(rxb.o)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setContentMarginTop(((Integer)localHashMap.get(rxb.o)).intValue());
+    }
+    if (localHashMap.containsKey(rxb.u)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setTitleBarHeight(((Integer)localHashMap.get(rxb.u)).intValue());
+    }
+    if (localHashMap.containsKey(rxb.p)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setIsShowGrayBar(((Boolean)localHashMap.get(rxb.p)).booleanValue());
+    }
+    if (localHashMap.containsKey(rxb.r)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setIsNeedShowBackView(((Boolean)localHashMap.get(rxb.r)).booleanValue());
+    }
+    if (localHashMap.containsKey(rxb.q)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setIsNeedPopAnim(((Boolean)localHashMap.get(rxb.q)).booleanValue());
+    }
+    if (localHashMap.containsKey(rxb.s)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setIsAutoSuctionTop(((Boolean)localHashMap.get(rxb.s)).booleanValue());
+    }
+    if (localHashMap.containsKey(rxb.y)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setContainerColor(Color.parseColor((String)localHashMap.get(rxb.y)));
+    }
+    if (localHashMap.containsKey(rxb.j)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setIsStatusImmersive(((Boolean)localHashMap.get(rxb.j)).booleanValue());
+    }
+    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131379248);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setViolaGestureListener(new rwz(this, paramViewGroup));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setContentScrollListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity(), -1, -1, true);
   }
   
-  private void a(ImageAction paramImageAction, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public CommonSuspensionGestureLayout a()
   {
-    if ((paramImageAction == null) || (paramImageAction.getTarget() == null) || (paramURLDrawable == null) || (!bbev.g(paramImageAction.getTarget().getContext()))) {}
-    do
-    {
-      return;
-      localObject = paramURLDrawable.getTag();
-    } while (!(localObject instanceof Integer));
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    int i = ((Integer)localObject).intValue();
-    if (i < 3)
-    {
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-      localObject = localStringBuilder1.append("hit restart download, retryCounts: ").append(i).append(", url: ");
-      if (paramURLDrawable.getURL() != null) {}
-      for (paramImageAction = paramURLDrawable.getURL().toString();; paramImageAction = "null")
-      {
-        ((StringBuilder)localObject).append(paramImageAction).append(", errorMsg: ").append(paramThrowable.getMessage());
-        ViolaLogUtils.d("ComponentAdapter", localStringBuilder1.toString());
-        return;
-      }
-    }
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("reach max restart count, ").append(", url: ");
-    if (paramURLDrawable.getURL() != null) {}
-    for (Object localObject = paramURLDrawable.getURL().toString();; localObject = "null")
-    {
-      localStringBuilder2.append((String)localObject).append(", errorMsg: ").append(paramThrowable.getMessage());
-      paramImageAction.onError();
-      this.jdField_a_of_type_JavaUtilSet.remove(paramURLDrawable);
-      break;
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout;
   }
   
-  private void a(ImageAction paramImageAction, URLDrawable paramURLDrawable, boolean paramBoolean)
+  public String a()
   {
-    String str = null;
-    if (paramImageAction == null) {
-      return;
-    }
-    if (paramBoolean) {}
-    for (Bundle localBundle = a(paramURLDrawable);; localBundle = null)
-    {
-      if (paramURLDrawable.getURL() != null) {
-        str = paramURLDrawable.getURL().toString();
-      }
-      paramImageAction.onSuccess(paramURLDrawable, str, localBundle);
-      return;
-    }
-  }
-  
-  private void a(ImageAction paramImageAction, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramImageAction == null) || (TextUtils.isEmpty(paramString)) || (paramImageAction.getTarget() == null)) {}
-    do
-    {
-      return;
-      localObject = paramString;
-      if (paramString.startsWith("//")) {
-        localObject = "https:" + paramString;
-      }
-    } while (!((String)localObject).startsWith("http"));
-    paramString = URLDrawable.getDrawable((String)localObject, a(paramBoolean2, paramInt1, paramInt2));
-    this.jdField_a_of_type_JavaUtilSet.add(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentAdapter", 2, "enqueue action, url: " + (String)localObject + ", " + paramImageAction.getTarget().hashCode());
-    }
-    Object localObject = paramString.getFileInLocal();
-    if ((localObject != null) && (((File)localObject).exists()))
-    {
-      a(paramImageAction, paramString, paramBoolean1);
-      this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-      return;
-    }
-    paramString.startDownload();
-    paramString.setTag(Integer.valueOf(0));
-    paramString.setURLDrawableListener(new rxa(this, paramBoolean1, paramImageAction));
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilSet.clear();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityResume();
+      b(true);
     }
   }
   
-  public void initKdRefresh(VRefreshLayout paramVRefreshLayout)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    PullRefreshHeader localPullRefreshHeader = (PullRefreshHeader)LayoutInflater.from(paramVRefreshLayout.getContext()).inflate(2131562308, paramVRefreshLayout, false);
-    RefreshAnimView localRefreshAnimView = (RefreshAnimView)localPullRefreshHeader.findViewById(2131375046);
-    paramVRefreshLayout.addView(localPullRefreshHeader);
-    paramVRefreshLayout.setonRefreshStateChangeListener(new rwz(this, localRefreshAnimView, paramVRefreshLayout));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
   }
   
-  public void requestImage(String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, ImageAction paramImageAction, boolean paramBoolean2)
+  public void a(Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramImageAction == null) || (paramImageAction.getTarget() == null)) {
+    if (paramBundle != null) {
+      this.jdField_a_of_type_JavaLangString = paramBundle.getString("url");
+    }
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    paramViewGroup.setBackgroundColor(0);
+    paramViewGroup.setLayerType(2, null);
+    b(paramViewGroup);
+    ViolaSDKManager.getInstance().postOnUiThreadDelay(new ViolaInitDelegate.1(this), 150L);
+  }
+  
+  public void a(@NonNull ViewGroup paramViewGroup, @NonNull JSONObject paramJSONObject, boolean paramBoolean, sac paramsac)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131379247));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView = new ViolaBaseView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity());
+    if (!paramBoolean) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setListener(paramsac);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.setPageStartTime(System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, a(paramJSONObject));
+  }
+  
+  public void a(ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.b())) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a(0, 4);
+    }
+    do
+    {
+      return;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a()) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.c();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity().doOnBackPressed();
+    } while (!paramBoolean);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.getActivity().overridePendingTransition(2130772199, 2130772202);
+    return;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.a(0, 4);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(paramString);
+    }
+  }
+  
+  public void a(rxa paramrxa)
+  {
+    this.jdField_a_of_type_Rxa = paramrxa;
+  }
+  
+  public void a(sac paramsac)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(paramsac);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      b(true);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("startSession", 1);
+      a(localJSONObject.toString());
       return;
     }
-    if ((paramInt2 == 0) || (paramInt1 == 0)) {
-      ViolaLogUtils.d("ComponentAdapter", "width: " + paramInt1 + ", height: " + paramInt2 + ", url: " + paramString);
+    catch (Exception localException)
+    {
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.e("ViolaInitDelegate", 1, "setUserVisibleHint Exception " + localException.getMessage());
     }
-    a(paramImageAction, paramString, paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    b(false);
+    return;
   }
   
-  public CharSequence setEmoticonText(@NonNull CharSequence paramCharSequence, int paramInt)
+  public boolean a()
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {
-      return "";
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.d();
     }
-    return new ayki(a(paramCharSequence.toString()), 2, (int)(paramInt / 2.5D));
-  }
-  
-  public void setImage(String paramString, VImageView paramVImageView, ImageAdapterHolder paramImageAdapterHolder, ViolaInstance paramViolaInstance, boolean paramBoolean) {}
-  
-  public void setImgSpan(String paramString, int paramInt1, int paramInt2, ImageAdapterHolder paramImageAdapterHolder) {}
-  
-  public boolean useCustomFont(TextPaint paramTextPaint, String paramString, int paramInt)
-  {
     return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityPause();
+      b(false);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.c())) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a(paramBoolean);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.onActivityDestroy();
+    }
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout.setCanCloseFromBottom(paramBoolean);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView.a();
+    }
   }
 }
 

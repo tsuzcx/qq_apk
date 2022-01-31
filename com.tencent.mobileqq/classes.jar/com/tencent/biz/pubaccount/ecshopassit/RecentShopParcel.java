@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.ecshopassit;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nrl;
+import nri;
 
 public class RecentShopParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecentShopParcel> CREATOR = new nrl();
+  public static final Parcelable.Creator<RecentShopParcel> CREATOR = new nri();
   public int a;
   public long a;
   public String a;

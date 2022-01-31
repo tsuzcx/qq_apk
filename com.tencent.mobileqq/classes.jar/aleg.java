@@ -1,58 +1,78 @@
-import android.os.Binder;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
 
-public abstract class aleg
-  extends Binder
-  implements alef
+class aleg
+  implements alee
 {
-  public aleg()
+  private IBinder a;
+  
+  aleg(IBinder paramIBinder)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    this.a = paramIBinder;
   }
   
-  public static alef a(IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof alef))) {
-      return (alef)localIInterface;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    return new aleh(paramIBinder);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
   public IBinder asBinder()
   {
-    return this;
+    return this.a;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void b(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 

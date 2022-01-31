@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import baxt;
+import bayh;
 import java.util.HashMap;
 
 class AccountManageActivity$13$1
@@ -22,8 +22,8 @@ class AccountManageActivity$13$1
       this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
       AccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.this$0).put(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetImageView.getDrawable() != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof baxt))) {
-      ((baxt)this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetImageView.getDrawable() != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof bayh))) {
+      ((bayh)this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity$13.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).a();
     }
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {

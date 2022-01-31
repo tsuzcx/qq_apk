@@ -1,31 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class tec
-  implements syt<ted, tee>
+public class tec
 {
-  private tec(tea paramtea) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
   
-  public void a(@NonNull ted paramted, @Nullable tee paramtee, @NonNull ErrorMessage paramErrorMessage)
+  public void a(qqstory_struct.FeedFeature paramFeedFeature)
   {
-    if ((paramtee != null) && (paramtee.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
+    boolean bool2 = true;
+    this.jdField_a_of_type_JavaLangString = paramFeedFeature.feed_id.get().toStringUtf8();
+    this.jdField_a_of_type_Int = paramFeedFeature.total_like_num.get();
+    this.jdField_b_of_type_Int = paramFeedFeature.total_comment_num.get();
+    this.c = paramFeedFeature.total_viewing_num.get();
+    if (paramFeedFeature.deny_comment.get() == 1)
     {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramtee.jdField_a_of_type_JavaUtilList);
-      veg.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramtee.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramtee.jdField_a_of_type_Boolean), paramtee.jdField_a_of_type_JavaLangString });
-      if ((paramtee.jdField_a_of_type_Boolean) || (paramtee.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        veg.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramtee.b) });
-        this.a.a(true, paramtee.b);
-        return;
+      bool1 = true;
+      this.jdField_a_of_type_Boolean = bool1;
+      if (paramFeedFeature.has_like.get() != 1) {
+        break label91;
       }
-      this.a.c = paramtee.jdField_a_of_type_JavaLangString;
-      this.a.c();
-      return;
     }
-    veg.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
-    this.a.a(false, 0);
+    label91:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_b_of_type_Boolean = bool1;
+      return;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (tec)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "FeedFeatureItem{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", totalLikeCount=" + this.jdField_a_of_type_Int + ", totalCommentCount=" + this.jdField_b_of_type_Int + ", totalViewCount=" + this.c + ", isDenyComment=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

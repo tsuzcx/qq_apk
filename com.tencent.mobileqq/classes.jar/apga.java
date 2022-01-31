@@ -1,73 +1,78 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class apga
-  implements awwp
+public abstract class apga
+  extends awoj
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  protected int a;
+  protected Bundle a;
+  protected String a;
   
-  public apga(ViewGroup paramViewGroup)
+  public apga(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560487, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366211));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366223));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365018));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366225));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public View a()
+  public String a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public View a(String paramString)
+  public List<awoi> a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return null;
+    return new ArrayList(0);
   }
   
-  public ImageView a()
+  public void a(Bundle paramBundle)
   {
-    return null;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public TextView a()
+  public void a(View paramView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+    int i = d();
+    if (i == 1) {
+      if (paramView.getId() == 2131366211) {
+        b(paramView);
+      }
+    }
+    while (i <= 1)
+    {
+      return;
+      c(paramView);
+      return;
+    }
+    d(paramView);
   }
   
-  public ImageView b()
+  public boolean a()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    return false;
   }
   
-  public TextView b()
+  protected abstract void b(View paramView);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  protected abstract void c(View paramView);
+  
+  public int d()
   {
-    return null;
+    return 0;
   }
   
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
+  public abstract String d();
   
-  public TextView d()
-  {
-    return null;
-  }
+  protected abstract void d(View paramView);
+  
+  public abstract int e();
 }
 
 

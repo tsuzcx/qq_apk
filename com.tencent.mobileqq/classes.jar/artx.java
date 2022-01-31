@@ -1,69 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
-import com.tencent.qphone.base.util.QLog;
-
 class artx
-  extends arrf
 {
-  artx(artw paramartw) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  protected void a(int paramInt, String paramString)
+  public artx(String paramString1, String paramString2)
   {
-    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_Aruc.jdField_a_of_type_Int), this.a.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
-    if ((!this.a.b) || (this.a.jdField_a_of_type_Aruc.jdField_a_of_type_Int != paramInt) || (!this.a.jdField_a_of_type_Aruc.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-      return;
-    }
-    paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
-    if ((paramString == null) || (this.a.jdField_a_of_type_Aruc.b == 3))
-    {
-      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693837, 0).a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_Aruc.c != 2)
-    {
-      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693839, 0).a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_Aruc.b == 4)
-    {
-      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693842, 0).a();
-      return;
-    }
-    MusicInfo localMusicInfo = paramString.a();
-    ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_Aruc.jdField_a_of_type_Boolean, null);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = bdik.d(paramString2);
+    this.d = artt.a(paramString1);
   }
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public String toString()
   {
-    artw.a(this.a, paramInt, paramString1, paramString2);
-  }
-  
-  protected void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramInt, paramString, paramBoolean);
-  }
-  
-  protected void a(ListenTogetherSession paramListenTogetherSession)
-  {
-    this.a.a(paramListenTogetherSession);
-  }
-  
-  protected void a(String paramString, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramString, paramInt1, paramInt2);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    this.a.a(paramInt, paramString);
-  }
-  
-  protected void h(int paramInt, String paramString)
-  {
-    this.a.b(paramInt, paramString);
+    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
   }
 }
 

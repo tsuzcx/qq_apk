@@ -1,26 +1,28 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import java.io.File;
-
-class arat
-  implements arai
+public class arat
 {
-  arat(aras paramaras, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void a(araj paramaraj)
+  public arat(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, int paramInt2, long paramLong)
   {
-    if (paramaraj.a)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramaraj.a();
-      aras.a(this.jdField_a_of_type_Aras, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
-    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

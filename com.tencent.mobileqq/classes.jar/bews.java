@@ -1,12 +1,41 @@
-public abstract interface bews
+import android.content.Context;
+
+@behk(a="GameRuntimeCreateTask")
+public class bews
+  extends bffk
 {
-  public abstract void a();
+  private beuy a;
   
-  public abstract void a(boolean paramBoolean);
+  public bews(Context paramContext, beqm parambeqm)
+  {
+    super(paramContext, parambeqm);
+  }
   
-  public abstract void b();
+  public beuy a()
+  {
+    return this.a;
+  }
   
-  public abstract void c();
+  public void a()
+  {
+    if (this.a != null)
+    {
+      c();
+      return;
+    }
+    try
+    {
+      this.a = new beuy();
+      this.a.a(a());
+      c();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      betc.d("GameRuntimeCreateTask", "Failed execute GameRuntimeCreateTask", localThrowable);
+      f();
+    }
+  }
 }
 
 

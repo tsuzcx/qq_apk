@@ -1,54 +1,11 @@
 import android.view.View;
-import android.widget.PopupWindow;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class qzx
+public abstract interface qzx
 {
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private List<bfur> jdField_a_of_type_JavaUtilList;
-  
-  public float a(int paramInt)
-  {
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      f1 = f2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        f1 = ((bfur)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
-      }
-    }
-    return f1;
-  }
-  
-  public qzx a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
-    }
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-  }
+  public abstract void a(View paramView, int paramInt, ArticleInfo paramArticleInfo, ArrayList<DislikeInfo> paramArrayList);
 }
 
 

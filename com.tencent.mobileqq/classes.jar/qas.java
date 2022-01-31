@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 
 public final class qas
-  implements Parcelable.Creator<BaseVideoArticleInfo>
+  implements Parcelable.Creator<DislikeInfo>
 {
-  public BaseVideoArticleInfo a(Parcel paramParcel)
+  public DislikeInfo a(Parcel paramParcel)
   {
-    return new BaseVideoArticleInfo(paramParcel);
+    return new DislikeInfo(paramParcel);
   }
   
-  public BaseVideoArticleInfo[] a(int paramInt)
+  public DislikeInfo[] a(int paramInt)
   {
-    return new BaseVideoArticleInfo[paramInt];
+    return new DislikeInfo[paramInt];
   }
 }
 

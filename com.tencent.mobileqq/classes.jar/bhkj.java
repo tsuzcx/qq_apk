@@ -1,37 +1,154 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.os.Binder;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.IServiceHandler.Stub;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
+import cooperation.qzone.plugin.PluginRecord;
+import java.lang.ref.WeakReference;
 
 public class bhkj
-  implements ServiceConnection
+  extends bhkl
 {
-  public bhkj(RemoteServiceProxy paramRemoteServiceProxy) {}
+  private static bhkj jdField_a_of_type_Bhkj;
+  private static String jdField_a_of_type_JavaLangString = "QZoneRemotePluginHandler";
+  private bhii jdField_a_of_type_Bhii;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public static bhkj a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
-    }
-    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
-    if (RemoteServiceProxy.access$000(this.a) != null)
+    if (jdField_a_of_type_Bhkj == null) {}
+    try
     {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
-      this.a.sendMsg(paramComponentName);
+      if (jdField_a_of_type_Bhkj == null) {
+        jdField_a_of_type_Bhkj = new bhkj();
+      }
+      return jdField_a_of_type_Bhkj;
     }
-    this.a.onBaseServiceConnected();
+    finally {}
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  private void b()
+  {
+    Object localObject = null;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = localQQAppInterface;
+      if (localQQAppInterface != null)
+      {
+        this.jdField_a_of_type_Bhii = ((bhii)localQQAppInterface.getManager(175));
+        localObject = localQQAppInterface;
+      }
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "appInterface:" + localObject + ",pluginManger=" + this.jdField_a_of_type_Bhii);
+  }
+  
+  public Binder a()
+  {
+    return this;
+  }
+  
+  @Nullable
+  public QQAppInterface a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public PluginRecord a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "queryPlugin:" + paramString);
     }
-    this.a.serviceHandler = null;
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Bhii.a(paramString);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "triggerQQDownloadPtuFilter");
+    }
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bhii.a();
+  }
+  
+  public void a(bhip parambhip, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "installPituSo");
+    }
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bhii.a(parambhip, paramInt);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "isReady");
+    }
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_Bhii.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "isPluginInstalled:" + paramString);
+    }
+    b();
+    if (this.jdField_a_of_type_Bhii != null) {
+      return this.jdField_a_of_type_Bhii.a(paramString);
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, bhis parambhis, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "installPlugin:" + paramString);
+    }
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_Bhii.a(paramString, parambhis, paramInt);
+  }
+  
+  public boolean b(String paramString)
+  {
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_Bhii.b(paramString);
+  }
+  
+  public boolean c(String paramString)
+  {
+    b();
+    if (this.jdField_a_of_type_Bhii == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_Bhii.c(paramString);
   }
 }
 

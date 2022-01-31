@@ -1,65 +1,31 @@
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
 public class mmu
-  extends PagerAdapter
+  implements Animation.AnimationListener
 {
-  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public mmu(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
+  public mmu(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
-    paramPagerAdapter.registerDataSetObserver(new mmv(this, paramEffectCycleViewPager));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
   
-  int a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lcg.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
     }
-    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
-      return 0;
-    }
-    return paramInt - 1;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    int i = a(paramInt);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
-    if (i > 0) {
-      return i + 2;
-    }
-    return 0;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    int i = a(paramInt);
-    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
-    super.notifyDataSetChanged();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

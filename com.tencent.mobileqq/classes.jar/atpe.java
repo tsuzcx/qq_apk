@@ -10,11 +10,13 @@ public class atpe
   
   public void onClick(View paramView)
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
+    if ((this.a.a != null) && (!this.a.isFinishing()))
     {
-      this.a.b.dismiss();
-      this.a.b = null;
+      this.a.a.dismiss();
+      this.a.a = null;
     }
+    this.a.c();
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
   }
 }
 

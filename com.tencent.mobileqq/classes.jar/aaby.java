@@ -1,19 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tribe.async.reactive.SimpleObserver;
 
 class aaby
-  implements View.OnClickListener
+  extends SimpleObserver<asiw>
 {
-  aaby(aabw paramaabw, aabv paramaabv, aabn paramaabn, JSONObject paramJSONObject, aabm paramaabm) {}
+  aaby(aabx paramaabx, aach paramaach) {}
   
-  public void onClick(View paramView)
+  public void a(asiw paramasiw)
   {
-    this.jdField_a_of_type_Aabw.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "accept " + this.jdField_a_of_type_Aabv.a);
-    aabw.a(this.jdField_a_of_type_Aabw, this.jdField_a_of_type_Aabv, 2);
-    aabw.a(this.jdField_a_of_type_Aabw, 0, this.jdField_a_of_type_Aabn, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Aabm);
+    aach localaach = this.jdField_a_of_type_Aach;
+    if (paramasiw.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localaach.a(paramasiw, i);
+      return;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    if ((paramError instanceof AppInfoError)) {}
+    for (int i = ((AppInfoError)paramError).type;; i = 0)
+    {
+      this.jdField_a_of_type_Aach.a(null, i);
+      return;
+    }
   }
 }
 

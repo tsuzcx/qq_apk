@@ -1,20 +1,23 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.task.MainThreadTask.1;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 
-public abstract class bfet
-  extends bfer
+class bfet
+  implements DatePicker.OnDateChangedListener
 {
-  public bfet(Context paramContext, bepv parambepv)
-  {
-    super(paramContext, 3, parambepv);
-  }
+  bfet(bfes parambfes) {}
   
-  public abstract void a();
-  
-  public void d()
+  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.post(new MainThreadTask.1(this));
+    if (paramDatePicker != null)
+    {
+      bfes.a(this.a, paramDatePicker.getYear());
+      bfes.b(this.a, paramDatePicker.getMonth());
+      bfes.c(this.a, paramDatePicker.getDayOfMonth());
+      return;
+    }
+    bfes.a(this.a, paramInt1);
+    bfes.b(this.a, paramInt2);
+    bfes.c(this.a, paramInt3);
   }
 }
 

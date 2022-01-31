@@ -1,115 +1,112 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import android.os.AsyncTask;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aumv
+class aumv
+  extends AsyncTask<Void, Void, Void>
 {
-  private static aumw a;
-  public static long c;
-  public static long d;
-  protected long a;
-  protected QQAppInterface a;
-  protected long b;
-  protected long e = 524288000L;
-  protected long f = 10485760L;
-  protected long g = 10485760L;
-  protected long h = 5242880L;
+  aumv(aumu paramaumu) {}
   
-  public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  protected Void a(Void... paramVarArgs)
   {
-    c();
-    jdField_a_of_type_Aumw.a(paramLong, paramBoolean1, paramBoolean2);
-  }
-  
-  public static final void b()
-  {
-    c();
-    jdField_a_of_type_Aumw.a();
-  }
-  
-  private static final void c()
-  {
-    if (jdField_a_of_type_Aumw == null) {
-      try
+    aung.a(this.a.a.jdField_a_of_type_Aumr.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_JavaLangString, "uploadNotExistFiles start");
+    int i = 0;
+    paramVarArgs = null;
+    Object localObject2;
+    Object localObject1;
+    for (;;)
+    {
+      if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if (jdField_a_of_type_Aumw == null) {
-          jdField_a_of_type_Aumw = new aumw();
+        aunp localaunp = (aunp)this.a.a.jdField_a_of_type_JavaUtilList.get(i);
+        localObject2 = (aunw)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject1 = paramVarArgs;
+        if (((aunw)localObject2).jdField_a_of_type_Int == -2)
+        {
+          String str = aumu.a(this.a, localaunp);
+          if (str == null) {
+            break label551;
+          }
+          aung.a(this.a.a.jdField_a_of_type_Aumr.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", "Upload [" + i + "]mLocalPath ＝ " + str);
+          localObject2 = new aywc();
+          ((aywc)localObject2).jdField_e_of_type_Boolean = false;
+          ((aywc)localObject2).jdField_b_of_type_JavaLangString = ((QQAppInterface)this.a.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getAccount();
+          ((aywc)localObject2).c = this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
+          ((aywc)localObject2).d = this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+          ((aywc)localObject2).jdField_a_of_type_Int = this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
+          ((aywc)localObject2).jdField_b_of_type_Int = 1;
+          ((aywc)localObject2).jdField_a_of_type_Long = (this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + i);
+          for (localObject1 = ((aywc)localObject2).c + ((aywc)localObject2).jdField_a_of_type_Long; ((QQAppInterface)this.a.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a.containsKey(localObject1); localObject1 = ((aywc)localObject2).c + ((aywc)localObject2).jdField_a_of_type_Long) {
+            ((aywc)localObject2).jdField_a_of_type_Long += 100L;
+          }
+          ((aywc)localObject2).jdField_a_of_type_Boolean = true;
+          ((aywc)localObject2).jdField_e_of_type_Int = localaunp.jdField_a_of_type_Auod.jdField_a_of_type_Int;
+          ((aywc)localObject2).i = str;
+          localObject1 = new aywg();
+          if (localaunp.jdField_a_of_type_Int < 0)
+          {
+            ((aywg)localObject1).jdField_a_of_type_Boolean = false;
+            ((aywc)localObject2).jdField_a_of_type_JavaLangObject = localObject1;
+            ((aywc)localObject2).jdField_a_of_type_Auoq = new aumw(this, i, str);
+            ((QQAppInterface)this.a.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a((aywc)localObject2);
+            localObject1 = paramVarArgs;
+          }
         }
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  private void d()
-  {
-    c();
-    long[] arrayOfLong = jdField_a_of_type_Aumw.a();
-    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
-    this.b = (arrayOfLong[2] + arrayOfLong[3]);
-    if (QLog.isColorLevel()) {
-      aune.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", "picTrafficFlowXG:" + this.jdField_a_of_type_Long + ",C2CPicDownFlowXG:" + arrayOfLong[0] + ",Group/DiscussPicDownFlowXG:" + arrayOfLong[1] + ",picTrafficFlowWIFI:" + this.b + ",C2CPicDownFlowWIFI:" + arrayOfLong[2] + ",Group/DiscussPicDownFlowWIFI:" + arrayOfLong[3]);
-    }
-  }
-  
-  public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    d();
-    paramBoolean = DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name());
-    if (QLog.isColorLevel()) {
-      aune.a("PIC_TAG_PRELOAD", "isOverLimit", "isInDPCWhiteList:" + paramBoolean);
-    }
-    if ((paramInt2 == 0) || ((paramBoolean) && (paramInt2 != 3)))
-    {
-      if (this.b >= this.e)
-      {
-        auns.a(paramInt2, this.e);
-        aune.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowWIFI:" + this.b);
-        return -8;
-      }
-    }
-    else if (paramInt2 == 1)
-    {
-      if (this.jdField_a_of_type_Long >= this.f)
-      {
-        auns.a(paramInt2, this.f);
-        aune.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
-        return -8;
+        else
+        {
+          i += 1;
+          paramVarArgs = (Void[])localObject1;
+          continue;
+        }
+        if (localaunp.jdField_a_of_type_Int == 2) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ((aywg)localObject1).jdField_a_of_type_Boolean = bool;
+          break;
+        }
+        label551:
+        ((aunw)localObject2).jdField_a_of_type_Int = -1;
+        ((aunw)localObject2).jdField_a_of_type_Aunr = new aunr();
+        ((aunw)localObject2).jdField_a_of_type_Aunr.jdField_b_of_type_JavaLangString = ("Get target pic filepath of [" + i + "] failed");
+        if ((localaunp.jdField_a_of_type_Aunn.jdField_b_of_type_Int == 1) || (localaunp.jdField_a_of_type_Aunn.jdField_b_of_type_Int == 3000))
+        {
+          ((aunw)localObject2).jdField_a_of_type_JavaLangObject = this.a.a.a(null, null, i);
+          label645:
+          if (!QLog.isColorLevel()) {
+            break label793;
+          }
+          if (paramVarArgs != null) {
+            break label790;
+          }
+          paramVarArgs = new StringBuilder();
+          label663:
+          paramVarArgs.append("Upload [").append(i).append("] failed, errDec ＝ ").append(((aunw)localObject2).jdField_a_of_type_Aunr.jdField_b_of_type_JavaLangString).append("\n");
+        }
       }
     }
-    else if (paramInt2 == 2)
+    label790:
+    label793:
+    for (;;)
     {
-      if (this.jdField_a_of_type_Long >= this.g)
-      {
-        auns.a(paramInt2, this.g);
-        aune.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
-        return -8;
+      aumu.a(this.a);
+      if (aumu.a(this.a) == 0) {
+        aumt.a(this.a.a);
       }
+      localObject1 = paramVarArgs;
+      break;
+      ((aunw)localObject2).jdField_a_of_type_JavaLangObject = this.a.a.a(null, null, i);
+      break label645;
+      if (paramVarArgs != null) {
+        aung.b(this.a.a.jdField_a_of_type_Aumr.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_Aumr.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", paramVarArgs.toString());
+      }
+      return null;
+      break label663;
     }
-    else if ((paramInt2 == 3) && (this.jdField_a_of_type_Long >= this.h))
-    {
-      auns.a(paramInt2, this.h);
-      aune.a("PIC_TAG_PRELOAD", "isOverLimit", "result:true,netWokrType:" + paramInt2 + ",picTrafficFlowXG:" + this.jdField_a_of_type_Long);
-      return -8;
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    c = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "UseLocalFlowSet", 0L);
-    d = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "PicDTPt2", 0L);
-    this.e = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MaxWifiFlow", 524288000L);
-    this.f = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max4GFlow", 10485760L);
-    this.g = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max3GFlow", 10485760L);
-    this.h = aunq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Max2GFlow", 5242880L);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
   }
 }
 

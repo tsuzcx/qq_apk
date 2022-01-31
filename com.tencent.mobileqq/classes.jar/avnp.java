@@ -1,42 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class avnp
+class avnp
+  implements Downloader.DownloadListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  avnp(avno paramavno) {}
   
-  public static avnp a(String paramString)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    avnp localavnp = new avnp();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localavnp.jdField_a_of_type_Int = paramString.optInt("animationType");
-      localavnp.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
-      localavnp.b = paramString.optString("giftZipUrl", null);
-      localavnp.c = paramString.optString("giftParticleUrl", null);
-      localavnp.d = paramString.optString("lottieUrl", null);
-      return localavnp;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
-    }
-    return localavnp;
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
   }
   
-  public String toString()
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
   }
 }
 

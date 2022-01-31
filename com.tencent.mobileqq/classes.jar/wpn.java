@@ -1,77 +1,41 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
 public class wpn
+  extends LinearLayoutManager
 {
-  private volatile int jdField_a_of_type_Int = 4;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  
-  public COMM.StCommonExt a()
+  public wpn(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public String a()
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = bbaj.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(COMM.StCommonExt paramStCommonExt)
-  {
-    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      bbaj.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(boolean paramBoolean)
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public COMM.StCommonExt b()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != 4;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Int == 3;
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

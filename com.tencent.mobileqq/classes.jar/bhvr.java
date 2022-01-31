@@ -1,10 +1,17 @@
+import android.graphics.drawable.AnimationDrawable;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+
 public class bhvr
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2) {}
+  public QzoneZipCacheHelperCallBack mCallBack;
+  
+  public void onLoadedFailed() {}
+  
+  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvr
  * JD-Core Version:    0.7.0.1
  */

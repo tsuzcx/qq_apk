@@ -1,30 +1,30 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import begz;
-import bejs;
-import bejw;
-import bejy;
-import beka;
+import behq;
+import bekj;
+import bekn;
+import bekp;
+import bekr;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public abstract class BaseJsPlugin
   implements IJsPlugin
 {
-  protected bejy mApkgInfo;
+  protected bekp mApkgInfo;
   protected Context mContext;
   protected boolean mIsDestroyed;
   public boolean mIsMiniGame;
-  public begz mMiniAppContext;
+  public behq mMiniAppContext;
   public MiniAppInfo mMiniAppInfo;
   
-  public void onCreate(begz parambegz)
+  public void onCreate(behq parambehq)
   {
-    this.mMiniAppContext = parambegz;
-    this.mContext = parambegz.a();
-    this.mMiniAppInfo = parambegz.a();
-    this.mApkgInfo = ((bejy)this.mMiniAppInfo.apkgInfo);
-    this.mIsMiniGame = parambegz.e();
+    this.mMiniAppContext = parambehq;
+    this.mContext = parambehq.a();
+    this.mMiniAppInfo = parambehq.a();
+    this.mApkgInfo = ((bekp)this.mMiniAppInfo.apkgInfo);
+    this.mIsMiniGame = parambehq.e();
     this.mIsDestroyed = false;
   }
   
@@ -33,7 +33,7 @@ public abstract class BaseJsPlugin
     this.mIsDestroyed = true;
   }
   
-  public boolean onInterceptJsEvent(beka parambeka)
+  public boolean onInterceptJsEvent(bekr parambekr)
   {
     return false;
   }
@@ -42,14 +42,14 @@ public abstract class BaseJsPlugin
   
   public void onResume() {}
   
-  protected void sendNativeViewEvent(beka parambeka, int paramInt)
+  protected void sendNativeViewEvent(bekr parambekr, int paramInt)
   {
-    this.mMiniAppContext.a(bejs.a(parambeka, paramInt));
+    this.mMiniAppContext.a(bekj.a(parambekr, paramInt));
   }
   
   public void sendSubscribeEvent(String paramString1, String paramString2)
   {
-    this.mMiniAppContext.a(bejw.a(paramString1, paramString2, 0));
+    this.mMiniAppContext.a(bekn.a(paramString1, paramString2, 0));
   }
 }
 

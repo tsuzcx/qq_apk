@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abye;
-import ajyc;
+import abya;
+import ajya;
 
 public class RegisterActivity$13$2
   implements Runnable
 {
-  public RegisterActivity$13$2(abye paramabye) {}
+  public RegisterActivity$13$2(abya paramabya) {}
   
   public void run()
   {
     RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, ajyc.a(2131713357));
+    RegisterActivity.a(this.a.a, ajya.a(2131713368));
   }
 }
 

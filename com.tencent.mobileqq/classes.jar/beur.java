@@ -1,18 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.triton.sdk.callback.DialogCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
 
-class beur
-  implements DialogInterface.OnClickListener
+public final class beur
+  implements Parcelable.Creator<InstalledEngine>
 {
-  beur(beup parambeup, DialogCallback paramDialogCallback) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public InstalledEngine a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkCallbackDialogCallback.onConfirm();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    boolean bool2 = true;
+    InstalledEngine localInstalledEngine = new InstalledEngine();
+    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
+    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label102;
+      }
     }
+    label102:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
+      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
+      return localInstalledEngine;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public InstalledEngine[] a(int paramInt)
+  {
+    return new InstalledEngine[paramInt];
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.game;
 
-import nca;
+import nbx;
 
 public class SensorAPIJavaScript$9$1
   implements Runnable
 {
-  public SensorAPIJavaScript$9$1(nca paramnca, String paramString1, String paramString2) {}
+  public SensorAPIJavaScript$9$1(nbx paramnbx, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nca.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
+    this.jdField_a_of_type_Nbx.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
   }
 }
 

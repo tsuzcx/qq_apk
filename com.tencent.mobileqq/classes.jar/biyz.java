@@ -1,6 +1,36 @@
-class biyz
+import android.graphics.Bitmap;
+
+public class biyz
 {
-  public static biyy a = new biyy("ae_camera_get_info_client");
+  public final int a;
+  public final Bitmap a;
+  public final String a;
+  public final Throwable a;
+  public final boolean a;
+  
+  private biyz(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  private static biyz b(int paramInt, String paramString)
+  {
+    return new biyz(false, paramInt, paramString, null, null);
+  }
+  
+  private static biyz b(Bitmap paramBitmap)
+  {
+    return new biyz(true, 0, null, null, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
+  }
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acyn;
-import ajsf;
-import akdi;
+import acyk;
+import ajsd;
+import akdh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import axun;
-import axuo;
-import bhvh;
+import axup;
+import axuq;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -33,14 +33,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import noo;
-import onk;
-import oox;
+import nol;
+import onh;
+import oou;
 import org.json.JSONObject;
-import osj;
-import oso;
-import sfh;
-import sgj;
+import osg;
+import osl;
+import sfe;
+import sgg;
 
 public class RecentItemKandianMergeData
   extends RecentUserBaseData
@@ -52,7 +52,7 @@ public class RecentItemKandianMergeData
   public RecentItemKandianMergeData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    if (bhvh.I(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
+    if (bhvy.I(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
     for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
     {
       this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131166955);
@@ -62,25 +62,25 @@ public class RecentItemKandianMergeData
   
   private void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    if (!bhvh.C(paramQQAppInterface)) {}
+    if (!bhvy.C(paramQQAppInterface)) {}
     while ((paramMessageRecord.isread) || ((paramMessageRecord.extLong & 0x20000000) == 0)) {
       return;
     }
     long l = NetConnInfoCenter.getServerTime();
     this.mUser.lastmsgtime = l;
     ThreadManager.executeOnSubThread(new RecentItemKandianMergeData.2(this, paramQQAppInterface, paramMessageRecord, l));
-    noo.a(null, "CliOper", "", "", "", "0X80089F5", 0, 0, String.valueOf(this.mPosition + 1), "", "", "", false);
+    nol.a(null, "CliOper", "", "", "", "0X80089F5", 0, 0, String.valueOf(this.mPosition + 1), "", "", "", false);
     QLog.d(TAG, 2, "no real exposure, try to setTopForUnExposureRedPnt!");
   }
   
   private void a(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = ((oso)paramAppRuntime.getManager(163)).a();
+    paramAppRuntime = ((osl)paramAppRuntime.getManager(163)).a();
     paramAppRuntime.d(0);
     paramAppRuntime.d(56);
     paramAppRuntime.e(40677);
-    if (oox.b(oox.b())) {
-      osj.a().d(oox.b());
+    if (oou.b(oou.b())) {
+      osg.a().d(oou.b());
     }
   }
   
@@ -115,10 +115,10 @@ public class RecentItemKandianMergeData
     {
       this.mAuthenIconId = 0;
       MsgSummary localMsgSummary;
-      if (bhvh.I(BaseApplicationImpl.getApplication().getRuntime()) == 1)
+      if (bhvy.I(BaseApplicationImpl.getApplication().getRuntime()) == 1)
       {
         this.mUnreadFlag = 1;
-        this.mTitleName = sfh.c(paramQQAppInterface, paramContext);
+        this.mTitleName = sfe.c(paramQQAppInterface, paramContext);
         localMsgSummary = a();
         localMsgSummary.strContent = "";
         if ((localMessageRecord.extInt != 1) && (localMessageRecord.extInt != 3)) {
@@ -155,7 +155,7 @@ public class RecentItemKandianMergeData
         }
         this.mMsgExtroInfo = ("[" + ((MessageForStructing)localObject1).structingMsg.mOrangeWord + "] ");
         label306:
-        if ((bhvh.I(BaseApplicationImpl.getApplication().getRuntime()) == 1) && (this.mUnreadNum == 1))
+        if ((bhvy.I(BaseApplicationImpl.getApplication().getRuntime()) == 1) && (this.mUnreadNum == 1))
         {
           if (!TextUtils.isEmpty(localMsgSummary.strPrefix)) {
             break label1668;
@@ -176,7 +176,7 @@ public class RecentItemKandianMergeData
             QLog.i(TAG, 2, localMessage.getBaseInfoString() + ",isread:" + localMessage.isread + ",issend:" + localMessage.issend + ",extInt:" + localMessage.extInt + ",extLong:" + localMessage.extLong);
             QLog.i(TAG, 2, localMessageRecord.getBaseInfoString() + ",isread:" + localMessageRecord.isread + ",issend:" + localMessageRecord.issend + ",extInt:" + localMessageRecord.extInt + ",extLong:" + localMessageRecord.extLong);
           }
-          localMsgSummary.strContent = paramQQAppInterface.getApp().getResources().getString(2131695578);
+          localMsgSummary.strContent = paramQQAppInterface.getApp().getResources().getString(2131695579);
         }
         a(paramQQAppInterface, paramContext, localMsgSummary);
         if (AppSetting.d)
@@ -209,13 +209,13 @@ public class RecentItemKandianMergeData
         localMsgSummary.strContent = localMessageRecord.msg;
         continue;
         label807:
-        if ((localMessageRecord.extInt == 5) || (localMessageRecord.extInt == 6) || ((localMessageRecord.extInt == 2) && (TextUtils.equals(localMessageRecord.senderuin, ajsf.az))))
+        if ((localMessageRecord.extInt == 5) || (localMessageRecord.extInt == 6) || ((localMessageRecord.extInt == 2) && (TextUtils.equals(localMessageRecord.senderuin, ajsd.az))))
         {
           localMsgSummary.strContent = localMessageRecord.msg;
         }
         else
         {
-          if (!sgj.a(paramQQAppInterface, localMessageRecord.senderuin, localMessage.msgtype)) {
+          if (!sgg.a(paramQQAppInterface, localMessageRecord.senderuin, localMessage.msgtype)) {
             break label896;
           }
           localMsgSummary.strContent = "";
@@ -231,7 +231,7 @@ public class RecentItemKandianMergeData
       {
         localMsgSummary.suffix = "";
         localMsgSummary.strContent = "";
-        localObject4 = acyn.a(localMessage);
+        localObject4 = acyk.a(localMessage);
         if ((localObject4 != null) && (((PAMessage)localObject4).items != null) && (((PAMessage)localObject4).items.size() != 0))
         {
           localObject2 = ((PAMessage.Item)((PAMessage)localObject4).items.get(0)).title;
@@ -258,14 +258,14 @@ public class RecentItemKandianMergeData
             label1184:
             if (((Iterator)localObject2).hasNext())
             {
-              localObject4 = (axun)((Iterator)localObject2).next();
-              if (!(localObject4 instanceof axuo)) {
+              localObject4 = (axup)((Iterator)localObject2).next();
+              if (!(localObject4 instanceof axuq)) {
                 break label1698;
               }
-              localObject4 = ((axuo)localObject4).a.iterator();
+              localObject4 = ((axuq)localObject4).a.iterator();
               while (((Iterator)localObject4).hasNext())
               {
-                localObject5 = (axun)((Iterator)localObject4).next();
+                localObject5 = (axup)((Iterator)localObject4).next();
                 if ((localObject5 instanceof StructMsgItemTitle))
                 {
                   localMsgSummary.strContent = ((StructMsgItemTitle)localObject5).b();
@@ -286,7 +286,7 @@ public class RecentItemKandianMergeData
           if ((localMessageRecord.extInt != 2) || (TextUtils.isEmpty(localMessageRecord.senderuin))) {
             break;
           }
-          localObject2 = ((akdi)paramQQAppInterface.getManager(56)).b(localMessageRecord.senderuin);
+          localObject2 = ((akdh)paramQQAppInterface.getManager(56)).b(localMessageRecord.senderuin);
           if ((localObject2 == null) || (TextUtils.isEmpty(((PublicAccountInfo)localObject2).name))) {
             break label1362;
           }
@@ -323,13 +323,13 @@ public class RecentItemKandianMergeData
         this.mMsgExtroInfo = "";
         break label306;
         label1460:
-        if ((localMessageRecord.extInt == 2) && (!TextUtils.equals(localMessageRecord.senderuin, ajsf.az)))
+        if ((localMessageRecord.extInt == 2) && (!TextUtils.equals(localMessageRecord.senderuin, ajsd.az)))
         {
-          if (!sgj.a(paramQQAppInterface, localMessage.senderuin, localMessage.msgtype)) {}
+          if (!sgg.a(paramQQAppInterface, localMessage.senderuin, localMessage.msgtype)) {}
           this.mMsgExtroInfo = "";
           break label306;
         }
-        if ((localMessageRecord.extInt != 5) && (localMessageRecord.extInt != 6) && ((localMessageRecord.extInt != 2) || (!TextUtils.equals(localMessageRecord.senderuin, ajsf.az)) || (TextUtils.isEmpty(localMessageRecord.extStr)))) {
+        if ((localMessageRecord.extInt != 5) && (localMessageRecord.extInt != 6) && ((localMessageRecord.extInt != 2) || (!TextUtils.equals(localMessageRecord.senderuin, ajsd.az)) || (TextUtils.isEmpty(localMessageRecord.extStr)))) {
           break label306;
         }
         localObject4 = null;
@@ -367,12 +367,12 @@ public class RecentItemKandianMergeData
   
   public void a(MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface)
   {
-    if (bhvh.k()) {}
+    if (bhvy.k()) {}
   }
   
   public long c()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
     if (localQQAppInterface == null) {
       return super.c();
     }
@@ -395,7 +395,7 @@ public class RecentItemKandianMergeData
         }
       }
       a(localMessageRecord, localObject1, localQQAppInterface);
-      onk.e = onk.a();
+      onh.e = onh.a();
     }
     return super.c();
   }

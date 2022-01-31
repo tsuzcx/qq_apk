@@ -1,16 +1,16 @@
-import android.graphics.PointF;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public abstract interface vle
+class vle
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  vle(vlc paramvlc) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
-  
-  public abstract boolean a(vlf paramvlf);
-  
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.g();
+  }
 }
 
 

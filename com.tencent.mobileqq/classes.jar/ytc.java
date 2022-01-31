@@ -1,14 +1,36 @@
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import tencent.gdt.qq_ad_get.QQAdGet;
+import android.content.Context;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 
-public abstract class ytc
+public class ytc
 {
-  public GdtHandler.Params a;
-  public qq_ad_get.QQAdGet a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  private ytk jdField_a_of_type_Ytk;
   
-  public boolean a()
+  ytc(Context paramContext)
   {
-    return this.a != null;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public ytb a()
+  {
+    ytb localytb = new ytb();
+    localytb.a(this.jdField_a_of_type_AndroidContentContext);
+    localytb.a(this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData);
+    localytb.a(this.jdField_a_of_type_Ytk);
+    return localytb;
+  }
+  
+  public ytc a(GdtAdBoxData paramGdtAdBoxData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
+    return this;
+  }
+  
+  public ytc a(ytk paramytk)
+  {
+    this.jdField_a_of_type_Ytk = paramytk;
+    return this;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import wni;
 import wnl;
-import wno;
 
 public class CommentPresenter$5$1
   implements Runnable
 {
-  public CommentPresenter$5$1(wno paramwno) {}
+  public CommentPresenter$5$1(wnl paramwnl) {}
   
   public void run()
   {
-    wnl.a(this.a.a, 0, wnl.a(this.a.a).getReplyId());
-    wnl.b(this.a.a, false);
+    wni.a(this.a.a, 0, wni.a(this.a.a).getReplyId());
+    wni.b(this.a.a, false);
   }
 }
 

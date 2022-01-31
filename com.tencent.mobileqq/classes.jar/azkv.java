@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class azkv
-  extends ajxl
+  extends aimt
 {
-  public azkv(NewTroopContactView paramNewTroopContactView) {}
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

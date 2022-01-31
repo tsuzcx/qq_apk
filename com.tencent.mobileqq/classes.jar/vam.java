@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vam
-  implements DialogInterface.OnDismissListener
+class vam
+  implements View.OnClickListener
 {
-  public vam(StoryListPresenter.4.1 param1) {}
+  vam(vac paramvac, vdj paramvdj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(View paramView)
+  {
+    vei.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Vdj.dismiss();
+  }
 }
 
 

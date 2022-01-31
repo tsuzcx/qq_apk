@@ -1,14 +1,6 @@
-import android.support.annotation.Nullable;
-
-class bijv
-  implements bjob<bioi>
+public abstract interface bijv
 {
-  bijv(biju parambiju) {}
-  
-  public void a(@Nullable bioi parambioi)
-  {
-    biju.a(this.a, parambioi);
-  }
+  public abstract void a();
 }
 
 

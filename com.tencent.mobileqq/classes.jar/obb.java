@@ -1,23 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import java.util.concurrent.ConcurrentHashMap;
 
-class obb
-  extends AnimatorListenerAdapter
+public class obb
 {
-  obb(oaz paramoaz, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
+  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static Object a(int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(4);
-    oaz.a(this.jdField_a_of_type_Oaz).a();
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return a.get(Integer.valueOf(paramInt));
+    }
+    return null;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public static void a(int paramInt)
   {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(0);
+    a.remove(Integer.valueOf(paramInt));
+  }
+  
+  public static void a(int paramInt, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      a.remove(Integer.valueOf(paramInt));
+    }
+    a.put(Integer.valueOf(paramInt), paramObject);
   }
 }
 

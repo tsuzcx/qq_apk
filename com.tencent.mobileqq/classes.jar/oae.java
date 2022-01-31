@@ -1,53 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class oae
 {
-  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
+  private static HashMap<Integer, Integer> a = new HashMap();
+  
+  static
   {
-    try
-    {
-      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
-      if (paramAdData.U != null) {
-        oau.a(paramJSONObject, paramAdData.a);
-      }
-      if (!TextUtils.isEmpty(paramAdData.j))
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", paramAdData.j);
-        paramJSONObject.put("id_tv_title", localObject);
-      }
-      if (!TextUtils.isEmpty(paramAdData.l))
-      {
-        localObject = sfd.a(paramAdData.l, 4);
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("image_url", ((URL)localObject).toString());
-        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
-      }
-      Object localObject = new JSONObject();
-      if (!TextUtils.isEmpty(paramAdData.L))
-      {
-        ((JSONObject)localObject).put("text", paramAdData.L);
-        paramJSONObject.put("id_ad_dislike_button", localObject);
-      }
-      if (!TextUtils.isEmpty(paramAdData.q))
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", paramAdData.q);
-        paramJSONObject.put("id_tv_author", localObject);
-      }
+    a.put(Integer.valueOf(1105), Integer.valueOf(4));
+    a.put(Integer.valueOf(1106), Integer.valueOf(3));
+    a.put(Integer.valueOf(1107), Integer.valueOf(4));
+    a.put(Integer.valueOf(1103), Integer.valueOf(101));
+    a.put(Integer.valueOf(1104), Integer.valueOf(102));
+    a.put(Integer.valueOf(1108), Integer.valueOf(103));
+    a.put(Integer.valueOf(1109), Integer.valueOf(104));
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
     }
-    catch (JSONException paramAdData)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
-    }
-    return paramJSONObject;
-    return paramJSONObject;
+    return 0;
   }
 }
 

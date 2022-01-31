@@ -2,8 +2,8 @@ package cooperation.qzone.stickynote;
 
 import android.app.Activity;
 import android.os.Handler;
-import bhbh;
-import bhna;
+import bhby;
+import bhnr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
@@ -13,16 +13,16 @@ import cooperation.qzone.QzonePluginProxyActivity;
 public class QzoneStickyNoteManager$1
   implements Runnable
 {
-  public QzoneStickyNoteManager$1(bhna parambhna, Activity paramActivity, QQAppInterface paramQQAppInterface, ListView paramListView, Card paramCard) {}
+  public QzoneStickyNoteManager$1(bhnr parambhnr, Activity paramActivity, QQAppInterface paramQQAppInterface, ListView paramListView, Card paramCard) {}
   
   public void run()
   {
     try
     {
       QzonePluginProxyActivity.a(this.jdField_a_of_type_AndroidAppActivity);
-      bhbh.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      bhbh.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      bhna.a(this.this$0).post(new QzoneStickyNoteManager.1.1(this));
+      bhby.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bhby.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bhnr.a(this.this$0).post(new QzoneStickyNoteManager.1.1(this));
       return;
     }
     catch (Throwable localThrowable)

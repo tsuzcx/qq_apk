@@ -1,47 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
 class tid
-  extends ssy
+  implements View.OnLayoutChangeListener
 {
-  tid(thy paramthy) {}
+  tid(thv paramthv, tcs paramtcs) {}
   
-  public void a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    veg.b(thy.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      veg.e(thy.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
-    }
-    tgb localtgb = (tgb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
-    if (localtgb.a()) {
-      if (this.a.a()) {
-        this.a.jdField_a_of_type_Thk.a("exp_story", 3);
-      }
-    }
-    do
+    ved.b(thv.b(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Thv.d) || (this.jdField_a_of_type_Thv.e)) && (!this.jdField_a_of_type_Thv.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
     {
-      do
+      ved.b(thv.b(), "first show node, showStoryNode");
+      if (this.jdField_a_of_type_Thv.d)
       {
-        return;
-        if (!localtgb.b()) {
-          break;
-        }
-      } while (!this.a.a());
-      this.a.jdField_a_of_type_Thk.a("exp_story", 2);
-      return;
-      if (!this.a.jdField_a_of_type_Tii.a()) {
-        break;
+        this.jdField_a_of_type_Thv.d = false;
+        this.jdField_a_of_type_Tcs.b("first_show_node", Boolean.valueOf(false));
       }
-    } while (!this.a.a());
-    this.a.jdField_a_of_type_Thk.a("exp_story", 5);
-    return;
-    if (localtgb.c())
-    {
-      this.a.h();
-      localtgb.a();
-      this.a.jdField_a_of_type_Thk.a("exp_hide", 0);
-      return;
+      this.jdField_a_of_type_Thv.e = false;
+      if (this.jdField_a_of_type_Thv.a()) {
+        this.jdField_a_of_type_Thv.jdField_a_of_type_Thh.a("exp_story", 4);
+      }
     }
-    this.a.jdField_a_of_type_Thk.a("exp_hide", 0);
   }
 }
 

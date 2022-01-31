@@ -10,6 +10,7 @@ public class almb
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
     ARScanEntryView.a(this.a).g();
     ARScanEntryView.a(this.a, true);
   }

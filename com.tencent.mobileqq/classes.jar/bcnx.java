@@ -1,51 +1,42 @@
-import android.graphics.RectF;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
-public final class bcnx
+public class bcnx
+  extends ImageSpan
 {
   private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  public ayki a;
-  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<ayki> b = new ArrayList();
+  private int jdField_a_of_type_Int;
   
-  private bcnx(ayki paramayki)
+  public bcnx(Drawable paramDrawable, int paramInt)
   {
-    this.jdField_a_of_type_Ayki = paramayki;
+    super(paramDrawable, paramInt);
   }
   
-  private void a(RectF paramRectF, ayki paramayki)
+  public bcnx a(float paramFloat)
   {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label63;
-      }
-      if (!paramRectF.equals((RectF)localIterator.next())) {
-        break label91;
-      }
-      i = 1;
+    this.jdField_a_of_type_Float = paramFloat;
+    return this;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
+    paramInt1 = paramInt2;
+    if (this.mVerticalAlignment == 1) {
+      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
     }
-    label63:
-    label91:
-    for (;;)
-    {
-      break;
-      j = 0;
-      if (j == 0)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
-        this.b.add(paramayki);
-      }
-      return;
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
+      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
     }
+    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

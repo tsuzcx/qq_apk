@@ -1,6 +1,6 @@
 package com.tencent.qg.loader;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class QGLoader$1
@@ -8,7 +8,7 @@ public final class QGLoader$1
 {
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getApplication(), this.a, 0).a();
+    bcql.a(BaseApplicationImpl.getApplication(), this.a, 0).a();
   }
 }
 

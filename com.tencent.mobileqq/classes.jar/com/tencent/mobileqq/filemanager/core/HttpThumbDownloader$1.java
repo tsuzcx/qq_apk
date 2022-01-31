@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apak;
+import apao;
 
 public class HttpThumbDownloader$1
   implements Runnable
 {
-  public HttpThumbDownloader$1(apak paramapak) {}
+  public HttpThumbDownloader$1(apao paramapao) {}
   
   public void run()
   {
-    apak.a(this.this$0);
+    apao.a(this.this$0);
   }
 }
 

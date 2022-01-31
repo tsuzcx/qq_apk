@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import aopw;
-import aosp;
-import apvb;
-import apvh;
-import apxv;
+import aoqb;
+import aost;
+import apvd;
+import apvj;
+import apxx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -20,7 +20,7 @@ import java.util.Set;
 public class QfileLocalFileDocTabView
   extends QfileBaseLocalFileTabView
 {
-  public QfileLocalFileDocTabView(Context paramContext, List<apxv> paramList, boolean paramBoolean)
+  public QfileLocalFileDocTabView(Context paramContext, List<apxx> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     setEditbarButton(false, false, true, true, true);
@@ -28,9 +28,9 @@ public class QfileLocalFileDocTabView
   
   private String a(String paramString)
   {
-    paramString = apvb.a(paramString);
+    paramString = apvd.a(paramString);
     if ((paramString == null) || (paramString.length() == 0)) {
-      return ajyc.a(2131709668);
+      return ajya.a(2131709679);
     }
     paramString = paramString.toLowerCase();
     if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
@@ -45,12 +45,12 @@ public class QfileLocalFileDocTabView
     if (".pdf|".indexOf(paramString) >= 0) {
       return "PDF";
     }
-    return ajyc.a(2131709684);
+    return ajya.a(2131709695);
   }
   
-  protected aopw a()
+  protected aoqb a()
   {
-    return new aosp(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new aost(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   protected void a()

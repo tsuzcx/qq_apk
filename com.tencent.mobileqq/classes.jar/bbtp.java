@@ -1,33 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
 public class bbtp
-  implements TVK_SDKMgr.InstallListener
 {
-  public bbtp(HealthBusinessPlugin.7 param7) {}
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    this.a.this$0.c = ((int)(100.0F * paramFloat));
-    this.a.this$0.b.sendEmptyMessage(2);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    this.a.this$0.d = paramInt;
-    this.a.this$0.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.this$0.b.sendEmptyMessage(0);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbtp
  * JD-Core Version:    0.7.0.1
  */

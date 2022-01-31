@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bgxr;
+import bgyi;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -91,7 +91,7 @@ public class LpReportInfo_dc03950
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", bgxr.a());
+    LpReportUtils.safePut(localHashMap, "qua", bgyi.a());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {

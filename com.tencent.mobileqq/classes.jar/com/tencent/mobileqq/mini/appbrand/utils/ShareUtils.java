@@ -6,9 +6,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import aqbc;
-import bgxy;
-import bgyf;
+import aqbe;
+import bgyp;
+import bgyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -44,7 +44,7 @@ public class ShareUtils
     paramString = new Intent();
     paramString.putExtras(localBundle);
     MiniAppController.getInstance().setActivityResultListener(new ShareUtils.1(paramActivity));
-    aqbc.a(paramActivity, paramString, 1010);
+    aqbe.a(paramActivity, paramString, 1010);
   }
   
   public static void startSharePicToQzone(Activity paramActivity, String paramString, ApkgInfo paramApkgInfo)
@@ -52,9 +52,9 @@ public class ShareUtils
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. localPicPath=" + paramString);
     }
-    bgyf localbgyf = bgyf.a();
-    localbgyf.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    bgxy.a(paramActivity, localbgyf, paramString, paramApkgInfo.apkgName, "", -1);
+    bgyw localbgyw = bgyw.a();
+    localbgyw.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bgyp.a(paramActivity, localbgyw, paramString, paramApkgInfo.apkgName, "", -1);
     paramActivity = new Bundle();
     paramActivity.putString("key_mini_report_event_action_type", "user_click");
     paramActivity.putString("key_mini_report_event_sub_action_type", "custom_button");

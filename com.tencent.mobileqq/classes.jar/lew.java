@@ -1,37 +1,121 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class lew
-  implements muy
+class lew
+  extends BroadcastReceiver
 {
-  public lew(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
+  public static String a;
+  VideoAppInterface a;
   
-  public void a(int paramInt, long paramLong, String paramString1, String paramString2)
+  static
   {
-    if (AudioHelper.e()) {
-      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed onFinish result: " + paramInt + ", timeConsuming: " + paramLong + ", gpuVendor: " + paramString1 + ", gpuModel: " + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", Build.HARDWARE);
-    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-    localHashMap.put("manufacturer", Build.MANUFACTURER);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("product", Build.PRODUCT);
-    localHashMap.put("fingerprint", Build.FINGERPRINT);
-    localHashMap.put("gpu_vendor", paramString1);
-    localHashMap.put("gpu_model", paramString2);
-    localHashMap.put("result", String.valueOf(paramInt));
-    localHashMap.put("time_consuming", String.valueOf(paramLong));
-    if (AudioHelper.e()) {
-      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
-    }
-    axrl.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
+  
+  public lew(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    long l;
+    int i;
+    boolean bool;
+    int j;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              try
+              {
+                paramContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+                if (QLog.isColorLevel()) {
+                  QLog.d(jdField_a_of_type_JavaLangString, 2, "recv account broadcast: " + paramIntent.getAction());
+                }
+                if (!paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED")) {
+                  break;
+                }
+                this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1001);
+                if (paramContext != null) {
+                  paramContext.B();
+                }
+                Process.killProcess(Process.myPid());
+                return;
+              }
+              catch (RuntimeException paramContext) {}
+            } while (!QLog.isColorLevel());
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "RuntimeException", paramContext);
+            return;
+            if (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1003);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.LOGOUT"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1002);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1005);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) {
+              break;
+            }
+          } while (paramContext == null);
+          if (paramContext.e) {
+            paramContext.a(paramContext.c, paramContext.a, 74);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "ACTION_ACCOUNT_CHANGED, video process exit!");
+          }
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1004);
+          paramContext.B();
+          Process.killProcess(Process.myPid());
+          return;
+        } while (!"tencent.video.q2v.membersChange".equals(paramIntent.getAction()));
+        l = paramIntent.getLongExtra("relationId", -1L);
+        i = paramIntent.getIntExtra("relationType", 0);
+        if (l != -1L) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "can not get the right value");
+      return;
+      bool = paramIntent.getBooleanExtra("Exit", false);
+      j = paramIntent.getIntExtra("avtype", 0);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(79), Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(j) });
+    } while ((!bool) || (j == 2));
+    paramContext.b(i, l);
   }
 }
 

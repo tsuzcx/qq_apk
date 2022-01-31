@@ -1,15 +1,14 @@
-import android.graphics.Color;
-import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class ofp
-  implements bfps
+  implements ViewBase.OnClickListener
 {
-  ofp(ofo paramofo) {}
+  ofp(ofb paramofb, ViewBase paramViewBase) {}
   
-  public void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+    ofa.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView(), this.jdField_a_of_type_Ofb.a);
   }
 }
 

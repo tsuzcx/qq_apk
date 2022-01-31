@@ -1,90 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amtj
-  extends ampb<amth>
 {
-  @NonNull
-  public static amth a()
+  private static final amtj jdField_a_of_type_Amtj = new amtj();
+  private long jdField_a_of_type_Long = 0L;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
+  
+  public static amtj a(amph[] paramArrayOfamph)
   {
-    amth localamth2 = (amth)ampm.a().a(458);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localamth2);
+    Object localObject;
+    if (paramArrayOfamph == null) {
+      localObject = jdField_a_of_type_Amtj;
     }
-    amth localamth1 = localamth2;
-    if (localamth2 == null) {
-      localamth1 = new amth();
-    }
-    return localamth1;
-  }
-  
-  public int a()
-  {
-    return 458;
-  }
-  
-  @NonNull
-  public amth a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
-    }
-    return new amth();
-  }
-  
-  @Nullable
-  public amth a(ampi[] paramArrayOfampi)
-  {
-    return amth.a(paramArrayOfampi);
-  }
-  
-  public Class<amth> a()
-  {
-    return amth.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amth paramamth)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramamth.toString());
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    for (;;)
     {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(34))
+      return localObject;
+      try
       {
-        ((akbo)((QQAppInterface)localObject).getManager(34)).a = paramamth;
-        if (QLog.isColorLevel()) {
-          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
+        amtj localamtj = new amtj();
+        int j = paramArrayOfamph.length;
+        int i = 0;
+        localObject = localamtj;
+        if (i >= j) {
+          continue;
         }
+        localObject = new JSONObject(paramArrayOfamph[i].jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localamtj.jdField_a_of_type_Boolean = bool;
+          localamtj.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
+          localamtj.b = ((JSONObject)localObject).optString("guideHighlightText", "");
+          localamtj.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
+          i += 1;
+          break;
+        }
+        return jdField_a_of_type_Amtj;
+      }
+      catch (Exception paramArrayOfamph)
+      {
+        QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfamph);
       }
     }
   }
   
-  public int b()
+  public long a()
   {
-    return 0;
+    return this.jdField_a_of_type_Long;
   }
   
-  public boolean b()
+  public String a()
   {
-    return false;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean c()
+  public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

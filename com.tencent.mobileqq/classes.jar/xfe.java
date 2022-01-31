@@ -1,8 +1,38 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public abstract interface xfe<V extends View>
+class xfe
+  implements Animator.AnimatorListener
 {
-  public abstract void a(V paramV, float paramFloat);
+  xfe(xfc paramxfc) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    if (xfc.a(this.a) != null) {
+      xfc.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (xfc.a(this.a) != null) {
+      xfc.a(this.a).a();
+    }
+    if (xfc.a(this.a) != null)
+    {
+      xfc.a(xfc.a(this.a), null);
+      xfc.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (xfc.a(this.a) != null) {
+      xfc.a(this.a).a();
+    }
+  }
 }
 
 

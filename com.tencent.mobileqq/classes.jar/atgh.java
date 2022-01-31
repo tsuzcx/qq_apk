@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
 public class atgh
-  extends ajtd
 {
-  public atgh(QQAppInterface paramQQAppInterface)
+  public boolean a;
+  
+  protected void a() {}
+  
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    super(paramQQAppInterface);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4124: 
+      a();
+      return;
+    }
+    a((BusinessInfoCheckUpdate.AppInfo)paramVarArgs[0]);
   }
   
-  protected Class<? extends ajtg> observerClass()
-  {
-    return atgi.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
 }
 
 

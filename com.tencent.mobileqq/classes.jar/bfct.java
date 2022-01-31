@@ -1,146 +1,163 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.webkit.ValueCallback;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.runtime.core.service.AppBrandWebviewService.2;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
+import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
+import io.flutter.plugin.common.BasicMessageChannel.Reply;
+import java.util.Map;
 import org.json.JSONObject;
 
-public class bfct
-  extends bfco
+class bfct
+  implements BasicMessageChannel.MessageHandler
 {
-  private bfdd jdField_a_of_type_Bfdd;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  bfct(bfcr parambfcr) {}
   
-  public bfct(begz parambegz, bfdd parambfdd)
+  public void onMessage(Object paramObject, BasicMessageChannel.Reply paramReply)
   {
-    super(parambegz);
-    a(parambfdd);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(parambegz.a());
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.addJavascriptInterface(this, "WeixinJSCore");
-    parambegz = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
-    parambegz.setSupportZoom(false);
-    parambegz.setJavaScriptEnabled(true);
-    parambegz.setCacheMode(2);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new bfcu(this));
-    a(Integer.valueOf(3));
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String a(bejy parambejy)
-  {
-    if (parambejy == null) {
-      return "";
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    paramReply = null;
+    Object localObject1;
+    Object localObject2;
+    if ((paramObject instanceof Map))
     {
-      localJSONObject.put("appId", parambejy.d);
-      localJSONObject.put("icon", parambejy.e);
-      localJSONObject.put("nickname", "testuser");
-      parambejy = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.QUA='V1_AND_SQ_8.1.3_0_RDM_B';", new Object[] { parambejy.b, localJSONObject.toString() });
-      return parambejy + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      paramObject = (Map)paramObject;
+      if (betc.b()) {
+        betc.a("miniapp-start-TISSUE-basic_channel", new JSONObject(paramObject).toString());
+      }
+      if ((paramObject.containsKey("messageType")) && ("__tissue_bridge_ready_".equals((String)paramObject.get("messageType"))))
       {
-        localJSONException.printStackTrace();
+        bfcr.a(this.a, true);
+        betc.c("miniapp-start-TISSUE", " tissue initialization done");
+        beyq.a(214, "", bfcr.a(this.a).a());
+        bfcr.a(this.a);
       }
-    }
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    try
-    {
-      Object localObject = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("USER_DATA_PATH", "qqfile://usr");
-      ((JSONObject)localObject).put("env", localJSONObject);
-      ((JSONObject)localObject).put("preload", paramBoolean);
-      localObject = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; Object.assign(__qqConfig, __tempConfig); ", new Object[] { localObject });
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      besl.d("AppBrandService", "getJsDefaultConfig failed: ", localException);
-    }
-    return "";
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    a(String.format("WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramString }), null);
-  }
-  
-  public void a(bejy parambejy)
-  {
-    if (parambejy == null) {
-      return;
-    }
-    b(a(parambejy));
-    String str = "";
-    try
-    {
-      parambejy = bekq.b(new File(parambejy.a()));
-      c(parambejy);
-      return;
-    }
-    catch (IOException parambejy)
-    {
-      for (;;)
+      if (paramObject.containsKey("method"))
       {
-        parambejy.printStackTrace();
-        parambejy = str;
+        localObject1 = paramObject.get("method").toString();
+        if (!((String)localObject1).equals("publishHandler")) {
+          break label294;
+        }
+        Map localMap = (Map)paramObject.get("data");
+        localObject2 = localMap.get("event").toString();
+        localObject1 = (Integer)localMap.get("pageID");
+        paramObject = paramReply;
+        if (localMap.containsKey("dataForEvent")) {
+          paramObject = (Map)localMap.get("dataForEvent");
+        }
+        paramReply = (BasicMessageChannel.Reply)localObject1;
+        if (localObject1 == null)
+        {
+          paramReply = (BasicMessageChannel.Reply)localObject1;
+          if (paramObject != null)
+          {
+            paramReply = (BasicMessageChannel.Reply)localObject1;
+            if (paramObject.containsKey("pageID")) {
+              paramReply = (Integer)paramObject.get("pageID");
+            }
+          }
+        }
+        localObject1 = "null";
+        if (paramObject != null) {
+          localObject1 = new JSONObject(paramObject).toString();
+        }
+        bfcr.a(this.a).a((String)localObject2, (String)localObject1, paramReply.intValue());
       }
     }
-  }
-  
-  public void a(bfdd parambfdd)
-  {
-    this.jdField_a_of_type_Bfdd = parambfdd;
-  }
-  
-  public void a(String paramString, ValueCallback paramValueCallback)
-  {
-    a(paramString, paramValueCallback, null);
-  }
-  
-  public void a(String paramString1, ValueCallback paramValueCallback, String paramString2)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    return;
+    label294:
+    if (((String)localObject1).equals("onAppRoute"))
     {
-      if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(paramString1, bfdw.a(paramValueCallback));
+      paramObject = (Map)paramObject.get("data");
+      localObject2 = paramObject.get("path").toString();
+      paramReply = (Integer)paramObject.get("pageID");
+      localObject1 = (String)paramObject.get("openType");
+      if (!paramObject.containsKey("query")) {
+        break label1065;
       }
-      return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new AppBrandWebviewService.2(this, paramString1, paramValueCallback));
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    besl.a("AppBrandService", "evaluateSubscribeJS  eventName=" + paramString1);
-    paramString1 = "WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")";
-    if (!a()) {
+    label1052:
+    label1060:
+    label1065:
+    for (paramObject = (Map)paramObject.get("query");; paramObject = null)
+    {
+      paramObject = new bfeq((String)localObject2, paramObject);
+      bfcr.a(this.a).c((String)localObject1, paramObject.b(), paramReply.intValue());
       return;
+      if (((String)localObject1).equals("onAppRouteDone"))
+      {
+        paramObject = (Map)paramObject.get("data");
+        localObject2 = paramObject.get("path").toString();
+        paramReply = (Integer)paramObject.get("pageID");
+        localObject1 = (String)paramObject.get("openType");
+        if (!paramObject.containsKey("query")) {
+          break label1060;
+        }
+      }
+      for (paramObject = (Map)paramObject.get("query");; paramObject = null)
+      {
+        paramObject = new bfeq((String)localObject2, paramObject);
+        bfcr.a(this.a).d((String)localObject1, paramObject.b(), paramReply.intValue());
+        return;
+        if ("viewDidAppear".equals(localObject1))
+        {
+          bfcr.a(this.a).a(bekc.a(11));
+          if ((!paramObject.containsKey("data")) || (!(paramObject.get("data") instanceof Map))) {
+            break label1052;
+          }
+          paramObject = (Map)paramObject.get("data");
+          if ((!paramObject.containsKey("pageID")) || (!(paramObject.get("pageID") instanceof Integer))) {
+            break label1052;
+          }
+        }
+        for (paramObject = (Integer)paramObject.get("pageID");; paramObject = Integer.valueOf(0))
+        {
+          betc.c("miniapp-start-TISSUE", "flutter page " + paramObject + " shown" + System.currentTimeMillis());
+          if (bfcr.a(this.a)) {
+            break;
+          }
+          if (bfcr.b(this.a)) {}
+          for (paramObject = "1";; paramObject = "0")
+          {
+            beyq.a(216, paramObject, bfcr.a(this.a).a());
+            bfcr.b(this.a, true);
+            return;
+          }
+          if ("invokeHandler".equals(localObject1))
+          {
+            paramReply = (Map)paramObject.get("data");
+            paramObject = (String)paramReply.get("event");
+            if ("invokeMiniProgramAPI".equals(paramObject))
+            {
+              int i = ((Integer)paramReply.get("pageID")).intValue();
+              bfcr.a(this.a).a("onWebInvokeAppService", (String)paramReply.get("param"), i);
+            }
+            paramReply = new JSONObject(paramReply).toString();
+            bfcr.a(this.a).a(paramObject, paramReply, ((bfbk)bfcr.a(this.a)).a(), 0);
+            return;
+          }
+          if (!"timeCostReport".equals(localObject1)) {
+            break;
+          }
+          localObject2 = (Map)paramObject.get("data");
+          if (localObject2 == null) {
+            break;
+          }
+          paramObject = (Integer)((Map)localObject2).get("matchTimeCost");
+          paramReply = (Integer)((Map)localObject2).get("setDataTimeCost");
+          localObject1 = (Integer)((Map)localObject2).get("renderTimeCost");
+          localObject2 = (Integer)((Map)localObject2).get("totalTimeCost");
+          if (paramObject != null) {
+            bezi.a(bfcr.a(this.a).a(), 217, "0", paramObject.intValue());
+          }
+          if (paramReply != null) {
+            bezi.a(bfcr.a(this.a).a(), 218, "0", paramReply.intValue());
+          }
+          if (localObject1 != null) {
+            bezi.a(bfcr.a(this.a).a(), 219, "0", ((Integer)localObject1).intValue());
+          }
+          if (localObject2 == null) {
+            break;
+          }
+          bezi.a(bfcr.a(this.a).a(), 220, "0", ((Integer)localObject2).intValue());
+          return;
+        }
+      }
     }
-    a(paramString1, null);
-  }
-  
-  public void b()
-  {
-    a(a(true));
-    MiniAppEnv.g().getBaselibLoader().loadBaselib(MiniAppEnv.g().getContext(), new bfcv(this));
   }
 }
 

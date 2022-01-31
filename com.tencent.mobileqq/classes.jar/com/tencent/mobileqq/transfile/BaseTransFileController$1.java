@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import ampm;
-import amvy;
-import ayox;
+import ampl;
+import amvx;
+import ayoz;
 
 public class BaseTransFileController$1
   implements Runnable
 {
-  public BaseTransFileController$1(ayox paramayox) {}
+  public BaseTransFileController$1(ayoz paramayoz) {}
   
   public void run()
   {
-    this.this$0.a = ((amvy)ampm.a().a(538));
+    this.this$0.a = ((amvx)ampl.a().a(538));
   }
 }
 

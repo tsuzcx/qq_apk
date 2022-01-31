@@ -1,59 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class abme
-  extends WtloginObserver
+  implements ActionMode.Callback
 {
-  public abme(LoginInfoActivity paramLoginInfoActivity) {}
+  public abme(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
-      }
-      aoeh.a().a(paramDevlockInfo.TransferInfo);
-      LoginInfoActivity.a(this.a, paramDevlockInfo);
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      LoginInfoActivity.b(this.a, LoginInfoActivity.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-      if (paramDevlockInfo == null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
-    }
-    LoginInfoActivity.d(this.a);
-    paramDevlockInfo = this.a.getString(2131692133);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
-    {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
-      }
-    }
-    bcpw.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

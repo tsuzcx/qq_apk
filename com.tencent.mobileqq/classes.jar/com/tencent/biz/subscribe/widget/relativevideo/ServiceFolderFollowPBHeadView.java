@@ -11,10 +11,10 @@ import android.widget.TextView;
 import com.tencent.biz.subscribe.widget.StatusView;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import java.util.List;
-import wiw;
-import wwe;
-import wwf;
-import xhe;
+import wit;
+import wwb;
+import wwc;
+import xhb;
 
 public class ServiceFolderFollowPBHeadView
   extends RelativeFeedBaseHeaderView
@@ -25,7 +25,7 @@ public class ServiceFolderFollowPBHeadView
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  private wwf jdField_a_of_type_Wwf;
+  private wwc jdField_a_of_type_Wwc;
   private boolean jdField_a_of_type_Boolean;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
@@ -42,8 +42,8 @@ public class ServiceFolderFollowPBHeadView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wwf != null) {
-      this.jdField_a_of_type_Wwf.a();
+    if (this.jdField_a_of_type_Wwc != null) {
+      this.jdField_a_of_type_Wwc.a();
     }
   }
   
@@ -54,20 +54,20 @@ public class ServiceFolderFollowPBHeadView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_Boolean = wiw.a();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131375910));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375907));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375908));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375903));
-    this.jdField_a_of_type_Wwf = new wwf(getContext(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Wwf.a(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wwf);
+    this.jdField_a_of_type_Boolean = wit.a();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131375912));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375909));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375910));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375905));
+    this.jdField_a_of_type_Wwc = new wwc(getContext(), this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Wwc.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wwc);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext());
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     ((GradientDrawable)this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground()).setColor(Color.parseColor("#00cafc"));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new wwe(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)paramView.findViewById(2131375911));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new wwb(this));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)paramView.findViewById(2131375913));
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-10132123);
     }
@@ -97,15 +97,15 @@ public class ServiceFolderFollowPBHeadView
   public void setData(Object paramObject)
   {
     paramObject = (List)paramObject;
-    if (this.jdField_a_of_type_Wwf != null) {
-      this.jdField_a_of_type_Wwf.a(paramObject);
+    if (this.jdField_a_of_type_Wwc != null) {
+      this.jdField_a_of_type_Wwc.a(paramObject);
     }
   }
   
   public void setDragHost(DragFrameLayout paramDragFrameLayout)
   {
-    if (this.jdField_a_of_type_Wwf != null) {
-      this.jdField_a_of_type_Wwf.a(paramDragFrameLayout);
+    if (this.jdField_a_of_type_Wwc != null) {
+      this.jdField_a_of_type_Wwc.a(paramDragFrameLayout);
     }
   }
   
@@ -120,7 +120,7 @@ public class ServiceFolderFollowPBHeadView
       if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getVisibility() == 8)
       {
         this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-        xhe.a("auth_follow", "service_exp", 0, 0, new String[0]);
+        xhb.a("auth_follow", "service_exp", 0, 0, new String[0]);
       }
     }
     while (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getVisibility() != 0) {

@@ -2,7 +2,7 @@ package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bhgd;
+import bhgu;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
@@ -145,9 +145,9 @@ public class QzoneModuleConst
     }
   }
   
-  public static String getModuleSavePath(Context paramContext, bhgd parambhgd)
+  public static String getModuleSavePath(Context paramContext, bhgu parambhgu)
   {
-    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambhgd.e.toLowerCase() + "_" + parambhgd.a).getAbsolutePath();
+    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambhgu.e.toLowerCase() + "_" + parambhgu.a).getAbsolutePath();
   }
   
   private static String getSpKeyById(String paramString)

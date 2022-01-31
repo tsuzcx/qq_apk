@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="msgSeq")
 public class TroopTipsEntity
-  extends aukm
+  extends auko
 {
   public static final int SHOW_IN_AIO_BOTTOM = 1;
   public String OptActionData_a;

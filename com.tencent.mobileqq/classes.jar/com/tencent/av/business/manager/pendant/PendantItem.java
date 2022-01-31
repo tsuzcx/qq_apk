@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.pendant;
 
-import lhq;
+import lhl;
 
 public class PendantItem
-  extends lhq
+  extends lhl
 {
   public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;

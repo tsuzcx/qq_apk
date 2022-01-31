@@ -6,7 +6,7 @@ final class aptz
 {
   public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 

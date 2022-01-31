@@ -1,30 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import java.lang.ref.WeakReference;
 
-public final class bhej
-  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
+class bhej
 {
-  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
-  {
-    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
-    if (paramParcel != null)
-    {
-      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.c = paramParcel.readDouble();
-      localGameCoverInfo.d = paramParcel.readDouble();
-      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    }
-    return localGameCoverInfo;
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<bhdy> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public CoverCacheData.GameCoverInfo[] a(int paramInt)
-  {
-    return null;
-  }
+  private bhej(bheb parambheb) {}
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import auws;
+import auwu;
 import com.tencent.qphone.base.util.QLog;
 
 class VisitorsActivity$13
@@ -17,7 +17,7 @@ class VisitorsActivity$13
       QLog.d("VisitorsActivity", 1, "doPraiseMallEntryAnim run isFinishing return");
       return;
     }
-    auws.a(this.this$0.app);
+    auwu.a(this.this$0.app);
     Message localMessage = this.this$0.a.obtainMessage(13, 0, 0);
     this.this$0.a.sendMessageDelayed(localMessage, 100L);
   }

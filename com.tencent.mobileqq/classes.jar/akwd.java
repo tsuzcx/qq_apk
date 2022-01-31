@@ -1,131 +1,78 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class akwd
-  extends akav
+  extends BaseAdapter
 {
-  private int a;
+  private int jdField_a_of_type_Int = 36;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<Integer> a;
   
-  public akwd(akwc paramakwc, int paramInt)
+  public akwd(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    a(paramInt2, paramInt3);
   }
   
-  protected void b(boolean paramBoolean)
+  public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_Akwc.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    akay localakay = (akay)this.jdField_a_of_type_Akwc.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localakay.a(8, null);
-      return;
-    }
-    localakay.a(9, null);
+    return getView(paramInt, null, null);
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramObject = (Bundle)paramObject;
-    String str1 = paramObject.getString("PEER_UIN");
-    long l = paramObject.getLong("BEGTIME");
-    boolean bool1 = paramObject.getBoolean("NO_MSG");
-    int i = paramObject.getInt("SVR_CODE");
-    String str2 = paramObject.getString("SVR_MSG");
-    boolean bool2 = paramObject.getBoolean("FETCH_MORE");
-    int j = paramObject.getInt("MSG_COUNT");
-    boolean bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + i + ",msgCount:" + j + ",fetchMore: " + bool2 + ",svrMsg: " + str2 + ",isPreloadType:" + bool3);
-    }
-    if (bool3) {
-      return;
-    }
-    if ((paramBoolean) && (bool2) && (j > 0) && (j <= 8))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    while (paramInt1 <= paramInt2)
     {
-      ThreadManager.getSubThreadHandler().post(new MessageRoamHandler.ChatHistoryMessageObserver.1(this, l, j, str1, bool2));
-      return;
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
     }
-    paramObject = (akay)this.jdField_a_of_type_Akwc.app.getManager(92);
-    i = 1;
-    if (!paramBoolean)
-    {
-      if (bool1) {
-        i = 2;
-      }
-      paramObject.b(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
-      }
-      if (!bool2) {
-        break label348;
-      }
-    }
-    label348:
-    for (j = 1;; j = 0)
-    {
-      paramObject.a(i, j, Long.valueOf(l));
-      return;
-      j = 0;
-      i = j;
-      if (!bool2)
-      {
-        i = j;
-        if (!paramObject.a(l)) {
-          i = 4;
-        }
-      }
-      paramObject.b(true);
-      break;
-    }
+    notifyDataSetChanged();
   }
   
-  protected void c(boolean paramBoolean)
+  public int getCount()
   {
-    if (this.jdField_a_of_type_Akwc.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    akay localakay = (akay)this.jdField_a_of_type_Akwc.app.getManager(92);
-    if (!paramBoolean)
-    {
-      localakay.a(7, null);
-      return;
-    }
-    localakay.a(6, null);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public long getItemId(int paramInt)
   {
-    if (paramObject == null) {}
-    Object localObject1;
-    do
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    if (paramView == null)
     {
-      return;
-      localObject2 = (HashMap)paramObject;
-      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
-      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
+      paramViewGroup = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)paramViewGroup;; paramView = (View)localObject)
+    {
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = (WheelTextView)paramViewGroup;
       }
-      localObject1 = this.jdField_a_of_type_Akwc.app.getHandler(agdx.class);
-      if (!paramBoolean)
-      {
-        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
-        ((Message)localObject2).obj = paramObject;
-        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-        return;
-      }
-    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
-    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
-    ((Message)localObject2).obj = paramObject;
-    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+      ((WheelTextView)localObject).setTextSize(18.0F);
+      ((WheelTextView)localObject).setTextColor(-7829368);
+      ((WheelTextView)localObject).setGravity(5);
+      ((WheelTextView)localObject).setVisibility(0);
+      ((WheelTextView)localObject).setText(paramView);
+      return paramViewGroup;
+      paramViewGroup = paramView;
+    }
   }
 }
 

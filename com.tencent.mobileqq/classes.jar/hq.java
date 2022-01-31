@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.data.ChatMessage;
 
 class hq
-  implements asko<Void>
+  implements askq<Void>
 {
   hq(ho paramho, ChatMessage paramChatMessage) {}
   
   public void a(Void paramVoid)
   {
     if (this.jdField_a_of_type_Ho.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
-      bbkv.a(this.jdField_a_of_type_Ho.a);
+      bblj.a(this.jdField_a_of_type_Ho.a);
     }
   }
 }

@@ -1,21 +1,8 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import android.view.MotionEvent;
 
-public class rgh
-  extends RecyclerViewWithHeaderFooterFix
+public abstract interface rgh
 {
-  public rgh(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

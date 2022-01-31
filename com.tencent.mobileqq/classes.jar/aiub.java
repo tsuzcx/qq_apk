@@ -1,110 +1,135 @@
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.apollo.CmShowRscCacheManager.1;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Iterator;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aiub
 {
-  private static aiub jdField_a_of_type_Aiub;
-  private final SparseArray<aiuc> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  
-  private aiub()
-  {
-    a();
-  }
-  
-  public static aiub a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Aiub == null) {
-        jdField_a_of_type_Aiub = new aiub();
-      }
-      aiub localaiub = jdField_a_of_type_Aiub;
-      return localaiub;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    Object localObject1 = new aiuj();
-    ((aiuj)localObject1).jdField_a_of_type_Int = 100;
-    ((aiuj)localObject1).jdField_a_of_type_Long = 1L;
-    ((aiuj)localObject1).jdField_a_of_type_JavaLangString = "all_room3D";
-    localObject1 = ((aiuj)localObject1).b() + "all_room3D.json";
-    Object localObject2 = new File((String)localObject1);
-    if (((File)localObject2).exists()) {
-      try
-      {
-        localObject2 = new JSONObject(bbdj.b((File)localObject2)).optJSONObject("data");
-        if (localObject2 != null)
-        {
-          localObject1 = ((JSONObject)localObject2).optString("downloadUrl");
-          localObject2 = ((JSONObject)localObject2).optJSONObject("list");
-          Iterator localIterator = ((JSONObject)localObject2).keys();
-          while (localIterator.hasNext())
-          {
-            Object localObject3 = (String)localIterator.next();
-            int i = ApolloUtil.b((String)localObject3);
-            if (i > -2147483648)
-            {
-              localObject3 = ((JSONObject)localObject2).optJSONObject((String)localObject3);
-              if (localObject3 != null)
-              {
-                localObject3 = ((JSONObject)localObject3).optString("source_qq");
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  aiuc localaiuc = new aiuc();
-                  localaiuc.c = "all_room3D.json";
-                  localaiuc.jdField_b_of_type_JavaLangString = ((String)localObject1);
-                  localaiuc.jdField_b_of_type_Int = i;
-                  localaiuc.jdField_a_of_type_Int = 8;
-                  localaiuc.jdField_a_of_type_JavaLangString = ((String)localObject3);
-                  this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localaiuc);
-                }
-              }
-            }
-          }
-        }
-        ApolloUtil.b("小窝json不存在");
-      }
-      catch (Exception localException)
-      {
-        QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson e:", localException);
-        if (QLog.isColorLevel()) {
-          QLog.d("rscContent_CmShowRscCacheManager", 2, "initRoomJson mRoomRscMap:" + this.jdField_a_of_type_AndroidUtilSparseArray);
-        }
-        return;
-      }
-    }
-    QLog.e("rscContent_CmShowRscCacheManager", 1, "initRoomJson file is no exsit path:" + localException);
-  }
-  
-  public aiuc a(int paramInt1, int paramInt2)
-  {
-    aiuc localaiuc = null;
-    if (paramInt1 == 8) {
-      localaiuc = (aiuc)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    }
-    if (localaiuc == null) {
-      ApolloUtil.b("未获取资源getRscItem type:" + paramInt1 + " id:" + paramInt2);
-    }
-    return localaiuc;
-  }
-  
-  public void a()
+  public static void a(AppInterface paramAppInterface, String paramString1, aiud paramaiud, List<aiua> paramList, boolean paramBoolean, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscCacheManager", 2, "onRoomZipUpdated");
+      QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes");
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    ThreadManager.executeOnSubThread(new CmShowRscCacheManager.1(this));
+    if (paramAppInterface == null) {}
+    label191:
+    do
+    {
+      aiua localaiua;
+      do
+      {
+        ArrayList localArrayList;
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              localArrayList = new ArrayList();
+              localaiua = null;
+              if (!TextUtils.isEmpty(paramString2))
+              {
+                localaiua = new aiua();
+                localaiua.jdField_a_of_type_JavaLangString = paramString2;
+                localaiua.jdField_a_of_type_Int = 6;
+                localArrayList.add(localaiua);
+              }
+              if (paramList != null) {
+                localArrayList.addAll(paramList);
+              }
+              if (!localArrayList.isEmpty()) {
+                break;
+              }
+              QLog.e("rscContent_CmShowRscDownloader", 1, "downloadApolloRes tasks is empty ");
+            } while (paramaiud == null);
+            paramaiud.a(false, paramString1, paramList, "");
+            return;
+            paramAppInterface = (bbww)paramAppInterface.getManager(47);
+          } while (paramAppInterface == null);
+          paramAppInterface = paramAppInterface.a(3);
+        } while (paramAppInterface == null);
+        paramString2 = new AtomicInteger(localArrayList.size());
+        AtomicInteger localAtomicInteger1 = new AtomicInteger(0);
+        AtomicInteger localAtomicInteger2 = new AtomicInteger(0);
+        int k = localArrayList.size();
+        int i = 0;
+        if (i < k)
+        {
+          Object localObject = (aiua)localArrayList.get(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscDownloader", 2, "IdolRscItem:" + localObject);
+          }
+          int m = ((aiua)localObject).jdField_a_of_type_Int;
+          int n = ((aiua)localObject).b;
+          String str = ((aiua)localObject).a();
+          if (TextUtils.isEmpty(str))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes url is empty resType->" + m + " id->" + n);
+            }
+            paramString2.decrementAndGet();
+          }
+          for (;;)
+          {
+            i += 1;
+            break label191;
+            File localFile = new File(((aiua)localObject).b());
+            if (!paramBoolean)
+            {
+              if ((localFile.exists()) && (((aiua)localObject).b())) {}
+              for (int j = 1;; j = 0)
+              {
+                if (j == 0) {
+                  break label430;
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d("rscContent_CmShowRscDownloader", 2, "file exsit resType->" + m + " id->" + n);
+                }
+                paramString2.decrementAndGet();
+                break;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("rscContent_CmShowRscDownloader", 2, "file not exsit resType->" + m + " id->" + n);
+              }
+            }
+            if (!bbfj.g(BaseApplicationImpl.getContext()))
+            {
+              if (paramaiud != null) {
+                paramaiud.a(false, paramString1, paramList, "");
+              }
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes NetworkUtil.isNetworkAvailable is false!");
+              return;
+            }
+            localFile.getParentFile().mkdirs();
+            localObject = new bbwu(str, localFile);
+            ((bbwu)localObject).p = true;
+            ((bbwu)localObject).n = true;
+            ((bbwu)localObject).f = "apollo_res";
+            ((bbwu)localObject).b = 1;
+            ((bbwu)localObject).q = true;
+            ((bbwu)localObject).r = true;
+            paramAppInterface.a((bbwu)localObject, new aiuc(str, localFile, localAtomicInteger2, m, n, localAtomicInteger1, paramString2, paramaiud, localaiua, paramString1, paramList), null);
+          }
+        }
+      } while (paramString2.get() != 0);
+      if (paramaiud != null)
+      {
+        paramAppInterface = "";
+        if (localaiua != null) {
+          paramAppInterface = localaiua.c();
+        }
+        paramaiud.a(true, paramString1, paramList, paramAppInterface);
+      }
+    } while (!QLog.isColorLevel());
+    label430:
+    QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes local dress ok uin:" + paramString1 + ", all cnt: " + paramString2.get());
   }
 }
 

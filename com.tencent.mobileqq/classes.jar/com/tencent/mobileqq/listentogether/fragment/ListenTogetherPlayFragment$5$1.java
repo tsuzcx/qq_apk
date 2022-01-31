@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import bcpw;
+import bcql;
 
 class ListenTogetherPlayFragment$5$1
   implements Runnable
@@ -11,7 +11,7 @@ class ListenTogetherPlayFragment$5$1
   public void run()
   {
     if ((this.a.this$0.getActivity() != null) && (!this.a.this$0.getActivity().isFinishing())) {
-      bcpw.a(this.a.this$0.getActivity(), 2131694478, 1).a();
+      bcql.a(this.a.this$0.getActivity(), 2131694479, 1).a();
     }
   }
 }

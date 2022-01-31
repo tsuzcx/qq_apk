@@ -1,357 +1,198 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.2;
-import com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.3;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-public class alvg
+final class alvg
+  extends alsi
 {
-  private static int jdField_a_of_type_Int;
-  private static alvi jdField_a_of_type_Alvi;
-  private static Object jdField_a_of_type_JavaLangObject;
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new JSDebuggerSoLoader.3();
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<String, Pair<String, String>> jdField_a_of_type_JavaUtilMap;
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
+  alvg(String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  static
+  /* Error */
+  public void b(boolean paramBoolean, long paramLong, byte[] arg4)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public static String a()
-  {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = BaseApplicationImpl.getContext();
-      if (localObject == null) {
-        break label60;
-      }
-      localObject = ((Context)localObject).getFilesDir();
-      if (localObject != null) {
-        jdField_a_of_type_JavaLangString = ((File)localObject).getParent() + "/txlib/" + "arkdebugger/";
-      }
-    }
-    for (;;)
-    {
-      return jdField_a_of_type_JavaLangString;
-      label60:
-      QLog.w("JSDebuggerSoLoader", 2, "getLibDirPath but context is null");
-    }
-  }
-  
-  public static void a(int paramInt, alvi paramalvi)
-  {
-    try
-    {
-      c();
-      jdField_a_of_type_Alvi = paramalvi;
-      jdField_a_of_type_Int = paramInt;
-      ThreadManager.remove(jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.post(jdField_a_of_type_JavaLangRunnable, 5, null, true);
-      return;
-    }
-    finally
-    {
-      paramalvi = finally;
-      throw paramalvi;
-    }
-  }
-  
-  private static String b()
-  {
-    String str = a();
-    if (!TextUtils.isEmpty(str)) {
-      return str + "temp/";
-    }
-    return "";
-  }
-  
-  private static void b()
-  {
-    b = false;
-  }
-  
-  private static void b(int paramInt)
-  {
-    if (jdField_a_of_type_Alvi != null) {
-      jdField_a_of_type_Alvi.a(paramInt);
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        Object localObject = new File(paramString);
-        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
-        {
-          localObject = ((File)localObject).list();
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            File localFile = new File(paramString, localObject[i]);
-            if ((localFile.exists()) && (localFile.isFile())) {
-              localFile.delete();
-            }
-            i += 1;
-          }
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("JSDebuggerSoLoader", 1, paramString, new Object[0]);
-      }
-    }
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      ArkAppCenter.a(new JSDebuggerSoLoader.2(paramString1, paramString2));
-    }
-  }
-  
-  private static boolean b()
-  {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = true;
-    try
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_a_of_type_Boolean)
-        {
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.sync failed");
-          return bool1;
-        }
-        if (b)
-        {
-          b(2);
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.has succeed");
-          bool1 = true;
-        }
-      }
-      b(0);
-    }
-    finally {}
-    String str1 = a();
-    String str2 = b();
-    Object localObject5;
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
-    {
-      c(str1);
-      localObject5 = new File(str1 + "libarkDebuggerJSImpl.so");
-      if (((File)localObject5).exists())
-      {
-        QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.js debugger so exists:" + localObject5);
-        b(str1, "libarkDebuggerJSImpl.so");
-        b(2);
-        bool1 = bool2;
-        break label564;
-      }
-    }
-    label564:
-    for (;;)
-    {
-      b = bool1;
-      break;
-      localObject5 = (Pair)jdField_a_of_type_JavaUtilMap.get("");
-      if ((localObject5 != null) && (!TextUtils.isEmpty((CharSequence)((Pair)localObject5).second)))
-      {
-        c(str2);
-        String str3 = str2 + (String)((Pair)localObject5).second;
-        if ((new File(str3).exists()) && (b(str2, (String)((Pair)localObject5).second, (String)((Pair)localObject5).second, str1)))
-        {
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.testZipAndUnzip 1 succeed");
-          b(3);
-          b(str1, "libarkDebuggerJSImpl.so");
-          bool1 = true;
-          break label567;
-        }
-        if (!TextUtils.isEmpty((CharSequence)((Pair)localObject5).first))
-        {
-          ??? = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-          if (??? != null)
-          {
-            ??? = (ArkAppCenter)((QQAppInterface)???).getManager(121);
-            if (??? != null)
-            {
-              alsc localalsc = ((ArkAppCenter)???).a();
-              if (localalsc != null)
-              {
-                String str4 = (String)((Pair)localObject5).second;
-                b(str2);
-                for (;;)
-                {
-                  synchronized (jdField_a_of_type_JavaLangObject)
-                  {
-                    if (!jdField_a_of_type_Boolean)
-                    {
-                      b(1);
-                      localalsc.b((String)((Pair)localObject5).first, 0L, new alvh(str3, str2, str4, str1));
-                      jdField_a_of_type_Boolean = true;
-                      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.downloadArkJSDebugger");
-                      bool1 = true;
-                    }
-                  }
-                  QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.downloadArkJSDebugger.sync failed");
-                  bool1 = false;
-                }
-              }
-              QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.ArkAppCGI is null");
-              break label570;
-            }
-            QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.ArkAppCenter is null");
-            break label570;
-          }
-          QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.QQAppInterface is null");
-          break label570;
-        }
-        b(7);
-        QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.manage URL is null");
-        break label570;
-      }
-      b(7);
-      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.manage MD5 is null");
-      bool1 = false;
-      break label564;
-      b(9);
-      QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.necessary dir path is null");
-      bool1 = bool3;
-    }
-    for (;;)
-    {
-      label567:
-      break;
-      label570:
-      bool1 = false;
-    }
-  }
-  
-  private static boolean b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    int i;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4))) {
-      try
-      {
-        b(paramString4);
-        paramString2 = new File(paramString1 + paramString2);
-        if (paramString2.exists())
-        {
-          String str = bfjx.a(paramString2);
-          if ((!TextUtils.isEmpty(str)) && (str.equals(paramString3)))
-          {
-            bbdj.a(paramString2.getAbsolutePath(), paramString1, false);
-            paramString2 = new File(paramString1 + "libarkDebuggerJSImpl.so");
-            if ((paramString2 == null) || (!paramString2.exists())) {
-              break label406;
-            }
-            if (bbdj.d(paramString1 + "libarkDebuggerJSImpl.so", paramString4 + "libarkDebuggerJSImpl.so")) {
-              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile succeed:" + "libarkDebuggerJSImpl.so");
-            }
-            for (i = 0;; i = 1)
-            {
-              paramString2 = new File(paramString1 + "libjsc_ark.so");
-              if ((paramString2 == null) || (!paramString2.exists())) {
-                break label404;
-              }
-              if (!bbdj.d(paramString1 + "libjsc_ark.so", paramString4 + "libjsc_ark.so")) {
-                break;
-              }
-              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile succeed:" + "libjsc_ark.so");
-              break label412;
-              QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile failed:" + "libarkDebuggerJSImpl.so");
-            }
-            QLog.i("JSDebuggerSoLoader", 2, "testZipAndUnzip.copyFile failed:" + "libjsc_ark.so");
-            i = 1;
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("JSDebuggerSoLoader", 1, paramString1, new Object[0]);
-      }
-    }
-    label404:
-    label406:
-    label412:
-    do
-    {
-      return false;
-      i = 0;
-      break;
-    } while (i != 0);
-    return true;
-  }
-  
-  private static void c()
-  {
-    Object localObject1 = amqr.b(186).a();
-    if (localObject1 == null) {
-      ArkAppCenter.c("JSDebuggerSoLoader", "updateJSDebuggerConfig, confBean is null");
-    }
-    do
-    {
-      return;
-      localObject1 = ((amqn)localObject1).a();
-      if (localObject1 == null)
-      {
-        ArkAppCenter.c("JSDebuggerSoLoader", String.format("updateJSDebuggerConfig, aiKeywordConfig is null", new Object[0]));
-        return;
-      }
-      localObject1 = ((amre)localObject1).d;
-    } while (localObject1 == null);
-    jdField_a_of_type_JavaUtilMap.clear();
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (amrh)((Iterator)localObject1).next();
-      if (localObject2 != null)
-      {
-        String str1 = ((amrh)localObject2).jdField_a_of_type_JavaLangString;
-        String str2 = ((amrh)localObject2).b;
-        localObject2 = ((amrh)localObject2).c;
-        if ((str1 != null) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str2))) {
-          jdField_a_of_type_JavaUtilMap.put(str1, new Pair(str2, localObject2));
-        }
-      }
-    }
-    ArkAppCenter.c("JSDebuggerSoLoader", String.format("updateJSDebuggerConfig success.", new Object[0]));
-  }
-  
-  private static void c(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new File(paramString);
-      if (!paramString.exists()) {
-        paramString.mkdirs();
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("JSDebuggerSoLoader", 1, paramString, new Object[0]);
-    }
+    // Byte code:
+    //   0: iload_1
+    //   1: ifeq +271 -> 272
+    //   4: aload 4
+    //   6: ifnull +266 -> 272
+    //   9: aconst_null
+    //   10: astore 6
+    //   12: aconst_null
+    //   13: astore 7
+    //   15: aload 6
+    //   17: astore 5
+    //   19: new 30	java/io/File
+    //   22: dup
+    //   23: aload_0
+    //   24: getfield 13	alvg:a	Ljava/lang/String;
+    //   27: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;)V
+    //   30: astore 8
+    //   32: aload 6
+    //   34: astore 5
+    //   36: aload 8
+    //   38: invokevirtual 37	java/io/File:exists	()Z
+    //   41: ifeq +13 -> 54
+    //   44: aload 6
+    //   46: astore 5
+    //   48: aload 8
+    //   50: invokevirtual 40	java/io/File:delete	()Z
+    //   53: pop
+    //   54: aload 6
+    //   56: astore 5
+    //   58: aload 8
+    //   60: invokevirtual 43	java/io/File:createNewFile	()Z
+    //   63: pop
+    //   64: aload 6
+    //   66: astore 5
+    //   68: new 45	java/io/FileOutputStream
+    //   71: dup
+    //   72: aload 8
+    //   74: invokespecial 48	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   77: astore 6
+    //   79: aload 6
+    //   81: aload 4
+    //   83: invokevirtual 52	java/io/FileOutputStream:write	([B)V
+    //   86: aload 6
+    //   88: ifnull +8 -> 96
+    //   91: aload 6
+    //   93: invokevirtual 55	java/io/FileOutputStream:close	()V
+    //   96: aload_0
+    //   97: getfield 15	alvg:b	Ljava/lang/String;
+    //   100: aload_0
+    //   101: getfield 17	alvg:c	Ljava/lang/String;
+    //   104: aload_0
+    //   105: getfield 17	alvg:c	Ljava/lang/String;
+    //   108: aload_0
+    //   109: getfield 19	alvg:d	Ljava/lang/String;
+    //   112: invokestatic 60	alvf:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   115: ifeq +142 -> 257
+    //   118: iconst_4
+    //   119: invokestatic 63	alvf:a	(I)V
+    //   122: ldc 65
+    //   124: iconst_2
+    //   125: ldc 67
+    //   127: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   130: aload_0
+    //   131: getfield 19	alvg:d	Ljava/lang/String;
+    //   134: ldc 75
+    //   136: invokestatic 78	alvf:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   139: invokestatic 81	alvf:a	()Ljava/lang/Object;
+    //   142: astore 4
+    //   144: aload 4
+    //   146: monitorenter
+    //   147: iconst_0
+    //   148: invokestatic 84	alvf:a	(Z)Z
+    //   151: pop
+    //   152: aload 4
+    //   154: monitorexit
+    //   155: return
+    //   156: astore 4
+    //   158: ldc 65
+    //   160: iconst_1
+    //   161: aload 4
+    //   163: iconst_0
+    //   164: anewarray 86	java/lang/Object
+    //   167: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   170: goto -74 -> 96
+    //   173: astore 6
+    //   175: aload 7
+    //   177: astore 4
+    //   179: aload 4
+    //   181: astore 5
+    //   183: ldc 65
+    //   185: iconst_1
+    //   186: aload 6
+    //   188: iconst_0
+    //   189: anewarray 86	java/lang/Object
+    //   192: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   195: aload 4
+    //   197: ifnull -101 -> 96
+    //   200: aload 4
+    //   202: invokevirtual 55	java/io/FileOutputStream:close	()V
+    //   205: goto -109 -> 96
+    //   208: astore 4
+    //   210: ldc 65
+    //   212: iconst_1
+    //   213: aload 4
+    //   215: iconst_0
+    //   216: anewarray 86	java/lang/Object
+    //   219: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   222: goto -126 -> 96
+    //   225: astore 4
+    //   227: aload 5
+    //   229: ifnull +8 -> 237
+    //   232: aload 5
+    //   234: invokevirtual 55	java/io/FileOutputStream:close	()V
+    //   237: aload 4
+    //   239: athrow
+    //   240: astore 5
+    //   242: ldc 65
+    //   244: iconst_1
+    //   245: aload 5
+    //   247: iconst_0
+    //   248: anewarray 86	java/lang/Object
+    //   251: invokestatic 90	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   254: goto -17 -> 237
+    //   257: iconst_5
+    //   258: invokestatic 63	alvf:a	(I)V
+    //   261: ldc 65
+    //   263: iconst_2
+    //   264: ldc 92
+    //   266: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: goto -130 -> 139
+    //   272: bipush 6
+    //   274: invokestatic 63	alvf:a	(I)V
+    //   277: ldc 65
+    //   279: iconst_2
+    //   280: ldc 94
+    //   282: invokestatic 73	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   285: goto -146 -> 139
+    //   288: astore 5
+    //   290: aload 4
+    //   292: monitorexit
+    //   293: aload 5
+    //   295: athrow
+    //   296: astore 4
+    //   298: aload 6
+    //   300: astore 5
+    //   302: goto -75 -> 227
+    //   305: astore 5
+    //   307: aload 6
+    //   309: astore 4
+    //   311: aload 5
+    //   313: astore 6
+    //   315: goto -136 -> 179
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	318	0	this	alvg
+    //   0	318	1	paramBoolean	boolean
+    //   0	318	2	paramLong	long
+    //   17	216	5	localObject1	java.lang.Object
+    //   240	6	5	localIOException	java.io.IOException
+    //   288	6	5	localObject2	java.lang.Object
+    //   300	1	5	localException1	java.lang.Exception
+    //   305	7	5	localException2	java.lang.Exception
+    //   10	82	6	localFileOutputStream	java.io.FileOutputStream
+    //   173	135	6	localException3	java.lang.Exception
+    //   313	1	6	localObject3	java.lang.Object
+    //   13	163	7	localObject4	java.lang.Object
+    //   30	43	8	localFile	java.io.File
+    // Exception table:
+    //   from	to	target	type
+    //   91	96	156	java/io/IOException
+    //   19	32	173	java/lang/Exception
+    //   36	44	173	java/lang/Exception
+    //   48	54	173	java/lang/Exception
+    //   58	64	173	java/lang/Exception
+    //   68	79	173	java/lang/Exception
+    //   200	205	208	java/io/IOException
+    //   19	32	225	finally
+    //   36	44	225	finally
+    //   48	54	225	finally
+    //   58	64	225	finally
+    //   68	79	225	finally
+    //   183	195	225	finally
+    //   232	237	240	java/io/IOException
+    //   147	155	288	finally
+    //   290	293	288	finally
+    //   79	86	296	finally
+    //   79	86	305	java/lang/Exception
   }
 }
 

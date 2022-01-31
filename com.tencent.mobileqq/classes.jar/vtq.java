@@ -1,6 +1,6 @@
 public abstract interface vtq
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.gdtad.util;
 
+import yyx;
+import yyy;
 import yza;
-import yzb;
-import yzd;
 
 public class GdtUserInfoAuthorizationHelper$1$1
   implements Runnable
 {
-  public GdtUserInfoAuthorizationHelper$1$1(yzb paramyzb, boolean paramBoolean, yzd paramyzd) {}
+  public GdtUserInfoAuthorizationHelper$1$1(yyy paramyyy, boolean paramBoolean, yza paramyza) {}
   
   public void run()
   {
-    yza.a(this.jdField_a_of_type_Yzb.jdField_a_of_type_Yza, this.jdField_a_of_type_Yzb.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Yzd, this.jdField_a_of_type_Yzb.jdField_a_of_type_Yzc, this.jdField_a_of_type_Yzb.jdField_a_of_type_JavaUtilList);
+    yyx.a(this.jdField_a_of_type_Yyy.jdField_a_of_type_Yyx, this.jdField_a_of_type_Yyy.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Yza, this.jdField_a_of_type_Yyy.jdField_a_of_type_Yyz, this.jdField_a_of_type_Yyy.jdField_a_of_type_JavaUtilList);
   }
 }
 

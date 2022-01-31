@@ -1,166 +1,57 @@
-import UserGrowth.downloadConfig;
-import UserGrowth.stGlobalConfig;
-import UserGrowth.stLinkConfig;
 import android.text.TextUtils;
-import cooperation.qzone.LocalMultiProcConfig;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class skb
 {
-  private stGlobalConfig a;
+  public skd a;
+  public ske a;
+  
+  public skb()
+  {
+    this.jdField_a_of_type_Ske = new ske(null);
+    this.jdField_a_of_type_Skd = new skd(null);
+  }
+  
+  private static JSONObject a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        return paramString;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return null;
+  }
   
   public static skb a()
   {
-    return skd.a();
+    return (skb)ampl.a().a(447);
   }
   
-  private boolean f()
+  public void a(String paramString)
   {
-    return (this.a == null) || (this.a.linkConfig == null);
-  }
-  
-  private boolean g()
-  {
-    return (this.a == null) || (this.a.download == null);
-  }
-  
-  public int a()
-  {
-    if (this.a != null) {
-      return this.a.link_strategy_type;
+    snb.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
+    paramString = a(paramString);
+    if (paramString == null) {
+      return;
     }
-    return 1;
+    this.jdField_a_of_type_Ske = ske.a(paramString.optJSONObject("video_plugin_threshold"));
+    this.jdField_a_of_type_Skd = skd.a(paramString.optJSONObject("trends_tab_strategy"));
   }
   
-  public stGlobalConfig a()
+  public String toString()
   {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    if (!g()) {
-      return this.a.download.packageName;
+    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Ske).append(", mStrategyConfig=");
+    if (this.jdField_a_of_type_Skd != null) {}
+    for (String str = this.jdField_a_of_type_Skd.a;; str = "null") {
+      return str + '}';
     }
-    return "";
-  }
-  
-  public void a(stGlobalConfig paramstGlobalConfig)
-  {
-    this.a = paramstGlobalConfig;
-    sne.d("WSGlobalConfigLog", "initGlobalConfig globalConfig:" + paramstGlobalConfig);
-  }
-  
-  public boolean a()
-  {
-    return (this.a == null) || (this.a.open_4g_autodownload != 0);
-  }
-  
-  public int b()
-  {
-    if (!f()) {
-      return this.a.linkConfig.callCount;
-    }
-    return 10000;
-  }
-  
-  public String b()
-  {
-    if (!g()) {
-      return this.a.download.downloadUrl;
-    }
-    return "";
-  }
-  
-  public boolean b()
-  {
-    if (!f()) {
-      return this.a.linkConfig.isOpenVideoPage;
-    }
-    return true;
-  }
-  
-  public int c()
-  {
-    if (!f()) {
-      return this.a.linkConfig.downloadCount;
-    }
-    return 10000;
-  }
-  
-  public String c()
-  {
-    if (!g()) {
-      return this.a.download.preloadDownloadUrl;
-    }
-    return "";
-  }
-  
-  public boolean c()
-  {
-    return (!g()) && (this.a.download.preload);
-  }
-  
-  public int d()
-  {
-    if (!g()) {
-      return this.a.download.vendorId;
-    }
-    return 0;
-  }
-  
-  public String d()
-  {
-    if (!g())
-    {
-      if (TextUtils.isEmpty(this.a.download.qqDownloadUrl))
-      {
-        this.a.download.qqDownloadUrl = (skq.a() + "&versioncode=" + e());
-        sne.c("WeishiDownloadUtil", "服务器下发QQDownloadUrl失败，使用默认的:" + this.a.download.qqDownloadUrl);
-      }
-      sne.d("WeishiDownloadUtil", "服务器下发QQDownloadUrl: " + this.a.download.qqDownloadUrl);
-      return this.a.download.qqDownloadUrl;
-    }
-    return skq.a();
-  }
-  
-  public boolean d()
-  {
-    return (!g()) && (this.a.download.appStoreSwitch);
-  }
-  
-  public int e()
-  {
-    if (!g()) {
-      return this.a.download.versionCode;
-    }
-    return 0;
-  }
-  
-  public String e()
-  {
-    if ((this.a != null) && (!TextUtils.isEmpty(this.a.encrypted_deviceid)))
-    {
-      LocalMultiProcConfig.putString("weishi_usergrowth", "encryptedDeviceId", this.a.encrypted_deviceid);
-      str = this.a.encrypted_deviceid;
-      sne.a("WSGlobalConfigLog", "LocalMultiProcConfig save encrypted_deviceid:" + str);
-      return str;
-    }
-    String str = LocalMultiProcConfig.getString("weishi_usergrowth", "encryptedDeviceId", "");
-    sne.a("WSGlobalConfigLog", "LocalMultiProcConfig load encrypted_deviceid:" + str);
-    return str;
-  }
-  
-  public boolean e()
-  {
-    return (!g()) && (this.a.download.enableRock);
-  }
-  
-  public int f()
-  {
-    if (this.a != null) {
-      return this.a.cache_size;
-    }
-    return 14;
   }
 }
 

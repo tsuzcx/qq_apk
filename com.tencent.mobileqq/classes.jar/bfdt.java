@@ -1,26 +1,11 @@
-import android.os.SystemClock;
-
-class bfdt
-  implements bfax
+public abstract interface bfdt
+  extends behp
 {
-  long jdField_a_of_type_Long;
+  public abstract int a();
   
-  bfdt(bfds parambfds, bfco parambfco, long paramLong) {}
+  public abstract void a(bekp parambekp);
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bfco != null) {}
-    for (bfaz localbfaz = this.jdField_a_of_type_Bfco.a();; localbfaz = null)
-    {
-      if ((localbfaz != null) && (localbfaz == this.jdField_a_of_type_Bfco.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbfaz != null) && (localbfaz == this.jdField_a_of_type_Bfco.e)) {
-        this.jdField_a_of_type_Bfds.a(this.jdField_a_of_type_Bfco, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
-    }
-  }
+  public abstract void a(bfdu parambfdu);
 }
 
 

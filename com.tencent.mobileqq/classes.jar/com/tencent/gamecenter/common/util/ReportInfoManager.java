@@ -1,15 +1,15 @@
 package com.tencent.gamecenter.common.util;
 
-import ajae;
-import ajdq;
+import ajac;
+import ajdo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbqp;
-import bcxm;
+import bbrd;
+import bcyb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.gamecenter.http.utils.AsyncHttpConnection;
@@ -19,10 +19,10 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import yok;
+import yol;
+import yom;
 import yon;
-import yoo;
-import yop;
-import yoq;
 
 public class ReportInfoManager
 {
@@ -34,7 +34,7 @@ public class ReportInfoManager
   private static final String REPORT_INFO = "report_info";
   private static final String SHAREDPREFERENCES_NAME = "gamecenter_preferences";
   private static ReportInfoManager instance;
-  private ArrayList<yop> reportAdInfoList = new ArrayList();
+  private ArrayList<yom> reportAdInfoList = new ArrayList();
   
   public static ReportInfoManager getInstance()
   {
@@ -53,11 +53,11 @@ public class ReportInfoManager
   
   public void addReportInfo(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    yop localyop = new yop();
-    localyop.jdField_a_of_type_JavaLangString = paramString1;
-    localyop.jdField_b_of_type_JavaLangString = paramString2;
-    localyop.jdField_c_of_type_JavaLangString = paramString3;
-    this.reportAdInfoList.add(localyop);
+    yom localyom = new yom();
+    localyom.jdField_a_of_type_JavaLangString = paramString1;
+    localyom.jdField_b_of_type_JavaLangString = paramString2;
+    localyom.jdField_c_of_type_JavaLangString = paramString3;
+    this.reportAdInfoList.add(localyom);
     saveReportInfo(paramContext);
   }
   
@@ -77,11 +77,11 @@ public class ReportInfoManager
             try
             {
               JSONObject localJSONObject = paramString.getJSONObject(i);
-              yop localyop = new yop();
-              localyop.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
-              localyop.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
-              localyop.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
-              this.reportAdInfoList.add(localyop);
+              yom localyom = new yom();
+              localyom.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
+              localyom.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
+              localyom.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
+              this.reportAdInfoList.add(localyom);
               i += 1;
             }
             catch (JSONException localJSONException)
@@ -114,11 +114,11 @@ public class ReportInfoManager
       Iterator localIterator = this.reportAdInfoList.iterator();
       while (localIterator.hasNext())
       {
-        yop localyop = (yop)localIterator.next();
+        yom localyom = (yom)localIterator.next();
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("appid", localyop.jdField_a_of_type_JavaLangString);
-        localJSONObject2.put("actionname", localyop.jdField_b_of_type_JavaLangString);
-        localJSONObject2.put("timestamp", localyop.jdField_c_of_type_JavaLangString);
+        localJSONObject2.put("appid", localyom.jdField_a_of_type_JavaLangString);
+        localJSONObject2.put("actionname", localyom.jdField_b_of_type_JavaLangString);
+        localJSONObject2.put("timestamp", localyom.jdField_c_of_type_JavaLangString);
         localJSONArray.put(localJSONObject2);
         continue;
         return localJSONObject1.toString();
@@ -142,63 +142,63 @@ public class ReportInfoManager
     this.reportAdInfoList.clear();
   }
   
-  public String convertInfoObjectToJson(yoq paramyoq)
+  public String convertInfoObjectToJson(yon paramyon)
   {
-    if (paramyoq == null) {
+    if (paramyon == null) {
       return "{}";
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uin", paramyoq.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("entrance_status", paramyoq.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("gamecenter_src", paramyoq.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("oper_moudle", paramyoq.jdField_a_of_type_Int);
-      localJSONObject.put("module_type", paramyoq.jdField_b_of_type_Int);
-      localJSONObject.put("oper_id", paramyoq.jdField_c_of_type_Int);
-      localJSONObject.put("sq_ver", paramyoq.d);
-      localJSONObject.put("gamecenter_ver", paramyoq.e);
-      localJSONObject.put("device_type", paramyoq.f);
-      localJSONObject.put("net_type", paramyoq.g);
-      localJSONObject.put("resolution", paramyoq.h);
-      localJSONObject.put("ret_id", paramyoq.i);
+      localJSONObject.put("uin", paramyon.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("entrance_status", paramyon.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("gamecenter_src", paramyon.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("oper_moudle", paramyon.jdField_a_of_type_Int);
+      localJSONObject.put("module_type", paramyon.jdField_b_of_type_Int);
+      localJSONObject.put("oper_id", paramyon.jdField_c_of_type_Int);
+      localJSONObject.put("sq_ver", paramyon.d);
+      localJSONObject.put("gamecenter_ver", paramyon.e);
+      localJSONObject.put("device_type", paramyon.f);
+      localJSONObject.put("net_type", paramyon.g);
+      localJSONObject.put("resolution", paramyon.h);
+      localJSONObject.put("ret_id", paramyon.i);
       return localJSONObject.toString();
     }
-    catch (JSONException paramyoq)
+    catch (JSONException paramyon)
     {
       for (;;)
       {
-        paramyoq.printStackTrace();
+        paramyon.printStackTrace();
       }
     }
   }
   
-  public yoq genClickReportInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public yon genClickReportInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    yoq localyoq = new yoq();
-    localyoq.jdField_a_of_type_JavaLangString = paramString1;
-    localyoq.jdField_b_of_type_JavaLangString = paramString2;
-    localyoq.f = Build.MODEL;
-    localyoq.jdField_c_of_type_JavaLangString = "1";
-    localyoq.e = paramString3;
-    localyoq.jdField_b_of_type_Int = 108;
-    localyoq.g = paramString4;
-    localyoq.jdField_c_of_type_Int = 16001;
-    localyoq.jdField_a_of_type_Int = 1;
-    localyoq.h = paramString5;
-    localyoq.d = bcxm.a().d();
-    return localyoq;
+    yon localyon = new yon();
+    localyon.jdField_a_of_type_JavaLangString = paramString1;
+    localyon.jdField_b_of_type_JavaLangString = paramString2;
+    localyon.f = Build.MODEL;
+    localyon.jdField_c_of_type_JavaLangString = "1";
+    localyon.e = paramString3;
+    localyon.jdField_b_of_type_Int = 108;
+    localyon.g = paramString4;
+    localyon.jdField_c_of_type_Int = 16001;
+    localyon.jdField_a_of_type_Int = 1;
+    localyon.h = paramString5;
+    localyon.d = bcyb.a().d();
+    return localyon;
   }
   
-  public void postClickReportInfo(yoq paramyoq)
+  public void postClickReportInfo(yon paramyon)
   {
-    if (paramyoq == null) {
+    if (paramyon == null) {
       return;
     }
-    paramyoq = convertInfoObjectToJson(paramyoq);
-    long l = paramyoq.getBytes().length;
+    paramyon = convertInfoObjectToJson(paramyon);
+    long l = paramyon.getBytes().length;
     String str = String.format("https://report.gamecenter.qq.com/cgi-bin/gc_pg_act_fcgi?appid=%1$s&tt=1&osv=%2$s", new Object[] { Integer.valueOf(AppSetting.a()), Build.VERSION.RELEASE });
-    new AsyncHttpConnection(new yon(this, l)).a(str, paramyoq);
+    new AsyncHttpConnection(new yok(this, l)).a(str, paramyon);
   }
   
   public String readReportInfo(Context paramContext)
@@ -206,24 +206,24 @@ public class ReportInfoManager
     return paramContext.getSharedPreferences("gamecenter_preferences", 0).getString("report_info", "");
   }
   
-  public void reportGameCenterChannel(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, yoo paramyoo)
+  public void reportGameCenterChannel(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, yol paramyol)
   {
-    paramyoo = new ReportInfoManager.ReportChannlInfo();
-    paramyoo.channel_id = paramString2;
-    paramyoo.pos_id = paramString3;
-    paramyoo.pos_name = paramString4;
-    paramyoo.resource_id = paramString5;
-    paramyoo.schedule_id = paramString6;
-    paramyoo.appid = paramString7;
-    paramyoo.oper_type = paramInt;
-    paramyoo.act_id = paramString1;
-    paramString1 = ajae.a();
+    paramyol = new ReportInfoManager.ReportChannlInfo();
+    paramyol.channel_id = paramString2;
+    paramyol.pos_id = paramString3;
+    paramyol.pos_name = paramString4;
+    paramyol.resource_id = paramString5;
+    paramyol.schedule_id = paramString6;
+    paramyol.appid = paramString7;
+    paramyol.oper_type = paramInt;
+    paramyol.act_id = paramString1;
+    paramString1 = ajac.a();
     if ((paramString1 instanceof QQAppInterface))
     {
-      ((bbqp)paramString1.getBusinessHandler(71)).a(paramyoo);
+      ((bbrd)paramString1.getBusinessHandler(71)).a(paramyol);
       return;
     }
-    ((ajdq)ajae.a().getBusinessHandler(0)).a(paramyoo);
+    ((ajdo)ajac.a().getBusinessHandler(0)).a(paramyol);
   }
 }
 

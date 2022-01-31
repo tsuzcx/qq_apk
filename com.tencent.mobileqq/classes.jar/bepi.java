@@ -1,4 +1,7 @@
-public class bepi {}
+public abstract interface bepi
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar

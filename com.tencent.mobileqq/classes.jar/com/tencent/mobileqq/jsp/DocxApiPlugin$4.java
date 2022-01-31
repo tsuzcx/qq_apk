@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.jsp;
 
-import armi;
-import ayfe;
+import armk;
+import ayfg;
 
 public class DocxApiPlugin$4
   implements Runnable
 {
-  public DocxApiPlugin$4(armi paramarmi, String paramString) {}
+  public DocxApiPlugin$4(armk paramarmk, String paramString) {}
   
   public void run()
   {
-    ayfe.a(this.a);
+    ayfg.a(this.a);
   }
 }
 

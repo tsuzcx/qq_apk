@@ -1,47 +1,139 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class bfep
 {
-  private int jdField_a_of_type_Int;
-  private final float[] jdField_a_of_type_ArrayOfFloat;
-  
-  public bfep(int paramInt)
+  public static int a(Date paramDate)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[paramInt];
+    if (paramDate == null) {
+      return -1;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTime(paramDate);
+    return localCalendar.get(11);
   }
   
-  public float a()
+  public static long a(String paramString)
   {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfFloat.length) {}
-    for (int i = this.jdField_a_of_type_Int; i == 0; i = this.jdField_a_of_type_ArrayOfFloat.length) {
-      return 0.0F;
-    }
-    int j = 0;
-    float f1 = 0.0F;
-    while (j < i)
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    try
     {
-      f1 += this.jdField_a_of_type_ArrayOfFloat[j];
-      j += 1;
+      long l = localSimpleDateFormat.parse(paramString).getTime();
+      return l;
     }
-    float f2 = f1 / i;
-    f1 = 0.0F;
-    j = 0;
-    while (j < i)
+    catch (ParseException paramString)
     {
-      float f3 = this.jdField_a_of_type_ArrayOfFloat[j] - f2;
-      f1 += f3 * f3;
-      j += 1;
+      paramString.printStackTrace();
     }
-    return f1 / i;
+    return 0L;
   }
   
-  public void a()
+  public static Date a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH:mm");
+    try
+    {
+      paramString = localSimpleDateFormat.parse(paramString);
+      return paramString;
+    }
+    catch (ParseException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public void a(float paramFloat)
+  public static int b(Date paramDate)
   {
-    this.jdField_a_of_type_ArrayOfFloat[(this.jdField_a_of_type_Int % this.jdField_a_of_type_ArrayOfFloat.length)] = paramFloat;
-    this.jdField_a_of_type_Int += 1;
+    if (paramDate == null) {
+      return -1;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTime(paramDate);
+    return localCalendar.get(12);
+  }
+  
+  public static Date b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    SimpleDateFormat localSimpleDateFormat;
+    if (paramString.length() >= 10) {
+      if (Pattern.compile(MiniAppEnv.g().getContext().getResources().getString(2131694205)).matcher(paramString).matches()) {
+        localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+      }
+    }
+    for (;;)
+    {
+      if (localSimpleDateFormat == null)
+      {
+        return null;
+        localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        continue;
+        if (paramString.length() >= 7)
+        {
+          localSimpleDateFormat = new SimpleDateFormat("yyyy-MM");
+          continue;
+        }
+        if (paramString.length() >= 4) {
+          localSimpleDateFormat = new SimpleDateFormat("yyyy");
+        }
+      }
+      else
+      {
+        try
+        {
+          paramString = localSimpleDateFormat.parse(paramString);
+          return paramString;
+        }
+        catch (ParseException paramString)
+        {
+          paramString.printStackTrace();
+          betc.d("DateUtils", "getDateByStrTime exception." + paramString);
+          return null;
+        }
+      }
+      localSimpleDateFormat = null;
+    }
+  }
+  
+  public static int c(Date paramDate)
+  {
+    if (paramDate == null) {
+      return -1;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTime(paramDate);
+    return localCalendar.get(1);
+  }
+  
+  public static int d(Date paramDate)
+  {
+    if (paramDate == null) {
+      return -1;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTime(paramDate);
+    return localCalendar.get(2);
+  }
+  
+  public static int e(Date paramDate)
+  {
+    if (paramDate == null) {
+      return -1;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTime(paramDate);
+    return localCalendar.get(5);
   }
 }
 

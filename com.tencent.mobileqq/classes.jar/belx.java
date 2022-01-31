@@ -1,4 +1,9 @@
-public abstract interface belx {}
+public abstract interface belx
+{
+  public abstract void onSoftKeyboardClosed();
+  
+  public abstract void onSoftKeyboardOpened(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
+import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
 
 public final class npg
-  implements Parcelable.Creator<VideoInfo.ChannelInfo>
+  implements Parcelable.Creator<VideoInfo.ECommerceEntranceInfo>
 {
-  public VideoInfo.ChannelInfo a(Parcel paramParcel)
+  public VideoInfo.ECommerceEntranceInfo a(Parcel paramParcel)
   {
-    return new VideoInfo.ChannelInfo(paramParcel);
+    return new VideoInfo.ECommerceEntranceInfo(paramParcel);
   }
   
-  public VideoInfo.ChannelInfo[] a(int paramInt)
+  public VideoInfo.ECommerceEntranceInfo[] a(int paramInt)
   {
-    return new VideoInfo.ChannelInfo[paramInt];
+    return new VideoInfo.ECommerceEntranceInfo[paramInt];
   }
 }
 

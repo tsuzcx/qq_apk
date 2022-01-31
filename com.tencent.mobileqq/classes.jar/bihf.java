@@ -1,11 +1,13 @@
-import android.content.DialogInterface;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-final class bihf
-  extends bbdf
+public class bihf
+  implements bkwn
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bihf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    QIMEffectCameraCaptureUnit.d(this.a);
   }
 }
 

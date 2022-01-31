@@ -1,427 +1,497 @@
+import EncounterSvc.RespEncounterInfo;
+import EncounterSvc.RishState;
+import QQService.VipBaseInfo;
+import QQService.VipOpenInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard.NearbyMyTabConfig;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard.NearbyMyTabConfigExtraVal;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper.1;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper.2;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SingleLineTextView;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class atyq
+  implements View.OnClickListener, baxz
 {
-  private static Object a;
-  public static final HashMap a;
-  public static final String[] a;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+  View jdField_a_of_type_AndroidViewView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  aweq jdField_a_of_type_Aweq;
+  public baxy a;
+  HashMap<Long, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  HashMap<Long, Boolean> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  int c = 0;
   
-  static
+  public atyq(Context paramContext)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    NearbyMyTabCard.NearbyMyTabConfigExtraVal localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100511";
-    localNearbyMyTabConfigExtraVal.pathId = 100511;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10001), localNearbyMyTabConfigExtraVal);
-    localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100514";
-    localNearbyMyTabConfigExtraVal.pathId = 100514;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10002), localNearbyMyTabConfigExtraVal);
-    localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100520";
-    localNearbyMyTabConfigExtraVal.pathId = 100520;
-    localNearbyMyTabConfigExtraVal.actionName = "0X80049F3";
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10003), localNearbyMyTabConfigExtraVal);
-    localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100521";
-    localNearbyMyTabConfigExtraVal.pathId = 100521;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10004), localNearbyMyTabConfigExtraVal);
-    localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100517";
-    localNearbyMyTabConfigExtraVal.pathId = 100517;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10005), localNearbyMyTabConfigExtraVal);
-    localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100513";
-    localNearbyMyTabConfigExtraVal.pathId = 100513;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10006), localNearbyMyTabConfigExtraVal);
-    localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
-    localNearbyMyTabConfigExtraVal.path = "100510.100524";
-    localNearbyMyTabConfigExtraVal.pathId = 100524;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10010), localNearbyMyTabConfigExtraVal);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "100510.100511", "100510.100513", "100510.100514", "100510.100519", "100510.100521", "100510.100520", "100510.100516", "100510.100517", "100510.100524", "100510.100523" };
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560898, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372168));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377413));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Baxy = new baxy(this.jdField_a_of_type_AndroidContentContext, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app);
+    this.jdField_a_of_type_Baxy.a(this);
+    this.jdField_a_of_type_Aweq = ((aweq)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.getManager(15));
+    paramContext = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getString("key_nearbyrecommender_title", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694571));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext);
+    }
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, int paramInt)
+  public static void a(VipBaseInfo paramVipBaseInfo, ImageView paramImageView, SingleLineTextView paramSingleLineTextView)
   {
-    if (paramQQAppInterface == null) {
-      return 0;
-    }
-    int i;
-    switch (paramInt)
+    paramImageView.setVisibility(8);
+    paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131166915));
+    VipOpenInfo localVipOpenInfo;
+    if ((paramVipBaseInfo != null) && (paramVipBaseInfo.mOpenInfo != null))
     {
-    default: 
-      i = 0;
-    case 100511: 
-    case 100519: 
-      for (;;)
+      localVipOpenInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(7));
+      if ((localVipOpenInfo == null) || (!localVipOpenInfo.bOpen)) {
+        break label84;
+      }
+      paramImageView.setVisibility(0);
+      paramImageView.setImageResource(2130849373);
+      paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131166984));
+    }
+    label84:
+    do
+    {
+      return;
+      localVipOpenInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(3));
+      if ((localVipOpenInfo != null) && (localVipOpenInfo.bOpen))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("NewNearbyMyTab", 2, "getUnCountByPathID|pathId=" + paramInt + " unreadCount=" + i);
+        paramImageView.setVisibility(0);
+        paramImageView.setImageResource(2130849373);
+        paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131166984));
+        return;
+      }
+      paramVipBaseInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(1));
+    } while ((paramVipBaseInfo == null) || (!paramVipBaseInfo.bOpen));
+    paramImageView.setVisibility(0);
+    paramImageView.setImageResource(2130849654);
+    paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131166984));
+  }
+  
+  private void a(SingleLineTextView paramSingleLineTextView, int paramInt)
+  {
+    bcry localbcry = new bcry(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Aweq.a(paramInt, 200), false, false);
+    if (this.c == 0) {
+      this.c = ((int)(paramSingleLineTextView.a() * 1.1F + 0.5F));
+    }
+    localbcry.setBounds(0, 0, this.c, this.c);
+    paramSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(localbcry, null);
+  }
+  
+  private void a(SingleLineTextView paramSingleLineTextView, RespEncounterInfo paramRespEncounterInfo)
+  {
+    RichStatus localRichStatus;
+    if (paramRespEncounterInfo.richState != null)
+    {
+      localRichStatus = RichStatus.parseStatus(paramRespEncounterInfo.richState.vState);
+      localRichStatus.time = paramRespEncounterInfo.richState.uModifyTime;
+    }
+    for (paramRespEncounterInfo = localRichStatus;; paramRespEncounterInfo = null)
+    {
+      if ((paramRespEncounterInfo != null) && (!paramRespEncounterInfo.isEmpty()))
+      {
+        if (!TextUtils.isEmpty(paramRespEncounterInfo.actionText)) {
+          a(paramSingleLineTextView, paramRespEncounterInfo.actionId);
         }
-        return i;
-        j = atbg.a(paramQQAppInterface.getAccount(), "unread_count_date");
-        i = j;
-        if (QLog.isColorLevel())
+        for (;;)
         {
-          atbp.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "dating", Integer.valueOf(j) });
-          i = j;
-          continue;
-          j = atbg.a(paramQQAppInterface.getAccount(), "unread_count_freshnews");
-          i = j;
-          if (QLog.isColorLevel())
+          this.jdField_b_of_type_Int = paramRespEncounterInfo.actionId;
+          paramSingleLineTextView.setText(paramRespEncounterInfo.toSpannableString(null));
+          paramSingleLineTextView.setVisibility(0);
+          return;
+          paramSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+        }
+      }
+      this.jdField_b_of_type_Int = 0;
+      paramSingleLineTextView.setVisibility(8);
+      return;
+    }
+  }
+  
+  public View a(RespEncounterInfo paramRespEncounterInfo)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559321, null);
+    if ((localView != null) && (paramRespEncounterInfo != null))
+    {
+      localView.setTag(paramRespEncounterInfo);
+      localView.setOnClickListener(this);
+      a(localView, paramRespEncounterInfo);
+    }
+    return localView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Baxy != null) {
+      this.jdField_a_of_type_Baxy.d();
+    }
+  }
+  
+  public void a(RespEncounterInfo paramRespEncounterInfo, ImageView paramImageView)
+  {
+    String str;
+    Boolean localBoolean;
+    try
+    {
+      if (paramRespEncounterInfo.tiny_id > 0L)
+      {
+        str = String.valueOf(paramRespEncounterInfo.tiny_id);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramRespEncounterInfo.tiny_id));
+          if ((localBoolean == null) || (!localBoolean.booleanValue()))
           {
-            atbp.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "freshnews", Integer.valueOf(j) });
-            i = j;
+            this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramRespEncounterInfo.tiny_id), Boolean.valueOf(true));
+            ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.a(new ChatPushCarrierHelper.1(this, str, paramRespEncounterInfo));
           }
         }
+        paramRespEncounterInfo = this.jdField_a_of_type_Baxy.a(32, str, 202);
+        if (paramRespEncounterInfo == null)
+        {
+          if (!this.jdField_a_of_type_Baxy.a()) {
+            this.jdField_a_of_type_Baxy.a(str, 202, true, false);
+          }
+          if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
+            this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)bbef.a());
+          }
+          paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+          return;
+        }
+        paramImageView.setImageBitmap(paramRespEncounterInfo);
+        return;
       }
     }
-    if (atbg.a(paramQQAppInterface.getAccount(), "unread_count_rank") > 0) {}
-    for (int j = 1;; j = 0)
+    catch (Throwable paramRespEncounterInfo)
     {
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
+      paramRespEncounterInfo.printStackTrace();
+      return;
+    }
+    if (paramRespEncounterInfo.lEctID > 0L)
+    {
+      str = String.valueOf(paramRespEncounterInfo.lEctID);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localBoolean = (Boolean)this.jdField_b_of_type_JavaUtilHashMap.get(Long.valueOf(paramRespEncounterInfo.lEctID));
+        if ((localBoolean == null) || (!localBoolean.booleanValue()))
+        {
+          this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramRespEncounterInfo.lEctID), Boolean.valueOf(true));
+          ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.a(new ChatPushCarrierHelper.2(this, str, paramRespEncounterInfo));
+        }
       }
-      atbp.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "ranking", Integer.valueOf(j) });
-      i = j;
-      break;
+      paramRespEncounterInfo = this.jdField_a_of_type_Baxy.a(32, str, 200);
+      if (paramRespEncounterInfo == null)
+      {
+        this.jdField_a_of_type_Baxy.a(str, 200, true, false);
+        if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
+          this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)bbef.a());
+        }
+        paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+        return;
+      }
+      paramImageView.setImageBitmap(paramRespEncounterInfo);
     }
   }
   
-  public static NearbyMyTabCard a(AppInterface paramAppInterface)
+  public void a(View paramView, RespEncounterInfo paramRespEncounterInfo)
   {
-    if (paramAppInterface == null) {
-      return null;
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131367679);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131377033);
+    Object localObject4 = (ImageView)paramView.findViewById(2131362877);
+    ImageView localImageView5 = (ImageView)paramView.findViewById(2131368040);
+    Object localObject1 = (TextView)paramView.findViewById(2131377099);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131379272);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131364956);
+    Object localObject2 = (SingleLineTextView)paramView.findViewById(2131377293);
+    Object localObject3 = paramView.findViewById(2131368672);
+    TextView localTextView = (TextView)paramView.findViewById(2131370777);
+    ImageView localImageView3 = (ImageView)paramView.findViewById(2131371460);
+    ImageView localImageView4 = (ImageView)paramView.findViewById(2131364059);
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131375759);
+    View localView = paramView.findViewById(2131368743);
+    paramView = (SingleLineTextView)paramView.findViewById(2131368172);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166915);
+    label222:
+    int i;
+    if (!TextUtils.isEmpty(paramRespEncounterInfo.strNick))
+    {
+      localSingleLineTextView1.setText(paramRespEncounterInfo.strNick.trim());
+      if (paramRespEncounterInfo.authFlag != 1) {
+        break label793;
+      }
+      ((ImageView)localObject4).setVisibility(0);
+      ((TextView)localObject1).setVisibility(8);
+      if (paramRespEncounterInfo.god_flag != 1) {
+        break label860;
+      }
+      ((TextView)localObject1).setVisibility(0);
+      localImageView5.setVisibility(0);
+      if (paramRespEncounterInfo.cSex != 1) {
+        break label803;
+      }
+      localImageView5.setBackgroundResource(2130845049);
+      localObject4 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844676);
+      ((TextView)localObject1).setBackgroundDrawable(banb.a(this.jdField_a_of_type_AndroidContentContext.getResources(), -17883, (Drawable)localObject4));
+      ((TextView)localObject1).setText(ajya.a(2131701708));
+      label311:
+      ((SingleLineTextView)localObject2).setText(paramRespEncounterInfo.strDescription);
+      ((SingleLineTextView)localObject2).setCompoundDrawablesWithIntrinsicBounds(0, 0);
+      ((View)localObject3).setVisibility(8);
+      localTextView.setVisibility(8);
+      i = this.jdField_a_of_type_Int - (int)(189.0F * this.jdField_a_of_type_Float);
+      localObject1 = (VipOpenInfo)paramRespEncounterInfo.vipBaseInfo.mOpenInfo.get(Integer.valueOf(3));
+      localObject2 = (VipOpenInfo)paramRespEncounterInfo.vipBaseInfo.mOpenInfo.get(Integer.valueOf(1));
+      localObject3 = (VipOpenInfo)paramRespEncounterInfo.vipBaseInfo.mOpenInfo.get(Integer.valueOf(7));
+      if ((localObject3 == null) || (!((VipOpenInfo)localObject3).bOpen)) {
+        break label870;
+      }
+      i -= (int)Math.ceil(33.5F * this.jdField_a_of_type_Float);
     }
-    Class[] arrayOfClass = new Class[1];
-    arrayOfClass[0] = Object.class;
+    label449:
+    label1092:
     for (;;)
     {
-      int i;
-      synchronized (jdField_a_of_type_JavaLangObject)
+      int j = i;
+      if (paramRespEncounterInfo.authFlag == 1) {
+        j = i - (int)Math.ceil(20.0F * this.jdField_a_of_type_Float);
+      }
+      i = j;
+      if (paramRespEncounterInfo.watch_color != 0) {
+        i = j - (int)Math.ceil(16.0F * this.jdField_a_of_type_Float);
+      }
+      localSingleLineTextView1.setMaxWidth(i);
+      i = 0;
+      localObject1 = new StringBuilder();
+      switch (paramRespEncounterInfo.cSex)
       {
-        paramAppInterface = bbdj.a(paramAppInterface.getCurrentAccountUin() + "NewNearbyMyTab.nbr", arrayOfClass);
-        if ((paramAppInterface == null) || (paramAppInterface.length != arrayOfClass.length)) {
-          break label171;
+      default: 
+        if (paramRespEncounterInfo.cAge != 0) {
+          ((StringBuilder)localObject1).append(" ").append(String.valueOf(paramRespEncounterInfo.cAge));
         }
-        paramAppInterface = (NearbyMyTabCard)paramAppInterface[0];
-        if ((paramAppInterface != null) && (paramAppInterface.configList != null))
+        if (paramRespEncounterInfo.constellation == 0)
         {
-          i = 0;
-          if (i < paramAppInterface.configList.size())
+          label581:
+          if ((paramRespEncounterInfo.profession_id > 0) && (paramRespEncounterInfo.profession_id < 14)) {
+            break label980;
+          }
+          label597:
+          if (((StringBuilder)localObject1).length() <= 0) {
+            break label1003;
+          }
+          i = 1;
+          paramView.setText(((StringBuilder)localObject1).toString());
+          if (AppSetting.d) {
+            paramView.setContentDescription(((StringBuilder)localObject1).toString());
+          }
+          paramView.setVisibility(0);
+          label636:
+          if (paramRespEncounterInfo.charm_shown != 1) {
+            break label1045;
+          }
+          if (localImageView4.getVisibility() != 0) {
+            localImageView4.setVisibility(0);
+          }
+          switch (paramRespEncounterInfo.charm_level)
           {
-            if (((NearbyMyTabCard.NearbyMyTabConfig)paramAppInterface.configList.get(i)).configId != 10001) {
-              break label164;
+          default: 
+            localImageView4.setImageResource(2130844593);
+            if (AppSetting.d) {
+              localImageView4.setContentDescription(ajya.a(2131701710));
             }
-            paramAppInterface.configList.remove(i);
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.nearby", 2, "handleGetNearbyMyTab|shield date entrance");
+            label713:
+            if (paramRespEncounterInfo.watch_color == 0)
+            {
+              localView.setVisibility(8);
+              label727:
+              if (paramRespEncounterInfo.nFaceNum < 6) {
+                break label1072;
+              }
+              i += 1;
+              localImageView3.setVisibility(0);
+              label746:
+              if (i <= 0) {
+                break label1082;
+              }
+              localLinearLayout.setVisibility(0);
             }
+            break;
           }
         }
-        atbp.a("Q.nearby", "readNearbyMyTabCardFromLocal", new Object[] { paramAppInterface });
-        return paramAppInterface;
+        break;
       }
-      label164:
+      for (;;)
+      {
+        a(paramRespEncounterInfo.vipBaseInfo, localImageView2, localSingleLineTextView1);
+        a(paramRespEncounterInfo, localImageView1);
+        a(localSingleLineTextView2, paramRespEncounterInfo);
+        return;
+        localSingleLineTextView1.setText("");
+        break;
+        ((ImageView)localObject4).setVisibility(8);
+        break label222;
+        localImageView5.setBackgroundResource(2130845049);
+        localObject4 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844676);
+        ((TextView)localObject1).setBackgroundDrawable(banb.a(this.jdField_a_of_type_AndroidContentContext.getResources(), -17883, (Drawable)localObject4));
+        ((TextView)localObject1).setText(ajya.a(2131701711));
+        break label311;
+        label860:
+        localImageView5.setVisibility(8);
+        break label311;
+        label870:
+        if ((localObject1 != null) && (((VipOpenInfo)localObject1).bOpen))
+        {
+          i -= (int)Math.ceil(33.5F * this.jdField_a_of_type_Float);
+          break label449;
+        }
+        if ((localObject2 == null) || (!((VipOpenInfo)localObject2).bOpen)) {
+          break label1092;
+        }
+        i -= (int)Math.ceil(28.5F * this.jdField_a_of_type_Float);
+        break label449;
+        ((StringBuilder)localObject1).append("男");
+        break label548;
+        ((StringBuilder)localObject1).append("女");
+        break label548;
+        ((StringBuilder)localObject1).append(" ").append(bbac.a(paramRespEncounterInfo.constellation));
+        break label581;
+        label980:
+        ((StringBuilder)localObject1).append(" ").append(bazx.e[paramRespEncounterInfo.profession_id]);
+        break label597;
+        label1003:
+        paramView.setVisibility(8);
+        break label636;
+        localImageView4.setImageResource(2130844595);
+        break label696;
+        localImageView4.setImageResource(2130844596);
+        break label696;
+        localImageView4.setImageResource(2130844597);
+        break label696;
+        if (localImageView4.getVisibility() == 4) {
+          break label713;
+        }
+        localImageView4.setVisibility(4);
+        break label713;
+        localView.setVisibility(0);
+        break label727;
+        localImageView3.setVisibility(8);
+        break label746;
+        localLinearLayout.setVisibility(8);
+      }
+    }
+  }
+  
+  public void a(List<RespEncounterInfo> paramList)
+  {
+    int i = 0;
+    while (i < paramList.size())
+    {
+      RespEncounterInfo localRespEncounterInfo = (RespEncounterInfo)paramList.get(i);
+      View localView = a(localRespEncounterInfo);
+      if ((localView != null) && (localRespEncounterInfo != null)) {
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView, new LinearLayout.LayoutParams(-1, baxn.a(this.jdField_a_of_type_AndroidContentContext, 84.0F)));
+      }
       i += 1;
-      continue;
-      label171:
-      paramAppInterface = null;
     }
   }
   
-  public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    return a(paramInt1, paramInt2, paramString1, paramString2, -1);
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3)
-  {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    localAppInfo.path.set(paramString1);
-    localAppInfo.num.set(0);
-    localAppInfo.type.set(-1);
-    localAppInfo.iNewFlag.set(0);
-    localAppInfo.appset.set(-1);
-    if (paramInt1 != -1)
+    Object localObject = (RespEncounterInfo)paramView.getTag();
+    paramView = (ajxl)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.getManager(51);
+    if (paramView != null) {}
+    for (boolean bool = paramView.b(Long.toString(((RespEncounterInfo)localObject).lEctID));; bool = false)
     {
-      localAppInfo.uiAppId.set(paramInt2);
-      localAppInfo.type.set(paramInt1);
-      localAppInfo.iNewFlag.set(1);
-      localAppInfo.appset.set(paramInt3);
-      localAppInfo.mission_level.set(0);
-      paramString1 = new BusinessInfoCheckUpdate.RedDisplayInfo();
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      localRedTypeInfo.red_type.set(9);
-      localRedTypeInfo.red_content.set("-1");
-      localRedTypeInfo.red_desc.set("");
-      paramString1.red_type_info.add(localRedTypeInfo);
-      localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      localRedTypeInfo.red_type.set(paramInt1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        localRedTypeInfo.red_content.set(paramString2);
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChatActivity.class);
+      localIntent.putExtra("uin", Long.toString(((RespEncounterInfo)localObject).lEctID));
+      localIntent.putExtra("from_where_to_aio", "nearby_recommend_people");
+      if (bool)
+      {
+        localIntent.putExtra("uintype", 0);
+        localIntent.putExtra("rich_accost_sig", ((RespEncounterInfo)localObject).sig);
+        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131694540);
+        if (!"0".equals(String.valueOf(((RespEncounterInfo)localObject).cSex))) {
+          break label282;
+        }
       }
-      localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-      paramString1.tab_display_info.set(localRedTypeInfo);
-      paramString1.red_type_info.add(localRedTypeInfo);
-      localAppInfo.red_display_info.set(paramString1);
-    }
-    return localAppInfo;
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (paramAppInterface == null) {
-      return new BusinessInfoCheckUpdate.AppInfo();
-    }
-    paramString1 = a(paramInt1, paramInt2, paramString1, paramString2);
-    if ((paramBoolean) && ((paramAppInterface instanceof QQAppInterface)))
-    {
-      paramAppInterface = (avpq)paramAppInterface.getManager(36);
-      if (paramAppInterface != null) {
-        paramAppInterface.a(paramString1, true);
+      label282:
+      for (paramView = String.format(paramView, new Object[] { ajya.a(2131701709) });; paramView = String.format(paramView, new Object[] { ajya.a(2131701707) }))
+      {
+        atyr.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, Long.toString(((RespEncounterInfo)localObject).lEctID), Long.toString(((RespEncounterInfo)localObject).lEctID), paramView, 1001, true, true);
+        ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).startActivity(localIntent);
+        paramView = Long.toString(((RespEncounterInfo)localObject).lEctID);
+        localObject = atyr.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app);
+        axqy.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X80055FC", "0X80055FC", 0, 0, localObject[0], paramView, "", "");
+        return;
+        localIntent.putExtra("uintype", 1001);
+        break;
       }
     }
-    return paramString1;
   }
   
-  public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. start");
+      QLog.d("CarrierHelper", 2, "uin=" + paramString + ", type=" + paramInt2 + ",avatar= " + paramBitmap);
     }
-    avpq localavpq = (avpq)paramQQAppInterface.getManager(36);
-    if ((!localavpq.a) || (!localavpq.b(100510)))
+    if ((paramBitmap == null) || (this.jdField_a_of_type_Baxy.a())) {
+      return;
+    }
+    paramInt2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    paramInt1 = 0;
+    label80:
+    Object localObject;
+    if (paramInt1 < paramInt2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. return");
+      localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt1);
+      if (localObject != null) {
+        break label107;
       }
-      return null;
     }
-    if (((Boolean)atbg.a(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_date", Boolean.valueOf(false))).booleanValue()) {}
-    for (int i = a(paramQQAppInterface, 100511) + 0;; i = 0)
-    {
-      int j = i;
-      if (((Boolean)atbg.a(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_rank", Boolean.valueOf(false))).booleanValue()) {
-        j = i + a(paramQQAppInterface, 100517);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. count:" + j);
-      }
-      if (j > 0)
-      {
-        paramQQAppInterface = localavpq.a(String.valueOf(100510));
-        if ((paramQQAppInterface != null) && (paramQQAppInterface.red_display_info != null) && (paramQQAppInterface.red_display_info.red_type_info != null) && (paramQQAppInterface.red_display_info.red_type_info.size() == 2) && (paramQQAppInterface.red_display_info.red_type_info.get(1) != null)) {}
-        for (;;)
-        {
-          try
-          {
-            i = Integer.parseInt(((BusinessInfoCheckUpdate.RedTypeInfo)paramQQAppInterface.red_display_info.red_type_info.get(1)).red_content.get());
-            if (i == j) {
-              break;
-            }
-            return localavpq.a(0, 100510, String.valueOf(100510), j);
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.d("NewNearbyMyTab", 2, "get cache redpoint failed, e = " + localException);
-            }
-          }
-          i = 0;
-        }
-        return paramQQAppInterface;
-      }
-      BusinessInfoCheckUpdate.AppInfo localAppInfo = localavpq.a("100510");
-      if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1) && (localAppInfo.type.get() == 5))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo Main, old is num, clear.");
-        }
-        localavpq.b(String.valueOf(100510));
-        if (paramBoolean) {
-          akfi.a(paramQQAppInterface);
-        }
-      }
-      return localAppInfo;
-    }
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, Object[] paramArrayOfObject)
-  {
-    if ((paramQQAppInterface == null) || (paramArrayOfObject == null) || (paramArrayOfObject.length != 2)) {
-      paramQQAppInterface = null;
-    }
-    int i1;
-    String str;
-    int i;
+    label107:
+    RespEncounterInfo localRespEncounterInfo;
     do
     {
-      return paramQQAppInterface;
-      i1 = ((Integer)paramArrayOfObject[0]).intValue();
-      str = (String)paramArrayOfObject[1];
-      localObject3 = (avpq)paramQQAppInterface.getManager(36);
-      int m = 0;
-      paramArrayOfObject = "";
-      i = 0;
-      int k = 0;
-      if (k < jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        int i2 = Integer.parseInt(jdField_a_of_type_ArrayOfJavaLangString[k].substring(jdField_a_of_type_ArrayOfJavaLangString[k].lastIndexOf(".") + 1));
-        Object localObject1 = ((avpq)localObject3).a(jdField_a_of_type_ArrayOfJavaLangString[k]);
-        int n = 0;
-        int j = n;
-        if (((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info != null)
-        {
-          j = n;
-          if (((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info != null)
-          {
-            List localList = ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.get();
-            j = n;
-            if (localList != null)
-            {
-              j = n;
-              if (localList.size() >= 2) {
-                j = ((BusinessInfoCheckUpdate.RedTypeInfo)localList.get(1)).red_type.get();
-              }
-            }
-          }
-        }
-        n = j;
-        if (i2 == 100524)
-        {
-          n = j;
-          if (j == 4) {
-            n = 0;
-          }
-        }
-        if ((n == 4) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() != 0)) {
-          m = 1;
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              localObject1 = ((BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.get(1)).red_content.get();
-              paramArrayOfObject = (Object[])localObject1;
-            }
-            catch (Exception localException2)
-            {
-              Object localObject2;
-              continue;
-              continue;
-            }
-            try
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| pathId=" + i2 + " redTouchType=RED_TOUCH_TEXT text=" + paramArrayOfObject);
-              }
-              k += 1;
-            }
-            catch (Exception localException1) {}
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| exception=" + localException1.getMessage());
-          }
-          continue;
-          if ((n == 0) && (localException1.iNewFlag.get() != 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| pathId=" + i2 + " redTouchType=RED_TOUCH_RED_POINT text=" + paramArrayOfObject);
-            }
-            i = 1;
-          }
-          else
-          {
-            if ((i2 != 100523) || (localException1.iNewFlag.get() == 0)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| pathId=" + i2 + ", UIAPPID_NEARBY_VISITOR RED_TOUCH");
-            }
-            i = 1;
-          }
-        }
-      }
-      if (m == 0) {
-        break;
-      }
-      localObject2 = a(paramQQAppInterface, 4, i1, str, paramArrayOfObject + "", true);
-      paramQQAppInterface = (QQAppInterface)localObject2;
-    } while (!QLog.isColorLevel());
-    Object localObject3 = new StringBuilder().append("buildRedTouchAppInfo| path=").append(str).append(" redTouchType=");
-    if (localObject2 != null) {}
-    for (paramQQAppInterface = ((BusinessInfoCheckUpdate.AppInfo)localObject2).type.get() + "";; paramQQAppInterface = "-1")
-    {
-      QLog.d("NewNearbyMyTab", 2, paramQQAppInterface + " count=" + 0 + " text=" + paramArrayOfObject);
-      return localObject2;
-      if (i != 0)
-      {
-        localObject2 = a(paramQQAppInterface, 0, i1, str, "", true);
-        break;
-      }
-      localObject3 = ((avpq)localObject3).a(str);
-      if (localObject3 != null)
-      {
-        localObject2 = localObject3;
-        if (((BusinessInfoCheckUpdate.AppInfo)localObject3).type.get() == -1) {
-          break;
-        }
-      }
-      localObject2 = a(paramQQAppInterface, -1, i1, str, "", true);
+      paramInt1 += 1;
+      break label80;
       break;
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, NearbyMyTabCard paramNearbyMyTabCard)
-  {
-    if ((paramAppInterface == null) || (paramNearbyMyTabCard == null)) {
-      return;
-    }
-    atbp.a("Q.nearby", "storeNearbyMyTabCard", new Object[] { paramNearbyMyTabCard });
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      bbdj.a(paramAppInterface.getCurrentAccountUin() + "NewNearbyMyTab.nbr", new Object[] { paramNearbyMyTabCard });
-      return;
-    }
-  }
-  
-  public static void a(NearbyAppInterface paramNearbyAppInterface, int paramInt, boolean paramBoolean)
-  {
-    if (paramNearbyAppInterface == null) {}
-    NearbyMyTabCard localNearbyMyTabCard;
-    do
-    {
-      return;
-      localNearbyMyTabCard = paramNearbyAppInterface.b();
-      if (localNearbyMyTabCard != null)
-      {
-        localNearbyMyTabCard.newLikeNum = paramInt;
-        a(paramNearbyAppInterface, localNearbyMyTabCard);
-      }
-    } while (!paramBoolean);
-    ((akbm)paramNearbyAppInterface.a(3)).a(localNearbyMyTabCard);
+      localRespEncounterInfo = (RespEncounterInfo)((View)localObject).getTag();
+      localObject = (ImageView)((View)localObject).findViewById(16908294);
+    } while ((localObject == null) || (localRespEncounterInfo == null) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(Long.toString(localRespEncounterInfo.lEctID))));
+    ((ImageView)localObject).setImageBitmap(paramBitmap);
   }
 }
 

@@ -1,26 +1,15 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.gaudio.BaseGaInvite;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
 
-@SuppressLint({"HandlerLeak"})
 public class lnx
-  extends Handler
+  implements aapz
 {
-  public lnx(BaseGaInvite paramBaseGaInvite) {}
+  public lnx(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.b();
-      return;
-    }
-    this.a.a("Msg");
-    super.sendEmptyMessageDelayed(1, 2000L);
+    this.a.g = paramInt1;
+    this.a.h = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 

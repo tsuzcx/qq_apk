@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 import org.json.JSONObject;
 
 class PayJsPlugin$3
   implements PayJsPlugin.IStarQueryListener
 {
-  PayJsPlugin$3(PayJsPlugin paramPayJsPlugin, beka parambeka) {}
+  PayJsPlugin$3(PayJsPlugin paramPayJsPlugin, bekr parambekr) {}
   
   public void onResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

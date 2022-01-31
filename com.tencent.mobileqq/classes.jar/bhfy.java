@@ -1,13 +1,22 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
 
-public class bhfy
-  implements bhfz
+public final class bhfy
+  implements Parcelable.Creator<WeishiUserInfo>
 {
-  public bhfy(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
+  public WeishiUserInfo a(Parcel paramParcel)
   {
-    QzoneWebMusicJsPlugin.access$100(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    localWeishiUserInfo.logo = paramParcel.readString();
+    return localWeishiUserInfo;
+  }
+  
+  public WeishiUserInfo[] a(int paramInt)
+  {
+    return new WeishiUserInfo[paramInt];
   }
 }
 

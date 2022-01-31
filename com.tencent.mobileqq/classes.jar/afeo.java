@@ -1,17 +1,21 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.widget.SwipListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class afeo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ajua
 {
   public afeo(AddContactsView paramAddContactsView) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.setListViewHeightBasedOnChildren(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    }
+    if ((paramInt == 2) && (paramBoolean))
+    {
+      this.a.d = true;
+      this.a.f();
+    }
   }
 }
 

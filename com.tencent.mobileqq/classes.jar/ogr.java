@@ -1,6 +1,27 @@
-public abstract interface ogr
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+public class ogr
+  implements ohm
 {
-  public abstract void a(long paramLong);
+  public ogr(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  
+  public void a()
+  {
+    if (ReadInJoyCommentListFragment.a(this.a) != null) {
+      ReadInJoyCommentListFragment.a(this.a).a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.a(false, null, null);
+  }
 }
 
 

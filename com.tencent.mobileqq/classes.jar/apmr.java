@@ -1,17 +1,14 @@
 class apmr
-  implements aple
+  implements axof
 {
-  apmr(apmp paramapmp) {}
+  apmr(apmq paramapmq) {}
   
   public void a()
   {
-    this.a.a(false, apsz.a(this.a.a.a()), this.a.c(), new apms(this));
+    apug.a(this.a.a.a, this.a.a.c());
   }
   
-  public void b()
-  {
-    apmp.b(this.a);
-  }
+  public void b() {}
 }
 
 

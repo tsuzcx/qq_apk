@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijt
   implements Animation.AnimationListener
 {
-  public aijt(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public aijt(SpecailCareListActivity paramSpecailCareListActivity, aijx paramaijx) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.c.clearAnimation();
-    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
-    this.a.c = null;
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a = null;
-    }
+    this.jdField_a_of_type_Aijx.c.setVisibility(0);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

@@ -1,8 +1,25 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
-public abstract interface aydn
+public class aydn
 {
-  public abstract void a(Bitmap paramBitmap);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  
+  public aydn(TableQueryViewer paramTableQueryViewer, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376831));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+    this.b = ((TextView)paramView.findViewById(2131376829));
+    this.b.setTextSize(10.0F);
+    this.c = ((TextView)paramView.findViewById(2131376833));
+    this.c.setTextSize(10.0F);
+    this.d = ((TextView)paramView.findViewById(2131376826));
+    this.d.setTextSize(10.0F);
+  }
 }
 
 

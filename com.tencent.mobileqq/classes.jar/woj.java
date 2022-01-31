@@ -1,8 +1,15 @@
-public abstract interface woj
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class woj
+  implements View.OnClickListener
 {
-  public abstract boolean a();
+  woj(woi paramwoi, int paramInt) {}
   
-  public abstract boolean a(String paramString);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Woi.a.a(this.jdField_a_of_type_Int, woi.a(this.jdField_a_of_type_Woi));
+  }
 }
 
 

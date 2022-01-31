@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class apxk
-  implements DialogInterface.OnClickListener
+  implements aptw
 {
-  apxk(apxg paramapxg) {}
+  apxk(apxi paramapxi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1) {
-      this.a.c();
-    }
-    paramDialogInterface.dismiss();
+    this.a.c();
   }
+  
+  public void b() {}
 }
 
 

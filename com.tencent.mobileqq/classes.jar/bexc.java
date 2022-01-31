@@ -1,37 +1,19 @@
-import com.tencent.qqmini.sdk.minigame.webaudio.AudioNativeManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-public class bexc
+public final class bexc
+  implements DialogInterface.OnShowListener
 {
-  private long a = System.currentTimeMillis();
+  public bexc(TianShuAccess.AdItem paramAdItem, String paramString) {}
   
-  public bexc()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    AudioNativeManager.initAudioContext();
-  }
-  
-  public float a(int paramInt)
-  {
-    return AudioNativeManager.getCurrentGain(paramInt);
-  }
-  
-  public int a()
-  {
-    return AudioNativeManager.createBufferSource();
-  }
-  
-  public long a()
-  {
-    return System.currentTimeMillis() - this.a;
-  }
-  
-  public void a(int paramInt, double paramDouble)
-  {
-    AudioNativeManager.setCurrentGain(paramInt, (float)paramDouble);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    AudioNativeManager.setBufferSourceLoop(paramInt, paramBoolean);
+    bfhm.a().edit().putLong("pref_key_banner_ad_popup_last_show_time_millis", System.currentTimeMillis()).putInt("pref_key_banner_ad_current_show_times", 1).apply();
+    MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.jdField_a_of_type_JavaLangString, 101);
   }
 }
 

@@ -1,87 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.PointF;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljv
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean;
+  long jdField_a_of_type_Long;
+  PointF jdField_a_of_type_AndroidGraphicsPointF = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  static long a(String paramString)
+  public void a()
   {
-    long l1 = 0L;
-    long l2 = l1;
-    if (!lsv.a(paramString, jdField_a_of_type_JavaLangString))
-    {
-      long l3 = System.currentTimeMillis();
-      lcl.c("EffectZimuManager", "DataReport calTime zimu:" + paramString + "|" + jdField_a_of_type_JavaLangString + "|" + jdField_a_of_type_Long);
-      l2 = l1;
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-      {
-        if (jdField_a_of_type_Long != 0L)
-        {
-          l1 = l3 - jdField_a_of_type_Long;
-          lcl.c("EffectZimuManager", "DataReport zimu:" + l1);
-          jdField_a_of_type_Boolean = true;
-          l1 /= 1000L;
-          a(jdField_a_of_type_JavaLangString, l1);
-          axqw.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
-          if (ljt.a(jdField_a_of_type_JavaLangString)) {
-            axqw.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
-          }
-        }
-        lcl.c("EffectZimuManager", "DataReport zimu 33:" + l1);
-        l2 = l1;
-      }
-      jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_Long = l3;
-    }
-    return l2;
+    QLog.w("ARZimuTask_SpitZimuTask", 1, "MouthLoactionInfo.clear");
+    this.jdField_a_of_type_AndroidGraphicsPointF = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  public void a(PointF paramPointF)
   {
-    if (paramVideoAppInterface.a(0))
-    {
-      paramVideoAppInterface = (ZimuItem)((lju)paramVideoAppInterface.a(0)).a();
-      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
-        a(null);
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
   }
   
-  public static void a(String paramString, long paramLong)
+  public boolean a()
   {
-    lcl.c("EffectZimuManager", "DataReport zimu:" + paramString + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("zimuName", paramString);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, localHashMap, true);
-    try
-    {
-      UserAction.flushObjectsToDB(true);
-      return;
+    if (this.jdField_a_of_type_Boolean) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1500L) {
+      return true;
     }
-    catch (Exception paramString)
-    {
-      lcl.e("EffectZimuManager", paramString.getMessage());
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    lcl.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
-    axqw.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    lcl.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    axqw.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
+    return false;
   }
 }
 

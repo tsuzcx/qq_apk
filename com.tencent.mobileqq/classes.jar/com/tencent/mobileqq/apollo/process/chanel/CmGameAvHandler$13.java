@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajbc;
-import ajlc;
+import ajba;
+import ajla;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVVideoCtrl;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -9,11 +9,11 @@ import com.tencent.common.app.BaseApplicationImpl;
 public class CmGameAvHandler$13
   implements Runnable
 {
-  public CmGameAvHandler$13(ajbc paramajbc, float paramFloat) {}
+  public CmGameAvHandler$13(ajba paramajba, float paramFloat) {}
   
   public void run()
   {
-    ajlc.a(BaseApplicationImpl.getContext()).a().getVideoCtrl().inputBeautyParam(this.a);
+    ajla.a(BaseApplicationImpl.getContext()).a().getVideoCtrl().inputBeautyParam(this.a);
   }
 }
 

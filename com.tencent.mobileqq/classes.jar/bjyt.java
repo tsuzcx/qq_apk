@@ -1,4 +1,7 @@
-// INTERNAL ERROR //
+public abstract interface bjyt
+  extends bjxm
+{}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     bjyt

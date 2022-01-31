@@ -1,44 +1,25 @@
-import android.text.TextUtils;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class ahlr
   implements View.OnClickListener
 {
-  ahlr(ahkf paramahkf) {}
+  ahlr(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    paramView = (axuh)paramView.getTag();
-    if (paramView != null) {
-      paramView.jdField_a_of_type_Bbds.b();
-    }
-    try
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString))
-      {
-        i = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
-        axqw.b(ahkf.a(this.a).app, "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
-        paramView = new amox(ahkf.a(this.a).getApplicationContext(), ando.jdField_a_of_type_JavaLangString);
-        if (paramView != null)
-        {
-          paramView.b();
-          paramView.c();
-        }
-        return;
-      }
+      this.a.k();
+      return;
     }
-    catch (Throwable paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        int i = 0;
-        continue;
-        i = 0;
-      }
-    }
+    paramView = new Intent(ahkd.a(this.a), QRLoginMgrActivity.class);
+    paramView.putExtra("qrlogin_position", this.a.b);
+    paramView.putExtra("qrlogin_appid", this.a.a);
+    ahkd.a(this.a).startActivity(paramView);
   }
 }
 

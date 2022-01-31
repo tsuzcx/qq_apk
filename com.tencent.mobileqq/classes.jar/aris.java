@@ -1,11 +1,31 @@
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+
 class aris
-  implements arja
+  implements arki
 {
-  aris(arii paramarii, arkf paramarkf) {}
+  aris(arik paramarik) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    this.jdField_a_of_type_Arkf.a(paramInt, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 101);
+    NowLive.sendServerPushMessage(arik.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 102);
+    NowLive.sendServerPushMessage(arik.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 103);
+    NowLive.sendServerPushMessage(arik.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
 }
 

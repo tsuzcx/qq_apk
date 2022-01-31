@@ -1,23 +1,31 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
 class vly
-  extends vmh
+  implements syq<tmp, toj>
 {
-  vly(vlv paramvlv, vlu paramvlu)
-  {
-    super(paramvlu);
-  }
+  vly(vls paramvls, WeakReference paramWeakReference) {}
   
-  protected void a(@Nullable vlu arg1)
+  public void a(@NonNull tmp paramtmp, @Nullable toj paramtoj, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.onResult(???);
-    veg.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    if (paramtoj == null)
     {
-      this.a.jdField_a_of_type_Vlu = null;
-      this.a.c();
+      paramtmp = (vmf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramtmp != null) {
+        paramtmp.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
       return;
     }
+    paramtmp = (vmf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramtmp != null)
+    {
+      paramtmp.a(0, paramtoj.a);
+      return;
+    }
+    ved.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

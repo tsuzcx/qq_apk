@@ -1,39 +1,14 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-
-class betb
-  implements besy
+public abstract interface betb
 {
-  betb(besz parambesz, EngineChannel paramEngineChannel, BaseLibInfo paramBaseLibInfo) {}
+  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-  }
+  public abstract void e(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public void a(float paramFloat, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("engineInstallerProgress", paramFloat);
-    localBundle.putString("engineInstallerMessage", paramString);
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
-  }
+  public abstract int getLogLevel();
   
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
-  }
+  public abstract void i(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    besv localbesv = (besv)besz.b(this.jdField_a_of_type_Besz).get(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbesv != null) {
-      localbesv.b(this);
-    }
-  }
+  public abstract void w(String paramString1, String paramString2, Throwable paramThrowable);
 }
 
 

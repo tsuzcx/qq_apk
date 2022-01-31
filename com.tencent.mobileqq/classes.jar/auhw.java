@@ -1,30 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
 class auhw
-  implements DialogInterface.OnClickListener
+  extends View.AccessibilityDelegate
 {
-  auhw(auhi paramauhi) {}
+  auhw(auhk paramauhk, ClickableSpan paramClickableSpan) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    try
-    {
-      if ((auhi.a(this.a) != null) && (auhi.a(this.a).isShowing()))
-      {
-        auhi.a(this.a).dismiss();
-        auhi.a(this.a, null);
-      }
-      label42:
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanel", 2, "switch status cancel");
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label42;
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
+      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
     }
   }
 }

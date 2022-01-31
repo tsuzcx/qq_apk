@@ -1,8 +1,23 @@
-public abstract interface aqbo
+import android.os.AsyncTask;
+
+class aqbo
+  extends er
 {
-  public abstract void a();
+  aqbo(aqbe paramaqbe) {}
   
-  public abstract void b();
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  {
+    try
+    {
+      eo.a(this.a.a, paramAsyncTask, paramInt, new aqbp(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
+  }
 }
 
 

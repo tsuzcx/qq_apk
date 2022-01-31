@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class aaph
   implements DialogInterface.OnClickListener
 {
-  public aaph(aaqe paramaaqe) {}
+  public aaph(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    bbgi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }

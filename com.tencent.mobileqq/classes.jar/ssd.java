@@ -1,30 +1,45 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-class ssd
-  implements RecyclerView.OnChildAttachStateChangeListener
+public class ssd
+  extends QQUIEventReceiver<ssc, spr>
 {
-  ssd(srv paramsrv) {}
-  
-  public void onChildViewAttachedToWindow(View paramView)
+  public ssd(@NonNull ssc paramssc)
   {
-    paramView = (srn)srv.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == srv.a(this.a)))
+    super(paramssc);
+  }
+  
+  public void a(@NonNull ssc paramssc, @NonNull spr paramspr)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramspr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      paramView.b();
-      veg.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
+      ved.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramspr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
+      paramssc.d();
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      ssc.a(paramssc).a(bool1);
+      return;
+      ved.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramspr.jdField_a_of_type_JavaUtilList.size()));
+      bool1 = bool2;
+      if (paramssc.a(paramspr.jdField_a_of_type_JavaUtilList))
+      {
+        bool1 = bool2;
+        if (paramspr.jdField_a_of_type_JavaUtilList.size() > 0) {
+          bool1 = true;
+        }
+      }
     }
   }
   
-  public void onChildViewDetachedFromWindow(View paramView)
+  public Class acceptEventClass()
   {
-    paramView = (srn)srv.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == srv.a(this.a)))
-    {
-      paramView.c();
-      veg.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
-    }
+    return spr.class;
   }
 }
 

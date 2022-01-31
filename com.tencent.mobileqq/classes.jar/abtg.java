@@ -1,21 +1,18 @@
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abtg
   implements View.OnTouchListener
 {
-  public abtg(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abtg(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.a();
-      noo.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
-    }
-    return true;
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

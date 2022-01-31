@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import bcdb;
-import bcpw;
+import bcdp;
+import bcql;
 
 class MiniAppPlugin$2
   implements Runnable
@@ -10,7 +10,7 @@ class MiniAppPlugin$2
   
   public void run()
   {
-    bcpw.a(this.this$0.mRuntime.a(), 1, 2131695209, 0).a();
+    bcql.a(this.this$0.mRuntime.a(), 1, 2131695210, 0).a();
   }
 }
 

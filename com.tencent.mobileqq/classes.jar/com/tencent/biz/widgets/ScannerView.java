@@ -22,9 +22,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
-import bbmo;
-import bbmr;
-import bfmn;
+import bbnc;
+import bbnf;
+import bfne;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -35,13 +35,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 import mqq.os.MqqHandler;
+import xnq;
+import xnr;
+import xns;
 import xnt;
 import xnu;
 import xnv;
-import xnw;
-import xnx;
-import xny;
-import xok;
+import xoh;
 
 public class ScannerView
   extends ViewGroup
@@ -60,11 +60,11 @@ public class ScannerView
   String jdField_a_of_type_JavaLangString;
   public StringBuilder a;
   ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private xns jdField_a_of_type_Xns;
+  private xnt jdField_a_of_type_Xnt;
+  private xnu jdField_a_of_type_Xnu;
   private xnv jdField_a_of_type_Xnv;
-  private xnw jdField_a_of_type_Xnw;
-  private xnx jdField_a_of_type_Xnx;
-  private xny jdField_a_of_type_Xny;
-  private xok jdField_a_of_type_Xok;
+  private xoh jdField_a_of_type_Xoh;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   public int b;
@@ -102,7 +102,7 @@ public class ScannerView
     this.jdField_h_of_type_Int = 0;
     this.jdField_e_of_type_Boolean = true;
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new xnt(this);
+    this.jdField_b_of_type_AndroidOsHandler = new xnq(this);
     a(paramContext, null);
   }
   
@@ -114,7 +114,7 @@ public class ScannerView
     this.jdField_h_of_type_Int = 0;
     this.jdField_e_of_type_Boolean = true;
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new xnt(this);
+    this.jdField_b_of_type_AndroidOsHandler = new xnq(this);
     a(paramContext, paramAttributeSet);
   }
   
@@ -251,8 +251,8 @@ public class ScannerView
         }
       }
       ((TypedArray)localObject).recycle();
-      this.jdField_a_of_type_Xok = new xok(paramContext);
-      addView(this.jdField_a_of_type_Xok);
+      this.jdField_a_of_type_Xoh = new xoh(paramContext);
+      addView(this.jdField_a_of_type_Xoh);
     }
     if (paramAttributeSet != null) {
       this.jdField_a_of_type_Boolean = paramAttributeSet.getAttributeBooleanValue(0, true);
@@ -267,10 +267,10 @@ public class ScannerView
       {
         localParameters = paramCamera.getParameters();
         localObject = "torch";
-        if (bbmr.j) {
+        if (bbnf.j) {
           continue;
         }
-        localObject = bbmo.a().a(localParameters);
+        localObject = bbnc.a().a(localParameters);
       }
       catch (RuntimeException paramCamera)
       {
@@ -344,15 +344,15 @@ public class ScannerView
             Camera.getCameraInfo(0, (Camera.CameraInfo)localObject1);
             i2 = 0;
             i1 = 1;
-            this.jdField_a_of_type_AndroidHardwareCamera = bfmn.a(i2);
+            this.jdField_a_of_type_AndroidHardwareCamera = bfne.a(i2);
             i3 = ((Camera.CameraInfo)localObject1).orientation;
             i2 = i1;
             i1 = i3;
             break label342;
-            if (bbmr.jdField_a_of_type_Int <= 0) {
+            if (bbnf.jdField_a_of_type_Int <= 0) {
               continue;
             }
-            i3 = bbmr.jdField_a_of_type_Int;
+            i3 = bbnf.jdField_a_of_type_Int;
             this.jdField_c_of_type_Int = i3;
             this.jdField_d_of_type_Int = i2;
             if (QLog.isColorLevel())
@@ -376,7 +376,7 @@ public class ScannerView
         }
         else
         {
-          this.jdField_a_of_type_AndroidHardwareCamera = bfmn.a();
+          this.jdField_a_of_type_AndroidHardwareCamera = bfne.a();
           i2 = 0;
           i1 = 90;
           continue;
@@ -940,9 +940,9 @@ public class ScannerView
   {
     if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Xny);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Xnv);
       this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-      this.jdField_a_of_type_Xny = null;
+      this.jdField_a_of_type_Xnv = null;
     }
   }
   
@@ -954,11 +954,11 @@ public class ScannerView
       return;
       this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
     } while (this.jdField_a_of_type_AndroidHardwareSensorManager == null);
-    if (this.jdField_a_of_type_Xny == null) {
-      this.jdField_a_of_type_Xny = new xny(this);
+    if (this.jdField_a_of_type_Xnv == null) {
+      this.jdField_a_of_type_Xnv = new xnv(this);
     }
     paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Xny, paramContext, 2);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Xnv, paramContext, 2);
   }
   
   public void a(SensorEvent paramSensorEvent)
@@ -1019,8 +1019,8 @@ public class ScannerView
   public void c()
   {
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Xok != null) {
-      this.jdField_a_of_type_Xok.b();
+    if (this.jdField_a_of_type_Xoh != null) {
+      this.jdField_a_of_type_Xoh.b();
     }
     ThreadManager.post(new ScannerView.7(this), 8, null, false);
   }
@@ -1036,7 +1036,7 @@ public class ScannerView
         {
           this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread = new ScannerView.DecodeThread(this, "ScannerDecodeThread");
           this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.start();
-          this.jdField_a_of_type_AndroidOsHandler = new xnu(this, this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.getLooper());
+          this.jdField_a_of_type_AndroidOsHandler = new xnr(this, this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.getLooper());
         }
         if (this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.jdField_a_of_type_Boolean) {
           return;
@@ -1080,9 +1080,9 @@ public class ScannerView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_AndroidViewSurfaceView.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    if (this.jdField_a_of_type_Xok != null)
+    if (this.jdField_a_of_type_Xoh != null)
     {
-      this.jdField_a_of_type_Xok.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+      this.jdField_a_of_type_Xoh.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
       if (this.m != -1) {
         break label167;
       }
@@ -1106,7 +1106,7 @@ public class ScannerView
       this.jdField_a_of_type_AndroidGraphicsRect = this.jdField_c_of_type_AndroidGraphicsRect;
       this.jdField_c_of_type_AndroidGraphicsRect = localRect;
       this.jdField_b_of_type_AndroidGraphicsRect = null;
-      this.jdField_a_of_type_Xok.a(paramInt3, paramInt4, paramInt1, paramInt2);
+      this.jdField_a_of_type_Xoh.a(paramInt3, paramInt4, paramInt1, paramInt2);
       return;
       label167:
       if ((this.o & 0x3) == 3)
@@ -1150,22 +1150,22 @@ public class ScannerView
     }
   }
   
-  public void setFileDecodeListener(xnv paramxnv)
+  public void setFileDecodeListener(xns paramxns)
   {
     e();
-    this.jdField_a_of_type_Xnv = paramxnv;
+    this.jdField_a_of_type_Xns = paramxns;
   }
   
-  public void setFlashLightListener(xnw paramxnw)
+  public void setFlashLightListener(xnt paramxnt)
   {
     e();
-    this.jdField_a_of_type_Xnw = paramxnw;
+    this.jdField_a_of_type_Xnt = paramxnt;
   }
   
-  public void setScanListener(xnx paramxnx)
+  public void setScanListener(xnu paramxnu)
   {
     e();
-    this.jdField_a_of_type_Xnx = paramxnx;
+    this.jdField_a_of_type_Xnu = paramxnu;
   }
   
   public void setViewFinder(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1178,15 +1178,15 @@ public class ScannerView
     this.n = (paramInt4 - paramInt2);
     this.k = 0;
     this.l = 0;
-    if (this.jdField_a_of_type_Xok == null)
+    if (this.jdField_a_of_type_Xoh == null)
     {
-      this.jdField_a_of_type_Xok = new xok(getContext());
-      addView(this.jdField_a_of_type_Xok);
+      this.jdField_a_of_type_Xoh = new xoh(getContext());
+      addView(this.jdField_a_of_type_Xoh);
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Xok.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Xoh.a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)

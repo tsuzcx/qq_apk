@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
@@ -15,7 +15,7 @@ public class PrinterDefaultActivity
     ((TextView)findViewById(2131368429)).setVisibility(8);
     TextView localTextView = (TextView)findViewById(2131368457);
     localTextView.setVisibility(0);
-    localTextView.setText(ajyc.a(2131708422));
+    localTextView.setText(ajya.a(2131708433));
     localTextView.setOnClickListener(new eh(this));
   }
   

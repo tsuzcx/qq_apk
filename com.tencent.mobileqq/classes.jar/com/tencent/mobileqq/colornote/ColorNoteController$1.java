@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.colornote;
 
-import amgo;
+import amgn;
 
 public class ColorNoteController$1
   implements Runnable
 {
-  public ColorNoteController$1(amgo paramamgo) {}
+  public ColorNoteController$1(amgn paramamgn) {}
   
   public void run()
   {
-    amgo.a(this.this$0, true);
+    amgn.a(this.this$0, true);
   }
 }
 

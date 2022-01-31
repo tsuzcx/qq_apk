@@ -1,6 +1,21 @@
-public abstract interface otx
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class otx
+  implements Animation.AnimationListener
 {
-  public abstract void a(boolean paramBoolean);
+  otx(otw paramotw) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

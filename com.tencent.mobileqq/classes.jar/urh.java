@@ -1,46 +1,30 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class urh
-  extends sth<uqy, uqg>
+public class urh
+  extends QQUIEventReceiver<uqv, tkk>
 {
-  urh(uqy paramuqy)
+  public urh(@NonNull uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull uqg paramuqg)
+  public void a(@NonNull uqv paramuqv, @NonNull tkk paramtkk)
   {
-    if ((!paramuqg.jdField_a_of_type_JavaLangString.equals(uqy.a(paramuqy))) || (paramuqg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (uqy.a(paramuqy) == null))
+    if (uqv.a(paramuqv) == null)
     {
-      veg.b(this.TAG, "ignore this comment list event. %s.", paramuqg.toString());
+      ved.b(this.TAG, "ignore this user info event. %s.", paramtkk.toString());
       return;
     }
-    if (!uqy.a(paramuqy).c())
-    {
-      veg.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramuqg.toString() });
-      return;
-    }
-    veg.a(this.TAG, "receive comment list event. %s.", paramuqg.toString());
-    uqy.a(paramuqy).a(paramuqg.jdField_a_of_type_JavaUtilList, paramuqg.c);
-    uqy.a(paramuqy).a().updateVideoInfo(paramuqg.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (uqy.a(paramuqy).a().size() < 1)
-    {
-      uqy.a(paramuqy).b();
-      return;
-    }
-    paramuqy.a();
+    ved.a(this.TAG, "receive user info event. %s.", paramtkk.toString());
+    uqv.a(paramuqv).c();
   }
   
   public Class acceptEventClass()
   {
-    return uqg.class;
+    return tkk.class;
   }
-  
-  public void b(@NonNull uqy paramuqy, @NonNull uqg paramuqg) {}
 }
 
 

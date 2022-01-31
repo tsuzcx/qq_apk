@@ -1,11 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+
 class yvw
-  implements ywh
+  implements DialogInterface.OnKeyListener
 {
-  yvw(yvv paramyvv) {}
+  yvw(yvs paramyvs) {}
   
-  public void a(Object... paramVarArgs)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    yvv.a(this.a);
+    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
   }
 }
 

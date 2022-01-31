@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
 
 public abstract interface amxp
 {
   public abstract long a();
   
-  public abstract ExcitingTransferDownloadConfig a();
+  public abstract ExcitingTransferUploadChnConfigInfo a();
   
   public abstract boolean a();
 }

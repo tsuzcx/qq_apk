@@ -5,8 +5,8 @@ import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
 import java.lang.ref.WeakReference;
-import yvq;
-import yxs;
+import yvn;
+import yxp;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask
   implements Runnable
@@ -16,13 +16,13 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
   
   private void a(GdtMvAppBtnData paramGdtMvAppBtnData)
   {
-    yxs.a("FirstLoadDataTask", "postResultToUI() called with: tempAppBtnData = [" + paramGdtMvAppBtnData + "]");
+    yxp.a("FirstLoadDataTask", "postResultToUI() called with: tempAppBtnData = [" + paramGdtMvAppBtnData + "]");
     new Handler(Looper.getMainLooper()).post(new GdtMvDownloadBtnManager.FirstLoadDataTask.1(this, paramGdtMvAppBtnData));
   }
   
   public void run()
   {
-    yxs.a("FirstLoadDataTask", "run() called");
+    yxp.a("FirstLoadDataTask", "run() called");
     if (this.jdField_a_of_type_Boolean) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do
@@ -30,7 +30,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
       return;
       localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localGdtMvDownloadBtnManager == null) || (GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager) == null) || (TextUtils.isEmpty(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick())));
-    GdtMvAppBtnData localGdtMvAppBtnData = new yvq().a(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick(), "&gd=1", 1);
+    GdtMvAppBtnData localGdtMvAppBtnData = new yvn().a(GdtMvDownloadBtnManager.a(localGdtMvDownloadBtnManager).getUrlForClick(), "&gd=1", 1);
     if ((localGdtMvAppBtnData != null) && (localGdtMvAppBtnData.isValid()))
     {
       GdtMvDownloadBtnManager.a(localGdtMvAppBtnData.apkUrlhttp);
@@ -38,7 +38,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask
       a(localGdtMvAppBtnData);
       return;
     }
-    yxs.b("FirstLoadDataTask", "load gdt mv app btn data error");
+    yxp.b("FirstLoadDataTask", "load gdt mv app btn data error");
   }
 }
 

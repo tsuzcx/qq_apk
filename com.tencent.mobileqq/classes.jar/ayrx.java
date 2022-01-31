@@ -1,10 +1,26 @@
-public abstract interface ayrx
+public class ayrx
+  extends aysy
 {
-  public abstract void a();
+  public int a = 0;
+  public ayry a;
+  public ayrz a;
+  public ayui a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
   
-  public abstract boolean a();
-  
-  public abstract byte[] a(byte[] paramArrayOfByte);
+  public ayrx()
+  {
+    this.b = 0;
+  }
 }
 
 

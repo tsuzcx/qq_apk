@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegu;
+import aegs;
 import android.app.Dialog;
 
 public class AIOGalleryScene$24
   implements Runnable
 {
-  public AIOGalleryScene$24(aegu paramaegu) {}
+  public AIOGalleryScene$24(aegs paramaegs) {}
   
   public void run()
   {
-    aegu.a(this.this$0).show();
+    aegs.a(this.this$0).show();
   }
 }
 

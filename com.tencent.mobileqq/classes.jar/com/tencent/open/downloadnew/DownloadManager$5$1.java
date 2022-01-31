@@ -1,25 +1,25 @@
 package com.tencent.open.downloadnew;
 
-import bdht;
-import bdkp;
-import bdkv;
+import bdii;
+import bdle;
+import bdlk;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class DownloadManager$5$1
   implements Runnable
 {
-  public DownloadManager$5$1(bdkv parambdkv, TMAssistantDownloadClient paramTMAssistantDownloadClient, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
+  public DownloadManager$5$1(bdlk parambdlk, TMAssistantDownloadClient paramTMAssistantDownloadClient, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    bdht.b("DownloadManager_", "OnDownloadStateChanged,clientKey:" + this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient + ",state:" + this.jdField_a_of_type_Int + ",url:" + this.jdField_a_of_type_JavaLangString);
-    int i = bdkp.a(this.jdField_a_of_type_Int);
-    bdht.a("DownloadManager_", "onStateChanged url: +++++loacalState=" + i + " +++++downloadInfo=" + this.jdField_a_of_type_Bdkv.a.c(this.jdField_a_of_type_JavaLangString));
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bdkv.a.a(this.jdField_a_of_type_JavaLangString, i);
+    bdii.b("DownloadManager_", "OnDownloadStateChanged,clientKey:" + this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient + ",state:" + this.jdField_a_of_type_Int + ",url:" + this.jdField_a_of_type_JavaLangString);
+    int i = bdle.a(this.jdField_a_of_type_Int);
+    bdii.a("DownloadManager_", "onStateChanged url: +++++loacalState=" + i + " +++++downloadInfo=" + this.jdField_a_of_type_Bdlk.a.c(this.jdField_a_of_type_JavaLangString));
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bdlk.a.a(this.jdField_a_of_type_JavaLangString, i);
     if (localDownloadInfo == null)
     {
-      bdht.d("DownloadManager_", "OnDownloadSDKTaskStateChanged info == null");
+      bdii.d("DownloadManager_", "OnDownloadSDKTaskStateChanged info == null");
       return;
     }
     if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient != null) {}
@@ -35,34 +35,34 @@ public class DownloadManager$5$1
         l2 = localTMAssistantDownloadTaskInfo.mTotalDataLen;
         int j = (int)((float)l1 * 100.0F / (float)l2);
         localDownloadInfo.f = j;
-        bdht.a("DownloadManager_", "OnDownloadSDKTaskStateChanged info progress = " + j);
+        bdii.a("DownloadManager_", "OnDownloadSDKTaskStateChanged info progress = " + j);
         switch (i)
         {
         default: 
           return;
         case -2: 
-          this.jdField_a_of_type_Bdkv.a.a(localDownloadInfo, l1, l2, this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_Bdkv.a.a(-2, localDownloadInfo, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_Bdlk.a.a(localDownloadInfo, l1, l2, this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_Bdlk.a.a(-2, localDownloadInfo, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
           return;
         }
       }
       catch (Exception localException)
       {
-        bdht.c("DownloadManager_", "getDownloadTaskState>>>", localException);
+        bdii.c("DownloadManager_", "getDownloadTaskState>>>", localException);
         Object localObject = null;
         continue;
-        this.jdField_a_of_type_Bdkv.a.a(2, localDownloadInfo);
+        this.jdField_a_of_type_Bdlk.a.a(2, localDownloadInfo);
         return;
       }
-      this.jdField_a_of_type_Bdkv.a.a(localDownloadInfo, l1, l1 - localDownloadInfo.b, "pause");
-      this.jdField_a_of_type_Bdkv.a.a(3, localDownloadInfo);
+      this.jdField_a_of_type_Bdlk.a.a(localDownloadInfo, l1, l1 - localDownloadInfo.b, "pause");
+      this.jdField_a_of_type_Bdlk.a.a(3, localDownloadInfo);
       return;
-      this.jdField_a_of_type_Bdkv.a.a(localDownloadInfo, 0L, l2 - localDownloadInfo.b, "complete");
-      this.jdField_a_of_type_Bdkv.a.b(localDownloadInfo);
+      this.jdField_a_of_type_Bdlk.a.a(localDownloadInfo, 0L, l2 - localDownloadInfo.b, "complete");
+      this.jdField_a_of_type_Bdlk.a.b(localDownloadInfo);
       return;
-      this.jdField_a_of_type_Bdkv.a.a(20, localDownloadInfo);
+      this.jdField_a_of_type_Bdlk.a.a(20, localDownloadInfo);
       return;
-      this.jdField_a_of_type_Bdkv.a.a(10, localDownloadInfo);
+      this.jdField_a_of_type_Bdlk.a.a(10, localDownloadInfo);
       return;
       label448:
       long l2 = 0L;

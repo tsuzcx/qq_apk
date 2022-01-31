@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajnx;
-import ajof;
-import ajoi;
+import ajnv;
+import ajod;
+import ajog;
 
 public class ApolloGameUtil$6$6
   implements Runnable
 {
-  public ApolloGameUtil$6$6(ajnx paramajnx, String paramString, String[] paramArrayOfString, ajof paramajof) {}
+  public ApolloGameUtil$6$6(ajnv paramajnv, String paramString, String[] paramArrayOfString, ajod paramajod) {}
   
   public void run()
   {
-    ajoi.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajof);
+    ajog.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Ajod);
   }
 }
 

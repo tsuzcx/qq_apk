@@ -1,30 +1,29 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
-public class bgss
+class bgss
+  extends akgo
 {
-  public static long a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
-  }
+  bgss(bgsp parambgsp) {}
   
-  public static String a(Context paramContext, String paramString)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (paramString2 == null) {
-      return;
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 0);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
     }
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
+  }
+  
+  protected void d(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 1);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
   }
 }
 

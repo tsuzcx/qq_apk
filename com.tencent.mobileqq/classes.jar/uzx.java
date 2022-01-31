@@ -1,6 +1,8 @@
-public abstract interface uzx<T>
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public abstract interface uzx
 {
-  public abstract void a(T paramT);
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 

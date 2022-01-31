@@ -1,153 +1,113 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class pce
+  extends bbwt
 {
-  public static float a()
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<TroopMemberApiService> jdField_a_of_type_JavaLangRefWeakReference;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  
+  public pce(AppRuntime paramAppRuntime, String paramString, Bundle paramBundle, TroopMemberApiService paramTroopMemberApiService)
   {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
-    if (Build.MODEL.startsWith("NXT")) {
-      return localAladdinConfig.getFloatFromString("blow_level_android_huawei_mate_8", 0.95F);
-    }
-    return localAladdinConfig.getFloatFromString("blow_level_android", 1.0F);
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopMemberApiService);
   }
   
-  public static int a()
+  public void onCancel(bbwu parambbwu)
   {
-    int i = 0;
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
-    if (localAladdinConfig != null) {
-      i = localAladdinConfig.getIntegerFromString("zhitiao_feedsrefresh_type", 0);
-    }
-    return i;
-  }
-  
-  public static int a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("ReadInJoyNoteCardRspCount_" + paramString, "");
-    if (TextUtils.isEmpty(paramContext)) {}
-    for (;;)
+    super.onCancel(parambbwu);
+    Object localObject = parambbwu.a().getString("resId");
+    parambbwu = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
     {
-      return 0;
-      try
+      ((pzf)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
+      if (parambbwu != null)
       {
-        paramContext = new JSONObject(paramContext);
-        if (DateUtils.isToday(paramContext.optLong("timeStamp")))
-        {
-          int i = paramContext.optInt("count");
-          return i;
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+        ((Bundle)localObject).putInt("retCode", -1);
+        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("rate", 0);
+        parambbwu.a(107, (Bundle)localObject);
+        if (QLog.isDebugVersion()) {
+          QLog.d("ReadInJoySkinHelper", 4, "onCancel rsp:" + ((Bundle)localObject).toString());
         }
       }
-      catch (JSONException paramContext) {}
     }
-    return 0;
-  }
-  
-  public static String a()
-  {
-    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_maintext", "");
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt("ReadInJoyNoteCardShowGuideCountByRowKey_" + paramString, paramInt).apply();
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("timeStamp", System.currentTimeMillis());
-      localJSONObject.put("count", paramLong);
-      paramContext.putString("ReadInJoyNoteCardRspCount_" + paramString, localJSONObject.toString());
-      paramContext.apply();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("readinjoy", 4, "SkinDownloadListener onCancel");
     }
-    catch (JSONException localJSONException)
+  }
+  
+  public void onDone(bbwu parambbwu)
+  {
+    super.onDone(parambbwu);
+    Object localObject = parambbwu.a().getString("resId");
+    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString))
     {
-      for (;;)
+      ((pzf)this.jdField_a_of_type_MqqAppAppRuntime.getManager(261)).b(this);
+      if (localTroopMemberApiService != null)
       {
-        localJSONException.printStackTrace();
+        localObject = new Bundle();
+        if (parambbwu.jdField_a_of_type_Int != 0) {
+          break label169;
+        }
+        ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+        ((Bundle)localObject).putInt("retCode", 0);
+        ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("rate", 100);
+        localTroopMemberApiService.a(107, (Bundle)localObject);
       }
     }
-  }
-  
-  public static int b()
-  {
-    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_sum", 5);
-  }
-  
-  public static int b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ReadInJoyNoteCardShowGuideCountByRowKey_" + paramString, 0);
-  }
-  
-  public static String b()
-  {
-    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_smalltext", "");
-  }
-  
-  public static void b(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("timeStamp", System.currentTimeMillis());
-      localJSONObject.put("count", paramLong);
-      paramContext.putString("ReadInJoyTodayShowGuideCount_" + paramString, localJSONObject.toString());
-      paramContext.apply();
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public static int c()
-  {
-    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_daily", 3);
-  }
-  
-  public static int c(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("ReadInJoyTodayShowGuideCount_" + paramString, "");
-    if (TextUtils.isEmpty(paramContext)) {}
     for (;;)
     {
-      return 0;
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        if (DateUtils.isToday(paramContext.optLong("timeStamp")))
-        {
-          int i = paramContext.optInt("count");
-          return i;
-        }
+      if (QLog.isDebugVersion()) {
+        QLog.d("ReadInJoySkinHelper", 4, "onDone rsp:" + ((Bundle)localObject).toString());
       }
-      catch (JSONException paramContext) {}
+      if (QLog.isColorLevel()) {
+        QLog.d("readinjoy", 4, "SkinDownloadListener onDone");
+      }
+      return;
+      label169:
+      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+      ((Bundle)localObject).putInt("retCode", parambbwu.jdField_a_of_type_Int);
+      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+      ((Bundle)localObject).putInt("rate", 0);
+      localTroopMemberApiService.a(107, (Bundle)localObject);
     }
-    return 0;
   }
   
-  public static String c()
+  public void onProgress(bbwu parambbwu)
   {
-    return Aladdin.getConfig(217).getString("zhitiao_feeds_text", "");
+    super.onProgress(parambbwu);
+    Object localObject = parambbwu.a().getString("resId");
+    TroopMemberApiService localTroopMemberApiService = (TroopMemberApiService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString)) && (localTroopMemberApiService != null))
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq"));
+      ((Bundle)localObject).putInt("retCode", 0);
+      ((Bundle)localObject).putString("skinId", this.jdField_a_of_type_JavaLangString);
+      int i = (int)(parambbwu.b * 100L / parambbwu.jdField_a_of_type_Long);
+      ((Bundle)localObject).putInt("rate", i);
+      if (i != 100) {
+        localTroopMemberApiService.a(107, (Bundle)localObject);
+      }
+    }
+  }
+  
+  public boolean onStart(bbwu parambbwu)
+  {
+    return super.onStart(parambbwu);
   }
 }
 

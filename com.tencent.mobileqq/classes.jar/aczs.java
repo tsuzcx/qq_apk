@@ -1,51 +1,35 @@
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.NinePatch;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczs
+  extends AsyncTask<String, Void, Bitmap>
 {
-  public Bitmap a;
-  public NinePatch a;
+  public aczs(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void a()
+  protected Bitmap a(String... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
+    return null;
   }
   
-  public void a(Bitmap paramBitmap)
+  protected void a(Bitmap paramBitmap)
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
-      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
-        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
-  }
-  
-  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
-      if (paramPaint != null) {
-        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
-      }
-    }
-    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 

@@ -1,14 +1,16 @@
-public class msr
+import android.app.PendingIntent;
+
+class msr
 {
-  public int a;
-  public String a;
-  public int b = 0;
-  public int c = 0;
+  public final int a;
+  public final PendingIntent a;
+  public final String a;
   
-  msr()
+  public msr(int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
   }
 }
 

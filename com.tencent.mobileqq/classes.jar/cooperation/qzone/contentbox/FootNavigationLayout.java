@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhcd;
-import bhcv;
+import bhcu;
+import bhdm;
 import java.util.ArrayList;
 
 public class FootNavigationLayout
@@ -44,15 +44,15 @@ public class FootNavigationLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131561988, this);
+    LayoutInflater.from(getContext()).inflate(2131561987, this);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131368402));
-    this.jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[] { (ViewGroup)findViewById(2131366288), (ViewGroup)findViewById(2131375752), (ViewGroup)findViewById(2131377232) };
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)findViewById(2131366289), (ImageView)findViewById(2131375753), (ImageView)findViewById(2131377233) };
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[] { (TextView)findViewById(2131366290), (TextView)findViewById(2131375754), (TextView)findViewById(2131377234) };
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { null, findViewById(2131365271), findViewById(2131365272) };
+    this.jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[] { (ViewGroup)findViewById(2131366288), (ViewGroup)findViewById(2131375754), (ViewGroup)findViewById(2131377234) };
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)findViewById(2131366289), (ImageView)findViewById(2131375755), (ImageView)findViewById(2131377235) };
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[] { (TextView)findViewById(2131366290), (TextView)findViewById(2131375756), (TextView)findViewById(2131377236) };
+    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { null, findViewById(2131365270), findViewById(2131365271) };
   }
   
-  public void a(ArrayList<bhcv> paramArrayList)
+  public void a(ArrayList<bhdm> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -85,8 +85,8 @@ public class FootNavigationLayout
       break label20;
       break;
       label85:
-      bhcv localbhcv = (bhcv)paramArrayList.get(i);
-      if ((localbhcv == null) || (TextUtils.isEmpty(localbhcv.a)) || (TextUtils.isEmpty(localbhcv.a.trim())))
+      bhdm localbhdm = (bhdm)paramArrayList.get(i);
+      if ((localbhdm == null) || (TextUtils.isEmpty(localbhdm.a)) || (TextUtils.isEmpty(localbhdm.a.trim())))
       {
         if (localViewGroup != null) {
           localViewGroup.setVisibility(8);
@@ -101,9 +101,9 @@ public class FootNavigationLayout
         {
           localViewGroup.setVisibility(0);
           if (localTextView != null) {
-            localTextView.setText(localbhcv.a);
+            localTextView.setText(localbhdm.a);
           }
-          localViewGroup.setOnClickListener(new bhcd(this, localbhcv, i));
+          localViewGroup.setOnClickListener(new bhcu(this, localbhdm, i));
         }
         if (localView != null) {
           localView.setVisibility(0);
@@ -153,7 +153,7 @@ public class FootNavigationLayout
       {
         localObject2 = localObject1[i];
         if (localObject2 != null) {
-          localObject2.setBackgroundResource(2130847511);
+          localObject2.setBackgroundResource(2130847517);
         }
         i += 1;
       }
@@ -177,7 +177,7 @@ public class FootNavigationLayout
     {
       localObject2 = localObject1[i];
       if (localObject2 != null) {
-        localObject2.setBackgroundResource(2130847510);
+        localObject2.setBackgroundResource(2130847516);
       }
       i += 1;
     }

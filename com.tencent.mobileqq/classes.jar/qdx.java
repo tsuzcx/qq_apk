@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-
-public final class qdx
-  implements Parcelable.Creator<UrlJumpInfo>
+public class qdx
 {
-  public UrlJumpInfo a(Parcel paramParcel)
-  {
-    return new UrlJumpInfo(paramParcel);
-  }
-  
-  public UrlJumpInfo[] a(int paramInt)
-  {
-    return new UrlJumpInfo[paramInt];
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

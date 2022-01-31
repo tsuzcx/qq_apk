@@ -1,28 +1,13 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class pkf
-  implements View.OnAttachStateChangeListener
+public class pkf
+  implements ViewBase.IBuilder
 {
-  pkf(pkd parampkd, osp paramosp) {}
-  
-  public void onViewAttachedToWindow(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    osm.a().a(this.jdField_a_of_type_Osp);
-    if ((pkd.a(this.jdField_a_of_type_Pkd) != null) && (pkd.a(this.jdField_a_of_type_Pkd).fusionBiuInfo != null) && (!pkd.a(this.jdField_a_of_type_Pkd).fusionBiuInfo.b) && (pkd.a(this.jdField_a_of_type_Pkd) == 1) && (!pkd.a(this.jdField_a_of_type_Pkd)) && (rmc.a().a()))
-    {
-      osm.a().e();
-      pkd.a(this.jdField_a_of_type_Pkd, true);
-    }
-  }
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    osm.a().b(this.jdField_a_of_type_Osp);
-    pkd.a(this.jdField_a_of_type_Pkd).removeCallbacksAndMessages(null);
+    return new pke(paramVafContext);
   }
 }
 

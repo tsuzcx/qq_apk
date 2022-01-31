@@ -1,12 +1,21 @@
-import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.ui.vnode.PTSNodeVirtual.IBuilder;
+import com.tencent.qphone.base.util.QLog;
 
 public class pqe
-  implements PTSNodeVirtual.IBuilder<pqc>
 {
-  public pqc a(PTSAppInstance paramPTSAppInstance)
+  public static void a(String paramString1, String paramString2)
   {
-    return new pqc(paramPTSAppInstance, null);
+    a("0X800A833", "", "", "", new pqf().a("type", paramString2).a("msg", paramString1).a());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    QLog.i("PTSReport", 1, "[reportData], actionName = " + paramString1 + ", r2 = " + paramString2 + ", r3 = " + paramString3 + ", r4 = " + paramString4 + ", r5 = " + paramString5);
+    nol.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a("0X800A832", "", "", "", new pqf().a("type", paramString2).a("msg", paramString1).a());
   }
 }
 

@@ -1,52 +1,13 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-
-class bhnl
-  implements ModuleDownloadListener
+public abstract class bhnl
 {
-  bhnl(bhni parambhni) {}
+  public static bhnl a = new bhnm();
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public int a()
   {
-    if (!paramString.equals("libandroidndkbeauty.so")) {}
-    for (;;)
-    {
-      return;
-      String str = bhni.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-      if (paramString.exists()) {}
-      try
-      {
-        bhni.a(paramString, new File(bhni.a.getPath() + "/libandroidndkbeauty.zip"));
-        paramString = new File(str);
-        if (!paramString.exists()) {
-          paramString.mkdirs();
-        }
-        if (this.a.a(bhni.b, false)) {
-          continue;
-        }
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
-        bhnq.b(new File(bhni.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
+    return 1;
   }
+  
+  public abstract boolean a();
 }
 
 

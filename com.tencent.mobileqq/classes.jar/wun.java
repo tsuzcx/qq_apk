@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class wun
-  implements View.OnClickListener
+public abstract class wun
+  implements URLDrawable.URLDrawableListener
 {
-  public wun(VideoPlayerView paramVideoPlayerView) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onClick(View paramView)
-  {
-    if (xeq.a("mLLSkipForwardWrapper", 500L))
-    {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.c(this.a)), 0, 1, true);
-      if (VideoPlayerView.a(this.a) != null) {
-        this.a.a(VideoPlayerView.a(this.a).a() + 10000L);
-      }
-    }
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

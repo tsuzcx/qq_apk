@@ -1,68 +1,57 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmi
-  extends syv<tog>
+  extends sys<tof>
 {
-  public final String a;
-  public final int c;
-  public final int d;
-  public final int e;
+  public static final String a;
+  public List<String> a;
   
-  public tmi(String paramString, int paramInt)
+  static
   {
-    this(paramString, paramInt, 0, 0);
-  }
-  
-  public tmi(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramString == null) {
-      throw new IllegalArgumentException("mCookie should not be null");
-    }
-    if (paramInt1 <= 0) {
-      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
-    }
-    this.a = paramString;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
+    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.feed_feature_775");
   }
   
   public String a()
   {
-    return sxp.a("StorySvc.video_emoticon_get");
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
+    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
     try
     {
-      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
-      return new tog(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
+      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
+      return new tof(localRspGetBatchFeedFeature);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
-    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGetEmoticonPackList.count.set(this.c);
-    return localReqGetEmoticonPackList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
+    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 

@@ -1,30 +1,30 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
-class rnw
-  implements wxw
+public class rnw
+  extends Handler
 {
-  rnw(rnu paramrnu) {}
-  
-  public void a(Bundle paramBundle)
+  public rnw(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    int i = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "config = " + i);
-    }
-    if (i == 0) {
-      WxShareHelperFromReadInjoy.a().a(rnu.b(this.a), rnu.a(this.a), 1, false);
-    }
-    for (;;)
-    {
-      rnu.a(this.a).recycle();
-      rnu.a(this.a, null);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
       return;
-      WXShareHelper.a().a(rnu.b(this.a), rnu.a(this.a), 1, false);
     }
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    nol.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 

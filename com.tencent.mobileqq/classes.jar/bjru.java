@@ -1,33 +1,22 @@
-import android.text.InputFilter.LengthFilter;
-import android.text.Spanned;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-class bjru
-  extends InputFilter.LengthFilter
+public class bjru
+  extends bjan
 {
-  boolean jdField_a_of_type_Boolean = true;
+  private bbww jdField_a_of_type_Bbww;
+  private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
   
-  bjru(bjrt parambjrt, int paramInt1, int paramInt2)
+  public PtvTemplateManager.PtvTemplateInfo a()
   {
-    super(paramInt1);
+    return this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a() {}
+  
+  public void b()
   {
-    if (this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3)) <= 0)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        vel.a("textEdit", "overLimit", bjrh.b(this.jdField_a_of_type_Bjrt.a), 0, new String[0]);
-        this.jdField_a_of_type_Boolean = false;
-      }
-      if (bjrh.a(this.jdField_a_of_type_Bjrt.a) != null) {
-        bcpw.a(this.jdField_a_of_type_Bjrt.getContext(), ajyc.a(2131714426) + bjrh.a(this.jdField_a_of_type_Bjrt.a).c + ajyc.a(2131714412), 0).a();
-      }
-    }
-    for (;;)
-    {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Bbww != null) {
+      this.jdField_a_of_type_Bbww.onDestroy();
     }
   }
 }

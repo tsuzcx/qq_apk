@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import apcy;
+import apdc;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,7 +10,7 @@ import java.net.URLConnection;
 public class UniformDownloadMgr$7
   implements Runnable
 {
-  public UniformDownloadMgr$7(apcy paramapcy, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$7(apdc paramapdc, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
@@ -39,8 +39,8 @@ public class UniformDownloadMgr$7
       }
     }
     this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", l);
-    apcy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    apcy.b(this.this$0);
+    apdc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    apdc.b(this.this$0);
   }
 }
 

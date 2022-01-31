@@ -1,8 +1,25 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bbjy
+final class bbjy
+  extends akat
 {
-  public abstract void a(boolean paramBoolean, ArrayList<bbjx> paramArrayList);
+  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  {
+    if (paramakau != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(256);
+      localStringBuilder.append("StatictisInfo[ ");
+      localStringBuilder.append("appSeq: " + paramakau.jdField_a_of_type_Int);
+      localStringBuilder.append("errCode: " + paramakau.b);
+      localStringBuilder.append("retryCount: " + paramakau.c);
+      localStringBuilder.append("detailErrorReason: " + paramakau.jdField_a_of_type_Long);
+      localStringBuilder.append("timeoutReason: " + paramakau.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" ]");
+      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
+      return;
+    }
+    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+  }
 }
 
 

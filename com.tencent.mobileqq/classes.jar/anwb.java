@@ -1,23 +1,52 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class anwb
+class anwb
+  extends anwe
 {
-  public double a;
-  public float a = 1.0F;
-  public int a;
-  public Drawable a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Drawable b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  anwb(anvx paramanvx, ajvn paramajvn, anwv paramanwv, Object paramObject)
+  {
+    super(paramanvx, paramajvn);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    ??? = (ajvn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    int i = paramEmoticonResp.epId;
+    int j = paramEmoticonResp.timestamp;
+    Object localObject1 = (ArrayList)paramEmoticonResp.data;
+    if ((this.jdField_a_of_type_Anwv.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Anwv.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
+    {
+      ((ajvn)???).b(this);
+      this.jdField_a_of_type_Anwv.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Anwv.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
+      this.jdField_a_of_type_Anwv.b = paramEmoticonResp.timeoutReason;
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        ??? = this.jdField_a_of_type_Anvx.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
+        if (localObject1 == null)
+        {
+          localObject1 = "null";
+          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
+          return;
+        }
+      }
+      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+    }
+  }
 }
 
 

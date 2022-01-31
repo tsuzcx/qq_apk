@@ -1,6 +1,6 @@
-public class bbys
+public abstract interface bbys
 {
-  public static final String a = lco.f() + "config.json";
+  public abstract void a(boolean paramBoolean);
 }
 
 

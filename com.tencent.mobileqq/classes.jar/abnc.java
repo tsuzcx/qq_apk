@@ -1,72 +1,54 @@
-import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.mobileqq.widget.QQTabHost;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class abnc
-  implements bcpl
+  extends abne
 {
-  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  protected View a;
+  protected String a;
+  protected boolean a;
   
-  public abnc(MainFragment paramMainFragment) {}
-  
-  private void a(View paramView, ArrayList<View> paramArrayList)
+  public abnc(View paramView, String paramString)
   {
-    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
-    for (;;)
-    {
-      return;
-      paramView = (ViewGroup)paramView;
-      if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
-        paramArrayList.add(paramView);
-      }
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        a(paramView.getChildAt(i), paramArrayList);
-        i += 1;
-      }
-    }
+    super(null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    View localView = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentView();
-    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    super.onClick(paramView);
+    try
     {
-      localObject1 = new ArrayList();
-      a(localView, (ArrayList)localObject1);
-      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
-    }
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (View)((Iterator)localObject1).next();
-      if ((localObject2 instanceof FPSXListView)) {
-        ((FPSXListView)localObject2).b(paramBoolean);
-      } else if ((localObject2 instanceof FPSSwipListView)) {
-        ((FPSSwipListView)localObject2).a(paramBoolean);
+      if (QSecFramework.a().a(1001).booleanValue()) {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramView = this.jdField_a_of_type_AndroidViewView;
+          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), paramView }, null);
+          this.jdField_a_of_type_Boolean = false;
+          if (QLog.isColorLevel()) {
+            QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+          }
+        }
+        else
+        {
+          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+          if (QLog.isColorLevel())
+          {
+            QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+        }
       }
     }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a(false);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    a(true);
+    catch (Exception paramView)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", paramView);
+      }
+    }
   }
 }
 

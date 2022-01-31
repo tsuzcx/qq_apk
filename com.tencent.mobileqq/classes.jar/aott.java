@@ -1,16 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
 
 public class aott
-  implements View.OnClickListener
+  extends apvf
 {
-  public aott(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public aott(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    QfileRecentPicFileTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

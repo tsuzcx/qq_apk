@@ -10,14 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bgtr;
-import bgvo;
+import bgui;
+import bgwf;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class ReaderSplashPageFragment
   extends WebViewFragment
 {
-  private bgtr a;
+  private bgui a;
   
   private ViewGroup a(Context paramContext)
   {
@@ -43,9 +43,9 @@ public class ReaderSplashPageFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bgvo.e("ReaderSplashPageFragment", "onCreate");
+    bgwf.e("ReaderSplashPageFragment", "onCreate");
     paramBundle = getActivity();
-    this.a = new bgtr(paramBundle);
+    this.a = new bgui(paramBundle);
     Intent localIntent = a();
     if ((localIntent != null) && (localIntent.getExtras() != null))
     {
@@ -55,7 +55,7 @@ public class ReaderSplashPageFragment
       return;
     }
     paramBundle.finish();
-    bgvo.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
+    bgwf.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -69,7 +69,7 @@ public class ReaderSplashPageFragment
   
   public void onDestroy()
   {
-    bgvo.e("ReaderSplashPageFragment", "onDestroy");
+    bgwf.e("ReaderSplashPageFragment", "onDestroy");
     if (this.a != null) {
       this.a.b();
     }

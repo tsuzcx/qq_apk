@@ -1,10 +1,8 @@
-import java.util.List;
-
 public abstract interface bkjs
 {
-  public abstract void a(long paramLong);
+  public abstract void a(bkjr parambkjr);
   
-  public abstract void a(List<Long> paramList);
+  public abstract void a(bkjr parambkjr, int paramInt);
 }
 
 

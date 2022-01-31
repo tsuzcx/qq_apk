@@ -1,24 +1,13 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijq
-  extends aijy
+  implements View.OnClickListener
 {
-  public aijq(SpecailCareListActivity paramSpecailCareListActivity)
-  {
-    super(paramSpecailCareListActivity, null);
-  }
+  public aijq(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if (this.a.d != 0) {
-      this.a.b = true;
-    }
-    while ((paramInt2 != 200) || (paramBitmap == null)) {
-      return;
-    }
-    this.a.a.notifyDataSetChanged();
-  }
+  public void onClick(View paramView) {}
 }
 
 

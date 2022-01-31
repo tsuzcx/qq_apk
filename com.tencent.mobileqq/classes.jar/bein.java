@@ -1,6 +1,17 @@
-public abstract interface bein
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
+
+public class bein
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
+  public bein(PermissionSettingFragment paramPermissionSettingFragment, CompoundButton paramCompoundButton) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
+  }
 }
 
 

@@ -1,70 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.remote.IServiceHandler.Stub;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
-final class bhla
-  implements anyb
+public class bhla
+  implements ServiceConnection
 {
-  bhla(EditText paramEditText) {}
+  public bhla(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public void a(anyc paramanyc)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((paramanyc == null) || (this.a == null)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramanyc instanceof aocr));
-      i = this.a.getSelectionStart();
-      j = this.a.getSelectionEnd();
-    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
-    this.a.getEditableText().replace(i, j, ayla.c(((aocr)paramanyc).a));
-  }
-  
-  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
-  
-  public boolean a(anyc paramanyc)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a == null) {}
-    for (;;)
-    {
-      return;
-      if (this.a.getSelectionStart() != 0) {
-        try
-        {
-          Editable localEditable = this.a.getText();
-          int i = this.a.getSelectionStart();
-          int j = TextUtils.getOffsetBefore(this.a.getText(), i);
-          if (i != j)
-          {
-            localEditable.delete(Math.min(i, j), Math.max(i, j));
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
     }
+    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
+    if (RemoteServiceProxy.access$000(this.a) != null)
+    {
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
+      this.a.sendMsg(paramComponentName);
+    }
+    this.a.onBaseServiceConnected();
   }
   
-  public void b(anyc paramanyc) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    }
+    this.a.serviceHandler = null;
+  }
 }
 
 

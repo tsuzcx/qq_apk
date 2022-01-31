@@ -1,33 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
 
 public class baqf
-  implements bfpe
+  implements View.OnClickListener
 {
-  public baqf(WheelPickerLayout paramWheelPickerLayout) {}
+  public baqf(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
-    WheelPickerLayout.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
   }
 }
 

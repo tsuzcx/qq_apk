@@ -12,7 +12,7 @@ public class atvn
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (NearbyMomentFragment.a(this.a) == 2) {
+    if (NearbyMomentFragment.a(this.a) == 0) {
       NearbyMomentFragment.a(this.a).setVisibility(8);
     }
   }
@@ -21,10 +21,10 @@ public class atvn
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (NearbyMomentFragment.a(this.a) == 2)
+    if (NearbyMomentFragment.a(this.a) == 0)
     {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
       NearbyMomentFragment.a(this.a).setVisibility(0);
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
     }
   }
 }

@@ -1,18 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class bjdt
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public bjdt(HummingActivity paramHummingActivity) {}
+  public void a() {}
   
-  public void onClick(View paramView)
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (bjdp.b()) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      b();
+      return;
+    case 2: 
+      c();
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      d();
+      return;
+    case 5: 
+      e();
+      return;
+    case 6: 
+      f();
       return;
     }
-    HummingActivity.a(this.a);
+    g();
   }
 }
 

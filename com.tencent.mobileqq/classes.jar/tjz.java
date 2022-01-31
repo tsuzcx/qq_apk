@@ -1,58 +1,43 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class tjz
+  extends tjd
+  implements syq<tkb, tkc>
 {
-  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  public List<String> a = new ArrayList();
   
-  @Nullable
-  public static tnf a(String paramString, List<tnf> paramList)
+  public tjz(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      tnf localtnf = (tnf)paramList.next();
-      if (paramString.equals(localtnf.a)) {
-        return localtnf;
-      }
-    }
-    return null;
+    this.a.add(paramString);
   }
   
-  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  public void a()
   {
-    veg.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
-    if (paramBoolean)
+    tkb localtkb = new tkb();
+    localtkb.c = 1;
+    localtkb.a = this.a;
+    syo.a().a(localtkb, this);
+  }
+  
+  public void a(@NonNull tkb paramtkb, @Nullable tkc paramtkc, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramtkb = new tka(paramErrorMessage);
+    if ((paramErrorMessage.isSuccess()) && (paramtkc != null) && (paramtkc.a != null))
     {
-      localObject = paramList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)a.get(str);
-        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
-        {
-          ((Iterator)localObject).remove();
-          veg.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
-        }
-        else
-        {
-          a.put(str, Long.valueOf(System.currentTimeMillis()));
-        }
-      }
+      paramtkb.a = paramtkc.a;
+      b();
     }
-    if (paramList.size() == 0) {
+    for (;;)
+    {
+      stb.a().dispatch(paramtkb);
       return;
+      c();
     }
-    veg.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
-    Object localObject = new tne(paramList);
-    syr.a().a((syv)localObject, new tka(paramList));
   }
 }
 

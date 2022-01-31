@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import anmw;
-import ayki;
+import annb;
+import aykk;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -12,7 +12,7 @@ public class MessageForInteractAndFollow
   public static final int TYPE_FOLLOW = 2;
   public static final int TYPE_INTERACT = 1;
   public static final int TYPE_MOMENT = 3;
-  public ayki context;
+  public aykk context;
   public int msgBoxUnreadCount;
   public String rawContext;
   public long timeStamp;
@@ -27,7 +27,7 @@ public class MessageForInteractAndFollow
     this.rawContext = paramObjectInput.readUTF();
     this.timeStamp = paramObjectInput.readLong();
     this.time = this.timeStamp;
-    this.context = anmw.a(this.rawContext, 14);
+    this.context = annb.a(this.rawContext, 14);
   }
   
   private void writeExternal(ObjectOutput paramObjectOutput)

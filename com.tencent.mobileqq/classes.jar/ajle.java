@@ -1,12 +1,12 @@
-public class ajle
+public abstract interface ajle
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "0";
-  public String g = "0";
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(String[] paramArrayOfString);
 }
 
 

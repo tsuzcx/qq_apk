@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import org.json.JSONArray;
 
 public class ahdl
 {
-  public static final IRedPacket a = new ahdm();
+  public int a;
+  public String a;
+  public JSONArray a;
+  public int b;
+  public String b;
+  public JSONArray b;
+  public int c;
+  public String c;
+  public JSONArray c;
+  public String d;
+  public JSONArray d;
+  public String e;
+  public JSONArray e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

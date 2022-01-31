@@ -1,34 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class adxi
-  implements View.OnTouchListener
+public class adxi
+  extends acuj
 {
-  final acxn jdField_a_of_type_Acxn;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new adxj(this));
-  View jdField_a_of_type_AndroidViewView = null;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public View c;
+  public TextView c;
   
-  public adxi(adxg paramadxg, acxn paramacxn)
-  {
-    this.jdField_a_of_type_Acxn = paramacxn;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Acxn != null) {
-      this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
-  }
+  public adxi(adxe paramadxe) {}
 }
 
 

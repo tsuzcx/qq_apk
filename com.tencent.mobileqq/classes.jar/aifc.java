@@ -1,72 +1,93 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import com.tencent.mobileqq.data.Groups;
+import java.util.ArrayList;
+import java.util.List;
 
-class aifc
-  implements baxl
+public class aifc
+  extends BaseAdapter
 {
-  protected baxk a;
-  boolean jdField_a_of_type_Boolean = true;
+  public aifc(SelectMemberFromFriendGroup paramSelectMemberFromFriendGroup) {}
   
-  public aifc(aieu paramaieu, Context paramContext, AppInterface paramAppInterface)
+  public int getCount()
   {
-    this.jdField_a_of_type_Baxk = new baxk(paramContext, paramAppInterface);
-    this.jdField_a_of_type_Baxk.a(this);
+    return SelectMemberFromFriendGroup.a(this.a).size();
   }
   
-  private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
+  public Object getItem(int paramInt)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_Baxk == null) {
-      localObject = null;
-    }
-    Bitmap localBitmap;
-    do
+    return SelectMemberFromFriendGroup.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      return localObject;
-      localBitmap = this.jdField_a_of_type_Baxk.b(paramInt1, paramString, paramInt2);
-      localObject = localBitmap;
-    } while (localBitmap != null);
-    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
-    this.jdField_a_of_type_Baxk.a(paramString, paramInt1, true, paramByte);
-    return bbdr.a();
-  }
-  
-  public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    return a(paramTroopMemberInfo.memberuin, 1, (byte)0, 0);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Baxk != null)
-      {
-        this.jdField_a_of_type_Baxk.d();
-        this.jdField_a_of_type_Baxk = null;
+      paramView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).inflate(2131560144, null);
+      paramViewGroup = new aife(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364192));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367176));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131367177));
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(new aifd(this));
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
+      int i = paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
+      paramViewGroup.b.setText("" + i);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramViewGroup);
+      if (!this.a.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups)) {
+        break label224;
       }
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_Baxk = null;
+      if (SelectMemberFromFriendGroup.a(this.a).size() != 1) {
+        break label258;
       }
+      paramView.setBackgroundResource(2130839176);
+      return paramView;
+      paramViewGroup = (aife)paramView.getTag();
+      break;
+      label224:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups));
     }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    label258:
+    if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
+    {
+      if (paramInt == 0)
+      {
+        paramView.setBackgroundResource(2130839185);
+        return paramView;
+      }
+      paramView.setBackgroundResource(2130839176);
+      return paramView;
     }
-    aieu.a(this.jdField_a_of_type_Aieu, paramString, paramBitmap);
+    if (paramInt == 0)
+    {
+      paramView.setBackgroundResource(2130839185);
+      return paramView;
+    }
+    if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1)
+    {
+      paramView.setBackgroundResource(2130839176);
+      return paramView;
+    }
+    paramView.setBackgroundResource(2130839179);
+    return paramView;
   }
 }
 

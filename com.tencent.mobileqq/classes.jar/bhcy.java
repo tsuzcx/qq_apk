@@ -1,49 +1,34 @@
-import NS_QZONE_MQMSG.QzoneMessageReq;
-import com.qq.taf.jce.JceStruct;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import java.lang.ref.WeakReference;
 
 public class bhcy
-  extends bgxt
+  implements VipResourcesListener
 {
-  private int a;
-  public JceStruct a;
+  private int jdField_a_of_type_Int;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<ImageView> b;
   
-  public bhcy(long paramLong1, String paramString, long paramLong2, int paramInt)
+  public bhcy(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
   {
-    QzoneMessageReq localQzoneMessageReq = new QzoneMessageReq();
-    localQzoneMessageReq.uin = paramLong1;
-    localQzoneMessageReq.trace_info = paramString;
-    localQzoneMessageReq.num = paramLong2;
-    localQzoneMessageReq.ext = new HashMap();
-    localQzoneMessageReq.ext.put("qua", bgxr.a());
-    localQzoneMessageReq.scence = paramInt;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localQzoneMessageReq;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
+    this.b = new WeakReference(paramImageView);
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String getCmdString()
-  {
-    return "QzoneNewService.GetNewMQmsg";
-  }
+  public void onFailed() {}
   
-  public JceStruct getReq()
+  public void onLoaded(Drawable paramDrawable)
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return "GetNewMQmsg";
+    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramDrawable != null) && (localHandler != null)) {
+      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
+    }
   }
 }
 

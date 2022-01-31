@@ -1,33 +1,40 @@
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class adsk
-  implements bfoq
+  extends ClickableSpan
 {
-  adsk(adsj paramadsj, bfol parambfol) {}
+  private WeakReference<QQAppInterface> a;
+  private WeakReference<Context> b;
   
-  public void OnClick(View paramView, int paramInt)
+  adsk(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Bfol.dismiss();
-    switch (paramInt)
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (QQAppInterface)this.a.get();
+    if (((this.b.get() instanceof Activity)) && (paramView != null))
     {
-    }
-    do
-    {
-      return;
-    } while (this.jdField_a_of_type_Adsj.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_Adsj.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramView = (ajsz)this.jdField_a_of_type_Adsj.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (paramView != null) {
-        paramView.a(l);
+      if (QLog.isColorLevel()) {
+        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
       }
-      axqw.b(this.jdField_a_of_type_Adsj.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Adsj.jdField_a_of_type_Int), "", "");
-      return;
+      HotChatManager.a(null, false);
     }
-    catch (NumberFormatException paramView) {}
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

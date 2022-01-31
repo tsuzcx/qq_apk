@@ -1,6 +1,8 @@
 public abstract interface bkso
 {
-  public abstract void a(String paramString);
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,28 +1,50 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.graphics.RectF;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bcom
-  implements View.OnClickListener
+public final class bcom
 {
-  public bcom(ProfileCardMoreInfoView paramProfileCardMoreInfoView, String paramString, int paramInt, View paramView) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  public aykk a;
+  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<aykk> b = new ArrayList();
   
-  public void onClick(View paramView)
+  private bcom(aykk paramaykk)
   {
-    if ((awfy.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
+    this.jdField_a_of_type_Aykk = paramaykk;
+  }
+  
+  private void a(RectF paramRectF, aykk paramaykk)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      paramView = new Bundle();
-      paramView.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
-      paramView.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
-      paramView.putInt("from_type", 2);
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, paramView, -1);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label63;
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      auvq.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      axqw.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+      if (!paramRectF.equals((RectF)localIterator.next())) {
+        break label91;
+      }
+      i = 1;
+    }
+    label63:
+    label91:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j == 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
+        this.b.add(paramaykk);
+      }
+      return;
     }
   }
 }

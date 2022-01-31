@@ -1,27 +1,66 @@
-import android.view.View;
+import android.text.TextUtils;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
 
 public class rae
-  implements View.OnClickListener
 {
-  public rae(KandianProgressView paramKandianProgressView) {}
+  public int a;
+  public long a;
+  public View.OnClickListener a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void onClick(View paramView)
+  public rae()
   {
-    if (this.a.jdField_a_of_type_Raf == null) {
-      return;
-    }
-    switch (paramView.getId())
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_c_of_type_Int = -1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof rae))
     {
-    default: 
-      return;
-    case 2131364996: 
-    case 2131365011: 
-      this.a.jdField_a_of_type_Raf.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
+      paramObject = (rae)paramObject;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (this.d == paramObject.d)
+        {
+          bool1 = bool2;
+          if (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int)
+          {
+            bool1 = bool2;
+            if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+            {
+              bool1 = bool2;
+              if (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int)
+              {
+                bool1 = bool2;
+                if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString))
+                {
+                  bool1 = bool2;
+                  if (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString))
+                  {
+                    bool1 = bool2;
+                    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    this.a.jdField_a_of_type_Raf.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+    return bool1;
   }
 }
 

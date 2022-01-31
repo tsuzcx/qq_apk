@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import mqq.app.AppActivity;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class abzb
-  implements DialogInterface.OnClickListener
+  implements bbzb
 {
-  public abzb(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
+  private final WeakReference<RegisterQQNumberActivity> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abzb(RegisterQQNumberActivity paramRegisterQQNumberActivity)
   {
-    if (paramInt == 1)
-    {
-      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
+    this.a = new WeakReference(paramRegisterQQNumberActivity);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
       }
     }
+    RegisterQQNumberActivity localRegisterQQNumberActivity;
+    do
+    {
+      return;
+      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
+    } while (localRegisterQQNumberActivity == null);
+    localRegisterQQNumberActivity.a(paramString, paramBoolean);
   }
 }
 

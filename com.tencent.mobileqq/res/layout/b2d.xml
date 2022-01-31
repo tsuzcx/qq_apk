@@ -51,6 +51,7 @@
             <include android:id="@id/f55" layout="@layout/b2g" />
             <include android:id="@id/f5a" layout="@layout/b2g" />
             <include android:id="@id/f5c" layout="@layout/b2g" />
+            <include android:id="@id/d2_" layout="@layout/b2g" />
             <include android:id="@id/aoc" layout="@layout/b2g" />
             <include android:id="@id/f4a" layout="@layout/b2g" />
             <include android:id="@id/bch" layout="@layout/b2g" />

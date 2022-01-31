@@ -1,6 +1,6 @@
 package cooperation.qzone.font;
 
-import bhdk;
+import bheb;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -8,19 +8,19 @@ import java.io.File;
 public class FontManager$4
   implements Runnable
 {
-  public FontManager$4(bhdk parambhdk, String paramString, int paramInt) {}
+  public FontManager$4(bheb parambheb, String paramString, int paramInt) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
     }
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(bhdk.a(this.this$0, this.jdField_a_of_type_Int)))) {
-      bhdk.a(this.this$0, this.jdField_a_of_type_Int);
+    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(bheb.a(this.this$0, this.jdField_a_of_type_Int)))) {
+      bheb.a(this.this$0, this.jdField_a_of_type_Int);
     }
     for (;;)
     {
-      bhdk.a(this.this$0, this.jdField_a_of_type_Int);
+      bheb.a(this.this$0, this.jdField_a_of_type_Int);
       return;
       QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
     }

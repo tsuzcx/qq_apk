@@ -1,38 +1,32 @@
-import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.av.ui.VideoControlUI;
+import java.lang.ref.WeakReference;
 
 public class mjn
-  implements GestureDetector.OnGestureListener
+  implements View.OnTouchListener
 {
-  public mjn(VideoControlUI paramVideoControlUI) {}
+  WeakReference<VideoControlUI> a;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public mjn(VideoControlUI paramVideoControlUI)
   {
-    return false;
+    this.a = new WeakReference(paramVideoControlUI);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if ((this.a.f != null) && (this.a.f.isShown())) {
-      this.a.r(false);
+    paramView = (VideoControlUI)this.a.get();
+    if (paramView != null) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
     }
-    return false;
+    for (;;)
+    {
+      return false;
+      paramView.z(0L);
+    }
   }
 }
 

@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
 class aeqc
-  implements DialogInterface.OnClickListener
+  extends akil
 {
-  aeqc(aepg paramaepg, bcir parambcir) {}
+  aeqc(aeqb paramaeqb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void d(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Aepg.ab = true;
-    this.jdField_a_of_type_Aepg.aa = true;
-    aepg.b(this.jdField_a_of_type_Aepg, false);
-    if ((this.jdField_a_of_type_Bcir.a()) && (!this.jdField_a_of_type_Bcir.b())) {
-      axqw.b(this.jdField_a_of_type_Aepg.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
+      this.a.b.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
     }
   }
 }

@@ -1,6 +1,14 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.RestrictTo;
+
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public abstract class bjof
 {
-  protected void b() {}
+  public abstract void a(@NonNull Runnable paramRunnable);
+  
+  public abstract boolean a();
+  
+  public abstract void b(@NonNull Runnable paramRunnable);
 }
 
 

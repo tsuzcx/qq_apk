@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.KingCardInfo;
+import NS_USER_ACTION_REPORT.ActionInfo;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import java.util.ArrayList;
 
-public final class bhep
-  implements Parcelable.Creator<KingCardInfo>
+class bhep
 {
-  public KingCardInfo a(Parcel paramParcel)
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<ActionInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String b;
+  
+  public ItemInfo a()
   {
-    return new KingCardInfo(paramParcel);
+    ItemInfo localItemInfo = new ItemInfo();
+    localItemInfo.item_id = this.jdField_a_of_type_JavaLangString;
+    localItemInfo.action_infos = this.jdField_a_of_type_JavaUtilArrayList;
+    localItemInfo.busi_info = this.b;
+    return localItemInfo;
   }
   
-  public KingCardInfo[] a(int paramInt)
+  public bhep a(ActionInfo paramActionInfo)
   {
-    return new KingCardInfo[paramInt];
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramActionInfo);
+    return this;
+  }
+  
+  public bhep a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bhep b(String paramString)
+  {
+    this.b = paramString;
+    return this;
   }
 }
 

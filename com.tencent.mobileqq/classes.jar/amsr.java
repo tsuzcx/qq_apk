@@ -1,42 +1,60 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amsr
+  extends ampa<amsq>
 {
-  public boolean a;
-  
-  public static amsr a(ampi[] paramArrayOfampi)
+  public int a()
   {
-    boolean bool = false;
-    amsr localamsr = new amsr();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfampi != null) {
-      localObject1 = localObject2;
+    return 598;
+  }
+  
+  @NonNull
+  public amsq a(int paramInt)
+  {
+    return new amsq();
+  }
+  
+  @Nullable
+  public amsq a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
     }
-    try
-    {
-      if (paramArrayOfampi.length > 0) {
-        localObject1 = paramArrayOfampi[0].a;
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
-        return localamsr;
-      }
-      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
-        bool = true;
-      }
-      localamsr.a = bool;
-      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localamsr.a);
-      return localamsr;
+    return amsq.a(paramArrayOfamph);
+  }
+  
+  public Class<amsq> a()
+  {
+    return amsq.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public void a(amsq paramamsq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
     }
-    catch (Exception paramArrayOfampi)
-    {
-      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfampi);
-    }
-    return localamsr;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

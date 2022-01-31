@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -10,7 +10,7 @@ public final class SpriteUtil$1
 {
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690120), 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690120), 1).a();
   }
 }
 

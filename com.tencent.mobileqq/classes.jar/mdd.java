@@ -1,19 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.EffectSettingUi.2.1;
+import com.tencent.av.ui.EffectSettingUi.2.2;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mdd
-  implements View.OnClickListener
+  implements mpe
 {
-  public mdd(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  public mdd(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
-    this.a.p();
-    this.a.a.a().ao = true;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
+    }
+    if (paramBoolean)
+    {
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
+        }
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Mpe = null;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectSettingUi", 1, "onStatusChanged, seq[" + l + "]");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 

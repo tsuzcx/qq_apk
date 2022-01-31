@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import asoh;
-import bbdj;
+import asoj;
+import bbdx;
 
 class MessageHandler$11
   implements Runnable
@@ -10,7 +10,7 @@ class MessageHandler$11
   
   public void run()
   {
-    bbdj.a(asoh.a, true);
+    bbdx.a(asoj.a, true);
   }
 }
 

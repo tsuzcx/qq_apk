@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
 class adhg
-  implements DialogInterface.OnClickListener
+  implements bfpt
 {
-  adhg(adha paramadha) {}
+  adhg(adhf paramadhf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramDialogInterface.dismiss();
+    paramAdapterView = (agep)adhf.a(this.a).a.getItem(paramInt - 1);
+    adhf.a(this.a, paramAdapterView);
+    adhf.a(this.a).dismiss();
+    axqy.b(adhf.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

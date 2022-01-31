@@ -1,47 +1,46 @@
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import java.util.HashMap;
 
 public class auro
 {
-  static HashMap<Integer, Bitmap> a;
   public double a;
   public float a;
   public int a;
+  public long a;
   public Bitmap a;
   public float[] a;
-  float b;
+  public float b;
   public int b;
   public float c;
+  public int c;
   public float d;
+  public int d;
+  public float e;
   
-  static
+  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return paramBitmap;
   }
   
-  public static auro a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, Resources paramResources)
+  public static auro a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, int paramInt, Resources paramResources)
   {
     auro localauro = new auro();
+    localauro.jdField_d_of_type_Int = paramInt;
     float f = paramBitmap.getHeight() / paramBitmap.getWidth();
-    localauro.jdField_a_of_type_Int = ((int)(actn.a(8.0F, paramResources) + (float)Math.random() * actn.a(3.0F, paramResources)));
-    localauro.jdField_b_of_type_Int = ((int)(f * localauro.jdField_a_of_type_Int));
-    localauro.jdField_a_of_type_ArrayOfFloat = new float[2];
-    localauro.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-    localauro.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-    localauro.jdField_a_of_type_Float = ((float)Math.random() * actn.a(90.0F, paramResources) - actn.a(45.0F, paramResources));
-    localauro.jdField_a_of_type_Double = (2.0D * Math.random() * 3.141592653589793D - 3.141592653589793D);
-    if (localauro.jdField_a_of_type_Double >= 0.0D) {}
-    for (localauro.jdField_b_of_type_Float = (actn.a(10.0F, paramResources) + (float)Math.random() * actn.a(200.0F, paramResources));; localauro.jdField_b_of_type_Float = (-actn.a(10.0F, paramResources) - (float)Math.random() * actn.a(200.0F, paramResources)))
+    if (paramInt == 0) {}
+    for (localauro.jdField_a_of_type_Int = actj.a(30.0F, paramResources);; localauro.jdField_a_of_type_Int = actj.a(22.0F, paramResources))
     {
-      localauro.c = ((float)(localauro.jdField_b_of_type_Float * Math.cos(localauro.jdField_a_of_type_Double)));
-      localauro.d = ((float)(localauro.jdField_b_of_type_Float * Math.sin(localauro.jdField_a_of_type_Double)));
-      localauro.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localauro.jdField_a_of_type_Int)));
-      if (localauro.jdField_a_of_type_AndroidGraphicsBitmap == null)
-      {
-        localauro.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramBitmap, localauro.jdField_a_of_type_Int, localauro.jdField_b_of_type_Int, true);
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localauro.jdField_a_of_type_Int), localauro.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
+      localauro.jdField_b_of_type_Int = ((int)(f * localauro.jdField_a_of_type_Int));
+      localauro.jdField_a_of_type_ArrayOfFloat = new float[2];
+      localauro.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
+      localauro.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
+      localauro.jdField_a_of_type_Float = ((float)Math.random() * actj.a(18.0F, paramResources) - actj.a(9.0F, paramResources));
+      localauro.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 1.308996938995747D);
+      localauro.jdField_b_of_type_Float = (actj.a(150.0F, paramResources) + (float)Math.random() * actj.a(50.0F, paramResources));
+      localauro.jdField_c_of_type_Float = ((float)(localauro.jdField_b_of_type_Float * Math.cos(localauro.jdField_a_of_type_Double)));
+      localauro.jdField_d_of_type_Float = ((float)(localauro.jdField_b_of_type_Float * Math.sin(localauro.jdField_a_of_type_Double)));
+      localauro.jdField_c_of_type_Int = 256;
+      localauro.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
       return localauro;
     }
   }

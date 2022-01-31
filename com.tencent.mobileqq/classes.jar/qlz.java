@@ -1,25 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class qlz
-  extends GestureDetector.SimpleOnGestureListener
+  extends ClickableSpan
 {
-  qlz(qly paramqly) {}
+  qlz(qlv paramqlv) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((qly.a(this.a) != null) && (qly.a(this.a).a != null)) {
-      this.a.a.a(qly.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-    }
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((qly.a(this.a) != null) && (qly.a(this.a).d != null)) {
-      this.a.a.onClick(qly.a(this.a).d);
-    }
-    return true;
+    qlp.j(this.a.a, true);
   }
 }
 

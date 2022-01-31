@@ -177,8 +177,8 @@ public class XposedHelpers
     }
     catch (NoSuchMethodError paramVarArgs)
     {
-      paramClass = paramClass.getDeclaredConstructors();
-      int j = paramClass.length;
+      paramVarArgs = paramClass.getDeclaredConstructors();
+      int j = paramVarArgs.length;
       int i = 0;
       for (;;)
       {
@@ -189,7 +189,7 @@ public class XposedHelpers
           }
           throw new NullPointerException();
         }
-        paramVarArgs = paramClass[i];
+        paramClass = paramVarArgs[i];
         i += 1;
       }
       paramClass = new NoSuchMethodError((String)localObject);
@@ -366,8 +366,8 @@ public class XposedHelpers
     }
     for (;;)
     {
-      paramVarArgs = paramClass.getDeclaredMethods();
-      int k = paramVarArgs.length;
+      paramString = paramClass.getDeclaredMethods();
+      int k = paramString.length;
       int j = 0;
       for (;;)
       {
@@ -382,8 +382,8 @@ public class XposedHelpers
           }
           throw new NullPointerException();
         }
-        paramString = paramVarArgs[j];
-        if ((i == 0) && (Modifier.isPrivate(paramString.getModifiers()))) {}
+        paramVarArgs = paramString[j];
+        if ((i == 0) && (Modifier.isPrivate(paramVarArgs.getModifiers()))) {}
         j += 1;
       }
       paramClass = new NoSuchMethodError((String)localObject);

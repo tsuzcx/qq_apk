@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import adcz;
+import adcw;
 import java.util.TimerTask;
 
 class DoodleMsgView$2
@@ -12,8 +12,8 @@ class DoodleMsgView$2
   {
     try
     {
-      adcz localadcz = DoodleMsgView.a(this.this$0);
-      if (localadcz == null)
+      adcw localadcw = DoodleMsgView.a(this.this$0);
+      if (localadcw == null)
       {
         this.this$0.a(new DoodleMsgView.2.1(this));
         return;
@@ -24,16 +24,16 @@ class DoodleMsgView$2
       if (DoodleMsgView.a(this.this$0) < this.a) {
         DoodleMsgView.a(this.this$0, DoodleMsgView.a(this.this$0) + this.b);
       }
-      if (localadcz != null) {
-        localadcz.a(DoodleMsgView.a(this.this$0), true);
+      if (localadcw != null) {
+        localadcw.a(DoodleMsgView.a(this.this$0), true);
       }
       if (DoodleMsgView.a(this.this$0) >= this.a)
       {
         DoodleMsgView.a(this.this$0);
         return;
       }
-      if ((!DoodleMsgView.a(this.this$0)) && (localadcz != null)) {
-        localadcz.a(this.a, true);
+      if ((!DoodleMsgView.a(this.this$0)) && (localadcw != null)) {
+        localadcw.a(this.a, true);
       }
       return;
     }

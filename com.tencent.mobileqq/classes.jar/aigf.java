@@ -1,27 +1,21 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.List;
 
 public class aigf
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends akil
 {
-  public aigf(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
+  public aigf(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void onGlobalLayout()
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
-    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
-    if (localBitmap == null) {}
-    do
-    {
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.setTag(localBitmap);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
+    }
+    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
   }
 }
 

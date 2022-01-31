@@ -1,23 +1,15 @@
 import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agvi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agvi(agvh paramagvh) {}
+  agvi(agvg paramagvg) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (agvh.a(this.a) == null)
-    {
-      agvh.a(this.a, bbcv.a((Context)this.a.a.get(), 0, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131718404), null, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131718402), ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131718403), new agvj(this), new agvk(this)));
-      agvh.a(this.a).setCanceledOnTouchOutside(false);
-    }
-    agvh.a(this.a).show();
+    agvf.a(this.a.a).dismiss();
   }
 }
 

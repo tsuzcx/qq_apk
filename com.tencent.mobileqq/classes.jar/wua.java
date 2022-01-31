@@ -1,21 +1,16 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class wua
-  implements wtu
+  implements View.OnClickListener
 {
   public wua(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
-    {
-      this.a.e.setVisibility(8);
-      VideoPlayerView.a(this.a, "");
-    }
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).a(paramBoolean);
-    }
+    VideoPlayerView.h(this.a);
+    this.a.f();
   }
 }
 

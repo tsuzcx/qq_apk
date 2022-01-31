@@ -1,23 +1,42 @@
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class ahxz
+public abstract interface ahxz
 {
-  public int a;
-  ahya jdField_a_of_type_Ahya = new ahya(this.jdField_a_of_type_Ahxy);
-  String jdField_a_of_type_JavaLangString;
-  public AtomicInteger a;
-  volatile boolean jdField_a_of_type_Boolean;
-  public int b;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  public int c;
-  public String c;
-  public String d;
+  public abstract void A();
   
-  public ahxz(ahxy paramahxy)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  }
+  public abstract void B();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract int d();
+  
+  public abstract void g(boolean paramBoolean);
+  
+  public abstract void o();
+  
+  public abstract void p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract void s();
+  
+  public abstract void t();
+  
+  public abstract void u();
+  
+  public abstract void v();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 

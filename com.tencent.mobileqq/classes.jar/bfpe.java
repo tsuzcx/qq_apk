@@ -1,15 +1,25 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.widget.ActionSheet.3;
 
-public abstract interface bfpe
+public class bfpe
+  implements Animation.AnimationListener
 {
-  public abstract void a(AdapterView<?> paramAdapterView);
+  public bfpe(ActionSheet.3 param3) {}
   
-  public abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.this$0.e();
+    bfpc.a(this.a.this$0, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpe
  * JD-Core Version:    0.7.0.1
  */

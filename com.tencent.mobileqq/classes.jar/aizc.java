@@ -1,27 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import org.json.JSONObject;
 
 public class aizc
-  implements View.OnClickListener
 {
-  public aizc(CmGameLoadingView.2 param2) {}
-  
-  public void onClick(View paramView)
+  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, aizd paramaizd)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    if (this.a.jdField_a_of_type_Aiwk != null) {
-      this.a.jdField_a_of_type_Aiwk.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    if (paramAppInterface == null) {
+      return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
-      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    try
+    {
+      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.3.0");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set((MessageMicro)localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("cmd", "apollo_aio_game.get_playing_usernum");
+      ((JSONObject)localObject).put("from", paramString);
+      ((JSONObject)localObject).put("gameId", paramInt);
+      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
+      paramString = new NewIntent(BaseApplicationImpl.getContext(), aiwg.class);
+      paramString.putExtra("timeout", 10000L);
+      paramString.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
+      paramString.putExtra("data", localUniSsoServerReq.toByteArray());
+      paramString.setObserver(paramaizd);
+      paramAppInterface.startServlet(paramString);
+      return;
+    }
+    catch (Exception paramAppInterface)
+    {
+      QLog.e("cmgame_process._CmGameSSOReq", 1, "[queryUserAudioStatus] failed ", paramAppInterface);
     }
   }
 }

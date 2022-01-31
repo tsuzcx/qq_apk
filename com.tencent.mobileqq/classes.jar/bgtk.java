@@ -1,54 +1,23 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qwallet.plugin.QWalletHelper;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqpim.QQPimTipsInfo;
 
-public class bgtk
-  extends RemoteCommand
+public final class bgtk
+  implements Parcelable.Creator<QQPimTipsInfo>
 {
-  public bgtk()
+  public QQPimTipsInfo a(Parcel paramParcel)
   {
-    super("qqreader_plugin_asyn_cmd");
+    return new QQPimTipsInfo(paramParcel, null);
   }
   
-  private QQAppInterface a()
+  public QQPimTipsInfo[] a(int paramInt)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    switch (paramBundle.getInt("CommondType"))
-    {
-    }
-    for (;;)
-    {
-      return null;
-      if (a() != null)
-      {
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        sgj.a(a(), a().getApp(), paramBundle, new bgtl(this, paramOnInvokeFinishLinstener));
-        continue;
-        QWalletHelper.preloadQWallet(a());
-      }
-    }
-  }
-  
-  public boolean isSynchronized()
-  {
-    return false;
+    return new QQPimTipsInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgtk
  * JD-Core Version:    0.7.0.1
  */

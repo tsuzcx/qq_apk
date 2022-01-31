@@ -1,178 +1,83 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.weiyun.utils.IOUtils;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppException;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
+import mqq.os.MqqHandler;
 
 public class bidv
 {
-  private long jdField_a_of_type_Long;
-  private ayrv jdField_a_of_type_Ayrv;
-  private final bidr jdField_a_of_type_Bidr;
-  private final bidw jdField_a_of_type_Bidw;
-  private biel jdField_a_of_type_Biel;
-  private final String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private volatile boolean jdField_d_of_type_Boolean;
-  
-  private bidv(String paramString1, String paramString2, bidr parambidr, bidw parambidw)
+  private static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bidr = parambidr;
-    this.jdField_a_of_type_Bidw = parambidw;
+    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
   }
   
-  public static ayrv a(Object paramObject, String paramString1, String paramString2, String paramString3, ayrz paramayrz, aysa paramaysa)
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    return a(paramObject, paramString1, paramString2, paramString3, paramayrz, paramaysa, null);
-  }
-  
-  public static ayrv a(Object paramObject, String paramString1, String paramString2, String paramString3, ayrz paramayrz, aysa paramaysa, String paramString4)
-  {
-    ayrv localayrv = new ayrv();
-    localayrv.jdField_a_of_type_Aysa = paramaysa;
-    localayrv.jdField_a_of_type_JavaLangString = paramString1;
-    localayrv.jdField_a_of_type_Int = 0;
-    if (!TextUtils.isEmpty(paramString3))
+    if (paramQQAppInterface.a().a() == true)
     {
-      localayrv.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      localayrv.jdField_a_of_type_JavaUtilHashMap.put("Cookie", paramString3);
+      paramQQAppInterface.a().c();
+      return;
     }
-    if (!TextUtils.isEmpty(paramString4)) {
-      localayrv.jdField_d_of_type_JavaLangString = paramString4;
+    if (bbfj.d(BaseApplication.getContext()))
+    {
+      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
+      paramQQAppInterface.putExtra("tab_tab_type", 3);
+      paramQQAppInterface.putExtra("from", "FileAssistant");
+      paramActivity.startActivityForResult(paramQQAppInterface, 101);
+      return;
     }
-    localayrv.jdField_c_of_type_JavaLangString = paramString2;
-    localayrv.e = 1;
-    localayrv.a(paramObject);
-    localayrv.jdField_a_of_type_Ayrz = paramayrz;
-    return localayrv;
+    aptx.a(BaseApplication.getContext().getString(2131694608));
   }
   
-  public static bidv a(String paramString1, bidr parambidr, String paramString2, bidw parambidw)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (parambidr == null) || (parambidw == null)) {
-      throw new IllegalArgumentException("The params jobOwnerUid, localDir, file and statusInfo should be valid.");
+    a(paramQQAppInterface, paramActivity, paramInt, 2131691313);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt1, int paramInt2)
+  {
+    if ((paramQQAppInterface == null) || (paramActivity == null)) {
+      return;
     }
-    return new bidv(paramString1, IOUtils.getDirPathNoSeparator(paramString2), parambidr, parambidw);
+    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt2, paramInt1, paramQQAppInterface), 1000L);
   }
   
-  public long a()
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ayrv a()
-  {
-    return this.jdField_a_of_type_Ayrv;
-  }
-  
-  public bidr a()
-  {
-    return this.jdField_a_of_type_Bidr;
-  }
-  
-  public bidw a()
-  {
-    return this.jdField_a_of_type_Bidw;
-  }
-  
-  public biel a()
-  {
-    return this.jdField_a_of_type_Biel;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(ayrv paramayrv)
-  {
-    this.jdField_a_of_type_Ayrv = paramayrv;
-  }
-  
-  public void a(biel parambiel)
-  {
-    this.jdField_a_of_type_Biel = parambiel;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public bidw b()
-  {
-    return this.jdField_a_of_type_Bidw.a();
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_d_of_type_Boolean;
+    int i = bbkb.aR(paramContext, paramQQAppInterface.getCurrentAccountUin());
+    if (i == 1)
+    {
+      String str = bbkb.t(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      i = bbkb.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      if (!TextUtils.isEmpty(str)) {
+        try
+        {
+          a(paramActivity, str, i);
+          return;
+        }
+        catch (MiniAppException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
+          }
+          a(paramQQAppInterface, paramActivity);
+          return;
+        }
+      }
+      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
+      a(paramQQAppInterface, paramActivity);
+      return;
+    }
+    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
+    a(paramQQAppInterface, paramActivity);
   }
 }
 

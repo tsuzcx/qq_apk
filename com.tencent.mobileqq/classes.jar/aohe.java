@@ -1,40 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aohe
-  extends RecyclerView.OnScrollListener
+  extends akfk
 {
-  public aohe(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public aohe(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendFragment", 2, "RedpointObserver  onDataChange");
     }
-    URLDrawable.pause();
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if ((!ExtendFriendGroupFragment.a(this.a)) && (!ExtendFriendGroupFragment.b(this.a)) && (this.a.a != null) && (ExtendFriendGroupFragment.a(this.a) != null) && (ExtendFriendGroupFragment.a(this.a).a() > 0) && (this.a.a.findViewByPosition(ExtendFriendGroupFragment.a(this.a).getItemCount() - 1) != null))
-    {
-      if (bbev.g(ExtendFriendGroupFragment.a(this.a)))
-      {
-        ExtendFriendGroupFragment.a(this.a, true);
-        ExtendFriendGroupFragment.a(this.a).a(0, true);
-        axqw.b(ExtendFriendGroupFragment.a(this.a), "dc00898", "", "", "0X80092D9", "0X80092D9", 0, 0, "", "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    ExtendFriendGroupFragment.a(this.a).a(1, true);
+    ExtendFriendFragment.b(this.a);
   }
 }
 

@@ -1,24 +1,27 @@
 import com.tencent.qphone.base.util.QLog;
 
 class wza
-  extends wzr
+  extends wzo
 {
-  wza(wyw paramwyw, wze paramwze, String paramString)
+  wza(wyt paramwyt, wzb paramwzb, String paramString1, String paramString2)
   {
-    super(paramwyw);
+    super(paramwyt);
   }
   
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyw.a));
-      this.jdField_a_of_type_Wyw.a = System.currentTimeMillis();
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyt.a));
+      this.jdField_a_of_type_Wyt.a = System.currentTimeMillis();
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Wze.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Wzb.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
     }
+    this.jdField_a_of_type_Wzb.a(this.b, false, "cmobine auido video done.");
   }
 }
 

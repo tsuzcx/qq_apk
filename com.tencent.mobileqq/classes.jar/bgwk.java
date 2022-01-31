@@ -1,283 +1,268 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.math.BigDecimal;
-import java.net.URLEncoder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.WindowManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import cooperation.qqreader.QRBridgeActivity;
+import cooperation.qqreader.host.ChannelIdHelper;
+import cooperation.qqreader.net.BusinessTask;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
+import org.json.JSONObject;
 
-public class bgwk
+public final class bgwk
 {
-  private static long jdField_a_of_type_Long;
-  private static DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
+  public static boolean a;
+  private static boolean b;
   
-  static
+  public static int a()
   {
-    jdField_a_of_type_JavaTextDecimalFormat.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
+    return BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
   }
   
-  public static float a(String paramString)
+  public static long a(Context paramContext)
   {
-    try
+    long l1 = bgwj.a(paramContext);
+    if (l1 == -1L)
     {
-      float f = Float.parseFloat(paramString);
-      return f;
+      bgwj.a(paramContext);
+      return 0L;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0.0F;
+    long l2 = System.currentTimeMillis();
+    bgwj.a(paramContext);
+    return l2 - l1;
   }
   
-  public static int a(Object paramObject, int paramInt)
+  @Nullable
+  public static Bitmap a(Drawable paramDrawable)
   {
-    paramObject = paramObject + "";
-    int i = paramInt;
-    if (!TextUtils.isEmpty(paramObject)) {}
-    try
-    {
-      i = Integer.valueOf(paramObject).intValue();
-      return i;
+    if (paramDrawable == null) {
+      return null;
     }
-    catch (Exception paramObject)
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if (paramDrawable.getOpacity() != -1) {}
+    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
     {
-      paramObject.printStackTrace();
+      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, i, j);
+      paramDrawable.draw(localCanvas);
+      return localObject;
     }
-    return paramInt;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, String paramString, WtTicketPromise paramWtTicketPromise)
+  @Nullable
+  public static Bitmap a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
+    return a(a(paramString));
+  }
+  
+  public static Drawable a(@ColorInt int paramInt1, int paramInt2)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(paramInt2);
+    localGradientDrawable.setColor(paramInt1);
+    return localGradientDrawable;
+  }
+  
+  @Nullable
+  public static Drawable a(String paramString)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
+      localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+      if ((((URLDrawable)localObject).getStatus() == 2) || (((URLDrawable)localObject).getStatus() == 3)) {
+        ((URLDrawable)localObject).restartDownload();
+      }
     }
-    paramWtTicketPromise = (TicketManager)paramQQAppInterface.getManager(2);
-    if (paramWtTicketPromise != null) {}
-    for (paramQQAppInterface = paramWtTicketPromise.getPskey(paramQQAppInterface.getCurrentAccountUin(), paramString);; paramQQAppInterface = "") {
-      return paramQQAppInterface;
+    else
+    {
+      return localObject;
     }
+    ((URLDrawable)localObject).startDownload();
+    return localObject;
+  }
+  
+  @Nullable
+  public static Object a(String paramString, JSONObject paramJSONObject)
+  {
+    Object localObject1;
+    if (paramJSONObject == null)
+    {
+      localObject1 = null;
+      return localObject1;
+    }
+    Iterator localIterator = paramJSONObject.keys();
+    if ((localIterator == null) || (!localIterator.hasNext())) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = paramJSONObject.get((String)localObject1);
+        if ((localObject1 instanceof JSONObject))
+        {
+          Object localObject2 = a(paramString, (JSONObject)localObject1);
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            break;
+          }
+        }
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      if (localIterator.hasNext())
+      {
+        localObject1 = (String)localIterator.next();
+        if (!paramString.equals(localObject1)) {}
+      }
+      else
+      {
+        try
+        {
+          localObject1 = paramJSONObject.get((String)localObject1);
+          return localObject1;
+        }
+        catch (Exception localException1) {}
+        return null;
+      }
+    }
+  }
+  
+  public static String a()
+  {
+    if (ChannelIdHelper.isFromUnknown()) {
+      return QRBridgeActivity.a;
+    }
+    return ChannelIdHelper.getChannelId();
+  }
+  
+  public static String a(@NonNull Activity paramActivity)
+  {
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    return localDisplayMetrics.heightPixels + "x" + localDisplayMetrics.widthPixels;
   }
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    if (TextUtils.isEmpty(paramString)) {}
+    Uri localUri;
+    Object localObject;
+    do
     {
-      paramString = Long.toString(Double.valueOf(a(paramString, "100")).doubleValue());
-      return paramString;
-    }
-    catch (NumberFormatException paramString) {}
-    return null;
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == 0) {
-      try
+      do
       {
-        String str = a(paramString, "100", 2, paramBoolean);
-        return str;
-      }
-      catch (Exception localException) {}
-    }
-    try
-    {
-      localException.printStackTrace();
-      try
-      {
-        paramString = b(paramString);
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return "0";
-      }
-      if (paramInt == 1) {
-        return new DecimalFormat("#0.00").format(paramString);
-      }
-      return "";
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString1 = new BigDecimal(paramString1);
-      paramString2 = new BigDecimal(paramString2);
-      paramString1 = jdField_a_of_type_JavaTextDecimalFormat.format(paramString1.multiply(paramString2).doubleValue());
-      return paramString1;
-    }
-    catch (Exception paramString1) {}
-    return "0";
-  }
-  
-  public static String a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
-  {
-    if (paramInt < 0) {
-      return "0";
-    }
-    paramString1 = new BigDecimal(paramString1);
-    paramString2 = new BigDecimal(paramString2);
-    if (paramBoolean) {
-      return new DecimalFormat("#0.00").format(paramString1.divide(paramString2, paramInt, 4).doubleValue());
-    }
-    return new DecimalFormat("#0.##").format(paramString1.divide(paramString2, paramInt, 4).doubleValue());
-  }
-  
-  public static String a(String paramString, Map<String, String> paramMap, boolean paramBoolean)
-  {
-    StringBuffer localStringBuffer = new StringBuffer(paramString);
-    Iterator localIterator = paramMap.keySet().iterator();
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        String str2 = (String)localIterator.next();
-        String str1 = (String)paramMap.get(str2);
-        if (QLog.isColorLevel()) {
-          QLog.i("QwUtils", 2, "appendKV2Schema key: " + str2 + " value: " + str1);
-        }
-        paramString = str1;
-        if (paramBoolean) {}
-        try
+        do
         {
-          paramString = URLEncoder.encode(str1);
-          localStringBuffer.append("&").append(String.format("%s=%s", new Object[] { str2, paramString }));
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            QLog.i("QwUtils", 2, "error encode key: " + str2 + " value: " + str1);
-            paramString = str1;
+          return paramString;
+          localUri = Uri.parse(paramString);
+          if (!localUri.getPath().contains("bookDetails.html")) {
+            break;
           }
-        }
+          localObject = localUri.getQueryParameter("id");
+        } while (TextUtils.isEmpty((CharSequence)localObject));
+        return localUri.getScheme() + "://" + localUri.getHost() + "/club/client/read/6/rel/book_outDetail.html?ChannelID=100060&_wv=1&_wwv=4&bid=" + (String)localObject;
+      } while (!localUri.getPath().contains("bookDetail_index.html"));
+      String str = localUri.getQueryParameter("nbid");
+      localObject = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject = localUri.getQueryParameter("bid");
       }
-    }
-    return localStringBuffer.toString();
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    return localUri.getScheme() + "://" + localUri.getHost() + "/club/client/read/6/rel/bookDetail_out_detail.html?ChannelID=100060&_wv=1&_wwv=4&nbid=" + (String)localObject;
   }
   
-  public static String a(Ticket paramTicket, String paramString)
+  public static void a(Activity paramActivity)
   {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get(paramString) != null))
+    boolean bool = false;
+    if (b) {}
+    do
     {
-      QLog.i("QwUtils", 2, "preGetKey. PSk Done. psk!=null");
-      return new String((byte[])paramTicket._pskey_map.get(paramString));
-    }
-    QLog.i("QwUtils", 2, "preGetKey error from ticket");
-    return null;
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QwUtils", 2, "startQQBrowserActivity url=" + paramString);
-    }
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(View paramView)
-  {
-    if ((paramView != null) && (paramView.getParent() != null))
-    {
-      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-      if (localViewGroup != null) {
-        localViewGroup.removeView(paramView);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, bgwm parambgwm)
-  {
-    paramQQAppInterface = a(paramQQAppInterface, paramString, new bgwl(parambgwm, paramString));
-    if (!bbjw.a(paramQQAppInterface))
-    {
-      if (parambgwm != null)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QWalletUtils", 2, "get pskey syn success!");
-        }
-        parambgwm.a(0, new String[] { paramQQAppInterface });
-      }
-      return;
-    }
-    QLog.e("QWalletUtils", 1, "get pskey syn. PSk is empty!");
-  }
-  
-  public static boolean a()
-  {
-    long l = System.currentTimeMillis();
-    if (jdField_a_of_type_Long + 1000L > l) {
-      return true;
-    }
-    jdField_a_of_type_Long = l;
-    return false;
-  }
-  
-  public static String b(String paramString)
-  {
-    if ((paramString == null) || (!paramString.matches("\\-?[0-9]+"))) {
-      throw new Exception("金额格式有误");
-    }
-    int i;
-    if (paramString.charAt(0) == '-')
-    {
-      paramString = paramString.substring(1);
-      i = 1;
-    }
-    for (;;)
-    {
-      if ((paramString.startsWith("0")) && (paramString.length() > 1))
-      {
-        paramString = paramString.substring(1);
-      }
-      else
-      {
-        StringBuffer localStringBuffer = new StringBuffer();
-        if (paramString.length() == 1) {
-          localStringBuffer.append("0.0").append(paramString);
-        }
-        while (i == 1)
+        do
         {
-          return "-" + localStringBuffer.toString();
-          if (paramString.length() == 2) {
-            localStringBuffer.append("0.").append(paramString);
-          } else {
-            localStringBuffer.append(paramString.substring(0, paramString.length() - 2)).append(".").append(paramString.substring(paramString.length() - 2));
-          }
-        }
-        return localStringBuffer.toString();
-        i = 0;
+          return;
+        } while (paramActivity == null);
+        paramActivity = paramActivity.getIntent();
+      } while (paramActivity == null);
+      paramActivity = paramActivity.getStringExtra("readerDpcConfig");
+      Log.i("Utility", "initReaderDPC dpc = " + paramActivity);
+    } while (TextUtils.isEmpty(paramActivity));
+    Integer[] arrayOfInteger = new Integer[6];
+    Arrays.fill(arrayOfInteger, Integer.valueOf(0));
+    if (DeviceProfileManager.a(paramActivity, arrayOfInteger, new ajve()) >= arrayOfInteger.length)
+    {
+      if (arrayOfInteger[5].intValue() == 1) {
+        bool = true;
       }
+      a = bool;
     }
+    b = true;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    BusinessTask localBusinessTask = new BusinessTask("GetEnterShelfOnOffTask");
+    localBusinessTask.a(new bgwl(paramContext), true);
+    localBusinessTask.a();
+  }
+  
+  public static void a(View paramView, float paramFloat)
+  {
+    if ((paramView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+    {
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      localMarginLayoutParams.topMargin = ((int)paramFloat);
+      paramView.setLayoutParams(localMarginLayoutParams);
+    }
+  }
+  
+  public static boolean a(Date paramDate1, Date paramDate2)
+  {
+    return (paramDate1.getYear() != paramDate2.getYear()) || (paramDate1.getMonth() != paramDate2.getMonth()) || (paramDate1.getDay() != paramDate2.getDay());
+  }
+  
+  public static int b()
+  {
+    return BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
+  }
+  
+  public static String b()
+  {
+    DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
+    return localDisplayMetrics.heightPixels + "x" + localDisplayMetrics.widthPixels;
   }
 }
 

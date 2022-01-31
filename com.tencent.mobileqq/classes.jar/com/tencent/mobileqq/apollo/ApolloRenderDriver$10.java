@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aiwm;
+import aiwk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
@@ -28,8 +28,8 @@ class ApolloRenderDriver$10
         while (i < j)
         {
           String str = "layout" + i;
-          aiwm localaiwm = (aiwm)this.a.get(i);
-          localStringBuilder1.append("var ").append(str).append(" = ").append(localaiwm.toString()).append(";\n");
+          aiwk localaiwk = (aiwk)this.a.get(i);
+          localStringBuilder1.append("var ").append(str).append(" = ").append(localaiwk.toString()).append(";\n");
           localStringBuilder2.append("bubbleLayoutList.push(").append(str).append(");\n");
           i += 1;
         }

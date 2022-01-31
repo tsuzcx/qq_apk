@@ -4,11 +4,11 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 class off
   implements ViewBase.OnClickListener
 {
-  off(ofe paramofe) {}
+  off(ofb paramofb) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    this.a.jdField_a_of_type_Ohv.b(this.a.jdField_a_of_type_Oii);
+    ((ogn)this.a.jdField_a_of_type_Ohs).a(this.a.jdField_a_of_type_Oif, ofa.a(this.a.jdField_a_of_type_Oif, 1));
   }
 }
 

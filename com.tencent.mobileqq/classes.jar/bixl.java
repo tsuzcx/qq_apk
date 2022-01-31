@@ -1,64 +1,49 @@
-import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.videoshelf.model.edit.NodeGroup;
-import com.tencent.ttpic.videoshelf.model.edit.ShelfNode;
-import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
-import com.tencent.ttpic.videoshelf.utils.TTPTLogger;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment.OffscreenCaptureRunnable;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
 
-public class bixl
-  extends AsyncTask<Void, Void, Void>
+class bixl
+  implements bjos<biwo>
 {
-  public bixl(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  bixl(bixi parambixi) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void a(@Nullable biwo parambiwo)
   {
-    long l1 = System.currentTimeMillis();
-    AEVideoShelfEditFragment.a(this.a);
-    long l2 = System.currentTimeMillis();
-    if (QLog.isDebugVersion()) {
-      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground1---cost: ", Long.valueOf(l2 - l1) });
-    }
-    AEVideoShelfEditFragment.b(this.a);
-    if (QLog.isDebugVersion()) {
-      QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "init data doInBackground2---cost: ", Long.valueOf(System.currentTimeMillis() - l2) });
-    }
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    AEVideoShelfEditFragment.c(this.a);
-    if (AEVideoShelfEditFragment.a(this.a).isEmpty())
+    if (parambiwo == null) {}
+    do
     {
-      TTPTLogger.w("AEVideoShelfEditFrag", "init NodeGroup Error!");
+      do
+      {
+        do
+        {
+          return;
+          if (parambiwo != biwo.a) {
+            break;
+          }
+          if ((biwy.a == null) || (biwy.a != birb.a())) {
+            bizx.a().g("none");
+          }
+        } while (!this.a.a());
+        bixi.a(this.a).setVisibility(8);
+        return;
+        if (parambiwo != biwo.c) {
+          break;
+        }
+      } while (!this.a.a());
+      bixi.a(this.a).setVisibility(8);
       return;
-    }
-    paramVoid = new ArrayList();
-    int i = 0;
-    while (i < AEVideoShelfEditFragment.a(this.a).size())
+    } while (parambiwo != biwo.b);
+    bixi.c(this.a);
+    if (bixi.a(this.a) != null)
     {
-      ShelfNode localShelfNode = new ShelfNode();
-      localShelfNode.setCoverUri(((NodeGroup)AEVideoShelfEditFragment.a(this.a).get(i)).nodeCoverImage);
-      paramVoid.add(localShelfNode);
-      i += 1;
+      parambiwo = bixi.a(this.a).a();
+      if ((!TextUtils.isEmpty(parambiwo)) && (!"-1".equals(parambiwo))) {
+        bizx.a().g(parambiwo);
+      }
     }
-    AEVideoShelfEditFragment.a(this.a, new biyt(this.a.getActivity(), paramVoid, AEVideoShelfEditFragment.a(this.a).getVideoWidth(), AEVideoShelfEditFragment.a(this.a).getVideoHeight()));
-    AEVideoShelfEditFragment.a(this.a).a(AEVideoShelfEditFragment.a(this.a).getMaterialPath());
-    AEVideoShelfEditFragment.a(this.a).setAdapter(AEVideoShelfEditFragment.a(this.a));
-    AEVideoShelfEditFragment.d(this.a);
-    AEVideoShelfEditFragment.e(this.a);
-    AEVideoShelfEditFragment.a(this.a, 0);
-    new AEVideoShelfEditFragment.OffscreenCaptureRunnable(this.a, null).run();
-  }
-  
-  protected void onPreExecute()
-  {
-    AEVideoShelfEditFragment.a(this.a, null);
+    bixi.a(this.a).setVisibility(0);
+    bixi.d(this.a);
   }
 }
 

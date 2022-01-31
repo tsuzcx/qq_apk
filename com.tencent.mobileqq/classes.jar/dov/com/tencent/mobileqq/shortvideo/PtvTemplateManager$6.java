@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import muf;
+import muc;
 
 class PtvTemplateManager$6
   implements Runnable
@@ -26,7 +26,7 @@ class PtvTemplateManager$6
         continue;
       }
       localObject1 = new ArrayList();
-      int i = muf.a();
+      int i = muc.a();
       if (QLog.isColorLevel()) {
         QLog.d("PtvTemplateManager", 2, "cur version:" + i);
       }

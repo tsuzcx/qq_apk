@@ -1,21 +1,25 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
 import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class addn
-  implements adfj
+  implements DialogInterface.OnClickListener
 {
   public addn(DoodlePanel paramDoodlePanel) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (DoodlePanel.a(this.a) != null)
+    switch (paramInt)
     {
-      if (DoodlePanel.a(this.a) != null) {
-        DoodlePanel.a(this.a).setTemplateID(paramInt);
-      }
-      DoodlePanel.a(this.a);
-      bbaj.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    case 0: 
+    default: 
+      return;
     }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 

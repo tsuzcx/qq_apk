@@ -1,25 +1,73 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
+import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
 
-public class anna
+public abstract class anna
+  extends mxj
 {
-  public View a;
-  public RelativeLayout a;
-  public TextView a;
-  public HeartLayout a;
-  public View b;
-  
-  public boolean a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null);
+    boolean bool4 = false;
+    boolean bool3 = false;
+    Object localObject = null;
+    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
+    boolean bool1;
+    if (paramInt == 0)
+    {
+      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
+      bool1 = bool4;
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+        bool1 = bool4;
+        if (localRspBatchGetAnchorStatus.uint32_result.has())
+        {
+          paramArrayOfByte = localObject;
+          bool2 = bool3;
+          bool1 = bool4;
+          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
+          {
+            bool1 = true;
+            bool2 = true;
+            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("Q.msg_box.protocol", 2, localException.toString());
+        paramArrayOfByte = localObject;
+        bool2 = bool1;
+        continue;
+      }
+      a(bool2, paramArrayOfByte, paramBundle);
+      return;
+      paramArrayOfByte = localObject;
+      boolean bool2 = bool3;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
+        paramArrayOfByte = localObject;
+        bool2 = bool3;
+      }
+    }
   }
   
-  public boolean a(View paramView1, TextView paramTextView, View paramView2, RelativeLayout paramRelativeLayout, HeartLayout paramHeartLayout)
-  {
-    return (this.jdField_a_of_type_AndroidViewView == paramView1) && (this.jdField_a_of_type_AndroidWidgetTextView == paramTextView) && (this.b == paramView2) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramRelativeLayout) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout == paramHeartLayout);
-  }
+  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
 }
 
 

@@ -1,16 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.manager.EngineManager.2;
 
-class betr
-  implements DialogInterface.OnClickListener
+public class betr
+  implements betp
 {
-  betr(betq parambetq) {}
+  public betr(EngineManager.2 param2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    Process.killProcess(Process.myPid());
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
+    betm localbetm = (betm)betq.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
+    if (localbetm != null) {
+      localbetm.b(this);
+    }
+  }
+  
+  public void a(float paramFloat, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putFloat("engineInstallerProgress", paramFloat);
+    localBundle.putString("engineInstallerMessage", paramString);
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
+    betm localbetm = (betm)betq.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
+    if (localbetm != null) {
+      localbetm.b(this);
+    }
   }
 }
 

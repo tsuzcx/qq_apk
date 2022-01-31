@@ -1,18 +1,15 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AccountDetail;
-import java.lang.ref.WeakReference;
 
 class ngv
   implements View.OnClickListener
 {
-  ngv(nfu paramnfu, nmv paramnmv) {}
+  ngv(nfr paramnfr, String paramString, nms paramnms) {}
   
   public void onClick(View paramView)
   {
-    xbl.b((Activity)this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbn(this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfu.a(this.jdField_a_of_type_Nfu));
-    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
+    nfr.c(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_JavaLangString);
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 

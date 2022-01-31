@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
 
 public final class qdz
-  implements Parcelable.Creator<VideoColumnInfo>
+  implements Parcelable.Creator<VisibleSetParam>
 {
-  public VideoColumnInfo a(Parcel paramParcel)
+  public VisibleSetParam a(Parcel paramParcel)
   {
-    return new VideoColumnInfo(paramParcel);
+    return new VisibleSetParam(paramParcel);
   }
   
-  public VideoColumnInfo[] a(int paramInt)
+  public VisibleSetParam[] a(int paramInt)
   {
-    return new VideoColumnInfo[paramInt];
+    return new VisibleSetParam[paramInt];
   }
 }
 

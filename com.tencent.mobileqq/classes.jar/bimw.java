@@ -1,17 +1,6 @@
-import android.support.annotation.NonNull;
-
-public class bimw
+public abstract class bimw
 {
-  public String a;
-  public boolean a;
-  public String b = "null";
-  public String c = "null";
-  
-  @NonNull
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString + ", ready=" + this.jdField_a_of_type_Boolean + ", extraInfo=" + this.c + ", error=" + this.b;
-  }
+  abstract bimx a();
 }
 
 

@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class aous
-  implements DialogInterface.OnClickListener
+  extends aowr
 {
-  aous(aouq paramaouq) {}
+  aous(aouo paramaouo, aout paramaout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aout.a(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Aout.a(paramInt, paramString1);
+  }
 }
 
 

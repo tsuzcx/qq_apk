@@ -1,25 +1,97 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.text.TextUtils;
 
-class aofu
-  implements Animation.AnimationListener
+public class aofu
 {
-  aofu(aofr paramaofr) {}
+  public int a;
+  public long a;
+  public aofh a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "0";
+  public String f = "";
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aofu()
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new aofv(this));
-    this.a.g.startAnimation(paramAnimation);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 1;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public aofu a()
+  {
+    aofu localaofu = new aofu();
+    localaofu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaofu.jdField_a_of_type_ArrayOfByte = ((byte[])this.jdField_a_of_type_ArrayOfByte.clone());
+    localaofu.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localaofu.c = this.c;
+    localaofu.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localaofu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localaofu.e = this.e;
+    return localaofu;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = bbbr.a("");
+    this.jdField_b_of_type_JavaLangString = "";
+    this.c = "";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.e = "0";
+    this.jdField_b_of_type_Int = 0;
+    this.f = "";
+    this.jdField_a_of_type_Aofh = null;
+  }
+  
+  public boolean a()
+  {
+    String str = bbbr.a(this.jdField_a_of_type_ArrayOfByte);
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(str));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof aofu));
+      paramObject = (aofu)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{uin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    String str = bbbr.a(this.jdField_a_of_type_ArrayOfByte);
+    int i = 0;
+    if (str != null) {
+      i = str.length();
+    }
+    localStringBuilder.append("{sig: ").append(i).append("}");
+    localStringBuilder.append("{matchUin: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{tipsWording: ").append(this.c).append("}");
+    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{nickName: ").append(this.d).append("}");
+    localStringBuilder.append("{algorithmID: ").append(this.e).append("}");
+    localStringBuilder.append("{tagId: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.f).append("}");
+    if (this.jdField_a_of_type_Aofh != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Aofh.toString());
+    }
+    return localStringBuilder.toString();
+  }
 }
 
 

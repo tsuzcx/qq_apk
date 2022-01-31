@@ -2,7 +2,7 @@ package com.tencent.av;
 
 import android.content.Context;
 import android.media.AudioManager;
-import lgf;
+import lga;
 
 class VideoController$19
   implements Runnable

@@ -1,8 +1,17 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+
 public class avvy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  public avvy(QQSlidingTabView paramQQSlidingTabView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    QQSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
+  }
 }
 
 

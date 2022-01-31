@@ -1,16 +1,14 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
-public class bknp
+class bknp
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public bknp(PickerContainer paramPickerContainer) {}
+  bknp(bknf parambknf) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
+    this.a.invalidateSelf();
   }
 }
 

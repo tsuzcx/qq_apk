@@ -1,14 +1,16 @@
-public abstract interface azzj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+
+public class azzj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, double paramDouble);
+  public azzj(ReciteFragment paramReciteFragment) {}
   
-  public abstract void a(String paramString1, String paramString2, double paramDouble1, double paramDouble2, boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,10 +1,8 @@
 public abstract interface bjfu
 {
-  public abstract void aW_();
+  public abstract void a(float paramFloat, String paramString, int paramInt);
   
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(boolean paramBoolean, String paramString, bkgd parambkgd);
 }
 
 

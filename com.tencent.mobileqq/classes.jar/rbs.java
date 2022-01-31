@@ -1,9 +1,6 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-
 public abstract interface rbs
 {
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
+  public abstract void a();
 }
 
 

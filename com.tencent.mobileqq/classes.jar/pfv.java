@@ -1,32 +1,37 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import org.json.JSONObject;
 
-class pfv
-  implements ViewBase.OnClickListener
+public class pfv
+  implements php
 {
-  pfv(pfs parampfs, int paramInt, pax parampax, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    int i;
-    rap localrap;
-    if (this.jdField_a_of_type_Int == 1152)
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    paramBaseArticleInfo = new pdm().M(paramBaseArticleInfo).C(paramBaseArticleInfo);
+    switch (paramInt)
     {
-      i = 1;
-      localrap = this.jdField_a_of_type_Pax.a();
-      if (i == 0) {
-        break label42;
-      }
+    default: 
+      paramBaseArticleInfo.a("ReadInjoy_small_cell");
     }
-    label42:
-    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    for (;;)
     {
-      localrap.b(paramViewBase);
-      return;
-      i = 0;
-      break;
+      return paramBaseArticleInfo.a();
+      paramBaseArticleInfo.a("ReadInjoy_large_cell");
     }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

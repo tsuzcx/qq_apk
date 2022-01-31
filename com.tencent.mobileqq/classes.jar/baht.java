@@ -1,12 +1,14 @@
-public class baht
+public abstract interface baht
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  public abstract String getFriendUin();
+  
+  public abstract int getLimitType();
+  
+  public abstract long getSenderUin();
+  
+  public abstract long getShmsgseq();
+  
+  public abstract boolean isReaded();
 }
 
 

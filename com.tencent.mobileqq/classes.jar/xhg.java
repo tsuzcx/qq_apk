@@ -1,48 +1,9 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import java.util.ArrayList;
 
-class xhg
-  implements wam
+public abstract interface xhg
 {
-  xhg(xhf paramxhf, xhh paramxhh, xhi paramxhi) {}
-  
-  public void onFailure(String paramString)
-  {
-    if (this.jdField_a_of_type_Xhh != null)
-    {
-      this.jdField_a_of_type_Xhi.a(943004);
-      this.jdField_a_of_type_Xhi.a(paramString);
-      this.jdField_a_of_type_Xhh.b(this.jdField_a_of_type_Xhi);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo start");
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (this.jdField_a_of_type_Xhh != null) {
-      this.jdField_a_of_type_Xhh.a(this.jdField_a_of_type_Xhi);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
-    }
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
 }
 
 

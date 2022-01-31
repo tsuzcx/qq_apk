@@ -1,63 +1,118 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.opengl.GLES20;
-import android.opengl.GLES31;
-import android.util.Log;
-import java.nio.ByteBuffer;
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class asjk
 {
-  @TargetApi(18)
-  public static int a(int paramInt1, int paramInt2)
+  public static asjl a(String paramString)
   {
-    int[] arrayOfInt = new int[1];
-    GLES31.glGenTextures(1, arrayOfInt, 0);
-    GLES31.glBindTexture(3553, arrayOfInt[0]);
-    GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
-    GLES31.glTexParameteri(3553, 10242, 33071);
-    GLES31.glTexParameteri(3553, 10243, 33071);
-    GLES31.glTexParameteri(3553, 10241, 9728);
-    GLES31.glTexParameteri(3553, 10240, 9728);
-    a("glTexParameter");
-    return arrayOfInt[0];
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      paramString = Uri.parse(paramString);
+      if (paramString.isHierarchical())
+      {
+        paramString = paramString.getQueryParameter("_appinfo");
+        if (!TextUtils.isEmpty(paramString)) {
+          try
+          {
+            paramString = Base64.decode(paramString, 10);
+            if (paramString == null)
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.i("miniAppJump", 2, "appinfo decode error 2");
+              return null;
+            }
+          }
+          catch (Exception paramString)
+          {
+            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
+            return null;
+          }
+        }
+      }
+    }
+    paramString = new JSONObject(new String(paramString, "UTF-8"));
+    asjl localasjl = new asjl();
+    localasjl.jdField_a_of_type_Int = paramString.getInt("type");
+    localasjl.jdField_a_of_type_JavaLangString = paramString.getString("appid");
+    localasjl.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
+    localasjl.jdField_b_of_type_Int = paramString.optInt("from");
+    localasjl.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
+    return localasjl;
   }
   
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(Activity paramActivity, asjl paramasjl, Bundle paramBundle)
   {
-    ByteBuffer localByteBuffer = a(paramInt1, paramInt2, paramInt3);
-    Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-    localBitmap.copyPixelsFromBuffer(localByteBuffer);
-    return localBitmap;
+    if (paramasjl == null) {}
+    while ((paramasjl.jdField_a_of_type_Int == 4) || (paramasjl.jdField_a_of_type_Int != 3)) {
+      return false;
+    }
+    asjb.a(paramActivity, paramasjl.jdField_a_of_type_JavaLangString, paramasjl.jdField_a_of_type_Int, null);
+    return true;
   }
   
-  private static ByteBuffer a(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
   {
-    int[] arrayOfInt1 = new int[1];
-    int[] arrayOfInt2 = new int[1];
-    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
-    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
-    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
-    GLES20.glFinish();
-    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
-    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
-    return localByteBuffer;
+    return a(paramActivity, a(paramString), paramBundle);
   }
   
-  public static void a(String paramString)
+  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
   {
-    int i = GLES20.glGetError();
-    if (i != 0) {
-      Log.e("GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    QQAppInterface localQQAppInterface = paramBaseActivity.app;
+    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
+    boolean bool;
+    if (paramMessageRecord.istroop == 1)
+    {
+      localBundle.putString("gc", paramMessageRecord.frienduin);
+      if ((banb.a(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())) || (banb.b(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.c())))
+      {
+        bool = true;
+        localBundle.putBoolean("isAdmin", bool);
+      }
+    }
+    else
+    {
+      paramString = a(paramString);
+      bool = a(paramBaseActivity, paramString, localBundle);
+      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
+      {
+        if (paramString.jdField_b_of_type_Int != 1) {
+          break label186;
+        }
+        axqy.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      bool = false;
+      break;
+      label186:
+      if (paramString.jdField_b_of_type_Int == 2) {
+        bbbp.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     asjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,48 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class amtu
+  implements ampc<String>
 {
-  private amtv jdField_a_of_type_Amtv;
-  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
   
-  public amtu()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Amtv = new amtv();
+    boolean bool = false;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
+    }
+    for (;;)
+    {
+      return;
+      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
+      try
+      {
+        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
+          bool = true;
+        }
+        this.a = bool;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
+      }
+    }
   }
   
-  public amtu(String paramString, amtv paramamtv)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Amtv = paramamtv;
-  }
-  
-  public amtv a()
-  {
-    return this.jdField_a_of_type_Amtv;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
+    localStringBuilder.append("enable:").append(this.a);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

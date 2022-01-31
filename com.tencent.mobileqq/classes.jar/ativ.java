@@ -1,148 +1,93 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class ativ
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  boolean a;
-  protected int b;
-  boolean b;
-  protected int c;
-  protected int d;
-  protected String e = "";
-  protected String f = "";
-  protected String g = "";
-  protected String h = "";
-  protected String i = "";
-  protected String j = "";
-  protected String k = "";
-  protected String l = "";
-  protected String m = "";
-  protected String n = "";
-  protected String o = "";
-  protected String p = "";
-  
-  static
+  public static int a(CharSequence paramCharSequence)
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    jdField_c_of_type_JavaLangString = "";
-    jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public ativ()
-  {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public ativ a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public ativ a(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
+    if (paramCharSequence == null) {
+      return 0;
     }
-    if (this.jdField_b_of_type_Boolean) {
-      this.m = ("" + atbg.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-    }
-    long l1 = System.currentTimeMillis() - jdField_a_of_type_Long;
-    if (l1 % 1000L > 500L) {}
-    for (l1 = (int)l1 / 1000 + 1;; l1 = (int)l1 / 1000)
+    int m = paramCharSequence.length();
+    int i = 0;
+    int j = 0;
+    if (i < m)
     {
-      this.e = (l1 + "");
-      this.f = jdField_c_of_type_JavaLangString;
-      this.g = jdField_b_of_type_JavaLangString;
-      this.h = jdField_a_of_type_JavaLangString;
-      this.i = (nam.a() + "");
-      axqw.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
-      return;
+      if (paramCharSequence.charAt(i) < '') {}
+      for (int k = 1;; k = 2)
+      {
+        j += k;
+        i += 1;
+        break;
+      }
     }
+    return j;
   }
   
-  public ativ b()
+  public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Boolean = true;
-    return this;
-  }
-  
-  public ativ b(String paramString)
-  {
-    this.f = paramString;
-    return this;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null)) {
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("charm_level", 0));
-    }
-    if ((this.jdField_b_of_type_Boolean) && (paramQQAppInterface != null))
+    int m = paramCharSequence.length();
+    int j = 0;
+    int i = paramInt1;
+    for (;;)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.m = String.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + paramQQAppInterface.getCurrentAccountUin(), 4).getInt("gender", 0));
+      CharSequence localCharSequence = paramCharSequence;
+      if (i < m) {
+        if (paramCharSequence.charAt(i) >= '') {
+          break label91;
+        }
+      }
+      label91:
+      for (int k = 1;; k = 2)
+      {
+        j = k + j;
+        if (j <= paramInt2) {
+          break;
+        }
+        paramInt2 = i;
+        if (i > 0)
+        {
+          paramInt2 = i;
+          if (Character.isHighSurrogate(paramCharSequence.charAt(i - 1))) {
+            paramInt2 = i - 1;
+          }
+        }
+        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+        return localCharSequence;
+      }
+      i += 1;
     }
-    this.i = (nam.a() + "");
-    axqw.b(paramQQAppInterface, "dc02676", "grp_lbs", this.l, this.j, this.k, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.m, this.n, this.o, this.p + "|" + this.e + "|" + this.f + "|" + this.g + "|" + this.h + "|" + this.i);
   }
   
-  public ativ c(String paramString)
+  public static String a(long paramLong)
   {
-    this.g = paramString;
-    return this;
+    paramLong = System.currentTimeMillis() - paramLong;
+    if (paramLong < 3600000L) {
+      return paramLong / 60L / 1000L + 1L + ajya.a(2131702208);
+    }
+    if (paramLong < 86400000L) {
+      return paramLong / 60L / 60L / 1000L + ajya.a(2131702215);
+    }
+    return paramLong / 24L / 60L / 60L / 1000L + ajya.a(2131702207);
   }
   
-  public ativ d(String paramString)
+  public static String b(long paramLong)
   {
-    this.h = paramString;
-    return this;
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if (paramLong > 100000L) {
+      return "9.9万+";
+    }
+    return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
   }
   
-  public ativ e(String paramString)
+  public static String c(long paramLong)
   {
-    this.m = paramString;
-    return this;
-  }
-  
-  public ativ f(String paramString)
-  {
-    this.n = paramString;
-    return this;
-  }
-  
-  public ativ g(String paramString)
-  {
-    this.p = paramString;
-    return this;
-  }
-  
-  public ativ h(String paramString)
-  {
-    this.j = paramString;
-    return this;
-  }
-  
-  public ativ i(String paramString)
-  {
-    this.k = paramString;
-    return this;
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if ((paramLong > 10000L) && (paramLong < 10000000L)) {
+      return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+    }
+    return String.format("%d千万", new Object[] { Long.valueOf(paramLong / 10000000L) });
   }
 }
 

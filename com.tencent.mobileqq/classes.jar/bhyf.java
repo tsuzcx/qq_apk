@@ -1,38 +1,31 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
 
-class bhyf
-  implements ModuleDownloadListener
+public class bhyf
 {
-  bhyf(bhye parambhye, bhyj parambhyj) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public static void a(int paramInt)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    a("WidgetReport", 302, 7, paramInt, false, false);
   }
   
-  public void onDownloadFailed(String paramString)
+  public static void a(int paramInt1, int paramInt2)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bhye.a(this.jdField_a_of_type_Bhye, false);
-    this.jdField_a_of_type_Bhyj.a(false);
+    a("MsgActiveFeed", 133, paramInt1, paramInt2, false, false);
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat)
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("vip_tar_engine.jar")) {
-      return;
+    if (QZLog.isColorLevel()) {
+      QZLog.i(paramString, 2, "reportToPf00064 actiontype = " + paramInt1 + " subactionType = " + paramInt2 + " reserves = " + paramInt3 + " isNeedSample = " + paramBoolean1 + " isReportNow = " + paramBoolean2);
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhye.a(), " onDownloadSucceed = ", bhye.b() });
-    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bhye.b());
-    bhye.a(this.jdField_a_of_type_Bhye);
-    this.jdField_a_of_type_Bhyj.a(bhye.a(this.jdField_a_of_type_Bhye));
+    paramString = new LpReportInfo_pf00064(paramInt1, paramInt2, paramInt3);
+    LpReportManager.getInstance().reportToPF00064(paramString, paramBoolean1, paramBoolean2);
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    a("VipSignature", paramInt1, paramInt2, 0, false, false);
   }
 }
 

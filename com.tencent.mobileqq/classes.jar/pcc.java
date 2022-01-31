@@ -1,21 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import java.util.Comparator;
-
-class pcc
-  implements Comparator<WeiShiVideoArticleInfo>
+public abstract interface pcc
 {
-  pcc(pcb parampcb) {}
-  
-  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
-  {
-    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
-      return 0;
-    }
-    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract void F_();
 }
 
 

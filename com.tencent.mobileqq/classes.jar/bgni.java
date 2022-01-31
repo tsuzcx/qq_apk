@@ -1,32 +1,59 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qlink.QlinkLeakHelper.2.1;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-public final class bgni
-  implements View.OnClickListener
+public abstract class bgni
+  extends Binder
+  implements bgnh
 {
-  public void onClick(View paramView)
+  public bgni()
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    attachInterface(this, "cooperation.qlink.IQlinkService");
+  }
+  
+  public static bgnh a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131709883) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("qlink-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new QlinkLeakHelper.2.1(this));
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
+    if ((localIInterface != null) && ((localIInterface instanceof bgnh))) {
+      return (bgnh)localIInterface;
+    }
+    return new bgnj(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qlink.IQlinkService");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgni
  * JD-Core Version:    0.7.0.1
  */

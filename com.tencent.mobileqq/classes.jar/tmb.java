@@ -1,33 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-public class tmb<REQ extends MessageMicro>
-  extends syv<tnz>
+public class tmb
+  extends sys<tnz>
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
-  
-  public tmb(String paramString, REQ paramREQ, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
+  public static final String a = sxm.a("StorySvc.get_user_black_status");
+  public String b;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return a;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    return new tnz(paramArrayOfByte);
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
+    try
+    {
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new tnz(localRspGetBlackList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
   protected byte[] a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 

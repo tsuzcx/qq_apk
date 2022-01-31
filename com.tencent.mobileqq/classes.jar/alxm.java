@@ -1,55 +1,66 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class alxm
+  implements alxn
 {
-  public static final String a;
-  public alxo[] a;
+  public final String a = alxl.a + "." + getClass().getSimpleName();
   
-  static
+  public static final String a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = alxp.class.getSimpleName() + "." + alxm.class.getSimpleName();
+    return alyn.a() + File.separator + "_res/" + paramString1;
   }
   
-  public alxm()
+  public String a(alxq paramalxq)
   {
-    this.jdField_a_of_type_ArrayOfAlxo = new alxo[6];
+    return alyn.a() + File.separator + "_res/" + paramalxq.b + File.separator;
   }
   
-  public alxo a(AppInterface paramAppInterface, int paramInt)
+  public boolean a(alxq paramalxq)
   {
-    int i;
-    if (paramInt >= 0)
+    String str = b(paramalxq);
+    try
     {
-      i = paramInt;
-      if (paramInt <= 6) {}
-    }
-    else
-    {
-      i = 0;
-    }
-    Object localObject = this.jdField_a_of_type_ArrayOfAlxo[i];
-    paramAppInterface = (AppInterface)localObject;
-    if (localObject == null)
-    {
-      paramAppInterface = (AppInterface)localObject;
-      switch (i)
-      {
-      default: 
-        paramAppInterface = (AppInterface)localObject;
+      boolean bool = new File(str).exists();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramalxq + "|" + str);
+      }
+      if (!bool) {
+        return true;
       }
     }
-    for (;;)
+    catch (Throwable paramalxq)
     {
-      localObject = paramAppInterface;
-      if (paramAppInterface == null) {
-        localObject = new alxn();
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramalxq.getMessage());
       }
-      this.jdField_a_of_type_ArrayOfAlxo[i] = localObject;
-      return localObject;
-      paramAppInterface = new luo();
-      continue;
-      paramAppInterface = new akyk();
+      paramalxq.printStackTrace();
     }
+    return false;
+  }
+  
+  public boolean a(alxq paramalxq, boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public String b(alxq paramalxq)
+  {
+    return a(paramalxq.b, paramalxq.c);
+  }
+  
+  public boolean b(alxq paramalxq)
+  {
+    boolean bool = true;
+    String str = aurn.a(b(paramalxq));
+    if (!paramalxq.b.equalsIgnoreCase(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramalxq);
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 

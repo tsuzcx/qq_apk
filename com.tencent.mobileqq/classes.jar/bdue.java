@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-
-public class bdue
-  implements DialogInterface.OnClickListener
+public abstract interface bdue
 {
-  public bdue(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(bdvq parambdvq);
 }
 
 

@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 class apmk
-  implements View.OnClickListener
+  implements xax
 {
-  apmk(apme paramapme, int paramInt) {}
+  apmk(apmj paramapmj, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onClick(View paramView)
+  public void a(List<apqk> paramList)
   {
-    if (this.jdField_a_of_type_Apme.a != null)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label79;
-      }
-      axqw.b(null, "dc00898", "", "", "0X800A745", "0X800A745", apvk.c(this.jdField_a_of_type_Apme.e()), 0, "", "", "", "");
-      if (this.jdField_a_of_type_Apme.a.c()) {
-        this.jdField_a_of_type_Apme.a.b();
-      }
+    if (this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apng != null) {
+      this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apng.a(paramList, this.jdField_a_of_type_Apmj.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apmj.a.b, this.jdField_a_of_type_Apmj.a.c, this.jdField_a_of_type_Apmj.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
-    label79:
-    while (this.jdField_a_of_type_Int != 2) {
+    if (paramList != null)
+    {
+      axqy.b(this.jdField_a_of_type_Apmj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apkt.a().TroopUin, "", apug.f(this.jdField_a_of_type_Apmj.a.b()), "1");
       return;
     }
-    this.jdField_a_of_type_Apme.a.f();
+    axqy.b(this.jdField_a_of_type_Apmj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Apmj.a.jdField_a_of_type_Apkt.a().TroopUin, "-1", apug.f(this.jdField_a_of_type_Apmj.a.b()), "1");
   }
 }
 

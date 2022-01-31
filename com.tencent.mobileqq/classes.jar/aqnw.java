@@ -1,43 +1,94 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.gallery.model.pic.AIOFilePicData;
 
 public class aqnw
 {
-  private static int a;
-  public ConcurrentHashMap<Long, aqnz> a;
-  
-  static
+  public static Intent a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
   {
-    jdField_a_of_type_Int = 900000;
-  }
-  
-  private aqnw()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final aqnw a()
-  {
-    return aqny.a();
-  }
-  
-  public aqnz a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (aqnz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    if (paramIntent == null)
+    {
+      aqmd.a().a().a("ForwardUtils", 4, "getForwardData return null from main process");
+      paramActivity = null;
     }
-    return null;
+    Intent localIntent;
+    do
+    {
+      do
+      {
+        return paramActivity;
+        paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
+        paramActivity = paramIntent;
+      } while (paramBoolean);
+      paramIntent.putExtra("filepictest", true);
+      paramActivity = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+      String str1 = paramIntent.getStringExtra("forward_filepath");
+      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
+      String str2 = paramIntent.getStringExtra("forward_text");
+      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
+      int i = paramIntent.getIntExtra("forward_type", 0);
+      localIntent = new Intent();
+      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("forward_type", i);
+      localBundle.putParcelable("fileinfo", paramActivity);
+      localBundle.putBoolean("not_forward", true);
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("forward_filepath", str1);
+      localIntent.putExtra("forward_text", str2);
+      localIntent.putExtra("k_favorites", paramBoolean);
+      localIntent.putExtra("isFromShare", bool);
+      paramActivity = paramIntent;
+    } while (!AIOFilePicData.class.isInstance(paramIntent));
+    localIntent.putExtra("isPic", true);
+    localIntent.putExtra("direct_send_if_dataline_forward", true);
+    return paramIntent;
   }
   
-  public void a()
+  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
   {
-    aqmb.a().a().a(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    a(paramActivity, paramIntent, paramBoolean, -1, "");
   }
   
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new aqnz(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    if (paramIntent == null)
+    {
+      aqmd.a().a().a("ForwardUtils", 4, "getForwardData return null from main process");
+      return;
+    }
+    paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
+    if (!paramBoolean)
+    {
+      paramIntent.putExtra("filepictest", true);
+      ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+      String str1 = paramIntent.getStringExtra("forward_filepath");
+      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
+      String str2 = paramIntent.getStringExtra("forward_text");
+      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
+      int i = paramIntent.getIntExtra("forward_type", 0);
+      Intent localIntent = new Intent();
+      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("forward_type", i);
+      localBundle.putParcelable("fileinfo", localForwardFileInfo);
+      localBundle.putBoolean("not_forward", true);
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("forward_filepath", str1);
+      localIntent.putExtra("forward_text", str2);
+      localIntent.putExtra("k_favorites", paramBoolean);
+      localIntent.putExtra("isFromShare", bool);
+      if (AIOFilePicData.class.isInstance(paramIntent))
+      {
+        localIntent.putExtra("isPic", true);
+        localIntent.putExtra("direct_send_if_dataline_forward", true);
+      }
+      aqbe.a(paramActivity, paramIntent, 103, paramInt, paramString);
+      return;
+    }
+    aqbe.a(paramActivity, paramIntent, 21, paramInt, paramString);
   }
 }
 

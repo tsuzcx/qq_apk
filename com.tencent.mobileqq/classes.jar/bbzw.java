@@ -1,4 +1,12 @@
-public class bbzw {}
+class bbzw
+  implements myy
+{
+  bbzw(bbzu parambbzu) {}
+  
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

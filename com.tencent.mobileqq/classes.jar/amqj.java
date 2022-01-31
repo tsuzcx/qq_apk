@@ -1,89 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amqj
-  extends ampb<amqk>
 {
-  public int a()
-  {
-    return 597;
-  }
+  public boolean a;
   
-  @NonNull
-  public amqk a(int paramInt)
+  public static amqj a(String paramString)
   {
-    return new amqk();
-  }
-  
-  @Nullable
-  public amqk a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    if (paramString == null) {}
+    do
     {
-      amqk localamqk = amqk.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      return null;
+      try
+      {
+        amqj localamqj = new amqj();
+        localamqj.a = new JSONObject(paramString).optBoolean("is_in_messagetab", false);
+        QLog.d("AppletNotificationConfProcessor", 2, "confBean = " + localamqj.toString());
+        return localamqj;
       }
-      return localamqk;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
-    }
-    ahjz.a(true);
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("AppletNotificationConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
-  }
-  
-  public Class<amqk> a()
-  {
-    return amqk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-    ahjz.a(true);
-  }
-  
-  public void a(amqk paramamqk)
-  {
-    if (paramamqk == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramamqk.toString());
-    }
-    ahjz.a(true);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
-    }
-    ahjz.a(true);
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

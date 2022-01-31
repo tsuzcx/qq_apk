@@ -1,22 +1,20 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1;
 
 public class akwg
+  implements aysc
 {
-  @TargetApi(23)
-  public static void a(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
+  public void onResp(aysz paramaysz)
   {
-    if (paramAppActivity != null) {
-      paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+    if (paramaysz.jdField_a_of_type_Int == 0) {
+      ThreadManagerV2.excute(new PokeBigResHandler.NetEngine.1(this, paramaysz.jdField_a_of_type_Aysy.c), 64, null, true);
     }
   }
   
-  @TargetApi(23)
-  public static boolean a(Context paramContext)
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    return (paramContext != null) && (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0);
+    Log.e("Ron", "req:[" + paramaysy.toString() + "\n curOffset" + paramLong1 + "\n totalLen" + paramLong2 + "]");
   }
 }
 

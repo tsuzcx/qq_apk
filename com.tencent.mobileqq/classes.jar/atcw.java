@@ -1,32 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class atcw
-  implements bcij<oidb_0x8e4.RspBody>
+  implements DialogInterface.OnClickListener
 {
-  public atcw(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
+  public atcw(GameRoomInviteActivity paramGameRoomInviteActivity, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameRoomInviteActivity localGameRoomInviteActivity;
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
-        break label94;
-      }
-    }
-    label94:
-    for (boolean bool = true;; bool = false)
-    {
-      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-    }
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

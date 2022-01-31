@@ -1,71 +1,37 @@
-import android.os.Handler;
+import android.graphics.Bitmap;
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.widget.XListView;
 
 public class afgg
-  implements affn
+  implements awcf
 {
   public afgg(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int i = 3;
-    this.a.i();
-    if (paramBoolean)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
       {
-        paramObject = (ArrayList)paramObject;
-        if (paramObject.size() != 0) {
-          break label94;
-        }
-        if (this.a.a != null)
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
         {
-          paramObject = this.a.a;
-          if (!this.a.b) {
-            break label89;
-          }
-          paramInt1 = 3;
-          paramObject.sendEmptyMessage(paramInt1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
-        }
-      }
-      for (;;)
-      {
-        return;
-        label89:
-        paramInt1 = 2;
-        break;
-        label94:
-        if (paramObject.size() > 0) {}
-        try
-        {
-          paramString = (afgx)paramObject.get(0);
-          if ((this.a.a(paramObject)) && (this.a.a != null))
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof afgj)))
           {
-            this.a.a.sendEmptyMessage(0);
-            return;
+            paramBitmap = (afgj)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
           }
+          paramInt2 += 1;
         }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
-          }
-          paramObject = this.a.a;
-          if (!this.a.b) {}
-        }
-      }
-      for (paramInt1 = i;; paramInt1 = 2)
-      {
-        paramObject.sendEmptyMessage(paramInt1);
-        return;
       }
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 

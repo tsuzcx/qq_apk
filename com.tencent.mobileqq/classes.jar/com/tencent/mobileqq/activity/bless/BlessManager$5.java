@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afaz;
+import afax;
 
 public class BlessManager$5
   implements Runnable
 {
-  public BlessManager$5(afaz paramafaz) {}
+  public BlessManager$5(afax paramafax) {}
   
   public void run()
   {
-    if (afaz.a(this.this$0) != null)
+    if (afax.a(this.this$0) != null)
     {
-      if (!afaz.a(this.this$0))
+      if (!afax.a(this.this$0))
       {
-        afaz.c(this.this$0, afaz.a(this.this$0, afaz.a(this.this$0), false));
-        afaz.a(this.this$0, afaz.a(this.this$0));
-        afaz.a(this.this$0, afaz.a(this.this$0), true);
+        afax.c(this.this$0, afax.a(this.this$0, afax.a(this.this$0), false));
+        afax.a(this.this$0, afax.a(this.this$0));
+        afax.a(this.this$0, afax.a(this.this$0), true);
       }
       return;
     }
-    afaz.a(this.this$0, false);
+    afax.a(this.this$0, false);
   }
 }
 

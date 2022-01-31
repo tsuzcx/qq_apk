@@ -1,20 +1,24 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class aaey
   implements View.OnClickListener
 {
-  public aaey(AboutActivity paramAboutActivity) {}
+  public aaey(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
-    {
-      axqw.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akva.a(), "");
-      UpgradeDetailActivity.a(this.a, akva.a().a(), false, false, true);
+    axqy.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
+    }
+    AccountManageActivity.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
   }
 }

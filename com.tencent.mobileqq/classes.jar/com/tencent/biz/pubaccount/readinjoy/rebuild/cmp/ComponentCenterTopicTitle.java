@@ -4,20 +4,20 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
-import bhvh;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import java.util.ArrayList;
-import pax;
-import pqs;
-import prb;
-import pvb;
-import qdt;
-import qdv;
+import pau;
+import pqp;
+import pqy;
+import puy;
+import qdq;
+import qds;
 
 public class ComponentCenterTopicTitle
   extends ComponentTitle
-  implements pqs
+  implements pqp
 {
   TextView a;
   TextView b;
@@ -42,26 +42,26 @@ public class ComponentCenterTopicTitle
   public void a(Context paramContext)
   {
     LayoutInflater.from(paramContext).inflate(2131559887, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364591));
-    this.b = ((TextView)findViewById(2131365018));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364590));
+    this.b = ((TextView)findViewById(2131365017));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = (pax)paramObject;
-      this.jdField_a_of_type_Pvb.a(paramObject);
+      paramObject = (pau)paramObject;
+      this.jdField_a_of_type_Puy.a(paramObject);
       paramObject = paramObject.a();
       if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.a != null) && (paramObject.mSocialFeedInfo.a.a != null) && (!paramObject.mSocialFeedInfo.a.a.isEmpty()))
       {
-        paramObject = (qdv)paramObject.mSocialFeedInfo.a.a.get(0);
+        paramObject = (qds)paramObject.mSocialFeedInfo.a.a.get(0);
         String str = paramObject.c + paramObject.a;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
         if (paramObject.b <= 0) {
           break label176;
         }
-        paramObject = String.format("- %s人正在参与 -", new Object[] { bhvh.a(paramObject.b) });
+        paramObject = String.format("- %s人正在参与 -", new Object[] { bhvy.a(paramObject.b) });
         this.b.setText(paramObject);
         this.b.setVisibility(0);
       }
@@ -75,9 +75,9 @@ public class ComponentCenterTopicTitle
     }
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
-    this.jdField_a_of_type_Pvb.a(paramprb);
+    this.jdField_a_of_type_Puy.a(parampqy);
   }
   
   public void b() {}

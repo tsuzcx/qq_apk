@@ -1,22 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.DiscoverBannerPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAIOPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
 
-class txs
-  implements syt<tnh, tni>
+public class txs
 {
-  txs(txr paramtxr, twu paramtwu) {}
-  
-  public void a(@NonNull tnh paramtnh, @Nullable tni paramtni, @NonNull ErrorMessage paramErrorMessage)
+  public static twi a(Object paramObject)
   {
-    if ((paramErrorMessage.isFail()) || (paramtni == null))
-    {
-      veg.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Twu.a(paramErrorMessage, null, false);
-      return;
+    ved.d("Q.qqstory.player.data.SimpleDataProvider", "play info:%s", new Object[] { paramObject });
+    if ((paramObject instanceof HomeFeedPlayInfo)) {
+      return new txh(new twe((HomeFeedPlayInfo)paramObject));
     }
-    this.jdField_a_of_type_Txr.a.a(paramtni.jdField_a_of_type_JavaUtilList, paramtni.jdField_a_of_type_JavaLangString, paramtni.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Twu.a(paramErrorMessage, twc.b(paramtni.jdField_a_of_type_JavaUtilList), paramtni.jdField_a_of_type_Boolean);
+    if ((paramObject instanceof TroopAssistantHomeFeedPlayInfo)) {
+      return new txh(new txo((TroopAssistantHomeFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof ProfileFeedPlayInfo)) {
+      return new txh(new txc((ProfileFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof SingleFeedPlayInfo)) {
+      return new txh(new txn((SingleFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MsgTabPlayInfo)) {
+      return new txh(new twy((MsgTabPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MemoriesFeedPlayInfo)) {
+      return new txh(new twu((MemoriesFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof HotRecommendFeedPlayInfo)) {
+      return new txh(new twh((HotRecommendFeedPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof VidListPlayInfo)) {
+      return new txh(new txr((VidListPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof DiscoverBannerPlayInfo)) {
+      return new txh(new tvy((DiscoverBannerPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof TroopAIOPlayInfo)) {
+      return new txq(((TroopAIOPlayInfo)paramObject).storyId);
+    }
+    if ((paramObject instanceof ShareFromMemoryPlayInfo)) {
+      return new txh(new txe((ShareFromMemoryPlayInfo)paramObject));
+    }
+    if ((paramObject instanceof MemorySelectVideoPlayInfo)) {
+      return new txh(new twx((MemorySelectVideoPlayInfo)paramObject));
+    }
+    vxp.a("play info unknown", new Object[0]);
+    return null;
   }
 }
 

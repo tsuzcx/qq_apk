@@ -1,29 +1,133 @@
-import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.minigame.utils.AppUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observer;
+import mqq.app.AppRuntime;
 
 public class bbss
-  extends bbso
+  implements bbrz, hr
 {
-  public static final bbss a = new bbss();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  private bbsa jdField_a_of_type_Bbsa;
+  private ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
+  private hl jdField_a_of_type_Hl = new bbsu(this);
+  private ho jdField_a_of_type_Ho;
+  private Observer jdField_a_of_type_JavaUtilObserver = new bbst(this);
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private boolean jdField_a_of_type_Boolean;
+  private int b = 1;
+  private int c = 1;
   
-  public void cleanCache(Context paramContext)
+  public bbss(bbry parambbry, AppRuntime paramAppRuntime, int paramInt)
   {
-    super.cleanCache(paramContext);
-    ayls.a().b();
+    this.jdField_a_of_type_Bbsa = parambbry.a();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Int = paramInt;
+    hs.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
   }
   
-  public long getBID()
+  protected hn a(int paramInt1, int paramInt2)
   {
-    return 38L;
+    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)))
+    {
+      this.jdField_a_of_type_Ho = ((ho)this.jdField_a_of_type_MqqAppAppRuntime.getManager(42));
+      this.jdField_a_of_type_Ho.a(this);
+      return this.jdField_a_of_type_Ho.a(paramInt1, paramInt2, false, ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).c(), 0);
+    }
+    return null;
   }
   
-  protected String getRootDir()
+  public void a()
   {
-    return "musicTheme";
+    this.jdField_a_of_type_Bbsa.a().sendEmptyMessage(10003);
   }
   
-  protected String getScidPrefix()
+  public void a(int paramInt)
   {
-    return "musicTheme.";
+    this.b = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setFont(0, System.currentTimeMillis());
+      return;
+    }
+    this.jdField_a_of_type_Bbsa.a(paramInt1);
+    this.jdField_a_of_type_Int = paramInt2;
+    b();
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureFontAdapter", 2, "downloadDone type = " + paramInt);
+    }
+  }
+  
+  public void a(ETTextView paramETTextView, float paramFloat, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = paramETTextView;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Hl);
+  }
+  
+  protected void a(ETTextView paramETTextView, hn paramhn, float paramFloat)
+  {
+    if (paramhn.jdField_a_of_type_Int == 0)
+    {
+      paramETTextView.setFont(0, System.currentTimeMillis());
+      return;
+    }
+    if (paramhn.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
+    {
+      paramhn = paramhn.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+      paramhn.setSize(paramFloat);
+    }
+    for (;;)
+    {
+      if ((paramETTextView.mFont == null) || (!paramhn.equals(paramETTextView.mFont))) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
+      paramETTextView.shouldStartAnimation = this.jdField_a_of_type_Boolean;
+      paramhn.mAnimationId = this.jdField_a_of_type_Long;
+      paramETTextView.setFont(paramhn, this.jdField_a_of_type_Long);
+      paramETTextView.requestLayout();
+      return;
+      ETFont localETFont = new ETFont(paramhn.jdField_a_of_type_Int, paramhn.jdField_a_of_type_JavaLangString, paramFloat, paramhn.b, paramhn.jdField_a_of_type_AndroidGraphicsTypeface);
+      paramhn.jdField_a_of_type_ComEtrumpMixlayoutETFont = localETFont;
+      paramhn = localETFont;
+    }
+  }
+  
+  public void b()
+  {
+    if (AppUtil.isMainProcess()) {}
+    for (hn localhn = a(this.jdField_a_of_type_Bbsa.a(), this.jdField_a_of_type_Int);; localhn = hs.a().a(this.jdField_a_of_type_Bbsa.a(), this.jdField_a_of_type_Int))
+    {
+      QLog.i("SignatureFontAdapter", 1, "load " + localhn + " fontId:" + this.jdField_a_of_type_Bbsa.a());
+      if ((localhn != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)) {
+        a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localhn, this.jdField_a_of_type_Float);
+      }
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    hs.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(null);
+    if (this.jdField_a_of_type_Ho != null) {
+      this.jdField_a_of_type_Ho.b(this);
+    }
   }
 }
 

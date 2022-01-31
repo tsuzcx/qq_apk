@@ -1,15 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
-class aryu
-  implements View.OnClickListener
+public class aryu
+  implements Animator.AnimatorListener
 {
-  aryu(aryt paramaryt, String paramString) {}
+  public aryu(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    aryt.a(this.jdField_a_of_type_Aryt).a(this.jdField_a_of_type_JavaLangString);
-    axqw.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
+    PoiSlideBottomPanel.h(this.a, false);
+    PoiSlideBottomPanel.i(this.a, false);
+    PoiSlideBottomPanel.j(this.a, false);
+    if (PoiSlideBottomPanel.k(this.a) != null) {
+      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.e(this.a, false);
+    PoiSlideBottomPanel.f(this.a, false);
+    PoiSlideBottomPanel.g(this.a, false);
+    if (PoiSlideBottomPanel.i(this.a) != null) {
+      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    PoiSlideBottomPanel.d(this.a, true);
   }
 }
 

@@ -1,13 +1,35 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-
-public class aonp
-  extends aouj
+public abstract class aonp
 {
-  public aonp(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  public int a = 1;
+  public String e;
   
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  public aonp(int paramInt, String paramString)
   {
-    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+    this.a = paramInt;
+    this.e = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof aonp))
+    {
+      paramObject = (aonp)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
+      }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
   }
 }
 

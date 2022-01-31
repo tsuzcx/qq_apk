@@ -1,12 +1,23 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bfgd
-  implements Comparator<File>
+public class bfgd
 {
-  public int a(File paramFile1, File paramFile2)
+  public static String a(int paramInt)
   {
-    return paramFile1.getName().compareTo(paramFile2.getName());
+    String str = b(paramInt);
+    return bfhm.a().getString(str, "");
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    String str = b(paramInt);
+    bfhm.a().edit().putString(str, paramString).apply();
+  }
+  
+  private static String b(int paramInt)
+  {
+    return "gdt_cookie_" + beut.a().a() + "_" + paramInt;
   }
 }
 

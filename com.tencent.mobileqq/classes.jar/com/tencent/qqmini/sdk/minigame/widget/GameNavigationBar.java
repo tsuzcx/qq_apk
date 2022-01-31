@@ -6,12 +6,12 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import begz;
-import beri;
-import besa;
-import besl;
-import bexg;
-import bffu;
+import behq;
+import berz;
+import besr;
+import betc;
+import bexx;
+import bfgl;
 import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
 
 public class GameNavigationBar
@@ -63,23 +63,23 @@ public class GameNavigationBar
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClipChildren(false);
       this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton = new CapsuleButton(getContext());
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.setId(2131364688);
-      localObject = new RelativeLayout.LayoutParams(bffu.a(getContext(), 80.0F), bffu.a(getContext(), 30.0F));
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.setId(2131364687);
+      localObject = new RelativeLayout.LayoutParams(bfgl.a(getContext(), 80.0F), bfgl.a(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = (bffu.a(getContext(), 9.0F) + bffu.d(getContext()));
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = bffu.a(getContext(), 12.5F);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = (bfgl.a(getContext(), 9.0F) + bfgl.d(getContext()));
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = bfgl.a(getContext(), 12.5F);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton, (ViewGroup.LayoutParams)localObject);
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(this.jdField_a_of_type_Int);
       b();
       this.jdField_a_of_type_Boolean = true;
     }
-    while (!besl.a())
+    while (!betc.a())
     {
       Object localObject;
       return;
     }
-    besl.a("GameNavigationBar", "[init] context null");
+    betc.a("GameNavigationBar", "[init] context null");
   }
   
   public CapsuleButton a()
@@ -96,19 +96,19 @@ public class GameNavigationBar
     return this;
   }
   
-  public GameNavigationBar a(besa parambesa)
+  public GameNavigationBar a(besr parambesr)
   {
-    if (parambesa != null)
+    if (parambesr != null)
     {
-      parambesa = parambesa.a;
-      if (parambesa != null)
+      parambesr = parambesr.a;
+      if (parambesr != null)
       {
-        if (!TextUtils.isEmpty(parambesa.jdField_a_of_type_JavaLangString)) {
-          a(parambesa.jdField_a_of_type_JavaLangString);
+        if (!TextUtils.isEmpty(parambesr.jdField_a_of_type_JavaLangString)) {
+          a(parambesr.jdField_a_of_type_JavaLangString);
         }
-        a(parambesa.jdField_a_of_type_Int);
-        if (!TextUtils.isEmpty(parambesa.c)) {
-          b(parambesa.c);
+        a(parambesr.jdField_a_of_type_Int);
+        if (!TextUtils.isEmpty(parambesr.c)) {
+          b(parambesr.c);
         }
       }
     }
@@ -132,13 +132,13 @@ public class GameNavigationBar
   
   public void a()
   {
-    ((RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.getLayoutParams()).topMargin = bffu.a(getContext(), 9.0F);
+    ((RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.getLayoutParams()).topMargin = bfgl.a(getContext(), 9.0F);
   }
   
-  public void a(begz parambegz)
+  public void a(behq parambehq)
   {
-    parambegz = new bexg(parambegz);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.a(parambegz);
+    parambehq = new bexx(parambehq);
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCapsuleButton.a(parambehq);
   }
   
   public GameNavigationBar b(String paramString)

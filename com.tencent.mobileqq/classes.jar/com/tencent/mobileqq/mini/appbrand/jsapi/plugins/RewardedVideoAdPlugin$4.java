@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ysx;
+import ysu;
 
 class RewardedVideoAdPlugin$4
   implements MiniAppCmdInterface
@@ -56,7 +56,7 @@ class RewardedVideoAdPlugin$4
           if ((!RewardedVideoAdPlugin.access$900(this.this$0).isValid()) || (TextUtils.isEmpty(paramJSONObject))) {
             break;
           }
-          ysx.a().a(RewardedVideoAdPlugin.access$900(this.this$0));
+          ysu.a().a(RewardedVideoAdPlugin.access$900(this.this$0));
           localObject = this.this$0;
           GdtAd localGdtAd = RewardedVideoAdPlugin.access$900(this.this$0);
           if (RewardedVideoAdPlugin.access$1100(this.this$0))

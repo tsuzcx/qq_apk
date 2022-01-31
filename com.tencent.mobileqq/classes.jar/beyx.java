@@ -1,65 +1,64 @@
-import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightReq;
-import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_COMM.COMM.Entry;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class beyx
-  extends bfad
 {
-  private INTERFACE.StCheckNavigateRightReq a = new INTERFACE.StCheckNavigateRightReq();
-  
-  public beyx(String paramString1, String paramString2)
+  private static List<COMM.Entry> a(String paramString1, String paramString2)
   {
-    this.a.appId.set(paramString1);
-    this.a.targetAppId.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
-    try
+    ArrayList localArrayList = new ArrayList();
+    do
     {
-      localStCheckNavigateRightRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStCheckNavigateRightRsp != null)
+      for (;;)
       {
-        paramArrayOfByte = new JSONObject();
-        int i = localStCheckNavigateRightRsp.actionCode.get();
-        paramArrayOfByte.put("action_code", i);
-        paramArrayOfByte.put("skip_local_check", localStCheckNavigateRightRsp.skipLocalCheck.get());
-        if (i == 0) {
-          paramArrayOfByte.put("reason", localStCheckNavigateRightRsp.wording.get());
-        } else {
-          paramArrayOfByte.put("wording", localStCheckNavigateRightRsp.wording.get());
+        try
+        {
+          paramString2 = new JSONObject(new JSONObject(paramString2).optString("actionData"));
+          String str1 = paramString2.optString("business");
+          if ("mmbizwxamonitor".equals(str1))
+          {
+            localArrayList.add(beze.a(paramString2.optString("name"), String.valueOf(paramString2.optInt("value"))));
+            Iterator localIterator = paramString2.keys();
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            String str2 = (String)localIterator.next();
+            if ((("mmbizwxamonitor".equals(str1)) && (("name".equals(str2)) || ("value".equals(str2)))) || (("mmbizwxaanalytics".equals(str1)) && (("eventID".equals(str2)) || ("data".equals(str2))))) {
+              continue;
+            }
+            localArrayList.add(beze.a(str2, paramString2.optString(str2)));
+            continue;
+          }
+          if (!"mmbizwxaanalytics".equals(str1)) {
+            continue;
+          }
         }
+        catch (JSONException paramString1)
+        {
+          paramString1.printStackTrace();
+          return localArrayList;
+        }
+        localArrayList.add(beze.a(paramString2.optString("eventID"), paramString2.optString("data")));
       }
-    }
-    catch (Exception paramArrayOfByte)
+      localArrayList.add(beze.a("appid", paramString1));
+    } while (bfhk.a());
+    localArrayList.addAll(beze.a());
+    return localArrayList;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (paramString2.contains("mmbizwxajsapi")) || (paramString2.contains("mmbizwxaservicequality")))
     {
-      besl.a("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      betc.c("MiniProgramLpReportDC04", "handleReportRealTimeAction not handle data " + paramString2);
+      return;
     }
-    besl.a("GetNewBaseLibRequest", "onResponse fail.rsp = null");
-    return null;
-    return paramArrayOfByte;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "CheckNavigateRight";
+    paramString1 = beze.a(4, String.valueOf(3), a(paramString1, paramString2), null);
+    bezf.a().a(paramString1);
   }
 }
 

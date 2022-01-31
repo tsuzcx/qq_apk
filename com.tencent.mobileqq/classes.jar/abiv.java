@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class abiv
-  extends WebViewClient
+  implements View.OnTouchListener
 {
-  public abiv(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public abiv(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a(paramString)) {}
-    return true;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    return false;
   }
 }
 

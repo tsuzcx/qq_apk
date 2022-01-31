@@ -1,121 +1,251 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-public class bdtv
-  implements View.OnClickListener
+@TargetApi(16)
+public abstract class bdtv
 {
-  private long jdField_a_of_type_Long;
+  protected long a;
+  protected MediaCodec.BufferInfo a;
+  protected MediaCodec a;
+  protected MediaExtractor a;
+  protected MediaFormat a;
+  protected bdtw a;
+  protected bdtx a;
+  protected bdua a;
+  protected boolean a;
+  protected ByteBuffer[] a;
+  protected long b;
+  protected boolean b;
+  protected ByteBuffer[] b;
+  protected long c;
   
-  public bdtv(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(View paramView)
+  public bdtv(bdtx parambdtx, bdtw parambdtw)
   {
-    if (paramView == null) {}
-    do
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Bdtx = parambdtx;
+    this.jdField_a_of_type_Bdtw = parambdtw;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo != null) {
+      return this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+    }
+    return 0L;
+  }
+  
+  public long a(long paramLong)
+  {
+    long l1 = System.currentTimeMillis();
+    try
     {
-      do
+      this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 0);
+      long l2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+      if (this.jdField_a_of_type_Bdua != null) {
+        this.jdField_a_of_type_Bdua.b(l2 / 1000L);
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_b_of_type_Long = l2;
+      this.c = l2;
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l2;
+      this.jdField_a_of_type_Long = (System.currentTimeMillis() - l2 / 1000L);
+      ved.b(a(), "end seekTo timecost=" + (System.currentTimeMillis() - l1) + " seekTargetTimeUs:" + paramLong + " realStartTime:" + l2);
+      return l2;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      for (;;)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              l = System.currentTimeMillis();
-            } while (Math.abs(l - this.jdField_a_of_type_Long) < 1000L);
-            this.jdField_a_of_type_Long = l;
-            paramView = (ausu)paramView.getTag();
-            switch (paramView.jdField_a_of_type_Int)
-            {
-            default: 
-              return;
-            case 4: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 7: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f();
-              return;
-            case 20: 
-              axqw.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "1", "1", "", "");
-              if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 6)
-              {
-                ChatActivityUtils.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, 1024, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.nickname, null, true, null, true, true, null, "from_internal");
-                return;
-              }
-              FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw);
-              return;
-            case 55: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-              return;
-            case 8: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(((Integer)paramView.jdField_a_of_type_JavaLangObject).intValue());
-              return;
-            case 52: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 47: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 48: 
-              localObject = (String[])paramView.jdField_a_of_type_JavaLangObject;
-              paramView = localObject[0];
-              localObject = localObject[1];
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(paramView, (String)localObject);
-              return;
-            case 49: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 50: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a((bdvb)paramView.jdField_a_of_type_JavaLangObject);
-              return;
-            case 51: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 53: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d();
-              return;
-            case 54: 
-              paramView = bbej.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-            }
-          } while (paramView == null);
-          paramView.c();
-          return;
-          QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-          return;
-          paramView = String.valueOf(paramView.jdField_a_of_type_JavaLangObject);
-        } while ((TextUtils.isEmpty(paramView)) || (!paramView.contains("|")));
-        paramView = paramView.split("\\|");
-      } while ((paramView == null) || (paramView.length != 2));
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, paramView[0], paramView[1]);
-      return;
-    } while (QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity));
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, true);
-    if ((this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw != null) && (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard != null))
+        ved.c(a(), "decoder flush error %s", localRuntimeException);
+      }
+    }
+  }
+  
+  protected abstract String a();
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs / 1000L);
+  }
+  
+  protected abstract void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo);
+  
+  protected abstract void a(bdtw parambdtw, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat);
+  
+  public void a(bdua parambdua)
+  {
+    this.jdField_a_of_type_Bdua = parambdua;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    bdts.a(this.jdField_a_of_type_Bdtx.jdField_a_of_type_Long, "[" + a() + "] init now");
+    this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+    boolean bool1;
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      int i;
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_Bdtw.b);
+        bdts.a(this.jdField_a_of_type_Bdtx.jdField_a_of_type_Long, "[" + a() + "] extractor setDataSource");
+        i = 0;
+        bool1 = bool2;
+        if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
+        {
+          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+          str = this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime");
+          if (!str.startsWith(this.jdField_a_of_type_Bdtw.a)) {
+            break label353;
+          }
+          this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
+          bdts.a(this.jdField_a_of_type_Bdtx.jdField_a_of_type_Long, "[" + a() + "] find and selectTrack");
+        }
+      }
+      catch (IOException localIOException)
+      {
+        String str;
+        ved.b(a(), "init set data source error :%s", localIOException);
+        return false;
+      }
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+        bdts.a(this.jdField_a_of_type_Bdtx.jdField_a_of_type_Long, "[" + a() + "] create codec");
+        a(this.jdField_a_of_type_Bdtw, this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaFormat);
+        bdts.a(this.jdField_a_of_type_Bdtx.jdField_a_of_type_Long, "[" + a() + "] configureCodec");
+        bool1 = true;
+      }
+      catch (Throwable localThrowable)
+      {
+        ved.b(a(), "init createDecoderByType error :%s", localThrowable);
+        bool1 = bool2;
+        continue;
+      }
+      if (!bool1) {
+        break;
+      }
+      ved.b(a(), "create media decoder success!");
+      return bool1;
+      label353:
+      i += 1;
+    }
+    ved.d(a(), "create media decoder error!");
+    return bool1;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+        this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+        this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(2131695619);
-    paramView = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Ajtk;
-    Object localObject = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
-    String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-    long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, false);
-    paramView.a((String)localObject, str, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
+    catch (Exception localException)
+    {
+      ved.c(a(), "onRelease error :%s ", localException);
+    }
+  }
+  
+  public boolean b()
+  {
+    ved.a(a(), "start ! %s", this.jdField_a_of_type_Bdtw);
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      return false;
+    }
+    catch (Throwable localThrowable)
+    {
+      try
+      {
+        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        return true;
+      }
+      catch (Exception localException)
+      {
+        ved.c(a(), "decode start error :%s", localException);
+      }
+      localThrowable = localThrowable;
+      ved.c(a(), "decode start error", localThrowable);
+      return false;
+    }
+  }
+  
+  public void c()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      d();
+    }
+    if (!this.jdField_b_of_type_Boolean) {
+      a(this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+    }
+    if (this.jdField_b_of_type_Boolean) {}
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  protected void d()
+  {
+    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+    int j;
+    long l1;
+    if (i >= 0)
+    {
+      ByteBuffer localByteBuffer = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
+      j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
+      l1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+      if (j < 0)
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    else
+    {
+      return;
+    }
+    long l2 = this.jdField_b_of_type_Long;
+    this.jdField_b_of_type_Long = l1;
+    this.c += l1 - l2;
+    this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.c, 0);
+    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdtv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-final class aigz
-  implements DialogInterface.OnClickListener
+public class aigz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aigz(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public aigz(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.a.setAlpha(f);
+      }
+      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.c.setAlpha(Float.valueOf(f).floatValue());
+      }
     }
   }
 }

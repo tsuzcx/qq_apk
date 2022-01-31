@@ -3,18 +3,14 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqg
-  extends bfmg
+  extends bfmx
 {
   public acqg(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.f = false;
-  }
-  
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.c.setVisibility(0);
+    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_f_of_type_Boolean = true;
   }
 }
 

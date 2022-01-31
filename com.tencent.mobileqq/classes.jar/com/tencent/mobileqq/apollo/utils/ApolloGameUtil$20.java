@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 final class ApolloGameUtil$20
@@ -14,17 +14,17 @@ final class ApolloGameUtil$20
     switch (this.a)
     {
     default: 
-      bcpw.a(BaseApplicationImpl.getApplication(), 1, ajyc.a(2131700358), 0).a();
+      bcql.a(BaseApplicationImpl.getApplication(), 1, ajya.a(2131700369), 0).a();
     case 1: 
       return;
     case 0: 
-      bcpw.a(BaseApplicationImpl.getApplication(), 2, ajyc.a(2131700334), 0).a();
+      bcql.a(BaseApplicationImpl.getApplication(), 2, ajya.a(2131700345), 0).a();
       return;
     case 2: 
-      bcpw.a(BaseApplicationImpl.getApplication(), 1, ajyc.a(2131700346), 0).a();
+      bcql.a(BaseApplicationImpl.getApplication(), 1, ajya.a(2131700357), 0).a();
       return;
     }
-    bcpw.a(BaseApplicationImpl.getApplication(), 2, ajyc.a(2131700350), 0).a();
+    bcql.a(BaseApplicationImpl.getApplication(), 2, ajya.a(2131700361), 0).a();
   }
 }
 

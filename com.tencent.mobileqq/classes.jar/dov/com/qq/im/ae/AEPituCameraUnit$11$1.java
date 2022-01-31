@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae;
 
-import biim;
-import bjqt;
+import bijd;
+import bjrk;
 
 class AEPituCameraUnit$11$1
   implements Runnable
@@ -10,7 +10,7 @@ class AEPituCameraUnit$11$1
   
   public void run()
   {
-    biim.a(this.a.this$0).a(2);
+    bijd.a(this.a.this$0).a(2);
   }
 }
 

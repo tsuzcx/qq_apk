@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axdo;
-import axdr;
-import axdz;
-import axeg;
+import axdq;
+import axdt;
+import axeb;
+import axei;
 import java.util.Iterator;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class ShortVideoPreDownloader$5
   implements Runnable
 {
-  public ShortVideoPreDownloader$5(axdz paramaxdz) {}
+  public ShortVideoPreDownloader$5(axeb paramaxeb) {}
   
   public void run()
   {
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
     while (localIterator.hasNext())
     {
-      axeg localaxeg = (axeg)localIterator.next();
-      axdo.a(localaxeg, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localaxeg.a != null) {
-        axdz.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localaxeg.a.a);
+      axei localaxei = (axei)localIterator.next();
+      axdq.a(localaxei, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localaxei.a != null) {
+        axeb.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localaxei.a.a);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();

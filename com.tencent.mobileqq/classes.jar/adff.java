@@ -1,11 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
-
 public class adff
-  extends adfp
+  extends adfi
 {
-  public ImageView a;
-  public ColorView a;
+  public int a;
+  public int b;
+  
+  public adff(int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.a = paramInt2;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof adff));
+      paramObject = (adff)paramObject;
+    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
+    return true;
+  }
 }
 
 

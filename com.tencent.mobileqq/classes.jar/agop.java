@@ -1,21 +1,16 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
-public class agop
-  implements View.OnClickListener
+class agop
+  implements DialogInterface.OnClickListener
 {
-  public agop(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agop(agon paramagon) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PhotoPreviewActivity.a(this.a) == null)
-    {
-      PhotoPreviewActivity.a(this.a, bbcv.a(this.a, 0, this.a.getString(2131718404), null, this.a.getString(2131718402), this.a.getString(2131718403), new agoq(this), new agor(this)));
-      PhotoPreviewActivity.a(this.a).setCanceledOnTouchOutside(false);
-    }
-    PhotoPreviewActivity.a(this.a).show();
+    PhotoPreviewActivity.a(this.a.a).dismiss();
   }
 }
 

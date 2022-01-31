@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import axtn;
+import axtp;
 
 class LoadDex$4
   implements Runnable
@@ -9,7 +9,7 @@ class LoadDex$4
   
   public void run()
   {
-    axtn.a();
+    axtp.a();
   }
 }
 

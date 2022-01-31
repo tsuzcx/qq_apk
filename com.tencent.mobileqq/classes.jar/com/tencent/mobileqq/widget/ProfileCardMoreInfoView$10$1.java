@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import android.widget.TextView;
-import bbkx;
+import bbll;
 
 class ProfileCardMoreInfoView$10$1
   implements Runnable
@@ -14,7 +14,7 @@ class ProfileCardMoreInfoView$10$1
     {
       if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView$10.a.setCompoundDrawablePadding(bbkx.b(3.0F));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView$10.a.setCompoundDrawablePadding(bbll.b(3.0F));
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView$10.a.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841728, 0);
       }
     }

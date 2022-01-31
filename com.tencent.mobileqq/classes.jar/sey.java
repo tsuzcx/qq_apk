@@ -1,11 +1,18 @@
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class sey
-  implements Comparator<sex>
+public final class sey
+  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
 {
-  public int a(sex paramsex1, sex paramsex2)
+  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
   {
-    return paramsex2.a - paramsex1.a;
+    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+  }
+  
+  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  {
+    return new ProfileParams.CurLoginUsr[paramInt];
   }
 }
 

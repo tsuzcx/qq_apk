@@ -1,71 +1,34 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqWatchVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tnu
-  extends syv<tpd>
+  extends syn
 {
-  public static final String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  private final qqstory_group.RspAddGroupVideo a;
   
-  static
+  public tnu(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.video_watch_no_expired");
+    super(paramRspAddGroupVideo.result);
+    this.a = paramRspAddGroupVideo;
   }
   
-  public String a()
+  public List<tnv> a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public tpd a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspWatchVideo localRspWatchVideo = new qqstory_service.RspWatchVideo();
-    try
-    {
-      localRspWatchVideo.mergeFrom(paramArrayOfByte);
-      return new tpd(localRspWatchVideo);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.group_feed_list.get().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new tnv((qqstory_group.GroupFeed)localIterator.next()));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqWatchVideo localReqWatchVideo = new qqstory_service.ReqWatchVideo();
-    localReqWatchVideo.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqWatchVideo.to_union_id.set(ByteStringMicro.copyFromUtf8(a(this.jdField_c_of_type_JavaLangString)));
-    PBUInt32Field localPBUInt32Field = localReqWatchVideo.is_live_video;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localReqWatchVideo.source.set(this.jdField_c_of_type_Int);
-      if (this.jdField_b_of_type_Long > 0L) {
-        localReqWatchVideo.create_time.set(this.jdField_b_of_type_Long / 1000L);
-      }
-      if (this.d > 0) {
-        localReqWatchVideo.vid_type.set(this.d);
-      }
-      return localReqWatchVideo.toByteArray();
-    }
+    return localArrayList;
   }
   
   public String toString()
   {
-    return "WatchVideoRequest{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoUid=" + this.jdField_c_of_type_JavaLangString + '}';
+    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
   }
 }
 

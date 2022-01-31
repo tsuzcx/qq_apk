@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import tdc;
-import tdo;
+import tcz;
+import tdl;
 
 class QQStoryBaseActivity$1
   implements Runnable
@@ -10,7 +10,7 @@ class QQStoryBaseActivity$1
   
   public void run()
   {
-    ((tdo)tdc.a(2)).c();
+    ((tdl)tcz.a(2)).c();
   }
 }
 

@@ -1,38 +1,27 @@
-import android.view.View;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
 
 class appf
-  implements bfpc
+  implements asgr
 {
-  appf(appd paramappd) {}
+  appf(appb paramappb) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    paramAdapterView = this.a;
-    boolean bool;
-    if (!appd.a(this.a))
+    switch (paramInt)
     {
-      bool = true;
-      appd.a(paramAdapterView, bool);
-      if (this.a.jdField_a_of_type_Apkn != null) {
-        this.a.jdField_a_of_type_Apkn.a(appd.a(this.a));
-      }
-      if (!appd.a(this.a)) {
-        break label110;
-      }
-      this.a.jdField_a_of_type_Apqq.a(false);
-      this.a.jdField_a_of_type_Apqq.b(false);
     }
-    for (;;)
+    do
     {
-      this.a.jdField_a_of_type_Apqq.e(appd.a(this.a));
+      do
+      {
+        return;
+        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      } while (appb.a(this.a));
+      appb.b(this.a);
       return;
-      bool = false;
-      break;
-      label110:
-      this.a.jdField_a_of_type_Apqq.a(true);
-      this.a.b();
-    }
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    } while (!appb.a(this.a));
+    appb.a(this.a);
   }
 }
 

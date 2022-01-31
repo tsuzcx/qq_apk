@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.message;
 
-import akqf;
-import bcpw;
+import akqe;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class OnLinePushMessageProcessor$2
   implements Runnable
 {
-  public OnLinePushMessageProcessor$2(akqf paramakqf, int paramInt) {}
+  public OnLinePushMessageProcessor$2(akqe paramakqe, int paramInt) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), "Linkstar Push!ChooserAc!! msgType = " + this.a, 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), "Linkstar Push!ChooserAc!! msgType = " + this.a, 0).a();
   }
 }
 

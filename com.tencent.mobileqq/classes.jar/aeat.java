@@ -1,43 +1,26 @@
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.qphone.base.util.QLog;
 
 public class aeat
-  extends AnimatorListenerAdapter
+  implements Animator.AnimatorListener
 {
-  public aeat(SixCombolEffectView paramSixCombolEffectView) {}
+  public aeat(SixCombolEffectView paramSixCombolEffectView, aeaw paramaeaw) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-        SixCombolEffectView.jdField_a_of_type_Int = 4;
-        if (QLog.isColorLevel()) {
-          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-        }
-      } while (SixCombolEffectView.a(this.a) == null);
-      paramAnimator = SixCombolEffectView.a(this.a);
-    } while (paramAnimator == null);
-    SixCombolEffectView.a(this.a).a(paramAnimator);
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.jdField_a_of_type_Aeaw.b.start();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 3;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

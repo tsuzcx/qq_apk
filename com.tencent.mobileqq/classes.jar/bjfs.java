@@ -1,22 +1,20 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
 
-class bjfs
-  implements bfob
+public class bjfs
+  implements bjfu
 {
-  int jdField_a_of_type_Int = 0;
+  public bjfs(QIMInformationPasterManager.2 param2) {}
   
-  bjfs(bjfr parambjfr) {}
+  public void a(float paramFloat, String paramString, int paramInt) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, String paramString, bkgd parambkgd)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (bjfr.a(this.jdField_a_of_type_Bjfr).a() != null) && (this.jdField_a_of_type_Int == bjfr.a(this.jdField_a_of_type_Bjfr).a().size() - 1)) {
-      bjfr.a(this.jdField_a_of_type_Bjfr).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambkgd);
+    }
+    if (parambkgd.a() != null) {
+      parambkgd.a().a(paramBoolean);
     }
   }
 }

@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class ateh
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  public ateh(RecentUserInvitePanel paramRecentUserInvitePanel) {}
+  public ateh(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
+    super.onChanged();
+    this.a.a();
   }
 }
 

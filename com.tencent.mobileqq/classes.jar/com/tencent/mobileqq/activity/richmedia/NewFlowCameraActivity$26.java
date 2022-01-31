@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import avqy;
-import avre;
-import avrj;
-import uoj;
+import avra;
+import avrg;
+import avrl;
+import uog;
 
 class NewFlowCameraActivity$26
   implements Runnable
@@ -13,9 +13,9 @@ class NewFlowCameraActivity$26
   
   public void run()
   {
-    Object localObject = avre.a().a().a(this.this$0.d);
+    Object localObject = avrg.a().a().a(this.this$0.d);
     if (localObject != null) {
-      ((avqy)localObject).a(103);
+      ((avra)localObject).a(103);
     }
     for (;;)
     {

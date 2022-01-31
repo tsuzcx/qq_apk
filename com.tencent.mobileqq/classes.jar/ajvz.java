@@ -1,35 +1,47 @@
-import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajvz
-  implements ajtg
+  implements ajte
 {
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  protected void a(List<CustomEmotionData> paramList) {}
   
-  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (paramObject == null)
-      {
-        paramObject = null;
-        a(paramBoolean, paramObject);
-      }
-    }
-    while (paramInt != 1) {
-      for (;;)
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      do
       {
         return;
-        paramObject = (FaceInfo)paramObject;
+      } while (paramObject == null);
+      a(((Boolean)paramObject).booleanValue());
+      return;
+    case 1: 
+      try
+      {
+        a((ArrayList)paramObject);
+        return;
       }
-    }
-    if (paramObject == null) {}
-    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
-    {
+      catch (Exception paramObject)
+      {
+        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
+        return;
+      }
+    case 2: 
       b(paramBoolean, paramObject);
       return;
     }
+    a(paramBoolean, paramObject);
   }
 }
 

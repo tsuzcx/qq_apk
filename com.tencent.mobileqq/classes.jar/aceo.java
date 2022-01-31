@@ -1,49 +1,20 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import java.util.ArrayList;
 
 public class aceo
-  implements Handler.Callback
+  implements TextView.OnEditorActionListener
 {
   public aceo(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          paramMessage = (Intent)paramMessage.obj;
-          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-          if ((55 == paramMessage.getIntExtra(bbbi.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
-          {
-            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
-            if ((localArrayList != null) && (localArrayList.size() > 0))
-            {
-              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
-              return true;
-            }
-          }
-        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
-        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
-      } while (paramMessage == null);
-      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
-      return true;
-    case 2: 
-      this.a.b(null);
-      return true;
+    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
     }
-    this.a.u();
-    return true;
+    return false;
   }
 }
 

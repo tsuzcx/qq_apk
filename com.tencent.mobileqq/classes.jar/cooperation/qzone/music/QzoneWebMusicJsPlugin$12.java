@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import arsh;
-import bhkl;
-import bhkn;
+import arsj;
+import bhlc;
+import bhle;
 import org.json.JSONObject;
 
 class QzoneWebMusicJsPlugin$12
@@ -12,8 +12,8 @@ class QzoneWebMusicJsPlugin$12
   
   public void run()
   {
-    bhkl.a().a().a();
-    arsh.a(new JSONObject(), "showFloatView", null);
+    bhlc.a().a().a();
+    arsj.a(new JSONObject(), "showFloatView", null);
   }
 }
 

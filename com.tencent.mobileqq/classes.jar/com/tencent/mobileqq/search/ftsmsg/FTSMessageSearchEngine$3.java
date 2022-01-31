@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class FTSMessageSearchEngine$3
@@ -8,7 +8,7 @@ public class FTSMessageSearchEngine$3
 {
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), "Error:fts search exists repeated results", 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), "Error:fts search exists repeated results", 0).a();
   }
 }
 

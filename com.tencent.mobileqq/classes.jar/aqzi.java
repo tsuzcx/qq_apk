@@ -1,43 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
+import android.view.View;
 import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqzi
-  extends Handler
+  implements StaggeredGridLayoutManager.ExceptionListener
 {
   public aqzi(HotPicPageView paramHotPicPageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (HotPicPageView.b);
-          this.a.i();
-          return;
-        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Aqzo == null) || (this.a.jdField_a_of_type_Aqzo.getItemCount() == 0));
-        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
-      } while (i < 0);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
-    } while ((paramMessage == null) || (!(paramMessage instanceof aqzr)));
-    paramMessage = (aqzr)paramMessage;
-    if (paramMessage.jdField_a_of_type_Int == 0)
-    {
-      this.a.b(paramMessage, i);
-      return;
-    }
-    paramMessage.jdField_a_of_type_Boolean = true;
+    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
   }
 }
 

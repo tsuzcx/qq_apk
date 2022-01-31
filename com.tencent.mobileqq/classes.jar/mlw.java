@@ -1,45 +1,15 @@
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.av.ui.beauty.BeautySeekView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.beauty.BeautyView;
 
 public class mlw
-  implements SeekBar.OnSeekBarChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public mlw(BeautySeekView paramBeautySeekView) {}
+  public mlw(BeautyView paramBeautyView) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (BeautySeekView.a(this.a) != paramInt)
-    {
-      BeautySeekView.a(this.a, paramInt);
-      if (paramBoolean) {
-        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
-      }
-      BeautySeekView.a(this.a, paramInt);
-      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
-    }
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
-    BeautySeekView.a(this.a).setVisibility(0);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

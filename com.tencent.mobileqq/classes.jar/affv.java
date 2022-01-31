@@ -1,12 +1,10 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 
-public class affv
-  extends aimv
+public abstract interface affv
 {
-  public TextView a;
-  public PublicRecommendAccountInfo a;
-  public TextView b;
+  public abstract void a();
+  
+  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
 }
 
 

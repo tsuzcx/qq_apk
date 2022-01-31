@@ -1,32 +1,45 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class opm
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoEntranceTypeConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = oof.a(paramString);
+    Object localObject = paramString.keySet();
+    try
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("check_period_ms", str1)) {
-        bhvh.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
-      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
-        bhvh.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
-      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
-        bhvh.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "readinjoy_video_recommend_entrance_direct")) {
+          bhvy.j(Integer.parseInt(str2));
+        }
       }
+      return true;
     }
-    return true;
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void onWipeConfig(int paramInt) {}
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bhvy.j(2);
+  }
 }
 
 

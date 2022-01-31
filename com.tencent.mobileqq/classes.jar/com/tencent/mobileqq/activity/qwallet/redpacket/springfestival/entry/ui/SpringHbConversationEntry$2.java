@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahgl;
-import ahgs;
+import ahgj;
+import ahgq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ARMapHongBaoListView;
 
 public class SpringHbConversationEntry$2
   implements Runnable
 {
-  public SpringHbConversationEntry$2(ahgs paramahgs) {}
+  public SpringHbConversationEntry$2(ahgq paramahgq) {}
   
   public void run()
   {
@@ -17,13 +17,13 @@ public class SpringHbConversationEntry$2
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.i("springHb_SpringHbConversationEntry", 2, "mTouchReleaseRunnable mActiveState:" + ahgs.a(this.this$0) + "  mResume:" + this.this$0.jdField_a_of_type_Boolean + " mTitleIsVisible:" + this.this$0.f);
+          QLog.i("springHb_SpringHbConversationEntry", 2, "mTouchReleaseRunnable mActiveState:" + ahgq.a(this.this$0) + "  mResume:" + this.this$0.jdField_a_of_type_Boolean + " mTitleIsVisible:" + this.this$0.f);
         }
-        ahgs.a(this.this$0, 400);
-        if (ahgs.a(this.this$0) != null)
+        ahgq.a(this.this$0, 400);
+        if (ahgq.a(this.this$0) != null)
         {
           bool = this.this$0.a();
-          ahgs.a(this.this$0).d();
+          ahgq.a(this.this$0).d();
           if ((this.this$0.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getScrollY() != 0))
           {
             this.this$0.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setSpringbackOffset(0);
@@ -44,11 +44,11 @@ public class SpringHbConversationEntry$2
           }
           else
           {
-            ahgs.c(this.this$0);
-            if ((ahgl.a != 2) && (ahgl.a != 3)) {
+            ahgq.c(this.this$0);
+            if ((ahgj.a != 2) && (ahgj.a != 3)) {
               break;
             }
-            ahgs.a(this.this$0, true);
+            ahgq.a(this.this$0, true);
             return;
           }
           if ((this.this$0.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView == null) || (this.this$0.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.m)) {

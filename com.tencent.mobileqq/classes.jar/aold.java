@@ -1,25 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
 
-class aold
-  implements Animation.AnimationListener
+public class aold
 {
-  aold(aolc paramaolc) {}
+  public int a;
+  public String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aold(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new aole(this));
-    this.a.c.startAnimation(paramAnimation);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

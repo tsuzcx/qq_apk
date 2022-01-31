@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
 
-public abstract interface bbik
+class bbik
+  implements MyLinearLayout.DispatchKeyEventListener
 {
-  public abstract int a();
+  bbik(bbig parambbig) {}
   
-  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
-  
-  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
-  
-  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbik
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,14 @@
+import javax.microedition.khronos.opengles.GL11;
+
 public abstract interface lqr
 {
-  public abstract void a(lqq paramlqq);
+  public abstract int a();
   
-  public abstract boolean a(lqq paramlqq);
+  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
   
-  public abstract boolean b(lqq paramlqq);
+  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  
+  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

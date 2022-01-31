@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import ayfv;
+import ayfx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
@@ -11,7 +11,7 @@ public final class TeamWorkUtils$4
   
   public void run()
   {
-    ayfv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    ayfx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

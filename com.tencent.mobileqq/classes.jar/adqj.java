@@ -1,35 +1,97 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class adqj
-  implements aefd
+  extends bbri
 {
-  adqj(adqg paramadqg, adqs paramadqs, MessageForPoke paramMessageForPoke) {}
+  adqj(adqe paramadqe) {}
   
-  public void a()
+  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
-    }
-    adwh.a().a(20);
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Adqs.b == adqg.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqg.a instanceof ChatHistoryActivity)) && (!adqg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqs.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+    Object localObject = (Bundle)paramObject;
+    if (1 != ((Bundle)localObject).getInt("fromType")) {
       return;
-      this.jdField_a_of_type_Adqs.c.setVisibility(8);
+    }
+    int j = ((Bundle)localObject).getInt("id");
+    int i = ((Bundle)localObject).getInt("feeType");
+    String str1 = "free";
+    if (4 == i)
+    {
+      str1 = "vip";
+      label48:
+      if (!paramBoolean) {
+        break label161;
+      }
+      paramObject = ((Bundle)localObject).getString("name");
+      localObject = ((Bundle)localObject).getString("minVersion");
+      aanz.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 126, j, paramObject, (String)localObject);
+      if (true == adwj.a) {
+        adwj.a = false;
+      }
+      label107:
+      if (!paramBoolean) {
+        break label422;
+      }
+    }
+    label161:
+    label420:
+    label422:
+    for (i = 0;; i = 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (5 != i) {
+        break label48;
+      }
+      str1 = "svip";
+      break label48;
+      long l = ((Bundle)localObject).getLong("result");
+      localObject = ((Bundle)localObject).getString("msg");
+      paramObject = (Bundle)paramObject;
+      this.a.c = paramObject.getInt("id", 0);
+      String str2 = ajya.a(2131705284);
+      if (l == 0L)
+      {
+        this.a.d = 1;
+        if (true != adwj.a) {
+          break;
+        }
+        adwj.a = false;
+        return;
+      }
+      if (l == 4002L)
+      {
+        this.a.d = 2;
+        paramObject = ajya.a(2131705289);
+        localObject = str2;
+      }
+      for (;;)
+      {
+        if (l == 0L) {
+          break label420;
+        }
+        adwj.a(this.a.b, (Activity)this.a.jdField_a_of_type_AndroidContentContext, paramObject, (String)localObject, this.a.c, this.a.d);
+        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+        break;
+        if (l == 5002L)
+        {
+          this.a.d = 4;
+          paramObject = ajya.a(2131705288);
+          localObject = str2;
+        }
+        else
+        {
+          this.a.d = 1;
+          str2 = ajya.a(2131705287);
+          QLog.e("GivingHeart", 1, "vas poke auth fail, result: " + l);
+          paramObject = localObject;
+          localObject = str2;
+        }
+      }
+      break label107;
     }
   }
 }

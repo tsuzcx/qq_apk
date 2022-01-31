@@ -1,97 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.handler.NetAddr;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class lhb
-  extends lha
+public abstract class lhb<T1 extends MessageMicro, T2 extends MessageMicro>
 {
-  public lhb(AppInterface paramAppInterface)
+  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    super(paramAppInterface);
-  }
-  
-  protected int a()
-  {
-    Object localObject = (VideoAppInterface)this.mApp;
-    if (((VideoAppInterface)localObject).a(0))
+    Object localObject = lgy.a(this);
+    ((lha)localObject).a("QAVMessageHandler", paramLong);
+    if ((((lha)localObject).a != null) && (((lha)localObject).b != null)) {}
+    try
     {
-      localObject = (lju)((VideoAppInterface)localObject).a(0);
-      if (localObject != null) {
-        return ((lju)localObject).b();
+      MessageMicro localMessageMicro = (MessageMicro)((lha)localObject).a.newInstance();
+      localObject = (MessageMicro)((lha)localObject).b.newInstance();
+      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
+        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
       }
-    }
-    return 4;
-  }
-  
-  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
-  {
-    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
-    lgf locallgf = localVideoController.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
-    if (paramList == null)
-    {
-      localObject = "null";
-      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
-      if (locallgf != null) {
-        break label159;
-      }
-    }
-    label159:
-    for (Object localObject = "null";; localObject = locallgf.d)
-    {
-      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
-      if ((localVideoController != null) && (locallgf != null)) {
-        localVideoController.a(ldz.a(locallgf.d), paramBoolean, paramList, paramLong2);
-      }
+      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
       return;
-      localObject = Integer.valueOf(paramList.size());
-      break;
     }
-  }
-  
-  protected void a(Integer paramInteger, Object paramObject)
-  {
-    lcl.c("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
-    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
-  }
-  
-  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    a(Integer.valueOf(6008), new lhh(paramString1, paramString2, paramString3, paramInt));
-  }
-  
-  protected boolean a()
-  {
-    boolean bool2 = false;
-    Object localObject = (VideoAppInterface)this.mApp;
-    boolean bool1 = bool2;
-    if (((VideoAppInterface)localObject).a(0))
+    catch (Exception paramToServiceMsg)
     {
-      localObject = (lju)((VideoAppInterface)localObject).a(0);
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        localObject = (ZimuItem)((lju)localObject).a();
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          localObject = ((ZimuItem)localObject).getId();
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
-            break label74;
-          }
-        }
-      }
-    }
-    label74:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
+      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
     }
   }
+  
+  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
 }
 
 

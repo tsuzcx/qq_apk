@@ -1,30 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class okh
-  implements ViewBase.OnClickListener
+public class okh
+  implements ViewBase.IBuilder
 {
-  okh(okg paramokg) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public ViewBase build(VafContext paramVafContext)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      return;
-    case 1093: 
-      onk.a(oke.a(this.a.a), oke.a(this.a.a), oov.a(oke.a(this.a.a).innerUniqueID));
-      this.a.a.a(2);
-      this.a.a.dismiss();
-      paramViewBase = new onr();
-      paramViewBase.i().b("wording", "" + oov.a());
-      ohi.a("0X8009FE8", oke.a(this.a.a), paramViewBase);
-      return;
-    }
-    this.a.a.a(1);
-    this.a.a.dismiss();
+    return new okg(paramVafContext);
   }
 }
 

@@ -18,7 +18,7 @@ class gf
     Object localObject = (PrinterItemMsgRecord)((fw)paramView.getTag()).a();
     if (localObject != null)
     {
-      paramView = apue.a((PrinterItemMsgRecord)localObject);
+      paramView = apug.a((PrinterItemMsgRecord)localObject);
       ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
       localForwardFileInfo.b(10009);
       localForwardFileInfo.d(6);

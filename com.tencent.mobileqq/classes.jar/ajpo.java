@@ -1,30 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class ajpo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ajpo(ajpn paramajpn) {}
+  ajpo(ajpl paramajpl, ApolloGameData paramApolloGameData) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ajpn.a(this.a) != null)
-    {
-      if (ajpn.a(this.a).a != 1036) {
-        break label62;
-      }
-      ((airz)ajpn.a(this.a).a.getManager(153)).a().c(ajpn.a(this.a).c());
-    }
-    label62:
-    do
-    {
-      return;
-      paramView = (airv)ajpn.a(this.a).getManager(211);
-    } while (paramView == null);
-    paramView.e();
+    paramDialogInterface = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameAppid });
+    Intent localIntent = new Intent(this.jdField_a_of_type_Ajpl.b, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+    VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Ajpl.b, paramDialogInterface, -1L, localIntent, false, -1);
   }
 }
 

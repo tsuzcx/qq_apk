@@ -1,16 +1,12 @@
-import android.content.Context;
-import android.content.SharedPreferences;
+import java.io.File;
+import java.util.Comparator;
 
-public class bfgu
+class bfgu
+  implements Comparator<File>
 {
-  private static SharedPreferences a;
-  
-  public static SharedPreferences a()
+  public int a(File paramFile1, File paramFile2)
   {
-    if (a == null) {
-      a = bepk.a().a().getSharedPreferences("pre_miniapp", 4);
-    }
-    return a;
+    return paramFile1.getName().compareTo(paramFile2.getName());
   }
 }
 

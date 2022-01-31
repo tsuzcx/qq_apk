@@ -1,20 +1,11 @@
-public class mzp
-  implements mzt
+import android.content.Context;
+import java.util.Map;
+
+public abstract interface mzp
 {
-  public void a(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public abstract int a(Context paramContext, String paramString);
   
-  public void b(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, myy parammyy, Map<String, String> paramMap);
 }
 
 

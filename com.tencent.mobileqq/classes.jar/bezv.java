@@ -1,25 +1,37 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.request.GetAppInfoByLinkRequest.1;
 import org.json.JSONObject;
 
 public class bezv
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetUserHealthDataReq a = new INTERFACE.StGetUserHealthDataReq();
+  private INTERFACE.StGetAppInfoByLinkReq a = new INTERFACE.StGetAppInfoByLinkReq();
   
-  public bezv(COMM.StCommonExt paramStCommonExt, String paramString)
+  public bezv(String paramString, int paramInt)
   {
-    this.a.appid.set(paramString);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    this.a.link.set(paramString);
+    this.a.linkType.set(paramInt);
+  }
+  
+  private void a(MiniAppInfo paramMiniAppInfo)
+  {
+    bejn.b().post(new GetAppInfoByLinkRequest.1(this, paramMiniAppInfo));
   }
   
   protected String a()
   {
-    return "mini_user_info";
+    return "mini_app_info";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -27,25 +39,39 @@ public class bezv
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetUserHealthDataRsp localStGetUserHealthDataRsp = new INTERFACE.StGetUserHealthDataRsp();
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
     try
     {
-      localStGetUserHealthDataRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserHealthDataRsp != null)
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetAppInfoByLinkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if ((localStGetAppInfoByLinkRsp != null) && (localStGetAppInfoByLinkRsp.appInfo != null))
       {
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserHealthDataRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserHealthDataRsp.iv.get());
-        return paramArrayOfByte;
+        MiniAppInfo localMiniAppInfo = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
+        localMiniAppInfo.link = this.a.link.get();
+        localMiniAppInfo.linkType = this.a.linkType.get();
+        String str = localStGetAppInfoByLinkRsp.shareTicket.get();
+        paramArrayOfByte.put("appInfo", localMiniAppInfo);
+        paramArrayOfByte.put("shareTicket", str);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        if (localStGetAppInfoByLinkRsp.appInfo.type.get() == 3) {
+          a(localMiniAppInfo);
+        }
       }
-      besl.a("GetUserHealthDataRequest", "onResponse fail.rsp = null");
-      return null;
+      else
+      {
+        betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
+        return null;
+      }
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetUserHealthDataRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
     }
-    return null;
+    return paramArrayOfByte;
   }
   
   public byte[] a()
@@ -55,7 +81,7 @@ public class bezv
   
   protected String b()
   {
-    return "GetUserHealthData";
+    return "GetAppInfoByLink";
   }
 }
 

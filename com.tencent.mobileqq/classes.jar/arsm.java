@@ -1,24 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class arsm
-  implements DownloadParams.DecodeHandler
+public abstract interface arsm
 {
-  public arsm(FloatIconLayout paramFloatIconLayout) {}
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    return bbdr.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

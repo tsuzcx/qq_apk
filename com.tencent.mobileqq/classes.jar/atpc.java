@@ -1,22 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class atpc
-  implements View.OnClickListener
+  implements aqhc
 {
   public atpc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    bfnm localbfnm = bfnm.b;
+    if ((localbfnm != null) && (localbfnm.a()))
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      if (!localbfnm.a(1)) {
+        localbfnm.b(1);
+      }
+      if ((!localbfnm.a(8)) && (localbfnm.a(5))) {
+        localbfnm.b(8);
+      }
+      if ((!localbfnm.a(9)) && (localbfnm.a(6))) {
+        localbfnm.b(9);
+      }
     }
-    this.a.c();
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
   }
 }
 

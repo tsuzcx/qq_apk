@@ -1,54 +1,81 @@
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
 public class vgq
-  implements vgs
+  implements View.OnTouchListener
 {
-  private long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private vgp jdField_a_of_type_Vgp;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private boolean jdField_b_of_type_Boolean;
   
-  public vgq(EditVideoFilter paramEditVideoFilter) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public vgq(vgp paramvgp)
   {
-    veu localveu = (veu)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(veu.class);
-    if (localveu != null) {
-      localveu.a(paramMotionEvent);
-    }
+    this.jdField_a_of_type_Vgp = paramvgp;
   }
   
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent2 != null)
+    if (this.jdField_a_of_type_Vgp == null) {}
+    do
     {
-      veu localveu = (veu)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(veu.class);
-      if (localveu != null) {}
-      for (boolean bool = localveu.a(paramMotionEvent2);; bool = false)
+      do
       {
-        if (bool)
+        float f;
+        do
         {
-          a(paramMotionEvent1);
-          a(paramMotionEvent2);
+          do
+          {
+            return true;
+            f = paramMotionEvent.getY();
+            switch (paramMotionEvent.getAction() & 0xFF)
+            {
+            case 3: 
+            case 4: 
+            default: 
+              return true;
+            case 0: 
+              this.jdField_a_of_type_Int = ((int)f);
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+              return true;
+            }
+          } while (paramMotionEvent.getPointerCount() > 2);
+          if (this.jdField_b_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Vgp.a(paramMotionEvent);
+            return true;
+          }
+          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Vgp.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
+        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
+        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
+        return true;
+        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
+          this.jdField_a_of_type_Boolean = true;
         }
-        return bool;
-      }
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Vgp.a(paramMotionEvent);
+      return true;
+    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Vgp.a(paramMotionEvent);
+    return true;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Vgp.onClick(paramView);
     }
-    return false;
-  }
-  
-  public void onClick(View paramView)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 300L)
-    {
-      this.jdField_a_of_type_Long = l;
-      paramView = (veu)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(veu.class);
-      if (paramView != null) {
-        paramView.d_();
-      }
-      return;
+    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
+      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
     }
-    veg.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
+    this.jdField_a_of_type_Vgp.a(paramMotionEvent);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
   }
 }
 

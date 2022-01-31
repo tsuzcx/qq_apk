@@ -1,71 +1,48 @@
-import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public class tcy
+class tcy
+  implements syq<tns, tnt>
 {
-  public static tcy a;
-  public static tcy b;
-  @vym(a="manufacturer")
-  public String a;
-  @vym(a="model")
-  public String b;
+  tcy(tcx paramtcx) {}
   
-  static
+  public void a(@NonNull tns paramtns, @Nullable tnt paramtnt, @NonNull ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_Tcy = new tcy();
-    jdField_b_of_type_Tcy = new tcy();
-    jdField_b_of_type_Tcy.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
-    jdField_b_of_type_Tcy.jdField_b_of_type_JavaLangString = Build.MODEL;
-    jdField_a_of_type_Tcy.jdField_a_of_type_JavaLangString = "all";
-    jdField_a_of_type_Tcy.jdField_b_of_type_JavaLangString = "all";
-  }
-  
-  public boolean a()
-  {
-    if (jdField_a_of_type_Tcy.equals(this)) {}
-    while ((jdField_b_of_type_Tcy.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_Tcy.jdField_b_of_type_JavaLangString)))) {
-      return true;
+    if (paramtnt == null) {
+      ved.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramtnt });
     }
-    return false;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (tcy)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null)
+      return;
+      if (paramErrorMessage.errorCode == 15000)
       {
-        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
+        ved.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramtnt);
+        this.a.jdField_a_of_type_Long = paramtnt.a.uint64_expire_time.get();
+        return;
       }
-      else {
-        while (paramObject.jdField_a_of_type_JavaLangString != null) {
-          return false;
-        }
+      if (paramErrorMessage.isFail())
+      {
+        ved.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramtnt });
+        return;
       }
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_b_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
+    } while (this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_JavaLangString = paramtnt.a.bytes_cookie.get().toStringUtf8();
+    this.a.jdField_a_of_type_Long = paramtnt.a.uint64_expire_time.get();
+    this.a.a();
+    this.a.a(paramtnt.a);
+    paramtns = paramtnt.a.bytes_global_promote_url.get().toStringUtf8();
+    if (!TextUtils.isEmpty(paramtns))
     {
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        j = this.jdField_b_of_type_JavaLangString.hashCode();
-      }
-      return i * 31 + j;
+      ((tcs)tcz.a(10)).b("key_story_player_promote_url", paramtns);
+      this.a.b = paramtns;
     }
+    this.a.a("onCmdRespond()");
   }
 }
 

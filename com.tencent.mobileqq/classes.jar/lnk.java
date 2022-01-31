@@ -1,7 +1,17 @@
+import com.tencent.av.gaudio.AVNotifyCenter;
+
 public class lnk
 {
-  public int a;
-  public long a;
+  public String a;
+  public String b;
+  public String c;
+  
+  public lnk(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

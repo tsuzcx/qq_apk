@@ -1,47 +1,30 @@
-import android.animation.ValueAnimator;
-import android.app.Activity;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class afec
-  implements affk
+class afec
+  implements Animator.AnimatorListener
 {
-  public afec(AddContactsActivity paramAddContactsActivity) {}
+  afec(afea paramafea) {}
   
-  public Activity a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.a;
+    this.a.a.a = true;
+    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimator.putExtra("from_key", this.a.a.a());
+    paramAnimator.putExtra("fromType", 13);
+    this.a.a.startActivity(paramAnimator);
+    this.a.a.overridePendingTransition(0, 0);
+    bbbn.a(false);
   }
   
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a()
-  {
-    if (this.a.a) {
-      return;
-    }
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()) });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new afed(this));
-    localValueAnimator.addListener(new afee(this));
-    localValueAnimator.start();
-    bbaz.a(true);
-  }
-  
-  public void b()
-  {
-    this.a.findViewById(2131375445).setVisibility(0);
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new afef(this));
-    localValueAnimator.addListener(new afeg(this));
-    localValueAnimator.start();
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,20 +1,23 @@
-import android.os.Message;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.os.MqqHandler;
 
 public class aafk
-  extends MqqHandler
+  extends akhb
 {
   public aafk(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, ayay paramayay)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.e();
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, ayay paramayay)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, ayay paramayay)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 

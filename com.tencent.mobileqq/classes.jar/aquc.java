@@ -1,99 +1,36 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1;
 import java.util.ArrayList;
 
 public class aquc
-  extends bcal
-  implements bcbj
+  extends BroadcastReceiver
 {
-  public aquc(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  private aquc(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!"action_qgame_tool_messgae".equals(paramContext));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      paramContext = (ArrayList)paramContext.getSerializable("key_get_msg");
+    } while ((paramContext == null) || (paramContext.size() <= 0));
+    ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.1(this, paramContext));
   }
-  
-  public void a()
-  {
-    super.doOnResume();
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-    paramArrayList.add(new WadlWebViewJsPlugin());
-    paramArrayList.add(new aqud());
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new arnc());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new arme());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bbus());
-    paramArrayList.add(new QWalletMixJsPlugin());
-    paramArrayList.add(new xmo());
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void c()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 

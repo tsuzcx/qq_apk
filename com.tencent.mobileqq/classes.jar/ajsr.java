@@ -1,77 +1,24 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
 
 public class ajsr
-  extends ajyb
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  protected void a()
+  public ajsr(BaseActivity paramBaseActivity) {}
+  
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    super.a();
-    float f2 = MemoryManager.a().a();
-    float f1;
-    if (akai.a().d > 0.0F)
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
     {
-      f1 = akai.a().d;
-      if ((f2 >= f1) && (akai.a().c) && (this.a.a == null))
-      {
-        MemoryManager.a().a(2L);
-        System.exit(-1);
+      BaseActivity.mIsInMultiScreen = bool;
+      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
       }
-      if (this.d != GuardManager.c * 50 - 1) {
-        break label227;
-      }
-      l = MemoryManager.a(Process.myPid());
-      localHashMap = new HashMap();
-      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
-      localHashMap.put("ramSize", String.valueOf(bbct.d() / 1024L));
-      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
-      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-      this.a.a("GM_reborn", localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
-      }
-    }
-    label227:
-    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
-    {
-      long l;
-      HashMap localHashMap;
       return;
-      f1 = 0.95F;
-      break;
     }
-    System.exit(-1);
-  }
-  
-  protected void a(String paramString)
-  {
-    this.a.a(3, paramString);
-  }
-  
-  protected void b()
-  {
-    this.a.a(4, "fake_p_msg");
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.c(false);
-    if (!"trick_p_msg".equals(paramString)) {
-      this.a.a(false, new String[] { paramString });
-    }
-    long l = MemoryManager.a(Process.myPid());
-    if (ajxz.a().a(l) != 2) {
-      this.a.c();
-    }
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, ajxz.a().a, 0L);
-    CoreService.stopCoreService();
   }
 }
 

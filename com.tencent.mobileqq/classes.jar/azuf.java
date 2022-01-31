@@ -1,169 +1,127 @@
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchMgr.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.UUID;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class azuf
-  implements azui
+  extends aztu
 {
-  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<String, azug> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private LinkedList<azug> b = new LinkedList();
+  protected boolean c;
+  protected boolean d;
+  protected long g = 2000L;
   
-  private String a()
+  protected azuf(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
   {
-    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " RS:" + this.b.size();
+    super(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean2, paramString4);
+    this.c = paramBoolean1;
   }
   
-  public static String a(UUID paramUUID, int paramInt)
+  public static azuf a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
   {
-    return paramUUID.toString() + "_" + paramInt;
+    String str = "";
+    if (paramString1 == null) {
+      str = "strSavePath is null";
+    }
+    while (!TextUtils.isEmpty(str))
+    {
+      azst.a("TroopFileThumbDownloader", azst.a, "getFileDownloader " + str);
+      return null;
+      if (paramString1.length() == 0) {
+        str = "strSavePath is empty";
+      } else if (paramList == null) {
+        str = "lstUrl is null";
+      } else if (paramList.size() == 0) {
+        str = "lstUrl is empty";
+      } else if (paramString2 == null) {
+        str = "urlParams is null";
+      } else if (paramString2.length() == 0) {
+        str = "urlParams is empty";
+      }
+    }
+    return new azuf(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean1, paramBoolean2, paramString4);
   }
   
-  private void d()
+  public void a(bbmu parambbmu)
   {
-    if (this.b.size() >= 10) {}
-    label79:
+    int k = 0;
+    if (!this.c) {
+      break label10;
+    }
+    label10:
+    while (this.d) {
+      return;
+    }
+    parambbmu = parambbmu.a("Set-Cookie");
+    i = k;
     for (;;)
     {
-      return;
-      for (;;)
+      try
       {
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-          break label79;
-        }
-        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localObject = (azug)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        if (localObject != null)
+        if (!TextUtils.isEmpty(parambbmu))
         {
-          this.b.add(localObject);
-          if (((azug)localObject).a()) {
-            break;
+          i = k;
+          if (parambbmu.contains("duration"))
+          {
+            parambbmu = parambbmu.trim().split(";");
+            i = k;
+            if (parambbmu != null)
+            {
+              i = k;
+              if (parambbmu.length > 0)
+              {
+                j = 0;
+                i = k;
+                if (j < parambbmu.length)
+                {
+                  String[] arrayOfString = parambbmu[j].split("=");
+                  if ((arrayOfString == null) || (arrayOfString.length != 2) || (!"duration".equals(arrayOfString[0]))) {
+                    continue;
+                  }
+                  i = Integer.parseInt(arrayOfString[1]);
+                }
+              }
+            }
           }
-          this.b.remove(localObject);
         }
       }
-    }
-  }
-  
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return -1;
-    }
-    if (paramItem.Id == null) {
-      return -2;
-    }
-    if (paramInt == 0) {
-      return -5;
-    }
-    String str = a(paramItem.Id, paramInt);
-    if (a(str))
-    {
-      azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + str + "] fetchFileThumbnail worker exsited. ");
-      return -4;
-    }
-    azug localazug = azug.a(paramLong, paramItem, paramInt, this);
-    if (localazug == null) {
-      return -3;
-    }
-    azul.a(paramItem, paramInt);
-    this.jdField_a_of_type_JavaUtilMap.put(str, localazug);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
-    azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + str + "] fetchFileThumbnail fileName. " + paramItem.FileName + a());
-    d();
-    return 0;
-  }
-  
-  public int a(UUID paramUUID, int paramInt)
-  {
-    if (paramUUID == null) {
-      return -2;
-    }
-    String str = a(paramUUID, paramInt);
-    Object localObject = this.b.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      azug localazug = (azug)((Iterator)localObject).next();
-      if (str.equalsIgnoreCase(localazug.a()))
+      catch (Exception parambbmu)
       {
-        localazug.a();
-        ((Iterator)localObject).remove();
+        int j;
+        i = 0;
+        continue;
       }
+      if ((i == 0) || (this.jdField_a_of_type_Aztm == null) || (!(this.jdField_a_of_type_Aztm instanceof azug))) {
+        break;
+      }
+      ((azug)this.jdField_a_of_type_Aztm).a(i);
+      return;
+      j += 1;
     }
-    for (paramInt = 1;; paramInt = 0)
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public long b()
+  {
+    if (this.g <= 6000L)
     {
-      int i = paramInt;
-      if (paramInt == 0)
-      {
-        localObject = (azug)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
-        if (localObject == null) {
-          break label168;
-        }
-        ((azug)localObject).a();
-        paramInt |= 0x1;
-      }
-      label168:
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | paramInt;
-        if (bool) {
-          azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + str + "] stopFetch. " + a());
-        }
-        d();
-        return 0;
-      }
+      long l = this.g;
+      this.g = (2000L + this.g);
+      return l;
     }
+    return 2000L;
   }
   
-  public void a() {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt, azug paramazug)
+  public void b(boolean paramBoolean)
   {
-    azsi.a(new TroopFileThumbnailFetchMgr.1(this, paramString, paramBoolean, paramInt, paramazug), false);
+    this.d = paramBoolean;
   }
   
-  protected boolean a(String paramString)
+  public void i()
   {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((azug)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void b(String paramString, boolean paramBoolean, int paramInt, azug paramazug)
-  {
-    this.b.remove(paramazug);
-    azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "[" + paramString + "] onWorkDoneInter. bSuc:" + paramBoolean + " errCode:" + paramInt + a());
-    d();
-  }
-  
-  protected void c()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((azug)localIterator.next()).a();
-    }
-    this.b.clear();
-    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((azug)localIterator.next()).a();
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    azsr.c("TroopFileThumbnailFetchMgr", azsr.a, "stopAllInter");
+    this.jdField_a_of_type_Azso.a();
   }
 }
 

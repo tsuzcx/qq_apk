@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ahiq;
+import ahio;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,9 @@ import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bbjw;
-import bcdb;
-import bgwt;
+import bbkk;
+import bcdp;
+import bgxk;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -78,8 +78,8 @@ public class QWalletPayJsPlugin
       localJSONObject = paramJSONObject.optJSONObject("send_object");
       String str = localJSONObject.optString("lucky_uin");
       localJSONObject.remove("lucky_uin");
-      if (!bbjw.a(str)) {
-        localJSONObject.put("lucky_name", ahiq.a(str));
+      if (!bbkk.a(str)) {
+        localJSONObject.put("lucky_name", ahio.a(str));
       }
       paramJSONObject.remove("send_object");
       paramJSONObject.put("send_object", localJSONObject);
@@ -143,11 +143,11 @@ public class QWalletPayJsPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin", "");
-    if ((!bbjw.a(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
+    if ((!bbkk.a(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
     {
-      Object localObject = bgwt.a().b(str1);
+      Object localObject = bgxk.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (bbjw.a((String)localObject)) {
+      if (bbkk.a((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
       }
       if (QLog.isColorLevel()) {
@@ -235,7 +235,7 @@ public class QWalletPayJsPlugin
       }
       String str1 = paramJSONObject.optString("listid");
       String str2 = paramJSONObject.optString("uin");
-      if ((!bbjw.a(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!bbjw.a(str1)))
+      if ((!bbkk.a(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!bbkk.a(str1)))
       {
         String str3 = paramJSONObject.optString("feedsid");
         String str4 = paramJSONObject.optString("token");
@@ -243,15 +243,15 @@ public class QWalletPayJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i("QWalletPayJsHandler", 2, "cache key: " + str5);
         }
-        bgwt localbgwt = bgwt.a();
-        str1 = localbgwt.b(str5);
+        bgxk localbgxk = bgxk.a();
+        str1 = localbgxk.b(str5);
         paramJSONObject = str1;
-        if (bbjw.a(str1))
+        if (bbkk.a(str1))
         {
           if (QLog.isColorLevel()) {
             QLog.d("QWalletPayJsHandler", 2, "get cache from disk");
           }
-          paramJSONObject = localbgwt.a(str2, str5, SharedPreferencesProxyManager.getInstance().getProxy("qb_tenpay_h5_common_hb_" + str2, 0));
+          paramJSONObject = localbgxk.a(str2, str5, SharedPreferencesProxyManager.getInstance().getProxy("qb_tenpay_h5_common_hb_" + str2, 0));
         }
         if (QLog.isColorLevel()) {
           QLog.d("QWalletPayJsHandler", 2, "paramForGarpH5CommonHb:" + paramJSONObject);

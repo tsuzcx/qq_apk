@@ -1,16 +1,18 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-class res
-  extends oyg
+public class res
+  extends ajxj
 {
-  res(rer paramrer, String paramString, AbsListView paramAbsListView, int paramInt)
-  {
-    super(paramString);
-  }
+  public res(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public void a(oya paramoya)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    {
+      QLog.d("ReadinJoyProteusFamilyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
+      this.a.k();
+    }
   }
 }
 

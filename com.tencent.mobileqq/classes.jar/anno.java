@@ -1,39 +1,26 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 public class anno
 {
-  public static int a(AppInterface paramAppInterface, Context paramContext)
+  public int a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  
+  public anno()
   {
-    int i = 0;
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
-    }
-    int j;
-    do
-    {
-      return i;
-      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
-    return j;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
-    }
-    if ((paramAppInterface == null) || (paramContext == null))
-    {
-      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
-      return;
-    }
-    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
+    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
+    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
+    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
+    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import ajsf;
+import ajsd;
 import android.support.v4.util.MQLruCache;
 import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
-import soz;
+import sow;
 
 class PublicAccountImageCollectionPreloadManager$ReadFileThread
   implements Runnable
@@ -23,7 +23,7 @@ class PublicAccountImageCollectionPreloadManager$ReadFileThread
     {
       try
       {
-        localFileInputStream = new FileInputStream(ajsf.cM + this.a);
+        localFileInputStream = new FileInputStream(ajsd.cM + this.a);
         localObject1 = null;
       }
       catch (Exception localException1)
@@ -60,8 +60,8 @@ class PublicAccountImageCollectionPreloadManager$ReadFileThread
       ((ArticleComment.GetPhotoCollectionInfoResponse)localObject2).mergeFrom((byte[])localObject1);
       localObject1 = PublicAccountImageCollectionPreloadManager.a(this.this$0, (ArticleComment.GetPhotoCollectionInfoResponse)localObject2, this.a);
       this.this$0.a.put(this.a, localObject1);
-      this.this$0.a((soz)localObject1);
-      this.this$0.b((soz)localObject1);
+      this.this$0.a((sow)localObject1);
+      this.this$0.b((sow)localObject1);
     }
     return;
   }

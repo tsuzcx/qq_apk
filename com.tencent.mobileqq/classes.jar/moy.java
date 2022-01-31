@@ -1,39 +1,17 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 
 public class moy
-  extends mqj
 {
-  public lwk a;
-  public mpb a;
+  public AVRedPacketConfig a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public boolean c;
   
-  moy(mpc parammpc)
+  public String toString()
   {
-    super(parammpc);
-    this.jdField_a_of_type_Lwk = new moz(this);
-  }
-  
-  void a()
-  {
-    mpa localmpa = new mpa(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmpa);
-  }
-  
-  public void a(mpb parammpb)
-  {
-    mpc localmpc = a();
-    if (localmpc == null) {
-      return;
-    }
-    localmpc.a(parammpb);
-  }
-  
-  public void b(mpb parammpb)
-  {
-    mpc localmpc = a();
-    if (localmpc == null) {
-      return;
-    }
-    localmpc.b(parammpb);
+    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
   }
 }
 

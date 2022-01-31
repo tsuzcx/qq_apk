@@ -1,40 +1,40 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bhvh;
+import bhvy;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import noo;
-import onk;
-import qzd;
-import qze;
-import rva;
+import nol;
+import onh;
+import qza;
+import qzb;
+import rux;
 
 public final class VideoFeedsFirstVideoRecommendationManager$1
   implements Runnable
 {
-  public VideoFeedsFirstVideoRecommendationManager$1(rva paramrva) {}
+  public VideoFeedsFirstVideoRecommendationManager$1(rux paramrux) {}
   
   public void run()
   {
-    int i = bhvh.e();
+    int i = bhvy.e();
     if ((this.a instanceof VideoInfo))
     {
       localObject = (VideoInfo)this.a;
       if (i == 1) {
-        noo.a(null, "", "0X8009A23", "0X8009A23", 0, 0, "", "", "", onk.a((VideoInfo)localObject, i), false);
+        nol.a(null, "", "0X8009A23", "0X8009A23", 0, 0, "", "", "", onh.a((VideoInfo)localObject, i), false);
       }
     }
     while (!(this.a instanceof VideoInfo.EntranceDownloadInfo))
     {
       return;
-      noo.a(null, "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", onk.a((VideoInfo)localObject, i), false);
+      nol.a(null, "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", onh.a((VideoInfo)localObject, i), false);
       return;
     }
     Object localObject = (VideoInfo.EntranceDownloadInfo)this.a;
-    qze localqze = new qze("", "", "", "");
-    localqze.W(1).a(((VideoInfo.EntranceDownloadInfo)localObject).c).a(0).V(i).U(ReadinjoyTabFrame.a);
-    noo.a(null, "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", localqze.a().a(), false);
+    qzb localqzb = new qzb("", "", "", "");
+    localqzb.W(1).a(((VideoInfo.EntranceDownloadInfo)localObject).c).a(0).V(i).U(ReadinjoyTabFrame.a);
+    nol.a(null, "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", localqzb.a().a(), false);
   }
 }
 

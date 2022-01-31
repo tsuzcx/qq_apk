@@ -1,6 +1,15 @@
+import com.tencent.mobileqq.data.NewFriendSubTitle;
+
 public class atzd
-  extends atyy
+  extends atza
 {
+  public NewFriendSubTitle a;
+  
+  public atzd(NewFriendSubTitle paramNewFriendSubTitle)
+  {
+    this.a = paramNewFriendSubTitle;
+  }
+  
   public boolean a()
   {
     return true;

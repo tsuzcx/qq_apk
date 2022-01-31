@@ -1,19 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class llh
+class llh
 {
-  String jdField_a_of_type_JavaLangString = "";
-  List<lln> jdField_a_of_type_JavaUtilList = new ArrayList();
-  lli jdField_a_of_type_Lli = new lli(this);
-  llj jdField_a_of_type_Llj = new llj(this);
-  llk jdField_a_of_type_Llk = new llk(this);
-  lll jdField_a_of_type_Lll = new lll(this);
-  llm jdField_a_of_type_Llm = new llm(this);
-  boolean jdField_a_of_type_Boolean = true;
-  String b = "";
+  byte jdField_a_of_type_Byte = 1;
+  byte b = 0;
+  byte c = 1;
+  byte d = 1;
+  byte e = 1;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
   
-  public llh(llf paramllf) {}
+  llh(llc paramllc) {}
 }
 
 

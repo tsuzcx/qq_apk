@@ -1,806 +1,482 @@
-import android.graphics.Color;
-import android.net.Uri;
-import android.text.Html;
-import android.text.Spanned;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
-import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentData;
-import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentData;
-import com.tencent.gdtad.views.canvas.components.fixedbutton.GdtCanvasFixedButtonComponentData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData;
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
-import com.tencent.gdtad.views.canvas.components.pictures.GdtCanvasMultiPictureComponentData;
-import com.tencent.gdtad.views.canvas.components.pictures.HotArea;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageData;
-import com.tencent.gdtad.views.xijing.GdtButtonData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppBtnData;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppDownloadManager.1;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppDownloadManager.2;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppDownloadManager.4;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppDownloadManager.5;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtAppDownloadManager.6;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 
 public class yzi
 {
-  public static int a(String paramString)
-  {
-    if (paramString.indexOf("rgb") >= 0) {
-      return b(paramString);
-    }
-    return Color.parseColor(paramString);
-  }
+  public static volatile GdtAppBtnData a;
+  private static ArrayList<yzk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static boolean a;
+  private static boolean f;
+  private static volatile boolean g;
+  private static volatile boolean h;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bdld jdField_a_of_type_Bdld = new yzl(this);
+  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new GdtAppDownloadManager.1(this);
+  public String a;
+  private WeakReference<zad> jdField_a_of_type_JavaLangRefWeakReference;
+  private yzg jdField_a_of_type_Yzg;
+  private Runnable jdField_b_of_type_JavaLangRunnable = new GdtAppDownloadManager.2(this);
+  private final String jdField_b_of_type_JavaLangString = "GdtAppDownloadManager";
+  public boolean b;
+  private Runnable jdField_c_of_type_JavaLangRunnable = new GdtAppDownloadManager.5(this);
+  private boolean jdField_c_of_type_Boolean;
+  private Runnable jdField_d_of_type_JavaLangRunnable = new GdtAppDownloadManager.6(this);
+  private boolean jdField_d_of_type_Boolean;
+  private boolean e;
   
-  public static GdtCanvasData a(GdtAd paramGdtAd)
+  public yzi(Context paramContext, boolean paramBoolean1, GdtAd paramGdtAd, String paramString1, GdtCanvasAppBtnView paramGdtCanvasAppBtnView, boolean paramBoolean2, String paramString2)
   {
-    if (paramGdtAd == null)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "build error");
-      return null;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_c_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    i();
+    this.jdField_a_of_type_Yzg = new yzg(paramString1, paramGdtCanvasAppBtnView, this);
+    l();
+    if (yyn.a()) {
+      AdThreadManager.INSTANCE.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0, 1000L);
     }
-    String str = paramGdtAd.getCanvas();
-    if (TextUtils.isEmpty(str))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "build error");
-      return null;
-    }
-    yxs.b("GdtCanvasDataBuilderV2", "build " + str);
     try
     {
-      paramGdtAd = a(paramGdtAd, new JSONObject(str));
-      return paramGdtAd;
-    }
-    catch (Throwable paramGdtAd)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "build error", paramGdtAd);
-    }
-    return null;
-  }
-  
-  private static GdtCanvasData a(GdtAd paramGdtAd, JSONObject paramJSONObject)
-  {
-    if ((paramGdtAd == null) || (paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
-      yxs.d("GdtCanvasDataBuilderV2", "getCanvasData error");
-    }
-    GdtCanvasData localGdtCanvasData;
-    JSONObject localJSONObject;
-    do
-    {
-      return null;
-      localGdtCanvasData = new GdtCanvasData();
-      localGdtCanvasData.ad = paramGdtAd;
-      localJSONObject = paramJSONObject.optJSONObject("content");
-      if ((localJSONObject != null) && (localJSONObject != JSONObject.NULL)) {
-        break;
+      paramContext = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramContext != null) && ((paramContext instanceof QQAppInterface)))
+      {
+        paramContext = ((QQAppInterface)paramContext).getCurrentAccountUin();
+        if (!TextUtils.isEmpty(paramContext)) {
+          bcyb.a().a(Long.valueOf(paramContext).longValue());
+        }
       }
-      paramJSONObject = paramJSONObject.getString("canvas_json_key");
-      paramJSONObject = yyr.a().a(paramGdtAd, paramJSONObject);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    a(paramGdtAd, localGdtCanvasData, new JSONObject(paramJSONObject).getJSONObject("content"));
-    for (;;)
+      return;
+    }
+    catch (Exception paramContext)
     {
-      return localGdtCanvasData;
-      a(paramGdtAd, localGdtCanvasData, localJSONObject);
+      paramContext.printStackTrace();
     }
   }
   
-  private static GdtCanvasData a(GdtAd paramGdtAd, JSONObject paramJSONObject, boolean paramBoolean)
+  public static void a()
   {
-    if ((paramGdtAd == null) || (paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
-      yxs.d("GdtCanvasDataBuilderV2", "getCanvasData error");
-    }
-    GdtCanvasData localGdtCanvasData;
-    JSONObject localJSONObject;
-    do
-    {
-      return null;
-      localGdtCanvasData = new GdtCanvasData();
-      localGdtCanvasData.ad = paramGdtAd;
-      localGdtCanvasData.setAutodownload(paramBoolean);
-      localJSONObject = paramJSONObject.optJSONObject("content");
-      if ((localJSONObject != null) && (localJSONObject != JSONObject.NULL)) {
-        break;
-      }
-      paramJSONObject = paramJSONObject.getString("canvas_json_key");
-      paramJSONObject = yyr.a().a(paramGdtAd, paramJSONObject);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    a(paramGdtAd, localGdtCanvasData, new JSONObject(paramJSONObject).getJSONObject("content"));
-    for (;;)
-    {
-      return localGdtCanvasData;
-      a(paramGdtAd, localGdtCanvasData, localJSONObject);
-    }
+    yxp.b("GdtAppBtnUIPresenter", "resetStaticVariables");
+    jdField_a_of_type_JavaUtilArrayList.clear();
+    jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData = null;
+    g = false;
+    h = false;
+    jdField_a_of_type_Boolean = false;
   }
   
-  public static GdtCanvasData a(GdtAd paramGdtAd, boolean paramBoolean)
+  private static void a(Activity paramActivity, GdtAppBtnData paramGdtAppBtnData)
   {
-    if (paramGdtAd == null)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "build error");
-      return null;
+    if ((paramActivity == null) || (paramGdtAppBtnData == null)) {
+      return;
     }
-    String str = paramGdtAd.getCanvas();
-    if (TextUtils.isEmpty(str))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "build error");
-      return null;
+    String str1 = paramGdtAppBtnData.packageName;
+    String str2 = paramGdtAppBtnData.mGdtAd_appId;
+    String str3 = paramGdtAppBtnData.apkUrlhttp;
+    String str4 = paramGdtAppBtnData.name;
+    String str5 = paramGdtAppBtnData.via;
+    Object localObject = paramActivity.getIntent().getStringExtra("big_brother_ref_source_key");
+    paramGdtAppBtnData = (GdtAppBtnData)localObject;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramGdtAppBtnData = paramActivity.getIntent().getStringExtra("big_brother_source_key");
     }
-    yxs.b("GdtCanvasDataBuilderV2", "build " + str);
+    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)))
+    {
+      yxp.d("GdtAppBtnUIPresenter", "startRealDownload param null");
+      return;
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString(bdlb.f, str1);
+    ((Bundle)localObject).putString(bdlb.jdField_b_of_type_JavaLangString, str2);
+    ((Bundle)localObject).putString(bdlb.j, str3);
+    ((Bundle)localObject).putString(bdlb.l, str4);
+    ((Bundle)localObject).putInt(bdlb.k, 2);
+    ((Bundle)localObject).putInt(bdlb.E, 0);
+    ((Bundle)localObject).putBoolean(bdlb.x, false);
+    ((Bundle)localObject).putInt(bdlb.H, 0);
+    ((Bundle)localObject).putBoolean(bdlb.y, true);
+    ((Bundle)localObject).putBoolean(bdlb.h, true);
+    ((Bundle)localObject).putBoolean(bdlb.r, false);
+    ((Bundle)localObject).putBoolean(bdlb.J, false);
+    ((Bundle)localObject).putString(bdlb.i, str5);
+    ((Bundle)localObject).putString("big_brother_ref_source_key", paramGdtAppBtnData);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtAppBtnUIPresenter", 2, "startRealDownload pkg:" + str1 + ", appid:" + str2 + ", name:" + str4 + ", url:" + str3);
+    }
+    bdho.a().a(paramActivity, (Bundle)localObject, "biz_src_ads", null, 0);
+  }
+  
+  private void a(GdtAppBtnData paramGdtAppBtnData)
+  {
     try
     {
-      paramGdtAd = a(paramGdtAd, new JSONObject(str), paramBoolean);
-      a(paramGdtAd);
-      b(paramGdtAd);
-      return paramGdtAd;
+      if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData == null) {
+        jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData = paramGdtAppBtnData;
+      }
+      return;
     }
-    catch (Throwable paramGdtAd)
+    finally
     {
-      yxs.d("GdtCanvasDataBuilderV2", "build error", paramGdtAd);
+      paramGdtAppBtnData = finally;
+      throw paramGdtAppBtnData;
     }
-    return null;
   }
   
-  private static GdtCanvasComponentData a(GdtAd paramGdtAd, JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
+  private void a(boolean paramBoolean, long paramLong)
   {
-    Object localObject = null;
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
-      yxs.d("GdtCanvasDataBuilderV2", "getComponent error");
+    yxu localyxu = new yxu();
+    localyxu.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+    PBUInt32Field localPBUInt32Field = localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type;
+    if (paramBoolean) {}
+    for (int i = 36;; i = 37)
+    {
+      localPBUInt32Field.set(i);
+      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong);
+      yxt.a(localyxu);
+      return;
     }
-    String str;
+  }
+  
+  public static boolean a()
+  {
+    return g;
+  }
+  
+  private void i()
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      n();
+      jdField_a_of_type_JavaUtilArrayList.add(new yzj(this));
+    }
+  }
+  
+  private void j()
+  {
+    AdThreadManager.INSTANCE.post(new GdtAppDownloadManager.4(this), 0);
+  }
+  
+  private void k()
+  {
+    int i = 0;
+    while (i < jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((yzk)jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      i += 1;
+    }
+  }
+  
+  private void l()
+  {
+    yxp.a("GdtAppDownloadManager", "going fetch AppData");
+    if ((!f) && (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData == null) && (yxr.a(this.jdField_a_of_type_AndroidContentContext)))
+    {
+      f = true;
+      AdThreadManager.INSTANCE.post(this.jdField_c_of_type_JavaLangRunnable, 4);
+    }
+  }
+  
+  private void m()
+  {
+    if ((!h) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_AndroidContentContext != null) && (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData != null) && ((yyn.b(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.apkUrlhttp)) || (yyn.a())))
+    {
+      zcc.b(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      h = true;
+    }
+  }
+  
+  private void n()
+  {
+    yxp.a("GdtAppDownloadManager", "registerDownloadListener: " + this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_AndroidContentContext != null) {
+      bdhk.a().a(this.jdField_a_of_type_Bdld);
+    }
+  }
+  
+  private void o()
+  {
+    yxp.a("GdtAppDownloadManager", "unregisterDownloadListener");
+    bdhk.a().b(this.jdField_a_of_type_Bdld);
+  }
+  
+  void a(GdtAppBtnData paramGdtAppBtnData, int paramInt)
+  {
+    g = true;
+    yxp.c("GdtAppBtnUIPresenter", "startDownload " + paramGdtAppBtnData.packageName + " progress " + paramInt);
+    paramGdtAppBtnData.cState = 3;
+    this.jdField_a_of_type_Yzg.b(paramGdtAppBtnData, paramInt);
+    n();
+    yzn.a().a(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.mGdtAd_appId, this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+    yzn.a().a();
+    yzn.a().a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramInt, this.jdField_c_of_type_Boolean);
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_Yzg.jdField_a_of_type_Boolean = true;
+    paramGdtAppBtnData.via = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getVia();
+    a(localActivity, paramGdtAppBtnData);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "onDownloadPause " + paramDownloadInfo.e);
+    this.jdField_a_of_type_Yzg.a(paramDownloadInfo, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "onDownloadError " + paramDownloadInfo.e);
+    this.jdField_a_of_type_Yzg.a(paramDownloadInfo, paramInt1, paramString, paramInt2, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "installSucceed " + paramString2);
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.c = paramString1;
+    localDownloadInfo.e = paramString2;
+    this.jdField_a_of_type_Yzg.a(paramString1, paramString2, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void a(WeakReference<zad> paramWeakReference)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    this.jdField_a_of_type_Yzg.a(paramList, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void b()
+  {
+    yxp.b("GdtAppBtnUIPresenter", "initDownloadApp");
+    try
+    {
+      GdtAppBtnData localGdtAppBtnData = jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData;
+      if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Yzg == null) || (localGdtAppBtnData == null) || (!localGdtAppBtnData.isValid()))
+      {
+        yxp.b("GdtAppBtnUIPresenter", "initDownloadApp return " + localGdtAppBtnData);
+        return;
+      }
+      yxp.b("GdtAppBtnUIPresenter", "initDownloadApp begin");
+      if (nmc.a(this.jdField_a_of_type_AndroidContentContext, localGdtAppBtnData.packageName))
+      {
+        yxp.c("GdtAppBtnUIPresenter", "already installed." + localGdtAppBtnData.packageName);
+        j();
+        this.jdField_a_of_type_Yzg.b(localGdtAppBtnData);
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("GdtAppDownloadManager", 1, "initDownloadApp: ", localThrowable);
+      return;
+    }
+    DownloadInfo localDownloadInfo;
+    if (yyn.b(this.jdField_a_of_type_AndroidContentContext, localThrowable.apkUrlhttp))
+    {
+      yxp.c("GdtAppBtnUIPresenter", "already finishDownload." + localThrowable.packageName);
+      j();
+      this.jdField_a_of_type_Yzg.a(localThrowable);
+      yye.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, 270);
+      localDownloadInfo = bdhk.a().b(localThrowable.apkUrlhttp);
+      if (localDownloadInfo != null) {
+        localDownloadInfo.m = "biz_src_ads";
+      }
+      bdhk.a().a(localDownloadInfo);
+      return;
+    }
+    int i = yyn.a(this.jdField_a_of_type_AndroidContentContext, localDownloadInfo);
+    if (i >= 0)
+    {
+      yxp.c("GdtAppBtnUIPresenter", "isPkgDownloading." + localDownloadInfo.packageName + " " + i);
+      a(localDownloadInfo, i);
+      return;
+    }
+    if ((this.jdField_a_of_type_Yzg.jdField_a_of_type_Boolean) || ((this.jdField_c_of_type_Boolean) && (yyn.a())))
+    {
+      if (this.jdField_a_of_type_Yzg.jdField_a_of_type_Boolean)
+      {
+        yxp.c("GdtAppBtnUIPresenter", "autodownload by userClick");
+        a(localDownloadInfo, 0);
+        return;
+      }
+      if ((this.jdField_c_of_type_Boolean) && (yyn.a()))
+      {
+        if (!this.jdField_d_of_type_Boolean)
+        {
+          yxp.c("GdtAppBtnUIPresenter", "autodownload for getAppData <1s");
+          a(localDownloadInfo, 0);
+          return;
+        }
+        yxp.c("GdtAppBtnUIPresenter", "dont autodownload for getAppData >1s");
+      }
+    }
+    else
+    {
+      if (yyn.b(this.jdField_a_of_type_AndroidContentContext, localDownloadInfo) >= 0)
+      {
+        j();
+        return;
+      }
+      yxp.c("GdtAppBtnUIPresenter", "initDownloadApp DOWNLOAD_NONE.");
+    }
+  }
+  
+  public void b(DownloadInfo paramDownloadInfo)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "onDownloadWait " + paramDownloadInfo.e);
+    this.jdField_a_of_type_Yzg.b(paramDownloadInfo, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "uninstallSucceed " + paramString2);
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.c = paramString1;
+    localDownloadInfo.e = paramString2;
+    this.jdField_a_of_type_Yzg.b(paramString1, paramString2, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void c()
+  {
+    if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData == null)
+    {
+      this.jdField_a_of_type_Yzg.a(null, 0);
+      return;
+    }
+    this.jdField_a_of_type_Yzg.a(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.cState);
+  }
+  
+  public void c(DownloadInfo paramDownloadInfo)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "onDownloadFinish " + paramDownloadInfo.e);
+    this.jdField_a_of_type_Yzg.d(paramDownloadInfo, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "packageReplaced " + paramString2);
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.c = paramString1;
+    localDownloadInfo.e = paramString2;
+    this.jdField_a_of_type_Yzg.c(paramString1, paramString2, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void d()
+  {
+    f = false;
+    o();
+    this.jdField_a_of_type_Yzg = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void d(DownloadInfo paramDownloadInfo)
+  {
+    yxp.b("GdtAppBtnUIPresenter", "onDownloadCancel " + paramDownloadInfo.e);
+    this.jdField_a_of_type_Yzg.c(paramDownloadInfo, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void e()
+  {
+    if (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData != null)
+    {
+      if (!nmc.a(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.packageName)) {
+        break label63;
+      }
+      yxp.c("GdtAppBtnUIPresenter", "onActivityResume already installed." + jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.packageName);
+      this.jdField_a_of_type_Yzg.b(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+    }
+    label63:
     do
-    {
-      do
-      {
-        return localObject;
-        str = paramJSONObject.getString("type");
-      } while (TextUtils.isEmpty(str));
-      if (str.equals("XJAPPH5Images")) {
-        return a(paramJSONObject, paramGdtCanvasData);
-      }
-      if (str.equals("XJAppH5Button")) {
-        return a(paramJSONObject, paramGdtCanvasData.basicWidth);
-      }
-      if (!str.equals("XJFixedButton")) {
-        break;
-      }
-      paramGdtAd = a(paramGdtAd, paramJSONObject, paramGdtCanvasData.basicWidth);
-      localObject = paramGdtAd;
-    } while (paramGdtAd == null);
-    paramGdtCanvasData.hasFixedButtonData = true;
-    return paramGdtAd;
-    if (str.equals("XJWebForm")) {
-      return c(paramJSONObject, paramGdtCanvasData);
-    }
-    if (str.equals("XJWebsiteH5Button")) {
-      return b(paramJSONObject, paramGdtCanvasData);
-    }
-    if (str.equals("XJText")) {
-      return a(paramJSONObject, paramGdtCanvasData.basicWidth);
-    }
-    if (str.equals("XJImages")) {
-      return a(paramJSONObject, paramGdtCanvasData);
-    }
-    throw new Exception("unknow type exception");
-  }
-  
-  private static GdtCanvasComponentData a(JSONObject paramJSONObject, int paramInt)
-  {
-    if (paramJSONObject == JSONObject.NULL)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getTextComponent error");
-      return null;
-    }
-    GdtCanvasMultiPictureComponentData localGdtCanvasMultiPictureComponentData = new GdtCanvasMultiPictureComponentData();
-    ArrayList localArrayList = new ArrayList();
-    a(paramJSONObject, paramInt, localGdtCanvasMultiPictureComponentData);
-    paramJSONObject = paramJSONObject.getJSONObject("config");
-    Object localObject = paramJSONObject.getJSONObject("style");
-    localGdtCanvasMultiPictureComponentData.paddingTop = yze.b(paramInt, ((JSONObject)localObject).getInt("marginTop"));
-    localGdtCanvasMultiPictureComponentData.paddingBottom = yze.b(paramInt, ((JSONObject)localObject).getInt("marginBottom"));
-    paramJSONObject = paramJSONObject.getJSONArray("images");
-    paramInt = 0;
-    while (paramInt < paramJSONObject.length())
-    {
-      localObject = new GdtCanvasPictureComponentData();
-      JSONObject localJSONObject = (JSONObject)paramJSONObject.get(paramInt);
-      int i = localJSONObject.getInt("width");
-      int j = localJSONObject.getInt("height");
-      ((GdtCanvasPictureComponentData)localObject).width = (yze.c(BaseApplicationImpl.getContext()) - ((GdtCanvasPictureComponentData)localObject).paddingLeft - ((GdtCanvasPictureComponentData)localObject).paddingRight);
-      float f = ((GdtCanvasPictureComponentData)localObject).width;
-      ((GdtCanvasPictureComponentData)localObject).height = ((int)(j * f / i));
-      ((GdtCanvasPictureComponentData)localObject).url = localJSONObject.getString("url");
-      a(((GdtCanvasPictureComponentData)localObject).url);
-      ((GdtCanvasPictureComponentData)localObject).id = ("" + ((GdtCanvasPictureComponentData)localObject).url.hashCode());
-      localArrayList.add(localObject);
-      paramInt += 1;
-    }
-    localGdtCanvasMultiPictureComponentData.imageList = localArrayList;
-    return localGdtCanvasMultiPictureComponentData;
-  }
-  
-  private static GdtCanvasComponentData a(JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getMulitiPictureComponent error");
-      return null;
-    }
-    GdtCanvasMultiPictureComponentData localGdtCanvasMultiPictureComponentData = new GdtCanvasMultiPictureComponentData();
-    a(paramJSONObject, paramGdtCanvasData.basicWidth, localGdtCanvasMultiPictureComponentData);
-    ArrayList localArrayList = new ArrayList();
-    paramJSONObject = paramJSONObject.getJSONObject("config").getJSONArray("images");
-    int i = 0;
-    if (i < paramJSONObject.length())
-    {
-      GdtCanvasPictureComponentData localGdtCanvasPictureComponentData = new GdtCanvasPictureComponentData();
-      Object localObject = (JSONObject)paramJSONObject.get(i);
-      JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("padding");
-      localGdtCanvasPictureComponentData.paddingLeft = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("left"));
-      localGdtCanvasPictureComponentData.paddingTop = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("top"));
-      localGdtCanvasPictureComponentData.paddingRight = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("right"));
-      localGdtCanvasPictureComponentData.paddingBottom = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("bottom"));
-      localGdtCanvasPictureComponentData.floatingBarTextColor = -1;
-      localGdtCanvasPictureComponentData.floatingBarBackgroundColor = Color.parseColor("#1890ff");
-      localJSONObject = ((JSONObject)localObject).getJSONObject("image");
-      int j = localJSONObject.getInt("width");
-      int k = localJSONObject.getInt("height");
-      localGdtCanvasPictureComponentData.width = (yze.c(BaseApplicationImpl.getContext()) - localGdtCanvasPictureComponentData.paddingLeft - localGdtCanvasPictureComponentData.paddingRight);
-      float f = localGdtCanvasPictureComponentData.width;
-      localGdtCanvasPictureComponentData.height = ((int)(k * f / j));
-      localGdtCanvasPictureComponentData.url = localJSONObject.getString("url");
-      a(localGdtCanvasPictureComponentData.url);
-      localGdtCanvasPictureComponentData.guassianUrl = localJSONObject.optString("guassianUrl");
-      localGdtCanvasPictureComponentData.id = ("" + localGdtCanvasPictureComponentData.url.hashCode());
-      localJSONObject = ((JSONObject)localObject).getJSONObject("hotArea");
-      if (localJSONObject.getBoolean("isSet"))
-      {
-        HotArea[] arrayOfHotArea = new HotArea[3];
-        arrayOfHotArea[0] = a(paramGdtCanvasData.basicWidth, "hotArea1", (JSONObject)localObject, localGdtCanvasPictureComponentData);
-        arrayOfHotArea[1] = a(paramGdtCanvasData.basicWidth, "hotArea2", (JSONObject)localObject, localGdtCanvasPictureComponentData);
-        arrayOfHotArea[2] = a(paramGdtCanvasData.basicWidth, "hotArea3", (JSONObject)localObject, localGdtCanvasPictureComponentData);
-        localObject = new ArrayList();
-        k = Integer.parseInt(localJSONObject.getString("num"));
-        j = 0;
-        while (j < k) {
-          if (arrayOfHotArea[j] != null)
-          {
-            ((ArrayList)localObject).add(arrayOfHotArea[j]);
-            j += 1;
-          }
-          else
-          {
-            throw new Exception("hot area is null");
-          }
-        }
-      }
-      for (localGdtCanvasPictureComponentData.hotAreaList = ((ArrayList)localObject);; localGdtCanvasPictureComponentData.hotAreaList = null)
-      {
-        localArrayList.add(localGdtCanvasPictureComponentData);
-        if ((TextUtils.isEmpty(paramGdtCanvasData.firstPictureComponentIdWithHotArea)) && (localGdtCanvasPictureComponentData.isHotAreaValild())) {
-          paramGdtCanvasData.firstPictureComponentIdWithHotArea = localGdtCanvasPictureComponentData.id;
-        }
-        i += 1;
-        break;
-      }
-    }
-    localGdtCanvasMultiPictureComponentData.imageList = localArrayList;
-    return localGdtCanvasMultiPictureComponentData;
-  }
-  
-  private static GdtCanvasAppBtnComponentData a(JSONObject paramJSONObject, int paramInt)
-  {
-    if (paramJSONObject == JSONObject.NULL)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getAppButtonComponent error");
-      paramJSONObject = null;
-      return paramJSONObject;
-    }
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("config");
-    GdtCanvasAppBtnComponentData localGdtCanvasAppBtnComponentData = new GdtCanvasAppBtnComponentData();
-    a(paramJSONObject, paramInt, localGdtCanvasAppBtnComponentData);
-    localGdtCanvasAppBtnComponentData.button.text.text = a(localJSONObject.getJSONObject("content").getString("text"));
-    paramJSONObject = localJSONObject.getJSONObject("style");
-    localGdtCanvasAppBtnComponentData.button.text.color = a(paramJSONObject.getString("color"));
-    localGdtCanvasAppBtnComponentData.button.backgroundColor = a(paramJSONObject.getString("backgroundColor"));
-    localGdtCanvasAppBtnComponentData.button.text.size = yze.b(paramInt, paramJSONObject.getInt("fontSize"));
-    int i = paramJSONObject.getInt("width");
-    localGdtCanvasAppBtnComponentData.height = yze.b(paramInt, paramJSONObject.getInt("lineHeight"));
-    paramJSONObject = localJSONObject.getJSONObject("wrapper");
-    String str = paramJSONObject.getString("textAlign");
-    if (TextUtils.equals(str, "center")) {
-      localGdtCanvasAppBtnComponentData.gravity = 17;
-    }
-    for (;;)
-    {
-      localGdtCanvasAppBtnComponentData.paddingLeft = yze.b(paramInt, paramJSONObject.getInt("marginLeft"));
-      localGdtCanvasAppBtnComponentData.paddingRight = yze.b(paramInt, paramJSONObject.getInt("marginRight"));
-      localGdtCanvasAppBtnComponentData.width = (i * (yze.c(BaseApplicationImpl.getContext()) - localGdtCanvasAppBtnComponentData.paddingLeft - localGdtCanvasAppBtnComponentData.paddingRight) / 100);
-      localGdtCanvasAppBtnComponentData.paddingTop = yze.b(paramInt, paramJSONObject.getInt("marginTop"));
-      localGdtCanvasAppBtnComponentData.paddingBottom = yze.b(paramInt, paramJSONObject.getInt("marginBottom"));
-      localGdtCanvasAppBtnComponentData.isFixed = localJSONObject.getBoolean("isFixed");
-      paramJSONObject = localGdtCanvasAppBtnComponentData;
-      if (!localGdtCanvasAppBtnComponentData.isFixed) {
-        break;
-      }
-      paramJSONObject = localJSONObject.getJSONObject("position");
-      localGdtCanvasAppBtnComponentData.toBottom = yze.b(paramInt, paramJSONObject.getInt("toBottom"));
-      localGdtCanvasAppBtnComponentData.whiteSpace = yze.b(paramInt, paramJSONObject.getInt("whiteSpace"));
-      return localGdtCanvasAppBtnComponentData;
-      if (TextUtils.equals(str, "left"))
-      {
-        localGdtCanvasAppBtnComponentData.gravity = 3;
-      }
-      else
-      {
-        if (!TextUtils.equals(str, "right")) {
-          break label373;
-        }
-        localGdtCanvasAppBtnComponentData.gravity = 5;
-      }
-    }
-    label373:
-    throw new Exception("unknow button align");
-  }
-  
-  private static GdtCanvasFixedButtonComponentData a(GdtAd paramGdtAd, JSONObject paramJSONObject, int paramInt)
-  {
-    if (paramJSONObject == JSONObject.NULL)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getFixedButtonComponent error");
-      paramGdtAd = null;
-    }
-    GdtCanvasFixedButtonComponentData localGdtCanvasFixedButtonComponentData;
-    label493:
-    int i;
-    do
-    {
-      return paramGdtAd;
-      localGdtCanvasFixedButtonComponentData = new GdtCanvasFixedButtonComponentData();
-      a(paramJSONObject, paramInt, localGdtCanvasFixedButtonComponentData);
-      paramJSONObject = paramJSONObject.getJSONObject("config");
-      paramGdtAd = paramJSONObject.getJSONObject("content");
-      localGdtCanvasFixedButtonComponentData.buttonStyle = paramGdtAd.getString("buttonStyle");
-      localGdtCanvasFixedButtonComponentData.position = paramGdtAd.getString("position");
-      localGdtCanvasFixedButtonComponentData.desc = a(paramGdtAd.getString("desc"));
-      localGdtCanvasFixedButtonComponentData.button.text.text = a(paramGdtAd.getString("text"));
-      localGdtCanvasFixedButtonComponentData.imageUrl = paramGdtAd.getString("logoUrl");
-      a(localGdtCanvasFixedButtonComponentData.imageUrl);
-      localGdtCanvasFixedButtonComponentData.name = a(paramGdtAd.getString("name"));
-      localGdtCanvasFixedButtonComponentData.fileSize = paramGdtAd.getInt("fileSize");
-      paramJSONObject = paramJSONObject.getJSONObject("style");
-      localGdtCanvasFixedButtonComponentData.button.text.color = a(paramJSONObject.getString("color"));
-      localGdtCanvasFixedButtonComponentData.button.backgroundColor = a(paramJSONObject.getString("backgroundColor"));
-      if (!TextUtils.isEmpty(localGdtCanvasFixedButtonComponentData.buttonStyle))
-      {
-        if (localGdtCanvasFixedButtonComponentData.buttonStyle.equals("fixedBtn-1"))
-        {
-          localGdtCanvasFixedButtonComponentData.button.text.size = yze.b(paramInt, 13);
-          localGdtCanvasFixedButtonComponentData.button.text.text = ajyc.a(2131705164);
-          localGdtCanvasFixedButtonComponentData.width = yze.a(81.0F, BaseApplicationImpl.getContext().getResources());
-          localGdtCanvasFixedButtonComponentData.height = yze.a(40.0F, BaseApplicationImpl.getContext().getResources());
-        }
-        for (;;)
-        {
-          if ((!TextUtils.isEmpty(localGdtCanvasFixedButtonComponentData.position)) && ((localGdtCanvasFixedButtonComponentData.position.toLowerCase().equals("top")) || (localGdtCanvasFixedButtonComponentData.position.toLowerCase().equals("bottom")))) {
-            break label493;
-          }
-          throw new Exception("unKnow button position");
-          if (!localGdtCanvasFixedButtonComponentData.buttonStyle.equals("fixedBtn-2")) {
-            break;
-          }
-          localGdtCanvasFixedButtonComponentData.button.text.size = yze.b(paramInt, 19);
-          localGdtCanvasFixedButtonComponentData.width = yze.c(BaseApplicationImpl.getContext());
-          localGdtCanvasFixedButtonComponentData.height = yze.a(50.0F, BaseApplicationImpl.getContext().getResources());
-          localGdtCanvasFixedButtonComponentData.gravity = 17;
-          paramInt = yze.a(5.0F, BaseApplicationImpl.getContext().getResources());
-          localGdtCanvasFixedButtonComponentData.paddingTop = paramInt;
-          localGdtCanvasFixedButtonComponentData.paddingBottom = paramInt;
-          paramInt = yze.a(7.5F, BaseApplicationImpl.getContext().getResources());
-          localGdtCanvasFixedButtonComponentData.paddingRight = paramInt;
-          localGdtCanvasFixedButtonComponentData.paddingLeft = paramInt;
-        }
-        throw new Exception("unKnow button style");
-      }
-      throw new Exception("unKnow button style");
-      paramInt = paramGdtAd.optInt("toBottom");
-      i = paramGdtAd.optInt("whiteSpace");
-      localGdtCanvasFixedButtonComponentData.toBottom = paramInt;
-      paramGdtAd = localGdtCanvasFixedButtonComponentData;
-    } while (i <= 0);
-    localGdtCanvasFixedButtonComponentData.whiteSpace = i;
-    return localGdtCanvasFixedButtonComponentData;
-  }
-  
-  private static GdtCanvasMultiPictureComponentData a(JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getMulitiPictureComponent error");
-      return null;
-    }
-    GdtCanvasMultiPictureComponentData localGdtCanvasMultiPictureComponentData = new GdtCanvasMultiPictureComponentData();
-    a(paramJSONObject, paramGdtCanvasData.basicWidth, localGdtCanvasMultiPictureComponentData);
-    ArrayList localArrayList = new ArrayList();
-    paramJSONObject = paramJSONObject.getJSONObject("config").getJSONArray("images");
-    int i = 0;
-    if (i < paramJSONObject.length())
-    {
-      GdtCanvasPictureComponentData localGdtCanvasPictureComponentData = new GdtCanvasPictureComponentData();
-      Object localObject = (JSONObject)paramJSONObject.get(i);
-      JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("padding");
-      localGdtCanvasPictureComponentData.paddingLeft = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("left"));
-      localGdtCanvasPictureComponentData.paddingTop = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("top"));
-      localGdtCanvasPictureComponentData.paddingRight = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("right"));
-      localGdtCanvasPictureComponentData.paddingBottom = yze.b(paramGdtCanvasData.basicWidth, localJSONObject.getInt("bottom"));
-      localGdtCanvasPictureComponentData.floatingBarTextColor = -1;
-      localGdtCanvasPictureComponentData.floatingBarBackgroundColor = Color.parseColor("#1890ff");
-      localJSONObject = ((JSONObject)localObject).getJSONObject("progressBar");
-      localGdtCanvasPictureComponentData.floatingBarTextColor = a(localJSONObject.getString("color"));
-      localGdtCanvasPictureComponentData.floatingBarBackgroundColor = a(localJSONObject.getString("backgroundColor"));
-      localJSONObject = ((JSONObject)localObject).getJSONObject("image");
-      int j = localJSONObject.getInt("width");
-      int k = localJSONObject.getInt("height");
-      localGdtCanvasPictureComponentData.width = (yze.c(BaseApplicationImpl.getContext()) - localGdtCanvasPictureComponentData.paddingLeft - localGdtCanvasPictureComponentData.paddingRight);
-      float f = localGdtCanvasPictureComponentData.width;
-      localGdtCanvasPictureComponentData.height = ((int)(k * f / j));
-      localGdtCanvasPictureComponentData.url = localJSONObject.getString("url");
-      a(localGdtCanvasPictureComponentData.url);
-      localGdtCanvasPictureComponentData.guassianUrl = localJSONObject.optString("guassianUrl");
-      localGdtCanvasPictureComponentData.id = ("" + localGdtCanvasPictureComponentData.url.hashCode());
-      localJSONObject = ((JSONObject)localObject).getJSONObject("hotArea");
-      if (localJSONObject.getBoolean("isSet"))
-      {
-        HotArea[] arrayOfHotArea = new HotArea[3];
-        arrayOfHotArea[0] = a(paramGdtCanvasData.basicWidth, "hotArea1", (JSONObject)localObject, localGdtCanvasPictureComponentData);
-        arrayOfHotArea[1] = a(paramGdtCanvasData.basicWidth, "hotArea2", (JSONObject)localObject, localGdtCanvasPictureComponentData);
-        arrayOfHotArea[2] = a(paramGdtCanvasData.basicWidth, "hotArea3", (JSONObject)localObject, localGdtCanvasPictureComponentData);
-        localObject = new ArrayList();
-        k = Integer.parseInt(localJSONObject.getString("num"));
-        j = 0;
-        while (j < k) {
-          if (arrayOfHotArea[j] != null)
-          {
-            ((ArrayList)localObject).add(arrayOfHotArea[j]);
-            j += 1;
-          }
-          else
-          {
-            throw new Exception("hot area is null");
-          }
-        }
-      }
-      for (localGdtCanvasPictureComponentData.hotAreaList = ((ArrayList)localObject);; localGdtCanvasPictureComponentData.hotAreaList = null)
-      {
-        localArrayList.add(localGdtCanvasPictureComponentData);
-        if ((TextUtils.isEmpty(paramGdtCanvasData.firstPictureComponentIdWithHotArea)) && (localGdtCanvasPictureComponentData.isHotAreaValild())) {
-          paramGdtCanvasData.firstPictureComponentIdWithHotArea = localGdtCanvasPictureComponentData.id;
-        }
-        i += 1;
-        break;
-      }
-    }
-    localGdtCanvasMultiPictureComponentData.imageList = localArrayList;
-    return localGdtCanvasMultiPictureComponentData;
-  }
-  
-  private static HotArea a(int paramInt, String paramString, JSONObject paramJSONObject, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
-  {
-    if (paramGdtCanvasPictureComponentData == null) {}
-    HotArea localHotArea;
-    do
-    {
-      return null;
-      paramInt = yze.c(BaseApplicationImpl.getContext());
-      localHotArea = new HotArea();
-      paramString = paramJSONObject.getJSONObject(paramString);
-    } while (paramString == null);
-    int i = paramGdtCanvasPictureComponentData.height + paramGdtCanvasPictureComponentData.paddingBottom + paramGdtCanvasPictureComponentData.paddingTop;
-    localHotArea.x = ((int)(paramString.getJSONObject("position").getInt("left") / 100.0F * paramInt));
-    localHotArea.y = ((int)(paramString.getJSONObject("position").getInt("top") / 100.0F * i));
-    float f = paramString.getJSONObject("style").getInt("width") / 100.0F;
-    localHotArea.width = ((int)(paramInt * f));
-    f = paramString.getJSONObject("style").getInt("height") / 100.0F;
-    localHotArea.height = ((int)(i * f));
-    localHotArea.linkType = paramString.getJSONObject("link").getString("linkType");
-    localHotArea.url = paramString.getJSONObject("link").optString("url");
-    if (localHotArea.linkType.equals("form"))
-    {
-      localHotArea.formModId = paramString.getJSONObject("link").optString("formModId");
-      localHotArea.formIndex = paramString.getJSONObject("link").optInt("formId");
-    }
-    return localHotArea;
-  }
-  
-  private static GdtCanvasPageData a(GdtAd paramGdtAd, JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
-  {
-    if (paramJSONObject == JSONObject.NULL)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getPage error");
-      return null;
-    }
-    GdtCanvasPageData localGdtCanvasPageData = new GdtCanvasPageData();
-    localGdtCanvasPageData.floatingBarTextColor = -1;
-    localGdtCanvasPageData.floatingBarBackgroundColor = Color.parseColor("#1890ff");
-    Object localObject = paramJSONObject.getJSONObject("pageConfig");
-    JSONObject localJSONObject = ((JSONObject)localObject).getJSONObject("config");
-    String str = ((JSONObject)localObject).optString("arkFormApp");
-    localObject = ((JSONObject)localObject).optString("arkFormView");
-    localGdtCanvasPageData.arkApp = str;
-    localGdtCanvasPageData.arkView = ((String)localObject);
-    localGdtCanvasPageData.backgroundColor = a(localJSONObject.getString("bgColor"));
-    localGdtCanvasPageData.components = a(paramGdtAd, paramJSONObject.getJSONArray("modules"), paramGdtCanvasData);
-    return localGdtCanvasPageData;
-  }
-  
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    Spanned localSpanned;
-    do
-    {
-      return paramString;
-      localSpanned = Html.fromHtml(paramString);
-    } while (localSpanned == null);
-    return localSpanned.toString();
-  }
-  
-  private static List<GdtCanvasComponentData> a(GdtAd paramGdtAd, JSONArray paramJSONArray, GdtCanvasData paramGdtCanvasData)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramJSONArray == null) || (paramJSONArray == JSONObject.NULL))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getCanvasComponents error");
-      return localArrayList;
-    }
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      GdtCanvasComponentData localGdtCanvasComponentData = a(paramGdtAd, paramJSONArray.getJSONObject(i), paramGdtCanvasData);
-      if (localGdtCanvasComponentData != null)
-      {
-        if (!(localGdtCanvasComponentData instanceof GdtCanvasFixedButtonComponentData)) {
-          break label86;
-        }
-        paramGdtCanvasData.fixedButtonComponentDataList.add((GdtCanvasFixedButtonComponentData)localGdtCanvasComponentData);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label86:
-        if ((localGdtCanvasComponentData instanceof GdtCanvasButtonComponentData))
-        {
-          if (((GdtCanvasButtonComponentData)localGdtCanvasComponentData).isFixed) {
-            paramGdtCanvasData.webFixedButtonComponentDataList.add((GdtCanvasButtonComponentData)localGdtCanvasComponentData);
-          } else {
-            localArrayList.add(localGdtCanvasComponentData);
-          }
-        }
-        else if ((localGdtCanvasComponentData instanceof GdtCanvasFormComponentData))
-        {
-          GdtCanvasFormComponentData localGdtCanvasFormComponentData = (GdtCanvasFormComponentData)localGdtCanvasComponentData;
-          localGdtCanvasFormComponentData.index += 1;
-          localArrayList.add(localGdtCanvasComponentData);
-        }
-        else if ((localGdtCanvasComponentData instanceof GdtCanvasAppBtnComponentData))
-        {
-          if (((GdtCanvasAppBtnComponentData)localGdtCanvasComponentData).isFixed) {
-            paramGdtCanvasData.appFixedButtonComponentDataList.add((GdtCanvasAppBtnComponentData)localGdtCanvasComponentData);
-          } else {
-            localArrayList.add(localGdtCanvasComponentData);
-          }
-        }
-        else
-        {
-          localArrayList.add(localGdtCanvasComponentData);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  private static List<GdtCanvasPageData> a(GdtAd paramGdtAd, JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getPageList error");
-      return localArrayList;
-    }
-    paramGdtAd = a(paramGdtAd, paramJSONObject, paramGdtCanvasData);
-    if (paramGdtAd == null) {
-      throw new Exception("getPageList error");
-    }
-    paramGdtAd.hasFixedButtonData = paramGdtCanvasData.hasFixedButtonData;
-    localArrayList.add(paramGdtAd);
-    return localArrayList;
-  }
-  
-  private static void a(GdtAd paramGdtAd, GdtCanvasData paramGdtCanvasData, JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("pageConfig");
-    paramGdtCanvasData.ad.actionSetId = localJSONObject.getLong("actionSetId");
-    paramGdtCanvasData.pageType = localJSONObject.getString("type");
-    paramGdtCanvasData.commonPageId = localJSONObject.getString("commonPageId");
-    paramGdtCanvasData.basicWidth = 375;
-    paramGdtCanvasData.pages = a(paramGdtAd, paramJSONObject, paramGdtCanvasData);
-  }
-  
-  private static void a(GdtCanvasData paramGdtCanvasData)
-  {
-    int i = 0;
-    if (paramGdtCanvasData != null)
-    {
-      paramGdtCanvasData = ((GdtCanvasPageData)paramGdtCanvasData.pages.get(0)).components;
-      int k;
-      for (int j = 0; i < paramGdtCanvasData.size(); j = k)
-      {
-        GdtCanvasComponentData localGdtCanvasComponentData = (GdtCanvasComponentData)paramGdtCanvasData.get(i);
-        k = j;
-        if (localGdtCanvasComponentData != null)
-        {
-          k = j;
-          if ((localGdtCanvasComponentData instanceof GdtCanvasFormComponentData))
-          {
-            ((GdtCanvasFormComponentData)localGdtCanvasComponentData).index = j;
-            k = j + 1;
-          }
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = AdUriUtil.parse(paramString);
-    if ((paramString == null) || ((!paramString.getScheme().equals("http")) && (!paramString.getScheme().equals("https")))) {
-      throw new Exception("url type error");
-    }
-  }
-  
-  private static void a(JSONObject paramJSONObject, int paramInt, GdtCanvasComponentData paramGdtCanvasComponentData)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL) || (paramGdtCanvasComponentData == null))
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "initComponent error");
-      throw new Exception("initComponent error");
-    }
-    paramGdtCanvasComponentData.id = paramJSONObject.getString("id");
-  }
-  
-  public static int b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.toLowerCase().replace(" ", "").replace("rgba", "").replace("rgb", "").replace("(", "").replace(")", "").split(",");
-      if ((paramString != null) && (paramString.length >= 3))
-      {
-        if (paramString.length >= 4) {}
-        for (int i = (int)(Float.parseFloat(paramString[3]) * 255.0F);; i = 255) {
-          return Color.argb(i, Integer.parseInt(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
-        }
-      }
-    }
-    throw new Exception("color is null");
-  }
-  
-  private static GdtCanvasComponentData b(JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
-  {
-    if (paramJSONObject == JSONObject.NULL)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getWebButtonComponent error");
-      paramJSONObject = null;
-      return paramJSONObject;
-    }
-    GdtCanvasButtonComponentData localGdtCanvasButtonComponentData = new GdtCanvasButtonComponentData();
-    a(paramJSONObject, paramGdtCanvasData.basicWidth, localGdtCanvasButtonComponentData);
-    JSONObject localJSONObject1 = paramJSONObject.getJSONObject("config");
-    Object localObject = localJSONObject1.getJSONObject("content");
-    paramJSONObject = localJSONObject1.getJSONObject("style");
-    JSONObject localJSONObject2 = localJSONObject1.getJSONObject("wrapper");
-    localJSONObject1 = localJSONObject1.getJSONObject("position");
-    localGdtCanvasButtonComponentData.button.text.text = a(((JSONObject)localObject).getString("text"));
-    localGdtCanvasButtonComponentData.linkType = ((JSONObject)localObject).getString("linkType");
-    localGdtCanvasButtonComponentData.actionUrl = ((JSONObject)localObject).getString("url");
-    if (((JSONObject)localObject).getString("linkType").equals("form"))
-    {
-      localGdtCanvasButtonComponentData.formIndex = ((JSONObject)localObject).getInt("formId");
-      localGdtCanvasButtonComponentData.formModId = ((JSONObject)localObject).getString("formModId");
-    }
-    localGdtCanvasButtonComponentData.paddingLeft = yze.b(paramGdtCanvasData.basicWidth, localJSONObject2.getInt("marginLeft"));
-    localGdtCanvasButtonComponentData.paddingTop = yze.b(paramGdtCanvasData.basicWidth, localJSONObject2.getInt("marginTop"));
-    localGdtCanvasButtonComponentData.paddingRight = yze.b(paramGdtCanvasData.basicWidth, localJSONObject2.getInt("marginRight"));
-    localGdtCanvasButtonComponentData.paddingBottom = yze.b(paramGdtCanvasData.basicWidth, localJSONObject2.getInt("marginBottom"));
-    localObject = localJSONObject2.getString("textAlign");
-    if ("center".equals(localObject)) {
-      localGdtCanvasButtonComponentData.gravity = 17;
-    }
-    for (;;)
-    {
-      localGdtCanvasButtonComponentData.button.text.size = yze.b(paramGdtCanvasData.basicWidth, paramJSONObject.getInt("fontSize"));
-      localGdtCanvasButtonComponentData.button.text.color = a(paramJSONObject.getString("color"));
-      localGdtCanvasButtonComponentData.button.backgroundColor = a(paramJSONObject.getString("backgroundColor"));
-      localGdtCanvasButtonComponentData.button.borderCornerRadius = paramJSONObject.getInt("borderRadius");
-      localGdtCanvasButtonComponentData.width = (paramJSONObject.getInt("width") * (yze.c(BaseApplicationImpl.getContext()) - localGdtCanvasButtonComponentData.paddingLeft - localGdtCanvasButtonComponentData.paddingRight) / 100);
-      localGdtCanvasButtonComponentData.height = yze.b(paramGdtCanvasData.basicWidth, paramJSONObject.getInt("lineHeight"));
-      localGdtCanvasButtonComponentData.isFixed = localJSONObject1.optBoolean("isFixed");
-      paramJSONObject = localGdtCanvasButtonComponentData;
-      if (!localGdtCanvasButtonComponentData.isFixed) {
-        break;
-      }
-      localGdtCanvasButtonComponentData.toBottom = yze.b(paramGdtCanvasData.basicWidth, localJSONObject1.getInt("toBottom"));
-      int i = yze.b(paramGdtCanvasData.basicWidth, localJSONObject1.getInt("whiteSpace"));
-      paramJSONObject = localGdtCanvasButtonComponentData;
-      if (i <= 0) {
-        break;
-      }
-      localGdtCanvasButtonComponentData.whiteSpace = i;
-      return localGdtCanvasButtonComponentData;
-      if ("left".equals(localObject)) {
-        localGdtCanvasButtonComponentData.gravity = 3;
-      } else if ("right".equals(localObject)) {
-        localGdtCanvasButtonComponentData.gravity = 5;
-      }
-    }
-  }
-  
-  private static void b(GdtCanvasData paramGdtCanvasData)
-  {
-    int i = 0;
-    Object localObject;
-    if (paramGdtCanvasData != null)
-    {
-      localObject = ((GdtCanvasPageData)paramGdtCanvasData.pages.get(0)).components;
-      ArrayList localArrayList1 = paramGdtCanvasData.fixedButtonComponentDataList;
-      ArrayList localArrayList2 = paramGdtCanvasData.appFixedButtonComponentDataList;
-      if ((localArrayList1 != null) && (localArrayList1.size() > 0)) {
-        localObject = localArrayList1.iterator();
-      }
-      while (((Iterator)localObject).hasNext())
-      {
-        ((GdtCanvasFixedButtonComponentData)((Iterator)localObject).next()).canShowProgress = paramGdtCanvasData.getAutoDownLoad();
-        continue;
-        if ((localArrayList2 == null) || (localArrayList2.size() <= 0)) {
-          break label124;
-        }
-        if (localArrayList2.get(0) != null) {
-          ((GdtCanvasAppBtnComponentData)localArrayList2.get(0)).canShowProgress = true;
-        }
-      }
-    }
-    for (;;)
     {
       return;
-      label124:
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        while (i < ((List)localObject).size())
-        {
-          paramGdtCanvasData = (GdtCanvasComponentData)((List)localObject).get(i);
-          if ((paramGdtCanvasData != null) && ((paramGdtCanvasData instanceof GdtCanvasAppBtnComponentData)))
-          {
-            ((GdtCanvasAppBtnComponentData)paramGdtCanvasData).canShowProgress = true;
-            return;
-          }
-          i += 1;
-        }
+      if (yyn.b(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.apkUrlhttp))
+      {
+        yxp.c("GdtAppBtnUIPresenter", "onActivityResume already finishDownload." + jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.packageName);
+        this.jdField_a_of_type_Yzg.a(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+        return;
       }
+    } while ((jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.cState != 1) && (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.cState != 0) && (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.cState != 5));
+    yxp.c("GdtAppBtnUIPresenter", "onActivityResume already installed or finishDownload but not exist." + jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.packageName);
+    this.jdField_a_of_type_Yzg.c(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+  }
+  
+  public void f()
+  {
+    if ((yxr.a(this.jdField_a_of_type_AndroidContentContext)) && (!f))
+    {
+      f = true;
+      AdThreadManager.INSTANCE.post(this.jdField_d_of_type_JavaLangRunnable, 4);
     }
   }
   
-  private static GdtCanvasComponentData c(JSONObject paramJSONObject, GdtCanvasData paramGdtCanvasData)
+  public void g()
   {
-    if (paramJSONObject == JSONObject.NULL)
-    {
-      yxs.d("GdtCanvasDataBuilderV2", "getArkFormComponent error");
-      return null;
+    if (jdField_a_of_type_Boolean) {
+      return;
     }
-    GdtCanvasFormComponentData localGdtCanvasFormComponentData = new GdtCanvasFormComponentData();
-    a(paramJSONObject, paramGdtCanvasData.basicWidth, localGdtCanvasFormComponentData);
-    return localGdtCanvasFormComponentData;
+    if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd != null)
+    {
+      jdField_a_of_type_Boolean = true;
+      yye.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, 238);
+      return;
+    }
+    QLog.e("GdtAppBtnUIPresenter", 1, "reportForPaused ad == null:");
+  }
+  
+  public void h()
+  {
+    n();
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Yzg == null) || (jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData == null) || (!jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.isValid())) {
+      return;
+    }
+    if (nmc.a(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.packageName))
+    {
+      this.jdField_a_of_type_Yzg.b(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+      this.jdField_a_of_type_Yzg.a(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.packageName);
+      return;
+    }
+    if (yyn.b(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.apkUrlhttp))
+    {
+      this.jdField_a_of_type_Yzg.a(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+      DownloadInfo localDownloadInfo = bdhk.a().b(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData.apkUrlhttp);
+      if (localDownloadInfo != null) {
+        localDownloadInfo.m = "biz_src_ads";
+      }
+      bdhk.a().a(localDownloadInfo);
+      return;
+    }
+    int j = yyn.c(this.jdField_a_of_type_AndroidContentContext, jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData);
+    int i = j;
+    if (j < 0) {
+      i = 0;
+    }
+    a(jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtAppBtnData, i);
   }
 }
 

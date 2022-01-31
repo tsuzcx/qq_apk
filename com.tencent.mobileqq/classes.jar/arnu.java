@@ -1,106 +1,32 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class arnu
-  extends akim
+  implements wxt
 {
-  arnu(arnp paramarnp) {}
+  arnu(arnr paramarnr) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a(Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      arnp.a(this.a, 2131693686);
-    }
-    this.a.jdField_a_of_type_Int = -1;
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      switch (paramInt2)
-      {
-      case -1: 
-      default: 
-        arnp.a(this.a, 2131693686);
-      }
-    }
-    for (;;)
+    int i = paramBundle.getInt("state", 0);
+    int j = paramBundle.getInt("percentage", 0);
+    long l = paramBundle.getLong("errCode", 0L);
+    try
     {
-      this.a.jdField_a_of_type_Int = -1;
-      return;
-      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
-      {
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-      else
-      {
-        arnp.a(this.a, 2131693687, 2);
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
-        continue;
-        arnp.a(this.a, 2131720495);
-        continue;
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.b == 0) {
+      paramBundle = new JSONObject();
+      paramBundle.put("state", i);
+      paramBundle.put("percentage", j);
+      paramBundle.put("errCode", l);
+      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
       return;
     }
-    if (paramBoolean)
+    catch (Exception paramBundle)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
+        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
       }
-      paramLong = paramTroopInfo.troopPrivilegeFlag;
-      if ((0x80 & paramLong) != 0L)
-      {
-        paramInt1 = 1;
-        if ((paramLong & 0x200) == 0L) {
-          break label110;
-        }
-        paramInt2 = 1;
-        label61:
-        paramString = arnp.a(this.a);
-        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
-          break label116;
-        }
-        afnu.a(paramString, paramTroopInfo.troopuin);
-      }
-    }
-    for (;;)
-    {
-      this.a.b = 0;
-      return;
-      paramInt1 = 0;
-      break;
-      label110:
-      paramInt2 = 0;
-      break label61;
-      label116:
-      if (paramTroopInfo.cGroupOption == 1)
-      {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-        arnp.a(this.a, paramTroopInfo);
-      }
-      else
-      {
-        arnp.b(this.a, paramTroopInfo);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
-        }
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-        arnp.a(this.a, 2131718737);
-      }
+      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
     }
   }
 }

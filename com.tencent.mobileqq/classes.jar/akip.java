@@ -1,69 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Messenger;
 import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class akip
-  extends Handler
+  implements ServiceConnection
 {
-  akip(akio paramakio, Looper paramLooper, QQAppInterface paramQQAppInterface)
+  akip(akin paramakin) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super(paramLooper);
+    akin.a(this.a, 2);
+    akin.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
+    }
+    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+    akin.b(this.a);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1001: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1000: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1005: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_Akio.a(paramMessage.what, i, paramMessage.arg2);
-      this.jdField_a_of_type_Akio.a.remove(i);
-      return;
-    case 1004: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      this.jdField_a_of_type_Akio.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
-      this.jdField_a_of_type_Akio.a.clear();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
     }
-    paramMessage = (Object[])paramMessage.obj;
-    int i = ((Integer)paramMessage[0]).intValue();
-    akit localakit = (akit)paramMessage[1];
-    int j = ((Integer)paramMessage[2]).intValue();
-    int k = ((Integer)paramMessage[3]).intValue();
-    this.jdField_a_of_type_Akio.a(localakit.jdField_a_of_type_Long, j, k);
-    this.jdField_a_of_type_Akio.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localakit.jdField_a_of_type_JavaLangString, localakit.jdField_a_of_type_Long, j, k);
+    this.a.jdField_a_of_type_AndroidOsMessenger = null;
+    akin.a(this.a, 4);
+    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.b = null;
+    akin.a(this.a, true);
+    if (akin.a(this.a) != null) {
+      akin.a(this.a).interrupt();
+    }
   }
 }
 

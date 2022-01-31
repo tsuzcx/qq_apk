@@ -2,8 +2,8 @@ package com.tencent.mobileqq.theme.diy;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import axqw;
-import bbgg;
+import axqy;
+import bbgu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ThemeDIYActivity$9
@@ -13,7 +13,7 @@ class ThemeDIYActivity$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_out_tips", 0, 1, "0", "", "", "");
+    axqy.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_out_tips", 0, 1, "0", "", "", "");
     this.this$0.isNotifyBack = false;
     if ((this.this$0.exitDialog != null) && (this.this$0.exitDialog.isShowing()))
     {

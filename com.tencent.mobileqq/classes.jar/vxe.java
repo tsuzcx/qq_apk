@@ -1,16 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
 class vxe
   implements View.OnClickListener
 {
-  vxe(vxd paramvxd) {}
+  vxe(vxd paramvxd, TroopStoryItemInfo paramTroopStoryItemInfo) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
+    paramView = ((tcw)tcz.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    if (paramView != null) {
+      ((svl)tcz.a().b(3)).a(paramView);
     }
   }
 }

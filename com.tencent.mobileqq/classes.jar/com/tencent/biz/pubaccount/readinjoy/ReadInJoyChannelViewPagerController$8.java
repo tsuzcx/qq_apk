@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
-import ntk;
+import nth;
 
 public class ReadInJoyChannelViewPagerController$8
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$8(ntk paramntk, View paramView1, View paramView2) {}
+  public ReadInJoyChannelViewPagerController$8(nth paramnth, View paramView1, View paramView2) {}
   
   public void run()
   {

@@ -1,14 +1,8 @@
 public class bccd
 {
-  public int a;
-  public String a;
-  public int[] a;
-  
-  public bccd(int[] paramArrayOfInt, int paramInt, String paramString)
+  public static bcce a(bcfx parambcfx)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new bcce(parambcfx);
   }
 }
 

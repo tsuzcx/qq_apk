@@ -1,30 +1,32 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.concurrent.CountDownLatch;
+import android.os.Looper;
+import android.util.Printer;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.BaseHandler;
 
-public final class bhnt
-  implements Downloader.DownloadListener
+public class bhnt
+  implements Printer
 {
-  public bhnt(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  public bhnt(BaseHandler paramBaseHandler) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void println(String paramString)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
+    do
+    {
+      return;
+      if (!BaseHandler.access$000())
+      {
+        Looper.myLooper().setMessageLogging(null);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseHandler", 2, paramString);
+      }
+      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
+        BaseHandler.access$100(this.a);
+      }
+    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
+    BaseHandler.access$200(this.a);
   }
 }
 

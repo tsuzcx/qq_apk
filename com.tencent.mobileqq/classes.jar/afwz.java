@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
 public class afwz
-  implements DialogInterface.OnCancelListener
+  extends aoun
 {
-  private final WeakReference<ChatHistoryC2CDateFragment> a;
+  public afwz(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  afwz(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
-    }
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

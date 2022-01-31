@@ -1,6 +1,7 @@
-public class angb
-  implements angp
-{}
+public abstract interface angb
+{
+  public abstract void a(anga paramanga);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

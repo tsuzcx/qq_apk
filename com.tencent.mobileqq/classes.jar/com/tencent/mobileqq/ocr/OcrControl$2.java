@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ocr;
 
-import algt;
-import aubm;
+import algs;
 import aubo;
+import aubq;
 import java.util.HashMap;
 
 public class OcrControl$2
   implements Runnable
 {
-  public OcrControl$2(aubm paramaubm, String paramString) {}
+  public OcrControl$2(aubo paramaubo, String paramString) {}
   
   public void run()
   {
-    if (((algt)this.this$0.a.get(this.a) != null) && (aubm.a(this.this$0) != null)) {
-      aubm.a(this.this$0).a();
+    if (((algs)this.this$0.a.get(this.a) != null) && (aubo.a(this.this$0) != null)) {
+      aubo.a(this.this$0).a();
     }
   }
 }

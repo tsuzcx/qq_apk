@@ -1,66 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class xgd
-  extends ampb<xgc>
+class xgd
+  implements Animation.AnimationListener
 {
-  public int a()
-  {
-    return 406;
-  }
+  xgd(xgb paramxgb) {}
   
-  public Class<xgc> a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return xgc.class;
-  }
-  
-  @NonNull
-  public xgc a(int paramInt)
-  {
-    return new xgc();
-  }
-  
-  @Nullable
-  public xgc a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return xgc.a(paramArrayOfampi[0].a);
+    if (xgb.a(this.a) != null)
+    {
+      xgb.a(this.a).clearAnimation();
+      xgb.a(this.a).startAnimation(xgb.a(this.a));
     }
-    return null;
   }
   
-  public void a()
-  {
-    super.a();
-    bipb.a().a(false);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(xgc paramxgc)
-  {
-    bipb.a().a(true);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

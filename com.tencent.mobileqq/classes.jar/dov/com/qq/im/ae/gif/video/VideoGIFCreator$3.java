@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bivl;
-import bivm;
+import biwc;
+import biwd;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoGIFCreator$3
   implements Runnable
 {
-  public VideoGIFCreator$3(bivm parambivm) {}
+  public VideoGIFCreator$3(biwd parambiwd) {}
   
   public void run()
   {
-    QLog.d(bivm.a(), 4, "start decode");
-    bivm.a(this.this$0).a();
+    QLog.d(biwd.a(), 4, "start decode");
+    biwd.a(this.this$0).a();
   }
 }
 

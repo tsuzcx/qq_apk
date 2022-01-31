@@ -1,18 +1,6 @@
-public class xgu
-  extends xgv
+public abstract interface xgu<T>
 {
-  private final String a = xgu.class.getName();
-  
-  public xgu(String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
-  
-  protected String a()
-  {
-    veg.b(this.a, "Get cache tag[Disk]: cache");
-    return "cache";
-  }
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString, T paramT);
 }
 
 

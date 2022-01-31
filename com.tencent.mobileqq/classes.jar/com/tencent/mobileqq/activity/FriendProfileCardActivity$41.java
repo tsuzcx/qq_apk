@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import ajxn;
+import ajxl;
 import android.os.Message;
-import auuw;
-import bfnk;
+import auuy;
+import bfob;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
@@ -15,7 +15,7 @@ class FriendProfileCardActivity$41
   public void run()
   {
     int j = 0;
-    Object localObject = (ajxn)this.this$0.app.getManager(51);
+    Object localObject = (ajxl)this.this$0.app.getManager(51);
     if (localObject == null)
     {
       localObject = null;
@@ -34,16 +34,16 @@ class FriendProfileCardActivity$41
       if (i != 0) {}
       for (localMessage.what = 6;; localMessage.what = 5)
       {
-        if (this.this$0.jdField_a_of_type_Bfnk != null) {
-          this.this$0.jdField_a_of_type_Bfnk.sendMessage(localMessage);
+        if (this.this$0.jdField_a_of_type_Bfob != null) {
+          this.this$0.jdField_a_of_type_Bfob.sendMessage(localMessage);
         }
         i = j;
-        if (this.this$0.jdField_a_of_type_Auuw.a != null) {
-          i = this.this$0.jdField_a_of_type_Auuw.a.h;
+        if (this.this$0.jdField_a_of_type_Auuy.a != null) {
+          i = this.this$0.jdField_a_of_type_Auuy.a.h;
         }
         this.this$0.h(i);
         return;
-        localObject = ((ajxn)localObject).b(this.this$0.jdField_a_of_type_Auuw.a.a);
+        localObject = ((ajxl)localObject).b(this.this$0.jdField_a_of_type_Auuy.a.a);
         break;
       }
     }

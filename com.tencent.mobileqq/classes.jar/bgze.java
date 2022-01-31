@@ -1,8 +1,18 @@
-import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
-public abstract interface bgze
+public class bgze
+  implements View.OnClickListener
 {
-  public abstract void onFail(Activity paramActivity, String paramString);
+  public bgze(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a = true;
+    this.a.d();
+    this.a.a();
+  }
 }
 
 

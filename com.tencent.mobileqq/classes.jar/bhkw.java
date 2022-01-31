@@ -1,31 +1,29 @@
+import BOSSStrategyCenter.tAdvDesc;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
 
 public class bhkw
-  implements BusinessObserver
+  extends atzq
 {
   private static bhkw jdField_a_of_type_Bhkw;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private long b;
-  
-  public bhkw()
-  {
-    axbi localaxbi = new axbi();
-    localaxbi.a();
-    this.b = (localaxbi.d * 1000);
-    this.jdField_a_of_type_Int = localaxbi.c;
-    this.jdField_a_of_type_JavaLangString = localaxbi.jdField_a_of_type_JavaLangString;
-  }
+  private WeakReference<bhks> jdField_a_of_type_JavaLangRefWeakReference;
   
   public static bhkw a()
   {
@@ -40,77 +38,116 @@ public class bhkw
     finally {}
   }
   
-  private boolean a()
+  public static Boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int)) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long > this.b) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    boolean bool = false;
+    try
     {
-      Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      ??? = new bhkx(this.jdField_a_of_type_JavaLangString, (ArrayList)localObject2, null);
-      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), anjt.class);
-      ((QzoneCommonIntent)localObject2).setRequest((bgxt)???);
-      ((QzoneCommonIntent)localObject2).setObserver(this);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject2);
-      return;
+      paramString = BaseApplicationImpl.getContext().getPackageManager().getApplicationInfo(paramString, 0);
+      if (paramString != null) {
+        bool = true;
+      }
     }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return Boolean.valueOf(bool);
   }
   
-  public void a(String paramString)
+  public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("WMDReportManager", 1, "action is null");
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = Pattern.compile("\"download_app_package_name\":\"[^\"]*").matcher(paramString);
+      localObject1 = localObject2;
+      if (paramString.find())
+      {
+        paramString = paramString.group(0).split("\"");
+        localObject1 = localObject2;
+        if (paramString.length == 4)
+        {
+          localObject1 = localObject2;
+          if (paramString[3].length() > 0) {
+            localObject1 = paramString[3];
+          }
+        }
+      }
     }
+    return localObject1;
+  }
+  
+  public static void a(MobileQbossAdvRsp paramMobileQbossAdvRsp)
+  {
+    if (paramMobileQbossAdvRsp == null) {}
     for (;;)
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("WMDReportManager", 2, "action:" + paramString);
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv.entrySet().iterator();
+      while (paramMobileQbossAdvRsp.hasNext())
       {
-        QLog.e("WMDReportManager", 1, "reportId is null");
-        return;
-      }
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        if (!a()) {
-          continue;
+        Map.Entry localEntry = (Map.Entry)paramMobileQbossAdvRsp.next();
+        Iterator localIterator = ((ArrayList)localEntry.getValue()).iterator();
+        while (localIterator.hasNext())
+        {
+          tAdvDesc localtAdvDesc = (tAdvDesc)localIterator.next();
+          String str = a(localtAdvDesc.res_data);
+          if ((str != null) && (a(str).booleanValue()))
+          {
+            localIterator.remove();
+            bhku.a().d(localtAdvDesc.res_traceinfo, null);
+          }
         }
-        a();
-        return;
+        if (((ArrayList)localEntry.getValue()).size() == 0) {
+          paramMobileQbossAdvRsp.remove();
+        }
       }
     }
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(ArrayList<Integer> paramArrayList, bhks parambhks, String paramString)
   {
-    if (paramBundle != null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhks);
+    parambhks = BaseApplicationImpl.getApplication().getRuntime();
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), axcr.class);
+    localNewIntent.putExtra("selfuin", Long.parseLong(parambhks.getAccount()));
+    localNewIntent.putIntegerArrayListExtra("appid", paramArrayList);
+    localNewIntent.putExtra("requestType", paramString);
+    parambhks.registObserver(this);
+    parambhks.startServlet(localNewIntent);
+    QLog.i("QzoneQbossHelper", 1, "getQbossData req");
+  }
+  
+  protected void h(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str1 = paramBundle.getString("requestType");
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (bhks localbhks = (bhks)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localbhks = null)
     {
-      int i = paramBundle.getInt("key_response_code");
-      String str = paramBundle.getString("key_response_msg");
-      if (QLog.isColorLevel()) {
-        QLog.i("WMDReportManager", 2, String.format("type :%d, success:%b, code:%d, msg:%s, bundle:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(i), str, paramBundle.toString() }));
+      if (paramBoolean)
+      {
+        if (localbhks != null) {
+          localbhks.a(paramBundle, str1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+        }
+        QLog.i("QzoneQbossHelper", 1, "onGetQbossData rsp success");
       }
-      return;
+      for (;;)
+      {
+        BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this);
+        return;
+        int i = paramBundle.getInt("ret", 0);
+        String str2 = paramBundle.getString("msg");
+        paramBundle = paramBundle.getIntegerArrayList("appid");
+        if (localbhks != null) {
+          localbhks.a(i, str2, str1, paramBundle);
+        }
+      }
     }
-    QLog.e("WMDReportManager", 1, "onReceive bundle is null");
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class RecommendFriend
-  extends aukm
+  extends auko
 {
   public String name;
   public String source;
-  @auma
+  @aumc
   public String uin;
 }
 

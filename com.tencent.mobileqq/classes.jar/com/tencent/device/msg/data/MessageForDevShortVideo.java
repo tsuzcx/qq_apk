@@ -1,17 +1,17 @@
 package com.tencent.device.msg.data;
 
-import ajyc;
+import ajya;
 import android.os.Parcelable.Creator;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.BaseApplication;
-import yfa;
+import yex;
 
 public class MessageForDevShortVideo
   extends MessageForShortVideo
 {
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new yfa();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new yex();
   public long fileSessionId;
   
   public String getSummary()
@@ -25,13 +25,13 @@ public class MessageForDevShortVideo
     default: 
       return null;
     case 2003: 
-      return ajyc.a(2131706591);
+      return ajya.a(2131706602);
     case 1003: 
       return ((QQAppInterface)localObject).getApp().getString(2131691300);
     case 1005: 
       return ((QQAppInterface)localObject).getApp().getString(2131691300);
     }
-    return ajyc.a(2131706586);
+    return ajya.a(2131706597);
   }
 }
 

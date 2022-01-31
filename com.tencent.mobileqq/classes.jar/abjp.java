@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class abjp
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public abjp(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public abjp(JumpActivity paramJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a.a();
+    if (paramDevlockInfo != null) {
+      aoem.a().a(paramDevlockInfo.TransferInfo);
+    }
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      paramWUserSigInfo.a(paramDevlockInfo);
+      return;
+      paramDevlockInfo = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abjp
  * JD-Core Version:    0.7.0.1
  */

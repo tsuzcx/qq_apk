@@ -1,32 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import java.io.File;
-import java.io.IOException;
+import org.json.JSONObject;
 
 public class aaeh
-  implements CompoundButton.OnCheckedChangeListener
+  extends aaej
 {
   public aaeh(TestAppFragment paramTestAppFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    if (paramBoolean)
-    {
-      new File(this.a.a).mkdirs();
-      paramCompoundButton = new File(this.a.a, this.a.b);
-      try
-      {
-        paramCompoundButton.createNewFile();
-        return;
-      }
-      catch (IOException paramCompoundButton)
-      {
-        paramCompoundButton.printStackTrace();
-        return;
-      }
-    }
-    new File(this.a.a, this.a.b).delete();
+    super.onSuccess(paramJSONObject);
+    paramJSONObject.optString("openid", "");
+    this.a.a.a("getAppFriends", null, new aaei(this));
   }
 }
 

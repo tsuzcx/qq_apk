@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqyy;
+import aqza;
 
 public class HotPicMainPanel$2$1
   implements Runnable
 {
-  public HotPicMainPanel$2$1(aqyy paramaqyy) {}
+  public HotPicMainPanel$2$1(aqza paramaqza) {}
   
   public void run()
   {

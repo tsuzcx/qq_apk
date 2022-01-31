@@ -1,44 +1,42 @@
-import java.security.MessageDigest;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebAccelerator;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bcgp
 {
-  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  public static long a;
+  static final AtomicBoolean a;
   
-  public static String a(String paramString)
+  static
   {
-    try
-    {
-      paramString = a(paramString.getBytes(), "SHA1");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  private static String a(byte[] paramArrayOfByte)
+  public static boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
-      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
-  private static String a(byte[] paramArrayOfByte, String paramString)
+  public static boolean b()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return "";
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      long l = System.currentTimeMillis();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
+      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
+      QbSdk.initTbsSettings(localHashMap);
+      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
+      bcfo.D = SystemClock.elapsedRealtime();
+      jdField_a_of_type_Long = System.currentTimeMillis() - l;
+      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
+      return true;
     }
-    paramString = MessageDigest.getInstance(paramString);
-    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return a(paramString.digest());
+    return false;
   }
 }
 

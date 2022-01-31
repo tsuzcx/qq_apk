@@ -1,61 +1,54 @@
 import android.os.Handler;
 import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.4.1;
-import com.tencent.mobileqq.ar.ArConfigService.4.2;
-import com.tencent.mobileqq.ar.ArConfigService.4.3;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.ar.ArConfigService.5.1;
+import com.tencent.mobileqq.ar.ArConfigService.5.2;
+import com.tencent.mobileqq.ar.ArConfigService.5.3;
 import com.tencent.qphone.base.util.QLog;
 
 public class albq
-  implements anpa
+  implements alin
 {
   public albq(ArConfigService paramArConfigService) {}
   
-  public void a(XmlData paramXmlData)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
+      QLog.d("ArConfig_ArConfigService", 2, "mARSDK2ResourceDownloadCallback");
     }
   }
   
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void a(long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
     }
-    paramXmlData = paramXmlData.strResName;
-    if (anpf.a.equals(paramXmlData)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
+    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
     int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
     if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
+      ArConfigService.a(this.a).post(new ArConfigService.5.1(this, i));
     }
   }
   
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
+  public void a(boolean paramBoolean, alio paramalio)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARSDK2ResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    if (paramBoolean1)
+    if (paramBoolean)
     {
-      paramXmlData = paramXmlData.strResName;
-      if (anpf.a.equals(paramXmlData)) {
-        ArConfigService.b(this.a, true);
-      }
+      ArConfigService.c(this.a, true);
       if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
+        ArConfigService.a(this.a).post(new ArConfigService.5.2(this));
       }
     }
     while (ArConfigService.e(this.a)) {
       return;
     }
-    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
+    ArConfigService.a(this.a).post(new ArConfigService.5.3(this));
     ArConfigService.a(this.a, true);
   }
   
-  public void b(XmlData paramXmlData) {}
+  public void b() {}
 }
 
 

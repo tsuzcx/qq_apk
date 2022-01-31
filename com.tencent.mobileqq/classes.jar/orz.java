@@ -1,12 +1,6 @@
-public class orz
+public abstract interface orz
 {
-  public int a;
-  public long a;
-  
-  public String toString()
-  {
-    return "articleId : " + this.jdField_a_of_type_Long + "  launchFrom: " + this.jdField_a_of_type_Int;
-  }
+  public abstract void b();
 }
 
 

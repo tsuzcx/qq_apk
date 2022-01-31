@@ -1,20 +1,30 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.open.agent.FriendChooser;
 
-class bdaw
-  implements View.OnClickListener
+public class bdaw
+  implements View.OnTouchListener
 {
-  bdaw(bdav parambdav, int paramInt, String paramString) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void onClick(View paramView)
+  public bdaw(FriendChooser paramFriendChooser) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = new Bundle();
-    paramView.putInt("group_index", this.jdField_a_of_type_Int);
-    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bdav.a.a.a(1, paramView);
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
+    }
+    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

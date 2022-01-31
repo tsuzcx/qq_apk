@@ -1,6 +1,17 @@
-public abstract interface afsy
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+
+public class afsy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public afsy(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
+  }
 }
 
 

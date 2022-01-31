@@ -12,27 +12,27 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bhvh;
-import bihk;
+import bhvy;
+import biib;
 import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import onk;
-import ued;
-import ufk;
-import ufq;
-import vjr;
-import vvz;
+import onh;
+import uea;
+import ufh;
+import ufn;
+import vjo;
+import vvw;
+import vvy;
 import vwb;
-import vwe;
-import vwf;
-import vwg;
-import vzo;
+import vwc;
+import vwd;
+import vzl;
 
 public class ScrollFrameSelectBar
   extends FrameLayout
-  implements ued, ufq, vwe
+  implements uea, ufn, vwb
 {
   public static int a;
   public static int b = 15;
@@ -40,9 +40,9 @@ public class ScrollFrameSelectBar
   private ProgressPointer jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer;
   private RangeSelectBar jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private vvz jdField_a_of_type_Vvz;
-  private vwb jdField_a_of_type_Vwb;
-  private vwg jdField_a_of_type_Vwg;
+  private vvw jdField_a_of_type_Vvw;
+  private vvy jdField_a_of_type_Vvy;
+  private vwd jdField_a_of_type_Vwd;
   private int c = 1000;
   private int d;
   private int e;
@@ -85,21 +85,21 @@ public class ScrollFrameSelectBar
   @TargetApi(10)
   private void f()
   {
-    this.e = vzo.a(getContext());
-    this.f = vzo.a(getContext(), jdField_a_of_type_Int);
-    this.g = vzo.a(getContext(), b);
-    LayoutInflater.from(getContext()).inflate(2131562360, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375655));
+    this.e = vzl.a(getContext());
+    this.f = vzl.a(getContext(), jdField_a_of_type_Int);
+    this.g = vzl.a(getContext(), b);
+    LayoutInflater.from(getContext()).inflate(2131562359, this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375657));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar = ((RangeSelectBar)findViewById(2131375656));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer = ((ProgressPointer)findViewById(2131373274));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar = ((RangeSelectBar)findViewById(2131375658));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer = ((ProgressPointer)findViewById(2131373276));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.setRangeChangeListener(this);
     this.h = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getPaddingLeft();
     this.i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getPaddingRight();
     this.j = ((FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams()).rightMargin;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new vwf(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new vwc(this));
     if ("tribe".equals(((Activity)getContext()).getIntent().getStringExtra("video_refer"))) {
-      this.l = (bihk.d / 10);
+      this.l = (biib.d / 10);
     }
   }
   
@@ -143,10 +143,10 @@ public class ScrollFrameSelectBar
   
   public void a(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (this.jdField_a_of_type_Vvz == null) {
+    if (this.jdField_a_of_type_Vvw == null) {
       return;
     }
-    this.jdField_a_of_type_Vvz.a(paramLocalMediaInfo);
+    this.jdField_a_of_type_Vvw.a(paramLocalMediaInfo);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4)
@@ -167,11 +167,11 @@ public class ScrollFrameSelectBar
           f1 = this.o * 1.0F / this.l;
           this.d = ((i1 - this.f - this.g) / 10);
           paramInt3 = (int)(paramInt3 / paramInt2 * this.d);
-          paramInt2 = (int)(this.d * vjr.a(getResources()));
-          this.jdField_a_of_type_Vvz = new vvz(getContext(), paramInt4, this.d, paramInt2);
-          this.jdField_a_of_type_Vwb = new vwb("frame_loader", this.d, paramInt3, paramBoolean1);
-          this.jdField_a_of_type_Vwb.a(paramString, paramInt1, this.l);
-          this.jdField_a_of_type_Vvz.a(this.jdField_a_of_type_Vwb);
+          paramInt2 = (int)(this.d * vjo.a(getResources()));
+          this.jdField_a_of_type_Vvw = new vvw(getContext(), paramInt4, this.d, paramInt2);
+          this.jdField_a_of_type_Vvy = new vvy("frame_loader", this.d, paramInt3, paramBoolean1);
+          this.jdField_a_of_type_Vvy.a(paramString, paramInt1, this.l);
+          this.jdField_a_of_type_Vvw.a(this.jdField_a_of_type_Vvy);
           if (paramInt4 <= 10) {
             break label609;
           }
@@ -183,7 +183,7 @@ public class ScrollFrameSelectBar
     for (paramInt1 = 10;; paramInt1 = paramInt4)
     {
       ((FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams()).rightMargin = (i1 - this.f - this.g - paramInt1 * this.d);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Vvz);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Vvw);
       if (f1 > 10.0F) {
         f1 = 10.0F;
       }
@@ -197,7 +197,7 @@ public class ScrollFrameSelectBar
           this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.setVisibility(0);
           c();
           return;
-          paramInt4 = bhvh.f(onk.a());
+          paramInt4 = bhvy.f(onh.a());
           if (this.o > paramInt4 * 1000)
           {
             this.l = (paramInt4 * 100);
@@ -215,7 +215,7 @@ public class ScrollFrameSelectBar
           paramInt4 = 10;
           break;
           if ("tribe".equals(((Activity)getContext()).getIntent().getStringExtra("video_refer"))) {}
-          for (this.l = (bihk.d / 10);; this.l = (this.k / 10))
+          for (this.l = (biib.d / 10);; this.l = (this.k / 10))
           {
             paramInt4 = (int)Math.ceil(this.o * 1.0F / this.l);
             f1 = this.o * 1.0F / this.l;
@@ -229,7 +229,7 @@ public class ScrollFrameSelectBar
     }
   }
   
-  public void a(ufk paramufk)
+  public void a(ufh paramufh)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer.a();
   }
@@ -299,8 +299,8 @@ public class ScrollFrameSelectBar
     }
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView.setPlayRange(this.m, this.n);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView.a(true);
-    if (this.jdField_a_of_type_Vwg != null) {
-      this.jdField_a_of_type_Vwg.a(this.m, this.n);
+    if (this.jdField_a_of_type_Vwd != null) {
+      this.jdField_a_of_type_Vwd.a(this.m, this.n);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer.setRange(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.a(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.b(), this.n - this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView.a());
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer.b();
@@ -315,10 +315,10 @@ public class ScrollFrameSelectBar
   {
     int[] arrayOfInt = a();
     if ((arrayOfInt == null) || (arrayOfInt.length < 2)) {}
-    while (this.jdField_a_of_type_Vwg == null) {
+    while (this.jdField_a_of_type_Vwd == null) {
       return;
     }
-    this.jdField_a_of_type_Vwg.b(arrayOfInt[0], arrayOfInt[1]);
+    this.jdField_a_of_type_Vwd.b(arrayOfInt[0], arrayOfInt[1]);
   }
   
   public int e()
@@ -335,11 +335,11 @@ public class ScrollFrameSelectBar
   @TargetApi(10)
   public void e()
   {
-    if (this.jdField_a_of_type_Vvz != null) {
-      this.jdField_a_of_type_Vvz.a();
+    if (this.jdField_a_of_type_Vvw != null) {
+      this.jdField_a_of_type_Vvw.a();
     }
-    if (this.jdField_a_of_type_Vwb != null) {
-      this.jdField_a_of_type_Vwb.a();
+    if (this.jdField_a_of_type_Vvy != null) {
+      this.jdField_a_of_type_Vvy.a();
     }
   }
   
@@ -367,9 +367,9 @@ public class ScrollFrameSelectBar
     this.c = paramInt;
   }
   
-  public void setOnRangeValueChangeListener(vwg paramvwg)
+  public void setOnRangeValueChangeListener(vwd paramvwd)
   {
-    this.jdField_a_of_type_Vwg = paramvwg;
+    this.jdField_a_of_type_Vwd = paramvwd;
   }
 }
 

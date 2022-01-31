@@ -8,25 +8,25 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import bfpf;
-import bfpg;
-import bfph;
-import bftn;
+import bfpw;
+import bfpx;
+import bfpy;
+import bfue;
 
 public class AdapterViewPagerAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private SparseArray<AdapterView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private bfpg jdField_a_of_type_Bfpg;
-  private bfph jdField_a_of_type_Bfph;
-  private bftn jdField_a_of_type_Bftn;
+  private bfpx jdField_a_of_type_Bfpx;
+  private bfpy jdField_a_of_type_Bfpy;
+  private bfue jdField_a_of_type_Bfue;
   
   public AdapterViewPagerAdapter(Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bftn = new bftn(paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Bftn.registerDataSetObserver(new bfpf(this));
+    this.jdField_a_of_type_Bfue = new bfue(paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Bfue.registerDataSetObserver(new bfpw(this));
   }
   
   public AdapterView a(int paramInt)
@@ -35,16 +35,16 @@ public class AdapterViewPagerAdapter
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      if (this.jdField_a_of_type_Bfpg != null) {
-        localObject1 = this.jdField_a_of_type_Bfpg.a(this.jdField_a_of_type_AndroidContentContext, paramInt);
+      if (this.jdField_a_of_type_Bfpx != null) {
+        localObject1 = this.jdField_a_of_type_Bfpx.a(this.jdField_a_of_type_AndroidContentContext, paramInt);
       }
     }
     else
     {
       if (localObject1 != null)
       {
-        localObject2 = new bftn(this.jdField_a_of_type_Bftn.a(), this.jdField_a_of_type_Bftn.a());
-        ((bftn)localObject2).a(paramInt);
+        localObject2 = new bfue(this.jdField_a_of_type_Bfue.a(), this.jdField_a_of_type_Bfue.a());
+        ((bfue)localObject2).a(paramInt);
         ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
         this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
       }
@@ -53,16 +53,16 @@ public class AdapterViewPagerAdapter
     throw new IllegalArgumentException("setAdapterViewFactory should be invoked first!");
   }
   
-  public void a(bfpg parambfpg)
+  public void a(bfpx parambfpx)
   {
-    this.jdField_a_of_type_Bfpg = parambfpg;
+    this.jdField_a_of_type_Bfpx = parambfpx;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Bfph != null)
+    if (this.jdField_a_of_type_Bfpy != null)
     {
-      this.jdField_a_of_type_Bfph.a(paramViewGroup, (View)paramObject, paramInt);
+      this.jdField_a_of_type_Bfpy.a(paramViewGroup, (View)paramObject, paramInt);
       return;
     }
     paramViewGroup.removeView((View)paramObject);
@@ -70,7 +70,7 @@ public class AdapterViewPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Bftn.b();
+    return this.jdField_a_of_type_Bfue.b();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -79,8 +79,8 @@ public class AdapterViewPagerAdapter
     if (localAdapterView == null) {
       return null;
     }
-    if (this.jdField_a_of_type_Bfph != null) {
-      return this.jdField_a_of_type_Bfph.a(paramViewGroup, localAdapterView, paramInt);
+    if (this.jdField_a_of_type_Bfpy != null) {
+      return this.jdField_a_of_type_Bfpy.a(paramViewGroup, localAdapterView, paramInt);
     }
     paramViewGroup.addView(localAdapterView);
     return localAdapterView;

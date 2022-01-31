@@ -1,47 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.lang.ref.WeakReference;
 
 public class afwv
-  extends WtloginObserver
+  implements DialogInterface.OnCancelListener
 {
-  public afwv(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
+  private final WeakReference<ChatHistoryC2CAllFragment> a;
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public afwv(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
   {
-    int i = 1;
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      long l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo == null)
-      {
-        bool = true;
-        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      }
-    }
-    else
-    {
-      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
-      paramWUserSigInfo.arg1 = paramInt;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramWUserSigInfo.arg2 = paramInt;
-      paramWUserSigInfo.obj = paramDevlockInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
-      return;
-      bool = false;
-      break;
+    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
+    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
   }
 }

@@ -1,102 +1,49 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-class aexf
-  implements aysa
+public class aexf
 {
-  aexf(aexd paramaexd, String paramString1, boolean paramBoolean, String paramString2) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public void onResp(aysx paramaysx)
+  public JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StickerRecManager", 2, "onResp resultcode: " + paramaysx.c + " threadid=" + Thread.currentThread().getId());
-    }
-    long l1;
-    if ((paramaysx.c == 200) && (aexd.a(this.jdField_a_of_type_Aexd, aexd.a(this.jdField_a_of_type_Aexd), aexd.b(this.jdField_a_of_type_Aexd), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)))
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      if (!aexd.b(this.jdField_a_of_type_Aexd).exists()) {
-        break label423;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecManager", 2, "pull words success");
-      }
-      l1 = 0L;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.a);
+      localJSONObject2.put("keyword", this.b);
+      localJSONObject2.put("appid", this.c);
+      localJSONObject2.put("expose_md5s", this.d);
+      localJSONObject2.put("expose_urls", this.e);
+      localJSONObject2.put("click_md5", this.f);
+      localJSONObject2.put("click_url", this.g);
+      localJSONObject2.put("aio_type", this.h);
+      localJSONObject2.put("mobile_type", this.i);
+      localJSONObject2.put("to_user_id", this.j);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      int i;
-      try
-      {
-        long l2 = SystemClock.elapsedRealtime();
-        l1 = l2;
-        Object localObject = new JSONObject(bbdj.b(aexd.b(this.jdField_a_of_type_Aexd)));
-        l1 = l2;
-        paramaysx = ((JSONObject)localObject).optString("version", null);
-        l1 = l2;
-        localObject = ((JSONObject)localObject).optJSONArray("words");
-        l1 = l2;
-        BloomFilter localBloomFilter = new BloomFilter();
-        l1 = l2;
-        localBloomFilter.version = paramaysx;
-        i = 0;
-        l1 = l2;
-        if (i < ((JSONArray)localObject).length())
-        {
-          l1 = l2;
-          paramaysx = ((JSONArray)localObject).optString(i);
-          l1 = l2;
-          if (TextUtils.isEmpty(paramaysx)) {
-            break label438;
-          }
-          l1 = l2;
-          localBloomFilter.add(paramaysx);
-          break label438;
-        }
-        l1 = l2;
-        bbdj.d(aexd.c(this.jdField_a_of_type_Aexd).getAbsolutePath());
-        l1 = l2;
-        aexd.a(this.jdField_a_of_type_Aexd, aexd.c(this.jdField_a_of_type_Aexd).getAbsolutePath(), localBloomFilter);
-        l1 = l2;
-        bbdj.d(aexd.b(this.jdField_a_of_type_Aexd).getAbsolutePath());
-        l1 = l2;
-        bbjn.d(aexd.a(this.jdField_a_of_type_Aexd).getApp(), "words_version_key805_gray_one", aexd.a(this.jdField_a_of_type_Aexd).c(), this.b);
-        l1 = l2;
-        this.jdField_a_of_type_Aexd.b();
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          l1 = l2;
-          QLog.d("StickerRecManager", 2, "generate encode table time cost : " + (SystemClock.elapsedRealtime() - l2));
-        }
-        return;
-      }
-      catch (Exception paramaysx)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StickerRecManager", 2, "generate encode table time error cost : " + (SystemClock.elapsedRealtime() - l1));
-        QLog.d("StickerRecManager", 2, "build EncodeTable error !");
-        return;
-      }
-      label423:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("StickerRecManager", 2, "updateWords fail: words file is not exist.");
-        return;
-        label438:
-        i += 1;
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
     }
+    return localJSONObject1;
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

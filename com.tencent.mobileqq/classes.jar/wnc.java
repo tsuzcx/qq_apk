@@ -1,8 +1,18 @@
+import android.app.Activity;
 import android.view.View;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
-public abstract interface wnc
+public class wnc
+  implements wmz
 {
-  public abstract void a(View paramView);
+  wnc(wnb paramwnb) {}
+  
+  public void a(View paramView)
+  {
+    if (this.a.isShowing()) {
+      wnb.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
+    }
+  }
 }
 
 

@@ -1,24 +1,6 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.Comparator;
-
-public class uue
-  implements Comparator<VideoCollectionItem>
+public abstract interface uue
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
-  {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (vyb.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
-    {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
-      }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
-  }
+  public abstract void a(String paramString);
 }
 
 

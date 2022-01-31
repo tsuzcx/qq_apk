@@ -50,7 +50,7 @@ public class ImageProgressCircle
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130847638);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130847644);
       int i = (int)(paramContext.getResources().getDisplayMetrics().density * 12.0F);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);

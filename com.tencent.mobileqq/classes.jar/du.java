@@ -39,7 +39,7 @@ public class du
   
   void a(List<String> paramList)
   {
-    ajuo localajuo = (ajuo)this.a.app.a(8);
+    ajum localajum = (ajum)this.a.app.a(8);
     for (;;)
     {
       int j = paramList.size();
@@ -48,14 +48,14 @@ public class du
         i = 0;
         while (i < j)
         {
-          localajuo.a(a((String)paramList.get(i), 0, 0, 0), false);
+          localajum.a(a((String)paramList.get(i), 0, 0, 0), false);
           i += 1;
         }
       }
       if ((j > 3) && (j < 50))
       {
         localArrayList = new ArrayList();
-        int k = localajuo.a();
+        int k = localajum.a();
         i = 0;
         while (i < j)
         {
@@ -63,11 +63,11 @@ public class du
           i += 1;
         }
         fc.n(this.a.app);
-        localajuo.a(localArrayList, false);
+        localajum.a(localArrayList, false);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      j = localajuo.a();
+      j = localajum.a();
       int i = 0;
       while (i < 50)
       {
@@ -75,7 +75,7 @@ public class du
         i += 1;
       }
       fc.n(this.a.app);
-      localajuo.a(localArrayList, false);
+      localajum.a(localArrayList, false);
       i = 0;
       while (i < 50)
       {

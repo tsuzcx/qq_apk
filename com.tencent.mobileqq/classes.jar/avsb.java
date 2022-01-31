@@ -1,12 +1,6 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-
-public class avsb
+public abstract interface avsb
 {
-  public int a;
-  public axdh a;
-  public PtvTemplateManager.PtvTemplateInfo a;
-  public ArrayList<avsa> a = new ArrayList();
+  public abstract void a();
 }
 
 

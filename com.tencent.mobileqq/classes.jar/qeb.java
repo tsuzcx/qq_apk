@@ -1,24 +1,54 @@
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qeb
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  
-  public HashMap<String, String> a()
+  public static <T> int a(Iterable<T> paramIterable, qed<T> paramqed)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_vid", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_success", String.valueOf(this.jdField_a_of_type_Boolean).toLowerCase());
-    localHashMap.put("param_costTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_ret_code", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_err_info", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Boolean));
-    return localHashMap;
+    if (paramIterable != null)
+    {
+      int i = 0;
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        if (paramqed.a(paramIterable.next())) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
+  }
+  
+  public static <T, E> List<E> a(Iterable<T> paramIterable, qec<T, E> paramqec)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramqec != null))
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext()) {
+        localArrayList.add(paramqec.a(paramIterable.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static <T> List<T> a(Iterable<T> paramIterable, qed<T> paramqed)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramqed != null))
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        Object localObject = paramIterable.next();
+        if (paramqed.a(localObject)) {
+          localArrayList.add(localObject);
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 

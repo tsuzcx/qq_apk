@@ -1,28 +1,20 @@
+import android.os.Handler;
 import android.view.animation.Animation;
 import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.ptt.LSRecordPanel.2.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class avbl
-  extends avbg
+  extends avbi
 {
   public avbl(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void a(Animation paramAnimation, float paramFloat)
-  {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
-    }
-  }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
+      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
     }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
+    LSRecordPanel.a(this.a).post(new LSRecordPanel.2.1(this));
   }
 }
 

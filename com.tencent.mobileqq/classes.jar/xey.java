@@ -1,15 +1,6 @@
-import android.view.View;
-
-class xey
-  implements xfe
+public abstract interface xey
 {
-  xey(xev paramxev) {}
-  
-  public void a(View paramView, float paramFloat)
-  {
-    paramView.getLayoutParams().width = ((int)paramFloat);
-    paramView.requestLayout();
-  }
+  public abstract void a();
 }
 
 

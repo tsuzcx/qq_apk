@@ -1,20 +1,10 @@
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class abto
-  extends aimv
+  extends aimt
 {
-  public abtm a;
-  public View a;
-  public ImageView a;
+  public abti a;
   public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
 }
 
 

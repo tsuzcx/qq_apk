@@ -1,61 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import mqq.os.MqqHandler;
 
-public class bcfw
-  extends bcfv
+class bcfw
+  implements URLDrawable.URLDrawableListener
 {
-  public bcfw(int paramInt)
-  {
-    super(paramInt);
-  }
+  bcfw(bcfs parambcfs) {}
   
-  public int a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (WebAccelerateHelper.preloadBrowserView == null)
-    {
-      WebAccelerateHelper.preInflaterBrowserView();
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
-      }
-    }
-    do
-    {
-      return 2;
-      if (SwiftReuseTouchWebView.b != 0) {
-        break;
-      }
-      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
-    return 2;
-    long l;
-    if (bcfs.a() < 5)
-    {
-      l = System.currentTimeMillis();
-      if (System.currentTimeMillis() > bcfs.a() + 10000L)
-      {
-        bcfs.a();
-        bcfs.b();
-        bcfs.a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
-        }
-      }
-    }
-    for (;;)
-    {
-      return 1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + bcfs.a() + " < 10s.");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + bcfs.a() + ">=" + 5 + ".");
-        }
-      }
-    }
+    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
   }
 }
 

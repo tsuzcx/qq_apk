@@ -1,51 +1,108 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.CallSuper;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.videostory.network.servlet.VSBaseServlet.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class xgz
-  extends ProtoBufRequest
+  extends MSFServlet
 {
-  private CLIENT.StGetUserNewestStoryReq a = new CLIENT.StGetUserNewestStoryReq();
-  
-  public xgz(COMM.StCommonExt paramStCommonExt, long paramLong1, long paramLong2)
+  private int a(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    CLIENT.StUinTime localStUinTime = new CLIENT.StUinTime();
-    localStUinTime.newestTime.set(paramLong1);
-    localStUinTime.uin.set(paramLong2);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(localStUinTime);
-    this.a.vecUinTime.set(localArrayList);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    long l = a(paramInputStream, paramOutputStream);
+    if (l > 2147483647L) {
+      return -1;
+    }
+    return (int)l;
+  }
+  
+  private long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    byte[] arrayOfByte = new byte[4096];
+    int i;
+    for (long l = 0L;; l += i)
+    {
+      i = paramInputStream.read(arrayOfByte);
+      if (-1 == i) {
+        break;
+      }
+      paramOutputStream.write(arrayOfByte, 0, i);
+    }
+    return l;
+  }
+  
+  private void a(VSBaseRequest paramVSBaseRequest)
+  {
+    if (paramVSBaseRequest.isEnableCache())
+    {
+      ved.b("VSNetworkHelper| Protocol Cache", "start to response cache");
+      ThreadManagerV2.executeOnFileThread(new VSBaseServlet.1(this, paramVSBaseRequest));
     }
   }
   
-  public static CLIENT.StGetUserNewestStoryRsp a(byte[] paramArrayOfByte)
+  private byte[] a(InputStream paramInputStream)
   {
-    CLIENT.StGetUserNewestStoryRsp localStGetUserNewestStoryRsp = new CLIENT.StGetUserNewestStoryRsp();
-    try
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    a(paramInputStream, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  @CallSuper
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Bundle localBundle = new Bundle();
+    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent.getSerializableExtra("key_request_data");
+    localBundle.putSerializable("key_request_data", localVSBaseRequest);
+    if (localVSBaseRequest == null)
     {
-      localStGetUserNewestStoryRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserNewestStoryRsp;
+      QLog.e("VSNetworkHelper", 1, "onReceive. KEY_REQUEST_DATA is Null.");
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAioStoryFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+    if (paramFromServiceMsg != null) {
+      try
+      {
+        QLog.i("VSNetworkHelper", 2, "onReceive Info:CmdName:" + paramFromServiceMsg.getServiceCmd() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | seqNum:" + localVSBaseRequest.getCurrentSeq() + " | network cost:" + (System.currentTimeMillis() - paramIntent.getLongExtra("key_send_timestamp", 0L)));
+        localBundle.putParcelable("key_response_msg", paramFromServiceMsg);
+        localBundle.putLong("key_send_timestamp", System.currentTimeMillis());
+        notifyObserver(paramIntent, paramFromServiceMsg.getServiceCmd().hashCode(), paramFromServiceMsg.isSuccess(), localBundle, xgt.class);
+        return;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        QLog.e("VSNetworkHelper", 2, new Object[] { Integer.valueOf(1), paramFromServiceMsg + "onReceive error" });
+        notifyObserver(paramIntent, localVSBaseRequest.getCmdName().hashCode(), false, localBundle, xgt.class);
+        return;
       }
     }
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.e("VSNetworkHelper", 2, "onReceive Info:FromServiceMsg is null !! CmdName:null | TraceId:" + localVSBaseRequest.getTraceId() + " | seqNum:" + localVSBaseRequest.getCurrentSeq());
+    }
+    notifyObserver(paramIntent, localVSBaseRequest.getCmdName().hashCode(), false, localBundle, xgt.class);
   }
   
-  public byte[] getBusiBuf()
+  @CallSuper
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.a.toByteArray();
+    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramIntent.getSerializableExtra("key_request_data");
+    byte[] arrayOfByte2 = localVSBaseRequest.encode();
+    byte[] arrayOfByte1 = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      arrayOfByte1 = new byte[4];
+    }
+    QLog.i("VSNetworkHelper", 2, "onSend Info:CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | SeqNum:" + localVSBaseRequest.getCurrentSeq() + " | request encode size:" + arrayOfByte1.length);
+    paramIntent.putExtra("key_send_timestamp", System.currentTimeMillis());
+    paramPacket.setSSOCommand(localVSBaseRequest.getCmdName());
+    paramPacket.putSendData(bbma.a(arrayOfByte1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    a(localVSBaseRequest);
   }
 }
 

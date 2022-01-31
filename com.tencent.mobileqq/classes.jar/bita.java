@@ -1,32 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
-class bita
-  implements View.OnClickListener
+public class bita
 {
-  bita(bisz parambisz, bitb parambitb, String paramString) {}
+  public int a;
+  public MetaMaterial a;
+  public String a;
+  private boolean a;
+  public int b;
+  public String b;
+  public String c = "";
   
-  public void onClick(View paramView)
+  public bita()
   {
-    if (bisz.a(this.jdField_a_of_type_Bisz) != this.jdField_a_of_type_Bitb.getLayoutPosition()) {
-      bizc.a().f(this.jdField_a_of_type_JavaLangString);
-    }
-    if (bisz.a(this.jdField_a_of_type_Bisz) == -1)
-    {
-      bisz.a(this.jdField_a_of_type_Bisz).a(this.jdField_a_of_type_JavaLangString, ((bism)bisl.a.get(0)).jdField_a_of_type_JavaLangString, ((bism)bisl.a.get(0)).b);
-      bisz.a(this.jdField_a_of_type_Bisz).a(true, false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bisz.a();
-      bisz.a(this.jdField_a_of_type_Bisz, this.jdField_a_of_type_Bitb.getLayoutPosition());
-      ((bisk)bisz.a(this.jdField_a_of_type_Bisz).get(bisz.a(this.jdField_a_of_type_Bisz) - 1)).a(true);
-      this.jdField_a_of_type_Bitb.a(true);
-      return;
-      bisz.a(this.jdField_a_of_type_Bisz).a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,20 +1,9 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import java.util.List;
 
 public abstract interface askz
 {
-  public abstract aslm a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  public abstract boolean a(MessageRecord paramMessageRecord);
-  
-  public abstract boolean a(MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
+  public abstract void a(List<RecentBaseData> paramList);
 }
 
 

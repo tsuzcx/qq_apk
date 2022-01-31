@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class bapr
-  implements View.OnClickListener
+class bapr
+  extends bapo
 {
-  public bapr(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public void onClick(View paramView)
+  bapr(bapq parambapq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
+    super(parambapq.a);
   }
 }
 

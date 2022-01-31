@@ -1,21 +1,8 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 
 public class ahdj
-  implements BusinessObserver
 {
-  public ahdj(RedPacketManager paramRedPacketManager) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.a(paramBoolean, paramBundle);
-  }
+  public static final IRedPacket a = new ahdk();
 }
 
 

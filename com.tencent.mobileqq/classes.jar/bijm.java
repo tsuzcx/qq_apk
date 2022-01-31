@@ -1,16 +1,20 @@
-import android.graphics.SurfaceTexture;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public abstract interface bijm
+class bijm
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  private bijm(bijd parambijd) {}
   
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if ((bijd.a(this.a) != biwo.c) && (System.currentTimeMillis() - bijd.a(this.a) > 5000L))
+    {
+      bijd.a(this.a).a(196614, new Object[0]);
+      bijd.a(this.a, System.currentTimeMillis());
+      this.a.d(0);
+    }
+  }
 }
 
 

@@ -1,17 +1,31 @@
-import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import org.json.JSONObject;
 
-class bhsk
-  implements bhsn
+public class bhsk
+  extends bhsh
 {
-  bhsk(bhsj parambhsj) {}
-  
-  public void a(JSONObject paramJSONObject, Bundle paramBundle)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    paramJSONObject.put("recommend_on", paramBundle.getString("recommend_on"));
-    paramJSONObject.put("recommendPush_on", paramBundle.getString("recommendPush_on"));
-    paramJSONObject.put("recommendNotification_on", paramBundle.getString("recommendNotification_on"));
-    paramJSONObject.put("recommendChatCachePhoto_on", paramBundle.getString("recommendChatCachePhoto_on"));
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ("jumpNuanProfile".equals(paramString3))
+    {
+      bool1 = bool2;
+      if (!"Qzone".equals(paramString2)) {}
+    }
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
+      paramString1 = bgyw.a();
+      paramString1.a = this.a.mRuntime.a().getAccount();
+      bgyp.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
+      bool1 = true;
+      return bool1;
+    }
+    catch (Throwable paramJsBridgeListener) {}
+    return false;
   }
 }
 

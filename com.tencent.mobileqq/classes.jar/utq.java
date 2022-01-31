@@ -1,16 +1,27 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class utq
-  extends ssk
+  extends QQUIEventReceiver<utk, tce>
 {
-  public List<MomeriesYearNode> a;
-  public boolean a;
-  
-  public utq(utn paramutn, ErrorMessage paramErrorMessage)
+  public utq(utk paramutk)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    super(paramutk);
+  }
+  
+  public void a(@NonNull utk paramutk, @NonNull tce paramtce)
+  {
+    if (paramtce.a.isSuccess())
+    {
+      ved.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramtce.toString());
+      utk.a(paramutk, true);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tce.class;
   }
 }
 

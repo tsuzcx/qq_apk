@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae;
 
-import biim;
+import bijd;
 import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 public class AEPituCameraUnit$14
   implements Runnable
 {
-  public AEPituCameraUnit$14(biim parambiim) {}
+  public AEPituCameraUnit$14(bijd parambijd) {}
   
   public void run()
   {
-    if (biim.a(this.this$0) != null) {
-      biim.a(this.this$0).setVisibility(8);
+    if (bijd.a(this.this$0) != null) {
+      bijd.a(this.this$0).setVisibility(8);
     }
   }
 }

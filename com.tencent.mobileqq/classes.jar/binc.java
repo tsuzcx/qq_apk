@@ -1,21 +1,13 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
 
 class binc
-  implements CompoundButton.OnCheckedChangeListener
+  implements xez
 {
-  binc(bimz parambimz) {}
+  binc(bina parambina) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    paramCompoundButton = bimz.b(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
-      return;
-    }
+    bina.a(this.a).setVisibility(0);
   }
 }
 

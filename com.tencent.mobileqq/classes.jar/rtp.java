@@ -1,6 +1,8 @@
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+
 public abstract interface rtp
 {
-  public abstract void a(rtq paramrtq);
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
 }
 
 

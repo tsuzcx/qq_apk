@@ -1,19 +1,44 @@
-import android.graphics.Rect;
+import android.content.Context;
+import android.view.OrientationEventListener;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class avue
-  implements axic
+  extends OrientationEventListener
 {
-  public avue(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public avue(CameraCaptureView paramCameraCaptureView, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.v = paramInt;
+    if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
+      }
+      this.a.w = 90;
     }
-    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
+    if ((paramInt > 315) || (paramInt < 45)) {
+      this.a.w = 90;
+    }
+    for (;;)
+    {
+      if (this.a.g) {
+        this.a.u = this.a.w;
+      }
+      avtp.a = this.a.u;
+      return;
+      if ((paramInt > 45) && (paramInt < 135)) {
+        this.a.w = 180;
+      } else if ((paramInt > 135) && (paramInt < 225)) {
+        this.a.w = 270;
+      } else if ((paramInt > 225) && (paramInt < 315)) {
+        this.a.w = 0;
+      }
+    }
   }
 }
 

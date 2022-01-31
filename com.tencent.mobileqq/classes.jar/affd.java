@@ -1,18 +1,23 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class affd
-  implements MessageQueue.IdleHandler
+  extends osm
 {
   public affd(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public boolean queueIdle()
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
+    }
   }
 }
 

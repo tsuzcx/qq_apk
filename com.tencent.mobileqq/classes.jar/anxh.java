@@ -1,22 +1,59 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class anxh
-  implements View.OnClickListener
+  extends bbwt
 {
-  anxh(anxf paramanxf, VipIPSiteInfo paramVipIPSiteInfo, String paramString1, String paramString2) {}
+  anxh(anxg paramanxg) {}
   
-  public void onClick(View paramView)
+  public void onDone(bbwu parambbwu)
   {
-    paramView = new Intent(this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataVipIPSiteInfo.ipUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_enterclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    super.onDone(parambbwu);
+    anvx localanvx = this.a.a();
+    Bundle localBundle = parambbwu.a();
+    if (parambbwu.a() != 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = localBundle.getLong("vas_download_start");
+      localanvx.a(localBundle, parambbwu, bool, parambbwu.a, parambbwu.d, l1 - l2, 0);
+      return;
+    }
+  }
+  
+  public void onDoneFile(bbwu parambbwu)
+  {
+    Object localObject = parambbwu.a();
+    int i = ((Bundle)localObject).getInt(parambbwu.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambbwu);
+    }
+    if (parambbwu.a != 0)
+    {
+      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambbwu.a);
+      if (anvx.a(i)) {
+        anvx.a.a((EmoticonPackage)localObject, i, -1, parambbwu.a);
+      }
+      bbrx.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambbwu.a + "", "", "", "");
+    }
+    for (;;)
+    {
+      return;
+      anvx localanvx = this.a.a();
+      if (anvx.a(i)) {
+        anvx.a.a((EmoticonPackage)localObject, i, 0, 0);
+      }
+      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+      {
+        localanvx.b(parambbwu);
+        return;
+        if (i == 7) {
+          localanvx.a(parambbwu);
+        }
+      }
+    }
   }
 }
 

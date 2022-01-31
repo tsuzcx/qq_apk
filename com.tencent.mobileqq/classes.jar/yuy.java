@@ -1,6 +1,17 @@
-public abstract interface yuy
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+
+class yuy
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  yuy(yuw paramyuw, ViewGroup paramViewGroup) {}
+  
+  public void onSystemUiVisibilityChange(int paramInt)
+  {
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(3846);
+    }
+  }
 }
 
 

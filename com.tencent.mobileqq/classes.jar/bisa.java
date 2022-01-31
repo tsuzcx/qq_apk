@@ -1,28 +1,6 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
-import mqq.os.MqqHandler;
-
-public class bisa
-  implements biqq
+class bisa
 {
-  bisa(biry parambiry) {}
-  
-  public void a(MetaMaterial paramMetaMaterial)
-  {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
-  }
-  
-  public void a(MetaMaterial paramMetaMaterial, int paramInt)
-  {
-    biry.a(this.a).a(new biqv(paramMetaMaterial, 1, paramInt));
-  }
-  
-  public void b(MetaMaterial paramMetaMaterial)
-  {
-    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
-  }
+  private static biry a = new biry(null);
 }
 
 

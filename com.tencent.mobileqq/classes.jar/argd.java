@@ -1,76 +1,96 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.huayang.HuayangOpenHelper.1;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-class argd
-  implements Handler.Callback
+public class argd
 {
-  argd(argc paramargc) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static void a(Context paramContext, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    }
+    if (paramString == null) {}
+    ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
     do
     {
-      return false;
-      Object localObject = argc.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((arge)((Iterator)localObject).next()).a(paramMessage.arg1);
-      }
-      localObject = argc.a(this.a).iterator();
-      if (((Iterator)localObject).hasNext())
+      return;
+      while (!paramContext.hasNext())
       {
-        arge localarge = (arge)((Iterator)localObject).next();
-        if (paramMessage.arg1 == 0) {}
-        for (boolean bool = true;; bool = false)
+        do
         {
-          localarge.a(bool, (Throwable)paramMessage.obj);
-          break;
-        }
+          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+        } while ((paramContext == null) || (paramContext.size() == 0));
+        paramContext = paramContext.iterator();
       }
-      localObject = new Intent(arfw.a(argc.a(this.a).c));
-      if (paramMessage.arg1 == 0)
+      localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+    } while (!paramString.equals(localRunningAppProcessInfo.processName));
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangOpenHelper", 2, "杀死进程：" + paramString);
+    }
+    Process.killProcess(localRunningAppProcessInfo.pid);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HuayangOpenHelper", 2, String.format("appType = %s,openType = %s, fromId = %s, uri = %s ，action = %s,pkgName = %s", new Object[] { paramString1, paramString2, paramString4, paramString3, paramString5, paramString6 }));
+    }
+    argl.a(paramQQAppInterface.getApp(), paramString1);
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString6)))
+    {
+      if (!"slientDownload".equals(paramString5)) {
+        break label156;
+      }
+      argk.a("2587808");
+      paramString7 = IVPluginInfo.a(paramString7);
+      paramString4 = paramString7;
+      if (paramString7.size() == 0) {
+        paramString4 = IVPluginInfo.a();
+      }
+      if (!TextUtils.isEmpty(paramString1)) {
+        break label209;
+      }
+      paramString1 = "hy_sixgod";
+    }
+    label156:
+    label209:
+    for (;;)
+    {
+      ThreadManagerV2.executeOnSubThread(new HuayangOpenHelper.1(paramString1, arfu.a(paramQQAppInterface.getApp(), paramString6, paramString1), paramQQAppInterface, paramString3, paramString5, paramString4));
+      a(paramString2, paramString2);
+      return;
+      if (!"download".equals(paramString5)) {
+        break;
+      }
+      if (arfy.a(paramString6))
       {
-        if (arfw.a(argc.a(this.a).c)) {}
-        for (int i = 9;; i = 8)
-        {
-          ((Intent)localObject).putExtra("key_state", i);
-          argc.a(this.a).sendBroadcast((Intent)localObject);
-          if (argj.a.get(argc.a(this.a)) == null) {
-            break;
-          }
-          argi.b(String.valueOf(((argj)argj.a.get(argc.a(this.a))).f));
-          return false;
-        }
+        argk.a("2691701");
+        break;
       }
-      if (arfw.a(argc.a(this.a).c)) {
-        argi.a("2691708");
-      }
-      for (;;)
+      if (arfy.b(paramString6))
       {
-        arfr.a((Throwable)paramMessage.obj);
-        ((Intent)localObject).putExtra("key_state", 7);
-        argc.a(this.a).sendBroadcast((Intent)localObject);
-        return false;
-        if (arfw.b(argc.a(this.a).c)) {
-          argi.a("2597726");
-        } else if (argj.a.get(argc.a(this.a)) != null) {
-          argi.b(String.valueOf(((argj)argj.a.get(argc.a(this.a))).e));
-        }
+        argk.a("2597718");
+        break;
       }
-      paramMessage = new Intent(arfw.a(argc.a(this.a).c));
-      paramMessage.putExtra("key_state", 6);
-      argc.a(this.a).sendBroadcast(paramMessage);
-    } while (argj.a.get(argc.a(this.a)) == null);
-    argi.b(String.valueOf(((argj)argj.a.get(argc.a(this.a))).d));
-    return false;
+      argl.b(paramQQAppInterface.getApp(), paramString1);
+      break;
+    }
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "HyProxy";
+    }
+    vei.a("huayang", "openHy", 0, 0, new String[] { str, paramString2 });
   }
 }
 

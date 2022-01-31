@@ -1,44 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class tpy
-  extends trj
+class tpy
+  implements URLDrawable.URLDrawableListener
 {
-  private String a;
+  tpy(tpx paramtpx) {}
   
-  public tpy()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    a(false, true);
+    tpx.c(this.a, false);
   }
   
-  public void a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    ayvv localayvv = localQQAppInterface.a();
-    aywa localaywa = new aywa();
-    localaywa.jdField_a_of_type_Auoo = new tpz(this);
-    localaywa.i = this.a;
-    localaywa.jdField_a_of_type_Boolean = true;
-    localaywa.jdField_b_of_type_Int = 196610;
-    localaywa.jdField_b_of_type_JavaLangString = localQQAppInterface.c();
-    localaywa.c = "";
-    localaywa.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localayvv.a(localaywa);
+    tpx.b(this.a, false);
   }
   
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
-      this.a = ((String)a("UploadImageJob_in_image_file_path"));
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public boolean a()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return !TextUtils.isEmpty(this.a);
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    tpx.a(this.a, true);
   }
 }
 

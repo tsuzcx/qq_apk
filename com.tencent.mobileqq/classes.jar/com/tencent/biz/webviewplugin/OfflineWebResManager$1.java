@@ -2,12 +2,12 @@ package com.tencent.biz.webviewplugin;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import xll;
+import xli;
 
 public class OfflineWebResManager$1
   implements Runnable
 {
-  public OfflineWebResManager$1(xll paramxll, SharedPreferences paramSharedPreferences) {}
+  public OfflineWebResManager$1(xli paramxli, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {

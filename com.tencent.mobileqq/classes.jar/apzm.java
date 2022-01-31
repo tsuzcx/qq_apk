@@ -1,23 +1,46 @@
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
 
-public class apzm
-  extends apzh
+class apzm
+  extends apzn
 {
-  public apzm(String paramString, BinaryMessenger paramBinaryMessenger)
+  apzm(apzl paramapzl) {}
+  
+  protected void a(String paramString, MethodChannel.Result paramResult)
   {
-    super(paramString, paramBinaryMessenger);
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordPageView: %s", new Object[] { paramString }));
+    }
+    aqaq.b(paramString);
+    paramResult.success(null);
   }
   
-  public MethodChannel.MethodCallHandler a()
+  protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
-    return new apzn(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("reportPageLoadTime: pathPath: %s, loadTime: %s", new Object[] { paramString, paramInteger }));
+    }
+    aqaq.a(paramString, paramInteger.intValue());
+    paramResult.success(null);
   }
   
-  public MethodCodec a()
+  protected void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult)
   {
-    return apzo.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("flutter.APMChannel", 2, String.format("recordFPS: pathPath: %s, fps: %s, dropRate: %s", new Object[] { paramString, paramInteger, paramDouble }));
+    }
+    aqaq.a(paramString, paramInteger.intValue(), paramDouble.doubleValue());
+    paramResult.success(null);
+  }
+  
+  protected void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult)
+  {
+    QLog.e("flutter.APMChannel", 1, String.format("reportException, msg: %s, stack: %s", new Object[] { paramString3, paramString4 }));
+    CrashReport.postException(paramInteger.intValue(), paramString2, paramString3, paramString4, paramHashMap);
+    aqaq.a(paramString1);
+    paramResult.success(null);
   }
 }
 

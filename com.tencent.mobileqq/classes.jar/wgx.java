@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-class wgx
+public class wgx
   implements DialogInterface.OnClickListener
 {
-  wgx(wgw paramwgw) {}
+  public wgx(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((akfm)this.a.a.app.a(10)).a(true);
-    axqw.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
+    QRLoginMgrActivity.a(this.a, true, 0L);
+    axqy.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,28 +1,21 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bgse
-  implements ServiceConnection
+  implements DialogInterface.OnDismissListener
 {
-  bgse(bgsd parambgsd) {}
+  public bgse(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_Bgrt = bgru.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Bgrt != null)
-    {
-      paramComponentName = new QQIndividualityRemoteProxy.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
+    if (this.a.a) {
+      QQIndividualityBridgeActivity.b(this.a);
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.jdField_a_of_type_Bgrt = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
   }
 }
 

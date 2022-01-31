@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ class PreloadingFragment$6$2
     QLog.e("PreloadingFragment", 1, "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str);
     try
     {
-      bcpw.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
+      bcql.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
       return;
     }
     catch (Throwable localThrowable)

@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-
-class afje
-  implements View.OnLongClickListener
+public abstract interface afje
 {
-  afje(afjb paramafjb, afjh paramafjh) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Afjb.a != null)
-    {
-      int i = this.jdField_a_of_type_Afjh.getAdapterPosition();
-      return this.jdField_a_of_type_Afjb.a.a(paramView, this.jdField_a_of_type_Afjh, i);
-    }
-    return false;
-  }
+  public abstract void a();
 }
 
 

@@ -1,13 +1,6 @@
-public class bjgw<F, S>
+public abstract class bjgw
 {
-  public F a;
-  public S b;
-  
-  public bjgw(F paramF, S paramS)
-  {
-    this.a = paramF;
-    this.b = paramS;
-  }
+  abstract void a(int paramInt, bjgx parambjgx);
 }
 
 

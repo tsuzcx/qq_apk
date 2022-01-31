@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-public final class smj
-  implements Parcelable.Creator<WSRedDotPushMsg>
+public class smj
 {
-  public WSRedDotPushMsg a(Parcel paramParcel)
+  public static smh a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    return new WSRedDotPushMsg(paramParcel);
-  }
-  
-  public WSRedDotPushMsg[] a(int paramInt)
-  {
-    return new WSRedDotPushMsg[paramInt];
+    if (paramWSRedDotPushMsg == null) {}
+    do
+    {
+      return null;
+      if (paramWSRedDotPushMsg.mStrategyInfo != null) {}
+      for (int i = paramWSRedDotPushMsg.mStrategyInfo.getType(); (paramInt == 2) && (i == 1); i = 0) {
+        return new smk(paramWSRedDotPushMsg);
+      }
+      if (i == 2) {
+        return new sml(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 3) {
+        return new smm(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 4) {
+        return new smi(paramWSRedDotPushMsg, paramInt);
+      }
+      if (paramInt == 2) {
+        return new smk(paramWSRedDotPushMsg);
+      }
+    } while (paramInt != 6);
+    return new sml(paramWSRedDotPushMsg, paramInt, paramIntent);
   }
 }
 

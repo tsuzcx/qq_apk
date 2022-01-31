@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import avsl;
+import avsn;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<FilterCategory> CREATOR = new avsl();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new avsn();
   public int a;
   public String a;
   public List<FilterCategoryItem> a;

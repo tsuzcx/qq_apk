@@ -3,30 +3,30 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import android.widget.ImageView;
 import com.tencent.av.app.VideoAppInterface;
-import ldw;
-import mgv;
-import mgw;
+import ldr;
+import mgq;
+import mgr;
 
 public class MultiVideoMembersListviewAvtivity$ListViewBaseAdapter$1
   implements Runnable
 {
-  public MultiVideoMembersListviewAvtivity$ListViewBaseAdapter$1(mgv parammgv, mgw parammgw, ldw paramldw) {}
+  public MultiVideoMembersListviewAvtivity$ListViewBaseAdapter$1(mgq parammgq, mgr parammgr, ldr paramldr) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Mgw.jdField_a_of_type_Long == this.jdField_a_of_type_Ldw.jdField_a_of_type_Long) && (this.jdField_a_of_type_Ldw.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    if ((this.jdField_a_of_type_Mgr.jdField_a_of_type_Long == this.jdField_a_of_type_Ldr.jdField_a_of_type_Long) && (this.jdField_a_of_type_Ldr.jdField_a_of_type_AndroidGraphicsBitmap == null))
     {
-      this.jdField_a_of_type_Ldw.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Mgv.a(String.valueOf(this.jdField_a_of_type_Ldw.jdField_a_of_type_Long));
-      if (this.jdField_a_of_type_Ldw.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_Ldr.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Mgq.a(String.valueOf(this.jdField_a_of_type_Ldr.jdField_a_of_type_Long));
+      if (this.jdField_a_of_type_Ldr.jdField_a_of_type_AndroidGraphicsBitmap != null) {
         break label104;
       }
-      if (this.jdField_a_of_type_Mgv.a.a != null) {
-        this.jdField_a_of_type_Mgv.a.a.a().postDelayed(new MultiVideoMembersListviewAvtivity.ListViewBaseAdapter.1.1(this), 1000L);
+      if (this.jdField_a_of_type_Mgq.a.a != null) {
+        this.jdField_a_of_type_Mgq.a.a.a().postDelayed(new MultiVideoMembersListviewAvtivity.ListViewBaseAdapter.1.1(this), 1000L);
       }
     }
     return;
     label104:
-    this.jdField_a_of_type_Mgw.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Ldw.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Mgr.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Ldr.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

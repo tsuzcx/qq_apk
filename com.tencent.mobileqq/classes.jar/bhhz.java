@@ -1,68 +1,36 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import cooperation.qzone.panorama.widget.PanoramaGuideAnimate;
 
-public abstract class bhhz
-  extends Binder
-  implements bhhy
+public class bhhz
+  extends Handler
 {
-  public bhhz()
-  {
-    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-  }
+  public bhhz(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
   
-  public static bhhy a(IBinder paramIBinder)
+  @TargetApi(11)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bhhy))) {
-      return (bhhy)localIInterface;
-    }
-    return new bhia(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a(paramParcel1.readFloat());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      b();
-      paramParcel2.writeNoException();
-      return true;
     }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    do
+    {
+      return;
+      PanoramaGuideAnimate.a(this.a).setRotationY(PanoramaGuideAnimate.a(this.a));
+      PanoramaGuideAnimate.a(this.a).setTranslationX(PanoramaGuideAnimate.b(this.a));
+      return;
+      if (PanoramaGuideAnimate.c(this.a) > 0.0F) {
+        break;
+      }
+    } while (PanoramaGuideAnimate.a(this.a) == null);
+    PanoramaGuideAnimate.a(this.a).a();
+    return;
+    PanoramaGuideAnimate.a(this.a, PanoramaGuideAnimate.c(this.a) - 0.05F);
+    this.a.setAlpha(PanoramaGuideAnimate.c(this.a));
+    PanoramaGuideAnimate.a(this.a).sendEmptyMessage(292);
   }
 }
 

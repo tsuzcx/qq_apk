@@ -1,6 +1,17 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
+
 public class atbw
+  extends AccountObserver
 {
-  public static boolean a;
+  atbw(atbv paramatbv) {}
+  
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  {
+    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
+  }
 }
 
 

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
 class aqrb
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  aqrb(aqqw paramaqqw) {}
+  aqrb(aqqy paramaqqy) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    aqqw.d(this.a);
-    this.a.a(true);
+    super.onAnimationEnd(paramAnimator);
+    aqqy.a(this.a).sendEmptyMessage(2);
   }
 }
 

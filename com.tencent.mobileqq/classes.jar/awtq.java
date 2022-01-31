@@ -1,15 +1,25 @@
-import java.util.List;
+import java.util.Comparator;
 
-class awtq
+final class awtq
+  implements Comparator<awoe>
 {
-  String jdField_a_of_type_JavaLangString;
-  List<awoc> jdField_a_of_type_JavaUtilList;
-  
-  public awtq(String paramString, List<awoc> paramList)
+  public int a(awoe paramawoe1, awoe paramawoe2)
   {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    int i;
+    if (paramawoe2.a() == null) {
+      i = -1;
+    }
+    int j;
+    do
+    {
+      return i;
+      if (paramawoe1.a() == null) {
+        return 1;
+      }
+      j = Integer.signum(paramawoe2.a().c - paramawoe1.a().c);
+      i = j;
+    } while (j != 0);
+    return awtp.a(paramawoe1, paramawoe2);
   }
 }
 

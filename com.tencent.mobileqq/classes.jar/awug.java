@@ -2,16 +2,16 @@ import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.List;
 
 public class awug
-  extends awur
+  extends awut
 {
-  public awug(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
+  public awug(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
   {
-    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
+    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
   }
   
-  public awof a(List<awog> paramList, String paramString)
+  public awoh a(List<awoi> paramList, String paramString)
   {
-    return new bgqe(paramList, paramString);
+    return new awma(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

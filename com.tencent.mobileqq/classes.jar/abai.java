@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
+import android.text.InputFilter;
+import android.text.Spanned;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class abai
-  implements DialogInterface.OnClickListener
+public class abai
+  implements InputFilter
 {
-  abai(abag paramabag) {}
+  public abai(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.a.a.a.sendEmptyMessage(259);
-    paramDialogInterface.dismiss();
+    if (paramCharSequence.toString().contains("\n")) {
+      return paramCharSequence.toString().replace("\n", "");
+    }
+    return null;
   }
 }
 

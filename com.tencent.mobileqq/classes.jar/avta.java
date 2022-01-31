@@ -1,21 +1,20 @@
+import android.animation.Animator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
 import android.view.View;
+import android.view.animation.Animation;
 
-final class avta
-  implements ValueAnimator.AnimatorUpdateListener
+public class avta
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
-  
-  avta(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new avtc(paramInt1, paramView));
+    return localValueAnimator;
+  }
+  
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  {
+    return new bbky(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new avtb(paramView));
   }
 }
 

@@ -1,11 +1,15 @@
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class adpr
-  extends actr
+class adpr
+  implements bcwm
 {
-  TextView b;
+  adpr(adpq paramadpq, ChatMessage paramChatMessage, Context paramContext) {}
   
-  adpr(adpq paramadpq) {}
+  public void a(int paramInt)
+  {
+    apug.a(this.jdField_a_of_type_Adpq.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adwh;
-import bbdj;
+import adwf;
+import bbdx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ public class PokeItemAnimationManager$1
       if (QLog.isColorLevel()) {
         QLog.d("LzmaUtils", 2, "inFileDir:" + this.jdField_a_of_type_JavaLangString + " | outFileDir:" + this.b);
       }
-      bbdj.a(this.jdField_a_of_type_JavaLangString, this.b, false);
+      bbdx.a(this.jdField_a_of_type_JavaLangString, this.b, false);
     }
     catch (IOException localIOException)
     {
@@ -26,7 +26,7 @@ public class PokeItemAnimationManager$1
         }
       }
     }
-    adwh.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
+    adwf.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

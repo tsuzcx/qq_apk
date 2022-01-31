@@ -1,6 +1,6 @@
 public abstract interface oxl
 {
-  public abstract void a(long paramLong);
+  public abstract void a(String paramString, oxm paramoxm);
 }
 
 

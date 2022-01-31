@@ -1,32 +1,18 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-class ahjs
-  implements WtTicketPromise
+public abstract interface ahjs
 {
-  ahjs(ahjm paramahjm, ahjt paramahjt) {}
+  public abstract int a();
   
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
-    {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Ahjt.a(paramTicket);
-      return;
-    }
-    this.jdField_a_of_type_Ahjm.c("get skey is null");
-  }
+  public abstract void a(int paramInt);
   
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Ahjm.c("get skey failed");
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Ahjm.c("get skey time out");
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

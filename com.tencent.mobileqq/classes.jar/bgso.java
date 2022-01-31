@@ -1,13 +1,8 @@
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Bundle;
 
-public class bgso
-  implements EIPCResultCallback
+public abstract interface bgso
 {
-  public bgso(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public abstract boolean a(int paramInt, Bundle paramBundle);
 }
 
 

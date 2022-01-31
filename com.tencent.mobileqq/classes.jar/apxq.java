@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class apxq
-  implements bcvx
+  implements bcwm
 {
   public apxq(QfileEditBottomBar paramQfileEditBottomBar) {}
   

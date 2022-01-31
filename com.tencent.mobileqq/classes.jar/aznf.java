@@ -1,11 +1,34 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.util.SparseArray;
 import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class aznf
+public class aznf
+  extends akht
 {
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
+  public aznf(TroopAioKeywordTipManager.2 param2) {}
   
-  public void a(String paramString, Integer paramInteger) {}
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  {
+    SparseArray localSparseArray;
+    if (paramBoolean)
+    {
+      localSparseArray = this.a.this$0.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
+      }
+    }
+  }
 }
 
 

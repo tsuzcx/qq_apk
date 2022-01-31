@@ -1,8 +1,16 @@
-public abstract interface pqs
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
+class pqs
+  implements bfsx
 {
-  public abstract void a(Object paramObject);
+  pqs(pqq parampqq) {}
   
-  public abstract void a(prb paramprb);
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  {
+    pqq.a(this.a, (pau)this.a.a, paramInt, paramArrayList, paramObject);
+  }
 }
 
 

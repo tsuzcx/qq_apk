@@ -1,31 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-public class ult
-  extends QQUIEventReceiver<IEventReceiver, tkx>
+class ult
+  extends tph
 {
-  public ult(@NonNull IEventReceiver paramIEventReceiver)
+  ult(uls paramuls) {}
+  
+  public void a()
   {
-    super(paramIEventReceiver);
+    super.a();
+    uls.a(this.a).jdField_a_of_type_Tpb = null;
   }
   
-  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull tkx paramtkx)
+  public void a(int paramInt)
   {
-    if (paramtkx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      bcpw.a(tsu.a(), 2, ajyc.a(2131711032), 0).a();
-      vel.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramtkx.jdField_a_of_type_Int), "5" });
-      return;
-    }
-    bcpw.a(tsu.a(), 1, ajyc.a(2131711027), 0).a();
-    vel.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkx.class;
+    super.a(paramInt);
+    vei.a("share_story", "day_suc", 0, paramInt, new String[] { uls.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

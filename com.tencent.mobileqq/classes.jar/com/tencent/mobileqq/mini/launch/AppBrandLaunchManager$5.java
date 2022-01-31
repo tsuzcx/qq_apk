@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.launch;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ class AppBrandLaunchManager$5
     }
     for (;;)
     {
-      bcpw.a(AppBrandLaunchManager.access$100(this.this$0), ajyc.a(2131700592), 2000).a();
+      bcql.a(AppBrandLaunchManager.access$100(this.this$0), ajya.a(2131700603), 2000).a();
       return;
       QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, Appid 为空" + this.val$appConfig.config.toString() + " Activity=" + this.val$activity);
     }

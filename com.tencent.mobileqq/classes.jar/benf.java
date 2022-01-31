@@ -1,36 +1,75 @@
-import com.tencent.qqmini.sdk.core.widget.WebViewProgressBar;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-public class benf
+class benf
+  extends BaseAdapter
 {
-  private byte jdField_a_of_type_Byte;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  protected WebViewProgressBar a;
-  private int b;
+  benf(bene parambene) {}
   
-  public byte a()
+  public int getCount()
   {
-    return this.jdField_a_of_type_Byte;
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
   }
   
-  public float a()
+  public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_Float;
+    return null;
   }
   
-  public int a()
+  public long getItemId(int paramInt)
   {
-    return this.b;
+    return 0L;
   }
   
-  public void a(int paramInt)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(WebViewProgressBar paramWebViewProgressBar)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar = paramWebViewProgressBar;
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
+      paramView = new benm(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131368381));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (benm)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new benl(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+        break label212;
+      }
+      paramView.a.setBackgroundResource(2130840757);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label212:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130840758);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130840756);
+      }
+    }
   }
 }
 

@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
 
-class bdfw
-  implements INetEventHandler
+public class bdfw
+  implements DialogInterface.OnClickListener
 {
-  bdfw(bdfv parambdfv) {}
+  public bdfw(BaseJsCallBack paramBaseJsCallBack) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    int i = nam.a();
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).a(i);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

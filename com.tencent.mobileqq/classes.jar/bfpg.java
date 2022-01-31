@@ -1,13 +1,22 @@
-import android.content.Context;
-import android.widget.AdapterView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bfpg
+class bfpg
+  implements View.OnClickListener
 {
-  public abstract AdapterView a(Context paramContext, int paramInt);
+  bfpg(bfpc parambfpc) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    if (bfpc.a(this.a) != null) {
+      bfpc.a(this.a).onDismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpg
  * JD-Core Version:    0.7.0.1
  */

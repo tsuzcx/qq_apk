@@ -1,23 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class atjo
-  implements View.OnTouchListener
+  implements bfph
 {
-  public atjo(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public atjo(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bfpc parambfpc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      return false;
-      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
+      if (this.jdField_a_of_type_Bfpc != null) {
+        this.jdField_a_of_type_Bfpc.dismiss();
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      continue;
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
     }
   }
 }

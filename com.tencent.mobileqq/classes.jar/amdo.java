@@ -1,47 +1,46 @@
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
 public class amdo
-  implements bfoq
+  implements View.OnClickListener
 {
-  public amdo(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, bfol parambfol) {}
+  public amdo(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
     {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
     }
-    for (;;)
+    if (this.a.jdField_a_of_type_Int == 0) {
+      axqy.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
+    }
+    while ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
     {
-      this.jdField_a_of_type_Bfol.e();
+      this.a.finish();
       return;
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693459, 1);
-        continue;
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-        {
-          paramView = new Intent();
-          paramView.setAction("android.intent.action.SENDTO");
-          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693459, 1);
-        }
+      if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
+        axqy.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
       }
     }
+    if (this.a.c)
+    {
+      amev.a(this.a.app.getCurrentAccountUin(), -1);
+      this.a.c = false;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId)))
+    {
+      this.a.finish();
+      return;
+    }
+    BusinessCardEditActivity.a(this.a, false, true, true);
   }
 }
 

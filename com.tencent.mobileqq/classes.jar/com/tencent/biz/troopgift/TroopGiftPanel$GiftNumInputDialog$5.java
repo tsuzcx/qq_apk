@@ -1,11 +1,11 @@
 package com.tencent.biz.troopgift;
 
-import xde;
+import xdb;
 
 public class TroopGiftPanel$GiftNumInputDialog$5
   implements Runnable
 {
-  public TroopGiftPanel$GiftNumInputDialog$5(xde paramxde) {}
+  public TroopGiftPanel$GiftNumInputDialog$5(xdb paramxdb) {}
   
   public void run()
   {

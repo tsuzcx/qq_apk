@@ -1,56 +1,20 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 class neh
-  extends URLDrawableDownListener.Adapter
+  implements View.OnClickListener
 {
-  neh(ned paramned) {}
+  neh(nea paramnea, nem paramnem) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (!this.a.f) {
-      this.a.l();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      this.a.k();
-      if ((paramView instanceof ImageView))
-      {
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+    this.jdField_a_of_type_Nem.jdField_a_of_type_AndroidWidgetTextView.setText(2131695585);
+    this.jdField_a_of_type_Nem.b.setVisibility(4);
+    this.jdField_a_of_type_Nem.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    nfe.a(this.jdField_a_of_type_Nea.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Nea.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Nea.jdField_a_of_type_AndroidAppActivity).a());
   }
 }
 

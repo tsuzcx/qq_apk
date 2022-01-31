@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import actn;
-import ajsf;
-import akav;
+import actj;
+import ajsd;
+import akat;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,8 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbci;
-import bbdr;
+import bbcw;
+import bbef;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -28,25 +28,25 @@ import java.util.LinkedList;
 import java.util.List;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nut;
-import onk;
+import nuq;
+import onh;
 import org.json.JSONObject;
-import ose;
-import osf;
-import osg;
-import pbj;
-import rpb;
-import sgj;
+import osb;
+import osc;
+import osd;
+import pbg;
+import roy;
+import sgg;
 
 public class KandianSubscribeManager
   implements Manager
 {
   public static final String a;
-  private akav jdField_a_of_type_Akav = new ose(this);
+  private akat jdField_a_of_type_Akat = new osb(this);
   private KandianSubscribeManager.MsgBoxSetTopInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<osg> jdField_a_of_type_JavaUtilList = new LinkedList();
-  pbj jdField_a_of_type_Pbj = new osf(this);
+  private List<osd> jdField_a_of_type_JavaUtilList = new LinkedList();
+  pbg jdField_a_of_type_Pbg = new osc(this);
   
   static
   {
@@ -56,7 +56,7 @@ public class KandianSubscribeManager
   public KandianSubscribeManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo = ((KandianSubscribeManager.MsgBoxSetTopInfo)onk.a(paramQQAppInterface, "kandian_subscribe_settop_info_key", true));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo = ((KandianSubscribeManager.MsgBoxSetTopInfo)onh.a(paramQQAppInterface, "kandian_subscribe_settop_info_key", true));
     QLog.d(jdField_a_of_type_JavaLangString, 1, "read settop info from sp. " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo);
   }
   
@@ -67,7 +67,7 @@ public class KandianSubscribeManager
     for (;;)
     {
       return paramDrawable;
-      Object localObject2 = ((QQMessageFacade)localObject1).b(ajsf.aQ, 1008);
+      Object localObject2 = ((QQMessageFacade)localObject1).b(ajsd.aQ, 1008);
       if ((localObject2 != null) && (!((MessageRecord)localObject2).isread) && (((MessageRecord)localObject2).msgtype == -2011)) {
         try
         {
@@ -82,17 +82,17 @@ public class KandianSubscribeManager
             if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
               paramQQAppInterface = paramQQAppInterface.a(1, "kd_dt_" + (String)localObject2, (byte)3, 0, 100, true);
-              Object localObject3 = (rpb)bbci.a(paramQQAppInterface);
+              Object localObject3 = (roy)bbcw.a(paramQQAppInterface);
               if (localObject3 != null)
               {
                 QLog.d(jdField_a_of_type_JavaLangString, 2, "getMergeIcon From cache ! key : " + paramQQAppInterface + ", tipUin : " + (String)localObject2);
                 return localObject3;
               }
-              localObject3 = bbdr.a(paramDrawable);
+              localObject3 = bbef.a(paramDrawable);
               if (localObject3 != null)
               {
-                localObject1 = new rpb((Bitmap)localObject3, actn.a(50.0F, (Resources)localObject1), (Resources)localObject1, (String)localObject2, 1);
-                bbci.a(paramQQAppInterface, (Sizeable)localObject1);
+                localObject1 = new roy((Bitmap)localObject3, actj.a(50.0F, (Resources)localObject1), (Resources)localObject1, (String)localObject2, 1);
+                bbcw.a(paramQQAppInterface, (Sizeable)localObject1);
                 return localObject1;
               }
             }
@@ -116,17 +116,17 @@ public class KandianSubscribeManager
   
   public static KandianRedDotInfo a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
     if (localQQAppInterface == null) {
       return null;
     }
-    MessageRecord localMessageRecord = localQQAppInterface.a().b(ajsf.aQ, 1008);
+    MessageRecord localMessageRecord = localQQAppInterface.a().b(ajsd.aQ, 1008);
     if (localMessageRecord == null) {
       return null;
     }
     if ((localMessageRecord instanceof MessageForStructing))
     {
-      onk.a(ajsf.aQ, localQQAppInterface);
+      onh.a(ajsd.aQ, localQQAppInterface);
       return KandianRedDotInfo.createRedDotFromMessageRecord(localMessageRecord, "kandian_dt_red_dot_info");
     }
     return null;
@@ -142,7 +142,7 @@ public class KandianSubscribeManager
     if (paramContext == null) {
       return;
     }
-    Intent localIntent = nut.b(paramContext, paramInt2, 70);
+    Intent localIntent = nuq.b(paramContext, paramInt2, 70);
     KandianRedDotInfo localKandianRedDotInfo = a();
     if (localKandianRedDotInfo != null) {
       localIntent.putExtra("kandian_feeds_red_pnt_info", localKandianRedDotInfo);
@@ -163,8 +163,8 @@ public class KandianSubscribeManager
   {
     paramMessageRecord.issend = 1;
     paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = ajsf.aQ;
-    paramMessageRecord.senderuin = ajsf.aQ;
+    paramMessageRecord.frienduin = ajsd.aQ;
+    paramMessageRecord.senderuin = ajsd.aQ;
     paramMessageRecord.istroop = 1008;
     paramMessageRecord.msg = paramString1;
     paramMessageRecord.time = paramLong;
@@ -173,9 +173,9 @@ public class KandianSubscribeManager
     paramMessageRecord.createMessageUniseq();
   }
   
-  public akav a()
+  public akat a()
   {
-    return this.jdField_a_of_type_Akav;
+    return this.jdField_a_of_type_Akat;
   }
   
   public void a()
@@ -197,7 +197,7 @@ public class KandianSubscribeManager
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo != null) {
         localMsgBoxSetTopInfo.lastSetTopTimeMillis = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo.lastSetTopTimeMillis;
       }
-      onk.a("kandian_subscribe_settop_info_key", localMsgBoxSetTopInfo, true);
+      onh.a("kandian_subscribe_settop_info_key", localMsgBoxSetTopInfo, true);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianSubscribeManager$MsgBoxSetTopInfo = localMsgBoxSetTopInfo;
       QLog.d(jdField_a_of_type_JavaLangString, 1, "update settop info : " + localMsgBoxSetTopInfo);
       return;
@@ -209,7 +209,7 @@ public class KandianSubscribeManager
     if (paramArticleInfo == null) {
       return;
     }
-    String str = sgj.a(paramArticleInfo, this.jdField_a_of_type_Pbj);
+    String str = sgg.a(paramArticleInfo, this.jdField_a_of_type_Pbg);
     if (paramArticleInfo.msgBoxBriefPreFixType == 2) {}
     for (paramArticleInfo = paramArticleInfo.msgBoxBriefPreFix; (TextUtils.isEmpty(str)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null); paramArticleInfo = null)
     {
@@ -219,22 +219,22 @@ public class KandianSubscribeManager
     ThreadManager.post(new KandianSubscribeManager.4(this, str, paramLong, paramArticleInfo), 10, null, false);
   }
   
-  public void a(@NonNull osg paramosg)
+  public void a(@NonNull osd paramosd)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramosg)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramosg);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramosd)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramosd);
     }
   }
   
   public boolean a()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(ajsf.aQ, 1008);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(ajsd.aQ, 1008);
     return ((localMessageRecord instanceof MessageForStructing)) && (!localMessageRecord.isread);
   }
   
-  public void b(osg paramosg)
+  public void b(osd paramosd)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramosg);
+    this.jdField_a_of_type_JavaUtilList.remove(paramosd);
   }
   
   public void onDestroy() {}

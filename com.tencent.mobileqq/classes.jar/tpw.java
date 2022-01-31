@@ -1,63 +1,34 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class tpw
-  extends tpu
+class tpw
+  implements auoq
 {
-  private final String c;
+  tpw(tpv paramtpv) {}
   
-  private boolean a(ukn paramukn)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramukn.a(), paramukn.b(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawColor(-1);
-      localCanvas.drawBitmap(paramukn.a(), 0.0F, 0.0F, null);
-      bbdr.a(bbdr.a(localBitmap, 100), new File(this.c));
-      bool = true;
-    }
-    catch (IOException paramukn)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramukn, new Object[0]);
-      return false;
-    }
-    catch (OutOfMemoryError paramukn)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramukn, new Object[0]);
-    }
-    return bool;
-    return false;
+    return null;
   }
   
-  protected void a(Error paramError)
+  public void a(auor paramauor) {}
+  
+  public void b(auor paramauor)
   {
+    if ((paramauor.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramauor.jdField_b_of_type_JavaLangString)))
+    {
+      this.a.a("UploadImageJob_out_image_url", paramauor.jdField_b_of_type_JavaLangString);
+      tpv.a(this.a, true);
+      return;
+    }
+    paramauor = new ErrorMessage(paramauor.jdField_b_of_type_Int, paramauor.a);
     if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramauor, new Object[0]);
     }
-    b(false);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
-    }
-  }
-  
-  protected void a(ukn paramukn)
-  {
-    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramukn), 8, null, true);
+    tpv.b(this.a, false);
   }
 }
 

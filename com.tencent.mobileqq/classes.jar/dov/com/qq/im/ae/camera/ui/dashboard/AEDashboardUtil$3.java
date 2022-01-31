@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bink;
+import biob;
 import java.util.List;
 
 public final class AEDashboardUtil$3
   implements Runnable
 {
-  public AEDashboardUtil$3(bink parambink, List paramList1, List paramList2) {}
+  public AEDashboardUtil$3(biob parambiob, List paramList1, List paramList2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bink.a(this.jdField_a_of_type_JavaUtilList, this.b);
+    this.jdField_a_of_type_Biob.a(this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

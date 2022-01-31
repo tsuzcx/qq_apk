@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.persistence.fts;
 
-import aukm;
+import auko;
 
 public abstract class FTSOptSync
-  extends aukm
+  extends auko
 {
   public String mContent;
   public long mOId;

@@ -1,40 +1,12 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class bdud
-  implements bfoq
+class bdud
 {
-  public bdud(QidianProfileCardActivity paramQidianProfileCardActivity, bfol parambfol, URLDrawable paramURLDrawable, String paramString) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (paramView == null) {
-      this.jdField_a_of_type_Bfol.dismiss();
-    }
-    do
-    {
-      return;
-      paramView = this.jdField_a_of_type_Bfol.a(paramInt);
-      if (TextUtils.isEmpty(paramView))
-      {
-        this.jdField_a_of_type_Bfol.dismiss();
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693383)))
-      {
-        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693393)))
-      {
-        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131698241)));
-    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
-  }
+  bdud(bduc parambduc) {}
 }
 
 

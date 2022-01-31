@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
+import java.util.List;
 
-public class aodw
+public abstract class aodw
 {
-  public MessageRecord a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public abstract int a();
   
-  public aodw(MessageRecord paramMessageRecord)
+  public abstract List<aodt> a(boolean paramBoolean);
+  
+  public abstract void a();
+  
+  public void a(aodx paramaodx, aodt paramaodt, boolean paramBoolean)
   {
-    this.a = paramMessageRecord;
-    this.b = (paramMessageRecord instanceof MessageForPic);
+    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramaodx, paramaodt), 64, null, true);
   }
+  
+  public abstract boolean a();
 }
 
 

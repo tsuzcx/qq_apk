@@ -1,32 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class abbg
-  implements asko<List<EmoticonPackage>>
+  implements View.OnClickListener
 {
-  public abbg(EmosmActivity paramEmosmActivity) {}
+  public abbg(FontSettingActivity paramFontSettingActivity) {}
   
-  public void a(List<EmoticonPackage> paramList)
+  public void onClick(View paramView)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      this.a.g.setVisibility(8);
+    if (ajwc.a(this.a, FontSettingActivity.a(this.a), true)) {
+      ajwc.a();
     }
-    do
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
-        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-          this.a.c = true;
-        }
-      }
-    } while (this.a.c);
-    this.a.g.setVisibility(8);
+    this.a.finish();
   }
 }
 

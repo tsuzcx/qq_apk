@@ -1,29 +1,43 @@
+import com.tencent.qphone.base.util.QLog;
+
 class asvc
-  implements apsm
+  implements auna
 {
-  asvc(asuu paramasuu, asup paramasup) {}
+  asvc(asuw paramasuw, asur paramasur) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Asup != null) && (this.jdField_a_of_type_Asup.a != null))
+    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramInt);
+  }
+  
+  public void a(aunb paramaunb)
+  {
+    int j;
+    int i;
+    if (paramaunb != null)
     {
-      String str = this.jdField_a_of_type_Asup.a.a();
-      asuq localasuq = this.jdField_a_of_type_Asuu.a(str);
-      if ((localasuq != null) && (!localasuq.a))
+      j = paramaunb.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload picReq result = " + j);
+      }
+      if (paramaunb.jdField_a_of_type_Aunr != null)
       {
-        localasuq.c = paramInt;
-        this.jdField_a_of_type_Asuu.a(str, localasuq);
-        asuu.a(this.jdField_a_of_type_Asuu, localasuq, paramInt);
+        i = paramaunb.jdField_a_of_type_Aunr.jdField_a_of_type_Int;
+        paramaunb = paramaunb.jdField_a_of_type_Aunr.b;
       }
     }
+    for (;;)
+    {
+      asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, j, i, paramaunb);
+      return;
+      i = 0;
+      paramaunb = "";
+      continue;
+      j = 0;
+      i = 0;
+      paramaunb = "";
+    }
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    asuu.a(this.jdField_a_of_type_Asuu, this.jdField_a_of_type_Asup, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 

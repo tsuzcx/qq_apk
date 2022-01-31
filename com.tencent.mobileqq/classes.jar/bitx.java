@@ -1,21 +1,93 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.List;
+import javax.annotation.Nonnull;
 
-class bitx
-  implements EIPCResultCallback
+public class bitx
+  extends RecyclerView.Adapter<bitz>
 {
-  bitx(bitt parambitt) {}
+  private static List<bitd> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bitx(Context paramContext, RecyclerView paramRecyclerView)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
-    {
-      QLog.d("AEGIFSinglePreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    a();
+    this.jdField_a_of_type_JavaLangString = ((bitd)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString;
+    this.b = ((bitd)jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).b;
+  }
+  
+  private void a()
+  {
+    jdField_a_of_type_JavaUtilList = bitc.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NonNull
+  public bitz a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
     }
-    QLog.d("AEGIFSinglePreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    return new bitz(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558524, paramViewGroup, false));
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = ((bitd)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    this.b = ((bitd)jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void a(@NonNull bitz parambitz, int paramInt)
+  {
+    parambitz.a(((bitd)jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString);
+    if (paramInt == this.jdField_a_of_type_Int) {
+      parambitz.a(true);
+    }
+    for (;;)
+    {
+      parambitz.itemView.setOnClickListener(new bity(this, paramInt, parambitz));
+      return;
+      parambitz.a(false);
+    }
+  }
+  
+  @Nonnull
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public int getItemCount()
+  {
+    return jdField_a_of_type_JavaUtilList.size();
   }
 }
 

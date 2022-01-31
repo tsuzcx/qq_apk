@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.data.RecentUser;
-import dov.com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import java.util.Comparator;
-
-public class bkmg
-  implements Comparator<RecentUser>
+public abstract interface bkmg
 {
-  public bkmg(ShareToActivity paramShareToActivity) {}
+  public abstract void cancelAnimator();
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
-  {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
-    }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void displayPanel();
+  
+  public abstract void displayPanelFinish();
+  
+  public abstract void fadeBackground(float paramFloat);
+  
+  public abstract void hidePanel();
+  
+  public abstract void hidePanelFinish();
 }
 
 

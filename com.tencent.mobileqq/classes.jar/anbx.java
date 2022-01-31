@@ -1,46 +1,42 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
 
 public class anbx
-  extends ampb<anbw>
+  extends ampa<anbv>
 {
-  public static anbw a()
+  public static anbv a()
   {
-    return (anbw)ampm.a().a(338);
+    return (anbv)ampl.a().a(429);
   }
   
   public int a()
   {
-    return 338;
+    return 429;
   }
   
   @NonNull
-  public anbw a(int paramInt)
+  public anbv a(int paramInt)
   {
-    return new anbw();
+    return new anbv();
   }
   
   @Nullable
-  public anbw a(ampi[] paramArrayOfampi)
+  public anbv a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anbw.a(paramArrayOfampi);
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return anbv.a(paramArrayOfamph);
     }
     return null;
   }
   
-  public Class<anbw> a()
+  public Class<anbv> a()
   {
-    return anbw.class;
+    return anbv.class;
   }
   
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocGrayTipsProcessor", 1, "TENCENT_DOC_GRAY_TIPS failed, resultCode:" + paramInt);
-  }
+  public void a(int paramInt) {}
   
-  public void a(anbw paramanbw) {}
+  public void a(anbv paramanbv) {}
   
   public int b()
   {

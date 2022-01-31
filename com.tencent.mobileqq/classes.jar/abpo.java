@@ -1,44 +1,31 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import mqq.app.MobileQQ;
 
 public class abpo
   implements CompoundButton.OnCheckedChangeListener
 {
-  public abpo(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abpo(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajti paramajti) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    if ((bbfj.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
     {
-      bfmk.a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label81;
-      }
-      paramCompoundButton = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label87;
-      }
-    }
-    label81:
-    label87:
-    for (String str = "0X8004BE7";; str = "0X8004BE6")
-    {
-      axqw.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
-      if (AppSetting.d) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription(ajyc.a(2131707639));
-      }
+      this.jdField_a_of_type_Ajti.d(paramBoolean);
       return;
-      bfmk.b();
-      break;
-      paramCompoundButton = "0X8004BE6";
-      break label23;
+    }
+    NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131694972), 0).b(5);
+      return;
     }
   }
 }

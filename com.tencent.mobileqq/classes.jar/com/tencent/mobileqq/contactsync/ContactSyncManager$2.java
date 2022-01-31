@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.contactsync;
 
-import aneh;
+import anem;
 import com.tencent.qphone.base.util.QLog;
 
 public class ContactSyncManager$2
   implements Runnable
 {
-  public ContactSyncManager$2(aneh paramaneh) {}
+  public ContactSyncManager$2(anem paramanem) {}
   
   public void run()
   {

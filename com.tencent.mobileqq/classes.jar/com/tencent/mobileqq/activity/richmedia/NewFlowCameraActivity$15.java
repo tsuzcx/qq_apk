@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahwb;
+import ahvz;
 
 class NewFlowCameraActivity$15
   implements Runnable

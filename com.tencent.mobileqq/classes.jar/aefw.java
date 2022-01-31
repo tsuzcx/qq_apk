@@ -1,28 +1,36 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.animation.TranslateAnimation;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
 
 public class aefw
-  implements Handler.Callback
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
   public aefw(PEPanel paramPEPanel) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
     }
-    PEPanel.a(this.a).setVisibility(0);
-    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    paramMessage.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(paramMessage);
-    return true;
+    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
+      PEPanel.a(this.a).setVisibility(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.setListViewVisibile(8);
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

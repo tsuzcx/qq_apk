@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.upgrade;
 
-import ajuf;
-import akbv;
-import akva;
-import akvg;
+import ajud;
+import akbu;
+import akuz;
+import akvf;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -16,11 +16,11 @@ import protocol.KQQConfig.UpgradeInfo;
 public class UpgradeController$2
   implements Runnable
 {
-  public UpgradeController$2(akva paramakva, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
+  public UpgradeController$2(akuz paramakuz, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if ((akva.a(this.this$0) == null) || (akva.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (akva.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {
+    if ((akuz.a(this.this$0) == null) || (akuz.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig == null) || (akuz.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog == null)) {
       QLog.d("UpgradeController", 1, "showUpgradeDialog fail, invalid param.");
     }
     Object localObject;
@@ -29,37 +29,37 @@ public class UpgradeController$2
     do
     {
       return;
-      localObject = akva.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog;
+      localObject = akuz.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog;
       localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      localIntent.putExtra("StrTitle", ((akbv)localObject).jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("StrUpgradeDesc", ((akbv)localObject).c);
+      localIntent.putExtra("StrTitle", ((akbu)localObject).jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("StrUpgradeDesc", ((akbu)localObject).c);
       if (this.jdField_a_of_type_Boolean) {
-        localIntent.putExtra("strDesc", ((akbv)localObject).d);
+        localIntent.putExtra("strDesc", ((akbu)localObject).d);
       }
-      localIntent.putExtra("lBtnText", ((akbv)localObject).i);
-      localIntent.putExtra("rBtnText", ((akbv)localObject).j);
+      localIntent.putExtra("lBtnText", ((akbu)localObject).i);
+      localIntent.putExtra("rBtnText", ((akbu)localObject).j);
       localIntent.putExtra("StrUrl", "");
-      localIntent.putExtra("iUpgradeType", akva.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      localIntent.putExtra("iTipsType", akva.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType);
-      localIntent.putExtra("strConfirmBtnText", akva.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strButtonDesc);
-      localIntent.putExtra("strCancelButtonDesc", akva.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strCancelButtonDesc);
-      localIntent.putExtra("iUpgradeSdkId", akva.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId);
-      if ((akva.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig != null) && (akva.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog != null)) {
-        localIntent.putExtra("rate", akva.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_Int);
+      localIntent.putExtra("iUpgradeType", akuz.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      localIntent.putExtra("iTipsType", akuz.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType);
+      localIntent.putExtra("strConfirmBtnText", akuz.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strButtonDesc);
+      localIntent.putExtra("strCancelButtonDesc", akuz.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strCancelButtonDesc);
+      localIntent.putExtra("iUpgradeSdkId", akuz.a(this.this$0).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId);
+      if ((akuz.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig != null) && (akuz.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog != null)) {
+        localIntent.putExtra("rate", akuz.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppNewUpgradeConfig.dialog.jdField_b_of_type_Int);
       }
       localIntent.putExtra("activity_type", 4096);
       localIntent.putExtra("mode", 0);
-      localObject = ajuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      localObject = ajud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
       if ((localObject != null) && (((String)localObject).equals("com.tencent.mobileqq.activity.UserguideActivity")))
       {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a = localIntent;
         return;
       }
-      localObject = akvg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!((akvg)localObject).a()) {
+      localObject = akvf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!((akvf)localObject).a()) {
         break;
       }
-      bool = ((akvg)localObject).b(akva.a(this.this$0));
+      bool = ((akvf)localObject).b(akuz.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeController", 2, new Object[] { "run: invoked. ", " needShowInstallDialog: ", Boolean.valueOf(bool) });
       }
@@ -72,7 +72,7 @@ public class UpgradeController$2
       }
       BaseActivity.sTopActivity.startActivity(localIntent);
       return;
-      bool = ((akvg)localObject).a(akva.a(this.this$0));
+      bool = ((akvf)localObject).a(akuz.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("UpgradeController", 2, new Object[] { "run: invoked. ", " needShowDownloadDialog: ", Boolean.valueOf(bool) });
       }

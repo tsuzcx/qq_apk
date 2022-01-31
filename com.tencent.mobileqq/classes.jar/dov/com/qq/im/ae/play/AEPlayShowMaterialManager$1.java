@@ -1,32 +1,32 @@
 package dov.com.qq.im.ae.play;
 
-import biwo;
+import bixf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class AEPlayShowMaterialManager$1
   implements Runnable
 {
-  public AEPlayShowMaterialManager$1(biwo parambiwo) {}
+  public AEPlayShowMaterialManager$1(bixf parambixf) {}
   
   public void run()
   {
-    synchronized (biwo.a(this.this$0))
+    synchronized (bixf.a(this.this$0))
     {
-      List localList = biwo.a(this.this$0);
+      List localList = bixf.a(this.this$0);
       if (QLog.isDevelopLevel())
       {
         QLog.d("AEPlayShowMaterialManager", 4, "newPsCategoryList, hashCode=" + localList.hashCode());
-        QLog.d("AEPlayShowMaterialManager", 4, "mPsCategoryList, hashCode=" + biwo.b(this.this$0).hashCode());
+        QLog.d("AEPlayShowMaterialManager", 4, "mPsCategoryList, hashCode=" + bixf.b(this.this$0).hashCode());
       }
-      if ((biwo.b(this.this$0) == null) || (biwo.b(this.this$0).size() < 1) || (localList.hashCode() != biwo.b(this.this$0).hashCode()))
+      if ((bixf.b(this.this$0) == null) || (bixf.b(this.this$0).size() < 1) || (localList.hashCode() != bixf.b(this.this$0).hashCode()))
       {
-        if (biwo.b(this.this$0) != null)
+        if (bixf.b(this.this$0) != null)
         {
-          biwo.b(this.this$0).clear();
-          biwo.b(this.this$0).addAll(localList);
+          bixf.b(this.this$0).clear();
+          bixf.b(this.this$0).addAll(localList);
         }
-        biwo.a(this.this$0);
+        bixf.a(this.this$0);
       }
       return;
     }

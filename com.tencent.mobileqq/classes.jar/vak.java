@@ -1,17 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-public class vak
+class vak
   implements View.OnClickListener
 {
-  public vak(StoryListPresenter.4.1 param1) {}
+  vak(vac paramvac, vdj paramvdj) {}
   
   public void onClick(View paramView)
   {
-    vel.a("home_page", "clk_up_know", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
+    vei.a("home_page", "guide_shoot", 0, 0, new String[0]);
+    this.jdField_a_of_type_Vac.a.a(false, true, 13, null);
+    this.jdField_a_of_type_Vdj.dismiss();
   }
 }
 

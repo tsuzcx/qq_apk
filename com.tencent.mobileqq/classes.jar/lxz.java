@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.share.AVSchema;
 
-public final class lxz
-  implements Parcelable.Creator<RecvGVideoLevelInfo.Medal>
+public class lxz
+  implements DialogInterface.OnDismissListener
 {
-  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
-  {
-    return new RecvGVideoLevelInfo.Medal(paramParcel);
-  }
+  public lxz(AVSchema paramAVSchema) {}
   
-  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new RecvGVideoLevelInfo.Medal[paramInt];
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+    this.a.b();
   }
 }
 

@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class affc
-  implements View.OnClickListener
+  extends ncy
 {
   public affc(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
+    if (paramInt == 0)
     {
-      ClassificationSearchActivity.a(this.a);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
+      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
 }
 

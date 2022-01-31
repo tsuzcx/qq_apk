@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import bawz;
+import baxn;
 
 public class MutliSeletedBottomLine
   extends View
@@ -25,7 +25,7 @@ public class MutliSeletedBottomLine
   {
     super(paramContext);
     this.e = paramInt;
-    this.f = bawz.a(paramContext, 29.0F);
+    this.f = baxn.a(paramContext, 29.0F);
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = ((int)(paramInt / 8.0F));
   }

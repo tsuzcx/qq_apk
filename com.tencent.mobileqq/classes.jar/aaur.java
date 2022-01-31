@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aaur
-  implements auvu
+class aaur
+  implements DialogInterface.OnClickListener
 {
-  public aaur(ChatSettingForTroop paramChatSettingForTroop) {}
+  aaur(aauq paramaauq, boolean paramBoolean) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(this.a.app, "grp_set", "", "", "grp_data", "grp_set_copy", 0, 0, paramString, "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 

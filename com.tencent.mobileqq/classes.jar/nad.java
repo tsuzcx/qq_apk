@@ -1,8 +1,15 @@
-public abstract interface nad
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+class nad
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a();
+  nad(nab paramnab) {}
   
-  public abstract void a(String paramString);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    nab.a(this.a);
+  }
 }
 
 

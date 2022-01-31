@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget;
 
-import bgxy;
-import bgyf;
-import wuu;
-import wva;
+import bgyp;
+import bgyw;
+import wur;
+import wux;
 
 public class SubscribeQRCodeShareHelper$7
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$7(wuu paramwuu) {}
+  public SubscribeQRCodeShareHelper$7(wur paramwur) {}
   
   public void run()
   {
-    if (wuu.a(this.this$0))
+    if (wur.a(this.this$0))
     {
-      String str = wuu.a(this.this$0, wuu.a(this.this$0));
-      bgxy.a(wuu.a(this.this$0), bgyf.a(), str, "写说说", wva.a(wuu.a(this.this$0)), 0);
+      String str = wur.a(this.this$0, wur.a(this.this$0));
+      bgyp.a(wur.a(this.this$0), bgyw.a(), str, "写说说", wux.a(wur.a(this.this$0)), 0);
     }
   }
 }

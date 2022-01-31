@@ -1,28 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AbsListView;
 
 public class rcv
-  extends bfpb
+  implements bfos
 {
-  public rcv(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
+  public rcv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramReadInJoyFlowLayout);
+    if ((ReadInJoyListViewGroup.a(this.a) != null) && (ReadInJoyListViewGroup.a(this.a).getVisibility() != 4)) {
+      ReadInJoyListViewGroup.a(this.a).setVisibility(4);
+    }
+    this.a.a(new rcx(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
   }
   
-  public void a()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.a();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    ReadInJoyFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    ReadInJoyFlowLayout.a(this.a);
+    this.a.a(new rcw(this, "onScrollStateChanged", paramAbsListView, paramInt));
   }
 }
 

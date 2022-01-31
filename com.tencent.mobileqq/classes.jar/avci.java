@@ -1,11 +1,18 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-import java.util.ArrayList;
-
-class avci
+public class avci
 {
   public int a;
-  public final ArrayList<MessageForPtt> a = new ArrayList(100);
-  public final int b = 99;
+  public final avcn a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public avci(int paramInt)
+  {
+    this.jdField_a_of_type_Avcn = new avcn();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Avcn.jdField_a_of_type_Int = -2147483648;
+  }
 }
 
 

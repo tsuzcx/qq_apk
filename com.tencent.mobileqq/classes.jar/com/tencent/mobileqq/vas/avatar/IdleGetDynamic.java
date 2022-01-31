@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import bbsi;
+import bbsw;
 import java.util.ArrayList;
 
 public class IdleGetDynamic
   extends IdleUpdater
 {
-  private ArrayList<bbsi> a;
+  private ArrayList<bbsw> a;
   
   public IdleGetDynamic()
   {
@@ -28,19 +28,19 @@ public class IdleGetDynamic
     int i = 0;
     while (i < j)
     {
-      ((bbsi)localObject.get(i)).a(true);
+      ((bbsw)localObject.get(i)).a(true);
       i += 1;
     }
   }
   
-  public void a(bbsi parambbsi)
+  public void a(bbsw parambbsw)
   {
     try
     {
       if (this.a == null) {
         this.a = new ArrayList();
       }
-      this.a.add(parambbsi);
+      this.a.add(parambbsw);
       if (this.a.size() == 1) {
         b();
       }

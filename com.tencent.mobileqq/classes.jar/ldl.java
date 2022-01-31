@@ -1,31 +1,15 @@
-import android.media.MediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
 
 public class ldl
-  extends ldx
+  implements DialogInterface.OnClickListener
 {
-  public ldl(VideoController paramVideoController)
-  {
-    super(paramVideoController);
-  }
+  public ldl(VideoController paramVideoController) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().n())
-    {
-      lcl.d(VideoController.a, "onCompletion onClose is not Closing2");
-      this.jdField_a_of_type_Long = 0L;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().y);
-    this.jdField_a_of_type_Long = 0L;
+    axqy.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 

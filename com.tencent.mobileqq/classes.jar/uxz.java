@@ -1,10 +1,31 @@
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public abstract interface uxz
+class uxz
+  extends LruCache<uya, Drawable>
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  uxz(uxx paramuxx, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract String a();
+  protected int a(uya paramuya, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        uyj.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramuya, " size=", Integer.valueOf(i) });
+        return i;
+      }
+    }
+    return 524288;
+  }
 }
 
 

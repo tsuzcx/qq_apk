@@ -1,27 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class ldr
-  implements DialogInterface.OnClickListener
 {
-  public ldr(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false);
-      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
-      }
-    }
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Mtt.d();
-    }
-    axqw.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c = 2000L;
+  public String c;
+  public boolean c;
+  public int d = -1;
+  public long d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f = 0;
+  public boolean f;
+  public boolean g;
+  public boolean h = true;
 }
 
 

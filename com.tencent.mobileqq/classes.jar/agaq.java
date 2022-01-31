@@ -12,6 +12,9 @@ public class agaq
   {
     this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
     this.a.getActivity().finish();
+    if (this.a.d == 11) {
+      axqy.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    }
   }
 }
 

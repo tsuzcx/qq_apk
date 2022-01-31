@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import asle;
-import asnx;
+import aslg;
+import asnz;
 
 class MsgBackupNotifier$2
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupNotifier$2
   
   public void run()
   {
-    asle.a().a().a(this.a, this.b);
+    aslg.a().a().a(this.a, this.b);
   }
 }
 

@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class ados
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  ados(ador paramador, MessageForDeviceText paramMessageForDeviceText) {}
+  ados(adop paramadop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ((yeu)this.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ador.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ador.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    if (!bbfj.d(this.a.a))
+    {
+      bcql.a(this.a.a, ajya.a(2131703236), 2000).a();
+      return;
+    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

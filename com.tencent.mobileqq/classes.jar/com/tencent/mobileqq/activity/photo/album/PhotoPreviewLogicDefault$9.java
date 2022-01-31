@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agtc;
-import bkya;
+import agta;
+import bkyr;
 import java.io.File;
 
 public class PhotoPreviewLogicDefault$9
   implements Runnable
 {
-  public PhotoPreviewLogicDefault$9(agtc paramagtc, String paramString) {}
+  public PhotoPreviewLogicDefault$9(agta paramagta, String paramString) {}
   
   public void run()
   {
-    bkya.a(new File(this.a).getParent());
+    bkyr.a(new File(this.a).getParent());
   }
 }
 

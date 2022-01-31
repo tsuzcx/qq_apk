@@ -1,7 +1,7 @@
 import com.dataline.activities.PrinterActivity;
 
 public class eg
-  extends ajuv
+  extends ajut
 {
   public eg(PrinterActivity paramPrinterActivity) {}
   

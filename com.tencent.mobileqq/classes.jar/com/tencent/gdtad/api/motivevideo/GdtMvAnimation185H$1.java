@@ -1,24 +1,24 @@
 package com.tencent.gdtad.api.motivevideo;
 
 import android.view.View;
-import yvj;
-import yvn;
-import yxs;
+import yvg;
+import yvk;
+import yxp;
 
 public class GdtMvAnimation185H$1
   implements Runnable
 {
-  public GdtMvAnimation185H$1(yvn paramyvn) {}
+  public GdtMvAnimation185H$1(yvk paramyvk) {}
   
   public void run()
   {
     if (this.this$0.a != null)
     {
-      yvj localyvj = (yvj)this.this$0.a;
-      if (localyvj.a != null)
+      yvg localyvg = (yvg)this.this$0.a;
+      if (localyvg.a != null)
       {
-        yxs.b("GdtMotiveVideoAd", "585V maskRunnable run ");
-        localyvj.a.setVisibility(0);
+        yxp.b("GdtMotiveVideoAd", "585V maskRunnable run ");
+        localyvg.a.setVisibility(0);
       }
     }
   }

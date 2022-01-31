@@ -1,8 +1,19 @@
-public abstract interface vds
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class vds
+  implements View.OnClickListener
 {
-  public abstract void P_();
+  vds(vdr paramvdr) {}
   
-  public abstract void Q_();
+  public void onClick(View paramView)
+  {
+    vdr.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (vdr.a(this.a) != null) {
+      vdr.a(this.a).f();
+    }
+  }
 }
 
 

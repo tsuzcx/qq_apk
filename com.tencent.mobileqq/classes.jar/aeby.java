@@ -1,33 +1,40 @@
 import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
+import android.view.View.OnClickListener;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeby
+class aeby
+  implements View.OnClickListener
 {
-  public String a;
-  SoftReference<View> a;
-  SoftReference<ViewGroup> b;
+  aeby(aebx paramaebx) {}
   
-  public aeby(String paramString, View paramView, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    Object localObject = actj.a(paramView);
+    if (!(localObject instanceof MessageForText)) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        localObject = (MessageForText)localObject;
+      } while (this.a.a());
+      if (((MessageForText)localObject).msgtype == -1003)
+      {
+        actj.n = true;
+        localObject = bbmx.a(((MessageForText)localObject).action);
+        localObject = bbex.a(this.a.a, paramView.getContext(), (String)localObject);
+        if (localObject != null) {
+          ((bbeg)localObject).c();
+        }
+      }
+    } while (!(paramView instanceof ETTextView));
+    ((ETTextView)paramView).startAnimation(true, false);
   }
 }
 

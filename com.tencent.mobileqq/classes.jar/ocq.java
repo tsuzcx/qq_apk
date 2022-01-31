@@ -1,29 +1,35 @@
-import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ocq
-  implements TVK_SDKMgr.InstallListener
+  implements quh
 {
-  public ocq(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public void onInstallProgress(float paramFloat)
+  public ocq(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    yxs.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
   }
   
-  public void onInstalledFailed(int paramInt)
+  public List<qui> a(int paramInt, boolean paramBoolean)
   {
-    yxs.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    yxs.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
-    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
-      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
+    ArrayList localArrayList = new ArrayList();
+    if (localReadInJoyArticleBottomVideoView != null) {
+      localArrayList.add(new qui(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
     }
+    return localArrayList;
+  }
+  
+  public boolean a()
+  {
+    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (localReadInJoyArticleBottomVideoView == null) {
+      return false;
+    }
+    return bbfj.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
   }
 }
 

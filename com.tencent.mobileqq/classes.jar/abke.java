@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class abke
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public abke(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public abke(Leba paramLeba) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
     }
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
+    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      }
+      this.a.l();
+      continue;
+      Leba.c(this.a);
+      continue;
+      this.a.a(paramMessage);
+      continue;
+      this.a.s();
+      continue;
+      Leba.d(this.a);
+    }
   }
 }
 

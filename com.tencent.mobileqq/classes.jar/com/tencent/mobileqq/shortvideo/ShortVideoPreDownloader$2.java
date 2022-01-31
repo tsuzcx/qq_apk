@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axdz;
+import axeb;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ShortVideoPreDownloader$2
   implements Runnable
 {
-  public ShortVideoPreDownloader$2(axdz paramaxdz) {}
+  public ShortVideoPreDownloader$2(axeb paramaxeb) {}
   
   public void run()
   {
     if (!this.this$0.a.get())
     {
       this.this$0.a.set(true);
-      axdz.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
+      axeb.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
     }
   }
 }

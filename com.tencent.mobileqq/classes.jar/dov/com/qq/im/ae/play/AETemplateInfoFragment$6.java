@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class AETemplateInfoFragment$6
@@ -8,7 +8,7 @@ class AETemplateInfoFragment$6
 {
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getApplication(), this.a, 1).a();
+    bcql.a(BaseApplicationImpl.getApplication(), this.a, 1).a();
   }
 }
 

@@ -8,12 +8,12 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import org.json.JSONObject;
-import wvj;
+import wvg;
 
 public class CommodityBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommodityBean> CREATOR = new wvj();
+  public static final Parcelable.Creator<CommodityBean> CREATOR = new wvg();
   public String mAlias = "";
   public String mImg = "";
   public long mItemID;

@@ -1,25 +1,47 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.content.ClipboardManager;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
-import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.TeamWorkPicBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.10;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.2;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.3;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.4;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.5;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.6;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.7;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.8;
+import com.tencent.mobileqq.jsp.DocxApiPlugin.9;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.WebView;
-import cooperation.vip.manager.MonitorManager;
-import java.lang.ref.WeakReference;
+import com.tencent.util.Pair;
+import eipc.EIPCClient;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,621 +49,1250 @@ import org.json.JSONObject;
 public class armk
   extends WebViewPlugin
 {
-  public static volatile BroadcastReceiver a;
-  public static CopyOnWriteArrayList<WeakReference<armk>> a;
-  public static AtomicBoolean a;
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<armk> jdField_a_of_type_JavaLangRefWeakReference = null;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  private annr jdField_a_of_type_Annr;
+  private annw jdField_a_of_type_Annw;
+  private annz jdField_a_of_type_Annz;
+  private String jdField_a_of_type_JavaLangString;
   
   public armk()
   {
-    this.mPluginNameSpace = "event";
+    this.mPluginNameSpace = "docx";
   }
   
-  public static void a()
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EventApiPlugin", 2, "unRegisterEventReceiver");
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    }
-    if ((jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)))
-    {
-      BaseApplicationImpl.getApplication().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
-      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
+    ThreadManager.excute(new DocxApiPlugin.6(this), 64, null, false);
   }
   
-  public static void a(String paramString1, JSONObject paramJSONObject, ArrayList<String> paramArrayList, String paramString2)
+  public static void a(String paramString, TouchWebView paramTouchWebView)
   {
-    Intent localIntent = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    localIntent.putExtra("event", paramString1);
-    if (paramJSONObject != null) {
-      localIntent.putExtra("data", paramJSONObject.toString());
+    if (!ancr.a().c()) {}
+    while ((TextUtils.isEmpty(paramString)) || (ayge.a == null) || (ayge.a.get(paramString) == null) || (((Integer)ayge.a.get(paramString)).intValue() != 2)) {
+      try
+      {
+        paramString = new JSONObject();
+        paramString.put("retcode", 1);
+        ThreadManager.getUIHandler().post(new DocxApiPlugin.7(paramTouchWebView, paramString));
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("DocxApiPlugin", 1, "JSONException ", paramString);
+        return;
+      }
     }
-    localIntent.putStringArrayListExtra("domains", paramArrayList);
-    paramString1 = new JSONObject();
-    try
+    ayge.a.remove(paramString);
+    if (ayfg.a(paramString))
     {
-      paramString1.put("url", paramString2);
-      label61:
-      localIntent.putExtra("source", paramString1.toString());
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+      ThreadManager.excute(new DocxApiPlugin.8(paramString, paramTouchWebView), 64, null, false);
       return;
     }
-    catch (JSONException paramJSONObject)
+    try
     {
-      break label61;
+      paramString = new JSONObject();
+      paramString.put("retcode", 1);
+      ThreadManager.getUIHandler().post(new DocxApiPlugin.9(paramTouchWebView, paramString));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("DocxApiPlugin", 1, "JSONException ", paramString);
     }
   }
   
-  private static void b()
+  private void a(ArrayList<String> paramArrayList)
   {
-    jdField_a_of_type_AndroidContentBroadcastReceiver = new arml();
-    if (QLog.isColorLevel()) {
-      QLog.d("EventApiPlugin", 2, "init dispatch Event Receiver!");
+    ThreadManager.excute(new DocxApiPlugin.5(this, paramArrayList), 128, null, false);
+  }
+  
+  private void f(String paramString)
+  {
+    QLog.d("DocxApiPlugin", 2, "req json = " + paramString);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("callback");
+      new TeamWorkForceShare(this, paramString).a();
+      return;
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    BaseApplicationImpl.getApplication().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  ComponentName a(String paramString)
+  public void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    for (;;)
     {
-      paramString = paramString.split("/");
-      if ((paramString != null) && (paramString.length == 2)) {
-        return new ComponentName(paramString[0], paramString[1]);
-      }
-    }
-    return null;
-  }
-  
-  Intent a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      paramJSONObject = null;
-    }
-    Intent localIntent;
-    Object localObject;
-    do
-    {
-      do
+      try
       {
-        return paramJSONObject;
-        localIntent = new Intent();
-        localObject = paramJSONObject.optString("action", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localIntent.setAction((String)localObject);
+        JSONObject localJSONObject = new JSONObject(paramString);
+        boolean bool = localJSONObject.optBoolean("success");
+        String str2 = localJSONObject.optString("url");
+        paramString = localJSONObject.optString("fileName");
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("isSuccess", bool);
+        localBundle.putString("url", str2);
+        localBundle.putString("fileName", paramString);
+        paramString = this.mRuntime.a();
+        if ((!(paramString instanceof TeamWorkDocEditBrowserActivity)) || (((TeamWorkDocEditBrowserActivity)paramString).a() == null)) {
+          break label203;
         }
-        localObject = paramJSONObject.optString("category", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localIntent.addCategory((String)localObject);
+        paramString = ((TeamWorkDocEditBrowserActivity)paramString).a().getUrl();
+        String str1 = paramString;
+        if (TextUtils.isEmpty(paramString)) {
+          str1 = localJSONObject.optString("refer_url");
         }
-        localObject = paramJSONObject.optString("componentName", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localIntent.setComponent(a((String)localObject));
-        }
-        localObject = paramJSONObject.getJSONObject("intentExtras");
-        paramJSONObject = localIntent;
-      } while (localObject == null);
-      localObject = a((JSONObject)localObject);
-      paramJSONObject = localIntent;
-    } while (localObject == null);
-    localIntent.putExtras((Bundle)localObject);
-    return localIntent;
-  }
-  
-  Bundle a(JSONObject paramJSONObject)
-  {
-    Iterator localIterator = paramJSONObject.keys();
-    if (localIterator != null)
-    {
-      Bundle localBundle = new Bundle();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!TextUtils.isEmpty(str)) {
-          localBundle.putCharSequence(str, paramJSONObject.getString(str));
-        }
+        localBundle.putString("docUrl", str1);
+        localBundle.putString("cookie", CookieManager.getInstance().getCookie(str2));
+        QIPCClientHelper.getInstance().getClient().callServer("TeamWorkModule", "action_download_export_file", localBundle);
       }
-      return localBundle;
-    }
-    return null;
-  }
-  
-  String a()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null) {}
-    for (this.jdField_a_of_type_JavaLangString = (String.valueOf(System.currentTimeMillis()) + String.valueOf(localActivity.hashCode()));; this.jdField_a_of_type_JavaLangString = (String.valueOf(System.currentTimeMillis()) + String.valueOf((int)(Math.random() * 1000000.0D)))) {
-      return this.jdField_a_of_type_JavaLangString;
+      catch (Exception paramString)
+      {
+        QLog.e("DocxApiPlugin", 1, "downloadExportedFile exception e = " + paramString.toString());
+        continue;
+      }
+      finally {}
+      return;
+      label203:
+      paramString = null;
     }
   }
   
   /* Error */
-  public void a(android.content.Context paramContext, Intent paramIntent)
+  public boolean a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: iconst_0
-    //   4: istore_3
-    //   5: aload_2
-    //   6: ifnull +20 -> 26
-    //   9: aload_0
-    //   10: getfield 31	armk:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   13: ifnull +13 -> 26
-    //   16: aload_0
-    //   17: getfield 31	armk:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   20: invokevirtual 273	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   23: ifnonnull +4 -> 27
-    //   26: return
-    //   27: aload_2
-    //   28: ldc_w 275
-    //   31: iconst_1
-    //   32: invokevirtual 279	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   35: ifeq -9 -> 26
-    //   38: aload_2
-    //   39: ldc_w 281
-    //   42: invokevirtual 284	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   45: astore_1
-    //   46: aload_1
-    //   47: ifnull +14 -> 61
-    //   50: aload_1
-    //   51: aload_0
-    //   52: invokevirtual 286	armk:a	()Ljava/lang/String;
-    //   55: invokevirtual 290	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   58: ifne -32 -> 26
-    //   61: aload_2
-    //   62: ldc 33
-    //   64: invokevirtual 284	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   67: astore 6
-    //   69: aload 6
-    //   71: invokestatic 148	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   74: ifne -48 -> 26
-    //   77: aload_2
-    //   78: ldc 89
-    //   80: invokevirtual 284	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   83: astore_1
-    //   84: aload_1
-    //   85: ifnull +275 -> 360
-    //   88: new 91	org/json/JSONObject
-    //   91: dup
-    //   92: aload_1
-    //   93: invokespecial 291	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   96: astore_1
-    //   97: aload_2
-    //   98: ldc 97
-    //   100: invokevirtual 295	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   103: astore 7
-    //   105: aload 7
-    //   107: ifnull -81 -> 26
-    //   110: aload_2
-    //   111: ldc 110
-    //   113: invokevirtual 284	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   116: astore 8
-    //   118: aload 5
-    //   120: astore_2
-    //   121: aload 8
-    //   123: ifnull +13 -> 136
-    //   126: new 91	org/json/JSONObject
-    //   129: dup
-    //   130: aload 8
-    //   132: invokespecial 291	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   135: astore_2
-    //   136: aload_0
-    //   137: getfield 227	armk:mRuntime	Lbcdb;
-    //   140: invokevirtual 298	bcdb:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   143: astore 5
-    //   145: aload 5
-    //   147: ifnull -121 -> 26
-    //   150: aload 5
-    //   152: invokevirtual 303	com/tencent/smtt/sdk/WebView:getUrl	()Ljava/lang/String;
-    //   155: astore 8
-    //   157: aload 8
-    //   159: ifnull -133 -> 26
-    //   162: aload 8
-    //   164: invokestatic 309	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   167: invokevirtual 312	android/net/Uri:getHost	()Ljava/lang/String;
-    //   170: astore 9
-    //   172: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   175: ifeq +68 -> 243
-    //   178: aload_0
-    //   179: getfield 31	armk:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   182: invokevirtual 313	java/lang/Object:toString	()Ljava/lang/String;
-    //   185: astore 10
-    //   187: aload_1
-    //   188: ifnull +114 -> 302
-    //   191: aload_1
-    //   192: invokevirtual 95	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   195: astore 5
-    //   197: ldc 44
-    //   199: iconst_2
-    //   200: ldc_w 315
-    //   203: iconst_5
-    //   204: anewarray 251	java/lang/Object
-    //   207: dup
-    //   208: iconst_0
-    //   209: aload 10
-    //   211: aastore
-    //   212: dup
-    //   213: iconst_1
-    //   214: aload 6
-    //   216: aastore
-    //   217: dup
-    //   218: iconst_2
-    //   219: aload 5
-    //   221: aastore
-    //   222: dup
-    //   223: iconst_3
-    //   224: ldc_w 317
-    //   227: aload 7
-    //   229: invokestatic 321	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
-    //   232: aastore
-    //   233: dup
-    //   234: iconst_4
-    //   235: aload_2
-    //   236: aastore
-    //   237: invokestatic 325	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   240: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   243: aload 6
-    //   245: ldc_w 327
-    //   248: invokevirtual 290	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   251: ifne +14 -> 265
-    //   254: aload 6
-    //   256: ldc_w 329
-    //   259: invokevirtual 290	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   262: ifeq +48 -> 310
-    //   265: invokestatic 334	mvv:a	()Lmvv;
-    //   268: aload 8
-    //   270: ldc_w 336
-    //   273: invokevirtual 339	mvv:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   276: ifne +17 -> 293
-    //   279: invokestatic 334	mvv:a	()Lmvv;
-    //   282: aload 8
-    //   284: ldc_w 341
-    //   287: invokevirtual 339	mvv:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   290: ifeq +20 -> 310
-    //   293: aload_0
-    //   294: aload 6
-    //   296: aload_1
-    //   297: aload_2
-    //   298: invokevirtual 345	armk:dispatchJsEvent	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
-    //   301: return
-    //   302: ldc_w 347
-    //   305: astore 5
-    //   307: goto -110 -> 197
-    //   310: aload 7
-    //   312: invokevirtual 352	java/util/ArrayList:size	()I
-    //   315: istore 4
-    //   317: iload_3
-    //   318: iload 4
-    //   320: if_icmpge -294 -> 26
-    //   323: aload 7
-    //   325: iload_3
-    //   326: invokevirtual 355	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   329: checkcast 152	java/lang/String
-    //   332: aload 9
-    //   334: invokestatic 357	mvv:b	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   337: ifeq +12 -> 349
-    //   340: aload_0
-    //   341: aload 6
-    //   343: aload_1
-    //   344: aload_2
-    //   345: invokevirtual 345	armk:dispatchJsEvent	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
-    //   348: return
-    //   349: iload_3
-    //   350: iconst_1
-    //   351: iadd
-    //   352: istore_3
-    //   353: goto -36 -> 317
-    //   356: astore_1
-    //   357: return
-    //   358: astore_1
-    //   359: return
-    //   360: aconst_null
-    //   361: astore_1
-    //   362: goto -265 -> 97
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: istore_3
+    //   7: iload_3
+    //   8: ifeq +7 -> 15
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: new 132	java/lang/StringBuilder
+    //   18: dup
+    //   19: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   22: ldc 74
+    //   24: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: getstatic 252	ayed:i	Ljava/lang/String;
+    //   30: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: iconst_1
+    //   37: new 132	java/lang/StringBuilder
+    //   40: dup
+    //   41: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   44: ldc 254
+    //   46: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: aload_1
+    //   50: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 256	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   59: ldc_w 258
+    //   62: astore 8
+    //   64: aconst_null
+    //   65: astore 7
+    //   67: ldc_w 260
+    //   70: astore 6
+    //   72: ldc2_w 261
+    //   75: lstore 4
+    //   77: new 50	org/json/JSONObject
+    //   80: dup
+    //   81: aload_1
+    //   82: invokespecial 149	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   85: astore_1
+    //   86: aload_1
+    //   87: ldc_w 264
+    //   90: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   93: astore 10
+    //   95: aload_1
+    //   96: ldc_w 266
+    //   99: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   102: astore 9
+    //   104: aload_1
+    //   105: ldc_w 268
+    //   108: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   111: astore 15
+    //   113: aload_1
+    //   114: ldc_w 270
+    //   117: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: astore 11
+    //   122: aload_1
+    //   123: ldc_w 272
+    //   126: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   129: astore 16
+    //   131: aload_1
+    //   132: ldc_w 274
+    //   135: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   138: astore 17
+    //   140: aload_1
+    //   141: ldc_w 276
+    //   144: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   147: astore 12
+    //   149: aload_1
+    //   150: ldc_w 278
+    //   153: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   156: astore 13
+    //   158: aload_1
+    //   159: ldc_w 280
+    //   162: invokevirtual 284	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   165: istore_2
+    //   166: aload_0
+    //   167: getfield 193	armk:mRuntime	Lbcdp;
+    //   170: invokevirtual 198	bcdp:a	()Landroid/app/Activity;
+    //   173: checkcast 286	com/tencent/mobileqq/activity/QQBrowserActivity
+    //   176: astore 14
+    //   178: aload 14
+    //   180: invokevirtual 290	com/tencent/mobileqq/activity/QQBrowserActivity:getIntent	()Landroid/content/Intent;
+    //   183: ldc_w 292
+    //   186: invokevirtual 297	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   189: astore_1
+    //   190: aload 15
+    //   192: invokestatic 300	ayfx:a	(Ljava/lang/String;)Z
+    //   195: ifeq +30 -> 225
+    //   198: ldc_w 302
+    //   201: astore 8
+    //   203: ldc_w 303
+    //   206: invokestatic 308	ajya:a	(I)Ljava/lang/String;
+    //   209: astore_1
+    //   210: getstatic 311	ayfx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   213: astore 6
+    //   215: getstatic 313	ayfx:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   218: astore 7
+    //   220: getstatic 316	ayfx:a	J
+    //   223: lstore 4
+    //   225: new 294	android/content/Intent
+    //   228: dup
+    //   229: invokespecial 317	android/content/Intent:<init>	()V
+    //   232: astore 18
+    //   234: aload 18
+    //   236: ldc_w 272
+    //   239: aload 16
+    //   241: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   244: pop
+    //   245: aload 18
+    //   247: ldc_w 274
+    //   250: aload 17
+    //   252: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   255: pop
+    //   256: aload 18
+    //   258: ldc_w 323
+    //   261: iconst_1
+    //   262: invokevirtual 326	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   265: pop
+    //   266: aload 18
+    //   268: aload 14
+    //   270: ldc_w 328
+    //   273: invokevirtual 332	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+    //   276: pop
+    //   277: aload 18
+    //   279: ldc_w 334
+    //   282: iconst_1
+    //   283: invokevirtual 326	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   286: pop
+    //   287: aload 18
+    //   289: ldc_w 336
+    //   292: sipush 1001
+    //   295: invokevirtual 339	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   298: pop
+    //   299: aload 18
+    //   301: ldc_w 341
+    //   304: ldc_w 343
+    //   307: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   310: pop
+    //   311: aload 18
+    //   313: ldc_w 345
+    //   316: bipush 95
+    //   318: invokevirtual 339	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   321: pop
+    //   322: aload 18
+    //   324: ldc_w 347
+    //   327: aload 15
+    //   329: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   332: pop
+    //   333: aload 18
+    //   335: ldc_w 349
+    //   338: aload 11
+    //   340: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   343: pop
+    //   344: lload 4
+    //   346: ldc2_w 350
+    //   349: lcmp
+    //   350: ifeq +14 -> 364
+    //   353: aload 18
+    //   355: ldc_w 353
+    //   358: lload 4
+    //   360: invokevirtual 356	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   363: pop
+    //   364: aload 18
+    //   366: ldc_w 358
+    //   369: aload 6
+    //   371: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   374: pop
+    //   375: aload 18
+    //   377: ldc_w 360
+    //   380: aload_1
+    //   381: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   384: pop
+    //   385: aload 18
+    //   387: ldc_w 362
+    //   390: aload 7
+    //   392: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   395: pop
+    //   396: aload 18
+    //   398: ldc_w 364
+    //   401: aload 8
+    //   403: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   406: pop
+    //   407: aload 18
+    //   409: ldc_w 366
+    //   412: ldc_w 368
+    //   415: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   418: pop
+    //   419: aload 18
+    //   421: ldc_w 370
+    //   424: ldc_w 368
+    //   427: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   430: pop
+    //   431: aload 10
+    //   433: astore_1
+    //   434: aload 10
+    //   436: ifnull +44 -> 480
+    //   439: aload 10
+    //   441: astore_1
+    //   442: aload 10
+    //   444: invokevirtual 375	java/lang/String:length	()I
+    //   447: bipush 45
+    //   449: if_icmple +31 -> 480
+    //   452: new 132	java/lang/StringBuilder
+    //   455: dup
+    //   456: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   459: aload 10
+    //   461: iconst_0
+    //   462: bipush 45
+    //   464: invokevirtual 379	java/lang/String:substring	(II)Ljava/lang/String;
+    //   467: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: ldc_w 381
+    //   473: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   476: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   479: astore_1
+    //   480: aload 18
+    //   482: ldc_w 264
+    //   485: aload_1
+    //   486: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   489: pop
+    //   490: aload 9
+    //   492: astore 6
+    //   494: aload 9
+    //   496: ifnull +46 -> 542
+    //   499: aload 9
+    //   501: astore 6
+    //   503: aload 9
+    //   505: invokevirtual 375	java/lang/String:length	()I
+    //   508: bipush 60
+    //   510: if_icmple +32 -> 542
+    //   513: new 132	java/lang/StringBuilder
+    //   516: dup
+    //   517: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   520: aload 9
+    //   522: iconst_0
+    //   523: bipush 60
+    //   525: invokevirtual 379	java/lang/String:substring	(II)Ljava/lang/String;
+    //   528: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: ldc_w 381
+    //   534: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   537: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   540: astore 6
+    //   542: aload 18
+    //   544: ldc_w 266
+    //   547: aload 6
+    //   549: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   552: pop
+    //   553: aload 18
+    //   555: ldc_w 383
+    //   558: aload 11
+    //   560: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   563: pop
+    //   564: aload 18
+    //   566: ldc_w 385
+    //   569: ldc_w 302
+    //   572: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   575: pop
+    //   576: aload 18
+    //   578: ldc_w 353
+    //   581: ldc2_w 350
+    //   584: invokevirtual 356	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+    //   587: pop
+    //   588: aload 18
+    //   590: ldc_w 387
+    //   593: aload 14
+    //   595: ldc_w 388
+    //   598: iconst_1
+    //   599: anewarray 390	java/lang/Object
+    //   602: dup
+    //   603: iconst_0
+    //   604: aload_1
+    //   605: aastore
+    //   606: invokevirtual 394	com/tencent/mobileqq/activity/QQBrowserActivity:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   609: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   612: pop
+    //   613: aload 18
+    //   615: ldc_w 278
+    //   618: aload 13
+    //   620: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   623: pop
+    //   624: aload 18
+    //   626: ldc_w 280
+    //   629: iload_2
+    //   630: invokevirtual 339	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   633: pop
+    //   634: aload 12
+    //   636: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   639: ifne +37 -> 676
+    //   642: aload 18
+    //   644: ldc_w 396
+    //   647: aload 12
+    //   649: invokevirtual 321	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   652: pop
+    //   653: invokestatic 228	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   656: invokevirtual 232	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
+    //   659: ldc 234
+    //   661: ldc_w 398
+    //   664: aload 18
+    //   666: invokevirtual 402	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   669: invokevirtual 242	eipc/EIPCClient:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Leipc/EIPCResult;
+    //   672: pop
+    //   673: goto -662 -> 11
+    //   676: new 132	java/lang/StringBuilder
+    //   679: dup
+    //   680: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   683: ldc 74
+    //   685: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   688: getstatic 252	ayed:i	Ljava/lang/String;
+    //   691: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   694: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   697: iconst_1
+    //   698: ldc_w 404
+    //   701: invokestatic 256	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   704: goto -51 -> 653
+    //   707: astore_1
+    //   708: new 132	java/lang/StringBuilder
+    //   711: dup
+    //   712: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   715: ldc 74
+    //   717: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   720: getstatic 252	ayed:i	Ljava/lang/String;
+    //   723: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   726: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   729: iconst_1
+    //   730: ldc_w 406
+    //   733: invokestatic 247	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   736: goto -725 -> 11
+    //   739: astore_1
+    //   740: aload_0
+    //   741: monitorexit
+    //   742: aload_1
+    //   743: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	365	0	this	armk
-    //   0	365	1	paramContext	android.content.Context
-    //   0	365	2	paramIntent	Intent
-    //   4	349	3	i	int
-    //   315	6	4	j	int
-    //   1	305	5	localObject	Object
-    //   67	275	6	str1	String
-    //   103	221	7	localArrayList	ArrayList
-    //   116	167	8	str2	String
-    //   170	163	9	str3	String
-    //   185	25	10	str4	String
+    //   0	744	0	this	armk
+    //   0	744	1	paramString	String
+    //   165	465	2	i	int
+    //   6	2	3	bool	boolean
+    //   75	284	4	l	long
+    //   70	478	6	localObject	Object
+    //   65	326	7	str1	String
+    //   62	340	8	str2	String
+    //   102	419	9	str3	String
+    //   93	367	10	str4	String
+    //   120	439	11	str5	String
+    //   147	501	12	str6	String
+    //   156	463	13	str7	String
+    //   176	418	14	localQQBrowserActivity	QQBrowserActivity
+    //   111	217	15	str8	String
+    //   129	111	16	str9	String
+    //   138	113	17	str10	String
+    //   232	433	18	localIntent	Intent
     // Exception table:
     //   from	to	target	type
-    //   126	136	356	org/json/JSONException
-    //   88	97	358	org/json/JSONException
+    //   77	190	707	org/json/JSONException
+    //   190	198	707	org/json/JSONException
+    //   203	225	707	org/json/JSONException
+    //   225	344	707	org/json/JSONException
+    //   353	364	707	org/json/JSONException
+    //   364	431	707	org/json/JSONException
+    //   442	480	707	org/json/JSONException
+    //   480	490	707	org/json/JSONException
+    //   503	542	707	org/json/JSONException
+    //   542	653	707	org/json/JSONException
+    //   653	673	707	org/json/JSONException
+    //   676	704	707	org/json/JSONException
+    //   2	7	739	finally
+    //   15	59	739	finally
+    //   77	190	739	finally
+    //   190	198	739	finally
+    //   203	225	739	finally
+    //   225	344	739	finally
+    //   353	364	739	finally
+    //   364	431	739	finally
+    //   442	480	739	finally
+    //   480	490	739	finally
+    //   503	542	739	finally
+    //   542	653	739	finally
+    //   653	673	739	finally
+    //   676	704	739	finally
+    //   708	736	739	finally
   }
   
-  void a(String paramString)
+  public void b(String paramString)
   {
-    if ((!Build.MANUFACTURER.contains("Xiaomi")) || (TextUtils.isEmpty(paramString))) {}
-    label196:
-    do
+    try
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.e("EventApiPlugin", 2, "handleMiUIInstallIntercepterEvent,finger print:" + Build.FINGERPRINT + ",config:" + paramString);
-          }
-          try
-          {
-            paramString = a(new JSONObject(paramString));
-            if ((paramString == null) || (this.mRuntime == null)) {
-              break label196;
-            }
-            Activity localActivity = this.mRuntime.a();
-            if (localActivity != null)
-            {
-              localActivity.startActivity(paramString);
-              return;
-            }
-          }
-          catch (JSONException paramString)
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("EventApiPlugin", 2, "error:" + paramString.toString());
-              return;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("EventApiPlugin", 2, "activity is null.");
-                return;
-              }
-            }
-          }
-          catch (Exception paramString) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("EventApiPlugin", 2, "error:" + paramString.toString());
+      paramString = new JSONObject(paramString).optString("fileName");
+      new Bundle().putString("fileName", paramString);
+      ayek.a(this.mRuntime.a(), paramString);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("EventApiPlugin", 2, "intent or runtime is null");
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("DocxApiPlugin", 1, "startExportedFile exception e = " + paramString.toString());
+      }
+    }
+    finally {}
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("folderId");
+      QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.mRuntime.a();
+      ThreadManager.postImmediately(new DocxApiPlugin.10(this, localQQBrowserActivity, localQQBrowserActivity.a().getUrl()), null, true);
+      Intent localIntent = new Intent(localQQBrowserActivity, FMActivity.class);
+      localIntent.putExtra(ayed.f, true);
+      localIntent.addFlags(536870912);
+      localIntent.putExtra("selectMode", true);
+      localIntent.putExtra("busiType", 9);
+      localIntent.putExtra("peerType", 10006);
+      localIntent.putExtra("tab_tab_type", 7);
+      localIntent.putExtra("only_show_local_tab", true);
+      localIntent.putExtra(ayed.g, paramString);
+      localIntent.putExtra("smart_device_support_flag", 8);
+      localQQBrowserActivity.startActivity(localIntent);
+      localQQBrowserActivity.overridePendingTransition(2130771979, 2130771980);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("DocxApiPlugin", 1, "openFMActivityToImport exception e = " + paramString.toString());
+      }
+    }
+    finally {}
+  }
+  
+  void d(String paramString)
+  {
+    Object localObject1;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DocxApiPlugin", 2, "handleWriteClipboard jsonString = " + paramString);
+      }
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.d("DocxApiPlugin", 1, "handleWriteClipboard return for empty json");
+        return;
+      }
+      localObject1 = this.mRuntime.a();
+      if (localObject1 == null)
+      {
+        QLog.d("DocxApiPlugin", 1, "handleWriteClipboard return for null activity");
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QLog.d("DocxApiPlugin", 1, "handleWriteClipboard exception", paramString);
+      return;
+    }
+    paramString = new JSONObject(paramString);
+    String str1 = paramString.optString("plain");
+    String str2 = paramString.optString("html");
+    if (QLog.isColorLevel()) {
+      QLog.d("DocxApiPlugin", 2, "handleWriteClipboard text = " + str1 + ",html = " + str2);
+    }
+    if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)))
+    {
+      QLog.d("DocxApiPlugin", 1, "handleWriteClipboard return for empty text and html");
+      return;
+    }
+    ClipboardManager localClipboardManager = (ClipboardManager)((Activity)localObject1).getSystemService("clipboard");
+    Object localObject2 = null;
+    ClipData.Item localItem;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      localItem = new ClipData.Item(str1, str2);
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+      {
+        paramString = new String[2];
+        paramString[0] = "text/plain";
+        paramString[1] = "text/html";
+        localObject1 = localItem;
+      }
+    }
+    for (;;)
+    {
+      localClipboardManager.setPrimaryClip(new ClipData("", paramString, (ClipData.Item)localObject1));
+      return;
+      if ((!TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2)))
+      {
+        paramString = new String[1];
+        paramString[0] = "text/plain";
+        localObject1 = localItem;
+      }
+      else
+      {
+        paramString = localObject2;
+        localObject1 = localItem;
+        if (TextUtils.isEmpty(str1))
+        {
+          paramString = localObject2;
+          localObject1 = localItem;
+          if (!TextUtils.isEmpty(str2))
+          {
+            paramString = new String[1];
+            paramString[0] = "text/html";
+            localObject1 = localItem;
+            continue;
+            localObject1 = new ClipData.Item(str1);
+            paramString = new String[1];
+            paramString[0] = "text/plain";
+          }
+        }
+      }
+    }
+  }
+  
+  void e(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject3 = null;
+    String str;
+    JSONObject localJSONObject;
+    Object localObject4;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DocxApiPlugin", 2, "handleReadClipboard jsonString = " + paramString);
+      }
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.d("DocxApiPlugin", 1, "handleReadClipboard return for empty json");
+        return;
+      }
+      str = new JSONObject(paramString).optString("callback");
+      localJSONObject = new JSONObject();
+      localObject4 = this.mRuntime.a();
+      if (localObject4 == null)
+      {
+        QLog.d("DocxApiPlugin", 1, "handleReadClipboard return for null activity");
+        callJs(str, new String[] { String.valueOf(-2), localJSONObject.toString() });
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.d("DocxApiPlugin", 1, "handleReadClipboard exception", localException);
+      try
+      {
+        callJs(new JSONObject(paramString).optString("callback"), new String[] { String.valueOf(-3), new JSONObject().toString() });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("DocxApiPlugin", 1, "handleReadClipboard Exception e1", paramString);
+        return;
+      }
+      localObject4 = ((ClipboardManager)((Activity)localObject4).getSystemService("clipboard")).getPrimaryClip();
+      if (QLog.isColorLevel()) {
+        QLog.d("DocxApiPlugin", 2, "handleReadClipboard ClipData = " + localObject4);
+      }
+      if (localObject4 == null) {
+        break label439;
+      }
+    }
+    Object localObject2;
+    if (((ClipData)localObject4).getItemCount() > 0)
+    {
+      localObject3 = ((ClipData)localObject4).getItemAt(0);
+      localObject2 = ((ClipData.Item)localObject3).getText().toString();
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        localObject4 = ((ClipData.Item)localObject3).getHtmlText();
+        localObject3 = localObject2;
+        localObject2 = localObject4;
+        if (!QLog.isColorLevel()) {
+          break label445;
+        }
+        QLog.d("DocxApiPlugin", 2, "handleReadClipboard text  = " + (String)localObject3 + ",html = " + (String)localObject2);
+        break label445;
+      }
+    }
+    label421:
+    label439:
+    label445:
+    for (;;)
+    {
+      if ((TextUtils.isEmpty((CharSequence)localObject3)) && (TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        i = 1;
+        if (i != 0) {
+          break label421;
+        }
+        localJSONObject.put("plain", localObject3);
+        localJSONObject.put("html", localObject2);
+      }
+      for (int i = 0;; i = -1)
+      {
+        callJs(str, new String[] { String.valueOf(i), localJSONObject.toString() });
+        return;
+        i = 0;
+        break;
+      }
+      localObject3 = localObject2;
+      localObject2 = null;
+      break;
+      localObject2 = null;
+      break;
+      localObject3 = null;
+    }
   }
   
   public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (paramLong == 8589934606L)
+    if (QLog.isColorLevel()) {
+      QLog.i("DocxApiPlugin", 2, "handleEvent " + paramString + ", type=" + paramLong + ", info=" + paramMap);
+    }
+    if (paramLong == 8589934601L)
     {
-      paramString = new JSONObject();
-      if (paramMap != null) {}
+      if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!(this.mRuntime.a() instanceof QQBrowserActivity)))
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent sth is null or not instanceof QQBrowserActivity");
+        return super.handleEvent(paramString, paramLong, paramMap);
+      }
+      if (!this.mRuntime.a().getIntent().getBooleanExtra("doc_from_aio", false)) {
+        QLog.e("DocxApiPlugin", 1, "handleEvent not fromAIO, url=" + paramString);
+      }
+      if (this.jdField_a_of_type_Annr != null)
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent guide has shown");
+        return super.handleEvent(paramString, paramLong, paramMap);
+      }
+      Pair localPair = annn.a(this.mRuntime.a());
+      boolean bool = ((Boolean)localPair.first).booleanValue();
+      int i = ((Integer)localPair.second).intValue();
+      int j = annt.a(this.mRuntime.a(), this.mRuntime.a());
+      if (QLog.isColorLevel()) {
+        QLog.i("DocxApiPlugin", 2, "handleEvent enable=" + bool + ", total=" + i + ", shown=" + j);
+      }
+      if (!bool)
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent not enable");
+        return super.handleEvent(paramString, paramLong, paramMap);
+      }
+      if (j >= i)
+      {
+        QLog.e("DocxApiPlugin", 1, "handleEvent shown >= total");
+        return super.handleEvent(paramString, paramLong, paramMap);
+      }
+      this.jdField_a_of_type_Annr = new annr(this.mRuntime.a());
+      this.jdField_a_of_type_Annr.a(new arml(this));
+      annt.a(this.mRuntime.a(), this.mRuntime.a(), j + 1);
       try
       {
-        paramString.put("x", (Integer)paramMap.get("X"));
-        paramString.put("y", (Integer)paramMap.get("Y"));
-        dispatchJsEvent("qbrowserTitleBarClick", paramString, null);
+        this.jdField_a_of_type_Annr.show();
+        axqy.b(null, "CliOper", "", "", "0X80094EA", "0X80094EA", 0, 0, "", "", "", "");
         return true;
       }
-      catch (ClassCastException localClassCastException)
+      catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EventApiPlugin", 2, "ClassCastException, " + paramMap.get("X") + ", " + paramMap.get("Y"));
-          }
-          localClassCastException.printStackTrace();
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EventApiPlugin", 2, "JSONException, " + paramMap.get("X") + ", " + paramMap.get("Y"));
-          }
-          localJSONException.printStackTrace();
-        }
+        QLog.e("DocxApiPlugin", 1, "", localThrowable);
+        return super.handleEvent(paramString, paramLong, paramMap);
       }
     }
-    if (paramLong == 8589934607L)
+    if (paramLong == 8589934597L) {
+      if (this.jdField_a_of_type_Annz != null) {
+        this.jdField_a_of_type_Annz.b();
+      }
+    }
+    for (;;)
     {
-      dispatchJsEvent("qbrowserOptionsButtonClick", null, null);
-      return true;
+      return super.handleEvent(paramString, paramLong, paramMap);
+      if (paramLong != 8589934611L) {}
     }
-    return false;
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ("event".equals(paramString2)) {
-      if ((!"dispatchEvent".equals(paramString3)) || (paramVarArgs.length != 1) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("DocxApiPlugin", 2, " handleJsRequest url = " + paramString1 + " pkgName = " + paramString2 + ",method = " + paramString3);
     }
-    for (;;)
+    if ("docx".equals(paramString2))
     {
-      int i;
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if ((!"readyToInsertImageCallBack".equals(paramString3)) || (paramVarArgs.length > 1)) {}
+    }
+    else
+    {
       try
       {
-        Object localObject1 = this.mRuntime.a();
-        if (localObject1 == null) {
-          return true;
-        }
-        paramString3 = new JSONObject(paramVarArgs[0]);
-        paramString1 = paramString3.optString("event");
-        if (TextUtils.isEmpty(paramString1))
+        if (paramVarArgs.length == 1)
         {
-          if (!QLog.isColorLevel()) {
-            break label696;
+          paramString1 = new JSONObject(paramVarArgs[0]);
+          paramJsBridgeListener = paramString1.getString("attachmentId");
+          paramString1 = paramString1.getString("localpath");
+          paramString2 = this.mRuntime.a();
+          if (QLog.isColorLevel()) {
+            QLog.i("TeamWorkDocEditBrowserActivity", 2, "回调id = " + paramJsBridgeListener + " localPath = " + paramString1);
           }
-          QLog.w("EventApiPlugin", 2, "param event is requested");
-          break label696;
-        }
-        paramString2 = paramString3.optJSONObject("data");
-        if (paramString2 == null) {
-          break label698;
-        }
-        paramJsBridgeListener = paramString2.toString();
-        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (paramJsBridgeListener.length() >= 460800L))
-        {
-          QLog.e("EventApiPlugin", 1, "param data is over size! " + paramJsBridgeListener.length());
-          return true;
-        }
-        paramVarArgs = paramString3.optJSONObject("options");
-        int k = 1;
-        boolean bool1 = true;
-        paramString3 = new ArrayList();
-        paramJsBridgeListener = new ArrayList();
-        localObject1 = ((WebView)localObject1).getUrl();
-        Object localObject2;
-        if (paramVarArgs != null)
-        {
-          boolean bool2 = paramVarArgs.optBoolean("echo", true);
-          boolean bool3 = paramVarArgs.optBoolean("broadcast", true);
-          localObject2 = paramVarArgs.optJSONArray("domains");
-          int j;
-          if (localObject2 != null)
-          {
-            i = 0;
-            j = ((JSONArray)localObject2).length();
-            if (i < j)
-            {
-              String str = ((JSONArray)localObject2).optString(i);
-              if (TextUtils.isEmpty(str)) {
-                break label704;
-              }
-              paramString3.add(str);
-              break label704;
-            }
+          if ((paramString2 != null) && ((paramString2 instanceof TeamWorkDocEditBrowserActivity))) {
+            ThreadManager.postImmediately(new DocxApiPlugin.2(this, paramString2, paramString1, paramJsBridgeListener), null, false);
           }
-          paramVarArgs = paramVarArgs.optJSONArray("platos");
-          bool1 = bool3;
-          k = bool2;
-          if (paramVarArgs != null)
-          {
-            i = 0;
-            j = paramVarArgs.length();
-            bool1 = bool3;
-            k = bool2;
-            if (i < j)
-            {
-              localObject2 = paramVarArgs.optString(i);
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                break label713;
-              }
-              paramJsBridgeListener.add(localObject2);
-              break label713;
-            }
-          }
-        }
-        paramVarArgs = new JSONObject();
-        paramVarArgs.put("url", localObject1);
-        if ((paramString3.size() == 0) && (localObject1 != null))
-        {
-          localObject1 = Uri.parse((String)localObject1);
-          if (((Uri)localObject1).isHierarchical()) {
-            paramString3.add(((Uri)localObject1).getHost());
-          }
-        }
-        localObject1 = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-        ((Intent)localObject1).putExtra("broadcast", bool1);
-        ((Intent)localObject1).putExtra("unique", a());
-        ((Intent)localObject1).putExtra("event", paramString1);
-        if (paramString2 != null) {
-          ((Intent)localObject1).putExtra("data", paramString2.toString());
-        }
-        ((Intent)localObject1).putStringArrayListExtra("domains", paramString3);
-        ((Intent)localObject1).putStringArrayListExtra("platos", paramJsBridgeListener);
-        ((Intent)localObject1).putExtra("source", paramVarArgs.toString());
-        if (QLog.isColorLevel())
-        {
-          localObject2 = this.jdField_a_of_type_JavaLangRefWeakReference.toString();
-          if (paramString2 != null)
-          {
-            paramJsBridgeListener = paramString2.toString();
-            QLog.d("EventApiPlugin", 2, String.format("send event broadcast, pluginReference: %s, event: %s, data: %s, domains: %s, source: %s", new Object[] { localObject2, paramString1, paramJsBridgeListener, TextUtils.join(",", paramString3), paramVarArgs }));
-          }
-        }
-        else
-        {
-          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
-          if (k != 0) {
-            dispatchJsEvent(paramString1, paramString2, paramVarArgs);
-          }
-          if (!"cancelPayDialog".equals(paramString1)) {
-            break;
-          }
-          MonitorManager.a().a(1, 6, "取消支付", "");
-          break;
-        }
-        paramJsBridgeListener = "NULL";
-        continue;
-        if (!"miuiInstallInterceptor".equals(paramString3)) {
-          break;
         }
       }
-      catch (Throwable paramJsBridgeListener)
+      catch (Exception paramJsBridgeListener)
       {
-        paramJsBridgeListener.printStackTrace();
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("DocxApiPlugin", 4, "readyToInsertImageCallBack failed:" + paramJsBridgeListener);
+          }
+        }
       }
-      if ((paramVarArgs.length < 1) && (QLog.isColorLevel()))
-      {
-        QLog.e("EventApiPlugin", 2, "no arguments.");
-        return true;
-      }
-      a(paramVarArgs[0]);
-      return true;
       return false;
-      label696:
-      return true;
-      label698:
-      paramJsBridgeListener = "";
-      continue;
-      label704:
-      i += 1;
-      continue;
-      label713:
-      i += 1;
     }
-    return true;
-  }
-  
-  public void onActivityReady()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {}
-    try
-    {
-      b();
-      if ((jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null))
-      {
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangRefWeakReference);
-        if (QLog.isColorLevel()) {
-          QLog.d("EventApiPlugin", 2, "put current EventApiPlugin into sDispatchEventPlugins: " + this.jdField_a_of_type_JavaLangRefWeakReference.toString());
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
+    if (("getDocxImageIndex".equals(paramString3)) && (paramVarArgs.length <= 1)) {}
+    for (;;)
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("EventApiPlugin", 2, "error:" + localException.toString());
+        for (;;)
+        {
+          for (;;)
+          {
+            for (;;)
+            {
+              try
+              {
+                if (paramVarArgs.length != 1) {
+                  break;
+                }
+                paramString1 = new JSONObject(paramVarArgs[0]);
+                paramJsBridgeListener = new ArrayList();
+                if (!paramString1.has("currentImageIndex")) {
+                  break label2051;
+                }
+                i = paramString1.getInt("currentImageIndex");
+                if (paramString1.has("imageList"))
+                {
+                  paramString1 = paramString1.getJSONArray("imageList");
+                  if (paramString1 != null)
+                  {
+                    j = 0;
+                    if (j < paramString1.length())
+                    {
+                      paramJsBridgeListener.add((String)paramString1.get(j));
+                      j += 1;
+                      continue;
+                    }
+                  }
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.i("TeamWorkDocEditBrowserActivity", 2, " index = " + i + " urls.size = " + paramJsBridgeListener.size());
+                }
+                paramString1 = this.mRuntime.a();
+                if ((paramString1 == null) || (!(paramString1 instanceof TeamWorkDocEditBrowserActivity)) || (i == -1)) {
+                  break;
+                }
+                paramString2 = new ArrayList();
+                int j = 0;
+                if (j < paramJsBridgeListener.size())
+                {
+                  paramString3 = new PicInfo();
+                  paramString3.jdField_a_of_type_JavaLangString = ((String)paramJsBridgeListener.get(j));
+                  paramString3.jdField_b_of_type_JavaLangString = ((String)paramJsBridgeListener.get(j));
+                  paramString2.add(paramString3);
+                  j += 1;
+                  continue;
+                }
+                paramJsBridgeListener = new Intent(paramString1, TeamWorkPicBrowserActivity.class);
+                paramJsBridgeListener.putExtra("intent_param_index", i);
+                paramJsBridgeListener.putExtra("intent_param_pic_infos", paramString2);
+                paramJsBridgeListener.addFlags(536870912);
+                paramString1.startActivity(paramJsBridgeListener);
+              }
+              catch (Exception paramJsBridgeListener) {}
+              if (!QLog.isDevelopLevel()) {
+                break;
+              }
+              QLog.d("DocxApiPlugin", 4, "getDocxImageList failed:" + paramJsBridgeListener);
+              break;
+              if ((!"setAuthForSharePad".equals(paramString3)) || (paramVarArgs.length > 1)) {
+                break label995;
+              }
+              try
+              {
+                if ((paramVarArgs.length != 1) || (!(this.mRuntime.a() instanceof QQBrowserActivity))) {
+                  break;
+                }
+                paramJsBridgeListener = new aydz();
+                paramString1 = new JSONObject(paramVarArgs[0]);
+                paramJsBridgeListener.jdField_a_of_type_JavaLangString = ((String)paramString1.opt("authFirstLineInfo"));
+                paramJsBridgeListener.jdField_b_of_type_JavaLangString = ((String)paramString1.opt("authSecondLineInfo"));
+                paramJsBridgeListener.jdField_a_of_type_Int = ((Integer)paramString1.opt("policy")).intValue();
+                paramJsBridgeListener.jdField_a_of_type_Boolean = ((Boolean)paramString1.opt("isCreator")).booleanValue();
+                paramJsBridgeListener.jdField_c_of_type_JavaLangString = ((String)paramString1.opt("docName"));
+                paramJsBridgeListener.jdField_b_of_type_Int = ((Integer)paramString1.opt("docType")).intValue();
+                paramJsBridgeListener.jdField_d_of_type_JavaLangString = ((String)paramString1.opt("docIconUrl"));
+                paramJsBridgeListener.jdField_c_of_type_Int = ((Integer)paramString1.opt("taskType")).intValue();
+                paramJsBridgeListener.e = ((String)paramString1.opt("share_url"));
+                paramJsBridgeListener.jdField_d_of_type_Int = ((Integer)paramString1.opt("memLength")).intValue();
+                paramJsBridgeListener.f = ((String)paramString1.opt("memListPrefix"));
+                paramJsBridgeListener.g = ((String)paramString1.opt("descriptionSuffix"));
+                paramJsBridgeListener.h = ((String)paramString1.opt("padId"));
+                paramJsBridgeListener.i = ((String)paramString1.opt("domainId"));
+                paramJsBridgeListener.j = ((String)paramString1.opt("padTitle"));
+                paramJsBridgeListener.k = ((String)paramString1.opt("folderId"));
+                paramString1 = (QQBrowserActivity)this.mRuntime.a();
+                if ((paramString1 == null) || (paramString1.b() == null)) {
+                  break;
+                }
+                paramString1 = paramString1.b();
+                if (paramString1 == null) {
+                  break;
+                }
+                paramString1.a().a(paramJsBridgeListener);
+                paramJsBridgeListener = paramString1.b();
+                if (paramJsBridgeListener == null) {
+                  break;
+                }
+                paramJsBridgeListener = (bcfh)paramJsBridgeListener.a(4);
+                if ((paramJsBridgeListener == null) || (!(paramJsBridgeListener.a instanceof ayft))) {
+                  break;
+                }
+                paramJsBridgeListener.a.e();
+              }
+              catch (Exception paramJsBridgeListener)
+              {
+                QLog.d("DocxApiPlugin", 1, "setAuthForSharePad error:" + paramJsBridgeListener);
+              }
+            }
+            break;
+            label995:
+            if (("sendDocToChat".equals(paramString3)) && (paramVarArgs.length <= 1)) {
+              return a(paramVarArgs[0]);
+            }
+            if (("writeSystemClipboard".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if (paramVarArgs.length != 1) {
+                break;
+              }
+              d(paramVarArgs[0]);
+              break;
+            }
+            if (("readSystemClipboard".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if (paramVarArgs.length != 1) {
+                break;
+              }
+              e(paramVarArgs[0]);
+              break;
+            }
+            if (("eventShare".equals(paramString3)) && (paramVarArgs.length == 1))
+            {
+              f(paramVarArgs[0]);
+              break;
+            }
+            if (("openLocalFilesToImport".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              c(paramVarArgs[0]);
+              break;
+            }
+            if (("openExportedFile".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              a(paramVarArgs[0]);
+              break;
+            }
+            if (("txDocsStartExport".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
+                break;
+              }
+              if (bbfj.d(this.mRuntime.a()))
+              {
+                b(paramVarArgs[0]);
+                break;
+              }
+              bcql.a(this.mRuntime.a(), this.mRuntime.a().getString(2131693945), 0).a();
+              break;
+            }
+            if (("voiceInputSetup".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if (this.jdField_a_of_type_Annz != null) {
+                break;
+              }
+              this.jdField_a_of_type_Annz = new annz(this);
+              this.jdField_a_of_type_Annz.a();
+              break;
+            }
+            boolean bool;
+            if (("voiceInputStart".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if (this.jdField_a_of_type_Annz != null)
+              {
+                if (paramVarArgs.length == 1)
+                {
+                  try
+                  {
+                    paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+                    bool = this.jdField_a_of_type_Annz.a(paramJsBridgeListener);
+                    return bool;
+                  }
+                  catch (Throwable paramJsBridgeListener)
+                  {
+                    QLog.e("DocxApiPlugin", 1, "VoiceInputHelper start error", paramJsBridgeListener);
+                  }
+                  break;
+                }
+                QLog.e("DocxApiPlugin", 1, "VoiceInputHelper start args error.");
+                break;
+              }
+              QLog.e("DocxApiPlugin", 1, "VoiceInputHelper has destroyed, start failed.");
+              break;
+            }
+            if (("voiceInputStop".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if (this.jdField_a_of_type_Annz == null) {
+                break;
+              }
+              this.jdField_a_of_type_Annz.b();
+              break;
+            }
+            if (("cameraCheckPermission".equals(paramString3)) && (paramVarArgs.length <= 1))
+            {
+              if (this.jdField_a_of_type_Annw == null) {
+                this.jdField_a_of_type_Annw = new annw(this);
+              }
+              if (paramVarArgs.length == 1)
+              {
+                try
+                {
+                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+                  bool = this.jdField_a_of_type_Annw.a(paramJsBridgeListener);
+                  return bool;
+                }
+                catch (Throwable paramJsBridgeListener)
+                {
+                  QLog.e("DocxApiPlugin", 1, "CameraHelper checkPermission error", paramJsBridgeListener);
+                }
+                break;
+              }
+              QLog.e("DocxApiPlugin", 1, "CameraHelper checkPermission args error.");
+              break;
+            }
+            if ((!"getTcntDocData".equals(paramString3)) || (paramVarArgs.length > 1)) {
+              break label1636;
+            }
+            try
+            {
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              paramJsBridgeListener = paramString1.optString("url");
+              paramString1 = paramString1.optString("callback");
+              ThreadManager.excute(new DocxApiPlugin.3(this, ayfg.a(paramJsBridgeListener), paramString1, paramJsBridgeListener), 64, null, false);
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              QLog.e("DocxApiPlugin", 1, "JSONException ", paramJsBridgeListener);
+            }
+          }
+          break;
+          label1636:
+          if ((!"delTcntDocData".equals(paramString3)) || (paramVarArgs.length > 1)) {
+            break label1704;
+          }
+          try
+          {
+            ThreadManager.excute(new DocxApiPlugin.4(this, ayfg.a(new JSONObject(paramVarArgs[0]).optString("url"))), 64, null, false);
+          }
+          catch (JSONException paramJsBridgeListener)
+          {
+            QLog.e("DocxApiPlugin", 1, "JSONException ", paramJsBridgeListener);
+          }
         }
+        break;
+        label1704:
+        if ((!"preFetchTcntDocData".equals(paramString3)) || (paramVarArgs.length > 1)) {
+          break label1985;
+        }
+        paramString1 = ancr.a();
+        if ((!paramString1.a()) || (!paramString1.b())) {
+          return false;
+        }
+        a();
+        try
+        {
+          paramString2 = new JSONObject(paramVarArgs[0]).optJSONArray("keys");
+          if (paramString2 == null) {
+            break;
+          }
+          paramJsBridgeListener = new ArrayList(paramString2.length());
+          i = 0;
+          while (i < paramString2.length())
+          {
+            paramJsBridgeListener.add(paramString2.getJSONObject(i).optString("doc_url"));
+            i += 1;
+          }
+          if ((paramString1.c()) && (!paramJsBridgeListener.isEmpty()))
+          {
+            paramString1 = (String)paramJsBridgeListener.get(0);
+            if (((FragmentActivity)this.mRuntime.a()).getSupportFragmentManager().findFragmentByTag("doc_preload") == null)
+            {
+              QLog.e("DocxApiPlugin", 1, "tendocpreload UnVisibleWebViewFragment create ");
+              aygd.a(paramString1);
+              paramString2 = new Intent();
+              paramString2.putExtra("url", paramString1);
+              paramString2.putExtra("hide_more_button", true);
+              paramString2.putExtra("webStyle", "noBottomBar");
+              paramString2.putExtra("isScreenOrientationPortrait", true);
+              paramString2.putExtra("title", " ");
+              paramString1 = UnVisibleWebViewFragment.a(paramString2);
+              ((FragmentActivity)this.mRuntime.a()).getSupportFragmentManager().beginTransaction().add(paramString1, "doc_preload").commitAllowingStateLoss();
+            }
+          }
+          a(paramJsBridgeListener);
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          QLog.e("DocxApiPlugin", 1, "JSONException ", paramJsBridgeListener);
+        }
+      }
+      break;
+      label1985:
+      if ((!"showShareView".equals(paramString3)) || (paramVarArgs.length > 1)) {
+        break;
+      }
+      paramJsBridgeListener = (QQBrowserActivity)this.mRuntime.a();
+      if ((paramJsBridgeListener == null) || (paramJsBridgeListener.b() == null)) {
+        break;
+      }
+      paramJsBridgeListener = paramJsBridgeListener.b();
+      if ((paramJsBridgeListener == null) || (!(paramJsBridgeListener instanceof TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment))) {
+        break;
+      }
+      ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)paramJsBridgeListener).aj_();
+      break;
+      label2051:
+      int i = -1;
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    int i;
+    int j;
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramIntent = "ok";
+      if (paramByte != 17) {
+        break label125;
+      }
+      paramIntent = "user canceld share panel";
+      i = 0;
+      j = 0;
+    }
+    label172:
+    for (;;)
+    {
+      label44:
+      paramIntent = String.format("{\"type\":%d,\"action\":%d,\"ec\":%d,\"em\":\"%s\"}", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt), paramIntent });
+      QLog.d("DocxApiPlugin", 2, "rsp json = " + paramIntent);
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent });
+      return;
+      label125:
+      if ((paramByte == 18) || (paramByte == 52))
+      {
+        if (paramByte == 18) {}
+        for (i = 1;; i = 2)
+        {
+          if (paramInt != 0) {
+            break label172;
+          }
+          paramInt = -1;
+          paramIntent = "user canceled";
+          j = i;
+          i = 0;
+          break;
+        }
+        paramInt = 0;
+        j = i;
+        i = 2;
+      }
+      else if ((paramByte == 86) || (paramByte == 120))
+      {
+        if (paramByte == 86) {}
+        for (i = 3;; i = 4) {
+          switch (paramInt)
+          {
+          default: 
+            j = i;
+            i = 0;
+            break label44;
+          }
+        }
+        j = i;
+        i = 2;
+        continue;
+        paramIntent = "err comm";
+        j = i;
+        i = 0;
+        continue;
+        paramIntent = "user canceled";
+        j = i;
+        i = 0;
+        continue;
+        paramIntent = "sent failed";
+        j = i;
+        i = 0;
+        continue;
+        paramIntent = "auth denied";
+        j = i;
+        i = 0;
+        continue;
+        paramIntent = "unsupport";
+        j = i;
+        i = 0;
+        continue;
+        paramIntent = "err ban";
+        j = i;
+        i = 0;
+      }
+      else
+      {
+        paramInt = 0;
+        i = 0;
+        j = 0;
       }
     }
   }
@@ -649,19 +1300,28 @@ public class armk
   public void onCreate()
   {
     super.onCreate();
+    if (this.mRuntime == null) {}
+    for (AppInterface localAppInterface = null;; localAppInterface = this.mRuntime.a())
+    {
+      annz.a(localAppInterface);
+      return;
+    }
   }
   
   public void onDestroy()
   {
-    super.onDestroy();
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null))
+    this.jdField_a_of_type_Annr = null;
+    if (this.jdField_a_of_type_Annw != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EventApiPlugin", 2, "remove current EventApiPlugin from sDispatchEventPlugins: " + this.jdField_a_of_type_JavaLangRefWeakReference.toString());
-      }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(this.jdField_a_of_type_JavaLangRefWeakReference);
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.jdField_a_of_type_Annw.a();
+      this.jdField_a_of_type_Annw = null;
     }
+    if (this.jdField_a_of_type_Annz != null)
+    {
+      this.jdField_a_of_type_Annz.a();
+      this.jdField_a_of_type_Annz = null;
+    }
+    super.onDestroy();
   }
 }
 

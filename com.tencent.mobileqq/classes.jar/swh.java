@@ -1,52 +1,51 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
 
-class swh
-  extends bjde
+@TargetApi(14)
+public class swh
+  extends waa
 {
-  private long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int = 941000;
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private String jdField_a_of_type_JavaLangString;
+  private swj jdField_a_of_type_Swj;
+  private String b;
   
-  swh(swf paramswf, PublishVideoEntry paramPublishVideoEntry, swl paramswl, String paramString) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  public swh(String paramString1, String paramString2, swj paramswj)
   {
-    this.jdField_a_of_type_Swl.a(-3);
-    this.jdField_a_of_type_Swl.a("task canceled");
-    swf.a(this.jdField_a_of_type_Swf, "needAndStartDownloadMusic");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Swj = paramswj;
   }
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    veg.c(swf.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onFailure(String paramString)
   {
-    veg.c(swf.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download onFinish ");
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = paramString;
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Swl.a(paramInt);
-      this.jdField_a_of_type_Swl.a("unknown error the music download failed");
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_Swj.a(941001, paramString, "");
     }
     for (;;)
     {
-      xhe.a("edit_music_download", xhe.a(this.jdField_a_of_type_Swl.a(), l1 - l2, this.jdField_a_of_type_JavaLangString, vyi.a(paramString)));
-      swf.a(this.jdField_a_of_type_Swf, "needAndStartDownloadMusic");
+      ved.d(swc.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
+      vyf.g(this.jdField_a_of_type_JavaLangString);
       return;
-      this.jdField_a_of_type_Swl.a(0);
-      this.jdField_a_of_type_Swl.a("music downloadSuccess");
-      continue;
-      this.jdField_a_of_type_Swl.a(-2);
-      this.jdField_a_of_type_Swl.a("none network");
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_Swj.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_Swj.a(this.jdField_a_of_type_Int, paramString, "");
+      }
     }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    ved.a(swc.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Swj.a(0, "", this.b);
+    vyf.g(this.jdField_a_of_type_JavaLangString);
   }
 }
 

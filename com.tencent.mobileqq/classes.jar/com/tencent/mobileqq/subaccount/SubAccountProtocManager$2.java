@@ -2,9 +2,9 @@ package com.tencent.mobileqq.subaccount;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import axrl;
-import ayao;
-import ayat;
+import axrn;
+import ayaq;
+import ayav;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,12 +16,12 @@ import mqq.os.MqqHandler;
 public class SubAccountProtocManager$2
   implements Runnable
 {
-  public SubAccountProtocManager$2(ayat paramayat) {}
+  public SubAccountProtocManager$2(ayav paramayav) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = ayat.a(this.this$0).getApp().getSharedPreferences("mobileQQ", 0);
-    long l2 = localSharedPreferences.getLong("subaccount_last_report_time_" + ayat.a(this.this$0).getCurrentAccountUin(), 0L);
+    SharedPreferences localSharedPreferences = ayav.a(this.this$0).getApp().getSharedPreferences("mobileQQ", 0);
+    long l2 = localSharedPreferences.getLong("subaccount_last_report_time_" + ayav.a(this.this$0).getCurrentAccountUin(), 0L);
     long l3 = System.currentTimeMillis() - 10L;
     Object localObject = Calendar.getInstance();
     Calendar localCalendar1 = Calendar.getInstance();
@@ -43,9 +43,9 @@ public class SubAccountProtocManager$2
     }
     for (;;)
     {
-      if ((l2 > 0L) && (((Calendar)localObject).after(localCalendar1)) && (ayao.a(ayat.a(this.this$0))))
+      if ((l2 > 0L) && (((Calendar)localObject).after(localCalendar1)) && (ayaq.a(ayav.a(this.this$0))))
       {
-        boolean bool = ayao.b(ayat.a(this.this$0));
+        boolean bool = ayaq.b(ayav.a(this.this$0));
         localObject = new HashMap();
         if (!bool) {
           break label437;
@@ -55,14 +55,14 @@ public class SubAccountProtocManager$2
       for (int i = 1;; i = 0)
       {
         ((Map)localObject).put("Top_bind_account", Integer.valueOf(i));
-        axrl.a(ayat.a(this.this$0).getApp()).b(ayat.a(this.this$0), ayat.a(this.this$0).getCurrentAccountUin(), (Map)localObject);
-        localSharedPreferences.edit().putLong("subaccount_last_report_time_" + ayat.a(this.this$0).getCurrentAccountUin(), l3).commit();
+        axrn.a(ayav.a(this.this$0).getApp()).b(ayav.a(this.this$0), ayav.a(this.this$0).getCurrentAccountUin(), (Map)localObject);
+        localSharedPreferences.edit().putLong("subaccount_last_report_time_" + ayav.a(this.this$0).getCurrentAccountUin(), l3).commit();
         if (l2 == 0L) {
-          localSharedPreferences.edit().putLong("subaccount_last_report_time_" + ayat.a(this.this$0).getCurrentAccountUin(), l3).commit();
+          localSharedPreferences.edit().putLong("subaccount_last_report_time_" + ayav.a(this.this$0).getCurrentAccountUin(), l3).commit();
         }
         l2 = (Math.random() * 30.0D * 60.0D * 1000.0D);
         if (ThreadManager.getSubThreadHandler() != null) {
-          ThreadManager.getSubThreadHandler().postDelayed(ayat.a(this.this$0), l2 + l1 + 60000L);
+          ThreadManager.getSubThreadHandler().postDelayed(ayav.a(this.this$0), l2 + l1 + 60000L);
         }
         return;
       }

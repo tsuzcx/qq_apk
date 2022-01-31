@@ -1,21 +1,50 @@
-import android.content.Context;
-import android.text.ClipboardManager;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.widget.TextView;
+import java.lang.reflect.Field;
 
 public class bckl
-  implements View.OnClickListener
+  extends LinkMovementMethod
 {
-  public bckl(ContextMenuTextView paramContextMenuTextView) {}
+  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
+  private static Field jdField_a_of_type_JavaLangReflectField;
   
-  public void onClick(View paramView)
+  public static MovementMethod a()
   {
-    if (paramView.getId() == 2131364825)
+    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
+      jdField_a_of_type_AndroidTextMethodMovementMethod = new bckl();
+    }
+    return jdField_a_of_type_AndroidTextMethodMovementMethod;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getActionMasked() == 1) {}
+    try
     {
-      paramView = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+      if (jdField_a_of_type_JavaLangReflectField == null) {
+        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+      }
+      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
+      if (bool) {
+        return true;
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
     }
   }
 }

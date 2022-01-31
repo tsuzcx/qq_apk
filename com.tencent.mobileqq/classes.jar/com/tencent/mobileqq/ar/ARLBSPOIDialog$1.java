@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar;
 
-import akxm;
+import akxl;
 import android.widget.ProgressBar;
 
 public class ARLBSPOIDialog$1
   implements Runnable
 {
-  public ARLBSPOIDialog$1(akxm paramakxm) {}
+  public ARLBSPOIDialog$1(akxl paramakxl) {}
   
   public void run()
   {

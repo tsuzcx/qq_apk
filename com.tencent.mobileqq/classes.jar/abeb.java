@@ -1,36 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class abeb
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public abeb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public abeb(FriendProfileCardActivity paramFriendProfileCardActivity, TextView paramTextView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Auuw.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Bfnk != null))
-    {
-      if ((paramIntent == null) || (!paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label"))) {
-        break label107;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged"))) {
-        this.a.jdField_a_of_type_Bfnk.obtainMessage(16, 0, 0).sendToTarget();
-      }
-    }
-    return;
-    label107:
-    this.a.jdField_a_of_type_Bfnk.sendEmptyMessage(4);
+    ((bbrg)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(235)).a(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.g(1);
+    axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A615", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton;
-import yyw;
-import yyx;
+import yyt;
+import yyu;
 
 class GameActivity$26$1
   implements Runnable
@@ -12,7 +12,7 @@ class GameActivity$26$1
   public void run()
   {
     GameActivity.access$3900(this.this$1.this$0);
-    yyw.a().a(this.this$1.this$0, new yyx());
+    yyt.a().a(this.this$1.this$0, new yyu());
     MiniGameAdBannerPopup.checkShouldShow(this.this$1.this$0, this.this$1.this$0.mGameAppConfig);
     if ((GameActivity.access$4000(this.this$1.this$0) != null) && (GameActivity.access$4000(this.this$1.this$0).getCapsuleButton() != null))
     {

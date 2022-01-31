@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
 public final class npf
-  implements Parcelable.Creator<VideoInfo.AdTagInfo>
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  public VideoInfo.AdTagInfo a(Parcel paramParcel)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    return new VideoInfo.AdTagInfo(paramParcel);
+    return new VideoInfo.DownloadBarInfo(paramParcel);
   }
   
-  public VideoInfo.AdTagInfo[] a(int paramInt)
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
   {
-    return new VideoInfo.AdTagInfo[paramInt];
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 

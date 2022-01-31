@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
-import bcpw;
+import bcql;
 import java.util.ArrayList;
 
 public class KanDianVideoUploadBrocast
@@ -19,7 +19,7 @@ public class KanDianVideoUploadBrocast
     if (paramContext == null) {
       return;
     }
-    bcpw.a(paramContext, paramInt, paramCharSequence, 0).b(paramContext.getResources().getDimensionPixelSize(2131298865));
+    bcql.a(paramContext, paramInt, paramCharSequence, 0).b(paramContext.getResources().getDimensionPixelSize(2131298865));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -47,12 +47,12 @@ public class KanDianVideoUploadBrocast
     if ((!this.a.isEmpty()) && (!this.a.contains(str))) {
       return;
     }
-    a(paramContext, 2, paramContext.getString(2131718601));
+    a(paramContext, 2, paramContext.getString(2131718612));
     return;
     str = paramIntent.getStringExtra("mfaileMessage");
     paramIntent = str;
     if (TextUtils.isEmpty(str)) {
-      paramIntent = paramContext.getString(2131718414);
+      paramIntent = paramContext.getString(2131718425);
     }
     a(paramContext, 1, paramIntent);
   }

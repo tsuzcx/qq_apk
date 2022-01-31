@@ -1,18 +1,29 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBottomButton;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
 
 public final class bhfa
-  implements Parcelable.Creator<WeishiBottomButton>
+  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
 {
-  public WeishiBottomButton a(Parcel paramParcel)
+  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
   {
-    return new WeishiBottomButton(paramParcel);
+    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
+    if (paramParcel != null)
+    {
+      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.c = paramParcel.readDouble();
+      localGameCoverInfo.d = paramParcel.readDouble();
+      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    }
+    return localGameCoverInfo;
   }
   
-  public WeishiBottomButton[] a(int paramInt)
+  public CoverCacheData.GameCoverInfo[] a(int paramInt)
   {
-    return new WeishiBottomButton[paramInt];
+    return null;
   }
 }
 

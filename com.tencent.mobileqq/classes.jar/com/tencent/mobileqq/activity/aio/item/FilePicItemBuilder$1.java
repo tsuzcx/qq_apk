@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpi;
+import adpg;
 import android.os.Handler;
-import apuw;
+import apuy;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class FilePicItemBuilder$1
   implements Runnable
 {
-  public FilePicItemBuilder$1(adpi paramadpi, FileManagerEntity paramFileManagerEntity) {}
+  public FilePicItemBuilder$1(adpg paramadpg, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    apuw.a(this.a);
+    apuy.a(this.a);
     this.this$0.b.post(new FilePicItemBuilder.1.1(this));
   }
 }

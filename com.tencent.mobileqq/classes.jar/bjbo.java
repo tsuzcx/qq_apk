@@ -1,85 +1,90 @@
-import android.app.Activity;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.1;
+import java.io.File;
 
 public class bjbo
+  extends bjan
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  public bjbz a;
-  public bjcc a;
-  public bjcj a;
-  bjda jdField_a_of_type_Bjda;
-  ArrayList<bjbf> jdField_a_of_type_JavaUtilArrayList;
-  public long b;
+  public static Object a;
+  public static String a;
+  public QIMCaptureBannerConfig a;
   
-  public bjbo(int paramInt)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaLangString = bjjt.a().getAbsolutePath() + File.separator + "banner_config";
   }
   
-  public void a()
+  public bjbo()
   {
-    bkqo.a().b(null, null, this.jdField_a_of_type_Int);
-    bkqo.a().a(null, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bjcc = null;
+    c();
   }
   
-  public void a(Activity paramActivity)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Bjbz != null) && (this.jdField_a_of_type_Bjbz.jdField_a_of_type_Int == 3))
+    if (this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig != null)
     {
-      this.jdField_a_of_type_Bjbz.b(paramActivity, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bjbz.a(paramActivity, this.jdField_a_of_type_Int);
+      if (!paramBoolean) {
+        break label36;
+      }
+      if (this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig.update) {
+        QIMCaptureBannerConfig.saveBannerConfig(a(), this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig, jdField_a_of_type_JavaLangString);
+      }
     }
-    if (this.jdField_a_of_type_Bjcc != null)
+    return;
+    label36:
+    QIMCaptureBannerConfig.saveBannerConfig(a(), this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig, jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(QIMCaptureBannerConfig.BannerItem paramBannerItem)
+  {
+    if ((paramBannerItem == null) || (TextUtils.isEmpty(paramBannerItem.imgMd5))) {}
+    File localFile;
+    do
     {
-      this.jdField_a_of_type_Bjcc.b(paramActivity, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bjcc.a(paramActivity, this.jdField_a_of_type_Int);
+      do
+      {
+        return false;
+        localFile = new File(jdField_a_of_type_JavaLangString, paramBannerItem.imgMd5);
+        if (localFile.exists()) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|file is not exist -> " + paramBannerItem.imgUrl);
+      return false;
+      try
+      {
+        String str = bbdx.c(localFile.getPath());
+        if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramBannerItem.imgMd5))) {
+          break;
+        }
+        return true;
+      }
+      catch (UnsatisfiedLinkError paramBannerItem) {}
+    } while (!QLog.isColorLevel());
+    paramBannerItem.printStackTrace();
+    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|fileMd5 error " + paramBannerItem.imgUrl);
     }
+    localFile.delete();
+    return false;
   }
   
-  public void a(bjbz parambjbz)
+  public void b()
   {
-    this.jdField_a_of_type_Bjbz = parambjbz;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = null;
   }
   
-  public void a(bjcc parambjcc)
+  public void c()
   {
-    this.jdField_a_of_type_Bjcc = parambjcc;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void a(bjcj parambjcj)
-  {
-    this.jdField_a_of_type_Bjcj = parambjcj;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bjcc == null) || (this.b <= this.jdField_a_of_type_Long);
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    bkqo.a().a(this.jdField_a_of_type_Int);
-    bkqo.a().a(null, paramActivity, this.jdField_a_of_type_Int);
-    bjbz localbjbz = bkqo.a().a[this.jdField_a_of_type_Int];
-    if (localbjbz != null) {
-      localbjbz.a(paramActivity, this.jdField_a_of_type_Int);
-    }
-    bkqo.a().a(null, paramActivity, this.jdField_a_of_type_Int);
-    bkqo.a().b(null, paramActivity, this.jdField_a_of_type_Int);
-  }
-  
-  public void c(Activity paramActivity)
-  {
-    b(paramActivity);
-    this.jdField_a_of_type_Bjbz = null;
-    this.jdField_a_of_type_Bjcc = null;
-    this.jdField_a_of_type_Bjda = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
+    ThreadManager.post(new QIMCaptureBannerManager.1(this), 8, null, true);
   }
 }
 

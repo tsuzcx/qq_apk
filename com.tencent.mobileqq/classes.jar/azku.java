@@ -1,24 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+import android.view.View;
 
-public class azku
-  extends Handler
+class azku
+  extends azkv
 {
-  public azku(NewTroopContactView paramNewTroopContactView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-  }
+  public long a;
+  public View a;
 }
 
 

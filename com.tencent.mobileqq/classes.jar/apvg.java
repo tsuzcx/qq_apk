@@ -1,8 +1,6 @@
 public abstract interface apvg
 {
   public abstract void a();
-  
-  public abstract void a(boolean paramBoolean);
 }
 
 

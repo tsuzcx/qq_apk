@@ -1,28 +1,19 @@
-import java.util.HashMap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lge
+  extends BroadcastReceiver
 {
-  public int a;
-  protected HashMap<String, Integer> a;
+  public lge(VideoAppInterface paramVideoAppInterface) {}
   
-  public static int a(lge paramlge, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramlge == null) {}
-    while ((paramlge.a == null) || (!paramlge.a.containsKey(paramString))) {
-      return 0;
-    }
-    return ((Integer)paramlge.a.get(paramString)).intValue();
-  }
-  
-  public static void a(lge paramlge, String paramString, int paramInt)
-  {
-    if (paramlge == null) {
-      return;
-    }
-    if (paramlge.a == null) {
-      paramlge.a = new HashMap();
-    }
-    paramlge.a.put(paramString, Integer.valueOf(paramInt));
+    paramContext = paramIntent.getAction();
+    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    System.exit(0);
   }
 }
 

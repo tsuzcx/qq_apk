@@ -1,6 +1,6 @@
 public abstract interface ajkq
 {
-  public abstract void a();
+  public abstract void d();
 }
 
 

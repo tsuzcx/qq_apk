@@ -1,22 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Process;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
 
-public final class axoa
-  implements QQPermissionCallback
+public class axoa
+  implements DialogInterface.OnClickListener
 {
-  public axoa(axod paramaxod, AppActivity paramAppActivity) {}
+  public axoa(CheckPermission paramCheckPermission) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Axod);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Axod != null) {
-      this.jdField_a_of_type_Axod.a();
+    if (paramInt == 1)
+    {
+      if (this.a.checkPermission(CheckPermission.access$000(this.a)))
+      {
+        CheckPermission.access$002(this.a, null);
+        this.a.mDirector.b();
+      }
+      return;
     }
+    CheckPermission.access$000(this.a).superFinish();
+    Process.killProcess(Process.myPid());
   }
 }
 

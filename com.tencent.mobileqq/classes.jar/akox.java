@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
 
 class akox
-  implements Comparator<msg_comm.Msg>
+  implements Comparator<MessageRecord>
 {
-  akox(akow paramakow) {}
+  akox(akov paramakov) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

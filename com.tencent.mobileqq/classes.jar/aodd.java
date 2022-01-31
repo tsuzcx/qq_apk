@@ -1,30 +1,16 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
 
 public class aodd
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aodd(AIOEmotionFragment paramAIOEmotionFragment) {}
+  public aodd(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
-      this.a.a("0X800997F");
-    }
-    while (paramMotionEvent.getAction() != 0) {
-      return false;
-    }
-    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+    this.a.getActivity().finish();
   }
 }
 

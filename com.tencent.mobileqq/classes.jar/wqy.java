@@ -1,28 +1,33 @@
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-
 public class wqy
-  implements udh
 {
-  public wqy(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
-  
-  public void a_(udc paramudc)
+  public static <T> String a(String paramString, wqx<T> paramwqx)
   {
-    try
-    {
-      if (QQPlayerService.a()) {
-        QQPlayerService.c(this.a.getActivity());
-      }
-      return;
-    }
-    catch (Exception paramudc)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SubscribeVideoDetailFragment", 2, "QQPlayerService.stopPlayMusic exception!", paramudc);
-      }
-      paramudc.printStackTrace();
-    }
+    return wqz.a().a(paramString, paramwqx);
+  }
+  
+  public static void a(String paramString)
+  {
+    wqz.a().a(paramString);
+  }
+  
+  public static <T> void a(String paramString, wre<T> paramwre)
+  {
+    wqz.a().a(paramString, paramwre);
+  }
+  
+  public static void a(Throwable paramThrowable)
+  {
+    ved.a("PreLoader", "", paramThrowable);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return wqz.a().a(paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    ved.b("PreLoader", paramString);
   }
 }
 

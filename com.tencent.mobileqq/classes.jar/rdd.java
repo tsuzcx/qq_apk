@@ -1,17 +1,20 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
 
 public class rdd
-  extends oyg
+  implements Animation.AnimationListener
 {
-  public rdd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
-  {
-    super(paramString);
-  }
+  public rdd(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(oya paramoya)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramoya.a(this.jdField_a_of_type_JavaUtilMap);
+    ReadInJoyListViewGroup.a(this.a).setVisibility(0);
   }
 }
 

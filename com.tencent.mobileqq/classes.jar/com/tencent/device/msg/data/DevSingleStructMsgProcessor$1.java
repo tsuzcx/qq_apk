@@ -1,16 +1,16 @@
 package com.tencent.device.msg.data;
 
-import aptv;
-import yeo;
+import aptx;
+import yel;
 
 public class DevSingleStructMsgProcessor$1
   implements Runnable
 {
-  public DevSingleStructMsgProcessor$1(yeo paramyeo) {}
+  public DevSingleStructMsgProcessor$1(yel paramyel) {}
   
   public void run()
   {
-    aptv.a(2131693944);
+    aptx.a(2131693945);
   }
 }
 

@@ -1,31 +1,21 @@
-import android.view.View;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ReplacementSpan;
 
 public class rrf
-  extends pms
+  extends ReplacementSpan
 {
-  private final String a;
-  
-  public rrf(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    super(paramInt1, paramInt2, paramInt3);
-    this.a = paramString;
+    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4, paramPaint);
   }
   
-  public rrf(String paramString, int paramInt)
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    super(-12084769, paramInt, 860716207);
-    this.a = paramString;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    onk.a(paramView.getContext(), this.a);
+    return (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
   }
 }
 

@@ -1,198 +1,214 @@
 import android.graphics.Paint;
+import android.util.Log;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class asbc
 {
-  public long a;
-  public asbd a;
-  public String a;
+  public int a;
+  private asbe a;
   public ArrayList<asbe> a;
-  public long b;
-  public asbd b;
-  public ArrayList<asaz> b;
+  @Deprecated
+  public int b;
+  public ArrayList<asbg> b;
+  private int c;
+  private int d;
   
-  public asbc()
+  public asbc(int paramInt1, int paramInt2, ArrayList<asbe> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Asbd = new asbd();
-    this.jdField_b_of_type_Asbd = new asbd();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public asbc a()
-  {
-    asbc localasbc = new asbc();
-    localasbc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localasbc.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    localasbc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_JavaUtilArrayList != null)
-    {
-      localasbc.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-      localasbc.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    localasbc.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    return localasbc;
+    return 0;
   }
   
-  public ArrayList<asbe> a()
+  public int a(int paramInt)
+  {
+    return b(paramInt);
+  }
+  
+  public List<asbe> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt)
+  {
+    a(paramPaint1, paramPaint2, paramInt, false, false);
+  }
+  
   public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    int k = (int)paramPaint1.measureText(this.jdField_a_of_type_JavaLangString);
-    int m = (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString);
-    int j = 0;
-    int i = 0;
-    if (k <= paramInt) {
-      if (paramBoolean2)
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.c = 0;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        paramInt = j;
-        paramPaint1 = new asbe(this.jdField_a_of_type_JavaLangString, paramInt, i, m, k, this.jdField_b_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+        asbe localasbe = (asbe)localIterator.next();
+        localasbe.a(paramPaint1, paramPaint2, paramInt, paramBoolean1, paramBoolean2);
+        this.c += localasbe.a();
+        this.jdField_b_of_type_JavaUtilArrayList.addAll(localasbe.jdField_a_of_type_JavaUtilArrayList);
       }
     }
-    String[] arrayOfString;
-    int i6;
-    do
-    {
-      return;
-      i = paramInt - (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString) >> 1;
-      j = paramInt - k >> 1;
-      paramInt = i;
-      i = j;
-      break;
-      if (paramBoolean1)
-      {
-        paramPaint1 = new asbe(this.jdField_a_of_type_JavaLangString, 0, 0, m, k, this.jdField_b_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
-        return;
-      }
-      arrayOfString = asbb.a(this.jdField_a_of_type_JavaLangString, paramPaint1, paramInt, paramInt);
-      i6 = arrayOfString.length;
-    } while (i6 <= 0);
-    int n = 0;
-    j = 0;
-    i = 0;
-    int i3 = 0;
-    int i1 = 0;
-    int i2 = 0;
-    m = 0;
-    k = 0;
-    label198:
-    label210:
-    Object localObject;
-    int i4;
-    asaz localasaz;
-    if (i3 < i6)
-    {
-      if (!paramBoolean2) {
-        break label481;
-      }
-      localObject = null;
-      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-        break label705;
-      }
-      n += arrayOfString[i3].length();
-      localObject = new ArrayList();
-      i4 = m;
-      m = j;
-      j = k;
-      k = i4;
-      if (m >= this.jdField_b_of_type_JavaUtilArrayList.size()) {
-        break label678;
-      }
-      localasaz = (asaz)this.jdField_b_of_type_JavaUtilArrayList.get(m);
-      if ((i3 == 0) || (i != m)) {
-        break label663;
-      }
-      k = n - arrayOfString[i3].length();
-      i4 = localasaz.jdField_a_of_type_Int;
-      j = k;
-      k = i4 - k;
-      label327:
-      if ((localasaz.jdField_a_of_type_Int > n) || (localasaz.jdField_b_of_type_Int < n)) {
-        break label573;
-      }
-      if (i3 != 0) {
-        break label520;
-      }
-      ((ArrayList)localObject).add(new asaz(localasaz.jdField_a_of_type_Long, localasaz.jdField_b_of_type_Long, localasaz.jdField_a_of_type_Int, arrayOfString[i3].length()));
-      label388:
-      m += 1;
-      i4 = m;
-      i = n;
-      n = k;
-      k = i4;
+  }
+  
+  public void a(asbc paramasbc)
+  {
+    this.jdField_a_of_type_Int = paramasbc.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramasbc.jdField_b_of_type_Int;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
     for (;;)
     {
-      localObject = new asbe(arrayOfString[i3], i1, i2, (ArrayList)localObject);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      int i5 = i3 + 1;
-      i3 = k;
-      i4 = m;
-      m = j;
-      k = n;
-      j = i4;
-      n = i;
-      i = i3;
-      i3 = i5;
-      break label198;
-      break;
-      label481:
-      i1 = (int)paramPaint2.measureText(arrayOfString[i3]);
-      i2 = paramInt - (int)paramPaint1.measureText(arrayOfString[i3]) >> 1;
-      i1 = paramInt - i1 >> 1;
-      break label210;
-      label520:
-      i = localasaz.jdField_a_of_type_Int;
-      i4 = arrayOfString[i3].length();
-      ((ArrayList)localObject).add(new asaz(localasaz.jdField_a_of_type_Long, localasaz.jdField_b_of_type_Long, i - j - k, i4));
-      break label388;
-      label573:
-      if (i3 == 0) {
-        ((ArrayList)localObject).add(localasaz);
-      }
-      for (;;)
+      Iterator localIterator = paramasbc.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        i4 = k;
-        m += 1;
-        k = j;
-        j = i4;
-        break;
-        i4 = localasaz.jdField_a_of_type_Int;
-        i5 = localasaz.jdField_b_of_type_Int;
-        ((ArrayList)localObject).add(new asaz(localasaz.jdField_a_of_type_Long, localasaz.jdField_b_of_type_Long, i4 - j - k, i5 - j - k));
+        asbe localasbe = (asbe)localIterator.next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localasbe.a());
       }
-      label663:
-      i4 = j;
-      j = k;
-      k = i4;
-      break label327;
-      label678:
-      i4 = k;
-      i5 = j;
-      k = i;
-      i = n;
-      j = i4;
-      n = i5;
-      continue;
-      label705:
-      i4 = k;
-      i5 = j;
-      k = i;
-      i = n;
-      j = m;
-      n = i4;
-      m = i5;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
+    this.c = paramasbc.b();
+    Log.d("Lyric", "copy -> mType : " + this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0);
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  public int b(int paramInt)
+  {
+    if (paramInt < 0)
+    {
+      Log.w("Lyric", "findLineNoByStartTime -> illegal time");
+      return -1;
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    {
+      Log.w("Lyric", "findLineNoByStartTime -> lyric is empty");
+      return -1;
+    }
+    if ((this.jdField_a_of_type_Asbe != null) && (this.jdField_a_of_type_Asbe.jdField_a_of_type_Long < paramInt) && (this.jdField_a_of_type_Asbe.jdField_a_of_type_Long + this.jdField_a_of_type_Asbe.b > paramInt)) {
+      return this.d;
+    }
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    int k = localArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      asbe localasbe = (asbe)localArrayList.get(j);
+      if (localasbe == null) {}
+      while (localasbe.jdField_a_of_type_Long <= paramInt)
+      {
+        j += 1;
+        break;
+      }
+    }
+    for (paramInt = j - 1;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+      if (j == k) {}
+      for (paramInt = k - 1;; paramInt = i)
+      {
+        this.d = paramInt;
+        this.jdField_a_of_type_Asbe = ((asbe)localArrayList.get(paramInt));
+        return paramInt;
+      }
+    }
+  }
+  
+  public int c()
+  {
+    if (a()) {
+      return 0;
+    }
+    asbe localasbe = (asbe)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    long l = localasbe.jdField_a_of_type_Long;
+    return (int)(localasbe.b + l);
+  }
+  
+  public int c(int paramInt)
+  {
+    int i;
+    if (paramInt < 0)
+    {
+      Log.w("Lyric", "findEndLineByStartTime -> illegal time");
+      i = 0;
+      return i;
+    }
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList == null)
+    {
+      Log.w("Lyric", "findEndLineByStartTime -> sentence data not found");
+      return -1;
+    }
+    int k = localArrayList.size();
+    int j = 0;
+    if (j < k)
+    {
+      asbe localasbe = (asbe)localArrayList.get(j);
+      if (localasbe == null) {}
+      while (paramInt > localasbe.jdField_a_of_type_Long)
+      {
+        j += 1;
+        break;
+      }
+    }
+    for (paramInt = j - 1;; paramInt = 0)
+    {
+      i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+      if (j != k) {
+        break;
+      }
+      return k - 1;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return null;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      asbe localasbe = (asbe)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localasbe.jdField_a_of_type_Long);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localasbe.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(":");
+      localStringBuilder.append(localasbe.b + localasbe.jdField_a_of_type_Long);
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-class azzf
+public class azzf
   implements DialogInterface.OnClickListener
 {
-  azzf(azze paramazze) {}
+  public azzf(ReciteFragment paramReciteFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(this.a.a.a);
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).f();
-    }
+    this.a.h();
   }
 }
 

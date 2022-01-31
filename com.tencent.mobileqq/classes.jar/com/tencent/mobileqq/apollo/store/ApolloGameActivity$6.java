@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class ApolloGameActivity$6
@@ -9,7 +9,7 @@ class ApolloGameActivity$6
 {
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131700356), 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131700367), 1).a();
   }
 }
 

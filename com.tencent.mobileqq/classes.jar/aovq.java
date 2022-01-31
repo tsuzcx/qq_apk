@@ -1,143 +1,44 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
-public class aovq
+class aovq
+  extends aowi
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public astr a;
-  public asue a;
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  List<aovo> jdField_a_of_type_JavaUtilList;
-  List<aovo> b;
-  List<aovo> c;
-  public List<aovo> d;
-  List<aovo> e;
+  aovq(aovp paramaovp, aovv paramaovv, String paramString) {}
   
-  public aovq(long paramLong, asue paramasue, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astr paramastr)
+  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = ???;
-    this.jdField_a_of_type_Asue = paramHashMap;
-    this.jdField_a_of_type_Int = 0;
-    Object localObject;
-    this.jdField_a_of_type_Astr = localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = paramastr;
-    this.b = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.d = new ArrayList();
-    this.e = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.b.size();
-  }
-  
-  public void a()
-  {
-    c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aovo)localIterator.next()).a();
+    super.a(paramBoolean, paramLong, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " start DiscUploadTaskExcuter isSuccess:" + paramBoolean + " retCode:" + paramLong + " retMsg:" + paramString6);
     }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public void a(aovo paramaovo)
-  {
-    if (paramaovo != null) {
-      this.b.add(paramaovo);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((aovo)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  void c()
-  {
-    if (10 <= this.b.size()) {}
-    ArrayList localArrayList;
-    for (int i = 10;; i = this.b.size())
+    if (!paramBoolean)
     {
-      localArrayList = new ArrayList(i);
-      int j = 0;
-      while (j < i)
+      if ((paramLong == -100001L) || (paramLong == -100002L))
       {
-        aovo localaovo = (aovo)this.b.get(j);
-        this.jdField_a_of_type_JavaUtilList.add(localaovo);
-        localArrayList.add(localaovo);
-        j += 1;
-      }
-    }
-    this.b.removeAll(localArrayList);
-  }
-  
-  public void d()
-  {
-    int j = this.c.size();
-    int k = this.e.size();
-    int m = this.d.size();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    aovo localaovo;
-    if (localIterator.hasNext())
-    {
-      localaovo = (aovo)localIterator.next();
-      if ((localaovo.b == 2) || (localaovo.b == 3) || (localaovo.b == 4)) {
-        localIterator.remove();
-      }
-      if (localaovo.b == 2)
-      {
-        this.c.add(localaovo);
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (localaovo.b == 3)
-      {
-        this.e.add(localaovo);
-        i += 1;
-      }
-      else if (localaovo.b == 4)
-      {
-        this.d.add(localaovo);
-        i += 1;
-        continue;
-        c();
-        if (QLog.isColorLevel())
-        {
-          int n = this.jdField_a_of_type_JavaUtilList.size();
-          int i1 = this.b.size();
-          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, multiUniseq[ " + this.jdField_a_of_type_Long + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
-        }
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          ((aovo)localIterator.next()).a();
-        }
-        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
-        {
-          this.jdField_a_of_type_Int = 5;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: multiUniseq[ " + this.jdField_a_of_type_Long + "]");
-          }
-          aouu.a(this.jdField_a_of_type_Aouu, this.jdField_a_of_type_Long);
-        }
+        this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Long, false), true);
         return;
       }
+      this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Long, false), false);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " start upload Discfile");
+    }
+    paramBoolean = apei.e(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy));
+    paramString5 = paramBundle.getString("strHttpsDomain");
+    int i = paramBundle.getShort("httpsPort");
+    paramString2 = "";
+    if (apvm.b(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy))) {
+      paramString2 = paramBundle.getString("strHttpsDomain");
+    }
+    paramString1 = new aowk(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy), paramString3, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aovp.jdField_a_of_type_Long, paramString4, paramInt, paramBoolean, paramString5, i, this.jdField_a_of_type_Aovp.b, paramString2, new aovr(this, paramString1));
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " add to rsCenter");
+    }
+    aovp.a(this.jdField_a_of_type_Aovp, apug.a().longValue());
+    aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy).a().a(aovp.a(this.jdField_a_of_type_Aovp), paramString1);
   }
 }
 

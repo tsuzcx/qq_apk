@@ -1,82 +1,32 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aakb
-  extends akhc
+  implements DialogInterface.OnClickListener
 {
   public aakb(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected void a(boolean paramBoolean, ayaw paramayaw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
+      QLog.d("AssociatedAccountActivity", 2, "switchFail -> to LoginActivity which=" + paramInt);
     }
-    if ((paramayaw == null) || (!TextUtils.equals(paramayaw.b, this.a.app.c()))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      paramayaw = paramayaw.c();
-    } while ((paramayaw == null) || (this.a.a == null));
-    Iterator localIterator = this.a.a.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (paramayaw.contains(((SubAccountInfo)localIterator.next()).subuin));
-    for (int i = 1;; i = 0)
-    {
-      if (paramayaw.size() != this.a.a.size()) {
-        i = j;
-      }
-      while (i != 0)
-      {
-        AssociatedAccountActivity.d(this.a, false);
-        return;
-      }
-      break;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setPackage(this.a.getPackageName());
+    paramDialogInterface.setClass(this.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("fromsubaccount", true);
+    if (this.a.a != null) {
+      paramDialogInterface.putExtra("uin", this.a.a);
     }
-  }
-  
-  protected void b(boolean paramBoolean, ayaw paramayaw)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
-      if (paramayaw != null) {
-        QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramayaw == null) || (!TextUtils.equals(paramayaw.b, this.a.app.c()))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    AssociatedAccountActivity.d(this.a, false);
-  }
-  
-  protected void c(boolean paramBoolean, ayaw paramayaw)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
-      if (paramayaw != null) {
-        QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramayaw == null) || (!TextUtils.equals(paramayaw.b, this.a.app.c()))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    AssociatedAccountActivity.d(this.a, false);
+    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivityForResult(paramDialogInterface, 1011);
+    this.a.a = null;
   }
 }
 

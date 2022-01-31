@@ -1,13 +1,16 @@
-import android.view.View;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.6.1;
+import mqq.os.MqqHandler;
 
-class biml
-  implements xfc
+public class biml
+  implements bjos<Boolean>
 {
-  biml(bimj parambimj) {}
+  biml(bima parambima) {}
   
-  public void a()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    bimj.a(this.a).setVisibility(0);
+    ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEBottomListPart.6.1(this));
   }
 }
 

@@ -1,41 +1,37 @@
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class aaku
-  extends atzn
+  implements View.OnClickListener
 {
-  public aaku(AuthDevActivity paramAuthDevActivity) {}
+  public aaku(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    super.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody)
-  {
-    super.a(paramRspBody);
-    AuthDevActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
-    if (i == 1)
+    boolean bool2 = true;
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      paramRspBody = this.a.getString(2131692277);
-      localFormSimpleItem.setRightText(paramRspBody);
-      if (i != 1) {
-        break label111;
+      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
+      String str1 = paramView.strDeviceName;
+      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+      int i = this.jdField_a_of_type_Int;
+      if (paramView.iLoginPlatform == 3L) {}
+      for (;;)
+      {
+        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
+        return;
+        bool2 = false;
       }
-    }
-    label111:
-    for (paramRspBody = "1";; paramRspBody = "0")
-    {
-      axqw.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
-      return;
-      paramRspBody = this.a.getString(2131692284);
-      break;
     }
   }
 }

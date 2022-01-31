@@ -1,17 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
 class ayxh
-  extends BroadcastReceiver
+  implements EIPClientConnectListener
 {
-  ayxh(ayxe paramayxe) {}
+  ayxh(ayxg paramayxg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void connectFailed()
   {
-    if ("com.tencent.innerdns.domainAddressDataUpdateAction".equals(paramIntent.getAction())) {
-      ayxe.a(this.a);
+    ayxg.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectFailed");
     }
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      ayxg.a(this.a, paramEIPCConnection.procName);
+    }
+    ayxg.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectSuccess");
+    }
+    ayxg.a(this.a);
   }
 }
 

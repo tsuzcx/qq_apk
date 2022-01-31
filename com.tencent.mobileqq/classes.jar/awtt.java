@@ -1,16 +1,15 @@
-import java.util.Comparator;
-
-final class awtt
-  implements Comparator<awoc>
+public class awtt
 {
-  public int a(awoc paramawoc1, awoc paramawoc2)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  
+  public awtt(int paramInt, String paramString)
   {
-    int j = Long.signum(paramawoc2.b() - paramawoc1.b());
-    int i = j;
-    if (j == 0) {
-      i = awts.a(paramawoc1, paramawoc2);
-    }
-    return i;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

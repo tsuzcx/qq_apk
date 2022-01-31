@@ -1,55 +1,33 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class bcqc
+  implements TencentMap.OnCameraChangeListener
 {
-  Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bcqd(this, Looper.getMainLooper());
-  Toast jdField_a_of_type_AndroidWidgetToast = null;
+  public bcqc(QQMapView paramQQMapView) {}
   
-  public bcqc(Context paramContext) {}
-  
-  public void a()
+  public void onCameraChange(CameraPosition paramCameraPosition)
   {
-    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+    if ((this.a.jdField_a_of_type_Bcqe != null) && (!this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Bcqe.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    bcqe localbcqe = new bcqe(null);
-    localbcqe.jdField_a_of_type_Int = paramInt4;
-    localbcqe.b = paramInt1;
-    localbcqe.c = paramInt3;
-    localbcqe.d = paramInt2;
-    localMessage.obj = localbcqe;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    bcqe localbcqe = new bcqe(null);
-    localbcqe.jdField_a_of_type_Int = paramInt3;
-    localbcqe.jdField_a_of_type_JavaLangString = paramString;
-    localbcqe.c = paramInt2;
-    localbcqe.d = paramInt1;
-    localMessage.obj = localbcqe;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    if (this.a.jdField_a_of_type_Boolean) {
+      QQMapView.a(this.a, paramCameraPosition);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import android.view.View;
-
-class bimq
-  implements xfc
+public abstract interface bimq
 {
-  bimq(bimj parambimj) {}
+  public abstract void a();
   
-  public void a()
-  {
-    bimj.a(this.a).setVisibility(0);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import ayur;
+import ayut;
 
 public class ShortVideoDownloadProcessor$1
   implements Runnable
 {
-  public ShortVideoDownloadProcessor$1(ayur paramayur) {}
+  public ShortVideoDownloadProcessor$1(ayut paramayut) {}
   
   public void run()
   {

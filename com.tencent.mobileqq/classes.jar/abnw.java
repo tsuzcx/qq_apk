@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abnw
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public abnw(NearbyActivity paramNearbyActivity) {}
+  public abnw(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.c)
-    {
-      this.a.g();
-      this.a.b.removeMessages(this.a.i);
-      sendEmptyMessageDelayed(this.a.i, this.a.n);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abnw
  * JD-Core Version:    0.7.0.1
  */

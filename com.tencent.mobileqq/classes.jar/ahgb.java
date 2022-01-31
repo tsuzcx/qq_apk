@@ -1,43 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class ahgb
-  implements ahbt
+  implements Comparator<ahgi>
 {
-  ahgb(ahfz paramahfz) {}
+  ahgb(ahfx paramahfx) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public int a(ahgi paramahgi1, ahgi paramahgi2)
   {
-    int j = 1;
-    int i;
-    if (paramInt == 0)
-    {
-      i = 1;
-      if (paramPathResult == null) {
-        break label114;
-      }
+    if (paramahgi1.a == paramahgi2.a) {
+      return 0;
     }
-    for (;;)
-    {
-      if (((j & i) != 0) && (!bbjw.a(paramPathResult.filePath)))
-      {
-        Bitmap localBitmap = ahfz.a(this.a, paramPathResult.filePath, false);
-        if (localBitmap != null)
-        {
-          ahfz.a(this.a, localBitmap);
-          ahfz.a(this.a, false);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("springHb_SpringEntryManager", 2, "getTransitionOrDefaultBitmap resCode:" + paramInt + ",pathRes:" + paramPathResult);
-      }
-      return;
-      i = 0;
-      break;
-      label114:
-      j = 0;
+    if (paramahgi1.a > paramahgi2.a) {
+      return 1;
     }
+    return -1;
   }
 }
 

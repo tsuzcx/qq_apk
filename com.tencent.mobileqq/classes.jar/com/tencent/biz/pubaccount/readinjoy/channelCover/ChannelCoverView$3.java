@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
-import noo;
-import npx;
-import onk;
+import nol;
+import npu;
+import onh;
 import org.json.JSONObject;
-import qze;
+import qzb;
 
 public final class ChannelCoverView$3
   implements Runnable
@@ -22,14 +22,14 @@ public final class ChannelCoverView$3
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
         ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
       }
-      ((JSONObject)localObject).put("network_type", npx.a());
-      ((JSONObject)localObject).put("version", npx.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("network_type", npu.a());
+      ((JSONObject)localObject).put("version", npu.jdField_a_of_type_JavaLangString);
       ((JSONObject)localObject).put("os", "1");
-      ((JSONObject)localObject).put("imei", onk.f());
-      ((JSONObject)localObject).put("imsi", onk.g());
-      ((JSONObject)localObject).put("kandian_mode_new", npx.a());
-      ((JSONObject)localObject).put("kandian_mode", onk.e());
-      ((JSONObject)localObject).put("entrance", qze.a(this.jdField_a_of_type_Int));
+      ((JSONObject)localObject).put("imei", onh.f());
+      ((JSONObject)localObject).put("imsi", onh.g());
+      ((JSONObject)localObject).put("kandian_mode_new", npu.a());
+      ((JSONObject)localObject).put("kandian_mode", onh.e());
+      ((JSONObject)localObject).put("entrance", qzb.a(this.jdField_a_of_type_Int));
       localObject = ((JSONObject)localObject).toString();
     }
     catch (Exception localException)
@@ -44,7 +44,7 @@ public final class ChannelCoverView$3
         }
       }
     }
-    noo.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
+    nol.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
   }
 }
 

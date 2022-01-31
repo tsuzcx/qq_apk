@@ -1,16 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
 
-final class bbad
-  implements View.OnClickListener
+public class bbad
 {
-  bbad(AtomicBoolean paramAtomicBoolean, audu paramaudu) {}
+  Bundle a = new Bundle();
   
-  public void onClick(View paramView)
+  public Bundle a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_Audu.dismiss();
+    return this.a;
+  }
+  
+  public bbad a(String paramString)
+  {
+    this.a.putString("text_evidence", paramString);
+    return this;
+  }
+  
+  public bbad b(String paramString)
+  {
+    this.a.putString("img_evidence", paramString);
+    return this;
+  }
+  
+  public bbad c(String paramString)
+  {
+    this.a.putString("url_evidence", paramString);
+    return this;
+  }
+  
+  public bbad d(String paramString)
+  {
+    this.a.putString("video_evidence", paramString);
+    return this;
+  }
+  
+  public bbad e(String paramString)
+  {
+    this.a.putString("file_evidence", paramString);
+    return this;
+  }
+  
+  public bbad f(String paramString)
+  {
+    this.a.putString("audio_evidence", paramString);
+    return this;
+  }
+  
+  public bbad g(String paramString)
+  {
+    this.a.putString("user_input_param", paramString);
+    return this;
   }
 }
 

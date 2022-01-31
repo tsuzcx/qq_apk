@@ -1,25 +1,12 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-
 public class loh
-  implements mil
 {
-  public loh(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public long a;
+  public long b;
   
-  public void a(boolean paramBoolean)
+  public loh(long paramLong1, long paramLong2)
   {
-    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
-      return;
-    }
-    if ((this.a.a.e) || (this.a.a.l())) {
-      this.a.e();
-    }
-    for (;;)
-    {
-      axqw.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
-      return;
-      this.a.d();
-    }
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mio;
+import mil;
 
 public class QavSharpnessSVIPHelper$1
   implements Runnable
 {
-  public QavSharpnessSVIPHelper$1(mio parammio) {}
+  public QavSharpnessSVIPHelper$1(mil parammil) {}
   
   public void run()
   {

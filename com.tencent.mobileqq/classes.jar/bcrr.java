@@ -1,22 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.view.View;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-public final class bcrr
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bcrr
 {
-  private final TabDragAnimationView a;
+  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
   
-  public bcrr(TabDragAnimationView paramTabDragAnimationView)
-  {
-    this.a = paramTabDragAnimationView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f, 0.0F, true);
-  }
+  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
 }
 
 

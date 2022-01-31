@@ -1,16 +1,16 @@
 package com.tencent.device.msg.activities;
 
-import aptv;
-import yeb;
+import aptx;
+import ydy;
 
 public class DevShortVideoItemBuilder$1
   implements Runnable
 {
-  public DevShortVideoItemBuilder$1(yeb paramyeb) {}
+  public DevShortVideoItemBuilder$1(ydy paramydy) {}
   
   public void run()
   {
-    aptv.a(2131693944);
+    aptx.a(2131693945);
   }
 }
 

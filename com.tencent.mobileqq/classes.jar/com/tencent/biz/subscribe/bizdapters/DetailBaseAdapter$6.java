@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.bizdapters;
 
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import wkx;
+import wku;
 
 public class DetailBaseAdapter$6
   implements Runnable
 {
-  public DetailBaseAdapter$6(wkx paramwkx) {}
+  public DetailBaseAdapter$6(wku paramwku) {}
   
   public void run()
   {

@@ -17,7 +17,7 @@ public class dx
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramCompoundButton.setChecked(paramBoolean);
-        bcpw.a(this.a, 1, ajyc.a(2131706183), 0).b(this.a.getTitleBarHeight());
+        bcql.a(this.a, 1, ajya.a(2131706194), 0).b(this.a.getTitleBarHeight());
         return;
       }
     }

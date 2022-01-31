@@ -1,4 +1,7 @@
-public class alhp {}
+public abstract interface alhp
+{
+  public abstract void a(alhr paramalhr);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar

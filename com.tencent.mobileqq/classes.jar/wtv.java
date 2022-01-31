@@ -1,35 +1,20 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
 public class wtv
-  implements SeekBar.OnSeekBarChangeListener
+  implements bcud
 {
   public wtv(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if (VideoPlayerView.a(this.a)) {
-      xeo.a("setSeekBar", 100L, new wtw(this, paramSeekBar));
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    VideoPlayerView.a(this.a, true);
-    VideoPlayerView.b(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.a() != null)
+    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
     {
-      QLog.d("VideoPlayerView", 1, "seek onStopTrackingTouch seekBar progress" + paramSeekBar.getProgress());
-      this.a.a((int)(paramSeekBar.getProgress() / (this.a.a.getMax() * 1.0F) * (float)this.a.a().b()));
+      VideoPlayerView.d(this.a, false);
+      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
+      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
     }
-    VideoPlayerView.a(this.a, false);
-    VideoPlayerView.b(this.a, false);
   }
 }
 

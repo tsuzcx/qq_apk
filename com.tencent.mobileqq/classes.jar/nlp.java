@@ -1,16 +1,14 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 class nlp
   implements View.OnClickListener
 {
-  nlp(nll paramnll) {}
+  nlp(nlo paramnlo) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
-    nll.c(this.a);
+    this.a.a.d();
   }
 }
 

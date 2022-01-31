@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
-final class qpa
-  implements Animation.AnimationListener
+class qpa
+  extends QIPCModule
 {
-  qpa(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  qpa(qoz paramqoz, String paramString)
   {
-    this.a.setTag(-1, null);
+    super(paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (qoz.a(this.a))
+    {
+      Iterator localIterator = qoz.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((qpb)localIterator.next()).a(paramString, paramBundle);
+      }
+    }
+    return null;
+  }
 }
 
 

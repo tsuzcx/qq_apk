@@ -1,99 +1,117 @@
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+
 public class liy
 {
-  public static final String a(int paramInt)
+  public int a;
+  public long a;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long[] jdField_a_of_type_ArrayOfLong = new long[41];
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  
+  liy()
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return paramInt + "";
-    case 0: 
-      return "report_status";
-    case 9: 
-      return "roomid";
-    case 10: 
-      return "self_uin";
-    case 11: 
-      return "peer_uin";
-    case 12: 
-      return "role";
-    case 13: 
-      return "business_type";
-    case 14: 
-      return "business_id";
-    case 15: 
-      return "session_type";
-    case 16: 
-      return "process_exit_reason";
-    case 17: 
-      return "current_node";
-    case 18: 
-      return "battery";
-    case 19: 
-      return "is_lock_screen";
-    case 20: 
-      return "is_foreground";
-    case 21: 
-      return "memory_total";
-    case 22: 
-      return "memory_left";
-    case 23: 
-      return "memory_usage";
-    case 24: 
-      return "duration";
-    case 25: 
-      return "node_entrance";
-    case 26: 
-      return "node_ui_init";
-    case 27: 
-      return "node_process_create";
-    case 28: 
-      return "node_sdk_req";
-    case 29: 
-      return "node_ui_call";
-    case 30: 
-      return "node_sdk_connect";
-    case 31: 
-      return "node_ui_talk";
-    case 32: 
-      return "node_ui_small";
-    case 33: 
-      return "node_session_close";
-    case 34: 
-      return "node_intent_recv";
-    case 35: 
-      return "node_msf_recv";
-    case 36: 
-      return "node_sdk_recv";
-    case 37: 
-      return "node_action_accept";
-    case 38: 
-      return "node_action_reject";
-    case 39: 
-      return "node_action_timeout";
-    case 40: 
-      return "report_version";
-    case 41: 
-      return "memory_level";
-    case 42: 
-      return "memory_remain_percen";
-    case 43: 
-      return "is_effects";
-    case 44: 
-      return "is_camera_self_open";
-    case 45: 
-      return "is_camera_peer_open";
-    case 46: 
-      return "is_mic_self_open";
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
+  }
+  
+  public String a()
+  {
+    String str1 = Build.MODEL;
+    String str2 = String.valueOf(Build.VERSION.SDK_INT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Android").append('|');
+    localStringBuilder.append(str1).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
+    if (this.jdField_b_of_type_Int != -1) {
+      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
     }
-    return "is_mic_peer_open";
+    for (;;)
+    {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
+      return localStringBuilder.toString();
+      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+    }
+  }
+  
+  public String a(int paramInt, long paramLong)
+  {
+    if ((paramInt >= 0) && (paramInt < 41))
+    {
+      StringBuilder localStringBuilder;
+      if (paramLong == 1L)
+      {
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
+        localStringBuilder = new StringBuilder();
+        paramInt = 0;
+        label34:
+        if (paramInt >= 41) {
+          break label242;
+        }
+        switch (paramInt)
+        {
+        default: 
+          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break label34;
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+        break;
+        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
+        {
+          this.jdField_a_of_type_JavaLangString = liw.a();
+          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
+        }
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(0).append('|');
+        continue;
+        if (this.jdField_b_of_type_Long > 0L) {
+          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
+        }
+        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
+      }
+      label242:
+      return localStringBuilder.toString();
+    }
+    lcg.d("VideoNodeReporter", "buildBody report error:" + paramInt);
+    return null;
+  }
+  
+  public void a(lga paramlga, String paramString)
+  {
+    if (paramlga != null)
+    {
+      if (paramlga.j != -1) {
+        this.jdField_a_of_type_Int = paramlga.j;
+      }
+      if (paramlga.jdField_d_of_type_Int != 0) {
+        this.jdField_b_of_type_Int = paramlga.jdField_d_of_type_Int;
+      }
+      if (!TextUtils.isEmpty(paramlga.jdField_d_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramlga.jdField_d_of_type_JavaLangString;
+      }
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
   }
 }
 

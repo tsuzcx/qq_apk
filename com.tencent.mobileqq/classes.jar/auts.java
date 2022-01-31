@@ -1,23 +1,20 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class auts
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public long a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public GlowCountRecyclerView a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  View c;
-  public ImageView c;
-  public View d;
-  public ImageView d;
-  View e;
+  public auts(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.height = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+  }
 }
 
 

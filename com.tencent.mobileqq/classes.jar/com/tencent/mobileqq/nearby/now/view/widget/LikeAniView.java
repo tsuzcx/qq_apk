@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import java.util.Random;
-import muf;
+import muc;
 
 public class LikeAniView
   extends FrameLayout
@@ -45,12 +45,12 @@ public class LikeAniView
   
   private void a()
   {
-    this.jdField_a_of_type_Int = ((int)muf.a(getContext(), 90.0F));
-    this.jdField_b_of_type_Int = ((int)muf.a(getContext(), 90.0F));
+    this.jdField_a_of_type_Int = ((int)muc.a(getContext(), 90.0F));
+    this.jdField_b_of_type_Int = ((int)muc.a(getContext(), 90.0F));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840957);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840954);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   

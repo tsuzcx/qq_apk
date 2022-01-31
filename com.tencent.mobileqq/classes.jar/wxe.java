@@ -1,27 +1,25 @@
-import android.view.View;
-import android.widget.FrameLayout;
 import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class wxe
-  implements TouchWebView.OnScrollChangedListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public wxe(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public wxe(TribeVideoPlugin paramTribeVideoPlugin, wxl paramwxl) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged before every thing t = " + paramInt2 + " oldt = " + paramInt4);
-    }
-    if (TribeVideoPlugin.a(this.a) != null)
+    QLog.e("TribeVideoPlugin", 2, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " what = " + paramInt2 + " position = " + paramInt3 + " extra = " + paramString);
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoPlugin", 2, "onWebViewCreated onScrollChanged t = " + paramInt2 + " oldt = " + paramInt4);
-      }
-      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
-      TribeVideoPlugin.a(this.a);
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(7, wxl.a(this.jdField_a_of_type_Wxl));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = wxl.a(this.jdField_a_of_type_Wxl);
+      paramTVK_IMediaPlayer.what = 7;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
     }
+    return false;
   }
 }
 

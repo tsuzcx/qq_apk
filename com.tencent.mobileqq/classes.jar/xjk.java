@@ -1,52 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import dalvik.system.DexClassLoader;
+import java.io.File;
 
 class xjk
-  implements mzb
+  implements myz
 {
-  xjk(xji paramxji, QQAppInterface paramQQAppInterface) {}
+  xjk(xjj paramxjj, long paramLong, Context paramContext, boolean paramBoolean, myz parammyz) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void loaded(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    if (paramInt == 0)
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
+    }
+    this.jdField_a_of_type_Xjj.d = mzb.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString);
+    String str = mzh.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_Xjj.b;
+    try
     {
-      String str;
-      try
+      Object localObject = new File(this.jdField_a_of_type_Xjj.c);
+      if (!this.jdField_a_of_type_Xjj.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_Xjj.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_Xjj.d))
       {
-        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
-        paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
-        {
-          bbdj.a(mzk.a(this.jdField_a_of_type_Xji.a) + this.jdField_a_of_type_Xji.a);
-          this.jdField_a_of_type_Xji.b();
-          return;
+        if (!((File)localObject).exists()) {
+          break label379;
         }
+        bbdx.a(((File)localObject).getAbsolutePath());
+        this.jdField_a_of_type_Xjj.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_Xjj.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString), mzb.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString)).commit();
+        ((File)localObject).mkdirs();
       }
-      catch (Exception paramString)
+      for (;;)
       {
-        paramString.printStackTrace();
-        this.jdField_a_of_type_Xji.a();
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Xjj.b).getCanonicalPath();
+        this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_Xjj.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
+        this.jdField_a_of_type_Xjj.jdField_a_of_type_Xje = new xje(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Myz == null) {
+          break;
+        }
+        this.jdField_a_of_type_Myz.loaded(paramInt, paramString);
         return;
+        label379:
+        ((File)localObject).mkdirs();
       }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_Xji.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_Xji.a();
       return;
     }
-    this.jdField_a_of_type_Xji.a();
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
+      }
+    }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,40 +1,93 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amxk
+  extends ampa<amxj>
 {
-  private int a;
-  
-  public amxk()
+  public static amxj a()
   {
-    this.jdField_a_of_type_Int = 1;
+    amxj localamxj2 = (amxj)ampl.a().a(493);
+    amxj localamxj1 = localamxj2;
+    if (localamxj2 == null) {
+      localamxj1 = new amxj();
+    }
+    return localamxj1;
   }
   
-  public static amxk a(ampi paramampi)
+  public int a()
   {
-    amxk localamxk = new amxk();
-    if (paramampi != null) {
+    return 493;
+  }
+  
+  @NonNull
+  public amxj a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new amxj();
+  }
+  
+  @Nullable
+  public amxj a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
+      }
+      return amxj.a(paramArrayOfamph[0]);
+    }
+    return null;
+  }
+  
+  public Class<amxj> a()
+  {
+    return amxj.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amxj paramamxj)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamxj == null) {
+        break label43;
       }
     }
-    try
+    label43:
+    for (paramamxj = paramamxj.toString();; paramamxj = " empty")
     {
-      localamxk.jdField_a_of_type_Int = new JSONObject(paramampi.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
-      return localamxk;
+      QLog.d("SearchBusinessConfProcessor", 2, paramamxj);
+      return;
     }
-    catch (JSONException paramampi)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramampi.toString());
-    }
-    return localamxk;
   }
   
-  public boolean a()
+  public int b()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

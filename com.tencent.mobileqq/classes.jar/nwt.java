@@ -1,37 +1,13 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
 
 public class nwt
-  implements bcps
+  implements bfpj
 {
   public nwt(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a()
+  public void onDismiss()
   {
-    boolean bool2 = true;
-    Object localObject;
-    if (this.a.a)
-    {
-      localObject = this.a;
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label61;
-      }
-      bool1 = true;
-      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label66;
-      }
-    }
-    label61:
-    label66:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Switch)localObject).setChecked(bool1);
-      return;
-      bool1 = false;
-      break;
-    }
+    ReadInJoySettingActivity.b(this.a).cancel();
   }
 }
 

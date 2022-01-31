@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.chat;
 
+import amgb;
 import amgc;
-import amgd;
-import amgf;
+import amge;
 
 public class MessageNotificationSettingManager$2$1
   implements Runnable
 {
-  public MessageNotificationSettingManager$2$1(amgd paramamgd) {}
+  public MessageNotificationSettingManager$2$1(amgc paramamgc) {}
   
   public void run()
   {
-    if (amgc.a(this.a.jdField_a_of_type_Amgc) != null) {
-      amgc.a(this.a.jdField_a_of_type_Amgc).a(this.a.jdField_a_of_type_Int);
+    if (amgb.a(this.a.jdField_a_of_type_Amgb) != null) {
+      amgb.a(this.a.jdField_a_of_type_Amgb).a(this.a.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,11 +1,15 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
+
 class pzm
-  extends pyx
+  extends pyu
 {
-  pzm(pzi parampzi) {}
+  pzm(pzf parampzf, AppInterface paramAppInterface) {}
   
-  public int a()
+  public Drawable a()
   {
-    return a("tab_select_color");
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
   }
 }
 

@@ -1,25 +1,32 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import java.lang.ref.WeakReference;
 
 class anur
-  implements ajie
+  extends VasQuickUpdateManager.CallBacker
 {
-  anur(anul paramanul, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anur(anuq paramanuq) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramString = new Bundle();
-    if (paramBoolean)
+    paramString2 = (MessengerService)this.a.a.get();
+    if (paramString2 == null) {}
+    do
     {
-      paramString.putInt("apollo_result", 0);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    paramString.putInt("apollo_result", 1);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      do
+      {
+        return;
+      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
+      paramString1 = new Bundle();
+    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
+    paramString2.d.putString("cmd", "card_download");
+    paramString1.putInt("result", paramInt1);
+    paramString1.putString("message", paramString3);
+    paramString2.d.putBundle("response", paramString1);
+    paramString2.a(paramString2.d);
+    paramString2.d = null;
   }
 }
 

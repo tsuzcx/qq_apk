@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
 class qmb
-  implements View.OnClickListener
+  extends RecyclerView.AdapterDataObserver
 {
-  qmb(qly paramqly, VideoInfo paramVideoInfo) {}
+  private qmb(qlp paramqlp) {}
   
-  public void onClick(View paramView)
+  public void onChanged() {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c)
-    {
-      paramView = oay.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-      oau.a(paramView, 2005, qls.a(this.jdField_a_of_type_Qly.a));
-      qls.a(this.jdField_a_of_type_Qly.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, paramView, 2005);
-    }
+    onItemRangeChanged(paramInt1, paramInt2);
   }
 }
 

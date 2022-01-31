@@ -1,18 +1,17 @@
-import android.app.Activity;
-import android.app.Application;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
-class yvc
-  implements DialogInterface.OnDismissListener
+public class yvc
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  yvc(yuz paramyuz) {}
+  public yvc(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    yuz.a(this.a).setIntent(yuz.a(this.a));
-    yuz.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(yuz.a(this.a));
-    yuz.a(this.a).i();
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(3846);
+    }
   }
 }
 

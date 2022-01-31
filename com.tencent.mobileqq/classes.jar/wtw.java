@@ -1,21 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wtw
-  implements xep
+public class wtw
+  implements bcue
 {
-  wtw(wtv paramwtv, SeekBar paramSeekBar) {}
+  public wtw(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a()
+  public boolean a()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    localMessage.arg2 = ((int)this.jdField_a_of_type_Wtv.a.a().b());
-    localMessage.obj = Boolean.valueOf(false);
-    this.jdField_a_of_type_Wtv.a.a().sendMessage(localMessage);
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    VideoPlayerView.d(this.a, true);
+    return false;
   }
 }
 

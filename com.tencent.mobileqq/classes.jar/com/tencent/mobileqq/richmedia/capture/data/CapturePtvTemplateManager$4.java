@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import avrt;
-import axlc;
-import bbev;
+import avrv;
+import axle;
+import bbfj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -10,13 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 public class CapturePtvTemplateManager$4
   implements Runnable
 {
-  public CapturePtvTemplateManager$4(avrt paramavrt) {}
+  public CapturePtvTemplateManager$4(avrv paramavrv) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = axlc.c();
-    boolean bool2 = bbev.d(BaseApplication.getContext());
+    boolean bool1 = axle.c();
+    boolean bool2 = bbfj.d(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;
     }

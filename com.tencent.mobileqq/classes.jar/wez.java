@@ -1,67 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
-
-public class wez
-  extends ValueAnimator
+final class wez
 {
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
-  private View jdField_a_of_type_AndroidViewView;
+  public float a;
+  public float b;
+  public float c;
   
-  private wez(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public wez(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setObjectValues(new Object[] { new wfc(paramFloat1, paramFloat2, paramFloat3), new wfc(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new wfd(null));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new wfa(this, a(paramView));
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
-  }
-  
-  private CircularRevealCompatLayout a(View paramView)
-  {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
-    }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
-    }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
-  }
-  
-  public static wez a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
-  {
-    return new wez(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localObject instanceof CircularRevealCompatLayout))
-    {
-      localObject = (CircularRevealCompatLayout)localObject;
-      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
-      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
-      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
-      int i = localViewGroup.indexOfChild((View)localObject);
-      localViewGroup.removeView((View)localObject);
-      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
-    }
-  }
-  
-  public void removeAllUpdateListeners()
-  {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 

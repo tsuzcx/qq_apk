@@ -1,86 +1,78 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class svk
-  extends sve
+  extends svb
 {
-  protected int a;
-  protected int b;
-  
   public svk(@NonNull String[] paramArrayOfString)
   {
     super(paramArrayOfString);
-    paramArrayOfString = (tcv)tdc.a(10);
-    this.jdField_a_of_type_Int = ((Integer)paramArrayOfString.b("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
-    this.b = ((Integer)paramArrayOfString.b("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
   }
   
-  protected void a(String[] paramArrayOfString, svf paramsvf)
+  protected void a(String[] paramArrayOfString, svc paramsvc)
   {
-    int m = paramArrayOfString.length;
+    int k = paramArrayOfString.length;
     int i = 0;
-    String str;
-    if (i < m)
-    {
-      str = paramArrayOfString[i];
-      if (!a(str, this.jdField_a_of_type_Int)) {}
-    }
     for (;;)
     {
-      i += 1;
-      break;
-      File localFile = new File(str);
-      double d = a(localFile);
-      File[] arrayOfFile = localFile.listFiles();
-      ArrayList localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      int j = 0;
-      while (j < k)
+      if (i < k)
       {
-        localArrayList.add(new svl(this, arrayOfFile[j]));
-        j += 1;
-      }
-      Collections.sort(localArrayList);
-      int n = localArrayList.size();
-      k = 0;
-      j = 0;
-      while (j < n)
-      {
-        if (j % 150 == 0) {}
-        try
+        paramsvc = new File(paramArrayOfString[i]).listFiles();
+        if (paramsvc == null)
         {
-          Thread.sleep(100L);
-          if ((j % 20 == 0) && (a(str, this.b))) {
-            return;
-          }
+          i += 1;
         }
-        catch (InterruptedException localInterruptedException)
+        else
         {
-          for (;;)
+          int m = paramsvc.length;
+          int j = 0;
+          while (j < m)
           {
-            localInterruptedException.printStackTrace();
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile = paramsvc[j];
+              if (a(localFile)) {
+                a(localFile);
+              }
+              j += 1;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                ved.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
+              }
+            }
           }
-          a(((svl)localArrayList.get(j)).a);
-          k += 1;
-          j += 1;
         }
       }
-      paramsvf.jdField_a_of_type_Double = (d - a(localFile) + paramsvf.jdField_a_of_type_Double);
-      paramsvf.jdField_a_of_type_Int += k;
     }
   }
   
-  public boolean a(String paramString, int paramInt)
+  protected boolean a(File paramFile)
   {
-    paramString = new File(paramString).listFiles();
-    if (paramString == null) {}
-    while (paramString.length <= paramInt) {
-      return true;
+    if (!paramFile.isDirectory()) {}
+    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+      return false;
     }
-    return false;
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label60;
+      }
+      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    return true;
   }
 }
 

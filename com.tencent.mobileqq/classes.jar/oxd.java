@@ -1,30 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
 public class oxd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public oxd(VideoView.2 param2) {}
+  public oxd(VideoView paramVideoView) {}
   
-  public void onGlobalLayout()
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((VideoView.b(this.a.this$0) == VideoView.b) && (!this.a.this$0.a))
-    {
-      if ((this.a.this$0.isShown()) && (VideoView.a(this.a.this$0).get() != 3))
-      {
-        VideoView.a(this.a.this$0).set(3);
-        QLog.d("gifvideo.VideoView", 1, "show to play");
-        this.a.this$0.b();
-      }
-      if ((!this.a.this$0.isShown()) && (VideoView.a(this.a.this$0).get() != 5))
-      {
-        VideoView.a(this.a.this$0).set(5);
-        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
-        this.a.this$0.b();
-      }
+    if (VideoView.a(this.a) != null) {
+      VideoView.a(this.a).start();
+    }
+    if (VideoView.a(this.a) != null) {
+      this.a.a.postDelayed(this.a, 500L);
     }
   }
 }

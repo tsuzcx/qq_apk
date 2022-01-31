@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begy;
-import begz;
-import beiy;
-import bejg;
-import beka;
-import bekg;
-import besl;
+import behp;
+import behq;
+import bejp;
+import bejx;
+import bekr;
+import bekx;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import org.json.JSONException;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 class VoIPJsPlugin$2
   implements AsyncResult
 {
-  VoIPJsPlugin$2(VoIPJsPlugin paramVoIPJsPlugin, beka parambeka, bejg parambejg) {}
+  VoIPJsPlugin$2(VoIPJsPlugin paramVoIPJsPlugin, bekr parambekr, bejx parambejx) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -27,7 +27,7 @@ class VoIPJsPlugin$2
     int i;
     for (;;)
     {
-      besl.b("[mini] VoIPJsPlugin", String.format("succ: %s ret:%s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 }));
+      betc.b("[mini] VoIPJsPlugin", String.format("succ: %s ret:%s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 }));
       if (!paramBoolean) {
         break label394;
       }
@@ -38,19 +38,19 @@ class VoIPJsPlugin$2
         if (paramJSONObject != null)
         {
           localObject1 = paramJSONObject.toString();
-          besl.d("[mini] VoIPJsPlugin", (String)localObject1);
+          betc.d("[mini] VoIPJsPlugin", (String)localObject1);
           localObject1 = new JSONObject();
         }
         try
         {
           ((JSONObject)localObject1).put("errCode", -1000);
-          localObject1 = this.val$req.jdField_a_of_type_Begy;
+          localObject1 = this.val$req.jdField_a_of_type_Behp;
           i = this.val$req.jdField_b_of_type_Int;
           localObject3 = this.val$req.jdField_a_of_type_JavaLangString;
           if (paramJSONObject != null)
           {
             paramJSONObject = paramJSONObject.optString("errMsg", "idResult failed");
-            ((begy)localObject1).a(i, bekg.a((String)localObject3, null, paramJSONObject).toString());
+            ((behp)localObject1).a(i, bekx.a((String)localObject3, null, paramJSONObject).toString());
             return;
             localObject1 = "";
             continue;
@@ -61,7 +61,7 @@ class VoIPJsPlugin$2
         {
           for (;;)
           {
-            besl.d("[mini] VoIPJsPlugin", "JSONException", localJSONException1);
+            betc.d("[mini] VoIPJsPlugin", "JSONException", localJSONException1);
             continue;
             paramJSONObject = "internal error";
           }
@@ -70,18 +70,18 @@ class VoIPJsPlugin$2
     }
     if (this.val$roomConfig.a == null)
     {
-      besl.d("[mini] VoIPJsPlugin", "muteConfig null " + this.val$req.jdField_b_of_type_JavaLangString);
+      betc.d("[mini] VoIPJsPlugin", "muteConfig null " + this.val$req.jdField_b_of_type_JavaLangString);
       Object localObject2 = new JSONObject();
       try
       {
         ((JSONObject)localObject2).put("errCode", -1000);
-        localObject2 = this.val$req.jdField_a_of_type_Begy;
+        localObject2 = this.val$req.jdField_a_of_type_Behp;
         i = this.val$req.jdField_b_of_type_Int;
         localObject3 = this.val$req.jdField_a_of_type_JavaLangString;
         if (paramJSONObject != null)
         {
           paramJSONObject = paramJSONObject.optString("errMsg", "muteConfig failed");
-          ((begy)localObject2).a(i, bekg.a((String)localObject3, null, paramJSONObject).toString());
+          ((behp)localObject2).a(i, bekx.a((String)localObject3, null, paramJSONObject).toString());
           return;
         }
       }
@@ -89,26 +89,26 @@ class VoIPJsPlugin$2
       {
         for (;;)
         {
-          besl.d("[mini] VoIPJsPlugin", "JSONException", localJSONException2);
+          betc.d("[mini] VoIPJsPlugin", "JSONException", localJSONException2);
           continue;
           paramJSONObject = "internal error";
         }
       }
     }
-    beiy.a().a(localJSONException2, this.val$roomConfig.a, VoIPJsPlugin.access$100(this.this$0, this.this$0.mMiniAppContext.a().appId, this.val$roomConfig), new VoIPJsPlugin.2.1(this));
+    bejp.a().a(localJSONException2, this.val$roomConfig.a, VoIPJsPlugin.access$100(this.this$0, this.this$0.mMiniAppContext.a().appId, this.val$roomConfig), new VoIPJsPlugin.2.1(this));
     return;
     label394:
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", -1000);
-      localObject3 = this.val$req.jdField_a_of_type_Begy;
+      localObject3 = this.val$req.jdField_a_of_type_Behp;
       i = this.val$req.jdField_b_of_type_Int;
       String str = this.val$req.jdField_a_of_type_JavaLangString;
       if (paramJSONObject != null)
       {
         paramJSONObject = paramJSONObject.optString("errMsg", "transfer roomId err");
-        ((begy)localObject3).a(i, bekg.a(str, localJSONObject, paramJSONObject).toString());
+        ((behp)localObject3).a(i, bekx.a(str, localJSONObject, paramJSONObject).toString());
         return;
       }
     }
@@ -116,7 +116,7 @@ class VoIPJsPlugin$2
     {
       for (;;)
       {
-        besl.d("[mini] VoIPJsPlugin", "JSONException", localJSONException3);
+        betc.d("[mini] VoIPJsPlugin", "JSONException", localJSONException3);
         continue;
         paramJSONObject = "internal error";
       }

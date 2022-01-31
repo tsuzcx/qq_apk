@@ -1,76 +1,36 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.View;
-import android.view.ViewGroup;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import java.util.List;
 
-public abstract class bfyp<M, VH extends bfyo<M>>
-  extends RecyclerView.Adapter<bfyo<M>>
+class bfyp
+  extends bfyv
 {
-  protected Context a;
-  protected View a;
-  protected bfym a;
-  protected bfyn a;
-  protected View b;
-  
-  public bfyp(Context paramContext)
+  bfyp(bfyn parambfyn, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(parambfyn, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
   }
   
-  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(VH paramVH, int paramInt);
-  
-  public int b()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
-  }
-  
-  public final bfyo b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 1024) {
-      paramViewGroup = new bfyo(this.jdField_a_of_type_AndroidViewView);
-    }
+    super.onAnimationEnd(paramAnimator);
+    if (this.b) {}
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfym != null) {
-        paramViewGroup.itemView.setOnClickListener(new bfyq(this, paramViewGroup));
+      return;
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Bfyn.mCallback.clearView(this.jdField_a_of_type_Bfyn.mRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
       }
-      if (this.jdField_a_of_type_Bfyn != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new bfyr(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new bfyo(this.b);
-      } else {
-        paramViewGroup = a(paramViewGroup, paramInt);
+      while (this.jdField_a_of_type_Bfyn.mOverdrawChild == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
+      {
+        this.jdField_a_of_type_Bfyn.removeChildDrawingOrderCallbackIfNecessary(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
+        return;
+        this.jdField_a_of_type_Bfyn.mPendingCleanup.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Int > 0) {
+          this.jdField_a_of_type_Bfyn.postDispatchSwipe(this, this.jdField_a_of_type_Int);
+        }
       }
     }
-  }
-  
-  public final void b(bfyo parambfyo, int paramInt)
-  {
-    switch (parambfyo.getItemViewType())
-    {
-    default: 
-      a(parambfyo, paramInt);
-    }
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
   }
 }
 

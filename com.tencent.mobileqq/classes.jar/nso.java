@@ -1,21 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class nso
-  implements QQPermissionCallback
+  implements ViewBase.OnClickListener
 {
-  nso(nsf paramnsf, Runnable paramRunnable) {}
+  nso(nsm paramnsm) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    nsf.a(this.jdField_a_of_type_Nsf, 3);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (paramViewBase.getEventAttachedData() == null) {
+      return;
+    }
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
+    paramViewBase.getNativeView().getContext().startActivity(localIntent);
   }
 }
 

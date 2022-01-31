@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import ajeh;
-import ajep;
+import ajef;
+import ajen;
 import android.os.Handler;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,25 +9,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CmGameTxVideoPlayer$1
   implements Runnable
 {
-  public CmGameTxVideoPlayer$1(ajeh paramajeh) {}
+  public CmGameTxVideoPlayer$1(ajef paramajef) {}
   
   public void run()
   {
-    if (ajeh.a(this.this$0) < 0L) {}
+    if (ajef.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = ajeh.a(this.this$0).iterator();
+      Iterator localIterator = ajef.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        ajep localajep = (ajep)localIterator.next();
-        if (localajep != null) {
-          localajep.a(ajeh.a(this.this$0), this.this$0.a() / 1000L);
+        ajen localajen = (ajen)localIterator.next();
+        if (localajen != null) {
+          localajen.a(ajef.a(this.this$0), this.this$0.a() / 1000L);
         }
       }
-      ajeh.b(this.this$0);
-    } while (ajeh.a(this.this$0) == null);
-    ajeh.a(this.this$0).postDelayed(this, 1000L);
+      ajef.b(this.this$0);
+    } while (ajef.a(this.this$0) == null);
+    ajef.a(this.this$0).postDelayed(this, 1000L);
   }
 }
 

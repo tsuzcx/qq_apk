@@ -1,116 +1,23 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import java.util.Vector;
 
 class bbov
-  extends anql
+  extends VasQuickUpdateManager.CallBacker
 {
-  bbov(bbop parambbop) {}
+  bbov(bbos parambbos) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle arg1)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (???.getInt("srcType") != 5) {}
-    int i;
-    int j;
-    label280:
-    label464:
-    label614:
-    do
+    if (paramLong == 27L)
     {
-      do
-      {
-        long l;
-        do
-        {
-          for (;;)
-          {
-            return;
-            String str1 = ???.getString("status");
-            l = ???.getLong("id");
-            i = ???.getInt("progress");
-            boolean bool = ???.getBoolean("result");
-            j = ???.getInt("resourceType");
-            String str2 = ???.getString("colorType");
-            if (QLog.isColorLevel()) {
-              QLog.d("ColorRingPlayer", 2, "onPushMsg," + l + "," + j + "," + str1 + "," + i + "," + bool);
-            }
-            synchronized (this.a.jdField_a_of_type_Bbow)
-            {
-              if (this.a.jdField_a_of_type_Bbow.jdField_a_of_type_Long != l)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("ColorRingPlayer", 2, "curId=" + this.a.jdField_a_of_type_Bbow.jdField_a_of_type_Long + ", pushId=" + l);
-                }
-                return;
-              }
-            }
-            if (!"onStart".equals(localObject1))
-            {
-              if (!"onDone".equals(localObject1)) {
-                break label614;
-              }
-              if (!bool) {
-                break label464;
-              }
-              if (j == 3)
-              {
-                if ("colorring".equals(str2))
-                {
-                  this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131719296));
-                  this.a.c.setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130846172));
-                  this.a.c.setVisibility(0);
-                  this.a.b.setVisibility(8);
-                }
-                synchronized (this.a.jdField_a_of_type_Bbow)
-                {
-                  this.a.jdField_a_of_type_Bbow.jdField_a_of_type_Int = 3;
-                  if (this.a.jdField_a_of_type_Boolean)
-                  {
-                    this.a.a(l, 0);
-                    return;
-                    if (!"comering".equals(str2)) {
-                      break label280;
-                    }
-                    this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131719298));
-                  }
-                }
-              }
-            }
-          }
-          if (j == 2)
-          {
-            this.a.a(bbon.a(l));
-            return;
-          }
-        } while ((j != 1) || (bbon.a(l) == null));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bbon.a(l));
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e("ColorRingPlayer", 2, "onDone, failure," + l + "," + j);
-        }
-      } while (j != 3);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131690882));
-      this.a.c.setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130846170));
-      this.a.c.setVisibility(0);
-      this.a.b.setVisibility(8);
-      synchronized (this.a.jdField_a_of_type_Bbow)
-      {
-        this.a.jdField_a_of_type_Bbow.jdField_a_of_type_Int = 0;
-        return;
+      paramInt2 = Integer.parseInt(paramString1.substring("groupnickitem.".length(), paramString1.length()));
+      bbos.a(this.a).removeElement(Integer.valueOf(paramInt2));
+      if (paramInt1 == 0) {
+        this.a.a(paramInt2);
       }
-    } while ((!"onProgress".equals(localObject3)) || (j != 3) || (this.a.jdField_a_of_type_Bcnz == null));
-    this.a.jdField_a_of_type_Bcnz.setLevel(i * 100);
-    this.a.jdField_a_of_type_Bcnz.invalidateSelf();
+    }
   }
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 

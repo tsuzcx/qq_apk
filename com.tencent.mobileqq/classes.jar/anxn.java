@@ -1,11 +1,23 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class anxn
-  extends anxe
+class anxn
+  implements View.OnClickListener
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
+  anxn(anxk paramanxk, IPSiteModel.Comic paramComic, String paramString1, String paramString2) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Comic.jumpUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_comicclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+  }
 }
 
 

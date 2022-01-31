@@ -1,31 +1,35 @@
-import com.tencent.sveffects.DpcSwitcher;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.sharp.jni.TraeAudioManager;
 
 public class bfln
-  implements DpcSwitcher
+  extends bflp
 {
-  public float getBeatyRate()
+  public bfln(TraeAudioManager paramTraeAudioManager)
   {
-    return axkr.a();
+    super(paramTraeAudioManager);
   }
   
-  public boolean isBeautySwitchOpen()
+  public String a()
   {
-    return axkr.b();
+    return "BluetoohHeadsetCheckFake";
   }
   
-  public boolean isDeNoiseSwitchOpen()
+  public void a() {}
+  
+  void a(Context paramContext, Intent paramIntent) {}
+  
+  void a(IntentFilter paramIntentFilter) {}
+  
+  public boolean a()
   {
-    return axkr.e();
+    return false;
   }
   
-  public boolean isPortraitSwitchOpen()
+  public boolean a(Context paramContext, bflq parambflq)
   {
-    return axlc.g();
-  }
-  
-  public boolean isSvafSwitchOpen()
-  {
-    return axkr.c();
+    return true;
   }
 }
 

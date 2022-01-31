@@ -3,15 +3,15 @@ package dov.com.qq.im.ae.camera.ui.bottom;
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
-import biim;
-import bile;
-import bilj;
-import biqk;
-import biqn;
-import bivx;
-import bivy;
-import bizc;
-import bizg;
+import bijd;
+import bilv;
+import bima;
+import birb;
+import bire;
+import biwo;
+import biwp;
+import bizt;
+import bizx;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -21,25 +21,25 @@ import java.util.List;
 public class AEBottomListPart$8
   implements Runnable
 {
-  public AEBottomListPart$8(bilj parambilj, List paramList, long paramLong) {}
+  public AEBottomListPart$8(bima parambima, List paramList, long paramLong) {}
   
   public void run()
   {
     Object localObject = null;
     int j = 0;
-    biqn localbiqn2;
+    bire localbire2;
     String str;
-    if ((bilj.a(this.this$0) != null) && (!bilj.b(this.this$0).isFinishing()))
+    if ((bima.a(this.this$0) != null) && (!bima.b(this.this$0).isFinishing()))
     {
-      if ((bilj.a(this.this$0).b()) && (!bilj.a(this.this$0))) {
-        bilj.a(this.this$0).setVisibility(0);
+      if ((bima.a(this.this$0).b()) && (!bima.a(this.this$0))) {
+        bima.a(this.this$0).setVisibility(0);
       }
-      bilj.a(this.this$0).a(this.jdField_a_of_type_JavaUtilList);
-      localbiqn2 = biqk.a();
-      if ((bilj.c(this.this$0) == null) || (bilj.d(this.this$0).isFinishing())) {
+      bima.a(this.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      localbire2 = birb.a();
+      if ((bima.c(this.this$0) == null) || (bima.d(this.this$0).isFinishing())) {
         break label616;
       }
-      localObject = bilj.e(this.this$0).getIntent();
+      localObject = bima.e(this.this$0).getIntent();
       str = ((Intent)localObject).getStringExtra("KEY_CURRENT_SELECT_ID");
       localObject = ((Intent)localObject).getStringExtra("KEY_CURRENT_TAB");
     }
@@ -49,7 +49,7 @@ public class AEBottomListPart$8
       if (localObject != null)
       {
         i = j;
-        if (!((String)localObject).equals(String.valueOf(bivx.jdField_a_of_type_Bivx.jdField_a_of_type_Int))) {}
+        if (!((String)localObject).equals(String.valueOf(biwo.jdField_a_of_type_Biwo.jdField_a_of_type_Int))) {}
       }
       else
       {
@@ -59,11 +59,11 @@ public class AEBottomListPart$8
         if (str.startsWith("http")) {
           try
           {
-            localObject = new Intent(bilj.a(this.this$0).a(), QQBrowserActivity.class);
+            localObject = new Intent(bima.a(this.this$0).a(), QQBrowserActivity.class);
             ((Intent)localObject).putExtra("url", URLDecoder.decode(str, "UTF-8"));
             ((Intent)localObject).putExtra("loc_play_show_material_id", str);
-            bilj.a(this.this$0).a().startActivity((Intent)localObject);
-            bilj.f(this.this$0).getIntent().removeExtra("KEY_CURRENT_SELECT_ID");
+            bima.a(this.this$0).a().startActivity((Intent)localObject);
+            bima.f(this.this$0).getIntent().removeExtra("KEY_CURRENT_SELECT_ID");
             return;
           }
           catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -72,18 +72,18 @@ public class AEBottomListPart$8
             return;
           }
         }
-        bizg.a().f("-1");
-        j = bilj.a(this.this$0, localUnsupportedEncodingException);
+        bizx.a().f("-1");
+        j = bima.a(this.this$0, localUnsupportedEncodingException);
         if (j == -1) {
           break label456;
         }
-        bilj.g(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + localUnsupportedEncodingException);
-        localbiqn1 = bilj.a(this.this$0, j);
+        bima.g(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + localUnsupportedEncodingException);
+        localbire1 = bima.a(this.this$0, j);
         i = j;
-        if (localbiqn1 != null)
+        if (localbire1 != null)
         {
-          bizc.a().b(localbiqn1.a);
-          localbiqn1.b = true;
+          bizt.a().b(localbire1.a);
+          localbire1.b = true;
           i = j;
         }
       }
@@ -95,8 +95,8 @@ public class AEBottomListPart$8
           l = System.currentTimeMillis();
           QLog.d("AEWaterMarkListPart", 4, "foundInitPosition cost=" + (l - this.jdField_a_of_type_Long));
         }
-        if (i < bilj.a(this.this$0).getItemCount()) {
-          bilj.a(this.this$0).scrollToPosition(i);
+        if (i < bima.a(this.this$0).getItemCount()) {
+          bima.a(this.this$0).scrollToPosition(i);
         }
         if (!QLog.isDevelopLevel()) {
           break;
@@ -104,36 +104,36 @@ public class AEBottomListPart$8
         QLog.d("AEWaterMarkListPart", 4, "hot data is real, updatePackage, cost=" + (System.currentTimeMillis() - l));
         return;
         label456:
-        localbiqn1 = bilj.a(this.this$0).a(localbiqn1);
-        if (localbiqn1 != null)
+        localbire1 = bima.a(this.this$0).a(localbire1);
+        if (localbire1 != null)
         {
-          bilj.a(this.this$0).a(localbiqn1);
-          bilj.h(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + localbiqn1.a);
-          bizc.a().b(localbiqn1.a);
-          localbiqn1.b = true;
+          bima.a(this.this$0).a(localbire1);
+          bima.h(this.this$0).getIntent().putExtra("widgetinfo", "camera^" + localbire1.a);
+          bizt.a().b(localbire1.a);
+          localbire1.b = true;
           i = 1;
         }
         else
         {
-          Toast.makeText(bilj.a(this.this$0).a(), 2131689782, 1).show();
+          Toast.makeText(bima.a(this.this$0).a(), 2131689782, 1).show();
           i = 0;
           continue;
           label572:
           i = j;
-          if (localbiqn2 != null)
+          if (localbire2 != null)
           {
-            j = bilj.a(this.this$0, localbiqn2.a);
+            j = bima.a(this.this$0, localbire2.a);
             i = j;
             if (j == -1)
             {
-              bilj.a(this.this$0).a(localbiqn2);
+              bima.a(this.this$0).a(localbire2);
               i = 1;
             }
           }
         }
       }
       label616:
-      biqn localbiqn1 = null;
+      bire localbire1 = null;
     }
   }
 }

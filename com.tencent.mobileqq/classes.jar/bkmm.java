@@ -1,14 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Bitmap;
 
 class bkmm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements alxj
 {
-  bkmm(bkmk parambkmk) {}
+  bkmm(bkmi parambkmi) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    this.a.invalidateSelf();
+    if (bkmi.a(this.a) != null) {
+      bkmi.a(this.a).a(paramString1, 101, paramString2, paramBitmap);
+    }
   }
 }
 

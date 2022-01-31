@@ -1,34 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
 class atcm
-  extends bciq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  atcm(atci paramatci) {}
+  atcm(atck paramatck, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void a(submsgtype0xdd.MsgBody paramMsgBody)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMsgBody.uint32_msg_type.get())
+    if (this.jdField_a_of_type_Atck.b)
     {
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
+      this.jdField_a_of_type_Atck.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Atck.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
     }
-    do
-    {
-      return;
-      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
-      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
-      return;
-      bcpw.a(this.a.a, ajyc.a(2131705063), 0).a();
-      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
-    paramMsgBody = (QQAppInterface)paramMsgBody;
-    bbjn.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

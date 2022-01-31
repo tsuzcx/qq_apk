@@ -1,27 +1,53 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class tov
-  extends syq
+  extends syn
 {
-  public long a;
-  public List<qqstory_struct.UserSimpleInfo> a;
-  public long b;
+  private String jdField_a_of_type_JavaLangString;
+  private List<tff> jdField_a_of_type_JavaUtilList;
   
-  public tov(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
+  public tov(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
   {
-    super(paramRspGetFeedVisitor.result);
-    this.b = paramRspGetFeedVisitor.view_total_num.get();
-    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
+    super(paramRspMsgListHeadNode.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
+  }
+  
+  private static List<tff> a(List<qqstory_service.MsgTabNodeInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
+      tff localtff = new tff();
+      localtff.a(localMsgTabNodeInfo);
+      localArrayList.add(localtff);
+    }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<tff> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public String toString()
   {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

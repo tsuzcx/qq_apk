@@ -1,50 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class adzm
-  implements asut
+  implements DialogInterface.OnClickListener
 {
-  adzm(adzh paramadzh, String paramString, adzr paramadzr) {}
+  adzm(adzf paramadzf, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-    }
+    this.jdField_a_of_type_Adzf.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    axdq.jdField_a_of_type_Boolean = true;
   }
-  
-  public void a(asuq paramasuq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "dealVideoSaveUI onSaveComplete");
-    }
-    if (paramasuq != null)
-    {
-      if (paramasuq.jdField_a_of_type_Int != 0) {
-        break label112;
-      }
-      asur.a(this.jdField_a_of_type_Adzh.a);
-    }
-    for (;;)
-    {
-      paramasuq.jdField_a_of_type_Asup.b(this);
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-        this.jdField_a_of_type_Adzr.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
-      }
-      return;
-      label112:
-      asur.b(this.jdField_a_of_type_Adzh.a);
-    }
-  }
-  
-  public void a(asuq paramasuq, int paramInt)
-  {
-    this.jdField_a_of_type_Adzh.a(this.jdField_a_of_type_Adzr, paramInt, false);
-  }
-  
-  public void b(asuq paramasuq) {}
 }
 
 

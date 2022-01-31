@@ -1,10 +1,16 @@
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
-public abstract interface aqvm
+public class aqvm
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable);
+  public aqvm(JefsClass.8 param8) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

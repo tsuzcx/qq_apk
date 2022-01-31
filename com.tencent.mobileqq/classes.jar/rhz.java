@@ -1,15 +1,17 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class rhz
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public rhz(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SlideActiveAnimController.a(this.a);
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
   }
 }
 

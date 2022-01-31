@@ -1,17 +1,7 @@
 public class bcag
+  implements ajte
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  bcag(int paramInt)
-  {
-    this.a = paramInt;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

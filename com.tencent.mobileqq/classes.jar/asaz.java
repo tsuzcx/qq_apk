@@ -1,16 +1,59 @@
+import android.util.Log;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+
 public class asaz
+  extends ScheduledThreadPoolExecutor
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
-  
-  public asaz(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public asaz(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    super(paramInt);
+  }
+  
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  {
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
+    {
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
+    }
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
+    }
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    }
   }
 }
 

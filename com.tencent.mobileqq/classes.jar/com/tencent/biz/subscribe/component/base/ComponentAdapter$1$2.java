@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.component.base;
 
+import woz;
+import wpa;
 import wpc;
-import wpd;
-import wpf;
 
 public class ComponentAdapter$1$2
   implements Runnable
 {
-  public ComponentAdapter$1$2(wpd paramwpd, int paramInt1, int paramInt2) {}
+  public ComponentAdapter$1$2(wpa paramwpa, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wpd.a.a().notifyItemRangeChanged(this.jdField_a_of_type_Wpd.a.c(this.jdField_a_of_type_Int), this.b);
+    this.jdField_a_of_type_Wpa.a.a().notifyItemRangeChanged(this.jdField_a_of_type_Wpa.a.c(this.jdField_a_of_type_Int), this.b);
   }
 }
 

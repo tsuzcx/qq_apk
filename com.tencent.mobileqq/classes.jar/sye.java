@@ -1,12 +1,17 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-final class sye
-  implements InvocationHandler
+public class sye
 {
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public static WeakReference<QQAppInterface> a = new WeakReference(null);
+  
+  public static boolean a()
   {
-    return null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
+    if (localQQAppInterface == null) {
+      throw new IllegalStateException(ajya.a(2131714412));
+    }
+    return localQQAppInterface.a().a;
   }
 }
 

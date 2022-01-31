@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
-import arcm;
+import arco;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class IdentificationActivityHelper$2
   implements Runnable
 {
-  public IdentificationActivityHelper$2(arcm paramarcm) {}
+  public IdentificationActivityHelper$2(arco paramarco) {}
   
   public void run()
   {
     QLog.d("qq_Identification.Helper", 1, "download res fail");
-    arcm.a(this.this$0).a(false);
+    arco.a(this.this$0).a(false);
   }
 }
 

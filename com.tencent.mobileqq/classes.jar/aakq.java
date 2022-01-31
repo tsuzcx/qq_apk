@@ -1,43 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class aakq
-  extends AccountObserver
+  extends atzp
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public aakq(AuthDevActivity paramAuthDevActivity) {}
   
-  public aakq(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, String paramString, boolean paramBoolean)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super.a(paramString1, paramInt, paramString2);
   }
   
-  public void onDeleteAccount(boolean paramBoolean)
+  public void a(oidb_0x5e1.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountManage", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity;
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
+    super.a(paramRspBody);
+    AuthDevActivity.a(this.a, paramRspBody);
+    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
+    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
+    if (i == 1)
     {
-      localObject = ((AssociatedAccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
-      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        ((SharedPreferences)localObject).edit().remove("uin").commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountManage", 2, "delete Last_Login");
-        }
+      paramRspBody = this.a.getString(2131692277);
+      localFormSimpleItem.setRightText(paramRspBody);
+      if (i != 1) {
+        break label111;
       }
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
-      }
+    }
+    label111:
+    for (paramRspBody = "1";; paramRspBody = "0")
+    {
+      axqy.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
       return;
+      paramRspBody = this.a.getString(2131692284);
+      break;
     }
   }
 }

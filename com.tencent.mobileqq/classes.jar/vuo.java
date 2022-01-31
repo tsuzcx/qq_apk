@@ -1,13 +1,6 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-public final class vuo
-  implements FilenameFilter
+public abstract interface vuo
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.endsWith(".mp4");
-  }
+  public abstract void a(vto paramvto);
 }
 
 

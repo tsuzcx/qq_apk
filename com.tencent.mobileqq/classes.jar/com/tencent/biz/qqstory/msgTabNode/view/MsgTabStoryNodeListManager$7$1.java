@@ -2,13 +2,13 @@ package com.tencent.biz.qqstory.msgTabNode.view;
 
 import android.view.View;
 import com.tencent.widget.ARMapHongBaoListView;
-import thy;
-import tif;
+import thv;
+import tic;
 
 public class MsgTabStoryNodeListManager$7$1
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$7$1(tif paramtif) {}
+  public MsgTabStoryNodeListManager$7$1(tic paramtic) {}
   
   public void run()
   {

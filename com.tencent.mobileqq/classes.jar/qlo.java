@@ -1,35 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class qlo
-  implements TVK_IMediaPlayer.OnExtractFrameListener
+  extends Handler
 {
-  qlo(qlj paramqlj) {}
-  
-  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
+  public qlo(qlg paramqlg, Looper paramLooper)
   {
-    qlq localqlq = (qlq)qlj.a(this.a).get(Integer.valueOf(paramInt));
-    if (localqlq != null) {}
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localqlq.jdField_b_of_type_Long = qle.a(paramBitmap, true);
-      localqlq.jdField_b_of_type_Int = qle.a(localqlq.a, localqlq.jdField_b_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d(qlj.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localqlq.jdField_b_of_type_Long + ", hashDiff = " + localqlq.jdField_b_of_type_Int);
-      }
+    }
+    do
+    {
       return;
-    }
-    catch (Throwable paramBitmap)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(qlj.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
-        }
-      }
-    }
+    } while (qlg.a(this.a) == null);
+    qlg.a(this.a).a(4, null, null, 0L);
   }
 }
 

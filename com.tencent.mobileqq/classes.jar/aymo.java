@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil.2.1;
-import mqq.os.MqqHandler;
-
-public final class aymo
-  extends aymm
+public class aymo
 {
-  public aymo(QQAppInterface paramQQAppInterface) {}
+  public void a() {}
+  
+  public void a(long paramLong1, long paramLong2) {}
   
   public boolean a(int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
-    return super.a(paramInt);
+    return false;
+  }
+  
+  public boolean a(aymj paramaymj)
+  {
+    return false;
   }
 }
 

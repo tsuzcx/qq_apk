@@ -1,16 +1,19 @@
-import android.view.KeyEvent;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnKeyListener;
 
-class oky
-  implements View.OnKeyListener
+public class oky
 {
-  oky(okw paramokw) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  @TargetApi(16)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    okw.a(this.a);
-    return true;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramView.setBackground(paramDrawable);
+      return;
+    }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
 }
 

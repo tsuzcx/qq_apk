@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
-import bgvo;
-import bgwb;
+import bgwf;
+import bgws;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 
@@ -35,10 +35,10 @@ public class ReaderContentPageActivity
         return;
         localObject = (ReaderBaseFragment)b();
       } while ((localObject == null) || (!((ReaderBaseFragment)localObject).b));
-      localObject = (bgwb)((ReaderBaseFragment)localObject).a;
+      localObject = (bgws)((ReaderBaseFragment)localObject).a;
       localWindow = getWindow();
     } while ((localObject == null) || (localWindow == null));
-    ((bgwb)localObject).a(false, localWindow);
+    ((bgws)localObject).a(false, localWindow);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -51,7 +51,7 @@ public class ReaderContentPageActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bgvo.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
+    bgwf.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
   }
 }
 

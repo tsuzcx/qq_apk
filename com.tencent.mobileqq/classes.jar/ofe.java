@@ -1,74 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class ofe
-  implements ViewFactory.FoundClickableViewListener
+class ofe
+  implements ViewBase.OnClickListener
 {
-  ofe(ohv paramohv, oii paramoii, Container paramContainer) {}
+  ofe(ofb paramofb) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-              {
-              default: 
-                paramViewBase.setOnClickListener(new ofk(this));
-                return;
-              case 1023: 
-                paramViewBase.setOnClickListener(new off(this));
-                return;
-              }
-            } while (!(paramViewBase instanceof okn));
-            ((okn)paramViewBase).a(this.jdField_a_of_type_Ohv);
-            return;
-            paramViewBase.setOnClickListener(new ofl(this));
-            return;
-            paramViewBase.setOnClickListener(new ofm(this));
-            return;
-            paramViewBase.setOnClickListener(new ofn(this));
-            return;
-            paramViewBase.setOnClickListener(new ofo(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().findViewBaseByName("id_first_comment_view")));
-            return;
-          } while ((!(paramViewBase instanceof okp)) || (!(this.jdField_a_of_type_Ohv instanceof ogq)));
-          ((okp)paramViewBase).a((ogq)this.jdField_a_of_type_Ohv);
-          return;
-        } while (!(paramViewBase instanceof okl));
-        ((okl)paramViewBase).a(this.jdField_a_of_type_Ohv, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-        return;
-        paramViewBase.setOnClickListener(new ofq(this));
-        return;
-        paramViewBase.setOnClickListener(new ofr(this));
-        return;
-        paramViewBase.setOnClickListener(new ofs(this, paramViewBase));
-        return;
-        paramViewBase.setOnClickListener(new oft(this, paramViewBase));
-        return;
-        paramViewBase.setOnClickListener(new ofg(this));
-        return;
-        paramViewBase.setOnClickListener(new ofh(this));
-        paramViewBase = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_one");
-      } while (!(paramViewBase instanceof okl));
-      ((okl)paramViewBase).a(this.jdField_a_of_type_Ohv, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, 0);
-      return;
-      paramViewBase.setOnClickListener(new ofi(this));
-      paramViewBase = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_two");
-    } while (!(paramViewBase instanceof okl));
-    ((okl)paramViewBase).a(this.jdField_a_of_type_Ohv, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, 1);
-    return;
-    paramViewBase.setOnClickListener(new ofj(this));
+    ((ogn)this.a.jdField_a_of_type_Ohs).a(this.a.jdField_a_of_type_Oif, ofa.a(this.a.jdField_a_of_type_Oif, 0));
   }
 }
 

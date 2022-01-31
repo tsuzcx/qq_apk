@@ -1,82 +1,138 @@
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.av.redpacket.AVRedPacketManager;
+
 public class lvn
-  extends lur
 {
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  public lum[] a = new lum[8];
   
-  public void a(long paramLong)
+  public lvn(Context paramContext)
   {
-    paramLong -= this.a;
-    int i1 = 0;
-    float f2 = 1.0F;
-    int m = this.jdField_b_of_type_Int;
-    int n = this.jdField_c_of_type_Int;
-    int i;
-    float f1;
-    int j;
-    int k;
-    if ((paramLong > 2333L) && (paramLong < 2666L))
+    this.a[0] = new lvf();
+    this.a[1] = new lvd(paramContext);
+    this.a[2] = new lur();
+    this.a[3] = new lvi();
+    this.a[4] = new lup();
+    this.a[5] = new luo();
+    this.a[6] = new lun();
+    this.a[7] = new lvb();
+  }
+  
+  public long a(long paramLong)
+  {
+    long l2;
+    if (paramLong < this.a[0].jdField_a_of_type_Long)
     {
-      i = (int)(255L * (paramLong - 2333L) / 333L);
-      f1 = (0.5F * (float)(2666L + paramLong) - 2333.0F) / 333.0F;
-      j = (int)((this.d * paramLong + this.jdField_b_of_type_Long) / 333L);
-      k = (int)((paramLong * this.e + this.jdField_c_of_type_Long) / 333L);
+      l2 = this.a[0].jdField_a_of_type_Long;
+      l1 = this.a[0].jdField_a_of_type_Long;
+      l2 -= paramLong;
+      paramLong = l1;
     }
-    for (;;)
+    for (long l1 = l2;; l1 = 0L)
     {
-      a(i);
-      b(f1);
-      a(j, k, this.f + j, this.g + k);
-      return;
-      if ((paramLong >= 2666L) && (paramLong <= 4631L))
+      lum[] arrayOflum = this.a;
+      int j = arrayOflum.length;
+      int i = 0;
+      while (i < j)
       {
-        i = 255;
-        k = n;
-        j = m;
-        f1 = f2;
+        arrayOflum[i].jdField_a_of_type_Long = paramLong;
+        i += 1;
       }
-      else
-      {
-        k = n;
-        j = m;
-        f1 = f2;
-        i = i1;
-        if (paramLong > 4631L)
-        {
-          k = n;
-          j = m;
-          f1 = f2;
-          i = i1;
-          if (paramLong < 4798L)
-          {
-            i = (int)((paramLong - 4798L) * 255L / -167L);
-            k = n;
-            j = m;
-            f1 = f2;
-          }
-        }
-      }
+      ((lvf)this.a[0]).a = true;
+      ((lvd)this.a[1]).a = true;
+      ((lur)this.a[2]).a = true;
+      return l1;
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a()
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 44 / 750);
-    this.jdField_c_of_type_Int = (paramInt2 - paramInt1 * 624 / 750);
-    paramInt3 = paramInt1 * 154 / 750;
-    paramInt4 = paramInt1 * 537 / 750;
-    this.f = (paramInt1 * 221 / 750);
-    this.g = (paramInt1 * 175 / 750);
-    this.d = (paramInt1 * -110 / 750);
-    this.e = (paramInt1 * -87 / 750);
-    this.jdField_b_of_type_Long = (paramInt3 * 2666L - this.jdField_b_of_type_Int * 2333L);
-    this.jdField_c_of_type_Long = ((paramInt2 - paramInt4) * 2666L - this.jdField_c_of_type_Int * 2333L);
+    lum[] arrayOflum = this.a;
+    int j = arrayOflum.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflum[i].b();
+      i += 1;
+    }
+    this.a = null;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    lum[] arrayOflum = this.a;
+    int j = arrayOflum.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflum[i].b(paramInt1, paramInt2, paramInt3, paramInt4);
+      i += 1;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a[0].jdField_a_of_type_Long = paramLong;
+    this.a[1].jdField_a_of_type_Long = paramLong;
+    this.a[2].jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    lum[] arrayOflum = this.a;
+    int j = arrayOflum.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflum[i].a(paramCanvas, paramPaint);
+      i += 1;
+    }
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    this.a[0].jdField_a_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_light_bg.png"));
+    this.a[2].jdField_a_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_cd.png"));
+    this.a[4].jdField_a_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_3.png"));
+    this.a[5].jdField_a_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_2.png"));
+    this.a[6].jdField_a_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_1.png"));
+    this.a[7].jdField_a_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_go.png"));
+  }
+  
+  public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
+  {
+    if (paramBoolean) {}
+    for (this.a[3].jdField_a_of_type_Lvm = null;; this.a[3].jdField_a_of_type_Lvm = null)
+    {
+      ((lvd)this.a[1]).a(paramBoolean, paramAVRedPacketManager);
+      return;
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    boolean bool2 = false;
+    lum[] arrayOflum = this.a;
+    int j = arrayOflum.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflum[i].a(paramLong);
+      i += 1;
+    }
+    boolean bool1 = bool2;
+    if (this.a[7].jdField_a_of_type_Long != 0L)
+    {
+      bool1 = bool2;
+      if (paramLong - this.a[7].jdField_a_of_type_Long > 5564L) {
+        bool1 = true;
+      }
+    }
+    if (bool1) {
+      this.a[7].jdField_a_of_type_Long = 0L;
+    }
+    return bool1;
   }
 }
 

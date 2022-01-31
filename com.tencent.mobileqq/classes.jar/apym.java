@@ -1,16 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class apym
-  implements aptu
+class apym
+  implements DialogInterface.OnClickListener
 {
-  public apym(SendBottomBar paramSendBottomBar) {}
+  apym(apyi paramapyi) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
+    if (paramInt == 1) {
+      this.a.a.c();
+    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void b() {}
 }
 
 

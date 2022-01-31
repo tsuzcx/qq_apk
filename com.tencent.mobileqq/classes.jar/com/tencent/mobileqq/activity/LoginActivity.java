@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abtu;
-import ahrd;
-import ahre;
-import ajwl;
+import abtq;
+import ahrb;
+import ahrc;
+import ajwj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -20,21 +20,21 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import ands;
-import aqcn;
-import aumi;
-import axbh;
-import axql;
-import axqw;
-import axrl;
-import bbct;
-import bbds;
-import bbej;
-import bbjn;
-import bcxj;
-import bfni;
-import bfxm;
-import bgxy;
+import andx;
+import aqcp;
+import aumk;
+import axbj;
+import axqn;
+import axqy;
+import axrn;
+import bbdh;
+import bbeg;
+import bbex;
+import bbkb;
+import bcxy;
+import bfnz;
+import bfyd;
+import bgyp;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
@@ -57,20 +57,20 @@ import cooperation.qwallet.plugin.PatternLockUtils;
 import mqq.app.AppRuntime;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import osj;
-import oso;
-import zzs;
+import osg;
+import osl;
+import zzp;
 
 public class LoginActivity
   extends FragmentActivity
-  implements ahrd, Handler.Callback
+  implements ahrb, Handler.Callback
 {
   private static LoginActivity jdField_a_of_type_ComTencentMobileqqActivityLoginActivity;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private GuideBaseFragment jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this);
-  oso jdField_a_of_type_Oso;
+  osl jdField_a_of_type_Osl;
   boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   private boolean c;
@@ -82,12 +82,12 @@ public class LoginActivity
     ThreadManager.postImmediately(new LoginActivity.1(paramQQAppInterface, paramString), null, false);
     try
     {
-      axrl.a(BaseApplicationImpl.sApplication).a(paramString);
-      axql.a(BaseApplicationImpl.sApplication).a(paramString);
+      axrn.a(BaseApplicationImpl.sApplication).a(paramString);
+      axqn.a(BaseApplicationImpl.sApplication).a(paramString);
       if (QLog.isColorLevel()) {
         QLog.d("login", 2, "loginSuccess set CURRENT_ACCOUNT: " + paramString);
       }
-      bbjn.a(BaseApplicationImpl.sApplication, paramString, true);
+      bbkb.a(BaseApplicationImpl.sApplication, paramString, true);
       BaseApplicationImpl.sApplication.refreAccountList();
       return;
     }
@@ -104,7 +104,7 @@ public class LoginActivity
   
   private void a(String paramString)
   {
-    bcxj.a().a(paramString);
+    bcxy.a().a(paramString);
     int i;
     if ((getIntent().getFlags() & 0x100000) != 0)
     {
@@ -210,17 +210,17 @@ public class LoginActivity
     Object localObject = getIntent().getStringExtra("pkg_name");
     if ((paramString != null) && (paramString.length() > 0))
     {
-      bbds localbbds = bbej.a(this.app, this, paramString);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) || ("web".equals(localbbds.b("src_type"))) || (localbbds.g()) || (localbbds.h()))
+      bbeg localbbeg = bbex.a(this.app, this, paramString);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) || ("web".equals(localbbeg.b("src_type"))) || (localbbeg.g()) || (localbbeg.h()))
       {
-        localbbds.b((String)localObject);
-        if (localbbds.g()) {
+        localbbeg.b((String)localObject);
+        if (localbbeg.g()) {
           this.jdField_a_of_type_Boolean = false;
         }
-        localbbds.c();
+        localbbeg.c();
         return true;
       }
-      if (("h5".equalsIgnoreCase(localbbds.b("jump_from"))) && (localbbds.f()))
+      if (("h5".equalsIgnoreCase(localbbeg.b("jump_from"))) && (localbbeg.f()))
       {
         getIntent().putExtra("package_from_h5", "pakage_from_h5");
         getIntent().putExtra("jump_action_from_h5", paramString);
@@ -235,7 +235,7 @@ public class LoginActivity
   {
     Intent localIntent = new Intent(this, SplashActivity.class);
     Object localObject = getIntent().getStringExtra("key_action");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (ChatSettingForTroop.class.getSimpleName().equals(localObject)) || (AddFriendLogicActivity.class.getSimpleName().equals(localObject)) || (aqcn.class.getSimpleName().equals(localObject)) || (ajwl.class.getSimpleName().equals(localObject)))) {
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (ChatSettingForTroop.class.getSimpleName().equals(localObject)) || (AddFriendLogicActivity.class.getSimpleName().equals(localObject)) || (aqcp.class.getSimpleName().equals(localObject)) || (ajwj.class.getSimpleName().equals(localObject)))) {
       localIntent.putExtras(getIntent().getExtras());
     }
     localIntent.addFlags(67108864);
@@ -262,7 +262,7 @@ public class LoginActivity
   
   private boolean b()
   {
-    if (("Meizu".equalsIgnoreCase(bbct.h())) && (Build.VERSION.SDK_INT < 24))
+    if (("Meizu".equalsIgnoreCase(bbdh.h())) && (Build.VERSION.SDK_INT < 24))
     {
       if (QLog.isColorLevel()) {
         QLog.d("LoginActivity", 2, "onMultiWindowModeChanged meizu < 7.0 not support!");
@@ -277,7 +277,7 @@ public class LoginActivity
     if (QLog.isColorLevel()) {
       QLog.e("LoginActivity", 2, "only kandian tab switch, login delayTime:" + (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long));
     }
-    if (aumi.a().a()) {
+    if (aumk.a().a()) {
       return;
     }
     ThreadManager.postImmediately(new LoginActivity.2(this), null, false);
@@ -320,11 +320,11 @@ public class LoginActivity
     String str = getIntent().getStringExtra("pkg_name");
     if ((localObject != null) && ((((String)localObject).startsWith("mqqopensdkapi://bizAgent/")) || (((String)localObject).startsWith("http://qm.qq.com/cgi-bin/")) || (((String)localObject).startsWith("mqq://shop/")) || (((String)localObject).startsWith("mqqapi://wallet/open")) || (((String)localObject).startsWith("mqqmdpass://wallet/modify_pass")) || (((String)localObject).startsWith("mqqapi://qqdataline/openqqdataline")) || (((String)localObject).startsWith("mqqapi://dating/")) || (((String)localObject).startsWith("mqqapi://qlink/openqlink")) || (((String)localObject).startsWith("mqqapi://qqc2b/callc2bphone"))))
     {
-      localObject = bbej.a(this.app, this, (String)localObject);
+      localObject = bbex.a(this.app, this, (String)localObject);
       if (localObject != null)
       {
-        ((bbds)localObject).b(str);
-        ((bbds)localObject).c();
+        ((bbeg)localObject).b(str);
+        ((bbeg)localObject).c();
         return true;
       }
     }
@@ -340,12 +340,12 @@ public class LoginActivity
       localIntent.putExtra("key_params", localBundle);
       int i = localBundle.getInt("action");
       if (i == 3) {
-        abtu.a(this, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
+        abtq.a(this, localIntent, PublicTransFragmentActivity.class, JoinTroopPreVerificationFragment.class);
       }
       while (i != 1) {
         return true;
       }
-      abtu.a(this, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
+      abtq.a(this, localIntent, PublicTransFragmentActivity.class, BindTroopPreVerificationFragment.class);
       return true;
     }
     return false;
@@ -360,9 +360,9 @@ public class LoginActivity
     }
     if ((localObject != null) && (((String)localObject).startsWith("mqqapi://od")))
     {
-      localObject = bbej.a(this.app, this, (String)localObject);
-      ((bbds)localObject).b(str);
-      ((bbds)localObject).c();
+      localObject = bbex.a(this.app, this, (String)localObject);
+      ((bbeg)localObject).b(str);
+      ((bbeg)localObject).c();
       return true;
     }
     return false;
@@ -393,9 +393,9 @@ public class LoginActivity
     }
     if ((localObject != null) && (((String)localObject).startsWith("mqqapi://schedule/showDetail?")))
     {
-      localObject = bbej.a(this.app, this, (String)localObject);
-      ((bbds)localObject).b(str);
-      ((bbds)localObject).c();
+      localObject = bbex.a(this.app, this, (String)localObject);
+      ((bbeg)localObject).b(str);
+      ((bbeg)localObject).c();
       return true;
     }
     return false;
@@ -420,9 +420,9 @@ public class LoginActivity
         localIntent.putExtra("arg_is_from_wang_zhe", true);
         localIntent.putExtra("arg_wang_zhe_app_id", l);
         startActivity(localIntent);
-        this.jdField_a_of_type_Oso = ((oso)this.app.getManager(163));
-        if (this.jdField_a_of_type_Oso != null) {
-          this.jdField_a_of_type_Oso.a().a(str, this.app.c());
+        this.jdField_a_of_type_Osl = ((osl)this.app.getManager(163));
+        if (this.jdField_a_of_type_Osl != null) {
+          this.jdField_a_of_type_Osl.a().a(str, this.app.c());
         }
         bool1 = true;
       }
@@ -436,7 +436,7 @@ public class LoginActivity
     if (getIntent().getBooleanExtra("UploadPhoto.key_from_album_shortcut", false))
     {
       Bundle localBundle = getIntent().getExtras();
-      bgxy.a(this, localBundle.getString("UploadPhoto.key_album_id"), localBundle.getLong("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
+      bgyp.a(this, localBundle.getString("UploadPhoto.key_album_id"), localBundle.getLong("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
       finish();
       bool = true;
     }
@@ -463,7 +463,7 @@ public class LoginActivity
         this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(null);
       }
       localFragmentTransaction.replace(2131367260, paramGuideBaseFragment);
-      if (bfni.e()) {
+      if (bfnz.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       }
     }
@@ -475,7 +475,7 @@ public class LoginActivity
       localFragmentTransaction.commit();
       continue;
       localFragmentTransaction.add(2131367260, paramGuideBaseFragment);
-      if (bfni.e()) {
+      if (bfnz.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       } else {
         localFragmentTransaction.commit();
@@ -524,7 +524,7 @@ public class LoginActivity
     this.e = getIntent().getBooleanExtra("from_register_choose", false);
     this.d = getIntent().getBooleanExtra("login_from_account_change", false);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      bfxm.a(this);
+      bfyd.a(this);
     }
     if (jdField_a_of_type_ComTencentMobileqqActivityLoginActivity != null) {
       jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
@@ -537,7 +537,7 @@ public class LoginActivity
         QLog.d("LoginActivity", 2, "LoginActivity app is " + this.app);
       }
       this.jdField_a_of_type_Boolean = true;
-      super.setContentView(2131562346);
+      super.setContentView(2131562345);
       if (paramBundle != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131367260));
@@ -554,9 +554,9 @@ public class LoginActivity
     {
       QLog.d("LoginActivity", 1, new Object[] { Boolean.valueOf(bool) });
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment == null) {
-        a(ahre.a(this, this.app));
+        a(ahrc.a(this, this.app));
       }
-      if (axbh.a(1, BaseApplicationImpl.processName))
+      if (axbj.a(1, BaseApplicationImpl.processName))
       {
         long l1 = System.currentTimeMillis();
         paramBundle = BaseActivity.sTopActivity;
@@ -570,10 +570,10 @@ public class LoginActivity
       }
       if ((this.c) && (this.d))
       {
-        axqw.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
-        axqw.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
-        axqw.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
-        axqw.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
+        axqy.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
+        axqy.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
+        axqy.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
       }
       return true;
       localObject = getAppRuntime();
@@ -599,7 +599,7 @@ public class LoginActivity
     if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
     }
-    zzs.a(this);
+    zzp.a(this);
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -678,7 +678,7 @@ public class LoginActivity
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (!((String)localObject).equalsIgnoreCase(this.app.getCurrentAccountUin())) {
-        bbjn.a(BaseApplicationImpl.sApplication, (String)localObject, true);
+        bbkb.a(BaseApplicationImpl.sApplication, (String)localObject, true);
       }
       PatternLockUtils.setFirstEnterAfterLoginState(this, (String)localObject, true);
     }
@@ -686,12 +686,12 @@ public class LoginActivity
     ((Message)localObject).what = 20140326;
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 800L);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (!ands.a(getAppRuntime(), getClass(), this.jdField_a_of_type_Long))
+    if (!andx.a(getAppRuntime(), getClass(), this.jdField_a_of_type_Long))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(20140326);
       c();
     }
-    axqw.a(this.app, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
+    axqy.a(this.app, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
     MiniAppSecurityUtil.doClearAfterLoginSuccess();
   }
   

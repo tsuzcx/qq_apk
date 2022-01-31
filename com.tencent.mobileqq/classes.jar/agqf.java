@@ -1,1297 +1,288 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.BitmapFactory.Options;
-import android.os.Environment;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.TroopAvatarController.1;
+import com.tencent.mobileqq.activity.photo.TroopAvatarController.3;
+import com.tencent.mobileqq.activity.photo.TroopAvatarController.4;
+import com.tencent.mobileqq.activity.photo.TroopAvatarController.5;
+import com.tencent.mobileqq.activity.photo.TroopAvatarController.6;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Observable;
+import java.util.Set;
+import mqq.manager.AccountManager;
+import mqq.observer.AccountObserver;
 
 public class agqf
+  extends agqi
 {
-  public static int a()
+  private agle jdField_a_of_type_Agle;
+  private TroopClipPic jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopClipPic;
+  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new agqg(this);
+  private agle b;
+  
+  public agqf(Context paramContext, Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
   {
-    int j = 1;
-    int i;
-    if ((bbct.d() >>> 20 < 600L) || (bbct.b() == 1)) {
-      i = 0;
+    super(paramContext, paramActivity, paramQQAppInterface, paramString);
+    this.jdField_c_of_type_Int = 1;
+  }
+  
+  public agle a()
+  {
+    if (this.jdField_b_of_type_Agle != null) {
+      return this.jdField_b_of_type_Agle;
     }
-    for (;;)
+    return this.jdField_a_of_type_Agle;
+  }
+  
+  public List<agle> a()
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    AccountManager localAccountManager = (AccountManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0);
+    String str = banb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (str == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "getDeviceType,DeviceInfoUtil.getSystemTotalMemory() =" + (bbct.d() >>> 20) + ",DeviceInfoUtil.getCpuNumber() = " + bbct.b() + ",phoneType = " + i);
-      }
-      return i;
-      i = j;
-      if (bbct.d() >>> 20 >= 1536.0D)
-      {
-        i = j;
-        if (bbct.b() >= 4) {
-          i = 2;
-        }
-      }
+      localAccountManager.updateSKey(this.jdField_a_of_type_MqqObserverAccountObserver);
+      return;
     }
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopClipPic, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopClipPic = null;
   }
   
-  public static void a()
+  protected void a(int paramInt) {}
+  
+  protected void a(agle paramagle) {}
+  
+  public void a(agle paramagle, bana parambana)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    int i = localSharedPreferences.getInt("PhotoConst.camerapreviewactivity_enter_times", 0);
-    localSharedPreferences.edit().putInt("PhotoConst.camerapreviewactivity_enter_times", i + 1).commit();
+    super.a(paramagle, parambana);
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
+    Object localObject3 = null;
+    banf localbanf = null;
     if (QLog.isColorLevel()) {
-      QLog.d("StatisticConstants", 2, "sendPhotoPreviewSelectRateStatistic (" + paramInt1 + " ," + paramInt2 + ")");
+      QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("onUpdateTroopAvatarWallList bServer=%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    SharedPreferences localSharedPreferences;
-    if ((paramInt1 > 0) && (paramInt2 > 0))
+    Object localObject1;
+    Object localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-      long l1 = localSharedPreferences.getLong("PhotoConst.last_send_select_rate_time_preview", 0L);
-      long l2 = System.currentTimeMillis();
-      paramInt1 = localSharedPreferences.getInt("PhotoConst.photopreviewactivity_send_pic_count", 0) + paramInt1;
-      paramInt2 = localSharedPreferences.getInt("PhotoConst.photopreviewactivity_send_pic_total_count", 0) + paramInt2;
-      if (l2 - l1 > 86400000L)
+      if (paramBoolean) {
+        e();
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("PhotoConst.photopreviewactivity_send_pic_count", paramInt1 + "");
-        localHashMap.put("PhotoConst.photopreviewactivity_send_pic_rate", paramInt1 / paramInt2 + "");
-        axrl.a(BaseApplication.getContext()).a(null, "PhotoConst.photopreviewactivity_send", false, 0L, 0L, localHashMap, "", false);
-        localSharedPreferences.edit().putLong("PhotoConst.last_send_select_rate_time_preview", l2).putInt("PhotoConst.photopreviewactivity_send_pic_count", 0).putInt("PhotoConst.photopreviewactivity_send_pic_total_count", 0).commit();
+        paramBoolean = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("onUpdateTroopAvatarWallList hasHead=%b id=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.mTroopAvatarId) }));
+        }
+        if (!paramBoolean) {
+          break label435;
+        }
+        int i = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.mTroopAvatarId;
+        if (i <= 0) {
+          break label430;
+        }
+        localObject1 = new agle();
+        ((agle)localObject1).jdField_c_of_type_JavaLangString = String.valueOf(i);
+        ((agle)localObject1).jdField_d_of_type_Int = 1;
+        ((agle)localObject1).jdField_b_of_type_Int = 1;
+        ((agle)localObject1).jdField_c_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.mTroopVerifyingPics.contains(((agle)localObject1).jdField_c_of_type_JavaLangString);
+        if (localObject1 != null) {
+          break label424;
+        }
+        localObject2 = new agle();
+        ((agle)localObject2).jdField_c_of_type_JavaLangString = agle.jdField_a_of_type_JavaLangString;
+        ((agle)localObject2).jdField_d_of_type_Int = 1;
+        ((agle)localObject2).jdField_b_of_type_Int = 3;
       }
     }
-    else
-    {
-      return;
-    }
-    localSharedPreferences.edit().putInt("PhotoConst.photopreviewactivity_send_pic_count", paramInt1).putInt("PhotoConst.photopreviewactivity_send_pic_total_count", paramInt2).commit();
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StatisticConstants", 4, "userAlbumSourceTypeStatistic (" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4 + "," + paramInt5 + "," + paramInt6 + "," + paramInt7 + "," + paramInt8 + "," + paramInt9 + "," + paramInt10 + "," + paramInt11 + ")");
-    }
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    long l1 = localSharedPreferences.getLong("PhotoConst.last_album_source_type", 0L);
-    long l2 = System.currentTimeMillis();
-    if (l2 - l1 > 86400000L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_systemAlbumCount", paramInt1 + "");
-      localHashMap.put("param_screnshot_qq_cnt", paramInt2 + "");
-      localHashMap.put("param_screnshot_other_cnt", paramInt3 + "");
-      localHashMap.put("param_appCount", paramInt4 + "");
-      localHashMap.put("param_otherCount", paramInt5 + "");
-      localHashMap.put("param_qq_collection_cnt", paramInt6 + "");
-      localHashMap.put("param_qq_filerecv_cnt", paramInt8 + "");
-      localHashMap.put("param_qq_image_cnt", paramInt7 + "");
-      localHashMap.put("param_qq_zebra_cnt", paramInt9 + "");
-      localHashMap.put("param_qq_favorite_cnt", paramInt10 + "");
-      localHashMap.put("param_weixinCnt", paramInt11 + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actAlbumPicSourceType", false, 0L, 0L, localHashMap, "", false);
-      localSharedPreferences.edit().putLong("PhotoConst.last_album_source_type", l2).commit();
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StatisticConstants", 4, "sendPhotoListSourceTypeStatistic (" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4 + "," + paramInt5 + "," + paramInt6 + "," + paramInt7 + "," + paramInt8 + "," + paramInt9 + "," + paramInt10 + "," + paramInt11 + "," + paramInt12 + "," + paramInt13 + "),age = " + paramInt14 + ",gender = " + paramInt15 + ",userType = " + paramInt16);
-    }
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    long l1 = localSharedPreferences.getLong("PhotoConst.last_send_pic_source_type", 0L);
-    long l2 = System.currentTimeMillis();
-    paramInt1 = localSharedPreferences.getInt("PhotoConst.photolistactivity_systemalbum_send_count", 0) + paramInt1;
-    paramInt2 = localSharedPreferences.getInt("PhotoConst.photolistactivity_screnshot_qq_send_count", 0) + paramInt2;
-    paramInt3 = localSharedPreferences.getInt("PhotoConst.photolistactivity_screnshot_other_send_count", 0) + paramInt3;
-    paramInt5 = localSharedPreferences.getInt("PhotoConst.photolistactivity_other_send_count", 0) + paramInt5;
-    paramInt4 = localSharedPreferences.getInt("PhotoConst.photolistactivity_app_send_count", 0) + paramInt4;
-    paramInt6 = localSharedPreferences.getInt("PhotoConst.photolistactivity_qq_collection_send_count", 0) + paramInt6;
-    paramInt7 = localSharedPreferences.getInt("PhotoConst.photolistactivity_qq_image_send_count", 0) + paramInt7;
-    paramInt8 = localSharedPreferences.getInt("PhotoConst.photolistactivity_qq_filerecv_send_count", 0) + paramInt8;
-    paramInt9 = localSharedPreferences.getInt("PhotoConst.photolistactivity_qq_zebra_send_count", 0) + paramInt9;
-    paramInt10 = localSharedPreferences.getInt("PhotoConst.photolistactivity_qq_favorite_send_count", 0) + paramInt10;
-    paramInt11 = localSharedPreferences.getInt("PhotoConst.photolistactivity_weixin_send_count", 0) + paramInt11;
-    paramInt12 = localSharedPreferences.getInt("PhotoConst.photolistactivity_sougou_send_count", 0) + paramInt12;
-    paramInt13 = localSharedPreferences.getInt("PhotoConst.photolistactivity_qqpinyin_send_count", 0) + paramInt13;
-    if (l2 - l1 > 86400000L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_systemAlbumSendCount", paramInt1 + "");
-      localHashMap.put("param_screnshotQQSendCount", paramInt2 + "");
-      localHashMap.put("param_screnshotOtherSendCount", paramInt3 + "");
-      localHashMap.put("param_otherSendCount", paramInt5 + "");
-      localHashMap.put("param_appSendCount", paramInt4 + "");
-      localHashMap.put("param_qq_collection_SendCount", paramInt6 + "");
-      localHashMap.put("param_qq_image_SendCount", paramInt7 + "");
-      localHashMap.put("param_qq_filerecv_SendCount", paramInt8 + "");
-      localHashMap.put("param_qq_zebra_SendCount", paramInt9 + "");
-      localHashMap.put("param_qq_favorite_SendCount", paramInt10 + "");
-      localHashMap.put("param_weixinSendCount", paramInt11 + "");
-      localHashMap.put("param_sougouSendCount", paramInt12 + "");
-      localHashMap.put("param_qqpinyinSendCount", paramInt13 + "");
-      localHashMap.put("param_age", paramInt14 + "");
-      localHashMap.put("param_gender", paramInt15 + "");
-      localHashMap.put("param_userType", paramInt16 + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actDaySendPicSourceType", false, 0L, 0L, localHashMap, "", false);
-      localSharedPreferences.edit().putLong("PhotoConst.last_send_pic_source_type", l2).putInt("PhotoConst.photolistactivity_systemalbum_send_count", 0).putInt("PhotoConst.photolistactivity_screnshot_qq_send_count", 0).putInt("PhotoConst.photolistactivity_screnshot_other_send_count", 0).putInt("PhotoConst.photolistactivity_other_send_count", 0).putInt("PhotoConst.photolistactivity_app_send_count", 0).putInt("PhotoConst.photolistactivity_qq_collection_send_count", 0).putInt("PhotoConst.photolistactivity_qq_image_send_count", 0).putInt("PhotoConst.photolistactivity_qq_filerecv_send_count", 0).putInt("PhotoConst.photolistactivity_qq_zebra_send_count", 0).putInt("PhotoConst.photolistactivity_qq_favorite_send_count", 0).putInt("PhotoConst.photolistactivity_weixin_send_count", 0).putInt("PhotoConst.photolistactivity_sougou_send_count", 0).putInt("PhotoConst.photolistactivity_qqpinyin_send_count", 0).commit();
-      return;
-    }
-    localSharedPreferences.edit().putInt("PhotoConst.photolistactivity_systemalbum_send_count", paramInt1).putInt("PhotoConst.photolistactivity_screnshot_qq_send_count", paramInt2).putInt("PhotoConst.photolistactivity_screnshot_other_send_count", paramInt3).putInt("PhotoConst.photolistactivity_other_send_count", paramInt5).putInt("PhotoConst.photolistactivity_app_send_count", paramInt4).putInt("PhotoConst.photolistactivity_qq_collection_send_count", paramInt6).putInt("PhotoConst.photolistactivity_qq_image_send_count", paramInt7).putInt("PhotoConst.photolistactivity_qq_filerecv_send_count", paramInt8).putInt("PhotoConst.photolistactivity_qq_zebra_send_count", paramInt9).putInt("PhotoConst.photolistactivity_qq_favorite_send_count", paramInt10).putInt("PhotoConst.photolistactivity_weixin_send_count", paramInt11).putInt("PhotoConst.photolistactivity_sougou_send_count", paramInt12).putInt("PhotoConst.photolistactivity_qqpinyin_send_count", paramInt13).commit();
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (paramLong <= 0L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportActPSdayWastedSize,size <= 0,return! size = " + paramLong);
-      }
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name())) {}
-    for (int i = 1002;; i = 1001)
-    {
-      int j = bbev.a(BaseApplication.getContext());
-      int k = a();
-      localHashMap.put("param_netType", j + "");
-      localHashMap.put("param_phone_type", k + "");
-      localHashMap.put("param_userType", i + "");
-      localHashMap.put("param_WasteSize", paramLong + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPSdayWastedSize", false, 0L, 0L, localHashMap, "", false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("StatisticConstants", 2, "reportActPSdayWastedSize,WastedSize =" + paramLong);
-      return;
-    }
-  }
-  
-  public static void a(long paramLong, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name())) {}
-    for (int i = 1002;; i = 1001)
-    {
-      int j = bbev.a(BaseApplication.getContext());
-      int k = a();
-      localHashMap.put("param_netType", j + "");
-      localHashMap.put("param_phone_type", k + "");
-      localHashMap.put("param_userType", i + "");
-      localHashMap.put("param_WasteSize", paramLong + "");
-      localHashMap.put("param_cancelType", paramInt + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPSWaste", false, 0L, 0L, localHashMap, "", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportActPSWaste,size = " + paramLong + ",cancelType = " + paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(long paramLong, int paramInt, boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    if ((paramLong == 0L) || (paramInt == 0) || (paramLong > 86400000L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportActPSdonecompressPic,invalid arg,return!");
-      }
-      return;
-    }
-    long l = paramLong / paramInt;
-    int j = a();
-    if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name())) {}
-    for (int i = 1002;; i = 1001)
-    {
-      localHashMap.put("param_userType", i + "");
-      localHashMap.put("param_phone_type", j + "");
-      localHashMap.put("param_consumTime", paramLong + "");
-      localHashMap.put("param_selNum", paramInt + "");
-      localHashMap.put("param_showing_progress", paramBoolean + "");
-      localHashMap.put("param_averageTime", l + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPSdonecompressPic", false, 0L, 0L, localHashMap, "", false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("StatisticConstants", 2, "reportActPSdonecompressPic,param_consumTime =" + paramLong + ",param_selNum = " + paramInt + ",param_averageTime = " + l + ",isShowing = " + paramBoolean);
-      return;
-    }
-  }
-  
-  public static void a(long paramLong1, long paramLong2, boolean paramBoolean, double paramDouble)
-  {
-    HashMap localHashMap = new HashMap();
-    if ((paramLong1 > 86400000L) || (paramDouble < 0.0D) || (paramDouble > 1.0D))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportActPSdoneAioDuration,invalid arg,return!");
-      }
-      return;
-    }
-    int j = bbev.a(BaseApplication.getContext());
-    int k = a();
-    if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name())) {}
-    for (int i = 1002;; i = 1001)
-    {
-      localHashMap.put("param_userType", i + "");
-      localHashMap.put("param_netType", j + "");
-      localHashMap.put("param_aio_duration", paramLong1 + "");
-      localHashMap.put("param_second_trans", paramBoolean + "");
-      localHashMap.put("param_phone_type", k + "");
-      localHashMap.put("param_pic_filesize", paramLong2 + "");
-      localHashMap.put("param_optimizePercent", paramDouble + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPSdoneaioduration", false, 0L, 0L, localHashMap, "", false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("StatisticConstants", 2, "reportActPSdoneAioDuration,aioduration =" + paramLong1 + ",filesize = " + paramLong2 + ",isSecondTrans = " + paramBoolean + ",phoneType = " + k + ",percent = " + paramDouble);
-      return;
-    }
-  }
-  
-  public static void a(Intent paramIntent)
-  {
-    HashMap localHashMap = new HashMap();
-    long l1 = paramIntent.getLongExtra("param_compressInitTime", 0L);
-    if (l1 == 0L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportActPScompressPic,initTime == 0,return!");
-      }
-    }
-    long l2;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        l2 = System.currentTimeMillis() - l1;
-      } while (l2 > 86400000L);
-      i = paramIntent.getIntExtra("param_selNum", 0);
-      if (i != 0) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("StatisticConstants", 2, "reportActPScompressPic,param_selNum == 0,return!");
-    return;
-    if (i > 0) {}
-    for (l1 = l2 / i;; l1 = 0L)
-    {
-      localHashMap.put("param_consumTime", l2 + "");
-      localHashMap.put("param_selNum", i + "");
-      localHashMap.put("param_averageTime", l1 + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPScompressPic", false, 0L, 0L, localHashMap, "", false);
-      paramIntent.removeExtra("param_compressInitTime");
-      paramIntent.removeExtra("param_selNum");
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("StatisticConstants", 2, "reportActPScompressPic,param_consumTime =" + l2 + ",param_selNum = " + i + ",param_averageTime = " + l1);
-      return;
-    }
-  }
-  
-  public static void a(Intent paramIntent, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StatisticConstants", 4, "sendPhotoListSelectRateStatistic (" + paramInt + ")");
-    }
-    int i = paramIntent.getIntExtra("param_totalSelNum", 0);
-    if ((paramInt > 0) && (i > 0))
-    {
-      paramIntent = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-      long l1 = paramIntent.getLong("PhotoConst.last_send_select_rate_time", 0L);
-      long l2 = System.currentTimeMillis();
-      paramInt = paramIntent.getInt("PhotoConst.photolistactivity_pic_count", 0) + paramInt;
-      i += paramIntent.getInt("PhotoConst.photolistactivity_pic_total_count", 0);
-      if (l2 - l1 > 86400000L)
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_sendCount", paramInt + "");
-        localHashMap.put("param_selCount", i + "");
-        localHashMap.put("param_sendPercent", paramInt / i + "");
-        axrl.a(BaseApplication.getContext()).a(null, "actPSdaySelSend", false, 0L, 0L, localHashMap, "", false);
-        paramIntent.edit().putLong("PhotoConst.last_send_select_rate_time", l2).putInt("PhotoConst.photolistactivity_pic_count", 0).putInt("PhotoConst.photolistactivity_pic_total_count", 0).commit();
-      }
-    }
-    else
-    {
-      return;
-    }
-    paramIntent.edit().putInt("PhotoConst.photolistactivity_pic_count", paramInt).putInt("PhotoConst.photolistactivity_pic_total_count", i).commit();
-  }
-  
-  public static void a(Intent paramIntent, int paramInt1, int paramInt2)
-  {
-    long l1 = paramIntent.getLongExtra("param_initTime", 0L);
-    if (l1 == 0L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportActPSselectSendPic,initTime == 0,return!");
-      }
-    }
-    long l2;
-    do
-    {
-      return;
-      l2 = System.currentTimeMillis() - l1;
-    } while (l2 > 86400000L);
-    if (paramInt1 > 0) {}
-    for (l1 = l2 / paramInt1;; l1 = 0L)
-    {
-      int i = paramIntent.getIntExtra("param_cancelSelNum", 0);
-      HashMap localHashMap = new HashMap();
-      int j = bbev.a(BaseApplication.getContext());
-      localHashMap.put("param_netType", j + "");
-      localHashMap.put("param_type", paramInt2 + "");
-      localHashMap.put("param_cancelSelNum", i + "");
-      localHashMap.put("param_consumTime", l2 + "");
-      localHashMap.put("param_selNum", paramInt1 + "");
-      localHashMap.put("param_averageTime", l1 + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPSselectSendPic", false, 0L, 0L, localHashMap, "", false);
-      paramIntent.removeExtra("param_initTime");
-      paramIntent.removeExtra("param_cancelSelNum");
-      paramIntent.removeExtra("param_totalSelNum");
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("StatisticConstants", 2, "reportActPSselectSendPic,param_type =" + paramInt2 + ",param_cancelSelNum = " + i + ",param_consumTime = " + l2 + ",param_selNum = " + paramInt1 + ",param_averageTime = " + l1);
-      return;
-    }
-  }
-  
-  public static void a(Intent paramIntent, String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StatisticConstants", 4, "incrementStatisticParam(" + paramString);
-    }
-    if (paramIntent != null) {
-      paramIntent.putExtra(paramString, paramIntent.getIntExtra(paramString, 0) + 1);
-    }
-  }
-  
-  /* Error */
-  public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_2
-    //   6: bipush 106
-    //   8: invokevirtual 418	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   11: checkcast 420	aszd
-    //   14: astore_2
-    //   15: aload_2
-    //   16: ifnull +962 -> 978
-    //   19: aload_2
-    //   20: invokevirtual 421	aszd:a	()I
-    //   23: istore 4
-    //   25: aload_2
-    //   26: invokevirtual 422	aszd:b	()I
-    //   29: istore_3
-    //   30: new 424	android/graphics/BitmapFactory$Options
-    //   33: dup
-    //   34: invokespecial 425	android/graphics/BitmapFactory$Options:<init>	()V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: iconst_1
-    //   40: putfield 429	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   43: aload_0
-    //   44: aload_2
-    //   45: invokestatic 434	bbdr:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   48: pop
-    //   49: aload_2
-    //   50: getfield 438	android/graphics/BitmapFactory$Options:outWidth	I
-    //   53: istore 7
-    //   55: aload_2
-    //   56: getfield 441	android/graphics/BitmapFactory$Options:outHeight	I
-    //   59: istore 8
-    //   61: iload 7
-    //   63: i2l
-    //   64: iload 8
-    //   66: i2l
-    //   67: invokestatic 446	avxd:a	(JJ)I
-    //   70: istore 9
-    //   72: iload_1
-    //   73: istore 5
-    //   75: iload_1
-    //   76: ifeq +24 -> 100
-    //   79: iload_1
-    //   80: istore 5
-    //   82: iload_1
-    //   83: iconst_1
-    //   84: if_icmpeq +16 -> 100
-    //   87: iload_1
-    //   88: istore 5
-    //   90: iload_1
-    //   91: sipush 3000
-    //   94: if_icmpeq +6 -> 100
-    //   97: iconst_5
-    //   98: istore 5
-    //   100: aconst_null
-    //   101: astore 17
-    //   103: new 448	java/io/FileInputStream
-    //   106: dup
-    //   107: aload_0
-    //   108: invokespecial 450	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   111: astore 16
-    //   113: aload 16
-    //   115: new 452	java/io/File
-    //   118: dup
-    //   119: aload_0
-    //   120: invokespecial 453	java/io/File:<init>	(Ljava/lang/String;)V
-    //   123: invokevirtual 456	java/io/File:length	()J
-    //   126: invokestatic 462	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   129: astore_2
-    //   130: aload_2
-    //   131: invokestatic 468	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   134: astore_2
-    //   135: aload_2
-    //   136: astore 17
-    //   138: aload 17
-    //   140: astore_2
-    //   141: aload 16
-    //   143: ifnull +11 -> 154
-    //   146: aload 16
-    //   148: invokevirtual 471	java/io/FileInputStream:close	()V
-    //   151: aload 17
-    //   153: astore_2
-    //   154: aload_0
-    //   155: invokestatic 476	bbdj:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   158: astore 16
-    //   160: aload 16
-    //   162: invokevirtual 481	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   165: ldc_w 483
-    //   168: invokevirtual 487	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   171: ifeq +759 -> 930
-    //   174: iconst_0
-    //   175: istore_1
-    //   176: invokestatic 493	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   179: bipush 11
-    //   181: invokevirtual 497	java/util/Calendar:get	(I)I
-    //   184: istore 10
-    //   186: invokestatic 255	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   189: getstatic 261	com/tencent/mobileqq/app/DeviceProfileManager$AccountDpcManager$DpcAccountNames:picpredownload_whitelist	Lcom/tencent/mobileqq/app/DeviceProfileManager$AccountDpcManager$DpcAccountNames;
-    //   192: invokevirtual 264	com/tencent/mobileqq/app/DeviceProfileManager$AccountDpcManager$DpcAccountNames:name	()Ljava/lang/String;
-    //   195: invokevirtual 267	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Z
-    //   198: ifeq +737 -> 935
-    //   201: sipush 1002
-    //   204: istore 6
-    //   206: invokestatic 146	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   209: ifeq +158 -> 367
-    //   212: ldc 25
-    //   214: iconst_4
-    //   215: new 27	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   222: ldc_w 499
-    //   225: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: aload_0
-    //   229: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: ldc_w 501
-    //   235: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: iload 5
-    //   240: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   243: ldc_w 503
-    //   246: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: iload 9
-    //   251: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   254: ldc_w 505
-    //   257: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: iload 4
-    //   262: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   265: ldc 183
-    //   267: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: iload_3
-    //   271: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   274: ldc_w 507
-    //   277: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: iload 10
-    //   282: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   285: ldc_w 509
-    //   288: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: aload_2
-    //   292: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: ldc_w 511
-    //   298: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   301: iload_1
-    //   302: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   305: ldc_w 513
-    //   308: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   311: aload 16
-    //   313: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   316: ldc_w 515
-    //   319: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: aload_0
-    //   323: invokestatic 518	com/tencent/qphone/base/util/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
-    //   326: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: ldc_w 520
-    //   332: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: iload 7
-    //   337: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   340: ldc_w 522
-    //   343: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   346: iload 8
-    //   348: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   351: ldc 185
-    //   353: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: iload 6
-    //   358: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   361: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   364: invokestatic 54	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   367: new 116	java/util/HashMap
-    //   370: dup
-    //   371: invokespecial 117	java/util/HashMap:<init>	()V
-    //   374: astore_0
-    //   375: aload_0
-    //   376: ldc_w 524
-    //   379: new 27	java/lang/StringBuilder
-    //   382: dup
-    //   383: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   386: iload 5
-    //   388: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   391: ldc 119
-    //   393: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   402: pop
-    //   403: aload_0
-    //   404: ldc_w 526
-    //   407: new 27	java/lang/StringBuilder
-    //   410: dup
-    //   411: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   414: iload 9
-    //   416: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   419: ldc 119
-    //   421: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   424: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   427: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   430: pop
-    //   431: aload_0
-    //   432: ldc 241
-    //   434: new 27	java/lang/StringBuilder
-    //   437: dup
-    //   438: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   441: iload 4
-    //   443: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   446: ldc 119
-    //   448: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   451: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   454: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   457: pop
-    //   458: aload_0
-    //   459: ldc 243
-    //   461: new 27	java/lang/StringBuilder
-    //   464: dup
-    //   465: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   468: iload_3
-    //   469: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   472: ldc 119
-    //   474: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   477: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   480: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   483: pop
-    //   484: aload_0
-    //   485: ldc 245
-    //   487: new 27	java/lang/StringBuilder
-    //   490: dup
-    //   491: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   494: iload 6
-    //   496: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   499: ldc 119
-    //   501: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   504: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   507: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   510: pop
-    //   511: aload_0
-    //   512: ldc_w 528
-    //   515: aload_2
-    //   516: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   519: pop
-    //   520: aload_0
-    //   521: ldc_w 530
-    //   524: new 27	java/lang/StringBuilder
-    //   527: dup
-    //   528: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   531: iload_1
-    //   532: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   535: ldc 119
-    //   537: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   546: pop
-    //   547: aload_0
-    //   548: ldc_w 532
-    //   551: new 27	java/lang/StringBuilder
-    //   554: dup
-    //   555: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   558: iload 10
-    //   560: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   563: ldc 119
-    //   565: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   568: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   571: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   574: pop
-    //   575: invokestatic 63	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   578: invokestatic 133	axrl:a	(Landroid/content/Context;)Laxrl;
-    //   581: aconst_null
-    //   582: ldc_w 534
-    //   585: iconst_0
-    //   586: lconst_0
-    //   587: lconst_0
-    //   588: aload_0
-    //   589: ldc 119
-    //   591: iconst_0
-    //   592: invokevirtual 138	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   595: invokestatic 63	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   598: invokestatic 69	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
-    //   601: astore_0
-    //   602: aload_0
-    //   603: ldc_w 536
-    //   606: lconst_0
-    //   607: invokeinterface 103 4 0
-    //   612: lstore 11
-    //   614: invokestatic 108	java/lang/System:currentTimeMillis	()J
-    //   617: lstore 13
-    //   619: aload_0
-    //   620: ldc_w 538
-    //   623: iconst_0
-    //   624: invokeinterface 77 3 0
-    //   629: iconst_1
-    //   630: iadd
-    //   631: istore_1
-    //   632: lload 13
-    //   634: lload 11
-    //   636: lsub
-    //   637: ldc2_w 113
-    //   640: lcmp
-    //   641: ifle +302 -> 943
-    //   644: new 116	java/util/HashMap
-    //   647: dup
-    //   648: invokespecial 117	java/util/HashMap:<init>	()V
-    //   651: astore_2
-    //   652: aload_2
-    //   653: ldc 241
-    //   655: new 27	java/lang/StringBuilder
-    //   658: dup
-    //   659: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   662: iload 4
-    //   664: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   667: ldc 119
-    //   669: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   672: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   675: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   678: pop
-    //   679: aload_2
-    //   680: ldc 243
-    //   682: new 27	java/lang/StringBuilder
-    //   685: dup
-    //   686: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   689: iload_3
-    //   690: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   693: ldc 119
-    //   695: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   698: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   701: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   704: pop
-    //   705: aload_2
-    //   706: ldc 245
-    //   708: new 27	java/lang/StringBuilder
-    //   711: dup
-    //   712: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   715: iload 6
-    //   717: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   720: ldc 119
-    //   722: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   728: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   731: pop
-    //   732: aload_2
-    //   733: ldc_w 540
-    //   736: new 27	java/lang/StringBuilder
-    //   739: dup
-    //   740: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   743: iload_1
-    //   744: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   747: ldc 119
-    //   749: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   752: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   755: invokevirtual 123	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   758: pop
-    //   759: invokestatic 63	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   762: invokestatic 133	axrl:a	(Landroid/content/Context;)Laxrl;
-    //   765: aconst_null
-    //   766: ldc_w 542
-    //   769: iconst_0
-    //   770: lconst_0
-    //   771: lconst_0
-    //   772: aload_2
-    //   773: ldc 119
-    //   775: iconst_0
-    //   776: invokevirtual 138	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   779: aload_0
-    //   780: invokeinterface 81 1 0
-    //   785: ldc_w 536
-    //   788: lload 13
-    //   790: invokeinterface 142 4 0
-    //   795: ldc_w 538
-    //   798: iconst_0
-    //   799: invokeinterface 87 3 0
-    //   804: invokeinterface 90 1 0
-    //   809: pop
-    //   810: return
-    //   811: astore_2
-    //   812: new 452	java/io/File
-    //   815: dup
-    //   816: aload_0
-    //   817: invokespecial 453	java/io/File:<init>	(Ljava/lang/String;)V
-    //   820: astore_2
-    //   821: aload_2
-    //   822: invokevirtual 545	java/io/File:exists	()Z
-    //   825: istore 15
-    //   827: iload 15
-    //   829: ifeq +144 -> 973
-    //   832: aload_2
-    //   833: invokestatic 550	bfjx:a	(Ljava/io/File;)Ljava/lang/String;
-    //   836: astore_2
-    //   837: aload_2
-    //   838: ifnull +11 -> 849
-    //   841: aload_2
-    //   842: invokestatic 554	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   845: astore_2
-    //   846: goto -716 -> 130
-    //   849: ldc 119
-    //   851: astore_2
-    //   852: goto -11 -> 841
-    //   855: astore_2
-    //   856: aconst_null
-    //   857: astore_2
-    //   858: goto -728 -> 130
-    //   861: astore_2
-    //   862: aload_2
-    //   863: invokevirtual 557	java/io/IOException:printStackTrace	()V
-    //   866: aload 17
-    //   868: astore_2
-    //   869: goto -715 -> 154
-    //   872: astore_2
-    //   873: aconst_null
-    //   874: astore 16
-    //   876: aload 17
-    //   878: astore_2
-    //   879: aload 16
-    //   881: ifnull -727 -> 154
-    //   884: aload 16
-    //   886: invokevirtual 471	java/io/FileInputStream:close	()V
-    //   889: aload 17
-    //   891: astore_2
-    //   892: goto -738 -> 154
-    //   895: astore_2
-    //   896: aload_2
-    //   897: invokevirtual 557	java/io/IOException:printStackTrace	()V
-    //   900: aload 17
-    //   902: astore_2
-    //   903: goto -749 -> 154
-    //   906: astore_0
-    //   907: aconst_null
-    //   908: astore 16
-    //   910: aload 16
-    //   912: ifnull +8 -> 920
-    //   915: aload 16
-    //   917: invokevirtual 471	java/io/FileInputStream:close	()V
-    //   920: aload_0
-    //   921: athrow
-    //   922: astore_2
-    //   923: aload_2
-    //   924: invokevirtual 557	java/io/IOException:printStackTrace	()V
-    //   927: goto -7 -> 920
-    //   930: iconst_1
-    //   931: istore_1
-    //   932: goto -756 -> 176
-    //   935: sipush 1001
-    //   938: istore 6
-    //   940: goto -734 -> 206
-    //   943: aload_0
-    //   944: invokeinterface 81 1 0
-    //   949: ldc_w 538
-    //   952: iload_1
-    //   953: invokeinterface 87 3 0
-    //   958: invokeinterface 90 1 0
-    //   963: pop
-    //   964: return
-    //   965: astore_0
-    //   966: goto -56 -> 910
-    //   969: astore_2
-    //   970: goto -94 -> 876
-    //   973: aconst_null
-    //   974: astore_2
-    //   975: goto -845 -> 130
-    //   978: iconst_m1
-    //   979: istore_3
-    //   980: iconst_m1
-    //   981: istore 4
-    //   983: goto -953 -> 30
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	986	0	paramString	String
-    //   0	986	1	paramInt	int
-    //   0	986	2	paramQQAppInterface	QQAppInterface
-    //   29	951	3	i	int
-    //   23	959	4	j	int
-    //   73	314	5	k	int
-    //   204	735	6	m	int
-    //   53	283	7	n	int
-    //   59	288	8	i1	int
-    //   70	345	9	i2	int
-    //   184	375	10	i3	int
-    //   612	23	11	l1	long
-    //   617	172	13	l2	long
-    //   825	3	15	bool	boolean
-    //   111	805	16	localObject	Object
-    //   101	800	17	localQQAppInterface	QQAppInterface
-    // Exception table:
-    //   from	to	target	type
-    //   113	130	811	java/lang/UnsatisfiedLinkError
-    //   832	837	855	java/io/IOException
-    //   841	846	855	java/io/IOException
-    //   146	151	861	java/io/IOException
-    //   103	113	872	java/io/IOException
-    //   884	889	895	java/io/IOException
-    //   103	113	906	finally
-    //   915	920	922	java/io/IOException
-    //   113	130	965	finally
-    //   130	135	965	finally
-    //   812	827	965	finally
-    //   832	837	965	finally
-    //   841	846	965	finally
-    //   113	130	969	java/io/IOException
-    //   130	135	969	java/io/IOException
-    //   812	827	969	java/io/IOException
-  }
-  
-  private static void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
-  {
-    if (paramString == null) {
-      return;
-    }
-    Object localObject1 = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
     for (;;)
     {
-      try
+      ArrayList localArrayList = this.jdField_a_of_type_Baje.a();
+      if (localArrayList != null)
       {
-        bbdr.a(paramString, (BitmapFactory.Options)localObject1);
-        i1 = ((BitmapFactory.Options)localObject1).outWidth;
-        i2 = ((BitmapFactory.Options)localObject1).outHeight;
-        j = paramInt1;
-        if (paramInt1 != 0)
-        {
-          j = paramInt1;
-          if (paramInt1 != 1)
-          {
-            j = paramInt1;
-            if (paramInt1 != 3000) {
-              j = 5;
-            }
-          }
-        }
-        k = paramInt2;
-        if (paramInt2 != 0)
-        {
-          k = paramInt2;
-          if (paramInt2 != 1)
-          {
-            k = paramInt2;
-            if (paramInt2 != 3000) {
-              k = 5;
-            }
-          }
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        try
-        {
-          int i1;
-          int i2;
-          int j;
-          int k;
-          localObject1 = Environment.getExternalStorageDirectory().toString();
-          if ((localObject1 != null) && (paramString.contains((CharSequence)localObject1)))
-          {
-            localObject1 = paramString.replace((CharSequence)localObject1, "");
-            paramInt1 = ((String)localObject1).lastIndexOf("/");
-            Object localObject2 = localObject1;
-            if (paramInt1 != -1) {
-              localObject2 = ((String)localObject1).substring(0, paramInt1);
-            }
-            localObject1 = ((String)localObject2).replace("/", "//");
-            int i3 = Calendar.getInstance().get(11);
-            paramInt2 = -1;
-            localObject2 = new File(paramString);
-            paramInt1 = paramInt2;
-            if (!paramBoolean2)
-            {
-              paramInt1 = paramInt2;
-              if (((File)localObject2).exists())
-              {
-                paramInt2 = (int)((System.currentTimeMillis() - ((File)localObject2).lastModified()) / 60000L);
-                paramInt1 = paramInt2;
-                if (paramInt2 == 0) {
-                  paramInt1 = 1;
-                }
-              }
-            }
-            int i;
-            if (paramString.toLowerCase(Locale.US).contains("gif"))
-            {
-              i = 0;
-              paramInt2 = i;
-              int m = i2;
-              int n = i1;
-              if (paramString.contains(ajsf.bg))
-              {
-                paramString = paramString.split("#");
-                paramInt2 = i;
-                m = i2;
-                n = i1;
-                if (paramString.length >= 4)
-                {
-                  n = Integer.parseInt(paramString[1]);
-                  m = Integer.parseInt(paramString[2]);
-                  if (Integer.parseInt(paramString[3]) != 3) {
-                    continue;
-                  }
-                  paramInt2 = 0;
-                }
-              }
-              i = avxd.a(n, m);
-              i1 = bbev.a(BaseApplication.getContext());
-              if (QLog.isDevelopLevel()) {
-                QLog.d("StatisticConstants", 4, "sendPhotoSourceDetailUrlStatistic url=" + (String)localObject1 + ",uinType = " + j + ",batchCnt = " + paramInt7 + ",sizeType = " + i + ",isRAW = " + paramBoolean1 + ",isForward = " + paramBoolean2 + ",age = " + paramInt3 + ",gender = " + paramInt4 + ",reprotHour = " + i3 + ",width = " + n + ",height = " + m + ",interval = " + paramInt1 + ",suffixType = " + paramInt2 + ",nettype = " + i1 + ",forwardSourceUinType = " + k + ",urlType = " + paramInt6 + ",userType = " + paramInt5 + ",fileName = " + ((File)localObject2).getName());
-              }
-              paramString = new HashMap();
-              paramString.put("param_sourceDetailUrl", localObject1);
-              paramString.put("param_uinType", j + "");
-              paramString.put("param_forwardSourceUinType", k + "");
-              paramString.put("param_picSizeType", i + "");
-              paramString.put("param_isForward", paramBoolean2 + "");
-              paramString.put("param_age", paramInt3 + "");
-              paramString.put("param_gender", paramInt4 + "");
-              paramString.put("param_userType", paramInt5 + "");
-              paramString.put("param_picReportHour", i3 + "");
-              paramString.put("param_picInterval", paramInt1 + "");
-              paramString.put("param_isRAWPic", paramBoolean1 + "");
-              paramString.put("param_fileName", ((File)localObject2).getName());
-              paramString.put("param_picSuffixType", paramInt2 + "");
-              paramString.put("param_netType", i1 + "");
-              paramString.put("param_urlType", paramInt6 + "");
-              paramString.put("param_picBatchCount", paramInt7 + "");
-              axrl.a(BaseApplication.getContext()).a(null, "actPhotoSourceDetailUrl", false, 0L, 0L, paramString, "", false);
-              return;
-              localOutOfMemoryError = localOutOfMemoryError;
-              QLog.e("StatisticConstants", 4, "sendPhotoSourceDetailUrlStatistic OutOfMemoryError ");
-            }
-            else
-            {
-              i = 1;
-              continue;
-            }
-            paramInt2 = 1;
-          }
-          else
-          {
-            localObject1 = paramString;
-          }
-        }
-        catch (Exception paramString)
-        {
-          return;
-        }
-      }
-    }
-  }
-  
-  public static void a(String[] paramArrayOfString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, QQAppInterface paramQQAppInterface)
-  {
-    if (paramArrayOfString == null) {}
-    label188:
-    do
-    {
-      return;
-      paramQQAppInterface = (aszd)paramQQAppInterface.getManager(106);
-      int i15 = paramArrayOfString.length;
-      int i10 = -1;
-      int i11 = -1;
-      if (paramQQAppInterface != null)
-      {
-        i10 = paramQQAppInterface.a();
-        i11 = paramQQAppInterface.b();
-      }
-      if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name())) {}
-      int i;
-      int j;
-      int i1;
-      int m;
-      int n;
-      int i9;
-      int i2;
-      int i3;
-      int i4;
-      int i5;
-      int i6;
-      int i7;
-      int i8;
-      String str2;
-      for (int i12 = 1002;; i12 = 1001)
-      {
-        i = 0;
-        j = 0;
-        i1 = 0;
-        m = 0;
-        n = 0;
-        i9 = 0;
-        i2 = 0;
-        i3 = 0;
-        i4 = 0;
-        i5 = 0;
-        i6 = 0;
-        i7 = 0;
-        i8 = 0;
-        int i16 = paramArrayOfString.length;
-        int i13 = 0;
+        Iterator localIterator = localArrayList.iterator();
+        localObject1 = localbanf;
         for (;;)
         {
-          if (i13 >= i16) {
-            break label944;
-          }
-          str2 = paramArrayOfString[i13];
-          if (str2 != null) {
+          localObject3 = localObject1;
+          if (!localIterator.hasNext()) {
             break;
           }
-          i13 += 1;
+          localbanf = (banf)localIterator.next();
+          if (localbanf != null)
+          {
+            localObject3 = localObject1;
+            if (localbanf.jdField_b_of_type_Int == 1)
+            {
+              if (localObject1 != null)
+              {
+                localIterator.remove();
+              }
+              else
+              {
+                localObject3 = new agle();
+                ((agle)localObject3).jdField_b_of_type_JavaLangString = localbanf.jdField_a_of_type_JavaLangString;
+                ((agle)localObject3).jdField_c_of_type_Int = localbanf.jdField_a_of_type_Int;
+                ((agle)localObject3).jdField_d_of_type_Int = localbanf.jdField_b_of_type_Int;
+                ((agle)localObject3).jdField_b_of_type_Int = 2;
+                ((agle)localObject3).jdField_a_of_type_Boolean = true;
+                ((agle)localObject3).jdField_a_of_type_Long = localbanf.jdField_a_of_type_Long;
+                ((agle)localObject3).jdField_d_of_type_JavaLangString = localbanf.jdField_b_of_type_JavaLangString;
+              }
+            }
+            else {
+              localObject1 = localObject3;
+            }
+          }
         }
       }
-      String str1 = str2.toLowerCase(Locale.US);
-      String str3 = apvb.c(str1);
-      paramQQAppInterface = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("onUpdateTroopAvatarWallList uploadItems=%s", new Object[] { localArrayList }));
+      }
+      localObject1 = new TroopAvatarController.1(this, (agle)localObject2, (agle)localObject3);
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        ((Runnable)localObject1).run();
+        return;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject1);
+      return;
+      label424:
+      localObject2 = localObject1;
+      continue;
+      label430:
+      localObject1 = null;
+      break;
+      label435:
+      localObject2 = null;
+    }
+  }
+  
+  public boolean a(int paramInt, agle paramagle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("update2DB picId=%d info=%s", new Object[] { Integer.valueOf(paramInt), paramagle }));
+    }
+    if (this.jdField_a_of_type_Agle != null)
+    {
+      localObject = this.jdField_a_of_type_Agle.jdField_c_of_type_JavaLangString;
       try
       {
-        str1 = new File(str1).getParentFile().getName();
-        paramQQAppInterface = str1;
+        i = Integer.parseInt((String)localObject);
+        if ((localObject != null) && (i >= 0) && (i == paramInt)) {
+          return false;
+        }
       }
-      catch (Exception localException)
+      catch (NumberFormatException localNumberFormatException)
       {
-        int k;
-        int i14;
-        break label188;
-      }
-    } while ((str3 == null) || (paramQQAppInterface == null));
-    if (str3.contains("/tencent/")) {
-      if (str3.contains("/qq_collection/"))
-      {
-        i9 += 1;
-        k = j;
-        i14 = 1001;
-        j = i;
-        i = k;
-        k = i14;
+        for (;;)
+        {
+          int i = -1;
+        }
       }
     }
-    for (;;)
+    Object localObject = new HashSet();
+    if (paramagle.jdField_c_of_type_Boolean) {
+      ((Set)localObject).add(paramagle.jdField_c_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      a(str2, paramInt1, paramBoolean1, paramBoolean2, paramInt2, i10, i11, i12, k, i15);
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((paramQQAppInterface.equals("qq_images")) || (str3.contains("/mobileqq/photo")) || (str3.contains("/mobileqq/diskcache")) || (str3.contains("/AIO_FORWARD/")))
+      paramagle = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+      if (paramagle != null)
       {
-        i2 += 1;
-        i14 = i;
-        k = 1002;
-        i = j;
-        j = i14;
-      }
-      else if (paramQQAppInterface.equals("qqfile_recv"))
-      {
-        i3 += 1;
-        i14 = i;
-        k = 1003;
-        i = j;
-        j = i14;
-      }
-      else if (paramQQAppInterface.equals("qq_favorite"))
-      {
-        i5 += 1;
-        i14 = i;
-        k = 1004;
-        i = j;
-        j = i14;
-      }
-      else if (str3.contains("/zebra/cache"))
-      {
-        i4 += 1;
-        i14 = i;
-        k = 1005;
-        i = j;
-        j = i14;
-      }
-      else if ((paramQQAppInterface.equals("weixin")) || (paramQQAppInterface.equals("wechat")) || (paramQQAppInterface.equals("micromsg")))
-      {
-        i6 += 1;
-        i14 = i;
-        k = 1006;
-        i = j;
-        j = i14;
-      }
-      else if (str3.contains("/qqinput/exp/"))
-      {
-        i8 += 1;
-        i14 = i;
-        k = 1013;
-        i = j;
-        j = i14;
-      }
-      else if (a(str3))
-      {
-        m += 1;
-        i14 = i;
-        k = 1007;
-        i = j;
-        j = i14;
-      }
-      else
-      {
-        n += 1;
-        i14 = i;
-        k = 1008;
-        i = j;
-        j = i14;
-        continue;
-        if (paramQQAppInterface.equals("qq_screenshot"))
+        TroopInfo localTroopInfo = paramagle.b(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin));
+        if (localTroopInfo != null)
         {
-          i14 = j + 1;
-          j = i;
-          k = 1009;
-          i = i14;
-        }
-        else if ((str3.contains("screenshot")) || (str3.contains(ajyc.a(2131714349))) || (str3.contains(ajyc.a(2131714352))) || (str3.equals("screen_cap")) || (str3.equals("ScreenCapture")))
-        {
-          i1 += 1;
-          i14 = i;
-          k = 1010;
-          i = j;
-          j = i14;
-        }
-        else if ((paramQQAppInterface.contains("camera")) || (paramQQAppInterface.equals("dcim")) || (paramQQAppInterface.equals("100MEDIA")) || (paramQQAppInterface.equals("100ANDRO")) || (paramQQAppInterface.contains(ajyc.a(2131714348))) || (paramQQAppInterface.contains(ajyc.a(2131714351))) || (paramQQAppInterface.contains(ajyc.a(2131714350))))
-        {
-          k = 1011;
-          i14 = i + 1;
-          i = j;
-          j = i14;
-        }
-        else if (str3.contains("/sogou/.expression/"))
-        {
-          i7 += 1;
-          i14 = i;
-          k = 1012;
-          i = j;
-          j = i14;
-        }
-        else if (a(str3))
-        {
-          m += 1;
-          i14 = i;
-          k = 1007;
-          i = j;
-          j = i14;
-        }
-        else
-        {
-          n += 1;
-          i14 = i;
-          k = 1008;
-          i = j;
-          j = i14;
+          localTroopInfo.mTroopAvatarId = paramInt;
+          localTroopInfo.mTroopVerifyingPics.addAll((Collection)localObject);
+          ThreadManager.post(new TroopAvatarController.6(this, paramagle, localTroopInfo), 8, null, false);
         }
       }
     }
-    label944:
-    a(i, j, i1, m, n, i9, i2, i3, i4, i5, i6, i7, i8, i10, i11, i12);
+    return true;
   }
   
-  public static boolean a(String paramString)
+  public boolean a(String paramString1, String paramString2)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("onNewIntent clip=%s path=%s", new Object[] { paramString2, paramString1 }));
+    }
+    if (b(paramString1)) {}
+    while (b(paramString1, paramString2)) {
       return false;
-      String[] arrayOfString = new String[14];
-      arrayOfString[0] = "/weibo";
-      arrayOfString[1] = "/sina/news/save/";
-      arrayOfString[2] = "/faceq/";
-      arrayOfString[3] = "/newsreader/";
-      arrayOfString[4] = "/tieba";
-      arrayOfString[5] = "/baidu";
-      arrayOfString[6] = "/UCDownloads";
-      arrayOfString[7] = "/taobao";
-      arrayOfString[8] = "/news_article/";
-      arrayOfString[9] = "/sohunewsdown/";
-      arrayOfString[10] = "/pitu/";
-      arrayOfString[11] = "/pins/";
-      arrayOfString[12] = "/tumblr/";
-      arrayOfString[13] = "/download";
-      int i = 0;
-      while (i < arrayOfString.length)
-      {
-        if (paramString.contains(arrayOfString[i])) {
-          return true;
-        }
-        i += 1;
-      }
     }
-  }
-  
-  public static void b()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StatisticConstants", 4, "sendNomalCameraPreviewStatistic ");
-    }
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    long l1 = localSharedPreferences.getLong("PhotoConst.last_send_camera_preview_rate", 0L);
-    long l2 = System.currentTimeMillis();
-    int i = localSharedPreferences.getInt("PhotoConst.camerapreviewactivity_send_times", 0) + 1;
-    if (l2 - l1 > 86400000L)
+    TroopClipPic localTroopClipPic = new TroopClipPic();
+    localTroopClipPic.id = paramString1;
+    localTroopClipPic.clipInfo = paramString2;
+    localTroopClipPic.type = this.jdField_c_of_type_Int;
+    localTroopClipPic.ts = SystemClock.uptimeMillis();
+    paramString1 = new agle();
+    paramString1.jdField_b_of_type_JavaLangString = localTroopClipPic.id;
+    paramString1.jdField_d_of_type_JavaLangString = localTroopClipPic.clipInfo;
+    paramString1.jdField_b_of_type_Int = 2;
+    paramString1.jdField_a_of_type_Boolean = true;
+    paramString1.jdField_c_of_type_JavaLangString = "-1";
+    paramString1.jdField_d_of_type_Int = localTroopClipPic.type;
+    paramString1.jdField_a_of_type_Long = localTroopClipPic.ts;
+    paramString2 = this.jdField_a_of_type_Baje.a();
+    if (paramString2 != null)
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_sendCount", i + "");
-      int j = localSharedPreferences.getInt("PhotoConst.camerapreviewactivity_enter_times", 0);
-      localHashMap.put("param_cameraCount", j + "");
-      if (j > 0) {
-        localHashMap.put("param_sendPercent", i / j + "");
+      paramString2 = paramString2.iterator();
+      while (paramString2.hasNext())
+      {
+        banf localbanf = (banf)paramString2.next();
+        if ((localbanf != null) && (localbanf.jdField_b_of_type_Int == 1)) {
+          paramString2.remove();
+        }
       }
-      axrl.a(BaseApplication.getContext()).a(null, "actPSdayCameraSend", false, 0L, 0L, localHashMap, "", false);
-      localSharedPreferences.edit().putLong("PhotoConst.last_send_camera_preview_rate", l2).putInt("PhotoConst.camerapreviewactivity_send_times", 0).putInt("PhotoConst.camerapreviewactivity_enter_times", 0).commit();
-      return;
     }
-    localSharedPreferences.edit().putInt("PhotoConst.camerapreviewactivity_send_times", i).commit();
+    this.jdField_b_of_type_Agle = paramString1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopClipPic = localTroopClipPic;
+    b();
+    a();
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_moredata", "upload_head", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, "", "", "");
+    return true;
   }
   
-  public static void b(Intent paramIntent, int paramInt)
+  public void b()
   {
-    if (!paramIntent.hasExtra("param_initTime")) {}
-    long l;
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((agqn)localIterator.next()).a();
+    }
+  }
+  
+  public void b(int paramInt) {}
+  
+  protected void b(agle paramagle) {}
+  
+  public void c(int paramInt) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {}
+    bana localbana;
     do
     {
       do
@@ -1299,77 +290,45 @@ public class agqf
         do
         {
           return;
-          l = paramIntent.getLongExtra("param_initTime", 0L);
-          if (l != 0L) {
-            break;
+        } while (!(paramObject instanceof bana));
+        localbana = (bana)paramObject;
+      } while (localbana.jdField_d_of_type_Int != this.jdField_c_of_type_Int);
+      long l = localbana.jdField_a_of_type_Long;
+      paramObject = this.jdField_b_of_type_Agle;
+      if ((paramObject != null) && (paramObject.jdField_a_of_type_Long == l))
+      {
+        switch (localbana.jdField_a_of_type_Int)
+        {
+        default: 
+          return;
+        case 0: 
+          paramObject.jdField_c_of_type_Int = localbana.jdField_b_of_type_Int;
+          this.jdField_a_of_type_AndroidOsHandler.post(new TroopAvatarController.3(this, paramObject, localbana));
+          return;
+        case 1: 
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("update() suc state.result=%d newSeq=%d info=%s", new Object[] { Integer.valueOf(localbana.jdField_b_of_type_Int), Integer.valueOf(localbana.jdField_c_of_type_Int), paramObject }));
           }
-        } while (!QLog.isColorLevel());
-        QLog.d("StatisticConstants", 2, "reportActPScancelSend,initTime == 0,return!");
-        return;
-        l = System.currentTimeMillis() - l;
-      } while (l > 86400000L);
-      HashMap localHashMap = new HashMap();
-      int i = bbev.a(BaseApplication.getContext());
-      localHashMap.put("param_netType", i + "");
-      localHashMap.put("param_selNum", paramInt + "");
-      localHashMap.put("param_residentTime", l + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPScancelSend", false, 0L, 0L, localHashMap, "", false);
-      paramIntent.removeExtra("param_initTime");
-      paramIntent.removeExtra("param_cancelSelNum");
-      paramIntent.removeExtra("param_totalSelNum");
-    } while (!QLog.isColorLevel());
-    QLog.d("StatisticConstants", 2, "reportActPScancelSend,param_residentTime =" + l + ",param_selNum = " + paramInt);
-  }
-  
-  public static void c()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    int i = localSharedPreferences.getInt("PhotoConst.camerapreviewactivity_enter_times_fast", 0);
-    localSharedPreferences.edit().putInt("PhotoConst.camerapreviewactivity_enter_times_fast", i + 1).commit();
-  }
-  
-  public static void d()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StatisticConstants", 4, "sendFastImageCameraPreviewStatistic ");
-    }
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-    long l1 = localSharedPreferences.getLong("PhotoConst.last_send_camera_preview_rate_fast", 0L);
-    long l2 = System.currentTimeMillis();
-    int i = localSharedPreferences.getInt("PhotoConst.camerapreviewactivity_send_times_fast", 0) + 1;
-    if (l2 - l1 > 86400000L)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_sendCount", i + "");
-      int j = localSharedPreferences.getInt("PhotoConst.camerapreviewactivity_enter_times_fast", 0);
-      localHashMap.put("param_browseCount", j + "");
-      if (j > 0) {
-        localHashMap.put("param_sendPercent", i / j + "");
+          int i = localbana.jdField_b_of_type_Int;
+          paramObservable = new TroopAvatarController.4(this, localbana, paramObject, i);
+          this.jdField_a_of_type_AndroidOsHandler.post(paramObservable);
+          agqq.a(i, paramObject.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+          return;
+        }
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "upload_head_cancel", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, String.valueOf(localbana.jdField_b_of_type_Int), "", "");
+        if (TextUtils.isEmpty(localbana.jdField_a_of_type_JavaLangString)) {}
+        for (paramObservable = agqq.a(this.jdField_a_of_type_AndroidAppActivity, localbana.jdField_b_of_type_Int);; paramObservable = localbana.jdField_a_of_type_JavaLangString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopPhotoController.TroopAvatarController", 2, String.format("update() failed result=%d info=%s", new Object[] { Integer.valueOf(localbana.jdField_b_of_type_Int), paramObject }));
+          }
+          paramObservable = new TroopAvatarController.5(this, paramObservable);
+          this.jdField_a_of_type_AndroidOsHandler.post(paramObservable);
+          return;
+        }
       }
-      axrl.a(BaseApplication.getContext()).a(null, "actPSdayQuickSend", false, 0L, 0L, localHashMap, "", false);
-      localSharedPreferences.edit().putLong("PhotoConst.last_send_camera_preview_rate_fast", l2).putInt("PhotoConst.camerapreviewactivity_send_times_fast", 0).putInt("PhotoConst.camerapreviewactivity_enter_times_fast", 0).commit();
-      return;
-    }
-    localSharedPreferences.edit().putInt("PhotoConst.camerapreviewactivity_send_times_fast", i).commit();
-  }
-  
-  public static void e()
-  {
-    HashMap localHashMap = new HashMap();
-    if (DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name())) {}
-    for (int i = 1002;; i = 1001)
-    {
-      int j = bbev.a(BaseApplication.getContext());
-      int k = a();
-      localHashMap.put("param_netType", j + "");
-      localHashMap.put("param_phone_type", k + "");
-      localHashMap.put("param_userType", i + "");
-      axrl.a(BaseApplication.getContext()).a(null, "actPSCompressTimeOut", false, 0L, 0L, localHashMap, "", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("StatisticConstants", 2, "reportPresendCompressTimeOut");
-      }
-      return;
-    }
+    } while (localbana.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_Baje.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
   }
 }
 

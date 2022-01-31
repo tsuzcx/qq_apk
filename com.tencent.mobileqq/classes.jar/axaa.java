@@ -1,8 +1,9 @@
 public class axaa
 {
-  public int a;
-  public int b;
-  public int c;
+  public long a;
+  public String a;
+  public boolean a = true;
+  public boolean b = true;
 }
 
 

@@ -1,17 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.widgets.QQMapRoutingHelper.1.1;
+import org.json.JSONObject;
 
-class xno
-  implements View.OnClickListener
+public class xno
+  implements baic
 {
-  xno(xnm paramxnm, DialogInterface.OnClickListener paramOnClickListener) {}
+  xno(xnn paramxnn) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnm, 1);
-    }
+    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
   }
 }
 

@@ -1,8 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract interface amot
+public class amot
 {
-  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amos paramamos);
+  private String a;
+  
+  public amot(String paramString, int paramInt1, int paramInt2)
+  {
+    this.a = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof amot))) {}
+    while (!toString().equals(paramObject.toString())) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return this.a;
+  }
 }
 
 

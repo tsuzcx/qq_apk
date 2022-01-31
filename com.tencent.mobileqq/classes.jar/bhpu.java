@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
+import android.graphics.Bitmap;
 
-public class bhpu
+public abstract interface bhpu
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
-  {
-    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneLiveVideoTransparentActivity.class;
-    }
-    return QzoneLiveVideoGpuProxyActivity.class;
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String paramString, Bitmap paramBitmap);
 }
 
 

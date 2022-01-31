@@ -1,5 +1,9 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeue
@@ -9,7 +13,9 @@ public class aeue
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.H();
+    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

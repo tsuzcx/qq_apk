@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.utils;
 
 import com.tencent.mobileqq.webprocess.WebProcessManager;
-import nyj;
-import obe;
+import nyg;
+import obb;
 
 public final class ReadInJoyAdUtils$1
   implements Runnable
@@ -10,9 +10,9 @@ public final class ReadInJoyAdUtils$1
   public void run()
   {
     boolean bool = WebProcessManager.c();
-    Object localObject = obe.a(2);
-    if ((localObject != null) && ((localObject instanceof nyj))) {
-      ((nyj)localObject).a = bool;
+    Object localObject = obb.a(2);
+    if ((localObject != null) && ((localObject instanceof nyg))) {
+      ((nyg)localObject).a = bool;
     }
   }
 }

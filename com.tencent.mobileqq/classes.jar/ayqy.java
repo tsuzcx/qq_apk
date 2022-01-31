@@ -1,69 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.RichStep.1;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import mqq.observer.SSOAccountObserver;
 
-public class ayqy
-  extends ayqs
+class ayqy
+  extends SSOAccountObserver
 {
-  private AtomicInteger a;
-  public boolean a;
-  private AtomicBoolean c = new AtomicBoolean(false);
+  ayqy(ayqx paramayqx) {}
   
-  ayqy(ayqr paramayqr)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    super(paramayqr);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "RichStep";
-    g();
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
+    if (ayqt.b(this.a.b) == 11) {
+      aqgj.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
+    }
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
   }
   
-  protected boolean a()
-  {
-    return (!this.c.get()) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
-  }
-  
-  protected void d()
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|process|neeRich=" + this.c + ",lack=" + ayqr.a(this.jdField_b_of_type_Ayqr));
+      QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|onGetTicketNoPasswd|account=" + paramString + ",type=" + paramInt);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (ayqt.b(this.a.b) == 11) {
+      aqgj.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
+    }
+    long l = System.currentTimeMillis();
+    if (paramInt == 4096)
     {
-      f();
+      ayqt.d(this.a.b, new String(paramArrayOfByte));
+      ayqx.a(this.a).set(true);
+      bdkt.a(paramString, l);
+      this.a.b();
       return;
     }
-    if (this.c.get())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      ThreadManager.post(new ForwardSdkShareProcessor.RichStep.1(this), 5, null, true);
-      return;
-    }
-    b();
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
   }
   
-  void g()
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    this.c.set(false);
-    if ((TextUtils.isEmpty(ayqr.a(this.jdField_b_of_type_Ayqr))) && (TextUtils.isEmpty(ayqr.b(this.jdField_b_of_type_Ayqr)))) {
-      ayqr.a(this.jdField_b_of_type_Ayqr, ayqr.a(this.jdField_b_of_type_Ayqr) | 0x1);
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
+    if (ayqt.b(this.a.b) == 11) {
+      aqgj.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
     }
-    if (TextUtils.isEmpty(ayqr.c(this.jdField_b_of_type_Ayqr))) {
-      ayqr.a(this.jdField_b_of_type_Ayqr, ayqr.a(this.jdField_b_of_type_Ayqr) | 0x2);
-    }
-    if (TextUtils.isEmpty(ayqr.d(this.jdField_b_of_type_Ayqr))) {
-      ayqr.a(this.jdField_b_of_type_Ayqr, ayqr.a(this.jdField_b_of_type_Ayqr) | 0x4);
-    }
-    if (ayqr.a(this.jdField_b_of_type_Ayqr) > 0) {
-      this.c.set(true);
-    }
-    if (ayqr.b(this.jdField_b_of_type_Ayqr) == 11) {
-      this.c.set(false);
-    }
+    this.a.b.b(9401, "onUserCancel");
+    this.a.c();
   }
 }
 

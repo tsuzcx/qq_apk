@@ -1,42 +1,40 @@
-import android.view.View;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class sbq
-  implements bfoq
+  extends sce
 {
-  public sbq(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, bfol parambfol) {}
+  public sbq(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
     }
-    sdf.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
-    paramInt = sgj.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
-    ahpf.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.a().c(this.jdField_a_of_type_JavaLangString, 1008);
-    noo.a(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
-    paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
-    sdd localsdd;
+    if (!paramBoolean) {}
     do
     {
-      if (!paramView.hasNext()) {
-        break;
-      }
-      localsdd = (sdd)paramView.next();
-    } while ((localsdd.jdField_a_of_type_JavaLangString == null) || (!localsdd.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
-    for (paramInt = localsdd.b;; paramInt = 0)
-    {
-      axqw.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X80064CF", "0X80064CF", 0, 0, "" + paramInt, "", "", "");
-      break;
-    }
+      do
+      {
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      return;
+    } while (this.a.a == null);
+    Message localMessage = new Message();
+    localMessage.what = 1003;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+    localMessage.setData(localBundle);
+    this.a.a.removeMessages(1003);
   }
 }
 

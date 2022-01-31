@@ -1,6 +1,13 @@
-public abstract interface bfug
+import android.view.View;
+
+public abstract class bfug
+  extends bfxe
 {
-  public abstract void a(bfuf parambfuf);
+  public abstract int a();
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

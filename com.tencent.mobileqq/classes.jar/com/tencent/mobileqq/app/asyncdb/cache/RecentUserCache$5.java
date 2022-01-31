@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import ahmi;
-import ahnn;
-import ahop;
+import ahmg;
+import ahnl;
+import ahon;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
 import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper;
@@ -19,18 +19,18 @@ class RecentUserCache$5
   
   public void run()
   {
-    Object localObject2 = ahnn.a().a(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = ahnl.a().a(this.jdField_a_of_type_JavaLangString);
     Object localObject1;
     if (localObject2 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.db.Cache.RecentUserCache", 2, "getBaseItemDataFromCache is null!");
       }
-      localObject2 = ahmi.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser, RecentUserCache.e(this.this$0), RecentUserCache.f(this.this$0).getApp());
+      localObject2 = ahmg.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser, RecentUserCache.e(this.this$0), RecentUserCache.f(this.this$0).getApp());
       localObject1 = localObject2;
       if (localObject2 != null)
       {
-        ahnn.a().a((RecentBaseData)localObject2, this.jdField_a_of_type_JavaLangString);
+        ahnl.a().a((RecentBaseData)localObject2, this.jdField_a_of_type_JavaLangString);
         localObject1 = localObject2;
       }
       if (!(localObject1 instanceof RecentUserBaseData)) {}
@@ -55,7 +55,7 @@ class RecentUserCache$5
         catch (Throwable localThrowable2)
         {
           QLog.e("Q.db.Cache.RecentUserCache", 1, "saveParcelDataToRecentData fail, 请对应的开发检查是否使用了不该使用的字段", localThrowable2);
-          ahop.a(RecentUserCache.j(this.this$0).getApp(), false, localThrowable2);
+          ahon.a(RecentUserCache.j(this.this$0).getApp(), false, localThrowable2);
           continue;
         }
         RecentUserCache.k(this.this$0).put(this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
@@ -76,7 +76,7 @@ class RecentUserCache$5
         }
         catch (Throwable localThrowable1)
         {
-          ahop.a(RecentUserCache.i(this.this$0).getApp(), false, localThrowable1);
+          ahon.a(RecentUserCache.i(this.this$0).getApp(), false, localThrowable1);
           throw new RuntimeException(localThrowable1);
         }
       }

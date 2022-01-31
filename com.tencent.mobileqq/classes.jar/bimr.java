@@ -1,15 +1,4 @@
-class bimr
-  implements xfd
-{
-  bimr(bimj parambimj, Runnable paramRunnable) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
-}
+public class bimr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

@@ -1,27 +1,23 @@
-public class bepm
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
+class bepm
+  implements Handler.Callback
 {
-  public int a;
-  public bepv a;
-  public Object a;
+  bepm(bepl parambepl) {}
   
-  public bepm(int paramInt, bepv parambepv)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bepv = parambepv;
-  }
-  
-  public static bepm a(int paramInt, bepv parambepv)
-  {
-    return new bepm(paramInt, parambepv);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("{RuntimeLoader@");
-    if (this.jdField_a_of_type_Bepv != null) {}
-    for (Object localObject = Integer.valueOf(this.jdField_a_of_type_Bepv.hashCode());; localObject = "=") {
-      return localObject + this.jdField_a_of_type_Bepv + " what=" + this.jdField_a_of_type_Int + "}";
-    }
+    int i = paramMessage.what;
+    paramMessage.getData().setClassLoader(bepl.a(this.a).getClassLoader());
+    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
+    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
+    bepl.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
+    return false;
   }
 }
 

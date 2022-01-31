@@ -1,65 +1,35 @@
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_rsp;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
 public class bhyz
-  extends bhzb
+  implements ModuleDownloadListener
 {
-  public QQAppInterface a()
+  public bhyz(VipARUtils.4 param4) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public QzoneExternalRequest a(Intent paramIntent)
+  public void onDownloadFailed(String paramString)
   {
-    return new bhza(this, paramIntent);
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
   }
   
-  public void a(long paramLong)
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onDownloadSucceed(String paramString)
   {
-    boolean bool = false;
-    paramIntent = a();
-    if (paramIntent != null)
-    {
-      paramIntent = (akaa)paramIntent.a(172);
-      if (paramIntent != null) {
-        if (paramFromServiceMsg == null) {
-          break label90;
-        }
-      }
-    }
-    label90:
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramFromServiceMsg = (sweet_pair_check_rsp)bhoi.a(paramFromServiceMsg.getWupBuffer(), "getPairState");
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
-      if (localsweet_rsp_comm == null) {
-        break;
-      }
-      if (localsweet_rsp_comm.retcode == 0) {
-        bool = true;
-      }
-      paramIntent.a(bool, paramFromServiceMsg);
+    if (!paramString.equals("libTar.so")) {
       return;
     }
-    paramIntent.a(false, null);
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhyv.c(), " onDownloadSucceed = ", bhyv.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bhyv.d());
   }
 }
 

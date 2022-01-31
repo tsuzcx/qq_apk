@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.helper;
 
-import ahgl;
+import ahgj;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpringHbHelper$2
   implements Runnable
 {
-  public SpringHbHelper$2(ahgl paramahgl) {}
+  public SpringHbHelper$2(ahgj paramahgj) {}
   
   public void run()
   {
     QLog.w("springHb_SpringHbHelper", 1, "preAnimTimeout 转场动画要发消息给webview");
-    ahgl.a(this.this$0);
+    ahgj.a(this.this$0);
   }
 }
 

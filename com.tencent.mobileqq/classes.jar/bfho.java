@@ -1,214 +1,70 @@
-import android.util.Base64;
-import android.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import org.xmlpull.v1.XmlSerializer;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
-final class bfho
-  extends LruCache<String, bfim>
+public class bfho
 {
-  private static final byte[] jdField_a_of_type_ArrayOfByte = { 90, 39, 2, -61, -88, -75, -36, 105, -102, 55, 18, 69, -72, -11, -84, 50 };
-  private static final byte[] jdField_b_of_type_ArrayOfByte = { -86, 39, 34, -61, -88, -75, -84, 105, 74, 39, 2, 35, -85, -74, -68, 105 };
-  private File jdField_a_of_type_JavaIoFile;
-  private List<Pair<String, bfim>> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private File jdField_b_of_type_JavaIoFile;
-  private boolean jdField_b_of_type_Boolean;
+  public static float a;
+  public static int a;
+  private static float jdField_b_of_type_Float;
+  private static int jdField_b_of_type_Int = -1;
+  private static float jdField_c_of_type_Float;
+  private static int jdField_c_of_type_Int = -1;
+  private static int d = -1;
   
-  public bfho(String paramString, int paramInt)
+  static
   {
-    super(paramInt);
-    this.jdField_a_of_type_JavaIoFile = new File(paramString);
-    this.jdField_b_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaIoFile.getPath() + ".bak");
-    b();
+    DisplayMetrics localDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
+    jdField_a_of_type_Float = localDisplayMetrics.density;
+    jdField_a_of_type_Int = localDisplayMetrics.densityDpi;
+    jdField_b_of_type_Float = -1.0F;
+    jdField_c_of_type_Float = -1.0F;
   }
   
-  private void a(bfht parambfht)
+  public static float a()
   {
-    if (this.jdField_b_of_type_JavaIoFile.exists())
-    {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_b_of_type_JavaIoFile.renameTo(this.jdField_a_of_type_JavaIoFile);
+    if (jdField_b_of_type_Float < 0.0F) {
+      jdField_b_of_type_Float = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().density;
     }
-    if ((this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_JavaIoFile.isFile()))
-    {
-      int i = 0;
-      if (this.jdField_a_of_type_JavaIoFile.length() > 10485760L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Cache file too big: " + this.jdField_a_of_type_JavaIoFile.length());
-        }
-        i = 1;
+    return jdField_b_of_type_Float;
+  }
+  
+  public static int a()
+  {
+    if (jdField_c_of_type_Int < 0) {
+      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
+        break label47;
       }
-      new bfhs(this.jdField_a_of_type_JavaIoFile, parambfht).a();
-      if (i != 0)
-      {
-        bfgz.a(2, 2);
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
+    }
+    label47:
+    for (jdField_c_of_type_Int = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().heightPixels;; jdField_c_of_type_Int = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().widthPixels) {
+      return jdField_c_of_type_Int;
     }
   }
   
-  private void a(String paramString, bfim parambfim, XmlSerializer paramXmlSerializer)
+  public static int a(float paramFloat)
   {
-    if (parambfim.jdField_a_of_type_Long > new Date().getTime()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Write entry: " + parambfim.toString());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        paramXmlSerializer.startTag(null, "CacheEntry");
-        paramXmlSerializer.attribute(null, "Key", paramString);
-        paramXmlSerializer.attribute(null, "AttrType", Integer.toString(parambfim.jdField_a_of_type_Int));
-        paramXmlSerializer.attribute(null, "Category", Integer.toString(parambfim.b));
-        paramXmlSerializer.attribute(null, "SubCategory", Integer.toString(parambfim.c));
-        paramXmlSerializer.attribute(null, "Action", Integer.toString(parambfim.d));
-        paramXmlSerializer.attribute(null, "ExpireTime", Long.toString(parambfim.jdField_a_of_type_Long));
-        if (parambfim.jdField_a_of_type_ArrayOfByte != null) {
-          paramXmlSerializer.attribute(null, "ExtraInfo", Base64.encodeToString(parambfim.jdField_a_of_type_ArrayOfByte, 0));
-        }
-        paramXmlSerializer.endTag(null, "CacheEntry");
-        return;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-    }
-    QLog.d("QSec.AVEngine", 2, "Discard expired entry for write: " + parambfim.toString());
+    return Math.round(a() * paramFloat);
   }
   
-  private boolean a()
+  public static int b()
   {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      if (!this.jdField_b_of_type_JavaIoFile.exists())
-      {
-        if (!this.jdField_a_of_type_JavaIoFile.renameTo(this.jdField_b_of_type_JavaIoFile)) {
-          return false;
-        }
-      }
-      else {
-        this.jdField_a_of_type_JavaIoFile.delete();
+    if (d < 0) {
+      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
+        break label47;
       }
     }
-    new bfhs(this.jdField_b_of_type_JavaIoFile, new bfhr(this, this.jdField_a_of_type_JavaIoFile)).a();
-    return true;
-  }
-  
-  private bfim b(String paramString)
-  {
-    paramString = new bfhq(this, paramString);
-    a(paramString);
-    return paramString.a;
-  }
-  
-  private void b()
-  {
-    a(new bfhp(this));
-  }
-  
-  public bfim a(String paramString)
-  {
-    Object localObject;
-    if (paramString == null) {
-      localObject = null;
+    label47:
+    for (d = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().widthPixels;; d = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().heightPixels) {
+      return d;
     }
-    bfim localbfim;
-    do
-    {
-      do
-      {
-        do
-        {
-          return localObject;
-          localbfim = (bfim)super.get(paramString);
-          if (localbfim == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QSec.AVEngine", 2, "Hit memory cache for key: " + paramString);
-          }
-          localObject = localbfim;
-        } while (localbfim.jdField_a_of_type_Long >= new Date().getTime());
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Memory cache expired for key: " + paramString);
-        }
-        remove(paramString);
-        return null;
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localObject = localbfim;
-      } while (this.jdField_b_of_type_Boolean != true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Look from cache file for key: " + paramString);
-      }
-      localbfim = b(paramString);
-      localObject = localbfim;
-    } while (localbfim == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Hit file cache for key: " + paramString);
-    }
-    if (localbfim.jdField_a_of_type_Long < new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "File cache expired for key: " + paramString);
-      }
-      return null;
-    }
-    put(paramString, localbfim);
-    return localbfim;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      a();
-    }
-  }
-  
-  public void a(String paramString, bfim parambfim)
-  {
-    if ((paramString != null) && (parambfim != null))
-    {
-      if (put(paramString, parambfim) == null) {
-        this.jdField_a_of_type_JavaUtilList.add(new Pair(paramString, parambfim));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Put to cache, key: %s, result: %s ", new Object[] { paramString, parambfim.toString() }));
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() >= 5)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Trigger rebuild cache file");
-        }
-        a();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, bfim parambfim1, bfim parambfim2)
-  {
-    super.entryRemoved(paramBoolean, paramString, parambfim1, parambfim2);
-    if (!paramBoolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Memory cache overflow.");
-    }
-    this.jdField_b_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfho
  * JD-Core Version:    0.7.0.1
  */

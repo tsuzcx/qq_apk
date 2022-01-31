@@ -4,17 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.widget.FrameLayout;
-import beoh;
-import beoi;
-import beoj;
+import beoy;
+import beoz;
+import bepa;
 
 public class VideoGestureRelativeLayout
   extends FrameLayout
 {
   private int jdField_a_of_type_Int = 0;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private beoi jdField_a_of_type_Beoi;
-  private beoj jdField_a_of_type_Beoj;
+  private beoz jdField_a_of_type_Beoz;
+  private bepa jdField_a_of_type_Bepa;
   private boolean jdField_a_of_type_Boolean;
   private int b = 1;
   
@@ -32,15 +32,15 @@ public class VideoGestureRelativeLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Beoj = new beoj(this, this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this.jdField_a_of_type_Beoj);
+    this.jdField_a_of_type_Bepa = new bepa(this, this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this.jdField_a_of_type_Bepa);
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
-    setOnTouchListener(new beoh(this));
+    setOnTouchListener(new beoy(this));
   }
   
-  public void setVideoGestureListener(beoi parambeoi)
+  public void setVideoGestureListener(beoz parambeoz)
   {
-    this.jdField_a_of_type_Beoi = parambeoi;
+    this.jdField_a_of_type_Beoz = parambeoz;
   }
 }
 

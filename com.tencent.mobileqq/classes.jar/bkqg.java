@@ -1,19 +1,23 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 class bkqg
-  implements swm
+  implements View.OnClickListener
 {
-  bkqg(bkqf parambkqf, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
+  bkqg(bkqf parambkqf) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    vei.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
+    if (!this.a.a().g())
     {
-      bkqf.a(this.jdField_a_of_type_Bkqf, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      bkqf.a(this.a);
       return;
     }
-    bkqf.a(this.jdField_a_of_type_Bkqf, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    this.a.a().f(false);
+    bkqf.a(this.a).setSelected(false);
+    this.a.a().d(3003);
   }
 }
 

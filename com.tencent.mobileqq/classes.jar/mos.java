@@ -1,8 +1,29 @@
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
-public abstract interface mos
+class mos
+  extends lkb
 {
-  public abstract void a(LottieDrawable paramLottieDrawable);
+  mos(mor parammor) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    c();
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    c();
+  }
+  
+  void c()
+  {
+    moz localmoz = this.a.a();
+    if ((localmoz != null) && (localmoz.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
+    }
+  }
 }
 
 

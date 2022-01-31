@@ -1,57 +1,48 @@
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import cooperation.plugin.PluginInfo;
+import cooperation.troop.TroopManageProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arot
-  implements wxw
+  implements wxt
 {
-  public arot(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString) {}
+  public arot(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
   public void a(Bundle paramBundle)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
+    int i = 12;
+    if (paramBundle != null)
     {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))) {
-        break label178;
-      }
-      str1 = paramBundle.getString("uin");
-      bool = paramBundle.getBoolean("isFriend", false);
-      localObject = paramBundle.getString("nickName");
-      str2 = paramBundle.getString("remark");
-      if (!TextUtils.isEmpty(str1))
+      if (paramBundle.getBoolean("isSuccess"))
       {
-        if (!bool) {
-          break label163;
+        paramBundle = new Intent();
+        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
+          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
         }
-        paramBundle = new ProfileActivity.AllInOne(str1, 1);
-        paramBundle.h = ((String)localObject);
-        paramBundle.i = str2;
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("AllInOne", paramBundle);
-        ((Intent)localObject).addFlags(536870912);
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+        TroopManageProxyActivity.a("troop_manage_plugin.apk", PluginInfo.j, TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
       }
     }
-    label163:
-    label178:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        String str1;
-        boolean bool;
-        String str2;
-        return;
-        paramBundle = new ProfileActivity.AllInOne(str1, 105);
-      }
+    else {
+      return;
     }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
+    paramBundle = new JSONObject();
+    try
+    {
+      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
+      paramBundle.put("ret", 1);
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

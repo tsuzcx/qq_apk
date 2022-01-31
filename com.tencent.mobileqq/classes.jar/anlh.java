@@ -1,51 +1,29 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.ArrayList;
+import android.view.View.OnLongClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 public class anlh
-  implements AdapterView.OnItemClickListener
+  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
 {
-  public anlh(DataReportViewer paramDataReportViewer, Context paramContext) {}
+  public ankz a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected anlh(DataReportSettingFragment paramDataReportSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramAdapterView = (WindowManager)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext().getSystemService("window");
-    if (this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559421, null));
-    }
-    paramView = new anlr(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    ReportData localReportData = (ReportData)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramView.a.setText(localReportData.table);
-    paramView.b.setText(localReportData.mainAction);
-    paramView.c.setText(localReportData.subAction);
-    paramView.d.setText(localReportData.actionName);
-    paramView.e.setText(String.valueOf(localReportData.opType));
-    paramView.f.setText(String.valueOf(localReportData.result));
-    paramView.g.setText(localReportData.r2);
-    paramView.h.setText(localReportData.r3);
-    paramView.i.setText(localReportData.r4);
-    paramView.j.setText(localReportData.r5);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365142)).setOnClickListener(new anli(this, paramAdapterView));
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365136)).setOnClickListener(new anlj(this, localReportData, paramAdapterView));
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (paramInt = 2038;; paramInt = 2003)
+    if (this.jdField_a_of_type_Ankz != null)
     {
-      paramView = new WindowManager.LayoutParams(-1, -1, paramInt, 776, -2);
-      paramView.gravity = 49;
-      paramAdapterView.addView(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout, paramView);
-      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new anlk(this, paramAdapterView));
-      return;
+      this.jdField_a_of_type_Ankz.a = paramBoolean;
+      anlx.a().e();
     }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, ajya.a(2131702782), new anli(this), new anlj(this)).show();
+    return true;
   }
 }
 

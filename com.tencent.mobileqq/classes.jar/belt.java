@@ -1,8 +1,9 @@
-import java.nio.channels.SelectionKey;
+import android.content.Context;
+import android.content.Intent;
 
 public abstract interface belt
 {
-  public abstract boolean handle(SelectionKey paramSelectionKey);
+  public abstract void a(Context paramContext, Intent paramIntent);
 }
 
 

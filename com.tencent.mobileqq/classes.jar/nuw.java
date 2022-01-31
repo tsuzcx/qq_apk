@@ -1,25 +1,17 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2;
 
 public class nuw
-  implements MessageQueue.IdleHandler
+  extends AnimatorListenerAdapter
 {
-  public nuw(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public nuw(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2 param2) {}
   
-  public boolean queueIdle()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!anvl.a().a())
-    {
-      anvl.a().a().doBindService(BaseApplicationImpl.getApplication());
-      anvl.a().a(new nux(this));
-      return false;
-    }
-    Bundle localBundle = anqp.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    anvl.a().a(localBundle);
-    return false;
+    this.a.this$0.a.setVisibility(8);
   }
 }
 

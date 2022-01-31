@@ -1,6 +1,8 @@
 class also
-  extends alsn
+  extends alsm
 {
+  public String d;
+  
   private also()
   {
     super(null);

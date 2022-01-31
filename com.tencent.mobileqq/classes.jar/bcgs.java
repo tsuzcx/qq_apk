@@ -1,38 +1,16 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class bcgs
 {
-  public int a;
-  public long a;
-  public Handler a;
-  public bcgo a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public volatile String d;
-  public String e;
-  public String f = "";
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
   
-  public bcgs()
+  static
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
-    if (TextUtils.isEmpty(this.d)) {}
-    for (int i = 0;; i = this.d.length()) {
-      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
-    }
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
   }
 }
 

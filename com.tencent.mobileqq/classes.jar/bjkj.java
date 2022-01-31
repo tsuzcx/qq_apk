@@ -1,39 +1,76 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bjkj
-  extends AnimatorListenerAdapter
+  implements bjdy
 {
-  public bjkj(QIMCircleProgress paramQIMCircleProgress) {}
+  public bjkj(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    this.a.i();
+  }
+  
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if (paramInt != -1)
+    {
+      this.a.a(paramInt);
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+      return;
+    }
+    this.a.i();
+  }
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (this.a.a != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.a.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.a(paramInt);
+    if (paramInt != -1)
+    {
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+    }
+    for (;;)
+    {
+      if (MusicFragmentProviderView.a(this.a) != null) {
+        MusicFragmentProviderView.a(this.a).f();
+      }
+      return;
+      this.a.i();
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    this.a.a = false;
-    if ((this.a.c) && (this.a.b != null)) {
-      this.a.b.start();
+    if (paramInt != -1)
+    {
+      this.a.j();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
-    }
+    this.a.i();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
-    }
+    this.a.i();
   }
 }
 

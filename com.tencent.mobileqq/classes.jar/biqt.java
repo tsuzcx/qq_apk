@@ -1,50 +1,9 @@
-import java.io.File;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
+import com.google.gson.reflect.TypeToken;
 
-public class biqt
-  extends biqn
-{
-  public String n;
-  public String o;
-  
-  public String a()
-  {
-    File localFile = new File(this.o);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.o + File.separator + this.f;
-  }
-  
-  public String b()
-  {
-    File localFile = new File(this.o);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.o + File.separator;
-  }
-  
-  public String c()
-  {
-    File localFile = new File(this.n);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.n + File.separator + this.f;
-  }
-  
-  public boolean d()
-  {
-    Object localObject = new File(a());
-    if (!((File)localObject).exists()) {}
-    do
-    {
-      return false;
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length <= 0));
-    return true;
-  }
-}
+final class biqt
+  extends TypeToken<GetPlayShowCatMatTreeRsp>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

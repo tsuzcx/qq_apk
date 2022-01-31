@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.content.SharedPreferences;
-import bfgv;
+import bfhm;
 import com.tencent.qqmini.sdk.ui.MoreItem;
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class MoreItemList
   
   private static boolean getEnableDebug(String paramString)
   {
-    return bfgv.a().getBoolean(paramString + "_debug", false);
+    return bfhm.a().getBoolean(paramString + "_debug", false);
   }
 }
 

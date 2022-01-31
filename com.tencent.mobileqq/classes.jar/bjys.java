@@ -1,9 +1,17 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-
 public class bjys
-  implements bkyi
 {
-  public bjys(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  @vyj(a="tag_type")
+  public int a;
+  @vyj(a="tag_id")
+  public long a;
+  @vyj(a="tag_name")
+  public String a;
+  @vyj(a="join_count")
+  public int b;
+  @vyj(a="tag_desc")
+  public String b;
+  @vyj(a="wording")
+  public String c;
 }
 
 

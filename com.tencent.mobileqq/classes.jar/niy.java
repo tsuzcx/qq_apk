@@ -1,40 +1,45 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 
 public class niy
-  implements ViewPager.OnPageChangeListener
+  extends URLDrawableDownListener.Adapter
 {
-  public niy(VideoCoverFragment paramVideoCoverFragment, ViewPager.OnPageChangeListener paramOnPageChangeListener) {}
+  public niy(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
-    }
+    super.onLoadCancelled(paramView, paramURLDrawable);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
   }
   
-  public void onPageSelected(int paramInt)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment, paramInt);
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    while (!(paramView instanceof ImageView)) {
+      return;
     }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a(paramInt);
-    }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a().setProgress(paramInt, 0);
-    }
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = paramURLDrawable.getIntrinsicWidth();
+    int j = paramURLDrawable.getIntrinsicHeight();
+    localLayoutParams.width = (i * actj.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
+    paramView.setLayoutParams(localLayoutParams);
+    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+    paramView.requestLayout();
   }
 }
 

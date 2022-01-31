@@ -1,17 +1,17 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import android.widget.TextView;
 
-public class asth
+class asth
+  extends RecyclerView.ViewHolder
 {
-  public Button a;
-  public ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
   
-  asth(astg paramastg) {}
+  public asth(aste paramaste, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378398));
+  }
 }
 
 

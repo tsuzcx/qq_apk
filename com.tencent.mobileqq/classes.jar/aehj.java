@@ -4,11 +4,13 @@ import android.content.DialogInterface.OnClickListener;
 class aehj
   implements DialogInterface.OnClickListener
 {
-  aehj(aegu paramaegu) {}
+  aehj(aegs paramaegs) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e();
+    if (this.a.a != null) {
+      this.a.a.o();
+    }
   }
 }
 

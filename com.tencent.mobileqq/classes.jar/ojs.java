@@ -1,10 +1,19 @@
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract interface ojs
+public class ojs
 {
-  public abstract void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oii> paramList, boolean paramBoolean2, int paramInt2, int paramInt3);
+  public String a;
+  public List<CommentData> a = new ArrayList();
+  public boolean a;
+  public List<SubCommentData> b = new ArrayList();
   
-  public abstract void onCommentStateError(int paramInt);
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.size() > 0);
+  }
 }
 
 

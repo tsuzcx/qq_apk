@@ -1,27 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.richstatus.SignatureFontView;
 
 public class awdk
-  implements View.OnTouchListener
+  extends hl
 {
-  public awdk(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public awdk(SignatureFontView paramSignatureFontView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(ChatMessage paramChatMessage, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if ((SignatureFontView.a(this.a) < 0) || (SignatureFontView.b(this.a) < SignatureFontView.a(this.a)))
     {
-      if (paramMotionEvent.getY() < paramView.findViewById(2131378349).getHeight() + actn.a(30.0F, paramView.getResources())) {
-        SignatureHistoryFragment.a(this.a, true);
+      this.a.a.shouldStartAnimation = true;
+      this.a.a.startAnimation(false, false);
+      if (SignatureFontView.a(this.a) > 0) {
+        SignatureFontView.c(this.a);
       }
     }
-    else {
-      return false;
-    }
-    SignatureHistoryFragment.a(this.a, false);
-    return false;
   }
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

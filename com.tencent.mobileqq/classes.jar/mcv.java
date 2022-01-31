@@ -1,9 +1,9 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mcv
-  implements mht
+  implements mho
 {
-  public mcv(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public mcv(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
   public void a()
   {

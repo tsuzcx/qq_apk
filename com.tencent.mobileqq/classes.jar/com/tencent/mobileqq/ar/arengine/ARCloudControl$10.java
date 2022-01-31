@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alfo;
-import alfu;
+import alfn;
+import alft;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARCloudControl$10
   implements Runnable
 {
-  public ARCloudControl$10(alfo paramalfo) {}
+  public ARCloudControl$10(alfn paramalfn) {}
   
   public void run()
   {
-    if ((alfo.a(this.this$0) != null) && (alfo.e(this.this$0)))
+    if ((alfn.a(this.this$0) != null) && (alfn.e(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      if (!alfo.a(this.this$0)) {}
+      if (!alfn.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    alfo.a(this.this$0, true);
-    alfo.a(this.this$0).a(1, null);
-    alfo.a(this.this$0, null);
+    alfn.a(this.this$0, true);
+    alfn.a(this.this$0).a(1, null);
+    alfn.a(this.this$0, null);
   }
 }
 

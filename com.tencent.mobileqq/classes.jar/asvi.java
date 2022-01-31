@@ -1,12 +1,34 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface asvi
-  extends IInterface
+class asvi
+  implements apsq
 {
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  asvi(asuw paramasuw, String paramString, asur paramasur) {}
   
-  public abstract void onPlayStateChanged(int paramInt);
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Asur != null) && (this.jdField_a_of_type_Asur.a != null))
+    {
+      String str = this.jdField_a_of_type_Asur.a.a();
+      asus localasus = this.jdField_a_of_type_Asuw.a(str);
+      if ((localasus != null) && (!localasus.a))
+      {
+        localasus.c = paramInt;
+        this.jdField_a_of_type_Asuw.a(str, localasus);
+        asuw.a(this.jdField_a_of_type_Asuw, localasus, paramInt);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
+    }
+    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

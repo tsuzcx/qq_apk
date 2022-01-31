@@ -1,6 +1,8 @@
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+
 public abstract interface obl
 {
-  public abstract void a();
+  public abstract void a(GiftServiceBean paramGiftServiceBean);
 }
 
 

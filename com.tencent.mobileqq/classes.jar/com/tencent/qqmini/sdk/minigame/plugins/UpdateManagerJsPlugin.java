@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import begy;
-import beka;
-import besl;
-import bevn;
+import behp;
+import bekr;
+import betc;
+import bewe;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,38 +17,38 @@ public class UpdateManagerJsPlugin
   public static final String NATIVE_EVENT_NAME_UPDATE_APP = "updateApp";
   private static final String TAG = "UpdateManagerJsPlugin";
   
-  public void getUpdateManager(beka parambeka)
+  public void getUpdateManager(bekr parambekr)
   {
-    besl.a("UpdateManagerJsPlugin", "handleNativeRequest do nothing for " + parambeka.jdField_a_of_type_JavaLangString);
-    parambeka.a();
+    betc.a("UpdateManagerJsPlugin", "handleNativeRequest do nothing for " + parambekr.jdField_a_of_type_JavaLangString);
+    parambekr.a();
     try
     {
-      besl.a("UpdateManagerJsPlugin", "handleUpdateCheckResult() called with:  hasUpdate = [false]");
+      betc.a("UpdateManagerJsPlugin", "handleUpdateCheckResult() called with:  hasUpdate = [false]");
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("hasUpdate", false);
-      parambeka.jdField_a_of_type_Begy.a("onUpdateCheckResult", localJSONObject.toString(), 0);
+      parambekr.jdField_a_of_type_Behp.a("onUpdateCheckResult", localJSONObject.toString(), 0);
       return;
     }
-    catch (JSONException parambeka)
+    catch (JSONException parambekr)
     {
-      besl.d("UpdateManagerJsPlugin", "handleNativeRequest", parambeka);
+      betc.d("UpdateManagerJsPlugin", "handleNativeRequest", parambekr);
     }
   }
   
-  public void onUpdateCheckResult(beka parambeka)
+  public void onUpdateCheckResult(bekr parambekr)
   {
-    besl.c("UpdateManagerJsPlugin", "handleNativeRequest " + parambeka.jdField_a_of_type_JavaLangString + " should not send from JS");
+    betc.c("UpdateManagerJsPlugin", "handleNativeRequest " + parambekr.jdField_a_of_type_JavaLangString + " should not send from JS");
   }
   
-  public void onUpdateDownloadResult(beka parambeka)
+  public void onUpdateDownloadResult(bekr parambekr)
   {
-    besl.c("UpdateManagerJsPlugin", "handleNativeRequest " + parambeka.jdField_a_of_type_JavaLangString + " should not send from JS");
+    betc.c("UpdateManagerJsPlugin", "handleNativeRequest " + parambekr.jdField_a_of_type_JavaLangString + " should not send from JS");
   }
   
-  public void updateApp(beka parambeka)
+  public void updateApp(bekr parambekr)
   {
-    bevn.a();
-    besl.a("UpdateManagerJsPlugin", "handleNativeRequest " + parambeka.jdField_a_of_type_JavaLangString);
+    bewe.a();
+    betc.a("UpdateManagerJsPlugin", "handleNativeRequest " + parambekr.jdField_a_of_type_JavaLangString);
   }
 }
 

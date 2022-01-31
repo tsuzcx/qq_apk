@@ -1,21 +1,10 @@
-import android.os.Bundle;
+import MConch.SCPullConchs;
+import MWIFI.SCGet3rdCloudCheck;
 
 public class bcwt
-  extends bcws
 {
-  public bcwt(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    paramString1 = this.a.getBundle(paramString1);
-    if (paramString1 != null) {
-      return paramString1.getString(paramString2);
-    }
-    return null;
-  }
+  public SCPullConchs a;
+  public SCGet3rdCloudCheck a;
 }
 
 

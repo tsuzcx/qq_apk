@@ -1,16 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.widget.AbsListView;
 
 public class ogx
-  implements oki
+  extends ogz
 {
-  public ogx(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, oki paramoki) {}
+  public ogx(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
   
-  public void a(int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
-    if (this.jdField_a_of_type_Oki != null) {
-      this.jdField_a_of_type_Oki.a(paramInt);
-    }
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
   }
 }
 

@@ -1,66 +1,95 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class nzy
+  extends WebViewPlugin
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bfsr jdField_a_of_type_Bfsr;
-  private qxc jdField_a_of_type_Qxc;
-  
-  public nzy(Activity paramActivity, qxc paramqxc)
+  public nzy()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Qxc = paramqxc;
-    this.jdField_a_of_type_Bfsr = new bfsr(paramActivity);
+    this.mPluginNameSpace = "ReadinjoyAdJs";
   }
   
-  public void a()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_Bfsr != null) && (this.jdField_a_of_type_Bfsr.isShowing())) {
-      this.jdField_a_of_type_Bfsr.dismiss();
-    }
-  }
-  
-  public void a(View paramView, int paramInt, VideoInfo paramVideoInfo)
-  {
-    nzz localnzz = new nzz(this, paramInt, paramVideoInfo);
-    if (!this.jdField_a_of_type_Bfsr.a()) {
-      this.jdField_a_of_type_Bfsr.a();
-    }
-    this.jdField_a_of_type_Bfsr.b = false;
-    ArrayList localArrayList = new ArrayList();
-    if ((paramVideoInfo.a != null) && (paramVideoInfo.a.e != null))
+    if ((TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
-      int i = 0;
-      while (i < paramVideoInfo.a.e.size())
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountWebviewPlugin", 2, " method null or args == null");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountWebviewPlugin", 2, " method:" + paramString3);
+    }
+    if ("setGameSubscribe".equals(paramString3)) {}
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString1.optString("ret");
+      paramString1.optString("appid");
+      paramString1 = paramString1.optString("pkgname");
+      if (("1".equals(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString2)))
       {
-        DislikeInfo localDislikeInfo = new DislikeInfo();
-        localDislikeInfo.jdField_a_of_type_Long = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_Long;
-        localDislikeInfo.jdField_a_of_type_JavaLangString = ((VideoAdInfo.NegFeedback)paramVideoInfo.a.e.get(i)).jdField_a_of_type_JavaLangString;
-        localArrayList.add(localDislikeInfo);
-        i += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountWebviewPlugin", 2, " method:pkgname=" + paramString1);
+        }
+        paramJsBridgeListener = new Bundle();
+        paramJsBridgeListener.putBoolean("isSuccess", true);
+        paramJsBridgeListener.putString("pkgname", paramString1);
+        wxr.a().a(130, paramJsBridgeListener);
       }
     }
-    if (localArrayList.size() > 0)
+    catch (Exception paramJsBridgeListener)
     {
-      nmf.a(paramVideoInfo.a);
-      if (this.jdField_a_of_type_Bfsr.a(paramInt, localArrayList)) {
-        this.jdField_a_of_type_Bfsr.a(paramView, localnzz);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
+        }
       }
     }
+    if ("setGameLoadState".equals(paramString3)) {}
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString1.optString("adid");
+      long l1 = nmh.a(paramString1.optString("navigationStart"), 0L);
+      long l2 = nmh.a(paramString1.optString("htmlLoaded"), 0L);
+      long l3 = nmh.a(paramString1.optString("domComplete"), 0L);
+      if ((l1 > 0L) || (l2 > 0L) || (l3 > 0L))
+      {
+        paramString1 = new Bundle();
+        paramString1.putString("adid", paramJsBridgeListener);
+        paramString1.putLong("navigationStart", l1);
+        paramString1.putLong("htmlLoaded", l2);
+        paramString1.putLong("domComplete", l3);
+        wxr.a().a(137, paramString1);
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountWebviewPlugin", 2, paramJsBridgeListener.getMessage());
+        }
+      }
+    }
+    return true;
   }
   
-  public void b()
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Bfsr != null) && (this.jdField_a_of_type_Bfsr.isShowing())) {
-      this.jdField_a_of_type_Bfsr.dismiss();
-    }
-    this.jdField_a_of_type_Bfsr = null;
+    return super.handleSchemaRequest(paramString1, paramString2);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
   }
 }
 

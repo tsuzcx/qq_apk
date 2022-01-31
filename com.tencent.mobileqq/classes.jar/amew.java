@@ -1,106 +1,27 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class amew
+final class amew
+  implements URLDrawableDownListener
 {
-  public static BusinessCard a(QQAppInterface paramQQAppInterface)
+  amew(URLImageView paramURLImageView) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramQQAppInterface = (amdk)paramQQAppInterface.getManager(112);
-    if (paramQQAppInterface != null) {}
-    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
-    {
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new BusinessCard();
-      }
-      return localObject;
-    }
+    this.a.setVisibility(8);
   }
   
-  public static BusinessCard a(QQAppInterface paramQQAppInterface, auuw paramauuw)
-  {
-    amdk localamdk = (amdk)paramQQAppInterface.getManager(112);
-    if (paramauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      paramQQAppInterface = localamdk.a();
-    }
-    for (;;)
-    {
-      paramauuw = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        paramauuw = new BusinessCard();
-      }
-      return paramauuw;
-      if (paramauuw.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        paramQQAppInterface = paramauuw.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
-        if ((paramauuw.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
-          localamdk.a(paramauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-        } else {
-          paramQQAppInterface = localamdk.b(paramauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else
-      {
-        paramQQAppInterface = null;
-      }
-    }
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public static void a(String paramString)
-  {
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = 1000;
-      localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  public static void a(String paramString, int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode", String.valueOf(paramInt));
-    axrl.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
-    do
-    {
-      return;
-      try
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = paramInt1;
-        localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844128);
-        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new amex(paramURLImageView));
-        return;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessCard", 2, "error " + paramString.toString());
+    this.a.setVisibility(0);
   }
 }
 

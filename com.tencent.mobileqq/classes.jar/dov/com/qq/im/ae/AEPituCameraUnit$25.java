@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae;
 
 import android.widget.ImageView;
-import biim;
+import bijd;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 public class AEPituCameraUnit$25
   implements Runnable
 {
-  public AEPituCameraUnit$25(biim parambiim) {}
+  public AEPituCameraUnit$25(bijd parambijd) {}
   
   public void run()
   {
-    biim.a(this.this$0).setVisibility(8);
-    if (biim.a(this.this$0).getDrawable() != null)
+    bijd.a(this.this$0).setVisibility(8);
+    if (bijd.a(this.this$0).getDrawable() != null)
     {
-      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)biim.a(this.this$0).getDrawable();
+      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)bijd.a(this.this$0).getDrawable();
       localLazyLoadAnimationDrawable.stop();
       localLazyLoadAnimationDrawable.clear();
     }

@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bkis;
-import bkit;
+import bkjj;
+import bkjk;
 import com.tencent.mobileqq.R.styleable;
 import java.math.BigDecimal;
-import veg;
+import ved;
 
 public class RateWidgetRatingBar
   extends LinearLayout
@@ -20,7 +20,7 @@ public class RateWidgetRatingBar
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bkit jdField_a_of_type_Bkit;
+  private bkjk jdField_a_of_type_Bkjk;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -52,7 +52,7 @@ public class RateWidgetRatingBar
       while (i < this.jdField_a_of_type_Int)
       {
         paramAttributeSet = a(paramContext, this.jdField_b_of_type_Boolean);
-        paramAttributeSet.setOnClickListener(new bkis(this));
+        paramAttributeSet.setOnClickListener(new bkjj(this));
         addView(paramAttributeSet);
         i += 1;
       }
@@ -61,7 +61,7 @@ public class RateWidgetRatingBar
     {
       for (;;)
       {
-        veg.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
+        ved.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
       }
       setStar(this.jdField_b_of_type_Int);
     }
@@ -83,9 +83,9 @@ public class RateWidgetRatingBar
     return paramContext;
   }
   
-  public void setOnRatingChangeListener(bkit parambkit)
+  public void setOnRatingChangeListener(bkjk parambkjk)
   {
-    this.jdField_a_of_type_Bkit = parambkit;
+    this.jdField_a_of_type_Bkjk = parambkjk;
   }
   
   public void setRatable(boolean paramBoolean)

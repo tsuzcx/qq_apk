@@ -1,20 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import java.util.List;
 
-public class atzw
-  extends BroadcastReceiver
+class atzw
+  extends atzx
 {
-  public atzw(OCRPerformFragment paramOCRPerformFragment) {}
+  atzw(atzv paramatzv) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    paramList = this.a.a(paramList);
+    atzt localatzt = (atzt)this.a.a.a(113);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
     {
-      aqmb.a().a().a("OCRPerformFragment", 4, "receive videochat");
-      this.a.getActivity().finish();
+      localatzt.notifyUI(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
+      return;
     }
   }
 }

@@ -1,80 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.MaxHeightRelativelayout;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aqdt
+class aqdt
+  extends URLDrawableDownListener.Adapter
 {
-  protected Context a;
-  protected View a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bbgg a;
-  protected MaxHeightRelativelayout a;
+  aqdt(aqds paramaqds) {}
   
-  public aqdt(bbgg parambbgg)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Bbgg = parambbgg;
-    this.jdField_a_of_type_AndroidContentContext = parambbgg.getContext();
-    a();
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(Math.max(parambbgg.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296975), actn.a(a(), this.jdField_a_of_type_AndroidContentContext.getResources())));
-  }
-  
-  protected int a()
-  {
-    return 380;
-  }
-  
-  protected abstract View a();
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558887, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378542));
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375362));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368032));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375395));
-    View localView = a();
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.addView(localView);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aqdu(this));
-    int i = bbkx.a(15.0F);
-    actn.a(this.jdField_a_of_type_AndroidWidgetImageView, i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131704769));
   }
   
-  public void a(String paramString)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
   }
   
-  public View b()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
+    }
   }
   
-  public void b()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    c();
-    this.jdField_a_of_type_Bbgg.removePreviewView();
-  }
-  
-  protected void c() {}
-  
-  protected void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
   }
 }
 

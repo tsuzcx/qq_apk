@@ -1,28 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import com.tencent.qqmini.sdk.core.utils.QZipIOException;
+import java.io.File;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class belo
-  extends Handler
+  extends ZipFile
 {
-  public belo(Looper paramLooper)
+  public belo(File paramFile)
   {
-    super(paramLooper);
+    super(paramFile);
   }
   
-  public void handleMessage(Message paramMessage)
+  public InputStream getInputStream(ZipEntry paramZipEntry)
   {
-    belm localbelm = (belm)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localbelm.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask, localbelm.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
+    if (QZipIOException.isInvalidEntry(paramZipEntry)) {
+      throw new QZipIOException();
     }
-    localbelm.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask.a(localbelm.jdField_a_of_type_ArrayOfJavaLangObject);
+    return super.getInputStream(paramZipEntry);
   }
 }
 

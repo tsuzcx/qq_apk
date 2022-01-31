@@ -1,24 +1,41 @@
-import android.animation.TypeEvaluator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.util.QLog;
 
-class adbh
-  implements TypeEvaluator
+public class adbh
+  extends Handler
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  public adbh(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 16711687: 
+      this.a.b(102);
+      return;
+    case 16711686: 
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      }
+      CommonRecordSoundPanel.a(this.a).c();
+      bbcf.b(2131230744, false);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
+      bbcf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+      return;
     }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
-    }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
-    }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
-    }
-    return Double.valueOf(0.0D);
+    this.a.b(1);
+    this.a.b();
+    bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698553), 1).a();
   }
 }
 

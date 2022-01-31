@@ -1,127 +1,25 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
 
 public class apkb
-  extends apki
 {
-  private FileInfo a;
-  
-  public apkb(FileInfo paramFileInfo)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a = paramFileInfo;
+    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bbea.b(paramString3) + paramString5;
   }
   
-  public int a()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, apkd paramapkd)
   {
-    if (this.a.a() == 5) {
-      return 5;
+    if (paramLong < 0L) {
+      return;
     }
-    return apue.a(this.a.d());
-  }
-  
-  public long a()
-  {
-    return -1L;
-  }
-  
-  public FileManagerEntity a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getEntity should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public WeiYunFileInfo a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getWeiyunInfo should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a.d();
-  }
-  
-  public void a(String paramString) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public long b()
-  {
-    return this.a.a();
-  }
-  
-  public String b()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a.a() == 5)
-    {
-      localObject1 = localObject2;
-      if (apvb.b(this.a.c())) {
-        localObject1 = this.a.c();
-      }
-    }
-    return localObject1;
-  }
-  
-  public int c()
-  {
-    return 3;
-  }
-  
-  public long c()
-  {
-    return awzw.a() * 1000L;
-  }
-  
-  public String c()
-  {
-    return null;
-  }
-  
-  public int d()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getFileStatus: has not status");
-    }
-    return -1;
-  }
-  
-  public String d()
-  {
-    return null;
-  }
-  
-  public int e()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getOpType: has not opType");
-    }
-    return -1;
-  }
-  
-  public String e()
-  {
-    return null;
-  }
-  
-  public String g()
-  {
-    return this.a.c();
-  }
-  
-  public String h()
-  {
-    return this.a.c();
+    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
+    localReqBody.uint64_group_code.set(paramLong);
+    localReqBody.str_app_src.set("android");
+    localReqBody.str_version.set("8.3.0");
+    mxf.b(paramQQAppInterface, new apkc(paramapkd), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
   }
 }
 

@@ -1,51 +1,60 @@
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awwj
-  extends awyf
+  implements awwq
 {
-  private View jdField_a_of_type_AndroidViewView;
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private awwr jdField_a_of_type_Awwr;
+  private List<awwr> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public awwj(View paramView)
-  {
-    super(paramView);
-  }
+  public awwj() {}
   
   public awwj(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370397));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369348));
+    this.jdField_a_of_type_Awwr = new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368306));
   }
   
-  protected void a()
+  public View a()
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376244));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378329);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void a(boolean paramBoolean)
+  public LinearLayout a()
   {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
-  public TextView e()
+  public TextView a()
   {
     return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public awwr a()
+  {
+    return this.jdField_a_of_type_Awwr;
+  }
+  
+  public List<awwr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

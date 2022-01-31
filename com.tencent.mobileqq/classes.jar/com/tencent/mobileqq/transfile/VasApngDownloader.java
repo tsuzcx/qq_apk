@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayoh;
-import bbwg;
-import bbwi;
+import ayoj;
+import bbwu;
+import bbww;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends ayoh
+  extends ayoj
 {
   public VasApngDownloader()
   {
@@ -86,9 +86,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bbwg(paramOutputStream, localFile);
+      paramDownloadParams = new bbwu(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bbwi.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = bbww.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {

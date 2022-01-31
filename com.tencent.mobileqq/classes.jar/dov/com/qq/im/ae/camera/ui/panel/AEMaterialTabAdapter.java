@@ -5,11 +5,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.View;
 import android.view.ViewGroup;
-import binu;
-import biob;
-import biqj;
-import biqk;
-import bjae;
+import biol;
+import bios;
+import bira;
+import birb;
+import bjav;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
@@ -18,40 +18,40 @@ public class AEMaterialTabAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private biob jdField_a_of_type_Biob;
-  private biqk jdField_a_of_type_Biqk;
+  private bios jdField_a_of_type_Bios;
+  private birb jdField_a_of_type_Birb;
   public HashMap<Integer, AEGridView> a;
-  private List<biqj> jdField_a_of_type_JavaUtilList;
+  private List<bira> jdField_a_of_type_JavaUtilList;
   
-  public AEMaterialTabAdapter(Context paramContext, biob parambiob)
+  public AEMaterialTabAdapter(Context paramContext, bios parambios)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Biob = parambiob;
-    this.jdField_a_of_type_Biqk = ((biqk)bjae.a(18));
+    this.jdField_a_of_type_Bios = parambios;
+    this.jdField_a_of_type_Birb = ((birb)bjav.a(18));
   }
   
-  private void a(binu parambinu, int paramInt)
+  private void a(biol parambiol, int paramInt)
   {
-    this.jdField_a_of_type_Biqk.a(parambinu, 112);
-    this.jdField_a_of_type_Biqk.a(parambinu, 113);
-    this.jdField_a_of_type_Biqk.a(parambinu, 114);
-    this.jdField_a_of_type_Biqk.a(parambinu, 111);
-    this.jdField_a_of_type_Biqk.a(parambinu, 115);
+    this.jdField_a_of_type_Birb.a(parambiol, 112);
+    this.jdField_a_of_type_Birb.a(parambiol, 113);
+    this.jdField_a_of_type_Birb.a(parambiol, 114);
+    this.jdField_a_of_type_Birb.a(parambiol, 111);
+    this.jdField_a_of_type_Birb.a(parambiol, 115);
     if (paramInt == 0) {
-      this.jdField_a_of_type_Biqk.a(parambinu, 111);
+      this.jdField_a_of_type_Birb.a(parambiol, 111);
     }
   }
   
-  public biqj a(int paramInt)
+  public bira a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt) && (paramInt >= 0)) {
-      return (biqj)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (bira)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public void a(List<biqj> paramList)
+  public void a(List<bira> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
@@ -62,8 +62,8 @@ public class AEMaterialTabAdapter
     paramViewGroup = (AEGridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     if (paramViewGroup != null)
     {
-      paramViewGroup = (binu)paramViewGroup.getAdapter();
-      this.jdField_a_of_type_Biqk.a(paramViewGroup);
+      paramViewGroup = (biol)paramViewGroup.getAdapter();
+      this.jdField_a_of_type_Birb.a(paramViewGroup);
     }
   }
   
@@ -81,18 +81,18 @@ public class AEMaterialTabAdapter
     {
       localAEGridView = new AEGridView(this.jdField_a_of_type_AndroidContentContext);
       localObject = this.jdField_a_of_type_AndroidContentContext;
-      biob localbiob = this.jdField_a_of_type_Biob;
+      bios localbios = this.jdField_a_of_type_Bios;
       if (paramInt == 0)
       {
         bool = true;
-        localObject = new binu((Context)localObject, localAEGridView, localbiob, bool);
-        a((binu)localObject, paramInt);
+        localObject = new biol((Context)localObject, localAEGridView, localbios, bool);
+        a((biol)localObject, paramInt);
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localAEGridView);
       }
     }
     for (;;)
     {
-      ((binu)localObject).a(((biqj)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      ((biol)localObject).a(((bira)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
       localAEGridView.setAdapter((RecyclerView.Adapter)localObject);
       paramViewGroup.addView(localAEGridView);
       if (QLog.isColorLevel()) {
@@ -101,8 +101,8 @@ public class AEMaterialTabAdapter
       return localAEGridView;
       bool = false;
       break;
-      localObject = (binu)localAEGridView.getAdapter();
-      a((binu)localObject, paramInt);
+      localObject = (biol)localAEGridView.getAdapter();
+      a((biol)localObject, paramInt);
     }
   }
   

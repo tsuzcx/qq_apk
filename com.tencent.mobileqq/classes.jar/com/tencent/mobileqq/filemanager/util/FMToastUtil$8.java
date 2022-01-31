@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import aptv;
-import bcpw;
+import aptx;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class FMToastUtil$8
@@ -11,7 +11,7 @@ public final class FMToastUtil$8
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(aptv.a());
+    bcql.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(aptx.a());
   }
 }
 

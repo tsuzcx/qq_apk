@@ -1,18 +1,18 @@
 package com.tencent.gdtad.views.canvas.components.appbutton;
 
 import java.lang.ref.WeakReference;
-import yzl;
-import zag;
+import yzi;
+import zad;
 
 public class GdtAppDownloadManager$4
   implements Runnable
 {
-  public GdtAppDownloadManager$4(yzl paramyzl) {}
+  public GdtAppDownloadManager$4(yzi paramyzi) {}
   
   public void run()
   {
-    if ((yzl.a(this.this$0) != null) && (yzl.a(this.this$0).get() != null)) {
-      ((zag)yzl.a(this.this$0).get()).e();
+    if ((yzi.a(this.this$0) != null) && (yzi.a(this.this$0).get() != null)) {
+      ((zad)yzi.a(this.this$0).get()).e();
     }
   }
 }

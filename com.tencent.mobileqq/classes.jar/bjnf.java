@@ -1,170 +1,69 @@
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class bjnf
-  implements bjmw
+public class bjnf
+  implements bjoz
 {
-  static final Map<Class, bjng> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private final bjng jdField_a_of_type_Bjng;
-  private final Object jdField_a_of_type_JavaLangObject;
+  private static bjnf jdField_a_of_type_Bjnf = new bjnf();
+  private static final String jdField_a_of_type_JavaLangString = bjnf.class.getSimpleName();
+  private HashMap<String, bjow> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, AtomicInteger> b = new HashMap();
   
-  bjnf(Object paramObject)
+  public static bjnf a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Bjng = a(this.jdField_a_of_type_JavaLangObject.getClass());
+    return jdField_a_of_type_Bjnf;
   }
   
-  private static bjng a(Class paramClass)
+  @NonNull
+  public <T extends bjow> T a(@NonNull Class<T> paramClass)
   {
-    bjng localbjng = (bjng)jdField_a_of_type_JavaUtilMap.get(paramClass);
-    if (localbjng != null) {
-      return localbjng;
-    }
-    return b(paramClass);
-  }
-  
-  private void a(bjng parambjng, bjnb parambjnb, bjmy parambjmy)
-  {
-    a((List)parambjng.jdField_a_of_type_JavaUtilMap.get(parambjmy), parambjnb, parambjmy);
-    a((List)parambjng.jdField_a_of_type_JavaUtilMap.get(bjmy.g), parambjnb, parambjmy);
-  }
-  
-  private void a(bjnh parambjnh, bjnb parambjnb, bjmy parambjmy)
-  {
-    try
+    if (bjne.class.isAssignableFrom(paramClass))
     {
-      switch (parambjnh.jdField_a_of_type_Int)
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass.getName())) {}
+      try
       {
-      case 0: 
-        parambjnh.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]);
-        return;
-      }
-    }
-    catch (InvocationTargetException parambjnh)
-    {
-      throw new RuntimeException("Failed to call observer method", parambjnh.getCause());
-      parambjnh.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { parambjnb });
-      return;
-    }
-    catch (IllegalAccessException parambjnh)
-    {
-      throw new RuntimeException(parambjnh);
-    }
-    parambjnh.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { parambjnb, parambjmy });
-    return;
-  }
-  
-  private void a(List<bjnh> paramList, bjnb parambjnb, bjmy parambjmy)
-  {
-    if (paramList != null)
-    {
-      int i = paramList.size() - 1;
-      while (i >= 0)
-      {
-        a((bjnh)paramList.get(i), parambjnb, parambjmy);
-        i -= 1;
-      }
-    }
-  }
-  
-  private static void a(Map<bjnh, bjmy> paramMap, bjnh parambjnh, bjmy parambjmy, Class paramClass)
-  {
-    bjmy localbjmy = (bjmy)paramMap.get(parambjnh);
-    if ((localbjmy != null) && (parambjmy != localbjmy))
-    {
-      paramMap = parambjnh.jdField_a_of_type_JavaLangReflectMethod;
-      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + localbjmy + ", new value " + parambjmy);
-    }
-    if (localbjmy == null) {
-      paramMap.put(parambjnh, parambjmy);
-    }
-  }
-  
-  private static bjng b(Class paramClass)
-  {
-    Object localObject2 = paramClass.getSuperclass();
-    Object localObject1 = new HashMap();
-    if (localObject2 != null)
-    {
-      localObject2 = a((Class)localObject2);
-      if (localObject2 != null) {
-        ((Map)localObject1).putAll(((bjng)localObject2).b);
-      }
-    }
-    localObject2 = paramClass.getDeclaredMethods();
-    Class[] arrayOfClass = paramClass.getInterfaces();
-    int j = arrayOfClass.length;
-    int i = 0;
-    Object localObject3;
-    Object localObject4;
-    while (i < j)
-    {
-      localObject3 = a(arrayOfClass[i]).b.entrySet().iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (Map.Entry)((Iterator)localObject3).next();
-        a((Map)localObject1, (bjnh)((Map.Entry)localObject4).getKey(), (bjmy)((Map.Entry)localObject4).getValue(), paramClass);
-      }
-      i += 1;
-    }
-    int k = localObject2.length;
-    j = 0;
-    for (;;)
-    {
-      if (j < k)
-      {
-        arrayOfClass = localObject2[j];
-        localObject3 = (bjne)arrayOfClass.getAnnotation(bjne.class);
-        if (localObject3 == null)
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.getName(), paramClass.newInstance());
+        this.b.put(paramClass.getName(), new AtomicInteger(0));
+        AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramClass.getName());
+        if (localAtomicInteger != null)
         {
-          j += 1;
+          localAtomicInteger.incrementAndGet();
+          QLog.d(jdField_a_of_type_JavaLangString, 1, paramClass.getName() + " has created and ref = " + localAtomicInteger.get());
         }
-        else
-        {
-          localObject4 = arrayOfClass.getParameterTypes();
-          if (localObject4.length <= 0) {
-            break label349;
-          }
-          if (!localObject4[0].isAssignableFrom(bjnb.class)) {
-            throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
-          }
-        }
+        return (bjow)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass.getName());
       }
-    }
-    label349:
-    for (i = 1;; i = 0)
-    {
-      int m = ((bjne)localObject3).a();
-      if (localObject4.length > 1)
+      catch (IllegalAccessException localIllegalAccessException)
       {
-        if (!localObject4[1].isAssignableFrom(bjmy.class)) {
-          throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
+        for (;;)
+        {
+          localIllegalAccessException.printStackTrace();
         }
-        if (m != 6) {
-          throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        for (;;)
+        {
+          localInstantiationException.printStackTrace();
         }
-        i = 2;
       }
-      if (localObject4.length > 2) {
-        throw new IllegalArgumentException("cannot have more than 2 params");
-      }
-      a((Map)localObject1, new bjnh(i, arrayOfClass), bjmy.a(m), paramClass);
-      break;
-      localObject1 = new bjng((Map)localObject1);
-      jdField_a_of_type_JavaUtilMap.put(paramClass, localObject1);
-      return localObject1;
     }
+    throw new RuntimeException("Cannot create non global view model " + paramClass.getName() + " by GlobalViewModelFactory");
   }
   
-  public void a(bjnb parambjnb, bjmy parambjmy)
+  public void a(bjow parambjow)
   {
-    a(this.jdField_a_of_type_Bjng, parambjnb, parambjmy);
+    if ((parambjow instanceof bjne))
+    {
+      AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(parambjow.getClass().getName());
+      if ((localAtomicInteger != null) && (localAtomicInteger.decrementAndGet() == 0))
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(parambjow.getClass().getName());
+        this.b.remove(parambjow.getClass().getName());
+        QLog.d(jdField_a_of_type_JavaLangString, 1, parambjow.getClass().getName() + " has removed");
+      }
+    }
   }
 }
 

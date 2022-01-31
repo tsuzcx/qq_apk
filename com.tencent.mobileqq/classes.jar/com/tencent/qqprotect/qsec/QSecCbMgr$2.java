@@ -1,11 +1,11 @@
 package com.tencent.qqprotect.qsec;
 
-import bfir;
+import bfji;
 
 public class QSecCbMgr$2
   implements Runnable
 {
-  public QSecCbMgr$2(bfir parambfir) {}
+  public QSecCbMgr$2(bfji parambfji) {}
   
   public void run()
   {

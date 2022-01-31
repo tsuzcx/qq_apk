@@ -1,26 +1,39 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import dov.com.qq.im.ae.play.AEPlayShowPageView;
-
 public class biwq
-  extends RecyclerView.ItemDecoration
+  extends bjow
 {
-  public biwq(AEPlayShowPageView paramAEPlayShowPageView, biwk parambiwk) {}
+  private bjor<Boolean> a = new bjor();
+  private bjor<Boolean> b = new bjor();
+  private bjor<Boolean> c = new bjor();
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public bjor<Boolean> a()
   {
-    if (AEPlayShowPageView.a(this.jdField_a_of_type_DovComQqImAePlayAEPlayShowPageView) != 1)
-    {
-      paramRect.left = this.jdField_a_of_type_Biwk.c;
-      paramRect.right = this.jdField_a_of_type_Biwk.c;
-      paramRect.top = this.jdField_a_of_type_Biwk.d;
-      paramRect.bottom = this.jdField_a_of_type_Biwk.d;
-      return;
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    if (this.b.a() != null) {
+      return ((Boolean)this.b.a()).booleanValue();
     }
-    paramRect.bottom = this.jdField_a_of_type_Biwk.d;
+    return false;
+  }
+  
+  public bjor<Boolean> b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    if (this.c.a() != null) {
+      return ((Boolean)this.c.a()).booleanValue();
+    }
+    return false;
+  }
+  
+  public bjor<Boolean> c()
+  {
+    return this.c;
   }
 }
 

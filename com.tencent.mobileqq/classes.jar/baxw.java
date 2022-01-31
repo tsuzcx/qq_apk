@@ -1,6 +1,7 @@
-public abstract interface baxw
+public class baxw
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public int a = -2147483648;
+  public int b = -2147483648;
 }
 
 

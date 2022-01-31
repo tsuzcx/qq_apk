@@ -1,23 +1,18 @@
-class bkbl
-  implements tey
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
+
+public class bkbl
+  implements bkbp
 {
-  bkbl(bkbh parambkbh) {}
+  public static final String[] a = { "AtLayer0", "AtLayer1", "AtLayer2", "AtLayer3", "AtLayer4", "AtLayer5" };
   
-  public void a(boolean paramBoolean, teu paramteu)
+  public void a(List<bkbm> paramList, DoodleView paramDoodleView)
   {
-    veg.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramteu != null) && (this.a.a != null)) {
-      this.a.a(paramteu.b, paramteu.a, this.a.a);
-    }
-    for (;;)
+    int i = 0;
+    while (i < a.length)
     {
-      paramteu = (tev)tdc.a(9);
-      if (paramteu != null) {
-        paramteu.b(this);
-      }
-      this.a.a = null;
-      return;
-      veg.e("DoodleEmojiManager", "onLbsUpdate failed.");
+      paramList.add(new bkae(paramDoodleView, a[i]));
+      i += 1;
     }
   }
 }

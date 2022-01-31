@@ -1,55 +1,29 @@
 import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1;
+import mqq.os.MqqHandler;
 
 public class amgx
+  implements Animator.AnimatorListener
 {
-  private float jdField_a_of_type_Float;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private View jdField_a_of_type_AndroidViewView;
-  private float b;
+  amgx(amgw paramamgw, amki paramamki, boolean paramBoolean) {}
   
-  public amgx(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  private void b()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
+    if (this.jdField_a_of_type_Amki != null) {
+      this.jdField_a_of_type_Amki.onColorNoteAnimFinish();
+    }
+    if ((this.jdField_a_of_type_Boolean) && ((paramAnimator instanceof wew))) {
+      ThreadManager.getUIHandler().postDelayed(new EnterExitAnimHelper.1.1(this, paramAnimator), 200L);
     }
   }
   
-  public void a()
-  {
-    b();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public void a(amkj paramamkj, boolean paramBoolean, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
-    {
-      Animator localAnimator = wfe.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
-      localAnimator.addListener(new amgy(this, paramamkj, paramBoolean));
-      localAnimator.setDuration(300L);
-      localAnimator.start();
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

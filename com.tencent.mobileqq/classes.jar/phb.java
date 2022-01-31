@@ -1,15 +1,15 @@
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class phb
-  implements oxl
+  implements ViewBase.OnClickListener
 {
-  phb(pgz parampgz, ViewBase paramViewBase) {}
+  phb(pgw parampgw, pau parampau) {}
   
-  public void a(long paramLong)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
-    }
+    pgw.a(this.jdField_a_of_type_Pgw, this.jdField_a_of_type_Pau, paramViewBase);
+    pgw.a(this.jdField_a_of_type_Pgw, this.jdField_a_of_type_Pau.a());
   }
 }
 

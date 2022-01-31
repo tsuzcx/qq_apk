@@ -1,24 +1,6 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
-
-public class askr
-  implements Comparator<TroopMessageNavigateInfo>
+public abstract interface askr<P, R>
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
-  {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
-    {
-      int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
-      }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
-      }
-      return 1;
-    }
-    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
-  }
+  public abstract R a(P paramP);
 }
 
 

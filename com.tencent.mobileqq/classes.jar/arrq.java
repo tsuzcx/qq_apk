@@ -1,18 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-
-public class arrq
-  implements bfos
+public abstract interface arrq
 {
-  public arrq(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, arsq paramarsq) {}
+  public abstract void a();
   
-  public void onDismiss()
-  {
-    this.jdField_a_of_type_Arsq.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
-  }
+  public abstract void b();
 }
 
 

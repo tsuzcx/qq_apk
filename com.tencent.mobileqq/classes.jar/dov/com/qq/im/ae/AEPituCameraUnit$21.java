@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae;
 
-import biim;
-import biqk;
-import biwb;
+import bijd;
+import birb;
+import biws;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public class AEPituCameraUnit$21
   implements Runnable
 {
-  public AEPituCameraUnit$21(biim parambiim, VideoMaterial paramVideoMaterial) {}
+  public AEPituCameraUnit$21(bijd parambijd, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    if ((biim.a(this.this$0) != null) && (biim.a(this.this$0).a(131072) != null)) {
-      biim.a(this.this$0).a(131072).a(115, this.a);
+    if ((bijd.a(this.this$0) != null) && (bijd.a(this.this$0).a(131072) != null)) {
+      bijd.a(this.this$0).a(131072).a(115, this.a);
     }
   }
 }

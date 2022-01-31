@@ -1,8 +1,20 @@
 import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
-public abstract interface awfe
+public class awfe
+  extends awfa
 {
-  public abstract void a(int paramInt, View paramView);
+  public awfe(CommentsView paramCommentsView, int paramInt, String paramString)
+  {
+    super(paramInt);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

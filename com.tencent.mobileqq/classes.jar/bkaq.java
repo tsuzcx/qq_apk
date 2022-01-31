@@ -4,24 +4,24 @@ import android.animation.AnimatorListenerAdapter;
 class bkaq
   extends AnimatorListenerAdapter
 {
-  bkaq(bkam parambkam) {}
+  bkaq(bkao parambkao) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    veg.b(bkaj.a, "scaleAnimator cancel!");
+    ved.b(bkak.a, "scaleAnimator cancel!");
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    veg.b(bkaj.a, "scaleAnimator end!");
+    ved.b(bkak.a, "scaleAnimator end!");
     this.a.w = 1.0F;
     this.a.j = false;
-    this.a.a.k();
+    this.a.b.k();
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    veg.b(bkaj.a, "scaleAnimator start!");
+    ved.b(bkak.a, "scaleAnimator start!");
     this.a.j = true;
   }
 }

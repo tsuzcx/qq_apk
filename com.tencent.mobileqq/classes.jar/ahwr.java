@@ -1,18 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.lang.ref.WeakReference;
 
 public class ahwr
-  implements DialogInterface.OnClickListener
 {
-  public ahwr(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  private static WeakReference<ahwt> a;
+  private static WeakReference<ahws> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a()
   {
-    LpReportInfo_pf00064.allReport(680, 1, 2);
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
-    this.a.a();
+    if (b != null) {}
+    for (ahws localahws = (ahws)b.get();; localahws = null)
+    {
+      if (localahws != null) {
+        localahws.j();
+      }
+      return;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (b != null) {}
+    for (ahws localahws = (ahws)b.get();; localahws = null)
+    {
+      if (localahws != null) {
+        localahws.b(paramInt);
+      }
+      return;
+    }
+  }
+  
+  public static void a(ahws paramahws)
+  {
+    b = new WeakReference(paramahws);
+  }
+  
+  public static void a(ahwt paramahwt)
+  {
+    a = new WeakReference(paramahwt);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (b != null) {}
+    for (ahws localahws = (ahws)b.get();; localahws = null)
+    {
+      if (localahws != null) {
+        localahws.c(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (a != null) {}
+    for (ahwt localahwt = (ahwt)a.get();; localahwt = null)
+    {
+      if (localahwt != null) {
+        localahwt.a(paramString, paramInt);
+      }
+      return;
+    }
   }
 }
 

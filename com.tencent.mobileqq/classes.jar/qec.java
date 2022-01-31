@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
-
-public final class qec
-  implements Parcelable.Creator<VisibleSetParam>
+public abstract interface qec<T, E>
 {
-  public VisibleSetParam a(Parcel paramParcel)
-  {
-    return new VisibleSetParam(paramParcel);
-  }
-  
-  public VisibleSetParam[] a(int paramInt)
-  {
-    return new VisibleSetParam[paramInt];
-  }
+  public abstract E a(T paramT);
 }
 
 

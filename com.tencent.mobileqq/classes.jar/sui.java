@@ -1,61 +1,105 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import java.util.HashMap;
 import java.util.Map;
 
-class sui
-  implements aysa
+@TargetApi(14)
+public class sui
 {
-  sui(suh paramsuh) {}
+  public int a;
+  public long a;
+  public ayrx a;
+  public MessageForShortVideo a;
+  public String a;
+  public Map<String, Object> a;
+  public sub a;
+  public suh a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 1;
   
-  public void onResp(aysx paramaysx)
+  public sui()
   {
-    if (paramaysx.jdField_a_of_type_Int == 3) {}
-    sul localsul;
-    do
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    return paramInt + "_" + paramString;
+  }
+  
+  public static sui a(String paramString, int paramInt)
+  {
+    return a(paramString, null, paramInt, false);
+  }
+  
+  public static sui a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    return a(paramString, null, paramInt, paramBoolean);
+  }
+  
+  private static sui a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  {
+    sui localsui = new sui();
+    StoryVideoItem localStoryVideoItem = ((tcw)tcz.a(5)).a(paramString1);
+    if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
     {
-      do
-      {
-        return;
-        localObject = ((ayrv)paramaysx.jdField_a_of_type_Aysw).a();
-      } while ((localObject == null) || (!(localObject instanceof sul)));
-      localsul = (sul)localObject;
-      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((sul)localObject).jdField_a_of_type_JavaLangString);
-      localsul.jdField_b_of_type_Long = (System.currentTimeMillis() - localsul.jdField_a_of_type_Long);
-    } while (localsul.jdField_a_of_type_Sue == null);
-    Object localObject = localsul.jdField_a_of_type_Sue;
-    if (paramaysx.jdField_a_of_type_Int == 0) {}
-    for (paramaysx = new ErrorMessage(0, "");; paramaysx = new ErrorMessage(paramaysx.b, paramaysx.jdField_a_of_type_JavaLangString))
+      localsui.e = suj.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
+      localsui.f = suj.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
+      localsui.jdField_b_of_type_Int = 0;
+      localsui.jdField_b_of_type_JavaLangString = paramString1;
+      localsui.jdField_a_of_type_Int = paramInt;
+      localsui.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
+      if (!paramBoolean) {
+        break label159;
+      }
+    }
+    label159:
+    for (paramString1 = "";; paramString1 = paramString2)
     {
-      ((sue)localObject).a(localsul, paramaysx);
-      return;
+      localsui.jdField_c_of_type_JavaLangString = paramString1;
+      if (paramBoolean) {
+        paramString2 = "";
+      }
+      localsui.jdField_d_of_type_JavaLangString = paramString2;
+      localsui.jdField_c_of_type_Boolean = paramBoolean;
+      return localsui;
+      localsui.e = suj.a(paramString1, paramInt, false, false);
+      localsui.f = suj.a(paramString1, paramInt, true, false);
+      break;
     }
   }
   
-  public void onUpdateProgeress(aysw arg1, long paramLong1, long paramLong2)
+  public boolean equals(Object paramObject)
   {
-    ??? = ???.a();
-    if ((??? != null) && ((??? instanceof sul)))
+    if ((paramObject instanceof sui))
     {
-      sul localsul = (sul)???;
-      int i = (int)(paramLong1 / paramLong2 * 100.0D);
-      synchronized (PreloadDownloader.a)
-      {
-        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext())
-          {
-            sup localsup = (sup)((WeakReference)localIterator.next()).get();
-            if (localsup != null) {
-              localsup.a(localsul.jdField_b_of_type_JavaLangString, localsul.jdField_a_of_type_Int, i, localsul);
-            }
-          }
-        }
+      paramObject = (sui)paramObject;
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
+        return true;
       }
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + ssf.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.e + '\'' + ", localTmpPath='" + this.f + '\'' + '}';
   }
 }
 

@@ -1,53 +1,65 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class anym
-  extends ajtj
+  implements anzf
 {
-  public anym(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public anym(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong) {}
   
-  protected void a()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoInsert");
-    }
-    this.a.o();
-    if ((this.a.a != null) && (((anrz)this.a.a.getManager(333)).a() > 0)) {
-      EmoticonMainPanel.c(this.a);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnGetEmoListResult");
-    }
-    if (paramInt == 0)
+    int k = 1;
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    List localList;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h)
     {
-      if ((this.a.a != null) && (((anrz)this.a.a.getManager(333)).a() > 0)) {
-        EmoticonMainPanel.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "switchTabMode mMarketPgkDownloaded = true");
       }
-      this.a.o();
+      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList;
+      i = j;
+      if (localList != null)
+      {
+        i = j;
+        if (localList.size() > 0)
+        {
+          if ((localList.size() <= EmoticonMainPanel.e) || (((aoap)localList.get(EmoticonMainPanel.e)).jdField_a_of_type_Int != 8)) {
+            break label163;
+          }
+          i = 1;
+          if (!((anrx)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).c()) {
+            break label198;
+          }
+        }
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoSend");
-    }
-    this.a.o();
-    EmoticonMainPanel.a(this.a, paramInt);
-  }
-  
-  protected void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnDeleteEmoResult");
-    }
-    if (paramInt == 0) {
-      this.a.o();
+    label163:
+    label198:
+    for (j = k;; j = 0)
+    {
+      if (i != 0) {
+        if (localList.size() >= j + 4) {
+          i = j + 3;
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h = false;
+        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_Long, i);
+        return;
+        i = 0;
+        break;
+        i = 0;
+        continue;
+        if (localList.size() >= j + 3) {
+          i = j + 2;
+        } else {
+          i = 0;
+        }
+      }
     }
   }
 }

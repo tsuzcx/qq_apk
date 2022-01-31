@@ -1,24 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.23;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class rgy
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public rgy(ReadinjoyTabFrame.23 param23, FrameLayout paramFrameLayout) {}
+  public rgy(ReadinjoyTabFrame paramReadinjoyTabFrame, SelectPositionModule.PositionData paramPositionData) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0, null);
-    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.a) {
-      bbjn.r(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a.getCurrentAccountUin(), null);
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change confirm");
     }
+    paramDialogInterface = osg.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+    }
+    paramDialogInterface = osg.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b(41695);
+    }
+    osg.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
+    osj.a().g(41695);
   }
 }
 

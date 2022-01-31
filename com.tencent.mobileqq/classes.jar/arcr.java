@@ -1,82 +1,53 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.observer.BusinessObserver;
 
 class arcr
-  implements aysa
+  implements BusinessObserver
 {
-  arcr(arco paramarco, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  arcr(arcq paramarcq, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void onResp(aysx paramaysx)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 1;
-    if (paramaysx.jdField_a_of_type_Int == 3)
+    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
     {
-      QLog.d("qqidentification_server", 2, "identification res download repeating ");
+      paramInt = paramBundle.getInt("app_id", 0);
+      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
+      if (paramInt == 0) {
+        return;
+      }
+      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
+      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
+      }
+      this.jdField_a_of_type_Arcq.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
       return;
     }
-    boolean bool;
-    if (paramaysx.jdField_a_of_type_Int == 0)
+    if (paramInt != 15)
     {
-      paramaysx = paramaysx.jdField_a_of_type_Aysw.c;
-      String str1 = bbdj.c(paramaysx);
-      String str2 = this.jdField_a_of_type_JavaLangString;
-      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
-      {
-        try
-        {
-          bbdj.a(paramaysx, str2, false);
-          bool = true;
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            label72:
-            QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but unzip is failed");
-            bool = false;
-          }
-        }
-        bbdj.d(paramaysx);
+      this.jdField_a_of_type_Arcq.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
+      if (paramInt != 17) {
+        break label186;
+      }
+      if (paramBundle != null) {
+        break label180;
       }
     }
-    for (;;)
+    label180:
+    for (paramBundle = "1";; paramBundle = "2")
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 1, "downloadRes.onResp download path : " + this.jdField_a_of_type_JavaLangString);
-      }
-      if (bool)
-      {
-        QLog.d("qqidentification_server", 1, "no res,download success");
-        bbjn.c(this.jdField_a_of_type_JavaLangString);
-        bbjn.b(this.jdField_a_of_type_Int);
-        bbjn.c(arcm.b());
-      }
-      paramaysx = new EIPCResult();
-      if (bool) {
-        i = 0;
-      }
-      paramaysx.code = i;
-      this.jdField_a_of_type_Arco.callbackResult(arco.b(this.jdField_a_of_type_Arco), paramaysx);
-      arco.a(this.jdField_a_of_type_Arco).set(false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("qqidentification_server", 2, "downloadRes.onResp download result = " + bool);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
       return;
-      QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but md5 is mismatched ");
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "downloadRes.onResp download succ but md5 is mismatched,fileSize = " + bbdj.a(paramaysx) + ",md5 = " + localIOException + ",url = " + this.c);
-      }
-      bool = false;
-      break label72;
-      QLog.d("qqidentification_server", 1, "downloadRes.onResp failed  isSuccess is false");
-      bool = false;
+      this.jdField_a_of_type_Arcq.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
+      break;
     }
+    label186:
+    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

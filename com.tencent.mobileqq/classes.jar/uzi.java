@@ -1,80 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class uzi
-  extends uzu
+  extends sys<uzj>
 {
-  private uzk jdField_a_of_type_Uzk;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public uzi(uzk paramuzk)
-  {
-    this.jdField_a_of_type_Uzk = paramuzk;
-  }
+  public static final String a = sxm.a("StorySvc.get_user_guide");
   
   public String a()
   {
-    return "GetUserGuideInfoStep";
+    return a;
   }
   
-  public void a()
+  public uzj a(byte[] paramArrayOfByte)
   {
-    veg.d("Q.qqstory.home.GetUserGuideInfoStep", "run");
-    uzl localuzl = new uzl();
-    syr.a().a(localuzl, new uzj(this));
-  }
-  
-  public void a(@NonNull uzl paramuzl, @Nullable uzm paramuzm, @NonNull ErrorMessage paramErrorMessage)
-  {
-    veg.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    if (b())
-    {
-      veg.e("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep was reseted !");
-      d();
-      return;
-    }
-    if (paramErrorMessage.isFail())
-    {
-      veg.c("Q.qqstory.home.GetUserGuideInfoStep", "GetUserGuideInfoStep is failed:%s", paramErrorMessage);
-      b(paramErrorMessage);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new GetUserGuideInfoStep.1(this, paramuzm));
-    d();
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
+    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
+      return new uzj(localRspGetUserGuide);
     }
-    finally
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      localObject = finally;
-      throw localObject;
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        ved.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
     }
   }
   
-  public void c()
+  protected byte[] a()
   {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return new qqstory_service.ReqGetUserGuide().toByteArray();
   }
 }
 

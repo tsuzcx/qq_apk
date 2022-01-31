@@ -7,16 +7,16 @@ import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import ste;
-import tuq;
-import vas;
-import vbd;
-import veg;
+import stb;
+import tun;
+import vap;
+import vba;
+import ved;
 
 public class FeedSegment$18
   implements Runnable
 {
-  public FeedSegment$18(vbd paramvbd, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, List paramList, String paramString) {}
+  public FeedSegment$18(vba paramvba, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, List paramList, String paramString) {}
   
   public void run()
   {
@@ -27,16 +27,16 @@ public class FeedSegment$18
       {
         View localView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(i);
         Object localObject = localView.getTag();
-        if ((localObject instanceof vas))
+        if ((localObject instanceof vap))
         {
-          localObject = (vas)localObject;
-          if (((vas)localObject).b < this.jdField_a_of_type_JavaUtilList.size())
+          localObject = (vap)localObject;
+          if (((vap)localObject).b < this.jdField_a_of_type_JavaUtilList.size())
           {
-            localObject = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(((vas)localObject).b);
+            localObject = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(((vap)localObject).b);
             if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((StoryVideoItem)localObject).mVid))
             {
-              veg.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
-              ste.a().dispatch(new tuq(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
+              ved.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
+              stb.a().dispatch(new tun(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
             }
           }
         }

@@ -1,22 +1,20 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
-public abstract interface upc
+public class upc
 {
-  public abstract void L_();
+  public int a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
   
-  public abstract void M_();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void f();
+  public upc(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

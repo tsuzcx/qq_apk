@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class adht
-  implements DialogInterface.OnClickListener
+  implements ajpw
 {
-  adht(adhs paramadhs, boolean paramBoolean) {}
+  adht(adhs paramadhs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, ajcm paramajcm)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    if ((paramBoolean) && (paramajcm != null)) {
+      paramajcm.f();
     }
   }
 }

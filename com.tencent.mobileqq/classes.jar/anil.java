@@ -1,25 +1,35 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class anil
   implements Parcelable.Creator
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
+  public IPSiteModel.Comic a(Parcel paramParcel)
   {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
+    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
+    localComic.comicType = paramParcel.readInt();
+    localComic.cover = paramParcel.readString();
+    localComic.desc = paramParcel.readString();
+    localComic.id = paramParcel.readString();
+    localComic.jumpUrl = paramParcel.readString();
+    localComic.name = paramParcel.readString();
+    localComic.recommDesc = paramParcel.readString();
+    localComic.typeName = paramParcel.readString();
+    if (localComic.comicRiches == null) {
+      localComic.comicRiches = new ArrayList();
+    }
+    localComic.comicRiches.clear();
+    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
+    return localComic;
   }
   
-  public IPSiteModel.Gxzb[] a(int paramInt)
+  public IPSiteModel.Comic[] a(int paramInt)
   {
-    return new IPSiteModel.Gxzb[paramInt];
+    return new IPSiteModel.Comic[paramInt];
   }
 }
 

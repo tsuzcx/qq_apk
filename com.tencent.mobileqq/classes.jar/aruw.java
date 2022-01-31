@@ -1,8 +1,18 @@
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
-public abstract interface aruw
+class aruw
+  implements TencentDirectionListener
 {
-  public abstract void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean);
+  aruw(arus paramarus) {}
+  
+  public void onDirectionChanged(double paramDouble, int paramInt)
+  {
+    if (arus.a(this.a) != null)
+    {
+      arus.a(this.a, 180.0D + paramDouble);
+      arus.a(this.a, false);
+    }
+  }
 }
 
 

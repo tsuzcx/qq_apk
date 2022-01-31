@@ -1,108 +1,93 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.search.util.VADHelper;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract class awur
+public class awur
+  extends awut
 {
-  public int a;
-  public long a;
-  public final awus a;
-  public String a;
-  public int b;
-  
-  public awur(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
+  public awur(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Awus = paramawus;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt;
+    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
   }
   
-  protected abstract awof a(List<awog> paramList, String paramString);
-  
-  public List<awof> a(awvg paramawvg)
+  public awoh a(List<awoi> paramList, String paramString)
   {
-    boolean bool2 = false;
-    long l = System.currentTimeMillis();
-    if (paramawvg.jdField_a_of_type_AndroidOsBundle == null) {
-      paramawvg.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if (SearchConfigManager.needSeparate) {
+      return null;
     }
-    paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("searchRequestFromHome", true);
-    ArrayList localArrayList = new ArrayList();
-    List localList = this.jdField_a_of_type_Awus.a(paramawvg);
-    this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+    return new awns(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
+  
+  public List<awoh> a(awvi paramawvi)
+  {
+    VADHelper.a("voice_search_accurate_cost");
+    List localList = super.a(paramawvi);
+    VADHelper.b("voice_search_accurate_cost");
     if ((localList != null) && (!localList.isEmpty()))
     {
-      awof localawof = a(localList, paramawvg.jdField_a_of_type_JavaLangString);
-      if (((localawof instanceof awnq)) && (localawof.a() != null) && (localawof.a().size() > 0)) {
-        paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
+      if (paramawvi.a == null) {
+        paramawvi.a = new Bundle();
       }
-      boolean bool1;
-      if (localawof != null)
+      paramawvi.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
+      if (localList.size() >= 2)
       {
-        bool1 = bool2;
-        if (localawof.a() != null)
-        {
-          bool1 = bool2;
-          if (localawof.a().size() > localawof.a()) {
-            bool1 = true;
-          }
+        if (QLog.isDevelopLevel()) {
+          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((awoh)localList.get(1)).a().size());
         }
-        if (!(localawof instanceof bgqe)) {
-          break label385;
-        }
+        paramawvi.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((awoh)localList.get(1)).a().size());
       }
-      for (;;)
-      {
-        localArrayList.add(localawof);
-        localawof = b(localList, paramawvg.jdField_a_of_type_JavaLangString);
-        if (((localawof instanceof awnq)) && (localawof.a() != null) && (localawof.a().size() > 0)) {
-          paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-        }
-        if (localawof != null)
-        {
-          localArrayList.add(new awnn(localawof));
-          localArrayList.add(localawof);
-        }
-        localawof = c(localList, paramawvg.jdField_a_of_type_JavaLangString);
-        if (((localawof instanceof awns)) && (localawof.a() != null) && (localawof.a().size() > 0)) {
-          paramawvg.jdField_a_of_type_AndroidOsBundle.putBoolean("hasLocalPeopleOrTroop", true);
-        }
-        if (localawof != null)
-        {
-          localArrayList.add(new awnn(localawof));
-          localArrayList.add(localawof);
-        }
-        this.jdField_a_of_type_Int = localList.size();
-        return localArrayList;
-        label385:
-        if ((localawof instanceof apfl)) {
-          localArrayList.add(new awnn(localawof, ajyc.a(2131705380), bool1));
-        } else if (bbma.e(GroupSearchEngine.a(this.jdField_b_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) == 1) {
-          localArrayList.add(new awnn(localawof, localawof.a().toString() + " " + this.jdField_a_of_type_Long + "ms", bool1));
-        } else if ((localawof instanceof awny)) {
-          localArrayList.add(new awnn(localawof, ajyc.a(2131705360), true));
-        } else if ((localawof instanceof awnu)) {
-          localArrayList.add(new awnn(localawof, localawof.a(), bool1));
-        } else if ((localawof instanceof awly)) {
-          localArrayList.add(new awnn(localawof, ajyc.a(2131705368), bool1));
-        } else {
-          localArrayList.add(new awnn(localawof));
-        }
+      return localList;
+    }
+    paramawvi.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
+    return localList;
+  }
+  
+  protected awoh b(List<awoi> paramList, String paramString)
+  {
+    if (!SearchConfigManager.needSeparate) {
+      return null;
+    }
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      awoi localawoi = (awoi)paramList.next();
+      if (!awwa.a(localawoi)) {
+        localArrayList.add(localawoi);
       }
     }
-    this.jdField_a_of_type_Int = 0;
-    return localArrayList;
+    if (localArrayList.size() == 0) {
+      return null;
+    }
+    return new awns(localArrayList, paramString, GroupSearchEngine.a(this.a));
   }
   
-  protected awof b(List<awog> paramList, String paramString)
+  protected awoh c(List<awoi> paramList, String paramString)
   {
-    return null;
-  }
-  
-  protected awof c(List<awog> paramList, String paramString)
-  {
-    return null;
+    if (!SearchConfigManager.needSeparate) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      awoi localawoi = (awoi)paramList.next();
+      if (awwa.a(localawoi)) {
+        localArrayList.add(localawoi);
+      }
+    }
+    if (localArrayList.size() == 0) {
+      return null;
+    }
+    return new awnu(localArrayList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

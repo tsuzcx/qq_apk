@@ -1,23 +1,23 @@
-import MWIFI.SCGet3rdCloudCheck;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
-final class bcvp
-  implements akju
+public class bcvp
+  implements DialogInterface.OnCancelListener
 {
-  bcvp(QQAppInterface paramQQAppInterface, akjt paramakjt) {}
+  public bcvp(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjt);
+    ShareActionSheetV2.a(this.a);
+    if (ShareActionSheetV2.a(this.a) != null) {
+      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
     }
   }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcvp
  * JD-Core Version:    0.7.0.1
  */

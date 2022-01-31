@@ -1,96 +1,42 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import java.util.List;
 
-public class nku
-  extends WebViewClient
+class nku
+  extends nkv
 {
-  protected WebViewPluginEngine a;
+  nku(nkt paramnkt) {}
   
-  public nku(WebViewPluginEngine paramWebViewPluginEngine)
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    this.a = paramWebViewPluginEngine;
-  }
-  
-  public void onLoadResource(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
-    }
-    super.onLoadResource(paramWebView, paramString);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934594L, null);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934593L, null);
-    }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
-    }
-    if (this.a != null) {
-      this.a.a(paramString2, 8589934595L, paramInt);
-    }
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    if (this.a != null) {
-      try
-      {
-        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
-        return paramWebView;
-      }
-      catch (Exception paramWebView)
-      {
-        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
-      }
-    }
-    return null;
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a != null) && (this.a.a(paramString))) {
-      bool1 = true;
-    }
-    do
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramString == null);
-        if (paramString.startsWith("http")) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!paramString.startsWith("data:"));
-      bool1 = bool2;
-    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
-    CustomWebView.addContextLog(nax.b(paramString, new String[0]));
-    return false;
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
+      }
+      nkt.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nkt.a(this.a));
+      }
+    }
+    label113:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1)
+    {
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(nkt.a(this.a));
+    }
   }
 }
 

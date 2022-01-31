@@ -1,34 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.DashboardAdapter.1;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class biny
-  implements Animation.AnimationListener
+  extends RecyclerView.Adapter<binz>
 {
-  public biny(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<bioa> jdField_a_of_type_JavaUtilList;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public biny(@NonNull Context paramContext)
   {
-    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
-    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
-      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).b();
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public binz a(ViewGroup paramViewGroup, int paramInt)
   {
-    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
-    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null)
-    {
-      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
-      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setVisibility(0);
-    }
+    return new binz(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558477, paramViewGroup, false));
+  }
+  
+  public void a(binz parambinz, int paramInt)
+  {
+    parambinz.a((bioa)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public void a(@NonNull List<bioa> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.DashboardAdapter.1(this));
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

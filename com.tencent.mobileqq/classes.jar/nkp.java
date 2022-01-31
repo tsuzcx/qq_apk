@@ -1,18 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import java.util.HashMap;
 
-class nkp
-  implements DialogInterface.OnClickListener
+public class nkp
 {
-  nkp(nke paramnke, JsResult paramJsResult, Context paramContext) {}
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<String, Long> a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if (this.a != null) {
+      this.a.clear();
+    }
   }
 }
 

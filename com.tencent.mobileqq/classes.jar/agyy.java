@@ -1,79 +1,37 @@
-import Wallet.RedPackGrapInfo;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class agyy
-  extends FrameLayout
+  extends RecyclerView.ItemDecoration
 {
-  adyb jdField_a_of_type_Adyb;
-  Context jdField_a_of_type_AndroidContentContext;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private int a;
+  private int b;
   
-  public agyy(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, adyb paramadyb)
+  private agyy(int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Adyb = paramadyb;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = -2;
-    paramTroopUnAccalimedRedPacketList.height = -2;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130846571);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = vzo.a(paramContext, 29.0F);
-    paramTroopUnAccalimedRedPacketList.height = vzo.a(paramContext, 29.0F);
-    paramTroopUnAccalimedRedPacketList.gravity = 1;
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = vzo.a(paramContext, 28.0F);
-    paramTroopUnAccalimedRedPacketList.height = vzo.a(paramContext, 28.0F);
-    paramTroopUnAccalimedRedPacketList.gravity = 17;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a(RedPackGrapInfo paramRedPackGrapInfo)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    int i = paramRecyclerView.getChildPosition(paramView);
+    if (i == 0)
     {
-      localObject = baxt.a(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    if (this.jdField_a_of_type_Adyb != null)
-    {
-      this.jdField_a_of_type_Adyb.a(paramRedPackGrapInfo);
-      localObject = this.jdField_a_of_type_Adyb.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      if (localObject == null) {
-        break label120;
-      }
-      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.topMargin = vzo.a(this.jdField_a_of_type_AndroidContentContext, 11.5F);
-      localLayoutParams.gravity = 16;
-      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Adyb.a((FrameLayout)localObject, paramRedPackGrapInfo, new agyz(this));
-    }
-    label120:
-    while (!QLog.isColorLevel())
-    {
-      LinearLayout.LayoutParams localLayoutParams;
+      paramRect.left = this.a;
       return;
     }
-    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
+    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    {
+      paramRect.left = this.b;
+      paramRect.right = this.a;
+      return;
+    }
+    paramRect.left = this.b;
   }
 }
 

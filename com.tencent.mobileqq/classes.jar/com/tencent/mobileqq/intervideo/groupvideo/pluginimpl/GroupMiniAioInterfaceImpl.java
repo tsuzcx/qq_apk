@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import actk;
-import ajyc;
+import actg;
+import ajya;
 import android.app.Activity;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -13,8 +13,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import arle;
-import bbkx;
+import arlg;
+import bbll;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
@@ -26,7 +26,7 @@ public class GroupMiniAioInterfaceImpl
   implements NewMiniAioInterface
 {
   private Activity mActivity;
-  private arle mMiniMsgUser;
+  private arlg mMiniMsgUser;
   private long roomId;
   private int roomType;
   private int xPoint;
@@ -38,7 +38,7 @@ public class GroupMiniAioInterfaceImpl
     localIntent1.setFlags(67108864);
     localIntent1.putExtra("tab_index", MainFragment.b);
     localIntent1.putExtra("fragment_id", 1);
-    localIntent1.putExtra("banner_wording", ajyc.a(2131705339));
+    localIntent1.putExtra("banner_wording", ajya.a(2131705350));
     localIntent1.putExtra("banner_iconIdx", 13);
     localIntent1.putExtra("banner_iconIdx", 14);
     localIntent1.putExtra("banner_businessCategory", "GroupVideo");
@@ -59,11 +59,11 @@ public class GroupMiniAioInterfaceImpl
     int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297186);
     if (this.xPoint == 0)
     {
-      i = i - k * 4 - bbkx.b(35.0F);
+      i = i - k * 4 - bbll.b(35.0F);
       if (this.yPoint != 0) {
         break label147;
       }
-      j += bbkx.a(7.0F);
+      j += bbll.a(7.0F);
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class GroupMiniAioInterfaceImpl
     this.mActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
     this.roomId = paramLong;
     this.roomType = paramInt;
-    this.mMiniMsgUser = new arle(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
+    this.mMiniMsgUser = new arlg(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
     ThreadManagerV2.getUIHandlerV2().post(new GroupMiniAioInterfaceImpl.1(this));
   }
   

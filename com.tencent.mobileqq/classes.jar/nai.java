@@ -1,24 +1,21 @@
-import android.app.Activity;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-class nai
-  implements bfoq
+final class nai
+  implements HostnameVerifier
 {
-  nai(nae paramnae, Activity paramActivity, String paramString, bfol parambfol) {}
+  nai(URL paramURL) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    switch (paramInt)
-    {
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
+    if (bool) {
+      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      nae.b(this.jdField_a_of_type_Nae, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      nae.a(this.jdField_a_of_type_Nae, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    return bool;
   }
 }
 

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult.Record;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public final class auck
-  implements Parcelable.Creator<TranslateResult.Record>
+  implements Parcelable.Creator<OcrRecogResult>
 {
-  public TranslateResult.Record a(Parcel paramParcel)
+  public OcrRecogResult a(Parcel paramParcel)
   {
-    return new TranslateResult.Record(paramParcel);
+    return new OcrRecogResult(paramParcel);
   }
   
-  public TranslateResult.Record[] a(int paramInt)
+  public OcrRecogResult[] a(int paramInt)
   {
-    return new TranslateResult.Record[paramInt];
+    return new OcrRecogResult[paramInt];
   }
 }
 

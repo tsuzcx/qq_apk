@@ -1,27 +1,27 @@
 package cooperation.qqfav.globalsearch;
 
-import awut;
-import awvg;
-import bgqc;
+import awuv;
+import awvi;
+import bgqt;
 import java.util.List;
 
 class FavoriteSearchEngine$SearchRunnable
   implements Runnable
 {
-  awut<bgqc> jdField_a_of_type_Awut;
-  awvg jdField_a_of_type_Awvg;
+  awuv<bgqt> jdField_a_of_type_Awuv;
+  awvi jdField_a_of_type_Awvi;
   
   private FavoriteSearchEngine$SearchRunnable(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
   public void run()
   {
-    awvg localawvg = this.jdField_a_of_type_Awvg;
-    String str = this.jdField_a_of_type_Awvg.a;
-    List localList = this.this$0.a(localawvg);
+    awvi localawvi = this.jdField_a_of_type_Awvi;
+    String str = this.jdField_a_of_type_Awvi.a;
+    List localList = this.this$0.a(localawvi);
     try
     {
-      if ((this.jdField_a_of_type_Awut != null) && (localawvg == this.jdField_a_of_type_Awvg) && (str.equals(this.jdField_a_of_type_Awvg.a))) {
-        this.jdField_a_of_type_Awut.a(localList, 1);
+      if ((this.jdField_a_of_type_Awuv != null) && (localawvi == this.jdField_a_of_type_Awvi) && (str.equals(this.jdField_a_of_type_Awvi.a))) {
+        this.jdField_a_of_type_Awuv.a(localList, 1);
       }
       return;
     }

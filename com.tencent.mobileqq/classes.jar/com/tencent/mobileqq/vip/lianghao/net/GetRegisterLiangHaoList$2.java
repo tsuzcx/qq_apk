@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bbyg;
-import bbyo;
-import bbyp;
+import bbyu;
+import bbzc;
+import bbzd;
 import java.util.List;
 
 public class GetRegisterLiangHaoList$2
   implements Runnable
 {
-  public GetRegisterLiangHaoList$2(bbyo parambbyo, bbyg parambbyg, bbyp parambbyp) {}
+  public GetRegisterLiangHaoList$2(bbzc parambbzc, bbyu parambbyu, bbzd parambbzd) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bbyg != null) && (this.jdField_a_of_type_Bbyg.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bbyg.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bbyg.jdField_a_of_type_JavaUtilList.size() > 0))
+    if ((this.jdField_a_of_type_Bbyu != null) && (this.jdField_a_of_type_Bbyu.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bbyu.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bbyu.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      this.jdField_a_of_type_Bbyp.a(this.jdField_a_of_type_Bbyg);
+      this.jdField_a_of_type_Bbzd.a(this.jdField_a_of_type_Bbyu);
       return;
     }
-    this.jdField_a_of_type_Bbyp.a(-1, "");
+    this.jdField_a_of_type_Bbzd.a(-1, "");
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.open.downloadnew;
 
-import bdht;
-import bdki;
-import bdkp;
-import bdkw;
+import bdii;
+import bdkx;
+import bdle;
+import bdll;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DownloadApi$5
   implements Runnable
 {
-  public DownloadApi$5(List paramList, bdkw parambdkw) {}
+  public DownloadApi$5(List paramList, bdll parambdll) {}
   
   public void run()
   {
-    bdht.a(bdki.a, "getQueryDownloadAction enter");
-    bdkp.a().a();
+    bdii.a(bdkx.a, "getQueryDownloadAction enter");
+    bdle.a().a();
     for (;;)
     {
       int i;
@@ -27,27 +27,27 @@ public final class DownloadApi$5
         if (i < j)
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bdkp.a().a(localDownloadInfo))
+          if (bdle.a().a(localDownloadInfo))
           {
-            bdht.a(bdki.a, "refreshDownloadInfo true " + localDownloadInfo);
+            bdii.a(bdkx.a, "refreshDownloadInfo true " + localDownloadInfo);
             localArrayList.add(localDownloadInfo);
           }
         }
         else
         {
-          if (this.jdField_a_of_type_Bdkw != null) {
-            this.jdField_a_of_type_Bdkw.a(localArrayList);
+          if (this.jdField_a_of_type_Bdll != null) {
+            this.jdField_a_of_type_Bdll.a(localArrayList);
           }
           return;
         }
       }
       catch (Exception localException)
       {
-        bdht.c(bdki.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_Bdkw == null) {
+        bdii.c(bdkx.a, "Exception>>>", localException);
+        if (this.jdField_a_of_type_Bdll == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdkw.a(-1, localException.getMessage());
+        this.jdField_a_of_type_Bdll.a(-1, localException.getMessage());
         return;
       }
       i += 1;

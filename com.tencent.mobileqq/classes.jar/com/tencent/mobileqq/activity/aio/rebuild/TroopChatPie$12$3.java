@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aetz;
-import azmu;
-import aznm;
+import aetx;
+import azmw;
+import azno;
 
 public class TroopChatPie$12$3
   implements Runnable
 {
-  public TroopChatPie$12$3(aetz paramaetz) {}
+  public TroopChatPie$12$3(aetx paramaetx) {}
   
   public void run()
   {

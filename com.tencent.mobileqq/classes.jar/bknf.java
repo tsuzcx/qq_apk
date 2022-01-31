@@ -5,92 +5,76 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Property;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class bknf
   extends Drawable
   implements Animatable
 {
-  private float jdField_a_of_type_Float = 68.0F;
+  private float jdField_a_of_type_Float = 16.0F;
   private int jdField_a_of_type_Int;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property<bknf, Integer> jdField_a_of_type_AndroidUtilProperty = new bkng(this, Integer.class, "bfIndex");
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<bknl> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
+  Property<bknf, Float> jdField_a_of_type_AndroidUtilProperty = new bkng(this, Float.class, "backHeight");
+  private bkod jdField_a_of_type_Bkod = new bkod();
+  private bkoj jdField_a_of_type_Bkoj = new bkoj();
+  private WeakReference<bknq> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 68.0F;
+  private float jdField_b_of_type_Float = 5.0F;
   private int jdField_b_of_type_Int = 255;
-  private AnimationDrawable jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  Property<bknf, Integer> jdField_b_of_type_AndroidUtilProperty = new bknh(this, Integer.class, "textAlpha");
-  private Map<String, Drawable> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private float jdField_c_of_type_Float = 30.0F;
-  private int jdField_c_of_type_Int = 1;
-  private AnimationDrawable jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable;
-  Property<bknf, Float> jdField_c_of_type_AndroidUtilProperty = new bkni(this, Float.class, "textPos");
-  private float d = 70.0F;
-  private float e = 60.0F;
-  private float f = 50.0F;
-  private float g = 35.0F;
-  private float h = 5.0F;
-  private float i = this.h;
+  Property<bknf, Integer> jdField_b_of_type_AndroidUtilProperty = new bkni(this, Integer.class, "backAlpha");
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float = 50.0F;
+  private int jdField_c_of_type_Int;
+  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
+  Property<bknf, Integer> jdField_c_of_type_AndroidUtilProperty = new bknj(this, Integer.class, "speedAlpha");
+  private float jdField_d_of_type_Float = 50.0F;
+  private int jdField_d_of_type_Int = 179;
+  Property<bknf, Integer> jdField_d_of_type_AndroidUtilProperty = new bknk(this, Integer.class, "reverseAlpha");
+  private float jdField_e_of_type_Float = 30.0F;
+  private int jdField_e_of_type_Int;
+  Property<bknf, Float> jdField_e_of_type_AndroidUtilProperty = new bknl(this, Float.class, "foreSpeed");
+  private float jdField_f_of_type_Float = 22.0F;
+  private int jdField_f_of_type_Int = 179;
+  Property<bknf, Float> jdField_f_of_type_AndroidUtilProperty = new bknm(this, Float.class, "foreHeight");
+  private int jdField_g_of_type_Int = -1;
+  Property<bknf, Float> jdField_g_of_type_AndroidUtilProperty = new bknn(this, Float.class, "speedPos");
+  private int jdField_h_of_type_Int = 0;
+  Property<bknf, Integer> jdField_h_of_type_AndroidUtilProperty = new bkno(this, Integer.class, "markAlpha");
   
   private float a()
   {
-    return this.i;
-  }
-  
-  private int a(int paramInt)
-  {
-    if (paramInt > this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames()) {
-      return 0;
-    }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() - paramInt;
-  }
-  
-  private AnimationDrawable a(Context paramContext, int paramInt)
-  {
-    paramContext = (AnimationDrawable)paramContext.getResources().getDrawable(paramInt);
-    paramContext.setVisible(true, false);
-    paramContext.setOneShot(true);
-    return paramContext;
+    return this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
   }
   
   private void a(float paramFloat)
   {
-    this.i = paramFloat;
+    if (this.jdField_h_of_type_Int == 4)
+    {
+      float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
+      this.jdField_b_of_type_AndroidGraphicsRectF.offset(0.0F, paramFloat - f1);
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      {
+        bknq localbknq = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localbknq != null) {
+          localbknq.a(this.jdField_h_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF);
+        }
+      }
+    }
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramFloat4 / 2.0F + paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (paramFloat2 - paramFloat4 / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (paramFloat3 / 2.0F + paramFloat1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (paramFloat1 - paramFloat3 / 2.0F);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
+  private void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
@@ -98,15 +82,17 @@ public class bknf
       this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
       this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "startValueAnimator: state:" + this.jdField_c_of_type_Int + " mIndex:" + this.jdField_a_of_type_Int + " mTextAlpha:" + this.jdField_b_of_type_Int);
-    }
-    if (paramInt1 == 2) {
-      if (this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_a_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() }) });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(600L);
-      }
+    int i = getBounds().height();
+    PropertyValuesHolder localPropertyValuesHolder1;
+    PropertyValuesHolder localPropertyValuesHolder2;
+    PropertyValuesHolder localPropertyValuesHolder3;
+    if (paramInt1 == 1)
+    {
+      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), i });
+      localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), i });
+      localPropertyValuesHolder3 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 115 });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 0 }), PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 255 }), localPropertyValuesHolder3, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 127 }) });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
     }
     for (;;)
     {
@@ -115,31 +101,24 @@ public class bknf
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bknj(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bknk(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bknp(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bknh(this));
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       }
       return;
-      if (paramInt1 == 4)
+      if (paramInt1 == 3)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
-        {
-          paramInt1 = a(this.jdField_a_of_type_Int);
-          if (QLog.isColorLevel()) {
-            QLog.d("MarkDrawable", 2, "calcBackIndex return : " + paramInt1);
-          }
-          this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_a_of_type_AndroidUtilProperty, new int[] { paramInt1, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() }) });
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-        }
-      }
-      else if (paramInt1 == 5)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 255 }), PropertyValuesHolder.ofFloat(this.jdField_c_of_type_AndroidUtilProperty, new float[] { this.i, 0.0F }) });
+        localPropertyValuesHolder1 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 0 });
+        localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F });
+        localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), (int)(i * 0.9F) });
+        PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofFloat(this.jdField_e_of_type_AndroidUtilProperty, new float[] { this.jdField_b_of_type_AndroidGraphicsRectF.height(), (int)this.jdField_c_of_type_Float });
+        PropertyValuesHolder localPropertyValuesHolder5 = PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 255 });
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder3, localPropertyValuesHolder4, PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 0 }), localPropertyValuesHolder2, localPropertyValuesHolder5, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 179 }) });
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
       }
-      else if (paramInt1 == 6)
+      else if (paramInt1 == 4)
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 0 }) });
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.jdField_g_of_type_AndroidUtilProperty, new float[] { paramFloat1, paramFloat2 }) });
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
       }
     }
@@ -147,142 +126,181 @@ public class bknf
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Float = PickerContainer.a(paramContext, this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_Float = PickerContainer.a(paramContext, this.jdField_b_of_type_Float);
     this.jdField_c_of_type_Float = PickerContainer.a(paramContext, this.jdField_c_of_type_Float);
-    this.d = PickerContainer.a(paramContext, this.d);
-    this.e = PickerContainer.a(paramContext, this.e);
-    this.f = PickerContainer.a(paramContext, this.f);
-    this.g = PickerContainer.a(paramContext, this.g);
-    this.h = PickerContainer.a(paramContext, this.h);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      int j = 0;
-      while (j < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        this.jdField_a_of_type_JavaUtilList.set(j, Integer.valueOf((int)PickerContainer.a(paramContext, ((Integer)this.jdField_a_of_type_JavaUtilList.get(j)).intValue())));
-        j += 1;
-      }
-    }
+    this.jdField_d_of_type_Float = PickerContainer.a(paramContext, this.jdField_d_of_type_Float);
+    this.jdField_e_of_type_Float = PickerContainer.a(paramContext, this.jdField_e_of_type_Float);
+    this.jdField_f_of_type_Float = PickerContainer.a(paramContext, this.jdField_f_of_type_Float);
+    this.jdField_b_of_type_Float = PickerContainer.a(paramContext, this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_Float /= paramContext.getResources().getDisplayMetrics().density;
   }
   
   private void a(Canvas paramCanvas)
   {
-    int j = 0;
-    if (this.jdField_c_of_type_Int == 1) {}
+    RectF localRectF = this.jdField_a_of_type_Bkoj.a(this.jdField_g_of_type_Int);
+    if (localRectF != null)
+    {
+      float f1 = localRectF.centerX();
+      float f2 = localRectF.centerY();
+      f1 -= this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F;
+      f2 -= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F;
+      float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width();
+      float f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height();
+      paramCanvas.save();
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      }
+      paramCanvas.restore();
+    }
+  }
+  
+  private void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    RectF localRectF = this.jdField_a_of_type_Bkoj.a(this.jdField_c_of_type_Int - 1);
+    if ((localRectF != null) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
+    {
+      float f1 = localRectF.centerX();
+      float f2 = localRectF.centerY();
+      f1 -= this.jdField_e_of_type_Float / 2.0F;
+      f2 -= this.jdField_f_of_type_Float / 2.0F;
+      float f3 = this.jdField_e_of_type_Float;
+      float f4 = this.jdField_f_of_type_Float;
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
+      if (paramBoolean) {
+        break label119;
+      }
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_e_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      return;
+      label119:
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(255);
+    }
+  }
+  
+  private void a(Rect paramRect)
+  {
+    if (paramRect == null) {}
     do
     {
-      Drawable localDrawable;
       do
       {
         do
         {
           do
           {
-            do
-            {
-              return;
-              if (this.jdField_c_of_type_Int != 2) {
-                break;
-              }
-            } while (this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable == null);
-            j = this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames();
-            if (this.jdField_a_of_type_Int >= j) {
-              this.jdField_a_of_type_Int = (j - 1);
+            return;
+            if (!this.jdField_b_of_type_Boolean) {
+              break;
             }
-            localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(this.jdField_a_of_type_Int);
-          } while (localDrawable == null);
-          localDrawable.draw(paramCanvas);
+          } while (!QLog.isColorLevel());
+          QLog.d("GroundDrawable", 2, "isrunning, cannot resetdata:" + this.jdField_h_of_type_Int);
           return;
-          if (this.jdField_c_of_type_Int != 3) {
+          if ((this.jdField_h_of_type_Int != 0) && (this.jdField_h_of_type_Int != 1)) {
             break;
           }
-          localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() - 1);
-        } while (localDrawable == null);
-        localDrawable.draw(paramCanvas);
+          a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height() * 0.4F);
+          if (this.jdField_a_of_type_Bkod != null) {
+            this.jdField_a_of_type_Bkod.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+          }
+          a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height() * 0.9F);
+        } while (this.jdField_a_of_type_Bkoj == null);
+        this.jdField_a_of_type_Bkoj.a(this.jdField_c_of_type_AndroidGraphicsRectF);
         return;
-        if (this.jdField_c_of_type_Int != 4) {
-          break;
-        }
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null) {
-          j = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames();
-        }
-        if (this.jdField_a_of_type_Int >= j) {
-          this.jdField_a_of_type_Int = (j - 1);
-        }
-        localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(this.jdField_a_of_type_Int);
-        if (localDrawable != null) {
-          localDrawable.draw(paramCanvas);
-        }
-        localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(this.jdField_a_of_type_Int);
-      } while (localDrawable == null);
-      localDrawable.draw(paramCanvas);
+      } while ((this.jdField_h_of_type_Int != 3) && (this.jdField_h_of_type_Int != 2));
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height());
+      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height());
+      if (this.jdField_a_of_type_Bkod != null) {
+        this.jdField_a_of_type_Bkod.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      }
+    } while (this.jdField_a_of_type_Bkoj == null);
+    this.jdField_a_of_type_Bkoj.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+  }
+  
+  private void a(RectF paramRectF, float paramFloat)
+  {
+    if (paramRectF == null) {
       return;
-    } while (this.jdField_c_of_type_Int != 5);
+    }
+    Rect localRect = getBounds();
+    float f1 = paramFloat;
+    if (localRect.height() < paramFloat) {
+      f1 = localRect.height();
+    }
+    float f2 = localRect.width() * 1.0F / localRect.height() * f1;
+    paramFloat = f2;
+    if (localRect.width() < f2) {
+      paramFloat = localRect.width();
+    }
+    f2 = (localRect.width() - paramFloat) / 2.0F;
+    float f3 = (localRect.height() - f1) / 2.0F;
+    paramRectF.set(f2, f3, paramFloat + f2, f3 + f1);
+  }
+  
+  private void a(Float paramFloat)
+  {
+    if (this.jdField_h_of_type_Int == 3)
+    {
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() - paramFloat.floatValue() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() + paramFloat.floatValue() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - paramFloat.floatValue() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() + paramFloat.floatValue() / 2.0F);
+    }
+  }
+  
+  private float b()
+  {
+    return this.jdField_b_of_type_AndroidGraphicsRectF.height();
   }
   
   private int b()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1000));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(42));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(47));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(54));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(61));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(65));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(67));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(69));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(66));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
+    return this.jdField_f_of_type_Int;
   }
   
   private void b(float paramFloat)
   {
-    a(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), paramFloat, paramFloat);
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
+    {
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramFloat);
+      if (this.jdField_a_of_type_Bkod != null) {
+        this.jdField_a_of_type_Bkod.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      }
+    }
   }
   
   private void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  private void b(Context paramContext)
-  {
-    if (paramContext == null) {
+    if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
+    {
+      this.jdField_f_of_type_Int = paramInt;
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put("1/2", paramContext.getResources().getDrawable(2130841066));
-    this.jdField_a_of_type_JavaUtilMap.put("1/4", paramContext.getResources().getDrawable(2130841067));
-    this.jdField_a_of_type_JavaUtilMap.put("1x", paramContext.getResources().getDrawable(2130841068));
-    this.jdField_a_of_type_JavaUtilMap.put("2x", paramContext.getResources().getDrawable(2130841069));
-    this.jdField_a_of_type_JavaUtilMap.put("4x", paramContext.getResources().getDrawable(2130841070));
-    this.jdField_a_of_type_JavaUtilMap.put(PickerContainer.jdField_a_of_type_JavaLangString, paramContext.getResources().getDrawable(2130841093));
-    this.jdField_b_of_type_JavaUtilMap.put("1/2", paramContext.getResources().getDrawable(2130841110));
-    this.jdField_b_of_type_JavaUtilMap.put("1/4", paramContext.getResources().getDrawable(2130841111));
-    this.jdField_b_of_type_JavaUtilMap.put("1x", paramContext.getResources().getDrawable(2130841112));
-    this.jdField_b_of_type_JavaUtilMap.put("2x", paramContext.getResources().getDrawable(2130841113));
-    this.jdField_b_of_type_JavaUtilMap.put("4x", paramContext.getResources().getDrawable(2130841114));
-    this.jdField_b_of_type_JavaUtilMap.put(PickerContainer.jdField_a_of_type_JavaLangString, paramContext.getResources().getDrawable(2130841115));
+    if (this.jdField_h_of_type_Int == 0)
+    {
+      this.jdField_f_of_type_Int = 179;
+      return;
+    }
+    this.jdField_f_of_type_Int = 127;
   }
   
   private void b(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
-    while (this.jdField_c_of_type_Int == 1) {
-      return;
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)this.jdField_b_of_type_AndroidGraphicsRectF.left, (int)this.jdField_b_of_type_AndroidGraphicsRectF.top, (int)this.jdField_b_of_type_AndroidGraphicsRectF.right, (int)this.jdField_b_of_type_AndroidGraphicsRectF.bottom);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
-    Rect localRect = new Rect((int)this.jdField_a_of_type_AndroidGraphicsRectF.left, (int)this.jdField_a_of_type_AndroidGraphicsRectF.top, (int)this.jdField_a_of_type_AndroidGraphicsRectF.right, (int)this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+  }
+  
+  private float c()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF.height();
   }
   
   private int c()
@@ -292,196 +310,281 @@ public class bknf
   
   private void c(float paramFloat)
   {
-    a(getBounds().width() - paramFloat, this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidGraphicsRectF.height());
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
+    {
+      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramFloat);
+      if (this.jdField_a_of_type_Bkoj != null)
+      {
+        this.jdField_a_of_type_Bkoj.a(this.jdField_c_of_type_AndroidGraphicsRectF);
+        if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+        {
+          bknq localbknq = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localbknq != null) {
+            localbknq.a(this.jdField_h_of_type_Int, a());
+          }
+        }
+      }
+    }
   }
   
   private void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_c_of_type_Int == 2)
+    if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
     {
-      if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size()))
-      {
-        paramInt = ((Integer)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).intValue();
-        float f1 = this.g;
-        c(paramInt + f1);
-        b(this.jdField_a_of_type_Float);
-      }
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_b_of_type_Int = 51;
-      }
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
-    bknl localbknl;
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int == 2)
-        {
-          this.jdField_b_of_type_Int = 127;
-          return;
-        }
-        this.jdField_b_of_type_Int = 255;
-        return;
-      } while ((this.jdField_c_of_type_Int != 4) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null));
-      localbknl = (bknl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbknl == null);
-    localbknl.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames());
+    this.jdField_a_of_type_Int = 115;
   }
   
-  private void c(Canvas paramCanvas)
+  private float d()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    while ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_c_of_type_Int == 2) || (this.jdField_c_of_type_Int == 4) || (this.jdField_c_of_type_Int == 3)) {
-      return;
-    }
-    Rect localRect = getBounds();
-    int j = (int)(localRect.right - this.d - this.e);
-    int k = (int)(localRect.centerY() - this.f / 2.0F);
-    localRect = new Rect(j, k, (int)(j + this.e), (int)(k + this.f));
-    if (this.jdField_c_of_type_Int == 5) {
-      localRect.offset(0, (int)this.i);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      return;
-      if (this.jdField_c_of_type_Int != 6) {}
-    }
+    return this.jdField_c_of_type_AndroidGraphicsRectF.height();
+  }
+  
+  private int d()
+  {
+    return this.jdField_e_of_type_Int;
   }
   
   private void d(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    bknl localbknl;
-    do
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
     {
+      this.jdField_b_of_type_Int = paramInt;
       return;
-      localbknl = (bknl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbknl == null);
-    localbknl.e(paramInt);
+    }
+    this.jdField_a_of_type_Int = 255;
+  }
+  
+  private int e()
+  {
+    return this.jdField_b_of_type_Int;
   }
   
   private void e(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    bknl localbknl;
-    do
+    if (this.jdField_h_of_type_Int == 1)
     {
+      this.jdField_e_of_type_Int = paramInt;
+      this.jdField_d_of_type_Int = (255 - this.jdField_e_of_type_Int);
+    }
+    while (this.jdField_h_of_type_Int != 3) {
       return;
-      localbknl = (bknl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbknl == null);
-    localbknl.d(paramInt);
+    }
+    this.jdField_e_of_type_Int = paramInt;
+    this.jdField_d_of_type_Int = ((int)((255 - this.jdField_e_of_type_Int) * 179 * 1.0F / 255.0F));
   }
   
   private void f(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    bknl localbknl;
+    bknq localbknq;
     do
     {
       return;
-      localbknl = (bknl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbknl == null);
-    localbknl.f(paramInt);
+      localbknq = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbknq == null);
+    localbknq.b(paramInt);
+  }
+  
+  private void g(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    bknq localbknq;
+    do
+    {
+      return;
+      localbknq = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbknq == null);
+    localbknq.a(paramInt);
+  }
+  
+  private void h(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    bknq localbknq;
+    do
+    {
+      return;
+      localbknq = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbknq == null);
+    localbknq.c(paramInt);
   }
   
   public int a()
   {
-    return this.jdField_c_of_type_Int;
+    return this.jdField_h_of_type_Int;
+  }
+  
+  public int a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Bkoj != null) {
+      return this.jdField_a_of_type_Bkoj.a(paramFloat);
+    }
+    return 0;
+  }
+  
+  public RectF a()
+  {
+    if (this.jdField_a_of_type_Bkoj != null) {
+      return this.jdField_a_of_type_Bkoj.a(this.jdField_g_of_type_Int);
+    }
+    return null;
+  }
+  
+  public RectF a(float paramFloat)
+  {
+    int i = a(paramFloat);
+    if (this.jdField_a_of_type_Bkoj != null) {
+      return this.jdField_a_of_type_Bkoj.a(i);
+    }
+    return null;
+  }
+  
+  public RectF a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = this.jdField_g_of_type_Int;
+    this.jdField_g_of_type_Int = paramInt;
+    if (paramBoolean1) {
+      this.jdField_a_of_type_Boolean = paramBoolean1;
+    }
+    RectF localRectF;
+    Object localObject;
+    if (this.jdField_a_of_type_Bkoj != null)
+    {
+      localRectF = this.jdField_a_of_type_Bkoj.a(paramInt);
+      if (localRectF != null)
+      {
+        if (paramBoolean2) {
+          break label160;
+        }
+        this.jdField_b_of_type_AndroidGraphicsRectF.set(localRectF.centerX() - this.jdField_c_of_type_Float / 2.0F, localRectF.centerY() - this.jdField_d_of_type_Float / 2.0F, localRectF.centerX() + this.jdField_d_of_type_Float / 2.0F, localRectF.centerY() + this.jdField_d_of_type_Float / 2.0F);
+        if ((paramBoolean1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+        {
+          localObject = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localObject != null)
+          {
+            ((bknq)localObject).a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
+            this.jdField_a_of_type_Boolean = false;
+          }
+        }
+        invalidateSelf();
+      }
+    }
+    for (;;)
+    {
+      return this.jdField_b_of_type_AndroidGraphicsRectF;
+      label160:
+      localObject = this.jdField_a_of_type_Bkoj.a(i);
+      if (localObject != null)
+      {
+        this.jdField_b_of_type_AndroidGraphicsRectF.set(((RectF)localObject).centerX() - this.jdField_c_of_type_Float / 2.0F, ((RectF)localObject).centerY() - this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject).centerX() + this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject).centerY() + this.jdField_d_of_type_Float / 2.0F);
+        float f1 = Math.abs(((RectF)localObject).centerY() - localRectF.centerY());
+        float f2 = this.jdField_a_of_type_Float;
+        if (isRunning()) {
+          stop();
+        }
+        this.jdField_h_of_type_Int = 4;
+        this.jdField_b_of_type_Boolean = true;
+        a(this.jdField_h_of_type_Int, (int)(f1 * f2), ((RectF)localObject).centerY(), localRectF.centerY());
+      }
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-    this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-    this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
+    this.jdField_a_of_type_Bkoj.a();
+    this.jdField_a_of_type_Bkod.a();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
       this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
     }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
     this.jdField_a_of_type_AndroidUtilProperty = null;
     this.jdField_b_of_type_AndroidUtilProperty = null;
     this.jdField_c_of_type_AndroidUtilProperty = null;
+    this.jdField_d_of_type_AndroidUtilProperty = null;
+    this.jdField_e_of_type_AndroidUtilProperty = null;
+    this.jdField_f_of_type_AndroidUtilProperty = null;
+    this.jdField_g_of_type_AndroidUtilProperty = null;
+    this.jdField_h_of_type_AndroidUtilProperty = null;
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "setAnimState: old state:" + this.jdField_c_of_type_Int + " new state:" + paramInt);
-    }
-    this.jdField_c_of_type_Int = paramInt;
-    switch (this.jdField_c_of_type_Int)
+    this.jdField_h_of_type_Int = paramInt;
+    switch (this.jdField_h_of_type_Int)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      return;
     }
-    this.jdField_a_of_type_Int = 0;
-    b(this.jdField_a_of_type_Float);
   }
   
-  public void a(String paramString)
+  public boolean a(Context paramContext, int paramInt, float paramFloat1, float paramFloat2, bknq parambknq)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      return;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambknq);
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Float /= paramInt;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)this.jdField_a_of_type_JavaUtilMap.get(paramString));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)this.jdField_b_of_type_JavaUtilMap.get(paramString));
-    invalidateSelf();
-  }
-  
-  public boolean a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, bknl parambknl)
-  {
-    b();
     a(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = a(paramContext, paramInt1);
-    this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = a(paramContext, paramInt2);
-    this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = a(paramContext, paramInt3);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambknl);
-    b(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(16777215);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bkoj.a(-1, paramInt, this.jdField_b_of_type_Float, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Bkod.a(0, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841106);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841105);
     return true;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_c_of_type_Int == 0) {}
-    do
+    if (this.jdField_h_of_type_Int == 0)
     {
-      do
-      {
-        return;
-        if ((this.jdField_c_of_type_Int != 2) && (this.jdField_c_of_type_Int != 4) && (this.jdField_c_of_type_Int != 3)) {
-          break;
-        }
+      this.jdField_a_of_type_Bkoj.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+      if ((this.jdField_g_of_type_Int >= 0) && (this.jdField_g_of_type_Int < this.jdField_c_of_type_Int)) {
         a(paramCanvas);
-      } while (this.jdField_c_of_type_Int == 4);
-      b(paramCanvas);
+      }
+    }
+    for (;;)
+    {
       return;
-    } while ((this.jdField_c_of_type_Int != 5) && (this.jdField_c_of_type_Int != 1) && (this.jdField_c_of_type_Int != 6));
-    c(paramCanvas);
+      if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 2))
+      {
+        this.jdField_a_of_type_Bkod.a(paramCanvas, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Bkoj.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 127.0F / 255.0F), this.jdField_f_of_type_Int);
+        a(paramCanvas, false);
+        if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
+        {
+          if (this.jdField_g_of_type_Int == this.jdField_c_of_type_Int - 1)
+          {
+            a(paramCanvas, true);
+            return;
+          }
+          a(paramCanvas);
+        }
+      }
+      else if (this.jdField_h_of_type_Int == 4)
+      {
+        RectF localRectF = a();
+        if (localRectF != null)
+        {
+          if (Math.abs(localRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY()) >= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F) {
+            break label292;
+          }
+          this.jdField_a_of_type_Bkoj.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+        }
+        while ((this.jdField_g_of_type_Int >= 0) && (this.jdField_g_of_type_Int < this.jdField_c_of_type_Int))
+        {
+          b(paramCanvas);
+          return;
+          label292:
+          this.jdField_a_of_type_Bkoj.a(paramCanvas, this.jdField_d_of_type_Int, -1, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
+        }
+      }
+    }
   }
   
   public int getOpacity()
@@ -491,58 +594,29 @@ public class bknf
   
   public boolean isRunning()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_b_of_type_Boolean;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    int k = 0;
     super.onBoundsChange(paramRect);
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onBoundsChange: mState:" + this.jdField_c_of_type_Int + " bound:" + paramRect);
-    }
-    int j;
-    Drawable localDrawable;
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
+    a(paramRect);
+    if (this.jdField_g_of_type_Int >= 0)
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.setBounds(paramRect);
-      j = 0;
-      while (j < this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames())
+      a(this.jdField_g_of_type_Int, false, false);
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
       {
-        localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(j);
-        if (localDrawable != null) {
-          localDrawable.setBounds(paramRect);
+        paramRect = (bknq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramRect != null)
+        {
+          RectF localRectF = new RectF();
+          localRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
+          paramRect.a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
+          this.jdField_a_of_type_Boolean = false;
         }
-        j += 1;
       }
+      this.jdField_a_of_type_Boolean = false;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setBounds(paramRect);
-      j = 0;
-      while (j < this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames())
-      {
-        localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(j);
-        if (localDrawable != null) {
-          localDrawable.setBounds(paramRect);
-        }
-        j += 1;
-      }
-    }
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
-    {
-      this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable.setBounds(paramRect);
-      j = k;
-      while (j < this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames())
-      {
-        localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(j);
-        if (localDrawable != null) {
-          localDrawable.setBounds(paramRect);
-        }
-        j += 1;
-      }
-    }
-    a(paramRect.centerX(), paramRect.centerY(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
   }
   
   public void setAlpha(int paramInt) {}
@@ -551,45 +625,49 @@ public class bknf
   
   public void start()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "start:" + this.jdField_c_of_type_Int + " isRunning:" + this.jdField_a_of_type_Boolean);
-    }
     if (isRunning()) {
       stop();
     }
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_c_of_type_Int == 2) || (this.jdField_c_of_type_Int == 1))
-    {
-      this.jdField_c_of_type_Int = 2;
-      a(this.jdField_c_of_type_Int, 600);
+    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroundDrawable", 2, "start :" + this.jdField_h_of_type_Int);
     }
-    do
+    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 0))
     {
+      this.jdField_h_of_type_Int = 1;
+      a(this.jdField_h_of_type_Int, 300, -1.0F, -1.0F);
+    }
+    while ((this.jdField_h_of_type_Int != 3) && (this.jdField_h_of_type_Int != 2)) {
       return;
-      if ((this.jdField_c_of_type_Int == 4) || (this.jdField_c_of_type_Int == 3))
-      {
-        this.jdField_c_of_type_Int = 4;
-        a(this.jdField_c_of_type_Int, 400);
-        return;
-      }
-    } while ((this.jdField_c_of_type_Int != 5) && (this.jdField_c_of_type_Int != 6));
-    a(this.jdField_c_of_type_Int, 200);
+    }
+    this.jdField_h_of_type_Int = 3;
+    a(this.jdField_h_of_type_Int, 200, -1.0F, -1.0F);
   }
   
   public void stop()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "stop:" + this.jdField_c_of_type_Int + " isRunning:" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean) {}
+    if (!this.jdField_b_of_type_Boolean) {}
     do
     {
       return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_AndroidAnimationValueAnimator == null);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+      {
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+        this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      }
+      if (this.jdField_h_of_type_Int == 1)
+      {
+        this.jdField_h_of_type_Int = 2;
+        a(getBounds());
+        this.jdField_a_of_type_Int = 115;
+        return;
+      }
+    } while (this.jdField_h_of_type_Int != 3);
+    this.jdField_h_of_type_Int = 0;
+    a(getBounds());
+    this.jdField_a_of_type_Int = 115;
   }
 }
 

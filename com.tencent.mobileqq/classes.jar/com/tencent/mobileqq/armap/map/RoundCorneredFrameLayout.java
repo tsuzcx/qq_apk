@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.map;
 
-import actn;
+import actj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,7 +30,7 @@ public class RoundCorneredFrameLayout
   public RoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = actn.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = actj.a(a(paramContext, paramAttributeSet), paramContext.getResources());
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }

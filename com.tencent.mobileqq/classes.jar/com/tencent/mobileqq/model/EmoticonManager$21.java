@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.model;
 
-import askd;
+import askf;
 import java.util.List;
 
 public class EmoticonManager$21
   implements Runnable
 {
-  public EmoticonManager$21(askd paramaskd, List paramList) {}
+  public EmoticonManager$21(askf paramaskf, List paramList) {}
   
   /* Error */
   public void run()
@@ -15,12 +15,12 @@ public class EmoticonManager$21
     //   0: invokestatic 29	java/lang/System:currentTimeMillis	()J
     //   3: lstore_1
     //   4: aload_0
-    //   5: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Laskd;
-    //   8: getfield 34	askd:a	Laukn;
-    //   11: invokevirtual 39	aukn:a	()Laukp;
+    //   5: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Laskf;
+    //   8: getfield 34	askf:a	Laukp;
+    //   11: invokevirtual 39	aukp:a	()Laukr;
     //   14: astore_3
     //   15: aload_3
-    //   16: invokevirtual 43	aukp:a	()V
+    //   16: invokevirtual 43	aukr:a	()V
     //   19: aload_0
     //   20: getfield 16	com/tencent/mobileqq/model/EmoticonManager$21:a	Ljava/util/List;
     //   23: invokeinterface 49 1 0
@@ -33,9 +33,9 @@ public class EmoticonManager$21
     //   47: checkcast 61	com/tencent/mobileqq/data/EmotionKeyword
     //   50: astore 5
     //   52: aload_0
-    //   53: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Laskd;
+    //   53: getfield 14	com/tencent/mobileqq/model/EmoticonManager$21:this$0	Laskf;
     //   56: aload 5
-    //   58: invokestatic 64	askd:a	(Laskd;Laukm;)Z
+    //   58: invokestatic 64	askf:a	(Laskf;Lauko;)Z
     //   61: pop
     //   62: goto -32 -> 30
     //   65: astore 4
@@ -52,7 +52,7 @@ public class EmoticonManager$21
     //   90: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: invokestatic 88	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   96: aload_3
-    //   97: invokevirtual 91	aukp:b	()V
+    //   97: invokevirtual 91	aukr:b	()V
     //   100: invokestatic 94	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   103: ifeq +32 -> 135
     //   106: ldc 66
@@ -70,20 +70,20 @@ public class EmoticonManager$21
     //   132: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   135: return
     //   136: aload_3
-    //   137: invokevirtual 105	aukp:c	()V
+    //   137: invokevirtual 105	aukr:c	()V
     //   140: aload_3
-    //   141: invokevirtual 91	aukp:b	()V
+    //   141: invokevirtual 91	aukr:b	()V
     //   144: goto -44 -> 100
     //   147: astore 4
     //   149: aload_3
-    //   150: invokevirtual 91	aukp:b	()V
+    //   150: invokevirtual 91	aukr:b	()V
     //   153: aload 4
     //   155: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	156	0	this	21
     //   3	122	1	l	long
-    //   14	136	3	localaukp	aukp
+    //   14	136	3	localaukr	aukr
     //   28	13	4	localIterator	java.util.Iterator
     //   65	18	4	localException	java.lang.Exception
     //   147	7	4	localObject	Object

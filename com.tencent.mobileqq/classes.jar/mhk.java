@@ -1,22 +1,50 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
 class mhk
-  implements Animator.AnimatorListener
+  implements Animation.AnimationListener
 {
-  mhk(mhf parammhf) {}
+  mhk(mhj parammhj) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    mhf.a(this.a).setAlpha(0.0F);
-    mhf.a(this.a).setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
+    }
+    try
+    {
+      if (this.a.a != null) {
+        this.a.a.b();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
+    }
+    try
+    {
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
+    }
   }
 }
 

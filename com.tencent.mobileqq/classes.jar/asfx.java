@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.medalwall.MedalID;
+import android.widget.ImageButton;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public final class asfx
-  implements Parcelable.Creator<MedalID>
+public class asfx
+  implements PopupWindow.OnDismissListener
 {
-  public MedalID a(Parcel paramParcel)
-  {
-    return new MedalID(paramParcel);
-  }
+  public asfx(MedalGuideView paramMedalGuideView) {}
   
-  public MedalID[] a(int paramInt)
+  public void onDismiss()
   {
-    return new MedalID[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    }
+    this.a.d = true;
+    this.a.a.performClick();
   }
 }
 

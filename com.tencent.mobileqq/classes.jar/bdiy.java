@@ -1,10 +1,13 @@
-import com.tencent.smtt.sdk.WebView;
-
-public abstract interface bdiy
+public class bdiy
 {
-  public abstract String getJsCallbackMethod();
+  public final int a;
+  public final String a;
   
-  public abstract WebView getWebview();
+  public bdiy(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

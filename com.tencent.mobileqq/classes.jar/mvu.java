@@ -1,41 +1,25 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.text.TextPaint;
-import android.view.View;
-import com.tencent.av.widget.stageview.StageMemberView;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class mvu
-  extends View
+class mvu
+  implements WtTicketPromise
 {
-  public mvu(StageMemberView paramStageMemberView, Context paramContext)
+  mvu(mvs parammvs) {}
+  
+  public void Done(Ticket paramTicket)
   {
-    super(paramContext);
+    mvs.a(this.a, false);
+    this.a.h();
   }
   
-  public void draw(Canvas paramCanvas)
-  {
-    float f;
-    if (StageMemberView.a(this.a) != null)
-    {
-      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
-      if (this.a.a == null) {
-        break label76;
-      }
-      StageMemberView.a(this.a).setColor(this.a.a.a);
-    }
-    for (;;)
-    {
-      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
-      return;
-      label76:
-      StageMemberView.a(this.a).setColor(-1);
-    }
-  }
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mvu
  * JD-Core Version:    0.7.0.1
  */

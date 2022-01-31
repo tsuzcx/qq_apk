@@ -1,18 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class unl
-  implements View.OnClickListener
+public abstract interface unl
 {
-  unl(unk paramunk) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
-    }
-  }
+  public abstract void a(String paramString, int paramInt, View paramView, uuc paramuuc);
 }
 
 

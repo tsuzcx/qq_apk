@@ -1,19 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
 
 class pri
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  pri(prf paramprf, LinearLayout paramLinearLayout) {}
+  pri(prc paramprc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+    paramView = this.a.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    return false;
   }
 }
 

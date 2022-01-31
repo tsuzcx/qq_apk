@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bhvh;
-import onk;
-import ooe;
-import qzd;
-import qze;
+import bhvy;
+import onh;
+import oob;
+import qza;
+import qzb;
 
 public final class WeishiReportUtil$4
   implements Runnable
 {
   public void run()
   {
-    boolean bool = ooe.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-    qze localqze = new qze(null, null, null, null).a("folder_status", ooe.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("EnterType", ooe.c(this.jdField_a_of_type_Int)).a("is_jump_to_video_content", Integer.valueOf(bhvh.L(onk.a())));
+    boolean bool = oob.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
+    qzb localqzb = new qzb(null, null, null, null).a("folder_status", oob.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("EnterType", oob.c(this.jdField_a_of_type_Int)).a("is_jump_to_video_content", Integer.valueOf(bhvy.L(onh.a())));
     if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData != null)) {
-      localqze.a("reddot_style", ooe.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("algorithm_id", ooe.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
+      localqzb.a("reddot_style", oob.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("algorithm_id", oob.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
     }
     String str2 = "0";
     String str1 = "0";
     if (bool)
     {
-      str2 = ooe.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-      str1 = ooe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
+      str2 = oob.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
+      str1 = oob.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
     }
-    ooe.a(str2, str1, "0X8009291", localqze.a().a());
+    oob.a(str2, str1, "0X8009291", localqzb.a().a());
   }
 }
 

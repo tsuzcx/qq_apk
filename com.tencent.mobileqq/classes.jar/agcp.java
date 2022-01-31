@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
 class agcp
-  implements DialogInterface.OnDismissListener
+  extends ajto
 {
-  agcp(agcm paramagcm) {}
+  agcp(agcf paramagcf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.e();
+    }
+  }
+  
+  protected void onGetSignInInfo(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.e();
+    }
+  }
 }
 
 

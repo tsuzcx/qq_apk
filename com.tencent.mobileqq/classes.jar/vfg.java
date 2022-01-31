@@ -1,33 +1,17 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
 public class vfg
-  extends vju
+  extends axdi
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
+  public vfg(EditPicActivity paramEditPicActivity) {}
   
-  public vfg(int paramInt, Bitmap paramBitmap)
+  public void a()
   {
-    super(paramInt, paramBitmap);
-  }
-  
-  public static vfg a(vfg paramvfg, Bitmap paramBitmap)
-  {
-    paramBitmap = new vfg(paramvfg.c, paramBitmap);
-    paramBitmap.jdField_a_of_type_Int = paramvfg.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Int = paramvfg.jdField_b_of_type_Int;
-    paramBitmap.jdField_a_of_type_JavaLangString = paramvfg.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_a_of_type_Boolean = paramvfg.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_b_of_type_Boolean = paramvfg.jdField_b_of_type_Boolean;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
+    ved.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    ver localver = (ver)this.a.a.a(ver.class);
+    if (localver != null) {
+      localver.Y_();
+    }
   }
 }
 

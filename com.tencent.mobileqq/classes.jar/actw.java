@@ -1,16 +1,56 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.AudioSenorManager;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface actw
+public class actw
+  implements SensorEventListener
 {
-  public abstract void a(AudioPlayer paramAudioPlayer);
+  public actw(AudioSenorManager paramAudioSenorManager) {}
   
-  public abstract void a(AudioPlayer paramAudioPlayer, int paramInt);
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public abstract void b(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void c(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void d(AudioPlayer paramAudioPlayer, int paramInt);
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    int i = 1;
+    if (actj.b()) {}
+    label141:
+    label144:
+    for (;;)
+    {
+      return;
+      boolean bool;
+      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
+      {
+        bool = true;
+        label28:
+        QLog.d("AudioSenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
+        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
+          continue;
+        }
+        if (!bool) {
+          break label141;
+        }
+      }
+      for (;;)
+      {
+        if (i == AudioSenorManager.a(this.a)) {
+          break label144;
+        }
+        AudioSenorManager.a(this.a, i);
+        if (AudioSenorManager.a(this.a) == null) {
+          break;
+        }
+        AudioSenorManager.a(this.a).a(i);
+        return;
+        bool = false;
+        break label28;
+        i = 0;
+      }
+    }
+  }
 }
 
 

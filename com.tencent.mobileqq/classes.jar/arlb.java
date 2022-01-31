@@ -1,27 +1,39 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class arlb
-  extends aynj
+public class arlb
+  extends Handler
 {
-  arlb(arla paramarla) {}
+  WeakReference<WatchTogetherFloatingView> a;
   
-  protected void a(boolean paramBoolean, aynm paramaynm, int paramInt, String paramString)
+  public arlb(WatchTogetherFloatingView paramWatchTogetherFloatingView)
   {
-    if ((!paramBoolean) || (paramaynm == null)) {}
+    this.a = new WeakReference(paramWatchTogetherFloatingView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      do
+      return;
+      sendEmptyMessageDelayed(2, 20000L);
+      return;
+      removeMessages(2);
+      return;
+      try
       {
+        ((WatchTogetherFloatingView)this.a.get()).a();
         return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + paramaynm.e);
-      } while (!(paramaynm instanceof WatchTogetherSession));
-      paramString = arla.a(this.a, (WatchTogetherSession)paramaynm);
-    } while (paramString == null);
-    this.a.b(paramaynm.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
+      }
+      catch (NullPointerException paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
   }
 }
 

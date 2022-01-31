@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import axik;
-import ayvb;
-import bbdj;
+import axim;
+import ayvd;
+import bbdx;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -35,19 +35,19 @@ class SendVideoActivity$SendTask
       QLog.d("SendVideoActivity", 2, "#SendTask# run(): start");
     }
     SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    axik.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    axik.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
+    axim.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
+    axim.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
     long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_send_btn_click_time", 0L);
     long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_generate_thumb_cost_time", 0L);
-    if (ayvb.a())
+    if (ayvd.a())
     {
-      ayvb.b = l1;
-      ayvb.c = axik.y;
-      ayvb.d = l2;
+      ayvd.b = l1;
+      ayvd.c = axim.y;
+      ayvd.d = l2;
     }
-    ayuy.b = l1;
+    ayva.b = l1;
     String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    if (bbdj.b(str))
+    if (bbdx.b(str))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);

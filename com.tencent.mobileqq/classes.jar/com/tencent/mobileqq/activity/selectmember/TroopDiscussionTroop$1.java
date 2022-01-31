@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aifm;
+import aifk;
 
 class TroopDiscussionTroop$1
   implements Runnable

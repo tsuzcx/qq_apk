@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aevp;
+import aevn;
 import java.util.List;
 import java.util.Map;
 
 class StickerBubbleAnimationView$1
   implements Runnable
 {
-  StickerBubbleAnimationView$1(StickerBubbleAnimationView paramStickerBubbleAnimationView, aevp paramaevp) {}
+  StickerBubbleAnimationView$1(StickerBubbleAnimationView paramStickerBubbleAnimationView, aevn paramaevn) {}
   
   public void run()
   {

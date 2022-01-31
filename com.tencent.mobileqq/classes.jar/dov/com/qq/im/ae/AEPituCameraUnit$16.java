@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae;
 
-import ajyc;
-import bcpw;
-import biim;
+import ajya;
+import bcql;
+import bijd;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class AEPituCameraUnit$16
   implements Runnable
 {
-  public AEPituCameraUnit$16(biim parambiim) {}
+  public AEPituCameraUnit$16(bijd parambijd) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131689785), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131689785), 0).a();
     this.this$0.q();
   }
 }

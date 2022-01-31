@@ -1,17 +1,11 @@
-public class bfeo
+final class bfeo
+  implements com.tencent.smtt.sdk.ValueCallback
 {
-  private float a = 1.4E-45F;
+  bfeo(android.webkit.ValueCallback paramValueCallback) {}
   
-  public float a()
+  public void onReceiveValue(Object paramObject)
   {
-    return this.a;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (paramFloat > this.a) {
-      this.a = paramFloat;
-    }
+    this.a.onReceiveValue(paramObject);
   }
 }
 

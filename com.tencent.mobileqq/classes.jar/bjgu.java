@@ -1,67 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import android.text.Spanned;
 
 class bjgu
-  implements aysa
+  extends bkda
 {
-  bjgu(bjgt parambjgt) {}
-  
-  public void onResp(aysx arg1)
+  bjgu(bjgs parambjgs, int paramInt)
   {
-    bjgs localbjgs = (bjgs)???.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResp, url is: " + localbjgs.jdField_a_of_type_JavaLangString + " http status: " + ???.c);
-    }
-    bjgt.a(this.a, localbjgs);
-    if ((bjgt.a(this.a).b(localbjgs)) && (bjgt.a(this.a).a(localbjgs))) {}
-    for (boolean bool = true;; bool = false) {
-      for (;;)
-      {
-        int i;
-        synchronized (bjgt.a(this.a))
-        {
-          ArrayList localArrayList = (ArrayList)bjgt.a(this.a).remove(localbjgs.jdField_a_of_type_JavaLangString);
-          i = localArrayList.size() - 1;
-          if (i >= 0)
-          {
-            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
-            if (localWeakReference.get() != null) {
-              ((bjgv)localWeakReference.get()).a(bool, localbjgs.jdField_a_of_type_JavaLangString);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        i -= 1;
-      }
-    }
+    super(paramInt);
   }
   
-  public void onUpdateProgeress(aysw arg1, long paramLong1, long paramLong2)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    bjgs localbjgs = (bjgs)???.a();
-    synchronized (bjgt.a(this.a))
-    {
-      Iterator localIterator = ((ArrayList)bjgt.a(this.a).get(localbjgs.jdField_a_of_type_JavaLangString)).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((bjgv)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localbjgs.jdField_a_of_type_JavaLangString, localbjgs.jdField_a_of_type_Int);
-        }
-      }
-    }
-    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
-    localObject.b = ((int)f);
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
-    }
+    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    this.jdField_a_of_type_Int = (str.length() - bakx.b(str).length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

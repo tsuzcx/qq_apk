@@ -1,43 +1,112 @@
-import NS_QQ_STORY_META.META.StStoryFeed;
-import NS_QQ_STORY_META.META.StUser;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.StStoryFeedUtil;
-import java.io.Serializable;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForActivity;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adko
+public class adko
+  extends actm
   implements View.OnClickListener
 {
-  adko(adkn paramadkn, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
+  protected String a;
+  
+  public adko(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected actn a()
+  {
+    return new adkq(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, actn paramactn, View paramView, LinearLayout paramLinearLayout, acxj paramacxj)
+  {
+    paramLinearLayout = (adkq)paramactn;
+    paramactn = paramView;
+    if (paramView == null)
+    {
+      paramactn = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559672, null);
+      paramLinearLayout.b = ((TextView)paramactn.findViewById(2131364107));
+      paramLinearLayout.c = ((TextView)paramactn.findViewById(2131364106));
+      paramLinearLayout.d = ((TextView)paramactn.findViewById(2131364105));
+      paramLinearLayout.a = ((ImageView)paramactn.findViewById(2131364103));
+      paramactn.setOnClickListener(this);
+      paramLinearLayout.b.setOnClickListener(this);
+      paramLinearLayout.c.setOnClickListener(this);
+      paramLinearLayout.d.setOnClickListener(this);
+      paramLinearLayout.a.setOnClickListener(this);
+    }
+    if ((paramMessageRecord instanceof MessageForActivity))
+    {
+      paramView = (MessageForActivity)paramMessageRecord;
+      paramLinearLayout.b.setText(ajya.a(2131699790));
+      paramLinearLayout.c.setText(paramView.title);
+      a(paramView.summary, paramLinearLayout.d);
+    }
+    try
+    {
+      paramMessageRecord = URLDrawable.getDrawable(paramView.bigPic, paramactn.getResources().getDrawable(2130841978), paramactn.getResources().getDrawable(2130841977));
+      paramLinearLayout.a.setBackgroundDrawable(paramMessageRecord);
+      this.jdField_a_of_type_JavaLangString = paramView.url;
+      if (e)
+      {
+        if (TextUtils.isEmpty(paramView.title))
+        {
+          paramMessageRecord = "";
+          paramLinearLayout = new StringBuilder().append(paramMessageRecord);
+          if (!TextUtils.isEmpty(paramView.summary)) {
+            break label298;
+          }
+          paramMessageRecord = "";
+          paramactn.setContentDescription(paramMessageRecord);
+        }
+      }
+      else {
+        return paramactn;
+      }
+    }
+    catch (Exception paramMessageRecord)
+    {
+      for (;;)
+      {
+        paramLinearLayout.a.setBackgroundResource(2130841977);
+        continue;
+        paramMessageRecord = paramView.title;
+        continue;
+        label298:
+        paramMessageRecord = paramView.summary;
+      }
+    }
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  protected void a(String paramString, TextView paramTextView)
+  {
+    paramTextView.getViewTreeObserver().addOnPreDrawListener(new adkp(this, paramTextView, paramString));
+  }
+  
+  public bbmh[] a(View paramView)
+  {
+    return null;
+  }
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    paramView = (acus)this.jdField_a_of_type_Adkn.a.getManager(282);
-    if (paramView != null) {
-      paramView.a(4, 7);
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
-    if ((localObject != null) && (((META.StStoryFeed)localObject).postUser != null))
-    {
-      paramView = new Bundle();
-      paramView.putLong("key_launch_time", l);
-      paramView.putLong("key_current_feeduin", ((META.StStoryFeed)localObject).postUser.uin.get());
-      paramView.putInt("key_request_from", 3);
-      paramView.putInt("key_weishi_entrance_type", 19);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localObject);
-      localObject = StStoryFeedUtil.getConvertDataList(localArrayList);
-      paramView.putInt("key_video_story_jump_position", 0);
-      paramView.putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject);
-      paramView.putInt("key_request_business_type", 7);
-      bbds.a(paramView);
-    }
+    azjz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
   }
 }
 

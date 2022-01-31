@@ -1,27 +1,19 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.BreathLight;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface ahgm
+class ahgm
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  ahgm(ahgl paramahgl) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Bitmap paramBitmap, String paramString, List<Bitmap> paramList);
-  
-  public abstract void a(ViewGroup paramViewGroup, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, SpringFestivalRedpakcetPreviewConfBean.BreathLight paramBreathLight);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a();
+    }
+    return true;
+  }
 }
 
 

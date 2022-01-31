@@ -2,19 +2,19 @@ package dov.com.qq.im.ae.play;
 
 import android.content.Context;
 import android.widget.ProgressBar;
-import bcpw;
-import biwl;
+import bcql;
+import bixc;
 
 public class AEPlayShowGridViewHolder$4
   implements Runnable
 {
-  public AEPlayShowGridViewHolder$4(biwl parambiwl, boolean paramBoolean) {}
+  public AEPlayShowGridViewHolder$4(bixc parambixc, boolean paramBoolean) {}
   
   public void run()
   {
-    biwl.a(this.this$0).setVisibility(8);
+    bixc.a(this.this$0).setVisibility(8);
     if (!this.a) {
-      bcpw.a(biwl.a(), biwl.a().getString(2131718344), 0).a();
+      bcql.a(bixc.a(), bixc.a().getString(2131718355), 0).a();
     }
   }
 }

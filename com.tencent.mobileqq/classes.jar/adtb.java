@@ -1,24 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class adtb
-  implements aqxx
+  implements DialogInterface.OnClickListener
 {
-  adtb(adta paramadta) {}
+  adtb(adsy paramadsy) {}
   
-  public void a(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
-    }
-    actn.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -10,8 +10,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.R.styleable;
-import mvc;
-import mvd;
+import muz;
+import mva;
 
 public class RatingBar
   extends LinearLayout
@@ -20,7 +20,7 @@ public class RatingBar
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Object jdField_a_of_type_JavaLangObject;
-  private mvd jdField_a_of_type_Mvd;
+  private mva jdField_a_of_type_Mva;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -38,7 +38,7 @@ public class RatingBar
     while (i < this.jdField_a_of_type_Int)
     {
       localObject = a(paramContext, paramAttributeSet);
-      ((ImageView)localObject).setOnClickListener(new mvc(this));
+      ((ImageView)localObject).setOnClickListener(new muz(this));
       addView((View)localObject);
       i += 1;
     }
@@ -65,9 +65,9 @@ public class RatingBar
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnRatingListener(mvd parammvd)
+  public void setOnRatingListener(mva parammva)
   {
-    this.jdField_a_of_type_Mvd = parammvd;
+    this.jdField_a_of_type_Mva = parammva;
   }
   
   public void setStar(int paramInt, boolean paramBoolean)

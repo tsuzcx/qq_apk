@@ -1,15 +1,18 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import cooperation.readinjoy.ReadInJoyHelper.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
-public class bhvi
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public final class bhvi
+  implements Parcelable.Creator<RedTouchExtendButton.RedInfo>
 {
-  public bhvi(ReadInJoyHelper.1 param1) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
   {
-    if (paramInt == 0) {}
+    return new RedTouchExtendButton.RedInfo(paramParcel);
+  }
+  
+  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  {
+    return new RedTouchExtendButton.RedInfo[paramInt];
   }
 }
 

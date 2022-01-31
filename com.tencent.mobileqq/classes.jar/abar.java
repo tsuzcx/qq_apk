@@ -1,22 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class abar
-  implements View.OnClickListener
+public abstract class abar
+  extends ClickableSpan
 {
-  public abar(EditInfoActivity paramEditInfoActivity) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onClick(View paramView)
+  public abar(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846982);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131703626));
-    this.a.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    {
+      paramTextPaint.setColor(i);
+      paramTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 

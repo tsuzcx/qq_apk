@@ -1,30 +1,14 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aozd
-  extends MqqHandler
+public class aozd
+  extends aoyv
 {
-  aozd(aozc paramaozc, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  int a;
+  int b;
   
-  public void handleMessage(Message paramMessage)
+  public aozd(FileManagerEntity paramFileManagerEntity)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
-    }
-    this.a.a.a().a(true);
-    this.a.a.a().b(-1);
-    aozx.a(-1);
+    super(paramFileManagerEntity);
   }
 }
 

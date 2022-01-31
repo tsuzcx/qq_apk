@@ -1,16 +1,18 @@
-public abstract interface arsn
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+
+public class arsn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public arsn(FloatIconLayout paramFloatIconLayout) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.setRotation(f);
+  }
 }
 
 

@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
 class bbhu
-  implements View.OnClickListener
+  implements anze
 {
-  bbhu(bbhs parambbhs) {}
+  bbhu(bbhp parambbhp) {}
   
-  public void onClick(View paramView)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if (paramView == this.a.a) {
-      return;
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    {
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bbhp.a(this.a);
+      return true;
     }
-    if (this.a.a != null) {
-      this.a.a.findViewById(2131369267).setVisibility(8);
-    }
-    TextView localTextView = (TextView)paramView.findViewById(2131369268);
-    this.a.a(localTextView.getText().toString());
-    paramView.findViewById(2131369267).setVisibility(0);
-    this.a.a = paramView;
+    return false;
   }
 }
 

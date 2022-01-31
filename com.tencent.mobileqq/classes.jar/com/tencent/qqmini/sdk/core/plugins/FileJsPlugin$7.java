@@ -1,36 +1,36 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import beiu;
-import beka;
-import bekq;
-import besl;
+import bejl;
+import bekr;
+import belh;
+import betc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 class FileJsPlugin$7
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$7(FileJsPlugin paramFileJsPlugin, String paramString1, beka parambeka, String paramString2, long paramLong) {}
+  FileJsPlugin$7(FileJsPlugin paramFileJsPlugin, String paramString1, bekr parambekr, String paramString2, long paramLong) {}
   
   public String run()
   {
-    if ((beiu.a().a(this.val$srcPath) == 9999) && (!beiu.a().a(this.val$srcPath))) {
+    if ((bejl.a().a(this.val$srcPath) == 9999) && (!bejl.a().a(this.val$srcPath))) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$srcPath);
     }
-    if (beiu.a().a(this.val$destPath) != 2) {
+    if (bejl.a().a(this.val$destPath) != 2) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$srcPath);
     }
-    String str1 = beiu.a().a(this.val$srcPath);
-    String str2 = beiu.a().c(this.val$destPath);
+    String str1 = bejl.a().a(this.val$srcPath);
+    String str2 = bejl.a().c(this.val$destPath);
     MiniAppInfo localMiniAppInfo = this.this$0.mMiniAppInfo;
     if (localMiniAppInfo != null) {}
-    for (long l = localMiniAppInfo.usrFileSizeLimit; !beiu.a().a(2, bekq.a(str1), this.this$0.mIsMiniGame, l); l = 0L) {
+    for (long l = localMiniAppInfo.usrFileSizeLimit; !bejl.a().a(2, belh.a(str1), this.this$0.mIsMiniGame, l); l = 0L) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
     }
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
     {
-      boolean bool = bekq.b(str1, str2);
-      besl.a("FileJsPlugin", "copyFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], src:" + str1 + ", dest:" + str2);
+      boolean bool = belh.b(str1, str2);
+      betc.a("FileJsPlugin", "copyFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], src:" + str1 + ", dest:" + str2);
       if (bool) {
         return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       }

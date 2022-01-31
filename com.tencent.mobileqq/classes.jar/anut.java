@@ -1,36 +1,42 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class anut
-  implements ajig
+  extends WtloginObserver
 {
-  anut(anul paramanul, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anut(anuq paramanuq, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    Bundle localBundle = new Bundle();
-    if (paramBoolean)
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
-      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
-      localBundle.putInt("apollo_result", 0);
-      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
-      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
-      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
-      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
-      localBundle.putBoolean("apollo_is_super_yellow", airz.c());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label85;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label91;
+      }
     }
-    localBundle.putInt("apollo_result", 1);
-    localBundle.putInt("apollo_audioId", paramInt);
-    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    label85:
+    label91:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
+      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

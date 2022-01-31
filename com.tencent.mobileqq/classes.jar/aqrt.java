@@ -1,27 +1,18 @@
 import android.content.Context;
-import android.content.Intent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
-class aqrt
-  implements View.OnClickListener
+public abstract class aqrt
+  extends RecyclerView.ViewHolder
 {
-  aqrt(aqrs paramaqrs, FeedsItemData paramFeedsItemData) {}
-  
-  public void onClick(View paramView)
+  public aqrt(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/"))
-    {
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aqrs.itemView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
-      return;
-    }
-    paramView = new Intent(this.jdField_a_of_type_Aqrs.itemView.getContext(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
-    this.jdField_a_of_type_Aqrs.itemView.getContext().startActivity(paramView);
+    super(paramView);
   }
+  
+  public abstract void a(FeedsItemData paramFeedsItemData);
 }
 
 

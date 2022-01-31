@@ -1,88 +1,74 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class amqg
-  extends ampb<amqf>
 {
-  public static void b()
-  {
-    amqf localamqf = (amqf)ampm.a().a(67);
-    amqf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localamqf);
-  }
+  private Map<String, String> a = new HashMap();
   
-  public static void c()
+  public static amqg a(amph[] paramArrayOfamph)
   {
-    int i = ampm.a().a(67, "");
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "resetApolloConfVersion localVersion:" + i);
-    ampm.a().a(67, 0);
-  }
-  
-  public int a()
-  {
-    return 67;
-  }
-  
-  @NonNull
-  public amqf a(int paramInt)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    if (paramInt == 1) {
-      return new amqf();
+    Object localObject;
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0))
+    {
+      localObject = null;
+      return localObject;
     }
-    amqf.a();
-    return new amqf();
-  }
-  
-  @Nullable
-  public amqf a(ampi[] paramArrayOfampi)
-  {
-    return amqf.a(paramArrayOfampi);
-  }
-  
-  public Class<amqf> a()
-  {
-    return amqf.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfig_GlobalProcessor", 2, "onReqNoReceive");
+    for (;;)
+    {
+      int i;
+      try
+      {
+        amqg localamqg = new amqg();
+        i = 0;
+        localObject = localamqg;
+        if (i >= paramArrayOfamph.length) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfamph[i].jdField_a_of_type_Int) });
+        }
+        localObject = new JSONObject(paramArrayOfamph[i].jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject).has("grayUrlConfig")) {
+          localamqg.a.put("apolloGrayUrlWhite", paramArrayOfamph[i].jdField_a_of_type_JavaLangString);
+        } else if (((JSONObject)localObject).has("traceConfig")) {
+          localamqg.a.put("apolloTraceConfig", paramArrayOfamph[i].jdField_a_of_type_JavaLangString);
+        }
+      }
+      catch (Exception paramArrayOfamph)
+      {
+        QLog.e("ApolloConfig_GrayProcessor", 1, paramArrayOfamph, new Object[0]);
+        return null;
+      }
+      i += 1;
     }
   }
   
-  public void a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, amqg paramamqg)
   {
-    QLog.e("ApolloConfig_GlobalProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(amqf paramamqf)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "onUpdate");
-    amqf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramamqf);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    if ((paramQQAppInterface == null) || (paramamqg == null)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramamqg.a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str1 = (String)localIterator.next();
+        String str2 = (String)paramamqg.a.get(str1);
+        if ((paramBoolean) && (QLog.isColorLevel())) {
+          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloGrayConfBean content:", str2 });
+        }
+        if ("apolloGrayUrlWhite".equals(str1)) {
+          ajmr.a(paramQQAppInterface, str2, paramBoolean);
+        } else if ("apolloTraceConfig".equals(str1)) {
+          ajmr.a(paramQQAppInterface, str2);
+        }
+      }
+    }
   }
 }
 

@@ -1,20 +1,10 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
-
-class ssn
-  extends LruCache<KEY, VALUE>
+public abstract interface ssn<T>
 {
-  ssn(ssm paramssm, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void a();
   
-  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
-  {
-    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
-    this.a.a();
-  }
+  public abstract void a(sso<T> paramsso);
+  
+  public abstract void c();
 }
 
 

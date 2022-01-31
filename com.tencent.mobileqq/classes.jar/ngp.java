@@ -1,38 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
 class ngp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ngp(nfu paramnfu, nmv paramnmv, boolean paramBoolean, Switch paramSwitch) {}
+  ngp(nfr paramnfr, String paramString, nms paramnms) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      if ((3 == this.jdField_a_of_type_Nmv.e) && (this.jdField_a_of_type_Nmv.d == 0))
-      {
-        paramDialogInterface = this.jdField_a_of_type_Nfu;
-        localnmv = this.jdField_a_of_type_Nmv;
-        if (!this.jdField_a_of_type_Boolean) {
-          paramDialogInterface.a(localnmv, bool);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      }
-    }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        nmv localnmv;
-        return;
-        bool = false;
-      }
-    }
-    this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, this.jdField_a_of_type_Boolean);
+    nfr.c(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 

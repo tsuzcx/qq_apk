@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import arwh;
+import arwj;
 
 class LocationPickFragment$12
   implements Runnable

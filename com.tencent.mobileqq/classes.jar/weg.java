@@ -1,11 +1,21 @@
-import android.util.Property;
+import android.view.MotionEvent;
 import android.view.View;
 
-public class weg
+public abstract interface weg
 {
-  public float a;
-  public Property<View, Float> a;
-  public float b;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, wed paramwed);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract boolean a(View paramView, wej paramwej, MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(View paramView);
 }
 
 

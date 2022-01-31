@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bhkl;
-import bhkn;
+import bhlc;
+import bhle;
 
 class QzoneWebMusicJsPlugin$17
   implements Runnable
@@ -10,7 +10,7 @@ class QzoneWebMusicJsPlugin$17
   
   public void run()
   {
-    bhkl.a().a().d();
+    bhlc.a().a().d();
   }
 }
 

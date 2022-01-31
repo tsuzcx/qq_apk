@@ -1,21 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class atqx
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  atqx(atqu paramatqu) {}
+  atqx(atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    this.a.a.startActivity(paramView);
-    axqw.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      atqw.a(this.a);
+    }
   }
 }
 

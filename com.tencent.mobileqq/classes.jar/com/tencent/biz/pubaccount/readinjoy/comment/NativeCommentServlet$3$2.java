@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ofy;
+import ofv;
 
 class NativeCommentServlet$3$2
   implements Runnable
@@ -9,7 +9,7 @@ class NativeCommentServlet$3$2
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Ofy.a(this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.this$0.b, -1, "request error");
+    this.this$0.jdField_a_of_type_Ofv.a(this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.this$0.b, -1, "request error");
   }
 }
 

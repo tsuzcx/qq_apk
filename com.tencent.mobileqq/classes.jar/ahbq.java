@@ -1,17 +1,36 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.HashMap;
+import java.util.List;
 
-public class ahbq
+class ahbq
+  implements ahbr
 {
-  public bbwf a;
-  public PreloadModule a;
-  public PreloadResource a;
+  ahbq(ahbp paramahbp) {}
   
-  public ahbq(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bbwf parambbwf)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
-    this.jdField_a_of_type_Bbwf = parambbwf;
+    int i = 1;
+    ahbp localahbp = this.a;
+    localahbp.jdField_a_of_type_Int += 1;
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
+      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Ahbs != null))
+      {
+        paramPathResult = this.a.jdField_a_of_type_Ahbs;
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label118;
+        }
+      }
+    }
+    label118:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
+      return;
+      this.a.jdField_a_of_type_Boolean = true;
+      break;
+    }
   }
 }
 

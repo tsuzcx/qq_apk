@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import begy;
-import begz;
-import beka;
-import bekg;
-import bekw;
-import besl;
+import behp;
+import behq;
+import bekr;
+import bekx;
+import beln;
+import betc;
 import org.json.JSONObject;
 
 public class NetworkJsPlugin
@@ -30,7 +30,7 @@ public class NetworkJsPlugin
   
   private String getCurrentTypeDesc()
   {
-    switch (bekw.a(this.mContext))
+    switch (beln.a(this.mContext))
     {
     default: 
       return "unkown";
@@ -46,28 +46,28 @@ public class NetworkJsPlugin
     return "wifi";
   }
   
-  public String getNetworkType(beka parambeka)
+  public String getNetworkType(bekr parambekr)
   {
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("networkType", getCurrentTypeDesc());
-      localObject = bekg.a(parambeka.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
-      parambeka.jdField_a_of_type_Begy.a(parambeka.b, (String)localObject);
+      localObject = bekx.a(parambekr.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
+      parambekr.jdField_a_of_type_Behp.a(parambekr.b, (String)localObject);
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      besl.d("NetworkJsPlugin", localThrowable.getMessage(), localThrowable);
-      String str = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null).toString();
-      parambeka.jdField_a_of_type_Begy.a(parambeka.b, str);
+      betc.d("NetworkJsPlugin", localThrowable.getMessage(), localThrowable);
+      String str = bekx.b(parambekr.jdField_a_of_type_JavaLangString, null).toString();
+      parambekr.jdField_a_of_type_Behp.a(parambekr.b, str);
     }
     return "";
   }
   
-  public void onCreate(begz parambegz)
+  public void onCreate(behq parambehq)
   {
-    super.onCreate(parambegz);
+    super.onCreate(parambehq);
     if ((this.mContext != null) && (!this.mRegister))
     {
       this.mReceiver = new NetworkJsPlugin.ConnectionChangeReceiver(this);
@@ -88,7 +88,7 @@ public class NetworkJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      besl.d("NetworkJsPlugin", "fail unregisterReceiver", localThrowable);
+      betc.d("NetworkJsPlugin", "fail unregisterReceiver", localThrowable);
     }
   }
 }

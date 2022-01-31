@@ -1,26 +1,30 @@
 public class ajim
+  implements Comparable
 {
-  public float a;
   public int a;
   public String a;
   public boolean a;
-  public float b;
   public int b;
-  public String b;
-  public boolean b;
   public int c;
-  public String c;
   public int d;
-  public String d;
   public int e;
   public int f;
   public int g;
   public int h;
   public int i;
   public int j;
-  public int k;
-  public int l;
-  public int m;
+  
+  public int compareTo(Object paramObject)
+  {
+    paramObject = (ajim)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
+    }
+    if (this.d > paramObject.d) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -29,13 +29,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nrk;
+import nrh;
+import nrq;
+import nrr;
 import nrt;
 import nru;
-import nrw;
-import nrx;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp.RedPointInfo;
-import vzo;
+import vzl;
 
 public class CustomTabView
   extends FrameLayout
@@ -75,7 +75,7 @@ public class CustomTabView
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    nru localnru = nrw.a(this.jdField_a_of_type_Int);
+    nrr localnrr = nrt.a(this.jdField_a_of_type_Int);
     RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(paramInt);
     if (localRelativeLayout != null)
     {
@@ -86,8 +86,8 @@ public class CustomTabView
         if ((localObject1 instanceof TextView))
         {
           localObject1 = (TextView)localObject1;
-          ((TextView)localObject1).setTextColor(Color.parseColor(localnru.f));
-          this.jdField_a_of_type_JavaLangString = localnru.e;
+          ((TextView)localObject1).setTextColor(Color.parseColor(localnrr.f));
+          this.jdField_a_of_type_JavaLangString = localnrr.e;
           this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject1);
         }
         for (;;)
@@ -100,11 +100,11 @@ public class CustomTabView
             if (((ImageView)localObject1).getId() == a(this.jdField_a_of_type_Int))
             {
               this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject1);
-              this.b = localnru.c;
+              this.b = localnrr.c;
               Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = vzo.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = vzo.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              localObject2 = URLDrawable.getDrawable(localnru.d, (URLDrawable.URLDrawableOptions)localObject2);
+              ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = vzl.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = vzl.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              localObject2 = URLDrawable.getDrawable(localnrr.d, (URLDrawable.URLDrawableOptions)localObject2);
               if (localObject2 != null) {
                 ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
               }
@@ -153,7 +153,7 @@ public class CustomTabView
         if ((localRedPointInfo == null) || (!localRedPointInfo.tab_id.has()) || (!localRedPointInfo.task_id.has())) {
           continue;
         }
-        if (nrk.a(localRedPointInfo.tab_id.get(), localRedPointInfo.task_id.get()))
+        if (nrh.a(localRedPointInfo.tab_id.get(), localRedPointInfo.task_id.get()))
         {
           if (!QLog.isColorLevel()) {
             continue;
@@ -202,13 +202,13 @@ public class CustomTabView
     }
   }
   
-  public void a(nrt paramnrt)
+  public void a(nrq paramnrq)
   {
-    if (paramnrt == null) {}
+    if (paramnrq == null) {}
     for (;;)
     {
       return;
-      ArrayList localArrayList = paramnrt.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = paramnrq.jdField_a_of_type_JavaUtilArrayList;
       if ((localArrayList == null) || (localArrayList.size() == 0) || (localArrayList.size() < 2))
       {
         if (!QLog.isColorLevel()) {
@@ -220,41 +220,41 @@ public class CustomTabView
       LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       try
       {
-        localLinearLayout.setBackgroundColor(Color.parseColor(paramnrt.jdField_a_of_type_JavaLangString));
+        localLinearLayout.setBackgroundColor(Color.parseColor(paramnrq.jdField_a_of_type_JavaLangString));
         localLinearLayout.setOrientation(0);
         localLinearLayout.setWeightSum(localArrayList.size());
         addView(localLinearLayout);
-        paramnrt = (FrameLayout.LayoutParams)localLinearLayout.getLayoutParams();
-        if (paramnrt != null)
+        paramnrq = (FrameLayout.LayoutParams)localLinearLayout.getLayoutParams();
+        if (paramnrq != null)
         {
-          paramnrt.width = -1;
-          paramnrt.height = -2;
+          paramnrq.width = -1;
+          paramnrq.height = -2;
           break label680;
           for (;;)
           {
             if (i >= localArrayList.size()) {
               break label609;
             }
-            paramnrt = (nru)localArrayList.get(i);
+            paramnrq = (nrr)localArrayList.get(i);
             RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-            localRelativeLayout.setId(paramnrt.jdField_a_of_type_Int);
+            localRelativeLayout.setId(paramnrq.jdField_a_of_type_Int);
             localLinearLayout.addView(localRelativeLayout);
             ((LinearLayout.LayoutParams)localRelativeLayout.getLayoutParams()).weight = 1.0F;
             ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
             try
             {
-              localImageView.setId(a(paramnrt.jdField_a_of_type_Int));
+              localImageView.setId(a(paramnrq.jdField_a_of_type_Int));
               localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
               localRelativeLayout.addView(localImageView);
               localObject1 = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
-              ((RelativeLayout.LayoutParams)localObject1).width = vzo.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              ((RelativeLayout.LayoutParams)localObject1).height = vzo.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              ((RelativeLayout.LayoutParams)localObject1).width = vzl.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              ((RelativeLayout.LayoutParams)localObject1).height = vzl.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
               ((RelativeLayout.LayoutParams)localObject1).addRule(14);
-              ((RelativeLayout.LayoutParams)localObject1).topMargin = vzo.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+              ((RelativeLayout.LayoutParams)localObject1).topMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
               localObject1 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = vzo.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = vzo.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-              localObject1 = URLDrawable.getDrawable(paramnrt.c, (URLDrawable.URLDrawableOptions)localObject1);
+              ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = vzl.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = vzl.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
+              localObject1 = URLDrawable.getDrawable(paramnrq.c, (URLDrawable.URLDrawableOptions)localObject1);
               if (localObject1 != null) {
                 localImageView.setImageDrawable((Drawable)localObject1);
               }
@@ -270,7 +270,7 @@ public class CustomTabView
               }
             }
             localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-            ((ImageView)localObject1).setId(b(paramnrt.jdField_a_of_type_Int));
+            ((ImageView)localObject1).setId(b(paramnrq.jdField_a_of_type_Int));
             ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_CENTER);
             ((ImageView)localObject1).setVisibility(8);
             localRelativeLayout.addView((View)localObject1);
@@ -279,25 +279,25 @@ public class CustomTabView
             ((RelativeLayout.LayoutParams)localObject2).height = -2;
             ((RelativeLayout.LayoutParams)localObject2).addRule(1, localImageView.getId());
             ((RelativeLayout.LayoutParams)localObject2).addRule(10);
-            ((RelativeLayout.LayoutParams)localObject2).topMargin = vzo.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+            ((RelativeLayout.LayoutParams)localObject2).topMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
             localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-            ((TextView)localObject2).setTextColor(Color.parseColor(paramnrt.e));
-            ((TextView)localObject2).setTextSize(1, vzo.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
-            ((TextView)localObject2).setText(paramnrt.jdField_a_of_type_JavaLangString);
+            ((TextView)localObject2).setTextColor(Color.parseColor(paramnrq.e));
+            ((TextView)localObject2).setTextSize(1, vzl.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
+            ((TextView)localObject2).setText(paramnrq.jdField_a_of_type_JavaLangString);
             localRelativeLayout.addView((View)localObject2);
             localLayoutParams = (RelativeLayout.LayoutParams)((TextView)localObject2).getLayoutParams();
             localLayoutParams.width = -2;
             localLayoutParams.height = -2;
             localLayoutParams.addRule(3, localImageView.getId());
             localLayoutParams.addRule(14);
-            localLayoutParams.topMargin = vzo.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-            localLayoutParams.bottomMargin = vzo.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-            localRelativeLayout.setOnClickListener(new nrx(this, paramnrt, (ImageView)localObject1, (TextView)localObject2, localImageView));
+            localLayoutParams.topMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+            localLayoutParams.bottomMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+            localRelativeLayout.setOnClickListener(new nru(this, paramnrq, (ImageView)localObject1, (TextView)localObject2, localImageView));
             i += 1;
           }
         }
       }
-      catch (Exception paramnrt)
+      catch (Exception paramnrq)
       {
         for (;;)
         {
@@ -308,15 +308,15 @@ public class CustomTabView
               break;
             }
             localLinearLayout.measure(0, 0);
-            paramnrt = new View(this.jdField_a_of_type_AndroidContentContext);
-            paramnrt.setBackgroundColor(1996488704);
-            removeView(paramnrt);
-            addView(paramnrt);
-            paramnrt.getLayoutParams().width = -1;
-            paramnrt.getLayoutParams().height = localLinearLayout.getMeasuredHeight();
+            paramnrq = new View(this.jdField_a_of_type_AndroidContentContext);
+            paramnrq.setBackgroundColor(1996488704);
+            removeView(paramnrq);
+            addView(paramnrq);
+            paramnrq.getLayoutParams().width = -1;
+            paramnrq.getLayoutParams().height = localLinearLayout.getMeasuredHeight();
             return;
           }
-          catch (Exception paramnrt)
+          catch (Exception paramnrq)
           {
             return;
           }

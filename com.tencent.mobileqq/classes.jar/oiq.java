@@ -1,14 +1,16 @@
+import java.util.List;
+
 class oiq
-  extends ojq
+  extends ojn
 {
-  oiq(oio paramoio)
+  oiq(oil paramoil, boolean paramBoolean, List paramList)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentStateError(1001);
+    paramojq.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, oil.d(this.jdField_a_of_type_Oil), 2, 2);
   }
 }
 

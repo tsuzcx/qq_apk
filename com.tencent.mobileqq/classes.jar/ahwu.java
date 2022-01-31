@@ -1,10 +1,24 @@
-public abstract interface ahwu
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
+
+public class ahwu
 {
-  public abstract void b(int paramInt);
+  private static int a = 10000;
   
-  public abstract void c(String paramString);
+  public static void a(int paramInt)
+  {
+    a = paramInt;
+  }
   
-  public abstract void j();
+  public static void a(String paramString, Properties paramProperties)
+  {
+    Properties localProperties = paramProperties;
+    if (paramProperties == null) {
+      localProperties = new Properties();
+    }
+    localProperties.setProperty("shortvideo_business_type", "" + a);
+    axqn.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+  }
 }
 
 

@@ -1,33 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class ndo
-  extends Handler
+  implements View.OnClickListener
 {
-  public ndo(NowVideoView paramNowVideoView) {}
+  public ndo(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, nms paramnms) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString.contains(ajya.a(2131704189))))
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Ndh == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
-      this.a.jdField_a_of_type_Ndh.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+      nol.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
       return;
-    } while ((this.a.jdField_a_of_type_Ndh == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
-    this.a.jdField_a_of_type_Ndh.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+    }
+    EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ndo
  * JD-Core Version:    0.7.0.1
  */

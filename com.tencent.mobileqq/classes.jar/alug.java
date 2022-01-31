@@ -1,16 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.widget.TipsBar;
+import java.lang.ref.WeakReference;
 
-class alug
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class alug
 {
-  alug(aluf paramaluf) {}
+  public int a;
+  public long a;
+  public adli a;
+  public MessageForArkApp a;
+  public String a;
+  public WeakReference<TipsBar> a;
+  public long b;
+  public String b;
+  public WeakReference<aexj> b;
+  public String c;
+  public String d;
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  alug(adli paramadli, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
   {
-    if (paramBitmap != null) {
-      aluc.a(this.a.jdField_a_of_type_Aluc, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
-    }
+    a(paramadli, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+  }
+  
+  void a(adli paramadli, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  {
+    this.jdField_a_of_type_Adli = paramadli;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.d = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
   }
 }
 

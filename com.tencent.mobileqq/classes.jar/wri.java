@@ -1,25 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
 
-public class wri
-  extends wra
+class wri
+  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
 {
-  private CertifiedAccountMeta.StFeed a;
+  wri(wrh paramwrh, wrd paramwrd) {}
   
-  public wri(CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    this.a = paramStFeed;
-  }
-  
-  public void a() {}
-  
-  public void a(wrg paramwrg)
-  {
-    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
-    paramwrg = new wrj(this, paramwrg);
-    localGetSubscribeFeedDetailRequest.setEnableCache(false);
-    VSNetworkHelper.a().a(localGetSubscribeFeedDetailRequest, paramwrg);
+    if (this.jdField_a_of_type_Wrd != null) {
+      this.jdField_a_of_type_Wrd.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    }
   }
 }
 

@@ -1,25 +1,21 @@
-import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import dov.com.qq.im.ae.camera.ui.panel.AEGridView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bint
-  extends RecyclerView.ItemDecoration
+class bint
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  bint(binq parambinq) {}
   
-  public bint(AEGridView paramAEGridView, int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.top = this.b;
+    paramCompoundButton = binq.b(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
   }
 }
 

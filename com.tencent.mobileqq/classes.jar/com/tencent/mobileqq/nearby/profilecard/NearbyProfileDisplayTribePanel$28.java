@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atqu;
-import axqw;
+import atqw;
+import axqy;
 
 public class NearbyProfileDisplayTribePanel$28
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$28(atqu paramatqu, int paramInt) {}
+  public NearbyProfileDisplayTribePanel$28(atqw paramatqw, int paramInt) {}
   
   public void run()
   {
-    axqw.b(this.this$0.a.app, "CliOper", "", "", atqu.b[(this.a - 1)], atqu.b[(this.a - 1)], 0, 0, "", "", "", "");
-    axqw.b(this.this$0.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    axqy.b(this.this$0.a.app, "CliOper", "", "", atqw.b[(this.a - 1)], atqw.b[(this.a - 1)], 0, 0, "", "", "", "");
+    axqy.b(this.this$0.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

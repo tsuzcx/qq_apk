@@ -1,20 +1,33 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class scq
-  implements View.OnClickListener
+public class scq
+  extends akdn
 {
-  scq(sco paramsco, scn paramscn) {}
+  scl jdField_a_of_type_Scl = null;
   
-  public void onClick(View paramView)
+  public scq(sck paramsck, scl paramscl)
   {
-    axqw.b(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
-    axqw.b(this.jdField_a_of_type_Sco.jdField_a_of_type_Scn.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Sco.jdField_a_of_type_Scm.a), "", "", "");
-    if ((this.jdField_a_of_type_Sco.jdField_a_of_type_Scm == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Sco.jdField_a_of_type_Scm.a)))) {
+    this.jdField_a_of_type_Scl = paramscl;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptRecommendAdapter", 2, "onFollowPublicAccount isSuccess: " + paramBoolean + " | uin: " + paramString + " | mRecommendItem: " + this.jdField_a_of_type_Scl);
+    }
+    if (this.jdField_a_of_type_Scl != null)
+    {
+      paramString = this.jdField_a_of_type_Scl;
+      if (!paramBoolean) {
+        break label76;
+      }
+    }
+    label76:
+    for (int i = 1;; i = 0)
+    {
+      paramString.a(i);
       return;
     }
-    sco.a(this.jdField_a_of_type_Sco);
   }
 }
 

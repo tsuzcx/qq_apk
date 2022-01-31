@@ -1,8 +1,26 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
-
 public abstract interface azuo
 {
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask);
+  public abstract int a();
+  
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(azup paramazup);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract int g();
 }
 
 

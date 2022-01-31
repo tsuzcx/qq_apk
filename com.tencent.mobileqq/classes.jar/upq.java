@@ -1,8 +1,26 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
-public abstract interface upq
+public class upq
+  implements Comparator<CommentEntry>
 {
-  public abstract void a(ups paramups, boolean paramBoolean, ErrorMessage paramErrorMessage);
+  public upq(upp paramupp) {}
+  
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  {
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
+    }
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    {
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
+  }
 }
 
 

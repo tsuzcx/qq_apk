@@ -1,31 +1,30 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class acee
-  implements bfoq
+  implements bcnj
 {
-  public acee(SubAccountUgActivity paramSubAccountUgActivity, bfol parambfol) {}
+  public acee(SubLoginActivity paramSubLoginActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b());
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131719915);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
-      paramView = (ayat)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
+      int[] arrayOfInt = new int[2];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = arrayOfInt[1];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
+      if (paramInt1 > 0) {
+        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
       }
+      SubLoginActivity.b(this.a).setVisibility(8);
+      return;
     }
+    SubLoginActivity.b(this.a).setVisibility(0);
+    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
   }
 }
 

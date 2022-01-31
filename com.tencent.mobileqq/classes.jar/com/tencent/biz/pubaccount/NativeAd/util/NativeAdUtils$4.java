@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvh;
+import bhvy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -17,14 +17,14 @@ public final class NativeAdUtils$4
     Object localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
     if (localObject != null)
     {
-      localObject = bhvh.a((AppRuntime)localObject, true, false);
+      localObject = bhvy.a((AppRuntime)localObject, true, false);
       if (localObject != null)
       {
         localObject = ((SharedPreferences)localObject).edit();
         if (localObject != null)
         {
           ((SharedPreferences.Editor)localObject).putString("sp_key_ad_cookie", this.a);
-          bhvh.a((SharedPreferences.Editor)localObject, true);
+          bhvy.a((SharedPreferences.Editor)localObject, true);
           if (QLog.isColorLevel()) {
             QLog.d("NativeAdUtils", 2, "saveAdCookie cookie=" + this.a);
           }

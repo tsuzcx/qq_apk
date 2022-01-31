@@ -1,44 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.pluginbridge.BridgeHelper;
-import cooperation.pluginbridge.BridgePluginInstallActivity;
+import java.io.File;
 
-public class bgmd
-  extends BroadcastReceiver
+class bgmd
+  implements bglf
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  bgmd(bgmb parambgmb) {}
+  
+  public void a(File paramFile1, File paramFile2)
   {
-    paramIntent = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
-    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
-    try
-    {
-      paramContext.unregisterReceiver(BridgeHelper.a());
-      BridgeHelper.a(null);
-      if (BridgeHelper.a() != null)
-      {
-        BridgeHelper.a().dismiss();
-        BridgeHelper.a(null);
-      }
-      if ((paramContext instanceof BridgePluginInstallActivity))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("BridgeHelper", 2, "Activity finish!");
-        }
-        ((BridgePluginInstallActivity)paramContext).finish();
-      }
-      return;
+  }
+  
+  public void a(File paramFile1, File paramFile2, File paramFile3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-      }
+  }
+  
+  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
   }
 }

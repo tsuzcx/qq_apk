@@ -1,55 +1,54 @@
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.1.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-public class aerc
-  extends MqqHandler
+class aerc
+  extends aoun
 {
-  aerc(aerb paramaerb) {}
+  aerc(aeqz paramaeqz) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(apez paramapez)
   {
-    switch (paramMessage.what)
-    {
-    }
+    if (paramapez == null) {}
     do
     {
+      FileManagerEntity localFileManagerEntity;
       do
       {
-        return;
-      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof List)));
-      this.a.b((List)paramMessage.obj);
-      if ((aerb.a(this.a) == null) || (aerb.a(this.a).size() == 0))
-      {
-        aerb.a(this.a, System.currentTimeMillis());
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
-        }
-        this.a.D();
-        this.a.b = new MultiForwardChatPie.1.1(this);
-        aerb.a(this.a).postDelayed(this.a.b, 60000L);
-        ThreadRegulator.a().b(1);
-        asty.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_g_of_type_Long, 1035, this.a.a(aerb.a(this.a)));
-        return;
-      }
-      paramMessage = ChatActivityUtils.a(aerb.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramMessage = ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessage);
-      aerb.a(this.a).setVisibility(8);
-      aerb.a(this.a).setVisibility(0);
-      aerb.a(this.a).setVisibility(0);
-      aerb.a(this.a).a(aerb.a(this.a), paramMessage);
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, MultiMsg has been downloaded");
+        do
+        {
+          return;
+        } while (!(paramapez.a instanceof FileManagerEntity));
+        localFileManagerEntity = (FileManagerEntity)paramapez.a;
+      } while ((paramapez.b == null) || (paramapez.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramapez.b;
+      this.a.a.a().c(localFileManagerEntity);
+    } while (aeqz.a(this.a) == null);
+    aeqz.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (aeqz.a(this.a) != null) {
+      aeqz.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiForwardActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    if (aeqz.a(this.a) != null) {
+      aeqz.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (aeqz.a(this.a) != null) {
+      aeqz.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

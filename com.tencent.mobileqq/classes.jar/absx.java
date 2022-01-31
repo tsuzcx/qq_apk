@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class absx
-  implements View.OnClickListener
+public class absx
+  extends akdn
 {
-  absx(absw paramabsw) {}
+  public absx(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof absv))
-    {
-      paramView = (absv)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        absw.a(this.a, paramView);
-        axqw.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c();
     }
   }
 }

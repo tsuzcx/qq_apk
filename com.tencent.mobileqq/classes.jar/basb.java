@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-class basb
-  implements aycb
+public class basb
+  implements aycd
 {
-  basb(basa parambasa) {}
+  public basb(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, aycd paramaycd) {}
   
   public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a == null) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int > this.a.jdField_b_of_type_Int + this.a.c)
-      {
-        String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new basc(this));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
+    if (this.jdField_a_of_type_Aycd != null) {
+      this.jdField_a_of_type_Aycd.a();
+    }
   }
 }
 

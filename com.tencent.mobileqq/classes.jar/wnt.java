@@ -1,8 +1,25 @@
-public abstract interface wnt
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+
+class wnt
+  implements View.OnClickListener
 {
-  public abstract void h();
+  wnt(wns paramwns, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public abstract void i();
+  public void onClick(View paramView)
+  {
+    paramView = (ClipboardManager)wni.c(this.jdField_a_of_type_Wns.a).getSystemService("clipboard");
+    if (paramView != null)
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
+      wni.a(this.jdField_a_of_type_Wns.a).dismiss();
+    }
+  }
 }
 
 

@@ -1,34 +1,18 @@
-import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
-import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.qphone.base.util.QLog;
 
 class altk
-  implements ArkAppPreloader.PreloadAppCallback
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  altk(alti paramalti) {}
+  altk(altj paramaltj, String paramString) {}
   
-  public void beginAppload(String paramString, int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (paramInt == 1) {
-      altc.a(paramString);
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
+      alth.a(this.jdField_a_of_type_Altj.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, alth.a(this.jdField_a_of_type_Altj.a), 2);
     }
-  }
-  
-  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      altc.b(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
-      }
-    }
-  }
-  
-  public void onReleaseAndReload(String paramString, int paramInt)
-  {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
-    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new altl(this, paramString));
   }
 }
 

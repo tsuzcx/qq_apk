@@ -5,9 +5,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import yys;
-import yyt;
-import yyu;
+import yyp;
+import yyq;
+import yyr;
 
 class BridgeModule$12
   implements Runnable
@@ -17,12 +17,12 @@ class BridgeModule$12
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
-    Object localObject1 = new yyt();
-    ((yyt)localObject1).a = "ce2d9f";
-    localObject1 = yys.a(BaseApplication.getContext(), (yyt)localObject1);
+    Object localObject1 = new yyq();
+    ((yyq)localObject1).a = "ce2d9f";
+    localObject1 = yyp.a(BaseApplication.getContext(), (yyq)localObject1);
     if (localObject1 != null) {}
     Object localObject2;
-    for (localObject1 = ((yyu)localObject1).a;; localObject2 = null)
+    for (localObject1 = ((yyr)localObject1).a;; localObject2 = null)
     {
       if (localObject1 != null) {}
       try

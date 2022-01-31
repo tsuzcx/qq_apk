@@ -1,37 +1,55 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class apkt
-  extends aouj
+public abstract interface apkt
 {
-  public apkt(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
+  public abstract int a();
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      if ((paramString != null) && (paramString.length() > 0)) {
-        apue.a(paramString);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.a.b == null) || (this.a.app == null));
-        if (this.a.b.b() == paramLong) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
-      return;
-    } while (this.a.app.a().b(paramLong) != null);
-    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
-  }
+  public abstract long a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract WeiYunFileInfo a();
+  
+  public abstract String a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract long c();
+  
+  public abstract String c();
+  
+  public abstract int d();
+  
+  public abstract String d();
+  
+  public abstract int e();
+  
+  public abstract String e();
+  
+  public abstract String f();
+  
+  public abstract String g();
+  
+  public abstract String h();
+  
+  public abstract String i();
 }
 
 

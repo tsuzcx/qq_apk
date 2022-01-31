@@ -1,136 +1,104 @@
-import android.content.res.AssetManager;
-import android.os.Build.VERSION;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.util.QIMFileUtils.1;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import mqq.os.MqqHandler;
 
 public class bjjc
 {
-  public static File a()
+  public static bjjd a;
+  public static String a;
+  public static boolean a;
+  public static bjjd b;
+  public static String b;
+  public static boolean b;
+  public static bjjd c;
+  public static boolean c;
+  public static bjjd d;
+  public static bjjd e = new bjjd();
+  public static bjjd f = new bjjd(3);
+  public static bjjd g = new bjjd(5);
+  public static bjjd h = new bjjd();
+  
+  static
   {
-    return BaseApplicationImpl.getApplication().getCacheDir();
+    jdField_a_of_type_JavaLangString = "AutoMonitor_Camera";
+    jdField_a_of_type_Boolean = a();
+    jdField_b_of_type_JavaLangString = "FreqMonitorSwitch";
+    jdField_a_of_type_Bjjd = new bjjd();
+    jdField_b_of_type_Bjjd = new bjjd();
+    jdField_c_of_type_Bjjd = new bjjd();
+    d = new bjjd();
+    jdField_c_of_type_Boolean = true;
   }
   
-  public static String a(File paramFile, String paramString)
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    paramFile = new File(paramFile + File.separator + paramString);
-    if (paramFile.exists())
+    if ((paramInt2 == 0) || (paramArrayOfInt == null) || (paramInt2 > paramArrayOfInt.length)) {}
+    long l;
+    do
     {
-      paramFile = bbdj.a(paramFile);
-      if ((paramFile == null) || (paramFile.length <= 0)) {
-        return null;
-      }
-      if (Build.VERSION.SDK_INT <= 8) {
-        return new String(paramFile);
-      }
-      try
+      return 0;
+      l = 0L;
+      int i = paramInt1;
+      while (i < paramInt2)
       {
-        paramFile = new String(paramFile, "UTF-8");
-        return paramFile;
+        l += paramArrayOfInt[i];
+        i += 1;
       }
-      catch (UnsupportedEncodingException paramFile)
-      {
-        if (QLog.isDevelopLevel()) {
-          paramFile.printStackTrace();
-        }
-        return null;
-      }
-    }
-    return "";
+    } while (paramInt2 - paramInt1 == 0);
+    return (int)(l / (paramInt2 - paramInt1));
   }
   
-  public static String a(String paramString)
+  public static String a(int[] paramArrayOfInt, int paramInt)
   {
-    String str1 = "";
-    Object localObject2 = null;
-    Object localObject1 = null;
+    if ((paramInt == 0) || (paramArrayOfInt == null) || (paramInt > paramArrayOfInt.length)) {
+      return "";
+    }
+    int i = paramInt - 1;
+    if (i == -1) {
+      return "[]";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('[');
+    paramInt = 0;
     for (;;)
     {
-      try
-      {
-        paramString = BaseApplication.getContext().getAssets().open(paramString);
-        localObject1 = paramString;
-        localObject2 = paramString;
-        String str2 = nax.a(paramString);
-        localObject1 = str2;
-        localObject2 = localObject1;
+      localStringBuilder.append(paramArrayOfInt[paramInt]);
+      if (paramInt == i) {
+        return ']';
       }
-      catch (IOException paramString)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject2 = localObject1;
-        paramString.printStackTrace();
-        localObject2 = str1;
-        if (localObject1 == null) {
-          continue;
-        }
-        try
-        {
-          ((InputStream)localObject1).close();
-          return "";
-        }
-        catch (Exception paramString)
-        {
-          localObject2 = str1;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramString.printStackTrace();
-        return "";
-      }
-      finally
-      {
-        if (localObject2 == null) {
-          break label113;
-        }
-      }
-      try
-      {
-        paramString.close();
-        localObject2 = localObject1;
-      }
-      catch (Exception paramString)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramString.printStackTrace();
-        return localObject1;
-      }
-    }
-    return localObject2;
-    try
-    {
-      ((InputStream)localObject2).close();
-      label113:
-      throw paramString;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-      }
+      localStringBuilder.append(", ");
+      paramInt += 1;
     }
   }
   
-  public static void a(File paramFile, String paramString1, String paramString2)
+  public static void a()
   {
-    ThreadManager.getFileThreadHandler().post(new QIMFileUtils.1(paramFile, paramString1, paramString2));
+    if (jdField_a_of_type_Bjjd.a())
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraStartCost, activityCost=%d, refreshCost=%d, cameraCost=%d, cost=%d", new Object[] { Long.valueOf(jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[1] - jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[0]), Long.valueOf(jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[2] - jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[1]), Long.valueOf(jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[3] - jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[2]), Long.valueOf(jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[3] - jdField_a_of_type_Bjjd.jdField_a_of_type_ArrayOfLong[0]) }));
+      jdField_a_of_type_Bjjd.c();
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (!PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).getBoolean(jdField_b_of_type_JavaLangString, false)) {
+      return bbdx.a(ahvy.jdField_a_of_type_JavaLangString + "/Tencent/AutoTestFlag_03");
+    }
+    return true;
+  }
+  
+  public static void b()
+  {
+    if (d.a())
+    {
+      d.jdField_b_of_type_Long = System.currentTimeMillis();
+      long l = d.jdField_b_of_type_Long - d.jdField_a_of_type_Long;
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, avgRenderCost=%d, cost=%d, frameCount=%d, frameFreq=%d", new Object[] { Integer.valueOf(a(d.jdField_a_of_type_ArrayOfInt, 0, d.jdField_b_of_type_Int)), Long.valueOf(l), Integer.valueOf(d.jdField_b_of_type_Int), Long.valueOf(d.jdField_b_of_type_Int * 1000 / l) }));
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, render cost: %s", new Object[] { a(d.jdField_a_of_type_ArrayOfInt, d.jdField_b_of_type_Int) }));
+      d.c();
+    }
   }
 }
 

@@ -1,31 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class alhl
-  extends alhu
 {
-  public long a;
-  public alhn a;
-  public alho a;
+  public float a;
+  public boolean a;
+  public float b = 0.0F;
+  public float c = 0.0F;
   
   public alhl()
   {
-    this.jdField_a_of_type_Alho = new alho();
-    this.jdField_a_of_type_Alhn = new alhn();
-    a();
-  }
-  
-  public void a()
-  {
-    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
-    this.b = 4096L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Alho.a();
-    this.jdField_a_of_type_Alhn.a();
-  }
-  
-  public String toString()
-  {
-    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Alho + ", circleResult = " + this.jdField_a_of_type_Alhn + '}';
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

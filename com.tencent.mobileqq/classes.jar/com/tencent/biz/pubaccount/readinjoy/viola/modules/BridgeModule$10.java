@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import osj;
+import osg;
 
 class BridgeModule$10
   implements Runnable
@@ -9,7 +9,7 @@ class BridgeModule$10
   
   public void run()
   {
-    osj.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    osg.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

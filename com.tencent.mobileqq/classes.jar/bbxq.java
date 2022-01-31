@@ -1,52 +1,35 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplate1;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
+import android.view.ViewGroup.LayoutParams;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class bbxq
-  extends bbxl
+  extends bhzo
 {
-  public bbxq(Activity paramActivity, JSONObject paramJSONObject, auuw paramauuw)
+  private HashMap<String, bhzo> a;
+  
+  public bbxq(String paramString, View paramView, HashMap<String, bhzo> paramHashMap)
   {
-    super(paramActivity, paramJSONObject, paramauuw);
-    this.d = vzo.a(paramActivity, 4.0F);
+    super(paramString, paramView);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public View a(JSONObject paramJSONObject, View paramView)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    Object localObject = (QZoneLayoutTemplate1)paramView.findViewById(2131368127);
-    if (localObject != null)
+    int i = vzl.b(this.jdField_a_of_type_AndroidViewView.getContext());
+    paramLayoutParams.width = Math.max((int)(i * 108.0F / 360.0F), vzl.a(this.jdField_a_of_type_AndroidViewView.getContext(), 108.0F));
+    paramLayoutParams.height = Math.max((int)(i * 126.0F / 360.0F), vzl.a(this.jdField_a_of_type_AndroidViewView.getContext(), 126.0F));
+    return paramLayoutParams;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ("border".equals(paramString1))
     {
-      ((QZoneLayoutTemplate1)localObject).setBorderWidth(b(paramJSONObject));
-      ((QZoneLayoutTemplate1)localObject).setItemBg(a(paramJSONObject, a(100.0F), a(100.0F)), a(paramJSONObject));
-      ((QZoneLayoutTemplate1)localObject).setLeftView(paramJSONObject.optString("ph"));
-      ((QZoneLayoutTemplate1)localObject).setRightView(paramJSONObject.optString("ph"));
+      if ((bhzo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1) != null) {}
+      return;
     }
-    localObject = paramView.findViewById(2131367679);
-    TextView localTextView = (TextView)paramView.findViewById(2131377183);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131367815);
-    String str = localTextView.getText().toString();
-    if ((this.jdField_a_of_type_Auuw.a.a != 0) && (str.length() > 4) && (str.substring(str.length() - 4, str.length()).equals("QQ空间"))) {
-      localTextView.setText(str.substring(0, str.length() - 4) + ajyc.a(2131714812));
-    }
-    a(paramJSONObject, (View)localObject, localTextView, localImageView);
-    return paramView;
-  }
-  
-  public ProfileCardFavorShowView a(Activity paramActivity)
-  {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131561602);
-  }
-  
-  public void b(HashMap<String, View> paramHashMap)
-  {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561611, null));
+    super.a(paramString1, paramString2);
   }
 }
 

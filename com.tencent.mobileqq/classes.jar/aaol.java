@@ -1,23 +1,31 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 public final class aaol
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public aaol(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqe paramaaqe, aaqf paramaaqf, BaseActivity paramBaseActivity, boolean paramBoolean) {}
+  public aaol(aaqb paramaaqb, int paramInt, aaqa paramaaqa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 1)
+    if (this.jdField_a_of_type_Aaqb.a)
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqe, this.jdField_a_of_type_Aaqf);
-      return;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aaqa != null) {
+        this.jdField_a_of_type_Aaqa.a();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        axqy.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      }
+    }
   }
 }
 

@@ -1,59 +1,158 @@
-import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.media.MediaPlayer;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
+import android.view.Surface;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.SurfaceTextureFilter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.VideoGIFCreator.1;
-import dov.com.qq.im.ae.gif.video.VideoGIFCreator.2;
-import dov.com.qq.im.ae.gif.video.VideoGIFCreator.3;
-import dov.com.qq.im.ae.gif.video.VideoGIFCreator.4;
-import dov.com.qq.im.video.GifEncoder;
+import com.tencent.ttpic.openapi.filter.SpaceFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class bivm
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
 {
-  private static String jdField_a_of_type_JavaLangString = biuw.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = bivm.class.getSimpleName();
+  private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private biut jdField_a_of_type_Biut = new biut();
-  private bivl jdField_a_of_type_Bivl;
-  private bivo jdField_a_of_type_Bivo;
-  private bivp jdField_a_of_type_Bivp;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private final GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private bivk jdField_a_of_type_Bivk = new bivk();
   private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
   private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
-  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
-  private int jdField_b_of_type_Int = 380;
-  private BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  private int jdField_c_of_type_Int = 380;
-  private BaseFilter jdField_c_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private SpaceFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter = new SpaceFilter();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private float jdField_b_of_type_Float;
+  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
   
-  public bivm(String paramString)
+  public bivm(GLSurfaceView paramGLSurfaceView)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "input video = " + paramString);
-    HandlerThread localHandlerThread = new HandlerThread("GIFCreatorHT");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.1(this, paramString));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+  }
+  
+  private void a(Frame paramFrame)
+  {
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.RenderProcess(paramFrame.getTextureId(), (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, 0, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+    GLES20.glDisable(3042);
+  }
+  
+  private void b()
+  {
+    Object localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.jdField_a_of_type_Int = localObject[0];
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+  }
+  
+  private void c()
+  {
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.apply();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_Bivk.a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.4(this));
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    c();
+    this.jdField_a_of_type_Bivk.b();
   }
   
-  public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.2(this, paramBitmap, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
   }
   
-  public void a(bivo parambivo)
+  public void a(bivl parambivl)
   {
-    this.jdField_a_of_type_Bivo = parambivo;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "start create gif");
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoGIFCreator.3(this));
+    if (this.jdField_a_of_type_Bivk != null) {
+      this.jdField_a_of_type_Bivk.a(parambivl);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bivk != null) {
+      this.jdField_a_of_type_Bivk.a(paramBoolean);
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Int, (int)(2.0F * this.jdField_a_of_type_Float), (int)this.jdField_b_of_type_Float, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+    }
+    if (GLES20.glIsTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId()))
+    {
+      a(this.jdField_a_of_type_Bivk.a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float));
+      return;
+    }
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
+    GLES20.glClear(16384);
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.requestRender();
+      return;
+    }
+    finally
+    {
+      paramSurfaceTexture = finally;
+      throw paramSurfaceTexture;
+    }
+  }
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  {
+    Log.d(jdField_a_of_type_JavaLangString, "onSurfaceChanged width = " + paramInt1 + "  height = " + paramInt2);
+    this.jdField_a_of_type_Float = paramInt1;
+    this.jdField_b_of_type_Float = paramInt2;
+    this.jdField_a_of_type_Bivk.a(paramInt1, paramInt2);
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    b();
+    d();
   }
 }
 

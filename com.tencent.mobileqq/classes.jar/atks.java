@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-
 class atks
-  implements atla
+  implements atld
 {
-  atks(atkm paramatkm, VideoData paramVideoData) {}
+  atks(atko paramatko) {}
   
-  public boolean a(atkx paramatkx, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public boolean a(atkz paramatkz, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Atkm.a != null) {
-      this.jdField_a_of_type_Atkm.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
+    if (paramInt == 21) {
+      atiy.f();
     }
-    return true;
+    return false;
   }
 }
 

@@ -1,34 +1,19 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 class atsh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements TextWatcher
 {
-  atsh(atsa paramatsa) {}
+  atsh(atsc paramatsc) {}
   
-  public void onGlobalLayout()
+  public void afterTextChanged(Editable paramEditable)
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
-    if (i <= 0) {}
-    int j;
-    do
-    {
-      return;
-      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
-    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
-    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
-    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
+    atbr.a(this.a.e, 90);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,44 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-
-public class ted
-  extends syv<tee>
+public abstract interface ted
 {
-  @NonNull
-  public final String a;
-  public final int c;
+  public abstract String getName();
   
-  public ted(@NonNull String paramString)
-  {
-    this(paramString, 20);
-  }
+  public abstract int getRelationType();
   
-  public ted(@NonNull String paramString, int paramInt)
-  {
-    this.a = paramString;
-    this.c = paramInt;
-  }
+  public abstract String getUnionId();
   
-  public String a()
-  {
-    return sxp.a("StorySvc.video_filter_list");
-  }
+  public abstract boolean isFriend();
   
-  public syq a(byte[] paramArrayOfByte)
-  {
-    return new tee(paramArrayOfByte);
-  }
+  public abstract boolean isMe();
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
-    localReqGetFilterList.count.set(this.c);
-    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGetFilterList.toByteArray();
-  }
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 

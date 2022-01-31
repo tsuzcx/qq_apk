@@ -1,83 +1,45 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class aaoa
-  extends GestureDetector.SimpleOnGestureListener
+final class aaoa
+  implements auoq
 {
-  public aaoa(BaseChatPie paramBaseChatPie) {}
+  aaoa(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a.a(paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
+    return null;
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
+  public void a(auor paramauor) {}
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public void b(auor paramauor)
   {
-    super.onLongPress(paramMotionEvent);
-    ((adis)this.a.a(26)).a();
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
-    }
-    do
+    try
     {
-      return false;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
+      if (paramauor.jdField_a_of_type_Int == 0)
       {
-        paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
-        int i = paramMotionEvent1[1];
-        if (BaseChatPie.g(this.a) == i)
-        {
-          this.a.w(1);
-          BaseChatPie.a(this.a, Boolean.valueOf(true));
-          BaseChatPie.e(this.a, -1);
-        }
-        BaseChatPie.e(this.a, i);
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramauor.c;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
+        return;
       }
-      if (BaseChatPie.a(this.a)) {
-        this.a.i(true);
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramauor.b + ",result.errStr=" + paramauor.jdField_a_of_type_JavaLangString);
       }
-    } while (paramFloat2 >= 0.0F);
-    this.a.H = false;
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
+      astu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      return;
     }
-    this.a.j(false);
-    this.a.i(true);
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (amcp)this.a.a(50);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(true);
+    catch (Exception paramauor)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramauor);
+      }
+      astu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
     }
-    this.a.j(false);
-    this.a.i(true);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(false);
-    }
-    return false;
   }
 }
 

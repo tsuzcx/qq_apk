@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import achb;
-import bakk;
+import acgx;
+import baky;
 
 public class TroopGagActivity$3$1
   implements Runnable
 {
-  public TroopGagActivity$3$1(achb paramachb, bakk parambakk) {}
+  public TroopGagActivity$3$1(acgx paramacgx, baky parambaky) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bakk.a(this.jdField_a_of_type_Achb.a.a, true);
+    this.jdField_a_of_type_Baky.a(this.jdField_a_of_type_Acgx.a.a, true);
   }
 }
 

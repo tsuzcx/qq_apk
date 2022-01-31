@@ -1,12 +1,24 @@
-public class qtq
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
+
+class qtq
+  extends npt
 {
-  int jdField_a_of_type_Int;
-  qjl jdField_a_of_type_Qjl;
+  private qtq(qtl paramqtl) {}
   
-  public qtq(qjl paramqjl, int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Qjl = paramqjl;
-    this.jdField_a_of_type_Int = paramInt;
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      qtl.a(this.a).addAll(qtl.a(this.a).a(paramBundle));
+      this.a.f();
+    }
   }
 }
 

@@ -1,39 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
-import com.tencent.viola.core.dispatch.ComponentAppearEvent;
-import com.tencent.viola.core.dispatch.IEvent;
-import com.tencent.viola.core.dispatch.IObserver;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-public class rzj
-  implements IObserver
+class rzj
+  extends AnimatorListenerAdapter
 {
-  public rzj(VTopicVideo paramVTopicVideo) {}
+  rzj(rzh paramrzh, VVideoView paramVVideoView, View paramView) {}
   
-  public String getRef()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.a.getRef();
-  }
-  
-  public void onReceive(IEvent paramIEvent)
-  {
-    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
-    {
-      paramIEvent = (ComponentAppearEvent)paramIEvent;
-      if (!paramIEvent.event.equals("didDisappear")) {
-        break label59;
-      }
-      this.a.getVideoLifeCycleChangeListener().c();
-    }
-    label59:
-    do
-    {
-      return;
-      if (paramIEvent.event.equals("willAppear"))
-      {
-        this.a.getVideoLifeCycleChangeListener().a();
-        return;
-      }
-    } while (!paramIEvent.event.equals("didAppear"));
-    this.a.getVideoLifeCycleChangeListener().b();
+    rzh.a(this.jdField_a_of_type_Rzh, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

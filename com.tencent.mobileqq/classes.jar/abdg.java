@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import java.util.Map;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class abdg
-  extends ajxl
+  extends VasQuickUpdateManager.CallBacker
 {
-  public abdg(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public abdg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (paramBoolean1) {
-      this.a.a();
-    }
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    this.a.a();
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
+    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
+    {
+      paramString1 = this.a.b.obtainMessage();
+      paramString1.what = 5;
+      paramString1.obj = this.a.a.a;
+      paramString1.arg1 = 0;
+      paramString1.arg2 = 17;
+      this.a.b.sendMessage(paramString1);
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
   }
 }

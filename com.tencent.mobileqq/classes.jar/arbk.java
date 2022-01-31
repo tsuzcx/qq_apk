@@ -1,39 +1,8 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-class arbk
-  extends RecyclerView.AdapterDataObserver
+public abstract interface arbk
 {
-  arbk(arbj paramarbj) {}
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
+  public abstract void a(HotPicData paramHotPicData);
 }
 
 

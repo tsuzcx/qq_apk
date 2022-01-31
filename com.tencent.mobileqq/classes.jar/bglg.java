@@ -1,8 +1,9 @@
-class bglg
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
+public class bglg
 {
-  private ayrv jdField_a_of_type_Ayrv;
-  private ayxn jdField_a_of_type_Ayxn;
-  private bglh jdField_a_of_type_Bglh;
+  static final Executor a = ;
 }
 
 

@@ -1,28 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class acll
-  extends ajtq
+  implements View.OnClickListener
 {
   public acll(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
+    if (((ajxl)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
     }
-    if (paramObject == null) {}
-    Card localCard;
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
+      axqy.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
+      banb.a(this.a.a, paramView);
+    }
   }
 }
 

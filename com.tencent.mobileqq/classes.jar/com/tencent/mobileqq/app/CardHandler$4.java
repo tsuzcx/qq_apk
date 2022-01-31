@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import ajtk;
+import ajti;
 
 public class CardHandler$4
   implements Runnable
 {
-  public CardHandler$4(ajtk paramajtk) {}
+  public CardHandler$4(ajti paramajti) {}
   
   public void run()
   {
-    ajtk.a(this.this$0);
+    ajti.a(this.this$0);
   }
 }
 

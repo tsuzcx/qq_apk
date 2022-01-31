@@ -1,36 +1,6 @@
-import android.database.DataSetObserver;
-import android.widget.BaseAdapter;
-
-public abstract class bfwn
-  extends BaseAdapter
-  implements bfwu
+public abstract interface bfwn
 {
-  private final bfwp a = new bfwp(this);
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.a.a(paramInt1, paramInt2);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.a.notifyChanged();
-  }
-  
-  public void notifyDataSetInvalidated()
-  {
-    this.a.notifyInvalidated();
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.a.registerObserver(paramDataSetObserver);
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.a.unregisterObserver(paramDataSetObserver);
-  }
+  public abstract String a(int paramInt);
 }
 
 

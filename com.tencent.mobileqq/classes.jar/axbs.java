@@ -1,55 +1,66 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import cooperation.vip.manager.MonitorManager;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class axbs
-  extends BroadcastReceiver
+public class axbs
+  extends MSFServlet
 {
-  axbs(axbr paramaxbr) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (axbr.jdField_a_of_type_Boolean != true)
+    if ((paramIntent == null) || (paramFromServiceMsg == null))
     {
-      QLog.e("CliNotifyPush", 1, "receiver broadcast late");
-      axbr.a(this.a, 2013);
+      MonitorManager.a().a(19, 1, " 请求失败 intent =" + paramIntent + "  respone= " + paramFromServiceMsg, false);
       return;
     }
-    axbr.jdField_a_of_type_Boolean = false;
-    if (paramIntent != null)
+    int i = paramFromServiceMsg.getResultCode();
+    paramIntent = new Bundle();
+    paramIntent.putString("msg", "servlet result code is " + i);
+    if (i == 1000)
     {
-      axbr.a(this.a, paramIntent.getIntExtra("param_ret", 0));
-      long l = paramIntent.getLongExtra("param_uin", 10000L);
-      QLog.e("CliNotifyPush", 1, "receive broadcast from qzone, uin=" + l + " param_ret=" + axbr.a(this.a));
-      if ((axbr.a(this.a) != 0) && (axbr.a(this.a) != 10000)) {
-        break label216;
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      doufu_piece_rsp localdoufu_piece_rsp = bhcf.a(paramFromServiceMsg, new int[1]);
+      if (localdoufu_piece_rsp != null)
+      {
+        paramIntent.putInt("ret", 0);
+        paramIntent.putSerializable("data", localdoufu_piece_rsp);
+        notifyObserver(null, 1009, true, paramIntent, atzq.class);
+        return;
       }
-      if (l != this.a.getAppRuntime().getLongAccountUin()) {
-        break label194;
+      if (QLog.isColorLevel()) {
+        QLog.d("BirthDayNoticeServlet", 2, "GET_BIRTHDAY_DATA fail, decode result is null");
       }
-      axbr.jdField_a_of_type_Int = 0;
-      axbr.b = 0;
-    }
-    for (;;)
-    {
-      paramContext = (QQAppInterface)this.a.getAppRuntime();
-      if (paramContext == null) {
-        break;
-      }
-      paramContext.getHandler(axbr.class).removeCallbacks(axbr.a(this.a));
-      paramContext.getHandler(axbr.class).post(axbr.a(this.a));
+      paramIntent.putInt("ret", -2);
+      MonitorManager.a().a(19, 2, " 解包失败 " + paramFromServiceMsg, false);
+      notifyObserver(null, 1009, false, paramIntent, atzq.class);
       return;
-      label194:
-      axbr.a(this.a, 3001);
-      axbr.jdField_a_of_type_Int += 1;
-      continue;
-      label216:
-      axbr.jdField_a_of_type_Int += 1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("BirthDayNoticeServlet", 2, "GET_BIRTHDAY_DATA fail, resultCode=" + i);
+    }
+    MonitorManager.a().a(19, 3, " 后台返回失败， 错误码 " + i + " 错误信息 " + paramFromServiceMsg.getBusinessFailMsg(), false);
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1009, false, paramIntent, atzq.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    bhcf localbhcf = new bhcf(Long.valueOf(paramIntent.getLongExtra("selfuin", 0L)).longValue(), new HashMap());
+    byte[] arrayOfByte = localbhcf.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("BirthDayNoticeServlet", 1, "onSend request encode result is null.cmd=" + localbhcf.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbhcf.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

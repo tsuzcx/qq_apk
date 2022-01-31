@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyt;
+import acyq;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class AioAnimationDetector$9
   implements Runnable
 {
-  public AioAnimationDetector$9(acyt paramacyt, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
+  public AioAnimationDetector$9(acyq paramacyq, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
   
   public void run()
   {

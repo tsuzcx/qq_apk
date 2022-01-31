@@ -1,40 +1,17 @@
-import android.graphics.PointF;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bjuk
-  implements bjzp
+class bjuk
+  implements DialogInterface.OnClickListener
 {
-  public bjuk(bjui parambjui) {}
+  bjuk(bjuf parambjuf) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcpw.a(bjui.a(this.a), "最多可以圈10个好友哦", 0).a();
-  }
-  
-  public void a(bjzo parambjzo)
-  {
-    if (parambjzo.a == 0)
-    {
-      f1 = parambjzo.b.x;
-      f2 = parambjzo.s;
-      f3 = -parambjzo.u;
-      if (f1 + f2 + f3 >= parambjzo.u / 2.0F)
-      {
-        bjui.a(this.a).a(1, f3 + parambjzo.s);
-        return;
-      }
-      veg.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
-      return;
-    }
-    float f1 = parambjzo.b.x;
-    float f2 = parambjzo.s;
-    float f3 = parambjzo.u;
-    if (f1 + f2 + f3 <= bjui.a(this.a).getWidth() - parambjzo.u / 2.0F)
-    {
-      bjui.a(this.a).a(0, f3 + parambjzo.s);
-      return;
-    }
-    veg.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
+    paramDialogInterface.dismiss();
+    dov.com.qq.im.capture.view.MusicProviderView.a = false;
+    this.a.a.a.a(this.a.a.a());
+    bjuf.a(this.a);
   }
 }
 

@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
 
 public class afqq
-  extends akav
+  extends View.AccessibilityDelegate
 {
-  private afqq(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  public afqq(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  protected void f()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (AlphabetFriendFragment.b(this.a)) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
     }
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.image.URLImageView;
 
 public class agln
-  implements DialogInterface.OnDismissListener
 {
-  public agln(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-  }
+  URLImageView a;
 }
 
 

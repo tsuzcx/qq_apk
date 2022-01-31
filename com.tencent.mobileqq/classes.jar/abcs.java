@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class abcs
-  implements Comparator<RecentUser>
+class abcs
+  implements View.OnClickListener
 {
-  public abcs(ForwardRecentActivity paramForwardRecentActivity) {}
+  abcs(abcq paramabcq) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onClick(View paramView)
   {
-    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
+    abcq.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcs
  * JD-Core Version:    0.7.0.1
  */

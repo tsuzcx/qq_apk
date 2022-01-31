@@ -1,54 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
+import com.tencent.widget.ListView;
 
-public abstract class awlv
-  extends awoh
+public class awlv
+  extends awkf<awoi, awwr>
 {
-  public int a;
-  protected QQAppInterface a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected List<? extends FTSEntity> a;
-  public int b;
-  protected CharSequence b;
-  protected String b;
-  public int c = -1;
-  protected CharSequence c;
-  public int d = -1;
-  protected CharSequence d;
-  
-  public awlv(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
+  public awlv(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, baxy parambaxy)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramListView, parambaxy);
   }
   
-  public String a()
+  protected awrd<awoi, awwr> a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return new awra(FTSEntitySearchFragment.a(this.a));
   }
   
-  public boolean a()
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
   {
-    return false;
+    return new awwn(paramViewGroup, 2131562386);
   }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public abstract CharSequence e();
-  
-  public abstract CharSequence f();
 }
 
 

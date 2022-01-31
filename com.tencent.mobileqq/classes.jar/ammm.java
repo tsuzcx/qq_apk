@@ -1,20 +1,46 @@
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ammm
-  implements QQPermissionCallback
+  implements amnf
 {
-  public ammm(LocationSelectActivity.2 param2) {}
+  public ammm(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a()
   {
-    bbcv.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
+    return this.a.jdField_a_of_type_Int;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int a(int paramInt)
   {
-    LocationSelectActivity.a(this.a.this$0);
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
+      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
+      {
+        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
+          return "----";
+        }
+        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
+        return str;
+      }
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      }
+    }
+    return "";
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tribe.async.dispatch.Dispatcher;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ste;
-import tky;
-import tkz;
-import vel;
+import stb;
+import tkv;
+import tkw;
+import vei;
 
 public class ReportEvilToXinanHandler$2
   implements Runnable
 {
-  public ReportEvilToXinanHandler$2(tky paramtky, String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
+  public ReportEvilToXinanHandler$2(tkv paramtkv, String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
@@ -29,32 +29,32 @@ public class ReportEvilToXinanHandler$2
     {
       for (;;)
       {
-        tkz localtkz;
+        tkw localtkw;
         localJSONException.printStackTrace();
         continue;
         j = 2;
       }
-      bcpw.a(BaseApplication.getContext(), ajyc.a(2131713411), 0).a();
+      bcql.a(BaseApplication.getContext(), ajya.a(2131713422), 0).a();
       if (!this.jdField_a_of_type_Boolean) {
         break label205;
       }
     }
     if (i == 0)
     {
-      bcpw.a(BaseApplication.getContext(), ajyc.a(2131713410), 0).a();
+      bcql.a(BaseApplication.getContext(), ajya.a(2131713421), 0).a();
       if (this.jdField_a_of_type_Boolean)
       {
         j = 1;
-        vel.a("play_video", "report_suc", j, 0, new String[] { this.b, "", "", this.c });
-        localtkz = new tkz(new ErrorMessage(i, ""), this.c, this.d, this.b);
-        ste.a().dispatch(localtkz);
+        vei.a("play_video", "report_suc", j, 0, new String[] { this.b, "", "", this.c });
+        localtkw = new tkw(new ErrorMessage(i, ""), this.c, this.d, this.b);
+        stb.a().dispatch(localtkw);
         return;
       }
     }
     label205:
     for (int j = 1;; j = 2)
     {
-      vel.a("play_video", "report_fail", j, 0, new String[] { this.b, "", "", this.c });
+      vei.a("play_video", "report_fail", j, 0, new String[] { this.b, "", "", this.c });
       break;
     }
   }

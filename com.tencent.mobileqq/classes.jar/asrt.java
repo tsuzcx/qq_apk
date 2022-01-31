@@ -1,28 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardItemFragment;
+import java.lang.ref.WeakReference;
 
-public class asrt
-  implements ValueAnimator.AnimatorUpdateListener
+class asrt
+  implements View.OnLongClickListener
 {
-  public asrt(MultiCardFragment paramMultiCardFragment, assf paramassf, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  asrt(asrs paramasrs) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onLongClick(View paramView)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Assf == null) {
-      return;
+    if (this.a.a != null)
+    {
+      paramView = (MultiCardItemFragment)this.a.a.get();
+      if (paramView != null) {
+        paramView.a(this.a);
+      }
     }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Assf.a.setScaleX(f2);
-    this.jdField_a_of_type_Assf.a.setScaleY(f2);
-    this.jdField_a_of_type_Assf.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Assf.a.setTranslationY(this.b * f1);
-    paramValueAnimator = this.jdField_a_of_type_Assf.a.getLayoutParams();
-    float f3 = this.c;
-    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
-    this.jdField_a_of_type_Assf.a.requestLayout();
+    return true;
   }
 }
 

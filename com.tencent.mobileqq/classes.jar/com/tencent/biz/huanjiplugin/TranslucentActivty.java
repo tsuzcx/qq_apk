@@ -1,18 +1,18 @@
 package com.tencent.biz.huanjiplugin;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import bgkq;
-import bgkz;
+import bglh;
+import bglq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qhuanji.QHuanjiPluginProxyActivity;
-import ncm;
+import ncj;
 
 public class TranslucentActivty
   extends Activity
@@ -23,22 +23,22 @@ public class TranslucentActivty
       QLog.w("HuanjiPlugin", 2, "begin startPlugin.......");
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (((bgkq)localQQAppInterface.getManager(27)).isPlugininstalled("qhuanji_plugin.apk"))
+    if (((bglh)localQQAppInterface.getManager(27)).isPlugininstalled("qhuanji_plugin.apk"))
     {
-      ncm.a().a(4, 5, 100);
+      ncj.a().a(4, 5, 100);
       paramIntent.putExtra("userQqResources", 2);
-      bgkz localbgkz = new bgkz(0);
-      localbgkz.jdField_b_of_type_JavaLangString = "qhuanji_plugin.apk";
-      localbgkz.d = ajyc.a(2131715067);
-      localbgkz.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
-      localbgkz.e = "com.tencent.huanji.activity.SwitchPhoneActivity";
-      localbgkz.jdField_a_of_type_JavaLangClass = QHuanjiPluginProxyActivity.class;
-      localbgkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbgkz.jdField_b_of_type_Int = -1;
-      localbgkz.c = 10000;
-      localbgkz.f = null;
-      bgkq.a(this, localbgkz);
-      ncm.a().a(4, 6, 100);
+      bglq localbglq = new bglq(0);
+      localbglq.jdField_b_of_type_JavaLangString = "qhuanji_plugin.apk";
+      localbglq.d = ajya.a(2131715078);
+      localbglq.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
+      localbglq.e = "com.tencent.huanji.activity.SwitchPhoneActivity";
+      localbglq.jdField_a_of_type_JavaLangClass = QHuanjiPluginProxyActivity.class;
+      localbglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbglq.jdField_b_of_type_Int = -1;
+      localbglq.c = 10000;
+      localbglq.f = null;
+      bglh.a(this, localbglq);
+      ncj.a().a(4, 6, 100);
       finish();
       return;
     }

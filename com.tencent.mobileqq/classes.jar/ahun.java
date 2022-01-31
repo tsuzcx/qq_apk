@@ -1,48 +1,19 @@
-import android.app.Activity;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ahun
+  implements View.OnLayoutChangeListener
 {
-  public double a;
-  public int a;
-  public ahuc a;
-  public Activity a;
-  public QzoneVerticalVideoTopicInfo a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public double b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public int m;
+  public ahun(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new ahuo(this));
+  }
 }
 
 

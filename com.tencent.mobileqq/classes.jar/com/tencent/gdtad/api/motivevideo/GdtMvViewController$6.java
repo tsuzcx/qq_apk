@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import yvv;
+import yvs;
 
 public class GdtMvViewController$6
   implements Runnable
 {
-  public GdtMvViewController$6(yvv paramyvv, long paramLong1, long paramLong2) {}
+  public GdtMvViewController$6(yvs paramyvs, long paramLong1, long paramLong2) {}
   
   public void run()
   {

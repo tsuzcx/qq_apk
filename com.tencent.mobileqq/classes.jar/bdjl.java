@@ -1,670 +1,924 @@
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.content.pm.Signature;
+import android.content.res.AssetManager;
+import android.content.res.XmlResourceParser;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.open.business.cgireport.ReportManager.1;
-import java.util.ArrayList;
-import java.util.Random;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.commonsdk.zip.QZipFile;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Method;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class bdjl
 {
-  protected static bdjl a;
-  public static final String a;
-  public int a;
-  protected long a;
-  public bdjj a;
-  public volatile ArrayList<bdjm> a;
-  protected Random a;
-  public boolean a;
-  protected volatile ArrayList<bdjm> b = new ArrayList();
+  protected static Map<String, String> a = new HashMap();
   
-  static
+  public static int a()
   {
-    jdField_a_of_type_JavaLangString = bdjl.class.getName();
+    int j = 1;
+    Object localObject = new String[5];
+    localObject[0] = "/system/xbin/";
+    localObject[1] = "/system/bin/";
+    localObject[2] = "/system/sbin/";
+    localObject[3] = "/sbin/";
+    localObject[4] = "/vendor/bin/";
+    int i = 0;
+    try
+    {
+      while (i < localObject.length)
+      {
+        String str = localObject[i] + "su";
+        File localFile = new File(str);
+        if ((localFile != null) && (localFile.exists()))
+        {
+          localObject = a(new String[] { "ls", "-l", str });
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            int k = ((String)localObject).indexOf("root");
+            int m = ((String)localObject).lastIndexOf("root");
+            i = j;
+            if (k != m) {}
+          }
+          else
+          {
+            i = 0;
+          }
+          return i;
+        }
+        i += 1;
+      }
+      return 2;
+    }
+    catch (Exception localException) {}
   }
   
-  public bdjl()
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bdjj = new bdjj();
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
+    PackageManager localPackageManager = bcyb.a().a().getPackageManager();
+    try
+    {
+      paramString = localPackageManager.getPackageInfo(paramString, 1);
+      if (paramString != null)
+      {
+        int i = paramString.versionCode;
+        return i;
+      }
+    }
+    catch (Exception paramString)
+    {
+      bdii.b("AppUtil", "getApkVersonCode>>>", paramString);
+    }
+    return 0;
   }
   
-  public static bdjl a()
+  public static Intent a(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent("android.intent.action.MAIN", null);
+    localIntent.addCategory("android.intent.category.LAUNCHER");
+    localIntent.addFlags(1073741824);
+    if (!a.containsKey(paramString))
+    {
+      paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0).iterator();
+      while (paramContext.hasNext())
+      {
+        ResolveInfo localResolveInfo = (ResolveInfo)paramContext.next();
+        if (!a.containsKey(localResolveInfo.activityInfo.applicationInfo.packageName)) {
+          a.put(localResolveInfo.activityInfo.applicationInfo.packageName, localResolveInfo.activityInfo.name);
+        }
+      }
+    }
+    paramContext = (String)a.get(paramString);
+    if (paramContext != null)
+    {
+      localIntent.setComponent(new ComponentName(paramString, paramContext));
+      return localIntent;
+    }
+    return null;
+  }
+  
+  public static Bitmap a(String paramString)
   {
     try
     {
-      if (jdField_a_of_type_Bdjl == null) {
-        jdField_a_of_type_Bdjl = new bdjl();
+      PackageManager localPackageManager = bcyb.a().a().getPackageManager();
+      paramString = localPackageManager.getPackageInfo(paramString, 1);
+      if ((paramString != null) && (paramString.applicationInfo != null))
+      {
+        paramString = paramString.applicationInfo.loadIcon(localPackageManager);
+        if (paramString != null)
+        {
+          paramString = bdig.b(paramString);
+          return paramString;
+        }
       }
-      bdjl localbdjl = jdField_a_of_type_Bdjl;
-      return localbdjl;
     }
-    finally {}
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  protected int a(int paramInt)
+  public static java.lang.Process a()
   {
-    if (paramInt == 0)
+    Object localObject = new ProcessBuilder(new String[] { "su" });
+    ((ProcessBuilder)localObject).redirectErrorStream(false);
+    try
     {
-      i = bdjb.a(bcxm.a().a(), null).a("Common_CGIReportFrequencySuccess");
-      bdht.c("OpenConfig_agent", "config 4:Common_CGIReportFrequencySuccess     config_value:" + i);
-      paramInt = i;
-      if (i == 0) {
-        paramInt = 10;
+      localObject = ((ProcessBuilder)localObject).start();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "";
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
+      if (paramContext != null)
+      {
+        paramContext = paramContext.signatures;
+        if ((paramContext != null) && (paramContext.length > 0))
+        {
+          paramContext = bdik.d(paramContext[(paramContext.length - 1)].toCharsString());
+          return paramContext;
+        }
       }
-      bdht.c("OpenConfig_agent", "config 4:Common_CGIReportFrequencySuccess     result_value:" + paramInt);
-      return paramInt;
     }
-    int i = bdjb.a(bcxm.a().a(), null).a("Common_CGIReportFrequencyFailed");
-    bdht.c("OpenConfig_agent", "config 4:Common_CGIReportFrequencyFailed     config_value:" + i);
-    paramInt = i;
-    if (i == 0) {
-      paramInt = 100;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+      return "";
     }
-    bdht.c("OpenConfig_agent", "config 4:Common_CGIReportFrequencyFailed     result_value:" + paramInt);
-    return paramInt;
+    return "";
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString = bcyb.a().a().getPackageManager().getPackageArchiveInfo(paramString, 1);
+        if (paramString != null)
+        {
+          paramString = paramString.applicationInfo.packageName;
+          return paramString;
+        }
+      }
+      catch (Exception paramString)
+      {
+        bdii.c("AppUtil", "getApkName>>>", paramString);
+      }
+    }
+    return null;
   }
   
   /* Error */
-  protected Bundle a(String paramString)
+  public static String a(String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 111
-    //   4: ldc 113
-    //   6: invokestatic 115	bdht:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   0: new 213	java/lang/ProcessBuilder
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 216	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   8: astore_0
     //   9: aload_0
-    //   10: aload_0
-    //   11: getfield 47	bdjl:jdField_a_of_type_Bdjj	Lbdjj;
-    //   14: aload_1
-    //   15: invokevirtual 118	bdjj:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   18: putfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   21: aload_0
-    //   22: getfield 47	bdjl:jdField_a_of_type_Bdjj	Lbdjj;
-    //   25: aload_1
-    //   26: invokevirtual 121	bdjj:b	(Ljava/lang/String;)Z
-    //   29: pop
-    //   30: aload_0
-    //   31: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   34: invokevirtual 125	java/util/ArrayList:size	()I
-    //   37: ifgt +16 -> 53
-    //   40: ldc 111
-    //   42: ldc 127
-    //   44: invokestatic 115	bdht:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   47: aconst_null
-    //   48: astore_1
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: areturn
-    //   53: aload_0
-    //   54: aload_0
-    //   55: getfield 47	bdjl:jdField_a_of_type_Bdjj	Lbdjj;
-    //   58: aload_1
-    //   59: invokevirtual 129	bdjj:b	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   62: putfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   65: aload_0
-    //   66: getfield 47	bdjl:jdField_a_of_type_Bdjj	Lbdjj;
-    //   69: aload_1
-    //   70: invokevirtual 131	bdjj:a	(Ljava/lang/String;)Z
-    //   73: pop
-    //   74: new 133	android/os/Bundle
-    //   77: dup
-    //   78: invokespecial 134	android/os/Bundle:<init>	()V
-    //   81: astore 4
-    //   83: aload 4
-    //   85: ldc 136
-    //   87: aload_1
-    //   88: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   91: aload 4
-    //   93: ldc 141
-    //   95: getstatic 144	bdji:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   98: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   101: aload 4
-    //   103: ldc 146
-    //   105: getstatic 151	android/os/Build:DEVICE	Ljava/lang/String;
-    //   108: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   111: aload 4
-    //   113: ldc 153
-    //   115: getstatic 155	bdji:b	Ljava/lang/String;
-    //   118: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   121: aload 4
-    //   123: ldc 157
-    //   125: ldc 159
-    //   127: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   130: iconst_0
-    //   131: istore_2
-    //   132: iload_2
-    //   133: aload_0
-    //   134: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   137: invokevirtual 125	java/util/ArrayList:size	()I
-    //   140: if_icmpge +416 -> 556
-    //   143: aload 4
-    //   145: new 79	java/lang/StringBuilder
-    //   148: dup
-    //   149: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   152: iload_2
-    //   153: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   156: ldc 161
-    //   158: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: aload_0
-    //   165: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   168: iload_2
-    //   169: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   172: checkcast 167	bdjm
-    //   175: getfield 168	bdjm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   178: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   181: aload 4
-    //   183: new 79	java/lang/StringBuilder
-    //   186: dup
-    //   187: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   190: iload_2
-    //   191: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: ldc 170
-    //   196: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: aload_0
-    //   203: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   206: iload_2
-    //   207: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   210: checkcast 167	bdjm
-    //   213: getfield 171	bdjm:b	Ljava/lang/String;
-    //   216: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   219: aload 4
-    //   221: new 79	java/lang/StringBuilder
-    //   224: dup
-    //   225: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   228: iload_2
-    //   229: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   232: ldc 173
-    //   234: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: aload_0
-    //   241: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   244: iload_2
-    //   245: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   248: checkcast 167	bdjm
-    //   251: getfield 175	bdjm:c	Ljava/lang/String;
-    //   254: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   257: aload 4
-    //   259: new 79	java/lang/StringBuilder
-    //   262: dup
-    //   263: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   266: iload_2
-    //   267: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   270: ldc 177
-    //   272: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: aload_0
-    //   279: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   282: iload_2
-    //   283: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   286: checkcast 167	bdjm
-    //   289: getfield 180	bdjm:d	Ljava/lang/String;
-    //   292: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   295: aload 4
-    //   297: new 79	java/lang/StringBuilder
-    //   300: dup
-    //   301: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   304: iload_2
-    //   305: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   308: ldc 182
-    //   310: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   313: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   316: aload_0
-    //   317: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   320: iload_2
-    //   321: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   324: checkcast 167	bdjm
-    //   327: getfield 185	bdjm:e	Ljava/lang/String;
-    //   330: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   333: aload 4
-    //   335: new 79	java/lang/StringBuilder
-    //   338: dup
-    //   339: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   342: iload_2
-    //   343: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   346: ldc 187
-    //   348: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   351: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   354: aload_0
-    //   355: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   358: iload_2
-    //   359: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   362: checkcast 167	bdjm
-    //   365: getfield 190	bdjm:f	Ljava/lang/String;
-    //   368: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   371: aload 4
-    //   373: new 79	java/lang/StringBuilder
-    //   376: dup
-    //   377: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   380: iload_2
-    //   381: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   384: ldc 192
-    //   386: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: aload_0
-    //   393: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   396: iload_2
-    //   397: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   400: checkcast 167	bdjm
-    //   403: getfield 195	bdjm:g	Ljava/lang/String;
-    //   406: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   409: aload 4
-    //   411: new 79	java/lang/StringBuilder
-    //   414: dup
-    //   415: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   418: iload_2
-    //   419: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   422: ldc 197
-    //   424: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   427: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   430: aload_0
-    //   431: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   434: iload_2
-    //   435: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   438: checkcast 167	bdjm
-    //   441: getfield 200	bdjm:j	Ljava/lang/String;
-    //   444: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   447: aload 4
-    //   449: new 79	java/lang/StringBuilder
-    //   452: dup
-    //   453: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   456: iload_2
-    //   457: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   460: ldc 202
-    //   462: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   465: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   468: aload_0
-    //   469: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   472: iload_2
-    //   473: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   476: checkcast 167	bdjm
-    //   479: getfield 205	bdjm:h	Ljava/lang/String;
-    //   482: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   485: new 79	java/lang/StringBuilder
-    //   488: dup
-    //   489: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   492: invokestatic 209	bdja:h	()Ljava/lang/String;
-    //   495: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   498: ldc 211
-    //   500: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   503: aload_0
-    //   504: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   507: iload_2
-    //   508: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   511: checkcast 167	bdjm
-    //   514: getfield 214	bdjm:i	Ljava/lang/String;
-    //   517: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   520: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   523: astore_1
-    //   524: aload 4
-    //   526: new 79	java/lang/StringBuilder
-    //   529: dup
-    //   530: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   533: iload_2
-    //   534: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   537: ldc 216
-    //   539: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   542: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   545: aload_1
-    //   546: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   549: iload_2
-    //   550: iconst_1
-    //   551: iadd
-    //   552: istore_2
-    //   553: goto -421 -> 132
-    //   556: aload_0
-    //   557: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   560: invokevirtual 125	java/util/ArrayList:size	()I
-    //   563: istore_2
-    //   564: iload_2
-    //   565: aload_0
-    //   566: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   569: invokevirtual 125	java/util/ArrayList:size	()I
-    //   572: aload_0
-    //   573: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   576: invokevirtual 125	java/util/ArrayList:size	()I
-    //   579: iadd
-    //   580: if_icmpge +441 -> 1021
-    //   583: iload_2
-    //   584: aload_0
-    //   585: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   588: invokevirtual 125	java/util/ArrayList:size	()I
-    //   591: isub
-    //   592: istore_3
-    //   593: aload 4
-    //   595: new 79	java/lang/StringBuilder
-    //   598: dup
-    //   599: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   602: iload_2
-    //   603: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   606: ldc 161
-    //   608: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   611: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   614: aload_0
-    //   615: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   618: iload_3
-    //   619: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   622: checkcast 167	bdjm
-    //   625: getfield 168	bdjm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   628: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   631: aload 4
-    //   633: new 79	java/lang/StringBuilder
-    //   636: dup
-    //   637: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   640: iload_2
-    //   641: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   644: ldc 170
-    //   646: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   649: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   652: aload_0
-    //   653: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   656: iload_3
-    //   657: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   660: checkcast 167	bdjm
-    //   663: getfield 171	bdjm:b	Ljava/lang/String;
-    //   666: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   669: aload 4
-    //   671: new 79	java/lang/StringBuilder
-    //   674: dup
-    //   675: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   678: iload_2
-    //   679: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   682: ldc 173
-    //   684: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   687: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   690: aload_0
-    //   691: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   694: iload_3
-    //   695: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   698: checkcast 167	bdjm
-    //   701: getfield 175	bdjm:c	Ljava/lang/String;
-    //   704: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   707: aload 4
-    //   709: new 79	java/lang/StringBuilder
-    //   712: dup
-    //   713: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   716: iload_2
-    //   717: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   720: ldc 177
-    //   722: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   728: aload_0
-    //   729: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   732: iload_3
-    //   733: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   736: checkcast 167	bdjm
-    //   739: getfield 180	bdjm:d	Ljava/lang/String;
-    //   742: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   745: aload 4
-    //   747: new 79	java/lang/StringBuilder
-    //   750: dup
-    //   751: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   754: iload_2
-    //   755: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   758: ldc 182
-    //   760: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   763: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   766: aload_0
-    //   767: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   770: iload_3
-    //   771: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   774: checkcast 167	bdjm
-    //   777: getfield 185	bdjm:e	Ljava/lang/String;
-    //   780: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   783: aload 4
-    //   785: new 79	java/lang/StringBuilder
-    //   788: dup
-    //   789: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   792: iload_2
-    //   793: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   796: ldc 187
-    //   798: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   801: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   804: aload_0
-    //   805: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   808: iload_3
-    //   809: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   812: checkcast 167	bdjm
-    //   815: getfield 190	bdjm:f	Ljava/lang/String;
-    //   818: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   821: aload 4
-    //   823: new 79	java/lang/StringBuilder
-    //   826: dup
-    //   827: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   830: iload_2
-    //   831: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   834: ldc 192
-    //   836: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   839: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   842: aload_0
-    //   843: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   846: iload_3
-    //   847: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   850: checkcast 167	bdjm
-    //   853: getfield 195	bdjm:g	Ljava/lang/String;
-    //   856: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   859: aload 4
-    //   861: new 79	java/lang/StringBuilder
-    //   864: dup
-    //   865: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   868: iload_2
-    //   869: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   872: ldc 197
-    //   874: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   877: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   880: aload_0
-    //   881: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   884: iload_3
-    //   885: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   888: checkcast 167	bdjm
-    //   891: getfield 200	bdjm:j	Ljava/lang/String;
-    //   894: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   897: aload 4
-    //   899: new 79	java/lang/StringBuilder
-    //   902: dup
-    //   903: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   906: iload_2
-    //   907: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   910: ldc 202
-    //   912: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   915: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   918: aload_0
-    //   919: getfield 42	bdjl:b	Ljava/util/ArrayList;
-    //   922: iload_3
-    //   923: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   926: checkcast 167	bdjm
-    //   929: getfield 205	bdjm:h	Ljava/lang/String;
-    //   932: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   935: new 79	java/lang/StringBuilder
-    //   938: dup
-    //   939: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   942: invokestatic 209	bdja:h	()Ljava/lang/String;
-    //   945: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   948: ldc 211
-    //   950: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   953: aload_0
-    //   954: getfield 40	bdjl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   957: iload_3
-    //   958: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   961: checkcast 167	bdjm
-    //   964: getfield 214	bdjm:i	Ljava/lang/String;
-    //   967: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   970: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   973: astore_1
-    //   974: aload 4
-    //   976: new 79	java/lang/StringBuilder
-    //   979: dup
-    //   980: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   983: iload_2
-    //   984: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   987: ldc 216
-    //   989: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   992: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   995: aload_1
-    //   996: invokevirtual 139	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   999: iload_2
-    //   1000: iconst_1
-    //   1001: iadd
-    //   1002: istore_2
-    //   1003: goto -439 -> 564
-    //   1006: astore_1
-    //   1007: getstatic 25	bdjl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1010: ldc 218
-    //   1012: aload_1
-    //   1013: invokestatic 221	bdht:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1016: aconst_null
-    //   1017: astore_1
-    //   1018: goto -969 -> 49
-    //   1021: ldc 111
-    //   1023: ldc 223
-    //   1025: invokestatic 115	bdht:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1028: aload 4
-    //   1030: astore_1
-    //   1031: goto -982 -> 49
-    //   1034: astore_1
-    //   1035: aload_0
-    //   1036: monitorexit
-    //   1037: aload_1
-    //   1038: athrow
+    //   10: iconst_0
+    //   11: invokevirtual 220	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   14: pop
+    //   15: aload_0
+    //   16: invokevirtual 223	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   19: astore_1
+    //   20: new 259	java/io/DataOutputStream
+    //   23: dup
+    //   24: aload_1
+    //   25: invokevirtual 265	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
+    //   28: invokespecial 268	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   31: astore_2
+    //   32: new 270	java/io/DataInputStream
+    //   35: dup
+    //   36: aload_1
+    //   37: invokevirtual 274	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   40: invokespecial 277	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   43: astore_0
+    //   44: aload_0
+    //   45: ifnull +88 -> 133
+    //   48: aload_2
+    //   49: ifnull +84 -> 133
+    //   52: aload_0
+    //   53: invokevirtual 280	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   56: astore_0
+    //   57: aload_2
+    //   58: ldc_w 282
+    //   61: invokevirtual 285	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   64: aload_2
+    //   65: invokevirtual 288	java/io/DataOutputStream:flush	()V
+    //   68: aload_1
+    //   69: invokevirtual 291	java/lang/Process:waitFor	()I
+    //   72: pop
+    //   73: aload_0
+    //   74: astore_2
+    //   75: aload_1
+    //   76: ifnull +9 -> 85
+    //   79: aload_1
+    //   80: invokevirtual 294	java/lang/Process:destroy	()V
+    //   83: aload_0
+    //   84: astore_2
+    //   85: aload_2
+    //   86: areturn
+    //   87: astore_0
+    //   88: aconst_null
+    //   89: astore_1
+    //   90: ldc 233
+    //   92: astore_0
+    //   93: aload_0
+    //   94: astore_2
+    //   95: aload_1
+    //   96: ifnull -11 -> 85
+    //   99: aload_1
+    //   100: invokevirtual 294	java/lang/Process:destroy	()V
+    //   103: aload_0
+    //   104: areturn
+    //   105: astore_0
+    //   106: aconst_null
+    //   107: astore_1
+    //   108: aload_1
+    //   109: ifnull +7 -> 116
+    //   112: aload_1
+    //   113: invokevirtual 294	java/lang/Process:destroy	()V
+    //   116: aload_0
+    //   117: athrow
+    //   118: astore_0
+    //   119: goto -11 -> 108
+    //   122: astore_0
+    //   123: ldc 233
+    //   125: astore_0
+    //   126: goto -33 -> 93
+    //   129: astore_2
+    //   130: goto -37 -> 93
+    //   133: ldc 233
+    //   135: astore_0
+    //   136: goto -79 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1039	0	this	bdjl
-    //   0	1039	1	paramString	String
-    //   131	872	2	i	int
-    //   592	366	3	j	int
-    //   81	948	4	localBundle	Bundle
+    //   0	139	0	paramArrayOfString	String[]
+    //   19	94	1	localProcess	java.lang.Process
+    //   31	64	2	localObject	Object
+    //   129	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   83	130	1006	java/lang/Exception
-    //   132	549	1006	java/lang/Exception
-    //   556	564	1006	java/lang/Exception
-    //   564	999	1006	java/lang/Exception
-    //   2	47	1034	finally
-    //   53	83	1034	finally
-    //   83	130	1034	finally
-    //   132	549	1034	finally
-    //   556	564	1034	finally
-    //   564	999	1034	finally
-    //   1007	1016	1034	finally
-    //   1021	1028	1034	finally
+    //   0	20	87	java/lang/Exception
+    //   0	20	105	finally
+    //   20	44	118	finally
+    //   52	57	118	finally
+    //   57	73	118	finally
+    //   20	44	122	java/lang/Exception
+    //   52	57	122	java/lang/Exception
+    //   57	73	129	java/lang/Exception
   }
   
-  protected String a()
+  public static List<PackageInfo> a(Context paramContext)
   {
-    return AppNetConnInfo.getCurrentAPN();
-  }
-  
-  protected void a(String paramString)
-  {
-    bdht.b("cgi_report_debug", "ReportManager doUpload start");
-    paramString = a(paramString);
-    if (paramString == null) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    a("https://wspeed.qq.com/w.cgi", "POST", paramString);
-  }
-  
-  public void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3)
-  {
-    if (a(paramInt) == true)
+    if (paramContext != null)
     {
-      b(paramString1, paramLong1, paramLong2, paramLong3, paramInt, paramLong4, paramString2, paramString3);
-      if (this.jdField_a_of_type_Boolean != true) {
-        break label37;
+      paramContext = paramContext.getPackageManager();
+      if (paramContext != null)
+      {
+        bdii.b("AppUtil", "getInstalledPackages switch is open, will scan local packages");
+        return paramContext.getInstalledPackages(0);
       }
     }
-    label37:
+    bdii.b("AppUtil", "getInstalledPackages switch is closed, will not scan local packages");
+    return null;
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "");
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    try
+    {
+      Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
+      localIntent.putExtra("platformId", "qzone_m");
+      bdii.c("add", ">>has add platformid=qzone_m");
+      paramContext.startActivity(localIntent);
+      return;
+    }
+    catch (Exception localException)
+    {
+      new Intent();
+      paramString1 = a(paramContext, paramString1);
+      if (paramString1 != null)
+      {
+        paramString1.setAction("android.intent.action.MAIN");
+        paramString1.putExtra("platformId", "qzone_m");
+        paramString1.putExtra("big_brother_source_key", paramString2);
+        bdii.c("add", ">>has add platformid=qzone_m");
+        try
+        {
+          paramContext.startActivity(paramString1);
+          return;
+        }
+        catch (Exception paramString1)
+        {
+          paramString1.printStackTrace();
+          Toast.makeText(paramContext, ajya.a(2131700633), 0).show();
+          return;
+        }
+      }
+      Toast.makeText(paramContext, ajya.a(2131700634), 0).show();
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString2);
+    paramString1 = localIntent;
+    if (localIntent == null)
+    {
+      paramString1 = new Intent(paramString2);
+      paramString1.addCategory("android.intent.category.DEFAULT");
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1.putExtra("appCustom", paramString3);
+      bdii.c("add", ">>has add appCustom=" + paramString3);
+    }
+    paramString1.putExtra("platformId", "qzone_m");
+    bdii.c("add", ">>has add platformid=qzone_m");
+    try
+    {
+      if (!(paramContext instanceof Activity)) {
+        paramString1.addFlags(268435456);
+      }
+      paramContext.startActivity(paramString1);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Toast.makeText(paramContext, ajya.a(2131700635), 0).show();
+    }
+  }
+  
+  /* Error */
+  public static void a(QZipFile paramQZipFile, ZipEntry paramZipEntry, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: sipush 4096
+    //   3: newarray byte
+    //   5: astore 5
+    //   7: aconst_null
+    //   8: astore 4
+    //   10: aload_0
+    //   11: aload_1
+    //   12: invokevirtual 374	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   15: astore_0
+    //   16: iload_2
+    //   17: ifeq +27 -> 44
+    //   20: aload_0
+    //   21: astore 4
+    //   23: aload_0
+    //   24: aload 5
+    //   26: invokevirtual 380	java/io/InputStream:read	([B)I
+    //   29: istore_3
+    //   30: iconst_m1
+    //   31: iload_3
+    //   32: if_icmpne -12 -> 20
+    //   35: aload_0
+    //   36: ifnull +7 -> 43
+    //   39: aload_0
+    //   40: invokevirtual 383	java/io/InputStream:close	()V
+    //   43: return
+    //   44: aload_0
+    //   45: astore 4
+    //   47: aload_0
+    //   48: aload 5
+    //   50: invokevirtual 380	java/io/InputStream:read	([B)I
+    //   53: pop
+    //   54: goto -19 -> 35
+    //   57: astore_0
+    //   58: aload 4
+    //   60: ifnull +8 -> 68
+    //   63: aload 4
+    //   65: invokevirtual 383	java/io/InputStream:close	()V
+    //   68: aload_0
+    //   69: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	70	0	paramQZipFile	QZipFile
+    //   0	70	1	paramZipEntry	ZipEntry
+    //   0	70	2	paramBoolean	boolean
+    //   29	4	3	i	int
+    //   8	56	4	localQZipFile	QZipFile
+    //   5	44	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   10	16	57	finally
+    //   23	30	57	finally
+    //   47	54	57	finally
+  }
+  
+  public static void a(String paramString)
+  {
+    i = 0;
+    try
+    {
+      long l1 = new File(paramString).length();
+      localQZipFile = new QZipFile(paramString);
+      try
+      {
+        paramString = localQZipFile.entries();
+        j = 0;
+        do
+        {
+          if (!paramString.hasMoreElements()) {
+            break;
+          }
+          localZipEntry = (ZipEntry)paramString.nextElement();
+        } while (localZipEntry.isDirectory());
+        l2 = localZipEntry.getCompressedSize();
+        l3 = localZipEntry.getSize();
+        if ((l2 >= -1L) && (l2 <= l1) && (l3 >= -1L) && (l3 <= 1500L * l2)) {
+          break label137;
+        }
+        throw new RuntimeException("Invalid entry size!");
+      }
+      finally {}
+    }
+    finally
+    {
+      for (;;)
+      {
+        ZipEntry localZipEntry;
+        long l2;
+        long l3;
+        QZipFile localQZipFile = null;
+        continue;
+        int k = i;
+        i = j;
+        int j = k;
+      }
+    }
+    if (localQZipFile != null) {
+      localQZipFile.close();
+    }
+    throw paramString;
+    label137:
+    if ((localZipEntry.getName() != null) && (localZipEntry.getName().contains("AndroidManifest.xml")))
+    {
+      if ((l2 == 0L) || (l3 == 0L)) {
+        throw new RuntimeException("Invalid AndroidManifest!");
+      }
+      a(localQZipFile, localZipEntry, false);
+      k = 1;
+      i = j;
+      j = k;
+      label198:
+      if ((i == 0) || (j == 0)) {
+        break label256;
+      }
+      if (localQZipFile != null) {
+        localQZipFile.close();
+      }
+    }
+    label256:
     do
     {
       return;
-      if (a() == true)
-      {
-        a(paramString2);
-        return;
+      if ((localZipEntry.getName() == null) || (!localZipEntry.getName().contains("classes.dex"))) {
+        break label283;
       }
-    } while (a(paramString2) != true);
-    a(paramString2);
+      a(localQZipFile, localZipEntry, false);
+      k = 1;
+      j = i;
+      i = k;
+      break label198;
+      k = j;
+      j = i;
+      i = k;
+      break;
+    } while (localQZipFile == null);
+    localQZipFile.close();
   }
   
-  protected void a(String paramString1, String paramString2, Bundle paramBundle)
+  public static boolean a()
   {
-    ThreadManager.executeOnNetWorkThread(new ReportManager.1(this, paramString1, paramBundle));
-  }
-  
-  protected boolean a()
-  {
-    long l2 = bdjb.a(bcxm.a().a(), null).a("Common_CGIReportTimeinterval");
-    bdht.c("OpenConfig_agent", "config 5:Common_CGIReportTimeinterval     config_value:" + l2);
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = 1200L;
-    }
-    bdht.c("OpenConfig_agent", "config 5:Common_CGIReportTimeinterval     result_value:" + l1);
-    l2 = System.currentTimeMillis() / 1000L;
-    if ((this.jdField_a_of_type_Long == 0L) || (l1 + this.jdField_a_of_type_Long <= l2))
+    try
     {
-      this.jdField_a_of_type_Long = l2;
-      bdht.b("cgi_report_debug", "ReportManager availableForTime = ture");
-      return true;
+      Object localObject = new ProcessBuilder(new String[] { "su" });
+      ((ProcessBuilder)localObject).redirectErrorStream(false);
+      localObject = ((ProcessBuilder)localObject).start();
+      DataOutputStream localDataOutputStream = new DataOutputStream(((java.lang.Process)localObject).getOutputStream());
+      DataInputStream localDataInputStream = new DataInputStream(((java.lang.Process)localObject).getInputStream());
+      if ((localDataInputStream != null) && (localDataOutputStream != null))
+      {
+        localDataOutputStream.flush();
+        localDataOutputStream.writeBytes("id\n");
+        localDataOutputStream.flush();
+        localDataOutputStream.writeBytes("exit\n");
+        localDataOutputStream.flush();
+        ((java.lang.Process)localObject).waitFor();
+        localObject = localDataInputStream.readLine();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          boolean bool = ((String)localObject).contains("uid=0");
+          if (bool) {
+            return true;
+          }
+        }
+        return false;
+      }
     }
-    bdht.b("cgi_report_debug", "ReportManager availableForTime = false");
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
     return false;
   }
   
-  protected boolean a(int paramInt)
+  public static boolean a(Context paramContext)
   {
-    paramInt = a(paramInt);
-    if (this.jdField_a_of_type_JavaUtilRandom.nextInt(100) < paramInt)
+    if (paramContext == null)
     {
-      bdht.b("cgi_report_debug", "ReportManager availableForFrequency = ture");
+      bdii.e("AppUtil", "isPackageScanAllowed context is null");
       return true;
     }
-    bdht.b("cgi_report_debug", "ReportManager availableForFrequency = false");
+    try
+    {
+      boolean bool = bcyb.a().a().getSharedPreferences("package_scan", 0).getBoolean("qqsetting_package_scan_flag", true);
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "");
+  }
+  
+  public static boolean a(Context paramContext, String paramString, Bundle paramBundle, int paramInt)
+  {
+    Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
+    if (localIntent == null)
+    {
+      localIntent = new Intent(paramString);
+      localIntent.addCategory("android.intent.category.DEFAULT");
+      try
+      {
+        for (;;)
+        {
+          localIntent.addFlags(paramInt);
+          localIntent.putExtras(paramBundle);
+          try
+          {
+            ((akgr)((BaseActivity)paramContext).app.a(23)).b(paramString.trim(), paramContext, localIntent);
+            return true;
+          }
+          catch (Exception paramBundle)
+          {
+            for (;;)
+            {
+              try
+              {
+                new akgr((QQAppInterface)null).a(paramString.trim(), paramContext, localIntent);
+              }
+              catch (Exception paramString)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler Failed!");
+                }
+                paramContext.startActivity(localIntent);
+              }
+            }
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        Toast.makeText(paramContext, ajya.a(2131700636), 0).show();
+        return false;
+      }
+    }
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    return a(paramContext, paramString1, paramString2, "");
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return false;
+      }
+      if (new File(paramString1).exists())
+      {
+        TMAssistantDownloadManager.getInstance(paramContext.getApplicationContext()).hookAM4Install();
+        paramString1 = FileProvider7Helper.openApkIntent(paramContext, paramString1);
+        if (GlobalUtil.isVivo()) {
+          paramString1.putExtra("installDir", true);
+        }
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          bdii.b("AppUtil", "installApp>>> put source " + paramString2);
+          paramString1.putExtra("big_brother_source_key", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          bdii.b("AppUtil", "installApp>>> put ref id " + paramString3);
+          paramString1.putExtra("big_brother_ref_source_key", paramString3);
+        }
+        paramContext.startActivity(paramString1);
+        return true;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      bdii.c("AppUtil", "installApp>>>", paramContext);
+    }
     return false;
   }
   
-  protected boolean a(String paramString)
+  public static boolean a(String paramString)
   {
-    int j = bdjb.a(bcxm.a().a(), null).a("Common_CGIReportMaxcount");
-    bdht.c("OpenConfig_agent", "config 6:Common_CGIReportMaxcount     config_value:" + j);
-    int i = j;
-    if (j == 0) {
-      i = 20;
-    }
-    bdht.c("OpenConfig_agent", "config 6:Common_CGIReportMaxcount     result_value:" + i);
-    if (this.jdField_a_of_type_Bdjj.a(paramString) >= i)
+    PackageManager localPackageManager = bcyb.a().a().getPackageManager();
+    try
     {
-      bdht.b("cgi_report_debug", "ReportManager availableForCount = ture");
+      localPackageManager.getPackageInfo(paramString, 0);
       return true;
     }
-    bdht.b("cgi_report_debug", "ReportManager availableForCount = false");
+    catch (PackageManager.NameNotFoundException paramString) {}
     return false;
   }
   
-  protected void b(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3)
+  public static int b(String paramString)
   {
-    paramLong1 = SystemClock.elapsedRealtime() - paramLong1;
-    bdht.b("cgi_report_debug", "ReportManager updateDB url=" + paramString1 + ",resultCode=" + paramInt + ",timeCost=" + paramLong1 + ",reqSize=" + paramLong2 + ",rspSize=" + paramLong3);
-    int i = 100 / a(paramInt);
-    if (i <= 0) {
-      i = 1;
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return 0;
+      try
+      {
+        paramString = bcyb.a().a().getPackageManager().getPackageArchiveInfo(paramString, 1);
+        if (paramString != null)
+        {
+          int i = paramString.versionCode;
+          return i;
+        }
+      }
+      catch (Exception paramString)
+      {
+        bdii.c("AppUtil", "getApkVersonCodeFromApkFile>>>", paramString);
+      }
+    }
+    return 0;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    try
+    {
+      int i = android.os.Process.myPid();
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == i)
+        {
+          paramContext = localRunningAppProcessInfo.processName;
+          return paramContext;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      bdii.b("AppUtil", "getCurProcessName err", paramContext);
+    }
+    return null;
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
+    try
+    {
+      paramContext.startActivity(new Intent("android.intent.action.DELETE", Uri.parse("package:" + paramString)));
+      return true;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    java.lang.Process localProcess = a();
+    if (localProcess == null) {}
+    for (;;)
+    {
+      return bool2;
+      try
+      {
+        DataOutputStream localDataOutputStream = new DataOutputStream(localProcess.getOutputStream());
+        Object localObject = new BufferedReader(new InputStreamReader(localProcess.getInputStream(), "UTF-8"));
+        boolean bool1 = bool3;
+        int i;
+        if (localObject != null)
+        {
+          bool1 = bool3;
+          if (localDataOutputStream != null)
+          {
+            File localFile = new File(paramString);
+            String str1 = localFile.getParent();
+            String str2 = new File(str1).getParent();
+            String str3 = new File(str2).getParent();
+            localDataOutputStream.write(("chmod 777 " + localFile.getAbsolutePath() + "\n").getBytes());
+            localDataOutputStream.flush();
+            localDataOutputStream.writeBytes("chmod 777 " + str1 + "\n");
+            localDataOutputStream.flush();
+            localDataOutputStream.writeBytes("chmod 777 " + str2 + "\n");
+            localDataOutputStream.flush();
+            localDataOutputStream.writeBytes("chmod 777 " + str3 + "\n");
+            localDataOutputStream.flush();
+            localDataOutputStream.write(("LD_LIBRARY_PATH=/vendor/lib:/system/lib pm install -r " + paramString + "\n").getBytes());
+            localDataOutputStream.flush();
+            localDataOutputStream.close();
+            paramString = new char[1024];
+            i = ((BufferedReader)localObject).read(paramString);
+            localObject = new StringBuilder();
+            if (i == -1) {
+              break label399;
+            }
+          }
+        }
+        for (paramString = ((StringBuilder)localObject).append(paramString, 0, i).toString();; paramString = new String(paramString, 0, localProcess.getErrorStream().read(paramString)))
+        {
+          bool1 = bool3;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            boolean bool4 = paramString.toLowerCase().contains("success");
+            bool1 = bool3;
+            if (bool4) {
+              bool1 = true;
+            }
+          }
+          bool2 = bool1;
+          return bool1;
+          label399:
+          paramString = new byte[1024];
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return false;
+      }
+      finally
+      {
+        if (localProcess != null) {
+          localProcess.destroy();
+        }
+      }
+    }
+  }
+  
+  public static int c(String paramString)
+  {
+    bdii.b("AppUtil", "getAppVersionCode: " + paramString);
+    localObject1 = null;
+    try
+    {
+      a(paramString);
+      Object localObject2 = (AssetManager)AssetManager.class.newInstance();
+      Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+      localMethod.setAccessible(true);
+      localMethod.invoke(localObject2, new Object[] { paramString });
+      localObject2 = ((AssetManager)localObject2).openXmlResourceParser("AndroidManifest.xml");
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        bdii.e("AppUtil", "openManifest failed: " + localException.getMessage());
+      }
+    }
+    if (localObject1 == null) {
+      return 0;
     }
     for (;;)
     {
-      String str = a();
-      this.jdField_a_of_type_Bdjj.a(str, i + "", paramString1, paramInt + "", paramLong1 + "", paramLong2 + "", paramLong3 + "", paramLong4 + "", paramString3, paramString2);
-      return;
-      if (i > 100) {
-        i = 100;
+      try
+      {
+        i = localObject1.getEventType();
+      }
+      catch (XmlPullParserException paramString)
+      {
+        String str;
+        bdii.e("AppUtil", "error: " + paramString.getMessage());
+        localObject1.close();
+        return 0;
+      }
+      catch (IOException paramString)
+      {
+        bdii.e("AppUtil", "error: " + paramString.getMessage());
+        continue;
+      }
+      catch (Exception paramString)
+      {
+        int i;
+        bdii.e("AppUtil", "error: " + paramString.getMessage());
+        continue;
+        if (i == 1) {
+          continue;
+        }
+        switch (i)
+        {
+        }
+        continue;
+      }
+      i = localObject1.nextToken();
+      continue;
+      str = localObject1.getName();
+      if ((!TextUtils.isEmpty(str)) && (str.equals("manifest")))
+      {
+        i = 0;
+        if (i < localObject1.getAttributeCount())
+        {
+          if (localObject1.getAttributeName(i).equals("versionCode"))
+          {
+            str = localObject1.getAttributeValue(i);
+            localObject1.close();
+            bdii.b("AppUtil", "apkPath:" + paramString + ",versionCode:" + str);
+            i = Integer.parseInt(str);
+            return i;
+          }
+          i += 1;
+        }
       }
     }
   }

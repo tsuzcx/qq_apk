@@ -2,8 +2,8 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bihd;
-import bjqu;
+import bihu;
+import bjrl;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 class QIMReadinjoyEffectsCameraCaptureUnit$2$1
@@ -13,7 +13,7 @@ class QIMReadinjoyEffectsCameraCaptureUnit$2$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setRecordTipsWording(this.a.this$0.jdField_a_of_type_Bjqu.a().getResources().getString(2131699463));
+    this.a.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setRecordTipsWording(this.a.this$0.jdField_a_of_type_Bjrl.a().getResources().getString(2131699474));
     this.a.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.e();
   }
 }

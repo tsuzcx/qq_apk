@@ -1,20 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import NS_COMM.COMM.StCommonExt;
 
-public class wmo
-  implements Animation.AnimationListener
+class wmo
+  implements xgu<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public wmo(CommentBottomBar paramCommentBottomBar) {}
+  wmo(wmn paramwmn, COMM.StCommonExt paramStCommonExt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    CommentBottomBar.a(this.a, true);
+    wmn.a(this.jdField_a_of_type_Wmn, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,44 +1,27 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqx
-  implements URLDrawable.URLDrawableListener
+  extends aqkn
 {
   public abqx(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    super.a(paramBoolean, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onBandIntimateRelationship");
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
+    PermisionPrivacyActivity.a(this.a);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    super.a(paramBoolean1, paramString, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, vzo.a(this.a.app.getApp(), 47.0F), vzo.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
+    PermisionPrivacyActivity.a(this.a);
   }
 }
 

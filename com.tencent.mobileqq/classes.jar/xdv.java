@@ -1,19 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.ui.CustomMenuBar;
 
-class xdv
-  implements ValueAnimator.AnimatorUpdateListener
+public class xdv
+  implements View.OnTouchListener
 {
-  xdv(xdt paramxdt, Container paramContainer) {}
+  public xdv(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
-    localLayoutParams.topMargin = paramValueAnimator.intValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      {
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842656);
+      }
+    }
   }
 }
 

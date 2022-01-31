@@ -1,8 +1,6 @@
 public abstract interface aiaw
 {
-  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
-  
-  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  public abstract void a(int paramInt);
 }
 
 

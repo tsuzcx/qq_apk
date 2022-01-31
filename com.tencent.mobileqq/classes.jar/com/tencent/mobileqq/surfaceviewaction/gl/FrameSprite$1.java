@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.content.Context;
-import ayca;
-import aycn;
+import aycc;
+import aycp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
 public class FrameSprite$1
   implements Runnable
 {
-  public FrameSprite$1(ayca paramayca, Context paramContext, SpriteGLView paramSpriteGLView) {}
+  public FrameSprite$1(aycc paramaycc, Context paramContext, SpriteGLView paramSpriteGLView) {}
   
   public void run()
   {
@@ -22,10 +22,10 @@ public class FrameSprite$1
         long l = System.currentTimeMillis();
         i = 0;
         Object localObject;
-        if ((i < ayca.a(this.this$0).length) && (!ayca.a(this.this$0)))
+        if ((i < aycc.a(this.this$0).length) && (!aycc.a(this.this$0)))
         {
-          localObject = new aycn(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, ayca.a(this.this$0)[i]);
-          ayca.a(this.this$0, i, (aycn)localObject);
+          localObject = new aycp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, aycc.a(this.this$0)[i]);
+          aycc.a(this.this$0, i, (aycp)localObject);
           i += 1;
           continue;
         }
@@ -34,24 +34,24 @@ public class FrameSprite$1
         }
         l = System.currentTimeMillis();
         i = j;
-        if ((i < ayca.a(this.this$0).length) && (!ayca.a(this.this$0)))
+        if ((i < aycc.a(this.this$0).length) && (!aycc.a(this.this$0)))
         {
-          if ((!ayca.b(this.this$0)) || (i % 2 == 0))
+          if ((!aycc.b(this.this$0)) || (i % 2 == 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("FrameSprite", 2, "FrameSprite: deode:" + i);
             }
             localObject = this.this$0;
-            if (ayca.b(this.this$0))
+            if (aycc.b(this.this$0))
             {
               j = i / 2;
-              ayca.a((ayca)localObject, j);
-              if ((!ayca.c(this.this$0)) && ((i == this.this$0.g - 1) || (i == ayca.a(this.this$0).length - 1)))
+              aycc.a((aycc)localObject, j);
+              if ((!aycc.c(this.this$0)) && ((i == this.this$0.g - 1) || (i == aycc.a(this.this$0).length - 1)))
               {
-                if ((ayca.a(this.this$0) == 20) && ((int)(System.currentTimeMillis() - l) / this.this$0.g > 50))
+                if ((aycc.a(this.this$0) == 20) && ((int)(System.currentTimeMillis() - l) / this.this$0.g > 50))
                 {
                   this.this$0.e(10);
-                  ayca.a(this.this$0, true);
+                  aycc.a(this.this$0, true);
                   if (QLog.isColorLevel()) {
                     QLog.d("FrameSprite", 2, "mIsHalf = true");
                   }
@@ -59,9 +59,9 @@ public class FrameSprite$1
                 }
                 this.this$0.aN_();
               }
-              if (ayca.a(this.this$0) != null)
+              if (aycc.a(this.this$0) != null)
               {
-                j = ayca.a(this.this$0).size();
+                j = aycc.a(this.this$0).size();
                 int k = this.this$0.g;
                 if (j >= k)
                 {

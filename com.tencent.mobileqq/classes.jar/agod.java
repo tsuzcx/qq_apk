@@ -1,23 +1,15 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class agod
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements bcwm
 {
-  public agod(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public agod(PhotoPreviewActivity paramPhotoPreviewActivity, Runnable paramRunnable) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt)
   {
-    this.a.p = this.a.a.getWidth();
-    this.a.q = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.p + ",mSurfaceViewHeight:" + this.a.q);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setVisibility(8);
   }
 }
 

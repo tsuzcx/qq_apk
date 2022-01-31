@@ -1,26 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.drawable.Drawable;
 import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class auir
-  implements View.OnClickListener
+public final class auir
+  implements anyg
 {
-  public auir(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public auir(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void a(anyh paramanyh)
   {
-    aujf.a(AutoReplyEditActivity.a(this.a), false);
-    String str = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
-    if (AutoReplyEditActivity.a(this.a) != null) {}
-    for (paramView = AutoReplyEditActivity.a(this.a).getRawText(); !str.equals(paramView); paramView = "")
+    if (paramanyh != null) {}
+    try
     {
-      AutoReplyEditActivity.a(this.a);
+      paramanyh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
       return;
     }
-    AutoReplyEditActivity.a(this.a);
+    catch (Throwable paramanyh) {}
   }
+  
+  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
+  
+  public boolean a(anyh paramanyh)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    aylc.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(anyh paramanyh) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

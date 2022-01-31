@@ -1,24 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.animation.ValueAnimator;
 
 public class bkdf
-  implements Animation.AnimationListener
+  implements bkde
 {
-  public bkdf(DoodleLayout paramDoodleLayout) {}
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Bkdn != null) {
-      this.a.jdField_a_of_type_Bkdn.a(null);
-    }
-  }
+  public void b(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void c(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

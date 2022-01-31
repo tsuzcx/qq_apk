@@ -1,7 +1,4 @@
-public abstract interface amfh
-{
-  public abstract void a(byte[] paramArrayOfByte, amfi paramamfi, int paramInt);
-}
+public abstract interface amfh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

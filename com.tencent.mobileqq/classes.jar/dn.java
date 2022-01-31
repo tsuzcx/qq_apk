@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.XListView;
 
 public class dn
-  implements akta
+  implements aksz
 {
   public dn(LiteActivity paramLiteActivity) {}
   

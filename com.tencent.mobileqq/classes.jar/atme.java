@@ -1,19 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class atme
-  extends GestureDetector.SimpleOnGestureListener
+  implements DialogInterface.OnDismissListener
 {
-  atme(atlu paramatlu) {}
+  atme(atlw paramatlw) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return true;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.a = false;
   }
 }
 

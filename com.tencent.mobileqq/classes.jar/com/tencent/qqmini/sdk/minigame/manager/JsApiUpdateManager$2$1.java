@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
-import beiu;
-import bevp;
+import bejl;
+import bewg;
 
 public class JsApiUpdateManager$2$1
   implements Runnable
 {
-  public JsApiUpdateManager$2$1(bevp parambevp) {}
+  public JsApiUpdateManager$2$1(bewg parambewg) {}
   
   public void run()
   {
-    beiu.a().a();
+    bejl.a().a();
   }
 }
 

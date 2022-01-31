@@ -1,61 +1,68 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rqb
-  implements mzb
+  implements rqa
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private rpz jdField_a_of_type_Rpz;
   
-  public rqb(rqa paramrqa, String paramString1, String paramString2)
+  public rqb(Context paramContext, String paramString1, String paramString2)
   {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("" + paramString1 + " : " + paramString2);
+    }
+    this.jdField_a_of_type_Rpz = new rpz(paramContext, paramString2);
     this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_JavaIoFile = new File(paramString1);
   }
   
-  public void a(String paramString, int paramInt)
+  public InputStream a(String paramString)
   {
-    QLog.d("TemplateFactory", 2, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
-    if (paramInt == 0)
-    {
-      if (paramString == null) {}
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    if (((File)localObject).exists()) {
       try
       {
-        QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
-        rqm.a(rqa.a(this.jdField_a_of_type_Rqa));
-        if ((paramString == null) && (rqm.a(this.jdField_a_of_type_JavaLangString).a))
-        {
-          QLog.d("TemplateFactory", 2, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
-          sfc.a(2, rqa.a(this.jdField_a_of_type_Rqa));
-          paramString = this.jdField_a_of_type_Rqa.a(BaseApplicationImpl.getApplication());
-          if (paramString == null)
-          {
-            QLog.d("TemplateFactory", 2, "templateFactory == null  bid : " + this.jdField_a_of_type_JavaLangString + " code : " + paramInt);
-            return;
-          }
-          paramString.a(rqa.a().incrementAndGet());
-          rqm.a(this.jdField_a_of_type_JavaLangString, paramString);
-          rpu.a();
-          return;
-        }
+        localObject = new FileInputStream((File)localObject);
+        return localObject;
       }
-      catch (Exception paramString)
+      catch (FileNotFoundException localFileNotFoundException)
       {
-        QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
+        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
       }
     }
+    InputStream localInputStream = this.jdField_a_of_type_Rpz.a(paramString);
+    QLog.d("TemplateFactory", 1, "使用兜底 file: " + paramString);
+    return localInputStream;
   }
   
-  public void loaded(String paramString, int paramInt)
+  public List<String> a()
   {
-    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramInt, paramString));
+    Object localObject2 = this.jdField_a_of_type_Rpz.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ArrayList();
+    }
+    localObject2 = this.jdField_a_of_type_JavaIoFile.list();
+    if (localObject2 != null)
+    {
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        ((List)localObject1).add(localObject2[i]);
+        i += 1;
+      }
+    }
+    return localObject1;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,10 +1,16 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import org.json.JSONObject;
 
-public final class aabi
-  extends RecyclablePool.Recyclable
+public abstract interface aabi
 {
-  public int a;
-  public long a;
+  public abstract void onComplete();
+  
+  public abstract void onFailure(int paramInt, String paramString);
+  
+  public abstract void onPermission(int paramInt);
+  
+  public abstract void onSuccess(JSONObject paramJSONObject);
+  
+  public abstract void onTrigger(JSONObject paramJSONObject);
 }
 
 

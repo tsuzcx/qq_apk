@@ -1,60 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anbl
-  extends ampb<anbk>
 {
-  public static anbk a()
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static anbl a(amph[] paramArrayOfamph)
   {
-    return (anbk)ampm.a().a(261);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
+    }
+    anbl localanbl = new anbl();
+    try
+    {
+      a(localanbl, new JSONObject(paramArrayOfamph[0].a));
+      return localanbl;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      paramArrayOfamph.printStackTrace();
+    }
+    return localanbl;
+  }
+  
+  public static void a(anbl paramanbl, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramanbl == null)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocAIOShowGuideDialogBean", 2, "handleTencentDocUniversalEntry call after " + paramJSONObject.toString());
+      }
+      if (paramJSONObject.has("aioGuiderDialogEnable")) {
+        paramanbl.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("aioGuiderDialogEnable");
+      }
+    } while (!paramJSONObject.has("dialogShowMaxTimes"));
+    paramanbl.jdField_a_of_type_Int = paramJSONObject.optInt("dialogShowMaxTimes");
   }
   
   public int a()
   {
-    return 261;
+    return this.jdField_a_of_type_Int;
   }
   
-  @NonNull
-  public anbk a(int paramInt)
+  public boolean a()
   {
-    return new anbk();
-  }
-  
-  @Nullable
-  public anbk a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anbk.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<anbk> a()
-  {
-    return anbk.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocConvertConfigProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anbk paramanbk) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

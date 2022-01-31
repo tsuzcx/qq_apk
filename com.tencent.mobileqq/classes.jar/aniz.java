@@ -1,19 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
-public class aniz
-  implements DialogInterface.OnClickListener
+public abstract interface aniz
 {
-  public aniz(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, aeno paramaeno) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((amnl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
-    this.jdField_a_of_type_Aeno.a(0, amnk.h, 0);
-  }
+  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
 }
 
 

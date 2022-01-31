@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="link,linkType")
 public class MiniAppByLinkEntity
-  extends aukm
+  extends auko
 {
   public String appId;
   public String extData;

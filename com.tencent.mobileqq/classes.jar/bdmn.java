@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
-import mqq.os.MqqHandler;
+import com.tencent.open.downloadnew.WebViewDownloadListener.1;
+import com.tencent.smtt.sdk.ValueCallback;
 
 public class bdmn
-  extends bdmx
+  implements ValueCallback<String>
 {
-  public bdmn(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  public bdmn(WebViewDownloadListener.1 param1) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
+    bdii.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
   }
 }
 

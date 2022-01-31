@@ -1,17 +1,22 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-final class agpw
-  implements DialogInterface.OnClickListener
+class agpw
+  extends mxj
 {
-  agpw(Activity paramActivity) {}
+  agpw(agpv paramagpv, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt == 0) {
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
     }
+    if ((this.jdField_a_of_type_Agpv.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
+    while (paramInt != 16) {
+      return;
+    }
+    agpt.b(this.jdField_a_of_type_Agpv.a);
   }
 }
 

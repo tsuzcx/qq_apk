@@ -1,46 +1,161 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+
 public class lgi
-  extends leo
 {
-  protected int ac;
-  protected long l;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
   
-  public long b()
+  public lgi(AppInterface paramAppInterface)
   {
-    return this.l;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
-  public void d(int paramInt)
+  public AppInterface a()
   {
-    this.ac = paramInt;
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
   }
   
-  public void d(long paramLong)
+  public void a(ToServiceMsg paramToServiceMsg, amlv paramamlv, Class<? extends MSFServlet> paramClass)
   {
-    this.l = paramLong;
+    if (paramToServiceMsg.getWupBuffer() != null)
+    {
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      bbmx.a(arrayOfByte, 0, 4L + l);
+      bbmx.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
+      }
+      paramToServiceMsg.actionListener = paramamlv;
+      paramamlv = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramamlv.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramamlv);
+      l = System.currentTimeMillis();
+      paramToServiceMsg.extraData.putLong("sendtimekey", l);
+    }
   }
   
-  public int e()
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
   {
-    return this.ac;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null))
+    {
+      paramException = new StringBuilder().append("handleResponse error req:").append(paramToServiceMsg).append("|");
+      if (paramFromServiceMsg == null)
+      {
+        paramToServiceMsg = "null";
+        lcg.d("MsfServletProxy", paramToServiceMsg);
+      }
+    }
+    AppInterface localAppInterface;
+    float f;
+    label149:
+    boolean bool;
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      return;
+      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+      break;
+      localAppInterface = a();
+      f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+      if (!paramBoolean) {
+        break label335;
       }
-      paramObject = (lgi)paramObject;
-    } while (this.l == paramObject.l);
-    return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
+      }
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    } while ((!paramBoolean) || (!bool));
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
+    }
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      paramException = new byte[i];
+      bbmx.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      paramFromServiceMsg.putWupBuffer(paramException);
+    }
+    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
+    {
+      for (;;)
+      {
+        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+        {
+          int j = arrayOfInt.length;
+          i = 0;
+          label290:
+          if (i >= j) {
+            break;
+          }
+          localObject = (ajtb)localAppInterface.getBusinessHandler(arrayOfInt[i]);
+          if (localObject != null) {}
+          try
+          {
+            ((ajtb)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
+            i += 1;
+            break label290;
+            label335:
+            if (paramException != null)
+            {
+              localObject = new ByteArrayOutputStream();
+              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
+              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
+              if (!QLog.isColorLevel()) {
+                break label149;
+              }
+              QLog.d("MsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
+              break label149;
+            }
+            if (!QLog.isColorLevel()) {
+              break label149;
+            }
+            QLog.w("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+              if (QLog.isColorLevel()) {
+                QLog.w("MsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
+              }
+            }
+          }
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("MsfServletProxy", 2, " handlerIds no map " + (String)localObject);
+      return;
+    }
   }
   
-  public int hashCode()
+  public boolean a(String paramString, int[] paramArrayOfInt)
   {
-    return (int)(this.l ^ this.l >>> 32);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      return true;
+    }
+    return false;
   }
 }
 

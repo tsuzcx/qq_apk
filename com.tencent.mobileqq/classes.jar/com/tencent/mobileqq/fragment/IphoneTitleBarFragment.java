@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -23,8 +23,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aqho;
-import bbct;
+import aqhq;
+import bbdh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
@@ -56,7 +56,7 @@ public abstract class IphoneTitleBarFragment
   private boolean mShowOnFirst;
   public View mTitleContainer;
   protected boolean mUseOptimizMode;
-  protected View.OnClickListener onBackListener = new aqho(this);
+  protected View.OnClickListener onBackListener = new aqhq(this);
   public TextView rightHighLView;
   public ImageView rightViewImg;
   public TextView rightViewText;
@@ -117,14 +117,14 @@ public abstract class IphoneTitleBarFragment
   
   public View getTitleBarView()
   {
-    return this.titleRoot.findViewById(2131375327);
+    return this.titleRoot.findViewById(2131375329);
   }
   
   public void hideTitleBar()
   {
     try
     {
-      this.mTitleContainer = this.titleRoot.findViewById(2131375327);
+      this.mTitleContainer = this.titleRoot.findViewById(2131375329);
       this.mTitleContainer.setVisibility(8);
       return;
     }
@@ -141,7 +141,7 @@ public abstract class IphoneTitleBarFragment
     do
     {
       return;
-      ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130849032));
+      ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130849038));
       if ((isTransparent()) && (needImmersive()) && (needStatusTrans()))
       {
         ViewParent localViewParent = getActivity().findViewById(16908310).getParent();
@@ -150,7 +150,7 @@ public abstract class IphoneTitleBarFragment
         }
       }
     } while (this.leftView != null);
-    this.vg = ((NavBarCommon)this.titleRoot.findViewById(2131375327));
+    this.vg = ((NavBarCommon)this.titleRoot.findViewById(2131375329));
     onCreateLeftView();
     try
     {
@@ -210,7 +210,7 @@ public abstract class IphoneTitleBarFragment
   {
     this.leftView = ((TextView)this.titleRoot.findViewById(2131368429));
     this.leftView.setOnClickListener(this.onBackListener);
-    this.mLeftBackText = ((TextView)this.titleRoot.findViewById(2131378010));
+    this.mLeftBackText = ((TextView)this.titleRoot.findViewById(2131378015));
     this.mLeftBackIcon = ((ImageView)this.titleRoot.findViewById(2131368742));
     if ((this.mLeftBackText != null) && (this.mLeftBackIcon != null))
     {
@@ -258,7 +258,7 @@ public abstract class IphoneTitleBarFragment
         this.titleRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
       }
       localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131375327);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131375329);
       this.titleRoot.addView(localObject1, (ViewGroup.LayoutParams)localObject2);
       this.mContentView = localObject1;
     }
@@ -453,7 +453,7 @@ public abstract class IphoneTitleBarFragment
   {
     paramTextView.setText(paramInt);
     if (AppSetting.d) {
-      paramTextView.setContentDescription(paramTextView.getText() + ajyc.a(2131705827));
+      paramTextView.setContentDescription(paramTextView.getText() + ajya.a(2131705838));
     }
   }
   
@@ -471,7 +471,7 @@ public abstract class IphoneTitleBarFragment
   {
     try
     {
-      this.mTitleContainer = this.titleRoot.findViewById(2131375327);
+      this.mTitleContainer = this.titleRoot.findViewById(2131375329);
       this.mTitleContainer.setVisibility(0);
       return;
     }
@@ -543,11 +543,11 @@ public abstract class IphoneTitleBarFragment
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
           ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
           this.mLoadingView = new ImageView(getActivity());
-          this.mLoadingView.setId(2131369492);
+          this.mLoadingView.setId(2131369491);
           localObject1 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
           ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * bbct.a()));
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * bbdh.a()));
           this.mLoadingParent.addView(this.mLoadingView, (ViewGroup.LayoutParams)localObject1);
           localObject1 = getActivity().getResources().getDrawable(2130839142);
           this.mLoadingView.setImageDrawable((Drawable)localObject1);

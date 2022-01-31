@@ -1,20 +1,25 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class auit
-  extends Editable.Factory
+  implements View.OnClickListener
 {
   public auit(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    if ((paramCharSequence instanceof ayks)) {
-      return (Editable)paramCharSequence;
+    aujh.a(AutoReplyEditActivity.a(this.a), false);
+    String str = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
+    if (AutoReplyEditActivity.a(this.a) != null) {}
+    for (paramView = AutoReplyEditActivity.a(this.a).getRawText(); !str.equals(paramView); paramView = "")
+    {
+      AutoReplyEditActivity.a(this.a);
+      return;
     }
-    return new ayks(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+    AutoReplyEditActivity.a(this.a);
   }
 }
 

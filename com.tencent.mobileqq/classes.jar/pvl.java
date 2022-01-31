@@ -1,24 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pvl
-  implements View.OnClickListener
 {
-  public pvl(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo, long paramLong, String paramString, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<rib> jdField_b_of_type_JavaUtilList = new ArrayList();
   
-  public void onClick(View paramView)
+  private pvl(pvm parampvm)
   {
-    if (ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu) == null) {}
-    int i;
-    do
-    {
-      return;
-      i = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu));
-      paramView = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu).a();
-    } while (paramView == null);
-    paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, i, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaUtilList = pvm.a(parampvm);
+    this.jdField_a_of_type_JavaLangString = pvm.a(parampvm);
+    this.jdField_b_of_type_JavaLangString = pvm.b(parampvm);
+    this.jdField_b_of_type_JavaUtilList = pvm.b(parampvm);
+    this.jdField_a_of_type_Int = pvm.a(parampvm);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<rib> a()
+  {
+    return this.jdField_b_of_type_JavaUtilList;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public List<URL> b()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 

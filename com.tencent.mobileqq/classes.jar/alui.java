@@ -1,44 +1,82 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import com.tencent.mobileqq.ark.ArkTopGestureLayout;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class alui
-  extends TopGestureLayout.TopGestureDetector
 {
-  public alui(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+  private int b;
+  private int c;
+  
+  private alui(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    super(paramArkTopGestureLayout, paramContext);
+    FrameLayout localFrameLayout = (FrameLayout)paramActivity.findViewById(16908290);
+    if (localFrameLayout == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aluj(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
+    paramArkAppView = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
+    this.c = paramArkAppView.heightPixels;
+    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  private int a()
   {
-    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
-    do
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    if (i != this.jdField_a_of_type_Int)
     {
-      do
+      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = k - i;
+      if (j <= k / 4) {
+        break label104;
+      }
+      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+      int[] arrayOfInt = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+      k = localRect.bottom + arrayOfInt[1];
+      j = this.c - j;
+      if (j < k)
       {
-        do
-        {
-          do
-          {
-            return false;
-            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-            if (!this.a.hasGestureFlag(1)) {
-              break;
-            }
-          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
-          this.a.setGestureFlag(-1);
-        } while (ArkTopGestureLayout.a(this.a));
-        this.a.mOnFlingGesture.flingLToR();
-        return false;
-      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
-      this.a.setGestureFlag(-1);
-    } while (ArkTopGestureLayout.b(this.a));
-    this.a.mOnFlingGesture.flingRToL();
-    return false;
+        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label104:
+      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+    }
+  }
+  
+  public static void a(Activity paramActivity, ArkAppView paramArkAppView)
+  {
+    new alui(paramActivity, paramArkAppView);
   }
 }
 

@@ -1,41 +1,26 @@
+import android.graphics.Matrix;
+import android.graphics.PointF;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class avae
-  implements View.OnClickListener
+  implements bble<Float>
 {
-  private long jdField_a_of_type_Long;
+  public avae(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
   
-  public avae(QzonePhotoView paramQzonePhotoView) {}
-  
-  public void onClick(View paramView)
+  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Long = l;
-      } while ((paramView == null) || (!(paramView.getTag() instanceof ausu)));
-      paramView = (ausu)paramView.getTag();
-    } while (paramView == null);
-    int i = paramView.a;
-    paramView = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
-    }
-    QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.x;
+    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.getWidth();
+    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.y;
+    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.getHeight();
+    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
+    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
   }
 }
 

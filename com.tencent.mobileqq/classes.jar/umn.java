@@ -1,11 +1,16 @@
-public class umn
-  extends ssk
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class umn
+  implements View.OnClickListener
 {
-  public int a;
+  umn(umm paramumm, String paramString) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "ChangeVideoSortEvent " + super.toString();
+    if (this.jdField_a_of_type_Umm.jdField_a_of_type_Umg != null) {
+      this.jdField_a_of_type_Umm.jdField_a_of_type_Umg.a(null, 0, this.jdField_a_of_type_Umm.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

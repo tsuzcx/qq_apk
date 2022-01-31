@@ -1,63 +1,18 @@
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
-
 public class lvh
-  extends lvf
+  extends lum
 {
-  public luz a;
   public int b;
   public int c;
   public int d;
   public int e;
   
-  public lvh(luz paramluz)
-  {
-    this.jdField_a_of_type_Luz = paramluz;
-    this.jdField_b_of_type_Long = 750L;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    long l = this.jdField_a_of_type_Long;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
-    }
-    a(i);
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    this.jdField_c_of_type_ArrayOfLvr = new lvr[5];
-    int i = 0;
-    while (i < this.jdField_c_of_type_ArrayOfLvr.length)
-    {
-      this.jdField_c_of_type_ArrayOfLvr[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_gold_" + i * 2 + ".png"));
-      i += 1;
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Luz = null;
-  }
+  public void a(long paramLong) {}
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 399 / 750);
-    this.jdField_c_of_type_Int = (paramInt1 * 279 / 750);
-    this.d = (paramInt1 * 155 / 750);
-    this.e = (paramInt1 * 252 / 750);
-  }
-  
-  public void c()
-  {
-    Rect localRect = this.jdField_a_of_type_Luz.a();
-    int i = localRect.left - this.d;
-    int j = localRect.top - this.e;
-    a(i, j, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + j);
+    paramInt2 = this.b * paramInt1 / 750;
+    paramInt3 = this.c * paramInt1 / 750;
+    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
   }
 }
 

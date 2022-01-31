@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public final class akur
-  implements Parcelable.Creator<SosoInterface.SosoCell>
+  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
 {
-  public SosoInterface.SosoCell a(Parcel paramParcel)
+  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
   {
-    return new SosoInterface.SosoCell(paramParcel);
+    return new SosoInterface.SosoLbsInfo(paramParcel);
   }
   
-  public SosoInterface.SosoCell[] a(int paramInt)
+  public SosoInterface.SosoLbsInfo[] a(int paramInt)
   {
-    return new SosoInterface.SosoCell[paramInt];
+    return new SosoInterface.SosoLbsInfo[paramInt];
   }
 }
 

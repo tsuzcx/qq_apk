@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajyc;
+import ajya;
 import android.widget.Toast;
 
 class GameActivity$9
@@ -15,7 +15,7 @@ class GameActivity$9
       GameActivity.access$1200(this.this$0);
       return;
     }
-    Toast.makeText(this.this$0, ajyc.a(2131705003) + this.val$retCode + ")", 0).show();
+    Toast.makeText(this.this$0, ajya.a(2131705014) + this.val$retCode + ")", 0).show();
   }
 }
 

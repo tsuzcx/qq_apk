@@ -1,26 +1,19 @@
 import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bawh
+final class bawh
   implements DownloadParams.DecodeHandler
 {
-  private final int a = 10;
-  private final int b = 20;
-  
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    try
+    paramDownloadParams = paramDownloadParams.tag;
+    if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
     {
-      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
-      bbju.a(paramDownloadParams, 10);
-      return paramDownloadParams;
+      int i = ((int[])(int[])paramDownloadParams)[0];
+      GdtSmartBlur.a().a(paramBitmap, i);
     }
-    catch (OutOfMemoryError paramDownloadParams)
-    {
-      return paramBitmap;
-    }
-    catch (Exception paramDownloadParams) {}
     return paramBitmap;
   }
 }

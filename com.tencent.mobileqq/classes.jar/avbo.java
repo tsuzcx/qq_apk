@@ -1,14 +1,19 @@
+import android.view.animation.Animation;
 import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface avbo
+public class avbo
+  extends avbi
 {
-  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  public avbo(LSRecordPanel paramLSRecordPanel) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
+    }
+    this.a.b = null;
+  }
 }
 
 

@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bawz;
+import baxn;
 
 public class ColorSelectView
   extends View
@@ -40,7 +40,7 @@ public class ColorSelectView
   
   private void a()
   {
-    this.b = bawz.a(getContext(), 5.0F);
+    this.b = baxn.a(getContext(), 5.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;

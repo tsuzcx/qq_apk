@@ -1,22 +1,17 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
 class azll
-  implements Comparator<Map.Entry<String, azln>>
 {
-  azll(azlk paramazlk) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public int a(Map.Entry<String, azln> paramEntry1, Map.Entry<String, azln> paramEntry2)
-  {
-    float f = ((azln)paramEntry2.getValue()).a() - ((azln)paramEntry1.getValue()).a();
-    if (f > 0.0F) {
-      return 1;
-    }
-    if (f < 0.0F) {
-      return -1;
-    }
-    return 0;
-  }
+  azll(azlj paramazlj) {}
 }
 
 

@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
 
-public class rhq
-  implements View.OnClickListener
+public final class rhq
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
 {
-  public rhq(ReadinjoyTabbar paramReadinjoyTabbar) {}
-  
-  public void onClick(View paramView)
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
-    {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).b();
-      return;
-    }
-    catch (Exception paramView) {}
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
   }
 }
 

@@ -1,21 +1,46 @@
-import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-final class axqx
-  implements PluginRuntime.IClickEventReportor
+class axqx
+  extends atzq
 {
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  protected void e(boolean paramBoolean, Bundle paramBundle)
   {
-    axqw.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
-  
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    axqw.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
+    {
+      int i = axqv.a().decrementAndGet();
+      axqv.a(0);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
+      axqv.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneReport", 2, "next req time: " + axqv.b() + ", left: " + i);
+      }
+      axqy.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      axqv.a().set(false);
+      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(axqv.a());
+      return;
+      axqv.c();
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "qzone report failed");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axqx
  * JD-Core Version:    0.7.0.1
  */

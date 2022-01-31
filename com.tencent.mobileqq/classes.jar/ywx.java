@@ -1,47 +1,35 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
+import android.os.Bundle;
 import org.json.JSONObject;
 
 class ywx
-  implements yxh
+  implements wxt
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  ywx(yww paramyww, ywk paramywk, String paramString, String[] paramArrayOfString, wxr paramwxr) {}
+  
+  public void a(Bundle paramBundle)
   {
-    Object localObject = null;
-    if (paramywn != null) {}
-    for (paramVarArgs = paramywn.a(); (paramywn == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      yxs.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
+    String str1 = paramBundle.getString("phone");
+    String str2 = paramBundle.getString("name");
+    String str3 = paramBundle.getString("city");
+    String str4 = paramBundle.getString("area");
+    paramBundle = new JSONObject();
     try
     {
-      localJSONObject.put("deviceId", yyv.a(paramVarArgs));
+      paramBundle.put("phone", str1);
+      paramBundle.put("name", str2);
+      paramBundle.put("city", str3);
+      paramBundle.put("area", str4);
+      paramBundle = paramBundle.toString();
+      yxp.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Ywk + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
+      this.jdField_a_of_type_Ywk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Wxr.b();
+      return;
     }
-    catch (JSONException localJSONException)
+    catch (Exception localException)
     {
-      try
+      for (;;)
       {
-        for (;;)
-        {
-          paramywn.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramywn != null) {
-            paramString = paramywn.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
-          return true;
-          localJSONException = localJSONException;
-          yxs.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          yxs.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
-        }
+        yxp.d("GdtGetUserInfoHandler", localException.toString());
       }
     }
   }

@@ -1,20 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mqp.app.sec.d;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class bfjr
-  implements bfjb
+public class bfjr
+  implements bfjx
 {
-  bfjr(bfjq parambfjq) {}
+  public bfjr(QSecFramework paramQSecFramework) {}
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
+    if ((paramInt1 == 1) && (paramInt2 == 1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
-      }
-      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
+      d.e(1, d.x(), null);
+      QSecFramework.a(this.a).b(this);
     }
-    return 0;
   }
 }
 

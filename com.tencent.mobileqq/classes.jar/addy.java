@@ -1,14 +1,8 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
-
-class addy
+public abstract interface addy
 {
-  int jdField_a_of_type_Int;
-  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public abstract void a();
   
-  addy(addx paramaddx) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import sbc;
+import saz;
 
 public class ServiceAccountFolderManager$9
   implements Runnable
 {
-  public ServiceAccountFolderManager$9(sbc paramsbc, QQAppInterface paramQQAppInterface, String paramString) {}
+  public ServiceAccountFolderManager$9(saz paramsaz, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {

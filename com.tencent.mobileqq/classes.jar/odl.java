@@ -1,35 +1,57 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import mqq.app.AppRuntime;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class odl
 {
-  private View a;
+  private JSONObject a = new JSONObject();
   
-  public odl(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
+  public String a()
   {
-    if (onk.a() != null)
-    {
-      paramArkAppMessage = onk.a().getApplication();
-      if (paramArkAppMessage != null) {}
-    }
-    else
-    {
-      return;
-    }
-    this.a = new View(paramArkAppMessage);
-    this.a.setVisibility(8);
+    return this.a.toString();
   }
   
-  public View a()
+  public odl a()
   {
-    return this.a;
+    try
+    {
+      this.a.put("network", old.a(BaseApplicationImpl.getApplication().getApplicationContext()));
+      this.a.put("version", npu.a);
+      this.a.put("os", "1");
+      this.a.put("uin", onh.a());
+      this.a.put("city", old.b());
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
   }
   
-  public void a() {}
-  
-  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
+  public odl a(int paramInt)
+  {
+    int i = 0;
+    if (paramInt == 41516) {
+      i = 3;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.a.put("source", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (paramInt == 41522) {
+        i = 16;
+      }
+    }
+    return this;
+  }
 }
 
 

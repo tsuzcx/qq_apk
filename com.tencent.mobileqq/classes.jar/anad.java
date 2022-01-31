@@ -1,31 +1,38 @@
 import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class anad
-  extends amyi<anac>
+  extends amyp<anac>
 {
+  @NonNull
+  public static anac c()
+  {
+    anac localanac2 = (anac)ampl.a().a(562);
+    anac localanac1 = localanac2;
+    if (localanac2 == null) {
+      localanac1 = anac.a();
+    }
+    return localanac1;
+  }
+  
   public int a()
   {
-    return 359;
+    return 562;
   }
   
   @NonNull
   public anac a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ho.a();
-    bbjn.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", "reset");
-    return new anac();
+    return anac.a();
   }
   
   @NonNull
-  public anac a(ampi[] paramArrayOfampi)
+  public anac a(@NonNull amph[] paramArrayOfamph)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ho.a(paramArrayOfampi[0].a);
-    bbjn.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", paramArrayOfampi[0].a);
-    return new anac();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfamph[0].a);
+    }
+    return anac.a(paramArrayOfamph[0].a);
   }
   
   public Class<anac> a()
@@ -36,7 +43,7 @@ public class anad
   @NonNull
   public anac b()
   {
-    return new anac();
+    return anac.a();
   }
 }
 

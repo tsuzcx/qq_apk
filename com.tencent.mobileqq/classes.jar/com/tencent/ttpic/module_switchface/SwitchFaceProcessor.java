@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.util.RGBATexSaveProcess;
 import com.tencent.ttpic.openapi.util.SwitchFaceUtil;
 import java.util.List;
-import mae;
-import mag;
+import lzz;
+import mab;
 
 public class SwitchFaceProcessor
 {
@@ -20,17 +20,17 @@ public class SwitchFaceProcessor
   private long mCurFaceDetectTime;
   private SwitchFaceFilter mFilter;
   private RGBATexSaveProcess mRGBATexSaveProcess;
-  private mae[] mSwitchFaceItem = new mae[2];
+  private lzz[] mSwitchFaceItem = new lzz[2];
   
   public SwitchFaceProcessor()
   {
     int i = 0;
     while (i < this.mSwitchFaceItem.length)
     {
-      this.mSwitchFaceItem[i] = new mae();
+      this.mSwitchFaceItem[i] = new lzz();
       i += 1;
     }
-    SwitchFaceUtil.setAllGrayImagePath(mag.a);
+    SwitchFaceUtil.setAllGrayImagePath(mab.a);
   }
   
   private void faceDetect()

@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yxs;
+import yxp;
 
 public class GdtCanvasData
   implements Serializable
@@ -44,7 +44,7 @@ public class GdtCanvasData
   {
     if ((!isValid()) || (paramInt < 0) || (paramInt > getSize()))
     {
-      yxs.d("GdtCanvasData", "getPage error");
+      yxp.d("GdtCanvasData", "getPage error");
       return null;
     }
     return (GdtCanvasPageData)this.pages.get(paramInt);

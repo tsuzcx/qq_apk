@@ -1,6 +1,13 @@
-public abstract interface pvq
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+
+public class pvq
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public pvq(ComponentContentHotSearch paramComponentContentHotSearch) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

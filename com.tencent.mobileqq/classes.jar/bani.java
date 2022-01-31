@@ -1,87 +1,70 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ReplacementSpan;
-import android.util.TypedValue;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troop.utils.VideoAnimationUtils.2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bani
-  extends ReplacementSpan
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float c;
-  private float d;
+  private static final String a = ajsd.aW + ".troop/anim_video/";
   
-  public bani(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
+  public static void a(bbww parambbww, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, aycd paramaycd)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (parambbww == null) {}
+    Object localObject;
+    do
+    {
+      return;
+      paramSpriteVideoView = new WeakReference(paramSpriteVideoView);
+      paramString1 = new File(a + paramString1);
+      if (paramString1.exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoAnimationUtils", 2, "res exists, return:" + paramString1.getAbsolutePath());
+        }
+        b(paramSpriteVideoView, paramString1.getAbsolutePath(), paramaycd);
+        return;
+      }
+      parambbww = parambbww.a(1);
+      localObject = new File(a);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      paramString2 = new bbwu(paramString2, paramString1);
+      paramString2.b = 2;
+      localObject = new Bundle();
+    } while (parambbww == null);
+    parambbww.a(paramString2, new banj(paramSpriteVideoView, paramString1, paramaycd), (Bundle)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, null, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, SpriteVideoView paramSpriteVideoView, aycd paramaycd)
+  {
+    if (paramQQAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, paramInt2, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-    this.c = TypedValue.applyDimension(1, paramInt4, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-    this.d = TypedValue.applyDimension(1, paramInt5, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-    this.jdField_b_of_type_Int = paramInt6;
-    this.jdField_b_of_type_Float = a(paramString, paramInt3);
+    a((bbww)paramQQAppInterface.getManager(47), paramString1, paramString2, paramSpriteVideoView, paramaycd);
   }
   
-  private float a(String paramString, int paramInt)
+  private static void b(WeakReference<SpriteVideoView> paramWeakReference, String paramString, aycd paramaycd)
   {
-    if (paramString.length() > 1)
+    if (paramWeakReference != null)
     {
-      Rect localRect = new Rect();
-      Paint localPaint = new Paint();
-      localPaint.setTextSize(this.d);
-      localPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-      float f = TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-      return localRect.width() + f * 2.0F;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoAnimationUtils", 2, "playVideoAnim");
+      }
+      if ((SpriteVideoView)paramWeakReference.get() != null) {
+        ThreadManager.getUIHandler().post(new VideoAnimationUtils.2(paramWeakReference, paramString, paramaycd));
+      }
     }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = new Paint();
-    paramCharSequence.setColor(this.jdField_a_of_type_Int);
-    paramCharSequence.setStyle(Paint.Style.FILL);
-    paramCharSequence.setAntiAlias(true);
-    paramPaint = paramPaint.getFontMetrics();
-    float f2 = paramPaint.descent;
-    float f3 = paramPaint.ascent;
-    float f1 = paramInt4;
-    f2 = (f2 - f3 - this.jdField_a_of_type_Float) / 2.0F;
-    f1 = paramPaint.ascent + (f2 + f1);
-    paramCanvas.drawRoundRect(new RectF(paramFloat, f1, this.jdField_b_of_type_Float + paramFloat, this.jdField_a_of_type_Float + f1), 0.0F, 0.0F, paramCharSequence);
-    paramCharSequence = new TextPaint();
-    paramCharSequence.setColor(this.jdField_b_of_type_Int);
-    paramCharSequence.setTextSize(this.d);
-    paramCharSequence.setAntiAlias(true);
-    paramCharSequence.setTextAlign(Paint.Align.CENTER);
-    paramPaint = paramCharSequence.getFontMetrics();
-    f2 = paramPaint.bottom;
-    f3 = paramPaint.top;
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Float / 2.0F + paramFloat, f1 + (this.jdField_a_of_type_Float - (f2 - f3)) / 2.0F - paramPaint.top, paramCharSequence);
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return (int)(this.jdField_b_of_type_Float + this.c);
   }
 }
 

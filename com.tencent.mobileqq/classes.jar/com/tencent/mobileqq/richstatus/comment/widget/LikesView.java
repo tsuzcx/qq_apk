@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -12,13 +12,13 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import awev;
-import awew;
 import awex;
-import awfg;
-import awfh;
+import awey;
+import awez;
 import awfi;
-import ayki;
+import awfj;
+import awfk;
+import aykk;
 import com.tencent.mobileqq.R.styleable;
 import java.util.List;
 
@@ -28,9 +28,9 @@ public class LikesView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private awfi jdField_a_of_type_Awfi;
+  private awfk jdField_a_of_type_Awfk;
   private String jdField_a_of_type_JavaLangString = "LikesView";
-  private List<awev> jdField_a_of_type_JavaUtilList;
+  private List<awex> jdField_a_of_type_JavaUtilList;
   private int b;
   private int c;
   
@@ -57,7 +57,7 @@ public class LikesView
   private SpannableString a()
   {
     SpannableString localSpannableString = new SpannableString("  ");
-    int i = actn.a(20.0F, getResources());
+    int i = actj.a(20.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, i, i);
     localSpannableString.setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 0), 0, 1, 33);
     return localSpannableString;
@@ -66,7 +66,7 @@ public class LikesView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new awfh(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new awfj(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
@@ -88,7 +88,7 @@ public class LikesView
   private void b()
   {
     this.c = getResources().getColor(2131166320);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846517);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846523);
   }
   
   public Drawable a()
@@ -106,10 +106,10 @@ public class LikesView
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        awev localawev = (awev)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localawev != null)
+        awex localawex = (awex)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localawex != null)
         {
-          localSpannableStringBuilder.append(a(localawev.a.b, localawev.a.jdField_a_of_type_JavaLangString));
+          localSpannableStringBuilder.append(a(localawex.a.b, localawex.a.jdField_a_of_type_JavaLangString));
           if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {
             localSpannableStringBuilder.append(", ");
           }
@@ -117,22 +117,22 @@ public class LikesView
         i += 1;
       }
       if (this.jdField_a_of_type_Long > 1L) {
-        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131719653), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131719664), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
       }
       for (;;)
       {
-        setText(new ayki(localSpannableStringBuilder, 3, 12));
+        setText(new aykk(localSpannableStringBuilder, 3, 12));
         setTextColor(this.c);
-        setMovementMethod(new awex(this.b, getContext().getResources().getColor(2131167087)));
-        setOnClickListener(new awfg(this));
+        setMovementMethod(new awez(this.b, getContext().getResources().getColor(2131167087)));
+        setOnClickListener(new awfi(this));
         return;
-        localSpannableStringBuilder.append(getContext().getResources().getString(2131719652));
+        localSpannableStringBuilder.append(getContext().getResources().getString(2131719663));
       }
     }
     setVisibility(8);
   }
   
-  public void a(List<awev> paramList, long paramLong)
+  public void a(List<awex> paramList, long paramLong)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -154,9 +154,9 @@ public class LikesView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(awfi paramawfi)
+  public void setOnItemClickListener(awfk paramawfk)
   {
-    this.jdField_a_of_type_Awfi = paramawfi;
+    this.jdField_a_of_type_Awfk = paramawfk;
   }
 }
 

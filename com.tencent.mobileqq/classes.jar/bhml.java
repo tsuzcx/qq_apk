@@ -1,53 +1,9 @@
-import cooperation.qzone.util.NetworkState;
-
-public class bhml
-  extends bhmf
+final class bhml
+  implements bhot
 {
-  public static final String a = bhml.class.getName();
-  public int b = -1;
-  
-  public bhml(String paramString)
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    super(paramString);
-  }
-  
-  public static boolean a()
-  {
-    if (bhmt.a() == null) {
-      return false;
-    }
-    return NetworkState.isWap();
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    if (this.b == -1)
-    {
-      int j = super.a(paramString, paramInt);
-      int i = j;
-      if (a())
-      {
-        if (j != 0)
-        {
-          this.b = 1;
-          i = super.a(paramString, paramInt);
-        }
-      }
-      else {
-        return i;
-      }
-      this.b = 0;
-      return j;
-    }
-    return super.a(paramString, paramInt);
-  }
-  
-  public bhmh a()
-  {
-    if ((a()) && (this.b == 1)) {
-      return bhmh.a;
-    }
-    return null;
+    bhmk.a(null);
   }
 }
 

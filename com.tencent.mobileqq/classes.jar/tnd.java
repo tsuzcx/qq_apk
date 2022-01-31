@@ -1,32 +1,69 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tnd
-  extends syp
+  extends sys<toq>
 {
-  public List<uvs> a = new ArrayList();
-  public boolean b;
+  private static final String jdField_a_of_type_JavaLangString = sxm.a("StorySvc.get_label_list");
+  private final boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private final String jdField_b_of_type_JavaLangString;
+  private int c;
+  private final int d;
   
-  public tnd(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
+  public tnd(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
-    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
-    for (;;)
+    this.c = paramInt1;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public tnd(String paramString, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public syn a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
+    try
     {
-      this.b = bool;
-      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
-      while (paramRspStoryFeedIdList.hasNext())
-      {
-        uvs localuvs = new uvs((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
-        this.a.add(localuvs);
-      }
-      bool = false;
+      localRspGetTagList.mergeFrom(paramArrayOfByte);
+      return new toq(localRspGetTagList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetTagList.music_type.set(this.c);
+      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+    }
+    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
+    localReqGetTagList.size.set(this.d);
+    return localReqGetTagList.toByteArray();
   }
 }
 

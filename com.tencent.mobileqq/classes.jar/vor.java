@@ -1,126 +1,38 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
 
 public class vor
-  extends voh
+  implements AdapterView.OnItemClickListener
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  vod a;
-  public voq a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = actn.a(6.0F, BaseApplicationImpl.getContext().getResources());
+  public vor(FacePanel paramFacePanel) {}
   
-  static
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    jdField_a_of_type_Int = vvx.a[8];
-  }
-  
-  public vor(vod paramvod)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Vod = paramvod;
-  }
-  
-  private void a(Paint paramPaint, voq paramvoq)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(paramvoq.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(paramvoq.c);
-    paramPaint.setShader(null);
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, voe paramvoe, Paint paramPaint)
-  {
-    if ((paramvoe instanceof voq))
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.a) {}
+    for (paramAdapterView = "2";; paramAdapterView = "1")
     {
-      paramvoe = (voq)paramvoe;
-      a(paramPaint, paramvoe);
-      paramCanvas.drawPath(paramvoe.a, paramPaint);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Voq = new voq(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Vod != null) {
-        this.jdField_a_of_type_Vod.a(this.jdField_a_of_type_Voq);
+      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
+      if (this.a.jdField_a_of_type_Vpb != null)
+      {
+        paramAdapterView = this.a.jdField_a_of_type_Vpb.a(paramInt);
+        if ((paramAdapterView != null) && ((paramAdapterView instanceof voq)))
+        {
+          vej.a("0X80076C7", "", "", ((voq)paramAdapterView).a, "");
+          vej.a("0X80075DC", ((voq)paramAdapterView).a);
+        }
       }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Voq.a.reset();
-      this.jdField_a_of_type_Voq.a.moveTo(f1, f2);
-      this.jdField_a_of_type_Voq.a.lineTo(f1 + 1.0F, f2 + 1.0F);
-      continue;
-      if ((this.jdField_a_of_type_Voq != null) && (this.jdField_a_of_type_Voq.a != null)) {
-        this.jdField_a_of_type_Voq.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
+      if (paramInt == 1)
+      {
+        vej.a("0X80076CC");
+        vej.b("0X80075E1");
       }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
+      return;
     }
-  }
-  
-  public Paint b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Voq = null;
   }
 }
 

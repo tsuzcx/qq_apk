@@ -1,63 +1,31 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONObject;
+import cooperation.qqreader.js.JsCallParams;
 
-public class bgve
-  extends bgut
+class bgve
 {
-  public bgve(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
   
-  public void a(bgus parambgus)
+  bgve(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
   {
-    JSONObject localJSONObject = parambgus.a();
-    if (localJSONObject == null) {}
-    try
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate response json is null");
-      return;
-    }
-    catch (Exception parambgus)
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate parse failed: " + parambgus.getMessage());
-      return;
-    }
-    int i = localJSONObject.getInt("ret");
-    parambgus = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: QueryGrayUpdate ret=" + i + "|msg=" + parambgus);
-      return;
-    }
-    i = localJSONObject.optInt("gray_level", 0);
-    int j = localJSONObject.optInt("updateStatus", 0);
-    int k = localJSONObject.optInt("updateStatus", 0);
-    int m = localJSONObject.optInt("remainMaxTime", 0);
-    bgvm.a(ForceUserUpdateActivity.a(this.a), i);
-    bgvm.b(ForceUserUpdateActivity.a(this.a), j);
-    bgvm.c(ForceUserUpdateActivity.a(this.a), k);
-    bgvm.d(ForceUserUpdateActivity.a(this.a), m);
-    bgvo.d("ForceUserUpdateActivity", "onReceiveData: QueryGrayUpdate result: level=" + i + "|status=" + j + "|remain=" + m + "|interval=" + k);
-    if (j == 1)
-    {
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    if (j == 2)
-    {
-      ForceUserUpdateActivity.a(this.a, k);
-      ForceUserUpdateActivity.a(this.a).setText(this.a.getResources().getString(2131717177, new Object[] { Integer.valueOf(m) }));
-      return;
-    }
-    ForceUserUpdateActivity.d(this.a);
-    bgvm.b(ForceUserUpdateActivity.a(this.a), 2);
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
   }
   
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  void a()
   {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: QueryGrayUpdate error: " + paramString);
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(bgve parambgve)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambgve.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
   }
 }
 

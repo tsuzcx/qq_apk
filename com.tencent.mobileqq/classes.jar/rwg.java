@@ -1,8 +1,17 @@
-public abstract interface rwg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+
+public class rwg
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public rwg(ViolaFragment paramViolaFragment) {}
   
-  public abstract void a(long paramLong);
+  public void onClick(View paramView)
+  {
+    this.a.a.d();
+    this.a.a();
+  }
 }
 
 

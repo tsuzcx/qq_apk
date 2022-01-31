@@ -1,6 +1,15 @@
-public abstract interface bkqt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bkqt
+  implements DialogInterface.OnClickListener
 {
-  public abstract void W();
+  bkqt(bkqp parambkqp) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

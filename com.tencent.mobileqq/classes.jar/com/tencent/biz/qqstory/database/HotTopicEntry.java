@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class HotTopicEntry
-  extends aukm
+  extends auko
 {
   public long databaseTime = System.currentTimeMillis();
   public boolean topicCanJoin;
   public int topicColor;
   public String topicCover;
   public String topicDesc;
-  @auma
+  @aumc
   public long topicId;
   public String topicLogo;
   public String topicName;

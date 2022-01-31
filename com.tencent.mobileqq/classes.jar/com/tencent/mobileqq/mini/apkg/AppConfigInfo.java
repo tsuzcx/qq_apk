@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import common.config.service.QzoneConfig;
 import java.util.HashMap;
@@ -153,7 +153,7 @@ public class AppConfigInfo
   
   public String getRootPath(String paramString)
   {
-    if (bbjw.a(paramString)) {
+    if (bbkk.a(paramString)) {
       return "";
     }
     String str2 = AppBrandUtil.getUrlWithoutParams(paramString);

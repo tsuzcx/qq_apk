@@ -1,29 +1,103 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aajy
-  implements View.OnClickListener
+  extends akat
 {
   public aajy(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, ayay paramayay)
   {
-    boolean bool = false;
-    axqw.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
-    paramView = (ayav)this.a.app.getManager(61);
-    if ((paramView != null) && (paramView.a() >= 2)) {}
-    for (;;)
+    if ((this.a.isFinishing()) || (TextUtils.isEmpty(paramString)) || (paramayay == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
-      }
-      AssociatedAccountActivity.a(this.a, bool);
       return;
-      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onPushSubAccountMsg subUin" + paramString);
+      }
+    } while (!paramBoolean);
+    AssociatedAccountActivity.d(this.a, false);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, ayaz paramayaz)
+  {
+    if ((this.a.isFinishing()) || (paramayaz == null) || (this.a.app == null) || (!TextUtils.equals(paramString, this.a.app.c()))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onSubAccountThirdQQUnreadMsgNum mIsFromPull=" + this.a.jdField_b_of_type_Boolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int + " isSuccess=" + paramBoolean + "  mainAccount=" + paramString + "  data=" + paramayaz);
+      }
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        AssociatedAccountActivity.a(this.a, paramBoolean, false);
+        return;
+      }
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = false;
+    } while (!paramBoolean);
+    AssociatedAccountActivity.a(this.a, paramayaz);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
     }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
+      if (paramBoolean) {
+        break label164;
+      }
+    }
+    label164:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("AssociatedAccountActivity", 2, paramBoolean + " nextAction=" + paramString2 + " mNeed2ConfirmMsgNum=" + this.a.jdField_b_of_type_Int);
+      if (!"sub.account.switchAccount".equals(paramString2)) {
+        break;
+      }
+      paramString1 = this.a;
+      paramString1.jdField_b_of_type_Int -= 1;
+      if (this.a.jdField_b_of_type_Int <= 0)
+      {
+        AssociatedAccountActivity.c(this.a, false);
+        AssociatedAccountActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString);
+      }
+      if (this.a.jdField_b_of_type_Int >= 0) {
+        break;
+      }
+      this.a.jdField_b_of_type_Int = 0;
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString, ayay paramayay)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.a.isFinishing()) || (paramayay == null)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onGetSubAccountMsg subAccount=" + paramString + " mIsFromPull=" + this.a.jdField_b_of_type_Boolean + " isSuccess=" + paramBoolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int);
+      }
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        AssociatedAccountActivity.a(this.a, paramBoolean, true);
+        return;
+      }
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.c = false;
+      if ((paramBoolean) && (paramayay.c))
+      {
+        AssociatedAccountActivity.b(this.a);
+        return;
+      }
+    } while (!paramBoolean);
+    AssociatedAccountActivity.f(this.a);
   }
 }
 

@@ -1,10 +1,13 @@
-public abstract interface bghq
+public class bghq
 {
-  public abstract void a();
-  
-  public abstract void a(bghp parambghp);
-  
-  public abstract void b(bghp parambghp);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = "";
+  public String e;
 }
 
 

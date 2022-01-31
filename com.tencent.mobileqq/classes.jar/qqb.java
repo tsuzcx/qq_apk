@@ -1,59 +1,41 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsOptView;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class qqb
-  extends OrientationEventListener
+  implements URLDrawable.URLDrawableListener
 {
-  public qqb(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public qqb(VideoFeedsOptView paramVideoFeedsOptView, URLDrawable paramURLDrawable) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (VideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof ApngDrawable))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (VideoFeedsListView.d(this.a)) || (!VideoFeedsListView.a(this.a, paramInt)) || ((!VideoFeedsListView.e(this.a)) && (VideoFeedsListView.f(this.a))));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
-              VideoFeedsListView.a(this.a, -1);
-            } while (VideoFeedsListView.c(this.a) == 0);
-            this.a.a(true);
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
-          VideoFeedsListView.a(this.a, -1);
-        } while (VideoFeedsListView.c(this.a) == 2);
-        VideoFeedsListView.a(this.a, 2, true);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
-      VideoFeedsListView.a(this.a, -1);
-    } while (VideoFeedsListView.c(this.a) == 1);
-    VideoFeedsListView.a(this.a, 1, true);
+      VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, (ApngDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      if (VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)) {
+        break label135;
+      }
+      VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView).pause();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getLayoutParams().height = ((int)(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView).getIntrinsicHeight() / 3 * this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getResources().getDisplayMetrics().density));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getLayoutParams().width = ((int)(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView).getIntrinsicWidth() / 3 * this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getResources().getDisplayMetrics().density));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.requestLayout();
+      return;
+      label135:
+      VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView);
+      VideoFeedsOptView.a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, "2"));
+    }
   }
 }
 

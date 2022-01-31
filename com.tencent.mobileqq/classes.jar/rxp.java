@@ -1,30 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class rxp
-  implements DialogInterface.OnClickListener
+  implements rwf
 {
-  public rxp(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
+  public rxp(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
     try
     {
-      paramDialogInterface.put("button", 1);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
       return;
     }
-    catch (JSONException paramDialogInterface)
+    catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
+      QLog.e(BridgeModule.TAG, 2, "canOpenPage error" + localException.getMessage());
     }
   }
 }

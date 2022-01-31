@@ -1,6 +1,6 @@
 public abstract interface bcei
 {
-  public abstract void a(String paramString);
+  public abstract Object a(int paramInt);
 }
 
 

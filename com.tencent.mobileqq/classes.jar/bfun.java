@@ -1,6 +1,12 @@
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+
 public abstract interface bfun
+  extends ExpandableListAdapter
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract int a();
+  
+  public abstract void a(View paramView, int paramInt);
 }
 
 

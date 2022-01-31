@@ -1,67 +1,20 @@
-import android.annotation.TargetApi;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaxf
-  implements ahml
+  extends GestureDetector.SimpleOnGestureListener
 {
   public aaxf(Conversation paramConversation) {}
   
-  public void a(int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_Ahmx != null) {
-      this.a.jdField_a_of_type_Ahmx.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
-    }
-    if (this.a.jdField_a_of_type_Thy != null) {
-      this.a.jdField_a_of_type_Thy.f();
-    }
-  }
-  
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.jdField_a_of_type_Auqi.i();
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        alwx localalwx = (alwx)localIterator.next();
-        if (localalwx != null) {
-          localalwx.l();
-        }
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.H();
-    }
-    if (this.a.jdField_a_of_type_Thy != null) {
-      this.a.jdField_a_of_type_Thy.g();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Conversation.h(this.a);
-    this.a.jdField_a_of_type_Auqi.j();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.G();
-    }
-    if (this.a.jdField_a_of_type_Thy != null) {
-      this.a.jdField_a_of_type_Thy.k();
-    }
-    if (this.a.jdField_a_of_type_Ahra != null) {
-      this.a.jdField_a_of_type_Ahra.f();
-    }
+    Conversation.i(this.a);
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

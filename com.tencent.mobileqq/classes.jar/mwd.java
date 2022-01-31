@@ -1,33 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.JoinGroupTransitActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class mwd
-  extends Handler
+  implements bfos
 {
-  private WeakReference<JoinGroupTransitActivity> a;
+  public mwd(PoiMapActivity paramPoiMapActivity) {}
   
-  public mwd(JoinGroupTransitActivity paramJoinGroupTransitActivity)
-  {
-    this.a = new WeakReference(paramJoinGroupTransitActivity);
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
-    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
-      return;
-    }
-    switch (paramMessage.what)
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
     {
-    default: 
-      return;
-    case 0: 
-      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
-      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
+      }
+      if ((!this.a.f) && (this.a.d))
+      {
+        this.a.f = true;
+        paramAbsListView = this.a;
+        paramAbsListView.n += 1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
+        }
+        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
+      }
     }
-    localJoinGroupTransitActivity.finish();
   }
 }
 

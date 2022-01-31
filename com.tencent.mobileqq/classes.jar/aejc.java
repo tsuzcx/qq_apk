@@ -1,115 +1,244 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.RemoteException;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class aejc
-  implements acwf
+public abstract class aejc
+  extends Binder
+  implements aejb, IBinder.DeathRecipient
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aejg jdField_a_of_type_Aejg;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
-  private int c;
+  public aeje a;
   
-  public aejc(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, aejg paramaejg, long paramLong, int paramInt1, int paramInt2)
+  protected aejc()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Aejg = paramaejg;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+  }
+  
+  public static aejb a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+    if ((localIInterface != null) && ((localIInterface instanceof aejb))) {
+      return (aejb)localIInterface;
+    }
+    return new aejd(paramIBinder);
   }
   
   public void a()
   {
-    Object localObject = new View(BaseApplicationImpl.getApplication());
-    acwd localacwd = acwd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localacwd != null) {
-      localacwd.a((View)localObject, this);
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, "binder destoryed");
     }
-    localObject = axdo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1);
-    if (localObject != null) {
-      axdo.a((axeg)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a = null;
+  }
+  
+  public void a(aeje paramaeje)
+  {
+    try
+    {
+      paramaeje.asBinder().linkToDeath(this, 0);
+      this.a = paramaeje;
+      return;
+    }
+    catch (RemoteException paramaeje)
+    {
+      binderDied();
     }
   }
   
-  public void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2)
+  public IBinder asBinder()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq != paramayqm.jdField_b_of_type_Long)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("carverW GetUrlAction", 2, " handleMessage return file.uniseq=" + paramayqm.jdField_b_of_type_Long);
-      }
-    }
-    do
+    return this;
+  }
+  
+  public void binderDied()
+  {
+    a();
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
     {
-      do
+    default: 
+    case 1598968902: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 17: 
+    case 18: 
+    case 4: 
+    case 5: 
+      try
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW GetUrlAction", 2, " handleMessage what==" + paramInt1 + ", arg1:" + paramInt2 + " fileType=" + paramayqm.jdField_b_of_type_Int + " status=" + paramayqm.d + " msg.id=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-                  }
-                } while ((paramayqm.jdField_b_of_type_Int != 6) && (paramayqm.jdField_b_of_type_Int != 17) && (paramayqm.jdField_b_of_type_Int != 9) && (paramayqm.jdField_b_of_type_Int != 20));
-                switch (paramayqm.d)
-                {
-                case 2004: 
-                default: 
-                  return;
-                case 2002: 
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW GetUrlAction", 2, "STATUS_RECV_PROCESS: get url finished urls=" + paramayqm.c + " domain =" + paramayqm.u + " mMsg=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-                  }
-                  break;
-                }
-              } while (paramayqm.c == null);
-              this.jdField_a_of_type_ArrayOfJavaLangString = paramayqm.c;
-              this.jdField_a_of_type_JavaLangString = paramayqm.u;
-              paramInt1 = 0;
-              while (paramInt1 < 1)
-              {
-                if (!bbjw.a(this.jdField_a_of_type_JavaLangString))
-                {
-                  paramView = new StringBuilder();
-                  String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-                  arrayOfString[paramInt1] = (arrayOfString[paramInt1] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
-                }
-                paramInt1 += 1;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_FINISHED");
-            return;
-            this.jdField_a_of_type_Int = paramayqm.g;
-          } while (!QLog.isColorLevel());
-          QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_ERROR  error = " + this.jdField_a_of_type_Int);
-          return;
-          this.jdField_a_of_type_Int = paramayqm.g;
-        } while (!QLog.isColorLevel());
-        QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_UNSAFE  error = " + this.jdField_a_of_type_Int);
-        return;
-        this.jdField_a_of_type_Int = paramayqm.g;
-      } while (!QLog.isColorLevel());
-      QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_EXPIRED  error = " + this.jdField_a_of_type_Int);
-      return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (!MessageForShortVideo.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo)) || (this.jdField_a_of_type_Aejg == null));
-    paramView = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    this.jdField_a_of_type_Aejg.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c, paramView, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, paramayqm.jdField_b_of_type_Int);
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
+      catch (RuntimeException paramParcel1)
+      {
+        paramParcel1.printStackTrace();
+        throw paramParcel1;
+      }
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a((MessageForShortVideo)paramParcel1.readParcelable(MessageForShortVideo.class.getClassLoader()));
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(aejf.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      c(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 20: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      localObject = new long[paramParcel1.readInt()];
+      paramParcel1.readLongArray((long[])localObject);
+      a((long[])localObject);
+      paramParcel2.writeNoException();
+      return true;
+    case 24: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      d(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      e(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 15: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 16: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readBundle());
+      paramParcel2.writeNoException();
+      return true;
+    case 19: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 21: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 22: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+    paramInt1 = paramParcel1.readInt();
+    paramInt2 = paramParcel1.readInt();
+    Object localObject = paramParcel1.readString();
+    String str1 = paramParcel1.readString();
+    String str2 = paramParcel1.readString();
+    paramParcel1 = paramParcel1.readString();
+    if (paramInt2 == 1) {
+      bool = true;
+    }
+    a(paramInt1, bool, (String)localObject, str1, str2, paramParcel1);
+    paramParcel2.writeNoException();
+    return true;
+    return true;
+    return true;
+    return true;
   }
 }
 

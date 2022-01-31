@@ -1,20 +1,96 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class azmm
-  implements TextUtils.EllipsizeCallback
+public class azmm
 {
-  azmm(azmn paramazmn, String paramString) {}
+  public long a;
+  public long b;
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public azmm()
   {
-    if (paramInt1 == paramInt2)
+    a();
+  }
+  
+  public azmm(azmm paramazmm)
+  {
+    a(paramazmm);
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Azmn.c.setText(this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("shmsgseq", this.a);
+      localJSONObject.put("uniseq", this.b);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.a = -1L;
+    this.b = -1L;
+  }
+  
+  public void a(azmm paramazmm)
+  {
+    if (paramazmm != null)
+    {
+      this.a = paramazmm.a;
+      this.b = paramazmm.b;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.a = paramString.getLong("shmsgseq");
+      this.b = paramString.getLong("uniseq");
       return;
     }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_Azmn.c.setText(new ayki(nam.b(nam.c(str + "...")), 3, 14));
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a != -1L;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return (paramLong != -1L) && ((this.a == -1L) || (this.a > paramLong));
+  }
+  
+  public boolean a(long paramLong1, long paramLong2)
+  {
+    if (a(paramLong1))
+    {
+      this.a = paramLong1;
+      this.b = paramLong2;
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(azmm paramazmm)
+  {
+    if (paramazmm == null) {
+      return false;
+    }
+    return a(paramazmm.a, paramazmm.b);
   }
 }
 

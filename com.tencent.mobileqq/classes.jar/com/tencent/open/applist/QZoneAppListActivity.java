@@ -1,6 +1,6 @@
 package com.tencent.open.applist;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -8,11 +8,11 @@ import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import bdgl;
-import bdht;
-import bfnk;
-import bgkq;
-import bgkz;
+import bdha;
+import bdii;
+import bfob;
+import bglh;
+import bglq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -29,8 +29,8 @@ public class QZoneAppListActivity
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bfnk jdField_a_of_type_Bfnk;
-  private bgkq jdField_a_of_type_Bgkq;
+  private bfob jdField_a_of_type_Bfob;
+  private bglh jdField_a_of_type_Bglh;
   
   private String a()
   {
@@ -60,7 +60,7 @@ public class QZoneAppListActivity
   
   private void a()
   {
-    PluginInfo localPluginInfo = this.jdField_a_of_type_Bgkq.a("qappcenter_plugin.apk");
+    PluginInfo localPluginInfo = this.jdField_a_of_type_Bglh.a("qappcenter_plugin.apk");
     int j = 0;
     int i;
     if (localPluginInfo != null)
@@ -72,47 +72,47 @@ public class QZoneAppListActivity
     }
     while (i == 0)
     {
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(1, 400L);
       return;
       label43:
       i = j;
       if (localPluginInfo.mState != 1)
       {
-        this.jdField_a_of_type_Bgkq.installPlugin("qappcenter_plugin.apk", new bdgl(this));
+        this.jdField_a_of_type_Bglh.installPlugin("qappcenter_plugin.apk", new bdha(this));
         i = j;
       }
     }
-    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(5, 0L);
+    this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(5, 0L);
   }
   
   private void b()
   {
-    bgkz localbgkz = new bgkz(1);
-    localbgkz.b = "qappcenter_plugin.apk";
-    localbgkz.d = ajyc.a(2131711600);
-    localbgkz.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
-    localbgkz.e = a();
+    bglq localbglq = new bglq(1);
+    localbglq.b = "qappcenter_plugin.apk";
+    localbglq.d = ajya.a(2131711611);
+    localbglq.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
+    localbglq.e = a();
     Intent localIntent1 = getIntent();
     if (localIntent1 != null) {
       if (localIntent1.getIntExtra("process_id", -1) == 2) {
-        localbgkz.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityQzone.class;
+        localbglq.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityQzone.class;
       }
     }
     for (;;)
     {
-      bdht.b("GHOST", "[launchPlugin] class:" + localbgkz.jdField_a_of_type_JavaLangClass);
+      bdii.b("GHOST", "[launchPlugin] class:" + localbglq.jdField_a_of_type_JavaLangClass);
       Intent localIntent2 = new Intent();
       localIntent2.putExtra("userQqResources", 2);
       if ((localIntent1 != null) && (localIntent1.getExtras() != null)) {
         localIntent2.putExtras(localIntent1.getExtras());
       }
-      localbgkz.jdField_a_of_type_AndroidContentIntent = localIntent2;
-      bgkq.a(this, localbgkz);
+      localbglq.jdField_a_of_type_AndroidContentIntent = localIntent2;
+      bglh.a(this, localbglq);
       finish();
       return;
-      localbgkz.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
+      localbglq.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
       continue;
-      localbgkz.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
+      localbglq.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
     }
   }
   
@@ -125,8 +125,8 @@ public class QZoneAppListActivity
   {
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_Bgkq.isReady()) {
-        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 400L);
+      if (!this.jdField_a_of_type_Bglh.isReady()) {
+        this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(1, 400L);
       }
       return;
     }
@@ -139,23 +139,23 @@ public class QZoneAppListActivity
     default: 
       return;
     case -2: 
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(4);
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(4);
       return;
     case 0: 
-      this.jdField_a_of_type_Bgkq.a("qappcenter_plugin.apk");
+      this.jdField_a_of_type_Bglh.a("qappcenter_plugin.apk");
       return;
     case 1: 
     case 2: 
       int i = (int)(paramPluginBaseInfo.mDownloadProgress * 90.0F);
-      this.jdField_a_of_type_Bfnk.obtainMessage(2, i, 0).sendToTarget();
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Bfob.obtainMessage(2, i, 0).sendToTarget();
+      this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(1, 400L);
       return;
     case 3: 
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(3);
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(3);
+      this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(1, 400L);
       return;
     case 5: 
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 400L);
+      this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(1, 400L);
       return;
     }
     a(100);
@@ -170,16 +170,16 @@ public class QZoneAppListActivity
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371995));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
     this.jdField_a_of_type_AndroidViewView = findViewById(2131370724);
-    setTitle(2131695646);
+    setTitle(2131695647);
     updateAppRuntime();
-    this.jdField_a_of_type_Bgkq = ((bgkq)this.app.getManager(27));
-    this.jdField_a_of_type_Bfnk = new bfnk(this);
+    this.jdField_a_of_type_Bglh = ((bglh)this.app.getManager(27));
+    this.jdField_a_of_type_Bfob = new bfob(this);
     if (DownloadSDKConfigManager.canGotoNewAppListPage()) {}
     for (int i = 6;; i = 1)
     {
       DownloadSDKConfigManager.refreshNewAppCenterConfig();
       this.jdField_a_of_type_Int = getIntent().getIntExtra("goto_type", i);
-      bdht.b("GHOST", "[doOnCreate] mGotoType:" + this.jdField_a_of_type_Int);
+      bdii.b("GHOST", "[doOnCreate] mGotoType:" + this.jdField_a_of_type_Int);
       a();
       return true;
     }
@@ -196,7 +196,7 @@ public class QZoneAppListActivity
       return true;
       if (!isFinishing())
       {
-        a("qappcenter_plugin.apk", this.jdField_a_of_type_Bgkq.a("qappcenter_plugin.apk"));
+        a("qappcenter_plugin.apk", this.jdField_a_of_type_Bglh.a("qappcenter_plugin.apk"));
         continue;
         a(paramMessage.arg1);
         continue;

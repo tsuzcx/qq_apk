@@ -1,16 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class bagm
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public bagm(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bagm(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return false;
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      return;
+    }
+    if (paramAnimation == this.a.b) {
+      VisitorTroopCardFragment.a(this.a, false);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
+    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)) {
+      VisitorTroopCardFragment.a(this.a, true);
+    }
   }
 }
 

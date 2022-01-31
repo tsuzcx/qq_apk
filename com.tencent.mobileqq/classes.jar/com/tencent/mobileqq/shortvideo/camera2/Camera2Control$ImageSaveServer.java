@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.shortvideo.camera2;
 
-import aiak;
-import amfw;
-import axfz;
-import axgd;
-import bbdr;
+import aiai;
+import amfv;
+import axgb;
+import axgf;
+import bbef;
 import java.io.File;
 
 public class Camera2Control$ImageSaveServer
   implements Runnable
 {
-  private final axfz jdField_a_of_type_Axfz;
+  private final axgb jdField_a_of_type_Axgb;
   private final byte[] jdField_a_of_type_ArrayOfByte;
   
-  public Camera2Control$ImageSaveServer(byte[] paramArrayOfByte, axfz paramaxfz)
+  public Camera2Control$ImageSaveServer(byte[] paramArrayOfByte, axgb paramaxgb)
   {
     this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Axfz = paramaxfz;
+    this.jdField_a_of_type_Axgb = paramaxgb;
   }
   
   public void run()
@@ -24,46 +24,46 @@ public class Camera2Control$ImageSaveServer
     int i = 0;
     if (this.jdField_a_of_type_ArrayOfByte == null)
     {
-      axgd.a(2, "[Camera2]ImageSaveServer params error!");
-      if (this.jdField_a_of_type_Axfz.jdField_a_of_type_Aiak != null) {
-        this.jdField_a_of_type_Axfz.jdField_a_of_type_Aiak.a_(null);
+      axgf.a(2, "[Camera2]ImageSaveServer params error!");
+      if (this.jdField_a_of_type_Axgb.jdField_a_of_type_Aiai != null) {
+        this.jdField_a_of_type_Axgb.jdField_a_of_type_Aiai.a_(null);
       }
     }
     do
     {
       return;
-      int j = axgd.a(this.jdField_a_of_type_Axfz.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_Axfz.jdField_a_of_type_Int);
-      boolean bool = this.jdField_a_of_type_Axfz.jdField_a_of_type_Boolean;
+      int j = axgf.a(this.jdField_a_of_type_Axgb.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_Axgb.jdField_a_of_type_Int);
+      boolean bool = this.jdField_a_of_type_Axgb.jdField_a_of_type_Boolean;
       try
       {
-        bbdr.a(amfw.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Axfz.jdField_a_of_type_AndroidGraphicsRect, bool, j), this.jdField_a_of_type_Axfz.jdField_a_of_type_JavaIoFile);
+        bbef.a(amfv.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Axgb.jdField_a_of_type_AndroidGraphicsRect, bool, j), this.jdField_a_of_type_Axgb.jdField_a_of_type_JavaIoFile);
         i = 1;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          aiak localaiak;
+          aiai localaiai;
           String str;
           localException.printStackTrace();
-          axgd.a(2, "[Camera2]ImageSaveServer Exception:" + localException);
+          axgf.a(2, "[Camera2]ImageSaveServer Exception:" + localException);
         }
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         for (;;)
         {
-          axgd.a(2, "[Camera2]ImageSaveServer OutOfMemoryError:" + localOutOfMemoryError);
+          axgf.a(2, "[Camera2]ImageSaveServer OutOfMemoryError:" + localOutOfMemoryError);
           continue;
           Object localObject = null;
         }
       }
-    } while (this.jdField_a_of_type_Axfz.jdField_a_of_type_Aiak == null);
-    localaiak = this.jdField_a_of_type_Axfz.jdField_a_of_type_Aiak;
+    } while (this.jdField_a_of_type_Axgb.jdField_a_of_type_Aiai == null);
+    localaiai = this.jdField_a_of_type_Axgb.jdField_a_of_type_Aiai;
     if (i != 0)
     {
-      str = this.jdField_a_of_type_Axfz.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      localaiak.a_(str);
+      str = this.jdField_a_of_type_Axgb.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      localaiai.a_(str);
       return;
     }
   }

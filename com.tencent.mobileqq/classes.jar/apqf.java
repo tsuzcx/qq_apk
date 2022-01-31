@@ -4,13 +4,11 @@ import android.view.View.OnClickListener;
 class apqf
   implements View.OnClickListener
 {
-  apqf(apqa paramapqa) {}
+  apqf(apqe paramapqe) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
-    }
+    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
   }
 }
 

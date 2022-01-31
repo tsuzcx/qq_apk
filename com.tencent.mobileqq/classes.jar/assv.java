@@ -1,30 +1,27 @@
-import android.os.Message;
 import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 import mqq.os.MqqHandler;
 
 public class assv
-  extends MqqHandler
+  extends astp
 {
   public assv(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
     }
-    do
+    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
     {
-      return;
-      MultiCardRecommendFragment.e(this.a);
-      sendEmptyMessageDelayed(3, 500L);
-      return;
-      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
-      MultiCardRecommendFragment.e(this.a);
-      return;
-      MultiCardRecommendFragment.d(this.a);
-      return;
-    } while (MultiCardRecommendFragment.a(this.a) == null);
-    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+      MultiCardRecommendFragment.a(this.a).a.clear();
+      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
+    }
   }
 }
 

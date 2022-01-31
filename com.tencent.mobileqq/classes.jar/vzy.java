@@ -1,12 +1,29 @@
-public class vzy
+class vzy
+  implements Cloneable
 {
-  public long a;
-  public long b;
+  public double a;
+  public int a;
+  public String a;
+  public int b = -1;
+  public String b;
+  public int c = -1;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f = "0";
   
-  public vzy(long paramLong1, long paramLong2)
+  public vzy(String paramString)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_Double = -1.0D;
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public vzy a()
+  {
+    return (vzy)super.clone();
   }
 }
 

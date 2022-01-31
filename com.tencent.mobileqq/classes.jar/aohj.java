@@ -1,20 +1,40 @@
-import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
 public class aohj
-  extends RecyclerView.ItemDecoration
+  extends RecyclerView.OnScrollListener
 {
-  private final int jdField_a_of_type_Int = actn.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
+  public aohj(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  private aohj(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    if (paramInt == 0)
+    {
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if ((!ExtendFriendGroupFragment.a(this.a)) && (!ExtendFriendGroupFragment.b(this.a)) && (this.a.a != null) && (ExtendFriendGroupFragment.a(this.a) != null) && (ExtendFriendGroupFragment.a(this.a).a() > 0) && (this.a.a.findViewByPosition(ExtendFriendGroupFragment.a(this.a).getItemCount() - 1) != null))
+    {
+      if (bbfj.g(ExtendFriendGroupFragment.a(this.a)))
+      {
+        ExtendFriendGroupFragment.a(this.a, true);
+        ExtendFriendGroupFragment.a(this.a).a(0, true);
+        axqy.b(ExtendFriendGroupFragment.a(this.a), "dc00898", "", "", "0X80092D9", "0X80092D9", 0, 0, "", "", "", "");
+      }
+    }
+    else {
+      return;
+    }
+    ExtendFriendGroupFragment.a(this.a).a(1, true);
   }
 }
 

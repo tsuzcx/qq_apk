@@ -1,14 +1,60 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.Set;
 
-class awsn
-  implements View.OnClickListener
+public class awsn
+  extends awqs
 {
-  awsn(awsm paramawsm, awog paramawog) {}
-  
-  public void onClick(View paramView)
+  public awsn(baxy parambaxy, awqw paramawqw, Set<String> paramSet)
   {
-    this.jdField_a_of_type_Awog.a(paramView);
+    super(parambaxy, paramawqw, paramSet);
+  }
+  
+  public void b(awoi paramawoi, awwr paramawwr)
+  {
+    boolean bool = true;
+    super.b(paramawoi, paramawwr);
+    if (paramawwr.c() != null)
+    {
+      paramawoi = (awne)paramawoi;
+      if ((this.a == null) || (!this.a.contains(paramawoi.b()))) {
+        break label144;
+      }
+    }
+    label138:
+    label144:
+    for (int i = 1;; i = 0)
+    {
+      if (!TextUtils.isEmpty(paramawoi.c()))
+      {
+        paramawwr.c().setText(paramawoi.c());
+        i = 1;
+      }
+      paramawoi = paramawwr.c();
+      int j;
+      if (i != 0)
+      {
+        j = 0;
+        paramawoi.setVisibility(j);
+        paramawoi = paramawwr.a();
+        if (i != 0) {
+          break label138;
+        }
+      }
+      for (;;)
+      {
+        paramawoi.setClickable(bool);
+        if (paramawwr.a() != null) {
+          paramawwr.a().setVisibility(8);
+        }
+        return;
+        j = 8;
+        break;
+        bool = false;
+      }
+    }
   }
 }
 

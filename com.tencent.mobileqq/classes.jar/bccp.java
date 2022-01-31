@@ -1,92 +1,38 @@
-import android.os.Bundle;
+import android.content.Intent;
 import android.text.TextUtils;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class bccp
-  implements MiniMsgUser.IMiniMsgActionCallback
+class bccp
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public bccp(WebViewFragment paramWebViewFragment) {}
+  bccp(bccj parambccj) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("action", paramString);
-      localJSONObject.put("options", paramJSONObject);
-      paramString = "javascript:mqq.dispatchEvent(\"miniAIOEvent\"," + localJSONObject.toString() + ");";
-      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(paramString);
-      return;
+    if ((this.a.jdField_a_of_type_Bcgx != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bcgx.a))) {
+      this.a.jdField_a_of_type_Bcgx.a(paramInt);
     }
-    catch (Exception paramString)
+    TouchWebView localTouchWebView;
+    do
     {
-      QLog.d("WebLog_WebViewFragment", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void onFromMiniAIOToAIO()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "onFromMiniAIOToAIO ");
-    }
-    a("fromMiniAIOToAIO", new JSONObject());
-  }
-  
-  public void onGoToConversation()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "onGoToConversation ");
+      do
+      {
+        return;
+        localTouchWebView = this.a.jdField_a_of_type_Bcfx.a();
+      } while (localTouchWebView == null);
+      String str = localTouchWebView.getUrl();
+      paramRadioGroup = str;
+      if (TextUtils.isEmpty(str))
+      {
+        paramRadioGroup = str;
+        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
+          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+        }
       }
-      a("returnMsgList", new JSONObject());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
-    }
-  }
-  
-  public void onOpenMiniAIOCallback()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser == null) {
-      return;
-    }
-    WebViewFragment localWebViewFragment = this.a;
-    Object localObject1 = localWebViewFragment.r;
-    if (TextUtils.isEmpty(localWebViewFragment.r)) {
-      localObject1 = localWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle();
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = localObject1;
-      if (!"‎".equals(localObject1)) {}
-    }
-    else
-    {
-      localObject2 = ajyc.a(2131716893);
-    }
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
-    Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam();
-    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.a((Bundle)localObject1);
-    bcgc.a(((MiniMsgUserParam)localObject2).backConversationIntent);
-    try
-    {
-      a("entryClicked", new JSONObject());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("WebLog_WebViewFragment", 1, localException, new Object[0]);
-    }
+    } while (TextUtils.isEmpty(paramRadioGroup));
+    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
   }
 }
 

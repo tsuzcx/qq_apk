@@ -1,44 +1,49 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
-
 public class wrp
-  extends wrr
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  private volatile int jdField_a_of_type_Int = 0;
+  private wrz jdField_a_of_type_Wrz;
   
-  public wrp(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a()
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
+    a(-1);
   }
   
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Wrz != null) {}
+    switch (paramInt)
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
+    case 0: 
+    default: 
+      return;
+    case -1: 
+      this.jdField_a_of_type_Wrz.n();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Wrz.l();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Wrz.k();
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Wrz.m();
   }
   
-  public byte[] a()
+  public void a(wrz paramwrz)
   {
-    return this.a.toByteArray();
+    this.jdField_a_of_type_Wrz = paramwrz;
+    a(this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 

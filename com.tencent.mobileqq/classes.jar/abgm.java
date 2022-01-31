@@ -1,12 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+
 public class abgm
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public abgm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
+  }
 }
 
 

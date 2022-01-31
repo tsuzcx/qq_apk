@@ -1,46 +1,8 @@
-import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
 
-public final class adln
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public abstract interface adln
 {
-  protected WeakReference<adll> a;
-  
-  public adln(WeakReference<adll> paramWeakReference)
-  {
-    this.a = paramWeakReference;
-  }
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    paramObject = (adll)this.a.get();
-    if (paramObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    String str1 = paramObject.a(paramString);
-    if (paramAppPathInfo != null) {}
-    for (paramString = paramAppPathInfo.path;; paramString = null)
-    {
-      paramObject.a.getAppFromLocal = false;
-      paramObject.a.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        String str2 = paramAppPathInfo.appTempInfo.template;
-        str2 = paramAppPathInfo.appTempInfo.templateView;
-        adll.a(paramObject).view = str2;
-      }
-      adll.a(paramAppPathInfo);
-      paramObject.a(paramString, paramInt, str1);
-      return;
-    }
-  }
+  public abstract void a(adlj paramadlj, ArkAppLoadLayout paramArkAppLoadLayout);
 }
 
 

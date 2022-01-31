@@ -1,86 +1,84 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class anat
-  implements ampd<String>
+  extends ampa<anar>
 {
-  public String a;
-  public ArrayList<anau> a;
-  private String b = "place_holder";
-  private String c = "data";
-  private String d = "topic_id";
-  private String e = "topic_name";
-  
-  public anat()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    return 432;
   }
   
-  public void a(String paramString)
+  @NonNull
+  public anar a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (TextUtils.isEmpty(paramString))
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new anar();
+  }
+  
+  @Nullable
+  public anar a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      QLog.e("SigTopicConfig", 1, "SigTopic config content is empty");
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
+      }
+      return anar.a(paramArrayOfamph[0]);
+    }
+    return null;
+  }
+  
+  public Class<anar> a()
+  {
+    return anar.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(anar paramanar)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramanar == null) {
+        break label49;
+      }
+    }
+    label49:
+    for (paramanar = paramanar.toString();; paramanar = " empty")
+    {
+      QLog.d("SearchRichConfProcessor", 2, paramanar);
+      awtm.a().a();
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, ajyc.a(2131714155));
-        if (paramString == null) {
-          break;
-        }
-        i = 0;
-        if (i >= paramString.length()) {
-          break;
-        }
-        localJSONObject = paramString.getJSONObject(i);
-        localanau = new anau();
-        localanau.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
-        localanau.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
-        if (!TextUtils.isEmpty(localanau.jdField_a_of_type_JavaLangString)) {
-          break label193;
-        }
-        if (!QLog.isColorLevel()) {
-          break label198;
-        }
-        QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
-      }
-      catch (JSONException paramString)
-      {
-        int i;
-        anau localanau;
-        QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
-        return;
-      }
-      if (j != 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localanau);
-      }
-      i += 1;
-      continue;
-      label193:
-      int j = 1;
-      continue;
-      label198:
-      j = 0;
-    }
   }
   
-  public String toString()
+  public int b()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
-    }
-    return "";
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

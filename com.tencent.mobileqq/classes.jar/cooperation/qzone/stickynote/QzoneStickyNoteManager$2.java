@@ -1,20 +1,20 @@
 package cooperation.qzone.stickynote;
 
-import bhna;
+import bhnr;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.widget.ListView;
 
 public class QzoneStickyNoteManager$2
   implements Runnable
 {
-  public QzoneStickyNoteManager$2(bhna parambhna, ListView paramListView, Card paramCard) {}
+  public QzoneStickyNoteManager$2(bhnr parambhnr, ListView paramListView, Card paramCard) {}
   
   public void run()
   {
-    bhna.a(this.this$0, bhna.a(this.this$0, this.jdField_a_of_type_ComTencentWidgetListView));
-    bhna.a(this.this$0, this.this$0.a());
-    bhna.a(this.this$0, true);
-    bhna.a(this.this$0);
+    bhnr.a(this.this$0, bhnr.a(this.this$0, this.jdField_a_of_type_ComTencentWidgetListView));
+    bhnr.a(this.this$0, this.this$0.a());
+    bhnr.a(this.this$0, true);
+    bhnr.a(this.this$0);
     this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
   }
 }

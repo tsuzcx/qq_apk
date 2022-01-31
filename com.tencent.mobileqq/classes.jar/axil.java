@@ -1,40 +1,24 @@
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
+
 public class axil
 {
-  public int a;
-  private int b;
-  private int c;
+  public final Object a;
+  public final Runnable a;
   
-  public int a()
+  axil()
   {
-    int i = this.b;
-    this.b = (i + 1);
-    return i;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
   }
   
-  public void a()
+  static void a(Message paramMessage)
   {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int b()
-  {
-    int i = this.c;
-    this.c = (i + 1);
-    return i;
-  }
-  
-  public void b()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int c()
-  {
-    return this.c;
+    if (paramMessage == null) {}
+    while (!(paramMessage.obj instanceof axil)) {
+      return;
+    }
+    ((axil)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

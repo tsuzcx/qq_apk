@@ -1,16 +1,19 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+
 class qyb
-  extends osp
+  implements Animation.AnimationListener
 {
-  qyb(qya paramqya) {}
+  qyb(qxx paramqxx, RelativeLayout paramRelativeLayout) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    qya.a(this.a, paramBoolean, paramInt, paramString);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    qya.a(this.a, paramBoolean, paramLong, paramInt, paramString);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
   }
 }
 

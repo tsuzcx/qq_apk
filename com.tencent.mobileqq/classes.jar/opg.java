@@ -4,55 +4,61 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class opg
   implements AladdinConfigHandler
 {
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("KingcardConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = ooi.a(paramString);
-    Object localObject = paramString.keySet();
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
     for (;;)
     {
-      String str1;
-      String str2;
       try
       {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
+        Object localObject1 = oof.a(paramString);
+        Object localObject2 = ((Map)localObject1).keySet();
+        paramString = new JSONObject();
+        paramInt1 = 0;
+        localObject2 = ((Set)localObject2).iterator();
+        if (((Iterator)localObject2).hasNext())
         {
-          str1 = (String)((Iterator)localObject).next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.equals(str1, "kingcard_switch")) {
-            bhvh.o(Integer.parseInt(str2));
+          String str1 = (String)((Iterator)localObject2).next();
+          String str2 = (String)((Map)localObject1).get(str1);
+          if (!TextUtils.isEmpty(str2))
+          {
+            paramString.put(str1, str2);
+            paramInt1 = 1;
           }
         }
         else
         {
+          if (paramInt1 != 0)
+          {
+            localObject1 = onh.a();
+            if (localObject1 != null)
+            {
+              bhvy.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
+              QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig],content: " + paramString.toString());
+            }
+          }
           return true;
         }
       }
-      catch (Throwable paramString)
+      catch (Exception paramString)
       {
-        paramString.printStackTrace();
-      }
-      if (TextUtils.equals(str1, "kingcard_guide_url")) {
-        bhvh.i(str2);
-      } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
-        bhvh.j(str2);
-      } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
-        bhvh.k(str2);
+        return true;
       }
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.o(0);
-    bhvh.i("");
-    bhvh.j("");
-    bhvh.k("");
+    AppRuntime localAppRuntime = onh.a();
+    if (localAppRuntime != null) {
+      bhvy.a(localAppRuntime, "local_kd_native_main_text_style", "");
+    }
   }
 }
 

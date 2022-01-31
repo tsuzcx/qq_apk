@@ -1,18 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class aidd
-  extends Handler
+  extends acld
 {
-  public aidd(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public CheckBox a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-  }
+  private aidd(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

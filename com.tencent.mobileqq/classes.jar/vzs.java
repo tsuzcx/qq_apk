@@ -1,48 +1,99 @@
-import android.support.annotation.NonNull;
-import com.tencent.image.URLDrawable;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class vzs
+public class vzs
 {
-  public static ConcurrentHashMap<vzq, Boolean> a;
-  private static volatile vzs a;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static List<vzt> jdField_a_of_type_JavaUtilList;
   
-  static
+  public static String a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    b();
+    vzt localvzt = a(paramInt);
+    if (localvzt != null) {
+      return localvzt.jdField_a_of_type_JavaLangString;
+    }
+    return "";
   }
   
-  public static vzs a()
+  @Nullable
+  private static vzt a(int paramInt)
   {
-    if (jdField_a_of_type_Vzs == null) {}
-    try
+    b();
+    Iterator localIterator = Collections.unmodifiableList(jdField_a_of_type_JavaUtilList).iterator();
+    while (localIterator.hasNext())
     {
-      if (jdField_a_of_type_Vzs == null) {
-        jdField_a_of_type_Vzs = new vzs();
+      vzt localvzt = (vzt)localIterator.next();
+      if (localvzt.jdField_a_of_type_Int == paramInt) {
+        return localvzt;
       }
-      return jdField_a_of_type_Vzs;
     }
-    finally {}
+    return null;
   }
   
-  public static void a(URLDrawable paramURLDrawable, String paramString)
+  public static void a()
   {
-    paramString = new vzq(a(), paramURLDrawable, paramString);
-    paramURLDrawable.setDownloadListener(paramString);
-    paramURLDrawable.setURLDrawableListener(paramString);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_JavaUtilList != null)
+      {
+        jdField_a_of_type_JavaUtilList.clear();
+        jdField_a_of_type_JavaUtilList = null;
+      }
+      return;
+    }
   }
   
-  public void a(@NonNull vzq paramvzq)
+  public static String b(int paramInt)
   {
-    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramvzq);
-    veg.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
-    if (!bool) {
-      axps.a(vzj.a(ajyc.a(2131715866), null), "Story.UIUtils.monitor " + paramvzq.toString());
+    b();
+    vzt localvzt = a(paramInt);
+    if (localvzt != null) {
+      return localvzt.b;
     }
-    paramvzq.a.setDownloadListener(null);
-    paramvzq.a.setURLDrawableListener(null);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramvzq);
+    return "";
+  }
+  
+  private static void b()
+  {
+    if (jdField_a_of_type_JavaUtilList == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        jdField_a_of_type_JavaUtilList = new ArrayList();
+        String str1 = ((tcs)tcz.a(10)).c();
+        try
+        {
+          JSONObject localJSONObject = new JSONObject(str1);
+          Iterator localIterator = localJSONObject.keys();
+          while (localIterator.hasNext())
+          {
+            String str2 = (String)localIterator.next();
+            Object localObject3 = localJSONObject.getJSONObject(str2);
+            String str3 = ((JSONObject)localObject3).optString("jump_url", "");
+            localObject3 = ((JSONObject)localObject3).optString("wording", "");
+            jdField_a_of_type_JavaUtilList.add(new vzt(Integer.valueOf(str2).intValue(), str3, (String)localObject3));
+          }
+          localObject2 = finally;
+        }
+        catch (JSONException localJSONException)
+        {
+          ved.e("VideoSourceTagInfoHelper", "check read config error : %s, configStr : %s", new Object[] { localJSONException, str1 });
+          return;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
+          {
+            ved.e("VideoSourceTagInfoHelper", "type format error : %s", new Object[] { str1 });
+          }
+        }
+      }
+    }
   }
 }
 

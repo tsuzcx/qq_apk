@@ -1,14 +1,18 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class aani
+public class aani
   implements DialogInterface.OnClickListener
 {
-  aani(aang paramaang) {}
+  public aani(BaseChatPie paramBaseChatPie) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
   }
 }
 

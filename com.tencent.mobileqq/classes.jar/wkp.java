@@ -1,153 +1,38 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import NS_COMM.COMM.StCommonExt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
 
-public class wkp
+class wkp
+  implements View.OnClickListener
 {
-  public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StShare a;
-  public ExtraTypeInfo a;
-  public String a;
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
+  wkp(wkn paramwkn) {}
   
-  public CertifiedAccountMeta.StFeed a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.id.get();
-    }
-    return "";
-  }
-  
-  public String b()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.url.get();
-    }
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        return "";
-      }
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    String str;
-    switch (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
-    {
-    default: 
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        str = "";
-      }
-      break;
-    }
+    paramView = new StringBuilder(wim.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (this.a.a() != null) {}
     for (;;)
     {
-      QLog.d("ShareInfoBean", 1, "share url is:" + str);
-      return str;
-      str = wva.e(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = wva.c(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = wva.d(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = wva.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-      continue;
-      str = this.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public String c()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.title.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get();
+      try
+      {
+        paramView.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        xhb.b("auth_follow", "clk_more", 0, 0, new String[0]);
+        wis.a(paramView.toString());
+        return;
       }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get();
-    }
-    return "";
-  }
-  
-  public String d()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.desc.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.desc.get();
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        continue;
       }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.subtitle.get();
+      QLog.d(wkn.a, 0, "jump more recommend H5 page with no attach info!");
     }
-    return "";
-  }
-  
-  public String e()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get())))
-    {
-      QLog.e("ShareInfoBean", 1, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get());
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.cover.url.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)
-    {
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002)) {
-        return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.icon.get();
-      }
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.url.get();
-    }
-    return "";
-  }
-  
-  public String f()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.nick.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.nick.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get();
-    }
-    return "";
-  }
-  
-  public String g()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.desc.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.author.desc.get();
-    }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.desc.get();
-    }
-    return "";
-  }
-  
-  public String h()
-  {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare != null) && (!bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.shorturl.get()))) {
-      return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare.shorturl.get();
-    }
-    return "";
   }
 }
 

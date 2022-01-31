@@ -1,16 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class rfg
-  implements aybz
+  implements ayca
 {
-  public rfg(ReadInJoySkinGuideView.1 param1) {}
+  public rfg(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public void a(aybc paramaybc)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, paramaybc));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = this.a.getHeight();
+    this.a.a.setLayoutParams(localLayoutParams);
   }
 }
 

@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfsh;
-import bfth;
+import bfsy;
+import bfty;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ public class NegativeChildrenLayout
 {
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bfth(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bfty(this);
   View jdField_a_of_type_AndroidViewView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bfsh a;
+  public bfsy a;
   ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public NegativeChildrenLayout(Context paramContext)
@@ -45,9 +45,9 @@ public class NegativeChildrenLayout
   private void a(Context paramContext)
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2131559979, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369746));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131369745));
     this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366288);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131375887);
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131375889);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
     localLayoutParams.leftMargin = 0;
     localLayoutParams.rightMargin = 0;
@@ -133,7 +133,7 @@ public class NegativeChildrenLayout
     this.jdField_a_of_type_JavaUtilArrayList.add(localView);
   }
   
-  public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, bfsh parambfsh)
+  public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, bfsy parambfsy)
   {
     if (paramArrayList == null) {
       return;
@@ -161,7 +161,7 @@ public class NegativeChildrenLayout
       a((View)this.jdField_a_of_type_JavaUtilArrayList.get(i), null);
       i += 1;
     }
-    this.jdField_a_of_type_Bfsh = parambfsh;
+    this.jdField_a_of_type_Bfsy = parambfsy;
   }
   
   public void setLastSeparateLineUnvis()
@@ -171,11 +171,11 @@ public class NegativeChildrenLayout
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       View localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localView2 = localView1.findViewById(2131375887);
+      localView2 = localView1.findViewById(2131375889);
       if (i != this.jdField_a_of_type_Int) {
         break label68;
       }
-      localView1.setBackgroundResource(2130842385);
+      localView1.setBackgroundResource(2130842386);
     }
     label68:
     for (int j = 4;; j = 0)

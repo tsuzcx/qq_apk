@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcbn;
-import bcdb;
-import bgwj;
+import bccb;
+import bcdp;
+import bgxa;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WeizhengquanJsPlugin
-  extends bcbn
+  extends bccb
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   String jdField_a_of_type_JavaLangString = "";
@@ -48,16 +48,16 @@ public class WeizhengquanJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("WeizhengquanJsPlugin", 2, "prosGetPayAdInfo...");
     }
-    if (!(this.mRuntime.a() instanceof bgwj)) {
+    if (!(this.mRuntime.a() instanceof bgxa)) {
       QLog.i("WeizhengquanJsPlugin", 2, "activity error : " + this.jdField_a_of_type_AndroidAppActivity);
     }
     do
     {
       return;
-      i = ((bgwj)this.mRuntime.a()).a();
+      i = ((bgxa)this.mRuntime.a()).a();
       QLog.i("WeizhengquanJsPlugin", 2, "bzCode = " + i);
     } while (1 != i);
-    paramVarArgs = (Bundle)((bgwj)this.mRuntime.a()).b();
+    paramVarArgs = (Bundle)((bgxa)this.mRuntime.a()).b();
     if (paramVarArgs == null)
     {
       QLog.i("WeizhengquanJsPlugin", 2, "error bundle is null...");

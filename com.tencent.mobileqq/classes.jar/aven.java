@@ -1,13 +1,24 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
 public class aven
-  implements bfos
+  implements View.OnTouchListener
 {
   public aven(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void onDismiss()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    axqw.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+    if (paramMotionEvent.getAction() == 0) {
+      QCallDetailActivity.a(this.a).setPressed(true);
+    }
+    while (1 != paramMotionEvent.getAction()) {
+      return false;
+    }
+    QCallDetailActivity.a(this.a).setPressed(false);
+    return false;
   }
 }
 

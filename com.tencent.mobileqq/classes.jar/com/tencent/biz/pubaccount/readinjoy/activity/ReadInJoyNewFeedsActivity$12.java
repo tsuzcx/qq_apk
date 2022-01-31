@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import rpl;
+import rpi;
 
 class ReadInJoyNewFeedsActivity$12
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyNewFeedsActivity$12
   
   public void run()
   {
-    rpl.a().b(this.this$0.app);
+    rpi.a().b(this.this$0.app);
   }
 }
 

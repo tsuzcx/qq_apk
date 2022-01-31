@@ -1,8 +1,20 @@
-public abstract interface axdb
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+
+public class axdb
+  extends Handler
 {
-  public abstract axdt a(Object paramObject, axeg paramaxeg);
+  public axdb(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract axew a(Object paramObject, axeg paramaxeg);
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 

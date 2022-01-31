@@ -1,22 +1,18 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
 
-class pqz
-  implements PopupWindow.OnDismissListener
+public class pqz
+  extends pra
 {
-  pqz(pqt parampqt, bfsc parambfsc) {}
-  
-  public void onDismiss()
+  public pqz(Context paramContext, baxy parambaxy, ram paramram)
   {
-    this.jdField_a_of_type_Bfsc.a(1.0F);
-    if (this.jdField_a_of_type_Pqt.a.b)
-    {
-      qtu localqtu = this.jdField_a_of_type_Pqt.a.a();
-      if (localqtu != null)
-      {
-        localqtu.c();
-        this.jdField_a_of_type_Pqt.a.b = false;
-      }
-    }
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

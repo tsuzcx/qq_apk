@@ -3,13 +3,13 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anjz;
+import anke;
 import java.util.List;
 
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new anjz();
+  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new anke();
   public int extId;
   public String extStr;
   public String ipContent;

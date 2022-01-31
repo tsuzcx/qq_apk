@@ -1,12 +1,15 @@
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
+
 public class akqo
+  implements Comparator<MessageRecord>
 {
-  public long a;
-  public String a;
+  public akqo(QQMessageFacade paramQQMessageFacade) {}
   
-  public akqo(String paramString, long paramLong)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

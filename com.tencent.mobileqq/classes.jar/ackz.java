@@ -1,36 +1,14 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1;
+import java.util.Comparator;
 
 public class ackz
-  implements Animation.AnimationListener
+  implements Comparator<acku>
 {
-  public int a;
-  public View a;
+  public ackz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(acku paramacku1, acku paramacku2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new TroopMemberListActivity.AnimationEndClearListener.1(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
-    }
+    return paramacku1.f.compareToIgnoreCase(paramacku2.f);
   }
 }
 

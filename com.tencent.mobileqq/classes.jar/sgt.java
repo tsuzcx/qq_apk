@@ -1,61 +1,59 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-final class sgt
-  extends akwt
+public class sgt
 {
-  sgt(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, akdo paramakdo, boolean paramBoolean, Context paramContext) {}
-  
-  public int a()
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt)
   {
-    return 5;
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(paramFloat);
+    localGradientDrawable.setColor(paramInt);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
+    }
+    return localGradientDrawable;
   }
   
-  public void a(Object paramObject)
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaLangObject != null)
-    {
-      paramObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangObject);
-      }
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    if (paramFloat > 0.0F) {
+      localGradientDrawable.setCornerRadius(paramFloat);
     }
-    for (;;)
+    localGradientDrawable.setStroke(paramInt2, paramInt1);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
+    }
+    return localGradientDrawable;
+  }
+  
+  public static StateListDrawable a(View paramView, @NonNull Drawable paramDrawable1, @NonNull Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, paramDrawable1);
+    localStateListDrawable.addState(new int[0], paramDrawable2);
+    if (paramView != null) {
+      a(paramView, localStateListDrawable);
+    }
+    return localStateListDrawable;
+  }
+  
+  public static void a(@NonNull View paramView, @NonNull Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT < 16)
     {
-      if (this.jdField_a_of_type_Akdo != null) {
-        this.jdField_a_of_type_Akdo.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-      }
+      paramView.setBackgroundDrawable(paramDrawable);
       return;
-      paramObject = (akdi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      paramObject.b(this.jdField_a_of_type_JavaLangString);
-      paramObject.a(this.jdField_a_of_type_JavaLangString);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
-      sdf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
-      sbc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      paramObject = (nqq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangString, "unfollow");
-      }
     }
+    paramView.setBackground(paramDrawable);
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Akdo != null) {
-      this.jdField_a_of_type_Akdo.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

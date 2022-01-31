@@ -1,207 +1,202 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.utils.BaseConstants.NetType;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class avcm
+public final class avcm
+  implements BaseConstants.NetType
 {
-  public static final int a;
-  public float a;
-  public int[] a;
-  float jdField_b_of_type_Float = 0.05F;
-  int jdField_b_of_type_Int = 1;
-  int c = -1;
-  int d = -1;
-  public int e;
-  public int f;
-  int g = 0;
-  private int h;
+  private static boolean jdField_a_of_type_Boolean;
+  private static avcn[] jdField_a_of_type_ArrayOfAvcn = new avcn[4];
   
   static
   {
-    jdField_a_of_type_Int = ListenChangeVoicePanel.jdField_a_of_type_ArrayOfInt.length;
+    jdField_a_of_type_ArrayOfAvcn[1] = new avcn();
+    jdField_a_of_type_ArrayOfAvcn[2] = new avcn();
+    jdField_a_of_type_ArrayOfAvcn[3] = new avcn();
   }
   
-  public avcm(QQAppInterface paramQQAppInterface)
+  public static avcn a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
-    this.jdField_a_of_type_Float = 0.75F;
-    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    a(paramQQAppInterface, false);
+    return jdField_a_of_type_ArrayOfAvcn[paramInt];
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    String str = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0).getString("PreDownloadCfg", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("PTTPreDownloader", 2, "Params getSavedCfg: " + str + " for:" + paramQQAppInterface);
+    }
+    return str;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, int paramInt, avcn paramavcn)
+  {
+    Object localObject = null;
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    String str = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0).getString("PTTPreDownloadParams_" + paramInt, null);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PTTPreDownloader", 4, "Params getSavedParams: " + str + " for: PTTPreDownloadParams_" + paramInt + " for:" + paramQQAppInterface);
+    }
+    paramQQAppInterface = (QQAppInterface)localObject;
+    if (str != null)
+    {
+      paramQQAppInterface = (QQAppInterface)localObject;
+      if (str.length() > 0)
+      {
+        localObject = str.split("##");
+        paramQQAppInterface = localObject[0];
+        localObject = localObject[1];
+      }
+    }
     try
     {
-      paramQQAppInterface = paramQQAppInterface.getString("PttVoiceChangePreSender", "[]");
-      JSONArray localJSONArray = new JSONArray(paramQQAppInterface);
-      if (localJSONArray.length() == jdField_a_of_type_Int + 2)
-      {
-        int i = 0;
-        while (i < jdField_a_of_type_Int)
-        {
-          this.jdField_a_of_type_ArrayOfInt[i] = localJSONArray.getInt(i);
-          i += 1;
-        }
-        this.e = localJSONArray.getInt(jdField_a_of_type_Int);
-        this.f = localJSONArray.getInt(jdField_a_of_type_Int + 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PttPreSendManager", 2, "init : get send record " + paramQQAppInterface);
-      }
-      return;
+      a(((String)localObject).substring(((String)localObject).indexOf(':') + 1), paramavcn);
+      return paramQQAppInterface;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
-      this.e = 0;
-      this.f = 0;
-      paramQQAppInterface.printStackTrace();
-    }
+    catch (Exception paramavcn) {}
+    return paramQQAppInterface;
   }
   
-  private float a(int paramInt)
+  public static void a()
   {
-    return this.jdField_a_of_type_ArrayOfInt[paramInt] / this.e;
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_ArrayOfAvcn = new avcn[4];
+    jdField_a_of_type_ArrayOfAvcn[1] = new avcn();
+    jdField_a_of_type_ArrayOfAvcn[2] = new avcn();
+    jdField_a_of_type_ArrayOfAvcn[3] = new avcn();
   }
   
-  private String a()
+  public static void a(QQAppInterface paramQQAppInterface, avcn paramavcn, int paramInt)
   {
-    JSONArray localJSONArray = new JSONArray();
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
+    Object localObject = new StringBuilder(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+    ((StringBuilder)localObject).append("##");
+    ((StringBuilder)localObject).append(paramInt).append(':');
+    ((StringBuilder)localObject).append(paramavcn.jdField_a_of_type_Int);
     int i = 0;
-    while (i < j)
+    while (i <= 5)
     {
-      localJSONArray.put(arrayOfInt[i]);
+      ((StringBuilder)localObject).append('#').append(i).append('_').append(paramavcn.jdField_a_of_type_ArrayOfInt[i]);
       i += 1;
     }
-    localJSONArray.put(this.e);
-    localJSONArray.put(this.f);
-    return localJSONArray.toString();
-  }
-  
-  private int b()
-  {
-    int i = 0;
-    int m = 0;
-    int k;
-    for (int j = 0; i < jdField_a_of_type_Int; j = k)
-    {
-      k = j;
-      if (j < this.jdField_a_of_type_ArrayOfInt[i])
-      {
-        k = this.jdField_a_of_type_ArrayOfInt[i];
-        m = i;
-      }
-      i += 1;
-    }
-    return m;
-  }
-  
-  public int a()
-  {
-    if ((this.e < 5) || (this.c < 0))
-    {
-      this.d = -1;
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int >= 2)
-    {
-      this.d = this.c;
-      this.g = 1;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttPreSendManager", 2, "guess type, result : " + this.d + " case : " + this.g + ", datas : " + a());
-      }
-      return this.d;
-      int i = b();
-      if (a(i) >= this.jdField_a_of_type_Float)
-      {
-        this.d = i;
-        this.g = 2;
-      }
-      else if ((this.c >= 0) && (this.f / this.e > 0.8D))
-      {
-        this.d = this.c;
-        this.g = 3;
-      }
-      else
-      {
-        this.d = -1;
-        this.g = -1;
-      }
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    paramavcn = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface, 0);
+    localObject = ((StringBuilder)localObject).toString();
+    paramavcn.edit().putString("PTTPreDownloadParams_" + paramInt, (String)localObject).commit();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PTTPreDownloader", 4, "Params saveParams: " + (String)localObject + " for: PTTPreDownloadParams_" + paramInt + " for:" + paramQQAppInterface);
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    String str = a();
-    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    paramQQAppInterface.putString("PttVoiceChangePreSender", str);
-    paramQQAppInterface.commit();
+    int i = 1;
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = a(paramQQAppInterface);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + str, 0).edit().putString("PreDownloadCfg", paramString);
     if (QLog.isColorLevel()) {
-      QLog.d("PttInfoCollector", 2, "save send record " + str);
+      QLog.d("PTTPreDownloader", 2, "Params saveCfg: " + paramString + " for:" + str);
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    float f1 = 0.55F;
-    if ((this.d != -1) && (this.g == 2))
-    {
-      if (this.d != paramInt) {
-        break label88;
-      }
-      this.jdField_a_of_type_Float -= this.jdField_a_of_type_Float * this.jdField_b_of_type_Float;
-      if (this.jdField_a_of_type_Float >= 0.55F) {
-        break label111;
-      }
-      label55:
-      this.jdField_a_of_type_Float = f1;
-      if (this.jdField_a_of_type_Float <= 0.9F) {
-        break label119;
-      }
-    }
-    label88:
-    label111:
-    label119:
-    for (f1 = 0.9F;; f1 = this.jdField_a_of_type_Float)
-    {
-      this.jdField_a_of_type_Float = f1;
-      if (paramInt >= 0) {
-        break label127;
-      }
-      this.c = paramInt;
-      return;
-      this.jdField_a_of_type_Float += (1.0F - this.jdField_a_of_type_Float) * this.jdField_b_of_type_Float;
-      break;
-      f1 = this.jdField_a_of_type_Float;
-      break label55;
-    }
-    label127:
-    if (paramInt == this.c)
-    {
-      this.jdField_b_of_type_Int += 1;
-      this.f += 1;
+    if (TextUtils.isEmpty(paramQQAppInterface)) {
+      if (TextUtils.isEmpty(paramString)) {}
     }
     for (;;)
     {
-      this.c = paramInt;
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[paramInt] += 1;
-      this.e += 1;
-      this.h += 1;
-      if (this.h % 5 == 0) {
-        a(paramQQAppInterface);
+      if (i != 0)
+      {
+        localEditor.putString("PTTPreDownloadParams_1", "");
+        localEditor.putString("PTTPreDownloadParams_3", "");
+        localEditor.putString("PTTPreDownloadParams_2", "");
+        if (QLog.isDevelopLevel()) {
+          QLog.d("PTTPreDownloader", 4, "Params ClearParams for:" + str);
+        }
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("PttInfoCollector", 2, "real send type " + paramInt);
+      localEditor.commit();
       return;
-      this.jdField_b_of_type_Int = 1;
+      i = 0;
+      continue;
+      if (paramQQAppInterface.equals(paramString)) {
+        i = 0;
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (((jdField_a_of_type_Boolean) && (!paramBoolean)) || (paramQQAppInterface == null)) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramQQAppInterface = a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.d("PTTPreDownloader", 2, "Params initCfg :" + paramQQAppInterface);
+        }
+        if ((paramQQAppInterface == null) || (paramQQAppInterface.length() == 0)) {
+          break;
+        }
+        paramQQAppInterface = paramQQAppInterface.split("\\|");
+        if ((paramQQAppInterface == null) || (paramQQAppInterface.length < 1)) {
+          break;
+        }
+        i = paramQQAppInterface.length - 1;
+        if (i < 0) {
+          break;
+        }
+        String[] arrayOfString = paramQQAppInterface[i].split(":");
+        if ((arrayOfString != null) && (arrayOfString.length >= 2))
+        {
+          int j = Integer.parseInt(arrayOfString[0]);
+          if ((j >= 1) && (j < jdField_a_of_type_ArrayOfAvcn.length))
+          {
+            avcn localavcn = jdField_a_of_type_ArrayOfAvcn[j];
+            a(arrayOfString[1], localavcn);
+          }
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        return;
+      }
+      i -= 1;
+    }
+  }
+  
+  private static void a(String paramString, avcn paramavcn)
+  {
+    paramString = paramString.split("#");
+    if ((paramString == null) || (paramString.length < 2)) {}
+    label88:
+    for (;;)
+    {
+      return;
+      paramavcn.jdField_a_of_type_Int = Integer.parseInt(paramString[0]);
+      int i = 1;
+      for (;;)
+      {
+        if (i >= paramString.length) {
+          break label88;
+        }
+        String[] arrayOfString = paramString[i].split("_");
+        if ((arrayOfString == null) || (arrayOfString.length < 2)) {
+          break;
+        }
+        int j = Integer.parseInt(arrayOfString[0]);
+        int k = Integer.parseInt(arrayOfString[1]);
+        paramavcn.jdField_a_of_type_ArrayOfInt[j] = k;
+        i += 1;
+      }
     }
   }
 }

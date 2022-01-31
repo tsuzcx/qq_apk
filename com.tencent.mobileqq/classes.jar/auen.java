@@ -1,41 +1,20 @@
 import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ocr.view.gesture.Settings;
+import com.tencent.mobileqq.ocr.view.gesture.Settings.Fit;
 
 public class auen
 {
-  protected float a;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
-  protected float b;
-  private float c = 1.0F;
-  private float d;
+  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private float jdField_a_of_type_Float;
+  private final Settings jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
+  private float b;
+  private float c;
   
-  public static int a(float paramFloat1, float paramFloat2)
+  public auen(Settings paramSettings)
   {
-    if (paramFloat1 > paramFloat2 + 0.001F) {
-      return 1;
-    }
-    if (paramFloat1 < paramFloat2 - 0.001F) {
-      return -1;
-    }
-    return 0;
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[2];
-    this.b = this.jdField_a_of_type_ArrayOfFloat[5];
-    if (paramBoolean1) {
-      this.c = ((float)Math.hypot(this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[4]));
-    }
-    if (paramBoolean2) {
-      this.d = ((float)Math.toDegrees(Math.atan2(this.jdField_a_of_type_ArrayOfFloat[3], this.jdField_a_of_type_ArrayOfFloat[4])));
-    }
-  }
-  
-  public static boolean a(float paramFloat1, float paramFloat2)
-  {
-    return (paramFloat1 >= paramFloat2 - 0.001F) && (paramFloat1 <= paramFloat2 + 0.001F);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = paramSettings;
   }
   
   public float a()
@@ -43,70 +22,109 @@ public class auen
     return this.jdField_a_of_type_Float;
   }
   
-  public Matrix a()
+  public float a(float paramFloat1, float paramFloat2)
   {
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    return aues.a(paramFloat1, this.jdField_a_of_type_Float / paramFloat2, this.b * paramFloat2);
   }
   
-  public auen a()
+  public auen a(auep paramauep)
   {
-    auen localauen = new auen();
-    localauen.a(this);
-    return localauen;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
-    a(false, false);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
-    a(true, false);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    float f;
-    for (;;)
+    float f5 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
+    float f6 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.f();
+    float f7 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c();
+    float f8 = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
+    if ((f5 == 0.0F) || (f6 == 0.0F) || (f7 == 0.0F) || (f8 == 0.0F))
     {
-      f = paramFloat4;
-      if (paramFloat4 >= -180.0F) {
+      this.c = 1.0F;
+      this.b = 1.0F;
+      this.jdField_a_of_type_Float = 1.0F;
+      return this;
+    }
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a();
+    this.b = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b();
+    float f9 = paramauep.d();
+    float f3 = f8;
+    float f1 = f7;
+    float f2 = f6;
+    float f4 = f5;
+    label262:
+    label267:
+    if (!auep.a(f9, 0.0F))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a() == Settings.Fit.OUTSIDE)
+      {
+        jdField_a_of_type_AndroidGraphicsMatrix.setRotate(-f9);
+        jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f7, f8);
+        jdField_a_of_type_AndroidGraphicsMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
+        f1 = jdField_a_of_type_AndroidGraphicsRectF.width();
+        f3 = jdField_a_of_type_AndroidGraphicsRectF.height();
+        f4 = f5;
+        f2 = f6;
+      }
+    }
+    else {
+      label202:
+      switch (aueo.a[this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a().ordinal()])
+      {
+      default: 
+        if (this.jdField_a_of_type_Float > 0.0F)
+        {
+          f1 = this.jdField_a_of_type_Float;
+          this.c = f1;
+          if (this.jdField_a_of_type_Float <= 0.0F) {
+            this.jdField_a_of_type_Float = this.c;
+          }
+          if (this.b <= 0.0F) {
+            this.b = this.c;
+          }
+          if (this.c > this.b)
+          {
+            if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a()) {
+              break label501;
+            }
+            this.b = this.c;
+          }
+        }
         break;
       }
-      paramFloat4 += 360.0F;
     }
-    while (f > 180.0F) {
-      f -= 360.0F;
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Float > this.b) {
+        this.jdField_a_of_type_Float = this.b;
+      }
+      if (this.c >= this.jdField_a_of_type_Float) {
+        break;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a()) {
+        break label512;
+      }
+      this.jdField_a_of_type_Float = this.c;
+      return this;
+      jdField_a_of_type_AndroidGraphicsMatrix.setRotate(f9);
+      jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, f5, f6);
+      jdField_a_of_type_AndroidGraphicsMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
+      f4 = jdField_a_of_type_AndroidGraphicsRectF.width();
+      f2 = jdField_a_of_type_AndroidGraphicsRectF.height();
+      f3 = f8;
+      f1 = f7;
+      break label202;
+      this.c = (f1 / f4);
+      break label267;
+      this.c = (f3 / f2);
+      break label267;
+      this.c = Math.min(f1 / f4, f3 / f2);
+      break label267;
+      this.c = Math.max(f1 / f4, f3 / f2);
+      break label267;
+      f1 = 1.0F;
+      break label262;
+      label501:
+      this.c = this.b;
     }
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = f;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    if (paramFloat3 != 1.0F) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat3, paramFloat3);
-    }
-    if (f != 0.0F) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(f);
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1, paramFloat2);
-  }
-  
-  public void a(Matrix paramMatrix)
-  {
-    paramMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public void a(auen paramauen)
-  {
-    this.jdField_a_of_type_Float = paramauen.jdField_a_of_type_Float;
-    this.b = paramauen.b;
-    this.c = paramauen.c;
-    this.d = paramauen.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramauen.jdField_a_of_type_AndroidGraphicsMatrix);
+    label512:
+    this.c = this.jdField_a_of_type_Float;
+    return this;
   }
   
   public float b()
@@ -114,89 +132,9 @@ public class auen
     return this.b;
   }
   
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(-this.jdField_a_of_type_Float + paramFloat1, -this.b + paramFloat2);
-    a(false, false);
-  }
-  
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1 / this.c, paramFloat1 / this.c, paramFloat2, paramFloat3);
-    a(true, false);
-  }
-  
   public float c()
   {
     return this.c;
-  }
-  
-  public void c(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(paramFloat1, paramFloat2, paramFloat3);
-    a(false, true);
-  }
-  
-  public float d()
-  {
-    return this.d;
-  }
-  
-  public void d(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(-this.d + paramFloat1, paramFloat2, paramFloat3);
-    a(false, true);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (auen)paramObject;
-    } while ((a(paramObject.jdField_a_of_type_Float, this.jdField_a_of_type_Float)) && (a(paramObject.b, this.b)) && (a(paramObject.c, this.c)) && (a(paramObject.d, this.d)));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int m = 0;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_Float != 0.0F)
-    {
-      i = Float.floatToIntBits(this.jdField_a_of_type_Float);
-      if (this.b == 0.0F) {
-        break label95;
-      }
-      j = Float.floatToIntBits(this.b);
-      label37:
-      if (this.c == 0.0F) {
-        break label100;
-      }
-    }
-    label95:
-    label100:
-    for (int k = Float.floatToIntBits(this.c);; k = 0)
-    {
-      if (this.d != 0.0F) {
-        m = Float.floatToIntBits(this.d);
-      }
-      return (k + (j + i * 31) * 31) * 31 + m;
-      i = 0;
-      break;
-      j = 0;
-      break label37;
-    }
-  }
-  
-  public String toString()
-  {
-    return "{x=" + this.jdField_a_of_type_Float + ",y=" + this.b + ",zoom=" + this.c + ",rotation=" + this.d + "}";
   }
 }
 

@@ -1,49 +1,65 @@
-import android.media.MediaCodec.BufferInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
 public class awbc
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, awbh> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public awbc(String paramString, int paramInt)
+  public awbc(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int a()
+  public static awbc a(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_Int;
+    return (awbc)paramQQAppInterface.getManager(294);
   }
   
-  public long a()
+  public awbh a(long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
+    try
+    {
+      awbh localawbh2 = (awbh)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      awbh localawbh1 = localawbh2;
+      if (localawbh2 == null)
+      {
+        localawbh1 = new awbh(paramLong);
+        localawbh1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localawbh1.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localawbh1);
+      }
+      return localawbh1;
     }
-    return 0L;
+    finally {}
   }
   
-  public String a()
+  public void a(awbh paramawbh)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    try
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramawbh.jdField_a_of_type_Long));
+      return;
+    }
+    finally {}
   }
   
-  public void a(avzb paramavzb)
+  public void onDestroy()
   {
-    paramavzb = paramavzb.a;
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramavzb.presentationTimeUs));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramavzb.flags));
-  }
-  
-  public String toString()
-  {
-    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((awbh)localIterator.next()).b();
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

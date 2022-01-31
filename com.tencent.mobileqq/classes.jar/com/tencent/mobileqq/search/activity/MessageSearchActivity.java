@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -23,7 +23,7 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return ajyc.a(2131706659);
+    return ajya.a(2131706670);
   }
 }
 

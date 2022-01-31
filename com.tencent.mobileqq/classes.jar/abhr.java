@@ -1,7 +1,6 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abhr
   implements CompoundButton.OnCheckedChangeListener
@@ -10,13 +9,9 @@ public class abhr
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695276), "qqsetting_enter_sendmsg_key", paramBoolean);
-      return;
+    aylh.a(paramBoolean);
+    if (paramBoolean) {
+      aylh.a(new abhs(this.a.jdField_a_of_type_Accg, this.a.jdField_a_of_type_AndroidViewView));
     }
   }
 }

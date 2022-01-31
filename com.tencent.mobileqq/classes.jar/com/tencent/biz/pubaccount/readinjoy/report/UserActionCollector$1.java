@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.report;
 
-import actn;
+import actj;
 import android.content.res.Resources;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import pyq;
+import pyn;
 
 public class UserActionCollector$1
   implements Runnable
 {
-  public UserActionCollector$1(pyq parampyq, int paramInt, AbsListView paramAbsListView) {}
+  public UserActionCollector$1(pyn parampyn, int paramInt, AbsListView paramAbsListView) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class UserActionCollector$1
         {
           int j;
           label75:
-          actn.a("UserActionCollector", "calculte height error !", localException);
+          actj.a("UserActionCollector", "calculte height error !", localException);
         }
       }
       if (i > 0) {

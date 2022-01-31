@@ -1,26 +1,29 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class uhm
-  implements bfoq
+public class uhm
+  extends ste<uhg, tae>
 {
-  uhm(uhj paramuhj, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public uhm(uhg paramuhg)
   {
-    switch (paramInt)
+    super(paramuhg);
+  }
+  
+  public void a(@NonNull uhg paramuhg, @NonNull tae paramtae)
+  {
+    if ((paramuhg.a != null) && (TextUtils.equals(paramuhg.a.b, paramtae.a)))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      tsu.a(this.jdField_a_of_type_Uhj.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new uhn(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      ved.a(this.TAG, "receive feed info change event. %s.", paramtae.toString());
+      paramuhg.i();
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return tae.class;
+  }
+  
+  public void b(@NonNull uhg paramuhg, @NonNull tae paramtae) {}
 }
 
 

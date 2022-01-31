@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import auuh;
-import auui;
+import auuj;
+import auuk;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class ShareHelper$1$3
   implements Runnable
 {
-  public ShareHelper$1$3(auui paramauui, long paramLong) {}
+  public ShareHelper$1$3(auuk paramauuk, long paramLong) {}
   
   public void run()
   {
-    String str = auuh.a(this.jdField_a_of_type_Auui.a);
+    String str = auuj.a(this.jdField_a_of_type_Auuk.a);
     ThreadManager.getUIHandler().post(new ShareHelper.1.3.1(this, str));
   }
 }

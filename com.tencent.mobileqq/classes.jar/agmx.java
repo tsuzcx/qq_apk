@@ -1,8 +1,7 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
 
 public class agmx
   implements View.OnClickListener
@@ -11,11 +10,31 @@ public class agmx
   
   public void onClick(View paramView)
   {
-    paramView = this.a.getIntent();
-    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bazo.a());
-    axqw.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    int i = 1;
+    paramView = this.a.a;
+    boolean bool;
+    String str;
+    if (!this.a.a.isChecked())
+    {
+      bool = true;
+      paramView.setChecked(bool);
+      this.a.d = this.a.a.isChecked();
+      this.a.i = 2;
+      paramView = this.a;
+      str = this.a.getCurrentAccountUin();
+      if (!this.a.d) {
+        break label92;
+      }
+    }
+    for (;;)
+    {
+      bbkb.D(paramView, str, i);
+      return;
+      bool = false;
+      break;
+      label92:
+      i = 0;
+    }
   }
 }
 

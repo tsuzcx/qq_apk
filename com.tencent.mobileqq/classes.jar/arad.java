@@ -1,15 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
-class arad
-  implements View.OnHoverListener
+public class arad
+  extends Handler
 {
-  arad(arac paramarac) {}
+  public arad(HotPicTab paramHotPicTab) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    return true;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      HotPicTab.a(this.a, 0.0F);
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      if (HotPicTab.a(this.a) < 1.0F)
+      {
+        this.a.invalidate();
+        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    HotPicTab.a(this.a, 1.0F);
+    HotPicTab.a(this.a, HotPicTab.a(this.a));
+    this.a.invalidate();
   }
 }
 

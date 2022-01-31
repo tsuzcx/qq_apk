@@ -2,21 +2,21 @@ package com.tencent.qqmini.sdk.core.widget.actionsheet;
 
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
-import benh;
-import benj;
+import beny;
+import beoa;
 
 public class ActionSheet$3
   implements Runnable
 {
-  public ActionSheet$3(benh parambenh) {}
+  public ActionSheet$3(beny parambeny) {}
   
   public void run()
   {
-    benh.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, benh.a(this.this$0).getHeight()));
-    benh.a(this.this$0).setDuration(200L);
-    benh.a(this.this$0).setFillAfter(true);
-    benh.a(this.this$0).startAnimation(benh.a(this.this$0));
-    benh.a(this.this$0).setAnimationListener(new benj(this));
+    beny.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, beny.a(this.this$0).getHeight()));
+    beny.a(this.this$0).setDuration(200L);
+    beny.a(this.this$0).setFillAfter(true);
+    beny.a(this.this$0).startAnimation(beny.a(this.this$0));
+    beny.a(this.this$0).setAnimationListener(new beoa(this));
   }
 }
 

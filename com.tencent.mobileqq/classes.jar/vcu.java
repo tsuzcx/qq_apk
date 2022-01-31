@@ -1,13 +1,18 @@
-import android.widget.TextView;
+import android.os.Handler;
+import android.text.TextUtils;
 
 class vcu
-  implements swc
+  implements uzu<uzb>
 {
-  vcu(vcs paramvcs, TextView paramTextView) {}
+  vcu(vcp paramvcp, String paramString) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(uzb paramuzb)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131707519) + paramInt + "%");
+    if ((paramuzb.a != null) && (TextUtils.equals(paramuzb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      vcp.a(this.jdField_a_of_type_Vcp).a = paramuzb.a;
+      vcp.a(this.jdField_a_of_type_Vcp).sendMessage(vcp.a(this.jdField_a_of_type_Vcp).obtainMessage(0, vcp.a(this.jdField_a_of_type_Vcp)));
+    }
   }
 }
 

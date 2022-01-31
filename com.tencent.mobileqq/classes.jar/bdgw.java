@@ -1,20 +1,25 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
 
-class bdgw
-  implements bdkf
+public class bdgw
+  implements DialogInterface.OnClickListener
 {
-  bdgw(bdgv parambdgv) {}
+  public bdgw(DownloadNativeApi.1 param1) {}
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdht.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("PackageName", paramString1);
-    localBundle.putString("Code", paramString2);
-    localBundle.putInt("VersionCode", paramInt);
-    localBundle.putBoolean("IsSuccess", paramBoolean);
-    localBundle.putAll(paramBundle);
-    bdgv.a(this.a, localBundle);
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bdgu.a(this.a.this$0).onDownloadCancel(this.a.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

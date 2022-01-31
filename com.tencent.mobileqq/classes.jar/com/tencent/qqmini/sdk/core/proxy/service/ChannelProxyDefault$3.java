@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.util.Base64;
-import beks;
-import besl;
+import belj;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
 import java.util.List;
@@ -16,7 +16,7 @@ class ChannelProxyDefault$3
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    besl.d("ChannelProxyDefault", "onRequestFailed ");
+    betc.d("ChannelProxyDefault", "onRequestFailed ");
     if (this.val$listener != null) {
       this.val$listener.onReceiveResult(false, null);
     }
@@ -42,7 +42,7 @@ class ChannelProxyDefault$3
       catch (Throwable paramArrayOfByte)
       {
         JSONObject localJSONObject;
-        besl.d("ChannelProxyDefault", "handleMessage wnsCgiRequest exception ", paramArrayOfByte);
+        betc.d("ChannelProxyDefault", "handleMessage wnsCgiRequest exception ", paramArrayOfByte);
         if (this.val$listener == null) {
           return;
         }
@@ -55,7 +55,7 @@ class ChannelProxyDefault$3
       }
       localJSONObject.put("statusCode", paramInt);
       localJSONObject.put("wnsCode", 0);
-      localJSONObject.put("header", beks.a(paramMap));
+      localJSONObject.put("header", belj.a(paramMap));
       if (this.val$listener == null) {
         return;
       }

@@ -1,21 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.location.ui.MapWidget;
 
-public class arya
+class arya
   implements View.OnClickListener
 {
-  public arya(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
+  arya(arxz paramarxz) {}
   
   public void onClick(View paramView)
   {
-    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {
+    if (this.a.a.a()) {
       return;
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
-    axqw.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
+    axqy.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
+    arvm.a(arxj.a(this.a.a), this.a.a);
   }
 }
 

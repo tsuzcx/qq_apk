@@ -1,119 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.NumberCheckBox;
 
 public class agnu
-  extends Handler
 {
-  private final WeakReference<PhotoListActivity> a;
+  agnr jdField_a_of_type_Agnr;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  public NumberCheckBox a;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public ImageView c;
+  ImageView d;
   
-  public agnu(PhotoListActivity paramPhotoListActivity)
-  {
-    this.a = new WeakReference(paramPhotoListActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {}
-    label304:
-    do
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          int i;
-          do
-          {
-            do
-            {
-              return;
-              localObject = (PhotoListActivity)this.a.get();
-              switch (paramMessage.what)
-              {
-              default: 
-                return;
-              case 0: 
-                localObject = ((PhotoListActivity)localObject).a;
-              }
-            } while (localObject == null);
-            ArrayList localArrayList = new ArrayList();
-            localArrayList.addAll(((agnv)localObject).a);
-            paramMessage = paramMessage.getData();
-            i = paramMessage.getInt("ALBUMLIST_POSITION");
-            long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
-            paramMessage = (LocalMediaInfo)localArrayList.get(i);
-            paramMessage.mDuration = l;
-            localArrayList.set(i, paramMessage);
-            ((agnv)localObject).a(localArrayList);
-            ((agnv)localObject).notifyDataSetChanged();
-            return;
-            ((PhotoListActivity)localObject).f();
-          } while (!(paramMessage.obj instanceof String));
-          paramMessage = (String)paramMessage.obj;
-          QZLog.d("PhotoListActivity", 2, new Object[] { "onEncodeSuccess = ", paramMessage });
-          if (((PhotoListActivity)localObject).c == null) {
-            ((PhotoListActivity)localObject).c = new ArrayList();
-          }
-          if (PhotoListActivity.d((PhotoListActivity)localObject))
-          {
-            i = bbbj.b();
-            if (((PhotoListActivity)localObject).c.size() < ((PhotoListActivity)localObject).i) {
-              break label304;
-            }
-            bcpw.a((Context)localObject, String.format(((PhotoListActivity)localObject).getResources().getString(2131695099), new Object[] { Integer.valueOf(((PhotoListActivity)localObject).i) }), 0).a();
-          }
-          for (;;)
-          {
-            PhotoListActivity.a((PhotoListActivity)localObject, paramMessage);
-            return;
-            i = bbbj.a();
-            break;
-            if (PhotoListActivity.a() >= i)
-            {
-              bcpw.a((Context)localObject, String.format(((PhotoListActivity)localObject).getResources().getString(2131695104), new Object[] { Integer.valueOf(i) }), 0).a();
-            }
-            else
-            {
-              ((PhotoListActivity)localObject).c.add(paramMessage);
-              PhotoListActivity.g((PhotoListActivity)localObject);
-            }
-          }
-          ((PhotoListActivity)localObject).f();
-          QZLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
-          bcpw.a((Context)localObject, ((PhotoListActivity)localObject).getResources().getString(2131695103), 0).a();
-          return;
-        } while (!(paramMessage.obj instanceof String));
-        paramMessage = (String)paramMessage.obj;
-        if (((PhotoListActivity)localObject).c == null) {
-          ((PhotoListActivity)localObject).c = new ArrayList();
-        }
-        QZLog.d("PhotoListActivity", 2, new Object[] { "MSG_PHOTO_ENCODE_SUCCEED = ", paramMessage });
-        if (((PhotoListActivity)localObject).c.size() < ((PhotoListActivity)localObject).i)
-        {
-          ((PhotoListActivity)localObject).c.add(paramMessage);
-          PhotoListActivity.g((PhotoListActivity)localObject);
-        }
-        for (;;)
-        {
-          PhotoListActivity.a((PhotoListActivity)localObject, paramMessage);
-          return;
-          bcpw.a((Context)localObject, String.format(((PhotoListActivity)localObject).getResources().getString(2131695099), new Object[] { Integer.valueOf(((PhotoListActivity)localObject).i) }), 0).a();
-        }
-      } while (localObject == null);
-      paramMessage = ((PhotoListActivity)localObject).a;
-    } while (paramMessage == null);
-    paramMessage.notifyDataSetChanged();
-  }
+  agnu(agnt paramagnt) {}
 }
 
 

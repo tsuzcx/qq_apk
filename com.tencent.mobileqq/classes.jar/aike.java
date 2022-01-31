@@ -1,38 +1,44 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class aike
-  implements aije
+  extends aylo
 {
-  aike(aikd paramaikd, String paramString) {}
+  aike(aikb paramaikb, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onComplete(String paramString, int paramInt)
   {
-    if (paramBoolean) {}
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
     try
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikd.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      paramString = new JSONObject();
+      paramString.put("code", 2);
+      paramString.put("errorCode", paramInt);
+      this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
       return;
     }
-    catch (Exception localException1)
+    catch (JSONException paramString)
     {
-      localException1.printStackTrace();
-      try
-      {
-        aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
     }
-    aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
-    return;
+  }
+  
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 1);
+      paramString.put("progress", i);
+      this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    }
   }
 }
 

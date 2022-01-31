@@ -1,19 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager;
 
 class qye
-  implements Animation.AnimationListener
+  implements qxm<qxp>
 {
-  qye(qya paramqya, RelativeLayout paramRelativeLayout) {}
+  qye(qyc paramqyc) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(qxp paramqxp)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    qyc.a(this.a).b(paramqxp.a());
   }
 }
 

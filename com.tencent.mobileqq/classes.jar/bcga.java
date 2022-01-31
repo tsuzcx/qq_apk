@@ -1,73 +1,59 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.webview.WebViewTitleStyle;
+import org.json.JSONObject;
 
-class bcga
-  implements bcfr
+public class bcga
 {
-  bcga(bcfz parambcfz) {}
+  public boolean A;
+  public boolean B;
+  public boolean C;
+  public boolean D;
+  public boolean E;
+  public boolean F;
+  public int a;
+  public long a;
+  public WebViewTitleStyle a;
+  public Boolean a;
+  public String a;
+  public JSONObject a;
+  public boolean a;
+  public int b = -1;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public long d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  public boolean p;
+  public boolean q;
+  public boolean r;
+  public boolean s;
+  public boolean t;
+  public boolean u;
+  public boolean v;
+  public boolean w;
+  public boolean x;
+  public boolean y;
+  public boolean z;
   
-  public int a(Bundle paramBundle)
+  public bcga()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
-    }
-    do
-    {
-      do
-      {
-        return -1;
-        if ((this.a.b & 0x2) != 0)
-        {
-          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
-            this.a.b(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
-            this.a.c(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
-            this.a.d(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
-            return this.a.a(paramBundle);
-          }
-        }
-      } while ((this.a.b & 0x1) == 0);
-      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
-        return this.a.b(paramBundle);
-      }
-      if (!bcfa.s)
-      {
-        bcfa.s = true;
-        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-        {
-          bcfa.U = WebProcessReceiver.b - WebProcessReceiver.a;
-          bcfa.V = System.currentTimeMillis() - WebProcessReceiver.b;
-          int i = (int)bcfa.U;
-          int j = (int)bcfa.V;
-          QLog.i("WebLog_SwiftWebAccelerator", 1, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
-          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
-        }
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
-        return this.a.c(paramBundle);
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
-        return this.a.e(paramBundle);
-      }
-      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
-        return this.a.d(paramBundle);
-      }
-    } while (bcfa.t);
-    bcfa.t = true;
-    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-    {
-      bcfa.W = System.currentTimeMillis() - WebProcessReceiver.b;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "WebProcessReceiver.onReceive cost: " + bcfa.U + "ms, complete preload cost: " + bcfa.W + "ms.");
-    }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
-    return -1;
+    this.jdField_a_of_type_Long = 4L;
+    this.jdField_c_of_type_Long = 5L;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_c_of_type_Int = 50;
   }
 }
 

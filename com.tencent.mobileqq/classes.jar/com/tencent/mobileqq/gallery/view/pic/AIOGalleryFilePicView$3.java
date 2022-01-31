@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.gallery.view.pic;
 
 import android.net.Uri;
-import aqmb;
-import aqme;
-import aqor;
+import aqmd;
+import aqmg;
+import aqot;
 import java.io.File;
 import java.util.ArrayList;
 
 public class AIOGalleryFilePicView$3
   implements Runnable
 {
-  public AIOGalleryFilePicView$3(aqor paramaqor, File paramFile, ArrayList paramArrayList) {}
+  public AIOGalleryFilePicView$3(aqot paramaqot, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -19,13 +19,13 @@ public class AIOGalleryFilePicView$3
       if (this.jdField_a_of_type_JavaIoFile != null)
       {
         Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        aqor.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+        aqot.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
       }
       return;
     }
     catch (Exception localException)
     {
-      aqmb.a().a().a("AIOGalleryFilePicView", 4, "add qr action sheet error: " + localException.getMessage());
+      aqmd.a().a().a("AIOGalleryFilePicView", 4, "add qr action sheet error: " + localException.getMessage());
     }
   }
 }

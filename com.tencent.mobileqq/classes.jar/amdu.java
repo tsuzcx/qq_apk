@@ -1,5 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class amdu
@@ -9,8 +12,14 @@ public class amdu
   
   public void onClick(View paramView)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.a.a(i);
+    paramView = (amea)paramView.getTag();
+    if (!((ajxl)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
+    {
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
+      return;
+    }
   }
 }
 

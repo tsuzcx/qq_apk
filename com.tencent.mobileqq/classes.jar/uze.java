@@ -1,35 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class uze
+  extends syn
 {
-  public int a;
-  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
-  public String a;
-  public final ArrayList<String> a;
-  public tef a;
-  public boolean a;
+  public List<String> a = new ArrayList();
+  public int b;
   
-  public uze()
+  public uze(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
   {
-    this(0, null);
+    super(paramRspGetPhotographyGuide.result);
+    Object localObject = paramRspGetPhotographyGuide.word.get();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
+        this.a.add(localByteStringMicro.toStringUtf8());
+      }
+    }
+    this.b = paramRspGetPhotographyGuide.seqno.get();
   }
   
-  public uze(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Tef = new tef();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
-  }
-  
-  public static uze a(String paramString)
-  {
-    uze localuze = new uze();
-    localuze.jdField_a_of_type_JavaLangString = paramString;
-    return localuze;
+    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
   }
 }
 

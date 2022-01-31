@@ -1,34 +1,44 @@
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xck
+  implements xdh
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public xck(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public xck(JSONObject paramJSONObject)
+  public void a(int paramInt) {}
+  
+  public void a(List<bals> paramList, xce paramxce)
   {
-    if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    if (this.a.jdField_a_of_type_Xcc == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftPanel", 2, "getPackGiftStorage--onGetPackGift error--mTroopGifPanelData is null");
+      }
+      return;
     }
-    if (paramJSONObject.has("tabID")) {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    this.a.jdField_a_of_type_Xcc.b(paramList);
+    this.a.jdField_a_of_type_Xcc.a(paramxce);
+    if ((this.a.jdField_a_of_type_Xcc != null) && (this.a.jdField_a_of_type_Xcc.jdField_e_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_Xcc.jdField_e_of_type_JavaUtilArrayList.size() > 0) && (this.a.jdField_a_of_type_Xcc.b.size() > 0) && (this.a.jdField_a_of_type_Xcc.jdField_e_of_type_Int != -1))
+    {
+      this.a.jdField_a_of_type_Xcb = ((xcb)this.a.jdField_a_of_type_Xcc.jdField_e_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Xcc.jdField_e_of_type_Int));
+      TroopGiftPanel.a(this.a, this.a.jdField_a_of_type_Xcb);
     }
-    if (paramJSONObject.has("icon")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    if (this.a.d())
+    {
+      paramList = this.a;
+      if ((!TextUtils.isEmpty(this.a.f)) && (TroopGiftPanel.a(this.a))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramList.setSendGiftBtnEnabled(bool);
+        return;
+      }
     }
-    if (paramJSONObject.has("jumpUrl")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    }
-    if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    }
-    if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
-    }
+    this.a.setSendGiftBtnEnabled(TroopGiftPanel.a(this.a));
   }
 }
 

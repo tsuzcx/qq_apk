@@ -1,8 +1,14 @@
+import android.view.View;
+
 public abstract interface bfwc
 {
-  public abstract void a();
+  public abstract void a(View paramView);
   
-  public abstract void b();
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract void e();
 }
 
 

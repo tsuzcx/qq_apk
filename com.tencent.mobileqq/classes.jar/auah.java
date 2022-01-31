@@ -1,31 +1,38 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
+import android.app.Activity;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
+import mqq.os.MqqHandler;
 
 public class auah
-  implements TextWatcher
+  extends aygc
 {
-  public auah(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public auah(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.c.setEnabled(false);
-      this.a.d.setEnabled(false);
-      this.a.b.setEnabled(false);
-      return;
-    }
-    this.a.c.setEnabled(true);
-    this.a.d.setEnabled(true);
-    this.a.b.setEnabled(true);
+    super(paramActivity);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a()
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(int paramInt)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
+  }
 }
 
 

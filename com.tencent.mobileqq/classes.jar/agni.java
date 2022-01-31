@@ -1,15 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agni
   implements DialogInterface.OnClickListener
 {
-  public agni(PhotoListActivity paramPhotoListActivity, Runnable paramRunnable) {}
+  public agni(PhotoListActivity paramPhotoListActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (this.a.c != null) {
+      this.a.c.setClickable(true);
+    }
   }
 }
 

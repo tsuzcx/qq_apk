@@ -1,30 +1,17 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.smtt.sdk.WebView;
+import android.util.LruCache;
 
-class bcdr
-  implements bcdt
+public final class bcdr
+  extends LruCache<String, aadl>
 {
-  bcdr(bcdq parambcdq) {}
-  
-  public Activity a()
+  public bcdr(int paramInt)
   {
-    return this.a.a.a();
+    super(paramInt);
   }
   
-  public bcdq a()
+  protected void a(boolean paramBoolean, String paramString, aadl paramaadl1, aadl paramaadl2)
   {
-    return this.a;
-  }
-  
-  public WebViewFragment a()
-  {
-    return this.a.a.a();
-  }
-  
-  public WebView a()
-  {
-    return this.a.a.a();
+    super.entryRemoved(paramBoolean, paramString, paramaadl1, paramaadl2);
+    paramaadl1.b();
   }
 }
 

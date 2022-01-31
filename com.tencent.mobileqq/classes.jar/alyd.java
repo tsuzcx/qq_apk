@@ -6,25 +6,25 @@ import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
 import java.util.List;
 
 public class alyd
-  extends alyc
+  extends alyb
 {
   private float[] d = new float[16];
   
-  public alyd(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
+  public alyd(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxu);
-    paramContext = paramSensorManager.getDefaultSensor(15);
-    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
+    super(paramContext, paramInt, paramSensorManager, paramalxt);
+    paramContext = paramSensorManager.getDefaultSensor(11);
+    if ((Build.VERSION.SDK_INT >= 9) && (paramContext != null))
     {
       this.a.add(paramContext);
       return;
     }
-    throw new OrientationProviderNotFound(String.valueOf(15));
+    throw new OrientationProviderNotFound(String.valueOf(3));
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    alxw.a(this.d, paramSensorEvent);
+    alxv.a(this.d, paramSensorEvent);
     super.a(this.d);
   }
 }

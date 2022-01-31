@@ -1,10 +1,100 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-final class acyd
-  implements DialogInterface.OnClickListener
+public class acyd
+  extends bbri
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public acyd(PokePanel paramPokePanel) {}
+  
+  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
+  {
+    Object localObject = (Bundle)paramObject;
+    if (((Bundle)localObject).getInt("fromType") != 0) {
+      return;
+    }
+    int j = ((Bundle)localObject).getInt("id");
+    int i = ((Bundle)localObject).getInt("feeType");
+    String str1 = "free";
+    if (i == 4)
+    {
+      str1 = "vip";
+      label47:
+      if (!paramBoolean) {
+        break label160;
+      }
+      paramObject = ((Bundle)localObject).getString("name");
+      localObject = ((Bundle)localObject).getString("minVersion");
+      aanz.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
+      if (true == adwj.a) {
+        adwj.a = false;
+      }
+      label106:
+      if (!paramBoolean) {
+        break label421;
+      }
+    }
+    label160:
+    label419:
+    label421:
+    for (i = 0;; i = 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (i != 5) {
+        break label47;
+      }
+      str1 = "svip";
+      break label47;
+      long l = ((Bundle)localObject).getLong("result");
+      localObject = ((Bundle)localObject).getString("msg");
+      paramObject = (Bundle)paramObject;
+      this.a.a = paramObject.getInt("id", 0);
+      String str2 = ajya.a(2131708334);
+      if (l == 0L)
+      {
+        this.a.b = 1;
+        if (true != adwj.a) {
+          break;
+        }
+        adwj.a = false;
+        return;
+      }
+      if (l == 4002L)
+      {
+        this.a.b = 2;
+        paramObject = ajya.a(2131708337);
+        localObject = str2;
+      }
+      for (;;)
+      {
+        if (l == 0L) {
+          break label419;
+        }
+        adwj.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
+        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+        break;
+        if (l == 5002L)
+        {
+          this.a.b = 4;
+          paramObject = ajya.a(2131708336);
+          localObject = str2;
+        }
+        else
+        {
+          this.a.b = 1;
+          str2 = ajya.a(2131708335);
+          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
+          paramObject = localObject;
+          localObject = str2;
+        }
+      }
+      break label106;
+    }
+  }
 }
 
 

@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class abue
-  implements amkq
+class abue
+  implements DialogInterface.OnClickListener
 {
-  public abue(QQBrowserActivity paramQQBrowserActivity) {}
+  abue(abud paramabud) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
-  }
-  
-  public void b()
-  {
-    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, ajya.a(2131710371));
+    this.a.a.finish();
   }
 }
 

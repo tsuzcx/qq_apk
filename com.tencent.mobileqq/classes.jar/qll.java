@@ -1,21 +1,35 @@
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
+import java.util.HashMap;
 
 class qll
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements TVK_IMediaPlayer.OnExtractFrameListener
 {
-  qll(qlj paramqlj) {}
+  qll(qlg paramqlg) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qlj.a(), 2, "播放器状态回调 onError model = " + paramInt1 + ", what = " + paramInt2 + ", detailInfo = " + paramString);
+    qln localqln = (qln)qlg.a(this.a).get(Integer.valueOf(paramInt));
+    if (localqln != null) {}
+    try
+    {
+      localqln.jdField_b_of_type_Long = qlb.a(paramBitmap, true);
+      localqln.jdField_b_of_type_Int = qlb.a(localqln.a, localqln.jdField_b_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d(qlg.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localqln.jdField_b_of_type_Long + ", hashDiff = " + localqln.jdField_b_of_type_Int);
+      }
+      return;
     }
-    if (qlj.a(this.a) != null) {
-      qlj.a(this.a).a(3, paramInt1 + "-" + paramInt2, null, 0L);
+    catch (Throwable paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(qlg.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
+        }
+      }
     }
-    return false;
   }
 }
 

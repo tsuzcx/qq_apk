@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,11 +15,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bkja;
-import bkur;
+import bkjr;
+import bkvi;
 import com.tencent.biz.qqstory.view.PressDarkImageView;
-import vvg;
-import vvh;
+import vvd;
+import vve;
 
 public class StoryGuideLineView
   extends LinearLayout
@@ -60,17 +60,17 @@ public class StoryGuideLineView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562448, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131373231));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373337));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376534));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376858));
+    LayoutInflater.from(paramContext).inflate(2131562447, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131373233));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373339));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376536));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376860));
     this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368065));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369252));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373277));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373278);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131373286);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131373283);
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373279));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373280);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131373288);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131373285);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369260));
     setViewAlpha(this.jdField_c_of_type_AndroidWidgetLinearLayout);
   }
@@ -180,8 +180,8 @@ public class StoryGuideLineView
     jdField_b_of_type_Int = localDisplayMetrics.widthPixels - this.jdField_c_of_type_AndroidViewView.getMeasuredWidth();
     jdField_c_of_type_Int = 0;
     d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
-    if (bkur.b()) {
-      d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() - bkur.e - bkur.jdField_a_of_type_Int;
+    if (bkvi.b()) {
+      d = localDisplayMetrics.heightPixels - this.jdField_c_of_type_AndroidWidgetLinearLayout.getMeasuredHeight() - bkvi.e - bkvi.jdField_a_of_type_Int;
     }
   }
   
@@ -190,28 +190,28 @@ public class StoryGuideLineView
     if ((this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(ajyc.a(2131714434));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845522);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(ajya.a(2131714445));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845528);
   }
   
-  public void setLinkerObject(bkja parambkja)
+  public void setLinkerObject(bkjr parambkjr)
   {
-    if ((parambkja == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
+    if ((parambkjr == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(parambkja.c);
-    if (TextUtils.isEmpty(parambkja.c)) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(parambkja.a);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(parambkjr.c);
+    if (TextUtils.isEmpty(parambkjr.c)) {
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(parambkjr.a);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839354);
   }
   
-  public void setStoryTag(vvg paramvvg)
+  public void setStoryTag(vvd paramvvd)
   {
-    if ((paramvvg == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null)) {
+    if ((paramvvd == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null)) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramvvg.a.a);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramvvd.a.a);
   }
   
   public void setUserHead(Bitmap paramBitmap)

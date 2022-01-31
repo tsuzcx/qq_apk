@@ -1,37 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-final class tta
-  implements bfoq
+public final class tta
+  extends ssh
 {
-  tta(CommentEntry paramCommentEntry, bfol parambfol) {}
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void OnClick(View paramView, int paramInt)
+  public tta(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((tdo)tdc.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-        new tky().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      veg.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 

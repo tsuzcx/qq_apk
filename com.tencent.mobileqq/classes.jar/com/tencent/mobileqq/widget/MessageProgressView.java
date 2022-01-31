@@ -21,8 +21,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bbeq;
-import bcmw;
+import bbfe;
+import bcnl;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class MessageProgressView
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
-  public bcmw a;
+  public bcnl a;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat;
   public float b;
@@ -308,7 +308,7 @@ public class MessageProgressView
   
   public void a(String paramString)
   {
-    paramString = bbeq.a().a(paramString);
+    paramString = bbfe.a().a(paramString);
     if (paramString != null) {
       paramString.a(this);
     }
@@ -316,7 +316,7 @@ public class MessageProgressView
   
   public boolean a(String paramString)
   {
-    return bbeq.a().a(paramString) != null;
+    return bbfe.a().a(paramString) != null;
   }
   
   protected void b(Canvas paramCanvas)
@@ -334,7 +334,7 @@ public class MessageProgressView
   
   public void b(String paramString)
   {
-    bbeq.a().a(paramString);
+    bbfe.a().a(paramString);
     if (QLog.isColorLevel()) {
       QLog.d("MessageProgressView", 2, " stopAnim  key=" + paramString);
     }
@@ -580,12 +580,12 @@ public class MessageProgressView
     MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bbeq.a().a(paramString);
+      localRefreshProgressRunnable = bbfe.a().a(paramString);
       if (localRefreshProgressRunnable != null) {
         break label96;
       }
       localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString);
-      bbeq.a().a(paramString, localRefreshProgressRunnable);
+      bbfe.a().a(paramString, localRefreshProgressRunnable);
       ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       if (QLog.isColorLevel()) {
         QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString + " progress=" + paramInt);
@@ -603,12 +603,12 @@ public class MessageProgressView
     MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = bbeq.a().a(paramString2);
+      localRefreshProgressRunnable = bbfe.a().a(paramString2);
       if (localRefreshProgressRunnable != null) {
         break label96;
       }
       localRefreshProgressRunnable = new MessageProgressView.RefreshProgressRunnable(this, paramString2);
-      bbeq.a().a(paramString2, localRefreshProgressRunnable);
+      bbfe.a().a(paramString2, localRefreshProgressRunnable);
       ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
       if (QLog.isColorLevel()) {
         QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString2 + " progress=" + paramString1);
@@ -619,9 +619,9 @@ public class MessageProgressView
     localRefreshProgressRunnable.a(this);
   }
   
-  public void setAnimRunnableListener(bcmw parambcmw)
+  public void setAnimRunnableListener(bcnl parambcnl)
   {
-    this.jdField_a_of_type_Bcmw = parambcmw;
+    this.jdField_a_of_type_Bcnl = parambcnl;
   }
   
   public void setBreathingCircleRadius(float paramFloat)

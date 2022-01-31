@@ -1,8 +1,12 @@
 import android.view.View;
+import android.widget.TextView;
 
-public abstract interface biwn
+public final class biwn
 {
-  public abstract void a(View paramView, biqn parambiqn, int paramInt);
+  public View a;
+  public TextView a;
+  
+  public biwn(biwl parambiwl) {}
 }
 
 

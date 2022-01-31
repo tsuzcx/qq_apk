@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.event;
 
-import actn;
+import actj;
 import android.util.SparseArray;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
@@ -15,26 +15,26 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import oat;
+import oaq;
+import rkc;
+import rke;
 import rkf;
-import rkh;
-import rki;
 
 public class ItemShowDispatcher
 {
   private static String jdField_a_of_type_JavaLangString = ItemShowDispatcher.class.getSimpleName();
   private final int jdField_a_of_type_Int = 1000;
-  private SparseArray<rki> jdField_a_of_type_AndroidUtilSparseArray;
+  private SparseArray<rkf> jdField_a_of_type_AndroidUtilSparseArray;
   private ItemShowDispatcher.OneSecondCallbackLoop jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher$OneSecondCallbackLoop;
   private Pair<Integer, Integer> jdField_a_of_type_ComTencentUtilPair;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ItemShowDispatcher.1(this);
-  private ArrayList<rkh> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<rke> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public HashSet<Integer> a;
-  private rkf jdField_a_of_type_Rkf;
+  private rkc jdField_a_of_type_Rkc;
   private final int jdField_b_of_type_Int = 500;
-  private SparseArray<rki> jdField_b_of_type_AndroidUtilSparseArray;
+  private SparseArray<rkf> jdField_b_of_type_AndroidUtilSparseArray;
   private Pair<Integer, Integer> jdField_b_of_type_ComTencentUtilPair;
-  private ArrayList<rkh> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<rke> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   public HashSet<String> b;
   
   public ItemShowDispatcher()
@@ -54,21 +54,21 @@ public class ItemShowDispatcher
         try
         {
           paramInt1 = Math.abs(paramAbsListView.getBottom() - localView.getTop() - paramAbsListView.getTop());
-          paramInt2 = this.jdField_a_of_type_Rkf.a(paramInt4);
+          paramInt2 = this.jdField_a_of_type_Rkc.a(paramInt4);
           if ((paramInt1 > 0) && (paramInt2 > 0)) {
             return paramInt1 / paramInt2;
           }
         }
         catch (RuntimeException paramAbsListView)
         {
-          actn.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
+          actj.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
         }
       }
     }
     return 0.0F;
   }
   
-  private int a(SparseArray<rki> paramSparseArray, BaseData paramBaseData)
+  private int a(SparseArray<rkf> paramSparseArray, BaseData paramBaseData)
   {
     int j;
     if (paramSparseArray == null)
@@ -83,7 +83,7 @@ public class ItemShowDispatcher
         break label47;
       }
       j = i;
-      if (((rki)paramSparseArray.valueAt(i)).a() == paramBaseData) {
+      if (((rkf)paramSparseArray.valueAt(i)).a() == paramBaseData) {
         break;
       }
       i += 1;
@@ -134,14 +134,14 @@ public class ItemShowDispatcher
         i1 = paramAbsListView.getHeight();
         j = localView1.getBottom();
         k = 0;
-        if (!a(j, this.jdField_a_of_type_Rkf.a(i)))
+        if (!a(j, this.jdField_a_of_type_Rkc.a(i)))
         {
           k += 1;
           i += 1;
           j = paramAbsListView.getChildAt(k).getBottom();
           continue;
         }
-        k = this.jdField_a_of_type_Rkf.a(n) - (localView2.getBottom() - i1);
+        k = this.jdField_a_of_type_Rkc.a(n) - (localView2.getBottom() - i1);
       }
       catch (Exception paramAbsListView)
       {
@@ -150,16 +150,16 @@ public class ItemShowDispatcher
         int j;
         return null;
       }
-      if (!a(k, this.jdField_a_of_type_Rkf.a(n)))
+      if (!a(k, this.jdField_a_of_type_Rkc.a(n)))
       {
         n -= 1;
         m -= 1;
         localView1 = paramAbsListView.getChildAt(m);
-        k = this.jdField_a_of_type_Rkf.a(n) - (localView1.getBottom() - i1);
+        k = this.jdField_a_of_type_Rkc.a(n) - (localView1.getBottom() - i1);
       }
       else
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "  " + i + " - " + n + "         " + j + "  " + this.jdField_a_of_type_Rkf.a(i) + "   " + k + "   " + this.jdField_a_of_type_Rkf.a(n));
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "  " + i + " - " + n + "         " + j + "  " + this.jdField_a_of_type_Rkc.a(i) + "   " + k + "   " + this.jdField_a_of_type_Rkc.a(n));
         return new Pair(Integer.valueOf(i), Integer.valueOf(n));
       }
       if (k <= 0) {
@@ -186,7 +186,7 @@ public class ItemShowDispatcher
       int j = this.jdField_b_of_type_AndroidUtilSparseArray.keyAt(i);
       if ((j >= ((Integer)paramPair.first).intValue()) && (j <= ((Integer)paramPair.second).intValue()))
       {
-        ((rki)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(i)).a();
+        ((rkf)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(i)).a();
         localArrayList.add(Integer.valueOf(j));
       }
       i += 1;
@@ -203,7 +203,7 @@ public class ItemShowDispatcher
   private boolean a()
   {
     if ((this.jdField_a_of_type_ComTencentUtilPair == null) && (this.jdField_b_of_type_ComTencentUtilPair == null)) {}
-    while ((this.jdField_a_of_type_Rkf == null) || (this.jdField_a_of_type_Rkf.a() == 0) || (((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) && ((this.jdField_b_of_type_AndroidUtilSparseArray == null) || (this.jdField_b_of_type_AndroidUtilSparseArray.size() == 0)))) {
+    while ((this.jdField_a_of_type_Rkc == null) || (this.jdField_a_of_type_Rkc.a() == 0) || (((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) && ((this.jdField_b_of_type_AndroidUtilSparseArray == null) || (this.jdField_b_of_type_AndroidUtilSparseArray.size() == 0)))) {
       return false;
     }
     return true;
@@ -224,7 +224,7 @@ public class ItemShowDispatcher
     while (!AdData.a(paramBaseData)) {
       return false;
     }
-    return oat.c((AdData)paramBaseData);
+    return oaq.c((AdData)paramBaseData);
   }
   
   private void b()
@@ -241,13 +241,13 @@ public class ItemShowDispatcher
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        rkh localrkh = (rkh)localIterator.next();
-        if ((localrkh.jdField_a_of_type_JavaLangLong.longValue() != 0L) && (System.currentTimeMillis() - localrkh.jdField_a_of_type_JavaLangLong.longValue() >= 1000L))
+        rke localrke = (rke)localIterator.next();
+        if ((localrke.jdField_a_of_type_JavaLangLong.longValue() != 0L) && (System.currentTimeMillis() - localrke.jdField_a_of_type_JavaLangLong.longValue() >= 1000L))
         {
-          localrkh.jdField_a_of_type_Long = (System.currentTimeMillis() - localrkh.jdField_a_of_type_JavaLangLong.longValue());
-          localArrayList.add(Integer.valueOf(localrkh.jdField_a_of_type_Int));
+          localrke.jdField_a_of_type_Long = (System.currentTimeMillis() - localrke.jdField_a_of_type_JavaLangLong.longValue());
+          localArrayList.add(Integer.valueOf(localrke.jdField_a_of_type_Int));
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "time is out , need report ,ad pos is =" + localrkh.jdField_a_of_type_Int + "  show time=" + localrkh.jdField_a_of_type_JavaLangLong);
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "time is out , need report ,ad pos is =" + localrke.jdField_a_of_type_Int + "  show time=" + localrke.jdField_a_of_type_JavaLangLong);
           }
         }
       }
@@ -274,21 +274,21 @@ public class ItemShowDispatcher
       while (paramArrayList.hasNext())
       {
         Integer localInteger = (Integer)paramArrayList.next();
-        Object localObject = (rki)this.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue());
+        Object localObject = (rkf)this.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue());
         if (localObject != null)
         {
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "doAdCallback(ArrayList<Integer> adPositionlist) pos=" + localInteger);
           }
-          ((rki)localObject).a();
+          ((rkf)localObject).a();
           localArrayList.add(localInteger);
           this.jdField_a_of_type_AndroidUtilSparseArray.remove(localInteger.intValue());
           localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
           while (((Iterator)localObject).hasNext())
           {
-            rkh localrkh = (rkh)((Iterator)localObject).next();
-            if ((localrkh != null) && (localrkh.jdField_a_of_type_Int == localInteger.intValue())) {
-              this.jdField_a_of_type_JavaUtilArrayList.remove(localrkh);
+            rke localrke = (rke)((Iterator)localObject).next();
+            if ((localrke != null) && (localrke.jdField_a_of_type_Int == localInteger.intValue())) {
+              this.jdField_a_of_type_JavaUtilArrayList.remove(localrke);
             }
           }
           if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger))
@@ -369,24 +369,24 @@ public class ItemShowDispatcher
     this.jdField_b_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(n), Integer.valueOf(m));
   }
   
-  public rkh a(int paramInt)
+  public rke a(int paramInt)
   {
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       return null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    rkh localrkh;
+    rke localrke;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localrkh = (rkh)localIterator.next();
-    } while (localrkh.jdField_a_of_type_Int != paramInt);
+      localrke = (rke)localIterator.next();
+    } while (localrke.jdField_a_of_type_Int != paramInt);
     for (;;)
     {
-      return localrkh;
-      localrkh = null;
+      return localrke;
+      localrke = null;
     }
   }
   
@@ -418,7 +418,7 @@ public class ItemShowDispatcher
         i = paramInt1 + 1;
         while (i < paramInt2)
         {
-          localObject = (rki)this.jdField_b_of_type_AndroidUtilSparseArray.get(i);
+          localObject = (rkf)this.jdField_b_of_type_AndroidUtilSparseArray.get(i);
           if (localObject != null)
           {
             this.jdField_b_of_type_AndroidUtilSparseArray.delete(i);
@@ -433,7 +433,7 @@ public class ItemShowDispatcher
         i = paramInt1 + 1;
         while (i < paramInt2)
         {
-          localObject = (rki)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+          localObject = (rkf)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
           if (localObject != null)
           {
             this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
@@ -447,27 +447,27 @@ public class ItemShowDispatcher
         localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          rkh localrkh = (rkh)((Iterator)localObject).next();
-          if (localrkh.jdField_a_of_type_Int == paramInt1) {
+          rke localrke = (rke)((Iterator)localObject).next();
+          if (localrke.jdField_a_of_type_Int == paramInt1) {
             ((Iterator)localObject).remove();
-          } else if (localrkh.jdField_a_of_type_Int > paramInt1) {
-            localrkh.jdField_a_of_type_Int -= 1;
+          } else if (localrke.jdField_a_of_type_Int > paramInt1) {
+            localrke.jdField_a_of_type_Int -= 1;
           }
         }
       }
     }
   }
   
-  public void a(int paramInt, rki paramrki)
+  public void a(int paramInt, rkf paramrkf)
   {
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    int i = a(this.jdField_a_of_type_AndroidUtilSparseArray, paramrki.a());
+    int i = a(this.jdField_a_of_type_AndroidUtilSparseArray, paramrkf.a());
     if (i >= 0) {
       this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramrki);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramrkf);
     c();
   }
   
@@ -476,17 +476,17 @@ public class ItemShowDispatcher
     Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      rkh localrkh = (rkh)localIterator.next();
-      AdData localAdData = (AdData)localrkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-      if ((localAdData != null) && (a(localrkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) && (!this.jdField_b_of_type_JavaUtilHashSet.contains(localAdData.u)) && (a(paramAbsListView, paramInt1, paramInt2, localrkh.jdField_a_of_type_Int))) {
-        if (localrkh.b == 0L)
+      rke localrke = (rke)localIterator.next();
+      AdData localAdData = (AdData)localrke.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+      if ((localAdData != null) && (a(localrke.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) && (!this.jdField_b_of_type_JavaUtilHashSet.contains(localAdData.u)) && (a(paramAbsListView, paramInt1, paramInt2, localrke.jdField_a_of_type_Int))) {
+        if (localrke.b == 0L)
         {
-          localrkh.b = System.currentTimeMillis();
+          localrke.b = System.currentTimeMillis();
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "checkWebProcess set start time=, traceId=" + localAdData.u);
           }
         }
-        else if (System.currentTimeMillis() - localrkh.b >= 500L)
+        else if (System.currentTimeMillis() - localrke.b >= 500L)
         {
           this.jdField_b_of_type_JavaUtilHashSet.add(localAdData.u);
           a(paramQQAppInterface);
@@ -531,33 +531,33 @@ public class ItemShowDispatcher
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        rkh localrkh = (rkh)localIterator.next();
-        if (a(paramAbsListView, paramInt1, paramInt2, paramInt3, localrkh.jdField_a_of_type_Int))
+        rke localrke = (rke)localIterator.next();
+        if (a(paramAbsListView, paramInt1, paramInt2, paramInt3, localrke.jdField_a_of_type_Int))
         {
-          if ((localrkh.jdField_a_of_type_JavaLangLong.longValue() != 0L) && (System.currentTimeMillis() - localrkh.jdField_a_of_type_JavaLangLong.longValue() >= 1000L))
+          if ((localrke.jdField_a_of_type_JavaLangLong.longValue() != 0L) && (System.currentTimeMillis() - localrke.jdField_a_of_type_JavaLangLong.longValue() >= 1000L))
           {
-            localArrayList.add(Integer.valueOf(localrkh.jdField_a_of_type_Int));
-            localrkh.jdField_a_of_type_Long = (System.currentTimeMillis() - localrkh.jdField_a_of_type_JavaLangLong.longValue());
-            localrkh.jdField_a_of_type_Float = a(paramAbsListView, paramInt1, paramInt2, paramInt3, localrkh.jdField_a_of_type_Int);
+            localArrayList.add(Integer.valueOf(localrke.jdField_a_of_type_Int));
+            localrke.jdField_a_of_type_Long = (System.currentTimeMillis() - localrke.jdField_a_of_type_JavaLangLong.longValue());
+            localrke.jdField_a_of_type_Float = a(paramAbsListView, paramInt1, paramInt2, paramInt3, localrke.jdField_a_of_type_Int);
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "need report ,ad pos is =" + localrkh.jdField_a_of_type_Int + "  show time=" + localrkh.jdField_a_of_type_JavaLangLong + " exposureTime = " + localrkh.jdField_a_of_type_Long + " exposureArea = " + localrkh.jdField_a_of_type_Float);
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "need report ,ad pos is =" + localrke.jdField_a_of_type_Int + "  show time=" + localrke.jdField_a_of_type_JavaLangLong + " exposureTime = " + localrke.jdField_a_of_type_Long + " exposureArea = " + localrke.jdField_a_of_type_Float);
             }
           }
-          else if (localrkh.jdField_a_of_type_JavaLangLong.longValue() == 0L)
+          else if (localrke.jdField_a_of_type_JavaLangLong.longValue() == 0L)
           {
-            localrkh.jdField_a_of_type_Float = a(paramAbsListView, paramInt1, paramInt2, paramInt3, localrkh.jdField_a_of_type_Int);
-            localrkh.jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+            localrke.jdField_a_of_type_Float = a(paramAbsListView, paramInt1, paramInt2, paramInt3, localrke.jdField_a_of_type_Int);
+            localrke.jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
           }
         }
         else {
-          localrkh.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+          localrke.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
         }
       }
     } while (localArrayList.size() <= 0);
     b(localArrayList);
   }
   
-  public void a(ArrayList<rkh> paramArrayList)
+  public void a(ArrayList<rke> paramArrayList)
   {
     Iterator localIterator1 = paramArrayList.iterator();
     for (;;)
@@ -565,24 +565,24 @@ public class ItemShowDispatcher
       if (!localIterator1.hasNext()) {
         break label125;
       }
-      rkh localrkh1 = (rkh)localIterator1.next();
+      rke localrke1 = (rke)localIterator1.next();
       Iterator localIterator2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      rkh localrkh2;
+      rke localrke2;
       while (localIterator2.hasNext())
       {
-        localrkh2 = (rkh)localIterator2.next();
-        if (localrkh1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData == localrkh2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData) {
-          localrkh1.a(localrkh2);
+        localrke2 = (rke)localIterator2.next();
+        if (localrke1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData == localrke2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData) {
+          localrke1.a(localrke2);
         }
       }
       localIterator2 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
       if (localIterator2.hasNext())
       {
-        localrkh2 = (rkh)localIterator2.next();
-        if (localrkh1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData != localrkh2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData) {
+        localrke2 = (rke)localIterator2.next();
+        if (localrke1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData != localrke2.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData) {
           break;
         }
-        localrkh1.a(localrkh2);
+        localrke1.a(localrke2);
       }
     }
     label125:
@@ -592,9 +592,9 @@ public class ItemShowDispatcher
     this.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList);
   }
   
-  public void a(rkf paramrkf)
+  public void a(rkc paramrkc)
   {
-    this.jdField_a_of_type_Rkf = paramrkf;
+    this.jdField_a_of_type_Rkc = paramrkc;
   }
   
   public boolean a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -614,7 +614,7 @@ public class ItemShowDispatcher
         }
         catch (RuntimeException paramAbsListView)
         {
-          actn.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt3, paramAbsListView);
+          actj.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt3, paramAbsListView);
         }
       }
     }
@@ -637,29 +637,29 @@ public class ItemShowDispatcher
       {
         this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt4));
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "invalidADExposurePos add " + paramInt4 + " showHeight = " + paramInt1 + " viewHeight = " + this.jdField_a_of_type_Rkf.a(paramInt4));
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "invalidADExposurePos add " + paramInt4 + " showHeight = " + paramInt1 + " viewHeight = " + this.jdField_a_of_type_Rkc.a(paramInt4));
         }
       }
-      boolean bool = a(Math.abs(paramAbsListView.getBottom() - localView.getTop() - paramAbsListView.getTop()), this.jdField_a_of_type_Rkf.a(paramInt4));
+      boolean bool = a(Math.abs(paramAbsListView.getBottom() - localView.getTop() - paramAbsListView.getTop()), this.jdField_a_of_type_Rkc.a(paramInt4));
       return bool;
     }
     catch (RuntimeException paramAbsListView)
     {
-      actn.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
+      actj.a("FastWebActivityCheckAdOutOfBounds", "adPos:" + paramInt4, paramAbsListView);
     }
     return false;
   }
   
-  public void b(int paramInt, rki paramrki)
+  public void b(int paramInt, rkf paramrkf)
   {
     if (this.jdField_b_of_type_AndroidUtilSparseArray == null) {
       this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    int i = a(this.jdField_b_of_type_AndroidUtilSparseArray, paramrki.a());
+    int i = a(this.jdField_b_of_type_AndroidUtilSparseArray, paramrkf.a());
     if (i >= 0) {
       this.jdField_b_of_type_AndroidUtilSparseArray.remove(i);
     }
-    this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, paramrki);
+    this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, paramrkf);
     d();
   }
 }

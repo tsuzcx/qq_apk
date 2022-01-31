@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bemw;
+import benn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -40,15 +40,15 @@ class UIJsPlugin$2
       {
         try
         {
-          bemw localbemw = new bemw(this.this$0.jsPluginEngine.getActivityContext());
+          benn localbenn = new benn(this.this$0.jsPluginEngine.getActivityContext());
           if (TextUtils.isEmpty(this.val$imagePath)) {
             break label232;
           }
-          localbemw.a(new BitmapDrawable(this.val$imagePath));
-          localbemw.a(this.val$title);
-          localbemw.c(this.val$duration);
-          localbemw.a();
-          UIJsPlugin.access$102(this.this$0, localbemw);
+          localbenn.a(new BitmapDrawable(this.val$imagePath));
+          localbenn.a(this.val$title);
+          localbenn.c(this.val$duration);
+          localbenn.a();
+          UIJsPlugin.access$102(this.this$0, localbenn);
         }
         catch (Throwable localThrowable)
         {

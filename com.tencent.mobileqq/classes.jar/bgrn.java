@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
-
 public class bgrn
-  implements DialogInterface.OnDismissListener
+  implements bgrm
 {
-  public bgrn(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  public void a() {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a.a) {
-      QQIndividualityBridgeActivity.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
-  }
+  public void a(String paramString) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
 }
 
 

@@ -1,14 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.PointF;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import java.util.List;
 
-class bisw
-  implements View.OnClickListener
+public class bisw
+  extends BaseFilter
 {
-  bisw(biss parambiss) {}
+  private Frame a = new Frame();
   
-  public void onClick(View paramView)
+  public bisw()
   {
-    biss.a(this.a).a();
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  }
+  
+  public Frame a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
+  {
+    float[] arrayOfFloat = new float[8];
+    biii.a(paramList, paramInt2, paramInt3, arrayOfFloat);
+    paramList = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+    paramList.apply();
+    paramList.setTexCords(arrayOfFloat);
+    paramList.setRotationAndFlip(0, 1, 1);
+    paramList.RenderProcess(paramInt1, paramInt2, paramInt3, 64, 64, -1, 0.0D, this.a);
+    return this.a;
+  }
+  
+  public void clearGLSLSelf()
+  {
+    super.clearGLSLSelf();
+    this.a.clear();
   }
 }
 

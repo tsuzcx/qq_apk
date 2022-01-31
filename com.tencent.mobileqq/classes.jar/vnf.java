@@ -1,12 +1,8 @@
-import android.graphics.Bitmap;
+import android.graphics.PointF;
 
 public abstract interface vnf
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 

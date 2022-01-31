@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import asgl;
-import bbbr;
+import asgn;
+import bbcf;
 
 public final class AudioUtil$1
   implements Runnable
 {
   public void run()
   {
-    asgl.a().a(bbbr.a());
+    asgn.a().a(bbcf.a());
   }
 }
 

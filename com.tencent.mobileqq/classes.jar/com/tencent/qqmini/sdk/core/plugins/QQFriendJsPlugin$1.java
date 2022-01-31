@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 
 class QQFriendJsPlugin$1
   implements QQFriendJsPlugin.IAddFriendCallBack
 {
-  QQFriendJsPlugin$1(QQFriendJsPlugin paramQQFriendJsPlugin, beka parambeka) {}
+  QQFriendJsPlugin$1(QQFriendJsPlugin paramQQFriendJsPlugin, bekr parambekr) {}
   
   public void onAddFriendCallBack(String paramString1, boolean paramBoolean, String paramString2)
   {

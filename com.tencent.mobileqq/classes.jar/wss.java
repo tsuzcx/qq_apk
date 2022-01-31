@@ -1,39 +1,21 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-class wss
-  implements TopGestureLayout.InterceptTouchEventListener
+final class wss
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  wss(wsr paramwsr, Rect paramRect) {}
+  wss(Window paramWindow) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
     {
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
-    int i;
-    int j;
-    do
-    {
-      while (!paramMotionEvent.hasNext())
-      {
-        do
-        {
-          return true;
-          i = (int)(paramMotionEvent.getX() + 0.5F);
-          j = (int)(paramMotionEvent.getY() + 0.5F);
-        } while (wsr.a(this.jdField_a_of_type_Wsr) == null);
-        paramMotionEvent = wsr.a(this.jdField_a_of_type_Wsr).iterator();
-      }
-      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
-    return false;
   }
 }
 

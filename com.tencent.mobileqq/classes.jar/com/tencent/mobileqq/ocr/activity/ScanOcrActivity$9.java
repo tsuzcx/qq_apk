@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import axrl;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ class ScanOcrActivity$9
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(this.a));
-    axrl.a(BaseApplicationImpl.getContext()).a("", "ocr_recog", true, 0L, 0L, localHashMap, "", false);
+    axrn.a(BaseApplicationImpl.getContext()).a("", "ocr_recog", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

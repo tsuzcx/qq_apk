@@ -1,47 +1,32 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class oel
-  extends bjun
+class oel
+  implements swj
 {
-  public oel(@NonNull bjww parambjww, long paramLong)
-  {
-    super(parambjww, paramLong);
-  }
+  oel(oek paramoek, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
   
-  private void j()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    ((ImageView)a(2131377579)).setVisibility(8);
-    ((TextView)a(2131364750)).setText(ajyc.a(2131712857));
-  }
-  
-  public void a()
-  {
-    super.a();
-    j();
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    int i = paramView.getId();
-    paramView = (Long)this.a.get(i);
-    if (paramView != null) {}
-    switch ((int)paramView.longValue())
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 4: 
-      noo.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
-      return;
-    case 8: 
-      noo.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
+      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
+      l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish) {
+        l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
+      }
+      QLog.d("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "CameraCaptureMerge: duration: " + l1 + ", time cost: " + l2 + "s");
+    }
+    if (paramInt == 0)
+    {
+      oek.a(this.jdField_a_of_type_Oek, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramString2);
       return;
     }
-    noo.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
+    }
+    oek.a(this.jdField_a_of_type_Oek, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
   }
 }
 

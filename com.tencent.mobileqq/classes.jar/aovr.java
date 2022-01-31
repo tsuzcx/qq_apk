@@ -1,10 +1,30 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aovr
+class aovr
+  implements aowm
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  aovr(aovq paramaovq, String paramString) {}
   
-  public abstract void a(String paramString, boolean paramBoolean);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+      }
+      aovp.a(this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovv.a(this.jdField_a_of_type_JavaLangString, aovp.a(this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp));
+    }
+    for (;;)
+    {
+      aouy.a(this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy).a().a(aovp.a(this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp));
+      return;
+      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
+      this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovq.jdField_a_of_type_Aovp.jdField_a_of_type_Long, false), true);
+    }
+  }
 }
 
 

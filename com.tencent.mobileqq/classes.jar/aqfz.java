@@ -1,30 +1,24 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class aqfz
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  aqfz(aqft paramaqft) {}
+  aqfz(aqfv paramaqfv) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((aqft.a(this.a) == null) || (aqft.a(this.a).isFinishing())) {}
-    do
+    if (paramInt == 1)
     {
-      return;
-      paramContext = aqcq.a(paramIntent.getStringExtra("key_share_image_by_server"));
-      QLog.d("ForwardShareByServerHelper", 1, new Object[] { "initBroadcastReceiver errorMsg=", paramContext });
-    } while (paramContext == null);
-    if (TextUtils.isEmpty(paramContext))
-    {
-      aqft.a(this.a, aqft.a(this.a).getIntent().getExtras());
-      return;
+      aqes.a(aqfv.a(this.a), false, "shareToQQ", aqfv.a(this.a));
+      nau.a(aqfv.a(this.a), 0, "", "");
+      if (aqfv.a(this.a) != null) {
+        aqfv.a(this.a).b(1);
+      }
+      aqfv.a(this.a).moveTaskToBack(true);
     }
-    aqft.a(this.a, paramContext);
   }
 }
 

@@ -1,10 +1,33 @@
-public abstract interface abhc
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+
+public class abhc
+  extends xpw
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abhc(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public xpd a(Activity paramActivity, xpj paramxpj)
+  {
+    return super.a(paramActivity, paramxpj);
+  }
   
-  public abstract void b(byte[] paramArrayOfByte);
+  public xpf a(Activity paramActivity, xpj paramxpj)
+  {
+    this.a.a = new ausx((FriendProfilePicBrowserActivity)paramActivity, paramxpj);
+    return this.a.a;
+  }
+  
+  public xpj a(Activity paramActivity)
+  {
+    paramActivity = new atog(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public xpk a(Activity paramActivity, xpj paramxpj)
+  {
+    return null;
+  }
 }
 
 

@@ -1,77 +1,79 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 class uti
-  extends SimpleJob<Object>
+  extends QQUIEventReceiver<ute, tjj>
 {
-  uti(uth paramuth, String paramString)
+  public uti(ute paramute)
   {
-    super(paramString);
+    super(paramute);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(ute paramute, tjj paramtjj)
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (tcp)tdc.a(19);
-    paramVarArgs = paramJobContext.a(tji.a(this.a.jdField_b_of_type_JavaLangString));
-    boolean bool;
-    tjm localtjm;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
+    if (!TextUtils.equals(paramtjj.jdField_a_of_type_JavaLangString, paramute.c)) {}
+    do
     {
-      bool = true;
-      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
-      localtjm = new tjm(this.a.c, new ErrorMessage());
-      localtjm.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      localtjm.jdField_b_of_type_Boolean = true;
-      localtjm.c = true;
-      localtjm.e = true;
-      localtjm.jdField_a_of_type_Boolean = false;
-      localtjm.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label246;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label156:
-      if (paramJobContext != null) {
-        break label251;
-      }
-      localtjm.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = true;
-      label174:
-      ste.a().dispatch(localtjm);
-      this.a.a(localList, false);
-      if (!localtjm.jdField_a_of_type_Boolean) {
-        break label294;
-      }
-    }
-    label294:
-    for (paramJobContext = "true";; paramJobContext = "false")
-    {
-      veg.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      this.a.d();
-      return null;
-      bool = false;
-      break;
-      label246:
-      paramJobContext = null;
-      break label156;
-      label251:
-      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
+      do
       {
-        localtjm.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_b_of_type_Boolean = true;
-        break label174;
+        return;
+        paramute.b(paramute.b);
+      } while ((paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (!paramtjj.e));
+      if (paramtjj.c) {
+        paramute.a.clear();
       }
-      localtjm.jdField_a_of_type_Boolean = false;
-      break label174;
+      paramtjj = paramtjj.jdField_a_of_type_JavaUtilList;
+    } while (paramtjj == null);
+    paramtjj = paramtjj.iterator();
+    label72:
+    VideoCollectionItem localVideoCollectionItem;
+    Object localObject1;
+    ArrayList localArrayList;
+    Object localObject2;
+    if (paramtjj.hasNext())
+    {
+      localVideoCollectionItem = (VideoCollectionItem)paramtjj.next();
+      localObject1 = new ArrayList();
+      localArrayList = new ArrayList(localVideoCollectionItem.videoVidList);
+      localObject2 = new ArrayList();
+      Iterator localIterator = localVideoCollectionItem.videoItemList.iterator();
+      while (localIterator.hasNext()) {
+        ((ArrayList)localObject2).add(((StoryVideoItem)localIterator.next()).mVid);
+      }
+      localArrayList.removeAll((Collection)localObject2);
     }
+    int j;
+    for (int i = 0;; i = j)
+    {
+      if (i < localArrayList.size())
+      {
+        j = Math.min(localArrayList.size(), i + 20);
+        if (i < j) {}
+      }
+      else
+      {
+        localObject1 = new tjb((List)localObject1);
+        ((tjb)localObject1).a("Q.qqstory.memories:MemoryDataPuller");
+        paramute.a.put(localVideoCollectionItem.collectionId, localObject1);
+        break label72;
+        break;
+      }
+      localObject2 = localArrayList.subList(i, j);
+      ((List)localObject1).add(paramute.a(localVideoCollectionItem.collectionId, (List)localObject2));
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjj.class;
   }
 }
 

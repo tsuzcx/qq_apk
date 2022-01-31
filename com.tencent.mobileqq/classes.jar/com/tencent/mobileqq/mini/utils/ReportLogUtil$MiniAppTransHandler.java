@@ -2,15 +2,15 @@ package com.tencent.mobileqq.mini.utils;
 
 import android.os.Looper;
 import android.os.Message;
-import ayqm;
-import ayvz;
+import ayqo;
+import aywb;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 
 public class ReportLogUtil$MiniAppTransHandler
-  extends ayvz
+  extends aywb
 {
   ReportLogUtil.UploadLogListener uploadLogListener;
   
@@ -23,8 +23,8 @@ public class ReportLogUtil$MiniAppTransHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if ((localayqm == null) || (localayqm.c != 65) || (localayqm.b != 24)) {}
+    ayqo localayqo = (ayqo)paramMessage.obj;
+    if ((localayqo == null) || (localayqo.c != 65) || (localayqo.b != 24)) {}
     do
     {
       do
@@ -37,7 +37,7 @@ public class ReportLogUtil$MiniAppTransHandler
         paramMessage = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
-          paramMessage.mergeFrom(localayqm.a);
+          paramMessage.mergeFrom(localayqo.a);
           paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
           if (this.uploadLogListener != null) {
             this.uploadLogListener.onSuccess(paramMessage);

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bcfe;
+import bcfs;
 import com.tencent.common.app.BaseApplicationImpl;
-import mze;
+import mzb;
 
 public class SwiftBrowserTBSHandler$5
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$5(bcfe parambcfe, String paramString) {}
+  public SwiftBrowserTBSHandler$5(bcfs parambcfs, String paramString) {}
   
   public void run()
   {
-    mze.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
+    mzb.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
   }
 }
 

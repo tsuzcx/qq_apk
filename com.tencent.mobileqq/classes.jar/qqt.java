@@ -1,20 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import java.util.List;
 
 public class qqt
-  extends AnimatorListenerAdapter
+  extends siv
 {
-  public qqt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
+  private qqt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramAnimator = new Bundle();
-    paramAnimator.putLong("ARGS_VIDEO_START_POSITION", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.a() + 300L);
-    paramAnimator.putInt("VIDEO_FROM_TYPE", VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-    qno.a().a(this.jdField_a_of_type_JavaUtilList, paramAnimator);
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
+    {
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.l = true;
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
+      return;
+      if (i == 0) {
+        paramBundle.l = false;
+      }
+    }
   }
 }
 

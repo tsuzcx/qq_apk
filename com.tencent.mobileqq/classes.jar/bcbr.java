@@ -1,27 +1,33 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class bcbr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements mxl
 {
-  bcbr(bcbq parambcbq, View paramView, DisplayMetrics paramDisplayMetrics) {}
+  bcbr(bcbp parambcbp) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
+    if (paramBoolean) {
+      if (this.a.a)
+      {
+        if ((localObject != null) && ((localObject instanceof bcii))) {
+          ((bcii)localObject).a(true, 1, 2131691477);
+        }
+      }
+      else {
+        bcbp.a(this.a);
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bcbq.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_Bcbq.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
-      this.jdField_a_of_type_Bcbq.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
-      return;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    while ((localObject == null) || (!(localObject instanceof bcii))) {
+      for (;;)
+      {
+        return;
+        localObject = bcql.a(BaseApplicationImpl.getContext(), 1, 2131691477, 1);
+        ((bcql)localObject).b(((bcql)localObject).c());
+      }
     }
+    ((bcii)localObject).a(false, 0, 0);
   }
 }
 

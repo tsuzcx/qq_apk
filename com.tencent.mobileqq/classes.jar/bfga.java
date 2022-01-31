@@ -1,80 +1,141 @@
-import com.tencent.mobileqq.pb.PBField;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.ui.MoreItem;
+import com.tencent.qqmini.sdk.ui.MoreItemList;
 
-@Deprecated
 public class bfga
 {
-  public static JSONObject a(Object paramObject)
+  private bfgb jdField_a_of_type_Bfgb = new bfgb();
+  MoreItemList jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList = new MoreItemList(null);
+  
+  public bfga a(bfgb parambfgb)
   {
-    JSONObject localJSONObject = new JSONObject();
-    Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j) {}
-      Object localObject2;
-      Object localObject1;
-      for (;;)
-      {
-        Object localObject3;
-        try
-        {
-          if (!Modifier.isPublic(arrayOfField[i].getModifiers())) {
-            break label270;
-          }
-          arrayOfField[i].setAccessible(true);
-          localObject2 = arrayOfField[i].get(paramObject);
-          localObject1 = localObject2;
-          if ((localObject2 instanceof PBField)) {
-            localObject1 = localObject2.getClass().getDeclaredMethod("get", new Class[0]).invoke(localObject2, new Object[0]);
-          }
-          if (!(localObject1 instanceof List)) {
-            break label225;
-          }
-          localObject2 = new JSONArray();
-          localObject1 = ((List)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject3 = ((Iterator)localObject1).next();
-          if (a(localObject3))
-          {
-            ((JSONArray)localObject2).put(localObject3);
-            continue;
-            return localJSONObject;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          besl.d("JSONUtils", "convert error:" + paramObject);
-        }
-        if (localObject3 != null) {
-          ((JSONArray)localObject2).put(a(localObject3));
-        }
-      }
-      localJSONObject.put(arrayOfField[i].getName(), localObject2);
-      break label270;
-      label225:
-      if (a(localObject1)) {
-        localJSONObject.put(arrayOfField[i].getName(), localObject1);
-      } else if (localObject1 != null) {
-        localJSONObject.put(arrayOfField[i].getName(), a(localObject1));
-      }
-      label270:
-      i += 1;
-    }
+    this.jdField_a_of_type_Bfgb = parambfgb;
+    return this;
   }
   
-  static boolean a(Object paramObject)
+  public bfga a(String paramString, int paramInt)
   {
-    return ((paramObject instanceof Integer)) || ((paramObject instanceof Long)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double));
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 1;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.jdField_a_of_type_Boolean;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "QQ";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public MoreItemList a()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList;
+  }
+  
+  public bfga b(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 2;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.b;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "QQ空间";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public bfga c(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 3;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.c;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "微信好友";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public bfga d(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 4;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.d;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "微信朋友圈";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public bfga e(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 5;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.g;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "关于";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public bfga f(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 6;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.h;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "举报";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public bfga g(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 7;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.e;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "调试";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
+  }
+  
+  public bfga h(String paramString, int paramInt)
+  {
+    MoreItem localMoreItem = new MoreItem();
+    localMoreItem.jdField_a_of_type_Int = 8;
+    localMoreItem.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bfgb.f;
+    localMoreItem.b = paramInt;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "性能";
+    }
+    localMoreItem.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItemList.add(localMoreItem);
+    return this;
   }
 }
 

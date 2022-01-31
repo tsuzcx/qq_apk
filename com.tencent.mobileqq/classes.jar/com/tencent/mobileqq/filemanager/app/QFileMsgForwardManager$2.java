@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aowt;
-import aoxq;
-import apey;
-import apue;
+import aowx;
+import aoxu;
+import apfc;
+import apug;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -15,30 +15,30 @@ import java.util.Set;
 public class QFileMsgForwardManager$2
   implements Runnable
 {
-  public QFileMsgForwardManager$2(aowt paramaowt, String paramString) {}
+  public QFileMsgForwardManager$2(aowx paramaowx, String paramString) {}
   
   public void run()
   {
-    if (aowt.a(this.this$0).containsKey(this.a)) {}
-    for (aoxq localaoxq = (aoxq)aowt.a(this.this$0).remove(this.a);; localaoxq = null)
+    if (aowx.a(this.this$0).containsKey(this.a)) {}
+    for (aoxu localaoxu = (aoxu)aowx.a(this.this$0).remove(this.a);; localaoxu = null)
     {
-      if (localaoxq == null) {
+      if (localaoxu == null) {
         return;
       }
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      Iterator localIterator = localaoxq.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      Iterator localIterator = localaoxu.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ArrayList localArrayList3 = (ArrayList)localaoxq.jdField_a_of_type_JavaUtilHashMap.get(str);
+        ArrayList localArrayList3 = (ArrayList)localaoxu.jdField_a_of_type_JavaUtilHashMap.get(str);
         int i = 0;
         label109:
         MessageRecord localMessageRecord;
         if (i < localArrayList3.size())
         {
           localMessageRecord = (MessageRecord)localArrayList3.get(i);
-          if (apue.a(localMessageRecord)) {
+          if (apug.a(localMessageRecord)) {
             break label144;
           }
         }
@@ -50,7 +50,7 @@ public class QFileMsgForwardManager$2
           label144:
           if (String.valueOf(2).equalsIgnoreCase(localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileStatus")))
           {
-            localaoxq.jdField_a_of_type_Apey.a(str, localArrayList3, localMessageRecord, i);
+            localaoxu.jdField_a_of_type_Apfc.a(str, localArrayList3, localMessageRecord, i);
             localArrayList2.add(localMessageRecord);
           }
           else
@@ -59,18 +59,18 @@ public class QFileMsgForwardManager$2
           }
         }
       }
-      if (localaoxq.d.size() > 0)
+      if (localaoxu.d.size() > 0)
       {
         if (QLog.isColorLevel()) {
           QLog.i("FileMultiMsgManager<FileAssistant>", 1, "removeForwardRequest : remove upload request forwardSeq = [" + this.a + "] resultCode[1]");
         }
-        localaoxq.jdField_a_of_type_Apey.a(1, localArrayList1, localArrayList2);
+        localaoxu.jdField_a_of_type_Apfc.a(1, localArrayList1, localArrayList2);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("FileMultiMsgManager<FileAssistant>", 1, "removeForwardRequest : remove upload request forwardSeq = [" + this.a + "] resultCode[0]");
       }
-      localaoxq.jdField_a_of_type_Apey.a(0, localArrayList1, localArrayList2);
+      localaoxu.jdField_a_of_type_Apfc.a(0, localArrayList1, localArrayList2);
       return;
     }
   }

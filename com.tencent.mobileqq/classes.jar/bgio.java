@@ -1,20 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.ui.QQComicFragment;
 
-class bgio
-  extends BroadcastReceiver
+public class bgio
+  implements bcei
 {
-  bgio(bgin parambgin) {}
+  public bgio(QQComicFragment paramQQComicFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Object a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
-    bgin.a(this.a);
-    bgin.b(this.a);
+    return new bgip(this.a);
   }
 }
 

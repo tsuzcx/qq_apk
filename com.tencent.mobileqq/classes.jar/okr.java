@@ -1,32 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
 
 public class okr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString = NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId;
+  public okr(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
   
-  public okr(NativeCommentTextView paramNativeCommentTextView, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if ((NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView) == null) || (NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a == null) || (this.jdField_a_of_type_JavaLangString == null))
-    {
-      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+    if (onh.j()) {}
+    while (ReadInJoyCommentLikeView.a(this.a) == null) {
       return;
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId))
-    {
-      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
-      return;
+    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
+      if (ReadInJoyCommentLikeView.a(this.a) != null) {
+        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
+      }
     }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).setAlpha(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView));
+    for (;;)
+    {
+      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
+      ReadInJoyCommentLikeView.a(this.a);
+      return;
+      if (ReadInJoyCommentLikeView.a(this.a) != null) {
+        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
+      }
+    }
   }
 }
 

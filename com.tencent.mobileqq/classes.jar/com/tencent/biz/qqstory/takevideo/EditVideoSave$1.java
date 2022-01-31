@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ajyc;
-import bcpw;
-import vim;
-import vja;
+import ajya;
+import bcql;
+import vij;
+import vix;
 
 public class EditVideoSave$1
   implements Runnable
 {
-  public EditVideoSave$1(vim paramvim) {}
+  public EditVideoSave$1(vij paramvij) {}
   
   public void run()
   {
     this.this$0.g();
-    bcpw.a(this.this$0.a.a(), 2, ajyc.a(2131703858), 0).a();
+    bcql.a(this.this$0.a.a(), 2, ajya.a(2131703869), 0).a();
   }
 }
 

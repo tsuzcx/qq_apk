@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -11,10 +11,10 @@ public final class QQUtils$3
   {
     String str = null;
     if (this.jdField_a_of_type_Boolean) {
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719958);
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719969);
     }
     if (str != null) {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, str, 0).b(this.jdField_a_of_type_Int);
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, str, 0).b(this.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-
-class afqk
-  implements afsy
+public abstract interface afqk
 {
-  afqk(afqe paramafqe) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (afqe.a(this.a) != null) {
-      afqe.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

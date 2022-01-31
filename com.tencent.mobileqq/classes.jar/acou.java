@@ -1,19 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acou
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
   public acou(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    axqy.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      axqy.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
     }
-    return false;
+    UpgradeActivity.a(this.a, false);
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akuy.b(), String.valueOf(2), akuz.a(), "");
   }
 }
 

@@ -1,132 +1,67 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.widget.ThemeImageView;
+import java.lang.ref.WeakReference;
 
-public class aogj
+class aogj
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public int a;
-  public List<aogk> a;
-  public boolean a;
-  public boolean b;
+  int jdField_a_of_type_Int;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  MiniAppRecommInfo.MiniApp jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  private int a()
+  public aogj(Activity paramActivity, View paramView)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0;; i = ((aogk)localIterator.next()).jdField_a_of_type_JavaUtilList.size() + i)
-      {
-        j = i;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-      }
+    super(paramView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370308));
+    if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
+      ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(bfwr.c);
     }
-    int j = 0;
-    return j;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370309));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
-  private void a()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      long l = System.currentTimeMillis();
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-      while (i >= 0)
-      {
-        if (Math.abs(l - ((aogk)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long) > 60000L) {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-        }
-        i -= 1;
-      }
-    }
-  }
-  
-  public aogk a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-        localObject1 = (aogk)this.jdField_a_of_type_JavaUtilList.get(0);
-      }
-    }
-    return localObject1;
-  }
-  
-  public aogk a(String paramString)
-  {
-    int i;
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
-    {
-      i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-        if (paramString.equals(((aogk)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString))
-        {
-          paramString = (aogk)this.jdField_a_of_type_JavaUtilList.get(i);
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
-      }
-      return paramString;
-      i += 1;
-      break;
-      paramString = null;
-    }
-  }
-  
-  public void a(aogk paramaogk, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
     this.jdField_a_of_type_Int = paramInt;
-    a();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramaogk)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramaogk);
-    }
-    if ((paramaogk == null) || (paramaogk.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilList.add(0, paramaogk);
-      while ((a() > 500) && (this.jdField_a_of_type_JavaUtilList.size() > 1)) {
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-      }
-    }
   }
   
-  public String toString()
+  public void a(MiniAppRecommInfo.MiniApp paramMiniApp)
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mProfileComplete").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mShowCard").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mMaxLikeCount").append("=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" ").append("mTags").append("=").append(" [");
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        aogk localaogk = (aogk)this.jdField_a_of_type_JavaUtilList.get(i);
-        localStringBuilder.append("\n");
-        localStringBuilder.append("index_").append(i).append("=").append(localaogk.toString());
-        i += 1;
-      }
+    if (paramMiniApp == null) {
+      return;
     }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp = paramMiniApp;
+    Drawable localDrawable = MiniAppUtils.getIcon(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramMiniApp.c, true, 2130840785, 48);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMiniApp.b);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp != null) && (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    {
+      paramView = new MiniAppConfig(this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      paramView.launchParam = new LaunchParam();
+      paramView.launchParam.scene = 2065;
+      MiniAppController.startApp((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramView, null);
+      aogi.a(102, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,109 +1,147 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ForwardStep.1;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
 
-class ayqu
-  implements BusinessObserver
+public abstract class ayqu
 {
-  ayqu(ayqt paramayqt) {}
+  protected long a;
+  private ayqu jdField_a_of_type_Ayqu;
+  protected String a;
+  protected AtomicBoolean a;
+  private ayqu[] jdField_a_of_type_ArrayOfAyqu;
+  public AtomicBoolean b = new AtomicBoolean(false);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  ayqu(ayqt paramayqt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|isSuccess=" + paramBoolean + ",time=" + (System.currentTimeMillis() - ayqr.b(this.a.b)));
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaLangString = "ForwardStep";
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doStep");
     }
-    int j = -1;
-    paramInt = j;
-    int i;
-    if (paramBoolean) {
-      i = j;
-    }
-    try
+    if ((this.jdField_a_of_type_ArrayOfAyqu != null) && (this.jdField_a_of_type_ArrayOfAyqu.length > 0))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      paramInt = j;
-      if (paramBundle != null)
-      {
-        i = j;
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-        i = j;
-        localGetAppinfoResponse.mergeFrom(paramBundle);
-        i = j;
-        j = localGetAppinfoResponse.ret.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|ret=" + j);
-        }
-        paramInt = j;
-        if (j == 0)
-        {
-          i = j;
-          ayqr.a(this.a.b).d = xmt.a(localGetAppinfoResponse.iconsURL, 16);
-          i = j;
-          ayqr.a(this.a.b).e = xmt.a(localGetAppinfoResponse.iconsURL, 100);
-          i = j;
-          if (localGetAppinfoResponse.androidInfo != null)
-          {
-            i = j;
-            paramBundle = localGetAppinfoResponse.androidInfo;
-            i = j;
-            if (paramBundle.packName.has())
-            {
-              i = j;
-              ayqr.a(this.a.b).jdField_a_of_type_JavaLangString = paramBundle.packName.get();
-            }
-            i = j;
-            if (paramBundle.messagetail.has())
-            {
-              i = j;
-              ayqr.a(this.a.b).b = paramBundle.messagetail.get();
-            }
-            i = j;
-            if (paramBundle.sourceUrl.has())
-            {
-              i = j;
-              if (ayqr.a(this.a.b) != Long.parseLong("1103584836"))
-              {
-                i = j;
-                ayqr.a(this.a.b).c = paramBundle.sourceUrl.get();
-              }
-            }
-          }
-          i = j;
-          ayqr.a(this.a.b).jdField_a_of_type_Int = 1;
-          i = j;
-          ayqt.a(this.a);
-          paramInt = j;
-        }
-      }
-    }
-    catch (Exception paramBundle)
-    {
+      ayqu[] arrayOfayqu = this.jdField_a_of_type_ArrayOfAyqu;
+      int m = arrayOfayqu.length;
+      int j = 0;
+      int i = 1;
       for (;;)
       {
-        paramInt = i;
-        if (QLog.isColorLevel())
+        k = i;
+        if (j >= m) {
+          break;
+        }
+        ayqu localayqu = arrayOfayqu[j];
+        QLog.d("Q.share.ForwardSdkShareProcessor", 1, new Object[] { localayqu.jdField_a_of_type_JavaLangString, "|finished=", Boolean.valueOf(localayqu.a()), ", processing=", Boolean.valueOf(localayqu.b()) });
+        if (!localayqu.a())
         {
-          QLog.e("Q.share.ForwardSdkShareProcessor", 2, paramBundle, new Object[0]);
-          paramInt = i;
+          if (!localayqu.b()) {
+            localayqu.a();
+          }
+          i = 0;
+        }
+        j += 1;
+      }
+    }
+    int k = 1;
+    if ((k != 0) && (!a()) && (!b()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      d();
+    }
+  }
+  
+  void a(ayqu[] paramArrayOfayqu)
+  {
+    this.jdField_a_of_type_ArrayOfAyqu = paramArrayOfayqu;
+    if ((this.jdField_a_of_type_ArrayOfAyqu != null) && (this.jdField_a_of_type_ArrayOfAyqu.length > 0))
+    {
+      paramArrayOfayqu = this.jdField_a_of_type_ArrayOfAyqu;
+      int j = paramArrayOfayqu.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramArrayOfayqu[i].jdField_a_of_type_Ayqu = this;
+        i += 1;
+      }
+    }
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    long l = 0L;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doNextStep");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, this.jdField_a_of_type_JavaLangString + "|finished,cost=" + l);
+    }
+    aqgj.a(this.jdField_a_of_type_JavaLangString, l);
+    if ((this.jdField_a_of_type_Ayqu != null) && (!this.b.get())) {
+      this.jdField_a_of_type_Ayqt.a.a.post(new ForwardSdkShareProcessor.ForwardStep.1(this));
+    }
+  }
+  
+  protected boolean b()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void c()
+  {
+    long l = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doError,cost=" + l);
+    this.jdField_a_of_type_Ayqt.d();
+  }
+  
+  protected abstract void d();
+  
+  protected void e()
+  {
+    if (a()) {}
+    for (;;)
+    {
+      return;
+      this.b.set(true);
+      if ((this.jdField_a_of_type_ArrayOfAyqu != null) && (this.jdField_a_of_type_ArrayOfAyqu.length > 0))
+      {
+        ayqu[] arrayOfayqu = this.jdField_a_of_type_ArrayOfAyqu;
+        int j = arrayOfayqu.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfayqu[i].e();
+          i += 1;
         }
       }
-      ayqt.a(this.a).set(true);
-      this.a.b();
     }
-    if ((ayqr.a(this.a.b).jdField_a_of_type_Int != 1) && (ayqt.a(this.a) < 2) && (paramInt != 110507) && (paramInt != 110401))
-    {
-      ayqt.b(this.a);
-      this.a.d();
-      return;
+  }
+  
+  public void f()
+  {
+    long l = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doCancel,cost=" + l);
   }
 }
 

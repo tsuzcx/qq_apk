@@ -1,16 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import java.util.List;
 
-public class bkwd
-  implements View.OnTouchListener
+public final class bkwd
+  extends BroadcastReceiver
 {
-  public bkwd(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  private bkwd(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a.a(paramView, paramMotionEvent);
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      bkuv.a().b();
+      bkuv.a().a(new bkwe());
+      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
   }
 }
 

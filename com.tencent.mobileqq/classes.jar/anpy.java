@@ -1,54 +1,58 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
+import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
 
 public class anpy
-  extends anpi
+  extends anpn
 {
   public anpy(QQAppInterface paramQQAppInterface)
   {
-    super("qq.android.qav.video", paramQQAppInterface);
+    super("qq.android.dingdong.ring", paramQQAppInterface);
   }
   
   public int a()
   {
-    return 10049;
+    return 10050;
   }
   
   public Class<? extends XmlData> a()
   {
-    return QavVideoData.class;
+    return QQDingdongSoundData.class;
   }
   
   public String a()
   {
-    return "qavDownloadVideoDuration";
+    return "dingdongDownloadAudioSoundDuration";
   }
   
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
+      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
     }
     try
     {
-      bbdj.a(paramString, mrv.c(), false);
+      bbdx.a(paramString, mra.a(), false);
+      super.a(paramString);
       return;
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      paramString.printStackTrace();
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
     {
-      localQavVideoData.autoDownload = true;
-      anow.a(localQavVideoData, new String[] { "autoDownload" });
+      localQQDingdongSoundData.autoDownload = true;
+      anpb.a(localQQDingdongSoundData, new String[] { "autoDownload" });
     }
     super.a(paramBoolean);
   }
@@ -65,7 +69,11 @@ public class anpy
   
   public boolean h()
   {
-    return ((QavVideoData)a()).autoDownload;
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if (localQQDingdongSoundData == null) {
+      return super.h();
+    }
+    return localQQDingdongSoundData.autoDownload;
   }
 }
 

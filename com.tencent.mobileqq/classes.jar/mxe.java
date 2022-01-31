@@ -1,35 +1,50 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class mxe
-  implements TextWatcher
+  extends MSFServlet
 {
-  public mxe(PoiMapActivity paramPoiMapActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (TextUtils.isEmpty(paramEditable))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_Mxd.notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive");
+    }
+    if (paramIntent == null) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.a.a(paramEditable);
+    Bundle localBundle = paramIntent.getExtras();
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bbma.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    {
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MSFServlet", 2, "onReceive exit");
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend");
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bbma.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend exit");
+    }
+  }
 }
 
 

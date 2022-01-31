@@ -1,53 +1,66 @@
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Calendar;
-
 class bapt
-  implements baql
+  extends baoy
 {
-  bapt(baps parambaps) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  bapt(baps parambaps, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (baps.a(this.a) != null)
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
+  {
+    if ((paramObject instanceof Object[]))
     {
-      if (paramInt1 != 0) {
-        break label212;
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 2) {
+        break label22;
       }
-      if (baps.a(this.a) == null) {
-        break label288;
-      }
-      paramInt1 = baps.a(this.a).a(baps.a(this.a), paramInt2);
-      int i = baps.a(this.a).a(baps.a(this.a), paramInt2, paramInt1);
-      paramInt2 = paramInt1;
-      paramInt1 = i;
     }
-    for (;;)
+    label22:
+    do
     {
-      baps.a(this.a).setSelection(1, paramInt2);
-      baps.a(this.a).a(1);
-      baps.a(this.a).setSelection(2, paramInt1);
-      baps.a(this.a).a(2);
-      label212:
       do
       {
-        baps.a(this.a, baps.a(this.a).a(new int[] { baps.a(this.a).a(0), baps.a(this.a).a(1), baps.a(this.a).a(2) }));
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(baps.a(this.a).a(baps.a(this.a).getTimeInMillis())));
-        }
         return;
-      } while (paramInt1 != 1);
-      if (baps.a(this.a) != null) {}
-      for (paramInt1 = baps.a(this.a).a(baps.a(this.a), baps.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+        paramObject = paramObject[0];
+      } while (!(paramObject instanceof boolean[]));
+      paramObject = (boolean[])paramObject;
+    } while ((paramArrayOfbfwf == null) || (paramArrayOfbfwf.length <= 0) || (paramObject.length != 3));
+    if ((paramArrayOfbfwf.length < 0) && (paramObject[0] != 0))
+    {
+      paramArrayOfbfwf[0].b = 0;
+      paramArrayOfbfwf[0].a = 0;
+    }
+    for (int i = 1;; i = 0)
+    {
+      paramInt = i;
+      if (i < paramArrayOfbfwf.length)
       {
-        baps.a(this.a).setSelection(2, paramInt1);
-        baps.a(this.a).a(2);
-        break;
+        paramInt = i;
+        if (paramObject[1] != 0)
+        {
+          paramArrayOfbfwf[i].b = 1;
+          paramArrayOfbfwf[i].a = 1;
+          paramInt = i + 1;
+        }
       }
-      label288:
-      paramInt1 = 0;
-      paramInt2 = 0;
+      i = paramInt;
+      if (paramInt < paramArrayOfbfwf.length)
+      {
+        i = paramInt;
+        if (paramObject[2] != 0)
+        {
+          paramArrayOfbfwf[paramInt].b = 2;
+          paramArrayOfbfwf[paramInt].a = 0;
+          i = paramInt + 1;
+        }
+      }
+      while (i < paramArrayOfbfwf.length)
+      {
+        paramArrayOfbfwf[i].b = -1;
+        paramArrayOfbfwf[i].a = -1;
+        i += 1;
+      }
+      break;
     }
   }
 }

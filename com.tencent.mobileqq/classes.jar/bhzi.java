@@ -1,77 +1,25 @@
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.vip.pb.vac_adv_get.DropList;
 
 public class bhzi
-  extends bhzb
 {
-  private void a(boolean paramBoolean, Object paramObject)
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  
+  public static bhzi a(vac_adv_get.DropList paramDropList)
   {
-    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
-    {
-      paramObject = (sweet_comm_cfg_item)paramObject;
-      if (a() != null)
-      {
-        aqkf localaqkf = (aqkf)a().a(153);
-        if (localaqkf != null) {
-          localaqkf.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
-        }
-      }
+    if (paramDropList == null) {
+      return null;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (a() == null);
-      paramObject = (aqkf)a().a(153);
-    } while (paramObject == null);
-    paramObject.a(false, null, null, null);
-  }
-  
-  public QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QzoneExternalRequest a(Intent paramIntent)
-  {
-    return new bhzj(this, paramIntent);
-  }
-  
-  public void a(long paramLong)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramIntent = (sweet_comm_cfg_get_rsp)bhoi.a(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
-      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
-      {
-        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
-        if (paramIntent != null) {
-          bool = true;
-        }
-        a(bool, paramIntent);
-      }
-      return;
-    }
-    a(false, null);
+    bhzi localbhzi = new bhzi();
+    localbhzi.jdField_a_of_type_Int = paramDropList.action_type.get();
+    localbhzi.b = paramDropList.optext.get();
+    localbhzi.jdField_a_of_type_JavaLangString = paramDropList.iconurl.get();
+    localbhzi.c = paramDropList.jumpurl.get();
+    return localbhzi;
   }
 }
 

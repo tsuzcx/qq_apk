@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import pfx;
+import pfu;
 
 public class GalleryProteusItem$1
   implements Runnable
 {
-  public GalleryProteusItem$1(pfx parampfx, View paramView, NativeTextImp paramNativeTextImp) {}
+  public GalleryProteusItem$1(pfu parampfu, View paramView, NativeTextImp paramNativeTextImp) {}
   
   public void run()
   {

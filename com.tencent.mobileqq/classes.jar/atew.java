@@ -1,23 +1,22 @@
-import android.view.View;
 import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.1;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
 
 public class atew
-  implements bfoq
+  extends atcd
 {
-  public atew(NearbyGuideActivity paramNearbyGuideActivity, bfol parambfol) {}
+  public atew(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Bfol.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
+    this.a.runOnUiThread(new NearbyGuideActivity.3.1(this, paramBoolean, paramInt1, paramArrayList));
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new NearbyGuideActivity.3.2(this, paramBoolean, paramInt1, paramArrayList));
   }
 }
 

@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-
-class vtv
-  implements View.OnClickListener
+abstract interface vtv
 {
-  vtv(vtu paramvtu, vtx paramvtx) {}
-  
-  public void onClick(View paramView)
-  {
-    if (vtu.a(this.jdField_a_of_type_Vtu) != null) {
-      vtu.a(this.jdField_a_of_type_Vtu).a((SlideItemInfo)this.jdField_a_of_type_Vtx.a.getTag());
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

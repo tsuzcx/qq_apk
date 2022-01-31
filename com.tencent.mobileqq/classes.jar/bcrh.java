@@ -1,41 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.SlideTabWidget;
+import android.view.View;
 
-public class bcrh
-  extends Handler
+public abstract interface bcrh
 {
-  public bcrh(SlideTabWidget paramSlideTabWidget) {}
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      SlideTabWidget.a(this.a, 0.0F);
-      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (SlideTabWidget.a(this.a) < 1.0F)
-      {
-        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-        if (SlideTabWidget.a(this.a) >= 1.0F) {
-          SlideTabWidget.a(this.a, false);
-        }
-        this.a.invalidate();
-        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
-      return;
-    }
-    SlideTabWidget.a(this.a, 1.0F);
-    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
-  }
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
 }
 
 

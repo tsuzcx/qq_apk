@@ -1,13 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
 
 public class aihp
   implements DialogInterface.OnClickListener
 {
   public aihp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((this.a.a != null) && (this.a.a.get() != null)) {
+      ((TVK_IMediaPlayer)this.a.a.get()).pauseDownload();
+    }
+  }
 }
 
 

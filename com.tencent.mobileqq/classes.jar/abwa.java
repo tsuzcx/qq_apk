@@ -1,18 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class abwa
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public abwa(QQMapActivity paramQQMapActivity) {}
+  public abwa(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
-    }
-    this.a.m = false;
+    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
   }
 }
 

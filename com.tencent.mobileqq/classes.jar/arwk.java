@@ -1,28 +1,76 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+
 class arwk
-  implements arwg
+  implements arur
 {
-  arwk(arwh paramarwh) {}
+  arwk(arwj paramarwj) {}
   
-  public void a(int paramInt)
+  public void a(arum paramarum, int paramInt)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramarum + " mRoomKey: " + arwj.a(this.a));
+    }
+    bcql.a(arwj.a(this.a), "已在其他设备进行共享", 0).a();
+    arwj.a(this.a).setResult(1);
+    arwj.a(this.a).finish();
+  }
+  
+  public void a(arum paramarum, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramarum, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+    }
+    if (!paramarum.equals(arwj.a(this.a))) {}
+    do
     {
-    default: 
+      do
+      {
+        return;
+        if (paramInt1 != 10100) {
+          break;
+        }
+      } while ((arwj.a(this.a) == null) || (arwj.a(this.a).isFinishing()));
+      arwj.a(this.a).setResult(1);
+      arvm.a(arwj.a(this.a));
       return;
-    case 0: 
-      arwh.b(this.a);
-      return;
-    case 1: 
-      arwh.c(this.a);
-      return;
-    case 2: 
-      arwh.a(this.a);
-      return;
-    case 3: 
-      arwh.d(this.a);
+    } while ((paramInt1 != 10101) || (arwj.a(this.a) == null) || (arwj.a(this.a).isFinishing()));
+    arwj.a(this.a).setResult(1);
+    arvm.b(arwj.a(this.a));
+  }
+  
+  public void a(arum paramarum, LocationRoom.Venue paramVenue, List<aruk> paramList)
+  {
+    if ((!paramarum.equals(arwj.a(this.a))) || (arwj.a(this.a).isFinishing())) {
       return;
     }
-    arwh.e(this.a);
+    paramVenue = paramList.iterator();
+    while (paramVenue.hasNext())
+    {
+      paramList = (aruk)paramVenue.next();
+      Bitmap localBitmap = this.a.a(paramList.a());
+      if (localBitmap != null)
+      {
+        localBitmap = bbef.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        arwj.a(this.a).a(paramList.a(), localBitmap);
+      }
+    }
+    arwj.a(this.a).a(paramarum);
+  }
+  
+  public void b(arum paramarum, int paramInt)
+  {
+    if (!paramarum.equals(arwj.a(this.a))) {}
+    while ((paramInt == 2) || (paramInt == 1)) {
+      return;
+    }
+    arwj.a(this.a).setResult(1);
+    arvm.a(arwj.a(this.a));
   }
 }
 

@@ -1,108 +1,138 @@
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.data.MessageForScribble.FileExistInfo;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
+import java.io.File;
 
-class awgy
-  extends AsyncTask<Void, Void, Integer>
+public class awgy
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private awgx jdField_a_of_type_Awgx;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private String d = "";
-  private String e = "SendAfterCombinePicAndDataTask";
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 1;
+  public static int e = 2;
+  public static int f = 3;
+  public static int g = 4;
+  public static int h = 5;
+  public static int i = 6;
+  public static int j = 7;
   
-  public awgy(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, awgx paramawgx)
+  public static int a(MessageForScribble paramMessageForScribble)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awgx = paramawgx;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_b_of_type_Int = paramInt2;
+    boolean bool1 = paramMessageForScribble.mExistInfo.mDataFileExist;
+    if (!paramMessageForScribble.mExistInfo.mInit) {
+      bool1 = apvd.a(b(paramMessageForScribble));
+    }
+    boolean bool2 = paramMessageForScribble.mExistInfo.mCombineFileExist;
+    if (!paramMessageForScribble.mExistInfo.mInit) {
+      bool2 = apvd.a(a(paramMessageForScribble));
+    }
+    if ((bool1) && (bool2)) {
+      return c;
+    }
+    if ((!bool1) && (bool2)) {
+      return b;
+    }
+    return a;
   }
   
-  int a()
+  public static String a()
   {
-    String str1 = awgw.a() + "temp/" + System.currentTimeMillis();
-    String str2 = awgw.a() + "temp/" + System.currentTimeMillis() + "_data";
-    boolean bool = false;
-    if (this.jdField_a_of_type_Awgx != null) {
-      bool = this.jdField_a_of_type_Awgx.a(str2);
-    }
-    if (!bool) {
-      return awgw.g;
-    }
-    if (!apvb.a(str2)) {
-      return awgw.h;
-    }
-    Object localObject = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_c_of_type_Int = localObject.length;
-    if (!awhf.a((byte[])localObject, str2, str1)) {
-      return awgw.e;
-    }
-    localObject = awhf.a(str1);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return awgw.f;
-    }
-    this.jdField_b_of_type_JavaLangString = ((String)localObject);
-    this.jdField_c_of_type_JavaLangString = awgw.a(this.jdField_b_of_type_JavaLangString);
-    this.d = awgw.b(this.jdField_b_of_type_JavaLangString);
-    if (!awhf.a(str1, this.jdField_c_of_type_JavaLangString).booleanValue()) {
-      return awgw.e;
-    }
-    if (!awhf.a(str2, this.d).booleanValue()) {
-      return awgw.e;
-    }
-    apvb.c(str1);
-    apvb.c(str2);
-    return awgw.d;
+    return ajsd.cl + "ScribbleCache/";
   }
   
-  protected Integer a(Void... paramVarArgs)
+  public static String a(MessageForScribble paramMessageForScribble)
   {
-    return Integer.valueOf(a());
+    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
+      return c(paramMessageForScribble.combineFileMd5);
+    }
+    return "";
   }
   
-  protected void a(Integer paramInteger)
+  private static void a()
   {
-    super.onPostExecute(paramInteger);
-    QLog.i(this.e, 2, "doBeforeSendScribble result = " + paramInteger);
-    if (paramInteger.intValue() == awgw.d)
+    File localFile = new File(a());
+    if (((localFile.exists()) && (!localFile.isDirectory())) || (!localFile.exists())) {
+      localFile.mkdirs();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, awgz paramawgz)
+  {
+    a();
+    new awha(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramawgz).execute(new Void[0]);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
+  {
+    if (paramMessageForScribble == null) {}
+    awgu localawgu;
+    MessageForScribble localMessageForScribble;
+    do
     {
-      awgs localawgs = new awgs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      MessageForScribble localMessageForScribble = localawgs.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      localMessageForScribble.mExistInfo.mCombineFileExist = true;
-      localMessageForScribble.mExistInfo.mDataFileExist = true;
-      localMessageForScribble.mExistInfo.mLocalPathExist = true;
-      localMessageForScribble.mExistInfo.mInit = true;
-      localawgs.a(localMessageForScribble);
-    }
-    if (this.jdField_a_of_type_Awgx != null) {
-      this.jdField_a_of_type_Awgx.a(paramInteger.intValue());
-    }
+      return false;
+      if (paramMessageForScribble.isSendFromLocal()) {
+        paramQQAppInterface.a().a(paramQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq));
+      }
+      localawgu = new awgu(paramQQAppInterface);
+      localMessageForScribble = localawgu.a(paramMessageForScribble);
+    } while (localMessageForScribble == null);
+    ThreadManager.post(new ScribbleMsgUtils.1(paramQQAppInterface, paramMessageForScribble), 5, null, false);
+    localawgu.a(localMessageForScribble);
+    return true;
   }
   
-  public byte[] a(Bitmap paramBitmap)
+  public static int b(MessageForScribble paramMessageForScribble)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
+    if ((paramMessageForScribble == null) || (paramMessageForScribble.combineFileMd5 == null)) {
+      return j;
+    }
+    String str1 = a(paramMessageForScribble);
+    if (!apvd.a(str1)) {
+      return i;
+    }
+    long l = apvd.a(str1);
+    if ((paramMessageForScribble.offSet <= 0) || (paramMessageForScribble.offSet >= (int)l))
+    {
+      QLog.e("ScribbleMsgUtils", 2, " offSet = " + paramMessageForScribble.offSet + " FileSize : " + l);
+      return j;
+    }
+    String str2 = b(paramMessageForScribble);
+    if (apvd.a(str2)) {
+      apvd.c(str2);
+    }
+    if (awhh.a(str1, paramMessageForScribble.offSet, str2)) {
+      return d;
+    }
+    return e;
   }
   
-  protected void onPreExecute()
+  public static String b(MessageForScribble paramMessageForScribble)
   {
-    super.onPreExecute();
+    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
+      return d(paramMessageForScribble.combineFileMd5);
+    }
+    return "";
+  }
+  
+  private static String c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return a() + paramString;
+    }
+    return "";
+  }
+  
+  private static String d(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return a() + paramString + "_data";
+    }
+    return "";
   }
 }
 

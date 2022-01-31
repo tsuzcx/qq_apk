@@ -1,38 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
 
-public class axqb
+final class axqb
+  extends ThreadLocal<SimpleDateFormat>
 {
-  int jdField_a_of_type_Int = 0;
-  axqc jdField_a_of_type_Axqc = new axqc(this.jdField_a_of_type_Int, '&');
-  List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public axqb()
+  protected SimpleDateFormat a()
   {
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_Axqc;
-    int i = 0;
-    if (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      axqc localaxqc = ((axqc)localObject).a(c);
-      if (localaxqc == null)
-      {
-        localaxqc = new axqc(this.jdField_a_of_type_Int, c);
-        this.jdField_a_of_type_Int += 1;
-        ((axqc)localObject).a(localaxqc);
-      }
-      for (localObject = localaxqc;; localObject = localaxqc)
-      {
-        i += 1;
-        break;
-        localaxqc.a();
-      }
-    }
+    return new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   }
 }
 

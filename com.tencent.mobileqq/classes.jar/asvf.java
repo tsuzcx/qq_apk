@@ -1,35 +1,35 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
 
 class asvf
-  implements axee
+  extends auoo
 {
-  asvf(asuu paramasuu, asup paramasup, String paramString) {}
+  asvf(asuw paramasuw, String paramString, asur paramasur) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, aunw paramaunw)
   {
-    if ((this.jdField_a_of_type_Asup.a != null) && (this.jdField_a_of_type_Asup.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Asup.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
     }
-    this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_Asup, paramInt, 0, "");
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Asup.a != null) && (this.jdField_a_of_type_Asup.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Asup.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if (this.jdField_a_of_type_Asup.a != null)
+    int j = 0;
+    String str2 = "";
+    String str1 = str2;
+    int i = j;
+    if (paramaunw != null)
     {
-      String str = this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_Asup.a.jdField_a_of_type_Axdr);
-      asuq localasuq = this.jdField_a_of_type_Asuu.a(str);
-      if ((localasuq != null) && (!localasuq.a))
+      str1 = str2;
+      i = j;
+      if (paramaunw.a != null)
       {
-        localasuq.c = paramInt;
-        this.jdField_a_of_type_Asuu.a(str, localasuq);
-        asuu.a(this.jdField_a_of_type_Asuu, localasuq, localasuq.c);
+        i = paramaunw.a.a;
+        str1 = paramaunw.a.b;
       }
     }
+    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramInt, i, str1);
+  }
+  
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramInt);
   }
 }
 

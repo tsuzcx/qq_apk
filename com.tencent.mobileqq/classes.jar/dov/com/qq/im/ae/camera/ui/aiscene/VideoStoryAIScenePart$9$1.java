@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.widget.TextView;
-import biku;
-import bilc;
+import bill;
+import bilt;
 
 public class VideoStoryAIScenePart$9$1
   implements Runnable
 {
-  public VideoStoryAIScenePart$9$1(bilc parambilc) {}
+  public VideoStoryAIScenePart$9$1(bilt parambilt) {}
   
   public void run()
   {
-    if (biku.b(this.a.jdField_a_of_type_Biku) != null) {
-      biku.b(this.a.jdField_a_of_type_Biku).startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    if (bill.b(this.a.jdField_a_of_type_Bill) != null) {
+      bill.b(this.a.jdField_a_of_type_Bill).startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     }
   }
 }

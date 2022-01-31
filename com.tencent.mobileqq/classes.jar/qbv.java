@@ -1,66 +1,52 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-public class qbv
+public final class qbv
+  implements Parcelable.Creator<RecommendFollowInfo>
 {
-  public int a;
-  public long a;
-  public String a;
-  public articlesummary.PackInfo a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
-  public int f;
-  public long f;
-  
-  public qbv()
+  public RecommendFollowInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 6;
-  }
-  
-  public static qbv a(articlesummary.PackInfo paramPackInfo)
-  {
-    try
+    boolean bool2 = true;
+    RecommendFollowInfo localRecommendFollowInfo = new RecommendFollowInfo();
+    localRecommendFollowInfo.uin = paramParcel.readLong();
+    localRecommendFollowInfo.type = paramParcel.readInt();
+    localRecommendFollowInfo.recommendReason = paramParcel.readString();
+    localRecommendFollowInfo.nickName = paramParcel.readString();
+    localRecommendFollowInfo.headUrl = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
     {
-      qbv localqbv = new qbv();
-      localqbv.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackInfo = paramPackInfo;
-      localqbv.jdField_a_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_title.get();
-      localqbv.jdField_b_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).bytes_recommend_reason.get().toStringUtf8();
-      localqbv.jdField_b_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_puin.get();
-      localqbv.jdField_c_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_icon_url.get();
-      localqbv.jdField_a_of_type_Int = paramPackInfo.pack_type.get();
-      localqbv.jdField_c_of_type_Long = paramPackInfo.uint64_pack_id.get();
-      localqbv.jdField_d_of_type_JavaLangString = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_jump_url.get();
-      localqbv.jdField_b_of_type_Int = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_icon_shape.get();
-      localqbv.jdField_e_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
-      localqbv.jdField_d_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_strategy_id.get();
-      localqbv.f = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_topic_id.get();
-      localqbv.jdField_a_of_type_Long = ((articlesummary.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_posttime.get();
-      localqbv.jdField_e_of_type_Int = paramPackInfo.uint32_follow_status.get();
-      return localqbv;
+      bool1 = true;
+      localRecommendFollowInfo.isVip = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label139;
+      }
+      bool1 = true;
+      label82:
+      localRecommendFollowInfo.isStar = bool1;
+      localRecommendFollowInfo.algorithmId = paramParcel.readLong();
+      localRecommendFollowInfo.strategyId = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label144;
+      }
     }
-    catch (Exception paramPackInfo) {}
-    return null;
+    label139:
+    label144:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localRecommendFollowInfo.isFollowed = bool1;
+      localRecommendFollowInfo.className = paramParcel.readString();
+      return localRecommendFollowInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label82;
+    }
   }
   
-  public String toString()
+  public RecommendFollowInfo[] a(int paramInt)
   {
-    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.jdField_e_of_type_Long + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "\n followStatus : " + this.jdField_e_of_type_Int + "】";
+    return new RecommendFollowInfo[paramInt];
   }
 }
 

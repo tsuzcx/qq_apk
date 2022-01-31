@@ -1,59 +1,87 @@
+import com.tencent.av.so.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class lzt
+class lzt
+  implements aysc
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public int a;
-  @Deprecated
-  lle a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  lzt(lzs paramlzs, String paramString, int paramInt1, DownloadInfo paramDownloadInfo, int paramInt2) {}
   
-  static
+  public void onResp(aysz paramaysz)
   {
-    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
-    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
-    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
-    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
-    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
+    ayrx localayrx = (ayrx)paramaysz.jdField_a_of_type_Aysy;
+    if (this.jdField_a_of_type_Lzs.jdField_a_of_type_Ayrx == localayrx) {
+      this.jdField_a_of_type_Lzs.jdField_a_of_type_Ayrx = null;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
+      QLog.i("QavSo", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrx.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysz.jdField_a_of_type_Int), Integer.valueOf(paramaysz.c), this.jdField_a_of_type_JavaLangString }));
+    }
+    int i;
+    if (paramaysz.jdField_a_of_type_Int == 0)
+    {
+      paramaysz = new File(localayrx.c);
+      if (paramaysz.exists())
+      {
+        try
+        {
+          if (!lzr.a(localayrx.c, this.jdField_a_of_type_JavaLangString)) {
+            break label343;
+          }
+          String str = paramaysz.getParent();
+          bbdx.a(localayrx.c, str, false);
+          if (((this.jdField_a_of_type_Int != 1) || (!lzr.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_so_wxvoiceembedqqegg, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_so_wxvoiceembedqqegg))) && ((this.jdField_a_of_type_Int != 2) || (!lzr.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_model_wxvoiceembed, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_model_wxvoiceembed)))) {
+            break label343;
+          }
+          lzr.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          lzr.a(-1);
+          this.jdField_a_of_type_Lzs.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        paramaysz.delete();
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        lzr.a(100 / this.jdField_a_of_type_Lzs.jdField_a_of_type_Int + this.jdField_a_of_type_Lzs.b);
+        paramaysz = this.jdField_a_of_type_Lzs;
+        paramaysz.b += 100 / this.jdField_a_of_type_Lzs.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Lzs.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Lzs.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      label343:
+      i = 0;
     }
   }
   
-  public lzt()
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Lle = null;
-  }
-  
-  public boolean a(lle paramlle)
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = paramlle.a(jdField_a_of_type_JavaLangString, 0);
-      this.jdField_b_of_type_Int = paramlle.a(jdField_b_of_type_JavaLangString, 0);
-      this.jdField_c_of_type_Int = paramlle.a(jdField_c_of_type_JavaLangString, -1);
-      this.jdField_d_of_type_Int = paramlle.a(jdField_d_of_type_JavaLangString, 0);
-      this.jdField_e_of_type_Int = paramlle.a(jdField_e_of_type_JavaLangString, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
-      }
-      return true;
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
     }
-    catch (Exception paramlle)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
+      lzr.a(i / this.jdField_a_of_type_Lzs.jdField_a_of_type_Int + this.jdField_a_of_type_Lzs.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
       }
     }
-    return false;
   }
 }
 

@@ -1,18 +1,21 @@
+import java.util.Comparator;
+import java.util.Map.Entry;
+
 class azln
+  implements Comparator<Map.Entry<String, azlp>>
 {
-  final float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  float b = 0.0F;
+  azln(azlm paramazlm) {}
   
-  public azln(azlk paramazlk, float paramFloat)
+  public int a(Map.Entry<String, azlp> paramEntry1, Map.Entry<String, azlp> paramEntry2)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+    float f = ((azlp)paramEntry2.getValue()).a() - ((azlp)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
+    }
+    if (f < 0.0F) {
+      return -1;
+    }
+    return 0;
   }
 }
 

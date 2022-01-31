@@ -6,14 +6,14 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
-import bcxm;
-import bdho;
-import bdht;
-import bdio;
-import bdiw;
+import bcyb;
+import bdid;
+import bdii;
 import bdjd;
-import bdje;
-import bdjg;
+import bdjl;
+import bdjs;
+import bdjt;
+import bdjv;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -31,66 +31,66 @@ class AppReport$2$1
     {
       try
       {
-        bdht.b("AppReport", "<AppReport> begin doFullReport ...");
+        bdii.b("AppReport", "<AppReport> begin doFullReport ...");
         if (this.this$0.jdField_a_of_type_AndroidContentContext == null)
         {
-          bdht.e("AppReport", "<AppReport> fullReport context is null !");
+          bdii.e("AppReport", "<AppReport> fullReport context is null !");
           return;
         }
-        if (bdjd.jdField_a_of_type_Boolean)
+        if (bdjs.jdField_a_of_type_Boolean)
         {
           if ((this.this$0.jdField_a_of_type_JavaLangString != null) && (this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView != null))
           {
-            boolean bool = bdjd.jdField_a_of_type_Boolean;
+            boolean bool = bdjs.jdField_a_of_type_Boolean;
             if (bool)
             {
               try
               {
-                bdht.c("AppReport", "<AppReport>Wait 100 milliseconds for another full report finished,before getUpdateAppRequest");
+                bdii.c("AppReport", "<AppReport>Wait 100 milliseconds for another full report finished,before getUpdateAppRequest");
                 Thread.sleep(new Random().nextInt(50) + 50L);
               }
               catch (InterruptedException localInterruptedException)
               {
-                bdht.e("AppReport", "<AppReport> fullReport context is null !");
+                bdii.e("AppReport", "<AppReport> fullReport context is null !");
               }
               continue;
             }
             if (this.this$0.jdField_a_of_type_AndroidContentContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false))
             {
-              bdjg.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, true, this.this$0.b);
+              bdjv.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, true, this.this$0.b);
               return;
             }
-            bdjg.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, false, this.this$0.b);
+            bdjv.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, false, this.this$0.b);
             return;
           }
-          bdht.c("AppReport", "<AppReport>Another full report running, fullReport will not continue !!!");
+          bdii.c("AppReport", "<AppReport>Another full report running, fullReport will not continue !!!");
           return;
         }
-        bdjd.jdField_a_of_type_Boolean = true;
+        bdjs.jdField_a_of_type_Boolean = true;
         if ((this.this$0.jdField_a_of_type_JavaLangString != null) && (this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView != null))
         {
-          bdht.c("AppReport", "<AppReport> onResult get app update list without full report");
-          if ((!bdjd.a()) || (!bdjd.a(this.this$0.jdField_a_of_type_AndroidContentContext)))
+          bdii.c("AppReport", "<AppReport> onResult get app update list without full report");
+          if ((!bdjs.a()) || (!bdjs.a(this.this$0.jdField_a_of_type_AndroidContentContext)))
           {
-            bdht.c("AppReport", "doFullReport get app update list without full report, because : full report switch off, or Over max full report times a day");
-            bdjd.jdField_a_of_type_Boolean = false;
-            bdjg.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, false, this.this$0.b);
+            bdii.c("AppReport", "doFullReport get app update list without full report, because : full report switch off, or Over max full report times a day");
+            bdjs.jdField_a_of_type_Boolean = false;
+            bdjv.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, false, this.this$0.b);
             return;
           }
-          if (!bdiw.a(this.this$0.jdField_a_of_type_AndroidContentContext))
+          if (!bdjl.a(this.this$0.jdField_a_of_type_AndroidContentContext))
           {
-            bdht.c("AppReport", "<AppReport> doFullReport get app update list without full report, because : packageScan is not allowed");
-            bdjd.jdField_a_of_type_Boolean = false;
-            bdjg.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, true, this.this$0.b);
+            bdii.c("AppReport", "<AppReport> doFullReport get app update list without full report, because : packageScan is not allowed");
+            bdjs.jdField_a_of_type_Boolean = false;
+            bdjv.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, true, this.this$0.b);
           }
         }
-        else if (!bdiw.a(this.this$0.jdField_a_of_type_AndroidContentContext))
+        else if (!bdjl.a(this.this$0.jdField_a_of_type_AndroidContentContext))
         {
-          bdht.c("AppReport", "<AppReport> doFullReport will not continue , because : packageScan is not allowed");
-          bdjd.jdField_a_of_type_Boolean = false;
+          bdii.c("AppReport", "<AppReport> doFullReport will not continue , because : packageScan is not allowed");
+          bdjs.jdField_a_of_type_Boolean = false;
           return;
         }
-        Object localObject2 = bdiw.a(this.this$0.jdField_a_of_type_AndroidContentContext);
+        Object localObject2 = bdjl.a(this.this$0.jdField_a_of_type_AndroidContentContext);
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
           Object localObject1 = new HashMap();
@@ -104,28 +104,28 @@ class AppReport$2$1
             if ((localPackageInfo.applicationInfo.flags & 0x80) != 0)
             {
               break label813;
-              ((Map)localObject1).put(localPackageInfo.packageName, bdjd.a(localPackageInfo.packageName, localPackageInfo.versionCode, localPackageInfo.versionName, i, bdiw.a(this.this$0.jdField_a_of_type_AndroidContentContext, localPackageInfo.packageName)));
+              ((Map)localObject1).put(localPackageInfo.packageName, bdjs.a(localPackageInfo.packageName, localPackageInfo.versionCode, localPackageInfo.versionName, i, bdjl.a(this.this$0.jdField_a_of_type_AndroidContentContext, localPackageInfo.packageName)));
             }
           }
           else
           {
-            localObject1 = bdjd.a(this.this$0.jdField_a_of_type_AndroidContentContext, (Map)localObject1, "ALL", this.this$0.b);
-            bdht.b("AppReport", "<AppReport> incremental report params : " + ((Bundle)localObject1).toString());
-            if ((!bdho.b(this.this$0.jdField_a_of_type_AndroidContentContext)) || (((Bundle)localObject1).getString("sid").equals("")))
+            localObject1 = bdjs.a(this.this$0.jdField_a_of_type_AndroidContentContext, (Map)localObject1, "ALL", this.this$0.b);
+            bdii.b("AppReport", "<AppReport> incremental report params : " + ((Bundle)localObject1).toString());
+            if ((!bdid.b(this.this$0.jdField_a_of_type_AndroidContentContext)) || (((Bundle)localObject1).getString("sid").equals("")))
             {
               localObject1 = this.this$0.jdField_a_of_type_AndroidContentContext.getSharedPreferences("appcenter_app_report", 0).edit();
               ((SharedPreferences.Editor)localObject1).putBoolean("is_app_last_fullReport_success", false);
               ((SharedPreferences.Editor)localObject1).commit();
-              bdht.b("AppReport", "<AppReport> full report stoped !!! because network is unavaliable or get sid error");
-              bdjd.jdField_a_of_type_Boolean = false;
+              bdii.b("AppReport", "<AppReport> full report stoped !!! because network is unavaliable or get sid error");
+              bdjs.jdField_a_of_type_Boolean = false;
               if ((!this.this$0.jdField_a_of_type_Boolean) || (this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView == null)) {
                 continue;
               }
-              bcxm.a().a("{\"guid\":1,\"method\":\"POST\"}", this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView);
+              bcyb.a().a("{\"guid\":1,\"method\":\"POST\"}", this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView);
               return;
             }
-            bdht.b("AppReport", "<AppReport> do full report to server !!!");
-            new bdio("http://fusionbase.qq.com/cgi-bin/appstage/sdk_update", "POST", new bdje(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject1 });
+            bdii.b("AppReport", "<AppReport> do full report to server !!!");
+            new bdjd("http://fusionbase.qq.com/cgi-bin/appstage/sdk_update", "POST", new bdjt(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject1 });
             continue;
           }
         }
@@ -134,8 +134,8 @@ class AppReport$2$1
           if ((this.this$0.jdField_a_of_type_JavaLangString == null) || (this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView == null)) {
             continue;
           }
-          bdjg.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, true, this.this$0.b);
-          bdjd.jdField_a_of_type_Boolean = false;
+          bdjv.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentSmttSdkWebView, this.this$0.jdField_a_of_type_JavaLangString, true, this.this$0.b);
+          bdjs.jdField_a_of_type_Boolean = false;
           continue;
         }
         i = 0;

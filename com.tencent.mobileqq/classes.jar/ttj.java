@@ -1,31 +1,21 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
 
 public class ttj
-  extends QQUIEventReceiver<tti, ttd>
+  implements bkzu
 {
-  public ttj(@NonNull tti paramtti)
+  public ttj(FollowCaptureLauncher.1 param1) {}
+  
+  public void a()
   {
-    super(paramtti);
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
   }
   
-  public void a(@NonNull tti paramtti, @NonNull ttd paramttd)
-  {
-    if (TextUtils.equals("SendVideoToFriendHelper", paramttd.jdField_a_of_type_JavaLangString)) {}
-    switch (paramttd.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    veg.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramttd.b);
-    tti.a(paramtti, false);
-    paramtti.a(paramtti.jdField_a_of_type_AndroidOsBundle, paramtti.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramtti.jdField_a_of_type_JavaLangString, paramttd.b);
-  }
+  public void a(long paramLong1, long paramLong2) {}
   
-  public Class acceptEventClass()
+  public void b()
   {
-    return ttd.class;
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
   }
 }
 

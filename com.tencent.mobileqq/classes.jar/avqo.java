@@ -1,14 +1,19 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
 
 public class avqo
-  implements bfwl
+  implements View.OnClickListener
 {
   public avqo(IosTimepicker paramIosTimepicker) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    {
+      IosTimepicker.a(this.a).dismiss();
+      IosTimepicker.a(this.a, null);
+    }
   }
 }
 

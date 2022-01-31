@@ -1,118 +1,198 @@
+import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.List;
 
 public class wfm
-  extends MSFServlet
+  implements bfph
 {
-  private static String a = "QRCodeServlet";
+  public wfm(QRCardActivity paramQRCardActivity, boolean[] paramArrayOfBoolean, String paramString1, Context paramContext, String paramString2) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  @SuppressLint({"NewApi"})
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramFromServiceMsg != null) {
-      QLog.d(a, 2, paramFromServiceMsg.toString());
-    }
-    Object localObject = null;
-    boolean bool;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getResultCode() == 1000))
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.c) {}
+    do
     {
-      bool = true;
-      if (!bool) {
-        break label120;
-      }
-      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (paramFromServiceMsg != null) {
-        break label75;
-      }
-      bool = false;
-      paramFromServiceMsg = (FromServiceMsg)localObject;
-    }
-    for (;;)
-    {
-      notifyObserver(paramIntent, 0, bool, paramFromServiceMsg, BusinessObserver.class);
       return;
-      bool = false;
-      break;
-      label75:
-      localObject = bblm.b(paramFromServiceMsg);
-      paramFromServiceMsg = new Bundle();
-      localObject = new String((byte[])localObject);
-      paramFromServiceMsg.putString("result", (String)localObject);
-      QLog.d(a, 2, (String)localObject);
-      continue;
-      label120:
-      QLog.e(a, 2, " MSF response is null");
-      paramFromServiceMsg = null;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    Object localObject1 = new JSONObject();
-    for (;;)
-    {
-      int i;
-      try
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.c = true;
+      Object localObject;
+      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 1)
       {
-        paramIntent = paramIntent.getExtras();
-        String[] arrayOfString = new String[14];
-        arrayOfString[0] = "skey";
-        arrayOfString[1] = "d";
-        arrayOfString[2] = "appid";
-        arrayOfString[3] = "ul";
-        arrayOfString[4] = "bqq";
-        arrayOfString[5] = "md5";
-        arrayOfString[6] = "fromuin";
-        arrayOfString[7] = "touin";
-        arrayOfString[8] = "imei";
-        arrayOfString[9] = "ip";
-        arrayOfString[10] = "url";
-        arrayOfString[11] = "guid";
-        arrayOfString[12] = "uuid";
-        arrayOfString[13] = "type";
-        int j = arrayOfString.length;
-        i = 0;
-        if (i < j)
+        switch (paramInt)
         {
-          String str = arrayOfString[i];
-          if (!paramIntent.containsKey(str)) {
-            break label279;
-          }
-          Object localObject2 = paramIntent.get(str);
-          if ((localObject2 instanceof ArrayList)) {
-            ((JSONObject)localObject1).put(str, new JSONArray((ArrayList)localObject2));
-          } else {
-            ((JSONObject)localObject1).put(str, localObject2);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bfpc.dismiss();
+          return;
+          paramView = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.app.getAccount();
+          localObject = (String)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.f.get(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.k);
+          if (!TextUtils.isEmpty(paramView))
+          {
+            localObject = "http://w.mail.qq.com/cgi-bin/login?target=mobileqqwrite&fwd=mq&fun=from3g&uin=" + paramView + "&to=" + (String)localObject;
+            String str = ((String)localObject).toLowerCase();
+            if (str.startsWith("www.")) {
+              paramView = "http://" + (String)localObject;
+            }
+            for (;;)
+            {
+              localObject = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
+              ((Intent)localObject).putExtra("url", paramView);
+              ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
+              ((Intent)localObject).putExtra("injectrecommend", false);
+              this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity((Intent)localObject);
+              break;
+              if (str.startsWith("https:"))
+              {
+                paramView = "https" + ((String)localObject).substring(5);
+              }
+              else
+              {
+                paramView = (View)localObject;
+                if (str.startsWith("http:")) {
+                  paramView = "http" + ((String)localObject).substring(4);
+                }
+              }
+            }
+            paramView = (String)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.f.get(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.k);
+            localObject = Uri.parse("mailto:" + paramView);
+            if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getPackageManager().queryIntentActivities(new Intent("android.intent.action.SENDTO", (Uri)localObject), 65536).size() > 0)
+            {
+              localObject = new Intent("android.intent.action.SENDTO");
+              ((Intent)localObject).setData(Uri.parse("mailto:" + paramView));
+              this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity((Intent)localObject);
+            }
+            else
+            {
+              localObject = new Intent("android.intent.action.SEND");
+              ((Intent)localObject).putExtra("android.intent.extra.EMAIL", paramView);
+              ((Intent)localObject).putExtra("android.intent.extra.TEXT", "The email body text");
+              ((Intent)localObject).setType("text/plain");
+              try
+              {
+                this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(Intent.createChooser((Intent)localObject, "Choose Email Client"));
+              }
+              catch (ActivityNotFoundException paramView) {}
+              if (QLog.isColorLevel()) {
+                QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_SEND do not exist");
+              }
+            }
           }
         }
       }
-      catch (JSONException paramIntent)
+      if (this.jdField_a_of_type_ArrayOfBoolean[1] == 1)
       {
-        QLog.d(a, 2, "json error");
-        return;
+        switch (paramInt)
+        {
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bfpc.dismiss();
+          return;
+          if (this.jdField_a_of_type_JavaLangString.contains("-")) {
+            this.jdField_a_of_type_JavaLangString.replaceAll("-", "");
+          }
+          if (this.jdField_a_of_type_JavaLangString.contains(" ")) {
+            this.jdField_a_of_type_JavaLangString.replaceAll(" ", "");
+          }
+          paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+          try
+          {
+            this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+          }
+          catch (ActivityNotFoundException paramView) {}
+          if (QLog.isColorLevel()) {
+            QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_DIAL do not exist");
+          }
+        }
       }
-      localObject1 = ((JSONObject)localObject1).toString();
-      paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand(paramIntent.getString("cmd"));
-      paramPacket.putSendData(bblm.a(((String)localObject1).getBytes()));
-      if (!QLog.isColorLevel()) {
-        break;
+      if (this.jdField_a_of_type_ArrayOfBoolean[2] == 1)
+      {
+        paramView = new HashMap();
+        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.c.isEmpty()) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.c);
+        }
+        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.f.isEmpty()) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.f);
+        }
+        if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.e != null) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.e);
+        }
+        if (!this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.d.isEmpty()) {
+          paramView.putAll(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Wii.d);
+        }
+        switch (paramInt)
+        {
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bfpc.dismiss();
+          return;
+          localObject = new Intent("android.intent.action.INSERT");
+          ((Intent)localObject).setType("vnd.android.cursor.dir/person");
+          ((Intent)localObject).setType("vnd.android.cursor.dir/contact");
+          ((Intent)localObject).setType("vnd.android.cursor.dir/raw_contact");
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.a((Intent)localObject, paramView);
+          continue;
+          localObject = new Intent("android.intent.action.INSERT_OR_EDIT");
+          ((Intent)localObject).setType("vnd.android.cursor.item/person");
+          ((Intent)localObject).setType("vnd.android.cursor.item/contact");
+          ((Intent)localObject).setType("vnd.android.cursor.item/raw_contact");
+          this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.a((Intent)localObject, paramView);
+        }
       }
-      QLog.i(a, 2, "onSend result: " + (String)localObject1);
+    } while (this.jdField_a_of_type_ArrayOfBoolean[3] != 1);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.jdField_a_of_type_Bfpc.dismiss();
       return;
-      label279:
-      i += 1;
+      if (this.b.contains("-")) {
+        this.b.replaceAll("-", "");
+      }
+      if (this.b.contains(" ")) {
+        this.b.replaceAll(" ", "");
+      }
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.b));
+      try
+      {
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      }
+      catch (ActivityNotFoundException paramView) {}
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QrcodeScannerCard", 2, "Intent.ACTION_DIAL do not exist");
+        continue;
+        if (!TextUtils.isEmpty(this.b)) {
+          if (Build.VERSION.SDK_INT < 11)
+          {
+            ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(this.b);
+          }
+          else
+          {
+            ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(this.b);
+            continue;
+            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.b, true);
+            continue;
+            AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.b, true);
+          }
+        }
+      }
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agip;
-import agkn;
+import agin;
+import agkl;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import aqbc;
-import aume;
+import aqbe;
+import aumg;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
@@ -19,8 +19,8 @@ public class PhoneInnerFrame
   extends InnerFrame
 {
   private int jdField_a_of_type_Int = 0;
-  private agip jdField_a_of_type_Agip;
-  private aume jdField_a_of_type_Aume;
+  private agin jdField_a_of_type_Agin;
+  private aumg jdField_a_of_type_Aumg;
   private BaseActivityView jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
   private ContactListView jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
   private PhoneLaunchView jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView;
@@ -87,12 +87,12 @@ public class PhoneInnerFrame
     a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView);
   }
   
-  protected agip a()
+  protected agin a()
   {
     return null;
   }
   
-  public aqbc a()
+  public aqbe a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a;
@@ -143,12 +143,12 @@ public class PhoneInnerFrame
     a().startActivityForResult(paramIntent, paramInt);
   }
   
-  public final agip b()
+  public final agin b()
   {
-    if (this.jdField_a_of_type_Agip == null) {
-      this.jdField_a_of_type_Agip = a();
+    if (this.jdField_a_of_type_Agin == null) {
+      this.jdField_a_of_type_Agin = a();
     }
-    return this.jdField_a_of_type_Agip;
+    return this.jdField_a_of_type_Agin;
   }
   
   public void b()
@@ -170,10 +170,10 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_Int = paramBundle.getInt("key_req_type");
     }
     g();
-    if (this.jdField_a_of_type_Aume == null)
+    if (this.jdField_a_of_type_Aumg == null)
     {
-      this.jdField_a_of_type_Aume = new agkn(this);
-      b().a().registObserver(this.jdField_a_of_type_Aume);
+      this.jdField_a_of_type_Aumg = new agkl(this);
+      b().a().registObserver(this.jdField_a_of_type_Aumg);
     }
   }
   
@@ -185,10 +185,10 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView = null;
       removeAllViews();
     }
-    if (this.jdField_a_of_type_Aume != null)
+    if (this.jdField_a_of_type_Aumg != null)
     {
-      b().a().unRegistObserver(this.jdField_a_of_type_Aume);
-      this.jdField_a_of_type_Aume = null;
+      b().a().unRegistObserver(this.jdField_a_of_type_Aumg);
+      this.jdField_a_of_type_Aumg = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null)
     {

@@ -1,86 +1,66 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.lang.ref.WeakReference;
 
 public class vsa
-  extends bfwn
 {
-  public static final TroopBarPOI a;
-  protected LayoutInflater a;
-  protected ArrayList<TroopBarPOI> a;
-  protected TroopBarPOI b;
+  public final int a;
+  public final PublishVideoEntry a;
+  public final EditVideoParams.EditSource a;
+  public final EditVideoParams a;
+  public PublishParam a;
+  public TribeVideoPublishParams a;
+  public LpReportInfo_pf00064 a;
+  public String a;
+  public WeakReference<View> a;
+  public vse a;
+  public vsg a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public boolean d;
   
-  static
+  public vsa(EditVideoParams paramEditVideoParams)
   {
-    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", ajyc.a(2131710987), 0, "", 0, "");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
+    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
+    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("enable_flow_decode", Boolean.valueOf(avxr.b));
   }
   
-  public vsa(Context paramContext)
+  public View a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (paramTroopBarPOI != null) {
-      this.b = new TroopBarPOI(paramTroopBarPOI);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
     return null;
   }
   
-  public long getItemId(int paramInt)
+  public void a(View paramView)
   {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopBarPOI localTroopBarPOI;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561338, null);
-      paramViewGroup = new vsb();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375821));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369066));
-      paramView.setTag(paramViewGroup);
-      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
-      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      if (!localTroopBarPOI.equals(this.b)) {
-        break label135;
-      }
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
     }
-    label135:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramViewGroup.setVisibility(paramInt);
-      paramView.setContentDescription(localTroopBarPOI.c);
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      return paramView;
-      paramViewGroup = (vsb)paramView.getTag();
-      break;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public String toString()
+  {
+    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
   }
 }
 

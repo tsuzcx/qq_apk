@@ -1,90 +1,80 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class bkjf
+public abstract class bkjf
+  implements TextWatcher, TextView.OnEditorActionListener
 {
-  private long a;
-  public Handler a;
-  public HandlerThread a;
-  public bkjg a;
+  protected EditText a;
+  protected TextView a;
+  protected bkjg a;
   
-  public bkjf()
+  @NonNull
+  public static bkjf a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MediaCodecThumbnailGenerator");
-  }
-  
-  public static float a(Bitmap paramBitmap)
-  {
-    int i1 = paramBitmap.getHeight() / 16;
-    int i2 = paramBitmap.getWidth() / 9;
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    while (k < paramBitmap.getHeight())
+    switch (paramInt)
     {
-      int m = 0;
-      if (m < paramBitmap.getWidth())
-      {
-        int n = paramBitmap.getPixel(m, k);
-        if (((n >> 16 & 0xFF) < 10) && ((n >> 8 & 0xFF) < 10) && ((n & 0xFF) < 10))
-        {
-          n = j + 1;
-          j = i;
-        }
-        for (i = n;; i = n)
-        {
-          n = m + i2;
-          m = i;
-          i = j;
-          j = m;
-          m = n;
-          break;
-          n = j;
-          j = i + 1;
-        }
-      }
-      k += i1;
+    default: 
+      throw new IllegalArgumentException("unSupport interactType:" + paramInt);
     }
-    float f = j / (i + j);
-    veg.c("MediaCodecThumbnailGen", "whitePixelCount = " + i + " blackPixelCount = " + j);
-    return f;
+    return new bkji();
   }
   
-  public void a()
+  protected abstract View a();
+  
+  public abstract bkjh a();
+  
+  public void a() {}
+  
+  public void a(Context paramContext, bkjh parambkjh, EditText paramEditText, TextView paramTextView, bkjg parambkjg)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
+    this.jdField_a_of_type_Bkjg = parambkjg;
   }
   
-  public void a(Looper paramLooper)
+  protected void a(CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Bkjg = new bkjg(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    Looper localLooper = paramLooper;
-    if (paramLooper == null) {
-      localLooper = Looper.myLooper();
+    int i = bbkk.b(paramCharSequence.toString());
+    if (paramInt - i <= 6)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(i / 2), Integer.valueOf(paramInt / 2) }));
+      return;
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2, bkjd<Boolean, bkjj> parambkjd, bkjd<Boolean, bkji> parambkjd1)
+  protected void a(CharSequence paramCharSequence, boolean paramBoolean)
   {
-    bkjh localbkjh = new bkjh();
-    localbkjh.jdField_a_of_type_JavaLangString = paramString1;
-    localbkjh.jdField_b_of_type_JavaLangString = paramString2;
-    localbkjh.jdField_a_of_type_Boolean = paramBoolean1;
-    localbkjh.jdField_a_of_type_Int = paramInt1;
-    localbkjh.jdField_b_of_type_Int = paramInt2;
-    localbkjh.c = paramInt3;
-    localbkjh.d = paramInt4;
-    localbkjh.jdField_b_of_type_Boolean = paramBoolean2;
-    localbkjh.jdField_b_of_type_Bkjd = parambkjd;
-    localbkjh.jdField_a_of_type_Bkjd = parambkjd1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Message.obtain(this.jdField_a_of_type_Bkjg, 1, localbkjh).sendToTarget();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramCharSequence);
+      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
+    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
   }
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

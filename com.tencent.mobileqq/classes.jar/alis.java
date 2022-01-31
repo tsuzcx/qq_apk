@@ -1,129 +1,71 @@
-import android.annotation.TargetApi;
-import android.os.Environment;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.ar.model.ArModelResource;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
 
 public class alis
 {
-  public static String a()
+  protected static aysb a;
+  private aysa jdField_a_of_type_Aysa;
+  public AppInterface a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<aliw> jdField_a_of_type_JavaUtilArrayList;
+  
+  static
   {
-    if (a()) {
-      return bbuv.a(ajsf.aW);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");
-    }
-    float f = bbdj.a();
-    if ((f < 15728640.0F) && (QLog.isColorLevel())) {
-      QLog.i("AREngine_ARResouceDir", 2, "inner memory avail may not enough : " + f);
-    }
-    return BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath() + File.separator;
+    jdField_a_of_type_Aysb = new aliu();
   }
   
-  public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
+  public alis(AppInterface paramAppInterface)
   {
-    return paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d + File.separator;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Aysa = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static String a(String paramString)
+  public void a()
   {
-    return a() + "ar_cloud_transfer/" + paramString + File.separator;
-  }
-  
-  @TargetApi(18)
-  public static boolean a()
-  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
     try
     {
-      boolean bool = Environment.getExternalStorageState().equals("mounted");
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public static String b()
-  {
-    return a() + "ar_relationship/";
-  }
-  
-  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        QLog.i("AREngine_ARResourceDownload", 1, "cancelDownloadTask. url = " + ((aliw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Aysa.b(((aliw)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Ayrx);
+        i += 1;
       }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator;
-      return paramArCloudConfigInfo;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelUnzipDir error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
+    finally {}
   }
   
-  public static String c(ArCloudConfigInfo paramArCloudConfigInfo)
+  public boolean a(aliw paramaliw, aliv arg2)
   {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
-      }
-      String str1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      String str2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str1 + File.separator + str2;
-      return paramArCloudConfigInfo;
+    if ((paramaliw == null) || (??? == null)) {
+      return false;
     }
-    catch (Exception paramArCloudConfigInfo)
+    ??? = new alit(this, paramaliw, ???);
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_Aysc = ???;
+    localayrx.jdField_a_of_type_JavaLangString = paramaliw.jdField_a_of_type_JavaLangString;
+    localayrx.jdField_a_of_type_Int = 0;
+    localayrx.c = paramaliw.c;
+    localayrx.e = 1;
+    localayrx.jdField_a_of_type_Aysb = jdField_a_of_type_Aysb;
+    this.jdField_a_of_type_Aysa.a(localayrx);
+    paramaliw.jdField_a_of_type_Ayrx = localayrx;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelLuaFilePath error " + paramArCloudConfigInfo.getMessage());
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaliw);
+      QLog.i("AREngine_ARResourceDownload", 1, "submitDownloadTask. url = " + paramaliw.jdField_a_of_type_JavaLangString);
+      return true;
     }
-    return "";
   }
   
-  public static String d(ArCloudConfigInfo paramArCloudConfigInfo)
+  public void b()
   {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
-      }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
-        return "";
-      }
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c;
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelMusicFilePath error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
-  }
-  
-  public static String e(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c + "_model.zip";
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      QLog.i("AREngine_ARResouceDir", 2, "getVideoFilePath error " + paramArCloudConfigInfo.getMessage());
-    }
-    return "";
+    a();
   }
 }
 

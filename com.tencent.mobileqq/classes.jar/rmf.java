@@ -1,20 +1,57 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.LinkedList;
 
-class rmf
-  implements Animation.AnimationListener
+public class rmf
 {
-  rmf(rmc paramrmc) {}
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private LinkedList<rmh> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public rmf(BaseActivity paramBaseActivity)
   {
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilLinkedList.size();
+  }
+  
+  public rmh a()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+      return null;
+    }
+    return (rmh)this.jdField_a_of_type_JavaUtilLinkedList.pop();
+  }
+  
+  public void a(rmg paramrmg)
+  {
+    if (paramrmg == null) {}
+    for (;;)
+    {
+      return;
+      while (!a())
+      {
+        rmh localrmh = a();
+        if (localrmh != null) {
+          paramrmg.a(localrmh);
+        }
+      }
+    }
+  }
+  
+  public void a(rmh paramrmh)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedList.push(paramrmh);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilLinkedList.isEmpty();
+  }
 }
 
 

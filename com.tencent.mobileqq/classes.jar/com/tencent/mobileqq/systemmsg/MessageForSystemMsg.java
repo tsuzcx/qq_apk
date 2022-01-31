@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.systemmsg;
 
 import android.content.res.Resources;
-import bamn;
+import banb;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -62,7 +62,7 @@ public class MessageForSystemMsg
       break label87;
       paramResources = paramResources.getString(2131689541);
       break label87;
-      paramResources = paramResources.getString(2131718679);
+      paramResources = paramResources.getString(2131718690);
       break label87;
       if (i == 2)
       {
@@ -71,13 +71,13 @@ public class MessageForSystemMsg
         if (QLog.isColorLevel()) {
           QLog.d("MessageForSystemMsg", 2, "groupMsgType:" + j + "|req_uin_nick:" + paramStructMsg.msg.req_uin_nick.get() + "|actor_uin_nick:" + paramStructMsg.msg.actor_uin_nick.get() + "|action_uin_nick:" + paramStructMsg.msg.action_uin_nick.get() + "|msg_describe:" + paramStructMsg.msg.msg_describe.get());
         }
-        j = bamn.a(j);
+        j = banb.a(j);
         if (j == 1) {
           paramResources = paramStructMsg.msg.action_uin_nick.get();
         }
         for (;;)
         {
-          paramResources = bamn.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
+          paramResources = banb.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
           break;
           if (j == 2) {
             paramResources = paramStructMsg.msg.req_uin_nick.get();

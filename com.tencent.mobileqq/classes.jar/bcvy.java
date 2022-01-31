@@ -1,11 +1,7 @@
-import MWIFI.SCGet3rdCloudCheck;
-
-public class bcvy
-  implements akju
+abstract class bcvy
 {
-  public void a(int paramInt) {}
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
+  public int a;
+  public byte[] a;
 }
 
 

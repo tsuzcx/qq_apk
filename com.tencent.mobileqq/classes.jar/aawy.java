@@ -1,24 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class aawy
-  extends BroadcastReceiver
+  extends akgj
 {
   public aawy(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
+    if (!this.a.f) {}
+    do
     {
-      this.a.a.a(27, 2);
-      this.a.a.b = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
-      this.a.a.a(-1, null);
       return;
-    }
-    this.a.a.k();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
+      }
+    } while ((!paramBoolean) || (paramInt != axjs.a));
+    bbdj.a(this.a.a(), 0, null, this.a.a(2131719591), 2131719593, 2131719592, new aawz(this), new aaxa(this)).show();
   }
 }
 

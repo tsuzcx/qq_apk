@@ -1,27 +1,24 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public abstract class ayhq
+class ayhq
+  implements bfph
 {
-  protected Context a;
-  protected BaseAdapter a;
-  protected QQAppInterface a;
-  protected int b;
+  ayhq(ayhn paramayhn, List paramList, ayit paramayit, bfpc parambfpc) {}
   
-  public ayhq(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    this.b = paramInt;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (ayiu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (ayhn.a(this.jdField_a_of_type_Ayhn) != null) {
+        ayhn.a(this.jdField_a_of_type_Ayhn).a(paramView.b(), this.jdField_a_of_type_Ayit);
+      }
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    this.jdField_a_of_type_Bfpc.cancel();
   }
-  
-  public abstract View a(int paramInt1, ayir paramayir, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 

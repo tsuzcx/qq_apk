@@ -1,10 +1,26 @@
-import javax.microedition.khronos.opengles.GL10;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
-public abstract interface almq
+public class almq
+  implements View.OnTouchListener
 {
-  public abstract void a(GL10 paramGL10);
+  public almq(QRScanEntryView paramQRScanEntryView) {}
   
-  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

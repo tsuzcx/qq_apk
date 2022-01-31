@@ -1,6 +1,34 @@
-public abstract interface ahxc
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
+
+public class ahxc
+  implements Animation.AnimationListener
 {
-  public abstract void a(boolean paramBoolean);
+  private int jdField_a_of_type_Int;
+  private ahxd jdField_a_of_type_Ahxd;
+  
+  public ahxc(VideoFilterViewPager paramVideoFilterViewPager, ahxd paramahxd, int paramInt)
+  {
+    this.jdField_a_of_type_Ahxd = paramahxd;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Ahxd != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Ahxd.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,38 +1,30 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
+import java.util.List;
 
 public class ansz
+  extends ajvz
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  ansz(ansx paramansx) {}
   
-  public ansz(String paramString)
+  public void a(List<CustomEmotionData> paramList)
   {
-    this.a = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("_");
-      if (paramString.length >= 7)
-      {
-        this.g = paramString[0];
-        this.h = paramString[1];
-        this.b = paramString[2];
-        this.c = paramString[3];
-        this.d = paramString[4];
-        this.e = paramString[5];
-        this.f = paramString[6];
-      }
+    if (ansx.f(this.a) == null) {
+      return;
     }
+    ansx.g(this.a).removeObserver(ansx.a(this.a));
+    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
   }
   
-  public boolean a()
+  public void a(boolean paramBoolean)
   {
-    return this.a.split("_").length >= 7;
+    if (ansx.e(this.a) == null) {}
+    while (!paramBoolean) {
+      return;
+    }
+    this.a.b();
   }
 }
 

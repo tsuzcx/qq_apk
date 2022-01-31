@@ -8,9 +8,9 @@ import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
 import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentView;
 import java.lang.ref.WeakReference;
-import yxs;
-import yzg;
-import zag;
+import yxp;
+import yzd;
+import zad;
 
 public class GdtCanvasFixedButtonComponentView
   extends GdtCanvasComponentView
@@ -30,7 +30,7 @@ public class GdtCanvasFixedButtonComponentView
     super(paramContext, paramAttributeSet);
   }
   
-  public GdtCanvasFixedButtonComponentView(Context paramContext, WeakReference<zag> paramWeakReference)
+  public GdtCanvasFixedButtonComponentView(Context paramContext, WeakReference<zad> paramWeakReference)
   {
     super(paramContext, paramWeakReference);
   }
@@ -40,18 +40,18 @@ public class GdtCanvasFixedButtonComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFixedbuttonGdtCanvasFixedButtonComponentData;
   }
   
-  public yzg a()
+  public yzd a()
   {
-    return this.jdField_a_of_type_Yzg;
+    return this.jdField_a_of_type_Yzd;
   }
   
-  public void a(Context paramContext, GdtCanvasFixedButtonComponentData paramGdtCanvasFixedButtonComponentData, GdtAd paramGdtAd, WeakReference<zag> paramWeakReference)
+  public void a(Context paramContext, GdtCanvasFixedButtonComponentData paramGdtCanvasFixedButtonComponentData, GdtAd paramGdtAd, WeakReference<zad> paramWeakReference)
   {
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
     g();
     if ((paramGdtCanvasFixedButtonComponentData == null) || (!paramGdtCanvasFixedButtonComponentData.isValid()))
     {
-      yxs.d("GdtCanvasButtonComponentView", "init error");
+      yxp.d("GdtCanvasButtonComponentView", "init error");
       a(false);
       return;
     }
@@ -66,7 +66,7 @@ public class GdtCanvasFixedButtonComponentView
     for (;;)
     {
       addView(this.jdField_a_of_type_AndroidViewView, paramGdtAd);
-      this.jdField_a_of_type_Yzg = new yzg(new WeakReference(this.jdField_a_of_type_AndroidViewView), new WeakReference(this));
+      this.jdField_a_of_type_Yzd = new yzd(new WeakReference(this.jdField_a_of_type_AndroidViewView), new WeakReference(this));
       a(true);
       return;
       paramGdtAd = localObject;

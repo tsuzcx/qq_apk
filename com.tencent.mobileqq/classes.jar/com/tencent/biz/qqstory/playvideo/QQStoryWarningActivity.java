@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import tuj;
+import tug;
 
 public class QQStoryWarningActivity
   extends QQStoryBaseActivity
@@ -20,11 +20,11 @@ public class QQStoryWarningActivity
     super.setContentViewNoTitle(paramBundle);
     paramBundle.a(0);
     paramBundle.setCloseViewVisibility(true);
-    paramBundle.setOnCloseClickListener(new tuj(this));
+    paramBundle.setOnCloseClickListener(new tug(this));
     String str = super.getIntent().getExtras().getString("tipsResource");
     if (TextUtils.isEmpty(str))
     {
-      paramBundle.setTipsText(ajyc.a(2131711123));
+      paramBundle.setTipsText(ajya.a(2131711134));
       return true;
     }
     paramBundle.setTipsText(str);

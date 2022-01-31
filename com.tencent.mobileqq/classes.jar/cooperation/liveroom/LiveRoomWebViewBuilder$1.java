@@ -1,10 +1,10 @@
 package cooperation.liveroom;
 
-import aird;
-import armk;
-import bcba;
-import bcbb;
-import bchy;
+import airb;
+import armm;
+import bcbo;
+import bcbp;
+import bcim;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
@@ -13,12 +13,12 @@ import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import java.util.ArrayList;
 import java.util.List;
-import xle;
-import xln;
-import xmi;
-import xmn;
-import xnh;
-import zci;
+import xlb;
+import xlk;
+import xmf;
+import xmk;
+import xne;
+import zcf;
 
 class LiveRoomWebViewBuilder$1
   extends WebAccelerateHelper.CommonJsPluginFactory
@@ -28,20 +28,20 @@ class LiveRoomWebViewBuilder$1
   public List<WebViewPlugin> getCommonJsPlugin()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aird());
-    localArrayList.add(new bcba());
-    localArrayList.add(new bcbb());
+    localArrayList.add(new airb());
+    localArrayList.add(new bcbo());
+    localArrayList.add(new bcbp());
     localArrayList.add(new VasWebReport());
-    localArrayList.add(new xnh());
-    localArrayList.add(new xmn());
-    localArrayList.add(new xle());
-    localArrayList.add(new xln());
-    localArrayList.add(new bchy());
-    localArrayList.add(new armk());
+    localArrayList.add(new xne());
+    localArrayList.add(new xmk());
+    localArrayList.add(new xlb());
+    localArrayList.add(new xlk());
+    localArrayList.add(new bcim());
+    localArrayList.add(new armm());
     localArrayList.add(new OpenCenterPlugin());
     localArrayList.add(new MiniAppPlugin());
-    localArrayList.add(new xmi());
-    localArrayList.add(new zci());
+    localArrayList.add(new xmf());
+    localArrayList.add(new zcf());
     localArrayList.add(new SonicJsPlugin());
     return localArrayList;
   }

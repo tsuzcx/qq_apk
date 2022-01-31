@@ -1,19 +1,15 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
 
 public class accf
   implements View.OnClickListener
 {
-  public accf(ShowReactiveActivity paramShowReactiveActivity, amze paramamze) {}
+  public accf(SigCommentListActivity paramSigCommentListActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Amze.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(paramView);
+    this.a.a(true, true);
   }
 }
 

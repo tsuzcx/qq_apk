@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-class atfq
-  implements View.OnClickListener
+public abstract interface atfq
 {
-  atfq(atfp paramatfp) {}
+  public abstract void a(InterestTagInfo paramInterestTagInfo);
   
-  public void onClick(View paramView)
-  {
-    if (atfp.a(this.a) != null) {
-      atfp.a(this.a).a(atfp.a(this.a));
-    }
-    this.a.dismiss();
-  }
+  public abstract boolean a(InterestTagInfo paramInterestTagInfo);
 }
 
 

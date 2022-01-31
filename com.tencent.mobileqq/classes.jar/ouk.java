@@ -1,24 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
 
 public class ouk
-  extends BroadcastReceiver
+  implements AdapterView.OnItemClickListener
 {
-  public ouk(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
+  public ouk(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.getActivity() != null)
-    {
-      if (ReadInJoyDailyFragment.a(this.a) != null) {
-        ReadInJoyDailyFragment.a(this.a).i();
-      }
-      ReadInJoyDailyFragment.a(this.a, true);
-      this.a.getActivity().finish();
-    }
+    this.a.a(paramView, paramInt);
   }
 }
 

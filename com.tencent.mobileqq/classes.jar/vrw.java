@@ -1,51 +1,89 @@
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public abstract class vrw
+public class vrw
+  extends vrt
 {
-  protected final int a;
-  protected Context a;
-  protected final String a;
-  protected vrx a;
-  protected boolean a;
-  protected boolean b;
+  private boolean c;
   
   public vrw(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramString, paramInt);
   }
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  public void a(vrx paramvrx)
+  public int a()
   {
-    this.jdField_a_of_type_Vrx = paramvrx;
+    return 1;
   }
   
-  public void a(boolean paramBoolean)
+  public int a(int paramInt)
   {
-    this.b = paramBoolean;
+    return 0;
   }
   
-  public int b()
+  public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_Int;
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561316, null);
   }
   
-  public void b(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131363974);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131363969);
+    TextView localTextView = (TextView)paramView.findViewById(2131363971);
+    paramView = paramView.findViewById(2131363965);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 10002: 
+    case 10003: 
+    default: 
+      if (this.jdField_a_of_type_Boolean) {
+        localImageView1.setVisibility(0);
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (!this.c) {
+        break label177;
+      }
+      paramInt = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        paramInt = -16444373;
+      }
+      paramView.setBackgroundColor(paramInt);
+      paramView.setVisibility(0);
+      return;
+      localImageView2.setImageResource(2130845804);
+      break;
+      localImageView2.setImageResource(2130845800);
+      break;
+      localImageView2.setImageResource(2130845803);
+      break;
+      localImageView1.setVisibility(4);
+    }
+    label177:
+    paramView.setVisibility(4);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 

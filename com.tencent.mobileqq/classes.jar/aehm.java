@@ -1,53 +1,20 @@
-import android.app.Activity;
-import android.os.MessageQueue.IdleHandler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.io.File;
 import java.util.Locale;
+import mqq.os.MqqHandler;
 
 class aehm
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  aehm(aegu paramaegu) {}
+  aehm(aehl paramaehl, File paramFile) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.a.jdField_a_of_type_Aeie.a();
-    if ((localObject != null) && (AIOImageData.class.isInstance(((aeja)localObject).a)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)((aeja)localObject).a;
-      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null))
-      {
-        this.a.c(true);
-        this.a.u();
-      }
-    }
-    if ((localObject != null) && (AIOFilePicData.class.isInstance(((aeja)localObject).a)))
-    {
-      localObject = (AIOFilePicData)((aeja)localObject).a;
-      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
-      {
-        if ((!((AIOFilePicData)localObject).d) || (!bbet.a(((AIOFilePicData)localObject).b))) {
-          break label211;
-        }
-        this.a.c(true);
-        this.a.a(false);
-        this.a.jdField_a_of_type_Aeht = null;
-      }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, aegu.d(this.a).getString(2131695341), new Object[] { apvb.a(((AIOFilePicData)localObject).a) }));
-      }
-      return false;
-      label211:
-      if (((AIOFilePicData)localObject).e) {
-        this.a.c(false);
-      } else {
-        this.a.c(true);
-      }
-    }
+    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Aehl.a.a, paramDialogInterface, true));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aohn;
-import bbev;
+import aohs;
+import bbfj;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
 
 class ExtendFriendGroupFragment$4
@@ -11,7 +11,7 @@ class ExtendFriendGroupFragment$4
   
   public void run()
   {
-    if (bbev.g(ExtendFriendGroupFragment.a(this.this$0)))
+    if (bbfj.g(ExtendFriendGroupFragment.a(this.this$0)))
     {
       if (ExtendFriendGroupFragment.a(this.this$0) != null)
       {
@@ -20,7 +20,7 @@ class ExtendFriendGroupFragment$4
       }
       return;
     }
-    ExtendFriendGroupFragment.a(this.this$0, this.this$0.getString(2131694971), 1);
+    ExtendFriendGroupFragment.a(this.this$0, this.this$0.getString(2131694972), 1);
     ExtendFriendGroupFragment.a(this.this$0).a(true);
   }
 }

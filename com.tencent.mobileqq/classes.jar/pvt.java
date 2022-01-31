@@ -1,13 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
 
 public class pvt
   implements View.OnClickListener
 {
-  public pvt(ComponentContentHotSearch paramComponentContentHotSearch) {}
+  public pvt(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    ComponentContentNoteCard.a(this.a);
+  }
 }
 
 

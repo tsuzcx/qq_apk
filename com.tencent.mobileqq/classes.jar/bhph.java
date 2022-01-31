@@ -1,26 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-public abstract class bhph<T>
-  extends Handler
+public class bhph
 {
-  private WeakReference<T> a;
+  private static Field a;
   
-  public bhph(T paramT)
+  private static void a(Throwable paramThrowable)
   {
-    this.a = new WeakReference(paramT);
+    try
+    {
+      if (a == null) {
+        a = Throwable.class.getDeclaredField("detailMessage");
+      }
+      a.setAccessible(true);
+      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
+    }
   }
   
-  public abstract void a(T paramT, Message paramMessage);
-  
-  public void handleMessage(Message paramMessage)
+  public static final void a(Throwable paramThrowable, String paramString)
   {
-    super.handleMessage(paramMessage);
-    Object localObject = this.a.get();
-    if (localObject != null) {
-      a(localObject, paramMessage);
+    if (paramThrowable == null) {
+      return;
     }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = Log.getStackTraceString(paramThrowable);
+    }
+    a(paramThrowable);
+    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
+    axpu.a(paramThrowable, str);
   }
 }
 

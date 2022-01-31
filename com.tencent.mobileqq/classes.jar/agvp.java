@@ -1,116 +1,157 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Matrix;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public abstract class agvp
+public class agvp
+  extends Handler
 {
-  String a;
-  String b;
-  String c;
+  private long jdField_a_of_type_Long = 1000L;
+  public CopyOnWriteArrayList<agvq> a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
   
-  public agvp(String paramString)
+  public agvp()
   {
-    this.c = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  public static agvp a(String paramString)
+  public agvp(Looper paramLooper)
   {
-    if (agvq.a(paramString)) {
-      return new agvq(paramString);
-    }
-    if (agvo.a(paramString)) {
-      return new agvo(paramString);
-    }
-    return null;
+    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  public static boolean c(String paramString)
+  public void a()
   {
-    return a(paramString) != null;
+    this.jdField_b_of_type_Boolean = false;
+    b();
+    c();
   }
   
-  public String a()
+  public void a(long paramLong)
   {
-    Object localObject = null;
-    String str = auoy.a(this.c, 2);
-    if (!new File(str).exists())
+    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
+    f();
+  }
+  
+  public void a(agvq paramagvq)
+  {
+    long l = SystemClock.elapsedRealtime();
+    if (agvq.a(paramagvq) > l)
     {
-      boolean bool = b(str);
-      axrl.a(BaseApplication.getContext()).a(null, this.b, bool, 0L, auoy.a(str), null, "");
-      if (bool)
-      {
-        if (QLog.isColorLevel()) {
-          aune.a("PIC_TAG_ERROR", "check file type,generateCompatibleFile suc", "outputPath" + str + " originFile" + this.c + " fileType:" + this.a);
-        }
-        localObject = str;
-      }
-      while (!QLog.isColorLevel()) {
-        return localObject;
-      }
-      aune.a("PIC_TAG_ERROR", "check file type,generateCompatibleFile fail", " originFile" + this.c + " fileType:" + this.a);
-      return null;
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramagvq);
+      a(agvq.a(paramagvq) - l);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      aune.a("PIC_TAG_ERROR", "check file type,compatibleFile exists", "outputPath" + str + " originFile" + this.c + " fileType:" + this.a);
-    }
-    return str;
+    paramagvq.b();
   }
   
-  boolean b(String paramString)
+  public void b()
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    int j = bbdr.b(this.c);
-    String str = "generate " + this.a;
-    int i = 1;
-    if (i <= 4) {}
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
+      g();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((agvq)localIterator.next()).a();
+    }
+  }
+  
+  public void b(agvq paramagvq)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramagvq);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
+      g();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((agvq)localIterator.next()).b();
+    }
+  }
+  
+  public void d()
+  {
+    removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
+      sendMessage(obtainMessage(1));
+    }
+  }
+  
+  public void f()
+  {
     for (;;)
     {
       try
       {
-        localOptions.inSampleSize = i;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, str + ",localPath:" + this.c + " sample:" + i + " path:" + paramString + " degree:" + j);
+        boolean bool = this.jdField_b_of_type_Boolean;
+        if (bool) {
+          return;
         }
-        Bitmap localBitmap = SafeBitmapFactory.safeDecode(this.c, localOptions);
-        Object localObject = localBitmap;
-        if (j != 0)
+        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
         {
-          localObject = new Matrix();
-          int k = localBitmap.getWidth();
-          int m = localBitmap.getHeight();
-          ((Matrix)localObject).postRotate(j, k >> 1, m >> 1);
-          localObject = Bitmap.createBitmap(localBitmap, 0, 0, k, m, (Matrix)localObject, true);
+          a();
+          continue;
         }
-        bool = auoy.a(paramString, (Bitmap)localObject, 80, "incompatible to jpg", null);
-        if (bool)
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a, 2, str + ",result:" + bool + " sample:" + i + " path:" + paramString + " degree:" + j);
-          }
-          return bool;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, str + ",compressQuality fail");
-        }
-        i *= 2;
+        this.jdField_b_of_type_Boolean = true;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, str + ",oom localPath:" + this.c + " sample:" + i + " degree:" + j);
-        }
-        localOutOfMemoryError.printStackTrace();
-        System.gc();
-        i *= 2;
-      }
-      break;
-      boolean bool = false;
+      finally {}
+      sendMessage(obtainMessage(1));
     }
+  }
+  
+  public void g()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    removeMessages(1);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    for (;;)
+    {
+      try
+      {
+        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
+        if (l <= 0L)
+        {
+          a();
+          return;
+        }
+        if (l < this.jdField_a_of_type_Long)
+        {
+          sendMessageDelayed(obtainMessage(1), l);
+          continue;
+        }
+        l = SystemClock.elapsedRealtime();
+      }
+      finally {}
+      b();
+      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
+      sendMessageDelayed(obtainMessage(1), l);
+    }
+  }
+  
+  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return super.sendMessageAtTime(paramMessage, paramLong);
+    }
+    return false;
   }
 }
 

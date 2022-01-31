@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acop
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
   public acop(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    UpgradeActivity.a(this.a, true);
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "");
   }
 }
 

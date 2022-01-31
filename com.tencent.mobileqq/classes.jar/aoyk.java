@@ -1,9 +1,12 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 class aoyk
-  implements ajos
+  implements bcwm
 {
-  aoyk(aoye paramaoye, FileManagerEntity paramFileManagerEntity) {}
+  aoyk(aoyi paramaoyi) {}
+  
+  public void a(int paramInt)
+  {
+    apug.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aoyi.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

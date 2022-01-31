@@ -1,17 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
+
 class quu
-  implements bfot
+  implements DialogInterface.OnShowListener
 {
-  quu(qur paramqur) {}
+  quu(quo paramquo) {}
   
-  public void ak_()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (qur.c(this.a))
-    {
-      qur.c(this.a, false);
-      qur.a(this.a).a(qur.a(this.a), qur.b(this.a), true, false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
     }
-    qur.a(this.a).a(qur.a(this.a), qur.b(this.a), true, true);
+    quo.a(this.a).getWindow().clearFlags(8);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agkr;
-import ajyc;
+import agkp;
+import ajya;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import aume;
-import bbev;
+import aumg;
+import bbfj;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -23,7 +23,7 @@ public class RebindActivity
   public int a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aume jdField_a_of_type_Aume;
+  private aumg jdField_a_of_type_Aumg;
   public String a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
@@ -51,11 +51,11 @@ public class RebindActivity
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("k_country_code");
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("k_number");
     this.jdField_b_of_type_Int = getIntent().getIntExtra("kBindType", 0);
-    setTitle(ajyc.a(2131713139));
+    setTitle(ajya.a(2131713150));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371413));
     paramBundle = this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString;
     ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-31676);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131695052, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131695053, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
     localSpannableStringBuilder.setSpan(localForegroundColorSpan, 4, paramBundle.length() + 4, 33);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371412));
@@ -67,10 +67,10 @@ public class RebindActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aume != null)
+    if (this.jdField_a_of_type_Aumg != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aume);
-      this.jdField_a_of_type_Aume = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Aumg);
+      this.jdField_a_of_type_Aumg = null;
     }
     super.doOnDestroy();
   }
@@ -78,20 +78,20 @@ public class RebindActivity
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton) {
-      if (!bbev.d(this)) {
-        b(2131694672);
+      if (!bbfj.d(this)) {
+        b(2131694673);
       }
     }
     while (paramView != this.jdField_b_of_type_AndroidWidgetButton)
     {
       return;
-      if (this.jdField_a_of_type_Aume == null)
+      if (this.jdField_a_of_type_Aumg == null)
       {
-        this.jdField_a_of_type_Aume = new agkr(this);
-        this.app.registObserver(this.jdField_a_of_type_Aume);
+        this.jdField_a_of_type_Aumg = new agkp(this);
+        this.app.registObserver(this.jdField_a_of_type_Aumg);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-      a(2131719281, 1000L, true);
+      a(2131719292, 1000L, true);
       return;
     }
     finish();

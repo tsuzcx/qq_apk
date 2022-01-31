@@ -1,36 +1,55 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import java.lang.ref.WeakReference;
 
-public class avrj
+class avrj
+  extends Handler
 {
-  public ConcurrentHashMap<String, avqy> a = new ConcurrentHashMap(10);
+  final WeakReference<avrg> a;
   
-  public avqy a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
+  public avrj(Looper paramLooper, avrg paramavrg)
   {
-    paramSVHwEncoder = new avqy(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    avrd.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
+    super(paramLooper);
+    this.a = new WeakReference(paramavrg);
   }
   
-  public avqy a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    avrd.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (avqy)this.a.get(paramString);
-    }
-    return null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    avrd.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
-      return false;
-    }
-    return true;
+    avrf.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
+    avrg localavrg = (avrg)this.a.get();
+    if (localavrg == null) {}
+    do
+    {
+      return;
+      if (paramMessage.getData() != null) {
+        paramMessage.getData().getInt("msg_sub_cmd");
+      }
+      switch (paramMessage.what)
+      {
+      case 1001: 
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 1000: 
+        avrf.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
+        return;
+      case 1002: 
+        avrf.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
+        paramMessage = paramMessage.getData();
+      }
+    } while (paramMessage == null);
+    paramMessage = paramMessage.getString("vidoe_record_uniseq");
+    localavrg.a().a(paramMessage);
+    return;
+    AIOLongCaptureCtrl.a(paramMessage.getData());
+    return;
+    AIOLongCaptureCtrl.b(paramMessage.getData());
+    return;
+    paramMessage = paramMessage.getData();
+    aegp.a().a(paramMessage);
   }
 }
 

@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.mobileqq.search.model.BusinessGroupWord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
 
 public class awlj
-  extends akjc
+  implements View.OnClickListener
 {
-  public awlj(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  public awlj(GroupSearchFragment paramGroupSearchFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
+    this.a.g = 1;
+    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
+      this.a.g = 1;
     }
-  }
-  
-  public void a(int paramInt, List<BusinessGroupWord> paramList)
-  {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
-    }
+    this.a.h();
+    this.a.b.setVisibility(8);
   }
 }
 

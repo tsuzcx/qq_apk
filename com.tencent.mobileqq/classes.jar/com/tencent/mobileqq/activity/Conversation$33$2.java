@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity;
 
-import aawo;
-import ajyc;
+import aawk;
+import ajya;
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class Conversation$33$2
   implements Runnable
 {
-  public Conversation$33$2(aawo paramaawo) {}
+  public Conversation$33$2(aawk paramaawk) {}
   
   public void run()
   {
-    bcpw.a(this.a.a.a(), 2, ajyc.a(2131702598), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+    bcql.a(this.a.a.a(), 2, ajya.a(2131702609), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
   }
 }
 

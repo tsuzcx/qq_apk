@@ -1,105 +1,255 @@
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.util.Locale;
+import java.util.TimeZone;
+import org.json.JSONObject;
 
 public class bdjp
 {
-  public static int a()
-  {
-    int j = bdjb.a(bcxm.a().a(), null).a("Common_BusinessReportMaxcount");
-    int i = j;
-    if (j == 0) {
-      i = 20;
-    }
-    return i;
-  }
-  
-  public static int a(int paramInt)
-  {
-    int i;
-    if (paramInt == 0)
-    {
-      i = bdjb.a(bcxm.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
-      paramInt = i;
-      if (i == 0) {
-        paramInt = 20;
-      }
-    }
-    do
-    {
-      return paramInt;
-      i = bdjb.a(bcxm.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
-      paramInt = i;
-    } while (i != 0);
-    return 50;
-  }
-  
-  public static int a(String paramString)
-  {
-    int j = bdjb.a(bcxm.a().a(), paramString).a("Common_BusinessReportFrequency");
-    int i = j;
-    if (j == 0) {
-      i = 100;
-    }
-    return i;
-  }
-  
-  public static long a()
-  {
-    return bcxm.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
-  }
-  
-  protected static SharedPreferences a()
-  {
-    return bcxm.a().a().getSharedPreferences("reportConfig", 0);
-  }
+  protected static String a;
+  protected static String b;
+  protected static String c;
+  protected static String d;
+  protected static String e;
   
   public static String a()
   {
-    if (bcxm.a().a() == null) {
+    if (TextUtils.isEmpty(a)) {
+      a = "";
+    }
+    try
+    {
+      Object localObject = bcyb.a().a();
+      if (localObject != null)
+      {
+        a = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("wifi_mac_address", "");
+        if (TextUtils.isEmpty(a))
+        {
+          a = bfnn.c("7ef1aa");
+          if (a != null)
+          {
+            localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+            ((SharedPreferences.Editor)localObject).putString("wifi_mac_address", a);
+            ((SharedPreferences.Editor)localObject).commit();
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return a;
+  }
+  
+  public static String b()
+  {
+    return Locale.getDefault().getLanguage();
+  }
+  
+  public static String c()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(c))
+    {
+      c = "";
+      localObject = bcyb.a().a();
+      if (localObject != null)
+      {
+        c = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imei", "");
+        if (!TextUtils.isEmpty(c)) {}
+      }
+    }
+    try
+    {
+      c = bfnn.a("52b7f2");
+      label61:
+      if (c != null)
+      {
+        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+        ((SharedPreferences.Editor)localObject).putString("imei", c);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      return c;
+    }
+    catch (Exception localException)
+    {
+      break label61;
+    }
+  }
+  
+  public static String d()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(d))
+    {
+      d = "";
+      localObject = bcyb.a().a();
+      if (localObject != null)
+      {
+        d = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imsi", "");
+        if (!TextUtils.isEmpty(d)) {}
+      }
+    }
+    try
+    {
+      d = bfnn.b("ea6862");
+      label61:
+      if (d != null)
+      {
+        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+        ((SharedPreferences.Editor)localObject).putString("imsi", d);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      return d;
+    }
+    catch (Exception localException)
+    {
+      break label61;
+    }
+  }
+  
+  public static String e()
+  {
+    if (!TextUtils.isEmpty(b)) {
+      return b;
+    }
+    WindowManager localWindowManager = (WindowManager)bcyb.a().a().getSystemService("window");
+    int i = localWindowManager.getDefaultDisplay().getWidth();
+    int j = localWindowManager.getDefaultDisplay().getHeight();
+    return i + "x" + j;
+  }
+  
+  public static String f()
+  {
+    if (!TextUtils.isEmpty(e)) {
+      return e;
+    }
+    Object localObject1 = bcyb.a().a();
+    if (localObject1 == null) {
       return "";
     }
-    return a().getString("uin", "");
+    try
+    {
+      localObject1 = (LocationManager)((Context)localObject1).getSystemService("location");
+      Object localObject2 = new Criteria();
+      ((Criteria)localObject2).setCostAllowed(false);
+      ((Criteria)localObject2).setAccuracy(2);
+      localObject2 = ((LocationManager)localObject1).getBestProvider((Criteria)localObject2, true);
+      if (localObject2 != null)
+      {
+        localObject1 = ((LocationManager)localObject1).getLastKnownLocation((String)localObject2);
+        if (localObject1 == null) {
+          return "";
+        }
+        double d1 = ((Location)localObject1).getLatitude();
+        double d2 = ((Location)localObject1).getLongitude();
+        localObject1 = d1 + "*" + d2;
+        return localObject1;
+      }
+    }
+    catch (Exception localException)
+    {
+      bdii.c("getLocation", "getLocation>>>", localException);
+    }
+    return "";
   }
   
-  public static void a(long paramLong)
+  public static String g()
   {
-    if (bcxm.a().a() == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putLong("lastTime", paramLong);
-    localEditor.commit();
+    return "";
   }
   
-  public static void a(String paramString)
+  public static String h()
   {
-    if (bcxm.a().a() == null) {
-      return;
+    try
+    {
+      Context localContext = bcyb.a().a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("imei=").append(c()).append('&');
+      localStringBuilder.append("model=").append(Build.MODEL).append('&');
+      localStringBuilder.append("os=").append(Build.VERSION.RELEASE).append('&');
+      localStringBuilder.append("apilevel=").append(Build.VERSION.SDK_INT).append('&');
+      String str = bdid.b(localContext);
+      Object localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localStringBuilder.append("network=").append((String)localObject).append('&');
+      localObject = localStringBuilder.append("sdcard=");
+      if (Environment.getExternalStorageState().equals("mounted")) {}
+      for (int i = 1;; i = 0)
+      {
+        ((StringBuilder)localObject).append(i).append('&');
+        localStringBuilder.append("display=").append(e()).append('&');
+        localStringBuilder.append("manu=").append(Build.MANUFACTURER).append("&");
+        localStringBuilder.append("wifi=").append(bdid.e(localContext));
+        localObject = localStringBuilder.toString();
+        return localObject;
+      }
+      return null;
     }
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putString("uin", paramString);
-    localEditor.commit();
+    catch (Exception localException) {}
   }
   
-  public static int b()
+  public static String i()
   {
-    int j = bdjb.a(bcxm.a().a(), null).a("Common_HttpRetryCount");
-    int i = j;
-    if (j == 0) {
-      i = 2;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("qua", bcyb.a().f());
+      localJSONObject.put("longitude", f());
+      localJSONObject.put("platform", bcyb.a().g());
+      localJSONObject.put("uin", bcyb.a().a());
+      localJSONObject.put("imei", c());
+      localJSONObject.put("imei", c());
+      localJSONObject.put("resolution", e());
+      localJSONObject.put("network", bdid.a(bcyb.a().a()));
+      localJSONObject.put("wifimac", a());
+      localJSONObject.put("mobile_pf", "1");
+      localJSONObject.put("os_ver", Build.VERSION.RELEASE);
+      localJSONObject.put("lang", b());
+      localJSONObject.put("device", Build.DEVICE);
+      localJSONObject.put("model_name", Build.MODEL);
+      localJSONObject.put("sdk_ver", "1.5");
+      localJSONObject.put("timezone", TimeZone.getDefault().getID());
+      localJSONObject.put("city", g());
+      localJSONObject.put("longitude", f());
+      localJSONObject.put("ret_code", "0");
+      localJSONObject.put("qua", bcyb.a().f());
+      localJSONObject.put("qz_ver", bcyb.a().c());
+      localJSONObject.put("imsi", d());
+      localJSONObject.put("androidID", Settings.Secure.getString(bcyb.a().a().getContentResolver(), "android_id"));
+      localJSONObject.put("os_api_level", Build.VERSION.SDK_INT);
+      localJSONObject.put("sdkVersionCode", 1);
+      localJSONObject.put("QVersionCode", bcyb.a().a());
+      localJSONObject.put("brand", GlobalUtil.getInstance().getBrand());
+      localJSONObject.put("manufacture", GlobalUtil.getInstance().getManufacture());
+      localJSONObject.put("product", GlobalUtil.getInstance().getProduct());
+      return localJSONObject.toString();
     }
-    return i;
-  }
-  
-  public static long b()
-  {
-    long l2 = bdjb.a(bcxm.a().a(), null).a("Common_BusinessReportTimeinterval");
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = 3600L;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        bdii.e("getMobileInfo", "gather mobile info exception.");
+      }
     }
-    return l1;
   }
 }
 

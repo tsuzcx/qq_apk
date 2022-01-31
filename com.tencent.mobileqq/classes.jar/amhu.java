@@ -1,39 +1,37 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import cooperation.qqreader.QRBridgeActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class amhu
-  implements amhn
+  implements amhm
 {
-  private Bundle a;
-  
-  public amhu() {}
-  
-  public amhu(Bundle paramBundle)
-  {
-    this.a = paramBundle;
-  }
+  private String a = "SubscribeColorNoteLauncher";
   
   public void a(Context paramContext, ColorNote paramColorNote)
   {
-    Intent localIntent = new Intent(paramContext, QRBridgeActivity.class);
-    localIntent.putExtra("readtype", "16");
-    localIntent.putExtra("stay", "1");
-    if (this.a != null) {
-      localIntent.putExtras(this.a);
-    }
-    paramColorNote = paramColorNote.getSubType().split("_");
-    if (paramColorNote.length > 1)
+    try
     {
-      localIntent.putExtra("nbid", paramColorNote[0]);
-      if (paramColorNote[0].startsWith("-")) {
-        localIntent.putExtra("isLocal", true);
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
+      }
+      paramColorNote = (SubscribeColorNoteReserveBean)wst.a(paramColorNote);
+      if (paramColorNote != null)
+      {
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        wis.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
       }
     }
-    localIntent.addFlags(268435456);
-    paramContext.startActivity(localIntent);
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 

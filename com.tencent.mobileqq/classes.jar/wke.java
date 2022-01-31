@@ -1,18 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import android.os.Handler;
 
 public class wke
-  extends AnimatorListenerAdapter
-{
-  public wke(TopPanelViewNew paramTopPanelViewNew) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.clearAnimation();
-    this.a.setVisibility(8);
-  }
-}
+  extends Handler
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

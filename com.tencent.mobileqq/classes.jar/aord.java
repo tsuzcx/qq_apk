@@ -1,31 +1,36 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aord
-  implements aorj
+  implements View.OnClickListener
 {
-  public aord(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public aord(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public View.OnClickListener a(TextView paramTextView)
+  public void onClick(View paramView)
   {
-    this.a.a = paramTextView;
-    return new aore(this);
-  }
-  
-  public boolean a()
-  {
-    return this.a.c;
-  }
-  
-  public boolean b()
-  {
-    return this.a.b;
-  }
-  
-  public boolean c()
-  {
-    return QfileCloudFileTabView.a(this.a);
+    if (paramView == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseCloudFileTabView.b, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+      return;
+    }
+    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
+    if (localWeiYunFileInfo != null)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(null);
+      }
+      QfileBaseCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo);
+    }
+    this.a.a.a(Integer.valueOf(-1));
+    paramView.setVisibility(4);
+    this.a.setListFooter();
+    this.a.au_();
   }
 }
 

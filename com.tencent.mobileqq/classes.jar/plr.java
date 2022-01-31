@@ -1,37 +1,25 @@
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.2;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
-public class plr
-  extends osp
+class plr
+  implements pbx
 {
-  plr(plp paramplp) {}
+  plr(plm paramplm, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    paramArticleInfo = new ReadInJoySocializeRecommendFollowView.10.2(this, paramArticleInfo, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      ThreadManager.getUIHandler().post(paramArticleInfo);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      plm.a(this.jdField_a_of_type_Plm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      plm.a(this.jdField_a_of_type_Plm).notifyDataSetChanged();
       return;
     }
-    paramArticleInfo.run();
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    ReadInJoySocializeRecommendFollowView.10.1 local1 = new ReadInJoySocializeRecommendFollowView.10.1(this, paramLong, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      ThreadManager.getUIHandler().post(local1);
-      return;
-    }
-    local1.run();
+    bcql.a(plm.c(this.jdField_a_of_type_Plm).getContext(), 1, 2131718513, 0).a();
   }
 }
 

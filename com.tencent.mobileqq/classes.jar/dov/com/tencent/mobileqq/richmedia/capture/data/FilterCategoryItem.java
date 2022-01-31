@@ -3,15 +3,15 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bkue;
-import bkul;
+import bkuv;
+import bkvc;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bkul();
+  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bkvc();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -85,7 +85,7 @@ public class FilterCategoryItem
   public FilterDesc a()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      return bkue.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      return bkuv.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     }
     return null;
   }

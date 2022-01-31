@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import abtu;
-import ajae;
-import ajyc;
+import abtq;
+import ajac;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
-import bcpw;
+import bcql;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
@@ -55,18 +55,18 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
+import ysn;
+import ysp;
 import ysq;
-import yss;
 import yst;
-import ysw;
-import yte;
-import ytf;
-import yuv;
-import yuw;
-import yvi;
-import yxr;
-import yxs;
-import yxy;
+import ytb;
+import ytc;
+import yus;
+import yut;
+import yvf;
+import yxo;
+import yxp;
+import yxv;
 
 public class GdtDemoMvFragment
   extends PublicBaseFragment
@@ -120,7 +120,7 @@ public class GdtDemoMvFragment
     if ((paramGdtAd == null) || (!paramGdtAd.isLoaded()) || (paramGdtAd.isInvalidated()) || (!(paramGdtAd instanceof GdtMotiveVideoAd)))
     {
       QLog.i("GdtMotiveVideoAd", 1, String.format("mockMVPageData null %d", new Object[] { Integer.valueOf(paramInt1) }) + paramInt2);
-      bcpw.a(getActivity(), ajyc.a(2131705166), 0).a();
+      bcql.a(getActivity(), ajya.a(2131705177), 0).a();
       return null;
     }
     Object localObject2 = (GdtMotiveVideoAd)paramGdtAd;
@@ -137,7 +137,7 @@ public class GdtDemoMvFragment
       localGdtMotiveVideoPageData.adId = localGdtAd.getAdvertiserId();
       localGdtMotiveVideoPageData.vid = localGdtAd.getTencent_video_id();
       localGdtMotiveVideoPageData.url = localGdtAd.getVideoUrl();
-      yxs.d("GdtMotiveVideoAd", "VideoUrl " + localGdtMotiveVideoPageData.url);
+      yxp.d("GdtMotiveVideoAd", "VideoUrl " + localGdtMotiveVideoPageData.url);
       if ((!TextUtils.isEmpty(localGdtMotiveVideoPageData.url)) && (localGdtMotiveVideoPageData.url.startsWith("https://"))) {
         localGdtMotiveVideoPageData.url = localGdtMotiveVideoPageData.url.replaceFirst("https://", "http://");
       }
@@ -157,11 +157,11 @@ public class GdtDemoMvFragment
         if (localObject2 != null)
         {
           paramGdtAd = localObject1;
-          if (((ysq)localObject2).a() != null)
+          if (((ysn)localObject2).a() != null)
           {
             paramGdtAd = localObject1;
-            if (((ysq)localObject2).a().a != null) {
-              paramGdtAd = yxr.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)((ysq)localObject2).a().a.pos_ads_info.get(0)).ads_info.get(0));
+            if (((ysn)localObject2).a().a != null) {
+              paramGdtAd = yxo.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)((ysn)localObject2).a().a.pos_ads_info.get(0)).ads_info.get(0));
             }
           }
         }
@@ -186,7 +186,7 @@ public class GdtDemoMvFragment
   {
     Object localObject1 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo();
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_rate.set(paramInt2);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_check.set(yst.a(paramLong2, paramLong3, paramInt2));
+    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_check.set(ysq.a(paramLong2, paramLong3, paramInt2));
     Object localObject2 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt();
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).share_info.set((MessageMicro)localObject1);
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).deep_link_version.set(1);
@@ -213,7 +213,7 @@ public class GdtDemoMvFragment
     if (localObject1 != null) {
       try
       {
-        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(((GdtMotiveVideoPageData)localObject1).adsContent)));
+        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(((GdtMotiveVideoPageData)localObject1).adsContent)));
         Object localObject2 = this.jdField_a_of_type_ComTencentGdtadApiGdtAd.getAd();
         if ((localObject2 != null) && (localObject1 != null))
         {
@@ -262,7 +262,7 @@ public class GdtDemoMvFragment
       localArrayList.add(this.jdField_a_of_type_ComTencentGdtadApiGdtAd.getAd());
       i += 1;
     }
-    yte.a(getActivity()).a(new GdtAdBoxData(localArrayList)).a(new yuv(this)).a().a();
+    ytb.a(getActivity()).a(new GdtAdBoxData(localArrayList)).a(new yus(this)).a().a();
   }
   
   public void a()
@@ -272,11 +272,11 @@ public class GdtDemoMvFragment
     }
     try
     {
-      Object localObject = new yvi();
-      ((yvi)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(ajae.a().getCurrentAccountUin()), "3050948280108638", 3503183690L, 2011L, 208, 75);
-      ((yvi)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, getActivity());
-      localObject = new GdtMotiveVideoAd((yvi)localObject);
-      ((GdtMotiveVideoAd)localObject).setListener(new WeakReference(new yuw(this, getActivity())));
+      Object localObject = new yvf();
+      ((yvf)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(ajac.a().getCurrentAccountUin()), "3050948280108638", 3503183690L, 2011L, 208, 75);
+      ((yvf)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, getActivity());
+      localObject = new GdtMotiveVideoAd((yvf)localObject);
+      ((GdtMotiveVideoAd)localObject).setListener(new WeakReference(new yut(this, getActivity())));
       ((GdtMotiveVideoAd)localObject).load(getActivity());
       return;
     }
@@ -313,7 +313,7 @@ public class GdtDemoMvFragment
       Bundle localBundle = paramIntent.getExtras();
       if (localBundle == null)
       {
-        yxs.d("GdtMotiveVideoAd", "onActivityResult b==null ");
+        yxp.d("GdtMotiveVideoAd", "onActivityResult b==null ");
         return;
       }
       long l1 = localBundle.getLong("duration_time");
@@ -347,8 +347,8 @@ public class GdtDemoMvFragment
               {
               default: 
                 return;
-              case 2131361967: 
-                yxy.a(1, 1, a());
+              case 2131361966: 
+                yxv.a(1, 1, a());
                 return;
               }
             }
@@ -414,9 +414,9 @@ public class GdtDemoMvFragment
                         a(paramView, i, -1);
                         GdtMotiveVideoFragment.a(getActivity(), GdtMotiveVideoFragment.class, paramView);
                         return;
-                        yxy.a(0, 0, a());
+                        yxv.a(0, 0, a());
                         return;
-                        yxy.a(2, 1, a());
+                        yxv.a(2, 1, a());
                         return;
                         try
                         {
@@ -460,27 +460,27 @@ public class GdtDemoMvFragment
     localGdtImaxData.setVideoData(localGdtVideoData);
     localGdtImaxData.setWebUrl(paramView.getUrlForLandingPage());
     localIntent.putExtra("data", localGdtImaxData);
-    abtu.a(getActivity(), localIntent, PublicFragmentActivityForQzone.class, GdtMotiveVideoMockQzoneImaxFeedsFragment.class, 1);
+    abtq.a(getActivity(), localIntent, PublicFragmentActivityForQzone.class, GdtMotiveVideoMockQzoneImaxFeedsFragment.class, 1);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(2131559107, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131363453).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131363623).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131377030).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131377031).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131363452).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131363622).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131377032).setOnClickListener(this);
     paramLayoutInflater.findViewById(2131377033).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131377034).setOnClickListener(this);
     paramLayoutInflater.findViewById(2131377035).setOnClickListener(this);
     paramLayoutInflater.findViewById(2131377036).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131377078).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131377056).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131361967).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131362036).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131379378).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131361988).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131365745));
+    paramLayoutInflater.findViewById(2131377037).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131377038).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131377080).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131377058).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131361966).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131362035).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131379383).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131361987).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramLayoutInflater.findViewById(2131365744));
     return paramLayoutInflater;
   }
   

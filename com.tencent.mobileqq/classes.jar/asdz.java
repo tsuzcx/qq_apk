@@ -1,12 +1,6 @@
-class asdz
-  implements asdm
+public abstract interface asdz
 {
-  asdz(asdy paramasdy, asdh paramasdh) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Asdh.h();
-  }
+  public abstract void a();
 }
 
 

@@ -1,17 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 
 class aqpx
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  aqpx(aqpr paramaqpr) {}
+  aqpx(aqpt paramaqpt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.o();
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

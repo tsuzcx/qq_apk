@@ -1,8 +1,17 @@
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
 
 public class afkf
+  implements View.OnClickListener
 {
-  public TextView a;
+  public afkf(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

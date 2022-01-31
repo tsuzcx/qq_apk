@@ -1,87 +1,32 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import eipc.EIPCResult;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import mqq.app.AppRuntime;
 
-public class ayme
-  extends QIPCModule
+class ayme
+  extends Handler
 {
-  private static ayme jdField_a_of_type_Ayme;
-  private static String jdField_a_of_type_JavaLangString = "setup";
-  
-  private ayme(String paramString)
+  ayme(aymc paramaymc, Looper paramLooper)
   {
-    super(paramString);
+    super(paramLooper);
   }
   
-  public static ayme a()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Ayme == null) {
-        jdField_a_of_type_Ayme = new ayme("ThemeIPCModule");
-      }
-      ayme localayme = jdField_a_of_type_Ayme;
-      return localayme;
     }
-    finally {}
-  }
-  
-  public static void a(String paramString, asko<aymh> paramasko)
-  {
-    if ((TextUtils.isEmpty(paramString)) || ("1000".equals(paramString)))
+    do
     {
-      paramasko.postQuery(null);
-      return;
-    }
-    if ("999".equals(paramString))
-    {
-      paramasko.postQuery(new aymh().a());
-      return;
-    }
-    QuickUpdateIPCModule.a(3, ThemeUtil.getThemeConfigID(paramString), true, new aymg(paramString, paramasko));
-  }
-  
-  public static void a(String paramString, aylo paramaylo)
-  {
-    Bundle localBundle = new Bundle();
-    if (paramaylo != null) {
-      localBundle.putParcelable("binder", new BinderWarpper(paramaylo.asBinder()));
-    }
-    localBundle.putString("themeId", paramString);
-    QIPCClientHelper.getInstance().callServer("ThemeIPCModule", jdField_a_of_type_JavaLangString, localBundle, null);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeIPCModule", 2, "onCall action = " + paramString);
-    }
-    paramBundle.setClassLoader(BinderWarpper.class.getClassLoader());
-    String str = paramBundle.getString("themeId");
-    if (paramBundle.containsKey("binder")) {}
-    for (paramBundle = ((BinderWarpper)paramBundle.getParcelable("binder")).a;; paramBundle = null)
-    {
-      if (jdField_a_of_type_JavaLangString.equals(paramString)) {
-        if (paramBundle == null) {
-          break label135;
-        }
-      }
-      label135:
-      for (paramString = new aymf(this, aylp.asInterface(paramBundle));; paramString = null)
+      do
       {
-        ThemeSwitcher.a(str, "200", paramString);
-        return null;
-        QLog.e("ThemeIPCModule", 1, "onCall missing action = " + paramString);
-        return null;
-      }
-    }
+        return;
+      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Bundle)));
+      this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return;
+    } while (this.a.a == null);
+    bcql.a(this.a.a.getApplication(), ajya.a(2131707603), 4000).a();
   }
 }
 

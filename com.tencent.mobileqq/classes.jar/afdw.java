@@ -1,34 +1,50 @@
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
-import mqq.app.QQPermissionCallback;
 
-class afdw
-  implements QQPermissionCallback
+public class afdw
+  implements afdm
 {
-  afdw(afdv paramafdv) {}
+  public afdw(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
+    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
+      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
     }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    if (akug.a("recommend_troop") == null)
+    if (paramBoolean)
     {
-      akug.a(new afdx(this, "recommend_troop"));
-      return;
+      if (paramInt <= 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
     }
-    this.a.a.jdField_a_of_type_Afdm.a(false);
+    label73:
+    Object localObject;
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
+      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689703);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689709);
+      this.a.c.setText(2131689704);
+      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.c.setOnClickListener(new afdx(this));
+      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
+    ((ViewGroup)localObject).setBackgroundResource(2130839132);
   }
 }
 

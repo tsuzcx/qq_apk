@@ -1,16 +1,23 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+
 class aqwq
-  extends akav
+  implements DialogInterface.OnClickListener
 {
-  aqwq(aqwn paramaqwn) {}
+  aqwq(aqwp paramaqwp, BaseChatPie paramBaseChatPie, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akas paramakas)
-  {
-    this.a.a(paramLong);
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localBaseActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

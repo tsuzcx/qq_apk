@@ -12,16 +12,16 @@ import android.os.Trace;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.Surface;
-import avxn;
-import avxq;
-import avxt;
-import avxu;
+import avxp;
+import avxs;
 import avxv;
 import avxw;
-import avye;
-import avyj;
-import avyq;
-import axps;
+import avxx;
+import avxy;
+import avyg;
+import avyl;
+import avys;
+import axpu;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -31,8 +31,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import org.json.JSONArray;
-import veg;
-import vel;
+import ved;
+import vei;
 
 @TargetApi(18)
 public class VideoFlowDecodeTask
@@ -42,19 +42,19 @@ public class VideoFlowDecodeTask
   private final long jdField_a_of_type_Long;
   private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
   private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private avxn jdField_a_of_type_Avxn;
-  private final avxt jdField_a_of_type_Avxt;
-  private avxu jdField_a_of_type_Avxu;
-  private avye jdField_a_of_type_Avye;
+  private avxp jdField_a_of_type_Avxp;
+  private final avxv jdField_a_of_type_Avxv;
+  private avxw jdField_a_of_type_Avxw;
+  private avyg jdField_a_of_type_Avyg;
   public final Object a;
   private final String jdField_a_of_type_JavaLangString;
-  private List<avyq> jdField_a_of_type_JavaUtilList;
+  private List<avys> jdField_a_of_type_JavaUtilList;
   private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(-1L);
   public volatile boolean a;
   private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
   int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private final avxt jdField_b_of_type_Avxt;
+  private final avxv jdField_b_of_type_Avxv;
   private boolean jdField_b_of_type_Boolean;
   private ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
   private int jdField_c_of_type_Int;
@@ -63,43 +63,43 @@ public class VideoFlowDecodeTask
   private boolean jdField_d_of_type_Boolean;
   private int e = 1;
   
-  public VideoFlowDecodeTask(String paramString, avxn paramavxn, avxu paramavxu)
+  public VideoFlowDecodeTask(String paramString, avxp paramavxp, avxw paramavxw)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Avxn = paramavxn;
+    this.jdField_a_of_type_Avxp = paramavxp;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = avyj.a(paramString);
-    this.jdField_a_of_type_Avxu = paramavxu;
-    this.jdField_a_of_type_Avxt = new avxt(paramString, 0, true, false, 0L, this.jdField_a_of_type_Long);
-    this.jdField_b_of_type_Avxt = new avxt(paramString, 0, true, false, 0L, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Long = avyl.a(paramString);
+    this.jdField_a_of_type_Avxw = paramavxw;
+    this.jdField_a_of_type_Avxv = new avxv(paramString, 0, true, false, 0L, this.jdField_a_of_type_Long);
+    this.jdField_b_of_type_Avxv = new avxv(paramString, 0, true, false, 0L, this.jdField_a_of_type_Long);
   }
   
-  private avyq a(long paramLong, List<avyq> paramList)
+  private avys a(long paramLong, List<avys> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      avyq localavyq = (avyq)paramList.next();
-      if ((paramLong >= localavyq.jdField_a_of_type_Long) && (paramLong < localavyq.jdField_b_of_type_Long)) {
-        return localavyq;
+      avys localavys = (avys)paramList.next();
+      if ((paramLong >= localavys.jdField_a_of_type_Long) && (paramLong < localavys.jdField_b_of_type_Long)) {
+        return localavys;
       }
     }
     return null;
   }
   
-  private static List<avyq> a(String paramString)
+  private static List<avys> a(String paramString)
   {
-    paramString = avyj.a(paramString);
+    paramString = avyl.a(paramString);
     if ((paramString == null) || (paramString.size() < 2)) {
       return null;
     }
-    veg.c("FlowEdit_VideoFlowDecodeTask", "iFrameTimeStampList = " + new JSONArray(paramString));
+    ved.c("FlowEdit_VideoFlowDecodeTask", "iFrameTimeStampList = " + new JSONArray(paramString));
     ArrayList localArrayList = new ArrayList(paramString.size() - 2);
     int i = 0;
     while (i < paramString.size() - 1)
     {
-      localArrayList.add(new avyq(i, ((Long)paramString.get(i)).longValue(), ((Long)paramString.get(i + 1)).longValue()));
+      localArrayList.add(new avys(i, ((Long)paramString.get(i)).longValue(), ((Long)paramString.get(i + 1)).longValue()));
       i += 1;
     }
     return localArrayList;
@@ -110,21 +110,21 @@ public class VideoFlowDecodeTask
     int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
     if (i < 0)
     {
-      veg.d("FlowEdit_VideoFlowDecodeTask", "queueSamplesToCodec. inIndex = " + i);
+      ved.d("FlowEdit_VideoFlowDecodeTask", "queueSamplesToCodec. inIndex = " + i);
       return;
     }
-    avyq localavyq = (avyq)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int);
+    avys localavys = (avys)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int);
     ByteBuffer localByteBuffer = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
     localByteBuffer.clear();
     int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
     long l = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    if ((j < 0) || (l >= localavyq.jdField_b_of_type_Long))
+    if ((j < 0) || (l >= localavys.jdField_b_of_type_Long))
     {
       this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
       this.jdField_b_of_type_Boolean = true;
       return;
     }
-    avyq.a(localavyq);
+    avys.a(localavys);
     this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, l, 0);
     this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
   }
@@ -134,7 +134,7 @@ public class VideoFlowDecodeTask
     this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
     this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 2);
     paramLong = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    this.jdField_a_of_type_Avxn.b(paramLong / 1000L);
+    this.jdField_a_of_type_Avxp.b(paramLong / 1000L);
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
   }
@@ -147,50 +147,50 @@ public class VideoFlowDecodeTask
     for (;;)
     {
       this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(paramInt, paramBoolean);
-      avyq localavyq = a(paramBufferInfo.presentationTimeUs, this.jdField_a_of_type_JavaUtilList);
-      if ((paramBoolean) && (localavyq != null))
+      avys localavys = a(paramBufferInfo.presentationTimeUs, this.jdField_a_of_type_JavaUtilList);
+      if ((paramBoolean) && (localavys != null))
       {
-        avxq localavxq = avxq.a();
+        avxs localavxs = avxs.a();
         label71:
         float f;
-        if (localavxq != null)
+        if (localavxs != null)
         {
-          if (avyq.c(localavyq) % this.e != 1) {
+          if (avys.c(localavys) % this.e != 1) {
             break label260;
           }
           paramInt = 1;
-          if ((!this.jdField_b_of_type_Avxt.jdField_a_of_type_Boolean) && (paramInt != 0)) {
+          if ((!this.jdField_b_of_type_Avxv.jdField_a_of_type_Boolean) && (paramInt != 0)) {
             break label284;
           }
-          avyq.a(localavyq).add(localavxq);
+          avys.a(localavys).add(localavxs);
           Trace.beginSection("AVEditor:doRender");
           SystemClock.uptimeMillis();
-          this.jdField_a_of_type_Avye.b();
+          this.jdField_a_of_type_Avyg.b();
           SystemClock.uptimeMillis();
-          this.jdField_a_of_type_Avye.a(localavxq, false);
+          this.jdField_a_of_type_Avyg.a(localavxs, false);
           Trace.endSection();
-          if (this.jdField_b_of_type_Avxt.jdField_a_of_type_Int != 3) {
+          if (this.jdField_b_of_type_Avxv.jdField_a_of_type_Int != 3) {
             break label265;
           }
-          localavxq.a(this.jdField_d_of_type_Int, -paramBufferInfo.presentationTimeUs, SystemClock.uptimeMillis());
+          localavxs.a(this.jdField_d_of_type_Int, -paramBufferInfo.presentationTimeUs, SystemClock.uptimeMillis());
           label163:
-          if (avyq.a(localavyq).size() % 7 == 6)
+          if (avys.a(localavys).size() % 7 == 6)
           {
             f = 1.0F;
-            if (this.jdField_b_of_type_Avxt.jdField_a_of_type_Int != 1) {
+            if (this.jdField_b_of_type_Avxv.jdField_a_of_type_Int != 1) {
               break label305;
             }
             f = 2.0F;
             label198:
-            this.e = localavyq.a(f);
-            veg.a("FlowEdit_VideoFlowDecodeTask", "update dropFrameRate = %d", Integer.valueOf(this.e));
+            this.e = localavys.a(f);
+            ved.a("FlowEdit_VideoFlowDecodeTask", "update dropFrameRate = %d", Integer.valueOf(this.e));
           }
-          if (this.jdField_a_of_type_Avxn == null) {}
+          if (this.jdField_a_of_type_Avxp == null) {}
         }
         try
         {
-          this.jdField_a_of_type_Avxn.a(paramBufferInfo.presentationTimeUs * 1000L);
-          avyq.d(localavyq);
+          this.jdField_a_of_type_Avxp.a(paramBufferInfo.presentationTimeUs * 1000L);
+          avys.d(localavys);
           return;
           paramBoolean = false;
           continue;
@@ -198,15 +198,15 @@ public class VideoFlowDecodeTask
           paramInt = 0;
           break label71;
           label265:
-          localavxq.a(this.jdField_d_of_type_Int, paramBufferInfo.presentationTimeUs, SystemClock.uptimeMillis());
+          localavxs.a(this.jdField_d_of_type_Int, paramBufferInfo.presentationTimeUs, SystemClock.uptimeMillis());
           break label163;
           label284:
           SystemClock.uptimeMillis();
-          this.jdField_a_of_type_Avye.b();
-          localavxq.b();
+          this.jdField_a_of_type_Avyg.b();
+          localavxs.b();
           break label163;
           label305:
-          if (this.jdField_b_of_type_Avxt.jdField_a_of_type_Int != 2) {
+          if (this.jdField_b_of_type_Avxv.jdField_a_of_type_Int != 2) {
             break label198;
           }
           f = 0.5F;
@@ -215,28 +215,28 @@ public class VideoFlowDecodeTask
         {
           for (;;)
           {
-            veg.c("FlowEdit_VideoFlowDecodeTask", "doRender.", paramBufferInfo);
+            ved.c("FlowEdit_VideoFlowDecodeTask", "doRender.", paramBufferInfo);
             this.jdField_d_of_type_Boolean = true;
           }
         }
       }
     }
-    veg.e("FlowEdit_VideoFlowDecodeTask", "doRender. doRender is false");
+    ved.e("FlowEdit_VideoFlowDecodeTask", "doRender. doRender is false");
   }
   
   private void b()
   {
-    avyq localavyq = (avyq)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int);
-    int k = avyq.a(localavyq).size();
+    avys localavys = (avys)this.jdField_a_of_type_JavaUtilList.get(this.jdField_c_of_type_Int);
+    int k = avys.a(localavys).size();
     int i;
     int j;
     if ((this.jdField_c_of_type_Boolean) && (k > 0))
     {
       i = 1;
-      if ((this.jdField_b_of_type_Avxt.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Avxt.jdField_a_of_type_Int != 2))
+      if ((this.jdField_b_of_type_Avxv.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Avxv.jdField_a_of_type_Int != 2))
       {
         j = i;
-        if (this.jdField_b_of_type_Avxt.jdField_a_of_type_Int != 1) {}
+        if (this.jdField_b_of_type_Avxv.jdField_a_of_type_Int != 1) {}
       }
       else
       {
@@ -252,16 +252,16 @@ public class VideoFlowDecodeTask
       label88:
       if (j != 0)
       {
-        if ((this.jdField_c_of_type_Boolean) && (avyq.b(localavyq) != 0)) {
-          veg.d("FlowEdit_VideoFlowDecodeTask", "sendDecodedFrameSetIfNeeded. output done but decoding frame count (%d) is not 0", new Object[] { Integer.valueOf(avyq.b(localavyq)) });
+        if ((this.jdField_c_of_type_Boolean) && (avys.b(localavys) != 0)) {
+          ved.d("FlowEdit_VideoFlowDecodeTask", "sendDecodedFrameSetIfNeeded. output done but decoding frame count (%d) is not 0", new Object[] { Integer.valueOf(avys.b(localavys)) });
         }
-        veg.c("FlowEdit_VideoFlowDecodeTask", "sendDecodedFrameSetIfNeeded. render segment " + this.jdField_c_of_type_Int + ", frame count = " + avyq.a(localavyq).size() + " to next");
-        this.jdField_a_of_type_Avxu.a(Collections.unmodifiableList(avyq.a(localavyq)));
-        avyq.a(localavyq).clear();
+        ved.c("FlowEdit_VideoFlowDecodeTask", "sendDecodedFrameSetIfNeeded. render segment " + this.jdField_c_of_type_Int + ", frame count = " + avys.a(localavys).size() + " to next");
+        this.jdField_a_of_type_Avxw.a(Collections.unmodifiableList(avys.a(localavys)));
+        avys.a(localavys).clear();
         long l1 = SystemClock.uptimeMillis();
         for (;;)
         {
-          if (this.jdField_a_of_type_Avxu.a() >= 50)
+          if (this.jdField_a_of_type_Avxw.a() >= 50)
           {
             try
             {
@@ -269,7 +269,7 @@ public class VideoFlowDecodeTask
             }
             catch (InterruptedException localInterruptedException)
             {
-              veg.d("FlowEdit_VideoFlowDecodeTask", localInterruptedException, "sleep interrupt", new Object[0]);
+              ved.d("FlowEdit_VideoFlowDecodeTask", localInterruptedException, "sleep interrupt", new Object[0]);
               this.jdField_d_of_type_Boolean = true;
             }
             continue;
@@ -289,11 +289,11 @@ public class VideoFlowDecodeTask
   {
     if (this.jdField_a_of_type_AndroidMediaMediaCodec == null)
     {
-      veg.e("FlowEdit_VideoFlowDecodeTask", "Can't find video info!");
+      ved.e("FlowEdit_VideoFlowDecodeTask", "Can't find video info!");
       return false;
     }
-    if (this.jdField_a_of_type_Avxn != null) {
-      this.jdField_a_of_type_Avxn.f();
+    if (this.jdField_a_of_type_Avxp != null) {
+      this.jdField_a_of_type_Avxp.f();
     }
     try
     {
@@ -306,14 +306,14 @@ public class VideoFlowDecodeTask
     {
       if (Thread.interrupted())
       {
-        veg.c("FlowEdit_VideoFlowDecodeTask", "Thread is interrupted.", localThrowable);
+        ved.c("FlowEdit_VideoFlowDecodeTask", "Thread is interrupted.", localThrowable);
         return false;
       }
       RuntimeException localRuntimeException = new RuntimeException(localThrowable);
-      if (this.jdField_a_of_type_Avxn != null)
+      if (this.jdField_a_of_type_Avxp != null)
       {
-        this.jdField_a_of_type_Avxn.a(2, localRuntimeException);
-        veg.c("FlowEdit_VideoFlowDecodeTask", "decode start error", localThrowable);
+        this.jdField_a_of_type_Avxp.a(2, localRuntimeException);
+        ved.c("FlowEdit_VideoFlowDecodeTask", "decode start error", localThrowable);
         return false;
       }
       throw localRuntimeException;
@@ -345,7 +345,7 @@ public class VideoFlowDecodeTask
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Avxt.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Avxv.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -368,41 +368,41 @@ public class VideoFlowDecodeTask
       if (paramLong2 == 0L) {
         l = this.jdField_a_of_type_Long;
       }
-      this.jdField_a_of_type_Avxt.jdField_a_of_type_Long = paramLong1;
-      this.jdField_a_of_type_Avxt.jdField_b_of_type_Long = l;
+      this.jdField_a_of_type_Avxv.jdField_a_of_type_Long = paramLong1;
+      this.jdField_a_of_type_Avxv.jdField_b_of_type_Long = l;
       return;
     }
   }
   
-  public void a(@NonNull avxt paramavxt)
+  public void a(@NonNull avxv paramavxv)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramavxt.jdField_a_of_type_JavaLangString)) {
-      veg.e("FlowEdit_VideoFlowDecodeTask", "DecodeRunnable does not support changing the file");
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramavxv.jdField_a_of_type_JavaLangString)) {
+      ved.e("FlowEdit_VideoFlowDecodeTask", "DecodeRunnable does not support changing the file");
     }
-    this.jdField_a_of_type_Avxt.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramavxt.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-    this.jdField_a_of_type_Avxt.jdField_a_of_type_AndroidOpenglEGLContext = paramavxt.jdField_a_of_type_AndroidOpenglEGLContext;
-    this.jdField_a_of_type_Avxt.jdField_c_of_type_Int = paramavxt.jdField_c_of_type_Int;
-    a(paramavxt.jdField_c_of_type_Boolean);
-    a(paramavxt.jdField_a_of_type_Int);
-    a(paramavxt.jdField_a_of_type_Long, paramavxt.jdField_b_of_type_Long);
-    c(paramavxt.jdField_b_of_type_Boolean);
-    b(paramavxt.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Avxv.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramavxv.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+    this.jdField_a_of_type_Avxv.jdField_a_of_type_AndroidOpenglEGLContext = paramavxv.jdField_a_of_type_AndroidOpenglEGLContext;
+    this.jdField_a_of_type_Avxv.jdField_c_of_type_Int = paramavxv.jdField_c_of_type_Int;
+    a(paramavxv.jdField_c_of_type_Boolean);
+    a(paramavxv.jdField_a_of_type_Int);
+    a(paramavxv.jdField_a_of_type_Long, paramavxv.jdField_b_of_type_Long);
+    c(paramavxv.jdField_b_of_type_Boolean);
+    b(paramavxv.jdField_a_of_type_Boolean);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Avxt.jdField_c_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Avxv.jdField_c_of_type_Boolean = paramBoolean;
   }
   
   protected boolean a()
   {
-    this.jdField_a_of_type_JavaUtilList = a(this.jdField_b_of_type_Avxt.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaUtilList = a(this.jdField_b_of_type_Avxv.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      veg.e("FlowEdit_VideoFlowDecodeTask", "this video can not be played, check video");
-      vel.b("video_edit", "split_video_fail", 0, 0, new String[] { Build.MANUFACTURER, Build.MODEL, String.valueOf(Build.VERSION.SDK_INT) });
-      if (this.jdField_a_of_type_Avxn != null) {
-        this.jdField_a_of_type_Avxn.a(1, new IllegalStateException("this video can not be played reservedly, check video"));
+      ved.e("FlowEdit_VideoFlowDecodeTask", "this video can not be played, check video");
+      vei.b("video_edit", "split_video_fail", 0, 0, new String[] { Build.MANUFACTURER, Build.MODEL, String.valueOf(Build.VERSION.SDK_INT) });
+      if (this.jdField_a_of_type_Avxp != null) {
+        this.jdField_a_of_type_Avxp.a(1, new IllegalStateException("this video can not be played reservedly, check video"));
       }
       return false;
     }
@@ -410,15 +410,15 @@ public class VideoFlowDecodeTask
     {
       try
       {
-        i = avyj.a(this.jdField_a_of_type_JavaLangString);
+        i = avyl.a(this.jdField_a_of_type_JavaLangString);
         Object localObject1;
-        veg.c("FlowEdit_VideoFlowDecodeTask", "initDecoder failed", localException1);
+        ved.c("FlowEdit_VideoFlowDecodeTask", "initDecoder failed", localException1);
       }
       catch (Exception localException1)
       {
         try
         {
-          j = avyj.b(this.jdField_a_of_type_JavaLangString);
+          j = avyl.b(this.jdField_a_of_type_JavaLangString);
           if ((i > 0) && (j > 0)) {
             break;
           }
@@ -434,7 +434,7 @@ public class VideoFlowDecodeTask
             }
             localObject1 = "illegal file";
           }
-          vel.b("video_edit", "getVideoWH_fail", 0, 0, new String[] { Build.MANUFACTURER, Build.MODEL, localObject1 });
+          vei.b("video_edit", "getVideoWH_fail", 0, 0, new String[] { Build.MANUFACTURER, Build.MODEL, localObject1 });
           return false;
         }
         catch (Exception localException2)
@@ -456,9 +456,9 @@ public class VideoFlowDecodeTask
       label218:
       localObject2 = "file does not exist";
     }
-    if (this.jdField_b_of_type_Avxt.jdField_c_of_type_Int == 2)
+    if (this.jdField_b_of_type_Avxv.jdField_c_of_type_Int == 2)
     {
-      this.jdField_a_of_type_Avye = new avxv(this.jdField_b_of_type_Avxt.jdField_a_of_type_AndroidOpenglEGLContext, i, j);
+      this.jdField_a_of_type_Avyg = new avxx(this.jdField_b_of_type_Avxv.jdField_a_of_type_AndroidOpenglEGLContext, i, j);
       this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
     }
     for (;;)
@@ -478,13 +478,13 @@ public class VideoFlowDecodeTask
             break label600;
           }
           this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-          if (!this.jdField_b_of_type_Avxt.jdField_c_of_type_Boolean) {
+          if (!this.jdField_b_of_type_Avxv.jdField_c_of_type_Boolean) {
             ((MediaFormat)localObject2).setInteger("rotation-degrees", 0);
           }
           try
           {
             this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType((String)localObject3);
-            if (this.jdField_a_of_type_Avye.a().isValid()) {
+            if (this.jdField_a_of_type_Avyg.a().isValid()) {
               break label536;
             }
             throw new RuntimeException("surface is not valid.");
@@ -495,44 +495,44 @@ public class VideoFlowDecodeTask
               break label557;
             }
           }
-          veg.c("FlowEdit_VideoFlowDecodeTask", "Thread is interrupted.", localThrowable);
+          ved.c("FlowEdit_VideoFlowDecodeTask", "Thread is interrupted.", localThrowable);
           return false;
         }
         catch (IOException localIOException)
         {
-          veg.d("FlowEdit_VideoFlowDecodeTask", localIOException, "setDataSource failed", new Object[0]);
+          ved.d("FlowEdit_VideoFlowDecodeTask", localIOException, "setDataSource failed", new Object[0]);
         }
-        if (this.jdField_b_of_type_Avxt.jdField_c_of_type_Int == 1) {
+        if (this.jdField_b_of_type_Avxv.jdField_c_of_type_Int == 1) {
           try
           {
-            this.jdField_a_of_type_Avye = new avxw(this.jdField_b_of_type_Avxt.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext, i, j);
+            this.jdField_a_of_type_Avyg = new avxy(this.jdField_b_of_type_Avxv.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext, i, j);
           }
           catch (FlowDecodeScreenSurfaceBase.FlowDecodeException localFlowDecodeException)
           {
-            veg.d("FlowEdit_VideoFlowDecodeTask", localFlowDecodeException, "create FlowDecodeScreenSurface failed", new Object[0]);
-            if (this.jdField_a_of_type_Avxn != null) {
-              this.jdField_a_of_type_Avxn.a(2, localFlowDecodeException);
+            ved.d("FlowEdit_VideoFlowDecodeTask", localFlowDecodeException, "create FlowDecodeScreenSurface failed", new Object[0]);
+            if (this.jdField_a_of_type_Avxp != null) {
+              this.jdField_a_of_type_Avxp.a(2, localFlowDecodeException);
             }
-            axps.a(localFlowDecodeException);
+            axpu.a(localFlowDecodeException);
             return false;
           }
         }
       }
-      throw new IllegalStateException("Illegal decodeType in decodeConfig " + this.jdField_b_of_type_Avxt);
-      if (this.jdField_a_of_type_Avxn == null) {
+      throw new IllegalStateException("Illegal decodeType in decodeConfig " + this.jdField_b_of_type_Avxv);
+      if (this.jdField_a_of_type_Avxp == null) {
         break;
       }
-      this.jdField_a_of_type_Avxn.a(2, localIOException);
+      this.jdField_a_of_type_Avxp.a(2, localIOException);
       return false;
       label536:
-      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localIOException, this.jdField_a_of_type_Avye.a(), null, 0);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localIOException, this.jdField_a_of_type_Avyg.a(), null, 0);
       return true;
       label557:
       Object localObject3 = new RuntimeException(localIOException);
-      if (this.jdField_a_of_type_Avxn != null)
+      if (this.jdField_a_of_type_Avxp != null)
       {
-        this.jdField_a_of_type_Avxn.a(1, (Throwable)localObject3);
-        veg.c("FlowEdit_VideoFlowDecodeTask", "decode configure error", localIOException);
+        this.jdField_a_of_type_Avxp.a(1, (Throwable)localObject3);
+        ved.c("FlowEdit_VideoFlowDecodeTask", "decode configure error", localIOException);
         return false;
       }
       throw ((Throwable)localObject3);
@@ -543,12 +543,12 @@ public class VideoFlowDecodeTask
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Avxt.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Avxv.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Avxt.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Avxv.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   /* Error */
@@ -556,10 +556,10 @@ public class VideoFlowDecodeTask
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
+    //   1: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
     //   4: aload_0
-    //   5: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxt	Lavxt;
-    //   8: invokevirtual 585	avxt:a	(Lavxk;)Z
+    //   5: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxv	Lavxv;
+    //   8: invokevirtual 585	avxv:a	(Lavxm;)Z
     //   11: pop
     //   12: aload_0
     //   13: iconst_0
@@ -591,36 +591,36 @@ public class VideoFlowDecodeTask
     //   64: getfield 306	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_d_of_type_Boolean	Z
     //   67: ifne +1128 -> 1195
     //   70: aload_0
-    //   71: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   74: getfield 275	avxt:jdField_a_of_type_Int	I
+    //   71: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   74: getfield 275	avxv:jdField_a_of_type_Int	I
     //   77: istore 4
     //   79: aload_0
-    //   80: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   83: getfield 407	avxt:jdField_a_of_type_Long	J
+    //   80: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   83: getfield 407	avxv:jdField_a_of_type_Long	J
     //   86: aload_0
-    //   87: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxt	Lavxt;
-    //   90: getfield 407	avxt:jdField_a_of_type_Long	J
+    //   87: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxv	Lavxv;
+    //   90: getfield 407	avxv:jdField_a_of_type_Long	J
     //   93: lcmp
     //   94: ifne +21 -> 115
     //   97: aload_0
-    //   98: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   101: getfield 408	avxt:jdField_b_of_type_Long	J
+    //   98: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   101: getfield 408	avxv:jdField_b_of_type_Long	J
     //   104: aload_0
-    //   105: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxt	Lavxt;
-    //   108: getfield 408	avxt:jdField_b_of_type_Long	J
+    //   105: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxv	Lavxv;
+    //   108: getfield 408	avxv:jdField_b_of_type_Long	J
     //   111: lcmp
     //   112: ifeq +407 -> 519
     //   115: iconst_1
     //   116: istore_2
     //   117: aload_0
-    //   118: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
+    //   118: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
     //   121: aload_0
-    //   122: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxt	Lavxt;
-    //   125: invokevirtual 585	avxt:a	(Lavxk;)Z
+    //   122: getfield 69	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxv	Lavxv;
+    //   125: invokevirtual 585	avxv:a	(Lavxm;)Z
     //   128: istore 7
     //   130: aload_0
-    //   131: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   134: getfield 275	avxt:jdField_a_of_type_Int	I
+    //   131: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   134: getfield 275	avxv:jdField_a_of_type_Int	I
     //   137: istore 5
     //   139: iload 6
     //   141: ifne +7 -> 148
@@ -633,17 +633,17 @@ public class VideoFlowDecodeTask
     //   158: iload 7
     //   160: invokestatic 599	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   163: aload_0
-    //   164: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   167: invokestatic 602	veg:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   164: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   167: invokestatic 602	ved:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
     //   170: aload_0
-    //   171: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   174: getfield 407	avxt:jdField_a_of_type_Long	J
+    //   171: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   174: getfield 407	avxv:jdField_a_of_type_Long	J
     //   177: lconst_0
     //   178: lcmp
     //   179: ifne +345 -> 524
     //   182: aload_0
-    //   183: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   186: getfield 408	avxt:jdField_b_of_type_Long	J
+    //   183: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   186: getfield 408	avxv:jdField_b_of_type_Long	J
     //   189: lconst_0
     //   190: lcmp
     //   191: ifne +333 -> 524
@@ -664,16 +664,16 @@ public class VideoFlowDecodeTask
     //   223: aload_0
     //   224: getfield 590	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Int	I
     //   227: invokeinterface 140 2 0
-    //   232: checkcast 91	avyq
-    //   235: getfield 92	avyq:jdField_a_of_type_Long	J
+    //   232: checkcast 91	avys
+    //   235: getfield 92	avys:jdField_a_of_type_Long	J
     //   238: invokestatic 607	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   241: aload_0
     //   242: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   245: aload_0
     //   246: getfield 592	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Int	I
     //   249: invokeinterface 140 2 0
-    //   254: checkcast 91	avyq
-    //   257: getfield 94	avyq:jdField_b_of_type_Long	J
+    //   254: checkcast 91	avys
+    //   257: getfield 94	avys:jdField_b_of_type_Long	J
     //   260: invokestatic 607	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   263: aload_0
     //   264: getfield 590	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Int	I
@@ -681,12 +681,12 @@ public class VideoFlowDecodeTask
     //   270: aload_0
     //   271: getfield 592	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Int	I
     //   274: invokestatic 290	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   277: invokestatic 610	veg:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   277: invokestatic 610	ved:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
     //   280: ldc 105
     //   282: ldc_w 612
-    //   285: invokestatic 131	veg:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   285: invokestatic 131	ved:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   288: aload_0
-    //   289: getfield 62	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxu	Lavxu;
+    //   289: getfield 62	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxw	Lavxw;
     //   292: invokeinterface 614 1 0
     //   297: iconst_1
     //   298: istore_1
@@ -712,9 +712,9 @@ public class VideoFlowDecodeTask
     //   333: ifeq +22 -> 355
     //   336: ldc 105
     //   338: ldc_w 616
-    //   341: invokestatic 131	veg:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   341: invokestatic 131	ved:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   344: aload_0
-    //   345: getfield 62	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxu	Lavxu;
+    //   345: getfield 62	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxw	Lavxw;
     //   348: invokeinterface 618 1 0
     //   353: iconst_1
     //   354: istore_2
@@ -731,8 +731,8 @@ public class VideoFlowDecodeTask
     //   372: iadd
     //   373: putfield 277	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_d_of_type_Int	I
     //   376: aload_0
-    //   377: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   380: getfield 275	avxt:jdField_a_of_type_Int	I
+    //   377: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   380: getfield 275	avxv:jdField_a_of_type_Int	I
     //   383: iconst_3
     //   384: if_icmpne +440 -> 824
     //   387: aload_0
@@ -745,8 +745,8 @@ public class VideoFlowDecodeTask
     //   400: aload_0
     //   401: getfield 175	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_c_of_type_Int	I
     //   404: invokeinterface 140 2 0
-    //   409: checkcast 91	avyq
-    //   412: getfield 92	avyq:jdField_a_of_type_Long	J
+    //   409: checkcast 91	avys
+    //   412: getfield 92	avys:jdField_a_of_type_Long	J
     //   415: invokespecial 619	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:a	(J)V
     //   418: iconst_0
     //   419: istore_1
@@ -759,8 +759,8 @@ public class VideoFlowDecodeTask
     //   434: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   437: iload_1
     //   438: invokeinterface 140 2 0
-    //   443: checkcast 91	avyq
-    //   446: invokestatic 248	avyq:a	(Lavyq;)Ljava/util/List;
+    //   443: checkcast 91	avys
+    //   446: invokestatic 248	avys:a	(Lavys;)Ljava/util/List;
     //   449: invokeinterface 103 1 0
     //   454: ifle +42 -> 496
     //   457: ldc 105
@@ -773,18 +773,18 @@ public class VideoFlowDecodeTask
     //   469: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   472: iload_1
     //   473: invokeinterface 140 2 0
-    //   478: checkcast 91	avyq
-    //   481: invokestatic 248	avyq:a	(Lavyq;)Ljava/util/List;
+    //   478: checkcast 91	avys
+    //   481: invokestatic 248	avys:a	(Lavys;)Ljava/util/List;
     //   484: invokeinterface 103 1 0
     //   489: invokestatic 290	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   492: aastore
-    //   493: invokestatic 317	veg:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   493: invokestatic 317	ved:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   496: aload_0
     //   497: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   500: iload_1
     //   501: invokeinterface 140 2 0
-    //   506: checkcast 91	avyq
-    //   509: invokestatic 624	avyq:a	(Lavyq;)V
+    //   506: checkcast 91	avys
+    //   509: invokestatic 624	avys:a	(Lavys;)V
     //   512: iload_1
     //   513: iconst_1
     //   514: iadd
@@ -794,12 +794,12 @@ public class VideoFlowDecodeTask
     //   520: istore_2
     //   521: goto -404 -> 117
     //   524: aload_0
-    //   525: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   528: getfield 407	avxt:jdField_a_of_type_Long	J
+    //   525: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   528: getfield 407	avxv:jdField_a_of_type_Long	J
     //   531: lstore 8
     //   533: aload_0
-    //   534: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   537: getfield 408	avxt:jdField_b_of_type_Long	J
+    //   534: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   537: getfield 408	avxv:jdField_b_of_type_Long	J
     //   540: lstore 10
     //   542: aload_0
     //   543: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
@@ -825,8 +825,8 @@ public class VideoFlowDecodeTask
     //   580: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   583: iload_1
     //   584: invokeinterface 140 2 0
-    //   589: checkcast 91	avyq
-    //   592: getfield 92	avyq:jdField_a_of_type_Long	J
+    //   589: checkcast 91	avys
+    //   592: getfield 92	avys:jdField_a_of_type_Long	J
     //   595: lsub
     //   596: invokestatic 630	java/lang/Math:abs	(J)J
     //   599: ldc2_w 157
@@ -841,8 +841,8 @@ public class VideoFlowDecodeTask
     //   615: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   618: iload_1
     //   619: invokeinterface 140 2 0
-    //   624: checkcast 91	avyq
-    //   627: getfield 94	avyq:jdField_b_of_type_Long	J
+    //   624: checkcast 91	avys
+    //   627: getfield 94	avys:jdField_b_of_type_Long	J
     //   630: lsub
     //   631: invokestatic 630	java/lang/Math:abs	(J)J
     //   634: ldc2_w 157
@@ -859,15 +859,15 @@ public class VideoFlowDecodeTask
     //   651: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   654: iload_3
     //   655: invokeinterface 140 2 0
-    //   660: checkcast 91	avyq
-    //   663: getfield 92	avyq:jdField_a_of_type_Long	J
+    //   660: checkcast 91	avys
+    //   663: getfield 92	avys:jdField_a_of_type_Long	J
     //   666: lstore 8
     //   668: aload_0
     //   669: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   672: iload_2
     //   673: invokeinterface 140 2 0
-    //   678: checkcast 91	avyq
-    //   681: getfield 94	avyq:jdField_b_of_type_Long	J
+    //   678: checkcast 91	avys
+    //   681: getfield 94	avys:jdField_b_of_type_Long	J
     //   684: lstore 10
     //   686: ldc 105
     //   688: ldc_w 632
@@ -876,15 +876,15 @@ public class VideoFlowDecodeTask
     //   696: dup
     //   697: iconst_0
     //   698: aload_0
-    //   699: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   702: getfield 407	avxt:jdField_a_of_type_Long	J
+    //   699: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   702: getfield 407	avxv:jdField_a_of_type_Long	J
     //   705: invokestatic 607	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   708: aastore
     //   709: dup
     //   710: iconst_1
     //   711: aload_0
-    //   712: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   715: getfield 408	avxt:jdField_b_of_type_Long	J
+    //   712: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   715: getfield 408	avxv:jdField_b_of_type_Long	J
     //   718: invokestatic 607	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   721: aastore
     //   722: dup
@@ -907,7 +907,7 @@ public class VideoFlowDecodeTask
     //   747: iload_2
     //   748: invokestatic 290	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   751: aastore
-    //   752: invokestatic 634	veg:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   752: invokestatic 634	ved:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   755: iload_2
     //   756: iload_3
     //   757: if_icmple +33 -> 790
@@ -939,7 +939,7 @@ public class VideoFlowDecodeTask
     //   808: iload_2
     //   809: invokestatic 290	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   812: aastore
-    //   813: invokestatic 317	veg:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   813: invokestatic 317	ved:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   816: goto -536 -> 280
     //   819: iconst_0
     //   820: istore_3
@@ -970,8 +970,8 @@ public class VideoFlowDecodeTask
     //   869: getfield 221	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_c_of_type_Boolean	Z
     //   872: ifeq +273 -> 1145
     //   875: aload_0
-    //   876: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   879: getfield 275	avxt:jdField_a_of_type_Int	I
+    //   876: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   879: getfield 275	avxv:jdField_a_of_type_Int	I
     //   882: iconst_3
     //   883: if_icmpne +205 -> 1088
     //   886: aload_0
@@ -995,16 +995,16 @@ public class VideoFlowDecodeTask
     //   922: aload_0
     //   923: getfield 175	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_c_of_type_Int	I
     //   926: invokeinterface 140 2 0
-    //   931: checkcast 91	avyq
-    //   934: getfield 92	avyq:jdField_a_of_type_Long	J
+    //   931: checkcast 91	avys
+    //   934: getfield 92	avys:jdField_a_of_type_Long	J
     //   937: lstore 8
     //   939: aload_0
     //   940: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   943: aload_0
     //   944: getfield 175	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_c_of_type_Int	I
     //   947: invokeinterface 140 2 0
-    //   952: checkcast 91	avyq
-    //   955: getfield 94	avyq:jdField_b_of_type_Long	J
+    //   952: checkcast 91	avys
+    //   955: getfield 94	avys:jdField_b_of_type_Long	J
     //   958: lstore 10
     //   960: ldc 105
     //   962: ldc_w 642
@@ -1015,7 +1015,7 @@ public class VideoFlowDecodeTask
     //   974: invokestatic 607	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   977: lload 10
     //   979: invokestatic 607	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   982: invokestatic 644	veg:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   982: invokestatic 644	ved:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
     //   985: aload_0
     //   986: lload 8
     //   988: invokespecial 619	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:a	(J)V
@@ -1041,7 +1041,7 @@ public class VideoFlowDecodeTask
     //   1031: ldc 105
     //   1033: ldc_w 375
     //   1036: aload 12
-    //   1038: invokestatic 304	veg:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1038: invokestatic 304	ved:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1041: goto -173 -> 868
     //   1044: new 377	java/lang/RuntimeException
     //   1047: dup
@@ -1049,14 +1049,14 @@ public class VideoFlowDecodeTask
     //   1050: invokespecial 380	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   1053: astore 13
     //   1055: aload_0
-    //   1056: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxn	Lavxn;
+    //   1056: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxp	Lavxp;
     //   1059: iconst_3
     //   1060: aload 13
     //   1062: invokeinterface 383 3 0
     //   1067: ldc 105
     //   1069: ldc_w 581
     //   1072: aload 12
-    //   1074: invokestatic 304	veg:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1074: invokestatic 304	ved:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1077: aload_0
     //   1078: iconst_1
     //   1079: putfield 306	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_d_of_type_Boolean	Z
@@ -1071,21 +1071,21 @@ public class VideoFlowDecodeTask
     //   1095: putfield 175	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_c_of_type_Int	I
     //   1098: goto -202 -> 896
     //   1101: aload_0
-    //   1102: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxt	Lavxt;
-    //   1105: getfield 434	avxt:jdField_b_of_type_Boolean	Z
+    //   1102: getfield 71	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_b_of_type_Avxv	Lavxv;
+    //   1105: getfield 434	avxv:jdField_b_of_type_Boolean	Z
     //   1108: ifeq +24 -> 1132
     //   1111: aload_0
-    //   1112: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxn	Lavxn;
+    //   1112: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxp	Lavxp;
     //   1115: ifnull +12 -> 1127
     //   1118: aload_0
-    //   1119: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxn	Lavxn;
+    //   1119: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxp	Lavxp;
     //   1122: invokeinterface 650 1 0
     //   1127: iconst_1
     //   1128: istore_1
     //   1129: goto -138 -> 991
     //   1132: ldc 105
     //   1134: ldc_w 652
-    //   1137: invokestatic 131	veg:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1137: invokestatic 131	ved:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1140: aload_0
     //   1141: iconst_1
     //   1142: putfield 306	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_d_of_type_Boolean	Z
@@ -1106,14 +1106,14 @@ public class VideoFlowDecodeTask
     //   1175: invokevirtual 655	java/lang/InterruptedException:toString	()Ljava/lang/String;
     //   1178: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1181: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1184: invokestatic 310	veg:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1184: invokestatic 310	ved:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1187: aload_0
     //   1188: iconst_1
     //   1189: putfield 306	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_d_of_type_Boolean	Z
     //   1192: goto -175 -> 1017
     //   1195: ldc 105
     //   1197: ldc_w 657
-    //   1200: invokestatic 131	veg:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1200: invokestatic 131	ved:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1203: iconst_0
     //   1204: istore_1
     //   1205: iload_1
@@ -1125,8 +1125,8 @@ public class VideoFlowDecodeTask
     //   1219: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1222: iload_1
     //   1223: invokeinterface 140 2 0
-    //   1228: checkcast 91	avyq
-    //   1231: invokestatic 248	avyq:a	(Lavyq;)Ljava/util/List;
+    //   1228: checkcast 91	avys
+    //   1231: invokestatic 248	avys:a	(Lavys;)Ljava/util/List;
     //   1234: invokeinterface 103 1 0
     //   1239: ifle +42 -> 1281
     //   1242: ldc 105
@@ -1139,24 +1139,24 @@ public class VideoFlowDecodeTask
     //   1254: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1257: iload_1
     //   1258: invokeinterface 140 2 0
-    //   1263: checkcast 91	avyq
-    //   1266: invokestatic 248	avyq:a	(Lavyq;)Ljava/util/List;
+    //   1263: checkcast 91	avys
+    //   1266: invokestatic 248	avys:a	(Lavys;)Ljava/util/List;
     //   1269: invokeinterface 103 1 0
     //   1274: invokestatic 290	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1277: aastore
-    //   1278: invokestatic 317	veg:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1278: invokestatic 317	ved:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1281: aload_0
     //   1282: getfield 173	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1285: iload_1
     //   1286: invokeinterface 140 2 0
-    //   1291: checkcast 91	avyq
-    //   1294: invokestatic 661	avyq:b	(Lavyq;)V
+    //   1291: checkcast 91	avys
+    //   1294: invokestatic 661	avys:b	(Lavys;)V
     //   1297: iload_1
     //   1298: iconst_1
     //   1299: iadd
     //   1300: istore_1
     //   1301: goto -96 -> 1205
-    //   1304: invokestatic 662	avxq:a	()V
+    //   1304: invokestatic 662	avxs:a	()V
     //   1307: aload_0
     //   1308: getfield 156	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
     //   1311: invokevirtual 665	android/media/MediaCodec:stop	()V
@@ -1167,26 +1167,26 @@ public class VideoFlowDecodeTask
     //   1322: getfield 185	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   1325: invokevirtual 669	android/media/MediaExtractor:release	()V
     //   1328: aload_0
-    //   1329: getfield 263	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avye	Lavye;
+    //   1329: getfield 263	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avyg	Lavyg;
     //   1332: invokeinterface 670 1 0
     //   1337: aload_0
-    //   1338: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxn	Lavxn;
+    //   1338: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxp	Lavxp;
     //   1341: ifnull -1317 -> 24
     //   1344: aload_0
     //   1345: getfield 221	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_c_of_type_Boolean	Z
     //   1348: ifeq +28 -> 1376
     //   1351: aload_0
-    //   1352: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxn	Lavxn;
+    //   1352: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxp	Lavxp;
     //   1355: invokeinterface 673 1 0
     //   1360: return
     //   1361: astore 12
     //   1363: ldc 105
     //   1365: aload 12
     //   1367: invokevirtual 674	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1370: invokestatic 310	veg:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1370: invokestatic 310	ved:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1373: goto -36 -> 1337
     //   1376: aload_0
-    //   1377: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxn	Lavxn;
+    //   1377: getfield 51	com/tencent/mobileqq/richmedia/mediacodec/decoder/flow/VideoFlowDecodeTask:jdField_a_of_type_Avxp	Lavxp;
     //   1380: invokeinterface 677 1 0
     //   1385: return
     //   1386: goto -1087 -> 299

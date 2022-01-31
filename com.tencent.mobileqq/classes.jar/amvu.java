@@ -3,45 +3,52 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class amvu
-  extends ampb<amvt>
+  extends ampa<amvv>
 {
+  public static amvv a()
+  {
+    return (amvv)ampl.a().a(564);
+  }
+  
   public int a()
   {
-    return 490;
+    return 564;
   }
   
   @NonNull
-  public amvt a(int paramInt)
+  public amvv a(int paramInt)
   {
-    return new amvt();
+    return new amvv();
   }
   
   @Nullable
-  public amvt a(ampi[] paramArrayOfampi)
+  public amvv a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      amvt localamvt = amvt.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      }
-      return localamvt;
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      return null;
     }
-    return new amvt();
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfamph);
+    }
+    return amvv.a(paramArrayOfamph);
   }
   
-  public Class<amvt> a()
+  public Class<amvv> a()
   {
-    return amvt.class;
+    return amvv.class;
   }
   
   public void a(int paramInt) {}
   
-  public void a(amvt paramamvt) {}
-  
-  public boolean a()
+  public void a(amvv paramamvv)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
+    }
+    if (paramamvv != null) {
+      awbu.a = (int)(paramamvv.a * 60.0D * 60.0D);
+    }
   }
   
   public int b()

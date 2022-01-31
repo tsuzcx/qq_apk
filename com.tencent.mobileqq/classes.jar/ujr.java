@@ -1,17 +1,20 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class ujr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public List<String> a = new ArrayList();
-  public List<String> b = new ArrayList();
+  public ujr(QGSettingFragment paramQGSettingFragment) {}
   
-  public void a(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
-      this.b.add(paramString);
+    if (paramBoolean)
+    {
+      QGSettingFragment.a(true);
+      return;
     }
+    QGSettingFragment.a(false);
   }
 }
 

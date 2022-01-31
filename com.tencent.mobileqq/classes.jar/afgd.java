@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-
-public class afgd
-  implements View.OnClickListener
+public final class afgd
 {
-  public afgd(SearchBaseActivity paramSearchBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public static String a(int paramInt)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    if (paramInt == 0) {
+      return "1";
+    }
+    if (paramInt == 1) {
+      return "2";
+    }
+    return "";
   }
 }
 

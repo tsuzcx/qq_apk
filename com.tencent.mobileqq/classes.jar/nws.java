@@ -1,18 +1,23 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+
 public class nws
+  implements bfph
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public nws(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public nws(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.d(this.a, false);
+      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
+    }
   }
 }
 

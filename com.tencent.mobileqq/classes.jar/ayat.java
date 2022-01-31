@@ -1,97 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
 
-public class ayat
-  implements Manager
+final class ayat
+  implements DialogInterface.OnClickListener
 {
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
-  private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
-  private akhc jdField_a_of_type_Akhc = new ayau(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SubAccountProtocManager.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
+  ayat(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public ayat(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Akhc);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountProtocManager", 2, "SubAccountProtocManager: manager init");
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_c_of_type_ArrayOfByte)
-    {
-      if (this.jdField_c_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_c_of_type_Boolean = true;
-    ((akha)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a();
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_b_of_type_ArrayOfByte)
-    {
-      if (this.jdField_b_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_b_of_type_Boolean = true;
-    ((akha)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ((akha)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString1, paramString2, paramString3);
-  }
-  
-  public boolean a()
-  {
-    synchronized (jdField_c_of_type_ArrayOfByte)
-    {
-      boolean bool = this.d;
-      return bool;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akhc);
-    if (ThreadManager.getSubThreadHandler() != null) {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
+    ayap.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayap.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayap.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 

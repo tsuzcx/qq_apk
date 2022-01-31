@@ -1,19 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aawa
-  implements DialogInterface.OnClickListener
+  implements ajxe
 {
   public aawa(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ViewGroup a()
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    axqw.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
-    axqw.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
+    return this.a.a.a;
+  }
+  
+  public bfwx a(String paramString)
+  {
+    return this.a.a.a(paramString);
+  }
+  
+  public void a()
+  {
+    this.a.a.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.a.a.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    this.a.a.a(paramConfiguration);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.a.a.a(paramQQAppInterface);
+  }
+  
+  public void a(String paramString, bfwx parambfwx)
+  {
+    this.a.a.a(paramString, parambfwx);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.a.a.c();
+  }
+  
+  public void c()
+  {
+    this.a.a.d();
   }
 }
 

@@ -1,63 +1,55 @@
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+
 public class ayug
 {
-  public int a = 40000;
-  public int b = 30000;
-  public int c = 20000;
-  public int d = 20000;
-  public int e = 15000;
-  public int f = 10000;
-  private int g;
+  public static boolean a;
+  private ayui a;
   
-  public ayug() {}
-  
-  private ayug(ayug paramayug)
+  public ayug()
   {
-    this.a = paramayug.a;
-    this.b = paramayug.b;
-    this.c = paramayug.c;
-    this.d = paramayug.d;
-    this.e = paramayug.e;
-    this.f = paramayug.f;
+    this.jdField_a_of_type_Ayui = new ayui();
+    a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name()));
+    a();
   }
   
-  public int a(int paramInt)
+  private void a()
   {
-    switch (paramInt)
+    DeviceProfileManager.a(new ayuh(this));
+  }
+  
+  public ayui a()
+  {
+    return this.jdField_a_of_type_Ayui.a();
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString))) {}
+    do
     {
-    case 2: 
-    default: 
-      return this.a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.c;
-    }
-    return this.b;
-  }
-  
-  public ayug a()
-  {
-    return new ayug(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = (paramInt * 2000);
-  }
-  
-  public int b(int paramInt)
-  {
-    switch (paramInt)
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
+      }
+      paramString = paramString.split("\\|");
+    } while ((paramString == null) || (paramString.length != 6));
+    try
     {
-    case 2: 
-    default: 
-      return this.d + this.g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return this.f + this.g;
+      this.jdField_a_of_type_Ayui.d = (Integer.valueOf(paramString[0]).intValue() * 1000);
+      this.jdField_a_of_type_Ayui.e = (Integer.valueOf(paramString[1]).intValue() * 1000);
+      this.jdField_a_of_type_Ayui.f = (Integer.valueOf(paramString[2]).intValue() * 1000);
+      this.jdField_a_of_type_Ayui.a = (Integer.valueOf(paramString[3]).intValue() * 1000);
+      this.jdField_a_of_type_Ayui.b = (Integer.valueOf(paramString[4]).intValue() * 1000);
+      this.jdField_a_of_type_Ayui.c = (Integer.valueOf(paramString[5]).intValue() * 1000);
+      jdField_a_of_type_Boolean = true;
+      return;
     }
-    return this.e + this.g;
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

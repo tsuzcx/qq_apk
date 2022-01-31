@@ -1,10 +1,7 @@
-import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 public class opp
   extends SimpleConfigHandler
@@ -13,32 +10,18 @@ public class opp
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoEntranceTypeConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = ooi.a(paramString);
-    Object localObject = paramString.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "readinjoy_video_recommend_entrance_direct")) {
-          bhvh.j(Integer.parseInt(str2));
-        }
-      }
-      return true;
+    QLog.d("VideoSingleModeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
+    if ((String)paramString.get("readinjoy_single_video_switch") != null) {
+      bhvy.a((String)paramString.get("readinjoy_single_video_switch"));
     }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bhvh.j(2);
+    bhvy.a(null);
   }
 }
 

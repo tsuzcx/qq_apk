@@ -1,15 +1,47 @@
-import android.view.View;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.method.ArrowKeyMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.method.Touch;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bafx
-  implements bank
+  extends ArrowKeyMovementMethod
 {
-  public bafx(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  private static bafx a;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public static MovementMethod a()
   {
-    paramView.setVisibility(8);
+    if (a == null) {
+      a = new bafx();
+    }
+    return a;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1)
+    {
+      int i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      if (paramTextView.getTag(2131372739) != null)
+      {
+        bafy localbafy = (bafy)paramTextView.getTag(2131372739);
+        Drawable localDrawable = localbafy.getDrawable();
+        if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("zivonchen", 2, "我擦呢,命中------------------");
+          }
+          localbafy.a(paramTextView);
+          return true;
+        }
+      }
+    }
+    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 

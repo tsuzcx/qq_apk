@@ -1,66 +1,62 @@
-import android.content.Context;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONObject;
 
 public class qud
+  implements TVK_SDKMgr.InstallListener
 {
-  private static boolean b;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new que(this));
-  private quf jdField_a_of_type_Quf;
-  private boolean jdField_a_of_type_Boolean;
+  private Handler a;
   
-  public qud(Context paramContext)
+  public qud(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
+    this.a = paramHandler;
   }
   
-  private void c()
+  public void onInstallProgress(float paramFloat)
   {
-    TVK_SDKMgr.setOnLogListener(new quh(null));
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!b)
-      {
-        TVK_SDKMgr.setDebugEnable(true);
-        TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.readinjoy.video", 2, "initVideoSDK() finish");
-        }
-        b = true;
+      localJSONObject.put("version", "8.3.0");
+      localJSONObject.put("error_code", paramInt);
+      label25:
+      nol.a(null, null, "0X8009752", "0X8009752", 0, 0, "0", qkx.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
+      nol.a(null, null, "0X8009753", "0X8009753", 0, 0, "0", qkx.a(false), String.valueOf(paramInt), localJSONObject.toString(), false);
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
       }
       return;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
-      ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
+    catch (Exception localException)
+    {
+      break label25;
     }
   }
   
-  public void a(quf paramquf)
+  public void onInstalledSuccessed()
   {
-    this.jdField_a_of_type_Quf = paramquf;
-  }
-  
-  public boolean a()
-  {
-    return TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Quf = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.3.0");
+      label17:
+      nol.a(null, null, "0X8009753", "0X8009753", 0, 0, "1", qkx.a(false), "", localJSONObject.toString(), false);
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 

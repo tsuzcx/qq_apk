@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.data.PhoneContact;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public abstract interface aiml
+public class aiml
+  extends ailp
 {
-  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
+  public View a;
+  public TextView a;
+  public boolean a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public TextView d;
 }
 
 

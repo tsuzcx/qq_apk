@@ -1,14 +1,15 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class azcx
-  implements azhj
+public final class azcx
+  extends Editable.Factory
 {
-  public azcx(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void a(Uri paramUri)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.a.a = paramUri;
+    if ((paramCharSequence instanceof ayku)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ayku(paramCharSequence, 3, 20);
   }
 }
 

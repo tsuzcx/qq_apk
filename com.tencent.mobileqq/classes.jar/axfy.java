@@ -1,8 +1,41 @@
-public abstract interface axfy
+import android.os.Handler;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
+import java.nio.ByteBuffer;
+
+public class axfy
+  extends SCameraCaptureProcessor.CaptureCallback
 {
-  public abstract void a(int paramInt);
+  public axfy(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public void onError(int paramInt)
+  {
+    axgf.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+  }
+  
+  public void onPictureAvailable(ByteBuffer paramByteBuffer)
+  {
+    axgf.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
+    axge.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
+    {
+      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.get(arrayOfByte);
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
+    }
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
+    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
+  }
+  
+  public void onShutter()
+  {
+    axgf.a(1, "[Camera2]samsungCapture onShutter!");
+  }
 }
 
 

@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
 
-public class autf
-  implements Comparator<PersonalityLabelInfo>
+public abstract interface autf
 {
-  public autf(PersonalityLabel paramPersonalityLabel) {}
+  public abstract void a(long paramLong, aute paramaute);
   
-  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
-  {
-    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
-  }
+  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
 }
 
 

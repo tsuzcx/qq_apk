@@ -1,50 +1,55 @@
 import android.app.Activity;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import java.util.HashMap;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class xlj
-  implements View.OnClickListener
+public class xlj
+  extends WebViewPlugin
 {
-  xlj(xle paramxle) {}
-  
-  public void onClick(View paramView)
+  public xlj()
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    sek localsek;
+    this.mPluginNameSpace = "openToAppDetail";
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
+    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
+    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
+    if ((paramString2 != null) && (paramString2.equals("true"))) {
+      localBundle.putBoolean("autoDownload", true);
+    }
+    if (paramString3 != null) {
+      localBundle.putString("packageName", paramString3);
+    }
+    bdfk.a(this.mRuntime.a(), paramString1, 2470, localBundle);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"openToAppDetail".equals(paramString2)) {}
     do
     {
       do
       {
-        do
-        {
-          return;
-        } while ((xle.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(xle.a(this.a))));
-        localsek = (sek)xle.jdField_a_of_type_JavaUtilHashMap.get(xle.a(this.a));
-      } while (localsek == null);
-      if (localsek.b() == 3)
+        return false;
+      } while (!"openAppDetailPage".equals(paramString3));
+      if (paramVarArgs.length == 2)
       {
-        localsek.a();
-        this.a.b();
-        localsek.a(4);
-        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        }
-        xle.jdField_a_of_type_JavaUtilHashMap.remove(xle.a(this.a));
-        return;
+        a(paramVarArgs[0], paramVarArgs[1]);
+        return true;
       }
-    } while (localsek.b() != 0);
-    mze.a(paramView.getApplicationContext(), xle.a(this.a), localsek.f, localsek.a, localsek);
-    localsek.a(1);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+    } while (paramVarArgs.length != 3);
+    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
+    return true;
   }
 }
 

@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class agje
-  implements DialogInterface.OnClickListener
+  extends ajxj
 {
-  public agje(BindVerifyActivity paramBindVerifyActivity) {}
+  public agje(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
     }
-    this.a.a.b(BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a), 0, BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a));
-    this.a.a(2131719281, 1000L, true);
   }
 }
 

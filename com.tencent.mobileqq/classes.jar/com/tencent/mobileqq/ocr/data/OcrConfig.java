@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.data;
 
-import ajyc;
+import ajya;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import aucf;
+import auch;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class OcrConfig
   implements Parcelable, Serializable
 {
   public static final String CHINESE = "zh";
-  public static final Parcelable.Creator<OcrConfig> CREATOR = new aucf();
+  public static final Parcelable.Creator<OcrConfig> CREATOR = new auch();
   public static final String DEFAULT_SUPPORT_LANGUAGE = "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th";
   public static final String ENGLISH = "en";
   public static final String TAG = "OcrConfig";
@@ -49,70 +49,70 @@ public class OcrConfig
   
   static
   {
-    a.put("zh", ajyc.a(2131707693));
-    a.put("en", ajyc.a(2131707705));
-    a.put("af", ajyc.a(2131707734));
-    a.put("ar", ajyc.a(2131707750));
-    a.put("eu", ajyc.a(2131707715));
-    a.put("be", ajyc.a(2131707729));
-    a.put("hr", ajyc.a(2131707703));
-    a.put("da", ajyc.a(2131707748));
-    a.put("nl", ajyc.a(2131707710));
-    a.put("fo", ajyc.a(2131707699));
-    a.put("fi", ajyc.a(2131707714));
-    a.put("fr", ajyc.a(2131707719));
-    a.put("gd", ajyc.a(2131707727));
-    a.put("de", ajyc.a(2131707706));
-    a.put("he", ajyc.a(2131707737));
-    a.put("hu", ajyc.a(2131707742));
-    a.put("id", ajyc.a(2131707725));
-    a.put("it", ajyc.a(2131707713));
-    a.put("kr", ajyc.a(2131707740));
-    a.put("ko", ajyc.a(2131707723));
-    a.put("lv", ajyc.a(2131707752));
-    a.put("mk", ajyc.a(2131707728));
-    a.put("mt", ajyc.a(2131707717));
-    a.put("no", ajyc.a(2131707741));
-    a.put("pt", ajyc.a(2131707738));
-    a.put("rm", ajyc.a(2131707736));
-    a.put("ro", ajyc.a(2131707720));
-    a.put("sr", ajyc.a(2131707751));
-    a.put("sk", ajyc.a(2131707732));
-    a.put("sb", ajyc.a(2131707718));
-    a.put("es", ajyc.a(2131707724));
-    a.put("sx", ajyc.a(2131707733));
-    a.put("sv", ajyc.a(2131707730));
-    a.put("ts", ajyc.a(2131707707));
-    a.put("tr", ajyc.a(2131707697));
-    a.put("ur", ajyc.a(2131707692));
-    a.put("vi", ajyc.a(2131707744));
-    a.put("ji", ajyc.a(2131707701));
-    a.put("sq", ajyc.a(2131707716));
-    a.put("bg", ajyc.a(2131707721));
-    a.put("ca", ajyc.a(2131707700));
-    a.put("cs", ajyc.a(2131707745));
-    a.put("et", ajyc.a(2131707746));
-    a.put("fa", ajyc.a(2131707702));
-    a.put("ga", ajyc.a(2131707739));
-    a.put("el", ajyc.a(2131707698));
-    a.put("hi", ajyc.a(2131707712));
-    a.put("is", ajyc.a(2131707696));
-    a.put("jp", ajyc.a(2131707747));
-    a.put("ja", ajyc.a(2131707749));
-    a.put("lt", ajyc.a(2131707735));
-    a.put("ms", ajyc.a(2131707711));
-    a.put("pl", ajyc.a(2131707726));
-    a.put("ru", ajyc.a(2131707731));
-    a.put("sz", ajyc.a(2131707743));
-    a.put("sl", ajyc.a(2131707722));
-    a.put("th", ajyc.a(2131707691));
-    a.put("tn", ajyc.a(2131707694));
-    a.put("uk", ajyc.a(2131707704));
-    a.put("ve", ajyc.a(2131707753));
-    a.put("xh", ajyc.a(2131707709));
-    a.put("zu", ajyc.a(2131707708));
-    a.put("jap", ajyc.a(2131707747));
-    a.put("unk", ajyc.a(2131707695));
+    a.put("zh", ajya.a(2131707704));
+    a.put("en", ajya.a(2131707716));
+    a.put("af", ajya.a(2131707745));
+    a.put("ar", ajya.a(2131707761));
+    a.put("eu", ajya.a(2131707726));
+    a.put("be", ajya.a(2131707740));
+    a.put("hr", ajya.a(2131707714));
+    a.put("da", ajya.a(2131707759));
+    a.put("nl", ajya.a(2131707721));
+    a.put("fo", ajya.a(2131707710));
+    a.put("fi", ajya.a(2131707725));
+    a.put("fr", ajya.a(2131707730));
+    a.put("gd", ajya.a(2131707738));
+    a.put("de", ajya.a(2131707717));
+    a.put("he", ajya.a(2131707748));
+    a.put("hu", ajya.a(2131707753));
+    a.put("id", ajya.a(2131707736));
+    a.put("it", ajya.a(2131707724));
+    a.put("kr", ajya.a(2131707751));
+    a.put("ko", ajya.a(2131707734));
+    a.put("lv", ajya.a(2131707763));
+    a.put("mk", ajya.a(2131707739));
+    a.put("mt", ajya.a(2131707728));
+    a.put("no", ajya.a(2131707752));
+    a.put("pt", ajya.a(2131707749));
+    a.put("rm", ajya.a(2131707747));
+    a.put("ro", ajya.a(2131707731));
+    a.put("sr", ajya.a(2131707762));
+    a.put("sk", ajya.a(2131707743));
+    a.put("sb", ajya.a(2131707729));
+    a.put("es", ajya.a(2131707735));
+    a.put("sx", ajya.a(2131707744));
+    a.put("sv", ajya.a(2131707741));
+    a.put("ts", ajya.a(2131707718));
+    a.put("tr", ajya.a(2131707708));
+    a.put("ur", ajya.a(2131707703));
+    a.put("vi", ajya.a(2131707755));
+    a.put("ji", ajya.a(2131707712));
+    a.put("sq", ajya.a(2131707727));
+    a.put("bg", ajya.a(2131707732));
+    a.put("ca", ajya.a(2131707711));
+    a.put("cs", ajya.a(2131707756));
+    a.put("et", ajya.a(2131707757));
+    a.put("fa", ajya.a(2131707713));
+    a.put("ga", ajya.a(2131707750));
+    a.put("el", ajya.a(2131707709));
+    a.put("hi", ajya.a(2131707723));
+    a.put("is", ajya.a(2131707707));
+    a.put("jp", ajya.a(2131707758));
+    a.put("ja", ajya.a(2131707760));
+    a.put("lt", ajya.a(2131707746));
+    a.put("ms", ajya.a(2131707722));
+    a.put("pl", ajya.a(2131707737));
+    a.put("ru", ajya.a(2131707742));
+    a.put("sz", ajya.a(2131707754));
+    a.put("sl", ajya.a(2131707733));
+    a.put("th", ajya.a(2131707702));
+    a.put("tn", ajya.a(2131707705));
+    a.put("uk", ajya.a(2131707715));
+    a.put("ve", ajya.a(2131707764));
+    a.put("xh", ajya.a(2131707720));
+    a.put("zu", ajya.a(2131707719));
+    a.put("jap", ajya.a(2131707758));
+    a.put("unk", ajya.a(2131707706));
   }
   
   public OcrConfig() {}
@@ -150,7 +150,7 @@ public class OcrConfig
   {
     Object localObject2;
     if (TextUtils.isEmpty(paramString)) {
-      localObject2 = ajyc.a(2131707695);
+      localObject2 = ajya.a(2131707706);
     }
     Object localObject1;
     do
@@ -159,7 +159,7 @@ public class OcrConfig
       localObject2 = (String)a.get(paramString);
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = ajyc.a(2131707695);
+        localObject1 = ajya.a(2131707706);
       }
       localObject2 = localObject1;
     } while (!QLog.isColorLevel());

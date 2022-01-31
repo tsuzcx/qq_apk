@@ -2,27 +2,27 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import oqe;
-import qmm;
-import qmr;
-import rmc;
+import oqb;
+import qmj;
+import qmo;
+import rlz;
 
 public class VideoFeedsAdapter$ShortVideoItemDelegate$5
   implements Runnable
 {
-  public VideoFeedsAdapter$ShortVideoItemDelegate$5(qmm paramqmm) {}
+  public VideoFeedsAdapter$ShortVideoItemDelegate$5(qmj paramqmj) {}
   
   public void run()
   {
-    if (rmc.a().b()) {}
+    if (rlz.a().b()) {}
     try
     {
-      qmm.a(this.a).a = oqe.a("https://pub.idqqimg.com/pc/misc/files/20191128/2058eba02bfd4a65b05383b47e7f5e62.zip");
-      if ((qmm.a(this.a).m != null) && (qmm.a(this.a).a != null)) {
-        qmm.a(this.a).m.setImageDrawable(qmm.a(this.a).a);
+      qmj.a(this.a).a = oqb.a("https://pub.idqqimg.com/pc/misc/files/20191128/2058eba02bfd4a65b05383b47e7f5e62.zip");
+      if ((qmj.a(this.a).m != null) && (qmj.a(this.a).a != null)) {
+        qmj.a(this.a).m.setImageDrawable(qmj.a(this.a).a);
       }
-      if (qmm.a(this.a).l != null) {
-        qmm.a(this.a).l.setVisibility(8);
+      if (qmj.a(this.a).l != null) {
+        qmj.a(this.a).l.setVisibility(8);
       }
       return;
     }

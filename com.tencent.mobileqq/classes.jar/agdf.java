@@ -1,35 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agdf
-  extends atzl
+  implements akbt
 {
-  agdf(agch paramagch) {}
+  agdf(agcf paramagcf) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void ag_() {}
+  
+  public void b()
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      return;
-    case 1: 
-      this.a.g();
-      return;
-    case 4: 
-      this.a.g();
+    if ((this.a.a == null) || (this.a.a.app == null)) {
       return;
     }
-    this.a.g();
-    this.a.e();
+    ((akbn)this.a.a.app.getManager(34)).d();
+  }
+  
+  public void i_(int paramInt)
+  {
     this.a.f();
   }
 }

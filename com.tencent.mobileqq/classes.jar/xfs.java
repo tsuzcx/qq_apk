@@ -1,50 +1,84 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class xfs
+  extends ampa<xfr>
 {
-  private String a = xfr.b;
-  private String b = "1";
-  private String c = xfr.a;
-  
-  public static xfs a(String paramString)
+  private void a(String paramString1, String paramString2)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      xfs localxfs = new xfs();
-      paramString = new JSONObject(paramString);
-      localxfs.a = paramString.optString("mine_videostory_entrance", xfr.b);
-      localxfs.b = paramString.optString("enable_click_take_picture", "1");
-      localxfs.c = paramString.optString("mine_videostory_drawer_entrance", xfr.a);
-      return localxfs;
+      xfo.a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
+      xfo.a().a("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
+      xfo.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
     }
-    catch (Exception paramString)
+  }
+  
+  public int a()
+  {
+    return 473;
+  }
+  
+  public Class<xfr> a()
+  {
+    return xfr.class;
+  }
+  
+  @NonNull
+  public xfr a(int paramInt)
+  {
+    return new xfr();
+  }
+  
+  @Nullable
+  public xfr a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      paramString.printStackTrace();
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      xfr localxfr = xfr.a(paramArrayOfamph[0].a);
+      if (localxfr == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)xfo.a().a("KEY_VS_ENTRANCE_STYLE_MD5", "");
+      if ((!TextUtils.isEmpty(localxfr.b())) && (!localxfr.b().equals(str)))
+      {
+        xgg.a().a(localxfr);
+        a(localxfr.b(), paramArrayOfamph[0].a);
+      }
+      return localxfr;
     }
+    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
     return null;
   }
   
-  public String a()
+  public void a(int paramInt) {}
+  
+  public void a(xfr paramxfr)
   {
-    return this.a;
+    if (paramxfr != null) {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramxfr.toString());
+    }
   }
   
-  public String b()
+  public int b()
   {
-    return this.b;
+    return 0;
   }
   
-  public String c()
+  public boolean b()
   {
-    return this.c;
+    return false;
   }
   
-  public String toString()
+  public boolean c()
   {
-    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
+    return true;
   }
 }
 

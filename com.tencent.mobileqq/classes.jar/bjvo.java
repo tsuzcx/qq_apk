@@ -1,89 +1,174 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.util.HashSet;
 
 public class bjvo
-  extends bkga
+  extends bjxl
+  implements View.OnClickListener
 {
-  private final List<bkfi> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final ConcurrentLinkedQueue<bkfi> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private boolean jdField_a_of_type_Boolean = true;
+  public long a;
+  private View jdField_a_of_type_AndroidViewView;
+  private bjmc jdField_a_of_type_Bjmc;
+  private boolean jdField_a_of_type_Boolean;
+  public long b;
+  private boolean b;
+  public long c;
+  private long e;
+  private long f;
+  
+  public bjvo(@NonNull bjxn parambjxn, long paramLong)
+  {
+    super(parambjxn);
+    this.e = paramLong;
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Bjmc == null) {
+      this.jdField_a_of_type_Bjmc = new bjvp(this);
+    }
+  }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public bkfi a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (bkfi)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int i = 1;
+    int j = this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_transiton_src_from", -1);
+    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d()) {
+      i = 4;
     }
-    return null;
-  }
-  
-  public bkfi a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
-      a(((bjeu)bjae.a(4)).a());
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext())
+    do
     {
-      bkfi localbkfi = (bkfi)localIterator.next();
-      if ((localbkfi != null) && (TextUtils.equals(paramString, localbkfi.jdField_a_of_type_JavaLangString))) {
-        return localbkfi;
+      return i;
+      if (j == 1) {
+        return 0;
+      }
+    } while (j == 2);
+    return 2;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidViewView = a(2131378893);
+    if ((this.e & 0x0) != 0L)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    }
+    this.c = this.jdField_a_of_type_Bjxn.b();
+    if ((this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalVideoSource)) {
+      this.f = ((EditLocalVideoSource)this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a).jdField_a_of_type_Int;
+    }
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    Object localObject = (bjtj)a(bjtj.class);
+    if (localObject != null) {
+      ((bjtj)localObject).a(this.f, false);
+    }
+    localObject = (bjtk)a(bjtk.class);
+    if (localObject != null) {
+      ((bjtk)localObject).b();
+    }
+    this.jdField_a_of_type_Bjxn.a(0);
+    if (paramBoolean)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      bcql.a(a(), 2, ajya.a(2131703916), 0).a();
+      if (paramLong != 0L) {
+        axqy.b(null, "dc00899", "grp_story", "", "video_edit_cover", "done_cover", a(), 1, "", "", "", "");
       }
     }
-    return null;
-  }
-  
-  public void a(bkfi parambkfi)
-  {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + parambkfi);
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambkfi);
-    if (i >= 0)
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.set(i, parambkfi);
-      a(i);
-    }
-  }
-  
-  public void a(Collection<bkfi> paramCollection)
-  {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
-      {
-        bkfi localbkfi = (bkfi)paramCollection.next();
-        if (localbkfi != null)
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localbkfi);
-          if (localbkfi.jdField_a_of_type_Int == 0) {
-            this.jdField_a_of_type_JavaUtilList.add(localbkfi);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditVideoCover", 2, new Object[] { "SegmentPickerFinish, coverTime: ", Long.valueOf(this.jdField_a_of_type_Long) });
       }
+      return;
+      this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
     }
-    finally {}
-    a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    boolean bool = false;
+    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_Int == 42)
+    {
+      a(0L, false);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return super.a(paramMessage);
+      if ((this.jdField_a_of_type_Bjxn.jdField_a_of_type_Int == 42) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Long = ((Long[])(Long[])paramMessage.obj)[1].longValue();
+      }
+    }
+  }
+  
+  public void aV_()
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      axqy.b(null, "dc00899", "grp_story", "", "video_edit_cover", "pub_cover", a(), 1, "", "", "", "");
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_Bjxn.a() != null) {
+      this.jdField_a_of_type_Bjxn.a().a.add(Integer.valueOf(9));
+    }
+    QLog.d("EditVideoCover", 1, new Object[] { "Click, current covertime, ", Long.valueOf(this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_Bjxn.a(42);
+    d();
+    paramView = this.jdField_a_of_type_Bjxn.jdField_a_of_type_Bjtx.a;
+    VideoCoverPickerProviderView localVideoCoverPickerProviderView = (VideoCoverPickerProviderView)paramView.a(113);
+    if (localVideoCoverPickerProviderView != null)
+    {
+      bjtj localbjtj = (bjtj)a(bjtj.class);
+      if (localbjtj != null)
+      {
+        localVideoCoverPickerProviderView.setPlayMode(localbjtj.a());
+        localVideoCoverPickerProviderView.setUseIFrameVideo(localbjtj.h_());
+        localbjtj.b();
+        if ((!this.jdField_b_of_type_Boolean) && (localbjtj.a() == 1)) {
+          this.jdField_a_of_type_Long = (this.c * 1000000L);
+        }
+        localbjtj.a(this.jdField_a_of_type_Long / 1000000L, true);
+      }
+    }
+    paramView.setVideoCoverPickerListener(this.jdField_a_of_type_Bjmc);
+    paramView.a(113, new Object[] { Long.valueOf(this.jdField_a_of_type_Long / 1000000L) });
   }
 }
 

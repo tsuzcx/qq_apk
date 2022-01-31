@@ -1,21 +1,45 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.11.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class auag
-  implements aubo
+  implements bcoh
 {
   public auag(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void a()
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(OCRResultActivity.a(this.a)))) {
+    if (OCRResultActivity.a(this.a) == 0) {
+      OCRResultActivity.a(this.a);
+    }
+    while (OCRResultActivity.a(this.a) != 1) {
       return;
     }
-    this.a.runOnUiThread(new OCRResultActivity.11.1(this, paramInt, paramOcrRecogResult));
+    OCRResultActivity.b(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    ayle.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    OCRResultActivity.a(this.a, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    ayle.a(this.a, this.a.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
+    this.a.startActivityForResult(localIntent, 1);
+    OCRResultActivity.a(this.a, true);
   }
 }
 

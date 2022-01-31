@@ -1,15 +1,52 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.database.DataSetObserver;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class rtx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends DataSetObserver
 {
+  private boolean jdField_a_of_type_Boolean;
+  
   public rtx(TabLayoutCompat paramTabLayoutCompat) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  void a()
   {
-    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
+    {
+      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
+        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
+      }
+    }
+    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
+      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onChanged()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
+      return;
+    }
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
+      return;
+    }
+    a();
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aawt;
-import ahkf;
+import aawp;
+import ahkd;
 
 public class Conversation$39$6
   implements Runnable
 {
-  public Conversation$39$6(aawt paramaawt) {}
+  public Conversation$39$6(aawp paramaawp) {}
   
   public void run()
   {

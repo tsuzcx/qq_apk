@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bhjf;
+import bhjw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneHelper$7
@@ -10,9 +10,9 @@ public final class QZoneHelper$7
   
   public void run()
   {
-    bhjf localbhjf = (bhjf)this.a.getManager(175);
-    if (localbhjf != null) {
-      localbhjf.b();
+    bhjw localbhjw = (bhjw)this.a.getManager(175);
+    if (localbhjw != null) {
+      localbhjw.b();
     }
   }
 }

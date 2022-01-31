@@ -1,20 +1,20 @@
 package com.tencent.av.business.manager;
 
-import bbdj;
-import lhm;
-import lhn;
+import bbdx;
+import lhh;
+import lhi;
 
 public class Checker$1
   implements Runnable
 {
-  public Checker$1(lhm paramlhm, lhn paramlhn, String paramString) {}
+  public Checker$1(lhh paramlhh, lhi paramlhi, String paramString) {}
   
   public void run()
   {
-    if (bbdj.a(this.jdField_a_of_type_Lhn.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Lhn);
+    if (bbdx.a(this.jdField_a_of_type_Lhi.jdField_a_of_type_JavaLangString)) {
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Lhi);
     }
-    lhm.a(this.this$0);
+    lhh.a(this.this$0);
   }
 }
 

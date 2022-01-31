@@ -1,20 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-
-public class bacn
-  extends BroadcastReceiver
+class bacn
+  implements bcnl
 {
-  public bacn(HWReciteItem paramHWReciteItem) {}
+  bacn(bacm parambacm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString)
   {
-    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
-    {
-      this.a.b();
-      this.a.a.a.a();
-    }
+    this.a.a();
   }
 }
 

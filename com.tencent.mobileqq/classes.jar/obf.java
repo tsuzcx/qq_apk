@@ -1,68 +1,31 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPackageGialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class obf
+  implements obl
 {
-  public static void a(qqo paramqqo, Context paramContext, qub paramqub)
+  obf(obd paramobd) {}
+  
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    boolean bool2 = true;
-    label57:
-    int i;
-    label114:
-    int j;
-    if (paramqub.e() == 0L)
+    String str = obd.b(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
     {
-      paramqqo.jdField_a_of_type_Qbw.d = paramqqo.jdField_a_of_type_Qbw.e;
-      paramqqo.jdField_a_of_type_Qbw.e = ((int)paramqub.b());
-      qbw localqbw = paramqqo.jdField_a_of_type_Qbw;
-      if (paramqqo.jdField_a_of_type_Qbw.d != 0) {
-        break label268;
+      obd.b(this.a, paramGiftServiceBean);
+      obd.b(this.a).setText(paramGiftServiceBean.t);
+      if (obd.a(this.a)) {
+        obd.c(this.a, null);
       }
-      bool1 = true;
-      localqbw.b = bool1;
-      paramqqo.jdField_a_of_type_Qbw.c = true;
-      localqbw = paramqqo.jdField_a_of_type_Qbw;
-      AdvertisementInfo localAdvertisementInfo = nmf.a(paramqqo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-      int k = localqbw.d;
-      int m = localqbw.e;
-      if (!localqbw.b) {
-        break label274;
+      obd.c(this.a).setText("");
+      if (obd.c(this.a) != null) {
+        obd.c(this.a).clear();
       }
-      i = 1;
-      if (!localqbw.c) {
-        break label279;
-      }
-      j = 1;
-      label125:
-      JSONObject localJSONObject = nmf.a(k, m, i, j, localqbw.f, 1, 0, nmf.aE, 0);
-      nmf.a(new nyg().a(paramContext).a(nmf.f).b(localqbw.g).a(localAdvertisementInfo).a(paramqqo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(localJSONObject).a());
-      paramqub.o();
-      paramqqo.jdField_a_of_type_Qbw.d = 0;
-      paramqqo.jdField_a_of_type_Qbw.e = 0;
-      paramContext = paramqqo.jdField_a_of_type_Qbw;
-      if (paramqqo.jdField_a_of_type_Qbw.d != 0) {
-        break label285;
-      }
-    }
-    label268:
-    label274:
-    label279:
-    label285:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramContext.b = bool1;
-      paramqqo.jdField_a_of_type_Qbw.c = false;
-      return;
-      paramqqo.jdField_a_of_type_Qbw.d = ((int)paramqub.e());
-      break;
-      bool1 = false;
-      break label57;
-      i = 0;
-      break label114;
-      j = 0;
-      break label125;
+      obd.a(this.a);
+      ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.2.1(this));
     }
   }
 }

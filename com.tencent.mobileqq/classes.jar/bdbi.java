@@ -1,38 +1,17 @@
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class bdbi
-  implements bdny
+  extends acld
 {
-  public bdbi(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void a()
-  {
-    boolean bool = true;
-    GetVirtualListResult localGetVirtualListResult = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
-    if (localGetVirtualListResult != null)
-    {
-      QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null != virtualResult");
-      bdnx localbdnx = this.a.jdField_a_of_type_Bdnx;
-      if (localGetVirtualListResult.a == 0) {}
-      for (;;)
-      {
-        localbdnx.a(bool, localGetVirtualListResult);
-        return;
-        bool = false;
-      }
-    }
-    QLog.d("OpenAuthorityFragment", 1, "getVirtualList onSuccess null == virtualResult");
-    this.a.jdField_a_of_type_Bdnx.a(false, null);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "getVirtualList onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    this.a.jdField_a_of_type_Bdnx.a(false, null);
-  }
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

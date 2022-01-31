@@ -1,17 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class adsr
-  implements View.OnTouchListener
 {
-  public adsr(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  public int a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public adsr(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
 }
 
 

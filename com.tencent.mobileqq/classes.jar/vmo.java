@@ -1,26 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 class vmo
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  vmo(vmj paramvmj) {}
+  private vmo(vmg paramvmg) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_Vls.a = this.a.d;
-    this.a.jdField_a_of_type_Vls.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
+    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
+    if (this.a.c < 0)
+    {
+      this.a.c = i;
+      this.a.jdField_a_of_type_Vmn.a();
     }
-    vem.a("0X80076C5");
-    vem.b("0X80075D9");
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.c - i <= this.a.b);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.c = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    } while (this.a.jdField_a_of_type_Vmn == null);
+    this.a.jdField_a_of_type_Vmn.a(true, null);
+    this.a.jdField_a_of_type_Vmn.a(this.a.a());
   }
 }
 

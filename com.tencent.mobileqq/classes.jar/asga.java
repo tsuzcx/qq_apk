@@ -1,35 +1,81 @@
-import java.util.Locale;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MedalInfo;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class asga
+public class asga
 {
-  public static int a;
-  public float a;
-  public long a;
-  public float b;
+  public int a;
+  public MedalInfo a;
+  public String a;
+  public boolean a;
   public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  public String b;
+  public boolean b;
+  public String c;
   
   public asga()
   {
-    int m = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = m + 1;
-    this.jdField_b_of_type_Int = m;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public String toString()
+  public boolean a()
   {
-    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    for (;;)
+    {
+      try
+      {
+        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
+        localJSONObject = null;
+        i = localJSONArray.length();
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
+          continue;
+        }
+        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
+        if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
+          this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
+        }
+        if ((localJSONObject != null) && (localJSONObject.has("share"))) {
+          this.c = MedalWallMng.a(localJSONObject.getString("share"));
+        }
+      }
+      catch (Exception localException)
+      {
+        JSONArray localJSONArray;
+        JSONObject localJSONObject;
+        int i;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
+        continue;
+        if (this.jdField_a_of_type_Int != 1) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+        if (!bbdx.b(this.b)) {
+          continue;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        continue;
+      }
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b))) {
+        this.b = (MedalWallMng.b + bdik.d(this.jdField_a_of_type_JavaLangString));
+      }
+      if (this.jdField_a_of_type_Int != 2) {
+        continue;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return this.jdField_a_of_type_Boolean;
+      if (i > 1) {
+        localJSONObject = localJSONArray.getJSONObject(1);
+      }
+    }
   }
 }
 

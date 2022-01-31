@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.SpecialCareInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public final class anjy
-  implements Parcelable.Creator<SpecialCareInfo>
+public class anjy
+  extends MSFServlet
 {
-  public SpecialCareInfo a(Parcel paramParcel)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return new SpecialCareInfo(paramParcel);
+    if (paramIntent == null) {}
+    while (!(paramIntent instanceof QzoneCommonIntent)) {
+      return;
+    }
+    paramIntent = (QzoneCommonIntent)paramIntent;
+    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
   }
   
-  public SpecialCareInfo[] a(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return new SpecialCareInfo[paramInt];
+    if ((paramIntent instanceof QzoneCommonIntent))
+    {
+      bgyk localbgyk = ((QzoneCommonIntent)paramIntent).getRequest();
+      byte[] arrayOfByte = localbgyk.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localbgyk.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

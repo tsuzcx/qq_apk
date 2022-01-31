@@ -1,50 +1,43 @@
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserCommReport;
 import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
 import mqq.app.Packet;
 
 public class axcf
   extends MSFServlet
 {
+  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  {
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), axcf.class);
+    localNewIntent.putExtra("userCommReport", paramUserCommReport);
+    localNewIntent.putExtra("reportInfos", paramArrayList);
+    paramAppRuntime.startServlet(localNewIntent);
+  }
+  
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      paramIntent = bgxw.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1002, true, paramFromServiceMsg, atzo.class);
-        return;
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet isSuccess false");
+        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
       }
-      notifyObserver(null, 1002, false, new Bundle(), atzo.class);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet resultcode fail.");
-    }
-    notifyObserver(null, 1002, false, new Bundle(), atzo.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramIntent == null) {
-      return;
-    }
-    byte[] arrayOfByte = new bgxw(paramIntent.getLongExtra("selfuin", 0L), paramIntent.getStringExtra("refer")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "getAlbumListNum");
-    paramPacket.putSendData(paramIntent);
+    paramIntent = new bhew((UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
+    paramPacket.setTimeout(10000L);
+    paramPacket.setSSOCommand(paramIntent.getCmdString());
+    paramPacket.putSendData(paramIntent.encode());
   }
 }
 

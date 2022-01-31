@@ -1,31 +1,14 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class aeur
-  extends aqun
+  implements bams
 {
   public aeur(TroopChatPie paramTroopChatPie) {}
   
-  protected void a()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      TroopChatPie.c(this.a).a(this.a.jdField_a_of_type_Aexy, new Object[0]);
-    }
-  }
-  
-  protected void b()
-  {
-    if (((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Aexy.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((aqug)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.d(this.a).a() == 14)) {
-      TroopChatPie.e(this.a).a();
-    }
+    if (paramInt == 0) {}
   }
 }
 

@@ -1,24 +1,31 @@
-import android.app.Activity;
-import io.flutter.view.FlutterMain;
-import io.flutter.view.FlutterNativeView;
-import io.flutter.view.FlutterView;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.sdk.WebChromeClient;
 
-public final class bfby
+class bfby
+  extends WebChromeClient
 {
-  public static FlutterView a(Activity paramActivity, String paramString, FlutterNativeView paramFlutterNativeView)
+  bfby(bfbw parambfbw) {}
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    FlutterMain.startInitialization(paramActivity.getApplicationContext());
-    FlutterMain.ensureInitializationComplete(paramActivity.getApplicationContext(), null);
-    if (paramFlutterNativeView != null) {}
+    if (paramConsoleMessage != null)
+    {
+      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+        break label135;
+      }
+      betc.d("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bfbw.a(this.a));
+      bezi.a(paramConsoleMessage.lineNumber() + ": " + paramConsoleMessage.message(), bfbw.a(this.a).a(), bfbw.a(this.a));
+    }
     for (;;)
     {
-      paramActivity = new bfbz(paramActivity, null, paramFlutterNativeView);
-      if (paramString != null) {
-        paramActivity.setInitialRoute(paramString);
+      return super.onConsoleMessage(paramConsoleMessage);
+      label135:
+      if (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.WARNING) {
+        betc.c("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bfbw.a(this.a));
+      } else {
+        betc.b("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message());
       }
-      paramActivity.setAlpha(0.0F);
-      return paramActivity;
-      paramFlutterNativeView = new FlutterNativeView(paramActivity);
     }
   }
 }

@@ -1,12 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 
 class bfzi
-  extends RecyclerView.ViewHolder
+  implements View.OnLongClickListener
 {
-  bfzi(bfzg parambfzg, View paramView)
+  bfzi(bfzg parambfzg, bfzf parambfzf) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    super(paramView);
+    int i = this.jdField_a_of_type_Bfzf.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Bfzg.a.a(this.jdField_a_of_type_Bfzf.itemView, i);
+    }
+    return true;
   }
 }
 

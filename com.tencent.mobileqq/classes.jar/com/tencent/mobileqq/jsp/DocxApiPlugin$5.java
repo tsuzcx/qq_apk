@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import armi;
-import ayfe;
-import bcdb;
+import armk;
+import ayfg;
+import bcdp;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class DocxApiPlugin$5
   implements Runnable
 {
-  public DocxApiPlugin$5(armi paramarmi, ArrayList paramArrayList) {}
+  public DocxApiPlugin$5(armk paramarmk, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class DocxApiPlugin$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ayfe.a(this.this$0.mRuntime.a().getCurrentAccountUin(), ayfe.a(str), str);
+      ayfg.a(this.this$0.mRuntime.a().getCurrentAccountUin(), ayfg.a(str), str);
     }
   }
 }

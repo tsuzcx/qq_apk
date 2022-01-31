@@ -1,38 +1,33 @@
-import android.content.res.Resources;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
+import java.net.URL;
 import org.json.JSONObject;
 
 public class peg
 {
   public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    String str = null;
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject2;
-    if ((paramBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() != 0))
-    {
-      localObject1 = (qdv)paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
-      localObject2 = BaseApplicationImpl.getApplication().getResources();
-      str = ((qdv)localObject1).d;
-    }
-    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131718580), new Object[] { bhvh.a(((qdv)localObject1).b) });; localObject1 = null)
-    {
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("participant_title_text", localObject1);
-      localJSONObject.put("id_participant_title", localObject2);
-      pen.a(paramBaseArticleInfo, localJSONObject, false);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("participant_pic_url", str);
-      localJSONObject.put("id_participant_imge", localObject1);
-      localJSONObject.put("id_view_cover", new JSONObject());
-      pen.b(paramBaseArticleInfo, localJSONObject);
-      pen.m(paramBaseArticleInfo, localJSONObject);
-      localJSONObject.put("style_ID", "ReadInjoy_single_topic_cell");
-      pen.a(localJSONObject, paramBaseArticleInfo);
-      return localJSONObject;
-    }
+    JSONObject localJSONObject1 = new JSONObject();
+    pek.w(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    pek.b(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", ajya.a(2131712838));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    pek.a(paramBaseArticleInfo, localJSONObject1, true);
+    pek.e(paramBaseArticleInfo, localJSONObject1);
+    pek.m(paramBaseArticleInfo, localJSONObject1);
+    pek.C(paramBaseArticleInfo, localJSONObject1);
+    pek.D(paramBaseArticleInfo, localJSONObject1);
+    pek.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_big_cell");
+    return localJSONObject1;
   }
 }
 

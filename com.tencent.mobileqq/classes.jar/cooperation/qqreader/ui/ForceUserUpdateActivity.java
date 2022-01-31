@@ -7,19 +7,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
-import bbev;
-import bgty;
-import bguq;
-import bgvd;
-import bgve;
-import bgvf;
-import bgvg;
+import bbfj;
+import bgup;
 import bgvh;
-import bgvm;
-import bgvo;
-import bgwe;
-import bgwh;
-import bgwi;
+import bgvu;
+import bgvv;
+import bgvw;
+import bgvx;
+import bgvy;
+import bgwd;
+import bgwf;
+import bgwv;
+import bgwy;
+import bgwz;
 import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.qqreader.net.BusinessTask;
 import cooperation.qqreader.view.FrameLoading;
@@ -32,12 +32,12 @@ public class ForceUserUpdateActivity
   private long jdField_a_of_type_Long = -1L;
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bguq jdField_a_of_type_Bguq = new bgvd(this);
-  private bgwe jdField_a_of_type_Bgwe;
+  private bgvh jdField_a_of_type_Bgvh = new bgvu(this);
+  private bgwv jdField_a_of_type_Bgwv;
   private LoadingImageView jdField_a_of_type_CooperationQqreaderViewLoadingImageView;
   private boolean jdField_a_of_type_Boolean;
-  private bguq b = new bgve(this);
-  private bguq c = new bgvf(this);
+  private bgvh b = new bgvv(this);
+  private bgvh c = new bgvw(this);
   
   private void a()
   {
@@ -54,38 +54,38 @@ public class ForceUserUpdateActivity
   
   private void a(String paramString)
   {
-    bgvo.a("ForceUserUpdateActivity", paramString);
+    bgwf.a("ForceUserUpdateActivity", paramString);
     b("哎呀，升级出了点问题，再试试看吧~");
   }
   
   private void b()
   {
-    if (!bbev.a()) {
+    if (!bbfj.a()) {
       b("网络连接异常，请检查网络后重试");
     }
     do
     {
       return;
-      if (!bgty.a()) {
+      if (!bgup.a()) {
         c();
       }
-    } while (bgvm.d(this));
+    } while (bgwd.d(this));
     e();
   }
   
   private void b(String paramString)
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed()))) {
-      bgvo.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
+      bgwf.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_Bgwe == null) {
-        this.jdField_a_of_type_Bgwe = new bgwh(this).a(paramString).a("退出", new bgvh(this)).b("重试", new bgvg(this)).a();
+      if (this.jdField_a_of_type_Bgwv == null) {
+        this.jdField_a_of_type_Bgwv = new bgwy(this).a(paramString).a("退出", new bgvy(this)).b("重试", new bgvx(this)).a();
       }
-    } while (this.jdField_a_of_type_Bgwe.isShowing());
-    this.jdField_a_of_type_Bgwe.show();
+    } while (this.jdField_a_of_type_Bgwv.isShowing());
+    this.jdField_a_of_type_Bgwv.show();
   }
   
   private void c()
@@ -104,12 +104,12 @@ public class ForceUserUpdateActivity
   
   private void e()
   {
-    bgwi.a(bgwi.a, this.jdField_a_of_type_Bguq);
+    bgwz.a(bgwz.a, this.jdField_a_of_type_Bgvh);
   }
   
   private void f()
   {
-    bgvm.b(this.jdField_a_of_type_AndroidContentContext, 1);
+    bgwd.b(this.jdField_a_of_type_AndroidContentContext, 1);
     g();
   }
   
@@ -117,7 +117,7 @@ public class ForceUserUpdateActivity
   {
     long l2 = 1000L;
     long l1;
-    if ((!this.jdField_a_of_type_Boolean) && (bgty.a()) && (bgvm.d(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_a_of_type_Boolean) && (bgup.a()) && (bgwd.d(this.jdField_a_of_type_AndroidContentContext)))
     {
       if (this.jdField_a_of_type_Long <= 0L) {
         break label74;
@@ -153,16 +153,16 @@ public class ForceUserUpdateActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setText("正在升级到新书城，请稍等...");
     a();
     b();
-    bgvo.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    bgwf.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Bgwe != null) && (this.jdField_a_of_type_Bgwe.isShowing()))
+    if ((this.jdField_a_of_type_Bgwv != null) && (this.jdField_a_of_type_Bgwv.isShowing()))
     {
-      this.jdField_a_of_type_Bgwe.dismiss();
-      this.jdField_a_of_type_Bgwe = null;
+      this.jdField_a_of_type_Bgwv.dismiss();
+      this.jdField_a_of_type_Bgwv = null;
     }
   }
 }

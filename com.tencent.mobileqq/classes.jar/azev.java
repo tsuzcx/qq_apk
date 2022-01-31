@@ -1,33 +1,44 @@
-import android.view.View;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
 
 public class azev
-  implements bfpe
+  implements URLDrawableHandler
 {
   public azev(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
+  public void doCancel() {}
   
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean isCancelled()
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_Int = paramInt;
-      if (this.a.jdField_a_of_type_Agqk != null) {
-        this.a.jdField_a_of_type_Agqk.b(paramInt);
-      }
-      if (!this.a.c) {
-        axqw.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
-      }
-      while (TroopAvatarWallEditActivity.a(this.a) != null)
-      {
-        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
-        return;
-        axqw.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
-      }
+    return false;
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadFailed", new Object[0]));
+    }
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadStarted", new Object[0]));
+    }
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload onFileDownloadSucceed", new Object[0]));
+    }
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, String.format("onBeforeUpload publishProgress", new Object[0]));
     }
   }
 }

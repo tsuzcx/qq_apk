@@ -1,20 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-@Deprecated
 public class tio
-  extends tiq
+  implements URLDrawable.URLDrawableListener
 {
-  public tio(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561302);
-  }
+  tio(tin paramtin) {}
   
-  public void a(tfi paramtfi)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super.a(paramtfi);
-    this.a.setDisplayState(5);
-    this.a.setNodeName(ajyc.a(2131706941), false);
+    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
   }
 }
 

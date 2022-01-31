@@ -1,32 +1,53 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tribe.async.utils.AssertUtils;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class tnv
-  extends tmb<qqstory_service.ReqGetPromoteTaskList>
 {
-  public static final String b = sxp.a("StorySvc.get_promote_tasklist");
+  @NonNull
+  public final String a;
+  @NonNull
+  public final Map<String, String> a;
+  @NonNull
+  public String b;
   
-  public tnv(String paramString)
+  public tnv(@NonNull qqstory_group.GroupFeed paramGroupFeed)
   {
-    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
-    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
-  }
-  
-  public syq a(byte[] paramArrayOfByte)
-  {
-    return new tnw(paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    veg.a("GetPromoteTaskRequest", "encode: %s", this);
-    return super.a();
+    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
+    if (localIterator.hasNext())
+    {
+      qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
+      String str = localVideoStoryId.story_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(str)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        AssertUtils.assertTrue(bool);
+        localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), str);
+        this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+        break;
+      }
+    }
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = paramGroupFeed.feed_id.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
   }
   
   public String toString()
   {
-    return vys.a(this.a);
+    return "AddGroupFeed[" + this.jdField_a_of_type_JavaLangString + "," + this.b + "," + this.jdField_a_of_type_JavaUtilMap + "]";
   }
 }
 

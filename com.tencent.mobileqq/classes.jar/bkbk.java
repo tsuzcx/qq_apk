@@ -1,24 +1,77 @@
-import android.support.annotation.Nullable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-class bkbk
-  extends bkbr
+public class bkbk
+  extends bkin
 {
-  bkbk(bkbh parambkbh, DoodleEmojiItem paramDoodleEmojiItem)
+  public float a;
+  public int a;
+  @NonNull
+  public Bitmap a;
+  public PointF a;
+  public bkaz a;
+  public bkpf a;
+  public boolean a;
+  public Rect[] a;
+  public String[] a;
+  public float b;
+  public boolean b;
+  public float c;
+  public float d;
+  public float e = 1.0F;
+  
+  public bkbk(bkbi parambkbi, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    super(paramDoodleEmojiItem);
+    super(paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Bkpf = new bkpf();
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void a(Canvas paramCanvas)
   {
-    super.onResult(???);
-    veg.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
-      return;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoteLayer", 2, "draw bitmap is null");
+      }
     }
+    do
+    {
+      return;
+      paramCanvas.save();
+      paramCanvas.concat(bkbi.a(this.jdField_a_of_type_Bkbi).a(this));
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, -this.u / 2.0F, -this.v / 2.0F, bkbi.a(this.jdField_a_of_type_Bkbi));
+      if ((this.k) && (this.jdField_a_of_type_Boolean))
+      {
+        paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+        Path localPath = new Path();
+        Rect[] arrayOfRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
+        int j = arrayOfRect.length;
+        i = 0;
+        while (i < j)
+        {
+          Rect localRect = arrayOfRect[i];
+          localPath.reset();
+          localPath.addRoundRect(new RectF(localRect.left + 10, localRect.top + 5, localRect.right - 10, localRect.bottom - 5), 4.0F, 4.0F, Path.Direction.CCW);
+          paramCanvas.drawPath(localPath, bkbi.b(this.jdField_a_of_type_Bkbi));
+          i += 1;
+        }
+      }
+      paramCanvas.restore();
+    } while (!this.k);
+    int i = -1;
+    if (this.b) {
+      i = 2130839342;
+    }
+    bkik.a(paramCanvas, bkbi.a(this.jdField_a_of_type_Bkbi), this, i, 2130843815, 2130843822);
   }
 }
 

@@ -1,42 +1,50 @@
-import java.util.HashMap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import mqq.manager.Manager;
 
 public class aysx
+  implements Manager
 {
-  public int a;
-  public long a;
-  public aysw a;
-  public String a;
-  public HashMap<String, String> a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  long e = 0L;
-  long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
+  public aysa a;
+  public aysa b;
   
-  public aysx(aysw paramaysw)
+  public aysa a(bbmv parambbmv)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Aysw = paramaysw;
-    this.f = System.currentTimeMillis();
+    if (this.b == null) {}
+    try
+    {
+      parambbmv = new HttpCommunicator(parambbmv, 32);
+      parambbmv.a();
+      this.b = new aytb(parambbmv, true);
+      return this.b;
+    }
+    finally {}
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString, HashMap<String, String> paramHashMap)
+  public aysa a(AppInterface paramAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.putAll(paramHashMap);
+    if (paramInt == 0)
+    {
+      if (this.a == null) {}
+      try
+      {
+        if (this.a == null) {
+          this.a = new aytb(paramAppInterface.getHttpCommunicatort(), false);
+        }
+        return this.a;
+      }
+      finally {}
+    }
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.a != null) {
+      ((aytb)this.a).a();
+    }
+    if (this.b != null) {
+      ((aytb)this.b).a();
     }
   }
 }

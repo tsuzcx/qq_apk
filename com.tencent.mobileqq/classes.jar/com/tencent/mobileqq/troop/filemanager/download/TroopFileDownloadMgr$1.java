@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import azsp;
 import azsr;
-import aztl;
+import azst;
+import aztn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class TroopFileDownloadMgr$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$1(aztl paramaztl) {}
+  public TroopFileDownloadMgr$1(aztn paramaztn) {}
   
   public void run()
   {
     if (this.this$0.a) {
       return;
     }
-    QQAppInterface localQQAppInterface = azsp.a();
+    QQAppInterface localQQAppInterface = azsr.a();
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.this$0);
       this.this$0.a = true;
       return;
     }
-    azsr.a("TroopFileDownloadMgr", azsr.a, "init registerConnectionChangeReceiver fail");
+    azst.a("TroopFileDownloadMgr", azst.a, "init registerConnectionChangeReceiver fail");
   }
 }
 

@@ -1,7 +1,6 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.EditActivity;
 
 public class aazw
@@ -11,9 +10,9 @@ public class aazw
   
   public void onClick(View paramView)
   {
-    EditActivity.a(this.a).setVisibility(4);
-    EditActivity.a(this.a).setImageResource(2130846982);
-    EditActivity.a(this.a, false);
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
   }
 }
 

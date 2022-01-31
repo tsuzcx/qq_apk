@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.data.NewFriendSubTitle;
+import com.tencent.mobileqq.data.NewFriendMoreInfo;
 
 public class atzb
-  extends atyy
+  extends atza
 {
-  public NewFriendSubTitle a;
+  public NewFriendMoreInfo a;
   
-  public atzb(NewFriendSubTitle paramNewFriendSubTitle)
+  public atzb(NewFriendMoreInfo paramNewFriendMoreInfo)
   {
-    this.a = paramNewFriendSubTitle;
+    this.a = paramNewFriendMoreInfo;
   }
   
   public boolean a()

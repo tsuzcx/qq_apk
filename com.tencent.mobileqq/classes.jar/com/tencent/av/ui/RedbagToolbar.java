@@ -2,25 +2,25 @@ package com.tencent.av.ui;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lgf;
-import lpz;
-import ltx;
-import mat;
-import mbz;
-import miu;
-import miv;
-import mpb;
-import mpc;
-import mpn;
-import mpx;
-import mpy;
+import lga;
+import lpu;
+import lts;
+import mao;
+import mbu;
+import mir;
+import mis;
+import moy;
+import moz;
+import mpk;
+import mpu;
+import mpv;
 
 public class RedbagToolbar
   extends BaseToolbar
@@ -28,37 +28,37 @@ public class RedbagToolbar
   private static final String TAG = "RedbagToolbar";
   int mDisableType = 0;
   String mTips = null;
-  mbz mUIInfo = null;
+  mbu mUIInfo = null;
   
   public RedbagToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  public static boolean getRedBagBtnStatus(VideoAppInterface paramVideoAppInterface, miv parammiv)
+  public static boolean getRedBagBtnStatus(VideoAppInterface paramVideoAppInterface, mis parammis)
   {
     boolean bool1 = false;
     Object localObject1 = null;
-    mpc localmpc = mpy.a(paramVideoAppInterface);
-    Object localObject2 = localmpc.a();
-    int n = localmpc.a();
+    moz localmoz = mpv.a(paramVideoAppInterface);
+    Object localObject2 = localmoz.a();
+    int n = localmoz.a();
     int i;
     int k;
     int m;
     boolean bool2;
-    if ((localObject2 != null) && (((mpb)localObject2).c))
+    if ((localObject2 != null) && (((moy)localObject2).c))
     {
       i = 1;
       k = paramVideoAppInterface.a().a().E;
       m = paramVideoAppInterface.a().a().i;
-      bool2 = lpz.e();
+      bool2 = lpu.e();
       if (i != 0) {
         break label615;
       }
       if (!TextUtils.isEmpty(null)) {
         break label610;
       }
-      localObject1 = paramVideoAppInterface.getApp().getString(2131696098);
+      localObject1 = paramVideoAppInterface.getApp().getString(2131696099);
       i = 1;
     }
     for (;;)
@@ -72,7 +72,7 @@ public class RedbagToolbar
         localObject2 = localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject2 = paramVideoAppInterface.getApp().getString(2131696095);
+          localObject2 = paramVideoAppInterface.getApp().getString(2131696096);
           j = i;
         }
       }
@@ -88,7 +88,7 @@ public class RedbagToolbar
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject1 = paramVideoAppInterface.getApp().getString(2131696096);
+          localObject1 = paramVideoAppInterface.getApp().getString(2131696097);
           i = j;
         }
       case 1: 
@@ -101,26 +101,26 @@ public class RedbagToolbar
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = paramVideoAppInterface.getApp().getString(2131696093);
+            localObject2 = paramVideoAppInterface.getApp().getString(2131696094);
             j = i;
           }
         }
         if (j == 0) {
           bool1 = true;
         }
-        bool2 = localmpc.c();
-        bool3 = localmpc.a();
+        bool2 = localmoz.c();
+        bool3 = localmoz.a();
         i = j;
         localObject1 = localObject2;
         if (bool2)
         {
-          localmpc.e();
+          localmoz.e();
           j |= 0x40;
           i = j;
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2))
           {
-            localObject1 = paramVideoAppInterface.getApp().getString(2131696099);
+            localObject1 = paramVideoAppInterface.getApp().getString(2131696100);
             i = j;
           }
         }
@@ -133,21 +133,21 @@ public class RedbagToolbar
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = paramVideoAppInterface.getApp().getString(2131696091);
+            localObject2 = paramVideoAppInterface.getApp().getString(2131696092);
             j = i;
           }
         }
         localObject1 = new StringBuilder().append("isEnable, relationType[").append(k).append("], uinType[").append(m).append("], loadPTuSoStatus[").append(paramVideoAppInterface.a().j()).append("], soloadedPTV[").append(GraphicRenderMgr.soloadedPTV).append("], ptuSoVersion[").append(GraphicRenderMgr.ptuSoVersion).append("], tips[").append((String)localObject2).append("], diableType[");
-        if (parammiv == null) {}
+        if (parammis == null) {}
         break;
       }
-      for (paramVideoAppInterface = Integer.valueOf(parammiv.jdField_a_of_type_Int);; paramVideoAppInterface = "null")
+      for (paramVideoAppInterface = Integer.valueOf(parammis.jdField_a_of_type_Int);; paramVideoAppInterface = "null")
       {
         QLog.d("RedbagToolbar", 1, paramVideoAppInterface + "->" + j + "], bLight[" + bool1 + "], peerInSendMode[" + bool2 + "], selfInGameMode[" + bool3 + "]");
-        if (parammiv != null)
+        if (parammis != null)
         {
-          parammiv.jdField_a_of_type_Int = j;
-          parammiv.jdField_a_of_type_JavaLangString = ((String)localObject2);
+          parammis.jdField_a_of_type_Int = j;
+          parammis.jdField_a_of_type_JavaLangString = ((String)localObject2);
         }
         return bool1;
         i = 0;
@@ -158,7 +158,7 @@ public class RedbagToolbar
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           break label204;
         }
-        localObject1 = paramVideoAppInterface.getApp().getString(2131696092);
+        localObject1 = paramVideoAppInterface.getApp().getString(2131696093);
         i = j;
         break label204;
         j |= 0x8;
@@ -167,7 +167,7 @@ public class RedbagToolbar
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
           break label204;
         }
-        localObject1 = paramVideoAppInterface.getApp().getString(2131696094);
+        localObject1 = paramVideoAppInterface.getApp().getString(2131696095);
         i = j;
         break label204;
       }
@@ -190,15 +190,15 @@ public class RedbagToolbar
     this.mApp.a(new Object[] { Integer.valueOf(8003), Integer.valueOf(getEffectBtnId()) });
   }
   
-  protected mbz getUIInfo()
+  protected mbu getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new mbz();
+      this.mUIInfo = new mbu();
       this.mUIInfo.d = 7;
       this.mUIInfo.f = 2131559590;
       this.mUIInfo.e = 2130841777;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696213);
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696214);
       this.mUIInfo.c = 2130841778;
       this.mUIInfo.jdField_a_of_type_Int = 0;
     }
@@ -212,11 +212,11 @@ public class RedbagToolbar
   
   public boolean isEffectBtnEnable()
   {
-    miv localmiv = new miv();
-    localmiv.jdField_a_of_type_Int = this.mDisableType;
-    boolean bool = getRedBagBtnStatus(this.mApp, localmiv);
-    this.mTips = localmiv.jdField_a_of_type_JavaLangString;
-    this.mDisableType = localmiv.jdField_a_of_type_Int;
+    mis localmis = new mis();
+    localmis.jdField_a_of_type_Int = this.mDisableType;
+    boolean bool = getRedBagBtnStatus(this.mApp, localmis);
+    this.mTips = localmis.jdField_a_of_type_JavaLangString;
+    this.mDisableType = localmis.jdField_a_of_type_Int;
     return bool;
   }
   
@@ -227,15 +227,15 @@ public class RedbagToolbar
     if (paramInt == getEffectBtnId()) {
       return;
     }
-    mpc localmpc = mpy.a(this.mApp);
-    if (localmpc != null) {
-      localmpc.d();
+    moz localmoz = mpv.a(this.mApp);
+    if (localmoz != null) {
+      localmoz.d();
     }
     if (this.mDisableType == 0)
     {
       paramBoolean1 = true;
       label47:
-      ltx.b(paramBoolean1, String.valueOf(this.mDisableType));
+      lts.b(paramBoolean1, String.valueOf(this.mDisableType));
       if (this.mDisableType != 0) {
         break label93;
       }
@@ -243,7 +243,7 @@ public class RedbagToolbar
     label93:
     for (paramBoolean1 = bool;; paramBoolean1 = false)
     {
-      mpx.a(paramBoolean1, this.mDisableType);
+      mpu.a(paramBoolean1, this.mDisableType);
       if (this.mDisableType == 0) {
         break;
       }
@@ -259,20 +259,20 @@ public class RedbagToolbar
     if (paramInt == getEffectBtnId()) {}
     do
     {
-      mpc localmpc;
+      moz localmoz;
       do
       {
         return;
-        localmpc = mpy.a(this.mApp);
-      } while ((localmpc == null) || ((AVActivity)this.mActivity.get() == null));
+        localmoz = mpv.a(this.mApp);
+      } while ((localmoz == null) || ((AVActivity)this.mActivity.get() == null));
       if (this.mDisableType == 0)
       {
-        String str = mpy.b();
-        paramBoolean = bbdj.b(str);
-        if ((paramBoolean) && (mpn.a(this.mApp)))
+        String str = mpv.b();
+        paramBoolean = bbdx.b(str);
+        if ((paramBoolean) && (mpk.a(this.mApp)))
         {
-          localmpc.a(true);
-          new mpn(localmpc).a(new miu(this, localmpc));
+          localmoz.a(true);
+          new mpk(localmoz).a(new mir(this, localmoz));
           return;
         }
         QLog.w("RedbagToolbar", 1, "startActivity_SendRedBag, guide_mp4[" + str + "], fileExistsAndNotEmpty[" + paramBoolean + "], seq[" + paramLong + "]");
@@ -280,13 +280,13 @@ public class RedbagToolbar
         return;
       }
     } while (TextUtils.isEmpty(this.mTips));
-    mat.a(this.mApp, 1042, this.mTips);
+    mao.a(this.mApp, 1042, this.mTips);
   }
   
   public boolean startActivity_SendRedBag(boolean paramBoolean)
   {
-    mpc localmpc = mpy.a(this.mApp);
-    if (localmpc == null) {}
+    moz localmoz = mpv.a(this.mApp);
+    if (localmoz == null) {}
     AVActivity localAVActivity;
     do
     {
@@ -297,15 +297,15 @@ public class RedbagToolbar
       isEffectBtnEnable();
     }
     if (this.mDisableType == 0) {
-      if (!localmpc.a(localAVActivity, 1)) {}
+      if (!localmoz.a(localAVActivity, 1)) {}
     }
     for (paramBoolean = true;; paramBoolean = false)
     {
       if (this.mDisableType != 0) {
-        mat.a(this.mApp, 1042, this.mTips);
+        mao.a(this.mApp, 1042, this.mTips);
       }
       return paramBoolean;
-      this.mTips = localAVActivity.getResources().getString(2131696097);
+      this.mTips = localAVActivity.getResources().getString(2131696098);
       this.mDisableType = 67108864;
     }
   }

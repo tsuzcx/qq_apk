@@ -1,13 +1,6 @@
 public abstract interface ljz
-  extends ljr
 {
-  public abstract void a(float paramFloat1, float paramFloat2, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void setDrawParticle(boolean paramBoolean);
+  public abstract void a(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, boolean paramBoolean);
 }
 
 

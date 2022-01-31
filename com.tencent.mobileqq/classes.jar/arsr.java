@@ -1,30 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Paint.Align;
 
-class arsr
-  implements bfoq
+public abstract interface arsr
 {
-  arsr(arsq paramarsq, bfol parambfol, boolean paramBoolean) {}
+  public abstract int a();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Bfol.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Arsq.b(false);
-      return;
-      arrl.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Arsq.a().e, this.jdField_a_of_type_Arsq.a().b);
-      continue;
-      this.jdField_a_of_type_Arsq.g();
-      continue;
-      this.jdField_a_of_type_Arsq.g();
-    }
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setAlign(Paint.Align paramAlign);
+  
+  public abstract void setLineMaxWidth(int paramInt);
+  
+  public abstract void setLyric(asbc paramasbc, int paramInt);
+  
+  public abstract void setOnSizeChangeListener(artc paramartc);
+  
+  public abstract void setSongId(String paramString);
+  
+  public abstract void setStrokeColor(int paramInt);
+  
+  public abstract void setStrokeWidth(int paramInt);
 }
 
 

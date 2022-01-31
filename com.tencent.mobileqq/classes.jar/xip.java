@@ -1,6 +1,19 @@
-public abstract interface xip
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
+
+class xip
+  extends LinearSmoothScroller
 {
-  public abstract void a(xeu paramxeu);
+  xip(xio paramxio, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return this.a.a(paramInt);
+  }
 }
 
 

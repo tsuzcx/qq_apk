@@ -1,92 +1,44 @@
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
-import cooperation.weiyun.channel.pb.WeiyunPB.RspMsgBody;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1;
+import cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.2;
+import mqq.os.MqqHandler;
 
-class bido<T>
-  implements bidm
+public class bido
+  implements apeb
 {
-  private static final String jdField_a_of_type_JavaLangString = ajyc.a(2131700942);
-  private final int jdField_a_of_type_Int;
-  private final bidp<T> jdField_a_of_type_Bidp;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public MqqHandler a;
   
-  bido(int paramInt, bidp<T> parambidp)
+  public bido(MqqHandler paramMqqHandler, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bidp = parambidp;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Bidp == null) {
-      return;
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      this.jdField_a_of_type_Bidp.a(paramInt, paramString, null);
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
       return;
     }
-    try
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.2(this, paramString));
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      paramString = (WeiyunPB.MsgBody)new WeiyunPB.MsgBody().mergeFrom(paramArrayOfByte);
-      paramString = (WeiyunPB.RspMsgBody)paramString.RspMsg_body.get();
-      if (paramString == null)
-      {
-        bifp.a().w("BaseCallback", "rspMsgBody is null.");
-        paramString = jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Bidp.a(1828003, paramString, null);
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      bifp.a().w("BaseCallback", "decode Rsp Body failed.", paramString);
-      paramString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Bidp.a(1828003, paramString, null);
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(100, 1500L);
       return;
     }
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      paramString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Bidp.a(1828001, paramString, null);
-      return;
-    case 26113: 
-      this.jdField_a_of_type_Bidp.a(paramString.LibInfoListGetMsgRsp_body);
-      return;
-    case 2402: 
-      this.jdField_a_of_type_Bidp.a(paramString.DiskFileBatchDownloadMsgRsp_body);
-      return;
-    case 2414: 
-      this.jdField_a_of_type_Bidp.a(paramString.DiskFileDocDownloadAbsMsgRsp_body);
-      return;
-    case 2509: 
-      this.jdField_a_of_type_Bidp.a(paramString.DiskDirFileBatchDeleteExMsgRsp_body);
-      return;
-    case 2803: 
-      this.jdField_a_of_type_Bidp.a(paramString.DiskPicBackupRsp_body);
-      return;
-    case 2804: 
-      this.jdField_a_of_type_Bidp.a(paramString.DiskAlbumStatusReportRsp_body);
-      return;
-    case 11001: 
-      this.jdField_a_of_type_Bidp.a(paramString.PwdQueryMsgRsp_body);
-      return;
-    case 11005: 
-      this.jdField_a_of_type_Bidp.a(paramString.PwdVerifyMsgRsp_body);
-      return;
-    case 245700: 
-      this.jdField_a_of_type_Bidp.a(paramString.CrossBidProxyCopyFileToOtherBidMsgRsp_body);
-      return;
-    case 245706: 
-      this.jdField_a_of_type_Bidp.a(paramString.CrossBidProxyOfflineFileGetListMsgRsp_body);
-      return;
-    case 246000: 
-      this.jdField_a_of_type_Bidp.a(paramString.QqSdkFileUploadMsgRsp_body);
-      return;
-    case 246001: 
-      this.jdField_a_of_type_Bidp.a(paramString.AioPicAndVideoCopyToWeiyunMsgRsp_body);
-      return;
-    }
-    this.jdField_a_of_type_Bidp.a(paramString.WeiyunShareAddFromMobileQQMsgRsp_body);
+    ThreadManager.getUIHandler().post(new WeiyunAIOUtils.WeiyunCallbackImpl.1(this));
   }
 }
 

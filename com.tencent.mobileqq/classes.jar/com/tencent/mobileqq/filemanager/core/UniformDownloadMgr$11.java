@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import apcy;
+import apdc;
 
 public class UniformDownloadMgr$11
   implements Runnable
 {
-  public UniformDownloadMgr$11(apcy paramapcy, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$11(apdc paramapdc, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    apcy.c(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    apcy.b(this.this$0);
+    apdc.c(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    apdc.b(this.this$0);
   }
 }
 

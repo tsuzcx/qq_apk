@@ -3,16 +3,16 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anjm;
-import aukm;
-import auma;
+import anjr;
+import auko;
+import aumc;
 
 public class PrecoverConfig
-  extends aukm
+  extends auko
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new anjm();
-  @auma
+  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new anjr();
+  @aumc
   public String businessId;
   public int taskId;
   public String xmlContent;

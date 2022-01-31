@@ -1,33 +1,64 @@
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz.1;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class smm
+  extends smh<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public static smk a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  
+  public smm(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    if (paramWSRedDotPushMsg == null) {}
-    do
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+  }
+  
+  private String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return Uri.parse(paramString).getQueryParameter("logsour");
+    }
+    return null;
+  }
+  
+  private void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
     {
-      return null;
-      if (paramWSRedDotPushMsg.mStrategyInfo != null) {}
-      for (int i = paramWSRedDotPushMsg.mStrategyInfo.getType(); (paramInt == 2) && (i == 1); i = 0) {
-        return new smn(paramWSRedDotPushMsg);
+      smp.a();
+      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+    }
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    boolean bool3 = vzw.a(paramContext);
+    snb.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      WSRecommendFragment.a(paramContext);
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
+    {
+      bool2 = bool1;
+      if (bool3)
+      {
+        sll.a().a(new WSWeSeeClientBiz.1(this, paramContext, paramWSPushStrategyInfo), 200L);
+        bool2 = true;
       }
-      if (i == 2) {
-        return new smo(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 3) {
-        return new smp(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 4) {
-        return new sml(paramWSRedDotPushMsg, paramInt);
-      }
-      if (paramInt == 2) {
-        return new smn(paramWSRedDotPushMsg);
-      }
-    } while (paramInt != 6);
-    return new smo(paramWSRedDotPushMsg, paramInt, paramIntent);
+    }
+    return bool2;
   }
 }
 

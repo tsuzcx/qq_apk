@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class bdau
-  implements View.OnTouchListener
+  extends acld
 {
-  public bdau(GroupListOpenFrame paramGroupListOpenFrame) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.c();
-    }
-    return true;
-  }
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

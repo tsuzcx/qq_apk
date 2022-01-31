@@ -1,48 +1,33 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 
-public class bkdd
-  implements bkas
+final class bkdd
+  implements Animator.AnimatorListener
 {
-  public bkdd(DoodleLayout paramDoodleLayout) {}
+  bkdd(bkde parambkde, ValueAnimator paramValueAnimator) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    veg.b("DoodleLayout", "deleteVote.");
-    if (DoodleLayout.a(this.a) != null)
-    {
-      bjyl localbjyl = (bjyl)DoodleLayout.a(this.a).a(bjyl.class);
-      if (localbjyl != null) {
-        localbjyl.d();
-      }
+    if (this.jdField_a_of_type_Bkde != null) {
+      this.jdField_a_of_type_Bkde.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+    if (this.jdField_a_of_type_Bkde != null) {
+      this.jdField_a_of_type_Bkde.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
   }
   
-  public boolean a(bkat parambkat)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(0);
-      DoodleLayout.b(this.a);
-      this.a.a.a.a(parambkat);
-      parambkat.k = true;
-      parambkat = parambkat.a;
-      if (!this.a.a.a()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        parambkat.lockData(bool);
-        this.a.a.requestLayout();
-        vel.a("video_shoot_new", "qa_edit", 1, 0, new String[0]);
-        return true;
-      }
+    if (this.jdField_a_of_type_Bkde != null) {
+      this.jdField_a_of_type_Bkde.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
     }
-    return false;
   }
 }
 

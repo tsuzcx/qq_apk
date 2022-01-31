@@ -1,8 +1,10 @@
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout;
+import android.view.View;
+import android.widget.TextView;
 
 public class afko
 {
-  public ThemeTabLayout a;
+  public View a;
+  public TextView a;
 }
 
 

@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public class behx
-  implements DialogInterface.OnClickListener
+class behx
+  implements AsyncResult
 {
-  public behx(PermissionSettingFragment paramPermissionSettingFragment, String paramString, boolean paramBoolean) {}
+  behx(behw parambehw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    PermissionSettingFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreAuthUiPermissionSettingFragment.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    betc.d("AuthState", "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
   }
 }
 

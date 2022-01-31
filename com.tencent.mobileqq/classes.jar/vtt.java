@@ -1,6 +1,17 @@
-public abstract interface vtt
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class vtt
+  implements View.OnClickListener
 {
-  public abstract void a();
+  vtt(vtr paramvtr, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    if (vtr.a(this.jdField_a_of_type_Vtr) != null) {
+      vtr.a(this.jdField_a_of_type_Vtr).a(this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

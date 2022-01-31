@@ -1,50 +1,20 @@
-import Wallet.PfaFriendRsp;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
-final class agyd
-  extends Handler
+public class agyd
+  implements DialogInterface.OnClickListener
 {
-  agyd(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public agyd(TopayManager.5.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
       return;
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessage.obj != null)
-    {
-      localObject1 = localObject2;
-      if ((paramMessage.obj instanceof PfaFriendRsp)) {
-        localObject1 = (PfaFriendRsp)paramMessage.obj;
-      }
-    }
-    boolean bool1;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (paramMessage.arg2 != 1) {
-        break label93;
-      }
-    }
-    for (;;)
-    {
-      agyc.a(bool1, (PfaFriendRsp)localObject1, bool2);
-      return;
-      bool1 = false;
-      break;
-      label93:
-      bool2 = false;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,58 +1,55 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.Closeable;
-import java.io.File;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class rql
 {
-  public static volatile rqo a = new rqo(BaseApplicationImpl.getContext(), "proteus");
+  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
   
-  public static long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  public rql(Context paramContext, String paramString)
   {
-    return a(paramInputStream, paramOutputStream, 8024);
+    a(paramContext, paramString);
   }
   
-  public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
+  private void a(Context paramContext, String paramString)
   {
-    byte[] arrayOfByte = new byte[paramInt];
-    for (long l = 0L;; l += paramInt)
-    {
-      paramInt = paramInputStream.read(arrayOfByte);
-      if (-1 == paramInt) {
-        break;
-      }
-      paramOutputStream.write(arrayOfByte, 0, paramInt);
-    }
-    return l;
+    b(paramContext, paramString);
   }
   
-  public static void a(Closeable paramCloseable)
+  private boolean a(String paramString)
   {
-    if (paramCloseable != null) {}
+    return (paramString == null) || (paramString.endsWith(".geojson")) || (paramString.equals("manifest"));
+  }
+  
+  private void b(Context paramContext, String paramString)
+  {
     try
     {
-      paramCloseable.close();
+      String[] arrayOfString = paramContext.getAssets().list(paramString);
+      if (arrayOfString != null)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if (!a(str)) {
+            b(paramContext, paramString + "/" + str);
+          }
+          i += 1;
+        }
+      }
       return;
     }
-    catch (IOException paramCloseable) {}
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    if (paramFile == null) {
-      return false;
+    catch (IOException paramContext)
+    {
+      QLog.e("Q.readinjoy.proteus", 1, "addFolderChild", paramContext);
     }
-    if (!paramFile.exists()) {
-      try
-      {
-        boolean bool = paramFile.mkdirs();
-        return bool;
-      }
-      finally {}
-    }
-    return true;
   }
 }
 

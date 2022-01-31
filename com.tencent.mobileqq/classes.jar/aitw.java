@@ -1,18 +1,36 @@
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+
 public class aitw
+  implements aius
 {
-  public int a;
-  public float[] a;
-  public int[] a;
-  public float[] b;
-  public int[] b;
+  private aitw(ApolloTextureView paramApolloTextureView) {}
   
-  public aitw()
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    this.jdField_b_of_type_ArrayOfFloat = new float[4];
-    this.jdField_a_of_type_ArrayOfInt = new int[4];
-    this.jdField_b_of_type_ArrayOfInt = new int[4];
-    this.jdField_a_of_type_Int = 0;
+    QLog.d("ApolloTextureView", 1, "[createContext], id:" + Thread.currentThread().getId());
+    if (this.a.mIsDestroy != null) {
+      this.a.mIsDestroy.set(false);
+    }
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+  }
+  
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    QLog.d("ApolloTextureView", 1, "[destroyContext], id:" + Thread.currentThread().getId());
+    if (this.a.mIsDestroy != null) {
+      this.a.mIsDestroy.set(true);
+    }
+    if (this.a.mRender != null) {
+      this.a.mRender.onDestroy();
+    }
+    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
   }
 }
 

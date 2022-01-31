@@ -1,73 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amwu
-  extends ampb<amwt>
 {
-  public int a()
-  {
-    return 585;
-  }
+  public int a;
+  public int b;
   
-  @NonNull
-  public amwt a(int paramInt)
+  public static amwu a(String paramString)
   {
-    return new amwt();
-  }
-  
-  @Nullable
-  public amwt a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    if (paramString == null) {}
+    do
     {
-      amwt localamwt = amwt.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      return null;
+      try
+      {
+        amwu localamwu = new amwu();
+        paramString = new JSONObject(paramString);
+        localamwu.a = paramString.optInt("switch", 0);
+        localamwu.b = paramString.optInt("stoppreload", 0);
+        QLog.d("ConfBean", 2, "confBean = " + localamwu.a);
+        return localamwu;
       }
-      return localamwt;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public Class<amwt> a()
+  public String toString()
   {
-    return amwt.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amwt paramamwt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramamwt.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("result:").append(this.a);
+    localStringBuilder.append(" stoppreload:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

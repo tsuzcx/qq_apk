@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import bbkb;
+import bbkp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -50,7 +50,7 @@ public class RecentItemVoteData
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bbkb.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = bbkp.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 

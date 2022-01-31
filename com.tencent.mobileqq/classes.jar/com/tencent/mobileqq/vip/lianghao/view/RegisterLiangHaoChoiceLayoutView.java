@@ -8,9 +8,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbyb;
-import bbyg;
-import bbyi;
+import bbyp;
+import bbyu;
+import bbyw;
 import java.util.List;
 
 public class RegisterLiangHaoChoiceLayoutView
@@ -19,7 +19,7 @@ public class RegisterLiangHaoChoiceLayoutView
 {
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbyb jdField_a_of_type_Bbyb;
+  private bbyp jdField_a_of_type_Bbyp;
   private LiangHaoView[] jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView = new LiangHaoView[4];
   private View b;
   
@@ -44,8 +44,8 @@ public class RegisterLiangHaoChoiceLayoutView
   private void a(int paramInt)
   {
     LiangHaoView localLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[paramInt];
-    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_Bbyb != null)) {
-      this.jdField_a_of_type_Bbyb.a(localLiangHaoView.a);
+    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_Bbyp != null)) {
+      this.jdField_a_of_type_Bbyp.a(localLiangHaoView.a);
     }
   }
   
@@ -53,7 +53,7 @@ public class RegisterLiangHaoChoiceLayoutView
   {
     int i = 0;
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131561522, this, true);
+    LayoutInflater.from(getContext()).inflate(2131561521, this, true);
     this.jdField_a_of_type_AndroidViewView = findViewById(2131369153);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369152));
     this.b = findViewById(2131369151);
@@ -73,27 +73,27 @@ public class RegisterLiangHaoChoiceLayoutView
     }
   }
   
-  public void a(bbyg parambbyg)
+  public void a(bbyu parambbyu)
   {
-    if ((parambbyg == null) || (parambbyg.a == null) || (parambbyg.a.size() == 0)) {
+    if ((parambbyu == null) || (parambbyu.a == null) || (parambbyu.a.size() == 0)) {
       return;
     }
     int i = 0;
     if (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView.length)
     {
-      if (parambbyg.a.size() <= i) {
+      if (parambbyu.a.size() <= i) {
         ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(8);
       }
       for (;;)
       {
         i += 1;
         break;
-        bbyi localbbyi = (bbyi)parambbyg.a.get(i);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localbbyi);
+        bbyw localbbyw = (bbyw)parambbyu.a.get(i);
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localbbyw);
         ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(0);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambbyg.c);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambbyu.c);
   }
   
   public void a(boolean paramBoolean)
@@ -121,8 +121,8 @@ public class RegisterLiangHaoChoiceLayoutView
   
   public void onClick(View paramView)
   {
-    bbyb localbbyb = this.jdField_a_of_type_Bbyb;
-    if (localbbyb == null) {
+    bbyp localbbyp = this.jdField_a_of_type_Bbyp;
+    if (localbbyp == null) {
       return;
     }
     switch (paramView.getId())
@@ -137,10 +137,10 @@ public class RegisterLiangHaoChoiceLayoutView
     default: 
       return;
     case 2131369151: 
-      localbbyb.b();
+      localbbyp.b();
       return;
     case 2131369153: 
-      localbbyb.a();
+      localbbyp.a();
       return;
     case 2131369160: 
       a(0);
@@ -155,9 +155,9 @@ public class RegisterLiangHaoChoiceLayoutView
     a(3);
   }
   
-  public void setLiangHaoHelper(bbyb parambbyb)
+  public void setLiangHaoHelper(bbyp parambbyp)
   {
-    this.jdField_a_of_type_Bbyb = parambbyb;
+    this.jdField_a_of_type_Bbyp = parambbyp;
   }
 }
 

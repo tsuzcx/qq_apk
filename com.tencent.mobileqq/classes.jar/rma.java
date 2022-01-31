@@ -1,27 +1,16 @@
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 class rma
-  implements View.OnClickListener
+  extends osm
 {
   rma(rlz paramrlz) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong)
   {
-    try
-    {
-      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.b.getString("id_attribute_text"));
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + paramView.toString());
-    }
+    rlz.a(this.a, paramBoolean, paramLong, rlz.a(this.a));
+  }
+  
+  public void g(boolean paramBoolean)
+  {
+    rlz.a(this.a, paramBoolean);
   }
 }
 

@@ -1,16 +1,17 @@
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdi
-  extends oyg
+  extends oyd
 {
-  public rdi(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
+  public rdi(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    paramoxx.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

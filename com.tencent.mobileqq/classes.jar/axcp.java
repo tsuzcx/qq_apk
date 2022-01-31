@@ -1,69 +1,62 @@
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
 import android.content.Intent;
-import android.os.Bundle;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
 
 public class axcp
   extends MSFServlet
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    int i;
+    if (paramFromServiceMsg != null)
     {
-      paramIntent = new Bundle();
-      paramIntent.putString("msg", "servlet result code is " + i);
-      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
-      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+      i = paramFromServiceMsg.getResultCode();
       if (i != 1000) {
-        break label148;
+        break label83;
       }
-      paramFromServiceMsg = bhka.a(paramFromServiceMsg.getWupBuffer());
-      if (paramFromServiceMsg == null) {
+      paramIntent = bhkt.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent == null) {
+        break label68;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QbossErrorReportServlet", 2, "report qboss success state = " + paramIntent.iRet);
+      }
+    }
+    label68:
+    label83:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+        i = -1;
         break;
-      }
-      paramIntent.putInt("ret", 0);
-      paramIntent.putSerializable("data", paramFromServiceMsg);
-      notifyObserver(null, 1007, true, paramIntent, atzo.class);
+      } while (!QLog.isColorLevel());
+      QLog.d("QbossErrorReportServlet", 2, "report qboss exception fail, decode result is null");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
-    }
-    paramIntent.putInt("ret", -2);
-    notifyObserver(null, 1007, false, paramIntent, atzo.class);
-    return;
-    label148:
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
-    }
-    paramIntent.putInt("ret", -3);
-    notifyObserver(null, 1007, false, paramIntent, atzo.class);
+    QLog.d("QbossErrorReportServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    long l = paramIntent.getLongExtra("selfuin", 0L);
-    Object localObject = paramIntent.getIntegerArrayListExtra("appid");
-    boolean bool = paramIntent.getBooleanExtra("needReport", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    bhka localbhka = new bhka(Long.valueOf(l).longValue(), (ArrayList)localObject, bool);
-    localObject = localbhka.encode();
+    long l = paramIntent.getLongExtra("uin", 0L);
+    int i = paramIntent.getIntExtra("appId", 0);
+    int j = paramIntent.getIntExtra("taskId", 0);
+    Object localObject = paramIntent.getStringExtra("message");
+    bhkt localbhkt = new bhkt(l, i, j, paramIntent.getIntExtra("code", 0), (String)localObject);
+    localObject = localbhkt.encode();
     paramIntent = (Intent)localObject;
     if (localObject == null)
     {
-      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localbhka.uniKey());
+      QLog.e("QbossErrorReportServlet", 1, "onSend request encode result is null.cmd=" + localbhkt.uniKey());
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbhka.uniKey());
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbhkt.uniKey());
     paramPacket.putSendData(paramIntent);
   }
 }

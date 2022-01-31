@@ -1,12 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class bbkz
-  implements DialogInterface.OnClickListener
+final class bbkz
+  implements bblf<Integer>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
   {
-    axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    int i = paramInteger1.intValue();
+    float f = i;
+    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
   }
 }
 

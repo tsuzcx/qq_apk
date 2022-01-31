@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abtu;
+import abtq;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +11,12 @@ public class PublicFragmentActivityForTool
 {
   public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    abtu.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+    abtq.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
   }
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    abtu.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+    abtq.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public String getModuleId()

@@ -1,16 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
 
-class vlh
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface vlh<T extends vlg>
 {
-  vlh(vlf paramvlf) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.g();
-  }
+  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
 }
 
 

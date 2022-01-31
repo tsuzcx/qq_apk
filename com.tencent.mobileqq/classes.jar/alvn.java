@@ -1,5 +1,7 @@
 public abstract interface alvn
 {
+  public abstract void a();
+  
   public abstract void a(String paramString);
 }
 

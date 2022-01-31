@@ -1,17 +1,14 @@
-import android.os.Message;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
 class bjvj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnShowListener
 {
-  bjvj(bjvc parambjvc) {}
+  bjvj(bjve parambjve) {}
   
-  public void onGlobalLayout()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getViewTreeObserver().removeGlobalOnLayoutListener(bjvc.a(this.a));
-    this.a.jdField_a_of_type_Bjww.a(Message.obtain(null, 20));
+    this.a.a.a(46);
   }
 }
 

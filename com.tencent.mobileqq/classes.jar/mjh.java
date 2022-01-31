@@ -1,34 +1,46 @@
-import android.os.Build;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mjh
-  extends msx
+  implements DialogInterface.OnClickListener
 {
-  public mjh(VideoControlUI paramVideoControlUI) {}
+  public mjh(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void a()
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    this.a.m();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    if (!this.a.h) {
-      this.a.e(0);
-    }
-    if ("GT-I9100G".equals(Build.MODEL))
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {}
+    long l;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
+      do
+      {
+        return;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f != null)) {
+          axqy.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, "");
+        }
+        muc.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
+    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
+    {
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
+      if (paramInt != -1)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
       }
       return;
     }
-    this.a.F();
   }
 }
 

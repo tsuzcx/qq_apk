@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
-import beod;
+import beou;
 
 public class MiniAppVideoPlayer$8$1
   implements Runnable
 {
-  public MiniAppVideoPlayer$8$1(beod parambeod) {}
+  public MiniAppVideoPlayer$8$1(beou parambeou) {}
   
   public void run()
   {

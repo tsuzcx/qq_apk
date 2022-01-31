@@ -1,37 +1,27 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import dov.com.qq.im.ptv.LightWeightProgress;
 
-class bjpz
-  implements View.OnTouchListener
+public class bjpz
+  extends AnimatorListenerAdapter
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public bjpz(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
   
-  bjpz(bjpy parambjpy) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView 50ms delay=90ms end");
     }
-    do
-    {
-      return true;
-      this.jdField_a_of_type_Bjpy.a.a.setBackgroundColor(this.jdField_a_of_type_Bjpy.a.getResources().getColor(2131165321));
-      this.jdField_a_of_type_Boolean = true;
-      return true;
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Bjpy.a.a.setBackgroundColor(this.jdField_a_of_type_Bjpy.a.getResources().getColor(2131165323));
-    if (!this.jdField_a_of_type_Bjpy.a.f)
-    {
-      this.jdField_a_of_type_Bjpy.a.f = true;
-      this.jdField_a_of_type_Bjpy.a.h();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setStatus(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView begin");
     }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
   }
 }
 

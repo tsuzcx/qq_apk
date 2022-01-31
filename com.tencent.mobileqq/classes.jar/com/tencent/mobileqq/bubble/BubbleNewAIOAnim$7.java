@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.bubble;
 
-import ambb;
-import ambw;
-import amcd;
+import amba;
+import ambv;
+import amcc;
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BubbleNewAIOAnim$7
   implements Runnable
 {
-  public BubbleNewAIOAnim$7(ambw paramambw) {}
+  public BubbleNewAIOAnim$7(ambv paramambv) {}
   
   public void run()
   {
@@ -24,16 +24,16 @@ public class BubbleNewAIOAnim$7
       Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext())
       {
-        amcd localamcd = (amcd)localIterator.next();
-        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Ambb.a);
+        amcc localamcc = (amcc)localIterator.next();
+        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Amba.a);
         int i = 0;
         label93:
         Object localObject1;
         String str;
-        if (i < localamcd.jdField_b_of_type_Int)
+        if (i < localamcc.jdField_b_of_type_Int)
         {
-          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localamcd.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
-          str = localamcd.a + (String)localObject1;
+          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localamcc.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
+          str = localamcc.a + (String)localObject1;
           if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
             break label310;
           }

@@ -1,33 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agcl
-  implements agcg
+  implements DialogInterface.OnClickListener
 {
-  agcl(agch paramagch) {}
+  agcl(agck paramagck) {}
   
-  public void a()
-  {
-    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-  }
-  
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    boolean bool = true;
-    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    localObject = ota.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
-    {
-      ((ota)localObject).b(bool);
-      return;
-      bool = false;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

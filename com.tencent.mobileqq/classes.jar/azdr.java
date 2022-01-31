@@ -1,22 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.support.annotation.IntRange;
 
-public class azdr
-  implements Animation.AnimationListener
+public abstract interface azdr
 {
-  public azdr(MediaPreviewActivity paramMediaPreviewActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.b = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString, @IntRange(from=1L, to=4L) int paramInt);
 }
 
 

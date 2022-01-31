@@ -1,6 +1,12 @@
-public abstract interface bieq
+import com.tencent.weiyun.utils.Singleton;
+
+final class bieq
+  extends Singleton<biep, Void>
 {
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString);
+  protected biep a(Void paramVoid)
+  {
+    return new biep(null);
+  }
 }
 
 

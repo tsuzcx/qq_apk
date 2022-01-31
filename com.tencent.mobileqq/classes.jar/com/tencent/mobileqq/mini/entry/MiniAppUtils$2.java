@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.text.TextUtils;
-import bcxm;
+import bcyb;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
@@ -18,7 +18,7 @@ final class MiniAppUtils$2
   
   public void run()
   {
-    Object localObject2 = Storage.open(this.val$jsPluginEngine.activityContext, String.valueOf(bcxm.a().a()), this.val$jsPluginEngine.appBrandRuntime.getApkgInfo().appId);
+    Object localObject2 = Storage.open(this.val$jsPluginEngine.activityContext, String.valueOf(bcyb.a().a()), this.val$jsPluginEngine.appBrandRuntime.getApkgInfo().appId);
     String[] arrayOfString;
     if (localObject2 != null)
     {

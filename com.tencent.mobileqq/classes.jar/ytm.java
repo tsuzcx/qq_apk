@@ -1,120 +1,72 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.GridLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
-import com.tencent.gdtad.api.adbox.GdtAdBoxDialogCompact.1;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 
 public class ytm
-  extends ytg
 {
-  private final boolean a;
+  private ytl jdField_a_of_type_Ytl;
+  private ytn jdField_a_of_type_Ytn;
   
-  public ytm(@NonNull Context paramContext)
+  public ytm(ytn paramytn, ytl paramytl)
   {
-    super(paramContext);
-    if (this.jdField_a_of_type_AndroidAppActivity.getResources().getConfiguration().orientation == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    yxp.a("GdtAdBoxPresenter", "GdtAdBoxPresenter() called with: view = [" + paramytn + "], model = [" + paramytl + "]");
+    this.jdField_a_of_type_Ytn = paramytn;
+    this.jdField_a_of_type_Ytl = paramytl;
+    paramytl.a(this);
   }
   
-  protected void a()
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      yxs.a("GdtAdBoxDialog", "landscape");
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368706);
-        Object localObject = localImageView.getLayoutParams();
-        if ((localObject instanceof FrameLayout.LayoutParams))
-        {
-          localObject = (FrameLayout.LayoutParams)localObject;
-          ((FrameLayout.LayoutParams)localObject).width = yze.a(24.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-          ((FrameLayout.LayoutParams)localObject).height = yze.a(24.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-          localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        localImageView = (ImageView)findViewById(2131378799);
-        int i = yze.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-        localImageView.setPadding(i, i, i, i);
-      }
-      return;
-    }
-    super.a();
-    yxs.a("GdtAdBoxDialog", "portrait");
+    yxp.a("GdtAdBoxPresenter", "onCreate() called");
+    this.jdField_a_of_type_Ytn.b(this.jdField_a_of_type_Ytl);
   }
   
-  protected void a(yto paramyto)
+  public void a(Activity paramActivity, View paramView, GdtAdBoxData paramGdtAdBoxData)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean)
+    paramGdtAdBoxData = new GdtHandler.Params();
+    GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
+    paramGdtAdBoxData.c = 11;
+    paramGdtAdBoxData.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    paramActivity = paramView.getTag(2131366945);
+    if (paramActivity == null)
     {
-      yxs.a("GdtAdBoxDialog", "bindData() called with: model = [" + paramyto + "]");
-      i = this.jdField_a_of_type_Yte.a().getAds().size();
-      if (i == 0)
-      {
-        yxs.a("GdtAdBoxDialog", "bindData() called with: total = [" + i + "]");
-        this.jdField_a_of_type_AndroidViewView.post(new GdtAdBoxDialogCompact.1(this));
-        return;
-      }
-      if (i <= 9) {
-        break label399;
-      }
-      i = 9;
-    }
-    label399:
-    for (;;)
-    {
-      int m = (int)Math.ceil(i * 1.0F / 3);
-      this.jdField_a_of_type_AndroidWidgetGridLayout.setColumnCount(3);
-      this.jdField_a_of_type_AndroidWidgetGridLayout.setRowCount(m);
-      int n = yze.a(21.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      int i1 = yze.a(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      int i2 = yze.a(8.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      int i3 = yze.a(0.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      int i4 = yze.a(55.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      int i5 = i4 + yze.a(21.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      int i6 = yze.a(16.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-      this.jdField_a_of_type_AndroidWidgetGridLayout.removeAllViews();
-      paramyto = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity);
-      int j = 0;
-      if (j < m)
-      {
-        int k = 0;
-        for (;;)
-        {
-          if ((k >= 3) || (3 * j + k >= i))
-          {
-            j += 1;
-            break;
-          }
-          LinearLayout localLinearLayout = (LinearLayout)paramyto.inflate(2131559098, null);
-          super.a(3, n, i1, i4, i5, i6, j, k, localLinearLayout);
-          this.jdField_a_of_type_AndroidWidgetGridLayout.addView(localLinearLayout);
-          k += 1;
-        }
-      }
-      paramyto = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      paramyto.width = (3 * (i4 + i6) + n + i2);
-      paramyto.height = ((i5 + i6) * m + i1 + i3);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramyto);
-      return;
-      super.a(paramyto);
+      yxp.d("GdtAdBoxPresenter", "onClick() tag == null");
       return;
     }
+    paramActivity = (GdtAd)paramActivity;
+    yxp.a("GdtAdBoxPresenter", "onClick() open url = [" + paramActivity.info.dest_info.landing_page.get() + "]");
+    paramGdtAdBoxData.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramActivity;
+    paramGdtAdBoxData.jdField_a_of_type_Boolean = true;
+    paramGdtAdBoxData.jdField_b_of_type_Boolean = true;
+    paramGdtAdBoxData.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localGdtAppReceiver);
+    paramActivity = new Bundle();
+    paramActivity.putString("big_brother_ref_source_key", "biz_src_miniapp");
+    paramGdtAdBoxData.jdField_a_of_type_AndroidOsBundle = paramActivity;
+    GdtHandler.a(paramGdtAdBoxData);
   }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    yxp.a("GdtAdBoxPresenter", "onResume() called");
+  }
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

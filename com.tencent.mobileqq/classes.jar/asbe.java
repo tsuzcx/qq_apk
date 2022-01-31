@@ -1,121 +1,198 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Shader.TileMode;
 import java.util.ArrayList;
 
 public class asbe
 {
-  public final int a;
-  public asbd a;
-  public final String a;
-  public final ArrayList<asaz> a;
-  public final int b;
-  public asbd b;
-  public final int c;
-  private final int d;
+  public long a;
+  public asbf a;
+  public String a;
+  public ArrayList<asbg> a;
+  public long b;
+  public asbf b;
+  public ArrayList<asbb> b;
   
-  public asbe(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<asaz> paramArrayList)
+  public asbe()
   {
-    this.jdField_a_of_type_Asbd = new asbd();
-    this.jdField_b_of_type_Asbd = new asbd();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.c = paramInt4;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Asbf = new asbf();
+    this.jdField_b_of_type_Asbf = new asbf();
   }
   
-  public asbe(String paramString, int paramInt1, int paramInt2, ArrayList<asaz> paramArrayList)
+  public int a()
   {
-    this.jdField_a_of_type_Asbd = new asbd();
-    this.jdField_b_of_type_Asbd = new asbd();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public long a()
+  public asbe a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      return ((asaz)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long;
-    }
-    return 0L;
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2)
-  {
-    a(paramCanvas, paramInt1, paramInt2, paramPaint1, paramPaint2, null, null, 1);
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt3)
-  {
-    paramInt1 = this.jdField_a_of_type_Int + paramInt1;
-    if ((this.jdField_a_of_type_Asbd != null) && (this.jdField_a_of_type_Asbd.a != null) && (!this.jdField_a_of_type_Asbd.a.isRecycled()))
+    asbe localasbe = new asbe();
+    localasbe.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localasbe.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    localasbe.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
     {
-      paramBitmap1 = new Rect(paramInt1 - this.jdField_a_of_type_Asbd.c - this.jdField_a_of_type_Asbd.a.getWidth(), (int)(paramInt2 - paramPaint1.getTextSize()), paramInt1 - this.jdField_a_of_type_Asbd.c, (int)(this.jdField_a_of_type_Asbd.a.getHeight() + paramInt2 - paramPaint1.getTextSize()));
-      paramCanvas.drawBitmap(this.jdField_a_of_type_Asbd.a, null, paramBitmap1, null);
+      localasbe.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      localasbe.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
     }
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2 - paramInt3, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 - paramInt3, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2 - paramInt3, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 + paramInt3, paramInt2 + paramInt3, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 + paramInt3, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2 + paramInt3, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1 - paramInt3, paramInt2, paramPaint2);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2, paramPaint1);
+    localasbe.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    return localasbe;
   }
   
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint1, Paint paramPaint2, Paint paramPaint3, int paramInt3, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  public ArrayList<asbg> a()
   {
-    int i = this.d;
-    paramFloat2 += this.d;
-    paramPaint3.setShader(new LinearGradient(paramFloat2, paramInt2, paramFloat2 + paramFloat1, paramInt2, paramArrayOfInt, paramArrayOfFloat, Shader.TileMode.CLAMP));
-    if (paramInt3 > 0)
-    {
-      paramArrayOfInt = (asaz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 - 1);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(0, paramArrayOfInt.jdField_b_of_type_Int), paramInt1 + i, paramInt2, paramPaint2);
-    }
-    paramPaint2 = (asaz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3);
-    if (paramInt3 == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {}
-    for (paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length());; paramPaint2 = this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, paramPaint2.jdField_b_of_type_Int))
-    {
-      paramCanvas.drawText(paramPaint2, paramFloat2, paramInt2, paramPaint3);
-      if (paramInt3 < this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    int k = (int)paramPaint1.measureText(this.jdField_a_of_type_JavaLangString);
+    int m = (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString);
+    int j = 0;
+    int i = 0;
+    if (k <= paramInt) {
+      if (paramBoolean2)
       {
-        paramPaint2 = (asaz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt3 + 1);
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString.substring(paramPaint2.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString.length()), paramFloat2 + paramFloat1, paramInt2, paramPaint1);
+        paramInt = j;
+        paramPaint1 = new asbg(this.jdField_a_of_type_JavaLangString, paramInt, i, m, k, this.jdField_b_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
       }
-      return;
     }
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = this.d;; i = this.jdField_a_of_type_Int)
+    String[] arrayOfString;
+    int i6;
+    do
     {
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + paramInt1, paramInt2, paramPaint);
       return;
-    }
-  }
-  
-  public long b()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      i = paramInt - (int)paramPaint2.measureText(this.jdField_a_of_type_JavaLangString) >> 1;
+      j = paramInt - k >> 1;
+      paramInt = i;
+      i = j;
+      break;
+      if (paramBoolean1)
+      {
+        paramPaint1 = new asbg(this.jdField_a_of_type_JavaLangString, 0, 0, m, k, this.jdField_b_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramPaint1);
+        return;
+      }
+      arrayOfString = asbd.a(this.jdField_a_of_type_JavaLangString, paramPaint1, paramInt, paramInt);
+      i6 = arrayOfString.length;
+    } while (i6 <= 0);
+    int n = 0;
+    j = 0;
+    i = 0;
+    int i3 = 0;
+    int i1 = 0;
+    int i2 = 0;
+    m = 0;
+    k = 0;
+    label198:
+    label210:
+    Object localObject;
+    int i4;
+    asbb localasbb;
+    if (i3 < i6)
     {
-      asaz localasaz = (asaz)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      long l = localasaz.jdField_a_of_type_Long;
-      return localasaz.jdField_b_of_type_Long + l;
+      if (!paramBoolean2) {
+        break label481;
+      }
+      localObject = null;
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        break label705;
+      }
+      n += arrayOfString[i3].length();
+      localObject = new ArrayList();
+      i4 = m;
+      m = j;
+      j = k;
+      k = i4;
+      if (m >= this.jdField_b_of_type_JavaUtilArrayList.size()) {
+        break label678;
+      }
+      localasbb = (asbb)this.jdField_b_of_type_JavaUtilArrayList.get(m);
+      if ((i3 == 0) || (i != m)) {
+        break label663;
+      }
+      k = n - arrayOfString[i3].length();
+      i4 = localasbb.jdField_a_of_type_Int;
+      j = k;
+      k = i4 - k;
+      label327:
+      if ((localasbb.jdField_a_of_type_Int > n) || (localasbb.jdField_b_of_type_Int < n)) {
+        break label573;
+      }
+      if (i3 != 0) {
+        break label520;
+      }
+      ((ArrayList)localObject).add(new asbb(localasbb.jdField_a_of_type_Long, localasbb.jdField_b_of_type_Long, localasbb.jdField_a_of_type_Int, arrayOfString[i3].length()));
+      label388:
+      m += 1;
+      i4 = m;
+      i = n;
+      n = k;
+      k = i4;
     }
-    return 0L;
+    for (;;)
+    {
+      localObject = new asbg(arrayOfString[i3], i1, i2, (ArrayList)localObject);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      int i5 = i3 + 1;
+      i3 = k;
+      i4 = m;
+      m = j;
+      k = n;
+      j = i4;
+      n = i;
+      i = i3;
+      i3 = i5;
+      break label198;
+      break;
+      label481:
+      i1 = (int)paramPaint2.measureText(arrayOfString[i3]);
+      i2 = paramInt - (int)paramPaint1.measureText(arrayOfString[i3]) >> 1;
+      i1 = paramInt - i1 >> 1;
+      break label210;
+      label520:
+      i = localasbb.jdField_a_of_type_Int;
+      i4 = arrayOfString[i3].length();
+      ((ArrayList)localObject).add(new asbb(localasbb.jdField_a_of_type_Long, localasbb.jdField_b_of_type_Long, i - j - k, i4));
+      break label388;
+      label573:
+      if (i3 == 0) {
+        ((ArrayList)localObject).add(localasbb);
+      }
+      for (;;)
+      {
+        i4 = k;
+        m += 1;
+        k = j;
+        j = i4;
+        break;
+        i4 = localasbb.jdField_a_of_type_Int;
+        i5 = localasbb.jdField_b_of_type_Int;
+        ((ArrayList)localObject).add(new asbb(localasbb.jdField_a_of_type_Long, localasbb.jdField_b_of_type_Long, i4 - j - k, i5 - j - k));
+      }
+      label663:
+      i4 = j;
+      j = k;
+      k = i4;
+      break label327;
+      label678:
+      i4 = k;
+      i5 = j;
+      k = i;
+      i = n;
+      j = i4;
+      n = i5;
+      continue;
+      label705:
+      i4 = k;
+      i5 = j;
+      k = i;
+      i = n;
+      j = m;
+      n = i4;
+      m = i5;
+    }
   }
 }
 

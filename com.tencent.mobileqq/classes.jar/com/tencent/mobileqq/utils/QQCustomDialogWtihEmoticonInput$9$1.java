@@ -8,8 +8,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
-import bbhb;
-import bbkx;
+import bbhp;
+import bbll;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.ref.SoftReference;
@@ -38,7 +38,7 @@ class QQCustomDialogWtihEmoticonInput$9$1
         localObject = this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
         if (localObject != null)
         {
-          ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - bbkx.a(10.0F));
+          ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - bbll.a(10.0F));
           this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
         }
       }
@@ -66,11 +66,11 @@ class QQCustomDialogWtihEmoticonInput$9$1
         i = ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext());
         i += (k - n - i) / 2;
         if (i < m) {}
-        for (i = m - i;; i = m + n - k + bbkx.a(10.0F)) {
+        for (i = m - i;; i = m + n - k + bbll.a(10.0F)) {
           break;
         }
       }
-      i = m + n - k + bbkx.a(10.0F);
+      i = m + n - k + bbll.a(10.0F);
       break;
       label396:
       localStringBuilder.append("|context is not null");

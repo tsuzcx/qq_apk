@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.search.mostused;
 
-import awps;
-import awpx;
+import awpu;
+import awpz;
 import com.tencent.qphone.base.util.QLog;
 
 public class MostUsedSearchResultManager$1
   implements Runnable
 {
-  public MostUsedSearchResultManager$1(awpx paramawpx, MostUsedSearchItem paramMostUsedSearchItem) {}
+  public MostUsedSearchResultManager$1(awpz paramawpz, MostUsedSearchItem paramMostUsedSearchItem) {}
   
   public void run()
   {
-    if (awpx.a(this.this$0) != null)
+    if (awpz.a(this.this$0) != null)
     {
-      awpx.a(this.this$0).a(awpx.a(this.this$0), this.a);
-      awpx.a(this.this$0).a(awpx.a(this.this$0));
+      awpz.a(this.this$0).a(awpz.a(this.this$0), this.a);
+      awpz.a(this.this$0).a(awpz.a(this.this$0));
       return;
     }
     QLog.e("MostUsedSearchResultManager", 2, "UpdateItemUsed NULL cache");

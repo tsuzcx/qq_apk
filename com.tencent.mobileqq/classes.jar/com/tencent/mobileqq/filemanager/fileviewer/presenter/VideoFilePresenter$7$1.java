@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.PowerManager.WakeLock;
-import appp;
-import appy;
-import apqx;
+import appt;
+import apqc;
+import aprb;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoFilePresenter$7$1
   implements Runnable
 {
-  public VideoFilePresenter$7$1(appy paramappy) {}
+  public VideoFilePresenter$7$1(apqc paramapqc) {}
   
   public void run()
   {
-    appp.b(this.a.a, true);
-    appp.a(this.a.a, 0);
-    appp.a(this.a.a).release();
+    appt.b(this.a.a, true);
+    appt.a(this.a.a, 0);
+    appt.a(this.a.a).release();
     this.a.a.a.c(0);
     this.a.a.a.b(0L);
     if (QLog.isDevelopLevel()) {

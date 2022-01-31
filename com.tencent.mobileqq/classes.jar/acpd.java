@@ -1,49 +1,32 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.UpgradeTipsDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class acpd
-  extends WebViewClient
+  implements View.OnClickListener
 {
-  public acpd(UpgradeTipsDialog paramUpgradeTipsDialog) {}
+  public acpd(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+    if ((paramView == null) || (paramView.length() == 0)) {
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131692083), 0).show();
     }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
+    while (paramView == null) {
+      return;
     }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
-    }
-    axqw.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
-      return true;
-    }
-    this.a.a.loadUrl(paramString);
-    return true;
+    this.a.a(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+    VerifyCodeActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acpd
  * JD-Core Version:    0.7.0.1
  */

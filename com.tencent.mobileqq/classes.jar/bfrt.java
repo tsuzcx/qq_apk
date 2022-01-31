@@ -1,24 +1,9 @@
-import com.tencent.widget.HongBaoListView;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
 public abstract interface bfrt
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(HongBaoListView paramHongBaoListView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(HongBaoListView paramHongBaoListView);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(HongBaoListView paramHongBaoListView);
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
 }
 
 

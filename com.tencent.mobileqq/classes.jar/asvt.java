@@ -1,32 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
 
 public class asvt
-  extends BroadcastReceiver
+  implements amkg
 {
   public asvt(QQPlayerService paramQQPlayerService) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onServiceSyncSucc(boolean paramBoolean)
   {
-    if (QQPlayerService.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
-      }
+    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
+      QQPlayerService.a(this.a).e();
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-      }
-    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
-    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-      this.a.a.b = true;
-    }
-    QQPlayerService.c(this.a.getApplicationContext());
   }
 }
 

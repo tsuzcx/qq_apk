@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiPictureUrl;
+import cooperation.qzone.model.ImageTagInfo;
 
 public final class bhff
-  implements Parcelable.Creator<WeishiPictureUrl>
+  implements Parcelable.Creator<ImageTagInfo>
 {
-  public WeishiPictureUrl a(Parcel paramParcel)
+  public ImageTagInfo a(Parcel paramParcel)
   {
-    return new WeishiPictureUrl(paramParcel);
+    return new ImageTagInfo(paramParcel, null);
   }
   
-  public WeishiPictureUrl[] a(int paramInt)
+  public ImageTagInfo[] a(int paramInt)
   {
-    return new WeishiPictureUrl[paramInt];
+    return new ImageTagInfo[paramInt];
   }
 }
 

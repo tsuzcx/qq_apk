@@ -1,43 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class ayxn
+public class ayxn
 {
-  static final String TAG = "PreDownload.Task";
-  protected QQAppInterface app;
-  protected ayxq ctrl;
-  public String key;
-  protected Handler subHandler;
-  public Object userData;
+  private Map<String, String> a = new HashMap();
   
-  protected ayxn(QQAppInterface paramQQAppInterface, String paramString)
+  public String a(String paramString)
   {
-    this.key = paramString;
-    this.app = paramQQAppInterface;
-    this.ctrl = ((ayxq)this.app.getManager(193));
-    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
+    paramString = ayxl.a(paramString);
+    return (String)this.a.get(paramString);
   }
   
-  public final void cancel()
+  public void a(String paramString1, String paramString2)
   {
-    this.subHandler.post(new AbsPreDownloadTask.2(this));
-  }
-  
-  public abstract void realCancel();
-  
-  public abstract void realStart();
-  
-  public final void start()
-  {
-    this.subHandler.post(new AbsPreDownloadTask.1(this));
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.key + "]";
+    this.a.put(paramString1, paramString2);
   }
 }
 

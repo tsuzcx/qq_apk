@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.view.View;
 
-public class aosm
-  implements DialogInterface.OnClickListener
+class aosm
+  implements bfqj
 {
-  public aosm(QfileLocalFileAppTabView.1.1 param1) {}
+  aosm(aosj paramaosj, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QfileLocalFileAppTabView.a(this.a.a.this$0);
-    this.a.a.this$0.c(true);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

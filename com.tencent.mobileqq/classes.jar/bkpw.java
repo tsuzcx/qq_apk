@@ -1,153 +1,154 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import cooperation.qzone.util.QZLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.HashSet;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bkpw
-  extends bjwu
+  extends bjxn
 {
-  private static final SparseArray<bkph> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  bjbn jdField_a_of_type_Bjbn = new bkpx(this);
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public Activity a;
+  public View a;
+  public QzoneVerticalVideoTopicInfo a;
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
+  public String d;
+  public int e = -1;
+  public String e;
+  public int f = -1;
+  public boolean f;
+  public int g;
+  public boolean g;
+  private int h = -1;
+  public boolean h;
+  public boolean i = true;
+  public boolean j;
+  public boolean k = true;
+  public boolean l = true;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  public boolean p;
+  public boolean q;
+  public boolean r;
+  public boolean s;
   
-  static
+  public bkpw(Activity paramActivity)
   {
-    jdField_a_of_type_AndroidUtilSparseArray.put(3000, bkph.a(99, 1, 0, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(5, bkph.a(99, 3, 0, bjvc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(6, bkph.a(99, 5, 0, bjvc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(7, bkph.a(99, 7, 0, bjvc.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(2, bkph.a(99, 4, 0, bjdd.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(30, bkph.a(99, 6, 0, bjtg.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(28, bkph.a(99, 9, 0, bjxt.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(29, bkph.a(99, 8, 0, bjtg.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(4001, bkph.a(99, 16, 0, bjtg.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3005, bkph.a(99, 2, 0, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3006, bkph.a(99, 15, 0, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3002, bkph.a(99, 10, 1, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3003, bkph.a(99, 10, 2, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3001, bkph.a(99, 13, 0, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3007, bkph.a(99, 12, 1, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3008, bkph.a(99, 12, 2, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3004, bkph.a(99, 14, 0, bkpw.class));
-    jdField_a_of_type_AndroidUtilSparseArray.put(3009, bkph.a(99, 11, 0, bkpw.class));
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_g_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    if (paramActivity.getIntent().getIntExtra("qqstory_slide_show_scene", -1) == 22) {}
+    for (;;)
+    {
+      this.r = bool;
+      this.h = paramActivity.getIntent().getIntExtra("qqstory_slide_show_entrance", -1);
+      return;
+      bool = false;
+    }
   }
   
-  public bkpw(@NonNull bjww parambjww)
+  private bkqn a()
   {
-    super(parambjww);
-  }
-  
-  private void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_Bjww.a().iterator();
+    Iterator localIterator = a().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject1 = (bjwu)localIterator.next();
-      Object localObject2;
-      if ((localObject1 instanceof bjvc))
-      {
-        localObject2 = (bjvc)localObject1;
-        if (!((bjvc)localObject2).a().b())
-        {
-          if (!((bjvc)localObject2).a().a().a()) {
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(5));
-          }
-          if (!((bjvc)localObject2).a().a().a()) {
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
-          }
-          if (!((bjvc)localObject2).a().a().a()) {
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
-          }
-        }
-      }
-      if ((localObject1 instanceof bjtg))
-      {
-        localObject1 = (bjtg)localObject1;
-        localObject2 = new JSONObject();
-        ((bjtg)localObject1).a((JSONObject)localObject2);
-        if (((JSONObject)localObject2).has(bjtg.a))
-        {
-          try
-          {
-            localObject1 = ((JSONObject)localObject2).getJSONObject(bjtg.a);
-            if (!((JSONObject)localObject1).has("comboItem")) {
-              break label237;
-            }
-            QZLog.d("QzoneEditVideoPartRepor", 2, new Object[] { "buildReportExtraReserves", " has combo item" });
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(4));
-          }
-          catch (JSONException localJSONException)
-          {
-            QZLog.d("QzoneEditVideoPartRepor", 2, "buildReportExtraReserves", localJSONException);
-          }
-          continue;
-          label237:
-          if (localJSONException.has("musicItem"))
-          {
-            QZLog.d("QzoneEditVideoPartRepor", 2, new Object[] { "buildReportExtraReserves", " has music item" });
-            this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
-          }
-          else if (localJSONException.has("filterItem"))
-          {
-            QZLog.d("QzoneEditVideoPartRepor", 2, new Object[] { "buildReportExtraReserves", " has filter item" });
-          }
-        }
+      bjxl localbjxl = (bjxl)localIterator.next();
+      if ((localbjxl instanceof bkqn)) {
+        return (bkqn)localbjxl;
       }
     }
+    return null;
+  }
+  
+  static void b(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    bgyj localbgyj = new bgyj();
+    localbgyj.jdField_c_of_type_JavaLangString = paramString1;
+    localbgyj.d = paramString2;
+    localbgyj.e = paramString3;
+    QZoneClickReport.report(QQStoryContext.a().a(), localbgyj, paramBoolean);
   }
   
   public void a()
   {
+    b("608", "1", "0", true);
+    if ((!this.m) && (this.jdField_g_of_type_Int > 0)) {
+      axim.r /= this.jdField_g_of_type_Int;
+    }
     super.a();
-    a_(3000, null);
-    ((bjbk)bjae.a(5)).a(this.jdField_a_of_type_Bjbn);
   }
   
-  public void a(int paramInt, @NonNull bkkm parambkkm)
+  public void a(Context paramContext)
   {
-    super.a(paramInt, parambkkm);
-    if (parambkkm.a.saveMode != 0) {
-      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(7));
-    }
-    d();
-    a_(3006, null);
+    super.a(paramContext);
   }
   
-  protected boolean a(Message paramMessage)
+  public void a(bjyv parambjyv, EditVideoParams paramEditVideoParams)
   {
-    if ((paramMessage.what == 9) && (paramMessage.arg1 == 28)) {
-      a_(paramMessage.arg1, null);
-    }
-    return super.a(paramMessage);
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    super.a_(paramInt, paramObject);
-    paramObject = (bkph)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramObject != null)
+    super.a(parambjyv, paramEditVideoParams);
+    if ((paramEditVideoParams != null) && (paramEditVideoParams.a != null) && ((this.h == 17) || (this.h == 18)))
     {
-      if (paramInt == 3006) {
-        paramObject.a(this.jdField_a_of_type_JavaUtilSet);
-      }
-      paramObject.a();
-      return;
+      parambjyv = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718127);
+      paramEditVideoParams.a.putString("extra_publish_text", parambjyv);
     }
-    QZLog.w("QzoneEditVideoPartRepor", 2, new Object[] { "editVideoStateChanged we are not interested at this edit state " + paramInt });
   }
   
-  public void g()
+  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super.g();
-    ((bjbk)bjae.a(5)).b(this.jdField_a_of_type_Bjbn);
+    b(paramString1, paramString2, paramString3, paramBoolean);
+  }
+  
+  protected void a(List<bjxl> paramList)
+  {
+    if ((!this.r) || ((this.h != 14) && (this.h != 19))) {
+      paramList.add(new bkpk(this));
+    }
+    if (this.r) {
+      paramList.add(new bjyb(this));
+    }
+    if ((this.n) && (!this.r)) {
+      paramList.add(new bkqp(this, this.jdField_a_of_type_AndroidAppActivity));
+    }
+    if (this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo != null) {
+      paramList.add(new bkqj(this, this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo));
+    }
+    paramList.add(new bkqn(this));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.k();
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    bkqn localbkqn = a();
+    if (localbkqn != null) {
+      localbkqn.a_(paramInt, null);
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    d(3005);
   }
 }
 

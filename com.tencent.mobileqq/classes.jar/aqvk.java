@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
-public class aqvk
+class aqvk
   implements DialogInterface.OnClickListener
 {
-  public aqvk(JefsClass.8 param8) {}
+  aqvk(aqvi paramaqvi) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    amau.a().a(this.a.jdField_a_of_type_Int, -1);
+    if (this.a.jdField_a_of_type_JavaLangString == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = this.a.jdField_a_of_type_JavaLangString)
+    {
+      axqy.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
+      return;
+    }
   }
 }
 

@@ -6,7 +6,13 @@ class ptz
 {
   ptz(pty parampty) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+  }
 }
 
 

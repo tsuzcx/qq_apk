@@ -1,78 +1,40 @@
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class sfx
-  implements wxw
+public class sfx
+  implements qpb
 {
-  sfx(sfn paramsfn, boolean paramBoolean, String paramString1, String paramString2) {}
+  public sfx(PublicAccountH5AbilityPlugin.5 param5, bcqf parambcqf, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
-  public void a(Bundle paramBundle)
+  public void a(String paramString, Bundle paramBundle)
   {
-    String str2;
-    JSONObject localJSONObject;
-    if (paramBundle != null)
+    int i;
+    if ("CMD_CAMERA_CAPTURE_SO_DOWNLOAD".equals(paramString))
     {
-      if (this.jdField_a_of_type_Sfn.a != null) {
-        this.jdField_a_of_type_Sfn.l();
-      }
-      str2 = paramBundle.getString("pic_local_id");
-      localJSONObject = new JSONObject();
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!"-1".equals(str2)) {
-          continue;
-        }
-        localJSONObject.put("retCode", -1);
-        localJSONObject.put("msg", "fail");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-        paramBundle = str2;
-        localJSONObject.put("localId", paramBundle);
-      }
-      catch (JSONException paramBundle)
-      {
-        String str1;
-        paramBundle.printStackTrace();
-        continue;
-      }
-      this.jdField_a_of_type_Sfn.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Sfn.c(this.b);
-      }
-      return;
-      axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-      paramBundle = str2;
-      continue;
-      str1 = str2;
-      if (this.jdField_a_of_type_Boolean) {
-        str1 = "mqqpa://resourceid/" + str2;
-      }
-      paramBundle = paramBundle.getString("pic_local_path");
-      sfn.b.put(str1, paramBundle);
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", ajyc.a(2131708768) + str1);
+      this.jdField_a_of_type_Bcqf.dismiss();
+      i = paramBundle.getInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS");
       if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
-        paramBundle = str1;
-      }
-      else
-      {
-        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
-        paramBundle = str1;
+        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage VideoFeedsIPCClient.callback downloadResult=" + i);
       }
     }
+    switch (i)
+    {
+    default: 
+      return;
+    case 3: 
+      bcql.a(BaseApplicationImpl.getContext(), 2131718792, 0).a();
+      return;
+    case 1: 
+      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0.jdField_a_of_type_Qoz.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() isSoReady:" + bool);
+      }
+      sfk.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.g, this.h);
+      return;
+    }
+    bbdj.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0.jdField_a_of_type_AndroidAppActivity, 230).setMessage(ajya.a(2131708795)).setNegativeButton(2131690596, new bbdt()).setPositiveButton(2131694794, new sfy(this)).show();
   }
 }
 

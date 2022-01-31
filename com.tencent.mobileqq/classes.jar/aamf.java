@@ -1,10 +1,7 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aamf
   implements View.OnClickListener
@@ -13,10 +10,7 @@ public class aamf
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Aeyx.a();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
-    paramView.commit();
+    this.a.c.cancel();
   }
 }
 

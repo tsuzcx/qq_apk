@@ -1,56 +1,50 @@
-import android.graphics.Rect;
-import android.text.Spannable;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class auak
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ActionMode.Callback
 {
-  public auak(OCRResultActivity paramOCRResultActivity) {}
+  public auak(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
   
-  public void onGlobalLayout()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    int i = 0;
-    if (OCRResultActivity.d(this.a) != 0) {
-      return;
-    }
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getRootView().getHeight();
-    if (j - ((Rect)localObject).bottom > j * 0.15D) {
-      try
-      {
-        localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        aykq[] arrayOfaykq = (aykq[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), aykq.class);
-        if ((arrayOfaykq != null) && (arrayOfaykq.length > 0))
-        {
-          j = arrayOfaykq.length;
-          while (i < j)
-          {
-            ((Spannable)localObject).removeSpan(arrayOfaykq[i]);
-            i += 1;
-          }
-        }
-        allu.a(this.a, this.a.d, false, 0);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultActivity.a(this.a).ocrContent);
-        return;
-      }
-    }
-    if (OCRResultActivity.a(this.a) != null)
+    if (paramMenuItem.getItemId() == 2131371005)
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(new ayki(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), 8, 16));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        bcql.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, ajya.a(2131707828), 0).a();
+      }
     }
-    allu.a(this.a, this.a.d, true, 0);
+    else
+    {
+      return false;
+    }
+    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623940, paramMenu);
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

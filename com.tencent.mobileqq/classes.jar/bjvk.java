@@ -1,23 +1,16 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.EditText;
 
 class bjvk
-  implements bkbs
+  implements DialogInterface.OnDismissListener
 {
-  bjvk(bjvc parambjvc) {}
+  bjvk(bjve parambjve, bkiy parambkiy) {}
   
-  public void a(int paramInt, List<teh> paramList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
-    }
-    ste.a().dispatch(new bkbq(paramInt, (List)localObject));
+    this.jdField_a_of_type_Bjve.a.a(0);
+    bjve.a(this.jdField_a_of_type_Bjve).setText(this.jdField_a_of_type_Bkiy.a());
   }
 }
 

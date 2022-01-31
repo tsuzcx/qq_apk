@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import ajja;
+import ajiy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -15,7 +15,7 @@ public class ApolloOpenBoxView
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private ajja jdField_a_of_type_Ajja;
+  private ajiy jdField_a_of_type_Ajiy;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private int jdField_b_of_type_Int;
@@ -37,11 +37,11 @@ public class ApolloOpenBoxView
   private int p;
   private int q;
   
-  public ApolloOpenBoxView(Context paramContext, ajja paramajja)
+  public ApolloOpenBoxView(Context paramContext, ajiy paramajiy)
   {
     super(paramContext);
     c();
-    this.jdField_a_of_type_Ajja = paramajja;
+    this.jdField_a_of_type_Ajiy = paramajiy;
   }
   
   public ApolloOpenBoxView(Context paramContext, AttributeSet paramAttributeSet)
@@ -74,14 +74,14 @@ public class ApolloOpenBoxView
     this.jdField_a_of_type_Int = 4;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     super.invalidate();
-    if (this.jdField_a_of_type_Ajja != null) {
-      this.jdField_a_of_type_Ajja.a(this.jdField_a_of_type_Int, this.j, this.k);
+    if (this.jdField_a_of_type_Ajiy != null) {
+      this.jdField_a_of_type_Ajiy.a(this.jdField_a_of_type_Int, this.j, this.k);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Ajja = null;
+    this.jdField_a_of_type_Ajiy = null;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -150,9 +150,9 @@ public class ApolloOpenBoxView
             this.jdField_a_of_type_Int = 4;
             this.jdField_a_of_type_Long = l1;
             f2 = f1;
-            if (this.jdField_a_of_type_Ajja != null)
+            if (this.jdField_a_of_type_Ajiy != null)
             {
-              this.jdField_a_of_type_Ajja.a(this.jdField_a_of_type_Int, this.j, this.k);
+              this.jdField_a_of_type_Ajiy.a(this.jdField_a_of_type_Int, this.j, this.k);
               f2 = f1;
             }
           }

@@ -1,113 +1,69 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class asej
 {
-  private static asej jdField_a_of_type_Asej;
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public String a;
+  public String b;
+  public String c;
   
-  private asej()
+  public static asej a(JSONObject paramJSONObject)
   {
-    if (NetConnInfoCenter.socketConnState == 4) {
-      this.jdField_a_of_type_Int = 2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadingStateManager", 2, "LoadingStateManager init loadingstate = " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public static asej a()
-  {
-    if (jdField_a_of_type_Asej == null) {
-      jdField_a_of_type_Asej = new asej();
-    }
-    return jdField_a_of_type_Asej;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Asej = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getAttribute("_tag_socket") == null)) {}
-    do
-    {
-      do
+    if (paramJSONObject != null) {
+      for (;;)
       {
-        do
+        try
         {
-          return;
-          if (QLog.isColorLevel())
+          localObject = new asej();
+          try
           {
-            QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork mShowIllegalNetworkBar=" + this.jdField_a_of_type_Boolean);
-            QLog.d("LoadingStateManager", 2, "changeConversationLoadingState mShowErrorNetworkBar=" + this.b);
+            if (paramJSONObject.has("tip"))
+            {
+              ((asej)localObject).a = paramJSONObject.getString("tip");
+              if (!paramJSONObject.has("key_word")) {
+                continue;
+              }
+              ((asej)localObject).b = paramJSONObject.getString("key_word");
+              if (!paramJSONObject.has("jump_url")) {
+                continue;
+              }
+              ((asej)localObject).c = paramJSONObject.getString("jump_url");
+              return localObject;
+            }
+            ((asej)localObject).a = "";
+            continue;
+            localObject = paramJSONObject;
           }
-        } while ((!this.jdField_a_of_type_Boolean) && (!this.b));
-        if (!this.b) {
-          break;
+          catch (Exception localException1)
+          {
+            paramJSONObject = (JSONObject)localObject;
+          }
         }
-        paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
-      } while (paramFromServiceMsg == null);
-      paramFromServiceMsg.obtainMessage(10002, null).sendToTarget();
-      return;
-      if (!c()) {
-        a(0);
+        catch (Exception localException2)
+        {
+          paramJSONObject = null;
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          return localObject;
+        }
+        QLog.i("CUOpenCardGuideMng", 2, "GuideEntry-parse", localException1);
+        return paramJSONObject;
+        ((asej)localObject).b = "";
+        continue;
+        ((asej)localObject).c = "";
+        return localObject;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork");
-      }
-      paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
-    } while (paramFromServiceMsg == null);
-    paramFromServiceMsg.obtainMessage(1134012, null).sendToTarget();
+    }
+    Object localObject = null;
+    return localObject;
   }
   
-  public void a(boolean paramBoolean)
+  public String toString()
   {
-    this.b = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 3;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 4;
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[tip:").append(this.a).append(", key_word:").append(this.b).append(", jump_url:").append(this.c).append("]");
+    return localStringBuilder.toString();
   }
 }
 

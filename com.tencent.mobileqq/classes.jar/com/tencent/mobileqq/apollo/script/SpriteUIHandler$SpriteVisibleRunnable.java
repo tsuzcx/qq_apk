@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aivb;
-import ajes;
-import ajex;
-import ajfb;
-import ajfg;
-import ajfj;
-import ajrq;
+import aiuz;
+import ajeq;
+import ajev;
+import ajez;
+import ajfe;
+import ajfh;
+import ajro;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,22 +16,22 @@ import mqq.os.MqqHandler;
 class SpriteUIHandler$SpriteVisibleRunnable
   implements Runnable
 {
-  private ajfb jdField_a_of_type_Ajfb;
+  private ajez jdField_a_of_type_Ajez;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
-  public SpriteUIHandler$SpriteVisibleRunnable(ajfb paramajfb, boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public SpriteUIHandler$SpriteVisibleRunnable(ajez paramajez, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     this.b = paramBoolean1;
     this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Ajfb = paramajfb;
+    this.jdField_a_of_type_Ajez = paramajez;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajfb == null)
+    if (this.jdField_a_of_type_Ajez == null)
     {
       QLog.e("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap], mContext is null.");
       return;
@@ -40,28 +40,28 @@ class SpriteUIHandler$SpriteVisibleRunnable
     int i;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject1 = this.jdField_a_of_type_Ajfb;
+      localObject1 = this.jdField_a_of_type_Ajez;
       if (this.b)
       {
         i = 1;
         label37:
-        ((ajfb)localObject1).d = i;
-        this.jdField_a_of_type_Ajfb.a(this.b);
+        ((ajez)localObject1).d = i;
+        this.jdField_a_of_type_Ajez.a(this.b);
       }
     }
     Object localObject2;
     for (;;)
     {
-      localObject1 = this.jdField_a_of_type_Ajfb.a();
-      localObject2 = this.jdField_a_of_type_Ajfb.a();
+      localObject1 = this.jdField_a_of_type_Ajez.a();
+      localObject2 = this.jdField_a_of_type_Ajez.a();
       if (localObject2 == null) {
         break;
       }
-      QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "[showOrHideSprite], isHide:", Boolean.valueOf(this.b), ",from:", this.jdField_a_of_type_JavaLangString, ",surfaceView:", localObject1, ",canInit:", Boolean.valueOf(this.jdField_a_of_type_Ajfb.jdField_a_of_type_Boolean), ",isViweReady:", Boolean.valueOf(this.jdField_a_of_type_Ajfb.d()) });
+      QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "[showOrHideSprite], isHide:", Boolean.valueOf(this.b), ",from:", this.jdField_a_of_type_JavaLangString, ",surfaceView:", localObject1, ",canInit:", Boolean.valueOf(this.jdField_a_of_type_Ajez.jdField_a_of_type_Boolean), ",isViweReady:", Boolean.valueOf(this.jdField_a_of_type_Ajez.d()) });
       if (this.b) {
         break label367;
       }
-      if ((localObject1 != null) || (this.jdField_a_of_type_Ajfb.jdField_a_of_type_Boolean)) {
+      if ((localObject1 != null) || (this.jdField_a_of_type_Ajez.jdField_a_of_type_Boolean)) {
         break label220;
       }
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "surfaceView is going to be created in basechatpie, pls wait.");
@@ -69,40 +69,40 @@ class SpriteUIHandler$SpriteVisibleRunnable
       i = 0;
       break label37;
       if (this.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_Ajfb.a(this.jdField_a_of_type_JavaLangString, this.b);
+        this.jdField_a_of_type_Ajez.a(this.jdField_a_of_type_JavaLangString, this.b);
       }
     }
     label220:
-    if ((localObject1 != null) && (!this.jdField_a_of_type_Ajfb.d()))
+    if ((localObject1 != null) && (!this.jdField_a_of_type_Ajez.d()))
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "surfaceView is being created but NOT yet ready, pls wait.");
       return;
     }
-    Object localObject3 = this.jdField_a_of_type_Ajfb.a();
+    Object localObject3 = this.jdField_a_of_type_Ajez.a();
     if ((localObject3 != null) && (((BaseChatPie)localObject3).a != null) && (((BaseChatPie)localObject3).a.c))
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "want to show apollo but AIO finish now");
       return;
     }
-    if ((localObject1 != null) && (this.jdField_a_of_type_Ajfb.d())) {
-      ((ajfg)((QQAppInterface)localObject2).getManager(249)).a(this.jdField_a_of_type_Ajfb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ajfb.jdField_a_of_type_Int);
+    if ((localObject1 != null) && (this.jdField_a_of_type_Ajez.d())) {
+      ((ajfe)((QQAppInterface)localObject2).getManager(249)).a(this.jdField_a_of_type_Ajez.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ajez.jdField_a_of_type_Int);
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().post(new SpriteUIHandler.SpriteVisibleRunnable.1(this, (aivb)localObject1));
+      ThreadManager.getUIHandler().post(new SpriteUIHandler.SpriteVisibleRunnable.1(this, (aiuz)localObject1));
       return;
-      if ((localObject3 != null) && (this.jdField_a_of_type_Ajfb.jdField_a_of_type_Boolean))
+      if ((localObject3 != null) && (this.jdField_a_of_type_Ajez.jdField_a_of_type_Boolean))
       {
         ((BaseChatPie)localObject3).d();
         continue;
         label367:
-        localObject3 = ajfj.a((QQAppInterface)localObject2);
+        localObject3 = ajfh.a((QQAppInterface)localObject2);
         if (localObject3 != null) {
-          ((ajes)localObject3).b(2);
+          ((ajeq)localObject3).b(2);
         }
-        localObject2 = ((ajfg)((QQAppInterface)localObject2).getManager(249)).a();
+        localObject2 = ((ajfe)((QQAppInterface)localObject2).getManager(249)).a();
         if (localObject2 != null) {
-          ((ajex)localObject2).e();
+          ((ajev)localObject2).e();
         }
       }
     }

@@ -1,34 +1,44 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import java.util.ArrayList;
+import java.util.List;
 
-class bisv
-  implements bjob<String>
+public class bisv
+  extends BaseFilter
 {
-  bisv(biss parambiss, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(@Nullable String paramString)
+  public bisv()
   {
-    String str;
-    if (paramString != null)
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  }
+  
+  public Frame a()
+  {
+    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      str = paramString;
-      if (!paramString.equals("")) {}
+      float f2 = -1.0F + i * f1;
+      float f3 = f2 + f1;
+      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
+      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      i += 1;
     }
-    else
-    {
-      str = ajyc.a(2131699955);
-    }
-    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    if (str.indexOf('\n') > 0) {}
-    for (int i = biss.a(this.jdField_a_of_type_Biss) * 3 / 10;; i = biss.a(this.jdField_a_of_type_Biss) * 11 / 50)
-    {
-      paramString.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(bawz.c(biss.a(this.jdField_a_of_type_Biss), 23.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(bawz.a(biss.a(this.jdField_a_of_type_Biss), 2.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
-      return;
-    }
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  }
+  
+  public void a(List<Frame> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void clearGLSLSelf()
+  {
+    super.clearGLSLSelf();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
   }
 }
 

@@ -1,29 +1,14 @@
-public class artb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+class artb
+  implements DialogInterface.OnCancelListener
 {
-  public static String a(int paramInt)
+  artb(arss paramarss) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return " Unknow playState ";
-    case 0: 
-      return " IDLE ";
-    case 1: 
-      return " BUFFERING ";
-    case 2: 
-      return " PLAYING ";
-    case 3: 
-      return " PAUSE ";
-    case 4: 
-      return " STOP ";
-    case 5: 
-      return " ERROR_INTERNAL ";
-    case 7: 
-      return " ERROR_FOCUS ";
-    case 6: 
-      return " NETWORK_INTERRUPT ";
-    }
-    return " COMPLETION ";
+    this.a.b(false);
   }
 }
 

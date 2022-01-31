@@ -1,26 +1,6 @@
-class anwn
+public abstract class anwn
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public anwn(anwm paramanwm, String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString1.substring(paramString1.lastIndexOf("/") + 1);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
-  }
+  public void a(int paramInt) {}
 }
 
 

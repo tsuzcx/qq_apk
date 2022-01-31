@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 public class afss
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public long a;
+  public boolean a;
+  
+  public afss()
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      atbg.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
-    } while (!QLog.isColorLevel());
-    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 300000L;
+  }
+  
+  public String toString()
+  {
+    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ajyc;
-import aukm;
-import auma;
+import ajya;
+import auko;
+import aumc;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import org.json.JSONTokener;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class BlessTask
-  extends aukm
+  extends auko
 {
   public int cameraMode;
   public String defaultShareTitle;
@@ -30,13 +30,13 @@ public class BlessTask
   public int festival_id;
   public String filterCategory = "";
   public String filterId = "";
-  @auma
+  @aumc
   public int id = 1000;
   public boolean isDeleted;
   public boolean isNew = true;
   public String mainBanner;
   public String mainCenter;
-  public String pendantCategory = ajyc.a(2131701154);
+  public String pendantCategory = ajya.a(2131701165);
   public String pendantId = "";
   public int ptvAnimationCost;
   public int ptvAnimationCount;

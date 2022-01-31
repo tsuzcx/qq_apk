@@ -1,17 +1,17 @@
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.viola.core.ViolaInstance;
 
 public class rzy
-  implements sac
+  implements View.OnLayoutChangeListener
 {
-  public rzy(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  public rzy(ViolaBaseView paramViolaBaseView) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (ViolaBaseView.a(this.a) != null) {
+      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
     }
   }
 }

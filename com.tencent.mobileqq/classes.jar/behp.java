@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.core.auth.UserAuthScope;
+import android.webkit.ValueCallback;
 
-public final class behp
-  implements Parcelable.Creator<UserAuthScope>
+public abstract interface behp
 {
-  public UserAuthScope a(Parcel paramParcel)
-  {
-    return new UserAuthScope(paramParcel);
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public UserAuthScope[] a(int paramInt)
-  {
-    return new UserAuthScope[paramInt];
-  }
+  public abstract void a(String paramString, ValueCallback paramValueCallback);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
 }
 
 

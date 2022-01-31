@@ -1,18 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
 
 class atbb
-  extends AnimatorListenerAdapter
+  extends atgh
 {
-  atbb(atba paramatba, URLDrawable paramURLDrawable) {}
+  atbb(atav paramatav, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a()
   {
-    this.jdField_a_of_type_Atba.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_Atba.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
+    if (QLog.isColorLevel()) {
+      atbr.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    }
+    atav.a(this.jdField_a_of_type_Atav, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

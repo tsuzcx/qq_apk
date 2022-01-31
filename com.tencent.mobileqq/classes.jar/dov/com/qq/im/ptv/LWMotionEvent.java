@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.MotionEvent;
-import bjot;
+import bjpk;
 
 public class LWMotionEvent
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LWMotionEvent> CREATOR = new bjot();
+  public static final Parcelable.Creator<LWMotionEvent> CREATOR = new bjpk();
   public float a;
   public int a;
   public float b;

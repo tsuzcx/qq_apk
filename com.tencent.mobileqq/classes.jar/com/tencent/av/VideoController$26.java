@@ -5,8 +5,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import ldw;
-import lom;
+import ldr;
+import loh;
 
 class VideoController$26
   implements Runnable
@@ -21,22 +21,22 @@ class VideoController$26
     HashSet localHashSet = new HashSet();
     Iterator localIterator = VideoController.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      localHashSet.add(Long.valueOf(((ldw)localIterator.next()).jdField_a_of_type_Long));
+      localHashSet.add(Long.valueOf(((ldr)localIterator.next()).jdField_a_of_type_Long));
     }
     localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     boolean bool = false;
     if (localIterator.hasNext())
     {
-      lom locallom = (lom)localIterator.next();
-      if (localHashSet.contains(Long.valueOf(locallom.jdField_a_of_type_Long))) {
+      loh localloh = (loh)localIterator.next();
+      if (localHashSet.contains(Long.valueOf(localloh.jdField_a_of_type_Long))) {
         break label276;
       }
-      ldw localldw = new ldw();
-      localldw.c = 0;
-      localldw.jdField_a_of_type_Long = locallom.jdField_a_of_type_Long;
-      localldw.h = false;
-      localldw.d = locallom.b;
-      VideoController.a(this.this$0).add(localldw);
+      ldr localldr = new ldr();
+      localldr.c = 0;
+      localldr.jdField_a_of_type_Long = localloh.jdField_a_of_type_Long;
+      localldr.h = false;
+      localldr.d = localloh.b;
+      VideoController.a(this.this$0).add(localldr);
       bool = true;
     }
     label276:

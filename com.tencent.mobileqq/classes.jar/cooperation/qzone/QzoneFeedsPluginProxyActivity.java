@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import aabk;
+import aabg;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ public class QzoneFeedsPluginProxyActivity
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
-      aabk.a().a(getIntent().getIntExtra("hc_code", 0), true);
+      aabg.a().a(getIntent().getIntExtra("hc_code", 0), true);
     }
   }
   

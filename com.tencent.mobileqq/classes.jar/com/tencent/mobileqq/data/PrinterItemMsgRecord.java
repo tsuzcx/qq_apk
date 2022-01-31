@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
+import auko;
+import aulz;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Timer;
@@ -18,7 +18,7 @@ public class PrinterItemMsgRecord
   public static final int status_running = 2;
   public static final int status_transfer_fail = 12;
   public String filename;
-  @aulx
+  @aulz
   public Timer mTimer_for_Print;
   public double progress;
   public int status = 1;
@@ -54,7 +54,7 @@ public class PrinterItemMsgRecord
     return null;
   }
   
-  public Class<? extends aukm> getClassForTable()
+  public Class<? extends auko> getClassForTable()
   {
     return PrinterItemMsgRecord.class;
   }

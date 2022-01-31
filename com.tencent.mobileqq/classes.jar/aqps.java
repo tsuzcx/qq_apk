@@ -1,19 +1,11 @@
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
-class aqps
-  implements QQPermissionCallback
+public class aqps
+  extends aqoo
 {
-  aqps(aqpr paramaqpr) {}
+  public GalleryUrlImageView a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.b(this.a.a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aqpr.a(this.a);
-  }
+  public aqps(aqpp paramaqpp) {}
 }
 
 

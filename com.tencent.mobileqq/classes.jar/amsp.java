@@ -1,53 +1,80 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amsp
+  extends ampa<amso>
 {
-  public int a;
-  public boolean a;
-  
-  public amsp()
+  public static amso a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 3;
+    amso localamso2 = (amso)ampl.a().a(492);
+    amso localamso1 = localamso2;
+    if (localamso2 == null) {
+      localamso1 = new amso();
+    }
+    return localamso1;
   }
   
-  public static amsp a(ampi paramampi)
+  public int a()
   {
-    boolean bool = true;
-    amsp localamsp = new amsp();
-    if (paramampi != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupIntimateRelationshipBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
-      }
+    return 492;
+  }
+  
+  @NonNull
+  public amso a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GroupIntimateRelationshipConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    for (;;)
+    return new amso();
+  }
+  
+  @Nullable
+  public amso a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      try
-      {
-        paramampi = new JSONObject(paramampi.jdField_a_of_type_JavaLangString);
-        if (paramampi.optInt("isTroopCardOpen", 1) != 1) {
-          continue;
-        }
-        localamsp.jdField_a_of_type_Boolean = bool;
-        localamsp.jdField_a_of_type_Int = paramampi.optInt("prepareCount", 3);
+      amso localamso = amso.a(paramArrayOfamph[0]);
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramampi)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("GroupIntimateRelationshipBean", 2, "parse error->" + paramampi.toString());
-      }
-      return localamsp;
-      bool = false;
+      return localamso;
     }
-    return localamsp;
+    return new amso();
   }
   
-  public String toString()
+  public Class<amso> a()
   {
-    return "isTroopCardOpen:" + this.jdField_a_of_type_Boolean + " prepareCount:" + this.jdField_a_of_type_Int;
+    return amso.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    }
+  }
+  
+  public void a(amso paramamso)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramamso);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

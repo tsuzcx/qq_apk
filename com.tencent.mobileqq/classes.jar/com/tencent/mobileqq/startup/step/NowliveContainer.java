@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aree;
+import areg;
 import com.tencent.shadow.core.common.LoggerFactory;
 
 public class NowliveContainer
@@ -8,7 +8,7 @@ public class NowliveContainer
 {
   protected boolean doStep()
   {
-    LoggerFactory.setILoggerFactory(aree.a());
+    LoggerFactory.setILoggerFactory(areg.a());
     return true;
   }
 }

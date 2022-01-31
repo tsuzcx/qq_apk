@@ -1,26 +1,21 @@
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class abdp
-  extends aume
+  extends bblk
 {
-  public abdp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  protected void a(boolean paramBoolean)
+  public abdp(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    this.a.B();
-    if (paramBoolean) {
-      return;
-    }
-    bcpw.a(this.a, 1, ajyc.a(2131704919), 1000).a();
+    super(paramInt);
   }
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    super.b(paramBoolean, paramInt);
-    if ((this.a.n) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
-    }
-    this.a.n = false;
+    bbac.a(this.a, this.a.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
+    axqy.b(this.a.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
+    this.a.b(2);
   }
 }
 

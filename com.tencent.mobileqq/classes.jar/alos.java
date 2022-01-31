@@ -1,24 +1,7 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-
-class alos
-  implements SensorEventListener
+public abstract interface alos
+  extends alov
 {
-  alos(alop paramalop) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      alop.a(this.a, paramSensorEvent);
-    }
-    while (paramSensorEvent.sensor.getType() != 3) {
-      return;
-    }
-    alop.b(this.a, paramSensorEvent);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

@@ -1,12 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
 
-class aock
-  implements DialogInterface.OnClickListener
+public class aock
+  extends anxj
 {
-  aock(aoci paramaoci) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
 }
 
 

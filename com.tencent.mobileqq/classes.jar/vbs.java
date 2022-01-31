@@ -1,29 +1,22 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vbs
-  extends SimpleJob<Void>
+public class vbs
+  extends QQUIEventReceiver<vba, tkk>
 {
-  vbs(vbd paramvbd, String paramString, List paramList)
+  public vbs(@NonNull vba paramvba)
   {
-    super(paramString);
+    super(paramvba);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull vba paramvba, @NonNull tkk paramtkk)
   {
-    tvk.a();
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
-    int j = paramJobContext.length;
-    int i = 0;
-    while (i < j)
-    {
-      tvk.a(paramJobContext[i].toString());
-      i += 1;
-    }
-    return null;
+    paramvba.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkk.class;
   }
 }
 

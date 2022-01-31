@@ -1,26 +1,23 @@
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import com.tencent.widget.AbsListView;
+
 public class ohq
+  implements bfos
 {
-  public int a;
-  public long a;
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
+  public ohq(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  public ohq(String paramString, long paramLong, CharSequence paramCharSequence)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this(paramString, paramLong, paramCharSequence, 0);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
-  public ohq(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    paramString = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramString = "";
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
+      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
     }
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

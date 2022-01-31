@@ -1,36 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
 
 public class bcah
-  extends BroadcastReceiver
 {
-  public bcah(WebProcessManager paramWebProcessManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
-  }
+  int jdField_a_of_type_Int;
+  bcaa jdField_a_of_type_Bcaa;
+  bcaf jdField_a_of_type_Bcaf;
+  bcai jdField_a_of_type_Bcai;
+  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
+  boolean jdField_a_of_type_Boolean;
 }
 
 

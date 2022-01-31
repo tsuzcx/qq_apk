@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
-public class abst
-  implements DialogInterface.OnClickListener
+class abst
+  implements View.OnClickListener
 {
-  public abst(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  abst(abss paramabss) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    paramView = paramView.getTag();
+    if ((paramView instanceof absr))
+    {
+      paramView = (absr)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
+      {
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        abss.a(this.a, paramView);
+        axqy.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      }
+    }
   }
 }
 

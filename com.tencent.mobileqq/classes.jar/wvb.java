@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
-
-class wvb
-  implements DialogInterface.OnDismissListener
+public abstract interface wvb
 {
-  wvb(wva paramwva) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    wpw.a().a(new SharePanelShowStateEvent(false));
-  }
+  public abstract void a(int paramInt);
 }
 
 

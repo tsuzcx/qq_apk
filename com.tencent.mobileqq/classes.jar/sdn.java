@@ -1,20 +1,19 @@
-import android.support.annotation.Nullable;
-
-public abstract class sdn
+class sdn
 {
-  public abstract int a();
+  int a;
+  int b;
+  int c;
+  int d;
   
-  @Nullable
-  public Object a(int paramInt1, int paramInt2)
+  public sdn() {}
+  
+  public sdn(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return null;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
-  
-  public abstract boolean a(int paramInt1, int paramInt2);
-  
-  public abstract int b();
-  
-  public abstract boolean b(int paramInt1, int paramInt2);
 }
 
 

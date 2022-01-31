@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import ahrv;
+import ahrt;
 import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class LoginView$26$1
   implements Runnable
 {
-  public LoginView$26$1(ahrv paramahrv) {}
+  public LoginView$26$1(ahrt paramahrt) {}
   
   public void run()
   {

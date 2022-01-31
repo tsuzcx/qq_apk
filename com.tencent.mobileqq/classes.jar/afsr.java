@@ -1,23 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-class afsr
-  implements View.OnClickListener
+public class afsr
 {
-  afsr(afsp paramafsp) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (akac)this.a.a.getManager(159);
-    Intent localIntent = new Intent(afsp.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramView.a);
-    afsp.b(this.a).startActivity(localIntent);
-    axqw.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
-  }
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public ArrayList<String> b;
+  public ArrayList<Integer> c;
+  public ArrayList<byte[]> d;
 }
 
 

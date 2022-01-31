@@ -1,118 +1,73 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
 public class lhj
+  implements aysc
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private lhi[] jdField_a_of_type_ArrayOfLhi = new lhi[14];
+  public lhj(EffectConfigBase paramEffectConfigBase, long paramLong, lhl paramlhl) {}
   
-  public lhj(VideoAppInterface paramVideoAppInterface)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    a(4);
-    a(5);
-    a(12);
-    a(10);
-  }
-  
-  public lhi a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfLhi[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i = 0;
+    lhl locallhl = (lhl)paramaysz.jdField_a_of_type_Aysy.a();
+    String str1 = "";
+    if (paramaysz.jdField_a_of_type_Int == 3)
     {
-      lhi locallhi = this.jdField_a_of_type_ArrayOfLhi[paramInt];
-      localObject1 = locallhi;
-      if (locallhi == null)
-      {
-        locallhi = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = locallhi;
-        if (locallhi != null)
-        {
-          this.jdField_a_of_type_ArrayOfLhi[paramInt] = locallhi;
-          localObject1 = locallhi;
-        }
-      }
-      return localObject1;
+      QLog.w(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_JavaLangString, 1, "startDownload, onResp, 重复下载, item[" + locallhl + "], seq[" + this.jdField_a_of_type_Long + "]");
+      return;
     }
-  }
-  
-  protected lhi a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    Object localObject = null;
-    long l1 = System.currentTimeMillis();
-    switch (paramInt)
+    boolean bool;
+    if (paramaysz.jdField_a_of_type_Int != 0)
     {
-    case 9: 
-    default: 
-      lcl.c("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
-      paramVideoAppInterface = localObject;
+      str1 = "fail, mErrCode[" + paramaysz.b + "], mErrDesc[" + paramaysz.jdField_a_of_type_JavaLangString + "]";
+      bool = false;
     }
     for (;;)
     {
-      if (paramVideoAppInterface != null) {
-        paramVideoAppInterface.a();
+      QLog.w(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_JavaLangString, 1, "startDownload, onResp, result[" + bool + "], resp.mResult[" + paramaysz.jdField_a_of_type_Int + "], item[" + locallhl + "], seq[" + this.jdField_a_of_type_Long + "], " + str1 + "]");
+      locallhl.isDownloading = false;
+      paramaysz = this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_AndroidOsHandler;
+      if (bool) {
+        i = 1;
       }
-      long l2 = System.currentTimeMillis();
-      lcl.c("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
-      return paramVideoAppInterface;
-      paramVideoAppInterface = new lju(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhu(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new liv(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new ljb(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lje(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhw(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new mpc(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new ljl(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new ljk(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lhs(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new lil(paramVideoAppInterface);
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if ((paramInt >= 0) && (paramInt < 14) && (!lhi.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
-      lhi.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt >= 0)
-    {
-      bool1 = bool2;
-      if (paramInt < 14)
+      paramaysz.obtainMessage(1, i, (int)this.jdField_a_of_type_Long, this.jdField_a_of_type_Lhl).sendToTarget();
+      if (!bool) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a(this.jdField_a_of_type_Lhl);
+      return;
+      String str3 = SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c);
+      if (!locallhl.getMd5().equalsIgnoreCase(str3))
       {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfLhi[paramInt] != null) {
-          bool1 = true;
+        str1 = "fail, md5不匹配, fileMD5[" + str3 + "], configMD5[" + locallhl.getMd5() + "], mOutPath[" + paramaysz.jdField_a_of_type_Aysy.c + "]";
+        bool = false;
+      }
+      else
+      {
+        try
+        {
+          bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.b(this.jdField_a_of_type_Lhl), false);
+          bool = true;
+        }
+        catch (IOException localIOException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_JavaLangString, 4, "startDownload, uncompressZip fail.", localIOException);
+          }
+          String str2 = ajya.a(2131703984);
+          bool = false;
         }
       }
     }
-    return bool1;
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, (int)(100L * paramLong1 / paramLong2), 0, this.jdField_a_of_type_Lhl).sendToTarget();
   }
 }
 

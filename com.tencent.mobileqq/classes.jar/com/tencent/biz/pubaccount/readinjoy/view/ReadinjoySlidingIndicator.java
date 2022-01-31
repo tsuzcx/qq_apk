@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -29,11 +29,11 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import nud;
+import nua;
+import rgj;
+import rgk;
+import rgl;
 import rgm;
-import rgn;
-import rgo;
-import rgp;
 
 @TargetApi(14)
 public class ReadinjoySlidingIndicator
@@ -45,7 +45,7 @@ public class ReadinjoySlidingIndicator
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private rgp jdField_a_of_type_Rgp;
+  private rgm jdField_a_of_type_Rgm;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int jdField_b_of_type_Int;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
@@ -90,7 +90,7 @@ public class ReadinjoySlidingIndicator
     b();
     a(paramContext);
     if (Build.VERSION.SDK_INT >= 14) {
-      setAccessibilityDelegate(new rgm(this));
+      setAccessibilityDelegate(new rgj(this));
     }
   }
   
@@ -102,7 +102,7 @@ public class ReadinjoySlidingIndicator
   
   private void a(int paramInt1, String paramString, int paramInt2)
   {
-    int k = nud.d;
+    int k = nua.d;
     TextView localTextView = new TextView(getContext());
     localTextView.setGravity(17);
     localTextView.setMaxLines(1);
@@ -186,7 +186,7 @@ public class ReadinjoySlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new rgn(this));
+        ((ValueAnimator)localObject).addUpdateListener(new rgk(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -201,10 +201,10 @@ public class ReadinjoySlidingIndicator
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848489);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(actn.a(7.0F, getResources()), actn.a(7.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848495);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(actj.a(7.0F, getResources()), actj.a(7.0F, getResources()));
       localLayoutParams.gravity = 16;
-      localLayoutParams.leftMargin = (-actn.a(11.0F, getResources()));
+      localLayoutParams.leftMargin = (-actj.a(11.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     return this.jdField_a_of_type_AndroidWidgetImageView;
@@ -225,7 +225,7 @@ public class ReadinjoySlidingIndicator
       a(k, this.jdField_a_of_type_ArrayOfJavaLangString[k], this.jdField_b_of_type_ArrayOfInt[k]);
       k += 1;
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(new rgo(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new rgl(this));
   }
   
   public void a(int paramInt)
@@ -262,8 +262,8 @@ public class ReadinjoySlidingIndicator
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Rgp != null) {
-        this.jdField_a_of_type_Rgp.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
+      if (this.jdField_a_of_type_Rgm != null) {
+        this.jdField_a_of_type_Rgm.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
       }
       return;
       label87:
@@ -298,10 +298,10 @@ public class ReadinjoySlidingIndicator
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
         if (localView != null)
         {
-          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + ajyc.a(2131712971);
+          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + ajya.a(2131712982);
           String str1 = str2;
           if (k == this.jdField_b_of_type_Int) {
-            str1 = str2 + ajyc.a(2131713117);
+            str1 = str2 + ajya.a(2131713128);
           }
           localView.setContentDescription(str1);
         }
@@ -315,9 +315,9 @@ public class ReadinjoySlidingIndicator
     a(paramInt, paramBoolean, false);
   }
   
-  public void setOnIndicatorChangeListener(rgp paramrgp)
+  public void setOnIndicatorChangeListener(rgm paramrgm)
   {
-    this.jdField_a_of_type_Rgp = paramrgp;
+    this.jdField_a_of_type_Rgm = paramrgm;
   }
   
   public void setOverScrollMode(int paramInt)

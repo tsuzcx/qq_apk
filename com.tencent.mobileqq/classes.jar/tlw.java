@@ -1,31 +1,28 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class tlw
-  extends syv
+  extends sys
 {
   public static final String a;
-  private List<String> a;
-  private int c;
+  public List<uvp> a;
+  public List<String> b = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_like_list_batch_715");
+    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.homepage_batch_feeds_detail_720");
   }
   
-  public tlw(List<String> paramList, boolean paramBoolean)
+  public tlw()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.c = i;
-      return;
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public String a()
@@ -33,13 +30,13 @@ public class tlw
     return jdField_a_of_type_JavaLangString;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
+    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
     try
     {
-      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
-      return new tlx(localRspBatchFeedLike);
+      localRspStoryFeed.mergeFrom(paramArrayOfByte);
+      return new tlx(localRspStoryFeed);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -52,11 +49,25 @@ public class tlw
   
   protected byte[] a()
   {
-    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedLike.feed_id_list.set(localList);
-    localReqBatchFeedLike.source.set(this.c);
-    return localReqBatchFeedLike.toByteArray();
+    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      uvp localuvp = (uvp)localIterator.next();
+      if (localuvp != null) {
+        if (TextUtils.isEmpty(localuvp.jdField_a_of_type_JavaLangString)) {
+          ved.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
+        } else {
+          localArrayList.add(localuvp.a());
+        }
+      }
+    }
+    if (localArrayList.size() == 0) {
+      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    }
+    localReqStoryFeed.feed_id_list.set(localArrayList);
+    return localReqStoryFeed.toByteArray();
   }
 }
 

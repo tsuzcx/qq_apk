@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import tdc;
-import tdo;
+import tcz;
+import tdl;
 
 class Now$3
   implements Runnable
@@ -10,7 +10,7 @@ class Now$3
   
   public void run()
   {
-    ((tdo)tdc.a(2)).c();
+    ((tdl)tcz.a(2)).c();
   }
 }
 

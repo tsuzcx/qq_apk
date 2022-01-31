@@ -1,76 +1,59 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.observer.SubAccountObserver;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class acdv
-  implements View.OnClickListener
+  extends akhb
 {
-  public acdv(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public acdv(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, ayay paramayay)
   {
-    Object localObject = paramView.findViewById(2131364176);
-    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
-    ayat localayat;
+    if ((paramBoolean) && (paramayay != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    {
+      paramayay = paramayay.c();
+      if ((paramayay != null) && (!paramayay.contains(this.a.jdField_a_of_type_JavaLangString))) {}
+    }
+    else
+    {
+      return;
+    }
+    paramayay = (ayaq)this.a.app.getManager(62);
+    SubAccountUgActivity.a(this.a, paramayay, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(boolean paramBoolean, ayay paramayay)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
+      if (paramayay != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + paramayay.b + " subAccount=" + paramayay.c + " errType=" + paramayay.jdField_a_of_type_Int + " errMsg=" + paramayay.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((paramayay == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramayay.c)))) {}
     do
     {
-      do
+      return;
+      this.a.c();
+      if (this.a.b)
       {
-        return;
-        int i = ((Integer)paramView.getTag()).intValue();
-        paramView = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
-        localObject = (ayav)this.a.app.getManager(61);
-        if (((ayav)localObject).a(paramView.getUin()))
+        this.a.b = false;
+        if (paramBoolean)
         {
-          this.a.c(this.a.getString(2131719846));
-          ayan.a(this.a.app);
-          this.a.setTitle("");
-          paramView = new Intent(this.a, SplashActivity.class);
-          paramView.putExtra("tab_index", MainFragment.b);
-          paramView.setFlags(67108864);
-          this.a.startActivity(paramView);
-          this.a.finish();
+          this.a.a();
+          this.a.c(this.a.getString(2131719925));
           return;
         }
-        if (((ayav)localObject).a() >= 2)
-        {
-          ayao.a(this.a.app, this.a);
-          return;
-        }
-        if (!paramView.isLogined())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
-          }
-          localObject = new Intent(this.a, SubLoginActivity.class);
-          ((Intent)localObject).putExtra("subuin", paramView.getUin());
-          ((Intent)localObject).putExtra("fromWhere", this.a.b);
-          this.a.startActivity((Intent)localObject);
-          return;
-        }
-      } while (!this.a.b());
-      localObject = ((ayav)localObject).a(paramView.getUin());
-      this.a.a(2131719848);
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new acdw(this, paramView);
-        this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), paramView.getUin(), (SubAccountObserver)localObject);
+        this.a.b(this.a.getString(2131719921));
         return;
       }
-      localayat = (ayat)this.a.app.getManager(28);
-    } while (localayat == null);
-    localayat.a(paramView.getUin(), (String)localObject, this.a.b);
+    } while (!paramBoolean);
+    paramayay = (ayaq)this.a.app.getManager(62);
+    Pair localPair = paramayay.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    paramayay.a(this.a.app, this.a, localPair, new acdw(this, paramayay, localPair));
   }
 }
 

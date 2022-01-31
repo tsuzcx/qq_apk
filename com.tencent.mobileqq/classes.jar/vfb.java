@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import android.widget.TextView;
+import java.util.List;
 
-public final class vfb
-  implements Parcelable.Creator<EditLocalGifSource>
+class vfb
+  implements vqk<Boolean, vqq>
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  vfb(vfa paramvfa) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public Void a(Boolean paramBoolean, vqq paramvqq)
   {
-    return new EditLocalGifSource[paramInt];
+    if (paramBoolean.booleanValue())
+    {
+      ved.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramvqq.b.size(), paramvqq.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      ved.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramvqq.jdField_a_of_type_Int);
+      bcql.a(this.a.a(), 1, ajya.a(2131703654) + paramvqq.jdField_a_of_type_Int, 1);
+    }
   }
 }
 

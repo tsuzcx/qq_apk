@@ -2,11 +2,9 @@ import com.tencent.biz.pubaccount.VideoInfo;
 
 public abstract interface qxb
 {
-  public abstract void a(String paramString);
+  public abstract void a(qxc paramqxc);
   
-  public abstract void b(int paramInt);
-  
-  public abstract void b(VideoInfo paramVideoInfo);
+  public abstract void a(qxc paramqxc, VideoInfo paramVideoInfo, int paramInt);
 }
 
 

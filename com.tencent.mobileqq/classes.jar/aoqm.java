@@ -1,24 +1,8 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-public class aoqm
-  implements View.OnLongClickListener
+class aoqm
 {
-  public aoqm(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    bblr localbblr = new bblr();
-    localbblr.a(2131364979, paramView.getContext().getString(2131691507));
-    this.a.a = bbcc.a(paramView, localbblr, new aoqn(this, paramView), new aoqo(this, paramView));
-    return true;
-  }
+  View[] a = new View[12];
 }
 
 

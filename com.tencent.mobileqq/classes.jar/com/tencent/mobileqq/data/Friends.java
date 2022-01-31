@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import afcy;
+import afcw;
 import android.database.Cursor;
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
 public class Friends
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public static final int CLIENT_DEFAULT = 0;
@@ -64,9 +64,9 @@ public class Friends
   public int cNewLoverDiamondFlag;
   public byte cSpecialFlag;
   public String customModel = "";
-  @aulx
+  @aulz
   public String customOnlineStatus;
-  @aulx
+  @aulz
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
@@ -103,7 +103,7 @@ public class Friends
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
   public int nameplateVipType;
-  @aulx
+  @aulz
   public int netTypeIconId;
   public int qqVipInfo;
   public String recommReason;
@@ -111,7 +111,7 @@ public class Friends
   public String remark;
   @Deprecated
   public byte[] richBuffer;
-  @aulx
+  @aulz
   @Deprecated
   public RichStatus richStatus;
   @Deprecated
@@ -127,13 +127,13 @@ public class Friends
   @Deprecated
   public byte status = 10;
   public String strMasterUin = "";
-  @aulx
+  @aulz
   public String strTermDesc;
   public int superQqInfo;
   public int superVipInfo;
   public int superVipTemplateId;
   public long uExtOnlineStatus;
-  @auma
+  @aumc
   public String uin;
   
   public static boolean isValidUin(long paramLong)
@@ -286,7 +286,7 @@ public class Friends
   public int getNetWorkType()
   {
     int j = 2;
-    afcy localafcy = afcy.a();
+    afcw localafcw = afcw.a();
     int i;
     if (this.eNetwork == 0)
     {
@@ -297,9 +297,9 @@ public class Friends
       {
         return i;
         i = j;
-      } while (1 != localafcy.a(this.iTermType, 1));
+      } while (1 != localafcw.a(this.iTermType, 1));
     }
-    if (1 != localafcy.a(this.iTermType, 1)) {
+    if (1 != localafcw.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

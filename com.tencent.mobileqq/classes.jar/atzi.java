@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMFollwerAdd;
-
 public class atzi
-  extends atyy
+  extends atza
 {
-  public QIMFollwerAdd a;
+  public String b;
   
-  public atzi(QIMFollwerAdd paramQIMFollwerAdd)
+  public atzi(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd = paramQIMFollwerAdd;
-    this.jdField_a_of_type_Long = paramQIMFollwerAdd.upTime;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
+    this.b = paramString;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMFollwerAdd.isRead;
+    return true;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import aukm;
+import auko;
 import com.tencent.biz.qqstory.network.pb.qqstory_group.NewlyLikeInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -16,12 +16,12 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ssl;
-import veg;
+import ssi;
+import ved;
 
 public class LikeEntry
-  extends aukm
-  implements Comparable<LikeEntry>, ssl
+  extends auko
+  implements Comparable<LikeEntry>, ssi
 {
   public static final int ROLE_NORMAL = 0;
   public static final int ROLE_VIP = 2;
@@ -114,7 +114,7 @@ public class LikeEntry
       }
       catch (Exception paramString)
       {
-        veg.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
+        ved.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
       }
     }
   }

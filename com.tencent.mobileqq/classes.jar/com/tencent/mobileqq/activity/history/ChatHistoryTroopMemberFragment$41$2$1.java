@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.history;
 
-import agak;
-import agau;
+import agai;
+import agas;
 import android.os.Handler;
 import java.util.List;
 
 class ChatHistoryTroopMemberFragment$41$2$1
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$41$2$1(ChatHistoryTroopMemberFragment.41.2 param2, agau paramagau) {}
+  ChatHistoryTroopMemberFragment$41$2$1(ChatHistoryTroopMemberFragment.41.2 param2, agas paramagas) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agak.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_JavaLangString);
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agak.a.getActivity())
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agai.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agai.a.getActivity())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agak.a.a.add(this.jdField_a_of_type_Agau);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agak.a.b.sendEmptyMessage(9);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agai.a.a.add(this.jdField_a_of_type_Agas);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$41$2.jdField_a_of_type_Agai.a.b.sendEmptyMessage(9);
       return;
     }
   }

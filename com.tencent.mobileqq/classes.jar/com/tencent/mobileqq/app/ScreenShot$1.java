@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import akgb;
+import akga;
 import android.graphics.Rect;
 
 class ScreenShot$1
   implements Runnable
 {
-  ScreenShot$1(ScreenShot paramScreenShot, akgb paramakgb) {}
+  ScreenShot$1(ScreenShot paramScreenShot, akga paramakga) {}
   
   public void run()
   {

@@ -5,17 +5,17 @@ import android.view.View.OnTouchListener;
 class atmo
   implements View.OnTouchListener
 {
-  atmo(atlu paramatlu) {}
+  atmo(atlw paramatlw) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370404).setAlpha(0.5F);
+      this.a.a.findViewById(2131369179).setAlpha(0.5F);
     }
     for (;;)
     {
       return false;
-      this.a.a.findViewById(2131370404).setAlpha(1.0F);
+      this.a.a.findViewById(2131369179).setAlpha(1.0F);
     }
   }
 }

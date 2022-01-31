@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae;
 
-import bbcv;
-import biim;
-import biin;
-import biio;
-import bjqu;
+import bbdj;
+import bijd;
+import bije;
+import bijf;
+import bjrl;
 
 public class AEPituCameraUnit$10
   implements Runnable
 {
-  public AEPituCameraUnit$10(biim parambiim, String paramString) {}
+  public AEPituCameraUnit$10(bijd parambijd, String paramString) {}
   
   public void run()
   {
-    biin localbiin = new biin(this);
-    biio localbiio = new biio(this);
-    bbcv.a(biim.a(this.this$0).a(), null, this.a, localbiin, localbiin, localbiio);
+    bije localbije = new bije(this);
+    bijf localbijf = new bijf(this);
+    bbdj.a(bijd.a(this.this$0).a(), null, this.a, localbije, localbije, localbijf);
   }
 }
 

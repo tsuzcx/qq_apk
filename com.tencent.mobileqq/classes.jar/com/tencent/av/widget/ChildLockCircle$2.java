@@ -10,7 +10,7 @@ class ChildLockCircle$2
   public void run()
   {
     ViewGroup localViewGroup = (ViewGroup)this.this$0.getParent();
-    if ((localViewGroup != null) && (localViewGroup.findViewById(2131372225) != null)) {
+    if ((localViewGroup != null) && (localViewGroup.findViewById(2131372227) != null)) {
       localViewGroup.removeView(this.this$0);
     }
   }

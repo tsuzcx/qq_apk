@@ -1,19 +1,16 @@
-import android.support.annotation.Nullable;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class birr
-  implements bjob<List<biqs>>
+  extends ayxt
 {
-  birr(birn parambirn) {}
-  
-  public void a(@Nullable List<biqs> paramList)
+  birr(birq parambirq, QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
   {
-    if (paramList == null) {
-      return;
-    }
-    birn.a(this.a).clear();
-    birn.a(this.a).addAll(paramList);
-    birn.a(this.a).notifyDataSetChanged();
+    super(paramQQAppInterface, paramString, paramRunnable, paramLong);
+  }
+  
+  protected void realCancel()
+  {
+    bjah.b("AEResDownloader", "【RunnableTask】cancel ");
   }
 }
 

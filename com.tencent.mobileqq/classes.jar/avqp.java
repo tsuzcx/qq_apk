@@ -1,14 +1,30 @@
+import android.view.View;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.AdapterView;
 
 public class avqp
-  implements bfwj
+  implements bfpv
 {
   public avqp(IosTimepicker paramIosTimepicker) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    IosTimepicker.a(this.a);
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
+    }
   }
 }
 

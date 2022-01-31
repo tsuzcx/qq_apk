@@ -1,28 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
-import java.lang.ref.WeakReference;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class yzz
-  implements View.OnClickListener
+class yzz
+  implements GestureDetector.OnGestureListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  yzz(yzy paramyzy) {}
   
-  public yzz(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView, String paramString1, String paramString2, String paramString3)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.c = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString3;
+    return true;
   }
   
-  public void onClick(View paramView)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((GdtCanvasPictureComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView) != null) && (GdtCanvasPictureComponentView.b(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView).get() != null)) {
-      ((zag)GdtCanvasPictureComponentView.c(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView).get()).a(this.c, GdtCanvasPictureComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView).id, this.jdField_a_of_type_JavaLangString, this.b);
-    }
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return true;
   }
 }
 

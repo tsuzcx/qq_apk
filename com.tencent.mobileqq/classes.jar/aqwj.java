@@ -1,80 +1,30 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Date;
 
-public class aqwj
-  implements BusinessObserver
+class aqwj
 {
-  private int jdField_a_of_type_Int;
-  private final SparseArray<WeakReference<aqwl>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  static aqwj jdField_a_of_type_Aqwj = new aqwj(false, new Date(0L), new Date(0L));
+  final Date jdField_a_of_type_JavaUtilDate;
+  final boolean jdField_a_of_type_Boolean;
+  final Date b;
   
-  private void a(boolean paramBoolean, Bundle paramBundle)
+  aqwj(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
   {
-    int j = 0;
-    int i;
-    if (paramBundle != null) {
-      i = paramBundle.getInt("req_id");
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-      {
-        localObject1 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localObject1 == null) {
-          break label149;
-        }
-        localObject2 = (aqwl)((WeakReference)localObject1).get();
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-          return;
-        }
-        i = paramBundle.getInt("result");
-        j = paramBundle.getInt("jump_result");
-        ??? = paramBundle.getString("jump_url");
-        localObject2 = paramBundle.getString("ext_info");
-        paramBundle = (Bundle)???;
-        if (localObject1 == null) {
-          break label148;
-        }
-        ((aqwl)localObject1).a(paramBoolean, i, j, paramBundle, (String)localObject2);
-        return;
-      }
-      Object localObject1 = null;
-      Object localObject2 = null;
-      paramBundle = null;
-      i = 0;
-      continue;
-      label148:
-      return;
-      label149:
-      localObject1 = null;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilDate = paramDate1;
+    this.b = paramDate2;
   }
   
-  int a(aqwl paramaqwl)
+  private boolean b()
   {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-    {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localSparseArray2.append(i, new WeakReference(paramaqwl));
-      i = this.jdField_a_of_type_Int;
-      return i;
-    }
+    long l = NetConnInfoCenter.getServerTime() * 1000L;
+    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  boolean a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle);
+    return (b()) && (this.jdField_a_of_type_Boolean);
   }
 }
 

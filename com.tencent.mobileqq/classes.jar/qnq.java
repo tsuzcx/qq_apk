@@ -1,26 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.app.BaseActivity;
 
 class qnq
-  extends AnimatorListenerAdapter
+  extends npt
 {
-  qnq(qno paramqno) {}
+  private qnq(qnl paramqnl) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramAnimator = new Bundle();
-    paramAnimator.putBoolean("key_is_from_floating_window", true);
-    paramAnimator.putParcelable("VIDEO_OBJ", qno.a(this.a).a);
-    if (qno.a(this.a) != null) {}
-    for (long l = qno.a(this.a).a() + 300L;; l = 0L)
+    qnl.b(this.a);
+    if (paramBoolean)
     {
-      paramAnimator.putLong("VIDEO_PLAY_POSITION", l);
-      qol.a(BaseActivity.sTopActivity, paramAnimator, false, qno.a(this.a));
-      qno.a(this.a, 1);
-      return;
+      qnl.a(this.a, paramBundle.getString("VALUE_COOKIE", null));
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      qnl.a(this.a, paramBundle);
+      if (qnl.a(this.a))
+      {
+        qnl.a(this.a);
+        qnl.a(this.a, false);
+      }
     }
   }
 }

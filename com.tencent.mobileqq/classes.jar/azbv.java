@@ -1,19 +1,20 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.QQPermissionCallback;
 
-class azbv
-  implements QQPermissionCallback
+public class azbv
+  implements View.OnTouchListener
 {
-  azbv(azbu paramazbu) {}
+  public azbv(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    TribeVideoPreviewFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment, false);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.getActivity().finish();
+    }
+    return true;
   }
 }
 

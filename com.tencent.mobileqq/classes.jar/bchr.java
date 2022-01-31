@@ -1,17 +1,23 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
 
-public abstract interface bchr
-  extends bcci
+public final class bchr
+  implements Parcelable.Creator<WebSoService.WebSoState.WebSo3>
 {
-  public abstract xmt a();
+  public WebSoService.WebSoState.WebSo3 a(Parcel paramParcel)
+  {
+    return new WebSoService.WebSoState.WebSo3(paramParcel);
+  }
   
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
+  public WebSoService.WebSoState.WebSo3[] a(int paramInt)
+  {
+    return new WebSoService.WebSoState.WebSo3[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bchr
  * JD-Core Version:    0.7.0.1
  */

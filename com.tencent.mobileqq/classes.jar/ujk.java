@@ -1,30 +1,28 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ujk
-  extends sth<uji, tkb>
+  extends QQUIEventReceiver<uji, tkk>
 {
-  public ujk(uji paramuji)
+  public ujk(@NonNull uji paramuji)
   {
     super(paramuji);
   }
   
-  public void a(@NonNull uji paramuji, @NonNull tkb paramtkb)
+  public void a(@NonNull uji paramuji, @NonNull tkk paramtkk)
   {
-    if ((uji.a(paramuji) != null) && (paramtkb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkb.jdField_a_of_type_JavaUtilList.contains(uji.a(paramuji).a)))
+    if (paramtkk.a.isSuccess())
     {
-      veg.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramtkb.b.toString());
-      paramuji.a.i();
+      ved.a(this.TAG, "receive user info event. %s.", paramtkk.toString());
+      paramuji.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return tkb.class;
+    return tkk.class;
   }
-  
-  public void b(@NonNull uji paramuji, @NonNull tkb paramtkb) {}
 }
 
 

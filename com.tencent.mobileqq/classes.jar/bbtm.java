@@ -1,27 +1,65 @@
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.content.Context;
+import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bbtm
-  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public bbtm(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  private static bbtc jdField_a_of_type_Bbtc = new bbtd();
+  private static final HashMap<Long, bbtc> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public static bbtc a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
+    bbtc localbbtc2 = (bbtc)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    bbtc localbbtc1 = localbbtc2;
+    if (localbbtc2 == null) {
+      localbbtc1 = jdField_a_of_type_Bbtc;
     }
-    paramTVK_IMediaPlayer.seekTo(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video");
+    return localbbtc1;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bbtc)localIterator.next()).cleanCache(paramContext);
+    }
+  }
+  
+  public static void a(bbtc parambbtc)
+  {
+    try
+    {
+      jdField_a_of_type_Bbtc = parambbtc;
+      return;
+    }
+    finally
+    {
+      parambbtc = finally;
+      throw parambbtc;
+    }
+  }
+  
+  public static void b(bbtc parambbtc)
+  {
+    try
+    {
+      if (jdField_a_of_type_Bbtc == parambbtc) {
+        jdField_a_of_type_Bbtc = new bbtd();
+      }
+      return;
+    }
+    finally
+    {
+      parambbtc = finally;
+      throw parambbtc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbtm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,12 @@
-import com.tencent.widget.TCWNumberPicker;
+import android.view.View;
 
 public abstract interface bfvz
 {
-  public abstract void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2);
+  public abstract void a_(View paramView);
+  
+  public abstract void e();
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 

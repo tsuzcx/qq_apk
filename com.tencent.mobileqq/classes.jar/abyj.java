@@ -1,17 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class abyj
-  implements DialogInterface.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public abyj(RegisterActivity paramRegisterActivity) {}
+  public abyj(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
+    }
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 

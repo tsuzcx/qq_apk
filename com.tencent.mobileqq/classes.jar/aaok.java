@@ -1,36 +1,32 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aaok
+public final class aaok
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = -1;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public aaok(aaqb paramaaqb, int paramInt, aaqa paramaaqa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Aaqb.a)
+    {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aaqa != null) {
+        this.jdField_a_of_type_Aaqa.a();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        axqy.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
+    }
+  }
 }
 
 

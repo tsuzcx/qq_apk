@@ -1,28 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dualsim.common.IKingCardInterface.OnChangeListener;
-import dualsim.common.OrderCheckResult;
-import mqq.app.AppRuntime;
-
-public class bbws
-  implements IKingCardInterface.OnChangeListener
+public abstract interface bbws
 {
-  public void onChanged(OrderCheckResult paramOrderCheckResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.KCWraperV2", 1, "state changed");
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((AppRuntime)localObject).getAccount())
-    {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramOrderCheckResult != null)) {
-        bbwo.a((String)localObject, paramOrderCheckResult);
-      }
-      return;
-    }
-  }
+  public abstract void callback(int paramInt);
 }
 
 

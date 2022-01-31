@@ -1,10 +1,13 @@
-import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class aifb
-  extends aifd
+  extends aimt
 {
-  public long a;
-  public View a;
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

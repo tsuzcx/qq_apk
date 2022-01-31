@@ -1,28 +1,75 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 class anvf
-  implements auww
+  extends akdn
 {
-  anvf(anul paramanul) {}
+  anvf(anuq paramanuq, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
+  public void a(boolean paramBoolean, String paramString)
   {
-    MessengerService localMessengerService = (MessengerService)this.a.a.get();
-    if (localMessengerService != null)
+    int i = 1;
+    super.a(paramBoolean, paramString);
+    try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt2);
-      localBundle.putInt("code", paramInt1);
-      localBundle.putString("url", paramString);
-      paramBundle.putBundle("response", localBundle);
-      localMessengerService.a(paramBundle);
-      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
-        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
+      Object localObject = new Bundle();
+      if (paramBoolean) {}
+      for (;;)
+      {
+        ((Bundle)localObject).putInt("retCode", i);
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        if (QLog.isColorLevel()) {
+          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+        }
+        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+        ((Intent)localObject).putExtra("action", "follow");
+        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+        ((Intent)localObject).putExtra("uin", paramString);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+        wpt.a().a(new FollowUpdateEvent(1, paramString));
+        return;
+        i = 0;
       }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    int i = 0;
+    super.b(paramBoolean, paramString);
+    try
+    {
+      Object localObject = new Bundle();
+      if (paramBoolean) {
+        i = 1;
+      }
+      ((Bundle)localObject).putInt("retCode", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+      }
+      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+      ((Intent)localObject).putExtra("action", "unFollow");
+      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+      ((Intent)localObject).putExtra("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+      wpt.a().a(new FollowUpdateEvent(0, paramString));
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
     }
   }
 }

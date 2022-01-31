@@ -2,8 +2,8 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.os.Bundle;
-import aoza;
-import bgmt;
+import aoze;
+import bgnk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;

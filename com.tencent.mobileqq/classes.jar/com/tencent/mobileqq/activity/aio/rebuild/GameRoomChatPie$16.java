@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aepg;
+import aepe;
 import android.support.v4.app.FragmentActivity;
-import bcis;
+import bcjg;
 import mqq.os.MqqHandler;
 
 public class GameRoomChatPie$16
   implements Runnable
 {
-  public GameRoomChatPie$16(aepg paramaepg) {}
+  public GameRoomChatPie$16(aepe paramaepe) {}
   
   public void run()
   {
@@ -17,8 +17,8 @@ public class GameRoomChatPie$16
       if (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
         return;
       }
-      this.this$0.jdField_a_of_type_Bcis.a(this.this$0.a(), this.this$0);
-      aepg.a(this.this$0).post(new GameRoomChatPie.16.1(this));
+      this.this$0.jdField_a_of_type_Bcjg.a(this.this$0.a(), this.this$0);
+      aepe.a(this.this$0).post(new GameRoomChatPie.16.1(this));
       return;
     }
   }

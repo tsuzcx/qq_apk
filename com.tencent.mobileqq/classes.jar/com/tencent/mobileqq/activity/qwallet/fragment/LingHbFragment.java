@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import agzf;
+import agzd;
+import agzp;
+import agzq;
 import agzr;
 import agzs;
 import agzt;
-import agzu;
-import agzv;
-import ahab;
-import ahao;
-import ahiy;
-import ajyc;
+import agzz;
+import aham;
+import ahiw;
+import ajya;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -20,8 +20,8 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcpw;
-import bgwk;
+import bcql;
+import bgxb;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -51,16 +51,16 @@ public class LingHbFragment
     do
     {
       return;
-      i = bgwk.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
-      str1 = bgwk.a(String.valueOf(bgwk.a(this.b.getText().toString())));
+      i = bgxb.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
+      str1 = bgxb.a(String.valueOf(bgxb.a(this.b.getText().toString())));
       if (TextUtils.isEmpty(str1))
       {
-        bcpw.a(getActivity(), 2131693257, 0).a();
+        bcql.a(getActivity(), 2131693258, 0).a();
         return;
       }
       str2 = c();
     } while (TextUtils.isEmpty(str2));
-    combineUploadData(this.jdField_a_of_type_Bgws, this.channel, i, str1, "hongbao.wrap.go");
+    combineUploadData(this.jdField_a_of_type_Bgxj, this.channel, i, str1, "hongbao.wrap.go");
     Map localMap = this.mActivity.a();
     localMap.put("channel", String.valueOf(this.channel));
     localMap.put("type", "1");
@@ -72,25 +72,25 @@ public class LingHbFragment
   
   public int a()
   {
-    return 2131561513;
+    return 2131561512;
   }
   
   protected String a()
   {
     if (32 == this.channel) {
-      return ajyc.a(2131706103);
+      return ajya.a(2131706114);
     }
-    return ajyc.a(2131706102);
+    return ajya.a(2131706113);
   }
   
   public void a()
   {
     super.a();
     c();
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agzr(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, new agzs(this), new agzt(this), new agzu(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agzp(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, new agzq(this), new agzr(this), new agzs(this));
     this.c.setFocusable(true);
-    this.c.setOnFocusChangeListener(new agzv(this));
+    this.c.setOnFocusChangeListener(new agzt(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.getLayoutParams();
     localLayoutParams.width = -1;
@@ -106,7 +106,7 @@ public class LingHbFragment
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     if (this.channel == 65536) {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378210)).setText(2131693261);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378213)).setText(2131693262);
     }
   }
   
@@ -128,15 +128,15 @@ public class LingHbFragment
     String str1 = b();
     if (65536 == this.channel)
     {
-      if (ahao.a(str1) < 4)
+      if (aham.a(str1) < 4)
       {
-        bcpw.a(getActivity(), 2131697414, 0).a();
+        bcql.a(getActivity(), 2131697415, 0).a();
         return null;
       }
-      String str2 = ahao.a(str1);
+      String str2 = aham.a(str1);
       if (str2.length() > 0)
       {
-        bcpw.a(getActivity(), String.format(getString(2131697412), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
+        bcql.a(getActivity(), String.format(getString(2131697413), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
         return null;
       }
     }
@@ -145,7 +145,7 @@ public class LingHbFragment
   
   public void c()
   {
-    Object localObject = ((agzf)getActivity().app.getManager(245)).a("hb_recommend");
+    Object localObject = ((agzd)getActivity().app.getManager(245)).a("hb_recommend");
     for (;;)
     {
       int i;
@@ -171,8 +171,8 @@ public class LingHbFragment
             if (localJSONObject == null) {
               break label315;
             }
-            long l2 = ahiy.a(localJSONObject.optString("begintime"), -1L);
-            long l3 = ahiy.a(localJSONObject.optString("endtime"), 9223372036854775807L);
+            long l2 = ahiw.a(localJSONObject.optString("begintime"), -1L);
+            long l3 = ahiw.a(localJSONObject.optString("endtime"), 9223372036854775807L);
             if ((l1 < l2) || (l1 > l3)) {
               break label315;
             }

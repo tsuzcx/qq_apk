@@ -1,4 +1,20 @@
-class aydr {}
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+
+public final class aydr
+  implements Parcelable.Creator<DocsGrayTipsInfo>
+{
+  public DocsGrayTipsInfo a(Parcel paramParcel)
+  {
+    return new DocsGrayTipsInfo(paramParcel);
+  }
+  
+  public DocsGrayTipsInfo[] a(int paramInt)
+  {
+    return new DocsGrayTipsInfo[paramInt];
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

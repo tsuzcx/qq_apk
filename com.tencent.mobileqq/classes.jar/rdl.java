@@ -1,17 +1,16 @@
-import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdl
-  extends oyg
+  extends oyd
 {
-  public rdl(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
+  public rdl(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    paramoxx.c();
   }
 }
 

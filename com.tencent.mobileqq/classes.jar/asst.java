@@ -1,26 +1,30 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
 
 public class asst
-  extends astn
+  extends RecyclerView.OnScrollListener
 {
   public asst(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
-    }
-    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
+    if (MultiCardRecommendFragment.a(this.a) != null)
     {
-      MultiCardRecommendFragment.a(this.a).a.clear();
-      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
+      if ((paramInt == 0) || (paramInt == 1)) {
+        break label38;
+      }
+      MultiCardRecommendFragment.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {
+        MultiCardRecommendFragment.d(this.a);
+      }
+      return;
+      label38:
+      MultiCardRecommendFragment.b(this.a);
+      MultiCardRecommendFragment.c(this.a);
     }
   }
 }

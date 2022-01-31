@@ -1,75 +1,121 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import eipc.EIPCClient;
 import eipc.EIPCResult;
 
-class axkd
-  extends QIPCModule
+public class axkd
 {
-  axkd(axkc paramaxkc, String paramString)
+  private static volatile axkd a;
+  
+  public static axkd a()
   {
-    super(paramString);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new axkd();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public Bundle a(String paramString, Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2 = null;
+    Object localObject1;
     if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
     {
-      paramString = new Bundle();
-      paramString.putString("VALUE_USER_NICK_NAME", bbcl.b(localQQAppInterface, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    if ("CMD_GET_CURRENT_NICK_NAME".equals(paramString))
-    {
-      paramString = localQQAppInterface.getCurrentNickname();
-      paramBundle = new Bundle();
-      paramBundle.putString("VALUE_GET_CURRENT_NICK_NAME", paramString);
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-    if ("CMD_GET_CURRENT_USER_HEAD".equals(paramString))
-    {
-      paramString = localQQAppInterface.a(1, localQQAppInterface.c(), 200);
-      paramBundle = new Bundle();
-      paramBundle.putString("VALUE_GET_CURRENT_USER_HEAD", paramString);
-      return EIPCResult.createSuccessResult(paramBundle);
-    }
-    if ("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString))
-    {
-      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
-      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
-      paramBundle = paramBundle.getString("VALUE_MSG_VIDEO_ID");
-      if (paramBundle != null)
+      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_NICK_NAME_BY_UIN", paramBundle);
+      localObject1 = localObject2;
+      if (paramString != null)
       {
-        axjq.a(localQQAppInterface).a(paramString, paramInt, paramBundle);
-        VideoRedbagData.updateRewardStat(paramBundle);
+        localObject1 = localObject2;
+        if (paramString.isSuccess()) {
+          localObject1 = paramString.data;
+        }
       }
-      return EIPCResult.createSuccessResult(new Bundle());
     }
-    if ("CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString))
+    do
     {
-      boolean bool = VideoRedbagData.queryRewardStat(paramBundle.getString("VALUE_MSG_VIDEO_ID"));
-      paramString = new Bundle();
-      paramString.putBoolean("VALUE_MSG_REDBAG_STAT", bool);
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    if ("CMD_DOWNLOAD_PTU_RES".equals(paramString))
-    {
-      biqz.a().a(1, null, false);
-      bizq.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-      return EIPCResult.createSuccessResult(new Bundle());
-    }
-    if ("CMD_QUERY_STATUS_PTU_RES".equals(paramString))
-    {
-      paramInt = biqz.a().a(1);
-      bizq.b("VideoPlayIPCServer", "query additional_package");
-      paramString = new Bundle();
-      paramString.putInt("VALUE_MSG_PTU_RES_STATUS", paramInt);
-      return EIPCResult.createSuccessResult(paramString);
-    }
-    return null;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              return localObject1;
+                              if (!"CMD_GET_CURRENT_NICK_NAME".equals(paramString)) {
+                                break;
+                              }
+                              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_NICK_NAME", paramBundle);
+                              localObject1 = localObject2;
+                            } while (paramString == null);
+                            localObject1 = localObject2;
+                          } while (!paramString.isSuccess());
+                          return paramString.data;
+                          if (!"CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString)) {
+                            break;
+                          }
+                          paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", paramBundle);
+                          localObject1 = localObject2;
+                        } while (paramString == null);
+                        localObject1 = localObject2;
+                      } while (!paramString.isSuccess());
+                      return paramString.data;
+                      if (!"CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString)) {
+                        break;
+                      }
+                      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_VIDEO_REDBAG_STAT", paramBundle);
+                      localObject1 = localObject2;
+                    } while (paramString == null);
+                    localObject1 = localObject2;
+                  } while (!paramString.isSuccess());
+                  return paramString.data;
+                  if (!"CMD_GET_CURRENT_USER_HEAD".equals(paramString)) {
+                    break;
+                  }
+                  paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_GET_CURRENT_USER_HEAD", paramBundle);
+                  localObject1 = localObject2;
+                } while (paramString == null);
+                localObject1 = localObject2;
+              } while (!paramString.isSuccess());
+              return paramString.data;
+              if (!"CMD_DOWNLOAD_PTU_RES".equals(paramString)) {
+                break;
+              }
+              paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_DOWNLOAD_PTU_RES", paramBundle);
+              localObject1 = localObject2;
+            } while (paramString == null);
+            localObject1 = localObject2;
+          } while (!paramString.isSuccess());
+          return paramString.data;
+          localObject1 = localObject2;
+        } while (!"CMD_QUERY_STATUS_PTU_RES".equals(paramString));
+        paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoPlayIPCServer", "CMD_QUERY_STATUS_PTU_RES", paramBundle);
+        localObject1 = localObject2;
+      } while (paramString == null);
+      localObject1 = localObject2;
+    } while (!paramString.isSuccess());
+    return paramString.data;
   }
 }
 

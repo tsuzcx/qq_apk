@@ -1,45 +1,15 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public final class vko
-  extends vlj
+class vko
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vko(DoodleView paramDoodleView)
+  vko(vkn paramvkn) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "EmptyLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    veg.b("EmptyLayer", "EmptyLayer handle touch event.");
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.g();
   }
 }
 

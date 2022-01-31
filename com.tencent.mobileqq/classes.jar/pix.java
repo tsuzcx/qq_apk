@@ -1,34 +1,37 @@
-import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnSocialHeaderFollowClickListener.1.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class pix
-  implements ViewBase.OnClickListener
+  implements pbx
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  rap jdField_a_of_type_Rap;
+  pix(piw parampiw) {}
   
-  public pix(ArticleInfo paramArticleInfo, Context paramContext, rap paramrap)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Rap = paramrap;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      onk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 4);
-    }
-    for (;;)
+    QLog.d("OnSocialHeaderFollowClickListener", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((paramBoolean) && (paramInt == 2))
     {
-      olg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Rap);
-      pjd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009441", "0X8009444");
-      return;
-      onk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 4);
+      String str;
+      if ((piw.a(this.a) != null) && (piw.a(this.a).mSocialFeedInfo != null))
+      {
+        osg.a().b(piw.a(piw.a(this.a)), paramInt);
+        str = onh.a(piw.a(this.a).mAlgorithmID, onh.a(piw.a(this.a)), (int)piw.a(this.a).mChannelID, 0, 0, bbfj.h(piw.a(this.a)), piw.a(piw.a(this.a)) + "", null, piw.a(this.a).innerUniqueID, null, piw.a(this.a));
+        if (!shu.a(piw.a(this.a).mChannelID)) {
+          break label300;
+        }
+      }
+      label300:
+      for (paramString = "0X800941D";; paramString = "0X80080EC")
+      {
+        nol.a(null, piw.a(piw.a(this.a)) + "", paramString, paramString, 0, 0, String.valueOf(piw.a(this.a).mFeedId), String.valueOf(piw.a(this.a).mArticleID), Integer.toString(piw.a(this.a).mStrategyId), str, false);
+        ThreadManager.getUIHandler().post(new OnSocialHeaderFollowClickListener.1.1(this));
+        return;
+      }
     }
+    bcql.a(piw.a(this.a), ajya.a(2131707854), 0).a();
   }
 }
 

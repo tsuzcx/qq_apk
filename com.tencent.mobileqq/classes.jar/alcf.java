@@ -1,31 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-final class alcf
-  implements ayrz
+public class alcf
 {
-  public void a(aysw paramaysw, aysx paramaysx)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  ayrx jdField_a_of_type_Ayrx;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
+  String c;
+  
+  public String toString()
   {
-    if ((paramaysw == null) || (paramaysx == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramaysw instanceof ayrv));
-      paramaysw = (ayrv)paramaysw;
-      paramaysw.jdField_a_of_type_Long += paramaysx.c;
-      paramaysx.c = 0L;
-      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
-      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
-      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
-      if (paramaysx.contains("range="))
-      {
-        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
-        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + paramaysx + ", offset=" + paramaysw.jdField_a_of_type_Long);
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

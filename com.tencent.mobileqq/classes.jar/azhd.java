@@ -1,19 +1,103 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
-public final class azhd
-  implements QQPermissionCallback
+public class azhd
+  extends bfxe
 {
-  public azhd(BaseActivity paramBaseActivity) {}
+  protected LayoutInflater a;
+  protected boolean a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public azhd(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, Context paramContext, boolean paramBoolean)
   {
-    if (!this.a.isFinishing()) {
-      bbcv.b(this.a);
-    }
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    TroopBarPOI localTroopBarPOI;
+    int i;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561810, null);
+      paramViewGroup = new azhe(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369077));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375823));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369066));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369062));
+      paramView.setTag(paramViewGroup);
+      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
+      ImageView localImageView = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
+      if (!localTroopBarPOI.equals(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.c)) {
+        break label228;
+      }
+      i = 0;
+      label133:
+      localImageView.setVisibility(i);
+      if (TextUtils.isEmpty(localTroopBarPOI.d)) {
+        break label235;
+      }
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.d);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      label171:
+      if (paramInt != 0) {
+        break label247;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      label183:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label258;
+      }
+      paramView.setBackgroundResource(17170445);
+    }
+    for (;;)
+    {
+      paramView.setContentDescription(localTroopBarPOI.c);
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      return paramView;
+      paramViewGroup = (azhe)paramView.getTag();
+      break;
+      label228:
+      i = 8;
+      break label133;
+      label235:
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label171;
+      label247:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      break label183;
+      label258:
+      paramView.setBackgroundResource(2130847418);
+    }
+  }
 }
 
 

@@ -1,27 +1,24 @@
+import android.support.annotation.NonNull;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
+import java.util.List;
 
-class upl
-  extends ParallelJobSegment<String, Integer>
+public class upl
+  extends JobSegment<String, upp>
 {
-  public upl(upd paramupd)
-  {
-    this(paramupd, "RequestViewCountSegment");
-  }
+  private tlw jdField_a_of_type_Tlw = new tlw();
   
-  public upl(upd paramupd, String paramString)
+  public upl(upk paramupk, @NonNull String paramString)
   {
-    super(paramString);
+    this.jdField_a_of_type_Tlw.a = new ArrayList();
+    paramupk = new uvp(paramString, 0, "", "");
+    this.jdField_a_of_type_Tlw.a.add(paramupk);
   }
   
   protected void a(JobContext paramJobContext, String paramString)
   {
-    tml localtml = new tml();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localtml.a = localArrayList;
-    syr.a().a(localtml, new upm(this, paramJobContext, paramString));
+    syo.a().a(this.jdField_a_of_type_Tlw, new upm(this, paramJobContext));
   }
 }
 

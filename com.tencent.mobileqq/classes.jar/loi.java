@@ -1,23 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class loi
-  implements DialogInterface.OnClickListener
 {
-  public loi(GaInviteLockActivity paramGaInviteLockActivity) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long b = 0L;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public loi(String paramString, long paramLong)
   {
-    mqz.e(false, false);
-    if (paramDialogInterface != null)
+    this.jdField_a_of_type_JavaLangString = ("EventCountLog_" + paramString);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  void a()
+  {
+    if (!AudioHelper.e()) {}
+    long l1;
+    do
     {
-      paramDialogInterface.dismiss();
-      if ((this.a.a != null) && (this.a.a.a != null)) {
-        this.a.a.a.b();
-      }
-    }
+      return;
+      l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Int += 1;
+    } while (this.b >= l1);
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = this.b;
+    this.b = (l1 + this.jdField_a_of_type_Long);
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "EventCountLog, eventCount[" + this.jdField_a_of_type_Int + "], intervalMS[" + (l2 + l1 - l3) + "]");
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

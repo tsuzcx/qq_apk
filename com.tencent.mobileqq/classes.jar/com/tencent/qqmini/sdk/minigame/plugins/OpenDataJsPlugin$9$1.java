@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import beka;
-import bewt;
+import bekr;
+import bexk;
 
 class OpenDataJsPlugin$9$1
   implements DialogInterface.OnClickListener
@@ -21,8 +21,8 @@ class OpenDataJsPlugin$9$1
     }
     catch (Throwable paramDialogInterface)
     {
-      bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
-      bewt.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
+      bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
+      bexk.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
       this.this$1.val$req.b();
     }
   }

@@ -1,6 +1,12 @@
-public abstract interface asfo
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
+
+class asfo
 {
-  public abstract void g();
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
 }
 
 

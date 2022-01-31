@@ -1,53 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TroopShortcutbarFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acna
-  extends bafg
+  implements View.OnTouchListener
 {
-  TroopShortcutbarFragment a;
+  public acna(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public acna(QQAppInterface paramQQAppInterface, TroopShortcutbarFragment paramTroopShortcutbarFragment)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface);
-    this.a = paramTroopShortcutbarFragment;
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean)
-  {
-    if ((paramLong == this.a.jdField_a_of_type_Long) && (paramBoolean)) {
-      this.a.a(false);
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    boolean bool = false;
-    if (paramLong == this.a.jdField_a_of_type_Long)
-    {
-      if (!paramBoolean) {
-        bcpw.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ajyc.a(2131696503), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      }
-      TroopShortcutbarFragment localTroopShortcutbarFragment = this.a;
-      if (!paramBoolean) {
-        bool = true;
-      }
-      localTroopShortcutbarFragment.a(bool);
-    }
-  }
-  
-  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt)
-  {
-    boolean bool = false;
-    if ((paramLong1 == this.a.jdField_a_of_type_Long) && (!paramBoolean))
-    {
-      bcpw.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ajyc.a(2131696503), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      TroopShortcutbarFragment localTroopShortcutbarFragment = this.a;
-      if (!paramBoolean) {
-        bool = true;
-      }
-      localTroopShortcutbarFragment.a(bool);
-    }
+    return false;
   }
 }
 

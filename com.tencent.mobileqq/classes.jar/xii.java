@@ -1,18 +1,11 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.oskplayer.util.Singleton;
 
-public class xii
-  extends AnimatorListenerAdapter
+class xii
+  extends Singleton<xig>
 {
-  public xii(SingleLyricView paramSingleLyricView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  protected xig a()
   {
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(1.0F);
-    }
+    return new xig(null);
   }
 }
 

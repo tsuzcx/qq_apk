@@ -1,17 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightVideoSoDownloadFragment;
-import dov.com.qq.im.ptv.LightVideoSoDownloadFragment.4;
+import android.app.Application;
+import android.support.annotation.NonNull;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class bjoy
-  implements DialogInterface.OnCancelListener
+  extends bjpa
 {
-  public bjoy(LightVideoSoDownloadFragment.4 param4) {}
+  private static bjoy jdField_a_of_type_Bjoy;
+  private Application jdField_a_of_type_AndroidAppApplication;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public bjoy(@NonNull Application paramApplication)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+  }
+  
+  @NonNull
+  public static bjoy a(@NonNull Application paramApplication)
+  {
+    if (jdField_a_of_type_Bjoy == null) {
+      jdField_a_of_type_Bjoy = new bjoy(paramApplication);
+    }
+    return jdField_a_of_type_Bjoy;
+  }
+  
+  @NonNull
+  public <T extends bjow> T a(@NonNull Class<T> paramClass)
+  {
+    if (bjov.class.isAssignableFrom(paramClass)) {
+      try
+      {
+        bjow localbjow = (bjow)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidAppApplication });
+        return localbjow;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+      }
+      catch (InvocationTargetException localInvocationTargetException)
+      {
+        throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
+      }
+    }
+    return super.a(paramClass);
   }
 }
 

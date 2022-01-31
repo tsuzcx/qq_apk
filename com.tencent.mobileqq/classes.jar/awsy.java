@@ -1,158 +1,168 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 import com.tencent.mobileqq.search.rich.ArkAppView;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class awsy
-  extends awth
-  implements awsz
+  extends awto
+  implements awsu
 {
-  private static awsp jdField_a_of_type_Awsp = new awsp();
-  private int jdField_a_of_type_Int = 0;
-  private awst jdField_a_of_type_Awst;
-  private awsu jdField_a_of_type_Awsu;
+  private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+  private WeakReference<awtb> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public awsy(awst paramawst)
+  public awsy(awtc paramawtc, Context paramContext)
   {
-    this.jdField_a_of_type_Awst = paramawst;
-    if ((this.jdField_a_of_type_Awst != null) && (QLog.isColorLevel())) {
-      QLog.d("ArkRichNode", 2, "id:" + this.jdField_a_of_type_Awst.a() + " appname:" + this.jdField_a_of_type_Awst.b() + " viewname:" + this.jdField_a_of_type_Awst.d() + " miniversion:" + this.jdField_a_of_type_Awst.c() + " path：" + this.jdField_a_of_type_Awst.a());
-    }
+    super(paramawtc, paramContext);
   }
   
-  public int a()
+  public View a(Context paramContext)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public awsu a()
-  {
-    return this.jdField_a_of_type_Awsu;
-  }
-  
-  public awtc a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_Awst == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkRichNode", 2, "onCreate config = null");
-      }
-      return null;
-    }
-    awsw localawsw = new awsw(this, paramContext);
-    localawsw.a(this);
-    localawsw.a(paramContext);
-    jdField_a_of_type_Awsp.a(this);
-    this.jdField_a_of_type_Awsu = new awsu(jdField_a_of_type_Awsp);
-    String str = a();
-    this.jdField_a_of_type_Awsu.a(this.jdField_a_of_type_Awst, str, paramContext.getResources().getDisplayMetrics().scaledDensity);
-    this.jdField_a_of_type_Awsu.setFixSize(-1, -1);
-    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Awsu.setMaxSize(i, -1);
-    this.jdField_a_of_type_Awsu.setMinSize(i, -1);
-    localawsw.a(this.jdField_a_of_type_Awsu);
-    this.jdField_a_of_type_Awsu.activateView(true);
-    return localawsw;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561053, null, false);
+    this.jdField_a_of_type_AndroidViewView = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362779));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    ((ArkAppRootLayout)paramContext).setDisableParentReturn(false);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkRichNode", 2, "onDestroy");
+    this.b = false;
+    a(1);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    if (jdField_a_of_type_Awsp != null) {
-      jdField_a_of_type_Awsp.b(this);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Awsu != null)
-    {
-      this.jdField_a_of_type_Awsu.doOnEvent(2);
-      this.jdField_a_of_type_Awsu.a();
-      this.jdField_a_of_type_Awsu = null;
-    }
-    this.jdField_a_of_type_Awst = null;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    e();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkRichNode", 2, "onSetTalkBackText:" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    awtb localawtb;
     do
     {
-      awtc localawtc;
-      do
-      {
-        do
-        {
-          return;
-          localawtc = a();
-        } while (localawtc == null);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString);
-        paramString = localawtc.a();
-        if (paramString != null) {
-          paramString.setContentDescription(localStringBuilder);
-        }
-      } while (!(localawtc instanceof awsw));
-      paramString = ((awsw)localawtc).b();
-    } while (!(paramString instanceof ArkAppView));
-    ((ArkAppView)paramString).setContentDescription(localStringBuilder);
+      return;
+      localawtb = (awtb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localawtb == null);
+    localawtb.a(paramInt);
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(awsw paramawsw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkRichNode", 2, "onNotifyEvent, key:" + paramString1 + " value:" + paramString2);
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView == null) || (paramawsw == null)) {
+      return;
     }
-    b(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a(paramawsw, this);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void a(awtb paramawtb)
   {
-    super.a(paramString1, paramString2, paramString3);
-    if (this.jdField_a_of_type_Awsu != null) {
-      this.jdField_a_of_type_Awsu.updateMetaData(a());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawtb);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    this.b = true;
+    a(1);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
+    TextView localTextView;
+    label124:
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
+        }
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        a(false);
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (!paramBoolean) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new awsz(this));
+      localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375061);
+      if (localTextView != null)
+      {
+        if (paramString != null) {
+          break label169;
+        }
+        localTextView.setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131690243));
+      }
+      paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375053);
+    } while (paramString == null);
+    if (paramBoolean) {}
+    for (paramInt = 2130838491;; paramInt = 2130838490)
+    {
+      paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
+      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+      break;
+      label169:
+      localTextView.setText(paramString);
+      break label124;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Awsu != null) {
-      this.jdField_a_of_type_Awsu.activateView(paramBoolean);
+    boolean bool = paramBoolean;
+    if (paramBoolean)
+    {
+      bool = paramBoolean;
+      if (this.b)
+      {
+        bool = paramBoolean;
+        if (this.jdField_a_of_type_Boolean) {
+          bool = false;
+        }
+      }
     }
+    super.a(bool);
   }
   
-  public int b()
+  public View b()
   {
-    return 2;
+    return this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
   }
   
   public void b()
   {
-    super.b();
-    if (this.jdField_a_of_type_Awsu != null) {
-      this.jdField_a_of_type_Awsu.doOnEvent(0);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
   }
   
-  public void c()
+  public void c() {}
+  
+  public void d()
   {
-    super.c();
-    if (this.jdField_a_of_type_Awsu != null) {
-      this.jdField_a_of_type_Awsu.doOnEvent(1);
+    this.jdField_a_of_type_AndroidViewView = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a();
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = null;
     }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    super.d();
   }
+  
+  public void e() {}
 }
 
 

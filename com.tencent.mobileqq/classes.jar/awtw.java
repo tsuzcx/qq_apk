@@ -1,38 +1,20 @@
-public class awtw
+import java.util.Comparator;
+
+final class awtw
+  implements Comparator<awoe>
 {
-  boolean jdField_a_of_type_Boolean;
-  
-  public awtw(awts paramawts, boolean paramBoolean)
+  public int a(awoe paramawoe1, awoe paramawoe2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
+    int j = Long.signum(paramawoe2.b() - paramawoe1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramawoe2.a() - paramawoe1.a());
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    j = i;
+    if (i == 0) {
+      j = awtu.a(paramawoe1, paramawoe2);
     }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return j;
   }
 }
 

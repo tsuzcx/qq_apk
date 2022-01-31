@@ -1,24 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
 import java.util.ArrayList;
 
 class afuv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  afuv(afur paramafur, ArrayList paramArrayList, int paramInt) {}
+  afuv(afup paramafup, int paramInt, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    afur.a(this.jdField_a_of_type_Afur, true);
-    afur.a(this.jdField_a_of_type_Afur).a(1);
-    afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (bbev.d(BaseApplicationImpl.getContext()))
+    if (!afup.a(this.jdField_a_of_type_Afup))
     {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      afur.a(this.jdField_a_of_type_Afur).b(paramInt);
+      if (this.jdField_a_of_type_Int == 1) {
+        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), afup.a(this.jdField_a_of_type_Afup), null);
+      }
     }
-    afur.a(this.jdField_a_of_type_Afur, this.jdField_a_of_type_JavaUtilArrayList);
+    else {
+      return;
+    }
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
+    PublicFragmentActivity.a(afup.a(this.jdField_a_of_type_Afup), paramView, SDKSetEmotionPreviewFragment.class);
   }
 }
 

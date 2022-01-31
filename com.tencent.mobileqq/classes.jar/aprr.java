@@ -1,8 +1,257 @@
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract interface aprr<M>
+public final class aprr
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, bfpi
 {
-  public abstract void a(List<M> paramList, int paramInt, aprx paramaprx);
+  private final aprj jdField_a_of_type_Aprj;
+  private final aprk jdField_a_of_type_Aprk;
+  private bfpc jdField_a_of_type_Bfpc;
+  private final FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  private final FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private final List<String> jdField_a_of_type_JavaUtilList;
+  private final boolean jdField_a_of_type_Boolean;
+  private final FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+  private final FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  
+  public aprr(aprj paramaprj, View paramView, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Aprj = paramaprj;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Aprk = new aprk();
+    paramaprj = BaseApplicationImpl.sApplication;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramaprj.getString(2131698234));
+    this.jdField_a_of_type_JavaUtilList.add(paramaprj.getString(2131698233));
+    this.jdField_a_of_type_JavaUtilList.add(paramaprj.getString(2131698235));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131375967));
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 2131698236;
+      ((FormSimpleItem)localObject).setLeftText(paramaprj.getString(i));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(a()));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131375966));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131375979));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Aprk.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+      b(false);
+      localObject = (TextView)paramView.findViewById(2131375981);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label333;
+      }
+    }
+    label333:
+    for (int i = 2131698239;; i = 2131698238)
+    {
+      ((TextView)localObject).setText(paramaprj.getString(i));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131375964));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Aprk.b);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+      paramView.findViewById(2131375965).setVisibility(8);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setBgType(0);
+      }
+      return;
+      i = 2131698232;
+      break;
+    }
+  }
+  
+  private int a()
+  {
+    int i = 1;
+    if (this.jdField_a_of_type_Aprk.jdField_a_of_type_Int == 1) {
+      i = 0;
+    }
+    while (this.jdField_a_of_type_Aprk.jdField_a_of_type_Int == 2) {
+      return i;
+    }
+    return 2;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Bfpc == null)
+    {
+      this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.b(this.jdField_a_of_type_Aprj.a(), null));
+      Object localObject = this.jdField_a_of_type_Bfpc;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (int i = 2131698236;; i = 2131698232)
+      {
+        ((bfpc)localObject).a(i);
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          this.jdField_a_of_type_Bfpc.a(str, false);
+        }
+      }
+      this.jdField_a_of_type_Bfpc.c(2131690596);
+      this.jdField_a_of_type_Bfpc.a(this);
+    }
+    this.jdField_a_of_type_Bfpc.d();
+    this.jdField_a_of_type_Bfpc.d(a());
+    if (!this.jdField_a_of_type_Bfpc.isShowing()) {
+      this.jdField_a_of_type_Bfpc.show();
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    FormSimpleItem localFormSimpleItem = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    aprk localaprk = this.jdField_a_of_type_Aprk;
+    Object localObject;
+    if (this.jdField_a_of_type_Aprk.jdField_a_of_type_Boolean)
+    {
+      localObject = aprl.a(6);
+      localaprk.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localFormSimpleItem.setRightText((CharSequence)localObject);
+      localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+      if (!this.jdField_a_of_type_Aprk.jdField_a_of_type_Boolean) {
+        break label104;
+      }
+      i = 0;
+      label57:
+      ((FormSimpleItem)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (!this.jdField_a_of_type_Aprk.jdField_a_of_type_Boolean) {
+        break label110;
+      }
+    }
+    label104:
+    label110:
+    for (int i = 2;; i = 3)
+    {
+      ((FormSwitchItem)localObject).setBgType(i);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Aprj.a();
+      }
+      return;
+      localObject = "";
+      break;
+      i = 8;
+      break label57;
+    }
+  }
+  
+  public aprk a()
+  {
+    return this.jdField_a_of_type_Aprk;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bfpc != null)
+    {
+      this.jdField_a_of_type_Bfpc.e();
+      this.jdField_a_of_type_Bfpc = null;
+    }
+  }
+  
+  public void a(View paramView, int paramInt, String paramString)
+  {
+    int i = 1;
+    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing())) {
+      this.jdField_a_of_type_Bfpc.dismiss();
+    }
+    if (paramInt == 0)
+    {
+      paramInt = 1;
+      if (paramInt == this.jdField_a_of_type_Aprk.jdField_a_of_type_Int) {
+        break label90;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aprk.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(paramString);
+      if (i != 0) {
+        this.jdField_a_of_type_Aprj.a();
+      }
+      return;
+      if (paramInt == 1)
+      {
+        paramInt = 2;
+        break;
+      }
+      paramInt = 3;
+      break;
+      label90:
+      i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setEnabled(paramBoolean);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(paramBoolean);
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) {
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setEnabled(paramBoolean);
+    }
+    if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(paramBoolean);
+    }
+  }
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    int i = 1;
+    boolean bool = true;
+    if (paramCompoundButton.equals(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())) {
+      if (this.jdField_a_of_type_Aprk.jdField_a_of_type_Boolean != paramBoolean)
+      {
+        this.jdField_a_of_type_Aprk.jdField_a_of_type_Boolean = paramBoolean;
+        b(bool);
+      }
+    }
+    while (!paramCompoundButton.equals(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())) {
+      for (;;)
+      {
+        return;
+        bool = false;
+      }
+    }
+    if (this.jdField_a_of_type_Aprk.b != paramBoolean) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Aprk.b = paramBoolean;
+      if (i == 0) {
+        break;
+      }
+      this.jdField_a_of_type_Aprj.a();
+      return;
+      i = 0;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    b();
+  }
 }
 
 

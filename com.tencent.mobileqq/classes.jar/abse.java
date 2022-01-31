@@ -1,68 +1,29 @@
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
-public final class abse
-  implements Parcelable.Creator<ProfileActivity.AllInOne>
+public class abse
+  implements auve
 {
-  public ProfileActivity.AllInOne a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(null);
-    localAllInOne.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_a_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_b_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_a_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_a_of_type_Short = ((short)paramParcel.readInt());
-    localAllInOne.jdField_b_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_c_of_type_Int = paramParcel.readInt();
-    localAllInOne.jdField_c_of_type_Byte = paramParcel.readByte();
-    localAllInOne.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
-    localAllInOne.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localAllInOne.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readTypedList(localAllInOne.jdField_a_of_type_JavaUtilArrayList, ProfileActivity.CardContactInfo.CREATOR);
-    localAllInOne.jdField_d_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      localAllInOne.jdField_a_of_type_Boolean = bool;
-      localAllInOne.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_e_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_j_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localAllInOne.m = paramParcel.readString();
-      localAllInOne.n = paramParcel.readString();
-      localAllInOne.g = paramParcel.readInt();
-      localAllInOne.jdField_h_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_i_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
-      localAllInOne.jdField_j_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_k_of_type_Int = paramParcel.readInt();
-      localAllInOne.o = paramParcel.readString();
-      localAllInOne.p = paramParcel.readString();
-      localAllInOne.jdField_a_of_type_Long = paramParcel.readLong();
-      localAllInOne.jdField_l_of_type_Int = paramParcel.readInt();
-      localAllInOne.q = paramParcel.readString();
-      localAllInOne.jdField_b_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
-      localAllInOne.jdField_f_of_type_Int = paramParcel.readInt();
-      localAllInOne.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramParcel.readParcelable(Bundle.class.getClassLoader()));
-      return localAllInOne;
-      bool = false;
-    }
-  }
+  public abse(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public ProfileActivity.AllInOne[] a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    return new ProfileActivity.AllInOne[paramInt];
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
+      {
+        paramInt = 1;
+        axqy.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
+      }
+    }
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
+    }
+    axqy.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

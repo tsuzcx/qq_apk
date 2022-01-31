@@ -1,53 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class bbol
-  implements anyg
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public bbol(bboe parambboe) {}
-  
-  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
+  public bbol(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aoak(7, 7, null));
-    askd localaskd = (askd)bboe.a(this.jdField_a_of_type_Bboe).getManager(14);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      EmoticonPackage localEmoticonPackage = localaskd.a(String.valueOf(i));
-      if (localEmoticonPackage != null)
-      {
-        localArrayList.add(new aoak(10, 7, localEmoticonPackage));
-      }
-      else
-      {
-        localEmoticonPackage = new EmoticonPackage();
-        localEmoticonPackage.epId = String.valueOf(i);
-        localEmoticonPackage.wordingId = -1L;
-        localEmoticonPackage.jobType = 4;
-        localEmoticonPackage.isMagicFaceDownloading = false;
-        localEmoticonPackage.valid = true;
-        localEmoticonPackage.status = 0;
-        localEmoticonPackage.aio = true;
-        localaskd.a(localEmoticonPackage);
-        anvr.a().a(bboe.a(this.jdField_a_of_type_Bboe));
-        ((anvs)bboe.a(this.jdField_a_of_type_Bboe).getManager(43)).a(String.valueOf(i), anvs.c, null, true, 0);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a(List<Integer> paramList)
-  {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 

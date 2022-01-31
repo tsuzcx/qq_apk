@@ -1,34 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-public final class awuk
-  extends ThreadPoolExecutor
+public class awuk
+  extends awut
 {
-  public awuk(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
+  public awuk(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
   {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
+    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public awoh a(List<awoi> paramList, String paramString)
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
-    }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+    return new awma(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

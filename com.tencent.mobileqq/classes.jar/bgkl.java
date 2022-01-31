@@ -1,25 +1,37 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
+
 public class bgkl
+  extends Handler
 {
-  private static final String[] a = { "B", "K", "M", "G" };
-  
-  public static final String a(long paramLong)
+  public bgkl(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
   {
-    float f1 = 0.0F;
-    int i = 0;
-    while (paramLong >= 1024L)
+    super(paramLooper);
+  }
+  
+  public void dispatchMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    do
     {
-      paramLong /= 1024L;
-      f1 = (float)(paramLong % 1024L);
-      i += 1;
-    }
-    if (f1 == 0.0F)
-    {
-      f1 = (float)paramLong;
-      return String.valueOf(paramLong) + a[i];
-    }
-    f1 /= 1024.0F;
-    float f2 = (float)paramLong;
-    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        GVideoPluginInstallerActivity.a(this.a);
+        return;
+      }
+    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
+    this.a.a.setText((String)paramMessage.obj);
+    return;
+    GVideoPluginInstallerActivity.b(this.a);
+    return;
+    this.a.finish();
   }
 }
 

@@ -1,19 +1,14 @@
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aavc
-  extends bbqu
+  implements askr<Void, bbtp>
 {
   public aavc(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
+  public bbtp a(Void paramVoid)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(true);
-    }
+    return bbtq.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 

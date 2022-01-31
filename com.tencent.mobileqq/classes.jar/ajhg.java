@@ -1,18 +1,23 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ajhg
-  extends anql
+  implements Animation.AnimationListener
 {
   public ajhg(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onBindedToClient() {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    ApolloGameActivity.a(this.a).d();
+    ApolloGameActivity.a(this.a).setVisibility(4);
+    ApolloGameActivity.d(this.a);
+  }
   
-  public void onDisconnectWithService() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

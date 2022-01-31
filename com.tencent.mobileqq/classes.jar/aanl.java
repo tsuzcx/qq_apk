@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatpieHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
 public class aanl
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
   public aanl(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    asty.a().a = 0;
-    this.a.a.a(this.a.a(), this.a.a().getIntent());
-    this.a.b(1);
+    bbdj.b(this.a.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(4);
+    aeft.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8004079", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

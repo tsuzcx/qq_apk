@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity.9;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class ahho
-  implements ValueCallback<String>
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public ahho(SpringHbTranslucentBrowserActivity.9 param9) {}
+  public ahho(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public void a(String paramString)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    QLog.d("springHb_SpringHbTranslucentBrowserActivity", 2, "evaluateJavascript done");
+    QLog.i("springHb_SpringHbVideoView", 1, "onCompletion");
+    if (SpringHbVideoView.a(this.a) != null) {
+      SpringHbVideoView.a(this.a).ar_();
+    }
   }
 }
 

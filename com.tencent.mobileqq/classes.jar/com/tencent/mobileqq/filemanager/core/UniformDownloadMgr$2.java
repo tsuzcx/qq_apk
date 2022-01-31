@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apcy;
+import apdc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadMgr$2
   implements Runnable
 {
-  public UniformDownloadMgr$2(apcy paramapcy) {}
+  public UniformDownloadMgr$2(apdc paramapdc) {}
   
   public void run()
   {
     try
     {
-      if (apcy.a(this.this$0) != null)
+      if (apdc.a(this.this$0) != null)
       {
-        BaseApplicationImpl.getApplication().unregisterReceiver(apcy.a(this.this$0));
-        apcy.a(this.this$0, null);
+        BaseApplicationImpl.getApplication().unregisterReceiver(apdc.a(this.this$0));
+        apdc.a(this.this$0, null);
         QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST");
         return;
       }

@@ -1,6 +1,14 @@
-public abstract interface asdm
+class asdm
+  implements asdi
 {
-  public abstract void a();
+  asdm(asdj paramasdj) {}
+  
+  public void a(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Ascp != null) {
+      this.a.jdField_a_of_type_Ascp.a(paramInt, this.a.jdField_a_of_type_Asdp);
+    }
+  }
 }
 
 

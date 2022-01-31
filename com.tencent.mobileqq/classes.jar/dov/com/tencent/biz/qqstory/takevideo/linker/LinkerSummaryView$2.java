@@ -1,11 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo.linker;
 
-import bkja;
+import bkjr;
 
 class LinkerSummaryView$2
   implements Runnable
 {
-  LinkerSummaryView$2(LinkerSummaryView paramLinkerSummaryView, bkja parambkja) {}
+  LinkerSummaryView$2(LinkerSummaryView paramLinkerSummaryView, bkjr parambkjr) {}
   
   public void run()
   {

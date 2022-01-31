@@ -1,28 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LWMotionEvent;
 
-final class bjrc
-  implements mne
+public abstract interface bjrc
 {
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
-    }
-  }
+  public abstract void a(LWMotionEvent paramLWMotionEvent);
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
-  }
+  public abstract void u();
 }
 
 

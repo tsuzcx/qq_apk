@@ -1,35 +1,42 @@
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.qphone.base.util.QLog;
 
-public class lxo
-  implements ajuc
+class lxo
+  extends mxj
 {
-  private WeakReference<lxs> a;
-  private WeakReference<ajty> b;
-  private WeakReference<lwz> c;
+  lxo(lxn paramlxn, String paramString, int paramInt) {}
   
-  public lxo(lxs paramlxs, ajty paramajty, lwz paramlwz)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    this.a = new WeakReference(paramlxs);
-    this.b = new WeakReference(paramajty);
-    this.c = new WeakReference(paramlwz);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = (ajty)this.b.get();
-    if (localObject != null) {
-      ((ajty)localObject).d(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
     }
-    localObject = (lxs)this.a.get();
-    lwz locallwz = (lwz)this.c.get();
-    if ((localObject != null) && (locallwz != null)) {
-      ((lxs)localObject).a(paramBoolean, locallwz);
+    synchronized (this.jdField_a_of_type_Lxn.a.a)
+    {
+      int j = this.jdField_a_of_type_Lxn.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((lwo)this.jdField_a_of_type_Lxn.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Lxn.a.a.finishBroadcast();
+      return;
     }
-  }
-  
-  public void a(lwz paramlwz)
-  {
-    this.c = new WeakReference(paramlwz);
   }
 }
 

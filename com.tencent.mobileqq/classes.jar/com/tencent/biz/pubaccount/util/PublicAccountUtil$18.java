@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.util;
 
-import ajsf;
+import ajsd;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
-import sgj;
+import sgg;
 
 public final class PublicAccountUtil$18
   implements Runnable
@@ -15,7 +15,7 @@ public final class PublicAccountUtil$18
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(ajsf.az, -3006);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(ajsd.az, -3006);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       localObject = this.b;
@@ -24,7 +24,7 @@ public final class PublicAccountUtil$18
       }
     }
     label108:
-    for (Object localObject = sgj.a((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = sgj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
+    for (Object localObject = sgg.a((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = sgg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
     {
       if (localObject != null) {
         this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());

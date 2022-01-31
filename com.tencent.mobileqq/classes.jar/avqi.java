@@ -1,42 +1,120 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Build;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Date;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class avqi
-  implements DialogInterface.OnDismissListener
+public class avqi
 {
-  avqi(IosTimepicker paramIosTimepicker, JsBridgeListener paramJsBridgeListener) {}
+  private static avqs a;
+  public static String a;
+  public static boolean a;
+  public static String b;
+  private static String c = "remind";
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    long l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
+    jdField_a_of_type_JavaLangString = "1";
+    b = "0";
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Avqs = new avqj();
+  }
+  
+  public static int a(Context paramContext, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, int[] paramArrayOfInt)
+  {
+    return -9;
+  }
+  
+  public static Long a(String paramString)
+  {
+    long l2 = new Date().getTime() / 1000L;
+    try
     {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
-      if (!Build.MODEL.equals("Coolpad 5890")) {
-        break label126;
-      }
-      long l2 = new Date().getTime() / 1000L;
-      if (l1 >= l2) {
-        break label126;
-      }
-      l1 = l2;
+      l1 = Long.valueOf(paramString).longValue();
+      return Long.valueOf(l1);
     }
-    label126:
-    for (;;)
+    catch (NumberFormatException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(avqg.a(), 2, "onDismiss Time :" + avql.a(1000L * l1));
+      for (;;)
+      {
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(c, 2, "getLong error: " + paramString.getMessage());
+          paramString.printStackTrace();
+          l1 = l2;
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
-      avqg.a = true;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = "";
+    try
+    {
+      paramString1 = new JSONObject(paramString1).optString(paramString2);
+      return paramString1;
+    }
+    catch (JSONException paramString2)
+    {
+      do
+      {
+        paramString1 = str;
+      } while (!QLog.isColorLevel());
+      QLog.d(c, 2, "getString from json error:" + paramString2.getMessage());
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, long paramLong, avqt paramavqt, JsBridgeListener paramJsBridgeListener)
+  {
+    Object localObject = LayoutInflater.from(paramContext);
+    bfpc localbfpc;
+    if (jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = false;
+      localbfpc = bfpc.c(paramContext);
+      ((DispatchActionMoveScrollView)localbfpc.findViewById(2131361922)).jdField_a_of_type_Boolean = true;
+      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2131562617, null);
+      ((IosTimepicker)localObject).setMaxDays(25568);
+      avqg localavqg = new avqg(paramContext, 25);
+      avqh localavqh1 = new avqh(paramContext, avqn.a, 25);
+      avqh localavqh2 = new avqh(paramContext, avqn.b, 25);
+      int i = (int)avqn.a(paramLong);
+      int j = avqn.a(paramLong);
+      int k = avqn.b(paramLong);
+      avqs localavqs = jdField_a_of_type_Avqs;
+      ((IosTimepicker)localObject).a(paramContext, localbfpc, paramavqt, null, new BaseAdapter[] { localavqg, localavqh1, localavqh2 }, new int[] { i, j, k }, localavqs);
+      if (Build.VERSION.SDK_INT >= 11) {
+        localbfpc.getWindow().setFlags(16777216, 16777216);
+      }
+      localbfpc.a((View)localObject, null);
+      localbfpc.setOnDismissListener(new avqk((IosTimepicker)localObject, paramJsBridgeListener));
+    }
+    try
+    {
+      localbfpc.show();
       return;
     }
+    catch (Throwable paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(c, 2, paramContext.getMessage());
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return paramString.equalsIgnoreCase(jdField_a_of_type_JavaLangString);
   }
 }
 

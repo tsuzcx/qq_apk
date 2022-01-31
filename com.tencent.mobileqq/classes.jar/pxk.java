@@ -1,22 +1,22 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class pxk
-  extends ClickableSpan
+  implements spa
 {
-  public pxk(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  public pxk(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onClick(View paramView)
-  {
-    onk.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
-  }
+  public void a(URL paramURL, int paramInt) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, rpd paramrpd)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(actn.a(2, 14, this.a.getResources()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
+    }
+    ComponentHeaderTopicRecommend.a(this.a, paramrpd.a());
   }
 }
 

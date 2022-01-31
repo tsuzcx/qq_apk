@@ -1,56 +1,107 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
+import android.opengl.GLES20;
+import java.util.HashMap;
 
 public class aurb
-  implements bbkq<Float>
 {
-  public aurb(ImageShakeAnimView paramImageShakeAnimView) {}
+  public static int a;
+  public static int b = 2;
+  public static int c = 3;
+  public HashMap<String, Integer> a;
+  private int[] a;
   
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  static
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      if (paramFloat1.floatValue() < 180.0F)
-      {
-        this.a.jdField_a_of_type_Float = (1.0F - paramFloat1.floatValue() * 0.01F / 180.0F);
-        this.a.b = (0.02F * paramFloat1.floatValue() / 180.0F + 1.0F);
-        return;
-      }
-      if (paramFloat1.floatValue() < 360.0F)
-      {
-        parambbkk = Float.valueOf(paramFloat1.floatValue() - 180.0F);
-        this.a.jdField_a_of_type_Float = (0.99F + 0.03F * parambbkk.floatValue() / 180.0F);
-        this.a.b = (1.02F - parambbkk.floatValue() * 0.04F / 180.0F);
-        return;
-      }
-      if (paramFloat1.floatValue() < 540.0F)
-      {
-        parambbkk = Float.valueOf(paramFloat1.floatValue() - 360.0F);
-        this.a.jdField_a_of_type_Float = (1.02F - 0.03F * parambbkk.floatValue() / 180.0F);
-        this.a.b = (parambbkk.floatValue() * 0.03F / 180.0F + 0.98F);
-        return;
-      }
-      parambbkk = Float.valueOf(paramFloat1.floatValue() - 540.0F);
-      this.a.jdField_a_of_type_Float = (0.99F + parambbkk.floatValue() * 0.01F / 180.0F);
-      this.a.b = (1.01F - parambbkk.floatValue() * 0.01F / 180.0F);
-      return;
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public aurb()
+  {
+    this.jdField_a_of_type_ArrayOfInt = new int[1];
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7)
+  {
+    a(paramFloat1, "percent1");
+    a(paramFloat2, "percent2");
+    a(paramFloat3, "percent3");
+    a(paramFloat4, "percent4");
+    a(paramFloat5, "percent5");
+    a(paramFloat6, "percent6");
+    a(paramFloat7, "percent7");
+  }
+  
+  private void a(float paramFloat, String paramString)
+  {
+    int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+    if (i >= 0) {
+      GLES20.glUniform1f(i, paramFloat);
     }
-    if (paramFloat1.floatValue() < 120.0F)
-    {
-      this.a.jdField_a_of_type_Float = (1.0F - 0.02F * paramFloat1.floatValue() / 120.0F);
-      this.a.b = (paramFloat1.floatValue() * 0.04F / 120.0F + 1.0F);
-      return;
+  }
+  
+  private void b(int paramInt)
+  {
+    float f = new float[] { 1.0F, 1.0F, 0.95F, 0.9F }[paramInt];
+    if (paramInt == c) {
+      f = 1.1F;
     }
-    if (paramFloat1.floatValue() < 380.0F)
+    for (;;)
     {
-      parambbkk = Float.valueOf(paramFloat1.floatValue() - 120.0F);
-      this.a.jdField_a_of_type_Float = (0.98F + parambbkk.floatValue() * 0.04F / 260.0F);
-      this.a.b = (1.04F - parambbkk.floatValue() * 0.08F / 260.0F);
+      a(f, "quality");
+      a(0.0F, "add_red");
+      a(0.0F, "red_m");
+      a(0.0F, "green_m");
+      a(0.0F, "blue_m");
       return;
+      if (paramInt == b) {
+        f = 1.0F;
+      }
     }
-    parambbkk = Float.valueOf(paramFloat1.floatValue() - 380.0F);
-    this.a.jdField_a_of_type_Float = (1.02F - 0.02F * parambbkk.floatValue() / 120.0F);
-    this.a.b = (parambbkk.floatValue() * 0.04F / 120.0F + 0.96F);
+  }
+  
+  public void a(int paramInt)
+  {
+    float f5 = 0.2F;
+    float f1;
+    float f2;
+    float f3;
+    float f4;
+    if (paramInt == jdField_a_of_type_Int)
+    {
+      f1 = 0.455F;
+      f2 = 0.17F;
+      f3 = 0.177F;
+      f4 = 0.0F;
+    }
+    for (;;)
+    {
+      a(0.0F, f1, f2, f3, 0.0F, f5, f4);
+      b(paramInt);
+      return;
+      if (paramInt == b)
+      {
+        f1 = 0.62F;
+        f2 = 0.375F;
+        f3 = 0.07F;
+        f5 = 0.125F;
+        f4 = 0.26F;
+      }
+      else if (paramInt == c)
+      {
+        f1 = 0.824F;
+        f2 = 0.461F;
+        f3 = 0.152F;
+        f4 = 0.0F;
+      }
+      else
+      {
+        f4 = 0.0F;
+        f5 = 0.0F;
+        f3 = 0.0F;
+        f2 = 0.0F;
+        f1 = 0.0F;
+      }
+    }
   }
 }
 

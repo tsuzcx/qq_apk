@@ -1,12 +1,31 @@
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Comparator;
+
 public class ajzp
+  implements Comparator<anec>
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  public String toString()
+  private boolean a(anec paramanec)
   {
-    return "GroupInfo：" + this.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Int + "|" + this.b;
+    return (paramanec != null) && (paramanec.a != null);
+  }
+  
+  public int a(anec paramanec1, anec paramanec2)
+  {
+    if ((a(paramanec1)) && (a(paramanec2))) {
+      if (paramanec1.a.sPriority <= paramanec2.a.sPriority) {}
+    }
+    do
+    {
+      return 1;
+      if (paramanec1.a.sPriority < paramanec2.a.sPriority) {
+        return -1;
+      }
+      return 0;
+      if (a(paramanec1)) {
+        return -1;
+      }
+    } while (a(paramanec2));
+    return 0;
   }
 }
 

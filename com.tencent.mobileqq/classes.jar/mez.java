@@ -1,34 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiMembersAudioUI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class mez
-  implements View.OnClickListener
 {
-  public mez(MultiMembersAudioUI paramMultiMembersAudioUI) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  boolean jdField_a_of_type_Boolean = false;
+  public int b;
+  public ImageView b;
+  public TextView b;
+  public boolean b;
+  public ImageView c;
+  public boolean c;
+  public ImageView d;
+  public boolean d;
+  public ImageView e = null;
+  public ImageView f;
   
-  public void onClick(View paramView)
+  public mez()
   {
-    if (this.a.jdField_a_of_type_Mrx == null) {}
-    do
-    {
-      return;
-      paramView = (mfe)paramView.getTag();
-      if (paramView != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("MultiMembersAudioUI", 2, "onItemClick-->holder is null");
-    return;
-    if (paramView.c) {}
-    for (int i = 7; (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)); i = this.a.a(paramView.jdField_a_of_type_Long))
-    {
-      this.a.jdField_a_of_type_Mrx.a(paramView.jdField_a_of_type_Long, paramView.jdField_a_of_type_Int, i, true);
-      return;
-    }
-    this.a.jdField_a_of_type_Mrx.a(paramView.jdField_a_of_type_Long, paramView.jdField_a_of_type_Int, i, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_d_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_d_of_type_Boolean = true;
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.weiyun.upload;
 
-import bifc;
-import bife;
+import bift;
+import bifv;
 import com.tencent.weiyun.uploader.IReporter;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
@@ -26,9 +26,9 @@ public class WyUploadJob
     return this.jdField_a_of_type_Int;
   }
   
-  bifc a(UploadRequest paramUploadRequest)
+  bift a(UploadRequest paramUploadRequest)
   {
-    return new bife(paramUploadRequest, this);
+    return new bifv(paramUploadRequest, this);
   }
   
   UploadResponse a(int paramInt)

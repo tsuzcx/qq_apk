@@ -1,33 +1,13 @@
-public class wrb
+import java.util.concurrent.ThreadFactory;
+
+public final class wrb
+  implements ThreadFactory
 {
-  public static <T> String a(String paramString, wra<T> paramwra)
+  public Thread newThread(Runnable paramRunnable)
   {
-    return wrc.a().a(paramString, paramwra);
-  }
-  
-  public static void a(String paramString)
-  {
-    wrc.a().a(paramString);
-  }
-  
-  public static <T> void a(String paramString, wrh<T> paramwrh)
-  {
-    wrc.a().a(paramString, paramwrh);
-  }
-  
-  public static void a(Throwable paramThrowable)
-  {
-    veg.a("PreLoader", "", paramThrowable);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return wrc.a().a(paramString);
-  }
-  
-  public static void b(String paramString)
-  {
-    veg.b("PreLoader", paramString);
+    paramRunnable = new Thread(paramRunnable);
+    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
+    return paramRunnable;
   }
 }
 

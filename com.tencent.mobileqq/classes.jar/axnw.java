@@ -1,20 +1,45 @@
-public abstract class axnw
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+public class axnw
+  extends WebViewPlugin
 {
-  public Object a;
-  public boolean a;
+  private boolean a;
   
-  protected axnw(Object paramObject)
+  public axnw()
   {
-    this.a = paramObject;
+    this.mPluginNameSpace = "splashADPlugin";
   }
   
-  protected abstract void a();
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if (paramLong == 8589934598L)
+    {
+      QLog.i("QSplash@QbossSplashUtil", 1, "handleEvent finish or destroy. isFromSP:" + this.a);
+      if (this.a) {
+        this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
+      }
+      return true;
+    }
+    return false;
+  }
   
-  protected abstract void a(axnv paramaxnv);
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
+    if (this.mRuntime.a().getIntent() != null) {
+      this.a = this.mRuntime.a().getIntent().getBooleanExtra("key_from_splash_ad", false);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axnw
  * JD-Core Version:    0.7.0.1
  */

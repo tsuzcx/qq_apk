@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahbv;
-import ahgl;
-import ahhc;
+import ahbt;
+import ahgj;
+import ahha;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,8 +14,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbjw;
-import bbkx;
+import bbkk;
+import bbll;
 import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
@@ -58,7 +58,7 @@ public class SpringHbEntryBannerView
       if (paramInt == 1) {}
       for (Object localObject = this.b;; localObject = this.jdField_a_of_type_JavaLangString)
       {
-        localObject = ahgl.a((String)localObject, true);
+        localObject = ahgj.a((String)localObject, true);
         if (QLog.isColorLevel()) {
           QLog.d("springHb_SpringHbEntryView", 2, "getDefaultDrawable -- >,bitmap:" + localObject + ",status:" + paramInt);
         }
@@ -74,8 +74,8 @@ public class SpringHbEntryBannerView
   
   private void a()
   {
-    View.inflate(getContext(), 2131561659, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368697));
+    View.inflate(getContext(), 2131561658, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368696));
   }
   
   private void a(int paramInt1, PreloadManager.PathResult paramPathResult, int paramInt2, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo)
@@ -93,7 +93,7 @@ public class SpringHbEntryBannerView
         break label170;
       }
       j = 1;
-      if (((j & i) == 0) || (bbjw.a(paramPathResult.folderPath))) {
+      if (((j & i) == 0) || (bbkk.a(paramPathResult.folderPath))) {
         break label257;
       }
       if (paramInt2 != 1) {
@@ -150,7 +150,7 @@ public class SpringHbEntryBannerView
   {
     try
     {
-      int i = bbkx.b(5.0F);
+      int i = bbll.b(5.0F);
       if ((this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams() instanceof RelativeLayout.LayoutParams)) {
         ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).topMargin = i;
       }
@@ -196,7 +196,7 @@ public class SpringHbEntryBannerView
         this.jdField_a_of_type_Long = System.currentTimeMillis();
         localObject = paramBannerInfo.bannerUrl;
         i = paramBannerInfo.status;
-        if (bbjw.a((String)localObject)) {
+        if (bbkk.a((String)localObject)) {
           continue;
         }
         if (!paramBoolean) {
@@ -206,7 +206,7 @@ public class SpringHbEntryBannerView
         localDownloadParam.filePos = 0;
         localDownloadParam.url = ((String)localObject);
         this.jdField_a_of_type_Boolean = true;
-        PreloadManager.a().a(localDownloadParam, new ahhc(this, i, paramBannerInfo));
+        PreloadManager.a().a(localDownloadParam, new ahha(this, i, paramBannerInfo));
       }
       catch (Throwable localThrowable)
       {
@@ -225,7 +225,7 @@ public class SpringHbEntryBannerView
       QLog.i("springHb_SpringHbEntryView", 2, "setBannerBg-->info:" + paramBannerInfo + ",hasOpenDesktop:" + paramBoolean);
       return;
       localObject = PreloadManager.a((String)localObject);
-      if ((localObject == null) || (bbjw.a(((PreloadManager.PathResult)localObject).folderPath)) || (!new File(((PreloadManager.PathResult)localObject).folderPath).exists())) {
+      if ((localObject == null) || (bbkk.a(((PreloadManager.PathResult)localObject).folderPath)) || (!new File(((PreloadManager.PathResult)localObject).folderPath).exists())) {
         continue;
       }
       a(0, (PreloadManager.PathResult)localObject, i, paramBannerInfo);

@@ -1,7 +1,13 @@
-class aqoy
-  implements aqpk
+import android.widget.TextView;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
+
+public class aqoy
+  extends aqoo
 {
-  aqoy(aqox paramaqox) {}
+  public TextView a;
+  public GalleryUrlImageView a;
+  
+  public aqoy(aqot paramaqot) {}
 }
 
 

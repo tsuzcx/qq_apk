@@ -1,8 +1,39 @@
-import android.view.View;
+import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.data.MedalList.Info;
+import java.util.ArrayList;
 
-public abstract interface bcqu
+public class bcqu
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  private MedalList a;
+  
+  public int a()
+  {
+    if (this.a != null) {
+      return this.a.infoList.size();
+    }
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    }
+    return null;
+  }
+  
+  public void a(MedalList paramMedalList)
+  {
+    this.a = paramMedalList;
+  }
 }
 
 

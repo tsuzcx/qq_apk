@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import ajcq;
+import ajco;
 
 public class CmGameManager$2
   implements Runnable
 {
-  public CmGameManager$2(ajcq paramajcq) {}
+  public CmGameManager$2(ajco paramajco) {}
   
   public void run()
   {
-    ajcq.a(this.this$0);
-    ajcq.b(this.this$0);
+    ajco.a(this.this$0);
+    ajco.b(this.this$0);
   }
 }
 

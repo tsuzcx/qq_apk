@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
 import java.lang.ref.WeakReference;
-import yug;
-import yui;
-import yxs;
+import yud;
+import yuf;
+import yxp;
 
 public class GdtArkPreDownloadTask$4
   implements Runnable
 {
-  public GdtArkPreDownloadTask$4(yug paramyug, int paramInt) {}
+  public GdtArkPreDownloadTask$4(yud paramyud, int paramInt) {}
   
   public void run()
   {
-    if ((yug.a(this.this$0) != null) && (yug.a(this.this$0).get() != null)) {}
+    if ((yud.a(this.this$0) != null) && (yud.a(this.this$0).get() != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      yxs.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
-      if ((yug.a(this.this$0) != null) && (yug.a(this.this$0).get() != null)) {
-        ((yui)yug.a(this.this$0).get()).a(yug.a(this.this$0), this.a);
+      yxp.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
+      if ((yud.a(this.this$0) != null) && (yud.a(this.this$0).get() != null)) {
+        ((yuf)yud.a(this.this$0).get()).a(yud.a(this.this$0), this.a);
       }
       return;
     }

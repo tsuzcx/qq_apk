@@ -1,15 +1,76 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.text.InputFilter;
+import android.text.Spanned;
+import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
 
 public class bksw
-  implements DialogInterface.OnClickListener
+  implements InputFilter
 {
-  public bksw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bksw(ExtendEditText paramExtendEditText, int paramInt)
   {
-    this.a.s();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    if (ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
+      ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    aiau localaiau = ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText);
+    if (localaiau == null)
+    {
+      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
+      if (localaiau != null) {
+        break label95;
+      }
+      paramInt2 -= paramInt1;
+    }
+    for (;;)
+    {
+      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
+      if (paramInt3 > 0) {
+        break label109;
+      }
+      a();
+      return "";
+      paramInt3 = localaiau.a(paramSpanned, 0, paramInt3) + localaiau.a(paramSpanned, paramInt4, paramSpanned.length());
+      break;
+      label95:
+      paramInt2 = localaiau.a(paramCharSequence, paramInt1, paramInt2);
+    }
+    label109:
+    if (paramInt3 >= paramInt2) {
+      return null;
+    }
+    a();
+    if (localaiau != null)
+    {
+      paramInt3 = localaiau.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
+      paramInt2 = paramInt3;
+      if (paramInt3 <= 0) {
+        return "";
+      }
+    }
+    else
+    {
+      paramInt2 = paramInt3;
+    }
+    paramInt3 = paramInt2 + paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1) {
+        return "";
+      }
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

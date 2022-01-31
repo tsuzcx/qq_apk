@@ -1,59 +1,30 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ErrorInfo;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.ReqCheckHomework;
-import com.tencent.mobileqq.troop.homework.arithmetic.pb.MathHWNetWorkPB.YoutuPicInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class azvw
-  extends syv
+class azvw
+  implements syq<azvy, syn>
 {
-  azvv jdField_a_of_type_Azvv;
-  String jdField_a_of_type_JavaLangString;
+  azvw(azvv paramazvv) {}
   
-  public azvw(azvv paramazvv, String paramString)
+  public void a(@NonNull azvy paramazvy, @Nullable syn paramsyn, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Azvv = paramazvv;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return "HwSvc.check_homework";
-  }
-  
-  public syq a(byte[] paramArrayOfByte)
-  {
-    MathHWNetWorkPB.ErrorInfo localErrorInfo = new MathHWNetWorkPB.ErrorInfo();
-    try
+    if (paramErrorMessage.isFail())
     {
-      localErrorInfo.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = new syq(localErrorInfo.error_code.get(), localErrorInfo.error_desc.get().toStringUtf8());
-      return paramArrayOfByte;
+      ved.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
+      azvv.a(this.a, paramErrorMessage);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if (paramsyn.a == 0)
     {
-      veg.b("QQ.Troop.homework.SendArithHomeResultSegment", "decodeResponse", paramArrayOfByte);
+      paramazvy = new azvz();
+      paramazvy.a = azvv.a(this.a);
+      paramazvy.b = azvv.a(this.a).b;
+      azvv.a(this.a, paramazvy);
+      return;
     }
-    return new syq(-99, "decodeResponse error:" + paramArrayOfByte);
-  }
-  
-  protected byte[] a()
-  {
-    MathHWNetWorkPB.ReqCheckHomework localReqCheckHomework = new MathHWNetWorkPB.ReqCheckHomework();
-    MathHWNetWorkPB.YoutuPicInfo localYoutuPicInfo = new MathHWNetWorkPB.YoutuPicInfo();
-    localYoutuPicInfo.old_url.set(this.jdField_a_of_type_Azvv.jdField_a_of_type_JavaLangString);
-    localYoutuPicInfo.new_url.set(this.jdField_a_of_type_JavaLangString);
-    localYoutuPicInfo.new_data.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Azvv.jdField_b_of_type_JavaLangString));
-    localReqCheckHomework.group_id.set(this.jdField_a_of_type_Azvv.jdField_a_of_type_Long);
-    localReqCheckHomework.hw_id.set(this.jdField_a_of_type_Azvv.jdField_b_of_type_Long);
-    localReqCheckHomework.uin.set(this.jdField_a_of_type_Azvv.c);
-    localReqCheckHomework.pics.add(localYoutuPicInfo);
-    return localReqCheckHomework.toByteArray();
+    ved.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramsyn.b);
+    azvv.b(this.a, new ErrorMessage(paramsyn.a, paramsyn.b));
   }
 }
 

@@ -1,108 +1,108 @@
-import android.content.SharedPreferences;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.PointF;
 
 public class ljl
-  extends lhi
 {
-  VoiceRecogTips a;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = null;
+  volatile boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = null;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
   
-  public ljl(VideoAppInterface paramVideoAppInterface)
+  public PointF a(PointF paramPointF)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
+    if ((!a()) || (paramPointF == null)) {
+      return null;
+    }
+    float f1 = paramPointF.x * this.d;
+    float f2 = paramPointF.y * this.c;
+    float f4 = this.jdField_a_of_type_Int;
+    float f3 = this.jdField_b_of_type_Int;
+    f4 = (f4 + f1) / this.f;
+    f3 = (f3 + f2) / this.e;
+    ljj.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
+    return new PointF(f4, f3);
   }
   
-  public static SharedPreferences a(AppInterface paramAppInterface)
+  public String a()
   {
-    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "qav_voicerecog", 0);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static lhx a(VideoAppInterface paramVideoAppInterface)
+  public void a(int paramInt)
   {
-    paramVideoAppInterface = ((lhw)paramVideoAppInterface.a(3)).a();
-    long l = awzw.a();
-    paramVideoAppInterface = paramVideoAppInterface.iterator();
-    while (paramVideoAppInterface.hasNext())
+    this.g = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    int i;
+    int j;
+    if (this.jdField_b_of_type_JavaLangString != null)
     {
-      lhx locallhx = (lhx)paramVideoAppInterface.next();
-      if (a(l * 1000L, locallhx.a, locallhx.b)) {
-        return locallhx;
+      i = 1;
+      if ((this.e <= 0) || (this.f <= 0)) {
+        break label60;
+      }
+      j = 1;
+      label25:
+      if ((this.c <= 0) || (this.d <= 0)) {
+        break label65;
       }
     }
-    return null;
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    return (paramLong1 >= paramLong2) && (paramLong1 <= paramLong3);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
-  {
-    return (ltr.b()) && (b(paramVideoAppInterface));
-  }
-  
-  public static boolean b(VideoAppInterface paramVideoAppInterface)
-  {
-    return ((lje)paramVideoAppInterface.a(5)).a(3, "normal");
-  }
-  
-  protected void a() {}
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    if (1 == paramInt) {
-      b();
+    label60:
+    label65:
+    for (int k = 1;; k = 0)
+    {
+      if ((i == 0) || (j == 0) || (k == 0)) {
+        break label70;
+      }
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label25;
     }
-    while (3 != paramInt) {
-      return;
-    }
-    c();
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-  }
-  
-  protected boolean a(String paramString)
-  {
+    label70:
     return false;
   }
   
-  void b()
+  public String b()
   {
-    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {}
-    lgf locallgf;
-    lhx locallhx;
-    do
-    {
-      do
-      {
-        return;
-        locallgf = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      } while (locallgf == null);
-      locallhx = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    } while (locallhx == null);
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, locallgf.d, locallhx);
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  void c()
+  public void b(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null)
-    {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
-    }
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
 }
 

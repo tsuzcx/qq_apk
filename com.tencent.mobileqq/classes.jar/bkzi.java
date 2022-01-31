@@ -1,52 +1,15 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bkzi
-  extends bkzf
+final class bkzi
+  implements DialogInterface.OnClickListener
 {
-  public boolean a;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public String h;
-  public String i;
+  bkzi(String paramString) {}
   
-  public String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoDownloadInfo");
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
-    localStringBuilder.append("\n |-").append("fileType:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("format:").append(this.d);
-    localStringBuilder.append("\n |-").append("mRequestType:").append(this.f);
-    localStringBuilder.append("\n |-").append("mSceneType:").append(this.g);
-    return localStringBuilder.toString();
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.a))
-    {
-      a("ShortVideoDownloadInfo.check", "uuid invaid:" + this.a);
-      return false;
-    }
-    if (this.b == null)
-    {
-      a("ShortVideoDownloadInfo", "selfUin invalid,selfUin:" + this.b);
-      return false;
-    }
-    return super.a();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(super.toString());
-    return localStringBuilder.toString();
+    bjah.b("PtuTemplateManager", "【Camera is in Prepareing】toast show: choose sure");
+    bkze.a(this.a);
   }
 }
 

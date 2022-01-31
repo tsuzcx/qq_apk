@@ -1,20 +1,20 @@
 package dov.com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import bkjd;
-import bkjg;
-import bkjh;
-import bkji;
-import bkjk;
+import bkju;
+import bkjx;
+import bkjy;
+import bkjz;
+import bkkb;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$2
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$2(bkjg parambkjg, bkjk parambkjk, bkji parambkji) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$2(bkjx parambkjx, bkkb parambkkb, bkjz parambkjz) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bkjk.a.a != null) {
-      this.jdField_a_of_type_Bkjk.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Bkji);
+    if (this.jdField_a_of_type_Bkkb.a.a != null) {
+      this.jdField_a_of_type_Bkkb.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Bkjz);
     }
   }
 }

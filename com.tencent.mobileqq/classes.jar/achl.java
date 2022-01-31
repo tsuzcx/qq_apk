@@ -1,17 +1,36 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
 public class achl
-  implements View.OnClickListener
+  extends ajxj
 {
-  public achl(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  public achl(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!bbbr.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))) {}
+    String str;
+    do
+    {
+      return;
+      this.a.b = false;
+      str = bbcz.j(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      if (!TextUtils.isEmpty(str))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = str;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + str);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (bbbr.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
     }
   }
 }

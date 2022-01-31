@@ -4,29 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class awuo
-  extends awur
+  extends awut
 {
-  public awuo(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
+  public awuo(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
   {
-    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
+    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
   }
   
-  public awof a(List<awog> paramList, String paramString)
+  public awoh a(List<awoi> paramList, String paramString)
   {
     return null;
   }
   
-  public List<awof> a(awvg paramawvg)
+  public List<awoh> a(awvi paramawvi)
   {
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_Int = -1;
-    paramawvg.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
-    paramawvg.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
-    ArrayList localArrayList = new ArrayList();
-    paramawvg = this.jdField_a_of_type_Awus.a(paramawvg);
-    if (paramawvg != null) {
-      localArrayList.addAll(paramawvg);
+    if (paramawvi.jdField_a_of_type_AndroidOsBundle == null) {
+      paramawvi.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
+    ArrayList localArrayList = new ArrayList();
+    paramawvi = new awnx(paramawvi.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
+    localArrayList.add(new awnp(paramawvi));
+    localArrayList.add(paramawvi);
+    awvz.a(0);
     return localArrayList;
   }
 }

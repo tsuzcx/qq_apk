@@ -3,40 +3,48 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amzo
-  extends amyi<amzn>
+  extends amyp<amzn>
 {
-  public static amzn a()
+  public static amzn c()
   {
-    return (amzn)ampm.a().a(413);
+    return (amzn)ampl.a().a(409);
   }
   
   public int a()
   {
-    return 413;
+    return 409;
   }
   
   @NonNull
-  public amzn a(@NonNull ampi[] paramArrayOfampi)
+  public amzn a()
   {
-    amzn localamzn = new amzn();
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    if (paramArrayOfampi != null) {}
+    return new amzn();
+  }
+  
+  @NonNull
+  public amzn a(amph[] paramArrayOfamph)
+  {
+    boolean bool = true;
+    localamzn = new amzn();
+    paramArrayOfamph = paramArrayOfamph[0].jdField_a_of_type_JavaLangString;
     try
     {
-      if (!"".equals(paramArrayOfampi))
+      paramArrayOfamph = new JSONObject(paramArrayOfamph);
+      if (paramArrayOfamph.optInt("is_show_recover_entry", 1) == 1) {}
+      for (;;)
       {
-        paramArrayOfampi = new JSONObject(paramArrayOfampi);
-        localamzn.a(paramArrayOfampi.getString("url"));
-        localamzn.a(paramArrayOfampi.getBoolean("isEnable"));
-        localamzn.b(paramArrayOfampi.getBoolean("hideHotValue"));
+        localamzn.jdField_a_of_type_Boolean = bool;
+        localamzn.jdField_a_of_type_JavaLangString = paramArrayOfamph.optString("recover_text", localamzn.jdField_a_of_type_JavaLangString);
+        localamzn.b = paramArrayOfamph.optString("recover_url", localamzn.b);
+        return localamzn;
+        bool = false;
       }
       return localamzn;
     }
-    catch (JSONException paramArrayOfampi)
+    catch (JSONException paramArrayOfamph)
     {
-      paramArrayOfampi.printStackTrace();
+      ved.e("QVipFriendTagProcessor", "QVipFriendTagConfig onParsed exception :" + paramArrayOfamph.getMessage());
     }
-    return localamzn;
   }
   
   public Class<amzn> a()
@@ -46,12 +54,6 @@ public class amzo
   
   @NonNull
   public amzn b()
-  {
-    return new amzn();
-  }
-  
-  @NonNull
-  public amzn c()
   {
     return new amzn();
   }

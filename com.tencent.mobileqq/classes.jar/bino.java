@@ -1,25 +1,28 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bino
-  implements bbkq<Float>
 {
-  public bino(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
+  public String a;
+  public String b = "null";
+  public String c = "null";
   
-  @TargetApi(11)
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public bino(@NonNull String paramString)
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
-    }
-    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
+    this.a = paramString;
+  }
+  
+  public bino(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
   }
 }
 

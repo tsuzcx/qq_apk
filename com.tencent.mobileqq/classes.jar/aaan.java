@@ -1,8 +1,14 @@
-import com.tencent.mfsdk.collector.ResultObject;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public abstract interface aaan
+public final class aaan
+  implements aaak
 {
-  public abstract boolean a(ResultObject paramResultObject, aaao paramaaao);
+  public void a(int paramInt)
+  {
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
+    }
+  }
 }
 
 

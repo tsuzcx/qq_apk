@@ -8,17 +8,17 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import bfob;
+import bfos;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import qzv;
-import qzw;
+import qzs;
+import qzt;
 
 public class DailyTitleBarSwitcher
   extends FrameLayout
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new qzv(this);
-  private final bfob jdField_a_of_type_Bfob = new qzw(this);
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new qzs(this);
+  private final bfos jdField_a_of_type_Bfos = new qzt(this);
   private DailyTitleBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
   private boolean jdField_a_of_type_Boolean;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
@@ -87,9 +87,9 @@ public class DailyTitleBarSwitcher
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
-  public bfob a()
+  public bfos a()
   {
-    return this.jdField_a_of_type_Bfob;
+    return this.jdField_a_of_type_Bfos;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)

@@ -1,36 +1,126 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.image.URLDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout.SlideShowAdapter.1;
+import java.net.URL;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public final class bkos
-  extends RecyclablePool.Recyclable
+public class bkos
+  extends RecyclerView.Adapter<bkot>
+  implements vtl
 {
-  public long a;
-  public String a;
-  public long[] a;
-  public long b;
-  public long c;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private List<SlideItemInfo> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private vuf jdField_a_of_type_Vuf;
   
-  public bkos()
+  public bkos(HorizontalAlumbListLayout paramHorizontalAlumbListLayout, Context paramContext, View.OnClickListener paramOnClickListener, vuf paramvuf)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[6];
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Vuf = paramvuf;
   }
   
-  public void a()
+  public bkot a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfLong.length)
-    {
-      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
-      i += 1;
+    paramViewGroup = new bkot(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561320, paramViewGroup, false));
+    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(4);
+    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Collections.swap(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
+    notifyItemMoved(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Int == paramInt1) || (this.jdField_a_of_type_Int == paramInt2)) {
+      if (this.jdField_a_of_type_Int != paramInt1) {
+        break label81;
+      }
     }
-    this.c = 0L;
+    label81:
+    for (this.jdField_a_of_type_Int = paramInt2;; this.jdField_a_of_type_Int = paramInt1)
+    {
+      notifyItemChanged(paramInt1, Integer.valueOf(0));
+      notifyItemChanged(paramInt2, Integer.valueOf(0));
+      if (this.jdField_a_of_type_Vuf != null) {
+        this.jdField_a_of_type_Vuf.a(paramInt1, paramInt2);
+      }
+      return;
+    }
   }
   
-  public void recycle()
+  public void a(bkot parambkot, int paramInt)
   {
-    super.recycle();
-    a();
+    SlideItemInfo localSlideItemInfo = (SlideItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localSlideItemInfo);
+    if (localSlideItemInfo.jdField_a_of_type_JavaNetURL != null)
+    {
+      Object localObject = parambkot.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getDrawable();
+      if ((!(localObject instanceof URLDrawable)) || (!localSlideItemInfo.jdField_a_of_type_JavaNetURL.equals(((URLDrawable)localObject).getURL())))
+      {
+        localObject = aywm.a(localSlideItemInfo.jdField_a_of_type_JavaNetURL, aywm.b(), aywm.a());
+        ((URLDrawable)localObject).setTag(localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+        parambkot.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable((Drawable)localObject);
+        parambkot.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setTag(localSlideItemInfo);
+      }
+    }
+    switch (localSlideItemInfo.jdField_b_of_type_Int)
+    {
+    }
+    while ((paramInt == this.jdField_a_of_type_Int) && (!parambkot.jdField_a_of_type_Boolean))
+    {
+      parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(0.94F);
+      parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(0.94F);
+      parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      parambkot.jdField_a_of_type_AndroidWidgetTextView.post(new HorizontalAlumbListLayout.SlideShowAdapter.1(this, parambkot));
+      return;
+      parambkot.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      parambkot.jdField_b_of_type_AndroidWidgetTextView.setText(vuc.a(localSlideItemInfo.jdField_a_of_type_Long));
+      continue;
+      parambkot.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      if (localSlideItemInfo.jdField_a_of_type_Long > 0L) {
+        parambkot.jdField_b_of_type_AndroidWidgetTextView.setText(vuc.a(localSlideItemInfo.c - localSlideItemInfo.jdField_b_of_type_Long));
+      }
+    }
+    if (parambkot.jdField_a_of_type_Boolean)
+    {
+      parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.13F);
+      parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.13F);
+      parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.65F);
+      parambkot.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+      return;
+    }
+    parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.0F);
+    parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.0F);
+    parambkot.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+    parambkot.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+  }
+  
+  public void a(List<SlideItemInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

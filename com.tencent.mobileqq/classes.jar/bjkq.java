@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.capture.view.ProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.widget.AdapterView;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjkq
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public bjkq(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public bjkq(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QIMProviderContainerView.a(this.a) != null)
-    {
-      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
-      QIMProviderContainerView.a(this.a).setVisibility(0);
-    }
+    paramDialogInterface.dismiss();
+    MusicProviderView.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_Bjky.k();
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.onItemClick(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

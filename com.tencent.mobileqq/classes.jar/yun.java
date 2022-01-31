@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public final class yun
-  implements Parcelable.Creator<GdtInterstitialParams>
+class yun
+  implements yuf
 {
-  public GdtInterstitialParams a(Parcel paramParcel)
+  yun(yul paramyul) {}
+  
+  public void a(yuc paramyuc)
   {
-    return new GdtInterstitialParams(paramParcel);
+    yxp.b("GdtInterstitialPreDownloader", String.format("onPreDownloaded appName:%s view:%s minVersion:%s", new Object[] { paramyuc.a, paramyuc.b, paramyuc.c }));
+    yyc.a(BaseApplicationImpl.getApplication(), yul.a(yul.a()), 0, -2147483648);
   }
   
-  public GdtInterstitialParams[] a(int paramInt)
+  public void a(yuc paramyuc, int paramInt)
   {
-    return new GdtInterstitialParams[paramInt];
+    yxp.b("GdtInterstitialPreDownloader", String.format("onStatusChanged appName:%s view:%s minVersion:%s status:%d", new Object[] { paramyuc.a, paramyuc.b, paramyuc.c, Integer.valueOf(paramInt) }));
+    yyc.a(BaseApplicationImpl.getApplication(), yul.a(yul.a()), paramInt);
+  }
+  
+  public void a(yuc paramyuc, int paramInt1, int paramInt2)
+  {
+    yxp.d("GdtInterstitialPreDownloader", String.format("onFailedToPreDownload appName:%s view:%s minVersion:%s error:%d arkError:%d", new Object[] { paramyuc.a, paramyuc.b, paramyuc.c, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    yyc.a(BaseApplicationImpl.getApplication(), yul.a(yul.a()), paramInt1, paramInt2);
   }
 }
 

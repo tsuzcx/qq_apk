@@ -1,24 +1,23 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
 
-public class ajxh
-  extends MqqHandler
+public final class ajxh
+  implements Parcelable.Creator<FriendListHandler.QQHeadDetails>
 {
-  public ajxh(FriendListHandler paramFriendListHandler, Looper paramLooper)
+  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
   {
-    super(paramLooper);
+    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
+    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
+    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
+    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    return localQQHeadDetails;
   }
   
-  public void handleMessage(Message paramMessage)
+  public FriendListHandler.QQHeadDetails[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FriendListHandler.a(this.a);
+    return new FriendListHandler.QQHeadDetails[paramInt];
   }
 }
 

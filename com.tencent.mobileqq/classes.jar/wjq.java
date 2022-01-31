@@ -1,29 +1,36 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class wjq
-  extends RecyclerView.ItemDecoration
+class wjq
+  implements wsm
 {
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  wjq(wjo paramwjo) {}
+  
+  public void a(boolean paramBoolean)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (i == 0)
+    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean)
     {
-      paramRect.left = bawz.a(paramView.getContext(), 3.0F);
-      paramRect.right = 0;
-      return;
+      str1 = "cancel";
+      xhb.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
+      if (RecommendBannerItemView.a(this.a.a))
+      {
+        str2 = RecommendBannerItemView.a(this.a.a).id.get();
+        localStringBuilder = new StringBuilder().append("reco_");
+        if (!paramBoolean) {
+          break label252;
+        }
+      }
     }
-    paramRecyclerView = paramRecyclerView.getAdapter();
-    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
-    for (paramRect.right = bawz.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
+    label252:
+    for (String str1 = "cancel";; str1 = "dislike")
     {
-      paramRect.left = (-bawz.a(paramView.getContext(), 6.0F));
+      xhb.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
       return;
+      str1 = "dislike";
+      break;
     }
   }
 }

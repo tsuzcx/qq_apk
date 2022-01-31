@@ -1,13 +1,17 @@
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class abkr
-  extends akdo
+  extends aoez
 {
   public abkr(Leba paramLeba) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (Leba.a(this.a) != null)) {
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    }
+    if (Leba.a(this.a) != null) {
       Leba.a(this.a).b();
     }
   }

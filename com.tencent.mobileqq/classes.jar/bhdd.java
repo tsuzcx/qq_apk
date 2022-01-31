@@ -1,18 +1,54 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.feed.CertifiedFakeFeed;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.model.MQLikeCell;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQMsgInteractData;
 
-public final class bhdd
-  implements Parcelable.Creator<CertifiedFakeFeed>
+public class bhdd
+  extends BroadcastReceiver
 {
-  public CertifiedFakeFeed a(Parcel paramParcel)
-  {
-    return new CertifiedFakeFeed(paramParcel);
-  }
+  public bhdd(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public CertifiedFakeFeed[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new CertifiedFakeFeed[paramInt];
+    int j;
+    int k;
+    boolean bool;
+    int i;
+    if (paramIntent.getAction() == "com.qzone.sync_comment_like")
+    {
+      j = paramIntent.getIntExtra("sync_comment_commentnum", 0);
+      paramContext = paramIntent.getStringExtra("sync_comment_likekey");
+      k = paramIntent.getIntExtra("sync_comment_likenum", 0);
+      bool = paramIntent.getBooleanExtra("sync_comment_haslike", false);
+      if ((this.a.jdField_a_of_type_Bhdb != null) && (!TextUtils.isEmpty(paramContext))) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i < this.a.jdField_a_of_type_Bhdb.getCount())
+      {
+        paramIntent = (MQMsg)this.a.jdField_a_of_type_Bhdb.getItem(i);
+        if ((paramIntent.msgInteractData != null) && (paramIntent.msgInteractData.likeCell != null) && (paramIntent.msgInteractData.likeCell.likeKey.equals(paramContext)))
+        {
+          paramIntent.msgInteractData.likeCell.totalLike = k;
+          paramIntent.msgInteractData.totalComment = j;
+          paramIntent.msgInteractData.likeCell.liked = bool;
+          ((bhdh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)).a(paramIntent);
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_Bhdb.notifyDataSetChanged();
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

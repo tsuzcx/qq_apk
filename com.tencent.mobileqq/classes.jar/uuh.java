@@ -1,6 +1,17 @@
-public abstract interface uuh
+import android.text.TextUtils;
+
+public class uuh
+  extends uuc
 {
-  public abstract void a(String paramString);
+  public uuh()
+  {
+    super("memory_publish", null);
+  }
+  
+  public static boolean a(uuc paramuuc)
+  {
+    return TextUtils.equals("memory_publish", paramuuc.a);
+  }
 }
 
 

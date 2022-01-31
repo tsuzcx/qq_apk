@@ -1,28 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
 
-public class acpa
-  implements DialogInterface.OnClickListener
+public abstract interface acpa
 {
-  public acpa(UpgradeDetailActivity paramUpgradeDetailActivity, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      akva.a().b(false);
-      paramDialogInterface.dismiss();
-      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
-      return;
-    }
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
-  }
+  public abstract void a(UpgradeTipsDialog paramUpgradeTipsDialog);
 }
 
 

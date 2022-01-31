@@ -1,15 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.graphics.Bitmap;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
-public class auyr
-  implements bbkq<Integer>
+class auyr
+  extends auym
 {
-  public auyr(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  auyr(auyq paramauyq, long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = auyl.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
+    {
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
+    }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

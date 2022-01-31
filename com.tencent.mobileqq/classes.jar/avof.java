@@ -1,46 +1,50 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class avof
-  extends akav
+  implements URLDrawableDownListener
 {
   public avof(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void a(long paramLong1, int paramInt, long paramLong2)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
-    {
-      if (paramInt != 0) {
-        break label109;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
-      if (paramLong2 > 0L) {
-        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
-      }
-      if (this.a.isAdded())
-      {
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
-        if (paramLong2 <= 0L) {
-          break label104;
-        }
-        paramInt = 1;
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
-      }
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
     }
-    label104:
-    label109:
-    do
-    {
-      return;
-      paramInt = 0;
-      break;
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+    }
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
+    }
+    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
+    ReceiptMessageDetailFragment.b(this.a);
   }
 }
 

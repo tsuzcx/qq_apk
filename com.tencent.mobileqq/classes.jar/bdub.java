@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.view.View;
+import com.tencent.qidian.PhotoWallViewForQiDianProfile;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class bdub
-  implements DialogInterface.OnClickListener
+  implements bfpt
 {
-  public bdub(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bdub(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramDialogInterface.dismiss();
+    paramAdapterView = (bdvq)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_Bdue == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bdue.a(paramAdapterView);
   }
 }
 

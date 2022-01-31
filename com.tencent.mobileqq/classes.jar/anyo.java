@@ -1,23 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.17.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class anyo
-  implements DialogInterface.OnClickListener
+  extends anwk
 {
   public anyo(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, FavEmosmManageActivity.class);
-    paramDialogInterface.putExtra("camera_emo_mode", 1);
-    this.a.a.startActivity(paramDialogInterface);
-    axqw.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
+    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
+      }
+    } while (this.a.n);
+    ThreadManager.getUIHandler().post(new EmoticonMainPanel.17.1(this, paramEmoticonPackage, paramInt));
   }
 }
 

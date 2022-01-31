@@ -1,17 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bhkl;
-import bhkn;
-import bhrl;
+import bhlc;
+import bhle;
+import bhsc;
 
 public class QzoneDynamicAlbumPlugin$4
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$4(bhrl parambhrl) {}
+  public QzoneDynamicAlbumPlugin$4(bhsc parambhsc) {}
   
   public void run()
   {
-    bhkl.a().a().k();
+    bhlc.a().a().k();
   }
 }
 

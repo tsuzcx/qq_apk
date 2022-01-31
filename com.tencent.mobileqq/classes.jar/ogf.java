@@ -1,18 +1,19 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
 public class ogf
-  extends Editable.Factory
+  implements arbk
 {
   public ogf(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void a(HotPicData paramHotPicData)
   {
-    if ((paramCharSequence instanceof ods)) {
-      return (Editable)paramCharSequence;
-    }
-    return new ods(paramCharSequence, 3, 20);
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
   }
 }
 

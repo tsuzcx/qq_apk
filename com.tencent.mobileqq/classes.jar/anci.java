@@ -1,52 +1,7 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 public class anci
-  extends ampb<anch>
 {
-  public int a()
-  {
-    return 440;
-  }
-  
-  @NonNull
-  public anch a(int paramInt)
-  {
-    return new anch();
-  }
-  
-  @Nullable
-  public anch a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anch.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<anch> a()
-  {
-    return anch.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anch paramanch) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public String a;
+  public String b;
 }
 
 

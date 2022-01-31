@@ -1,14 +1,4 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class aips
-{
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aips

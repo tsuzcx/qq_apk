@@ -1,32 +1,21 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class syl
 {
-  public static void a(SparseIntArray paramSparseIntArray)
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    int[][] arrayOfInt = syb.a;
-    int j = arrayOfInt.length;
-    int i = 0;
-    if (i < j)
-    {
-      int[] arrayOfInt1 = arrayOfInt[i];
-      int k = arrayOfInt1[0];
-      int m = arrayOfInt1[1];
-      if (k != -1) {
-        paramSparseIntArray.put(sxp.a(k), m);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramSparseIntArray.put(m, m);
-      }
-    }
+    return false;
   }
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean) {}
+  public static boolean a(String paramString)
+  {
+    return false;
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return false;
+  }
 }
 
 

@@ -1,12 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
-class wph
-  extends RecyclerView.ViewHolder
+public class wph
+  extends RecyclerView.OnScrollListener
 {
-  public wph(wpf paramwpf, View paramView)
+  public wph(ComponentPageView paramComponentPageView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramView);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      this.a.b();
+    }
   }
 }
 

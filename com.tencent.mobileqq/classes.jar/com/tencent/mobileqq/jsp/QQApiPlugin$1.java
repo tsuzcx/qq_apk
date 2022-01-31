@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import arnc;
-import bcdb;
+import arne;
+import bcdp;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
-import nam;
+import naj;
 import org.json.JSONObject;
 
 public class QQApiPlugin$1
   implements Runnable
 {
-  public QQApiPlugin$1(arnc paramarnc, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
+  public QQApiPlugin$1(arne paramarne, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
   
   public void run()
   {
-    Object localObject2 = nam.a(this.jdField_a_of_type_JavaUtilHashMap);
+    Object localObject2 = naj.a(this.jdField_a_of_type_JavaUtilHashMap);
     Object localObject1 = (String)((HashMap)localObject2).get("share_url");
     if (localObject1 == null) {
       localObject1 = this.jdField_a_of_type_JavaLangString;

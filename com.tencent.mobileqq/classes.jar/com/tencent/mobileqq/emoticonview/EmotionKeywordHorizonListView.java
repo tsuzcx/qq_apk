@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import anzy;
+import aoad;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout;
 import com.tencent.widget.HorizontalListView;
 
@@ -12,7 +12,7 @@ public class EmotionKeywordHorizonListView
   extends HorizontalListView
 {
   public int a;
-  private anzy a;
+  private aoad a;
   
   public EmotionKeywordHorizonListView(Context paramContext)
   {
@@ -28,8 +28,8 @@ public class EmotionKeywordHorizonListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Anzy != null) {
-      this.jdField_a_of_type_Anzy.a(paramMotionEvent.getAction());
+    if (this.jdField_a_of_type_Aoad != null) {
+      this.jdField_a_of_type_Aoad.a(paramMotionEvent.getAction());
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -55,9 +55,9 @@ public class EmotionKeywordHorizonListView
     invalidate();
   }
   
-  public void setTouchListener(anzy paramanzy)
+  public void setTouchListener(aoad paramaoad)
   {
-    this.jdField_a_of_type_Anzy = paramanzy;
+    this.jdField_a_of_type_Aoad = paramaoad;
   }
   
   public void setType(int paramInt)

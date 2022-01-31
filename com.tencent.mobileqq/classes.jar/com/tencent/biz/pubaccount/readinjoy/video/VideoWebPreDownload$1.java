@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qvw;
+import qvt;
 
 public class VideoWebPreDownload$1
   implements Runnable
 {
-  public VideoWebPreDownload$1(qvw paramqvw, String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2) {}
+  public VideoWebPreDownload$1(qvt paramqvt, String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    qvw.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    qvt.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

@@ -1,11 +1,38 @@
-import android.view.animation.Interpolator;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
 public class bfvh
-  implements Interpolator
 {
-  public float getInterpolation(float paramFloat)
+  public int a;
+  public Bitmap a;
+  public int b;
+  
+  public bfvh(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    a(paramInt1, paramInt2);
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
+    this.b = (paramInt2 - j / 2);
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
   }
 }
 

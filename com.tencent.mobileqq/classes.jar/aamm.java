@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
 import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
 public class aamm
-  implements View.OnLongClickListener
+  implements aoad
 {
   public aamm(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(int paramInt)
   {
-    if ("//findcrash".equals(this.a.a.getText().toString())) {
-      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      return;
     }
-    return true;
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
   }
 }
 

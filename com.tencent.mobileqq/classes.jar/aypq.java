@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-
 class aypq
-  implements ITransCallbackForReport
+  extends akat
 {
-  aypq(aypn paramaypn) {}
+  aypq(aypp paramaypp) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean, long paramLong, akau paramakau)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramakau);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.av.ui;
 
 import java.lang.ref.WeakReference;
-import mat;
-import miq;
+import mao;
+import min;
 
 class QavVideoRecordUICtrl$1$1
   implements Runnable
@@ -12,8 +12,8 @@ class QavVideoRecordUICtrl$1$1
   public void run()
   {
     this.a.this$0.c();
-    if (((AVActivity)miq.a(this.a.this$0).get()).a != null) {
-      mat.a(((AVActivity)miq.a(this.a.this$0).get()).a, 1023, 2131696075);
+    if (((AVActivity)min.a(this.a.this$0).get()).a != null) {
+      mao.a(((AVActivity)min.a(this.a.this$0).get()).a, 1023, 2131696076);
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.bubble;
 
+import amcu;
 import amcv;
 import amcw;
-import amcx;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
@@ -19,7 +19,7 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import bbdr;
+import bbef;
 import com.tencent.biz.qqstory.takevideo.EditGifImage;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -40,13 +40,13 @@ public class QQAnimationDrawable
   extends Drawable
   implements Animatable, Runnable
 {
-  private static volatile amcx jdField_a_of_type_Amcx;
+  private static volatile amcw jdField_a_of_type_Amcw;
   public static final ExecutorService a;
   public static byte[] a;
   protected int a;
   private long jdField_a_of_type_Long;
-  final amcv jdField_a_of_type_Amcv = new amcv(this, this);
-  private amcw jdField_a_of_type_Amcw;
+  final amcu jdField_a_of_type_Amcu = new amcu(this, this);
+  private amcv jdField_a_of_type_Amcv;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
@@ -81,7 +81,7 @@ public class QQAnimationDrawable
   static
   {
     jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-    jdField_a_of_type_Amcx = new amcx(null);
+    jdField_a_of_type_Amcw = new amcw(null);
     jdField_a_of_type_ArrayOfByte = new byte[24576];
   }
   
@@ -90,14 +90,14 @@ public class QQAnimationDrawable
     this(null);
   }
   
-  public QQAnimationDrawable(amcw paramamcw)
+  public QQAnimationDrawable(amcv paramamcv)
   {
     this.jdField_a_of_type_Int = -1;
     if (this.jdField_b_of_type_Int == 0) {}
     for (;;)
     {
       this.jdField_b_of_type_Int = j;
-      this.jdField_a_of_type_Amcw = paramamcw;
+      this.jdField_a_of_type_Amcv = paramamcv;
       if (Build.VERSION.SDK_INT >= 11) {
         this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
       }
@@ -173,7 +173,7 @@ public class QQAnimationDrawable
       if (Build.VERSION.SDK_INT >= 11) {
         a((BitmapFactory.Options)localObject);
       }
-      localObject = bbdr.a(str, (BitmapFactory.Options)localObject);
+      localObject = bbef.a(str, (BitmapFactory.Options)localObject);
       paramBitmap = (Bitmap)localObject;
       if (localObject != null) {
         paramBitmap = (Bitmap)localObject;
@@ -328,12 +328,12 @@ public class QQAnimationDrawable
       for (long l = 0L;; l = SystemClock.uptimeMillis() + this.jdField_b_of_type_Long)
       {
         this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable = new QQAnimationDrawable.WorkerRunnable(this, j, l);
-        jdField_a_of_type_Amcx.execute(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable);
+        jdField_a_of_type_Amcw.execute(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable$WorkerRunnable);
         if (paramBoolean2)
         {
           stop();
-          if (this.jdField_a_of_type_Amcw != null) {
-            this.jdField_a_of_type_Amcw.a();
+          if (this.jdField_a_of_type_Amcv != null) {
+            this.jdField_a_of_type_Amcv.a();
           }
         }
         return;
@@ -844,8 +844,8 @@ public class QQAnimationDrawable
   
   public void b()
   {
-    if (jdField_a_of_type_Amcx != null) {
-      jdField_a_of_type_Amcx.b();
+    if (jdField_a_of_type_Amcw != null) {
+      jdField_a_of_type_Amcw.b();
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentFutureTask != null) {
       this.jdField_a_of_type_JavaUtilConcurrentFutureTask.cancel(true);
@@ -1074,8 +1074,8 @@ public class QQAnimationDrawable
       this.jdField_c_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
     }
     QLog.d("QQAnimationDrawable", 4, "mRepeatCount:" + this.jdField_d_of_type_Int);
-    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Amcw != null)) {
-      this.jdField_a_of_type_Amcw.b();
+    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Amcv != null)) {
+      this.jdField_a_of_type_Amcv.b();
     }
     this.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
     invalidateSelf();

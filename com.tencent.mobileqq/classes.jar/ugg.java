@@ -1,26 +1,50 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.widget.TextView;
 
-final class ugg
-  implements URLDrawable.URLDrawableListener
+public class ugg
 {
-  ugg(ImageView paramImageView, Drawable paramDrawable) {}
+  public int a;
+  public Drawable a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public ugg(View paramView)
   {
-    veg.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369261);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369260));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369252));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369249));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369259));
+    this.c = ((TextView)paramView.findViewById(2131361894));
+    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298781);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839354);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839348);
+    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839354);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.c.setVisibility(8);
   }
 }
 

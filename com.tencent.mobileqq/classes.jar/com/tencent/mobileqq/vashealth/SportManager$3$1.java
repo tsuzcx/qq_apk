@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bbuf;
-import bbuk;
+import bbut;
+import bbuy;
 
 public class SportManager$3$1
   implements Runnable
 {
-  public SportManager$3$1(bbuk parambbuk, String paramString) {}
+  public SportManager$3$1(bbuy parambbuy, String paramString) {}
   
   public void run()
   {
-    bbuf.a(this.jdField_a_of_type_JavaLangString);
+    bbut.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

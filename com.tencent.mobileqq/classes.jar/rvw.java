@@ -1,21 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-
-public class rvw
-  implements Animation.AnimationListener
+public abstract interface rvw
 {
-  public rvw(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
-  }
+  public abstract void a(int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean, int paramInt);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
 }
 
 

@@ -1,33 +1,33 @@
 package com.tencent.biz.pubaccount.util;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import avtc;
-import bbca;
-import bbcv;
-import bbgg;
-import bcdb;
-import bcpq;
-import bcpw;
+import avte;
+import bbco;
+import bbdj;
+import bbgu;
+import bcdp;
+import bcqf;
+import bcql;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import qpc;
-import sfn;
+import qoz;
+import sfk;
+import sfw;
+import sfx;
 import sfz;
-import sga;
-import sgc;
 
 public class PublicAccountH5AbilityPlugin$5
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$5(sfn paramsfn, String[] paramArrayOfString) {}
+  public PublicAccountH5AbilityPlugin$5(sfk paramsfk, String[] paramArrayOfString) {}
   
   public void run()
   {
-    if (!avtc.a()) {
-      bbcv.a(this.this$0.jdField_a_of_type_AndroidAppActivity, 230, null, ajyc.a(2131708788), null, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131694793), new sfz(this), null).show();
+    if (!avte.a()) {
+      bbdj.a(this.this$0.jdField_a_of_type_AndroidAppActivity, 230, null, ajya.a(2131708799), null, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131694794), new sfw(this), null).show();
     }
     Object localObject2;
     String str2;
@@ -63,7 +63,7 @@ public class PublicAccountH5AbilityPlugin$5
       catch (Exception localException1) {}
       try
       {
-        str1 = new String(bbca.decode((String)localObject1, 0));
+        str1 = new String(bbco.decode((String)localObject1, 0));
         localObject1 = str1;
       }
       catch (Exception localException2)
@@ -77,23 +77,23 @@ public class PublicAccountH5AbilityPlugin$5
         if (bool) {
           break label467;
         }
-        localObject2 = new bcpq(this.this$0.mRuntime.a(), this.this$0.mRuntime.a().getResources().getDimensionPixelSize(2131298865));
-        ((bcpq)localObject2).c(2131718596);
-        sga localsga = new sga(this, (bcpq)localObject2, str2, localException1, i, j, localException2, str3, str4, str5, str6, str7);
-        this.this$0.jdField_a_of_type_Qpc.a(localsga);
-        this.this$0.jdField_a_of_type_Qpc.a("CMD_CAMERA_CAPTURE_SO_DOWNLOAD", null);
-        ((bcpq)localObject2).a(new sgc(this, localsga));
-        ((bcpq)localObject2).show();
+        localObject2 = new bcqf(this.this$0.mRuntime.a(), this.this$0.mRuntime.a().getResources().getDimensionPixelSize(2131298865));
+        ((bcqf)localObject2).c(2131718607);
+        sfx localsfx = new sfx(this, (bcqf)localObject2, str2, localException1, i, j, localException2, str3, str4, str5, str6, str7);
+        this.this$0.jdField_a_of_type_Qoz.a(localsfx);
+        this.this$0.jdField_a_of_type_Qoz.a("CMD_CAMERA_CAPTURE_SO_DOWNLOAD", null);
+        ((bcqf)localObject2).a(new sfz(this, localsfx));
+        ((bcqf)localObject2).show();
         return;
-        sfn.a(this.this$0, str2, localsga, i, j, localException2, str3, str4, str5, str6, str7);
+        sfk.a(this.this$0, str2, localsfx, i, j, localException2, str3, str4, str5, str6, str7);
       }
       String str1 = ((JSONObject)localObject2).optString("callback");
-      localObject2 = this.this$0.jdField_a_of_type_Qpc.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null);
+      localObject2 = this.this$0.jdField_a_of_type_Qoz.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null);
       bool = ((Bundle)localObject2).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
       if (!((Bundle)localObject2).getBoolean("VALUE_CAMERA_IS_VIDEO_CHATTING")) {
         break;
       }
-      bcpw.a(this.this$0.mRuntime.a(), 0, 2131719576, 0).a();
+      bcql.a(this.this$0.mRuntime.a(), 0, 2131719587, 0).a();
       return;
     } while (!QLog.isColorLevel());
     QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() Exception=" + localException1.getMessage());

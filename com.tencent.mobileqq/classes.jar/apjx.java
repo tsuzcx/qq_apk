@@ -1,25 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
+import com.tencent.kwstudio.office.preview.IHostInterface.IDownloadListener;
 
-public class apjx
+public final class apjx
+  implements aysc
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private final IHostInterface.IDownloadListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+  private final String jdField_a_of_type_JavaLangString;
+  
+  private apjx(String paramString, IHostInterface.IDownloadListener paramIDownloadListener)
   {
-    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bbdm.b(paramString3) + paramString5;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener = paramIDownloadListener;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, apjz paramapjz)
+  public void onResp(aysz paramaysz)
   {
-    if (paramLong < 0L) {
+    int i = 0;
+    if (paramaysz.jdField_a_of_type_Int == 3) {}
+    label74:
+    label80:
+    for (;;)
+    {
       return;
+      boolean bool;
+      if (paramaysz.jdField_a_of_type_Int == 0)
+      {
+        bool = true;
+        if (!bool) {
+          break label74;
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
+          break label80;
+        }
+        if (bool) {
+          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramaysz.jdField_a_of_type_Long, 1.0F);
+        }
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
+        return;
+        bool = false;
+        break;
+        i = paramaysz.b;
+      }
     }
-    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
-    localReqBody.uint64_group_code.set(paramLong);
-    localReqBody.str_app_src.set("android");
-    localReqBody.str_version.set("8.2.8");
-    mxi.b(paramQQAppInterface, new apjy(paramapjz), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      float f = (float)paramLong1 / (float)paramLong2;
+      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+      }
+    }
   }
 }
 

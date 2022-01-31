@@ -1,82 +1,51 @@
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 @Deprecated
 public class arlw
 {
-  public void call(String paramString, List<String> paramList, arlv paramarlv)
+  HashMap<String, arly> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  mvs jdField_a_of_type_Mvs;
+  
+  public void a(arly paramarly, String paramString)
   {
-    Object localObject2 = null;
-    Method[] arrayOfMethod = getClass().getDeclaredMethods();
-    int j = arrayOfMethod.length;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramarly);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, List<String> paramList, arlx paramarlx)
+  {
+    int j = paramList.size();
     int i = 0;
     for (;;)
     {
-      Object localObject1 = localObject2;
-      if (i < j)
-      {
-        localObject1 = arrayOfMethod[i];
-        if ((!((Method)localObject1).getName().equals(paramString)) || (((Method)localObject1).getParameterTypes().length != paramList.size())) {}
-      }
-      else
-      {
-        if (localObject1 != null) {}
+      if (i < j) {
         try
         {
-          if (paramList.size() == 0) {}
-          for (localObject2 = ((Method)localObject1).invoke(this, new Object[0]);; localObject2 = ((Method)localObject1).invoke(this, paramList.toArray()))
-          {
-            localObject1 = ((Method)localObject1).getReturnType();
-            if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
-              break;
-            }
-            if (paramarlv == null) {
-              break label276;
-            }
-            paramarlv.a(null);
-            return;
-          }
-          if (paramarlv != null) {
-            if (customCallback())
-            {
-              paramarlv.a(localObject2.toString());
-              return;
-            }
-          }
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
         }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          if (paramarlv != null) {
-            paramarlv.a();
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("JB", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
-          }
-          if (paramarlv != null)
-          {
-            paramarlv.a();
-            return;
-            paramarlv.a(localObject2);
-            return;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
           for (;;)
           {
-            if (paramarlv != null) {
-              paramarlv.a();
-            }
-          }
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          for (;;)
-          {
-            if (paramarlv != null) {
-              paramarlv.a();
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
             }
           }
         }
@@ -84,21 +53,66 @@ public class arlw
         {
           for (;;)
           {
-            if (paramarlv != null) {
-              paramarlv.a();
+            localException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
             }
           }
         }
-        label276:
-        return;
       }
-      i += 1;
     }
+    paramString1 = (arly)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramarlx);
+    }
+    while (paramarlx == null) {
+      return;
+    }
+    paramarlx.a();
   }
   
-  public boolean customCallback()
+  public boolean a(WebView paramWebView, String paramString)
   {
-    return false;
+    if (paramString == null) {
+      return false;
+    }
+    if (!paramString.startsWith("jsbridge://")) {
+      return false;
+    }
+    List localList = Arrays.asList((paramString + "/#").split("/"));
+    if (localList.size() < 6) {
+      return false;
+    }
+    String str1 = (String)localList.get(2);
+    String str2 = (String)localList.get(3);
+    String str3 = (String)localList.get(4);
+    for (;;)
+    {
+      try
+      {
+        long l = Long.parseLong(str3);
+        localList = localList.subList(5, localList.size() - 1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("JB", 4, "calling " + str1 + "." + str2);
+        }
+        paramString = new arlx(paramWebView, l, paramString);
+        paramWebView = paramWebView.getUrl();
+        if (this.jdField_a_of_type_Mvs == null) {
+          this.jdField_a_of_type_Mvs = mvs.a();
+        }
+        if (this.jdField_a_of_type_Mvs.a(paramWebView, str1 + "." + str2))
+        {
+          a(str1, str2, localList, paramString);
+          return true;
+        }
+      }
+      catch (Exception paramWebView)
+      {
+        return false;
+      }
+      QLog.e("JsBridge", 1, "JS API no auth url = " + nau.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
+      paramString.b();
+    }
   }
 }
 

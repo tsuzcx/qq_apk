@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import asko;
+import askq;
 
 class QueryTask$1
   implements Runnable

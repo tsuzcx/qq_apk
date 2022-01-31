@@ -1,64 +1,30 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
 
 public class asax
-  extends ScheduledThreadPoolExecutor
+  implements Drawable.Callback
 {
-  public asax(TimerTaskManager paramTimerTaskManager, int paramInt)
+  public asax(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    super(paramInt);
+    this.a.invalidate();
   }
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
-    super.afterExecute(paramRunnable, paramThrowable);
-    Throwable localThrowable1 = paramThrowable;
-    if (paramThrowable == null)
-    {
-      localThrowable1 = paramThrowable;
-      if (!(paramRunnable instanceof Future)) {}
-    }
-    try
-    {
-      paramRunnable = (Future)paramRunnable;
-      localThrowable1 = paramThrowable;
-      if (paramRunnable.isDone())
-      {
-        paramRunnable.get();
-        localThrowable1 = paramThrowable;
-      }
-    }
-    catch (CancellationException localCancellationException)
-    {
-      break label46;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      for (;;)
-      {
-        localThrowable2 = paramRunnable.getCause();
-      }
-    }
-    catch (InterruptedException paramRunnable)
-    {
-      for (;;)
-      {
-        label46:
-        Throwable localThrowable2 = paramThrowable;
-      }
-    }
-    if (localThrowable1 != null) {
-      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
-    }
+    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asax
  * JD-Core Version:    0.7.0.1
  */

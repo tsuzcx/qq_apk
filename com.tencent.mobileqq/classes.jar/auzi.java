@@ -5,12 +5,11 @@ import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 public class auzi
   implements View.OnClickListener
 {
-  public auzi(ProfileHeaderView paramProfileHeaderView, View paramView) {}
+  public auzi(ProfileHeaderView paramProfileHeaderView, auuy paramauuy) {}
   
   public void onClick(View paramView)
   {
-    auvq.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Auuy);
   }
 }
 

@@ -3,19 +3,19 @@ package com.tencent.common.galleryactivity;
 import android.view.View;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
-import xpm;
-import xpu;
+import xpj;
+import xpr;
 
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  xpm jdField_a_of_type_Xpm;
-  private xpu jdField_a_of_type_Xpu;
+  xpj jdField_a_of_type_Xpj;
+  private xpr jdField_a_of_type_Xpr;
   
-  private xpu a(int paramInt)
+  private xpr a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Xpm != null) && (paramInt == this.jdField_a_of_type_Xpm.b())) {
-      return this.jdField_a_of_type_Xpu;
+    if ((this.jdField_a_of_type_Xpj != null) && (paramInt == this.jdField_a_of_type_Xpj.b())) {
+      return this.jdField_a_of_type_Xpr;
     }
     return null;
   }
@@ -51,61 +51,61 @@ public abstract class AbstractImageAdapter
     }
   }
   
-  public xpm a()
+  public xpj a()
   {
-    return this.jdField_a_of_type_Xpm;
+    return this.jdField_a_of_type_Xpj;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    xpu localxpu = a(paramInt1);
-    if (localxpu != null) {
-      localxpu.a(paramInt2);
+    xpr localxpr = a(paramInt1);
+    if (localxpr != null) {
+      localxpr.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    xpu localxpu = a(paramInt);
-    if (localxpu != null) {
-      localxpu.c();
+    xpr localxpr = a(paramInt);
+    if (localxpr != null) {
+      localxpr.c();
     }
   }
   
   public abstract void a(View paramView, int paramInt);
   
-  public void a(xpm paramxpm)
+  public void a(xpj paramxpj)
   {
-    this.jdField_a_of_type_Xpm = paramxpm;
+    this.jdField_a_of_type_Xpj = paramxpj;
   }
   
-  public void a(xpu paramxpu)
+  public void a(xpr paramxpr)
   {
-    this.jdField_a_of_type_Xpu = paramxpu;
+    this.jdField_a_of_type_Xpr = paramxpr;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    xpu localxpu = a(paramInt1);
-    if ((localxpu != null) && (localxpu.a())) {
-      localxpu.a(paramInt2);
+    xpr localxpr = a(paramInt1);
+    if ((localxpr != null) && (localxpr.a())) {
+      localxpr.a(paramInt2);
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Xpm == null) {
+    if (this.jdField_a_of_type_Xpj == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Xpm.a();
+    return this.jdField_a_of_type_Xpj.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Xpm == null) {
+    if (this.jdField_a_of_type_Xpj == null) {
       return null;
     }
-    return this.jdField_a_of_type_Xpm.a(paramInt);
+    return this.jdField_a_of_type_Xpj.a(paramInt);
   }
   
   public long getItemId(int paramInt)

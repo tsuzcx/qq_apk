@@ -1,11 +1,10 @@
-public class bgzp
+final class bgzp
+  extends asbr<bgzo, Void>
 {
-  public bgzo a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public bgzp(bgzl parambgzl) {}
+  protected bgzo a(Void paramVoid)
+  {
+    return new bgzo(null);
+  }
 }
 
 

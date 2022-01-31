@@ -1,95 +1,28 @@
-import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ovn
-  extends ntg
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  private rap jdField_a_of_type_Rap;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  public ovn(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public ovn(Activity paramActivity)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramActivity);
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372592);
-    }
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131560023);
-    this.jdField_a_of_type_Rap = ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    i();
-  }
-  
-  public void a(boolean paramBoolean, List<BaseArticleInfo> paramList)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
+    if (paramBoolean)
     {
-      a();
-      this.jdField_a_of_type_Boolean = true;
+      bcql.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131699665), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+      nol.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", onh.c(), false);
+      return;
     }
-    if (this.b != null) {
-      this.b.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
-    {
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-      {
-        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent() != null) {
-          ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
-        }
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
-      }
-      ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(true, paramList);
-    }
+    nol.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", onh.c(), false);
   }
-  
-  public void c()
-  {
-    super.c();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Rap != null) {
-      this.jdField_a_of_type_Rap.a();
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

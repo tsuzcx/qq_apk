@@ -1,17 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class pdd
   implements View.OnClickListener
 {
-  pdd(pdb parampdb, long paramLong, ArticleInfo paramArticleInfo) {}
+  pdd(pcy parampcy, ArticleInfo paramArticleInfo) {}
   
   public void onClick(View paramView)
   {
-    paramView = omm.g + bbca.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    onk.a(pdb.a(this.jdField_a_of_type_Pdb), paramView);
-    pdb.a(1, onk.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    int i = 0;
+    nuq.a(pcy.a(this.jdField_a_of_type_Pcy), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      nol.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

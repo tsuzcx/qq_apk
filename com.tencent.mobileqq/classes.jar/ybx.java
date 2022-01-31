@@ -1,18 +1,25 @@
-class ybx
+import android.view.View;
+import java.lang.ref.WeakReference;
+
+public class ybx
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
+  public WeakReference<View> a;
+  public WeakReference<anix> b;
   
-  public ybx(ybs paramybs, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
+  public ybx(ybw paramybw, View paramView, anix paramanix)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramanix);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public anix a()
+  {
+    return (anix)this.b.get();
   }
 }
 

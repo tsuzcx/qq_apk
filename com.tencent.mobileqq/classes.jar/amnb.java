@@ -1,33 +1,14 @@
 import android.view.View;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.AdapterView;
 
 public class amnb
-  implements bfpe
+  implements bfxc
 {
   public amnb(IphonePickerView paramIphonePickerView) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(View paramView, int paramInt)
   {
     IphonePickerView.a(this.a, paramView, 1);
-    IphonePickerView.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
-    }
   }
 }
 

@@ -1,34 +1,8 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-class qvf
-  implements qts
+public abstract interface qvf
 {
-  qvf(qvd paramqvd) {}
+  public abstract void a(qtv paramqtv1, qtv paramqtv2);
   
-  public List<qjl> a(List<VideoInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (VideoInfo)paramList.next();
-        if (localObject != null)
-        {
-          localObject = qjo.a((VideoInfo)localObject);
-          if (localObject != null) {
-            localArrayList.add(rap.a((BaseArticleInfo)localObject, true));
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
+  public abstract void l();
 }
 
 

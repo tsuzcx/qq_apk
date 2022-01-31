@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import aauq;
-import bbcp;
+import aaum;
+import bbdd;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatSettingForTroop$4$2
   implements Runnable
 {
-  public ChatSettingForTroop$4$2(aauq paramaauq, String paramString) {}
+  public ChatSettingForTroop$4$2(aaum paramaaum, String paramString) {}
   
   public void run()
   {
-    bbcp.a(this.jdField_a_of_type_Aauq.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
+    bbdd.a(this.jdField_a_of_type_Aaum.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 

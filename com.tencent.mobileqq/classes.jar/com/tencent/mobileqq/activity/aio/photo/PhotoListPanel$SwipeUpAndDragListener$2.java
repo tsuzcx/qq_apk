@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aekj;
+import aekh;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PhotoListPanel$SwipeUpAndDragListener$2
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$2(aekj paramaekj) {}
+  public PhotoListPanel$SwipeUpAndDragListener$2(aekh paramaekh) {}
   
   public void run()
   {

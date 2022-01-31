@@ -1,35 +1,85 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-final class nbf
-  implements bfoq
+public class nbf
+  extends nbg
 {
-  nbf(bfol parambfol, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  protected int a;
+  protected int b;
   
-  public void OnClick(View paramView, int paramInt)
+  public static nbf a(ByteBuffer paramByteBuffer)
   {
-    this.jdField_a_of_type_Bfol.dismiss();
-    switch (paramInt)
-    {
+    return a(paramByteBuffer, new nbf());
+  }
+  
+  public static nbf a(ByteBuffer paramByteBuffer, nbf paramnbf)
+  {
+    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
+      return null;
+    }
+    return paramnbf.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
+  }
+  
+  private int b(int paramInt)
+  {
+    paramInt = (paramInt + 2) * 2;
+    if (paramInt < this.b) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
+    }
+    return 0;
+  }
+  
+  public long a(int paramInt, long paramLong)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
+    }
+    return paramLong;
+  }
+  
+  public String a(int paramInt)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return b(paramInt + this.c);
+    }
+    return null;
+  }
+  
+  public nbe a(int paramInt)
+  {
+    return a(paramInt, new nbe());
+  }
+  
+  public nbe a(int paramInt, nbe paramnbe)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return paramnbe.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
+    }
+    return null;
+  }
+  
+  public nbf a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      paramByteBuffer = null;
     }
     do
     {
-      return;
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
-      try
-      {
-        nbc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
-        return;
+      return paramByteBuffer;
+      this.c = paramInt;
+      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
+      if (!a(this.jdField_a_of_type_Int, 2)) {
+        return null;
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
+      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
+      paramByteBuffer = this;
+    } while (a(this.jdField_a_of_type_Int, this.b));
+    return null;
   }
 }
 

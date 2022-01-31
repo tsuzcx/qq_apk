@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas;
 
 import android.content.Context;
-import bbqi;
+import bbqw;
 
 public class URLInterceptManager$1
   implements Runnable
 {
-  public URLInterceptManager$1(bbqi parambbqi, Context paramContext) {}
+  public URLInterceptManager$1(bbqw parambbqw, Context paramContext) {}
   
   public void run()
   {

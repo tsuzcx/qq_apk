@@ -1,39 +1,88 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class nig
-  implements njr
+  extends Handler
 {
-  public nig(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public nig(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Looper paramLooper)
   {
-    if (paramInt1 - paramInt3 > bawz.a(this.a, 60.0F))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    switch (paramMessage.what)
     {
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      this.a.finish();
-      return;
     }
-    PublicAccountAdvertisementActivity.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            int i;
+            do
+            {
+              do
+              {
+                return;
+                i = paramMessage.arg1;
+              } while (PublicAccountAdvertisementActivity.a(this.a) == null);
+              PublicAccountAdvertisementActivity.a(this.a).a(i);
+              if ((i > 0) && (i < 100))
+              {
+                PublicAccountAdvertisementActivity.a(this.a).c(true);
+                return;
+              }
+            } while (i != 100);
+            PublicAccountAdvertisementActivity.a(this.a).c(false);
+            return;
+            switch (paramMessage.arg1)
+            {
+            case 201: 
+            case 202: 
+            case 203: 
+            default: 
+              this.a.a(2131689623);
+              return;
+            case -24: 
+              this.a.b(this.a.getString(2131689620));
+              return;
+            }
+            this.a.a(2131689624);
+            return;
+            this.a.b(this.a.getString(2131689622));
+            return;
+          } while (PublicAccountAdvertisementActivity.a(this.a) == null);
+          VideoCoverFragment localVideoCoverFragment = PublicAccountAdvertisementActivity.a(this.a);
+          if (paramMessage.arg1 == 1) {}
+          for (;;)
+          {
+            localVideoCoverFragment.c(bool);
+            return;
+            bool = false;
+          }
+        } while (!this.a.isResume());
+        paramMessage = this.a.getSupportFragmentManager().beginTransaction();
+        PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
+        PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.add(2131379403, PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.commit();
+      } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
+      paramMessage = this.a.findViewById(2131370839);
+    } while (paramMessage == null);
+    paramMessage.setVisibility(0);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afjk;
+import afji;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class BaseNewFriendView
   extends FrameLayout
 {
-  public afjk a;
+  public afji a;
   protected Intent a;
   public QQAppInterface a;
   private boolean a;
@@ -26,7 +26,7 @@ public class BaseNewFriendView
   {
     this.b = false;
     if (!a()) {
-      this.jdField_a_of_type_Afjk.b();
+      this.jdField_a_of_type_Afji.b();
     }
   }
   
@@ -34,21 +34,21 @@ public class BaseNewFriendView
   {
     if ((20000 == paramInt1) && (paramInt2 != 0))
     {
-      this.jdField_a_of_type_Afjk.getActivity().setResult(paramInt2, paramIntent);
+      this.jdField_a_of_type_Afji.getActivity().setResult(paramInt2, paramIntent);
       g();
     }
   }
   
   public final void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_Afjk.getActivity().startActivityForResult(paramIntent, paramInt);
+    this.jdField_a_of_type_Afji.getActivity().startActivityForResult(paramIntent, paramInt);
   }
   
-  protected void a(Intent paramIntent, afjk paramafjk)
+  protected void a(Intent paramIntent, afji paramafji)
   {
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_Afjk = paramafjk;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Afjk.a();
+    this.jdField_a_of_type_Afji = paramafji;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Afji.a();
   }
   
   protected final boolean a()
@@ -61,10 +61,10 @@ public class BaseNewFriendView
     this.jdField_a_of_type_Boolean = false;
     if (this.b)
     {
-      this.jdField_a_of_type_Afjk.a();
+      this.jdField_a_of_type_Afji.a();
       return;
     }
-    this.jdField_a_of_type_Afjk.b();
+    this.jdField_a_of_type_Afji.b();
   }
   
   protected void c() {}
@@ -87,7 +87,7 @@ public class BaseNewFriendView
   protected void g()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Afjk.getActivity().finish();
+    this.jdField_a_of_type_Afji.getActivity().finish();
   }
 }
 

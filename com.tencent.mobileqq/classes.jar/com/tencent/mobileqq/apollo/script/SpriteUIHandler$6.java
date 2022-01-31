@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
 import android.text.TextUtils;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class SpriteUIHandler$6
@@ -12,7 +12,7 @@ class SpriteUIHandler$6
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {
-      bcpw.a(BaseApplicationImpl.getContext(), this.a, 1).a();
+      bcql.a(BaseApplicationImpl.getContext(), this.a, 1).a();
     }
   }
 }

@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.minigame.webaudio;
 
-import begy;
-import beka;
-import bexf;
+import behp;
+import bekr;
+import bexw;
 import com.tencent.mobileqq.triton.audio.AudioHandleThread;
 
 public class WebAudioManager$3
   implements Runnable
 {
-  public WebAudioManager$3(bexf parambexf, int paramInt, beka parambeka) {}
+  public WebAudioManager$3(bexw parambexw, int paramInt, bekr parambekr) {}
   
   public void run()
   {
-    if ((AudioNativeManager.isSourceStopped(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_Beka != null))
+    if ((AudioNativeManager.isSourceStopped(this.jdField_a_of_type_Int)) && (this.jdField_a_of_type_Bekr != null))
     {
-      this.jdField_a_of_type_Beka.a.a("onWebAudioSourceEnded", null, 0);
+      this.jdField_a_of_type_Bekr.a.a("onWebAudioSourceEnded", null, 0);
       return;
     }
     AudioHandleThread.getInstance().postDelayed(this, 1000L);

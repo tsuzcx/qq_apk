@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.freshnews;
 
-import ajyc;
+import ajya;
 import android.widget.ImageView;
-import bfmr;
+import bfni;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
 
@@ -14,11 +14,11 @@ class QQInputView$2
   public void run()
   {
     QQInputView.a(this.this$0).setVisibility(8);
-    QQInputView.a(this.this$0).setImageResource(2130846982);
+    QQInputView.a(this.this$0).setImageResource(2130846988);
     if (AppSetting.d) {
-      QQInputView.a(this.this$0).setContentDescription(ajyc.a(2131710393));
+      QQInputView.a(this.this$0).setContentDescription(ajya.a(2131710404));
     }
-    bfmr.a(QQInputView.a(this.this$0));
+    bfni.a(QQInputView.a(this.this$0));
   }
 }
 

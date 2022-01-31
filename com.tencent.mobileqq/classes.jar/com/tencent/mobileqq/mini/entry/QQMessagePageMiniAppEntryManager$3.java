@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akwq;
+import akwp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQMessagePageMiniAppEntryManager$3
@@ -11,14 +11,14 @@ class QQMessagePageMiniAppEntryManager$3
   public void run()
   {
     if (this.val$app == null) {}
-    akwq localakwq;
+    akwp localakwp;
     do
     {
       return;
-      localakwq = (akwq)this.val$app.a(148);
-    } while (localakwq == null);
-    localakwq.a();
-    localakwq.c();
+      localakwp = (akwp)this.val$app.a(148);
+    } while (localakwp == null);
+    localakwp.a();
+    localakwp.c();
   }
 }
 

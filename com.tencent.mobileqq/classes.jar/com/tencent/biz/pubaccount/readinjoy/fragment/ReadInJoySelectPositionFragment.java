@@ -16,36 +16,36 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-import onk;
+import onh;
+import osg;
 import osj;
-import osm;
-import ovo;
-import ovp;
-import ozr;
-import pcn;
+import ovl;
+import ovm;
+import ozo;
+import pck;
+import pcm;
+import pco;
 import pcp;
-import pcr;
-import pcs;
-import qgr;
-import rts;
+import qgo;
+import rtp;
 
 public class ReadInJoySelectPositionFragment
   extends IphoneTitleBarFragment
-  implements pcs, rts
+  implements pcp, rtp
 {
   private SelectPositionModule.PositionData jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData = new SelectPositionModule.PositionData();
   private ReadInJoySelectPositionHeader jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader;
   private WordNavView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<pcp> jdField_a_of_type_JavaUtilList;
-  private pcn jdField_a_of_type_Pcn;
-  private pcr jdField_a_of_type_Pcr;
+  private List<pcm> jdField_a_of_type_JavaUtilList;
+  private pck jdField_a_of_type_Pck;
+  private pco jdField_a_of_type_Pco;
   
   private void a()
   {
     this.vg.a(true);
     setTitle("城市");
-    if (ThemeUtil.isInNightMode(onk.a())) {
+    if (ThemeUtil.isInNightMode(onh.a())) {
       View.inflate(getActivity(), 2131559985, this.titleRoot);
     }
   }
@@ -54,7 +54,7 @@ public class ReadInJoySelectPositionFragment
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if ((((pcp)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != 1) || (!((pcp)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))) {}
+      if ((((pcm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != 1) || (!((pcm)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))) {}
     }
     for (;;)
     {
@@ -70,13 +70,13 @@ public class ReadInJoySelectPositionFragment
   {
     if (this.mContentView != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364219));
+      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131364218));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView = ((WordNavView)this.mContentView.findViewById(2131368070));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView.setOnTouchingWordChangedListener(new ovo(this));
-      this.jdField_a_of_type_Pcn = new pcn(getActivity());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetWordNavView.setOnTouchingWordChangedListener(new ovl(this));
+      this.jdField_a_of_type_Pck = new pck(getActivity());
       c();
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Pcn);
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new ovp(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Pck);
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new ovm(this));
     }
   }
   
@@ -89,7 +89,7 @@ public class ReadInJoySelectPositionFragment
   
   private void d()
   {
-    Object localObject = osj.a().a();
+    Object localObject = osg.a().a();
     if (localObject != null)
     {
       SelectPositionModule.PositionData localPositionData = ((SelectPositionModule)localObject).c();
@@ -105,8 +105,8 @@ public class ReadInJoySelectPositionFragment
       if (localObject != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader.setGPSCity(((SelectPositionModule.PositionData)localObject).cityGPS);
       }
-      this.jdField_a_of_type_Pcr = new pcr(this);
-      this.jdField_a_of_type_Pcr.a();
+      this.jdField_a_of_type_Pco = new pco(this);
+      this.jdField_a_of_type_Pco.a();
       return;
       label82:
       if (localObject != null) {
@@ -128,32 +128,32 @@ public class ReadInJoySelectPositionFragment
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.cityCode == null) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.cityCode.equals(paramPositionData.cityCode)))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.copy(paramPositionData);
-      SelectPositionModule localSelectPositionModule = osj.a().a();
+      SelectPositionModule localSelectPositionModule = osg.a().a();
       if (localSelectPositionModule != null)
       {
         localSelectPositionModule.a(paramPositionData);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoySelectPositionHeader.setSelectedCity(paramPositionData.city);
       }
-      osj.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
-      paramPositionData = osj.a().a();
+      osg.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
+      paramPositionData = osg.a().a();
       if (paramPositionData != null) {
         paramPositionData.b(41695);
       }
-      osm.a().g(41695);
+      osj.a().g(41695);
     }
     onBackEvent();
   }
   
-  public void a(List<pcp> paramList)
+  public void a(List<pcm> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Pcn.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Pck.a(this.jdField_a_of_type_JavaUtilList);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramList.size())
     {
-      if (((pcp)paramList.get(i)).jdField_a_of_type_Int == 1) {
-        localArrayList.add(((pcp)paramList.get(i)).jdField_a_of_type_JavaLangString);
+      if (((pcm)paramList.get(i)).jdField_a_of_type_Int == 1) {
+        localArrayList.add(((pcm)paramList.get(i)).jdField_a_of_type_JavaLangString);
       }
       i += 1;
     }
@@ -183,7 +183,7 @@ public class ReadInJoySelectPositionFragment
   public void onResume()
   {
     super.onResume();
-    qgr.a(this);
+    qgo.a(this);
   }
 }
 

@@ -1,25 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
 
-class lqi
-  extends Handler
+public class lqi
 {
-  WeakReference<lqh> a;
-  
-  lqi(Looper paramLooper, lqh paramlqh)
+  public static void a(boolean paramBoolean)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramlqh);
+    VideoController.a().k(paramBoolean);
+    if (VideoController.a().j() == VideoController.r)
+    {
+      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
+      lts.a();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
   {
-    lqh locallqh = (lqh)this.a.get();
-    if (locallqh != null) {
-      locallqh.a(paramMessage);
-    }
+    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
+        break;
+      }
+    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
+    return false;
+    return false;
+  }
+  
+  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
+  {
+    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
+        break;
+      }
+    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
+    return false;
+    return false;
   }
 }
 

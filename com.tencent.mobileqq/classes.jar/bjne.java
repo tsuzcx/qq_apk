@@ -1,13 +1,14 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.support.annotation.CallSuper;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.METHOD})
-public @interface bjne
+public class bjne
+  extends bjow
 {
-  int a();
+  @CallSuper
+  public void b()
+  {
+    super.b();
+    bjnf.a().a(this);
+  }
 }
 
 

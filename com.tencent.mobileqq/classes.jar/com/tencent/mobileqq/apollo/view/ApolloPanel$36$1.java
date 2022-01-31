@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajqy;
+import ajqw;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ApolloPanel$36$1
   implements Runnable
 {
-  public ApolloPanel$36$1(ajqy paramajqy) {}
+  public ApolloPanel$36$1(ajqw paramajqw) {}
   
   public void run()
   {

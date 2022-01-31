@@ -1,275 +1,66 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
 public class apih
+  implements apkr
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private apii jdField_a_of_type_Apii;
-  private apkm jdField_a_of_type_Apkm;
-  protected apkn a;
-  private apmx jdField_a_of_type_Apmx;
-  private apos jdField_a_of_type_Apos;
-  private apqn jdField_a_of_type_Apqn;
+  public apih(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public apih(Activity paramActivity, apkm paramapkm, apii paramapii)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Apkm = paramapkm;
-    this.jdField_a_of_type_Apii = paramapii;
-  }
-  
-  private boolean e()
-  {
-    if (this.jdField_a_of_type_Apmx != null)
-    {
-      int i = this.jdField_a_of_type_Apmx.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("FileBrowserManager<FileAssistant>", 1, "refreshFileView. currentType[" + this.jdField_a_of_type_Int + "] fileType[" + i + "]");
-      }
-      if (this.jdField_a_of_type_Int != i)
-      {
-        if (this.jdField_a_of_type_Apos != null) {
-          this.jdField_a_of_type_Apos.i();
-        }
-        switch (i)
-        {
-        default: 
-          this.jdField_a_of_type_Apos = new appk(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Apos.a(this.jdField_a_of_type_Apkm);
-          this.jdField_a_of_type_Apos.a(this.jdField_a_of_type_AndroidOsBundle);
-          this.jdField_a_of_type_Apos.a(this.jdField_a_of_type_Apkn);
-          this.jdField_a_of_type_Apos.a();
-          this.jdField_a_of_type_Apqn = this.jdField_a_of_type_Apos.a();
-          this.jdField_a_of_type_Int = i;
-          return true;
-          this.jdField_a_of_type_Apos = new apom(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new apox(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new appd(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new appp(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new apqa(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new appj(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new apph(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new appc(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-          continue;
-          this.jdField_a_of_type_Apos = new apoo(this.jdField_a_of_type_Apmx, this.jdField_a_of_type_AndroidAppActivity);
-        }
-      }
-      this.jdField_a_of_type_Apos.a();
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileBrowserManager<FileAssistant>", 2, "initFileViewer error : model is null");
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Apmx != null) {
-      return this.jdField_a_of_type_Apmx.e();
-    }
-    return -1;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Apmx != null) {
-      return this.jdField_a_of_type_Apmx.c();
-    }
-    return 0L;
-  }
-  
-  public amgw a()
-  {
-    if (this.jdField_a_of_type_Apmx != null) {
-      return this.jdField_a_of_type_Apmx.a();
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Apos != null) {
-      return this.jdField_a_of_type_Apos.a();
-    }
-    return "";
-  }
-  
+  @TargetApi(14)
   public void a()
   {
-    if (this.jdField_a_of_type_Apmx != null) {
-      this.jdField_a_of_type_Apmx.l();
-    }
-    if (this.jdField_a_of_type_Apos != null) {
-      this.jdField_a_of_type_Apos.l();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_Apos != null) {
-      this.jdField_a_of_type_Apos.a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    if (this.jdField_a_of_type_Apos != null) {
-      this.jdField_a_of_type_Apos.a(paramConfiguration);
-    }
-  }
-  
-  public void a(apkn paramapkn)
-  {
-    this.jdField_a_of_type_Apkn = paramapkn;
-  }
-  
-  public boolean a()
-  {
-    int i = this.jdField_a_of_type_Apmx.e();
-    return (i == 3) || (i == 9) || (i == 7) || (i == 10) || (i == 6);
-  }
-  
-  public boolean a(ViewGroup paramViewGroup, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    boolean bool = e();
-    if ((bool) && (paramViewGroup != null) && (paramLayoutParams != null))
+    if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      paramViewGroup.removeAllViews();
-      paramViewGroup.addView(this.jdField_a_of_type_Apqn.a(), paramLayoutParams);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131375494);
+      localRelativeLayout.setFitsSystemWindows(true);
+      localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.a), 0, 0);
     }
-    return bool;
   }
   
-  public boolean a(ViewGroup paramViewGroup, ViewGroup.LayoutParams paramLayoutParams, int paramInt, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileBrowserManager<FileAssistant>", 1, "FileBrowserManager init.");
-    }
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    if (this.jdField_a_of_type_Apmx == null)
+    FileBrowserActivity.a(this.a, (TextView)this.a.findViewById(2131368472));
+    FileBrowserActivity.a(this.a).setTextSize(1, 19.0F);
+    FileBrowserActivity.a(this.a).setText(this.a.a.a());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    FileBrowserActivity.a(this.a, paramBoolean);
+    View localView = this.a.findViewById(2131375332);
+    if (!FileBrowserActivity.a(this.a))
     {
-      this.jdField_a_of_type_Apmx = this.jdField_a_of_type_Apii.a();
-      this.jdField_a_of_type_Apmx.a(this.jdField_a_of_type_Apkm);
-      this.jdField_a_of_type_Apmx.e(paramInt);
-      this.jdField_a_of_type_Apmx.a(paramBundle);
-    }
-    boolean bool2 = e();
-    boolean bool1;
-    if ((this.jdField_a_of_type_Apqn == null) || (this.jdField_a_of_type_Apos == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileBrowserManager<FileAssistant>", 2, "create file view error");
-      }
-      bool1 = false;
-    }
-    do
-    {
-      do
+      localView.setVisibility(0);
+      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
       {
-        return bool1;
-        bool1 = bool2;
-      } while (paramViewGroup == null);
-      bool1 = bool2;
-    } while (paramLayoutParams == null);
-    paramViewGroup.removeAllViews();
-    paramViewGroup.addView(this.jdField_a_of_type_Apqn.a(), paramLayoutParams);
-    return bool2;
-  }
-  
-  public ArrayList<bbje>[] a()
-  {
-    if ((this.jdField_a_of_type_Apmx != null) && (this.jdField_a_of_type_Apmx.k())) {
-      return this.jdField_a_of_type_Apmx.a();
+        int i = this.a.getResources().getColor(2131166910);
+        this.a.mSystemBarComp.setStatusColor(i);
+        this.a.mSystemBarComp.setStatusBarColor(i);
+        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130845305));
+        }
+      }
+      this.a.getWindow().setFlags(0, 1024);
+      return;
     }
-    return null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apmx != null) {
-      this.jdField_a_of_type_Apmx.j();
-    }
-    if (this.jdField_a_of_type_Apos != null) {
-      this.jdField_a_of_type_Apos.j();
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Apos != null) {
-      return this.jdField_a_of_type_Apos.b();
-    }
-    return false;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Apmx != null) {
-      this.jdField_a_of_type_Apmx.a();
-    }
-    if (this.jdField_a_of_type_Apos != null) {
-      this.jdField_a_of_type_Apos.k();
-    }
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_Apos != null) {
-      return this.jdField_a_of_type_Apos.a();
-    }
-    return false;
-  }
-  
-  public void d()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileBrowserManager<FileAssistant><FileAssistant>", 1, "FileBrowserManager Finish");
-    }
-    if (this.jdField_a_of_type_Apmx != null)
+    localView.setVisibility(8);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
     {
-      this.jdField_a_of_type_Apmx.f_();
-      this.jdField_a_of_type_Apmx = null;
+      this.a.mSystemBarComp.setStatusColor(0);
+      this.a.mSystemBarComp.setStatusBarColor(0);
+      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+        this.a.mSystemBarComp.setStatusBarDrawable(null);
+      }
     }
-    if (this.jdField_a_of_type_Apos != null)
-    {
-      this.jdField_a_of_type_Apos.i();
-      this.jdField_a_of_type_Apos = null;
-    }
-    if (this.jdField_a_of_type_Apqn != null) {
-      this.jdField_a_of_type_Apqn = null;
-    }
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Apmx != null) && (this.jdField_a_of_type_Apmx.j() != 0);
-  }
-  
-  public void e()
-  {
-    if ((this.jdField_a_of_type_Apmx != null) && ((this.jdField_a_of_type_Apqn instanceof SimpleFileViewer))) {
-      ((SimpleFileViewer)this.jdField_a_of_type_Apqn).g(this.jdField_a_of_type_Apmx.b());
-    }
+    this.a.getWindow().setFlags(1024, 1024);
   }
 }
 

@@ -3,14 +3,14 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgyt;
+import bgzk;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class QZoneShareData
   implements Parcelable
 {
-  public static final Parcelable.Creator<QZoneShareData> CREATOR = new bgyt();
+  public static final Parcelable.Creator<QZoneShareData> CREATOR = new bgzk();
   public int a;
   public long a;
   public String a;

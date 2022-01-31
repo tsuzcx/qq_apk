@@ -1,21 +1,38 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-class sec
-  implements View.OnSystemUiVisibilityChangeListener
+public class sec
+  extends NativeGifImage
 {
-  sec(sdz paramsdz) {}
+  private int jdField_a_of_type_Int = 3;
+  private sed jdField_a_of_type_Sed;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public sec(File paramFile, boolean paramBoolean, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
+    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Sed = null;
+  }
+  
+  public void a(sed paramsed)
+  {
+    this.jdField_a_of_type_Sed = paramsed;
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
     {
-      sdv.a(this.a.a).getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      if (this.jdField_a_of_type_Sed != null) {
+        this.jdField_a_of_type_Sed.a();
+      }
       return;
     }
+    super.executeNewTask();
   }
 }
 

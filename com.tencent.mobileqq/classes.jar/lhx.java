@@ -1,23 +1,45 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+
 public class lhx
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
-  
-  public lhx()
+  public lhx(MagicFaceDataEntity paramMagicFaceDataEntity, Looper paramLooper)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 3;
+    super(paramLooper);
   }
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
+    lcg.c("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (this.a.a != 1);
+          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
+          return;
+        } while (this.a.a != 0);
+        this.a.a = 1;
+        this.a.c();
+        return;
+      } while (this.a.a != 1);
+      this.a.a = 0;
+      this.a.d();
+      return;
+    } while (this.a.a != 1);
+    paramMessage = (Integer)paramMessage.obj;
+    this.a.a(paramMessage.intValue());
   }
 }
 

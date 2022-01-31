@@ -1,24 +1,32 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-
 public class uvf
-  extends wdw
 {
-  private static final int[] a = { 2131691507 };
-  private static final int[] f = { 2131165530 };
-  private static final int[] g = { 2131369915 };
-  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298773) };
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public uvf()
+  public void a()
   {
-    super(1, 1, h, -1, g, a, f);
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
   }
   
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  public void a(uvf paramuvf)
   {
-    paramArrayOfbfvo[0].a = 0;
-    paramArrayOfbfvo[0].b = 0;
+    if (paramuvf.a != null) {
+      this.a = paramuvf.a;
+    }
+    if (paramuvf.b != null) {
+      this.b = paramuvf.b;
+    }
+    if (paramuvf.c != null) {
+      this.c = paramuvf.c;
+    }
+    if (paramuvf.d != null) {
+      this.d = paramuvf.d;
+    }
   }
 }
 

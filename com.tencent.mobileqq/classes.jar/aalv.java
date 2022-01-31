@@ -1,64 +1,42 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 
 public class aalv
-  extends AccountObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aalv(aals paramaals) {}
+  public aalv(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void onGlobalLayout()
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), aals.a(this.a), paramString2, paramString1 }));
-    }
-    this.a.c = false;
-    aals.a(this.a);
-    if (aals.a(this.a) != null)
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
     {
-      paramString1 = new Intent(aals.a(this.a), LoginActivity.class);
-      paramString1.putExtra("uin", aals.a(this.a));
-      paramString1.putExtra("tab_index", MainFragment.b);
-      paramString1.addFlags(131072);
-      aals.a(this.a).startActivity(paramString1);
-      aals.a(this.a).finish();
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
     }
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
     }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    this.a.c = false;
-    aals.a(this.a);
-    aals.a(this.a).a.post(new AutoLoginHelper.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    this.a.c = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
-    }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

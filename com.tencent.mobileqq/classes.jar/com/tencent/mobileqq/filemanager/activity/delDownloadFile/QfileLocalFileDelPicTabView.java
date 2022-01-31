@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import aopw;
-import aoqa;
-import aork;
-import apeh;
-import apxv;
-import axqw;
+import aoqb;
+import aoqf;
+import aorp;
+import apel;
+import apxx;
+import axqy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class QfileLocalFileDelPicTabView
   extends QfileLocalFilePicTabView
-  implements aoqa
+  implements aoqf
 {
   int jdField_a_of_type_Int = 0;
   LinkedHashMap<String, List<FileInfo>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
@@ -35,7 +35,7 @@ public class QfileLocalFileDelPicTabView
   List<FileInfo> jdField_c_of_type_JavaUtilList = new ArrayList();
   boolean jdField_c_of_type_Boolean = false;
   
-  public QfileLocalFileDelPicTabView(Context paramContext, List<apxv> paramList, boolean paramBoolean)
+  public QfileLocalFileDelPicTabView(Context paramContext, List<apxx> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_d_of_type_Int = 1;
@@ -104,11 +104,11 @@ public class QfileLocalFileDelPicTabView
     }
   }
   
-  public aopw a()
+  public aoqb a()
   {
-    aork localaork = new aork(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, 0);
-    localaork.a(this);
-    return localaork;
+    aorp localaorp = new aorp(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, 0);
+    localaorp.a(this);
+    return localaorp;
   }
   
   public String a(FileInfo paramFileInfo)
@@ -187,7 +187,7 @@ public class QfileLocalFileDelPicTabView
       this.jdField_c_of_type_JavaUtilList.clear();
       i();
       l2 /= 1048576L;
-      axqw.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", 3, 0, "" + l1, "" + l2, "", "");
+      axqy.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", 3, 0, "" + l1, "" + l2, "", "");
       return;
     }
   }
@@ -201,8 +201,8 @@ public class QfileLocalFileDelPicTabView
   {
     this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    long l = apeh.d() / 1048576L;
-    axqw.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", 3, 0, "" + this.jdField_a_of_type_Int, "" + l, "", "");
+    long l = apel.d() / 1048576L;
+    axqy.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", 3, 0, "" + this.jdField_a_of_type_Int, "" + l, "", "");
     super.d();
   }
   
@@ -218,7 +218,7 @@ public class QfileLocalFileDelPicTabView
     boolean bool = false;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.l();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Apxt);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Apxv);
     if (this.jdField_a_of_type_JavaUtilList != null) {}
     for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
     {
@@ -250,12 +250,12 @@ public class QfileLocalFileDelPicTabView
       i();
       setSelect(0);
       return;
-      axqw.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", 3, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", 3, 0, "", "", "", "");
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.put(ajyc.a(2131709687), this.jdField_a_of_type_JavaUtilList);
+        this.jdField_c_of_type_JavaUtilLinkedHashMap.put(ajya.a(2131709698), this.jdField_a_of_type_JavaUtilList);
         continue;
-        axqw.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", 3, 0, "", "", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", 3, 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
       }
     }

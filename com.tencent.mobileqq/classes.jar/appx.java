@@ -1,31 +1,65 @@
 import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.6.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class appx
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class appx
+  implements View.OnClickListener
 {
-  appx(appp paramappp) {}
+  appx(appt paramappt) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    long l1 = 0L;
-    this.a.jdField_a_of_type_Apqx.i(false);
-    long l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileBrowserPresenter<FileAssistant>", 4, "Video Total Time:" + l2);
-    }
-    paramTVK_IMediaPlayer = this.a;
-    if (l2 < 0L) {}
-    for (;;)
+    switch (paramView.getId())
     {
-      appp.a(paramTVK_IMediaPlayer, l1);
-      this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoFilePresenter.6.1(this));
-      return;
-      l1 = l2;
     }
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+      if (appt.a(this.a))
+      {
+        appt.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        apue.a("0X8004BE5");
+        this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(appt.a(this.a));
+        appt.a(this.a);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Aprb.d(appt.a(this.a));
+        return;
+        appt.b(this.a);
+      }
+      appt.a(this.a);
+      paramView = this.a.jdField_a_of_type_Apnb.a();
+      if (paramView != null)
+      {
+        paramView = paramView.iterator();
+        while (paramView.hasNext())
+        {
+          bbjs localbbjs = (bbjs)paramView.next();
+          if ((!TextUtils.isEmpty(localbbjs.a)) && (localbbjs.a.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692474)))) {
+            axqy.b(null, "dc00898", "", "", "0X800A60D", "0X800A60D", 0, 0, "", "", "", "");
+          }
+        }
+      }
+      this.a.jdField_a_of_type_Aprb.a(this.a.jdField_a_of_type_Apnb.a());
+      this.a.jdField_a_of_type_Aprb.e(true);
+      return;
+      this.a.n();
+      return;
+      i = this.a.jdField_a_of_type_Apnb.i();
+      j = this.a.jdField_a_of_type_Apnb.h();
+    } while ((i != 6) || (j != 1) || (this.a.jdField_a_of_type_Apnb.a() == null));
+    this.a.jdField_a_of_type_Apnb.a().a();
   }
 }
 

@@ -1,27 +1,93 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class aojn
-  extends aojk
+  extends ampa<aoju>
 {
-  public aojn(aojj paramaojj, aoix paramaoix)
+  public static aoju a()
   {
-    super(paramaojj, paramaoix);
-    this.jdField_a_of_type_Int = 0;
+    return (aoju)ampl.a().a(532);
+  }
+  
+  public int a()
+  {
+    return 532;
+  }
+  
+  @NonNull
+  public aoju a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aoju();
+  }
+  
+  @Nullable
+  public aoju a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
+      }
+      return aoju.a(paramArrayOfamph[0]);
+    }
+    return null;
+  }
+  
+  public Class<aoju> a()
+  {
+    return aoju.class;
   }
   
   public void a(int paramInt)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_Aoix.a();
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "onReqFailed " + paramInt);
+    }
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void a(aoju paramaoju)
   {
-    super.a(paramInt1, paramInt2);
-    switch (paramInt1)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-    default: 
-      return false;
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaoju == null) {
+        break label73;
+      }
     }
-    this.jdField_a_of_type_Aojj.a(2, paramInt2);
+    label73:
+    for (paramaoju = paramaoju.toString();; paramaoju = " empty")
+    {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, paramaoju);
+      paramaoju = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramaoju instanceof QQAppInterface)) {
+        ((aoeu)((QQAppInterface)paramaoju).getManager(264)).b();
+      }
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return true;
   }
 }

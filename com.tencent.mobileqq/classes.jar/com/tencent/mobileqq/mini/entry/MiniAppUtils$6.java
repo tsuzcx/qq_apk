@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bbca;
-import bcgs;
+import bbco;
+import bchg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONException;
@@ -21,37 +21,37 @@ final class MiniAppUtils$6
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    bcgs localbcgs;
-    if ((paramMessage.obj instanceof bcgs))
+    bchg localbchg;
+    if ((paramMessage.obj instanceof bchg))
     {
-      localbcgs = (bcgs)paramMessage.obj;
-      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbcgs });
-      if (localbcgs.jdField_c_of_type_Int == 0) {
+      localbchg = (bchg)paramMessage.obj;
+      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbchg });
+      if (localbchg.jdField_c_of_type_Int == 0) {
         for (;;)
         {
           JSONObject localJSONObject;
           try
           {
             localJSONObject = new JSONObject();
-            if (localbcgs.d == null) {
+            if (localbchg.d == null) {
               break label194;
             }
             if (this.val$returnAsJSON)
             {
-              localJSONObject.put("data", new JSONObject(localbcgs.d));
-              localJSONObject.put("statusCode", localbcgs.b);
-              localJSONObject.put("wnsCode", localbcgs.jdField_c_of_type_Int);
-              localJSONObject.put("header", localbcgs.jdField_c_of_type_JavaLangString);
+              localJSONObject.put("data", new JSONObject(localbchg.d));
+              localJSONObject.put("statusCode", localbchg.b);
+              localJSONObject.put("wnsCode", localbchg.jdField_c_of_type_Int);
+              localJSONObject.put("header", localbchg.jdField_c_of_type_JavaLangString);
               this.val$listener.onReceiveResult(true, localJSONObject);
               return;
             }
-            if (localbcgs.a)
+            if (localbchg.a)
             {
-              paramMessage = bbca.encodeToString(localbcgs.d.getBytes(), 0);
+              paramMessage = bbco.encodeToString(localbchg.d.getBytes(), 0);
               localJSONObject.put("data", paramMessage);
               continue;
             }
-            paramMessage = localbcgs.d;
+            paramMessage = localbchg.d;
           }
           catch (JSONException paramMessage)
           {
@@ -68,7 +68,7 @@ final class MiniAppUtils$6
     }
     try
     {
-      paramMessage.put("wnsCode", localbcgs.jdField_c_of_type_Int);
+      paramMessage.put("wnsCode", localbchg.jdField_c_of_type_Int);
       label225:
       this.val$listener.onReceiveResult(false, paramMessage);
       return;

@@ -1,11 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bkww
+public abstract interface bkww
 {
-  public ImageView a;
-  public TextView a;
-  public bbje a;
+  public abstract void D();
+  
+  public abstract void E();
+  
+  public abstract void F();
+  
+  public abstract void G();
+  
+  public abstract void H();
+  
+  public abstract boolean d();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void q();
 }
 
 

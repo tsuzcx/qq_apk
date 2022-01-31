@@ -1,236 +1,192 @@
 import android.content.Context;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
 
 public class oyh
-  extends oya
+  extends oyp
+  implements View.OnClickListener, oyi
 {
-  private oyr jdField_a_of_type_Oyr;
-  private boolean jdField_a_of_type_Boolean;
+  View a;
+  public ImageView a;
+  public TextView a;
+  public KandianUrlImageView a;
+  public VideoViewGroup a;
+  public qtv a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public KandianUrlImageView b;
+  public View c;
+  public TextView c;
+  public KandianUrlImageView c;
+  public View d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
   
-  private BaseArticleInfo a(int paramInt)
+  public oyh(Context paramContext, oye paramoye)
   {
-    return a().b(paramInt);
-  }
-  
-  public static void a(Context paramContext, ImageView paramImageView, qty paramqty)
-  {
-    if (paramImageView == null) {
-      return;
-    }
-    ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
-    localLayoutParams.width = ((int)omu.a(paramContext, paramqty));
-    paramImageView.setLayoutParams(localLayoutParams);
-  }
-  
-  private static BaseArticleInfo b(oyh paramoyh, View paramView)
-  {
-    if ((paramoyh == null) || (paramView == null) || (!(paramView.getTag() instanceof oyl))) {
-      return null;
-    }
-    paramView = (oyl)paramView.getTag();
-    if (paramView != null) {
-      return paramoyh.a(paramView.a());
-    }
-    return null;
-  }
-  
-  private static oyl b(View paramView)
-  {
-    if ((paramView == null) || (!(paramView.getTag() instanceof oyl))) {
-      return null;
-    }
-    return (oyl)paramView.getTag();
-  }
-  
-  private static void b(oyh paramoyh, BaseArticleInfo paramBaseArticleInfo, VideoColumnInfo paramVideoColumnInfo, int paramInt, String paramString)
-  {
-    int k = paramoyh.a().a();
-    String str = onk.c(paramBaseArticleInfo);
-    int i;
-    if (((ArticleInfo)paramBaseArticleInfo).hasChannelInfo())
-    {
-      i = paramBaseArticleInfo.mChannelInfoId;
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleFriendLikeText)) {
-        break label217;
-      }
-    }
-    label217:
-    for (int j = 0;; j = 1)
-    {
-      paramoyh = new qze(onk.a(paramBaseArticleInfo.mAlgorithmID, onk.a(paramBaseArticleInfo), 0, i, j, bbev.h(paramoyh.a()), str, paramBaseArticleInfo.mStrCircleId, paramBaseArticleInfo.innerUniqueID, onk.e(paramBaseArticleInfo), 409409, (ArticleInfo)paramBaseArticleInfo));
-      paramoyh.h(paramBaseArticleInfo.innerUniqueID).a(k).e(paramBaseArticleInfo.mStrategyId).h(npx.a).i(409409).k(paramBaseArticleInfo.mVideoAdsJumpType).l(paramBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(onk.w(paramBaseArticleInfo))).a(paramBaseArticleInfo.videoReportInfo).S(paramInt).r(paramString).f(paramBaseArticleInfo);
-      if (paramVideoColumnInfo != null) {
-        paramoyh.ab(paramVideoColumnInfo.a);
-      }
-      noo.a(null, "", "0X8007625", "0X8007625", 0, 0, "2", "", "", paramoyh.a().a(), false);
-      return;
-      i = 0;
-      break;
-    }
+    super(paramContext, paramoye);
   }
   
   public int a()
   {
-    return 0;
+    return this.jdField_a_of_type_Int;
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    int i = a(paramInt).intValue();
-    Object localObject;
-    rfn localrfn;
-    if ((paramView == null) || (!(paramView.getTag() instanceof oys)))
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560095, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131375493);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377350));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371742));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365420));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367776));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramViewGroup.findViewById(2131379015));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371103));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371104));
+    this.e = ((TextView)paramViewGroup.findViewById(2131368849));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131377400);
+    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131377425);
+    this.jdField_d_of_type_AndroidViewView = ((ViewGroup)paramViewGroup.findViewById(2131363338));
+    this.f = ((TextView)paramViewGroup.findViewById(2131366198));
+    this.g = ((TextView)paramViewGroup.findViewById(2131366183));
+    this.h = ((TextView)paramViewGroup.findViewById(2131364470));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131378625));
+    this.i = ((TextView)paramViewGroup.findViewById(2131366196));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131366199));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131368568));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setTag(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setOnClickListener(this);
+    this.jdField_d_of_type_AndroidViewView.setTag(this);
+    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.setTag(this);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    paramViewGroup.setTag(this);
+    return paramViewGroup;
+  }
+  
+  public qtv a()
+  {
+    return this.jdField_a_of_type_Qtv;
+  }
+  
+  public boolean a(View paramView)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (!qoi.a(oye.a(this.jdField_a_of_type_Oye, paramView))) {}
+    int j;
+    float f1;
+    do
     {
-      localObject = a(paramInt, paramView, paramViewGroup, i);
-      paramView = ((oys)localObject).a(paramInt, paramViewGroup);
-      ((oys)localObject).f = paramView;
-      ((oys)localObject).a = paramInt;
-      paramView.setTag(localObject);
-      paramView.setTag(2131368790, a());
-      paramViewGroup = new pdo(a(), a().a(), a(), a(), a().a(), a().a());
-      paramView.setTag(2131379210, paramViewGroup);
-      localrfn = new rfn(paramView);
-      paramView.setTag(2131379213, localrfn);
-      paramView.addOnAttachStateChangeListener(new oyi(this, (oys)localObject));
-    }
-    BaseArticleInfo localBaseArticleInfo;
-    for (;;)
-    {
-      localBaseArticleInfo = a(paramInt);
-      ((oys)localObject).a(a());
-      if (localBaseArticleInfo != null) {
-        break;
-      }
-      QLog.w("ReadInJoyBaseAdapter", 2, "article is null, return");
-      return localrfn.a();
-      localObject = (oys)paramView.getTag();
-      ((oys)localObject).a = paramInt;
-      paramViewGroup = (pda)paramView.getTag(2131379210);
-      localrfn = (rfn)paramView.getTag(2131379213);
-    }
-    long l;
-    if (i == 46)
-    {
-      l = System.currentTimeMillis();
-      a().a((oyn)localObject, localBaseArticleInfo);
-      sai.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configTwoItemVideo", System.currentTimeMillis() - l);
-    }
-    for (;;)
-    {
-      localObject = null;
-      if (paramInt < d() - 1) {
-        localObject = (ArticleInfo)a(paramInt + 1);
-      }
-      localObject = new pbi(a(), (ArticleInfo)localBaseArticleInfo, i, b(), c(), paramInt, a(), d(), (ArticleInfo)localObject, a());
-      paramView.setTag(2131379208, localObject);
-      paramViewGroup.a(localrfn, (pax)localObject, i);
-      return localrfn.a();
-      if (i == 4)
+      do
       {
-        l = System.currentTimeMillis();
-        a().a((oyo)localObject, localBaseArticleInfo, paramInt);
-        sai.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configVideoItemUI", System.currentTimeMillis() - l);
-        if ((a() != null) && (a().a() != null) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)))
+        return false;
+        j = qoi.b();
+      } while (j == 0);
+      f1 = omr.a(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "BigImgVideoItemViewHolder() canAutoPlay percent:" + f1);
+      }
+      if (j == 1)
+      {
+        if ((qkr.a().f()) && (f1 >= 70.0F)) {}
+        for (;;)
         {
-          localObject = (AdvertisementInfo)localBaseArticleInfo;
-          a().a().a((AdvertisementInfo)localObject, a().a());
+          return bool1;
+          bool1 = false;
         }
       }
-      else if (i == 70)
-      {
-        l = System.currentTimeMillis();
-        a().a((oyu)localObject, localBaseArticleInfo, paramInt);
-        sai.a("ReadInJoyBaseAdapter", String.valueOf(i), "getProteusNormalView.configWeishiGridTwoItemUI", System.currentTimeMillis() - l);
-      }
-      else if (i == 118)
-      {
-        a().a((oym)localObject, localBaseArticleInfo, paramInt);
-      }
-      else if (i == 119)
-      {
-        a().a((oyo)localObject, localBaseArticleInfo, paramInt);
-        localObject = (oyp)localObject;
-        ((oyp)localObject).a(localBaseArticleInfo.mVideoColumnInfo);
-        ((oyp)localObject).a(localBaseArticleInfo);
-        oyp.a((oyp)localObject).setTag(localObject);
-        oyp.a((oyp)localObject).setTag(localObject);
-      }
-      else if (i == 6)
-      {
-        a().a((oyk)localObject, localBaseArticleInfo, paramInt);
-      }
-      else if (i == 128)
-      {
-        a().a((oyj)localObject, localBaseArticleInfo, paramInt);
-      }
+    } while (j != 2);
+    if (f1 >= 70.0F) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
     }
   }
   
-  public Boolean a()
+  public void onClick(View paramView)
   {
-    if ((a().a() != null) && (a().a().a() != null) && (a().a().a().a()))
+    switch (paramView.getId())
     {
-      a().a().a().g();
-      return Boolean.valueOf(true);
     }
-    return super.a();
-  }
-  
-  public oys a(int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
-  {
-    paramView = a();
-    switch (paramInt2)
+    do
     {
-    default: 
-      return new oyo(paramView, this);
-    case 4: 
-      return new oyo(paramView, this);
-    case 46: 
-      return new oyn(paramView, this);
-    case 70: 
-      return new oyu(paramView, this);
-    case 118: 
-      return new oym(paramView, this);
-    case 119: 
-      return new oyp(paramView, this);
-    case 6: 
-      return new oyk(paramView, this);
-    }
-    return new oyj(paramView, this);
-  }
-  
-  public void a(View paramView, ListView paramListView)
-  {
-    this.jdField_a_of_type_Oyr = new oyr(this, null);
-    this.jdField_a_of_type_Boolean = bhvh.d();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt == 4) || (paramInt == 46) || (paramInt == 70) || (paramInt == 118) || (paramInt == 119) || (paramInt == 6) || (paramInt == 128);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return (onk.a(a(paramInt1))) && (b() == 56) && (this.jdField_a_of_type_Boolean) && (paramInt2 == 4);
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Oyr != null) {
-      this.jdField_a_of_type_Oyr.removeCallbacksAndMessages(null);
-    }
+      Object localObject1;
+      Object localObject2;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                localObject1 = oye.a(this.jdField_a_of_type_Oye, paramView);
+              } while (localObject1 == null);
+              if ((qoi.c() == 1) && (this.jdField_a_of_type_Oye.a().a() != null))
+              {
+                localObject2 = this.jdField_a_of_type_Oye.a().a();
+                if ((localObject2 != null) && (((qtr)localObject2).a() != null))
+                {
+                  ((qtr)localObject2).a().c(paramView);
+                  return;
+                }
+              }
+              localObject2 = oye.a(paramView);
+            } while (localObject2 == null);
+            if (onh.a(paramView.getContext(), (BaseArticleInfo)localObject1))
+            {
+              this.jdField_a_of_type_Oye.a().b(((oyi)localObject2).a(), (BaseArticleInfo)localObject1);
+              onh.a(paramView.getContext(), (BaseArticleInfo)localObject1, onh.i(((BaseArticleInfo)localObject1).getInnerUniqueID()));
+              return;
+            }
+            if (qoi.b(this.jdField_a_of_type_Oye.a(), (BaseArticleInfo)localObject1))
+            {
+              this.jdField_a_of_type_Oye.a().b(((oyi)localObject2).a(), (BaseArticleInfo)localObject1);
+              return;
+            }
+          } while (localObject2 == null);
+          this.jdField_a_of_type_Oye.a().a(((oyi)localObject2).a(), (BaseArticleInfo)localObject1, false, true);
+          return;
+          localObject1 = oye.a(paramView);
+        } while (localObject1 == null);
+        localObject2 = this.jdField_a_of_type_Oye.a().b(this.jdField_a_of_type_Int);
+        if (onh.a(paramView.getContext(), (BaseArticleInfo)localObject2))
+        {
+          this.jdField_a_of_type_Oye.a().b(((oyi)localObject1).a(), (BaseArticleInfo)localObject2);
+          onh.a(paramView.getContext(), (BaseArticleInfo)localObject2, onh.i(((BaseArticleInfo)localObject2).getInnerUniqueID()));
+          return;
+        }
+        if (qoi.b(this.jdField_a_of_type_Oye.a(), (BaseArticleInfo)localObject2))
+        {
+          this.jdField_a_of_type_Oye.a().b(((oyi)localObject1).a(), (BaseArticleInfo)localObject2);
+          return;
+        }
+      } while (localObject1 == null);
+      this.jdField_a_of_type_Oye.a().a(((oyi)localObject1).a(), (BaseArticleInfo)localObject2, false, true);
+      return;
+      paramView = this.jdField_a_of_type_Oye.a().b(this.jdField_a_of_type_Int);
+    } while ((paramView == null) || (paramView.familyCommentInfo == null));
+    onh.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramView.familyCommentInfo.b);
+    QLog.d("ReadInJoyBaseAdapter", 2, "familyJumpUrl " + paramView.familyCommentInfo.b);
   }
 }
 

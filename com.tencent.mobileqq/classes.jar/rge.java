@@ -1,21 +1,20 @@
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
 public class rge
-  extends LinkMovementMethod
+  extends RecyclerViewWithHeaderFooterFix
 {
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public rge(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
   {
-    boolean bool = super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0)) {
-      Selection.removeSelection(paramSpannable);
-    }
-    paramTextView.setPressed(false);
-    paramTextView.setFocusable(false);
-    return bool;
+    super(paramContext);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bkju;
-import bkjv;
+import bkkl;
+import bkkm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,21 +10,21 @@ import java.util.List;
 public class VideoFrameLoader$3
   implements Runnable
 {
-  public VideoFrameLoader$3(bkju parambkju) {}
+  public VideoFrameLoader$3(bkkl parambkkl) {}
   
   public void run()
   {
-    if (bkju.b(this.this$0) != bkju.a(this.this$0).size())
+    if (bkkl.b(this.this$0) != bkkl.a(this.this$0).size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + bkju.b(this.this$0) + "-" + bkju.a(this.this$0).size());
+        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + bkkl.b(this.this$0) + "-" + bkkl.a(this.this$0).size());
       }
-      if ((!bkju.c(this.this$0)) && (bkju.a(this.this$0).size() == 0))
+      if ((!bkkl.c(this.this$0)) && (bkkl.a(this.this$0).size() == 0))
       {
-        bkju.a(this.this$0, true);
+        bkkl.a(this.this$0, true);
         this.this$0.b();
-        bkju.a(this.this$0, new RetrieverDecodeRunnable(bkju.a(this.this$0), bkju.c(this.this$0), bkju.d(this.this$0), bkju.b(this.this$0), bkju.a(this.this$0), bkju.a(this.this$0), bkju.b(this.this$0), this.this$0));
-        ThreadManager.post(bkju.a(this.this$0), 10, null, true);
+        bkkl.a(this.this$0, new RetrieverDecodeRunnable(bkkl.a(this.this$0), bkkl.c(this.this$0), bkkl.d(this.this$0), bkkl.b(this.this$0), bkkl.a(this.this$0), bkkl.a(this.this$0), bkkl.b(this.this$0), this.this$0));
+        ThreadManager.post(bkkl.a(this.this$0), 10, null, true);
         if (QLog.isColorLevel()) {
           QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
         }
@@ -33,10 +33,10 @@ public class VideoFrameLoader$3
     for (;;)
     {
       return;
-      if (bkju.a(this.this$0) != null) {}
-      for (bkjv localbkjv = (bkjv)bkju.a(this.this$0).get(); localbkjv != null; localbkjv = null)
+      if (bkkl.a(this.this$0) != null) {}
+      for (bkkm localbkkm = (bkkm)bkkl.a(this.this$0).get(); localbkkm != null; localbkkm = null)
       {
-        localbkjv.c();
+        localbkkm.c();
         return;
       }
     }

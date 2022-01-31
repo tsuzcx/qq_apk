@@ -1,220 +1,166 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import mqq.app.AppRuntime;
 
 public class aqmo
-  extends aqmj
 {
-  public int a(AIOPicData paramAIOPicData, String paramString)
+  protected int a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  public boolean b;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  public boolean c;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  
+  public aqmo(Intent paramIntent)
   {
-    if ((paramString == null) || (paramAIOPicData == null)) {}
-    do
-    {
-      return 0;
-      if ((paramAIOPicData.a != null) && (paramString.contains(paramAIOPicData.a))) {
-        return 1;
-      }
-      if ((paramAIOPicData.b != null) && (paramString.contains(paramAIOPicData.b))) {
-        return 2;
-      }
-    } while ((paramAIOPicData.c == null) || (!paramString.contains(paramAIOPicData.c)));
-    return 4;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = true;
+    a(paramIntent);
   }
   
-  public Drawable a(AIOPicData paramAIOPicData)
+  private void a(Intent paramIntent)
   {
-    URLDrawable localURLDrawable = null;
-    File localFile1 = a(paramAIOPicData, 2);
-    File localFile2 = a(paramAIOPicData, 4);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = aywk.a;
-    localURLDrawableOptions.mFailedDrawable = aywk.a;
-    if ((localFile1 != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOPicData, 2)) != null)) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOPicData, 2), localURLDrawableOptions);
-    }
-    do
+    Bundle localBundle = paramIntent.getExtras();
+    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_APP_SHARE_PIC", false);
+    this.jdField_e_of_type_Boolean = localBundle.getBoolean("extra.IS_APOLLO");
+    this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
+    this.jdField_b_of_type_JavaLangString = localBundle.getString("extra.GROUP_CODE");
+    this.f = localBundle.getBoolean("extra.IS_FROM_MULTI_MSG");
+    this.jdField_a_of_type_Long = localBundle.getLong("key_multi_forward_seq", 0L);
+    this.jdField_b_of_type_Int = localBundle.getInt("forward_source_uin_type", -1);
+    this.jdField_c_of_type_JavaLangString = localBundle.getString("uin");
+    this.jdField_d_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    boolean bool;
+    if (TextUtils.isEmpty(localBundle.getString("babyq_video_type")))
     {
-      return localURLDrawable;
-      if ((localFile2 != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOPicData, 4)) != null)) {
-        return URLDrawable.getDrawable(a(paramAIOPicData, 4), localURLDrawableOptions);
+      bool = false;
+      this.g = bool;
+      this.jdField_a_of_type_Int = localBundle.getInt("extra.EXTRA_ENTRANCE");
+      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 4) && (!localBundle.getBoolean("is_one_item"))) {
+        break label272;
       }
-    } while (a(paramAIOPicData, 1) == null);
-    paramAIOPicData = URLDrawable.getDrawable(a(paramAIOPicData, 1), localURLDrawableOptions);
-    paramAIOPicData.downloadImediatly();
-    return paramAIOPicData;
-  }
-  
-  public File a(AIOPicData paramAIOPicData, int paramInt)
-  {
-    if (paramAIOPicData == null) {
-      return null;
+      bool = true;
+      label168:
+      this.h = bool;
+      if (!paramIntent.getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) {
+        break label277;
+      }
     }
-    switch (paramInt)
+    label272:
+    label277:
+    for (int j = 1;; j = 0)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      paramAIOPicData = null;
-    }
-    while ((paramAIOPicData != null) && (!paramAIOPicData.equals("I:N")))
-    {
-      paramAIOPicData = new File(paramAIOPicData);
-      if (!paramAIOPicData.exists()) {
-        break;
-      }
-      return paramAIOPicData;
-      paramAIOPicData = paramAIOPicData.a;
-      continue;
-      paramAIOPicData = paramAIOPicData.b;
-      continue;
-      paramAIOPicData = paramAIOPicData.c;
-      continue;
-      paramAIOPicData = paramAIOPicData.jdField_d_of_type_JavaLangString;
-    }
-  }
-  
-  public String a(AIOPicData paramAIOPicData, int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramAIOPicData == null)
-    {
-      localObject1 = "";
-      return localObject1;
-    }
-    String str;
-    switch (paramInt)
-    {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      str = null;
-    }
-    for (;;)
-    {
-      localObject1 = localObject2;
-      if (str == null) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (str.equals("I:N")) {
-        break;
-      }
-      if (paramAIOPicData.jdField_d_of_type_Int != 3) {
-        break label152;
-      }
-      paramAIOPicData = new File(str);
-      try
-      {
-        paramAIOPicData = paramAIOPicData.toURI().toURL().toString();
-        return paramAIOPicData;
-      }
-      catch (MalformedURLException paramAIOPicData)
-      {
-        paramAIOPicData.printStackTrace();
-        return null;
-      }
-      str = paramAIOPicData.a;
-      continue;
-      str = paramAIOPicData.b;
-      continue;
-      str = paramAIOPicData.c;
-      continue;
-      str = paramAIOPicData.jdField_d_of_type_JavaLangString;
-    }
-    label152:
-    if (!str.startsWith("/")) {
-      return "file:/" + str;
-    }
-    if (str.startsWith("//")) {
-      return "file:" + str;
-    }
-    return "file:" + str;
-  }
-  
-  public void a(AIOPicData paramAIOPicData, int paramInt, String paramString)
-  {
-    if ("I:E".equals(paramString)) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
-    {
+      this.jdField_c_of_type_Int = j;
+      this.jdField_d_of_type_Int = localBundle.getInt("extra.AIO_CURRENT_PANEL_STATE", -3321);
+      this.jdField_e_of_type_Int = localBundle.getInt("extra.MOBILE_QQ_PROCESS_ID", -2147483648);
+      this.i = localBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY", false);
+      this.jdField_a_of_type_Boolean = localBundle.getBoolean("is_ReplyMsg_From_Same_Session", true);
+      this.jdField_c_of_type_Boolean = localBundle.getBoolean(bgky.jdField_b_of_type_JavaLangString, true);
+      this.jdField_b_of_type_Boolean = localBundle.getBoolean(bgky.jdField_a_of_type_JavaLangString);
       return;
-      paramAIOPicData.e = true;
-      return;
-      paramAIOPicData.f = true;
-      return;
-      paramAIOPicData.jdField_d_of_type_Boolean = true;
-      return;
-      switch (paramInt)
-      {
-      case 3: 
-      case 5: 
-      case 6: 
-      case 7: 
-      default: 
-        return;
-      case 1: 
-        paramAIOPicData.a = paramString;
-        return;
-      case 2: 
-        paramAIOPicData.b = paramString;
-      }
-    } while ((paramAIOPicData.j) || (!new File(paramAIOPicData.a + "_hd").exists()));
-    paramAIOPicData.a += "_hd";
-    return;
-    paramAIOPicData.c = paramString;
-    return;
-    paramAIOPicData.jdField_d_of_type_JavaLangString = paramString;
+      bool = true;
+      break;
+      bool = false;
+      break label168;
+    }
   }
   
-  public boolean a(AIOPicData paramAIOPicData, int paramInt)
+  public int a()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (paramAIOPicData == null) {
-      bool1 = false;
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            switch (paramInt)
-            {
-            case 3: 
-            default: 
-              return false;
-            case 1: 
-              bool1 = bool2;
-            }
-          } while (!paramAIOPicData.a.equals("I:N"));
-          return false;
-          bool1 = bool2;
-        } while (!paramAIOPicData.b.equals("I:N"));
-        return false;
-        bool1 = bool2;
-      } while (paramAIOPicData.jdField_d_of_type_Int == 3);
-      bool1 = bool2;
-    } while (!paramAIOPicData.c.equals("I:N"));
-    return false;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean c()
+  {
+    return this.f;
+  }
+  
+  public String d()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public boolean d()
+  {
+    return this.g;
+  }
+  
+  public boolean e()
+  {
+    return this.h;
+  }
+  
+  public boolean f()
+  {
+    return this.i;
+  }
+  
+  public boolean g()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1);
+  }
+  
+  public boolean h()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

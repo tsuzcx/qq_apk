@@ -1,19 +1,11 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class afjd
-  implements View.OnClickListener
+public abstract interface afjd
 {
-  afjd(afjb paramafjb, afjh paramafjh) {}
+  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Afjb.a != null)
-    {
-      int i = this.jdField_a_of_type_Afjh.getAdapterPosition();
-      this.jdField_a_of_type_Afjb.a.a(paramView, this.jdField_a_of_type_Afjh, i);
-    }
-  }
+  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

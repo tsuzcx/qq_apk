@@ -4,8 +4,8 @@ import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
 import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -93,17 +93,17 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     if ((getContext() == null) || (getGuardInstruction() == null)) {
       return;
     }
-    bbgg localbbgg = bbcv.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
+    bbgu localbbgu = bbdj.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
     if (getPositiveDialogAction() != null) {
-      localbbgg.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
+      localbbgu.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
     }
     if (getNegativeDialogAction() != null) {
-      localbbgg.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
+      localbbgu.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
     }
-    localbbgg.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.2(this));
-    localbbgg.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this));
-    localbbgg.setCancelable(false);
-    localbbgg.show();
+    localbbgu.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.2(this));
+    localbbgu.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this));
+    localbbgu.setCancelable(false);
+    localbbgu.show();
   }
   
   public Context getContext()

@@ -1,179 +1,25 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.pb.adv_report.MobileAdvReportReq;
-import cooperation.vip.pb.vac_adv_get.QzoneBusiMsg;
-import cooperation.vip.pb.vac_adv_get.VacAdvReq;
-import cooperation.vip.pb.vac_adv_get.VacAdvRsp;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import android.content.Context;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bhzf
-  extends MSFServlet
+  extends ApolloLottieAnim
 {
-  public static void a(long paramLong, int paramInt1, String paramString, int paramInt2, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
+  private Downloader a;
+  
+  public bhzf(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    try
-    {
-      paramString = BaseApplicationImpl.getApplication().getRuntime();
-      vac_adv_get.VacAdvReq localVacAdvReq = new vac_adv_get.VacAdvReq();
-      localVacAdvReq.adv_pos.set(paramInt1);
-      localVacAdvReq.qq.set(paramLong);
-      localVacAdvReq.qzone_busi_info.set(new vac_adv_get.QzoneBusiMsg());
-      if (paramDeviceInfo != null) {
-        localVacAdvReq.device_info.set(paramDeviceInfo);
-      }
-      paramDeviceInfo = new NewIntent(paramString.getApplication(), bhzf.class);
-      paramDeviceInfo.putExtra("data", bblm.a(localVacAdvReq.toByteArray()));
-      paramDeviceInfo.putExtra("cmd", "MobileAdv.AdvGet");
-      paramDeviceInfo.putExtra("gdt_adv_business_type", paramInt2);
-      paramString.startServlet(paramDeviceInfo);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp error" + paramString.toString());
-    }
+    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
   }
   
-  public static void a(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      adv_report.MobileAdvReportReq localMobileAdvReportReq = new adv_report.MobileAdvReportReq();
-      PBStringField localPBStringField = localMobileAdvReportReq.recomm_cookie;
-      String str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      localPBStringField.set(str);
-      localMobileAdvReportReq.adv_pos.set(paramInt1);
-      localMobileAdvReportReq.action_type.set(paramInt2);
-      localMobileAdvReportReq.action_value.set(paramInt3);
-      localMobileAdvReportReq.feed_index.set(paramInt4);
-      if (paramDeviceInfo != null) {
-        localMobileAdvReportReq.device_info.set(paramDeviceInfo);
-      }
-      localMobileAdvReportReq.qq.set(paramLong);
-      paramString = new NewIntent(localAppRuntime.getApplication(), bhzf.class);
-      paramString.putExtra("data", bblm.a(localMobileAdvReportReq.toByteArray()));
-      paramString.putExtra("cmd", "MobileAdv.AdvReport");
-      QZLog.i("GdtGeneralServlet", " @getGdtInfo sendGdtADVReportReq");
-      localAppRuntime.startServlet(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.e("GdtGeneralServlet", "sendGdtADVReportReq error" + paramString.toString());
-    }
-  }
-  
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    int i = -1;
-    try
-    {
-      if (paramFromServiceMsg.isSuccess())
-      {
-        int j = paramFromServiceMsg.getWupBuffer().length - 4;
-        byte[] arrayOfByte = new byte[j];
-        bbmj.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, j);
-        paramFromServiceMsg = new vac_adv_get.VacAdvRsp();
-        paramFromServiceMsg.mergeFrom(arrayOfByte);
-        if (paramIntent != null) {
-          i = paramIntent.getIntExtra("gdt_adv_business_type", -1);
-        }
-        if (paramFromServiceMsg.err_code.get() == 0)
-        {
-          bhzc.a().a(i, paramFromServiceMsg);
-          return;
-        }
-        QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp err_code =" + paramFromServiceMsg.err_code.get() + "erro_msg =" + paramFromServiceMsg.err_msg.get());
-        return;
-      }
-    }
-    catch (Exception paramIntent)
-    {
-      QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp error" + paramIntent.toString());
-    }
-  }
-  
-  public void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    try
-    {
-      if (paramFromServiceMsg.isSuccess())
-      {
-        int i = paramFromServiceMsg.getWupBuffer().length - 4;
-        bbmj.a(new byte[i], 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      }
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      QZLog.e("GdtGeneralServlet", "onGdtADVReportRsp error" + paramIntent.toString());
-    }
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtGeneralServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str2;
-    label151:
-    do
-    {
-      do
-      {
-        return;
-        str2 = paramFromServiceMsg.getServiceCmd();
-      } while (str2 == null);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label151;
-        }
-      }
-      for (String str1 = "";; str1 = "not")
-      {
-        QLog.d("GdtGeneralServlet", 2, str1 + " success");
-        if (!str2.equals("MobileAdv.AdvGet")) {
-          break;
-        }
-        a(paramIntent, paramFromServiceMsg);
-        return;
-      }
-    } while (!str2.equals("MobileAdv.AdvReport"));
-    b(paramIntent, paramFromServiceMsg);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    String str = paramIntent.getStringExtra("cmd");
-    long l = paramIntent.getLongExtra("timeout", 10000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtGeneralServlet", 2, "onSend exit cmd=" + str);
-    }
+    this.jdField_a_of_type_Int = 1;
+    paramString3 = new bhzg(this, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
   }
 }
 

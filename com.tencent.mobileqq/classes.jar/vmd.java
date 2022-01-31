@@ -1,12 +1,18 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.List;
 
-final class vmd
-  implements FilenameFilter
+public class vmd
+  extends ssh
 {
-  public boolean accept(File paramFile, String paramString)
+  public final int a;
+  @NonNull
+  public final List<tee> a;
+  
+  public vmd(int paramInt, @NonNull List<tee> paramList)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
   }
 }
 

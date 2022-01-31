@@ -1,18 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.common.app.AppInterface;
 
-public final class alxl
-  implements Parcelable.Creator<POIInfo>
+public class alxl
 {
-  public POIInfo a(Parcel paramParcel)
+  public static final String a;
+  public alxn[] a;
+  
+  static
   {
-    return new POIInfo(paramParcel);
+    jdField_a_of_type_JavaLangString = alxo.class.getSimpleName() + "." + alxl.class.getSimpleName();
   }
   
-  public POIInfo[] a(int paramInt)
+  public alxl()
   {
-    return new POIInfo[paramInt];
+    this.jdField_a_of_type_ArrayOfAlxn = new alxn[6];
+  }
+  
+  public alxn a(AppInterface paramAppInterface, int paramInt)
+  {
+    int i;
+    if (paramInt >= 0)
+    {
+      i = paramInt;
+      if (paramInt <= 6) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfAlxn[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
+      {
+      default: 
+        paramAppInterface = (AppInterface)localObject;
+      }
+    }
+    for (;;)
+    {
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new alxm();
+      }
+      this.jdField_a_of_type_ArrayOfAlxn[i] = localObject;
+      return localObject;
+      paramAppInterface = new luj();
+      continue;
+      paramAppInterface = new akyj();
+    }
   }
 }
 

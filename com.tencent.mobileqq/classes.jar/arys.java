@@ -9,21 +9,17 @@ public class arys
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    PoiSlideBottomPanel.h(this.a, false);
-    PoiSlideBottomPanel.i(this.a, false);
-    PoiSlideBottomPanel.j(this.a, false);
-    if (PoiSlideBottomPanel.k(this.a) != null) {
-      PoiSlideBottomPanel.l(this.a).hidePanelFinish();
+    PoiSlideBottomPanel.c(this.a, false);
+    if (PoiSlideBottomPanel.e(this.a) != null) {
+      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    PoiSlideBottomPanel.e(this.a, false);
-    PoiSlideBottomPanel.f(this.a, false);
-    PoiSlideBottomPanel.g(this.a, false);
-    if (PoiSlideBottomPanel.i(this.a) != null) {
-      PoiSlideBottomPanel.j(this.a).hidePanelFinish();
+    PoiSlideBottomPanel.b(this.a, false);
+    if (PoiSlideBottomPanel.c(this.a) != null) {
+      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
     }
   }
   
@@ -31,7 +27,7 @@ public class arys
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    PoiSlideBottomPanel.d(this.a, true);
+    PoiSlideBottomPanel.a(this.a, true);
   }
 }
 

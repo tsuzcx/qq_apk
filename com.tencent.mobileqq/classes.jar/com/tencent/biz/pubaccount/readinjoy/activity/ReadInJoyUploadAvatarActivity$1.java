@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajyc;
+import ajya;
 import android.app.ProgressDialog;
 import android.widget.TextView;
-import nxh;
+import nxe;
 
 public class ReadInJoyUploadAvatarActivity$1
   implements Runnable
@@ -19,8 +19,8 @@ public class ReadInJoyUploadAvatarActivity$1
     this.this$0.a.setCancelable(true);
     this.this$0.a.show();
     this.this$0.a.setContentView(2131559386);
-    ((TextView)this.this$0.a.findViewById(2131371557)).setText(ajyc.a(2131712955));
-    this.this$0.a.setOnCancelListener(new nxh(this));
+    ((TextView)this.this$0.a.findViewById(2131371557)).setText(ajya.a(2131712966));
+    this.this$0.a.setOnCancelListener(new nxe(this));
   }
 }
 

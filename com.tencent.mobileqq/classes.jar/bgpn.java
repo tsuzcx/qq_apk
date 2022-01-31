@@ -1,17 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class bgpn
-  implements View.OnClickListener
+class bgpn
+  implements DialogInterface.OnClickListener
 {
-  bgpn(Dialog paramDialog) {}
+  bgpn(bgpj parambgpj) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    this.a.b = true;
+    bgpj.a(this.a, 1);
+    bgpj.c(this.a);
   }
 }
 

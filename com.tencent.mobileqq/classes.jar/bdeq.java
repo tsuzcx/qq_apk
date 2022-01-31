@@ -1,9 +1,8 @@
-import com.tencent.tmassistant.common.jce.StatReportRequest;
-import com.tencent.tmassistant.common.jce.StatReportResponse;
+import android.graphics.Bitmap;
 
 public abstract interface bdeq
 {
-  public abstract void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2);
+  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2);
 }
 
 

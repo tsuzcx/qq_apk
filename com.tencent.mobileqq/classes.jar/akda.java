@@ -8,6 +8,7 @@ final class akda
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    akcy.a("1");
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }

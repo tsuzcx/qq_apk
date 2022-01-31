@@ -1,6 +1,6 @@
 public abstract interface bhgq
 {
-  public abstract void b();
+  public abstract void a();
 }
 
 

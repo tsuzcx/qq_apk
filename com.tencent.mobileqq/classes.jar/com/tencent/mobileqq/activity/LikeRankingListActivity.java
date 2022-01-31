@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abli;
-import ablj;
-import ablk;
-import ajtk;
-import ajtq;
-import ajxn;
-import ajzs;
+import able;
+import ablf;
+import ablg;
+import ajti;
+import ajto;
+import ajxl;
+import ajzq;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -27,19 +27,19 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
-import auux;
-import auvd;
-import axqw;
-import baxk;
-import baxl;
-import bazo;
-import bbdr;
-import bbqs;
-import bfmo;
-import bfnk;
+import auuz;
+import auvf;
+import axqy;
+import baxy;
+import baxz;
+import bbac;
+import bbef;
+import bbrg;
+import bfnf;
 import bfob;
-import bfpc;
-import bgxo;
+import bfos;
+import bfpt;
+import bgyf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -58,25 +58,25 @@ import java.util.List;
 
 public class LikeRankingListActivity
   extends BaseActivity
-  implements Handler.Callback, View.OnClickListener, Animation.AnimationListener, baxl, bfob, bfpc
+  implements Handler.Callback, View.OnClickListener, Animation.AnimationListener, baxz, bfos, bfpt
 {
   public int a;
   long jdField_a_of_type_Long = 0L;
-  public ablk a;
-  ajtk jdField_a_of_type_Ajtk;
-  ajtq jdField_a_of_type_Ajtq = new ablj(this);
-  public ajxn a;
-  public ajzs a;
+  public ablg a;
+  ajti jdField_a_of_type_Ajti;
+  ajto jdField_a_of_type_Ajto = new ablf(this);
+  public ajxl a;
+  public ajzq a;
   ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
   View jdField_a_of_type_AndroidViewView;
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public baxk a;
-  bfnk jdField_a_of_type_Bfnk = new bfnk(this);
+  public baxy a;
+  bfob jdField_a_of_type_Bfob = new bfob(this);
   public Card a;
   public LikeRankingInfo a;
-  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new abli(this);
+  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new able(this);
   CircleProgress jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
   PullToZoomListView jdField_a_of_type_ComTencentWidgetPullToZoomListView;
   ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
@@ -111,7 +111,7 @@ public class LikeRankingListActivity
     {
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849538);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849547);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_AndroidContentResColorStateList);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_AndroidContentResColorStateList);
       return;
@@ -125,12 +125,12 @@ public class LikeRankingListActivity
   
   void a(Card paramCard)
   {
-    this.jdField_a_of_type_Bfnk.post(new LikeRankingListActivity.5(this, paramCard));
-    if (bfmo.a(this.app, paramCard)) {
-      if (!bfmo.b(this.app, paramCard)) {
-        if ((paramCard.lCurrentBgId == 1600L) || (paramCard.lCurrentBgId == 160L) || (auvd.a(paramCard.lCurrentStyleId)))
+    this.jdField_a_of_type_Bfob.post(new LikeRankingListActivity.5(this, paramCard));
+    if (bfnf.a(this.app, paramCard)) {
+      if (!bfnf.b(this.app, paramCard)) {
+        if ((paramCard.lCurrentBgId == 1600L) || (paramCard.lCurrentBgId == 160L) || (auvf.a(paramCard.lCurrentStyleId)))
         {
-          bfmo.c(this.app, paramCard);
+          bfnf.c(this.app, paramCard);
           b(paramCard);
         }
       }
@@ -142,7 +142,7 @@ public class LikeRankingListActivity
       {
         return;
         this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-        ((bbqs)this.app.getManager(235)).a.a(this.app, "card." + paramCard.lCurrentBgId);
+        ((bbrg)this.app.getManager(235)).a.a(this.app, "card." + paramCard.lCurrentBgId);
         return;
         b(paramCard);
         return;
@@ -158,7 +158,7 @@ public class LikeRankingListActivity
       } while ((this.jdField_c_of_type_JavaLangString != null) || (this.jdField_f_of_type_Int != 0));
       this.jdField_c_of_type_JavaLangString = paramCard;
       this.jdField_f_of_type_Int = ((Integer)localObject).intValue();
-      this.jdField_a_of_type_Bfnk.post(new LikeRankingListActivity.6(this));
+      this.jdField_a_of_type_Bfob.post(new LikeRankingListActivity.6(this));
       return;
     } while (paramCard.equals(this.jdField_c_of_type_JavaLangString));
     if ((((Integer)localObject).intValue() == 0) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (this.jdField_f_of_type_Int == 0) && (QLog.isColorLevel())) {
@@ -166,7 +166,7 @@ public class LikeRankingListActivity
     }
     this.jdField_c_of_type_JavaLangString = paramCard;
     this.jdField_f_of_type_Int = ((Integer)localObject).intValue();
-    this.jdField_a_of_type_Bfnk.post(new LikeRankingListActivity.7(this));
+    this.jdField_a_of_type_Bfob.post(new LikeRankingListActivity.7(this));
   }
   
   public void a(String paramString)
@@ -192,14 +192,14 @@ public class LikeRankingListActivity
       return;
     }
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.a(true);
-    Bitmap localBitmap2 = this.jdField_a_of_type_Baxk.a(1, paramString);
+    Bitmap localBitmap2 = this.jdField_a_of_type_Baxy.a(1, paramString);
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null)
     {
-      if (!this.jdField_a_of_type_Baxk.a()) {
-        this.jdField_a_of_type_Baxk.a(paramString, 1, true);
+      if (!this.jdField_a_of_type_Baxy.a()) {
+        this.jdField_a_of_type_Baxy.a(paramString, 1, true);
       }
-      localBitmap1 = bbdr.a();
+      localBitmap1 = bbef.a();
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -220,7 +220,7 @@ public class LikeRankingListActivity
       this.jdField_c_of_type_JavaLangString = paramCard.backgroundUrl;
       if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L))
       {
-        str = bazo.a(this.app.getApp(), paramCard.strDrawerCardUrl);
+        str = bbac.a(this.app.getApp(), paramCard.strDrawerCardUrl);
         if (QLog.isColorLevel()) {
           QLog.d("LikeRankingListActivity", 2, "updateCoverCard type personal card, path" + str);
         }
@@ -235,14 +235,14 @@ public class LikeRankingListActivity
         if (localObject == null) {
           break label264;
         }
-        this.jdField_a_of_type_Bfnk.postDelayed(new LikeRankingListActivity.8(this, (Bitmap)localObject), 100L);
+        this.jdField_a_of_type_Bfob.postDelayed(new LikeRankingListActivity.8(this, (Bitmap)localObject), 100L);
         return;
-        str = auux.b(this.app.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId);
+        str = auuz.b(this.app.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId);
         break;
         paramCard = (Card)localObject;
         try
         {
-          localObject = bbdr.a(str, null);
+          localObject = bbef.a(str, null);
           paramCard = (Card)localObject;
           BaseApplicationImpl.sImageCache.put(str + "#rank", localObject);
         }
@@ -265,17 +265,17 @@ public class LikeRankingListActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131560820);
+    setContentView(2131560819);
     if (getIntent().getIntExtra("param_from", 0) == 1) {
       this.app.reportClickEvent("dc00898", "0X8007619");
     }
-    this.jdField_a_of_type_Ajzs = ((ajzs)this.app.getManager(186));
-    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo = this.jdField_a_of_type_Ajzs.a();
-    this.jdField_a_of_type_Ajxn = ((ajxn)this.app.getManager(51));
-    this.jdField_a_of_type_Baxk = new baxk(this, this.app);
-    this.jdField_a_of_type_Baxk.a(this);
-    this.jdField_a_of_type_Ajtk = ((ajtk)this.app.a(2));
-    addObserver(this.jdField_a_of_type_Ajtq);
+    this.jdField_a_of_type_Ajzq = ((ajzq)this.app.getManager(186));
+    this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo = this.jdField_a_of_type_Ajzq.a();
+    this.jdField_a_of_type_Ajxl = ((ajxl)this.app.getManager(51));
+    this.jdField_a_of_type_Baxy = new baxy(this, this.app);
+    this.jdField_a_of_type_Baxy.a(this);
+    this.jdField_a_of_type_Ajti = ((ajti)this.app.a(2));
+    addObserver(this.jdField_a_of_type_Ajto);
     this.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131377439));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(4);
@@ -286,30 +286,30 @@ public class LikeRankingListActivity
     this.jdField_a_of_type_AndroidContentResColorStateList = paramBundle.getColorStateList(2131165300);
     this.jdField_b_of_type_AndroidContentResColorStateList = paramBundle.getColorStateList(2131166851);
     findViewById(2131368429).setOnClickListener(this);
-    this.jdField_d_of_type_Int = bazo.c(this);
-    this.jdField_e_of_type_Int = bazo.d(this);
-    this.jdField_a_of_type_ComTencentWidgetPullToZoomListView = ((PullToZoomListView)findViewById(2131369612));
+    this.jdField_d_of_type_Int = bbac.c(this);
+    this.jdField_e_of_type_Int = bbac.d(this);
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomListView = ((PullToZoomListView)findViewById(2131369611));
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setNeedCheckSpringback(true);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setOverScrollDistance(0);
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131560821, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368545));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_b_of_type_AndroidViewView.findViewById(2131368546));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131560820, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368544));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_b_of_type_AndroidViewView.findViewById(2131368545));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(2.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(0, 2131167087, 100, 16763714);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(100.0F);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131364806);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368544));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378115));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131368523);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131378084);
+    this.jdField_f_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131364805);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368543));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378118));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131368522);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131378087);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.addHeaderView(this.jdField_b_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setHeaderImage(this.jdField_f_of_type_AndroidViewView);
-    this.jdField_a_of_type_Ablk = new ablk(this);
-    this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setAdapter(this.jdField_a_of_type_Ablk);
+    this.jdField_a_of_type_Ablg = new ablg(this);
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setAdapter(this.jdField_a_of_type_Ablg);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomListView.setOnItemClickListener(this);
-    this.jdField_e_of_type_AndroidViewView = findViewById(2131365675);
+    this.jdField_e_of_type_AndroidViewView = findViewById(2131365674);
     DisplayMetrics localDisplayMetrics = paramBundle.getDisplayMetrics();
     int i = paramBundle.getDimensionPixelSize(2131298865);
     this.jdField_c_of_type_Int = (paramBundle.getDimensionPixelSize(2131297389) - i - (int)(localDisplayMetrics.density * 66.0F));
@@ -324,17 +324,17 @@ public class LikeRankingListActivity
     if ((this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday > 0)) {
       a(this.jdField_a_of_type_JavaLangString);
     }
-    paramBundle = this.jdField_a_of_type_Ajzs.a();
+    paramBundle = this.jdField_a_of_type_Ajzq.a();
     if ((paramBundle != null) && (paramBundle.size() > 0))
     {
       a(String.valueOf(((LikeRankingInfo)paramBundle.get(0)).uin));
-      this.jdField_a_of_type_Ablk.a(paramBundle, false);
+      this.jdField_a_of_type_Ablg.a(paramBundle, false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ablk.a = true;
-      this.jdField_a_of_type_Ablk.notifyDataSetChanged();
-      this.jdField_a_of_type_Ajtk.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 500);
+      this.jdField_a_of_type_Ablg.a = true;
+      this.jdField_a_of_type_Ablg.notifyDataSetChanged();
+      this.jdField_a_of_type_Ajti.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 500);
       ThreadManager.post(new LikeRankingListActivity.3(this), 5, null, false);
       ((VasQuickUpdateManager)this.app.getManager(184)).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
       return true;
@@ -345,12 +345,12 @@ public class LikeRankingListActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Ajtq);
-    if (this.jdField_a_of_type_Baxk != null) {
-      this.jdField_a_of_type_Baxk.d();
+    removeObserver(this.jdField_a_of_type_Ajto);
+    if (this.jdField_a_of_type_Baxy != null) {
+      this.jdField_a_of_type_Baxy.d();
     }
     ((VasQuickUpdateManager)this.app.getManager(184)).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-    bgxo.a(this);
+    bgyf.a(this);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -361,7 +361,7 @@ public class LikeRankingListActivity
       return false;
     }
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Ablk.notifyDataSetChanged();
+    this.jdField_a_of_type_Ablg.notifyDataSetChanged();
     return true;
   }
   
@@ -402,7 +402,7 @@ public class LikeRankingListActivity
         paramView = "1";
       }
     }
-    axqw.b(this.app, "dc00898", "", "", "0X8007615", "0X8007615", 0, 0, paramView, "", "", "");
+    axqy.b(this.app, "dc00898", "", "", "0X8007615", "0X8007615", 0, 0, paramView, "", "", "");
     ProfileActivity.b(this, new ProfileActivity.AllInOne(this.jdField_b_of_type_JavaLangString, 1));
   }
   
@@ -418,14 +418,14 @@ public class LikeRankingListActivity
       return;
     }
     long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Bfnk.removeMessages(1);
+    this.jdField_a_of_type_Bfob.removeMessages(1);
     if (l >= 800L)
     {
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Ablk.notifyDataSetChanged();
+      this.jdField_a_of_type_Ablg.notifyDataSetChanged();
       return;
     }
-    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1, 800L - l);
+    this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(1, 800L - l);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -435,7 +435,7 @@ public class LikeRankingListActivity
     {
       return;
       paramInt -= 1;
-    } while ((this.jdField_a_of_type_Int != -1) && (paramInt == this.jdField_a_of_type_Ablk.getCount() - 1));
+    } while ((this.jdField_a_of_type_Int != -1) && (paramInt == this.jdField_a_of_type_Ablg.getCount() - 1));
     if (paramInt == -1)
     {
       paramAdapterView = this.jdField_b_of_type_JavaLangString;
@@ -451,13 +451,13 @@ public class LikeRankingListActivity
             paramView = "1";
           }
         }
-        axqw.b(this.app, "dc00898", "", "", "0X8007616", "0X8007616", 0, 0, paramView, "", "", "");
+        axqy.b(this.app, "dc00898", "", "", "0X8007616", "0X8007616", 0, 0, paramView, "", "", "");
         ProfileActivity.b(this, new ProfileActivity.AllInOne(paramAdapterView, 1));
       }
     }
     else
     {
-      paramAdapterView = this.jdField_a_of_type_Ablk.a(paramInt);
+      paramAdapterView = this.jdField_a_of_type_Ablg.a(paramInt);
       if (paramAdapterView != null) {
         break label148;
       }

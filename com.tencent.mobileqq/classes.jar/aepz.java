@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aepz
-  implements bcij<oidb_0x8ed.RspBody>
+  implements DialogInterface.OnClickListener
 {
-  aepz(aepg paramaepg) {}
+  aepz(aepe paramaepe) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
-  {
-    if ((paramInt == 0) && (this.a.ac))
-    {
-      bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, 2, ajyc.a(2131705116), 0).a();
-      bbjn.e(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      this.a.jdField_a_of_type_Atcf.a(this.a.jdField_a_of_type_AndroidContentContext);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

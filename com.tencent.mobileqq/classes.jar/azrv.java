@@ -1,95 +1,39 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class azrv
-  implements aybx
+  extends VasQuickUpdateManager.CallBacker
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private azru jdField_a_of_type_Azru;
-  private bckb jdField_a_of_type_Bckb = new bckb();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<bcka> jdField_a_of_type_JavaUtilList;
+  azrv(azrn paramazrn) {}
   
-  public azrv(azrl paramazrl, QQAppInterface paramQQAppInterface, azru paramazru)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Azru = paramazru;
-  }
-  
-  private void a(List<bcka> paramList, Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, Rect paramRect, int paramInt1, int paramInt2)
-  {
-    Object localObject = (bcka)paramList.get(0);
-    if (((bcka)localObject).c == 3)
+    if ((paramLong == 25L) && (paramString1.startsWith("groupeffect_item_")) && (paramInt1 == 0))
     {
-      localObject = (bbox)((bcka)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-      if (((bbox)localObject).a == 2) {
-        paramPaint.setColor(((bbox)localObject).b);
+      paramInt1 = azrn.a(paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + paramInt1);
       }
-    }
-    else
-    {
-      paramList = paramList.iterator();
-    }
-    for (;;)
-    {
-      if (!paramList.hasNext()) {
-        break label275;
-      }
-      paramRect = (bcka)paramList.next();
-      switch (paramRect.c)
+      if (paramInt1 > 0)
       {
-      default: 
-        break;
-      case 1: 
-        paramCanvas.drawText(paramRect.jdField_a_of_type_JavaLangString, paramFloat1, paramFloat2 + paramFloat3, paramPaint);
-        paramFloat1 += paramPaint.measureText(paramRect.jdField_a_of_type_JavaLangString);
-        continue;
-        if (((bbox)localObject).a != 3) {
-          break;
+        paramString1 = (azrw)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+        this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+        if (paramString1 == null) {
+          break label154;
         }
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(localAppRuntime instanceof QQAppInterface)) {
-          break;
+        if (balu.a(new File(azrn.jdField_a_of_type_JavaLangString + paramInt1))) {
+          this.a.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.4.1(this, paramInt1, paramString1));
         }
-        paramPaint.setShader(bboe.a((QQAppInterface)localAppRuntime).a(((bbox)localObject).b, paramList, paramFloat1, paramFloat2, paramRect, paramPaint, paramInt1, paramInt2));
-        break;
-      case 2: 
-        paramRect = (aykp)paramRect.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        paramInt1 = paramRect.a().getBounds().height();
-        paramRect.draw(paramCanvas, "", 0, 0, paramFloat1, (int)paramFloat2, (int)(paramInt1 + paramFloat2), (int)(paramInt1 + paramFloat2), paramPaint);
-        paramFloat1 += paramRect.a().getBounds().width();
       }
     }
-    label275:
-    paramPaint.setShader(null);
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint)
-  {
-    return bboe.a(this.jdField_a_of_type_JavaUtilList, paramPaint, this.jdField_a_of_type_AndroidGraphicsRect);
-  }
-  
-  public String a(aybd paramaybd, String paramString)
-  {
-    return paramString.replace("$NICK$", bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azru.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azru.b, 1, 0));
-  }
-  
-  public void a(int paramInt, String paramString, Paint paramPaint)
-  {
-    this.jdField_a_of_type_JavaUtilList = bboe.a(paramInt, paramString, paramPaint, this.jdField_a_of_type_Bckb, 32);
-  }
-  
-  public boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint)
-  {
-    a(this.jdField_a_of_type_JavaUtilList, paramCanvas, paramPaint, paramFloat1, paramFloat2, paramFloat3, this.jdField_a_of_type_AndroidGraphicsRect, paramInt1, paramInt2);
-    return true;
+    return;
+    label154:
+    QLog.e("TroopEnterEffect.Controller", 1, "mResDownloadCallback effectData = null id = " + paramInt1);
   }
 }
 

@@ -1,17 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nuz
-  extends AnimatorListenerAdapter
+  implements TextWatcher
 {
-  public nuz(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2 param2) {}
+  public nuz(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.this$0.a.setVisibility(8);
+    this.a.a(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
   }
 }
 

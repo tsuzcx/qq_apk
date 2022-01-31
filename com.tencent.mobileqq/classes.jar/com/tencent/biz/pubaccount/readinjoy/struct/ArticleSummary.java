@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aukm;
-import qea;
+import auko;
+import qdx;
 
 public class ArticleSummary
-  extends aukm
+  extends auko
 {
   public int adsJumpType;
   public String adsJumpUrl;
@@ -31,7 +31,7 @@ public class ArticleSummary
   public String title;
   public int uint32_adsSource;
   public int videoCommentCount;
-  public qea videoData;
+  public qdx videoData;
   public int videoPlayCount;
   public String videoReportInfo;
   public String videoSubscriptColor;

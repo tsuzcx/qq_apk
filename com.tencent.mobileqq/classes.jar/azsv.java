@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class azsv
-  implements View.OnClickListener
+public abstract interface azsv
 {
-  azsv(azsu paramazsu) {}
+  public abstract void c(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.a.a(paramView);
-  }
+  public abstract int d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract int e();
 }
 
 

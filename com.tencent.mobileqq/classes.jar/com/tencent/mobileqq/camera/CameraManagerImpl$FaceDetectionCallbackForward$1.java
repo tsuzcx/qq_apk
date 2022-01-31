@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.camera;
 
-import amfe;
-import amfp;
+import amfd;
+import amfo;
 import android.hardware.Camera.Face;
 
 public class CameraManagerImpl$FaceDetectionCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$FaceDetectionCallbackForward$1(amfp paramamfp, Camera.Face[] paramArrayOfFace) {}
+  public CameraManagerImpl$FaceDetectionCallbackForward$1(amfo paramamfo, Camera.Face[] paramArrayOfFace) {}
   
   public void run()
   {
-    amfp.a(this.this$0).a(this.a, amfp.a(this.this$0));
+    amfo.a(this.this$0).a(this.a, amfo.a(this.this$0));
   }
 }
 

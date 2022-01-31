@@ -1,34 +1,54 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
 public class arfc
-  extends Handler
+  implements arfm
 {
-  public arfc(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public arfc(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    int i = paramMessage.arg1;
-    if (i < GroupVideoLoadingFragment.a(this.a)) {
-      return;
-    }
-    GroupVideoLoadingFragment.b(this.a, i);
-    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
-    paramMessage = Message.obtain();
-    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
-      i += 1;
-    }
-    for (;;)
+    int k = 1;
+    IVPluginDataReporter localIVPluginDataReporter;
+    int j;
+    if (!bbfj.a(GroupVideoLoadingFragment.a(this.a)))
     {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
+      i = 1;
+      if (!paramBoolean) {
+        break label80;
+      }
+      GroupVideoLoadingFragment.a(this.a, false);
+      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
+      if (!paramBoolean) {
+        break label111;
+      }
+      j = 1;
+      label50:
+      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
+      if (i == 0) {
+        break label116;
+      }
+    }
+    label80:
+    label111:
+    label116:
+    for (int i = k;; i = 0)
+    {
+      localIVPluginDataReporter.opResult(i).report();
       return;
-      i += 8;
+      i = 0;
+      break;
+      if (i != 0) {
+        GroupVideoLoadingFragment.a(this.a, true);
+      }
+      for (;;)
+      {
+        argk.b("2880338");
+        break;
+        GroupVideoLoadingFragment.a(this.a, false);
+      }
+      j = 0;
+      break label50;
     }
   }
 }

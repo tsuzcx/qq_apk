@@ -1,11 +1,4 @@
-import java.util.List;
-
-public abstract interface bkjt
-{
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<Long> paramList);
-}
+public class bkjt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

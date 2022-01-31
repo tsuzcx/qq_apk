@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.limitchat;
 
-import ajxn;
+import ajxl;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -13,8 +13,8 @@ class ExtendFriendLimitChatMatchFragment$5
   {
     if (ExtendFriendLimitChatMatchFragment.a(this.this$0) != null)
     {
-      ajxn localajxn = (ajxn)ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getManager(51);
-      ExtendFriendLimitChatMatchFragment.a(this.this$0, localajxn.b(ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getCurrentAccountUin()));
+      ajxl localajxl = (ajxl)ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getManager(51);
+      ExtendFriendLimitChatMatchFragment.a(this.this$0, localajxl.b(ExtendFriendLimitChatMatchFragment.a(this.this$0).app.getCurrentAccountUin()));
     }
   }
 }

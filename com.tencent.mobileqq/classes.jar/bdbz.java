@@ -1,18 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
 public class bdbz
-  extends AnimatorListenerAdapter
+  implements bdcs
 {
-  public bdbz(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  public bdbz(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.a.l();
   }
 }
 

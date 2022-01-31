@@ -1,9 +1,9 @@
+import android.widget.TextView;
+
 class qhp
-  implements bfps
 {
-  qhp(qhn paramqhn) {}
-  
-  public void a() {}
+  public int a;
+  public TextView a;
 }
 
 

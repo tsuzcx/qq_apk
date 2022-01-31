@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpf;
+import alpe;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ArkAppModuleReg$ModuleQQ$17
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$17(alpf paramalpf, int paramInt, ArrayList paramArrayList) {}
+  public ArkAppModuleReg$ModuleQQ$17(alpe paramalpe, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {

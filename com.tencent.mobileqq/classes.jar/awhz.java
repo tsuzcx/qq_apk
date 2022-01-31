@@ -1,40 +1,21 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener2;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class awhz
-  implements URLDrawable.URLDrawableListener2
+class awhz
+  implements View.OnClickListener
 {
-  awhz(SoftReference paramSoftReference, URLDrawable paramURLDrawable, awib paramawib) {}
+  awhz(awhx paramawhx, awod paramawod) {}
   
-  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {}
-    do
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Awod.d))
     {
-      do
-      {
-        return;
-        paramURLDrawable = (URLImageView)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-      } while (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof GifDrawable));
-      AbstractGifImage localAbstractGifImage = ((GifDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getImage();
-      localAbstractGifImage.reset();
-      localAbstractGifImage.setStrongGIFPlayOnceListener(new awia(this, localAbstractGifImage));
-      paramURLDrawable.setVisibility(0);
-      paramURLDrawable.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    } while (this.jdField_a_of_type_Awib == null);
-    this.jdField_a_of_type_Awib.a();
+      awwa.a(this.jdField_a_of_type_Awhx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Awhx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awod.d);
+      awwa.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_Awhx.jdField_a_of_type_Int) });
+      return;
+    }
+    awwa.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_Awhx.jdField_a_of_type_Int) });
   }
 }
 

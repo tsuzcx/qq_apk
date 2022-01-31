@@ -1,29 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
 
-public class anlo
-  implements Animator.AnimatorListener
+class anlo
+  implements View.OnClickListener
 {
-  public anlo(DataReportViewer paramDataReportViewer) {}
+  anlo(anlm paramanlm, ReportData paramReportData, WindowManager paramWindowManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(0);
-    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
-    paramAnimator.setFillAfter(true);
-    paramAnimator.setDuration(200L);
-    this.a.a.startAnimation(paramAnimator);
-    paramAnimator.setAnimationListener(new anlp(this));
+    paramView = (ClipboardManager)this.jdField_a_of_type_Anlm.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
+    if (paramView != null)
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString()));
+      bcql.a(this.jdField_a_of_type_Anlm.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), ajya.a(2131702774), 0).a();
+    }
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlm.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

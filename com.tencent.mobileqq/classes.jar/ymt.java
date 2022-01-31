@@ -1,174 +1,141 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
+import mqq.app.AppRuntime;
 
-public class ymt
-  extends WebViewPlugin
+public final class ymt
 {
-  public ymt()
+  protected static ymt a;
+  private static String b = "smartdevice::smartdevicereport";
+  public int a;
+  public long a;
+  public String a;
+  
+  protected ymt()
   {
-    this.mPluginNameSpace = "QQConnect";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  private HashMap<String, String> a(String paramString)
+  public static ymt a()
   {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    try
     {
-      return localHashMap;
-      paramString = URLDecoder.decode(paramString).split("&");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i].split("=");
-        if (arrayOfString.length > 1) {
-          localHashMap.put(arrayOfString[0], arrayOfString[1]);
-        }
-        i += 1;
+      if (jdField_a_of_type_Ymt == null) {
+        jdField_a_of_type_Ymt = new ymt();
       }
+      ymt localymt = jdField_a_of_type_Ymt;
+      return localymt;
+    }
+    finally {}
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " din:" + paramLong + " ext2:" + paramInt3);
+    }
+    a(paramAppRuntime, paramString, "" + paramLong, paramInt1, paramInt2, paramInt3, 0, "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " ext2:" + paramInt3);
+    }
+    a(paramAppRuntime, paramString, "", paramInt1, paramInt2, paramInt3, 0, "", "");
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString1 + ", fromType:" + paramInt1 + ", actionResult = " + paramInt2 + ", ext2:" + paramInt3 + ", ext3:" + paramInt4 + ", ext4:" + paramString3 + ", ext5:" + paramString4);
+    }
+    String str1 = "" + paramInt3;
+    String str2 = "" + paramInt4;
+    if (paramString3 == null)
+    {
+      paramAppRuntime = "";
+      if (paramString4 != null) {
+        break label198;
+      }
+    }
+    label198:
+    for (paramString3 = "";; paramString3 = paramString4)
+    {
+      axqy.b(localQQAppInterface, "CliOper", "", paramString2, "SmartDevice", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString3);
+      return;
+      paramAppRuntime = paramString3;
+      break;
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(int paramInt)
   {
-    paramJsBridgeListener = null;
-    if (!"QQConnect".equals(paramString2)) {
-      return false;
-    }
-    if ("goShare".equals(paramString3))
-    {
-      bdht.c(this.TAG, "goshare");
-      String str1;
-      String str2;
-      int i;
-      try
+    if (0L == this.jdField_a_of_type_Long) {}
+    for (this.jdField_a_of_type_Long = (new Random().nextInt() & 0xFFFFFFFF);; this.jdField_a_of_type_Long += 1L) {
+      switch (paramInt)
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString3 = paramJsBridgeListener.getString("din");
-        paramString2 = a(paramJsBridgeListener.getString("args"));
-        paramVarArgs = (String)paramString2.get("uin");
-        str1 = (String)paramString2.get("sn");
-        str2 = (String)paramString2.get("pid");
-        i = paramJsBridgeListener.optInt("public_device", 0);
-        if ((i != 0) && ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))))
-        {
-          bdid.a().a(this.mRuntime.a().getString(2131720715));
-          return true;
+      default: 
+        this.jdField_a_of_type_Long %= 1431655765L;
+        if (0L == this.jdField_a_of_type_Long) {
+          this.jdField_a_of_type_Long += 1L;
         }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        bdid.a().a(this.mRuntime.a().getString(2131690286));
-        return true;
-      }
-      paramString2 = this.mRuntime.a();
-      paramJsBridgeListener = paramString2;
-      if ((paramString2 instanceof BasePluginActivity)) {
-        paramJsBridgeListener = ((BasePluginActivity)paramString2).getOutActivity();
-      }
-      paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
-      if (i != 0)
-      {
-        paramJsBridgeListener.putExtra("DevicePID", str2);
-        paramJsBridgeListener.putExtra("DeviceSN", str1);
-        paramJsBridgeListener.putExtra("DeviceToken", "");
-        paramJsBridgeListener.putExtra("public_device", i);
-      }
-      for (;;)
-      {
-        paramJsBridgeListener.putExtra("from", "share");
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
-        this.mRuntime.a().finish();
-        return true;
-        paramJsBridgeListener.putExtra("troop_uin", paramString3);
-        paramJsBridgeListener.putExtra("uin", paramVarArgs);
-        paramJsBridgeListener.putExtra("url", paramString1);
+        return;
       }
     }
-    if ("doReport".equals(paramString3)) {}
-    try
-    {
-      bdht.c(this.TAG, "doReport");
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      ymw.a(null, paramJsBridgeListener.optString("actionName"), paramJsBridgeListener.optInt("fromType"), paramJsBridgeListener.optInt("actionResult"), paramJsBridgeListener.optInt("ext2"));
-      return true;
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 1431655765L);
+    return;
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 2863311530L);
+  }
+  
+  public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    b(paramAppRuntime, paramString, paramInt);
+  }
+  
+  public void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
     }
-    catch (JSONException paramJsBridgeListener)
+    if (paramString2 == null) {}
+    for (paramAppRuntime = "";; paramAppRuntime = paramString2)
     {
-      break label649;
-    }
-    if ("goBind".equals(paramString3)) {}
-    label649:
-    try
-    {
-      bdht.c(this.TAG, "qrUrl");
-      paramString1 = new JSONObject(paramVarArgs[0]).optString("url");
-      boolean bool = TextUtils.isEmpty(paramString1);
-      if (bool) {}
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      label428:
-      break label649;
-    }
-    try
-    {
-      paramString1 = new String(bbca.decode(paramString1, 0));
-      paramJsBridgeListener = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      break label428;
-    }
-    if (!TextUtils.isEmpty(paramJsBridgeListener))
-    {
-      paramString2 = this.mRuntime.a();
-      paramString1 = paramString2;
-      if ((paramString2 instanceof BasePluginActivity)) {
-        paramString1 = ((BasePluginActivity)paramString2).getOutActivity();
+      if (QLog.isColorLevel()) {
+        QLog.d(b, 2, "smartdevice datareport2, actionname:" + paramString1 + ",result:" + paramInt1 + ", pid:" + paramInt2 + ",sn:" + paramAppRuntime);
       }
-      paramString1 = new Intent(paramString1, DevicePluginDownloadActivity.class);
-      paramString1.putExtra("qrurl", paramJsBridgeListener);
-      paramString1.putExtra("entrance", 1);
-      paramString1.putExtra("from", "connect");
-      this.mRuntime.a().startActivity(paramString1);
+      axqy.b(localQQAppInterface, "CliOper", "", "" + paramLong, "SmartDevice", paramString1, paramInt1, 0, Long.toString(paramInt2), "", paramAppRuntime, "");
+      return;
     }
-    this.mRuntime.a().finish();
-    return true;
-    if ("jumpPublicDevice".equals(paramString3)) {
-      try
-      {
-        bdht.c(this.TAG, "METHOD_JUMP_PUBLICDEVICE");
-        paramString2 = new JSONObject(paramVarArgs[0]).optString("actionUrl");
-        if (TextUtils.isEmpty(paramString2)) {
-          return true;
-        }
-        paramString1 = this.mRuntime.a();
-        paramJsBridgeListener = paramString1;
-        if ((paramString1 instanceof BasePluginActivity)) {
-          paramJsBridgeListener = ((BasePluginActivity)paramString1).getOutActivity();
-        }
-        paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
-        paramJsBridgeListener.putExtra("url", paramString2);
-        paramJsBridgeListener.putExtra("jumpPublicDevice", true);
-        paramJsBridgeListener.putExtra("from", "share");
-        this.mRuntime.a().startActivity(paramJsBridgeListener);
-        this.mRuntime.a().finish();
-        return true;
+  }
+  
+  public void b(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    }
+    long l = this.jdField_a_of_type_Long & 0xFFFFFFFF;
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramAppRuntime = "";; paramAppRuntime = this.jdField_a_of_type_JavaLangString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString + ",result:" + paramInt + ", pid:" + Long.toString(this.jdField_a_of_type_Int) + ",sn:" + paramAppRuntime + ",seq:" + Long.toString(l));
       }
-      catch (JSONException paramJsBridgeListener) {}
+      if ((!"Net_Wifi_Config_Time_Used".equals(paramString)) && (!"Net_Wifi_Config_Ack_Time_Used".equals(paramString))) {
+        break;
+      }
+      axqy.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
+      return;
     }
-    return false;
+    axqy.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
   }
 }
 

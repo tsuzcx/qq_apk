@@ -1,40 +1,17 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class audr
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public audr(ScanOcrView paramScanOcrView, audt paramaudt) {}
+  public audr(ScanOcrView paramScanOcrView) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int j = (int)(this.jdField_a_of_type_Audt.a * f);
-    int i = (int)(f * this.jdField_a_of_type_Audt.jdField_b_of_type_Int);
-    int m = j - this.jdField_a_of_type_Audt.a;
-    int k = i - this.jdField_a_of_type_Audt.jdField_b_of_type_Int;
-    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
-    i = j;
-    if (j > 255) {
-      i = 255;
-    }
-    j = i;
-    if (i < 0) {
-      j = 0;
-    }
-    i = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.left;
-    int n = m / 2;
-    int i1 = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.top;
-    int i2 = k / 2;
-    int i3 = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.right;
-    m /= 2;
-    int i4 = this.jdField_a_of_type_Audt.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    k /= 2;
-    this.jdField_a_of_type_Audt.e = j;
-    this.jdField_a_of_type_Audt.c.set(i - n, i1 - i2, m + i3, k + i4);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.e = i;
+    this.a.invalidate();
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
+import acam;
+import acan;
+import acao;
+import acap;
 import acaq;
 import acar;
 import acas;
 import acat;
 import acau;
-import acav;
-import acaw;
-import acax;
-import acay;
-import actn;
-import aiea;
+import actj;
+import aidy;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -28,9 +28,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bawi;
-import baxk;
-import baxl;
+import baww;
+import baxy;
+import baxz;
 import com.tencent.mobileqq.activity.selectmember.CustomGridView;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
@@ -40,17 +40,17 @@ import java.util.List;
 
 public class SelectedAndSearchBar
   extends RelativeLayout
-  implements baxl
+  implements baxz
 {
   private float jdField_a_of_type_Float;
-  private acax jdField_a_of_type_Acax;
-  private acay jdField_a_of_type_Acay;
-  private final aiea jdField_a_of_type_Aiea = new aiea();
+  private acat jdField_a_of_type_Acat;
+  private acau jdField_a_of_type_Acau;
+  private final aidy jdField_a_of_type_Aidy = new aidy();
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private baxk jdField_a_of_type_Baxk;
+  private baxy jdField_a_of_type_Baxy;
   private CustomGridView jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView;
   private CustomHorizontalScrollView jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView;
   private List<ResultRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -80,22 +80,22 @@ public class SelectedAndSearchBar
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562419, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView = ((CustomGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375820));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131375721));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562418, this);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView = ((CustomGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375822));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131375723));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368034));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375715));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView = ((CustomHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375660));
-    bawi.a(this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView, false);
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375717));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView = ((CustomHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375662));
+    baww.a(this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView, false);
     if (Build.VERSION.SDK_INT >= 9)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.setOverScrollMode(2);
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setOnItemClickListener(new acaq(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new acar(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new acas(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new acat(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setOnItemClickListener(new acam(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new acan(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new acao(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new acap(this));
   }
   
   private void f()
@@ -116,35 +116,35 @@ public class SelectedAndSearchBar
   
   public void a(long paramLong)
   {
-    int i = actn.a(60.0F, getResources());
+    int i = actj.a(60.0F, getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -i, 0 });
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new acav(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new acar(this, localLayoutParams));
     localValueAnimator.start();
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new acau(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new acaq(this, paramOnClickListener));
   }
   
-  public void a(List<ResultRecord> paramList, baxk parambaxk, acay paramacay)
+  public void a(List<ResultRecord> paramList, baxy parambaxy, acau paramacau)
   {
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilList = paramList;
     }
-    this.jdField_a_of_type_Baxk = parambaxk;
-    this.jdField_a_of_type_Acay = paramacay;
-    this.jdField_a_of_type_Acax = new acax(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setAdapter(this.jdField_a_of_type_Acax);
+    this.jdField_a_of_type_Baxy = parambaxy;
+    this.jdField_a_of_type_Acau = paramacau;
+    this.jdField_a_of_type_Acat = new acat(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setAdapter(this.jdField_a_of_type_Acat);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setSmoothScrollbarEnabled(false);
-    this.jdField_a_of_type_Baxk.a(this);
+    this.jdField_a_of_type_Baxy.a(this);
   }
   
   public void a(List<ResultRecord> paramList, boolean paramBoolean)
   {
-    Collections.sort(paramList, this.jdField_a_of_type_Aiea);
+    Collections.sort(paramList, this.jdField_a_of_type_Aidy);
     this.jdField_a_of_type_JavaUtilList = paramList;
     a(paramBoolean);
   }
@@ -159,7 +159,7 @@ public class SelectedAndSearchBar
     if (paramBoolean) {
       postDelayed(new SelectedAndSearchBar.6(this), 200L);
     }
-    this.jdField_a_of_type_Acax.notifyDataSetChanged();
+    this.jdField_a_of_type_Acat.notifyDataSetChanged();
   }
   
   public boolean a()
@@ -174,11 +174,11 @@ public class SelectedAndSearchBar
   
   public void b(long paramLong)
   {
-    int i = actn.a(60.0F, getResources());
+    int i = actj.a(60.0F, getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -i });
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new acaw(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new acas(this, localLayoutParams));
     localValueAnimator.start();
   }
   

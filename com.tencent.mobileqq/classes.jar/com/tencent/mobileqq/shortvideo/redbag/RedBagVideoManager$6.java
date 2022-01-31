@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import axjq;
+import axjs;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
 public class RedBagVideoManager$6
   implements Runnable
 {
-  public RedBagVideoManager$6(axjq paramaxjq, AIORichMediaData paramAIORichMediaData) {}
+  public RedBagVideoManager$6(axjs paramaxjs, AIORichMediaData paramAIORichMediaData) {}
   
   public void run()
   {

@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bazb;
+import bazp;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import org.json.JSONObject;
-import pab;
+import ozy;
 
 public class ChannelCoverInfoModule$1
   implements Runnable
 {
-  public ChannelCoverInfoModule$1(pab parampab, TabChannelCoverInfo paramTabChannelCoverInfo) {}
+  public ChannelCoverInfoModule$1(ozy paramozy, TabChannelCoverInfo paramTabChannelCoverInfo) {}
   
   public void run()
   {
     if (this.a.redPoint != null) {
-      this.a.redPointJson = bazb.a(this.a.redPoint).toString();
+      this.a.redPointJson = bazp.a(this.a.redPoint).toString();
     }
     this.this$0.a(this.a);
   }

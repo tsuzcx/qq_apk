@@ -1,77 +1,156 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import org.json.JSONObject;
 
-class ojz
-  implements BusinessObserver
+public class ojz
+  implements ojq
 {
-  ojz(ojx paramojx, BaseCommentData paramBaseCommentData, int paramInt1, int paramInt2) {}
+  private int jdField_a_of_type_Int = 10;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private String jdField_a_of_type_JavaLangString = "GuideHelper";
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private void a(String paramString, ArticleInfo paramArticleInfo)
   {
-    int i = 1;
-    if (paramBoolean) {}
+    ono localono = new ono();
+    localono.i().b("wording", "" + oos.a());
+    ohf.a(paramString, paramArticleInfo, localono);
+  }
+  
+  public View a(ViewGroup paramViewGroup, View paramView, Context paramContext, oif paramoif)
+  {
+    if (!a(paramoif)) {
+      return paramView;
+    }
+    if ((!TextUtils.isEmpty(paramoif.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramoif.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)))
+    {
+      a("0X8009FE9", paramoif.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      this.jdField_a_of_type_JavaUtilSet.add(paramoif.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
+    if (localLayoutParams.bottomMargin >= 0) {
+      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298599));
+    }
+    paramViewGroup.setLayoutParams(localLayoutParams);
+    if (paramView != null) {}
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label234;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "commentLike ret=" + paramBundle);
-        }
-        if (paramInt != 0) {
-          break label234;
-        }
-        paramInt = i;
-        paramBundle.printStackTrace();
-      }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          if (ojx.a(this.jdField_a_of_type_Ojx) != null)
-          {
-            ojx.a(this.jdField_a_of_type_Ojx).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId, this.jdField_a_of_type_Int, this.b);
-            paramInt = i;
-          }
-          i = paramInt;
-          if ((i == 0) && (ojx.a(this.jdField_a_of_type_Ojx) != null)) {
-            ojx.a(this.jdField_a_of_type_Ojx).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.commentId, this.jdField_a_of_type_Int, this.b);
-          }
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          for (;;)
-          {
-            paramInt = 1;
-          }
-        }
-        paramBundle = paramBundle;
-        paramInt = 0;
-      }
-      i = paramInt;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label234:
-        paramInt = 0;
-      }
+      paramView.setOnClickListener(new oka(this, paramoif, paramContext));
+      return paramView;
+      paramView = LayoutInflater.from(paramContext).inflate(2131560046, null);
     }
   }
+  
+  public void a(int paramInt)
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "showGuidePagerNum : " + paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "extraInfo : " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      this.jdField_b_of_type_JavaLangString = new JSONObject(paramString).getString("app_schema");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "scheme : " + this.jdField_b_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "setGuideExtraInfo : ", paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_Int = 0;
+    if (paramViewGroup == null) {
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
+    if (!paramBoolean) {
+      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298597));
+    }
+    paramViewGroup.setLayoutParams(localLayoutParams);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(List<oif> paramList)
+  {
+    int i = this.jdField_b_of_type_Int;
+    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (i > this.jdField_a_of_type_Int) && (paramList != null))
+    {
+      oif localoif = new oif(6, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext()) {
+        if (((oif)localIterator.next()).jdField_a_of_type_Int == 6) {
+          localIterator.remove();
+        }
+      }
+      paramList.add(localoif);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "addGuidePager : " + i + "  articleInfo :" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(oif paramoif)
+  {
+    return (paramoif != null) && (paramoif.jdField_a_of_type_Int == 6);
+  }
+  
+  public void onCommentCreate(boolean paramBoolean, oif paramoif, List<oif> paramList, int paramInt) {}
+  
+  public void onCommentCreate(boolean paramBoolean1, oif paramoif, boolean paramBoolean2, List<oif> paramList, int paramInt) {}
+  
+  public void onCommentDelete(int paramInt1, boolean paramBoolean, oif paramoif, int paramInt2) {}
+  
+  public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_Int = 1;
+    a(paramList);
+  }
+  
+  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2)
+  {
+    this.jdField_b_of_type_Int += 1;
+    a(paramList);
+  }
+  
+  public void onCommentReply(boolean paramBoolean, oif paramoif) {}
+  
+  public void onCommentStateError(int paramInt) {}
 }
 
 

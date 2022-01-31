@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajyc;
+import ajya;
 import android.support.v4.app.FragmentActivity;
-import bcpw;
+import bcql;
 
 class ScanGLRenderBaseFragment$1
   implements Runnable
@@ -13,7 +13,7 @@ class ScanGLRenderBaseFragment$1
   {
     FragmentActivity localFragmentActivity = this.this$0.getActivity();
     if (localFragmentActivity != null) {
-      bcpw.a(localFragmentActivity, ajyc.a(2131713509), 0).a();
+      bcql.a(localFragmentActivity, ajya.a(2131713520), 0).a();
     }
   }
 }

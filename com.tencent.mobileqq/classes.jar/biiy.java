@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.ae.SessionWrap;
+import java.io.File;
 
-public final class biiy
-  implements Parcelable.Creator<SessionWrap>
+public class biiy
 {
-  public SessionWrap a(Parcel paramParcel)
-  {
-    return new SessionWrap(paramParcel);
-  }
-  
-  public SessionWrap[] a(int paramInt)
-  {
-    return new SessionWrap[0];
-  }
+  public static final String a = biir.a + File.separator + "gif";
+  public static final String b = a + File.separator + "capture";
+  public static final String c = a + File.separator + "res";
+  public static final String d = a + File.separator + "res_zip_download";
+  public static final String e = c + File.separator + "GifGuide";
+  public static final String f = a + File.separator + "material_config";
 }
 
 

@@ -1,17 +1,19 @@
-class oxs
-  implements ooa
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+
+public class oxs
 {
-  oxs(oxr paramoxr, oxp paramoxp) {}
-  
-  public void a(ood paramood)
+  public static oxr a(int paramInt, Context paramContext)
   {
-    if ((this.jdField_a_of_type_Oxp != null) && (paramood != null))
+    switch (paramInt)
     {
-      oxp localoxp = this.jdField_a_of_type_Oxp;
-      String str = paramood.b;
-      paramood = paramood.a;
-      localoxp.a(new String[] { str }, new String[] { paramood });
+    default: 
+      return new MediaGifView(paramContext);
+    case 0: 
+      return new MediaGifView(paramContext);
     }
+    return new MediaVideoView(paramContext);
   }
 }
 

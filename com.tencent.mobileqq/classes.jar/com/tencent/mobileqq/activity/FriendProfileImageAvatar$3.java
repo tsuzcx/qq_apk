@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abgi;
+import abge;
 import android.os.Message;
 import android.text.TextUtils;
-import apvb;
-import atbp;
-import aukn;
-import auko;
-import bazo;
+import apvd;
+import atbr;
+import aukp;
+import aukq;
+import bbac;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 import mqq.os.MqqHandler;
@@ -15,13 +15,13 @@ import mqq.os.MqqHandler;
 public class FriendProfileImageAvatar$3
   implements Runnable
 {
-  public FriendProfileImageAvatar$3(abgi paramabgi, String paramString) {}
+  public FriendProfileImageAvatar$3(abge paramabge, String paramString) {}
   
   public void run()
   {
-    if (apvb.a(bazo.b(String.valueOf(this.a)))) {
-      if (atbp.a()) {
-        atbp.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
+    if (apvd.a(bbac.b(String.valueOf(this.a)))) {
+      if (atbr.a()) {
+        atbr.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
       }
     }
     do
@@ -30,8 +30,8 @@ public class FriendProfileImageAvatar$3
       if (!this.this$0.c) {
         break;
       }
-    } while (!atbp.a());
-    atbp.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
+    } while (!atbr.a());
+    atbr.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
     return;
     this.this$0.c = true;
     Setting localSetting = (Setting)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(Setting.class, this.a);
@@ -47,10 +47,10 @@ public class FriendProfileImageAvatar$3
     for (;;)
     {
       this.this$0.c = false;
-      if (!atbp.a()) {
+      if (!atbr.a()) {
         break;
       }
-      atbp.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
+      atbr.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
       return;
       this.this$0.jdField_a_of_type_Boolean = true;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e(this.a);

@@ -1,72 +1,167 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import java.util.HashMap;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afns
-  extends akgz
 {
-  public afns(TroopActivity paramTroopActivity) {}
+  protected static HashMap<String, structmsg.StructMsg> a;
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public static int a(int paramInt)
   {
-    if (paramBoolean)
+    switch (paramInt)
     {
-      if (paramPBRepeatMessageField != null)
-      {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        while (paramPBRepeatMessageField.hasNext())
-        {
-          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
-          QLog.d("TroopActivity", 2, "ondelete: uin " + localDelResult.uin.get());
-          if (this.a.a != null)
-          {
-            int i = 0;
-            while (i < this.a.a.size())
-            {
-              Stranger localStranger = (Stranger)this.a.a.get(i);
-              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
-                this.a.a.remove(localStranger);
-              }
-              i += 1;
-            }
-          }
-        }
+    case 82: 
+    default: 
+      return 0;
+    case 1: 
+    case 13: 
+    case 22: 
+    case 60: 
+      return 2;
+    }
+    return 1;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    int i = 0 + aydd.a().a(paramQQAppInterface) + akfc.b(paramQQAppInterface);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopNotificationUtils", 4, "getTroopNotificationUnreadNum:" + i);
+    }
+    return i;
+  }
+  
+  public static Drawable a(baxy parambaxy, String paramString, int paramInt)
+  {
+    if ((parambaxy == null) || (paramString == null) || (paramInt == -1)) {
+      return null;
+    }
+    if (parambaxy.a()) {
+      parambaxy.b();
+    }
+    Bitmap localBitmap2 = parambaxy.a(paramInt, paramString);
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2 == null)
+    {
+      parambaxy.a(paramString, paramInt, true);
+      if (paramInt != 4) {
+        break label68;
       }
     }
-    else if (QLog.isColorLevel()) {
-      QLog.d("TroopActivity", 2, "onDelete is failed");
+    label68:
+    for (localBitmap1 = bbef.f();; localBitmap1 = bbef.a()) {
+      return new BitmapDrawable(localBitmap1);
     }
   }
   
-  public void a(boolean paramBoolean, List<Stranger> paramList)
+  public static final structmsg.StructMsg a(String paramString)
   {
-    if (paramBoolean) {
-      if (paramList != null)
-      {
-        this.a.a.clear();
-        this.a.a.addAll(paramList);
-        QLog.d("TroopActivity", 2, "onGetListRemote :" + this.a.a.size());
-      }
+    if ((a != null) && (a.containsKey(paramString))) {
+      return (structmsg.StructMsg)a.get(paramString);
     }
-    while (!QLog.isColorLevel()) {
+    return null;
+  }
+  
+  public static void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationUtils", 2, "clearAccountLoginInfoSp");
+    }
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
+    if (localSharedPreferences == null) {
       return;
     }
-    QLog.d("TroopActivity", 2, "onGetListRemote is failed");
+    localSharedPreferences.edit().clear().commit();
   }
   
-  public void b(boolean paramBoolean, List<Stranger> paramList)
+  public static final void a(Context paramContext, String paramString)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-      QLog.d("TroopActivity", 2, "onGetListLocal :" + this.a.a.size());
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("https://qun.qq.com/qunpay/qunfee/pay.html?gc=%s&source=joingroup&_wv=1031", new Object[] { paramString }));
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+    int i = paramQQAppInterface.getInt("share_key_pay2joinTroop_request_num", 0);
+    paramQQAppInterface = paramQQAppInterface.edit();
+    paramQQAppInterface.putInt("share_key_pay2joinTroop_request_num", i + 1);
+    paramQQAppInterface.commit();
+  }
+  
+  public static final void a(String paramString, structmsg.StructMsg paramStructMsg)
+  {
+    if (a == null) {
+      a = new HashMap(3);
     }
+    a.put(paramString, paramStructMsg);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      SharedPreferences localSharedPreferences;
+      do
+      {
+        return;
+        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
+      } while (localSharedPreferences == null);
+      localSharedPreferences.edit().putBoolean("isFirstLogin" + paramString, paramBoolean).commit();
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopNotificationUtils", 2, "setIsAccountFirstLogin uin=" + paramString + " firstLogin=" + paramBoolean);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool1 = false;
+    if (TextUtils.isEmpty(paramString)) {}
+    boolean bool2;
+    do
+    {
+      SharedPreferences localSharedPreferences;
+      do
+      {
+        return bool1;
+        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("troop_notification_sp", 0);
+      } while (localSharedPreferences == null);
+      bool2 = localSharedPreferences.getBoolean("isFirstLogin" + paramString, true);
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopNotificationUtils", 2, "isAccountFirstLogin uin=" + paramString + " result=" + bool2);
+    return bool2;
+  }
+  
+  public static int b(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getInt("share_key_pay2joinTroop_request_num", 0);
+  }
+  
+  public static final void b()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit();
+    paramQQAppInterface.putInt("share_key_pay2joinTroop_request_num", 0);
+    paramQQAppInterface.commit();
   }
 }
 

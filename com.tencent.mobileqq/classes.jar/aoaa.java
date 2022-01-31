@@ -1,22 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public class aoaa
-  implements ValueAnimator.AnimatorUpdateListener
+class aoaa
+  implements URLDrawableDownListener
 {
-  public aoaa(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  aoaa(anzz paramanzz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "hide:offset=" + f);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).setTranslationY(f);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
+      ((ProgressBar)paramView).setVisibility(4);
     }
   }
 }

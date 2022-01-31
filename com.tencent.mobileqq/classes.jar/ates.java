@@ -1,27 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import com.tencent.qphone.base.util.QLog;
 
 public class ates
-  implements View.OnClickListener
+  extends balg
 {
-  public ates(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public ates(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    akbj.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    if (paramInt == 20007) {
+      bcql.a(TroopGiftPanelForNearby.a(this.a), ajya.a(2131715433), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(ajyc.a(2131707179));
-      if (this.a.jdField_a_of_type_Atbx == null) {
-        this.a.jdField_a_of_type_Atbx = ((atbx)this.a.app.a(60));
-      }
-      this.a.jdField_a_of_type_Atbx.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
+      akbj.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
+      return;
+      bcql.a(TroopGiftPanelForNearby.b(this.a), ajya.a(2131715430), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
     }
   }
 }

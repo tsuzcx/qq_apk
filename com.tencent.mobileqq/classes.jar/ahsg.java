@@ -1,105 +1,51 @@
-import android.content.Context;
-import android.graphics.Bitmap;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 import com.tencent.mobileqq.widget.NewStyleDropdownView;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import java.util.List;
 
-public class ahsg
-  extends ArrayAdapter
+class ahsg
   implements View.OnClickListener
 {
-  Filter jdField_a_of_type_AndroidWidgetFilter;
-  
-  public ahsg(LoginView paramLoginView, Context paramContext)
-  {
-    super(paramContext, 2131558412, 2131368386, paramLoginView.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public String a(int paramInt)
-  {
-    String str = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return str;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(str);
-  }
-  
-  public String b(int paramInt)
-  {
-    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(8);
-    }
-    for (;;)
-    {
-      return super.getCount();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(0);
-    }
-  }
-  
-  public Filter getFilter()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
-      this.jdField_a_of_type_AndroidWidgetFilter = new ahsh(this);
-    }
-    return this.jdField_a_of_type_AndroidWidgetFilter;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (LinearLayout)paramView.findViewById(2131362999);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368335);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
-    if ((localObject instanceof Bitmap))
-    {
-      localImageView.setImageBitmap((Bitmap)localObject);
-      localImageView = (ImageView)paramView.findViewById(2131368327);
-      localImageView.setTag(Integer.valueOf(paramInt));
-      localImageView.setOnClickListener(this);
-      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131720045));
-      paramView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131689548) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
-      if (getCount() != 1) {
-        break label256;
-      }
-      paramViewGroup.setPadding(0, actn.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, actn.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
-    }
-    for (;;)
-    {
-      paramViewGroup.setOnClickListener(new ahsi(this, paramInt));
-      paramView.setOnTouchListener(new mug());
-      return paramView;
-      localImageView.setImageResource(2130840291);
-      break;
-      label256:
-      if (paramInt == 0) {
-        paramViewGroup.setPadding(0, actn.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, 0);
-      } else if (paramInt == getCount() - 1) {
-        paramViewGroup.setPadding(0, 0, 0, actn.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
-      } else {
-        paramViewGroup.setPadding(0, 0, 0, 0);
-      }
-    }
-  }
+  ahsg(ahse paramahse, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_Int = ((Integer)paramView.getTag()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.showDialog(1);
+    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.removeTextChangedListener(this.jdField_a_of_type_Ahse.a.b);
+    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.removeTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidTextTextWatcher);
+    this.jdField_a_of_type_Ahse.a.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramView = (SimpleAccount)this.jdField_a_of_type_Ahse.a.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Ahse.a.jdField_a_of_type_Int);
+    ImageView localImageView;
+    if (!LoginView.h(this.jdField_a_of_type_Ahse.a))
+    {
+      LoginView.h(this.jdField_a_of_type_Ahse.a, true);
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      localImageView = this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidWidgetImageView;
+      if ((!LoginView.d(this.jdField_a_of_type_Ahse.a)) && (!LoginView.e(this.jdField_a_of_type_Ahse.a)) && (!LoginView.f(this.jdField_a_of_type_Ahse.a))) {
+        break label368;
+      }
+    }
+    label368:
+    for (int i = 2130846072;; i = 2130843889)
+    {
+      localImageView.setImageResource(i);
+      this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131706366));
+      LoginView.a(this.jdField_a_of_type_Ahse.a, paramView);
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.addTextChangedListener(this.jdField_a_of_type_Ahse.a.b);
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.clearFocus();
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.addTextChangedListener(this.jdField_a_of_type_Ahse.a.jdField_c_of_type_AndroidTextTextWatcher);
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.clearFocus();
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      this.jdField_a_of_type_Ahse.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a().setVisibility(8);
+      return;
+    }
   }
 }
 

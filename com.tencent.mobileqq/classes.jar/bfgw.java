@@ -1,10 +1,34 @@
-import android.os.Build.VERSION;
+import android.util.Log;
+import dalvik.system.PathClassLoader;
 
-public final class bfgw
+public class bfgw
+  extends PathClassLoader
 {
-  public static boolean a()
+  private ClassLoader a;
+  
+  public bfgw(String paramString1, String paramString2, ClassLoader paramClassLoader)
   {
-    return Build.VERSION.SDK_INT >= 19;
+    super(paramString1, paramString2, paramClassLoader.getParent());
+    this.a = paramClassLoader;
+  }
+  
+  public Class<?> findClass(String paramString)
+  {
+    try
+    {
+      Class localClass = super.findClass(paramString);
+      return localClass;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      Log.w("MiniAppClassloader", "ClassNotFoundException, load class from old loader: " + paramString);
+      return this.a.loadClass(paramString);
+    }
+    catch (InternalError localInternalError)
+    {
+      Log.w("MiniAppClassloader", "InternalError, load class from old loader: " + paramString);
+    }
+    return this.a.loadClass(paramString);
   }
 }
 

@@ -1,23 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import java.util.Iterator;
+import java.util.List;
 
 public class bffm
 {
-  public static String a(int paramInt)
+  bffi jdField_a_of_type_Bffi;
+  List<bffi> jdField_a_of_type_JavaUtilList;
+  
+  bffm(bffi parambffi, List<bffi> paramList)
   {
-    String str = b(paramInt);
-    return bfgv.a().getString(str, "");
+    this.jdField_a_of_type_Bffi = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public static void a(int paramInt, String paramString)
+  public void a()
   {
-    String str = b(paramInt);
-    bfgv.a().edit().putString(str, paramString).apply();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (((bffi)localIterator.next()).c());
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_Bffi.e();
+      }
+      return;
+    }
   }
   
-  private static String b(int paramInt)
+  public boolean a(bffi parambffi)
   {
-    return "gdt_cookie_" + beuc.a().a() + "_" + paramInt;
+    return (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(parambffi));
   }
 }
 

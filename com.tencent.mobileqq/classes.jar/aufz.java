@@ -1,23 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
 
-public class aufz
-  implements Handler.Callback
+class aufz
 {
-  public aufz(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public ARTipsCircleProgress a;
+  public ViewGroup b;
+  public TextView b;
+  public ViewGroup c;
+  public TextView c;
+  public ViewGroup d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.f();
-    }
-  }
+  private aufz(aufj paramaufj) {}
 }
 
 

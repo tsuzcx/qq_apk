@@ -1,32 +1,18 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.qphone.base.util.QLog;
 
 class akxs
-  implements MediaPlayer.OnPreparedListener
+  implements MediaPlayer.OnErrorListener
 {
-  akxs(akxq paramakxq) {}
+  akxs(akxp paramakxp) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + akxq.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      akxq.b(this.a, true);
-      if (akxq.b(this.a))
-      {
-        this.a.a.start();
-        akxq.c(this.a, false);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
     }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    return false;
   }
 }
 

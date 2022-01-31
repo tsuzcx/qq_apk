@@ -1,6 +1,14 @@
-public abstract interface rrn
+import android.widget.PopupWindow.OnDismissListener;
+
+class rrn
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void c();
+  rrn(rrm paramrrm) {}
+  
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 

@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class aahj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public aahj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    AddFriendVerifyActivity.c(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,8 +1,6 @@
-import android.view.MotionEvent;
-
 public abstract interface akxe
 {
-  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  public abstract void a();
 }
 
 

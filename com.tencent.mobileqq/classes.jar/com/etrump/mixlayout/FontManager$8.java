@@ -1,24 +1,24 @@
 package com.etrump.mixlayout;
 
-import ajxn;
-import bbby;
+import ajxl;
+import bbcm;
 import com.tencent.qphone.base.util.QLog;
 import ho;
 
 public class FontManager$8
   implements Runnable
 {
-  public FontManager$8(ho paramho, ajxn paramajxn, String paramString) {}
+  public FontManager$8(ho paramho, ajxl paramajxl, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajxn.a(this.jdField_a_of_type_JavaLangString) == null)
+    if (this.jdField_a_of_type_Ajxl.a(this.jdField_a_of_type_JavaLangString) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> extensionInfo is null.");
       }
-      bbby.a(this.jdField_a_of_type_JavaLangString);
-      bbby.a(this.this$0.a);
+      bbcm.a(this.jdField_a_of_type_JavaLangString);
+      bbcm.a(this.this$0.a);
     }
   }
 }

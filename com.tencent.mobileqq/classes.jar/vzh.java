@@ -1,23 +1,63 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView;
 
 public class vzh
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static Intent a(Intent paramIntent, Bundle paramBundle, Activity paramActivity)
   {
-    if (paramQQAppInterface == null) {}
+    if (paramBundle == null) {}
+    Object localObject;
     do
     {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryAIOUtils", 2, "refreshAIOStoryMessages");
+      return paramIntent;
+      if (paramBundle.containsKey("ignorePersonalPublish")) {
+        paramIntent.putExtra("ignorePersonalPublish", paramBundle.getBoolean("ignorePersonalPublish"));
+      }
+      paramIntent.putExtra("troop_uin", paramBundle.getInt("troop_uin", 0));
+      paramIntent.putExtra("entrance_type", paramBundle.getInt("entrance_type"));
+      paramIntent.putExtra("shareGroupType", paramBundle.getString("shareGroupType"));
+      paramIntent.putExtra("shareGroupId", paramBundle.getString("shareGroupId"));
+      paramIntent.putExtra("shareGroupName", paramBundle.getString("shareGroupName"));
+      if (paramBundle.getString("widgetinfo") != null)
+      {
+        paramIntent.putExtra("qq_camera_top_title", "魔法视频");
+        paramIntent.putExtra("qq_camera_scheme", bkvh.a(paramBundle.getString("widgetinfo")));
+        paramIntent.putExtra("widgetinfo", paramBundle.getString("widgetinfo"));
+      }
+      paramIntent.putExtra("key_scheme_request_from_business_type", paramBundle.getString("key_scheme_request_from_business_type"));
+      if (!(paramActivity instanceof QIMCameraCaptureActivity)) {
+        break;
+      }
+      localObject = (ViewGroup)((QIMCameraCaptureActivity)paramActivity).a();
+      if ((localObject == null) || (((ViewGroup)localObject).findViewById(2131378962) == null)) {
+        break;
+      }
+      localObject = (LinkerSummaryView)((ViewGroup)localObject).findViewById(2131378962);
+    } while ((localObject == null) || (((LinkerSummaryView)localObject).jdField_a_of_type_Bkjr == null));
+    paramIntent.putExtra("share_url_target_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bkjr.jdField_a_of_type_JavaLangString);
+    paramIntent.putExtra("share_url_name", ((LinkerSummaryView)localObject).jdField_a_of_type_Bkjr.b);
+    paramIntent.putExtra("share_url_text", ((LinkerSummaryView)localObject).jdField_a_of_type_Bkjr.c);
+    paramIntent.putExtra("share_url_thumb_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bkjr.d);
+    paramIntent.putExtra("struct_share_key_source_name", ((LinkerSummaryView)localObject).b);
+    paramIntent.putExtra("struct_share_key_source_icon", ((LinkerSummaryView)localObject).jdField_a_of_type_JavaLangString);
+    if (((paramActivity instanceof PhotoListActivity)) || ((paramActivity instanceof PhotoPreviewActivity)) || ((paramActivity instanceof AlbumListActivity)))
+    {
+      paramIntent.putExtra("share_url_target_url", paramBundle.getString("share_url_target_url"));
+      paramIntent.putExtra("share_url_name", paramBundle.getString("share_url_name"));
+      paramIntent.putExtra("share_url_text", paramBundle.getString("share_url_text"));
+      paramIntent.putExtra("share_url_thumb_url", paramBundle.getString("share_url_thumb_url"));
+      paramIntent.putExtra("struct_share_key_source_name", paramBundle.getString("struct_share_key_source_name"));
+      paramIntent.putExtra("struct_share_key_source_icon", paramBundle.getString("struct_share_key_source_icon"));
     }
-    paramQQAppInterface.removeMessages(267387141);
-    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(267387141), 500L);
+    paramIntent.putExtra("video_tag_info", paramBundle.getString("video_tag_info"));
+    return paramIntent;
   }
 }
 

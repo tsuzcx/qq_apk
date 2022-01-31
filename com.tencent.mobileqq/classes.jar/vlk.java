@@ -1,8 +1,15 @@
+import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-public abstract interface vlk<T extends vlj>
+public abstract interface vlk
 {
-  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

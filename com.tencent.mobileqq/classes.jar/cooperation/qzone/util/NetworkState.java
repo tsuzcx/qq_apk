@@ -2,9 +2,9 @@ package cooperation.qzone.util;
 
 import android.net.NetworkInfo;
 import android.text.TextUtils;
-import bgxq;
-import bhob;
-import bhoc;
+import bgyh;
+import bhos;
+import bhot;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
@@ -32,14 +32,14 @@ public class NetworkState
   private static Map<String, Integer> mApnMap = new HashMap();
   private static Map<Long, Boolean> map = new HashMap();
   private static INetEventHandler netEventHandler;
-  private static List<bhoc> observers;
+  private static List<bhot> observers;
   private static String providerName;
   public static long uin = -1L;
   
   static
   {
     observers = new ArrayList();
-    netEventHandler = new bhob();
+    netEventHandler = new bhos();
     mApnMap.put("unknown", Integer.valueOf(0));
     mApnMap.put("cmnet", Integer.valueOf(1));
     mApnMap.put("cmwap", Integer.valueOf(2));
@@ -63,15 +63,15 @@ public class NetworkState
     return localStringBuffer.toString();
   }
   
-  public static void addListener(bhoc parambhoc)
+  public static void addListener(bhot parambhot)
   {
-    if (parambhoc == null) {
+    if (parambhot == null) {
       return;
     }
     synchronized (observers)
     {
-      if (!observers.contains(parambhoc)) {
-        observers.add(parambhoc);
+      if (!observers.contains(parambhot)) {
+        observers.add(parambhot);
       }
       return;
     }
@@ -224,7 +224,7 @@ public class NetworkState
     String str;
     if (TextUtils.isEmpty(providerName))
     {
-      str = bgxq.a().b();
+      str = bgyh.a().b();
       if ((str != null) && (!"".equals(str))) {
         break label39;
       }
@@ -292,15 +292,15 @@ public class NetworkState
   {
     synchronized (observers)
     {
-      bhoc[] arrayOfbhoc = new bhoc[observers.size()];
-      observers.toArray(arrayOfbhoc);
-      if (arrayOfbhoc != null)
+      bhot[] arrayOfbhot = new bhot[observers.size()];
+      observers.toArray(arrayOfbhot);
+      if (arrayOfbhot != null)
       {
-        int j = arrayOfbhoc.length;
+        int j = arrayOfbhot.length;
         int i = 0;
         if (i < j)
         {
-          arrayOfbhoc[i].onNetworkConnect(paramBoolean);
+          arrayOfbhot[i].onNetworkConnect(paramBoolean);
           i += 1;
         }
       }
@@ -320,11 +320,11 @@ public class NetworkState
     }
   }
   
-  public static void removeListener(bhoc parambhoc)
+  public static void removeListener(bhot parambhot)
   {
     synchronized (observers)
     {
-      observers.remove(parambhoc);
+      observers.remove(parambhot);
       return;
     }
   }

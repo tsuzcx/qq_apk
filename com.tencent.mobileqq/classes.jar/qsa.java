@@ -1,16 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class qsa
-  implements DialogInterface.OnShowListener
+  implements DialogInterface.OnDismissListener
 {
-  qsa(qrw paramqrw, bfol parambfol) {}
+  qsa(qrt paramqrt) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    qrw.a(this.jdField_a_of_type_Qrw, "mShareActionSheet onShow()");
-    this.jdField_a_of_type_Bfol.getWindow().clearFlags(8);
+    qrt.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if ((qrt.a(this.a) != null) && (qrt.a(this.a).b()) && (qrt.b(this.a)) && (!qrt.c(this.a)) && (qrt.a(this.a)) && (!qrt.d(this.a))) {
+      qrt.a(this.a).c();
+    }
+    if (qrt.a(this.a) != null) {
+      qrt.a(this.a).f();
+    }
+    qrt.a(this.a, false);
   }
 }
 

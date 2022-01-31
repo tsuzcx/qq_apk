@@ -1,60 +1,34 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import java.util.ArrayList;
 
-public abstract class lhi
+public class lhi
 {
-  protected static final String[] a;
-  public VideoAppInterface a;
-  public final String a;
+  int jdField_a_of_type_Int = 0;
+  public String a;
+  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+  final lhl jdField_a_of_type_Lhl;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  static
+  lhi(lhl paramlhl, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_INTERACTIVEVideo" };
-  }
-  
-  protected lhi(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
-  }
-  
-  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
-    {
-      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      paramContext = bbjn.b(paramContext).edit();
-      paramContext.putBoolean(str, paramBoolean);
-      paramContext.commit();
-      lcl.e(paramString, "setPreload zzzzz  bid=" + paramInt);
-      return;
+    this.jdField_a_of_type_Lhl = paramlhl;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
     }
-    lcl.e(paramString, "setPreload ERROR : bid=" + paramInt);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
+  boolean a()
   {
-    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
-    {
-      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      boolean bool = bbjn.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
-      lcl.c(paramString, "isPreloaded:" + str + "|" + bool);
-      return bool;
-    }
-    lcl.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
-    return false;
+    return this.jdField_a_of_type_Int >= 3;
   }
   
-  protected abstract void a();
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
-  
-  protected void a(String paramString, boolean paramBoolean) {}
-  
-  protected abstract boolean a(String paramString);
+  public String toString()
+  {
+    return "ItemRecord{" + this.jdField_a_of_type_Lhl + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
+  }
 }
 
 

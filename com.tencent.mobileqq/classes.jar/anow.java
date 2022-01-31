@@ -1,426 +1,440 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.animation.Animator;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.doutu.combo.ComboEggView;
+import com.tencent.mobileqq.doutu.combo.ComboMasterView;
+import com.tencent.mobileqq.doutu.combo.ComboNavigateBar;
+import com.tencent.mobileqq.doutu.combo.ComboUIManager.1;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import java.util.Observable;
+import java.util.Observer;
 
+@TargetApi(11)
 public class anow
+  implements Handler.Callback, View.OnTouchListener, Observer
 {
-  public static XmlData a(Class<? extends XmlData> paramClass)
+  private int jdField_a_of_type_Int = 8;
+  aeyv jdField_a_of_type_Aeyv;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private anot jdField_a_of_type_Anot;
+  azno jdField_a_of_type_Azno;
+  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  AIOAnimationConatiner jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  ComboEggView jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView;
+  ComboMasterView jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView;
+  ComboNavigateBar jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar;
+  RelativeLayout b;
+  
+  public anow(QQAppInterface paramQQAppInterface, Activity paramActivity, BaseChatPie paramBaseChatPie, RelativeLayout paramRelativeLayout, azno paramazno, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (paramClass == null) {
-      paramClass = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_AndroidContentContext = paramRelativeLayout.getContext();
+    this.jdField_a_of_type_Azno = paramazno;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    if (this.jdField_a_of_type_Azno != null) {
+      this.jdField_a_of_type_Azno.a(this);
+    }
+    if (paramBaseChatPie != null)
+    {
+      this.jdField_a_of_type_Aeyv = paramBaseChatPie.a();
+      this.jdField_a_of_type_Aeyv.a(this);
+    }
+  }
+  
+  private ComboEggView a(anot paramanot)
+  {
+    e();
+    ComboEggView localComboEggView = (ComboEggView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558532, null);
+    localComboEggView.a(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (localComboEggView.a(paramanot))
+    {
+      paramanot = new RelativeLayout.LayoutParams(-1, -1);
+      paramanot.addRule(13);
+      this.b.addView(localComboEggView, paramanot);
+      localComboEggView.b();
+      return localComboEggView;
+    }
+    b(paramanot);
+    return null;
+  }
+  
+  private ComboMasterView a(anot paramanot)
+  {
+    e();
+    ComboMasterView localComboMasterView = (ComboMasterView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558533, null);
+    localComboMasterView.a(this);
+    if (localComboMasterView.a(paramanot))
+    {
+      paramanot = new RelativeLayout.LayoutParams(-1, -1);
+      paramanot.addRule(13);
+      this.b.addView(localComboMasterView, paramanot);
+      localComboMasterView.a();
+      return localComboMasterView;
+    }
+    b(paramanot);
+    return null;
+  }
+  
+  private boolean a()
+  {
+    boolean bool2 = true;
+    Object localObject = Runtime.getRuntime();
+    long l1 = (((Runtime)localObject).totalMemory() - ((Runtime)localObject).freeMemory()) / 1048576L;
+    long l2 = ((Runtime)localObject).maxMemory() / 1048576L;
+    long l3 = l2 - l1;
+    boolean bool1;
+    if (l3 < 10L)
+    {
+      bool1 = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComboUIManager", 2, " hasOOMDanger: " + bool1 + " availHeapSizeInMB:" + l3 + " maxHeapSizeInMB:" + l2 + " usedMemInMB:" + l1);
+      }
+      localObject = axrn.a(BaseApplication.getContext());
+      if (bool1) {
+        break label145;
+      }
     }
     for (;;)
     {
-      return paramClass;
-      for (;;)
+      ((axrn)localObject).a(null, "ComboEggOOM", bool2, l3, l1, null, "");
+      return bool1;
+      bool1 = false;
+      break;
+      label145:
+      bool2 = false;
+    }
+  }
+  
+  private void b(anot paramanot)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar = ((ComboNavigateBar)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558534, null));
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar) == -1)
+    {
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, actj.a(32.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLayoutParams.addRule(11);
+      localLayoutParams.topMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298865) + actj.a(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar, localLayoutParams);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar.setInfo(paramanot);
+  }
+  
+  private void e()
+  {
+    if (this.b == null)
+    {
+      this.b = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      this.b.setOnTouchListener(this);
+    }
+    FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localFrameLayout.indexOfChild(this.b) == -1)
+    {
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+      localFrameLayout.addView(this.b, localLayoutParams);
+    }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a();
+  }
+  
+  public anot a()
+  {
+    anot localanot;
+    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.a(this.b);
+      localanot = new anot(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.jdField_a_of_type_Anot.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.jdField_a_of_type_Anot.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = null;
+      return localanot;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView.a(this.b);
+      localanot = new anot(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView.jdField_a_of_type_Anot.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView.jdField_a_of_type_Anot.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView = null;
+      return localanot;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    c();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(12, paramLong);
+  }
+  
+  public void a(Animator paramAnimator, ComboMasterView paramComboMasterView)
+  {
+    if (this.b != null)
+    {
+      paramAnimator = paramComboMasterView.jdField_a_of_type_Anot;
+      if ((paramAnimator != null) && (this.jdField_a_of_type_Anot.jdField_a_of_type_Int == paramAnimator.jdField_a_of_type_Int)) {
+        b(paramAnimator);
+      }
+      this.b.removeView(paramComboMasterView);
+    }
+    f();
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = null;
+  }
+  
+  public void a(anot paramanot)
+  {
+    for (;;)
+    {
+      Message localMessage;
+      try
       {
-        try
+        if (this.jdField_a_of_type_Anot != null)
         {
-          localXmlData = (XmlData)paramClass.newInstance();
-        }
-        catch (IllegalAccessException paramClass)
-        {
-          Object localObject;
-          Field[] arrayOfField;
-          int j;
-          String str;
-          Class localClass;
-          localXmlData = null;
-          continue;
-        }
-        catch (InstantiationException paramClass)
-        {
-          int i;
-          XmlData localXmlData = null;
-          continue;
-          i += 1;
-          continue;
-        }
-        try
-        {
-          localObject = localXmlData.getSharedPreferencesName();
-          localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 4);
-          arrayOfField = a(paramClass);
-          paramClass = localXmlData;
-          if (arrayOfField == null) {
-            break;
-          }
-          j = arrayOfField.length;
-          i = 0;
-          paramClass = localXmlData;
+          int i = this.jdField_a_of_type_Anot.jdField_a_of_type_Int;
+          int j = paramanot.jdField_a_of_type_Int;
           if (i >= j) {
-            break;
+            return;
           }
-          paramClass = arrayOfField[i];
-          if (!paramClass.isAnnotationPresent(anqd.class)) {
+        }
+        this.jdField_a_of_type_Anot = paramanot;
+        localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        localMessage.obj = paramanot;
+        if (QLog.isColorLevel()) {
+          QLog.d("ComboUIManager", 2, "update  msg what:" + localMessage.what + " " + paramanot);
+        }
+        if (!paramanot.jdField_a_of_type_Boolean)
+        {
+          localMessage.what = 1;
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
+            break label242;
+          }
+          if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.w()) {
+            break label204;
+          }
+          if (!QLog.isColorLevel()) {
             continue;
           }
-          if (!paramClass.isAccessible()) {
-            paramClass.setAccessible(true);
-          }
-          str = paramClass.getName();
-          localClass = paramClass.getType();
-          if (localClass == String.class) {
-            paramClass.set(localXmlData, ((SharedPreferences)localObject).getString(str, ""));
-          } else if (localClass == Long.TYPE) {
-            paramClass.setLong(localXmlData, ((SharedPreferences)localObject).getLong(str, 0L));
-          }
-        }
-        catch (InstantiationException paramClass)
-        {
-          paramClass.printStackTrace();
-          return localXmlData;
-          if (localClass == Integer.TYPE) {
-            paramClass.setInt(localXmlData, ((SharedPreferences)localObject).getInt(str, 0));
-          }
-        }
-        catch (IllegalAccessException paramClass)
-        {
-          paramClass.printStackTrace();
-          return localXmlData;
-        }
-      }
-    }
-    if (localClass == Float.TYPE) {
-      paramClass.setFloat(localXmlData, ((SharedPreferences)localObject).getFloat(str, 0.0F));
-    } else if (localClass == Boolean.TYPE) {
-      paramClass.setBoolean(localXmlData, ((SharedPreferences)localObject).getBoolean(str, false));
-    } else {
-      throw new RuntimeException("Member name:" + str + "->Type:" + localClass.toString() + " is NOT SUPPORT!");
-    }
-  }
-  
-  public static XmlData a(Class<? extends XmlData> paramClass, String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, String paramString5)
-  {
-    if ((paramClass == null) || (paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0) || (paramString3 == null) || (paramString3.length() == 0) || (paramString4 == null) || (paramString4.length() == 0)) {
-      if (QLog.isColorLevel())
-      {
-        paramString2 = new StringBuffer();
-        StringBuilder localStringBuilder = new StringBuilder().append("class=");
-        if (paramClass == null)
-        {
-          paramClass = "null";
-          paramString2.append(paramClass);
-          paramString2.append(" resName=" + paramString1);
-          paramString2.append(" resConf=" + paramString3);
-          paramString2.append(" uiNewVer=" + paramLong);
-          paramString2.append(" urlBig=" + paramString4);
-          paramString2.append(" urlSmall=" + paramString5);
-          QLog.d("EarlyDown", 2, "parse() return." + paramString2.toString());
-        }
-      }
-      else
-      {
-        paramString3 = null;
-      }
-    }
-    for (;;)
-    {
-      return paramString3;
-      paramClass = paramClass.getCanonicalName();
-      break;
-      try
-      {
-        paramClass = new anpb(paramClass);
-        SAXParserFactory.newInstance().newSAXParser().parse(new ByteArrayInputStream(paramString3.getBytes()), paramClass);
-        paramClass = paramClass.a();
-        paramString3 = paramClass;
-        if (paramClass == null) {
+          QLog.d("ComboUIManager", 2, "isMsgBoxShown");
           continue;
         }
-        paramClass.strResName = paramString1;
-        paramClass.strPkgName = paramString2;
-        paramClass.strResURL_big = paramString4;
-        paramClass.strResURL_small = paramString5;
-        paramClass.Version = ((int)paramLong);
-        return paramClass;
-      }
-      catch (ParserConfigurationException paramClass)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("EarlyDown", 2, "parse() throw Exception:" + paramClass.getMessage());
-          }
-          paramClass = null;
-        }
-      }
-      catch (SAXException paramClass)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("EarlyDown", 2, "parse() throw Exception:" + paramClass.getMessage());
-          }
-          paramClass = null;
-        }
-      }
-      catch (IOException paramClass)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("EarlyDown", 2, "parse() throw Exception:" + paramClass.getMessage());
-          }
-          paramClass = null;
-        }
-      }
-    }
-  }
-  
-  /* Error */
-  public static Field a(Class<? extends XmlData> paramClass, String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: aload 4
-    //   7: astore_2
-    //   8: aload_0
-    //   9: ifnull +20 -> 29
-    //   12: aload 4
-    //   14: astore_2
-    //   15: aload_1
-    //   16: ifnull +13 -> 29
-    //   19: aload_1
-    //   20: invokevirtual 162	java/lang/String:length	()I
-    //   23: ifne +20 -> 43
-    //   26: aload 4
-    //   28: astore_2
-    //   29: aload_2
-    //   30: areturn
-    //   31: astore_2
-    //   32: aload_3
-    //   33: astore_2
-    //   34: aload_3
-    //   35: ifnonnull -6 -> 29
-    //   38: aload_0
-    //   39: invokevirtual 268	java/lang/Class:getSuperclass	()Ljava/lang/Class;
-    //   42: astore_0
-    //   43: aload_3
-    //   44: astore_2
-    //   45: aload_0
-    //   46: ldc_w 270
-    //   49: if_acmpeq -20 -> 29
-    //   52: aload_0
-    //   53: aload_1
-    //   54: invokevirtual 274	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   57: astore_2
-    //   58: aload_2
-    //   59: astore_3
-    //   60: goto -28 -> 32
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	63	0	paramClass	Class<? extends XmlData>
-    //   0	63	1	paramString	String
-    //   7	23	2	localObject1	Object
-    //   31	1	2	localNoSuchFieldException	java.lang.NoSuchFieldException
-    //   33	26	2	localObject2	Object
-    //   1	59	3	localObject3	Object
-    //   3	24	4	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   52	58	31	java/lang/NoSuchFieldException
-  }
-  
-  public static void a(XmlData paramXmlData)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("freeSP() data=");
-      if (paramXmlData != null) {
-        break label46;
-      }
-    }
-    label46:
-    for (String str = "null";; str = paramXmlData.getSharedPreferencesName())
-    {
-      QLog.d("EarlyDown", 2, str);
-      if (paramXmlData != null) {
-        break;
-      }
-      return;
-    }
-    paramXmlData = paramXmlData.getSharedPreferencesName();
-    paramXmlData = BaseApplication.getContext().getSharedPreferences(paramXmlData, 0).edit();
-    paramXmlData.clear();
-    paramXmlData.commit();
-  }
-  
-  public static void a(XmlData paramXmlData, String... paramVarArgs)
-  {
-    if (paramXmlData == null) {
-      return;
-    }
-    Object localObject1;
-    SharedPreferences.Editor localEditor;
-    Object localObject2;
-    label54:
-    int i;
-    Object localObject3;
-    for (;;)
-    {
-      label153:
-      try
-      {
-        localObject1 = paramXmlData.getSharedPreferencesName();
-        localEditor = BaseApplication.getContext().getSharedPreferences((String)localObject1, 0).edit();
-        localObject2 = paramXmlData.getClass();
-        if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-        {
-          paramVarArgs = a((Class)localObject2);
-          if (paramVarArgs == null) {
-            break label448;
-          }
-          int j = paramVarArgs.length;
-          i = 0;
-          if (i >= j) {
-            break label448;
-          }
-          localObject2 = paramVarArgs[i];
+        if (!ComboEggView.a(paramanot.jdField_a_of_type_Int)) {
+          break label169;
         }
       }
       finally {}
-      try
-      {
-        if ((((Field)localObject2).isAnnotationPresent(anqd.class)) && (((anqd)((Field)localObject2).getAnnotation(anqd.class)).b()))
-        {
-          if (!((Field)localObject2).isAccessible()) {
-            ((Field)localObject2).setAccessible(true);
-          }
-          localObject1 = ((Field)localObject2).getName();
-          localObject3 = ((Field)localObject2).get(paramXmlData);
-          if (!(localObject3 instanceof String)) {
-            break;
-          }
-          localEditor.putString((String)localObject1, String.valueOf(localObject3));
-        }
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        localIllegalArgumentException.printStackTrace();
-        continue;
-        if (!(localObject3 instanceof Integer)) {
-          break label294;
-        }
-        localEditor.putInt(localIllegalArgumentException, ((Integer)localObject3).intValue());
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-        continue;
-        if (!(localObject3 instanceof Float)) {
-          break label346;
-        }
-        localEditor.putFloat(localIllegalAccessException, ((Float)localObject3).floatValue());
-        continue;
-      }
-      catch (IncompatibleClassChangeError localIncompatibleClassChangeError)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("earlyDown", 2, "EarlyDataFactory.saveToSP, IncompatibleClassChangeError", localIncompatibleClassChangeError);
-        continue;
-        if (!(localObject3 instanceof Boolean)) {
-          break label375;
-        }
-        localEditor.putBoolean(localIncompatibleClassChangeError, ((Boolean)localObject3).booleanValue());
-        continue;
-        localObject2 = new StringBuilder().append("Member name:").append(localIncompatibleClassChangeError).append("->Type:");
-        if (localObject3 != null) {
-          break label432;
-        }
-      }
-      i += 1;
+      localMessage.what = 3;
       continue;
-      localObject1 = new Field[paramVarArgs.length];
-      i = 0;
-    }
-    for (;;)
-    {
-      label294:
-      label346:
-      label375:
-      String str;
-      if (i < paramVarArgs.length)
+      label169:
+      if (paramanot.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))
       {
-        localObject3 = paramVarArgs[i];
-        if ((localObject3 == null) || (((String)localObject3).length() == 0)) {
-          break label465;
-        }
-        localObject1[i] = a((Class)localObject2, (String)localObject3);
-        break label465;
-        if ((localObject3 instanceof Long))
-        {
-          localEditor.putLong((String)localObject1, ((Long)localObject3).longValue());
-          break label153;
-        }
-        label432:
-        for (str = "NULL";; str = localObject3.getClass().getSimpleName().toString()) {
-          throw new RuntimeException(str + " is NOT SUPPORT!");
-        }
-        label448:
-        localEditor.commit();
-        break;
+        localMessage.what = 2;
       }
-      paramVarArgs = str;
-      break label54;
-      label465:
-      i += 1;
+      else
+      {
+        localMessage.what = 1;
+        continue;
+        label204:
+        paramanot = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+        if ((paramanot != null) && (paramanot.a() != -1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ComboUIManager", 2, "isTipsShown");
+          }
+        }
+        else {
+          label242:
+          if ((this.jdField_a_of_type_Azno != null) && (this.jdField_a_of_type_Azno.h()) && (localMessage.what < 11))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ComboUIManager", 2, "isTroopAioTipsShown");
+            }
+          }
+          else {
+            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 0L);
+          }
+        }
+      }
     }
   }
   
-  public static Field[] a(Class<? extends XmlData> paramClass)
+  public void a(ComboEggView paramComboEggView)
   {
-    ArrayList localArrayList = new ArrayList();
-    while (paramClass != aukm.class)
+    if (this.b != null)
     {
-      Field[] arrayOfField = paramClass.getDeclaredFields();
-      if (arrayOfField != null)
+      anot localanot = paramComboEggView.jdField_a_of_type_Anot;
+      if ((localanot != null) && (this.jdField_a_of_type_Anot.jdField_a_of_type_Int == localanot.jdField_a_of_type_Int)) {
+        b(localanot);
+      }
+      this.b.removeView(paramComboEggView);
+    }
+    f();
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView = null;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(12);
+  }
+  
+  public void c()
+  {
+    if (this.b != null)
+    {
+      FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+      a();
+      localFrameLayout.removeView(this.b);
+      this.b = null;
+    }
+    anou.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar = null;
+    }
+  }
+  
+  public void d()
+  {
+    anot localanot = a();
+    if (localanot != null) {
+      b(localanot);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    anot localanot1 = (anot)paramMessage.obj;
+    anot localanot2 = a();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (localanot1.jdField_a_of_type_Int > 999) {
+        localanot1.jdField_a_of_type_Int = 999;
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a()))
       {
-        j = arrayOfField.length;
-        i = 0;
-        while (i < j)
+        b(localanot1);
+      }
+      else if (ajey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "combo"))
+      {
+        b(localanot1);
+      }
+      else
+      {
+        if (localanot2 != null) {
+          b(localanot2);
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
         {
-          Field localField = arrayOfField[i];
-          if ((localField != null) && (!Modifier.isStatic(localField.getModifiers()))) {
-            localArrayList.add(localField);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(false);
           }
-          i += 1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.av();
+          if (paramMessage.what == 2)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = a(localanot1);
+          }
+          else
+          {
+            axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008096", "0X8008096", 0, 0, "", "", "", "");
+            if (a())
+            {
+              if (localanot1.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+                this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView = a(localanot1);
+              } else {
+                b(localanot1);
+              }
+            }
+            else
+            {
+              this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView = a(localanot1);
+              if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView == null)
+              {
+                b(localanot1);
+                continue;
+                if (localanot1.jdField_a_of_type_Int > 999) {
+                  localanot1.jdField_a_of_type_Int = 999;
+                }
+                b(localanot1);
+                continue;
+                c();
+                continue;
+                if (QLog.isColorLevel()) {
+                  QLog.d("ComboUIManager", 2, "[Doutu] + handleMessage : 12");
+                }
+                if (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar != null) {
+                  this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboNavigateBar.a();
+                }
+                this.jdField_a_of_type_Anot = null;
+                c();
+              }
+            }
+          }
         }
       }
-      paramClass = paramClass.getSuperclass();
     }
-    int j = localArrayList.size();
-    paramClass = new Field[j];
-    int i = 0;
-    while (i < j)
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView != null) || (this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboEggView != null))
     {
-      paramClass[i] = ((Field)localArrayList.get(i));
-      i += 1;
+      d();
+      f();
+      return true;
     }
-    return paramClass;
+    return false;
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    new Handler(Looper.getMainLooper()).post(new ComboUIManager.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anow
  * JD-Core Version:    0.7.0.1
  */

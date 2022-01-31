@@ -1,42 +1,94 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public final class szg
-  extends MSFServlet
+public class szg
+  extends tba
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+  String jdField_a_of_type_JavaLangString;
+  tbc jdField_a_of_type_Tbc;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
+  
+  public szg(CommentEntry paramCommentEntry, tbc paramtbc)
   {
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    paramIntent = null;
-    if (paramFromServiceMsg.isSuccess())
+    this(paramCommentEntry.feedId, paramCommentEntry.replierUnionId, paramCommentEntry.content, paramCommentEntry.fakeId, paramCommentEntry.pbType, paramCommentEntry.extras, paramCommentEntry.commentType, paramtbc);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+  }
+  
+  public szg(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, tbc paramtbc)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.jdField_a_of_type_Tbc = paramtbc;
+    paramString1 = vei.a("home_page-comment_suc-d1");
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
     {
-      paramIntent = bblm.b(paramFromServiceMsg.getWupBuffer());
-      localBundle.putInt("data_error_code", 0);
-    }
-    for (;;)
-    {
-      QQStoryContext.a().a().a(localBundle, paramIntent);
+      this.jdField_a_of_type_Int = paramInt1;
       return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String a()
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bblm.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
+    return sze.jdField_a_of_type_JavaLangString;
+  }
+  
+  public tbb a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
+    try
+    {
+      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
+      return new szh(localRspAddFeedComment, this.jdField_a_of_type_Tbc);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ved.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
+    localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqAddFeedComment.content.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqAddFeedComment.fake_id.set(this.jdField_a_of_type_Long);
+    localReqAddFeedComment.source.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqAddFeedComment.reply_union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (this.jdField_b_of_type_Int == 1) {
+      localReqAddFeedComment.type.set(1);
+    }
+    for (;;)
+    {
+      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
+      if (!TextUtils.isEmpty(this.d)) {
+        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
+      }
+      return localReqAddFeedComment.toByteArray();
+      localReqAddFeedComment.type.set(0);
+    }
   }
 }
 

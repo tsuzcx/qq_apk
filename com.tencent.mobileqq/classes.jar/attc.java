@@ -1,53 +1,16 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-@TargetApi(11)
-public class attc
-  implements View.OnDragListener
+class attc
+  implements DialogInterface.OnClickListener
 {
-  private int a;
+  attc(atsc paramatsc, bbgu parambbgu) {}
   
-  public attc(atsa paramatsa, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-      continue;
-      RelativeLayout localRelativeLayout = atsa.a(this.jdField_a_of_type_Atsa);
-      int i = this.jdField_a_of_type_Atsa.a.indexOfChild(paramView);
-      int j = this.jdField_a_of_type_Atsa.a.indexOfChild(localRelativeLayout);
-      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
-      {
-        try
-        {
-          this.jdField_a_of_type_Atsa.a.removeView(localRelativeLayout);
-          this.jdField_a_of_type_Atsa.a.addView(localRelativeLayout, i);
-          atsa.e(this.jdField_a_of_type_Atsa);
-        }
-        catch (Exception paramView) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
-          continue;
-          this.jdField_a_of_type_Atsa.a.post(new NearbyProfileEditPanel.OnPicDragListener.1(this));
-        }
-      }
-    }
+    this.jdField_a_of_type_Bbgu.dismiss();
+    this.jdField_a_of_type_Atsc.a.g();
   }
 }
 

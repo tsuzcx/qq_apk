@@ -1,27 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.RelativeLayout;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bksq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparable<bksq>
 {
-  public bksq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bksq(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.a.setAlpha(f);
-      }
-      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.c.setAlpha(Float.valueOf(f).floatValue());
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(bksq parambksq)
+  {
+    return -(int)(this.jdField_a_of_type_Long - parambksq.jdField_a_of_type_Long);
   }
 }
 

@@ -1,46 +1,62 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class ajau
-  implements AudioManager.OnAudioFocusChangeListener
+  implements SoundPool.OnLoadCompleteListener
 {
-  ajau(ajao paramajao) {}
+  ajau(ajat paramajat, float paramFloat, int paramInt, String paramString, ajbm paramajbm, JSONObject paramJSONObject) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
-    }
-    for (;;)
+    float f = 1.0F;
+    if (ajat.a(this.jdField_a_of_type_Ajat) != null)
     {
-      JSONObject localJSONObject;
       try
       {
-        localJSONObject = new JSONObject();
-        if (paramInt != 1) {
-          break label105;
+        if (-1.0F == this.jdField_a_of_type_Float) {}
+        for (;;)
+        {
+          paramInt1 = ajat.a(this.jdField_a_of_type_Ajat).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
+          if (paramInt1 != 0) {
+            break;
+          }
+          QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
+          return;
+          f = this.jdField_a_of_type_Float;
         }
-        localJSONObject.put("event", 2);
-        ajch localajch = ajae.a(ajao.a(this.a));
-        if ((localajch == null) || (localajch.a() == null)) {
-          break label104;
+        paramSoundPool = this.jdField_a_of_type_Ajbm;
+        if (paramSoundPool == null) {
+          break label159;
         }
-        ajae.a().callbackFromRequest(localajch.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
+        try
+        {
+          if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+          {
+            this.jdField_a_of_type_OrgJsonJSONObject.put("id", paramInt1);
+            this.jdField_a_of_type_Ajbm.a(this.jdField_a_of_type_OrgJsonJSONObject);
+            return;
+          }
+        }
+        catch (Throwable paramSoundPool)
+        {
+          QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramSoundPool, new Object[0]);
+          return;
+        }
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "result is null");
+      }
+      catch (Throwable paramSoundPool)
+      {
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "pool play failed", paramSoundPool);
         return;
       }
-      catch (Throwable localThrowable) {}
-      localJSONObject.put("event", 1);
-      continue;
-      label104:
       return;
-      label105:
-      if (paramInt != -1) {
-        if (paramInt != -2) {}
-      }
+      label159:
+      QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "handler is null");
+      return;
     }
+    QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "soundpool is null");
   }
 }
 

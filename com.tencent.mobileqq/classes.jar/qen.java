@@ -1,19 +1,26 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import mqq.app.QQPermissionCallback;
 
 public class qen
-  implements QQPermissionCallback
+  implements DialogInterface.OnDismissListener
 {
   public qen(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.p();
+    if (ReadInJoyDeliverUGCActivity.c(this.a))
+    {
+      ReadInJoyDeliverUGCActivity.c(this.a, false);
+      ReadInJoyDeliverUGCActivity.e(this.a);
+      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
+        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131718424));
+      }
+      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
+        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      }
+    }
   }
 }
 

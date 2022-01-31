@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bbpw;
+import bbqk;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -9,18 +9,18 @@ import mqq.os.MqqHandler;
 class VasQuickUpdateManager$TimeoutWrapper
   implements VasQuickUpdateManager.QueryItemVersionCallback, Runnable
 {
-  private bbpw callback;
+  private bbqk callback;
   private AtomicBoolean isDone = new AtomicBoolean(false);
-  private WeakReference<bbpw> weakReference;
+  private WeakReference<bbqk> weakReference;
   
-  private VasQuickUpdateManager$TimeoutWrapper(bbpw parambbpw, boolean paramBoolean)
+  private VasQuickUpdateManager$TimeoutWrapper(bbqk parambbqk, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.weakReference = new WeakReference(parambbpw);
+      this.weakReference = new WeakReference(parambbqk);
       return;
     }
-    this.callback = parambbpw;
+    this.callback = parambbqk;
   }
   
   private void onResult(int paramInt, String paramString1, String paramString2)
@@ -33,13 +33,13 @@ class VasQuickUpdateManager$TimeoutWrapper
       this.callback.a(paramInt, paramString1, paramString2);
     }
     label32:
-    bbpw localbbpw;
+    bbqk localbbqk;
     do
     {
       return;
-      localbbpw = (bbpw)this.weakReference.get();
-    } while (localbbpw == null);
-    localbbpw.a(paramInt, paramString1, paramString2);
+      localbbqk = (bbqk)this.weakReference.get();
+    } while (localbbqk == null);
+    localbbqk.a(paramInt, paramString1, paramString2);
   }
   
   public void onQueryItemVer(boolean paramBoolean, String paramString1, String paramString2)

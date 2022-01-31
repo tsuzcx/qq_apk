@@ -1,42 +1,136 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
 
-class wlq
-  implements View.OnLongClickListener
+public class wlq
+  extends woz<SubscribeDraftBean>
+  implements wpv
 {
-  wlq(wlo paramwlo, ExtraTypeInfo paramExtraTypeInfo, CertifiedAccountMeta.StFeed paramStFeed) {}
+  public static int a;
+  public static String a;
+  private int jdField_b_of_type_Int = ImmersiveUtils.a(19.0F);
+  private String jdField_b_of_type_JavaLangString;
+  private int c = ImmersiveUtils.a(3.0F);
   
-  public boolean onLongClick(View paramView)
+  static
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7003)
-      {
-        wlj.a(this.jdField_a_of_type_Wlo.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-        bool1 = true;
+    jdField_a_of_type_JavaLangString = "SubscribeDraftAdapter";
+    jdField_a_of_type_Int = ImmersiveUtils.a(4.0F);
+  }
+  
+  public wlq(Bundle paramBundle)
+  {
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public ArrayList<Class> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(SubDraftChangeEvent.class);
+    return localArrayList;
+  }
+  
+  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0) {
+      paramRect.left = jdField_a_of_type_Int;
+    }
+    for (paramRect.right = (this.c / 2);; paramRect.right = jdField_a_of_type_Int)
+    {
+      paramRect.bottom = this.jdField_b_of_type_Int;
+      return;
+      paramRect.left = (this.c / 2);
+    }
+  }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((paramSimpleBaseEvent instanceof SubDraftChangeEvent)) {
+      b();
+    }
+  }
+  
+  public void a(wpk paramwpk)
+  {
+    if ((paramwpk.d()) || (paramwpk.c())) {
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if ((a() != null) && (a() != null) && (((PublicFragmentActivity)a()).app != null))
+    {
+      this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)a()).app.getAccount();
+      if (wsw.a().a(this.jdField_b_of_type_JavaLangString)) {
+        wsw.a().a(this.jdField_b_of_type_JavaLangString, new wlr(this));
       }
     }
-    do
+    else
     {
-      do
-      {
-        return bool1;
-        if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType == 7002) {
-          return true;
-        }
-        bool1 = bool2;
-      } while (!(this.jdField_a_of_type_Wlo.itemView instanceof RelativeFeedItemView));
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null);
-    this.jdField_a_of_type_Wlo.a.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new wlr(this), new wls(this));
-    xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_feeds", "press", 0, 0, new String[] { "", this.jdField_a_of_type_Wlo.getAdapterPosition() + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-    return true;
+      return;
+    }
+    a();
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder instanceof wls)) {
+      ((wls)paramViewHolder).a((SubscribeDraftBean)b().get(paramInt));
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new wls(this, new SubScribeDraftItemView(paramViewGroup.getContext(), this));
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    wpt.a().b(this);
+  }
+  
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    wpt.a().a(this);
   }
 }
 

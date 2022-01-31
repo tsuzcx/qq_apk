@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bejs;
-import bfcj;
+import bekj;
+import bfda;
 
 class NativeViewContainer$5
   implements Runnable
 {
-  NativeViewContainer$5(NativeViewContainer paramNativeViewContainer, bejs parambejs) {}
+  NativeViewContainer$5(NativeViewContainer paramNativeViewContainer, bekj parambekj) {}
   
   public void run()
   {

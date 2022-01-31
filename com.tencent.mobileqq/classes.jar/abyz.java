@@ -1,30 +1,51 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abyz
-  implements ActionMode.Callback
+  extends aumg
 {
-  public abyz(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public abyz(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    }
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    }
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        RegisterQQNumberActivity.a(this.a, true);
+        RegisterQQNumberActivity.b(this.a);
+        return;
+      }
+      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
+      {
+        RegisterQQNumberActivity.a(this.a);
+        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
+        localIntent.putExtra("phonenum", this.a.a);
+        localIntent.putExtra("key", this.a.b);
+        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
+        localIntent.putExtra("key_register_binduin", paramString);
+        this.a.startActivity(localIntent);
+        this.a.finish();
+        return;
+      }
+      RegisterQQNumberActivity.b(this.a);
+      return;
+    }
+    RegisterQQNumberActivity.b(this.a);
   }
 }
 

@@ -1,52 +1,33 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 
 class sug
-  implements axez
+  implements aysb
 {
-  sug(suf paramsuf, String paramString) {}
+  sug(sue paramsue) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, axes paramaxes)
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    sul localsul;
-    if (paramaxes.jdField_a_of_type_Int == 0)
-    {
-      paramaxes = (aumz)paramaxes.jdField_a_of_type_JavaLangObject;
-      localsul = (sul)this.jdField_a_of_type_Suf.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      if (localsul != null)
-      {
-        if (!new File(paramaxes.b).exists()) {
-          break label99;
-        }
-        localsul.b = (System.currentTimeMillis() - localsul.jdField_a_of_type_Long);
-        if (localsul.jdField_a_of_type_Sue != null) {
-          localsul.jdField_a_of_type_Sue.a(localsul, new ErrorMessage(0, "onDownload"));
-        }
-      }
+    if ((paramaysy == null) || (paramaysz == null)) {}
+    while (!(paramaysy instanceof ayrx)) {
+      return;
     }
-    label99:
-    do
+    ayrx localayrx = (ayrx)paramaysy;
+    localayrx.jdField_a_of_type_Long += paramaysz.c;
+    paramaysz.c = 0L;
+    paramaysz = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
+    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+    String str1 = localayrx.jdField_a_of_type_JavaLangString;
+    if (str1.contains("range="))
     {
-      do
-      {
-        return;
-        veg.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-        return;
-        veg.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramaxes.jdField_a_of_type_Int) });
-        localsul = (sul)this.jdField_a_of_type_Suf.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      } while (localsul == null);
-      localsul.b = (System.currentTimeMillis() - localsul.jdField_a_of_type_Long);
-    } while (localsul.jdField_a_of_type_Sue == null);
-    localsul.jdField_a_of_type_Sue.a(localsul, new ErrorMessage(paramaxes.jdField_a_of_type_Int, "onFailed"));
+      String str2 = str1.substring(0, str1.lastIndexOf("range="));
+      localayrx.jdField_a_of_type_JavaLangString = (str2 + "range=" + localayrx.jdField_a_of_type_Long);
+    }
+    paramaysy = paramaysy.a();
+    if ((paramaysy != null) && ((paramaysy instanceof sui))) {
+      ((sui)paramaysy).b = true;
+    }
+    ved.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { paramaysz, str1 }));
   }
-  
-  public void a(int paramInt, ArrayList<axes> paramArrayList) {}
-  
-  public void b(int paramInt, axes paramaxes) {}
 }
 
 

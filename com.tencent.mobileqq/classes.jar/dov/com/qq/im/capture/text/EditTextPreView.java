@@ -9,13 +9,13 @@ import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bjgz;
+import bjhq;
 
 public class EditTextPreView
   extends ImageView
 {
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private bjgz jdField_a_of_type_Bjgz;
+  private bjhq jdField_a_of_type_Bjhq;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
   
   public EditTextPreView(Context paramContext)
@@ -68,7 +68,7 @@ public class EditTextPreView
     {
       return super.onTouchEvent(paramMotionEvent);
       return true;
-    } while ((this.jdField_a_of_type_Bjgz == null) || (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null));
+    } while ((this.jdField_a_of_type_Bjhq == null) || (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null));
     int i = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(paramMotionEvent, getWidth(), getHeight(), null, null);
     if (i > -1)
     {
@@ -77,7 +77,7 @@ public class EditTextPreView
       this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i));
       this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(i);
     }
-    this.jdField_a_of_type_Bjgz.a(this, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, i);
+    this.jdField_a_of_type_Bjhq.a(this, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, i);
     return true;
   }
   
@@ -87,9 +87,9 @@ public class EditTextPreView
     throw new UnsupportedOperationException("unSupport normal click listener, use EditTextPreView.OnClickListener instead");
   }
   
-  public void setOnClickListener(@Nullable bjgz parambjgz)
+  public void setOnClickListener(@Nullable bjhq parambjhq)
   {
-    this.jdField_a_of_type_Bjgz = parambjgz;
+    this.jdField_a_of_type_Bjhq = parambjhq;
   }
   
   public void setPreViewDrawer(DynamicTextItem paramDynamicTextItem)

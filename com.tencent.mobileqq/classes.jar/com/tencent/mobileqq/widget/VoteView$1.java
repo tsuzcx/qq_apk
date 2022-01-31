@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import bcry;
-import bcsa;
+import bcsn;
+import bcsp;
 
 public class VoteView$1
   implements Runnable
@@ -13,8 +13,8 @@ public class VoteView$1
   {
     if (VoteView.a(this.this$0))
     {
-      bcry.a(this.this$0);
-      this.this$0.findViewById(2131368902).setOnClickListener(new bcsa(this));
+      bcsn.a(this.this$0);
+      this.this$0.findViewById(2131368902).setOnClickListener(new bcsp(this));
     }
   }
 }

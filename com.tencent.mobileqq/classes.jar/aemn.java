@@ -1,23 +1,15 @@
-import java.util.List;
+import android.os.Handler;
 
 class aemn
-  extends ajvs
+  extends akat
 {
-  aemn(aemj paramaemj) {}
+  aemn(aemh paramaemh) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void f(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      this.a.b = aoee.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.t(false);
-      }
-    }
+    super.f(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,6 +1,14 @@
-public abstract interface vyw
+import android.view.View;
+
+public abstract class vyw
+  extends vyz
 {
-  public abstract void a(vyu paramvyu);
+  public vyw(vzb paramvzb, View paramView)
+  {
+    super(paramvzb, paramView);
+  }
+  
+  public abstract int a();
 }
 
 

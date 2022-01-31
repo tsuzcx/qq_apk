@@ -1,22 +1,20 @@
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class ruy
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public ruy(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
   
-  public ruy(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramValueAnimator.getCurrentPlayTime() >= 100L) && (!this.jdField_a_of_type_Boolean))
-    {
-      ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton).start();
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
   }
 }
 

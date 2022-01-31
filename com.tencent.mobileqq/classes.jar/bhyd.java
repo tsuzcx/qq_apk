@@ -1,14 +1,26 @@
-import android.text.TextUtils;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceStruct;
 
 public class bhyd
-  extends bdsj
 {
-  public void i(String paramString1, String paramString2)
+  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
-      return;
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    super.i(paramString1, paramString2);
+    try
+    {
+      paramClass = (JceStruct)paramClass.newInstance();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramClass.readFrom(paramArrayOfByte);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
   }
 }
 

@@ -1,20 +1,112 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.av.opengl.GraphicRenderMgr;
 
-final class lkz
-  implements Comparator<lky>
+public final class lkz
 {
-  public int a(lky paramlky1, lky paramlky2)
+  protected String a;
+  
+  public lkz(String paramString)
   {
-    if (paramlky1 == paramlky2) {
-      return 0;
+    this.a = paramString;
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return paramInt;
+      paramString = a(paramString);
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[0];
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      return paramString2;
+      paramString1 = a(paramString1);
+    } while ((paramString1 == null) || (paramString1.length <= 0));
+    return paramString1[0];
+  }
+  
+  public boolean a()
+  {
+    return TextUtils.isEmpty(this.a);
+  }
+  
+  public int[] a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    String[] arrayOfString;
+    int j;
+    int i;
+    try
+    {
+      localObject1 = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+      paramString = localObject2;
+      if (localObject1 != null)
+      {
+        if (((String)localObject1).equalsIgnoreCase("unknown")) {
+          paramString = localObject2;
+        }
+      }
+      else {
+        return paramString;
+      }
     }
-    if (paramlky1 == null) {
-      return -1;
+    catch (UnsatisfiedLinkError paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          localObject1 = null;
+        }
+        arrayOfString = ((String)localObject1).split(",");
+        paramString = localObject2;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      localObject1 = new int[j];
+      i = 0;
     }
-    if (paramlky2 == null) {
-      return 1;
+    for (;;)
+    {
+      paramString = (String)localObject1;
+      if (i >= j) {
+        break;
+      }
+      try
+      {
+        localObject1[i] = Integer.parseInt(arrayOfString[i].trim());
+        i += 1;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          localObject1[i] = 0;
+        }
+      }
     }
-    return paramlky1.a - paramlky2.a;
+  }
+  
+  public String[] a(String paramString)
+  {
+    paramString = GraphicRenderMgr.getInstance().findConfigValue(this.a, paramString, "unknown");
+    if ((paramString == null) || (paramString.equalsIgnoreCase("unknown"))) {
+      return null;
+    }
+    return paramString.trim().split(",");
   }
 }
 

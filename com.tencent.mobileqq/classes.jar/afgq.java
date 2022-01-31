@@ -1,20 +1,21 @@
-import android.app.Activity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afgq
-  implements afir
+  implements afit
 {
   public afgq(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public Activity a()
+  public void a(String paramString)
   {
-    return this.a.a();
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.a;
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
+      this.a.d = false;
+      this.a.a(paramString, false);
+    }
   }
 }
 

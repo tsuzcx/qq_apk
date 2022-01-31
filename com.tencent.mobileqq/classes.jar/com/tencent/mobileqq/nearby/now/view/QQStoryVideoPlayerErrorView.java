@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(ajyc.a(2131711089));
+    this.a.setText(ajya.a(2131711100));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -43,7 +43,7 @@ public class QQStoryVideoPlayerErrorView
   public void a(Context paramContext)
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2131559340, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131375200));
+    this.a = ((TextView)paramContext.findViewById(2131375202));
     this.b = ((TextView)paramContext.findViewById(2131377315));
   }
   

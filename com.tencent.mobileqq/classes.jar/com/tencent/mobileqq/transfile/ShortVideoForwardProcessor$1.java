@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import ayuu;
+import ayuw;
 
 public class ShortVideoForwardProcessor$1
   implements Runnable
 {
-  public ShortVideoForwardProcessor$1(ayuu paramayuu) {}
+  public ShortVideoForwardProcessor$1(ayuw paramayuw) {}
   
   public void run()
   {

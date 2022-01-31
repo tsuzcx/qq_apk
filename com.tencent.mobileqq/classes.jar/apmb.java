@@ -1,11 +1,14 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class apmb
-  implements aptu
+  implements aptw
 {
   apmb(apma paramapma) {}
   
   public void a()
   {
-    aply.a(this.a.a);
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
     if (this.a.a.a != null) {
       this.a.a.a.d();
     }

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class bgoe
-  implements DialogInterface.OnClickListener
+  extends aksu
 {
-  public bgoe(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bgoe(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.a.finish();
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  protected void a()
+  {
+    bgoc.a().c();
+  }
+  
+  protected void b()
+  {
+    bgoc.a().d();
   }
 }
 

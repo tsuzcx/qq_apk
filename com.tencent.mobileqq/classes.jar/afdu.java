@@ -1,29 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import mqq.app.QQPermissionCallback;
 
-public class afdu
-  implements View.OnTouchListener
+class afdu
+  implements QQPermissionCallback
 {
-  float jdField_a_of_type_Float = 0.0F;
+  afdu(afdt paramafdt) {}
   
-  public afdu(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
     }
+    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    if (akuf.a("recommend_troop") == null)
+    {
+      akuf.a(new afdv(this, "recommend_troop"));
+      return;
+    }
+    this.a.a.jdField_a_of_type_Afdk.a(false);
   }
 }
 

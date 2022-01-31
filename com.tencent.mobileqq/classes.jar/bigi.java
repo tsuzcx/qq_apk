@@ -1,29 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
 public class bigi
-  implements Animation.AnimationListener
 {
-  public bigi(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QIMEffectCameraCaptureUnit.f(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.f(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigi
  * JD-Core Version:    0.7.0.1
  */

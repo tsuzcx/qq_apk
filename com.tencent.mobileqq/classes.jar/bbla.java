@@ -1,37 +1,10 @@
-import android.content.Context;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.SingleLineTextView;
-
-public final class bbla
-  implements URLDrawable.URLDrawableListener
+final class bbla
+  implements bblf<Number>
 {
-  public bbla(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(actn.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
-      return;
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(null);
-      }
-    }
+    float f = paramNumber1.floatValue();
+    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
   }
 }
 

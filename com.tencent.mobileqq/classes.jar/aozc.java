@@ -1,94 +1,90 @@
-import android.os.Looper;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter.2;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Observable;
-import mqq.os.MqqHandler;
 
-public class aozc
-  extends Observable
+class aozc
+  extends aoun
 {
-  public QQAppInterface a;
-  MqqHandler a;
+  aozc(aozb paramaozb) {}
   
-  public aozc(QQAppInterface paramQQAppInterface)
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new aozd(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-  }
-  
-  private void b(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
-  {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("averageSpeed", String.valueOf(0.0F));
-    ((HashMap)localObject).put("peerUin", String.valueOf(paramFileManagerEntity.peerUin));
-    ((HashMap)localObject).put("fileType", apvb.a(paramFileManagerEntity.fileName));
-    switch (paramInt)
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo, bSuccess[" + paramBoolean + " retCode:" + paramInt1 + " downloadIp:" + paramString4 + " downloadDomain:" + paramString5 + " port:" + paramInt2 + " url:" + paramString6 + " cookie:" + paramString2);
+    aozd localaozd = aozb.a(this.a, paramLong, false);
+    if (localaozd == null)
     {
-    default: 
-      QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, "what type is report?!nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "],may be not report!");
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo no this session");
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
-    case 5: 
+    }
+    if (!paramBoolean)
+    {
+      this.a.a.a().a(false, 50, new Object[] { localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
-    case 6: 
-      localObject = "actFileOf2Of";
+    }
+    if ((paramString6 != null) && (paramString6.length() > 0))
+    {
+      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo url=null");
+      this.a.a.a().a(false, 50, new Object[] { localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+    }
+    paramString6 = null;
+    if ((paramString4 != null) && (paramString4.length() > 0)) {
+      paramString1 = paramString4;
+    }
+    while ((paramString1 == null) || (paramString1.length() < 0))
+    {
+      this.a.a.a().a(false, 50, new Object[] { localaozd.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+      paramString1 = paramString6;
+      if (paramString5 != null)
+      {
+        paramString1 = paramString6;
+        if (paramString5.length() > 0) {
+          paramString1 = paramString5;
+        }
+      }
+    }
+    if ((paramString3 == null) || (paramString3.length() < 0)) {
+      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo downloadKey invaild");
+    }
+    paramString5 = "/ftn_video_pic/rkey=" + paramString3 + "&filetype=" + localaozd.b + "&size=" + this.a.a(localaozd.jdField_a_of_type_Int) + "&";
+    paramBoolean = false;
+    short s1 = 0;
+    if ((apei.h(this.a.a)) && (paramBundle != null))
+    {
+      paramString4 = paramBundle.getString("strHttpsDomain");
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        boolean bool = true;
+        short s2 = paramBundle.getShort("httpsPort", (short)0);
+        paramBoolean = bool;
+        paramString3 = paramString4;
+        s1 = s2;
+        if (s2 == 0)
+        {
+          s1 = 443;
+          paramString3 = paramString4;
+          paramBoolean = bool;
+        }
+      }
     }
     for (;;)
     {
-      apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
+      paramString4 = "";
+      if (apvm.b(this.a.a)) {
+        paramString4 = paramBundle.getString("IPv6Dns");
+      }
+      this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s1, paramString4);
       return;
-      localObject = "actFileOf2Wy";
-      continue;
-      localObject = "actFileWy2Of";
-      continue;
-      localObject = "actFileDisc2Of";
-      continue;
-      localObject = "actFileDisc2Disc";
-      continue;
-      localObject = "actFileTroop2Of";
-      continue;
-      localObject = "actFileTroop2Disc";
-    }
-  }
-  
-  public void a()
-  {
-    a(true, 3, null);
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, Object paramObject, int paramInt3, String paramString2)
-  {
-    setChanged();
-    if (paramObject == null)
-    {
-      notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), paramString2 });
-      return;
-    }
-    notifyObservers(new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString1, Integer.valueOf(paramInt1), paramObject });
-  }
-  
-  public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
-  {
-    b(paramFileManagerEntity, paramInt, paramString);
-    ThreadManager.executeOnSubThread(new FileManagerNotifyCenter.2(this, paramFileManagerEntity, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, Object paramObject)
-  {
-    try
-    {
-      setChanged();
-      notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject });
-      return;
-    }
-    finally
-    {
-      paramObject = finally;
-      throw paramObject;
+      paramString3 = null;
     }
   }
 }

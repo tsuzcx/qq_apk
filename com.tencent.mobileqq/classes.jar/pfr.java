@@ -1,53 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
-import org.json.JSONObject;
 
 class pfr
   implements ViewBase.OnClickListener
 {
-  pfr(pfq parampfq, pax parampax, int paramInt, Container paramContainer) {}
+  pfr(pfp parampfp, int paramInt, pau parampau, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pax.a();
-    if (localArticleInfo == null) {}
-    JSONObject localJSONObject;
-    do
+    boolean bool;
+    ram localram;
+    if (this.jdField_a_of_type_Int == 1150)
     {
-      return;
-      localJSONObject = localArticleInfo.getProteusItemData();
-    } while (localJSONObject == null);
-    rap localrap = this.jdField_a_of_type_Pax.a();
-    if (this.jdField_a_of_type_Int == 1120) {}
-    for (boolean bool = true;; bool = false)
+      bool = true;
+      localram = this.jdField_a_of_type_Pau.a();
+      if (!bool) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
     {
-      paramViewBase = localArticleInfo;
-      if (!bool)
-      {
-        paramViewBase = localArticleInfo;
-        if (localArticleInfo.mSubArtilceList != null)
-        {
-          paramViewBase = localArticleInfo;
-          if (localArticleInfo.mSubArtilceList.size() > 0)
-          {
-            paramViewBase = localArticleInfo;
-            if (localArticleInfo.mSubArtilceList.get(0) != null) {
-              paramViewBase = (BaseArticleInfo)localArticleInfo.mSubArtilceList.get(0);
-            }
-          }
-        }
-      }
-      if (!qol.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())) {
-        pfq.a(this.jdField_a_of_type_Pfq, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase, localrap);
-      }
-      osj.a().a(paramViewBase.mArticleID, System.currentTimeMillis());
-      pfq.a(this.jdField_a_of_type_Pfq, paramViewBase, bool, localJSONObject);
-      localrap.notifyDataSetChanged();
+      localram.b(bool, paramViewBase);
       return;
+      bool = false;
+      break;
     }
   }
 }

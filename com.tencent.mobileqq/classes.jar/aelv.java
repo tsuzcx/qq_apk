@@ -1,12 +1,10 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class aelv
-  extends aelu
+  extends aels
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
+  public String b;
   
   public aelv(String paramString)
   {
@@ -15,16 +13,14 @@ public class aelv
   
   public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if (paramRedPacketInfo != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+    return !TextUtils.isEmpty(this.b);
   }
 }
 

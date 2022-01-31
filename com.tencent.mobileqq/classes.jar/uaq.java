@@ -1,23 +1,19 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.support.annotation.Nullable;
+import java.io.File;
 
 public class uaq
-  implements ucu
+  extends ssh
 {
-  public uaq(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
   
-  public void a(@NonNull View paramView, int paramInt)
+  public uaq(String paramString, boolean paramBoolean, File paramFile)
   {
-    if (bkur.a)
-    {
-      paramInt = StoryPlayerGroupHolder.a(this.a);
-      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-      paramView.bottomMargin = paramInt;
-      this.a.a.setLayoutParams(paramView);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 

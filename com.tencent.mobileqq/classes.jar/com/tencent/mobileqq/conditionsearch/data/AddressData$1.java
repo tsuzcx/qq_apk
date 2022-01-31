@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class AddressData$1
@@ -11,7 +11,7 @@ class AddressData$1
     int i = 0;
     while (i < 3)
     {
-      bcpw.a(BaseApplicationImpl.sApplication, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.a, 1).a();
+      bcql.a(BaseApplicationImpl.sApplication, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.a, 1).a();
       i += 1;
     }
   }

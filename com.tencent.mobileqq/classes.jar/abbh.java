@@ -1,17 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import mqq.os.MqqHandler;
 
 public class abbh
-  extends BroadcastReceiver
+  extends MqqHandler
 {
-  public abbh(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public abbh(FontSettingActivity paramFontSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    if (FavEmosmManageActivity.a(this.a) != null) {
-      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
+    if (16711697 == paramMessage.what)
+    {
+      ajwc.a(this.a, FontSettingActivity.a(this.a), false);
+      this.a.c = true;
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

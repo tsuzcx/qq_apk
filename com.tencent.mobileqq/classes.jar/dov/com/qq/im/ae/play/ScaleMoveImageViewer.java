@@ -15,9 +15,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import biyr;
-import bizc;
-import bizr;
+import bizi;
+import bizt;
+import bjai;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 import java.lang.reflect.Field;
@@ -33,7 +33,7 @@ public class ScaleMoveImageViewer
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private biyr jdField_a_of_type_Biyr;
+  private bizi jdField_a_of_type_Bizi;
   private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
@@ -140,8 +140,8 @@ public class ScaleMoveImageViewer
       if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap != null) {
         this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap, 0, 0, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.getWidth() - 1, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap.getHeight() - 1);
       }
-      if (this.jdField_a_of_type_Biyr != null) {
-        this.jdField_a_of_type_Biyr.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+      if (this.jdField_a_of_type_Bizi != null) {
+        this.jdField_a_of_type_Bizi.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
       }
     }
     for (;;)
@@ -154,10 +154,10 @@ public class ScaleMoveImageViewer
       try
       {
         this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.cropBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap, k, m, n, i1);
-        if (this.jdField_a_of_type_Biyr == null) {
+        if (this.jdField_a_of_type_Bizi == null) {
           continue;
         }
-        this.jdField_a_of_type_Biyr.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.jdField_a_of_type_Bizi.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
@@ -247,8 +247,8 @@ public class ScaleMoveImageViewer
       return;
     }
     b();
-    bizc.a().h();
-    bizr.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
+    bizt.a().h();
+    bjai.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeID);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -336,9 +336,9 @@ public class ScaleMoveImageViewer
           this.jdField_a_of_type_Int = 0;
           if ((Math.abs(this.h - this.f) > 10.0F) || (Math.abs(this.g - this.i) > 10.0F))
           {
-            if (this.jdField_a_of_type_Biyr != null)
+            if (this.jdField_a_of_type_Bizi != null)
             {
-              this.jdField_a_of_type_Biyr.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+              this.jdField_a_of_type_Bizi.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
               return true;
             }
           }
@@ -388,8 +388,8 @@ public class ScaleMoveImageViewer
   {
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap = paramBitmap;
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.once = true;
-    if (this.jdField_a_of_type_Biyr != null) {
-      this.jdField_a_of_type_Biyr.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Bizi != null) {
+      this.jdField_a_of_type_Bizi.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
   }
   
@@ -405,9 +405,9 @@ public class ScaleMoveImageViewer
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.type = paramNodeItem.type;
   }
   
-  public void setOnSaveScrollInfoListener(biyr parambiyr)
+  public void setOnSaveScrollInfoListener(bizi parambizi)
   {
-    this.jdField_a_of_type_Biyr = parambiyr;
+    this.jdField_a_of_type_Bizi = parambizi;
   }
 }
 

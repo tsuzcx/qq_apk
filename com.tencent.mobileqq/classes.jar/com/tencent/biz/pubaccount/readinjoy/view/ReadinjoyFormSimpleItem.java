@@ -41,32 +41,32 @@ public class ReadinjoyFormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130845474);
+      return paramResources.getDrawable(2130845480);
     case 0: 
       if (b) {
-        return paramResources.getDrawable(2130845474);
+        return paramResources.getDrawable(2130845480);
       }
-      return paramResources.getDrawable(2130845468);
+      return paramResources.getDrawable(2130845474);
     case 1: 
       if (b) {
-        return paramResources.getDrawable(2130845477);
+        return paramResources.getDrawable(2130845483);
       }
-      return paramResources.getDrawable(2130845473);
+      return paramResources.getDrawable(2130845479);
     case 2: 
       if (b) {
-        return paramResources.getDrawable(2130845476);
+        return paramResources.getDrawable(2130845482);
       }
-      return paramResources.getDrawable(2130845471);
+      return paramResources.getDrawable(2130845477);
     }
     if (b) {
-      return paramResources.getDrawable(2130845475);
+      return paramResources.getDrawable(2130845481);
     }
-    return paramResources.getDrawable(2130845469);
+    return paramResources.getDrawable(2130845475);
   }
   
   public void a()
   {
-    setArrowIcon(getResources().getDrawable(2130846327));
+    setArrowIcon(getResources().getDrawable(2130846333));
     super.a();
   }
 }

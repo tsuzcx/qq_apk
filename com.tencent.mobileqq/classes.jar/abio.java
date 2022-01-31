@@ -1,56 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class abio
-  implements View.OnClickListener
+  implements antx
 {
   public abio(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.app, null);
-    int i;
-    if ((k & 0x2) != 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
+    }
+    paramInt -= 1;
+    byte b;
+    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
     {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label92;
+      Object localObject = (Groups)this.a.a.get(paramInt);
+      b = (byte)((Groups)localObject).group_id;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+      }
+      if (b == 0)
+      {
+        localObject = new bcql(this.a);
+        ((bcql)localObject).d(2000);
+        ((bcql)localObject).c(2131720341);
+        ((bcql)localObject).a();
       }
     }
-    for (;;)
+    else
     {
-      if ((i == 0) && (j == 0)) {
-        break label97;
-      }
-      if (30 != this.a.a.size()) {
-        break label145;
-      }
-      paramView = new bcpw(this.a);
-      paramView.d(2000);
-      paramView.c(2131720324);
-      paramView.a();
-      return;
-      i = 0;
-      break;
-      label92:
-      j = 0;
-    }
-    label97:
-    if (16 == this.a.a.size())
-    {
-      paramView = new bcpw(this.a);
-      paramView.d(2000);
-      paramView.c(2131720323);
-      paramView.a();
       return;
     }
-    label145:
-    GroupManagerActivity.a(this.a, bbcv.a(this.a, 2131693221, 2131693227, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 0);
+    GroupManagerActivity.a(this.a, b);
+    axqy.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

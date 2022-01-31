@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import java.util.Iterator;
 import java.util.List;
-import saw;
-import sbc;
+import sat;
+import saz;
 
 class FolderFollowTabFragment$8
   implements Runnable
@@ -17,9 +17,9 @@ class FolderFollowTabFragment$8
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        saw localsaw = (saw)localIterator.next();
-        if (localsaw.b > 0) {
-          sbc.a().b(FolderFollowTabFragment.a(this.this$0), localsaw, false);
+        sat localsat = (sat)localIterator.next();
+        if (localsat.b > 0) {
+          saz.a().b(FolderFollowTabFragment.a(this.this$0), localsat, false);
         }
       }
     }

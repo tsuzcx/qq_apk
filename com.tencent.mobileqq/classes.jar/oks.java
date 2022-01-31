@@ -1,16 +1,9 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oks
-  implements bfps
+public abstract interface oks
+  extends ViewBase.OnClickListener
 {
-  public oks(NativeCommentTextView paramNativeCommentTextView) {}
-  
-  public void a()
-  {
-    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167134));
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

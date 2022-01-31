@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
 import android.content.res.AssetManager;
-import bjci;
-import bjdc;
-import bkyy;
+import bjcz;
+import bjdt;
+import bkzp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,12 +12,12 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import nax;
+import nau;
 
 public class QIMPtvTemplateManager$1
   implements Runnable
 {
-  public QIMPtvTemplateManager$1(bkyy parambkyy, boolean paramBoolean) {}
+  public QIMPtvTemplateManager$1(bkzp parambkzp, boolean paramBoolean) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class QIMPtvTemplateManager$1
           localObject5 = BaseApplication.getContext().getAssets().open("ptv_template_new.cfg");
           localObject1 = localObject5;
           localObject3 = localObject5;
-          String str = nax.a((InputStream)localObject5);
+          String str = nau.a((InputStream)localObject5);
           localObject1 = str;
           localObject3 = localObject1;
           if (localObject5 == null) {}
@@ -96,7 +96,7 @@ public class QIMPtvTemplateManager$1
             if (this.this$0.a() == null) {
               continue;
             }
-            this.this$0.a().notifyObservers(bjdc.class, 3, true, null);
+            this.this$0.a().notifyObservers(bjdt.class, 3, true, null);
             return;
           }
         }
@@ -115,12 +115,12 @@ public class QIMPtvTemplateManager$1
           localObject3 = localObject1;
         }
       }
-      localObject1 = bkyy.a(this.this$0, (String)localObject3);
+      localObject1 = bkzp.a(this.this$0, (String)localObject3);
     } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
     localObject3 = ((List)localObject1).iterator();
     while (((Iterator)localObject3).hasNext())
     {
-      localObject5 = ((bjci)((Iterator)localObject3).next()).jdField_a_of_type_JavaUtilList.iterator();
+      localObject5 = ((bjcz)((Iterator)localObject3).next()).jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject5).hasNext())
       {
         localObject6 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject5).next();

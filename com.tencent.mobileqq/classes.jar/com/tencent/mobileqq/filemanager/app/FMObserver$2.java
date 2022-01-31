@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aouj;
-import apev;
+import aoun;
+import apez;
 
 public class FMObserver$2
   implements Runnable
 {
-  public FMObserver$2(aouj paramaouj, apev paramapev) {}
+  public FMObserver$2(aoun paramaoun, apez paramapez) {}
   
   public void run()
   {

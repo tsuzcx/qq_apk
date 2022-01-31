@@ -1,15 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 class bigv
-  implements View.OnTouchListener
+  implements agmh
 {
-  bigv(bigs parambigs) {}
+  bigv(bigp parambigp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    return true;
+    if (!paramBoolean)
+    {
+      this.a.a(101);
+      return;
+    }
+    this.a.a(this.a.a, paramLocalMediaInfo);
   }
 }
 

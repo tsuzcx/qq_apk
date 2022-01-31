@@ -1,14 +1,20 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class mpd
-  extends lgl
+  implements mpj
 {
-  mpd(mpc parammpc) {}
+  mpd(moz parammoz) {}
   
-  protected void a(long paramLong)
+  public void a(mpi parammpi)
   {
-    this.a.a("onConnected_init_when_not_support");
-    mpc.a(this.a).b(this);
+    if (parammpi == this.a.jdField_a_of_type_Mpi)
+    {
+      this.a.jdField_a_of_type_Mpi = null;
+      this.a.jdField_a_of_type_Mpj = null;
+      this.a.a("onGetRedBagResult", moz.d(this.a), parammpi.a);
+      return;
+    }
+    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + parammpi + "], src[" + this.a.jdField_a_of_type_Mpi + "]");
   }
 }
 

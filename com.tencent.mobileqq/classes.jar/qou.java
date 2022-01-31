@@ -1,24 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
 final class qou
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  qou(WindowManager paramWindowManager, ViewGroup paramViewGroup, WindowManager.LayoutParams paramLayoutParams) {}
+  qou(View paramView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_AndroidViewWindowManager == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null)) {
-      return;
-    }
-    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramValueAnimator.y;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramValueAnimator.x;
-    this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
+    this.a.setTranslationY(0.0F);
   }
 }
 

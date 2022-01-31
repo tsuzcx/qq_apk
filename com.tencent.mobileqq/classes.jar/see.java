@@ -1,57 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import org.json.JSONObject;
+import android.util.Log;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.LongSerializationPolicy;
 
 public class see
-  extends sfd
 {
-  final int a = 3;
+  private static final String jdField_a_of_type_JavaLangString = see.class.getName();
+  private static see jdField_a_of_type_See;
+  private Gson jdField_a_of_type_ComGoogleGsonGson = new GsonBuilder().serializeSpecialFloatingPointValues().setLongSerializationPolicy(LongSerializationPolicy.STRING).create();
   
-  public see(BaseApplicationImpl paramBaseApplicationImpl)
+  public static see a()
   {
-    super(paramBaseApplicationImpl);
+    if (jdField_a_of_type_See == null) {
+      jdField_a_of_type_See = new see();
+    }
+    return jdField_a_of_type_See;
   }
   
-  public static URL a(String paramString)
+  public <T> T a(String paramString, Class<T> paramClass)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
+    if (paramString == null) {}
     try
     {
-      paramString = new URL("pubaccountimage_gifplaytime", null, paramString);
-      return paramString;
+      return paramClass.newInstance();
     }
-    catch (MalformedURLException paramString)
+    catch (JsonSyntaxException paramString)
+    {
+      Log.e(jdField_a_of_type_JavaLangString, "form json error.");
+      return null;
+    }
+    catch (InstantiationException paramString)
     {
       for (;;)
       {
-        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
-        paramString = null;
+        Log.e(jdField_a_of_type_JavaLangString, paramClass.getName() + "clazz new instance instantiation error.");
       }
     }
+    catch (IllegalAccessException paramString)
+    {
+      for (;;)
+      {
+        Log.e(jdField_a_of_type_JavaLangString, paramClass.getName() + "clazz IllegalAccessException error.");
+      }
+    }
+    catch (NumberFormatException paramString)
+    {
+      for (;;)
+      {
+        Log.e(jdField_a_of_type_JavaLangString, paramClass.getName() + "clazz NumberFormatException error.");
+      }
+    }
+    paramString = this.jdField_a_of_type_ComGoogleGsonGson.fromJson(paramString, paramClass);
+    return paramString;
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public String a(Object paramObject)
   {
-    if (GifDrawable.isGifFile(paramFile)) {
-      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
-    {
-      return new sef(paramFile, true, i);
-      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
-    }
+    return this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramObject);
   }
 }
 

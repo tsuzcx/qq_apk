@@ -1,38 +1,37 @@
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.List;
+import com.tencent.widget.ThemeImageView;
 
 public class awwk
-  implements awwo
+  extends awwl
 {
-  protected View a;
+  public Button a;
   
-  public awwk(ViewGroup paramViewGroup)
+  public awwk(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a = new LinearLayout(paramViewGroup.getContext());
-    this.a.setVisibility(8);
+    super(paramViewGroup, paramInt);
   }
   
-  public View a()
+  public Button a()
   {
     return this.a;
   }
   
-  public TextView a()
+  protected void a()
   {
-    return null;
-  }
-  
-  public List<awwp> a()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    this.h = ((TextView)this.b.findViewById(2131370832));
+    this.e = ((ImageView)this.b.findViewById(2131361795));
+    this.i = ((TextView)this.b.findViewById(2131375196));
+    this.k = ((TextView)this.b.findViewById(2131376341));
+    this.a = ((Button)this.b.findViewById(2131375183));
+    this.a.setText(ajya.a(2131689628));
+    this.j = ((TextView)this.b.findViewById(2131375193));
+    if ((this.e instanceof ThemeImageView)) {
+      ((ThemeImageView)this.e).setSupportMaskView(true);
+    }
   }
 }
 

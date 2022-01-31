@@ -1,20 +1,30 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aopv
+  implements View.OnClickListener
 {
-  public int a;
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public Object a;
-  public boolean a;
-  public int b;
-  public ImageView b;
-  public ImageView c;
+  public aopv(UniformDownloadActivity paramUniformDownloadActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    if (UniformDownloadActivity.a(this.a)) {
+      bdkd.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
+      bdkd.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    }
+  }
 }
 
 

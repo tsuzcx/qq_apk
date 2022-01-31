@@ -1,21 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class abju
-  extends BroadcastReceiver
+  implements aaqa
 {
   public abju(JumpActivity paramJumpActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.finish();
-      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
-    }
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 

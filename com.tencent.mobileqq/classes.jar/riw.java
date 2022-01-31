@@ -1,19 +1,23 @@
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.Window;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.2;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public class riw
-  implements rki
+  implements InvocationHandler
 {
-  public riw(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  public riw(FastWebActivity.25.2 param2) {}
   
-  public BaseData a()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-  }
-  
-  public void a()
-  {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.a.a).setVisibility(8);
+    QLog.d(FastWebActivity.a(this.a.a.a), 1, "open web page, set activity transparent");
+    return null;
   }
 }
 

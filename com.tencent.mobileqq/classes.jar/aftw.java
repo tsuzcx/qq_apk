@@ -1,78 +1,32 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import java.util.Iterator;
+import java.util.List;
 
-class aftw
-  extends BaseAdapter
+public class aftw
+  implements View.OnClickListener
 {
-  private aftw(aftu paramaftu) {}
+  public aftw(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return 6;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(aftu.a(this.a)).inflate(2131562538, null);
+    paramView = this.a.a.iterator();
+    while (paramView.hasNext()) {
+      ((EmoticonFromGroupEntity)paramView.next()).status = -1;
     }
-    int j;
-    int i;
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      j = 2130838750;
-      i = 2131719488;
-      paramInt = 2131720047;
-    }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131362668);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131362680);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      if (AppSetting.d) {
-        paramViewGroup.setContentDescription(aftu.a(this.a).getString(paramInt));
-      }
-      return paramViewGroup;
-      i = 2131719503;
-      j = 2130838754;
-      paramInt = 2131720063;
-      continue;
-      i = 2131719505;
-      j = 2130838755;
-      paramInt = 2131720064;
-      continue;
-      i = 2131719511;
-      j = 2130838758;
-      paramInt = 2131720071;
-      continue;
-      i = 2131719500;
-      j = 2130838752;
-      paramInt = 2131720054;
-      continue;
-      paramInt = 2131717191;
-      i = 2131717191;
-      j = 2130841940;
-    }
+    this.a.a.clear();
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.a(this.a).a = false;
+    EmoticonGroupStoreFragment.a(this.a).a(false);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.e(this.a);
+    this.a.a(true);
+    this.a.resetLeftButton();
   }
 }
 

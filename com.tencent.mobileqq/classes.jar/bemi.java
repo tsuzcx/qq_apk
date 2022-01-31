@@ -1,13 +1,8 @@
-import com.tencent.qqmini.sdk.core.widget.CanvasView;
-
-public class bemi
+public abstract interface bemi<T>
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
+  public abstract void a(bemh<T> parambemh);
   
-  public bemi(CanvasView paramCanvasView) {}
+  public abstract void b(bemh<T> parambemh);
 }
 
 

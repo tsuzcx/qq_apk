@@ -1,26 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.os.Message;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ahjy
-  implements Animation.AnimationListener
+class ahjy
+  extends akwq
 {
-  public ahjy(AnonymousEntranceView paramAnonymousEntranceView) {}
+  ahjy(ahjx paramahjx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      ahjx.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
     }
   }
 }

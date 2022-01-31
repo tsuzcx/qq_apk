@@ -1,94 +1,218 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v4.util.ArrayMap;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemAnimator.ItemAnimatorFinishedListener;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.View.OnTouchListener;
+import android.view.ViewPropertyAnimator;
+import android.view.ViewStub;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.list.ColorNoteListLayout;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class amib
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements amim, RecyclerView.ItemAnimator.ItemAnimatorFinishedListener, View.OnClickListener
 {
-  amhx jdField_a_of_type_Amhx;
-  amhy jdField_a_of_type_Amhy;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  MusicDanceDrawable jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable;
-  public View b;
-  public TextView b;
+  private static int jdField_a_of_type_Int = 2131167148;
+  private static int jdField_b_of_type_Int = 2131167134;
+  private static int c = 2130839000;
+  private amhw jdField_a_of_type_Amhw;
+  private amim jdField_a_of_type_Amim;
+  private Context jdField_a_of_type_AndroidContentContext;
+  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ColorNoteListLayout jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout;
+  private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
+  private boolean jdField_a_of_type_Boolean;
+  private View jdField_b_of_type_AndroidViewView;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public amib(amhx paramamhx, View paramView)
+  public amib(Context paramContext, amim paramamim)
   {
-    super(paramView);
-    this.jdField_a_of_type_Amhx = paramamhx;
-    Resources localResources = paramView.getContext().getResources();
-    paramView.setOnClickListener(this);
-    View localView1 = paramView.findViewById(2131370928);
-    bawi.a(localView1, false);
-    localView1.setOnClickListener(this);
-    View localView2 = paramView.findViewById(2131370929);
-    bawi.a(localView2, false);
-    localView2.setOnClickListener(this);
-    if (amhx.a(paramamhx))
-    {
-      i = 8;
-      localView1.setVisibility(i);
-      if (!amhx.a(paramamhx)) {
-        break label329;
-      }
-    }
-    label329:
-    for (int i = j;; i = 8)
-    {
-      localView2.setVisibility(i);
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370921);
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(localResources.getString(2131690866));
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370918);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370922));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370932));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(actn.a(3.0F, localResources));
-      this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      bawi.a(this.jdField_a_of_type_AndroidWidgetTextView, true);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370930));
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      bawi.a(this.jdField_b_of_type_AndroidWidgetTextView, true);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370923));
-      this.jdField_a_of_type_Amhy = new amhy(paramamhx, this);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_Amhy);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amhz(paramamhx, this));
-      this.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable = new MusicDanceDrawable();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteAnimMusicDanceDrawable.a(paramView.getContext(), actn.a(15.0F, localResources), actn.a(9.5F, localResources));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Amim = paramamim;
+  }
+  
+  private void c()
+  {
+    e();
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558809, null);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout = ((ColorNoteListLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364389));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364393));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363399));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.a();
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131364392));
+    Object localObject = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext);
+    ((LinearLayoutManager)localObject).setOrientation(1);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new amic(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new amid(this));
+    localObject = new amie(this);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener((View.OnTouchListener)localObject);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131363399).setOnTouchListener((View.OnTouchListener)localObject);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext), 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setFocusableInTouchMode(true);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setFocusable(true);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.requestFocus();
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0) && (this.jdField_b_of_type_AndroidViewView.hasFocus())) {
       return;
-      i = 0;
-      break;
+    }
+    this.jdField_a_of_type_AndroidViewView.animate().alpha(0.0F).setDuration(200L).start();
+    ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.animate().setInterpolator(new AccelerateInterpolator(3.0F));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (float f = -this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getWidth();; f = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getWidth())
+    {
+      localViewPropertyAnimator.translationX(f).setDuration(180L).setListener(new amij(this)).start();
+      return;
     }
   }
   
-  public ColorNote a(int paramInt)
+  private void e()
   {
-    return (ColorNote)amhx.a(this.jdField_a_of_type_Amhx).get(paramInt);
+    if (ThemeUtil.isNowThemeIsNight(null, false, null))
+    {
+      jdField_a_of_type_Int = 2131165291;
+      jdField_b_of_type_Int = 2131165275;
+      c = 2130839001;
+      return;
+    }
+    jdField_a_of_type_Int = 2131167148;
+    jdField_b_of_type_Int = 2131167134;
+    c = 2130839000;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    c();
+    this.jdField_a_of_type_Amhw = new amhw();
+    this.jdField_a_of_type_Amhw.a(this);
+    this.jdField_a_of_type_Amhw.a(paramBoolean);
+    List localList = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a();
+    this.jdField_a_of_type_Amhw.a(localList);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Amhw);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
+    this.jdField_a_of_type_Amhw.a(new amif(this));
+    Object localObject;
+    if (localList.size() > 0)
+    {
+      localObject = (ColorNote)localList.get(0);
+      if (amhh.b((ColorNote)localObject)) {
+        axqy.b(null, "dc00898", "", "", "0X800A8AA", "0X800A8AA", amgm.b(amhh.a(((ColorNote)localObject).getServiceType())), 0, "", "", "", "");
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setAnchor(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setHideListener(this);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+    this.jdField_a_of_type_AndroidViewView.animate().alpha(0.9F).setDuration(200L).setListener(new amii(this, paramBoolean)).start();
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      localObject = new ArrayMap();
+      localIterator = localList.iterator();
+      label266:
+      if (!localIterator.hasNext()) {
+        break label350;
+      }
+      paramInt2 = ((ColorNote)localIterator.next()).getServiceType();
+      if (!((ArrayMap)localObject).containsValue(Integer.valueOf(paramInt2))) {
+        break label345;
+      }
+    }
+    label345:
+    for (paramInt1 = ((Integer)((ArrayMap)localObject).valueAt(paramInt2)).intValue() + 1;; paramInt1 = 1)
+    {
+      ((ArrayMap)localObject).put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+      break label266;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      break;
+    }
+    label350:
+    Iterator localIterator = ((ArrayMap)localObject).keySet().iterator();
+    paramInt1 = 0;
+    paramInt2 = 0;
+    int i;
+    if (localIterator.hasNext())
+    {
+      i = ((Integer)localIterator.next()).intValue();
+      if (((Integer)((ArrayMap)localObject).get(Integer.valueOf(i))).intValue() <= paramInt2) {
+        break label519;
+      }
+      paramInt1 = ((Integer)((ArrayMap)localObject).get(Integer.valueOf(i))).intValue();
+    }
+    for (paramInt2 = i;; paramInt2 = i)
+    {
+      i = paramInt2;
+      paramInt2 = paramInt1;
+      paramInt1 = i;
+      break;
+      axqy.b(null, "dc00898", "", "", "0X800A6CD", "0X800A6CD", 0, 0, localList.size() + "", amgm.a(paramInt1) + "", "", "");
+      return;
+      label519:
+      i = paramInt1;
+      paramInt1 = paramInt2;
+    }
+  }
+  
+  public void b()
+  {
+    e();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(c);
+  }
+  
+  public void onAnimationsFinished()
+  {
+    if (this.jdField_a_of_type_Amhw.getItemCount() == 0) {
+      d();
+    }
   }
   
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    }
-    do
-    {
+    default: 
       return;
-    } while (amhx.a(this.jdField_a_of_type_Amhx) == null);
-    amhx.a(this.jdField_a_of_type_Amhx).a();
-    axqw.b(null, "dc00898", "", "", "0X800A6CE", "0X800A6CE", 0, 0, "", "", "", "");
+    }
+    d();
+    axqy.b(null, "dc00898", "", "", "0X800A6CE", "0X800A6CE", 0, 0, "", "", "", "");
   }
 }
 

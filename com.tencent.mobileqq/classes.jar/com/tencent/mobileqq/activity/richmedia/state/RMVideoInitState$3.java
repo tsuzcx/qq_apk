@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ahxq;
-import ahyb;
+import ahxo;
+import ahxz;
 
 public class RMVideoInitState$3
   implements Runnable
 {
-  public RMVideoInitState$3(ahxq paramahxq) {}
+  public RMVideoInitState$3(ahxo paramahxo) {}
   
   public void run()
   {

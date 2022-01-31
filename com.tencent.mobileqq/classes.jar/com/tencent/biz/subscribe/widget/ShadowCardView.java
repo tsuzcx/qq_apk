@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.R.styleable;
-import veg;
+import ved;
 
 public class ShadowCardView
   extends FrameLayout
@@ -69,7 +69,7 @@ public class ShadowCardView
     {
       for (;;)
       {
-        veg.e("ShadowCardView", "init ShadowCardView catch exception");
+        ved.e("ShadowCardView", "init ShadowCardView catch exception");
       }
     }
   }

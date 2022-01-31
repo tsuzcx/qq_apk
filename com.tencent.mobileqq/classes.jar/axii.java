@@ -1,16 +1,19 @@
-import android.graphics.Rect;
-import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class axii
+public class axii
 {
   int jdField_a_of_type_Int;
-  aiak jdField_a_of_type_Aiak;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  File jdField_a_of_type_JavaIoFile;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public axhu a;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  axhu jdField_b_of_type_Axhu;
+  int c;
   
-  private axii(axhx paramaxhx) {}
+  public axii()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
 }
 
 

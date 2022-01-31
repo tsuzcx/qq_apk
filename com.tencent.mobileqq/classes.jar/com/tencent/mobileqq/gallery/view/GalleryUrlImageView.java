@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gallery.view;
 
-import agqs;
+import agqq;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,9 +11,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import aqlz;
-import aqmg;
-import aqne;
+import aqmb;
+import aqmi;
+import aqng;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -22,8 +22,8 @@ public class GalleryUrlImageView
   extends GalleryBaseAdapter.URLImageView2
 {
   private int jdField_a_of_type_Int;
-  private aqlz jdField_a_of_type_Aqlz;
-  public aqmg a;
+  private aqmb jdField_a_of_type_Aqmb;
+  public aqmi a;
   private boolean b;
   
   public GalleryUrlImageView(Context paramContext)
@@ -51,7 +51,7 @@ public class GalleryUrlImageView
     }
     float f = paramMatrix.width() / paramMatrix.height();
     int j = (int)(paramInt1 / f);
-    int k = agqs.a(1280, 1280, paramInt1, j);
+    int k = agqq.a(1280, 1280, paramInt1, j);
     int i = j;
     paramInt2 = paramInt1;
     if (k > 1)
@@ -89,8 +89,8 @@ public class GalleryUrlImageView
   {
     super.onLoadFialed(paramURLDrawable, paramThrowable);
     paramURLDrawable = paramURLDrawable.getURL().getRef();
-    if (((paramURLDrawable == null) || (!paramURLDrawable.equals("DISPLAY"))) && (this.jdField_a_of_type_Aqlz != null)) {
-      this.jdField_a_of_type_Aqlz.a(this.jdField_a_of_type_Int, false);
+    if (((paramURLDrawable == null) || (!paramURLDrawable.equals("DISPLAY"))) && (this.jdField_a_of_type_Aqmb != null)) {
+      this.jdField_a_of_type_Aqmb.a(this.jdField_a_of_type_Int, false);
     }
   }
   
@@ -103,26 +103,26 @@ public class GalleryUrlImageView
       this.jdField_a_of_type_Boolean = true;
       super.onLoadSuccessed(paramURLDrawable);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Aqlz != null) {
-        this.jdField_a_of_type_Aqlz.a(this.jdField_a_of_type_Int, true);
+      if (this.jdField_a_of_type_Aqmb != null) {
+        this.jdField_a_of_type_Aqmb.a(this.jdField_a_of_type_Int, true);
       }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Aqlz != null) {
-        this.jdField_a_of_type_Aqlz.a(this.jdField_a_of_type_Int, paramURLDrawable);
+      if (this.jdField_a_of_type_Aqmb != null) {
+        this.jdField_a_of_type_Aqmb.a(this.jdField_a_of_type_Int, paramURLDrawable);
       }
       return;
       super.onLoadSuccessed(paramURLDrawable);
-      if (((str == null) || (!str.equals("DISPLAY"))) && (this.jdField_a_of_type_Aqlz != null)) {
-        this.jdField_a_of_type_Aqlz.a(this.jdField_a_of_type_Int, true);
+      if (((str == null) || (!str.equals("DISPLAY"))) && (this.jdField_a_of_type_Aqmb != null)) {
+        this.jdField_a_of_type_Aqmb.a(this.jdField_a_of_type_Int, true);
       }
-      if (this.jdField_a_of_type_Aqmg != null)
+      if (this.jdField_a_of_type_Aqmi != null)
       {
-        if (this.jdField_a_of_type_Aqmg.jdField_a_of_type_Int == -2) {
-          this.jdField_a_of_type_Aqmg.jdField_a_of_type_Int = paramURLDrawable.getExifOrientation();
+        if (this.jdField_a_of_type_Aqmi.jdField_a_of_type_Int == -2) {
+          this.jdField_a_of_type_Aqmi.jdField_a_of_type_Int = paramURLDrawable.getExifOrientation();
         }
-        aqne.a(this, paramURLDrawable, this.jdField_a_of_type_Aqmg.jdField_a_of_type_Int);
+        aqng.a(this, paramURLDrawable, this.jdField_a_of_type_Aqmi.jdField_a_of_type_Int);
       }
     }
   }
@@ -132,9 +132,9 @@ public class GalleryUrlImageView
     super.setDecodingDrawble(paramURLDrawable);
   }
   
-  public void setGalleryImageListener(aqlz paramaqlz)
+  public void setGalleryImageListener(aqmb paramaqmb)
   {
-    this.jdField_a_of_type_Aqlz = paramaqlz;
+    this.jdField_a_of_type_Aqmb = paramaqmb;
   }
   
   public void setIgnoreLayout(boolean paramBoolean)
@@ -142,9 +142,9 @@ public class GalleryUrlImageView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setImageInfo(aqmg paramaqmg)
+  public void setImageInfo(aqmi paramaqmi)
   {
-    this.jdField_a_of_type_Aqmg = paramaqmg;
+    this.jdField_a_of_type_Aqmi = paramaqmi;
   }
   
   public void setOriginalImage(boolean paramBoolean)

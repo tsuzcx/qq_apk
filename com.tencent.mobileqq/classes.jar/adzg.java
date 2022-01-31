@@ -1,13 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class adzg
-  extends acun
+class adzg
+  implements bcnl
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  adzg(adzf paramadzf, adzp paramadzp) {}
   
-  public adzg(adzc paramadzc) {}
+  public void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
+    }
+  }
 }
 
 

@@ -1,11 +1,12 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
-
-public abstract interface tww
+public class tww
+  extends twl
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<two> paramList);
+  public uvp a;
   
-  public abstract void a(List<twp> paramList, boolean paramBoolean);
+  public tww(String paramString)
+  {
+    super(paramString);
+  }
 }
 
 

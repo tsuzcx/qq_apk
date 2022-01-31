@@ -1,65 +1,77 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.Collection;
 
-final class ajxr
-  extends bbwf
+public class ajxr
+  extends FriendListHandler
+  implements axay
 {
-  ajxr(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, ansr paramansr, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  private ToServiceMsg a;
   
-  public void onDone(bbwg parambbwg)
+  public ajxr(QQAppInterface paramQQAppInterface)
   {
-    super.onDone(parambbwg);
-    ajxq.a.remove(this.jdField_a_of_type_JavaLangString);
-    if ((3 == parambbwg.a()) && (this.jdField_a_of_type_JavaIoFile.exists()))
+    super(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject2 = new ArrayList(2);
+    ((ArrayList)localObject2).add(this.app.getAccount());
+    Object localObject1 = (ayax)this.app.getManager(61);
+    if (localObject1 != null) {}
+    for (localObject1 = ((ayax)localObject1).a();; localObject1 = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
+      if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
+        ((ArrayList)localObject2).addAll((Collection)localObject1);
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId = "";
-      }
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
+      localObject1 = new String[((ArrayList)localObject2).size()];
+      ((ArrayList)localObject2).toArray((Object[])localObject1);
+      b((String[])localObject1);
+      if (this.a != null)
       {
-        parambbwg = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(parambbwg);
+        localObject2 = this.app.a.a(this.a.getServiceCmd());
+        if (localObject2 != null)
+        {
+          localObject1 = new UniPacket(true);
+          ((UniPacket)localObject1).setEncodeName("utf-8");
+          if (((xom)localObject2).a(this.a, (UniPacket)localObject1))
+          {
+            localObject2 = new ReqItem();
+            ((ReqItem)localObject2).eServiceID = 119;
+            ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
+            return localObject2;
+          }
+        }
       }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_Ansr.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->sucess");
-      }
+      return null;
     }
-    for (;;)
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 119) && (paramRespItem.cResult == 2))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      }
-      return;
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->faile");
-      }
-      bbrj.a("emotionType", "emotionActionFav", "3", "", "", bbev.b(this.jdField_a_of_type_AndroidContentContext) + "", parambbwg.a + "", "", "", "");
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetRichSig");
+      localFromServiceMsg.setMsgSuccess();
+      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
+      this.app.a(this.a, localFromServiceMsg);
     }
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.a = paramToServiceMsg;
   }
 }
 

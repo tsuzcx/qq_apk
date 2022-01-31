@@ -1,49 +1,21 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.OpenID;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bhlv
+  implements ajte
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
+  public bhlv(QZoneShareActivity paramQZoneShareActivity, String paramString, QZoneShareData paramQZoneShareData) {}
   
-  public String a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-    if (!TextUtils.isEmpty(this.b))
+    if ((paramInt == 1) && ((paramObject instanceof OpenID)))
     {
-      this.b = this.b.replaceAll("\\+86", "");
-      this.b = this.b.replaceAll("\\D", "");
+      paramObject = (OpenID)paramObject;
+      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData);
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
   }
 }
 

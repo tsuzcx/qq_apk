@@ -1,61 +1,54 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.util.WeakReference;
+import android.content.SharedPreferences;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class myo
+public abstract class myo
 {
-  HashMap<Integer, WeakReference<myp>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  wxu jdField_a_of_type_Wxu;
+  public SharedPreferences a;
+  public myo a;
   
-  public myo(wxu paramwxu)
+  public myo(SharedPreferences paramSharedPreferences, myo parammyo)
   {
-    this.jdField_a_of_type_Wxu = paramwxu;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
+    this.jdField_a_of_type_Myo = parammyo;
   }
   
-  public void a()
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    return (paramInt & 0x1) != 0;
   }
   
-  public void a(int paramInt)
+  public static boolean b(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    return (paramInt & 0x2) != 0;
   }
   
-  public void a(int paramInt, myp parammyp)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(parammyp));
-  }
+  public abstract int a(String paramString1, String paramString2);
   
-  public void a(Bundle paramBundle)
+  public int a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBundle == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebPushClient", 2, "data is null");
-      }
-    }
-    WeakReference localWeakReference;
-    do
+    int j = 0;
+    if (paramBoolean1) {}
+    for (int i = 1;; i = 0)
     {
-      int i;
-      do
-      {
-        return;
-        i = paramBundle.getInt("msgType", -1);
-        if (i != 0) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("WebPushClient", 2, "type is 0");
-      return;
-      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    } while ((localWeakReference == null) || (localWeakReference.get() == null));
-    ((myp)localWeakReference.get()).a(paramBundle);
+      if (paramBoolean2) {
+        j = 2;
+      }
+      return j | i;
+    }
   }
+  
+  public abstract String a();
+  
+  public abstract JSONArray a(String paramString);
+  
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

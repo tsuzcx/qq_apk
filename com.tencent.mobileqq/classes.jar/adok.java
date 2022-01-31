@@ -1,23 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
-class adok
-  implements bfoq
+public class adok
+  extends acuj
 {
-  adok(adoj paramadoj, MessageForDeviceFile paramMessageForDeviceFile, bfol parambfol) {}
+  public AsyncImageView a;
+  public MessageProgressTextView a;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_Adoj.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-  }
+  public adok(adoh paramadoh) {}
 }
 
 

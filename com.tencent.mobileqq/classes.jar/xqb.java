@@ -1,23 +1,64 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Handler;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
 
-class xqb
-  implements Animation.AnimationListener
+public abstract class xqb
 {
-  xqb(xqa paramxqa) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  protected xpw a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ViewGroup a()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(Configuration paramConfiguration) {}
+  
+  void a(xpw paramxpw)
   {
-    if (!this.a.jdField_a_of_type_Xpi.d()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_Xpw = paramxpw;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
+  
+  public void b(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public boolean e()
+  {
+    return false;
+  }
+  
+  public void f() {}
+  
+  public void h() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  public void p() {}
+  
+  public void s() {}
+  
+  public void t()
+  {
+    if (this.jdField_a_of_type_Xpw != null) {
+      this.jdField_a_of_type_Xpw.a();
     }
   }
 }

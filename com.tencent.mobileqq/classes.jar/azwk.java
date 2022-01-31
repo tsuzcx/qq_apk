@@ -1,291 +1,271 @@
-import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager.1;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class azwk
-  extends myz
 {
-  public azwl a;
-  public boolean a;
-  public azwl b;
-  public String b;
-  public boolean b;
-  public azwl c;
-  public String c;
-  public azwl d;
-  public String d;
-  public String e;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public azwk(Context paramContext, String paramString)
+  public azwk(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    super(paramContext, paramString);
-  }
-  
-  /* Error */
-  public static azwl a(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifne +10 -> 14
-    //   7: aload_1
-    //   8: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   11: ifeq +5 -> 16
-    //   14: aconst_null
-    //   15: areturn
-    //   16: new 30	java/io/File
-    //   19: dup
-    //   20: aload_0
-    //   21: aload_1
-    //   22: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   25: invokestatic 38	bbdj:b	(Ljava/io/File;)Ljava/lang/String;
-    //   28: astore_1
-    //   29: aload_1
-    //   30: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   33: ifne -19 -> 14
-    //   36: new 40	org/json/JSONObject
-    //   39: dup
-    //   40: aload_1
-    //   41: invokespecial 43	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   44: astore 4
-    //   46: new 45	java/lang/StringBuilder
-    //   49: dup
-    //   50: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   53: aload_0
-    //   54: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: ldc 54
-    //   59: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: astore_0
-    //   66: aload 4
-    //   68: ifnull -54 -> 14
-    //   71: new 60	azwl
-    //   74: dup
-    //   75: invokespecial 61	azwl:<init>	()V
-    //   78: astore_1
-    //   79: aload 4
-    //   81: ldc 63
-    //   83: invokevirtual 67	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   86: astore 5
-    //   88: aload 5
-    //   90: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   93: ifne +26 -> 119
-    //   96: aload_1
-    //   97: new 45	java/lang/StringBuilder
-    //   100: dup
-    //   101: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   104: aload_0
-    //   105: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: aload 5
-    //   110: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: putfield 69	azwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   119: aload 4
-    //   121: ldc 71
-    //   123: invokevirtual 75	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   126: astore 4
-    //   128: aload_1
-    //   129: new 77	java/util/ArrayList
-    //   132: dup
-    //   133: invokespecial 78	java/util/ArrayList:<init>	()V
-    //   136: putfield 81	azwl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   139: iconst_0
-    //   140: istore_2
-    //   141: iload_2
-    //   142: aload 4
-    //   144: invokevirtual 87	org/json/JSONArray:length	()I
-    //   147: if_icmpge +216 -> 363
-    //   150: aload 4
-    //   152: iload_2
-    //   153: invokevirtual 91	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   156: astore 5
-    //   158: new 93	azwm
-    //   161: dup
-    //   162: invokespecial 94	azwm:<init>	()V
-    //   165: astore 6
-    //   167: aload 5
-    //   169: ldc 96
-    //   171: iconst_0
-    //   172: invokevirtual 100	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   175: iconst_1
-    //   176: if_icmpne +177 -> 353
-    //   179: iconst_1
-    //   180: istore_3
-    //   181: aload 6
-    //   183: iload_3
-    //   184: putfield 102	azwm:jdField_a_of_type_Boolean	Z
-    //   187: aload 5
-    //   189: ldc 104
-    //   191: invokevirtual 67	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   194: astore 7
-    //   196: aload 7
-    //   198: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   201: ifne +27 -> 228
-    //   204: aload 6
-    //   206: new 45	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   213: aload_0
-    //   214: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: aload 7
-    //   219: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   225: putfield 105	azwm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   228: aload 5
-    //   230: ldc 107
-    //   232: invokevirtual 67	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   235: astore 7
-    //   237: aload 7
-    //   239: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   242: ifne +27 -> 269
-    //   245: aload 6
-    //   247: new 45	java/lang/StringBuilder
-    //   250: dup
-    //   251: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   254: aload_0
-    //   255: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: aload 7
-    //   260: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: putfield 109	azwm:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   269: aload 5
-    //   271: ldc 111
-    //   273: invokevirtual 67	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   276: astore 7
-    //   278: aload 7
-    //   280: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   283: ifne +27 -> 310
-    //   286: aload 6
-    //   288: new 45	java/lang/StringBuilder
-    //   291: dup
-    //   292: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   295: aload_0
-    //   296: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: aload 7
-    //   301: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   304: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   307: putfield 113	azwm:c	Ljava/lang/String;
-    //   310: aload 5
-    //   312: ldc 115
-    //   314: iconst_0
-    //   315: invokevirtual 100	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   318: iconst_1
-    //   319: if_icmpne +39 -> 358
-    //   322: iconst_1
-    //   323: istore_3
-    //   324: aload 6
-    //   326: iload_3
-    //   327: putfield 117	azwm:jdField_b_of_type_Boolean	Z
-    //   330: aload_1
-    //   331: getfield 81	azwl:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   334: aload 6
-    //   336: invokevirtual 121	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   339: pop
-    //   340: iload_2
-    //   341: iconst_1
-    //   342: iadd
-    //   343: istore_2
-    //   344: goto -203 -> 141
-    //   347: astore_1
-    //   348: aconst_null
-    //   349: astore_1
-    //   350: goto -321 -> 29
-    //   353: iconst_0
-    //   354: istore_3
-    //   355: goto -174 -> 181
-    //   358: iconst_0
-    //   359: istore_3
-    //   360: goto -36 -> 324
-    //   363: aload_1
-    //   364: areturn
-    //   365: astore_0
-    //   366: aconst_null
-    //   367: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	368	0	paramString1	String
-    //   0	368	1	paramString2	String
-    //   140	204	2	i	int
-    //   180	180	3	bool	boolean
-    //   44	107	4	localObject1	java.lang.Object
-    //   86	225	5	localObject2	java.lang.Object
-    //   165	170	6	localazwm	azwm
-    //   194	106	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   16	29	347	java/lang/Exception
-    //   36	66	365	org/json/JSONException
-    //   71	119	365	org/json/JSONException
-    //   119	139	365	org/json/JSONException
-    //   141	179	365	org/json/JSONException
-    //   181	228	365	org/json/JSONException
-    //   228	269	365	org/json/JSONException
-    //   269	310	365	org/json/JSONException
-    //   310	322	365	org/json/JSONException
-    //   324	340	365	org/json/JSONException
-  }
-  
-  public String a()
-  {
-    return "key_for_home_work_cfg";
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool2 = true;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    int i = j;
+    if (!TextUtils.isEmpty(this.b))
+    {
+      if (!TextUtils.isEmpty(this.c)) {
+        break label71;
+      }
+      i = j;
     }
+    while (i != 0)
+    {
+      throw new IllegalArgumentException("args error");
+      label71:
+      i = j;
+      if (a(this.jdField_a_of_type_JavaLangString)) {
+        i = 0;
+      }
+    }
+  }
+  
+  private static File a()
+  {
+    return new File(ajsd.aW + "homework_troop");
+  }
+  
+  private void a(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    ThreadManager.postImmediately(new BeginnerGuideDownloadManager.1(this, paramHandler, paramInt, paramBoolean), null, true);
+    paramHandler.sendEmptyMessage(1111);
+  }
+  
+  private void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    label162:
+    label193:
     for (;;)
     {
+      TroopManager localTroopManager;
       try
       {
-        paramString = new JSONObject(paramString);
-        JSONObject localJSONObject = paramString.optJSONObject("recite_work");
-        if (localJSONObject != null)
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig");
+        }
+        localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        paramString = azwm.a(paramString, "config.cfg");
+        if (!paramBoolean) {
+          break label162;
+        }
+        switch (paramInt)
         {
-          if (localJSONObject.optInt("isenable", 0) != 1) {
-            break label151;
+        case 5: 
+        case 6: 
+          if (QLog.isColorLevel()) {
+            QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Publish not match");
           }
-          bool1 = true;
-          this.jdField_a_of_type_Boolean = bool1;
-          this.jdField_b_of_type_JavaLangString = localJSONObject.optString("publish_guide_resource_url");
-          this.c = localJSONObject.optString("publish_guide_resource_md5");
+          label86:
+          return;
         }
-        paramString = paramString.optJSONObject("arithmetic_work");
-        if (paramString == null) {
-          break;
-        }
-        if (paramString.optInt("isenable", 0) != 1) {
-          break label156;
-        }
-        bool1 = bool2;
-        this.jdField_b_of_type_Boolean = bool1;
-        this.d = paramString.optString("publish_guide_resource_url");
-        this.e = paramString.optString("publish_guide_resource_md5");
-        return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("read HomeworkConfig", 2, paramString.getMessage());
-      return;
-      label151:
-      boolean bool1 = false;
+      finally {}
+      localTroopManager.a.a = paramString;
       continue;
-      label156:
-      bool1 = false;
+      localTroopManager.a.b = paramString;
+      continue;
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label193;
+        }
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.parseConfig Submit not match");
+        break label86;
+        localTroopManager.a.c = paramString;
+        break label86;
+        localTroopManager.a.d = paramString;
+        break label86;
+        break;
+        switch (paramInt)
+        {
+        }
+      }
     }
   }
   
-  public String b()
+  private boolean a(String paramString)
   {
-    return "key_for_home_work_cfg_version";
+    try
+    {
+      new URL(paramString);
+      return true;
+    }
+    catch (MalformedURLException paramString) {}
+    return false;
+  }
+  
+  private static String b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    try
+    {
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      paramString = str1;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        paramString = new File(paramString);
+        if (!paramString.exists()) {
+          break;
+        }
+        try
+        {
+          String str2 = bfko.a(paramString);
+          paramString = str2;
+          if (str2 == null) {
+            paramString = "";
+          }
+        }
+        catch (IOException paramString)
+        {
+          paramString = "";
+        }
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = "";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, new Object[] { "BeginnerGuideDownloadManager$calcMD5", " md5:" + paramString + ", cost:" + (System.currentTimeMillis() - l) });
+    }
+    return paramString;
+  }
+  
+  private boolean b(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload");
+    }
+    File localFile1 = a();
+    File localFile2 = new File(localFile1, this.b);
+    Object localObject = this.b.substring(0, this.b.lastIndexOf("."));
+    localFile1 = new File(localFile1, (String)localObject + "_src");
+    if ((!localFile1.exists()) && (!localFile1.mkdirs()))
+    {
+      paramHandler.sendEmptyMessage(1120);
+      return false;
+    }
+    localObject = new ArrayList();
+    String[] arrayOfString = localFile1.list();
+    String str = localFile1.getAbsolutePath();
+    Message localMessage = Message.obtain();
+    localMessage.what = 1110;
+    localMessage.arg1 = paramInt;
+    localMessage.obj = str;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.postDownload begin unzip");
+      }
+      ((ArrayList)localObject).addAll(nav.a(localFile2));
+      if (Arrays.asList(arrayOfString).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file already unzip");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      nav.b(localFile2.getAbsolutePath(), localFile1.getAbsolutePath());
+      if (Arrays.asList(localFile1.list()).containsAll((Collection)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip success");
+        }
+        a(str, paramInt, paramBoolean);
+        paramHandler.sendMessage(localMessage);
+        return true;
+      }
+      throw new Exception("trigger catch");
+    }
+    catch (Exception localException)
+    {
+      paramHandler.sendEmptyMessage(1120);
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip error ", localException);
+      }
+      paramHandler = ((ArrayList)localObject).iterator();
+      while (paramHandler.hasNext())
+      {
+        File localFile3 = new File(localFile1, (String)paramHandler.next());
+        if ((localFile3.exists()) && (!localFile3.delete()) && (QLog.isColorLevel())) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "zip file unzip del error");
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(Handler paramHandler, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload");
+    }
+    File localFile = a();
+    if ((!localFile.exists()) && (!localFile.mkdirs())) {
+      return false;
+    }
+    localFile = new File(localFile, this.b);
+    if ((localFile.exists()) && (this.c.equalsIgnoreCase(b(localFile.getAbsolutePath()))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload: file exists, no need to start download again");
+      }
+      a(paramHandler, paramInt, paramBoolean);
+      return true;
+    }
+    aysa localaysa = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_Boolean = true;
+    localayrx.jdField_e_of_type_Boolean = true;
+    localayrx.jdField_a_of_type_Aysc = new azwl(this, paramHandler, paramInt, paramBoolean);
+    localayrx.jdField_a_of_type_Int = 0;
+    localayrx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localayrx.c = localFile.getAbsolutePath();
+    localayrx.jdField_e_of_type_Int = 0;
+    localaysa.a(localayrx);
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager.startDownload sendReq success");
+    }
+    return true;
   }
 }
 

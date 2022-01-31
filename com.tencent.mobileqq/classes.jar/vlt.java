@@ -1,53 +1,14 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.io.File;
+import java.io.FileFilter;
 
-public class vlt
+class vlt
+  implements FileFilter
 {
-  private static vlt a = new vlt();
+  vlt(vls paramvls) {}
   
-  public static vlt a()
+  public boolean accept(File paramFile)
   {
-    return a;
-  }
-  
-  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
-  {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      veg.e("ImageLoader", "ImageView or uri is null.");
-      return;
-    }
-    veg.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    paramContext = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
-      paramContext.mRequestWidth = paramInt1;
-      paramContext.mRequestHeight = paramInt2;
-    }
-    paramContext.mFailedDrawable = aywk.a;
-    paramContext.mLoadingDrawable = aywk.a;
-    paramContext.mUseAutoScaleParams = false;
-    paramContext = URLDrawable.getDrawable(paramString, paramContext);
-    if (paramURLDrawableListener != null)
-    {
-      if (paramContext.getStatus() != 1) {
-        break label154;
-      }
-      veg.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramContext);
-    }
-    for (;;)
-    {
-      paramContext.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramContext);
-      return;
-      label154:
-      veg.b("ImageLoader", "start load URLDrawable.");
-    }
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 

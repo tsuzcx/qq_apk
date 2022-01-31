@@ -1,25 +1,25 @@
 package cooperation.qlink;
 
-import ajyc;
+import ajya;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import bbcl;
-import bbcv;
-import bbgg;
-import bgmt;
-import bgnz;
-import bgoa;
-import bgob;
-import bgoc;
-import bgod;
-import bgoe;
-import bgof;
-import bgog;
-import bgoh;
+import bbcz;
+import bbdj;
+import bbgu;
+import bgnk;
+import bgoq;
+import bgor;
+import bgos;
+import bgot;
+import bgou;
+import bgov;
+import bgow;
+import bgox;
+import bgoy;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,40 +30,40 @@ public class QlinkStandardDialogActivity
   extends BaseActivity
 {
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new bgoa(this);
+  final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new bgor(this);
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   
   private void a()
   {
-    Object localObject = new bgob(this);
-    localObject = bbcv.a(this, 230, getString(2131698377), getString(2131698363), 2131698370, 2131698370, (DialogInterface.OnClickListener)localObject, null);
-    ((bbgg)localObject).setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-    ((bbgg)localObject).show();
+    Object localObject = new bgos(this);
+    localObject = bbdj.a(this, 230, getString(2131698387), getString(2131698373), 2131698380, 2131698380, (DialogInterface.OnClickListener)localObject, null);
+    ((bbgu)localObject).setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+    ((bbgu)localObject).show();
   }
   
   private void a(String paramString1, String paramString2)
   {
-    paramString1 = bbcv.a(this, 230, getString(2131698356), ajyc.a(2131710024) + paramString2 + ajyc.a(2131710022), 2131698369, 2131698355, new bgog(this, paramString1, paramString2), new bgoh(this));
+    paramString1 = bbdj.a(this, 230, getString(2131698366), ajya.a(2131710035) + paramString2 + ajya.a(2131710033), 2131698379, 2131698365, new bgox(this, paramString1, paramString2), new bgoy(this));
     paramString1.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     paramString1.show();
   }
   
   private void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    bgoe localbgoe = new bgoe(this);
-    bgof localbgof = new bgof(this);
+    bgov localbgov = new bgov(this);
+    bgow localbgow = new bgow(this);
     String str = paramString2;
     if (paramString1 != null)
     {
       str = paramString2;
       if (paramString1.equalsIgnoreCase(paramString2)) {
-        str = bbcl.j(this.app, paramString1);
+        str = bbcz.j(this.app, paramString1);
       }
     }
     if (paramBoolean) {}
-    for (paramString1 = getString(2131698406) + str + getString(2131698407) + paramInt + getString(2131698408) + paramString3 + getString(2131698409) + paramString4 + "。";; paramString1 = getString(2131698397) + str + getString(2131698398) + paramInt + getString(2131698399) + paramString3 + getString(2131698400) + paramString4 + "。")
+    for (paramString1 = getString(2131698416) + str + getString(2131698417) + paramInt + getString(2131698418) + paramString3 + getString(2131698419) + paramString4 + "。";; paramString1 = getString(2131698407) + str + getString(2131698408) + paramInt + getString(2131698409) + paramString3 + getString(2131698410) + paramString4 + "。")
     {
-      paramString1 = bbcv.a(this, 230, getString(2131698377), paramString1, 2131698424, 2131698425, localbgof, localbgoe);
+      paramString1 = bbdj.a(this, 230, getString(2131698387), paramString1, 2131698434, 2131698435, localbgow, localbgov);
       paramString1.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       paramString1.show();
       return;
@@ -72,12 +72,12 @@ public class QlinkStandardDialogActivity
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    bgoc localbgoc = new bgoc(this);
-    bgod localbgod = new bgod(this, paramBoolean1, paramBoolean2);
+    bgot localbgot = new bgot(this);
+    bgou localbgou = new bgou(this, paramBoolean1, paramBoolean2);
     if (paramBoolean1) {}
-    for (int i = 2131698372;; i = 2131698371)
+    for (int i = 2131698382;; i = 2131698381)
     {
-      paramString = bbcv.a(this, 230, getString(2131698377), paramString, 2131698369, i, localbgod, localbgoc);
+      paramString = bbdj.a(this, 230, getString(2131698387), paramString, 2131698379, i, localbgou, localbgot);
       paramString.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       paramString.show();
       return;
@@ -113,7 +113,7 @@ public class QlinkStandardDialogActivity
     paramBundle.addAction("com.tencent.qlink.finishdlg");
     if (this.app.getApp() != null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bgnz(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bgoq(this);
       this.app.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     }
     for (;;)

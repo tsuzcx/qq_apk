@@ -1,36 +1,72 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-class tao
-  extends tba
+public class tao
 {
-  tao(tan paramtan) {}
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static tao jdField_a_of_type_Tao;
   
-  public void onClick(View paramView)
+  public static tao a()
   {
-    int i;
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
+    if (jdField_a_of_type_Tao == null)
     {
-      paramView = (tab)this.a.a();
-      if (tan.a(this.a) != 11) {
-        break label138;
-      }
-      i = 211;
-    }
-    for (;;)
-    {
-      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
-      i = vel.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      vel.a("home_page", "clk_like_more", vel.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), vel.a(paramView.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      label138:
-      if (tan.a(this.a) == 12) {
-        i = 222;
-      } else {
-        i = 210;
+      jdField_a_of_type_Tao = new tao();
+      jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      Iterator localIterator = ((tbw)tcz.a(17)).a().iterator();
+      while (localIterator.hasNext())
+      {
+        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        {
+          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        }
       }
     }
+    return jdField_a_of_type_Tao;
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return -1;
+    }
+    return paramString.intValue();
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Iterator localIterator = ((tbw)tcz.a(17)).a().iterator();
+    while (localIterator.hasNext())
+    {
+      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      {
+        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      }
+    }
+    ved.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
+  }
+  
+  public boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_a_of_type_Tao = null;
   }
 }
 

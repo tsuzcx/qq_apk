@@ -1,15 +1,17 @@
-class bfwh
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.Switch;
+
+public class bfwh
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public bfwh(Switch paramSwitch) {}
   
-  bfwh(bfwg parambfwg) {}
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfwh
  * JD-Core Version:    0.7.0.1
  */

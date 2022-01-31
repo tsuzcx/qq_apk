@@ -1,23 +1,25 @@
-import com.tencent.YTFace.model.FaceStatus;
+import java.util.ArrayList;
 
 public class alhh
+  extends alht
 {
-  public float a;
-  public int a;
-  public FaceStatus a;
-  public String a;
+  public long a;
+  public ArrayList<alck> a;
   public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  
+  public alhh()
+  {
+    this.b = 4L;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
   
   public String toString()
   {
-    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
+      return i + '}';
+    }
   }
 }
 

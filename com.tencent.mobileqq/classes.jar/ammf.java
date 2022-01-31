@@ -1,30 +1,51 @@
+import com.tencent.av.service.LBSInfo;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qphone.base.util.QLog;
 
 public class ammf
-  implements ajuc
+  extends ajzk
 {
   public ammf(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    Object localObject = null;
+    if (paramBoolean) {
+      localObject = paramLBSInfo.a();
     }
-    if ((this.a.j == 1) || (this.a.j == 2))
+    if (localObject != null)
     {
-      if (paramBoolean) {
-        break label110;
+      paramLBSInfo = (LBSInfo)localObject;
+      if (localObject.length == 4) {}
+    }
+    else
+    {
+      paramLBSInfo = new String[4];
+      paramLBSInfo[0] = "-1";
+      paramLBSInfo[1] = "-1";
+      paramLBSInfo[2] = "-1";
+      paramLBSInfo[3] = "-1";
+    }
+    if (!"-1".equals(paramLBSInfo[0]))
+    {
+      paramLBSInfo[3] = "0";
+      this.a.a.a(paramLBSInfo);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        localObject = this.a.a.b(paramLBSInfo);
+        this.a.a.a(0, (String)localObject);
+        this.a.a.b(paramLBSInfo);
+        this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.a.c((String)localObject));
       }
-      this.a.a();
-      bcpw.a(this.a, 2131691028, 0).b(this.a.getTitleBarHeight());
+      ConditionSearchFriendActivity.a(this.a, 1);
+      ConditionSearchFriendActivity.a(this.a);
+      this.a.c = true;
+      this.a.d = false;
     }
-    label110:
-    while (paramInt != 2) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", mIsFirstReqLocation : " + this.a.jdField_b_of_type_Boolean + ", locationCodes[0] : " + paramLBSInfo[0]);
     }
-    this.a.a();
-    this.a.a(this.a.j);
   }
 }
 

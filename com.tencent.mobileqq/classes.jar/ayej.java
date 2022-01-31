@@ -1,48 +1,56 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
-
 public class ayej
-  extends ajtd
-  implements Handler.Callback
+  implements ajte
 {
-  private String[] a = { "docs.qq.com" };
+  public void a(int paramInt) {}
   
-  public ayej(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public void a(String paramString1, String paramString2) {}
   
-  private void a(Runnable paramRunnable)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new ayek(this, paramRunnable)) == null) {
-      return;
+    switch (paramInt)
+    {
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 2);
+                a((String)paramObject[0], (String)paramObject[1]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 4);
+            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return ayeh.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

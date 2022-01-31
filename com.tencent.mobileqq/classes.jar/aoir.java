@@ -1,19 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aoir
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  public aoir(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
+  public aoir(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

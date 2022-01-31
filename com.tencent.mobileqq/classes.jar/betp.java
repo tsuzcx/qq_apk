@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class betp
-  implements DialogInterface.OnClickListener
+public abstract interface betp
 {
-  betp(beto parambeto) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(float paramFloat, String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

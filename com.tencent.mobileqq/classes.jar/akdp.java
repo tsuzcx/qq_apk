@@ -1,9 +1,12 @@
 import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.List;
 
 public class akdp
 {
   public int a;
-  public PublicAccountInfo a;
+  public long a;
+  public List<PublicAccountInfo> a;
+  public boolean a;
 }
 
 

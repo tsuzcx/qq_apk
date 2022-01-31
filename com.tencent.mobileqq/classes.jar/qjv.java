@@ -1,36 +1,56 @@
-public abstract interface qjv
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.lang.ref.WeakReference;
+
+class qjv
+  extends OrientationEventListener
 {
-  public abstract void a(qqo paramqqo);
+  qjv(qju paramqju, Context paramContext, WeakReference paramWeakReference)
+  {
+    super(paramContext);
+  }
   
-  public abstract void a(qqo paramqqo, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(qqo paramqqo, int paramInt, boolean paramBoolean);
-  
-  public abstract void a(qqo paramqqo, long paramLong1, long paramLong2);
-  
-  public abstract void a(qqo paramqqo, boolean paramBoolean);
-  
-  public abstract boolean a(qqo paramqqo);
-  
-  public abstract void b(qqo paramqqo);
-  
-  public abstract void b(qqo paramqqo, boolean paramBoolean);
-  
-  public abstract void c(qqo paramqqo);
-  
-  public abstract void d(qqo paramqqo);
-  
-  public abstract void e(qqo paramqqo);
-  
-  public abstract void f(qqo paramqqo);
-  
-  public abstract void g(qqo paramqqo);
-  
-  public abstract void h(qqo paramqqo);
-  
-  public abstract void i(qqo paramqqo);
-  
-  public abstract void j(qqo paramqqo);
+  public void onOrientationChanged(int paramInt)
+  {
+    if (!qju.a(this.jdField_a_of_type_Qju, paramInt)) {
+      break label11;
+    }
+    label11:
+    label159:
+    for (;;)
+    {
+      return;
+      if (!(this.jdField_a_of_type_Qju.a() instanceof SplashActivity))
+      {
+        int i = qju.a(this.jdField_a_of_type_Qju);
+        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+          paramInt = 1;
+        }
+        for (;;)
+        {
+          if (paramInt == qju.a(this.jdField_a_of_type_Qju)) {
+            break label159;
+          }
+          qju.a(this.jdField_a_of_type_Qju, paramInt);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break;
+          }
+          ((qjw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+          return;
+          if ((paramInt > 70) && (paramInt <= 110)) {
+            paramInt = 8;
+          } else if ((paramInt > 150) && (paramInt <= 210)) {
+            paramInt = 9;
+          } else if ((paramInt > 250) && (paramInt <= 290)) {
+            paramInt = 0;
+          } else {
+            paramInt = i;
+          }
+        }
+      }
+    }
+  }
 }
 
 

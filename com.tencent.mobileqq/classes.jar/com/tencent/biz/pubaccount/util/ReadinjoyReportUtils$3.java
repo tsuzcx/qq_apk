@@ -2,25 +2,25 @@ package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bbjn;
-import bhvh;
+import bbkb;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.List;
-import noo;
-import onk;
-import onr;
+import nol;
+import onh;
+import ono;
 import org.json.JSONException;
-import pzc;
-import pzi;
+import pyz;
+import pzf;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import yxy;
+import yxv;
 
 public final class ReadinjoyReportUtils$3
   implements Runnable
@@ -40,10 +40,10 @@ public final class ReadinjoyReportUtils$3
     label589:
     label609:
     label631:
-    for (boolean bool1 = bbjn.u(this.jdField_a_of_type_AndroidAppActivity, ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentAccountUin());; bool1 = false)
+    for (boolean bool1 = bbkb.u(this.jdField_a_of_type_AndroidAppActivity, ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentAccountUin());; bool1 = false)
     {
       if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
-      for (Object localObject1 = ((pzi)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).app.getManager(261)).a();; localObject1 = "0")
+      for (Object localObject1 = ((pzf)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).app.getManager(261)).a();; localObject1 = "0")
       {
         int i;
         Object localObject3;
@@ -58,21 +58,21 @@ public final class ReadinjoyReportUtils$3
           if (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
             break label609;
           }
-          localObject3 = (pzc)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).app.getManager(270);
+          localObject3 = (pyz)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).app.getManager(270);
           k = i;
           localObject2 = localObject1;
           m = j;
-          if (((pzc)localObject3).a() != 1) {
+          if (((pyz)localObject3).a() != 1) {
             break label609;
           }
           k = i;
           localObject2 = localObject1;
           m = j;
-          if (!((pzc)localObject3).b()) {
+          if (!((pyz)localObject3).b()) {
             break label609;
           }
-          localObject1 = ((pzc)localObject3).a();
-          bool1 = ((pzc)localObject3).a();
+          localObject1 = ((pyz)localObject3).a();
+          bool1 = ((pyz)localObject3).a();
           i = 0;
         }
         for (int j = 2;; j = k)
@@ -81,7 +81,7 @@ public final class ReadinjoyReportUtils$3
           {
             if (this.jdField_a_of_type_Int != 40677)
             {
-              localObject2 = pzc.b(this.jdField_a_of_type_AndroidAppActivity, 0);
+              localObject2 = pyz.b(this.jdField_a_of_type_AndroidAppActivity, 0);
               if ((!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) || (this.jdField_a_of_type_Int != 0) || (localObject2 == null) || (!((RefreshData)localObject2).isAD) || (((RefreshData)localObject2).adExposureReports == null) || (((RefreshData)localObject2).adExposureReports.size() <= 0)) {}
             }
             try
@@ -90,13 +90,13 @@ public final class ReadinjoyReportUtils$3
               long l = ((RefreshData)localObject2).adId.longValue();
               ((qq_ad_get.QQAdGetRsp.AdInfo)localObject3).report_info.trace_info.aid.set(l);
               ((qq_ad_get.QQAdGetRsp.AdInfo)localObject3).report_info.thirdparty_monitor_urls.api_exposure_monitor_url.set(((RefreshData)localObject2).getUrls(((RefreshData)localObject2).adExposureReports));
-              yxy.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject3);
+              yxv.a(0, 1, (qq_ad_get.QQAdGetRsp.AdInfo)localObject3);
               m = this.jdField_a_of_type_Int;
               boolean bool2 = this.jdField_a_of_type_Boolean;
               if (bool1)
               {
                 k = 1;
-                localObject3 = onk.a(m, (String)localObject1, i, j, bool2, k);
+                localObject3 = onh.a(m, (String)localObject1, i, j, bool2, k);
                 if ((this.jdField_a_of_type_Int == 0) && (localObject2 == null)) {
                   break label589;
                 }
@@ -107,8 +107,8 @@ public final class ReadinjoyReportUtils$3
                   break label589;
                 }
                 k = 1;
-                ((onr)localObject3).a("ad_page", k);
-                ((onr)localObject3).a("banner_refresh_length", this.b);
+                ((ono)localObject3).a("ad_page", k);
+                ((ono)localObject3).a("banner_refresh_length", this.b);
               }
               catch (JSONException localJSONException)
               {
@@ -119,18 +119,18 @@ public final class ReadinjoyReportUtils$3
                   k = 0;
                 }
               }
-              noo.a(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, bhvh.a("default_feeds_proteus_offline_bid"), "", "", ((onr)localObject3).a(), false);
-              noo.a("0X80066F8", "", "", "", "", onk.b(this.jdField_a_of_type_Int));
+              nol.a(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", ((ono)localObject3).a(), false);
+              nol.a("0X80066F8", "", "", "", "", onh.b(this.jdField_a_of_type_Int));
               if (this.jdField_a_of_type_Int == 70)
               {
-                localObject2 = bhvh.a("default_feeds_proteus_offline_bid");
+                localObject2 = bhvy.a("default_feeds_proteus_offline_bid");
                 m = this.jdField_a_of_type_Int;
                 bool2 = this.jdField_a_of_type_Boolean;
                 if (bool1)
                 {
                   k = 1;
-                  noo.a(null, "CliOper", "", "", "0X8009861", "0X8009861", 0, 0, (String)localObject2, "", "", onk.a(m, (String)localObject1, i, j, bool2, k).a(), false);
-                  noo.a("0X8009861", "", "", "", "", onk.b(this.jdField_a_of_type_Int));
+                  nol.a(null, "CliOper", "", "", "0X8009861", "0X8009861", 0, 0, (String)localObject2, "", "", onh.a(m, (String)localObject1, i, j, bool2, k).a(), false);
+                  nol.a("0X8009861", "", "", "", "", onh.b(this.jdField_a_of_type_Int));
                 }
               }
               else

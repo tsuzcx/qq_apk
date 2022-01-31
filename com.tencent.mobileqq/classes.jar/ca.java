@@ -2,7 +2,7 @@ import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
 
 public class ca
-  implements aptu
+  implements aptw
 {
   public ca(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   

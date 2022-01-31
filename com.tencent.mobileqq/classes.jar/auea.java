@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.ocr.view.gesture.GestureProxy.StateSource;
+import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
 
-public abstract interface auea
+public class auea
+  implements aueb
 {
-  public abstract void a(GestureProxy.StateSource paramStateSource);
+  public auea(GestureFrameLayout paramGestureFrameLayout) {}
+  
+  public void a(auep paramauep)
+  {
+    this.a.a(paramauep);
+  }
+  
+  public void a(auep paramauep1, auep paramauep2)
+  {
+    this.a.a(paramauep2);
+  }
 }
 
 

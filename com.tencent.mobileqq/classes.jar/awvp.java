@@ -1,129 +1,142 @@
-import java.util.Arrays;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class awvp
 {
-  static boolean a(int paramInt, long[][] paramArrayOfLong, long[] paramArrayOfLong1, long[] paramArrayOfLong2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2, long[] paramArrayOfLong3)
+  public int a;
+  public List<String> a;
+  
+  public awvp(List<String> paramList, String paramString)
   {
-    paramArrayOfBoolean1[paramInt] = true;
-    int i = 0;
-    if (i < paramArrayOfLong2.length)
-    {
-      if ((paramArrayOfBoolean2[i] != 0) || (paramArrayOfLong[paramInt][i] <= 0L)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = paramArrayOfLong1[paramInt] + paramArrayOfLong2[i] - paramArrayOfLong[paramInt][i];
-        if (l == 0L)
-        {
-          paramArrayOfBoolean2[i] = true;
-          int j = paramArrayOfInt2[i];
-          if ((j == -1) || (a(j, paramArrayOfLong, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfBoolean1, paramArrayOfBoolean2, paramArrayOfLong3)))
-          {
-            paramArrayOfInt2[i] = paramInt;
-            paramArrayOfInt1[paramInt] = i;
-            return true;
-          }
-        }
-        else if (l < paramArrayOfLong3[i])
-        {
-          paramArrayOfLong3[i] = l;
-        }
-      }
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    return false;
+    if ((paramString != null) && (!((List)localObject).contains(paramString))) {
+      ((List)localObject).add(paramString);
+    }
+    Collections.sort((List)localObject, new awvq(this));
+    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
   }
   
-  public static int[] a(long[][] paramArrayOfLong, int paramInt1, int paramInt2)
+  public int a(String paramString1, String paramString2, int paramInt)
   {
-    long[] arrayOfLong1 = new long[paramInt1];
-    long[] arrayOfLong2 = new long[paramInt2];
-    long[] arrayOfLong3 = new long[paramInt2];
-    int[] arrayOfInt1 = new int[paramInt1];
-    int[] arrayOfInt2 = new int[paramInt2];
-    Arrays.fill(arrayOfLong1, -9223372036854775808L);
-    Arrays.fill(arrayOfLong2, 0L);
-    int i = 0;
-    int j;
-    while (i < paramInt1)
-    {
-      j = 0;
-      while (j < paramInt2)
-      {
-        if ((paramArrayOfLong[i][j] > 0L) && (paramArrayOfLong[i][j] > arrayOfLong1[i])) {
-          arrayOfLong1[i] = paramArrayOfLong[i][j];
-        }
-        j += 1;
-      }
-      i += 1;
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return -1;
     }
-    Arrays.fill(arrayOfInt1, -1);
-    Arrays.fill(arrayOfInt2, -1);
-    i = 0;
-    if (i < paramInt1)
+    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
+  }
+  
+  public SpannableString a(CharSequence paramCharSequence)
+  {
+    return a(paramCharSequence, false, false);
+  }
+  
+  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean)
+  {
+    return a(paramCharSequence, paramBoolean, false);
+  }
+  
+  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return a(paramCharSequence, paramBoolean1, paramBoolean2, true);
+  }
+  
+  public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    Object localObject2;
+    if (TextUtils.isEmpty(paramCharSequence))
     {
-      boolean[] arrayOfBoolean1 = new boolean[paramInt1];
-      boolean[] arrayOfBoolean2 = new boolean[paramInt2];
-      Arrays.fill(arrayOfLong3, 9223372036854775807L);
-      Arrays.fill(arrayOfBoolean1, false);
-      Arrays.fill(arrayOfBoolean2, false);
-      for (;;)
+      localObject2 = null;
+      return localObject2;
+    }
+    Object localObject1 = new SpannableString(paramCharSequence);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      return localObject1;
+    }
+    paramCharSequence = paramCharSequence.toString();
+    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
+    this.jdField_a_of_type_Int = 0;
+    int i = 0;
+    int j = 0;
+    int m = 0;
+    String str;
+    int k;
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (m >= arrayOfObject.length) {
+        break;
+      }
+      str = (String)arrayOfObject[m];
+      if (str.length() <= 1)
       {
-        long l1;
-        if (!a(i, paramArrayOfLong, arrayOfLong1, arrayOfLong2, arrayOfInt1, arrayOfInt2, arrayOfBoolean1, arrayOfBoolean2, arrayOfLong3))
-        {
-          l1 = 9223372036854775807L;
-          j = 0;
-          if (j < paramInt2)
-          {
-            long l2;
-            if (arrayOfBoolean2[j] != 0) {
-              l2 = l1;
-            }
-            for (;;)
-            {
-              j += 1;
-              l1 = l2;
-              break;
-              l2 = l1;
-              if (arrayOfLong3[j] < l1) {
-                l2 = arrayOfLong3[j];
-              }
-            }
-          }
-          if ((l1 != 9223372036854775807L) && (l1 != 0L)) {}
-        }
-        else
-        {
-          i += 1;
+        localObject2 = localObject1;
+        if (j != 0) {
           break;
         }
-        j = 0;
-        while (j <= i)
-        {
-          if (arrayOfBoolean1[j] != 0) {
-            arrayOfLong1[j] -= l1;
-          }
-          j += 1;
-        }
-        j = 0;
-        if (j < paramInt2)
-        {
-          if (arrayOfBoolean2[j] != 0) {
-            arrayOfLong2[j] += l1;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            arrayOfLong3[j] -= l1;
-          }
-        }
-        Arrays.fill(arrayOfBoolean1, false);
-        Arrays.fill(arrayOfBoolean2, false);
       }
+      k = 0;
+      k = a(paramCharSequence, str, k);
+      if (k != -1) {
+        break label146;
+      }
+      m += 1;
     }
-    return arrayOfInt1;
+    label146:
+    if ((paramBoolean3) && (k > 10) && (i == 0) && (!paramBoolean1))
+    {
+      localObject1 = "…" + paramCharSequence.substring(k - 6);
+      paramCharSequence = new SpannableString((CharSequence)localObject1);
+      i = 1;
+      k = 7;
+    }
+    for (;;)
+    {
+      int n;
+      if (paramBoolean2)
+      {
+        n = ((String)localObject1).indexOf(" ");
+        int i1 = ((String)localObject1).indexOf(" ", n);
+        if ((k < n) || (k > i1))
+        {
+          localObject2 = paramCharSequence;
+          k += 1;
+          paramCharSequence = (CharSequence)localObject1;
+          localObject1 = localObject2;
+          break;
+        }
+      }
+      if (str.length() > 1)
+      {
+        j = 1;
+        i = 1;
+      }
+      for (;;)
+      {
+        n = Color.parseColor("#00a5e0");
+        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+          n = Color.parseColor("#004080");
+        }
+        paramCharSequence.setSpan(new ForegroundColorSpan(n), k, str.length() + k, 34);
+        this.jdField_a_of_type_Int += 1;
+        localObject2 = paramCharSequence;
+        k += 1;
+        paramCharSequence = (CharSequence)localObject1;
+        localObject1 = localObject2;
+        break;
+      }
+      localObject2 = localObject1;
+      localObject1 = paramCharSequence;
+      paramCharSequence = (CharSequence)localObject2;
+    }
   }
 }
 

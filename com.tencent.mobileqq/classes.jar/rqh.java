@@ -1,14 +1,14 @@
-public class rqh
+class rqh
 {
-  public final String a;
-  public final rqi a;
-  public final String b;
+  String a;
+  String b;
+  String c;
   
-  public rqh(String paramString1, String paramString2)
+  public rqh(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Rqi = new rqi(paramString1, paramString2);
+    this.c = paramString3;
   }
 }
 

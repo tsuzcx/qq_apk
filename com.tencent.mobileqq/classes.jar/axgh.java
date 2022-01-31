@@ -1,80 +1,75 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.annotation.TargetApi;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
 
+@TargetApi(21)
 public class axgh
+  extends CameraCaptureSession.CaptureCallback
 {
-  private axgi<Integer, axgj> a;
-  protected String a;
+  private int jdField_a_of_type_Int = 0;
+  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
   
-  public axgh()
+  public axgh(Camera2Control paramCamera2Control)
   {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_Axgi = new axgi(this);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
+  }
+  
+  private void a(CaptureResult paramCaptureResult)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      do
+      {
+        Integer localInteger;
+        do
+        {
+          do
+          {
+            return;
+            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+            axgf.a(1, "[Camera2]process afState:" + localInteger);
+            if (localInteger != null) {
+              break;
+            }
+          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+          return;
+        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
+        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
+        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
+          break;
+        }
+        this.jdField_a_of_type_Int = 4;
+        axgf.a(1, "[Camera2]process aeState:" + paramCaptureResult);
+      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+      return;
+      axgf.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
+    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
   }
   
   public void a(int paramInt)
   {
-    try
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_Axgi.a(Integer.valueOf(paramInt));
-      if (localArrayList != null) {
-        localArrayList.clear();
-      }
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
   {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_Axgi.a(Integer.valueOf(paramInt));
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-      {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          axgj localaxgj = (axgj)((Iterator)localObject).next();
-          if (localaxgj != null) {
-            localaxgj.a(this, paramInt, paramVarArgs);
-          }
-        }
-      }
-      return;
-    }
-    finally {}
+    a(paramTotalCaptureResult);
   }
   
-  public void a(axgj paramaxgj)
+  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
   {
-    try
-    {
-      this.jdField_a_of_type_Axgi.a(paramaxgj);
-      return;
-    }
-    finally
-    {
-      paramaxgj = finally;
-      throw paramaxgj;
-    }
-  }
-  
-  public void a(axgj paramaxgj, int... paramVarArgs)
-  {
-    try
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        int k = paramVarArgs[i];
-        this.jdField_a_of_type_Axgi.a(Integer.valueOf(k), paramaxgj);
-        i += 1;
-      }
-      return;
-    }
-    finally {}
+    a(paramCaptureResult);
   }
 }
 

@@ -1,22 +1,26 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class aqbs
-  extends aqbc
+class aqbs
+  implements DialogInterface.OnClickListener
 {
-  public aqbs(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  aqbs(aqbr paramaqbr, int paramInt, Bundle paramBundle) {}
   
-  protected boolean c()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = actn.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return false;
+    if (this.jdField_a_of_type_Aqbr.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramDialogInterface = this.jdField_a_of_type_Aqbr.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Aqbr.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+    }
+    if (this.jdField_a_of_type_Aqbr.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      this.jdField_a_of_type_Aqbr.jdField_a_of_type_AndroidAppActivity.setResult(1);
+      this.jdField_a_of_type_Aqbr.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 

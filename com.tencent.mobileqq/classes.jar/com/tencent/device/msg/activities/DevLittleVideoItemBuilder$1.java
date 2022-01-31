@@ -1,28 +1,28 @@
 package com.tencent.device.msg.activities;
 
-import aigl;
-import aigr;
+import aigj;
+import aigp;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.image.Utils;
-import ydx;
+import ydu;
 
 public class DevLittleVideoItemBuilder$1
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$1(ydx paramydx, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$1(ydu paramydu, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    Object localObject = ydx.a(this.this$0, this.a);
-    ydx.a(this.this$0, this.a);
+    Object localObject = ydu.a(this.this$0, this.a);
+    ydu.a(this.this$0, this.a);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      aigr localaigr = new aigr(this.a.mThumbFilePath, this.a.thumbMD5, null, this.a.thumbWidth, this.a.thumbHeight);
-      localObject = new aigl(this.this$0.a, (String)localObject, this.a.mediacodecEncode, localaigr);
-      ((aigl)localObject).a(ydx.a(this.this$0));
-      ((aigl)localObject).a(false);
+      aigp localaigp = new aigp(this.a.mThumbFilePath, this.a.thumbMD5, null, this.a.thumbWidth, this.a.thumbHeight);
+      localObject = new aigj(this.this$0.a, (String)localObject, this.a.mediacodecEncode, localaigp);
+      ((aigj)localObject).a(ydu.a(this.this$0));
+      ((aigj)localObject).a(false);
       Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)localObject, new Void[] { (Void)null });
     }
   }

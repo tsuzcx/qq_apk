@@ -1,16 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentView;
+import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentView;
 
 public class yzp
   implements View.OnClickListener
 {
-  public yzp(GdtCanvasAppBtnComponentView paramGdtCanvasAppBtnComponentView) {}
+  public yzp(GdtCanvasButtonComponentView paramGdtCanvasButtonComponentView, String paramString1, boolean paramBoolean, String paramString2, String paramString3) {}
   
   public void onClick(View paramView)
   {
-    GdtCanvasAppBtnComponentView.a(this.a).canShowProgress = true;
-    this.a.h();
+    GdtCanvasButtonComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.c);
   }
 }
 

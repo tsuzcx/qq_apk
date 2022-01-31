@@ -1,18 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.StreamFunction;
 
 class tfp
-  implements syt<thd, the>
+  extends StreamFunction<tff, tff>
 {
-  tfp(tfn paramtfn) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a(@NonNull thd paramthd, @Nullable the paramthe, @NonNull ErrorMessage paramErrorMessage)
+  tfp(tfk paramtfk) {}
+  
+  protected void a(tff paramtff)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramthe + " ,errorMsg = " + paramErrorMessage);
-    }
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    ved.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramtff.a);
+    notifyResult(paramtff);
   }
 }
 

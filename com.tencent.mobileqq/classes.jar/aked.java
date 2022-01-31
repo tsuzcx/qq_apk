@@ -1,266 +1,47 @@
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQHeadDownloadHandler;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class aked
-  implements INetInfoHandler
+  extends DefaultHandler
 {
-  private static WeakReference<QQAppInterface> a;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public aked(QQAppInterface paramQQAppInterface)
+  public aked(QQAppInterface paramQQAppInterface) {}
+  
+  public HashMap<String, String> a()
   {
-    a = new WeakReference(paramQQAppInterface);
+    return this.jdField_a_of_type_JavaUtilHashMap;
   }
   
-  private void a(int paramInt, String paramString)
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("raw_photo", 2, "type:" + paramInt + ",logmsg:" + paramString);
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
     }
-    if ((a == null) || (a.get() == null)) {}
-    do
-    {
-      return;
-      if (1 == paramInt)
-      {
-        ((QQAppInterface)a.get()).F();
-        return;
-      }
-    } while (2 != paramInt);
-    ((QQAppInterface)a.get()).G();
   }
   
-  public void onNetMobile2None()
+  public void endDocument()
   {
-    a(3, "onNetMobile2None");
-    arzw.a("Network", "onNetMobile2None()");
-    if ((a == null) || (a.get() == null)) {}
-    do
-    {
-      return;
-      MqqHandler localMqqHandler = ((QQAppInterface)a.get()).getHandler(aozc.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10001, null).sendToTarget();
-      }
-      localMqqHandler = ((QQAppInterface)a.get()).getHandler(Conversation.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10003, QQAppInterface.a((QQAppInterface)a.get()).getString(2131692321)).sendToTarget();
-      }
-      localMqqHandler = ((QQAppInterface)a.get()).getHandler(ChatHistoryC2CAllFragment.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(28, null).sendToTarget();
-      }
-      ayqf.a().a();
-      ayvl.a().a();
-      ((QQAppInterface)a.get()).getHttpCommunicatort().a(1);
-      QQHeadDownloadHandler.b();
-    } while (QQAppInterface.i((QQAppInterface)a.get()) == null);
-    QQAppInterface.j((QQAppInterface)a.get()).onNetMobile2None();
+    super.endDocument();
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    a(2, "onNetMobile2Wifi");
-    arzw.a("Network", "onNetMobile2Wifi()");
-    if ((a == null) || (a.get() == null)) {}
-    do
-    {
-      return;
-      QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
-      MqqHandler localMqqHandler = localQQAppInterface.getHandler(aozc.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10001, null).sendToTarget();
-      }
-      localMqqHandler = localQQAppInterface.getHandler(Conversation.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10003, null).sendToTarget();
-      }
-      ayqf.a().a();
-      ayvl.a().a();
-      localQQAppInterface.getHttpCommunicatort().a(1);
-      QQHeadDownloadHandler.b();
-      if (QQAppInterface.g(localQQAppInterface) != null) {
-        QQAppInterface.h(localQQAppInterface).onNetMobile2Wifi(paramString);
-      }
-      localQQAppInterface.a();
-      paramString = (anox)localQQAppInterface.getManager(77);
-      if (paramString != null) {
-        paramString.a();
-      }
-      onk.a(localQQAppInterface);
-      paramString = localQQAppInterface.getHandler(ShortVideoPlayActivity.class);
-    } while (paramString == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onNetMobile2Wifi");
-    }
-    paramString.obtainMessage(5).sendToTarget();
+    this.jdField_a_of_type_JavaLangString = null;
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void startDocument()
   {
-    a(1, "onNetNone2Mobile");
-    arzw.a("Network", "onNetNone2Mobile()");
-    if ((a == null) || (a.get() == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
-    MqqHandler localMqqHandler = localQQAppInterface.getHandler(Conversation.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.obtainMessage(10003, null).sendToTarget();
-    }
-    localMqqHandler = localQQAppInterface.getHandler(ChatHistory.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.obtainMessage(6, null).sendToTarget();
-    }
-    localMqqHandler = localQQAppInterface.getHandler(ChatHistoryC2CAllFragment.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.obtainMessage(27).sendToTarget();
-    }
-    ayqf.a().a();
-    ayvl.a().a();
-    localQQAppInterface.getHttpCommunicatort().a(2);
-    QQHeadDownloadHandler.b();
-    if (QQAppInterface.a(localQQAppInterface) != null) {
-      QQAppInterface.b(localQQAppInterface).onNetNone2Mobile(paramString);
-    }
-    paramString = (anox)localQQAppInterface.getManager(77);
-    if (paramString != null) {
-      paramString.a();
-    }
-    paramString = localQQAppInterface.getHandler(ShortVideoPlayActivity.class);
-    if (paramString != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPlayActivity", 2, "onNetNone2Mobile");
-      }
-      paramString.obtainMessage(4).sendToTarget();
-    }
-    ndm.a().b();
+    super.startDocument();
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    a(2, "onNetNone2Wifi");
-    arzw.a("Network", "onNetNone2Wifi()");
-    if ((a == null) || (a.get() == null)) {}
-    do
-    {
-      return;
-      QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
-      MqqHandler localMqqHandler = localQQAppInterface.getHandler(Conversation.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10003, null).sendToTarget();
-      }
-      localMqqHandler = localQQAppInterface.getHandler(ChatHistory.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(6, null).sendToTarget();
-      }
-      localMqqHandler = localQQAppInterface.getHandler(ChatHistoryC2CAllFragment.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(27).sendToTarget();
-      }
-      ayqf.a().a();
-      ayvl.a().a();
-      localQQAppInterface.getHttpCommunicatort().a(1);
-      QQHeadDownloadHandler.b();
-      if (QQAppInterface.e(localQQAppInterface) != null) {
-        QQAppInterface.f(localQQAppInterface).onNetNone2Wifi(paramString);
-      }
-      localQQAppInterface.a();
-      paramString = (anox)localQQAppInterface.getManager(77);
-      if (paramString != null) {
-        paramString.a();
-      }
-      onk.a(localQQAppInterface);
-      paramString = localQQAppInterface.getHandler(ShortVideoPlayActivity.class);
-    } while (paramString == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onNetNone2Wifi");
-    }
-    paramString.obtainMessage(5).sendToTarget();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(1, "onNetWifi2Mobile");
-    Object localObject = auoh.a();
-    if (localObject != null) {
-      ((auoh)localObject).b();
-    }
-    arzw.a("Network", "onNetWifi2Mobile()");
-    if ((a == null) || (a.get() == null)) {
-      return;
-    }
-    localObject = (QQAppInterface)a.get();
-    MqqHandler localMqqHandler = ((QQAppInterface)localObject).getHandler(aozc.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.obtainMessage(10001, null).sendToTarget();
-    }
-    localMqqHandler = ((QQAppInterface)localObject).getHandler(Conversation.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.obtainMessage(10003, null).sendToTarget();
-    }
-    ayqf.a().a();
-    ayvl.a().a();
-    ((QQAppInterface)localObject).getHttpCommunicatort().a(2);
-    QQHeadDownloadHandler.b();
-    if (QQAppInterface.c((QQAppInterface)localObject) != null) {
-      QQAppInterface.d((QQAppInterface)localObject).onNetWifi2Mobile(paramString);
-    }
-    paramString = (anox)((QQAppInterface)localObject).getManager(77);
-    if (paramString != null) {
-      paramString.a();
-    }
-    paramString = ((QQAppInterface)localObject).getHandler(ShortVideoPlayActivity.class);
-    if (paramString != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPlayActivity", 2, "onNetWifi2Mobile");
-      }
-      paramString.obtainMessage(4).sendToTarget();
-    }
-    ndm.a().b();
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(3, "onNetWifi2None");
-    arzw.a("Network", "onNetWifi2None()");
-    if ((a == null) || (a.get() == null)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)a.get();
-      MqqHandler localMqqHandler = localQQAppInterface.getHandler(aozc.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10001, null).sendToTarget();
-      }
-      localMqqHandler = localQQAppInterface.getHandler(Conversation.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(10003, QQAppInterface.b(localQQAppInterface).getString(2131692321)).sendToTarget();
-      }
-      localMqqHandler = localQQAppInterface.getHandler(ChatHistoryC2CAllFragment.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.obtainMessage(28, null).sendToTarget();
-      }
-      ayqf.a().a();
-      ayvl.a().a();
-      localQQAppInterface.getHttpCommunicatort().a(1);
-      QQHeadDownloadHandler.b();
-    } while (QQAppInterface.k(localQQAppInterface) == null);
-    QQAppInterface.l(localQQAppInterface).onNetWifi2None();
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
 }
 

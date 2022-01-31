@@ -2,7 +2,7 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 
 class ShareProxyImpl$3
   implements Runnable
@@ -11,7 +11,7 @@ class ShareProxyImpl$3
   
   public void run()
   {
-    bcpw.a(this.val$activity, 0, 2131720907, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298865));
+    bcql.a(this.val$activity, 0, 2131720918, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

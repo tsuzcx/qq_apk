@@ -1,16 +1,68 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcnu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public bcnu(ParticipleView paramParticipleView) {}
+  public bcnu(NewStyleDropdownView paramNewStyleDropdownView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.a.jdField_a_of_type_Bcnv.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bcnv.getWindowToken(), 0);
+    Drawable localDrawable;
+    StringBuilder localStringBuilder;
+    if ((this.a.jdField_a_of_type_Bcnv.getAdapter() != null) && (this.a.jdField_a_of_type_Bcnv.getAdapter().getCount() > 0))
+    {
+      int i = this.a.jdField_a_of_type_Bcnv.getAdapter().getCount();
+      if (i >= 5) {
+        break label323;
+      }
+      int j = actj.a(7.5F, this.a.getResources());
+      int k = actj.a(40.0F, this.a.getResources());
+      this.a.jdField_a_of_type_Bcnv.setDropDownHeight(i * (j * 2 + k) + j * 2);
+      localDrawable = ((ImageView)paramView).getDrawable();
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
+        if (localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+          break label348;
+        }
+      }
+    }
+    label323:
+    label348:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
+      if ((localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break label354;
+      }
+      if (this.a.jdField_a_of_type_Bcnw != null) {
+        this.a.jdField_a_of_type_Bcnw.c(false);
+      }
+      NewStyleDropdownView.a(this.a).postDelayed(new NewStyleDropdownView.2.1(this, paramView), 500L);
+      paramView = paramView.getContext();
+      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
+        axqy.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
+      }
+      return;
+      this.a.jdField_a_of_type_Bcnv.setDropDownHeight(actj.a(251.5F, this.a.getResources()));
+      break;
+    }
+    label354:
+    if (this.a.jdField_a_of_type_Bcnw != null) {
+      this.a.jdField_a_of_type_Bcnw.c(true);
+    }
+    this.a.jdField_a_of_type_Bcnv.dismissDropDown();
   }
 }
 

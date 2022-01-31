@@ -1,15 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 class bjvv
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnDismissListener
 {
-  bjvv(bjvu parambjvu) {}
+  bjvv(bjvt parambjvt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bjvu.a(this.a).sendEmptyMessageDelayed(1, 1500L);
+    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
+    this.a.jdField_a_of_type_Bjxn.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
   }
 }
 

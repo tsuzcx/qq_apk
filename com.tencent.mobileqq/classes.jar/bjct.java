@@ -1,182 +1,111 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewStub;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bjct
-  extends bjcl
-  implements sse
+  extends bjcj
 {
-  private Animator a;
-  protected srv a;
-  protected int b;
-  private Animator b;
-  public View b;
-  
-  public bjct(CaptureModeController paramCaptureModeController)
+  public bjct(Object paramObject)
   {
-    super(paramCaptureModeController);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getIntent().getIntExtra("edit_video_type", 10002);
+    super(paramObject);
   }
   
-  public void a()
+  public int a(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_Bify.x();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "apply " + toString());
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.b.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      g();
-      h();
+      bjbw localbjbw = (bjbw)((Iterator)localObject).next();
+      if ((localbjbw instanceof bjby)) {
+        localArrayList.add(((bjby)localbjbw).a);
+      }
+    }
+    ((bjcb)bjav.a(5)).a[paramInt].a(this);
+    localObject = (QIMFilterCategoryItem)this.a;
+    bkrf.a().a((QIMFilterCategoryItem)localObject, paramInt);
+    if ((QLog.isColorLevel()) && (localObject != null)) {
+      QLog.i("QCombo", 2, "setApplyedFilterGroup" + ((QIMFilterCategoryItem)localObject).b);
+    }
+    bjby.a(paramActivity, localArrayList, this, paramInt);
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (bjbw)localIterator.next();
+      if ((localObject instanceof bjby))
+      {
+        localObject = ((bjby)localObject).a;
+        if ((localObject != null) && (((FilterDesc)localObject).predownload == 0)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public void b(Activity paramActivity, int paramInt)
+  {
+    super.b(paramActivity, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("QCombo", 2, "select " + toString());
+    }
+    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
+    bkrf.a().b(localQIMFilterCategoryItem, paramActivity, paramInt);
+  }
+  
+  public int d()
+  {
+    int k = 0;
+    Iterator localIterator = this.b.iterator();
+    int i = 0;
+    int j = k;
+    if (localIterator.hasNext())
+    {
+      j = ((bjbw)localIterator.next()).a;
+      if (j == 2) {
+        j = 1;
+      }
+    }
+    else
+    {
+      if (j == 0) {
+        break label67;
+      }
+      b(2);
+      return 2;
+    }
+    if (j == 1) {
+      i = 1;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Srv != null)
+      break;
+      label67:
+      if (i != 0)
       {
-        if (!paramBoolean) {
-          break;
-        }
-        this.jdField_a_of_type_Srv.b();
+        b(2);
+        return 1;
       }
-      return;
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        i();
-      }
-    }
-    this.jdField_a_of_type_Srv.c();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bify.I();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Srv != null) {
-      this.jdField_a_of_type_Srv.b();
+      b(3);
+      return 3;
     }
   }
   
-  public void e()
+  public String toString()
   {
-    if (this.jdField_a_of_type_Srv != null) {
-      this.jdField_a_of_type_Srv.c();
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Srv != null) {
-      this.jdField_a_of_type_Srv.a();
-    }
-  }
-  
-  public void g()
-  {
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      return;
-    }
-    if (this.jdField_b_of_type_Int == 10002)
-    {
-      spq localspq = (spq)tdc.a(30);
-      localspq.c();
-      if (localspq.a(this.jdField_a_of_type_AndroidViewView.getContext()))
-      {
-        ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131363880)).inflate();
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363879);
-        if (this.jdField_b_of_type_AndroidViewView != null)
-        {
-          veg.b("SlidesMode", "init album gallery view part success");
-          this.jdField_a_of_type_Srv = new srv(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a(), this.jdField_b_of_type_AndroidViewView, this);
-        }
-      }
-    }
-    if (this.jdField_b_of_type_AndroidViewView == null)
-    {
-      ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131376274)).inflate();
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376273);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131376272).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131363666).setOnClickListener(this);
-    }
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new bjcu(this));
-  }
-  
-  protected void h()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
-      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "alpha", new float[] { 0.0F, 1.0F }).setDuration(600L);
-    }
-    if ((this.jdField_b_of_type_AndroidAnimationAnimator != null) && (this.jdField_b_of_type_AndroidAnimationAnimator.isRunning())) {
-      this.jdField_b_of_type_AndroidAnimationAnimator.cancel();
-    }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidAnimationAnimator.start();
-    String str;
-    Bundle localBundle;
-    if (this.jdField_a_of_type_Srv != null)
-    {
-      str = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getIntent().getExtras().getString("story_capture_album_id", "");
-      localBundle = new Bundle();
-      if (!TextUtils.isEmpty(str))
-      {
-        if (!"default_id".equals(str)) {
-          break label144;
-        }
-        localBundle.putInt("BUNDLE_KEY_LOCATE_INDEX", 1);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Srv.a(localBundle);
-      return;
-      try
-      {
-        label144:
-        localBundle.putLong("BUNDLE_KEY_LOCATE_ALBUM_ID", Long.valueOf(str).longValue());
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        veg.c("SlidesMode", "format albumId error : %s", localNumberFormatException);
-      }
-    }
-  }
-  
-  protected void i()
-  {
-    if (this.jdField_b_of_type_AndroidAnimationAnimator == null)
-    {
-      this.jdField_b_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "alpha", new float[] { 1.0F, 0.0F }).setDuration(600L);
-      this.jdField_b_of_type_AndroidAnimationAnimator.addListener(new bjcv(this));
-    }
-    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
-    }
-    if (this.jdField_b_of_type_AndroidViewView.getVisibility() != 8) {
-      this.jdField_b_of_type_AndroidAnimationAnimator.start();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363666: 
-      this.jdField_a_of_type_Bify.I();
-      return;
-    }
-    this.jdField_a_of_type_Bify.x();
+    return "Filter" + this.a;
   }
 }
 

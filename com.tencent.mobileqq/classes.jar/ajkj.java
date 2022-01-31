@@ -1,8 +1,79 @@
-import java.io.ByteArrayOutputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
-public abstract interface ajkj
+@Deprecated
+public class ajkj
 {
-  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
+  private static ajkj jdField_a_of_type_Ajkj;
+  public int a;
+  public String a;
+  public AtomicInteger a;
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  
+  public ajkj()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public static ajkj a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Ajkj == null) {
+        jdField_a_of_type_Ajkj = new ajkj();
+      }
+      ajkj localajkj = jdField_a_of_type_Ajkj;
+      return localajkj;
+    }
+    finally {}
+  }
+  
+  public ajkj a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
+    }
+    return this;
+  }
+  
+  public ReentrantLock a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionManager", 2, "[getLock].");
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloActionManager", 2, "create lock.");
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+      }
+      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+      return localReentrantLock;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionManager", 2, "[onDestroy]");
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 

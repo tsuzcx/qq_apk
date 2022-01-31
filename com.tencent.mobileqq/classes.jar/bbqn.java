@@ -1,111 +1,22 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Config;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
 import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bbqn
-  extends QIPCModule
+public final class bbqn
+  implements EIPCResultCallback
 {
-  private static bbqn a;
+  public bbqn(bbqk parambbqk) {}
   
-  private bbqn(String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super(paramString);
-  }
-  
-  /* Error */
-  public static bbqn a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 14	bbqn:a	Lbbqn;
-    //   6: ifnonnull +27 -> 33
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 14	bbqn:a	Lbbqn;
-    //   15: ifnonnull +15 -> 30
-    //   18: new 2	bbqn
-    //   21: dup
-    //   22: ldc 16
-    //   24: invokespecial 17	bbqn:<init>	(Ljava/lang/String;)V
-    //   27: putstatic 14	bbqn:a	Lbbqn;
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: getstatic 14	bbqn:a	Lbbqn;
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_0
-    //   43: ldc 2
-    //   45: monitorexit
-    //   46: aload_0
-    //   47: athrow
-    //   48: astore_0
-    //   49: ldc 2
-    //   51: monitorexit
-    //   52: aload_0
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   36	5	0	localbbqn	bbqn
-    //   42	5	0	localObject1	java.lang.Object
-    //   48	5	0	localObject2	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	30	42	finally
-    //   30	33	42	finally
-    //   43	46	42	finally
-    //   3	12	48	finally
-    //   33	37	48	finally
-    //   46	48	48	finally
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    int i;
-    boolean bool;
-    if ("is_white_name".equals(paramString))
+    if (paramEIPCResult.code != 0)
     {
-      i = paramBundle.getInt("managerId", -1);
-      if (i == 490)
-      {
-        bool = asxx.a().a();
-        paramString = new Bundle();
-        paramString.putBoolean("isWhiteName", bool);
-        paramString = EIPCResult.createSuccessResult(paramString);
-      }
+      this.a.a(2, "", "");
+      return;
     }
-    for (;;)
-    {
-      callbackResult(paramInt, paramString);
-      return null;
-      if (i == 491)
-      {
-        bool = amyr.c().mIsEnable;
-        paramString = new Bundle();
-        paramString.putBoolean("isWhiteName", bool);
-        paramString = EIPCResult.createSuccessResult(paramString);
-      }
-      else
-      {
-        paramString = EIPCResult.createResult(-1, new Bundle());
-        continue;
-        if ("paySuccess".equals(paramString))
-        {
-          ((akjo)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(27)).notifyUI(5, true, paramBundle);
-          paramString = EIPCResult.createResult(0, null);
-        }
-        else
-        {
-          paramString = null;
-        }
-      }
-    }
+    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
+    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
   }
 }
 

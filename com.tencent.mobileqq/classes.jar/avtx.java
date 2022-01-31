@@ -1,58 +1,50 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Handler;
-import android.os.Message;
+import android.widget.ImageView;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class avtx
-  extends Handler
+  extends AnimatorListenerAdapter
 {
   public avtx(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super.handleMessage(paramMessage);
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
     }
-    switch (paramMessage.what)
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
+    }
+    if (!this.a.b.get())
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            CameraCaptureButtonLayout.c(this.a);
-            return;
-          } while (CameraCaptureButtonLayout.a(this.a) == null);
-          CameraCaptureButtonLayout.a(this.a).b();
-          return;
-        } while (!this.a.a.get());
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).c();
-        }
-        this.a.a.set(false);
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).a();
-        }
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-      } while (!this.a.a.get());
-      CameraCaptureButtonLayout.e(this.a);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
-      return;
+      this.a.a.set(true);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
+      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
     }
-    this.a.b();
+    for (;;)
+    {
+      this.a.b.set(false);
+      return;
+      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
+      CameraCaptureButtonLayout.a(this.a);
+      CameraCaptureButtonLayout.a(this.a, 1.0F);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
+    }
   }
 }
 

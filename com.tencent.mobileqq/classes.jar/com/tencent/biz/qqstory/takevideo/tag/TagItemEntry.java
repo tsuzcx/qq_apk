@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import aukm;
-import ssl;
+import auko;
+import ssi;
 
 public class TagItemEntry
-  extends aukm
-  implements ssl
+  extends auko
+  implements ssi
 {
   public String desc;
   public long id;

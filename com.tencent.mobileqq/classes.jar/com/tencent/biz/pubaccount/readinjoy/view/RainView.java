@@ -7,21 +7,21 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aybg;
 import aybi;
 import aybk;
-import ayck;
-import aycn;
-import bawz;
-import bbdr;
+import aybm;
+import aycm;
+import aycp;
+import baxn;
+import bbef;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-import ral;
-import ram;
-import ran;
+import rai;
+import raj;
+import rak;
 
 public class RainView
   extends SpriteGLView
@@ -33,9 +33,9 @@ public class RainView
   private static int e = 3;
   private static int f = 6;
   private Context jdField_a_of_type_AndroidContentContext;
-  private aycn jdField_a_of_type_Aycn;
+  private aycp jdField_a_of_type_Aycp;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private ran jdField_a_of_type_Ran;
+  private rak jdField_a_of_type_Rak;
   private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private int g;
   private int h;
@@ -76,11 +76,11 @@ public class RainView
     }
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    bbdr.a(paramString, (BitmapFactory.Options)localObject);
+    bbef.a(paramString, (BitmapFactory.Options)localObject);
     int i2 = ((BitmapFactory.Options)localObject).outHeight;
     int m = ((BitmapFactory.Options)localObject).outWidth;
-    int n = bawz.a(getContext(), 80.0F);
-    int i1 = bawz.a(getContext(), 80.0F);
+    int n = baxn.a(getContext(), 80.0F);
+    int i1 = baxn.a(getContext(), 80.0F);
     if ((i2 > n) || (m > i1))
     {
       i2 /= 2;
@@ -105,7 +105,7 @@ public class RainView
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
         try
         {
-          localObject = bbdr.a(paramString, (BitmapFactory.Options)localObject);
+          localObject = bbef.a(paramString, (BitmapFactory.Options)localObject);
           paramString = (String)localObject;
           if (localObject != null) {
             break;
@@ -129,13 +129,13 @@ public class RainView
     {
       paramString = a(paramString);
       if (paramString != null) {
-        this.jdField_a_of_type_Aycn = new aycn(this, paramString);
+        this.jdField_a_of_type_Aycp = new aycp(this, paramString);
       }
-      if (this.jdField_a_of_type_Aycn != null)
+      if (this.jdField_a_of_type_Aycp != null)
       {
         this.g = (paramInt1 / e);
         this.h = paramInt2;
-        this.i = (bawz.a(getContext(), 20.0F) + paramInt3);
+        this.i = (baxn.a(getContext(), 20.0F) + paramInt3);
         this.k = (paramInt3 - paramInt2);
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
         b(this);
@@ -144,10 +144,10 @@ public class RainView
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation run initCount = " + m + " mTexture = " + this.jdField_a_of_type_Aycn);
+        QLog.d("SpriteGLView", 2, "rain animation run initCount = " + m + " mTexture = " + this.jdField_a_of_type_Aycp);
       }
       return;
-      if ((m > 1) && (this.jdField_a_of_type_Aycn != null)) {
+      if ((m > 1) && (this.jdField_a_of_type_Aycp != null)) {
         b(this);
       }
     }
@@ -166,31 +166,31 @@ public class RainView
     int m = 0;
     while (m < e)
     {
-      ayck localayck = new ayck(this);
-      localayck.a(this.jdField_a_of_type_Aycn);
-      localayck.e = ((new Random().nextInt(2) * 2 + 8) / 10.0F);
-      int n = this.h - new Random().nextInt(bawz.a(getContext(), d));
+      aycm localaycm = new aycm(this);
+      localaycm.a(this.jdField_a_of_type_Aycp);
+      localaycm.e = ((new Random().nextInt(2) * 2 + 8) / 10.0F);
+      int n = this.h - new Random().nextInt(baxn.a(getContext(), d));
       int i1 = this.i;
       int i2 = this.g * m + new Random().nextInt(this.g + 1);
-      localayck.a(i2, n);
-      Object localObject = new aybk(jdField_a_of_type_Int, i2, n, a(i2), i1);
-      localayck.a(new aybg[] { localObject });
-      ((aybk)localObject).a(new ral(this, localayck));
+      localaycm.a(i2, n);
+      Object localObject = new aybm(jdField_a_of_type_Int, i2, n, a(i2), i1);
+      localaycm.a(new aybi[] { localObject });
+      ((aybm)localObject).a(new rai(this, localaycm));
       if (m == 0)
       {
-        localObject = new aybi(jdField_b_of_type_Int);
-        localayck.a(new aybg[] { localObject });
-        ((aybi)localObject).a(new ram(this));
+        localObject = new aybk(jdField_b_of_type_Int);
+        localaycm.a(new aybi[] { localObject });
+        ((aybk)localObject).a(new raj(this));
       }
-      a(localayck);
+      a(localaycm);
       m += 1;
     }
     this.j += 1;
   }
   
-  public void setAnimationEndListener(ran paramran)
+  public void setAnimationEndListener(rak paramrak)
   {
-    this.jdField_a_of_type_Ran = paramran;
+    this.jdField_a_of_type_Rak = paramrak;
   }
 }
 

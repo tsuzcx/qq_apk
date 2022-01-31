@@ -9,7 +9,9 @@ public class auwc
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
+    this.a.e();
+    this.a.g();
+    axqy.b(this.a.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
   }
 }
 

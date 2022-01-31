@@ -1,27 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.comment.EmoView;
-
-public class wog
-  extends Handler
+public abstract interface wog
 {
-  public wog(EmoView paramEmoView) {}
+  public abstract boolean a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i;
-    if (paramMessage.what == 0)
-    {
-      i = EmoView.a(this.a) + 1;
-      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
-    }
-    else
-    {
-      return;
-    }
-    EmoView.a(this.a, i);
-    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
-  }
+  public abstract boolean a(String paramString);
 }
 
 

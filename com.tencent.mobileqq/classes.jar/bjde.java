@@ -1,63 +1,54 @@
-public abstract class bjde
-  extends bbwf
+import dov.com.qq.im.capture.mode.CaptureModeController;
+
+public class bjde
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
-  
-  public void onCancel(bbwg parambbwg)
+  public static int a(int paramInt)
   {
-    super.onCancel(parambbwg);
-    a(parambbwg.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(bbwg parambbwg)
-  {
-    String str = parambbwg.jdField_a_of_type_JavaLangString;
-    if (parambbwg.a() == 3) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      a(str, bool, parambbwg.jdField_a_of_type_Int);
-      return;
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 4;
+    case 3: 
+      return 2;
+    case 4: 
+      return 5;
     }
+    return 10;
   }
   
-  public void onNetMobile2None()
+  public static bjdc a(int paramInt, CaptureModeController paramCaptureModeController)
   {
-    super.onNetMobile2None();
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile()
-  {
-    super.onNetWifi2Mobile();
-    a(1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    super.onNetWifi2None();
-    a(3);
-  }
-  
-  public void onProgress(bbwg parambbwg)
-  {
-    super.onProgress(parambbwg);
-    int i = (int)parambbwg.jdField_a_of_type_Float;
-    a(parambbwg.jdField_a_of_type_JavaLangString, i);
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    super.onStart(parambbwg);
-    a(parambbwg.jdField_a_of_type_JavaLangString, true);
-    return true;
+    switch (paramInt)
+    {
+    case 3: 
+    case 6: 
+    case 7: 
+    case 8: 
+    case 9: 
+    default: 
+      return new bjdf(paramCaptureModeController);
+    case 1: 
+      return new bjdg(paramCaptureModeController);
+    case 4: 
+      return new bjdo(paramCaptureModeController);
+    case 2: 
+      return new bjdk(paramCaptureModeController);
+    case 5: 
+      return new bjry(paramCaptureModeController);
+    case 10: 
+      return new bjdn(paramCaptureModeController);
+    }
+    if ((paramCaptureModeController.a instanceof bihx)) {
+      return new bjdg(paramCaptureModeController);
+    }
+    return new bjdf(paramCaptureModeController);
   }
 }
 

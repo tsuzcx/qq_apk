@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import baiq;
-import bamt;
+import baje;
+import banh;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,12 +10,12 @@ import java.util.List;
 public class TroopAvatarManger$1
   implements Runnable
 {
-  public TroopAvatarManger$1(baiq parambaiq, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, bamt parambamt, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
+  public TroopAvatarManger$1(baje parambaje, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, banh parambanh, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
   
   public void run()
   {
     List localList = this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0", "0", this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    this.jdField_a_of_type_Bamt.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, localList);
+    this.jdField_a_of_type_Banh.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, localList);
   }
 }
 

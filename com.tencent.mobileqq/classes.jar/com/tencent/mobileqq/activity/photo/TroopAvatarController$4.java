@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aglg;
-import agqh;
-import bamm;
+import agle;
+import agqf;
+import bana;
 
 public class TroopAvatarController$4
   implements Runnable
 {
-  public TroopAvatarController$4(agqh paramagqh, bamm parambamm, aglg paramaglg, int paramInt) {}
+  public TroopAvatarController$4(agqf paramagqf, bana parambana, agle paramagle, int paramInt) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Bamm.c;
-    this.jdField_a_of_type_Aglg.a = false;
-    this.jdField_a_of_type_Aglg.b = 1;
-    this.jdField_a_of_type_Aglg.jdField_c_of_type_Boolean = false;
-    this.this$0.c(this.jdField_a_of_type_Aglg);
+    int i = this.jdField_a_of_type_Bana.c;
+    this.jdField_a_of_type_Agle.a = false;
+    this.jdField_a_of_type_Agle.b = 1;
+    this.jdField_a_of_type_Agle.jdField_c_of_type_Boolean = false;
+    this.this$0.c(this.jdField_a_of_type_Agle);
     i &= 0x7FFFFFFF;
     if ((i < 0) || (i > 1))
     {
-      this.jdField_a_of_type_Aglg.jdField_c_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aglg.b = 1;
-      this.jdField_a_of_type_Aglg.a = false;
-      if (this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aglg)) {
-        agqh.a(this.this$0, this.jdField_a_of_type_Aglg);
+      this.jdField_a_of_type_Agle.jdField_c_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Agle.b = 1;
+      this.jdField_a_of_type_Agle.a = false;
+      if (this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Agle)) {
+        agqf.a(this.this$0, this.jdField_a_of_type_Agle);
       }
     }
-    agqh.a(this.this$0, null);
-    agqh.b(this.this$0, null);
-    this.this$0.a(this.jdField_a_of_type_Aglg, this.jdField_a_of_type_Bamm);
+    agqf.a(this.this$0, null);
+    agqf.b(this.this$0, null);
+    this.this$0.a(this.jdField_a_of_type_Agle, this.jdField_a_of_type_Bana);
     this.this$0.b();
   }
 }

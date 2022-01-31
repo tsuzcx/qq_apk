@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import bhkl;
-import bhkn;
-import bhrl;
+import bhlc;
+import bhle;
+import bhsc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class QzoneDynamicAlbumPlugin$7
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$7(bhrl parambhrl, List paramList, String[] paramArrayOfString) {}
+  public QzoneDynamicAlbumPlugin$7(bhsc parambhsc, List paramList, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -23,11 +23,11 @@ public class QzoneDynamicAlbumPlugin$7
       {
         i += 1;
         break;
-        boolean bool = bhrl.a(BaseApplicationImpl.getContext(), (String)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ArrayOfJavaLangString[i], bhrl.b()[0], bhrl.b()[1]);
-        if ((bool) && (i == 0) && (!bhrl.b(this.this$0)))
+        boolean bool = bhsc.a(BaseApplicationImpl.getContext(), (String)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ArrayOfJavaLangString[i], bhsc.b()[0], bhsc.b()[1]);
+        if ((bool) && (i == 0) && (!bhsc.b(this.this$0)))
         {
           QLog.d("QzoneDynamicAlbumPlugin", 1, "pickDynamicAlbumImage uploadFirstDynamicPhoto:" + this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-          bhkl.a().a().a(this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_JavaUtilList.size());
+          bhlc.a().a().a(this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_JavaUtilList.size());
         }
         for (;;)
         {

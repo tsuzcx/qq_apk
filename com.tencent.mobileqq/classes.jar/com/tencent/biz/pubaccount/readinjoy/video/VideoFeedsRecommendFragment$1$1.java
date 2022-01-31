@@ -4,43 +4,43 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import oaj;
-import qls;
-import qmg;
-import qqr;
+import oag;
+import qlp;
+import qmd;
+import qqo;
 
 public class VideoFeedsRecommendFragment$1$1
   implements Runnable
 {
-  public VideoFeedsRecommendFragment$1$1(qqr paramqqr, int paramInt) {}
+  public VideoFeedsRecommendFragment$1$1(qqo paramqqo, int paramInt) {}
   
   public void run()
   {
-    if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).getScrollState() != 0) {}
+    if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).getScrollState() != 0) {}
     Object localObject1;
     do
     {
       return;
-      localObject1 = (LinearLayoutManager)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).getLayoutManager();
+      localObject1 = (LinearLayoutManager)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).getLayoutManager();
       int i = ((LinearLayoutManager)localObject1).findFirstVisibleItemPosition();
       int j = ((LinearLayoutManager)localObject1).findLastVisibleItemPosition();
       localObject1 = null;
       if (i < j)
       {
-        Object localObject2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).getLayoutManager().findViewByPosition(i);
+        Object localObject2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).getLayoutManager().findViewByPosition(i);
         if (localObject2 == null) {}
         for (;;)
         {
           i += 1;
           break;
-          localObject2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).getChildViewHolder((View)localObject2);
+          localObject2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).getChildViewHolder((View)localObject2);
           if (i == this.jdField_a_of_type_Int) {
             localObject1 = localObject2;
           }
           if (localObject2 != null) {
-            if ((localObject2 instanceof qmg))
+            if ((localObject2 instanceof qmd))
             {
-              localObject2 = ((qmg)localObject2).a;
+              localObject2 = ((qmd)localObject2).a;
               if (localObject2 != null) {
                 ((VideoFeedsAlphaMaskView)localObject2).setAlpha(0.0F);
               }
@@ -48,12 +48,12 @@ public class VideoFeedsRecommendFragment$1$1
           }
         }
       }
-    } while ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a) == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).d()) || (localObject1 == null));
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).a((RecyclerView.ViewHolder)localObject1);
-    oaj.a(this.jdField_a_of_type_Qqr.a.getActivity(), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a));
-    oaj.b(this.jdField_a_of_type_Qqr.a.getActivity(), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a));
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).d();
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqr.a).c();
+    } while ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a) == null) || (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).d()) || (localObject1 == null));
+    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).a((RecyclerView.ViewHolder)localObject1);
+    oag.a(this.jdField_a_of_type_Qqo.a.getActivity(), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a));
+    oag.b(this.jdField_a_of_type_Qqo.a.getActivity(), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a));
+    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).d();
+    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_Qqo.a).c();
   }
 }
 

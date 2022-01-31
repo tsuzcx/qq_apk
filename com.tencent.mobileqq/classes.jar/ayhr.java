@@ -1,8 +1,6 @@
-public class ayhr
+public abstract interface ayhr
 {
-  public ayir a;
-  
-  public ayhr(ayhq paramayhq) {}
+  public abstract void a(int paramInt, ayit paramayit);
 }
 
 

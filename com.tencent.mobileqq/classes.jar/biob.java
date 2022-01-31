@@ -1,12 +1,11 @@
+import android.support.annotation.NonNull;
+import java.util.List;
+
 public abstract interface biob
 {
-  public abstract void a();
+  public abstract void a(@NonNull List<binn> paramList, @NonNull List<binm> paramList1);
   
-  public abstract void a(biqn parambiqn);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void x();
 }
 
 

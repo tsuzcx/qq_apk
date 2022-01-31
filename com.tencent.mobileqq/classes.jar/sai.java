@@ -1,41 +1,22 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 import java.util.List;
 
 public class sai
+  extends Handler
 {
-  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public sai(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public static void a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
-  }
-  
-  public static void a(String paramString1, String paramString2, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
-  
-  private static boolean a(double paramDouble)
-  {
-    return false;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      jdField_a_of_type_JavaUtilList.clear();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-  }
-  
-  private static void b(String paramString)
-  {
-    noo.a(onk.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
+    paramMessage = (List)paramMessage.obj;
+    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
   }
 }
 

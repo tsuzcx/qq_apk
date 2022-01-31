@@ -1,6 +1,20 @@
-public abstract interface lrj
+import android.util.Log;
+
+public abstract class lrj
 {
-  public abstract void a();
+  private String a;
+  protected lri a;
+  
+  public lrj()
+  {
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
+  }
+  
+  public void a(lri paramlri)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "init");
+    this.jdField_a_of_type_Lri = paramlri;
+  }
 }
 
 

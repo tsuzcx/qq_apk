@@ -1,17 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-class atgt
-  implements View.OnClickListener
+public class atgt
+  implements atjh
 {
-  atgt(atgs paramatgs) {}
+  public atgt(StoryPlayController paramStoryPlayController) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.jdField_a_of_type_Atkl.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData);
+    int j = 1;
+    int i = 1;
+    if (paramInt1 != 100)
+    {
+      paramString1 = this.a.jdField_a_of_type_Atjg.a.a;
+      if (this.a.jdField_a_of_type_Atjg.c()) {}
+      for (;;)
+      {
+        atiy.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
+        return;
+        i = 2;
+      }
+    }
+    atiy.e();
+    paramString1 = StoryPlayController.a(this.a);
+    if (this.a.jdField_a_of_type_Atjg.c()) {}
+    for (paramInt1 = j;; paramInt1 = 2)
+    {
+      atiy.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
+      return;
+    }
   }
 }
 

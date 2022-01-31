@@ -1,18 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class alus
-  implements View.OnClickListener
 {
-  alus(alup paramalup) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    aaet.a(alup.a(this.a), -3, "user canceled");
-    alup.a(this.a).a();
-    alup.a(this.a).dismiss();
-    alup.a(this.a, null);
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
   }
 }
 

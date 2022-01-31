@@ -1,63 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 class apmf
-  implements aool
+  implements aptw
 {
-  apmf(apme paramapme, int paramInt) {}
+  apmf(apme paramapme) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
+  public void a()
   {
-    if (!paramBoolean)
-    {
-      QLog.e("FileBrowserModelBase", 1, "sending cs to get preview url but failed, retCode[" + paramLong + "], retMeg[" + paramString3 + "]");
-      if (this.jdField_a_of_type_Apme.jdField_a_of_type_Apnc != null) {
-        this.jdField_a_of_type_Apme.jdField_a_of_type_Apnc.a(paramLong);
-      }
-      if (this.jdField_a_of_type_Apme.jdField_a_of_type_Apkm != null) {
-        this.jdField_a_of_type_Apme.jdField_a_of_type_Apkm.e();
-      }
-      this.jdField_a_of_type_Apme.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Apme.jdField_a_of_type_Apkp.a());
-      return;
-    }
-    this.jdField_a_of_type_Apme.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Apme.b = paramString2;
-    this.jdField_a_of_type_Apme.c = paramString4;
-    this.jdField_a_of_type_Apme.d = paramString5;
-    paramString2 = "";
-    short s;
-    if (paramBundle != null) {
-      if (this.jdField_a_of_type_Int == 3000)
-      {
-        paramBoolean = apee.g(this.jdField_a_of_type_Apme.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramString1 = paramBundle.getString("httpsdomain");
-        if ((TextUtils.isEmpty(paramString1)) || (!paramBoolean)) {
-          break label316;
-        }
-        paramBoolean = true;
-        s = paramBundle.getShort("httpsport");
-        label210:
-        paramString2 = paramBundle.getString("ipv6domain", "");
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Apme.a(this.jdField_a_of_type_Apme.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apme.b, this.jdField_a_of_type_Apme.c, apue.c(this.jdField_a_of_type_Apme.jdField_a_of_type_Apkp.a()), "/", this.jdField_a_of_type_Apme.d, this.jdField_a_of_type_Apme.jdField_a_of_type_Apkp.a(), paramBoolean, paramString1, s, paramString2, new apmg(this, paramBoolean, paramString1, s));
-      return;
-      paramBoolean = apee.c(this.jdField_a_of_type_Apme.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      label316:
-      paramString1 = null;
-      s = 0;
-      paramBoolean = false;
-      break label210;
-      paramString1 = null;
-      s = 0;
-      paramBoolean = false;
+    apmc.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
     }
   }
+  
+  public void b() {}
 }
 
 

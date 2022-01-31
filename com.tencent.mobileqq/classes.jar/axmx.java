@@ -1,10 +1,23 @@
-public abstract interface axmx
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+
+class axmx
+  implements axno
 {
-  public abstract void a(axna paramaxna, axne paramaxne);
+  axmx(axmw paramaxmw, axnd paramaxnd) {}
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(String paramString);
+  public void a(SoConfig.SoInfo paramSoInfo)
+  {
+    long l = axmw.a(this.jdField_a_of_type_Axmw).a;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (axnh.a()) {}
+    for (int i = 1;; i = 0)
+    {
+      VACDReportUtil.a(l, null, "load.item.getconfig.end", i + "&v=" + axmw.a(), SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      axmw.a(this.jdField_a_of_type_Axmw, this.jdField_a_of_type_Axnd, paramSoInfo);
+      return;
+    }
+  }
 }
 
 

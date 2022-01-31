@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.List;
-import nkw;
+import nkt;
 
 public class EncryptUinHandler$3
   implements Runnable
 {
-  public EncryptUinHandler$3(nkw paramnkw) {}
+  public EncryptUinHandler$3(nkt paramnkt) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(this.this$0.mApp.getLongAccountUin()));
-    nkw.a(this.this$0, localArrayList, 1);
+    nkt.a(this.this$0, localArrayList, 1);
   }
 }
 

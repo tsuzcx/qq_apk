@@ -1,171 +1,214 @@
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import org.xmlpull.v1.XmlSerializer;
 
 public class axzl
-  extends axzh
+  extends axup
+  implements View.OnClickListener
 {
-  private String ai;
-  private String aj;
-  protected long c;
-  protected long d;
-  protected boolean d;
-  protected long e;
-  protected int m;
-  protected int n;
+  public String S;
+  public String T;
+  public String U;
+  public int k;
+  public int l;
   
   public axzl()
   {
-    this.a = "timer";
+    this.a = "textButton";
+    b(32);
+    c(32);
   }
   
-  private long a()
+  private LinearLayout a(Context paramContext)
   {
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      long l1 = awzw.a();
-      long l2 = this.c + this.m - l1;
-      if (l2 < 0L)
-      {
-        this.jdField_d_of_type_Boolean = true;
-        l1 = 0L;
-      }
-      do
-      {
-        return l1;
-        if (l2 <= 0L) {
-          break;
-        }
-        l1 = l2;
-      } while (l2 < this.m);
-      return this.m;
-      this.jdField_d_of_type_Boolean = true;
-      return l2;
-    }
-    return 0L;
-  }
-  
-  private SpannableStringBuilder a(long paramLong)
-  {
-    ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-91585);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.ai);
-    localSpannableStringBuilder.append('\n');
-    if (paramLong > 0L)
-    {
-      int i = localSpannableStringBuilder.length();
-      String str = String.valueOf(paramLong) + ajyc.a(2131714606);
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(this.Y);
-      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
-      return localSpannableStringBuilder;
-    }
-    localSpannableStringBuilder.append(this.aj);
-    return localSpannableStringBuilder;
+    paramContext = new LinearLayout(paramContext);
+    paramContext.setOrientation(0);
+    paramContext.setGravity(16);
+    paramContext.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+    paramContext.setId(2131378374);
+    return paramContext;
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if ((paramView != null) && ((paramView instanceof CountdownTextView)))
+    if (paramView != null) {
+      paramContext = (axzm)paramView.getTag();
+    }
+    for (;;)
     {
-      paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new axzm(this, paramContext));
-      paramContext.setTag(this);
-      return paramContext;
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTag(this);
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT, d());
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextSize(b() / 2);
+      if (!TextUtils.isEmpty(this.S)) {
+        paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.S);
+      }
+      try
+      {
+        if (!TextUtils.isEmpty(this.T))
+        {
+          paramBundle = URLDrawable.getDrawable(this.T, this.k, this.k, null, null);
+          paramBundle.setAutoDownload(true);
+          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        }
+        if (!TextUtils.isEmpty(this.U))
+        {
+          paramBundle = URLDrawable.getDrawable(this.U, this.l, this.l, null, null);
+          paramBundle.setAutoDownload(true);
+          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        }
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, " URLDrawable.exception illegal url : " + paramContext.getMessage());
+          }
+        }
+      }
+      if ((this.c != null) && (!this.c.equals("")))
+      {
+        paramView.setClickable(true);
+        paramView.setOnClickListener(this);
+      }
+      return paramView;
+      paramView = new axzm(this);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+      paramView.b = new ImageView(paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+      paramContext = new LinearLayout.LayoutParams(-2, -2);
+      paramContext.gravity = 16;
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetTextView, paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.b, paramContext);
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramView);
+      paramBundle = paramView.jdField_a_of_type_AndroidWidgetLinearLayout;
+      paramContext = paramView;
+      paramView = paramBundle;
     }
-    paramContext = new CountdownTextView(paramContext);
-    paramContext.setId(2131378114);
-    paramContext.setTag(this);
-    paramContext.setMaxLines(3);
-    paramContext.setTextColor(-10987432);
-    paramContext.setTextSize(2, 12.0F);
-    long l = a();
-    if (this.Y != null) {
-      paramContext.setText(a(l));
-    }
-    paramContext.a(l, new axzn(this, paramContext));
-    return paramContext;
   }
   
   public String a()
   {
-    return "Timer";
+    return "TextButton";
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.ai = axas.a(paramObjectInput.readUTF(), false);
-    this.aj = axas.a(paramObjectInput.readUTF(), false);
-    this.c = paramObjectInput.readLong();
-    this.m = paramObjectInput.readInt();
-    this.n = paramObjectInput.readInt();
-    this.jdField_d_of_type_Long = paramObjectInput.readLong();
-    this.e = paramObjectInput.readLong();
-    this.jdField_d_of_type_Boolean = paramObjectInput.readBoolean();
+    this.S = axau.a(paramObjectInput.readUTF(), false);
+    this.T = axau.a(paramObjectInput.readUTF(), false);
+    this.U = axau.a(paramObjectInput.readUTF(), false);
+    this.b = axau.a(paramObjectInput.readUTF(), false);
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.ai == null)
+    if (this.S == null)
     {
       str = "";
       paramObjectOutput.writeUTF(str);
-      if (this.aj != null) {
-        break label108;
+      if (this.T != null) {
+        break label86;
+      }
+      str = "";
+      label32:
+      paramObjectOutput.writeUTF(str);
+      if (this.U != null) {
+        break label94;
+      }
+      str = "";
+      label49:
+      paramObjectOutput.writeUTF(str);
+      if (this.b != null) {
+        break label102;
       }
     }
-    label108:
-    for (String str = "";; str = this.aj)
+    label86:
+    label94:
+    label102:
+    for (String str = "";; str = this.b)
     {
       paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.c);
-      paramObjectOutput.writeInt(this.m);
-      paramObjectOutput.writeInt(this.n);
-      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
-      paramObjectOutput.writeLong(this.e);
-      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
       return;
-      str = this.ai;
+      str = axau.a(this.S, false);
       break;
+      str = this.T;
+      break label32;
+      str = this.U;
+      break label49;
     }
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, "timer");
-    paramXmlSerializer.attribute(null, "st", String.valueOf(this.c));
-    paramXmlSerializer.attribute(null, "dr", String.valueOf(this.m));
-    paramXmlSerializer.attribute(null, "index", String.valueOf(this.n));
-    if (!TextUtils.isEmpty(this.ai)) {
-      paramXmlSerializer.attribute(null, "summary", this.ai);
+    paramXmlSerializer.startTag(null, this.a);
+    if (!TextUtils.isEmpty(this.S)) {
+      paramXmlSerializer.attribute(null, "text", this.S);
     }
-    if (!TextUtils.isEmpty(this.aj)) {
-      paramXmlSerializer.attribute(null, "ending", this.aj);
+    if (!TextUtils.isEmpty(this.T)) {
+      paramXmlSerializer.attribute(null, "leftImage", this.T);
     }
-    paramXmlSerializer.text(this.Y);
-    paramXmlSerializer.endTag(null, "timer");
+    if (!TextUtils.isEmpty(this.U)) {
+      paramXmlSerializer.attribute(null, "rightImage", this.U);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      paramXmlSerializer.attribute(null, "url", this.b);
+    }
+    paramXmlSerializer.endTag(null, this.a);
   }
   
-  public boolean a(axwe paramaxwe)
+  public boolean a(axwg paramaxwg)
   {
-    if (paramaxwe == null) {
+    if (paramaxwg == null) {
       return true;
     }
-    this.c = axwh.a(paramaxwe.a("st"));
-    this.m = axwh.a(paramaxwe.a("dr"));
-    this.n = axwh.a(paramaxwe.a("index"));
-    this.ai = axas.a(paramaxwe.a("summary"), false);
-    this.aj = axas.a(paramaxwe.a("st"), false);
-    this.Y = axas.a(axuy.a(paramaxwe), false);
+    this.b = paramaxwg.a("url");
+    this.T = paramaxwg.a("leftImage");
+    this.U = paramaxwg.a("rightImage");
+    this.S = axau.a(paramaxwg.a("text"), false);
     return true;
+  }
+  
+  public int b()
+  {
+    return 26;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int c()
+  {
+    return -16777216;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public int d()
+  {
+    return 0;
   }
 }
 

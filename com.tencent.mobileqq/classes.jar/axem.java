@@ -1,22 +1,27 @@
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+
 public class axem
+  implements INetInfoHandler
 {
-  public volatile int a = 0;
-  public int b;
-  public int c = 0;
-  public int d;
+  public axem(ShortVideoResourceManager paramShortVideoResourceManager) {}
   
-  public String a()
+  public void onNetMobile2None()
   {
-    switch (this.a)
-    {
-    default: 
-      return "UNKNOWN_STATUS";
-    case 0: 
-      return "CONFIG_REQUEST_OK";
-    case 1: 
-      return "CONFIG_START_SERVLET";
-    }
-    return "CONFIG_SEND_REQ";
+    ShortVideoResourceManager.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    ShortVideoResourceManager.a(this.a);
   }
 }
 

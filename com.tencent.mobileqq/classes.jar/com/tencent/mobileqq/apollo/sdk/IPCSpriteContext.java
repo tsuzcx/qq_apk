@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajgt;
+import ajgr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPCSpriteContext
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new ajgt();
+  public static final Parcelable.Creator<IPCSpriteContext> CREATOR = new ajgr();
   public float a;
   public int a;
   public String a;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import actn;
+import actj;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
-import bbaz;
-import bbjv;
+import bbbn;
+import bbkj;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.startup.step.SetSplash;
@@ -50,14 +50,14 @@ public class ChatActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     ThreadRegulator.a().a(1);
-    bbjv.b(null, "AIO_Start_cost");
+    bbkj.b(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate strat ");
     }
-    bbaz.a(true);
+    bbbn.a(true);
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    if (actn.a(this, this.app, true, getIntent())) {
+    if (actj.a(this, this.app, true, getIntent())) {
       return false;
     }
     if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -113,12 +113,12 @@ public class ChatActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     ThreadRegulator.a().a(1);
-    bbjv.b(null, "AIO_Start_cost");
+    bbkj.b(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent start ");
     }
     super.doOnNewIntent(paramIntent);
-    if (actn.a(this, this.app, false, getIntent())) {}
+    if (actj.a(this, this.app, false, getIntent())) {}
     for (;;)
     {
       return;

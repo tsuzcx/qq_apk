@@ -1,42 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class ugd
-  extends QQUIEventReceiver<AbsVideoInfoWidget, tll>
+final class ugd
+  implements URLDrawable.URLDrawableListener
 {
-  public ugd(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
+  ugd(ImageView paramImageView, Drawable paramDrawable) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramAbsVideoInfoWidget);
+    ved.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
-  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull tll paramtll)
-  {
-    if ((paramtll.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtll.jdField_a_of_type_JavaUtilList == null)) {}
-    String str;
-    StoryVideoItem localStoryVideoItem;
-    do
-    {
-      do
-      {
-        return;
-        while (paramAbsVideoInfoWidget.a == null) {}
-        str = paramAbsVideoInfoWidget.a.a;
-        paramtll = paramtll.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!paramtll.hasNext());
-      localStoryVideoItem = (StoryVideoItem)paramtll.next();
-    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
-    paramAbsVideoInfoWidget.i();
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return tll.class;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

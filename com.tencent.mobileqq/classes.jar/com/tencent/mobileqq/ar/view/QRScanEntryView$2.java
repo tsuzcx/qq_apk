@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import alkv;
+import alku;
 
 class QRScanEntryView$2
   implements Runnable
@@ -9,7 +9,7 @@ class QRScanEntryView$2
   
   public void run()
   {
-    alkv.a().b();
+    alku.a().b();
   }
 }
 

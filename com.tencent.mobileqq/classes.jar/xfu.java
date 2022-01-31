@@ -1,50 +1,84 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class xfu
+  extends ampa<xft>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  private String b = "";
-  
-  public static xfu a(String paramString)
+  private void a(String paramString1, String paramString2)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    QLog.d("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate() apply new widget config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      xfu localxfu = new xfu();
-      paramString = new JSONObject(paramString);
-      localxfu.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
-      localxfu.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
-      localxfu.b = paramString.optString("md5", "");
-      return localxfu;
+      xfo.a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(true));
+      xfo.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", paramString1);
+      xfo.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", paramString2);
     }
-    catch (Exception paramString)
+  }
+  
+  public int a()
+  {
+    return 474;
+  }
+  
+  public Class<xft> a()
+  {
+    return xft.class;
+  }
+  
+  @NonNull
+  public xft a(int paramInt)
+  {
+    return new xft();
+  }
+  
+  @Nullable
+  public xft a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      paramString.printStackTrace();
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      xft localxft = xft.a(paramArrayOfamph[0].a);
+      if (localxft == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)xfo.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", "");
+      if ((!TextUtils.isEmpty(localxft.b())) && (!localxft.b().equals(str)))
+      {
+        xgg.a().a(localxft);
+        a(localxft.b(), paramArrayOfamph[0].a);
+      }
+      return localxft;
     }
+    QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed conf content is null!");
     return null;
   }
   
-  public String a()
+  public void a(int paramInt) {}
+  
+  public void a(xft paramxft)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (paramxft != null) {
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate:" + paramxft.toString());
+    }
   }
   
-  public JSONObject a()
+  public int b()
   {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
+    return 0;
   }
   
-  public String b()
+  public boolean b()
   {
-    return this.b;
+    return false;
   }
   
-  public String toString()
+  public boolean c()
   {
-    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
+    return true;
   }
 }
 

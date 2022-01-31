@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import wgv;
+import wgs;
 
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
@@ -25,7 +25,7 @@ public abstract class QRLoginBaseActivity
     hideTitleBar();
     this.b = ((ImageView)super.findViewById(2131369092));
     this.b.setContentDescription(getText(2131690572));
-    this.b.setOnClickListener(new wgv(this));
+    this.b.setOnClickListener(new wgs(this));
     return true;
   }
   

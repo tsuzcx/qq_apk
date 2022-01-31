@@ -1,6 +1,12 @@
-public abstract interface bfvw
+import android.text.SpannableString;
+
+public abstract class bfvw
 {
-  public abstract String a(int paramInt);
+  public String a;
+  public int b;
+  public int c;
+  
+  public abstract void a(SpannableString paramSpannableString);
 }
 
 

@@ -1,59 +1,37 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afxc
-  extends apwx
+class afxc
+  implements aptw
 {
-  public afxc(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  afxc(afxa paramafxa, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    paramView = (aimd)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      apue.c(localFileManagerEntity);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Afxa.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    switch (paramView.jdField_a_of_type_Int)
+    ajum localajum;
+    ArrayList localArrayList;
+    do
     {
-    }
-    for (;;)
-    {
-      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
       return;
-      if (!bbev.d(BaseApplication.getContext()))
-      {
-        aptv.a(2131692665);
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-      apsz.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new afxd(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((ajuo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!bbev.d(BaseApplication.getContext()))
-        {
-          aptv.a(2131692665);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        apsz.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new afxe(this, localFileManagerEntity));
-      }
-    }
+      localajum = (ajum)this.jdField_a_of_type_Afxa.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localajum.a(localArrayList));
+    aptx.a(2131692665);
+    return;
+    this.jdField_a_of_type_Afxa.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

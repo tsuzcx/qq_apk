@@ -1,269 +1,300 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.widget.BubbleViewLayout;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.PAImageView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
-import mqq.app.AppRuntime;
 
 public class axxt
-  extends axuo
+  extends axuq
 {
-  protected final float a;
-  private boolean a;
+  private TextView a;
   
-  public axxt()
+  private void a(Context paramContext, Resources paramResources, RelativeLayout paramRelativeLayout, View paramView, LinearLayout paramLinearLayout, TextView paramTextView1, TextView paramTextView2)
   {
-    this.jdField_a_of_type_Float = 10.0F;
+    float f = paramResources.getDisplayMetrics().density;
+    paramRelativeLayout.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
+    paramResources = new FrameLayout(paramContext);
+    paramResources.setId(2131376305);
+    paramView = new ImageView(paramContext);
+    paramView.setImageResource(2130849358);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 80;
+    paramResources.addView(paramView, localLayoutParams);
+    paramView = new FrameLayout.LayoutParams(-2, -2);
+    paramView.gravity = 17;
+    paramResources.addView(paramLinearLayout, paramView);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(14);
+    paramView.addRule(10);
+    paramView.topMargin = ((int)(32.0F * f));
+    paramRelativeLayout.addView(paramResources, paramView);
+    paramTextView2.setId(2131376306);
+    paramTextView2.setIncludeFontPadding(false);
+    paramTextView2.setSingleLine(false);
+    paramTextView2.setMaxLines(2);
+    paramTextView2.setTextSize(1, 40.0F);
+    paramTextView2.setTextColor(-1);
+    paramTextView2.setGravity(17);
+    paramTextView2.getPaint().setFakeBoldText(true);
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView2;
+    paramResources = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
+    paramResources.addRule(14);
+    paramResources.addRule(3, 2131376305);
+    paramResources.topMargin = ((int)(5.0F * f));
+    paramResources.bottomMargin = ((int)(5.0F * f));
+    paramRelativeLayout.addView(paramTextView2, paramResources);
+    paramResources = new ImageView(paramContext);
+    paramResources.setId(2131376307);
+    paramResources.setImageResource(2130849360);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(14);
+    paramView.addRule(3, 2131376306);
+    paramRelativeLayout.addView(paramResources, paramView);
+    paramResources = new RelativeLayout(paramContext);
+    paramView = new ImageView(paramContext);
+    paramView.setId(2131376309);
+    paramView.setImageResource(2130849361);
+    paramLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
+    paramLinearLayout.addRule(13);
+    paramResources.addView(paramView, paramLinearLayout);
+    paramContext = new ImageView(paramContext);
+    paramContext.setImageResource(2130849357);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(15);
+    paramView.addRule(0, 2131376309);
+    paramView.rightMargin = ((int)(6.0F * f));
+    paramResources.addView(paramContext, paramView);
+    paramTextView1.setIncludeFontPadding(false);
+    paramTextView1.setTextSize(1, 22.0F);
+    paramTextView1.setTextColor(-1);
+    paramTextView1.getPaint().setFakeBoldText(true);
+    paramContext = new RelativeLayout.LayoutParams(-2, -2);
+    paramContext.addRule(15);
+    paramContext.addRule(1, 2131376309);
+    paramContext.leftMargin = ((int)(6.0F * f));
+    paramResources.addView(paramTextView1, paramContext);
+    paramContext = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
+    paramContext.addRule(14);
+    paramContext.addRule(3, 2131376307);
+    paramContext.topMargin = ((int)(f * 10.0F));
+    paramRelativeLayout.addView(paramResources, paramContext);
   }
   
   protected int b()
   {
-    return 27;
+    return 25;
   }
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    boolean bool = paramBundle.getBoolean("isSend", true);
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
     Resources localResources = paramContext.getResources();
-    Object localObject1 = null;
-    Object localObject2 = null;
     LinearLayout localLinearLayout;
-    BubbleViewLayout localBubbleViewLayout;
-    label101:
-    Object localObject3;
-    label203:
-    Object localObject4;
-    label233:
-    Object localObject5;
+    RelativeLayout localRelativeLayout;
     int i;
+    Object localObject3;
+    Object localObject1;
+    Object localObject4;
+    Object localObject2;
+    label89:
+    Object localObject5;
     int j;
+    Object localObject6;
+    Object localObject7;
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       localLinearLayout = (LinearLayout)paramView;
       localLinearLayout.removeAllViews();
-      localLinearLayout.setId(2131369887);
-      localBubbleViewLayout = new BubbleViewLayout(paramContext);
-      localBubbleViewLayout.setId(2131369886);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label439;
+      localRelativeLayout = new RelativeLayout(paramContext);
+      localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, actj.a(290.0F, localResources)));
+      localLinearLayout.addView(localRelativeLayout);
+      i = 0;
+      localObject3 = null;
+      localObject1 = null;
+      localObject4 = null;
+      localObject2 = null;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (!localIterator.hasNext()) {
+        break label531;
       }
-      localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-      localLinearLayout.setFocusable(false);
-      if ((localLinearLayout.getParent() != null) && ((localLinearLayout.getParent() instanceof View))) {
-        ((View)localLinearLayout.getParent()).setFocusable(false);
+      paramView = (axup)localIterator.next();
+      localObject5 = paramView.a;
+      if ((!"type".equals(localObject5)) || (!(paramView instanceof axzr))) {
+        break label264;
       }
-      localLinearLayout.addView(localBubbleViewLayout);
-      localObject3 = new RelativeLayout(paramContext);
-      ((RelativeLayout)localObject3).setId(2131369880);
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-      localBubbleViewLayout.addView((View)localObject3, 0);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label477;
+      j = ((axzr)paramView).k;
+      i = j;
+      paramView = (View)localObject4;
+      localObject5 = localObject2;
+      localObject6 = localObject3;
+      localObject7 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("StructMsgItemLayout25", 2, "getView socialType=" + j);
+        localObject7 = localObject1;
+        localObject6 = localObject3;
+        localObject5 = localObject2;
+        paramView = (View)localObject4;
+        i = j;
       }
-      if (this.k != 1) {
-        break label467;
-      }
-      ((RelativeLayout)localObject3).setBackgroundResource(2130843937);
-      localBubbleViewLayout.a(false);
-      localBubbleViewLayout.b(false);
-      ((RelativeLayout)localObject3).setLayoutParams(paramView);
-      localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      paramView = (View)localObject2;
-      if (!((Iterator)localObject4).hasNext()) {
-        break label1066;
-      }
-      localObject2 = (axun)((Iterator)localObject4).next();
-      localObject5 = ((axun)localObject2).a;
-      if (!"title".equals(localObject5)) {
-        break label685;
-      }
-      localObject2 = (TextView)((axun)localObject2).a(paramContext, null, paramBundle);
-      ((TextView)localObject2).setSingleLine();
-      localObject5 = new RelativeLayout.LayoutParams(-1, -2);
-      i = localResources.getDimensionPixelSize(2131296760);
-      j = localResources.getDimensionPixelSize(2131296357);
-      if (!bool) {
-        break label673;
-      }
-      ((RelativeLayout.LayoutParams)localObject5).setMargins(0, 0, 0, 0);
     }
     for (;;)
     {
-      ((RelativeLayout.LayoutParams)localObject5).addRule(12);
-      ((RelativeLayout.LayoutParams)localObject5).addRule(3, 2131369880);
-      ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-      ((TextView)localObject2).setPadding(i, j, i, j);
-      ((TextView)localObject2).setSingleLine();
-      ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-      ((TextView)localObject2).setBackgroundColor(localResources.getColor(2131167134));
-      localBubbleViewLayout.addView((View)localObject2);
-      break label233;
+      localObject4 = paramView;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      localObject1 = localObject7;
+      break label89;
       localLinearLayout = new LinearLayout(paramContext);
-      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
       localLinearLayout.setOrientation(1);
       break;
-      label439:
-      localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(BaseChatItemLayout.d - actn.a(20.0F, localResources), -2));
-      break label101;
-      label467:
-      ((RelativeLayout)localObject3).setBackgroundResource(2130843938);
-      break label203;
-      label477:
-      if (bool)
+      label264:
+      if (("title".equals(localObject5)) && (localObject3 == null))
       {
-        paramView.addRule(9);
-        label488:
-        ((RelativeLayout)localObject3).setLayoutParams(paramView);
-        paramView = new ImageView(paramContext);
-        localObject4 = new RelativeLayout.LayoutParams(-2, -2);
-        if (bool) {
-          break label634;
+        if ((paramView instanceof StructMsgItemTitle)) {
+          ((StructMsgItemTitle)paramView).a(a(), this.l);
         }
-        ((RelativeLayout.LayoutParams)localObject4).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject4).addRule(0, 2131369880);
-        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
-        paramView.setId(2131372875);
-        if (localBubbleViewLayout.jdField_a_of_type_Boolean != bool) {
-          localBubbleViewLayout.jdField_a_of_type_Boolean = bool;
-        }
-        if (this.k != 1) {
-          break label652;
-        }
-        ((RelativeLayout)localObject3).setBackgroundResource(2130843930);
-        paramView.setImageDrawable(localResources.getDrawable(2130843933));
+        localObject6 = (TextView)paramView.a(paramContext, null, paramBundle);
+        ((TextView)localObject6).setSingleLine();
+        ((TextView)localObject6).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject6).getPaint().setFakeBoldText(true);
+        paramView = (View)localObject4;
+        localObject5 = localObject2;
+        localObject7 = localObject1;
       }
-      for (;;)
+      else if (("summary".equals(localObject5)) && (localObject1 == null))
       {
-        label536:
-        ((RelativeLayout)localObject3).setFocusable(false);
-        ((RelativeLayout)localObject3).setFocusableInTouchMode(false);
-        ((RelativeLayout)localObject3).setClickable(false);
-        localBubbleViewLayout.setRadius(10.0F);
-        localBubbleViewLayout.a(false);
-        break;
-        paramView.addRule(11);
-        break label488;
-        label634:
-        ((RelativeLayout.LayoutParams)localObject4).addRule(11);
-        ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131369880);
-        break label536;
-        label652:
-        ((RelativeLayout)localObject3).setBackgroundResource(2130843931);
-        paramView.setImageDrawable(localResources.getDrawable(2130843932));
+        localObject7 = (TextView)paramView.a(paramContext, null, paramBundle);
+        ((TextView)localObject7).setSingleLine();
+        ((TextView)localObject7).setEllipsize(TextUtils.TruncateAt.END);
+        paramView = (View)localObject4;
+        localObject5 = localObject2;
+        localObject6 = localObject3;
       }
-      label673:
-      ((RelativeLayout.LayoutParams)localObject5).setMargins(0, 0, 0, 0);
-    }
-    label685:
-    if ("summary".equals(localObject5)) {
-      localObject2 = (axzh)localObject2;
-    }
-    for (;;)
-    {
-      try
+      else
       {
-        long l = Long.parseLong(((axzh)localObject2).Y);
-        localObject2 = Calendar.getInstance();
-        ((Calendar)localObject2).setTimeInMillis(l * 1000L);
-        localObject5 = new TextView(paramContext);
-        ((TextView)localObject5).setId(2131377263);
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(actn.a(68.0F, localResources), actn.a(18.0F, localResources));
-        localLayoutParams.addRule(14);
-        if (!this.jdField_a_of_type_Boolean) {
-          break label1317;
-        }
-        f = 51.0F;
-        localLayoutParams.topMargin = actn.a(f, localResources);
-        ((TextView)localObject5).setLayoutParams(localLayoutParams);
-        ((TextView)localObject5).setText(String.format("%d月%d日", new Object[] { Integer.valueOf(((Calendar)localObject2).get(2) + 1), Integer.valueOf(((Calendar)localObject2).get(5)) }));
-        ((RelativeLayout)localObject3).addView((View)localObject5);
-        ((TextView)localObject5).setSingleLine();
-        ((TextView)localObject5).setIncludeFontPadding(false);
-        ((TextView)localObject5).setGravity(17);
-        ((TextView)localObject5).setTextSize(14.0F);
-        if (this.k == 1)
+        if (("picture".equals(localObject5)) && (localObject4 == null))
         {
-          ((TextView)localObject5).setTextColor(localResources.getColor(2131165213));
+          paramView = paramView.a(paramContext, null, paramBundle);
+          if ((paramView != null) && ((paramView instanceof PAImageView)))
+          {
+            float f = localResources.getDimensionPixelSize(2131296351);
+            ((PAImageView)paramView).setUseRadiusRound(true, f);
+            localObject5 = localObject2;
+            localObject6 = localObject3;
+            localObject7 = localObject1;
+          }
         }
         else
         {
-          ((TextView)localObject5).setTextColor(Color.parseColor("#ff455e"));
-          ((TextView)localObject5).setAlpha(0.8F);
-        }
-      }
-      catch (Exception localException) {}
-      if (("head".equals(localObject5)) && ((localException instanceof axwj)))
-      {
-        paramBundle.putInt("bundle_args_avatar_width", actn.a(52.0F, localResources));
-        paramBundle.putInt("bundle_args_avatar_height", actn.a(52.0F, localResources));
-        paramBundle.putInt("bundle_args_cover_width", actn.a(52.0F, localResources));
-        paramBundle.putInt("bundle_args_cover_height", actn.a(52.0F, localResources));
-        if (BaseApplicationImpl.sApplication.getRuntime().getAccount().equalsIgnoreCase(((axwj)localException).S))
-        {
-          localObject1 = (LinearLayout)localException.a(paramContext, null, paramBundle);
-          break;
-        }
-        paramView = (LinearLayout)localException.a(paramContext, null, paramBundle);
-        break;
-        label1066:
-        RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
-        localRelativeLayout.setId(2131362974);
-        paramBundle = new RelativeLayout.LayoutParams(-2, -2);
-        paramBundle.addRule(14);
-        if (this.jdField_a_of_type_Boolean) {}
-        for (paramBundle.topMargin = actn.a(9.0F, localResources);; paramBundle.topMargin = actn.a(7.0F, localResources))
-        {
-          paramBundle.addRule(3, 2131377263);
-          localRelativeLayout.setLayoutParams(paramBundle);
-          ((RelativeLayout)localObject3).addView(localRelativeLayout);
-          localObject3 = new RelativeLayout.LayoutParams(actn.a(52.0F, localResources), actn.a(52.0F, localResources));
-          paramBundle = (Bundle)localObject1;
-          if (localObject1 == null) {
-            paramBundle = new LinearLayout(paramContext);
+          if (("head".equals(localObject5)) && ((paramView instanceof axwl)) && (localObject2 == null))
+          {
+            ((axwl)paramView).k = i;
+            localObject5 = (LinearLayout)paramView.a(paramContext, null, paramBundle);
+            paramView = (View)localObject4;
+            localObject6 = localObject3;
+            localObject7 = localObject1;
+            continue;
+            label531:
+            paramView = new axyx(paramContext.getString(2131719695)).a(paramContext, null, null);
+            paramBundle = new LinearLayout.LayoutParams(-1, -2);
+            j = actj.a(15.0F, localResources);
+            paramView.setLayoutParams(paramBundle);
+            paramView.setPadding(j, j, j, j);
+            paramBundle = (TextView)paramView.findViewById(2131376581);
+            paramBundle.setSingleLine();
+            paramBundle.setEllipsize(TextUtils.TruncateAt.END);
+            paramBundle.setTextSize(1, 18.0F);
+            localLinearLayout.addView(paramView);
+            if ((localObject3 == null) || (localObject1 == null) || (localObject4 == null) || (localObject2 == null)) {
+              return localLinearLayout;
+            }
+            if (i == 4)
+            {
+              a(paramContext, localResources, localRelativeLayout, (View)localObject4, localObject2, localObject3, localObject1);
+              paramBundle.setText(ajya.a(2131714623));
+              return localLinearLayout;
+            }
+            localRelativeLayout.addView((View)localObject4, new RelativeLayout.LayoutParams(-1, -1));
+            paramView = new RelativeLayout.LayoutParams(-2, -2);
+            paramView.addRule(14);
+            paramView.topMargin = actj.a(25.0F, localResources);
+            localObject3.setLayoutParams(paramView);
+            localObject3.setId(2131376308);
+            localRelativeLayout.addView(localObject3);
+            paramView = new RelativeLayout(paramContext);
+            paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+            paramBundle.addRule(13);
+            localObject1.setLayoutParams(paramBundle);
+            paramView.addView(localObject1);
+            paramBundle = new ImageView(paramContext);
+            paramBundle.setImageResource(2130849351);
+            localObject4 = new RelativeLayout.LayoutParams(-2, -2);
+            ((RelativeLayout.LayoutParams)localObject4).addRule(0, localObject1.getId());
+            ((RelativeLayout.LayoutParams)localObject4).addRule(15);
+            ((RelativeLayout.LayoutParams)localObject4).rightMargin = actj.a(7.0F, localResources);
+            paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject4);
+            paramContext = new ImageView(paramContext);
+            paramContext.setImageResource(2130849352);
+            paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+            paramBundle.addRule(1, localObject1.getId());
+            paramBundle.addRule(15);
+            paramBundle.leftMargin = actj.a(7.0F, localResources);
+            paramView.addView(paramContext, paramBundle);
+            paramContext = new RelativeLayout.LayoutParams(-1, -2);
+            paramContext.topMargin = actj.a(5.0F, localResources);
+            paramContext.addRule(3, 2131376308);
+            paramView.setLayoutParams(paramContext);
+            paramView.setId(2131376306);
+            localRelativeLayout.addView(paramView);
+            paramContext = new RelativeLayout.LayoutParams(-2, -2);
+            paramContext.addRule(14);
+            paramContext.addRule(3, 2131376306);
+            paramContext.topMargin = actj.a(10.0F, localResources);
+            if (localObject2 != null)
+            {
+              localObject2.setId(2131376305);
+              localObject2.setLayoutParams(paramContext);
+              localRelativeLayout.addView(localObject2);
+            }
+            localObject3.setTextSize(2, 14.0F);
+            localObject3.setTextColor(-1);
+            localObject1.setTextSize(2, 30.0F);
+            localObject1.setTextColor(-1);
+            return localLinearLayout;
           }
-          paramBundle.setId(2131375828);
-          paramBundle.setGravity(5);
-          paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-          localRelativeLayout.addView(paramBundle);
-          localObject1 = new RelativeLayout.LayoutParams(actn.a(52.0F, localResources), actn.a(52.0F, localResources));
-          ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131375828);
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = actn.a(15.0F, localResources);
-          paramBundle = paramView;
-          if (paramView == null) {
-            paramBundle = new LinearLayout(paramContext);
-          }
-          paramBundle.setId(2131366785);
-          paramBundle.setGravity(3);
-          paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          localRelativeLayout.addView(paramBundle);
-          return localLinearLayout;
+          paramView = (View)localObject4;
+          localObject5 = localObject2;
+          localObject6 = localObject3;
+          localObject7 = localObject1;
+          continue;
         }
+        localObject5 = localObject2;
+        localObject6 = localObject3;
+        localObject7 = localObject1;
       }
-      break;
-      break;
-      label1317:
-      float f = 44.0F;
     }
   }
   
   public String b()
   {
-    return "layout27";
+    return "layout25";
   }
 }
 

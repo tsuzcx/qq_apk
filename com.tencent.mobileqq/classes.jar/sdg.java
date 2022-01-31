@@ -1,37 +1,35 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-class sdg
-  implements Comparator<TroopBarData>
+public final class sdg
+  implements sef
 {
-  sdg(sdf paramsdf) {}
+  @NonNull
+  private final RecyclerView.Adapter a;
   
-  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
+  public sdg(@NonNull RecyclerView.Adapter paramAdapter)
   {
-    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
-    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
-    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
-          return -1;
-        }
-        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
-          break;
-        }
-      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
-      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
-        return 0;
-      }
-      return -1;
-    } while (l1 < l2);
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.a = paramAdapter;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemMoved(paramInt1, paramInt2);
   }
 }
 

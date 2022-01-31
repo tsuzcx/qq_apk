@@ -1,6 +1,19 @@
-public abstract interface wwo
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import com.tencent.common.app.BaseApplicationImpl;
+
+public class wwo
+  implements wwn
 {
-  public abstract void a(String paramString1, String paramString2);
+  public wwo(AsyncRichTextView paramAsyncRichTextView) {}
+  
+  public boolean a(String paramString)
+  {
+    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
+    while (BaseApplicationImpl.getContext() == null) {
+      return true;
+    }
+    return true;
+  }
 }
 
 

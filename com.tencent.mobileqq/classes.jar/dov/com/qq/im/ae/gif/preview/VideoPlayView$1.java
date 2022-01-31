@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.gif.preview;
 
-import biuv;
+import bivm;
 
 class VideoPlayView$1
   implements Runnable

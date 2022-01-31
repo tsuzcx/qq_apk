@@ -1,42 +1,47 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.RestrictTo;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
-public class bjog
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+public class bjog<K, V>
+  extends bjoh<K, V>
 {
-  private final bjoi jdField_a_of_type_Bjoi;
-  private final bjok jdField_a_of_type_Bjok;
+  private HashMap<K, bjok<K, V>> a = new HashMap();
   
-  public bjog(@NonNull bjok parambjok, @NonNull bjoi parambjoi)
+  protected bjok<K, V> a(K paramK)
   {
-    this.jdField_a_of_type_Bjoi = parambjoi;
-    this.jdField_a_of_type_Bjok = parambjok;
+    return (bjok)this.a.get(paramK);
   }
   
-  public bjog(@NonNull bjol parambjol, @NonNull bjoi parambjoi)
+  public V a(@NonNull K paramK)
   {
-    this(parambjol.a(), parambjoi);
+    Object localObject = super.a(paramK);
+    this.a.remove(paramK);
+    return localObject;
   }
   
-  @NonNull
-  public <T extends bjof> T a(@NonNull Class<T> paramClass)
+  public V a(@NonNull K paramK, @NonNull V paramV)
   {
-    String str = paramClass.getCanonicalName();
-    if (str == null) {
-      throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
+    bjok localbjok = a(paramK);
+    if (localbjok != null) {
+      return localbjok.jdField_b_of_type_JavaLangObject;
     }
-    return a("androidx.lifecycle.ViewModelProvider.DefaultKey:" + str, paramClass);
+    this.a.put(paramK, a(paramK, paramV));
+    return null;
   }
   
-  @NonNull
-  public <T extends bjof> T a(@NonNull String paramString, @NonNull Class<T> paramClass)
+  public Map.Entry<K, V> a(K paramK)
   {
-    bjof localbjof = this.jdField_a_of_type_Bjok.a(paramString);
-    if (paramClass.isInstance(localbjof)) {
-      return localbjof;
+    if (a(paramK)) {
+      return ((bjok)this.a.get(paramK)).jdField_b_of_type_Bjok;
     }
-    if (localbjof != null) {}
-    paramClass = this.jdField_a_of_type_Bjoi.a(paramClass);
-    this.jdField_a_of_type_Bjok.a(paramString, paramClass);
-    return paramClass;
+    return null;
+  }
+  
+  public boolean a(K paramK)
+  {
+    return this.a.containsKey(paramK);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vip;
 
-import akjd;
+import akjc;
 import android.content.Context;
 import android.text.TextUtils;
-import bbwa;
+import bbwo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class AioVipKeywordHelper$1
   implements Runnable
 {
-  public AioVipKeywordHelper$1(bbwa parambbwa, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, String paramString, ChatMessage paramChatMessage, boolean paramBoolean) {}
+  public AioVipKeywordHelper$1(bbwo parambbwo, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, String paramString, ChatMessage paramChatMessage, boolean paramBoolean) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class AioVipKeywordHelper$1
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) {}
         for (boolean bool = true;; bool = false)
         {
-          localObject2 = bbwa.a((bbwa)localObject1, localContext, (String)localObject2, bool);
+          localObject2 = bbwo.a((bbwo)localObject1, localContext, (String)localObject2, bool);
           if ((localObject2 != null) && (localObject2.length != 0)) {
             break;
           }
@@ -84,7 +84,7 @@ public class AioVipKeywordHelper$1
             }
             this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
             this.this$0.x = localContext;
-            ((akjd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(86)).a(localContext);
+            ((akjc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(86)).a(localContext);
             ThreadManager.getUIHandler().postDelayed(new AioVipKeywordHelper.1.1(this, localContext), this.this$0.d);
             return;
           }

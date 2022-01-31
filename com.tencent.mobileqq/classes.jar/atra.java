@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
+import android.widget.TextView;
 
-public class atra
-  extends asys
+class atra
+  extends balg
 {
-  atra(atqu paramatqu) {}
+  atra(atqw paramatqw) {}
   
-  public void a(asyt paramasyt)
+  public void a(long paramLong)
   {
-    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramasyt), 8, null, false);
-    this.a.a = paramasyt;
+    if (paramLong > 0L)
+    {
+      atqw.c(this.a).setText(String.format(ajya.a(2131707279), new Object[] { Long.valueOf(paramLong) }));
+      return;
+    }
+    atqw.c(this.a).setText(ajya.a(2131707377));
   }
 }
 

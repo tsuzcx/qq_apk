@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
-import arjc;
+import arje;
 import com.tencent.image.URLDrawable;
 
 public class NowEntry$2
   implements Runnable
 {
-  public NowEntry$2(arjc paramarjc, URLDrawable paramURLDrawable) {}
+  public NowEntry$2(arje paramarje, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

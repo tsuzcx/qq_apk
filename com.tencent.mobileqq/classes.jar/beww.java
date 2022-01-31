@@ -1,84 +1,81 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import android.content.Context;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
+@behk(a="MiniAppInfoLoadTask")
 public class beww
+  extends bffh
 {
-  public static final Set<String> a = new HashSet();
-  public static final Set<String> b = new HashSet(Arrays.asList(new String[] { "__TT__GLOBAL__", "createAudioInstance", "setAudioState", "getAudioState", "operateAudio", "destroyAudioInstance", "onAudioStateChange", "setInnerAudioOptionQGame", "getAvailableAudioSources", "loadFont", "getTextLineHeight", "getSystemInfo", "getSystemInfoSync" }));
-  private static Set<String> c;
-  private static Set<String> d;
+  private MiniAppInfo a;
   
-  public static Set<String> a()
+  public beww(Context paramContext, beqm parambeqm)
   {
-    if (c == null)
-    {
-      c = new HashSet(a);
-      Object localObject = belj.a("MiniGame", "MiniGameAPILogWhiteList");
-      bewt.a().i("LogFilterUtil", "wns config white list: " + (String)localObject);
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        c.addAll((Collection)localObject);
-      }
-      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      if ((localObject != null) && (((MiniAppProxy)localObject).isDebugVersion())) {
-        c.add("__jsBridge_all_log__");
-      }
-    }
-    return c;
+    super(paramContext, parambeqm);
   }
   
-  private static Set<String> a(String paramString)
+  private void g()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
-    }
-    HashSet localHashSet;
-    String[] arrayOfString;
-    do
+    String str1;
+    if (this.a.launchParam.c == null)
     {
-      do
+      str1 = "";
+      if (this.a.launchParam.i != null) {
+        break label77;
+      }
+    }
+    label77:
+    for (String str2 = "";; str2 = this.a.launchParam.i)
+    {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(this.a.appId, str1, str2, new bewx(this));
+      return;
+      str1 = this.a.launchParam.c;
+      break;
+    }
+  }
+  
+  private void h()
+  {
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(this.a.link, this.a.linkType, new bewy(this));
+  }
+  
+  public MiniAppInfo a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    betc.b("MiniAppInfoLoadTask", "start executing");
+    if (this.a == null)
+    {
+      betc.d("MiniAppInfoLoadTask", "MiniAppInfo must not be null");
+      f();
+      return;
+    }
+    if (this.a.isShortcutFakeApp())
+    {
+      betc.b("MiniAppInfoLoadTask", "Start from shortcut, download MiniAppInfo ");
+      g();
+      return;
+    }
+    if (this.a.isFakeAppInfo())
+    {
+      if (this.a.link != null)
       {
-        return paramString;
-        localHashSet = new HashSet();
-        arrayOfString = paramString.split(",");
-        paramString = localHashSet;
-      } while (arrayOfString == null);
-      paramString = localHashSet;
-    } while (arrayOfString.length <= 0);
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      paramString = localHashSet;
-      if (i >= j) {
-        break;
+        h();
+        return;
       }
-      paramString = arrayOfString[i].trim();
-      if (!TextUtils.isEmpty(paramString)) {
-        localHashSet.add(paramString);
-      }
-      i += 1;
+      g();
+      return;
     }
+    c();
   }
   
-  public static Set<String> b()
+  public void a(MiniAppInfo paramMiniAppInfo)
   {
-    if (d == null)
-    {
-      d = new HashSet(b);
-      Object localObject = belj.a("MiniGame", "MiniGameAPILogBlackList");
-      bewt.a().i("LogFilterUtil", "wns config black list: " + (String)localObject);
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        d.addAll((Collection)localObject);
-      }
-    }
-    return d;
+    this.a = paramMiniAppInfo;
   }
 }
 

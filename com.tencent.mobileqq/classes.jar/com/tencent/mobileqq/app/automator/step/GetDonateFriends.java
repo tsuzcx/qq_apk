@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import akjo;
+import akjn;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public class GetDonateFriends
       return 7;
       localObject = this.a.app.getCurrentAccountUin();
       String str = ((TicketManager)this.a.app.getManager(2)).getSkey((String)localObject);
-      ((akjo)this.a.app.a(27)).a(str, (String)localObject);
+      ((akjn)this.a.app.a(27)).a(str, (String)localObject);
     }
   }
 }

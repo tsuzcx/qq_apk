@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ocr;
 
-import ajyc;
-import aubg;
-import bcpw;
+import ajya;
+import aubi;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class OcrCamera$4
   implements Runnable
 {
-  public OcrCamera$4(aubg paramaubg) {}
+  public OcrCamera$4(aubi paramaubi) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131707690), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131707701), 0).a();
   }
 }
 

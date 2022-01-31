@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import bekm;
-import bemn;
-import bemw;
+import beld;
+import bene;
+import benn;
 
 class ShareProxyDefault$2$2
   implements Runnable
@@ -13,10 +13,10 @@ class ShareProxyDefault$2$2
   {
     if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
     {
-      bekm.a(this.this$1.val$activity, 230, "分享失败", this.val$finalErrMsg, new ShareProxyDefault.2.2.1(this), null).show();
+      beld.a(this.this$1.val$activity, 230, "分享失败", this.val$finalErrMsg, new ShareProxyDefault.2.2.1(this), null).show();
       return;
     }
-    bemw.a(this.this$1.val$activity, 1, "小程序分享失败，参数错误", 1).a();
+    benn.a(this.this$1.val$activity, 1, "小程序分享失败，参数错误", 1).a();
   }
 }
 

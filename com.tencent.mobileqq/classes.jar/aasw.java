@@ -1,20 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
 
-public class aasw
-  implements DialogInterface.OnClickListener
+public abstract class aasw
 {
-  public aasw(ChatHistoryImageView paramChatHistoryImageView) {}
+  public ChatHistoryFileActivity a;
+  public boolean i = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abstract View a();
+  
+  public void a() {}
+  
+  public void a(long paramLong) {}
+  
+  public abstract boolean a();
+  
+  public void b() {}
+  
+  protected boolean b()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.b = false;
-      this.a.a.a(false);
-    }
+    return this.i;
+  }
+  
+  public void c() {}
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public void h_(int paramInt) {}
+  
+  protected void k()
+  {
+    this.i = false;
+    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
   }
 }
 

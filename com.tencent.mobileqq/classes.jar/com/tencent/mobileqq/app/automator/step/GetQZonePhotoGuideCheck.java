@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import avfa;
+import avfc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -13,9 +13,9 @@ public class GetQZonePhotoGuideCheck
   public int a()
   {
     jdField_a_of_type_Boolean = true;
-    avfa localavfa = (avfa)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
-    if (localavfa != null) {
-      localavfa.c();
+    avfc localavfc = (avfc)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
+    if (localavfc != null) {
+      localavfc.c();
     }
     return 7;
   }

@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdg
-  implements Animation.AnimationListener
+  extends oyd
 {
-  public rdg(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public rdg(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    ReadInJoyListViewGroup.a(this.a).setVisibility(0);
+    super(paramString);
+  }
+  
+  public void a(oxx paramoxx)
+  {
+    paramoxx.b(ReadInJoyListViewGroup.a(this.a), this.a.a);
   }
 }
 

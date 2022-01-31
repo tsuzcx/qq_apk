@@ -1,6 +1,17 @@
-public abstract interface wdm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+
+public class wdm
+  implements View.OnClickListener
 {
-  public abstract void a(wdl paramwdl);
+  public wdm(SlideTabViewPager paramSlideTabViewPager) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = (Integer)paramView.getTag();
+    this.a.setTab(paramView.intValue());
+  }
 }
 
 

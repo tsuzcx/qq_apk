@@ -1,32 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
-class bbrz
-  implements View.OnClickListener
+public abstract interface bbrz
 {
-  bbrz(bbry parambbry) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131373683: 
-      this.a.dismiss();
-      return;
-    case 2131373681: 
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      this.a.dismiss();
-      return;
-    }
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    this.a.dismiss();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

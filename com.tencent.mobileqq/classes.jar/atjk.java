@@ -1,25 +1,49 @@
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class atjk
-  implements bfoq
+  implements AdapterView.OnItemClickListener
 {
-  public atjk(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bfol parambfol) {}
+  public atjk(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
+    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
+    if (ShortVideoCommentsView.a(this.a) == null) {
+      return;
+    }
+    paramLong = this.a.a.getLongAccountUin();
+    if (ShortVideoCommentsView.a(this.a).c == paramLong)
     {
+      this.a.a(ajya.a(2131714090));
+      ShortVideoCommentsView.a(this.a, null);
+      return;
+    }
+    paramAdapterView = new StringBuilder();
+    paramAdapterView.append("回复 ");
+    if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
+    {
+      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
+      paramAdapterView.append("...");
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfol != null) {
-        this.jdField_a_of_type_Bfol.dismiss();
+      ShortVideoCommentsView.a(this.a).setText("");
+      ShortVideoCommentsView.a(this.a).setHint(paramAdapterView);
+      if (!ShortVideoCommentsView.f(this.a)) {
+        break;
       }
+      this.a.l();
       return;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b);
     }
+    ShortVideoCommentsView.a(this.a, 1);
   }
 }
 

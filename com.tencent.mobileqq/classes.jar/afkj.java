@@ -1,63 +1,17 @@
-import android.util.SparseArray;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-class afkj
-  extends ajxl
+public class afkj
+  extends aimt
 {
-  afkj(afki paramafki) {}
-  
-  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
-    }
-    if (paramBoolean)
-    {
-      bcpw.a(afki.a(this.a), ajyc.a(2131707480), 0).a();
-      afki.a(this.a, paramLong);
-      this.a.d();
-      return;
-    }
-    bcpw.a(afki.a(this.a), ajyc.a(2131707501), 0).a();
-  }
-  
-  public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
-    }
-    if (paramBoolean) {
-      this.a.d();
-    }
-  }
-  
-  public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
-    }
-    if (paramBoolean)
-    {
-      if ((paramObject instanceof Integer))
-      {
-        paramInt = ((Integer)paramObject).intValue();
-        afki.a(this.a).put(paramInt, paramArrayOfByte);
-      }
-      if (paramArrayList != null) {
-        afki.a(this.a, afki.a(this.a) + paramArrayList.size());
-      }
-      this.a.d();
-    }
-  }
-  
-  public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
-    }
-  }
+  public Button a;
+  public TextView a;
+  public SysSuspiciousMsg a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

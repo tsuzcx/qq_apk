@@ -1,14 +1,18 @@
-public abstract interface bhik
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+
+final class bhik
+  implements bhin
 {
-  public abstract void a(bhij parambhij);
-  
-  public abstract void b(bhij parambhij);
-  
-  public abstract void c(bhij parambhij);
-  
-  public abstract void d(bhij parambhij);
-  
-  public abstract void e(bhij parambhij);
+  public void a(boolean paramBoolean, Context paramContext, bhio parambhio)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bhii.d(paramContext, parambhio);
+    }
+  }
 }
 
 

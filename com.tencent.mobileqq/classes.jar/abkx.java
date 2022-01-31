@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.5;
-import com.tencent.mobileqq.activity.Leba.5.1;
+import android.graphics.drawable.Drawable;
 
-public class abkx
-  implements bcak
+public abstract interface abkx
 {
-  public abkx(Leba.5.1 param1) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      Leba.b(this.a.a.this$0).a();
-    }
-  }
+  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
 }
 
 

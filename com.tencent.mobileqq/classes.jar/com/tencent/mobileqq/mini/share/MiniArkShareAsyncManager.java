@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.share;
 
-import alta;
-import alwm;
+import alsz;
+import alwl;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import aukn;
-import auko;
-import ayos;
-import ayvv;
-import ayvz;
-import aywa;
-import bcxm;
+import aukp;
+import aukq;
+import ayou;
+import ayvx;
+import aywb;
+import aywc;
+import bcyb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -75,7 +75,7 @@ public class MiniArkShareAsyncManager
       }
     }
     label262:
-    for (String str1 = alta.a(str3, str2);; str1 = str2)
+    for (String str1 = alsz.a(str3, str2);; str1 = str2)
     {
       Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface))
@@ -86,7 +86,7 @@ public class MiniArkShareAsyncManager
         {
           localObject2 = ((ArkAppCenter)localObject2).a();
           if (localObject2 != null) {
-            ((alwm)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
+            ((alwl)localObject2).a(str3, new MiniArkShareAsyncPreprocessor(paramBundle));
           }
         }
         if (i != 0)
@@ -131,25 +131,25 @@ public class MiniArkShareAsyncManager
       if ((localObject instanceof QQAppInterface))
       {
         localObject = (QQAppInterface)localObject;
-        aywa localaywa = new aywa();
-        localaywa.jdField_a_of_type_Boolean = true;
-        localaywa.i = paramString;
-        localaywa.jdField_c_of_type_Int = 62;
-        localaywa.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-        localaywa.jdField_c_of_type_JavaLangString = "0";
-        localaywa.jdField_b_of_type_JavaLangString = String.valueOf(bcxm.a().a());
-        localaywa.jdField_b_of_type_Int = 24;
-        localaywa.jdField_a_of_type_JavaLangString = "miniAppArkShareUploadPicHit";
+        aywc localaywc = new aywc();
+        localaywc.jdField_a_of_type_Boolean = true;
+        localaywc.i = paramString;
+        localaywc.jdField_c_of_type_Int = 62;
+        localaywc.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+        localaywc.jdField_c_of_type_JavaLangString = "0";
+        localaywc.jdField_b_of_type_JavaLangString = String.valueOf(bcyb.a().a());
+        localaywc.jdField_b_of_type_Int = 24;
+        localaywc.jdField_a_of_type_JavaLangString = "miniAppArkShareUploadPicHit";
         paramString = new Bdh_extinfo.CommFileExtReq();
         paramString.uint32_action_type.set(0);
         paramString.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-        localaywa.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
+        localaywc.jdField_a_of_type_ArrayOfByte = paramString.toByteArray();
         paramString = new MiniArkShareAsyncTransProcessorHandler(ThreadManagerV2.getFileThreadLooper(), paramCmdCallback);
-        paramString.addFilter(new Class[] { ayos.class });
+        paramString.addFilter(new Class[] { ayou.class });
         if (((QQAppInterface)localObject).a() != null)
         {
           ((QQAppInterface)localObject).a().a(paramString);
-          ((QQAppInterface)localObject).a().a(localaywa);
+          ((QQAppInterface)localObject).a().a(localaywc);
         }
       }
     }
@@ -180,7 +180,7 @@ public class MiniArkShareAsyncManager
         localObject = ((ArkAppCenter)localObject).a();
         if (localObject != null)
         {
-          ((alwm)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
+          ((alwl)localObject).a("com.tencent.miniapp", new MiniArkShareAsyncPreprocessor(new Bundle()));
           QLog.d("MiniArkShareAsyncManage", 2, "registerMiniArkShareMessageProcessorAfterProcessRestart");
         }
       }

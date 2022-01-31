@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 class yvx
-  implements DialogInterface.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  yvx(yvv paramyvv) {}
+  yvx(yvs paramyvs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallProgress(float paramFloat)
   {
-    yxs.b("GdtMvViewController", " DialogInterface onClick confirm");
-    yvv.a(this.a, false);
-    yvv.b(this.a);
+    yxp.a("GdtMvViewController", "installSDK onInstallProgress arg0=" + paramFloat);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    yxp.a("GdtMvViewController", "installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    yxp.a("GdtMvViewController", "installSDK onInstalledSuccessed");
+    yvs.a(this.a).sendEmptyMessage(3);
   }
 }
 

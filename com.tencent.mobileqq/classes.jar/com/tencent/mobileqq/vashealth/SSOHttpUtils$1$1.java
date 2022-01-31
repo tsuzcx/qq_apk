@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vashealth;
 
-import bbuf;
-import bbug;
+import bbut;
+import bbuu;
 
 public class SSOHttpUtils$1$1
   implements Runnable
 {
-  public SSOHttpUtils$1$1(bbug parambbug, int paramInt, String paramString) {}
+  public SSOHttpUtils$1$1(bbuu parambbuu, int paramInt, String paramString) {}
   
   public void run()
   {
-    bbuf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    bbut.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

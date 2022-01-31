@@ -1,10 +1,19 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public abstract interface atfo
+public final class atfo
+  implements Parcelable.Creator<InterestTagInfo>
 {
-  public abstract void a(InterestTagInfo paramInterestTagInfo);
+  public InterestTagInfo a(Parcel paramParcel)
+  {
+    return new InterestTagInfo(paramParcel);
+  }
   
-  public abstract boolean a(InterestTagInfo paramInterestTagInfo);
+  public InterestTagInfo[] a(int paramInt)
+  {
+    return new InterestTagInfo[paramInt];
+  }
 }
 
 

@@ -1,158 +1,66 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import com.tencent.qqmini.sdk.monitor.common.FPSCalculator.2;
-import com.tencent.qqmini.sdk.monitor.common.FPSCalculator.3;
-import java.util.Vector;
-import java.util.concurrent.TimeUnit;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.triton.sdk.ITSoLoader;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import java.io.File;
 
-@TargetApi(16)
 public class bexl
+  implements ITSoLoader
 {
-  private static volatile bexl jdField_a_of_type_Bexl;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Choreographer.FrameCallback jdField_a_of_type_AndroidViewChoreographer$FrameCallback;
-  private Choreographer jdField_a_of_type_AndroidViewChoreographer;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new FPSCalculator.2(this);
-  private Vector<bexn> jdField_a_of_type_JavaUtilVector = new Vector();
-  private boolean jdField_a_of_type_Boolean;
-  private Runnable b = new FPSCalculator.3(this);
+  private InstalledEngine jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
+  private String jdField_a_of_type_JavaLangString;
   
-  private static long a(long paramLong)
+  public bexl(InstalledEngine paramInstalledEngine)
   {
-    return TimeUnit.NANOSECONDS.toMillis(paramLong);
+    this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = paramInstalledEngine;
+    this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
   }
   
-  public static bexl a()
+  private String a(InstalledEngine paramInstalledEngine)
   {
-    if (jdField_a_of_type_Bexl == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bexl == null) {
-        jdField_a_of_type_Bexl = new bexl();
-      }
-      return jdField_a_of_type_Bexl;
+    if ((paramInstalledEngine != null) && (paramInstalledEngine.a)) {
+      return paramInstalledEngine.b;
     }
-    finally {}
+    return null;
   }
   
-  private void a()
+  public String getSoPath(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    String str = this.jdField_a_of_type_JavaLangString;
+    if ((!TextUtils.isEmpty(str)) && (new File(str, paramString).exists())) {}
+    for (boolean bool = true;; bool = false)
     {
-      besl.a("FPSCalculator", "FPSCalculator is enable");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    besl.a("FPSCalculator", "FPSCalculator set enable = true");
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (Build.VERSION.SDK_INT > 16)
-    {
-      if (this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback == null) {
-        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new bexm(this);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      return;
-    }
-    if (besl.a()) {
-      besl.a("FPSCalculator", "build version is not support ");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.b, 500L);
-  }
-  
-  private void a(long paramLong)
-  {
-    paramLong = a(paramLong);
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-      return;
-      long l = paramLong - this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Int += 1;
-      if (l <= 500L) {
-        continue;
-      }
-      double d = this.jdField_a_of_type_Int * 1000 / l;
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Int = 0;
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      int i = 0;
-      try
+      bexk.a().i("GameSoLoader", "[MiniEng] load so [" + paramString + "] from " + this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine + ", isSoFileExits = " + bool);
+      if (!bool)
       {
-        while (i < this.jdField_a_of_type_JavaUtilVector.size())
+        MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+        if ((!TextUtils.isEmpty(localMiniAppProxy.getSoPath())) && (new File(localMiniAppProxy.getSoPath(), paramString).exists()))
         {
-          ((bexn)this.jdField_a_of_type_JavaUtilVector.get(i)).a(this.jdField_a_of_type_Long, d);
-          i += 1;
+          str = localMiniAppProxy.getSoPath();
+          bool = true;
+          bexk.a().i("GameSoLoader", "[MiniEng] load so [" + paramString + "] from " + localMiniAppProxy.getSoPath() + ", isSoFileExits = " + bool);
         }
       }
-      finally {}
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label80;
-      }
-      if (this.jdField_a_of_type_AndroidViewChoreographer != null)
+      for (;;)
       {
-        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-        if (besl.a()) {
-          besl.a("FPSCalculator", "removeFrameCallback ");
+        if (!bool)
+        {
+          if (paramString.contains("png-armeabi-v7a"))
+          {
+            paramString = MiniAppEnv.g().getContext().getFilesDir().getParent() + "/txlib/libpng-armeabi-v7a.so";
+            if (new File(paramString).exists()) {
+              return paramString;
+            }
+            return null;
+          }
+          return null;
         }
+        return str + "/" + paramString;
+        break;
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      besl.a("FPSCalculator", "FPSCalculator set enable = false");
-      return;
-      label80:
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-  }
-  
-  public void a(bexn parambexn)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(parambexn)) {
-        this.jdField_a_of_type_JavaUtilVector.add(parambexn);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() > 0) {
-        a();
-      }
-      return;
-    }
-  }
-  
-  public void b(bexn parambexn)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilVector.contains(parambexn)) {
-        this.jdField_a_of_type_JavaUtilVector.remove(parambexn);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() <= 0) {
-        b();
-      }
-      return;
     }
   }
 }

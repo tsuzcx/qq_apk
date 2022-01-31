@@ -1,6 +1,35 @@
-public abstract interface aqml
+import android.content.Intent;
+
+public class aqml
+  implements aqmn
 {
-  public abstract aqmk a();
+  public int a()
+  {
+    return 0;
+  }
+  
+  public aqmm a()
+  {
+    return null;
+  }
+  
+  public aqmm a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Intent paramIntent) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b() {}
 }
 
 

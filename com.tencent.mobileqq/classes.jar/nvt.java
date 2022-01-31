@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nvt
-  implements TopGestureLayout.OnGestureListener
+  implements myy
 {
-  public nvt(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public nvt(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void flingLToR()
+  public void loaded(String paramString, int paramInt)
   {
-    ReadInJoyChannelActivity.a(this.a, true);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
+    }
   }
   
-  public void flingRToL() {}
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,18 +1,26 @@
-import java.net.URL;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class soh
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public URL a;
-  public int b;
+  public soh(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, URLDrawable paramURLDrawable) {}
   
-  public static soh a(URL paramURL, int paramInt1, int paramInt2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    soh localsoh = new soh();
-    localsoh.jdField_a_of_type_JavaNetURL = paramURL;
-    localsoh.jdField_a_of_type_Int = paramInt1;
-    localsoh.b = paramInt2;
-    return localsoh;
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a = paramURLDrawable.getBitmap();
+    }
   }
 }
 

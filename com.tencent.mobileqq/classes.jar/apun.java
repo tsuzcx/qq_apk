@@ -1,10 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 final class apun
-  implements DialogInterface.OnClickListener
+  implements aptw
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  apun(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  
+  public void a()
+  {
+    apug.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+  }
+  
+  public void b() {}
 }
 
 

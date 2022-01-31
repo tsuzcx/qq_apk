@@ -1,27 +1,6 @@
-public class angs
+public abstract interface angs
 {
-  private static angh jdField_a_of_type_Angh;
-  private static boolean jdField_a_of_type_Boolean;
-  
-  public static void a(angt paramangt)
-  {
-    if (paramangt != null) {
-      anhx.a(paramangt);
-    }
-  }
-  
-  public static boolean a()
-  {
-    return (jdField_a_of_type_Boolean) && (b());
-  }
-  
-  private static boolean b()
-  {
-    if (jdField_a_of_type_Angh != null) {
-      return jdField_a_of_type_Angh.a();
-    }
-    return true;
-  }
+  public abstract int a();
 }
 
 

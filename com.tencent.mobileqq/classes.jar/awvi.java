@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.os.Bundle;
 
 public class awvi
-  extends awts
 {
-  private Comparator<awoc> a = new awvj(this);
+  public Bundle a;
+  public String a;
+  public byte[] a;
   
-  public awvi(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public awvi(String paramString)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public Comparator<awoc> a()
+  public awvi(String paramString, Bundle paramBundle)
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public awvi(String paramString, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public awvi(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

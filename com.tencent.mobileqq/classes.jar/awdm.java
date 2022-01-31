@@ -1,16 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class awdm
-  implements hr
+  implements View.OnTouchListener
 {
   public awdm(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
-    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      if (paramMotionEvent.getY() < paramView.findViewById(2131378352).getHeight() + actj.a(30.0F, paramView.getResources())) {
+        SignatureHistoryFragment.a(this.a, true);
+      }
+    }
+    else {
+      return false;
+    }
+    SignatureHistoryFragment.a(this.a, false);
+    return false;
   }
 }
 

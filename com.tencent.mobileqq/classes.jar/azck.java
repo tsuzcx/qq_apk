@@ -1,6 +1,9 @@
-public abstract interface azck
+public class azck
+  extends sxc
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public String a;
+  public String b;
+  public String c;
 }
 
 

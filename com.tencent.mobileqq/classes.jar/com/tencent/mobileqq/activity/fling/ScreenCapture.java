@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import afvu;
+import afvs;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -19,7 +19,7 @@ public class ScreenCapture
       return;
     }
     QLog.i("sethmao", 4, "path is " + paramString);
-    new afvu(paramView).execute(new String[] { paramString });
+    new afvs(paramView).execute(new String[] { paramString });
   }
   
   public static boolean clearSnapCacheFile(Context paramContext)

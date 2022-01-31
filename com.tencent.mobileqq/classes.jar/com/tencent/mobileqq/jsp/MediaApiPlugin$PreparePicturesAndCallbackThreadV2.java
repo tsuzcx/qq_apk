@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import bcdb;
-import bcpq;
+import bcdp;
+import bcqf;
 import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONException;

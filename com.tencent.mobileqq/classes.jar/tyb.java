@@ -1,169 +1,66 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.ViewGroup.LayoutParams;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
 import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.widget.XEditTextEx;
 
 public class tyb
-  implements uql
+  implements tyu
 {
-  private tyb(txw paramtxw) {}
-  
-  public void N_()
-  {
-    int i = txw.a(this.a).b();
-    txw.a(this.a).setSelectionFromBottom(i, 0);
-  }
+  private tyb(txt paramtxt) {}
   
   public void a()
   {
-    txw.a(this.a).p();
+    if (!txt.b(this.a)) {
+      this.a.a();
+    }
   }
   
-  public void a(CommentEntry paramCommentEntry)
+  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    uwa localuwa = (uwa)tdc.a(11);
-    tbz localtbz = (tbz)tdc.a(17);
-    boolean bool = txw.a(this.a).a();
-    if ((!txw.a(this.a).a(bool)) && (txw.a(this.a).a(bool) == null))
-    {
-      CommentEntry localCommentEntry = uqh.a(txw.a(this.a).a(bool) - txw.a(this.a).a(bool).size());
-      txw.a(this.a).c(localCommentEntry, bool);
-      txw.a(this.a).a(localCommentEntry, bool);
+    if (txt.a(this.a) != null) {
+      txt.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
     }
-    txw.a(this.a).a(paramCommentEntry, bool);
-    veg.b("Q.qqstory.player.CommentFloatDialog", "after add comment. mCommentCount = %d, mFanCommentCount = %d, mFanCommentCount = %d.", Integer.valueOf(txw.a(this.a).a.mCommentCount), Integer.valueOf(txw.a(this.a).a.mFanCommentCount), Integer.valueOf(txw.a(this.a).a.mFriendCommentCount));
-    int i;
-    if (txw.a(this.a).a.mDenyComment == 1)
+  }
+  
+  public void a(@NonNull upp paramupp, ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isSuccess())
     {
-      i = 1;
-      if (i != 0)
+      txt.a(this.a, paramupp);
+      txt.a(this.a).setVisibility(0);
+      txt.a(this.a, new uqe(this.a.getContext(), txt.b(this.a), paramupp, false, 4444, new txy(this.a, null)));
+      if (txt.a(this.a).a != null) {
+        txt.a(this.a).a.setText(txt.a(this.a).a);
+      }
+      if (txt.a(this.a))
       {
-        bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131702167), 0).a();
-        paramCommentEntry.status = 2;
-      }
-      txw.a(this.a).p();
-      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.OnCommentHelperCallback.1(this), 50L);
-      txw.a(this.a).a = ((CommentLikeFeedItem)localuwa.a(txw.a(this.a).a));
-      if (!txw.a(this.a).a()) {
-        break label347;
-      }
-      if (!bool) {
-        break label334;
-      }
-      paramCommentEntry.type = 4;
-      paramCommentEntry.pbType = 1;
-      label313:
-      localtbz.a(paramCommentEntry);
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        b(paramCommentEntry);
+        txt.a(this.a, false);
+        txt.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
       }
       return;
-      i = 0;
-      break;
-      label334:
-      paramCommentEntry.type = 3;
-      paramCommentEntry.pbType = 0;
-      break label313;
-      label347:
-      paramCommentEntry.pbType = txw.a(this.a).a.getCommentLikeType();
-      localtbz.b(paramCommentEntry);
     }
+    txt.a(this.a).setVisibility(8);
   }
   
-  public void b(int paramInt)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    boolean bool = txw.a(this.a).a();
-    Object localObject = txw.a(this.a).a(bool);
-    if ((paramInt < 0) || (paramInt >= ((List)localObject).size()))
+    if ((paramMotionEvent.getAction() == 1) && (txt.a(this.a) != null) && (txt.a(this.a).a()))
     {
-      veg.d("Q.qqstory.player.CommentFloatDialog", "delete comment error , IndexOutOfBoundsException , need index = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((List)localObject).size()) });
-      return;
+      txt.a(this.a).c();
+      return true;
     }
-    localObject = (CommentEntry)txw.a(this.a).a(bool).get(paramInt);
-    if (((CommentEntry)localObject).status != 0)
-    {
-      txw.a(this.a).a((CommentEntry)localObject, bool);
-      return;
-    }
-    if (!bbev.d(this.a.getContext()))
-    {
-      bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131702168), 0).a();
-      veg.d("Q.qqstory.player.CommentFloatDialog", "delete comment failed. invalidate network.");
-      return;
-    }
-    ((CommentEntry)localObject).status = 1;
-    szh.a((CommentEntry)localObject, new tyc(this, (CommentEntry)localObject, bool));
+    return false;
   }
   
-  public void b(CommentEntry paramCommentEntry)
+  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    szv.a(txw.a(this.a).a, paramCommentEntry, txw.c(this.a), txw.a(this.a), new tyd(this));
-  }
-  
-  public void c()
-  {
-    Object localObject = txw.a(this.a).a("CommentFloatDialog");
-    if (localObject != null) {
-      ((wde)localObject).a(false);
+    if (txt.a(this.a) != null) {
+      txt.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
     }
-    localObject = txw.a(this.a).getLayoutParams();
-    if (localObject == null) {
-      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131298774));
-    }
-    for (;;)
-    {
-      txw.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131298776);
-    }
-  }
-  
-  public void d()
-  {
-    boolean bool = false;
-    Object localObject = txw.a(this.a).a("CommentFloatDialog");
-    if (localObject != null)
-    {
-      if (txw.a(this.a) != null)
-      {
-        if (!txw.a(this.a).a(txw.a(this.a).a())) {
-          bool = true;
-        }
-        ((wde)localObject).a(bool);
-      }
-    }
-    else
-    {
-      localObject = txw.a(this.a).getLayoutParams();
-      if (localObject != null) {
-        break label119;
-      }
-      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131298774));
-    }
-    for (;;)
-    {
-      txw.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      ((wde)localObject).a(false);
-      break;
-      label119:
-      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131298774);
-    }
-  }
-  
-  public void f_(int paramInt)
-  {
-    txw.a(this.a).setSelectionFromBottom(txw.a(this.a).a() + paramInt, 0);
   }
 }
 

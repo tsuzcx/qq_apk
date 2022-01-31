@@ -13,7 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import bfpo;
+import bfqf;
 
 public class AutoVerticalScrollTextView
   extends TextSwitcher
@@ -23,10 +23,10 @@ public class AutoVerticalScrollTextView
   private long jdField_a_of_type_Long = 1000L;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bfpo jdField_a_of_type_Bfpo;
+  private bfqf jdField_a_of_type_Bfqf;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private bfpo jdField_b_of_type_Bfpo;
+  private bfqf jdField_b_of_type_Bfqf;
   
   public AutoVerticalScrollTextView(Context paramContext)
   {
@@ -40,32 +40,32 @@ public class AutoVerticalScrollTextView
     c();
   }
   
-  private bfpo a(boolean paramBoolean1, boolean paramBoolean2)
+  private bfqf a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bfpo localbfpo = new bfpo(this, paramBoolean1, paramBoolean2);
-    localbfpo.setDuration(this.jdField_b_of_type_Long);
-    localbfpo.setFillAfter(false);
-    localbfpo.setInterpolator(new AccelerateInterpolator());
-    return localbfpo;
+    bfqf localbfqf = new bfqf(this, paramBoolean1, paramBoolean2);
+    localbfqf.setDuration(this.jdField_b_of_type_Long);
+    localbfqf.setFillAfter(false);
+    localbfqf.setInterpolator(new AccelerateInterpolator());
+    return localbfqf;
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Bfpo = a(true, true);
-    this.jdField_b_of_type_Bfpo = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Bfpo);
-    setOutAnimation(this.jdField_b_of_type_Bfpo);
+    this.jdField_a_of_type_Bfqf = a(true, true);
+    this.jdField_b_of_type_Bfqf = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Bfqf);
+    setOutAnimation(this.jdField_b_of_type_Bfqf);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Bfpo) {
-      setInAnimation(this.jdField_a_of_type_Bfpo);
+    if (getInAnimation() != this.jdField_a_of_type_Bfqf) {
+      setInAnimation(this.jdField_a_of_type_Bfqf);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Bfpo) {
-      setOutAnimation(this.jdField_b_of_type_Bfpo);
+    if (getOutAnimation() != this.jdField_b_of_type_Bfqf) {
+      setOutAnimation(this.jdField_b_of_type_Bfqf);
     }
   }
   

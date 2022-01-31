@@ -1,28 +1,44 @@
-public abstract interface rze
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+
+public class rze
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public abstract void a(rzd paramrzd, int paramInt);
+  public rze(ViolaVideoView paramViolaVideoView) {}
   
-  public abstract void a(rzd paramrzd, int paramInt1, int paramInt2, String paramString);
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  {
+    if (!ViolaVideoView.a(this.a).a()) {
+      return;
+    }
+    long l = ViolaVideoView.a(this.a).a();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    qoi.a(ViolaVideoView.a(this.a), paramInt);
+  }
   
-  public abstract void a(rzd paramrzd, long paramLong);
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    ViolaVideoView.a(this.a, true);
+  }
   
-  public abstract void a(rzd paramrzd, boolean paramBoolean);
-  
-  public abstract void b(rzd paramrzd);
-  
-  public abstract void b(rzd paramrzd, int paramInt);
-  
-  public abstract void c(rzd paramrzd);
-  
-  public abstract void d(rzd paramrzd);
-  
-  public abstract void e(rzd paramrzd);
-  
-  public abstract void f(rzd paramrzd);
-  
-  public abstract void g(rzd paramrzd);
-  
-  public abstract void h(rzd paramrzd);
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (!ViolaVideoView.a(this.a).a()) {}
+    int i;
+    do
+    {
+      return;
+      ViolaVideoView.a(this.a, false);
+      i = paramSeekBar.getProgress();
+      long l = ViolaVideoView.a(this.a).a();
+      i = (int)(i / 100.0D * l);
+      ViolaVideoView.a(this.a).d(i);
+    } while (ViolaVideoView.a(this.a) == null);
+    ViolaVideoView.a(this.a).b(i);
+  }
 }
 
 

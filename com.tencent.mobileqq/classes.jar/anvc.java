@@ -1,20 +1,25 @@
-class anvc
-  extends bbwf
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
+
+public class anvc
+  implements ajkp
 {
-  anvc(anul paramanul) {}
+  public anvc(MessengerService.IncomingHandler.33 param33) {}
   
-  public void onCancel(bbwg parambbwg) {}
-  
-  public void onDone(bbwg parambbwg)
+  public void a(long paramLong, String paramString)
   {
-    super.onDone(parambbwg);
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
   }
-  
-  public void onDoneFile(bbwg parambbwg) {}
-  
-  public void onPause(bbwg parambbwg) {}
-  
-  public void onProgress(bbwg parambbwg) {}
 }
 
 

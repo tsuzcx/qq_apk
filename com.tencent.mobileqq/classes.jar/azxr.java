@@ -1,25 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class azxr
-  implements DialogInterface.OnClickListener
+  implements baba
 {
-  public azxr(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, azvl paramazvl) {}
+  public azxr(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a > 0L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(this.jdField_a_of_type_Azvl);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment.a(3, null, null, this.jdField_a_of_type_Azvl);
   }
 }
 

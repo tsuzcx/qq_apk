@@ -1,97 +1,48 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
-
 public class bhwh
 {
-  public static final AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  private static bhwh jdField_a_of_type_Bhwh = new bhwh();
+  private bhwi jdField_a_of_type_Bhwi;
+  bhwj jdField_a_of_type_Bhwj;
+  
+  public static bhwh a()
   {
-    if (paramBaseApplicationImpl == null) {
-      return null;
+    return jdField_a_of_type_Bhwh;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bhwi = null;
+  }
+  
+  public void a(bhwi parambhwi)
+  {
+    this.jdField_a_of_type_Bhwi = parambhwi;
+  }
+  
+  public void a(bhwj parambhwj)
+  {
+    this.jdField_a_of_type_Bhwj = parambhwj;
+  }
+  
+  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Bhwi == null) {
+      return;
     }
-    if ("troop_member_card_plugin.apk".equals(paramString)) {}
-    label158:
-    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
-      try
-      {
-        for (;;)
-        {
-          Class localClass = Class.forName(str);
-          paramBaseApplicationImpl = localClass;
-          if (paramBaseApplicationImpl != null) {
-            break;
-          }
-          try
-          {
-            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
-            return null;
-          }
-          catch (ClassNotFoundException paramBaseApplicationImpl)
-          {
-            paramBaseApplicationImpl.printStackTrace();
-            return null;
-          }
-          if (!"troop_manage_plugin.apk".equals(paramString)) {
-            break label158;
-          }
-          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        for (;;)
-        {
-          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
-          paramBaseApplicationImpl = paramString.loadClass(str);
-          BasicClassTypeUtil.setClassLoader(true, paramString);
-        }
-      }
-      catch (IllegalArgumentException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
-          break;
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
-      }
-      catch (IllegalAccessException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InstantiationException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InvocationTargetException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (NoSuchMethodException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (Exception paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
+    this.jdField_a_of_type_Bhwi.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    bhwj localbhwj = this.jdField_a_of_type_Bhwj;
+    if ((localbhwj != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
+      localbhwj.a(paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhwh
  * JD-Core Version:    0.7.0.1
  */

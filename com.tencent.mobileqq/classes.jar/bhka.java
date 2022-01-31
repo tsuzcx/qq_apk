@@ -1,70 +1,63 @@
-import BOSSStrategyCenter.tAdvAppInfo;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bhka
-  extends QzoneExternalRequest
+final class bhka
+  implements ServiceConnection
 {
-  JceStruct a;
-  
-  public bhka(long paramLong, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    MobileQbossAdvReq localMobileQbossAdvReq = new MobileQbossAdvReq();
-    localMobileQbossAdvReq.uiUin = paramLong;
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Integer localInteger = (Integer)paramArrayList.next();
-      tAdvAppInfo localtAdvAppInfo = new tAdvAppInfo();
-      localtAdvAppInfo.app_id = localInteger.intValue();
-      localtAdvAppInfo.i_need_adv_cnt = 5;
-      localArrayList.add(localtAdvAppInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceConnected");
     }
-    localMobileQbossAdvReq.vecReqApp = localArrayList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (bhjz.a() == null)
     {
-      localMobileQbossAdvReq.iPullAsExposeOper = i;
-      localMobileQbossAdvReq.iReqFlag = 1;
-      this.a = localMobileQbossAdvReq;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
+      }
+      bhjz.a();
       return;
     }
-  }
-  
-  public static MobileQbossAdvRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    paramComponentName = (bhkb)bhjz.a().get();
+    if (paramComponentName == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
+      }
+      bhjz.a();
+      return;
     }
-    paramArrayOfByte = (MobileQbossAdvRsp)decode(paramArrayOfByte, "get");
-    if (paramArrayOfByte == null) {
-      return null;
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder alive");
+      }
+      bhjz.a = new bhjd(bhkl.a(paramIBinder));
+      paramComponentName.onQzonePluginClientReady(bhjz.a);
     }
-    bhkf.a(paramArrayOfByte);
-    return paramArrayOfByte;
+    for (;;)
+    {
+      bhjz.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder not alive");
+      }
+      paramComponentName.onQzonePluginClientReady(null);
+    }
   }
   
-  public String getCmdString()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return "QzoneNewService.mobileqboss.get";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "get";
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+    }
+    if (bhjz.a != null)
+    {
+      bhjz.a.b();
+      bhjz.a = null;
+    }
   }
 }
 

@@ -1,32 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
 public class acgi
-  implements View.OnClickListener
+  extends lno
 {
   public acgi(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt, long paramLong)
   {
-    int i = 0;
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      axqw.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Bbix = ((bbix)this.a.app.getManager(31));
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839140, 0, 0, 0);
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramView = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-        this.a.a(paramView, 4);
-        i += 1;
-      }
-    }
+    this.a.c();
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    this.a.c();
+  }
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    this.a.c();
   }
 }
 

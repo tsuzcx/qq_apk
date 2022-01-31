@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import amgw;
-import amhc;
+import amgv;
+import amhb;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$23
-  implements amgw
+  implements amgv
 {
   GameActivity$23(GameActivity paramGameActivity) {}
   
@@ -21,7 +21,7 @@ class GameActivity$23
       return null;
     }
     byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(this.this$0.mGameAppConfig.config);
-    return new amhc().a(16842752).a(this.this$0.mGameAppConfig.config.appId).b(this.this$0.mGameAppConfig.config.name).c(this.this$0.mGameAppConfig.config.desc).d(this.this$0.mGameAppConfig.config.iconUrl).a(arrayOfByte).a();
+    return new amhb().a(16842752).a(this.this$0.mGameAppConfig.config.appId).b(this.this$0.mGameAppConfig.config.name).c(this.this$0.mGameAppConfig.config.desc).d(this.this$0.mGameAppConfig.config.iconUrl).a(arrayOfByte).a();
   }
 }
 

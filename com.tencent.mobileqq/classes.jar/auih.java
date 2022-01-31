@@ -5,12 +5,15 @@ import com.tencent.mobileqq.data.AutoReplyText;
 class auih
   implements View.OnClickListener
 {
-  auih(auib paramauib, AutoReplyText paramAutoReplyText) {}
+  auih(auid paramauid, AutoReplyText paramAutoReplyText) {}
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-    this.jdField_a_of_type_Auib.a(i);
+    if ((auid.a(this.jdField_a_of_type_Auid) != null) && (paramView != null))
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+      auid.a(this.jdField_a_of_type_Auid, (View)paramView.getParent(), i);
+    }
   }
 }
 

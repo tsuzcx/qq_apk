@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
-import ayqm;
-import ayvv;
-import ayvz;
+import ayqo;
+import ayvx;
+import aywb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
@@ -17,7 +17,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniArkShareAsyncTransProcessorHandler
-  extends ayvz
+  extends aywb
 {
   private static final String TAG = "MiniArkShareImageTransP";
   private final CmdCallback cmdCallback;
@@ -31,8 +31,8 @@ public class MiniArkShareAsyncTransProcessorHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    Object localObject1 = (ayqm)paramMessage.obj;
-    if ((localObject1 == null) || (((ayqm)localObject1).c != 62) || (((ayqm)localObject1).b != 24)) {}
+    Object localObject1 = (ayqo)paramMessage.obj;
+    if ((localObject1 == null) || (((ayqo)localObject1).c != 62) || (((ayqo)localObject1).b != 24)) {}
     for (;;)
     {
       return;
@@ -41,7 +41,7 @@ public class MiniArkShareAsyncTransProcessorHandler
         Object localObject2 = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
-          ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(((ayqm)localObject1).a);
+          ((Bdh_extinfo.UploadPicExtInfo)localObject2).mergeFrom(((ayqo)localObject1).a);
           paramMessage = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_file_resid.get().toStringUtf8();
           localObject1 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_download_url.get().toStringUtf8();
           localObject2 = ((Bdh_extinfo.UploadPicExtInfo)localObject2).bytes_thumb_download_url.get().toStringUtf8();

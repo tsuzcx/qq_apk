@@ -1,84 +1,67 @@
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class awwy
-  implements awwq
+  extends awyh
 {
-  public static final String a;
-  public final int a;
-  public Context a;
-  public View a;
+  public RelativeLayout b;
+  public SquareImageView b;
+  public ImageView c;
+  public SquareImageView c;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  static
+  public awwy(ViewGroup paramViewGroup, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = awwy.class.getSimpleName();
+    this.jdField_c_of_type_Int = paramInt;
+    paramViewGroup.getResources();
+    LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, null, false), new LinearLayout.LayoutParams(-1, -2));
+    localLinearLayout.setBackgroundResource(2130849142);
+    localLinearLayout.setClickable(true);
+    localLinearLayout.setFocusable(true);
+    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+    a();
   }
   
-  public awwy(Context paramContext, int paramInt)
+  protected void a()
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException(jdField_a_of_type_JavaLangString + "type is illegal, type = " + paramInt);
-    }
-    int i;
-    if (paramInt >= 0)
-    {
-      i = paramInt;
-      if (paramInt <= 2) {}
-    }
-    else
-    {
-      i = 0;
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "type is illegal, type = " + 0);
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = i;
+    super.a();
   }
   
-  public View a()
+  protected void a(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375395));
+    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367856));
     }
-    boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    switch (this.jdField_a_of_type_Int)
+    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131368606));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368543));
+    this.e = ((TextView)paramView.findViewById(2131378371));
+    this.f = ((TextView)paramView.findViewById(2131378329));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131375266));
+    this.g = ((TextView)paramView.findViewById(2131375267));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-    default: 
-      if (bool) {
-        localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166783));
-      }
-      break;
+      this.f.setTextColor(this.f.getContext().getResources().getColor(2131166792));
+      this.g.setTextColor(this.g.getContext().getResources().getColor(2131166792));
+      return;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView = localRelativeLayout;
-      return localRelativeLayout;
-      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, bawz.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
-      View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-      if (bool) {
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166794));
-      }
-      for (;;)
-      {
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, 1);
-        localLayoutParams.addRule(15);
-        localLayoutParams.leftMargin = bawz.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        localLayoutParams.rightMargin = bawz.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        localRelativeLayout.addView(localView, localLayoutParams);
-        break;
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166793));
-      }
-      localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, bawz.a(this.jdField_a_of_type_AndroidContentContext, 18.0F)));
-      break;
-      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167134));
-    }
+    this.f.setTextColor(this.f.getContext().getResources().getColor(2131167134));
+    this.g.setTextColor(this.g.getContext().getResources().getColor(2131167134));
   }
 }
 

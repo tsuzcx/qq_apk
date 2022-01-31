@@ -1,35 +1,53 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
 class bfkb
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  protected boolean a;
   
-  public bfkb(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3, boolean paramBoolean, int paramInt4, long paramLong, int paramInt5)
+  private bfkb(bfjt parambfjt) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.e = paramInt5;
+    if (this.a) {
+      bfjt.a(this.b).a();
+    }
   }
   
-  public String toString()
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return "filePath=" + this.jdField_a_of_type_JavaLangString + ",fileName=" + this.jdField_b_of_type_JavaLangString + ",fileId=" + this.jdField_b_of_type_Int + ",fileUrl=" + this.jdField_c_of_type_JavaLangString + ",fileHash=" + this.jdField_d_of_type_JavaLangString + ",fileVersion=" + this.jdField_c_of_type_Int + ",zipFlag=" + this.jdField_a_of_type_Boolean + ",startTime=" + this.jdField_a_of_type_Long + ",tryTimes=" + this.jdField_d_of_type_Int + ",downloadFlag=" + this.e;
+    if (TextUtils.isEmpty(paramString2)) {}
+    bfjm localbfjm2;
+    do
+    {
+      return;
+      localbfjm2 = bfjt.a(this.b).a(paramInt1);
+    } while ((localbfjm2 != null) && (paramString1.equals(localbfjm2.jdField_b_of_type_JavaLangString)) && (paramString2.equals(localbfjm2.jdField_a_of_type_JavaLangString)) && (paramInt2 == localbfjm2.jdField_b_of_type_Int) && (paramInt3 == localbfjm2.c));
+    bfjm localbfjm1;
+    if (localbfjm2 == null) {
+      localbfjm1 = new bfjm();
+    }
+    for (;;)
+    {
+      localbfjm1.jdField_a_of_type_Int = paramInt1;
+      localbfjm1.jdField_b_of_type_Int = paramInt2;
+      localbfjm1.c = paramInt3;
+      localbfjm1.jdField_b_of_type_JavaLangString = paramString1;
+      localbfjm1.jdField_a_of_type_JavaLangString = paramString2;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QSec", 2, String.format("Add lost lib: %d,%d,%d,%s", new Object[] { Integer.valueOf(localbfjm1.jdField_a_of_type_Int), Integer.valueOf(localbfjm1.jdField_b_of_type_Int), Integer.valueOf(localbfjm1.c), localbfjm1.jdField_b_of_type_JavaLangString }));
+      }
+      bfjt.a(this.b).a(localbfjm1, false);
+      this.a = true;
+      return;
+      bfjt.a(this.b).a(paramInt1, false);
+      localbfjm1 = localbfjm2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
+        localbfjm1 = localbfjm2;
+      }
+    }
   }
 }
 

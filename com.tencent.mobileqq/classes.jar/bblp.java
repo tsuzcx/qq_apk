@@ -1,96 +1,48 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.mobileqq.utils.confighandler.ConfigHandler;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bblp
+public final class bblp
+  implements URLDrawable.URLDrawableListener
 {
-  public static int a(String paramString)
-  {
-    int i = 0;
-    paramString = b(paramString);
-    if (paramString != null) {
-      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
-    }
-    return i;
-  }
+  public bblp(Resources paramResources, String paramString, ImageView paramImageView, Drawable paramDrawable) {}
   
-  public static SharedPreferences a(String paramString)
-  {
-    return bblq.a(akyy.a, paramString, "config_qq.android.ar_");
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public static SharedPreferences a(String paramString1, String paramString2)
-  {
-    return bblq.a(akyy.a, paramString1, "res_qq.android.ar_" + paramString2);
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public static PromotionConfigInfo a(String paramString1, String paramString2)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int i = 1;
-    for (;;)
+    int i;
+    if (paramURLDrawable != null)
     {
-      try
+      i = actj.a(15.0F, this.jdField_a_of_type_AndroidContentResResources);
+      j = paramURLDrawable.getIntrinsicHeight();
+      if (j == 0)
       {
-        if (TextUtils.isEmpty(paramString2))
-        {
-          Object localObject = a(paramString1);
-          if (localObject != null)
-          {
-            paramString2 = ((SharedPreferences)localObject).getString("config", null);
-            QLog.w(akyy.a, 1, "ConfigInfo.get, step[" + i + "], configText[" + paramString2 + "]");
-            localObject = new PromotionConfigInfo();
-            ((PromotionConfigInfo)localObject).setUin(paramString1);
-            if (!TextUtils.isEmpty(paramString2)) {
-              ((PromotionConfigInfo)localObject).tryParse(akyy.a, paramString2);
-            }
-            return localObject;
-          }
-          i = 2;
-          continue;
-        }
-        i = 0;
+        boolean bool = new File(bbqz.a(this.jdField_a_of_type_JavaLangString)).delete();
+        QLog.e("VipUtils", 1, "onLoadSuccessed drawableHeight=0, deleteSucc=" + bool + " url=" + this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
-      finally {}
     }
-  }
-  
-  public static String a(String paramString)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = b(paramString);
-    paramString = localObject;
-    if (localSharedPreferences != null) {
-      paramString = localSharedPreferences.getString("config", null);
+    else
+    {
+      return;
     }
-    return paramString;
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    BusinessCommonConfig.saveMd5(akyy.a, a(paramString1, paramString2), "md5_" + paramInt, paramString3);
-  }
-  
-  public static boolean a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
-  {
-    return BusinessCommonConfig.isResReady(akyy.a + "_" + paramString2, a(paramString1, paramString2), "md5_" + paramInt, paramString3, paramString4);
-  }
-  
-  public static int b(String paramString)
-  {
-    int i = 0;
-    paramString = a(paramString);
-    if (paramString != null) {
-      i = ConfigHandler.getConfigVer(paramString, "config", "ver");
-    }
-    return i;
-  }
-  
-  public static SharedPreferences b(String paramString)
-  {
-    return bblq.a(akyy.a, paramString, "res_qq.android.ar_");
+    int j = paramURLDrawable.getIntrinsicWidth() * i / j;
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.height = i;
+    localLayoutParams.width = j;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
   }
 }
 

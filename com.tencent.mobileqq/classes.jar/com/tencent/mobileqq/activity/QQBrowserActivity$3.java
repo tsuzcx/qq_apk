@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcbi;
+import bcbw;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQBrowserActivity$3
@@ -10,7 +10,7 @@ class QQBrowserActivity$3
   
   public void run()
   {
-    bcbi.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    bcbw.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
   }
 }
 

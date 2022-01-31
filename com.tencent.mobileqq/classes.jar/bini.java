@@ -1,22 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-
 class bini
-  extends RecyclerView.ViewHolder
+  implements xfa
 {
-  private TextView a;
+  bini(bina parambina, Runnable paramRunnable) {}
   
-  public bini(View paramView)
+  public void a()
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131362150));
-  }
-  
-  public void a(@NonNull binj parambinj)
-  {
-    this.a.setText(parambinj.a);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

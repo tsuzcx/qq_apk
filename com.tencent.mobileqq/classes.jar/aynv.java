@@ -1,56 +1,54 @@
+import android.animation.AnimatorSet;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
 import java.util.List;
 
 class aynv
-  implements Handler.Callback
+  implements Animation.AnimationListener
 {
-  aynv(aynq paramaynq) {}
+  aynv(ayns paramayns, AnimatorSet paramAnimatorSet) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
+    int i = 0;
+    while (i < 3)
     {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
+      paramAnimation = (ImageView)this.jdField_a_of_type_Ayns.a.get(i);
+      paramAnimation.clearAnimation();
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 != null) && (i < this.jdField_a_of_type_Ayns.b.size()))
       {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
-      }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      if ((this.a.b != null) && (this.a.b.size() > 3))
-      {
-        paramMessage = (String)this.a.b.get(3);
-        Drawable localDrawable = bbdr.a(true);
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localQQAppInterface != null) {
-          baxt.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+        Object localObject2 = (String)this.jdField_a_of_type_Ayns.b.get(i);
+        Drawable localDrawable = bbef.a(true);
+        localObject1 = bayh.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
+        localObject2 = paramAnimation.getDrawable();
+        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof bayh))) {
+          ((bayh)localObject2).a();
         }
+        paramAnimation.setImageDrawable((Drawable)localObject1);
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-      return false;
+      i += 1;
     }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
-    }
-    aynq.a(this.a, paramMessage);
-    return false;
+    this.jdField_a_of_type_Ayns.d.clearAnimation();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    this.jdField_a_of_type_Ayns.c.setTranslationX(0.0F);
+    this.jdField_a_of_type_Ayns.c.setAlpha(1.0F);
+    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setDuration(200L);
+    paramAnimation.setAnimationListener(new aynw(this));
+    this.jdField_a_of_type_Ayns.d.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

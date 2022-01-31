@@ -1,9 +1,13 @@
 class adwi
 {
-  int jdField_a_of_type_Int = -1;
-  adwk[] jdField_a_of_type_ArrayOfAdwk;
+  public int a;
+  public long a;
+  public int b;
   
-  adwi(adwh paramadwh) {}
+  adwi(adwf paramadwf)
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

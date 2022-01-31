@@ -1,44 +1,19 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class amef
-  extends akfz
+  implements bfpt
 {
   public amef(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
+    if (!this.a.isFinishing())
     {
-      i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
-      }
-      if (i == 0)
-      {
-        if (this.a.app != null)
-        {
-          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
-          paramObject.g = 1;
-          paramObject.h = 8;
-          ProfileActivity.b(this.a, paramObject);
-          bcpw.a(this.a, 0, 2131720536, 0).a();
-        }
-        this.a.finish();
-      }
+      this.a.overridePendingTransition(0, 2130772328);
+      this.a.finish();
     }
-    while (!"profilelogic.setUserProfile".equals(paramObject))
-    {
-      int i;
-      return;
-      bcpw.a(this.a, 1, 2131720533, 0).a();
-      return;
-    }
-    bcpw.a(this.a, 1, 2131720533, 0).a();
   }
 }
 

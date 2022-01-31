@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akdi;
+import akdh;
 
 class PublicAccountListActivity$2
   implements Runnable

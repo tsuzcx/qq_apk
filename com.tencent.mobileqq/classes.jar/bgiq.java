@@ -1,12 +1,13 @@
-import java.util.Observable;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class bgiq
-  extends Observable
+class bgiq
+  implements amgv
 {
-  public void a()
+  bgiq(bgip parambgip, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  
+  public ColorNote getColorNote()
   {
-    setChanged();
-    notifyObservers();
+    return new amhb().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838570").a(this.jdField_a_of_type_ArrayOfByte).a();
   }
 }
 

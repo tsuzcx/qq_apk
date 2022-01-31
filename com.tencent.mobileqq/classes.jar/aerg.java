@@ -1,11 +1,13 @@
+import android.view.View;
+
 class aerg
-  extends akim
+  implements bfph
 {
-  aerg(aerb paramaerb) {}
+  aerg(aeqz paramaeqz, bfpc parambfpc) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    aerb.a(this.a, paramBoolean, paramObject);
+    aeqz.a(this.jdField_a_of_type_Aeqz, paramView, paramInt, this.jdField_a_of_type_Bfpc);
   }
 }
 

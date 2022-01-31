@@ -1,42 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.graphics.Point;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
 import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-public class amjz
-  implements Animator.AnimatorListener
+public abstract interface amjz
 {
-  public amjz(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
+  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(Point paramPoint, int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
-    if (!this.a.a())
-    {
-      paramAnimator.leftMargin = bawz.a(this.a.getContext(), 14.5F);
-      paramAnimator.rightMargin = 0;
-    }
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
-    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = bawz.a(this.a.getContext(), 13.5F);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
-    paramAnimator = this.a;
-    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
-    for (int i = 0;; i = 1)
-    {
-      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
-      return;
-    }
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, boolean paramBoolean);
+  
+  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
 }
 
 

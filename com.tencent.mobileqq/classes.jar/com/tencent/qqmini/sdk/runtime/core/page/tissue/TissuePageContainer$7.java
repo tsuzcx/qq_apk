@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.core.page.tissue;
 
-import bfca;
+import bfcr;
 import java.util.HashMap;
 
 public class TissuePageContainer$7
   extends HashMap<String, Object>
 {
-  public TissuePageContainer$7(bfca parambfca, int paramInt1, int paramInt2)
+  public TissuePageContainer$7(bfcr parambfcr, int paramInt1, int paramInt2)
   {
     put("delta", Integer.valueOf(this.val$delta));
     put("callBackID", Integer.valueOf(this.val$callbackId));

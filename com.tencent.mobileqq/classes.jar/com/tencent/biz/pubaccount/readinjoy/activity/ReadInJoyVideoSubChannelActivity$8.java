@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import noo;
-import npx;
+import nol;
+import npu;
 
 class ReadInJoyVideoSubChannelActivity$8
   implements Runnable
@@ -25,7 +25,7 @@ class ReadInJoyVideoSubChannelActivity$8
     label113:
     for (String str2 = "1";; str2 = "2")
     {
-      noo.a(null, "", "0X80088BC", "0X80088BC", 0, 0, str2, str1, "", npx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+      nol.a(null, "", "0X80088BC", "0X80088BC", 0, 0, str2, str1, "", npu.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
       return;
       if (ReadInJoyVideoSubChannelActivity.b(this.this$0) == 8)
       {
@@ -42,7 +42,7 @@ class ReadInJoyVideoSubChannelActivity$8
     if (this.jdField_a_of_type_Boolean) {}
     for (str2 = "1";; str2 = "2")
     {
-      noo.a(null, "", "0X8007BFE", "0X8007BFE", 0, 0, str2, str1, "", npx.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+      nol.a(null, "", "0X8007BFE", "0X8007BFE", 0, 0, str2, str1, "", npu.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
       return;
     }
   }

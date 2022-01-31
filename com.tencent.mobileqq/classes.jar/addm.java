@@ -1,15 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-public class addm
-  implements adfe
+class addm
+  implements DialogInterface.OnClickListener
 {
-  public addm(DoodlePanel paramDoodlePanel) {}
+  addm(addl paramaddl) {}
   
-  public void a(adfd paramadfd)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramadfd);
-    paramadfd = "" + paramadfd.a + ";" + paramadfd.b + ";" + paramadfd.c;
-    bbaj.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramadfd);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    DoodlePanel.a(this.a.a, false);
   }
 }
 

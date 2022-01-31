@@ -1,38 +1,7 @@
-import android.os.Bundle;
-
 public class allr
 {
-  private Bundle a;
-  
-  public allr(Bundle paramBundle)
-  {
-    this.a = paramBundle;
-  }
-  
-  public Bundle a()
-  {
-    return this.a;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.putLong("downloadItems", paramLong);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.putBoolean("NoLimitParams", paramBoolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    this.a.putLong("recognitionMask", paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.putBoolean("arTransferPromotion", paramBoolean);
-  }
+  public static int a = axlk.a;
+  public static int b = axlk.b;
 }
 
 

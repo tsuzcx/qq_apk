@@ -1,24 +1,11 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-
 public class umk
-  implements wdg
+  extends ssh
 {
-  public umk(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  public int a;
   
-  public void a()
+  public String toString()
   {
-    if ((this.a.jdField_a_of_type_Uml != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Uml.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Uml != null) {
-      return this.a.jdField_a_of_type_Uml.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 

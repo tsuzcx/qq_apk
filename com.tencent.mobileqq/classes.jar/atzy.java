@@ -1,25 +1,20 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
 public class atzy
-  implements bfoq
+  extends BroadcastReceiver
 {
   public atzy(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      auab.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
-      auab.a("0X800AAE9", 0);
-    }
-    if (paramInt == 1)
-    {
-      awgq.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
-      auab.a("0X800AAEA", 0);
-    }
-    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
-      OCRPerformFragment.a(this.a).dismiss();
+      aqmd.a().a().a("OCRPerformFragment", 4, "receive videochat");
+      this.a.getActivity().finish();
     }
   }
 }

@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 
 public class ayzi
-  extends ayzp
+  extends ayzr
 {
+  public int a;
   public String a;
-  public ArrayList<ayuo> a = new ArrayList();
+  public ArrayList<ayuq> a = new ArrayList();
+  public boolean a;
   public String b;
-  public ArrayList<ayuo> b = new ArrayList();
 }
 
 

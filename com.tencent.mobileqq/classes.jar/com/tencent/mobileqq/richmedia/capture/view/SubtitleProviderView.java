@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import actn;
-import ahyc;
+import actj;
+import ahya;
+import ahzf;
 import ahzh;
-import ahzj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -12,13 +12,13 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-import avrp;
-import avsn;
-import avso;
-import avtb;
-import avvt;
-import axqw;
-import bfpc;
+import avrr;
+import avsp;
+import avsq;
+import avtd;
+import avvv;
+import axqy;
+import bfpt;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
@@ -29,38 +29,38 @@ import java.util.List;
 
 public class SubtitleProviderView
   extends ProviderView
-  implements ahzj, bfpc
+  implements ahzh, bfpt
 {
   public static final int a;
-  public static final int b = actn.a(12.0F, BaseApplication.getContext().getResources());
+  public static final int b = actj.a(12.0F, BaseApplication.getContext().getResources());
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private avrp jdField_a_of_type_Avrp;
+  private avrr jdField_a_of_type_Avrr;
   private GridView jdField_a_of_type_ComTencentWidgetGridView;
-  private List<avsn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<avsp> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   static
   {
-    jdField_a_of_type_Int = actn.a(64.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = actj.a(64.0F, BaseApplication.getContext().getResources());
   }
   
   public SubtitleProviderView(Context paramContext)
   {
     super(paramContext);
-    ahzh.a().a(true);
+    ahzf.a().a(true);
   }
   
   private void b()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = new avsn();
-    ((avsn)localObject).jdField_a_of_type_Int = 0;
+    Object localObject = new avsp();
+    ((avsp)localObject).jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilList.add(localObject);
-    localObject = ahzh.a().a();
+    localObject = ahzf.a().a();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
       this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
     }
-    if (this.jdField_a_of_type_Avrp != null) {
-      this.jdField_a_of_type_Avrp.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Avrr != null) {
+      this.jdField_a_of_type_Avrr.notifyDataSetChanged();
     }
   }
   
@@ -71,7 +71,7 @@ public class SubtitleProviderView
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Avrp != null)
+    if (this.jdField_a_of_type_Avrr != null)
     {
       int j = this.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
       int k = this.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
@@ -79,18 +79,18 @@ public class SubtitleProviderView
       if (i <= k)
       {
         if (i < 0) {}
-        avsn localavsn;
+        avsp localavsp;
         do
         {
           i += 1;
           break;
-          localavsn = (avsn)this.jdField_a_of_type_JavaUtilList.get(i);
-        } while ((localavsn == null) || (localavsn.jdField_a_of_type_Int != paramInt1) || (!localavsn.b));
+          localavsp = (avsp)this.jdField_a_of_type_JavaUtilList.get(i);
+        } while ((localavsp == null) || (localavsp.jdField_a_of_type_Int != paramInt1) || (!localavsp.b));
         if (QLog.isColorLevel()) {
           QLog.d("SubtitleProviderView", 2, "onProgressUpdate index: " + i + " progress: " + paramInt2);
         }
         View localView = this.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
-        this.jdField_a_of_type_Avrp.b(localavsn, localView);
+        this.jdField_a_of_type_Avrr.b(localavsp, localView);
       }
     }
   }
@@ -98,7 +98,7 @@ public class SubtitleProviderView
   public void a(int paramInt1, int paramInt2, String paramString)
   {
     View localView;
-    if (this.jdField_a_of_type_Avrp != null)
+    if (this.jdField_a_of_type_Avrr != null)
     {
       int j = this.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
       int k = this.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
@@ -110,7 +110,7 @@ public class SubtitleProviderView
         {
           i += 1;
           break;
-          paramString = (avsn)this.jdField_a_of_type_JavaUtilList.get(i);
+          paramString = (avsp)this.jdField_a_of_type_JavaUtilList.get(i);
           localView = this.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
           if (paramString != null) {
             paramString.b = false;
@@ -122,38 +122,38 @@ public class SubtitleProviderView
         if (paramInt2 != 0) {
           break label221;
         }
-        this.jdField_a_of_type_Avrp.a(paramString, localView);
+        this.jdField_a_of_type_Avrr.a(paramString, localView);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Avrp.b(paramString, localView);
-      if ((this.jdField_a_of_type_Avrp != null) && (this.jdField_a_of_type_Avrp.jdField_a_of_type_Int == paramInt1) && (paramString.b()))
+      this.jdField_a_of_type_Avrr.b(paramString, localView);
+      if ((this.jdField_a_of_type_Avrr != null) && (this.jdField_a_of_type_Avrr.jdField_a_of_type_Int == paramInt1) && (paramString.b()))
       {
         paramString.b = false;
-        if (this.jdField_a_of_type_Avvt != null)
+        if (this.jdField_a_of_type_Avvv != null)
         {
-          if (paramString.jdField_a_of_type_Avso == null) {
+          if (paramString.jdField_a_of_type_Avsq == null) {
             break;
           }
-          this.jdField_a_of_type_Avvt.a(paramString.jdField_a_of_type_Int, paramString.jdField_a_of_type_Avso.f);
+          this.jdField_a_of_type_Avvv.a(paramString.jdField_a_of_type_Int, paramString.jdField_a_of_type_Avsq.f);
         }
       }
       return;
       label221:
-      this.jdField_a_of_type_Avrp.a(paramString, localView);
+      this.jdField_a_of_type_Avrr.a(paramString, localView);
     }
-    this.jdField_a_of_type_Avvt.a(paramString.jdField_a_of_type_Int, null);
+    this.jdField_a_of_type_Avvv.a(paramString.jdField_a_of_type_Int, null);
   }
   
   public void a(Bundle paramBundle)
   {
     setNeedTabBar(false);
     super.a(paramBundle);
-    ahzh.a().a(this);
+    ahzf.a().a(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561039, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561038, this, false));
     }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_ComTencentWidgetGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
@@ -177,13 +177,13 @@ public class SubtitleProviderView
       this.jdField_a_of_type_ComTencentWidgetGridView.setSelector(new ColorDrawable(0));
       this.jdField_a_of_type_ComTencentWidgetGridView.setFocusable(false);
       this.jdField_a_of_type_ComTencentWidgetGridView.setClickable(false);
-      this.jdField_a_of_type_Avrp = new avrp(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Avrp.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Avrp.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(this.jdField_a_of_type_Avrp);
-      this.jdField_a_of_type_Avrp.notifyDataSetChanged();
+      this.jdField_a_of_type_Avrr = new avrr(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Avrr.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Avrr.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(this.jdField_a_of_type_Avrr);
+      this.jdField_a_of_type_Avrr.notifyDataSetChanged();
       this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this);
-      if (ahzh.a().a() == 2) {
+      if (ahzf.a().a() == 2) {
         b();
       }
       return;
@@ -193,32 +193,32 @@ public class SubtitleProviderView
   
   public void aL_()
   {
-    if (this.jdField_a_of_type_Avrp != null) {
-      this.jdField_a_of_type_Avrp.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Avrr != null) {
+      this.jdField_a_of_type_Avrr.notifyDataSetChanged();
     }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_a_of_type_Avrp == null)) {}
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_a_of_type_Avrr == null)) {}
     do
     {
       return;
-      paramAdapterView = (avsn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramAdapterView = (avsp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     } while (paramAdapterView == null);
-    this.jdField_a_of_type_Avrp.jdField_a_of_type_Int = paramAdapterView.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Avrr.jdField_a_of_type_Int = paramAdapterView.jdField_a_of_type_Int;
     if (paramAdapterView.jdField_a_of_type_Int != 0)
     {
-      axqw.b(null, "dc00898", "", "", "0X8008757", "0X8008757", 0, 0, "", "", "", "");
-      avtb.a(ahyc.a(paramAdapterView.jdField_a_of_type_Int));
+      axqy.b(null, "dc00898", "", "", "0X8008757", "0X8008757", 0, 0, "", "", "", "");
+      avtd.a(ahya.a(paramAdapterView.jdField_a_of_type_Int));
       if (paramAdapterView.b())
       {
         paramAdapterView.b = false;
-        if (this.jdField_a_of_type_Avvt != null)
+        if (this.jdField_a_of_type_Avvv != null)
         {
-          paramView = this.jdField_a_of_type_Avvt;
+          paramView = this.jdField_a_of_type_Avvv;
           paramInt = paramAdapterView.jdField_a_of_type_Int;
-          if (paramAdapterView.jdField_a_of_type_Avso != null) {
+          if (paramAdapterView.jdField_a_of_type_Avsq != null) {
             break label177;
           }
           paramAdapterView = null;
@@ -228,16 +228,16 @@ public class SubtitleProviderView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Avrp.notifyDataSetChanged();
+      this.jdField_a_of_type_Avrr.notifyDataSetChanged();
       return;
       label177:
-      paramAdapterView = paramAdapterView.jdField_a_of_type_Avso.f;
+      paramAdapterView = paramAdapterView.jdField_a_of_type_Avsq.f;
       break;
       paramAdapterView.b = true;
-      ahzh.a().a(paramAdapterView.c, paramAdapterView.jdField_a_of_type_Avso);
+      ahzf.a().a(paramAdapterView.c, paramAdapterView.jdField_a_of_type_Avsq);
       continue;
-      if (this.jdField_a_of_type_Avvt != null) {
-        this.jdField_a_of_type_Avvt.a(paramAdapterView.jdField_a_of_type_Int, null);
+      if (this.jdField_a_of_type_Avvv != null) {
+        this.jdField_a_of_type_Avvv.a(paramAdapterView.jdField_a_of_type_Int, null);
       }
     }
   }

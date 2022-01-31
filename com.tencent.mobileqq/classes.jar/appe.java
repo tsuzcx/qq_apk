@@ -1,14 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class appe
-  implements View.OnClickListener
+  implements apkl
 {
-  appe(appd paramappd) {}
+  appe(appb paramappb) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    appd.a(this.a);
+    this.a.a(paramInt);
   }
 }
 

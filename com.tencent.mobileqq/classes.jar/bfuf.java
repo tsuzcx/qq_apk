@@ -1,25 +1,18 @@
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.image.URLDrawable;
+import android.database.DataSetObserver;
 
-public class bfuf
+class bfuf
+  extends DataSetObserver
 {
-  public float a;
-  public int a;
-  public BitmapDrawable a;
-  public URLDrawable a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  bfuf(bfue parambfue) {}
   
-  public bfuf() {}
-  
-  public bfuf(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public void onChanged()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramInt2;
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.notifyDataSetInvalidated();
   }
 }
 

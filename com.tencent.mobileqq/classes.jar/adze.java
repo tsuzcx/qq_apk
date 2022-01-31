@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class adze
-  implements DialogInterface.OnClickListener
+public class adze
+  extends acuj
 {
-  adze(adzc paramadzc, MessageForShakeWindow paramMessageForShakeWindow) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    aaod.a(this.jdField_a_of_type_Adzc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adzc.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adzc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
-  }
+  public adze(adza paramadza) {}
 }
 
 

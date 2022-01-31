@@ -1,20 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class nxm
-  extends qvc
+  extends osm
 {
-  public nxm(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public nxm(ReadinjoyJumpActivity paramReadinjoyJumpActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void a(String paramString)
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
-    }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+    super.a(paramString);
+    QLog.d("ReadinjoyJumpActivity", 1, "webCallback : " + paramString);
+    ThreadManager.getUIHandler().post(new ReadinjoyJumpActivity.2.1(this));
+  }
+  
+  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
+  {
+    QLog.d("ReadinjoyJumpActivity", 1, "68b resp, succ : " + paramBoolean + ", ids : " + paramList + ", articles : " + paramList1);
+    if ((paramList == null) || (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a))))) {}
+    do
+    {
       return;
+      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
+    } while ((ReadinjoyJumpActivity.a(this.a)) || (ReadinjoyJumpActivity.b(this.a)));
+    if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
+    {
+      int i = 0;
+      while (i < paramList1.size())
+      {
+        paramList = (ArticleInfo)paramList1.get(i);
+        if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
+        {
+          ReadinjoyJumpActivity.a(this.a, paramList);
+          if ((onq.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (onh.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a))))
+          {
+            paramList = osg.a().a();
+            if (paramList != null)
+            {
+              paramList.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, ReadinjoyJumpActivity.a(this.a).innerUniqueID, ReadinjoyJumpActivity.a(this.a).publishUin + "", 1, this.a);
+              return;
+            }
+          }
+          ReadinjoyJumpActivity.b(this.a);
+          return;
+        }
+        i += 1;
+      }
     }
-    ReadInJoyVideoSubChannelActivity.a(this.a).c();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    ReadinjoyJumpActivity.a(this.a);
   }
 }
 

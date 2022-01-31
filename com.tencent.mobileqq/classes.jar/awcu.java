@@ -1,6 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class awcu
@@ -10,9 +11,9 @@ public class awcu
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    SignTextEditFragment.a(this.a, "");
     paramDialogInterface.dismiss();
-    this.a.a.clear();
-    SignTextEditFragment.a(this.a);
+    this.a.b.obtainMessage(6, null).sendToTarget();
   }
 }
 

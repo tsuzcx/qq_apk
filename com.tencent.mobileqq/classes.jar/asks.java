@@ -1,746 +1,1053 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
+import com.tencent.mobileqq.model.TroopInfoManager.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Observable;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.ConfirmQrReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.ConfirmQrRsp;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.GetQrReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.GetQrRsp;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.QueryStateReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.QueryStateRsp;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.RejectQrReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.ReqBody;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.RspBody;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.UserData;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.VerifyTokenReq;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetDecryptKeyReq;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetDecryptKeyRsp;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetEncrptkeyReq;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetEncryptKeyRsp;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.ReqBody;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.manager.Manager;
 
 public class asks
-  extends ajtd
+  extends Observable
+  implements Manager
 {
+  protected LruCache<String, String> a;
+  protected aukp a;
+  protected QQAppInterface a;
+  private HashMap<String, Long> a;
+  protected ConcurrentHashMap<Long, TroopAppInfo> a;
+  protected boolean a;
+  protected ConcurrentHashMap<String, ArrayList<Long>> b;
+  public boolean b;
+  protected ConcurrentHashMap<String, List<TroopMessageNavigateInfo>> c;
+  private boolean c;
+  protected ConcurrentHashMap<Long, azpc> d;
+  private boolean d;
+  protected ConcurrentHashMap<String, azml> e;
+  
+  /* Error */
   public asks(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 29	java/util/Observable:<init>	()V
+    //   4: aload_0
+    //   5: new 31	java/util/HashMap
+    //   8: dup
+    //   9: invokespecial 32	java/util/HashMap:<init>	()V
+    //   12: putfield 34	asks:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   15: aload_0
+    //   16: new 36	java/util/concurrent/ConcurrentHashMap
+    //   19: dup
+    //   20: invokespecial 37	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   23: putfield 39	asks:e	Ljava/util/concurrent/ConcurrentHashMap;
+    //   26: aload_0
+    //   27: aload_1
+    //   28: putfield 41	asks:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   31: aload_0
+    //   32: aload_1
+    //   33: invokevirtual 47	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Laukq;
+    //   36: invokevirtual 53	aukq:createEntityManager	()Laukp;
+    //   39: putfield 55	asks:jdField_a_of_type_Aukp	Laukp;
+    //   42: aload_0
+    //   43: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   46: ifnonnull +25 -> 71
+    //   49: aload_0
+    //   50: monitorenter
+    //   51: aload_0
+    //   52: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   55: ifnonnull +14 -> 69
+    //   58: aload_0
+    //   59: new 36	java/util/concurrent/ConcurrentHashMap
+    //   62: dup
+    //   63: invokespecial 37	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   66: putfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_0
+    //   72: getfield 59	asks:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   75: ifnonnull +25 -> 100
+    //   78: aload_0
+    //   79: monitorenter
+    //   80: aload_0
+    //   81: getfield 59	asks:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   84: ifnonnull +14 -> 98
+    //   87: aload_0
+    //   88: new 36	java/util/concurrent/ConcurrentHashMap
+    //   91: dup
+    //   92: invokespecial 37	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   95: putfield 59	asks:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: aload_0
+    //   101: getfield 61	asks:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   104: ifnonnull +25 -> 129
+    //   107: aload_0
+    //   108: monitorenter
+    //   109: aload_0
+    //   110: getfield 61	asks:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   113: ifnonnull +14 -> 127
+    //   116: aload_0
+    //   117: new 36	java/util/concurrent/ConcurrentHashMap
+    //   120: dup
+    //   121: invokespecial 37	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   124: putfield 61	asks:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   127: aload_0
+    //   128: monitorexit
+    //   129: aload_0
+    //   130: getfield 63	asks:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   133: ifnonnull +27 -> 160
+    //   136: aload_0
+    //   137: monitorenter
+    //   138: aload_0
+    //   139: getfield 63	asks:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   142: ifnonnull +16 -> 158
+    //   145: aload_0
+    //   146: new 65	android/support/v4/util/LruCache
+    //   149: dup
+    //   150: bipush 10
+    //   152: invokespecial 68	android/support/v4/util/LruCache:<init>	(I)V
+    //   155: putfield 63	asks:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   158: aload_0
+    //   159: monitorexit
+    //   160: aload_0
+    //   161: invokevirtual 70	asks:b	()V
+    //   164: return
+    //   165: astore_1
+    //   166: aload_0
+    //   167: monitorexit
+    //   168: aload_1
+    //   169: athrow
+    //   170: astore_1
+    //   171: aload_0
+    //   172: monitorexit
+    //   173: aload_1
+    //   174: athrow
+    //   175: astore_1
+    //   176: aload_0
+    //   177: monitorexit
+    //   178: aload_1
+    //   179: athrow
+    //   180: astore_1
+    //   181: aload_0
+    //   182: monitorexit
+    //   183: aload_1
+    //   184: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	185	0	this	asks
+    //   0	185	1	paramQQAppInterface	QQAppInterface
+    // Exception table:
+    //   from	to	target	type
+    //   51	69	165	finally
+    //   69	71	165	finally
+    //   166	168	165	finally
+    //   80	98	170	finally
+    //   98	100	170	finally
+    //   171	173	170	finally
+    //   109	127	175	finally
+    //   127	129	175	finally
+    //   176	178	175	finally
+    //   138	158	180	finally
+    //   158	160	180	finally
+    //   181	183	180	finally
   }
   
-  private void a(String paramString, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  /* Error */
+  private void a(String paramString)
   {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 78	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifne +16 -> 22
+    //   9: aload_0
+    //   10: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   13: aload_1
+    //   14: invokevirtual 82	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   17: istore_2
+    //   18: iload_2
+    //   19: ifne +6 -> 25
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: return
+    //   25: aload_0
+    //   26: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   29: aload_1
+    //   30: invokevirtual 86	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   33: checkcast 88	java/util/List
+    //   36: new 90	askt
+    //   39: dup
+    //   40: invokespecial 91	askt:<init>	()V
+    //   43: invokestatic 97	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   46: goto -24 -> 22
+    //   49: astore_1
+    //   50: aload_0
+    //   51: monitorexit
+    //   52: aload_1
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	54	0	this	asks
+    //   0	54	1	paramString	String
+    //   17	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	18	49	finally
+    //   25	46	49	finally
+  }
+  
+  private void c()
+  {
+    for (;;)
     {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetDecryptKeyReq result=" + j);
-          i = j;
-        }
-      }
-    }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcde.RspBody();
-    }
-    while (!QLog.isColorLevel()) {
       try
       {
-        Object localObject;
-        paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-        if (paramOIDBSSOPkg.get_decrypt_key_rsp.has())
+        if (!this.jdField_a_of_type_Boolean) {
+          a();
+        }
+        i = 0;
+        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+        if (localIterator1.hasNext())
         {
-          localObject = (oidb_cmd0xcde.GetDecryptKeyRsp)paramOIDBSSOPkg.get_decrypt_key_rsp.get();
-          if (((oidb_cmd0xcde.GetDecryptKeyRsp)localObject).dncrypt_key.has())
+          Map.Entry localEntry = (Map.Entry)localIterator1.next();
+          Object localObject2 = localEntry.getValue();
+          if ((localObject2 instanceof List))
           {
-            localObject = ((oidb_cmd0xcde.GetDecryptKeyRsp)localObject).dncrypt_key.get().toStringUtf8();
-            asle.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("MsgBackup.MsgBackupAuthHandler", 4, "GetDecryptKeyReq decryptKey=" + (String)localObject + "encrytKey = " + paramOIDBSSOPkg.get_encrypt_key_rsp);
+            localObject2 = (List)localObject2;
+            Iterator localIterator2 = ((List)localObject2).iterator();
+            if (localIterator2.hasNext())
+            {
+              TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localIterator2.next();
+              if (localTroopMessageNavigateInfo == null) {
+                continue;
+              }
+              if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD)
+              {
+                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 3, null);
+                i = 1;
+                continue;
+              }
+              if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_MODIFY)
+              {
+                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 4, null);
+                i = 1;
+                continue;
+              }
+              if (localTroopMessageNavigateInfo.status != TroopMessageNavigateInfo.STATUS_DELETE) {
+                continue;
+              }
+              localIterator2.remove();
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 5, null);
+              i = 1;
+              continue;
             }
+            j = i;
+            if (!((List)localObject2).isEmpty()) {
+              break label294;
+            }
+            this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEntry.getKey());
+            j = i;
+            break label294;
           }
         }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
+        else
         {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-        }
-      }
-    }
-    QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetDecryptKeyReq error ");
-  }
-  
-  private void a(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processRejectQrRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if (i == 0)
-    {
-      notifyUI(5, true, null);
-      return;
-    }
-    notifyUI(5, false, null);
-  }
-  
-  private void b(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processQueryStateRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    Object localObject;
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcdd.RspBody();
-    }
-    try
-    {
-      paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-      if (paramOIDBSSOPkg.query_state_rsp.has())
-      {
-        localObject = new aslz();
-        paramOIDBSSOPkg = (oidb_cmd0xcdd.QueryStateRsp)paramOIDBSSOPkg.query_state_rsp.get();
-        if (paramOIDBSSOPkg.state.has())
-        {
-          i = paramOIDBSSOPkg.state.get();
-          ((aslz)localObject).a(i);
-          if (i == 2)
-          {
-            if (paramOIDBSSOPkg.token.has()) {
-              ((aslz)localObject).a(paramOIDBSSOPkg.token.get().toStringUtf8());
-            }
-            if (paramOIDBSSOPkg.encrypt_key.has()) {
-              ((aslz)localObject).b(paramOIDBSSOPkg.encrypt_key.get().toStringUtf8());
-            }
-            if (paramOIDBSSOPkg.user_data.has()) {
-              ((aslz)localObject).a(a((oidb_cmd0xcdd.UserData)paramOIDBSSOPkg.user_data.get()));
-            }
-            if (paramOIDBSSOPkg.biz_type.has()) {
-              ((aslz)localObject).b(paramOIDBSSOPkg.biz_type.get());
-            }
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f();
           }
+          return;
         }
-        notifyUI(4, true, ((aslz)localObject).a());
-        return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-      }
-      notifyUI(4, false, null);
+      finally {}
+      int j = i;
+      label294:
+      int i = j;
     }
   }
   
-  private void c(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  /* Error */
+  public int a(String paramString)
   {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processVerifyTokenRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if (i == 0)
-    {
-      notifyUI(3, true, null);
-      return;
-    }
-    notifyUI(3, false, null);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 99	asks:jdField_a_of_type_Boolean	Z
+    //   6: ifne +7 -> 13
+    //   9: aload_0
+    //   10: invokevirtual 101	asks:a	()V
+    //   13: aload_0
+    //   14: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   17: ifnull +102 -> 119
+    //   20: aload_0
+    //   21: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   24: aload_1
+    //   25: invokevirtual 82	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   28: ifeq +91 -> 119
+    //   31: aload_0
+    //   32: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   35: aload_1
+    //   36: invokevirtual 86	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: checkcast 88	java/util/List
+    //   42: astore_1
+    //   43: aload_1
+    //   44: ifnull +16 -> 60
+    //   47: aload_1
+    //   48: invokeinterface 163 1 0
+    //   53: istore 4
+    //   55: iload 4
+    //   57: ifeq +9 -> 66
+    //   60: iconst_m1
+    //   61: istore_2
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: iload_2
+    //   65: ireturn
+    //   66: aload_1
+    //   67: invokeinterface 176 1 0
+    //   72: istore_3
+    //   73: iconst_0
+    //   74: istore_2
+    //   75: iload_2
+    //   76: iload_3
+    //   77: if_icmpge +42 -> 119
+    //   80: aload_1
+    //   81: iload_2
+    //   82: invokeinterface 179 2 0
+    //   87: checkcast 129	com/tencent/mobileqq/data/TroopMessageNavigateInfo
+    //   90: astore 5
+    //   92: aload 5
+    //   94: getfield 133	com/tencent/mobileqq/data/TroopMessageNavigateInfo:status	I
+    //   97: getstatic 158	com/tencent/mobileqq/data/TroopMessageNavigateInfo:STATUS_DELETE	I
+    //   100: if_icmpne +10 -> 110
+    //   103: iload_2
+    //   104: iconst_1
+    //   105: iadd
+    //   106: istore_2
+    //   107: goto -32 -> 75
+    //   110: aload 5
+    //   112: getfield 182	com/tencent/mobileqq/data/TroopMessageNavigateInfo:type	I
+    //   115: istore_2
+    //   116: goto -54 -> 62
+    //   119: iconst_m1
+    //   120: istore_2
+    //   121: goto -59 -> 62
+    //   124: astore_1
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: aload_1
+    //   128: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	129	0	this	asks
+    //   0	129	1	paramString	String
+    //   61	60	2	i	int
+    //   72	6	3	j	int
+    //   53	3	4	bool	boolean
+    //   90	21	5	localTroopMessageNavigateInfo	TroopMessageNavigateInfo
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	124	finally
+    //   13	43	124	finally
+    //   47	55	124	finally
+    //   66	73	124	finally
+    //   80	103	124	finally
+    //   110	116	124	finally
   }
   
-  private void d(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  /* Error */
+  public long a(String paramString)
   {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 34	asks:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   6: aload_1
+    //   7: invokevirtual 184	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   10: ifeq +22 -> 32
+    //   13: aload_0
+    //   14: getfield 34	asks:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   17: aload_1
+    //   18: invokevirtual 185	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   21: checkcast 187	java/lang/Long
+    //   24: invokevirtual 191	java/lang/Long:longValue	()J
+    //   27: lstore_2
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: lload_2
+    //   31: lreturn
+    //   32: ldc2_w 192
+    //   35: lstore_2
+    //   36: goto -8 -> 28
+    //   39: astore_1
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: aload_1
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	44	0	this	asks
+    //   0	44	1	paramString	String
+    //   27	9	2	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   2	28	39	finally
+  }
+  
+  public azml a(String paramString)
+  {
+    return (azml)this.e.get(paramString);
+  }
+  
+  public azml a(String paramString, azml paramazml)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInfoManager_At_Me_DISC", 2, "messageInfoMap: update__:" + paramString + " " + paramazml.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, paramString) + " " + paramazml.a() + " " + paramazml.b());
+    }
+    azml localazml2 = (azml)this.e.get(paramString);
+    azml localazml1 = localazml2;
+    if (paramazml != null)
     {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
+      if (paramazml.a()) {
+        break label105;
+      }
+      localazml1 = localazml2;
+    }
+    label105:
+    do
+    {
+      do
       {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp result=" + j);
-          i = j;
+        return localazml1;
+        if (localazml2 != null) {
+          break;
+        }
+        paramazml = new azml(paramazml);
+        this.e.put(paramString, paramazml);
+        localazml1 = paramazml;
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopInfoManager_At_Me_DISC", 2, "messageInfoMap: put:" + paramString);
+      return paramazml;
+      localazml2.a(paramazml);
+      localazml1 = localazml2;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopInfoManager_At_Me_DISC", 2, "messageInfoMap: update:" + paramString);
+    return localazml2;
+  }
+  
+  public azpc a(Long paramLong, boolean paramBoolean)
+  {
+    if (this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    }
+    azpc localazpc2 = (azpc)this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
+    azpc localazpc1 = localazpc2;
+    if (localazpc2 == null)
+    {
+      localazpc1 = localazpc2;
+      if (paramBoolean)
+      {
+        localazpc1 = new azpc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
+        this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramLong, localazpc1);
+      }
+    }
+    return localazpc1;
+  }
+  
+  /* Error */
+  public Object a(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 99	asks:jdField_a_of_type_Boolean	Z
+    //   6: ifne +7 -> 13
+    //   9: aload_0
+    //   10: invokevirtual 101	asks:a	()V
+    //   13: aload_0
+    //   14: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   17: ifnull +102 -> 119
+    //   20: aload_0
+    //   21: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   24: aload_1
+    //   25: invokevirtual 82	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   28: ifeq +91 -> 119
+    //   31: aload_0
+    //   32: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   35: aload_1
+    //   36: invokevirtual 86	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: checkcast 88	java/util/List
+    //   42: astore_1
+    //   43: aload_1
+    //   44: ifnull +16 -> 60
+    //   47: aload_1
+    //   48: invokeinterface 163 1 0
+    //   53: istore 4
+    //   55: iload 4
+    //   57: ifeq +9 -> 66
+    //   60: aconst_null
+    //   61: astore_1
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload_1
+    //   65: areturn
+    //   66: aload_1
+    //   67: invokeinterface 176 1 0
+    //   72: istore_3
+    //   73: iconst_0
+    //   74: istore_2
+    //   75: iload_2
+    //   76: iload_3
+    //   77: if_icmpge +42 -> 119
+    //   80: aload_1
+    //   81: iload_2
+    //   82: invokeinterface 179 2 0
+    //   87: checkcast 129	com/tencent/mobileqq/data/TroopMessageNavigateInfo
+    //   90: astore 5
+    //   92: aload 5
+    //   94: getfield 133	com/tencent/mobileqq/data/TroopMessageNavigateInfo:status	I
+    //   97: getstatic 158	com/tencent/mobileqq/data/TroopMessageNavigateInfo:STATUS_DELETE	I
+    //   100: if_icmpne +10 -> 110
+    //   103: iload_2
+    //   104: iconst_1
+    //   105: iadd
+    //   106: istore_2
+    //   107: goto -32 -> 75
+    //   110: aload 5
+    //   112: getfield 264	com/tencent/mobileqq/data/TroopMessageNavigateInfo:extObj	Ljava/lang/Object;
+    //   115: astore_1
+    //   116: goto -54 -> 62
+    //   119: aconst_null
+    //   120: astore_1
+    //   121: goto -59 -> 62
+    //   124: astore_1
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: aload_1
+    //   128: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	129	0	this	asks
+    //   0	129	1	paramString	String
+    //   74	33	2	i	int
+    //   72	6	3	j	int
+    //   53	3	4	bool	boolean
+    //   90	21	5	localTroopMessageNavigateInfo	TroopMessageNavigateInfo
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	124	finally
+    //   13	43	124	finally
+    //   47	55	124	finally
+    //   66	73	124	finally
+    //   80	103	124	finally
+    //   110	116	124	finally
+  }
+  
+  public ArrayList<Long> a(String paramString)
+  {
+    return (ArrayList)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public ArrayList<TroopAppInfo> a(ArrayList<Long> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        Object localObject = (Long)paramArrayList.next();
+        localObject = (TroopAppInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+        if (localObject != null) {
+          localArrayList.add(localObject);
         }
       }
     }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
+    return localArrayList;
+  }
+  
+  public List<Long> a(String paramString, int paramInt)
+  {
+    for (;;)
     {
-      localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcde.RspBody();
-    }
-    while (!QLog.isColorLevel()) {
+      ArrayList localArrayList;
+      StringBuilder localStringBuilder;
+      int i;
       try
       {
-        Object localObject;
-        paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-        if (paramOIDBSSOPkg.get_encrypt_key_rsp.has())
+        localArrayList = new ArrayList();
+        if (!this.jdField_a_of_type_Boolean) {
+          a();
+        }
+        localStringBuilder = new StringBuilder("getMultiNatigateSeqList, troopUin:");
+        localStringBuilder.append(paramString).append("| type:").append(paramInt).append("| seqList:");
+        if ((this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)))
         {
-          paramOIDBSSOPkg = (oidb_cmd0xcde.GetEncryptKeyRsp)paramOIDBSSOPkg.get_encrypt_key_rsp.get();
-          if (paramOIDBSSOPkg.encrypt_key.has())
+          paramString = (List)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          if (paramString != null)
           {
-            localObject = paramOIDBSSOPkg.encrypt_key.get().toStringUtf8();
-            asle.b = (String)localObject;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("MsgBackup.MsgBackupAuthHandler", 4, "GetEncryptKeyRsp encryptKey=" + (String)localObject);
-            }
+            boolean bool = paramString.isEmpty();
+            if (!bool) {}
           }
-          if (paramOIDBSSOPkg.file_meta.has())
+          else
           {
-            paramOIDBSSOPkg = paramOIDBSSOPkg.file_meta.get().toStringUtf8();
-            asle.jdField_a_of_type_JavaLangString = paramOIDBSSOPkg;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("MsgBackup.MsgBackupAuthHandler", 4, "GetEncryptKeyRsp fileMeta=" + paramOIDBSSOPkg);
+            paramString = null;
+            return paramString;
+          }
+          int j = paramString.size();
+          i = 0;
+          if (i < j)
+          {
+            TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)paramString.get(i);
+            if ((localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_DELETE) || (localTroopMessageNavigateInfo.type != paramInt)) {
+              break label226;
             }
+            localArrayList.add(Long.valueOf(localTroopMessageNavigateInfo.msgseq));
+            localStringBuilder.append(localTroopMessageNavigateInfo.msgseq).append(",");
           }
         }
-        return;
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        }
+      finally {}
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInfoManager.troop.special_msg.special_attention", 2, localStringBuilder.toString());
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-        }
-      }
+      paramString = localArrayList;
+      continue;
+      label226:
+      i += 1;
     }
-    QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp error ");
-  }
-  
-  private void e(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processConfirmQrRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      Object localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcdd.RspBody();
-      try
-      {
-        paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-        if (paramOIDBSSOPkg.confirm_qr_rsp.has())
-        {
-          localObject = new aslp();
-          paramOIDBSSOPkg = (oidb_cmd0xcdd.ConfirmQrRsp)paramOIDBSSOPkg.confirm_qr_rsp.get();
-          if (paramOIDBSSOPkg.token.has()) {
-            ((aslp)localObject).a(paramOIDBSSOPkg.token.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.encrypt_key.has()) {
-            ((aslp)localObject).b(paramOIDBSSOPkg.encrypt_key.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.user_data.has()) {
-            ((aslp)localObject).a(a((oidb_cmd0xcdd.UserData)paramOIDBSSOPkg.user_data.get()));
-          }
-          if (paramOIDBSSOPkg.biz_type.has()) {
-            ((aslp)localObject).a(paramOIDBSSOPkg.biz_type.get());
-          }
-          paramOIDBSSOPkg = ((aslp)localObject).a();
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "processGetQrRsp getQrResponse= " + paramOIDBSSOPkg);
-          }
-          asoe.a();
-          asoe.a.a = true;
-          asoe.a.c = 0;
-          notifyUI(2, true, paramOIDBSSOPkg);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-        }
-      }
-    }
-    asoe.a();
-    asoe.a.a = false;
-    asoe.a.c = i;
-    notifyUI(2, false, Integer.valueOf(i));
-  }
-  
-  private void f(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processGetQrRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      Object localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcdd.RspBody();
-      try
-      {
-        paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-        if (paramOIDBSSOPkg.get_qr_rsp.has())
-        {
-          localObject = new aslt();
-          paramOIDBSSOPkg = (oidb_cmd0xcdd.GetQrRsp)paramOIDBSSOPkg.get_qr_rsp.get();
-          if (paramOIDBSSOPkg.qr_sig.has()) {
-            ((aslt)localObject).a(paramOIDBSSOPkg.qr_sig.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.token.has()) {
-            ((aslt)localObject).b(paramOIDBSSOPkg.token.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.encrypt_key.has()) {
-            ((aslt)localObject).c(paramOIDBSSOPkg.encrypt_key.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.user_data.has()) {
-            ((aslt)localObject).a(a((oidb_cmd0xcdd.UserData)paramOIDBSSOPkg.user_data.get()));
-          }
-          if (paramOIDBSSOPkg.biz_type.has()) {
-            ((aslt)localObject).a(paramOIDBSSOPkg.biz_type.get());
-          }
-          paramOIDBSSOPkg = ((aslt)localObject).a();
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "processGetQrRsp getQrResponse= " + paramOIDBSSOPkg);
-          }
-          asoe.a();
-          asoe.a.a = true;
-          asoe.a.c = 0;
-          notifyUI(1, true, paramOIDBSSOPkg);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-        }
-      }
-    }
-    asoe.a();
-    asoe.a.a = false;
-    asoe.a.c = i;
-    notifyUI(1, false, Integer.valueOf(i));
-  }
-  
-  public MsgBackupUserData a(oidb_cmd0xcdd.UserData paramUserData)
-  {
-    asmd localasmd = new asmd();
-    if (paramUserData.ip.has()) {
-      localasmd.a(paramUserData.ip.get().toStringUtf8());
-    }
-    if (paramUserData.port.has()) {
-      localasmd.a(paramUserData.port.get());
-    }
-    if (paramUserData.ssid.has()) {
-      localasmd.b(paramUserData.ssid.get().toStringUtf8());
-    }
-    if (paramUserData.bssid.has()) {
-      localasmd.c(paramUserData.bssid.get().toStringUtf8());
-    }
-    return localasmd.a();
   }
   
   public void a()
   {
-    Object localObject1 = new oidb_cmd0xcde.ReqBody();
-    Object localObject2 = new oidb_cmd0xcde.GetEncrptkeyReq();
-    ((oidb_cmd0xcde.ReqBody)localObject1).get_encrypt_key_req.set((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3294);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcde.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0xcde");
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(MsgBackupUserData paramMsgBackupUserData, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "getQrRequest called: userdata = " + paramMsgBackupUserData + ", ispush = " + paramBoolean);
-    }
-    oidb_cmd0xcdd.ReqBody localReqBody = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.GetQrReq localGetQrReq = new oidb_cmd0xcdd.GetQrReq();
-    localGetQrReq.push.set(paramBoolean);
-    oidb_cmd0xcdd.UserData localUserData = new oidb_cmd0xcdd.UserData();
-    localUserData.ip.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.a()));
-    localUserData.port.set(paramMsgBackupUserData.a());
-    Object localObject = paramMsgBackupUserData.b();
-    PBBytesField localPBBytesField = localUserData.ssid;
-    if (localObject != null)
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localObject = paramMsgBackupUserData.c();
-      localPBBytesField = localUserData.bssid;
-      if (localObject == null) {
-        break label297;
-      }
-    }
     for (;;)
     {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localUserData.platform.set(paramMsgBackupUserData.a());
-      localGetQrReq.user_data.set(localUserData);
-      localGetQrReq.biz_type.set(paramInt);
-      localReqBody.get_qr_req.set(localGetQrReq);
-      paramMsgBackupUserData = new oidb_sso.OIDBSSOPkg();
-      paramMsgBackupUserData.uint32_command.set(3293);
-      paramMsgBackupUserData.uint32_result.set(0);
-      paramMsgBackupUserData.uint32_service_type.set(1);
-      paramMsgBackupUserData.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-      localObject = createToServiceMsg("OidbSvc.0xcdd");
-      ((ToServiceMsg)localObject).putWupBuffer(paramMsgBackupUserData.toByteArray());
-      ((ToServiceMsg)localObject).addAttribute("MsgBackup_request_type", Integer.valueOf(1));
-      sendPbReq((ToServiceMsg)localObject);
+      TroopMessageNavigateInfo localTroopMessageNavigateInfo;
+      Object localObject4;
+      try
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (bool == true) {
+          return;
+        }
+        Object localObject1 = (ArrayList)this.jdField_a_of_type_Aukp.a(TroopMessageNavigateInfo.class, false, null, null, null, null, null, null);
+        if (localObject1 == null) {
+          break label229;
+        }
+        Iterator localIterator = ((ArrayList)localObject1).iterator();
+        if (!localIterator.hasNext()) {
+          break label229;
+        }
+        localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localIterator.next();
+        if ((localTroopMessageNavigateInfo == null) || (TextUtils.isEmpty(localTroopMessageNavigateInfo.troopCode))) {
+          continue;
+        }
+        localObject4 = (List)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(localTroopMessageNavigateInfo.troopCode);
+        if (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localTroopMessageNavigateInfo.troopCode))
+        {
+          localObject1 = ((List)localObject4).iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject4 = (TroopMessageNavigateInfo)((Iterator)localObject1).next();
+            if ((localObject4 == null) || (((TroopMessageNavigateInfo)localObject4).status != TroopMessageNavigateInfo.STATUS_ADD)) {
+              continue;
+            }
+            ((TroopMessageNavigateInfo)localObject4).status = TroopMessageNavigateInfo.STATUS_MODIFY;
+            continue;
+          }
+          continue;
+        }
+        localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_NORMAL;
+      }
+      finally {}
+      Object localObject3 = localObject4;
+      if (localObject4 == null) {
+        localObject3 = new ArrayList();
+      }
+      ((List)localObject3).add(localTroopMessageNavigateInfo);
+      a(localTroopMessageNavigateInfo.troopCode);
+      this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(localTroopMessageNavigateInfo.troopCode, localObject3);
+      continue;
+      label229:
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext = paramString2;
+    if (!TextUtils.isEmpty(paramString1)) {
+      paramContext = paramString2 + "_" + paramString1;
+    }
+    localEditor.putBoolean(paramContext, paramBoolean);
+    localEditor.commit();
+  }
+  
+  public void a(Long paramLong)
+  {
+    if (this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
       return;
-      localObject = "";
-      break;
-      label297:
-      localObject = "";
     }
+    this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramLong);
   }
   
-  public void a(MsgBackupUserData paramMsgBackupUserData, String paramString, int paramInt)
+  public void a(Long paramLong, TroopAppInfo paramTroopAppInfo)
   {
-    oidb_cmd0xcdd.ReqBody localReqBody = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.ConfirmQrReq localConfirmQrReq = new oidb_cmd0xcdd.ConfirmQrReq();
-    localConfirmQrReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
-    paramString = new oidb_cmd0xcdd.UserData();
-    paramString.ip.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.a()));
-    paramString.port.set(paramMsgBackupUserData.a());
-    if (paramMsgBackupUserData.b() != null) {
-      paramString.ssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.b()));
-    }
-    if (paramMsgBackupUserData.c() != null) {
-      paramString.bssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.c()));
-    }
-    paramString.platform.set(paramMsgBackupUserData.a());
-    localConfirmQrReq.user_data.set(paramString);
-    localConfirmQrReq.biz_type.set(paramInt);
-    localReqBody.confirm_qr_req.set(localConfirmQrReq);
-    paramMsgBackupUserData = new oidb_sso.OIDBSSOPkg();
-    paramMsgBackupUserData.uint32_command.set(3293);
-    paramMsgBackupUserData.uint32_result.set(0);
-    paramMsgBackupUserData.uint32_service_type.set(2);
-    paramMsgBackupUserData.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    paramString = createToServiceMsg("OidbSvc.0xcdd");
-    paramString.putWupBuffer(paramMsgBackupUserData.toByteArray());
-    sendPbReq(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.VerifyTokenReq localVerifyTokenReq = new oidb_cmd0xcdd.VerifyTokenReq();
-    localVerifyTokenReq.token.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_cmd0xcdd.ReqBody)localObject).verify_token_req.set(localVerifyTokenReq);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(3293);
-    paramString.uint32_result.set(0);
-    paramString.uint32_service_type.set(3);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcdd.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xcdd");
-    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramLong, paramTroopAppInfo);
   }
   
   public void a(String paramString, int paramInt)
   {
-    Object localObject = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.RejectQrReq localRejectQrReq = new oidb_cmd0xcdd.RejectQrReq();
-    localRejectQrReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
-    localRejectQrReq.biz_type.set(paramInt);
-    ((oidb_cmd0xcdd.ReqBody)localObject).reject_qr_req.set(localRejectQrReq);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(3293);
-    paramString.uint32_result.set(0);
-    paramString.uint32_service_type.set(5);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcdd.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xcdd");
-    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void b(String paramString)
-  {
-    Object localObject1 = new oidb_cmd0xcde.ReqBody();
-    Object localObject2 = new oidb_cmd0xcde.GetDecryptKeyReq();
-    ((oidb_cmd0xcde.GetDecryptKeyReq)localObject2).file_meta.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_cmd0xcde.ReqBody)localObject1).get_decrypt_key_req.set((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3294);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(2);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcde.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0xcde");
-    ((ToServiceMsg)localObject1).extraData.putString("req_key_file_meta", paramString);
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).setTimeout(15000L);
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void c(String paramString)
-  {
-    Object localObject = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.QueryStateReq localQueryStateReq = new oidb_cmd0xcdd.QueryStateReq();
-    localQueryStateReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_cmd0xcdd.ReqBody)localObject).query_state_req.set(localQueryStateReq);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(3293);
-    paramString.uint32_result.set(0);
-    paramString.uint32_service_type.set(4);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcdd.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xcdd");
-    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    for (;;)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0xcdd");
-      this.allowCmdSet.add("OidbSvc.0xcde");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return asku.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "MsgBackupAuthHandler cmd=" + paramFromServiceMsg.getServiceCmd() + ", isSuccess = " + paramFromServiceMsg.isSuccess() + ", resultcode = " + paramFromServiceMsg.getResultCode());
-    }
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+      List localList;
+      int i;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopInfoManager.troop.special_msg", 2, "clearTroopMsgNavigateInfo, troopCode:" + paramString + "|type:" + paramInt);
+        }
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        if ((this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (!this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
+          continue;
+        }
+        localList = (List)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        if ((localList == null) || (localList.isEmpty())) {
+          continue;
+        }
+        i = localList.size() - 1;
+        if (i >= 0)
+        {
+          TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localList.get(i);
+          if ((paramInt != localTroopMessageNavigateInfo.type) && (paramInt != 0)) {
+            break label206;
+          }
+          if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD) {
+            localList.remove(i);
+          } else {
+            localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_DELETE;
+          }
+        }
+      }
+      finally {}
+      if (localList.isEmpty())
+      {
+        this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+        continue;
+        label206:
+        i -= 1;
       }
     }
-    label107:
-    do
+  }
+  
+  public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, Object paramObject)
+  {
+    if (paramInt1 <= 0) {}
+    TroopMessageNavigateInfo localTroopMessageNavigateInfo;
+    List localList;
+    for (;;)
     {
-      int i;
-      do
+      return;
+      try
       {
-        do
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopInfoManager", 2, "addTroopMsgNavigateInfo,type:" + paramInt1 + "|seq:" + paramLong + "|summary:" + paramString2 + "|troopCode:" + paramString1);
+        }
+        localTroopMessageNavigateInfo = new TroopMessageNavigateInfo();
+        localTroopMessageNavigateInfo.type = paramInt1;
+        localTroopMessageNavigateInfo.troopCode = paramString1;
+        localTroopMessageNavigateInfo.msgseq = paramLong;
+        localTroopMessageNavigateInfo.summary = paramString2;
+        localTroopMessageNavigateInfo.extObj = paramObject;
+        if (!this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1)) {
+          break label433;
+        }
+        paramObject = null;
+        localList = (List)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+        if ((localList == null) || (localList.size() == 0)) {
+          break label433;
+        }
+        if ((paramInt1 != 17) && (paramInt1 != 100) && (paramInt1 != 23) && (paramInt1 != 11)) {
+          break label499;
+        }
+        paramString2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        if (paramString2 == null) {}
+        for (paramString2 = null;; paramString2 = paramString2.b(paramString1))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label107;
-                break label107;
-                break label107;
-                break label107;
-                do
-                {
-                  return;
-                } while ((!"OidbSvc.0xcdd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"OidbSvc.0xcde".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())));
-                if (!paramFromServiceMsg.isSuccess()) {
-                  break label331;
-                }
-                oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-                try
-                {
-                  paramObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])paramObject);
-                  i = paramObject.uint32_service_type.get();
-                  if (!"OidbSvc.0xcdd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-                    break;
-                  }
-                  if (i == 1)
-                  {
-                    f(paramObject);
-                    return;
-                  }
-                }
-                catch (InvalidProtocolBufferMicroException paramObject)
-                {
-                  for (;;)
-                  {
-                    QLog.w("MsgBackup.MsgBackupAuthHandler", 4, paramObject.getMessage(), paramObject);
-                    paramObject = localOIDBSSOPkg;
-                  }
-                }
-                catch (Exception paramObject)
-                {
-                  for (;;)
-                  {
-                    QLog.w("MsgBackup.MsgBackupAuthHandler", 4, paramObject.getMessage(), paramObject);
-                    paramObject = localOIDBSSOPkg;
-                  }
-                  if (i == 2)
-                  {
-                    e(paramObject);
-                    return;
-                  }
-                  if (i == 3)
-                  {
-                    c(paramObject);
-                    return;
-                  }
-                  if (i == 4)
-                  {
-                    b(paramObject);
-                    return;
-                  }
-                }
-              } while (i != 5);
-              a(paramObject);
-              return;
-            } while (!"OidbSvc.0xcde".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-            if (i == 1)
-            {
-              d(paramObject);
-              return;
-            }
-          } while (i != 2);
-          a(paramToServiceMsg.extraData.getString("req_key_file_meta"), paramObject);
-          return;
-          paramToServiceMsg = paramToServiceMsg.getAttribute("MsgBackup_request_type");
-        } while (!(paramToServiceMsg instanceof Integer));
-        i = ((Integer)paramToServiceMsg).intValue();
-        if (!"OidbSvc.0xcdd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+          if ((paramString2 == null) || (!paramString2.hasOrgs())) {
+            break label499;
+          }
+          i = localList.size() - 1;
+          label226:
+          if (i < 0) {
+            break label499;
+          }
+          paramString2 = (TroopMessageNavigateInfo)localList.get(i);
+          if (paramInt1 == paramString2.type) {
+            break;
+          }
+          paramString2.status = TroopMessageNavigateInfo.STATUS_DELETE;
           break;
         }
-      } while (i != 1);
-      f(null);
+        label276:
+        localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_ADD;
+        label284:
+        localList.add(localTroopMessageNavigateInfo);
+        a(paramString1);
+      }
+      finally {}
+    }
+    label307:
+    int i = localList.size() - 1;
+    paramString2 = paramObject;
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        if (paramInt1 == ((TroopMessageNavigateInfo)localList.get(i)).type)
+        {
+          paramString2 = (TroopMessageNavigateInfo)localList.remove(i);
+          break label526;
+        }
+      }
+      else
+      {
+        if ((paramString2 == null) || (paramString2.status == TroopMessageNavigateInfo.STATUS_DELETE))
+        {
+          localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_ADD;
+          if (paramInt1 != 26) {
+            break label284;
+          }
+          localTroopMessageNavigateInfo.receivedFlowserCount = paramInt2;
+          break label284;
+        }
+        localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_MODIFY;
+        if (paramInt1 != 26) {
+          break label284;
+        }
+        paramString2.receivedFlowserCount += paramInt2;
+        break label284;
+        label433:
+        localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_ADD;
+        if (paramInt1 == 26) {
+          localTroopMessageNavigateInfo.receivedFlowserCount = paramInt2;
+        }
+        paramString2 = new ArrayList();
+        paramString2.add(localTroopMessageNavigateInfo);
+        this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
+        break;
+      }
+      break label526;
+      i -= 1;
+      break label226;
+      label499:
+      if ((paramInt1 == 17) || (paramInt1 == 100) || (paramInt1 == 10)) {
+        break label276;
+      }
+      if (paramInt1 != 11) {
+        break label307;
+      }
+      break label276;
+      label526:
+      i -= 1;
+    }
+  }
+  
+  public void a(String paramString, ArrayList<Long> paramArrayList)
+  {
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramArrayList);
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
       return;
-    } while (!"OidbSvc.0xcde".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-    label331:
+    }
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, bbco.encodeToString(paramArrayOfByte, 2));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public byte[] a(String paramString)
+  {
+    paramString = (String)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = bbco.decode(paramString, 0);
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  /* Error */
+  public long b(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 99	asks:jdField_a_of_type_Boolean	Z
+    //   6: ifne +7 -> 13
+    //   9: aload_0
+    //   10: invokevirtual 101	asks:a	()V
+    //   13: aload_0
+    //   14: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   17: ifnull +105 -> 122
+    //   20: aload_0
+    //   21: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   24: aload_1
+    //   25: invokevirtual 82	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   28: ifeq +94 -> 122
+    //   31: aload_0
+    //   32: getfield 57	asks:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   35: aload_1
+    //   36: invokevirtual 86	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: checkcast 88	java/util/List
+    //   42: astore_1
+    //   43: aload_1
+    //   44: ifnull +16 -> 60
+    //   47: aload_1
+    //   48: invokeinterface 163 1 0
+    //   53: istore 4
+    //   55: iload 4
+    //   57: ifeq +11 -> 68
+    //   60: lconst_0
+    //   61: lstore 5
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: lload 5
+    //   67: lreturn
+    //   68: aload_1
+    //   69: invokeinterface 176 1 0
+    //   74: istore_3
+    //   75: iconst_0
+    //   76: istore_2
+    //   77: iload_2
+    //   78: iload_3
+    //   79: if_icmpge +43 -> 122
+    //   82: aload_1
+    //   83: iload_2
+    //   84: invokeinterface 179 2 0
+    //   89: checkcast 129	com/tencent/mobileqq/data/TroopMessageNavigateInfo
+    //   92: astore 7
+    //   94: aload 7
+    //   96: getfield 133	com/tencent/mobileqq/data/TroopMessageNavigateInfo:status	I
+    //   99: getstatic 158	com/tencent/mobileqq/data/TroopMessageNavigateInfo:STATUS_DELETE	I
+    //   102: if_icmpne +10 -> 112
+    //   105: iload_2
+    //   106: iconst_1
+    //   107: iadd
+    //   108: istore_2
+    //   109: goto -32 -> 77
+    //   112: aload 7
+    //   114: getfield 291	com/tencent/mobileqq/data/TroopMessageNavigateInfo:msgseq	J
+    //   117: lstore 5
+    //   119: goto -56 -> 63
+    //   122: lconst_0
+    //   123: lstore 5
+    //   125: goto -62 -> 63
+    //   128: astore_1
+    //   129: aload_0
+    //   130: monitorexit
+    //   131: aload_1
+    //   132: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	133	0	this	asks
+    //   0	133	1	paramString	String
+    //   76	33	2	i	int
+    //   74	6	3	j	int
+    //   53	3	4	bool	boolean
+    //   61	63	5	l	long
+    //   92	21	7	localTroopMessageNavigateInfo	TroopMessageNavigateInfo
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	128	finally
+    //   13	43	128	finally
+    //   47	55	128	finally
+    //   68	75	128	finally
+    //   82	105	128	finally
+    //   112	119	128	finally
+  }
+  
+  public azml b(String paramString)
+  {
+    return (azml)this.e.remove(paramString);
+  }
+  
+  protected void b()
+  {
+    ThreadManager.post(new TroopInfoManager.1(this), 8, null, false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public void onDestroy()
+  {
+    c();
+    if (this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      Iterator localIterator = this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        azpc localazpc = (azpc)localIterator.next();
+        if (localazpc != null) {
+          localazpc.deleteObservers();
+        }
+      }
+      this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     asks
  * JD-Core Version:    0.7.0.1
  */

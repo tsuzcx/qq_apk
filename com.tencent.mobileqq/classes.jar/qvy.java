@@ -1,33 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 
 class qvy
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements Animation.AnimationListener
 {
-  qvy(qvw paramqvw) {}
+  qvy(qvx paramqvx) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (qvw.a(this.a) != null)
-    {
-      paramString2 = (String)qvw.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        qvw.a(this.a).a(paramString1, paramInt, paramString2);
-      }
-    }
+    qvx.a(this.a).startAnimation(qvx.a(this.a));
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    if (qvw.a(this.a) != null)
-    {
-      paramString2 = (String)qvw.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        qvw.a(this.a).a(paramString1, 1, paramString2);
-      }
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

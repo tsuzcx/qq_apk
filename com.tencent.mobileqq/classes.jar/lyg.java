@@ -1,13 +1,25 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class lyg
+class lyg
   implements DialogInterface.OnClickListener
 {
-  public lyg(AVSchema paramAVSchema) {}
+  lyg(lyf paramlyf, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Lyf.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Lyf.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lyf.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Lyf.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyh(this));
+  }
 }
 
 

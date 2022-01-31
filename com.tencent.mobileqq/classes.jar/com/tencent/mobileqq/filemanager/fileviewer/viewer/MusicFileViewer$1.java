@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
 import android.widget.TextView;
-import apqp;
-import apue;
+import apqt;
+import apug;
 
 public class MusicFileViewer$1
   implements Runnable
 {
-  public MusicFileViewer$1(apqp paramapqp, String paramString) {}
+  public MusicFileViewer$1(apqt paramapqt, String paramString) {}
   
   public void run()
   {
-    apqp.a(this.this$0).setText(apue.a(this.a, false, apqp.a(this.this$0).getMeasuredWidth(), apqp.a(this.this$0).getPaint(), 2));
+    apqt.a(this.this$0).setText(apug.a(this.a, false, apqt.a(this.this$0).getMeasuredWidth(), apqt.a(this.this$0).getPaint(), 2));
   }
 }
 

@@ -1,13 +1,39 @@
-class ntc
-  implements ree
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
+public class ntc
+  extends Handler
 {
-  ntc(ntb paramntb) {}
+  private WeakReference<nsy> a;
   
-  public void a(int paramInt)
+  public ntc(nsy paramnsy)
   {
-    if (this.a.jdField_a_of_type_Rhp != null) {
-      this.a.jdField_a_of_type_Rhp.a(paramInt, this.a.jdField_a_of_type_Int);
-    }
+    this.a = new WeakReference(paramnsy);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    nsy localnsy = (nsy)this.a.get();
+    if (localnsy == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          nsy.a(localnsy);
+          return;
+        }
+      } while (nsy.a(localnsy) == null);
+      nsy.a(localnsy).a(nsy.a(localnsy));
+      return;
+    } while (nsy.a(localnsy) == null);
+    nsy.a(localnsy).b();
   }
 }
 

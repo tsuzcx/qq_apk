@@ -1,16 +1,8 @@
-public class awtd
+public abstract interface awtd
 {
-  public int a;
+  public abstract void a(awtc paramawtc);
   
-  public awtd(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
+  public abstract void a(awtc paramawtc, String paramString1, String paramString2);
 }
 
 

@@ -1,49 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.mobileqq.widget.ProgressButton;
 
 class atrp
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  atrp(atqu paramatqu) {}
+  atrp(atqw paramatqw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 1)
+    switch (paramMessage.what)
     {
-      if (this.a.jdField_a_of_type_Atuk != null) {
-        this.a.jdField_a_of_type_Atuk.a(2);
-      }
-      if (atqu.a(this.a) != null)
-      {
-        if (!this.a.n) {
-          break label88;
-        }
-        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, atqu.a(this.a).uin, "", "yes", "android");
-      }
     }
-    label88:
     do
     {
       do
       {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699330);
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
         return;
-        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, atqu.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_Atuk != null) {
-        this.a.jdField_a_of_type_Atuk.a(10);
+      } while ((this.a.jdField_a_of_type_Atum == null) || (atqw.a(this.a) == null));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698941);
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698931);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (atqu.a(this.a) == null);
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, atqu.a(this.a).uin, "", "yes", "android");
+      this.a.jdField_a_of_type_Atum.a(atqw.a(this.a).uRoomid);
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, atqw.a(this.a).uin, "", "yes", "android");
+      return;
+      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131699327, 0).a();
+      return;
+    } while (this.a.jdField_a_of_type_Atum == null);
+    this.a.jdField_a_of_type_Atum.a();
   }
 }
 

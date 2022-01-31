@@ -1,92 +1,26 @@
-import android.os.Bundle;
-import appoint.define.appoint_define.PublisherInfo;
-import com.tencent.mobileqq.data.StrangerInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class atuf
-  extends mxm
+  implements View.OnClickListener
 {
-  public atuf(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public atuf(NearbyProfileFragment paramNearbyProfileFragment, xbs paramxbs) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_Xbs != null) {}
+    for (paramView = this.jdField_a_of_type_Xbs.b;; paramView = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
     {
-      paramBundle = new oidb_sso.OIDBSSOPkg();
-      try
-      {
-        paramArrayOfByte = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])paramArrayOfByte);
-        if (paramArrayOfByte != null)
-        {
-          paramInt = paramArrayOfByte.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result " + paramInt);
-          }
-        }
-        paramBundle = new Oidb_0x66b.RspBody();
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
-          paramArrayOfByte = new NearbyMyTabCard();
-          if (!paramBundle.rpt_msg_vistor_info.has()) {
-            break label307;
-          }
-          paramArrayOfByte.visitors.clear();
-          paramBundle = paramBundle.rpt_msg_vistor_info.get().iterator();
-          while (paramBundle.hasNext())
-          {
-            Object localObject = (appoint_define.PublisherInfo)paramBundle.next();
-            if (localObject != null)
-            {
-              localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
-              if (localObject != null) {
-                paramArrayOfByte.visitors.add(localObject);
-              }
-            }
-          }
-          paramArrayOfByte = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
-          paramArrayOfByte = paramBundle;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
-        }
-      }
-    }
-    else
-    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
+      axqy.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTab visitor info is: " + paramArrayOfByte.visitors.toString());
-    }
-    for (;;)
-    {
-      NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
-      return;
-      label307:
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
-      }
     }
   }
 }

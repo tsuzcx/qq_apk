@@ -1,50 +1,15 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Handler;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.1;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
 public class avaw
-  extends LayerDrawable
+  implements bble<Float>
 {
-  public avaw(int paramInt, Resources paramResources)
-  {
-    super(avax.a(paramInt, paramResources, a(paramResources)));
-  }
+  public avaw(VipTagView paramVipTagView) {}
   
-  public static Bitmap a(Resources paramResources)
+  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    Paint localPaint = new Paint();
-    localPaint.setColor(paramResources.getColor(2131166440));
-    Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
-    localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
-    paramResources = new Canvas(localBitmap);
-    paramResources.rotate(45.0F);
-    paramResources.translate(0.0F, -88.0F);
-    paramResources.drawRect(56, 56, 126, 126, localPaint);
-    paramResources.drawCircle(56, 91, 35, localPaint);
-    paramResources.drawCircle(91, 56, 35, localPaint);
-    return localBitmap;
-  }
-  
-  public void a(Handler paramHandler, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < getNumberOfLayers())
-    {
-      HeartRiseLayerDrawable.1 local1 = new HeartRiseLayerDrawable.1(this, i, paramInt1, paramInt2);
-      if (i % 2 == 0) {}
-      for (long l = i * 200;; l = i * 130)
-      {
-        paramHandler.postDelayed(local1, l);
-        i += 1;
-        break;
-      }
-    }
+    VipTagView.a(this.a, paramFloat1.floatValue());
+    this.a.invalidate();
   }
 }
 

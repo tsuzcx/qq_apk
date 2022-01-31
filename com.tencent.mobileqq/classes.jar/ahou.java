@@ -1,29 +1,101 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import mqq.manager.Manager;
 
-class ahou
-  implements bfoq
+public class ahou
+  implements Manager
 {
-  ahou(ahoq paramahoq, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bfol parambfol) {}
+  public static ahou a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void OnClick(View paramView, int paramInt)
+  public ahou()
   {
-    if (ahoq.a(this.jdField_a_of_type_Ahoq)) {
-      return;
-    }
-    ahoq.a(this.jdField_a_of_type_Ahoq, true);
-    switch (paramInt)
+    a();
+  }
+  
+  public static ahou a()
+  {
+    if (jdField_a_of_type_Ahou == null) {}
+    try
     {
+      if (jdField_a_of_type_Ahou == null) {
+        jdField_a_of_type_Ahou = new ahou();
+      }
+      return jdField_a_of_type_Ahou;
     }
+    finally {}
+  }
+  
+  private void a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = bbkb.s(localQQAppInterface.getApp(), localQQAppInterface.c());
+      this.jdField_a_of_type_JavaUtilSet = localQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + localQQAppInterface.getCurrentAccountUin(), 0).getStringSet("white_list_key", null);
+    } while (!QLog.isColorLevel());
+    QLog.d("RecentPubAccManager", 2, "loadFromSp   mBlackUinList:" + this.jdField_a_of_type_JavaUtilSet + ",  Switch: " + this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Set<String> paramSet)
+  {
+    if (paramQQAppInterface == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
-      ahoq.c(this.jdField_a_of_type_Ahoq, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccWhiteList: " + paramSet);
+        }
+        this.jdField_a_of_type_JavaUtilSet = paramSet;
+        paramQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putStringSet("white_list_key", paramSet).apply();
+      }
+      finally {}
     }
   }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccSwitch: " + paramBoolean);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    bbkb.k(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void onDestroy() {}
 }
 
 

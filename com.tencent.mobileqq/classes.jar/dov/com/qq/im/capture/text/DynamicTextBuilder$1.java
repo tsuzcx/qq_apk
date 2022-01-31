@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.text;
 
-import ajyc;
-import bizu;
-import bjgr;
+import ajya;
+import bjal;
+import bjhi;
 import com.tencent.common.app.AppInterface;
 import java.util.Arrays;
 import java.util.Map;
@@ -12,9 +12,9 @@ public final class DynamicTextBuilder$1
 {
   public void run()
   {
-    String str = bizu.a().getCurrentNickname();
-    bjgr.a().put(Integer.valueOf(5), Arrays.asList(new String[] { ajyc.a(2131703592), "MY JOURNEY \n" + str }));
-    bjgr.a().put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", str }));
+    String str = bjal.a().getCurrentNickname();
+    bjhi.a().put(Integer.valueOf(5), Arrays.asList(new String[] { ajya.a(2131703603), "MY JOURNEY \n" + str }));
+    bjhi.a().put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", str }));
   }
 }
 

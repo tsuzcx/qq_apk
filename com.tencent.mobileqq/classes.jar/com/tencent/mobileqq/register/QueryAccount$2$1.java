@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.register;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
-import avpw;
-import avpx;
-import axqw;
+import avpy;
+import avpz;
+import axqy;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class QueryAccount$2$1
   implements Runnable
 {
-  public QueryAccount$2$1(avpx paramavpx, String paramString) {}
+  public QueryAccount$2$1(avpz paramavpz, String paramString) {}
   
   public void run()
   {
@@ -29,18 +29,18 @@ public class QueryAccount$2$1
           localObject1 = "http://" + (String)localObject2;
         }
       }
-      localObject2 = new Intent(this.jdField_a_of_type_Avpx.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, QQBrowserActivity.class);
+      localObject2 = new Intent(this.jdField_a_of_type_Avpz.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, QQBrowserActivity.class);
       ((Intent)localObject2).putExtra("is_register_uin", true);
       ((Intent)localObject2).putExtra("isShowAd", false);
       ((Intent)localObject2).putExtra("hide_more_button", true);
       ((Intent)localObject2).putExtra("hide_operation_bar", true);
       ((Intent)localObject2).putExtra("register_uin_msg", 104);
-      ((Intent)localObject2).putExtra("register_uin_class", this.jdField_a_of_type_Avpx.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
-      this.jdField_a_of_type_Avpx.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-      ((Intent)localObject2).putExtra("selfSet_leftViewText", ajyc.a(2131711218));
-      axqw.b(this.jdField_a_of_type_Avpx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
+      ((Intent)localObject2).putExtra("register_uin_class", this.jdField_a_of_type_Avpz.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
+      this.jdField_a_of_type_Avpz.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+      ((Intent)localObject2).putExtra("selfSet_leftViewText", ajya.a(2131711229));
+      axqy.b(this.jdField_a_of_type_Avpz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
     } while (!QLog.isColorLevel());
-    QLog.d("QueryAccount", 2, "class name is " + this.jdField_a_of_type_Avpx.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
+    QLog.d("QueryAccount", 2, "class name is " + this.jdField_a_of_type_Avpz.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
   }
 }
 

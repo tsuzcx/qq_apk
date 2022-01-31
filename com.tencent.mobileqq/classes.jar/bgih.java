@@ -1,14 +1,10 @@
-import android.content.Context;
-import java.util.Observable;
-
-public class bgih
-  extends Observable
+public abstract interface bgih
 {
-  public void a(Context paramContext)
-  {
-    setChanged();
-    notifyObservers(paramContext);
-  }
+  public abstract void a();
+  
+  public abstract void a(bgig parambgig);
+  
+  public abstract void b(bgig parambgig);
 }
 
 

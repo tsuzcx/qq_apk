@@ -1,33 +1,16 @@
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class abtm
+  implements Comparator<abti>
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public abtm(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public abtm(PublicAccountInfo paramPublicAccountInfo)
+  public int a(abti paramabti1, abti paramabti2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    long l = paramabti1.a.certifiedGrade;
+    return (int)(paramabti2.a.certifiedGrade - l);
   }
 }
 

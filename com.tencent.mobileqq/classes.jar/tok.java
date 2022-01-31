@@ -1,28 +1,48 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tok
-  extends syq
+  extends syn
 {
-  public final String a;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
+  public long a;
+  public String a;
+  public ArrayList<VideoCollectionItem> a;
+  public boolean a;
   
-  public tok(qqstory_service.RspGetLocation paramRspGetLocation)
+  public tok(String paramString, qqstory_service.RspGroupDateVideoList paramRspGroupDateVideoList)
   {
-    this.a = paramRspGetLocation.country.get().toStringUtf8();
-    this.c = paramRspGetLocation.province.get().toStringUtf8();
-    this.d = paramRspGetLocation.city.get().toStringUtf8();
-    this.e = paramRspGetLocation.district.get().toStringUtf8();
-    this.f = paramRspGetLocation.street.get().toStringUtf8();
+    super(paramRspGroupDateVideoList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramRspGroupDateVideoList.is_end.get() == 1) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspGroupDateVideoList.next_cookie.get().toStringUtf8();
+      this.jdField_a_of_type_Long = paramRspGroupDateVideoList.seqno.get();
+      paramRspGroupDateVideoList = paramRspGroupDateVideoList.group_node_info.get().iterator();
+      while (paramRspGroupDateVideoList.hasNext())
+      {
+        qqstory_struct.GroupNodeInfo localGroupNodeInfo = (qqstory_struct.GroupNodeInfo)paramRspGroupDateVideoList.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.shareGroup:GetDateCollectionListResponse", paramString, localGroupNodeInfo);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
+      }
+      bool = false;
+    }
   }
   
   public String toString()
   {
-    return "GetLocationResponse{mCountry='" + this.a + '\'' + ", mProvince='" + this.c + '\'' + ", mCity='" + this.d + '\'' + ", mDistrict='" + this.e + '\'' + ", mStreet='" + this.f + '\'' + '}';
+    return "GetShareGroupDateListResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mCollectionItemList=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

@@ -1,41 +1,34 @@
-import android.support.annotation.NonNull;
+import java.lang.reflect.Method;
 
 class bjny
-  extends bjnx<T>.bjnz
-  implements bjmw
 {
-  @NonNull
-  final bjnb jdField_a_of_type_Bjnb;
+  final int jdField_a_of_type_Int;
+  final Method jdField_a_of_type_JavaLangReflectMethod;
   
-  bjny(bjnb parambjnb, @NonNull bjob<? super T> parambjob)
+  bjny(int paramInt, Method paramMethod)
   {
-    super(parambjnb, localbjob);
-    this.jdField_a_of_type_Bjnb = parambjob;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
+    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
   }
   
-  void a()
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Bjnb.a().b(this);
-  }
-  
-  public void a(bjnb parambjnb, bjmy parambjmy)
-  {
-    if (this.jdField_a_of_type_Bjnb.a().a() == bjmz.a)
+    if (this == paramObject) {}
+    do
     {
-      this.jdField_a_of_type_Bjnx.a(this.jdField_a_of_type_Bjob);
-      return;
-    }
-    a(a());
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bjny)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
+    return false;
   }
   
-  boolean a()
+  public int hashCode()
   {
-    return this.jdField_a_of_type_Bjnb.a().a().a(bjmz.d);
-  }
-  
-  boolean a(bjnb parambjnb)
-  {
-    return this.jdField_a_of_type_Bjnb == parambjnb;
+    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
   }
 }
 

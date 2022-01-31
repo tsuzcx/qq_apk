@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import afsa;
-import afsi;
+import afry;
+import afsg;
 import android.os.Message;
-import bfnk;
+import bfob;
 import java.util.List;
 
 public class MayKnowPersonEntryController$1
   implements Runnable
 {
-  public MayKnowPersonEntryController$1(afsi paramafsi) {}
+  public MayKnowPersonEntryController$1(afsg paramafsg) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bfnk.removeMessages(2);
-    if (this.this$0.jdField_a_of_type_Afsa != null)
+    this.this$0.jdField_a_of_type_Bfob.removeMessages(2);
+    if (this.this$0.jdField_a_of_type_Afry != null)
     {
-      List localList = this.this$0.jdField_a_of_type_Afsa.b();
-      this.this$0.jdField_a_of_type_Bfnk.removeMessages(1);
-      Message.obtain(this.this$0.jdField_a_of_type_Bfnk, 1, 0, 0, localList).sendToTarget();
+      List localList = this.this$0.jdField_a_of_type_Afry.b();
+      this.this$0.jdField_a_of_type_Bfob.removeMessages(1);
+      Message.obtain(this.this$0.jdField_a_of_type_Bfob, 1, 0, 0, localList).sendToTarget();
     }
   }
 }

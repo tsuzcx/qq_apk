@@ -1,53 +1,19 @@
-import android.os.FileObserver;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 
-public class bkqx
-  extends FileObserver
+class bkqx
+  implements swj
 {
-  private boolean a;
+  bkqx(bkqw parambkqw, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
   
-  private void a()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (!this.a)
+    if (paramInt == 0)
     {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
-    }
-  }
-  
-  public void onEvent(int paramInt, String paramString)
-  {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
-    }
-    do
-    {
+      bkqw.a(this.jdField_a_of_type_Bkqw, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
       return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
     }
-    a();
+    bkqw.a(this.jdField_a_of_type_Bkqw, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

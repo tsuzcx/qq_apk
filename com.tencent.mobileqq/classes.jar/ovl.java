@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
 
 public class ovl
-  implements bfug
+  implements rul
 {
-  public ovl(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
+  public ovl(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public void a(bfuf parambfuf)
+  public void a(String paramString)
   {
-    switch (parambfuf.a)
-    {
-    }
+    ReadInJoySelectPositionFragment.a(this.a, paramString);
   }
 }
 

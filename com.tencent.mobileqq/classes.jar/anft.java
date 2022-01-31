@@ -1,6 +1,14 @@
-public abstract interface anft
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+
+public class anft
+  implements anfy
 {
-  public abstract void a(anfv paramanfv);
+  public anft(DanmakuManager paramDanmakuManager) {}
+  
+  public void a(anga paramanga)
+  {
+    DanmakuManager.a(this.a).a(paramanga);
+  }
 }
 
 

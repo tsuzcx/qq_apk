@@ -6,17 +6,17 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import begv;
-import begy;
-import begz;
-import bejy;
-import beka;
-import bekg;
-import beki;
-import besl;
-import beuc;
-import bffm;
-import bfgq;
+import behm;
+import behp;
+import behq;
+import bekp;
+import bekr;
+import bekx;
+import bekz;
+import betc;
+import beut;
+import bfgd;
+import bfhh;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
@@ -33,17 +33,17 @@ public class RewardedVideoAdPlugin
   public static final String EVENT_REWARDED_VIDEO_SHOW_DONE = "onRewardedVideoShowDone";
   public static final String EVENT_REWARDED_VIDEO_STATE_CHANGE = "onRewardedVideoStateChange";
   private static final String TAG = "RewardedVideoAdPlugin";
-  private static final HashMap<Integer, String> errCodeMsgMap = bfgq.a;
+  private static final HashMap<Integer, String> errCodeMsgMap = bfhh.a;
   private boolean mGetRewarded;
   private boolean mIsOrientationLandscape;
   private boolean mIsRequestingAd;
   private String mPosID = "";
   private AdProxy.AbsRewardVideoAdView mRewardedVideoAd;
   
-  private void handleErrorAndInformJs(beka parambeka, int paramInt, String paramString)
+  private void handleErrorAndInformJs(bekr parambekr, int paramInt, String paramString)
   {
     String str = (String)errCodeMsgMap.get(Integer.valueOf(paramInt));
-    besl.a("RewardedVideoAdPlugin", "handleErrorAndInformJs errCode= " + paramInt + " errMsg=" + str);
+    betc.a("RewardedVideoAdPlugin", "handleErrorAndInformJs errCode= " + paramInt + " errMsg=" + str);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -53,30 +53,30 @@ public class RewardedVideoAdPlugin
       if (!TextUtils.isEmpty(paramString)) {
         localJSONObject.put("compId", paramString);
       }
-      informJs(parambeka, localJSONObject, "onRewardedVideoStateChange");
+      informJs(parambekr, localJSONObject, "onRewardedVideoStateChange");
       return;
     }
-    catch (JSONException parambeka)
+    catch (JSONException parambekr)
     {
-      parambeka.printStackTrace();
+      parambekr.printStackTrace();
     }
   }
   
-  private void handleGetAdFailed(beka parambeka, int paramInt, String paramString)
+  private void handleGetAdFailed(bekr parambekr, int paramInt, String paramString)
   {
-    handleErrorAndInformJs(parambeka, paramInt, paramString);
-    handleShowAndInformJs(parambeka, false, paramString);
-    handleLoadAndInformJs(parambeka, false, paramString);
+    handleErrorAndInformJs(parambekr, paramInt, paramString);
+    handleShowAndInformJs(parambekr, false, paramString);
+    handleLoadAndInformJs(parambekr, false, paramString);
   }
   
-  private void handleLoadAndInformJs(beka parambeka, boolean paramBoolean, String paramString)
+  private void handleLoadAndInformJs(bekr parambekr, boolean paramBoolean, String paramString)
   {
-    beki.a(new RewardedVideoAdPlugin.2(this, paramString, paramBoolean, parambeka), 300L);
+    bekz.a(new RewardedVideoAdPlugin.2(this, paramString, paramBoolean, parambekr), 300L);
   }
   
-  private void handleOnLoadAndInformJs(beka parambeka, boolean paramBoolean, String paramString)
+  private void handleOnLoadAndInformJs(bekr parambekr, boolean paramBoolean, String paramString)
   {
-    besl.a("RewardedVideoAdPlugin", "handleOnLoadAndInformJs isSucc= " + paramBoolean);
+    betc.a("RewardedVideoAdPlugin", "handleOnLoadAndInformJs isSucc= " + paramBoolean);
     JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
@@ -88,13 +88,13 @@ public class RewardedVideoAdPlugin
         }
         localJSONObject.put("compId", paramString);
       }
-      catch (JSONException parambeka)
+      catch (JSONException parambekr)
       {
-        parambeka.printStackTrace();
+        parambekr.printStackTrace();
         return;
       }
       localJSONObject.put("status", paramString);
-      informJs(parambeka, localJSONObject, "onRewardedVideoStateChange");
+      informJs(parambekr, localJSONObject, "onRewardedVideoStateChange");
       return;
       paramString = "error";
       continue;
@@ -105,32 +105,32 @@ public class RewardedVideoAdPlugin
     }
   }
   
-  private void handleShowAndInformJs(beka parambeka, boolean paramBoolean, String paramString)
+  private void handleShowAndInformJs(bekr parambekr, boolean paramBoolean, String paramString)
   {
-    beki.a(new RewardedVideoAdPlugin.3(this, paramString, paramBoolean, parambeka), 300L);
+    bekz.a(new RewardedVideoAdPlugin.3(this, paramString, paramBoolean, parambekr), 300L);
   }
   
-  private void informJs(beka parambeka, JSONObject paramJSONObject, String paramString)
+  private void informJs(bekr parambekr, JSONObject paramJSONObject, String paramString)
   {
-    besl.a("RewardedVideoAdPlugin", "informJs d= " + String.valueOf(paramJSONObject) + " event=" + paramString);
-    parambeka.jdField_a_of_type_Begy.a(paramString, paramJSONObject.toString(), 0);
+    betc.a("RewardedVideoAdPlugin", "informJs d= " + String.valueOf(paramJSONObject) + " event=" + paramString);
+    parambekr.jdField_a_of_type_Behp.a(paramString, paramJSONObject.toString(), 0);
   }
   
-  private void initAdParam(beka parambeka, String paramString1, String paramString2)
+  private void initAdParam(bekr parambekr, String paramString1, String paramString2)
   {
     int j = 0;
     this.mRewardedVideoAd = null;
-    String str3 = beuc.a().a();
+    String str3 = beut.a().a();
     String str4 = this.mApkgInfo.d;
     if (this.mIsOrientationLandscape) {}
     for (int i = 90;; i = 0)
     {
-      besl.b("RewardedVideoAdPlugin", "handle initAdParam appId = " + str4 + "， deviceOrient = " + i);
+      betc.b("RewardedVideoAdPlugin", "handle initAdParam appId = " + str4 + "， deviceOrient = " + i);
       if (!TextUtils.isEmpty(str4)) {
         break;
       }
-      besl.d("RewardedVideoAdPlugin", "TextUtils.isEmpty(appid)");
-      handleGetAdFailed(parambeka, 1003, paramString2);
+      betc.d("RewardedVideoAdPlugin", "TextUtils.isEmpty(appid)");
+      handleGetAdFailed(parambekr, 1003, paramString2);
       return;
     }
     label112:
@@ -149,7 +149,7 @@ public class RewardedVideoAdPlugin
         break label402;
       }
       j = 3;
-      str5 = bffm.a(j);
+      str5 = bfgd.a(j);
       localObject3 = this.mMiniAppInfo;
       if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
         break label429;
@@ -170,7 +170,7 @@ public class RewardedVideoAdPlugin
       if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null)) {}
       for (str2 = ((MiniAppInfo)localObject3).via;; str2 = "")
       {
-        besl.b("RewardedVideoAdPlugin", "getRewardedVideoADInfo account= " + str3 + " pos_id=" + paramString1);
+        betc.b("RewardedVideoAdPlugin", "getRewardedVideoADInfo account= " + str3 + " pos_id=" + paramString1);
         localObject3 = this.mMiniAppContext.a();
         if (localObject3 == null) {
           break;
@@ -184,7 +184,7 @@ public class RewardedVideoAdPlugin
         localBundle.putString(AdProxy.KEY_REPORT_DATA, str1);
         localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
         localBundle.putString(AdProxy.KEY_VIA, str2);
-        beki.a(new RewardedVideoAdPlugin.1(this, (Activity)localObject3, str4, paramString1, parambeka, paramString2, localBundle));
+        bekz.a(new RewardedVideoAdPlugin.1(this, (Activity)localObject3, str4, paramString1, parambekr, paramString2, localBundle));
         return;
         j = 1;
         break label112;
@@ -204,7 +204,7 @@ public class RewardedVideoAdPlugin
     }
   }
   
-  private void onCloseAd(beka parambeka, boolean paramBoolean, String paramString1, String paramString2)
+  private void onCloseAd(bekr parambekr, boolean paramBoolean, String paramString1, String paramString2)
   {
     if ((this.mGetRewarded) && (!paramBoolean))
     {
@@ -219,17 +219,17 @@ public class RewardedVideoAdPlugin
       if (!TextUtils.isEmpty(paramString2)) {
         paramString1.put("compId", paramString2);
       }
-      informJs(parambeka, paramString1, "onRewardedVideoStateChange");
+      informJs(parambekr, paramString1, "onRewardedVideoStateChange");
       return;
     }
     catch (JSONException paramString1)
     {
-      besl.d("RewardedVideoAdPlugin", "doOnActivityResult failed e:", paramString1);
-      handleErrorAndInformJs(parambeka, 1003, paramString2);
+      betc.d("RewardedVideoAdPlugin", "doOnActivityResult failed e:", paramString1);
+      handleErrorAndInformJs(parambekr, 1003, paramString2);
     }
   }
   
-  public String createRewardedVideoAd(beka parambeka)
+  public String createRewardedVideoAd(bekr parambekr)
   {
     boolean bool;
     if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2)
@@ -243,36 +243,36 @@ public class RewardedVideoAdPlugin
       Object localObject2;
       try
       {
-        Object localObject1 = new JSONObject(parambeka.b);
+        Object localObject1 = new JSONObject(parambekr.b);
         localObject2 = ((JSONObject)localObject1).optString("adUnitId");
         String str2 = ((JSONObject)localObject1).optString("compId");
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          handleErrorAndInformJs(parambeka, 1002, str2);
-          JSONObject localJSONObject = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+          handleErrorAndInformJs(parambekr, 1002, str2);
+          JSONObject localJSONObject = bekx.b(parambekr.jdField_a_of_type_JavaLangString, null);
           if (localJSONObject == null) {
             break label205;
           }
           localObject1 = localJSONObject.toString();
-          parambeka.a(localJSONObject.toString());
+          parambekr.a(localJSONObject.toString());
           if (localObject1 != null) {
             return localObject1;
           }
         }
         this.mPosID = ((String)localObject2);
-        initAdParam(parambeka, this.mPosID, str2);
+        initAdParam(parambekr, this.mPosID, str2);
         return "";
       }
       catch (Exception localException)
       {
-        besl.d("RewardedVideoAdPlugin", "API_AD_CREATE_REWARDED_VIDEO_AD failed e:", localException);
-        localObject2 = bekg.b(parambeka.jdField_a_of_type_JavaLangString, null);
+        betc.d("RewardedVideoAdPlugin", "API_AD_CREATE_REWARDED_VIDEO_AD failed e:", localException);
+        localObject2 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, null);
         if (localObject2 == null) {}
       }
       for (String str1 = ((JSONObject)localObject2).toString();; str1 = "")
       {
-        handleErrorAndInformJs(parambeka, 1003, "");
-        parambeka.a(((JSONObject)localObject2).toString());
+        handleErrorAndInformJs(parambekr, 1003, "");
+        parambekr.a(((JSONObject)localObject2).toString());
         if (str1 == null) {
           break;
         }
@@ -294,7 +294,7 @@ public class RewardedVideoAdPlugin
     super.onDestroy();
   }
   
-  public void operateRewardedAd(beka parambeka)
+  public void operateRewardedAd(bekr parambekr)
   {
     int i = 1;
     boolean bool;
@@ -305,29 +305,29 @@ public class RewardedVideoAdPlugin
       this.mIsOrientationLandscape = bool;
       try
       {
-        localObject = new JSONObject(parambeka.b);
-        parambeka.a();
+        localObject = new JSONObject(parambekr.b);
+        parambekr.a();
         String str = ((JSONObject)localObject).optString("type");
         localObject = ((JSONObject)localObject).optString("compId");
         if ("load".equals(str))
         {
           if (this.mRewardedVideoAd != null)
           {
-            handleLoadAndInformJs(parambeka, true, (String)localObject);
+            handleLoadAndInformJs(parambekr, true, (String)localObject);
             return;
           }
           if (this.mIsRequestingAd) {
             break label193;
           }
-          initAdParam(parambeka, this.mPosID, (String)localObject);
+          initAdParam(parambekr, this.mPosID, (String)localObject);
           return;
         }
       }
       catch (JSONException localJSONException)
       {
-        besl.d("RewardedVideoAdPlugin", "API_AD_CREATE_REWARDED_VIDEO_AD failed e:", localJSONException);
-        handleErrorAndInformJs(parambeka, 1003, "");
-        parambeka.b();
+        betc.d("RewardedVideoAdPlugin", "API_AD_CREATE_REWARDED_VIDEO_AD failed e:", localJSONException);
+        handleErrorAndInformJs(parambekr, 1003, "");
+        parambekr.b();
         return;
       }
       if ("show".equals(localJSONException)) {
@@ -341,12 +341,12 @@ public class RewardedVideoAdPlugin
       if (i != 0)
       {
         this.mRewardedVideoAd.showAD();
-        handleShowAndInformJs(parambeka, true, (String)localObject);
+        handleShowAndInformJs(parambekr, true, (String)localObject);
         this.mRewardedVideoAd = null;
-        begv.a(true);
+        behm.a(true);
         return;
       }
-      handleShowAndInformJs(parambeka, false, (String)localObject);
+      handleShowAndInformJs(parambekr, false, (String)localObject);
       label193:
       return;
       bool = false;

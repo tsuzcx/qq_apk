@@ -1,34 +1,17 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
 
-public class arbh
-  implements TVK_SDKMgr.InstallListener
+class arbh
+  implements DialogInterface.OnClickListener
 {
-  arbh(araz paramaraz) {}
+  arbh(arbb paramarbb) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    araz.a = false;
-    this.a.a(ajyc.a(2131708399));
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    araz.a = false;
-    if (!this.a.c)
-    {
-      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
-    }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
+    paramDialogInterface.dismiss();
+    arbb.a(this.a);
+    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
   }
 }
 

@@ -1,29 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
-public abstract interface bhbl
+public class bhbl
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
+  public bhbl(TranslucentActivity paramTranslucentActivity) {}
   
-  public abstract void clearCache();
-  
-  public abstract void forceRefresh();
-  
-  public abstract void onSwitchOutofQzone();
-  
-  public abstract void resetReportFlag();
-  
-  public abstract void setQzoneSwitchlistener(agcd paramagcd);
-  
-  public abstract void setRightButtonType(int paramInt);
-  
-  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
-  
-  public abstract void setTitleView(ViewGroup paramViewGroup);
-  
-  public abstract void updatePublishBox(Intent paramIntent);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

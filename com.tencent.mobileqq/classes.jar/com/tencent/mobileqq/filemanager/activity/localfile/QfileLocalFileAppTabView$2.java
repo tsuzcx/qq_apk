@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import apti;
-import aptw;
-import apxv;
+import aptm;
+import apty;
+import apxx;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,21 +18,21 @@ class QfileLocalFileAppTabView$2
     Object localObject;
     if (this.this$0.f)
     {
-      aptw.a(this.this$0.a, this.this$0);
-      aptw.a(true, apti.a().b(), ".apk", "", localHashMap, this.this$0);
-      localObject = apti.a().a();
+      apty.a(this.this$0.a, this.this$0);
+      apty.a(true, aptm.a().b(), ".apk", "", localHashMap, this.this$0);
+      localObject = aptm.a().a();
       if (localObject != null) {
-        aptw.a(true, (String)localObject, ".apk", "", localHashMap, null);
+        apty.a(true, (String)localObject, ".apk", "", localHashMap, null);
       }
     }
     for (;;)
     {
-      aptw.a(localHashMap);
+      apty.a(localHashMap);
       QfileLocalFileAppTabView.a(this.this$0, new QfileLocalFileAppTabView.2.1(this));
       return;
       localObject = this.this$0.d.iterator();
       while (((Iterator)localObject).hasNext()) {
-        aptw.a(true, ((apxv)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
+        apty.a(true, ((apxx)((Iterator)localObject).next()).a(), ".apk", "", localHashMap, this.this$0);
       }
     }
   }

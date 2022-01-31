@@ -1,52 +1,78 @@
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.widget.Button;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-class xaf
-  implements baho
+public class xaf
+  extends xas
 {
-  xaf(wzw paramwzw) {}
+  public xaf(MoveFileActivity paramMoveFileActivity) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<azpi> paramList, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
+    this.a.a(true);
+    if ((!paramBoolean1) || (paramList == null)) {
+      return;
     }
-    if (paramJSONObject != null)
+    MoveFileActivity.a(this.a, paramInt3);
+    MoveFileActivity.a(this.a, paramBoolean2);
+    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
+    paramByteStringMicro = paramList.iterator();
+    while (paramByteStringMicro.hasNext())
     {
-      paramJSONObject = paramJSONObject.optJSONObject("data");
-      if (paramJSONObject != null)
+      paramBundle = (azpi)paramByteStringMicro.next();
+      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
       {
-        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = paramJSONObject.optJSONArray("list");
-          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-          {
-            paramJSONObject = azpf.a(paramJSONObject.optJSONObject(0));
-            if (paramJSONObject != null)
-            {
-              this.a.jdField_a_of_type_Azpf = paramJSONObject;
-              this.a.d = true;
-              if (QLog.isColorLevel()) {
-                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Azpf.a + ", img = " + this.a.jdField_a_of_type_Azpf.c + ", rl = " + this.a.jdField_a_of_type_Azpf.b);
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
-            return;
-          }
-        }
+        paramBundle.a = UUID.randomUUID();
+        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
+    if (paramBoolean1)
+    {
+      MoveFileActivity.a(this.a).clear();
+      if (!MoveFileActivity.c(this.a).equals("/"))
+      {
+        paramByteStringMicro = new azpi();
+        paramByteStringMicro.c = ajya.a(2131706909);
+        paramByteStringMicro.b = "/";
+        paramByteStringMicro.d = true;
+        paramByteStringMicro.f = -1;
+        MoveFileActivity.a(this.a).add(paramByteStringMicro);
+      }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    MoveFileActivity.b(this.a, paramInt1);
+    if (!MoveFileActivity.c(this.a).equals("/"))
+    {
+      paramInt1 = paramList.size() - 1;
+      if (paramInt1 >= 0)
+      {
+        if (!((azpi)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
+          break label389;
+        }
+        if (MoveFileActivity.a(this.a) == -1)
+        {
+          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
+          MoveFileActivity.a(this.a).setEnabled(true);
+          MoveFileActivity.a(this.a).setBackgroundResource(2130839047);
+          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755329);
+        }
+      }
+      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
+    }
+    for (;;)
+    {
+      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      return;
+      label389:
+      paramInt1 -= 1;
+      break;
+      MoveFileActivity.a(this.a).addAll(paramList);
+    }
   }
 }
 

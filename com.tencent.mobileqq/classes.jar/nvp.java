@@ -1,17 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 
 public class nvp
-  implements arbi
+  implements osk
 {
-  public nvp(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public nvp(ReadInJoyChannelActivity paramReadInJoyChannelActivity, int paramInt) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void a(osm paramosm)
   {
-    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
-    }
+    paramosm.h(this.jdField_a_of_type_Int);
   }
 }
 

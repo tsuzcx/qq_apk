@@ -1,18 +1,42 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class xcg
 {
   public String a;
-  public String b;
-  public String c;
-  public String d;
+  public ArrayList<Integer> a;
+  public ArrayList<Object> b;
   
   public xcg(JSONObject paramJSONObject)
   {
-    this.a = paramJSONObject.optString("icon");
-    this.b = paramJSONObject.optString("iconGrid");
-    this.c = paramJSONObject.optString("jumpUrl");
-    this.d = paramJSONObject.optString("iconLoveGrid");
+    try
+    {
+      if (paramJSONObject.has("name")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+      }
+      if (paramJSONObject.has("packageIDs"))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
+        int j = paramJSONObject.length();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        this.b = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGiftAioPanelData", 2, "PersonalTabItemInfo json:", paramJSONObject);
+      }
+    }
   }
 }
 

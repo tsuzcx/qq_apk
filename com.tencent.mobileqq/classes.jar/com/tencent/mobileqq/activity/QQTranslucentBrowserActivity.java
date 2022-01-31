@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import abxn;
-import abxo;
-import abxp;
+import abxj;
+import abxk;
+import abxl;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import arkn;
+import arkp;
 import com.tencent.smtt.sdk.WebView;
 
 public class QQTranslucentBrowserActivity
@@ -34,7 +34,7 @@ public class QQTranslucentBrowserActivity
     {
       return;
       if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new abxp(this);
+        this.jdField_a_of_type_AndroidAppDialog = new abxl(this);
       }
     } while (this.jdField_a_of_type_AndroidAppDialog == null);
     this.jdField_a_of_type_AndroidAppDialog.show();
@@ -54,7 +54,7 @@ public class QQTranslucentBrowserActivity
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
     getWindow().setBackgroundDrawableResource(2131167087);
-    View localView = findViewById(2131363419);
+    View localView = findViewById(2131363418);
     if (localView != null) {
       localView.setBackgroundResource(2131167087);
     }
@@ -73,14 +73,14 @@ public class QQTranslucentBrowserActivity
       return bool;
       if (i == 4)
       {
-        this.jdField_a_of_type_AndroidAppDialog = arkn.a(this);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxn(this));
+        this.jdField_a_of_type_AndroidAppDialog = arkp.a(this);
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxj(this));
         as_();
         return bool;
       }
     } while (i != 5);
-    this.jdField_a_of_type_AndroidAppDialog = arkn.a(this, paramBundle);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxo(this));
+    this.jdField_a_of_type_AndroidAppDialog = arkp.a(this, paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new abxk(this));
     as_();
     return bool;
   }

@@ -1,14 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.view.MotionEvent;
 
-public class agpb
+public abstract interface agpb
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
-  
-  public agpb(agpa paramagpa) {}
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
 }
 
 

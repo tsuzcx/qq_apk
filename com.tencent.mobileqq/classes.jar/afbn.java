@@ -1,21 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-public class afbn
-  implements View.OnClickListener
+public final class afbn
+  implements DialogInterface.OnClickListener
 {
-  public afbn(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public afbn(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
+    ((BlessSelectMemberActivity)this.a).f();
   }
 }
 

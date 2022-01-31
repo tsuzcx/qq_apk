@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
 import android.os.Bundle;
-import bevi;
-import bevl;
+import bevz;
+import bewc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class GameReportManager$1
   implements Runnable
 {
-  public GameReportManager$1(bevl parambevl) {}
+  public GameReportManager$1(bewc parambewc) {}
   
   public void run()
   {
-    if (!bevl.a(this.this$0))
+    if (!bewc.a(this.this$0))
     {
-      MiniAppInfo localMiniAppInfo = bevi.a().a();
+      MiniAppInfo localMiniAppInfo = bevz.a().a();
       new Bundle().putParcelable("app_config", localMiniAppInfo);
     }
   }

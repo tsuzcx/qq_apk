@@ -1,18 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.lang.ref.WeakReference;
 
-public class acfa
-  implements bauk
+public final class acfa
+  extends FlingGestureHandler
 {
-  public acfa(TextPreviewActivity paramTextPreviewActivity) {}
+  private WeakReference<TextPreviewActivity> b;
   
-  public void a() {}
-  
-  public void b()
+  private acfa(TextPreviewActivity paramTextPreviewActivity)
   {
-    Message localMessage = this.a.a.obtainMessage(20);
-    this.a.a.sendMessage(localMessage);
+    super(paramTextPreviewActivity);
+    this.b = new WeakReference(paramTextPreviewActivity);
+  }
+  
+  public void flingLToR()
+  {
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
+    int i;
+    if (localTextPreviewActivity != null) {
+      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        super.flingLToR();
+      }
+      return;
+      i = 0;
+      continue;
+      i = 0;
+    }
   }
 }
 

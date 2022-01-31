@@ -1,80 +1,49 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class mqm
+final class mqm
+  implements bfph
 {
-  public int a;
-  ArrayList<mqk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
+  mqm(muf parammuf, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public mqm()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    int k;
-    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
+    this.jdField_a_of_type_Muf.dismiss();
+    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      k = j;
-      if (((mqk)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
-        k = j + 1;
-      }
-      i += 1;
+    default: 
+      paramInt = 0;
     }
-    return j;
-  }
-  
-  public ArrayList<mqk> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public mqk a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      mqk localmqk = (mqk)localIterator.next();
-      if (localmqk.a() == paramInt) {
-        return localmqk;
+      if (paramInt > 0) {
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
       }
-    }
-    return null;
-  }
-  
-  public void a(mqk parammqk)
-  {
-    if (parammqk == null) {
       return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parammqk);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public ArrayList<mqk> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((mqk)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      {
+        mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+        paramInt = 3;
       }
-      i += 1;
+      else
+      {
+        mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
+        paramInt = 1;
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+        {
+          mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+          paramInt = 4;
+        }
+        else
+        {
+          mqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
+          paramInt = 2;
+        }
+      }
     }
-    return localArrayList;
   }
 }
 

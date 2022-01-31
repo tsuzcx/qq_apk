@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 
 class MiscJsPlugin$2
   implements MiscJsPlugin.OpenUrlCallback
 {
-  MiscJsPlugin$2(MiscJsPlugin paramMiscJsPlugin, beka parambeka) {}
+  MiscJsPlugin$2(MiscJsPlugin paramMiscJsPlugin, bekr parambekr) {}
   
   public void openResult(boolean paramBoolean, String paramString)
   {

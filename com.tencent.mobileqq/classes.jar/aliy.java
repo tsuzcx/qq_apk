@@ -1,99 +1,90 @@
-import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class aliy
+class aliy
+  implements aliv
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  private alit jdField_a_of_type_Alit;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  long b;
+  aliy(alix paramalix, alja paramalja, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public aliy(AppInterface paramAppInterface)
+  public void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Alit = new alit(paramAppInterface);
-  }
-  
-  private int a(long paramLong, int paramInt)
-  {
-    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
-    if (this.b == 0L) {
-      return this.jdField_a_of_type_Int;
-    }
-    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Alit != null) {
-      this.jdField_a_of_type_Alit.a();
+    if (this.jdField_a_of_type_Alja != null) {
+      this.jdField_a_of_type_Alja.a(alix.a(this.jdField_a_of_type_Alix, paramLong1, 0));
     }
   }
   
-  public void a(ArrayList<alix> paramArrayList, aljb paramaljb)
+  public void a(boolean paramBoolean, aliw paramaliw)
   {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
-    this.b = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList.size() < 1) {
-      return;
+    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
+    if (this.jdField_a_of_type_Alja != null) {
+      this.jdField_a_of_type_Alja.a(paramaliw.jdField_a_of_type_Int, paramBoolean);
     }
-    Object localObject = paramArrayList.iterator();
-    alix localalix;
-    while (((Iterator)localObject).hasNext())
+    if (paramBoolean)
     {
-      localalix = (alix)((Iterator)localObject).next();
-      this.b = Math.max(this.b, localalix.jdField_a_of_type_Long);
-    }
-    if (paramaljb != null) {
-      paramaljb.a();
-    }
-    localObject = (ArrayList)paramArrayList.clone();
-    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
-    int i = 0;
-    label129:
-    if (i < paramArrayList.size())
-    {
-      if (((alix)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
-        break label187;
-      }
-      this.jdField_a_of_type_Alit.a((alix)paramArrayList.get(i), new aliz(this, paramaljb, paramArrayList, (ArrayList)localObject));
-    }
-    for (;;)
-    {
-      i += 1;
-      break label129;
-      break;
-      label187:
-      if (((alix)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      for (;;)
       {
-        mze.a();
-        localalix = (alix)paramArrayList.get(i);
-        mze.a(((alix)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new alja(this, paramaljb, (ArrayList)localObject, localalix), true, 0, true);
+        if (localIterator.hasNext())
+        {
+          localaliw = (aliw)localIterator.next();
+          if (!localaliw.jdField_a_of_type_JavaLangString.equals(paramaliw.jdField_a_of_type_JavaLangString)) {
+            continue;
+          }
+          if (paramaliw.jdField_a_of_type_Boolean) {}
+          try
+          {
+            System.currentTimeMillis();
+            if (paramaliw.jdField_a_of_type_Int == 6)
+            {
+              new File(paramaliw.c);
+              aljb.a(paramaliw.c, alir.b());
+            }
+            for (;;)
+            {
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
+              this.b.remove(localaliw);
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  remove " + localaliw.jdField_a_of_type_JavaLangString);
+              break;
+              if (paramaliw.jdField_a_of_type_Int != 7) {
+                break label268;
+              }
+              aljb.a(paramaliw.c, alir.a(paramaliw.b));
+            }
+            return;
+          }
+          catch (Exception localException)
+          {
+            new File(paramaliw.c).delete();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
+            if (this.jdField_a_of_type_Alja != null) {
+              this.jdField_a_of_type_Alja.a(false);
+            }
+            this.jdField_a_of_type_Alix.a();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
+          }
+        }
       }
-    }
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      a();
+      label268:
+      while (this.b.size() != 0) {
+        for (;;)
+        {
+          aliw localaliw;
+          File localFile = new File(paramaliw.c);
+          aljb.a(paramaliw.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramaliw.b + File.separator);
+        }
+      }
+      if (this.jdField_a_of_type_Alja != null) {
+        this.jdField_a_of_type_Alja.a(true);
+      }
+      this.jdField_a_of_type_Alix.a();
       return;
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Alit != null) {
-      this.jdField_a_of_type_Alit.b();
+    if (this.jdField_a_of_type_Alja != null) {
+      this.jdField_a_of_type_Alja.a(false);
     }
+    this.jdField_a_of_type_Alix.a();
   }
 }
 

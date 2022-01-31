@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.videoplayer;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import udc;
+import ucz;
 
 public class CleanVideoPlayerView
   extends VideoPlayerView
@@ -19,9 +19,9 @@ public class CleanVideoPlayerView
     super.a();
   }
   
-  public void a_(udc paramudc)
+  public void a_(ucz paramucz)
   {
-    super.a_(paramudc);
+    super.a_(paramucz);
   }
 }
 

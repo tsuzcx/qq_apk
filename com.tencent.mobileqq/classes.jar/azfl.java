@@ -1,21 +1,17 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class azfl
-  implements bfoq
+public class azfl
+  extends BroadcastReceiver
 {
-  azfl(azfk paramazfk, bfol parambfol) {}
+  public azfl(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_Azfk.a.a(this.jdField_a_of_type_Azfk.a.a);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
+      this.a.finish();
     }
   }
 }

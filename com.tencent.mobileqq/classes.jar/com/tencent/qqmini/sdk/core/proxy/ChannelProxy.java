@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.core.proxy;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import android.os.Bundle;
-import beho;
-import behq;
+import beif;
+import beih;
 import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,7 +86,7 @@ public abstract interface ChannelProxy
   
   public abstract void report(byte[] paramArrayOfByte, String paramString1, String paramString2, AsyncResult paramAsyncResult);
   
-  public abstract void setAuth(String paramString, beho parambeho, AsyncResult paramAsyncResult);
+  public abstract void setAuth(String paramString, beif parambeif, AsyncResult paramAsyncResult);
   
   public abstract void setPersonalizeInfo(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, AsyncResult paramAsyncResult);
   
@@ -96,7 +96,7 @@ public abstract interface ChannelProxy
   
   public abstract boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult);
   
-  public abstract void updateUserSetting(String paramString, behq parambehq, AsyncResult paramAsyncResult);
+  public abstract void updateUserSetting(String paramString, beih parambeih, AsyncResult paramAsyncResult);
   
   public abstract void useUserApp(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult);
   

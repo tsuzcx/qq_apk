@@ -1,45 +1,41 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.text.TextUtils;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 
 public class wqb
-  implements amgw
+  implements amgv
 {
-  public wqb(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  public wqb(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
   public ColorNote getColorNote()
   {
-    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
-    {
-      QLog.e("SubscribeBaseFragment", 1, "initColorNote, shareInfoBean is null");
-      return null;
+    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
+      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
     }
-    byte[] arrayOfByte = wsw.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
-    wkp localwkp = new wkp();
-    localwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    localwkp.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-    String str1 = "";
-    String str3 = localwkp.c();
-    String str2 = localwkp.d();
-    String str4 = localwkp.e();
-    switch (localwkp.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
-    {
-    }
-    while (TextUtils.isEmpty(str1))
+    byte[] arrayOfByte;
+    Object localObject;
+    String str1;
+    String str2;
+    String str3;
+    do
     {
       return null;
-      str2 = localwkp.f();
-      str1 = "" + localwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
-      continue;
-      str1 = "" + localwkp.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-    }
-    return new amhc().a(16908291).a(str1).b(str3).c(str2).d(str4).a(arrayOfByte).a();
+      arrayOfByte = wst.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
+      localObject = new wkm();
+      ((wkm)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
+      ((wkm)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
+      str1 = SubscribeHybirdFragment.a(this.a).id.get();
+      str2 = ((wkm)localObject).c();
+      ((wkm)localObject).d();
+      str3 = ((wkm)localObject).e();
+      localObject = ((wkm)localObject).f();
+    } while (TextUtils.isEmpty(str1));
+    return new amhb().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
   }
 }
 

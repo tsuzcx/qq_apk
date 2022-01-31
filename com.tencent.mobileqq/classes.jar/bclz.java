@@ -1,33 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.GifAnimationDrawable;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
 
 public class bclz
-  extends Handler
+  implements View.OnClickListener
 {
-  private final WeakReference<GifAnimationDrawable> a;
+  public bclz(DrawerFrame paramDrawerFrame) {}
   
-  public bclz(GifAnimationDrawable paramGifAnimationDrawable)
-  {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramGifAnimationDrawable);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    GifAnimationDrawable localGifAnimationDrawable;
-    do
-    {
-      return;
-      localGifAnimationDrawable = (GifAnimationDrawable)this.a.get();
-    } while (localGifAnimationDrawable == null);
-    GifAnimationDrawable.a(localGifAnimationDrawable, (bcly)paramMessage.obj);
-  }
+  public void onClick(View paramView) {}
 }
 
 

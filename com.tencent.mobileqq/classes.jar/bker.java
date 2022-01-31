@@ -1,222 +1,208 @@
-import android.opengl.GLDebugHelper;
-import android.util.Log;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import java.io.Writer;
-import java.lang.ref.WeakReference;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
-import javax.microedition.khronos.opengles.GL;
+import android.graphics.Rect;
+import android.os.Message;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class bker
+  implements bkbn<bkbm>
 {
-  private WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  public EGLConfig a;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  private final int jdField_a_of_type_Int = bkik.a(DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout), 40.0F);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public bker(WeakReference<GLTextureView> paramWeakReference)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
+  private bker(DoodleLayout paramDoodleLayout) {}
   
-  public static String a(int paramInt)
+  public boolean a(bkbm parambkbm, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
-    default: 
-      return b(paramInt);
-    case 12288: 
-      return "EGL_SUCCESS";
-    case 12289: 
-      return "EGL_NOT_INITIALIZED";
-    case 12290: 
-      return "EGL_BAD_ACCESS";
-    case 12291: 
-      return "EGL_BAD_ALLOC";
-    case 12292: 
-      return "EGL_BAD_ATTRIBUTE";
-    case 12293: 
-      return "EGL_BAD_CONFIG";
-    case 12294: 
-      return "EGL_BAD_CONTEXT";
-    case 12295: 
-      return "EGL_BAD_CURRENT_SURFACE";
-    case 12296: 
-      return "EGL_BAD_DISPLAY";
-    case 12297: 
-      return "EGL_BAD_MATCH";
-    case 12298: 
-      return "EGL_BAD_NATIVE_PIXMAP";
-    case 12299: 
-      return "EGL_BAD_NATIVE_WINDOW";
-    case 12300: 
-      return "EGL_BAD_PARAMETER";
-    case 12301: 
-      return "EGL_BAD_SURFACE";
+    boolean bool = true;
+    if ((parambkbm instanceof bkak)) {
+      localRect = new Rect();
     }
-    return "EGL_CONTEXT_LOST";
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    return paramString + " failed: " + a(paramInt);
-  }
-  
-  private void a(String paramString)
-  {
-    a(paramString, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    throw new RuntimeException(a(paramString, paramInt));
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    Log.w(paramString1, a(paramString2, paramInt));
-  }
-  
-  private static String b(int paramInt)
-  {
-    return "0x" + Integer.toHexString(paramInt);
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != EGL10.EGL_NO_SURFACE))
+    for (Rect localRect = ((bkak)parambkbm).a(localRect);; localRect = null)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localGLTextureView != null) {
-        GLTextureView.a(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    }
-  }
-  
-  public int a()
-  {
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglSwapBuffers(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface)) {
-      return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
-    }
-    return 12288;
-  }
-  
-  public GL a()
-  {
-    GL localGL2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext.getGL();
-    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = localGL2;
-    GL localGL1;
-    int i;
-    if (localGLTextureView != null)
-    {
-      localGL1 = localGL2;
-      if (GLTextureView.a(localGLTextureView) != null) {
-        localGL1 = GLTextureView.a(localGLTextureView).a(localGL2);
-      }
-      localObject = localGL1;
-      if ((GLTextureView.b(localGLTextureView) & 0x3) != 0)
+      if (bkvi.b()) {}
+      for (float f1 = bkvi.e;; f1 = 0.0F)
       {
-        i = 0;
-        if ((GLTextureView.b(localGLTextureView) & 0x1) != 0) {
-          i = 1;
+        float f2 = f1;
+        if (bfyf.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext())) {
+          f2 = f1 + bfyf.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext());
         }
-        if ((GLTextureView.b(localGLTextureView) & 0x2) == 0) {
-          break label106;
+        f1 = paramMotionEvent.getX();
+        float f3 = paramMotionEvent.getY();
+        int i = (int)Math.abs(f3 - DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
+        int j;
+        int k;
+        int m;
+        switch (paramMotionEvent.getAction() & 0xFF)
+        {
+        case 3: 
+        case 4: 
+        default: 
+        case 0: 
+        case 2: 
+        case 5: 
+        case 6: 
+          do
+          {
+            return false;
+            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+            if (DoodleLayout.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) {
+              bjzx.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+            }
+            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+            parambkbm = this.jdField_a_of_type_AndroidGraphicsRect;
+            parambkbm.top -= this.jdField_a_of_type_Int;
+            parambkbm = this.jdField_a_of_type_AndroidGraphicsRect;
+            parambkbm.bottom += this.jdField_a_of_type_Int;
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getGlobalVisibleRect(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect);
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(4);
+            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, (int)f3);
+            this.jdField_a_of_type_Boolean = false;
+            return false;
+          } while ((i <= DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) || (this.jdField_a_of_type_AndroidGraphicsRect == null));
+          if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e()))
+          {
+            i = (int)f1;
+            j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+            k = (int)f3;
+            m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
+            if ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f1, f3, localRect, f2)))
+            {
+              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+              this.jdField_a_of_type_Boolean = true;
+            }
+          }
+          for (;;)
+          {
+            this.b = true;
+            return false;
+            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+            this.jdField_a_of_type_Boolean = false;
+            continue;
+            if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f3)) && (DoodleLayout.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)))
+            {
+              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, true);
+              this.jdField_a_of_type_Boolean = true;
+            }
+            else
+            {
+              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+              this.jdField_a_of_type_Boolean = false;
+            }
+          }
+        }
+        if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a()) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.e())))
+        {
+          i = (int)f1;
+          j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+          k = (int)f3;
+          m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
+          if ((DoodleLayout.e(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) && ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(f1, f3, localRect, f2))))
+          {
+            if ((parambkbm instanceof bkak))
+            {
+              ved.b("DoodleLayout", "remove face.");
+              ((bkak)parambkbm).c();
+              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, 0.0F, 0, 0, null, false, 0);
+              if (QLog.isColorLevel()) {
+                QLog.d("DoodleLayout", 2, "delete face, disable guideline");
+              }
+              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.r();
+              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.f();
+            }
+          }
+          else
+          {
+            label710:
+            if ((!DoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) || (DoodleLayout.c(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout)) || (!(parambkbm instanceof bkai))) {
+              break label1149;
+            }
+            parambkbm = (bkai)parambkbm;
+            paramMotionEvent = parambkbm.jdField_a_of_type_Bkao;
+            if ((!parambkbm.jdField_a_of_type_Bkim.a(paramMotionEvent, f1, f3, false)) || (parambkbm.jdField_a_of_type_Boolean) || (!paramMotionEvent.b) || (paramMotionEvent.c)) {
+              break label1149;
+            }
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(paramMotionEvent);
+          }
+        }
+        label854:
+        label1143:
+        label1149:
+        for (i = 1;; i = 0)
+        {
+          if (i == 0)
+          {
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.n();
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(0);
+          }
+          DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+          if ((DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) == null) && (DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) != null))
+          {
+            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(false, false, false, false);
+            if ((!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b) || (!this.b)) {
+              break label1143;
+            }
+          }
+          for (;;)
+          {
+            DoodleLayout.d(bool);
+            this.b = false;
+            return false;
+            if ((parambkbm instanceof bkba))
+            {
+              ved.b("DoodleLayout", "editpic remove text.");
+              ((bkba)parambkbm).h();
+              parambkbm.d(false);
+              break;
+            }
+            if (!(parambkbm instanceof bkay)) {
+              break;
+            }
+            paramMotionEvent = ((bkay)parambkbm).a();
+            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, paramMotionEvent);
+            ((bkay)parambkbm).c();
+            break;
+            if ((paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_AndroidGraphicsRect == null) || (!this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f3)) || (!this.jdField_a_of_type_Boolean)) {
+              break label710;
+            }
+            if ((parambkbm instanceof bkba))
+            {
+              ved.b("DoodleLayout", "remove text.");
+              ((bkba)parambkbm).h();
+              parambkbm.d(false);
+            }
+            for (;;)
+            {
+              DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, false);
+              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.r();
+              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.f();
+              break;
+              if ((parambkbm instanceof bkak))
+              {
+                ved.b("DoodleLayout", "remove face.");
+                ((bkak)parambkbm).c();
+              }
+              else if ((parambkbm instanceof bkay))
+              {
+                paramMotionEvent = ((bkay)parambkbm).a();
+                DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, paramMotionEvent);
+                this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(((bkay)parambkbm).a(), 0);
+                ((bkay)parambkbm).c();
+              }
+            }
+            DoodleLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout).a.a(Message.obtain(null, 17, 0, 0, new bjxg(false, false, false, false, true)));
+            break label854;
+            bool = false;
+          }
         }
       }
-    }
-    label106:
-    for (localObject = new bkeu();; localObject = null)
-    {
-      localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
-      return localObject;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
-      throw new RuntimeException("eglGetDisplay failed");
-    }
-    Object localObject = new int[2];
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject)) {
-      throw new RuntimeException("eglInitialize failed");
-    }
-    localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-    }
-    for (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;; this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig))
-    {
-      if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == EGL10.EGL_NO_CONTEXT))
-      {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-        a("createContext");
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-      return;
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 == null) {
-      throw new RuntimeException("egl not initialized");
-    }
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == null) {
-      throw new RuntimeException("eglDisplay not initialized");
-    }
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig == null) {
-      throw new RuntimeException("mEglConfig not initialized");
-    }
-    d();
-    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localGLTextureView != null) {}
-    for (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = GLTextureView.a(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, localGLTextureView.getSurfaceTexture()); (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == EGL10.EGL_NO_SURFACE); this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null)
-    {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError() == 12299) {
-        Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
-      }
-      return false;
-    }
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext))
-    {
-      a("EGLHelper", "eglMakeCurrent", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-      return false;
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    d();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null)
-    {
-      GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localGLTextureView != null) {
-        GLTextureView.a(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    }
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null)
-    {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
     }
   }
 }

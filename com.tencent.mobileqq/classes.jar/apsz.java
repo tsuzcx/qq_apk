@@ -1,245 +1,377 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class apsz
+  implements aysc
 {
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private final String jdField_a_of_type_JavaLangString = "FileModel<FileAssistant>";
+  final int jdField_a_of_type_Int = 3;
+  long jdField_a_of_type_Long = 0L;
+  private apaq jdField_a_of_type_Apaq;
+  apsy jdField_a_of_type_Apsy = null;
+  ayrx jdField_a_of_type_Ayrx = null;
+  aysa jdField_a_of_type_Aysa = null;
+  bgbd jdField_a_of_type_Bgbd = null;
+  VFSFile jdField_a_of_type_ComTencentMmVfsVFSFile = null;
+  InputStream jdField_a_of_type_JavaIoInputStream = null;
+  final String jdField_a_of_type_JavaLangString = "OfflineFileHttpUploder<FileAssistant>";
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = null;
+  final int jdField_c_of_type_Int = 3;
+  long jdField_c_of_type_Long = 0L;
+  String jdField_c_of_type_JavaLangString = null;
+  int jdField_d_of_type_Int = 0;
+  String jdField_d_of_type_JavaLangString = null;
+  final int e = 5;
+  int f = 0;
   
-  public static apsz a(MessageForFile paramMessageForFile)
+  public apsz(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong, apsy paramapsy)
   {
+    this.jdField_a_of_type_Aysa = paramQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_Apsy = paramapsy;
+    paramapsy = new ArrayList(1);
+    paramapsy.add(paramString1);
+    this.jdField_a_of_type_Apaq = new apaq(paramQQAppInterface, paramapsy, "/ftn_handler");
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Apaq.a();
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = String.valueOf(paramLong);
+    this.jdField_a_of_type_Bgbd = new bgbd();
+    this.jdField_a_of_type_Bgbd.a();
+    this.jdField_a_of_type_ComTencentMmVfsVFSFile = new VFSFile(paramString2);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMmVfsVFSFile.length();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Aysa.b(this.jdField_a_of_type_Ayrx);
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineFileHttpUploder<FileAssistant>", 2, "Id[" + this.jdField_d_of_type_JavaLangString + "]stop");
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_Aysc = this;
+    localayrx.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localayrx.jdField_a_of_type_Int = 1;
+    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    localayrx.e = this.jdField_d_of_type_JavaLangString;
     try
     {
-      QQAppInterface localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface1 == null) {
-        throw new NullPointerException("newFileModel entity app null!");
+      byte[] arrayOfByte = a(paramLong);
+      arrayOfByte = this.jdField_a_of_type_Apsy.a(arrayOfByte, paramLong);
+      if (arrayOfByte == null) {
+        return;
       }
-    }
-    catch (Exception localException)
-    {
-      QQAppInterface localQQAppInterface2;
-      for (;;)
+      localayrx.jdField_a_of_type_ArrayOfByte = arrayOfByte;
+      this.jdField_a_of_type_Ayrx = localayrx;
+      localayrx.jdField_a_of_type_Ayui = apug.a();
+      this.jdField_a_of_type_Aysa.a(localayrx);
+      if (QLog.isColorLevel())
       {
-        localQQAppInterface2 = null;
-      }
-      return a(apue.a(localQQAppInterface2, paramMessageForFile));
-    }
-  }
-  
-  public static apsz a(FileManagerEntity paramFileManagerEntity)
-  {
-    apsz localapsz = new apsz();
-    if ((paramFileManagerEntity == null) && (QLog.isDevelopLevel())) {
-      throw new NullPointerException("newFileModel entity is null!");
-    }
-    localapsz.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    return localapsz;
-  }
-  
-  public static apsz a(String paramString)
-  {
-    try
-    {
-      paramString = a(apue.a(new FileInfo(paramString)));
-      return paramString;
-    }
-    catch (FileNotFoundException paramString)
-    {
-      paramString.printStackTrace();
-      if (QLog.isDevelopLevel()) {
-        throw new NullPointerException("check localPath");
-      }
-    }
-    return null;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    QLog.i("FileModel<FileAssistant>" + paramString1, 1, "Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]" + paramString2);
-  }
-  
-  private void b(Activity paramActivity, int paramInt)
-  {
-    aozx.a(paramActivity, new aptf(this, paramActivity, paramInt));
-  }
-  
-  private void b(Activity paramActivity, int paramInt1, int paramInt2)
-  {
-    ForwardFileInfo localForwardFileInfo;
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null)
-      {
-        QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
+        QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "]Send Http Request!");
         return;
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localObject = null;
-      }
-      localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(paramInt2);
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend) {}
-    }
-    for (Object localObject = ((QQAppInterface)localObject).getAccount();; localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin)
-    {
-      localForwardFileInfo.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType());
-      if (localObject != null) {
-        localForwardFileInfo.a(Long.valueOf(((String)localObject).replace("+", "")).longValue());
-      }
-      localForwardFileInfo.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq);
-      localForwardFileInfo.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      localForwardFileInfo.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      localForwardFileInfo.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-      localForwardFileInfo.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-      localForwardFileInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-      localObject = new Intent(paramActivity, FileBrowserActivity.class);
-      ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
-      ((Intent)localObject).putExtra("file_enter_file_browser_type", paramInt1);
-      ((Intent)localObject).putExtra("selfSet_leftViewText", ajyc.a(2131704555));
-      paramActivity.startActivityForResult((Intent)localObject, 102);
-      paramActivity.overridePendingTransition(2130772036, 2130772038);
-      return;
+      QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "] Exception:" + localException.toString());
+      this.jdField_a_of_type_Apsy.b();
     }
   }
   
-  public void a(Activity paramActivity, int paramInt)
+  /* Error */
+  byte[] a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 2)
-    {
-      if (!bbev.d(BaseApplicationImpl.getContext())) {
-        aptv.a(2131694971);
-      }
-      aptc localaptc;
-      boolean bool1;
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 1) || (!apue.a()) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 2) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize <= 1048576L)) {
-          break;
-        }
-        localaptc = new aptc(this, paramActivity, paramInt);
-        boolean bool2 = bbwc.a(paramActivity, 2, new aptd(this, paramActivity, paramInt), "");
-        bool1 = bool2;
-        if (bool2) {
-          bool1 = bcvm.a(paramActivity, 3, new apte(this, paramActivity, paramInt));
-        }
-      } while (!bool1);
-      aptr.a(paramActivity, paramActivity.getString(2131692672), paramActivity.getString(2131692674), localaptc);
-      return;
-      b(paramActivity, paramInt);
-      return;
-    }
-    b(paramActivity, paramInt, 10004);
+    // Byte code:
+    //   0: lload_1
+    //   1: lconst_0
+    //   2: lcmp
+    //   3: ifne +8 -> 11
+    //   6: aload_0
+    //   7: lconst_0
+    //   8: putfield 50	apsz:jdField_b_of_type_Long	J
+    //   11: aload_0
+    //   12: getfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   15: ifnonnull +23 -> 38
+    //   18: aload_0
+    //   19: new 213	java/io/FileInputStream
+    //   22: dup
+    //   23: aload_0
+    //   24: getfield 40	apsz:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   27: invokespecial 214	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   30: putfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   33: aload_0
+    //   34: lconst_0
+    //   35: putfield 70	apsz:jdField_c_of_type_Long	J
+    //   38: lload_1
+    //   39: lconst_0
+    //   40: lcmp
+    //   41: ifne +113 -> 154
+    //   44: aload_0
+    //   45: getfield 70	apsz:jdField_c_of_type_Long	J
+    //   48: lconst_0
+    //   49: lcmp
+    //   50: ifeq +23 -> 73
+    //   53: aload_0
+    //   54: new 213	java/io/FileInputStream
+    //   57: dup
+    //   58: aload_0
+    //   59: getfield 40	apsz:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   62: invokespecial 214	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   65: putfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   68: aload_0
+    //   69: lconst_0
+    //   70: putfield 70	apsz:jdField_c_of_type_Long	J
+    //   73: aload_0
+    //   74: lload_1
+    //   75: putfield 70	apsz:jdField_c_of_type_Long	J
+    //   78: aload_0
+    //   79: getfield 42	apsz:jdField_a_of_type_Bgbd	Lbgbd;
+    //   82: aload_0
+    //   83: getfield 46	apsz:jdField_a_of_type_Long	J
+    //   86: aload_0
+    //   87: getfield 50	apsz:jdField_b_of_type_Long	J
+    //   90: lload_1
+    //   91: invokestatic 219	apta:a	(Lbgbd;JJJ)I
+    //   94: istore_3
+    //   95: iload_3
+    //   96: newarray byte
+    //   98: astore 4
+    //   100: aload_0
+    //   101: getfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   104: aload 4
+    //   106: iconst_0
+    //   107: iload_3
+    //   108: invokevirtual 225	java/io/InputStream:read	([BII)I
+    //   111: pop
+    //   112: aload_0
+    //   113: aload_0
+    //   114: getfield 70	apsz:jdField_c_of_type_Long	J
+    //   117: iload_3
+    //   118: i2l
+    //   119: ladd
+    //   120: putfield 70	apsz:jdField_c_of_type_Long	J
+    //   123: aload 4
+    //   125: areturn
+    //   126: astore 4
+    //   128: aload_0
+    //   129: aconst_null
+    //   130: putfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   133: aload 4
+    //   135: invokevirtual 228	java/io/FileNotFoundException:printStackTrace	()V
+    //   138: aconst_null
+    //   139: areturn
+    //   140: astore 4
+    //   142: aload_0
+    //   143: aconst_null
+    //   144: putfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   147: aload 4
+    //   149: invokevirtual 228	java/io/FileNotFoundException:printStackTrace	()V
+    //   152: aconst_null
+    //   153: areturn
+    //   154: lload_1
+    //   155: aload_0
+    //   156: getfield 70	apsz:jdField_c_of_type_Long	J
+    //   159: lcmp
+    //   160: ifle +29 -> 189
+    //   163: aload_0
+    //   164: getfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   167: lload_1
+    //   168: aload_0
+    //   169: getfield 70	apsz:jdField_c_of_type_Long	J
+    //   172: lsub
+    //   173: invokevirtual 232	java/io/InputStream:skip	(J)J
+    //   176: pop2
+    //   177: goto -104 -> 73
+    //   180: astore 4
+    //   182: aload 4
+    //   184: invokevirtual 233	java/io/IOException:printStackTrace	()V
+    //   187: aconst_null
+    //   188: areturn
+    //   189: lload_1
+    //   190: aload_0
+    //   191: getfield 70	apsz:jdField_c_of_type_Long	J
+    //   194: lcmp
+    //   195: ifge -122 -> 73
+    //   198: aload_0
+    //   199: new 213	java/io/FileInputStream
+    //   202: dup
+    //   203: aload_0
+    //   204: getfield 40	apsz:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   207: invokespecial 214	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   210: putfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   213: aload_0
+    //   214: lconst_0
+    //   215: putfield 70	apsz:jdField_c_of_type_Long	J
+    //   218: aload_0
+    //   219: getfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   222: lload_1
+    //   223: invokevirtual 232	java/io/InputStream:skip	(J)J
+    //   226: pop2
+    //   227: goto -154 -> 73
+    //   230: astore 4
+    //   232: aload_0
+    //   233: aconst_null
+    //   234: putfield 48	apsz:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   237: aload 4
+    //   239: invokevirtual 233	java/io/IOException:printStackTrace	()V
+    //   242: aconst_null
+    //   243: areturn
+    //   244: astore 4
+    //   246: aconst_null
+    //   247: astore 4
+    //   249: goto -126 -> 123
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	252	0	this	apsz
+    //   0	252	1	paramLong	long
+    //   94	24	3	i	int
+    //   98	26	4	arrayOfByte	byte[]
+    //   126	8	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   140	8	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   180	3	4	localIOException1	java.io.IOException
+    //   230	8	4	localIOException2	java.io.IOException
+    //   244	1	4	localException	Exception
+    //   247	1	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   18	38	126	java/io/FileNotFoundException
+    //   53	73	140	java/io/FileNotFoundException
+    //   163	177	180	java/io/IOException
+    //   198	227	230	java/io/IOException
+    //   100	123	244	java/lang/Exception
   }
   
-  public void a(Activity paramActivity, int paramInt1, int paramInt2)
+  public void b()
   {
-    b(paramActivity, paramInt2, paramInt1);
+    this.jdField_b_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineFileHttpUploder<FileAssistant>", 2, "Id[" + this.jdField_d_of_type_JavaLangString + "]Run");
+    }
+    a(0L);
   }
   
-  public void a(boolean paramBoolean, Context paramContext, aptu paramaptu)
+  public void onResp(aysz paramaysz)
   {
-    int j = 2;
-    if (!bbev.e(BaseApplicationImpl.getContext())) {
-      aptv.a(2131693313);
-    }
-    boolean bool1;
-    label48:
-    label91:
+    if (this.jdField_a_of_type_Boolean) {}
+    int i;
     do
     {
       return;
-      if (paramBoolean) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OfflineFileHttpUploder<FileAssistant>", 4, "logID[" + this.jdField_d_of_type_JavaLangString + "]onResp result:" + paramaysz.jdField_a_of_type_Int + " errCode:" + paramaysz.jdField_b_of_type_Int + " errDesc:" + paramaysz.jdField_a_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_Ayrx = null;
+      i = paramaysz.jdField_c_of_type_Int;
+      if ((paramaysz.jdField_b_of_type_Int == 9364) && (this.jdField_b_of_type_Int < 3))
+      {
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "]onNetChanged:mNetworkChangRetryCount[" + this.jdField_b_of_type_Int + "] retry!");
+        this.jdField_b_of_type_Int += 1;
+        this.jdField_a_of_type_Bgbd.a();
+        if (this.jdField_a_of_type_Apsy != null) {
+          this.jdField_a_of_type_Apsy.a(true);
+        }
+        a(this.jdField_b_of_type_Long);
+        return;
+      }
+      if ((apgt.a(paramaysz.jdField_b_of_type_Int)) && (this.jdField_a_of_type_Apaq != null))
+      {
+        str = this.jdField_a_of_type_Apaq.a();
+        if (str != null)
+        {
+          this.jdField_b_of_type_JavaLangString = str;
+          a(this.jdField_b_of_type_Long);
+          return;
+        }
+      }
+      if ((i == 200) && (paramaysz.jdField_a_of_type_Int == 0)) {
         break;
       }
-      bool1 = true;
-      if (!a(bool1)) {
-        break label160;
-      }
-      Activity localActivity = (Activity)paramContext;
-      if (!paramBoolean) {
-        break label140;
-      }
-      i = 3;
-      boolean bool2 = bbwc.a(localActivity, i, new apta(this, paramaptu), "");
-      bool1 = bool2;
-      if (bool2)
+      if ((paramaysz.jdField_a_of_type_Int == 9056) && (this.f < 5))
       {
-        localActivity = (Activity)paramContext;
-        if (!paramBoolean) {
-          break label146;
-        }
-        i = j;
-        bool1 = bcvm.a(localActivity, i, new aptb(this, paramaptu));
+        this.f += 1;
+        a(this.jdField_b_of_type_Long);
+        return;
       }
-    } while (!bool1);
-    if (paramBoolean) {}
-    for (int i = 2131692677;; i = 2131692674)
+      this.jdField_a_of_type_Apsy.b();
+    } while (!QLog.isColorLevel());
+    QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "]httpRetCode:" + i + "]onResp result:" + paramaysz.jdField_a_of_type_Int + " errCode:" + paramaysz.jdField_b_of_type_Int + " errDesc:" + paramaysz.jdField_a_of_type_JavaLangString);
+    return;
+    this.f = 0;
+    this.jdField_a_of_type_Bgbd.b();
+    String str = (String)paramaysz.jdField_a_of_type_JavaUtilHashMap.get("User-ReturnCode");
+    if (str != null) {}
+    for (long l = Long.parseLong(str);; l = 0L)
     {
-      aptr.a(paramContext, 2131692672, i, paramaptu);
+      if (l != 0L)
+      {
+        this.jdField_a_of_type_Apsy.b();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "ResponCode[206]But UserCode[" + l + "]");
+        return;
+      }
+      l = this.jdField_a_of_type_Apsy.a(paramaysz);
+      if (l == -1L)
+      {
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "server resp data read len -1");
+        if (QLog.isDevelopLevel()) {
+          throw new IllegalArgumentException();
+        }
+      }
+      if (l == 0L)
+      {
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "server resp data read len 0");
+        return;
+      }
+      if (l == this.jdField_a_of_type_Long)
+      {
+        this.jdField_a_of_type_Apsy.a();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "miaochuan");
+        return;
+      }
+      if (l < this.jdField_b_of_type_Long)
+      {
+        paramaysz = "RangSizeError_rangError tSize[" + String.valueOf(l) + "]<=mSize[" + String.valueOf(this.jdField_b_of_type_Long) + "],reTryafter[" + String.valueOf(this.jdField_d_of_type_Int) + "]";
+        QLog.w("OfflineFileHttpUploder<FileAssistant>", 1, "nSessionId[" + this.jdField_d_of_type_JavaLangString + "]" + paramaysz);
+        this.jdField_d_of_type_Int += 1;
+        if (this.jdField_d_of_type_Int < 3)
+        {
+          QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "server rang error retry,mmaxRangErrorRetryCount [" + this.jdField_d_of_type_Int + "], maxRangErrorRetry[" + 3 + "]");
+          a(l);
+          return;
+        }
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_d_of_type_JavaLangString + "]server rang error not retry,mmaxRangErrorRetryCount [" + this.jdField_d_of_type_Int + "], maxRangErrorRetry[" + 3 + "]");
+        this.jdField_a_of_type_Apsy.b();
+        return;
+      }
+      this.jdField_d_of_type_Int = 0;
+      this.jdField_b_of_type_Long = l;
+      this.jdField_a_of_type_Apsy.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long);
+      a(l);
       return;
-      bool1 = false;
-      break;
-      label140:
-      i = 2;
-      break label48;
-      label146:
-      i = 1;
-      break label91;
     }
-    label160:
-    paramaptu.a();
   }
   
-  public boolean a(boolean paramBoolean)
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    if (!bbev.d(BaseApplicationImpl.getContext())) {}
-    long l2;
-    long l1;
-    do
-    {
-      do
-      {
-        return false;
-        if (!apue.a())
-        {
-          a("FlowShow", " donot ShowFlowDialog! Wi-Fi");
-          return false;
-        }
-        l2 = apee.a();
-        l1 = apee.b();
-        a("FlowShow", "fileSize " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize + ",limit  " + l2);
-      } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize < l2);
-      if (paramBoolean)
-      {
-        a("FlowShow", "download model so Show!");
-        return true;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType != 3) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType != 6))
-      {
-        a("FlowShow", "cloudeType " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + " is not local File donot show!");
-        return false;
-      }
-      l2 = awzw.a();
-      a("FlowShow", "last Succ " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime + " now " + awzw.a() + " = " + (l2 - this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime) + " limit[" + l1 + "]");
-    } while (l2 - this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime < l1);
-    a("FlowShow", "Must show!");
-    return true;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, "nID[" + this.jdField_d_of_type_JavaLangString + "]onUpdateProgeress[" + paramLong1 + "]/[" + paramLong2 + "]");
+    }
   }
 }
 

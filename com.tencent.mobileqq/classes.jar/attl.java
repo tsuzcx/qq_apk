@@ -1,19 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class attl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  attl(attk paramattk, bbgg parambbgg) {}
+  attl(attg paramattg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
-    this.jdField_a_of_type_Attk.a.e();
-    paramDialogInterface = new Intent("tribe_profile_edit_finish");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131699163);
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      return;
+    }
+    this.a.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131699163);
+      return;
+    }
+    if (this.a.a())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131699153);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
   }
 }
 

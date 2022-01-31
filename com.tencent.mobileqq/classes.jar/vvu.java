@@ -1,20 +1,8 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-
 public class vvu
-  implements vvv
+  extends vvv
 {
-  public void a(@NonNull ArrayList<vvw> paramArrayList, @NonNull Context paramContext)
-  {
-    int i = 0;
-    while (i < vvw.a.length)
-    {
-      paramArrayList.add(new vvw(paramContext.getResources().getDrawable(vvw.b[i]), 0, vvw.a[i]));
-      i += 1;
-    }
-  }
+  public static final int[] a = { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
+  public static final int[] b = { 2130845861, 2130845862, 2130845863, 2130845864, 2130845865, 2130845866, 2130845867, 2130845868, 2130845869, 2130845870, 2130845871, 2130845872, 2130845874 };
 }
 
 

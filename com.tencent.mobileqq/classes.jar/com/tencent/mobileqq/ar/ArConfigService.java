@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import akxg;
+import akxf;
+import albm;
 import albn;
 import albo;
 import albp;
@@ -9,28 +10,27 @@ import albr;
 import albs;
 import albt;
 import albu;
-import albv;
-import albz;
-import alcb;
-import alci;
-import alcm;
-import alcw;
-import aled;
-import alef;
-import alel;
-import aleo;
-import aler;
-import alfb;
-import alff;
-import alio;
-import aljq;
+import alby;
+import alca;
+import alch;
+import alcl;
+import alcv;
+import alec;
+import alee;
+import alek;
+import alen;
+import aleq;
+import alfa;
+import alfe;
+import alin;
+import aljp;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
-import anox;
-import anpa;
+import anpc;
 import anpf;
+import anpk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
@@ -43,28 +43,28 @@ public class ArConfigService
   extends AppService
 {
   private int jdField_a_of_type_Int;
-  public akxg a;
-  public alci a;
-  private alcw jdField_a_of_type_Alcw = new albn(this);
-  private final aled jdField_a_of_type_Aled = new albv(this);
-  private alio jdField_a_of_type_Alio = new albr(this);
+  public akxf a;
+  public alch a;
+  private alcv jdField_a_of_type_Alcv = new albm(this);
+  private final alec jdField_a_of_type_Alec = new albu(this);
+  private alin jdField_a_of_type_Alin = new albq(this);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private RemoteCallbackList<aleo> jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  private anpa jdField_a_of_type_Anpa = new albq(this);
+  private RemoteCallbackList<alen> jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private anpf jdField_a_of_type_Anpf = new albp(this);
   public QQAppInterface a;
   public Object a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private alio jdField_b_of_type_Alio = new albs(this);
-  private RemoteCallbackList<alef> jdField_b_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private alin jdField_b_of_type_Alin = new albr(this);
+  private RemoteCallbackList<alee> jdField_b_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private alio jdField_c_of_type_Alio = new albt(this);
-  private RemoteCallbackList<alel> jdField_c_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private alin jdField_c_of_type_Alin = new albs(this);
+  private RemoteCallbackList<alek> jdField_c_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
-  private alio jdField_d_of_type_Alio = new albu(this);
-  private RemoteCallbackList<aler> jdField_d_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
+  private alin jdField_d_of_type_Alin = new albt(this);
+  private RemoteCallbackList<aleq> jdField_d_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int;
   private boolean jdField_e_of_type_Boolean;
@@ -73,8 +73,8 @@ public class ArConfigService
   public ArConfigService()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Alci = null;
-    this.jdField_a_of_type_Akxg = null;
+    this.jdField_a_of_type_Alch = null;
+    this.jdField_a_of_type_Akxf = null;
     this.jdField_a_of_type_JavaLangObject = new Object();
     QLog.w("ArConfig_ArConfigService", 1, "ArConfig_ArConfigService, init");
   }
@@ -85,28 +85,28 @@ public class ArConfigService
       QLog.d("ArConfig_ArConfigService", 2, "downloadArSoInternal");
     }
     if (c()) {}
-    anpf localanpf;
+    anpk localanpk;
     for (boolean bool = true;; bool = b())
     {
       this.jdField_b_of_type_Boolean = bool;
       if (this.jdField_b_of_type_Boolean) {
         break label119;
       }
-      localanpf = (anpf)((anox)this.app.getManager(77)).a(anpf.a);
-      if (localanpf != null)
+      localanpk = (anpk)((anpc)this.app.getManager(77)).a(anpk.a);
+      if (localanpk != null)
       {
-        localanpf.a(this.jdField_a_of_type_Anpa);
+        localanpk.a(this.jdField_a_of_type_Anpf);
         this.jdField_a_of_type_Int = 0;
-        XmlData localXmlData = localanpf.a();
+        XmlData localXmlData = localanpk.a();
         if ((localXmlData == null) || (localXmlData.loadState != 2)) {
           break;
         }
         QLog.d("ArConfig_ArConfigService", 1, "downloadArSoInternal in download queue? force download!!!");
-        localanpf.a(true, true);
+        localanpk.a(true, true);
       }
       return;
     }
-    localanpf.a(true);
+    localanpk.a(true);
     return;
     label119:
     this.jdField_a_of_type_Int = 100;
@@ -124,7 +124,7 @@ public class ArConfigService
         if (i < j) {
           try
           {
-            ((aler)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramInt);
+            ((aleq)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramInt);
             i += 1;
           }
           catch (Exception localException1) {}
@@ -143,7 +143,7 @@ public class ArConfigService
   public static boolean a(AppRuntime paramAppRuntime)
   {
     boolean bool2 = false;
-    paramAppRuntime = (anpf)((anox)paramAppRuntime.getManager(77)).a(anpf.a);
+    paramAppRuntime = (anpk)((anpc)paramAppRuntime.getManager(77)).a(anpk.a);
     boolean bool3;
     int i;
     if (paramAppRuntime != null)
@@ -157,7 +157,7 @@ public class ArConfigService
     label140:
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool4 = albz.b(albz.a);
+      boolean bool4 = alby.b(alby.a);
       bool2 = bool1 & bool4;
       if (QLog.isColorLevel()) {
         QLog.d("ArConfig_ArConfigService", 2, String.format("isArSoDownload isSuccess=%s version=%s fileExist = %s result=%s ", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(i), Boolean.valueOf(bool4), Boolean.valueOf(bool2) }));
@@ -172,8 +172,8 @@ public class ArConfigService
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArConfigService", 2, "downArCoreSoInternal");
     }
-    alff localalff = alfb.a();
-    if (localalff == null)
+    alfe localalfe = alfa.a();
+    if (localalfe == null)
     {
       this.jdField_e_of_type_Boolean = true;
       this.jdField_d_of_type_Int = 100;
@@ -188,13 +188,13 @@ public class ArConfigService
         if (this.jdField_e_of_type_Boolean) {
           break;
         }
-        localObject = (akxg)this.app.getManager(220);
+        localObject = (akxf)this.app.getManager(220);
       } while (localObject == null);
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new alcb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, localalff.a(), this.jdField_c_of_type_Alio);
+          new alca(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, localalfe.a(), this.jdField_c_of_type_Alin);
         }
         this.jdField_d_of_type_Int = 0;
         return;
@@ -217,20 +217,20 @@ public class ArConfigService
   
   public static boolean b(AppRuntime paramAppRuntime)
   {
-    alff localalff = alfb.a();
-    if (localalff == null) {
+    alfe localalfe = alfa.a();
+    if (localalfe == null) {
       return true;
     }
-    Object localObject = (akxg)paramAppRuntime.getManager(220);
+    Object localObject = (akxf)paramAppRuntime.getManager(220);
     if (localObject != null)
     {
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject == null) || (((ARCommonConfigInfo)localObject).nativeSoResList == null) || (((ARCommonConfigInfo)localObject).nativeSoResList.size() <= 0)) {
           break label118;
         }
-        bool = new alcb((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, localalff.a());
+        bool = new alca((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, localalfe.a());
       }
       catch (Exception paramAppRuntime)
       {
@@ -257,13 +257,13 @@ public class ArConfigService
     this.f = e();
     if (!this.f)
     {
-      Object localObject = (akxg)this.app.getManager(220);
+      Object localObject = (akxf)this.app.getManager(220);
       if (localObject != null) {}
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new alcb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arfeature", this.jdField_d_of_type_Alio);
+          new alca(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arfeature", this.jdField_d_of_type_Alin);
         }
         this.jdField_e_of_type_Int = 0;
         return;
@@ -284,7 +284,7 @@ public class ArConfigService
   
   private static boolean c()
   {
-    return albz.a(albz.a);
+    return alby.a(alby.a);
   }
   
   public static boolean c(AppRuntime paramAppRuntime)
@@ -300,13 +300,13 @@ public class ArConfigService
     this.jdField_c_of_type_Boolean = f();
     if (!this.jdField_c_of_type_Boolean)
     {
-      Object localObject = (akxg)this.app.getManager(220);
+      Object localObject = (akxf)this.app.getManager(220);
       if (localObject != null) {}
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new alcb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud", this.jdField_b_of_type_Alio);
+          new alca(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud", this.jdField_b_of_type_Alin);
         }
         this.jdField_b_of_type_Int = 0;
         return;
@@ -332,16 +332,16 @@ public class ArConfigService
   
   public static boolean d(AppRuntime paramAppRuntime)
   {
-    Object localObject = (akxg)paramAppRuntime.getManager(220);
+    Object localObject = (akxf)paramAppRuntime.getManager(220);
     if (localObject != null)
     {
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject == null) || (((ARCommonConfigInfo)localObject).nativeSoResList == null) || (((ARCommonConfigInfo)localObject).nativeSoResList.size() <= 0)) {
           break label105;
         }
-        bool = new alcb((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud");
+        bool = new alca((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud");
       }
       catch (Exception paramAppRuntime)
       {
@@ -368,13 +368,13 @@ public class ArConfigService
     this.jdField_d_of_type_Boolean = g();
     if (!this.jdField_d_of_type_Boolean)
     {
-      Object localObject = (akxg)this.app.getManager(220);
+      Object localObject = (akxf)this.app.getManager(220);
       if (localObject != null) {}
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-          new alcb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2", this.jdField_a_of_type_Alio);
+          new alca(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2", this.jdField_a_of_type_Alin);
         }
         this.jdField_c_of_type_Int = 0;
         return;
@@ -416,7 +416,7 @@ public class ArConfigService
       while (i < j) {
         try
         {
-          ((aler)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a();
+          ((aleq)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a();
           i += 1;
         }
         catch (Exception localException1) {}
@@ -438,16 +438,16 @@ public class ArConfigService
   
   public static boolean f(AppRuntime paramAppRuntime)
   {
-    Object localObject = (akxg)paramAppRuntime.getManager(220);
+    Object localObject = (akxf)paramAppRuntime.getManager(220);
     if (localObject != null)
     {
       try
       {
-        localObject = ((akxg)localObject).a(true);
+        localObject = ((akxf)localObject).a(true);
         if ((localObject == null) || (((ARCommonConfigInfo)localObject).nativeSoResList == null) || (((ARCommonConfigInfo)localObject).nativeSoResList.size() <= 0)) {
           break label105;
         }
-        bool = new alcb((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2");
+        bool = new alca((QQAppInterface)paramAppRuntime).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2");
       }
       catch (Exception paramAppRuntime)
       {
@@ -476,7 +476,7 @@ public class ArConfigService
       while (i < j) {
         try
         {
-          ((aler)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).b();
+          ((aleq)this.jdField_d_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).b();
           i += 1;
         }
         catch (Exception localException1) {}
@@ -501,7 +501,7 @@ public class ArConfigService
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArConfigService", 2, "onBind");
     }
-    return this.jdField_a_of_type_Aled;
+    return this.jdField_a_of_type_Alec;
   }
   
   public void onCreate()
@@ -513,16 +513,16 @@ public class ArConfigService
     if ((this.app instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.app);
-      this.jdField_a_of_type_Alci = ((alci)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(168));
-      if (this.jdField_a_of_type_Alci != null) {
-        this.jdField_a_of_type_Alci.a(this.jdField_a_of_type_Alcw);
+      this.jdField_a_of_type_Alch = ((alch)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(168));
+      if (this.jdField_a_of_type_Alch != null) {
+        this.jdField_a_of_type_Alch.a(this.jdField_a_of_type_Alcv);
       }
-      this.jdField_a_of_type_Akxg = ((akxg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
-      if (this.jdField_a_of_type_Akxg != null) {
-        this.jdField_a_of_type_Akxg.a(this.jdField_a_of_type_Alcw);
+      this.jdField_a_of_type_Akxf = ((akxf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
+      if (this.jdField_a_of_type_Akxf != null) {
+        this.jdField_a_of_type_Akxf.a(this.jdField_a_of_type_Alcv);
       }
-      alcm.a(new albo(this));
-      aljq.a(new albp(this));
+      alcl.a(new albn(this));
+      aljp.a(new albo(this));
     }
   }
   
@@ -538,14 +538,14 @@ public class ArConfigService
     this.jdField_b_of_type_AndroidOsRemoteCallbackList = null;
     this.jdField_c_of_type_AndroidOsRemoteCallbackList.kill();
     this.jdField_c_of_type_AndroidOsRemoteCallbackList = null;
-    alcm.a();
-    aljq.a();
+    alcl.a();
+    aljp.a();
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Alci != null) {
-      this.jdField_a_of_type_Alci.b(this.jdField_a_of_type_Alcw);
+    if (this.jdField_a_of_type_Alch != null) {
+      this.jdField_a_of_type_Alch.b(this.jdField_a_of_type_Alcv);
     }
     return super.onUnbind(paramIntent);
   }

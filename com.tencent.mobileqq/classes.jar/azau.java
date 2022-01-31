@@ -1,50 +1,33 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class azau
-  implements TVK_SDKMgr.OnLogListener
+  extends ClickableSpan
 {
-  public azau(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public azau(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, azcb paramazcb) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", String.format("https://buluo.qq.com/mobile/topic_video_group.html?themeid=%d&_bid=128&_wwv=1024&_wv=1027&webview=1", new Object[] { Integer.valueOf(this.jdField_a_of_type_Azcb.h) }));
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
+    if (this.jdField_a_of_type_Azcb.c == 31) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      axqy.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_theme", 0, 0, this.jdField_a_of_type_Azcb.d, this.jdField_a_of_type_Azcb.b + "", "", paramView);
+      return;
     }
-    return 0;
   }
   
-  public int e(String paramString1, String paramString2)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
+    paramTextPaint.setColor(-18432);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

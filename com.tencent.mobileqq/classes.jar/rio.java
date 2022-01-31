@@ -1,15 +1,21 @@
-import android.os.MessageQueue.IdleHandler;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rio
-  implements MessageQueue.IdleHandler
+  implements View.OnClickListener
 {
-  public rio(FastWebActivity paramFastWebActivity) {}
+  public rio(FastWebActivity paramFastWebActivity, boolean paramBoolean) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
-    return false;
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).removeCallbacksAndMessages(null);
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(4);
+    if (!this.jdField_a_of_type_Boolean) {
+      FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 2);
+    }
   }
 }
 

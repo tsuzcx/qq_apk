@@ -1,21 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import java.util.ArrayList;
 
-class alrc
-  implements admv
+public class alrc
+  implements View.OnClickListener
 {
-  alrc(alra paramalra) {}
+  alrc(alqz paramalqz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    boolean bool = ((adlk)alra.a(this.a).get(alra.a(this.a))).checkShare();
-    if (bool != alra.a(this.a))
-    {
-      alra.a(this.a, bool);
-      alra.a(this.a, alra.a(this.a));
+    if ((alqz.a(this.a) == null) || (alqz.a(this.a).size() <= 0) || (alqz.a(this.a) >= alqz.a(this.a).size()) || (alqz.a(this.a).get(alqz.a(this.a)) == null)) {
+      return;
     }
+    paramView = ((adli)alqz.a(this.a).get(alqz.a(this.a))).getAppName();
+    ArkAppCenter.a().post(paramView, new ArkAiAppPanel.4.1(this, paramView));
   }
-  
-  public void b() {}
 }
 
 

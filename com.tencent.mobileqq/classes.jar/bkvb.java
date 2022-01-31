@@ -1,27 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-public class bkvb
-  extends Handler
+public final class bkvb
+  implements Parcelable.Creator<FilterCategory>
 {
-  public bkvb(BeautyBar paramBeautyBar) {}
-  
-  public void handleMessage(Message paramMessage)
+  public FilterCategory a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
   }
 }
 

@@ -1,32 +1,46 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.GifAnimationDrawable;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.2.1.1;
 import java.util.ArrayList;
 
 public class biun
-  extends GifAnimationDrawable
+  implements biwf
 {
-  public biun(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
+  biun(bium parambium) {}
+  
+  public void a()
   {
-    super(paramContext, paramArrayList, paramLong);
+    QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateFail");
+    biuk.d(this.a.a);
+    bfny.a(new AEGIFSinglePreviewFragment.2.1.1(this));
   }
   
-  public void start()
+  public void a(String paramString)
   {
-    if (!this.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("zswp20pro", 2, "start");
+    QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateSuccess, come from AECAMERA_MODE_ALL");
+    biuk.d(this.a.a);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    String str;
+    if (!biuk.a(this.a.a)) {
+      if (biuk.a(this.a.a) != null) {
+        str = biuk.a(this.a.a).a();
       }
-      this.a = true;
-      this.b = true;
-      this.d = false;
-      a();
     }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
+      localArrayList1.add(paramString);
+      localArrayList2.add(str);
+      biuk.a(this.a.a, localArrayList1, localArrayList2);
+      if ((!biuk.b(this.a.a)) || (biuk.a(this.a.a) == null)) {
+        break;
+      }
+      biuk.a(this.a.a, paramString, biuk.a(this.a.a), str);
       return;
+      str = "";
+      continue;
+      str = biuk.b(this.a.a);
     }
-    QLog.d("zswp20pro", 2, "start but isRunning");
+    bjzs.a(biuk.a(this.a.a), paramString, birt.b(this.a.a.getActivity()), true, str);
   }
 }
 

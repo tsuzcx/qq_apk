@@ -1,9 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptConstants.1;
-import java.util.Map;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class sbo
+  extends akat
 {
-  public static final Map<String, String> a = new SubscriptConstants.1();
+  public sbo(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.b();
+  }
 }
 
 

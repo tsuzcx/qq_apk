@@ -1,7 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aayf
   implements DialogInterface.OnClickListener
@@ -10,9 +10,8 @@ public class aayf
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.e();
-    paramDialogInterface.d();
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
     this.a.finish();
   }
 }

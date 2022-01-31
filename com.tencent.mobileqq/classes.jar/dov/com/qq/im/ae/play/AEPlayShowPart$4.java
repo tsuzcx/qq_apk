@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import biwr;
+import bixi;
 
 public class AEPlayShowPart$4
   implements Runnable
 {
-  public AEPlayShowPart$4(biwr parambiwr, String paramString1, String paramString2) {}
+  public AEPlayShowPart$4(bixi parambixi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    biwr.a(this.this$0, this.a, this.b);
+    bixi.a(this.this$0, this.a, this.b);
   }
 }
 

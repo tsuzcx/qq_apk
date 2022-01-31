@@ -1,11 +1,13 @@
+import android.os.Handler;
+
 class vcy
-  implements vzt<uzb>
+  implements uyx
 {
-  vcy(vcs paramvcs) {}
+  vcy(vcx paramvcx) {}
   
-  public uzb a()
+  public void a(uyc paramuyc)
   {
-    return new uzb();
+    vcp.a(this.a.a).sendMessage(vcp.a(this.a.a).obtainMessage(0, paramuyc));
   }
 }
 

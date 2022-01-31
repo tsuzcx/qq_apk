@@ -1,31 +1,38 @@
+import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.6.1;
-import java.util.Map;
-import java.util.UUID;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bakb
-  extends xbe
+class bakb
+  extends xap
 {
-  public bakb(TroopFileTransferManager paramTroopFileTransferManager) {}
+  bakb(bajy parambajy) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    if (!paramBoolean) {}
-    do
+    if (paramBundle == null) {
+      return;
+    }
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298865);
+    paramBundle = paramBundle.getString("fileId");
+    azst.c("TroopFileManager", azst.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-        paramString = paramBundle.getString("itemKey");
-      } while (paramString == null);
-      paramString = UUID.fromString(paramString);
-      paramBundle = paramBundle.getString("fileId");
-      paramString = (azpg)this.a.a().b.get(paramString);
-    } while ((paramString == null) || (paramInt1 != 0));
-    xap.a(this.a.a, this.a.e, paramString.a, paramString.b, TroopFileTransferManager.a(this.a));
-    ThreadManager.executeOnSubThread(new TroopFileTransferManager.6.1(this, paramBundle, paramString));
+      this.a.b(paramBundle);
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131715375), 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131715372), 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131715356), 0).b(i);
   }
 }
 

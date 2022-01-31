@@ -1,22 +1,21 @@
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
 class rso
-  extends bfmg
+  implements bfph
 {
-  rso(rsn paramrsn) {}
+  rso(rsj paramrsj, bfpc parambfpc) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onAnimationEnd(paramAnimation);
-    if (rsm.a(this.a.a) != null)
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
     {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(rsm.a(this.a.a));
-      rsm.a(this.a.a).a(paramAnimation, rsm.a(this.a.a));
-      bcpw.a(this.a.a.a, 2, 2131718443, 0).a();
     }
+    do
+    {
+      return;
+    } while ((!rsj.b(this.jdField_a_of_type_Rsj)) || (!rsj.a(this.jdField_a_of_type_Rsj, "deleteFeeds")));
+    rmr.a(rsj.a(this.jdField_a_of_type_Rsj), rsj.a(this.jdField_a_of_type_Rsj));
   }
 }
 

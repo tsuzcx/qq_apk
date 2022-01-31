@@ -3,10 +3,10 @@ package com.tencent.mobileqq.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bazo;
-import bbdj;
-import bbwg;
-import bbwi;
+import bbac;
+import bbdx;
+import bbwu;
+import bbww;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -40,13 +40,13 @@ public final class ProfileCardUtil$4
         {
           try
           {
-            str2 = bazo.b(this.a.getApplication());
+            str2 = bbac.b(this.a.getApplication());
             File localFile = new File(str2 + ".tmp");
-            bbwg localbbwg = new bbwg((String)localObject, localFile);
-            localbbwg.f = "profileCardDownload";
-            localbbwg.e = "VIP_profilecard";
-            localbbwg.a = 1;
-            int j = bbwi.a(localbbwg, this.a);
+            bbwu localbbwu = new bbwu((String)localObject, localFile);
+            localbbwu.f = "profileCardDownload";
+            localbbwu.e = "VIP_profilecard";
+            localbbwu.a = 1;
+            int j = bbww.a(localbbwu, this.a);
             if (j != 0) {
               break label595;
             }
@@ -58,19 +58,19 @@ public final class ProfileCardUtil$4
               if (!localFile.exists()) {
                 break;
               }
-              localObject = bbdj.a(localFile);
+              localObject = bbdx.a(localFile);
               if ((TextUtils.isEmpty((CharSequence)localObject)) || (new JSONObject((String)localObject).optJSONArray("style").length() <= 0)) {
                 break;
               }
-              bbdj.d(str2 + ".tmp", str2);
+              bbdx.d(str2 + ".tmp", str2);
               localFile.delete();
               localObject = new File(str2).getParentFile().listFiles();
               if ((localObject != null) && (localObject.length > 0) && (i < localObject.length))
               {
                 str2 = localObject[i].getName();
-                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("8.2.8")))
+                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("8.3.0")))
                 {
-                  bbdj.d(str2);
+                  bbdx.d(str2);
                   if (QLog.isColorLevel()) {
                     QLog.i("Q.profilecard.FrdProfileCard", 2, "delete old file=" + str2);
                   }
@@ -79,7 +79,7 @@ public final class ProfileCardUtil$4
               else
               {
                 localSharedPreferences.edit().putString("cardTemplateVersion", str1).commit();
-                bazo.a(this.a, true);
+                bbac.a(this.a, true);
                 if (!QLog.isColorLevel()) {
                   break;
                 }

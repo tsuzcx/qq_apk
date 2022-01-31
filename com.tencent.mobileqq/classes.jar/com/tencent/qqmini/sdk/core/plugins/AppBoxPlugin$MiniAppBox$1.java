@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
 
 class AppBoxPlugin$MiniAppBox$1
@@ -18,7 +18,7 @@ class AppBoxPlugin$MiniAppBox$1
     }
     catch (Throwable localThrowable)
     {
-      besl.d("SDK_MiniAppBox", "adBox show Exception:", localThrowable);
+      betc.d("SDK_MiniAppBox", "adBox show Exception:", localThrowable);
       AppBoxPlugin.MiniAppBox.access$100(this.this$1, false, "operateAppBox", this.val$compId, 1003, this.val$callbackId);
     }
   }

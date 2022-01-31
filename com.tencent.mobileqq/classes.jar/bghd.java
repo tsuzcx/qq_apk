@@ -1,203 +1,89 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.HandlerThread;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.comic.PluginPreloader.1;
+import cooperation.plugin.PluginInfo;
+import mqq.app.AppRuntime;
 
 public class bghd
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private static final Map<String, String> jdField_a_of_type_JavaUtilMap;
-  public static volatile boolean a;
-  private static Map<String, bghe> b;
+  private static final Handler a;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add("index");
-    jdField_a_of_type_JavaUtilArrayList.add("fav");
-    jdField_a_of_type_JavaUtilArrayList.add("category");
-    jdField_a_of_type_JavaUtilArrayList.add("more");
-    jdField_a_of_type_JavaUtilArrayList.add("group");
-    jdField_a_of_type_JavaUtilMap = new HashMap(5);
-    jdField_a_of_type_JavaUtilMap.put("NavConfig", "index");
-    jdField_a_of_type_JavaUtilMap.put("FavNavConfig", "fav");
-    jdField_a_of_type_JavaUtilMap.put("CateNavConfig", "category");
-    jdField_a_of_type_JavaUtilMap.put("MoreNavConfig", "more");
-    jdField_a_of_type_JavaUtilMap.put("GroupNavConfig", "group");
-    jdField_a_of_type_Boolean = a();
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("PluginPreloader", 0);
+    localHandlerThread.start();
+    a = new Handler(localHandlerThread.getLooper());
   }
   
-  public static File a()
+  public static void a(bggz parambggz)
   {
-    return new File(BaseApplicationImpl.getApplication().getFilesDir(), "comic_config/");
+    a(parambggz, 0L);
   }
   
-  public static String a(String paramString)
+  public static void a(bggz parambggz, long paramLong)
   {
-    if (jdField_a_of_type_Boolean) {
-      return new File(c(), paramString).getAbsolutePath();
-    }
-    return null;
-  }
-  
-  public static List<bghe> a()
-  {
-    Object localObject = a();
-    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    if ((parambggz == null) || (parambggz.jdField_a_of_type_JavaLangString == null))
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((Map)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        bghe localbghe = (bghe)((Iterator)localObject).next();
-        if (localbghe.jdField_a_of_type_Int >= 0) {
-          localArrayList.add(localbghe);
-        }
-      }
-      Collections.sort(localArrayList);
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public static Map<String, bghe> a()
-  {
-    if (b == null) {
-      a();
-    }
-    return b;
-  }
-  
-  public static JSONObject a()
-  {
-    String str = bbdj.a(new File(a(), "vipComic_nav_config.json"));
-    if (!TextUtils.isEmpty(str)) {
-      return new JSONObject(str);
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONObject localJSONObject1 = a();
-        if (localJSONObject1 != null)
-        {
-          if (b != null) {
-            b.clear();
-          }
-          b = new HashMap();
-          Iterator localIterator = localJSONObject1.keys();
-          if (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            Object localObject = localJSONObject1.optJSONArray(str);
-            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
-              continue;
-            }
-            i = ((JSONArray)localObject).length() - 1;
-            if (i < 0) {
-              continue;
-            }
-            JSONObject localJSONObject2 = ((JSONArray)localObject).optJSONObject(i);
-            if ((localJSONObject2 == null) || (!bcgc.a(localJSONObject2, str))) {
-              break label247;
-            }
-            localObject = new bghe();
-            ((bghe)localObject).jdField_a_of_type_JavaLangString = localJSONObject2.optString("tabKey");
-            if ((TextUtils.isEmpty(((bghe)localObject).jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaUtilMap.containsKey(str))) {
-              ((bghe)localObject).jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_JavaUtilMap.get(str));
-            }
-            ((bghe)localObject).jdField_a_of_type_Int = localJSONObject2.optInt("sequence");
-            ((bghe)localObject).b = localJSONObject2.optString("tabName");
-            ((bghe)localObject).c = localJSONObject2.optString("tabUrl");
-            ((bghe)localObject).d = localJSONObject2.optString("tabIcon");
-            b.put(str, localObject);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("VipComicNavConfigHelper", 1, localJSONException, new Object[0]);
-      }
-      label247:
-      i -= 1;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (a()) {
-      a();
-    }
-    for (;;)
-    {
-      if (!b()) {
-        ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(100L, "vipComic_nav_tabIcon.zip", "helper");
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloader", 2, "the preload strategy or target process is null.");
       }
       return;
-      ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(100L, "vipComic_nav_config.json", "helper");
     }
+    a.postDelayed(new PluginPreloader.1(parambggz), paramLong);
   }
   
-  public static boolean a()
+  public static void a(AppRuntime paramAppRuntime, bggz parambggz, int paramInt, bghf parambghf)
   {
-    return b().exists();
-  }
-  
-  public static File b()
-  {
-    return new File(a(), "vipComic_nav_config.json");
-  }
-  
-  public static boolean b()
-  {
-    jdField_a_of_type_Boolean = c();
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static File c()
-  {
-    return new File(a(), "tab_icons/");
-  }
-  
-  private static boolean c()
-  {
-    Object localObject1 = a();
-    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
+    parambggz.a(parambghf);
+    if (parambggz.jdField_b_of_type_JavaLangString != null)
     {
-      Object localObject2 = c().list();
-      if ((localObject2 != null) && (localObject2.length > 0))
+      bglh localbglh = (bglh)paramAppRuntime.getManager(27);
+      if (localbglh == null)
       {
-        localObject2 = Arrays.asList((Object[])localObject2);
-        localObject1 = ((Map)localObject1).values().iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          if (!((List)localObject2).contains(((bghe)((Iterator)localObject1).next()).d)) {
-            return false;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "pluginType:" + parambggz.jdField_b_of_type_Int + " preload:fail:nopluginmanager");
         }
-        return true;
+        bggx.a(paramAppRuntime, 1, parambggz.jdField_b_of_type_Int, parambggz.c, 3, "preload:fail:nopluginmanager", paramInt, new String[] { String.valueOf(parambggz.d) });
+        return;
       }
+      PluginInfo localPluginInfo = localbglh.a(parambggz.jdField_b_of_type_JavaLangString);
+      if (localPluginInfo == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "pluginType:" + parambggz.jdField_b_of_type_Int + " preload:fail:noplugininfo");
+        }
+        bggx.a(paramAppRuntime, 1, parambggz.jdField_b_of_type_Int, parambggz.c, 3, "preload:fail:noplugininfo", paramInt, new String[] { String.valueOf(parambggz.d) });
+        return;
+      }
+      if (localPluginInfo.mState == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PluginPreloader", 2, "plugin already installed, do preload.");
+        }
+        bggx.a(paramAppRuntime, 0, parambggz.jdField_b_of_type_Int, parambggz.c, parambghf.jdField_a_of_type_Int, parambghf.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambggz.d) });
+        parambggz.a();
+        return;
+      }
+      if ((parambggz.jdField_a_of_type_Boolean) && (bbfj.h(BaseApplicationImpl.getContext())))
+      {
+        localbglh.installPlugin(parambggz.jdField_b_of_type_JavaLangString, new bghe(paramAppRuntime, parambggz, parambghf, paramInt));
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreloader", 2, "pluginType:" + parambggz.jdField_b_of_type_Int + " preload:fail:uninstall");
+      }
+      bggx.a(paramAppRuntime, 1, parambggz.jdField_b_of_type_Int, parambggz.c, 3, "preload:fail:uninstall", paramInt, new String[] { String.valueOf(parambggz.d) });
+      return;
     }
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginPreloader", 2, "do preload");
+    }
+    bggx.a(paramAppRuntime, 0, parambggz.jdField_b_of_type_Int, parambggz.c, parambghf.jdField_a_of_type_Int, parambghf.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambggz.d) });
+    parambggz.a();
   }
 }
 

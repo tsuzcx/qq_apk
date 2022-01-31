@@ -1,110 +1,171 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.net.ReportLocationHandler.1;
 import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
-import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
+import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.im.oidb.location.RoomOperate.ReqReportLocation;
+import tencent.im.oidb.location.RoomOperate.RspReportLocation;
 import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
 import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
 public class arvc
-  extends arum<aruq>
+  extends aruo<arus>
 {
-  private aruq a;
+  private static int jdField_a_of_type_Int = 2000;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private arvd jdField_a_of_type_Arvd;
+  private Long jdField_a_of_type_JavaLangLong;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+  private int b;
   
-  arvc(QQAppInterface paramQQAppInterface, aruq paramaruq)
+  public arvc(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Aruq = paramaruq;
   }
   
-  private void a(int paramInt1, int paramInt2, long paramLong)
+  private void b() {}
+  
+  private void c()
   {
-    Object localObject = this.jdField_a_of_type_Aruq.a();
     if (QLog.isColorLevel()) {
-      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
+      QLog.d("ReportLocationHandler", 2, new Object[] { "stopReport: invoked. ", " loopReportStopped: ", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean });
     }
-    if (localObject == null) {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+  }
+  
+  int a()
+  {
+    return this.b;
+  }
+  
+  protected arus a()
+  {
+    return arus.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangLong + "";
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportLocationHandler", 2, "destroy: invoked. ");
+    }
+    c();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(int paramInt, long paramLong, aruk paramaruk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocation: invoked. ", "uinType = [" + paramInt + "], sessionUin = [" + paramLong + "], locationItem = [" + paramaruk + "]" });
+    }
+    RoomOperate.ReqReportLocation localReqReportLocation = new RoomOperate.ReqReportLocation();
+    qq_lbs_share.RoomKey localRoomKey = aryz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, paramLong);
+    localReqReportLocation.room_key.set(localRoomKey);
+    localReqReportLocation.room_key.setHasFlag(true);
+    localReqReportLocation.direction.set(paramaruk.a());
+    paramaruk = paramaruk.a();
+    if (paramaruk == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocation: invoked. ", " latLng: ", paramaruk });
+      }
       return;
     }
-    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
-    qq_lbs_share.RoomKey localRoomKey = aryx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, paramLong);
-    localReqRoomOperation.room_key.set(localRoomKey);
-    localReqRoomOperation.room_key.setHasFlag(true);
-    localReqRoomOperation.room_operation.set(paramInt1);
-    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
-    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.room_operation");
-    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
-    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
-    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
-    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    aryx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    aryw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
-  }
-  
-  protected aruq a()
-  {
-    return aruq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    try
-    {
-      long l = Long.parseLong(paramString);
-      a(paramInt1, paramInt2, l);
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("RoomOperateHandler", 1, "requestOperateRoom: failed. ", paramString);
-    }
+    localReqReportLocation.lat.set(paramaruk.latitude);
+    localReqReportLocation.lon.set(paramaruk.longitude);
+    paramaruk = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.report_location");
+    paramaruk.putWupBuffer(localReqReportLocation.toByteArray());
+    a().sendPbReq(paramaruk);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
-    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
+    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject))
+    {
       try
       {
-        i = paramToServiceMsg.extraData.getInt("OPT_ROOM_TYPE");
-        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
-        paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
-        paramFromServiceMsg = (qq_lbs_share.ResultInfo)((RoomOperate.RspRoomOperation)new RoomOperate.RspRoomOperation().mergeFrom((byte[])paramObject)).msg_result.get();
-        if (aryx.a(paramFromServiceMsg))
+        paramToServiceMsg = (RoomOperate.RspReportLocation)new RoomOperate.RspReportLocation().mergeFrom((byte[])paramObject);
+        if (aryz.a((qq_lbs_share.ResultInfo)paramToServiceMsg.msg_result.get()))
         {
-          a().notifyUI(1, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramToServiceMsg });
+          i = paramToServiceMsg.req_interval.get();
+          if (i != 0) {
+            jdField_a_of_type_Int = i * 1000;
+          }
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " intervalMillis: ", Integer.valueOf(jdField_a_of_type_Int) });
           return;
         }
-        a(j, paramToServiceMsg, paramFromServiceMsg.uint32_result.get(), i);
+        b();
         return;
       }
       catch (Exception paramToServiceMsg)
       {
-        QLog.e("RoomOperateHandler", 1, "requestOperateRoomResp: failed. ", paramToServiceMsg);
+        QLog.e("ReportLocationHandler", 1, "requestReportLocationResp: failed. ", paramToServiceMsg);
         return;
       }
     }
-    if (paramFromServiceMsg != null)
+    else
     {
-      i = paramFromServiceMsg.getResultCode();
-      if (QLog.isColorLevel()) {
-        QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+      if (paramFromServiceMsg != null)
+      {
+        i = paramFromServiceMsg.getResultCode();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+        }
       }
+      b();
     }
-    a(-2, "", -10001, -1);
+  }
+  
+  public void a(String paramString, arvd paramarvd)
+  {
+    this.jdField_a_of_type_Arvd = paramarvd;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportLocationHandler", 2, new Object[] { "startReportInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.jdField_a_of_type_JavaLangRunnable = new ReportLocationHandler.1(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public boolean a()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean a(arum paramarum)
+  {
+    if (!a()) {
+      return false;
+    }
+    return new arum(this.b, "" + this.jdField_a_of_type_JavaLangLong).equals(paramarum);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return (!TextUtils.isEmpty(a())) && (a().equals(paramString)) && (a() == paramInt);
   }
 }
 

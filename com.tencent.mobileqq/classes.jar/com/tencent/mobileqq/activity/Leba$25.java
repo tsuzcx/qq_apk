@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import atxb;
-import axqw;
+import atxd;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$25
@@ -11,11 +11,11 @@ class Leba$25
   
   public void run()
   {
-    atxb localatxb = (atxb)this.this$0.a.getManager(160);
-    if (localatxb.a(localatxb.a(10013))) {
-      localatxb.a(10013);
+    atxd localatxd = (atxd)this.this$0.a.getManager(160);
+    if (localatxd.a(localatxd.a(10013))) {
+      localatxd.a(10013);
     }
-    axqw.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
+    axqy.b(this.this$0.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
   }
 }
 

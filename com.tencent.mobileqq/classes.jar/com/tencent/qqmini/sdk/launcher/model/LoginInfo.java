@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import berd;
+import beru;
 
 public class LoginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LoginInfo> CREATOR = new berd();
+  public static final Parcelable.Creator<LoginInfo> CREATOR = new beru();
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private byte[] jdField_a_of_type_ArrayOfByte;

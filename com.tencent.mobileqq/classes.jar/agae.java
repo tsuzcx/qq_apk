@@ -6,45 +6,12 @@ import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 public class agae
   implements View.OnClickListener
 {
-  public agae(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public agae(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    int i;
-    do
-    {
-      return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    paramView = paramView.findViewById(2131378256);
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
-    {
-      if (bool)
-      {
-        paramView = (agau)this.a.jdField_a_of_type_Agay.getItem(i);
-        this.a.a(paramView);
-        if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
-        }
-        if (this.a.jdField_d_of_type_Int != 11) {
-          break;
-        }
-        axqw.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        return;
-      }
-      paramView = (agau)this.a.jdField_a_of_type_Agaw.getItem(i);
-      this.a.a(paramView);
-      if (this.a.jdField_d_of_type_Int == 11) {
-        axqw.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
-      }
-      if (this.a.jdField_d_of_type_Int != 18) {
-        break;
-      }
-      axqw.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

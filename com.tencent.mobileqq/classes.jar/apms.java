@@ -1,17 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class apms
-  implements aptu
+  implements View.OnClickListener
 {
-  apms(apmr paramapmr) {}
+  apms(apmi paramapmi) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    apmp.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
+    apug.b(this.a.a, this.a.c());
   }
-  
-  public void b() {}
 }
 
 

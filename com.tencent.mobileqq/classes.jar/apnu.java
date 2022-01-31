@@ -1,116 +1,21 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
 
 class apnu
-  extends xbd
+  implements View.OnClickListener
 {
-  apnu(apnm paramapnm, apmz paramapmz) {}
+  apnu(apnq paramapnq) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Apmz == null) {}
-    Object localObject;
-    label612:
-    do
+    if (!CheckPermission.isHasStoragePermission(this.a.a))
     {
-      do
-      {
-        do
-        {
-          return;
-          if (paramDownloadFileRspBody == null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "error DownloadFileRspBody is null!!!!!");
-            }
-            this.jdField_a_of_type_Apmz.c();
-            return;
-          }
-          long l = paramBundle.getLong("troopUin");
-          localObject = TroopFileTransferManager.a(l);
-          if (localObject == null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + l);
-            }
-            this.jdField_a_of_type_Apmz.c();
-            return;
-          }
-          paramBundle = paramBundle.getString("itemKey");
-          if (paramBundle == null)
-          {
-            this.jdField_a_of_type_Apmz.c();
-            return;
-          }
-          localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
-          if (localObject == null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "bad item key" + paramBundle);
-            }
-            this.jdField_a_of_type_Apmz.c();
-            return;
-          }
-          paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-          if (QLog.isDevelopLevel()) {
-            QLog.e("TroopFileModel<FileAssistant>", 4, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-          }
-          ((TroopFileTransferManager.Item)localObject).cookieValue = bbdm.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-          if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
-            ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
-          }
-          ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-          ((TroopFileTransferManager.Item)localObject).DownloadUrl = bbdm.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-          ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-          ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-          if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134)) {
-            break;
-          }
-          this.jdField_a_of_type_Apmz.c();
-        } while (!QLog.isDevelopLevel());
-        QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
-        return;
-        if ((paramInt != -103) && (paramInt != -301)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
+      CheckPermission.requestSDCardPermission((AppActivity)this.a.a, new apnv(this));
       return;
-      paramDownloadFileRspBody = apjx.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-      {
-        this.jdField_a_of_type_Apmz.a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
-        if (QLog.isColorLevel()) {
-          QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
-        }
-        if (this.jdField_a_of_type_Apnm.a.a() != null)
-        {
-          paramDownloadFileRspBody = String.valueOf(this.jdField_a_of_type_Apnm.a.a().TroopUin);
-          if (this.jdField_a_of_type_Apnm.a.a() == null) {
-            break label612;
-          }
-        }
-        for (paramBundle = apue.b(this.jdField_a_of_type_Apnm.a.a().nFileType);; paramBundle = "unknow")
-        {
-          axqw.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
-          return;
-          paramDownloadFileRspBody = "";
-          break;
-        }
-      }
-      this.jdField_a_of_type_Apmz.c();
-    } while (!QLog.isColorLevel());
-    QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
+    }
+    apug.a(this.a.a, this.a.c());
   }
 }
 

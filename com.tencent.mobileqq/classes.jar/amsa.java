@@ -3,35 +3,32 @@ import org.json.JSONObject;
 
 public class amsa
 {
-  private boolean a;
+  public int a;
   
   public static amsa a(String paramString)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    if (paramString == null) {}
+    do
     {
-      amsa localamsa = new amsa();
-      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
-      for (;;)
+      return null;
+      try
       {
-        localamsa.a = bool;
+        amsa localamsa = new amsa();
+        localamsa.a = new JSONObject(paramString).optInt("kDeviceManageShowMuteKey", 0);
+        QLog.d("DeviceManageConfProcessor", 2, "confBean = " + localamsa.toString());
         return localamsa;
-        bool = false;
       }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("DeviceManageConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return this.a;
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("kDeviceManageShowMuteKey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

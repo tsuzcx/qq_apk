@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class van
-  implements View.OnClickListener
+  implements uzw
 {
-  van(vaf paramvaf, vdm paramvdm) {}
+  van(vac paramvac) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    vel.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_Vaf.a.a(false, true, 13, null);
-    this.jdField_a_of_type_Vdm.dismiss();
+    ved.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
   }
 }
 

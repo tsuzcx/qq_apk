@@ -1,97 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class tet
+class tet
+  extends akuo
 {
-  public int a;
-  public List<String> a;
-  public int b;
-  public List<String> b;
-  
-  public tet(qqstory_struct.VideoSpreadGroupList paramVideoSpreadGroupList)
+  tet(tes paramtes, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (paramVideoSpreadGroupList == null) {}
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    ved.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = ter.a(paramSosoLbsInfo.a);
+      ved.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
+    }
     for (;;)
     {
+      if (!tes.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
       return;
-      this.jdField_a_of_type_Int = paramVideoSpreadGroupList.visibility_type.get();
-      int k;
-      int i;
-      if ((paramVideoSpreadGroupList.group_list != null) && (paramVideoSpreadGroupList.group_list.has()))
-      {
-        k = paramVideoSpreadGroupList.group_list.size();
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(k);
-        i = 0;
-        while (i < k)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(String.valueOf(((Long)paramVideoSpreadGroupList.group_list.get(i)).longValue()));
-          i += 1;
-        }
-      }
-      this.jdField_b_of_type_Int = paramVideoSpreadGroupList.visibility_sharegroup_type.get();
-      if ((paramVideoSpreadGroupList.share_group_list != null) && (paramVideoSpreadGroupList.share_group_list.has()))
-      {
-        k = paramVideoSpreadGroupList.share_group_list.size();
-        this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
-        i = j;
-        while (i < k)
-        {
-          this.jdField_b_of_type_JavaUtilList.add(((ByteStringMicro)paramVideoSpreadGroupList.share_group_list.get(i)).toStringUtf8());
-          i += 1;
-        }
-      }
+      bool = false;
+      break;
+      label114:
+      ved.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
     }
-  }
-  
-  public tet(List<String> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Int = 2;
-  }
-  
-  public static boolean a(tet paramtet)
-  {
-    return (paramtet == null) || (paramtet.jdField_a_of_type_JavaUtilList == null) || (paramtet.jdField_a_of_type_JavaUtilList.isEmpty());
-  }
-  
-  public qqstory_struct.VideoSpreadGroupList a()
-  {
-    qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-    localVideoSpreadGroupList.setHasFlag(false);
-    Iterator localIterator;
-    String str;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      localVideoSpreadGroupList.visibility_type.set(this.jdField_a_of_type_Int);
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        localVideoSpreadGroupList.group_list.add(Long.valueOf(str));
-      }
-      localVideoSpreadGroupList.setHasFlag(true);
-    }
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (!this.jdField_b_of_type_JavaUtilList.isEmpty()))
-    {
-      localVideoSpreadGroupList.visibility_sharegroup_type.set(this.jdField_b_of_type_Int);
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-      localVideoSpreadGroupList.setHasFlag(true);
-    }
-    return localVideoSpreadGroupList;
   }
 }
 

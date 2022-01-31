@@ -4,13 +4,13 @@ import android.view.View.OnClickListener;
 class pfi
   implements View.OnClickListener
 {
-  pfi(pfe parampfe, rap paramrap, pax parampax) {}
+  pfi(pfb parampfb, ram paramram, pau parampau) {}
   
   public void onClick(View paramView)
   {
-    rbu localrbu = this.jdField_a_of_type_Rap.a();
-    if (localrbu != null) {
-      localrbu.a(paramView, this.jdField_a_of_type_Pax.a(), 2);
+    paramView = this.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, this.jdField_a_of_type_Pau.a(), 1);
     }
   }
 }

@@ -6,23 +6,19 @@ import mqq.app.MobileQQ;
 
 public class lfc
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lfd(this);
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private boolean jdField_a_of_type_Boolean;
   
   public lfc(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lfd(this);
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
+    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
       this.jdField_a_of_type_Boolean = true;
     }
@@ -30,10 +26,18 @@ public class lfc
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    try
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
     }
   }
 }

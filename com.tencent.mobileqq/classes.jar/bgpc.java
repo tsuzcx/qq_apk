@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
+import android.app.Dialog;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public final class bgpc
-  implements Parcelable.Creator<MessageRecordParcel>
+public class bgpc
 {
-  public MessageRecordParcel a(Parcel paramParcel)
+  private static void b(String paramString)
   {
-    return MessageRecordParcel.a(paramParcel);
-  }
-  
-  public MessageRecordParcel[] a(int paramInt)
-  {
-    return new MessageRecordParcel[paramInt];
+    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755791);
+    localDialog.getWindow().setType(2003);
+    localDialog.setContentView(2131558883);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365150);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365146);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365135);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131690596);
+      localTextView.setOnClickListener(new bgpe(localDialog));
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365141);
+    if (localTextView != null)
+    {
+      localTextView.setText(2131691547);
+      localTextView.setOnClickListener(new bgpf(localDialog, paramString));
+    }
+    localDialog.show();
   }
 }
 

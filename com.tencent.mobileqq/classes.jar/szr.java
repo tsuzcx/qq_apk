@@ -1,12 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle;
 import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 
-public abstract interface szr
+public abstract class szr
 {
-  public abstract void a(szv paramszv, View paramView, String paramString);
+  public abstract void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry);
   
-  public abstract void a(szv paramszv, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  {
+    return false;
+  }
 }
 
 

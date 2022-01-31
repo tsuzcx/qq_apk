@@ -1,24 +1,37 @@
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class afxb
-  extends aouj
+class afxb
+  implements aptw
 {
-  public afxb(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  afxb(afxa paramafxa, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a()
   {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Afxa.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    }
+    ajum localajum;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localajum = (ajum)this.jdField_a_of_type_Afxa.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localajum.a(localArrayList));
+    aptx.a(2131692665);
+    return;
+    this.jdField_a_of_type_Afxa.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
+  public void b() {}
 }
 
 

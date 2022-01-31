@@ -2,8 +2,8 @@ package dov.com.qq.im;
 
 import android.os.Handler;
 import android.os.Message;
-import avtc;
-import axlc;
+import avte;
+import axle;
 import com.tencent.qphone.base.util.QLog;
 
 class QIMEffectCameraCaptureUnit$3
@@ -14,7 +14,7 @@ class QIMEffectCameraCaptureUnit$3
   public void run()
   {
     Handler localHandler;
-    if ((axlc.d()) && (axlc.a(this.this$0.a())))
+    if ((axle.d()) && (axle.a(this.this$0.a())))
     {
       i = 1;
       localHandler = this.this$0.a;
@@ -28,7 +28,7 @@ class QIMEffectCameraCaptureUnit$3
       localHandler.obtainMessage(1001, i, 0).sendToTarget();
       if (this.a)
       {
-        boolean bool = avtc.b();
+        boolean bool = avte.b();
         if (QLog.isColorLevel()) {
           QLog.d("QIMEffectCameraCaptureUnit", 2, new Object[] { "onNotifyFilterReady soLoaded: ", Boolean.valueOf(bool) });
         }

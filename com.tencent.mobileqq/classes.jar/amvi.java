@@ -1,91 +1,82 @@
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 
 public class amvi
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  public int a;
+  public ConcurrentHashMap<String, String> a;
+  public int b;
+  public int c = 1;
+  public int d;
+  public int e;
   
-  public static amvi a(ampi[] paramArrayOfampi)
+  public amvi()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+  }
+  
+  public static amvi a(String paramString)
   {
     amvi localamvi = new amvi();
-    int j;
-    int i;
+    if (paramString == null) {
+      return localamvi;
+    }
     try
     {
-      j = paramArrayOfampi.length;
-      i = 0;
-    }
-    catch (Throwable paramArrayOfampi)
-    {
-      boolean bool;
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean failed!", paramArrayOfampi);
-    }
-    Object localObject = ((ampi)localObject).a;
-    bool = TextUtils.isEmpty((CharSequence)localObject);
-    if (!bool)
-    {
-      try
+      paramString = new JSONObject(paramString);
+      localamvi.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
+      localamvi.b = paramString.optInt("kDisableChooseSwitch", 0);
+      localamvi.c = paramString.optInt("kShowKickDialog", 1);
+      localamvi.d = paramString.optInt("kFDSwitch", 0);
+      localamvi.e = paramString.optInt("kWtloginPowTest", 0);
+      paramString = paramString.optJSONObject("kSignatureList");
+      if (paramString != null)
       {
-        JSONObject localJSONObject = new JSONObject((String)localObject);
-        if (localJSONObject.has("config_url")) {
-          localamvi.a = localJSONObject.optString("config_url");
-        }
-        if (localJSONObject.has("config_md5")) {
-          localamvi.b = localJSONObject.optString("config_md5");
-        }
-        if (localJSONObject.has("android_sysface_res_url")) {
-          localamvi.c = localJSONObject.optString("android_sysface_res_url");
-        }
-        if (localJSONObject.has("android_sysface_res_md5")) {
-          localamvi.d = localJSONObject.optString("android_sysface_res_md5");
-        }
-        if (localJSONObject.has("emoji_res_url")) {
-          localamvi.e = localJSONObject.optString("emoji_res_url");
-        }
-        if (localJSONObject.has("emoji_res_md5")) {
-          localamvi.f = localJSONObject.optString("emoji_res_md5");
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
+        Iterator localIterator = paramString.keys();
+        while (localIterator.hasNext())
         {
-          localJSONException.printStackTrace();
+          String str1 = (String)localIterator.next();
+          String str2 = paramString.optString(str1);
+          if (!TextUtils.isEmpty(str2))
+          {
+            localamvi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
+            if (QLog.isColorLevel()) {
+              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
+            }
+          }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean: " + (String)localObject);
-      }
+      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localamvi.toString());
     }
-    label255:
-    for (;;)
+    catch (Exception paramString)
     {
-      return localamvi;
-      for (;;)
-      {
-        if (i >= j) {
-          break label255;
-        }
-        localObject = paramArrayOfampi[i];
-        if (localObject != null) {
-          break;
-        }
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
       }
+      return null;
+    }
+    if (localamvi.e == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
+      return localamvi;
     }
   }
   
   public String toString()
   {
-    new StringBuilder().append(", mConfigUrl:").append(this.a).append(", mConfigMD5:").append(this.b).append(", mSysFaceUrl").append(this.c).append(", mSysFaceMD5").append(this.d).append(", mEmojiUrl").append(this.e).append(", mEmojiMD5").append(this.f);
-    return super.toString();
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
+    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    localStringBuilder.append(" fdSwitch:").append(this.d);
+    localStringBuilder.append(" wtloginPowTest:").append(this.e);
+    return localStringBuilder.toString();
   }
 }
 

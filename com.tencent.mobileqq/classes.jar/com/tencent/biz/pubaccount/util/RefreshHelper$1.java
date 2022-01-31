@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.view.View;
-import sid;
+import sia;
 
 public class RefreshHelper$1
   implements Runnable
 {
   public void run()
   {
-    if (sid.a(this.this$0) != null) {
-      sid.a(this.this$0).setVisibility(8);
+    if (sia.a(this.this$0) != null) {
+      sia.a(this.this$0).setVisibility(8);
     }
   }
 }

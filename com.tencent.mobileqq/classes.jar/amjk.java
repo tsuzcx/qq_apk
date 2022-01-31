@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class amjk
-  implements DialogInterface.OnClickListener
+public abstract interface amjk
 {
-  amjk(amjj paramamjj) {}
+  public abstract void b();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (amjj.a(this.a).isShowing()) {
-      amjj.a(this.a).dismiss();
-    }
-    amkg.a(amjj.a(this.a), true);
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

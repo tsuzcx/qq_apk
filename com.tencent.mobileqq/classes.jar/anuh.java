@@ -1,108 +1,61 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Pair;
+import com.tencent.av.VideoController;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.HashMap;
 
 public class anuh
-  extends ajtq
+  extends bdvm
 {
   public anuh(MessengerService paramMessengerService) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void h(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    long l2 = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessengerService.onCardDownload", 2, "received onCardDownload");
-    }
-    Object localObject;
-    long l1;
-    int i;
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    try
     {
-      paramObject = (Card)paramObject;
-      localObject = (QQAppInterface)MessengerService.h(this.a);
-      if ((localObject != null) && (bbbd.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin))) {
-        if ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108))
+      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
+      if (localQQAppInterface != null)
+      {
+        localQQAppInterface.removeObserver(this);
+        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
         {
-          l1 = paramObject.lCurrentBgId;
-          l2 = paramObject.lCurrentStyleId;
-          if (auvd.a(l2)) {
-            l1 = paramObject.cardId;
+          Object localObject = (byte[])paramHashMap.get("sigmsg");
+          String str1 = String.valueOf(paramHashMap.get("request_type"));
+          String str2 = String.valueOf(paramHashMap.get("uin"));
+          if (localObject != null) {
+            localQQAppInterface.a().c(str2, (byte[])localObject);
           }
-          i = 0;
+          int j = naz.b(localQQAppInterface, str2);
+          localObject = "";
+          if (j == 0) {
+            localObject = bbcz.i(localQQAppInterface, str2);
+          }
+          for (;;)
+          {
+            int i = j;
+            if (j != 1024)
+            {
+              i = j;
+              if (j != 1025) {
+                i = VideoController.a(j, false, 1);
+              }
+            }
+            paramBoolean = str1.equals("audio");
+            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
+            return;
+            if (paramHashMap.containsKey("nickname")) {
+              localObject = String.valueOf(paramHashMap.get("nickname"));
+            }
+          }
         }
       }
-    }
-    for (;;)
-    {
-      paramObject = new Bundle();
-      paramObject.putLong("currentId", l1);
-      paramObject.putLong("styleId", l2);
-      paramObject.putInt("result", i);
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        localObject = (Bundle)this.a.jdField_a_of_type_JavaUtilList.remove(0);
-        ((Bundle)localObject).putBundle("response", paramObject);
-        this.a.a((Bundle)localObject);
-      }
       return;
-      i = -1;
-      l1 = 0L;
-      continue;
-      i = -1;
-      l1 = 0L;
-      continue;
-      QLog.e("Q.emoji.web.MessengerService", 1, "onCardDownload fail isSuccess = " + paramBoolean + "data = " + paramObject);
-      i = -1;
-      l1 = 0L;
     }
-  }
-  
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
-  {
-    int j = 0;
-    int i = -1;
-    String str2 = "";
-    String str1 = "";
-    if ((paramBoolean) && (paramObject != null)) {
-      if ((paramObject instanceof Card)) {
-        i = 0;
-      }
-    }
-    for (;;)
+    catch (Exception paramHashMap)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.web.MessengerService", 2, "onSetCardTemplateReturn...resultCode=" + i);
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle != null)
-      {
-        paramObject = new Bundle();
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("cmd", "card_setSummaryCard");
-        paramObject.putInt("result", i);
-        paramObject.putString("message", str2);
-        if (TextUtils.isEmpty(str1)) {
-          paramObject.putString("aid", str1);
-        }
-        paramObject.putInt("payType", j);
-        this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-        this.a.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        this.a.jdField_a_of_type_AndroidOsBundle = null;
-      }
-      return;
-      if ((paramObject instanceof Pair))
-      {
-        paramObject = (Pair)paramObject;
-        i = ((Integer)paramObject.first).intValue();
-        str2 = ((SSummaryCardRsp)paramObject.second).emsg;
-        j = ((SSummaryCardRsp)paramObject.second).payType;
-        str1 = ((SSummaryCardRsp)paramObject.second).aid;
-        continue;
-        QLog.e("Q.emoji.web.MessengerService", 1, "onSetCardTemplateReturn fail isSuccess = " + paramBoolean + "obj = " + paramObject);
+        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
       }
     }
   }

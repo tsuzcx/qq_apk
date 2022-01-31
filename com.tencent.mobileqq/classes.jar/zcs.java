@@ -1,61 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Comparator;
 
-public class zcs
-  extends zco
+final class zcs
+  implements Comparator<zcq>
 {
-  private boolean a;
-  private String c;
-  private String d;
-  
-  public zcs(JSONObject paramJSONObject)
+  public int a(zcq paramzcq1, zcq paramzcq2)
   {
-    a(paramJSONObject);
-  }
-  
-  public String a()
-  {
-    String str = super.a();
-    try
+    if ((paramzcq1 == null) && (paramzcq2 == null)) {}
+    do
     {
-      Object localObject = new JSONObject(str);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("driverVersion", this.c);
-      ((JSONObject)localObject).put("previousPatch", this.d);
-      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
-    }
-    return str;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    this.c = paramJSONObject.optString("driverVersion", null);
-    this.d = paramJSONObject.optString("previousPatch", null);
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
-      return false;
-    }
-    return super.a(paramBoolean);
+      return 0;
+      if ((paramzcq1 == null) && (paramzcq2 != null)) {
+        return 1;
+      }
+      if ((paramzcq1 != null) && (paramzcq2 == null)) {
+        return -1;
+      }
+      if (paramzcq1.a() > paramzcq2.a()) {
+        return -1;
+      }
+    } while (paramzcq1.a() >= paramzcq2.a());
+    return 1;
   }
 }
 

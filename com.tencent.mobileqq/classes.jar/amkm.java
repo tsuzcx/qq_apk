@@ -1,41 +1,134 @@
 import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
+import android.app.ActivityOptions;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class amkm
-  extends Handler
 {
-  private WeakReference<SwipeBackLayout> a;
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static boolean jdField_a_of_type_Boolean;
+  private static Method jdField_b_of_type_JavaLangReflectMethod;
+  private static boolean jdField_b_of_type_Boolean;
   
-  public amkm(SwipeBackLayout paramSwipeBackLayout)
+  @RequiresApi(api=16)
+  private static void a()
   {
-    this.a = new WeakReference(paramSwipeBackLayout);
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
+      jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      arrayOfClass = Activity.class.getDeclaredClasses();
+      jdField_a_of_type_JavaLangClass = null;
+      j = arrayOfClass.length;
+      i = 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        Class[] arrayOfClass;
+        int j;
+        int i;
+        Class localClass;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
+          continue;
+          i += 1;
+        }
+      }
+    }
+    if (i < j)
+    {
+      localClass = arrayOfClass[i];
+      if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+        jdField_a_of_type_JavaLangClass = localClass;
+      }
+    }
+    else
+    {
+      jdField_b_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { jdField_a_of_type_JavaLangClass, ActivityOptions.class });
+      jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+      jdField_b_of_type_Boolean = true;
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(Activity paramActivity)
   {
-    SwipeBackLayout localSwipeBackLayout = (SwipeBackLayout)this.a.get();
-    switch (paramMessage.what)
+    Object localObject = null;
+    for (;;)
     {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
+      int i;
+      try
+      {
+        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
+        int j = arrayOfClass.length;
+        i = 0;
+        if (i < j)
+        {
+          Class localClass = arrayOfClass[i];
+          if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+            localObject = localClass;
+          }
+        }
+        else
+        {
+          localObject = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject });
+          ((Method)localObject).setAccessible(true);
+          ((Method)localObject).invoke(paramActivity, new Object[] { null });
+          return;
+        }
+      }
+      catch (Throwable paramActivity)
       {
         return;
-      } while (SwipeBackLayout.a(localSwipeBackLayout));
-      SwipeBackLayout.a(localSwipeBackLayout, true);
-    } while (!(localSwipeBackLayout.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("SwipeBackLayout", 2, "SwipeBackLayout finish()");
+      }
+      i += 1;
     }
-    localSwipeBackLayout.c = true;
-    ((Activity)localSwipeBackLayout.a).finish();
+  }
+  
+  public static void a(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      b(paramActivity, paramInvocationHandler);
+      return;
+    }
+    a(paramActivity);
+  }
+  
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return false;
+    }
+    a();
+    return jdField_b_of_type_Boolean;
+  }
+  
+  @RequiresApi(api=16)
+  private static void b(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  {
+    
+    try
+    {
+      Object localObject = jdField_a_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[0]);
+      Class localClass = jdField_a_of_type_JavaLangClass;
+      paramInvocationHandler = Proxy.newProxyInstance(jdField_a_of_type_JavaLangClass.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
+      jdField_b_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
+      return;
+    }
+    catch (Throwable paramActivity) {}
   }
 }
 

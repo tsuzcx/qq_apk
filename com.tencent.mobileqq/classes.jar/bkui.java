@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class bkui
-  implements aysa
+public class bkui
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bkui(bkue parambkue) {}
+  public bkui(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onResp(aysx paramaysx)
+  public void onGlobalLayout()
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramaysx.jdField_a_of_type_Aysw.a();
-    if (paramaysx.jdField_a_of_type_Int != 0)
-    {
-      lcl.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramaysx.b + ", errorMsg: " + paramaysx.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((bkue.a(this.a).decrementAndGet() == 0) && (bkue.a(this.a) != null)) {
-      bkue.a(this.a).a(true);
-    }
-    lcl.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

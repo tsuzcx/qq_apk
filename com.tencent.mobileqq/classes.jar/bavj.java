@@ -1,33 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-final class bavj
-  implements DownloadParams.DecodeHandler
+class bavj
+  implements FilenameFilter
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bavj(bavg parambavg, String paramString) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
-    {
-      paramDownloadParams = (int[])paramDownloadParams;
-      float f2 = bbct.a();
-      float f1 = f2;
-      if (f2 < 0.01F) {
-        f1 = 1.0F;
-      }
-      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-      return bbdr.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
-    }
-    return bbdr.c(paramBitmap, 50, 50);
+    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
   }
 }
 

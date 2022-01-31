@@ -1,62 +1,78 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
 class axgv
-  extends BroadcastReceiver
+  implements aysc
 {
-  axgv(axgu paramaxgu) {}
+  axgv(axgu paramaxgu, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public void onResp(aysz paramaysz)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    ayrx localayrx = (ayrx)paramaysz.jdField_a_of_type_Aysy;
+    if (this.jdField_a_of_type_Axgu.jdField_a_of_type_Ayrx == localayrx) {
+      this.jdField_a_of_type_Axgu.jdField_a_of_type_Ayrx = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrx.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysz.jdField_a_of_type_Int), Integer.valueOf(paramaysz.c), this.jdField_a_of_type_JavaLangString }));
+    }
+    int i;
+    if (paramaysz.jdField_a_of_type_Int == 0)
+    {
+      paramaysz = new File(localayrx.c);
+      if (paramaysz.exists())
+      {
+        try
+        {
+          String str = paramaysz.getParent();
+          bbdx.a(localayrx.c, str, false);
+          axgt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          axgt.a(-1);
+          this.jdField_a_of_type_Axgu.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        paramaysz.delete();
+      }
+    }
     for (;;)
     {
+      if (i != 0)
+      {
+        axgt.a(100 / this.jdField_a_of_type_Axgu.jdField_a_of_type_Int + this.jdField_a_of_type_Axgu.b);
+        paramaysz = this.jdField_a_of_type_Axgu;
+        paramaysz.b += 100 / this.jdField_a_of_type_Axgu.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Axgu.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Axgu.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      i = 0;
+    }
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      axgt.a(i / this.jdField_a_of_type_Axgu.jdField_a_of_type_Int + this.jdField_a_of_type_Axgu.b);
       return;
-      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
-        continue;
-      }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = axgw.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
-          }
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((axgq)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((axgq)???.next()).a(i);
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
       }
     }
   }

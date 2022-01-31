@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
+import com.tencent.av.ui.QavPanel;
 import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class mjv
-  implements DialogInterface.OnClickListener
+class mjv
+  implements mho
 {
-  public mjv(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
+  mjv(mju parammju) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) || (paramInt == 1)) {
-      return;
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131372374, false);
+      this.a.a.a.setViewEnable(2131362921, false);
+      this.a.a.a.setViewEnable(2131362933, false);
+      this.a.a.a.setViewEnable(2131362932, false);
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, true, new mjw(this));
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772163);
   }
 }
 

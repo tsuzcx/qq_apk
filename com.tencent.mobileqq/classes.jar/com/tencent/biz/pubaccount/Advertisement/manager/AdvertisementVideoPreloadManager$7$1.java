@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
-import nji;
+import njf;
 
 class AdvertisementVideoPreloadManager$7$1
   implements Runnable

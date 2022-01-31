@@ -1,102 +1,196 @@
 import android.os.SystemClock;
+import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.TransReport;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
-import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.ReqBody;
+import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.ErrorInfo;
+import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.RspBody;
 
-public class aytu
+class aytu
+  implements ITransactionCallback
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private aytw jdField_a_of_type_Aytw;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
-  private RandomAccessFile jdField_a_of_type_JavaIoRandomAccessFile;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private String c;
-  private String d;
-  private String e;
+  aytu(aytt paramaytt) {}
   
-  public aytu(AppInterface paramAppInterface, aytw paramaytw, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Aytw = paramaytw;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Int = paramInt;
-    this.e = paramString2;
+    long l = SystemClock.uptimeMillis();
+    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
+    String str1 = (String)paramHashMap.get("rep_bdhTrans");
+    String str2 = (String)paramHashMap.get("segspercnt");
+    String str3 = (String)paramHashMap.get("param_conf_segSize");
+    String str4 = (String)paramHashMap.get("param_conf_segNum");
+    String str5 = (String)paramHashMap.get("param_conf_connNum");
+    String str6 = (String)paramHashMap.get("param_fin_lost");
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploader", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - aytt.a(this.a)) + "ms");
+    }
+    aytt.a(this.a).put("serverip", paramHashMap.get("ip"));
+    aytt.a(this.a).put("param_bdhSrv", paramHashMap.get("ip"));
+    aytt.a(this.a).put("param_bdhPort", paramHashMap.get("port"));
+    aytt.a(this.a).put("X-piccachetime", paramArrayOfByte);
+    aytt.a(this.a).put("param_BdhTrans", str1);
+    aytt.a(this.a).put("param_segspercnt", str2);
+    aytt.a(this.a).put("param_conf_segSize", str3);
+    aytt.a(this.a).put("param_conf_segNum", str4);
+    aytt.a(this.a).put("param_conf_connNum", str5);
+    aytt.a(this.a).put("param_fin_lost", str6);
+    aytt.a(this.a).put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+    aytt.a(this.a).put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+    aytt.a(this.a).put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+    aytt.a(this.a).put("param_retry_code", paramHashMap.get("param_retry_code"));
+    aytt.a(this.a).put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+    aytt.a(this.a).put("param_ip_index", paramHashMap.get("param_ip_index"));
+    aytt.a(this.a).put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+    if (TextUtils.equals((CharSequence)paramHashMap.get("param_BDH_Cache_Diff"), String.valueOf(true))) {
+      aytt.a(this.a, true);
+    }
+    aytt.a(this.a, paramInt);
+    aytt.c(this.a, "sessionKey or sigSession is null");
+    aytt.a(this.a).a(paramInt, aytt.b(this.a));
+    aytt.a(this.a, false);
   }
   
-  public boolean a()
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
+    long l3 = SystemClock.uptimeMillis();
+    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+    int i = paramArrayOfByte.get();
     if (QLog.isColorLevel()) {
-      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG> doUpload " + this.jdField_a_of_type_Boolean);
+      QLog.d("QIMWebVideoUploader", 2, "Callback.onSuccess,ret=" + i);
     }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
+    int j;
+    Object localObject;
+    if (i == 0)
+    {
+      j = 0x0 | paramArrayOfByte.get() | (paramArrayOfByte.get() & 0xFF) << 8 | (paramArrayOfByte.get() & 0xFF) << 16 | (paramArrayOfByte.get() & 0xFF) << 24;
+      localObject = new byte[j];
+      paramArrayOfByte.get((byte[])localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebVideoUploader", 2, "TransactionCallback|data= " + HexUtil.bytes2HexStr((byte[])localObject) + ",len=" + j);
+      }
+    }
+    for (;;)
+    {
       try
       {
-        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_JavaLangString, "r");
-        if (this.jdField_a_of_type_JavaIoRandomAccessFile == null)
+        localObject = (QIMVideoUpload.RspBody)new QIMVideoUpload.RspBody().mergeFrom((byte[])localObject);
+        if (!((QIMVideoUpload.RspBody)localObject).uint64_uin.has()) {
+          continue;
+        }
+        l1 = ((QIMVideoUpload.RspBody)localObject).uint64_uin.get();
+        if (!((QIMVideoUpload.RspBody)localObject).uint64_service_type.has()) {
+          continue;
+        }
+        l2 = ((QIMVideoUpload.RspBody)localObject).uint64_service_type.get();
+        if (!((QIMVideoUpload.RspBody)localObject).str_uuid.has()) {
+          continue;
+        }
+        paramArrayOfByte = ((QIMVideoUpload.RspBody)localObject).str_uuid.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMWebVideoUploader", 2, "TransactionCallback|uin=" + l1 + ",type=" + l2 + ",uuid= " + paramArrayOfByte);
+        }
+        localObject = (QIMVideoUpload.ErrorInfo)((QIMVideoUpload.RspBody)localObject).msg_err.get();
+        if (localObject != null)
         {
-          this.jdField_b_of_type_Int = 9303;
-          this.d = "read video file error";
-          this.jdField_a_of_type_Aytw.b(this.jdField_b_of_type_Int, this.d);
-          return false;
+          l1 = ((QIMVideoUpload.ErrorInfo)localObject).uint64_err_code.get();
+          localObject = ((QIMVideoUpload.ErrorInfo)localObject).bytes_err_info.get().toStringUtf8();
+          if (QLog.isColorLevel()) {
+            QLog.d("QIMWebVideoUploader", 2, "TransactionCallback|errorCode= " + l1 + ",errorInfo=" + (String)localObject);
+          }
+        }
+        if (TextUtils.isEmpty(paramArrayOfByte)) {
+          continue;
+        }
+        aytt.a(this.a, paramArrayOfByte);
+        aytt.a(this.a).a(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMWebVideoUploader", 2, "set uuid from BDH ");
         }
       }
-      catch (FileNotFoundException localFileNotFoundException)
+      catch (Exception paramArrayOfByte)
       {
-        for (;;)
-        {
-          localFileNotFoundException.printStackTrace();
-          this.jdField_a_of_type_JavaIoRandomAccessFile = null;
+        long l1;
+        long l2;
+        String str1;
+        String str2;
+        String str3;
+        aytt.a(this.a).a(i, "mergeFrom respData Exception");
+        paramArrayOfByte.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.e("QIMWebVideoUploader", 2, "get uuid from BDH Exception", paramArrayOfByte);
+        continue;
       }
+      aytt.b(this.a, (String)paramHashMap.get("rep_bdhTrans"));
+      paramArrayOfByte = (String)paramHashMap.get("segspercnt");
+      localObject = (String)paramHashMap.get("param_conf_segSize");
+      str1 = (String)paramHashMap.get("param_conf_segNum");
+      str2 = (String)paramHashMap.get("param_conf_connNum");
+      str3 = (String)paramHashMap.get("param_fin_lost");
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebVideoUploader", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l3 - aytt.a(this.a)) + "ms transInfo:" + aytt.a(this.a));
+      }
+      aytt.a(this.a).put("serverip", paramHashMap.get("ip"));
+      aytt.a(this.a).put("param_bdhSrv", paramHashMap.get("ip"));
+      aytt.a(this.a).put("param_bdhPort", paramHashMap.get("port"));
+      aytt.a(this.a).put("X-piccachetime", String.valueOf(aytt.a(this.a).mTransReport.timeCost_Cache));
+      aytt.a(this.a).put("param_BdhTrans", aytt.a(this.a));
+      aytt.a(this.a).put("param_segspercnt", paramArrayOfByte);
+      aytt.a(this.a).put("param_conf_segSize", localObject);
+      aytt.a(this.a).put("param_conf_segNum", str1);
+      aytt.a(this.a).put("param_conf_connNum", str2);
+      aytt.a(this.a).put("param_fin_lost", str3);
+      aytt.a(this.a).put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+      aytt.a(this.a).put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+      aytt.a(this.a).put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+      aytt.a(this.a).put("param_retry_code", paramHashMap.get("param_retry_code"));
+      aytt.a(this.a).put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+      aytt.a(this.a).put("param_ip_index", paramHashMap.get("param_ip_index"));
+      aytt.a(this.a).put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+      if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
+        aytt.a(this.a, true);
+      }
+      aytt.a(this.a, true);
+      return;
+      l1 = 0L;
+      continue;
+      l2 = 0L;
+      continue;
+      paramArrayOfByte = null;
+      continue;
+      aytt.a(this.a).a(i, "uuid is null");
+      continue;
+      i = 0x0 | paramArrayOfByte.get() | (paramArrayOfByte.get() & 0xFF) << 8 | (paramArrayOfByte.get() & 0xFF) << 16 | (paramArrayOfByte.get() & 0xFF) << 24;
+      j = paramArrayOfByte.getShort();
+      localObject = new byte[j];
+      paramArrayOfByte.get((byte[])localObject);
+      paramArrayOfByte = new String((byte[])localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebVideoUploader", 2, "dwErrNo= " + i + ",len=" + j + ",errMsg=" + paramArrayOfByte);
+      }
+      aytt.a(this.a).a(i, paramArrayOfByte);
     }
-    Object localObject = new QIMVideoUpload.ReqBody();
-    ((QIMVideoUpload.ReqBody)localObject).uint64_uin.set(Long.parseLong(this.jdField_b_of_type_JavaLangString));
-    ((QIMVideoUpload.ReqBody)localObject).uint64_service_type.set(this.jdField_a_of_type_Int);
-    ((QIMVideoUpload.ReqBody)localObject).uint64_data_type.set(1L);
-    ((QIMVideoUpload.ReqBody)localObject).bytes_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
-    ((QIMVideoUpload.ReqBody)localObject).uint64_pic_type.set(1L);
-    ((QIMVideoUpload.ReqBody)localObject).str_video_uuid.set(this.e);
-    localObject = ((QIMVideoUpload.ReqBody)localObject).toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "doUpload|mVideoFileMd5= " + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    }
-    aytv localaytv = new aytv(this);
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_b_of_type_JavaLangString, 53, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, localaytv, (byte[])localObject, false);
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG>sendFileByBDH Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " MD5:" + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte) + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 53);
-    }
-    if (i != 0)
-    {
-      this.jdField_b_of_type_Int = i;
-      this.d = "SubmitError";
-      this.jdField_a_of_type_Aytw.b(this.jdField_b_of_type_Int, this.d);
-      return false;
-    }
-    return true;
   }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploader", 2, "<BDH_LOG> onTransStart()");
+    }
+  }
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

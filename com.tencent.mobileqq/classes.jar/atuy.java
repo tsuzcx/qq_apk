@@ -1,31 +1,24 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class atuy
+class atuy
+  implements atvx
 {
-  public Activity a;
-  public View a;
-  public ImageView a;
-  public ListView a;
-  public TextView a;
-  public atvb a;
-  public atwv a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  atuy(atux paramatux) {}
   
-  public atuy(atur paramatur) {}
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      atix localatix = new atix().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Atut.a(this.a.jdField_a_of_type_Atva)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Atut.a(this.a.jdField_a_of_type_Atva)));
+      if (this.a.jdField_a_of_type_Atut.jdField_a_of_type_Boolean) {}
+      for (paramString = "1";; paramString = "2")
+      {
+        localatix.e(paramString).b(this.a.jdField_a_of_type_Atut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+      }
+    }
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131701036), 0).a();
+  }
 }
 
 

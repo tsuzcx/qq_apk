@@ -1,37 +1,161 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnSocialHeaderFollowClickListener.1.1;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class pja
-  implements pca
+public abstract class pja
+  implements ViewBase.OnClickListener
 {
-  pja(piz parampiz) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  pja(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    QLog.d("OnSocialHeaderFollowClickListener", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    if ((paramBoolean) && (paramInt == 2))
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
+  {
+    if (paramArticleInfo != null)
     {
-      String str;
-      if ((piz.a(this.a) != null) && (piz.a(this.a).mSocialFeedInfo != null))
+      ReportInfo localReportInfo = new ReportInfo();
+      Object localObject = paramArticleInfo.mSocialFeedInfo;
+      qbz localqbz = new qbz();
+      localReportInfo.mUin = onh.a();
+      localReportInfo.mSource = 0;
+      localReportInfo.mSourceArticleId = paramArticleInfo.mArticleID;
+      localReportInfo.mChannelId = ((int)paramArticleInfo.mChannelID);
+      localReportInfo.mAlgorithmId = ((int)paramArticleInfo.mAlgorithmID);
+      localReportInfo.mStrategyId = paramArticleInfo.mStrategyId;
+      localReportInfo.mServerContext = paramArticleInfo.mServerContext;
+      localReportInfo.mReadTimeLength = -1;
+      localReportInfo.mOperation = paramInt;
+      if (localObject != null)
       {
-        osj.a().b(piz.a(piz.a(this.a)), paramInt);
-        str = onk.a(piz.a(this.a).mAlgorithmID, onk.a(piz.a(this.a)), (int)piz.a(this.a).mChannelID, 0, 0, bbev.h(piz.a(this.a)), piz.a(piz.a(this.a)) + "", null, piz.a(this.a).innerUniqueID, null, piz.a(this.a));
-        if (!shx.a(piz.a(this.a).mChannelID)) {
-          break label300;
+        localqbz.jdField_a_of_type_Long = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Long;
+        if (((SocializeFeedsInfo)localObject).jdField_a_of_type_Qci != null) {
+          localqbz.jdField_b_of_type_Long = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Qci.jdField_a_of_type_Long;
+        }
+        localqbz.jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject).jdField_b_of_type_Int;
+        localqbz.jdField_b_of_type_Int = ((SocializeFeedsInfo)localObject).d;
+        paramArticleInfo = ((SocializeFeedsInfo)localObject).jdField_a_of_type_JavaUtilList;
+        if ((paramArticleInfo != null) && (!paramArticleInfo.isEmpty()))
+        {
+          localqbz.jdField_a_of_type_JavaUtilList = new ArrayList();
+          paramArticleInfo = paramArticleInfo.iterator();
+          while (paramArticleInfo.hasNext())
+          {
+            localObject = (qci)paramArticleInfo.next();
+            if (localObject != null) {
+              localqbz.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((qci)localObject).jdField_a_of_type_Long));
+            }
+          }
         }
       }
-      label300:
-      for (paramString = "0X800941D";; paramString = "0X80080EC")
-      {
-        noo.a(null, piz.a(piz.a(this.a)) + "", paramString, paramString, 0, 0, String.valueOf(piz.a(this.a).mFeedId), String.valueOf(piz.a(this.a).mArticleID), Integer.toString(piz.a(this.a).mStrategyId), str, false);
-        ThreadManager.getUIHandler().post(new OnSocialHeaderFollowClickListener.1.1(this));
-        return;
-      }
+      localReportInfo.mFeedsReportData = localqbz;
+      paramArticleInfo = new ArrayList();
+      paramArticleInfo.add(localReportInfo);
+      osg.a().a(paramArticleInfo);
     }
-    bcpw.a(piz.a(this.a), ajyc.a(2131707843), 0).a();
+  }
+  
+  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  {
+    if ((paramArticleInfo == null) || (paramArticleInfo.mSocialFeedInfo == null)) {
+      return;
+    }
+    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
+    label28:
+    label40:
+    int i;
+    label59:
+    int j;
+    label73:
+    long l;
+    if (shu.a(paramArticleInfo.mChannelID))
+    {
+      if (!ram.a(paramArticleInfo)) {
+        break label290;
+      }
+      paramString1 = paramArticleInfo.mSubscribeID;
+      if (localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList == null) {
+        break label320;
+      }
+      i = localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList.size();
+      if (!TextUtils.isEmpty(localSocializeFeedsInfo.jdField_a_of_type_JavaLangString)) {
+        break label325;
+      }
+      j = 0;
+      int k = localSocializeFeedsInfo.jdField_b_of_type_Int;
+      int m = localSocializeFeedsInfo.d;
+      int n = localSocializeFeedsInfo.f;
+      paramString1 = onh.a((int)paramArticleInfo.mChannelID, paramArticleInfo.mAlgorithmID, onh.a(paramArticleInfo), paramString1, paramArticleInfo.innerUniqueID, i + 1, j, k, m, n).a();
+      l = paramArticleInfo.mArticleID;
+      if ((!onh.b(paramArticleInfo)) && (!onh.c(paramArticleInfo)) && (!onh.e(paramArticleInfo)) && (!onh.f(paramArticleInfo))) {
+        break label381;
+      }
+      l = paramArticleInfo.businessId;
+    }
+    label290:
+    label320:
+    label325:
+    label381:
+    for (;;)
+    {
+      if ((ram.i(paramArticleInfo)) || (ram.a(paramArticleInfo)) || (ram.j(paramArticleInfo)) || (ram.k(paramArticleInfo)))
+      {
+        if (!ram.o(paramArticleInfo)) {
+          nol.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Qda.jdField_a_of_type_Long), paramString2, paramString2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(l), "" + paramArticleInfo.mStrategyId, paramString1, false);
+        }
+        if ((onh.k(paramArticleInfo)) || (onh.l(paramArticleInfo))) {
+          break;
+        }
+        ram.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+        return;
+        paramString2 = paramString1;
+        break label28;
+        paramString1 = "" + localSocializeFeedsInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long;
+        break label40;
+        i = 0;
+        break label59;
+        j = 1;
+        break label73;
+      }
+      nol.a(null, paramArticleInfo.mSubscribeID, paramString2, paramString2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(l), "" + paramArticleInfo.mStrategyId, paramString1, false);
+      return;
+    }
+  }
+  
+  private void b(ArticleInfo paramArticleInfo)
+  {
+    onh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  private void c(ArticleInfo paramArticleInfo)
+  {
+    a(paramArticleInfo);
+    a(paramArticleInfo, a());
+  }
+  
+  protected abstract int a();
+  
+  protected abstract void a(ArticleInfo paramArticleInfo);
+  
+  protected abstract void a(ViewBase paramViewBase);
+  
+  public final void onClick(ViewBase paramViewBase)
+  {
+    b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    a(paramViewBase);
+    c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    oaj.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 

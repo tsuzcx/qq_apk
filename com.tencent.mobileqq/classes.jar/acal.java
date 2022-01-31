@@ -1,16 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class acal
-  implements View.OnClickListener
+  implements bfvx
 {
   public acal(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    this.a.a.setText("");
+    SearchMightKnowFragment.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, true);
   }
 }
 

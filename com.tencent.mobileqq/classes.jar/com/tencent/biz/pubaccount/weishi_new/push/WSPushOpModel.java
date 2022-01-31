@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import smg;
+import smd;
 
 public class WSPushOpModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new smg();
+  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new smd();
   public int a;
   public String a;
   

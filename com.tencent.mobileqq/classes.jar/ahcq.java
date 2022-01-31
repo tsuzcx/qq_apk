@@ -1,32 +1,18 @@
 import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
 
 class ahcq
-  implements OnUpdateListener
+  implements ahbr
 {
-  ahcq(ahci paramahci, ResultReceiver paramResultReceiver) {}
+  ahcq(ahcg paramahcg, int paramInt) {}
   
-  public void onCheckForUpdate(boolean paramBoolean)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action", 0);
-      localBundle.putBoolean("res", paramBoolean);
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
-    }
-  }
-  
-  public void onUpdateSucc(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action", 1);
-      localBundle.putBoolean("res", paramBoolean);
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_Ahcg.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

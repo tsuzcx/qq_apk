@@ -1,77 +1,82 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCollectionVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class tmc
-  extends syv<toa>
+  extends sys
 {
-  public String a;
-  public List<tej> a;
-  public boolean a;
-  public boolean b;
+  public static final String a = sxm.a("StorySvc.new_get_date_share_list");
+  public static final String b = sxm.a("StorySvc.get_share_video_info_list");
   public int c;
-  public boolean c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
   public tmc()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_d_of_type_Int = -1;
   }
   
   public String a()
   {
-    return sxp.a("StorySvc.convert_uid_and_union_id");
+    if (this.jdField_e_of_type_JavaLangString == null) {
+      return a;
+    }
+    return b;
   }
   
-  public toa a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    qqstory_service.RspGetCollectionVideoList localRspGetCollectionVideoList = new qqstory_service.RspGetCollectionVideoList();
     try
     {
-      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
-      return new toa(localRspConvertUinAndUnionId);
+      localRspGetCollectionVideoList.mergeFrom(paramArrayOfByte);
+      return new toa(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    int j = 1;
-    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
-    localReqConvertUinAndUnionId.convert_from.set(this.c);
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
+    qqstory_service.ReqGetCollectionVideoList localReqGetCollectionVideoList = new qqstory_service.ReqGetCollectionVideoList();
+    localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
+    localReqGetCollectionVideoList.count.set(this.jdField_c_of_type_Int);
+    if (this.jdField_e_of_type_JavaLangString == null)
     {
-      tej localtej = (tej)((Iterator)localObject).next();
-      localReqConvertUinAndUnionId.user_id_list.add(localtej.a());
-    }
-    localObject = localReqConvertUinAndUnionId.need_medal;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      ((PBUInt32Field)localObject).set(i);
-      localObject = localReqConvertUinAndUnionId.need_grade_speed;
-      if (!this.b) {
-        break label121;
+      localReqGetCollectionVideoList.collection_id.set(this.jdField_d_of_type_Int);
+      if (this.jdField_e_of_type_Int != -1) {
+        localReqGetCollectionVideoList.time_zone.set(this.jdField_e_of_type_Int);
       }
     }
-    label121:
-    for (int i = j;; i = 0)
+    for (;;)
     {
-      ((PBUInt32Field)localObject).set(i);
-      return localReqConvertUinAndUnionId.toByteArray();
-      i = 0;
-      break;
+      vxp.a(this.jdField_c_of_type_JavaLangString);
+      localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+      localReqGetCollectionVideoList.video_dir.set(this.g);
+      return localReqGetCollectionVideoList.toByteArray();
+      localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+      localReqGetCollectionVideoList.identify.set(this.f);
     }
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " GetCollectionVideoListRequest{targetUid=" + this.jdField_c_of_type_JavaLangString + ", startCookie='" + this.jdField_d_of_type_JavaLangString + ", count=" + this.jdField_c_of_type_Int + ", collectionId=" + this.jdField_d_of_type_Int + ", timeZoneOffset=" + this.jdField_e_of_type_Int + '\'' + '}';
   }
 }
 

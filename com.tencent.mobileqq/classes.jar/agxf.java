@@ -1,42 +1,31 @@
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.3.1;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
 public class agxf
-  implements ahbu
+  implements ahbr
 {
-  public agxf(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public agxf(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  private boolean a(HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (RedPacketEmojiFragment.a(this.a))
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      if (paramHashMap == null) {}
-      do
-      {
-        return false;
-        paramHashMap = (PreloadManager.PathResult)paramHashMap.get(this.a.c);
-      } while (paramHashMap == null);
-      this.a.d = paramHashMap.filePath;
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketEmojiFragment", 2, "doLoading faceConfigPath:" + this.a.d);
+      agxp localagxp = new agxp();
+      localagxp.a = (paramPathResult.folderPath + "/" + "original.mp3");
+      localagxp.b = (paramPathResult.folderPath + "/" + "accompany.mp3");
+      localagxp.c = (paramPathResult.folderPath + "/" + "lyrics.qrc");
+      localagxp.d = (paramPathResult.folderPath + "/" + "config.cfg");
+      RedPacketKSongFragment.a(this.a, localagxp);
+      if (this.a.c()) {
+        return;
       }
-      if (!TextUtils.isEmpty(this.a.d)) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
+      this.a.getActivity().runOnUiThread(new RedPacketKSongFragment.10.1(this));
+      return;
     }
-    return true;
-  }
-  
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
-  {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.3.1(this, paramInt, paramHashMap));
+    this.a.g();
   }
 }
 

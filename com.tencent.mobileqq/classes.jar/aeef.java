@@ -1,22 +1,11 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public abstract class aeef
-  extends acun
+public class aeef
+  extends aeed
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public TextView e;
+  public EllipsizingTextView a;
+  public BubbleImageView a;
 }
 
 

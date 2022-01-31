@@ -1,9 +1,4 @@
-import java.util.HashMap;
-
-public class anaa
-{
-  public HashMap<String, String> a = new HashMap();
-}
+public class anaa {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

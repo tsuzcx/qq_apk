@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ohz
-  extends oho
+  implements DialogInterface.OnClickListener
 {
-  ohz(ohy paramohy) {}
+  ohz(ohx paramohx) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Ohv.a().a(this.a.jdField_a_of_type_Oii.a.commentId, paramString, paramInt1);
+    paramDialogInterface.dismiss();
   }
 }
 

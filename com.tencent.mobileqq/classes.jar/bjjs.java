@@ -1,76 +1,22 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
 
 public class bjjs
-  implements bjdh
 {
-  public bjjs(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public float a;
+  public long a;
+  public View a;
+  public String a;
+  public float b;
+  public long b;
   
-  public void a()
+  public bjjs(View paramView, String paramString, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    this.a.i();
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.a.a != null)
-    {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.a.a(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.a(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.a(paramInt);
-    if (paramInt != -1)
-    {
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-    }
-    for (;;)
-    {
-      if (MusicFragmentProviderView.a(this.a) != null) {
-        MusicFragmentProviderView.a(this.a).f();
-      }
-      return;
-      this.a.i();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.i();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

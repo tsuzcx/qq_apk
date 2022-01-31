@@ -1,10 +1,8 @@
-public class arfr
+import android.os.Bundle;
+
+public abstract interface arfr
 {
-  public static void a(Throwable paramThrowable)
-  {
-    argi.a("2490056");
-    axps.a(paramThrowable);
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

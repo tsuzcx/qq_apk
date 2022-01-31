@@ -1,13 +1,6 @@
 public class atzg
-  extends atyy
+  extends atza
 {
-  public String b;
-  
-  public atzg(String paramString)
-  {
-    this.b = paramString;
-  }
-  
   public boolean a()
   {
     return true;

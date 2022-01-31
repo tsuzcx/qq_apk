@@ -1,26 +1,8 @@
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
+
 public abstract interface azum
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(azun paramazun);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
-  
-  public abstract int g();
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask);
 }
 
 

@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import oyo;
+import oyl;
 
 public class VideoHandler$VideoFeedsViewHolder$2
   implements Runnable
 {
-  public VideoHandler$VideoFeedsViewHolder$2(oyo paramoyo) {}
+  public VideoHandler$VideoFeedsViewHolder$2(oyl paramoyl) {}
   
   public void run()
   {
     this.this$0.c.setVisibility(8);
     this.this$0.b.setVisibility(0);
-    this.this$0.b.setImageResource(2130841207);
-    ReadInJoyListViewGroup localReadInJoyListViewGroup = (ReadInJoyListViewGroup)oyo.a(this.this$0);
+    this.this$0.b.setImageResource(2130841204);
+    ReadInJoyListViewGroup localReadInJoyListViewGroup = (ReadInJoyListViewGroup)oyl.a(this.this$0);
     if (localReadInJoyListViewGroup != null) {
       localReadInJoyListViewGroup.n();
     }

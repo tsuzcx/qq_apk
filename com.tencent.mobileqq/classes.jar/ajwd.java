@@ -1,65 +1,106 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ajwd
+public final class ajwd
 {
-  public static void a(MessageRecord paramMessageRecord)
+  private List<ajwf> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static ajwd a()
   {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
-    }
+    return ajwg.a();
   }
   
-  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if (paramMessageRecord.msgtype == -2000) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
-    }
-  }
-  
-  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
-  {
-    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null) {
-      if (paramMessageRecord.msgtype != -2000)
-      {
-        bool1 = bool2;
-        if (paramMessageRecord.msgtype != -2006) {}
-      }
-      else
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
+  public List<ajwf> a()
   {
     try
     {
-      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
-      return bool;
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      return localList;
     }
-    catch (Exception paramMessageRecord)
+    finally
     {
-      paramMessageRecord.printStackTrace();
+      localObject = finally;
+      throw localObject;
     }
-    return false;
+  }
+  
+  public final void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+    }
+    wpt.a().a(new ForeBackgroundEvent(true));
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
+    smy.a().a();
+    arza.b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ajwf)localIterator.next()).b();
+    }
+  }
+  
+  public void a(ajwf paramajwf)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramajwf);
+      return;
+    }
+    finally
+    {
+      paramajwf = finally;
+      throw paramajwf;
+    }
+  }
+  
+  public final void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
+    }
+    if (xop.b <= 0L)
+    {
+      xop.b = System.currentTimeMillis();
+      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(xop.b) });
+    }
+    arza.a();
+    if (TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
+      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext()) {
+        ((ajwf)paramString.next()).a();
+      }
+      paramString = new ForeBackgroundEvent(false);
+      wpt.a().a(paramString);
+      continue;
+      paramString = new ForeBackgroundEvent(false);
+      wpt.a().a(paramString);
+    }
+  }
+  
+  public void b(ajwf paramajwf)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramajwf);
+      return;
+    }
+    finally
+    {
+      paramajwf = finally;
+      throw paramajwf;
+    }
   }
 }
 

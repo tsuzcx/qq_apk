@@ -1,27 +1,20 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PhoneContact;
 import java.util.Comparator;
 
-final class awvd
-  implements Comparator<awoc>
+class awvd
+  implements Comparator<awoe>
 {
-  private final ajxn jdField_a_of_type_Ajxn;
-  private final askl jdField_a_of_type_Askl;
+  awvd(awvc paramawvc) {}
   
-  awvd(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Askl = ((askl)paramQQAppInterface.getManager(11));
-    this.jdField_a_of_type_Ajxn = ((ajxn)paramQQAppInterface.getManager(51));
-  }
-  
-  public int a(awoc paramawoc1, awoc paramawoc2)
+  public int a(awoe paramawoe1, awoe paramawoe2)
   {
     int i = -1;
-    paramawoc1 = this.jdField_a_of_type_Askl.c(((awmy)paramawoc1).e());
-    paramawoc2 = this.jdField_a_of_type_Askl.c(((awmy)paramawoc2).e());
-    if ((paramawoc1 == null) || (paramawoc2 == null)) {
-      if ((paramawoc1 == null) && (paramawoc2 == null)) {
+    Object localObject = (askn)this.a.a.getManager(11);
+    paramawoe1 = ((askn)localObject).c(((awna)paramawoe1).e());
+    paramawoe2 = ((askn)localObject).c(((awna)paramawoe2).e());
+    if ((paramawoe1 == null) || (paramawoe2 == null)) {
+      if ((paramawoe1 == null) && (paramawoe2 == null)) {
         i = 0;
       }
     }
@@ -30,33 +23,25 @@ final class awvd
     {
       do
       {
-        do
-        {
-          do
-          {
-            return i;
-          } while (paramawoc2 == null);
-          return 1;
-          if ((paramawoc1.uin.equals("0")) && (paramawoc2.uin.equals("0"))) {
-            break;
-          }
-          if ((!paramawoc1.uin.equals("0")) && (!paramawoc2.uin.equals("0"))) {
-            return 0;
-          }
-        } while (!paramawoc2.uin.equals("0"));
-        return 1;
-        bool1 = this.jdField_a_of_type_Ajxn.a(paramawoc1.unifiedCode, true);
-        bool2 = this.jdField_a_of_type_Ajxn.a(paramawoc2.unifiedCode, true);
-        if ((!bool1) && (!bool2)) {
+        return i;
+        if (paramawoe2 == null) {}
+        for (i = -1;; i = 1) {
+          return i;
+        }
+        if ((paramawoe1.uin.equals("0")) && (paramawoe2.uin.equals("0"))) {
           break;
         }
-        if ((bool1) && (bool2)) {
+        if ((!paramawoe1.uin.equals("0")) && (!paramawoe2.uin.equals("0"))) {
           return 0;
         }
-      } while (bool2);
+      } while (!paramawoe2.uin.equals("0"));
       return 1;
-      boolean bool1 = TextUtils.isEmpty(paramawoc1.pinyinFirst);
-      bool2 = TextUtils.isEmpty(paramawoc2.pinyinFirst);
+      if (!paramawoe1.uin.equals("0")) {
+        break;
+      }
+      localObject = (ajxl)this.a.a.getManager(51);
+      boolean bool1 = ((ajxl)localObject).a(paramawoe1.unifiedCode, true);
+      bool2 = ((ajxl)localObject).a(paramawoe2.unifiedCode, true);
       if ((!bool1) && (!bool2)) {
         break;
       }
@@ -65,7 +50,7 @@ final class awvd
       }
     } while (bool2);
     return 1;
-    return paramawoc1.pinyinFirst.toLowerCase().charAt(0) - paramawoc2.pinyinFirst.toLowerCase().charAt(0);
+    return 0;
   }
 }
 

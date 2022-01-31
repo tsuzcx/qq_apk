@@ -1,13 +1,16 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.widget.AdapterView;
 
-public abstract interface agsf
+abstract interface agsf
 {
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public abstract Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
   
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup, agrv paramagrv, agrs paramagrs);
+  public abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
   
-  public abstract View b(int paramInt, View paramView, ViewGroup paramViewGroup, agrv paramagrv, agrs paramagrs);
+  public abstract void b(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void c(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
 }
 
 

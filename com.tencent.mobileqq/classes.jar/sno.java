@@ -1,20 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class sno
-  extends Handler
+class sno
+  implements sod
 {
-  public sno(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
+  sno(snn paramsnn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Object paramObject)
   {
-    switch (paramMessage.what)
+    if ((paramObject instanceof snu))
     {
-    default: 
-      return;
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)snn.a(this.a)).h();
+      }
+      this.a.b = true;
     }
-    PublicAccountImageCollectionActivity.a(this.a);
+    while ((paramObject instanceof snv)) {
+      if (snn.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)snn.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
+    }
+    this.a.d(true);
   }
 }
 

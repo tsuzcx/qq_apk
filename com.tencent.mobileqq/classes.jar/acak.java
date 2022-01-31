@@ -1,20 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class acak
-  implements View.OnTouchListener
+  implements aioc
 {
   public acak(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(List<MayKnowRecommend> paramList) {}
+  
+  public void b()
+  {
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
   }
 }
 

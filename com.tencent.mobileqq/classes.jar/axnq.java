@@ -1,112 +1,182 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.splashad.SplashADUtil.1;
+import com.tencent.mobileqq.soload.config.SoLoadConfProcessor.1;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class axnq
+  extends ampa<axnp>
 {
-  public static long a;
-  private static boolean a;
-  private static long b;
+  private final List<axnr> a = new LinkedList();
   
-  public static int a(Context paramContext)
+  public static void a(int[] paramArrayOfInt, FromServiceMsg paramFromServiceMsg)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return paramContext.getDefaultDisplay().getWidth();
-  }
-  
-  public static long a(Context paramContext)
-  {
-    if (b == 0L) {
-      b = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("splash_ad_uin_long", 0L);
-    }
-    return b;
-  }
-  
-  private static void a() {}
-  
-  public static void a(int paramInt, String paramString)
-  {
-    ThreadManager.excute(new SplashADUtil.1(paramInt, paramString), 128, null, false);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
-    b = 0L;
-  }
-  
-  public static void a(Context paramContext, long paramLong)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong("splash_ad_uin_long", paramLong).apply();
-    b = paramLong;
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    Object localObject = paramActivity.getIntent();
-    paramActivity = ((Intent)localObject).getCategories();
-    localObject = ((Intent)localObject).getAction();
-    QLog.i("SplashAD", 1, "categories " + paramActivity + " action " + (String)localObject);
-    boolean bool1 = bool2;
-    if (paramActivity != null)
+    int k = paramArrayOfInt.length;
+    int i = 0;
+    if (i < k)
     {
-      bool1 = bool2;
-      if (paramActivity.contains("android.intent.category.LAUNCHER"))
-      {
-        bool1 = bool2;
-        if (localObject != null)
+      Object localObject;
+      boolean bool;
+      if (paramArrayOfInt[i] == 526) {
+        if (QLog.isColorLevel())
         {
-          bool1 = bool2;
-          if (((String)localObject).equals("android.intent.action.MAIN")) {
-            bool1 = true;
+          localObject = new StringBuilder().append("[notifyNetFailed] isSucc=");
+          if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
+            break label123;
+          }
+          bool = true;
+          label55:
+          localObject = ((StringBuilder)localObject).append(bool).append(", resultCode=");
+          if (paramFromServiceMsg == null) {
+            break label129;
           }
         }
       }
-    }
-    bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (paramActivity == null)
+      label129:
+      for (int j = paramFromServiceMsg.getResultCode();; j = -1)
       {
-        bool2 = bool1;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          bool2 = true;
+        QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, j);
+        localObject = ampl.a().a(526);
+        if (localObject != null) {
+          ((ampa)localObject).a(-2);
         }
+        i += 1;
+        break;
+        label123:
+        bool = false;
+        break label55;
       }
     }
-    QLog.e("SplashAD", 1, "fromLaucher " + bool2);
-    return bool2;
   }
   
-  public static void b(Context paramContext)
+  private void b()
   {
-    if (!a)
-    {
-      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-      a();
-      a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[notifyListeners]:" + this.a.size());
     }
+    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
+    synchronized (this.a)
+    {
+      if (this.a.size() <= 0) {
+        break label115;
+      }
+      Iterator localIterator = this.a.iterator();
+      if (localIterator.hasNext()) {
+        ((axnr)localIterator.next()).a();
+      }
+    }
+    this.a.clear();
+    label115:
+  }
+  
+  public int a()
+  {
+    return 526;
+  }
+  
+  @NonNull
+  public axnp a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[migrateOldOrDefaultContent]");
+    }
+    return new axnp();
+  }
+  
+  @Nullable
+  public axnp a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onParsed]");
+    }
+    axnp localaxnp = new axnp();
+    localaxnp.a = paramArrayOfamph;
+    return localaxnp;
+  }
+  
+  public Class<axnp> a()
+  {
+    return axnp.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "onReqNoReceive: type=" + a() + "curContent:" + ampl.a().a(526));
+    }
+    b();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
+    b();
+  }
+  
+  public void a(axnp paramaxnp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onUpdate] newConf:" + paramaxnp);
+    }
+    axnl.a().a(paramaxnp);
+    b();
+  }
+  
+  public void a(axnr paramaxnr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[getConfig]");
+    }
+    synchronized (this.a)
+    {
+      if (this.a.size() > 0)
+      {
+        this.a.add(paramaxnr);
+        return;
+      }
+      this.a.add(paramaxnr);
+      ampl.a().a(526, 0);
+      ampl.a().a(new int[] { 526 });
+      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
+      ThreadManager.getSubThreadHandler().postAtTime(new SoLoadConfProcessor.1(this), this, SystemClock.uptimeMillis() + 35000L);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[get migrateOldVersion]");
+    }
+    return 0;
+  }
+  
+  public int b(int paramInt)
+  {
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axnq
  * JD-Core Version:    0.7.0.1
  */

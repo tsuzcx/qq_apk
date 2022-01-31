@@ -1,25 +1,29 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class aayu
-  implements bcwh
+  implements View.OnTouchListener
 {
   public aayu(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if ((paramMotionEvent != null) && (this.a.a != null))
     {
-    case -2: 
-    case -1: 
-    default: 
-      wim.a(1, 2131719476);
-      return;
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
+      }
     }
-    wim.a(2, 2131719495);
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
   }
 }
 

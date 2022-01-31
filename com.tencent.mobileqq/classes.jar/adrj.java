@@ -1,17 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
 class adrj
-  implements aput
+  implements bfpj
 {
-  adrj(adqy paramadqy) {}
+  adrj(adri paramadri) {}
   
-  public void onClick(View paramView)
-  {
-    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
-  }
+  public void onDismiss() {}
 }
 
 

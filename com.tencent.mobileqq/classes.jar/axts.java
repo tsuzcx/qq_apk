@@ -1,93 +1,77 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+
 public class axts
-  extends axtr
+  extends QIPCModule
 {
-  public int a;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
+  private static axts a;
   
-  public axts()
+  private axts(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.c = "";
-    this.jdField_a_of_type_Int = 0;
+    super(paramString);
   }
   
-  public String a()
+  public static axts a()
   {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.h).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.l).append("|");
-    localStringBuffer.append(this.m).append("|");
-    localStringBuffer.append(this.n).append("|");
-    localStringBuffer.append(this.o).append("|");
-    localStringBuffer.append(this.p).append("|");
-    localStringBuffer.append(this.q).append("|");
-    localStringBuffer.append(this.r).append("|");
-    localStringBuffer.append(this.s).append("|");
-    localStringBuffer.append(this.t).append("|");
-    localStringBuffer.append(this.u).append("|");
-    return localStringBuffer.toString();
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new axts("NetworkMonitorIPCModule");
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public String toString()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.h).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.l).append("|");
-    localStringBuffer.append(this.m).append("|");
-    localStringBuffer.append(this.n).append("|");
-    localStringBuffer.append(this.o).append("|");
-    localStringBuffer.append(this.p).append("|");
-    localStringBuffer.append(this.q).append("|");
-    localStringBuffer.append(this.r).append("|");
-    localStringBuffer.append(this.s).append("|");
-    localStringBuffer.append(this.t).append("|");
-    localStringBuffer.append(this.u).append("|");
-    return localStringBuffer.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
+    {
+      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
+      axtp.a().a(paramString);
+    }
+    for (;;)
+    {
+      return new EIPCResult();
+      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
+      {
+        try
+        {
+          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
+          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
+          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
+          if (paramString != null)
+          {
+            try
+            {
+              axtp.a().a(paramString, str, paramBundle);
+            }
+            catch (Throwable paramString) {}
+            continue;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
+        }
+        catch (Exception paramString) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axts
  * JD-Core Version:    0.7.0.1
  */

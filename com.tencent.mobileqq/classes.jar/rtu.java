@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-class rtu
-  implements View.OnClickListener
+public class rtu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rtu(rtt paramrtt) {}
+  public rtu(TabLayoutCompat paramTabLayoutCompat) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    rtt.a(this.a).a(rtt.a(this.a), rtt.a(this.a));
-    this.a.dismiss();
+    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
   }
 }
 

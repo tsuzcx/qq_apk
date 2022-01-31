@@ -1,8 +1,10 @@
-import android.view.MotionEvent;
+import android.view.View;
 
 public abstract interface bfrj
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(View paramView, int paramInt, long paramLong);
+  
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

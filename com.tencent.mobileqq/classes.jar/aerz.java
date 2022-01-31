@@ -1,23 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aerz
-  implements Animator.AnimatorListener
+  implements Animation.AnimationListener
 {
-  aerz(aerv paramaerv) {}
+  aerz(aert paramaert) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.removeHeaderView(aerv.a(this.a));
-    aerv.a(this.a, true);
+    this.a.W = false;
+    this.a.af = false;
+    this.a.d(this.a.o);
+    this.a.s = 1;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

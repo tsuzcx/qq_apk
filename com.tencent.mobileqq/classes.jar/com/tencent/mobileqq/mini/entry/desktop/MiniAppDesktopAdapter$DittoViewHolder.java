@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.entry.desktop;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.View;
-import bbkx;
+import bbll;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDittoInfo;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoAreaView;
 
@@ -23,7 +23,7 @@ class MiniAppDesktopAdapter$DittoViewHolder
       DesktopDittoAreaView localDesktopDittoAreaView = (DesktopDittoAreaView)this.itemView;
       localDesktopDittoAreaView.setContentAreaForJsonFile(str, true);
       localDesktopDittoAreaView.setDittoData(paramDesktopDittoInfo);
-      this.itemView.setPadding(0, bbkx.b(20.0F), 0, 0);
+      this.itemView.setPadding(0, bbll.b(20.0F), 0, 0);
       localDesktopDittoAreaView.handleExposureReport();
     }
   }

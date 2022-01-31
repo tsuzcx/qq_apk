@@ -1,16 +1,14 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer.OnCompletionListener;
 
 class ajap
-  implements MediaPlayer.OnErrorListener
+  implements MediaPlayer.OnCompletionListener
 {
-  ajap(ajao paramajao) {}
+  ajap(ajam paramajam) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
-    return false;
+    this.a.a(10);
   }
 }
 

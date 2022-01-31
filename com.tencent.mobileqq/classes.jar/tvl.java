@@ -1,18 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class tvl
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+final class tvl
+  extends SimpleJob<Object>
 {
-  public void onComplete(String arg1, String paramString2)
+  tvl(String paramString)
   {
-    synchronized ()
-    {
-      paramString2 = tvk.a();
-      tvk.a().post(new TVKPreloader.1.1(this, paramString2));
-      return;
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = tvh.a();
+    if (paramJobContext != null) {
+      tvh.b(paramJobContext);
     }
+    return null;
   }
 }
 

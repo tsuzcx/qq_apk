@@ -1,65 +1,27 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public final class ahmc
+class ahmc
+  implements View.OnClickListener
 {
-  public final int a;
-  @NonNull
-  public final ahma a;
-  @NonNull
-  public final String a;
-  public final int b;
-  @NonNull
-  public final String b;
+  private ahma jdField_a_of_type_Ahma;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public ahmc(int paramInt1, @NonNull String paramString1, int paramInt2, @NonNull String paramString2, @NonNull ahma paramahma)
+  ahmc(ahma paramahma, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     this.jdField_a_of_type_Ahma = paramahma;
   }
   
-  public boolean equals(Object paramObject)
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ahma.jdField_a_of_type_JavaLangString + " on enter");
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              bool1 = bool2;
-            } while (paramObject == null);
-            bool1 = bool2;
-          } while (getClass() != paramObject.getClass());
-          paramObject = (ahmc)paramObject;
-          bool1 = bool2;
-        } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
-        bool1 = bool2;
-      } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
-      bool1 = bool2;
-    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
-  }
-  
-  public int hashCode()
-  {
-    return ((this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangString.hashCode()) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_b_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "MessageToShowBanner{bannerLev=" + this.jdField_a_of_type_Int + ", businessCategory='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconIdx=" + this.jdField_b_of_type_Int + ", wording='" + this.jdField_b_of_type_JavaLangString + '\'' + ", callback=" + this.jdField_a_of_type_Ahma + '}';
+    this.jdField_a_of_type_Ahma.jdField_a_of_type_Ahly.onEnter();
+    axqy.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
   }
 }
 

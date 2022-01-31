@@ -9,28 +9,41 @@ public class opa
 {
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = ooi.a(paramString);
+    paramString = oof.a(paramString);
     Iterator localIterator = paramString.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("readinjoyClickChannelView", str1)) {
-        bhvh.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      } else if (TextUtils.equals("readinjoySlideChannelView", str1)) {
-        bhvh.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      } else if (TextUtils.equals("readinjoyClickDiversionCard", str1)) {
-        bhvh.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      if ((str1.equals("md5")) && (str2 != null))
+      {
+        olg.a(onh.a(), "sp_key_latest_app_md5", str2.toLowerCase());
+      }
+      else if (str1.equals("version_name"))
+      {
+        olg.a(onh.a(), "sp_key_latest_app_version_name", str2);
+      }
+      else if ((str1.equals("download_url")) && (str2 != null))
+      {
+        str1 = onf.a(str2);
+        olg.a(onh.a(), "sp_key_kb_download_url", str1);
+      }
+      else if (str1.equals("enable_predownload"))
+      {
+        olg.a(onh.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
       }
     }
+    if (!paramString.containsKey("md5")) {
+      olg.a(onh.a(), "sp_key_latest_app_md5", null);
+    }
+    olg.a();
     return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("sp_key_readinjoy_click_channel_view", Boolean.valueOf(false));
-    bhvh.a("sp_key_readinjoy_slide_channel_view", Boolean.valueOf(false));
-    bhvh.a("sp_key_readinjoy_click_diversion_card", Boolean.valueOf(false));
+    olg.a(onh.a(), "sp_key_latest_app_md5", null);
+    olg.a(onh.a(), "sp_key_latest_app_version_name", null);
   }
 }
 

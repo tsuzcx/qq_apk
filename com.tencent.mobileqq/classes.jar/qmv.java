@@ -1,28 +1,22 @@
-import android.content.BroadcastReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class qmv
+class qmv
+  implements Animation.AnimationListener
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new qmw();
-  private static final String jdField_a_of_type_JavaLangString = qmv.class.getSimpleName();
-  private static Thread jdField_a_of_type_JavaLangThread;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static AtomicInteger b;
+  qmv(qmu paramqmu) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    b = new AtomicInteger(0);
+    if (qmu.a(this.a) != null) {
+      qmu.a(this.a).setVisibility(8);
+    }
   }
   
-  private static long b()
-  {
-    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
-    return l;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

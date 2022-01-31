@@ -1,14 +1,23 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
 
-class afmh
-  extends aimv
+public class afmh
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public int a;
+  public int b;
+  public int c;
+  
+  public afmh(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
+  }
 }
 
 

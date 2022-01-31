@@ -1,54 +1,60 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bavo
-  implements DownloadParams.DecodeHandler
+public class bavo
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public QQAppInterface a;
+  public BusinessObserver a;
+  
+  public bavo(QQAppInterface paramQQAppInterface)
   {
-    if ((paramBitmap == null) || (paramDownloadParams == null))
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new bavp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public String a(int paramInt, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject2 = new JSONObject();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "FLASH_PIC_MOSAIC_DECODE, bitmap is null");
+      localJSONObject2.put("status", paramInt);
+      JSONObject localJSONObject1 = paramJSONObject;
+      if (paramJSONObject == null) {
+        localJSONObject1 = new JSONObject();
       }
-      return null;
+      localJSONObject2.put("data", localJSONObject1);
     }
-    float f1 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    int j = (int)(paramDownloadParams.reqWidth / f1 + 0.5F);
-    int i = (int)(paramDownloadParams.reqHeight / f1 + 0.5F);
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    if ("chatthumb".equals(paramDownloadParams.url.getProtocol()))
+    catch (JSONException paramJSONObject)
     {
-      j = 130;
-      i = 102;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
+        }
+      }
     }
+    return localJSONObject2.toString();
+  }
+  
+  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  {
+    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
+    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
+    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bavn.class);
+    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
+    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
+    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "downloadParams.reqWidth:" + paramDownloadParams.reqWidth + ",downloadParams.reqHeight:" + paramDownloadParams.reqHeight + ",reqWidth:" + j + ",reqHeight:" + i + ",isMutable:" + paramBitmap.isMutable());
+      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
     }
-    f1 = j / k;
-    float f2 = i / m;
-    paramDownloadParams = new Matrix();
-    paramDownloadParams.postScale(f1, f2);
-    paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, paramDownloadParams, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "scaleW:" + f1 + "scaleH:" + f2 + ",resizeBmp w:" + paramDownloadParams.getWidth() + ",h:" + paramDownloadParams.getHeight());
-    }
-    j = paramDownloadParams.getWidth() / 8;
-    i = j;
-    if (j == 0) {
-      i = 16;
-    }
-    paramDownloadParams = bavi.a(paramDownloadParams, i);
-    paramBitmap.recycle();
-    return paramDownloadParams;
   }
 }
 

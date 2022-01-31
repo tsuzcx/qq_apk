@@ -1,31 +1,109 @@
+import android.content.SharedPreferences;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ljg
-  extends ljf
+  extends lhd
 {
+  VoiceRecogTips a;
+  
   public ljg(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
   }
   
-  public int a(String paramString)
+  public static SharedPreferences a(AppInterface paramAppInterface)
   {
-    return 1;
+    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "qav_voicerecog", 0);
   }
   
-  public boolean a(int paramInt, String paramString)
+  public static lhs a(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = ((lhr)paramVideoAppInterface.a(3)).a();
+    long l = awzy.a();
+    paramVideoAppInterface = paramVideoAppInterface.iterator();
+    while (paramVideoAppInterface.hasNext())
+    {
+      lhs locallhs = (lhs)paramVideoAppInterface.next();
+      if (a(l * 1000L, locallhs.a, locallhs.b)) {
+        return locallhs;
+      }
+    }
+    return null;
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return (paramLong1 >= paramLong2) && (paramLong1 <= paramLong3);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    return (ltm.b()) && (b(paramVideoAppInterface));
+  }
+  
+  public static boolean b(VideoAppInterface paramVideoAppInterface)
+  {
+    return ((liz)paramVideoAppInterface.a(5)).a(3, "normal");
+  }
+  
+  protected void a() {}
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    if (1 == paramInt) {
+      b();
+    }
+    while (3 != paramInt) {
+      return;
+    }
+    c();
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    super.a(paramString, paramBoolean);
+  }
+  
+  protected boolean a(String paramString)
   {
     return false;
   }
   
-  public boolean a(String paramString)
+  void b()
   {
-    return true;
+    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {}
+    lga locallga;
+    lhs locallhs;
+    do
+    {
+      do
+      {
+        return;
+        locallga = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+      } while (locallga == null);
+      locallhs = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    } while (locallhs == null);
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null) {
+      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    }
+    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, locallga.d, locallhs);
   }
   
-  public void b() {}
-  
-  public void c() {}
+  void c()
+  {
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null)
+    {
+      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
+    }
+  }
 }
 
 

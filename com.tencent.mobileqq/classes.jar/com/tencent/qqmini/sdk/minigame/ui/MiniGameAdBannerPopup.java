@@ -15,13 +15,13 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import beiw;
-import belj;
-import besl;
-import bewk;
-import bewl;
-import bewm;
-import bewn;
+import bejn;
+import bema;
+import betc;
+import bexb;
+import bexc;
+import bexd;
+import bexe;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
@@ -38,15 +38,15 @@ import java.util.concurrent.TimeUnit;
 
 public class MiniGameAdBannerPopup
 {
-  private static int jdField_a_of_type_Int = belj.a("MiniApp", "banner_ad_popup_show_delay_seconds_after_game_launch", 0);
-  private static String jdField_a_of_type_JavaLangString = belj.a("MiniApp", "banner_ad_popup_appid_white_list", "");
-  private static String b = belj.a("MiniApp", "banner_ad_popup_appid_black_list", "");
-  private static String c = belj.a("MiniApp", "banner_ad_popup_refer_white_list", "");
-  private static String d = belj.a("MiniApp", "banner_ad_popup_refer_black_list", "");
+  private static int jdField_a_of_type_Int = bema.a("MiniApp", "banner_ad_popup_show_delay_seconds_after_game_launch", 0);
+  private static String jdField_a_of_type_JavaLangString = bema.a("MiniApp", "banner_ad_popup_appid_white_list", "");
+  private static String b = bema.a("MiniApp", "banner_ad_popup_appid_black_list", "");
+  private static String c = bema.a("MiniApp", "banner_ad_popup_refer_white_list", "");
+  private static String d = bema.a("MiniApp", "banner_ad_popup_refer_black_list", "");
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    beiw.a().post(new MiniGameAdBannerPopup.1(paramContext, paramString, paramInt));
+    bejn.a().post(new MiniGameAdBannerPopup.1(paramContext, paramString, paramInt));
   }
   
   private static boolean a(int paramInt)
@@ -56,7 +56,7 @@ public class MiniGameAdBannerPopup
       if ((TextUtils.isEmpty(c)) && (TextUtils.isEmpty(d))) {
         return true;
       }
-      besl.a("MiniGameAdBannerPopup", "allowShowForRefer check if scene " + paramInt + " in whitelist " + c + " or blacklist " + d);
+      betc.a("MiniGameAdBannerPopup", "allowShowForRefer check if scene " + paramInt + " in whitelist " + c + " or blacklist " + d);
       String[] arrayOfString;
       int j;
       int i;
@@ -113,7 +113,7 @@ public class MiniGameAdBannerPopup
     }
     catch (Exception localException)
     {
-      besl.d("MiniGameAdBannerPopup", "allowShowForRefer", localException);
+      betc.d("MiniGameAdBannerPopup", "allowShowForRefer", localException);
     }
     label221:
     label223:
@@ -130,7 +130,7 @@ public class MiniGameAdBannerPopup
         if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(b))) {
           return true;
         }
-        besl.a("MiniGameAdBannerPopup", "allowShowForAppId check if appid " + paramString + " in whitelist " + jdField_a_of_type_JavaLangString + " or blacklist " + b);
+        betc.a("MiniGameAdBannerPopup", "allowShowForAppId check if appid " + paramString + " in whitelist " + jdField_a_of_type_JavaLangString + " or blacklist " + b);
         String[] arrayOfString;
         int j;
         String str;
@@ -191,7 +191,7 @@ public class MiniGameAdBannerPopup
       }
       catch (Exception paramString)
       {
-        besl.d("MiniGameAdBannerPopup", "allowShowForAppId", paramString);
+        betc.d("MiniGameAdBannerPopup", "allowShowForAppId", paramString);
       }
       label235:
       label237:
@@ -335,7 +335,7 @@ public class MiniGameAdBannerPopup
                 }
                 catch (Exception localException)
                 {
-                  besl.d("MiniGameAdBannerPopup", "handleGetAdResult", localException);
+                  betc.d("MiniGameAdBannerPopup", "handleGetAdResult", localException);
                 }
               }
               else
@@ -352,7 +352,7 @@ public class MiniGameAdBannerPopup
         }
         else
         {
-          besl.d("MiniGameAdBannerPopup", "onGetAdvs no ad item");
+          betc.d("MiniGameAdBannerPopup", "onGetAdvs no ad item");
           localAdItem1 = null;
           localObject5 = null;
           localObject6 = null;
@@ -362,20 +362,20 @@ public class MiniGameAdBannerPopup
         localObject1 = localObject6;
         paramGetAdsRsp = localObject7;
         label765:
-        besl.a("MiniGameAdBannerPopup", "handleGetAdResult appid whitelist " + jdField_a_of_type_JavaLangString + "\n appid blacklist " + b + "\n refer whitelist " + c + "\n refer blacklist " + d + "\n show time " + jdField_a_of_type_Int);
+        betc.a("MiniGameAdBannerPopup", "handleGetAdResult appid whitelist " + jdField_a_of_type_JavaLangString + "\n appid blacklist " + b + "\n refer whitelist " + c + "\n refer blacklist " + d + "\n show time " + jdField_a_of_type_Int);
         if (a(paramString)) {
           break label899;
         }
-        besl.d("MiniGameAdBannerPopup", "handleGetAdResult not allow for appid " + paramString);
+        betc.d("MiniGameAdBannerPopup", "handleGetAdResult not allow for appid " + paramString);
       }
     }
     label884:
     do
     {
       return;
-      besl.d("MiniGameAdBannerPopup", "onGetAdvs no ad data");
+      betc.d("MiniGameAdBannerPopup", "onGetAdvs no ad data");
       break;
-      besl.d("MiniGameAdBannerPopup", "onGetAdvs no ad result");
+      betc.d("MiniGameAdBannerPopup", "onGetAdvs no ad result");
       localObject2 = null;
       paramGetAdsRsp = null;
       localObject5 = null;
@@ -383,12 +383,12 @@ public class MiniGameAdBannerPopup
       break label765;
       if (!a(paramInt))
       {
-        besl.d("MiniGameAdBannerPopup", "handleGetAdResult not allow for refer " + paramInt);
+        betc.d("MiniGameAdBannerPopup", "handleGetAdResult not allow for refer " + paramInt);
         return;
       }
     } while ((localGetAdsRsp == null) || (localObject1 == null) || (localObject5 == null) || (paramGetAdsRsp == null) || (localObject2 == null));
     label899:
-    beiw.c().postDelayed(new MiniGameAdBannerPopup.3(paramContext, localGetAdsRsp, localObject5, paramGetAdsRsp, (String)localObject1, localObject2), TimeUnit.SECONDS.toMillis(jdField_a_of_type_Int));
+    bejn.c().postDelayed(new MiniGameAdBannerPopup.3(paramContext, localGetAdsRsp, localObject5, paramGetAdsRsp, (String)localObject1, localObject2), TimeUnit.SECONDS.toMillis(jdField_a_of_type_Int));
   }
   
   private static void b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, TianShuAccess.AdItem paramAdItem)
@@ -397,9 +397,9 @@ public class MiniGameAdBannerPopup
       return;
     }
     Object localObject = LayoutInflater.from(paramContext).inflate(2131559291, null);
-    ImageView localImageView = (ImageView)((View)localObject).findViewById(2131370273);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131370275);
-    LinearLayout localLinearLayout = (LinearLayout)((View)localObject).findViewById(2131370262);
+    ImageView localImageView = (ImageView)((View)localObject).findViewById(2131370272);
+    TextView localTextView = (TextView)((View)localObject).findViewById(2131370274);
+    LinearLayout localLinearLayout = (LinearLayout)((View)localObject).findViewById(2131370261);
     Dialog localDialog = new Dialog(paramContext);
     localDialog.setCancelable(false);
     if (localDialog.getWindow() != null)
@@ -408,8 +408,8 @@ public class MiniGameAdBannerPopup
       localDialog.getWindow().setBackgroundDrawableResource(17170445);
     }
     localDialog.setContentView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-    localDialog.setOnShowListener(new bewl(paramAdItem, paramString1));
-    localImageView.setOnClickListener(new bewm(localDialog, paramAdItem, paramString1));
+    localDialog.setOnShowListener(new bexc(paramAdItem, paramString1));
+    localImageView.setOnClickListener(new bexd(localDialog, paramAdItem, paramString1));
     if (!TextUtils.isEmpty(paramString2)) {
       localTextView.setText(paramString2);
     }
@@ -419,7 +419,7 @@ public class MiniGameAdBannerPopup
     paramString2.setClickable(true);
     localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     paramString2.setImageDrawable(((MiniAppProxy)localObject).getDrawable(paramContext, paramString3, 0, 0, null));
-    paramString2.setOnClickListener(new bewn(localDialog, paramContext, paramString4, (MiniAppProxy)localObject, paramAdItem, paramString1));
+    paramString2.setOnClickListener(new bexe(localDialog, paramContext, paramString4, (MiniAppProxy)localObject, paramAdItem, paramString1));
     paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
     paramContext.gravity = 1;
     localLinearLayout.addView(paramString2, paramContext);
@@ -428,7 +428,7 @@ public class MiniGameAdBannerPopup
   
   private static void b(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
-    beiw.a().post(new MiniGameAdBannerPopup.7(paramAdItem, paramString, paramInt));
+    bejn.a().post(new MiniGameAdBannerPopup.7(paramAdItem, paramString, paramInt));
   }
   
   private static void c(Context paramContext, String paramString, int paramInt)
@@ -437,7 +437,7 @@ public class MiniGameAdBannerPopup
       return;
     }
     WeakReference localWeakReference = new WeakReference(paramContext);
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new bewk(localWeakReference, paramString, paramInt));
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).tianshuRequestAdv(paramContext, paramString, paramInt, 258, 1, new bexb(localWeakReference, paramString, paramInt));
   }
 }
 

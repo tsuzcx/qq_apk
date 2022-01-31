@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import ancc;
-import ance;
+import anch;
+import ancj;
 import android.app.Activity;
-import appk;
-import appl;
-import ayfe;
+import appo;
+import appp;
+import ayfg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import java.util.List;
@@ -13,26 +13,26 @@ import java.util.List;
 public class SimpleFilePresenter$1$2
   implements Runnable
 {
-  public SimpleFilePresenter$1$2(appl paramappl, ancc paramancc, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  public SimpleFilePresenter$1$2(appp paramappp, anch paramanch, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ancc.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b)) {}
+    if (this.jdField_a_of_type_Anch.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b)) {}
     for (int i = 2;; i = 1)
     {
-      localObject = ancc.a(ayfe.a(this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+      localObject = anch.a(ayfg.a(this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
       if (localObject != null)
       {
-        if ((((ance)localObject).jdField_a_of_type_JavaUtilList != null) && (((ance)localObject).jdField_a_of_type_JavaUtilList.size() != 0)) {
+        if ((((ancj)localObject).jdField_a_of_type_JavaUtilList != null) && (((ancj)localObject).jdField_a_of_type_JavaUtilList.size() != 0)) {
           break;
         }
-        i = ((ance)localObject).jdField_a_of_type_Int;
-        this.jdField_a_of_type_Appl.a.a.runOnUiThread(new SimpleFilePresenter.1.2.1(this, i));
+        i = ((ancj)localObject).jdField_a_of_type_Int;
+        this.jdField_a_of_type_Appp.a.a.runOnUiThread(new SimpleFilePresenter.1.2.1(this, i));
       }
       return;
     }
-    Object localObject = ((ance)localObject).jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Appl.a.a.runOnUiThread(new SimpleFilePresenter.1.2.2(this, (List)localObject));
+    Object localObject = ((ancj)localObject).jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Appp.a.a.runOnUiThread(new SimpleFilePresenter.1.2.2(this, (List)localObject));
   }
 }
 

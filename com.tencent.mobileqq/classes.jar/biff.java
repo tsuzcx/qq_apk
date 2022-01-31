@@ -1,11 +1,14 @@
-public final class biff
+import java.util.List;
+
+public abstract interface biff
 {
-  public final byte[] a;
+  public abstract void a(int paramInt, biem parambiem, String paramString);
   
-  biff(byte[] paramArrayOfByte)
-  {
-    this.a = paramArrayOfByte;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, biem parambiem);
+  
+  public abstract void a(long paramLong, boolean paramBoolean1, bien parambien, boolean paramBoolean2);
+  
+  public abstract void a(String paramString, List<biem> paramList);
 }
 
 

@@ -1,27 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.io.File;
 
-class ankj
-  implements DialogInterface.OnCancelListener
+public class ankj
+  implements View.OnClickListener
 {
-  ankj(anki paramanki) {}
+  public ankj(DBFixConfigActivity paramDBFixConfigActivity, String paramString) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (anki.a(this.a).equals("checked corrupt"))
-    {
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
-      QLog.d(anki.a(), 1, "dialog cancel");
-    }
-    this.a.a();
+    boolean bool = bbdx.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
+    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
   }
 }
 

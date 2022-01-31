@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.WifiInfo;
 
-final class bgya
-  implements DialogInterface.OnClickListener
+public final class bgya
+  implements Parcelable.Creator<LbsDataV2.WifiInfo>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public LbsDataV2.WifiInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
+    if (paramParcel != null)
+    {
+      localWifiInfo.mac = paramParcel.readString();
+      localWifiInfo.rssi = paramParcel.readInt();
+    }
+    return localWifiInfo;
+  }
+  
+  public LbsDataV2.WifiInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

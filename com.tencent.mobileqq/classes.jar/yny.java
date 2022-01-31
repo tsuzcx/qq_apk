@@ -1,14 +1,34 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tgpa.vendorpd.GameCallback;
+import org.json.JSONObject;
 
-public class yny
-  implements yot
+public final class yny
+  implements GameCallback
 {
-  public yny(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
+  public yny(JSONObject paramJSONObject) {}
   
-  public void a(int paramInt, String paramString)
+  public int getPreDownloadVersionInfo(String paramString)
   {
-    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("ret") == 0)
+      {
+        paramString = paramString.optJSONObject("data");
+        bicy.a().a(paramString, this.a);
+      }
+      return 0;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
+      }
+    }
   }
 }
 

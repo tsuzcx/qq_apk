@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.text.TextUtils;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bbah;
+import bbav;
 
 class ScreenShotUtil$2$1
   implements Runnable
@@ -9,7 +9,7 @@ class ScreenShotUtil$2$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bbah.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.this$0.jdField_a_of_type_Bbav.a(this.a, this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

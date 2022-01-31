@@ -1,10 +1,4 @@
-public abstract interface bjzp
-{
-  public abstract void a(int paramInt);
-  
-  public abstract void a(bjzo parambjzo);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     bjzp

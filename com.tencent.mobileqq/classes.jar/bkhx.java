@@ -1,62 +1,133 @@
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
 
-public class bkhx
+public abstract class bkhx
+  extends Drawable
 {
-  public static float a(float paramFloat1, float paramFloat2)
+  public static final int g = a(1.0F, BaseApplicationImpl.getContext().getResources());
+  protected ValueAnimator a;
+  protected Context a;
+  protected bkhl a;
+  private bkia a;
+  protected String a;
+  protected ArrayList<Integer> a;
+  protected Bitmap b;
+  protected int f;
+  
+  public bkhx(Context paramContext, String paramString)
   {
-    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-    if (!Float.isNaN(paramFloat1)) {
-      return paramFloat1;
-    }
-    return 1.0F;
+    this.jdField_a_of_type_Bkhl = new bkhl();
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static float a(MotionEvent paramMotionEvent)
+  public static final int a(float paramFloat, Resources paramResources)
   {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
+    if (paramFloat == 0.0F) {
+      return 0;
     }
-    return 1.0F;
+    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  public static float[] a(MotionEvent paramMotionEvent)
+  public int a()
   {
-    float[] arrayOfFloat = new float[2];
-    if (paramMotionEvent.getPointerCount() > 1)
+    return this.f;
+  }
+  
+  protected int a(ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramArrayList != null)
     {
-      arrayOfFloat[0] = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
-      arrayOfFloat[1] = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
-    }
-    return arrayOfFloat;
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2)
-  {
-    float f = (float)Math.toDegrees(Math.asin(paramFloat2 / a(paramFloat1, paramFloat2)));
-    if (!Float.isNaN(f))
-    {
-      if ((paramFloat2 >= 0.0F) && (paramFloat1 >= 0.0F)) {}
-      do
+      i = paramInt2;
+      if (paramArrayList.size() > paramInt1)
       {
-        return f;
-        if ((paramFloat2 >= 0.0F) && (paramFloat1 <= 0.0F)) {
-          return 180.0F - f;
+        paramArrayList = (Integer)paramArrayList.get(paramInt1);
+        i = paramInt2;
+        if (paramArrayList != null) {
+          i = paramArrayList.intValue();
         }
-      } while ((paramFloat2 <= 0.0F) && (paramFloat1 >= 0.0F));
-      if ((paramFloat2 <= 0.0F) && (paramFloat1 <= 0.0F)) {
-        return -180.0F - f;
       }
     }
-    return 0.0F;
+    return i;
   }
   
-  public static float b(MotionEvent paramMotionEvent)
+  public Bitmap a()
   {
-    if (paramMotionEvent.getPointerCount() > 1) {
-      return b(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
-    }
-    return 0.0F;
+    return a(this.jdField_a_of_type_Bkhl.a());
   }
+  
+  public Bitmap a(long paramLong)
+  {
+    Bitmap localBitmap = b();
+    Canvas localCanvas = new Canvas(localBitmap);
+    ArrayList localArrayList = this.jdField_a_of_type_Bkhl.a(paramLong);
+    if (localArrayList != null) {
+      a(localCanvas, localArrayList);
+    }
+    return localBitmap;
+  }
+  
+  protected abstract void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList);
+  
+  public abstract String[] a(String paramString);
+  
+  protected Bitmap b()
+  {
+    if (this.b == null) {
+      this.b = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+    }
+    for (;;)
+    {
+      return this.b;
+      new Canvas(this.b).drawColor(0, PorterDuff.Mode.CLEAR);
+    }
+  }
+  
+  protected abstract void b();
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void c()
+  {
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Bkhl, new Object[] { this.jdField_a_of_type_Bkhl.b(), this.jdField_a_of_type_Bkhl.a() });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bkhy(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bkhz(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.jdField_a_of_type_Bkhl.a());
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      a(paramCanvas, this.jdField_a_of_type_JavaUtilArrayList);
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

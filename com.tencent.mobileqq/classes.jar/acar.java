@@ -1,32 +1,19 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class acar
-  implements View.OnKeyListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public acar(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public acar(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label36;
-      }
-      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
-    }
-    for (;;)
-    {
-      return false;
-      label36:
-      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
-        SelectedAndSearchBar.a(this.a).a();
-      }
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 

@@ -1,26 +1,24 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class vnm
-  implements vla
+  implements Animation.AnimationListener
 {
   public vnm(DoodleLayout paramDoodleLayout) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.jdField_a_of_type_Vnn != null) {
+      this.a.jdField_a_of_type_Vnn.a(null);
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      veg.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

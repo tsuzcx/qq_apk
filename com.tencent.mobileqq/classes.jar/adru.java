@@ -1,95 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.TicketManager;
 
 class adru
-  extends ClickableSpan
+  implements bfph
 {
-  adru(adqy paramadqy, String paramString1, String paramString2) {}
+  adru(adrs paramadrs, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = 1;
-    int i;
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi")) {
-      if ((this.jdField_a_of_type_JavaLangString.contains("c2c")) && (this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0))
-      {
-        paramView = bfol.a(this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext);
-        paramView.b(2131720351);
-        paramView.c(2131690596);
-        paramView.a(new adrv(this));
-        paramView.a(new adrw(this, paramView));
-        paramView.show();
-        axqw.b(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
-        i = 1;
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
     {
-      paramView = this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      label144:
-      Object localObject;
-      if (this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0)
-      {
-        axqw.b(paramView, "CliOper", "", "", "0X800416C", "0X800416C", 0, 0, String.valueOf(j), String.valueOf(2), String.valueOf(i), this.b);
-        return;
-        if ((!this.jdField_a_of_type_JavaLangString.contains("discussion")) || (this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 3000)) {
-          break label519;
-        }
-        paramView = bfol.a(this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext);
-        paramView.b(2131720365);
-        paramView.c(2131690596);
-        paramView.a(new adrx(this));
-        paramView.a(new adry(this, paramView));
-        paramView.show();
-        axqw.b(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
-        i = 1;
-        continue;
-        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
-          break label519;
-        }
-        paramView = this.jdField_a_of_type_JavaLangString;
-        if (TextUtils.isEmpty(paramView)) {
-          break label516;
-        }
-        if (paramView.contains("?"))
-        {
-          localObject = (TicketManager)this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-          paramView = paramView + "&sid=" + ((TicketManager)localObject).getSkey(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        }
-      }
-      label516:
-      for (;;)
-      {
-        localObject = new Intent(this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramView);
-        ((Intent)localObject).putExtra("hide_left_button", true);
-        ((Intent)localObject).putExtra("show_right_close_button", true);
-        ((Intent)localObject).putExtra("finish_animation_up_down", true);
-        this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        i = 2;
-        break;
-        localObject = (TicketManager)this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-        paramView = paramView + "?sid=" + ((TicketManager)localObject).getSkey(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        continue;
-        j = 2;
-        break label144;
-      }
-      label519:
-      i = 1;
+    default: 
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    ChatActivityUtils.a(this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adrs.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+    axqy.b(this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,15 +1,6 @@
 final class ampn
 {
-  public final int a;
-  public final long a;
-  public final Object a;
-  
-  ampn(long paramLong, int paramInt, Object paramObject)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
+  public static final ampl a = new ampl();
 }
 
 

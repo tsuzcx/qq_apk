@@ -1,14 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
 import java.util.List;
 
 public class tll
-  extends ssk
+  extends ssh
 {
-  public List<StoryVideoItem> a;
+  public String a;
+  public List<uuc> a;
+  
+  public tll()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
   
   public String toString()
   {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
   }
 }
 

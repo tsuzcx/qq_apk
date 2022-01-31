@@ -1,34 +1,26 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import android.view.View;
 import com.tencent.biz.subscribe.widget.textview.FollowTextView;
-import com.tencent.mobileqq.pb.PBStringField;
 
 public class wws
-  extends akdo
+  implements bfph
 {
-  public wws(FollowTextView paramFollowTextView) {}
+  public wws(FollowTextView paramFollowTextView, bfpc parambfpc) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.a(paramBoolean, paramString);
-    FollowTextView.a(this.a, true);
-    if (paramBoolean)
-    {
-      if (!FollowTextView.a(this.a)) {
-        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
-      }
-      this.a.a(1);
-      if (FollowTextView.a(this.a) != null)
-      {
-        if (FollowTextView.a(this.a) != null) {
-          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
-        }
-        wpw.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
-      }
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
       return;
     }
-    bcpw.a(this.a.getContext(), 2131690653, 0).a();
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
+    }
   }
 }
 

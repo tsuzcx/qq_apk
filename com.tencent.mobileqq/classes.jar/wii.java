@@ -1,17 +1,13 @@
-import java.util.Comparator;
+import java.util.HashMap;
 
-class wii
-  implements Comparator<wig>
+public class wii
 {
-  wii(wih paramwih) {}
-  
-  public int a(wig paramwig1, wig paramwig2)
-  {
-    if (paramwig1.d > paramwig2.d) {
-      return 1;
-    }
-    return -1;
-  }
+  public HashMap<String, String> a = new HashMap();
+  public HashMap<String, String> b = new HashMap();
+  public HashMap<String, String> c = new HashMap();
+  public HashMap<String, String> d = new HashMap();
+  public HashMap<String, String> e = new HashMap();
+  public HashMap<String, String> f = new HashMap();
 }
 
 

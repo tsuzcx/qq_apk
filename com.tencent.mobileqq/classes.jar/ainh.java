@@ -1,199 +1,215 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.LayoutInflater;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Queue;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ainh
   extends BaseAdapter
-  implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  abgk jdField_a_of_type_Abgk;
+  protected int a;
   Context jdField_a_of_type_AndroidContentContext;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  ArrayList<JSONObject> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
+  xjj jdField_a_of_type_Xjj;
   boolean jdField_a_of_type_Boolean = false;
-  Drawable b;
+  boolean b = true;
   
-  public ainh(Context paramContext)
+  public ainh(Context paramContext, JSONArray paramJSONArray, xjj paramxjj)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297326));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849620);
-    this.b = paramContext.getResources().getDrawable(2130849621);
-    this.jdField_a_of_type_MqqOsMqqHandler = new bbco(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Xjj = paramxjj;
+    if (this.jdField_a_of_type_Xjj != null) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      b(paramJSONArray);
+      return;
+      bool = false;
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      return i + this.jdField_a_of_type_Int;
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-  }
-  
-  public void a(abgk paramabgk)
-  {
-    this.jdField_a_of_type_Abgk = paramabgk;
-  }
-  
-  public void a(abgm paramabgm, View paramView)
-  {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      a(paramView);
-      paramView.setTag(paramabgm.b);
-      paramabgm = (ImageView)paramView.findViewById(2131367776);
-    } while (paramabgm == null);
-    paramabgm.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = (ImageProgressCircle)paramView.findViewById(2131367875);
-      } while (paramView == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1, paramView);
-    } while (paramView.getVisibility() == 4);
-    paramView.setVisibility(4);
-  }
-  
-  public void a(ImageProgressCircle paramImageProgressCircle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "showProgress() progressCircle = " + paramImageProgressCircle);
-    }
-    if (paramImageProgressCircle == null) {}
-    while (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1, paramImageProgressCircle)) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.obj = paramImageProgressCircle;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 550L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(abgm paramabgm, View paramView)
-  {
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "loadThumbImage() path = " + paramabgm.b);
-    }
     try
     {
-      URL localURL = new URL("profile_img_thumb", null, paramabgm.b);
-      if (this.jdField_a_of_type_Abgk != null) {
-        localObject1 = this.jdField_a_of_type_Abgk.a();
-      }
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.b;
-      }
-      localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      paramView.setTag(paramabgm.b);
-      ((ImageView)paramView.findViewById(2131367776)).setImageDrawable((Drawable)localObject1);
+      this.b = true;
       return;
     }
-    catch (MalformedURLException paramabgm)
+    finally
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.profilecard.PhotoWall", 2, paramabgm.toString());
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void c(abgm paramabgm, View paramView)
+  public void a(JSONArray paramJSONArray)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "loadBigImage() path = " + paramabgm.c);
-    }
-    if (paramView == null) {
-      return;
-    }
-    URL localURL;
-    for (;;)
+    ArrayList localArrayList;
+    StringBuilder localStringBuilder;
+    int i;
+    if (paramJSONArray != null)
     {
-      try
-      {
-        a(paramView);
-        localObject1 = URLDrawable.getDrawable(new URL("profile_img_thumb", null, paramabgm.b));
-        localURL = new URL("profile_img_big_fhd", null, paramabgm.c);
-        if (((URLDrawable)localObject1).getStatus() == 1)
-        {
-          if (i == 0) {
-            break label164;
-          }
-          localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject1, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          paramView.setTag(paramabgm.c);
-          paramabgm = (ImageView)paramView.findViewById(2131367776);
-          if (paramabgm == null) {
-            break;
-          }
-          paramabgm.setImageDrawable((Drawable)localObject1);
-          return;
-        }
-      }
-      catch (MalformedURLException paramabgm)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.PhotoWall", 2, paramabgm.toString());
-        }
-        paramView.setTag(null);
-        return;
-      }
+      localArrayList = new ArrayList();
+      localStringBuilder = new StringBuilder("filterPids:");
       i = 0;
     }
-    label164:
-    if (this.jdField_a_of_type_Abgk != null) {}
-    for (Object localObject1 = this.jdField_a_of_type_Abgk.a();; localObject1 = null)
+    for (;;)
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.b;
+      if (i < paramJSONArray.length())
+      {
+        try
+        {
+          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
+          if (!localJSONObject.has("pid")) {
+            break label171;
+          }
+          String str = localJSONObject.optString("pid");
+          if (!this.jdField_a_of_type_JavaUtilHashSet.add(str))
+          {
+            localStringBuilder.append(str).append(",");
+            this.jdField_a_of_type_Int += 1;
+          }
+          else
+          {
+            localArrayList.add(localJSONObject);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label171;
+          }
+        }
+        QLog.e("HotChatPostListAdapterQ.hotchat.aio_post_list_req", 2, "process array" + localJSONException.toString());
       }
-      localObject1 = URLDrawable.getDrawable(localURL, (Drawable)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      break;
+      else
+      {
+        if (!localArrayList.isEmpty())
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          notifyDataSetChanged();
+        }
+        return;
+      }
+      label171:
+      i += 1;
     }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.b;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.b = false;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      int i = 0;
+      for (;;)
+      {
+        if (i < paramJSONArray.length()) {
+          try
+          {
+            JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+            String str = localJSONObject.optString("pid");
+            this.jdField_a_of_type_JavaUtilHashSet.add(str);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localJSONObject);
+            i += 1;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("HotChatPostListAdapterQ.hotchat.aio_post_list_req", 2, "setListItemsAndNotify JSONException:" + localJSONException.toString());
+              }
+            }
+          }
+        }
+      }
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Xjj != null)
+      {
+        this.jdField_a_of_type_Xjj.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
+        this.jdField_a_of_type_Xjj = null;
+      }
+      return;
+    }
+    HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
+    HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Abgk != null) {
-      return this.jdField_a_of_type_Abgk.a();
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
     }
-    return 0;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Abgk != null) {
-      return this.jdField_a_of_type_Abgk.a(paramInt);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return null;
     }
-    return null;
+    return (JSONObject)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -203,74 +219,59 @@ public class ainh
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = paramView;
-    ImageView localImageView;
-    if (paramView == null)
-    {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559141, null);
-      paramView = (ImageProgressCircle)paramViewGroup.findViewById(2131367875);
-      paramView.setVisibility(4);
-      localImageView = (ImageView)paramViewGroup.findViewById(2131367776);
-      localImageView.setMinimumWidth(this.jdField_a_of_type_Int);
-      localImageView.setMinimumHeight(this.jdField_a_of_type_Int);
-      localObject = (abgm)getItem(paramInt);
-      if (localObject != null)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label156;
-        }
-        localObject = this.jdField_a_of_type_Abgk.a.a(this.jdField_a_of_type_Abgk.b, (byte)1, false, false);
-        paramView = (View)localObject;
-        if (localObject == null) {
-          paramView = bbdr.c();
-        }
-        localImageView.setImageDrawable(paramView);
-      }
+    if ((paramView == null) && (this.jdField_a_of_type_Boolean)) {
+      paramView = this.jdField_a_of_type_Xjj.a("com.tencent.biz.hotchatpostlist.widget.HotChatPostItemView");
     }
     for (;;)
     {
-      localObject = paramViewGroup;
-      if (AppSetting.d)
+      paramViewGroup = paramView;
+      if (paramView == null)
       {
-        localImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691171));
-        localObject = paramViewGroup;
-      }
-      return localObject;
-      label156:
-      if (((abgm)localObject).jdField_a_of_type_Int == 6)
-      {
-        c((abgm)localObject, paramViewGroup);
+        paramViewGroup = new HotChatPostItemView(this.jdField_a_of_type_AndroidContentContext);
         if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.PhotoWall", 2, paramInt + "," + ((abgm)localObject).c);
+          QLog.e("HotChatPostListAdapter", 2, "loadPluginView failed");
         }
+        this.jdField_a_of_type_Boolean = false;
       }
-      else if ((((abgm)localObject).jdField_a_of_type_Int == 3) || (((abgm)localObject).jdField_a_of_type_Int == 4))
-      {
-        b((abgm)localObject, paramViewGroup);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.PhotoWall", 2, "thumb: " + paramInt + "," + ((abgm)localObject).b);
-        }
-        if (((abgm)localObject).jdField_a_of_type_Boolean) {
-          a(paramView);
-        }
+      paramView = (JSONObject)getItem(paramInt);
+      if (paramView != null) {
+        paramViewGroup.setOnClickListener(new ainj(this, paramView.optString("bid"), paramView.optString("pid")));
       }
-      else
+      try
       {
-        localImageView.setImageResource(2130849621);
+        if (this.jdField_a_of_type_OrgJsonJSONObject == null)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+          paramInt = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth();
+          this.jdField_a_of_type_OrgJsonJSONObject.put("densityDpi", this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi);
+          this.jdField_a_of_type_OrgJsonJSONObject.put("screenWidth", paramInt);
+        }
+        this.jdField_a_of_type_OrgJsonJSONObject.put("currentTime", NetConnInfoCenter.getServerTime());
+        paramView.put("extra_info_key", this.jdField_a_of_type_OrgJsonJSONObject);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("HotChatPostListAdapter", 2, localJSONException.toString());
+          }
+        }
+        ((HotChatPostItemView)paramViewGroup).setData(paramView.toString());
+        return paramViewGroup;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        xjj.a(paramViewGroup, paramView.toString());
+        return paramViewGroup;
       }
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void notifyDataSetChanged()
   {
-    if ((paramMessage.what == 1) && ((paramMessage.obj instanceof ImageProgressCircle)))
-    {
-      paramMessage = (ImageProgressCircle)paramMessage.obj;
-      if (paramMessage.getVisibility() != 0) {
-        paramMessage.setVisibility(0);
-      }
-    }
-    return true;
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new aini(this));
+    super.notifyDataSetChanged();
   }
 }
 

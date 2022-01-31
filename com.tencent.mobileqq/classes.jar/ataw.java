@@ -1,16 +1,31 @@
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class ataw
-  implements ajuc
+  extends akgh
 {
-  ataw(atat paramatat) {}
+  ataw(atav paramatav) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
+      }
+      atav.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
     }
-    atat.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
+      }
+      atav.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
   }
 }
 

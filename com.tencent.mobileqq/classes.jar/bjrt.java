@@ -1,19 +1,27 @@
-import android.content.Context;
-import android.text.InputFilter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import com.tencent.qphone.base.util.QLog;
 
-class bjrt
-  extends vmt
+final class bjrt
+  implements mnb
 {
-  bjrt(bjrh parambjrh, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
   public void a(int paramInt)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setFilters(new InputFilter[] { new bjru(this, paramInt, paramInt) });
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
+    }
   }
 }
 

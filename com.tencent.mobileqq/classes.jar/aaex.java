@@ -1,60 +1,19 @@
-import android.content.Intent;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.qphone.base.util.BaseApplication;
-import protocol.KQQConfig.UpgradeInfo;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class aaex
   implements View.OnClickListener
 {
-  public aaex(AboutActivity paramAboutActivity) {}
+  public aaex(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    int i = 2;
-    if (bdlc.a().b())
-    {
-      if (bbiy.a()) {
-        i = 1;
-      }
-      axqw.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      paramView.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(paramView);
-      }
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
-    do
-    {
-      do
-      {
-        return;
-        if ((AboutActivity.a(this.a).jdField_a_of_type_Akvf == null) || (!bbiy.a(AboutActivity.a(this.a).jdField_a_of_type_Akvf.a))) {
-          break;
-        }
-        if (bbiy.a()) {
-          i = 1;
-        }
-        axqw.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        paramView.putExtra("activity_type", 4096);
-      } while (BaseActivity.sTopActivity == null);
-      BaseActivity.sTopActivity.startActivity(paramView);
-      return;
-    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akva.a(), "");
-    UpgradeDetailActivity.a(this.a, akva.a().a(), false, false, true);
+    axqy.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

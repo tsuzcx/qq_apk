@@ -1,13 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class plo
-  implements ViewBase.IBuilder
+  extends osm
 {
-  public ViewBase build(VafContext paramVafContext)
+  plo(plm paramplm) {}
+  
+  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean)
   {
-    return new pln(paramVafContext);
+    paramArticleInfo = new ReadInJoySocializeRecommendFollowView.10.2(this, paramArticleInfo, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(paramArticleInfo);
+      return;
+    }
+    paramArticleInfo.run();
+  }
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    ReadInJoySocializeRecommendFollowView.10.1 local1 = new ReadInJoySocializeRecommendFollowView.10.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
+    }
+    local1.run();
   }
 }
 

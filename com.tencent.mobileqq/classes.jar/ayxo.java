@@ -1,49 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class ayxo
-  extends ayxn
-  implements aysa
 {
-  public ayrv a;
-  private ayxp a;
+  private static ayxn jdField_a_of_type_Ayxn;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public ayxo(QQAppInterface paramQQAppInterface, String paramString, ayxp paramayxp, ayrv paramayrv)
+  private static ayxn a(Context paramContext)
   {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_Ayrv = paramayrv;
-    this.jdField_a_of_type_Ayxp = paramayxp;
+    a(paramContext);
+    return jdField_a_of_type_Ayxn;
   }
   
-  public void onResp(aysx paramaysx)
+  public static String a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Ayxp.onResp(paramaysx);
-    this.ctrl.a(this);
-  }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Ayxp.onUpdateProgeress(paramaysw, paramLong1, paramLong2);
-  }
-  
-  protected void realCancel()
-  {
-    this.app.getNetEngine(0).b(this.jdField_a_of_type_Ayrv);
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Task", 2, "start: " + this);
+    String str = paramString;
+    if (paramString != null) {
+      str = paramString.toLowerCase();
     }
-    this.app.getNetEngine(0).a(this.jdField_a_of_type_Ayrv);
-    this.jdField_a_of_type_Ayrv.jdField_a_of_type_Aysa = this;
-    this.jdField_a_of_type_Ayxp.a(this);
+    return a(paramContext).a(str);
   }
   
-  public String toString()
+  private static void a(Context paramContext)
   {
-    return super.toString() + "[" + this.jdField_a_of_type_Ayrv.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_Ayxp + "]";
+    ayxm localayxm;
+    if (!jdField_a_of_type_Boolean)
+    {
+      localayxm = new ayxm();
+      paramContext = paramContext.getResources().getXml(2131886084);
+    }
+    try
+    {
+      jdField_a_of_type_Ayxn = localayxm.a(paramContext);
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (XmlPullParserException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
+    }
+    catch (IOException paramContext)
+    {
+      throw new RuntimeException("PreselectedChannelsActivity: IOException");
+    }
   }
 }
 

@@ -1,19 +1,40 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.util.Property;
 import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
 
-class wru
-  implements ViewTreeObserver.OnPreDrawListener
+final class wru
+  extends Property<ImageView, Matrix>
 {
-  wru(wrt paramwrt) {}
-  
-  public boolean onPreDraw()
+  wru(Class paramClass, String paramString)
   {
-    wrt.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    wrt.a(this.a, wrt.a(this.a).getLeft(), wrt.a(this.a).getTop(), wrt.a(this.a).getWidth(), wrt.a(this.a).getHeight());
-    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + wrt.a(this.a).getLeft(), ",top:", Integer.valueOf(wrt.a(this.a).getTop()), ",width:", Integer.valueOf(wrt.a(this.a).getWidth()), ",height:", Integer.valueOf(wrt.a(this.a).getHeight()) });
-    return true;
+    super(paramClass, paramString);
+  }
+  
+  public Matrix a(ImageView paramImageView)
+  {
+    return null;
+  }
+  
+  public void a(ImageView paramImageView, Matrix paramMatrix)
+  {
+    Drawable localDrawable = paramImageView.getDrawable();
+    if (localDrawable == null) {
+      return;
+    }
+    if (paramMatrix == null) {
+      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
+    }
+    for (;;)
+    {
+      paramImageView.invalidate();
+      return;
+      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramImageView.getImageMatrix() == null) {
+        paramImageView.setImageMatrix(new Matrix());
+      }
+      paramImageView.setImageMatrix(paramMatrix);
+    }
   }
 }
 

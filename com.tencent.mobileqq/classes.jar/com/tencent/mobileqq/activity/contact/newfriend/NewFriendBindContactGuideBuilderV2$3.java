@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afka;
+import afjy;
 
 public class NewFriendBindContactGuideBuilderV2$3
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$3(afka paramafka) {}
+  public NewFriendBindContactGuideBuilderV2$3(afjy paramafjy) {}
   
   public void run()
   {

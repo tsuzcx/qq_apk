@@ -1,19 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.3;
 
 public class bjbp
+  implements aysc
 {
-  public Bundle a;
-  public bjbs a;
-  public WeakReference<Activity> a;
+  public bjbp(QIMCaptureBannerManager.3 param3) {}
   
-  public bjbp(bjbs parambjbs, Bundle paramBundle, Activity paramActivity)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_Bjbs = parambjbs;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMCaptureBannerManager", 2, "onResp url: " + this.a.a.imgUrl + " resultcode: " + paramaysz.c);
+    }
   }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

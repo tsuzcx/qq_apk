@@ -1,50 +1,52 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow;
+import java.util.List;
 
-class qzu
-  implements View.OnClickListener
+public class qzu
 {
-  qzu(qzr paramqzr, Activity paramActivity) {}
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private List<bfvi> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public float a(int paramInt)
   {
-    int i;
-    Bundle localBundle;
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to config feeds");
-      i = bhvh.e();
-      localBundle = new Bundle();
-      if ((paramView instanceof ReadInJoyColorBandEntranceButton))
-      {
-        paramView = ((ReadInJoyColorBandEntranceButton)paramView).a();
-        if (!(paramView instanceof Parcelable)) {
-          break label82;
-        }
-        localBundle.putParcelable("daily_bottom_entry_data", (Parcelable)paramView);
+      f1 = f2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        f1 = ((bfvi)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
       }
     }
-    label82:
-    while ((i != 3) && (i != 4))
-    {
-      localBundle.putInt("daily_bottom_triger_src", 1);
-      rce.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
-      this.jdField_a_of_type_Qzr.b();
-      return;
+    return f1;
+  }
+  
+  public qzu a(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
     }
-    RecommendFeedsDiandianEntranceManager.EntranceIconInfo localEntranceIconInfo = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
-    if (i == 4) {}
-    for (paramView = "https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&_wwv=1&_wvSb=0&_nav_txtclr=00000&from=kdybrk&target=hot&_nav_titleclr=000000&_wvNlb=0xffffff";; paramView = "mqqapi://readinjoy/open?src_type=internal&ispush=1&target=2&readinjoyNotDecodeUrl=1&version=1&channelid=70&channelname=看点关注&channelType=0&changeChannelOrder=true&moveChannelFromSource=0")
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
     {
-      localEntranceIconInfo.c = paramView;
-      localBundle.putParcelable("daily_bottom_entry_data", localEntranceIconInfo);
-      break;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }

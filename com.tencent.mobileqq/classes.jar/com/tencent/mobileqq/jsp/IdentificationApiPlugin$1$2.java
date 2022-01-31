@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
-import armp;
-import armq;
-import bcpw;
+import armr;
+import arms;
+import bcql;
 
 public class IdentificationApiPlugin$1$2
   implements Runnable
 {
-  public IdentificationApiPlugin$1$2(armq paramarmq, String paramString) {}
+  public IdentificationApiPlugin$1$2(arms paramarms, String paramString) {}
   
   public void run()
   {
-    armp.a(this.jdField_a_of_type_Armq.a);
-    bcpw.a(armp.a(this.jdField_a_of_type_Armq.a), this.jdField_a_of_type_JavaLangString, 0).a();
+    armr.a(this.jdField_a_of_type_Arms.a);
+    bcql.a(armr.a(this.jdField_a_of_type_Arms.a), this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
 
 public class avas
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public avas(VipProfileWZRYView paramVipProfileWZRYView, auuw paramauuw) {}
+  public avas(VipProfileSimpleView paramVipProfileSimpleView, auuy paramauuy) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = bbpp.a("gameHonourAddHonour");
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileWZRYView.a, paramView, -1L, null, false, -1);
-    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, nam.a(), String.valueOf(this.jdField_a_of_type_Auuw.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Auuw.a.lCurrentStyleId));
+    VipProfileSimpleView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView, true);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.g(this.jdField_a_of_type_Auuy);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

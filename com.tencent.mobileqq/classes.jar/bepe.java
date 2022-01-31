@@ -1,64 +1,20 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import java.util.Set;
 
-public abstract class bepe
-  extends Binder
-  implements bepd
+public class bepe
+  extends bepf
 {
-  public bepe()
+  public bepe(BarrageView paramBarrageView, View paramView)
   {
-    attachInterface(this, "com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
+    super(paramBarrageView, paramView, null);
   }
   
-  public static bepd a(IBinder paramIBinder)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof bepd))) {
-      return (bepd)localIInterface;
-    }
-    return new bepf(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
-    {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label101;
-      }
-    }
-    label101:
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(bool, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-      bool = false;
-      break;
-    }
+    super.onAnimationEnd(paramAnimation);
+    BarrageView.a(this.a).remove(paramAnimation);
   }
 }
 

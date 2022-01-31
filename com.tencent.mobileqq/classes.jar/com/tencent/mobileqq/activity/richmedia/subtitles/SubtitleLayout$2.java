@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahyd;
-import ahyk;
-import ajyc;
+import ahyb;
+import ahyi;
+import ajya;
 
 class SubtitleLayout$2
   implements Runnable
@@ -16,11 +16,11 @@ class SubtitleLayout$2
       if (SubtitleLayout.a(this.this$0) != null)
       {
         long l = System.currentTimeMillis();
-        String str1 = ajyc.a(2131714672);
+        String str1 = ajya.a(2131714683);
         String str2 = "Record and speak with subtitles added.";
-        if (!ahyd.a(false))
+        if (!ahyb.a(false))
         {
-          str1 = ajyc.a(2131714674);
+          str1 = ajya.a(2131714685);
           str2 = "Unable to Recognize Your Speaking due to Poor Internet Connection";
         }
         if (SubtitleLayout.a(this.this$0).a(false) <= 4) {

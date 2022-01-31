@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Bitmap;
 
 class arwq
-  implements DialogInterface.OnDismissListener
 {
-  arwq(arwp paramarwp) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.finish();
-  }
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

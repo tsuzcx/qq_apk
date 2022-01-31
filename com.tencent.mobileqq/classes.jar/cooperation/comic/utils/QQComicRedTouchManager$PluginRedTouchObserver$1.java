@@ -1,12 +1,12 @@
 package cooperation.comic.utils;
 
-import bgip;
+import bgjg;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQComicRedTouchManager$PluginRedTouchObserver$1
   implements Runnable
 {
-  public QQComicRedTouchManager$PluginRedTouchObserver$1(bgip parambgip) {}
+  public QQComicRedTouchManager$PluginRedTouchObserver$1(bgjg parambgjg) {}
   
   public void run()
   {

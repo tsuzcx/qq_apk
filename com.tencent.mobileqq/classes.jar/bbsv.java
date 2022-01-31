@@ -1,86 +1,16 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bbsv
-  extends bbso
 {
-  public static bbsv a = new bbsv();
-  
-  public static String a(Context paramContext, int paramInt)
+  public static int a(int paramInt)
   {
-    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
-    return paramContext + File.separator + paramInt + ".wav";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bbqb parambbqb, boolean paramBoolean)
-  {
-    a.download(paramQQAppInterface, "specialRing." + paramInt, parambbqb, paramBoolean);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    Object localObject = "specialRing." + paramInt;
-    paramContext = a.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
-      return false;
-    }
-    localObject = new String[3];
-    localObject[0] = ".wav";
-    localObject[1] = ".json";
-    localObject[2] = ".jpg";
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    int i = paramInt;
+    if (paramInt < 0)
     {
-      String str = localObject[i];
-      if (!new File(paramContext, paramInt + str).exists())
-      {
-        QLog.e("RingUpdateCallback", 1, "missing: " + paramInt + str);
-        return false;
-      }
-      i += 1;
+      QLog.e("Q.qqhead.VasFaceManager", 1, "unknown DynamicSource", new RuntimeException("DynamicFaceDrawable don't have " + paramInt));
+      i = 7;
     }
-    return true;
-  }
-  
-  public static String b(Context paramContext, int paramInt)
-  {
-    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
-    paramContext = bbdj.a(new File(paramContext + File.separator + paramInt + ".json"));
-    if (!TextUtils.isEmpty(paramContext)) {
-      try
-      {
-        paramContext = new JSONObject(paramContext).optString("name", null);
-        return paramContext;
-      }
-      catch (JSONException paramContext)
-      {
-        QLog.e("RingUpdateCallback", 1, "getName error", paramContext);
-        return null;
-      }
-    }
-    QLog.e("RingUpdateCallback", 1, "getName missing json: " + paramInt);
-    return null;
-  }
-  
-  public long getBID()
-  {
-    return 37L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "ring";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "specialRing.";
+    return i;
   }
 }
 

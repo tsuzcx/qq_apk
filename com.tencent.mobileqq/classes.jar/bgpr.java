@@ -1,108 +1,75 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public final class bgpr
+public abstract class bgpr
+  extends Binder
+  implements bgpq
 {
-  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  public bgpr()
   {
-    a(paramAppRuntime, "User_NewFav", paramInt, 0, 0);
+    attachInterface(this, "cooperation.qqdataline.ipc.IDatalineService");
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  public static bgpq a(IBinder paramIBinder)
   {
-    a(paramAppRuntime, "User_AddFav", paramInt2, 0, paramInt1);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "subAction= 0X800AA51, actionName = 0X800AA51, fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 = " + paramInt3);
+    if (paramIBinder == null) {
+      return null;
     }
-    axqw.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, "" + paramInt3, "", "", "");
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqdataline.ipc.IDatalineService");
+    if ((localIInterface != null) && ((localIInterface instanceof bgpq))) {
+      return (bgpq)localIInterface;
+    }
+    return new bgps(paramIBinder);
   }
   
-  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public IBinder asBinder()
   {
-    a(paramAppRuntime, paramString, paramInt1, paramInt2, paramInt3, 0, "", "");
+    return this;
   }
   
-  public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    QQAppInterface localQQAppInterface = null;
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "actionName = " + paramString1 + ", fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 =" + paramInt3 + ", ext3 =" + paramInt4 + ", ext4 =" + paramString2 + ", ext5 =" + paramString3);
-    }
-    String str1 = "" + paramInt3;
-    String str2 = "" + paramInt4;
-    if (paramString2 == null)
+    String str1 = null;
+    Object localObject = null;
+    switch (paramInt1)
     {
-      paramAppRuntime = "";
-      if (paramString3 != null) {
-        break label196;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
+      str1 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {
+        localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-    }
-    label196:
-    for (paramString2 = "";; paramString2 = paramString3)
-    {
-      axqw.b(localQQAppInterface, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString2);
-      return;
-      paramAppRuntime = paramString2;
-      break;
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, long paramLong)
-  {
-    Object localObject = new String[3];
-    int i = bbev.a(paramAppRuntime.getApplication().getApplicationContext());
-    if (i == 1) {
-      if (paramBoolean)
+      paramParcel1 = a(str1, (Bundle)localObject);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
       {
-        localObject[0] = "param_WIFIFavoritesUploadFlow";
-        localObject[1] = "param_WIFIFlow";
-        localObject[2] = "param_Flow";
-        paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("addFlowCount ").append(paramLong).append(" for ");
-          if (!paramBoolean) {
-            break label156;
-          }
-        }
-      }
-    }
-    label156:
-    for (paramAppRuntime = "upload";; paramAppRuntime = "download")
-    {
-      QLog.d("qqfav", 2, paramAppRuntime + ", netType is " + i);
-      return;
-      localObject[0] = "param_WIFIFavoritesDownloadFlow";
-      break;
-      if (paramBoolean) {
-        localObject[0] = "param_XGFavoritesUploadFlow";
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
       }
       for (;;)
       {
-        localObject[1] = "param_XGFlow";
-        break;
-        localObject[0] = "param_XGFavoritesDownloadFlow";
+        return true;
+        paramParcel2.writeInt(0);
       }
     }
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, int paramInt)
-  {
-    a(paramAppRuntime, "User_DelFav", 0, 0, paramInt);
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
-  {
-    a(paramAppRuntime, "User_OpenFavPage", paramInt2, 0, paramInt1);
+    paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
+    String str2 = paramParcel1.readString();
+    localObject = str1;
+    if (paramParcel1.readInt() != 0) {
+      localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    }
+    a(str2, (Bundle)localObject);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

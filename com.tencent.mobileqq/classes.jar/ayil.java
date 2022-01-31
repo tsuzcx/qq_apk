@@ -1,29 +1,30 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnFocusChangeListener;
 import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class ayil
-  extends ClickableSpan
+  implements View.OnFocusChangeListener
 {
   public ayil(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("hide_operation_bar", true);
-    this.a.startActivity(paramView.putExtra("url", "https://tim.qq.com/htdocs/2.0_lead/document.html"));
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.a.getResources().getColor(2131165440));
+    if (paramBoolean)
+    {
+      ayfx.a(this.a.app, "0X800993D");
+      paramView.clearFocus();
+      if (this.a.jdField_a_of_type_AndroidAppDialog == null) {}
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidAppDialog = new ayjh(this.a, GroupTeamWorkListActivity.a(this.a), this.a.app, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_AndroidAppDialog.setTitle(ajya.a(2131705399));
+    this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ayim(this));
   }
 }
 

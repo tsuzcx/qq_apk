@@ -1,49 +1,91 @@
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifIndex8;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class aodc
-  implements View.OnTouchListener
+  extends NativeGifIndex8
 {
-  public aodc(AIOEmotionFragment paramAIOEmotionFragment, int paramInt, MessageForPic paramMessageForPic) {}
+  private boolean a = true;
+  private boolean b;
+  private boolean c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aodc(File paramFile, int paramInt, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 1)
+    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
+  }
+  
+  public void a()
+  {
+    this.a = true;
+  }
+  
+  public void b()
+  {
+    this.a = false;
+    this.b = true;
+  }
+  
+  public void doApplyNextFrame()
+  {
+    super.doApplyNextFrame();
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E7");
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E9");
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a().getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.emojiPkgId, false, false);
+      this.c = false;
+      this.b = false;
+    }
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    initHandlerAndRunnable();
+    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
       }
     }
-    while (paramMotionEvent.getAction() != 0)
+    do
     {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a("0X800A7E8");
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.picExtraData.webUrl);
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity().startActivity(paramView);
-      return false;
+      return;
+      if (!this.b) {
+        break;
+      }
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      }
+      if (!sPaused)
+      {
+        executeNewTask();
+        return;
+      }
+    } while (this.mIsInPendingAction);
+    sPendingActions.add(new WeakReference(this));
+    this.mIsInPendingAction = true;
+    return;
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+  }
+  
+  public void getNextFrame()
+  {
+    try
+    {
+      if (this.b)
+      {
+        this.c = true;
+        super.reset();
+      }
+      super.getNextFrame();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aodc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import ajyc;
+import ajya;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import ste;
+import stb;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -61,7 +61,7 @@ public abstract class QQStoryBaseFragment
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
     if (AppSetting.d) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajyc.a(2131710799));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajya.a(2131710810));
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      ste.a().registerSubscriber((String)localObject2, localSubscriber);
+      stb.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
@@ -116,7 +116,7 @@ public abstract class QQStoryBaseFragment
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      ste.a().unRegisterSubscriber(localSubscriber);
+      stb.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }

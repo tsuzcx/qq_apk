@@ -1,68 +1,36 @@
-import QC.FontInfo;
-import QC.FontRecommendRsp;
-import QC.ItemBase;
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.hiboom.FontBubble;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 import java.util.List;
 
 public class aqwy
-  implements aqwv<FontRecommendRsp>
+  extends RecyclerView.Adapter<FontBubblePanelView<T>.aqwz>
 {
-  public int a()
+  public aqwy(FontBubblePanelView paramFontBubblePanelView) {}
+  
+  public FontBubblePanelView<T>.aqwz a(ViewGroup paramViewGroup, int paramInt)
   {
-    return 3;
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562599, paramViewGroup, false);
+    return new aqwz(this.a, paramViewGroup);
   }
   
-  public String a(Context paramContext)
+  public void a(FontBubblePanelView<T>.aqwz paramFontBubblePanelView, int paramInt)
   {
-    return bbpp.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
-  }
-  
-  public String a(FontBubble paramFontBubble)
-  {
-    return bbpp.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
-  }
-  
-  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
-  {
-    int j = ((akfw)paramQQAppInterface.a(13)).b();
-    paramQQAppInterface = new ArrayList();
-    if (paramFontRecommendRsp.vItems != null)
-    {
-      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
-      if (paramFontRecommendRsp.hasNext())
-      {
-        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
-        FontBubble localFontBubble = new FontBubble();
-        localFontBubble.viewType = 1;
-        localFontBubble.fontId = localFontInfo.item.itemId;
-        if (localFontInfo.linkBubbleID > 0) {}
-        for (int i = localFontInfo.linkBubbleID;; i = j)
-        {
-          localFontBubble.bubbleId = i;
-          localFontBubble.name = localFontInfo.name;
-          localFontBubble.engine = localFontInfo.engine;
-          localFontBubble.feeType = localFontInfo.feeType;
-          localFontBubble.payUrl = localFontInfo.payUrl;
-          localFontBubble.title = localFontInfo.title;
-          localFontBubble.msg = localFontInfo.msg;
-          localFontBubble.btn = localFontInfo.btn;
-          localFontBubble.picUrl = localFontInfo.strPicUrl;
-          localFontBubble.panelType = 3;
-          paramQQAppInterface.add(localFontBubble);
-          break;
-        }
-      }
+    if (paramInt < FontBubblePanelView.a(this.a).size()) {
+      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
     }
-    return paramQQAppInterface;
   }
   
-  public void a(akfw paramakfw)
+  public int getItemCount()
   {
-    paramakfw.d();
+    return FontBubblePanelView.a(this.a).size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
   }
 }
 

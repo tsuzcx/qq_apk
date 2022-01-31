@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import biss;
 import bitj;
-import bitk;
+import biua;
+import biub;
 
 public class AEGIFChunkPreviewFragment$1$1
   implements Runnable
 {
-  public AEGIFChunkPreviewFragment$1$1(bitk parambitk, int paramInt) {}
+  public AEGIFChunkPreviewFragment$1$1(biub parambiub, int paramInt) {}
   
   public void run()
   {
-    if (bitj.a(this.jdField_a_of_type_Bitk.a) != null) {
-      bitj.a(this.jdField_a_of_type_Bitk.a).notifyItemChanged(this.jdField_a_of_type_Int);
+    if (biua.a(this.jdField_a_of_type_Biub.a) != null) {
+      biua.a(this.jdField_a_of_type_Biub.a).notifyItemChanged(this.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,8 +1,13 @@
 class vrs
 {
-  int jdField_a_of_type_Int;
-  vrq jdField_a_of_type_Vrq;
-  vrr jdField_a_of_type_Vrr;
+  final int jdField_a_of_type_Int;
+  final vrt jdField_a_of_type_Vrt;
+  
+  public vrs(vrt paramvrt, int paramInt)
+  {
+    this.jdField_a_of_type_Vrt = paramvrt;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acql
-  extends bfmg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public acql(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGlobalLayout()
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
-    }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    this.a.i = arrayOfInt[1];
   }
 }
 

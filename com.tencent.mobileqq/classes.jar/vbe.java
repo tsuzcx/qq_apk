@@ -1,12 +1,14 @@
+import java.util.List;
+
 class vbe
-  extends wdh
+  implements bfpj
 {
-  vbe(vbd paramvbd) {}
+  vbe(vba paramvba, int paramInt) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onDismiss()
   {
-    vbd.a(this.a);
-    return true;
+    uxm localuxm = (uxm)this.jdField_a_of_type_Vba.a.a().get(this.jdField_a_of_type_Int);
+    vba.a(this.jdField_a_of_type_Vba, localuxm, "clk_hide");
   }
 }
 

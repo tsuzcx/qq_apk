@@ -1,14 +1,23 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.Emoticon;
 
 class askk
-  implements askp<Pair<String, Integer>, EmoticonPackage>
+  implements askq<aobp>
 {
-  askk(askd paramaskd) {}
+  askk(askf paramaskf, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public void a(aobp paramaobp)
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    if ((paramaobp != null) && (paramaobp.a != null))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        askf.a(this.jdField_a_of_type_Askf.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaobp.a.epId);
+      }
+    }
+    else {
+      return;
+    }
+    askf.a(this.jdField_a_of_type_Askf.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramaobp.a.epId);
   }
 }
 

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.text.TextUtils;
-import bgkq;
-import bgkz;
-import bhhr;
-import bhhx;
-import bhjq;
+import bglh;
+import bglq;
+import bhii;
+import bhio;
+import bhkh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -19,7 +19,7 @@ public class QZoneLiveVideoPluginProxyService
   public static void a(Context paramContext, String paramString1, Intent paramIntent, ServiceConnection paramServiceConnection, String paramString2)
   {
     paramIntent.putExtra("useSkinEngine", -1);
-    Object localObject1 = bhjq.a();
+    Object localObject1 = bhkh.a();
     Object localObject2 = paramIntent.getAction();
     paramString2 = "";
     if ("com.qzone.preloadLiveVideo".equals(localObject2)) {
@@ -43,37 +43,37 @@ public class QZoneLiveVideoPluginProxyService
       if (!((String)localObject1).equals("qzone_live_video_plugin_hack.apk")) {
         break;
       }
-      localObject2 = new File(bhjq.a(paramContext), (String)localObject1);
+      localObject2 = new File(bhkh.a(paramContext), (String)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "bindService 加载动态包:hackPluginID:" + (String)localObject1);
       }
     } while (!((File)localObject2).exists());
-    localObject2 = new bhhx(0);
-    ((bhhx)localObject2).b = "qzone_live_video_plugin_hack.apk";
-    ((bhhx)localObject2).d = "QZoneLiveVideo";
-    ((bhhx)localObject2).jdField_a_of_type_JavaLangString = paramString1;
-    ((bhhx)localObject2).e = paramString2;
-    ((bhhx)localObject2).jdField_a_of_type_AndroidContentIntent = paramIntent;
-    ((bhhx)localObject2).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    ((bhhx)localObject2).b = ((String)localObject1);
-    ((bhhx)localObject2).d = "QZoneLiveVideo";
-    bhhr.a(paramContext, (bhhx)localObject2);
+    localObject2 = new bhio(0);
+    ((bhio)localObject2).b = "qzone_live_video_plugin_hack.apk";
+    ((bhio)localObject2).d = "QZoneLiveVideo";
+    ((bhio)localObject2).jdField_a_of_type_JavaLangString = paramString1;
+    ((bhio)localObject2).e = paramString2;
+    ((bhio)localObject2).jdField_a_of_type_AndroidContentIntent = paramIntent;
+    ((bhio)localObject2).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    ((bhio)localObject2).b = ((String)localObject1);
+    ((bhio)localObject2).d = "QZoneLiveVideo";
+    bhii.a(paramContext, (bhio)localObject2);
     return;
     if (((String)localObject1).equals("qzone_live_video_plugin.apk"))
     {
-      localObject1 = new bgkz(0);
-      ((bgkz)localObject1).b = "qzone_live_video_plugin.apk";
-      ((bgkz)localObject1).d = "QZoneLiveVideo";
-      ((bgkz)localObject1).jdField_a_of_type_JavaLangString = paramString1;
-      ((bgkz)localObject1).e = paramString2;
-      ((bgkz)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
-      ((bgkz)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      ((bgkz)localObject1).b = "qzone_live_video_plugin.apk";
-      ((bgkz)localObject1).d = "QZoneLiveVideo";
+      localObject1 = new bglq(0);
+      ((bglq)localObject1).b = "qzone_live_video_plugin.apk";
+      ((bglq)localObject1).d = "QZoneLiveVideo";
+      ((bglq)localObject1).jdField_a_of_type_JavaLangString = paramString1;
+      ((bglq)localObject1).e = paramString2;
+      ((bglq)localObject1).jdField_a_of_type_AndroidContentIntent = paramIntent;
+      ((bglq)localObject1).jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      ((bglq)localObject1).b = "qzone_live_video_plugin.apk";
+      ((bglq)localObject1).d = "QZoneLiveVideo";
       if (QLog.isColorLevel()) {
         QLog.d("PluginDebug", 2, "加载原始插件");
       }
-      bgkq.c(paramContext, (bgkz)localObject1);
+      bglh.c(paramContext, (bglq)localObject1);
       return;
     }
     QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject1);

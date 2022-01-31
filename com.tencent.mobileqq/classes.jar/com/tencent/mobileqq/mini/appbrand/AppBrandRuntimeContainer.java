@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -339,7 +339,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(ajyc.a(2131700585));
+        this.mDebugText.setText(ajya.a(2131700596));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }

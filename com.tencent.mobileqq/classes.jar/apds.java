@@ -1,37 +1,34 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
+import mqq.app.MobileQQ;
 
 class apds
-  implements bidp<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
+  implements bieg<WeiyunPB.PwdVerifyMsgRsp>
 {
-  apds(apdj paramapdj, apdx paramapdx) {}
+  apds(apdn paramapdn) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
   {
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
-    if (this.jdField_a_of_type_Apdx != null) {
-      this.jdField_a_of_type_Apdx.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
+    apdn.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
   }
   
-  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
   {
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
-    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
-    {
-      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
-      if (this.jdField_a_of_type_Apdx != null) {
-        this.jdField_a_of_type_Apdx.a(-3, "copyFileToOtherBid_fail");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
     }
-    do
-    {
-      return;
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
-    } while (this.jdField_a_of_type_Apdx == null);
-    this.jdField_a_of_type_Apdx.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
+    String str = bige.a(paramPwdVerifyMsgRsp.cs_sig.get());
+    if (!TextUtils.isEmpty(str)) {
+      bieh.a(apdn.a(this.a).getApplication().getApplicationContext(), str);
+    }
+    bieh.c(apdn.a(this.a).getApplication().getApplicationContext(), true);
+    apdn.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 

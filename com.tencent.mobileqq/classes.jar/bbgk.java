@@ -1,34 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
-class bbgk
-  implements CompoundButton.OnCheckedChangeListener
+public class bbgk
+  extends PipedInputStream
 {
-  bbgk(bbgg parambbgg, DialogInterface.OnClickListener paramOnClickListener) {}
+  private int a = 1024;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bbgk(PipedOutputStream paramPipedOutputStream, int paramInt)
   {
-    bbgg localbbgg;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    super(paramPipedOutputStream);
+    this.a = paramInt;
+  }
+  
+  protected void receive(int paramInt)
+  {
+    try
     {
-      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      localbbgg = this.jdField_a_of_type_Bbgg;
-      if (!paramBoolean) {
-        break label34;
+      if (this.buffer.length != this.a) {
+        this.buffer = new byte[this.a];
       }
-    }
-    label34:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localbbgg, i);
+      super.receive(paramInt);
       return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbgk
  * JD-Core Version:    0.7.0.1
  */

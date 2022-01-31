@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo;
 import java.util.Comparator;
 
 class ahgc
-  implements Comparator<SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo>
+  implements Comparator<SpringFestivalRedpacketConfBean.TimeInfo>
 {
-  ahgc(ahfz paramahfz) {}
+  ahgc(ahfx paramahfx) {}
   
-  public int a(SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo1, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo2)
+  public int a(SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo1, SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo2)
   {
-    if (paramBannerInfo1.bannerTime.beginTime == paramBannerInfo2.bannerTime.beginTime) {
+    if (paramTimeInfo1.beginTime == paramTimeInfo2.beginTime) {
       return 0;
     }
-    if (paramBannerInfo1.bannerTime.beginTime > paramBannerInfo2.bannerTime.beginTime) {
+    if (paramTimeInfo1.beginTime > paramTimeInfo2.beginTime) {
       return 1;
     }
     return -1;

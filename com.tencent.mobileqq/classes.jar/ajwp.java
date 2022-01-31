@@ -1,19 +1,31 @@
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class ajwp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animation.AnimationListener
 {
-  public ajwp(FrameHelperActivity paramFrameHelperActivity) {}
+  public ajwp(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
-      this.a.c.setVisibility(8);
-    }
+    paramAnimation = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.addAnimation(localAlphaAnimation);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

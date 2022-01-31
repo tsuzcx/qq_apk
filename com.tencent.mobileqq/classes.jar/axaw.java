@@ -1,13 +1,16 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-
-public abstract interface axaw
+public class axaw
 {
-  public abstract int a();
+  public int a;
+  public long a;
+  public int b;
+  public long b;
   
-  public abstract ReqItem a(int paramInt);
-  
-  public abstract void a(RespItem paramRespItem);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("----dump tempSession info----");
+    localStringBuilder.append("friendType:").append(this.jdField_a_of_type_Int).append(" groupCode:").append(this.jdField_a_of_type_Long).append(" groupUin:").append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

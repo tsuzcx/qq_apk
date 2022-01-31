@@ -1,46 +1,27 @@
 import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import org.json.JSONObject;
 
 public class ltj
   extends ltg
 {
-  long jdField_b_of_type_Long;
-  int c;
-  int d;
-  int e;
-  String f;
+  public boolean a;
+  public String b;
+  public String c;
+  public int f = -1;
+  public int g = -1;
   
-  public ltj(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, long paramLong)
-  {
-    super(paramRandomWebProtocol, paramltg);
-    this.a = 3;
-    this.c = paramString1;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.f = paramString2;
-    this.e = paramInt3;
-    this.jdField_b_of_type_Long = paramLong;
-    this.d = ("[p]" + paramInt1 + paramInt2 + paramString2 + paramInt3 + paramLong);
-  }
+  public ltj(RandomWebProtocol paramRandomWebProtocol) {}
   
-  String a()
+  void a(String paramString)
   {
-    this.a = null;
-    try
+    super.a(paramString);
+    if ((2 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      this.a = new JSONObject().put("session_type", this.c).put("reqtype", this.d).put("groupid", this.jdField_b_of_type_Long);
-      if (2 == this.d) {
-        this.a.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), this.f)).put("peer_gender", this.e);
-      }
-      return super.a();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      this.f = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.b = this.jdField_a_of_type_OrgJsonJSONObject.optString("groupids");
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("businessid", -1);
+      this.c = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("ownerenable", true);
     }
   }
 }

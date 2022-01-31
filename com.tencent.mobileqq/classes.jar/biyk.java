@@ -1,10 +1,13 @@
-import android.graphics.Bitmap;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
-public abstract interface biyk
+public class biyk
+  implements bcpw
 {
-  public abstract void a(int paramInt);
+  public biyk(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public abstract void a(Bitmap paramBitmap);
+  public void a(bcpu parambcpu) {}
+  
+  public void a(bcpu parambcpu, int paramInt1, int paramInt2) {}
 }
 
 

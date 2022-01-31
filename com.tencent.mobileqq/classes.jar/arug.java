@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
 
-class arug
-  implements DialogInterface.OnClickListener
+public class arug
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  arug(aruf paramaruf, bbgg parambbgg) {}
+  public arug(MusicPanelView paramMusicPanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
+    MusicPanelView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

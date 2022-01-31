@@ -1,21 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ahej
-  implements View.OnClickListener
+  implements ahds
 {
-  public ahej(DrawHbFragment paramDrawHbFragment) {}
+  public ahej(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((paramView instanceof TextView))
+    if (paramInt == 0)
     {
-      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368064).setVisibility(8);
+      return;
     }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368064).setVisibility(0);
   }
 }
 

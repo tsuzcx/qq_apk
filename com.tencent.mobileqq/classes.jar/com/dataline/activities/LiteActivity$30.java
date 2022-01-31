@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import bbdj;
+import bbdx;
 import com.tencent.mobileqq.data.MessageForPic;
 
 class LiteActivity$30
@@ -10,7 +10,7 @@ class LiteActivity$30
   
   public void run()
   {
-    this.a.md5 = bbdj.c(this.a.path);
+    this.a.md5 = bbdx.c(this.a.path);
     this.this$0.runOnUiThread(new LiteActivity.30.1(this));
   }
 }

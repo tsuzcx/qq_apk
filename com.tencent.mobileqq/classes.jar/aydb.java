@@ -1,234 +1,178 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.GroupSystemMsgOldData;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController.1;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController.2;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController.3;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController.4;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.opengl.GLES20;
 
 public class aydb
 {
-  private static volatile aydb jdField_a_of_type_Aydb;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private final String jdField_a_of_type_JavaLangString = aydb.class.getName();
-  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private long jdField_b_of_type_Long = -1L;
-  private String jdField_b_of_type_JavaLangString;
-  private HashMap<Long, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  
-  public static aydb a()
+  public static int a(int paramInt, String paramString)
   {
-    if (jdField_a_of_type_Aydb == null) {}
-    try
+    paramInt = GLES20.glCreateShader(paramInt);
+    if (paramInt == 0) {
+      throw new RuntimeException("Error create shader.");
+    }
+    int[] arrayOfInt = new int[1];
+    GLES20.glShaderSource(paramInt, paramString);
+    GLES20.glCompileShader(paramInt);
+    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
     {
-      if (jdField_a_of_type_Aydb == null) {
-        jdField_a_of_type_Aydb = new aydb();
-      }
-      return jdField_a_of_type_Aydb;
+      GLES20.glDeleteShader(paramInt);
+      throw new RuntimeException("Error compile shader: " + GLES20.glGetShaderInfoLog(paramInt));
     }
-    finally {}
+    return paramInt;
   }
   
-  private int c(QQAppInterface paramQQAppInterface)
+  public static int a(String paramString1, String paramString2)
   {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("unread_Group_system_msg", 0);
+    int i = a(35633, paramString1);
+    int j = a(35632, paramString2);
+    int k = GLES20.glCreateProgram();
+    if (k == 0) {
+      throw new RuntimeException("Error create program.");
     }
-    return i;
-  }
-  
-  private int d(QQAppInterface paramQQAppInterface)
-  {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("unread_Group_suspicious_msg", 0);
-    }
-    return i;
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = c(paramQQAppInterface);
-    }
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.getString("group_display", "");
-    }
-    return "";
-  }
-  
-  public structmsg.StructMsg a()
-  {
-    return this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
-  }
-  
-  public structmsg.StructMsg a(Long paramLong)
-  {
-    structmsg.StructMsg localStructMsg = null;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
-    }
-    return localStructMsg;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler = null;
-    try
+    GLES20.glAttachShader(k, i);
+    GLES20.glAttachShader(k, j);
+    GLES20.glLinkProgram(k);
+    paramString1 = new int[1];
+    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+    if (paramString1[0] == 0)
     {
-      jdField_a_of_type_Aydb = null;
-      return;
+      GLES20.glDeleteProgram(k);
+      throw new RuntimeException("Error linking program: " + GLES20.glGetProgramInfoLog(k));
     }
-    finally {}
+    GLES20.glDeleteShader(i);
+    GLES20.glDeleteShader(j);
+    return k;
   }
   
-  public void a(long paramLong)
+  /* Error */
+  public static String a(android.content.Context paramContext, String paramString)
   {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2, QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    long l = 0L;
-    try
-    {
-      if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong1))) {
-        l = ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1))).longValue();
-      }
-      if (l >= paramLong2) {
-        return;
-      }
-      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "addSystemMsgOldData " + paramLong1 + " " + paramLong2);
-      }
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      if (paramQQAppInterface == null) {
-        return;
-      }
-    }
-    finally {}
-    GroupSystemMsgOldData localGroupSystemMsgOldData = new GroupSystemMsgOldData();
-    localGroupSystemMsgOldData.uin = paramLong1;
-    localGroupSystemMsgOldData.msgtime = paramLong2;
-    paramQQAppInterface.b(localGroupSystemMsgOldData);
-    paramQQAppInterface.a();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    Object localObject = paramQQAppInterface.a(GroupSystemMsgOldData.class, false, null, null, null, null, "msgtime desc", null);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GroupSystemMsgOldData localGroupSystemMsgOldData = (GroupSystemMsgOldData)((Iterator)localObject).next();
-        this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localGroupSystemMsgOldData.uin), Long.valueOf(localGroupSystemMsgOldData.msgtime));
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "initSystemMsgOldData " + localGroupSystemMsgOldData.uin + " " + localGroupSystemMsgOldData.msgtime);
-        }
-      }
-    }
-    paramQQAppInterface.a();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    paramQQAppInterface.a(new GroupSystemMsgController.1(this, paramQQAppInterface, paramInt));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface.a(new GroupSystemMsgController.3(this, paramQQAppInterface, paramString));
-  }
-  
-  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "putStructMsgToMap key=" + paramLong);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
-    }
-  }
-  
-  public void a(structmsg.StructMsg paramStructMsg)
-  {
-    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = paramStructMsg;
-  }
-  
-  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.a(new GroupSystemMsgController.4(this, paramQQAppInterface, paramBoolean));
-  }
-  
-  public int b(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = d(paramQQAppInterface);
-    }
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    paramQQAppInterface.a(new GroupSystemMsgController.2(this, paramQQAppInterface, paramInt));
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: new 93	java/io/InputStreamReader
+    //   5: dup
+    //   6: aload_0
+    //   7: invokevirtual 99	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   10: invokevirtual 105	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   13: aload_1
+    //   14: invokevirtual 111	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   17: invokespecial 114	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   20: astore_1
+    //   21: aload_1
+    //   22: astore_0
+    //   23: new 116	java/io/BufferedReader
+    //   26: dup
+    //   27: aload_1
+    //   28: invokespecial 119	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: astore_2
+    //   32: aload_1
+    //   33: astore_0
+    //   34: new 38	java/lang/StringBuilder
+    //   37: dup
+    //   38: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   41: astore 4
+    //   43: aload_1
+    //   44: astore_0
+    //   45: aload_2
+    //   46: invokevirtual 122	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   49: astore 5
+    //   51: aload 5
+    //   53: ifnull +47 -> 100
+    //   56: aload_1
+    //   57: astore_0
+    //   58: aload 4
+    //   60: aload 5
+    //   62: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: aload_1
+    //   67: astore_0
+    //   68: aload 4
+    //   70: bipush 10
+    //   72: invokevirtual 125	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   75: pop
+    //   76: goto -33 -> 43
+    //   79: astore_2
+    //   80: aload_1
+    //   81: astore_0
+    //   82: aload_2
+    //   83: invokevirtual 128	java/lang/Exception:printStackTrace	()V
+    //   86: aload_3
+    //   87: astore_0
+    //   88: aload_1
+    //   89: ifnull +9 -> 98
+    //   92: aload_1
+    //   93: invokevirtual 131	java/io/InputStreamReader:close	()V
+    //   96: aload_3
+    //   97: astore_0
+    //   98: aload_0
+    //   99: areturn
+    //   100: aload_1
+    //   101: astore_0
+    //   102: aload 4
+    //   104: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: astore_2
+    //   108: aload_2
+    //   109: astore_0
+    //   110: aload_1
+    //   111: ifnull -13 -> 98
+    //   114: aload_1
+    //   115: invokevirtual 131	java/io/InputStreamReader:close	()V
+    //   118: aload_2
+    //   119: areturn
+    //   120: astore_0
+    //   121: aload_2
+    //   122: areturn
+    //   123: astore_1
+    //   124: aconst_null
+    //   125: astore_0
+    //   126: aload_0
+    //   127: ifnull +7 -> 134
+    //   130: aload_0
+    //   131: invokevirtual 131	java/io/InputStreamReader:close	()V
+    //   134: aload_1
+    //   135: athrow
+    //   136: astore_0
+    //   137: aconst_null
+    //   138: areturn
+    //   139: astore_0
+    //   140: goto -6 -> 134
+    //   143: astore_1
+    //   144: goto -18 -> 126
+    //   147: astore_2
+    //   148: aconst_null
+    //   149: astore_1
+    //   150: goto -70 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	153	0	paramContext	android.content.Context
+    //   0	153	1	paramString	String
+    //   31	15	2	localBufferedReader	java.io.BufferedReader
+    //   79	4	2	localException1	java.lang.Exception
+    //   107	15	2	str1	String
+    //   147	1	2	localException2	java.lang.Exception
+    //   1	96	3	localObject	Object
+    //   41	62	4	localStringBuilder	java.lang.StringBuilder
+    //   49	12	5	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   23	32	79	java/lang/Exception
+    //   34	43	79	java/lang/Exception
+    //   45	51	79	java/lang/Exception
+    //   58	66	79	java/lang/Exception
+    //   68	76	79	java/lang/Exception
+    //   102	108	79	java/lang/Exception
+    //   114	118	120	java/io/IOException
+    //   2	21	123	finally
+    //   92	96	136	java/io/IOException
+    //   130	134	139	java/io/IOException
+    //   23	32	143	finally
+    //   34	43	143	finally
+    //   45	51	143	finally
+    //   58	66	143	finally
+    //   68	76	143	finally
+    //   82	86	143	finally
+    //   102	108	143	finally
+    //   2	21	147	java/lang/Exception
   }
 }
 

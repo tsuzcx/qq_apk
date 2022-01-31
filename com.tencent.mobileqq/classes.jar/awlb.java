@@ -1,25 +1,30 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 
-public class awlb
-  implements View.OnTouchListener
+class awlb
+  implements View.OnClickListener
 {
-  public awlb(BaseSearchFragment paramBaseSearchFragment) {}
+  awlb(awla paramawla, String paramString, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    paramView = this.jdField_a_of_type_Awla.a.getActivity();
+    if ((this.jdField_a_of_type_Awla.a.getActivity() instanceof awkz))
+    {
+      ((awkz)paramView).c(this.jdField_a_of_type_JavaLangString);
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      awsq.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_Awla.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awlb
  * JD-Core Version:    0.7.0.1
  */

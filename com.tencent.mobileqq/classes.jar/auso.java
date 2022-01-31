@@ -1,20 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.profile.CustomCoverFragment;
-import mqq.app.QQPermissionCallback;
 
 public class auso
-  implements QQPermissionCallback
+  implements DialogInterface.OnCancelListener
 {
-  public auso(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
+  public auso(CustomCoverFragment paramCustomCoverFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    bbcv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    if (this.a.getActivity() != null) {
+      this.a.getActivity().finish();
+    }
   }
 }
 

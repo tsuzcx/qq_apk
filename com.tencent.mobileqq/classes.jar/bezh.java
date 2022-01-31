@@ -1,59 +1,21 @@
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONArray;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import java.util.List;
 import org.json.JSONObject;
 
-public class bezh
-  extends bfad
+class bezh
+  implements AsyncResult
 {
-  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
+  bezh(bezf parambezf, List paramList) {}
   
-  public bezh(int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.a.uiPageType.set(paramInt);
-  }
-  
-  protected String a()
-  {
-    return "store_app_client";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
-    try
+    if (paramBoolean)
     {
-      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFirstPageByTypeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("data", bffz.a(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
-        paramArrayOfByte.put("dataType", "string");
-        return paramArrayOfByte;
-      }
-      besl.a("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
-      return null;
+      betc.a("MiniProgramReporter", "performDataReportViaSSO  onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      besl.a("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFirstPageByType";
+    betc.d("MiniProgramReporter", "performDataReportViaSSO onDcReport: sso command failed, try again");
+    this.jdField_a_of_type_Bezf.b(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

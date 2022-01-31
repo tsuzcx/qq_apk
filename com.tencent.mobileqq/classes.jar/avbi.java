@@ -1,19 +1,16 @@
 import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation.AnimationListener;
 
 public class avbi
-  extends avbg
+  implements Animation.AnimationListener
 {
-  public avbi(LSRecordPanel paramLSRecordPanel) {}
+  public void a(Animation paramAnimation, float paramFloat) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
-    }
-    this.a.c = null;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

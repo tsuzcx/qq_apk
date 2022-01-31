@@ -1,28 +1,79 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class aazu
-  extends ajwb
+  implements TextWatcher
 {
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = true;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean = false;
+  
   public aazu(EditActivity paramEditActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void afterTextChanged(Editable paramEditable)
   {
-    EditActivity.a(this.a);
-    if (paramBoolean)
-    {
-      paramObject = (CustomEmotionData)paramObject;
-      if (paramObject != null)
-      {
-        ((anss)this.a.app.getManager(103)).c(paramObject);
-        EditActivity.b(this.a);
-      }
-    }
-    while (!(paramObject instanceof String)) {
+    EditActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity, true);
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    bcpw.a(this.a, 1, (String)paramObject, 1).a();
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
+    {
+      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramEditable);
+        this.jdField_b_of_type_Boolean = true;
+      }
+      int i = this.jdField_a_of_type_JavaLangString.length();
+      int j = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i + j);
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.f();
+      return;
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
+    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_Int == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      {
+        this.jdField_c_of_type_Boolean = true;
+        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+      }
+      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

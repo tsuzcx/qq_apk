@@ -1,29 +1,29 @@
-import android.os.Parcel;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class awzf
+  extends xom
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
+  private awzc jdField_a_of_type_Awzc = new awzc();
+  private awze jdField_a_of_type_Awze = new awze();
   
-  public void a(Parcel paramParcel)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.c);
+    return this.jdField_a_of_type_Awzc.a(paramToServiceMsg, paramFromServiceMsg);
   }
   
-  public void b(Parcel paramParcel)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readInt();
+    return this.jdField_a_of_type_Awze.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

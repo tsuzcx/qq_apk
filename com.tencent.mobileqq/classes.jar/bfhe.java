@@ -1,37 +1,33 @@
-import android.os.Bundle;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.QSecRptControllerImpl;
-
 public class bfhe
-  extends mxm
 {
-  public bfhe(QSecRptControllerImpl paramQSecRptControllerImpl) {}
+  private static final Integer[] a = new Integer[3968];
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
-    }
-    try
+    int i = 128;
+    while (i < 4096)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      a[(i - 128)] = new Integer(i);
+      i += 1;
+    }
+  }
+  
+  public static Integer a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt >= 128)
+    {
+      i = paramInt;
+      if (paramInt < 4096) {
+        i = a[(paramInt - 128)].intValue();
       }
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfhe
  * JD-Core Version:    0.7.0.1
  */

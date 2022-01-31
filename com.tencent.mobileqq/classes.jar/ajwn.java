@@ -1,14 +1,19 @@
-class ajwn
-  implements axod
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+
+public class ajwn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ajwn(ajwm paramajwm) {}
+  public ajwn(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    this.a.m();
+    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
+      this.a.c.setVisibility(8);
+    }
   }
-  
-  public void b() {}
 }
 
 

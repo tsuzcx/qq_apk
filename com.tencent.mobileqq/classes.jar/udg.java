@@ -1,7 +1,4 @@
-public abstract interface udg
-{
-  public abstract boolean a(udc paramudc, int paramInt, Object paramObject);
-}
+class udg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

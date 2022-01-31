@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import rwn;
-import rxe;
+import rwk;
+import rxb;
 
 public class ViolaFragment$5$1
   implements Runnable
 {
-  public ViolaFragment$5$1(rwn paramrwn) {}
+  public ViolaFragment$5$1(rwk paramrwk) {}
   
   public void run()
   {

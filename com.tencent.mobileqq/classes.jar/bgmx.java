@@ -1,19 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-class bgmx
-  implements DialogInterface.OnClickListener
+public abstract class bgmx
+  extends Binder
+  implements bgmw
 {
-  bgmx(bgmt parambgmt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static bgmw a(IBinder paramIBinder)
   {
-    paramDialogInterface.dismiss();
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bgmw))) {
+      return (bgmw)localIInterface;
+    }
+    return new bgmy(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgmx
  * JD-Core Version:    0.7.0.1
  */

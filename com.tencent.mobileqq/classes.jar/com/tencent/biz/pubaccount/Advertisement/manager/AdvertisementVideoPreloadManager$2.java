@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import nji;
-import njk;
+import njf;
+import njh;
 
 public class AdvertisementVideoPreloadManager$2
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$2(nji paramnji) {}
+  public AdvertisementVideoPreloadManager$2(njf paramnjf) {}
   
   public void run()
   {
     try
     {
-      TVK_SDKMgr.installPlugin(nji.a(this.this$0), new njk(this));
+      TVK_SDKMgr.installPlugin(njf.a(this.this$0), new njh(this));
       return;
     }
     catch (Throwable localThrowable)
     {
-      nji.c("installSDK t==" + localThrowable.toString());
+      njf.c("installSDK t==" + localThrowable.toString());
     }
   }
 }

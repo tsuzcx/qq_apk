@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajsf;
+import ajsd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import ayao;
-import bbcl;
+import ayaq;
+import bbcz;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,12 +30,12 @@ public class RecentItemSubAccount
       return;
       super.a(paramQQAppInterface, paramContext);
       MsgSummary localMsgSummary = a();
-      if (!ajsf.x.equals(this.mUser.uin)) {
+      if (!ajsd.x.equals(this.mUser.uin)) {
         break;
       }
-      this.mTitleName = paramContext.getString(2131719812);
+      this.mTitleName = paramContext.getString(2131719823);
       this.mUnreadNum = 0;
-      ayao.a(paramQQAppInterface, paramContext, this, localMsgSummary);
+      ayaq.a(paramQQAppInterface, paramContext, this, localMsgSummary);
       if (!TextUtils.isEmpty(localMsgSummary.strContent)) {
         localMsgSummary.mEmojiFlag = 1;
       }
@@ -62,11 +62,11 @@ public class RecentItemSubAccount
       paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.mTitleName = bbcl.c(paramQQAppInterface, this.mUser.uin, true);
+      this.mTitleName = bbcz.c(paramQQAppInterface, this.mUser.uin, true);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mUser.uin;
       }
-      this.mTitleName = (paramContext.getString(2131719845) + "（" + this.mTitleName + "）");
+      this.mTitleName = (paramContext.getString(2131719856) + "（" + this.mTitleName + "）");
       break;
       label377:
       this.mMsgExtroInfo = "";

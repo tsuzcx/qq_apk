@@ -1,34 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class bcke
-  implements TextWatcher
+  extends Handler
 {
-  public bcke(ConfigClearableEditText paramConfigClearableEditText) {}
+  public bcke(CircleProgressBar paramCircleProgressBar) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
+    switch (paramMessage.what)
     {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
-      }
     }
-    else {
-      return;
-    }
-    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    do
     {
-      this.a.setClearButtonVisible(true);
       return;
-    }
-    this.a.setClearButtonVisible(false);
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 

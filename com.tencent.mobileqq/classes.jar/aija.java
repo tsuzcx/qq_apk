@@ -1,25 +1,62 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aija
-  extends akfb
 {
-  public aija(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public List<aijb> a = new ArrayList();
   
-  public void a(Object paramObject)
+  public static aija a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    if (paramJSONObject == null) {
+      paramJSONObject = new aija();
     }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    for (;;)
     {
-    default: 
-      return;
+      return paramJSONObject;
+      localaija = new aija();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
+        paramJSONObject = localaija;
+        if (localJSONArray == null) {
+          continue;
+        }
+        paramJSONObject = localaija;
+        if (localJSONArray.length() < 0) {
+          continue;
+        }
+        int j = localJSONArray.length();
+        int i = 0;
+        for (;;)
+        {
+          paramJSONObject = localaija;
+          if (i >= j) {
+            break;
+          }
+          paramJSONObject = aijb.a(localJSONArray.getJSONObject(i));
+          localaija.a.add(paramJSONObject);
+          i += 1;
+        }
+        return localaija;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localaija;
+      }
+      catch (OutOfMemoryError paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localaija;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
-    QQSpecialFriendSettingActivity.a(this.a);
   }
 }
 

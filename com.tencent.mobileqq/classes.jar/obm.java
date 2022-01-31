@@ -1,80 +1,55 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
-import java.util.ArrayList;
 import java.util.List;
 
-public class obm
-  extends Dialog
-  implements View.OnClickListener
+class obm
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = -1;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private List<GiftServiceBean> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private obo jdField_a_of_type_Obo;
-  private obp jdField_a_of_type_Obp;
-  private LinearLayout b;
+  obm(obj paramobj) {}
   
-  public obm(Context paramContext, int paramInt)
+  public int getCount()
   {
-    super(paramContext, 2131755326);
-    requestWindowFeature(1);
-    getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(17170445)));
-    setContentView(2131559946);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369616));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369627));
-    this.jdField_a_of_type_Obp = new obp(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Obp);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new obn(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369627));
-    this.b = ((LinearLayout)findViewById(2131369634));
-    this.b.setOnClickListener(this);
-    sgw.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, actn.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-    sgw.a(this.jdField_a_of_type_AndroidWidgetListView, actn.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-    setCanceledOnTouchOutside(true);
+    return obj.a(this.a).size();
   }
   
-  public void a(List<GiftServiceBean> paramList, obo paramobo, String paramString)
+  public Object getItem(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Obo = paramobo;
-    this.jdField_a_of_type_Obp.notifyDataSetChanged();
-    int i = 0;
+    return obj.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559945, null);
+      paramViewGroup = new obn(this.a);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378373));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368529));
+      paramView.setTag(paramViewGroup);
+    }
     for (;;)
     {
-      if (i < paramList.size())
-      {
-        paramobo = (GiftServiceBean)paramList.get(i);
-        if ((!TextUtils.isEmpty(paramobo.t)) && (paramobo.t.equals(paramString))) {
-          this.jdField_a_of_type_Int = i;
-        }
+      GiftServiceBean localGiftServiceBean = (GiftServiceBean)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGiftServiceBean.t);
+      if (obj.a(this.a) != paramInt) {
+        break;
       }
-      else
-      {
-        return;
-      }
-      i += 1;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842335);
+      return paramView;
+      paramViewGroup = (obn)paramView.getTag();
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    dismiss();
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842336);
+    return paramView;
   }
 }
 

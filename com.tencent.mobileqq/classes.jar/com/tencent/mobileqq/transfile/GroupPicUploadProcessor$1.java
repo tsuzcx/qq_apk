@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import ayrd;
-import bcpw;
+import ayrf;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class GroupPicUploadProcessor$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$1(ayrd paramayrd) {}
+  public GroupPicUploadProcessor$1(ayrf paramayrf) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
+    bcql.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
   }
 }
 

@@ -1,6 +1,23 @@
-public abstract interface obr
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+
+class obr
+  extends qtz
 {
-  public abstract nly a();
+  obr(obq paramobq) {}
+  
+  public void a(qty paramqty)
+  {
+    super.a(paramqty);
+    QLog.d("KandianAdPandent", 2, "onCompletion");
+    obq.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void a(qty paramqty, Object paramObject)
+  {
+    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
+    obq.a(this.a).f();
+  }
 }
 
 

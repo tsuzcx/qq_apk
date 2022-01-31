@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aeah;
+import aeaf;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class ShortVideoRealItemBuilder$1
   implements Runnable
 {
-  ShortVideoRealItemBuilder$1(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, aeah paramaeah) {}
+  ShortVideoRealItemBuilder$1(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, aeaf paramaeaf) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress <= 0) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress;
     }
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Aeah, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress);
+    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Aeaf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress);
   }
 }
 

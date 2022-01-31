@@ -1,88 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import android.annotation.TargetApi;
 
-final class amcr
-  extends adtg
+@TargetApi(11)
+public class amcr
 {
-  private amcr(QQAppInterface paramQQAppInterface)
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d = 1.0F;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  
+  public amcr(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    super(null, paramQQAppInterface, null, null, null);
+    this.e = paramFloat1;
+    this.f = paramFloat2;
+    this.g = paramFloat3;
+    this.h = paramFloat4;
+    this.jdField_a_of_type_Float = paramFloat5;
+    this.b = paramFloat6;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  private boolean a(ChatMessage paramChatMessage)
+  public amcr(int paramInt, float paramFloat1, float paramFloat2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramChatMessage != null)
-    {
-      int i = a(this.a, paramChatMessage);
-      if ((i != 81) && (i != 66) && (i != 42) && (i != 47))
-      {
-        bool1 = bool2;
-        if (i != 89) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  private boolean b(ChatMessage paramChatMessage)
+  public static amcr a(float paramFloat1, float paramFloat2)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    int i;
-    MessageForArkApp localMessageForArkApp;
-    if (paramChatMessage != null)
-    {
-      i = a(this.a, paramChatMessage);
-      if (i != 81) {
-        break label152;
-      }
-      if (!(paramChatMessage instanceof MessageForArkApp)) {
-        break label150;
-      }
-      localMessageForArkApp = (MessageForArkApp)paramChatMessage;
-      if ((localMessageForArkApp.isMultiMsg) || (localMessageForArkApp.istroop != 0)) {
-        break label150;
-      }
-      if ((paramChatMessage.senderuin.equals(this.a.c())) || (!paramChatMessage.isSupportReply())) {
-        break label95;
-      }
-      if (localMessageForArkApp.msg == null) {
-        break label90;
-      }
-      bool1 = true;
-    }
-    label90:
-    label95:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return bool1;
-          bool1 = false;
-        }
-        if ((!paramChatMessage.isSend()) || (!paramChatMessage.isSupportReply()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768) || (paramChatMessage.istroop == 3000)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (localMessageForArkApp.msg != null);
-      return false;
-      return false;
-      if ((i == 66) || (i == 42) || (i == 47)) {
-        break;
-      }
-      bool1 = bool2;
-    } while (i != 89);
-    label150:
-    label152:
-    return false;
+    return new amcr(1, paramFloat1, paramFloat2);
+  }
+  
+  public static amcr a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    return new amcr(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+  }
+  
+  public static amcr b(float paramFloat1, float paramFloat2)
+  {
+    return new amcr(0, paramFloat1, paramFloat2);
   }
 }
 

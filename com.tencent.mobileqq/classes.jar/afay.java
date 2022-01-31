@@ -1,126 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.activity.bless.BlessTask;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class afay
+class afay
+  extends bbwt
 {
-  public static String a = "BlessJsApiUtils";
+  afay(afax paramafax, String paramString1, String paramString2) {}
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2)
+  public void onCancel(bbwu parambbwu)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString1.trim())))
+    afax.a(this.jdField_a_of_type_Afax).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(bbwu parambbwu)
+  {
+    afax.a(this.jdField_a_of_type_Afax).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambbwu.a() == 3)
     {
-      bcpw.a(paramActivity, 2131690497, 1).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "download finished " + this.b);
+      }
+      if ((this.b != null) && (afax.a(this.jdField_a_of_type_Afax) != null) && (this.b.equals(afax.a(this.jdField_a_of_type_Afax).starVideo))) {
+        afax.b(this.jdField_a_of_type_Afax);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      afax.a(this.jdField_a_of_type_Afax);
       return;
     }
-    Intent localIntent = new Intent(paramActivity, BlessSelectMemberActivity.class);
-    localIntent.putExtra("param_type", 9003);
-    localIntent.putExtra("param_entrance", 15);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131690514));
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131691035));
-    localIntent.putExtra("param_exit_animation", 1);
-    localIntent.putExtra("param_blesstype", 1);
-    localIntent.putExtra("param_blessword_content", paramString1);
-    localIntent.putExtra("param_web_callback", paramString2);
-    paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771992, 2130771993);
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    boolean bool = VideoEnvironment.b(paramAppInterface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "isMobileSupportPTV fasle");
-    }
-    return bool;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "startBlessPtvActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", unfoldDDStr:" + paramString5 + ", dDCategoryName:" + paramString6 + ", dDItemID:" + paramString7 + ", unfoldFilter:" + paramString9 + ", filterCategoryName:" + paramString10 + ", filterItemID:" + paramString11 + ", callback:" + paramString12);
-    }
-    boolean bool1 = "1".equals(paramString1);
-    boolean bool2 = "1".equals(paramString2);
-    if ("1".equals(paramString3)) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    for (int i = 2;; i = 1)
-    {
-      bool3 = "1".equals(paramString4);
-      bool4 = "1".equals(paramString8);
-      bool5 = "1".equals(paramString5);
-      bool6 = "1".equals(paramString9);
-      if (avtc.a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "supportMediaCodec = false");
-      }
-      bcpw.a(paramActivity, paramActivity.getString(2131690511), 0).a();
-      return false;
-    }
-    paramAppInterface = bihm.a(bool1, bool2, i, true, bool3, bool5, paramString6, paramString7, bool4, bool6, paramString10, paramString11, bihm.e, "", "", null, "", "", "", "", null);
-    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
-    paramString1.putExtras(paramAppInterface);
-    paramString1.putExtra(bihm.p, true);
-    paramString1.putExtra("jump_action", 7);
-    paramActivity.startActivity(paramString1);
-    return true;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    boolean bool = axlc.c();
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "issupportFilterSo false");
-    }
-    return bool;
-  }
-  
-  public static boolean c(AppInterface paramAppInterface)
-  {
-    boolean bool = true;
-    if (paramAppInterface.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "isAccLoginSuccess false.");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!a(paramAppInterface));
-        if (axlc.a(BaseApplicationImpl.getContext()) == 1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
-      return false;
-    } while (!avtc.a());
-    if (ShortVideoUtils.a()) {}
-    for (;;)
-    {
-      return bool;
-      ShortVideoUtils.a(paramAppInterface);
-      if (!ShortVideoUtils.a()) {
-        bool = false;
-      }
-    }
+    QLog.d("BlessManager", 2, "downloadFile failed: " + parambbwu.b + " code=" + parambbwu.a);
   }
 }
 

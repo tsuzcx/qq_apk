@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiInterestInfo;
+import cooperation.qzone.model.DynamicPhotoData;
 
 public final class bhfd
-  implements Parcelable.Creator<WeishiInterestInfo>
+  implements Parcelable.Creator<DynamicPhotoData>
 {
-  public WeishiInterestInfo a(Parcel paramParcel)
+  public DynamicPhotoData a(Parcel paramParcel)
   {
-    return new WeishiInterestInfo(paramParcel);
+    return new DynamicPhotoData(paramParcel);
   }
   
-  public WeishiInterestInfo[] a(int paramInt)
+  public DynamicPhotoData[] a(int paramInt)
   {
-    return new WeishiInterestInfo[paramInt];
+    return new DynamicPhotoData[paramInt];
   }
 }
 

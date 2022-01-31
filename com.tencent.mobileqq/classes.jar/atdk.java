@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.data.HotChatInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class atdk
-  implements bcij<oidb_0x8e4.RspBody>
+  implements bcix<oidb_0x8e4.RspBody>
 {
-  public atdk(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public atdk(GameRoomInviteActivity paramGameRoomInviteActivity, bciq parambciq) {}
   
   public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramInt == 0)
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, ajya.a(2131705115));
+        return;
+      }
     }
-    do
-    {
-      return;
-      this.a.a(paramInt, paramRspBody, ajyc.a(2131705128));
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+    this.jdField_a_of_type_Bciq.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new atdl(this));
   }
 }
 

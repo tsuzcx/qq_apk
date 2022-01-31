@@ -1,49 +1,59 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amav
+  extends ampa<amaw>
 {
-  private static final amav jdField_a_of_type_Amav = new amav();
-  private int jdField_a_of_type_Int;
-  private final SparseArrayCompat<amah> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  
-  public static amav a()
+  public int a()
   {
-    return jdField_a_of_type_Amav;
+    return 416;
   }
   
-  public int a(amah paramamah)
+  @NonNull
+  public amaw a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      do
-      {
-        this.jdField_a_of_type_Int += 1;
-      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramamah);
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
+    return new amaw();
   }
   
-  public void a(int paramInt)
+  @Nullable
+  public amaw a(amph[] paramArrayOfamph)
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
-      return;
+    amaw localamaw = new amaw();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
+      amaw.a(localamaw, paramArrayOfamph[0].a);
     }
+    return localamaw;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public Class<amaw> a()
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      amah localamah = (amah)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
-      if (localamah != null) {
-        localamah.a(paramInt1, paramInt2);
-      }
-      return;
-    }
+    return amaw.class;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(amaw paramamaw) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

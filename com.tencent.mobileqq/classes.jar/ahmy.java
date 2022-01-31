@@ -1,13 +1,13 @@
-import com.tencent.widget.XListView;
+import android.view.View;
 
 class ahmy
-  implements tkt
+  implements bfqj
 {
-  ahmy(ahmx paramahmx) {}
+  ahmy(ahmv paramahmv, View paramView) {}
   
   public void a()
   {
-    this.a.a.invalidateViews();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

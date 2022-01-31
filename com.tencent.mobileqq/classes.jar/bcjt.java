@@ -1,39 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class bcjt
-  implements TextWatcher
+class bcjt
+  implements Animation.AnimationListener
 {
-  public bcjt(ClearableEditText paramClearableEditText) {}
+  bcjt(bcjr parambcjr) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
-    {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
-      }
-    }
-    else {
-      return;
-    }
-    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
+    bcjr.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcjt
  * JD-Core Version:    0.7.0.1
  */

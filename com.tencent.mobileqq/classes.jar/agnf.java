@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agnf
-  implements DialogInterface.OnClickListener
+  implements bcwm
 {
-  public agnf(PhotoListActivity paramPhotoListActivity) {}
+  public agnf(PhotoListActivity paramPhotoListActivity, Runnable paramRunnable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

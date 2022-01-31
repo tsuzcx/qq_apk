@@ -1,12 +1,23 @@
-import java.util.List;
+import org.json.JSONObject;
 
-public abstract interface andr
+public class andr
 {
-  public abstract int a();
+  public boolean a;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<String> paramList);
+  public static andr a(String paramString)
+  {
+    andr localandr = new andr();
+    try
+    {
+      localandr.a = new JSONObject(paramString).optBoolean("test_crash_enabled", false);
+      return localandr;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

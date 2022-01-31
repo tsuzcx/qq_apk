@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
-class adtc
-  implements DialogInterface.OnClickListener
+public class adtc
+  extends acuj
 {
-  adtc(adta paramadta, ChatMessage paramChatMessage) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    aaod.b(this.jdField_a_of_type_Adta.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adta.b, this.jdField_a_of_type_Adta.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-  }
+  public HiBoomTextView a;
 }
 
 

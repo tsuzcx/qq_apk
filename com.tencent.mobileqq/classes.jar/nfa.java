@@ -1,14 +1,19 @@
-public class nfa
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class nfa
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
+  nfa(ney paramney, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ney.a(this.jdField_a_of_type_Ney).startActivity(paramView);
+  }
 }
 
 

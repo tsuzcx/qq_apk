@@ -1,8 +1,16 @@
-public class bivb
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+
+class bivb
+  implements View.OnClickListener
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  bivb(biur parambiur) {}
+  
+  public void onClick(View paramView)
+  {
+    biur.a(this.a).setText("");
+  }
 }
 
 

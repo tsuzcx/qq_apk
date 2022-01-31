@@ -1,42 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class qru
-  extends awyn
+class qru
+  implements DialogInterface.OnDismissListener
 {
-  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  qru(qrt paramqrt) {}
   
-  public qru(VideoFeedsAppInterface paramVideoFeedsAppInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
+    paramDialogInterface = this.a;
+    StringBuilder localStringBuilder = new StringBuilder().append("DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    if (!qrt.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      super.a();
+      qrt.a(paramDialogInterface, bool);
+      if ((qrt.a(this.a) != null) && (qrt.a(this.a).b()) && (qrt.b(this.a)) && (qrt.a(this.a))) {
+        qrt.a(this.a).c();
+      }
+      if (qrt.a(this.a) != null) {
+        qrt.a(this.a).f();
+      }
+      qrt.a(this.a, false);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, qrv.class);
   }
 }
 

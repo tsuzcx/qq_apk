@@ -1,40 +1,25 @@
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
 
 public class aaxn
-  extends akwr
 {
-  private WeakReference<Conversation> a;
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
+  private final String c;
   
-  public aaxn(Conversation paramConversation)
+  public aaxn(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
   {
-    this.a = new WeakReference(paramConversation);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void a()
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      Conversation localConversation = (Conversation)this.a.get();
-      if (localConversation != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
-          if (localAppletsAccountInfo != null) {
-            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
-          }
-        }
-      }
-    }
+    aaxo localaaxo = new aaxo(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, ajya.a(2131702601), ajya.a(2131702605), localaaxo, localaaxo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
   }
 }
 

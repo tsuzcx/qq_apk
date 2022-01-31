@@ -4,11 +4,11 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import bbuv;
-import bgxa;
-import bgxb;
-import bhbp;
-import bhnq;
+import bbvj;
+import bgxr;
+import bgxs;
+import bhcg;
+import bhoh;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -23,13 +23,13 @@ public class CrashGuard
   private static long appLaunchTime;
   private static int crashBetweenLaunch = -1;
   private Runnable clearTimestamp;
-  private bgxa crashListener;
+  private bgxr crashListener;
   AtomicBoolean isTimeOvered = new AtomicBoolean(false);
   private Handler mHandler;
   
   public static void clearFileCache(Context paramContext)
   {
-    bhbp.a(paramContext);
+    bhcg.a(paramContext);
   }
   
   public static int getCrashDurationAfterLaunch()
@@ -44,7 +44,7 @@ public class CrashGuard
   
   public static CrashGuard getInstance()
   {
-    return bgxb.a;
+    return bgxs.a;
   }
   
   public void clearCache(BaseApplication paramBaseApplication, String paramString)
@@ -56,21 +56,21 @@ public class CrashGuard
     paramBaseApplication = paramBaseApplication.getFilesDir().getParent() + File.separator + "shared_prefs";
     if (!TextUtils.isEmpty(paramBaseApplication))
     {
-      bhnq.a(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
-      bhnq.a(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
-      bhnq.a(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
+      bhoh.a(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
+      bhoh.a(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
+      bhoh.a(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
     }
-    paramBaseApplication = bbuv.a(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
+    paramBaseApplication = bbvj.a(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
     if (paramBaseApplication != null) {
-      bhnq.a(new File(paramBaseApplication));
+      bhoh.a(new File(paramBaseApplication));
     }
   }
   
-  public void onAppLaunch(long paramLong, Handler paramHandler, bgxa parambgxa)
+  public void onAppLaunch(long paramLong, Handler paramHandler, bgxr parambgxr)
   {
     appLaunchTime = System.currentTimeMillis();
     this.mHandler = paramHandler;
-    this.crashListener = parambgxa;
+    this.crashListener = parambgxr;
     if (this.clearTimestamp == null) {
       this.clearTimestamp = new CrashGuard.1(this, paramLong);
     }

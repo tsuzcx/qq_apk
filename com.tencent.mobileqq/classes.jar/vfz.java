@@ -1,12 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class vfz
+public class vfz
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public final int a;
+  public final CharSequence a;
+  public final int b;
   
-  vfz(vfy paramvfy) {}
+  public vfz(int paramInt1, int paramInt2, CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
 }
 
 

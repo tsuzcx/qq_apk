@@ -1,82 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
-public class pga
-  implements phs
+class pga
+  implements poi
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  pga(pfy parampfy, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mKdLiveInfo == null)) {
-      return new JSONObject();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("style_ID", "ReadInJoy_live_video_cell");
-    localJSONObject.put("avatar_uin", paramBaseArticleInfo.mSubscribeID);
-    String str = " ";
-    Object localObject = str;
-    if (paramBaseArticleInfo.mSubscribeName != null)
+    QLog.d("multiVideoColumnInfo", 1, "position : " + paramInt);
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+    if ((paramInt >= 0) && (paramInt < paramViewBase.size()) && (paramViewBase.get(paramInt) != null) && (((qdf)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null))
     {
-      localObject = str;
-      if (paramBaseArticleInfo.mSubscribeName.length() > 0)
-      {
-        if (paramBaseArticleInfo.mSubscribeName.length() <= 10) {
-          break label348;
-        }
-        localObject = paramBaseArticleInfo.mSubscribeName.substring(0, 10);
-        localObject = (String)localObject + "...";
-      }
+      paramTemplateBean = ((qdf)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo;
+      qoi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramTemplateBean);
+      pfy.a(this.jdField_a_of_type_Pfy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, paramTemplateBean.e, ((qdf)paramViewBase.get(paramInt)).jdField_a_of_type_JavaLangString);
     }
-    localJSONObject.put("user_name_text", localObject);
-    localJSONObject.put("user_info_text", paramBaseArticleInfo.mTitle);
-    localJSONObject.put("article_large_imge_url", paramBaseArticleInfo.mFirstPagePicUrl);
-    localJSONObject.put("play_icon_url", "rij_multi_video_column_play");
-    localObject = paramBaseArticleInfo.mKdLiveInfo;
-    localJSONObject.put("live_status_bg_url", ((qbi)localObject).jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(((qbi)localObject).b)) {
-      localJSONObject.put("live_status_icon_url", ((qbi)localObject).b);
-    }
-    localJSONObject.put("live_status_text", ((qbi)localObject).c);
-    if (!TextUtils.isEmpty(((qbi)localObject).d)) {
-      localJSONObject.put("live_hot_icon_url", ((qbi)localObject).d);
-    }
-    localJSONObject.put("live_hot_text", ((qbi)localObject).e);
-    switch (paramBaseArticleInfo.mKdLiveInfo.jdField_a_of_type_Int)
-    {
-    default: 
-      localJSONObject.put("video_info_visibility", "1");
-    }
-    for (;;)
-    {
-      localJSONObject.put("video_jump_url", paramBaseArticleInfo.mArticleContentUrl);
-      localJSONObject.put("url", ((qbi)localObject).f);
-      localJSONObject.put("jump_report_info", ((qbi)localObject).g);
-      localJSONObject.put("video_jump_report_info", paramBaseArticleInfo.mReportCommonData);
-      QLog.d("LiveSingleVideoProteusItem", 1, localJSONObject.toString());
-      return localJSONObject;
-      label348:
-      localObject = paramBaseArticleInfo.mSubscribeName;
-      break;
-      localJSONObject.put("avatar_info_visibility", "1");
-      continue;
-      localJSONObject.put("bottom_info_visibility", "1");
-    }
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
-  {
-    return false;
   }
 }
 

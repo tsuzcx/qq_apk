@@ -53,7 +53,7 @@ public class YellowTipsLayout
     //   13: new 51	java/lang/StringBuilder
     //   16: dup
     //   17: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   20: getstatic 57	ahje:c	Ljava/lang/String;
+    //   20: getstatic 57	ahjc:c	Ljava/lang/String;
     //   23: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_1
     //   27: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

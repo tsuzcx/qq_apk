@@ -1,28 +1,31 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.TextUtils;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class rxm
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public rxm(BridgeModule paramBridgeModule, String paramString) {}
+  public rxm(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramDialogInterface.dismiss();
     paramDialogInterface = new JSONObject();
     try
     {
-      paramDialogInterface.put("type", -1);
-      paramDialogInterface.put("action", "close");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
+      paramDialogInterface.put("button", 1);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       return;
     }
-    catch (JSONException paramDialogInterface) {}
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
+    }
   }
 }
 

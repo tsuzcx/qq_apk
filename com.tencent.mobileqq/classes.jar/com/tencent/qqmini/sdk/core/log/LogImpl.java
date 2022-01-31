@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.log;
 
-import besk;
+import betb;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 public class LogImpl
-  implements besk
+  implements betb
 {
   private MiniAppProxy miniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   

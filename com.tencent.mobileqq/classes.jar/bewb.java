@@ -1,40 +1,82 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
 
-@begt(a="GameRuntimeCreateTask")
 public class bewb
-  extends bfet
 {
-  private beuh a;
+  private static volatile bewb jdField_a_of_type_Bewb;
+  private String jdField_a_of_type_JavaLangString;
   
-  public bewb(Context paramContext, bepv parambepv)
+  public static bewb a()
   {
-    super(paramContext, parambepv);
-  }
-  
-  public beuh a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    if (this.a != null)
-    {
-      c();
-      return;
-    }
+    if (jdField_a_of_type_Bewb == null) {}
     try
     {
-      this.a = new beuh();
-      this.a.a(a());
-      c();
-      return;
+      if (jdField_a_of_type_Bewb == null) {
+        jdField_a_of_type_Bewb = new bewb();
+      }
+      return jdField_a_of_type_Bewb;
     }
-    catch (Throwable localThrowable)
+    finally {}
+  }
+  
+  private static String a(String paramString1, String paramString2)
+  {
+    boolean bool1 = bete.a().c(paramString1);
+    boolean bool2 = bete.a().c(paramString2);
+    if ((bool1) && (bool2))
     {
-      besl.d("GameRuntimeCreateTask", "Failed execute GameRuntimeCreateTask", localThrowable);
-      f();
+      localEngineVersion1 = EngineVersion.a(paramString1);
+      localEngineVersion2 = EngineVersion.a(paramString2);
+      if ((localEngineVersion1 != null) && (localEngineVersion2 != null)) {
+        if (EngineVersion.a(localEngineVersion1.b, localEngineVersion2.b) < 0) {}
+      }
     }
+    while (bool1)
+    {
+      EngineVersion localEngineVersion1;
+      EngineVersion localEngineVersion2;
+      do
+      {
+        return paramString1;
+        return paramString2;
+      } while ((localEngineVersion1 != null) || (localEngineVersion2 == null));
+      return paramString2;
+    }
+    if (bool2) {
+      return paramString2;
+    }
+    return null;
+  }
+  
+  private void a(EngineVersion paramEngineVersion)
+  {
+    if ((paramEngineVersion != null) && (paramEngineVersion.b != null)) {
+      this.jdField_a_of_type_JavaLangString = paramEngineVersion.b.replace("/", "");
+    }
+  }
+  
+  public String a()
+  {
+    String str1 = bfhm.a().getString("downloadUrl", "mini");
+    String str2 = bfhm.a().getString("version", "1.13.0.00013");
+    str2 = bete.a().b(str1, str2);
+    String str3 = bete.a().b("mini", "1.13.0.00013");
+    str1 = null;
+    if ((beqf.a().a() instanceof GameRuntimeLoader)) {
+      str1 = ((GameRuntimeLoader)beqf.a().a()).getBaseEnginePath();
+    }
+    str1 = a(str1, a(str2, str3));
+    if (str1 != null) {
+      a(EngineVersion.a(str1));
+    }
+    bexk.a().i("GameLibVersionManager", "[MiniEng]getBaseEnginePath, [本次启动使用的小游戏基础库版本]retPath:" + str1);
+    return str1;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

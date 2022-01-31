@@ -1,49 +1,24 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-
 public class blca
 {
   public static String a;
-  private static final String[] a;
-  private static final String[] b = new String[0];
+  public static boolean a;
+  private static long[] a;
+  private static boolean jdField_b_of_type_Boolean = true;
+  private static long[] jdField_b_of_type_ArrayOfLong;
+  private static long[] c;
+  private static long[] d;
+  private static long[] e;
+  private static long[] f;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "N1T", "ZTE A2015" };
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    if (VideoEnvironment.a() == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (ShortVideoUtils.a()) {
-          break;
-        }
-        ShortVideoUtils.a(paramAppInterface);
-      } while (!ShortVideoUtils.a());
-    } while ((axlc.a(BaseApplicationImpl.getContext()) == 2) || (!axgp.a().a()) || (axlc.a() == 2));
-    return true;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    if (VideoEnvironment.a() == null) {}
-    do
-    {
-      return false;
-      if (ShortVideoUtils.a()) {
-        break;
-      }
-      ShortVideoUtils.a(paramAppInterface);
-    } while (!ShortVideoUtils.a());
-    return true;
+    jdField_a_of_type_ArrayOfLong = new long[20];
+    jdField_b_of_type_ArrayOfLong = new long[20];
+    c = new long[20];
+    d = new long[20];
+    e = new long[20];
+    f = new long[20];
+    jdField_a_of_type_JavaLangString = "";
   }
 }
 

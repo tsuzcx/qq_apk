@@ -1,40 +1,21 @@
-import android.net.Uri;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class bbua
-  extends bbwf
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public bbua(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
+  public bbua(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    super.onDone(parambbwg);
     if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
+      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
     }
-    parambbwg = new File(this.jdField_a_of_type_JavaLangString);
-    try
-    {
-      nay.a(parambbwg, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
-    }
-    catch (IOException parambbwg)
-    {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        bbbr.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
+    paramTVK_IMediaPlayer.seekTo(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video");
     }
   }
 }

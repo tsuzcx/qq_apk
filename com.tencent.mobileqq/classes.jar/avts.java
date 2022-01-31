@@ -1,7 +1,4 @@
-public abstract interface avts
-{
-  public abstract void a(float paramFloat);
-}
+class avts {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

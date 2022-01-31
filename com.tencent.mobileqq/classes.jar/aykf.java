@@ -1,27 +1,17 @@
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
 
 class aykf
-  extends aykh
+  extends aykj
 {
-  private aykp a;
-  
-  aykf(@NonNull String paramString, int paramInt1, int paramInt2)
+  aykf(@NonNull String paramString)
   {
-    super(2, paramString);
-    this.a = new aykp(paramInt1, paramInt2, 1);
+    super(0, paramString);
   }
   
   float a(@NonNull Paint paramPaint)
   {
-    float f = this.a.a().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
-    }
-    return f;
+    return paramPaint.measureText(a());
   }
 }
 

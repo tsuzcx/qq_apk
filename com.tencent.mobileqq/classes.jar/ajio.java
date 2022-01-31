@@ -1,30 +1,16 @@
-public class ajio
-  implements Comparable
+import java.util.List;
+
+public abstract interface ajio
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
   
-  public int compareTo(Object paramObject)
-  {
-    paramObject = (ajio)paramObject;
-    if (this.d < paramObject.d) {
-      return 1;
-    }
-    if (this.d > paramObject.d) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(int[] paramArrayOfInt, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(List<ajim> paramList);
+  
+  public abstract void e();
 }
 
 

@@ -1,70 +1,68 @@
-import com.tencent.mobileqq.app.GuardManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajyb
 {
-  public static final String[] a;
-  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
-  public int a;
-  public GuardManager a;
-  protected long c;
-  protected long d;
+  private static ajyb jdField_a_of_type_Ajyb;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.headDpcCfg.name();
+  private int jdField_a_of_type_Int = 1;
+  private ajuz jdField_a_of_type_Ajuz = new ajyc(this);
   
-  static
+  private ajyb()
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+    DeviceProfileManager.a(this.jdField_a_of_type_Ajuz);
+    a();
+  }
+  
+  public static ajyb a()
+  {
+    if (jdField_a_of_type_Ajyb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ajyb == null) {
+        jdField_a_of_type_Ajyb = new ajyb();
+      }
+      return jdField_a_of_type_Ajyb;
+    }
+    finally {}
   }
   
   public void a()
   {
-    this.c += 1L;
-    this.d += 1L;
-  }
-  
-  public final void a(int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
-    }
-    switch (paramInt)
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
     {
-    default: 
-      return;
-    case 2: 
-      a();
-      return;
-    case 0: 
-      b();
-      return;
-    case 3: 
-      a((String)paramObject);
-      return;
-    case 4: 
-      d((String)paramObject);
-      return;
-    case 5: 
-      b((String)paramObject);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
-      return;
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
     }
-    c((String)paramObject);
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HeadDpcCfg", 2, String.format("loadConfig, mDualStackPrefIpv6: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("HeadDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 1;
+        continue;
+      }
+      this.jdField_a_of_type_Int = 1;
+    }
   }
   
-  protected void a(String paramString) {}
-  
-  protected void b() {}
-  
-  protected void b(String paramString)
+  public boolean a()
   {
-    this.d = 0L;
-    this.c = 0L;
+    QLog.d("HeadDpcCfg", 1, String.format("preferIpv6 mDualStackPrefIpv6=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return this.jdField_a_of_type_Int != 0;
   }
-  
-  protected void c(String paramString) {}
-  
-  protected void d(String paramString) {}
 }
 
 

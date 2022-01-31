@@ -1,10 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
 
-public final class atnh
+class atnh
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
+  atnh(atng paramatng) {}
   
-  private atnh(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public void onClick(View paramView)
+  {
+    if (paramView == null) {}
+    while (StartLiveTopicLabelListView.a(this.a.a) == null) {
+      return;
+    }
+    StartLiveTopicLabelListView.a(this.a.a).a();
+  }
 }
 
 

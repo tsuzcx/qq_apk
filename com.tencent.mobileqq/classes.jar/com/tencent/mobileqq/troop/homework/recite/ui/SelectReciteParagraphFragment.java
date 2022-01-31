@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,14 +9,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
-import azzv;
-import azzw;
-import azzx;
-import azzy;
-import baai;
-import baho;
-import bahp;
-import bcpw;
+import baaj;
+import baak;
+import baal;
+import baam;
+import baaw;
+import baic;
+import baid;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
@@ -30,14 +30,14 @@ import org.json.JSONObject;
 
 public class SelectReciteParagraphFragment
   extends AbsHomeWorkFragment
-  implements baho
+  implements baic
 {
   protected static final String a;
-  public static final String b = ajyc.a(2131713767);
+  public static final String b = ajya.a(2131713778);
   protected Button a;
-  public azzx a;
-  protected baai a;
-  protected bahp a;
+  public baal a;
+  protected baaw a;
+  protected baid a;
   public ArticleInfo a;
   protected XListView a;
   public Set<Integer> a;
@@ -47,7 +47,7 @@ public class SelectReciteParagraphFragment
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131713766);
+    jdField_a_of_type_JavaLangString = ajya.a(2131713777);
   }
   
   public SelectReciteParagraphFragment()
@@ -96,22 +96,22 @@ public class SelectReciteParagraphFragment
       f();
       return;
     }
-    this.jdField_a_of_type_Azzx = new azzx(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Azzx);
+    this.jdField_a_of_type_Baal = new baal(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Baal);
     e();
   }
   
   protected void b()
   {
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131371247));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131363625));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131363624));
   }
   
   protected void c()
   {
-    setTitle(ajyc.a(2131713762));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new azzv(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new azzw(this));
+    setTitle(ajya.a(2131713773));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new baaj(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new baak(this));
     e();
   }
   
@@ -119,7 +119,7 @@ public class SelectReciteParagraphFragment
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      this.jdField_a_of_type_Bahp = this.jdField_a_of_type_Baai.a(localQQAppInterface, this, this.d, null, 10003);
+      this.jdField_a_of_type_Baid = this.jdField_a_of_type_Baaw.a(localQQAppInterface, this, this.d, null, 10003);
     }
   }
   
@@ -127,10 +127,10 @@ public class SelectReciteParagraphFragment
   {
     if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131713764));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131713775));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
-    while (this.jdField_a_of_type_Azzx == null) {
+    while (this.jdField_a_of_type_Baal == null) {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
@@ -139,7 +139,7 @@ public class SelectReciteParagraphFragment
     if (localIterator.hasNext())
     {
       int j = ((Integer)localIterator.next()).intValue();
-      String str = this.jdField_a_of_type_Azzx.a(j).content_html;
+      String str = this.jdField_a_of_type_Baal.a(j).content_html;
       if (str == null) {
         break label199;
       }
@@ -149,19 +149,19 @@ public class SelectReciteParagraphFragment
     for (;;)
     {
       break;
-      if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Azzx.getCount())
+      if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Baal.getCount())
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(ajyc.a(2131713765), new Object[] { Integer.valueOf(i) }));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(ajya.a(2131713776), new Object[] { Integer.valueOf(i) }));
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(jdField_a_of_type_JavaLangString, new Object[] { azzy.a(new ArrayList(this.jdField_a_of_type_JavaUtilSet)), Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(jdField_a_of_type_JavaLangString, new Object[] { baam.a(new ArrayList(this.jdField_a_of_type_JavaUtilSet)), Integer.valueOf(i) }));
       return;
     }
   }
   
   protected void f()
   {
-    bcpw.a(getActivity(), ajyc.a(2131713763), 0).a();
+    bcql.a(getActivity(), ajya.a(2131713774), 0).a();
   }
   
   public int getContentLayoutId()
@@ -178,14 +178,14 @@ public class SelectReciteParagraphFragment
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       this.jdField_a_of_type_JavaUtilSet.addAll(paramBundle);
     }
-    this.jdField_a_of_type_Baai = new baai();
+    this.jdField_a_of_type_Baaw = new baaw();
   }
   
   public void onDestroy()
   {
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bahp != null) {
-      this.jdField_a_of_type_Bahp.cancel(true);
+    if (this.jdField_a_of_type_Baid != null) {
+      this.jdField_a_of_type_Baid.cancel(true);
     }
     super.onDestroy();
   }

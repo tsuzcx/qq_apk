@@ -1,9 +1,9 @@
 package cooperation.qqfav.globalsearch;
 
-import awhl;
-import awne;
-import awut;
-import awvg;
+import awhn;
+import awng;
+import awuv;
+import awvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import java.util.List;
 public class FunctionSearchEngine$SearchRunnable
   implements Runnable
 {
-  public awut<awne> a;
-  public awvg a;
+  public awuv<awng> a;
+  public awvi a;
   
   protected FunctionSearchEngine$SearchRunnable(FunctionSearchEngine paramFunctionSearchEngine) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Awvg == null) || (this.jdField_a_of_type_Awut == null)) {
+    if ((this.jdField_a_of_type_Awvi == null) || (this.jdField_a_of_type_Awuv == null)) {
       if (QLog.isColorLevel()) {
         QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 2, "mSearchRunnable.run, innerSearchRequest == null or innerListener == null");
       }
@@ -34,25 +34,25 @@ public class FunctionSearchEngine$SearchRunnable
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
         {
           QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 1, "mSearchRunnable.run, app is null.");
-          this.jdField_a_of_type_Awut.a(null, 6);
+          this.jdField_a_of_type_Awuv.a(null, 6);
           return;
         }
-        localList = ((awhl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + this.jdField_a_of_type_Awvg.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
+        localList = ((awhn)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + this.jdField_a_of_type_Awvi.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
         if ((localList != null) && (localList.size() != 0)) {
           break;
         }
-      } while (this.jdField_a_of_type_Awut == null);
-      this.jdField_a_of_type_Awut.a(null, 1);
+      } while (this.jdField_a_of_type_Awuv == null);
+      this.jdField_a_of_type_Awuv.a(null, 1);
       return;
       localArrayList = new ArrayList(localList.size());
       int i = 0;
       while (i < localList.size())
       {
-        localArrayList.add((awne)localList.get(i));
+        localArrayList.add((awng)localList.get(i));
         i += 1;
       }
-    } while (this.jdField_a_of_type_Awut == null);
-    this.jdField_a_of_type_Awut.a(localArrayList, 1);
+    } while (this.jdField_a_of_type_Awuv == null);
+    this.jdField_a_of_type_Awuv.a(localArrayList, 1);
   }
 }
 

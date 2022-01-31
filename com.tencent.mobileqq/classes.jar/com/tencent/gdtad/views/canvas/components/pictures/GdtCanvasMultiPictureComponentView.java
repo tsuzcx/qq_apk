@@ -8,16 +8,16 @@ import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureCompone
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
-import yzg;
-import zab;
-import zag;
+import yzd;
+import yzy;
+import zad;
 
 public class GdtCanvasMultiPictureComponentView
   extends GdtCanvasComponentView
 {
   private GdtCanvasMultiPictureComponentData a;
   
-  public GdtCanvasMultiPictureComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasMultiPictureComponentData paramGdtCanvasMultiPictureComponentData)
+  public GdtCanvasMultiPictureComponentView(Context paramContext, WeakReference<zad> paramWeakReference, GdtCanvasMultiPictureComponentData paramGdtCanvasMultiPictureComponentData)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasMultiPictureComponentData);
@@ -41,8 +41,8 @@ public class GdtCanvasMultiPictureComponentView
         GdtCanvasPictureComponentData localGdtCanvasPictureComponentData = (GdtCanvasPictureComponentData)paramGdtCanvasMultiPictureComponentData.next();
         if (localGdtCanvasPictureComponentData != null)
         {
-          zab localzab = new zab(this, localGdtCanvasPictureComponentData);
-          paramContext.addView(new GdtCanvasPictureComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasPictureComponentData)GdtCanvasPictureComponentData.class.cast(localGdtCanvasPictureComponentData), localzab));
+          yzy localyzy = new yzy(this, localGdtCanvasPictureComponentData);
+          paramContext.addView(new GdtCanvasPictureComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasPictureComponentData)GdtCanvasPictureComponentData.class.cast(localGdtCanvasPictureComponentData), localyzy));
         }
       }
     }
@@ -53,9 +53,9 @@ public class GdtCanvasMultiPictureComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPicturesGdtCanvasMultiPictureComponentData;
   }
   
-  public yzg a()
+  public yzd a()
   {
-    return this.jdField_a_of_type_Yzg;
+    return this.jdField_a_of_type_Yzd;
   }
 }
 

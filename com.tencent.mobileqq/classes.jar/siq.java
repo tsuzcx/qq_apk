@@ -1,12 +1,11 @@
-class siq
-  implements qef<String, String>
+import java.util.HashMap;
+import java.util.Map;
+
+public class siq
 {
-  siq(sip paramsip) {}
+  private static final Map<String, Object> a = new HashMap();
   
-  public String a(String paramString)
-  {
-    return sip.a(paramString);
-  }
+  public static void a() {}
 }
 
 

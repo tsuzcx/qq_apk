@@ -1,44 +1,26 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
 
 class sba
-  extends akwt
+  extends akat
 {
-  sba(sax paramsax, saw paramsaw) {}
+  sba(saz paramsaz) {}
   
-  public int a()
-  {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
+      QLog.d("ServiceAccountFolderManager", 2, "onUpdateSendMsgError->uin:" + paramString1 + ", type:" + paramInt1 + ", uniseq:" + paramLong2 + ", errorCode:" + paramInt2);
     }
-    sax.b(this.jdField_a_of_type_Sax, this.jdField_a_of_type_Saw);
-    StructLongMessageDownloadProcessor.a(sax.a(this.jdField_a_of_type_Sax), this.jdField_a_of_type_Saw.a);
-    ((baja)sax.a(this.jdField_a_of_type_Sax).getManager(132)).a(this.jdField_a_of_type_Saw.a);
+    saz.a(this.a, paramString1);
   }
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Saw.a + ", success:" + String.valueOf(paramBoolean));
+      QLog.d("ServiceAccountFolderManager", 2, "onSendResult->puin:" + paramString + ", isSuccess:" + paramBoolean);
     }
-    if ((sax.a(this.jdField_a_of_type_Sax) != null) && (sax.a(this.jdField_a_of_type_Sax).isResume())) {
-      sax.a(this.jdField_a_of_type_Sax).b(false);
-    }
+    saz.a(this.a, paramString);
   }
-  
-  public void b(Object paramObject)
-  {
-    sax.a(this.jdField_a_of_type_Sax);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

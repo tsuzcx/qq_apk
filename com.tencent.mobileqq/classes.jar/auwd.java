@@ -1,19 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+
 public class auwd
+  implements DialogInterface.OnClickListener
 {
-  public static Integer a = Integer.valueOf(1);
-  public static Integer b = Integer.valueOf(2);
-  public static Integer c = Integer.valueOf(3);
-  public static Integer d = Integer.valueOf(4);
-  public Long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public Integer e = Integer.valueOf(0);
-  public Integer f = Integer.valueOf(0);
-  public Integer g = a;
+  public auwd(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

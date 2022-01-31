@@ -1,7 +1,51 @@
-public class aing
-  extends aimv
+import android.content.Context;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.List;
+
+public class aing<T>
+  extends anth<T>
+  implements View.OnClickListener
 {
-  public Object a;
+  private DragSortListView a;
+  
+  public aing(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
+  {
+    super(paramContext, paramList);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560784, null);
+    }
+    paramViewGroup.setVisibility(0);
+    paramViewGroup.findViewById(2131375998).setVisibility(8);
+    paramView = (TextView)paramViewGroup.findViewById(2131367204);
+    Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramView.setText(localGroups.group_name);
+    ViewCompat.setImportantForAccessibility(paramViewGroup.findViewById(2131367208), 1);
+    paramViewGroup.setContentDescription(localGroups.group_name + ajya.a(2131705349));
+    if ((bfnz.n()) && (AppSetting.d)) {
+      paramViewGroup.setOnClickListener(this);
+    }
+    return paramViewGroup;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (AppSetting.d) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
+    }
+  }
 }
 
 

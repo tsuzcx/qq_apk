@@ -5,11 +5,11 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import bbjn;
-import bjae;
-import bjbf;
-import bjbk;
-import bkqo;
+import bbkb;
+import bjav;
+import bjbw;
+import bjcb;
+import bkrf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
 import dov.com.qq.im.capture.data.ComboLockManager;
@@ -38,17 +38,17 @@ public class ComboProviderGridAdapter$LockAnimationDrawable
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    Object localObject = (bjbk)bjae.a(5);
-    ((bjbk)localObject).a().a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    bbjn.p(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, false);
-    bkqo.a().a(3, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+    Object localObject = (bjcb)bjav.a(5);
+    ((bjcb)localObject).a().a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+    bbkb.p(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, false);
+    bkrf.a().a(3, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
     localBundle.putInt("apply_source", 1);
     localBundle.putInt("capture_scene", 0);
-    ((bjbk)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, (Activity)this.b.getContext(), localBundle);
+    ((bjcb)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, (Activity)this.b.getContext(), localBundle);
     this.b.setVisibility(8);
-    localObject = ((bjbk)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
-    ComboProviderGridAdapter.a(this.b, (bjbf)localObject, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
+    localObject = ((bjcb)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
+    ComboProviderGridAdapter.a(this.b, (bjbw)localObject, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
   }
 }
 

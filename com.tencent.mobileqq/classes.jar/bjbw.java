@@ -1,45 +1,92 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import dov.com.qq.im.capture.data.ComboLockManager;
-import dov.com.qq.im.capture.data.LockedCategory;
+import android.app.Activity;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bjbw
-  implements DialogInterface.OnClickListener
+public abstract class bjbw
 {
-  public bjbw(ComboLockManager paramComboLockManager, Context paramContext) {}
+  public int a;
+  protected SegmentKeeper a;
+  public Object a;
+  public ArrayList<bjbx> a;
+  public int b;
+  protected int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bjbw(Object paramObject)
   {
-    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.b(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a.a);
-    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a = null;
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public abstract float a();
+  
+  public abstract int a();
+  
+  public abstract int a(Activity paramActivity, int paramInt);
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_JavaLangObject.hashCode());
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.c = true;
-      if ((BaseActivity.sTopActivity instanceof SplashActivity))
-      {
-        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
-        Intent localIntent = new Intent();
-        localIntent.putExtra("main_tab_id", 8);
-        localIntent.putExtra("fragment_id", 1);
-        localIntent.putExtra("switch_anim", true);
-        paramDialogInterface.b(localIntent);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bjbx)localIterator.next()).a(this);
       }
     }
-    else
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bjbx)localIterator.next()).a(this, paramInt);
+      }
+    }
+  }
+  
+  public abstract void a(Activity paramActivity, int paramInt);
+  
+  public void a(bjbx parambjbx)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambjbx)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambjbx);
+      }
       return;
     }
-    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
+  
+  public void a(SegmentKeeper paramSegmentKeeper)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = paramSegmentKeeper;
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public void b()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((bjbx)localIterator.next()).b(this);
+      }
+    }
+  }
+  
+  public void b(Activity paramActivity, int paramInt) {}
 }
 
 

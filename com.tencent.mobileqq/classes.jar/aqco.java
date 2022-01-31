@@ -1,14 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import java.util.Set;
 
-class aqco
-  implements DialogInterface.OnClickListener
+public class aqco
+  extends aqds
 {
-  aqco(aqcn paramaqcn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqco(Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    super(paramIntent);
+  }
+  
+  protected void a()
+  {
+    if (k()) {
+      this.a.add(d);
+    }
+    if (l()) {
+      this.a.add(c);
+    }
+    if (m()) {
+      this.a.add(b);
+    }
   }
 }
 

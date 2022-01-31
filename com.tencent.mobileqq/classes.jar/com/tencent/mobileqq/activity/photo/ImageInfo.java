@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aglh;
-import aglt;
+import aglf;
+import aglr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class ImageInfo
-  extends aglh
+  extends aglf
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageInfo> CREATOR = new aglt();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new aglr();
   public long a;
   public int b;
   public long b;

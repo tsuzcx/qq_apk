@@ -1,43 +1,74 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class ayfm
-  extends Dialog
+  extends QIPCModule
 {
-  public ayfm(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  private static ayfm a;
+  
+  private ayfm()
   {
-    super(paramContext, 2131755791);
-    setContentView(2131562510);
-    paramContext = (TextView)findViewById(2131377350);
-    if (!TextUtils.isEmpty(paramString1))
+    super("TeamWorkModule");
+  }
+  
+  public static ayfm a()
+  {
+    if (a == null) {}
+    try
     {
-      paramContext.setVisibility(0);
-      paramContext.setText(paramString1);
-      paramContext = (TextView)findViewById(2131364692);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label142;
+      if (a == null) {
+        a = new ayfm();
       }
-      paramContext.setVisibility(0);
-      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
-      paramContext.setText(new aydv(paramString2, 8));
+      return a;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (!QQAppInterface.class.isInstance(localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("TeamWorkModule", 2, "[onCall] get app failed.");
+      }
+    }
+    do
     {
-      ((Button)findViewById(2131364616)).setOnClickListener(new ayfn(this, paramOnClickListener1));
-      ((ImageView)findViewById(2131364269)).setOnClickListener(new ayfo(this, paramOnClickListener2));
-      setCanceledOnTouchOutside(false);
-      return;
-      paramContext.setVisibility(8);
-      break;
-      label142:
-      paramContext.setVisibility(8);
+      String str1;
+      String str2;
+      do
+      {
+        return null;
+        if (!"send_to_chat_msg".equals(paramString)) {
+          break;
+        }
+        paramString = axva.a(paramBundle);
+        paramInt = paramBundle.getInt("uin_type");
+        str1 = paramBundle.getString("to_uin");
+        str2 = paramBundle.getString("docs_gray_tips_info_json");
+        paramBundle = paramBundle.getString("detail_url");
+      } while ((localObject == null) || (paramString == null));
+      paramString.mExtraData = "aioPlusPanelTencentDoc";
+      bbjx.a((QQAppInterface)localObject, str1, paramInt, paramString, null, str2, paramBundle);
+      return null;
+    } while (!"action_download_export_file".equals(paramString));
+    boolean bool = paramBundle.getBoolean("isSuccess");
+    paramString = paramBundle.getString("docUrl");
+    localObject = (ayel)((QQAppInterface)localObject).a(142);
+    if (bool)
+    {
+      ((ayel)localObject).notifyUI(2, true, new Object[] { paramBundle.getString("url"), paramBundle.getString("fileName"), paramString, paramBundle.getString("cookie") });
+      return null;
     }
+    ((ayel)localObject).notifyUI(1, true, new Object[] { ajya.a(2131714785), paramString });
+    return null;
   }
 }
 

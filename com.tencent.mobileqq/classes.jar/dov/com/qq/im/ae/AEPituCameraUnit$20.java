@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae;
 
-import biim;
-import biqk;
-import biqn;
-import biwb;
+import bijd;
+import birb;
+import bire;
+import biws;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
 public class AEPituCameraUnit$20
   implements Runnable
 {
-  public AEPituCameraUnit$20(biim parambiim, VideoMaterial paramVideoMaterial) {}
+  public AEPituCameraUnit$20(bijd parambijd, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    if ((biim.a(this.this$0) != null) && (biim.a(this.this$0).a(131072) != null)) {
-      biim.a(this.this$0).a(131072).a(114, this.a);
+    if ((bijd.a(this.this$0) != null) && (bijd.a(this.this$0).a(131072) != null)) {
+      bijd.a(this.this$0).a(131072).a(114, this.a);
     }
-    if ((biqk.a().c) && (LogicDataManager.getInstance().getEditableWMElement().size() > 0))
+    if ((birb.a().c) && (LogicDataManager.getInstance().getEditableWMElement().size() > 0))
     {
-      biqk.a().c = false;
-      biim.a(this.this$0).a(589825, new Object[0]);
+      birb.a().c = false;
+      bijd.a(this.this$0).a(589825, new Object[0]);
     }
   }
 }

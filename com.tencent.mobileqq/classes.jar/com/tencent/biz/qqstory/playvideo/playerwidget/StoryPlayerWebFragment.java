@@ -11,25 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import bces;
-import bcfj;
-import bcfm;
+import bcfg;
+import bcfx;
+import bcga;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import nax;
-import ujb;
-import ujc;
-import veg;
+import nau;
+import uiy;
+import uiz;
+import ved;
 
 public class StoryPlayerWebFragment
   extends WebViewFragment
 {
   public BroadcastReceiver a;
-  public ujc a;
+  public uiz a;
   
   public StoryPlayerWebFragment()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ujb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new uiy(this);
   }
   
   public static Intent a(Activity paramActivity, String paramString)
@@ -49,36 +49,36 @@ public class StoryPlayerWebFragment
     return localStoryPlayerWebFragment;
   }
   
-  public void a(ujc paramujc)
+  public void a(uiz paramuiz)
   {
-    this.jdField_a_of_type_Ujc = paramujc;
+    this.jdField_a_of_type_Uiz = paramuiz;
   }
   
   public boolean a()
   {
-    veg.b("StoryPlayerWebFragment", "showPreview()");
-    nax.a("Web_qqbrowser_ShowPreview");
+    ved.b("StoryPlayerWebFragment", "showPreview()");
+    nau.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.jdField_a_of_type_Bcfj.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Bcfm.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.B);
+    this.jdField_a_of_type_Bcfx.a(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Bcga.c = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.B);
     this.p = true;
     this.q = false;
     F();
-    veg.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    this.jdField_a_of_type_Bcfj.c = true;
-    this.jdField_a_of_type_Bcfj.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
+    ved.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
+    this.jdField_a_of_type_Bcfx.c = true;
+    this.jdField_a_of_type_Bcfx.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Bcfj.a(this.h);
-    this.jdField_a_of_type_Bcfj.b = false;
-    nax.b("Web_qqbrowser_ShowPreview");
+    this.jdField_a_of_type_Bcfx.a(this.h);
+    this.jdField_a_of_type_Bcfx.b = false;
+    nau.b("Web_qqbrowser_ShowPreview");
     return true;
   }
   
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_Bces.a("web_view_long_click", false);
+    this.jdField_a_of_type_Bcfg.a("web_view_long_click", false);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -93,20 +93,20 @@ public class StoryPlayerWebFragment
   public void onDestroy()
   {
     super.onDestroy();
-    veg.b("StoryPlayerWebFragment", "onDestroy()");
+    ved.b("StoryPlayerWebFragment", "onDestroy()");
     getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
   public void onPause()
   {
     super.onPause();
-    veg.b("StoryPlayerWebFragment", "onPause()");
+    ved.b("StoryPlayerWebFragment", "onPause()");
   }
   
   public void onResume()
   {
     super.onResume();
-    veg.b("StoryPlayerWebFragment", "onResume()");
+    ved.b("StoryPlayerWebFragment", "onResume()");
     FragmentActivity localFragmentActivity = super.getActivity();
     if (localFragmentActivity != null)
     {

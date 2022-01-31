@@ -1,27 +1,32 @@
-import android.view.View;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class akad
-  implements bfoq
+  implements asko
 {
-  akad(akac paramakac, bfol parambfol) {}
+  akad(akaa paramakaa) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
+    boolean bool1 = akaa.b(this.a);
+    akaa.a(this.a, false);
+    boolean bool2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.e();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
-      }
-      this.jdField_a_of_type_Akac.h();
-      axqw.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
+    if (bool1 != bool2) {
+      ((FriendListHandler)akaa.a(this.a).a(1)).notifyUI(92, true, null);
     }
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

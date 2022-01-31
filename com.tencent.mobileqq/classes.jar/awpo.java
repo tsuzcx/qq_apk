@@ -1,77 +1,106 @@
-import android.view.View;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class awpo
-  implements awof
+  extends awor
 {
-  public int a;
-  public int b;
-  public int c;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int d;
+  private String j;
   
-  public int a()
+  public awpo(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    return 0;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public int a(int paramInt)
+  public void a(int paramInt)
   {
-    int i = -1;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
-      }
-      return i;
-      i = this.a;
-      continue;
-      i = this.b;
-      continue;
-      i = this.c;
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String a()
+  public void a(String paramString)
   {
-    return null;
-  }
-  
-  public List<awog> a()
-  {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a = paramInt2;
-      return;
-    case 2: 
-      this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    this.c = paramInt2;
+    try
+    {
+      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean)
   {
-    a(2, paramInt1);
-    a(1, paramInt2);
-    a(3, paramInt3);
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void a(View paramView) {}
-  
-  public String b()
+  public void b(String paramString)
   {
-    return null;
+    this.j = paramString;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String d()
+  {
+    return this.j;
+  }
+  
+  public String e()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public int h()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 

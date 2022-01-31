@@ -1,73 +1,45 @@
-import android.graphics.Bitmap;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class lyo
-  implements lyx
+  implements bcww
 {
-  lyo(lyn paramlyn, long paramLong) {}
+  lyo(lyn paramlyn, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
   
-  public Bitmap a(long paramLong)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return null;
+    int i = 2;
+    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Lyn.a + "]");
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
+      return;
     }
-    return this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Lyn.jdField_a_of_type_JavaLangString, (byte)3, false, false);
-  }
-  
-  public TroopInfoData a()
-  {
-    return this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
-  }
-  
-  public String a()
-  {
-    return lyn.a(this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Lyn.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String a(int paramInt)
-  {
-    return null;
-  }
-  
-  public String a(long paramLong, int paramInt)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Lyn.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
-      localObject = null;
-    }
-    String str;
-    do
+    lyn locallyn;
+    int j;
+    int k;
+    switch (paramBaseResp.errCode)
     {
-      return localObject;
-      str = lyn.a(this.jdField_a_of_type_Lyn, paramInt);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    this.jdField_a_of_type_Lyn.a(paramLong, this.jdField_a_of_type_Lyn.jdField_a_of_type_Long, this.jdField_a_of_type_Lyn.jdField_a_of_type_Int);
-    return str;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.w("ShareChat", 1, "onFinish, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
-    mrb.a(paramInt1, paramInt2);
-    if (paramInt3 == 2) {
-      mrb.a(paramInt1, paramInt2, 99, null);
+    case -1: 
+    default: 
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131719487), 0).a();
+    case -2: 
+      WXShareHelper.a().b(this);
+      locallyn = this.jdField_a_of_type_Lyn;
+      j = this.jdField_a_of_type_Int;
+      k = this.b;
+      if (paramBaseResp.errCode != 0) {
+        break;
+      }
     }
-  }
-  
-  public String b()
-  {
-    return lyn.a(this.jdField_a_of_type_Lyn.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.w("ShareChat", 1, "onQRForward, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (paramInt3 == 2) {
-      mrb.a(paramInt1, paramInt2, 99, null);
+    for (;;)
+    {
+      locallyn.a(j, k, i);
+      return;
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131719506), 0).a();
+      break;
+      i = 3;
     }
   }
 }

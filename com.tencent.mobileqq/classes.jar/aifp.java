@@ -1,20 +1,29 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import java.util.Map;
 
 public class aifp
-  extends aimv
+  extends ajxj
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public ImageView b;
-  public TextView b;
+  public aifp(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public aifp(aifm paramaifm) {}
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.c();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
 }
 
 

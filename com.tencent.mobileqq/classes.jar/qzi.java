@@ -1,8 +1,25 @@
-public abstract interface qzi
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+
+class qzi
+  implements Animator.AnimatorListener
 {
-  public abstract void a(int paramInt);
+  qzi(qzg paramqzg) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    QLog.d("TabBarView", 4, "onAnimationEnd");
+    qzg.b(this.a);
+    this.a.b.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

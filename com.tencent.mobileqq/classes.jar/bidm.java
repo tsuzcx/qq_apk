@@ -1,6 +1,18 @@
-public abstract interface bidm
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+
+final class bidm
+  implements bcwm
 {
-  public abstract void a(int paramInt, String paramString, byte[] paramArrayOfByte);
+  bidm(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+    }
+  }
 }
 
 

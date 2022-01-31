@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begz;
-import beka;
+import behq;
+import bekr;
 import org.json.JSONObject;
 
 class VideoJsPlugin$1
   implements Runnable
 {
-  VideoJsPlugin$1(VideoJsPlugin paramVideoJsPlugin, beka parambeka, int paramInt, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
+  VideoJsPlugin$1(VideoJsPlugin paramVideoJsPlugin, bekr parambekr, int paramInt, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
   
   public void run()
   {

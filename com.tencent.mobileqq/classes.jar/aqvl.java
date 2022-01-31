@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
 
 public class aqvl
+  implements DialogInterface.OnClickListener
 {
-  JefsClass.CancelableRunnable a;
+  public aqvl(JefsClass.8 param8) {}
   
-  public aqvl(JefsClass.CancelableRunnable paramCancelableRunnable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramCancelableRunnable;
-  }
-  
-  public void a()
-  {
-    this.a.a = true;
+    paramDialogInterface.dismiss();
   }
 }
 

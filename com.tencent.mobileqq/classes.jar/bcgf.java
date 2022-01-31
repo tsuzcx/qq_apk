@@ -1,7 +1,8 @@
-public class bcgf
+import android.os.Bundle;
+
+public abstract interface bcgf
 {
-  public static String a;
-  public static boolean a;
+  public abstract int a(Bundle paramBundle);
 }
 
 

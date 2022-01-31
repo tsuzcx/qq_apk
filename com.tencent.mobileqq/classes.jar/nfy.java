@@ -1,17 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class nfy
-  implements View.OnClickListener
-{
-  nfy(nfu paramnfu) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(this.a.a, this.a.a.d);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nfy

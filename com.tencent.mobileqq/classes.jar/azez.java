@@ -1,33 +1,28 @@
-import android.text.TextUtils;
 import android.view.View;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
 public class azez
-  implements bfoq
+  implements bfph
 {
-  public azez(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, bfol parambfol, URLDrawable paramURLDrawable, String paramString1, String paramString2) {}
+  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Bapg.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+  
+  public azez(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bfpc parambfpc, URLDrawable paramURLDrawable) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_Bfol.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693393).equals(paramView))
-    {
-      TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bazo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, Long.parseLong(this.jdField_a_of_type_JavaLangString), "0", null, 20006);
+    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693384).equals(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      axqw.b(null, "dc00899", "grp_lbs", this.jdField_a_of_type_JavaLangString, "video", "clk_rep", 0, 0, "", "", "", "");
-      break;
-      if ((TextUtils.isEmpty(this.b)) || ("0".equals(this.b))) {
-        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 2, ajyc.a(2131715210), 0).a();
-      } else {
-        bazo.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 0L, this.b, null, 20006);
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693394).equals(paramView)) {
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693392).equals(paramView)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c, this.jdField_a_of_type_JavaLangString);
       }
     }
   }

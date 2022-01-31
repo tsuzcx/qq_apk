@@ -8,7 +8,7 @@ import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.os.Build.VERSION;
 import android.util.Log;
-import axho;
+import axhq;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(17)
@@ -64,7 +64,7 @@ public class OffScreenInputSurface
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
     int[] arrayOfInt2 = new int[1];
     arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    boolean bool = axho.e(axho.v);
+    boolean bool = axhq.e(axhq.v);
     if (bool) {
       arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
     }

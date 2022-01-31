@@ -1,6 +1,14 @@
-public abstract interface zan
+import com.tencent.ad.tangram.net.AdHttp.Params;
+
+class zan
+  extends AdHttp.Params
 {
-  public abstract void a(zai paramzai);
+  public int a = -2147483648;
+  
+  public boolean isSuccess()
+  {
+    return (super.isSuccess()) && (this.responseData != null);
+  }
 }
 
 

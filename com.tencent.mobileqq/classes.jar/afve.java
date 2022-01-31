@@ -1,68 +1,15 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afve
-  implements aabm
+  implements DialogInterface.OnClickListener
 {
-  afve(afur paramafur, String paramString) {}
+  afve(afup paramafup) {}
   
-  public void onComplete()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "check api, onComplete");
-    }
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    }
-    if ((afur.a(this.jdField_a_of_type_Afur).isFinishing()) || (this.jdField_a_of_type_Afur.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Afur.c();
-    if (afur.a(this.jdField_a_of_type_Afur) != null) {
-      afur.a(this.jdField_a_of_type_Afur).removeCallbacks(afur.a(this.jdField_a_of_type_Afur));
-    }
-    this.jdField_a_of_type_Afur.a(ajyc.a(2131713599), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    if ((afur.a(this.jdField_a_of_type_Afur).isFinishing()) || (this.jdField_a_of_type_Afur.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Afur.c();
-    if (afur.a(this.jdField_a_of_type_Afur) != null) {
-      afur.a(this.jdField_a_of_type_Afur).removeCallbacks(afur.a(this.jdField_a_of_type_Afur));
-    }
-    this.jdField_a_of_type_Afur.a(ajyc.a(2131713600), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "check api, onSuccess");
-    }
-    if ((afur.a(this.jdField_a_of_type_Afur).isFinishing()) || (this.jdField_a_of_type_Afur.b)) {
-      return;
-    }
-    if (afur.a(this.jdField_a_of_type_Afur) != null) {
-      afur.a(this.jdField_a_of_type_Afur).removeCallbacks(afur.a(this.jdField_a_of_type_Afur));
-    }
-    afur.b(this.jdField_a_of_type_Afur);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "check api, onTrigger");
+    if (paramInt == 0) {
+      afup.a(this.a);
     }
   }
 }

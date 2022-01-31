@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
-import biqz;
-import birc;
-import bizq;
-import bkuo;
+import birq;
+import birt;
+import bjah;
+import bkvf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -21,7 +21,7 @@ import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownload
 
 public class CaptureQmcfSoDownloadActivity
   extends FragmentActivity
-  implements bkuo
+  implements bkvf
 {
   public static final String a;
   private int jdField_a_of_type_Int;
@@ -71,8 +71,8 @@ public class CaptureQmcfSoDownloadActivity
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("pendingIntentClass", paramString);
     localIntent.putExtra("pendingIntentAllWait", paramBoolean);
-    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", birc.a.a());
-    if ((i == birc.l.a()) || (i == birc.k.a())) {
+    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", birt.a.a());
+    if ((i == birt.l.a()) || (i == birt.k.a())) {
       localIntent.setFlags(268435456);
     }
     paramContext.startActivity(localIntent);
@@ -126,30 +126,30 @@ public class CaptureQmcfSoDownloadActivity
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560682);
+    super.setContentView(2131560681);
     this.jdField_a_of_type_AndroidSupportV4AppFragment = new CaptureQmcfSoDownloadFragment();
     this.b = getIntent().getStringExtra("pendingIntentClass");
     if (getIntent().getBooleanExtra("pendingIntentAllWait", false)) {
       this.jdField_a_of_type_AndroidSupportV4AppFragment = new CaptureQmcfSoDownloadFragmentAllWaite();
     }
     paramBundle = super.getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131361949, this.jdField_a_of_type_AndroidSupportV4AppFragment);
+    paramBundle.replace(2131361948, this.jdField_a_of_type_AndroidSupportV4AppFragment);
     paramBundle.commit();
     this.jdField_a_of_type_Boolean = getIntent().hasExtra("pendingIntentRequest");
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_Int = getIntent().getIntExtra("pendingIntentRequest", 0);
     }
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
-    biqz.a().a(true);
-    bizq.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
+    birq.a().a(true);
+    bjah.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
     return false;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    biqz.a().a(false);
-    bizq.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
+    birq.a().a(false);
+    bjah.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
   }
 }
 

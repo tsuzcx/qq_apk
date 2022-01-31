@@ -1,60 +1,118 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsResourceLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class qro
-  implements View.OnLayoutChangeListener
 {
-  public qro(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  private static int jdField_a_of_type_Int;
+  private static LayoutInflateProcessor jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
+  private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap;
+  private Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public qro(Context paramContext)
   {
-    this.a.removeOnLayoutChangeListener(this);
-    if ((VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a)))
-    {
-      paramInt1 = 0;
-      if (VideoFeedsRecyclerView.a(this.a) != 0) {
-        break label228;
-      }
-    }
-    label227:
-    label228:
-    label244:
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = new LayoutInflateProcessor(paramContext.getApplicationContext());
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    jdField_a_of_type_Int += 1;
+    a(paramContext);
+  }
+  
+  public static Drawable a(Context paramContext, int paramInt)
+  {
+    if (jdField_a_of_type_JavaUtilHashMap == null) {}
     do
     {
-      paramInt1 = (int)(this.a.getHeight() * 0.3D);
-      break label227;
-      paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
-      paramView.height = paramInt1;
-      VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
-      if (VideoFeedsRecyclerView.a(this.a) == 0)
-      {
-        paramView = this.a.getLayoutManager().findViewByPosition(1);
-        if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
-        {
-          paramInt1 = paramView.getHeight();
-          paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
-          VideoFeedsRecyclerView.a(this.a, paramInt1);
-          if ((!VideoFeedsRecyclerView.a(this.a).a(1)) || (VideoFeedsRecyclerView.a(this.a).b() == 1)) {
-            break label244;
-          }
-        }
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1)) {
-            this.a.a(this.a.getChildViewHolder(paramView));
-          }
-          return;
-          if (VideoFeedsRecyclerView.a(this.a) != 1) {
-            break;
-          }
-          paramInt1 = 0;
-          break;
-        }
+      return null;
+      if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+        return (Drawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
       }
-    } while (VideoFeedsRecyclerView.a(this.a) != 1);
-    VideoFeedsRecyclerView.a(this.a, VideoFeedsRecyclerView.b(this.a));
+      try
+      {
+        paramContext = paramContext.getResources().getDrawable(paramInt);
+        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramContext);
+        return paramContext;
+      }
+      catch (OutOfMemoryError paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoFeedsResourceLoader", 2, "innerGetDrawableFromCache() OutOfMemoryError e=" + paramContext.getMessage());
+    return null;
+  }
+  
+  public static View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    View localView = null;
+    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
+      localView = jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(paramInt, paramBoolean, paramLayoutParams);
+    }
+    while (!paramBoolean) {
+      return localView;
+    }
+    localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(paramInt, null, false);
+    localView.setLayoutParams(paramLayoutParams);
+    return localView;
+  }
+  
+  public static LayoutInflateProcessor a()
+  {
+    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
+  }
+  
+  private rag a()
+  {
+    return new rag(2131560060, null, new qrp(this));
+  }
+  
+  private rag a(int paramInt)
+  {
+    return new rag(2131560064, paramInt, null, new qrq(this));
+  }
+  
+  private void a(Context paramContext)
+  {
+    ThreadManager.excute(new VideoFeedsResourceLoader.1(this, paramContext), 16, null, true);
+  }
+  
+  public void a()
+  {
+    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
+      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a();
+    }
+    if (jdField_a_of_type_JavaUtilHashMap != null) {
+      jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    jdField_a_of_type_Int -= 1;
+    if (jdField_a_of_type_Int <= 0)
+    {
+      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = null;
+      jdField_a_of_type_JavaUtilHashMap = null;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (rag localrag1 = new rag(2131560086, null, null);; localrag1 = null)
+    {
+      rag localrag2 = new rag(2131559843, null, null);
+      rag localrag3 = new rag(2131560004, null, null);
+      rag localrag4 = a(1);
+      rag localrag5 = a();
+      rag localrag6 = a(2);
+      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(new rag[] { localrag1, localrag2, localrag3, localrag4, localrag5, localrag6 });
+      return;
+    }
   }
 }
 

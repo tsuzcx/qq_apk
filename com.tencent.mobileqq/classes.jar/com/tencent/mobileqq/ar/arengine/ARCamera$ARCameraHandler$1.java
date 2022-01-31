@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alfk;
-import alfm;
+import alfj;
+import alfl;
 
 public class ARCamera$ARCameraHandler$1
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$1(alfm paramalfm) {}
+  public ARCamera$ARCameraHandler$1(alfl paramalfl) {}
   
   public void run()
   {
-    alfk localalfk = this.a.a;
-    int j = alfk.a(this.a.a) / 2;
-    int k = alfk.b(this.a.a) / 2;
-    int m = alfk.a(this.a.a);
-    int n = alfk.b(this.a.a);
-    if (!alfk.a(this.a.a)) {}
-    for (int i = alfk.g();; i = alfk.a(this.a.a) * 3 / 4)
+    alfj localalfj = this.a.a;
+    int j = alfj.a(this.a.a) / 2;
+    int k = alfj.b(this.a.a) / 2;
+    int m = alfj.a(this.a.a);
+    int n = alfj.b(this.a.a);
+    if (!alfj.a(this.a.a)) {}
+    for (int i = alfj.g();; i = alfj.a(this.a.a) * 3 / 4)
     {
-      alfk.a(localalfk, j, k, m, n, i);
+      alfj.a(localalfj, j, k, m, n, i);
       return;
     }
   }

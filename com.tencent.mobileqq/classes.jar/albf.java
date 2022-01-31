@@ -1,40 +1,123 @@
+import android.content.Context;
+import android.opengl.Matrix;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class albf
-  extends alah
 {
-  public aldz a;
-  public alkh a;
-  public boolean a;
-  public long b;
-  public String b;
-  public int d;
-  public int e = 1;
+  public static boolean a;
+  public static final float[] a;
+  private albh jdField_a_of_type_Albh;
+  private alxs jdField_a_of_type_Alxs;
+  private alxw jdField_a_of_type_Alxw = new albg(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private float[] c;
+  private float[] d = new float[4];
   
-  public albf(String paramString1, int paramInt1, int paramInt2, int paramInt3, alkh paramalkh, aldz paramaldz, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
+  static
   {
-    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
-    this.d = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt4;
-    this.jdField_a_of_type_Alkh = paramalkh;
-    this.jdField_a_of_type_Aldz = paramaldz;
+    jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
+    jdField_a_of_type_Boolean = true;
   }
   
-  public String toString()
+  public static boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mRealRenderType=").append(this.d);
-    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Alkh).append('\'');
-    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aldz).append('\'');
-    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
+    if (!TextUtils.isEmpty(str))
+    {
+      String[] arrayOfString = new String[1];
+      arrayOfString[0] = "";
+      int i = DeviceProfileManager.a(str, arrayOfString, new ajvc());
+      boolean bool;
+      if (i >= 1) {
+        if (Integer.valueOf(arrayOfString[0]).intValue() == 1) {
+          bool = true;
+        }
+      }
+      for (;;)
+      {
+        QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool);
+        return bool;
+        bool = false;
+        continue;
+        bool = false;
+      }
+    }
+    return false;
+  }
+  
+  public void a()
+  {
+    a(true);
+  }
+  
+  public void a(Context paramContext, albh paramalbh)
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Albh = paramalbh;
+    b();
+    jdField_a_of_type_Boolean = this.jdField_a_of_type_Alxs.b();
+    alip.a().c(System.currentTimeMillis() - l);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Alxs == null) {
+      if (!a()) {
+        break label57;
+      }
+    }
+    label57:
+    for (this.jdField_a_of_type_Alxs = new alxs(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_Alxs = new alxs(this.jdField_a_of_type_AndroidContentContext, 4))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorTrackManager", 2, "startupSensor");
+      }
+      this.jdField_a_of_type_Alxs.a(this.jdField_a_of_type_Alxw, 1);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SensorTrackManager", 2, "stopSensor");
+    }
+    if (this.jdField_a_of_type_Alxs != null)
+    {
+      this.jdField_a_of_type_Alxs.a();
+      this.jdField_a_of_type_Alxs = null;
+    }
+  }
+  
+  public void d()
+  {
+    a(false);
+  }
+  
+  public void e()
+  {
+    c();
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = null;
   }
 }
 

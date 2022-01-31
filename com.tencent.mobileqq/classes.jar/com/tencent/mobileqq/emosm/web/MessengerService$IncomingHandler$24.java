@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import anul;
+import anuq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MessengerService$IncomingHandler$24
   implements Runnable
 {
-  public MessengerService$IncomingHandler$24(anul paramanul, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$24(anuq paramanuq, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   /* Error */
   public void run()
@@ -95,7 +95,7 @@ public class MessengerService$IncomingHandler$24
     //   164: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: aload 7
     //   169: iconst_2
-    //   170: invokestatic 112	bbca:encodeToString	([BI)Ljava/lang/String;
+    //   170: invokestatic 112	bbco:encodeToString	([BI)Ljava/lang/String;
     //   173: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   179: astore 7
@@ -257,7 +257,7 @@ public class MessengerService$IncomingHandler$24
     //   550: aload 13
     //   552: iconst_0
     //   553: iconst_0
-    //   554: invokestatic 177	bbcl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   554: invokestatic 177	bbcz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   557: astore 5
     //   559: goto -302 -> 257
     //   562: aload_0
@@ -266,7 +266,7 @@ public class MessengerService$IncomingHandler$24
     //   568: aload 13
     //   570: iconst_1
     //   571: iconst_0
-    //   572: invokestatic 177	bbcl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   572: invokestatic 177	bbcz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   575: astore 5
     //   577: goto -320 -> 257
     //   580: aload_0
@@ -275,7 +275,7 @@ public class MessengerService$IncomingHandler$24
     //   586: aload 13
     //   588: iconst_2
     //   589: iconst_0
-    //   590: invokestatic 177	bbcl:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   590: invokestatic 177	bbcz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   593: astore 5
     //   595: goto -338 -> 257
     //   598: astore 6

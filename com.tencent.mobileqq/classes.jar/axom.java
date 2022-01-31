@@ -1,44 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class axom
-  implements JpegExifReader.JpegExifReaderInterface
+public final class axom
+  implements IDiniFlyQLog
 {
-  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3) {}
-  
-  public boolean readEnableFromDPC()
+  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
   {
-    try
+    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
+    switch (paramInt1)
     {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length >= 9)
-        {
-          int i = Integer.parseInt(localObject[8]);
-          if (i != 1) {
-            break label81;
-          }
-        }
-      }
+    case 4: 
+    default: 
+      QLog.i(paramString1, paramInt2, paramString2, null);
+      return;
+    case 5: 
+      QLog.w(paramString1, paramInt2, paramString2, null);
+      return;
+    case 6: 
+      QLog.e(paramString1, paramInt2, paramString2, null);
+      return;
     }
-    catch (Exception localException)
-    {
-      label81:
-      while (!QLog.isColorLevel()) {}
-      QLog.e("JpegExifReader", 2, "read dpc", localException);
-    }
-    return true;
-    return false;
-    return true;
+    QLog.d(paramString1, paramInt2, paramString2, null);
   }
 }
 

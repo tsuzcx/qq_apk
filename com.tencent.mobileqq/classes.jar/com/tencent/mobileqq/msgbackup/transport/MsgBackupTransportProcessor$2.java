@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import askt;
-import asle;
-import asnx;
-import asog;
+import askv;
+import aslg;
+import asnz;
+import asoi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,13 +11,13 @@ import com.tencent.qphone.base.util.QLog;
 public class MsgBackupTransportProcessor$2
   implements Runnable
 {
-  public MsgBackupTransportProcessor$2(asnx paramasnx, String paramString, boolean paramBoolean) {}
+  public MsgBackupTransportProcessor$2(asnz paramasnz, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    asle.a().g();
+    aslg.a().g();
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    asnx.a(this.this$0, localBaseApplication);
+    asnz.a(this.this$0, localBaseApplication);
     this.this$0.jdField_a_of_type_Int = 2;
     this.this$0.jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.createSession(2, Long.parseLong(this.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupNotifier);
     if (this.this$0.a())
@@ -34,9 +34,9 @@ public class MsgBackupTransportProcessor$2
     this.this$0.d = new MsgBackupEndPoint();
     int i = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.start(this.this$0.jdField_a_of_type_Long, this.this$0.c, this.this$0.d);
     if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "after start as server called with ret = " + i + ", ipv4 = " + asog.a(this.this$0.c.ipv4) + ", udpport = " + this.this$0.c.port + ", tcpport = " + this.this$0.d.port);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "after start as server called with ret = " + i + ", ipv4 = " + asoi.a(this.this$0.c.ipv4) + ", udpport = " + this.this$0.c.port + ", tcpport = " + this.this$0.d.port);
     }
-    askt.a().a(this.jdField_a_of_type_Boolean);
+    askv.a().a(this.jdField_a_of_type_Boolean);
   }
 }
 

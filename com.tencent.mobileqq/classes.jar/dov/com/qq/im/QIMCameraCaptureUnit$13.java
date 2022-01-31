@@ -1,21 +1,21 @@
 package dov.com.qq.im;
 
-import bbcv;
-import bify;
-import bigb;
-import bigc;
-import bjqu;
+import bbdj;
+import bigp;
+import bigs;
+import bigt;
+import bjrl;
 
 public class QIMCameraCaptureUnit$13
   implements Runnable
 {
-  public QIMCameraCaptureUnit$13(bify parambify, String paramString) {}
+  public QIMCameraCaptureUnit$13(bigp parambigp, String paramString) {}
   
   public void run()
   {
-    bigb localbigb = new bigb(this);
-    bigc localbigc = new bigc(this);
-    bbcv.a(this.this$0.a.a(), null, this.a, localbigb, localbigb, localbigc);
+    bigs localbigs = new bigs(this);
+    bigt localbigt = new bigt(this);
+    bbdj.a(this.this$0.a.a(), null, this.a, localbigs, localbigs, localbigt);
   }
 }
 

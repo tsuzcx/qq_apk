@@ -1,22 +1,20 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
+import android.view.View;
+import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class nmt
-  extends ContentObserver
+  implements bfpt
 {
-  public nmt(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public nmt(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
   
-  public void onChange(boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.onChange(paramBoolean);
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
-      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
+    paramAdapterView = (nms)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_Nmw == null) {
+      return;
     }
+    this.a.jdField_a_of_type_Nmw.a(paramAdapterView);
   }
 }
 

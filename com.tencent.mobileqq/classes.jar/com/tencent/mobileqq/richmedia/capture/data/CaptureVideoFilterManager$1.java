@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import avsd;
+import avsf;
 import com.tencent.qphone.base.util.QLog;
 
 public class CaptureVideoFilterManager$1
   implements Runnable
 {
-  public CaptureVideoFilterManager$1(avsd paramavsd) {}
+  public CaptureVideoFilterManager$1(avsf paramavsf) {}
   
   public void run()
   {

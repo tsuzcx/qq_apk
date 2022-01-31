@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
+import android.text.TextUtils;
 
 public class alrv
-  extends alsj
 {
-  public alrv(ArkAiDictUpdateMgr.8 param8) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  public void a()
   {
-    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
+    this.e = null;
+    this.f = null;
+    this.g = null;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
+  }
+  
+  public boolean b()
+  {
+    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
   }
 }
 

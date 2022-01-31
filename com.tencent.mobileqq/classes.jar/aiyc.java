@@ -1,70 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
+import android.os.Process;
 
 public class aiyc
 {
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
   
-  public WebResourceResponse a()
+  static
   {
-    try
-    {
-      if (this.b != null)
-      {
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
-          return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
-        }
-        if (!bbdj.a(this.b)) {
-          break label102;
-        }
-        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
-        return localWebResourceResponse;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
-    }
-    return null;
-    label102:
-    return null;
+    jdField_a_of_type_JavaLangString = bbdh.e();
+    jdField_b_of_type_JavaLangString = bbdh.i();
+    jdField_c_of_type_JavaLangString = bbdh.g();
+    jdField_a_of_type_Int = bbdh.b();
+    jdField_a_of_type_Long = bbdh.a();
   }
   
-  public String a()
+  public aiyc()
   {
-    return "file://" + this.b;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (bbdj.a(this.b)))
-      {
-        if (bbdj.b(this.b) <= 8388608L) {
-          break label84;
-        }
-        this.jdField_a_of_type_Boolean = true;
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
-        return;
-        label84:
-        this.jdField_a_of_type_ArrayOfByte = bbdj.a(this.b);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
-    }
+    this.jdField_b_of_type_Long = bbdh.a(Process.myPid());
+    this.jdField_c_of_type_Long = bbdh.f();
   }
 }
 

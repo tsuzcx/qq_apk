@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.utils;
 
-import akwh;
+import akwg;
 
 public class PokeBigResHandler$NetEngine$1
   implements Runnable
 {
-  public PokeBigResHandler$NetEngine$1(akwh paramakwh, String paramString) {}
+  public PokeBigResHandler$NetEngine$1(akwg paramakwg, String paramString) {}
   
   public void run()
   {

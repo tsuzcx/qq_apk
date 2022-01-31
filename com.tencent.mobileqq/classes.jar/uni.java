@@ -1,39 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uni
-  extends QQUIEventReceiver<StoryPickerFragment, tlo>
+class uni
+  implements View.OnClickListener
 {
-  public uni(@NonNull StoryPickerFragment paramStoryPickerFragment)
-  {
-    super(paramStoryPickerFragment);
-  }
+  uni(unh paramunh) {}
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull tlo paramtlo)
+  public void onClick(View paramView)
   {
-    veg.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramtlo.toString());
-    if ((paramtlo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtlo.jdField_a_of_type_JavaUtilList != null) && (!paramtlo.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      Iterator localIterator = paramtlo.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        uuf localuuf = (uuf)localIterator.next();
-        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localuuf.jdField_a_of_type_JavaLangString)) {
-          localuuf.jdField_a_of_type_Boolean = true;
-        }
-      }
-      paramStoryPickerFragment.jdField_a_of_type_Unq.a(paramtlo.jdField_a_of_type_JavaLangString, paramtlo.jdField_a_of_type_JavaUtilList);
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tlo.class;
   }
 }
 

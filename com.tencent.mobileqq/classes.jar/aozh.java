@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class aozh
-  implements apac
+  extends MqqHandler
 {
-  aozh(aoze paramaoze, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  aozh(aozg paramaozg, Looper paramLooper)
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
+    super(paramLooper);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
-    new apll(this.jdField_a_of_type_Aoze.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
-    for (Object localObject = new aplo(this.jdField_a_of_type_Aoze.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new apll(this.jdField_a_of_type_Aoze.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    switch (paramMessage.what)
     {
-      aozx.a((aplh)localObject);
+    default: 
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
+    }
+    this.a.a.a().a(true);
+    this.a.a.a().b(-1);
+    apab.a(-1);
   }
 }
 

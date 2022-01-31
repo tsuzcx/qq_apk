@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import beqt;
-import bere;
+import berk;
+import berv;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class MiniAppBaseInfo
   public static final int Audit = 2;
   public static final int AuditPass = 6;
   public static final int AuditReject = 7;
-  public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new bere();
+  public static final Parcelable.Creator<MiniAppBaseInfo> CREATOR = new berv();
   public static final int Deleted = 5;
   public static final int Develop = 0;
   public static final String ENV_VERSION_DEVELOP = "develop";
@@ -31,7 +31,7 @@ public class MiniAppBaseInfo
   public static final String TAG = "MiniAppInfo";
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
-  public beqt apkgInfo;
+  public berk apkgInfo;
   public String appId;
   public AppMode appMode;
   public int appType;

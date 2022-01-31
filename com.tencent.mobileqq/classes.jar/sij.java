@@ -1,133 +1,183 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.3;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.RichMsg;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.im_msg_body.Text;
+import java.util.ArrayList;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
-class sij
-  implements auoo
+public class sij
 {
-  sij(sii paramsii, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, akav paramakav, boolean paramBoolean) {}
+  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private static bcww jdField_a_of_type_Bcww = new sik();
+  private static String jdField_a_of_type_JavaLangString;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public static void a()
   {
-    return null;
+    WXShareHelper.a().a(jdField_a_of_type_Bcww);
   }
   
-  public void a(auop paramauop) {}
-  
-  public void b(auop paramauop)
+  public static void a(Activity paramActivity)
   {
-    MessageForStructing localMessageForStructing;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    for (;;)
-    {
-      try
-      {
-        if (paramauop.jdField_a_of_type_Int != 0) {
-          break label541;
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing))
-        {
-          localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-          if (localMessageForStructing.richText != null) {
-            break label306;
-          }
-          localObject1 = axao.a(localMessageForStructing);
-          if (localObject1 == null) {
-            break label283;
-          }
-          localObject2 = ((im_msg_body.RichText)localObject1).elems.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramauop.c);
-          }
-          localObject2 = ((List)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          localObject3 = (im_msg_body.Elem)((Iterator)localObject2).next();
-          if (((im_msg_body.Elem)localObject3).rich_msg.has())
-          {
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramauop.c.getBytes()));
-            ((im_msg_body.Elem)localObject3).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
-            continue;
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception paramauop)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramauop);
-        }
-        this.jdField_a_of_type_Sii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      }
-      if ((((im_msg_body.Elem)localObject3).text.has()) && (((im_msg_body.Elem)localObject3).text.str.has()))
-      {
-        String str = ((im_msg_body.Elem)localObject3).text.str.get().toStringUtf8();
-        if (str.length() > 500)
-        {
-          str = str.substring(0, 500);
-          ((im_msg_body.Elem)localObject3).text.str.set(ByteStringMicro.copyFromUtf8(str));
-        }
-      }
-    }
-    localMessageForStructing.richText = ((im_msg_body.RichText)localObject1);
-    for (;;)
-    {
-      label283:
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Akav, this.jdField_a_of_type_Boolean);
-      return;
-      label306:
-      localObject1 = localMessageForStructing.richText.elems.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramauop.c);
-      }
-      if ((localObject1 != null) && (sii.b(localMessageForStructing.structingMsg)))
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (im_msg_body.Elem)((Iterator)localObject1).next();
-          if (((im_msg_body.Elem)localObject2).rich_msg.has())
-          {
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramauop.c.getBytes()));
-            ((im_msg_body.Elem)localObject2).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
-            ((im_msg_body.Elem)localObject2).rich_msg.uint32_service_id.set(localMessageForStructing.structingMsg.mMsgServiceID);
-          }
-          else if ((((im_msg_body.Elem)localObject2).text.has()) && (((im_msg_body.Elem)localObject2).text.str.has()))
-          {
-            localObject3 = ((im_msg_body.Elem)localObject2).text.str.get().toStringUtf8();
-            if (((String)localObject3).length() > 500)
-            {
-              localObject3 = ((String)localObject3).substring(0, 500);
-              ((im_msg_body.Elem)localObject2).text.str.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-            }
-          }
-        }
-      }
-    }
-    label541:
     if (QLog.isColorLevel()) {
-      QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, result.errStr=" + paramauop.b + ",result.errStr=" + paramauop.jdField_a_of_type_JavaLangString);
+      QLog.d("ShareImageUtils", 2, "launchFriendPicker path = " + jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Sii.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    Intent localIntent = new Intent(paramActivity, ForwardRecentActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_help_forward_pic", true);
+    localIntent.putExtras(localBundle);
+    localIntent.putExtra("forward_type", 1);
+    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
+    localIntent.putExtra("key_share_from_screen_shot", true);
+    localIntent.putExtra("key_share_from_screen_need_finish", true);
+    localIntent.setData(Uri.parse(jdField_a_of_type_JavaLangString));
+    paramActivity.startActivityForResult(localIntent, 3);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      QLog.e("ShareImageUtils", 1, "bitmap is null");
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new ShareImageUtils.2(paramContext));
+  }
+  
+  public static void a(Bitmap paramBitmap)
+  {
+    jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToQzone");
+    }
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(jdField_a_of_type_JavaLangString);
+    localBundle.putStringArrayList("images", localArrayList);
+    bgzl.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_AndroidGraphicsBitmap = null;
+    WXShareHelper.a().b(jdField_a_of_type_Bcww);
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "ScreenShotShareFragment shareToWXFriend");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131720917;
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131720918;
+        }
+      }
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+        return;
+      }
+      i = -1;
+    }
+  }
+  
+  public static void c(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToFriendCircle");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131720917;
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131720918;
+        }
+      }
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 1, false);
+        return;
+      }
+      i = -1;
+    }
+  }
+  
+  private static void d()
+  {
+    String str = ajsd.aV + "/Tencent/QQ_Images/" + Calendar.getInstance().getTime() + ".png";
+    if (bbdx.a(jdField_a_of_type_AndroidGraphicsBitmap, str))
+    {
+      QLog.d("ShareImageUtils", 1, "save to sdcard success");
+      bbef.a(BaseApplicationImpl.getContext(), str);
+      str = BaseApplicationImpl.getContext().getString(2131695191) + " " + str;
+      ThreadManager.getUIHandler().post(new ShareImageUtils.3(str));
+      return;
+    }
+    QLog.d("ShareImageUtils", 1, "save to sdcard fail");
+    ThreadManager.getUIHandler().post(new ShareImageUtils.4());
   }
 }
 

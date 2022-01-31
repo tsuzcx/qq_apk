@@ -1,18 +1,11 @@
-import com.tencent.image.URLDrawableHandler;
-
 public class aywd
 {
   public int a;
-  public URLDrawableHandler a;
   public String a;
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

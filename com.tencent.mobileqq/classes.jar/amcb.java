@@ -1,11 +1,16 @@
-import android.graphics.Bitmap;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class amcb
+  implements TypeEvaluator<amca>
 {
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  public amcb(ambv paramambv) {}
+  
+  public amca a(float paramFloat, amca paramamca1, amca paramamca2)
+  {
+    return paramamca2;
+  }
 }
 
 

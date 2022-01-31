@@ -1,12 +1,20 @@
-public abstract interface spg
+import java.util.List;
+
+public class spg
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public int a;
+  public String a;
+  public List<spi> a;
+  public boolean a;
+  public int b = 500;
+  public String b;
+  public List<sph> b;
+  public int c = 100;
+  public int d = 15;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     spg
  * JD-Core Version:    0.7.0.1
  */

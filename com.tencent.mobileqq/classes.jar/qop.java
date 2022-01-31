@@ -1,16 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
 final class qop
-  implements pca
+  extends AnimatorListenerAdapter
 {
-  qop(String paramString, boolean paramBoolean) {}
+  qop(View paramView) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean + ", data=" + paramInt);
-    }
-    qol.a(paramBoolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    super.onAnimationEnd(paramAnimator);
+    this.a.setTag(2131362550, null);
   }
 }
 

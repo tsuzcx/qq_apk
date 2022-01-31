@@ -1,19 +1,30 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 class ahgd
-  implements Comparator<ahgk>
+  implements InvocationHandler
 {
-  ahgd(ahfz paramahfz) {}
+  public ahgk a;
   
-  public int a(ahgk paramahgk1, ahgk paramahgk2)
+  public ahgd(ahgk paramahgk)
   {
-    if (paramahgk1.a == paramahgk2.a) {
-      return 0;
+    this.a = paramahgk;
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    QLog.i("springHb_SpringEntryManager", 2, "callbackInvocationHandler method: " + paramMethod.getName());
+    try
+    {
+      paramObject = paramMethod.invoke(this.a, paramArrayOfObject);
+      return paramObject;
     }
-    if (paramahgk1.a > paramahgk2.a) {
-      return 1;
+    catch (Throwable paramObject)
+    {
+      QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramObject));
     }
-    return -1;
+    return null;
   }
 }
 

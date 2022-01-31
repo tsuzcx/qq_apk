@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
 
 public final class akuq
-  implements Parcelable.Creator<SosoInterface.SosoAttribute>
+  implements Parcelable.Creator<SosoInterface.SosoCell>
 {
-  public SosoInterface.SosoAttribute a(Parcel paramParcel)
+  public SosoInterface.SosoCell a(Parcel paramParcel)
   {
-    return new SosoInterface.SosoAttribute(paramParcel);
+    return new SosoInterface.SosoCell(paramParcel);
   }
   
-  public SosoInterface.SosoAttribute[] a(int paramInt)
+  public SosoInterface.SosoCell[] a(int paramInt)
   {
-    return new SosoInterface.SosoAttribute[paramInt];
+    return new SosoInterface.SosoCell[paramInt];
   }
 }
 

@@ -1,30 +1,53 @@
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import java.util.concurrent.Executor;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.widget.EditText;
 
-public abstract class bdih<Param, Progress, Result>
-  extends AsyncTask<Param, Progress, Result>
+public class bdih
+  implements InputFilter
 {
-  protected String a;
-  protected String b;
+  protected int a;
+  protected EditText a;
   
-  public bdih(String paramString1, String paramString2)
+  public bdih(EditText paramEditText, int paramInt)
   {
-    this.a = paramString1;
-    if (!paramString1.toLowerCase().startsWith("http")) {
-      this.a = ("https://openmobile.qq.com/" + paramString1);
-    }
-    this.b = paramString2;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public Executor a()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (Build.VERSION.SDK_INT >= 11) {
-      return AsyncTask.THREAD_POOL_EXECUTOR;
+    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
+    paramInt4 = this.jdField_a_of_type_Int - bdio.a(paramSpanned.toString());
+    paramInt3 = bdio.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    if (paramInt4 <= 0) {
+      return "";
     }
-    return null;
+    if (paramInt4 >= paramInt3) {
+      return null;
+    }
+    paramInt3 = paramInt1;
+    if (paramInt3 < paramInt2)
+    {
+      int j;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
+        j = bdio.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      }
+      for (int i = 2;; i = 1)
+      {
+        paramInt4 -= j;
+        if (paramInt4 < 0) {
+          break label161;
+        }
+        paramInt3 = i + paramInt3;
+        break;
+        j = bdio.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+      }
+    }
+    label161:
+    if (paramInt3 == paramInt1) {
+      return "";
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

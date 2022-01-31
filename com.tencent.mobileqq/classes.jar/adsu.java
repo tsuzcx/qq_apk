@@ -1,12 +1,12 @@
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class adsu
   implements View.OnTouchListener
 {
-  public adsu(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public adsu(HeartCombolEffectView paramHeartCombolEffectView) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {

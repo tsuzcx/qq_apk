@@ -1,23 +1,33 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class bdgr
+  implements DialogInterface.OnClickListener
 {
-  private android.webkit.CookieSyncManager jdField_a_of_type_AndroidWebkitCookieSyncManager;
-  private com.tencent.smtt.sdk.CookieSyncManager jdField_a_of_type_ComTencentSmttSdkCookieSyncManager;
+  public bdgr(DownloadJSApi.2 param2) {}
   
-  public bdgr(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager = com.tencent.smtt.sdk.CookieSyncManager.createInstance(paramContext);
-    this.jdField_a_of_type_AndroidWebkitCookieSyncManager = android.webkit.CookieSyncManager.createInstance(paramContext);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager.sync();
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdlb.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      bdle.a().a(10, paramDialogInterface);
+      return;
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieSyncManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieSyncManager.sync();
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
     }
   }
 }

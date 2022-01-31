@@ -1,10 +1,40 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.app.ActivityManager;
+import android.content.ComponentCallbacks2;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.os.Debug.MemoryInfo;
+import android.os.Process;
+import org.json.JSONObject;
 
-public abstract interface bevb
+class bevb
+  implements ComponentCallbacks2
 {
-  public abstract void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong);
+  bevb(beuy parambeuy) {}
   
-  public abstract void onInitGpkgInfo(int paramInt, bevc parambevc, String paramString);
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory()
+  {
+    Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)this.a.a().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
+    betc.d("GameRuntime", "onLowMemory!!!!!! Meminfo:dalvikPss[" + arrayOfMemoryInfo[0].dalvikPss + "],nativePss[" + arrayOfMemoryInfo[0].nativePss + "],otherPss[" + arrayOfMemoryInfo[0].otherPss + "],total[" + arrayOfMemoryInfo[0].getTotalPss() + "]");
+  }
+  
+  public void onTrimMemory(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("level", paramInt);
+      if (this.a.a(1) != null) {
+        this.a.a(1).a("onMemoryWarning", localJSONObject.toString(), -1);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
 }
 
 

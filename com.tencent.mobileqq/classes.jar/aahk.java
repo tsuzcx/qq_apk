@@ -1,24 +1,29 @@
-import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
+import java.util.HashMap;
 
 public class aahk
-  implements bfoq
+  implements askq<bbqj>
 {
-  public aahk(AddFriendVerifyActivity paramAddFriendVerifyActivity, bfol parambfol) {}
+  public aahk(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(bbqj parambbqj)
   {
-    switch (paramInt)
+    if (parambbqj.jdField_a_of_type_Int == AddFriendVerifyActivity.a(this.a).a())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
-      continue;
-      agqs.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
+      Object localObject = (Bitmap)parambbqj.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131378864));
+      AddFriendVerifyActivity.b(this.a).setVisibility(0);
+      AddFriendVerifyActivity.b(this.a).setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), (Bitmap)localObject));
+      localObject = (Bitmap)parambbqj.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131378859));
+      localObject = bbth.a(this.a.getResources(), (Bitmap)localObject);
+      AddFriendVerifyActivity.a(this.a).setBackgroundDrawable((Drawable)localObject);
+      AddFriendVerifyActivity.b(this.a).setTextColor(parambbqj.b);
+      AddFriendVerifyActivity.a(this.a).setTextColor(parambbqj.b);
     }
   }
 }

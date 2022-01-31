@@ -1,79 +1,61 @@
-import android.hardware.GeomagneticField;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
+import android.content.Context;
 import android.hardware.SensorManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
 public abstract class alyb
-  implements SensorEventListener
+  extends alya
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  protected alxu a;
-  protected SensorManager a;
-  protected List<Sensor> a;
-  private boolean jdField_a_of_type_Boolean;
-  protected float[] a;
-  private float b = -1.0F;
-  private float c = -1.0F;
+  public int a;
+  protected alyk a;
+  protected Context a;
+  public Matrix4 a;
+  public float[] b = new float[3];
+  public float[] c = new float[3];
   
-  public alyb(SensorManager paramSensorManager, alxu paramalxu)
+  public alyb(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
-    this.jdField_a_of_type_Alxu = paramalxu;
+    super(paramSensorManager, paramalxt);
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(paramContext);
   }
   
-  private GeomagneticField a()
+  private void a(Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
+    this.jdField_a_of_type_Alyk = new alyk();
   }
   
-  protected float a()
+  protected void a(float[] paramArrayOfFloat)
   {
-    GeomagneticField localGeomagneticField = a();
-    if (localGeomagneticField != null) {
-      return localGeomagneticField.getDeclination();
-    }
-    return 0.0F;
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((this.jdField_a_of_type_Alxt == null) || (paramArrayOfFloat == null)) {}
+    do
     {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
-    }
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
+        this.jdField_a_of_type_Alyk.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          this.jdField_a_of_type_Alxt.updateAzimuth(this.c[0]);
+          return;
+        }
+        this.b[0] = this.c[1];
+        this.b[1] = (-this.c[0]);
+        this.b[2] = (-this.c[2]);
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          this.jdField_a_of_type_Alxt.updateRotation(this.b[0], this.b[1], this.b[2]);
+          return;
+        }
+      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
+      this.jdField_a_of_type_Alxt.updateRotation(this.b[0], this.b[1], this.b[2]);
+    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
+    this.jdField_a_of_type_Alxt.onRotationUpdateOriginal(paramArrayOfFloat);
   }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
-    }
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 

@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.net.URL;
 import org.json.JSONObject;
-import qke;
+import qkb;
 
 public class ReadInJoyWebDataManager$3
   implements Runnable
 {
-  public ReadInJoyWebDataManager$3(qke paramqke, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public ReadInJoyWebDataManager$3(qkb paramqkb, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    long l = qke.a();
+    long l = qkb.a();
     try
     {
-      qke.a(l);
-      if (qke.b() > 52428800L) {
+      qkb.a(l);
+      if (qkb.b() > 52428800L) {
         return;
       }
     }

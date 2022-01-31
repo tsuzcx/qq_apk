@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class wxp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public wxp(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditUniqueTitleActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

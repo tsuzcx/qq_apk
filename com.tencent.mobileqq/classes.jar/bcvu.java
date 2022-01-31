@@ -1,41 +1,67 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
-final class bcvu
-  implements TMSDKCustomConfig.IThreadPoolManager
+public class bcvu
 {
-  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  
+  private void a()
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    }
   }
   
-  public void addTypeTask(Runnable paramRunnable, int paramInt)
+  private void a(View paramView)
   {
-    int i = 16;
-    if (paramInt == 3) {
-      i = 64;
-    }
-    for (;;)
+    if (paramView != null)
     {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
+      paramView = paramView.getParent();
+      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
+        a((ViewGroup)paramView);
       }
     }
   }
   
-  public Looper getSubThreadLooper()
+  private void a(ViewGroup paramViewGroup)
   {
-    return ThreadManagerV2.getSubThreadLooper();
+    if (paramViewGroup != null) {
+      paramViewGroup.removeAllViews();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
+    }
+  }
+  
+  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
+  {
+    a(this.jdField_a_of_type_AndroidViewView);
+    a(paramView);
+    if (paramView != null) {
+      paramView.setLayoutParams(paramLayoutParams);
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    a(paramRelativeLayout);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcvu
  * JD-Core Version:    0.7.0.1
  */

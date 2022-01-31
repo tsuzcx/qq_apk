@@ -1,19 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.Leba.37;
 
 public class abks
-  extends ajxl
+  implements DialogInterface.OnClickListener
 {
-  public abks(Leba paramLeba) {}
+  public abks(Leba.37 param37) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((axch)this.a.a.getManager(10) == null) {
-      return;
-    }
-    Leba.c(this.a);
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, true).apply();
+    this.a.jdField_a_of_type_Abku.a();
   }
 }
 

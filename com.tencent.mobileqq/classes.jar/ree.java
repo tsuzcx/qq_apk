@@ -1,6 +1,8 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+
 public abstract interface ree
 {
-  public abstract void a(int paramInt);
+  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
 }
 
 

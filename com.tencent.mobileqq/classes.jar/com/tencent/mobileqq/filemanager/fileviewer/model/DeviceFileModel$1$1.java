@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import apmp;
-import apmq;
-import apnb;
+import apmt;
+import apmu;
+import apnf;
 
 public class DeviceFileModel$1$1
   implements Runnable
 {
-  public DeviceFileModel$1$1(apmq paramapmq) {}
+  public DeviceFileModel$1$1(apmu paramapmu) {}
   
   public void run()
   {

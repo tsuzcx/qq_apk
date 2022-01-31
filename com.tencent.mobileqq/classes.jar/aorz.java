@@ -1,34 +1,31 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
 
 public class aorz
+  extends aoun
 {
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, apkm paramapkm)
+  public aorz(FileAssistantActivity paramFileAssistantActivity) {}
+  
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    String str1 = paramFileManagerEntity.getFilePath();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FileViewerFacade", 2, "open[" + str1 + "]");
-    }
-    if ((str1 != null) && (str1.lastIndexOf(".rename") > 0))
-    {
-      String str3 = str1.replace(".rename", "");
-      String str2 = str3.substring(0, str3.lastIndexOf("."));
-      str3 = str3.substring(str3.lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
-      str2 = str2 + str3;
-      if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
-      }
-      aptr.a(paramActivity, paramActivity.getString(2131692882), 2131692869, new aosa(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramapkm));
+    super.a(paramLong1, paramLong2, paramString, paramInt);
+    this.a.a.a();
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (FileAssistantActivity.a(this.a)) {
       return;
     }
-    if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
-    {
-      aptr.a(paramActivity, paramActivity.getString(2131692882), 2131692850, new aosb(paramActivity, paramFileManagerEntity));
-      return;
+    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!FileAssistantActivity.a(this.a)) {
+      aptx.a(paramString);
     }
-    apue.a(paramActivity, paramFileManagerEntity.getFilePath());
   }
 }
 

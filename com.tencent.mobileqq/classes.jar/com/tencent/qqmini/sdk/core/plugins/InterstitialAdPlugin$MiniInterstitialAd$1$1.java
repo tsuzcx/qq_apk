@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import begv;
-import beil;
-import beim;
-import besl;
+import behm;
+import bejc;
+import bejd;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 
 class InterstitialAdPlugin$MiniInterstitialAd$1$1
-  implements beim
+  implements bejd
 {
   InterstitialAdPlugin$MiniInterstitialAd$1$1(InterstitialAdPlugin.MiniInterstitialAd.1 param1) {}
   
@@ -17,7 +17,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
     boolean bool = false;
     if (paramInt1 == 10001)
     {
-      begv.b(false);
+      behm.b(false);
       if (paramInt2 != -1) {
         break label69;
       }
@@ -28,8 +28,8 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
       if (InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$2.this$1) != null) {
         InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$2.this$1).onDismiss();
       }
-      beil.a().b(this);
-      besl.b("SDK_MiniInterstitialAd", paramIntent);
+      bejc.a().b(this);
+      betc.b("SDK_MiniInterstitialAd", paramIntent);
       bool = true;
       return bool;
     }

@@ -1,9 +1,9 @@
 package com.dataline.activities;
 
-import ajuo;
-import akct;
-import akcw;
-import akfm;
+import ajum;
+import akcs;
+import akcv;
+import akfl;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import apue;
-import axqw;
-import bbbi;
-import bbev;
+import apug;
+import axqy;
+import bbbw;
+import bbfj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -44,7 +44,7 @@ public class PrinterOptionActivity
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int = 1;
-  private ajuo jdField_a_of_type_Ajuo;
+  private ajum jdField_a_of_type_Ajum;
   private View jdField_a_of_type_AndroidViewView;
   public ViewGroup a;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -70,9 +70,9 @@ public class PrinterOptionActivity
   
   private boolean a()
   {
-    akfm localakfm = (akfm)this.app.a(10);
-    akcw localakcw = (akcw)this.app.a(74);
-    if (!bbev.d(BaseApplication.getContext()))
+    akfl localakfl = (akfl)this.app.a(10);
+    akcv localakcv = (akcv)this.app.a(74);
+    if (!bbfj.d(BaseApplication.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PrinterOptionActivity", 4, "UpdateStatus : network error");
@@ -98,7 +98,7 @@ public class PrinterOptionActivity
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
         this.jdField_a_of_type_AndroidViewView.setEnabled(true);
       }
-      else if (localakfm.a() == 0)
+      else if (localakfl.a() == 0)
       {
         if (QLog.isColorLevel()) {
           QLog.d("PrinterOptionActivity", 4, "UpdateStatus : PCQQ is not login");
@@ -107,7 +107,7 @@ public class PrinterOptionActivity
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       }
-      else if (!localakcw.a())
+      else if (!localakcv.a())
       {
         if (QLog.isColorLevel()) {
           QLog.d("PrinterOptionActivity", 4, "UpdateStatus : PCQQ is not outdate");
@@ -149,13 +149,13 @@ public class PrinterOptionActivity
     boolean bool2 = false;
     boolean bool1;
     Object localObject;
-    if (this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a == null)
+    if (this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a == null)
     {
       bool1 = bool2;
       if (paramBoolean)
       {
-        localObject = this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a();
-        this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a = ((ev)localObject);
+        localObject = this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a();
+        this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a = ((ev)localObject);
         if (localObject != null) {
           break label122;
         }
@@ -167,8 +167,8 @@ public class PrinterOptionActivity
       localObject = "";
       if (bool1)
       {
-        String str = this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a(str);
+        String str = this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a(str);
         localObject = str;
         if (!this.jdField_c_of_type_Boolean)
         {
@@ -188,7 +188,7 @@ public class PrinterOptionActivity
   private boolean b()
   {
     int i = 1;
-    ev localev = this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a;
+    ev localev = this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a;
     Iterator localIterator1;
     FileInfo localFileInfo;
     String str;
@@ -203,11 +203,11 @@ public class PrinterOptionActivity
         {
           localFileInfo = (FileInfo)localIterator1.next();
           str = localFileInfo.d().toLowerCase();
-          j = apue.a(str);
+          j = apug.a(str);
           if ((j != 9) && (j != 0)) {
             this.jdField_d_of_type_Boolean = true;
           }
-          if (!this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a(str))
+          if (!this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a(str))
           {
             if (QLog.isDevelopLevel()) {
               QLog.i("IphoneTitleBarActivity", 1, "printer unsupport file printer : " + localev.jdField_a_of_type_JavaLangString + " file : " + localFileInfo.d());
@@ -238,7 +238,7 @@ public class PrinterOptionActivity
         return bool1;
         if (localev.jdField_a_of_type_Int == 1)
         {
-          if (this.jdField_a_of_type_Ajuo.jdField_a_of_type_Akct.a() == null) {
+          if (this.jdField_a_of_type_Ajum.jdField_a_of_type_Akcs.a() == null) {
             break label562;
           }
           localIterator1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -250,11 +250,11 @@ public class PrinterOptionActivity
           }
           localFileInfo = (FileInfo)localIterator1.next();
           str = localFileInfo.d().toLowerCase();
-          k = apue.a(str);
+          k = apug.a(str);
           if ((k != 9) || (k != 0)) {
             this.jdField_d_of_type_Boolean = true;
           }
-          Iterator localIterator2 = this.jdField_a_of_type_Ajuo.jdField_a_of_type_Akct.b.iterator();
+          Iterator localIterator2 = this.jdField_a_of_type_Ajum.jdField_a_of_type_Akcs.b.iterator();
           for (;;)
           {
             if (localIterator2.hasNext())
@@ -365,10 +365,10 @@ public class PrinterOptionActivity
       String str = paramIntent.getStringExtra("sPrinterName");
       long l = paramIntent.getLongExtra("sPrintDin", 0L);
       if ((str == null) && (l == 0L)) {
-        this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a = null;
+        this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a = null;
       }
-      if ((a()) && (this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a != null)) {
-        this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a.jdField_a_of_type_JavaLangString);
+      if ((a()) && (this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a != null)) {
+        this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a.jdField_a_of_type_JavaLangString);
       }
     }
   }
@@ -376,7 +376,7 @@ public class PrinterOptionActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Ajuo = ((ajuo)this.app.a(8));
+    this.jdField_a_of_type_Ajum = ((ajum)this.app.a(8));
     this.jdField_a_of_type_JavaUtilArrayList = super.getIntent().getParcelableArrayListExtra("sFilesSelected");
     this.jdField_a_of_type_Boolean = super.getIntent().getBooleanExtra("sIsCloudPrinter", false);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("sIsCloudPrinter", false);
@@ -384,33 +384,33 @@ public class PrinterOptionActivity
     setContentView(2131558947);
     setTitle(2131691365);
     super.getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364904));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364903));
     this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131361806, "n/a");
     this.jdField_a_of_type_AndroidViewView = super.findViewById(2131371936);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371937));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131361887));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131361886));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368086));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371931));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364955);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364954);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidViewView = super.findViewById(2131368063);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371938));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131371933));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox = ((MyCheckBox)super.findViewById(2131376446));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox = ((MyCheckBox)super.findViewById(2131376448));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox.setOnCheckedChangeListener(new ej(this));
     if ("1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId")))
     {
       this.jdField_c_of_type_Boolean = true;
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130841128);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841127);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130841130);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130841125);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841124);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130841127);
     }
-    this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a = null;
-    this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ez);
+    this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a = null;
+    this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ez);
     if (!a(true))
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(2131691369);
@@ -423,7 +423,7 @@ public class PrinterOptionActivity
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a();
+    this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a();
   }
   
   public void doOnResume()
@@ -459,14 +459,14 @@ public class PrinterOptionActivity
             continue;
           }
           ((JSONObject)localObject).put("duplexMode", 2);
-          ((JSONObject)localObject).put("printerName", this.jdField_a_of_type_Ajuo.jdField_a_of_type_Akct.jdField_a_of_type_JavaLangString);
+          ((JSONObject)localObject).put("printerName", this.jdField_a_of_type_Ajum.jdField_a_of_type_Akcs.jdField_a_of_type_JavaLangString);
           localObject = ((JSONObject)localObject).toString();
           if (QLog.isDevelopLevel()) {
             QLog.i("IphoneTitleBarActivity", 1, "printer params : " + (String)localObject);
           }
           paramView.putExtra("sPrintParam", (String)localObject);
           paramView.putParcelableArrayListExtra("sFilesSelected", this.jdField_a_of_type_JavaUtilArrayList);
-          paramView.putExtra(bbbi.h, super.getIntent().getIntExtra(bbbi.h, 0));
+          paramView.putExtra(bbbw.h, super.getIntent().getIntExtra(bbbw.h, 0));
         }
         catch (JSONException localJSONException)
         {
@@ -476,7 +476,7 @@ public class PrinterOptionActivity
         }
         setResult(-1, paramView);
         finish();
-        axqw.b(this.app, "CliOper", "", "", "0X800405A", "0X800405A", 0, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", "", "0X800405A", "0X800405A", 0, 0, "", "", "", "");
         return;
         ((JSONObject)localObject).put("duplexMode", 1);
       }

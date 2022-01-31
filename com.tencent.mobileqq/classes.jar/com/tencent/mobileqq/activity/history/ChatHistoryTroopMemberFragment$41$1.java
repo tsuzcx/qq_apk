@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.history;
 
-import agak;
+import agai;
 
 public class ChatHistoryTroopMemberFragment$41$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$1(agak paramagak, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3) {}
+  public ChatHistoryTroopMemberFragment$41$1(agai paramagai, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3) {}
   
   public void run()
   {
-    ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_Agak.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
+    ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_Agai.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
   }
 }
 

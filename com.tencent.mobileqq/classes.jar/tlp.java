@@ -1,58 +1,91 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqAddGroupVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoObject;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class tlp
-  extends tjh
-  implements syt<tnt, tpc>
+  extends sys<tnu>
 {
-  public static int a = 20;
-  private long c;
+  private final HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final List<Long> jdField_a_of_type_JavaUtilList;
+  private final List<Integer> b;
+  private final int c;
   
-  public tnt a(int paramInt, ArrayList<tct> paramArrayList)
+  public tlp(String paramString, List<String> paramList, List<Long> paramList1, List<Integer> paramList2, int paramInt)
   {
-    if (paramArrayList.size() > a) {
-      veg.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
+    if (TextUtils.isEmpty(paramString)) {
+      throw new IllegalArgumentException("union_id should not be empty");
     }
-    tnt localtnt = new tnt();
-    localtnt.c = paramInt;
-    localtnt.a = paramArrayList;
-    syr.a().a(localtnt, this);
-    this.c = System.currentTimeMillis();
-    return localtnt;
+    if ((paramList == null) || (paramList.isEmpty())) {
+      throw new IllegalArgumentException("vidList is empty");
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.c = paramInt;
   }
   
-  public void a(@NonNull tnt paramtnt, @Nullable tpc paramtpc, @NonNull ErrorMessage paramErrorMessage)
+  public String a()
   {
-    tcs localtcs = (tcs)tdc.a(13);
-    if ((paramtpc == null) || (paramErrorMessage.isFail()))
+    return sxm.a("StoryGroupSvc.add_video");
+  }
+  
+  public syn a(byte[] paramArrayOfByte)
+  {
+    qqstory_group.RspAddGroupVideo localRspAddGroupVideo = new qqstory_group.RspAddGroupVideo();
+    try
     {
-      veg.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
-      paramtpc = paramtnt.a.iterator();
+      localRspAddGroupVideo.mergeFrom(paramArrayOfByte);
+      return new tnu(localRspAddGroupVideo);
     }
-    while (paramtpc.hasNext())
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      localtcs.a((tct)paramtpc.next(), false);
-      continue;
-      localtcs.a(paramtpc.a);
-      veg.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramtpc.a.size()), Integer.valueOf(paramtnt.a.size()) });
-      paramErrorMessage = paramtnt.a.iterator();
-      while (paramErrorMessage.hasNext())
+      for (;;)
       {
-        tct localtct = (tct)paramErrorMessage.next();
-        if (!paramtpc.a.contains(localtct)) {
-          localtcs.a(localtct, false);
-        }
-      }
-      if (paramtnt.a.size() > paramtpc.a.size()) {
-        vel.b("home_page", "batch_watch_video", 0, paramtnt.a.size() - paramtpc.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), vel.a(BaseApplication.getContext()) });
+        ved.b("AddGroupVideoRequest", "decodeResponse", paramArrayOfByte);
       }
     }
-    localtcs.a(paramtnt);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqAddGroupVideo localReqAddGroupVideo = new qqstory_group.ReqAddGroupVideo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      qqstory_group.GroupVideo localGroupVideo = new qqstory_group.GroupVideo();
+      localGroupVideo.source.set(this.c);
+      localGroupVideo.union_id.set(ByteStringMicro.copyFromUtf8((String)((Map.Entry)localObject).getKey()));
+      int i = 0;
+      localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        qqstory_group.VideoObject localVideoObject = new qqstory_group.VideoObject();
+        localVideoObject.vid.set(ByteStringMicro.copyFromUtf8(str));
+        localVideoObject.ts.set(((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue() / 1000L);
+        localVideoObject.time_zone.set(((Integer)this.b.get(i)).intValue());
+        localGroupVideo.video_obj_list.add(localVideoObject);
+        i += 1;
+      }
+      localReqAddGroupVideo.group_video_list.add(localGroupVideo);
+    }
+    return localReqAddGroupVideo.toByteArray();
   }
 }
 

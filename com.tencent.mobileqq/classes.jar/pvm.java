@@ -1,39 +1,52 @@
-import android.view.View;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.support.annotation.NonNull;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class pvm
-  implements bfpc
+public final class pvm
 {
-  public pvm(ComponentContentGridImage paramComponentContentGridImage) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<rib> jdField_b_of_type_JavaUtilList = new ArrayList();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public pvl a()
   {
-    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
-    {
-      if (ComponentContentGridImage.a(this.a) != null) {
-        ComponentContentGridImage.a(this.a).a(paramInt);
-      }
-      return;
+    return new pvl(this, null);
+  }
+  
+  public pvm a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public pvm a(@NonNull String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public pvm a(@NonNull List<rib> paramList)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
+      ((rib)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
     }
-    if ((Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 1) && (((pbi)this.a.a).a().mSocialFeedInfo != null) && (((pbi)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qcy != null) && (((pbi)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qcy.a) && (((pbi)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qcr != null)) {
-      try
-      {
-        onk.a(this.a.getContext(), ((pbi)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qcr.a.c, null);
-        return;
-      }
-      catch (Exception paramAdapterView)
-      {
-        QLog.e("ComponentContentGridImage", 1, paramAdapterView.getLocalizedMessage());
-        return;
-      }
-    }
-    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public pvm b(@NonNull String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public pvm b(@NonNull List<URL> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
 }
 

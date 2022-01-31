@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import aopw;
-import aosp;
-import apue;
-import apvh;
-import apxv;
+import aoqb;
+import aost;
+import apug;
+import apvj;
+import apxx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
@@ -28,7 +28,7 @@ public class QfileLocalFileAppTabView
   private boolean a;
   private boolean b;
   
-  public QfileLocalFileAppTabView(Context paramContext, List<apxv> paramList, boolean paramBoolean)
+  public QfileLocalFileAppTabView(Context paramContext, List<apxx> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
@@ -48,7 +48,7 @@ public class QfileLocalFileAppTabView
     }
     else
     {
-      localObject = ajyc.a(2131709676);
+      localObject = ajya.a(2131709687);
     }
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) {
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject, new ArrayList());
@@ -57,7 +57,7 @@ public class QfileLocalFileAppTabView
     if (((List)localObject).contains(paramFileInfo) == true) {
       return;
     }
-    int j = apue.a((List)localObject, paramFileInfo.b());
+    int j = apug.a((List)localObject, paramFileInfo.b());
     int i = j;
     if (j < 0) {
       i = 0;
@@ -69,17 +69,17 @@ public class QfileLocalFileAppTabView
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
     if (this.f) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(ajyc.a(2131709672), new ArrayList());
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(ajya.a(2131709683), new ArrayList());
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(ajyc.a(2131709685), new ArrayList());
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(ajya.a(2131709696), new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_JavaLangRunnable = new QfileLocalFileAppTabView.2(this);
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  protected aopw a()
+  protected aoqb a()
   {
-    return new aosp(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new aost(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   protected void a()

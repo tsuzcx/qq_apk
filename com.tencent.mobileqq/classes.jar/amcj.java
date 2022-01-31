@@ -1,6 +1,6 @@
 public abstract interface amcj
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a();
 }
 
 

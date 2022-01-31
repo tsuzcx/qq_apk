@@ -1,23 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
 
-class atnj
-  implements View.OnTouchListener
+public final class atnj
 {
-  atnj(atni paramatni) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
-    }
-  }
+  private atnj(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
 }
 
 

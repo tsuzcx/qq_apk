@@ -1,24 +1,65 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-class ndn
-  extends Handler
+public class ndn
+  extends AbsThirdDataSourceAdapter
 {
-  ndn(ndm paramndm, Looper paramLooper)
+  int jdField_a_of_type_Int = 0;
+  AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  String jdField_a_of_type_JavaLangString;
+  
+  public ndn(NowVideoView paramNowVideoView) {}
+  
+  public boolean a()
   {
-    super(paramLooper);
+    if (!this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nde.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      String str = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_JavaLangString = str;
+      if ((this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback != null) && (this.jdField_a_of_type_ComTencentBizNowNowVideoView.d == 0))
+      {
+        this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback.onPrepared();
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void handleMessage(Message paramMessage)
+  public int getPlayType()
   {
-    switch (paramMessage.what)
+    return 1;
+  }
+  
+  public int getStaus()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-    default: 
+      paramString = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      paramOnPreparedCallback.onPrepared();
       return;
     }
-    this.a.a = true;
-    ndm.a(this.a);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nde.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
   }
 }
 

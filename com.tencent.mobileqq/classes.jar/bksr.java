@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
 public class bksr
-  implements DialogInterface.OnClickListener
 {
-  public bksr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static boolean a(int paramInt)
   {
-    this.a.s();
+    return paramInt == 180;
   }
 }
 

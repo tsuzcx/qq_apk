@@ -1,36 +1,59 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
+import com.tencent.biz.qqstory.widget.PollContainerLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.net.URI;
 
-public class tpm
-  extends trj
+class tpm
+  implements ulb
 {
-  StoryVideoItem a;
-  public uld a;
+  tpm(tpl paramtpl, tej paramtej) {}
   
-  public tpm(StoryVideoItem paramStoryVideoItem)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    paramString = BaseApplicationImpl.getContext();
+    Object localObject = new PollContainerLayout(paramString);
+    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Tej, -1, null);
+    FrameLayout localFrameLayout = new FrameLayout(paramString);
+    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
+    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
+    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
+    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
+    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Tej, -1, null);
+    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
+    localFrameLayout.draw(localCanvas);
+    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
+    if (vxv.a((Bitmap)localObject, paramString)) {
+      this.jdField_a_of_type_Tpl.a("result", new File(paramString).toURI().toString());
+    }
+    for (;;)
+    {
+      ((Bitmap)localObject).recycle();
+      tpl.a(this.jdField_a_of_type_Tpl, true);
+      return;
+      this.jdField_a_of_type_Tpl.a("result", this.jdField_a_of_type_Tpl.a.mVideoThumbnailUrl);
+    }
   }
   
-  public void a()
+  public void a(String paramString, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-    {
-      veg.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
-    {
-      this.jdField_a_of_type_Uld = new ula();
-      this.jdField_a_of_type_Uld.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new tpn(this));
-      return;
-    }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
+    this.jdField_a_of_type_Tpl.a("result", this.jdField_a_of_type_Tpl.a.mVideoThumbnailUrl);
+    tpl.b(this.jdField_a_of_type_Tpl, true);
   }
-  
-  protected void a(Map<String, Object> paramMap) {}
 }
 
 

@@ -1,60 +1,77 @@
-import com.tencent.image.URLDrawableHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.api.HighwayConfBean;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 
-final class ayro
-  implements aysa
+public class ayro
+  extends ampa<HighwayConfBean>
 {
-  long jdField_a_of_type_Long = 0L;
-  
-  ayro(URLDrawableHandler paramURLDrawableHandler, String paramString, ayrr paramayrr) {}
-  
-  public void onResp(aysx paramaysx)
+  public int a()
   {
-    boolean bool2 = true;
+    return 15;
+  }
+  
+  @NonNull
+  public HighwayConfBean a(int paramInt)
+  {
+    HighwayConfBean localHighwayConfBean = new HighwayConfBean();
     if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + paramaysx.jdField_a_of_type_Aysw.c + " resp.result = " + paramaysx.jdField_a_of_type_Int);
+      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
     }
-    if (paramaysx.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    boolean bool1;
-    if (paramaysx.jdField_a_of_type_Int == 0)
+    return localHighwayConfBean;
+  }
+  
+  @Nullable
+  public HighwayConfBean a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
-        bool1 = bool2;
+      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
+      return localHighwayConfBean;
     }
-    for (;;)
-    {
-      try
-      {
-        ayrn.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), null, true, paramaysx.c, paramaysx.e, null, this.jdField_a_of_type_Ayrr);
-        return;
-      }
-      catch (Exception paramaysx)
-      {
-        return;
-      }
-      bool2 = false;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramaysx.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
+    return null;
+  }
+  
+  public Class<HighwayConfBean> a()
+  {
+    return HighwayConfBean.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  public void a(HighwayConfBean paramHighwayConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
-    }
-    this.jdField_a_of_type_Long = paramLong2;
+    HighwayConfBean.updateHighwayConf((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramHighwayConfBean);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

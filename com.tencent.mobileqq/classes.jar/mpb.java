@@ -1,17 +1,21 @@
-import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.app.VideoAppInterface;
 
-public class mpb
+class mpb
+  implements mqf
 {
-  public AVRedPacketConfig a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public boolean c;
+  mpb(moz parammoz) {}
   
-  public String toString()
+  public void a(mqe parammqe)
   {
-    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
+    moz localmoz = this.a;
+    if (parammqe.b == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localmoz.a(bool, parammqe.g, parammqe.c);
+      this.a.a = null;
+      moz.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
+      return;
+    }
   }
 }
 

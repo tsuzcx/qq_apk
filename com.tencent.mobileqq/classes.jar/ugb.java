@@ -1,14 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
-class ugb
-  implements MediaPlayer.OnInfoListener
+public class ugb
+  extends uaf
 {
-  ugb(ufu paramufu, ufo paramufo) {}
+  public ugb(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void g()
   {
-    return this.jdField_a_of_type_Ufo.a_(this.jdField_a_of_type_Ufu, paramInt1, paramInt2);
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      AbsVideoInfoWidget.a(this.a);
+      ved.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
+    }
   }
 }
 

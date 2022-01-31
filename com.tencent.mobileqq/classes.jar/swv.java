@@ -1,67 +1,63 @@
 import android.annotation.TargetApi;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.io.IOException;
 
 @TargetApi(14)
 public class swv
-  extends sxa
+  extends swx
 {
-  private final ayvv jdField_a_of_type_Ayvv;
   public String a;
-  private final boolean jdField_a_of_type_Boolean;
+  public swb a;
   public String b;
   
-  public swv(boolean paramBoolean)
+  public swv(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    QQStoryContext.a();
-    this.jdField_a_of_type_Ayvv = QQStoryContext.a().a();
+    this.jdField_a_of_type_Swb = new swb();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
   private void c()
   {
-    aywa localaywa = new aywa();
-    localaywa.jdField_a_of_type_Auoo = new sww(this);
-    localaywa.i = this.jdField_a_of_type_JavaLangString;
-    localaywa.jdField_a_of_type_Boolean = true;
-    localaywa.jdField_b_of_type_Int = 196610;
+    aywc localaywc = new aywc();
+    localaywc.jdField_a_of_type_Auoq = new sww(this);
+    localaywc.i = this.jdField_b_of_type_JavaLangString;
+    localaywc.jdField_a_of_type_Boolean = true;
+    localaywc.jdField_b_of_type_Int = 196609;
     QQStoryContext.a();
-    localaywa.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
-    localaywa.c = "";
-    localaywa.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    this.jdField_a_of_type_Ayvv.a(localaywa);
+    localaywc.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localaywc.c = "";
+    localaywc.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localaywc);
   }
   
   protected void a()
   {
-    File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
-    if ((!localFile2.exists()) || (localFile2.length() == 0L)) {
-      veg.e("Q.qqstory.publish.upload:ImageFileObject", "file not exit %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    }
-    Object localObject;
-    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a())) {
-      localObject = null;
-    }
-    try
+    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!vyf.c(this.jdField_b_of_type_JavaLangString)))
     {
-      File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
-      localObject = localFile1;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      Object localObject = ((swk)tcz.a(14)).a(this.jdField_a_of_type_JavaLangString);
+      if (((swn)localObject).a.isSuccess())
       {
-        veg.b("Q.qqstory.publish.upload:ImageFileObject", "create file", localIOException);
+        this.jdField_b_of_type_JavaLangString = ((swn)localObject).jdField_b_of_type_JavaLangString;
+        if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!vyf.c(this.jdField_b_of_type_JavaLangString)))
+        {
+          ved.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString });
+          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
+          ((ErrorMessage)localObject).extraMsg = "composite";
+          super.notifyResult(localObject);
+        }
+      }
+      else
+      {
+        ((swn)localObject).a.extraMsg = "composite";
+        super.notifyResult(((swn)localObject).a);
+        return;
       }
     }
-    if (PngQuantUtils.a(localFile2, localObject))
-    {
-      localFile2.delete();
-      localObject.renameTo(localFile2);
-    }
+    svx.a().b(this.jdField_a_of_type_JavaLangString);
     c();
   }
 }

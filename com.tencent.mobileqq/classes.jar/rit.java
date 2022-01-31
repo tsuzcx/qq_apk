@@ -1,18 +1,19 @@
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class rit
-  implements rvy
+  implements rkf
 {
-  public rit(FastWebActivity paramFastWebActivity) {}
+  public rit(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public int a()
+  public BaseData a()
   {
-    return FastWebActivity.a(this.a);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
   }
   
-  public boolean a()
+  public void a()
   {
-    return true;
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

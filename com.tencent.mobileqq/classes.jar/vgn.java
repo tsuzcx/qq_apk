@@ -1,57 +1,54 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
 
-class vgn
-  extends vpe
+public class vgn
+  implements vgp
 {
-  private final List<vot> a = new ArrayList();
+  private long jdField_a_of_type_Long;
   
-  public int a()
-  {
-    return this.a.size();
-  }
+  public vgn(EditVideoFilter paramEditVideoFilter) {}
   
-  public vot a(int paramInt)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return (vot)this.a.get(paramInt);
+    ver localver = (ver)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(ver.class);
+    if (localver != null) {
+      localver.a(paramMotionEvent);
     }
-    return null;
   }
   
-  public vot a(String paramString)
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if (paramMotionEvent2 != null)
     {
-      vot localvot = (vot)localIterator.next();
-      if (TextUtils.equals(paramString, localvot.a)) {
-        return localvot;
+      ver localver = (ver)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(ver.class);
+      if (localver != null) {}
+      for (boolean bool = localver.a(paramMotionEvent2);; bool = false)
+      {
+        if (bool)
+        {
+          a(paramMotionEvent1);
+          a(paramMotionEvent2);
+        }
+        return bool;
       }
     }
-    return null;
+    return false;
   }
   
-  public void a(Collection<vot> paramCollection)
+  public void onClick(View paramView)
   {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
-    this.a.clear();
-    this.a.addAll(paramCollection);
-    a();
-  }
-  
-  public void a(vot paramvot)
-  {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramvot);
-    int i = this.a.indexOf(paramvot);
-    if (i >= 0)
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 300L)
     {
-      this.a.set(i, paramvot);
-      a(i);
+      this.jdField_a_of_type_Long = l;
+      paramView = (ver)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(ver.class);
+      if (paramView != null) {
+        paramView.d_();
+      }
+      return;
     }
+    ved.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
   }
 }
 

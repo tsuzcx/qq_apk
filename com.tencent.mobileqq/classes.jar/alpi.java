@@ -1,21 +1,18 @@
-import com.tencent.ark.ark.VariantWrapper;
-
 class alpi
-  implements admi
+  implements wth
 {
-  alpi(alpf paramalpf, long paramLong) {}
+  alpi(alpe paramalpe, long paramLong) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    alpe localalpe = this.jdField_a_of_type_Alpe;
+    long l = this.jdField_a_of_type_Long;
+    if (paramBoolean1) {}
+    for (int i = 1;; i = 0)
+    {
+      localalpe.a(l, paramBoolean1, paramString, i);
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-
-final class bjor
-  implements View.OnClickListener
+public class bjor<T>
+  extends bjoo<T>
 {
-  bjor(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
-  
-  public void onClick(View paramView)
+  public void a(T paramT)
   {
-    this.a.a();
+    super.a(paramT);
+  }
+  
+  public void b(T paramT)
+  {
+    super.b(paramT);
   }
 }
 

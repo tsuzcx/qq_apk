@@ -1,17 +1,28 @@
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqh
-  extends bfmg
+  extends bfmx
 {
   public acqh(VisitorsActivity paramVisitorsActivity) {}
   
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.a.c > 0)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      return;
+    }
+    this.a.f.setVisibility(4);
+  }
+  
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.d.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 

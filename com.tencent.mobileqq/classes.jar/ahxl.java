@@ -1,26 +1,54 @@
-public abstract interface ahxl
+import android.os.FileObserver;
+import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
+
+public class ahxl
+  extends FileObserver
 {
-  public abstract vrn a();
+  private boolean a;
   
-  public abstract void a();
+  private void a()
+  {
+    if (!this.a)
+    {
+      this.a = true;
+      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
+    }
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(vrn paramvrn);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract void d();
+  public void onEvent(int paramInt, String paramString)
+  {
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+      }
+    }
+    do
+    {
+      return;
+      if ((paramInt & 0x400) == 1024)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+      if ((paramInt & 0x200) == 512)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+    }
+    a();
+  }
 }
 
 

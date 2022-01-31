@@ -1,23 +1,51 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdcz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements bdje
 {
-  public bdcz(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  protected bdcz(bdcy parambdcy) {}
   
-  public void onGlobalLayout()
+  public void a(Exception paramException)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    bdii.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
     {
-      int i = QuickLoginAuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
+      int i = paramJSONObject.getInt("ret");
+      Object localObject = paramJSONObject.getString("msg");
+      if (i == 0)
+      {
+        localObject = paramJSONObject.getJSONArray("update_list");
+        i = ((JSONArray)localObject).length();
+        if (i > 0) {
+          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
+        }
+        localObject = bdob.a(bcyb.a().a(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (this.a.a != null) {
+          this.a.a.a();
+        }
+      }
+      else
+      {
+        bdii.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        return;
+      }
     }
-    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    catch (JSONException paramJSONObject)
+    {
+      bdii.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+    }
   }
 }
 

@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
 
 public class bcva
-  implements DialogInterface.OnCancelListener
+  implements View.OnLayoutChangeListener
 {
-  public bcva(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public bcva(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ShareActionSheetV2.a(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
-    }
+    paramView.setTop(paramInt6);
+    paramView.setBottom(paramInt8);
+    paramView.setLeft(paramInt5);
+    paramView.setRight(paramInt7);
   }
 }
 

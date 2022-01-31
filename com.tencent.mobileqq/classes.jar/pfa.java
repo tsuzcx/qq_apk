@@ -1,89 +1,21 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class pfa
-  implements phs
+class pfa
+  implements ViewBase.OnClickListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  pfa(pey parampey, pau parampau, Container paramContainer) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(ViewBase paramViewBase)
   {
-    return ped.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    if (NetworkState.isWifiConn())
-    {
-      localObject = localViewBase.findViewBaseByName("id_large_video_icon");
-      if (localObject != null) {
-        ((ViewBase)localObject).setVisibility(0);
-      }
-      localObject = localViewBase.findViewBaseByName("id_video_bg");
-      if (localObject != null) {
-        ((ViewBase)localObject).setVisibility(8);
-      }
-      omu.a(false, localViewBase, null);
-      if (parampax != null)
-      {
-        localObject = parampax.a();
-        if ((localObject != null) && (((BaseArticleInfo)localObject).isAccountShown)) {
-          pjp.a(paramContainer, parampax);
-        }
-      }
-      return;
-    }
-    Object localObject = localViewBase.findViewBaseByName("id_large_video_icon");
-    if (localObject != null) {
-      ((ViewBase)localObject).setVisibility(8);
-    }
-    localObject = localViewBase.findViewBaseByName("id_video_bg");
-    if (localObject != null) {
-      ((ViewBase)localObject).setVisibility(0);
-    }
-    NativeText localNativeText = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
-    if (localNativeText != null)
-    {
-      localObject = ajyc.a(2131701092);
-      if (bbwc.a() == 1)
-      {
-        localObject = ajyc.a(2131701093);
-        label170:
-        localNativeText.setText((CharSequence)localObject);
-      }
-    }
-    else
-    {
-      if (parampax == null) {
-        break label251;
-      }
-    }
-    label251:
-    for (localObject = parampax.a();; localObject = null)
-    {
-      omu.a(localViewBase, (BaseArticleInfo)localObject);
-      break;
-      if (parampax.a().mXGFileSize <= 0L) {
-        break label170;
-      }
-      localObject = qol.b(parampax.a().mXGFileSize) + ajyc.a(2131701091);
-      break label170;
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
-  {
-    return false;
+    paramViewBase = this.jdField_a_of_type_Pau.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    ram.a(paramViewBase, (int)paramViewBase.mChannelID);
+    shu.a(paramViewBase);
   }
 }
 

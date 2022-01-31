@@ -1,23 +1,7 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-
 class aeeq
-  implements bfoq
+  extends actn
 {
-  aeeq(aeep paramaeep, MessageForTroopStory paramMessageForTroopStory, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      vwt.a(this.jdField_a_of_type_Aeep.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
-    }
-  }
+  aeeq(aeep paramaeep) {}
 }
 
 

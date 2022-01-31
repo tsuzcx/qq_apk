@@ -1,29 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
-
 class aqde
-  implements View.OnTouchListener
+  implements bbkh
 {
-  aqde(aqdb paramaqdb) {}
+  aqde(aqdd paramaqdd) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    aqdb.a(this.a).setImageResource(2130839619);
-    aqdb.a(this.a).setTag(Integer.valueOf(2130839619));
-    if (aqdb.a(this.a))
-    {
-      aqdb.a(this.a);
-      aqdb.a(this.a).removeView(aqdb.a(this.a));
-      aqdb.a(this.a, false);
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
-    }
-    return false;
+    aqdd.a(this.a, bbkf.a(paramInt));
+    aqdd.a(this.a).height = aqdd.a(this.a);
   }
 }
 

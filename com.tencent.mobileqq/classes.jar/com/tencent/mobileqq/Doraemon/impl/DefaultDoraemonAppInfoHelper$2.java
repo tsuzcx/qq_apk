@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import aacb;
-import aacl;
-import asiu;
+import aabx;
+import aach;
+import asiw;
 
 public class DefaultDoraemonAppInfoHelper$2
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$2(aacb paramaacb, aacl paramaacl, asiu paramasiu) {}
+  public DefaultDoraemonAppInfoHelper$2(aabx paramaabx, aach paramaach, asiw paramasiw) {}
   
   public void run()
   {
-    aacl localaacl = this.jdField_a_of_type_Aacl;
-    asiu localasiu = this.jdField_a_of_type_Asiu;
-    if (this.jdField_a_of_type_Asiu.c == 1) {}
+    aach localaach = this.jdField_a_of_type_Aach;
+    asiw localasiw = this.jdField_a_of_type_Asiw;
+    if (this.jdField_a_of_type_Asiw.c == 1) {}
     for (int i = 2;; i = 3)
     {
-      localaacl.a(localasiu, i);
+      localaach.a(localasiw, i);
       return;
     }
   }

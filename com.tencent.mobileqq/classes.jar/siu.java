@@ -1,175 +1,240 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.FeedsInfo;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.ReqBody;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.RspBody;
+import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
+import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.RspBody;
+import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class siu
+  extends ajtb
 {
-  private static DownloadInfo a;
+  static final String a = "Q.pubaccount.video." + siv.class.getSimpleName();
   
-  public static DownloadInfo a(String paramString)
+  public siu(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    try
+    super(paramQQAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    Object localObject = new oidb_cmd0x8c8.RspBody();
+    int k = pot.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    paramObject = new Bundle();
+    paramToServiceMsg = "";
+    if (k == 0)
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      localDownloadInfo.jdField_c_of_type_JavaLangString = localJSONObject.getString("appid");
-      localDownloadInfo.jdField_d_of_type_JavaLangString = localJSONObject.getString("url");
-      localDownloadInfo.e = localJSONObject.getString("packageName");
-      localDownloadInfo.h = localJSONObject.getString("via");
-      localDownloadInfo.a = true;
-      localDownloadInfo.jdField_d_of_type_Boolean = true;
-      localDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;
-      String str = localJSONObject.getString("isAutoInstall");
-      if (str != null) {
-        localDownloadInfo.a = str.equals("1");
-      }
-      str = localJSONObject.getString("isAutoInstallBySDK");
-      if (str != null) {
-        localDownloadInfo.jdField_d_of_type_Boolean = str.equals("1");
-      }
-      str = localJSONObject.getString("isShowNotification");
-      if (str != null) {
-        if (!str.equals("1")) {
-          break label189;
+      if ((((oidb_cmd0x8c8.RspBody)localObject).rpt_social_feeds_info.has()) && (((oidb_cmd0x8c8.RspBody)localObject).rpt_social_feeds_info.get() != null))
+      {
+        localObject = ((oidb_cmd0x8c8.RspBody)localObject).rpt_social_feeds_info.get().iterator();
+        int i = 2;
+        paramFromServiceMsg = paramToServiceMsg;
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break label311;
+        }
+        oidb_cmd0x8c8.FeedsInfo localFeedsInfo = (oidb_cmd0x8c8.FeedsInfo)((Iterator)localObject).next();
+        if ((localFeedsInfo.bytes_rowkey.has()) && (localFeedsInfo.bytes_rowkey.get() != null))
+        {
+          paramFromServiceMsg = localFeedsInfo.bytes_rowkey.get().toStringUtf8();
+          label136:
+          if ((!localFeedsInfo.has()) || (localFeedsInfo.get() == null) || (!localFeedsInfo.msg_social_fees_info.has()) || (localFeedsInfo.msg_social_fees_info.get() == null)) {
+            break label288;
+          }
+          paramToServiceMsg = (oidb_cmd0x8c8.SocializeFeedsInfo)localFeedsInfo.msg_social_fees_info.get();
+          if (!paramToServiceMsg.uint32_myself_like_status.has()) {
+            break label273;
+          }
+          j = paramToServiceMsg.uint32_myself_like_status.get();
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d(a, 2, "getFavoriteState，faviriteState为:" + j);
+            i = j;
+          }
+        }
+        label273:
+        label288:
+        for (;;)
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          break;
+          paramFromServiceMsg = paramToServiceMsg;
+          if (!QLog.isColorLevel()) {
+            break label136;
+          }
+          QLog.e(a, 2, "getFavoriteState, 返回的articleId空");
+          paramFromServiceMsg = paramToServiceMsg;
+          break label136;
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "getFavoriteState，faviriteState为空");
+          }
         }
       }
-      label189:
-      for (int i = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;; i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE)
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.e(a, 2, "getFavoriteState, 返回直接出错了");
+    }
+    int j = 2;
+    paramFromServiceMsg = paramToServiceMsg;
+    label311:
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "getFavoriteState articleId :" + paramFromServiceMsg + " faviriteState :" + j);
+    }
+    paramObject.putInt("VALUE_VIDEO_FAVORITE_STATE", j);
+    paramObject.putString("VALUE_VIDEO_ARTICLE_ID", paramFromServiceMsg);
+    if (k == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      super.notifyUI(1, bool, paramObject);
+      return;
+    }
+  }
+  
+  private void a(boolean paramBoolean1, long paramLong, int paramInt, String paramString, boolean paramBoolean2)
+  {
+    oidb_cmd0x83e.ReqBody localReqBody = new oidb_cmd0x83e.ReqBody();
+    localReqBody.uint64_uin.set(Long.valueOf(onh.a()).longValue());
+    if (paramBoolean1)
+    {
+      localReqBody.uint64_feeds_id.set(paramLong);
+      localReqBody.msg_feeds_info = new oidb_cmd0x83e.FeedsInfo();
+      localReqBody.msg_feeds_info.feeds_type.set(paramInt);
+      if (!paramBoolean2) {
+        break label114;
+      }
+      localReqBody.uint32_operation.set(2);
+    }
+    for (;;)
+    {
+      super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x83e", 2110, 0, localReqBody.toByteArray()));
+      return;
+      localReqBody.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramString));
+      break;
+      label114:
+      localReqBody.uint32_operation.set(3);
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool = true;
+    paramToServiceMsg = new oidb_cmd0x83e.RspBody();
+    int i = pot.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (i == 0)
+    {
+      QLog.d(a, 1, "handle0x83eUpvoteAction result OK");
+      if (QLog.isColorLevel())
       {
-        localDownloadInfo.i = i;
-        localDownloadInfo.jdField_c_of_type_Boolean = true;
-        localDownloadInfo.m = onk.f(40677);
-        localDownloadInfo.f = localJSONObject.getString("appName");
-        return localDownloadInfo;
+        if (paramToServiceMsg.uint64_feeds_id.has()) {
+          QLog.d(a, 2, "upvote feeds id:" + paramToServiceMsg.uint64_feeds_id.get());
+        }
+        if (paramToServiceMsg.uint32_operation.has())
+        {
+          paramFromServiceMsg = a;
+          paramObject = new StringBuilder().append("upvote status:");
+          if (paramToServiceMsg.uint32_operation.get() != 2) {
+            break label134;
+          }
+          QLog.d(paramFromServiceMsg, 2, bool);
+        }
       }
-      return null;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("VideoFeedsWeiShiUtils", 4, "json err:" + paramString);
+    label134:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        bool = false;
+      }
     }
+    QLog.d(a, 1, "handle0x83eUpvoteAction result wrong:" + i);
   }
   
-  private static String a(String paramString)
+  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (paramVideoInfo == null) {
+      return;
+    }
+    if (paramVideoInfo.b)
     {
-      return null;
-      if (paramString.equals("video_type_videocard")) {
-        return "https://act.qzone.qq.com/vip/meteor/m/p/3f04eaa353710dd5c996e09588244bf93066";
-      }
-      if (paramString.equals("video_type_videoguid")) {
-        return "https://act.qzone.qq.com/vip/meteor/m/p/01e512f4384e934f8b42e30f9e16f1283064";
-      }
-    } while (!paramString.equals("video_type_videopublic"));
-    return "https://act.qzone.qq.com/vip/meteor/m/p/f644be070eeed9bcba017b43a8c7980a3065";
+      a(true, paramVideoInfo.d, paramVideoInfo.k, null, paramBoolean);
+      return;
+    }
+    a(false, -1L, -1, paramVideoInfo.g, paramBoolean);
   }
   
-  public static void a(Context paramContext, String paramString)
+  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)
   {
-    if (paramContext == null) {}
-    Intent localIntent;
+    if (paramBaseArticleInfo == null) {
+      return;
+    }
+    if (!ram.d(paramBaseArticleInfo))
+    {
+      a(true, paramBaseArticleInfo.mFeedId, paramBaseArticleInfo.mFeedType, null, paramBoolean);
+      return;
+    }
+    a(false, -1L, -1, paramBaseArticleInfo.innerUniqueID, paramBoolean);
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x8c8");
+      this.allowCmdSet.add("OidbSvc.0x83e");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return siv.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "handleGetPlayCount onReceive");
+    }
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
     do
     {
       do
       {
         return;
-      } while (TextUtils.isEmpty(paramString));
-      localIntent = new Intent();
-      localIntent.setAction("android.intent.action.VIEW");
-      localIntent.putExtra("big_brother_source_key", onk.f(40677));
-      localIntent.putExtra("big_brother_ref_source_key", onk.f(0));
-      localIntent.setData(Uri.parse(c(paramString)));
-    } while (!qol.a(paramContext, localIntent));
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static DownloadInfo b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return null;
-      DownloadInfo localDownloadInfo = new DownloadInfo();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (!localJSONObject.optBoolean("isWeb", false))
+        try
         {
-          localDownloadInfo.jdField_d_of_type_JavaLangString = localJSONObject.optString("url");
-          localDownloadInfo.e = localJSONObject.optString("packageName", null);
-          localDownloadInfo.m = onk.f(0);
-          return localDownloadInfo;
+          if (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x8c8")) {
+            break;
+          }
+          a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("VideoFeedsWeiShiUtils", 4, "json err:" + paramString);
-      }
-    }
-    return null;
-  }
-  
-  private static String b(String paramString)
-  {
-    return null;
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    if (paramContext == null) {}
-    while (TextUtils.isEmpty(paramString)) {
+        catch (Exception paramToServiceMsg) {}
+      } while (!QLog.isColorLevel());
+      QLog.e(a, 2, "onReceive ERROR e=" + paramToServiceMsg.getMessage() + paramFromServiceMsg.getServiceCmd());
       return;
-    }
-    if (!TextUtils.isEmpty(b(paramString))) {
-      a = a(b(paramString));
-    }
-    if (a != null)
-    {
-      if (NetworkState.getNetworkType() == 1)
-      {
-        bdkp.a().a(a);
-        return;
-      }
-      paramContext = bbcv.a(paramContext, 230);
-      paramContext.setTitle(null);
-      paramContext.setMessage(ajyc.a(2131716219));
-      paramContext.setNegativeButton(ajyc.a(2131716207), new siw()).setPositiveButton(ajyc.a(2131716163), new siv());
-      paramContext.show();
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", a(paramString));
-    localIntent.putExtra("big_brother_source_key", onk.f(40677));
-    paramContext.startActivity(localIntent);
-  }
-  
-  private static String c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      if (paramString.equals("video_type_videocard")) {
-        return "weishi://main?goto=recommend&logsour=5001";
-      }
-      if (paramString.equals("video_type_videoguid")) {
-        return "weishi://main?goto=recommend&logsour=5002";
-      }
-    } while (!paramString.equals("video_type_videopublic"));
-    return "weishi://main?goto=recommend&logsour=5003";
+    } while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x83e"));
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

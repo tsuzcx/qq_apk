@@ -1,96 +1,22 @@
-import com.tencent.widget.ExpandableListView;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.widget.DynamicGridView;
 
 public class bfqz
+  extends AnimatorListenerAdapter
 {
-  private static ArrayList<bfqz> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public bfqz(DynamicGridView paramDynamicGridView) {}
   
-  static
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    DynamicGridView.b(this.a, false);
+    DynamicGridView.a(this.a);
   }
   
-  private static bfqz a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localbfqz = (bfqz)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localbfqz.b();
-        return localbfqz;
-      }
-      bfqz localbfqz = new bfqz();
-      return localbfqz;
-    }
-  }
-  
-  public static bfqz a(int paramInt)
-  {
-    return a(2, paramInt, 0, 0);
-  }
-  
-  public static bfqz a(int paramInt1, int paramInt2)
-  {
-    return a(1, paramInt1, paramInt2, 0);
-  }
-  
-  public static bfqz a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    bfqz localbfqz = a();
-    localbfqz.d = paramInt1;
-    localbfqz.jdField_a_of_type_Int = paramInt2;
-    localbfqz.b = paramInt3;
-    localbfqz.c = paramInt4;
-    return localbfqz;
-  }
-  
-  public static bfqz a(long paramLong)
-  {
-    if (paramLong == 4294967295L) {
-      return null;
-    }
-    bfqz localbfqz = a();
-    localbfqz.jdField_a_of_type_Int = ExpandableListView.c(paramLong);
-    if (ExpandableListView.b(paramLong) == 1)
-    {
-      localbfqz.d = 1;
-      localbfqz.b = ExpandableListView.d(paramLong);
-      return localbfqz;
-    }
-    localbfqz.d = 2;
-    return localbfqz;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  public long a()
-  {
-    if (this.d == 1) {
-      return ExpandableListView.a(this.jdField_a_of_type_Int, this.b);
-    }
-    return ExpandableListView.b(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
-      }
-      return;
-    }
+    DynamicGridView.b(this.a, true);
+    DynamicGridView.a(this.a);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abww;
+import abws;
 
 public class QQSettingMe$32$2
   implements Runnable
 {
-  public QQSettingMe$32$2(abww paramabww) {}
+  public QQSettingMe$32$2(abws paramabws) {}
   
   public void run()
   {

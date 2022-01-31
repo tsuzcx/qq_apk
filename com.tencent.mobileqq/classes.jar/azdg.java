@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class azdg
-  implements Animation.AnimationListener
+  implements InputFilter
 {
-  public azdg(AudioRecordFragment paramAudioRecordFragment) {}
+  public azdg(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (bajf.a(paramCharSequence, '\n') + bajf.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

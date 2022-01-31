@@ -1,41 +1,23 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
 public class bdor
-  extends bdok
 {
-  private WeakReference<bdos> a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public bdor()
+  public bdor(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    super(false, null);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.d = paramString3;
+    this.c = paramString4;
+    this.e = paramString5;
   }
   
-  public void a(bdos parambdos)
+  public String toString()
   {
-    this.a = new WeakReference(parambdos);
-  }
-  
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
-  {
-    super.onQueryCallback(paramArrayList);
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((bdos)this.a.get()).a(paramArrayList);
-    }
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    super.onWadlTaskStatusChanged(paramWadlResult);
-    if ((paramWadlResult == null) || (paramWadlResult.a == null)) {}
-    int i;
-    do
-    {
-      return;
-      i = bdop.a(paramWadlResult.b);
-    } while ((this.a == null) || (this.a.get() == null));
-    ((bdos)this.a.get()).a(i, paramWadlResult);
+    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
   }
 }
 

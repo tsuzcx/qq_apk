@@ -1,25 +1,16 @@
+import android.database.DataSetObserver;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 
-public class rjm
-  implements amkq
+class rjm
+  extends DataSetObserver
 {
-  public rjm(FastWebActivity paramFastWebActivity) {}
+  rjm(rjl paramrjl) {}
   
-  public void a()
+  public void onChanged()
   {
-    FastWebActivity.b(this.a, true);
-    QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeClose");
-  }
-  
-  public void b()
-  {
-    if (FastWebActivity.a(this.a) == 0L)
-    {
-      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
-      QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
-    }
+    QLog.d(FastWebActivity.a(this.a.a), 2, "DataSetObserver ");
+    FastWebActivity.a(this.a.a, 100L);
   }
 }
 

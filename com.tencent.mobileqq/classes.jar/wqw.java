@@ -1,32 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class wqw
-  implements View.OnClickListener
+  implements ony
 {
   public wqw(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
-    {
-      paramView = SubscribeVideoDetailFragment.a(this.a).a(1);
-      bool1 = bool2;
-      if (SubscribeVideoDetailFragment.a(this.a).d()) {
-        if (SubscribeVideoDetailFragment.a(this.a).f()) {
-          break label78;
-        }
-      }
-    }
-    label78:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramView.c = bool1;
-      this.a.a(paramView);
-      return;
+    QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
+    if (this.a.a != null) {
+      this.a.a.f(paramString2);
     }
   }
 }

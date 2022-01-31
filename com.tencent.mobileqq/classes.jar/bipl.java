@@ -1,15 +1,17 @@
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ttpic.openapi.model.WMEditItem;
 
 class bipl
-  implements View.OnClickListener
+  implements bjos<Boolean>
 {
-  bipl(biph parambiph, bipp parambipp, WMEditItem paramWMEditItem) {}
+  bipl(bipi parambipi) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    biph.a(this.jdField_a_of_type_Biph, this.jdField_a_of_type_Bipp.a, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
+    if (paramBoolean == null) {
+      return;
+    }
+    bipi.e(this.a).setSelected(paramBoolean.booleanValue());
   }
 }
 

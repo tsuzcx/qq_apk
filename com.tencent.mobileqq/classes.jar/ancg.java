@@ -1,46 +1,42 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
 
 public class ancg
-  extends ampb<ancc>
+  extends ampa<ancf>
 {
-  public static ancc a()
+  public static ancf a()
   {
-    return (ancc)ampm.a().a(525);
+    return (ancf)ampl.a().a(377);
   }
   
   public int a()
   {
-    return 525;
+    return 377;
   }
   
   @NonNull
-  public ancc a(int paramInt)
+  public ancf a(int paramInt)
   {
-    return new ancc();
+    return new ancf();
   }
   
   @Nullable
-  public ancc a(ampi[] paramArrayOfampi)
+  public ancf a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return ancc.a(paramArrayOfampi);
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return ancf.a(paramArrayOfamph);
     }
     return null;
   }
   
-  public Class<ancc> a()
+  public Class<ancf> a()
   {
-    return ancc.class;
+    return ancf.class;
   }
   
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocLocalCooperationProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
+  public void a(int paramInt) {}
   
-  public void a(ancc paramancc) {}
+  public void a(ancf paramancf) {}
   
   public int b()
   {

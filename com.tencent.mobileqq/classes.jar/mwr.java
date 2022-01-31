@@ -1,23 +1,28 @@
 import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class mwr
-  implements View.OnClickListener
+  implements bfpt
 {
   public mwr(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
-    paramView = str;
-    if (str == null) {
-      paramView = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
     }
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "", "");
+    paramAdapterView = (mwt)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

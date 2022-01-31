@@ -1,25 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class baum
-  extends BroadcastReceiver
+class baum
+  implements bfph
 {
-  public baum(SnapshotService paramSnapshotService) {}
+  baum(baui parambaui) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    long l = paramIntent.getLongExtra("id", -1L);
-    int i = paramIntent.getIntExtra("action", -1);
-    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
+    if (this.a.jdField_b_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
+    }
+    this.a.jdField_b_of_type_Boolean = true;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
+    default: 
+      this.a.b(false);
+      this.a.jdField_a_of_type_Int = -1;
+      this.a.jdField_b_of_type_Int = -1;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
       }
-      SnapshotService.a(false);
-      this.a.finish();
+      break;
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_Bfpc.dismiss();
+      return;
+      this.a.b(true);
+      this.a.jdField_b_of_type_Int = 1;
+      baui.a(this.a);
+      continue;
+      this.a.b(true);
+      this.a.jdField_b_of_type_Int = 0;
+      baui.a(this.a);
     }
   }
 }

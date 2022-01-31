@@ -1,22 +1,19 @@
-public final class bksc
-  implements aiaw
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+
+public class bksc
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  public bksc(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if (this.a.a != null)
+    {
+      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
+      this.a.a.a(paramMediaPlayer);
     }
-    return -paramInt1;
   }
 }
 

@@ -23,20 +23,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import askt;
-import asku;
-import asla;
-import asle;
-import asls;
-import asly;
-import asmf;
-import asmg;
+import askv;
+import askw;
+import aslc;
+import aslg;
+import aslu;
+import asma;
 import asmh;
-import asnx;
-import asof;
-import asog;
-import bbcv;
-import bbgg;
+import asmi;
+import asmj;
+import asnz;
+import asoh;
+import asoi;
+import bbdj;
+import bbgu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.NotificationFactory;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
@@ -52,7 +52,7 @@ import mqq.os.MqqHandler;
 
 public class MsgBackupBaseFragment
   extends IphoneTitleBarFragment
-  implements Handler.Callback, View.OnClickListener, asla
+  implements Handler.Callback, View.OnClickListener, aslc
 {
   protected int a;
   public long a;
@@ -61,7 +61,7 @@ public class MsgBackupBaseFragment
   protected LinearLayout a;
   protected ProgressBar a;
   public TextView a;
-  protected asku a;
+  protected askw a;
   protected FormSimpleItem a;
   protected Runnable a;
   protected MqqHandler a;
@@ -96,7 +96,7 @@ public class MsgBackupBaseFragment
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangRunnable = new MsgBackupBaseFragment.1(this);
-    this.jdField_a_of_type_Asku = new asmf(this);
+    this.jdField_a_of_type_Askw = new asmh(this);
     this.jdField_b_of_type_JavaLangRunnable = new MsgBackupBaseFragment.3(this);
     this.jdField_c_of_type_JavaLangRunnable = new MsgBackupBaseFragment.6(this);
     this.jdField_e_of_type_Int = 2;
@@ -104,26 +104,26 @@ public class MsgBackupBaseFragment
   
   private void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131374989));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131374984));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370147));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131373406));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370145));
-    this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370139));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131370140));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131370144));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370143));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370152));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131373407));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.mContentView.findViewById(2131369495));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131374991));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131374986));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370146));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131373408));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370144));
+    this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370138));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131370139));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131370143));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370142));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370151));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131373409));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.mContentView.findViewById(2131369494));
     this.jdField_e_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131370722));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370721));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131370149));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370148));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370150));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131370151));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131370148));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370147));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131370149));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131370150));
     this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.mContentView.findViewById(2131377679));
-    this.jdField_c_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.mContentView.findViewById(2131376447));
+    this.jdField_c_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.mContentView.findViewById(2131376449));
   }
   
   protected long a()
@@ -140,17 +140,17 @@ public class MsgBackupBaseFragment
   
   public void a(int paramInt1, int paramInt2)
   {
-    asog.b("MsgBackup.MsgBackupBaseFragment", "isCompleted = %b, finishedSessions = %d, totalSession = %d", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    asoi.b("MsgBackup.MsgBackupBaseFragment", "isCompleted = %b, finishedSessions = %d, totalSession = %d", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == paramInt2)
     {
-      asof.a("total_transport_cost", null);
-      asof.a();
+      asoh.a("total_transport_cost", null);
+      asoh.a();
     }
   }
   
   public void a(long paramLong)
   {
-    asog.b("MsgBackup.MsgBackupBaseFragment", "speedState------> increment = " + paramLong, new Object[0]);
+    asoi.b("MsgBackup.MsgBackupBaseFragment", "speedState------> increment = " + paramLong, new Object[0]);
   }
   
   public void a(Activity paramActivity)
@@ -161,7 +161,7 @@ public class MsgBackupBaseFragment
       paramActivity.setResult(1001);
       paramActivity.finish();
     }
-    asle.a().d();
+    aslg.a().d();
   }
   
   public void a(TextView paramTextView, String paramString)
@@ -178,9 +178,9 @@ public class MsgBackupBaseFragment
     this.jdField_a_of_type_MqqOsMqqHandler.post(new MsgBackupBaseFragment.7(this, paramTextView, paramString));
   }
   
-  public void a(asls paramasls) {}
+  public void a(aslu paramaslu) {}
   
-  public void a(asly paramasly) {}
+  public void a(asma paramasma) {}
   
   public void a(Integer paramInteger) {}
   
@@ -213,9 +213,9 @@ public class MsgBackupBaseFragment
   {
     e();
     if (this.jdField_a_of_type_Int != 4) {
-      asle.jdField_d_of_type_Boolean = false;
+      aslg.jdField_d_of_type_Boolean = false;
     }
-    asle.a = false;
+    aslg.a = false;
   }
   
   public void c(boolean paramBoolean)
@@ -225,8 +225,8 @@ public class MsgBackupBaseFragment
     }
     Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10011);
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-    asof.b();
-    asof.a(null, "total_transport_cost");
+    asoh.b();
+    asoh.a(null, "total_transport_cost");
   }
   
   protected void d() {}
@@ -254,25 +254,25 @@ public class MsgBackupBaseFragment
     if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
       return;
     }
-    asle.a().a().c();
-    asnx.a().b();
-    bbcv.a(localFragmentActivity, 0, localFragmentActivity.getString(2131690381), localFragmentActivity.getString(2131690380), localFragmentActivity.getString(2131690420), localFragmentActivity.getString(2131690419), new asmg(this), new asmh(this)).show();
+    aslg.a().a().c();
+    asnz.a().b();
+    bbdj.a(localFragmentActivity, 0, localFragmentActivity.getString(2131690381), localFragmentActivity.getString(2131690380), localFragmentActivity.getString(2131690420), localFragmentActivity.getString(2131690419), new asmi(this), new asmj(this)).show();
   }
   
   public void g()
   {
-    asle.a().d();
+    aslg.a().d();
     h();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561068;
+    return 2131561067;
   }
   
   protected void h()
   {
-    if (asnx.a().a() == 2)
+    if (asnz.a().a() == 2)
     {
       MsgBackupCompleteFragment.a(getActivity(), this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       return;
@@ -283,7 +283,7 @@ public class MsgBackupBaseFragment
   public boolean handleMessage(Message paramMessage)
   {
     if (getActivity() == null) {
-      asog.a("MsgBackup.MsgBackupBaseFragment", "activity is null------------->", new Object[0]);
+      asoi.a("MsgBackup.MsgBackupBaseFragment", "activity is null------------->", new Object[0]);
     }
     do
     {
@@ -310,14 +310,14 @@ public class MsgBackupBaseFragment
   protected void j()
   {
     Object localObject = getActivity().app;
-    asog.a("MsgBackup.MsgBackupBaseFragment", "fight notification start ..app.isBackground_Stop =%b.app,.isBackground_Pause = %b,.", new Object[] { Boolean.valueOf(((QQAppInterface)localObject).isBackground_Stop), Boolean.valueOf(((QQAppInterface)localObject).isBackground_Pause) });
+    asoi.a("MsgBackup.MsgBackupBaseFragment", "fight notification start ..app.isBackground_Stop =%b.app,.isBackground_Pause = %b,.", new Object[] { Boolean.valueOf(((QQAppInterface)localObject).isBackground_Stop), Boolean.valueOf(((QQAppInterface)localObject).isBackground_Pause) });
     if ((((QQAppInterface)localObject).isBackground_Pause) || (((QQAppInterface)localObject).isBackground_Stop))
     {
-      asog.a("MsgBackup.MsgBackupBaseFragment", "fight notification start ....", new Object[0]);
+      asoi.a("MsgBackup.MsgBackupBaseFragment", "fight notification start ....", new Object[0]);
       localObject = new Intent(BaseApplicationImpl.getContext(), SplashActivity.class);
       ((Intent)localObject).putExtra("param_notifyid", 524);
       localObject = PendingIntent.getActivity(BaseApplication.getContext(), 0, (Intent)localObject, 134217728);
-      NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130841015).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
+      NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130841012).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
       localBuilder.setContentText("QQ正在进行聊天记录迁移，请保持QQ在前台显示。").setContentIntent((PendingIntent)localObject);
       localObject = localBuilder.build();
       QQNotificationManager.getInstance().notify("MsgBackup", 524, (Notification)localObject);
@@ -343,7 +343,7 @@ public class MsgBackupBaseFragment
     super.onCreate(paramBundle);
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this);
     this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper());
-    this.jdField_b_of_type_Int = askt.a().a();
+    this.jdField_b_of_type_Int = askv.a().a();
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "toPage = " + this.jdField_a_of_type_Int + "; mBizType = " + this.jdField_b_of_type_Int);
     }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbev;
+import bbfj;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class Conversation$2
@@ -10,7 +10,7 @@ class Conversation$2
   
   public void run()
   {
-    boolean bool = bbev.e(BaseApplication.getContext());
+    boolean bool = bbfj.e(BaseApplication.getContext());
     this.this$0.a(new Conversation.2.1(this, bool));
   }
 }

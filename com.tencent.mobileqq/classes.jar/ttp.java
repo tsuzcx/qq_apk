@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import android.support.v4.view.ViewPager;
 
-public class ttp
-  extends bbdf
+class ttp
+  implements bcsc
 {
-  public ttp(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  ttp(tto paramtto) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.setCurrentItem(paramInt2);
   }
 }
 

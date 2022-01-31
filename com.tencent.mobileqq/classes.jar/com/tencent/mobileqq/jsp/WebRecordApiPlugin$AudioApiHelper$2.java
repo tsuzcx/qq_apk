@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import aroz;
-import bbaj;
+import arpb;
+import bbax;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 public class WebRecordApiPlugin$AudioApiHelper$2
   implements Runnable
 {
-  public WebRecordApiPlugin$AudioApiHelper$2(aroz paramaroz, String paramString) {}
+  public WebRecordApiPlugin$AudioApiHelper$2(arpb paramarpb, String paramString) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
               if (((Date)localObject2).before(((Calendar)localObject3).getTime()))
               {
                 localObject1[i].delete();
-                bbaj.a(this.jdField_a_of_type_Aroz.a, str);
+                bbax.a(this.jdField_a_of_type_Arpb.a, str);
               }
               i += 1;
             }
@@ -57,7 +57,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
       }
       long l = System.currentTimeMillis();
       localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-      bbaj.a(this.jdField_a_of_type_Aroz.a, "LAST_DELETE_TIME", (String)localObject1);
+      bbax.a(this.jdField_a_of_type_Arpb.a, "LAST_DELETE_TIME", (String)localObject1);
     }
   }
 }

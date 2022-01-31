@@ -2,13 +2,7 @@ import android.view.View;
 
 public abstract interface bfze
 {
-  public abstract void a(View paramView);
-  
   public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, boolean paramBoolean);
-  
-  public abstract boolean a(View paramView);
 }
 
 

@@ -1,21 +1,34 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import android.graphics.Paint;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class adib
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class adib
+  implements adie
 {
-  adib(adhy paramadhy) {}
+  private Paint a;
   
-  public void onGlobalLayout()
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!axmt.b()))
+    axqy.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", aezl.a(paramInt), 0, "", "", "", "");
+    paramString = aqxj.a(paramString);
+    if ((paramString != null) && (paramString.length() > 20))
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      return;
+      bcql.a(paramContext, ajya.a(2131705468), 0).a();
+      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
+      return false;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    return true;
+  }
+  
+  public boolean a(Context paramContext, String paramString, EditText paramEditText)
+  {
+    if (this.a == null) {
+      this.a = new Paint();
+    }
+    this.a.setTypeface(paramEditText.getTypeface());
+    this.a.setTextSize(paramEditText.getTextSize());
+    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + actj.a(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
   }
 }
 

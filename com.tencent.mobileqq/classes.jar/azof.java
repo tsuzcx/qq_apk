@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class azof
-  implements DialogInterface.OnDismissListener
+  extends akil
 {
-  azof(azoa paramazoa) {}
+  azof(azoc paramazoc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Akil);
+    if (this.a.jdField_a_of_type_Azol != null)
+    {
+      if (paramInt1 == 8) {
+        this.a.jdField_a_of_type_Azol.b(paramInt2, "");
+      }
+      this.a.jdField_a_of_type_Azol = null;
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Akil);
+    if (this.a.jdField_a_of_type_Azol != null)
+    {
+      if (paramInt1 == 8)
+      {
+        this.a.jdField_a_of_type_Azol.b(0, paramString);
+        this.a.a(paramString, true, "");
+        ((akhp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
+      }
+      this.a.jdField_a_of_type_Azol = null;
     }
   }
 }

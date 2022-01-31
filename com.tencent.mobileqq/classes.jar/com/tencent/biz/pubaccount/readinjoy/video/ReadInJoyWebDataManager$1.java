@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import org.json.JSONObject;
-import qke;
+import qkb;
 
 public class ReadInJoyWebDataManager$1
   implements Runnable
 {
-  public ReadInJoyWebDataManager$1(qke paramqke, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject) {}
+  public ReadInJoyWebDataManager$1(qkb paramqkb, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    qke.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_OrgJsonJSONObject);
+    qkb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

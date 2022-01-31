@@ -6,8 +6,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ZoomButtonsController;
-import apue;
-import apxd;
+import apug;
+import apxf;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -25,7 +25,7 @@ public class FileWebView
   float jdField_a_of_type_Float = 1.0F;
   final int jdField_a_of_type_Int = 80;
   long jdField_a_of_type_Long = 0L;
-  apxd jdField_a_of_type_Apxd;
+  apxf jdField_a_of_type_Apxf;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
   boolean jdField_a_of_type_Boolean = false;
@@ -98,7 +98,7 @@ public class FileWebView
   }
   
   /* Error */
-  public boolean a(WebView paramWebView, java.lang.String paramString, apxc paramapxc)
+  public boolean a(WebView paramWebView, java.lang.String paramString, apxe paramapxe)
   {
     // Byte code:
     //   0: aload_2
@@ -169,7 +169,7 @@ public class FileWebView
     //   129: aconst_null
     //   130: astore 6
     //   132: aload_2
-    //   133: invokestatic 188	apue:a	(Ljava/lang/String;)Ljava/util/LinkedHashMap;
+    //   133: invokestatic 188	apug:a	(Ljava/lang/String;)Ljava/util/LinkedHashMap;
     //   136: astore_1
     //   137: aload_1
     //   138: astore 6
@@ -397,7 +397,7 @@ public class FileWebView
     //   0	587	0	this	FileWebView
     //   0	587	1	paramWebView	WebView
     //   0	587	2	paramString	java.lang.String
-    //   0	587	3	paramapxc	apxc
+    //   0	587	3	paramapxe	apxe
     //   155	428	4	i	int
     //   152	12	5	j	int
     //   23	503	6	localObject1	Object
@@ -459,7 +459,7 @@ public class FileWebView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Apxd == null) {
+    if (this.jdField_a_of_type_Apxf == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
@@ -473,7 +473,7 @@ public class FileWebView
       continue;
       if (Calendar.getInstance().getTimeInMillis() - this.jdField_a_of_type_Long < 80L)
       {
-        this.jdField_a_of_type_Apxd.e();
+        this.jdField_a_of_type_Apxf.e();
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       this.c = paramMotionEvent.getY();
@@ -485,22 +485,22 @@ public class FileWebView
         getScale();
         if ((getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY()) < 1.0D) || (i == 0))
         {
-          this.jdField_a_of_type_Apxd.b();
-          this.jdField_a_of_type_Apxd.c();
+          this.jdField_a_of_type_Apxf.b();
+          this.jdField_a_of_type_Apxf.c();
           return super.dispatchTouchEvent(paramMotionEvent);
         }
-        this.jdField_a_of_type_Apxd.a();
+        this.jdField_a_of_type_Apxf.a();
       }
       do
       {
-        this.jdField_a_of_type_Apxd.c();
+        this.jdField_a_of_type_Apxf.c();
         break;
-        this.jdField_a_of_type_Apxd.f();
+        this.jdField_a_of_type_Apxf.f();
       } while (getScrollY() >= 1.0F);
-      this.jdField_a_of_type_Apxd.a(false);
-      this.jdField_a_of_type_Apxd.c();
+      this.jdField_a_of_type_Apxf.a(false);
+      this.jdField_a_of_type_Apxf.c();
       return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_Apxd.d();
+      this.jdField_a_of_type_Apxf.d();
     }
   }
   
@@ -515,7 +515,7 @@ public class FileWebView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Apxd == null) {}
+    if (this.jdField_a_of_type_Apxf == null) {}
     do
     {
       return;
@@ -527,14 +527,14 @@ public class FileWebView
         QLog.d("FileWebView", 4, "contentHeight[" + paramInt1 + "],height[" + paramInt3 + "],scroolY[" + i + "],scale[" + f + "]");
       }
       f = getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY());
-      if ((f < paramInt3 * 2) && (!apue.a())) {
-        this.jdField_a_of_type_Apxd.g();
+      if ((f < paramInt3 * 2) && (!apug.a())) {
+        this.jdField_a_of_type_Apxf.g();
       }
       if (f < 2.5D) {
-        this.jdField_a_of_type_Apxd.b();
+        this.jdField_a_of_type_Apxf.b();
       }
     } while ((paramInt2 != 0) || (paramInt4 == 0));
-    this.jdField_a_of_type_Apxd.a(false);
+    this.jdField_a_of_type_Apxf.a(false);
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -544,9 +544,9 @@ public class FileWebView
     }
   }
   
-  public void setOnCustomScroolChangeListener(apxd paramapxd)
+  public void setOnCustomScroolChangeListener(apxf paramapxf)
   {
-    this.jdField_a_of_type_Apxd = paramapxd;
+    this.jdField_a_of_type_Apxf = paramapxf;
   }
   
   public void setOverrideOnCheckIsTextEditor(boolean paramBoolean)

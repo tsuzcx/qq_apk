@@ -1,6 +1,16 @@
-public abstract interface bepx
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
+import org.json.JSONObject;
+
+public class bepx
+  implements AsyncResult
 {
-  public abstract void a(int paramInt, String paramString, bepv parambepv);
+  public bepx(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    betc.b("minisdk-start_AppBrandLaunchManager", "---startApp---- useUserApp isSuccess = " + paramBoolean);
+  }
 }
 
 

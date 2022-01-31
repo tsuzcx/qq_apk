@@ -1,29 +1,140 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.annotation.NonNull;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class aaek
-  extends aaen
+  extends Dialog
 {
-  public aaek(TestAppFragment paramTestAppFragment, EditText paramEditText, JSONObject paramJSONObject)
+  public static boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
+  
+  public aaek(@NonNull Context paramContext)
   {
-    super(paramEditText);
+    super(paramContext, 2131755243);
+    a(paramContext);
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  private void a(Context paramContext)
   {
-    super.onSuccess(paramJSONObject);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559358, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362667));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362679));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362881));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131378763));
+    this.c = ((TextView)a(paramContext, 2131378791));
+    this.d = ((TextView)a(paramContext, 2131362871));
+    this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
+    this.e = ((TextView)a(paramContext, 2131369106));
+    this.f = ((TextView)a(paramContext, 2131375272));
+    setCanceledOnTouchOutside(false);
+    paramContext = getWindow();
+    if (paramContext != null) {
+      paramContext.setGravity(80);
+    }
+  }
+  
+  public <T extends View> T a(View paramView, int paramInt)
+  {
+    return paramView.findViewById(paramInt);
+  }
+  
+  public void a()
+  {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("rankingID", 11002);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("topCount", 11);
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Aabp.a("getRankingList", this.jdField_a_of_type_OrgJsonJSONObject, new aaen(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_AndroidWidgetEditText));
+      super.dismiss();
       return;
     }
-    catch (JSONException paramJSONObject)
+    catch (Throwable localThrowable)
     {
-      paramJSONObject.printStackTrace();
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void a(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    setOnCancelListener(new aaen(this, paramOnCancelListener));
+    setOnKeyListener(new aaeo(this, paramOnCancelListener));
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.f.setOnClickListener(new aael(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (naj.a(paramString))
+    {
+      paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      paramString.setTag(bavw.b(localLayoutParams.width, localLayoutParams.height, vzl.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
+      paramString.setDecodeHandler(bavw.i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    }
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.e.setOnClickListener(new aaem(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    this.d.setText(paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void f(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }

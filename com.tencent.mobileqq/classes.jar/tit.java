@@ -1,66 +1,43 @@
-import android.text.TextUtils;
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class tit
-  extends tiq
 {
-  public tit(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561302);
-  }
+  private static String a = tit.class.getSimpleName();
   
-  public void a()
+  public static tbg a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.setTag(2131373348, null);
-  }
-  
-  public void a(tfi paramtfi)
-  {
-    super.a(paramtfi);
-    this.a.setDisplayState(2);
-    c(paramtfi.jdField_b_of_type_JavaLangString);
-    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
-    String str;
-    if (!TextUtils.isEmpty(paramtfi.j))
+    ved.a(a, "create type=%d", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramtfi.c))
-      {
-        str = ajyc.a(2131713262);
-        localStoryMsgNodeFrameLayout.setNodeName(str, paramtfi.j);
-        if ((paramtfi.jdField_a_of_type_JavaUtilList == null) || (paramtfi.jdField_a_of_type_JavaUtilList.isEmpty())) {
-          this.a.a(1, 1 - paramtfi.jdField_b_of_type_Int);
-        }
-        str = (String)this.a.getTag(2131373348);
-        if (!TextUtils.equals(paramtfi.jdField_a_of_type_JavaLangString, str)) {
-          switch (paramtfi.jdField_a_of_type_Int)
-          {
-          default: 
-            str = "unknown";
-          }
-        }
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
       }
+      return new tbg(paramViewGroup, 2131561302);
+    case 6: 
+      return new tik(paramViewGroup);
+    case 5: 
+      return new tis(paramViewGroup);
+    case 7: 
+      return new tij(paramViewGroup);
+    case 8: 
+      return new tiz(paramViewGroup, 2131561302);
+    case 9: 
+      return new tir(paramViewGroup);
+    case 3: 
+      return new til(paramViewGroup);
+    case 4: 
+      return new tip(paramViewGroup, 4);
+    case 2: 
+      return new tix(paramViewGroup, 2131561304);
+    case 10: 
+    case 11: 
+      return new tiq(paramViewGroup);
+    case 12: 
+      return new tiu(paramViewGroup);
     }
-    for (;;)
-    {
-      vel.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramtfi.jdField_a_of_type_JavaLangString, str });
-      this.a.setTag(2131373348, paramtfi.jdField_a_of_type_JavaLangString);
-      return;
-      str = paramtfi.c;
-      break;
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramtfi.c)) {}
-      for (str = ajyc.a(2131713269);; str = paramtfi.c)
-      {
-        localStoryMsgNodeFrameLayout.setNodeName(str, false);
-        break;
-      }
-      str = "2";
-      continue;
-      str = "3";
-    }
+    return new tim(paramViewGroup);
   }
 }
 

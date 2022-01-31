@@ -1,21 +1,13 @@
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 public abstract interface aicf
 {
-  @NonNull
-  public abstract View a();
+  public abstract void a();
   
-  public abstract void a(int paramInt);
+  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void a(aicg paramaicg);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract void b(@ColorInt int paramInt);
+  public abstract boolean a();
 }
 
 

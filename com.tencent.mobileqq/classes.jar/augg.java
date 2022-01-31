@@ -1,23 +1,53 @@
-import android.support.annotation.Nullable;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 class augg
-  implements OnCompositionLoadedListener
+  implements ImageAssetDelegate
 {
-  augg(augf paramaugf, String paramString, int paramInt1, int paramInt2) {}
+  augg(augf paramaugf) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImageAssetDelegate(new augh(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    augf.a(this.jdField_a_of_type_Augf).setImageDrawable(localLottieDrawable);
-    augf.a(this.jdField_a_of_type_Augf, localLottieDrawable);
+    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
+    int i;
+    int j;
+    if (localObject != null)
+    {
+      paramLottieImageAsset = paramLottieImageAsset.getFileName();
+      i = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      j = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
+      localObject = this.a.jdField_a_of_type_JavaLangString + "entry_images" + File.separator + paramLottieImageAsset;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramLottieImageAsset = mpv.a((String)localObject, i, j);
+        localObject = paramLottieImageAsset;
+        if (paramLottieImageAsset == null) {
+          localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
+        }
+        return localObject;
+      }
+      catch (Exception paramLottieImageAsset)
+      {
+        if (AudioHelper.e()) {
+          QLog.w(PromotionEntry.jdField_a_of_type_JavaLangString, 1, "UpdateOperateBtnStatusRunnable Exception, imagePath[" + (String)localObject + "]", paramLottieImageAsset);
+        }
+      }
+      paramLottieImageAsset = null;
+    }
   }
 }
 

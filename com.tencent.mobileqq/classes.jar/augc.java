@@ -1,12 +1,29 @@
-import android.widget.RelativeLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.PromotionEntry;
 
-public abstract interface augc
+public class augc
+  implements View.OnTouchListener
 {
-  public abstract RelativeLayout a();
+  public augc(PromotionEntry paramPromotionEntry) {}
   
-  public abstract void b(akyo paramakyo);
-  
-  public abstract boolean c();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (PromotionEntry.a(this.a) == null) {}
+    do
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        PromotionEntry.a(this.a).setAlpha(255);
+        return false;
+      }
+    } while (paramMotionEvent.getAction() != 0);
+    PromotionEntry.a(this.a).setAlpha(100);
+    return false;
+  }
 }
 
 

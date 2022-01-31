@@ -1,12 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-
-public class aegm
-  implements wxw
+public abstract interface aegm
 {
-  public aegm(AIOGalleryAdapter paramAIOGalleryAdapter) {}
-  
-  public void a(Bundle paramBundle) {}
+  public abstract void a(int paramInt);
 }
 
 

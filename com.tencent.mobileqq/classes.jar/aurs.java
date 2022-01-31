@@ -1,10 +1,22 @@
-import com.tencent.mobileqq.data.PrecoverResource;
+import android.text.TextUtils;
 
-public abstract interface aurs
+public class aurs
 {
-  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
+  public String a;
+  public String b;
   
-  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
+    localStringBuilder.append("businessId=").append(this.a);
+    localStringBuilder.append(", name=").append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

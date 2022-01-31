@@ -1,6 +1,6 @@
 package com.tencent.biz.widgets;
 
-import xok;
+import xoh;
 
 class ScannerView$6
   implements Runnable

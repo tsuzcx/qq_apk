@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo.util;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import axln;
-import axlo;
+import axlp;
+import axlq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -32,7 +32,7 @@ public class ShortVideoTrimmer
     if (jdField_a_of_type_Int == 0) {}
     try
     {
-      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new axln());
+      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new axlp());
       if (arrayOfFile == null) {
         return 1;
       }
@@ -55,10 +55,10 @@ public class ShortVideoTrimmer
     //   0: invokestatic 55	java/lang/System:currentTimeMillis	()J
     //   3: lstore 5
     //   5: aload_1
-    //   6: invokestatic 58	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Laxlo;
+    //   6: invokestatic 58	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)Laxlq;
     //   9: astore 9
     //   11: aload 9
-    //   13: getfield 62	axlo:jdField_a_of_type_Boolean	Z
+    //   13: getfield 62	axlq:jdField_a_of_type_Boolean	Z
     //   16: ifne +10 -> 26
     //   19: ldc 64
     //   21: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
@@ -67,7 +67,7 @@ public class ShortVideoTrimmer
     //   26: aload_1
     //   27: aload_2
     //   28: aload 9
-    //   30: invokestatic 69	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;Ljava/lang/String;Laxlo;)[Ljava/lang/String;
+    //   30: invokestatic 69	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;Ljava/lang/String;Laxlq;)[Ljava/lang/String;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnonnull +11 -> 46
@@ -79,43 +79,43 @@ public class ShortVideoTrimmer
     //   47: invokestatic 77	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoPath	(Landroid/content/Context;)Ljava/lang/String;
     //   50: astore 12
     //   52: invokestatic 82	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	()Ljava/lang/String;
-    //   55: astore 13
-    //   57: getstatic 83	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_Boolean	Z
-    //   60: ifne +39 -> 99
-    //   63: new 32	java/io/File
-    //   66: dup
-    //   67: new 85	java/lang/StringBuilder
-    //   70: dup
-    //   71: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   74: aload 12
-    //   76: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload 13
-    //   81: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   90: invokevirtual 97	java/io/File:exists	()Z
-    //   93: ifne +6 -> 99
-    //   96: bipush 253
-    //   98: ireturn
-    //   99: aconst_null
-    //   100: astore 9
-    //   102: aconst_null
-    //   103: astore 10
-    //   105: new 99	java/lang/ProcessBuilder
-    //   108: dup
-    //   109: iconst_0
-    //   110: anewarray 101	java/lang/String
-    //   113: invokespecial 104	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
-    //   116: astore 11
-    //   118: aload 11
-    //   120: iconst_1
-    //   121: invokevirtual 108	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
-    //   124: pop
-    //   125: new 110	java/util/ArrayList
-    //   128: dup
-    //   129: invokespecial 111	java/util/ArrayList:<init>	()V
-    //   132: astore_0
-    //   133: aload_0
+    //   55: astore_0
+    //   56: getstatic 83	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_Boolean	Z
+    //   59: ifne +38 -> 97
+    //   62: new 32	java/io/File
+    //   65: dup
+    //   66: new 85	java/lang/StringBuilder
+    //   69: dup
+    //   70: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   73: aload 12
+    //   75: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: aload_0
+    //   79: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: invokevirtual 97	java/io/File:exists	()Z
+    //   91: ifne +6 -> 97
+    //   94: bipush 253
+    //   96: ireturn
+    //   97: aconst_null
+    //   98: astore 9
+    //   100: aconst_null
+    //   101: astore 10
+    //   103: new 99	java/lang/ProcessBuilder
+    //   106: dup
+    //   107: iconst_0
+    //   108: anewarray 101	java/lang/String
+    //   111: invokespecial 104	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   114: astore 11
+    //   116: aload 11
+    //   118: iconst_1
+    //   119: invokevirtual 108	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   122: pop
+    //   123: new 110	java/util/ArrayList
+    //   126: dup
+    //   127: invokespecial 111	java/util/ArrayList:<init>	()V
+    //   130: astore 13
+    //   132: aload 13
     //   134: new 85	java/lang/StringBuilder
     //   137: dup
     //   138: invokespecial 86	java/lang/StringBuilder:<init>	()V
@@ -131,718 +131,719 @@ public class ShortVideoTrimmer
     //   164: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   167: ldc 121
     //   169: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: aload_0
-    //   173: iconst_0
-    //   174: invokeinterface 125 2 0
-    //   179: checkcast 101	java/lang/String
-    //   182: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   191: aload_1
-    //   192: arraylength
-    //   193: istore 4
-    //   195: iconst_0
-    //   196: istore_3
-    //   197: iload_3
-    //   198: iload 4
-    //   200: if_icmpge +20 -> 220
-    //   203: aload_0
-    //   204: aload_1
-    //   205: iload_3
-    //   206: aaload
-    //   207: invokeinterface 119 2 0
-    //   212: pop
-    //   213: iload_3
-    //   214: iconst_1
-    //   215: iadd
-    //   216: istore_3
-    //   217: goto -20 -> 197
-    //   220: aload_0
-    //   221: new 85	java/lang/StringBuilder
-    //   224: dup
-    //   225: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   228: aload 12
-    //   230: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: aload 13
-    //   235: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokeinterface 119 2 0
-    //   246: pop
-    //   247: aload 11
-    //   249: aload_0
-    //   250: invokevirtual 129	java/lang/ProcessBuilder:command	(Ljava/util/List;)Ljava/lang/ProcessBuilder;
-    //   253: pop
-    //   254: new 85	java/lang/StringBuilder
-    //   257: dup
-    //   258: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   261: ldc 131
-    //   263: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: aload_0
-    //   267: aload_0
-    //   268: invokeinterface 134 1 0
-    //   273: iconst_1
-    //   274: isub
-    //   275: invokeinterface 125 2 0
-    //   280: checkcast 101	java/lang/String
-    //   283: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   289: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   292: aload 11
-    //   294: invokevirtual 138	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
-    //   297: astore 13
-    //   299: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   302: astore_0
-    //   303: aload_0
-    //   304: monitorenter
-    //   305: aload 13
-    //   307: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   310: aload_0
-    //   311: monitorexit
-    //   312: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   315: invokevirtual 142	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   318: ifne +256 -> 574
-    //   321: aconst_null
-    //   322: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   325: aload 13
-    //   327: invokevirtual 147	java/lang/Process:destroy	()V
-    //   330: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   333: iconst_1
-    //   334: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   337: iconst_0
-    //   338: ifeq +11 -> 349
-    //   341: new 152	java/lang/NullPointerException
-    //   344: dup
-    //   345: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   348: athrow
-    //   349: iconst_0
-    //   350: ifeq +11 -> 361
-    //   353: new 152	java/lang/NullPointerException
-    //   356: dup
-    //   357: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   360: athrow
-    //   361: iconst_0
-    //   362: ifeq -338 -> 24
-    //   365: new 152	java/lang/NullPointerException
-    //   368: dup
-    //   369: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   372: athrow
-    //   373: astore_0
-    //   374: iconst_m1
-    //   375: ireturn
-    //   376: astore_1
-    //   377: aload_0
-    //   378: monitorexit
-    //   379: aload_1
-    //   380: athrow
-    //   381: astore 13
-    //   383: aconst_null
-    //   384: astore_0
-    //   385: aconst_null
-    //   386: astore_1
-    //   387: aconst_null
-    //   388: astore 12
-    //   390: sipush -1001
-    //   393: istore 4
-    //   395: aload 12
-    //   397: astore 11
-    //   399: aload_1
-    //   400: astore 10
-    //   402: aload_0
-    //   403: astore 9
-    //   405: aload 13
-    //   407: invokevirtual 156	java/io/IOException:printStackTrace	()V
-    //   410: aload 12
-    //   412: astore 11
-    //   414: aload_1
-    //   415: astore 10
-    //   417: aload_0
-    //   418: astore 9
-    //   420: new 85	java/lang/StringBuilder
-    //   423: dup
-    //   424: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   427: ldc 158
-    //   429: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: aload 13
-    //   434: invokevirtual 159	java/io/IOException:toString	()Ljava/lang/String;
-    //   437: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   446: aload_0
-    //   447: ifnull +7 -> 454
-    //   450: aload_0
-    //   451: invokevirtual 164	java/io/InputStream:close	()V
-    //   454: aload_1
-    //   455: ifnull +7 -> 462
-    //   458: aload_1
-    //   459: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   462: iload 4
-    //   464: istore_3
-    //   465: aload 12
-    //   467: ifnull +11 -> 478
+    //   172: aload 13
+    //   174: iconst_0
+    //   175: invokeinterface 125 2 0
+    //   180: checkcast 101	java/lang/String
+    //   183: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   189: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   192: aload_1
+    //   193: arraylength
+    //   194: istore 4
+    //   196: iconst_0
+    //   197: istore_3
+    //   198: iload_3
+    //   199: iload 4
+    //   201: if_icmpge +21 -> 222
+    //   204: aload 13
+    //   206: aload_1
+    //   207: iload_3
+    //   208: aaload
+    //   209: invokeinterface 119 2 0
+    //   214: pop
+    //   215: iload_3
+    //   216: iconst_1
+    //   217: iadd
+    //   218: istore_3
+    //   219: goto -21 -> 198
+    //   222: aload 13
+    //   224: new 85	java/lang/StringBuilder
+    //   227: dup
+    //   228: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   231: aload 12
+    //   233: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: aload_0
+    //   237: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   243: invokeinterface 119 2 0
+    //   248: pop
+    //   249: aload 11
+    //   251: aload 13
+    //   253: invokevirtual 129	java/lang/ProcessBuilder:command	(Ljava/util/List;)Ljava/lang/ProcessBuilder;
+    //   256: pop
+    //   257: new 85	java/lang/StringBuilder
+    //   260: dup
+    //   261: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   264: ldc 131
+    //   266: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: aload 13
+    //   271: aload 13
+    //   273: invokeinterface 134 1 0
+    //   278: iconst_1
+    //   279: isub
+    //   280: invokeinterface 125 2 0
+    //   285: checkcast 101	java/lang/String
+    //   288: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   294: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   297: aload 11
+    //   299: invokevirtual 138	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   302: astore 13
+    //   304: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   307: astore_0
+    //   308: aload_0
+    //   309: monitorenter
+    //   310: aload 13
+    //   312: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   315: aload_0
+    //   316: monitorexit
+    //   317: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   320: invokevirtual 142	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   323: ifne +256 -> 579
+    //   326: aconst_null
+    //   327: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   330: aload 13
+    //   332: invokevirtual 147	java/lang/Process:destroy	()V
+    //   335: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   338: iconst_1
+    //   339: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   342: iconst_0
+    //   343: ifeq +11 -> 354
+    //   346: new 152	java/lang/NullPointerException
+    //   349: dup
+    //   350: invokespecial 153	java/lang/NullPointerException:<init>	()V
+    //   353: athrow
+    //   354: iconst_0
+    //   355: ifeq +11 -> 366
+    //   358: new 152	java/lang/NullPointerException
+    //   361: dup
+    //   362: invokespecial 153	java/lang/NullPointerException:<init>	()V
+    //   365: athrow
+    //   366: iconst_0
+    //   367: ifeq -343 -> 24
+    //   370: new 152	java/lang/NullPointerException
+    //   373: dup
+    //   374: invokespecial 153	java/lang/NullPointerException:<init>	()V
+    //   377: athrow
+    //   378: astore_0
+    //   379: iconst_m1
+    //   380: ireturn
+    //   381: astore_1
+    //   382: aload_0
+    //   383: monitorexit
+    //   384: aload_1
+    //   385: athrow
+    //   386: astore 13
+    //   388: aconst_null
+    //   389: astore_0
+    //   390: aconst_null
+    //   391: astore_1
+    //   392: aconst_null
+    //   393: astore 12
+    //   395: sipush -1001
+    //   398: istore 4
+    //   400: aload 12
+    //   402: astore 11
+    //   404: aload_1
+    //   405: astore 10
+    //   407: aload_0
+    //   408: astore 9
+    //   410: aload 13
+    //   412: invokevirtual 156	java/io/IOException:printStackTrace	()V
+    //   415: aload 12
+    //   417: astore 11
+    //   419: aload_1
+    //   420: astore 10
+    //   422: aload_0
+    //   423: astore 9
+    //   425: new 85	java/lang/StringBuilder
+    //   428: dup
+    //   429: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   432: ldc 158
+    //   434: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: aload 13
+    //   439: invokevirtual 159	java/io/IOException:toString	()Ljava/lang/String;
+    //   442: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   448: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   451: aload_0
+    //   452: ifnull +7 -> 459
+    //   455: aload_0
+    //   456: invokevirtual 164	java/io/InputStream:close	()V
+    //   459: aload_1
+    //   460: ifnull +7 -> 467
+    //   463: aload_1
+    //   464: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   467: iload 4
+    //   469: istore_3
     //   470: aload 12
-    //   472: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   475: iload 4
-    //   477: istore_3
-    //   478: invokestatic 55	java/lang/System:currentTimeMillis	()J
-    //   481: lstore 7
-    //   483: new 85	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   490: ldc 172
-    //   492: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: lload 7
-    //   497: lload 5
-    //   499: lsub
-    //   500: invokevirtual 175	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   503: ldc 177
-    //   505: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   508: iload_3
-    //   509: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   512: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   515: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   518: iload_3
-    //   519: ifeq +46 -> 565
-    //   522: new 32	java/io/File
-    //   525: dup
-    //   526: aload_2
-    //   527: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   530: astore_0
-    //   531: aload_0
-    //   532: invokevirtual 97	java/io/File:exists	()Z
-    //   535: ifeq +30 -> 565
-    //   538: aload_0
-    //   539: invokevirtual 183	java/io/File:delete	()Z
-    //   542: pop
-    //   543: new 85	java/lang/StringBuilder
-    //   546: dup
-    //   547: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   550: ldc 185
-    //   552: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   555: iload_3
-    //   556: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   559: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   562: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   565: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   568: iconst_1
-    //   569: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   572: iload_3
-    //   573: ireturn
-    //   574: aload 13
-    //   576: invokevirtual 189	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   579: astore_0
-    //   580: new 166	java/io/InputStreamReader
-    //   583: dup
-    //   584: aload_0
-    //   585: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   588: astore_1
-    //   589: new 169	java/io/BufferedReader
-    //   592: dup
-    //   593: aload_1
-    //   594: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   597: astore 12
-    //   599: aload 12
-    //   601: astore 11
-    //   603: aload_1
-    //   604: astore 10
-    //   606: aload_0
-    //   607: astore 9
-    //   609: aload 13
-    //   611: invokevirtual 198	java/lang/Process:waitFor	()I
-    //   614: pop
-    //   615: aload 12
-    //   617: astore 11
-    //   619: aload_1
-    //   620: astore 10
-    //   622: aload_0
-    //   623: astore 9
-    //   625: aload 13
-    //   627: invokevirtual 201	java/lang/Process:exitValue	()I
-    //   630: istore 4
-    //   632: aload 12
-    //   634: astore 11
-    //   636: aload_1
-    //   637: astore 10
-    //   639: aload_0
-    //   640: astore 9
-    //   642: new 85	java/lang/StringBuilder
-    //   645: dup
-    //   646: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   649: ldc 203
-    //   651: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   654: iload 4
-    //   656: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   659: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   662: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   665: aload 12
-    //   667: astore 11
-    //   669: aload_1
-    //   670: astore 10
-    //   672: aload_0
-    //   673: astore 9
-    //   675: aload 12
-    //   677: invokevirtual 206	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   680: astore 14
-    //   682: aload 14
-    //   684: ifnull +39 -> 723
-    //   687: aload 12
-    //   689: astore 11
-    //   691: aload_1
-    //   692: astore 10
-    //   694: aload_0
-    //   695: astore 9
-    //   697: new 85	java/lang/StringBuilder
-    //   700: dup
-    //   701: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   704: ldc 208
-    //   706: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   709: aload 14
+    //   472: ifnull +11 -> 483
+    //   475: aload 12
+    //   477: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   480: iload 4
+    //   482: istore_3
+    //   483: invokestatic 55	java/lang/System:currentTimeMillis	()J
+    //   486: lstore 7
+    //   488: new 85	java/lang/StringBuilder
+    //   491: dup
+    //   492: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   495: ldc 172
+    //   497: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   500: lload 7
+    //   502: lload 5
+    //   504: lsub
+    //   505: invokevirtual 175	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   508: ldc 177
+    //   510: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   513: iload_3
+    //   514: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   517: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   520: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   523: iload_3
+    //   524: ifeq +46 -> 570
+    //   527: new 32	java/io/File
+    //   530: dup
+    //   531: aload_2
+    //   532: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   535: astore_0
+    //   536: aload_0
+    //   537: invokevirtual 97	java/io/File:exists	()Z
+    //   540: ifeq +30 -> 570
+    //   543: aload_0
+    //   544: invokevirtual 183	java/io/File:delete	()Z
+    //   547: pop
+    //   548: new 85	java/lang/StringBuilder
+    //   551: dup
+    //   552: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   555: ldc 185
+    //   557: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: iload_3
+    //   561: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   564: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   567: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   570: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   573: iconst_1
+    //   574: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   577: iload_3
+    //   578: ireturn
+    //   579: aload 13
+    //   581: invokevirtual 189	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   584: astore_0
+    //   585: new 166	java/io/InputStreamReader
+    //   588: dup
+    //   589: aload_0
+    //   590: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   593: astore_1
+    //   594: new 169	java/io/BufferedReader
+    //   597: dup
+    //   598: aload_1
+    //   599: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   602: astore 12
+    //   604: aload 12
+    //   606: astore 11
+    //   608: aload_1
+    //   609: astore 10
+    //   611: aload_0
+    //   612: astore 9
+    //   614: aload 13
+    //   616: invokevirtual 198	java/lang/Process:waitFor	()I
+    //   619: pop
+    //   620: aload 12
+    //   622: astore 11
+    //   624: aload_1
+    //   625: astore 10
+    //   627: aload_0
+    //   628: astore 9
+    //   630: aload 13
+    //   632: invokevirtual 201	java/lang/Process:exitValue	()I
+    //   635: istore 4
+    //   637: aload 12
+    //   639: astore 11
+    //   641: aload_1
+    //   642: astore 10
+    //   644: aload_0
+    //   645: astore 9
+    //   647: new 85	java/lang/StringBuilder
+    //   650: dup
+    //   651: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   654: ldc 203
+    //   656: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: iload 4
+    //   661: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   664: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   667: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   670: aload 12
+    //   672: astore 11
+    //   674: aload_1
+    //   675: astore 10
+    //   677: aload_0
+    //   678: astore 9
+    //   680: aload 12
+    //   682: invokevirtual 206	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   685: astore 14
+    //   687: aload 14
+    //   689: ifnull +39 -> 728
+    //   692: aload 12
+    //   694: astore 11
+    //   696: aload_1
+    //   697: astore 10
+    //   699: aload_0
+    //   700: astore 9
+    //   702: new 85	java/lang/StringBuilder
+    //   705: dup
+    //   706: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   709: ldc 208
     //   711: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   714: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   717: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   720: goto -55 -> 665
-    //   723: aload 12
-    //   725: astore 11
-    //   727: aload_1
-    //   728: astore 10
-    //   730: aload_0
-    //   731: astore 9
-    //   733: aload 13
-    //   735: invokevirtual 147	java/lang/Process:destroy	()V
-    //   738: aload 12
-    //   740: astore 11
-    //   742: aload_1
-    //   743: astore 10
-    //   745: aload_0
-    //   746: astore 9
-    //   748: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   751: astore 14
-    //   753: aload 12
-    //   755: astore 11
-    //   757: aload_1
-    //   758: astore 10
-    //   760: aload_0
-    //   761: astore 9
-    //   763: aload 14
-    //   765: monitorenter
-    //   766: aconst_null
-    //   767: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   770: aload 14
-    //   772: monitorexit
-    //   773: aload 12
-    //   775: astore 11
-    //   777: aload_1
-    //   778: astore 10
-    //   780: aload_0
-    //   781: astore 9
-    //   783: ldc 210
-    //   785: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   788: aload_0
-    //   789: ifnull +7 -> 796
-    //   792: aload_0
-    //   793: invokevirtual 164	java/io/InputStream:close	()V
-    //   796: aload_1
-    //   797: ifnull +7 -> 804
-    //   800: aload_1
-    //   801: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   804: iload 4
-    //   806: istore_3
-    //   807: aload 12
-    //   809: ifnull -331 -> 478
+    //   714: aload 14
+    //   716: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   719: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   722: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   725: goto -55 -> 670
+    //   728: aload 12
+    //   730: astore 11
+    //   732: aload_1
+    //   733: astore 10
+    //   735: aload_0
+    //   736: astore 9
+    //   738: aload 13
+    //   740: invokevirtual 147	java/lang/Process:destroy	()V
+    //   743: aload 12
+    //   745: astore 11
+    //   747: aload_1
+    //   748: astore 10
+    //   750: aload_0
+    //   751: astore 9
+    //   753: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   756: astore 13
+    //   758: aload 12
+    //   760: astore 11
+    //   762: aload_1
+    //   763: astore 10
+    //   765: aload_0
+    //   766: astore 9
+    //   768: aload 13
+    //   770: monitorenter
+    //   771: aconst_null
+    //   772: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   775: aload 13
+    //   777: monitorexit
+    //   778: aload 12
+    //   780: astore 11
+    //   782: aload_1
+    //   783: astore 10
+    //   785: aload_0
+    //   786: astore 9
+    //   788: ldc 210
+    //   790: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   793: aload_0
+    //   794: ifnull +7 -> 801
+    //   797: aload_0
+    //   798: invokevirtual 164	java/io/InputStream:close	()V
+    //   801: aload_1
+    //   802: ifnull +7 -> 809
+    //   805: aload_1
+    //   806: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   809: iload 4
+    //   811: istore_3
     //   812: aload 12
-    //   814: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   817: iload 4
-    //   819: istore_3
-    //   820: goto -342 -> 478
-    //   823: astore_0
-    //   824: iload 4
-    //   826: istore_3
-    //   827: goto -349 -> 478
-    //   830: astore 13
-    //   832: aload 14
-    //   834: monitorexit
-    //   835: aload 12
-    //   837: astore 11
-    //   839: aload_1
-    //   840: astore 10
-    //   842: aload_0
-    //   843: astore 9
-    //   845: aload 13
-    //   847: athrow
-    //   848: astore 13
-    //   850: sipush -1002
-    //   853: istore 4
-    //   855: aload 12
-    //   857: astore 11
-    //   859: aload_1
-    //   860: astore 10
-    //   862: aload_0
-    //   863: astore 9
-    //   865: aload 13
-    //   867: invokevirtual 211	java/lang/InterruptedException:printStackTrace	()V
-    //   870: aload 12
-    //   872: astore 11
-    //   874: aload_1
-    //   875: astore 10
-    //   877: aload_0
-    //   878: astore 9
-    //   880: new 85	java/lang/StringBuilder
-    //   883: dup
-    //   884: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   887: ldc 213
-    //   889: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   892: aload 13
-    //   894: invokevirtual 214	java/lang/InterruptedException:toString	()Ljava/lang/String;
-    //   897: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   900: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   903: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   906: aload_0
-    //   907: ifnull +7 -> 914
-    //   910: aload_0
-    //   911: invokevirtual 164	java/io/InputStream:close	()V
-    //   914: aload_1
-    //   915: ifnull +7 -> 922
-    //   918: aload_1
-    //   919: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   922: iload 4
-    //   924: istore_3
-    //   925: aload 12
-    //   927: ifnull -449 -> 478
+    //   814: ifnull -331 -> 483
+    //   817: aload 12
+    //   819: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   822: iload 4
+    //   824: istore_3
+    //   825: goto -342 -> 483
+    //   828: astore_0
+    //   829: iload 4
+    //   831: istore_3
+    //   832: goto -349 -> 483
+    //   835: astore 14
+    //   837: aload 13
+    //   839: monitorexit
+    //   840: aload 12
+    //   842: astore 11
+    //   844: aload_1
+    //   845: astore 10
+    //   847: aload_0
+    //   848: astore 9
+    //   850: aload 14
+    //   852: athrow
+    //   853: astore 13
+    //   855: sipush -1002
+    //   858: istore 4
+    //   860: aload 12
+    //   862: astore 11
+    //   864: aload_1
+    //   865: astore 10
+    //   867: aload_0
+    //   868: astore 9
+    //   870: aload 13
+    //   872: invokevirtual 211	java/lang/InterruptedException:printStackTrace	()V
+    //   875: aload 12
+    //   877: astore 11
+    //   879: aload_1
+    //   880: astore 10
+    //   882: aload_0
+    //   883: astore 9
+    //   885: new 85	java/lang/StringBuilder
+    //   888: dup
+    //   889: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   892: ldc 213
+    //   894: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   897: aload 13
+    //   899: invokevirtual 214	java/lang/InterruptedException:toString	()Ljava/lang/String;
+    //   902: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   905: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   908: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   911: aload_0
+    //   912: ifnull +7 -> 919
+    //   915: aload_0
+    //   916: invokevirtual 164	java/io/InputStream:close	()V
+    //   919: aload_1
+    //   920: ifnull +7 -> 927
+    //   923: aload_1
+    //   924: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   927: iload 4
+    //   929: istore_3
     //   930: aload 12
-    //   932: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   935: iload 4
-    //   937: istore_3
-    //   938: goto -460 -> 478
-    //   941: astore_0
-    //   942: iload 4
-    //   944: istore_3
-    //   945: goto -467 -> 478
-    //   948: astore 13
-    //   950: aconst_null
-    //   951: astore_0
-    //   952: aconst_null
-    //   953: astore_1
-    //   954: aconst_null
-    //   955: astore 12
-    //   957: sipush -1003
-    //   960: istore 4
-    //   962: aload 12
-    //   964: astore 11
-    //   966: aload_1
-    //   967: astore 10
-    //   969: aload_0
-    //   970: astore 9
-    //   972: aload 13
-    //   974: invokevirtual 215	java/lang/Exception:printStackTrace	()V
-    //   977: aload 12
-    //   979: astore 11
-    //   981: aload_1
-    //   982: astore 10
-    //   984: aload_0
-    //   985: astore 9
-    //   987: new 85	java/lang/StringBuilder
-    //   990: dup
-    //   991: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   994: ldc 217
-    //   996: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   999: aload 13
-    //   1001: invokevirtual 218	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1004: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1007: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1010: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   1013: aload_0
-    //   1014: ifnull +7 -> 1021
-    //   1017: aload_0
-    //   1018: invokevirtual 164	java/io/InputStream:close	()V
-    //   1021: aload_1
-    //   1022: ifnull +7 -> 1029
-    //   1025: aload_1
-    //   1026: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   1029: iload 4
-    //   1031: istore_3
-    //   1032: aload 12
-    //   1034: ifnull -556 -> 478
+    //   932: ifnull -449 -> 483
+    //   935: aload 12
+    //   937: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   940: iload 4
+    //   942: istore_3
+    //   943: goto -460 -> 483
+    //   946: astore_0
+    //   947: iload 4
+    //   949: istore_3
+    //   950: goto -467 -> 483
+    //   953: astore 13
+    //   955: aconst_null
+    //   956: astore_0
+    //   957: aconst_null
+    //   958: astore_1
+    //   959: aconst_null
+    //   960: astore 12
+    //   962: sipush -1003
+    //   965: istore 4
+    //   967: aload 12
+    //   969: astore 11
+    //   971: aload_1
+    //   972: astore 10
+    //   974: aload_0
+    //   975: astore 9
+    //   977: aload 13
+    //   979: invokevirtual 215	java/lang/Exception:printStackTrace	()V
+    //   982: aload 12
+    //   984: astore 11
+    //   986: aload_1
+    //   987: astore 10
+    //   989: aload_0
+    //   990: astore 9
+    //   992: new 85	java/lang/StringBuilder
+    //   995: dup
+    //   996: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   999: ldc 217
+    //   1001: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1004: aload 13
+    //   1006: invokevirtual 218	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1009: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1012: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1015: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   1018: aload_0
+    //   1019: ifnull +7 -> 1026
+    //   1022: aload_0
+    //   1023: invokevirtual 164	java/io/InputStream:close	()V
+    //   1026: aload_1
+    //   1027: ifnull +7 -> 1034
+    //   1030: aload_1
+    //   1031: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   1034: iload 4
+    //   1036: istore_3
     //   1037: aload 12
-    //   1039: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   1042: iload 4
-    //   1044: istore_3
-    //   1045: goto -567 -> 478
-    //   1048: astore_0
-    //   1049: iload 4
-    //   1051: istore_3
-    //   1052: goto -574 -> 478
-    //   1055: astore_1
-    //   1056: aconst_null
-    //   1057: astore_0
-    //   1058: aload 9
-    //   1060: astore_2
-    //   1061: aload_0
-    //   1062: ifnull +7 -> 1069
-    //   1065: aload_0
-    //   1066: invokevirtual 164	java/io/InputStream:close	()V
-    //   1069: aload_2
-    //   1070: ifnull +7 -> 1077
-    //   1073: aload_2
-    //   1074: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   1077: aload 10
-    //   1079: ifnull +8 -> 1087
+    //   1039: ifnull -556 -> 483
+    //   1042: aload 12
+    //   1044: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   1047: iload 4
+    //   1049: istore_3
+    //   1050: goto -567 -> 483
+    //   1053: astore_0
+    //   1054: iload 4
+    //   1056: istore_3
+    //   1057: goto -574 -> 483
+    //   1060: astore_1
+    //   1061: aconst_null
+    //   1062: astore_0
+    //   1063: aload 9
+    //   1065: astore_2
+    //   1066: aload_0
+    //   1067: ifnull +7 -> 1074
+    //   1070: aload_0
+    //   1071: invokevirtual 164	java/io/InputStream:close	()V
+    //   1074: aload_2
+    //   1075: ifnull +7 -> 1082
+    //   1078: aload_2
+    //   1079: invokevirtual 167	java/io/InputStreamReader:close	()V
     //   1082: aload 10
-    //   1084: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   1087: aload_1
-    //   1088: athrow
-    //   1089: astore_0
-    //   1090: goto -525 -> 565
-    //   1093: astore_0
-    //   1094: goto -7 -> 1087
-    //   1097: astore_1
-    //   1098: aload 9
-    //   1100: astore_2
-    //   1101: goto -40 -> 1061
-    //   1104: astore 9
-    //   1106: aload_1
-    //   1107: astore_2
-    //   1108: aload 9
-    //   1110: astore_1
-    //   1111: goto -50 -> 1061
-    //   1114: astore_1
-    //   1115: aload 10
-    //   1117: astore_2
-    //   1118: aload 11
-    //   1120: astore 10
-    //   1122: aload 9
-    //   1124: astore_0
-    //   1125: goto -64 -> 1061
-    //   1128: astore 13
-    //   1130: aconst_null
-    //   1131: astore_1
-    //   1132: aconst_null
-    //   1133: astore 12
-    //   1135: goto -178 -> 957
-    //   1138: astore 13
-    //   1140: aconst_null
-    //   1141: astore 12
-    //   1143: goto -186 -> 957
-    //   1146: astore 13
-    //   1148: goto -191 -> 957
+    //   1084: ifnull +8 -> 1092
+    //   1087: aload 10
+    //   1089: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   1092: aload_1
+    //   1093: athrow
+    //   1094: astore_0
+    //   1095: goto -525 -> 570
+    //   1098: astore_0
+    //   1099: goto -7 -> 1092
+    //   1102: astore_1
+    //   1103: aload 9
+    //   1105: astore_2
+    //   1106: goto -40 -> 1066
+    //   1109: astore 9
+    //   1111: aload_1
+    //   1112: astore_2
+    //   1113: aload 9
+    //   1115: astore_1
+    //   1116: goto -50 -> 1066
+    //   1119: astore_1
+    //   1120: aload 10
+    //   1122: astore_2
+    //   1123: aload 11
+    //   1125: astore 10
+    //   1127: aload 9
+    //   1129: astore_0
+    //   1130: goto -64 -> 1066
+    //   1133: astore 13
+    //   1135: aconst_null
+    //   1136: astore_1
+    //   1137: aconst_null
+    //   1138: astore 12
+    //   1140: goto -178 -> 962
+    //   1143: astore 13
+    //   1145: aconst_null
+    //   1146: astore 12
+    //   1148: goto -186 -> 962
     //   1151: astore 13
-    //   1153: aconst_null
-    //   1154: astore_0
-    //   1155: aconst_null
-    //   1156: astore_1
-    //   1157: aconst_null
-    //   1158: astore 12
-    //   1160: goto -310 -> 850
-    //   1163: astore 13
-    //   1165: aconst_null
-    //   1166: astore_1
-    //   1167: aconst_null
-    //   1168: astore 12
-    //   1170: goto -320 -> 850
-    //   1173: astore 13
-    //   1175: aconst_null
-    //   1176: astore 12
-    //   1178: goto -328 -> 850
-    //   1181: astore_0
-    //   1182: iload 4
-    //   1184: istore_3
-    //   1185: goto -707 -> 478
-    //   1188: astore 13
-    //   1190: aconst_null
-    //   1191: astore_1
-    //   1192: aconst_null
-    //   1193: astore 12
-    //   1195: goto -805 -> 390
-    //   1198: astore 13
-    //   1200: aconst_null
-    //   1201: astore 12
-    //   1203: goto -813 -> 390
-    //   1206: astore 13
-    //   1208: goto -818 -> 390
+    //   1153: goto -191 -> 962
+    //   1156: astore 13
+    //   1158: aconst_null
+    //   1159: astore_0
+    //   1160: aconst_null
+    //   1161: astore_1
+    //   1162: aconst_null
+    //   1163: astore 12
+    //   1165: goto -310 -> 855
+    //   1168: astore 13
+    //   1170: aconst_null
+    //   1171: astore_1
+    //   1172: aconst_null
+    //   1173: astore 12
+    //   1175: goto -320 -> 855
+    //   1178: astore 13
+    //   1180: aconst_null
+    //   1181: astore 12
+    //   1183: goto -328 -> 855
+    //   1186: astore_0
+    //   1187: iload 4
+    //   1189: istore_3
+    //   1190: goto -707 -> 483
+    //   1193: astore 13
+    //   1195: aconst_null
+    //   1196: astore_1
+    //   1197: aconst_null
+    //   1198: astore 12
+    //   1200: goto -805 -> 395
+    //   1203: astore 13
+    //   1205: aconst_null
+    //   1206: astore 12
+    //   1208: goto -813 -> 395
+    //   1211: astore 13
+    //   1213: goto -818 -> 395
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1211	0	paramContext	Context
-    //   0	1211	1	paramString1	String
-    //   0	1211	2	paramString2	String
-    //   196	989	3	i	int
-    //   193	990	4	j	int
-    //   3	495	5	l1	long
-    //   481	15	7	l2	long
-    //   9	1090	9	localObject1	Object
-    //   1104	19	9	localObject2	Object
-    //   103	1018	10	localObject3	Object
-    //   116	1003	11	localObject4	Object
-    //   50	1152	12	localObject5	Object
-    //   55	271	13	localObject6	Object
-    //   381	353	13	localIOException1	java.io.IOException
-    //   830	16	13	localObject7	Object
-    //   848	45	13	localInterruptedException1	java.lang.InterruptedException
-    //   948	52	13	localException1	Exception
-    //   1128	1	13	localException2	Exception
-    //   1138	1	13	localException3	Exception
-    //   1146	1	13	localException4	Exception
-    //   1151	1	13	localInterruptedException2	java.lang.InterruptedException
-    //   1163	1	13	localInterruptedException3	java.lang.InterruptedException
-    //   1173	1	13	localInterruptedException4	java.lang.InterruptedException
-    //   1188	1	13	localIOException2	java.io.IOException
-    //   1198	1	13	localIOException3	java.io.IOException
-    //   1206	1	13	localIOException4	java.io.IOException
-    //   680	153	14	localObject8	Object
+    //   0	1216	0	paramContext	Context
+    //   0	1216	1	paramString1	String
+    //   0	1216	2	paramString2	String
+    //   197	993	3	i	int
+    //   194	994	4	j	int
+    //   3	500	5	l1	long
+    //   486	15	7	l2	long
+    //   9	1095	9	localObject1	Object
+    //   1109	19	9	localObject2	Object
+    //   101	1025	10	localObject3	Object
+    //   114	1010	11	localObject4	Object
+    //   50	1157	12	localObject5	Object
+    //   130	201	13	localObject6	Object
+    //   386	353	13	localIOException1	java.io.IOException
+    //   756	82	13	localObject7	Object
+    //   853	45	13	localInterruptedException1	java.lang.InterruptedException
+    //   953	52	13	localException1	Exception
+    //   1133	1	13	localException2	Exception
+    //   1143	1	13	localException3	Exception
+    //   1151	1	13	localException4	Exception
+    //   1156	1	13	localInterruptedException2	java.lang.InterruptedException
+    //   1168	1	13	localInterruptedException3	java.lang.InterruptedException
+    //   1178	1	13	localInterruptedException4	java.lang.InterruptedException
+    //   1193	1	13	localIOException2	java.io.IOException
+    //   1203	1	13	localIOException3	java.io.IOException
+    //   1211	1	13	localIOException4	java.io.IOException
+    //   685	30	14	str	String
+    //   835	16	14	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   341	349	373	java/io/IOException
-    //   353	361	373	java/io/IOException
-    //   365	373	373	java/io/IOException
-    //   305	312	376	finally
-    //   377	379	376	finally
-    //   105	195	381	java/io/IOException
-    //   203	213	381	java/io/IOException
-    //   220	305	381	java/io/IOException
-    //   312	337	381	java/io/IOException
-    //   379	381	381	java/io/IOException
-    //   574	580	381	java/io/IOException
-    //   792	796	823	java/io/IOException
-    //   800	804	823	java/io/IOException
-    //   812	817	823	java/io/IOException
-    //   766	773	830	finally
-    //   832	835	830	finally
-    //   609	615	848	java/lang/InterruptedException
-    //   625	632	848	java/lang/InterruptedException
-    //   642	665	848	java/lang/InterruptedException
-    //   675	682	848	java/lang/InterruptedException
-    //   697	720	848	java/lang/InterruptedException
-    //   733	738	848	java/lang/InterruptedException
-    //   748	753	848	java/lang/InterruptedException
-    //   763	766	848	java/lang/InterruptedException
-    //   783	788	848	java/lang/InterruptedException
-    //   845	848	848	java/lang/InterruptedException
-    //   910	914	941	java/io/IOException
-    //   918	922	941	java/io/IOException
-    //   930	935	941	java/io/IOException
-    //   105	195	948	java/lang/Exception
-    //   203	213	948	java/lang/Exception
-    //   220	305	948	java/lang/Exception
-    //   312	337	948	java/lang/Exception
-    //   379	381	948	java/lang/Exception
-    //   574	580	948	java/lang/Exception
-    //   1017	1021	1048	java/io/IOException
-    //   1025	1029	1048	java/io/IOException
-    //   1037	1042	1048	java/io/IOException
-    //   105	195	1055	finally
-    //   203	213	1055	finally
-    //   220	305	1055	finally
-    //   312	337	1055	finally
-    //   379	381	1055	finally
-    //   574	580	1055	finally
-    //   522	565	1089	java/lang/Exception
-    //   1065	1069	1093	java/io/IOException
-    //   1073	1077	1093	java/io/IOException
-    //   1082	1087	1093	java/io/IOException
-    //   580	589	1097	finally
-    //   589	599	1104	finally
-    //   405	410	1114	finally
-    //   420	446	1114	finally
-    //   609	615	1114	finally
-    //   625	632	1114	finally
-    //   642	665	1114	finally
-    //   675	682	1114	finally
-    //   697	720	1114	finally
-    //   733	738	1114	finally
-    //   748	753	1114	finally
-    //   763	766	1114	finally
-    //   783	788	1114	finally
-    //   845	848	1114	finally
-    //   865	870	1114	finally
-    //   880	906	1114	finally
-    //   972	977	1114	finally
-    //   987	1013	1114	finally
-    //   580	589	1128	java/lang/Exception
-    //   589	599	1138	java/lang/Exception
-    //   609	615	1146	java/lang/Exception
-    //   625	632	1146	java/lang/Exception
-    //   642	665	1146	java/lang/Exception
-    //   675	682	1146	java/lang/Exception
-    //   697	720	1146	java/lang/Exception
-    //   733	738	1146	java/lang/Exception
-    //   748	753	1146	java/lang/Exception
-    //   763	766	1146	java/lang/Exception
-    //   783	788	1146	java/lang/Exception
-    //   845	848	1146	java/lang/Exception
-    //   105	195	1151	java/lang/InterruptedException
-    //   203	213	1151	java/lang/InterruptedException
-    //   220	305	1151	java/lang/InterruptedException
-    //   312	337	1151	java/lang/InterruptedException
-    //   379	381	1151	java/lang/InterruptedException
-    //   574	580	1151	java/lang/InterruptedException
-    //   580	589	1163	java/lang/InterruptedException
-    //   589	599	1173	java/lang/InterruptedException
-    //   450	454	1181	java/io/IOException
-    //   458	462	1181	java/io/IOException
-    //   470	475	1181	java/io/IOException
-    //   580	589	1188	java/io/IOException
-    //   589	599	1198	java/io/IOException
-    //   609	615	1206	java/io/IOException
-    //   625	632	1206	java/io/IOException
-    //   642	665	1206	java/io/IOException
-    //   675	682	1206	java/io/IOException
-    //   697	720	1206	java/io/IOException
-    //   733	738	1206	java/io/IOException
-    //   748	753	1206	java/io/IOException
-    //   763	766	1206	java/io/IOException
-    //   783	788	1206	java/io/IOException
-    //   845	848	1206	java/io/IOException
+    //   346	354	378	java/io/IOException
+    //   358	366	378	java/io/IOException
+    //   370	378	378	java/io/IOException
+    //   310	317	381	finally
+    //   382	384	381	finally
+    //   103	196	386	java/io/IOException
+    //   204	215	386	java/io/IOException
+    //   222	310	386	java/io/IOException
+    //   317	342	386	java/io/IOException
+    //   384	386	386	java/io/IOException
+    //   579	585	386	java/io/IOException
+    //   797	801	828	java/io/IOException
+    //   805	809	828	java/io/IOException
+    //   817	822	828	java/io/IOException
+    //   771	778	835	finally
+    //   837	840	835	finally
+    //   614	620	853	java/lang/InterruptedException
+    //   630	637	853	java/lang/InterruptedException
+    //   647	670	853	java/lang/InterruptedException
+    //   680	687	853	java/lang/InterruptedException
+    //   702	725	853	java/lang/InterruptedException
+    //   738	743	853	java/lang/InterruptedException
+    //   753	758	853	java/lang/InterruptedException
+    //   768	771	853	java/lang/InterruptedException
+    //   788	793	853	java/lang/InterruptedException
+    //   850	853	853	java/lang/InterruptedException
+    //   915	919	946	java/io/IOException
+    //   923	927	946	java/io/IOException
+    //   935	940	946	java/io/IOException
+    //   103	196	953	java/lang/Exception
+    //   204	215	953	java/lang/Exception
+    //   222	310	953	java/lang/Exception
+    //   317	342	953	java/lang/Exception
+    //   384	386	953	java/lang/Exception
+    //   579	585	953	java/lang/Exception
+    //   1022	1026	1053	java/io/IOException
+    //   1030	1034	1053	java/io/IOException
+    //   1042	1047	1053	java/io/IOException
+    //   103	196	1060	finally
+    //   204	215	1060	finally
+    //   222	310	1060	finally
+    //   317	342	1060	finally
+    //   384	386	1060	finally
+    //   579	585	1060	finally
+    //   527	570	1094	java/lang/Exception
+    //   1070	1074	1098	java/io/IOException
+    //   1078	1082	1098	java/io/IOException
+    //   1087	1092	1098	java/io/IOException
+    //   585	594	1102	finally
+    //   594	604	1109	finally
+    //   410	415	1119	finally
+    //   425	451	1119	finally
+    //   614	620	1119	finally
+    //   630	637	1119	finally
+    //   647	670	1119	finally
+    //   680	687	1119	finally
+    //   702	725	1119	finally
+    //   738	743	1119	finally
+    //   753	758	1119	finally
+    //   768	771	1119	finally
+    //   788	793	1119	finally
+    //   850	853	1119	finally
+    //   870	875	1119	finally
+    //   885	911	1119	finally
+    //   977	982	1119	finally
+    //   992	1018	1119	finally
+    //   585	594	1133	java/lang/Exception
+    //   594	604	1143	java/lang/Exception
+    //   614	620	1151	java/lang/Exception
+    //   630	637	1151	java/lang/Exception
+    //   647	670	1151	java/lang/Exception
+    //   680	687	1151	java/lang/Exception
+    //   702	725	1151	java/lang/Exception
+    //   738	743	1151	java/lang/Exception
+    //   753	758	1151	java/lang/Exception
+    //   768	771	1151	java/lang/Exception
+    //   788	793	1151	java/lang/Exception
+    //   850	853	1151	java/lang/Exception
+    //   103	196	1156	java/lang/InterruptedException
+    //   204	215	1156	java/lang/InterruptedException
+    //   222	310	1156	java/lang/InterruptedException
+    //   317	342	1156	java/lang/InterruptedException
+    //   384	386	1156	java/lang/InterruptedException
+    //   579	585	1156	java/lang/InterruptedException
+    //   585	594	1168	java/lang/InterruptedException
+    //   594	604	1178	java/lang/InterruptedException
+    //   455	459	1186	java/io/IOException
+    //   463	467	1186	java/io/IOException
+    //   475	480	1186	java/io/IOException
+    //   585	594	1193	java/io/IOException
+    //   594	604	1203	java/io/IOException
+    //   614	620	1211	java/io/IOException
+    //   630	637	1211	java/io/IOException
+    //   647	670	1211	java/io/IOException
+    //   680	687	1211	java/io/IOException
+    //   702	725	1211	java/io/IOException
+    //   738	743	1211	java/io/IOException
+    //   753	758	1211	java/io/IOException
+    //   768	771	1211	java/io/IOException
+    //   788	793	1211	java/io/IOException
+    //   850	853	1211	java/io/IOException
   }
   
   /* Error */
-  public static int a(Context paramContext, String paramString1, String paramString2, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, axlp paramaxlp, axfd paramaxfd, axff paramaxff)
+  public static int a(Context paramContext, String paramString1, String paramString2, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, axlr paramaxlr, axff paramaxff, axfh paramaxfh)
   {
     // Byte code:
     //   0: invokestatic 55	java/lang/System:currentTimeMillis	()J
-    //   3: lstore 9
-    //   5: new 60	axlo
+    //   3: lstore 11
+    //   5: new 60	axlq
     //   8: dup
-    //   9: invokespecial 220	axlo:<init>	()V
+    //   9: invokespecial 220	axlq:<init>	()V
     //   12: astore_3
     //   13: aload_3
     //   14: iconst_1
-    //   15: putfield 62	axlo:jdField_a_of_type_Boolean	Z
+    //   15: putfield 62	axlq:jdField_a_of_type_Boolean	Z
     //   18: aload_3
     //   19: aload 6
-    //   21: getfield 225	axff:jdField_c_of_type_Int	I
+    //   21: getfield 225	axfh:jdField_c_of_type_Int	I
     //   24: invokestatic 229	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   27: putfield 232	axlo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   27: putfield 232	axlq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   30: aload_3
     //   31: aload 6
-    //   33: getfield 233	axff:jdField_a_of_type_Int	I
-    //   36: putfield 234	axlo:jdField_a_of_type_Int	I
+    //   33: getfield 233	axfh:jdField_a_of_type_Int	I
+    //   36: putfield 234	axlq:jdField_a_of_type_Int	I
     //   39: aload_3
     //   40: aload 6
-    //   42: getfield 237	axff:jdField_b_of_type_Int	I
-    //   45: putfield 238	axlo:jdField_b_of_type_Int	I
+    //   42: getfield 237	axfh:jdField_b_of_type_Int	I
+    //   45: putfield 238	axlq:jdField_b_of_type_Int	I
     //   48: aload_3
     //   49: aload 6
-    //   51: getfield 241	axff:jdField_d_of_type_Int	I
+    //   51: getfield 241	axfh:jdField_d_of_type_Int	I
     //   54: i2l
-    //   55: putfield 244	axlo:jdField_c_of_type_Long	J
+    //   55: putfield 244	axlq:jdField_c_of_type_Long	J
     //   58: aload_3
     //   59: aload 5
-    //   61: getfield 247	axfd:jdField_a_of_type_Int	I
-    //   64: putfield 248	axlo:jdField_c_of_type_Int	I
+    //   61: getfield 247	axff:jdField_a_of_type_Int	I
+    //   64: putfield 248	axlq:jdField_c_of_type_Int	I
     //   67: aload_3
     //   68: aload 5
-    //   70: getfield 249	axfd:jdField_b_of_type_Int	I
-    //   73: putfield 250	axlo:jdField_d_of_type_Int	I
+    //   70: getfield 249	axff:jdField_b_of_type_Int	I
+    //   73: putfield 250	axlq:jdField_d_of_type_Int	I
     //   76: aload_3
     //   77: bipush 25
-    //   79: putfield 253	axlo:jdField_e_of_type_Int	I
+    //   79: putfield 253	axlq:jdField_e_of_type_Int	I
     //   82: aload_3
     //   83: aload 5
-    //   85: getfield 255	axfd:jdField_b_of_type_Long	J
-    //   88: putfield 257	axlo:jdField_d_of_type_Long	J
+    //   85: getfield 255	axff:jdField_b_of_type_Long	J
+    //   88: putfield 257	axlq:jdField_d_of_type_Long	J
     //   91: aload_3
     //   92: aload 5
-    //   94: getfield 259	axfd:jdField_a_of_type_Long	J
-    //   97: putfield 261	axlo:jdField_e_of_type_Long	J
+    //   94: getfield 259	axff:jdField_a_of_type_Long	J
+    //   97: putfield 261	axlq:jdField_e_of_type_Long	J
     //   100: aload_3
-    //   101: getfield 62	axlo:jdField_a_of_type_Boolean	Z
+    //   101: getfield 62	axlq:jdField_a_of_type_Boolean	Z
     //   104: ifne +10 -> 114
     //   107: ldc 64
     //   109: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
@@ -851,7 +852,7 @@ public class ShortVideoTrimmer
     //   114: aload_1
     //   115: aload_2
     //   116: aload_3
-    //   117: invokestatic 263	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:b	(Ljava/lang/String;Ljava/lang/String;Laxlo;)[Ljava/lang/String;
+    //   117: invokestatic 263	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:b	(Ljava/lang/String;Ljava/lang/String;Laxlq;)[Ljava/lang/String;
     //   120: astore 6
     //   122: aload 6
     //   124: ifnonnull +11 -> 135
@@ -863,45 +864,45 @@ public class ShortVideoTrimmer
     //   136: invokestatic 77	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoPath	(Landroid/content/Context;)Ljava/lang/String;
     //   139: astore 13
     //   141: invokestatic 82	com/tencent/mobileqq/shortvideo/VideoEnvironment:a	()Ljava/lang/String;
-    //   144: astore_0
-    //   145: getstatic 83	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_Boolean	Z
-    //   148: ifne +38 -> 186
-    //   151: new 32	java/io/File
-    //   154: dup
-    //   155: new 85	java/lang/StringBuilder
-    //   158: dup
-    //   159: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   162: aload 13
-    //   164: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: aload_0
-    //   168: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   177: invokevirtual 97	java/io/File:exists	()Z
-    //   180: ifne +6 -> 186
-    //   183: bipush 253
-    //   185: ireturn
-    //   186: aconst_null
-    //   187: astore_1
+    //   144: astore 15
+    //   146: getstatic 83	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_Boolean	Z
+    //   149: ifne +39 -> 188
+    //   152: new 32	java/io/File
+    //   155: dup
+    //   156: new 85	java/lang/StringBuilder
+    //   159: dup
+    //   160: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   163: aload 13
+    //   165: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: aload 15
+    //   170: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   176: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   179: invokevirtual 97	java/io/File:exists	()Z
+    //   182: ifne +6 -> 188
+    //   185: bipush 253
+    //   187: ireturn
     //   188: aconst_null
-    //   189: astore 5
-    //   191: aconst_null
-    //   192: astore_3
-    //   193: new 99	java/lang/ProcessBuilder
-    //   196: dup
-    //   197: iconst_0
-    //   198: anewarray 101	java/lang/String
-    //   201: invokespecial 104	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
-    //   204: astore 14
-    //   206: aload 14
-    //   208: iconst_1
-    //   209: invokevirtual 108	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
-    //   212: pop
-    //   213: new 110	java/util/ArrayList
-    //   216: dup
-    //   217: invokespecial 111	java/util/ArrayList:<init>	()V
-    //   220: astore 15
-    //   222: aload 15
+    //   189: astore_1
+    //   190: aconst_null
+    //   191: astore 5
+    //   193: aconst_null
+    //   194: astore_3
+    //   195: new 99	java/lang/ProcessBuilder
+    //   198: dup
+    //   199: iconst_0
+    //   200: anewarray 101	java/lang/String
+    //   203: invokespecial 104	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   206: astore 14
+    //   208: aload 14
+    //   210: iconst_1
+    //   211: invokevirtual 108	java/lang/ProcessBuilder:redirectErrorStream	(Z)Ljava/lang/ProcessBuilder;
+    //   214: pop
+    //   215: new 110	java/util/ArrayList
+    //   218: dup
+    //   219: invokespecial 111	java/util/ArrayList:<init>	()V
+    //   222: astore_0
+    //   223: aload_0
     //   224: new 85	java/lang/StringBuilder
     //   227: dup
     //   228: invokespecial 86	java/lang/StringBuilder:<init>	()V
@@ -917,713 +918,713 @@ public class ShortVideoTrimmer
     //   254: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   257: ldc 121
     //   259: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: aload 15
-    //   264: iconst_0
-    //   265: invokeinterface 125 2 0
-    //   270: checkcast 101	java/lang/String
-    //   273: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   279: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   282: aload 6
-    //   284: arraylength
-    //   285: istore 8
-    //   287: iconst_0
-    //   288: istore 7
-    //   290: iload 7
-    //   292: iload 8
-    //   294: if_icmpge +25 -> 319
-    //   297: aload 15
-    //   299: aload 6
-    //   301: iload 7
-    //   303: aaload
-    //   304: invokeinterface 119 2 0
-    //   309: pop
-    //   310: iload 7
-    //   312: iconst_1
-    //   313: iadd
-    //   314: istore 7
-    //   316: goto -26 -> 290
-    //   319: aload 15
-    //   321: new 85	java/lang/StringBuilder
-    //   324: dup
-    //   325: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   328: aload 13
-    //   330: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   333: aload_0
-    //   334: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: invokeinterface 119 2 0
-    //   345: pop
-    //   346: aload 14
-    //   348: aload 15
-    //   350: invokevirtual 129	java/lang/ProcessBuilder:command	(Ljava/util/List;)Ljava/lang/ProcessBuilder;
-    //   353: pop
-    //   354: new 85	java/lang/StringBuilder
-    //   357: dup
-    //   358: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   361: ldc 131
-    //   363: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: aload 15
-    //   368: aload 15
-    //   370: invokeinterface 134 1 0
-    //   375: iconst_1
-    //   376: isub
-    //   377: invokeinterface 125 2 0
-    //   382: checkcast 101	java/lang/String
-    //   385: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   391: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   394: aload 14
-    //   396: invokevirtual 138	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
-    //   399: astore 14
-    //   401: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   404: astore_0
-    //   405: aload_0
-    //   406: monitorenter
-    //   407: aload 14
-    //   409: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   412: aload_0
-    //   413: monitorexit
+    //   262: aload_0
+    //   263: iconst_0
+    //   264: invokeinterface 125 2 0
+    //   269: checkcast 101	java/lang/String
+    //   272: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   278: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   281: aload 6
+    //   283: arraylength
+    //   284: istore 8
+    //   286: iconst_0
+    //   287: istore 7
+    //   289: iload 7
+    //   291: iload 8
+    //   293: if_icmpge +24 -> 317
+    //   296: aload_0
+    //   297: aload 6
+    //   299: iload 7
+    //   301: aaload
+    //   302: invokeinterface 119 2 0
+    //   307: pop
+    //   308: iload 7
+    //   310: iconst_1
+    //   311: iadd
+    //   312: istore 7
+    //   314: goto -25 -> 289
+    //   317: aload_0
+    //   318: new 85	java/lang/StringBuilder
+    //   321: dup
+    //   322: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   325: aload 13
+    //   327: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: aload 15
+    //   332: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   338: invokeinterface 119 2 0
+    //   343: pop
+    //   344: aload 14
+    //   346: aload_0
+    //   347: invokevirtual 129	java/lang/ProcessBuilder:command	(Ljava/util/List;)Ljava/lang/ProcessBuilder;
+    //   350: pop
+    //   351: new 85	java/lang/StringBuilder
+    //   354: dup
+    //   355: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   358: ldc 131
+    //   360: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   363: aload_0
+    //   364: aload_0
+    //   365: invokeinterface 134 1 0
+    //   370: iconst_1
+    //   371: isub
+    //   372: invokeinterface 125 2 0
+    //   377: checkcast 101	java/lang/String
+    //   380: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   383: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   386: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   389: aload 14
+    //   391: invokevirtual 138	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   394: astore 14
+    //   396: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   399: astore_0
+    //   400: aload_0
+    //   401: monitorenter
+    //   402: aload 14
+    //   404: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   407: aload_0
+    //   408: monitorexit
+    //   409: aload 4
+    //   411: ifnull +13 -> 424
     //   414: aload 4
-    //   416: ifnull +13 -> 429
-    //   419: aload 4
-    //   421: getstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   424: invokeinterface 268 2 0
-    //   429: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   432: invokevirtual 142	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   435: ifne +274 -> 709
+    //   416: getstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   419: invokeinterface 268 2 0
+    //   424: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   427: invokevirtual 142	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   430: ifne +274 -> 704
+    //   433: aload 4
+    //   435: ifnull +10 -> 445
     //   438: aload 4
-    //   440: ifnull +10 -> 450
-    //   443: aload 4
-    //   445: invokeinterface 270 1 0
-    //   450: aconst_null
-    //   451: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   454: aload 14
-    //   456: invokevirtual 147	java/lang/Process:destroy	()V
-    //   459: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   462: iconst_1
-    //   463: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   466: iconst_0
-    //   467: ifeq +11 -> 478
-    //   470: new 152	java/lang/NullPointerException
-    //   473: dup
-    //   474: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   477: athrow
-    //   478: iconst_0
-    //   479: ifeq +11 -> 490
-    //   482: new 152	java/lang/NullPointerException
-    //   485: dup
-    //   486: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   489: athrow
-    //   490: iconst_0
-    //   491: ifeq -379 -> 112
-    //   494: new 152	java/lang/NullPointerException
-    //   497: dup
-    //   498: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   501: athrow
-    //   502: astore_0
-    //   503: iconst_m1
-    //   504: ireturn
-    //   505: astore 4
-    //   507: aload_0
-    //   508: monitorexit
-    //   509: aload 4
-    //   511: athrow
-    //   512: astore 14
-    //   514: aconst_null
-    //   515: astore_0
-    //   516: aconst_null
-    //   517: astore_1
-    //   518: aconst_null
-    //   519: astore 4
-    //   521: sipush -1001
-    //   524: istore 8
-    //   526: aload 4
-    //   528: astore 6
-    //   530: aload_1
-    //   531: astore 5
-    //   533: aload_0
-    //   534: astore_3
-    //   535: aload 14
-    //   537: invokevirtual 156	java/io/IOException:printStackTrace	()V
-    //   540: aload 4
-    //   542: astore 6
-    //   544: aload_1
-    //   545: astore 5
-    //   547: aload_0
-    //   548: astore_3
-    //   549: new 85	java/lang/StringBuilder
-    //   552: dup
-    //   553: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   556: ldc 158
-    //   558: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: aload 14
-    //   563: invokevirtual 159	java/io/IOException:toString	()Ljava/lang/String;
-    //   566: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   569: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   572: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   575: aload_0
-    //   576: ifnull +7 -> 583
-    //   579: aload_0
-    //   580: invokevirtual 164	java/io/InputStream:close	()V
-    //   583: aload_1
-    //   584: ifnull +7 -> 591
-    //   587: aload_1
-    //   588: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   591: iload 8
-    //   593: istore 7
+    //   440: invokeinterface 270 1 0
+    //   445: aconst_null
+    //   446: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   449: aload 14
+    //   451: invokevirtual 147	java/lang/Process:destroy	()V
+    //   454: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   457: iconst_1
+    //   458: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   461: iconst_0
+    //   462: ifeq +11 -> 473
+    //   465: new 152	java/lang/NullPointerException
+    //   468: dup
+    //   469: invokespecial 153	java/lang/NullPointerException:<init>	()V
+    //   472: athrow
+    //   473: iconst_0
+    //   474: ifeq +11 -> 485
+    //   477: new 152	java/lang/NullPointerException
+    //   480: dup
+    //   481: invokespecial 153	java/lang/NullPointerException:<init>	()V
+    //   484: athrow
+    //   485: iconst_0
+    //   486: ifeq -374 -> 112
+    //   489: new 152	java/lang/NullPointerException
+    //   492: dup
+    //   493: invokespecial 153	java/lang/NullPointerException:<init>	()V
+    //   496: athrow
+    //   497: astore_0
+    //   498: iconst_m1
+    //   499: ireturn
+    //   500: astore 4
+    //   502: aload_0
+    //   503: monitorexit
+    //   504: aload 4
+    //   506: athrow
+    //   507: astore 14
+    //   509: aconst_null
+    //   510: astore_0
+    //   511: aconst_null
+    //   512: astore_1
+    //   513: aconst_null
+    //   514: astore 4
+    //   516: sipush -1001
+    //   519: istore 8
+    //   521: aload 4
+    //   523: astore 6
+    //   525: aload_1
+    //   526: astore 5
+    //   528: aload_0
+    //   529: astore_3
+    //   530: aload 14
+    //   532: invokevirtual 156	java/io/IOException:printStackTrace	()V
+    //   535: aload 4
+    //   537: astore 6
+    //   539: aload_1
+    //   540: astore 5
+    //   542: aload_0
+    //   543: astore_3
+    //   544: new 85	java/lang/StringBuilder
+    //   547: dup
+    //   548: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   551: ldc 158
+    //   553: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   556: aload 14
+    //   558: invokevirtual 159	java/io/IOException:toString	()Ljava/lang/String;
+    //   561: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   564: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   567: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   570: aload_0
+    //   571: ifnull +7 -> 578
+    //   574: aload_0
+    //   575: invokevirtual 164	java/io/InputStream:close	()V
+    //   578: aload_1
+    //   579: ifnull +7 -> 586
+    //   582: aload_1
+    //   583: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   586: iload 8
+    //   588: istore 7
+    //   590: aload 4
+    //   592: ifnull +12 -> 604
     //   595: aload 4
-    //   597: ifnull +12 -> 609
-    //   600: aload 4
-    //   602: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   605: iload 8
-    //   607: istore 7
-    //   609: invokestatic 55	java/lang/System:currentTimeMillis	()J
-    //   612: lstore 11
-    //   614: new 85	java/lang/StringBuilder
-    //   617: dup
-    //   618: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   621: ldc 172
-    //   623: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   626: lload 11
-    //   628: lload 9
-    //   630: lsub
-    //   631: invokevirtual 175	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   634: ldc 177
-    //   636: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   639: iload 7
-    //   641: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   644: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   647: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   650: iload 7
-    //   652: ifeq +47 -> 699
-    //   655: new 32	java/io/File
-    //   658: dup
-    //   659: aload_2
-    //   660: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   663: astore_0
-    //   664: aload_0
-    //   665: invokevirtual 97	java/io/File:exists	()Z
-    //   668: ifeq +31 -> 699
-    //   671: aload_0
-    //   672: invokevirtual 183	java/io/File:delete	()Z
-    //   675: pop
-    //   676: new 85	java/lang/StringBuilder
-    //   679: dup
-    //   680: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   683: ldc 185
-    //   685: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   688: iload 7
-    //   690: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   693: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   696: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   699: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   702: iconst_1
-    //   703: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   706: iload 7
-    //   708: ireturn
-    //   709: aload 14
-    //   711: invokevirtual 189	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   714: astore_0
-    //   715: new 166	java/io/InputStreamReader
-    //   718: dup
-    //   719: aload_0
-    //   720: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   723: astore_1
-    //   724: new 169	java/io/BufferedReader
-    //   727: dup
-    //   728: aload_1
-    //   729: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   732: astore 13
-    //   734: aload 13
-    //   736: astore 6
-    //   738: aload_1
-    //   739: astore 5
-    //   741: aload_0
-    //   742: astore_3
-    //   743: aload 14
-    //   745: invokevirtual 198	java/lang/Process:waitFor	()I
-    //   748: pop
-    //   749: aload 13
-    //   751: astore 6
-    //   753: aload_1
-    //   754: astore 5
-    //   756: aload_0
-    //   757: astore_3
-    //   758: aload 14
-    //   760: invokevirtual 201	java/lang/Process:exitValue	()I
-    //   763: istore 8
-    //   765: aload 13
-    //   767: astore 6
-    //   769: aload_1
-    //   770: astore 5
-    //   772: aload_0
-    //   773: astore_3
-    //   774: new 85	java/lang/StringBuilder
-    //   777: dup
-    //   778: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   781: ldc 203
-    //   783: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   786: iload 8
-    //   788: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   791: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   794: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   797: aload 13
-    //   799: astore 6
-    //   801: aload_1
-    //   802: astore 5
-    //   804: aload_0
-    //   805: astore_3
-    //   806: aload 13
-    //   808: invokevirtual 206	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   811: astore 15
-    //   813: aload 15
-    //   815: ifnull +38 -> 853
-    //   818: aload 13
-    //   820: astore 6
-    //   822: aload_1
-    //   823: astore 5
-    //   825: aload_0
-    //   826: astore_3
-    //   827: new 85	java/lang/StringBuilder
-    //   830: dup
-    //   831: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   834: ldc 208
+    //   597: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   600: iload 8
+    //   602: istore 7
+    //   604: invokestatic 55	java/lang/System:currentTimeMillis	()J
+    //   607: lstore 9
+    //   609: new 85	java/lang/StringBuilder
+    //   612: dup
+    //   613: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   616: ldc 172
+    //   618: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: lload 9
+    //   623: lload 11
+    //   625: lsub
+    //   626: invokevirtual 175	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   629: ldc 177
+    //   631: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   634: iload 7
+    //   636: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   639: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   642: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   645: iload 7
+    //   647: ifeq +47 -> 694
+    //   650: new 32	java/io/File
+    //   653: dup
+    //   654: aload_2
+    //   655: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   658: astore_0
+    //   659: aload_0
+    //   660: invokevirtual 97	java/io/File:exists	()Z
+    //   663: ifeq +31 -> 694
+    //   666: aload_0
+    //   667: invokevirtual 183	java/io/File:delete	()Z
+    //   670: pop
+    //   671: new 85	java/lang/StringBuilder
+    //   674: dup
+    //   675: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   678: ldc 185
+    //   680: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   683: iload 7
+    //   685: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   688: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   691: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   694: getstatic 24	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   697: iconst_1
+    //   698: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   701: iload 7
+    //   703: ireturn
+    //   704: aload 14
+    //   706: invokevirtual 189	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   709: astore_0
+    //   710: new 166	java/io/InputStreamReader
+    //   713: dup
+    //   714: aload_0
+    //   715: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   718: astore_1
+    //   719: new 169	java/io/BufferedReader
+    //   722: dup
+    //   723: aload_1
+    //   724: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   727: astore 13
+    //   729: aload 13
+    //   731: astore 6
+    //   733: aload_1
+    //   734: astore 5
+    //   736: aload_0
+    //   737: astore_3
+    //   738: aload 14
+    //   740: invokevirtual 198	java/lang/Process:waitFor	()I
+    //   743: pop
+    //   744: aload 13
+    //   746: astore 6
+    //   748: aload_1
+    //   749: astore 5
+    //   751: aload_0
+    //   752: astore_3
+    //   753: aload 14
+    //   755: invokevirtual 201	java/lang/Process:exitValue	()I
+    //   758: istore 8
+    //   760: aload 13
+    //   762: astore 6
+    //   764: aload_1
+    //   765: astore 5
+    //   767: aload_0
+    //   768: astore_3
+    //   769: new 85	java/lang/StringBuilder
+    //   772: dup
+    //   773: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   776: ldc 203
+    //   778: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   781: iload 8
+    //   783: invokevirtual 180	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   786: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   789: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   792: aload 13
+    //   794: astore 6
+    //   796: aload_1
+    //   797: astore 5
+    //   799: aload_0
+    //   800: astore_3
+    //   801: aload 13
+    //   803: invokevirtual 206	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   806: astore 15
+    //   808: aload 15
+    //   810: ifnull +38 -> 848
+    //   813: aload 13
+    //   815: astore 6
+    //   817: aload_1
+    //   818: astore 5
+    //   820: aload_0
+    //   821: astore_3
+    //   822: new 85	java/lang/StringBuilder
+    //   825: dup
+    //   826: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   829: ldc 208
+    //   831: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   834: aload 15
     //   836: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   839: aload 15
-    //   841: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   844: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   847: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   850: goto -53 -> 797
-    //   853: aload 13
-    //   855: astore 6
-    //   857: aload_1
-    //   858: astore 5
-    //   860: aload_0
-    //   861: astore_3
-    //   862: aload 14
-    //   864: invokevirtual 147	java/lang/Process:destroy	()V
-    //   867: aload 4
-    //   869: ifnull +19 -> 888
-    //   872: aload 13
-    //   874: astore 6
-    //   876: aload_1
-    //   877: astore 5
-    //   879: aload_0
-    //   880: astore_3
-    //   881: aload 4
-    //   883: invokeinterface 272 1 0
-    //   888: aload 13
-    //   890: astore 6
-    //   892: aload_1
-    //   893: astore 5
-    //   895: aload_0
-    //   896: astore_3
-    //   897: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   900: astore 4
-    //   902: aload 13
-    //   904: astore 6
-    //   906: aload_1
-    //   907: astore 5
-    //   909: aload_0
-    //   910: astore_3
-    //   911: aload 4
-    //   913: monitorenter
-    //   914: aconst_null
-    //   915: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
-    //   918: aload 4
-    //   920: monitorexit
-    //   921: aload 13
-    //   923: astore 6
-    //   925: aload_1
-    //   926: astore 5
-    //   928: aload_0
-    //   929: astore_3
-    //   930: ldc 210
-    //   932: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   935: aload_0
-    //   936: ifnull +7 -> 943
-    //   939: aload_0
-    //   940: invokevirtual 164	java/io/InputStream:close	()V
-    //   943: aload_1
-    //   944: ifnull +7 -> 951
-    //   947: aload_1
-    //   948: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   951: iload 8
-    //   953: istore 7
+    //   839: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   842: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   845: goto -53 -> 792
+    //   848: aload 13
+    //   850: astore 6
+    //   852: aload_1
+    //   853: astore 5
+    //   855: aload_0
+    //   856: astore_3
+    //   857: aload 14
+    //   859: invokevirtual 147	java/lang/Process:destroy	()V
+    //   862: aload 4
+    //   864: ifnull +19 -> 883
+    //   867: aload 13
+    //   869: astore 6
+    //   871: aload_1
+    //   872: astore 5
+    //   874: aload_0
+    //   875: astore_3
+    //   876: aload 4
+    //   878: invokeinterface 272 1 0
+    //   883: aload 13
+    //   885: astore 6
+    //   887: aload_1
+    //   888: astore 5
+    //   890: aload_0
+    //   891: astore_3
+    //   892: getstatic 17	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   895: astore 14
+    //   897: aload 13
+    //   899: astore 6
+    //   901: aload_1
+    //   902: astore 5
+    //   904: aload_0
+    //   905: astore_3
+    //   906: aload 14
+    //   908: monitorenter
+    //   909: aconst_null
+    //   910: putstatic 140	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:jdField_a_of_type_JavaLangProcess	Ljava/lang/Process;
+    //   913: aload 14
+    //   915: monitorexit
+    //   916: aload 13
+    //   918: astore 6
+    //   920: aload_1
+    //   921: astore 5
+    //   923: aload_0
+    //   924: astore_3
+    //   925: ldc 210
+    //   927: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   930: aload_0
+    //   931: ifnull +7 -> 938
+    //   934: aload_0
+    //   935: invokevirtual 164	java/io/InputStream:close	()V
+    //   938: aload_1
+    //   939: ifnull +7 -> 946
+    //   942: aload_1
+    //   943: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   946: iload 8
+    //   948: istore 7
+    //   950: aload 13
+    //   952: ifnull -348 -> 604
     //   955: aload 13
-    //   957: ifnull -348 -> 609
-    //   960: aload 13
-    //   962: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   965: iload 8
-    //   967: istore 7
-    //   969: goto -360 -> 609
-    //   972: astore_0
-    //   973: iload 8
-    //   975: istore 7
-    //   977: goto -368 -> 609
-    //   980: astore 14
-    //   982: aload 4
-    //   984: monitorexit
-    //   985: aload 13
-    //   987: astore 6
-    //   989: aload_1
-    //   990: astore 5
-    //   992: aload_0
-    //   993: astore_3
-    //   994: aload 14
-    //   996: athrow
-    //   997: astore_3
-    //   998: aload 13
-    //   1000: astore 4
-    //   1002: aload_3
-    //   1003: astore 13
-    //   1005: sipush -1002
-    //   1008: istore 8
-    //   1010: aload 4
-    //   1012: astore 6
-    //   1014: aload_1
-    //   1015: astore 5
-    //   1017: aload_0
-    //   1018: astore_3
-    //   1019: aload 13
-    //   1021: invokevirtual 211	java/lang/InterruptedException:printStackTrace	()V
-    //   1024: aload 4
-    //   1026: astore 6
-    //   1028: aload_1
-    //   1029: astore 5
-    //   1031: aload_0
-    //   1032: astore_3
-    //   1033: new 85	java/lang/StringBuilder
-    //   1036: dup
-    //   1037: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   1040: ldc 213
-    //   1042: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1045: aload 13
-    //   1047: invokevirtual 214	java/lang/InterruptedException:toString	()Ljava/lang/String;
-    //   1050: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1053: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1056: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   1059: aload_0
-    //   1060: ifnull +7 -> 1067
-    //   1063: aload_0
-    //   1064: invokevirtual 164	java/io/InputStream:close	()V
-    //   1067: aload_1
-    //   1068: ifnull +7 -> 1075
-    //   1071: aload_1
-    //   1072: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   1075: iload 8
-    //   1077: istore 7
+    //   957: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   960: iload 8
+    //   962: istore 7
+    //   964: goto -360 -> 604
+    //   967: astore_0
+    //   968: iload 8
+    //   970: istore 7
+    //   972: goto -368 -> 604
+    //   975: astore 4
+    //   977: aload 14
+    //   979: monitorexit
+    //   980: aload 13
+    //   982: astore 6
+    //   984: aload_1
+    //   985: astore 5
+    //   987: aload_0
+    //   988: astore_3
+    //   989: aload 4
+    //   991: athrow
+    //   992: astore_3
+    //   993: aload 13
+    //   995: astore 4
+    //   997: aload_3
+    //   998: astore 13
+    //   1000: sipush -1002
+    //   1003: istore 8
+    //   1005: aload 4
+    //   1007: astore 6
+    //   1009: aload_1
+    //   1010: astore 5
+    //   1012: aload_0
+    //   1013: astore_3
+    //   1014: aload 13
+    //   1016: invokevirtual 211	java/lang/InterruptedException:printStackTrace	()V
+    //   1019: aload 4
+    //   1021: astore 6
+    //   1023: aload_1
+    //   1024: astore 5
+    //   1026: aload_0
+    //   1027: astore_3
+    //   1028: new 85	java/lang/StringBuilder
+    //   1031: dup
+    //   1032: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   1035: ldc 213
+    //   1037: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1040: aload 13
+    //   1042: invokevirtual 214	java/lang/InterruptedException:toString	()Ljava/lang/String;
+    //   1045: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1048: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1051: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   1054: aload_0
+    //   1055: ifnull +7 -> 1062
+    //   1058: aload_0
+    //   1059: invokevirtual 164	java/io/InputStream:close	()V
+    //   1062: aload_1
+    //   1063: ifnull +7 -> 1070
+    //   1066: aload_1
+    //   1067: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   1070: iload 8
+    //   1072: istore 7
+    //   1074: aload 4
+    //   1076: ifnull -472 -> 604
     //   1079: aload 4
-    //   1081: ifnull -472 -> 609
-    //   1084: aload 4
-    //   1086: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   1089: iload 8
-    //   1091: istore 7
-    //   1093: goto -484 -> 609
-    //   1096: astore_0
-    //   1097: iload 8
-    //   1099: istore 7
-    //   1101: goto -492 -> 609
-    //   1104: astore 14
-    //   1106: aconst_null
-    //   1107: astore_0
-    //   1108: aconst_null
-    //   1109: astore_1
-    //   1110: aconst_null
-    //   1111: astore 4
-    //   1113: sipush -1003
-    //   1116: istore 8
-    //   1118: aload 4
-    //   1120: astore 6
-    //   1122: aload_1
-    //   1123: astore 5
-    //   1125: aload_0
-    //   1126: astore_3
-    //   1127: aload 14
-    //   1129: invokevirtual 215	java/lang/Exception:printStackTrace	()V
-    //   1132: aload 4
-    //   1134: astore 6
-    //   1136: aload_1
-    //   1137: astore 5
-    //   1139: aload_0
-    //   1140: astore_3
-    //   1141: new 85	java/lang/StringBuilder
-    //   1144: dup
-    //   1145: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   1148: ldc 217
-    //   1150: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1153: aload 14
-    //   1155: invokevirtual 218	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1158: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1161: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1164: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
-    //   1167: aload_0
-    //   1168: ifnull +7 -> 1175
-    //   1171: aload_0
-    //   1172: invokevirtual 164	java/io/InputStream:close	()V
-    //   1175: aload_1
-    //   1176: ifnull +7 -> 1183
-    //   1179: aload_1
-    //   1180: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   1183: iload 8
-    //   1185: istore 7
+    //   1081: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   1084: iload 8
+    //   1086: istore 7
+    //   1088: goto -484 -> 604
+    //   1091: astore_0
+    //   1092: iload 8
+    //   1094: istore 7
+    //   1096: goto -492 -> 604
+    //   1099: astore 14
+    //   1101: aconst_null
+    //   1102: astore_0
+    //   1103: aconst_null
+    //   1104: astore_1
+    //   1105: aconst_null
+    //   1106: astore 4
+    //   1108: sipush -1003
+    //   1111: istore 8
+    //   1113: aload 4
+    //   1115: astore 6
+    //   1117: aload_1
+    //   1118: astore 5
+    //   1120: aload_0
+    //   1121: astore_3
+    //   1122: aload 14
+    //   1124: invokevirtual 215	java/lang/Exception:printStackTrace	()V
+    //   1127: aload 4
+    //   1129: astore 6
+    //   1131: aload_1
+    //   1132: astore 5
+    //   1134: aload_0
+    //   1135: astore_3
+    //   1136: new 85	java/lang/StringBuilder
+    //   1139: dup
+    //   1140: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   1143: ldc 217
+    //   1145: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1148: aload 14
+    //   1150: invokevirtual 218	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1153: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1156: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1159: invokestatic 66	com/tencent/mobileqq/shortvideo/util/ShortVideoTrimmer:a	(Ljava/lang/String;)V
+    //   1162: aload_0
+    //   1163: ifnull +7 -> 1170
+    //   1166: aload_0
+    //   1167: invokevirtual 164	java/io/InputStream:close	()V
+    //   1170: aload_1
+    //   1171: ifnull +7 -> 1178
+    //   1174: aload_1
+    //   1175: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   1178: iload 8
+    //   1180: istore 7
+    //   1182: aload 4
+    //   1184: ifnull -580 -> 604
     //   1187: aload 4
-    //   1189: ifnull -580 -> 609
-    //   1192: aload 4
-    //   1194: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   1197: iload 8
-    //   1199: istore 7
-    //   1201: goto -592 -> 609
-    //   1204: astore_0
-    //   1205: iload 8
-    //   1207: istore 7
-    //   1209: goto -600 -> 609
-    //   1212: astore_0
-    //   1213: aload 5
-    //   1215: astore_2
-    //   1216: aload_1
-    //   1217: ifnull +7 -> 1224
-    //   1220: aload_1
-    //   1221: invokevirtual 164	java/io/InputStream:close	()V
-    //   1224: aload_2
-    //   1225: ifnull +7 -> 1232
-    //   1228: aload_2
-    //   1229: invokevirtual 167	java/io/InputStreamReader:close	()V
-    //   1232: aload_3
-    //   1233: ifnull +7 -> 1240
-    //   1236: aload_3
-    //   1237: invokevirtual 170	java/io/BufferedReader:close	()V
-    //   1240: aload_0
-    //   1241: athrow
-    //   1242: astore_0
-    //   1243: goto -544 -> 699
-    //   1246: astore_1
-    //   1247: goto -7 -> 1240
-    //   1250: astore_2
-    //   1251: aload_0
-    //   1252: astore_1
-    //   1253: aload_2
-    //   1254: astore_0
-    //   1255: aload 5
-    //   1257: astore_2
-    //   1258: goto -42 -> 1216
-    //   1261: astore 4
-    //   1263: aload_1
-    //   1264: astore_2
-    //   1265: aload_0
-    //   1266: astore_1
-    //   1267: aload 4
-    //   1269: astore_0
-    //   1270: goto -54 -> 1216
-    //   1273: astore_0
-    //   1274: aload 5
-    //   1276: astore_2
-    //   1277: aload_3
-    //   1278: astore_1
-    //   1279: aload 6
-    //   1281: astore_3
-    //   1282: goto -66 -> 1216
-    //   1285: astore 14
-    //   1287: aconst_null
-    //   1288: astore_1
-    //   1289: aconst_null
-    //   1290: astore 4
-    //   1292: goto -179 -> 1113
-    //   1295: astore 14
-    //   1297: aconst_null
-    //   1298: astore 4
-    //   1300: goto -187 -> 1113
-    //   1303: astore 14
-    //   1305: aload 13
-    //   1307: astore 4
-    //   1309: goto -196 -> 1113
-    //   1312: astore 13
-    //   1314: aconst_null
-    //   1315: astore_0
-    //   1316: aconst_null
-    //   1317: astore_1
-    //   1318: aconst_null
-    //   1319: astore 4
-    //   1321: goto -316 -> 1005
-    //   1324: astore 13
-    //   1326: aconst_null
-    //   1327: astore_1
-    //   1328: aconst_null
-    //   1329: astore 4
-    //   1331: goto -326 -> 1005
-    //   1334: astore 13
-    //   1336: aconst_null
-    //   1337: astore 4
-    //   1339: goto -334 -> 1005
-    //   1342: astore_0
-    //   1343: iload 8
-    //   1345: istore 7
-    //   1347: goto -738 -> 609
-    //   1350: astore 14
-    //   1352: aconst_null
-    //   1353: astore_1
-    //   1354: aconst_null
-    //   1355: astore 4
-    //   1357: goto -836 -> 521
-    //   1360: astore 14
-    //   1362: aconst_null
-    //   1363: astore 4
-    //   1365: goto -844 -> 521
-    //   1368: astore 14
-    //   1370: aload 13
-    //   1372: astore 4
-    //   1374: goto -853 -> 521
+    //   1189: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   1192: iload 8
+    //   1194: istore 7
+    //   1196: goto -592 -> 604
+    //   1199: astore_0
+    //   1200: iload 8
+    //   1202: istore 7
+    //   1204: goto -600 -> 604
+    //   1207: astore_0
+    //   1208: aload 5
+    //   1210: astore_2
+    //   1211: aload_1
+    //   1212: ifnull +7 -> 1219
+    //   1215: aload_1
+    //   1216: invokevirtual 164	java/io/InputStream:close	()V
+    //   1219: aload_2
+    //   1220: ifnull +7 -> 1227
+    //   1223: aload_2
+    //   1224: invokevirtual 167	java/io/InputStreamReader:close	()V
+    //   1227: aload_3
+    //   1228: ifnull +7 -> 1235
+    //   1231: aload_3
+    //   1232: invokevirtual 170	java/io/BufferedReader:close	()V
+    //   1235: aload_0
+    //   1236: athrow
+    //   1237: astore_0
+    //   1238: goto -544 -> 694
+    //   1241: astore_1
+    //   1242: goto -7 -> 1235
+    //   1245: astore_2
+    //   1246: aload_0
+    //   1247: astore_1
+    //   1248: aload_2
+    //   1249: astore_0
+    //   1250: aload 5
+    //   1252: astore_2
+    //   1253: goto -42 -> 1211
+    //   1256: astore 4
+    //   1258: aload_1
+    //   1259: astore_2
+    //   1260: aload_0
+    //   1261: astore_1
+    //   1262: aload 4
+    //   1264: astore_0
+    //   1265: goto -54 -> 1211
+    //   1268: astore_0
+    //   1269: aload 5
+    //   1271: astore_2
+    //   1272: aload_3
+    //   1273: astore_1
+    //   1274: aload 6
+    //   1276: astore_3
+    //   1277: goto -66 -> 1211
+    //   1280: astore 14
+    //   1282: aconst_null
+    //   1283: astore_1
+    //   1284: aconst_null
+    //   1285: astore 4
+    //   1287: goto -179 -> 1108
+    //   1290: astore 14
+    //   1292: aconst_null
+    //   1293: astore 4
+    //   1295: goto -187 -> 1108
+    //   1298: astore 14
+    //   1300: aload 13
+    //   1302: astore 4
+    //   1304: goto -196 -> 1108
+    //   1307: astore 13
+    //   1309: aconst_null
+    //   1310: astore_0
+    //   1311: aconst_null
+    //   1312: astore_1
+    //   1313: aconst_null
+    //   1314: astore 4
+    //   1316: goto -316 -> 1000
+    //   1319: astore 13
+    //   1321: aconst_null
+    //   1322: astore_1
+    //   1323: aconst_null
+    //   1324: astore 4
+    //   1326: goto -326 -> 1000
+    //   1329: astore 13
+    //   1331: aconst_null
+    //   1332: astore 4
+    //   1334: goto -334 -> 1000
+    //   1337: astore_0
+    //   1338: iload 8
+    //   1340: istore 7
+    //   1342: goto -738 -> 604
+    //   1345: astore 14
+    //   1347: aconst_null
+    //   1348: astore_1
+    //   1349: aconst_null
+    //   1350: astore 4
+    //   1352: goto -836 -> 516
+    //   1355: astore 14
+    //   1357: aconst_null
+    //   1358: astore 4
+    //   1360: goto -844 -> 516
+    //   1363: astore 14
+    //   1365: aload 13
+    //   1367: astore 4
+    //   1369: goto -853 -> 516
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1377	0	paramContext	Context
-    //   0	1377	1	paramString1	String
-    //   0	1377	2	paramString2	String
-    //   0	1377	3	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   0	1377	4	paramaxlp	axlp
-    //   0	1377	5	paramaxfd	axfd
-    //   0	1377	6	paramaxff	axff
-    //   288	1058	7	i	int
-    //   285	1059	8	j	int
-    //   3	626	9	l1	long
-    //   612	15	11	l2	long
-    //   139	1167	13	localObject1	Object
-    //   1312	1	13	localInterruptedException1	java.lang.InterruptedException
-    //   1324	1	13	localInterruptedException2	java.lang.InterruptedException
-    //   1334	37	13	localInterruptedException3	java.lang.InterruptedException
-    //   204	251	14	localObject2	Object
-    //   512	351	14	localIOException1	java.io.IOException
-    //   980	15	14	localObject3	Object
-    //   1104	50	14	localException1	Exception
-    //   1285	1	14	localException2	Exception
-    //   1295	1	14	localException3	Exception
-    //   1303	1	14	localException4	Exception
-    //   1350	1	14	localIOException2	java.io.IOException
-    //   1360	1	14	localIOException3	java.io.IOException
-    //   1368	1	14	localIOException4	java.io.IOException
-    //   220	620	15	localObject4	Object
+    //   0	1372	0	paramContext	Context
+    //   0	1372	1	paramString1	String
+    //   0	1372	2	paramString2	String
+    //   0	1372	3	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   0	1372	4	paramaxlr	axlr
+    //   0	1372	5	paramaxff	axff
+    //   0	1372	6	paramaxfh	axfh
+    //   287	1054	7	i	int
+    //   284	1055	8	j	int
+    //   607	15	9	l1	long
+    //   3	621	11	l2	long
+    //   139	1162	13	localObject1	Object
+    //   1307	1	13	localInterruptedException1	java.lang.InterruptedException
+    //   1319	1	13	localInterruptedException2	java.lang.InterruptedException
+    //   1329	37	13	localInterruptedException3	java.lang.InterruptedException
+    //   206	244	14	localObject2	Object
+    //   507	351	14	localIOException1	java.io.IOException
+    //   895	83	14	localObject3	Object
+    //   1099	50	14	localException1	Exception
+    //   1280	1	14	localException2	Exception
+    //   1290	1	14	localException3	Exception
+    //   1298	1	14	localException4	Exception
+    //   1345	1	14	localIOException2	java.io.IOException
+    //   1355	1	14	localIOException3	java.io.IOException
+    //   1363	1	14	localIOException4	java.io.IOException
+    //   144	691	15	str	String
     // Exception table:
     //   from	to	target	type
-    //   470	478	502	java/io/IOException
-    //   482	490	502	java/io/IOException
-    //   494	502	502	java/io/IOException
-    //   407	414	505	finally
-    //   507	509	505	finally
-    //   193	287	512	java/io/IOException
-    //   297	310	512	java/io/IOException
-    //   319	407	512	java/io/IOException
-    //   419	429	512	java/io/IOException
-    //   429	438	512	java/io/IOException
-    //   443	450	512	java/io/IOException
-    //   450	466	512	java/io/IOException
-    //   509	512	512	java/io/IOException
-    //   709	715	512	java/io/IOException
-    //   939	943	972	java/io/IOException
-    //   947	951	972	java/io/IOException
-    //   960	965	972	java/io/IOException
-    //   914	921	980	finally
-    //   982	985	980	finally
-    //   743	749	997	java/lang/InterruptedException
-    //   758	765	997	java/lang/InterruptedException
-    //   774	797	997	java/lang/InterruptedException
-    //   806	813	997	java/lang/InterruptedException
-    //   827	850	997	java/lang/InterruptedException
-    //   862	867	997	java/lang/InterruptedException
-    //   881	888	997	java/lang/InterruptedException
-    //   897	902	997	java/lang/InterruptedException
-    //   911	914	997	java/lang/InterruptedException
-    //   930	935	997	java/lang/InterruptedException
-    //   994	997	997	java/lang/InterruptedException
-    //   1063	1067	1096	java/io/IOException
-    //   1071	1075	1096	java/io/IOException
-    //   1084	1089	1096	java/io/IOException
-    //   193	287	1104	java/lang/Exception
-    //   297	310	1104	java/lang/Exception
-    //   319	407	1104	java/lang/Exception
-    //   419	429	1104	java/lang/Exception
-    //   429	438	1104	java/lang/Exception
-    //   443	450	1104	java/lang/Exception
-    //   450	466	1104	java/lang/Exception
-    //   509	512	1104	java/lang/Exception
-    //   709	715	1104	java/lang/Exception
-    //   1171	1175	1204	java/io/IOException
-    //   1179	1183	1204	java/io/IOException
-    //   1192	1197	1204	java/io/IOException
-    //   193	287	1212	finally
-    //   297	310	1212	finally
-    //   319	407	1212	finally
-    //   419	429	1212	finally
-    //   429	438	1212	finally
-    //   443	450	1212	finally
-    //   450	466	1212	finally
-    //   509	512	1212	finally
-    //   709	715	1212	finally
-    //   655	699	1242	java/lang/Exception
-    //   1220	1224	1246	java/io/IOException
-    //   1228	1232	1246	java/io/IOException
-    //   1236	1240	1246	java/io/IOException
-    //   715	724	1250	finally
-    //   724	734	1261	finally
-    //   535	540	1273	finally
-    //   549	575	1273	finally
-    //   743	749	1273	finally
-    //   758	765	1273	finally
-    //   774	797	1273	finally
-    //   806	813	1273	finally
-    //   827	850	1273	finally
-    //   862	867	1273	finally
-    //   881	888	1273	finally
-    //   897	902	1273	finally
-    //   911	914	1273	finally
-    //   930	935	1273	finally
-    //   994	997	1273	finally
-    //   1019	1024	1273	finally
-    //   1033	1059	1273	finally
-    //   1127	1132	1273	finally
-    //   1141	1167	1273	finally
-    //   715	724	1285	java/lang/Exception
-    //   724	734	1295	java/lang/Exception
-    //   743	749	1303	java/lang/Exception
-    //   758	765	1303	java/lang/Exception
-    //   774	797	1303	java/lang/Exception
-    //   806	813	1303	java/lang/Exception
-    //   827	850	1303	java/lang/Exception
-    //   862	867	1303	java/lang/Exception
-    //   881	888	1303	java/lang/Exception
-    //   897	902	1303	java/lang/Exception
-    //   911	914	1303	java/lang/Exception
-    //   930	935	1303	java/lang/Exception
-    //   994	997	1303	java/lang/Exception
-    //   193	287	1312	java/lang/InterruptedException
-    //   297	310	1312	java/lang/InterruptedException
-    //   319	407	1312	java/lang/InterruptedException
-    //   419	429	1312	java/lang/InterruptedException
-    //   429	438	1312	java/lang/InterruptedException
-    //   443	450	1312	java/lang/InterruptedException
-    //   450	466	1312	java/lang/InterruptedException
-    //   509	512	1312	java/lang/InterruptedException
-    //   709	715	1312	java/lang/InterruptedException
-    //   715	724	1324	java/lang/InterruptedException
-    //   724	734	1334	java/lang/InterruptedException
-    //   579	583	1342	java/io/IOException
-    //   587	591	1342	java/io/IOException
-    //   600	605	1342	java/io/IOException
-    //   715	724	1350	java/io/IOException
-    //   724	734	1360	java/io/IOException
-    //   743	749	1368	java/io/IOException
-    //   758	765	1368	java/io/IOException
-    //   774	797	1368	java/io/IOException
-    //   806	813	1368	java/io/IOException
-    //   827	850	1368	java/io/IOException
-    //   862	867	1368	java/io/IOException
-    //   881	888	1368	java/io/IOException
-    //   897	902	1368	java/io/IOException
-    //   911	914	1368	java/io/IOException
-    //   930	935	1368	java/io/IOException
-    //   994	997	1368	java/io/IOException
+    //   465	473	497	java/io/IOException
+    //   477	485	497	java/io/IOException
+    //   489	497	497	java/io/IOException
+    //   402	409	500	finally
+    //   502	504	500	finally
+    //   195	286	507	java/io/IOException
+    //   296	308	507	java/io/IOException
+    //   317	402	507	java/io/IOException
+    //   414	424	507	java/io/IOException
+    //   424	433	507	java/io/IOException
+    //   438	445	507	java/io/IOException
+    //   445	461	507	java/io/IOException
+    //   504	507	507	java/io/IOException
+    //   704	710	507	java/io/IOException
+    //   934	938	967	java/io/IOException
+    //   942	946	967	java/io/IOException
+    //   955	960	967	java/io/IOException
+    //   909	916	975	finally
+    //   977	980	975	finally
+    //   738	744	992	java/lang/InterruptedException
+    //   753	760	992	java/lang/InterruptedException
+    //   769	792	992	java/lang/InterruptedException
+    //   801	808	992	java/lang/InterruptedException
+    //   822	845	992	java/lang/InterruptedException
+    //   857	862	992	java/lang/InterruptedException
+    //   876	883	992	java/lang/InterruptedException
+    //   892	897	992	java/lang/InterruptedException
+    //   906	909	992	java/lang/InterruptedException
+    //   925	930	992	java/lang/InterruptedException
+    //   989	992	992	java/lang/InterruptedException
+    //   1058	1062	1091	java/io/IOException
+    //   1066	1070	1091	java/io/IOException
+    //   1079	1084	1091	java/io/IOException
+    //   195	286	1099	java/lang/Exception
+    //   296	308	1099	java/lang/Exception
+    //   317	402	1099	java/lang/Exception
+    //   414	424	1099	java/lang/Exception
+    //   424	433	1099	java/lang/Exception
+    //   438	445	1099	java/lang/Exception
+    //   445	461	1099	java/lang/Exception
+    //   504	507	1099	java/lang/Exception
+    //   704	710	1099	java/lang/Exception
+    //   1166	1170	1199	java/io/IOException
+    //   1174	1178	1199	java/io/IOException
+    //   1187	1192	1199	java/io/IOException
+    //   195	286	1207	finally
+    //   296	308	1207	finally
+    //   317	402	1207	finally
+    //   414	424	1207	finally
+    //   424	433	1207	finally
+    //   438	445	1207	finally
+    //   445	461	1207	finally
+    //   504	507	1207	finally
+    //   704	710	1207	finally
+    //   650	694	1237	java/lang/Exception
+    //   1215	1219	1241	java/io/IOException
+    //   1223	1227	1241	java/io/IOException
+    //   1231	1235	1241	java/io/IOException
+    //   710	719	1245	finally
+    //   719	729	1256	finally
+    //   530	535	1268	finally
+    //   544	570	1268	finally
+    //   738	744	1268	finally
+    //   753	760	1268	finally
+    //   769	792	1268	finally
+    //   801	808	1268	finally
+    //   822	845	1268	finally
+    //   857	862	1268	finally
+    //   876	883	1268	finally
+    //   892	897	1268	finally
+    //   906	909	1268	finally
+    //   925	930	1268	finally
+    //   989	992	1268	finally
+    //   1014	1019	1268	finally
+    //   1028	1054	1268	finally
+    //   1122	1127	1268	finally
+    //   1136	1162	1268	finally
+    //   710	719	1280	java/lang/Exception
+    //   719	729	1290	java/lang/Exception
+    //   738	744	1298	java/lang/Exception
+    //   753	760	1298	java/lang/Exception
+    //   769	792	1298	java/lang/Exception
+    //   801	808	1298	java/lang/Exception
+    //   822	845	1298	java/lang/Exception
+    //   857	862	1298	java/lang/Exception
+    //   876	883	1298	java/lang/Exception
+    //   892	897	1298	java/lang/Exception
+    //   906	909	1298	java/lang/Exception
+    //   925	930	1298	java/lang/Exception
+    //   989	992	1298	java/lang/Exception
+    //   195	286	1307	java/lang/InterruptedException
+    //   296	308	1307	java/lang/InterruptedException
+    //   317	402	1307	java/lang/InterruptedException
+    //   414	424	1307	java/lang/InterruptedException
+    //   424	433	1307	java/lang/InterruptedException
+    //   438	445	1307	java/lang/InterruptedException
+    //   445	461	1307	java/lang/InterruptedException
+    //   504	507	1307	java/lang/InterruptedException
+    //   704	710	1307	java/lang/InterruptedException
+    //   710	719	1319	java/lang/InterruptedException
+    //   719	729	1329	java/lang/InterruptedException
+    //   574	578	1337	java/io/IOException
+    //   582	586	1337	java/io/IOException
+    //   595	600	1337	java/io/IOException
+    //   710	719	1345	java/io/IOException
+    //   719	729	1355	java/io/IOException
+    //   738	744	1363	java/io/IOException
+    //   753	760	1363	java/io/IOException
+    //   769	792	1363	java/io/IOException
+    //   801	808	1363	java/io/IOException
+    //   822	845	1363	java/io/IOException
+    //   857	862	1363	java/io/IOException
+    //   876	883	1363	java/io/IOException
+    //   892	897	1363	java/io/IOException
+    //   906	909	1363	java/io/IOException
+    //   925	930	1363	java/io/IOException
+    //   989	992	1363	java/io/IOException
   }
   
-  public static axlo a(String paramString)
+  public static axlq a(String paramString)
   {
     Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
     if ((localObject != null) && (((String)localObject).length() > 0))
@@ -1642,18 +1643,18 @@ public class ShortVideoTrimmer
         if (i <= 0) {
           j = 640;
         }
-        localObject = new axlo();
+        localObject = new axlq();
         localFile = new File(paramString);
         if (!localFile.exists())
         {
-          ((axlo)localObject).jdField_a_of_type_Boolean = false;
+          ((axlq)localObject).jdField_a_of_type_Boolean = false;
           a("[@] getCompressConfig : [!file.exists]");
         }
         paramString = a(paramString);
         if ((paramString != null) && (paramString.length == 5) && (paramString[0] == 0)) {
           break;
         }
-        ((axlo)localObject).jdField_a_of_type_Boolean = false;
+        ((axlq)localObject).jdField_a_of_type_Boolean = false;
         a("[@] getCompressConfig : values=" + paramString);
         if (paramString != null) {
           a("[@] getCompressConfig : values.length=" + paramString.length + " err=" + paramString[0]);
@@ -2063,15 +2064,15 @@ public class ShortVideoTrimmer
     //   62	105	225	java/lang/Exception
   }
   
-  private static String[] a(String paramString1, String paramString2, axlo paramaxlo)
+  private static String[] a(String paramString1, String paramString2, axlq paramaxlq)
   {
     String str1 = "1";
     if (a() >= 2) {
       str1 = "2";
     }
-    String str2 = paramaxlo.jdField_c_of_type_Int + "x" + String.valueOf(paramaxlo.jdField_d_of_type_Int);
+    String str2 = paramaxlq.jdField_c_of_type_Int + "x" + String.valueOf(paramaxlq.jdField_d_of_type_Int);
     a("[@] generateCommand threads=" + str1 + "  resolution=" + str2);
-    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramaxlo.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(paramaxlo.jdField_e_of_type_Int), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
+    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramaxlq.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-minrate", "300k", "-maxrate", "600k", "-bufsize", "800k", "-qmin", "1", "-qmax", String.valueOf(paramaxlq.jdField_e_of_type_Int), "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
   }
   
   /* Error */
@@ -2352,16 +2353,16 @@ public class ShortVideoTrimmer
     //   218	224	473	java/lang/Exception
   }
   
-  private static String[] b(String paramString1, String paramString2, axlo paramaxlo)
+  private static String[] b(String paramString1, String paramString2, axlq paramaxlq)
   {
     String str1 = "1";
     if (a() >= 2) {
       str1 = "2";
     }
-    String str2 = paramaxlo.jdField_c_of_type_Int + "x" + String.valueOf(paramaxlo.jdField_d_of_type_Int);
+    String str2 = paramaxlq.jdField_c_of_type_Int + "x" + String.valueOf(paramaxlq.jdField_d_of_type_Int);
     a("[@] generateCommand threads=" + str1 + "  resolution=" + str2);
-    String str3 = paramaxlo.jdField_e_of_type_Long / 1024L + "k";
-    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramaxlo.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-bufsize", "800k", "-minrate", str3, "-maxrate", str3, "-b", str3, "-r", String.valueOf(paramaxlo.jdField_d_of_type_Long), "-bufsize", "800k", "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
+    String str3 = paramaxlq.jdField_e_of_type_Long / 1024L + "k";
+    return new String[] { "-d", "-y", "-threads", str1, "-copyts", "-copytb", "0", "-i", paramString1, "-metadata:s", "rotate=" + paramaxlq.jdField_a_of_type_JavaLangString, "-acodec", "aac", "-vcodec", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-profile:v", "High", "-level", "1.3", "-bufsize", "800k", "-minrate", str3, "-maxrate", str3, "-b", str3, "-r", String.valueOf(paramaxlq.jdField_d_of_type_Long), "-bufsize", "800k", "-qdiff", "3", "-bf", "3", "-coder", "1", "-refs", "1", "-s", str2, "-movflags", "faststart", paramString2 };
   }
   
   public static native String getRealProperties(String paramString);

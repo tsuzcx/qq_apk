@@ -3,13 +3,13 @@ import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import java.util.ArrayList;
 
 class pqv
-  implements bfsg
+  implements bfsx
 {
-  pqv(pqt parampqt) {}
+  pqv(pqq parampqq) {}
   
   public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    pqt.a(this.a, (pax)this.a.a, paramInt, paramArrayList, paramObject);
+    pqq.a(this.a, (pau)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

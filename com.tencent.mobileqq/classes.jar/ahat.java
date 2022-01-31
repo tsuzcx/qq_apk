@@ -1,82 +1,67 @@
-import Wallet.GetSkinListRsp;
-import Wallet.SetSelectedSkinRsp;
+import Wallet.PopDialog;
 import Wallet.SkinInfo;
-import android.os.Bundle;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import cooperation.qwallet.plugin.QwAdapter;
-import java.util.ArrayList;
 import java.util.List;
-import mqq.observer.BusinessObserver;
 
 class ahat
-  implements BusinessObserver
+  implements AdapterView.OnItemClickListener
 {
-  ahat(ahas paramahas) {}
+  ahat(ahaq paramahaq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 0;
-    QLog.d("HbSkinLogic", 2, "mObserver type = " + paramInt + " isSuccess = " + paramBoolean + " bundle = " + paramBundle);
-    ahas.a(this.a, false);
-    if (paramBundle != null) {
-      switch (paramInt)
+    Object localObject2 = null;
+    paramAdapterView = ahaq.a(this.a).getList();
+    ahan localahan = (ahan)paramAdapterView.get(paramInt);
+    if (0L != localahan.a.skin_permission_state)
+    {
+      ahan.c = ((ahan)paramAdapterView.get(paramInt)).a.skin_id;
+      ahaq.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    String str1 = localahan.a.pop_dialog.dialog_title;
+    String str2 = localahan.a.pop_dialog.dialog_tips;
+    paramView = localahan.a.pop_dialog.left_tips;
+    Object localObject1 = localahan.a.pop_dialog.right_tips;
+    paramAdapterView = paramView;
+    if (TextUtils.isEmpty(paramView)) {
+      paramAdapterView = null;
+    }
+    paramView = (View)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramView = null;
+    }
+    if ((paramAdapterView == null) && (paramView == null)) {
+      paramAdapterView = ajya.a(2131705441);
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty(paramAdapterView))
       {
+        localObject1 = null;
+        if (!TextUtils.isEmpty(paramView)) {
+          break label229;
+        }
+      }
+      for (;;)
+      {
+        paramAdapterView = bbdj.a(ahaq.a(this.a), 230, str1, str2, paramAdapterView, paramView, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+        paramAdapterView.setCancelable(false);
+        paramAdapterView.setCanceledOnTouchOutside(false);
+        paramAdapterView.show();
+        return;
+        localObject1 = new ahau(this, localahan);
+        break;
+        label229:
+        localObject2 = new ahav(this, localahan);
       }
     }
-    label241:
-    do
-    {
-      return;
-      List localList = ahas.a(this.a).getList();
-      localList.clear();
-      ahas.a(this.a, localList);
-      GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-      QLog.d("HbSkinLogic", 2, "GetSkinListRsp = " + localGetSkinListRsp);
-      if (localGetSkinListRsp != null)
-      {
-        ahas localahas = this.a;
-        if (localGetSkinListRsp.is_hide_list) {}
-        for (paramInt = 8;; paramInt = 0)
-        {
-          localahas.b(paramInt);
-          if (!localGetSkinListRsp.is_hide_list) {
-            break label241;
-          }
-          if (ahas.a(this.a) != -1) {
-            break;
-          }
-          ahap.c = ahas.a(this.a, -1);
-          return;
-        }
-        ahas.b(this.a, true);
-        ahap.c = ahas.a(this.a, ahas.a(this.a));
-        return;
-        ahap.jdField_a_of_type_Boolean = paramBundle.getBoolean("isCache");
-        ahas.a(this.a, localGetSkinListRsp.selected_id);
-        QLog.d("HbSkinLogic", 2, "rsp size = " + localGetSkinListRsp.skin_list.size() + " serverSkinID = " + ahas.b(this.a));
-        ahap.c = localGetSkinListRsp.selected_id;
-        QLog.d("HbSkinLogic", 2, "select restor: " + ahap.c);
-        ahas.a(this.a).clear();
-        paramInt = i;
-        while (paramInt < localGetSkinListRsp.skin_list.size())
-        {
-          paramBundle = new ahap((SkinInfo)localGetSkinListRsp.skin_list.get(paramInt));
-          paramBundle.jdField_a_of_type_Int = (paramInt + 1);
-          ahas.a(this.a).add(paramBundle);
-          paramInt += 1;
-        }
-        if (!TextUtils.isEmpty(localGetSkinListRsp.more_skin_url)) {
-          localList.add(ahar.c(localGetSkinListRsp.more_skin_url));
-        }
-      }
-      ahap.a(localList);
-      ahas.a(this.a).notifyDataSetChanged();
-      ahas.b(this.a, ahas.a(this.a));
-      return;
-      paramBundle = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    } while (!QLog.isColorLevel());
-    QLog.d("HbSkinLogic", 2, "SetSelectedSkinRsp = " + paramBundle);
   }
 }
 

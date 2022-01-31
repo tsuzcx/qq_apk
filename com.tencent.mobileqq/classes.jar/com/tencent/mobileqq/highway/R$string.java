@@ -4,7 +4,7 @@ public final class R$string
 {
   public static final int action_settings = 2131689580;
   public static final int app_name = 2131690145;
-  public static final int hello_world = 2131693273;
+  public static final int hello_world = 2131693274;
 }
 
 

@@ -1,9 +1,19 @@
-import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqdataline.ipc.MessageRecordParcel;
 
-class bgpt
+public final class bgpt
+  implements Parcelable.Creator<MessageRecordParcel>
 {
-  public long a;
-  public Intent a;
+  public MessageRecordParcel a(Parcel paramParcel)
+  {
+    return MessageRecordParcel.a(paramParcel);
+  }
+  
+  public MessageRecordParcel[] a(int paramInt)
+  {
+    return new MessageRecordParcel[paramInt];
+  }
 }
 
 

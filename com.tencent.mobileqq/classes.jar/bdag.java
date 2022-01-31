@@ -1,28 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
 
 public class bdag
-  implements AdapterView.OnItemClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bdag(FriendChooser paramFriendChooser) {}
+  public bdag(CardContainer paramCardContainer) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_Bdak.getItem(paramInt);
-    if ((paramAdapterView != null) && (this.a.jdField_a_of_type_Bddv.a(paramAdapterView.a)))
-    {
-      this.a.jdField_a_of_type_Bddv.b(paramAdapterView.a);
-      this.a.b.remove(paramAdapterView);
-      this.a.e();
-      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
-      this.a.b(false);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.setLayoutParams(paramValueAnimator);
+    this.a.requestLayout();
   }
 }
 

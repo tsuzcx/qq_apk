@@ -1,73 +1,20 @@
 import android.content.Context;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.VoiceScan.1;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class whw
-  implements Manager
+  implements bckm
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private why jdField_a_of_type_Why;
+  public whw(VoiceScan.1 param1) {}
   
-  public whw(QQAppInterface paramQQAppInterface)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Why != null) {
-      this.jdField_a_of_type_Why.a();
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Why != null) {
-      this.jdField_a_of_type_Why.b();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Why != null)
-    {
-      this.jdField_a_of_type_Why.c();
-      this.jdField_a_of_type_Why = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    }
-    a();
-  }
-  
-  public void a(Context paramContext, ScannerParams paramScannerParams)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Why == null)) {
-      this.jdField_a_of_type_Why = new why(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    paramClickableColorSpanTextView = new Intent(whv.a(this.a.this$0), QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    whv.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
   }
 }
 

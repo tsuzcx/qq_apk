@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewplugin;
 
-import bcdb;
+import bcdp;
 import com.tencent.qphone.base.util.QLog;
-import xnh;
+import xne;
 
 class WebSoPlugin$2$1
   implements Runnable

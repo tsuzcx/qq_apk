@@ -1,12 +1,8 @@
-class biis
-  implements birm
+import java.io.File;
+
+public class biis
 {
-  biis(biim parambiim) {}
-  
-  public void a(bisc parambisc)
-  {
-    ((biur)biix.a(this.a, bjmo.a()).a(biur.class)).a().a(parambisc);
-  }
+  public static final String a = biiu.f + File.separator + "camera_story_default_template.json";
 }
 
 

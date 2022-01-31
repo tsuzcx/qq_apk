@@ -1,16 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aosu
+class aosu
   implements View.OnClickListener
 {
-  public aosu(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  aosu(aost paramaost) {}
   
   public void onClick(View paramView)
   {
-    QfileLocalFilePicTabView.a(this.a, paramView, true);
-    paramView.sendAccessibilityEvent(8);
+    Object localObject = apug.a((FileInfo)((aosv)paramView.getTag()).a);
+    localObject = new apoi(aost.a(this.a).app, aost.a(this.a), (FileManagerEntity)localObject, 10000);
+    localObject = new apok(aost.a(this.a), (apon)localObject);
+    ((apok)localObject).a(8);
+    ((apok)localObject).a(xpu.a(paramView));
+    ((apok)localObject).a();
   }
 }
 

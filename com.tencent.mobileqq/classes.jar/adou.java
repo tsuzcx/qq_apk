@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.style.ClickableSpan;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class adou
-  extends ClickableSpan
+  implements bcjp
 {
-  adou(ador paramador) {}
+  adou(adop paramadop) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    if (!bbev.d(this.a.a))
-    {
-      bcpw.a(this.a.a, ajyc.a(2131703225), 2000).a();
+    actj.n = true;
+    if (this.a.a()) {
       return;
     }
-    paramView = new Intent();
-    paramView.setFlags(268435456);
-    paramView.setAction("android.intent.action.VIEW");
-    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
-    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-    this.a.a.startActivity(paramView);
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

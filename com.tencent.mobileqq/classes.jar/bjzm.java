@@ -1,43 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
 
 public class bjzm
-  extends JobSegment<Bitmap, Bitmap>
+  implements ufm
 {
-  public int a;
+  public bjzm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public bjzm()
+  public void a_(ufh paramufh)
   {
-    this.a = 10;
-  }
-  
-  public bjzm(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bbju.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    veg.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    ved.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 

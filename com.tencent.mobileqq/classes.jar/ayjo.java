@@ -1,52 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 class ayjo
-  extends ayiq
+  implements View.OnClickListener
 {
-  ayjo(ayjf paramayjf) {}
+  ayjo(ayjh paramayjh) {}
   
-  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    ??? = this.a;
-    ???.jdField_a_of_type_Int -= 1;
-    if ((paramBoolean1) && (paramInt1 == 0)) {
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.a.jdField_a_of_type_JavaUtilList != null)
-          {
-            this.a.jdField_a_of_type_JavaUtilList.clear();
-            this.a.c = paramInt2;
-            this.a.e = paramBoolean2;
-            if (paramList == null) {
-              break;
-            }
-            this.a.jdField_b_of_type_Int = paramList.size();
-          }
-        }
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-          return;
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          continue;
-          paramList = finally;
-          throw paramList;
-        }
-      }
-    }
-    if (this.a.jdField_b_of_type_Boolean) {}
-    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-      return;
-    }
+    this.a.a.setText("");
+    this.a.c();
   }
 }
 

@@ -1,8 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class amdx
@@ -12,14 +9,8 @@ public class amdx
   
   public void onClick(View paramView)
   {
-    paramView = (ameb)paramView.getTag();
-    if (!((ajxn)this.a.app.getManager(51)).b(paramView.a)) {}
-    for (int i = 35;; i = 1)
-    {
-      paramView = new ProfileActivity.AllInOne(paramView.a, i);
-      ProfileActivity.a(this.a, paramView, 1016);
-      return;
-    }
+    paramView = (amea)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbhs;
+import bbig;
 import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;

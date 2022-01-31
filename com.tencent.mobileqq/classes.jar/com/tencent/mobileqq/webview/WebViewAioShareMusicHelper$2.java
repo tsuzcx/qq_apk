@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webview;
 
-import bcbe;
+import bcbs;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class WebViewAioShareMusicHelper$2
   implements Runnable
 {
-  public WebViewAioShareMusicHelper$2(bcbe parambcbe) {}
+  public WebViewAioShareMusicHelper$2(bcbs parambcbs) {}
   
   public void run()
   {
-    bcbe.a(this.this$0).f();
+    bcbs.a(this.this$0).f();
   }
 }
 

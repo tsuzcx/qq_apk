@@ -1,104 +1,34 @@
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.mobileqq.pb.CodedInputStreamMicro;
-import com.tencent.mobileqq.pb.WireFormatMicro;
-import java.io.IOException;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.os.Process;
+import com.tencent.av.core.SDKConfigInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class llr
+public class llr
 {
-  private VcControllerImpl a;
+  private final SDKConfigInfo a = new SDKConfigInfo(null);
   
-  public static byte a(byte[] paramArrayOfByte)
+  public llr()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 3)) {
-      return -1;
-    }
-    return paramArrayOfByte[2];
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = CodedInputStreamMicro.newInstance(paramArrayOfByte);
-    try
+    int i = Process.myPid();
+    Iterator localIterator = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
+    while (localIterator.hasNext())
     {
-      for (;;)
-      {
-        int i = paramArrayOfByte.readTag();
-        if (i == 0) {
-          break;
-        }
-        if (WireFormatMicro.getTagFieldNumber(i) == 2) {
-          return true;
-        }
-        paramArrayOfByte.skipField(i);
-      }
-      return false;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public final byte a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharp(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+      if (localRunningAppProcessInfo.pid == i) {
+        SDKConfigInfo.access$102(this.a, localRunningAppProcessInfo.processName);
       }
     }
-    return 1;
+    lcg.a("SDKConfigInfo", this.a.toString());
   }
   
-  public final void a(VcControllerImpl paramVcControllerImpl)
+  public SDKConfigInfo a()
   {
-    this.a = paramVcControllerImpl;
+    return this.a;
   }
-  
-  public abstract void a(byte[] paramArrayOfByte, long paramLong);
-  
-  public final byte b(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte b2 = 1;
-    byte b1;
-    if (this.a == null) {
-      b1 = 3;
-    }
-    for (;;)
-    {
-      return b1;
-      b1 = b2;
-      if (paramArrayOfByte1 != null) {
-        try
-        {
-          int i = this.a.onRecvVideoCallBytesForSharpC2SACK(paramArrayOfByte1);
-          b1 = b2;
-          if (i >= 0) {
-            return 0;
-          }
-        }
-        catch (Throwable paramArrayOfByte1) {}
-      }
-    }
-    return 1;
-  }
-  
-  public abstract void b(byte[] paramArrayOfByte);
 }
 
 

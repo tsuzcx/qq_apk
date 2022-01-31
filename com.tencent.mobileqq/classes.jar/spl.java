@@ -1,41 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-public class spl
+class spl
+  implements myy
 {
-  public List<String> a;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  spl(spj paramspj, boolean paramBoolean) {}
   
-  public spl(int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public spl a(JSONObject paramJSONObject, int paramInt)
-  {
-    this.d = paramJSONObject.optString("transId", "");
-    this.g = paramJSONObject.optInt("min_limit", paramInt);
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.f = paramJSONObject.optInt("text_id", -1);
-    paramJSONObject = paramJSONObject.optJSONArray("transList");
-    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+    ved.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      this.a = new ArrayList();
-      paramInt = 0;
-      while (paramInt < paramJSONObject.length())
-      {
-        this.a.add(paramJSONObject.getString(paramInt));
-        paramInt += 1;
-      }
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return;
     }
-    return this;
+    if (this.jdField_a_of_type_Boolean) {
+      spj.a(this.jdField_a_of_type_Spj);
+    }
+    ved.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

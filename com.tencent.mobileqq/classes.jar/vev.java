@@ -1,13 +1,35 @@
-import android.graphics.Canvas;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
-public abstract interface vev
-  extends vho
+class vev
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public abstract int a(int paramInt);
+  vev(veu paramveu) {}
   
-  public abstract boolean a(int paramInt);
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_Vhm.a.a != null) {
+        this.a.jdField_a_of_type_Vhm.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+      }
+    }
+  }
   
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

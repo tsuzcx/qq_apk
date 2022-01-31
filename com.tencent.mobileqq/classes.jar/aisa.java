@@ -1,50 +1,83 @@
-import com.tencent.commonsdk.cache.QQLruCache;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 class aisa
-  extends QQLruCache<String, ApolloBaseInfo>
+  extends Handler
 {
-  aisa(airz paramairz, int paramInt1, int paramInt2, int paramInt3)
+  aisa(airx paramairx, Looper paramLooper)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    super(paramLooper);
   }
   
-  public ApolloBaseInfo a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramApolloBaseInfo != null) {}
-    try
+    if (paramMessage.what == airx.jdField_a_of_type_Int)
     {
-      airz.a(this.a).remove(Long.valueOf(Long.parseLong(paramApolloBaseInfo.uin)));
-      return (ApolloBaseInfo)super.put(paramString, paramApolloBaseInfo);
+      paramMessage = (bbrd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
+      if (paramMessage != null) {
+        localObject = new ArrayList(airx.jdField_a_of_type_JavaUtilVector.size());
+      }
     }
-    catch (NumberFormatException localNumberFormatException)
+    while (paramMessage.what != airx.jdField_b_of_type_Int)
     {
+      try
+      {
+        Iterator localIterator = airx.jdField_a_of_type_JavaUtilVector.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (!((ArrayList)localObject).contains(str)) {
+            ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(str)));
+          }
+        }
+        paramMessage.a((ArrayList)localObject, "troop");
+      }
+      catch (Exception localException) {}
       for (;;)
       {
-        QLog.e("ApolloManager", 1, localNumberFormatException, new Object[0]);
+        airx.jdField_a_of_type_JavaUtilVector.clear();
+        if (airx.jdField_b_of_type_JavaUtilVector.size() > 0)
+        {
+          paramMessage.a((String[])airx.jdField_b_of_type_JavaUtilVector.toArray(new String[0]));
+          airx.jdField_b_of_type_JavaUtilVector.clear();
+        }
+        return;
+        if ((airx.a(this.a) != null) && (airx.a(this.a).apolloLocalTS != airx.a(this.a).apolloServerTS) && (!((ArrayList)localObject).contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
+          ((ArrayList)localObject).add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
+        }
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, ApolloBaseInfo paramApolloBaseInfo1, ApolloBaseInfo paramApolloBaseInfo2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramApolloBaseInfo1, paramApolloBaseInfo2);
-    if (paramApolloBaseInfo1 != null) {}
-    try
-    {
-      if (airz.a(this.a).size() < 1024) {
-        airz.a(this.a).add(Long.valueOf(Long.parseLong(paramApolloBaseInfo1.uin)));
+    Object localObject = (String)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!airx.jdField_a_of_type_JavaUtilVector.contains(localObject)))
+      {
+        airx.jdField_a_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->dress uin:" + (String)localObject);
+        }
       }
-      return;
     }
-    catch (NumberFormatException paramString)
+    for (;;)
     {
-      QLog.e("ApolloManager", 1, paramString, new Object[0]);
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(airx.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(airx.jdField_a_of_type_Int, 200L);
       return;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!airx.jdField_b_of_type_JavaUtilVector.contains(localObject)))
+      {
+        airx.jdField_b_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->info uin:" + (String)localObject);
+        }
+      }
     }
-    catch (OutOfMemoryError paramString) {}
   }
 }
 

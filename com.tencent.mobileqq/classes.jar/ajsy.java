@@ -1,233 +1,257 @@
-import android.os.Bundle;
-import android.os.Looper;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.BaseBusinessHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.troop.group_activity_info.GroupActInfo;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import tencent.qun.group_activity.group_activity.GroupAct;
 
-public abstract class ajsy
-  extends akbx
+public class ajsy
+  implements ajte
 {
-  public static final int BG_OBSERVERS = 2;
-  public static final int DEFAULT_OBSERVER = 0;
-  private static final String SEQ_KEY = ajsy.class.getName();
-  public static final int UI_OBSERVERS = 1;
-  private static MqqHandler bgHandler = ThreadManager.getSubThreadHandler();
-  private static int notReportedCallNum;
-  private static int reportThreshold = -1;
-  private static MqqHandler uiHandler = new MqqHandler(Looper.getMainLooper());
-  protected Set<String> allowCmdSet;
-  private Map<Long, ajtg> bgObserverMap = new HashMap();
-  private long seq;
-  private Map<Long, ajtg> uiObserverMap = new HashMap();
+  private final String a = "BizTroopObserver";
   
-  private void dispatchMessage(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, ajtg paramajtg, MqqHandler paramMqqHandler)
+  public void a(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString) {}
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3, String paramString) {}
+  
+  protected void a(balb parambalb) {}
+  
+  protected void a(Object paramObject) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, ArrayList<baif> paramArrayList, int paramInt4) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1) {}
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, List<group_activity_info.GroupActInfo> paramList) {}
+  
+  protected void a(boolean paramBoolean, List<group_activity.GroupAct> paramList) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void b(Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void c(Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  protected void h(boolean paramBoolean, Object paramObject) {}
+  
+  protected void i(boolean paramBoolean, Object paramObject) {}
+  
+  protected void j(boolean paramBoolean, Object paramObject) {}
+  
+  protected void k(boolean paramBoolean, Object paramObject) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramObject = new BaseBusinessHandler.1(this, paramajtg, paramInt, paramMqqHandler, paramBoolean1, paramObject);
-    if (paramBoolean2)
+    int i = 0;
+    if ((paramObject instanceof Object[])) {}
+    for (Object localObject = (Object[])paramObject;; localObject = null)
     {
-      paramMqqHandler.postAtFrontOfQueue(paramObject);
-      return;
-    }
-    paramMqqHandler.post(paramObject);
-  }
-  
-  protected void addBusinessObserver(ToServiceMsg paramToServiceMsg, ajtg paramajtg, boolean paramBoolean)
-  {
-    if ((paramajtg == null) || (paramBoolean)) {}
-    synchronized (this.bgObserverMap)
-    {
-      ???.put(Long.valueOf(this.seq), paramajtg);
-      paramToServiceMsg = paramToServiceMsg.extraData;
-      paramajtg = SEQ_KEY;
-      long l = this.seq;
-      this.seq = (1L + l);
-      paramToServiceMsg.putLong(paramajtg, l);
-      return;
-      ??? = this.uiObserverMap;
-    }
-  }
-  
-  public ToServiceMsg createToServiceMsg(String paramString)
-  {
-    return new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), paramString);
-  }
-  
-  public ToServiceMsg createToServiceMsg(String paramString, ajtg paramajtg)
-  {
-    return createToServiceMsg(paramString, paramajtg, false);
-  }
-  
-  ToServiceMsg createToServiceMsg(String arg1, ajtg paramajtg, boolean paramBoolean)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg(???);
-    if ((paramajtg == null) || (paramBoolean)) {}
-    synchronized (this.bgObserverMap)
-    {
-      ???.put(Long.valueOf(this.seq), paramajtg);
-      paramajtg = localToServiceMsg.extraData;
-      String str = SEQ_KEY;
-      long l = this.seq;
-      this.seq = (1L + l);
-      paramajtg.putLong(str, l);
-      return localToServiceMsg;
-      ??? = this.uiObserverMap;
-    }
-  }
-  
-  public final <T> T decodePacket(byte[] paramArrayOfByte, String paramString, T paramT)
-  {
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
-    }
-    catch (Exception paramArrayOfByte) {}
-    return null;
-  }
-  
-  public abstract String getCurrentAccountUin();
-  
-  public abstract List<ajtg> getObservers(int paramInt);
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    return false;
-  }
-  
-  public final void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    notifyUI(paramInt, paramBoolean, paramObject, false);
-  }
-  
-  public void notifyUI(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2)
-  {
-    List localList = getObservers(0);
-    Iterator localIterator;
-    Object localObject;
-    if ((localList != null) && (localList.size() > 0)) {
-      try
+      switch (paramInt)
       {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
+      case 3: 
+      case 4: 
+      case 5: 
+      case 7: 
+      case 14: 
+      case 15: 
+      case 16: 
+      case 17: 
+      case 19: 
+      case 23: 
+      case 25: 
+      case 26: 
+      case 34: 
+      case 35: 
+      case 37: 
+      default: 
+      case 2: 
+      case 9: 
+      case 6: 
+      case 8: 
+      case 10: 
+      case 11: 
+      case 12: 
+      case 13: 
+      case 20: 
+      case 18: 
+        do
         {
-          localObject = (ajtg)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass())))
+          do
           {
-            long l = System.currentTimeMillis();
-            ((ajtg)localObject).onUpdate(paramInt, paramBoolean1, paramObject);
-            l = System.currentTimeMillis() - l;
-            if ((l > 100L) && (QLog.isColorLevel()))
+            do
             {
-              localObject = new Exception("run too long!");
-              QLog.d("BaseBusinessHandler.notifyUI", 2, "defaultObserver onUpdate cost:" + l, (Throwable)localObject);
+              return;
+              c(paramBoolean, paramObject);
+              return;
+              a(paramObject);
+              return;
+            } while (localObject == null);
+            if (paramBoolean)
+            {
+              a(paramBoolean, (String)localObject[0], ((Boolean)localObject[1]).booleanValue(), (List)localObject[2]);
+              return;
             }
+            a(paramBoolean, (String)localObject[0], ((Boolean)localObject[1]).booleanValue(), null);
+            return;
+            d(paramBoolean, paramObject);
+            return;
+            e(paramBoolean, paramObject);
+            return;
+            a(paramBoolean, (List)paramObject);
+            return;
+          } while (localObject == null);
+          if (paramBoolean)
+          {
+            a(true, ((Integer)localObject[0]).intValue(), ((Integer)localObject[1]).intValue(), ((Integer)localObject[2]).intValue(), (ArrayList)localObject[3], 0);
+            return;
           }
-        }
-      }
-      finally {}
-    }
-    localList = getObservers(1);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (ajtg)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (ajtg)localObject, uiHandler);
-          }
-        }
-      }
-      finally {}
-    }
-    localList = getObservers(2);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (ajtg)localIterator.next();
-          if ((observerClass() != null) && (observerClass().isAssignableFrom(localObject.getClass()))) {
-            dispatchMessage(paramInt, paramBoolean1, paramObject, paramBoolean2, (ajtg)localObject, bgHandler);
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public void notifyUI(ToServiceMsg paramToServiceMsg, int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    long l;
-    MqqHandler localMqqHandler;
-    if (paramToServiceMsg.extraData.containsKey(SEQ_KEY))
-    {
-      l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      synchronized (this.uiObserverMap)
-      {
-        paramToServiceMsg = (ajtg)this.uiObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = uiHandler;
-        if (paramToServiceMsg != null) {}
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.bgObserverMap)
-      {
-        paramToServiceMsg = (ajtg)this.bgObserverMap.remove(Long.valueOf(l));
-        localMqqHandler = bgHandler;
-        if (paramToServiceMsg != null)
-        {
-          dispatchMessage(paramInt, paramBoolean, paramObject, false, paramToServiceMsg, localMqqHandler);
+          a(false, ((Integer)localObject[2]).intValue(), 0, 0, null, ((Integer)localObject[4]).intValue());
           return;
-          paramToServiceMsg = finally;
-          throw paramToServiceMsg;
+          b(paramObject);
+          return;
+          c(paramObject);
+          return;
+        } while (localObject == null);
+        if ((localObject.length != 5) || (localObject[4] == null)) {
+          break;
         }
       }
-      notifyUI(paramInt, paramBoolean, paramObject);
-      return;
-    }
-  }
-  
-  protected abstract Class<? extends ajtg> observerClass();
-  
-  public void onDestroy() {}
-  
-  public abstract void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
-  
-  protected akav removeMessageObserver(ToServiceMsg paramToServiceMsg)
-  {
-    if ((paramToServiceMsg == null) || (!paramToServiceMsg.extraData.containsKey(SEQ_KEY))) {
-      return null;
-    }
-    synchronized (this.uiObserverMap)
-    {
-      long l = paramToServiceMsg.extraData.getLong(SEQ_KEY);
-      if (akav.class.isInstance((ajtg)this.uiObserverMap.get(Long.valueOf(l))))
+      for (paramObject = (String)localObject[4];; paramObject = null)
       {
-        paramToServiceMsg = (akav)this.uiObserverMap.remove(Long.valueOf(l));
-        return paramToServiceMsg;
+        a((String)localObject[0], ((Integer)localObject[1]).intValue(), ((Integer)localObject[2]).intValue(), (String)localObject[3], paramObject);
+        return;
+        if ((localObject == null) || (localObject.length <= 0))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("BizTroopObserver", 2, "onUpdate(), case BizTroopHandler.TYPE_SET_COMMONLY_USED_TROOP_LIST, array is null or empty ...");
+          return;
+        }
+        if ((localObject[0] instanceof Integer))
+        {
+          paramInt = ((Integer)localObject[0]).intValue();
+          if ((localObject[1] instanceof Integer)) {
+            i = ((Integer)localObject[1]).intValue();
+          }
+          if (!(localObject[2] instanceof Map)) {
+            break label592;
+          }
+          paramObject = (Map)localObject[2];
+          label557:
+          if (!(localObject[3] instanceof String)) {
+            break label597;
+          }
+        }
+        label592:
+        label597:
+        for (localObject = (String)localObject[3];; localObject = null)
+        {
+          a(paramInt, i, paramObject, (String)localObject);
+          return;
+          paramInt = -1;
+          break;
+          paramObject = null;
+          break label557;
+        }
+        f(paramBoolean, paramObject);
+        return;
+        g(paramBoolean, paramObject);
+        return;
+        if ((localObject == null) || (localObject.length == 0))
+        {
+          a(false, -1L, "");
+          return;
+        }
+        a(paramBoolean, ((Long)localObject[0]).longValue(), (String)localObject[1]);
+        return;
+        j(paramBoolean, paramObject);
+        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("BizTroopObserver", 4, "TroopHandler.TYPE_TROOP_GAG_STATUS");
+        }
+        a((balb)paramObject);
+        return;
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+        k(paramBoolean, paramObject);
+        return;
+        if (localObject == null) {
+          break;
+        }
+        a(paramBoolean, ((Long)localObject[0]).longValue(), ((Long)localObject[1]).longValue());
+        return;
+        if (localObject == null) {
+          break;
+        }
+        a(paramBoolean, ((Integer)localObject[1]).intValue(), ((Integer)localObject[2]).intValue());
+        return;
+        if (localObject == null) {
+          break;
+        }
+        b(paramBoolean, ((Boolean)localObject[1]).booleanValue());
+        return;
+        a(paramBoolean, paramObject);
+        return;
+        b(paramBoolean, paramObject);
+        return;
+        if ((paramBoolean) && (localObject != null))
+        {
+          a(((Long)localObject[0]).longValue(), ((Long)localObject[1]).longValue(), ((Long)localObject[2]).longValue(), (String)localObject[3]);
+          return;
+        }
+        a(-1L, -1L, -1L, "");
+        return;
+        h(paramBoolean, paramObject);
+        return;
+        i(paramBoolean, paramObject);
+        return;
+        if ((localObject != null) && (localObject.length >= 1)) {}
+        for (paramInt = ((Integer)localObject[0]).intValue(); (paramBoolean) && (localObject != null) && (localObject.length >= 4); paramInt = 2131696433)
+        {
+          a(paramBoolean, paramInt, (String)localObject[1], (String)localObject[2], (Boolean)localObject[3]);
+          return;
+        }
+        a(paramBoolean, paramInt, null, null, Boolean.valueOf(true));
+        return;
+        if (localObject == null) {
+          break;
+        }
+        if (localObject.length >= 4) {}
+        for (paramInt = ((Integer)localObject[3]).intValue();; paramInt = 0)
+        {
+          a(paramBoolean, (String)localObject[0], (String)localObject[1], (String)localObject[2], paramInt);
+          return;
+        }
       }
     }
-    return null;
   }
-  
-  public abstract void send(ToServiceMsg paramToServiceMsg);
-  
-  public abstract void sendPbReq(ToServiceMsg paramToServiceMsg);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import aign;
+import aigl;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 public class EncodeVideoTask$2$1
   implements Runnable
 {
-  public EncodeVideoTask$2$1(aign paramaign, String paramString, PublishVideoEntry paramPublishVideoEntry) {}
+  public EncodeVideoTask$2$1(aigl paramaigl, String paramString, PublishVideoEntry paramPublishVideoEntry) {}
   
   /* Error */
   public void run()
@@ -24,95 +24,95 @@ public class EncodeVideoTask$2$1
     //   11: getfield 16	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   14: iconst_0
     //   15: iconst_1
-    //   16: invokestatic 34	bfmj:a	(Ljava/lang/String;ZZ)V
+    //   16: invokestatic 34	bfna:a	(Ljava/lang/String;ZZ)V
     //   19: aload_0
-    //   20: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   23: getfield 39	aign:a	Laigl;
-    //   26: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   20: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   23: getfield 39	aigl:a	Laigj;
+    //   26: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   29: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   32: ifeq +21 -> 53
     //   35: aload_0
-    //   36: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   39: getfield 39	aign:a	Laigl;
+    //   36: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   39: getfield 39	aigl:a	Laigj;
     //   42: aload_0
     //   43: getfield 18	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry	Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
     //   46: getfield 55	com/tencent/biz/qqstory/database/PublishVideoEntry:thumbPath	Ljava/lang/String;
-    //   49: invokestatic 58	aigl:a	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   49: invokestatic 58	aigj:a	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   52: pop
     //   53: aload_0
-    //   54: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   57: getfield 39	aign:a	Laigl;
-    //   60: invokestatic 61	aigl:a	(Laigl;)Laigr;
+    //   54: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   57: getfield 39	aigl:a	Laigj;
+    //   60: invokestatic 61	aigj:a	(Laigj;)Laigp;
     //   63: ifnull +327 -> 390
     //   66: aload_0
-    //   67: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   70: getfield 39	aign:a	Laigl;
+    //   67: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   70: getfield 39	aigl:a	Laigj;
     //   73: aload_0
-    //   74: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   77: getfield 39	aign:a	Laigl;
-    //   80: invokestatic 61	aigl:a	(Laigl;)Laigr;
-    //   83: getfield 66	aigr:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   86: invokestatic 68	aigl:b	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   74: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   77: getfield 39	aigl:a	Laigj;
+    //   80: invokestatic 61	aigj:a	(Laigj;)Laigp;
+    //   83: getfield 66	aigp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   86: invokestatic 68	aigj:b	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   89: pop
     //   90: aload_0
-    //   91: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   94: getfield 39	aign:a	Laigl;
+    //   91: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   94: getfield 39	aigl:a	Laigj;
     //   97: astore 7
     //   99: aload_0
-    //   100: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   103: getfield 39	aign:a	Laigl;
-    //   106: invokestatic 61	aigl:a	(Laigl;)Laigr;
-    //   109: getfield 71	aigr:jdField_a_of_type_ArrayOfByte	[B
+    //   100: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   103: getfield 39	aigl:a	Laigj;
+    //   106: invokestatic 61	aigj:a	(Laigj;)Laigp;
+    //   109: getfield 71	aigp:jdField_a_of_type_ArrayOfByte	[B
     //   112: ifnonnull +260 -> 372
     //   115: aload_0
-    //   116: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   119: getfield 39	aign:a	Laigl;
-    //   122: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   116: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   119: getfield 39	aigl:a	Laigj;
+    //   122: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   125: invokestatic 79	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   128: astore 6
     //   130: aload 7
     //   132: aload 6
-    //   134: invokestatic 82	aigl:a	(Laigl;[B)[B
+    //   134: invokestatic 82	aigj:a	(Laigj;[B)[B
     //   137: pop
     //   138: aload_0
-    //   139: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   142: getfield 39	aign:a	Laigl;
+    //   139: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   142: getfield 39	aigl:a	Laigj;
     //   145: aload_0
-    //   146: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   149: getfield 39	aign:a	Laigl;
-    //   152: invokestatic 61	aigl:a	(Laigl;)Laigr;
-    //   155: getfield 85	aigr:jdField_a_of_type_Int	I
-    //   158: invokestatic 88	aigl:a	(Laigl;I)I
+    //   146: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   149: getfield 39	aigl:a	Laigj;
+    //   152: invokestatic 61	aigj:a	(Laigj;)Laigp;
+    //   155: getfield 85	aigp:jdField_a_of_type_Int	I
+    //   158: invokestatic 88	aigj:a	(Laigj;I)I
     //   161: pop
     //   162: aload_0
-    //   163: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   166: getfield 39	aign:a	Laigl;
+    //   163: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   166: getfield 39	aigl:a	Laigj;
     //   169: aload_0
-    //   170: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   173: getfield 39	aign:a	Laigl;
-    //   176: invokestatic 61	aigl:a	(Laigl;)Laigr;
-    //   179: getfield 90	aigr:jdField_b_of_type_Int	I
-    //   182: invokestatic 92	aigl:b	(Laigl;I)I
+    //   170: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   173: getfield 39	aigl:a	Laigj;
+    //   176: invokestatic 61	aigj:a	(Laigj;)Laigp;
+    //   179: getfield 90	aigp:jdField_b_of_type_Int	I
+    //   182: invokestatic 92	aigj:b	(Laigj;I)I
     //   185: pop
     //   186: aload_0
-    //   187: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   190: getfield 39	aign:a	Laigl;
+    //   187: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   190: getfield 39	aigl:a	Laigj;
     //   193: aload_0
     //   194: getfield 16	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   197: invokestatic 95	aigl:c	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   197: invokestatic 95	aigj:c	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   200: pop
     //   201: aload_0
-    //   202: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   205: getfield 39	aign:a	Laigl;
-    //   208: invokestatic 97	aigl:c	(Laigl;)Ljava/lang/String;
+    //   202: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   205: getfield 39	aigl:a	Laigj;
+    //   208: invokestatic 97	aigj:c	(Laigj;)Ljava/lang/String;
     //   211: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   214: ifne +981 -> 1195
     //   217: new 99	java/io/File
     //   220: dup
     //   221: aload_0
-    //   222: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   225: getfield 39	aign:a	Laigl;
-    //   228: invokestatic 97	aigl:c	(Laigl;)Ljava/lang/String;
+    //   222: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   225: getfield 39	aigl:a	Laigj;
+    //   228: invokestatic 97	aigj:c	(Laigj;)Ljava/lang/String;
     //   231: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
     //   234: astore 6
     //   236: iload_1
@@ -123,31 +123,31 @@ public class EncodeVideoTask$2$1
     //   246: new 108	java/io/FileInputStream
     //   249: dup
     //   250: aload_0
-    //   251: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   254: getfield 39	aign:a	Laigl;
-    //   257: invokestatic 97	aigl:c	(Laigl;)Ljava/lang/String;
+    //   251: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   254: getfield 39	aigl:a	Laigj;
+    //   257: invokestatic 97	aigj:c	(Laigj;)Ljava/lang/String;
     //   260: invokespecial 109	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   263: astore 7
     //   265: aload 6
     //   267: invokevirtual 113	java/io/File:length	()J
     //   270: lstore 4
     //   272: aload_0
-    //   273: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   276: getfield 39	aign:a	Laigl;
+    //   273: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   276: getfield 39	aigl:a	Laigj;
     //   279: aload 7
     //   281: lload 4
     //   283: invokestatic 119	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   286: invokestatic 121	aigl:b	(Laigl;[B)[B
+    //   286: invokestatic 121	aigj:b	(Laigj;[B)[B
     //   289: pop
     //   290: aload_0
-    //   291: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   294: getfield 39	aign:a	Laigl;
+    //   291: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   294: getfield 39	aigl:a	Laigj;
     //   297: aload_0
-    //   298: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   301: getfield 39	aign:a	Laigl;
-    //   304: invokestatic 124	aigl:b	(Laigl;)[B
+    //   298: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   301: getfield 39	aigl:a	Laigj;
+    //   304: invokestatic 124	aigj:b	(Laigj;)[B
     //   307: invokestatic 128	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   310: invokestatic 131	aigl:d	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   310: invokestatic 131	aigj:d	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   313: pop
     //   314: iload_1
     //   315: istore_2
@@ -173,39 +173,39 @@ public class EncodeVideoTask$2$1
     //   357: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   360: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   363: aload_0
-    //   364: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
+    //   364: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
     //   367: iload_2
-    //   368: invokevirtual 164	aign:a	(I)V
+    //   368: invokevirtual 164	aigl:a	(I)V
     //   371: return
     //   372: aload_0
-    //   373: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   376: getfield 39	aign:a	Laigl;
-    //   379: invokestatic 61	aigl:a	(Laigl;)Laigr;
-    //   382: getfield 71	aigr:jdField_a_of_type_ArrayOfByte	[B
+    //   373: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   376: getfield 39	aigl:a	Laigj;
+    //   379: invokestatic 61	aigj:a	(Laigj;)Laigp;
+    //   382: getfield 71	aigp:jdField_a_of_type_ArrayOfByte	[B
     //   385: astore 6
     //   387: goto -257 -> 130
     //   390: aload_0
-    //   391: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   394: getfield 39	aign:a	Laigl;
+    //   391: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   394: getfield 39	aigl:a	Laigj;
     //   397: aload_0
     //   398: getfield 18	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry	Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
     //   401: getfield 167	com/tencent/biz/qqstory/database/PublishVideoEntry:videoWidth	I
-    //   404: invokestatic 88	aigl:a	(Laigl;I)I
+    //   404: invokestatic 88	aigj:a	(Laigj;I)I
     //   407: pop
     //   408: aload_0
-    //   409: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   412: getfield 39	aign:a	Laigl;
+    //   409: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   412: getfield 39	aigl:a	Laigj;
     //   415: aload_0
     //   416: getfield 18	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry	Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
     //   419: getfield 170	com/tencent/biz/qqstory/database/PublishVideoEntry:videoHeight	I
-    //   422: invokestatic 92	aigl:b	(Laigl;I)I
+    //   422: invokestatic 92	aigj:b	(Laigj;I)I
     //   425: pop
     //   426: new 99	java/io/File
     //   429: dup
     //   430: aload_0
-    //   431: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   434: getfield 39	aign:a	Laigl;
-    //   437: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   431: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   434: getfield 39	aigl:a	Laigj;
+    //   437: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   440: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
     //   443: astore 8
     //   445: aload 8
@@ -214,9 +214,9 @@ public class EncodeVideoTask$2$1
     //   453: new 108	java/io/FileInputStream
     //   456: dup
     //   457: aload_0
-    //   458: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   461: getfield 39	aign:a	Laigl;
-    //   464: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   458: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   461: getfield 39	aigl:a	Laigj;
+    //   464: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   467: invokespecial 109	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   470: astore 7
     //   472: aload 7
@@ -227,33 +227,33 @@ public class EncodeVideoTask$2$1
     //   483: aload 7
     //   485: astore 6
     //   487: aload_0
-    //   488: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   491: getfield 39	aign:a	Laigl;
+    //   488: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   491: getfield 39	aigl:a	Laigj;
     //   494: aload 7
     //   496: lload 4
     //   498: invokestatic 119	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   501: invokestatic 82	aigl:a	(Laigl;[B)[B
+    //   501: invokestatic 82	aigj:a	(Laigj;[B)[B
     //   504: pop
     //   505: aload 7
     //   507: astore 6
     //   509: aload_0
-    //   510: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   513: getfield 39	aign:a	Laigl;
+    //   510: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   513: getfield 39	aigl:a	Laigj;
     //   516: aload_0
-    //   517: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   520: getfield 39	aign:a	Laigl;
-    //   523: invokestatic 172	aigl:a	(Laigl;)[B
+    //   517: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   520: getfield 39	aigl:a	Laigj;
+    //   523: invokestatic 172	aigj:a	(Laigj;)[B
     //   526: invokestatic 128	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   529: invokestatic 68	aigl:b	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   529: invokestatic 68	aigj:b	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   532: pop
     //   533: aload 7
     //   535: ifnull +8 -> 543
     //   538: aload 7
     //   540: invokevirtual 134	java/io/FileInputStream:close	()V
     //   543: aload_0
-    //   544: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   547: getfield 39	aign:a	Laigl;
-    //   550: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   544: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   547: getfield 39	aigl:a	Laigj;
+    //   550: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   553: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   556: ifeq +33 -> 589
     //   559: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -270,30 +270,30 @@ public class EncodeVideoTask$2$1
     //   583: invokevirtual 180	java/io/IOException:printStackTrace	()V
     //   586: goto -43 -> 543
     //   589: aload_0
-    //   590: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   593: getfield 39	aign:a	Laigl;
-    //   596: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   590: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   593: getfield 39	aigl:a	Laigj;
+    //   596: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   599: ldc 182
     //   601: invokestatic 187	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   604: astore 6
     //   606: aload_0
-    //   607: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   610: getfield 39	aign:a	Laigl;
-    //   613: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   607: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   610: getfield 39	aigl:a	Laigj;
+    //   613: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   616: aload 6
-    //   618: invokestatic 192	bbdj:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   618: invokestatic 192	bbdx:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   621: ifeq +21 -> 642
     //   624: aload_0
-    //   625: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   628: getfield 39	aign:a	Laigl;
+    //   625: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   628: getfield 39	aigl:a	Laigj;
     //   631: aload 6
-    //   633: invokestatic 58	aigl:a	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   633: invokestatic 58	aigj:a	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   636: pop
     //   637: iconst_0
     //   638: istore_1
     //   639: goto -63 -> 576
     //   642: aload 6
-    //   644: invokestatic 195	bbdj:b	(Ljava/lang/String;)Z
+    //   644: invokestatic 195	bbdx:b	(Ljava/lang/String;)Z
     //   647: ifne +951 -> 1598
     //   650: iload_2
     //   651: istore_1
@@ -307,9 +307,9 @@ public class EncodeVideoTask$2$1
     //   668: ldc 197
     //   670: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   673: aload_0
-    //   674: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   677: getfield 39	aign:a	Laigl;
-    //   680: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   674: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   677: getfield 39	aigl:a	Laigj;
+    //   680: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   683: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   686: ldc 199
     //   688: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -332,9 +332,9 @@ public class EncodeVideoTask$2$1
     //   726: aload 7
     //   728: invokevirtual 134	java/io/FileInputStream:close	()V
     //   731: aload_0
-    //   732: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   735: getfield 39	aign:a	Laigl;
-    //   738: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   732: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   735: getfield 39	aigl:a	Laigj;
+    //   738: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   741: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   744: ifeq +33 -> 777
     //   747: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -351,24 +351,24 @@ public class EncodeVideoTask$2$1
     //   771: invokevirtual 180	java/io/IOException:printStackTrace	()V
     //   774: goto -43 -> 731
     //   777: aload_0
-    //   778: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   781: getfield 39	aign:a	Laigl;
-    //   784: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   778: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   781: getfield 39	aigl:a	Laigj;
+    //   784: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   787: ldc 182
     //   789: invokestatic 187	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   792: astore 6
     //   794: aload_0
-    //   795: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   798: getfield 39	aign:a	Laigl;
-    //   801: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   795: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   798: getfield 39	aigl:a	Laigj;
+    //   801: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   804: aload 6
-    //   806: invokestatic 192	bbdj:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   806: invokestatic 192	bbdx:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   809: ifeq +21 -> 830
     //   812: aload_0
-    //   813: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   816: getfield 39	aign:a	Laigl;
+    //   813: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   816: getfield 39	aigl:a	Laigj;
     //   819: aload 6
-    //   821: invokestatic 58	aigl:a	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   821: invokestatic 58	aigj:a	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   824: pop
     //   825: iload_3
     //   826: istore_1
@@ -376,7 +376,7 @@ public class EncodeVideoTask$2$1
     //   830: iload_3
     //   831: istore_1
     //   832: aload 6
-    //   834: invokestatic 195	bbdj:b	(Ljava/lang/String;)Z
+    //   834: invokestatic 195	bbdx:b	(Ljava/lang/String;)Z
     //   837: ifne -10 -> 827
     //   840: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   843: ifeq +47 -> 890
@@ -388,9 +388,9 @@ public class EncodeVideoTask$2$1
     //   856: ldc 197
     //   858: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   861: aload_0
-    //   862: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   865: getfield 39	aign:a	Laigl;
-    //   868: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   862: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   865: getfield 39	aigl:a	Laigj;
+    //   868: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   871: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   874: ldc 199
     //   876: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -409,9 +409,9 @@ public class EncodeVideoTask$2$1
     //   906: aload 6
     //   908: invokevirtual 134	java/io/FileInputStream:close	()V
     //   911: aload_0
-    //   912: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   915: getfield 39	aign:a	Laigl;
-    //   918: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   912: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   915: getfield 39	aigl:a	Laigj;
+    //   918: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   921: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   924: ifeq +30 -> 954
     //   927: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -427,28 +427,28 @@ public class EncodeVideoTask$2$1
     //   948: invokevirtual 180	java/io/IOException:printStackTrace	()V
     //   951: goto -40 -> 911
     //   954: aload_0
-    //   955: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   958: getfield 39	aign:a	Laigl;
-    //   961: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   955: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   958: getfield 39	aigl:a	Laigj;
+    //   961: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   964: ldc 182
     //   966: invokestatic 187	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   969: astore 6
     //   971: aload_0
-    //   972: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   975: getfield 39	aign:a	Laigl;
-    //   978: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   972: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   975: getfield 39	aigl:a	Laigj;
+    //   978: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   981: aload 6
-    //   983: invokestatic 192	bbdj:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   983: invokestatic 192	bbdx:c	(Ljava/lang/String;Ljava/lang/String;)Z
     //   986: ifeq +19 -> 1005
     //   989: aload_0
-    //   990: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   993: getfield 39	aign:a	Laigl;
+    //   990: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   993: getfield 39	aigl:a	Laigj;
     //   996: aload 6
-    //   998: invokestatic 58	aigl:a	(Laigl;Ljava/lang/String;)Ljava/lang/String;
+    //   998: invokestatic 58	aigj:a	(Laigj;Ljava/lang/String;)Ljava/lang/String;
     //   1001: pop
     //   1002: goto -61 -> 941
     //   1005: aload 6
-    //   1007: invokestatic 195	bbdj:b	(Ljava/lang/String;)Z
+    //   1007: invokestatic 195	bbdx:b	(Ljava/lang/String;)Z
     //   1010: ifne -69 -> 941
     //   1013: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1016: ifeq -75 -> 941
@@ -460,9 +460,9 @@ public class EncodeVideoTask$2$1
     //   1029: ldc 197
     //   1031: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1034: aload_0
-    //   1035: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1038: getfield 39	aign:a	Laigl;
-    //   1041: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   1035: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1038: getfield 39	aigl:a	Laigj;
+    //   1041: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   1044: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1047: ldc 199
     //   1049: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -481,9 +481,9 @@ public class EncodeVideoTask$2$1
     //   1082: ldc 202
     //   1084: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1087: aload_0
-    //   1088: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1091: getfield 39	aign:a	Laigl;
-    //   1094: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   1088: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1091: getfield 39	aigl:a	Laigj;
+    //   1094: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   1097: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1100: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1103: invokestatic 177	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -535,18 +535,18 @@ public class EncodeVideoTask$2$1
     //   1197: istore_2
     //   1198: goto -870 -> 328
     //   1201: aload_0
-    //   1202: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1205: getfield 39	aign:a	Laigl;
-    //   1208: invokestatic 205	aigl:c	(Laigl;)Z
+    //   1202: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1205: getfield 39	aigl:a	Laigj;
+    //   1208: invokestatic 205	aigj:c	(Laigj;)Z
     //   1211: ifeq +57 -> 1268
     //   1214: aload_0
     //   1215: getfield 18	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry	Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
     //   1218: getfield 208	com/tencent/biz/qqstory/database/PublishVideoEntry:mLocalRawVideoDir	Ljava/lang/String;
     //   1221: astore 6
     //   1223: aload_0
-    //   1224: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1227: getfield 39	aign:a	Laigl;
-    //   1230: invokestatic 210	aigl:b	(Laigl;)Z
+    //   1224: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1227: getfield 39	aigl:a	Laigj;
+    //   1230: invokestatic 210	aigj:b	(Laigj;)Z
     //   1233: ifeq +25 -> 1258
     //   1236: new 99	java/io/File
     //   1239: dup
@@ -560,7 +560,7 @@ public class EncodeVideoTask$2$1
     //   1258: aload 6
     //   1260: invokestatic 221	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:c	(Ljava/lang/String;)V
     //   1263: aload 6
-    //   1265: invokestatic 223	bbdj:a	(Ljava/lang/String;)V
+    //   1265: invokestatic 223	bbdx:a	(Ljava/lang/String;)V
     //   1268: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1271: ifeq +179 -> 1450
     //   1274: ldc 141
@@ -571,44 +571,44 @@ public class EncodeVideoTask$2$1
     //   1284: ldc 225
     //   1286: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1289: aload_0
-    //   1290: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1293: getfield 39	aign:a	Laigl;
-    //   1296: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   1290: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1293: getfield 39	aigl:a	Laigj;
+    //   1296: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   1299: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1302: ldc 227
     //   1304: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1307: aload_0
-    //   1308: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1311: getfield 39	aign:a	Laigl;
-    //   1314: invokestatic 172	aigl:a	(Laigl;)[B
+    //   1308: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1311: getfield 39	aigl:a	Laigj;
+    //   1314: invokestatic 172	aigj:a	(Laigj;)[B
     //   1317: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1320: ldc 232
     //   1322: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1325: aload_0
-    //   1326: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1329: getfield 39	aign:a	Laigl;
-    //   1332: invokestatic 73	aigl:b	(Laigl;)Ljava/lang/String;
+    //   1326: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1329: getfield 39	aigl:a	Laigj;
+    //   1332: invokestatic 73	aigj:b	(Laigj;)Ljava/lang/String;
     //   1335: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1338: ldc 234
     //   1340: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1343: aload_0
-    //   1344: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1347: getfield 39	aign:a	Laigl;
-    //   1350: invokestatic 237	aigl:a	(Laigl;)I
+    //   1344: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1347: getfield 39	aigl:a	Laigj;
+    //   1350: invokestatic 237	aigj:a	(Laigj;)I
     //   1353: invokevirtual 153	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1356: ldc 239
     //   1358: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1361: aload_0
-    //   1362: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1365: getfield 39	aign:a	Laigl;
-    //   1368: invokestatic 241	aigl:b	(Laigl;)I
+    //   1362: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1365: getfield 39	aigl:a	Laigj;
+    //   1368: invokestatic 241	aigj:b	(Laigj;)I
     //   1371: invokevirtual 153	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1374: ldc 243
     //   1376: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1379: aload_0
-    //   1380: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1383: getfield 39	aign:a	Laigl;
-    //   1386: invokestatic 97	aigl:c	(Laigl;)Ljava/lang/String;
+    //   1380: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1383: getfield 39	aigl:a	Laigj;
+    //   1386: invokestatic 97	aigj:c	(Laigj;)Ljava/lang/String;
     //   1389: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1392: ldc 245
     //   1394: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -620,52 +620,52 @@ public class EncodeVideoTask$2$1
     //   1408: ldc 251
     //   1410: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1413: aload_0
-    //   1414: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1417: getfield 39	aign:a	Laigl;
-    //   1420: invokestatic 124	aigl:b	(Laigl;)[B
+    //   1414: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1417: getfield 39	aigl:a	Laigj;
+    //   1420: invokestatic 124	aigj:b	(Laigj;)[B
     //   1423: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1426: ldc 253
     //   1428: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1431: aload_0
-    //   1432: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1435: getfield 39	aign:a	Laigl;
-    //   1438: invokestatic 255	aigl:d	(Laigl;)Ljava/lang/String;
+    //   1432: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1435: getfield 39	aigl:a	Laigj;
+    //   1438: invokestatic 255	aigj:d	(Laigj;)Ljava/lang/String;
     //   1441: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1444: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1447: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1450: aload_0
-    //   1451: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1454: getfield 39	aign:a	Laigl;
-    //   1457: invokestatic 258	aigl:a	(Laigl;)Laigq;
+    //   1451: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1454: getfield 39	aigl:a	Laigj;
+    //   1457: invokestatic 258	aigj:a	(Laigj;)Laigo;
     //   1460: ifnull -1089 -> 371
     //   1463: aload_0
-    //   1464: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1467: getfield 39	aign:a	Laigl;
-    //   1470: invokestatic 258	aigl:a	(Laigl;)Laigq;
+    //   1464: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1467: getfield 39	aigl:a	Laigj;
+    //   1470: invokestatic 258	aigj:a	(Laigj;)Laigo;
     //   1473: aload_0
-    //   1474: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1477: getfield 39	aign:a	Laigl;
-    //   1480: invokestatic 97	aigl:c	(Laigl;)Ljava/lang/String;
+    //   1474: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1477: getfield 39	aigl:a	Laigj;
+    //   1480: invokestatic 97	aigj:c	(Laigj;)Ljava/lang/String;
     //   1483: aload_0
-    //   1484: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1487: getfield 39	aign:a	Laigl;
-    //   1490: invokestatic 124	aigl:b	(Laigl;)[B
+    //   1484: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1487: getfield 39	aigl:a	Laigj;
+    //   1490: invokestatic 124	aigj:b	(Laigj;)[B
     //   1493: aload_0
-    //   1494: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1497: getfield 39	aign:a	Laigl;
-    //   1500: invokestatic 44	aigl:a	(Laigl;)Ljava/lang/String;
+    //   1494: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1497: getfield 39	aigl:a	Laigj;
+    //   1500: invokestatic 44	aigj:a	(Laigj;)Ljava/lang/String;
     //   1503: aload_0
-    //   1504: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1507: getfield 39	aign:a	Laigl;
-    //   1510: invokestatic 237	aigl:a	(Laigl;)I
+    //   1504: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1507: getfield 39	aigl:a	Laigj;
+    //   1510: invokestatic 237	aigj:a	(Laigj;)I
     //   1513: aload_0
-    //   1514: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1517: getfield 39	aign:a	Laigl;
-    //   1520: invokestatic 241	aigl:b	(Laigl;)I
+    //   1514: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1517: getfield 39	aigl:a	Laigj;
+    //   1520: invokestatic 241	aigj:b	(Laigj;)I
     //   1523: aload_0
-    //   1524: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aign	Laign;
-    //   1527: getfield 39	aign:a	Laigl;
-    //   1530: invokestatic 172	aigl:a	(Laigl;)[B
+    //   1524: getfield 14	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_Aigl	Laigl;
+    //   1527: getfield 39	aigl:a	Laigj;
+    //   1530: invokestatic 172	aigj:a	(Laigj;)[B
     //   1533: aload_0
     //   1534: getfield 18	com/tencent/mobileqq/activity/shortvideo/EncodeVideoTask$2$1:jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry	Lcom/tencent/biz/qqstory/database/PublishVideoEntry;
     //   1537: getfield 249	com/tencent/biz/qqstory/database/PublishVideoEntry:recordTime	D

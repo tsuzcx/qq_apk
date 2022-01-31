@@ -1,142 +1,108 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForInterstitial;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialManager.1;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class yul
 {
   private static volatile yul jdField_a_of_type_Yul;
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-  private Map<String, WeakReference<GdtInterstitialFragment>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile yuf jdField_a_of_type_Yuf;
-  
-  private yul(yuf paramyuf)
-  {
-    AdThreadManager.INSTANCE.post(new GdtInterstitialManager.1(this), 0);
-    this.jdField_a_of_type_Yuf = paramyuf;
-  }
+  private volatile long jdField_a_of_type_Long = -2147483648L;
+  private volatile yud jdField_a_of_type_Yud;
+  private yuf jdField_a_of_type_Yuf = new yun(this);
+  private yuo jdField_a_of_type_Yuo = new yuo();
+  private volatile boolean jdField_a_of_type_Boolean;
   
   public static yul a()
   {
     if (jdField_a_of_type_Yul == null) {}
     try
     {
-      if (jdField_a_of_type_Yul == null)
-      {
-        yuf localyuf = new yuf();
-        localyuf.a = "com.tencent.tangram.render";
-        localyuf.b = "Index";
-        localyuf.c = "1.0.49.5";
-        jdField_a_of_type_Yul = new yul(localyuf);
+      if (jdField_a_of_type_Yul == null) {
+        jdField_a_of_type_Yul = new yul();
       }
       return jdField_a_of_type_Yul;
     }
     finally {}
   }
   
-  public long a(Context paramContext)
+  private void a()
   {
-    long l = 10000L;
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext == null) {}
-    for (;;)
-    {
-      yxs.b("GdtInterstitialManager", String.format("getTimeoutMillis %d", new Object[] { Long.valueOf(l) }));
-      return l;
-      if (paramContext.settingsForInterstitial.timeoutMillis > 0) {
-        l = paramContext.settingsForInterstitial.timeoutMillis;
-      }
+    Boolean localBoolean = AdProcessManager.INSTANCE.isWebProcessRunning();
+    yxp.b("GdtInterstitialPreDownloader", String.format("preDownloadOnMainProcess isWebProcessRunning:%b isModuleRunning:%b", new Object[] { localBoolean, Boolean.valueOf(QIPCServerHelper.getInstance().isModuleRunning("gdt_server_ipc")) }));
+    if ((localBoolean == null) || (localBoolean.booleanValue() != true)) {
+      return;
     }
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "gdt_server_ipc", "PRELOAD_INTERSTITIAL_MAIN_TO_TOOL", null, new yum(this));
   }
   
-  public GdtAppReceiver a()
+  private void b()
   {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  }
-  
-  public WeakReference<GdtInterstitialFragment> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return null;
-    }
-    return (WeakReference)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public yuf a()
-  {
-    return this.jdField_a_of_type_Yuf;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext == null) {}
-    for (boolean bool = false;; bool = paramContext.settingsForInterstitial.enablePreDownload)
-    {
-      yxs.b("GdtInterstitialManager", String.format("isPreDownloadEnabled %b", new Object[] { Boolean.valueOf(bool) }));
-      return bool;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      yxs.b("GdtInterstitialManager", String.format("unregister %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
-      return bool;
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+    yxp.b("GdtInterstitialPreDownloader", "preDownloadOnToolProcess");
+    if (this.jdField_a_of_type_Yud == null) {
+      synchronized (jdField_a_of_type_Yul)
       {
-        bool = false;
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        bool = true;
-      }
-    }
-  }
-  
-  public boolean a(String paramString, WeakReference<GdtInterstitialFragment> paramWeakReference)
-  {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
-    }
-    for (;;)
-    {
-      yxs.b("GdtInterstitialManager", String.format("register %b traceId:%s", new Object[] { Boolean.valueOf(bool), paramString }));
-      return bool;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        bool = false;
-      } else if (paramWeakReference != null)
-      {
-        if (paramWeakReference.get() == null)
+        if (this.jdField_a_of_type_Yud == null)
         {
-          bool = false;
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.jdField_a_of_type_Yud = new yud(new WeakReference(this.jdField_a_of_type_Yuf), yui.a().a(), -2147483648L);
+          yyc.a(BaseApplicationImpl.getApplication());
         }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, paramWeakReference);
-          bool = true;
+        return;
+      }
+    }
+  }
+  
+  private void c()
+  {
+    yxp.b("GdtInterstitialPreDownloader", "preloadOnOtherProcess");
+    this.jdField_a_of_type_Yuo.send(null);
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Yud != null) {
+      return this.jdField_a_of_type_Yud.a();
+    }
+    return -2147483648;
+  }
+  
+  public void a(Context arg1)
+  {
+    Boolean localBoolean = AdProcessManager.INSTANCE.isOnWebProcess();
+    yxp.b("GdtInterstitialPreDownloader", String.format("init %b isOnWebProcess:%b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), localBoolean }));
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      synchronized (jdField_a_of_type_Yul)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          return;
         }
       }
-      else {
-        bool = false;
-      }
+      this.jdField_a_of_type_Boolean = true;
+    } while ((localObject == null) || (localObject.booleanValue() != true));
+    QIPCClientHelper.getInstance().register(yup.a());
+    yxp.b("GdtInterstitialPreDownloader", "QIPCClientHelper.getInstance().register(ServerToClientIPCModule.getInstance())");
+  }
+  
+  public void b(Context paramContext)
+  {
+    yxp.b("GdtInterstitialPreDownloader", String.format("preDownload", new Object[0]));
+    paramContext = AdProcessManager.INSTANCE.isOnWebProcess();
+    if (AdProcessManager.INSTANCE.isOnMainProcess().booleanValue())
+    {
+      a();
+      return;
     }
+    if ((paramContext != null) && (paramContext.booleanValue() == true))
+    {
+      b();
+      return;
+    }
+    c();
   }
 }
 

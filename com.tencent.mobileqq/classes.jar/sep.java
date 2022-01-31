@@ -1,98 +1,171 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.mp.mobileqq_mp.ReportPublicAccountRequest;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.NewIntent;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class sep
-  extends ayvz
+public class sep
 {
-  sep(seo paramseo) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if ((localayqm == null) || ((localayqm.jdField_b_of_type_Int != 24) && (localayqm.jdField_b_of_type_Int != 32))) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "reportClickEventForAdver send: " + paramString1 + "r4:" + paramString2 + "r5:" + paramString3);
+    }
+    NewIntent localNewIntent = new NewIntent(paramAppInterface.getApplication(), nor.class);
+    localNewIntent.putExtra("cmd", "PubAccountAdSvc.");
+    mobileqq_mp.ReportPublicAccountRequest localReportPublicAccountRequest = new mobileqq_mp.ReportPublicAccountRequest();
+    localReportPublicAccountRequest.tag.set("P_CliOper");
+    localReportPublicAccountRequest.mainAction.set("Pb_account_lifeservice");
+    localReportPublicAccountRequest.toUin.set(paramString1);
+    localReportPublicAccountRequest.subAction.set("");
+    localReportPublicAccountRequest.actionName.set("");
+    localReportPublicAccountRequest.fromType.set(0);
+    localReportPublicAccountRequest.count.set(1);
+    localReportPublicAccountRequest.result.set(0);
+    localReportPublicAccountRequest.r2.set("click_ad_msg");
+    long l = NetConnInfoCenter.getServerTime();
+    localReportPublicAccountRequest.r3.set(String.valueOf(l * 1000L));
+    localReportPublicAccountRequest.r4.set(paramString2);
+    paramString1 = new ArrayList();
+    paramString1.add(paramString3);
+    localReportPublicAccountRequest.r5.set(paramString1);
+    localNewIntent.putExtra("data", localReportPublicAccountRequest.toByteArray());
+    localNewIntent.setObserver(new ser());
+    paramAppInterface.startServlet(localNewIntent);
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, List<String> paramList)
+  {
+    if ((TextUtils.isEmpty(paramString6)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)) || (paramAppInterface == null))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while ((localayqm.jdField_b_of_type_Int == 24) && (localayqm.c != 10));
-                  switch (paramMessage.what)
-                  {
-                  case 1002: 
-                  case 1004: 
-                  default: 
-                    return;
-                  case 1001: 
-                    paramMessage = (Bundle)this.a.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(localayqm.jdField_b_of_type_Long));
-                  }
-                } while ((paramMessage == null) || (paramMessage.getInt("is_showProgress_tips") != 1));
-                this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(23, paramMessage);
-              } while (!QLog.isColorLevel());
-              QLog.d("PAH5Manager", 2, "start" + localayqm.jdField_b_of_type_Long);
-              return;
-              paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localayqm.jdField_b_of_type_Long));
-              this.a.a(localayqm.jdField_b_of_type_Long);
-              this.a.b(localayqm.jdField_b_of_type_Long);
-            } while (paramMessage == null);
-            if (localayqm.jdField_b_of_type_Int == 32)
-            {
-              new sfk();
-              paramMessage.putLong("uniseq", localayqm.jdField_b_of_type_Long);
-              paramMessage.putString("pic_server_id", sfk.a());
-            }
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAH5Manager", 2, "finished" + localayqm.jdField_b_of_type_Long);
-              }
-              this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(24, paramMessage);
-              return;
-              paramMessage.putLong("uniseq", localayqm.jdField_b_of_type_Long);
-              paramMessage.putString("pic_server_id", localayqm.i);
-            }
-            paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localayqm.jdField_b_of_type_Long));
-            this.a.a(localayqm.jdField_b_of_type_Long);
-            this.a.b(localayqm.jdField_b_of_type_Long);
-          } while (paramMessage == null);
-          if (QLog.isColorLevel()) {
-            QLog.d("PAH5Manager", 2, "error" + localayqm.jdField_b_of_type_Long);
-          }
-          paramMessage.putLong("uniseq", localayqm.jdField_b_of_type_Long);
-          paramMessage.putString("pic_server_id", "-1");
-          this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(24, paramMessage);
-          return;
-          paramMessage = (Bundle)this.a.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(localayqm.jdField_b_of_type_Long));
-        } while ((paramMessage == null) || (paramMessage.getInt("is_showProgress_tips") != 1));
-        this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(25, paramMessage);
-        return;
-        this.a.b(localayqm.jdField_b_of_type_Long);
-        paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localayqm.jdField_b_of_type_Long));
-      } while (paramMessage == null);
-      if (localayqm.jdField_b_of_type_Int == 32) {
-        paramMessage.putString("pic_local_id", new sfk().a(null));
+      if (QLog.isColorLevel()) {
+        QLog.d("PAReport", 2, "r2 or mainAction or tag or app is null");
       }
-      this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramMessage);
       return;
-      this.a.b(localayqm.jdField_b_of_type_Long);
-      paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localayqm.jdField_b_of_type_Long));
-    } while (paramMessage == null);
-    paramMessage.putString("pic_local_id", "-1");
-    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramMessage);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      int j = paramList.size();
+      if (j > 0)
+      {
+        ((StringBuilder)localObject).append((String)paramList.get(0));
+        int i = 1;
+        while (i < j)
+        {
+          ((StringBuilder)localObject).append("|");
+          ((StringBuilder)localObject).append((String)paramList.get(i));
+          i += 1;
+        }
+      }
+      QLog.d("PAReport", 2, "Reporting: " + paramString1 + "|" + paramString2 + "|" + paramString3 + "|" + paramString4 + "|" + paramString5 + "|" + paramInt1 + "|" + paramInt2 + "|" + paramInt3 + "|" + paramString6 + "|" + paramString7 + "|" + paramString8 + "|" + ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new NewIntent(paramAppInterface.getApplication(), nor.class);
+    ((NewIntent)localObject).putExtra("cmd", "PubAccountAdSvc.");
+    mobileqq_mp.ReportPublicAccountRequest localReportPublicAccountRequest = new mobileqq_mp.ReportPublicAccountRequest();
+    localReportPublicAccountRequest.tag.set(paramString1);
+    localReportPublicAccountRequest.mainAction.set(paramString2);
+    localReportPublicAccountRequest.toUin.set(paramString3);
+    localReportPublicAccountRequest.subAction.set(paramString4);
+    localReportPublicAccountRequest.actionName.set(paramString5);
+    localReportPublicAccountRequest.fromType.set(paramInt1);
+    localReportPublicAccountRequest.count.set(paramInt2);
+    localReportPublicAccountRequest.result.set(paramInt3);
+    localReportPublicAccountRequest.r2.set(paramString6);
+    localReportPublicAccountRequest.r3.set(paramString7);
+    localReportPublicAccountRequest.r4.set(paramString8);
+    localReportPublicAccountRequest.r5.set(paramList);
+    ((NewIntent)localObject).putExtra("data", localReportPublicAccountRequest.toByteArray());
+    ((NewIntent)localObject).setObserver(new seq(paramAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8));
+    paramAppInterface.startServlet((NewIntent)localObject);
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, List<String> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "sendAdArriveReceipt report");
+    }
+    long l = NetConnInfoCenter.getServerTime();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      String str = AppSetting.e();
+      localJSONObject.put("puin", paramString3);
+      localJSONObject.put("q_user_agent", str);
+      localJSONObject.put("gdt_imp_data", paramString4);
+      localJSONObject.put("view_id", paramString5);
+      a(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", paramAppInterface.getAccount(), paramString1, paramString2, 0, 1, 0, "send_ad_receipt", String.valueOf(l * 1000L), localJSONObject.toString(), paramList);
+      return;
+    }
+    catch (JSONException paramString3)
+    {
+      for (;;)
+      {
+        paramString3.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, List<String> paramList1, List<String> paramList2, List<String> paramList3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "reportAdMsgRead report msgId size = " + paramList2.size());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      String str1 = AppSetting.e();
+      String str2 = bdjp.a();
+      String str3 = bdjp.d();
+      String str4 = Settings.Secure.getString(paramAppInterface.getApp().getContentResolver(), "android_id");
+      String str5 = bdjp.c();
+      JSONArray localJSONArray = new JSONArray();
+      int j = paramList1.size();
+      int i = 0;
+      while (i < j)
+      {
+        localJSONArray.put(i, paramList1.get(i));
+        i += 1;
+      }
+      localJSONObject.put("puin", paramString3);
+      localJSONObject.put("q_user_agent", str1);
+      localJSONObject.put("hardware_addr", str2);
+      localJSONObject.put("mobile_imsi", str3);
+      localJSONObject.put("mobile_android_id", str4);
+      localJSONObject.put("mobile_imei", str5);
+      localJSONObject.put("gdt_cli_data", localJSONArray);
+      paramString3 = new JSONArray();
+      j = paramList3.size();
+      i = 0;
+      while (i < j)
+      {
+        paramString3.put(i, paramList3.get(i));
+        i += 1;
+      }
+      localJSONObject.put("view_id", paramString3);
+    }
+    catch (JSONException paramString3)
+    {
+      for (;;)
+      {
+        long l;
+        paramString3.printStackTrace();
+      }
+    }
+    l = NetConnInfoCenter.getServerTime();
+    a(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", paramAppInterface.getAccount(), paramString1, paramString2, 0, 1, 0, "read_ad_msg", String.valueOf(l * 1000L), localJSONObject.toString(), paramList2);
   }
 }
 

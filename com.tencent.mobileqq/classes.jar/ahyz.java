@@ -1,332 +1,323 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PaintFlagsDrawFilter;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Typeface;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager.1;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager.2;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager.3;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager.4;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-class ahyz
-  extends ahys
+public abstract class ahyz
+  implements aysc
 {
-  public int a;
-  private ahyn jdField_a_of_type_Ahyn;
-  public ahyo a;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  String jdField_a_of_type_JavaLangString;
+  protected int a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  protected BaseApplicationImpl a;
+  private String jdField_a_of_type_JavaLangString;
+  protected HashMap<Integer, String> a;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = -1;
-  private ahyn jdField_b_of_type_Ahyn;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private final String jdField_b_of_type_JavaLangString = "PacmanTextItem";
-  int c = -1;
-  int d;
-  private int e = 1;
-  private int f = 15;
+  protected int b;
+  private int c;
   
-  public ahyz(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean, String paramString, ahyo paramahyo, float paramFloat4, float paramFloat5, Bitmap paramBitmap1, Bitmap paramBitmap2, Typeface paramTypeface)
+  public ahyz(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramLong1, paramLong2, paramBoolean);
-    a(8, paramFloat1);
-    a(9, paramFloat2);
-    a(6, paramFloat4);
-    a(7, paramFloat5);
-    a(5, a(paramFloat3, paramFloat1 * paramFloat2));
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ahyo = paramahyo;
-    this.d = 0;
-    this.jdField_a_of_type_Ahyn = new ahyn(a(this.d), this.jdField_a_of_type_Ahyo, paramTypeface);
-    this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float = (this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float + paramFloat4 + this.jdField_a_of_type_Ahyo.d);
-    this.jdField_b_of_type_Ahyn = new ahyn(a(this.d + 50), this.jdField_a_of_type_Ahyo, paramTypeface);
-    this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float = (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
-    paramFloat2 = this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c + paramahyo.jdField_a_of_type_Float + paramahyo.d;
-    paramFloat1 = paramFloat2;
-    if (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean) {
-      paramFloat1 = paramFloat2 + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-    }
-    a(3, paramFloat1);
-    a(4, paramahyo.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
-    this.jdField_b_of_type_Int = -1;
-    this.c = -1;
-  }
-  
-  private float a(float paramFloat1, float paramFloat2)
-  {
-    return paramFloat1 * paramFloat2;
-  }
-  
-  private String a(int paramInt)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.jdField_c_of_type_Int = 0;
+    this.b = paramInt;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (paramBoolean1) {}
+    for (;;)
     {
-      localObject = "";
-      return localObject;
-    }
-    if (this.jdField_a_of_type_JavaLangString.length() <= paramInt) {
-      return "";
-    }
-    if (this.jdField_a_of_type_JavaLangString.length() > paramInt + 50) {}
-    for (String str = this.jdField_a_of_type_JavaLangString.substring(paramInt, paramInt + 50);; str = this.jdField_a_of_type_JavaLangString.substring(paramInt, this.jdField_a_of_type_JavaLangString.length()))
-    {
-      localObject = str;
-      if (str != null) {
-        break;
-      }
-      return "";
-    }
-  }
-  
-  private void a(Canvas paramCanvas, RenderBuffer paramRenderBuffer)
-  {
-    boolean bool;
-    if (this.e % this.f == 0)
-    {
-      if (!this.jdField_a_of_type_Boolean)
+      try
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-        this.e = 1;
+        AppRuntime localAppRuntime = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
+        if (localAppRuntime != null) {
+          this.jdField_a_of_type_JavaLangString = String.valueOf(localAppRuntime.getLongAccountUin());
+        }
       }
-    }
-    else
-    {
-      this.e += 1;
-      if (paramCanvas == null) {
-        break label160;
-      }
-      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-      if (!this.jdField_a_of_type_Boolean) {
-        break label152;
-      }
-      paramRenderBuffer = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramCanvas.drawBitmap(paramRenderBuffer, new Rect(0, 0, paramRenderBuffer.getWidth(), paramRenderBuffer.getHeight()), new RectF(a(6), a(7), a(6) + this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float, a(7) + this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    label152:
-    label160:
-    while (paramRenderBuffer == null) {
-      for (;;)
+      catch (Exception localException)
       {
-        return;
-        bool = false;
-        break;
-        paramRenderBuffer = this.jdField_b_of_type_AndroidGraphicsBitmap;
+        localException.printStackTrace();
+        QLog.d("RDBaseDataManager", 2, "get uin exception:" + this.jdField_a_of_type_JavaLangString);
+        continue;
       }
-    }
-    if (this.jdField_b_of_type_Int < 0) {
-      this.jdField_b_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    if (this.c < 0) {
-      this.c = GlUtil.createTexture(3553, this.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_b_of_type_Int;; i = this.c)
-    {
-      a(paramRenderBuffer, i, this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float, this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float, null, a(6), a(7));
+      if (QLog.isColorLevel()) {
+        QLog.d("RDBaseDataManager", 2, "init uin:" + this.jdField_a_of_type_JavaLangString);
+      }
       return;
+      this.jdField_a_of_type_JavaLangString = null;
     }
+  }
+  
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = paramString.substring(0, paramString.lastIndexOf(File.separator));
+        if (!TextUtils.isEmpty(paramString))
+        {
+          paramString = new File(paramString);
+          if (!paramString.exists())
+          {
+            paramString.mkdirs();
+            return;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("RDBaseDataManagerdownloading", 2, "makedir execption: " + paramString);
+      }
+    }
+  }
+  
+  private boolean a()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
+        return false;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      int i = 0;
+      boolean bool1 = true;
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        String str = bbdx.d((String)localEntry.getValue());
+        i += 1;
+        boolean bool2 = a(0, ((Integer)localEntry.getKey()).intValue(), str, i, this.jdField_a_of_type_JavaUtilHashMap.size());
+        bool1 = bool2;
+        if (!bool2) {
+          bool1 = bool2;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("RDBaseDataManager", 2, "initFromAsset: " + bool1);
+      }
+      return bool1;
+    }
+    finally {}
+  }
+  
+  private boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  {
+    if (paramInt3 == 1) {
+      a(paramInt1, paramInt4);
+    }
+    boolean bool = a(paramInt1, paramInt2, paramString);
+    if (paramInt3 == paramInt4) {
+      b(paramInt1, paramInt4);
+    }
+    return bool;
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (this.jdField_c_of_type_Int != 0) {
+        return;
+      }
+      this.jdField_c_of_type_Int = 1;
+      a();
+      c();
+      this.jdField_c_of_type_Int = 2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("RDBaseDataManager", 2, "RDBaseDataManager init end, configType :" + this.b);
+        return;
+      }
+    }
+    finally {}
   }
   
   private boolean b()
   {
-    if (this.jdField_a_of_type_Ahyn != null)
+    try
     {
-      float f3 = a(6);
-      float f4 = a(4) / 2.0F;
-      float f2 = this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-      float f1 = f2;
-      if (this.jdField_b_of_type_Ahyn != null)
+      this.jdField_a_of_type_Int = ahzb.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.b, this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i("RDBaseDataManager", 2, "local sp config version is : " + this.jdField_a_of_type_Int);
+      }
+      boolean bool = ahzb.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.b, this.jdField_a_of_type_JavaLangString, new ahza(this));
+      if (!bool)
       {
-        f1 = f2;
-        if (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean) {
-          f1 = f2 + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Ahym.c;
+        this.jdField_c_of_type_Int = 0;
+        this.jdField_a_of_type_Int = 0;
+      }
+      return bool;
+    }
+    finally {}
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if (!b()) {
+        a();
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public int a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl == null)) {
+      return -1;
+    }
+    a(paramString2);
+    ahyp localahyp = new ahyp();
+    localahyp.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    localahyp.b = paramString4;
+    localahyp.jdField_a_of_type_JavaLangString = paramString3;
+    try
+    {
+      paramString3 = new ayrx();
+      paramString3.jdField_a_of_type_JavaLangString = paramString1;
+      paramString3.jdField_a_of_type_Int = 0;
+      paramString3.jdField_c_of_type_JavaLangString = paramString2;
+      paramString3.a(localahyp);
+      paramString3.jdField_a_of_type_Aysc = this;
+      paramString3.jdField_c_of_type_Int = bbfj.a(ayta.a().a());
+      lch.a().a(paramString3);
+      if (QLog.isColorLevel()) {
+        QLog.i("RDBaseDataManager", 2, "startDownload, url: " + paramString1 + " ; path:" + paramString2);
+      }
+      return localahyp.jdField_a_of_type_Int;
+    }
+    catch (Exception paramString3)
+    {
+      for (;;)
+      {
+        localahyp.jdField_a_of_type_Int = -1;
+        QLog.e("RDBaseDataManager", 2, "startDownload, url: " + paramString1 + " ; path:" + paramString2);
+        QLog.i("RDBaseDataManager", 2, "exception: " + paramString3.toString());
+      }
+    }
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2);
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RDBaseDataManager", 2, "init begin, state:" + this.jdField_c_of_type_Int + " configType :" + this.b + " baccountdependent:" + false);
+    }
+    if (this.jdField_c_of_type_Int != 0) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler == null) {
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+      }
+      this.jdField_a_of_type_AndroidOsHandler.post(new RDBaseDataManager.1(this));
+      return;
+    }
+    b();
+  }
+  
+  public abstract boolean a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  protected void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public void onResp(aysz paramaysz)
+  {
+    int j = 0;
+    if ((paramaysz == null) || (paramaysz.jdField_a_of_type_Aysy == null))
+    {
+      QLog.e("RDBaseDataManager", 2, "onResp  param error!");
+      return;
+    }
+    ahyp localahyp = (ahyp)paramaysz.jdField_a_of_type_Aysy.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("RDBaseDataManager", 2, "onResp  ID:" + localahyp.jdField_a_of_type_Int + "  result:" + paramaysz.jdField_a_of_type_Int);
+    }
+    if (paramaysz.jdField_a_of_type_Int != 0)
+    {
+      ThreadManager.getUIHandler().post(new RDBaseDataManager.2(this, localahyp));
+      return;
+    }
+    int i;
+    if (!TextUtils.isEmpty(paramaysz.jdField_a_of_type_Aysy.jdField_c_of_type_JavaLangString))
+    {
+      i = j;
+      if (!TextUtils.isEmpty(localahyp.jdField_a_of_type_JavaLangString))
+      {
+        String str = bbdx.c(paramaysz.jdField_a_of_type_Aysy.jdField_c_of_type_JavaLangString);
+        if (localahyp.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)) {
+          i = j;
         }
-      }
-      if ((f4 + f3 > f1) || (f1 < 0.0F)) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      a(6, a(6) + paramFloat);
-      if (this.jdField_a_of_type_Ahyn != null) {
-        break label49;
-      }
-    }
-    label49:
-    Object localObject;
-    float f1;
-    float f2;
-    do
-    {
-      return;
-      a(6, a(6) + paramFloat / 2.0F);
-      break;
-      localObject = this.jdField_a_of_type_Ahyn;
-      ((ahyn)localObject).jdField_a_of_type_Float += paramFloat;
-      if (this.jdField_b_of_type_Ahyn != null)
-      {
-        localObject = this.jdField_b_of_type_Ahyn;
-        ((ahyn)localObject).jdField_a_of_type_Float += paramFloat;
-      }
-      paramFloat = a(6);
-      f1 = a(4) / 2.0F;
-      f2 = this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-    } while ((paramFloat + f1 <= f2) && (f2 >= 0.0F));
-    if ((this.jdField_b_of_type_Ahyn != null) && (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean))
-    {
-      localObject = this.jdField_a_of_type_Ahyn;
-      this.jdField_a_of_type_Ahyn = this.jdField_b_of_type_Ahyn;
-      this.jdField_b_of_type_Ahyn = ((ahyn)localObject);
-      this.d += 50;
-      localObject = a(this.d + 50);
-      this.jdField_b_of_type_Ahyn.a((String)localObject);
-      f1 = a(3);
-      paramFloat = f1;
-      if (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean)
-      {
-        this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float = (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c);
-        paramFloat = f1 + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-      }
-      a(3, paramFloat);
-      return;
-    }
-    a(3, 0.0F);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (!b()) {}
-    float f1;
-    do
-    {
-      return;
-      f1 = a(6) + this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float / 2.0F;
-      if (f1 > 0.0F)
-      {
-        paramCanvas.save();
-        paramCanvas.clipRect(f1, a(7), paramCanvas.getWidth(), a(7) + a(4));
-      }
-      float f2 = a(7);
-      if (this.jdField_a_of_type_Ahyn != null)
-      {
-        this.jdField_a_of_type_Ahyn.a(paramCanvas, this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float, f2);
-        if ((this.jdField_b_of_type_Ahyn != null) && (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean)) {
-          this.jdField_b_of_type_Ahyn.a(paramCanvas, this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float, f2);
-        }
-      }
-      if (f1 > 0.0F) {
-        paramCanvas.restore();
-      }
-    } while (f1 + this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float / 2.0F <= 0.0F);
-    a(paramCanvas, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer)
-  {
-    if (!b()) {}
-    while (this.jdField_a_of_type_Ahyn == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float >= a(6) + this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float / 2.0F) {
-      this.jdField_a_of_type_Ahyn.a(paramRenderBuffer, null, this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float, a(7));
-    }
-    for (;;)
-    {
-      if ((this.jdField_b_of_type_Ahyn != null) && (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean)) {
-        this.jdField_b_of_type_Ahyn.a(paramRenderBuffer, null, this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float, a(7));
-      }
-      a(null, paramRenderBuffer);
-      return;
-      float f1 = a(6) + this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float / 2.0F;
-      if (f1 > 0.0F)
-      {
-        f1 -= this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float;
-        float f2 = a(3);
-        float f3 = a(4);
-        QLog.d("PacmanTextItem", 2, "draw area:" + f1 + "-" + 0.0F + "-" + f2 + "-" + f3);
-        this.jdField_a_of_type_Ahyn.a(paramRenderBuffer, new RectF(f1, 0.0F, f2, f3), f1 + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float, a(7));
       }
       else
       {
-        this.jdField_a_of_type_Ahyn.a(paramRenderBuffer, null, this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float, a(7));
+        j = i;
+        if (TextUtils.isEmpty(localahyp.b)) {}
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        bbdx.a(paramaysz.jdField_a_of_type_Aysy.jdField_c_of_type_JavaLangString, localahyp.b, false);
+        j = i;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        QLog.e("RDBaseDataManager", 2, "unzip file exception:" + localException);
+        j = i;
+        continue;
+      }
+      ThreadManager.getUIHandler().post(new RDBaseDataManager.3(this, localahyp, j, paramaysz));
+      return;
+      i = 1;
+      break;
+      j = 1;
     }
   }
   
-  public void a(String paramString)
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramString.equals(this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_JavaLangString = paramString;
-      } while (this.jdField_a_of_type_Ahyn == null);
-      paramString = a(this.d);
-      boolean bool = this.jdField_a_of_type_Ahyn.jdField_a_of_type_Boolean;
-      float f3 = this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-      float f1 = a(3);
-      this.jdField_a_of_type_Ahyn.a(paramString);
-      float f2 = f1;
-      if (bool) {
-        f2 = f1 - f3;
-      }
-      f1 = f2;
-      if (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Boolean) {
-        f1 = f2 + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-      }
-      f3 = f1;
-      if (this.jdField_b_of_type_Ahyn != null)
-      {
-        bool = this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean;
-        f3 = this.jdField_b_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-        paramString = a(this.d + 50);
-        this.jdField_b_of_type_Ahyn.a(paramString);
-        this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float = (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c);
-        f2 = f1;
-        if (bool) {
-          f2 = f1 - f3;
-        }
-        f3 = f2;
-        if (this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean) {
-          f3 = f2 + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Ahym.c;
-        }
-      }
-      a(3, f3);
-    } while ((this.jdField_b_of_type_Ahyn == null) || (!QLog.isColorLevel()));
-    QLog.d("PacmanTextItem", 2, "PacmanTextItem settext: ManPOSX:" + a(6) + " param_width:" + a(3) + " isvalid:" + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Boolean + "-" + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Boolean + " width:" + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c + "-" + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Ahym.c + " posx:" + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + "-" + this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float);
-  }
-  
-  public void b(float paramFloat)
-  {
-    a(6, paramFloat);
-    if ((this.jdField_a_of_type_Ahyn != null) && (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float = (this.jdField_a_of_type_Ahyo.jdField_a_of_type_Float + paramFloat + this.jdField_a_of_type_Ahyo.d);
-      if (this.jdField_b_of_type_Ahyn != null) {
-        this.jdField_b_of_type_Ahyn.jdField_a_of_type_Float = (this.jdField_a_of_type_Ahyn.jdField_a_of_type_Float + this.jdField_a_of_type_Ahyn.jdField_a_of_type_Ahym.c);
-      }
+    if (paramaysy == null) {
+      return;
     }
+    paramaysy = (ahyp)paramaysy.a();
+    ThreadManager.getUIHandler().post(new RDBaseDataManager.4(this, paramaysy, paramLong1, paramLong2));
   }
 }
 

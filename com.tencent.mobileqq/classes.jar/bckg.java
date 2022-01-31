@@ -1,10 +1,8 @@
 public abstract interface bckg
 {
-  public abstract int a();
+  public abstract void a();
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public abstract void b();
 }
 
 

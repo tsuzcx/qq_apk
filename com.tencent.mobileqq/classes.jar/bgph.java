@@ -1,49 +1,34 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
-final class bgph
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class bgph
 {
-  bgph(Runnable paramRunnable) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
   {
-    if (paramPluginManagerClient == null) {}
-    try
-    {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+    if (paramContext == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
+        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
       }
-      bgpf.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
-      }
+      Toast.makeText(BaseApplication.getContext(), ajya.a(2131710706), 0).show();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
+    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
+    localIntent.putExtra("componetname", paramString);
+    if (paramBundle != null) {
+      localIntent.putExtra("_param_", paramBundle);
     }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new bgpi(this));
-    return;
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgph
  * JD-Core Version:    0.7.0.1
  */

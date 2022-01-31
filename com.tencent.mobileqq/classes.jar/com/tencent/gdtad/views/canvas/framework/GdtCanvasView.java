@@ -1,8 +1,8 @@
 package com.tencent.gdtad.views.canvas.framework;
 
-import adll;
-import ajyc;
-import alpy;
+import adlj;
+import ajya;
+import alpx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -55,21 +55,21 @@ import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
-import yxs;
-import yxw;
-import yxx;
-import yyg;
-import yyq;
-import yze;
-import yzl;
-import yzx;
-import zaf;
-import zag;
-import zcf;
+import yxp;
+import yxt;
+import yxu;
+import yyd;
+import yyn;
+import yzb;
+import yzi;
+import yzu;
+import zac;
+import zad;
+import zcc;
 
 public class GdtCanvasView
   extends FrameLayout
-  implements alpy, zag
+  implements alpx, zad
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
@@ -80,44 +80,44 @@ public class GdtCanvasView
   private GdtCanvasPageView jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView;
   public String a;
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  protected yyg a;
+  protected yyd a;
   private boolean jdField_a_of_type_Boolean;
   private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
   private GdtCanvasFixedButtonComponentView jdField_b_of_type_ComTencentGdtadViewsCanvasComponentsFixedbuttonGdtCanvasFixedButtonComponentView;
-  private yyg jdField_b_of_type_Yyg = new yyg();
+  private yyd jdField_b_of_type_Yyd = new yyd();
   private boolean jdField_b_of_type_Boolean;
   private boolean c = true;
   
   public GdtCanvasView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Yyg = new yyg();
+    this.jdField_a_of_type_Yyd = new yyd();
     h();
   }
   
   public GdtCanvasView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Yyg = new yyg();
+    this.jdField_a_of_type_Yyd = new yyd();
     h();
   }
   
   public GdtCanvasView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Yyg = new yyg();
+    this.jdField_a_of_type_Yyd = new yyd();
     h();
   }
   
-  private adll a(yzx paramyzx)
+  private adlj a(yzu paramyzu)
   {
-    adll localadll = new adll();
-    paramyzx.jdField_a_of_type_Adll = localadll;
-    localadll.a(paramyzx.jdField_a_of_type_JavaLangString, paramyzx.b, paramyzx.c, paramyzx.d, paramyzx.jdField_a_of_type_Float, paramyzx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localadll.setFixSize(0, 0);
-    localadll.setMaxSize(0, 0);
-    localadll.setMinSize(0, 0);
-    return localadll;
+    adlj localadlj = new adlj();
+    paramyzu.jdField_a_of_type_Adlj = localadlj;
+    localadlj.a(paramyzu.jdField_a_of_type_JavaLangString, paramyzu.b, paramyzu.c, paramyzu.d, paramyzu.jdField_a_of_type_Float, paramyzu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    localadlj.setFixSize(0, 0);
+    localadlj.setMaxSize(0, 0);
+    localadlj.setMinSize(0, 0);
+    return localadlj;
   }
   
   private Activity a()
@@ -140,7 +140,7 @@ public class GdtCanvasView
         if (paramString != null)
         {
           paramString = new BitmapDrawable(paramString);
-          yxs.a("GdtCanvasView", "base 64 cost :" + (System.currentTimeMillis() - l));
+          yxp.a("GdtCanvasView", "base 64 cost :" + (System.currentTimeMillis() - l));
           return paramString;
         }
       }
@@ -170,19 +170,19 @@ public class GdtCanvasView
   private void a(long paramLong, boolean paramBoolean)
   {
     if ((paramLong < 0L) || (this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData == null) || (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.isValid())) {
-      yxs.d("GdtCanvasView", "reportLoadTimeForAction error");
+      yxp.d("GdtCanvasView", "reportLoadTimeForAction error");
     }
     while (this.jdField_b_of_type_Boolean) {
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    yxx localyxx = new yxx();
+    yxu localyxu = new yxu();
     Object localObject;
     if (a() != null)
     {
       localObject = a().ad;
-      localyxx.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
-      localObject = localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type;
+      localyxu.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
+      localObject = localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type;
       if (!paramBoolean) {
         break label123;
       }
@@ -191,8 +191,8 @@ public class GdtCanvasView
     for (int i = 3;; i = 4)
     {
       ((PBUInt32Field)localObject).set(i);
-      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong);
-      yxw.a(localyxx);
+      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(paramLong);
+      yxt.a(localyxu);
       return;
       localObject = null;
       break;
@@ -201,7 +201,7 @@ public class GdtCanvasView
   
   private void a(ArkAppView paramArkAppView, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    yxs.d("GdtCanvasView", "initSelectWindow");
+    yxp.d("GdtCanvasView", "initSelectWindow");
     float f2 = 0.0F;
     float f1 = f2;
     if (getContext() != null)
@@ -215,7 +215,7 @@ public class GdtCanvasView
         }
       }
     }
-    paramArkAppView.initArkView(a(new yzx(yzx.a(paramString1, paramString2, "0.0.0.1", paramString4, f1, null, null))), false);
+    paramArkAppView.initArkView(a(new yzu(yzu.a(paramString1, paramString2, "0.0.0.1", paramString4, f1, null, null))), false);
     paramArkAppView.setVisibility(0);
   }
   
@@ -261,11 +261,11 @@ public class GdtCanvasView
         localGdtCanvasPageData.floatingBarBackgroundColor = ((GdtCanvasPictureComponentData)localObject3).floatingBarBackgroundColor;
         localObject3 = new GdtCanvasAppBtnComponentData();
         ((GdtCanvasAppBtnComponentData)localObject3).id = paramString;
-        ((GdtCanvasAppBtnComponentData)localObject3).button.text.text = ajyc.a(2131705165);
+        ((GdtCanvasAppBtnComponentData)localObject3).button.text.text = ajya.a(2131705176);
         ((GdtCanvasAppBtnComponentData)localObject3).button.text.color = localGdtCanvasPageData.floatingBarTextColor;
         ((GdtCanvasAppBtnComponentData)localObject3).button.backgroundColor = localGdtCanvasPageData.floatingBarBackgroundColor;
-        ((GdtCanvasAppBtnComponentData)localObject3).button.text.size = yze.b(1080, 54);
-        i = yze.c(getContext());
+        ((GdtCanvasAppBtnComponentData)localObject3).button.text.size = yzb.b(1080, 54);
+        i = yzb.c(getContext());
         if (i <= 0) {
           break label345;
         }
@@ -274,7 +274,7 @@ public class GdtCanvasView
     for (;;)
     {
       ((GdtCanvasAppBtnComponentData)localObject3).width = i;
-      ((GdtCanvasAppBtnComponentData)localObject3).height = yze.a(50.0F, getContext().getResources());
+      ((GdtCanvasAppBtnComponentData)localObject3).height = yzb.a(50.0F, getContext().getResources());
       ((GdtCanvasAppBtnComponentData)localObject3).gravity = 17;
       this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentView = new GdtCanvasAppBtnComponentView(getContext(), new WeakReference(this), (GdtCanvasAppBtnComponentData)localObject3, true);
       localObject3 = new FrameLayout.LayoutParams(-1, -1);
@@ -305,7 +305,7 @@ public class GdtCanvasView
   {
     if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView == null))
     {
-      yxs.d("GdtCanvasView", "arkViewResize error");
+      yxp.d("GdtCanvasView", "arkViewResize error");
       return;
     }
     try
@@ -361,7 +361,7 @@ public class GdtCanvasView
       if ("show".equals(paramString))
       {
         if ((getContext() != null) && (getResources() != null)) {
-          AdProgressDialog.show(getContext(), yze.a(60.0F, getResources()));
+          AdProgressDialog.show(getContext(), yzb.a(60.0F, getResources()));
         }
       }
       else if ("hide".equals(paramString))
@@ -534,7 +534,7 @@ public class GdtCanvasView
   
   private void h()
   {
-    yzl.a();
+    yzi.a();
     d();
     inflate(getContext(), 2131559103, this);
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFixedbuttonGdtCanvasFixedButtonComponentView = ((GdtCanvasFixedButtonComponentView)findViewById(2131366968));
@@ -544,7 +544,7 @@ public class GdtCanvasView
     try
     {
       findViewById(2131366957).setBackgroundDrawable(a("iVBORw0KGgoAAAANSUhEUgAAABQAAAB4CAYAAADyv9IsAAABZ0lEQVR4AWIAAkC7Y8DZMBRFYaMQBAqBYhAMhkCgEJTS//9/Bnd8Hme77zmVRh++nbPem+/dh5l3Fd6DB7KEM72PoYt3FN4quP+m4AahjQMItygtbMgNQrFQCYR6QXcmQLHgF3bhFYmOHbUP4dVJXqgvL2f7XajpwjW7jN1VEMJGxCMY6kXdS1BcdKFBuOCfBcm+ErVPoY0mobgMQgPHE34HC5I9P4+SJS1ckpkhvdiFOwu/6jNA8SBeE10lu//CAwhnNcRsZk8JhaAFPaRcX6qFLrrwScJPdDEXv8cfH3hNp+6zEjo5gPCihphd2BNC+UEpTJBfVJcyKbTRhU8WTkj2f4WTEb7Onk8ldNGFBuFZDTE7syeE8oNCmAClhkkkhTa6sI2xFI5BORzz8wDFhBiIy0QaLzy+cECyVwkHJ3mhvryc7XehpgtPwVCTAgqrUQ9wQS5rQQlKO1348QcnJLvej+LkxYU/s5xl0uh1oCUAAAAASUVORK5CYII="));
-      findViewById(2131364259).setOnClickListener(new zaf(this));
+      findViewById(2131364258).setOnClickListener(new zac(this));
       ArkAppNotifyCenter.setNotify("com.tencent.xijing.form", new WeakReference(this));
       return;
     }
@@ -552,7 +552,7 @@ public class GdtCanvasView
     {
       for (;;)
       {
-        yxs.d("GdtCanvasView", "init error", localThrowable);
+        yxp.d("GdtCanvasView", "init error", localThrowable);
       }
     }
   }
@@ -561,17 +561,17 @@ public class GdtCanvasView
   {
     if ((this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData == null) || (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.isValid()))
     {
-      yxs.d("GdtCanvasView", "reportStayTimeForAction error");
+      yxp.d("GdtCanvasView", "reportStayTimeForAction error");
       return;
     }
-    yxx localyxx = new yxx();
+    yxu localyxu = new yxu();
     if (a() != null) {}
     for (GdtAd localGdtAd = a().ad;; localGdtAd = null)
     {
-      localyxx.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
-      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(7);
-      localyxx.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(this.jdField_b_of_type_Yyg.a());
-      yxw.a(localyxx);
+      localyxu.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
+      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(7);
+      localyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(this.jdField_b_of_type_Yyd.a());
+      yxt.a(localyxu);
       return;
     }
   }
@@ -586,7 +586,7 @@ public class GdtCanvasView
       {
         return;
         str = this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.firstPictureComponentIdWithHotArea;
-      } while ((TextUtils.isEmpty(str)) || ((!yzl.a()) && ((!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.getAutoDownLoad()) || (!yyq.a()))));
+      } while ((TextUtils.isEmpty(str)) || ((!yzi.a()) && ((!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.getAutoDownLoad()) || (!yyn.a()))));
       a(str);
     } while ((this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentView == null) || ((this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.ad != null) && (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.ad.isAppProductType())));
     a(str, false);
@@ -603,12 +603,12 @@ public class GdtCanvasView
   protected long a()
   {
     long l = -2147483648L;
-    if (this.jdField_a_of_type_Yyg != null)
+    if (this.jdField_a_of_type_Yyd != null)
     {
-      this.jdField_a_of_type_Yyg.b();
-      l = this.jdField_a_of_type_Yyg.a();
+      this.jdField_a_of_type_Yyd.b();
+      l = this.jdField_a_of_type_Yyd.a();
     }
-    this.jdField_a_of_type_Yyg = null;
+    this.jdField_a_of_type_Yyd = null;
     return l;
   }
   
@@ -644,14 +644,14 @@ public class GdtCanvasView
     AdProgressDialog.dismiss();
     ArkAppNotifyCenter.setNotify("com.tencent.xijing.form", null);
     i();
-    a(this.jdField_b_of_type_Yyg.a(), false);
-    yzl.a();
+    a(this.jdField_b_of_type_Yyd.a(), false);
+    yzi.a();
   }
   
   public void a(GdtCanvasComponentData paramGdtCanvasComponentData, long paramLong, boolean paramBoolean)
   {
     if ((paramGdtCanvasComponentData == null) || (!paramGdtCanvasComponentData.isValid()) || (a() == null) || (!a().isValid())) {
-      yxs.d("GdtCanvasView", "onLoaded error");
+      yxp.d("GdtCanvasView", "onLoaded error");
     }
     label218:
     for (;;)
@@ -676,7 +676,7 @@ public class GdtCanvasView
           localObject = ((GdtCanvasPageData)localObject).getPageFirstImageComponentData();
           if ((localObject != null) && (((GdtCanvasComponentData)localObject).isValid()) && (TextUtils.equals(paramGdtCanvasComponentData.id, ((GdtCanvasComponentData)localObject).id)))
           {
-            zcf.a(a().ad);
+            zcc.a(a().ad);
             this.jdField_a_of_type_Boolean = true;
           }
         }
@@ -758,11 +758,11 @@ public class GdtCanvasView
     WeakReference localWeakReference;
     if (("link".equals(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      yxs.a("GdtCanvasView", "click link :" + paramString2);
+      yxp.a("GdtCanvasView", "click link :" + paramString2);
       if ((this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData == null) || (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.isValid())) {
         break label173;
       }
-      zcf.c(this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.ad);
+      zcc.c(this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.ad);
       localWeakReference = new WeakReference(a());
       if (a() == null) {
         break label184;
@@ -775,7 +775,7 @@ public class GdtCanvasView
       AdBrowser.show(localWeakReference, paramString3, paramString2, null);
       if ("top".equals(paramString1)) {}
       return;
-      yxs.d("GdtCanvasView", "reportOpenWebPageAsync error");
+      yxp.d("GdtCanvasView", "reportOpenWebPageAsync error");
       break;
     }
   }
@@ -797,7 +797,7 @@ public class GdtCanvasView
   {
     if (paramString2.equals("toast_event"))
     {
-      yxs.a("GdtCanvasView", "toast_event" + paramString3);
+      yxp.a("GdtCanvasView", "toast_event" + paramString3);
       f(paramString3);
     }
     for (;;)
@@ -805,22 +805,22 @@ public class GdtCanvasView
       return true;
       if (paramString2.equals("loading_event"))
       {
-        yxs.a("GdtCanvasView", "loading_event" + paramString3);
+        yxp.a("GdtCanvasView", "loading_event" + paramString3);
         e(paramString3);
       }
       else if (paramString2.equals("xijing_form_select_event"))
       {
-        yxs.a("GdtCanvasView", "xijing_form_select_event" + paramString3);
+        yxp.a("GdtCanvasView", "xijing_form_select_event" + paramString3);
         d(paramString3);
       }
       else if (paramString2.equals("xijing_form_resize_event"))
       {
-        yxs.a("GdtCanvasView", "xijing_form_resize_event" + paramString3);
+        yxp.a("GdtCanvasView", "xijing_form_resize_event" + paramString3);
         c(paramString3);
       }
       else if (paramString2.equals("xijing_form_input_focus_event"))
       {
-        yxs.a("GdtCanvasView", "xijing_form_input_focus_event" + paramString3);
+        yxp.a("GdtCanvasView", "xijing_form_input_focus_event" + paramString3);
         b(paramString3);
       }
     }
@@ -852,7 +852,7 @@ public class GdtCanvasView
         i += 1;
       }
     }
-    this.jdField_b_of_type_Yyg.a();
+    this.jdField_b_of_type_Yyd.a();
   }
   
   public void c()
@@ -860,13 +860,13 @@ public class GdtCanvasView
     if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView != null) {
       this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView.b();
     }
-    this.jdField_b_of_type_Yyg.b();
+    this.jdField_b_of_type_Yyd.b();
   }
   
   protected void d()
   {
-    if (this.jdField_a_of_type_Yyg != null) {
-      this.jdField_a_of_type_Yyg.a();
+    if (this.jdField_a_of_type_Yyd != null) {
+      this.jdField_a_of_type_Yyd.a();
     }
   }
   
@@ -896,7 +896,7 @@ public class GdtCanvasView
       if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.getPage(0) != null) {
         setBackgroundColor(this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.getPage(0).backgroundColor);
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131363873));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131363872));
       this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView = new GdtCanvasPageView(getContext(), new WeakReference(this), this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.getPage(0));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView);
       g();

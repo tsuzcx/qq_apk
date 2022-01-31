@@ -1,174 +1,145 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nonnull;
 
 public class bkok
-  implements bkom
 {
-  private AppInterface a;
-  public boolean a;
-  public boolean b;
+  private final int jdField_a_of_type_Int = 20;
+  private aukp jdField_a_of_type_Aukp;
+  private bjyr jdField_a_of_type_Bjyr;
+  private final bkon jdField_a_of_type_Bkon;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<vvd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private vvd jdField_a_of_type_Vvd;
+  private int b = 1;
   
-  public bkok(AppInterface paramAppInterface, boolean paramBoolean1, boolean paramBoolean2)
+  public bkok(bkon parambkon, aukp paramaukp)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    this.jdField_a_of_type_Bkon = parambkon;
+    this.jdField_a_of_type_Aukp = paramaukp;
   }
   
-  public void a(@NonNull ArrayList<bkon> paramArrayList, @NonNull Context paramContext)
+  public static List<vvd> a(aukp paramaukp)
   {
-    Object localObject7 = null;
-    bkon localbkon1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke");
+    Object localObject = a(paramaukp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
+    paramaukp = (aukp)localObject;
+    if (localObject == null) {
+      paramaukp = new ArrayList();
     }
-    Object localObject1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject1 = new bkon(paramContext.getResources().getDrawable(2130845877), 1, 0);
-      ((bkon)localObject1).jdField_b_of_type_JavaLangString = ajyc.a(2131702426);
-      paramArrayList.add(localObject1);
+    localObject = new ArrayList();
+    paramaukp = paramaukp.iterator();
+    while (paramaukp.hasNext()) {
+      ((List)localObject).add(new vvd((TagItemEntry)paramaukp.next()));
     }
-    Object localObject2;
-    Object localObject3;
-    bkon localbkon2;
-    Object localObject6;
-    Object localObject5;
-    bkon localbkon3;
-    Object localObject4;
-    int i;
-    if (this.b)
+    return localObject;
+  }
+  
+  public static List<? extends auko> a(aukp paramaukp, Class<? extends auko> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramaukp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public static void a(aukp paramaukp, List<vvd> paramList)
+  {
+    try
     {
-      boolean bool = axlc.e();
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (bool))
+      Object localObject = a(paramaukp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
+      if (localObject != null)
       {
-        localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
-        if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          Iterator localIterator = ((ArrayList)localObject1).iterator();
-          localObject2 = null;
-          localObject3 = null;
-          localbkon2 = null;
-          localObject1 = null;
-          do
-          {
-            localObject7 = localbkon1;
-            localObject6 = localObject2;
-            localObject5 = localObject3;
-            localbkon3 = localbkon2;
-            localObject4 = localObject1;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject4 = (PtvTemplateManager.DoodleInfo)localIterator.next();
-          } while (("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName)) && (Build.VERSION.SDK_INT < 18));
-          i = Integer.valueOf(((PtvTemplateManager.DoodleInfo)localObject4).doodleId).intValue();
-          if ("doodle_image_family".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-          {
-            localObject4 = new bkon(paramContext.getResources().getDrawable(2130844246), 2, i);
-            ((bkon)localObject4).jdField_b_of_type_JavaLangString = ajyc.a(2131702425);
-            localObject2 = localObject3;
-            localObject3 = localObject1;
-            localObject1 = localObject4;
-          }
+          TagItemEntry localTagItemEntry = (TagItemEntry)((Iterator)localObject).next();
+          localTagItemEntry.setStatus(1001);
+          paramaukp.b(localTagItemEntry);
         }
       }
     }
-    for (;;)
+    finally
     {
-      localObject4 = localObject3;
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject4;
-      break;
-      if ("doodle_image_mouth".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localbkon1 = new bkon(paramContext.getResources().getDrawable(2130844247), 2, i);
-        localbkon1.jdField_b_of_type_JavaLangString = ajyc.a(2131702424);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if ("doodle_image_xin".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localObject4 = new bkon(paramContext.getResources().getDrawable(2130844248), 2, i);
-        ((bkon)localObject4).jdField_b_of_type_JavaLangString = ajyc.a(2131702427);
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-      }
-      else if ("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localObject4 = new bkon(paramContext.getResources().getDrawable(2130844245), 2, i);
-        ((bkon)localObject4).jdField_b_of_type_JavaLangString = ajyc.a(2131702422);
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if ("doodle_fireworks".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localbkon2 = new bkon(paramContext.getResources().getDrawable(2130844244), 2, i);
-        localbkon2.jdField_b_of_type_JavaLangString = ajyc.a(2131702423);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke doodleInfo is NUll !");
-        }
-        localObject6 = null;
-        localObject5 = null;
-        localbkon3 = null;
-        localObject4 = null;
-        i = 0;
-        while (i < bkon.jdField_b_of_type_ArrayOfInt.length)
-        {
-          paramArrayList.add(new bkon(paramContext.getResources().getDrawable(bkon.jdField_b_of_type_ArrayOfInt[i]), 0, bkon.a[i]));
-          i += 1;
-        }
-        if (localObject4 != null) {
-          paramArrayList.add(localObject4);
-        }
-        if (localbkon3 != null) {
-          paramArrayList.add(localbkon3);
-        }
-        if (localObject5 != null) {
-          paramArrayList.add(localObject5);
-        }
-        if (localObject6 != null) {
-          paramArrayList.add(localObject6);
-        }
-        if (localObject7 != null) {
-          paramArrayList.add(localObject7);
-        }
-        for (;;)
-        {
-          return;
-          i = 0;
-          while (i < bkon.a.length)
-          {
-            paramArrayList.add(new bkon(paramContext.getResources().getDrawable(bkon.jdField_b_of_type_ArrayOfInt[i]), 0, bkon.a[i]));
-            i += 1;
-          }
-        }
-      }
-      else
-      {
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
+      paramaukp.a().b();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      paramaukp.b(((vvd)paramList.next()).a());
+    }
+    paramaukp.a().c();
+    paramaukp.a().b();
+  }
+  
+  public List<vvd> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  @Nullable
+  public vvd a()
+  {
+    return this.jdField_a_of_type_Vvd;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Bjyr = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 1;
+    this.jdField_a_of_type_Vvd = null;
+  }
+  
+  public void a(@Nonnull bjyr parambjyr)
+  {
+    ved.a("EditVideoTagPresenter", "%s refresh data, behavior:%s", this, parambjyr);
+    this.jdField_a_of_type_Bjyr = parambjyr;
+    if (parambjyr.jdField_a_of_type_Boolean) {}
+    for (parambjyr = new tnd(parambjyr.jdField_a_of_type_Int, parambjyr.jdField_a_of_type_Long, "", 20);; parambjyr = new tnd("", 20))
+    {
+      syo.a().a(parambjyr, new bkol(this));
+      return;
+    }
+  }
+  
+  public void a(List<vvd> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(vvd paramvvd)
+  {
+    this.jdField_a_of_type_Vvd = paramvvd;
+  }
+  
+  public boolean a()
+  {
+    return this.b == 1;
+  }
+  
+  public boolean a(bjyr parambjyr)
+  {
+    if (this.jdField_a_of_type_Bjyr != null) {
+      if (this.jdField_a_of_type_Bjyr.equals(parambjyr)) {}
+    }
+    while (parambjyr != null)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public void b(@Nonnull bjyr parambjyr)
+  {
+    ved.a("EditVideoTagPresenter", "%s loadMore data, behavior:%s", this, parambjyr);
+    this.jdField_a_of_type_Bjyr = parambjyr;
+    if (parambjyr.jdField_a_of_type_Boolean) {}
+    for (parambjyr = new tnd(parambjyr.jdField_a_of_type_Int, parambjyr.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; parambjyr = new tnd(this.jdField_a_of_type_JavaLangString, 20))
+    {
+      syo.a().a(parambjyr, new bkom(this));
+      return;
     }
   }
 }

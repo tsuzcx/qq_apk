@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class StoryEntry
-  extends aukm
+  extends auko
 {
   public String coverUrl;
   public long dbTime = System.currentTimeMillis();
@@ -12,7 +12,7 @@ public class StoryEntry
   public String extra2;
   public String extra3;
   public int hasUnWatchVideo;
-  @auma
+  @aumc
   public String key;
   public String mDoodleText;
   public int seq;

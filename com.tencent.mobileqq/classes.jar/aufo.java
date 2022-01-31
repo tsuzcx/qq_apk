@@ -1,17 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aufo
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  aufo(aufh paramaufh) {}
+  aufo(aufj paramaufj, aufy paramaufy) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (aufh.a(this.a) != null) {
-      aufh.a(this.a).setVisibility(0);
-    }
+    aufj.a(this.jdField_a_of_type_Aufj).removeMessages(101);
+    aufj.a(this.jdField_a_of_type_Aufj).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Aufy.a.b();
   }
 }
 

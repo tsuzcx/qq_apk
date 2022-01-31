@@ -1,18 +1,60 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.mobileqq.shortvideo.resource.SensorResource;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
-public final class bfml
-  implements Parcelable.Creator<BinderWarpper>
+public class bfml
+  implements Resources
 {
-  public BinderWarpper a(Parcel paramParcel)
+  public SpecialAVFilterResource getAVFilterResource()
   {
-    return new BinderWarpper(paramParcel.readStrongBinder());
+    return new bfmn();
   }
   
-  public BinderWarpper[] a(int paramInt)
+  public ArtFilterResource getArtFilterResource()
   {
-    return new BinderWarpper[paramInt];
+    return new bfmc();
+  }
+  
+  public AVFilterResource getAvFilterResource()
+  {
+    return new bfmb();
+  }
+  
+  public BeautyResource getBeautyResource()
+  {
+    return new bfmd();
+  }
+  
+  public GestureResource getGestureResource()
+  {
+    return new bfmg();
+  }
+  
+  public LowLightResource getLowLightResource()
+  {
+    return new bfmi();
+  }
+  
+  public PtuFilterResource getPtuFilterResource()
+  {
+    return new bfmj();
+  }
+  
+  public SensorResource getSensorResource()
+  {
+    return new bfmm();
+  }
+  
+  public GestureGameResource geteGestureGameResource()
+  {
+    return new bfmf();
   }
 }
 

@@ -1,53 +1,65 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.WeakReference;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
-public class beit
+class beit
+  extends FilterOutputStream
 {
-  private static volatile beit jdField_a_of_type_Beit;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<ViewGroup> b;
-  
-  public static beit a()
+  private beit(beis parambeis, OutputStream paramOutputStream)
   {
-    if (jdField_a_of_type_Beit == null) {}
+    super(paramOutputStream);
+  }
+  
+  public void close()
+  {
     try
     {
-      if (jdField_a_of_type_Beit == null) {
-        jdField_a_of_type_Beit = new beit();
-      }
-      return jdField_a_of_type_Beit;
-    }
-    finally {}
-  }
-  
-  public void a(Activity paramActivity, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramViewGroup);
-  }
-  
-  public void a(View paramView)
-  {
-    ViewGroup localViewGroup = (ViewGroup)this.b.get();
-    if (localViewGroup == null)
-    {
-      besl.d("GameVideoPlayerManager", "removePlayerView error: parent == null");
+      this.out.close();
       return;
     }
-    localViewGroup.removeView(paramView);
+    catch (IOException localIOException)
+    {
+      beis.a(this.a, true);
+    }
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public void flush()
   {
-    if (this.b != null) {}
-    for (ViewGroup localViewGroup = (ViewGroup)this.b.get(); localViewGroup == null; localViewGroup = null)
+    try
     {
-      besl.d("GameVideoPlayerManager", "addPlayerView error: parent == null");
+      this.out.flush();
       return;
     }
-    localViewGroup.addView(paramViewGroup);
+    catch (IOException localIOException)
+    {
+      beis.a(this.a, true);
+    }
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      this.out.write(paramInt);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      beis.a(this.a, true);
+    }
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      beis.a(this.a, true);
+    }
   }
 }
 

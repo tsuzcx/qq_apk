@@ -1,118 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime.InterceptKickListener;
+import mqq.app.AppRuntime.KickParams;
 
-public class asli
-  implements askz
+class asli
+  implements AppRuntime.InterceptKickListener
 {
-  public static String a;
+  asli(aslg paramaslg) {}
   
-  static
+  public void onInterceptKicked(AppRuntime.KickParams paramKickParams)
   {
-    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
-  }
-  
-  public asli(QQAppInterface paramQQAppInterface) {}
-  
-  public static String a(String paramString, MessageRecord paramMessageRecord)
-  {
-    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
-    paramMessageRecord = new JSONObject();
-    try
-    {
-      paramMessageRecord.put("selfuin", paramString);
-      paramMessageRecord.put("uuid", str);
-      paramMessageRecord.put("msgType", 4);
-      paramMessageRecord.put("msgSubType", 10);
-      return paramMessageRecord.toString();
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+    if (aslg.a(this.a).get()) {
+      aslg.a(this.a, paramKickParams);
     }
   }
-  
-  public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll((Collection)paramHashMap.get((String)localIterator.next()));
-    }
-    return localArrayList;
-  }
-  
-  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = asog.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public aslm a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    aslm localaslm = new aslm();
-    localaslm.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
-    localaslm.jdField_a_of_type_Boolean = true;
-    return localaslm;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = asog.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof ChatMessage)) {
-      return asuf.a((ChatMessage)paramMessageRecord);
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return paramMsgBackupResEntity.msgType == 4;
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 

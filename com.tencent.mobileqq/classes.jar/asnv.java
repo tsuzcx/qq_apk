@@ -1,100 +1,85 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import org.json.JSONObject;
 
-public class asnv
-  extends asnn
+public abstract class asnv<T extends MessageRecord>
+  extends asno
 {
-  private static final String b = azaa.a(asoa.jdField_a_of_type_JavaLangString + "shortvideo" + File.separator);
-  private String c = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("thumbMd5");
+  protected T a;
+  protected MessageRecord b;
   
-  public asnv(MsgBackupResEntity paramMsgBackupResEntity)
+  public asnv(T paramT)
   {
-    super(paramMsgBackupResEntity);
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.d))) {
-      a("md5:" + this.c + " mThumbMD5:" + this.d);
-    }
+    this.a = paramT;
   }
   
-  public static String a(String paramString)
-  {
-    return ShortVideoUtils.a(paramString, "jpg");
-  }
+  protected abstract int a();
   
-  public static String b(String paramString)
+  protected MsgBackupResEntity a()
   {
-    paramString = ShortVideoUtils.a(paramString);
-    return paramString + "MsgBackUp";
-  }
-  
-  private String c(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(b);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  private String d(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(b);
-    localStringBuilder.append("thumbs");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public aslm a()
-  {
-    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    int i = localMsgBackupResEntity.msgSubType;
-    aslm localaslm = new aslm();
-    String str1 = a();
-    String str2 = b();
-    boolean bool1 = a(str1);
-    boolean bool2 = a(str2);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + localMsgBackupResEntity.toLogString() + " tempPath:" + str1 + " exist:" + bool1 + " realPath:" + str2 + " exist:" + bool2);
-    }
-    localaslm.jdField_a_of_type_JavaLangString = str1;
-    if ((!bool1) && (!bool2)) {}
-    for (bool1 = true;; bool1 = false)
+    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
+    localMsgBackupResEntity.msgType = a();
+    if (this.b != null)
     {
-      localaslm.jdField_a_of_type_Boolean = bool1;
-      return localaslm;
+      asoi.a(this.b, localMsgBackupResEntity);
+      return localMsgBackupResEntity;
+    }
+    asoi.a(this.a, localMsgBackupResEntity);
+    return localMsgBackupResEntity;
+  }
+  
+  protected String a(Map paramMap)
+  {
+    try
+    {
+      paramMap = new JSONObject(paramMap).toString();
+      return paramMap;
+    }
+    catch (Exception paramMap) {}
+    return null;
+  }
+  
+  protected HashMap<String, String> a(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(a()));
+    localHashMap.put("msgSubType", String.valueOf(paramInt));
+    return localHashMap;
+  }
+  
+  public abstract List<MsgBackupResEntity> a();
+  
+  public abstract void a();
+  
+  protected void a(MessageRecord paramMessageRecord)
+  {
+    this.b = paramMessageRecord;
+  }
+  
+  protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    try
+    {
+      new File(paramString);
+      paramMsgBackupResEntity.fileSize = new File(paramString).length();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public String a()
+  public boolean a()
   {
-    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
-    {
-    default: 
-      return null;
-    case 4: 
-    case 5: 
-    case 6: 
-      return c(this.c);
-    }
-    return d(this.d);
+    return true;
   }
   
-  public String b()
-  {
-    switch (this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity.msgSubType)
-    {
-    default: 
-      return null;
-    case 4: 
-    case 5: 
-    case 6: 
-      return b(this.c);
-    }
-    return a(this.d);
-  }
+  public void b() {}
 }
 
 

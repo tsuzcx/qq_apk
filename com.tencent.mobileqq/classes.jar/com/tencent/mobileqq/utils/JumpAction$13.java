@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import aqgh;
-import bbca;
-import bbdj;
-import bbds;
+import aqgj;
+import bbco;
+import bbdx;
+import bbeg;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -13,20 +13,20 @@ import java.util.HashMap;
 public class JumpAction$13
   implements Runnable
 {
-  public JumpAction$13(bbds parambbds, String paramString, long paramLong, HashMap paramHashMap) {}
+  public JumpAction$13(bbeg parambbeg, String paramString, long paramLong, HashMap paramHashMap) {}
   
   public void run()
   {
-    String str1 = bbdj.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
+    String str1 = bbdx.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
     if (!TextUtils.isEmpty(str1)) {}
     try
     {
-      String str2 = new String(bbca.encode(str1.getBytes("UTF-8"), 0));
+      String str2 = new String(bbco.encode(str1.getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("file_data", str2);
       long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      aqgh.a("KEY_STAGE_1_SAVE_IMAGE", l, this.jdField_a_of_type_JavaUtilHashMap, true);
+      aqgj.a("KEY_STAGE_1_SAVE_IMAGE", l, this.jdField_a_of_type_JavaUtilHashMap, true);
       QLog.i("JumpAction", 1, "gotoShareMsgCheck save file to:" + str1 + ",cost=" + l);
-      bbds.c(this.this$0);
+      bbeg.c(this.this$0);
       if ((!this.this$0.b) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {
         ((JumpActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
       }

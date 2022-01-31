@@ -1,33 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class atvh
-  implements bfob
+  extends atva
 {
-  public atvh(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public ImageView e;
+  public ImageView f;
+  public TextView g;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public atvh(atvg paramatvg)
   {
-    int i = 0;
-    if (paramInt == 0)
-    {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
-      {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
-        }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
-      }
-    }
+    super(paramatvg);
   }
 }
 

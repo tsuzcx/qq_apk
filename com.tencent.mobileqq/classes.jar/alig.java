@@ -1,33 +1,33 @@
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 class alig
-  implements aljb
+  implements alja
 {
-  alig(alie paramalie, alii paramalii, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  alig(alid paramalid, alih paramalih, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_Alii != null) {
-      this.jdField_a_of_type_Alii.e();
+    if (this.jdField_a_of_type_Alih != null) {
+      this.jdField_a_of_type_Alih.f();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Alii != null) {
-      this.jdField_a_of_type_Alii.b(paramInt);
+    if (this.jdField_a_of_type_Alih != null) {
+      this.jdField_a_of_type_Alih.c(paramInt);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Alii != null) {}
+    if (this.jdField_a_of_type_Alih != null) {}
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Alii != null) {
-      this.jdField_a_of_type_Alii.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    if (this.jdField_a_of_type_Alih != null) {
+      this.jdField_a_of_type_Alih.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }

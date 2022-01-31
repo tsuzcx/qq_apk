@@ -1,69 +1,58 @@
 import android.text.TextUtils;
-import java.util.HashMap;
-import org.json.JSONException;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class baat
+class baat
+  implements myy
 {
-  static HashMap<String, Integer> a = new HashMap();
+  baat(baas parambaas) {}
   
-  static
+  public void loaded(String paramString, int paramInt)
   {
-    a.put("str", Integer.valueOf(0));
-    a.put("img", Integer.valueOf(1));
-    a.put("video", Integer.valueOf(2));
-    a.put("voice", Integer.valueOf(3));
-    a.put("recite", Integer.valueOf(4));
-    a.put("calculation", Integer.valueOf(7));
-  }
-  
-  public static baas a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
     }
-    try
+    if (paramInt == 0) {}
+    while (baas.a(baas.a(this.a), baas.b(this.a)))
     {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static baas a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      Object localObject = paramJSONObject.getString("type");
-      localObject = (Integer)a.get(localObject);
-      if (localObject == null) {
-        return null;
-      }
-      switch (((Integer)localObject).intValue())
+      do
       {
-      case 0: 
-        paramJSONObject = new babb(paramJSONObject);
-        return paramJSONObject;
-      }
+        String str;
+        try
+        {
+          paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+          str = paramString.optString("url");
+          paramInt = paramString.optInt("filesize");
+          if ((str != null) && (str.endsWith("patch")))
+          {
+            bbdx.a(mzh.a(baas.a(this.a)) + baas.a(this.a));
+            baas.a(this.a);
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          do
+          {
+            paramString.printStackTrace();
+          } while (baas.a(baas.a(this.a), baas.b(this.a)));
+          baas.b(this.a);
+          return;
+        }
+        if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+        {
+          baas.a(this.a, paramString);
+          return;
+        }
+      } while (baas.a(baas.a(this.a), baas.b(this.a)));
+      baas.b(this.a);
+      return;
     }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      break label142;
-      return new baax(paramJSONObject);
-      return new babd(paramJSONObject);
-      return new baar(paramJSONObject);
-      return new baau(paramJSONObject);
-      paramJSONObject = new baap(paramJSONObject);
-      return paramJSONObject;
-    }
-    label142:
-    return null;
+    baas.b(this.a);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

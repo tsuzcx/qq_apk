@@ -1,16 +1,40 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class azic
-  implements azif
+  extends akil
 {
-  public azic(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  public azic(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
   
-  public void a(Bitmap paramBitmap)
+  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bcwh);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    this.a.app.removeObserver(this.a.a);
+    if (paramInt1 == 0)
+    {
+      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
+      localObject = null;
+      if (localTroopManager != null) {
+        localObject = localTroopManager.b(Long.toString(paramLong));
+      }
+      if (localObject != null)
+      {
+        ((TroopInfo)localObject).troopLat = paramInt2;
+        ((TroopInfo)localObject).troopLon = paramInt3;
+        localTroopManager.b((TroopInfo)localObject);
+      }
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troopUin", paramLong);
+    ((Intent)localObject).putExtra("errCode", paramInt1);
+    ((Intent)localObject).putExtra("isClear", paramBoolean);
+    ((Intent)localObject).putExtra("location", paramString);
+    ((Intent)localObject).putExtra("lat", paramInt2);
+    ((Intent)localObject).putExtra("lon", paramInt3);
+    this.a.setResult(-1, (Intent)localObject);
+    this.a.finish();
   }
 }
 

@@ -1,37 +1,34 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Map;
+import android.graphics.Bitmap;
 
-public class tpo
-  extends trj
+class tpo
+  implements ulb
 {
-  StoryVideoItem a;
-  public uld a;
+  tpo(tpn paramtpn, String paramString) {}
   
-  public tpo(StoryVideoItem paramStoryVideoItem)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    if (tpn.a(this.jdField_a_of_type_Tpn))
     {
-      veg.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
-      b(false);
+      paramString = bbef.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        tpn.a(this.jdField_a_of_type_Tpn, false);
+        return;
+      }
+      bool = vxv.a(paramString, tpn.a(this.jdField_a_of_type_Tpn));
+      paramString.recycle();
+      tpn.b(this.jdField_a_of_type_Tpn, bool);
       return;
     }
-    tem localtem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
-    if (localtem != null)
-    {
-      this.jdField_a_of_type_Uld = new ula();
-      this.jdField_a_of_type_Uld.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new tpp(this, localtem));
-      return;
-    }
-    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-    b(true);
+    boolean bool = vxv.a(paramBitmap, tpn.a(this.jdField_a_of_type_Tpn));
+    tpn.c(this.jdField_a_of_type_Tpn, bool);
   }
   
-  protected void a(Map<String, Object> paramMap) {}
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    ved.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    tpn.d(this.jdField_a_of_type_Tpn, false);
+  }
 }
 
 

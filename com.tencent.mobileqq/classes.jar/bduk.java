@@ -1,20 +1,16 @@
-import android.text.TextUtils;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qidian.QidianProfileCardActivity;
 
-public class bduk
-  implements bdtn
+class bduk
+  implements View.OnClickListener
 {
-  public bduk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bduk(bduj parambduj) {}
   
-  public void a(bduz parambduz)
+  public void onClick(View paramView)
   {
-    if (parambduz != null)
-    {
-      parambduz = parambduz.b;
-      if (!TextUtils.isEmpty(parambduz)) {
-        QidianProfileCardActivity.a(this.a, parambduz);
-      }
-    }
+    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

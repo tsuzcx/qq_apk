@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.3;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class ahrz
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public ahrz(LoginView.3 param3) {}
+  public ahrz(LoginView paramLoginView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
+    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

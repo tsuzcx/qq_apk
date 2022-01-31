@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class PublicAccountMenuEntity
-  extends aukm
+  extends auko
 {
   public byte[] data;
   public long savedDateTime;
   public int seqno;
-  @auma
+  @aumc
   public String uin;
   
   public PublicAccountMenuEntity() {}

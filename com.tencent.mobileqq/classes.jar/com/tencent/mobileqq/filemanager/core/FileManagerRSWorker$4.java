@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aozi;
-import apue;
+import aozm;
+import apug;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -9,7 +9,7 @@ import java.io.OutputStream;
 public class FileManagerRSWorker$4
   implements Runnable
 {
-  public FileManagerRSWorker$4(aozi paramaozi) {}
+  public FileManagerRSWorker$4(aozm paramaozm) {}
   
   public void run()
   {
@@ -33,9 +33,9 @@ public class FileManagerRSWorker$4
       if (this.this$0.jdField_a_of_type_JavaIoOutputStream != null) {
         this.this$0.jdField_a_of_type_JavaIoOutputStream.flush();
       }
-      this.this$0.jdField_a_of_type_Long = apue.a(this.this$0.d);
+      this.this$0.jdField_a_of_type_Long = apug.a(this.this$0.d);
       QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.this$0.c + "]retry request Httpmsg,rd[" + String.valueOf(this.this$0.jdField_a_of_type_Long) + "]");
-      aozi.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.h);
+      aozm.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.h);
       return;
     }
     catch (IOException localIOException)

@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.view.View;
+import com.tencent.image.URLImageView;
 
-public class agph
+class agph
+  implements bfou
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  agph(agpg paramagpg) {}
   
-  public agph(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
+  public void b(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof agpi))) {
+      ((agpi)paramView).a.setImageDrawable(null);
+    }
   }
 }
 

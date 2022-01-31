@@ -1,61 +1,31 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vashealth.TracePathData;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class bbtz
-  implements SensorEventListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public bbtz(PathTraceManager paramPathTraceManager) {}
+  public bbtz(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
-    if (PathTraceManager.a(this.a) == 1)
-    {
-      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
-      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
-        break label331;
-      }
-      i = PathTraceManager.a(this.a).totalSteps;
-      if (!this.a.e) {
-        break label246;
-      }
-      paramSensorEvent = PathTraceManager.a(this.a);
-      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
-      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
-      PathTraceManager.a(this.a, null);
-      if (PathTraceManager.a(this.a).type == 1)
-      {
-        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
-          break label281;
-        }
-        this.a.a(PathTraceManager.a(this.a), false, true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
     }
-    label246:
-    while (PathTraceManager.c(this.a) != 0)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      int i;
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramSensorEvent = PathTraceManager.a(this.a);
-          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
-        }
-      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
-      this.a.a(PathTraceManager.a(this.a), false, false);
+      paramTVK_IMediaPlayer.pause();
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
       return;
+      paramTVK_IMediaPlayer.start();
     }
-    label281:
-    label331:
-    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
   }
 }
 

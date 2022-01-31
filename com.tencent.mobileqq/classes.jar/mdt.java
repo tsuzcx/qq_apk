@@ -1,21 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-final class mdt
+public class mdt
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e = true;
+  public mdt(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  private mdt(mdq parammdq) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

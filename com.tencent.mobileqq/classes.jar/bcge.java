@@ -1,16 +1,62 @@
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
 public class bcge
+  implements Handler.Callback
 {
-  public static int a;
-  public static ArrayList<String> a;
-  public static boolean a;
-  public static boolean b;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final bcgf jdField_a_of_type_Bcgf;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  static
+  public bcge(bcgf parambcgf)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Bcgf = parambcgf;
+    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
+    {
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Bcgf.a(paramBundle))
+        {
+        }
+      }
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

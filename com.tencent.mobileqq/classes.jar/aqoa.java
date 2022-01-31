@@ -1,21 +1,6 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity;
-
-public class aqoa
-  extends BroadcastReceiver
+class aqoa
 {
-  public aqoa(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      aqmb.a().a().a("AIOGalleryActivity", 4, "receive videochat in aiogallery");
-      this.a.finish();
-    }
-  }
+  private static final aqny a = new aqny(null);
 }
 
 

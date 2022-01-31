@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.model;
 
-import alie;
-import alkz;
+import alid;
+import alky;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$12
   implements Runnable
 {
-  public QQARSession$12(alkz paramalkz) {}
+  public QQARSession$12(alky paramalky) {}
   
   public void run()
   {
     QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult. download resource timeout.");
-    alkz.a(this.this$0).b();
+    alky.a(this.this$0).b();
     this.this$0.b(false, null);
   }
 }

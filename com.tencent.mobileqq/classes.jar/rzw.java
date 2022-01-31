@@ -1,31 +1,59 @@
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.core.ViolaEnvironment;
+import java.io.File;
 
 public class rzw
-  implements rwg
+  implements rwe
 {
-  public rzw(ViolaBaseView.2 param2, long paramLong) {}
+  public rzw(ViolaBaseView paramViolaBaseView, String paramString1, String paramString2, rzz paramrzz) {}
   
   public void a()
   {
-    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0, 1);
-    QLog.e(ViolaBaseView.a(), 2, "ThreadManager 执行 onViolaSDKError");
+    String str1 = mzh.a(this.jdField_a_of_type_JavaLangString);
+    str1 = str1 + this.jdField_a_of_type_JavaLangString + File.separator;
+    String str2 = mzb.d(this.b);
+    if (new File(str1 + str2).exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js exists [url:" + this.b + "]");
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        str1 = rvx.a(this.b);
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        if (this.jdField_a_of_type_Rzz != null) {
+          this.jdField_a_of_type_Rzz.a(str1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess and jsSource succ [url:" + this.b + "]");
+        }
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js no exists [url:" + this.b + "]");
+        }
+      }
+      if (this.jdField_a_of_type_Rzz != null) {
+        this.jdField_a_of_type_Rzz.a();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess but js null [url:" + this.b + "]");
   }
   
-  public void a(long paramLong)
+  public void a(int paramInt) {}
+  
+  public void b()
   {
+    if (this.jdField_a_of_type_Rzz != null) {
+      this.jdField_a_of_type_Rzz.a();
+    }
     if (QLog.isColorLevel()) {
-      QLog.d(ViolaBaseView.a(), 2, "ThreadManager 执行 onViolaSDKSucc");
+      QLog.e(ViolaBaseView.a(), 2, "downloadOfflineFailed [url:" + this.b + "]");
     }
-    if (paramLong != 0L)
-    {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0).addReportData(ViolaEnvironment.TIME_SDK_MAIN, Long.toString(paramLong));
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0).addReportData(ViolaEnvironment.TIME_SDK_INIT, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0, true);
-    ViolaBaseView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0);
   }
 }
 

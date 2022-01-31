@@ -1,16 +1,8 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.Nullable;
 
-public abstract interface bjos
+public abstract interface bjos<T>
 {
-  public abstract Activity a();
-  
-  public abstract SessionInfo a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract boolean a();
+  public abstract void a(@Nullable T paramT);
 }
 
 

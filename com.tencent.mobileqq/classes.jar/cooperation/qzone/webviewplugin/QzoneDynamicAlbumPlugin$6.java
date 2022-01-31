@@ -2,9 +2,9 @@ package cooperation.qzone.webviewplugin;
 
 import android.os.Handler;
 import android.os.Message;
-import bhkl;
-import bhkn;
-import bhrl;
+import bhlc;
+import bhle;
+import bhsc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class QzoneDynamicAlbumPlugin$6
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$6(bhrl parambhrl, ArrayList paramArrayList, int paramInt) {}
+  public QzoneDynamicAlbumPlugin$6(bhsc parambhsc, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class QzoneDynamicAlbumPlugin$6
       {
         i += 1;
         break;
-        String str1 = bhrl.jdField_a_of_type_JavaLangString + (new Date().getTime() + i);
+        String str1 = bhsc.jdField_a_of_type_JavaLangString + (new Date().getTime() + i);
         String str2 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        boolean bool = bhrl.a(BaseApplicationImpl.getContext(), str2, str1, bhrl.b()[0], bhrl.b()[1]);
-        if ((bool) && (i == 0) && (!bhrl.b(this.this$0)))
+        boolean bool = bhsc.a(BaseApplicationImpl.getContext(), str2, str1, bhsc.b()[0], bhsc.b()[1]);
+        if ((bool) && (i == 0) && (!bhsc.b(this.this$0)))
         {
           QLog.d("QzoneDynamicAlbumPlugin", 4, "pickDynamicAlbumImage uploadFirstDynamicPhoto:" + str1);
-          bhkl.a().a().a(str1, this.jdField_a_of_type_JavaUtilArrayList.size());
+          bhlc.a().a().a(str1, this.jdField_a_of_type_JavaUtilArrayList.size());
         }
         for (;;)
         {

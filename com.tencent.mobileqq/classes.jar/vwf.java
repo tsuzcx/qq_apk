@@ -1,27 +1,41 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import java.lang.reflect.Field;
 
 public class vwf
-  implements bfrx
 {
-  public vwf(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
-  
-  public void onScrollStateChanged(int paramInt)
+  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
   {
-    veg.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
-    switch (paramInt)
+    try
     {
-    default: 
-    case 4098: 
-    case 4099: 
-      do
-      {
-        return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).c();
+      paramLayoutInflater.setFactory(paramFactory);
       return;
     }
-    this.a.c();
+    catch (IllegalStateException localIllegalStateException)
+    {
+      vwh.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
+      try
+      {
+        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
+        localField1.setAccessible(true);
+        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
+        localField2.setAccessible(true);
+        localField1.set(paramLayoutInflater, paramFactory);
+        localField2.set(paramLayoutInflater, paramFactory);
+        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
+        {
+          vwh.b("LayoutModifier", "hookLayoutInflaterFactory success");
+          return;
+        }
+      }
+      catch (Exception paramLayoutInflater)
+      {
+        vwh.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
+        return;
+      }
+      vwh.b("LayoutModifier", "hookLayoutInflaterFactory failed");
+    }
   }
 }
 

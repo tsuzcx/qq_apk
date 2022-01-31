@@ -1,17 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.ims.signature.SignatureReport;
 
-class akgw
+public class akgw
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  String jdField_a_of_type_JavaLangString;
+  public int a;
+  public long a;
+  public signature.SignatureReport a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  akgw(akgs paramakgs, String paramString, Context paramContext, Intent paramIntent)
+  akgw(akgr paramakgr, String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
   }
 }
 

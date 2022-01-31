@@ -3,15 +3,15 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
-import bkjo;
+import bkkf;
 import com.tencent.qphone.base.util.QLog;
 
 class RetrieverDecodeRunnable
   extends DecodeRunnable
 {
-  public RetrieverDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bkjo parambkjo)
+  public RetrieverDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bkkf parambkkf)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambkjo);
+    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambkkf);
   }
   
   private void c()

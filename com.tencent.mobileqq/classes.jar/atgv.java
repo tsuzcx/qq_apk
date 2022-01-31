@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-public abstract interface atgv
+class atgv
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, atgx paramatgx);
+  atgv(atgu paramatgu) {}
   
-  public abstract void a(Comments.Comment paramComment, atgw paramatgw);
-  
-  public abstract void a(Comments.Comment paramComment, atgy paramatgy);
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_Atkn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.jdField_a_of_type_Atkn.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData);
+  }
 }
 
 

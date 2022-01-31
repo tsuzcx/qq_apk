@@ -1,151 +1,187 @@
-import android.content.Context;
-import android.os.Handler;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.1;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.2;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.3;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.1;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.2;
+import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.3;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
 public class ayhh
-  implements Manager
 {
-  private int jdField_a_of_type_Int = -1;
-  public long a;
-  private aygz jdField_a_of_type_Aygz;
-  private ayhf jdField_a_of_type_Ayhf;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private anbr jdField_a_of_type_Anbr;
+  public QQAppInterface a;
   
   public ayhh(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ayhf = new ayhf(paramQQAppInterface);
+    a();
   }
   
-  private void a(DataLineMsgRecord paramDataLineMsgRecord, String paramString1, String paramString2, String paramString3, anbo paramanbo)
+  private anbr a()
   {
-    if (!this.jdField_a_of_type_Ayhf.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DataLineMessageSpreadManager", 1, "last insert time less");
-      }
+    if (this.jdField_a_of_type_Anbr == null) {
+      this.jdField_a_of_type_Anbr = anbu.a();
+    }
+    return this.jdField_a_of_type_Anbr;
+  }
+  
+  private void a()
+  {
+    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.2(this));
+  }
+  
+  private void b(anbr paramanbr)
+  {
+    if (paramanbr == null) {
       return;
     }
-    if (QLog.isDebugVersion()) {
-      QLog.i("DataLineMessageSpreadManager", 1, "insertGaryTips:" + paramString1 + " link:" + paramString2);
-    }
-    this.jdField_a_of_type_Ayhf.a(paramDataLineMsgRecord);
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new DataLineMessageSpreadManager.2(this, paramDataLineMsgRecord, paramString1, paramanbo, paramString2, paramString3), 1000L);
-  }
-  
-  private boolean a(DataLineMsgRecord paramDataLineMsgRecord)
-  {
-    int i = this.jdField_a_of_type_Ayhf.a();
-    int j = anbp.a().a();
-    if (j == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DataLineMessageSpreadManager", 1, "config is max: 0, return");
-      }
-    }
-    do
+    try
     {
-      return false;
-      if (i <= j) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DataLineMessageSpreadManager", 1, "file count over[" + i + "], return");
-    return false;
-    return true;
+      paramanbr.a(((ayfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(122)).a());
+      return;
+    }
+    catch (Exception paramanbr)
+    {
+      QLog.e("ConfigSettingForDataLine", 2, " getTemplateListFromCgi failed :" + paramanbr.toString());
+      paramanbr.printStackTrace();
+    }
   }
   
-  public void a(anbm paramanbm)
+  public int a()
   {
-    this.jdField_a_of_type_Ayhf.a(paramanbm);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a(ayhb paramayhb)
+  {
+    if ((paramayhb instanceof ayhe))
+    {
+      Map localMap = a().a();
+      paramayhb = apvd.a(paramayhb.a());
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        anbs localanbs = (anbs)localMap.get((String)localIterator.next());
+        String[] arrayOfString = localanbs.jdField_b_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(paramayhb)) {
+            return localanbs.jdField_a_of_type_JavaLangString;
+          }
+          i += 1;
+        }
+      }
+    }
+    return "";
+  }
+  
+  public void a(anbr paramanbr)
+  {
+    if (paramanbr == null) {
+      return;
+    }
+    this.jdField_a_of_type_Anbr = paramanbr;
+    TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+    if (TextUtils.isEmpty(localTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "docs.qq.com")))
+    {
+      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      paramanbr = new ayhi(this, paramanbr);
+      localTicketManager.GetPskey(str, 16L, new String[] { "docs.qq.com" }, paramanbr);
+      return;
+    }
+    ThreadManager.excute(new ConfigSettingForDataLine.1(this, paramanbr), 128, null, false);
   }
   
   public void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if (QLog.isDebugVersion())
-    {
-      QLog.i("DataLineMessageSpreadManager", 4, "ready to post to SubThread Process， msgUid[" + paramDataLineMsgRecord.msgUid + "], hashCode:" + paramDataLineMsgRecord.hashCode());
-      if (paramDataLineMsgRecord.msgUid == 0L) {
-        apue.a();
-      }
-    }
-    ThreadManager.executeOnSubThread(new DataLineMessageSpreadManager.1(this, paramDataLineMsgRecord));
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Int += 1;
+    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.3(this));
   }
   
-  public void a(DataLineMsgRecord paramDataLineMsgRecord, Context paramContext)
+  public boolean a()
   {
-    paramDataLineMsgRecord = paramDataLineMsgRecord.getExtInfoFromExtStr("tim_aio_file_msg_uiniseq");
-    try
+    boolean bool = false;
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).getLong("file_str_lstat_show_time_local", 0L);
+    if (l - this.jdField_a_of_type_Long > a().b() * 1000) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public String[] a(ayhb paramayhb)
+  {
+    int i = 0;
+    Map localMap = a().a();
+    Object localObject = a().a();
+    if ((paramayhb instanceof ayhe))
     {
-      l = Long.parseLong(paramDataLineMsgRecord);
-      i = DataLineMsgRecord.getDevTypeBySeId(l);
-      paramDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(l);
-      if (paramDataLineMsgRecord == null)
+      paramayhb = apvd.a(paramayhb.a());
+      localObject = localMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("DataLineMessageSpreadManager", 1, "garyTips not find fileMsg");
+        anbs localanbs = (anbs)localMap.get((String)((Iterator)localObject).next());
+        String[] arrayOfString = localanbs.jdField_b_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(paramayhb)) {
+            return localanbs.jdField_a_of_type_ArrayOfJavaLangString;
+          }
+          i += 1;
         }
-        return;
       }
     }
-    catch (Exception paramDataLineMsgRecord)
+    paramayhb = new String[((List)localObject).size()];
+    while (i < ((List)localObject).size())
     {
-      long l;
-      int i;
-      for (;;)
-      {
-        QLog.e("DataLineMessageSpreadManager", 1, paramDataLineMsgRecord.toString());
-        l = 0L;
-      }
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80098F8", "0X80098F8", 0, 0, "", "", "", "");
-      paramDataLineMsgRecord = paramDataLineMsgRecord.trans2Entity();
-      if (paramDataLineMsgRecord == null)
-      {
-        QLog.e("DataLineMessageSpreadManager", 1, "query Entity is nyll!!!, uniseq[" + l + "]");
-        return;
-      }
-      ayec.a(paramDataLineMsgRecord, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, i);
+      paramayhb[i] = ((anbt)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
+      i += 1;
     }
+    return paramayhb;
+    return new String[0];
   }
   
-  public void a(MessageRecord paramMessageRecord, int paramInt)
+  public String b(ayhb paramayhb)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramMessageRecord == null)
+    if ((paramayhb instanceof ayhe))
     {
-      QLog.e("DataLineMessageSpreadManager", 1, apue.a());
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DataLineMessageSpreadManager", 1, "send file:" + paramMessageRecord.msgUid);
-    }
-    ThreadManager.getUIHandler().postDelayed(new DataLineMessageSpreadManager.3(this), 1000L);
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.jdField_a_of_type_Long + "],lstCache size[" + this.jdField_a_of_type_JavaUtilList.size() + "]");
+      Map localMap = a().a();
+      paramayhb = apvd.a(paramayhb.a());
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        anbs localanbs = (anbs)localMap.get((String)localIterator.next());
+        String[] arrayOfString = localanbs.jdField_b_of_type_ArrayOfJavaLangString;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (arrayOfString[i].equalsIgnoreCase(paramayhb)) {
+            return localanbs.jdField_b_of_type_JavaLangString;
+          }
+          i += 1;
+        }
       }
-      return;
     }
-    finally {}
+    return "";
   }
-  
-  public void onDestroy() {}
 }
 
 

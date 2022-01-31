@@ -2,8 +2,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import beka;
-import besl;
+import bekr;
+import betc;
 import org.json.JSONObject;
 
 class UIJsPlugin$4$2
@@ -25,7 +25,7 @@ class UIJsPlugin$4$2
     }
     catch (Exception paramDialogInterface)
     {
-      besl.d("UIJsPlugin", "show modalView error." + paramDialogInterface);
+      betc.d("UIJsPlugin", "show modalView error." + paramDialogInterface);
       this.this$1.val$req.b();
     }
   }

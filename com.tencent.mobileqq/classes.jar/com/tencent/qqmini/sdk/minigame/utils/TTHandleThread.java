@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.minigame.utils;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import beiw;
+import bejn;
 
 public class TTHandleThread
   extends HandlerThread
@@ -34,7 +34,7 @@ public class TTHandleThread
   
   public final void a(Runnable paramRunnable)
   {
-    beiw.b().post(paramRunnable);
+    bejn.b().post(paramRunnable);
   }
   
   public final void a(Runnable paramRunnable, long paramLong)

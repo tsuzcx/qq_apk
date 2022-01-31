@@ -1,29 +1,47 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bken
-  implements bkeq
+  implements bkbp
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+  ArrayList<bkbm> a = null;
+  
+  public bken(bkbm... paramVarArgs)
   {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
     }
-    catch (IllegalArgumentException paramEGL10)
+    this.a = new ArrayList(paramVarArgs.length);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
+      bkbm localbkbm = paramVarArgs[i];
+      if (localbkbm != null) {
+        this.a.add(localbkbm);
+      }
+      i += 1;
+    }
+  }
+  
+  public bkbm a(String paramString)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (((bkbm)this.a.get(i)).a().equals(paramString)) {
+        return (bkbm)this.a.get(i);
+      }
+      i += 1;
     }
     return null;
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  public void a(List<bkbm> paramList, DoodleView paramDoodleView)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    paramList.addAll(this.a);
   }
 }
 

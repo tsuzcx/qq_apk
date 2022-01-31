@@ -1,21 +1,18 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
 
-class alns
-  implements alot
+public class alns
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  alns(alnk paramalnk, long paramLong) {}
+  public alns(ArkAppDeviceModule.ObserverMethod.6 param6, bbgu parambbgu) {}
   
-  public void a(long paramLong)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnk.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bbgu.findViewById(2131365105)).setImageBitmap(paramBitmap);
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    alnh.a(this.jdField_a_of_type_Alnk.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 

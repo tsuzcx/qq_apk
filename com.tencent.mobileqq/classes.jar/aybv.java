@@ -1,6 +1,12 @@
-public abstract interface aybv
+class aybv
+  implements aybj
 {
-  public abstract void a(aybc paramaybc, aybd paramaybd, String paramString);
+  aybv(aybs paramaybs) {}
+  
+  public void a()
+  {
+    aybs.a(this.a).a();
+  }
 }
 
 

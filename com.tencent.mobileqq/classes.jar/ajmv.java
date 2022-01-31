@@ -1,32 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
-public class ajmv
+class ajmv
+  implements Comparator<ApolloFavActionData>
 {
-  public static void a(boolean paramBoolean, String paramString1, String paramString2)
+  ajmv(ajmu paramajmu) {}
+  
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    try
-    {
-      if (1 != BaseApplicationImpl.sProcessId) {
-        return;
-      }
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
-      {
-        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
-        return;
-      }
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
     }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajmv
  * JD-Core Version:    0.7.0.1
  */

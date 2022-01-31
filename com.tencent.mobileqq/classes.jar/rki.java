@@ -2,9 +2,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public abstract interface rki
 {
-  public abstract BaseData a();
-  
-  public abstract void a();
+  public abstract void a(BaseData paramBaseData);
 }
 
 

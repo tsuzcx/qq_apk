@@ -8,7 +8,7 @@ import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bawz;
+import baxn;
 
 public class AEGIFTextColorSelectionView
   extends View
@@ -58,7 +58,7 @@ public class AEGIFTextColorSelectionView
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(jdField_d_of_type_JavaLangString));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(bawz.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(baxn.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
   }
   
   public void a(Boolean paramBoolean)
@@ -85,9 +85,9 @@ public class AEGIFTextColorSelectionView
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
     this.jdField_b_of_type_Int = View.MeasureSpec.getSize(paramInt2);
-    this.e = (this.jdField_a_of_type_Int / 2 - bawz.a(this.jdField_a_of_type_AndroidContentContext, 1.0F));
-    this.jdField_c_of_type_Int = (this.e - bawz.a(this.jdField_a_of_type_AndroidContentContext, 5.0F));
-    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - bawz.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+    this.e = (this.jdField_a_of_type_Int / 2 - baxn.a(this.jdField_a_of_type_AndroidContentContext, 1.0F));
+    this.jdField_c_of_type_Int = (this.e - baxn.a(this.jdField_a_of_type_AndroidContentContext, 5.0F));
+    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - baxn.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
   }
   
   public void setColor(String paramString)

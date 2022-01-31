@@ -1,16 +1,21 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
 public class mla
-  implements lst
+  implements Animation.AnimationListener
 {
-  public mla(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  private mla(VideoLayerUI paramVideoLayerUI) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    VideoLayerUI.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

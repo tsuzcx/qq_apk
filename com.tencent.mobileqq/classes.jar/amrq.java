@@ -1,16 +1,23 @@
-public class amrq
+import android.text.TextUtils;
+
+class amrq
 {
   public String a;
   public String b;
   public String c;
   public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public amrq(String paramString1, String paramString2, String paramString3, String paramString4)
+  public String a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    return this.a + this.b;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
 }
 

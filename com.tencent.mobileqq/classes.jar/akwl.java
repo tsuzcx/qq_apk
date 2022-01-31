@@ -1,6 +1,21 @@
-public abstract interface akwl
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+
+public class akwl
+  extends ajtb
 {
-  public abstract void handleMessage(String paramString1, String paramString2);
+  public akwl(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return akgj.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

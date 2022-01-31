@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.List;
 
-public class awuv
-  implements Observer
+public abstract interface awuv<M extends awog>
 {
-  public awuv(MessageSearchEngine.1 param1) {}
+  public abstract void a(List<M> paramList);
   
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    this.a.a.a(awuu.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
-  }
+  public abstract void a(List<M> paramList, int paramInt);
+  
+  public abstract void a(List<M> paramList, awvj paramawvj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awuv
  * JD-Core Version:    0.7.0.1
  */

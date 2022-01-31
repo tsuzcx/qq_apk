@@ -1,18 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aehi
-  implements bcph
+  implements DialogInterface.OnClickListener
 {
-  aehi(aegu paramaegu) {}
+  aehi(aegs paramaegs) {}
   
-  public void a(bcpf parambcpf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpf);
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
     }
   }
-  
-  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
 }
 
 

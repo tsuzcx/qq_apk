@@ -3,18 +3,18 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqeq;
-import axur;
+import aqes;
+import axut;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ForwardSdkBaseOption$8
   implements Runnable
 {
-  public ForwardSdkBaseOption$8(aqeq paramaqeq, String paramString) {}
+  public ForwardSdkBaseOption$8(aqes paramaqes, String paramString) {}
   
   public void run()
   {
-    String str = axur.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.a);
+    String str = axut.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.a);
     if (!TextUtils.isEmpty(str))
     {
       this.this$0.jdField_a_of_type_AndroidOsBundle.putString("video_url", str);

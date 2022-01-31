@@ -4,21 +4,21 @@ import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nzi;
-import obg;
-import obi;
+import nzf;
+import obd;
+import obf;
 
 public class GiftPackageGialog$2$1
   implements Runnable
 {
-  public GiftPackageGialog$2$1(obi paramobi) {}
+  public GiftPackageGialog$2$1(obf paramobf) {}
   
   public void run()
   {
-    if ((obg.a(this.a.a) != null) && (obg.b(this.a.a) != null))
+    if ((obd.a(this.a.a) != null) && (obd.b(this.a.a) != null))
     {
-      obg.b(this.a.a, nzi.a(obg.a(this.a.a), obg.a(this.a.a).v, obg.b(this.a.a).v, obg.b(this.a.a).s));
-      if ((obg.c(this.a.a) == null) || (obg.c(this.a.a).size() <= 0)) {
+      obd.b(this.a.a, nzf.a(obd.a(this.a.a), obd.a(this.a.a).v, obd.b(this.a.a).v, obd.b(this.a.a).s));
+      if ((obd.c(this.a.a) == null) || (obd.c(this.a.a).size() <= 0)) {
         ThreadManager.getUIHandler().post(new GiftPackageGialog.2.1.1(this));
       }
     }

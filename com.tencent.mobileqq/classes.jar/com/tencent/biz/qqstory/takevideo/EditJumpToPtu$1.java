@@ -1,28 +1,28 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import veg;
-import vez;
-import vfa;
-import vfk;
-import vhp;
+import ved;
+import vew;
+import vex;
+import vfh;
+import vhm;
 
 public class EditJumpToPtu$1
   implements Runnable
 {
-  public EditJumpToPtu$1(vez paramvez) {}
+  public EditJumpToPtu$1(vew paramvew) {}
   
   public void run()
   {
-    vez.a(this.this$0, vfk.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
-    if (this.this$0.a(vez.a(this.this$0)))
+    vew.a(this.this$0, vfh.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
+    if (this.this$0.a(vew.a(this.this$0)))
     {
-      this.this$0.jdField_a_of_type_Vfa.sendEmptyMessage(1);
+      this.this$0.jdField_a_of_type_Vex.sendEmptyMessage(1);
       return;
     }
-    vez.a(this.this$0, null);
-    veg.e("EditJumpToPtu", "get rawBitmap error!");
-    this.this$0.jdField_a_of_type_Vhp.a(0);
-    this.this$0.jdField_a_of_type_Vfa.sendEmptyMessage(3);
+    vew.a(this.this$0, null);
+    ved.e("EditJumpToPtu", "get rawBitmap error!");
+    this.this$0.jdField_a_of_type_Vhm.a(0);
+    this.this$0.jdField_a_of_type_Vex.sendEmptyMessage(3);
   }
 }
 

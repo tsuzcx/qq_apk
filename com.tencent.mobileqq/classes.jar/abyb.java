@@ -9,8 +9,7 @@ public class abyb
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = 0;
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

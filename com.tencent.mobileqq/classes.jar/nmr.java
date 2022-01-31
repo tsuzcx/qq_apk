@@ -1,24 +1,100 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class nmr
-  implements aptu
 {
-  public nmr(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public int a;
+  public List<nms> a;
   
-  public void a()
+  public nmr()
   {
-    yxs.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public nmr(int paramInt, mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramConfigGroupInfo == null) {}
+    for (;;)
     {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
+      return;
+      paramConfigGroupInfo = paramConfigGroupInfo.config_info.get();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramConfigGroupInfo.size());
+      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
+      while (paramConfigGroupInfo.hasNext()) {
+        this.jdField_a_of_type_JavaUtilList.add(new nms((mobileqq_mp.ConfigInfo)paramConfigGroupInfo.next()));
+      }
     }
   }
   
-  public void b() {}
+  public nmr(mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  {
+    this(0, paramConfigGroupInfo);
+  }
+  
+  public static List<nmr> a(List<mobileqq_mp.ConfigGroupInfo> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new nmr((mobileqq_mp.ConfigGroupInfo)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public static List<nmr> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray == null) {
+      return localArrayList;
+    }
+    for (;;)
+    {
+      try
+      {
+        int k = paramJSONArray.length();
+        int i = 0;
+        if (i >= k) {
+          break;
+        }
+        Object localObject = paramJSONArray.getJSONObject(i);
+        nmr localnmr = new nmr();
+        localnmr.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
+        localObject = ((JSONObject)localObject).getJSONArray("config");
+        int m = ((JSONArray)localObject).length();
+        int j = 0;
+        if (j < m)
+        {
+          nms localnms = nms.a(((JSONArray)localObject).getJSONObject(j));
+          if (localnms != null) {
+            localnmr.jdField_a_of_type_JavaUtilList.add(localnms);
+          }
+        }
+        else
+        {
+          localArrayList.add(localnmr);
+          i += 1;
+          continue;
+        }
+        j += 1;
+      }
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return localArrayList;
+      }
+    }
+  }
 }
 
 

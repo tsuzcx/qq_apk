@@ -1,13 +1,8 @@
-public abstract class bhmu
+import cooperation.qzone.statistic.StatisticCollector;
+
+public class bhmu
 {
-  public static bhmu a = new bhmv();
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public abstract boolean a();
+  private static final StatisticCollector a = new StatisticCollector();
 }
 
 

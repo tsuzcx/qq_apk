@@ -1,21 +1,23 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ayjk
-  implements TextView.OnEditorActionListener
+  implements View.OnTouchListener
 {
-  ayjk(ayjf paramayjf) {}
+  ayjk(ayjh paramayjh) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    switch (paramMotionEvent.getAction())
     {
-      bfmr.b(this.a.a);
-      this.a.d();
-      return true;
     }
-    return false;
+    for (;;)
+    {
+      return false;
+      bfni.b(paramView);
+      this.a.d();
+    }
   }
 }
 

@@ -3,17 +3,17 @@ package com.tencent.av.service;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import lxs;
-import mpl;
+import lxn;
+import mpi;
 
 public class QQServiceForAV$QQServiceForAVBinder$4
   implements Runnable
 {
-  public QQServiceForAV$QQServiceForAVBinder$4(lxs paramlxs, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
+  public QQServiceForAV$QQServiceForAVBinder$4(lxn paramlxn, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
   
   public void run()
   {
-    mpl.a((QQAppInterface)this.jdField_a_of_type_Lxs.a.a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidOsResultReceiver);
+    mpi.a((QQAppInterface)this.jdField_a_of_type_Lxn.a.a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidOsResultReceiver);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.view.View;
-import azao;
+import azaq;
 
 class TribeVideoListPlayerFragment$13$1$1
   implements Runnable

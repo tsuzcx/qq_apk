@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
+import auko;
 
 public class MemoriesYearNodeEntry
-  extends aukm
+  extends auko
 {
   public int videoCount;
   public int year;

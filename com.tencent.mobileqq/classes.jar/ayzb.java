@@ -1,14 +1,13 @@
+import com.qq.taf.jce.HexUtil;
+
 public class ayzb
-  extends ayyy
+  extends ayza
 {
   public int a;
-  public long a;
   public String a;
   public byte[] a;
   public int b;
-  public long b;
   public String b;
-  public byte[] b;
   public int c;
   public int d;
   public int e;
@@ -16,30 +15,34 @@ public class ayzb
   public int h;
   public int i;
   public int j;
-  public int k;
-  public int l;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" chatType:");
     localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
-    localStringBuilder.append(" format:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" str_file_name:");
+    localStringBuilder.append(" clientType:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" seq:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" fileId:");
     localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" uint64_file_size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" fileTime:");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(" troopUin:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" agentType:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
     localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" fileType:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" downType:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" sceneType:");
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append(" userCnt:");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.j);
     return localStringBuilder.toString();
   }
 }

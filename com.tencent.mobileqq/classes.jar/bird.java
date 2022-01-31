@@ -1,46 +1,28 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.MobileQQ;
-
-public class bird
-  extends QIPCModule
+class bird
+  implements birp
 {
-  private bird()
-  {
-    super("AECameraLaunchServer");
-  }
+  bird(birb parambirb, birp parambirp) {}
   
-  public static bird a()
+  public void a(bire parambire, int paramInt)
   {
-    return birf.a();
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    QLog.d("AECameraLaunchServer", 1, "in launch ae camera onCall.");
-    if (MobileQQ.sMobileQQ != null)
-    {
-      if (Build.VERSION.SDK_INT < 21)
-      {
-        bcpw.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131717760), 1).a();
-        return null;
-      }
-      paramInt = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", birc.a.a());
-      if (paramInt == birc.a.a()) {
-        paramBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
-      }
-      paramBundle.putInt("AECAMERA_MODE", 200);
-      paramBundle.putInt("VIDEO_STORY_FROM_TYPE", paramInt);
-      paramBundle.putString("KEY_CURRENT_SELECT_ID", paramBundle.getString("widgetid"));
-      birg.a(MobileQQ.sMobileQQ, paramBundle);
-      return null;
+    if (this.jdField_a_of_type_Birp != null) {
+      this.jdField_a_of_type_Birp.a(parambire, paramInt);
     }
-    QLog.e("AECameraLaunchServer", 1, "no mobile qq.");
-    return null;
+  }
+  
+  public void a(bire parambire, boolean paramBoolean)
+  {
+    bire localbire = birb.a(this.jdField_a_of_type_Birb, parambire);
+    if (localbire != null) {
+      localbire.d = birb.a(parambire);
+    }
+    if (this.jdField_a_of_type_Birp != null)
+    {
+      this.jdField_a_of_type_Birp.a(parambire, paramBoolean);
+      if (localbire != null) {
+        bjah.b("AEMaterialManager", "【END】onDownloadFinish :" + localbire.a);
+      }
+    }
   }
 }
 

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiShareDataInfo;
+import cooperation.qzone.model.KingCardInfo;
 
 public final class bhfg
-  implements Parcelable.Creator<WeishiShareDataInfo>
+  implements Parcelable.Creator<KingCardInfo>
 {
-  public WeishiShareDataInfo a(Parcel paramParcel)
+  public KingCardInfo a(Parcel paramParcel)
   {
-    return new WeishiShareDataInfo(paramParcel);
+    return new KingCardInfo(paramParcel);
   }
   
-  public WeishiShareDataInfo[] a(int paramInt)
+  public KingCardInfo[] a(int paramInt)
   {
-    return new WeishiShareDataInfo[paramInt];
+    return new KingCardInfo[paramInt];
   }
 }
 

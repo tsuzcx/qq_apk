@@ -1,15 +1,15 @@
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
-import java.util.List;
-
-public abstract interface zzw
+public class zzw
 {
-  public abstract List<String> a(String paramString);
+  public int a;
+  public long a;
+  public boolean a;
   
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
-  
-  public abstract boolean a(LeakInspector.InspectUUID paramInspectUUID);
-  
-  public abstract boolean a(Object paramObject);
+  zzw(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

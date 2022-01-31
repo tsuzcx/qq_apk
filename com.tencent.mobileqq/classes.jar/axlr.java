@@ -1,8 +1,10 @@
-public class axlr
+public abstract interface axlr
 {
-  public Object a;
-  public boolean a;
-  public boolean b;
+  public abstract void a();
+  
+  public abstract void a(Process paramProcess);
+  
+  public abstract void b();
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adzh;
-import adzk;
-import adzr;
+import adzf;
+import adzi;
+import adzp;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 public class ShortVideoItemBuilder$12$2
   implements Runnable
 {
-  public ShortVideoItemBuilder$12$2(adzk paramadzk, MessageForShortVideo paramMessageForShortVideo) {}
+  public ShortVideoItemBuilder$12$2(adzi paramadzi, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    adzr localadzr = adzh.a(this.jdField_a_of_type_Adzk.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    if (localadzr != null)
+    adzp localadzp = adzf.a(this.jdField_a_of_type_Adzi.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    if (localadzp != null)
     {
-      localadzr.a.setVisibility(8);
-      localadzr.d.setVisibility(8);
-      adzh.a(this.jdField_a_of_type_Adzk.a, localadzr, 2131718779);
+      localadzp.a.setVisibility(8);
+      localadzp.d.setVisibility(8);
+      adzf.a(this.jdField_a_of_type_Adzi.a, localadzp, 2131718790);
     }
   }
 }

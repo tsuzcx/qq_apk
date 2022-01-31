@@ -1,32 +1,76 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class sys<Request extends syv, Respond extends syq>
-  implements syw<Respond>
+public abstract class sys<Respond extends syn>
 {
-  protected final long a;
-  protected syt<Request, Respond> a;
-  public Request a;
+  public int a;
+  public long a;
+  public syt<Respond> a;
+  public int b;
+  private int c;
   
-  public sys(Request paramRequest)
+  public sys()
   {
-    this.jdField_a_of_type_Syv = paramRequest;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  private void b(int paramInt, String paramString, Respond paramRespond)
+  @NonNull
+  public static List<ByteStringMicro> a(List<String> paramList)
   {
-    syt localsyt = this.jdField_a_of_type_Syt;
-    if (localsyt != null)
-    {
-      localsyt.a(this.jdField_a_of_type_Syv, paramRespond, new ErrorMessage(paramInt, paramString));
-      return;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(ByteStringMicro.copyFromUtf8((String)paramList.next()));
     }
-    veg.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+    return localArrayList;
   }
   
-  public void a(int paramInt, String paramString, Respond paramRespond)
+  public abstract String a();
+  
+  public String a(String paramString)
   {
-    b(paramInt, paramString, paramRespond);
+    return paramString;
+  }
+  
+  public abstract syn a(byte[] paramArrayOfByte);
+  
+  public syt<Respond> a()
+  {
+    return this.jdField_a_of_type_Syt;
+  }
+  
+  public void a(syt<Respond> paramsyt)
+  {
+    this.jdField_a_of_type_Syt = paramsyt;
+  }
+  
+  protected abstract byte[] a();
+  
+  public int b()
+  {
+    int i = this.c;
+    String str = a();
+    int j = i;
+    if (i == 0)
+    {
+      j = i;
+      if (str.length() > 0)
+      {
+        j = 0;
+        while (j < str.length())
+        {
+          i = i * 31 + str.charAt(j);
+          j += 1;
+        }
+        this.c = i;
+        j = i;
+      }
+    }
+    return j;
   }
 }
 

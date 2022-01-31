@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class ahdi
-  implements acvj
 {
-  public ahdi(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
-  
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
-  }
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 

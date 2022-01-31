@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import QQService.DiscussMemberInfo;
-import abjp;
-import abjq;
-import abjr;
-import abjs;
-import ajvi;
-import ajxl;
-import ajyc;
+import abjl;
+import abjm;
+import abjn;
+import abjo;
+import ajvg;
+import ajxj;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbev;
-import bcpw;
+import bbfj;
+import bcql;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -29,10 +29,10 @@ public class JoinDiscussionActivity
 {
   int jdField_a_of_type_Int = 0;
   public long a;
-  private abjr jdField_a_of_type_Abjr;
-  private abjs jdField_a_of_type_Abjs;
-  public ajvi a;
-  private ajxl jdField_a_of_type_Ajxl = new abjq(this);
+  private abjn jdField_a_of_type_Abjn;
+  private abjo jdField_a_of_type_Abjo;
+  public ajvg a;
+  private ajxj jdField_a_of_type_Ajxj = new abjm(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -58,34 +58,34 @@ public class JoinDiscussionActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365228));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365241));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365247));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364836));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365227));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365240));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365246));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364835));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368754));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365785));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365784));
   }
   
   private void c()
   {
-    setTitle(ajyc.a(2131705875));
+    setTitle(ajya.a(2131705886));
     setRightButton(2131690596, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abjp(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abjl(this));
   }
   
   private void d()
   {
-    if (bbev.d(this))
+    if (bbfj.d(this))
     {
       startTitleProgress();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_Ajvi.c(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Ajvg.c(this.jdField_a_of_type_JavaLangString);
       }
       while ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
         return;
       }
-      this.jdField_a_of_type_Ajvi.b(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Ajvg.b(this.jdField_b_of_type_JavaLangString);
       return;
     }
     a(0, -160);
@@ -98,10 +98,10 @@ public class JoinDiscussionActivity
   
   public void a()
   {
-    if (bbev.d(this))
+    if (bbfj.d(this))
     {
       startTitleProgress();
-      this.jdField_a_of_type_Ajvi.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Ajvg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
     a(1, -160);
@@ -115,27 +115,27 @@ public class JoinDiscussionActivity
     {
     default: 
       if (paramInt1 == 1) {
-        str = ajyc.a(2131705873);
+        str = ajya.a(2131705884);
       }
       break;
     }
     for (;;)
     {
-      bcpw.a(this, str, 0).b(getTitleBarHeight());
+      bcql.a(this, str, 0).b(getTitleBarHeight());
       return;
-      str = ajyc.a(2131705867);
+      str = ajya.a(2131705878);
       continue;
-      str = ajyc.a(2131705871);
+      str = ajya.a(2131705882);
       continue;
-      str = ajyc.a(2131705869);
+      str = ajya.a(2131705880);
       continue;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
-      str = ajyc.a(2131705870);
+      str = ajya.a(2131705881);
       continue;
       if (paramInt1 == 0) {
-        str = ajyc.a(2131705868);
+        str = ajya.a(2131705879);
       }
     }
   }
@@ -145,11 +145,11 @@ public class JoinDiscussionActivity
     super.doOnCreate(paramBundle);
     super.setContentView(2131559161);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Abjs = new abjs(this, null);
-    this.jdField_a_of_type_Abjr = new abjr(this, null);
-    addObserver(this.jdField_a_of_type_Abjs);
-    addObserver(this.jdField_a_of_type_Abjr);
-    addObserver(this.jdField_a_of_type_Ajxl);
+    this.jdField_a_of_type_Abjo = new abjo(this, null);
+    this.jdField_a_of_type_Abjn = new abjn(this, null);
+    addObserver(this.jdField_a_of_type_Abjo);
+    addObserver(this.jdField_a_of_type_Abjn);
+    addObserver(this.jdField_a_of_type_Ajxj);
     this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -168,16 +168,16 @@ public class JoinDiscussionActivity
     }
     b();
     c();
-    this.jdField_a_of_type_Ajvi = ((ajvi)this.app.a(6));
+    this.jdField_a_of_type_Ajvg = ((ajvg)this.app.a(6));
     d();
     return true;
   }
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Abjs);
-    removeObserver(this.jdField_a_of_type_Abjr);
-    removeObserver(this.jdField_a_of_type_Ajxl);
+    removeObserver(this.jdField_a_of_type_Abjo);
+    removeObserver(this.jdField_a_of_type_Abjn);
+    removeObserver(this.jdField_a_of_type_Ajxj);
     super.doOnDestroy();
   }
   

@@ -14,7 +14,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import bawz;
+import baxn;
 import com.tencent.qphone.base.util.QLog;
 
 public class VerticalSeekBar
@@ -69,10 +69,10 @@ public class VerticalSeekBar
     localOptions.inTargetDensity = localResources.getDisplayMetrics().densityDpi;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130846492, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130846498, localOptions);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.b = bawz.a(getContext(), 5.0F);
-      this.c = bawz.a(getContext(), 30.0F);
+      this.b = baxn.a(getContext(), 5.0F);
+      this.c = baxn.a(getContext(), 30.0F);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

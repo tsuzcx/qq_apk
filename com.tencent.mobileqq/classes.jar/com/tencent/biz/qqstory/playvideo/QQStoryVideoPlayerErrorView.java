@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import sxp;
-import veg;
+import sxm;
+import ved;
 
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
@@ -37,8 +37,8 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(sxp.a(2131699701));
-      setTipsIcon(2130845503);
+      setTipsText(sxm.a(2131699712));
+      setTipsIcon(2130845509);
       setTipsTextSize(16.0F);
     }
     do
@@ -47,8 +47,8 @@ public class QQStoryVideoPlayerErrorView
       if (paramInt == 1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        setTipsText(ajyc.a(2131711090));
-        setTipsIcon(2130845661);
+        setTipsText(ajya.a(2131711101));
+        setTipsIcon(2130845667);
         setTipsTextSize(14.0F);
         return;
       }
@@ -58,9 +58,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561431, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561430, this, true);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131377315));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368533));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368532));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
@@ -94,7 +94,7 @@ public class QQStoryVideoPlayerErrorView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      veg.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+      ved.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
     }
   }
   

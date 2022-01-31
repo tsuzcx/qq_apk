@@ -1,31 +1,56 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class txq
-  extends twc<SingleFeedPlayInfo>
+  implements twi
 {
-  public txq(SingleFeedPlayInfo paramSingleFeedPlayInfo)
+  public final String a;
+  public final List<String> a;
+  private twj jdField_a_of_type_Twj;
+  private twm jdField_a_of_type_Twm;
+  private two jdField_a_of_type_Two;
+  
+  public txq(String paramString)
   {
-    super(paramSingleFeedPlayInfo);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Twj = new twj();
+    this.jdField_a_of_type_Twj.b = true;
+    this.jdField_a_of_type_Twj.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Twj.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Twm = new twm(new twl("TROOP_GROUD_ID"));
+    this.jdField_a_of_type_Twm.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Twm.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Twm.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Twj.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Twm);
+    this.jdField_a_of_type_Two = new two(new twl("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Two.jdField_a_of_type_Twm = this.jdField_a_of_type_Twm;
   }
   
-  public uvs a(String paramString)
+  public twj a(@Nullable twl paramtwl, int paramInt)
   {
-    paramString = new uvs(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
+    return this.jdField_a_of_type_Twj;
   }
   
-  public void a(boolean paramBoolean, int paramInt, twu paramtwu)
+  public two a()
   {
-    ArrayList localArrayList = new ArrayList();
-    twd localtwd = new twd(((SingleFeedPlayInfo)this.a).mFeedFeedId, new uvs(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localtwd.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localtwd);
-    paramtwu.a(new ErrorMessage(), localArrayList, true);
+    return this.jdField_a_of_type_Two;
   }
+  
+  public void a() {}
+  
+  public void a(@Nullable twl paramtwl, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(@Nullable twl paramtwl, String paramString) {}
+  
+  public void a(twn paramtwn) {}
+  
+  public void b() {}
+  
+  public void b(twn paramtwn) {}
 }
 
 

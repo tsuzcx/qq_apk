@@ -1,25 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
 public final class azhi
-  implements DialogInterface.OnClickListener
+  extends Editable.Factory
 {
-  public azhi(Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
+    if ((paramCharSequence instanceof ayku)) {
+      return (Editable)paramCharSequence;
     }
-    TroopBarPublishUtils.c(this.a);
-    paramDialogInterface.dismiss();
+    return new ayku(paramCharSequence, 3, 20);
   }
 }
 

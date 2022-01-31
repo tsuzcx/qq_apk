@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
-
 public class atyz
-  extends atyy
+  extends atza
 {
-  public NewFriendMoreInfo a;
+  public final amtg a;
+  public final boolean a;
   
-  public atyz(NewFriendMoreInfo paramNewFriendMoreInfo)
+  public atyz(amtg paramamtg, boolean paramBoolean)
   {
-    this.a = paramNewFriendMoreInfo;
+    this.jdField_a_of_type_Amtg = paramamtg;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()

@@ -1,23 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjlj
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public bjlj(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
+  public bjlj(QIMProviderContainerView paramQIMProviderContainerView, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (VideoCoverPickerProviderView.a(this.a) != null)
+    if (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null)
     {
-      paramView = (bjll)VideoCoverPickerProviderView.a(this.a).get();
-      if (paramView != null) {
-        paramView.a(VideoCoverPickerProviderView.a(this.a), true);
-      }
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).setVisibility(8);
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null)) {
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).a(false, 150);
+    }
+    if (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null) {
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).U();
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

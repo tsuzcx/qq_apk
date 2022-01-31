@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import aukn;
-import auko;
-import bcdb;
+import aukp;
+import aukq;
+import bcdp;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -24,8 +24,8 @@ class AvatarPendantJsPlugin$1
       if (this.this$0.browserApp != null)
       {
         localObject = this.this$0.browserApp.getEntityManagerFactory(null).createEntityManager();
-        ExtensionInfo localExtensionInfo = (ExtensionInfo)((aukn)localObject).a(ExtensionInfo.class, this.this$0.browserApp.getAccount());
-        ((aukn)localObject).a();
+        ExtensionInfo localExtensionInfo = (ExtensionInfo)((aukp)localObject).a(ExtensionInfo.class, this.this$0.browserApp.getAccount());
+        ((aukp)localObject).a();
         localJSONObject.put("result", 0);
         if (localExtensionInfo == null) {
           localJSONObject.put("id", 0L);

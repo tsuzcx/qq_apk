@@ -1,27 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class aakm
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public aakm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public aakm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, String paramString, boolean paramBoolean)
   {
-    if (paramView.getParent() == null) {}
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDeleteAccount(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity;
+    if (Build.VERSION.SDK_INT > 10) {}
+    for (int i = 4;; i = 0)
     {
-      do
+      localObject = ((AssociatedAccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
+      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
       {
-        return;
-        paramView = (View)paramView.getParent().getParent();
-      } while ((paramView == null) || (paramView.getTag() == null));
-      axqw.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SimpleAccount));
-    this.a.a((SimpleAccount)paramView.getTag());
+        ((SharedPreferences)localObject).edit().remove("uin").commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("AssociatedAccountManage", 2, "delete Last_Login");
+        }
+      }
+      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
   }
 }
 

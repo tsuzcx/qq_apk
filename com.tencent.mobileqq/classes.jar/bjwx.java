@@ -1,21 +1,17 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-class bjwx
-  implements bfoq
+public class bjwx
+  implements DialogInterface.OnDismissListener
 {
-  bjwx(bjww parambjww, bfol parambfol) {}
+  public bjwx(EditVideoGuide paramEditVideoGuide) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_Bjww.c();
-    }
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_Bjxn.a(14);
   }
 }
 

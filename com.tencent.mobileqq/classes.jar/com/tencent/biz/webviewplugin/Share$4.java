@@ -9,22 +9,22 @@ import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nap;
-import xmt;
+import nam;
+import xmq;
 
 public class Share$4
   implements Runnable
 {
-  public Share$4(xmt paramxmt, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo) {}
+  public Share$4(xmq paramxmq, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(xmt.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d(xmq.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nap.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = nam.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
-      QLog.d(xmt.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
+      QLog.d(xmq.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
     }
     Intent localIntent = new Intent("android.intent.action.SEND");
     localIntent.setFlags(268435456);
@@ -37,7 +37,7 @@ public class Share$4
     localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
     this.this$0.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     if (QLog.isColorLevel()) {
-      QLog.d(xmt.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
+      QLog.d(xmq.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
     }
   }
 }

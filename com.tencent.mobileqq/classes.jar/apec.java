@@ -1,38 +1,43 @@
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class apec
+  extends aozw
 {
-  private final biel jdField_a_of_type_Biel;
-  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private String b;
+  aoun jdField_a_of_type_Aoun = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public apec(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, biel parambiel)
+  public apec(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
-    this.jdField_a_of_type_Biel = parambiel;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+  }
+  
+  public int a()
+  {
+    return 4;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    bidy.a().a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aoun = new aped(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aoun);
   }
   
-  public void a(String paramString)
+  public boolean a()
   {
-    this.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aoun != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aoun);
+    }
   }
 }
 

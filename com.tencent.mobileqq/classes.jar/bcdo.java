@@ -1,37 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class bcdo
+  implements ThreadExcutor.IThreadListener
 {
-  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bcrn parambcrn)
+  public bcdo(WebViewPlugin paramWebViewPlugin) {}
+  
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    int i = 0;
-    if (paramIntent != null) {
-      i = paramIntent.getIntExtra("tabBarStyle", 0);
-    }
-    bgvo.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
-    if (i == 1)
-    {
-      paramContext = new QQComicTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambcrn);
-      return paramContext;
-    }
-    if (i == 2)
-    {
-      paramContext = new ReaderTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambcrn);
-      return paramContext;
-    }
-    paramContext = new SwiftFragmentTabBar(paramContext);
-    paramContext.a(paramList, parambcrn);
-    return paramContext;
+    this.a.onPostPluginAsyncTask();
   }
+  
+  public void onPreRun() {}
 }
 
 

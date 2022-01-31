@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import java.security.MessageDigest;
 
-public final class bchd
-  implements Parcelable.Creator<WebSoService.WebSoState.WebSo3>
+public class bchd
 {
-  public WebSoService.WebSoState.WebSo3 a(Parcel paramParcel)
+  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  
+  public static String a(String paramString)
   {
-    return new WebSoService.WebSoState.WebSo3(paramParcel);
+    try
+    {
+      paramString = a(paramString.getBytes(), "SHA1");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
   }
   
-  public WebSoService.WebSoState.WebSo3[] a(int paramInt)
+  private static String a(byte[] paramArrayOfByte)
   {
-    return new WebSoService.WebSoState.WebSo3[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
+      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static String a(byte[] paramArrayOfByte, String paramString)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return "";
+    }
+    paramString = MessageDigest.getInstance(paramString);
+    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return a(paramString.digest());
   }
 }
 

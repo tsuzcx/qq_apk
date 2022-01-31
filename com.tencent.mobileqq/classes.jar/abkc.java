@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class abkc
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public abkc(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public abkc(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (!this.a.a)
-    {
-      axqw.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+    atbi.a(this.a.getAppInterface().getAccount(), true);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
     }
-    return false;
   }
 }
 

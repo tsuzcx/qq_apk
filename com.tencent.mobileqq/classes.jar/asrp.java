@@ -1,18 +1,12 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-
-public class asrp
-  extends GestureDetector.SimpleOnGestureListener
+class asrp
+  implements afth
 {
-  public asrp(MultiCardCustomLayout paramMultiCardCustomLayout) {}
+  asrp(asrn paramasrn) {}
   
-  public void onLongPress(MotionEvent paramMotionEvent)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    if (MultiCardCustomLayout.a(this.a) != null) {
-      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
-    }
+    asrn.a(this.a, paramInt);
+    return 0;
   }
 }
 

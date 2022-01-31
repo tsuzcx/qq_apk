@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class bcix
-  implements View.OnClickListener
+public abstract interface bcix<T>
 {
-  bcix(bciw parambciw, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_Bciw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-  }
+  public abstract void a(int paramInt, T paramT);
 }
 
 

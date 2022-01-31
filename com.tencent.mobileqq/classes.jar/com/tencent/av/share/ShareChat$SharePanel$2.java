@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
-import lys;
+import lyn;
 
 public class ShareChat$SharePanel$2
   extends ResultReceiver
 {
-  public ShareChat$SharePanel$2(lys paramlys, Handler paramHandler, long paramLong, int paramInt)
+  public ShareChat$SharePanel$2(lyn paramlyn, Handler paramHandler, long paramLong, int paramInt)
   {
     super(paramHandler);
   }
@@ -17,7 +17,7 @@ public class ShareChat$SharePanel$2
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     QLog.w("ShareChat", 1, "shareToMobileQQ.onReceiveResult, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-    paramBundle = this.jdField_a_of_type_Lys;
+    paramBundle = this.jdField_a_of_type_Lyn;
     int i = this.jdField_a_of_type_Int;
     if (paramInt == -1) {}
     for (paramInt = 2;; paramInt = 3)

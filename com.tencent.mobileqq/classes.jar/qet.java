@@ -1,30 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
 
-public class qet
-  implements rth
+public final class qet
+  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
 {
-  public qet(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void a(int paramInt)
+  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
-    }
+    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
-    {
-      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
-      noo.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", onk.e(), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
-      }
-    }
+    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
   }
 }
 

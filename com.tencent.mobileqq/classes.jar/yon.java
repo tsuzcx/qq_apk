@@ -1,25 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.gamecenter.common.util.ReportInfoManager;
-
 public class yon
-  extends Handler
 {
-  public yon(ReportInfoManager paramReportInfoManager, long paramLong) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (paramMessage == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    you.a("post report", this.jdField_a_of_type_Long, (short)1);
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "-1";
+  public int c;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "0";
 }
 
 

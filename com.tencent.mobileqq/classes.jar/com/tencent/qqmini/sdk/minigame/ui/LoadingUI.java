@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bffu;
+import bfgl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.widget.SquareImageView;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class LoadingUI
   extends RelativeLayout
 {
-  int jdField_a_of_type_Int = bffu.a(getContext(), 100.0F);
+  int jdField_a_of_type_Int = bfgl.a(getContext(), 100.0F);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -59,20 +59,20 @@ public class LoadingUI
   private void b()
   {
     inflate(getContext(), 2131559298, this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376455);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376457);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366919));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366940));
     this.d = ((TextView)findViewById(2131368768));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363586));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363501));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363585));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363500));
     this.c = ((TextView)findViewById(2131366923));
-    this.g = ((TextView)findViewById(2131365086));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365087));
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView = ((SquareImageView)findViewById(2131369583));
+    this.g = ((TextView)findViewById(2131365085));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365086));
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView = ((SquareImageView)findViewById(2131369582));
     this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetSquareImageView.setRoundRect(this.jdField_a_of_type_Int);
-    this.e = ((TextView)findViewById(2131378460));
-    this.f = ((TextView)findViewById(2131376400));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376397));
+    this.e = ((TextView)findViewById(2131378465));
+    this.f = ((TextView)findViewById(2131376402));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376399));
   }
   
   private void c()
@@ -117,7 +117,7 @@ public class LoadingUI
           if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl))
           {
             localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-            localObject1 = getContext().getResources().getDrawable(2130840764);
+            localObject1 = getContext().getResources().getDrawable(2130840761);
             localObject2 = ((MiniAppProxy)localObject2).getDrawable(getContext(), this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.iconUrl, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, (Drawable)localObject1);
             if (localObject2 != null) {
               break label356;

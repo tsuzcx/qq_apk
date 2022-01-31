@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajtu;
+import ajts;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bbnq;
-import bbpl;
-import bbqh;
-import bbrt;
-import bbwa;
-import bcbi;
+import bboe;
+import bbpz;
+import bbqv;
+import bbsh;
+import bbwo;
+import bcbw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,29 +25,29 @@ public class GetClubContentUpdateStatus
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "[GetClubContentUpdateStatus]system time" + System.currentTimeMillis() + ",last update time:");
     }
-    bbnq.b(this.a.app);
-    bbrt.a().a(this.a.app);
-    bcbi.a().a(this.a.app);
-    bbnq.a(this.a.app);
+    bboe.b(this.a.app);
+    bbsh.a().a(this.a.app);
+    bcbw.a().a(this.a.app);
+    bboe.a(this.a.app);
     localObject = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
     long l = ((SharedPreferences)localObject).getLong("last_pull_club_content_update_time", 0L);
     if ((System.currentTimeMillis() - l > 43200000L) || (System.currentTimeMillis() < l))
     {
-      ajtu localajtu = (ajtu)this.a.app.a(16);
-      if (localajtu != null)
+      ajts localajts = (ajts)this.a.app.a(16);
+      if (localajts != null)
       {
-        localajtu.a();
+        localajts.a();
         ((SharedPreferences)localObject).edit().putLong("last_pull_club_content_update_time", System.currentTimeMillis()).commit();
       }
     }
     for (;;)
     {
-      bbwa.a().a(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
-      localObject = (bbpl)this.a.app.getManager(177);
-      if (!((bbpl)localObject).b) {
-        ((bbpl)localObject).a(this.a.app.getCurrentAccountUin());
+      bbwo.a().a(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
+      localObject = (bbpz)this.a.app.getManager(177);
+      if (!((bbpz)localObject).b) {
+        ((bbpz)localObject).a(this.a.app.getCurrentAccountUin());
       }
-      ((bbqh)this.a.app.getManager(192)).a();
+      ((bbqv)this.a.app.getManager(192)).a();
       return 7;
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "system time" + System.currentTimeMillis() + ",last update time:" + l);

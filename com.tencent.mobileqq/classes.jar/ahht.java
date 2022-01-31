@@ -1,10 +1,14 @@
-public abstract interface ahht
+import android.graphics.Bitmap;
+
+class ahht
+  implements alxj
 {
-  public abstract void a();
+  ahht(ahhs paramahhs) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString, Object paramObject);
-  
-  public abstract void ar_();
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    ahhs.a(this.a, paramString1, paramBitmap);
+  }
 }
 
 

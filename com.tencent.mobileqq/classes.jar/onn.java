@@ -1,24 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.1;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
-import com.tencent.mobileqq.app.BaseActivity;
-
-public final class onn
-  implements bfug
+public abstract interface onn
 {
-  onn(BaseActivity paramBaseActivity) {}
-  
-  public void a(bfuf parambfuf)
-  {
-    switch (parambfuf.a)
-    {
-    default: 
-      return;
-    case 0: 
-      rgc.a(this.a, new ReadInJoyUtils.15.1(this));
-      return;
-    }
-    rgc.a(this.a, new ReadInJoyUtils.15.2(this));
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2);
 }
 
 

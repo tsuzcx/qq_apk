@@ -1,34 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.CellInfo;
+import android.os.Bundle;
 
-public final class bgxe
-  implements Parcelable.Creator<LbsDataV2.CellInfo>
+public abstract class bgxe
 {
-  public LbsDataV2.CellInfo a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public void a(Bundle paramBundle)
   {
-    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
-    if (paramParcel != null)
-    {
-      localCellInfo.mcc = paramParcel.readInt();
-      localCellInfo.mnc = paramParcel.readInt();
-      localCellInfo.lac = paramParcel.readInt();
-      localCellInfo.cellId = paramParcel.readInt();
-      localCellInfo.rssi = paramParcel.readInt();
-      localCellInfo.stationLat = paramParcel.readDouble();
-      localCellInfo.stationLon = paramParcel.readDouble();
-    }
-    return localCellInfo;
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
+    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
+    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
+    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
+    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
   }
   
-  public LbsDataV2.CellInfo[] a(int paramInt)
+  public String toString()
   {
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&sv=" + this.b);
+    localStringBuilder.append("&at=" + this.c);
+    localStringBuilder.append("&an=" + this.d);
+    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxe
  * JD-Core Version:    0.7.0.1
  */

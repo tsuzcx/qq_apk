@@ -1,60 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.RichStep.1;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class ayra
-  extends ayqs
+public class ayra
+  extends ayqu
 {
-  private boolean a;
+  private AtomicInteger a;
+  public boolean a;
+  private AtomicBoolean c = new AtomicBoolean(false);
   
-  ayra(ayqr paramayqr)
+  ayra(ayqt paramayqt)
   {
-    super(paramayqr);
-    this.jdField_a_of_type_JavaLangString = "SendMsgStep";
+    super(paramayqt);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "RichStep";
+    g();
   }
   
   protected boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return (!this.c.get()) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
   }
   
   protected void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "SendMsgStep|process");
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|process|neeRich=" + this.c + ",lack=" + ayqt.a(this.jdField_b_of_type_Ayqt));
     }
     if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
       f();
       return;
     }
-    if (!bbev.g(this.jdField_b_of_type_Ayqr.jdField_a_of_type_AndroidContentContext))
+    if (this.c.get())
     {
-      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgStep|no network");
-      if ((ayqr.a(this.jdField_b_of_type_Ayqr) > 0) || (!ayqr.a(this.jdField_b_of_type_Ayqr).get()) || (!ayqr.c(this.jdField_b_of_type_Ayqr).get()) || (ayqr.a(this.jdField_b_of_type_Ayqr).jdField_a_of_type_Int != 1))
-      {
-        this.jdField_b_of_type_Ayqr.b(9004, "no network");
-        c();
-        return;
-      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      ThreadManager.post(new ForwardSdkShareProcessor.RichStep.1(this), 5, null, true);
+      return;
     }
-    Object localObject = this.jdField_b_of_type_Ayqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_b_of_type_Ayqr.jdField_a_of_type_Aywa.c, this.jdField_b_of_type_Ayqr.jdField_a_of_type_Aywa.jdField_a_of_type_Int, this.jdField_b_of_type_Ayqr.jdField_a_of_type_Aywa.jdField_a_of_type_Long);
-    if (localObject != null) {
-      this.jdField_b_of_type_Ayqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject, null);
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("report_type", "102");
-    ((Bundle)localObject).putString("act_type", "14");
-    ((Bundle)localObject).putString("intext_2", "" + ayqr.a(this.jdField_b_of_type_Ayqr));
-    ((Bundle)localObject).putString("stringext_1", "" + ayqr.e(this.jdField_b_of_type_Ayqr));
-    ((Bundle)localObject).putString("intext_3", "0");
-    bded.a().a((Bundle)localObject, "", this.jdField_b_of_type_Ayqr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    this.jdField_a_of_type_Boolean = true;
     b();
-    this.jdField_b_of_type_Ayqr.e();
+  }
+  
+  void g()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    this.c.set(false);
+    if ((TextUtils.isEmpty(ayqt.a(this.jdField_b_of_type_Ayqt))) && (TextUtils.isEmpty(ayqt.b(this.jdField_b_of_type_Ayqt)))) {
+      ayqt.a(this.jdField_b_of_type_Ayqt, ayqt.a(this.jdField_b_of_type_Ayqt) | 0x1);
+    }
+    if (TextUtils.isEmpty(ayqt.c(this.jdField_b_of_type_Ayqt))) {
+      ayqt.a(this.jdField_b_of_type_Ayqt, ayqt.a(this.jdField_b_of_type_Ayqt) | 0x2);
+    }
+    if (TextUtils.isEmpty(ayqt.d(this.jdField_b_of_type_Ayqt))) {
+      ayqt.a(this.jdField_b_of_type_Ayqt, ayqt.a(this.jdField_b_of_type_Ayqt) | 0x4);
+    }
+    if (ayqt.a(this.jdField_b_of_type_Ayqt) > 0) {
+      this.c.set(true);
+    }
+    if (ayqt.b(this.jdField_b_of_type_Ayqt) == 11) {
+      this.c.set(false);
+    }
   }
 }
 

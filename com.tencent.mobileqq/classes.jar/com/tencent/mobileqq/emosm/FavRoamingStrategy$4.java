@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.emosm;
 
-import ajsf;
-import ajxq;
+import ajsd;
+import ajxo;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import anqm;
-import anrh;
-import antv;
-import aoau;
-import aobk;
+import anqr;
+import anrm;
+import anua;
+import aoaz;
+import aobp;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.Emoticon;
@@ -21,7 +21,7 @@ import java.util.List;
 public class FavRoamingStrategy$4
   implements Runnable
 {
-  public FavRoamingStrategy$4(anrh paramanrh, Object paramObject, antv paramantv, int paramInt) {}
+  public FavRoamingStrategy$4(anrm paramanrm, Object paramObject, anua paramanua, int paramInt) {}
   
   public void run()
   {
@@ -38,17 +38,17 @@ public class FavRoamingStrategy$4
       {
         CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject3).next();
         if (localCustomEmotionData != null) {
-          if ((this.jdField_a_of_type_JavaLangObject instanceof aobk))
+          if ((this.jdField_a_of_type_JavaLangObject instanceof aobp))
           {
-            localObject1 = ((aobk)this.jdField_a_of_type_JavaLangObject).a;
+            localObject1 = ((aobp)this.jdField_a_of_type_JavaLangObject).a;
             if ((!TextUtils.isEmpty(localCustomEmotionData.eId)) && (localObject1 != null) && (localCustomEmotionData.eId.equals(((Emoticon)localObject1).eId))) {
               ((List)localObject2).add(localCustomEmotionData);
             }
           }
-          else if ((this.jdField_a_of_type_JavaLangObject instanceof aoau))
+          else if ((this.jdField_a_of_type_JavaLangObject instanceof aoaz))
           {
             if (this.this$0.a.contains(this.jdField_a_of_type_JavaLangObject)) {}
-            for (localObject1 = ajsf.bh + ajxq.a(((aoau)this.jdField_a_of_type_JavaLangObject).d);; localObject1 = ((aoau)this.jdField_a_of_type_JavaLangObject).d)
+            for (localObject1 = ajsd.bh + ajxo.a(((aoaz)this.jdField_a_of_type_JavaLangObject).d);; localObject1 = ((aoaz)this.jdField_a_of_type_JavaLangObject).d)
             {
               if ((!TextUtils.isEmpty(localCustomEmotionData.emoPath)) && (localCustomEmotionData.emoPath.equals(localObject1))) {
                 ((List)localObject2).add(localCustomEmotionData);
@@ -74,7 +74,7 @@ public class FavRoamingStrategy$4
         {
           ((CustomEmotionData)localObject3).RomaingType = "needDel";
           this.this$0.a().b((CustomEmotionBase)localObject3);
-          anrh.a(this.this$0).add(((CustomEmotionData)localObject3).resid);
+          anrm.a(this.this$0).add(((CustomEmotionData)localObject3).resid);
           if (!TextUtils.isEmpty(((CustomEmotionData)localObject3).md5)) {
             ((List)localObject1).add(((CustomEmotionData)localObject3).md5);
           }
@@ -91,13 +91,13 @@ public class FavRoamingStrategy$4
         }
       }
       if (((List)localObject1).size() > 0) {
-        this.jdField_a_of_type_Antv.a((List)localObject1);
+        this.jdField_a_of_type_Anua.a((List)localObject1);
       }
     }
     for (;;)
     {
-      if (anrh.a(this.this$0) != null) {
-        anrh.a(this.this$0).obtainMessage(207, Integer.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+      if (anrm.a(this.this$0) != null) {
+        anrm.a(this.this$0).obtainMessage(207, Integer.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
       }
       return;
       QLog.e("FavRoamingStrategy", 1, "delete failed, not find original emotion data");

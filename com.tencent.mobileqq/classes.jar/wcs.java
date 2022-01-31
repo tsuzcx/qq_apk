@@ -1,17 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 
-public class wcs
-  implements View.OnClickListener
+public abstract interface wcs
 {
-  public wcs(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

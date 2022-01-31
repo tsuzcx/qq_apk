@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import aaiw;
-import aajx;
-import ajyc;
-import bcpw;
+import aais;
+import aajt;
+import ajya;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class AssistantSettingActivity$1$1
   implements Runnable
 {
-  public AssistantSettingActivity$1$1(aaiw paramaaiw, boolean paramBoolean) {}
+  public AssistantSettingActivity$1$1(aais paramaais, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aaiw.a.a.notifyDataSetChanged();
-    BaseApplication localBaseApplication = this.jdField_a_of_type_Aaiw.a.app.getApp();
+    this.jdField_a_of_type_Aais.a.a.notifyDataSetChanged();
+    BaseApplication localBaseApplication = this.jdField_a_of_type_Aais.a.app.getApp();
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = ajyc.a(2131700765);; str = ajyc.a(2131700761))
+    for (String str = ajya.a(2131700776);; str = ajya.a(2131700772))
     {
-      bcpw.a(localBaseApplication, str, 0).a();
+      bcql.a(localBaseApplication, str, 0).a();
       return;
     }
   }

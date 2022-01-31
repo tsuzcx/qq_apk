@@ -1,19 +1,14 @@
-import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.view.View;
 
-public class xeu
+class xeu
+  implements xfb
 {
-  int jdField_a_of_type_Int;
-  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
+  xeu(xes paramxes) {}
   
-  xeu(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  public void a(View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    paramView.getLayoutParams().height = ((int)paramFloat);
+    paramView.requestLayout();
   }
 }
 

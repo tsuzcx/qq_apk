@@ -1,9 +1,14 @@
+import android.widget.TextView;
+
 public class atwt
+  extends atva
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public TextView g;
+  
+  public atwt(atws paramatws)
+  {
+    super(paramatws);
+  }
 }
 
 

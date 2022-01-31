@@ -1,25 +1,23 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import java.util.HashMap;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class aajh
   implements CompoundButton.OnCheckedChangeListener
 {
-  public aajh(AssistantSettingActivity paramAssistantSettingActivity, ahfz paramahfz) {}
+  public aajh(AssistantSettingActivity paramAssistantSettingActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ahfz.b(paramBoolean);
-    paramCompoundButton = new HashMap();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    if (paramBoolean)
     {
-      paramCompoundButton.put("ext1", i + "");
-      ahih.a("sq.sz.hxdkg", 1, 0, paramCompoundButton);
+      axqy.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
       return;
     }
+    axqy.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
   }
 }
 

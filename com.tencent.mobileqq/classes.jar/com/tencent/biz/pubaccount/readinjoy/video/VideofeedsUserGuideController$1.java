@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import qwa;
+import qvx;
 
 public class VideofeedsUserGuideController$1
   implements Runnable
 {
-  public VideofeedsUserGuideController$1(qwa paramqwa) {}
+  public VideofeedsUserGuideController$1(qvx paramqvx) {}
   
   public void run()
   {
-    qwa.a(this.this$0).setVisibility(8);
-    qwa.a(this.this$0).findViewById(2131378756).setVisibility(8);
-    qwa.a(this.this$0).findViewById(2131378750).setVisibility(8);
-    qwa.a(this.this$0).findViewById(2131378751).setVisibility(8);
+    qvx.a(this.this$0).setVisibility(8);
+    qvx.a(this.this$0).findViewById(2131378761).setVisibility(8);
+    qvx.a(this.this$0).findViewById(2131378755).setVisibility(8);
+    qvx.a(this.this$0).findViewById(2131378756).setVisibility(8);
   }
 }
 

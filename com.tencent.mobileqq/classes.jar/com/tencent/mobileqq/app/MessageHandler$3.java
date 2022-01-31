@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import awzw;
+import awzy;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 

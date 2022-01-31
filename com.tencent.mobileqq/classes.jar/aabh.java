@@ -1,38 +1,61 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class aabh
-  extends RecyclablePool.Recyclable
+  extends QIPCModule
 {
-  public int a;
-  public long a;
-  public String a;
-  public int[] a;
-  public int b;
-  public long b;
-  public int[] b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  long e;
-  public int f;
-  public long f;
-  public int g;
-  public long g;
-  int h = 0;
-  int i = 0;
+  private static aabh a;
   
-  public aabh()
+  public aabh(String paramString)
   {
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfInt = new int[aabg.a().length];
-    this.jdField_b_of_type_ArrayOfInt = new int[aabg.b().length];
+    super(paramString);
   }
   
-  public String a(long paramLong)
+  public static aabh a()
   {
-    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.jdField_c_of_type_Long - paramLong), Long.valueOf(this.jdField_b_of_type_Long - paramLong), Long.valueOf(this.jdField_d_of_type_Long - paramLong), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.f), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.g), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_JavaLangString });
+    if (a == null) {}
+    try
+    {
+      a = new aabh("HardCoderModule");
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    EIPCResult localEIPCResult = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("HardCoder.QQManager", 2, "onCall action = " + paramString);
+    }
+    if (paramString.equals("start"))
+    {
+      paramInt = paramBundle.getInt("key_delay");
+      i = paramBundle.getInt("key_cpu");
+      j = paramBundle.getInt("key_io");
+      k = paramBundle.getInt("key_bind");
+      m = paramBundle.getInt("key_timeout");
+      n = paramBundle.getInt("key_scene");
+      l = paramBundle.getLong("key_action");
+      paramString = paramBundle.getString("key_tag");
+      localEIPCResult = EIPCResult.createResult(aabc.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
+    }
+    while (!paramString.equals("stop"))
+    {
+      int i;
+      int j;
+      int k;
+      int m;
+      int n;
+      long l;
+      return localEIPCResult;
+    }
+    paramInt = paramBundle.getInt("key_code");
+    aabc.a().a(paramInt);
+    return null;
   }
 }
 

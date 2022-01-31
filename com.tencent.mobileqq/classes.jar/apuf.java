@@ -1,43 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-final class apuf
-  implements apur
+public class apuf
 {
-  apuf(String paramString1, String paramString2) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
   
-  public void a(Bitmap paramBitmap)
+  public apuf()
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
-    {
-      apvb.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = gr.a(this.b);
-      gr.a(this.a, i);
-      return;
-    }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    this.jdField_a_of_type_JavaLangString = "share_file";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

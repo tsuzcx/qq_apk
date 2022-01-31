@@ -1,16 +1,23 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aqgu
-  extends GridLayoutManager.SpanSizeLookup
+  extends RecyclerView.OnScrollListener
 {
-  aqgu(aqgt paramaqgt) {}
+  aqgu(aqgr paramaqgr) {}
   
-  public int getSpanSize(int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.getItemViewType(paramInt) == aqgp.b) {
-      return 5;
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      aqgr.a(this.a).c();
     }
-    return 1;
+    while (!aqgr.a(this.a).a()) {
+      return;
+    }
+    aqgr.a(this.a).b();
+    aqgr.a(this.a).notifyDataSetChanged();
   }
 }
 

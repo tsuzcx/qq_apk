@@ -1,14 +1,20 @@
 public class waa
+  implements waj
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  String c;
-  public String d;
-  String e;
-  public String f;
-  public String g;
+  public long b;
+  
+  public void onFailure(String paramString) {}
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void onSuccess(String paramString) {}
 }
 
 

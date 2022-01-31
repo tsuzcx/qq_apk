@@ -1,28 +1,32 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
 
 public class azex
-  implements bfoq
+  implements bfpv
 {
-  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Baos.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+  public azex(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public azex(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bfol parambfol, URLDrawable paramURLDrawable) {}
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = this.jdField_a_of_type_Bfol.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693383).equals(paramView)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
-    }
+    if (paramView == null) {}
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693393).equals(paramView)) {
-        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131693391).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c, this.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Int = paramInt;
+      if (this.a.jdField_a_of_type_Agqi != null) {
+        this.a.jdField_a_of_type_Agqi.b(paramInt);
+      }
+      if (!this.a.c) {
+        axqy.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
+      }
+      while (TroopAvatarWallEditActivity.a(this.a) != null)
+      {
+        TroopAvatarWallEditActivity.a(this.a).a(paramInt);
+        return;
+        axqy.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
       }
     }
   }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dating;
 
 import android.util.Pair;
-import anmg;
-import annc;
+import anml;
+import annh;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Set;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class StrangerHdHeadUrlFetcher$1
   implements Runnable
 {
-  public StrangerHdHeadUrlFetcher$1(annc paramannc, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
+  public StrangerHdHeadUrlFetcher$1(annh paramannh, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
@@ -25,12 +25,12 @@ public class StrangerHdHeadUrlFetcher$1
         if (localObject1 != null)
         {
           this.this$0.jdField_a_of_type_Long = System.currentTimeMillis();
-          synchronized (annc.a(this.this$0))
+          synchronized (annh.a(this.this$0))
           {
             if (!this.this$0.jdField_a_of_type_Boolean)
             {
               this.this$0.jdField_a_of_type_Boolean = true;
-              this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(annc.a(this.this$0), true);
+              this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(annh.a(this.this$0), true);
             }
           }
         }
@@ -49,7 +49,7 @@ public class StrangerHdHeadUrlFetcher$1
           throw localObject2;
         }
       }
-      anmg.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
+      anml.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
       return;
     }
   }

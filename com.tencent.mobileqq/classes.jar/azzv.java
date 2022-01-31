@@ -1,25 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.widget.AdapterView;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class azzv
-  implements bfpc
+  implements DialogInterface.OnClickListener
 {
-  public azzv(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
+  public azzv(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
-      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Azzx.notifyDataSetChanged();
-      this.a.e();
-      return;
-      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

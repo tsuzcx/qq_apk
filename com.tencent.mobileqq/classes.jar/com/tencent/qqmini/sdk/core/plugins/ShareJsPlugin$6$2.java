@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import beka;
+import bekr;
 
 class ShareJsPlugin$6$2
   implements DialogInterface.OnCancelListener

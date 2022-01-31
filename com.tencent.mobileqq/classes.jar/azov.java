@@ -1,56 +1,34 @@
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class azov
-  extends azou
+  extends azow
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    int i = 0;
     TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
+    if (localTroopFeedItem == null) {}
     for (;;)
     {
-      JSONObject localJSONObject;
+      return null;
+      localTroopFeedItem.type = 99;
       try
       {
-        paramJSONObject = paramJSONObject.getJSONArray("content");
-        if (i >= paramJSONObject.length()) {
-          break label283;
-        }
-        localJSONObject = paramJSONObject.getJSONObject(i);
-        int j = localJSONObject.getInt("type");
-        if (j == 5)
+        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
+        if (paramJSONObject.has("app_id"))
         {
-          if (localJSONObject.has("file_path")) {
-            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
-          }
-          localTroopFeedItem.type = 0;
-          if (localJSONObject.has("sharesize")) {
-            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
-          }
-          boolean bool = localJSONObject.has("bus_id");
-          if (bool) {}
-          try
+          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
+          if ((!sst.i()) && (localTroopFeedItem.isStoryType()))
           {
-            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
-            if (!localJSONObject.has("sharefile")) {
-              break label308;
+            if (!QLog.isColorLevel()) {
+              continue;
             }
-            localTroopFeedItem.title = localJSONObject.getString("sharefile");
+            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
+            return null;
           }
-          catch (JSONException localJSONException)
-          {
-            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
-            continue;
-          }
-        }
-        if (j != 3) {
-          break label308;
         }
       }
       catch (JSONException paramJSONObject)
@@ -58,19 +36,12 @@ public class azov
         paramJSONObject.printStackTrace();
         return null;
       }
-      if (localJSONObject.has("pic_id"))
-      {
-        localTroopFeedItem.picPath = ("http://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
-        break label308;
-        label283:
-        if ((bbjw.a(localTroopFeedItem.linkUrl)) || (bbjw.a(localTroopFeedItem.content))) {
-          break;
-        }
-        return localTroopFeedItem;
-      }
-      label308:
-      i += 1;
     }
+    paramJSONObject = paramJSONObject.getJSONObject("content");
+    localTroopFeedItem.content = paramJSONObject.getString("body");
+    localTroopFeedItem.title = paramJSONObject.getString("title");
+    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+    return localTroopFeedItem;
   }
 }
 

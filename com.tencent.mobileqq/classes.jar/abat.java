@@ -1,66 +1,76 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class abat
-  extends LinkMovementMethod
+  implements askq<List<EmoticonPackage>>
 {
-  private abav jdField_a_of_type_Abav;
+  public abat(EmosmActivity paramEmosmActivity) {}
   
-  private abat(EditInfoActivity paramEditInfoActivity) {}
-  
-  private abav a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public void a(List<EmoticonPackage> paramList)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramTextView.getTotalPaddingLeft();
-    int m = paramTextView.getTotalPaddingTop();
-    int n = paramTextView.getScrollX();
-    int i1 = paramTextView.getScrollY();
-    paramTextView = paramTextView.getLayout();
-    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
-    paramTextView = (abav[])paramSpannable.getSpans(i, i, abav.class);
-    if (paramTextView.length > 0) {
-      return paramTextView[0];
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_Anth != null) {
+      this.a.jdField_a_of_type_Anth.a();
     }
-    return null;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_Abav = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.jdField_a_of_type_Abav != null)
+      EmoticonPackage localEmoticonPackage;
+      if (this.a.b == 1)
       {
-        this.jdField_a_of_type_Abav.a(true);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_Abav), paramSpannable.getSpanEnd(this.jdField_a_of_type_Abav));
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+      if (this.a.b == 2)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
       }
     }
-    do
+    if (this.a.b == 1)
     {
-      return true;
-      if (paramMotionEvent.getAction() != 2) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.findHeaderViewPosition(this.a.jdField_a_of_type_AndroidViewView) == -1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.d();
+      if (this.a.b != 2) {
+        break label344;
+      }
+      this.a.setTitle(2131692038);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Anth != null) {
+        this.a.jdField_a_of_type_Anth.notifyDataSetChanged();
+      }
+      return;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
         break;
       }
-      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-    } while ((this.jdField_a_of_type_Abav == null) || (paramTextView == this.jdField_a_of_type_Abav));
-    this.jdField_a_of_type_Abav.a(false);
-    this.jdField_a_of_type_Abav = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
-    if (this.jdField_a_of_type_Abav != null)
-    {
-      this.jdField_a_of_type_Abav.a(false);
-      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      break;
+      label344:
+      this.a.setTitle(2131692264);
     }
-    this.jdField_a_of_type_Abav = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
   }
 }
 

@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class srq
-  implements View.OnClickListener
+public abstract interface srq
 {
-  srq(srn paramsrn) {}
+  public abstract void a(spy paramspy);
   
-  public void onClick(View paramView)
-  {
-    if (srn.a(this.a) != null) {
-      srn.a(this.a).a(srn.a(this.a));
-    }
-  }
+  public abstract void b(spy paramspy);
 }
 
 

@@ -1,108 +1,68 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StAuthInfo;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetNAppForJumpReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetNAppForJumpRsp;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
-public abstract class bfad
+public class bfad
+  extends bfau
 {
-  private static volatile AtomicInteger a;
-  public int a;
+  private INTERFACE.StGetNAppForJumpReq a = new INTERFACE.StGetNAppForJumpReq();
   
-  static
+  public bfad(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.a.android_pkg_name.set(paramString3);
+    this.a.mini_appid.set(paramString1);
+    this.a.native_appid.set(paramString2);
+    this.a.scene.set(paramInt);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
-  private String c()
+  protected String a()
   {
-    String str = beuc.a().a();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
+    return "mini_user_info";
   }
   
-  protected abstract String a();
-  
-  public abstract JSONObject a(byte[] paramArrayOfByte);
-  
-  protected abstract byte[] a();
-  
-  protected byte[] a(byte[] paramArrayOfByte)
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetNAppForJumpRsp localStGetNAppForJumpRsp = new INTERFACE.StGetNAppForJumpRsp();
     try
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localStQWebRsp.busiBuff.get().toByteArray();
-      return paramArrayOfByte;
+      localStGetNAppForJumpRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetNAppForJumpRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("packageName", localStGetNAppForJumpRsp.android_pkg.get());
+        paramArrayOfByte.put("nativeAppId", localStGetNAppForJumpRsp.native_appid.get());
+        paramArrayOfByte.put("downloadUrl", localStGetNAppForJumpRsp.android_donwload_url.get());
+        paramArrayOfByte.put("appName", localStGetNAppForJumpRsp.appName.get());
+        paramArrayOfByte.put("onlyOpen", localStGetNAppForJumpRsp.onlyOpen.get());
+        return paramArrayOfByte;
+      }
+      betc.a("GetAppInfoByIdRequest", "onResponse fail.rsp = null");
+      return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("ProtoBufRequest", "decode fail.", paramArrayOfByte);
+      betc.a("GetAppInfoByIdRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  protected abstract String b();
-  
-  public byte[] b()
+  protected byte[] a()
   {
-    Object localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    localStQWebReq.Seq.set(this.jdField_a_of_type_Int);
-    localStQWebReq.traceid.set(c());
-    if (bfgt.a() != null) {
-      localStQWebReq.qua.set(bfgt.a());
-    }
-    if (((MiniAppProxy)localObject).getDeviceInfo() != null) {
-      localStQWebReq.deviceInfo.set(((MiniAppProxy)localObject).getDeviceInfo());
-    }
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
-    localStQWebReq.Module.set(a());
-    localStQWebReq.Cmdname.set(b());
-    localObject = new PROTOCAL.StAuthInfo();
-    if (beuc.a().a() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).uin.set(beuc.a().a());
-    }
-    if (beuc.a().a() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).sig.set(ByteStringMicro.copyFrom(beuc.a().a()));
-    }
-    ((PROTOCAL.StAuthInfo)localObject).type.set(beuc.a().a());
-    if (beuc.a().e() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).platform.set(beuc.a().e());
-    }
-    if (beuc.a().c() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).openid.set(beuc.a().c());
-    }
-    if (beuc.a().f() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).appid.set(beuc.a().f());
-    }
-    if (beuc.a().d() != null) {
-      ((PROTOCAL.StAuthInfo)localObject).sessionkey.set(ByteStringMicro.copyFrom(beuc.a().d().getBytes()));
-    }
-    localStQWebReq.loginSig.set((MessageMicro)localObject);
-    return localStQWebReq.toByteArray();
+    return this.a.toByteArray();
   }
   
-  public String toString()
+  protected String b()
   {
-    return "ProtoBufRequest{seqNo=" + this.jdField_a_of_type_Int + ",CmdName=" + b() + '}';
+    return "GetNAppForJump";
   }
 }
 

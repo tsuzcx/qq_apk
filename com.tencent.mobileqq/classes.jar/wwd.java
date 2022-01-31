@@ -1,91 +1,129 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class wwd
   extends RecyclerView.ViewHolder
-  implements View.OnClickListener
 {
-  private CertifiedAccountMeta.StQQGroup jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup;
-  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ahnr jdField_a_of_type_Ahnr;
+  private ahpr jdField_a_of_type_Ahpr;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap;
+  public sat a;
+  private boolean jdField_a_of_type_Boolean;
   
-  public wwd(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
+  public wwd(View paramView, ahnr paramahnr, HashMap<String, Bitmap> paramHashMap, DragFrameLayout paramDragFrameLayout)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378262));
-    this.b = ((TextView)paramView.findViewById(2131378279));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363601));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_Ahnr = paramahnr;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Ahpr = paramDragFrameLayout;
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375903));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375908));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131375911));
   }
   
-  public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
+  private boolean a(sat paramsat1, sat paramsat2)
   {
-    String str;
-    if (paramStQQGroup != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
-      this.b.setText(paramStQQGroup.memberNum.get() + ajyc.a(2131713371));
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
-      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-      if (paramStQQGroup.joinState.get() != 1) {
-        break label143;
-      }
-      str = ajyc.a(2131713367);
-      localButton.setText(str);
-      if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
-      {
-        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
-        if (paramStQQGroup.joinState.get() != 1) {
-          break label152;
-        }
+    if ((paramsat1 != null) && (paramsat2 != null)) {
+      if ((!paramsat1.jdField_a_of_type_JavaLangString.equals(paramsat2.jdField_a_of_type_JavaLangString)) || (paramsat1.b != paramsat2.b) || (paramsat1.jdField_a_of_type_Int != paramsat2.jdField_a_of_type_Int) || (!paramsat1.c.equals(paramsat2.c))) {
+        break label88;
       }
     }
-    label143:
-    label152:
-    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
+    label88:
+    for (boolean bool = true;; bool = false)
     {
-      xhe.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
-      return;
-      str = ajyc.a(2131713366);
-      break;
+      QLog.d(ServiceFolderFollowPBHeadView.a(), 4, "isSameServiceData:" + bool);
+      return false;
     }
   }
   
-  public void onClick(View paramView)
+  @RequiresApi(api=8)
+  public void a(ImageView paramImageView, String paramString)
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
-    {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() == 1)
-      {
-        localObject = actn.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
-        ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
-        ((Intent)localObject).putExtra("uintype", 1);
-        ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
-        paramView.getContext().startActivity((Intent)localObject);
-      }
+    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localBitmap == null) {
+      paramImageView.setImageDrawable(this.jdField_a_of_type_Ahnr.a(1008, paramString));
     }
-    else {
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        paramImageView.setColorFilter(1711276032);
+      }
+      return;
+      paramImageView.setImageBitmap(localBitmap);
+    }
+  }
+  
+  public void a(sat paramsat, int paramInt)
+  {
+    if ((paramsat == null) || (a(this.jdField_a_of_type_Sat, paramsat))) {
       return;
     }
-    Object localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
-    ((Bundle)localObject).putInt("t_s_f", 1001);
-    bamn.a(paramView.getContext(), (Bundle)localObject, 2);
+    this.jdField_a_of_type_Sat = paramsat;
+    this.itemView.setTag(this.jdField_a_of_type_Sat);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131375905, this.jdField_a_of_type_Sat);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131375903, Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramsat.c);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
+    }
+    a(this.jdField_a_of_type_ComTencentImageURLImageView, paramsat.jdField_a_of_type_JavaLangString);
+    int j = paramsat.b;
+    int i = paramsat.jdField_a_of_type_Int;
+    int k;
+    if (j > 0) {
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        j = 0;
+        k = 0;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bfqs.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
+      this.itemView.setOnClickListener(new wwe(this, paramsat, paramInt));
+      xhb.a(paramsat.jdField_a_of_type_JavaLangString, "auth_follow", "new_s_exp", 0, 0, new String[] { "", "", paramsat.c, paramsat.jdField_a_of_type_JavaLangCharSequence.toString() });
+      return;
+      if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        j = 0;
+        k = 0;
+        i = 1;
+      }
+      else
+      {
+        i = 3;
+        k = 2130849301;
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, this.itemView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Ahpr);
+        continue;
+        j = 0;
+        k = 0;
+        i = 0;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alyz;
-import baxa;
+import alyy;
+import baxo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.util.WeakReference;
@@ -9,7 +9,7 @@ import mqq.util.WeakReference;
 public class DynamicAvatarManager$7
   implements Runnable
 {
-  public DynamicAvatarManager$7(alyz paramalyz, baxa parambaxa) {}
+  public DynamicAvatarManager$7(alyy paramalyy, baxo parambaxo) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class DynamicAvatarManager$7
           if ((localWeakReference == null) || (localWeakReference.get() == null) || (this.this$0.a.contains(localWeakReference))) {
             break label233;
           }
-          boolean bool = this.this$0.a((baxa)localWeakReference.get());
+          boolean bool = this.this$0.a((baxo)localWeakReference.get());
           if (QLog.isColorLevel()) {
             QLog.i("Q.dynamicAvatar", 2, "onPlayFinished to play. result : " + bool);
           }

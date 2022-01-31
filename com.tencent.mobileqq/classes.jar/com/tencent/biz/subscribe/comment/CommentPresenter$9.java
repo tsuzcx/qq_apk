@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.comment;
 
-import wnl;
+import wni;
 
 public class CommentPresenter$9
   implements Runnable
 {
-  public CommentPresenter$9(wnl paramwnl) {}
+  public CommentPresenter$9(wni paramwni) {}
   
   public void run()
   {

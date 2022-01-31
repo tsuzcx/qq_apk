@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,8 +10,8 @@ import com.tencent.biz.pubaccount.readinjoy.view.widget.TopEdgeGestureLayout;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import onk;
-import qke;
+import onh;
+import qkb;
 
 public class ReadInJoyDraftboxActivity
   extends IphoneTitleBarActivity
@@ -25,10 +25,10 @@ public class ReadInJoyDraftboxActivity
     if (this.app == null) {
       return;
     }
-    qke.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    qkb.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     setContentView(2131558451);
-    setTitle(ajyc.a(2131712888));
-    this.leftView.setText(ajyc.a(2131712877));
+    setTitle(ajya.a(2131712899));
+    this.leftView.setText(ajya.a(2131712888));
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new TopEdgeGestureLayout(this));
     }
@@ -42,7 +42,7 @@ public class ReadInJoyDraftboxActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
     a();
     return true;
   }

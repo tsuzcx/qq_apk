@@ -1,8 +1,19 @@
-public abstract interface bejf
+public class bejf
 {
-  public abstract void onFail(int paramInt);
+  private static volatile bejf jdField_a_of_type_Bejf;
+  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public abstract void onSuccess();
+  public static bejf a()
+  {
+    if (jdField_a_of_type_Bejf == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Bejf == null) {
+        jdField_a_of_type_Bejf = new bejf();
+      }
+      return jdField_a_of_type_Bejf;
+    }
+  }
 }
 
 

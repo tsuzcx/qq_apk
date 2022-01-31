@@ -1,155 +1,109 @@
-import android.content.Intent;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch;
+import com.tencent.qqmini.sdk.core.widget.FormSwitchItem;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class beil
+  extends BaseAdapter
 {
-  private static final beil jdField_a_of_type_Beil = new beil();
-  private ArrayList<beim> jdField_a_of_type_JavaUtilArrayList;
-  private ArrayList<bein> b;
+  Context jdField_a_of_type_AndroidContentContext;
+  protected LayoutInflater a;
+  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+  List<behz> jdField_a_of_type_JavaUtilList;
   
-  public static beil a()
+  public beil(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    return jdField_a_of_type_Beil;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public behz a(int paramInt)
   {
-    besl.a("ActivityResultManager", "notifyActivityResultListener requestCode:" + paramInt1 + " resultCode:" + paramInt2);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
-    {
-      besl.d("ActivityResultManager", "mActivityResultListenerList == null || mActivityResultListenerList.size() == 0");
-      return;
+    if ((paramInt > -1) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (behz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    try
+    return null;
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      behz localbehz = (behz)localIterator.next();
+      if (paramString.equals(localbehz.jdField_a_of_type_JavaLangString))
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
+        if (paramBoolean) {}
+        for (int i = 2;; i = 4)
         {
-          beim localbeim = (beim)localIterator.next();
-          if (localbeim.doOnActivityResult(paramInt1, paramInt2, paramIntent))
-          {
-            besl.a("ActivityResultManager", "triggerListener " + localbeim);
-            return;
-          }
+          localbehz.jdField_a_of_type_Int = i;
+          break;
         }
       }
     }
-    catch (Throwable paramIntent)
-    {
-      besl.d("ActivityResultManager", paramIntent.getMessage(), paramIntent);
-      return;
+  }
+  
+  public void a(List<behz> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
   }
   
-  public void a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public int getCount()
   {
-    besl.a("ActivityResultManager", "notifyRequestPermissionResultListener requestCode:" + paramInt + " permission:" + paramArrayOfString);
-    if ((this.b == null) || (this.b.size() == 0))
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool;
+    label30:
+    beib localbeib;
+    if (paramView != null)
     {
-      besl.d("ActivityResultManager", "mActivityResultListenerList == null || mActivityResultListenerList.size() == 0");
-      return;
-    }
-    try
-    {
-      synchronized (this.b)
+      paramView = (FormSwitchItem)paramView;
+      paramViewGroup = a(paramInt);
+      if (paramViewGroup != null)
       {
-        Iterator localIterator = this.b.iterator();
-        while (localIterator.hasNext())
-        {
-          bein localbein = (bein)localIterator.next();
-          if (localbein.doOnRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt))
-          {
-            besl.a("ActivityResultManager", "triggerListener " + localbein);
-            return;
-          }
+        if (paramViewGroup.jdField_a_of_type_Int != 2) {
+          break label100;
+        }
+        bool = true;
+        paramView.setChecked(bool);
+        paramView.a().setTag(paramViewGroup.jdField_a_of_type_JavaLangString);
+        localbeib = beic.a().a(paramViewGroup.jdField_a_of_type_JavaLangString);
+        if (localbeib == null) {
+          break label106;
         }
       }
     }
-    catch (Throwable paramArrayOfString)
+    label100:
+    label106:
+    for (paramViewGroup = localbeib.b;; paramViewGroup = paramViewGroup.jdField_a_of_type_JavaLangString)
     {
-      besl.d("ActivityResultManager", paramArrayOfString.getMessage(), paramArrayOfString);
-      return;
-    }
-  }
-  
-  public void a(beim parambeim)
-  {
-    besl.a("ActivityResultManager", "addActivityResultListener " + parambeim);
-    if (parambeim == null) {
-      return;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(parambeim);
-      return;
-    }
-    catch (Throwable parambeim)
-    {
-      besl.d("ActivityResultManager", parambeim.getMessage(), parambeim);
-    }
-  }
-  
-  public void a(bein parambein)
-  {
-    besl.a("ActivityResultManager", "addRequestPermissionResultListener " + parambein);
-    if (parambein == null) {
-      return;
-    }
-    try
-    {
-      if (this.b == null) {
-        this.b = new ArrayList();
-      }
-      this.b.add(parambein);
-      return;
-    }
-    catch (Throwable parambein)
-    {
-      besl.d("ActivityResultManager", parambein.getMessage(), parambein);
-    }
-  }
-  
-  public void b(beim parambeim)
-  {
-    besl.a("ActivityResultManager", "removeActivityResultListener " + parambeim);
-    if (parambeim != null) {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          return;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(parambeim);
-        return;
-      }
-      catch (Throwable parambeim)
-      {
-        besl.d("ActivityResultManager", parambeim.getMessage(), parambeim);
-      }
-    }
-  }
-  
-  public void b(bein parambein)
-  {
-    besl.a("ActivityResultManager", "removeRequestPermissionResultListener " + parambein);
-    if (parambein != null) {
-      try
-      {
-        if (this.b == null) {
-          return;
-        }
-        this.b.remove(parambein);
-        return;
-      }
-      catch (Throwable parambein)
-      {
-        besl.d("ActivityResultManager", parambein.getMessage(), parambein);
-      }
+      paramView.setText(paramViewGroup);
+      return paramView;
+      paramView = new FormSwitchItem(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      break;
+      bool = false;
+      break label30;
     }
   }
 }

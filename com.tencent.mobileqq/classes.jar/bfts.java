@@ -1,11 +1,13 @@
-import android.view.View;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.widget.MovingView;
 
-public abstract interface bfts
+public class bfts
 {
-  public abstract void a();
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
+  public bfts(MovingView paramMovingView) {}
 }
 
 

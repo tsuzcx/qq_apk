@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.theme.diy;
 
-import ajsf;
-import akvu;
+import ajsd;
+import akvt;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import mqq.app.AppRuntime;
 
@@ -170,7 +170,7 @@ public class DIYThemeUtils
     //   327: putfield 173	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
     //   330: aload 7
     //   332: aload_0
-    //   333: invokestatic 179	bfki:a	(Landroid/content/Context;)Z
+    //   333: invokestatic 179	bfkz:a	(Landroid/content/Context;)Z
     //   336: putfield 182	com/tencent/image/URLDrawable$URLDrawableOptions:mUseSharpPImage	Z
     //   339: aload_1
     //   340: aload 7
@@ -262,20 +262,20 @@ public class DIYThemeUtils
       localResData.path = ChatBackgroundManager.a(true, paramResSuitData.id);
       return localResData;
     case 116: 
-      localResData.path = (ajsf.cj + "deal/" + paramResSuitData.id);
+      localResData.path = (ajsd.cj + "deal/" + paramResSuitData.id);
       return localResData;
     case 110: 
       localResData.path = ChatBackgroundManager.a(true, paramResSuitData.id);
       return localResData;
     case 117: 
-      localResData.path = (ajsf.ci + localResData.id + "/" + localResData.url.hashCode());
+      localResData.path = (ajsd.ci + localResData.id + "/" + localResData.url.hashCode());
       return localResData;
     case 120: 
     case 121: 
       if (paramAppRuntime == null)
       {
         paramAppRuntime = "0";
-        paramAppRuntime = new StringBuilder().append(ThemeDiyStyleLogic.getDataDIYDir()).append(akvu.a(paramAppRuntime)).append("/");
+        paramAppRuntime = new StringBuilder().append(ThemeDiyStyleLogic.getDataDIYDir()).append(akvt.a(paramAppRuntime)).append("/");
         if (120 != paramInt) {
           break label350;
         }

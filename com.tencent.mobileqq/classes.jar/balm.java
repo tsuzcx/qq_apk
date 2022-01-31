@@ -1,71 +1,80 @@
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.RspBody;
 
-public class balm
-  extends akim
+class balm
+  extends mxi
 {
-  public balm(TroopNameHelper paramTroopNameHelper) {}
+  balm(balh parambalh, balg parambalg, String paramString1, String paramString2) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
-    paramList = (TroopNameHelper.GenTroopNameTask)this.a.b.get(paramString);
-    if (paramList != null)
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Balg == null))
     {
-      TroopNameHelper.a(this.a, paramList);
-      this.a.b.remove(paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder(150);
-      ((StringBuilder)localObject).append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
-      QLog.i("TroopNameHelper", 2, ((StringBuilder)localObject).toString());
-    }
-    paramString = String.valueOf(paramLong1);
-    if ((paramInt1 == 1) && (paramBoolean) && (this.a.b.containsKey(paramString)))
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-      if (localObject != null) {}
-    }
-    else
-    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Balg);
+      }
+      if (this.jdField_a_of_type_Balg != null) {
+        this.jdField_a_of_type_Balg.a(paramInt, "sso request error or callback is null.");
+      }
       return;
     }
-    if (paramList == null) {}
-    for (paramInt1 = 0;; paramInt1 = paramList.size())
+    oidb_0x6c2.RspBody localRspBody;
+    try
     {
-      if (paramInt1 == 1)
+      localRspBody = new oidb_0x6c2.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramInt = localRspBody.uint32_result.get();
+      if ((paramInt != 0) || (paramBundle == null)) {
+        break label357;
+      }
+      paramInt = paramBundle.getInt("subCmd");
+      if ((paramInt == 0) && (localRspBody.msg_gift_bag_info.has()))
       {
-        paramList = (oidb_0x899.memberlist)paramList.get(0);
-        if ((paramList == null) || (!paramList.uint64_member_uin.has())) {
-          break;
+        paramBundle = (oidb_0x6c2.GiftBagInfo)localRspBody.msg_gift_bag_info.get();
+        paramArrayOfByte = null;
+        if (localRspBody.msg_winner.has()) {
+          paramArrayOfByte = (oidb_0x6c2.Player)localRspBody.msg_winner.get();
         }
-        paramList = String.valueOf(paramList.uint64_member_uin.get());
-        if ((paramList != null) && (!"".equals(paramList.trim()))) {
-          ((TroopInfo)localObject).troopowneruin = paramList.trim();
+        paramBundle = new TroopGiftBagInfo(paramBundle, paramArrayOfByte);
+        if (paramArrayOfByte != null)
+        {
+          paramArrayOfByte = this.jdField_a_of_type_JavaLangString + "_" + this.b;
+          this.jdField_a_of_type_Balh.a.put(paramArrayOfByte, paramBundle);
+          this.jdField_a_of_type_Balh.a(paramBundle);
         }
+        this.jdField_a_of_type_Balg.a(paramBundle);
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((TroopInfo)localObject);
-      paramList = (TroopNameHelper.GenTroopNameTask)this.a.b.get(paramString);
-      if ((paramList == null) || (paramList.a)) {
-        break;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
       }
-      TroopNameHelper.a(this.a, paramList);
+      this.jdField_a_of_type_Balg.a(-1, "InvalidProtocolBufferMicroException");
       return;
     }
+    if ((paramInt == 1) && (localRspBody.int32_player.has()))
+    {
+      paramInt = localRspBody.int32_player.get();
+      this.jdField_a_of_type_Balg.c(paramInt);
+      return;
+    }
+    this.jdField_a_of_type_Balg.a(-1, "Invalid RspData. subCmd:" + paramInt);
+    return;
+    label357:
+    paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
+    this.jdField_a_of_type_Balg.a(paramInt, paramArrayOfByte);
   }
 }
 

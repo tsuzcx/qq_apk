@@ -2,14 +2,15 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class sxi
-  implements sxb
+  implements swy
 {
-  public sxi(StoryVideoUploadTask paramStoryVideoUploadTask, sxh paramsxh) {}
+  public sxi(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  public void a(sxa paramsxa)
+  public void a(swx paramswx)
   {
-    this.jdField_a_of_type_Sxh.k = ((swv)paramsxa).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    ((sxe)this.a.a).j = ((sws)paramswx).b;
+    ved.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((sxe)this.a.a).j);
+    this.a.a(1, new ErrorMessage());
   }
 }
 

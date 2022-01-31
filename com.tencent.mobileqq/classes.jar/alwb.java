@@ -1,14 +1,33 @@
+import android.os.Bundle;
 import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class alwb
-  implements ajtg
+  implements EIPCResultCallback
 {
-  alwb(alvz paramalvz, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  alwb(alvy paramalvy, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", this.jdField_a_of_type_JavaLangString, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    int j = -1;
+    int i = j;
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data;
+      i = j;
+      if (paramEIPCResult != null)
+      {
+        i = j;
+        if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+          i = paramEIPCResult.getInt("code");
+        }
+      }
+    }
     if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(i);
     }
   }
 }

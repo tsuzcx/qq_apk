@@ -1,164 +1,156 @@
-import android.os.Handler;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.util.LocationReportUtil.1;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForLocationShare;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Random;
-import mqq.app.AppRuntime;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype31;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class aryy
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static long jdField_b_of_type_Long;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static boolean c;
-  
-  static
+  public static List<MessageRecord> a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+    return paramQQAppInterface.a().a(paramString, paramInt, new int[] { -2076 }, 5);
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, aruk paramaruk)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean)
   {
-    if (paramaruk == null) {}
-    do
+    paramString = b(paramQQAppInterface, paramInt, paramString);
+    if (paramString != null)
     {
-      do
+      paramInt = 0;
+      if (paramInt < paramString.size())
       {
-        return 0;
-        paramQQAppInterface = aruq.a(paramQQAppInterface).a(paramaruk);
-      } while (paramQQAppInterface == null);
-      if (paramQQAppInterface.a() == null) {
-        return 1;
+        MessageRecord localMessageRecord = (MessageRecord)paramString.get(paramInt);
+        if ((localMessageRecord instanceof MessageForLocationShare))
+        {
+          if (paramInt != paramString.size() - 1) {
+            break label69;
+          }
+          a(paramQQAppInterface, localMessageRecord, paramBoolean);
+        }
+        for (;;)
+        {
+          paramInt += 1;
+          break;
+          label69:
+          a(paramQQAppInterface, localMessageRecord, false);
+        }
       }
-      if (paramQQAppInterface.a() == -1) {
-        return 2;
-      }
-    } while (paramQQAppInterface.a() == -1);
-    return 3;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationMessageUtil", 2, new Object[] { "updateAllLbsMsgState: invoked. ", " lbsMsgs: ", paramString, " lbsMsgs.size(): ", Integer.valueOf(paramString.size()) });
+    }
   }
   
-  public static void a()
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationReportUtil", 2, "onAppForeground: invoked. ");
-    }
-    f();
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (jdField_a_of_type_Boolean)
+    MessageForLocationShare localMessageForLocationShare;
+    if ((paramMessageRecord instanceof MessageForLocationShare))
     {
-      jdField_a_of_type_Int = bbjn.G(localBaseApplicationImpl);
-      c = bbjn.e(localBaseApplicationImpl);
+      localMessageForLocationShare = (MessageForLocationShare)paramMessageRecord;
+      if (localMessageForLocationShare.isSharingLocation == paramBoolean) {
+        break label79;
+      }
+      localMessageForLocationShare.isSharingLocation = paramBoolean;
+      paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, localMessageForLocationShare.convertToMsgData());
+    }
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationReportUtil", 2, new Object[] { "onAppForeground: invoked. ", " sProcBgAliveTimeSecond: ", Integer.valueOf(jdField_a_of_type_Int), " sProcBgLocationIsReporting: ", Boolean.valueOf(c) });
+        QLog.d("LocationMessageUtil", 2, new Object[] { "updateMsgSharingState: invoked. updateMsgContentByUniseq to false ", " locationShare: ", localMessageForLocationShare });
+      }
+      return;
+      label79:
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationMessageUtil", 2, "updateMsgSharingState: invoked. state ok, no need update. ");
       }
     }
-    bbjn.a(localBaseApplicationImpl, false, 0);
   }
   
-  public static boolean a(int paramInt)
-  {
-    return new Random(System.currentTimeMillis()).nextInt(paramInt) == 0;
-  }
-  
-  public static void b()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LocationReportUtil", 2, "onAppBackground: invoked. ");
+      QLog.d("LocationMessageUtil", 2, new Object[] { "onDecodeC2cLbsCloseRoomMessage: invoked. ", " friendUin: ", paramString });
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime == null) || (TextUtils.isEmpty(localAppRuntime.getAccount()))) {
+    aryz.a(paramQQAppInterface, 0, paramString, false);
+    a(paramQQAppInterface, 0, paramString, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, boolean paramBoolean, azml paramazml)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationMessageUtil", 2, new Object[] { "decodePBMsgElems_LbsShareMsg: invoked. ", "elems = [" + paramList + "], msgRecords = [" + paramList1 + "], logBuilder = [" + paramStringBuilder + "], msg = [" + paramMsg + "]" });
+    }
+    if ((paramList == null) || (paramList.size() == 0)) {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationReportUtil", 2, new Object[] { "onAppBackground: invoked. app account null", " rt: ", localAppRuntime });
+        QLog.i("LocationMessageUtil", 2, "decodePBMsgElems_LbsShareMsg msg decode failed");
       }
     }
     do
     {
       return;
-      jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    boolean bool = aruq.a((QQAppInterface)localAppRuntime).a.a();
-    if (jdField_a_of_type_JavaLangRunnable == null) {
-      jdField_a_of_type_JavaLangRunnable = new LocationReportUtil.1(bool);
-    }
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_AndroidOsHandler.post(jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public static void c()
-  {
-    if ((jdField_a_of_type_Boolean) && (jdField_a_of_type_Int != 0))
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
+      if (paramBoolean)
       {
-        localQQAppInterface = (QQAppInterface)localObject;
-        localHashMap = new HashMap();
-        if (!c) {
-          break label131;
-        }
-        localObject = "1";
-        localHashMap.put("sProcBgLocationIsReporting", localObject);
-        if (!c) {
-          break label137;
-        }
-        axrl.a(BaseApplication.getContext()).a(localQQAppInterface.getCurrentAccountUin(), "actLocationBgReportSampling", true, jdField_a_of_type_Int, 0L, localHashMap, "");
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationReportUtil", 2, new Object[] { "reportWhenFirstTimeOnAppForeground: invoked. ", " map: ", localHashMap, " sProcBgAliveTimeSecond: ", Integer.valueOf(jdField_a_of_type_Int) });
+        if (paramQQAppInterface.getLongAccountUin() == paramMsg.msg_head.to_uin.get()) {}
+        for (paramQQAppInterface = paramMsg.msg_head.from_uin.get() + "";; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "")
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            paramMsg = (im_msg_body.Elem)paramList.next();
+            if ((paramMsg.common_elem.has()) && (paramMsg.common_elem.uint32_service_type.get() == 31) && (paramMsg.common_elem.bytes_pb_elem.has())) {
+              try
+              {
+                new hummer_commelem.MsgElemInfo_servtype31().mergeFrom(paramMsg.common_elem.bytes_pb_elem.get().toByteArray());
+              }
+              catch (InvalidProtocolBufferMicroException paramMsg)
+              {
+                QLog.e("LocationMessageUtil", 1, "decodePBMsgElems_LbsShareMsg: failed. ", paramMsg);
+              }
+            }
+          }
         }
       }
-    }
-    label131:
-    label137:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        QQAppInterface localQQAppInterface;
-        HashMap localHashMap;
-        return;
-        Object localObject = "0";
-        continue;
-        if (a(1000)) {
-          axrl.a(BaseApplication.getContext()).a(localQQAppInterface.getCurrentAccountUin(), "actLocationBgReportSampling", true, jdField_a_of_type_Int, 0L, localHashMap, "");
-        }
+      if (paramazml != null) {}
+      for (paramQQAppInterface = paramazml.a;; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "") {
+        break;
       }
-    }
-    QLog.d("LocationReportUtil", 2, new Object[] { "report: invoked. no need report", " isFirstTimeOnAppForeground: ", Boolean.valueOf(jdField_a_of_type_Boolean), " sProcBgAliveTimeSecond: ", Integer.valueOf(jdField_a_of_type_Int) });
+      if (QLog.isColorLevel()) {
+        paramStringBuilder.append("elemType:LbsShareMsg;\n");
+      }
+      paramList = (MessageForLocationShare)axas.a(-2076);
+      paramList.msgtype = -2076;
+      paramList.msg = BaseApplicationImpl.context.getString(2131719753);
+      paramList.isSharingLocation = true;
+      paramList.frienduin = paramQQAppInterface;
+      paramList.parse();
+      paramList1.add(paramList);
+    } while (!QLog.isColorLevel());
+    paramStringBuilder.append("LbsShareMsg.msg: ").append(paramList.toString() + "\n").append("\n");
   }
   
-  public static void d()
+  public static List<MessageRecord> b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    jdField_b_of_type_Long = System.currentTimeMillis();
+    return paramQQAppInterface.a().a(paramString, paramInt, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2076 }, 2147483647);
   }
   
-  public static void e()
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    long l = (System.currentTimeMillis() - jdField_b_of_type_Long) / 1000L;
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationReportUtil", 2, new Object[] { "reportFloatWindowLastExposeDuration: invoked. ", " second: ", Long.valueOf(l) });
-    }
-    axqw.b(null, "CliOper", "", "", "0X800A976", "0X800A976", 0, 0, String.valueOf(l), "0", "0", "");
-  }
-  
-  private static void f()
-  {
-    jdField_a_of_type_AndroidOsHandler.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    jdField_a_of_type_JavaLangRunnable = null;
-    jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationReportUtil", 2, new Object[] { "stopHandler: invoked. ", " updateLocationBgReportSpRunnable: ", jdField_a_of_type_JavaLangRunnable });
-    }
+    aryz.a(paramQQAppInterface, 1, paramString, false);
+    a(paramQQAppInterface, 1, paramString, false);
   }
 }
 

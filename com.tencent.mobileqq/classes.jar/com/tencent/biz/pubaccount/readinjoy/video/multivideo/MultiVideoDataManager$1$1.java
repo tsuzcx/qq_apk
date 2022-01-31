@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
-import qxb;
-import qxj;
+import qwy;
+import qxg;
 
 class MultiVideoDataManager$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class MultiVideoDataManager$1$1
   
   public void run()
   {
-    qxj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoDataManager$1.this$0).a(this.jdField_a_of_type_JavaLangString);
+    qxg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoDataManager$1.this$0).a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

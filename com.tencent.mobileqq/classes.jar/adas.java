@@ -1,18 +1,37 @@
 import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class adas
-  implements aybh
+  implements aybj
 {
   public adas(FriendShipWaveView paramFriendShipWaveView) {}
   
   public void a()
   {
-    int i = (int)(this.a.b - bawz.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Ayck.b / 2.0F);
-    int j = (int)(this.a.b - bawz.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Ayck.b / 2.0F);
-    int k = (int)(this.a.b - bawz.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Ayck.b / 2.0F);
-    aybp localaybp = new aybp(new aybg[] { new aybk(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Ayck.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new aybk(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new aybk(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
-    localaybp.a(new adat(this));
-    this.a.jdField_a_of_type_Ayck.a(new aybg[] { localaybp });
+    aybq localaybq = new aybq(500, 0.0F, 1.0F);
+    this.a.d.jdField_a_of_type_Int = 255;
+    this.a.d.a(new aybi[] { localaybq });
+    localaybq.a(new adat(this));
+    this.a.e = new aycm();
+    this.a.e.a(FriendShipWaveView.a(this.a));
+    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
+    this.a.a(this.a.e);
+    localaybq = new aybq(500, 0.0F, 1.0F);
+    this.a.e.a(new aybi[] { localaybq });
+    localaybq.a(new adau(this));
+    this.a.f = new aycm();
+    this.a.f.a(FriendShipWaveView.b(this.a));
+    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
+    this.a.a(this.a.f);
+    localaybq = new aybq(500, 0.0F, 1.0F);
+    this.a.f.a(new aybi[] { localaybq });
+    localaybq.a(new adav(this));
+    this.a.g = new aycm();
+    this.a.g.a(FriendShipWaveView.c(this.a));
+    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
+    this.a.a(this.a.g);
+    localaybq = new aybq(500, 0.0F, 1.0F);
+    this.a.g.a(new aybi[] { localaybq });
+    localaybq.a(new adaw(this));
   }
 }
 

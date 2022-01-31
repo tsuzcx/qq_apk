@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
-import bbdj;
-import bfnh;
+import bbdx;
+import bfny;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
-import oyy;
+import oyv;
 
 public class DiandianTopConfigManager$2
   implements Runnable
 {
-  public DiandianTopConfigManager$2(oyy paramoyy) {}
+  public DiandianTopConfigManager$2(oyv paramoyv) {}
   
   public void run()
   {
     synchronized (this.this$0.a)
     {
       AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bfnh.a(new DiandianTopConfigManager.2.1(this, bbdj.a(BaseApplication.getContext().getFileStreamPath("file_readinjoy_diandian_top_config" + localAppInterface.getCurrentAccountUin()))));
+      bfny.a(new DiandianTopConfigManager.2.1(this, bbdx.a(BaseApplication.getContext().getFileStreamPath("file_readinjoy_diandian_top_config" + localAppInterface.getCurrentAccountUin()))));
       return;
     }
   }

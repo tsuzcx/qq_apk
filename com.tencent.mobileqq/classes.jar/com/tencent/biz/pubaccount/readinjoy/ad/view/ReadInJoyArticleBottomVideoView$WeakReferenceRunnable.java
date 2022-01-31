@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.TMG.utils.QLog;
 import java.lang.ref.WeakReference;
-import nyr;
+import nyo;
 
 public class ReadInJoyArticleBottomVideoView$WeakReferenceRunnable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private WeakReference<nyr> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<nyo> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ReadInJoyArticleBottomVideoView$WeakReferenceRunnable(nyr paramnyr, int paramInt)
+  public ReadInJoyArticleBottomVideoView$WeakReferenceRunnable(nyo paramnyo, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnyr);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnyo);
     this.jdField_a_of_type_Int = paramInt;
   }
   
@@ -28,15 +28,15 @@ public class ReadInJoyArticleBottomVideoView$WeakReferenceRunnable
     } while (!QLog.isColorLevel());
     QLog.e("ReadInJoyArticleBottomVideoView", 0, "WeakReferenceRunnable run type is error mType: " + this.jdField_a_of_type_Int);
     return;
-    ((nyr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
     return;
-    ((nyr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
     return;
-    ((nyr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c();
+    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c();
     return;
-    ((nyr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d();
+    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d();
     return;
-    ((nyr)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
+    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
   }
 }
 

@@ -1,45 +1,27 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.sdk.WebChromeClient;
 
-@begt(a="BaselibLoadAsyncTask")
-public class bfdl
-  extends bfeq
+class bfdl
+  extends WebChromeClient
 {
-  private besc a;
+  bfdl(bfdk parambfdk) {}
   
-  public bfdl(Context paramContext, bepv parambepv)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    super(paramContext, parambepv);
-  }
-  
-  public void a()
-  {
-    bexz.a(204, "", a().getMiniAppInfoForReport());
-    besl.a("AppRuntimeLoader", "startLoadBaseLib.");
-    if (a())
+    if (paramConsoleMessage != null)
     {
-      c();
-      return;
+      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+        break label51;
+      }
+      betc.d("AppBrandService", "consoleMessage.message()  line:" + paramConsoleMessage.lineNumber());
     }
-    beyr.a(beyn.a(), 10, "0");
-    MiniAppEnv.g().getBaselibLoader().loadBaselib(a(), new bfdm(this));
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (this.a.a());
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.a = null;
-  }
-  
-  public void c()
-  {
-    super.c();
-    bexz.a(205, "", a().getMiniAppInfoForReport());
+    for (;;)
+    {
+      return super.onConsoleMessage(paramConsoleMessage);
+      label51:
+      betc.b("AppBrandService", "consoleMessage.message() " + paramConsoleMessage.message());
+    }
   }
 }
 

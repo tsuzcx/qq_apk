@@ -1,22 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
 
 public final class berq
-  implements Parcelable.Creator<SecondApiRightInfo>
+  implements Parcelable.Creator<EntryModel>
 {
-  public SecondApiRightInfo a(Parcel paramParcel)
+  public EntryModel a(Parcel paramParcel)
   {
-    SecondApiRightInfo localSecondApiRightInfo = new SecondApiRightInfo();
-    localSecondApiRightInfo.apiName = paramParcel.readString();
-    localSecondApiRightInfo.secondName = paramParcel.readString();
-    localSecondApiRightInfo.right = paramParcel.readInt();
-    return localSecondApiRightInfo;
+    return new EntryModel(paramParcel, null);
   }
   
-  public SecondApiRightInfo[] a(int paramInt)
+  public EntryModel[] a(int paramInt)
   {
-    return new SecondApiRightInfo[paramInt];
+    return new EntryModel[paramInt];
   }
 }
 

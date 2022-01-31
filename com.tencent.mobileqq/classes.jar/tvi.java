@@ -1,32 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-final class tvi
-  implements ttf
+public final class tvi
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  tvi(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
-  
-  public void a(int paramInt)
+  public void onComplete(String arg1, String paramString2)
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
+    synchronized ()
     {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      tvf.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+      paramString2 = tvh.a();
+      tvh.a().post(new TVKPreloader.1.1(this, paramString2));
       return;
     }
   }

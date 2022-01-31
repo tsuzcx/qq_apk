@@ -1,16 +1,18 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
 public class oun
-  implements AdapterView.OnItemClickListener
+  extends StaggeredGridLayoutManager
 {
-  public oun(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public oun(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
   {
-    this.a.a(paramView, paramInt);
+    super(paramInt1, paramInt2);
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return (this.a.a.e) && (super.canScrollVertically());
   }
 }
 

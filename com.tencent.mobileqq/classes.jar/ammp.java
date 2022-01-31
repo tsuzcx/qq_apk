@@ -1,17 +1,24 @@
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.av.service.LBSInfo;
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class ammp
-  extends Handler
+  extends ajzk
 {
   public ammp(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    if (paramLBSInfo != null) {}
+    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
+    {
+      this.a.a(paramBoolean, paramLBSInfo);
+      return;
     }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
   }
 }
 

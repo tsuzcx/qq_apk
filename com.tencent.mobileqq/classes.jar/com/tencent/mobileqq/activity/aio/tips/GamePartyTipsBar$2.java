@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aexy;
+import aexw;
 import android.widget.TextView;
 
 public class GamePartyTipsBar$2
   implements Runnable
 {
-  public GamePartyTipsBar$2(aexy paramaexy, String paramString) {}
+  public GamePartyTipsBar$2(aexw paramaexw, String paramString) {}
   
   public void run()
   {
-    aexy.a(this.this$0).setText(this.a);
+    aexw.a(this.this$0).setText(this.a);
   }
 }
 

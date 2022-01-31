@@ -1,39 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class pos
-  implements URLDrawable.DownloadListener
+public class pos
+  extends MSFServlet
 {
-  int jdField_a_of_type_Int = 0;
-  
-  pos(pop parampop, String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramInt = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (paramInt + 1);
-    if (paramInt < 3) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
     for (;;)
     {
-      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
+      seg.a(paramFromServiceMsg);
+      if (getAppRuntime() != null) {
+        por.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
+      }
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
   }
   
-  public void onFileDownloadStarted()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadStarted :" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadSucceed :" + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    if (paramIntent != null)
+    {
+      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      seg.a(localToServiceMsg);
+      if (localToServiceMsg != null)
+      {
+        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
+        paramPacket.setTimeout(localToServiceMsg.getTimeout());
+        paramPacket.setAttributes(localToServiceMsg.getAttributes());
+        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
+        if (!localToServiceMsg.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

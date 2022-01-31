@@ -1,24 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.qphone.base.util.QLog;
 
 class ahkh
   implements View.OnClickListener
 {
-  ahkh(ahkf paramahkf, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  ahkh(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+    paramView = ajcm.a();
+    if (paramView != null)
+    {
+      paramView.a(ahkd.a(this.a));
+      paramView.a();
+      ajcm.i();
     }
-    paramView = (QQAppInterface)ahkf.a(this.jdField_a_of_type_Ahkf).getAppRuntime();
-    ((UpgradeTIMManager)paramView.getManager(256)).a(ahkf.a(this.jdField_a_of_type_Ahkf), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
-    axqw.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
+    axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
   }
 }
 

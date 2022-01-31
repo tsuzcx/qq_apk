@@ -1,11 +1,16 @@
-class yzm
-  implements yzn
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentView;
+
+public class yzm
+  implements View.OnClickListener
 {
-  yzm(yzl paramyzl) {}
+  public yzm(GdtCanvasAppBtnComponentView paramGdtCanvasAppBtnComponentView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.b();
+    GdtCanvasAppBtnComponentView.a(this.a).canShowProgress = true;
+    this.a.h();
   }
 }
 

@@ -1,8 +1,17 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface aybu
+class aybu
+  implements View.OnClickListener
 {
-  public abstract aybf[] a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, float paramFloat);
+  aybu(aybs paramaybs, aybe paramaybe, ayba paramayba, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    if (aybs.a(this.jdField_a_of_type_Aybs) != null) {
+      aybs.a(this.jdField_a_of_type_Aybs).a(this.jdField_a_of_type_Aybe, (aybf)this.jdField_a_of_type_Ayba, this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

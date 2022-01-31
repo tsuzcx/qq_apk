@@ -1,16 +1,19 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraRsp;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetAuthListReq;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
 public class bezw
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetUserInfoExtraReq a = new INTERFACE.StGetUserInfoExtraReq();
+  private INTERFACE.StGetAuthListReq a = new INTERFACE.StGetAuthListReq();
   
-  public bezw(String paramString)
+  public bezw(COMM.StCommonExt paramStCommonExt, String paramString)
   {
     this.a.appid.set(paramString);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
   protected String a()
@@ -23,24 +26,19 @@ public class bezw
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetUserInfoExtraRsp localStGetUserInfoExtraRsp = new INTERFACE.StGetUserInfoExtraRsp();
+    if (paramArrayOfByte != null) {}
     try
     {
-      localStGetUserInfoExtraRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserInfoExtraRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserInfoExtraRsp.iv.get());
-        return paramArrayOfByte;
-      }
-      besl.a("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
-      return null;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("authList", a(paramArrayOfByte));
+      return localJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetAuthListsRequest", "onResponse fail." + paramArrayOfByte);
     }
+    betc.a("GetAuthListsRequest", "onResponse fail.data = null");
+    return null;
     return null;
   }
   
@@ -51,7 +49,7 @@ public class bezw
   
   protected String b()
   {
-    return "GetUserInfoExtra";
+    return "GetAuthList";
   }
 }
 

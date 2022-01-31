@@ -1,57 +1,79 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class sqj
-  extends syv<sqk>
+  extends JobSegment<List<spz>, List<spy>>
+  implements spu
 {
-  private static final String jdField_a_of_type_JavaLangString = sxp.a("StorySvc.check_location_blacklist");
-  private List<srg> jdField_a_of_type_JavaUtilList;
+  private ArrayList<spy> jdField_a_of_type_JavaUtilArrayList;
+  private List<sps> jdField_a_of_type_JavaUtilList;
+  private sqm jdField_a_of_type_Sqm;
   
-  public String a()
+  public sqj(sqm paramsqm)
   {
-    return jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Sqm = paramsqm;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  private List<sps> a(long paramLong1, long paramLong2)
   {
-    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
-    try
-    {
-      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
-      return new sqk(localRspCheckBlackList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  public void a(@NonNull List<srg> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
-    }
-    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
+    int i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt("kmeans_interval_txt", 1);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((srg)localIterator.next()).a());
+    List localList = ((spn)tcz.a(30)).a(paramLong1, paramLong2);
+    if (localList != null) {
+      localArrayList.addAll(localList);
     }
-    localReqCheckBlackList.gps_list.addAll(localArrayList);
-    return localReqCheckBlackList.toByteArray();
+    localArrayList.add(new spw(i, this.jdField_a_of_type_Sqm));
+    return localArrayList;
+  }
+  
+  private void a(List<spz> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      sps localsps = (sps)this.jdField_a_of_type_JavaUtilList.remove(0);
+      localsps.a(paramList);
+      localsps.a(this);
+      return;
+    }
+    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramList.hasNext()) {
+      spn.a((spy)paramList.next(), 10);
+    }
+    notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<spz> paramList)
+  {
+    ved.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+      return;
+    }
+    spn.b(paramList);
+    this.jdField_a_of_type_JavaUtilList = a(((spz)paramList.get(0)).b, ((spz)paramList.get(paramList.size() - 1)).b);
+    a(paramList);
+  }
+  
+  public void a(List<spy> paramList, List<spz> paramList1)
+  {
+    if (paramList != null)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        spy localspy = (spy)localIterator.next();
+        ved.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "onFilterFinish album:" + localspy.toString());
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    }
+    a(paramList1);
   }
 }
 

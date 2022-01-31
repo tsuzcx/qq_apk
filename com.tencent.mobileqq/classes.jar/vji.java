@@ -1,19 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-
-public class vji
-  implements ufp
+public abstract interface vji
 {
-  public vji(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public abstract void i();
   
-  public void a_(ufk paramufk)
-  {
-    veg.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
-  }
+  public abstract void l();
 }
 
 

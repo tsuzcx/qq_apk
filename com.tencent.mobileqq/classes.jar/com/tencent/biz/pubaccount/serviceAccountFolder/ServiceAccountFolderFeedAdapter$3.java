@@ -1,27 +1,27 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import axqw;
+import axqy;
 import com.tencent.qphone.base.util.QLog;
-import saw;
-import sax;
+import sat;
+import sau;
 
 public class ServiceAccountFolderFeedAdapter$3
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$3(sax paramsax, saw paramsaw) {}
+  public ServiceAccountFolderFeedAdapter$3(sau paramsau, sat paramsat) {}
   
   public void run()
   {
     try
     {
-      if (sax.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
+      if (sau.a(this.this$0, this.a.jdField_a_of_type_JavaLangString))
       {
         String str2 = this.a.jdField_a_of_type_JavaLangString;
         String str3 = this.a.c;
         if (this.a.jdField_a_of_type_JavaLangCharSequence == null) {}
         for (String str1 = "";; str1 = this.a.jdField_a_of_type_JavaLangCharSequence.toString())
         {
-          axqw.b(null, "dc00898", "", str2, "auth_page", "left_delete", 0, 0, "", "", str3, str1);
+          axqy.b(null, "dc00898", "", str2, "auth_page", "left_delete", 0, 0, "", "", str3, str1);
           return;
         }
       }

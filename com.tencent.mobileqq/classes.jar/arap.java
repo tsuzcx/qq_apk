@@ -1,10 +1,8 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import android.view.View;
 
 public abstract interface arap
 {
-  public abstract void a(HotVideoData paramHotVideoData);
-  
-  public abstract void b(HotVideoData paramHotVideoData);
+  public abstract void onClick(View paramView);
 }
 
 

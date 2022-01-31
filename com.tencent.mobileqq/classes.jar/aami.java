@@ -1,19 +1,21 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.widget.XEditTextEx;
 
 public class aami
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
   public aami(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(230);
-    xkq.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    if ("//findcrash".equals(this.a.a.getText().toString())) {
+      ThreadManager.post(new LocalCrashCollector(this.a), 8, null, true);
+    }
+    return true;
   }
 }
 

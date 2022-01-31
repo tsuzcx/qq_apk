@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import android.text.TextUtils;
 
 public class ayac
-  extends agvs
 {
-  public ayac(CountdownTextView paramCountdownTextView, long paramLong, ayad paramayad)
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public ayac(ayab paramayab, axwg paramaxwg)
   {
-    super(paramLong);
+    if (paramaxwg == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramaxwg.a("c");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = paramaxwg.a("r");
+    }
+    this.b = axau.a(axva.a(paramaxwg), false);
   }
   
-  public void b()
+  public ayac(ayab paramayab, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Ayad != null) {
-      this.jdField_a_of_type_Ayad.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_Ayad != null) {
-      this.jdField_a_of_type_Ayad.a(paramLong);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

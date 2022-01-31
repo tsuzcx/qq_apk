@@ -1,52 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.ListView;
 
 public class adfz
-  extends ampb<adga>
+  implements adif
 {
-  public int a()
+  private adga jdField_a_of_type_Adga;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public adfz(BaseChatPie paramBaseChatPie)
   {
-    return 592;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  @NonNull
-  public adga a(int paramInt)
+  private ListView a()
   {
-    return new adga();
-  }
-  
-  @Nullable
-  public adga a(ampi[] paramArrayOfampi)
-  {
-    adga localadga = new adga();
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
-      adga.a(localadga, paramArrayOfampi[0].a);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeqz)) {
+      return ((aeqz)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
     }
-    return localadga;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
   }
   
-  public Class<adga> a()
+  public void a(int paramInt)
   {
-    return adga.class;
+    switch (paramInt)
+    {
+    default: 
+    case 2: 
+    case 6: 
+    case 17: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_Adga = new adga();
+        return;
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Adga.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Adga.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Adga = null;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(adga paramadga) {}
-  
-  public int b()
+  public int[] a()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new int[] { 2, 6, 11, 17 };
   }
 }
 

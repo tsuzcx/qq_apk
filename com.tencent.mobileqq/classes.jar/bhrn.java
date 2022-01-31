@@ -1,26 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.qphone.base.util.QLog;
 
 class bhrn
-  extends Handler
+  implements bhmj
 {
-  bhrn(bhrl parambhrl) {}
+  bhrn(bhrm parambhrm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(BaseResp paramBaseResp)
   {
-    switch (paramMessage.what)
+    int i = 1;
+    int j = paramBaseResp.errCode;
+    if (j == 0)
     {
+      i = 0;
+      paramBaseResp = ajya.a(2131712356);
+      bhrm.d(this.a, paramBaseResp);
     }
-    do
+    for (;;)
     {
+      bhrm.a(this.a, bhrm.a(this.a), i, paramBaseResp);
       return;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = (String[])paramMessage.obj;
-    localArrayList.add(bhrl.a(this.a, arrayOfString));
-    this.a.a(localArrayList, paramMessage.arg1);
+      if (j == -2)
+      {
+        paramBaseResp = ajya.a(2131712347);
+        bhrm.d(this.a, paramBaseResp);
+      }
+      else
+      {
+        paramBaseResp = ajya.a(2131712344);
+        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
+        i = j;
+      }
+    }
   }
 }
 

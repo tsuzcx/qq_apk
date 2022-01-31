@@ -1,22 +1,77 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import java.util.List;
 
-public abstract interface anyb
+public class anyb
+  extends anzk
 {
-  public abstract void a(anyc paramanyc);
+  private anyg jdField_a_of_type_Anyg;
+  private anyk jdField_a_of_type_Anyk;
+  private List<anyh> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  public abstract void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable);
+  public anyb(Context paramContext, anyg paramanyg, int paramInt)
+  {
+    super(paramContext, 7, paramInt);
+    this.jdField_a_of_type_Anyg = paramanyg;
+    this.jdField_a_of_type_ArrayOfInt = aocw.a();
+  }
   
-  public abstract boolean a(anyc paramanyc);
+  public int a()
+  {
+    return aocu.a(this.jdField_a_of_type_ArrayOfInt);
+  }
   
-  public abstract void b();
+  protected int a(int paramInt)
+  {
+    return 2007;
+  }
   
-  public abstract void b(anyc paramanyc);
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Anyg = null;
+  }
   
-  public abstract void c();
+  protected void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = a(paramInt);
+      } while (paramInt >= b());
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = aocu.a(this.jdField_a_of_type_ArrayOfInt);
+      }
+    } while (i != 2007);
+    if (this.jdField_a_of_type_Anyk == null)
+    {
+      this.jdField_a_of_type_Anyk = new anzl(this, 2007);
+      this.jdField_a_of_type_Anyk.a(true);
+      this.jdField_a_of_type_Anyk.c(false);
+      this.jdField_a_of_type_Anyk.b(false);
+      anyh localanyh = new anyh();
+      localanyh.h = "delete";
+      this.jdField_a_of_type_Anyk.a(localanyh);
+    }
+    paramView = (EmoticonLinearLayout)paramView;
+    paramView.setCallBack(this.jdField_a_of_type_Anyg);
+    paramView.setAdapter(this.jdField_a_of_type_Anyk);
+    this.jdField_a_of_type_Anyk.a(3, 7);
+    this.jdField_a_of_type_Anyk.a(paramInt);
+    this.jdField_a_of_type_Anyk.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Anyk.a();
+  }
   
-  public abstract void d();
-  
-  public abstract void setting();
+  public int b()
+  {
+    return a() + aocu.h;
+  }
 }
 
 

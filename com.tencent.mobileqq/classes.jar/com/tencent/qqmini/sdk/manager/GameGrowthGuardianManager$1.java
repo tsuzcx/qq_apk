@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.content.Context;
-import betg;
+import betx;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class GameGrowthGuardianManager$1
@@ -11,8 +11,8 @@ public final class GameGrowthGuardianManager$1
   
   public void run()
   {
-    betg.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 11);
-    betg.a(System.currentTimeMillis());
+    betx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 11);
+    betx.a(System.currentTimeMillis());
   }
 }
 

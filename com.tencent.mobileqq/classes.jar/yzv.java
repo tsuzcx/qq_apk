@@ -1,14 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
+import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
 
 public class yzv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements zbb
 {
-  public yzv(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
+  public yzv(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean)
   {
-    GdtCanvasFormComponentView.a(this.a);
+    GdtCanvasPictureComponentView.a(this.a, paramBoolean);
   }
 }
 

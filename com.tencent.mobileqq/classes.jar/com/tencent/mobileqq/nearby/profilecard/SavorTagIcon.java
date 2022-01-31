@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -16,7 +16,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import atuj;
+import atul;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalLabelLayout;
@@ -31,7 +31,7 @@ public class SavorTagIcon
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  atuj jdField_a_of_type_Atuj;
+  atul jdField_a_of_type_Atul;
   String jdField_a_of_type_JavaLangString;
   List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = true;
@@ -65,7 +65,7 @@ public class SavorTagIcon
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaLangString == null)) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder(ajyc.a(2131713501));
+    StringBuilder localStringBuilder = new StringBuilder(ajya.a(2131713512));
     localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList.size()).append("个");
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
@@ -89,9 +89,9 @@ public class SavorTagIcon
     this.f = ((int)(this.jdField_a_of_type_Float * 12.0F));
   }
   
-  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, atuj paramatuj)
+  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, atul paramatul)
   {
-    this.jdField_a_of_type_Atuj = paramatuj;
+    this.jdField_a_of_type_Atul = paramatul;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
     paramString = jdField_a_of_type_ArrayOfJavaLangString[0];
@@ -196,7 +196,7 @@ public class SavorTagIcon
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
     this.b = getResources().getDimensionPixelSize(2131298653);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131560904, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131560903, null));
     FrameLayout.LayoutParams localLayoutParams = a();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
@@ -226,7 +226,7 @@ public class SavorTagIcon
     if (i < j) {
       while (i < j)
       {
-        localObject1 = LayoutInflater.from(getContext()).inflate(2131560900, null);
+        localObject1 = LayoutInflater.from(getContext()).inflate(2131560899, null);
         localObject2 = a();
         ((ViewGroup.MarginLayoutParams)localObject2).width = -2;
         ((ViewGroup.MarginLayoutParams)localObject2).height = -2;
@@ -286,7 +286,7 @@ public class SavorTagIcon
           {
             GradientDrawable localGradientDrawable;
             j = Color.parseColor(((InterestTagInfo)localObject2).tagTextColor);
-            TextView localTextView = (TextView)((View)localObject1).findViewById(2131378431);
+            TextView localTextView = (TextView)((View)localObject1).findViewById(2131378436);
             if (localTextView != null)
             {
               localTextView.setText(str);
@@ -294,7 +294,7 @@ public class SavorTagIcon
             }
             ((View)localObject1).setBackgroundDrawable(localGradientDrawable);
             ((View)localObject1).setTag(localObject2);
-            if (this.jdField_a_of_type_Atuj != null)
+            if (this.jdField_a_of_type_Atul != null)
             {
               ((View)localObject1).setOnClickListener(this);
               continue;
@@ -325,8 +325,8 @@ public class SavorTagIcon
     if (paramView == null) {}
     for (Object localObject = null;; localObject = paramView.getTag())
     {
-      if (((localObject instanceof InterestTagInfo)) && (this.jdField_a_of_type_Atuj != null)) {
-        this.jdField_a_of_type_Atuj.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
+      if (((localObject instanceof InterestTagInfo)) && (this.jdField_a_of_type_Atul != null)) {
+        this.jdField_a_of_type_Atul.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
       }
       return;
     }

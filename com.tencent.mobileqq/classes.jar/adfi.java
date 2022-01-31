@@ -1,27 +1,15 @@
-public class adfi
-  extends adfl
+public abstract class adfi
 {
-  public int a;
-  public int b;
+  private boolean a;
   
-  public adfi(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    this.b = paramInt1;
-    this.a = paramInt2;
+    this.a = paramBoolean;
   }
   
-  public boolean equals(Object paramObject)
+  public boolean a()
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof adfi));
-      paramObject = (adfi)paramObject;
-    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
-    return true;
+    return this.a;
   }
 }
 

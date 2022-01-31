@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qphone.base.util.QLog;
-
-class qyl
-  extends bfmg
+public abstract class qyl
 {
-  qyl(qyj paramqyj) {}
+  abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsVideoUIDelegate", 2, "onVideoEndSoon disappearAnim onAnimationEnd: ");
-    }
-    this.a.a.a.setVisibility(8);
-  }
+  abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  abstract void a(int paramInt, Object paramObject);
+  
+  abstract void a(String paramString);
+  
+  abstract void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  abstract void a(qty paramqty);
+  
+  abstract void a(boolean paramBoolean);
+  
+  abstract void b(qty paramqty);
+  
+  abstract void c(qty paramqty);
 }
 
 

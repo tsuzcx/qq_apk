@@ -1,64 +1,49 @@
-import android.view.View;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.LayerDrawable;
+import android.os.Handler;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.1;
 
 public class avay
+  extends LayerDrawable
 {
-  private final int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new avaz(this);
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private boolean jdField_a_of_type_Boolean;
-  private final int b;
-  private int c;
-  private int d;
-  
-  public avay(View paramView)
+  public avay(int paramInt, Resources paramResources)
   {
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_Int = bawz.a(this.jdField_a_of_type_AndroidViewView.getContext(), 15.0F);
-      this.b = ((int)(this.jdField_a_of_type_Int / 1.5D));
-      return;
-    }
-    throw new IllegalArgumentException("Wrapped View shouldn't be null!");
+    super(avaz.a(paramInt, paramResources, a(paramResources)));
   }
   
-  public void a()
+  public static Bitmap a(Resources paramResources)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.c = 0;
-    this.d = 0;
-    for (;;)
+    Paint localPaint = new Paint();
+    localPaint.setColor(paramResources.getColor(2131166440));
+    Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
+    localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
+    paramResources = new Canvas(localBitmap);
+    paramResources.rotate(45.0F);
+    paramResources.translate(0.0F, -88.0F);
+    paramResources.drawRect(56, 56, 126, 126, localPaint);
+    paramResources.drawCircle(56, 91, 35, localPaint);
+    paramResources.drawCircle(91, 56, 35, localPaint);
+    return localBitmap;
+  }
+  
+  public void a(Handler paramHandler, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    if (i < getNumberOfLayers())
     {
-      int j = (int)(this.b * (Math.random() * 2.0D - 1.0D));
-      int i = (int)Math.sqrt(this.b * this.b - j * j);
-      if (Math.random() > 0.5D) {}
-      while ((this.c + j) * (this.c + j) + (this.d + i) * (this.d + i) <= this.jdField_a_of_type_Int * this.jdField_a_of_type_Int)
+      HeartRiseLayerDrawable.1 local1 = new HeartRiseLayerDrawable.1(this, i, paramInt1, paramInt2);
+      if (i % 2 == 0) {}
+      for (long l = i * 200;; l = i * 130)
       {
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(this.c, this.c + j, this.d, this.d + i);
-        this.c = (j + this.c);
-        this.d = (i + this.d);
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(this.b * (int)(50.0D + Math.random() * 30.0D));
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-        return;
-        i = -i;
+        paramHandler.postDelayed(local1, l);
+        i += 1;
+        break;
       }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getAnimation() == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (a()) {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
     }
   }
 }

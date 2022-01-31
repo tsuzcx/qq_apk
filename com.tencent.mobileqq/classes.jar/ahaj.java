@@ -1,22 +1,23 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import Wallet.SkinInfo;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
 public class ahaj
-  implements AnimationView.MyAnimationListener
+  implements ahax
 {
-  public ahaj(ThemeHbFragment paramThemeHbFragment) {}
+  public ahaj(UsualHbFragment paramUsualHbFragment) {}
   
-  public void onAnimationEnd(AnimationView paramAnimationView) {}
-  
-  public void onAnimationRepeat(AnimationView paramAnimationView) {}
-  
-  public void onAnimationStart(AnimationView paramAnimationView)
+  public void a(ahan paramahan)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
+    if ((paramahan.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramahan.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
+    {
+      paramahan = aham.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+      this.a.c.setHint(paramahan);
+      return;
     }
+    this.a.c.setHint(paramahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
   }
 }
 

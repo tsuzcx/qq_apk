@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osm;
-import ozr;
+import osj;
+import ozo;
 
 public class ArticleInfoModule$44
   implements Runnable
 {
-  public ArticleInfoModule$44(ozr paramozr) {}
+  public ArticleInfoModule$44(ozo paramozo) {}
   
   public void run()
   {
-    osm.a().b();
+    osj.a().b();
   }
 }
 

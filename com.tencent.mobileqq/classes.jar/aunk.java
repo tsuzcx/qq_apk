@@ -1,8 +1,10 @@
-public class aunk
+import com.tencent.mobileqq.data.MessageRecord;
+
+abstract interface aunk
 {
-  public static boolean a = true;
-  public static boolean b;
-  public static boolean c = true;
+  public abstract MessageRecord a(aunp paramaunp);
+  
+  public abstract MessageRecord a(auod paramauod);
 }
 
 

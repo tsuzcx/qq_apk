@@ -1,123 +1,55 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
 
 public class srd
 {
-  public List<srd> a;
-  public sre a;
-  private boolean a;
+  private double a;
+  private double b;
   
-  public srd()
+  public srd(double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Sre = new sre();
-    this.jdField_a_of_type_Sre.jdField_a_of_type_Int = 0;
-    sre.a(this.jdField_a_of_type_Sre, 0);
-    this.jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString = null;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public srd(String paramString, int paramInt1, int paramInt2)
+  public double a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    String str = paramString.substring(0, paramInt1);
-    this.jdField_a_of_type_Sre = new sre();
-    this.jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_Sre.jdField_a_of_type_Int = paramInt1;
-    sre.a(this.jdField_a_of_type_Sre, paramInt2);
-    if (paramInt1 < paramString.length())
-    {
-      paramString = new srd(paramString, paramInt1 + 1, paramInt2);
-      this.jdField_a_of_type_JavaUtilList.add(paramString);
-    }
+    return this.a;
   }
   
-  public int a()
+  public qqstory_struct.GpsMsg a()
   {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      j = sre.a(this.jdField_a_of_type_Sre);
-    }
-    Iterator localIterator;
-    int i;
-    do
-    {
-      return j;
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = i;
-    } while (!localIterator.hasNext());
-    srd localsrd = (srd)localIterator.next();
-    if (!localsrd.jdField_a_of_type_Boolean) {
-      i = localsrd.a() + i;
-    }
-    for (;;)
-    {
-      break;
-    }
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.setHasFlag(true);
+    localGpsMsg.lat.set((int)(a() * 1000000.0D));
+    localGpsMsg.lng.set((int)(b() * 1000000.0D));
+    return localGpsMsg;
   }
   
-  public List<srd> a()
+  public double b()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      localArrayList.add(this);
-    }
-    for (;;)
-    {
-      return localArrayList;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        srd localsrd = (srd)localIterator.next();
-        if (!localsrd.jdField_a_of_type_Boolean) {
-          if (localsrd.jdField_a_of_type_JavaUtilList.size() == 0) {
-            localArrayList.add(localsrd);
-          } else {
-            localArrayList.addAll(localsrd.a());
-          }
-        }
-      }
-    }
+    return this.b;
   }
   
-  public void a()
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = true;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((srd)localIterator.next()).a();
+    if (this == paramObject) {
+      return true;
     }
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Sre.jdField_a_of_type_Int != 0) && ((paramString.length() <= this.jdField_a_of_type_Sre.jdField_a_of_type_Int) || (!TextUtils.equals(this.jdField_a_of_type_Sre.jdField_a_of_type_JavaLangString, String.valueOf(paramString.substring(0, this.jdField_a_of_type_Sre.jdField_a_of_type_Int)))))) {
+    if (!(paramObject instanceof srd)) {
       return false;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((srd)localIterator.next()).a(paramString, paramInt))
-      {
-        paramString = this.jdField_a_of_type_Sre;
-        sre.a(paramString, sre.a(paramString) + paramInt);
-        return true;
-      }
-    }
-    paramString = new srd(paramString, this.jdField_a_of_type_Sre.jdField_a_of_type_Int + 1, paramInt);
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    paramString = this.jdField_a_of_type_Sre;
-    sre.a(paramString, sre.a(paramString) + paramInt);
-    return true;
+    return (((srd)paramObject).a == this.a) && (((srd)paramObject).b == this.b);
+  }
+  
+  public int hashCode()
+  {
+    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mNodeBean: ").append(this.jdField_a_of_type_Sre).append(" ");
-    localStringBuilder.append("child count:").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
   }
 }
 

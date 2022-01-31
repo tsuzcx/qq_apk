@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import adbi;
-import ajyc;
+import adbf;
+import ajya;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,35 +15,35 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import avcr;
-import avcs;
-import axik;
-import aypf;
-import azyc;
-import azyd;
-import azyw;
-import azyx;
-import azyy;
-import azyz;
-import azza;
-import azzb;
-import azzc;
-import azzd;
-import azze;
-import azzh;
-import azzi;
-import azzj;
-import azzz;
-import baae;
-import bbbr;
-import bbcv;
+import avct;
+import avcu;
+import axim;
+import ayph;
+import azyq;
+import azyr;
+import azzk;
+import azzl;
+import azzm;
+import azzn;
+import azzo;
+import azzp;
+import azzq;
+import azzr;
+import azzs;
+import azzv;
+import azzw;
+import azzx;
+import baan;
+import baas;
+import bbcf;
 import bbdj;
-import bbev;
-import bbgg;
-import bbik;
-import bbim;
-import bbis;
-import bcpw;
+import bbdx;
+import bbfj;
+import bbgu;
+import bbiy;
+import bbja;
+import bbjg;
+import bcql;
 import com.qq.wx.voice.recognizer.VoiceRecognizer;
 import com.qq.wx.voice.recognizer.VoiceRecognizerListener;
 import com.qq.wx.voice.recognizer.VoiceRecognizerResult;
@@ -62,15 +62,15 @@ import java.io.File;
 
 public class ReciteRecordLayout
   extends LinearLayout
-  implements adbi, bbik, bbim, VoiceRecognizerListener
+  implements adbf, bbiy, bbja, VoiceRecognizerListener
 {
   public Context a;
   CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   public TextView a;
-  private azzj jdField_a_of_type_Azzj;
-  azzz jdField_a_of_type_Azzz;
-  public bbgg a;
+  private azzx jdField_a_of_type_Azzx;
+  baan jdField_a_of_type_Baan;
+  public bbgu a;
   public BaseActivity a;
   INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
   VolumeVisualizerView jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView;
@@ -78,7 +78,7 @@ public class ReciteRecordLayout
   String jdField_a_of_type_JavaLangString;
   public volatile boolean a;
   public CountDownTimer b;
-  bbgg jdField_b_of_type_Bbgg;
+  bbgu jdField_b_of_type_Bbgu;
   String jdField_b_of_type_JavaLangString;
   volatile boolean jdField_b_of_type_Boolean = false;
   
@@ -120,8 +120,8 @@ public class ReciteRecordLayout
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
     View.inflate(paramContext, 2131560389, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375005));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView = ((VolumeVisualizerView)findViewById(2131379320));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375007));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView = ((VolumeVisualizerView)findViewById(2131379325));
   }
   
   private void f()
@@ -129,20 +129,20 @@ public class ReciteRecordLayout
     if (b())
     {
       b();
-      if (this.jdField_a_of_type_Bbgg == null)
+      if (this.jdField_a_of_type_Bbgu == null)
       {
-        this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697725).setNegativeButton(ajyc.a(2131713236), new azzb(this)).setPositiveButton(2131697723, new azyw(this), false);
-        this.jdField_a_of_type_Bbgg.setCancelable(false);
+        this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697735).setNegativeButton(ajya.a(2131713247), new azzp(this)).setPositiveButton(2131697729, new azzk(this), false);
+        this.jdField_a_of_type_Bbgu.setCancelable(false);
       }
-      this.jdField_a_of_type_Bbgg.show();
+      this.jdField_a_of_type_Bbgu.show();
     }
   }
   
   private void g()
   {
-    this.jdField_b_of_type_AndroidOsCountDownTimer = new azzc(this, 3000L, 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new azzd(this);
-    this.jdField_a_of_type_AndroidOsCountDownTimer = new azze(this, 10000L, 1000L);
+    this.jdField_b_of_type_AndroidOsCountDownTimer = new azzq(this, 3000L, 1000L);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new azzr(this);
+    this.jdField_a_of_type_AndroidOsCountDownTimer = new azzs(this, 10000L, 1000L);
   }
   
   private void h()
@@ -158,7 +158,7 @@ public class ReciteRecordLayout
     Object localObject = Build.MANUFACTURER;
     int i;
     if (((String)localObject).equalsIgnoreCase("meizu")) {
-      i = 2131698546;
+      i = 2131698556;
     }
     for (;;)
     {
@@ -169,7 +169,7 @@ public class ReciteRecordLayout
           break label240;
         }
         ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131165535), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131165540)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
-        bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajyc.a(2131713241), (CharSequence)localObject, 0, 2131720411, null, null, new azyx(this)).show();
+        bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajya.a(2131713252), (CharSequence)localObject, 0, 2131720422, null, null, new azzl(this)).show();
         return;
       }
       catch (Exception localException) {}
@@ -180,20 +180,20 @@ public class ReciteRecordLayout
       return;
       if (localException.equalsIgnoreCase("xiaomi"))
       {
-        i = 2131698548;
+        i = 2131698558;
       }
       else if (localException.equalsIgnoreCase("vivo"))
       {
-        i = 2131698547;
+        i = 2131698557;
       }
       else
       {
-        i = 2131698545;
+        i = 2131698555;
         j = 1;
       }
     }
     label240:
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, ajyc.a(2131713235), localException.toString(), ajyc.a(2131713237), "", null, new azyy(this)).show();
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, ajya.a(2131713246), localException.toString(), ajya.a(2131713248), "", null, new azzm(this)).show();
   }
   
   public int a()
@@ -215,44 +215,44 @@ public class ReciteRecordLayout
     if (QLog.isColorLevel()) {
       QLog.d("ReciteRecordLayout", 2, "startRecord!");
     }
-    if (this.jdField_a_of_type_Azzz != null) {
-      this.jdField_a_of_type_Azzz.c();
+    if (this.jdField_a_of_type_Baan != null) {
+      this.jdField_a_of_type_Baan.c();
     }
     if (this.jdField_a_of_type_AndroidOsCountDownTimer != null) {
       this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
     }
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    if (!bbev.g(this.jdField_a_of_type_AndroidContentContext))
+    if (!bbfj.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2131697695, 0).a();
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2131697700, 0).a();
       return null;
     }
-    if (!bbdj.a())
+    if (!bbdx.a())
     {
-      bbcv.a(paramBaseActivity, 230).setMessage(2131697696).setPositiveButton(2131697686, new azzh(this)).show();
+      bbdj.a(paramBaseActivity, 230).setMessage(2131697701).setPositiveButton(2131697691, new azzv(this)).show();
       return null;
     }
     if ((!QQRecorder.d()) || (!QQRecorder.a(1)))
     {
-      bbcv.a(paramBaseActivity, 230).setMessage(2131697685).setPositiveButton(2131697686, new azzi(this)).show();
+      bbdj.a(paramBaseActivity, 230).setMessage(2131697690).setPositiveButton(2131697691, new azzw(this)).show();
       return null;
     }
     if (paramBaseActivity.app.c())
     {
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2131695521, 0).a();
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2131695522, 0).a();
       return null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(new QQRecorder.RecorderParam(16000, axik.o, 1));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(new QQRecorder.RecorderParam(16000, axim.o, 1));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
     }
-    bbbr.a(this.jdField_a_of_type_AndroidContentContext, true);
+    bbcf.a(this.jdField_a_of_type_AndroidContentContext, true);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = aypf.a(paramBaseActivity.app.getCurrentAccountUin(), null, 65, null);
+      this.jdField_a_of_type_JavaLangString = ayph.a(paramBaseActivity.app.getCurrentAccountUin(), null, 65, null);
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(this.jdField_a_of_type_JavaLangString);
     this.jdField_b_of_type_Boolean = false;
@@ -263,7 +263,7 @@ public class ReciteRecordLayout
     paramBaseActivity = (TroopManager)paramBaseActivity.app.getManager(52);
     try
     {
-      VoiceRecognizer.shareInstance().init(this.jdField_a_of_type_AndroidContentContext, paramBaseActivity.a.jdField_b_of_type_JavaLangString, baae.a(this.jdField_a_of_type_AndroidContentContext, "libWXVoice.so"));
+      VoiceRecognizer.shareInstance().init(this.jdField_a_of_type_AndroidContentContext, paramBaseActivity.a.jdField_b_of_type_JavaLangString, baas.a(this.jdField_a_of_type_AndroidContentContext, "libWXVoice.so"));
       VoiceRecognizer.shareInstance().start();
       AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
       return this.jdField_a_of_type_JavaLangString;
@@ -283,25 +283,25 @@ public class ReciteRecordLayout
   
   public void a(int paramInt) {}
   
-  public void a(avcr paramavcr, avcs paramavcs) {}
+  public void a(avct paramavct, avcu paramavcu) {}
   
   public void a(String paramString) {}
   
   public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    azyd.a(paramString);
+    azyr.a(paramString);
     File localFile = new File(paramString);
     if ((!localFile.exists()) || (localFile.length() == 0L))
     {
-      paramRecorderParam = bbis.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
-      azyd.a(paramString, paramRecorderParam, paramRecorderParam.length);
+      paramRecorderParam = bbjg.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+      azyr.a(paramString, paramRecorderParam, paramRecorderParam.length);
     }
     this.jdField_a_of_type_AndroidOsHandler.post(new ReciteRecordLayout.9(this));
   }
   
   public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
   {
-    azyd.b(paramString);
+    azyr.b(paramString);
     this.jdField_a_of_type_AndroidOsHandler.post(new ReciteRecordLayout.11(this, paramString, paramDouble));
   }
   
@@ -310,14 +310,14 @@ public class ReciteRecordLayout
     if (QLog.isColorLevel()) {
       QLog.d("ReciteRecordLayout", 2, "onRecorderError = " + paramString2);
     }
-    azyd.a(paramString1);
+    azyr.a(paramString1);
     c();
     this.jdField_a_of_type_AndroidOsHandler.post(new ReciteRecordLayout.13(this));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
   {
-    azyd.a(paramString, paramArrayOfByte, paramInt1);
+    azyr.a(paramString, paramArrayOfByte, paramInt1);
     if (paramInt2 < 500) {
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -347,7 +347,7 @@ public class ReciteRecordLayout
     if (b()) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
     }
-    bbbr.a(this.jdField_a_of_type_AndroidContentContext, false);
+    bbcf.a(this.jdField_a_of_type_AndroidContentContext, false);
     AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     this.jdField_b_of_type_Boolean = true;
     VoiceRecognizer.shareInstance().destroy();
@@ -357,9 +357,9 @@ public class ReciteRecordLayout
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void b(avcr paramavcr, avcs paramavcs)
+  public void b(avct paramavct, avcu paramavcu)
   {
-    VoiceRecognizer.shareInstance().appendData(paramavcs.jdField_a_of_type_ArrayOfByte, paramavcs.b, paramavcs.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean);
+    VoiceRecognizer.shareInstance().appendData(paramavcu.jdField_a_of_type_ArrayOfByte, paramavcu.b, paramavcu.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean);
   }
   
   public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
@@ -379,7 +379,7 @@ public class ReciteRecordLayout
     if (b()) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
     }
-    bbbr.a(this.jdField_a_of_type_AndroidContentContext, false);
+    bbcf.a(this.jdField_a_of_type_AndroidContentContext, false);
     this.jdField_a_of_type_JavaLangString = null;
     AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     if (this.jdField_b_of_type_AndroidOsCountDownTimer != null) {
@@ -403,12 +403,12 @@ public class ReciteRecordLayout
     if (b())
     {
       b();
-      if (this.jdField_b_of_type_Bbgg == null)
+      if (this.jdField_b_of_type_Bbgu == null)
       {
-        this.jdField_b_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697719).setNegativeButton(2131697726, new azza(this)).setPositiveButton(2131697722, new azyz(this));
-        this.jdField_b_of_type_Bbgg.setCancelable(false);
+        this.jdField_b_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697725).setNegativeButton(2131697736, new azzo(this)).setPositiveButton(2131697728, new azzn(this));
+        this.jdField_b_of_type_Bbgu.setCancelable(false);
       }
-      this.jdField_b_of_type_Bbgg.show();
+      this.jdField_b_of_type_Bbgu.show();
     }
   }
   
@@ -417,11 +417,11 @@ public class ReciteRecordLayout
     if (b()) {
       c();
     }
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.dismiss();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.dismiss();
     }
-    if ((this.jdField_b_of_type_Bbgg != null) && (this.jdField_b_of_type_Bbgg.isShowing())) {
-      this.jdField_b_of_type_Bbgg.dismiss();
+    if ((this.jdField_b_of_type_Bbgu != null) && (this.jdField_b_of_type_Bbgu.isShowing())) {
+      this.jdField_b_of_type_Bbgu.dismiss();
     }
     VoiceRecognizer.shareInstance().destroy();
   }
@@ -441,13 +441,13 @@ public class ReciteRecordLayout
     if (QLog.isColorLevel()) {
       QLog.d("ReciteRecordLayout", 2, "onGetResult text ==" + paramVoiceRecognizerResult.text + " startTime = " + paramVoiceRecognizerResult.startTime);
     }
-    if ((this.jdField_a_of_type_Azzj != null) && (!TextUtils.isEmpty(paramVoiceRecognizerResult.text)) && (!paramVoiceRecognizerResult.text.equals(this.jdField_b_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Azzx != null) && (!TextUtils.isEmpty(paramVoiceRecognizerResult.text)) && (!paramVoiceRecognizerResult.text.equals(this.jdField_b_of_type_JavaLangString)))
     {
       this.jdField_b_of_type_JavaLangString = paramVoiceRecognizerResult.text;
       if (QLog.isColorLevel()) {
         QLog.e("ReciteRecordLayout", 2, "onGetResult2 text ==" + paramVoiceRecognizerResult.text + " startTime = " + paramVoiceRecognizerResult.startTime);
       }
-      this.jdField_a_of_type_Azzj.a(paramVoiceRecognizerResult.text, ChnToSpell.a(a(paramVoiceRecognizerResult.text), 1), paramVoiceRecognizerResult.startTime, paramVoiceRecognizerResult.stopTime, paramVoiceRecognizerResult.isAllEnd);
+      this.jdField_a_of_type_Azzx.a(paramVoiceRecognizerResult.text, ChnToSpell.a(a(paramVoiceRecognizerResult.text), 1), paramVoiceRecognizerResult.startTime, paramVoiceRecognizerResult.stopTime, paramVoiceRecognizerResult.isAllEnd);
     }
   }
   
@@ -457,14 +457,14 @@ public class ReciteRecordLayout
   
   public void onVolumeChanged(int paramInt) {}
   
-  public void setOnReciteListener(azzj paramazzj)
+  public void setOnReciteListener(azzx paramazzx)
   {
-    this.jdField_a_of_type_Azzj = paramazzj;
+    this.jdField_a_of_type_Azzx = paramazzx;
   }
   
-  public void setmReciteDetectManager(azzz paramazzz)
+  public void setmReciteDetectManager(baan parambaan)
   {
-    this.jdField_a_of_type_Azzz = paramazzz;
+    this.jdField_a_of_type_Baan = parambaan;
   }
 }
 

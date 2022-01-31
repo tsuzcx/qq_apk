@@ -1,44 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
 class bdcg
-  extends bfvp
+  implements DialogInterface.OnClickListener
 {
-  bdcg(bdce parambdce, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  bdcg(bdcf parambdcf) {}
   
-  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    parambfvo = super.a(paramInt, paramObject, parambfvo, paramOnClickListener);
-    if ((parambfvo instanceof SimpleTextView)) {
-      parambfvo.setTag(paramObject);
-    }
-    return parambfvo;
-  }
-  
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
-  {
-    paramInt = 0;
-    if ((paramArrayOfbfvo == null) || (paramArrayOfbfvo.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfbfvo.length < 0)
-      {
-        paramArrayOfbfvo[0].b = 0;
-        paramArrayOfbfvo[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbfvo.length)
-      {
-        paramArrayOfbfvo[paramInt].b = -1;
-        paramArrayOfbfvo[paramInt].a = -1;
-        paramInt += 1;
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 

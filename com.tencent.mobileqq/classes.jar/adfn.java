@@ -1,63 +1,126 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class adfn
-  extends BaseAdapter
 {
-  private adfn(RDBaseListLayout paramRDBaseListLayout) {}
+  private static adfn jdField_a_of_type_Adfn;
+  public static ajuz a;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.aio_config.name();
+  public boolean a;
+  private String b;
+  public boolean b;
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public int getCount()
+  static
   {
-    return RDBaseListLayout.a(this.a).size();
+    jdField_a_of_type_Ajuz = new adfo();
   }
   
-  public Object getItem(int paramInt)
+  private adfn()
   {
-    return RDBaseListLayout.a(this.a).get(paramInt);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    DeviceProfileManager.a(jdField_a_of_type_Ajuz);
   }
   
-  public long getItemId(int paramInt)
+  public static adfn a()
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = RDBaseListLayout.a(this.a).get(paramInt);
-    if (paramView == null) {
-      paramView = this.a.a(paramInt, paramViewGroup);
+    if (jdField_a_of_type_Adfn == null) {
+      b(false);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "getInstance: " + jdField_a_of_type_Adfn);
+    }
+    return jdField_a_of_type_Adfn;
+  }
+  
+  public static boolean a()
+  {
+    adfn localadfn = a();
+    if (localadfn != null) {
+      return localadfn.jdField_a_of_type_Boolean;
+    }
+    return true;
+  }
+  
+  private static void b(boolean paramBoolean)
+  {
     for (;;)
     {
-      if (paramView == null) {
-        paramViewGroup = null;
-      }
-      View localView;
-      do
+      try
       {
-        return paramViewGroup;
-        paramView = (adfo)paramView.getTag();
-        if (paramView == null) {
-          break label102;
+        long l1 = System.currentTimeMillis();
+        if (jdField_a_of_type_Adfn == null)
+        {
+          jdField_a_of_type_Adfn = new adfn();
+          paramBoolean = true;
         }
-        paramView = paramView.a;
-        break;
-        this.a.a(paramInt, paramViewGroup, paramView);
-        localView = ((adfp)paramView).a();
-        paramViewGroup = localView;
-      } while (localView == null);
-      localView.setTag(new adfo(this.a, paramInt, paramView));
-      return localView;
-      label102:
-      paramView = null;
+        if (paramBoolean) {}
+        try
+        {
+          Object localObject1 = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+          jdField_a_of_type_Adfn.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject1 = ((String)localObject1).split("\\|");
+            if (localObject1.length < 19) {
+              break label243;
+            }
+            if (Integer.valueOf(localObject1[18]).intValue() != 1) {
+              continue;
+            }
+            jdField_a_of_type_Adfn.jdField_a_of_type_Boolean = true;
+            if (localObject1.length < 20) {
+              break label263;
+            }
+            if (Integer.valueOf(localObject1[19]).intValue() != 1) {
+              break label253;
+            }
+            jdField_a_of_type_Adfn.jdField_b_of_type_Boolean = true;
+          }
+        }
+        catch (Exception localException)
+        {
+          long l2;
+          QLog.d("AIODrawerDpc", 1, "load exp:" + localException.getMessage());
+          jdField_a_of_type_Adfn.jdField_a_of_type_Boolean = true;
+          jdField_a_of_type_Adfn.jdField_b_of_type_Boolean = true;
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          l2 = System.currentTimeMillis();
+          QLog.d("AIODrawerDpc", 2, "loadDpc: " + jdField_a_of_type_Adfn + ", costMills: " + (l2 - l1));
+        }
+        return;
+      }
+      finally {}
+      jdField_a_of_type_Adfn.jdField_a_of_type_Boolean = false;
+      continue;
+      label243:
+      jdField_a_of_type_Adfn.jdField_a_of_type_Boolean = true;
+      continue;
+      label253:
+      jdField_a_of_type_Adfn.jdField_b_of_type_Boolean = false;
+      continue;
+      label263:
+      jdField_a_of_type_Adfn.jdField_b_of_type_Boolean = true;
     }
+  }
+  
+  public static boolean b()
+  {
+    adfn localadfn = a();
+    if (localadfn != null) {
+      return localadfn.jdField_b_of_type_Boolean;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "AIODrawerDpc{dpcValue='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isSupport=" + this.jdField_a_of_type_Boolean + ", needPreInflate=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

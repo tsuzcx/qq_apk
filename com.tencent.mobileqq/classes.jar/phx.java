@@ -1,21 +1,45 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 
 class phx
-  implements View.OnClickListener
+  implements ViewBase.OnClickListener
 {
-  phx(phw paramphw, pax parampax, Context paramContext, int paramInt) {}
+  phx(phw paramphw, pau parampau, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    pje.a(this.jdField_a_of_type_Pax.a(), this.jdField_a_of_type_AndroidContentContext);
-    paramView = this.jdField_a_of_type_Pax.a();
-    String str1 = String.valueOf(onk.a(this.jdField_a_of_type_Pax.a(), this.jdField_a_of_type_Int));
-    String str2 = onk.a(paramView.mAlgorithmID, onk.a(paramView), 70, 0, 0, bbev.h(this.jdField_a_of_type_AndroidContentContext), str1, null, paramView.innerUniqueID, null, paramView);
-    noo.a(null, str1, "0X8009355", "0X8009355", 0, 0, paramView.mFeedId + "", String.valueOf(paramView.businessId), String.valueOf(paramView.mAlgorithmID), str2, false);
-    shx.a(paramView);
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pau.a();
+    Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(localArticleInfo.mArticleContentUrl);
+    Object localObject1;
+    String str1;
+    String str2;
+    if ((paramViewBase instanceof pmg))
+    {
+      localObject1 = ((pmg)paramViewBase).getText();
+      awsq.a(null, ((ReportModelDC02528)localObject2).ver4((String)localObject1).ver5(localArticleInfo.mTitle).ver6(ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8()).ver7("{jumpurl:" + paramViewBase.getEventAttachedData() + ",clk_index:" + paramViewBase.getClickEvnet().substring("search_word_click_".length()) + "}").session_id(localArticleInfo.mSearchWordSessionId));
+      awwa.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.getEventAttachedData());
+      localObject1 = (akiz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111);
+      localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      str1 = localArticleInfo.mSearchWordSessionId;
+      str2 = localArticleInfo.mArticleContentUrl;
+      if (!(paramViewBase instanceof pmg)) {
+        break label261;
+      }
+    }
+    label261:
+    for (paramViewBase = ((pmg)paramViewBase).getText();; paramViewBase = "")
+    {
+      ((akiz)localObject1).a((QQAppInterface)localObject2, "clk_Kdfeedsback_list", str1, str2, paramViewBase, localArticleInfo.mTitle, ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8());
+      return;
+      localObject1 = "";
+      break;
+    }
   }
 }
 

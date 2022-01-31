@@ -120,8 +120,8 @@ public class hd
       return;
     }
     int i;
-    if ((paramCharacterStyle instanceof aykp)) {
-      i = ((aykp)paramCharacterStyle).a().getBounds().width();
+    if ((paramCharacterStyle instanceof aykr)) {
+      i = ((aykr)paramCharacterStyle).a().getBounds().width();
     }
     for (;;)
     {
@@ -145,10 +145,10 @@ public class hd
         this.g = 0;
         this.e += 1;
         return;
-        if (!(paramCharacterStyle instanceof awcz)) {
+        if (!(paramCharacterStyle instanceof awdb)) {
           break label196;
         }
-        i = ((awcz)paramCharacterStyle).a();
+        i = ((awdb)paramCharacterStyle).a();
         break label26;
         if (this.g == 0)
         {

@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bbdh;
-import bjlb;
+import bbdv;
+import bjls;
 import com.tencent.qphone.base.util.QLog;
 
 public class QimMusicSeekView
@@ -30,7 +30,7 @@ public class QimMusicSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected bjlb a;
+  protected bjls a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
@@ -62,17 +62,17 @@ public class QimMusicSeekView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = 0.0F;
-    this.p = ((int)bbdh.a(paramContext, 8.0F));
-    this.n = ((int)bbdh.a(paramContext, 2.0F));
-    this.o = ((int)bbdh.a(paramContext, 2.0F));
-    this.r = ((int)bbdh.a(paramContext, 3.0F));
-    jdField_b_of_type_Int = (int)bbdh.a(paramContext, 4.0F);
-    jdField_d_of_type_Int = (int)bbdh.a(paramContext, 50.0F);
-    jdField_c_of_type_Int = (int)bbdh.a(paramContext, 36.0F);
+    this.p = ((int)bbdv.a(paramContext, 8.0F));
+    this.n = ((int)bbdv.a(paramContext, 2.0F));
+    this.o = ((int)bbdv.a(paramContext, 2.0F));
+    this.r = ((int)bbdv.a(paramContext, 3.0F));
+    jdField_b_of_type_Int = (int)bbdv.a(paramContext, 4.0F);
+    jdField_d_of_type_Int = (int)bbdv.a(paramContext, 50.0F);
+    jdField_c_of_type_Int = (int)bbdv.a(paramContext, 36.0F);
     int i1 = 0;
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)bbdh.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)bbdv.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
@@ -256,8 +256,8 @@ public class QimMusicSeekView
     this.k = ((this.l - this.g) / 2);
     paramInt1 = (this.m - jdField_d_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.k, paramInt1, this.k + this.g, jdField_d_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_Bjlb != null) {
-      this.jdField_a_of_type_Bjlb.a(this.k, this.g);
+    if (this.jdField_a_of_type_Bjls != null) {
+      this.jdField_a_of_type_Bjls.a(this.k, this.g);
     }
     if (QLog.isColorLevel()) {
       QLog.d("zivonchen", 2, "onMeasure() mViewWidth: " + this.l + ", mViewHeight = " + this.m + ", mVideoViewOffsetX = " + this.k + ", mMusicMaxWidth = " + this.h);
@@ -280,10 +280,10 @@ public class QimMusicSeekView
         return bool1;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_Bjlb == null) {
+        if (this.jdField_a_of_type_Bjls == null) {
           break;
         }
-        this.jdField_a_of_type_Bjlb.a(this.h, this.g, this.i);
+        this.jdField_a_of_type_Bjls.a(this.h, this.g, this.i);
         break;
         this.jdField_a_of_type_Boolean = true;
         f1 = paramMotionEvent.getX();
@@ -306,8 +306,8 @@ public class QimMusicSeekView
             this.i = (this.h - this.g);
           }
           super.invalidate();
-          if (this.jdField_a_of_type_Bjlb != null) {
-            this.jdField_a_of_type_Bjlb.b(this.h, this.g, this.i);
+          if (this.jdField_a_of_type_Bjls != null) {
+            this.jdField_a_of_type_Bjls.b(this.h, this.g, this.i);
           }
           this.jdField_a_of_type_Float = f1;
           break;
@@ -315,8 +315,8 @@ public class QimMusicSeekView
       }
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_Bjlb != null) {
-        this.jdField_a_of_type_Bjlb.c(this.h, this.g, this.i);
+      if (this.jdField_a_of_type_Bjls != null) {
+        this.jdField_a_of_type_Bjls.c(this.h, this.g, this.i);
       }
     }
   }
@@ -329,9 +329,9 @@ public class QimMusicSeekView
     this.h = (jdField_b_of_type_Int * this.f + (this.f - 1) * this.n);
   }
   
-  public void setOnSeekListener(bjlb parambjlb)
+  public void setOnSeekListener(bjls parambjls)
   {
-    this.jdField_a_of_type_Bjlb = parambjlb;
+    this.jdField_a_of_type_Bjls = parambjls;
   }
   
   public void setPlayedPosition(int paramInt)

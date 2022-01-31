@@ -1,102 +1,97 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineManager.EngineChannelReceiver.1;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Log;
 
 public class betc
-  implements besu
 {
-  public betc(besz parambesz) {}
+  private static betb a;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public static int a()
   {
-    paramBundle.setClassLoader(getClass().getClassLoader());
-    int i = paramBundle.getInt("baseLibType");
-    int j = paramBundle.getInt("enginePid");
-    paramBundle = (EngineChannel)paramBundle.getParcelable("engineChannel");
-    if (paramBundle != null)
-    {
-      if (besz.a(this.a).indexOfKey(j) > 0) {
-        besl.c("EngineManager", "[MiniEng] channel already exists for pid " + j + " replacing");
-      }
-      besz.a(this.a).put(j, paramBundle);
+    if (a != null) {
+      return a.getLogLevel();
     }
-    paramBundle = (EngineChannel)besz.a(this.a).get(j);
-    if (paramBundle == null)
+    return 3;
+  }
+  
+  private static String a(String paramString)
+  {
+    return "[MiniSDK]" + paramString;
+  }
+  
+  public static void a(betb parambetb)
+  {
+    if (parambetb != null) {
+      a = parambetb;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, null);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
     {
-      besl.d("EngineManager", "[MiniEng]no channel available for pid " + j);
+      a.d(a(paramString1), paramString2, paramThrowable);
       return;
     }
-    besl.b("EngineManager", "[MiniEng] onReceiveData what=" + paramInt + ",baseLibType=" + i + ",pid=" + j + ",remote=" + paramBundle + ",channelCount=" + besz.a(this.a).size());
-    paramBundle.a(55, null);
-    Object localObject1;
-    Object localObject2;
-    if (paramInt == 1)
+    Log.d(a(paramString1), paramString2, paramThrowable);
+  }
+  
+  public static boolean a()
+  {
+    return true;
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(paramString1, paramString2, null);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
     {
-      localObject1 = besz.a().a(i);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putParcelableArrayList("installedEngineList", (ArrayList)localObject1);
-      paramBundle.a(51, (Bundle)localObject2);
-      besz.a(this.a, paramBundle);
-      besl.b("EngineManager", "[MiniEng]LiveChannel count " + besz.a(this.a).size());
+      a.i(a(paramString1), paramString2, paramThrowable);
       return;
     }
-    if (paramInt == 3) {
-      if (i == 2)
-      {
-        localObject1 = this.a.a(i).iterator();
-        do
-        {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (InstalledEngine)((Iterator)localObject1).next();
-        } while ((!((InstalledEngine)localObject2).b) || (!((InstalledEngine)localObject2).a));
-      }
-    }
-    for (paramInt = 1;; paramInt = 0)
+    Log.i(a(paramString1), paramString2, paramThrowable);
+  }
+  
+  public static boolean b()
+  {
+    return 2 >= a();
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(paramString1, paramString2, null);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
     {
-      if ((!beub.a().a()) && (paramInt == 0))
-      {
-        beiw.b().post(new EngineManager.EngineChannelReceiver.1(this, paramBundle));
-        return;
-      }
-      if (beub.a().b())
-      {
-        localObject1 = bfgy.a();
-        besl.b("EngineManager", "[MiniEng] QQSpeed INSTALL_LATEST_ENGINE gameEngineLib " + localObject1);
-        if ((localObject1 == null) || (((BaseLibInfo)localObject1).baseLibType != 2)) {
-          break;
-        }
-        besz.b(this.a, (BaseLibInfo)localObject1, paramBundle);
-        return;
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new betd(this, i, paramBundle));
-      return;
-      if (paramInt != 5) {
-        break;
-      }
-      if ((i == 2) && (beub.a().b()))
-      {
-        localObject1 = bfgy.a();
-        besl.b("EngineManager", "[MiniEng] QQSpeed UPGRADE_ENGINE gameEngineLib " + localObject1);
-        if ((localObject1 == null) || (((BaseLibInfo)localObject1).baseLibType != 2)) {
-          break;
-        }
-        besz.c(this.a, (BaseLibInfo)localObject1, paramBundle);
-        return;
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib("0,0,1", false, true, new bete(this, i, paramBundle));
+      a.w(a(paramString1), paramString2, paramThrowable);
       return;
     }
+    Log.w(a(paramString1), paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
+  }
+  
+  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null)
+    {
+      a.e(a(paramString1), paramString2, paramThrowable);
+      return;
+    }
+    Log.e(a(paramString1), paramString2, paramThrowable);
   }
 }
 

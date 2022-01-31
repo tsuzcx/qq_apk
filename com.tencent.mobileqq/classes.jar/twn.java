@@ -1,42 +1,12 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
+import android.support.annotation.UiThread;
 
-public class twn
-  extends twp
+public abstract interface twn
 {
-  public ErrorMessage a;
+  @UiThread
+  public abstract void a();
   
-  public twn(two paramtwo, @Nullable ErrorMessage paramErrorMessage)
-  {
-    super(paramtwo);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
-  }
-  
-  public boolean b()
-  {
-    return (!a()) && (!c());
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
-  }
-  
-  public String toString()
-  {
-    return "fg{g=" + this.jdField_a_of_type_Two + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
-  }
+  @UiThread
+  public abstract void a(twl paramtwl, String paramString, boolean paramBoolean);
 }
 
 

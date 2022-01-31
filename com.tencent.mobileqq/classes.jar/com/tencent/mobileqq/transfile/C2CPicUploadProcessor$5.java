@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import aypj;
+import aypl;
 
 public class C2CPicUploadProcessor$5
   implements Runnable
 {
-  public C2CPicUploadProcessor$5(aypj paramaypj) {}
+  public C2CPicUploadProcessor$5(aypl paramaypl) {}
   
   public void run()
   {

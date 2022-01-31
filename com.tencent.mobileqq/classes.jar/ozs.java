@@ -1,21 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
-
-class ozs
-  implements Comparator<ArticleInfo>
+public abstract interface ozs
 {
-  ozs(ozr paramozr) {}
-  
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
-  {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract void a(int paramInt);
 }
 
 

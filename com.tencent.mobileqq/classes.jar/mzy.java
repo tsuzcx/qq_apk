@@ -1,82 +1,40 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
-import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class mzy
-  implements axaw
 {
-  private QQAppInterface a;
+  private static final String a = mzy.class.getName();
   
-  public mzy(QQAppInterface paramQQAppInterface)
+  public static String a(String paramString)
   {
-    this.a = paramQQAppInterface;
-    mzx.a();
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BnrReport", 2, "getCheckUpdateItemData");
-    }
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 1;
-    localReqItem.eServiceID = 118;
-    BnrReport.BNRConfigMsg localBNRConfigMsg = mzx.a(this.a.getCurrentAccountUin());
-    if (localBNRConfigMsg != null) {
-      localReqItem.vecParam = bblm.a(localBNRConfigMsg.toByteArray());
-    }
-    mzx.a = true;
-    return localReqItem;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
-    }
-    BnrReport.BNRConfigMsg localBNRConfigMsg;
-    if (paramRespItem.cResult == 2) {
-      if (paramRespItem.eServiceID == 118)
-      {
-        paramRespItem = bblm.b(paramRespItem.vecUpdate);
-        if (paramRespItem != null) {
-          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
-        }
-      }
-    }
-    for (;;)
+    localStringBuffer = new StringBuffer();
+    try
     {
-      try
+      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
+      for (;;)
       {
-        localBNRConfigMsg.mergeFrom(paramRespItem);
-        mzx.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
-        mzx.a(this.a, 74);
-        mzx.a = false;
-        return;
+        String str = paramString.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuffer.append(str);
       }
-      catch (InvalidProtocolBufferMicroException paramRespItem)
-      {
-        paramRespItem.printStackTrace();
-        continue;
-      }
-      catch (Exception paramRespItem)
-      {
-        paramRespItem.printStackTrace();
-        continue;
-      }
+      return localStringBuffer.toString();
+    }
+    catch (Exception paramString)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
+        QLog.d(a, 2, "http error");
       }
     }
+  }
+  
+  public static void a(String paramString, naa paramnaa)
+  {
+    new mzz(paramnaa, paramString).execute(new Void[0]);
   }
 }
 

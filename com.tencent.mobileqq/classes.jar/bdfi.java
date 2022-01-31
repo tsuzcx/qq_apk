@@ -1,55 +1,87 @@
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.tmassistant.common.jce.StatItem;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Set;
 
-public class bdfi
-  implements bdkw
+class bdfi
+  extends Handler
 {
-  public bdfi(DownloadInterface paramDownloadInterface, String paramString) {}
-  
-  public void a(int paramInt, String paramString)
+  bdfi(bdfh parambdfh, Looper paramLooper)
   {
-    bdht.e("DownloadInterface", "innerQueryDownloadInfo ERROR");
+    super(paramLooper);
   }
   
-  public void a(List<DownloadInfo> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    bdht.c("DownloadInterface", "innerQueryDownloadInfo onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    int i;
+    Object localObject2;
+    if (paramMessage.what == 1)
     {
-      if (i < j)
+      localObject1 = bdfh.a(this.a).keySet();
+      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
+        paramMessage = new ArrayList();
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
+          i = ((Integer)((Iterator)localObject1).next()).intValue();
+          localObject2 = new StatItem();
+          ((StatItem)localObject2).type = i;
+          ((StatItem)localObject2).records = ((ArrayList)bdfh.a(this.a).get(Integer.valueOf(i)));
+          paramMessage.add(localObject2);
         }
-        catch (JSONException localJSONException)
+        bdfh.a(this.a).clear();
+        if (paramMessage.size() > 0)
         {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+          i = bdfh.a(this.a).a(paramMessage);
+          bdfh.a(this.a).put(i, paramMessage);
         }
       }
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bdht.c("DownloadInterface", "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
+    while (paramMessage.what != 2) {
+      return;
+    }
+    Object localObject1 = bdeu.a().a();
+    paramMessage = new ArrayList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      i = ((Integer)((Iterator)localObject1).next()).intValue();
+      Object localObject3 = bdeu.a().a(String.valueOf(i));
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
+          try
+          {
+            ((ArrayList)localObject2).add((String)localSerializable);
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
+      if (((ArrayList)localObject2).size() > 0) {
+        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
+      }
+    }
+    if (paramMessage.size() > 0)
+    {
+      i = bdfh.a(this.a).a(paramMessage);
+      bdfh.b(this.a).put(i, paramMessage);
+    }
+    bdfh.a(this.a).sendEmptyMessageDelayed(2, bdfh.a(this.a));
   }
 }
 

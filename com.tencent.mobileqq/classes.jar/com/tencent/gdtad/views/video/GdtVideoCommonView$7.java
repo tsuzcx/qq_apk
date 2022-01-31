@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import yze;
+import yzb;
 
 class GdtVideoCommonView$7
   implements Runnable
@@ -36,7 +36,7 @@ class GdtVideoCommonView$7
       {
         GdtVideoCommonView.a(this.this$0).setProgress(i);
         GdtVideoCommonView.b(this.this$0).setProgress(i);
-        GdtVideoCommonView.c(this.this$0).setText(yze.a(l1));
+        GdtVideoCommonView.c(this.this$0).setText(yzb.a(l1));
       }
       GdtVideoCommonView.a(this.this$0).postDelayed(this, 50L);
       return;

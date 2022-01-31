@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import ajmu;
+import airx;
+import ajms;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class ApolloManager$5
   implements Runnable
 {
-  public ApolloManager$5(airz paramairz) {}
+  public ApolloManager$5(airx paramairx) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class ApolloManager$5
           if (localObject1 == null) {
             break label464;
           }
-          localObject1 = new File(ajmu.a);
+          localObject1 = new File(ajms.a);
           ((File)localObject1).mkdirs();
           File localFile = new File((File)localObject1, "apollo_res_version_info.json");
           if (localFile.exists()) {

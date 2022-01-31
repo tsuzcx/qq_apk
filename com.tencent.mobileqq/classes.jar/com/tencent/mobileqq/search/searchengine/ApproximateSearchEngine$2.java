@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import awtn;
-import awut;
-import awvg;
+import awtp;
+import awuv;
+import awvi;
 import java.util.List;
 
 public class ApproximateSearchEngine$2
   implements Runnable
 {
-  public ApproximateSearchEngine$2(awtn paramawtn, awvg paramawvg) {}
+  public ApproximateSearchEngine$2(awtp paramawtp, awvi paramawvi) {}
   
   public void run()
   {
-    List localList = awtn.a(this.this$0, this.a);
-    awut localawut = awtn.a(this.this$0);
-    if ((localawut != null) && (localList != null)) {
-      localawut.a(localList, 1);
+    List localList = awtp.a(this.this$0, this.a);
+    awuv localawuv = awtp.a(this.this$0);
+    if ((localawuv != null) && (localList != null)) {
+      localawuv.a(localList, 1);
     }
   }
 }

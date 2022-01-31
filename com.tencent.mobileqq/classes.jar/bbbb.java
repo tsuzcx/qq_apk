@@ -1,315 +1,112 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Shader.TileMode;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bbbb
+public final class bbbb
 {
+  public static final DownloadParams.DecodeHandler a = new bbbc();
+  public static final DownloadParams.DecodeHandler b = new bbbd(bavw.s, a);
+  
+  public static Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
+  {
+    try
+    {
+      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+      return paramConfig;
+    }
+    catch (Exception paramConfig)
+    {
+      return null;
+    }
+    catch (OutOfMemoryError paramConfig) {}
+    return null;
+  }
+  
+  public static Bitmap a(@NonNull Bitmap paramBitmap)
+  {
+    return a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+  }
+  
+  public static Bitmap a(@NonNull Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0) || ((paramInt1 <= 0) && (paramInt2 <= 0))) {}
+    Bitmap localBitmap;
+    do
+    {
+      return paramBitmap;
+      localBitmap = a(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    } while (localBitmap == null);
+    return a(paramBitmap, localBitmap, paramInt1, paramInt2);
+  }
+  
+  public static Bitmap a(@NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return paramBitmap1;
+    }
+    paramBitmap2.setDensity((int)bbll.c());
+    Canvas localCanvas = new Canvas(paramBitmap2);
+    Path localPath = a(paramInt1, paramInt2);
+    BitmapShader localBitmapShader = new BitmapShader(paramBitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    localBitmapShader.setLocalMatrix(a(paramBitmap1.getWidth(), paramBitmap1.getHeight(), paramInt1, paramInt2));
+    paramBitmap1 = new Paint();
+    paramBitmap1.setShader(localBitmapShader);
+    paramBitmap1.setAntiAlias(true);
+    localCanvas.drawPath(localPath, paramBitmap1);
+    return paramBitmap2;
+  }
+  
   @NonNull
-  private static String a(int paramInt, String... paramVarArgs)
+  private static Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
+    float f1 = 0.0F;
+    Matrix localMatrix = new Matrix();
+    if ((paramInt1 == paramInt3) && (paramInt2 == paramInt4)) {
+      return localMatrix;
     }
-    return paramVarArgs[paramInt];
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo)
-  {
-    if (paramQQAppInterface == null) {
-      return "";
-    }
-    if (paramDiscussionInfo == null) {
-      return "";
-    }
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    if (TextUtils.isEmpty(paramQQAppInterface)) {
-      return "";
-    }
-    if (paramDiscussionInfo.isOwnerOrInheritOwner(paramQQAppInterface)) {
-      return "0";
-    }
-    return "1";
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return "";
-    }
-    paramString = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
-    if (paramString != null)
+    float f3;
+    float f2;
+    if (paramInt1 * paramInt4 > paramInt3 * paramInt2)
     {
-      if (paramString.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-        return "0";
-      }
-      if (paramString.isAdmin()) {
-        return "1";
-      }
-    }
-    return "2";
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return "";
-    }
-    return a(((TroopManager)paramQQAppInterface.getManager(52)).b(paramString1, paramString2));
-  }
-  
-  public static String a(TroopInfo paramTroopInfo, AppRuntime paramAppRuntime)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramAppRuntime != null)
-    {
-      str1 = str2;
-      if (paramTroopInfo != null)
-      {
-        paramAppRuntime = paramAppRuntime.getAccount();
-        str1 = str2;
-        if (!TextUtils.isEmpty(paramAppRuntime))
-        {
-          if (!paramTroopInfo.isTroopOwner(paramAppRuntime)) {
-            break label42;
-          }
-          str1 = "0";
-        }
-      }
-    }
-    return str1;
-    label42:
-    if (paramTroopInfo.isTroopAdmin(paramAppRuntime)) {
-      return "1";
-    }
-    return "2";
-  }
-  
-  public static String a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    if (paramTroopMemberInfo == null) {
-      return "";
-    }
-    switch (paramTroopMemberInfo.level)
-    {
-    default: 
-      return "";
-    case 335: 
-      return "student";
-    case 334: 
-      return "parent";
-    case 333: 
-      return "teacher";
-    }
-    return "classteacher";
-  }
-  
-  public static String a(TroopInfoData paramTroopInfoData)
-  {
-    if (paramTroopInfoData == null) {
-      return "";
-    }
-    if (paramTroopInfoData.bOwner) {
-      return "0";
-    }
-    if (paramTroopInfoData.bAdmin) {
-      return "1";
-    }
-    if (paramTroopInfoData.isMember) {
-      return "2";
-    }
-    return "";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
-  {
-    Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
-    TroopMemberInfo localTroopMemberInfo = ((TroopManager)localObject).b(paramString1, paramQQAppInterface.getCurrentAccountUin());
-    localObject = ((TroopManager)localObject).c(paramString1);
-    a("Grp_edu", paramString2, paramString3, 0, 0, new String[] { paramString1, a(localTroopMemberInfo), a((TroopInfo)localObject, paramQQAppInterface), String.valueOf(((TroopInfo)localObject).dwGroupClassExt) });
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
-  {
-    if ((paramQQAppInterface == null) || (paramVarArgs == null) || (paramVarArgs.length < 4)) {
-      return;
-    }
-    if (((TroopManager)paramQQAppInterface.getManager(52)).a(paramString1, paramQQAppInterface.getCurrentAccountUin()) == null)
-    {
-      ThreadManagerV2.excute(new TroopReportor.1(paramString2, paramString3, paramInt1, paramInt2, paramVarArgs, paramQQAppInterface, paramString1), 32, null, true);
-      return;
-    }
-    a("Grp_edu", paramString2, paramString3, paramInt1, paramInt2, new String[] { paramVarArgs[0], a(paramQQAppInterface, paramString1, paramQQAppInterface.getCurrentAccountUin()), paramVarArgs[2], paramVarArgs[3] });
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getString("department");
-      String str1 = ((JSONObject)localObject).getString("opType");
-      String str2 = ((JSONObject)localObject).getString("opName");
-      int i = ((JSONObject)localObject).getInt("opIn");
-      int j = ((JSONObject)localObject).getInt("opResult");
-      localObject = a(((JSONObject)localObject).getJSONObject("remains"));
-      if ((localObject != null) && (localObject.length >= 4)) {
-        a(paramString, str1, str2, i, j, new String[] { localObject[0], localObject[1], localObject[2], localObject[3] });
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    String str;
-    if (paramInt3 == 10001) {
-      str = "1";
+      f3 = paramInt4 / paramInt2;
+      f2 = (paramInt3 - paramInt1 * f3) * 0.5F;
     }
     for (;;)
     {
-      if (TextUtils.isEmpty(str)) {}
-      label202:
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (paramInt3 == 10002)
-            {
-              str = "2";
-              break;
-            }
-            if (paramInt3 == 10003)
-            {
-              str = "3";
-              break;
-            }
-            if (paramInt3 == 10004)
-            {
-              str = "4";
-              break;
-            }
-            if ((paramInt3 == 10018) || (paramInt3 == 10017))
-            {
-              str = "6";
-              break;
-            }
-            if ((paramInt3 == 10020) || (paramInt3 == 10019))
-            {
-              str = "7";
-              break;
-            }
-            if ((paramInt3 != 10022) && (paramInt3 != 10021)) {
-              break label266;
-            }
-            str = "8";
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopReportor", 2, "reportRecSrc");
-            }
-            if (paramInt1 != 0) {
-              break label202;
-            }
-            if (paramInt2 == 1)
-            {
-              a("Grp_set_new", "recommend", "exp_new", 3, 0, new String[] { paramString, str });
-              return;
-            }
-          } while (paramInt2 != 0);
-          a("Grp_set_new", "recommend", "clkjoin_new", 3, 0, new String[] { paramString, str });
-          return;
-        } while (paramInt1 != 1);
-        if (paramInt2 == 1)
-        {
-          a("Grp_join_new", "person_data", "exp_new", 3, 0, new String[] { paramString, str });
-          return;
-        }
-      } while (paramInt2 != 0);
-      a("Grp_join_new", "recommend", "clkjoin_new", 3, 0, new String[] { paramString, str });
-      return;
-      label266:
-      str = null;
+      localMatrix.setScale(f3, f3);
+      localMatrix.postTranslate(Math.round(f2), Math.round(f1));
+      return localMatrix;
+      f3 = paramInt3 / paramInt1;
+      f1 = paramInt4;
+      float f4 = paramInt2;
+      f2 = 0.0F;
+      f1 = (f1 - f4 * f3) * 0.5F;
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  @NonNull
+  public static Path a(int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (veg.a()) {
-        veg.c("TroopReportor", "[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
-      }
-      axqw.b(null, "dc00899", paramString1, "", paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
-      return;
+    Path localPath = new Path();
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return localPath;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopReportor", 2, localException, new Object[0]);
-        }
-      }
-    }
-  }
-  
-  public static String[] a(JSONObject paramJSONObject)
-  {
-    Object localObject;
-    if (paramJSONObject == null) {
-      localObject = null;
-    }
-    String[] arrayOfString;
-    for (;;)
-    {
-      return localObject;
-      arrayOfString = new String[4];
-      arrayOfString[0] = "";
-      arrayOfString[1] = "";
-      arrayOfString[2] = "";
-      arrayOfString[3] = "";
-      try
-      {
-        if (paramJSONObject.has("r1")) {
-          arrayOfString[0] = paramJSONObject.getString("r1");
-        }
-        if (paramJSONObject.has("r2")) {
-          arrayOfString[1] = paramJSONObject.getString("r2");
-        }
-        if (paramJSONObject.has("r3")) {
-          arrayOfString[2] = paramJSONObject.getString("r3");
-        }
-        localObject = arrayOfString;
-        if (paramJSONObject.has("r4"))
-        {
-          arrayOfString[3] = paramJSONObject.getString("r4");
-          return arrayOfString;
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-    }
-    return arrayOfString;
+    float f1 = Math.min(paramInt1 * 0.0618F, paramInt2 * 0.0618F);
+    float f2 = paramInt1 / 2.0F;
+    float f3 = paramInt2 / 2.0F;
+    localPath.moveTo(0.0F, f3);
+    localPath.cubicTo(0.0F, f1, f1, 0.0F, f2, 0.0F);
+    localPath.cubicTo(paramInt1 - f1, 0.0F, paramInt1, f1, paramInt1, f3);
+    localPath.cubicTo(paramInt1, paramInt2 - f1, paramInt1 - f1, paramInt2, f2, paramInt2);
+    localPath.cubicTo(f1, paramInt2, 0.0F, paramInt2 - f1, 0.0F, f3);
+    return localPath;
   }
 }
 

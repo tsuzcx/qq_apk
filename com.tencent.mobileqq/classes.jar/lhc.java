@@ -1,65 +1,27 @@
-import com.tencent.av.app.VideoAppInterface;
-
 public class lhc
 {
-  private ajtd[] a = new ajtd[4];
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public CharSequence b;
   
-  private ajtd b(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public lhc(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
   {
-    Object localObject = null;
-    long l1 = System.currentTimeMillis();
-    switch (paramInt)
-    {
-    }
-    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new lgq(paramVideoAppInterface))
-    {
-      lcl.c("BusinessHandlerFactory", "createHandler unknown name");
-      for (;;)
-      {
-        long l2 = System.currentTimeMillis();
-        lcl.c("BusinessHandlerFactory", "createHandler,cost time:" + (l2 - l1));
-        return paramVideoAppInterface;
-        paramVideoAppInterface = new lhb(paramVideoAppInterface);
-        continue;
-        paramVideoAppInterface = new lgy(paramVideoAppInterface);
-        continue;
-        paramVideoAppInterface = new ltz(paramVideoAppInterface);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
+    this.b = paramCharSequence2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public ajtd a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public boolean a()
   {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    synchronized (this.a)
-    {
-      ajtd localajtd = this.a[paramInt];
-      localObject = localajtd;
-      if (localajtd == null)
-      {
-        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
-        localObject = paramVideoAppInterface;
-        if (paramVideoAppInterface != null)
-        {
-          this.a[paramInt] = paramVideoAppInterface;
-          localObject = paramVideoAppInterface;
-        }
-      }
-      return localObject;
-    }
+    return this.jdField_a_of_type_Int == 2;
   }
   
-  public void a(lgn paramlgn)
+  public String toString()
   {
-    paramlgn.a("TransInfoCreate.CreateSession", new int[] { 1 });
-    paramlgn.a("TransInfo.JoinSession", new int[] { 0 });
-    paramlgn.a("TransInfo.ExitSession", new int[] { 0 });
-    paramlgn.a("TransInfo.ChangeSession", new int[] { 0 });
-    paramlgn.a("TransInfo.RawData", new int[] { 0 });
-    paramlgn.a("OidbSvc.0xa75", new int[] { 2 });
+    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

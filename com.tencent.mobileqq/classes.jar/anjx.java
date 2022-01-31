@@ -1,45 +1,18 @@
-import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-public class anjx
-  extends ClickableSpan
+public final class anjx
+  implements Parcelable.Creator<QQPhotoInfo>
 {
-  private ajyv jdField_a_of_type_Ajyv;
-  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
-  
-  public anjx(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ajyv = new ajyv((BaseActivity)paramContext, paramQQAppInterface, null);
+    return new QQPhotoInfo(paramParcel, null);
   }
   
-  public void onClick(View paramView)
+  public QQPhotoInfo[] a(int paramInt)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
-    {
-      paramView = ((HotChatManager)paramView.getManager(60)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
-      this.jdField_a_of_type_Ajyv.a(paramView);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    return new QQPhotoInfo[paramInt];
   }
 }
 

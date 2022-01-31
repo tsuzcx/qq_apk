@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajyc;
+import ajya;
 import android.widget.CheckBox;
-import bcpw;
+import bcql;
 
 class QRScanEntryView$8
   implements Runnable
@@ -12,7 +12,7 @@ class QRScanEntryView$8
   public void run()
   {
     QRScanEntryView.a(this.this$0).setChecked(false);
-    bcpw.a(this.this$0.getContext(), ajyc.a(2131711210), 1).a();
+    bcql.a(this.this$0.getContext(), ajya.a(2131711221), 1).a();
   }
 }
 

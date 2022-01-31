@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
 import android.content.Context;
-import bcpw;
-import vuc;
+import bcql;
+import vtz;
 
 public class SlideShowPhotoListManager$2
   implements Runnable
 {
-  public SlideShowPhotoListManager$2(vuc paramvuc, Context paramContext, String paramString) {}
+  public SlideShowPhotoListManager$2(vtz paramvtz, Context paramContext, String paramString) {}
   
   public void run()
   {
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).a();
+    bcql.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

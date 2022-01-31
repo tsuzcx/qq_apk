@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bbdj;
+import bbdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -28,19 +28,19 @@ class DesktopDataManager$10
     String str = ApkgManager.getApkgFolderPath(this.val$miniAppInfo);
     if (new File(str).exists())
     {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
       QLog.d("DesktopDataManager", 1, "clear apkgFile. " + this.val$miniAppInfo.appId);
     }
     str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$miniAppInfo.appId);
     if (new File(str).exists())
     {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
       QLog.d("DesktopDataManager", 1, "clear cacheFile. " + this.val$miniAppInfo.appId);
     }
     str = Storage.getCacheDir(BaseApplicationImpl.getApplication().getBaseContext().getCacheDir().getAbsolutePath(), (String)localObject, this.val$miniAppInfo.appId);
     if (new File(str).exists())
     {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
       QLog.d("DesktopDataManager", 1, "clear storageFile. " + this.val$miniAppInfo.appId);
     }
     if (BaseApplicationImpl.getApplication().getSharedPreferences(this.val$miniAppInfo.appId + "_" + (String)localObject, 4).edit().clear().commit()) {

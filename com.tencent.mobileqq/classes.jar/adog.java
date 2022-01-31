@@ -1,23 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 class adog
-  implements bfoq
+  extends acuj
 {
-  adog(adof paramadof, MessageForDeviceFile paramMessageForDeviceFile, bfol parambfol) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_Adof.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-  }
+  adog(adod paramadod) {}
 }
 
 

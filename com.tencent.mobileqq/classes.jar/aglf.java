@@ -1,25 +1,14 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.net.URL;
-
 public class aglf
-  implements ayww
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-  
-  public aglf(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-  }
-  
-  public Bitmap a(URL paramURL)
-  {
-    return ThumbnailUtils.extractThumbnail(ThumbnailUtils.createVideoThumbnail(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, 3), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
 }
 
 

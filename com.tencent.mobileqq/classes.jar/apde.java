@@ -1,17 +1,4 @@
-import android.os.Bundle;
-
-public class apde
-{
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  apde(apcy paramapcy) {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     apde

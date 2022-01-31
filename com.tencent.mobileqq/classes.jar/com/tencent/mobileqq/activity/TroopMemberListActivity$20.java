@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acjt;
+import acjp;
 
 public class TroopMemberListActivity$20
   implements Runnable
@@ -9,7 +9,7 @@ public class TroopMemberListActivity$20
   
   public void run()
   {
-    TroopMemberListActivity.a(this.this$0.app, Long.valueOf(this.this$0.b).longValue(), new acjt(this));
+    TroopMemberListActivity.a(this.this$0.app, Long.valueOf(this.this$0.b).longValue(), new acjp(this));
   }
 }
 

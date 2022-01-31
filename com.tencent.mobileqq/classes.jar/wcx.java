@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import java.util.List;
 
-public class wcx
-  implements View.OnLongClickListener
+public abstract class wcx<T>
 {
-  public wcx(InnerListView paramInnerListView, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private List<T> jdField_a_of_type_JavaUtilList;
   
-  public boolean onLongClick(View paramView)
+  public wcx(int paramInt, List<T> paramList)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-    return false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<T> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public abstract void a(int paramInt, T paramT, vap paramvap);
+  
+  public void a(int paramInt, vap paramvap)
+  {
+    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramvap);
   }
 }
 

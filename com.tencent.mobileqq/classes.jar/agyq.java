@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class agyq
-  implements View.OnClickListener
+  implements OnCompositionLoadedListener
 {
   public agyq(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      ahiy.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
-    }
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
   }
 }
 

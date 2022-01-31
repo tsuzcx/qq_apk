@@ -1,10 +1,19 @@
-import MConch.SCPullConchs;
 import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bcwe
+final class bcwe
+  implements akjt
 {
-  public SCPullConchs a;
-  public SCGet3rdCloudCheck a;
+  bcwe(QQAppInterface paramQQAppInterface, akjs paramakjs) {}
+  
+  public void a(int paramInt)
+  {
+    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjs);
+    }
+  }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 

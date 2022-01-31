@@ -4,9 +4,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
+import osx;
 import ota;
-import otd;
-import sgj;
+import sgg;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$3
@@ -16,7 +16,7 @@ public final class ReadinjoySPEventReport$3
   
   public void run()
   {
-    if ((!this.a) && (!ota.c())) {}
+    if ((!this.a) && (!osx.c())) {}
     label285:
     label293:
     label299:
@@ -26,12 +26,12 @@ public final class ReadinjoySPEventReport$3
       return;
       if (this.a)
       {
-        ota.c(System.currentTimeMillis());
-        ota.a(true);
+        osx.c(System.currentTimeMillis());
+        osx.a(true);
       }
-      ota.b(this.a);
+      osx.b(this.a);
       Object localObject;
-      if (ota.b(9))
+      if (osx.b(9))
       {
         ArrayList localArrayList = new ArrayList();
         oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -46,7 +46,7 @@ public final class ReadinjoySPEventReport$3
         localArrayList.add(localAttributeList);
         if (!this.a)
         {
-          long l = ota.e();
+          long l = osx.e();
           l = (System.currentTimeMillis() - l) / 1000L;
           localObject = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$3
           localAttributeList.att_id.set(3);
           localAttributeList.att_name.set("isScreenTime");
           localPBStringField = localAttributeList.att_value;
-          if (!ota.d()) {
+          if (!osx.d()) {
             break label293;
           }
           localObject = "1";
@@ -65,25 +65,25 @@ public final class ReadinjoySPEventReport$3
           localPBStringField.set((String)localObject);
           localArrayList.add(localAttributeList);
         }
-        sgj.a(9, localArrayList);
+        sgg.a(9, localArrayList);
         if (!this.a) {
           break label299;
         }
-        ota.d(System.currentTimeMillis());
-        ota.c(0);
+        osx.d(System.currentTimeMillis());
+        osx.c(0);
       }
       for (;;)
       {
-        if (otd.a != 1) {
+        if (ota.a != 1) {
           break label304;
         }
-        ota.d(false);
+        osx.d(false);
         return;
         localObject = String.valueOf(0);
         break;
         localObject = "0";
         break label231;
-        ota.a();
+        osx.a();
       }
     }
   }

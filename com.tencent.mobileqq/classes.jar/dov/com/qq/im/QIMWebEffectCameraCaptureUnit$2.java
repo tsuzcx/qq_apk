@@ -1,24 +1,24 @@
 package dov.com.qq.im;
 
-import bihm;
+import biid;
 import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class QIMWebEffectCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMWebEffectCameraCaptureUnit$2(bihm parambihm) {}
+  public QIMWebEffectCameraCaptureUnit$2(biid parambiid) {}
   
   public void run()
   {
-    if ((bihm.a(this.this$0)) && (bihm.b(this.this$0))) {
-      this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, bihm.a(this.this$0), bihm.b(this.this$0));
+    if ((biid.a(this.this$0)) && (biid.b(this.this$0))) {
+      this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, biid.a(this.this$0), biid.b(this.this$0));
     }
     do
     {
       return;
-      if ((bihm.c(this.this$0)) && (bihm.d(this.this$0)))
+      if ((biid.c(this.this$0)) && (biid.d(this.this$0)))
       {
-        this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(101, bihm.c(this.this$0), bihm.d(this.this$0));
+        this.this$0.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(101, biid.c(this.this$0), biid.d(this.this$0));
         return;
       }
       if ((this.this$0.jdField_a_of_type_Boolean) && (this.this$0.y))

@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.adapter;
 
-import ajyc;
-import bcpw;
-import bjan;
-import bjap;
+import ajya;
+import bcql;
+import bjbe;
+import bjbg;
 
 public class QIMPtvTemplateAdapter$2$2
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$2$2(bjap parambjap) {}
+  public QIMPtvTemplateAdapter$2$2(bjbg parambjbg) {}
   
   public void run()
   {
-    bcpw.a(this.a.a.a, ajyc.a(2131709820), 0).a();
+    bcql.a(this.a.a.a, ajya.a(2131709831), 0).a();
   }
 }
 

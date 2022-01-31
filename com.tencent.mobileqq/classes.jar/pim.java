@@ -1,48 +1,36 @@
+import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class pim
   implements ViewBase.OnClickListener
 {
   private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  public final String a;
+  private pau jdField_a_of_type_Pau;
+  private ram jdField_a_of_type_Ram;
   
-  public pim(ArticleInfo paramArticleInfo, Context paramContext)
+  public pim(ArticleInfo paramArticleInfo, Context paramContext, ram paramram, pau parampau, View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "OnCommunityCapsuleClickListener";
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnCommunityCapsuleClickListener", 2, "business url is " + str);
-      }
-    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
-    onk.a(this.jdField_a_of_type_AndroidContentContext, str);
-    noo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-    noo.a(null, "", "0X8009BA6", "0X8009BA6", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID + "", "", false);
+    this.jdField_a_of_type_Ram = paramram;
+    this.jdField_a_of_type_Pau = parampau;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    a();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_Ram == null) || (this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Pau == null)) {}
+    while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      return;
+    }
+    this.jdField_a_of_type_Ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Pau.g());
+    old.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A79", null);
   }
 }
 

@@ -1,32 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
 
 public class tno
-  extends syv<toz>
+  extends syn
 {
-  public String a()
-  {
-    return sxp.a("StorySvc.video_apply_authkey");
-  }
+  public long a;
+  public String a;
+  public String c;
   
-  public toz a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
-    try
-    {
-      localRspAuthKey.mergeFrom(paramArrayOfByte);
-      return new toz(localRspAuthKey);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      veg.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
+  public tno(qqstory_service.RspTranslateToken paramRspTranslateToken) {}
   
-  protected byte[] a()
+  public String toString()
   {
-    return new byte[0];
+    return "StoryShareTranslateTokenResponse{coverUrl='" + this.c + '\'' + ", dstBuffer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", shootTimeMillis=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

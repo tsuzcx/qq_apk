@@ -5,23 +5,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import ania;
-import aukm;
-import aulx;
-import auma;
-import ayki;
+import anif;
+import auko;
+import aulz;
+import aumc;
+import aykk;
 
 public class AutoReplyText
-  extends aukm
+  extends auko
   implements Parcelable, Comparable<AutoReplyText>
 {
-  public static final Parcelable.Creator<AutoReplyText> CREATOR = new ania();
+  public static final Parcelable.Creator<AutoReplyText> CREATOR = new anif();
   public static final int TEXT_NONE = 2147483647;
   public int mCheckFlag;
-  @aulx
+  @aulz
   private Bundle mExtra;
   public String mRawText;
-  @auma
+  @aumc
   public int mTextId;
   
   public AutoReplyText()
@@ -139,7 +139,7 @@ public class AutoReplyText
   
   public CharSequence getText(int paramInt)
   {
-    return new ayki(getRawText(), 3, paramInt);
+    return new aykk(getRawText(), 3, paramInt);
   }
   
   public int getTextId()

@@ -1,31 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class arst
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bfph
 {
-  arst(arsq paramarsq, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
+  arst(arss paramarss, bfpc parambfpc, boolean paramBoolean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!this.jdField_a_of_type_Arsq.b)
-    {
-      paramValueAnimator.cancel();
-      this.jdField_a_of_type_Arsq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-      return;
+    this.jdField_a_of_type_Bfpc.dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)(this.jdField_a_of_type_Int + (this.b - this.jdField_a_of_type_Int) * f1 + 0.5F);
-    int j = (int)(this.c + (this.d - this.c) * f1 + 0.5F);
-    int k = (int)(this.e + (this.f - this.e) * f1 + 0.5F);
-    float f2 = this.g;
-    int m = (int)(f1 * (this.h - this.g) + f2 + 0.5F);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(i, j);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(k, m);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Arss.b(false);
+      return;
+      arrn.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Arss.a().e, this.jdField_a_of_type_Arss.a().b);
+      continue;
+      this.jdField_a_of_type_Arss.g();
+      continue;
+      this.jdField_a_of_type_Arss.g();
+    }
   }
 }
 

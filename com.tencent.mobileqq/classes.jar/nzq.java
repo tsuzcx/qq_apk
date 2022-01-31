@@ -1,507 +1,192 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.AdMaterialResManager.2;
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.AdMaterialResManager.3;
-import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.os.SystemClock;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
 
 public class nzq
-  extends pyz
+  extends qxc
 {
-  private String jdField_a_of_type_JavaLangString = "adMaterial";
-  private List<MaterialData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private nzp jdField_a_of_type_Nzp = new nzr(this);
-  private ArrayList<MaterialData> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private ConcurrentHashMap<String, MaterialData> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static final String a;
+  public long a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private MultiVideoAdFooterView jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView;
+  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  private ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
+  public GdtHandler.Params a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MultiVideoAdFooterView b;
+  private MultiVideoAdFooterView c;
+  private ViewGroup e;
   
-  public nzq(AppInterface paramAppInterface)
+  static
   {
-    super(paramAppInterface);
+    jdField_a_of_type_JavaLangString = nzq.class.getSimpleName();
   }
   
-  private Long a(MaterialData paramMaterialData)
+  public nzq(View paramView, Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
-    paramMaterialData = this.jdField_a_of_type_Aukn.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "id=?", new String[] { String.valueOf(paramMaterialData.id) }, null, null, null, null);
-    if ((paramMaterialData != null) && (paramMaterialData.size() == 1)) {
-      return Long.valueOf(((MaterialData)paramMaterialData.get(0)).getId());
+    super(paramView, paramActivity, 1);
+    this.jdField_a_of_type_Long = -2147483648L;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.e = ((ViewGroup)paramView.findViewById(2131367437));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131367438));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367435));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376017));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = ((MultiVideoAdFooterView)paramView.findViewById(2131370518));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = ((MultiVideoAdFooterView)paramView.findViewById(2131370519));
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     }
-    return Long.valueOf(-1L);
-  }
-  
-  private List<MaterialData> a()
-  {
-    return this.jdField_a_of_type_Aukn.a(MaterialData.class);
-  }
-  
-  private List<MaterialData> a(int paramInt)
-  {
-    long l = NetConnInfoCenter.getServerTime();
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    if (paramInt == -1) {
-      return this.jdField_a_of_type_Aukn.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { str, String.valueOf(l), String.valueOf(1) }, null, null, null, null);
+    if (this.e != null) {
+      this.e.setOnClickListener(this);
     }
-    return this.jdField_a_of_type_Aukn.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=? and ad_type=?", new String[] { str, String.valueOf(l), String.valueOf(1), String.valueOf(paramInt) }, null, null, null, null);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
+    }
+    a();
   }
   
-  private ConcurrentHashMap<String, MaterialData> a()
+  protected void a()
   {
-    Object localObject2 = new ArrayList();
-    try
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    }
+    if (this.jdField_c_of_type_AndroidViewViewGroup != null) {
+      this.jdField_c_of_type_AndroidViewViewGroup.setVisibility(8);
+    }
+    if (this.jdField_b_of_type_AndroidViewViewGroup != null) {
+      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+    }
+    if (this.d != null) {
+      this.d.setVisibility(8);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.jdField_a_of_type_Qxr.a(this))
     {
-      localObject1 = a(-1);
-      if (localObject1 == null) {
-        break label109;
+      this.jdField_a_of_type_Qyg.a().f();
+      paramView = oav.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+      oar.a(paramView, 1000, this.jdField_a_of_type_Qxr.a());
+      shq.b(this.jdField_a_of_type_AndroidAppActivity, paramView, null, 3, false, null);
+      nzp.a(this.jdField_a_of_type_AndroidAppActivity, nmc.ay, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    }
+  }
+  
+  public void a(VideoInfo paramVideoInfo)
+  {
+    super.a(paramVideoInfo);
+    if (paramVideoInfo.c)
+    {
+      paramVideoInfo.a.a = true;
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView.setVisibility(8);
+      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView.setVisibility(8);
+      VideoAdInfo localVideoAdInfo = paramVideoInfo.a;
+      if ((localVideoAdInfo != null) && (localVideoAdInfo.m != 1)) {
+        break label150;
       }
-      localObject2 = new ConcurrentHashMap();
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+    }
+    label150:
+    for (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView;; this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView.setData(this, paramVideoInfo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Qxr);
+      if ((this.jdField_a_of_type_Qyg instanceof nzr))
       {
-        MaterialData localMaterialData = (MaterialData)((Iterator)localObject1).next();
-        ((ConcurrentHashMap)localObject2).put(localMaterialData.id, localMaterialData);
+        ((nzr)this.jdField_a_of_type_Qyg).a.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_AndroidAppActivity;
+        ((nzr)this.jdField_a_of_type_Qyg).a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+        ((nzr)this.jdField_a_of_type_Qyg).a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AdMaterialResManager", 2, "getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
-          localObject1 = localObject2;
-        }
-      }
-    }
-    return localObject2;
-    label109:
-    return new ConcurrentHashMap();
-  }
-  
-  public static nzq a(QQAppInterface paramQQAppInterface)
-  {
-    return (nzq)paramQQAppInterface.getManager(337);
-  }
-  
-  private void a(MaterialData paramMaterialData)
-  {
-    try
-    {
-      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramMaterialData.id);
-      }
-      bbdj.a(paramMaterialData.res_path, false);
-      this.jdField_a_of_type_Aukn.a(MaterialData.class.getSimpleName(), "id=? ", new String[] { String.valueOf(paramMaterialData.id) });
       return;
     }
-    catch (Exception paramMaterialData)
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdMultiVideoMultiVideoAdFooterView.b();
+    super.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AdMaterialResManager", 2, "clearExpireData failed " + QLog.getStackTraceString(paramMaterialData));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.k))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.k);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getPaint().setFakeBoldText(true);
+        VideoFeedsAccessibilityHelper.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.k);
+        VideoFeedsAccessibilityHelper.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.k);
+      }
+      nzu.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView);
     }
+    this.e.setTag(this);
+    this.e.setOnClickListener(this);
+    a();
   }
   
-  public static void a(MaterialData paramMaterialData, boolean paramBoolean, String paramString)
+  public void c()
   {
-    a(paramMaterialData, paramBoolean, paramString, null, "resource_download_key");
+    super.c();
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("广告");
   }
   
-  public static void a(MaterialData paramMaterialData, boolean paramBoolean, String paramString1, String paramString2)
+  public void d()
   {
-    a(paramMaterialData, paramBoolean, paramString1, paramString2, "resource_fetch_key");
+    super.d();
   }
   
-  private static void a(MaterialData paramMaterialData, boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {
+    if (!this.jdField_a_of_type_Qxr.a(this)) {
       return;
     }
-    if (paramBoolean) {}
-    for (;;)
+    AdvertisementInfo localAdvertisementInfo = oav.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = shq.a(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, null, 3, false, null);
+    if (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params != null) {}
+    for (long l = SystemClock.elapsedRealtime();; l = -2147483648L)
     {
-      try
+      this.jdField_a_of_type_Long = l;
+      switch (paramView.getId())
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("result", i);
-        localJSONObject.put("reason", paramString1);
-        localJSONObject.put("os", "Android");
-        if ((!paramString3.equals("resource_fetch_key")) && (paramMaterialData != null))
-        {
-          localJSONObject.put("adId", paramMaterialData.adid);
-          localJSONObject.put("adSource", paramMaterialData.ad_source);
-          localJSONObject.put("resUrl", paramMaterialData.url);
-          localJSONObject.put("resMD5", paramMaterialData.res_md5);
-          localJSONObject.put("version", paramMaterialData.res_version);
-          localJSONObject.put("type", paramMaterialData.ad_type);
-          localJSONObject.put("startTime", paramMaterialData.start_time);
-          localJSONObject.put("endTime", paramMaterialData.end_time);
-          localJSONObject.put("delivery_effect", paramMaterialData.delivery_effect);
-        }
-        if (paramString2 != null) {
-          localJSONObject.put("content", paramString2);
-        }
-        axpw.a(localQQAppInterface, "sendtdbank|b_pcg_ffc_game_dev_qq_kandian_commercial|ad_resource_statistics_report", paramString3 + "|" + localJSONObject.toString(), true);
+      default: 
+        return;
+      case 2131367435: 
+      case 2131367436: 
+        oar.a(localAdvertisementInfo, 2, this.jdField_a_of_type_Qxr.a());
+        shq.b(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, null, 3, false, null);
+        nzp.a(this.jdField_a_of_type_AndroidAppActivity, nmc.aq, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
         return;
       }
-      catch (Exception paramMaterialData)
-      {
-        return;
-      }
-      i = 0;
     }
-  }
-  
-  private void a(String paramString)
-  {
-    ThreadManagerV2.excute(new AdMaterialResManager.3(this, paramString), 64, null, true);
-  }
-  
-  private void a(ArrayList<MaterialData> paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() != 0))
-    {
-      b(paramArrayList);
-      a(paramArrayList);
-      this.jdField_a_of_type_JavaUtilList = b();
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label86;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "ad_material need download num =  " + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      a(this.jdField_a_of_type_JavaUtilList);
-    }
-    label86:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("AdMaterialResManager", 2, "ad_material are already downloaded ");
-  }
-  
-  private boolean a(ArrayList<MaterialData> paramArrayList)
-  {
-    for (;;)
-    {
-      MaterialData localMaterialData;
-      try
-      {
-        paramArrayList = paramArrayList.iterator();
-        if (!paramArrayList.hasNext()) {
-          break;
-        }
-        localMaterialData = (MaterialData)paramArrayList.next();
-        long l = a(localMaterialData).longValue();
-        if (l != -1L)
-        {
-          localMaterialData.setId(l);
-          localMaterialData.setStatus(1001);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("AdMaterialResManager", 4, "[insert new] already had set data adid = " + localMaterialData.adid);
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label170;
-        }
-      }
-      catch (Exception paramArrayList)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialResManager", 2, "[insert new]  failed " + QLog.getStackTraceString(paramArrayList));
-        }
-        return false;
-      }
-      QLog.d("AdMaterialResManager", 4, "[insert new] data adid =  " + localMaterialData.adid);
-      label170:
-      this.jdField_a_of_type_Aukn.b(localMaterialData);
-    }
-    return true;
-  }
-  
-  private List<MaterialData> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      long l = NetConnInfoCenter.getServerTime();
-      Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-      localObject = this.jdField_a_of_type_Aukn.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { localObject, String.valueOf(l), String.valueOf(0) }, null, null, null, null);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void b(MaterialData paramMaterialData)
-  {
-    paramMaterialData.res_path = "";
-    paramMaterialData.isReady = false;
-    this.jdField_a_of_type_Aukn.a(paramMaterialData);
-  }
-  
-  public static void b(MaterialData paramMaterialData, boolean paramBoolean, String paramString)
-  {
-    a(paramMaterialData, paramBoolean, paramString, null, "resource_use_key");
-  }
-  
-  private void b(ArrayList<MaterialData> paramArrayList)
-  {
-    c();
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = a();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return;
-    }
-    Iterator localIterator1 = ((List)localObject).iterator();
-    if (localIterator1.hasNext())
-    {
-      localObject = (MaterialData)localIterator1.next();
-      Iterator localIterator2 = paramArrayList.iterator();
-      label72:
-      if (localIterator2.hasNext())
-      {
-        MaterialData localMaterialData = (MaterialData)localIterator2.next();
-        if ((!((MaterialData)localObject).id.equals(localMaterialData.id)) || ((((MaterialData)localObject).res_md5.equals(localMaterialData.res_md5)) && (((MaterialData)localObject).res_version == localMaterialData.res_version))) {
-          break label233;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialResManager", 2, "not the same res_version or md5 update material data ,id =  " + ((MaterialData)localObject).id);
-        }
-        long l = ((MaterialData)localObject).getId();
-        localObject = ((MaterialData)localObject).res_path;
-        localMaterialData.setId(l);
-        localMaterialData.setStatus(1001);
-        localMaterialData.res_path = ((String)localObject);
-        localArrayList.add(localMaterialData);
-        localObject = localMaterialData;
-      }
-    }
-    label233:
-    for (;;)
-    {
-      break label72;
-      break;
-      b(localArrayList);
-      return;
-    }
-  }
-  
-  private void b(List<MaterialData> paramList)
-  {
-    if (paramList != null) {
-      try
-      {
-        if (paramList.size() != 0)
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            MaterialData localMaterialData = (MaterialData)paramList.next();
-            bbdj.a(localMaterialData.res_path, false);
-            localMaterialData.res_path = "";
-            if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-              this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(localMaterialData.id, localMaterialData);
-            }
-            if ((!this.jdField_a_of_type_Aukn.a(localMaterialData)) && (QLog.isColorLevel())) {
-              QLog.d("AdMaterialResManager", 2, "updateDataByList failed data id =  " + localMaterialData.id);
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception paramList)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialResManager", 2, "updateDataByList failed " + QLog.getStackTraceString(paramList));
-        }
-      }
-    }
-  }
-  
-  private List<MaterialData> c()
-  {
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      long l = NetConnInfoCenter.getServerTime();
-      List localList = this.jdField_a_of_type_Aukn.a(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time<?", new String[] { this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), String.valueOf(l) }, null, null, null, null);
-      return localList;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void c()
-  {
-    Object localObject = c();
-    if ((localObject != null) && (((List)localObject).size() != 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        a((MaterialData)((Iterator)localObject).next());
-      }
-    }
-  }
-  
-  private void c(MaterialData paramMaterialData)
-  {
-    a(this.jdField_a_of_type_JavaLangString, paramMaterialData, 1);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    paramString1 = paramString1 + "_" + paramString2;
-    if ((this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1) != null))
-    {
-      paramString1 = (MaterialData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-      if (paramString1 != null)
-      {
-        if (bbdj.a(paramString1.res_path)) {
-          return paramString1.res_path;
-        }
-        b(paramString1);
-      }
-    }
-    return "";
-  }
-  
-  public ArrayList<MaterialData> a(int paramInt)
-  {
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((MaterialData)localEntry.getValue()).ad_type == paramInt) {
-        if (bbdj.a(((MaterialData)localEntry.getValue()).res_path)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add(localEntry.getValue());
-        } else {
-          b((MaterialData)localEntry.getValue());
-        }
-      }
-    }
-    return this.jdField_b_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Nzp != null))
-    {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Nzp);
-      ThreadManagerV2.excute(new AdMaterialResManager.2(this), 32, null, true);
-    }
-  }
-  
-  public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
-  
-  public void a(String paramString, BaseResData paramBaseResData)
-  {
-    paramBaseResData.isReady = true;
-    paramBaseResData.business = paramString;
-    if ((paramBaseResData instanceof MaterialData))
-    {
-      ((MaterialData)paramBaseResData).res_path = b(paramString, paramBaseResData.id);
-      if (bbdj.a(((MaterialData)paramBaseResData).res_path)) {
-        break label93;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "download finish update db material res_path file not exist  id = " + paramBaseResData.id);
-      }
-      a((MaterialData)paramBaseResData, false, "res_path file not exist");
-    }
-    label93:
-    do
-    {
-      do
-      {
-        return;
-        a((MaterialData)paramBaseResData, true, "no error");
-        paramBaseResData.setStatus(1001);
-        if (!this.jdField_a_of_type_Aukn.a(paramBaseResData)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialResManager", 2, "download finish update db material id = " + paramBaseResData.id);
-        }
-      } while (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null);
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramBaseResData.id, (MaterialData)paramBaseResData);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("AdMaterialResManager", 2, "download finish update db material failed  id = " + paramBaseResData.id);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    paramString1 = paramString1 + "_" + paramString2;
-    if ((this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1) != null))
-    {
-      paramString2 = (MaterialData)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-      bbdj.a(paramString2.res_path, false);
-      b(paramString2);
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("AdMaterialResManager", 2, "deleteDirById success id = " + paramString1);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("AdMaterialResManager", 2, "deleteDirById failed id = " + paramString1);
-  }
-  
-  public void a(List<MaterialData> paramList)
-  {
-    if ((paramList != null) && (paramList.size() != 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        c((MaterialData)paramList.next());
-      }
-    }
-  }
-  
-  public boolean a(String paramString, BaseResData paramBaseResData)
-  {
-    return false;
-  }
-  
-  public void b(String paramString, BaseResData paramBaseResData) {}
-  
-  public boolean b(String paramString, BaseResData paramBaseResData)
-  {
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Nzp != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Nzp);
-    }
-    super.onDestroy();
+    this.jdField_a_of_type_Qxr.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    return;
+    oar.a(localAdvertisementInfo, 1000, this.jdField_a_of_type_Qxr.a());
+    shq.b(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, null, 3, false, null);
+    nzp.a(this.jdField_a_of_type_AndroidAppActivity, nmc.ay, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    return;
+    oar.a(localAdvertisementInfo, 3, this.jdField_a_of_type_Qxr.a());
+    shq.b(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, null, 3, false, null);
+    nzp.a(this.jdField_a_of_type_AndroidAppActivity, nmc.ar, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
   }
 }
 

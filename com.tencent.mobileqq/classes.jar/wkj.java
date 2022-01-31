@@ -1,8 +1,20 @@
-public abstract interface wkj
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+
+public class wkj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public wkj(BaseWidgetView paramBaseWidgetView) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    if ((this.a.a() != null) && (!this.a.a(paramView)))
+    {
+      this.a.b(this.a.a());
+      this.a.a().onClick(paramView);
+    }
+  }
 }
 
 

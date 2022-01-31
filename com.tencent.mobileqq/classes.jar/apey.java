@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-public abstract class apey
+public class apey
+  implements Cloneable
 {
-  public abstract int a();
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a = new byte[16];
+  public long b;
+  public short b;
+  public boolean b;
+  public long c = -1L;
   
-  public abstract String a();
-  
-  public abstract HashMap<String, ArrayList<MessageRecord>> a();
-  
-  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
-  
-  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
-  
-  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
-  
-  public abstract String b();
+  public apey a()
+  {
+    try
+    {
+      apey localapey = (apey)super.clone();
+      return localapey;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

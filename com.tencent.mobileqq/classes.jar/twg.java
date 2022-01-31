@@ -1,24 +1,80 @@
 import android.text.TextUtils;
-import java.util.Collections;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class twg
+  implements tvu
 {
-  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int = -1;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final boolean jdField_a_of_type_Boolean;
+  private int b = -1;
   
-  public static void a(String paramString)
+  public twg(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l;
-    Long localLong;
-    do
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public List<String> a()
+  {
+    ved.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt, ArrayList<uas> paramArrayList, twl paramtwl)
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
+      ved.b("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "close , set data invalidate");
       return;
-      l = System.currentTimeMillis();
-      localLong = (Long)a.get(paramString);
-    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
-    a.put(paramString, Long.valueOf(l));
-    tko.a(Collections.singletonList(paramString));
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      uas localuas = (uas)paramArrayList.next();
+      if ((!localuas.a()) && (!TextUtils.isEmpty(localuas.a))) {
+        localArrayList.add(localuas.a);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList = localArrayList;
+    this.jdField_a_of_type_Int = paramInt;
+    int i;
+    if ((paramtwl instanceof twz))
+    {
+      paramArrayList = (twz)paramtwl;
+      if (paramArrayList.a != null)
+      {
+        i = paramArrayList.a.jdField_a_of_type_Int;
+        this.b = i;
+        label129:
+        i = this.jdField_a_of_type_JavaUtilList.size();
+        if (paramtwl != null) {
+          break label186;
+        }
+      }
+    }
+    label186:
+    for (paramArrayList = "";; paramArrayList = paramtwl.toString())
+    {
+      ved.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
+      return;
+      i = -1;
+      break;
+      this.b = -1;
+      break label129;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.b == 12;
+  }
+  
+  public boolean b()
+  {
+    return this.b == 13;
   }
 }
 

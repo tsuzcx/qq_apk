@@ -1,6 +1,12 @@
-public abstract interface arhq
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+class arhq
+  implements BusinessObserver
 {
-  public abstract void a(int paramInt);
+  arhq(arhk paramarhk) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

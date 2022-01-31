@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bfwd;
+import bfwu;
 import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
 import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import vzo;
+import vzl;
 
 public class QQStoryOwnerInfoView
   extends ViewGroup
@@ -71,24 +71,24 @@ public class QQStoryOwnerInfoView
   
   private void a()
   {
-    bfwd.a("QQStoryInfoView.init");
+    bfwu.a("QQStoryInfoView.init");
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131373254);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131373256);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView = new StoryQIMBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561250, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561249, this, false));
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561249, this, false));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561248, this, false));
     addView(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView = new StoryUserBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561249, this, false));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561248, this, false));
     addView(this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2131561248, this, false));
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131362066);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2131561247, this, false));
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131362065);
     addView(this.jdField_a_of_type_AndroidWidgetButton);
-    bfwd.a();
+    bfwu.a();
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -172,9 +172,9 @@ public class QQStoryOwnerInfoView
     this.j = this.i;
     this.l = getContext().getResources().getDimensionPixelSize(2131298316);
     this.k = getContext().getResources().getDimensionPixelSize(2131298315);
-    this.r = vzo.a(getContext(), 2.0F);
-    this.o = vzo.a(getContext(), 10.0F);
-    this.p = vzo.a(getContext(), 15.0F);
+    this.r = vzl.a(getContext(), 2.0F);
+    this.o = vzl.a(getContext(), 10.0F);
+    this.p = vzl.a(getContext(), 15.0F);
     this.n = getContext().getResources().getDimensionPixelSize(2131298321);
     this.m = 0;
   }
@@ -273,7 +273,7 @@ public class QQStoryOwnerInfoView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bfwd.a("QQStoryInfoView.onLayout");
+    bfwu.a("QQStoryInfoView.onLayout");
     try
     {
       a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -285,13 +285,13 @@ public class QQStoryOwnerInfoView
     }
     finally
     {
-      bfwd.a();
+      bfwu.a();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bfwd.a("QQStoryInfoView.onMeasure");
+    bfwu.a("QQStoryInfoView.onMeasure");
     try
     {
       this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
@@ -306,7 +306,7 @@ public class QQStoryOwnerInfoView
     }
     finally
     {
-      bfwd.a();
+      bfwu.a();
     }
   }
   

@@ -1,16 +1,21 @@
+import android.support.annotation.NonNull;
 import org.json.JSONObject;
 
-public abstract interface aabm
+public abstract class aabm
 {
-  public abstract void onComplete();
+  protected aabl a;
   
-  public abstract void onFailure(int paramInt, String paramString);
+  protected void a() {}
   
-  public abstract void onPermission(int paramInt);
+  public final void a(aabl paramaabl)
+  {
+    this.a = paramaabl;
+    a();
+  }
   
-  public abstract void onSuccess(JSONObject paramJSONObject);
+  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabi paramaabi);
   
-  public abstract void onTrigger(JSONObject paramJSONObject);
+  public void b() {}
 }
 
 

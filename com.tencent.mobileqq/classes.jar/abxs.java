@@ -1,25 +1,43 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
 
 public class abxs
-  implements AdapterView.OnItemClickListener
+  implements bfph
 {
-  public abxs(QuickLoginActivity paramQuickLoginActivity) {}
+  public abxs(RecentLoginDevActivity paramRecentLoginDevActivity, String paramString, ArrayList paramArrayList, int paramInt) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if ((RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity) != null) && (RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.isFinishing()))
+      {
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).dismiss();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).cancel();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, null);
+      }
+      return;
+      if (!bbfj.d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity))
+      {
+        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getString(2131692321), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getTitleBarHeight());
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "OnClick begin to delHistoryDev");
+        }
+        if (aoes.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
+          RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity);
+        } else if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "showDelDevActionSheet.OnClick delHistoryDev failed");
+        }
+      }
+    }
   }
 }
 

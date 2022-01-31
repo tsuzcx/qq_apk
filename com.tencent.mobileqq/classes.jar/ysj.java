@@ -1,27 +1,25 @@
 import android.content.Context;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.lang.ref.WeakReference;
+import com.tencent.ad.tangram.toast.AdToastAdapter;
 
 public class ysj
-  implements AdQQMINIProgramAdapter
+  implements AdToastAdapter
 {
-  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
+  public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      yxs.d("GdtQQMINIProgramAdapter", "show error");
-      return new AdError(4);
+    int i = 1;
+    if (paramInt1 == 1) {
+      paramInt1 = i;
     }
-    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    yxs.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
-    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new ysk(this, paramParams, localGdtAd));
-    return new AdError(0);
+    for (;;)
+    {
+      bcql.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
+      return;
+      if (paramInt1 == 2) {
+        paramInt1 = 2;
+      } else {
+        paramInt1 = 0;
+      }
+    }
   }
 }
 

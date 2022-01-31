@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.tissue;
 
-import bekc;
-import bekd;
+import bekt;
+import beku;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.minigame.manager.EngineManager;
 import com.tencent.mobileqq.minigame.manager.InstalledEngine;
@@ -9,7 +9,7 @@ import cooperation.qzone.util.QZLog;
 import java.util.List;
 
 public class TissueEnvImpl
-  implements bekc
+  implements bekt
 {
   private static boolean sCheckLibUpdate;
   
@@ -32,7 +32,7 @@ public class TissueEnvImpl
       {
         localObject = (InstalledEngine)((List)localObject).get(0);
         QZLog.i("Tissue", "verify engine " + localObject);
-        if (bekd.a(((InstalledEngine)localObject).engineDir)) {
+        if (beku.a(((InstalledEngine)localObject).engineDir)) {
           return ((InstalledEngine)localObject).engineDir;
         }
       }

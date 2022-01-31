@@ -1,40 +1,75 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
 public class vvb
-  extends syu<tng, tot>
+  extends BaseAdapter
 {
-  vvb(vva paramvva) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<vvd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @Nullable
+  private vvd jdField_a_of_type_Vvd;
   
-  public void a(@NonNull tng paramtng, @Nullable tot paramtot, @NonNull ErrorMessage paramErrorMessage)
+  public vvb(Context paramContext)
   {
-    veg.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramtot != null))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  @Nullable
+  public vvd a()
+  {
+    return this.jdField_a_of_type_Vvd;
+  }
+  
+  public void a(List<vvd> paramList)
+  {
+    if (paramList == null)
     {
-      veg.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramtot.toString());
-      paramtng = paramtot.jdField_a_of_type_JavaUtilList;
-      if (paramtng.contains(vva.a(this.a)))
-      {
-        int i = paramtng.indexOf(vva.a(this.a));
-        vva.a(this.a, (vvg)paramtng.get(i));
-        vva.a(this.a).clear();
-        vva.a(this.a).addAll(paramtng);
-        vva.a(this.a, paramtot.jdField_a_of_type_JavaLangString);
-        vva.a(this.a, paramtot.b);
-        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
-      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(@Nullable vvd paramvvd)
+  {
+    this.jdField_a_of_type_Vvd = paramvvd;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561379, null);
+      paramView = new vvc(paramViewGroup);
+      paramViewGroup.setTag(paramView);
     }
     for (;;)
     {
-      vva.a(this.a).a(paramErrorMessage.errorCode, vva.a(this.a), this.a.a());
-      return;
-      vva.a(this.a, null);
-      break;
-      veg.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+      paramView.a((vvd)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Vvd);
+      return paramView.a;
+      paramView = (vvc)paramView.getTag();
     }
   }
 }

@@ -1,8 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.core.widget.TabBar;
+
 public class benr
+  implements View.OnClickListener
 {
-  public static void a(String paramString, bent parambent)
+  public benr(TabBar paramTabBar, int paramInt, beso parambeso) {}
+  
+  public void onClick(View paramView)
   {
-    new bens(parambent).execute(new String[] { paramString });
+    if (TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar) != null) {
+      TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Beso.a, this.jdField_a_of_type_Beso.b);
+    }
   }
 }
 

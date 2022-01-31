@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import amnk;
+import amnj;
 
 public class ConfessConfig$1
   implements Runnable
 {
-  public ConfessConfig$1(amnk paramamnk) {}
+  public ConfessConfig$1(amnj paramamnj) {}
   
   public void run()
   {

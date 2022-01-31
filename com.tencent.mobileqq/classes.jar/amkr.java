@@ -1,82 +1,51 @@
-import android.app.Activity;
-import android.view.GestureDetector.SimpleOnGestureListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Display;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+import android.view.WindowManager;
 
 public class amkr
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public amkr(SwipePostTableLayout paramSwipePostTableLayout) {}
+  private static double jdField_a_of_type_Double = 0.25D;
+  private static float jdField_a_of_type_Float;
+  private static double jdField_b_of_type_Double = 0.5D;
+  private static float jdField_b_of_type_Float;
+  private static float c;
+  private int jdField_a_of_type_Int;
+  private int jdField_b_of_type_Int;
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public amkr(Context paramContext)
   {
-    int i = 0;
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    a(paramContext);
+    paramContext = paramContext.getResources();
+    jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2131297356);
+    jdField_b_of_type_Float = paramContext.getDimensionPixelSize(2131297357);
+    c = paramContext.getDimensionPixelSize(2131297355);
+  }
+  
+  private void a(Context paramContext)
+  {
+    paramContext = (WindowManager)paramContext.getSystemService("window");
+    this.jdField_a_of_type_Int = paramContext.getDefaultDisplay().getWidth();
+    this.jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight();
+  }
+  
+  public double a(MotionEvent paramMotionEvent)
+  {
+    float f = paramMotionEvent.getRawX();
+    paramMotionEvent.getRawY();
+    if (f <= jdField_a_of_type_Double * this.jdField_a_of_type_Int) {
+      return 0.0D;
     }
-    ColorNote localColorNote;
-    if ((SwipePostTableLayout.a(this.a) != null) && (SwipePostTableLayout.a(this.a).getColorNote() != null)) {
-      localColorNote = SwipePostTableLayout.a(this.a).getColorNote();
+    if (f >= jdField_b_of_type_Double * this.jdField_a_of_type_Int) {
+      return 1.0D;
     }
-    for (boolean bool = SwipePostTableLayout.a(this.a).a(localColorNote.getServiceType(), localColorNote.getSubType());; bool = false)
-    {
-      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      float f2 = paramMotionEvent1.getY();
-      float f3 = paramMotionEvent2.getY();
-      if ((f1 == 0.0F) || (!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
-        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      }
-      f2 = Math.abs((f2 - f3) / f1);
-      if ((SwipePostTableLayout.a(this.a) == null) || (SwipePostTableLayout.a(this.a).a())) {
-        i = 1;
-      }
-      if ((f1 < 0.0F) && (f2 < 0.5F))
-      {
-        if (!bool) {
-          break label276;
-        }
-        if (i == 0) {
-          break label254;
-        }
-        this.a.jdField_a_of_type_Amkm.sendEmptyMessage(1);
-        this.a.postInvalidate();
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Amkq != null) {
-          this.a.jdField_a_of_type_Amkq.a();
-        }
-        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        label254:
-        SwipePostTableLayout.a(this.a, true);
-        SwipePostTableLayout.a(this.a).a();
-        break;
-        label276:
-        if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          this.a.c = true;
-          if (i != 0)
-          {
-            this.a.d();
-          }
-          else
-          {
-            SwipePostTableLayout.b(this.a, true);
-            SwipePostTableLayout.a(this.a).a();
-          }
-        }
-        else if (i != 0)
-        {
-          this.a.d();
-        }
-        else
-        {
-          SwipePostTableLayout.b(this.a, true);
-          SwipePostTableLayout.a(this.a).a();
-        }
-      }
-    }
+    return (f - jdField_a_of_type_Double * this.jdField_a_of_type_Int) / ((jdField_b_of_type_Double - jdField_a_of_type_Double) * this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent, Context paramContext)
+  {
+    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.jdField_a_of_type_Int - jdField_b_of_type_Float) && (paramMotionEvent.getRawY() > this.jdField_b_of_type_Int - jdField_a_of_type_Float - c);
   }
 }
 

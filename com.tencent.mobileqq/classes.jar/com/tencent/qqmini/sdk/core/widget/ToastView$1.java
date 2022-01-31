@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.widget;
 
-import bene;
+import benv;
 
 public class ToastView$1
   implements Runnable
 {
-  public ToastView$1(bene parambene) {}
+  public ToastView$1(benv parambenv) {}
   
   public void run()
   {

@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bisg;
-import bivf;
+import bisx;
+import bivw;
 
 public class PngsCreator$3
   implements Runnable
 {
-  public PngsCreator$3(bivf parambivf, String paramString) {}
+  public PngsCreator$3(bivw parambivw, String paramString) {}
   
   public void run()
   {
-    if (bivf.a(this.this$0) != null) {
-      bivf.a(this.this$0).a(this.a);
+    if (bivw.a(this.this$0) != null) {
+      bivw.a(this.this$0).a(this.a);
     }
   }
 }

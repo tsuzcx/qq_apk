@@ -1,182 +1,79 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class azth
-  implements bbmi
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private azti jdField_a_of_type_Azti;
-  private bbmg jdField_a_of_type_Bbmg;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  private akil jdField_a_of_type_Akil = new azti(this);
+  public Context a;
+  public Handler a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
   
-  public azth(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, long paramLong2, boolean paramBoolean, String paramString)
+  public azth(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, Handler paramHandler)
   {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+  }
+  
+  private String a(String paramString)
+  {
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localTroopManager != null)
+    {
+      paramString = localTroopManager.b(paramString);
+      if (paramString != null) {
+        return paramString.troopcode;
+      }
+    }
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bbmg != null)
-    {
-      azsr.c("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] cancel ftn download");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(this.jdField_a_of_type_Bbmg);
-      this.jdField_a_of_type_Bbmg = null;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akil);
   }
   
-  protected void a(int paramInt, String paramString1, String paramString2, bbmg parambbmg)
+  public void a(boolean paramBoolean)
   {
-    azsr.a("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download err. errCode:" + paramInt + " errMsg:" + paramString1 + " rspHeader:" + paramString2);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Azti != null) {
-      this.jdField_a_of_type_Azti.a(paramInt, paramString1, paramString2, parambbmg);
-    }
-  }
-  
-  public void a(azti paramazti)
-  {
-    this.jdField_a_of_type_Azti = paramazti;
-  }
-  
-  public void a(bbmg parambbmg1, bbmg parambbmg2)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    long l;
+    QLog.e("RefreshMemberList", 4, "Prepare refreshMemberListFromServer");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    String str;
     do
     {
-      do
+      return;
+      str = a(this.jdField_a_of_type_JavaLangString);
+    } while (TextUtils.isEmpty(str));
+    long l1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).getLong("key_last_update_time" + str, 0L);
+    long l2 = System.currentTimeMillis();
+    if ((paramBoolean) || (l1 == 0L) || ((l1 > 0L) && (l2 - l1 > 300000L)))
+    {
+      ((akhp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
+      if (l1 == 0L)
       {
+        QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
         return;
-        if (parambbmg1 == this.jdField_a_of_type_Bbmg) {
-          break;
-        }
-        if ((parambbmg1 != null) && (this.jdField_a_of_type_Bbmg != null))
-        {
-          azsr.a("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(parambbmg1.a()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bbmg.a()) + "]");
-          return;
-        }
-        if (parambbmg1 != null)
-        {
-          azsr.a("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(parambbmg1.a()) + "]");
-          return;
-        }
-      } while (this.jdField_a_of_type_Bbmg == null);
-      azsr.a("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bbmg.a()) + "]");
-      return;
-      if ((parambbmg2.c() != 206) && (parambbmg2.c() != 200)) {
-        break;
       }
-      parambbmg1 = parambbmg2.a();
-      l = parambbmg2.a();
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = l;
-      }
-    } while (this.jdField_a_of_type_Azti == null);
-    this.jdField_a_of_type_Azti.a(parambbmg1, l, parambbmg2.jdField_c_of_type_JavaLangString);
-    return;
-    azsr.a("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download decode resp code no 200|206");
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      azsr.a("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download Redirect. " + paramString);
-    } while (this.jdField_a_of_type_Azti == null);
-    this.jdField_a_of_type_Azti.a(paramString);
-  }
-  
-  public boolean a(bbmg parambbmg1, bbmg parambbmg2, int paramInt)
-  {
-    if (5 == paramInt) {
-      if (!this.jdField_a_of_type_Boolean) {}
-    }
-    while ((3 != paramInt) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Azti == null))
-    {
-      do
-      {
-        return true;
-        this.jdField_a_of_type_Boolean = true;
-      } while (this.jdField_a_of_type_Azti == null);
-      this.jdField_a_of_type_Azti.a();
-      return true;
-    }
-    this.jdField_a_of_type_Azti.a(parambbmg2);
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    azsr.c("FtnDownloader", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download url:" + paramString + " pos:" + paramLong);
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    String str2 = "bytes=" + paramLong + "-";
-    bbmg localbbmg = new bbmg(paramString, null, this, true);
-    localbbmg.b(false);
-    String str1 = "gprs";
-    if (bbev.b(BaseApplication.getContext()) == 1) {
-      str1 = "wifi";
-    }
-    localbbmg.a("Net-type", str1);
-    localbbmg.a("cache-control", "no-cache");
-    if (paramLong != 0L) {
-      localbbmg.a("Range", str2);
-    }
-    localbbmg.b(5);
-    localbbmg.a(true);
-    localbbmg.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbbmg.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-    localbbmg.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Long);
-    localbbmg.a("Accept-Encoding", "identity");
-    if (this.jdField_a_of_type_Azti != null) {
-      this.jdField_a_of_type_Azti.b(localbbmg);
-    }
-    str1 = "";
-    if (paramString != null) {
-      str1 = paramString.toLowerCase();
-    }
-    if ((this.jdField_b_of_type_Boolean) && (str1.startsWith("https")))
-    {
-      localbbmg.j = true;
-      localbbmg.k = apam.a(paramString);
-      localbbmg.e = this.jdField_a_of_type_JavaLangString;
-    }
-    localbbmg.jdField_a_of_type_Ayug = apue.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(localbbmg);
-    this.jdField_a_of_type_Bbmg = localbbmg;
-    return true;
-  }
-  
-  public void b(bbmg parambbmg1, bbmg parambbmg2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
+      QLog.e("RefreshMemberList", 4, "> 5min, will refresh.");
       return;
     }
-    if (parambbmg2 != null)
-    {
-      a(parambbmg2.f, parambbmg2.d(), parambbmg2.d, parambbmg2);
-      return;
-    }
-    a(9001, "err no response", "", null);
+    QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akil);
   }
 }
 

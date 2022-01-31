@@ -1,91 +1,112 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-
-class maq
+public abstract class maq
 {
-  int jdField_a_of_type_Int = -1;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = -1;
-  boolean jdField_c_of_type_Boolean = false;
-  int d = -1;
+  protected int a;
+  protected String a;
+  protected int b = 0;
+  protected int c = 3;
+  protected int d;
+  protected int e = 1;
   
-  static maq a(Resources paramResources, mav parammav, man paramman)
+  protected maq(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    maq localmaq = new maq();
-    if (!TextUtils.isEmpty(parammav.a())) {
-      localmaq.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(parammav.a());
-    }
-    localmaq.jdField_a_of_type_Int = paramman.d;
-    localmaq.jdField_b_of_type_Int = paramman.jdField_a_of_type_Int;
-    localmaq.jdField_c_of_type_Int = paramman.jdField_b_of_type_Int;
-    localmaq.d = paramman.jdField_c_of_type_Int;
-    switch (parammav.a())
-    {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.c = paramInt3;
+    this.e = paramInt4;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static boolean a(maq parammaq1, maq parammaq2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (parammaq2 == null) {
+      bool1 = false;
     }
     do
     {
-      return localmaq;
-      parammav = (max)parammav;
-      if ((parammav.a() instanceof BitmapDrawable)) {
-        localmaq.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)parammav.a()).getBitmap();
-      }
-      for (;;)
+      do
       {
-        switch (parammav.k())
+        int i;
+        int j;
+        do
         {
-        default: 
-          return localmaq;
-        case 1: 
-          localmaq.jdField_a_of_type_Boolean = true;
-          return localmaq;
-          paramman = parammav.b();
-          if (!TextUtils.isEmpty(paramman)) {
-            localmaq.jdField_a_of_type_AndroidGraphicsBitmap = mpy.a(paramResources, paramman);
-          }
-          break;
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (parammaq1 == null);
+          i = parammaq2.e();
+          j = parammaq1.e();
+          ljf.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + parammaq2.b() + "], idOld[" + parammaq1.b() + "]");
+          bool1 = bool2;
+        } while (i < j);
+        if (i > j) {
+          return false;
         }
+        bool1 = bool2;
+      } while (parammaq1.a());
+      if (parammaq2.a()) {
+        return false;
       }
-      localmaq.jdField_b_of_type_Boolean = true;
-      return localmaq;
-      localmaq.jdField_c_of_type_Boolean = ((may)parammav).b();
-      return localmaq;
-      paramResources = (maw)parammav;
-      if (paramResources.h() != -1) {
-        localmaq.jdField_a_of_type_Int = paramResources.h();
-      }
-      if (paramResources.j() != -1) {
-        localmaq.jdField_c_of_type_Int = paramResources.j();
-      }
-      if (paramResources.i() != -1) {
-        localmaq.d = paramResources.i();
-      }
-    } while (localmaq.jdField_a_of_type_AndroidTextSpannableString == null);
-    int j = paramResources.f();
-    if (paramResources.g() == -1) {}
-    for (int i = parammav.a().length() + j;; i = paramResources.g() + j)
-    {
-      localmaq.jdField_a_of_type_AndroidTextSpannableString.setSpan(new mar(paramResources), j, i, 33);
-      paramResources = new ForegroundColorSpan(localmaq.jdField_c_of_type_Int);
-      localmaq.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
-      return localmaq;
+      bool1 = bool2;
+    } while (parammaq2.c() <= parammaq1.c());
+    return false;
+  }
+  
+  public abstract int a();
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
   }
   
-  static void a(TextView paramTextView, int paramInt1, int paramInt2)
+  public boolean a()
   {
-    paramTextView.setTag(2131376863, Integer.valueOf(paramInt2));
-    paramTextView.setTag(2131376864, Integer.valueOf(paramInt1));
-    paramTextView.setMovementMethod((luj)luj.a());
-    paramTextView.setHighlightColor(0);
+    return this.c == 0;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.e;
+  }
+  
+  public int e()
+  {
+    return this.d;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof maq))) {}
+    do
+    {
+      return false;
+      paramObject = (maq)paramObject;
+    } while (b() != paramObject.b());
+    return true;
   }
 }
 

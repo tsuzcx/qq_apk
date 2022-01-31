@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class mgg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public mgg(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
-    this.a.d(2);
+    paramDialogInterface.dismiss();
   }
 }
 

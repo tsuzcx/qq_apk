@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webprocess;
 
-import bcen;
+import bcfb;
 
 class WebAccelerateHelper$4
-  implements bcen
+  implements bcfb
 {
   WebAccelerateHelper$4(WebAccelerateHelper paramWebAccelerateHelper) {}
   
@@ -12,7 +12,7 @@ class WebAccelerateHelper$4
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      bcfa.b = bool;
+      bcfo.b = bool;
       return;
     }
   }

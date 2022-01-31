@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.theme.diy;
 
-import ajsf;
+import ajsd;
 import android.content.Context;
 import android.os.Bundle;
-import aymu;
-import bbuv;
+import android.text.TextUtils;
+import aymw;
+import bbvj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -43,7 +44,7 @@ public class ThemeDiyStyleLogic
   QQAppInterface app;
   Context mContext;
   public HashMap<Integer, String> reportMap = new HashMap();
-  public aymu saveDealCallBack;
+  public aymw saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -83,6 +84,19 @@ public class ThemeDiyStyleLogic
     return paramInt + "__" + paramResData.id + "__" + paramResData.name;
   }
   
+  public static String getDiyVFSPath(String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (paramString.startsWith(ajsd.aW + "custom_background/")) {
+        str = bbvj.a(paramString);
+      }
+    }
+    return str;
+  }
+  
   public static String getDownFileName(ResData paramResData)
   {
     if (paramResData == null) {
@@ -93,7 +107,7 @@ public class ThemeDiyStyleLogic
   
   public static String getSdcardDIYDir()
   {
-    return bbuv.a(ajsf.aW + "custom_background/");
+    return bbvj.a(ajsd.aW + "custom_background/");
   }
   
   static ThemeUtil.ThemeInfo getThemeInfoByDensity(Context paramContext, ResSuitData.StyleSuit paramStyleSuit)

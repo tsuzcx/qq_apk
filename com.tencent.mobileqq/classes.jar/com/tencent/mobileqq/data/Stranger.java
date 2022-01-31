@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="uin")
 public class Stranger
-  extends aukm
+  extends auko
 {
   public static final int GENDER_FEMALE = 1;
   public static final int GENDER_MALE = 0;
@@ -21,9 +21,9 @@ public class Stranger
   public String name;
   public String remark;
   public long time;
-  @aulx
+  @aulz
   public boolean uiSelected;
-  @auma
+  @aumc
   public String uin;
   
   public static boolean copyInfo(Stranger paramStranger1, Stranger paramStranger2)

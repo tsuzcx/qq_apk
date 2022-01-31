@@ -1,14 +1,32 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
-
-class ajse
-  implements Comparator<Map.Entry<String, Long>>
+public class ajse
+  implements ajte
 {
-  ajse(ajsd paramajsd) {}
+  protected void a() {}
   
-  public int a(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
+  protected void a(int paramInt) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b() {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return ((Long)paramEntry2.getValue()).compareTo((Long)paramEntry1.getValue());
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      a(((Integer)paramObject).intValue());
+      return;
+    }
+    a();
   }
 }
 

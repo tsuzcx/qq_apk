@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.widget.TextView;
-import apue;
+import apug;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FileManagerUtil$8
@@ -11,7 +11,7 @@ public final class FileManagerUtil$8
   
   public void run()
   {
-    apue.b(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    apug.b(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 

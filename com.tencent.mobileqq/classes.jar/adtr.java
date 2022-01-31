@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.MessageForText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class adtr
-  implements DialogInterface.OnClickListener
+  extends acuj
 {
-  adtr(adtp paramadtp, MessageForText paramMessageForText) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    aaod.a(this.jdField_a_of_type_Adtp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-    aaod.b(this.jdField_a_of_type_Adtp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adtp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adtp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg);
-    this.jdField_a_of_type_Adtp.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-  }
+  adtr(adtn paramadtn) {}
 }
 
 

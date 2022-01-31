@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import besl;
+import betc;
 
 class ShareProxyDefault$3$2$1
   implements DialogInterface.OnClickListener
@@ -11,7 +11,7 @@ class ShareProxyDefault$3$2$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    besl.d("ShareProxy", "dialog click ");
+    betc.d("ShareProxy", "dialog click ");
   }
 }
 

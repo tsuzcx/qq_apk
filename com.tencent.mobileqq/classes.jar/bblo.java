@@ -1,18 +1,37 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import android.content.Context;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.SingleLineTextView;
 
-public class bblo
-  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
+public final class bblo
+  implements URLDrawable.URLDrawableListener
 {
-  public bblo(QAVFunCallHandler paramQAVFunCallHandler) {}
+  public bblo(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
   
-  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.setConfig(paramQAVFunCallConfig);
-    this.a.onGetConfig(paramAppInterface);
-    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
+    if (this.jdField_a_of_type_Boolean) {
+      if (paramURLDrawable.getCurrDrawable() != null) {
+        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
+      return;
+      if (paramURLDrawable.getCurrDrawable() != null) {
+        paramURLDrawable.getCurrDrawable().setColorFilter(null);
+      }
+    }
   }
 }
 

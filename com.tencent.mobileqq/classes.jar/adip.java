@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import java.util.List;
 
 class adip
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  adip(adin paramadin, DialogInterface.OnClickListener paramOnClickListener) {}
+  adip(adio paramadio, List paramList, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      adio.a(this.jdField_a_of_type_Adio, this.jdField_a_of_type_JavaUtilList);
+      adfy.a(adio.a(this.jdField_a_of_type_Adio), this.jdField_a_of_type_JavaUtilList, 3);
+      continue;
+      this.jdField_a_of_type_Adio.a(this.jdField_a_of_type_JavaUtilList, 0);
+      adfy.a(adio.a(this.jdField_a_of_type_Adio), this.jdField_a_of_type_JavaUtilList, 3);
     }
   }
 }

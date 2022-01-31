@@ -1,17 +1,14 @@
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.qphone.base.util.QLog;
 
 class axib
   implements Camera.AutoFocusCallback
 {
-  axib(axia paramaxia) {}
+  axib(axhz paramaxhz, axie paramaxie) {}
   
   public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
-    }
+    this.jdField_a_of_type_Axie.a(paramBoolean, false);
   }
 }
 

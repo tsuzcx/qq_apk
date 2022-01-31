@@ -1,21 +1,39 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public class tjd
-  extends ssk
+public abstract class tjd
 {
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
+  protected int a;
+  protected tjb a;
   
-  public tjd(ErrorMessage paramErrorMessage)
+  public abstract void a();
+  
+  public void a(tjb paramtjb)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_Tjb = paramtjb;
   }
   
-  public String toString()
+  public boolean a()
   {
-    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
+    if (this.jdField_a_of_type_Int < 1)
+    {
+      this.jdField_a_of_type_Int += 1;
+      ved.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      a();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Tjb != null) {
+      this.jdField_a_of_type_Tjb.a(this);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Tjb != null) {
+      this.jdField_a_of_type_Tjb.b(this);
+    }
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
+import vqk;
 import vqn;
+import vqo;
 import vqq;
 import vqr;
-import vqt;
-import vqu;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$1
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$1(vqq paramvqq, vqu paramvqu, boolean paramBoolean, vqt paramvqt) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$1(vqn paramvqn, vqr paramvqr, boolean paramBoolean, vqq paramvqq) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Vqu.a.b != null) {
-      this.jdField_a_of_type_Vqu.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Vqt);
+    if (this.jdField_a_of_type_Vqr.a.b != null) {
+      this.jdField_a_of_type_Vqr.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Vqq);
     }
   }
 }

@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awjh
-  implements View.OnClickListener
+class awjh
+  implements bfpj
 {
-  public awjh(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  awjh(awjf paramawjf, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.a.setText("");
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", awje.a(this.jdField_a_of_type_Awjf.a), 0, "", "", "", "");
   }
 }
 

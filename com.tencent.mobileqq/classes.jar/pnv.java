@@ -1,28 +1,20 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
 
 class pnv
-  implements owu
+  implements pnn
 {
-  pnv(pnu parampnu) {}
+  pnv(pno parampno) {}
   
   public void a()
   {
-    QLog.d(pnr.a(this.a.a), 2, "stopScroll as videoplayer start");
-    pnr.b(this.a.a);
-  }
-  
-  public void b()
-  {
-    QLog.d(pnr.a(this.a.a), 2, "startScroll as videoplayer stop");
-    if (pnr.a(this.a.a) != null) {
-      pnr.a(this.a.a, pnr.a(this.a.a).a());
+    if (pno.a(this.a) != null)
+    {
+      pno.a(this.a).a();
+      return;
     }
-  }
-  
-  public void c()
-  {
-    QLog.d(pnr.a(this.a.a), 2, "startScroll as videoplayer complete");
-    pnr.a(this.a.a, 1000L);
+    onh.a(pno.c(this.a).getContext(), pno.b(this.a));
+    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + pno.b(this.a));
   }
 }
 

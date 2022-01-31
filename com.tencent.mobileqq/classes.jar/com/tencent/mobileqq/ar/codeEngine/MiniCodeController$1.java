@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aljj;
-import aljv;
+import alji;
+import alju;
 
 public class MiniCodeController$1
   implements Runnable
 {
-  public MiniCodeController$1(aljj paramaljj, int paramInt, long paramLong) {}
+  public MiniCodeController$1(alji paramalji, int paramInt, long paramLong) {}
   
   public void run()
   {
-    long l1 = aljv.a("report_tag_detect_supporttype", 0L);
+    long l1 = alju.a("report_tag_detect_supporttype", 0L);
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 86400000L)
     {
-      aljv.b(aljj.a(this.this$0), this.jdField_a_of_type_Int);
-      aljv.a("report_tag_detect_supporttype", l2);
+      alju.b(alji.a(this.this$0), this.jdField_a_of_type_Int);
+      alju.a("report_tag_detect_supporttype", l2);
     }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long < 15000L) && (l2 - aljv.a("report_tag_detect_init_internal_cost", 0L) > 86400000L))
+    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long < 15000L) && (l2 - alju.a("report_tag_detect_init_internal_cost", 0L) > 86400000L))
     {
-      aljv.e(aljj.a(this.this$0), (int)this.jdField_a_of_type_Long);
-      aljv.a("report_tag_detect_init_internal_cost", l2);
+      alju.e(alji.a(this.this$0), (int)this.jdField_a_of_type_Long);
+      alju.a("report_tag_detect_init_internal_cost", l2);
     }
   }
 }

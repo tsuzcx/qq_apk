@@ -1,19 +1,11 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import java.util.List;
 
-final class arts
-  implements Comparator<File>
+public abstract interface arts
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile1.lastModified() < paramFile2.lastModified()) {
-      return -1;
-    }
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a();
+  
+  public abstract void a(List<MusicInfo> paramList);
 }
 
 

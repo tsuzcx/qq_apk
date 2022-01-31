@@ -1,17 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import com.tencent.biz.qqstory.view.PagerIndicator;
+import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
 
 public class wbo
-  implements ValueAnimator.AnimatorUpdateListener
+  extends DataSetObserver
+  implements ViewPager.OnPageChangeListener
 {
-  public wbo(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  private wbo(PagerIndicator paramPagerIndicator) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onChanged()
   {
-    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
-    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    Log.d("PagerIndicator", "onChanged");
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
   }
 }
 

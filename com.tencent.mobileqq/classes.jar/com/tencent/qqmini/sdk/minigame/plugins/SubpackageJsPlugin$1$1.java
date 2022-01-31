@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import begy;
-import beka;
-import bewt;
+import behp;
+import bekr;
+import bexk;
 import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ class SubpackageJsPlugin$1$1
   
   public void run()
   {
-    bewt.a().i("SubpackageJsPlugin", "loadSubPackage callback onInitGpkgInfo on JSThread, resCode:" + this.val$resCode + ", dirPath:" + this.val$dirPath + ", error msg=" + this.val$errorMsg);
+    bexk.a().i("SubpackageJsPlugin", "loadSubPackage callback onInitGpkgInfo on JSThread, resCode:" + this.val$resCode + ", dirPath:" + this.val$dirPath + ", error msg=" + this.val$errorMsg);
     Object localObject;
     if (this.val$resCode != 0)
     {
@@ -52,7 +52,7 @@ class SubpackageJsPlugin$1$1
         localJSONException1.printStackTrace();
         continue;
       }
-      bewt.a().e("SubpackageJsPlugin", "loadSubpackage loadFinish success? " + bool);
+      bexk.a().e("SubpackageJsPlugin", "loadSubpackage loadFinish success? " + bool);
       this.this$1.val$req.a.a("onLoadSubPackageTaskStateChange", localJSONObject.toString(), -1);
       return;
       localObject = "fail";

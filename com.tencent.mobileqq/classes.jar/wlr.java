@@ -1,11 +1,21 @@
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 class wlr
-  implements wsq
+  implements wta
 {
   wlr(wlq paramwlq) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    this.a.jdField_a_of_type_Wlo.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    if (paramBoolean)
+    {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
+        this.a.a((ArrayList)paramVarArgs[0]);
+      }
+      return;
+    }
+    QLog.d(wlq.a, 4, "get drafts failed");
   }
 }
 

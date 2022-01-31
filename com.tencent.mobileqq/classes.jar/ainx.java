@@ -1,32 +1,40 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 class ainx
-  implements View.OnTouchListener
+  extends Animation
 {
-  ainx(ainv paramainv) {}
+  ainx(aint paramaint, View paramView, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
     }
-    for (;;)
+    do
     {
-      return false;
-      if ((paramView instanceof ImageView))
+      do
       {
-        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
-        continue;
-        if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).getDrawable().clearColorFilter();
+        return;
+        if (paramFloat > 0.99F) {
+          break;
         }
-      }
-    }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

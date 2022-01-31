@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
 
-public abstract interface avqq
+public class avqq
+  implements bfxc
 {
-  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
+  public avqq(IosTimepicker paramIosTimepicker) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    IosTimepicker.a(this.a, paramView, 1);
+  }
 }
 
 

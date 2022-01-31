@@ -1,12 +1,11 @@
-public abstract interface awih
+import android.widget.TextView;
+
+public class awih
 {
-  public abstract void a(long paramLong);
+  public TextView a;
+  public TextView b;
   
-  public abstract void a(String paramString);
-  
-  public abstract long b();
-  
-  public abstract long c();
+  public awih(awie paramawie) {}
 }
 
 

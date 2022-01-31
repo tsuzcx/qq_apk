@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
 public class acpl
-  extends WtloginObserver
+  extends auyp
 {
-  public acpl(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
-  
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public acpl(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
     {
-      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0) {
+    default: 
+    case 1001: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
       return;
     }
-    VerifyPhoneNumActivity.a(this.a);
-    VerifyPhoneNumActivity.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 

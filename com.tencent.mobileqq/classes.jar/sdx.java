@@ -1,38 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-
 class sdx
-  implements bcwh
+  implements shc
 {
-  sdx(sdv paramsdv, String paramString, shf paramshf) {}
+  sdx(sdw paramsdw, int paramInt1, int paramInt2) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      wim.b(1, 2131719476);
-      bool = false;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      if (this.jdField_a_of_type_Shf == null) {
-        break;
-      }
-      this.jdField_a_of_type_Shf.a(bool);
-      return;
-      wim.b(2, 2131719495);
-      continue;
-      bool = false;
-    }
+    sds.a(this.jdField_a_of_type_Sdw.a, this.jdField_a_of_type_Int, this.b, false, Boolean.valueOf(paramBoolean));
   }
 }
 

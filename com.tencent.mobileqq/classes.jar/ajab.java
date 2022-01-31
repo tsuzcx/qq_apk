@@ -1,21 +1,6 @@
-import eipc.EIPCResult;
-
 class ajab
-  implements bbqq
 {
-  ajab(aizw paramaizw, bbqp parambbqp, int paramInt) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bbqp.a(null);
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
-    {
-      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
-      this.jdField_a_of_type_Aizw.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-      return;
-    }
-  }
+  private static aizu a = new aizu("cm_game_module");
 }
 
 

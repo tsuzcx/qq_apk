@@ -1,6 +1,13 @@
-public abstract interface axrs
+class axrs
 {
-  public abstract void a(String paramString);
+  public String a;
+  public String b;
+  
+  axrs(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

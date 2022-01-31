@@ -1,67 +1,48 @@
-import android.app.Activity;
-import android.text.TextUtils;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
 class yxi
-  implements yxh
+  implements yxe
 {
-  private WeakReference<ywn> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<ysq, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ysr jdField_a_of_type_Ysr = new yxj(this);
-  
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    if (paramywn != null) {}
-    for (Activity localActivity = paramywn.a(); (paramywn == null) || (localActivity == null); localActivity = null)
+    Object localObject = null;
+    if (paramywk != null) {}
+    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      yxs.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error");
+      yxp.d("GdtMacJsCallHandler", "handleJsCallRequest error");
       return true;
     }
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject = new JSONObject(paramVarArgs[0]);
-      yxs.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject).toString());
-      paramVarArgs = new yss();
-      paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(yxr.a(new qq_ad_get.QQAdGet(), localObject)));
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramywn);
-      localObject = new ysq(paramVarArgs, new WeakReference(this.jdField_a_of_type_Ysr));
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString);
-      ((ysq)localObject).a(new WeakReference(localActivity));
-      paramString = new ArrayList();
-      if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
+      localJSONObject.put("macAddress", yys.b(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
       {
-        int i = 0;
-        while (i < paramVarArgs.a.position_info.size())
+        for (;;)
         {
-          localObject = ((qq_ad_get.QQAdGet.PositionInfo)paramVarArgs.a.position_info.get(i)).pos_id.get();
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramString.add(localObject);
+          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramywk != null) {
+            paramString = paramywk.a();
           }
-          i += 1;
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getMacAddress", paramString);
+          return true;
+          localJSONException = localJSONException;
+          yxp.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
         }
       }
-      if (paramywn == null) {}
-    }
-    catch (JSONException paramywn)
-    {
-      yxs.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error", paramywn);
-      return true;
-    }
-    for (paramywn = paramywn.a();; paramywn = null)
-    {
-      AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramywn);
-      return true;
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          yxp.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
     }
   }
 }

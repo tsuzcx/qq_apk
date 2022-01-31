@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ayao;
+import ayaq;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
@@ -11,7 +11,7 @@ public class Conversation$50
   
   public void run()
   {
-    if ((Conversation.c(this.this$0)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (ayao.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
+    if ((Conversation.c(this.this$0)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (ayaq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
       this.this$0.a(new Conversation.50.1(this));
     }
   }

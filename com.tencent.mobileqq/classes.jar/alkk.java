@@ -1,62 +1,15 @@
-import android.opengl.GLES20;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.nio.ShortBuffer;
-
 public class alkk
+  extends alkd
 {
-  public static final float[] a;
-  public static final short[] a;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
-  public float[] b;
-  public short[] b;
-  
-  static
+  public alkk(int paramInt)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
+    super(paramInt);
+    this.j = "    float u_screenWeight = 1.0;\n    float u_balance = 1.0;\n    float u_clipBlack = 0.0;\n    float u_clipWhite = 1.0;\n    float screenFmin = min(min(u_screenColor.r, u_screenColor.g), u_screenColor.b);\n    float screenFmax = max(max(u_screenColor.r, u_screenColor.g), u_screenColor.b);\n    vec3 screenPrimary = step(screenFmax, u_screenColor.rgb);\n    float secondaryComponents = dot(1.0 - screenPrimary, u_screenColor.rgb);\n    float screenSat = screenFmax - mix(secondaryComponents - screenFmin, secondaryComponents / 2.0, u_balance);\n    float fmin = min(min(gl_FragColor.r, gl_FragColor.g), gl_FragColor.b);\n    float fmax = max(max(gl_FragColor.r, gl_FragColor.g), gl_FragColor.b);\n    vec3 pixelPrimary = step(fmax, gl_FragColor.rgb);\n    secondaryComponents = dot(1.0 - pixelPrimary, gl_FragColor.rgb);\n    float pixelSat = fmax - mix(secondaryComponents - fmin, secondaryComponents / 2.0, u_balance);\n    float diffPrimary = dot(abs(pixelPrimary - screenPrimary), vec3(1.0));\n    float solid = step(1.0, step(pixelSat, 0.1) + step(fmax, 0.1) + diffPrimary);\n    float alpha = max(0.0, 1.0 - pixelSat / screenSat);\n    alpha = smoothstep(u_clipBlack, u_clipWhite, alpha);\n    vec4 semiTransparentPixel = vec4((gl_FragColor.rgb - (1.0 - alpha) * u_screenColor.rgb * u_screenWeight), alpha);\n    vec4 pixel = mix(semiTransparentPixel, gl_FragColor, solid);\n    gl_FragColor = pixel;\n";
   }
   
-  public alkk()
-  {
-    this.jdField_b_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-    this.jdField_b_of_type_ArrayOfShort = jdField_a_of_type_ArrayOfShort;
-    b();
-  }
+  protected void a() {}
   
-  public alkk(float[] paramArrayOfFloat, short[] paramArrayOfShort)
-  {
-    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_b_of_type_ArrayOfShort = paramArrayOfShort;
-    b();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat).position(0);
-    this.jdField_a_of_type_JavaNioShortBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfShort.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
-    this.jdField_a_of_type_JavaNioShortBuffer.put(this.jdField_b_of_type_ArrayOfShort).position(0);
-  }
-  
-  public void a()
-  {
-    GLES20.glDrawElements(4, 6, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    GLES20.glEnableVertexAttribArray(paramInt1);
-    alki.a("glEnableVertexAttribArray aPositionHandle");
-    GLES20.glEnableVertexAttribArray(paramInt2);
-    alki.a("glEnableVertexAttribArray aTextureCoordHandle");
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
-    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-  }
+  protected void a(alkg paramalkg) {}
 }
 
 

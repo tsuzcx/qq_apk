@@ -3,25 +3,25 @@ package com.tencent.biz.subscribe.videoplayer;
 import android.os.Handler;
 import android.view.TextureView;
 import com.tencent.qphone.base.util.QLog;
-import wtt;
-import wtu;
+import wtq;
+import wtr;
 
 public class VideoFrameCheckHelper$1
   implements Runnable
 {
-  public VideoFrameCheckHelper$1(wtt paramwtt, TextureView paramTextureView, wtu paramwtu) {}
+  public VideoFrameCheckHelper$1(wtq paramwtq, TextureView paramTextureView, wtr paramwtr) {}
   
   public void run()
   {
     QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame");
-    if (System.currentTimeMillis() - wtt.a(this.this$0) >= 4000L) {}
-    for (boolean bool = true; (wtt.a(this.this$0, this.jdField_a_of_type_AndroidViewTextureView)) && (!bool); bool = false)
+    if (System.currentTimeMillis() - wtq.a(this.this$0) >= 4000L) {}
+    for (boolean bool = true; (wtq.a(this.this$0, this.jdField_a_of_type_AndroidViewTextureView)) && (!bool); bool = false)
     {
-      wtt.a(this.this$0, this.jdField_a_of_type_AndroidViewTextureView, this.jdField_a_of_type_Wtu);
+      wtq.a(this.this$0, this.jdField_a_of_type_AndroidViewTextureView, this.jdField_a_of_type_Wtr);
       QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
       return;
     }
-    this.jdField_a_of_type_Wtu.a(bool);
+    this.jdField_a_of_type_Wtr.a(bool);
     this.this$0.a().removeCallbacksAndMessages(null);
     QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame stop isReachMaxTime:" + bool);
   }

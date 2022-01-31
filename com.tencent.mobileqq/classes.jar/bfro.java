@@ -1,33 +1,21 @@
-import android.graphics.Matrix;
-import android.view.ViewDebug.ExportedProperty;
+import android.database.DataSetObserver;
+import com.tencent.widget.ExpandableListConnector;
 
 public class bfro
+  extends DataSetObserver
 {
-  @ViewDebug.ExportedProperty
-  public float a;
-  private final Matrix a;
-  public boolean a;
-  @ViewDebug.ExportedProperty
-  public float b;
-  private boolean b;
-  @ViewDebug.ExportedProperty
-  public float c = 0.0F;
-  @ViewDebug.ExportedProperty
-  public float d = 1.0F;
-  @ViewDebug.ExportedProperty
-  public float e = 1.0F;
-  @ViewDebug.ExportedProperty
-  public float f = 0.0F;
-  @ViewDebug.ExportedProperty
-  public float g = 0.0F;
+  public bfro(ExpandableListConnector paramExpandableListConnector) {}
   
-  public bfro()
+  public void onChanged()
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetInvalidated();
   }
 }
 

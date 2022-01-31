@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import akqm;
+import akql;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ProfileCardMessageProcessor$1
   implements Runnable
 {
-  public ProfileCardMessageProcessor$1(akqm paramakqm) {}
+  public ProfileCardMessageProcessor$1(akql paramakql) {}
   
   public void run()
   {

@@ -1,15 +1,10 @@
-class ojp
-  extends ojq
+import java.util.List;
+
+public abstract interface ojp
 {
-  ojp(oio paramoio, int paramInt1, oii paramoii, int paramInt2)
-  {
-    super(paramoio, null);
-  }
+  public abstract void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2, int paramInt3);
   
-  void a(ojt paramojt)
-  {
-    paramojt.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Oii, this.b);
-  }
+  public abstract void onCommentStateError(int paramInt);
 }
 
 

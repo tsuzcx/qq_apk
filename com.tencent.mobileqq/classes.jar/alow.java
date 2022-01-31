@@ -1,6 +1,7 @@
 public abstract interface alow
+  extends alov
 {
-  public abstract void a(long paramLong);
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

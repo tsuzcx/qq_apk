@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajyv;
+import ajyt;
 
 class HotChatShare$3$1
   implements Runnable
@@ -10,7 +10,7 @@ class HotChatShare$3$1
   public void run()
   {
     this.a.this$0.c();
-    ajyv.a(this.a.this$0);
+    ajyt.a(this.a.this$0);
   }
 }
 

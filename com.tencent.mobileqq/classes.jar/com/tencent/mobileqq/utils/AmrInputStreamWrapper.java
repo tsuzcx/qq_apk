@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import avcs;
 import avcu;
+import avcw;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import java.io.PipedInputStream;
 
 public final class AmrInputStreamWrapper
-  extends avcu
+  extends avcw
 {
   private static boolean jdField_a_of_type_Boolean;
   private long jdField_a_of_type_Long;
@@ -60,7 +60,7 @@ public final class AmrInputStreamWrapper
     this.jdField_a_of_type_Int = 320;
     this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     this.c = new byte[960];
-    this.jdField_a_of_type_Avcs = new avcs(this.c, 0);
+    this.jdField_a_of_type_Avcu = new avcu(this.c, 0);
   }
   
   /* Error */

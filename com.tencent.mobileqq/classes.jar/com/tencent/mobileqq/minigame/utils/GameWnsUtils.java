@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bcxm;
+import bcyb;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -340,7 +340,7 @@ public class GameWnsUtils
         localThrowable.printStackTrace();
       }
     }
-    l = bcxm.a().a() % 100L;
+    l = bcyb.a().a() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }

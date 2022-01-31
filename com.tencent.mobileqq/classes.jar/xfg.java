@@ -1,23 +1,42 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-class xfg
-  implements Animator.AnimatorListener
+public class xfg
+  implements Manager
 {
-  xfg(xff paramxff) {}
+  protected static BaseApplicationImpl a;
+  public static boolean a;
+  private AppInterface a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator)
+  static
   {
-    if (xff.a(this.a) != null) {
-      xff.a(this.a).a();
-    }
+    jdField_a_of_type_Boolean = true;
   }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public xfg(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    a();
+  }
+  
+  public void a()
+  {
+    try
+    {
+      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (jdField_a_of_type_Boolean) {
+        jdField_a_of_type_Boolean = false;
+      }
+      xfo.a();
+      QLog.i("Q.videostory.VSManager", 1, "init");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy() {}
 }
 
 

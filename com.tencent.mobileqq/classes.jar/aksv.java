@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.content.ContentValues;
 
-public abstract class aksv
+public class aksv
 {
-  public QQAppInterface a;
-  public ProxyManager a;
+  public int a;
+  public aktd a;
+  public ContentValues a;
+  public auko a;
+  public String a;
+  public String[] a;
+  public int b;
+  public String b;
+  public String c;
   
-  public aksv(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public aksv(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, aktd paramaktd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidContentContentValues = paramContentValues;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Aktd = paramaktd;
   }
   
-  public abstract void a();
-  
-  public abstract void b();
+  public aksv(String paramString1, int paramInt1, String paramString2, auko paramauko, int paramInt2, aktd paramaktd)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Auko = paramauko;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Aktd = paramaktd;
+  }
 }
 
 

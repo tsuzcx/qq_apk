@@ -1,16 +1,38 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
 
 public class uiy
-  extends uai
+  extends BroadcastReceiver
 {
-  public uiy(uix paramuix) {}
+  public uiy(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
-      this.a.b().finish();
+    ved.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    {
+      paramContext = paramIntent.getStringExtra("event");
+      ved.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
+      if (!"closeMeEvent".equals(paramContext)) {
+        break label70;
+      }
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
     }
+    label70:
+    do
+    {
+      return;
+      if (!"readyEvent".equals(paramContext)) {
+        break;
+      }
+    } while (this.a.a == null);
+    this.a.a.b();
+    return;
+    bcql.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
   }
 }
 

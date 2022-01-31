@@ -1,8 +1,6 @@
-import android.graphics.Bitmap;
-
-public abstract interface awce
+public class awce
 {
-  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3);
+  public static final String a = ajya.a(2131714131);
 }
 
 

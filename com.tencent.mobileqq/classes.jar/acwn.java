@@ -1,44 +1,25 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.IntimateInfo;
 
 class acwn
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  acwn(acwm paramacwm) {}
+  acwn(acwl paramacwl) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = ((bbje)acwm.a(this.a)[0].get(paramInt)).c;
-    acwm.a(this.a).b();
-    int i = 0;
-    switch (j)
+    if ((!TextUtils.isEmpty(this.a.a)) && (acwl.a(this.a) != null))
     {
+      if (acwl.a(this.a) == 1) {
+        acwl.b(this.a, this.a.a);
+      }
     }
-    for (;;)
-    {
-      if (i != 0) {
-        axqw.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
-      }
-      this.a.a(j, acwm.a(this.a));
+    else {
       return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
     }
+    acwl.a(this.a, this.a.a, acwl.a(this.a).maskType);
   }
 }
 

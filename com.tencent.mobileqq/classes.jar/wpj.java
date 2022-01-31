@@ -1,6 +1,29 @@
-public abstract interface wpj
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
+
+public class wpj
+  extends RecyclerView.ItemDecoration
 {
-  public abstract void a(String paramString, wpi paramwpi);
+  public wpj(ComponentPageView paramComponentPageView, wpc paramwpc) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildLayoutPosition(paramView);
+    if ((this.a.a != null) && (this.a.a.b(i) != null)) {
+      this.a.a.b(i).a(paramRect, paramView, paramRecyclerView, paramState);
+    }
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.onDraw(paramCanvas, paramRecyclerView, paramState);
+  }
 }
 
 

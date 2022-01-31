@@ -1,14 +1,19 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
 
-public class tbo
+public final class tbo
+  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
 {
-  public int a;
-  public String a = "";
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
+  {
+    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
+  }
+  
+  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  {
+    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+  }
 }
 
 

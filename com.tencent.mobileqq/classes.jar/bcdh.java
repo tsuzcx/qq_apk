@@ -1,97 +1,33 @@
-import android.annotation.SuppressLint;
-import android.net.Uri;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
 
-class bcdh
-  extends nke
+public class bcdh
+  implements View.OnLongClickListener
 {
-  bcdh(bcdg parambcdg) {}
+  public bcdh(WebViewFragment paramWebViewFragment) {}
   
-  @SuppressLint({"InflateParams"})
-  public View getVideoLoadingProgressView()
+  public boolean onLongClick(View paramView)
   {
-    if (this.a.a != null) {
-      return this.a.a.b();
+    if (!this.a.jdField_a_of_type_Bcfg.a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
     }
-    return null;
-  }
-  
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramGeolocationPermissionsCallback);
+    if (!this.a.jdField_a_of_type_Bcfg.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
     }
-  }
-  
-  public void onHideCustomView()
-  {
-    if (this.a.a != null) {
-      this.a.a.v();
-    }
-  }
-  
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramWebView, paramString1, paramString2, paramJsResult);
-    }
-    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramWebView, paramInt);
-    }
-    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
-      paramWebView.getSettings().setLoadsImagesAutomatically(true);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (this.a.a != null) {
-      this.a.a.b(paramWebView, paramString);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView, paramInt, paramCustomViewCallback);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView, 10, paramCustomViewCallback);
-    }
-  }
-  
-  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
-  {
-    if ((paramValueCallback != null) && (this.a.a != null)) {
-      return this.a.a.a(paramValueCallback, paramFileChooserParams);
-    }
-    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
-  }
-  
-  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramValueCallback, paramString1, paramString2);
+    bcer localbcer = (bcer)this.a.jdField_a_of_type_Bcee.a(8);
+    if ((localbcer != null) && (localbcer.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
 }

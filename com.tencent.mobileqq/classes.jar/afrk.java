@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class afrk
-  extends ajxl
 {
-  public afrk(PublicAccountFragment paramPublicAccountFragment) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public afrk(PublicAccountInfo paramPublicAccountInfo)
   {
-    if (paramBoolean) {
-      this.a.i();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

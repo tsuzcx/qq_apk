@@ -3,23 +3,23 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bceo;
-import bcpq;
+import bcfc;
+import bcqf;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nap;
-import rnu;
-import wim;
+import nam;
+import rnr;
+import wij;
 
 public class SwiftBrowserScreenShotHandler$6
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$6(bceo parambceo, String paramString, Bundle paramBundle, boolean paramBoolean) {}
+  public SwiftBrowserScreenShotHandler$6(bcfc parambcfc, String paramString, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = nap.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    boolean bool2 = bceo.a(this.this$0).a().isShowing();
+    String str = nam.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    boolean bool2 = bcfc.a(this.this$0).a().isShowing();
     if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.this$0.b))) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -37,18 +37,18 @@ public class SwiftBrowserScreenShotHandler$6
           break label289;
         }
         this.this$0.jdField_a_of_type_JavaLangString = str;
-        bceo.a(this.this$0).a(3);
+        bcfc.a(this.this$0).a(3);
         if (!this.jdField_a_of_type_Boolean) {
           break;
         }
-        bceo.a(this.this$0).d(this.this$0.jdField_a_of_type_JavaLangString);
+        bcfc.a(this.this$0).d(this.this$0.jdField_a_of_type_JavaLangString);
       }
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.post(new SwiftBrowserScreenShotHandler.6.2(this));
     return;
     label289:
-    wim.a(1, 2131695589);
+    wij.a(1, 2131695590);
   }
 }
 

@@ -1,41 +1,35 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.annotation.TargetApi;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.graphics.Paint;
+import android.os.PowerManager;
+import android.view.View;
 
+@Deprecated
 public class bbap
-  implements DownloadParams.DecodeHandler
 {
-  private DownloadParams.DecodeHandler a;
-  private DownloadParams.DecodeHandler b;
-  
-  public bbap(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
+  public static int a(Context paramContext)
   {
-    this.a = paramDecodeHandler1;
-    this.b = paramDecodeHandler2;
+    return ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  @TargetApi(11)
+  public static void a(View paramView, int paramInt, Paint paramPaint)
   {
-    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
-    DownloadParams localDownloadParams = null;
-    if (localBitmap != null)
+    if (bfnz.e()) {
+      paramView.setLayerType(paramInt, paramPaint);
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    try
     {
-      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
-      localDownloadParams = paramDownloadParams;
-      if (localBitmap != paramDownloadParams)
-      {
-        localDownloadParams = paramDownloadParams;
-        if (localBitmap != paramBitmap)
-        {
-          localBitmap.recycle();
-          localDownloadParams = paramDownloadParams;
-        }
-      }
+      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
+      return bool;
     }
-    if (localDownloadParams != null) {
-      paramBitmap = localDownloadParams;
-    }
-    return paramBitmap;
+    catch (Exception paramContext) {}
+    return false;
   }
 }
 

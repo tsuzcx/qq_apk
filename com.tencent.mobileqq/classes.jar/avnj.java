@@ -1,242 +1,266 @@
-import NS_MOBILE_NEWEST_FEEDS.QzoneData;
-import NS_MOBILE_NEWEST_FEEDS.feed_info;
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import NS_QQ_STORY_META.META.StImage;
-import NS_QQ_STORY_META.META.StStoryFeed;
-import NS_WEISHI_QQ_PROFILE.stGetNewestFeedRspInner;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.step.GetQZoneFeeds;
+import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import common.qzone.component.util.SecurityUtil;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class avnj
-  extends MSFServlet
+  implements Manager
 {
-  private void b(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
+  private static int jdField_a_of_type_Int = -1;
+  private static int b = -1;
+  private static int c = -1;
+  private static int d = -1;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  private int e = 0;
+  private int f;
+  private int g;
+  
+  public avnj(QQAppInterface paramQQAppInterface)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    if ((paramBoolean) && (paramnewest_feeds_rsp != null))
-    {
-      a(paramBoolean, paramnewest_feeds_rsp);
-      localQQAppInterface.a().a(paramnewest_feeds_rsp);
-      localQQAppInterface.a().d();
-      return;
-    }
-    localQQAppInterface.a().c();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected void a(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
+  private SharedPreferences a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed isSuc=%s last_feed_time=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramnewest_feeds_rsp.last_feed_time) }));
-    }
-    QQAppInterface localQQAppInterface;
-    ajxn localajxn;
-    if (paramBoolean)
-    {
-      localQQAppInterface = (QQAppInterface)getAppRuntime();
-      if (localQQAppInterface != null)
-      {
-        localajxn = (ajxn)localQQAppInterface.getManager(51);
-        if (localajxn == null) {}
-      }
-    }
-    ArrayList localArrayList;
-    Object localObject1;
-    Object localObject2;
-    long l;
-    for (;;)
-    {
-      Object localObject4;
-      Object localObject5;
-      try
-      {
-        localArrayList = new ArrayList();
-        localObject1 = paramnewest_feeds_rsp.mapVcByte;
-        if ((localObject1 == null) || (((Map)localObject1).isEmpty())) {
-          break;
-        }
-        localObject2 = ((Map)localObject1).keySet().iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        Object localObject3 = (Long)((Iterator)localObject2).next();
-        localObject4 = (QzoneData)((Map)localObject1).get(localObject3);
-        localObject3 = localajxn.a(String.valueOf(localObject3));
-        if (localObject3 == null) {
-          continue;
-        }
-        if (((QzoneData)localObject4).iType == 2)
-        {
-          localObject5 = new JceInputStream();
-          ((JceInputStream)localObject5).wrap(((QzoneData)localObject4).vcByte);
-          ((JceInputStream)localObject5).setServerEncoding("utf-8");
-          localObject4 = new stGetNewestFeedRspInner();
-          ((stGetNewestFeedRspInner)localObject4).readFrom((JceInputStream)localObject5);
-          localObject5 = ((stGetNewestFeedRspInner)localObject4).mapItemInfo;
-          if ((localObject5 == null) || (((Map)localObject5).isEmpty())) {
-            continue;
-          }
-          localObject4 = (String)((Map)localObject5).get("upload_time");
-          localObject5 = (String)((Map)localObject5).get("desc");
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed weishi feed, uploadTime=%s desc=%s", new Object[] { localObject4, localObject5 }));
-          }
-          try
-          {
-            l = Long.valueOf((String)localObject4).longValue();
-            if ((((ExtensionInfo)localObject3).feedTime > l) && (((ExtensionInfo)localObject3).feedType != 1)) {
-              continue;
-            }
-            ((ExtensionInfo)localObject3).feedType = 1;
-            ((ExtensionInfo)localObject3).feedTime = l;
-            ((ExtensionInfo)localObject3).feedContent = ((String)localObject5);
-            ((ExtensionInfo)localObject3).feedHasPhoto = false;
-            ((ExtensionInfo)localObject3).feedPhotoUrl = null;
-            localArrayList.add(localObject3);
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localNumberFormatException);
-          }
-          continue;
-          return;
-        }
-      }
-      catch (Exception paramnewest_feeds_rsp)
-      {
-        QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", paramnewest_feeds_rsp);
-      }
-      int i = ((QzoneData)localObject4).iType;
-      if (i == 3) {
-        try
-        {
-          localObject5 = new META.StStoryFeed();
-          ((META.StStoryFeed)localObject5).mergeFrom(((QzoneData)localObject4).vcByte);
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed story feed, uploadTime=%s feedPhotoUrl=%s", new Object[] { Long.valueOf(((META.StStoryFeed)localObject5).createTime.get()), ((META.StStoryFeed)localObject5).coverImage.url.get() }));
-          }
-          if (((localNumberFormatException.feedTime <= ((META.StStoryFeed)localObject5).createTime.get()) || (localNumberFormatException.feedType == 2)) && (!TextUtils.isEmpty(((META.StStoryFeed)localObject5).coverImage.url.get())))
-          {
-            localNumberFormatException.feedType = 2;
-            localNumberFormatException.feedTime = ((META.StStoryFeed)localObject5).createTime.get();
-            localNumberFormatException.feedContent = BaseApplicationImpl.getApplication().getString(2131690011);
-            localNumberFormatException.feedHasPhoto = false;
-            localNumberFormatException.feedPhotoUrl = ((META.StStoryFeed)localObject5).coverImage.url.get();
-            localArrayList.add(localNumberFormatException);
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localInvalidProtocolBufferMicroException);
-        }
-      }
-    }
-    paramnewest_feeds_rsp = paramnewest_feeds_rsp.vec_feed_info;
-    label630:
-    String str;
-    if ((paramnewest_feeds_rsp != null) && (!paramnewest_feeds_rsp.isEmpty()))
-    {
-      paramnewest_feeds_rsp = paramnewest_feeds_rsp.iterator();
-      while (paramnewest_feeds_rsp.hasNext())
-      {
-        localObject1 = (feed_info)paramnewest_feeds_rsp.next();
-        localObject2 = localajxn.a(String.valueOf(((feed_info)localObject1).opuin));
-        if (localObject2 != null)
-        {
-          l = ((feed_info)localObject1).time;
-          str = avnk.a(((feed_info)localObject1).strcontent, localQQAppInterface);
-          if (((feed_info)localObject1).has_pic != 1L) {
-            break label879;
-          }
-        }
-      }
-    }
-    label879:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed qzone feed, qZoneFeedTime=%s qZoneFeedContent=%s qZoneFeedHasPhoto=%s", new Object[] { Long.valueOf(l), str, Boolean.valueOf(paramBoolean) }));
-      }
-      if ((((ExtensionInfo)localObject2).feedTime > l) && (((ExtensionInfo)localObject2).feedType != 0)) {
-        break label630;
-      }
-      ((ExtensionInfo)localObject2).feedType = 0;
-      ((ExtensionInfo)localObject2).feedTime = l;
-      ((ExtensionInfo)localObject2).feedContent = str;
-      ((ExtensionInfo)localObject2).feedHasPhoto = paramBoolean;
-      ((ExtensionInfo)localObject2).feedPhotoUrl = ((feed_info)localObject1).strImgUrl;
-      localArrayList.add(localObject2);
-      break label630;
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed update size=%s", new Object[] { Integer.valueOf(localArrayList.size()) }));
-      }
-      if (localArrayList.size() <= 0) {
-        break;
-      }
-      localajxn.b(localArrayList);
-      paramnewest_feeds_rsp = (FriendListHandler)localQQAppInterface.a(1);
-      if (paramnewest_feeds_rsp == null) {
-        break;
-      }
-      paramnewest_feeds_rsp.notifyUI(2, true, null);
-      return;
-    }
+    String str = SecurityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) + "GetQZoneFeeds";
+    return BaseApplication.getContext().getSharedPreferences(str, 0);
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private void a(ArrayList<Long> paramArrayList, int paramInt)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramInt >= paramArrayList.size()))
     {
-      paramIntent = avni.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent != null)
-      {
-        b(true, paramIntent);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet isSuccess false");
-      }
-      b(false, null);
+      e();
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet resultcode fail.");
+      QLog.d("QzoneContactsFeedManager", 2, "refreshAllInner(" + paramInt + ")...");
     }
-    b(false, null);
+    int j = c() + paramInt;
+    int i = j;
+    if (j >= paramArrayList.size()) {
+      i = paramArrayList.size();
+    }
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), avnl.class);
+    paramArrayList = new ArrayList(paramArrayList.subList(paramInt, i));
+    avnm.a(localNewIntent, avnm.a(1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), paramArrayList, 0L, null));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  @TargetApi(9)
+  private void b(long paramLong, String paramString)
   {
-    if (paramIntent == null) {
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putLong("last_request_time", paramLong);
+    localEditor.putString("last_attach_info", paramString);
+    if (Build.VERSION.SDK_INT < 9)
+    {
+      localEditor.commit();
       return;
     }
-    byte[] arrayOfByte = new avni(avnk.a(paramIntent)).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
+    localEditor.apply();
+  }
+  
+  private static int c()
+  {
+    if (jdField_a_of_type_Int < 0) {
+      jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsUinNum", 100);
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeeds");
-    paramPacket.putSendData(paramIntent);
+    return jdField_a_of_type_Int;
+  }
+  
+  private static int d()
+  {
+    if (b < 0) {
+      b = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsRetryNum", 2);
+    }
+    return b;
+  }
+  
+  private static int e()
+  {
+    if (c < 0)
+    {
+      c = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinTimeCell", 900);
+      c *= 1000;
+    }
+    return c;
+  }
+  
+  private static int f()
+  {
+    if (d < 0)
+    {
+      d = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinRefreshTimeCell", 604800);
+      d *= 1000;
+    }
+    return d;
+  }
+  
+  public long a()
+  {
+    return a().getLong("last_request_time", 0L);
+  }
+  
+  public String a()
+  {
+    return a().getString("last_attach_info", "");
+  }
+  
+  @TargetApi(9)
+  public void a()
+  {
+    if (!GetQZoneFeeds.a) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedManager", 2, "GetQZoneFeeds 此step尚未执行，此次调用就此返回，等待自动机中GetQZoneFeeds执行此方法");
+      }
+    }
+    while (!bbfj.g(BaseApplication.getContext())) {
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new QzoneContactsFeedManager.1(this));
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "updateFriend(" + this.e + ")...");
+    }
+    if (this.e != 0) {
+      return;
+    }
+    this.e = 3;
+    this.f = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "updateAll(" + this.e + ")...");
+    }
+    if (this.e != 0) {
+      return;
+    }
+    this.e = 2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), avnl.class);
+    avnm.a(localNewIntent, avnm.a(2, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), null, paramLong, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(newest_feeds_rsp paramnewest_feeds_rsp)
+  {
+    if (paramnewest_feeds_rsp == null) {}
+    while ((this.e == 3) || (((this.e != 1) || (this.f != 0)) && (this.e != 2))) {
+      return;
+    }
+    b(paramnewest_feeds_rsp.last_feed_time, paramnewest_feeds_rsp.str_attach);
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "refreshAll(" + this.e + ")...");
+    }
+    if (this.e != 0) {
+      return;
+    }
+    this.e = 1;
+    this.f = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = avnm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (QLog.isColorLevel())
+    {
+      ajxl localajxl = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      }
+      QLog.d("QzoneContactsFeedManager", 2, new Object[] { "allFriends.size:", Integer.valueOf(i), ",getAllFreindsCount:", Integer.valueOf(localajxl.a()) });
+    }
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "retry(" + this.g + ")...");
+    }
+    this.g += 1;
+    if (this.g >= d())
+    {
+      this.g = 0;
+      if (this.e == 1) {
+        b(0L, null);
+      }
+      d();
+      return;
+    }
+    if ((this.e == 1) || (this.e == 3))
+    {
+      a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+      return;
+    }
+    if (this.e == 2)
+    {
+      this.e = 0;
+      a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "doNextRequest(" + this.f + ")...");
+    }
+    if ((this.e != 1) && (this.e != 3))
+    {
+      e();
+      return;
+    }
+    this.f += c();
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "close...");
+    }
+    this.e = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.f = 0;
+    this.g = 0;
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedManager", 2, "onDestroy...");
+    }
+    e();
+    GetQZoneFeeds.a = false;
   }
 }
 

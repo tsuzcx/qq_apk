@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import npm;
+import npj;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdDownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdDownloadInfo> CREATOR = new npm();
+  public static final Parcelable.Creator<GameAdDownloadInfo> CREATOR = new npj();
   public int a;
   public String a;
   public String b;

@@ -1,15 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class bkbw
-  implements View.OnTouchListener
+public class bkbw
 {
-  bkbw(bkbv parambkbv) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    return true;
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
   }
 }
 

@@ -1,52 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
 
-class adlw
-  implements DialogInterface.OnClickListener
+public class adlw
+  extends acuj
 {
-  adlw(adlu paramadlu, MessageForArkApp paramMessageForArkApp) {}
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public TextView b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(adlw paramadlw, alqw paramalqw)
   {
-    paramDialogInterface = (MessageForArkApp)axaq.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+    Object localObject2 = paramalqw.getArkAppNameAndPath();
+    String str = localObject2[0];
+    Object localObject1 = localObject2[1];
+    localObject2 = localObject2[2];
+    paramalqw.clickTail(null, paramadlw, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
+    if (localObject1 != null)
+    {
+      ArkAppCacheMgr.getAppIcon(str, new adlx(this, paramadlw));
+      paramalqw = ArkAppCacheMgr.getApplicationDesc(str);
+      if (paramalqw != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        paramadlw.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramadlw.jdField_a_of_type_AndroidWidgetTextView.setText(paramalqw);
       }
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
-          } while (this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
-          paramInt = paramDialogInterface.getProcessState();
-          this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
-          if ((paramInt == 1002) || (paramInt == 0)) {
-            break;
-          }
-          localObject = BaseApplicationImpl.getApplication().getRuntime();
-        } while (!(localObject instanceof QQAppInterface));
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
-      } while (localObject == null);
-      localObject = ((ArkAppCenter)localObject).a();
-    } while (localObject == null);
-    ((alwp)localObject).a(paramDialogInterface);
-    return;
-    this.jdField_a_of_type_Adlu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      return;
+    }
+    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new adly(this, str, paramadlw));
   }
 }
 

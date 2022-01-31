@@ -1,17 +1,16 @@
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.data.MessageForPic;
 
-public class adlh
-  extends acun
+class adlh
+  extends acuj
 {
+  public LinearLayout a;
   public TextView a;
-  public URLDrawable a;
-  public ChatThumbView a;
-  public MessageForPic a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public adlh(adlg paramadlg) {}
+  adlh(adlg paramadlg) {}
 }
 
 

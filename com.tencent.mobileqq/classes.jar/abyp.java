@@ -1,20 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
 public class abyp
   implements DialogInterface.OnClickListener
 {
-  public abyp(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public abyp(RegisterNewBaseActivity.2 param2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, true);
-    RegisterChooseLoginActivity.a(this.a, true);
-    axqw.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    axqw.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
-    axqw.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
   }
 }
 

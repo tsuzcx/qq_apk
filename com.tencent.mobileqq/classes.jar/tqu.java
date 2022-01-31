@@ -1,11 +1,11 @@
 class tqu
-  extends tpq
+  extends tpv
 {
-  tqu(tqk paramtqk, trs paramtrs) {}
+  tqu(tqh paramtqh, trp paramtrp) {}
   
   public boolean b()
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Trs.d);
+    this.jdField_a_of_type_Trp.e = ((String)a("UploadImageJob_out_image_url"));
     return true;
   }
 }

@@ -1,6 +1,89 @@
-public abstract interface bcna
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class bcna
+  extends bbgu
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  Context jdField_a_of_type_AndroidContentContext;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  
+  public bcna(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
+  {
+    super(paramContext, 2131755791);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560793, null);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377400);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377407));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364720));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364268));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131697880));
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setCancelable(true);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.width = ((int)(((DisplayMetrics)localObject).widthPixels - bbdv.a(this.jdField_a_of_type_AndroidContentContext, 30.0F)));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    localObject = getWindow().getAttributes();
+    ((WindowManager.LayoutParams)localObject).gravity = 48;
+    ((WindowManager.LayoutParams)localObject).y = ((int)bbdv.a(this.jdField_a_of_type_AndroidContentContext, 10.0F) + actj.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364268: 
+      dismiss();
+      return;
+    }
+    paramView = bbex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString);
+    if (paramView != null)
+    {
+      paramView.c();
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
 }
 
 

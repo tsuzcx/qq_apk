@@ -1,19 +1,48 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
 public class aatz
-  implements View.OnClickListener
+  implements bfph
 {
-  public aatz(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  public aatz(ChatSettingForTroop paramChatSettingForTroop, int paramInt, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    int i = 3;
+    switch (paramInt)
+    {
+    default: 
+      i = 0;
+      paramInt = -1;
     }
-    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    for (;;)
+    {
+      if (paramInt != this.jdField_a_of_type_Int) {
+        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
+      }
+      try
+      {
+        this.jdField_a_of_type_Bfpc.dismiss();
+        bbbp.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, bbbp.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
+        return;
+        i = 3;
+        paramInt = 4;
+        continue;
+        i = 1;
+        paramInt = 2;
+        continue;
+        int j = 2;
+        paramInt = i;
+        i = j;
+      }
+      catch (Exception paramView)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("Q.chatopttroop", 2, paramView.toString());
+      }
+    }
   }
 }
 

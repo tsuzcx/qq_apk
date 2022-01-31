@@ -1,18 +1,65 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface babp
+public class babp
+  extends babg
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean c;
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  public babp(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
+      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
+  public babp(JSONObject paramJSONObject)
+  {
+    a(paramJSONObject);
+  }
   
-  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaLangString.length();
+  }
   
-  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
+  }
   
-  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
 }
 
 

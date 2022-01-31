@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.managers;
 
-import ases;
-import bcpw;
+import aseu;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TempMsgManager$3
   implements Runnable
 {
-  public TempMsgManager$3(ases paramases, String paramString) {}
+  public TempMsgManager$3(aseu paramaseu, String paramString) {}
   
   public void run()
   {
-    bcpw.a(ases.a(this.this$0).getApp(), this.a, 1).a();
+    bcql.a(aseu.a(this.this$0).getApp(), this.a, 1).a();
   }
 }
 

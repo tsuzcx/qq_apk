@@ -1,9 +1,12 @@
-public class spa
+import java.net.URL;
+
+public abstract interface spa
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(URL paramURL, int paramInt);
+  
+  public abstract void a(URL paramURL, Throwable paramThrowable);
+  
+  public abstract void a(URL paramURL, rpd paramrpd);
 }
 
 

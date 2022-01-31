@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
-import arfr;
-import argf;
-import argi;
+import arft;
+import argh;
+import argk;
 
 public class HuayangPluginNewDownloader$2
   implements Runnable
 {
-  public HuayangPluginNewDownloader$2(argf paramargf) {}
+  public HuayangPluginNewDownloader$2(argh paramargh) {}
   
   public void run()
   {
     try
     {
-      argf.a(this.this$0);
+      argh.a(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
     {
-      argi.a("3228166");
-      arfr.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
+      argk.a("3228166");
+      arft.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
       return;
     }
     finally
     {
-      argf.a(this.this$0).removeCallbacks(argf.a(this.this$0));
-      argf.a(this.this$0, false);
+      argh.a(this.this$0).removeCallbacks(argh.a(this.this$0));
+      argh.a(this.this$0, false);
     }
   }
 }

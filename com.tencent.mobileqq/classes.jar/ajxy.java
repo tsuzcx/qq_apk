@@ -1,26 +1,35 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajxy
-  extends MqqHandler
+  extends BroadcastReceiver
 {
-  private WeakReference<Handler.Callback> a;
+  public ajxy(GuardManager paramGuardManager) {}
   
-  private ajxy(Looper paramLooper, Handler.Callback paramCallback)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, paramContext);
     }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (this.a.jdField_a_of_type_Long > 0L) {
+        this.a.a(false);
+      }
+      altt.b();
+    }
+    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
+      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    altt.a();
   }
 }
 

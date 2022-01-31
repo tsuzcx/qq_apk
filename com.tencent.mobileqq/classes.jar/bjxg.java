@@ -1,43 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
-import java.util.List;
-
-public abstract interface bjxg
-  extends bjwv
+public class bjxg
 {
-  public abstract int a();
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  public abstract long a(int paramInt);
-  
-  public abstract Bitmap a(int paramInt);
-  
-  public abstract List<? extends bjzj> a();
-  
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
-  
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(TransferData paramTransferData);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(long paramLong, boolean paramBoolean);
-  
-  public abstract void k();
-  
-  public abstract void l();
+  public bjxg(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  {
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+    this.e = paramBoolean5;
+  }
 }
 
 

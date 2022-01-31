@@ -1,26 +1,21 @@
-import android.util.Property;
+import com.tencent.mobileqq.data.RecentUser;
+import dov.com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import java.util.Comparator;
 
-class bkmx
-  extends Property<bkmo, Integer>
+public class bkmx
+  implements Comparator<RecentUser>
 {
-  bkmx(bkmo parambkmo, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bkmx(ShareToActivity paramShareToActivity) {}
   
-  public Integer a(bkmo parambkmo)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    if (parambkmo != null) {
-      return Integer.valueOf(bkmo.d(parambkmo));
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bkmo parambkmo, Integer paramInteger)
-  {
-    if (parambkmo != null) {
-      bkmo.d(parambkmo, paramInteger.intValue());
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
     }
+    return 0;
   }
 }
 

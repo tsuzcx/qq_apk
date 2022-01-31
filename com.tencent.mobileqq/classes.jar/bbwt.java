@@ -1,67 +1,111 @@
-import android.app.Activity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
-import com.tencent.util.Pair;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public class bbwt
-  extends bbwo
+public abstract class bbwt
 {
-  String a()
+  String wifiFlow;
+  String xgFlow;
+  
+  public bbwt() {}
+  
+  public bbwt(String paramString1, String paramString2)
   {
-    return "KC.KCWraper.Other";
+    this.wifiFlow = paramString1;
+    this.xgFlow = paramString2;
   }
   
-  void a(ViewGroup paramViewGroup)
+  private void reportErrorToMM(bbwu parambbwu)
   {
-    a("can not call bindActivationView");
-  }
-  
-  void a(bbwy parambbwy, boolean paramBoolean)
-  {
-    a("queryKingCard : from cache");
-    Pair localPair = a();
-    if (parambbwy != null)
+    if (QLog.isColorLevel()) {
+      QLog.e("DownloadListener", 2, "-->report MM");
+    }
+    if (parambbwu.a() != 3)
     {
-      if (paramBoolean) {
-        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambbwy, localPair));
+      if (QLog.isColorLevel()) {
+        QLog.e("DownloadListener", 2, "-->report MM:command=" + parambbwu.c + ",error code=" + parambbwu.jdField_a_of_type_Int + ",uin=" + parambbwu.jdField_a_of_type_Bbwv.jdField_a_of_type_Long);
       }
+      bdes.a().a(parambbwu.c, 100, parambbwu.jdField_a_of_type_Int, String.valueOf(parambbwu.jdField_a_of_type_Bbwv.jdField_a_of_type_Long), parambbwu.jdField_a_of_type_Bbwv.jdField_a_of_type_Int, ajya.a(2131703500), true);
     }
-    else {
-      return;
-    }
-    parambbwy.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
   }
   
-  void a(Runnable paramRunnable)
+  public void onCancel(bbwu parambbwu) {}
+  
+  public void onDone(bbwu parambbwu)
   {
-    a("tryLoad : do nothing");
+    parambbwu.h = System.currentTimeMillis();
+    if (parambbwu.a((byte)1)) {
+      reportErrorToMM(parambbwu);
+    }
   }
   
-  boolean a()
+  public void onDoneFile(bbwu parambbwu) {}
+  
+  public void onNetMobile2None()
   {
-    a("isReady : do nothing");
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadListener", 2, "onNetMobile2None...");
+    }
+  }
+  
+  public void onNetWifi2Mobile()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadListener", 2, "onNetWifi2Mobile...");
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadListener", 2, "onNetWifi2None...");
+    }
+  }
+  
+  public void onPause(bbwu parambbwu) {}
+  
+  public void onProgress(bbwu parambbwu) {}
+  
+  public boolean onStart(bbwu parambbwu)
+  {
+    parambbwu.g = System.currentTimeMillis();
     return true;
   }
   
-  boolean a(Activity paramActivity)
+  public void report(AppInterface paramAppInterface, long paramLong)
   {
-    if (c())
+    String[] arrayOfString;
+    if ((this.wifiFlow != null) && (this.xgFlow != null) && (paramAppInterface != null))
     {
-      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-      return true;
+      arrayOfString = null;
+      int i = bbfj.a(paramAppInterface.getApplication().getApplicationContext());
+      if (i > 0)
+      {
+        if (i != 1) {
+          break label134;
+        }
+        arrayOfString = new String[3];
+        arrayOfString[0] = this.wifiFlow;
+        arrayOfString[1] = "param_WIFIFlow";
+        arrayOfString[2] = "param_Flow";
+      }
     }
-    return false;
-  }
-  
-  boolean b()
-  {
-    boolean bool = c();
-    a("supportActivationView = " + bool);
-    return bool;
+    for (;;)
+    {
+      if ((arrayOfString != null) && (paramLong > 0L))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("com.tencent.mobileqq.vip.DownloadListener", 2, "report | tags=" + arrayOfString + ",len=" + paramLong);
+        }
+        paramAppInterface.sendAppDataIncerment(paramAppInterface.getCurrentAccountUin(), arrayOfString, paramLong);
+      }
+      return;
+      label134:
+      arrayOfString = new String[3];
+      arrayOfString[0] = this.xgFlow;
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
+    }
   }
 }
 

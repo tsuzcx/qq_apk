@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agtp;
-import agtt;
+import agtn;
+import agtr;
 import android.util.Log;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import mqq.util.WeakReference;
@@ -9,7 +9,7 @@ import mqq.util.WeakReference;
 public class PhotoListLogicAECamera$3$2
   implements Runnable
 {
-  public PhotoListLogicAECamera$3$2(agtt paramagtt) {}
+  public PhotoListLogicAECamera$3$2(agtr paramagtr) {}
   
   public void run()
   {

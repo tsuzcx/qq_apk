@@ -1,11 +1,16 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.Rect;
+import android.hardware.Camera.AutoFocusCallback;
 
 public class axih
 {
-  public axhs a;
-  public AtomicBoolean a = new AtomicBoolean(false);
-  public axhs b;
-  public axhs c;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback;
+  public axgd a;
+  public axgg a;
+  public boolean a;
+  Rect b;
+  
+  public axih(axhz paramaxhz) {}
 }
 
 

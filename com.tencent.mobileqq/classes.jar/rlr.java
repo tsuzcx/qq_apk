@@ -1,49 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.VideoData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastVideoViewCreator.VideoViewHolder.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class rlr
-  implements pca
+public class rlr
+  implements onn
 {
-  rlr(rlq paramrlq) {}
+  rlr(rlq paramrlq, VideoData paramVideoData) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    rlq.a(this.a, true);
-    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
-    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
-      paramString = "2";
-    }
-    for (;;)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_JavaLangString, paramString1)))
     {
-      paramString = onk.a(localContext, localArticleInfo, 0, paramString);
-      if (paramBoolean) {
-        paramInt = 1;
-      }
-      try
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_JavaLangString = paramString2;
+      if ((paramInt1 > 0) && (paramInt2 > 0))
       {
-        for (;;)
-        {
-          paramString.put("is_done", paramInt);
-          rnr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b, "0X800898B", paramString.toString());
-          return;
-          paramString = "1";
-          break;
-          paramInt = 2;
-        }
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_Int = paramInt1;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_Int = paramInt2;
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      ThreadManager.getUIHandler().post(new WebFastVideoViewCreator.VideoViewHolder.1.1(this));
     }
   }
 }

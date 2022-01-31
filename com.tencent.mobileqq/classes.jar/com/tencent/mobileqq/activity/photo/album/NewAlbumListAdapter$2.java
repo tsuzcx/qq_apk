@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agro;
+import agrm;
 import java.util.List;
 
 public class NewAlbumListAdapter$2
   implements Runnable
 {
-  public NewAlbumListAdapter$2(agro paramagro, List paramList) {}
+  public NewAlbumListAdapter$2(agrm paramagrm, List paramList) {}
   
   public void run()
   {

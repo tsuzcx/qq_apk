@@ -1,19 +1,27 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.Handler;
 
 class agpo
-  implements DialogInterface.OnClickListener
+  extends mxj
 {
-  agpo(agpn paramagpn) {}
+  agpo(agpl paramagpl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt == 0)
-    {
-      this.a.b();
-      agpn.a(this.a).moveTaskToBack(true);
+    if ((agpl.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
     }
+    this.a.d();
+    if (agpl.a(this.a) != null) {
+      agpl.a(this.a).removeCallbacks(agpl.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.e();
+      return;
+    }
+    agpl.a(this.a, agpl.a(this.a));
   }
 }
 

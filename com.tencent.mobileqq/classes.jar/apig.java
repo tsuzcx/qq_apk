@@ -1,22 +1,22 @@
-public final class apig
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+
+public class apig
+  implements AdapterView.OnItemClickListener
 {
-  private final Class jdField_a_of_type_JavaLangClass;
-  private final Object jdField_a_of_type_JavaLangObject;
+  public apig(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public apig(Object paramObject, Class paramClass)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-  }
-  
-  public Class a()
-  {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
+    }
+    this.a.a.b();
+    ((bbjv)paramAdapterView).a.a.onClick(paramView);
   }
 }
 

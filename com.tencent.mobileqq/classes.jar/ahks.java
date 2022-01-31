@@ -1,24 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class ahks
   implements View.OnClickListener
 {
-  ahks(ahkf paramahkf) {}
+  ahks(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(-1, null);
-    if (akva.a().a() == 4)
-    {
-      axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuz.b(), akva.b(), akva.a(), "1");
-      akva.a().a(ahkf.a(this.a));
-      return;
+    if (akuz.a().a() == 4) {
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuy.b(), akuz.b(), akuz.a(), "0");
     }
-    axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuz.b(), akva.b(), akva.a(), "1");
-    UpgradeDetailActivity.a(ahkf.a(this.a), akva.a().a(), true, true, true);
+    for (;;)
+    {
+      this.a.a(12, 0);
+      this.a.a(-1, null);
+      return;
+      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuy.b(), akuz.b(), akuz.a(), "0");
+    }
   }
 }
 

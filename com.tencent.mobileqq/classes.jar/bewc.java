@@ -1,71 +1,54 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.1;
+import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.2;
 
-@begt(a="GpkgLoadAsyncTask")
 public class bewc
-  extends bfeq
 {
-  private bevc jdField_a_of_type_Bevc;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private String c;
+  private static bewc jdField_a_of_type_Bewc;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
-  public bewc(Context paramContext, bepv parambepv)
+  public static bewc a()
   {
-    super(paramContext, parambepv);
-  }
-  
-  public bevc a()
-  {
-    return this.jdField_a_of_type_Bevc;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    if (jdField_a_of_type_Bewc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bewc == null) {
+        jdField_a_of_type_Bewc = new bewc();
+      }
+      return jdField_a_of_type_Bewc;
+    }
+    finally {}
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId == null))
+    try
     {
-      besl.d("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig failed " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      a(2002, "配置错误");
+      if (!this.b)
+      {
+        this.b = true;
+        bezf.a().a().post(new GameReportManager.1(this));
+      }
       return;
     }
-    if ((this.jdField_a_of_type_Bevc != null) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId.equals(this.jdField_a_of_type_Bevc.d)))
+    catch (Throwable localThrowable)
     {
-      besl.d("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig appid " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId + " has loaded.");
-      c();
-      return;
+      betc.d("GameReportManager", "onJsError", localThrowable);
     }
-    if ((this.c != null) && (this.c.equals(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId)))
-    {
-      besl.c("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig appid " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId + " is loading.");
-      return;
-    }
-    besl.b("GpkgLoadAsyncTask", "[Gpkg] start loadGpkgByConfig appid:" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
-    this.c = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId;
-    this.jdField_a_of_type_Bevc = null;
-    long l = System.currentTimeMillis();
-    beut.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, new bewd(this, l));
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
   }
   
   public void b()
   {
-    besl.b("GpkgLoadAsyncTask", "[Gpkg]" + this + " reset ");
-    super.b();
-    this.jdField_a_of_type_Bevc = null;
-    this.c = null;
-  }
-  
-  public void c()
-  {
-    super.c();
+    try
+    {
+      bezf.a().a().post(new GameReportManager.2(this));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      betc.d("GameReportManager", "onFirstFrame", localThrowable);
+    }
   }
 }
 

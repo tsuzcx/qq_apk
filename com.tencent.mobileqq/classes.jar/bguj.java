@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-
 class bguj
-  implements View.OnClickListener
+  implements bgtx
 {
-  bguj(bguh parambguh) {}
+  bguj(bgui parambgui) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().loadUrl("javascript:" + bguh.a(this.a) + "()");
+    if (bgui.a(this.a) != null) {
+      bgui.a(this.a);
     }
+    while (bgui.a(this.a) == null) {
+      return;
+    }
+    bgui.a(this.a, bgui.a(this.a));
   }
 }
 

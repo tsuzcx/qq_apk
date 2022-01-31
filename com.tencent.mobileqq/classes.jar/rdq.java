@@ -1,17 +1,17 @@
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
 
 public class rdq
-  extends oyg
+  extends oyd
 {
-  public rdq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  public rdq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    paramoxx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
   }
 }
 

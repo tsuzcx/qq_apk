@@ -1,31 +1,15 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class bihn
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  bihn(bihm parambihm) {}
+  bihn(bihj parambihj) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
-      {
-      }
-    }
-    do
-    {
-      return;
-      paramContext = this.a.a.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramContext.finish();
+    return true;
   }
 }
 

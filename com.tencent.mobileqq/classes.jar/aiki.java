@@ -1,83 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiki
-  implements MediaPlayer.OnPreparedListener
+  implements alxj
 {
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
+  public aiki(SessionClearFragment paramSessionClearFragment) {}
   
-  public aiki(aikd paramaikd, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    catch (Exception localException1)
-    {
-      aikd.a(this.jdField_a_of_type_Aikd, "-->handleJsRequest exception:" + localException1.toString());
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("code", 2);
-        localJSONObject.put("errorMessage", "exception");
-        this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-  }
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    if (aikd.a(this.jdField_a_of_type_Aikd).a()) {}
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        aikd.a(this.jdField_a_of_type_Aikd, "-->play failed");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      aikd.a(this.jdField_a_of_type_Aikd, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
-      try
-      {
-        paramMediaPlayer = new JSONObject();
-        paramMediaPlayer.put("code", 2);
-        paramMediaPlayer.put("errorMessage", "exception");
-        this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-        return;
-      }
-      catch (Exception paramMediaPlayer)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
-    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

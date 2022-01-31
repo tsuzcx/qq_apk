@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import acfo;
-import ajyc;
+import acfk;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-import avpq;
-import axqw;
-import bbbd;
-import bbbj;
-import bbpp;
+import avps;
+import axqy;
+import bbbr;
+import bbbx;
+import bbqd;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -25,21 +25,21 @@ public class ThemeNoviceGuideActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  Handler a = new acfo(this, Looper.getMainLooper());
+  Handler a = new acfk(this, Looper.getMainLooper());
   
   private void a()
   {
     setLeftButton(2131690832, null);
-    ((Button)findViewById(2131376760)).setOnClickListener(this);
+    ((Button)findViewById(2131376762)).setOnClickListener(this);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562507);
+    super.setContentView(2131562506);
     a();
-    setTitle(ajyc.a(2131714922));
+    setTitle(ajya.a(2131714933));
     this.a.sendMessageDelayed(Message.obtain(this.a, 0, null), 5L);
     return true;
   }
@@ -53,33 +53,33 @@ public class ThemeNoviceGuideActivity
   public boolean onBackEvent()
   {
     finish();
-    bbbj.a(this, false, false);
+    bbbx.a(this, false, false);
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131376760)
+    if (paramView.getId() == 2131376762)
     {
-      if (!bbbd.a()) {
+      if (!bbbr.a()) {
         break label121;
       }
       finish();
       paramView = new Intent(this, QQBrowserActivity.class);
       paramView.putExtra("FromWhere", "FromThemeNoviceGuide");
-      VasWebviewUtil.openQQBrowserWithoutAD(this, bbpp.a(this, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramView, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this, bbqd.a(this, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramView, false, -1);
       if (this.app != null) {
-        ((avpq)this.app.getManager(36)).b("100005.100002");
+        ((avps)this.app.getManager(36)).b("100005.100002");
       }
     }
     for (;;)
     {
       if (this.app != null) {
-        axqw.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "theme_popup_click", 0, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "theme_popup_click", 0, 0, "", "", "", "");
       }
       return;
       label121:
-      Toast.makeText(getApplicationContext(), getString(2131719044), 0).show();
+      Toast.makeText(getApplicationContext(), getString(2131719055), 0).show();
     }
   }
   

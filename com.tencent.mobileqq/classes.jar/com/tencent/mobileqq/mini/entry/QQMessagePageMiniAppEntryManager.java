@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ahfz;
-import ahmn;
-import ahra;
-import ajyc;
+import ahfx;
+import ahml;
+import ahqy;
+import ajya;
+import amta;
 import amtb;
-import amtc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,8 +22,8 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbkx;
-import bfnu;
+import bbll;
+import bfol;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.MainFragment;
@@ -43,18 +43,18 @@ import com.tencent.widget.ListView;
 import mqq.observer.BusinessObserver;
 
 public class QQMessagePageMiniAppEntryManager
-  implements ahmn, bfnu, MiniAppPullInterface, BusinessObserver
+  implements ahml, bfol, MiniAppPullInterface, BusinessObserver
 {
   public static final long APP_STORE_TIME_THRESHOLD = 86400000L;
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = bbkx.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = bbkx.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = bbkx.a(-100.0F);
+  private static final int OFFSET_NODE_OPEN = bbll.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = bbll.a(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = bbll.a(-100.0F);
   private static final int OVER_FLING_DISTANCE = 70;
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = bbkx.a(-70.0F);
+  private static final int STORY_TRANSLATE = bbll.a(-70.0F);
   public static final String TAG = "QQMessagePageMicroAppEntryManager";
   private int OFFSET_SCROLL_OVER;
   private final int OVER_FLING_DISTANCE_DEFAULT = 30;
@@ -63,7 +63,7 @@ public class QQMessagePageMiniAppEntryManager
   private boolean isFirstOpenMiniAppEntry;
   private QQAppInterface mApp;
   private SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo mBannerInfo;
-  private final ahra mCareNotificationBar;
+  private final ahqy mCareNotificationBar;
   private PullRefreshHeader mChatTopRefresh;
   private MiniAppEntryLayout mContentView;
   private Context mContext;
@@ -81,7 +81,7 @@ public class QQMessagePageMiniAppEntryManager
     this.mDrawer = paramDrawerFrame;
     this.mListView = ((ARMapHongBaoListView)paramListView);
     this.mChatTopRefresh = paramPullRefreshHeader;
-    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Ahra;
+    this.mCareNotificationBar = paramConversation.jdField_a_of_type_Ahqy;
   }
   
   private void doOnScroll(float paramFloat, boolean paramBoolean)
@@ -108,7 +108,7 @@ public class QQMessagePageMiniAppEntryManager
         f1 = this.mMiniAppListLayout.getTranslationY() - f2;
         setMicroAppEntryPanelAlpha(1.0F - this.mMiniAppListLayout.getTranslationY() / STORY_TRANSLATE + 0.8F);
         label226:
-        if (paramFloat <= bbkx.b(-70.0F)) {
+        if (paramFloat <= bbll.b(-70.0F)) {
           break label342;
         }
         this.mContentView.setDotViewTranslationY((this.mContentView.getDotViewHeight() + paramFloat) / 2.0F);
@@ -213,7 +213,7 @@ public class QQMessagePageMiniAppEntryManager
       this.mListView.setOverscrollHeader(new ColorDrawable(Color.parseColor("#000000")));
       int i = this.mContext.getResources().getColor(2131166952);
       this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131375053);
+      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131375055);
       if (localTextView != null) {
         localTextView.setTextColor(i);
       }
@@ -229,10 +229,10 @@ public class QQMessagePageMiniAppEntryManager
   {
     try
     {
-      this.mListView.setOverscrollHeader(this.mContext.getResources().getDrawable(2130849708));
+      this.mListView.setOverscrollHeader(this.mContext.getResources().getDrawable(2130849717));
       int i = this.mContext.getResources().getColor(2131166914);
       this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131375053);
+      TextView localTextView = (TextView)this.mChatTopRefresh.findViewById(2131375055);
       if (localTextView != null) {
         localTextView.setTextColor(i);
       }
@@ -246,7 +246,7 @@ public class QQMessagePageMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mChatTopRefresh.findViewById(2131375049);
+    View localView = this.mChatTopRefresh.findViewById(2131375051);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -315,10 +315,10 @@ public class QQMessagePageMiniAppEntryManager
         if (this.mApp == null) {
           break label333;
         }
-        Object localObject1 = (ahfz)this.mApp.getManager(342);
-        if ((localObject1 != null) && (((ahfz)localObject1).h()))
+        Object localObject1 = (ahfx)this.mApp.getManager(342);
+        if ((localObject1 != null) && (((ahfx)localObject1).h()))
         {
-          DesktopDataManager.HongBaoResBuilder localHongBaoResBuilder = ((ahfz)localObject1).a();
+          DesktopDataManager.HongBaoResBuilder localHongBaoResBuilder = ((ahfx)localObject1).a();
           Object localObject3 = (DesktopDataManager)this.mApp.getManager(336);
           if (((DesktopDataManager)localObject3).getHongBaoResBuilder() == null) {
             break label330;
@@ -337,7 +337,7 @@ public class QQMessagePageMiniAppEntryManager
           {
             int i = localHongBaoResBuilder.getRefreshTextColor();
             this.mChatTopRefresh.setTextColor(i, i, i, i, i);
-            localObject3 = (TextView)this.mChatTopRefresh.findViewById(2131375053);
+            localObject3 = (TextView)this.mChatTopRefresh.findViewById(2131375055);
             if (localObject3 != null) {
               ((TextView)localObject3).setTextColor(i);
             }
@@ -345,7 +345,7 @@ public class QQMessagePageMiniAppEntryManager
           if ((localHongBaoResBuilder.getRefreshArrowColor() != -1) && (this.mChatTopRefresh != null)) {
             this.mChatTopRefresh.setArrowColor(localHongBaoResBuilder.getRefreshArrowColor());
           }
-          if ((((ahfz)localObject1).a() != null) || (localHongBaoResBuilder.getBackgroundUrl() != null) || (localHongBaoResBuilder.getBackgroundResId() != -1) || (this.mListView == null)) {
+          if ((((ahfx)localObject1).a() != null) || (localHongBaoResBuilder.getBackgroundUrl() != null) || (localHongBaoResBuilder.getBackgroundResId() != -1) || (this.mListView == null)) {
             break;
           }
           this.mListView.setOverscrollHeader(new ColorDrawable(0));
@@ -388,7 +388,7 @@ public class QQMessagePageMiniAppEntryManager
   {
     View localView = null;
     if (this.mContentView != null) {
-      localView = this.mContentView.findViewById(2131376409);
+      localView = this.mContentView.findViewById(2131376411);
     }
     return localView;
   }
@@ -468,9 +468,9 @@ public class QQMessagePageMiniAppEntryManager
       if (this.mChatTopRefresh.indexOfChild(this.mContentView) < 0)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams.addRule(3, 2131375049);
+        localLayoutParams.addRule(3, 2131375051);
         this.mChatTopRefresh.addView(this.mContentView, localLayoutParams);
-        this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131375054));
+        this.refreshProgressBar = ((ProgressBar)this.mChatTopRefresh.findViewById(2131375056));
         updateRefreshTheme();
         this.mListView.setMaxOverScrollTopDistance(70);
         this.mListView.setQQStoryListViewListener(this);
@@ -521,9 +521,9 @@ public class QQMessagePageMiniAppEntryManager
       getSpringEntryView().setVisibility(8);
     }
     boolean bool = false;
-    Object localObject = amtc.a();
+    Object localObject = amtb.a();
     if (localObject != null) {
-      bool = ((amtb)localObject).a();
+      bool = ((amta)localObject).a();
     }
     QLog.d("QQMessagePageMicroAppEntryManager", 1, "[MiniAppUserAppInfoListManager].onAccountChanged: " + bool);
     if ((!bool) && (this.mChatTopRefresh != null) && (this.mContentView != null))
@@ -543,7 +543,7 @@ public class QQMessagePageMiniAppEntryManager
   
   public void onChangeRedDotSwitch(int paramInt, boolean paramBoolean)
   {
-    if ((this.mContentView != null) && (amtc.l())) {
+    if ((this.mContentView != null) && (amtb.l())) {
       this.mContentView.onChangeRedDotSwitch(paramInt, paramBoolean);
     }
   }
@@ -719,7 +719,7 @@ public class QQMessagePageMiniAppEntryManager
         this.mContentView.recordExposureItem();
         MiniProgramLpReportDC04239.reportPageView("expo_page", "pulldown_mini_msg");
         if (this.mApp != null) {
-          ((ahfz)this.mApp.getManager(342)).d();
+          ((ahfx)this.mApp.getManager(342)).d();
         }
       }
       setRefreshLayoutVisible(paramARMapHongBaoListView.mForStory);
@@ -727,7 +727,7 @@ public class QQMessagePageMiniAppEntryManager
       if ((f >= 0.0F) || (this.mApp == null)) {
         break;
       }
-      ((ahfz)this.mApp.getManager(342)).c();
+      ((ahfx)this.mApp.getManager(342)).c();
       return;
       if (i != 0) {
         break label234;
@@ -740,8 +740,8 @@ public class QQMessagePageMiniAppEntryManager
       {
         if (f <= -paramARMapHongBaoListView.getOverScrollHeight())
         {
-          paramMotionEvent = (TextView)this.mChatTopRefresh.findViewById(2131375053);
-          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(ajyc.a(2131710455)))) {}
+          paramMotionEvent = (TextView)this.mChatTopRefresh.findViewById(2131375055);
+          if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(ajya.a(2131710466)))) {}
           for (this.mode = 3;; this.mode = 2)
           {
             paramARMapHongBaoListView.mForStory = true;

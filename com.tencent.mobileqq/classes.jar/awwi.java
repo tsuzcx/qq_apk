@@ -1,37 +1,52 @@
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class awwi
-  extends awwj
+  implements awwq
 {
-  public Button a;
+  protected View a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private awwr jdField_a_of_type_Awwr;
+  private List<awwr> jdField_a_of_type_JavaUtilList;
+  private TextView b;
+  
+  public awwi() {}
   
   public awwi(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370397));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368286)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368292)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368298)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368304)));
+    this.jdField_a_of_type_JavaUtilList.add(new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368305)));
+    this.jdField_a_of_type_Awwr = new awwl(this.jdField_a_of_type_AndroidViewView.findViewById(2131368306));
   }
   
-  public Button a()
+  public View a()
   {
-    return this.a;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  protected void a()
+  public TextView a()
   {
-    this.h = ((TextView)this.b.findViewById(2131370832));
-    this.e = ((ImageView)this.b.findViewById(2131361795));
-    this.i = ((TextView)this.b.findViewById(2131375194));
-    this.k = ((TextView)this.b.findViewById(2131376339));
-    this.a = ((Button)this.b.findViewById(2131375181));
-    this.a.setText(ajyc.a(2131689628));
-    this.j = ((TextView)this.b.findViewById(2131375191));
-    if ((this.e instanceof ThemeImageView)) {
-      ((ThemeImageView)this.e).setSupportMaskView(true);
-    }
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<awwr> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 

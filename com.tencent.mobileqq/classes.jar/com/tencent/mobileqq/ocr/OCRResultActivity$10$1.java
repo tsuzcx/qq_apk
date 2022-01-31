@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr;
 
-import auaf;
-import audu;
+import auah;
+import audw;
 
 public class OCRResultActivity$10$1
   implements Runnable
 {
-  public OCRResultActivity$10$1(auaf paramauaf) {}
+  public OCRResultActivity$10$1(auah paramauah) {}
   
   public void run()
   {

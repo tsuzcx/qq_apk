@@ -1,24 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class acap
-  implements bfvg
+  implements View.OnFocusChangeListener
 {
-  public acap(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public acap(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void a(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    SearchMightKnowFragment.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, true);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acap
  * JD-Core Version:    0.7.0.1
  */

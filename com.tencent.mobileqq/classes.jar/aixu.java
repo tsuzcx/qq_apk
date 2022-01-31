@@ -1,18 +1,33 @@
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class aixu
+  extends ajdn
 {
-  public static int a;
-  public static final String a;
-  public static int b;
-  public static int c;
-  public static int d;
+  public aixu(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  static
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    jdField_a_of_type_Int = 6;
-    b = 1;
-    c = 1;
-    d = 1;
-    jdField_a_of_type_JavaLangString = ajmu.jdField_a_of_type_JavaLangString + "/game";
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+    }
   }
 }
 

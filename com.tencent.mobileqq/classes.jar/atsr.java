@@ -1,39 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atsr
-  extends ayvz
+  implements DialogInterface.OnClickListener
 {
-  atsr(atsa paramatsa) {}
+  atsr(atso paramatso, bbgu parambbgu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localayqm.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + ayst.a);
-        }
-      } while (atsa.a(this.a) == null);
-      atsa.a(this.a).a = ayst.a;
-      atsa.d(this.a);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b(ajyc.a(2131707296));
+    this.jdField_a_of_type_Bbgu.dismiss();
+    this.jdField_a_of_type_Atso.a.f();
   }
 }
 

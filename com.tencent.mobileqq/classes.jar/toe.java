@@ -1,53 +1,91 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class toe
-  extends syq
+  implements Cloneable
 {
-  public long a;
-  public String a;
-  public ArrayList<VideoCollectionItem> a;
-  public boolean a;
-  public int b;
-  public int c = -1;
+  public final int a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
   
-  public toe(String paramString, qqstory_service.RspDateVideoCollectionList paramRspDateVideoCollectionList)
+  public toe(qqstory_struct.EmoticonPack paramEmoticonPack)
   {
-    super(paramRspDateVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (paramRspDateVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramEmoticonPack.pack_id.get());
+    this.jdField_b_of_type_JavaLangString = paramEmoticonPack.icon.get().toStringUtf8();
+    this.d = paramEmoticonPack.name.get().toStringUtf8();
+    this.e = paramEmoticonPack.download_url.get().toStringUtf8();
+    this.f = paramEmoticonPack.md5.get().toStringUtf8();
+    this.jdField_a_of_type_Int = paramEmoticonPack.version.get();
+    this.jdField_b_of_type_Int = a(paramEmoticonPack.type.get());
+    this.c = paramEmoticonPack.download_icon.get().toStringUtf8();
+    this.g = paramEmoticonPack.config.get().toStringUtf8();
+  }
+  
+  private int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspDateVideoCollectionList.next_cookie.get().toStringUtf8();
-      this.b = paramRspDateVideoCollectionList.total_video_count.get();
-      this.jdField_a_of_type_Long = paramRspDateVideoCollectionList.seqno.get();
-      this.c = paramRspDateVideoCollectionList.is_friend.get();
-      paramRspDateVideoCollectionList = paramRspDateVideoCollectionList.collection_list.get().iterator();
-      while (paramRspDateVideoCollectionList.hasNext())
-      {
-        qqstory_struct.DateVideoCollection localDateVideoCollection = (qqstory_struct.DateVideoCollection)paramRspDateVideoCollectionList.next();
-        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
-        localVideoCollectionItem.convertFrom("Q.qqstory.memories:GetDateCollectionListResponse", paramString, localDateVideoCollection);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
-      }
-      bool = false;
+    default: 
+      i = 1;
     }
+    return i;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_b_of_type_Int == 1) {
+      if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {}
+    }
+    while ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.d)))
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (toe)paramObject;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break;
+      }
+    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    while (paramObject.jdField_a_of_type_JavaLangString != null) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
   }
   
   public String toString()
   {
-    return "GetDateCollectionListResponse{isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mTotalVideoCount=" + this.b + ", mIsFriend=" + this.c + '}';
+    return "EmojiPack{mPackId=" + this.jdField_a_of_type_JavaLangString + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + '}';
   }
 }
 

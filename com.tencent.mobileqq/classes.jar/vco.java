@@ -1,8 +1,37 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public abstract interface vco
+public class vco
+  extends wco
 {
-  public abstract void a(Drawable paramDrawable);
+  public static final String KEY = "NewDividerSegment";
+  
+  public vco(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, vap paramvap, ViewGroup paramViewGroup)
+  {
+    return paramvap.a();
+  }
+  
+  public String a()
+  {
+    return "NewDividerSegment";
+  }
+  
+  public vap a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new vap(LayoutInflater.from(this.a).inflate(2131561221, paramViewGroup, false));
+  }
 }
 
 

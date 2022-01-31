@@ -1,15 +1,17 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
-class rsq
-  implements PopupWindow.OnDismissListener
+public class rsq
+  implements AdapterView.OnItemClickListener
 {
-  rsq(rsm paramrsm) {}
+  public rsq(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void onDismiss()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a(1.0F);
-    if (rsm.a(this.a)) {
-      rsm.a(this.a, "0X80095D4", 8);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
   }
 }

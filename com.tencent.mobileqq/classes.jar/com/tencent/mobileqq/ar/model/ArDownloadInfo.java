@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ArDownloadInfo
-  extends aukm
+  extends auko
 {
   public int dailyRetryCount;
   public long dailyStartTime;
-  @auma
+  @aumc
   public String md5;
   public int totalRetryCount;
   

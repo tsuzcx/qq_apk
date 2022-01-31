@@ -1,32 +1,25 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import java.util.ArrayList;
+import android.widget.EditText;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 class atsy
-  implements View.OnClickListener
+  implements amne
 {
-  atsy(atsa paramatsa, int paramInt) {}
+  atsy(atsc paramatsc, IphonePickerView paramIphonePickerView, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
-      return;
+    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing()))
+    {
+      atsc.a(this.jdField_a_of_type_Atsc, this.jdField_a_of_type_Atsc.h, false);
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
-    bfol localbfol = bfol.a(this.jdField_a_of_type_Atsa.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localbfol.c(this.jdField_a_of_type_Atsa.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694572));
-    }
-    localbfol.c(ajyc.a(2131707260));
-    if (this.jdField_a_of_type_Atsa.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localbfol.a(ajyc.a(2131707343), 3);
-    }
-    localbfol.c(2131690596);
-    localbfol.a(new atsz(this, paramView, localPicInfo, localbfol));
-    localbfol.show();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    this.jdField_a_of_type_Atsc.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
+    this.jdField_a_of_type_Atsc.h.setText(atsc.b(this.jdField_a_of_type_Atsc).a(0, paramInt1));
   }
 }
 

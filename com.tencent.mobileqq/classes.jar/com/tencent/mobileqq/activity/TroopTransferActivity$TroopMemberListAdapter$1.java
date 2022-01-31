@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acnu;
-import acnv;
-import ajxn;
-import akhq;
+import acnq;
+import acnr;
+import ajxl;
+import akhp;
 import android.text.TextUtils;
-import bbcp;
+import bbdd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Friends;
@@ -17,131 +17,131 @@ import java.util.ArrayList;
 public class TroopTransferActivity$TroopMemberListAdapter$1
   implements Runnable
 {
-  public TroopTransferActivity$TroopMemberListAdapter$1(acnv paramacnv, TroopTransferActivity paramTroopTransferActivity) {}
+  public TroopTransferActivity$TroopMemberListAdapter$1(acnr paramacnr, TroopTransferActivity paramTroopTransferActivity) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Acnv.jdField_a_of_type_JavaUtilArrayList.size();
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(52);
-    ajxn localajxn = (ajxn)this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(51);
+    int j = this.jdField_a_of_type_Acnr.jdField_a_of_type_JavaUtilArrayList.size();
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(52);
+    ajxl localajxl = (ajxl)this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(51);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < j)
     {
-      acnu localacnu = (acnu)this.jdField_a_of_type_Acnv.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (TextUtils.isEmpty(localacnu.a)) {}
+      acnq localacnq = (acnq)this.jdField_a_of_type_Acnr.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (TextUtils.isEmpty(localacnq.a)) {}
       for (;;)
       {
         i += 1;
         break;
-        if (localajxn == null)
+        if (localajxl == null)
         {
           localObject = null;
           label108:
           if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
-            localacnu.g = ((Friends)localObject).name;
+            localacnq.g = ((Friends)localObject).name;
           }
           if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
-            localacnu.j = ((Friends)localObject).remark;
+            localacnq.j = ((Friends)localObject).remark;
           }
           if (localTroopManager != null) {
             break label455;
           }
           localObject = null;
           label161:
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localacnu.a))) {
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localacnq.a))) {
             break label479;
           }
-          localObject = bbcp.a().a(this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, String.valueOf(this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a), localacnu.a);
+          localObject = bbdd.a().a(this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, String.valueOf(this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a), localacnq.a);
           if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopColorNick))) {
-            localacnu.m = ((TroopMemberInfo)localObject).troopColorNick;
+            localacnq.m = ((TroopMemberInfo)localObject).troopColorNick;
           }
           if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopremark))) {
-            localacnu.j = ((TroopMemberInfo)localObject).troopremark;
+            localacnq.j = ((TroopMemberInfo)localObject).troopremark;
           }
           label261:
-          if (TextUtils.isEmpty(localacnu.j)) {
+          if (TextUtils.isEmpty(localacnq.j)) {
             break label488;
           }
-          localacnu.b = localacnu.j;
+          localacnq.b = localacnq.j;
           label282:
-          if (TextUtils.isEmpty(localacnu.b)) {
+          if (TextUtils.isEmpty(localacnq.b)) {
             break label571;
           }
-          localacnu.c = ChnToSpell.a(localacnu.b, 2);
-          localacnu.d = ChnToSpell.a(localacnu.b, 1);
+          localacnq.c = ChnToSpell.a(localacnq.b, 2);
+          localacnq.d = ChnToSpell.a(localacnq.b, 1);
           label321:
-          if (TextUtils.isEmpty(localacnu.g)) {
+          if (TextUtils.isEmpty(localacnq.g)) {
             break label588;
           }
-          localacnu.h = ChnToSpell.a(localacnu.g, 2);
-          localacnu.i = ChnToSpell.a(localacnu.g, 1);
+          localacnq.h = ChnToSpell.a(localacnq.g, 2);
+          localacnq.i = ChnToSpell.a(localacnq.g, 1);
           label360:
-          if (TextUtils.isEmpty(localacnu.j)) {
+          if (TextUtils.isEmpty(localacnq.j)) {
             break label605;
           }
-          localacnu.k = ChnToSpell.a(localacnu.j, 2);
+          localacnq.k = ChnToSpell.a(localacnq.j, 2);
         }
-        for (localacnu.l = ChnToSpell.a(localacnu.j, 1);; localacnu.l = "")
+        for (localacnq.l = ChnToSpell.a(localacnq.j, 1);; localacnq.l = "")
         {
-          if (TextUtils.isEmpty(localacnu.m)) {
+          if (TextUtils.isEmpty(localacnq.m)) {
             break label622;
           }
-          localacnu.n = ChnToSpell.a(localacnu.m, 2);
-          localacnu.o = ChnToSpell.a(localacnu.m, 1);
+          localacnq.n = ChnToSpell.a(localacnq.m, 2);
+          localacnq.o = ChnToSpell.a(localacnq.m, 1);
           break;
-          localObject = localajxn.e(localacnu.a);
+          localObject = localajxl.e(localacnq.a);
           break label108;
           label455:
-          localObject = localTroopManager.a(this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, localacnu.a);
+          localObject = localTroopManager.a(this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, localacnq.a);
           break label161;
           label479:
-          localacnu.m = ((String)localObject);
+          localacnq.m = ((String)localObject);
           break label261;
           label488:
-          if (!TextUtils.isEmpty(localacnu.m))
+          if (!TextUtils.isEmpty(localacnq.m))
           {
-            localacnu.b = localacnu.m;
+            localacnq.b = localacnq.m;
             break label282;
           }
-          if (!TextUtils.isEmpty(localacnu.g))
+          if (!TextUtils.isEmpty(localacnq.g))
           {
-            localacnu.b = localacnu.g;
+            localacnq.b = localacnq.g;
             break label282;
           }
-          if (TextUtils.isEmpty(localacnu.a)) {
+          if (TextUtils.isEmpty(localacnq.a)) {
             break label282;
           }
-          localacnu.b = localacnu.a;
-          localArrayList.add(localacnu.a);
+          localacnq.b = localacnq.a;
+          localArrayList.add(localacnq.a);
           break label282;
           label571:
-          localacnu.c = "";
-          localacnu.d = "";
+          localacnq.c = "";
+          localacnq.d = "";
           break label321;
           label588:
-          localacnu.h = "";
-          localacnu.i = "";
+          localacnq.h = "";
+          localacnq.i = "";
           break label360;
           label605:
-          localacnu.k = "";
+          localacnq.k = "";
         }
         label622:
-        localacnu.n = "";
-        localacnu.o = "";
+        localacnq.n = "";
+        localacnq.o = "";
       }
     }
-    Object localObject = (akhq)this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
+    Object localObject = (akhp)this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
     if (QLog.isColorLevel()) {
       QLog.i("Q.troopdisband.transfer", 2, "init list data, size = " + localArrayList.size() + ", frh = " + localObject);
     }
     if ((localArrayList.size() > 0) && (localObject != null)) {
-      ((akhq)localObject).a(this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, localArrayList);
+      ((akhp)localObject).a(this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, localArrayList);
     }
     try
     {
-      if ((this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity != null) && (!this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.isFinishing())) {
-        this.jdField_a_of_type_Acnv.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.runOnUiThread(new TroopTransferActivity.TroopMemberListAdapter.1.1(this));
+      if ((this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity != null) && (!this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.isFinishing())) {
+        this.jdField_a_of_type_Acnr.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.runOnUiThread(new TroopTransferActivity.TroopMemberListAdapter.1.1(this));
       }
       return;
     }

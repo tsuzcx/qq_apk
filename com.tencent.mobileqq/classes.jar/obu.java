@@ -1,23 +1,21 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class obu
-  extends quc
+  implements Animator.AnimatorListener
 {
-  obu(obt paramobt) {}
+  obu(obq paramobq) {}
   
-  public void a(qub paramqub)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.a(paramqub);
-    QLog.d("KandianAdPandent", 2, "onCompletion");
-    obt.a(this.a).sendEmptyMessage(2);
+    obq.b(this.a);
   }
   
-  public void a(qub paramqub, Object paramObject)
-  {
-    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
-    obt.a(this.a).f();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

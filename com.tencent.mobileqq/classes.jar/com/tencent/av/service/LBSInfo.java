@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import lxc;
+import lwx;
 
 public class LBSInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LBSInfo> CREATOR = new lxc();
+  public static final Parcelable.Creator<LBSInfo> CREATOR = new lwx();
   static String jdField_a_of_type_JavaLangString = "LBSInfo";
   double jdField_a_of_type_Double = 0.0D;
   String[] jdField_a_of_type_ArrayOfJavaLangString = null;

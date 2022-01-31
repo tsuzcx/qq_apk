@@ -1,6 +1,10 @@
 public abstract interface ayrz
 {
-  public abstract void a(aysw paramaysw, aysx paramaysx);
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract byte[] a(byte[] paramArrayOfByte);
 }
 
 

@@ -1,129 +1,107 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class tqg
-  extends trh
+public abstract class tqg
+  extends tqh
 {
-  public static final String a;
-  public boolean a;
-  private final int[] a;
+  protected int a;
+  protected StoryVideoItem a;
+  protected int b = -1;
+  protected int c = -1;
+  protected String c;
+  protected int d;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
+  protected String k;
   
-  static
+  public tqg()
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + sxp.a(2131699674);
+    this.jdField_d_of_type_Int = 1;
   }
   
-  public tqg(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  public final void a(trl paramtrl)
   {
-    QQAppInterface localQQAppInterface = tsu.a();
-    tdo localtdo = (tdo)tdc.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = localQQAppInterface.getCurrentNickname();
-    String str;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
-    {
-      str = this.c + ajyc.a(2131707047);
-      this.jdField_d_of_type_JavaLangString = str;
-      this.f = paramStoryVideoItem.mOwnerUid;
-      this.e = localtdo.a(this.f, false);
-      this.g = paramStoryVideoItem.mDoodleText;
-      str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      this.h = str;
-      if (!paramStoryVideoItem.isMine()) {
-        break label363;
-      }
-      i = 0;
-      label137:
-      this.b = i;
-      this.c = localQQAppInterface.getCurrentNickname();
-      paramStoryVideoItem = localtdo.b(this.f);
-      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
-        this.c = paramStoryVideoItem.nickName;
-      }
-      this.jdField_d_of_type_JavaLangString = a();
-      this.k = this.jdField_d_of_type_JavaLangString;
-      this.i = b();
-      this.j = ("#" + ssi.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-      this.jdField_d_of_type_Int = 11;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label369;
-      }
-    }
-    label363:
-    label369:
-    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label377;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
-      return;
-      str = this.c + ajyc.a(2131707048) + ssi.jdField_a_of_type_JavaLangString;
-      break;
-      i = 1;
-      break label137;
-    }
-    label377:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
+    super.a(paramtrl);
+    paramtrl.a = a(6);
   }
   
-  protected String a(int paramInt)
+  public final void a(trn paramtrn)
   {
-    int i = 3;
-    if (paramInt == 1)
-    {
-      str1 = this.e;
-      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-      str3 = this.f;
-      str4 = this.h;
-      paramInt = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        i = 1;
-      }
+    super.a(paramtrn);
+    paramtrn.b = 0;
+    paramtrn.jdField_d_of_type_JavaLangString = this.k;
+    paramtrn.a = this.a.mVideoThumbnailUrl;
+    paramtrn.jdField_e_of_type_JavaLangString = this.a.mVid;
+    paramtrn.h = a(1);
+    if (this.b != -1) {
+      paramtrn.jdField_d_of_type_Int = this.b;
     }
-    String str1 = jdField_a_of_type_JavaLangString;
-    String str2 = this.e;
-    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    String str4 = this.f;
-    String str5 = this.h;
-    int j = this.b;
-    if (this.jdField_a_of_type_Boolean) {}
+    if (this.c != -1) {
+      paramtrn.jdField_e_of_type_Int = this.c;
+    }
+  }
+  
+  public final void a(tro paramtro)
+  {
+    super.a(paramtro);
+    paramtro.a = this.a.mVideoThumbnailUrl;
+    paramtro.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    paramtro.jdField_d_of_type_JavaLangString = this.i;
+    paramtro.jdField_e_of_type_JavaLangString = a(2);
+  }
+  
+  public final void a(trp paramtrp)
+  {
+    super.a(paramtrp);
+    paramtrp.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramtrp.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
+    if (TextUtils.isEmpty(paramtrp.jdField_d_of_type_JavaLangString)) {
+      paramtrp.jdField_d_of_type_JavaLangString = trx.a(paramtrp.jdField_e_of_type_JavaLangString);
+    }
+    paramtrp.jdField_c_of_type_JavaLangString = a(5);
+    paramtrp.a = this.j;
+  }
+  
+  public void a(trq paramtrq)
+  {
+    super.a(paramtrq);
+    paramtrq.jdField_c_of_type_JavaLangString = this.i;
+    paramtrq.a = this.jdField_e_of_type_JavaLangString;
+    paramtrq.jdField_d_of_type_JavaLangString = a(3);
+    paramtrq.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramtrq.jdField_c_of_type_Boolean = true;
+  }
+  
+  protected void a_(trm paramtrm)
+  {
+    ved.b("Q.qqstory.share.ShareModeBase", "prepareCommonShareData");
+    super.a_(paramtrm);
+    if (this.a.isPollVideo()) {
+      paramtrm.a("vote", "1");
+    }
     for (;;)
     {
-      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-      i = 1;
+      paramtrm.a = this.a;
+      return;
+      if (this.a.isInteractVideo()) {
+        paramtrm.a("grade", "1");
+      }
     }
   }
   
-  protected void a(trp paramtrp)
+  public void b(trq paramtrq)
   {
-    tep localtep;
-    if ((paramtrp instanceof trq))
-    {
-      localtep = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
-      if (localtep != null) {}
-    }
-    else
-    {
-      return;
-    }
-    paramtrp = (trq)paramtrp;
-    paramtrp.o = localtep.b;
-    if (localtep.a == 2) {}
-    for (paramtrp.p = ajyc.a(2131707049);; paramtrp.p = (localtep.c + ajyc.a(2131707050)))
-    {
-      paramtrp.jdField_d_of_type_JavaLangString = a();
-      return;
-    }
+    super.b(paramtrq);
+    paramtrq.jdField_c_of_type_JavaLangString = this.i;
+    paramtrq.a = this.jdField_d_of_type_JavaLangString;
+    paramtrq.jdField_d_of_type_JavaLangString = a(4);
+    paramtrq.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
+    paramtrq.jdField_c_of_type_Boolean = true;
   }
 }
 

@@ -1,30 +1,47 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.biz.troop.VideoCombineHelper.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class wyv
-  implements ajyy
+public class wyv
+  extends wzs
 {
-  wyv(wym paramwym, Bundle paramBundle) {}
-  
-  public boolean a(ajzd paramajzd)
+  public wyv(VideoCombineHelper.3 param3)
   {
-    Bundle localBundle = new Bundle();
-    ajzd localajzd = paramajzd;
-    if (paramajzd == null) {
-      localajzd = this.jdField_a_of_type_Wym.a.a.jdField_a_of_type_Ajyz.a(this.jdField_a_of_type_Wym.a.a.jdField_a_of_type_JavaLangString, 1, ajyx.a());
-    }
-    if (localajzd != null)
+    super(param3.this$0);
+  }
+  
+  public void a(wzr paramwzr)
+  {
+    do
     {
-      localBundle.putString("url", localajzd.b);
-      localBundle.putString("content", localajzd.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+      synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramwzr.c);
+        if ((paramwzr instanceof wzm))
+        {
+          this.a.jdField_a_of_type_Wzb.a("", false, "download failed! msg = " + paramwzr.d);
+          return;
+        }
+      }
+      if ((paramwzr instanceof wze))
+      {
+        this.a.jdField_a_of_type_Wzb.a("", false, "combine failed! msg = " + paramwzr.d);
+        return;
+      }
+    } while (!(paramwzr instanceof wzp));
+    this.a.jdField_a_of_type_Wzb.a("", false, "sending failed! msg = " + paramwzr.d);
+  }
+  
+  public void b(wzr paramwzr)
+  {
+    wzd localwzd = paramwzr.a();
+    if (((paramwzr instanceof wze)) || (localwzd.b)) {}
+    synchronized (this.a.this$0.jdField_a_of_type_JavaLangObject)
     {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Wym.a.a(101, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
+      this.a.this$0.jdField_a_of_type_JavaUtilHashMap.remove(paramwzr.c);
+      this.a.jdField_a_of_type_Wzb.a(localwzd.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      return;
     }
   }
 }

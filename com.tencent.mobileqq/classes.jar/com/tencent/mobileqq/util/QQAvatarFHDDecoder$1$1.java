@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.util;
 
-import bazt;
-import bazu;
+import bbah;
+import bbai;
 import com.tencent.mobileqq.data.Setting;
 
 public class QQAvatarFHDDecoder$1$1
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$1(bazu parambazu, Setting paramSetting) {}
+  public QQAvatarFHDDecoder$1$1(bbai parambbai, Setting paramSetting) {}
   
   public void run()
   {
-    if (bazt.a(this.jdField_a_of_type_Bazu.a)) {
+    if (bbah.a(this.jdField_a_of_type_Bbai.a)) {
       return;
     }
-    this.jdField_a_of_type_Bazu.a.a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+    this.jdField_a_of_type_Bbai.a.a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
   }
 }
 

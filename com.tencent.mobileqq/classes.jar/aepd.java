@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
 class aepd
-  implements View.OnClickListener
+  extends atzr
 {
-  aepd(aeoo paramaeoo) {}
+  aepd(aeom paramaeom) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bbpa.a(this.a.a, "aio");
+    if ((paramInt == 0) && (paramBoolean == true))
+    {
+      paramBundle.getInt("gif_ui_show_bid");
+      long l = paramBundle.getLong("gif_ui_show_seq");
+      this.a.e(65536);
+      aeom.a(this.a, Long.valueOf(l).longValue());
+    }
   }
 }
 

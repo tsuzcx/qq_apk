@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import albz;
-import aliq;
+import alby;
+import alip;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -40,7 +40,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = albz.a(albz.a, needCheckMd5);
+    boolean bool3 = alby.a(alby.a, needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = albz.a(albz.a);
+        int i = alby.a(alby.a);
         if (i != 0) {
           continue;
         }
@@ -84,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      aliq.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      alip.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }

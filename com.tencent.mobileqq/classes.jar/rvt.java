@@ -1,4 +1,3 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
@@ -6,22 +5,17 @@ import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 public class rvt
   implements Animation.AnimationListener
 {
-  public rvt(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  public rvt(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
-    CommonSuspensionGestureLayout.a(this.a).c();
-    CommonSuspensionGestureLayout.a(this.a).a();
-    CommonSuspensionGestureLayout.b(this.a);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, 2);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    CommonSuspensionGestureLayout.a(this.a).b();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

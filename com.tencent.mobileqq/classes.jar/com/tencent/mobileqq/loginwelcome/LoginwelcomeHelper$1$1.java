@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import asap;
-import asaq;
+import asar;
+import asas;
 import com.tencent.image.URLDrawable;
 
 public class LoginwelcomeHelper$1$1
   implements Runnable
 {
-  public LoginwelcomeHelper$1$1(asaq paramasaq, URLDrawable paramURLDrawable) {}
+  public LoginwelcomeHelper$1$1(asas paramasas, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    asap.a(this.jdField_a_of_type_Asaq.a, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    asar.a(this.jdField_a_of_type_Asas.a, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

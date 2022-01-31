@@ -1,16 +1,13 @@
-import com.tencent.map.geolocation.TencentDirectionListener;
-
 class aruu
-  implements TencentDirectionListener
+  extends ajxj
 {
-  aruu(aruq paramaruq) {}
+  aruu(arus paramarus) {}
   
-  public void onDirectionChanged(double paramDouble, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (aruq.a(this.a) != null)
-    {
-      aruq.a(this.a, 180.0D + paramDouble);
-      aruq.a(this.a, false);
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    if ((paramBoolean) && ((paramObject instanceof Long))) {
+      arxj.a(this.a.app, 0, String.valueOf(paramObject));
     }
   }
 }

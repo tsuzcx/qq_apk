@@ -1,26 +1,16 @@
+import android.view.View;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+
 public class bfch
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public int a;
-  public int b;
+  public bfch(PageWebviewContainer paramPageWebviewContainer) {}
   
-  public int a()
+  public void onScrollChanged()
   {
-    return this.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
+    PageWebviewContainer.a(this.a).a().getView().scrollTo(0, 0);
   }
 }
 

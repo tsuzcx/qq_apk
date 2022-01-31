@@ -1,22 +1,18 @@
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-public final class ytu
-  extends ytc
+final class ytu
+  implements View.OnTouchListener
 {
-  public int a;
-  public GdtDwellTimeStatisticsAfterClick a;
-  public int b = -2147483648;
-  public int c = -2147483648;
+  ytu(yts paramyts) {}
   
-  public ytu()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = -2147483648;
-  }
-  
-  public boolean a()
-  {
-    return (super.a()) && (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.b()) && (this.b > 0) && (this.c > 0);
+    yts localyts = this.a;
+    yts.a.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

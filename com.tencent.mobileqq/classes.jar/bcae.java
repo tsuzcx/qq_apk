@@ -1,146 +1,67 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.io.File;
+import java.util.ArrayList;
 
-public class bcae
+class bcae
+  extends bbwt
 {
-  public static long a;
-  public static WebViewPluginEngine a;
-  public static final Object a;
-  public static HashMap<Integer, bcag> a;
-  public static volatile boolean a;
-  public static WebViewPluginEngine b;
-  public static HashMap<Integer, bcag> b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static volatile boolean d;
+  bcae(bcad parambcad) {}
   
-  static
+  public void onDone(bbwu parambbwu)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static void a()
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
+    if (parambbwu == null)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      bcag localbcag;
-      HashMap localHashMap;
-      while (localIterator.hasNext())
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        localbcag = (bcag)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbcag.a));
-        localHashMap.put("totalNum", String.valueOf(localbcag.b));
-        localHashMap.put("hasProc", String.valueOf(localbcag.c));
-        localHashMap.put("noProc", String.valueOf(localbcag.d));
-        axrl.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
+        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
+          onDone(null);
+        }
       }
-      localIterator = b.values().iterator();
-      while (localIterator.hasNext())
+      else
       {
-        localbcag = (bcag)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbcag.a));
-        localHashMap.put("totalNum", String.valueOf(localbcag.b));
-        localHashMap.put("hasProc", String.valueOf(localbcag.c));
-        localHashMap.put("noProc", String.valueOf(localbcag.d));
-        axrl.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
+        while (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
+        return;
       }
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "reportInterval...");
+      File localFile = new File(bcad.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
+      if ((localFile.isFile()) && (localFile.exists()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
+        }
+        onDone(null);
+        return;
       }
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_accelerator_mode_", 3);
-    localBundle.putInt("from", paramInt);
-    bcfz.a().a(localBundle);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
-  }
-  
-  public static void b(int paramInt)
-  {
-    int j = 0;
-    Object localObject = (amwv)ampm.a().a(158);
-    if ((localObject != null) && (((amwv)localObject).b == 1)) {
+      parambbwu = new Bundle();
+      Object localObject = new bbwu((String)localObject, localFile);
+      ((bbwu)localObject).n = true;
+      ((bbww)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1).a((bbwu)localObject, this.a.jdField_a_of_type_Bbwt, parambbwu);
       return;
     }
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (!bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("from", 305);
-      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+    super.onDone(parambbwu);
+    parambbwu.a();
+    if ((parambbwu.a() == 3) && (parambbwu.jdField_a_of_type_Int == 0)) {
       if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "preloadWebview...");
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + parambbwu.jdField_a_of_type_JavaLangString);
       }
     }
-    localObject = new bcag(paramInt);
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      localObject = (bcag)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    ((bcag)localObject).b += 1;
-    int k = ((bcag)localObject).c;
-    if (bool)
+    for (;;)
     {
-      i = 1;
-      label184:
-      ((bcag)localObject).c = (i + k);
-      k = ((bcag)localObject).d;
-      if (!bool) {
-        break label244;
-      }
-    }
-    label244:
-    for (int i = j;; i = 1)
-    {
-      ((bcag)localObject).d = (k + i);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
-      if (((bcag)localObject).b <= 3) {
-        break;
-      }
-      a();
+      onDone(null);
       return;
-      i = 0;
-      break label184;
+      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + parambbwu.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public static boolean b(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 

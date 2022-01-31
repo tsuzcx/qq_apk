@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
 
 public final class npe
-  implements Parcelable.Creator<VideoInfo>
+  implements Parcelable.Creator<VideoInfo.ClassInfo>
 {
-  public VideoInfo a(Parcel paramParcel)
+  public VideoInfo.ClassInfo a(Parcel paramParcel)
   {
-    return new VideoInfo(paramParcel);
+    return new VideoInfo.ClassInfo(paramParcel);
   }
   
-  public VideoInfo[] a(int paramInt)
+  public VideoInfo.ClassInfo[] a(int paramInt)
   {
-    return new VideoInfo[paramInt];
+    return new VideoInfo.ClassInfo[paramInt];
   }
 }
 

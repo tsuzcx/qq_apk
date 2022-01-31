@@ -1,25 +1,22 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import android.graphics.Bitmap;
 
 public class aura
-  implements bbkq<Float>
 {
-  public aura(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  private aura()
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
-    if (paramFloat1.floatValue() >= 255.0F)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
-      this.a.b = null;
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_Bbkk != null)
-      {
-        this.a.jdField_a_of_type_Bbkk.cancel();
-        this.a.jdField_a_of_type_Bbkk = null;
-      }
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

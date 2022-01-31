@@ -1,88 +1,53 @@
-import android.os.Bundle;
-import android.widget.CompoundButton;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.device.msg.data.MessageForDevPtt;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class yef
-  implements BusinessObserver
+class yef
+  implements bfph
 {
-  public yef(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  yef(yee paramyee, MessageForPtt paramMessageForPtt, bfpc parambfpc) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool2 = true;
-    int i = 1;
-    boolean bool1 = false;
-    this.a.jdField_a_of_type_Bcpq.dismiss();
-    if (!paramBoolean)
+    this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
+    paramView = null;
+    if (this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
-      paramBundle = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
-      paramBoolean = bool1;
-      if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
-        paramBoolean = true;
-      }
-      paramBundle.setChecked(paramBoolean);
-      bdid.a().a(this.a.getString(2131719328));
-      return;
+      paramView = axas.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+      ((MessageForPtt)paramView).fileSize = -3L;
+      this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
-    if (paramBundle.getInt("cgiResultCode", -1) != 0)
+    if (paramView != null)
     {
-      bdid.a().a(this.a.getString(2131693021));
-      return;
+      if (!"device_groupchat".equals(paramView.extStr)) {
+        break label256;
+      }
+      if ((!bbfj.d(BaseApplication.getContext())) && ((paramView instanceof MessageForDevPtt)))
+      {
+        paramView = (MessageForDevPtt)paramView;
+        paramView.fileSize = -1L;
+        paramView.extraflag = 32768;
+        paramView.extStr = "device_groupchat";
+        paramView.serial();
+        this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
+        this.jdField_a_of_type_Yee.b();
+        this.jdField_a_of_type_Bfpc.dismiss();
+        return;
+      }
+      aent.a(((yah)this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength), paramView);
     }
     for (;;)
     {
-      try
-      {
-        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
-        if (paramBundle.optInt("ret", -1) != 0) {
-          break label280;
-        }
-        int j = ((Integer)this.a.jdField_a_of_type_AndroidWidgetCompoundButton.getTag()).intValue();
-        paramBundle = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!paramBundle.hasNext()) {
-          break;
-        }
-        localObject = (yeg)paramBundle.next();
-        if (((yeg)localObject).a == j) {
-          if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked())
-          {
-            paramInt = 1;
-            ((yeg)localObject).b = paramInt;
-          }
-          else
-          {
-            paramInt = 0;
-          }
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-    }
-    paramBundle = this.a.app;
-    long l = Long.parseLong(this.a.c);
-    paramInt = i;
-    if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
-      paramInt = 2;
-    }
-    ymw.a(paramBundle, l, "Usr_MsgMgr_Setting", paramInt, 0, Integer.parseInt(this.a.b));
-    return;
-    label280:
-    Object localObject = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {}
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      ((CompoundButton)localObject).setChecked(paramBoolean);
-      bdht.a("DeviceMsgSettingActivity", "msg:" + paramBundle.optString("msg"));
-      bdid.a().a(this.a.getString(2131719328));
+      this.jdField_a_of_type_Yee.b();
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
+      label256:
+      ((yer)this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(yer.f, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, Long.parseLong(this.jdField_a_of_type_Yee.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), paramView.uniseq, paramView.istroop, (int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime / 1000);
     }
   }
 }

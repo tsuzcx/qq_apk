@@ -1,27 +1,28 @@
-import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class ardp
+class ardp
+  implements URLDrawable.URLDrawableListener
 {
-  public boolean a;
-  public boolean b = true;
+  ardp(ardo paramardo, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
-  private void a(String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.a = paramString.optBoolean("input_status_gray_switch", false);
-      this.b = paramString.optBoolean("expand_chat_input_status_switch", true);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("InputStatusConfig", 1, paramString, new Object[0]);
-    }
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = atij.a(paramURLDrawable);
+    ardo.a(this.jdField_a_of_type_Ardo, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
   }
 }
 

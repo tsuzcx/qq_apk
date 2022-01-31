@@ -1,20 +1,30 @@
-import android.database.DataSetObserver;
 import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
 
 public class qgl
-  extends DataSetObserver
+  implements bfpt
 {
   public qgl(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void onChanged()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
     {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
+      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
+        break label72;
+      }
+      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
+        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+      }
+    }
+    label72:
+    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
       return;
     }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
   }
 }
 

@@ -1,16 +1,16 @@
 class alpj
-  implements wtk
+  implements wth
 {
-  alpj(alpf paramalpf, long paramLong) {}
+  alpj(alpe paramalpe, long paramLong) {}
   
   public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    alpf localalpf = this.jdField_a_of_type_Alpf;
+    alpe localalpe = this.jdField_a_of_type_Alpe;
     long l = this.jdField_a_of_type_Long;
     if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    for (int i = 0;; i = 1)
     {
-      localalpf.a(l, paramBoolean1, paramString, i);
+      localalpe.a(l, paramBoolean1, paramString, i);
       return;
     }
   }

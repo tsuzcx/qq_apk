@@ -11,13 +11,13 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
-import aoke;
+import aokj;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 @SuppressLint({"ViewConstructor"})
 public class FlipLoadingLayout
-  extends aoke
+  extends aokj
 {
   private final Animation a;
   private final Animation b;
@@ -42,7 +42,7 @@ public class FlipLoadingLayout
   
   private float a()
   {
-    switch (aokd.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (aoki.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     }
     do

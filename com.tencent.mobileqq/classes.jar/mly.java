@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.beauty.BeautyView;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
 public class mly
-  implements DialogInterface.OnClickListener
+  implements afth
 {
-  public mly(BeautyView paramBeautyView) {}
+  public mly(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    this.a.onClick(this.a.a);
-    paramDialogInterface.dismiss();
+    this.a.setCurSelTab(paramInt, paramBoolean, 1);
+    return 0;
   }
 }
 

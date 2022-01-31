@@ -1,52 +1,69 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
 public class uhe
-  extends uai
+  extends ste<uhc, tli>
 {
-  public uhe(uhd paramuhd) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public uhe(uhc paramuhc)
   {
-    String str1;
-    String str2;
-    if ((paramInt1 == 20000) && (paramInt2 == -1))
-    {
-      paramIntent = BaseActivity.sActivityRoute;
-      str1 = SplashActivity.class.getSimpleName();
-      str2 = QQStoryMainActivity.class.getSimpleName();
-      paramInt1 = paramIntent.size() - 1;
-    }
+    super(paramuhc);
+  }
+  
+  public void a(@NonNull uhc paramuhc, @NonNull tli paramtli)
+  {
+    if (uhc.a(paramuhc) != 1) {}
+    label149:
+    label209:
+    label218:
     for (;;)
     {
-      String str3;
-      if (paramInt1 >= 0)
+      return;
+      int i = 0;
+      StoryVideoItem localStoryVideoItem;
+      if (i < paramtli.a.size())
       {
-        str3 = (String)paramIntent.get(paramInt1);
-        if (TextUtils.isEmpty(str3)) {
-          break label95;
+        localStoryVideoItem = (StoryVideoItem)paramtli.a.get(i);
+        if (!localStoryVideoItem.mVid.equals(uhc.a(paramuhc))) {}
+      }
+      for (paramtli = localStoryVideoItem;; paramtli = null)
+      {
+        if ((paramtli == null) || (paramtli.mErrorCode != 0)) {
+          break label218;
         }
-        if (str3.startsWith(str1)) {
-          this.a.b();
+        localStoryVideoItem = uhc.a(paramuhc).a();
+        i = localStoryVideoItem.comparedLevel;
+        int j = uhc.a(paramuhc).a.jdField_a_of_type_Int;
+        String str = uhc.a(paramuhc).a.jdField_a_of_type_JavaLangString;
+        uhc.a(paramuhc, uhc.a(paramuhc), str, false, i, j);
+        paramuhc = ((tdl)tcz.a(2)).b(paramtli.mOwnerUid);
+        if ((paramuhc != null) && (paramuhc.isVip))
+        {
+          i = 1;
+          if (i == 0) {
+            break label209;
+          }
+        }
+        for (paramuhc = "2";; paramuhc = "1")
+        {
+          vei.a("play_video", "multishoot_entry_clk", 0, j, new String[] { paramuhc, paramtli.mVid, paramtli.mOwnerUid, localStoryVideoItem.mVid });
+          return;
+          i += 1;
+          break;
+          i = 0;
+          break label149;
         }
       }
-      else
-      {
-        return;
-      }
-      if (TextUtils.equals(str3, str2))
-      {
-        this.a.c();
-        return;
-      }
-      label95:
-      paramInt1 -= 1;
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return tli.class;
+  }
+  
+  public void b(@NonNull uhc paramuhc, @NonNull tli paramtli) {}
 }
 
 

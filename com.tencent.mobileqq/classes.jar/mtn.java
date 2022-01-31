@@ -1,27 +1,16 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 
-public class mtn
+class mtn
+  extends PhoneStateListener
 {
-  public static String a = "ShareUtils";
+  mtn(mtl parammtl) {}
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString1);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("image_url", localArrayList);
-    localBundle.putString("title", paramString2);
-    localBundle.putString("desc", paramString3);
-    localBundle.putLong("req_share_id", 0L);
-    localBundle.putString("detail_url", paramString4);
-    bgyu.a(paramAppInterface, paramContext, localBundle, null);
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
-    }
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    this.a.c = this.a.a(paramSignalStrength);
+    this.a.d = this.a.b(paramSignalStrength);
   }
 }
 

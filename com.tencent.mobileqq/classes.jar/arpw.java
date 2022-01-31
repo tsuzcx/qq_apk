@@ -1,19 +1,182 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
+import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-class arpw
-  extends arqb
+public class arpw
+  implements arpr
 {
-  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
+  private ainr jdField_a_of_type_Ainr;
+  private View jdField_a_of_type_AndroidViewView;
+  private arpv jdField_a_of_type_Arpv;
+  private arqd jdField_a_of_type_Arqd = new arpy(null);
+  
+  private void a(View paramView)
   {
-    return ((avpq)paramQQAppInterface.getManager(36)).a(paramString);
+    View localView = paramView.findViewById(2131369080);
+    localView.setBackgroundResource(2130849229);
+    LebaRoundLayout localLebaRoundLayout = (LebaRoundLayout)localView.findViewById(2131375530);
+    localLebaRoundLayout.a = bbll.b(16.0F);
+    localLebaRoundLayout.setVisibility(8);
+    localView.findViewById(2131365763).setBackgroundResource(2130849240);
+    ((LinearLayout)paramView.findViewById(2131369454)).setVisibility(8);
+    ((FrameLayout)paramView.findViewById(2131366322)).setVisibility(8);
   }
   
-  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  private void b(View paramView)
   {
-    paramRedTouch.a(paramAppInfo);
+    paramView = (RelativeLayout)paramView.findViewById(2131374125);
+    bbll.a(paramView, null);
+    paramView.setBackgroundResource(2130839132);
+    paramView.setPadding(0, 0, 0, 0);
+    Object localObject = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
+    ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+    localObject = (LebaRoundLayout)paramView.findViewById(2131375528);
+    ((LebaRoundLayout)localObject).a = bbll.b(16.0F);
+    ((LebaRoundLayout)localObject).setVisibility(8);
+    localObject = (ImageView)paramView.findViewById(2131369144);
+    ((ImageView)localObject).setImageResource(2130844489);
+    localObject = (RelativeLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = bbll.b(24.0F);
+    ((RelativeLayout.LayoutParams)localObject).height = bbll.b(24.0F);
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = bbll.a(20.0F);
+    localObject = (RelativeLayout)paramView.findViewById(2131375343);
+    ((RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams()).width = bbll.a(28.0F);
+    localObject = (RelativeLayout.LayoutParams)((ImageView)((RelativeLayout)localObject).findViewById(2131362792)).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = bbll.a(7.0F);
+    ((RelativeLayout.LayoutParams)localObject).height = (bbll.a(23.0F) / 2);
+    ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131369145)).getLayoutParams()).leftMargin = bbll.a(16.0F);
+    ((RelativeLayout.LayoutParams)((TextView)paramView.findViewById(2131374331)).getLayoutParams()).leftMargin = bbll.a(14.0F);
   }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Arqd != null) {
+      return this.jdField_a_of_type_Arqd.a();
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Ainr != null) {
+      this.jdField_a_of_type_Ainr.a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Ainr != null) {
+      this.jdField_a_of_type_Ainr.a(paramInt);
+    }
+    if (this.jdField_a_of_type_Arqd != null) {
+      this.jdField_a_of_type_Arqd.a();
+    }
+  }
+  
+  public void a(arpt paramarpt)
+  {
+    QLog.i("Q.lebatab.LebaListController", 1, "init list ");
+    QQAppInterface localQQAppInterface = paramarpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    List localList = paramarpt.jdField_a_of_type_JavaUtilList;
+    Context localContext = paramarpt.jdField_a_of_type_AndroidContentContext;
+    FPSXListView localFPSXListView = paramarpt.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
+    View localView = paramarpt.jdField_a_of_type_AndroidViewView;
+    arpv localarpv = paramarpt.jdField_a_of_type_Arpv;
+    this.jdField_a_of_type_AndroidViewView = paramarpt.jdField_a_of_type_AndroidViewView;
+    if (localFPSXListView == null)
+    {
+      QLog.i("Q.lebatab.LebaListController", 1, "initView lebaSV == null ");
+      return;
+    }
+    if (localarpv != null) {
+      this.jdField_a_of_type_Arpv = localarpv;
+    }
+    try
+    {
+      if (localFPSXListView.getOverscrollHeader() == null) {
+        localFPSXListView.setOverscrollHeader(localContext.getResources().getDrawable(2130849142));
+      }
+      if (localView == null) {}
+    }
+    catch (Exception paramarpt)
+    {
+      try
+      {
+        if (localFPSXListView.getHeaderViewsCount() <= 0) {
+          localFPSXListView.addHeaderView(localView);
+        }
+        a(localView);
+        b(localView);
+      }
+      catch (Exception paramarpt)
+      {
+        try
+        {
+          for (;;)
+          {
+            if (this.jdField_a_of_type_Ainr == null)
+            {
+              this.jdField_a_of_type_Ainr = new ainr(localContext, localList, 2131558984, 2131558985, localQQAppInterface, localFPSXListView, new arpx(this));
+              localFPSXListView.setAdapter(this.jdField_a_of_type_Ainr);
+            }
+            this.jdField_a_of_type_Ainr.a(localQQAppInterface);
+            this.jdField_a_of_type_Ainr.a(localList);
+            this.jdField_a_of_type_Ainr.a(this.jdField_a_of_type_Arqd);
+            return;
+            paramarpt = paramarpt;
+            QLog.i("Q.lebatab.LebaListController", 1, "addHeaderView ", paramarpt);
+            continue;
+            paramarpt = paramarpt;
+            QLog.i("Q.lebatab.LebaListController", 1, "addHeaderView ", paramarpt);
+          }
+        }
+        catch (Exception paramarpt)
+        {
+          for (;;)
+          {
+            QLog.i("Q.lebatab.LebaListController", 1, "setAdapter ", paramarpt);
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      a(this.jdField_a_of_type_AndroidViewView);
+      b(this.jdField_a_of_type_AndroidViewView);
+    }
+    if (this.jdField_a_of_type_Ainr != null) {
+      this.jdField_a_of_type_Ainr.b();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Ainr != null) {
+      this.jdField_a_of_type_Ainr.notifyDataSetChanged();
+    }
+  }
+  
+  public void d() {}
 }
 
 

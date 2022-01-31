@@ -1,32 +1,35 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.diy.ResData;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class anve
-  implements aymu
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  anve(anul paramanul) {}
+  anve(anuq paramanuq, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    paramResData = (MessengerService)this.a.a.get();
     Bundle localBundle;
-    if (paramResData != null)
-    {
+    if (paramBundle != null) {
       localBundle = new Bundle();
-      localBundle.putString("themeId", paramBundle.getString("themeId"));
-      if (paramInt2 != 4) {
-        break label73;
-      }
     }
-    label73:
-    for (paramInt1 = 0;; paramInt1 = -2)
+    try
     {
-      localBundle.putInt("themeStatus", paramInt1);
-      paramBundle.putBundle("response", localBundle);
-      paramResData.a(paramBundle);
-      return 1;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
     }
   }
 }

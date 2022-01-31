@@ -1,26 +1,34 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-final class algz
-  implements FileFilter
+public abstract interface algz
 {
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, albj paramalbj, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(long paramLong, int paramInt, alah paramalah, alht paramalht);
+  
+  public abstract void a(long paramLong, albj paramalbj);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, albj paramalbj);
+  
+  public abstract void a(alfv paramalfv, ArLBSActivity paramArLBSActivity);
+  
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, alae paramalae);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

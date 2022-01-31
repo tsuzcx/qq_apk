@@ -1,78 +1,145 @@
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
-import android.view.Window;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 public class xnz
   extends Dialog
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private xoc jdField_a_of_type_Xoc;
+  private boolean jdField_a_of_type_Boolean;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   private TextView c;
+  private TextView d;
+  private TextView e;
   
   public xnz(Context paramContext)
   {
     super(paramContext, 2131755791);
-    super.setContentView(2131560149);
-    super.getWindow().setWindowAnimations(2131755124);
+    super.setContentView(2131559046);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
   
-  public void a()
+  private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365136));
-    this.b = ((TextView)super.findViewById(2131365142));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131377362);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377357);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365135));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365141));
     this.c = ((TextView)super.findViewById(2131377360));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131377361));
-    this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+    ((ImageView)super.findViewById(2131377361)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+    this.d = ((TextView)super.findViewById(2131377355));
+    ((ImageView)super.findViewById(2131377356)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
+    this.e = ((TextView)super.findViewById(2131376621));
   }
   
-  public void a(DialogInterface.OnClickListener paramOnClickListener)
+  private void b(boolean paramBoolean)
   {
-    if (aaoc.S)
+    int j = 8;
+    QLog.i("ShareToQZone", 2, "width:" + this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
+    Object localObject;
+    if (paramBoolean)
     {
-      Resources localResources = getContext().getResources();
-      this.b.setContentDescription(localResources.getString(2131690571, new Object[] { localResources.getString(2131719411) }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      localObject = this.jdField_b_of_type_AndroidViewView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label126;
+      }
+      i = 8;
+      label65:
+      ((View)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label131;
+      }
+      i = 0;
+      label86:
+      ((View)localObject).setVisibility(i);
+      localObject = this.e;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label137;
+      }
     }
-    this.b.setOnClickListener(new xob(this, paramOnClickListener));
+    label131:
+    label137:
+    for (int i = j;; i = 0)
+    {
+      ((TextView)localObject).setVisibility(i);
+      return;
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label126:
+      i = 0;
+      break label65;
+      i = 8;
+      break label86;
+    }
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    if (this.c != null) {
-      this.c.setText(paramString);
+    if (this.d != null) {
+      this.d.setText(paramInt);
     }
   }
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    if (aaoc.S)
-    {
-      Resources localResources = getContext().getResources();
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      String str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      localTextView.setContentDescription(localResources.getString(2131690571, new Object[] { str }));
-    }
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new xoa(this, paramOnClickListener));
+  }
+  
+  public void a(xoc paramxoc)
+  {
+    this.jdField_a_of_type_Xoc = paramxoc;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.e != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (paramInt != 0) {
+        this.e.setText(paramInt);
+      }
+    }
+    else {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.e.setText("");
+  }
+  
+  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      b(false);
+      return;
+    }
+    b(true);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new xob(this, paramOnClickListener));
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.c != null) {
+      this.c.setText(paramInt);
+    }
   }
   
   public void dismiss()
@@ -83,6 +150,26 @@ public class xnz
       return;
     }
     catch (Exception localException) {}
+  }
+  
+  public void onBackPressed()
+  {
+    QLog.i("ShareResultDialog", 2, "onBackPressed");
+    super.onBackPressed();
+    xoc localxoc;
+    if (this.jdField_a_of_type_Xoc != null)
+    {
+      localxoc = this.jdField_a_of_type_Xoc;
+      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+        break label44;
+      }
+    }
+    label44:
+    for (boolean bool = true;; bool = false)
+    {
+      localxoc.a(bool);
+      return;
+    }
   }
 }
 

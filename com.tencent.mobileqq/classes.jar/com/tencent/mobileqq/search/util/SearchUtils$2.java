@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
 import android.view.View;
-import awms;
-import awmv;
-import awoc;
-import awvy;
-import axrl;
+import awmu;
+import awmx;
+import awoe;
+import awwa;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -17,36 +17,36 @@ import java.util.HashMap;
 public final class SearchUtils$2
   implements Runnable
 {
-  public SearchUtils$2(View paramView, awoc paramawoc) {}
+  public SearchUtils$2(View paramView, awoe paramawoe) {}
   
   public void run()
   {
     int j = -1;
     HashMap localHashMap = new HashMap();
-    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131379209);
+    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131379214);
     int i;
     if (localObject != null)
     {
       i = ((Integer)localObject).intValue();
       localHashMap.put("itemLinePosition", String.valueOf(i + 1));
-      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_Awoc.b()));
-      localHashMap.put("className", this.jdField_a_of_type_Awoc.getClass().getSimpleName());
-      localHashMap.put("keyword", this.jdField_a_of_type_Awoc.a());
-      if (this.jdField_a_of_type_Awoc.jdField_a_of_type_JavaUtilHashMap != null) {
-        localHashMap.putAll(this.jdField_a_of_type_Awoc.jdField_a_of_type_JavaUtilHashMap);
+      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_Awoe.b()));
+      localHashMap.put("className", this.jdField_a_of_type_Awoe.getClass().getSimpleName());
+      localHashMap.put("keyword", this.jdField_a_of_type_Awoe.a());
+      if (this.jdField_a_of_type_Awoe.jdField_a_of_type_JavaUtilHashMap != null) {
+        localHashMap.putAll(this.jdField_a_of_type_Awoe.jdField_a_of_type_JavaUtilHashMap);
       }
-      if (!(this.jdField_a_of_type_Awoc instanceof awmv)) {
+      if (!(this.jdField_a_of_type_Awoe instanceof awmx)) {
         break label339;
       }
-      localObject = ((awmv)this.jdField_a_of_type_Awoc).a;
+      localObject = ((awmx)this.jdField_a_of_type_Awoe).a;
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Awoc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Awoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
       {
-        int k = this.jdField_a_of_type_Awoc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
-        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_Awoc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
-        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Awoc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        int k = this.jdField_a_of_type_Awoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
+        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_Awoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
+        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Awoe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         i = j;
         if (localTroopManager != null)
         {
@@ -62,13 +62,13 @@ public final class SearchUtils$2
           QLog.d("searchUtils", 2, "Report troop member click, troopMask:" + k + " troopMemberNum:" + i);
         }
       }
-      axrl.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, awvy.a(localHashMap), "", false);
+      axrn.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, awwa.a(localHashMap), "", false);
       return;
       i = -1;
       break;
       label339:
-      if ((this.jdField_a_of_type_Awoc instanceof awms)) {
-        localObject = ((awms)this.jdField_a_of_type_Awoc).a;
+      if ((this.jdField_a_of_type_Awoe instanceof awmu)) {
+        localObject = ((awmu)this.jdField_a_of_type_Awoe).a;
       } else {
         localObject = "";
       }

@@ -1,19 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class wjn
-  implements wkn
+  extends RecyclerView.ItemDecoration
 {
-  public wjn(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
-  
-  public void a()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (RecommendBannerFeedItemView.a(this.a) == null) {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (i == 0)
+    {
+      paramRect.left = baxn.a(paramView.getContext(), 3.0F);
+      paramRect.right = 0;
       return;
     }
-    xhe.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    paramRecyclerView = paramRecyclerView.getAdapter();
+    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
+    for (paramRect.right = baxn.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
+    {
+      paramRect.left = (-baxn.a(paramView.getContext(), 6.0F));
+      return;
+    }
   }
 }
 

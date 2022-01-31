@@ -1,27 +1,45 @@
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
 import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class agrh
-  implements bfpc
+public abstract class agrh
 {
-  private agrh(AlbumListFragment paramAlbumListFragment) {}
+  public static volatile agrh a;
+  public agrb a;
+  public agri a;
+  protected agrz a;
+  public WeakReference<AlbumListFragment> a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected agrh(AlbumListFragment paramAlbumListFragment)
   {
-    paramAdapterView = this.a.jdField_a_of_type_Agro.a(paramInt);
-    paramView = this.a.getActivity().getIntent();
-    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
-    {
-      bcpw.a(this.a.getActivity(), 2131690020, 0).a();
-      return;
+    this.jdField_a_of_type_Agri = null;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAlbumListFragment);
+    this.jdField_a_of_type_Agrz = agrz.a(paramAlbumListFragment.getActivity().getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
+    paramAlbumListFragment.getActivity().getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
+    this.jdField_a_of_type_Agrz.a();
+    this.jdField_a_of_type_Agrb = new agrc();
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumListActivity", 2, "AlbumListLogic new，activity = " + this.jdField_a_of_type_MqqUtilWeakReference + ",PhotoCommonData = " + this.jdField_a_of_type_Agrz);
     }
-    this.a.jdField_a_of_type_Agrj.a(paramAdapterView, paramInt, paramView);
-    this.a.jdField_a_of_type_Agri.a(paramAdapterView, paramInt, paramView);
   }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumListActivity", 2, "AlbumListLogic new，activity = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_Agrz);
+    }
+    this.jdField_a_of_type_Agrz.b();
+    jdField_a_of_type_Agrh = null;
+  }
+  
+  public abstract void a(Intent paramIntent);
+  
+  abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
+  
+  public abstract void b();
 }
 
 

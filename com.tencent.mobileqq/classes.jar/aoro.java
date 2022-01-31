@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
-import java.util.Comparator;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class aoro
-  implements Comparator<Long>
+public abstract interface aoro
 {
-  public aoro(QfileLocalFileDelPicTabView.1 param1) {}
+  public abstract View.OnClickListener a(TextView paramTextView);
   
-  public int a(Long paramLong1, Long paramLong2)
-  {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

@@ -1,14 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-class rtv
-  implements View.OnClickListener
+public class rtv
+  implements ruh
 {
-  rtv(rtt paramrtt) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public rtv(TabLayoutCompat paramTabLayoutCompat) {}
+  
+  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
   {
-    this.a.dismiss();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

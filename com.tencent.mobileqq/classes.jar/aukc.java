@@ -1,56 +1,56 @@
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import com.tencent.mobileqq.data.Ability;
 import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class aukc
-  extends auky
+  extends aula
 {
   public aukc()
   {
     this.a = 2;
   }
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
   {
-    paramaukm = (CommonlyUsedTroop)paramaukm;
-    if (paramaukx == null)
+    paramauko = (Ability)paramauko;
+    if (paramaukz == null)
     {
-      paramaukm.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramaukm.addedTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("addedTimestamp"));
-      return paramaukm;
+      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramauko.flags = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
+      return paramauko;
     }
-    int i = paramCursor.getColumnIndex("troopUin");
+    int i = paramCursor.getColumnIndex("uin");
     if (i == -1) {
-      paramaukx.a(new NoColumnError("troopUin", String.class));
+      paramaukz.a(new NoColumnError("uin", String.class));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("addedTimestamp");
+      i = paramCursor.getColumnIndex("flags");
       if (i != -1) {
         break;
       }
-      paramaukx.a(new NoColumnError("addedTimestamp", Long.TYPE));
-      return paramaukm;
-      paramaukm.troopUin = paramCursor.getString(i);
+      paramaukz.a(new NoColumnError("flags", Integer.TYPE));
+      return paramauko;
+      paramauko.uin = paramCursor.getString(i);
     }
-    paramaukm.addedTimestamp = paramCursor.getLong(i);
-    return paramaukm;
+    paramauko.flags = paramCursor.getInt(i);
+    return paramauko;
   }
   
   public String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,addedTimestamp INTEGER)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,flags INTEGER)");
     return localStringBuilder.toString();
   }
   
-  public void a(aukm paramaukm, ContentValues paramContentValues)
+  public void a(auko paramauko, ContentValues paramContentValues)
   {
-    paramaukm = (CommonlyUsedTroop)paramaukm;
-    paramContentValues.put("troopUin", paramaukm.troopUin);
-    paramContentValues.put("addedTimestamp", Long.valueOf(paramaukm.addedTimestamp));
+    paramauko = (Ability)paramauko;
+    paramContentValues.put("uin", paramauko.uin);
+    paramContentValues.put("flags", Integer.valueOf(paramauko.flags));
   }
 }
 

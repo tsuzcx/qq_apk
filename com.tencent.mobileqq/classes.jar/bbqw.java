@@ -1,294 +1,351 @@
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.URLInterceptManager.1;
+import com.tencent.mobileqq.vas.URLInterceptManager.2;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbqw
+  implements Manager
 {
-  private static Long a;
+  public static int a;
   public static String a;
-  public static String b = "openMonth";
-  public static String c = "aid";
-  public static String d = "offerId";
-  public static String e = "serviceName";
-  public static String f = "serviceCode";
-  public static String g = "type";
-  public static String h = "callbacksn";
-  public static String i = "payUrl";
+  public static int b;
+  public static int c;
+  public static int d = 3;
+  Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  Map<String, String> b;
+  Map<String, String> c;
   
   static
   {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    jdField_a_of_type_JavaLangString = "sendUin";
+    jdField_a_of_type_JavaLangString = "URLInterceptManager";
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Int = 1;
+    jdField_c_of_type_Int = 2;
   }
   
-  public static String a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public bbqw(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1).append("|").append(paramInt1).append("|").append(paramInt2).append("|").append(paramInt3).append("|").append(paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("VasH5PayUtil", 2, "getOpenVipParam result = " + localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
+    this.jdField_b_of_type_JavaUtilMap = new HashMap();
+    this.jdField_c_of_type_JavaUtilMap = new HashMap();
+    ThreadManager.post(new URLInterceptManager.1(this, paramContext), 8, null, true);
   }
   
-  private static StringBuilder a(String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public bbqw(QQAppInterface paramQQAppInterface)
   {
-    if ("SVHHZLH".equals(paramString2))
+    this.jdField_b_of_type_JavaUtilMap = new HashMap();
+    this.jdField_c_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    int i;
+    String str1;
+    label65:
+    String str2;
+    label84:
+    int j;
+    label120:
+    String str3;
+    if (paramJSONObject != null)
     {
-      long l = 16781315L;
-      if (paramBoolean3) {
-        l = 0x1001003 | 0x80000;
-      }
-      localObject = "https://h5.qzone.qq.com/vip/payBigDialog/{openUin}/{openMonth}?_wv={wv}&_wwv=13&_proxy=1&aid={aid}".replace("{openUin}", "0");
-      if (paramInt > 0) {}
-      for (paramString2 = String.valueOf(paramInt);; paramString2 = "0")
+      try
       {
-        paramString1 = new StringBuilder(((String)localObject).replace("{openMonth}", paramString2).replace("{aid}", paramString1).replace("{wv}", String.valueOf(l)));
-        return paramString1;
-      }
-    }
-    Object localObject = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-    ((StringBuilder)localObject).append(paramString1);
-    if ("CJCLUBT".equals(paramString2)) {
-      if (paramBoolean2) {
-        ((StringBuilder)localObject).append("&type=!svip");
-      }
-    }
-    for (;;)
-    {
-      paramString1 = (String)localObject;
-      if (paramInt <= 0) {
-        break;
-      }
-      if (!paramBoolean1) {
-        break label198;
-      }
-      ((StringBuilder)localObject).append("&month=!" + paramInt);
-      return localObject;
-      ((StringBuilder)localObject).append("&type=svip");
-      continue;
-      if ("LTMCLUB".equals(paramString2)) {
-        ((StringBuilder)localObject).append("&type=vip");
-      }
-    }
-    label198:
-    ((StringBuilder)localObject).append("&month=" + paramInt);
-    return localObject;
-  }
-  
-  private static StringBuilder a(String paramString1, String paramString2, String paramString3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("&type=" + paramString2);
-    localStringBuilder.append("&month=" + paramString3);
-    return localStringBuilder;
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramInt1, paramBoolean1, paramBoolean2, false);
-      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramActivity.startActivityForResult(paramString2, paramInt2);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramString3);
-      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramActivity.startActivityForResult(paramString2, paramInt);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    paramContext.startActivity(localIntent);
-  }
-  
-  private static void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
-  {
-    StringBuilder localStringBuilder;
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      localStringBuilder = new StringBuilder();
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label189;
-      }
-      localStringBuilder.append("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-      if (!TextUtils.isEmpty(paramString1)) {
-        localStringBuilder.append(paramString1);
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        localStringBuilder.append("&type=" + paramString2);
-      }
-      if (!TextUtils.isEmpty(paramString3)) {
-        localStringBuilder.append("&sendServiceUin=" + paramString3);
-      }
-      if (paramInt > 0) {
-        localStringBuilder.append("&month=" + paramInt);
-      }
-      paramString1 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-      paramString1.putExtra("url", localStringBuilder.toString());
-      paramContext.startActivity(paramString1);
-      return;
-      label189:
-      localStringBuilder.append(paramString4);
-      if ((!TextUtils.isEmpty(paramString1)) && (!paramString4.contains("aid="))) {
-        if (paramString4.contains("?")) {
-          localStringBuilder.append("&aid=" + paramString1);
-        } else {
-          localStringBuilder.append("?aid=" + paramString1);
+        if (!paramJSONObject.has("urltoapi")) {
+          break label399;
         }
+        paramJSONObject = paramJSONObject.getJSONArray("urltoapi");
+      }
+      catch (Exception paramJSONObject)
+      {
+        label146:
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "doParseJson fail: " + paramJSONObject.getMessage());
+      }
+      if (i >= paramJSONObject.length()) {
+        break label369;
+      }
+      localObject = paramJSONObject.getJSONObject(i);
+      if (localObject == null) {
+        break label392;
+      }
+      if (!((JSONObject)localObject).has("url")) {
+        break label404;
+      }
+      str1 = ((JSONObject)localObject).getString("url");
+      break label387;
+      if (!((JSONObject)localObject).has("api")) {
+        break label308;
+      }
+      str2 = ((JSONObject)localObject).getString("api");
+      if ((TextUtils.isEmpty(str2)) || (!str2.startsWith("mqqapi"))) {
+        break label392;
+      }
+      if (!((JSONObject)localObject).has("match_type")) {
+        break label314;
+      }
+      j = ((JSONObject)localObject).getInt("match_type");
+      if (j == jdField_a_of_type_Int) {
+        break label392;
+      }
+      if (!((JSONObject)localObject).has("minVer")) {
+        break label410;
+      }
+      str3 = ((JSONObject)localObject).getString("minVer");
+      if (TextUtils.isEmpty(str3)) {
+        break label392;
+      }
+      if (!((JSONObject)localObject).has("maxVer")) {
+        break label416;
       }
     }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, "");
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
-  {
-    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramString3, "", false, false);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    label387:
+    label392:
+    label399:
+    label402:
+    label404:
+    label408:
+    label410:
+    label416:
+    for (Object localObject = ((JSONObject)localObject).getString("maxVer");; localObject = null)
     {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramBoolean4);
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramString1.append("&disableChannel=" + paramString3);
-      }
-      if (paramBoolean3) {
-        paramString1.append("&disableMobile=1");
-      }
-      if (!TextUtils.isEmpty(paramString4))
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (bbqa.a("8.3.0", (String)localObject)) && (bbqa.a(str3, "8.3.0")))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("VasH5PayUtil", 2, "openH5Pay callback = " + paramString4);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "Parse from Json: URL = " + str1 + " API = " + str2 + " type = " + j);
         }
-        paramString1.append("&return_url=" + paramString4);
+        if (j == jdField_b_of_type_Int)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(str1, str2);
+          break label392;
+          return;
+          label308:
+          str2 = null;
+          break label84;
+          label314:
+          j = jdField_a_of_type_Int;
+          break label120;
+        }
+        if (j == jdField_c_of_type_Int)
+        {
+          this.jdField_b_of_type_JavaUtilMap.put(str1, str2);
+        }
+        else if (j == d)
+        {
+          this.jdField_c_of_type_JavaUtilMap.put(str1, str2);
+          break label392;
+          label369:
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+          return;
+          label378:
+          if (paramJSONObject == null) {
+            break label402;
+          }
+          i = 0;
+          break;
+        }
       }
-      paramString2 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramContext.startActivity(paramString2);
+      for (;;)
+      {
+        if (str1 != null) {
+          break label408;
+        }
+        i += 1;
+        break;
+        paramJSONObject = null;
+        break label378;
+        break label369;
+        str1 = null;
+      }
+      break label65;
+      str3 = null;
+      break label146;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Bundle paramBundle)
+  public String a(String paramString)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (paramBundle == null)) {
-      return;
-    }
-    paramQQAppInterface = paramBundle.getString(c);
-    String str1 = paramBundle.getString(g);
-    int j = paramBundle.getInt(b);
-    String str2 = paramBundle.getString(jdField_a_of_type_JavaLangString);
-    paramBundle.getString(d);
-    paramBundle.getString(e);
-    paramBundle.getString(f);
-    paramBundle.getString(h);
-    a(paramContext, paramQQAppInterface, str1, j, str2, paramBundle.getString(i));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    if ((!TextUtils.isEmpty(paramString5)) && ((paramString5.equals("svipdiyCardH5Pay")) || (paramString5.equals("vipdiyCardH5Pay"))))
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      a(paramContext, paramString1, paramString3, paramInt, false, false, "hfpay");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "checkURL fail config not load");
+      }
+      return null;
     }
-    a(paramContext, paramString1, paramString3, paramInt, false, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramContext, paramString1, paramString3, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public static void a(String paramString, Context paramContext)
-  {
     if (TextUtils.isEmpty(paramString))
     {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param is empty");
-      return;
-    }
-    if (paramContext == null)
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam context is null");
-      return;
-    }
-    Object localObject = paramString.split("\\|");
-    if (localObject.length != 5)
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param not correct: " + localObject);
-      return;
-    }
-    paramString = localObject[0];
-    String str1 = localObject[1];
-    CharSequence localCharSequence = localObject[2];
-    String str2 = localObject[3];
-    localObject = localObject[4];
-    boolean bool1;
-    boolean bool2;
-    if (str1.equals("1"))
-    {
-      bool1 = true;
-      if (!str2.equals("1")) {
-        break label209;
+      if (QLog.isColorLevel()) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "checkURL url = null");
       }
-      bool2 = true;
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL original url = " + paramString);
+    }
+    String str1 = paramString;
+    if (paramString.contains("www.urlshare.cn/umirror_url_check"))
+    {
+      i = paramString.indexOf("&url=");
+      str1 = paramString;
+      if (i > 0)
+      {
+        i += 5;
+        j = paramString.indexOf("&src_uin", i);
+        str1 = paramString;
+        if (j > i) {
+          str1 = paramString.substring(i, j);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(str1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL full match url=" + str1 + " Replace with: " + (String)this.jdField_a_of_type_JavaUtilMap.get(str1));
+      }
+      return (String)this.jdField_a_of_type_JavaUtilMap.get(str1);
+    }
+    int i = str1.indexOf("?");
+    int j = str1.indexOf("#");
+    int k = Math.min(i, j);
+    if (k > 0) {
+      paramString = str1.substring(0, k);
     }
     for (;;)
     {
-      if (!TextUtils.isDigitsOnly(localCharSequence))
+      if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
       {
-        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param openMonth not correct: " + localCharSequence);
-        return;
-        if (str1.equals("0"))
-        {
-          bool1 = false;
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL without param match url=" + str1 + " Replace with: " + (String)this.jdField_b_of_type_JavaUtilMap.get(paramString));
         }
-        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardType not correct: " + str1);
-        return;
-        label209:
-        if (str2.equals("0"))
-        {
-          bool2 = false;
+        return (String)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+        i = Math.max(i, j);
+        if (i > 0) {
+          paramString = str1.substring(0, i);
         }
-        else
+      }
+      else
+      {
+        if (this.jdField_c_of_type_JavaUtilMap.keySet().size() > 0)
         {
-          QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardMonth not correct: " + str2);
-          return;
+          paramString = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
+          while (paramString.hasNext())
+          {
+            String str2 = (String)paramString.next();
+            if (str1.startsWith(str2))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL part match url=" + str1 + " Replace with: " + (String)this.jdField_c_of_type_JavaUtilMap.get(str1));
+              }
+              return (String)this.jdField_c_of_type_JavaUtilMap.get(str2);
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "checkURL not match! url = " + str1);
+        }
+        return null;
+      }
+      paramString = str1;
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    String str = bboe.h.jdField_a_of_type_JavaLangString;
+    paramContext = new File(paramContext.getFilesDir(), str);
+    if (paramContext.exists()) {
+      try
+      {
+        paramContext = bbdx.a(paramContext);
+        if (paramContext == null) {}
+      }
+      catch (OutOfMemoryError paramContext)
+      {
+        for (;;)
+        {
+          try
+          {
+            a(new JSONObject(paramContext));
+            return;
+          }
+          catch (Exception paramContext)
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 1, "getJsonError,Exception:" + str + paramContext.getMessage());
+            return;
+          }
+          paramContext = paramContext;
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "getJsonOOM,json_name:" + str + paramContext.getMessage());
+          }
+          paramContext = null;
         }
       }
     }
-    a(paramContext, (String)localObject, paramString, Integer.parseInt(localCharSequence), bool2, bool1);
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "json file not exist");
   }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    a(bboe.a(paramQQAppInterface, bboe.h, true));
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity)
+  {
+    if ((paramIntent.getComponent() != null) && ("com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramIntent.getComponent().getClassName())))
+    {
+      paramIntent = a(paramIntent.getStringExtra("url"));
+      if (!TextUtils.isEmpty(paramIntent))
+      {
+        Intent localIntent = new Intent(paramActivity, JumpActivity.class);
+        localIntent.setData(Uri.parse(paramIntent));
+        localIntent.putExtra("from", "webview");
+        paramActivity.startActivity(localIntent);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(Intent paramIntent, QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramIntent.getComponent() != null) && ("com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramIntent.getComponent().getClassName())))
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        break label51;
+      }
+      ThreadManager.post(new URLInterceptManager.2(this, paramQQAppInterface), 8, null, true);
+    }
+    label51:
+    do
+    {
+      do
+      {
+        return false;
+        paramIntent = a(paramIntent.getStringExtra("url"));
+      } while (TextUtils.isEmpty(paramIntent));
+      paramIntent = bbex.a(paramQQAppInterface, paramContext, paramIntent);
+    } while (paramIntent == null);
+    paramIntent.c();
+    return true;
+  }
+  
+  public void onDestroy() {}
 }
 
 

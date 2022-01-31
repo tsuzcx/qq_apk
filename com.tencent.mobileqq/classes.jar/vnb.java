@@ -1,17 +1,15 @@
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-final class vnb
-  implements ValueAnimator.AnimatorUpdateListener
+public class vnb
+  implements vna
 {
-  vnb(vnd paramvnd) {}
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
-  }
+  public void b(ValueAnimator paramValueAnimator) {}
+  
+  public void c(ValueAnimator paramValueAnimator) {}
+  
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

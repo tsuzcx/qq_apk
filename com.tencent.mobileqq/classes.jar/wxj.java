@@ -1,17 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class wxj
-  implements View.OnTouchListener
 {
-  public wxj(TribeVideoPlugin paramTribeVideoPlugin) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  private int jdField_a_of_type_Int = 0;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
 }
 
 

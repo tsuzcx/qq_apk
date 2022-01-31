@@ -6,13 +6,13 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import begy;
-import bekg;
-import beki;
-import belj;
-import besl;
-import beuc;
-import bffm;
+import behp;
+import bekx;
+import bekz;
+import bema;
+import betc;
+import beut;
+import bfgd;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
@@ -37,16 +37,16 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private int appInterstitialId;
   private WeakReference<Activity> mActivity;
   private volatile boolean mIsRequestingAd;
-  private begy mJsService;
+  private behp mJsService;
   private AdProxy.InterstitialADLisener mListener;
   
-  InterstitialAdPlugin$MiniInterstitialAd(InterstitialAdPlugin paramInterstitialAdPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, begy parambegy)
+  InterstitialAdPlugin$MiniInterstitialAd(InterstitialAdPlugin paramInterstitialAdPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, behp parambehp)
   {
     this.mActivity = new WeakReference(paramActivity);
     this.appInterstitialId = paramInt;
     this.adUnitId = paramString1;
     this.appId = paramString2;
-    this.mJsService = parambegy;
+    this.mJsService = parambehp;
   }
   
   private void callbackJs(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -57,10 +57,10 @@ class InterstitialAdPlugin$MiniInterstitialAd
       }
     }
     label75:
-    for (paramString = bekg.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bekg.a(paramString, getResultObj(paramInt1, paramInt2), (String)InterstitialAdPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
+    for (paramString = bekx.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bekx.a(paramString, getResultObj(paramInt1, paramInt2), (String)InterstitialAdPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
     {
       paramString = paramString.toString();
-      besl.b("SDK_MiniInterstitialAd", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
+      betc.b("SDK_MiniInterstitialAd", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
       this.mJsService.a(paramInt3, paramString);
       return;
     }
@@ -80,7 +80,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
     catch (Throwable localThrowable)
     {
       localThrowable = localThrowable;
-      besl.d("SDK_MiniInterstitialAd", "getResultObj e:", localThrowable);
+      betc.d("SDK_MiniInterstitialAd", "getResultObj e:", localThrowable);
       return localJSONObject;
     }
     finally {}
@@ -89,10 +89,10 @@ class InterstitialAdPlugin$MiniInterstitialAd
   
   private boolean initAdParam(int paramInt1, int paramInt2)
   {
-    String str3 = beuc.a().a();
+    String str3 = beut.a().a();
     if (TextUtils.isEmpty(this.appId))
     {
-      besl.d("SDK_MiniInterstitialAd", "TextUtils.isEmpty(appid)");
+      betc.d("SDK_MiniInterstitialAd", "TextUtils.isEmpty(appid)");
       return false;
     }
     int i;
@@ -114,7 +114,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
         break label429;
       }
       i = 90;
-      besl.b("SDK_MiniInterstitialAd", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
+      betc.b("SDK_MiniInterstitialAd", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
       if ((this.this$0.mMiniAppInfo == null) || (!this.this$0.mMiniAppInfo.isEngineTypeMiniApp())) {
         break label434;
       }
@@ -146,8 +146,8 @@ class InterstitialAdPlugin$MiniInterstitialAd
       if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
       {
         str2 = ((MiniAppInfo)localObject3).via;
-        str4 = bffm.a(j);
-        belj.a("QZoneSetting", "MiniGameShareRate", 53);
+        str4 = bfgd.a(j);
+        bema.a("QZoneSetting", "MiniGameShareRate", 53);
         if (this.mActivity == null) {
           break label471;
         }
@@ -229,9 +229,9 @@ class InterstitialAdPlugin$MiniInterstitialAd
     this.mActivity = new WeakReference(paramActivity);
   }
   
-  void setJsService(begy parambegy)
+  void setJsService(behp parambehp)
   {
-    this.mJsService = parambegy;
+    this.mJsService = parambehp;
   }
   
   boolean show(int paramInt1, int paramInt2)
@@ -239,7 +239,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
     if ((this.adInterstitial == null) || (this.mActivity == null) || (this.mActivity.get() == null)) {
       return false;
     }
-    beki.a(new InterstitialAdPlugin.MiniInterstitialAd.1(this, paramInt1, paramInt2));
+    bekz.a(new InterstitialAdPlugin.MiniInterstitialAd.1(this, paramInt1, paramInt2));
     return true;
   }
 }

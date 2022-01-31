@@ -1,9 +1,14 @@
+import com.tencent.pts.nativemodule.IPTSHandleJSException;
+
 public class ppr
-  implements mzb
+  implements IPTSHandleJSException
 {
-  public void loaded(String paramString, int paramInt) {}
+  private final String a = "PTSHandleJSException";
   
-  public void progress(int paramInt) {}
+  public void handleJSException(int paramInt1, int paramInt2, String paramString)
+  {
+    pqe.a("0X800A7C6", "", "", "", new pqf().a("type", "1").a("line", "" + paramInt1).a("column", "" + paramInt2).a("msg", paramString).a());
+  }
 }
 
 

@@ -1,54 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aupf
-  extends ampb<aupj>
+public final class aupf
 {
-  public int a()
-  {
-    return c();
-  }
+  public final List<aupg> a = new ArrayList();
   
-  @NonNull
-  public aupj a(int paramInt)
+  private void a(String paramString)
   {
-    return new aupj();
-  }
-  
-  @Nullable
-  public aupj a(ampi[] paramArrayOfampi)
-  {
-    aupj localaupj = new aupj();
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
-      aupj.a(localaupj, paramArrayOfampi[0].a);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("c2c");
+        if (paramString.length() > 0)
+        {
+          int j = paramString.length();
+          int i = 0;
+          while (i < j)
+          {
+            aupg localaupg = new aupg();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            localaupg.jdField_a_of_type_Int = localJSONObject.optInt("appid");
+            localaupg.d = localJSONObject.optString("title");
+            localaupg.e = localJSONObject.optString("iconNormal");
+            localaupg.f = localJSONObject.optString("iconPress");
+            localaupg.g = localJSONObject.optString("iconNightNormal");
+            localaupg.h = localJSONObject.optString("iconNightPress");
+            localaupg.jdField_b_of_type_Int = localJSONObject.optInt("redDotID");
+            localaupg.jdField_c_of_type_JavaLangString = localJSONObject.optString("redDotPath");
+            localaupg.jdField_a_of_type_JavaLangString = localJSONObject.optString("actionType");
+            localaupg.jdField_b_of_type_JavaLangString = localJSONObject.optString("action");
+            localaupg.jdField_c_of_type_Int = localJSONObject.optInt("order");
+            localaupg.a();
+            localaupg.b();
+            this.a.add(localaupg);
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("AIOPanelIconConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
-    return localaupj;
-  }
-  
-  public Class<aupj> a()
-  {
-    return aupj.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aupj paramaupj) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  protected abstract int c();
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

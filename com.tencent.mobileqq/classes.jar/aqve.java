@@ -1,27 +1,48 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
+import java.lang.reflect.Method;
 
-public class aqve
-  implements aqvm
+public abstract class aqve
 {
-  public aqve(JefsClass paramJefsClass, Context paramContext, Intent paramIntent, String paramString, int paramInt) {}
+  public static aqve a;
   
-  public void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "checkAndDo() ]");
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mobileqq.haoliyou.JefsClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (aqve)localMethod.invoke(null, new Object[0]);
+      return;
     }
-    JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramList, paramCancelableRunnable, this.jdField_a_of_type_Int);
+    catch (Throwable localThrowable) {}
   }
+  
+  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    aqve localaqve = a;
+    if (localaqve != null) {
+      localaqve.b(paramActivity, paramIntent, paramInt, paramBundle);
+    }
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Runnable paramRunnable)
+  {
+    aqve localaqve = a;
+    if (localaqve != null) {
+      localaqve.b(paramContext, paramIntent, paramRunnable);
+    }
+  }
+  
+  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(Context paramContext, Intent paramIntent, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqve
  * JD-Core Version:    0.7.0.1
  */

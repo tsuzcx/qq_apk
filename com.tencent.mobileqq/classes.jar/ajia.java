@@ -1,64 +1,30 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 final class ajia
-  extends bbwf
+  extends bbwt
 {
-  ajia(File paramFile) {}
+  ajia(int paramInt, ajie paramajie) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onDone(bbwu parambbwu)
   {
-    super.onDone(parambbwg);
-    if ((3 == parambbwg.a()) && (this.a.exists())) {}
-    try
+    super.onDone(parambbwu);
+    if (3 == parambbwu.a())
     {
-      nay.a(this.a, this.a.getParent() + File.separator);
-      label166:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Ajie != null) {
+        this.jdField_a_of_type_Ajie.a(true, this.jdField_a_of_type_Int);
+      }
+    }
+    do
+    {
       return;
-    }
-    catch (Exception parambbwg)
-    {
-      parambbwg = parambbwg;
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambbwg.getMessage());
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + parambbwu.a());
       }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambbwg)
-      {
-        return;
-      }
-    }
-    catch (OutOfMemoryError parambbwg)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambbwg.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambbwg)
-      {
-        return;
-      }
-    }
-    finally
-    {
-      try
-      {
-        this.a.delete();
-        throw parambbwg;
-      }
-      catch (Exception localException)
-      {
-        break label166;
-      }
-    }
+    } while (this.jdField_a_of_type_Ajie == null);
+    this.jdField_a_of_type_Ajie.a(false, this.jdField_a_of_type_Int);
   }
 }
 

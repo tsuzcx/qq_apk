@@ -1,13 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import java.util.Comparator;
 
 class ozm
-  implements Comparator<Integer>
+  implements Comparator<AdvertisementInfo>
 {
   ozm(ozk paramozk) {}
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    return paramInteger1.intValue() - paramInteger2.intValue();
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

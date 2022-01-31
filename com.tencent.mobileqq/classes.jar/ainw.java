@@ -1,25 +1,23 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class ainw
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  ainw(ainv paramainv) {}
+  ainw(aint paramaint, View paramView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof ainz))) {
+      ((ainz)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    aint.a(this.jdField_a_of_type_Aint);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

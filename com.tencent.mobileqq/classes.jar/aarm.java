@@ -1,36 +1,74 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
 class aarm
-  extends ClickableSpan
+  implements askq<aobp>
 {
-  aarm(aarj paramaarj, String paramString1, String paramString2) {}
+  aarm(aarf paramaarf, ImageView paramImageView1, MarkFaceMessage paramMarkFaceMessage, ImageView paramImageView2, MessageRecord paramMessageRecord) {}
   
-  public void onClick(View paramView)
+  public void a(aobp paramaobp)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    axqw.b(this.jdField_a_of_type_Aarj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
-    try
+    Object localObject;
+    int i;
+    if (paramaobp != null)
     {
-      this.jdField_a_of_type_Aarj.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramaobp);
+      String str2 = anzr.z.replace("[epId]", paramaobp.a.epId);
+      String str1 = "";
+      localObject = str1;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam != null)
+      {
+        localObject = str1;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam.length > 0) {
+          localObject = new String(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam);
+        }
+      }
+      i = ascl.a((String)localObject);
+      if ((!bbdx.a(str2)) || (i != 1)) {
+        break label194;
+      }
+      i = 3;
     }
-    catch (ActivityNotFoundException paramView)
+    for (;;)
     {
-      paramView.printStackTrace();
+      if (paramaobp.b())
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localObject = this.jdField_a_of_type_Aarf.a.getResources().getDrawable(2130846223);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      for (;;)
+      {
+        this.b.setMinimumHeight((int)(this.jdField_a_of_type_Aarf.a.a * 100.0F));
+        this.b.setMinimumWidth((int)(this.jdField_a_of_type_Aarf.a.a * 100.0F));
+        this.jdField_a_of_type_Aarf.a(this.b, i, paramaobp, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        return;
+        label194:
+        if (paramaobp.d())
+        {
+          i = 2;
+          break;
+        }
+        if (!paramaobp.e()) {
+          break label258;
+        }
+        i = 1;
+        break;
+        if (i == 1)
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localObject = this.jdField_a_of_type_Aarf.a.getResources().getDrawable(2130837711);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        }
+      }
+      label258:
+      i = 0;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

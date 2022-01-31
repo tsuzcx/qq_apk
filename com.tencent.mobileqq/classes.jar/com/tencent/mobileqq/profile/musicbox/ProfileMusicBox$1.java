@@ -2,19 +2,19 @@ package com.tencent.mobileqq.profile.musicbox;
 
 import android.content.SharedPreferences;
 import android.os.Handler;
-import auwy;
+import auxa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class ProfileMusicBox$1
   implements Runnable
 {
-  public ProfileMusicBox$1(auwy paramauwy) {}
+  public ProfileMusicBox$1(auxa paramauxa) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("showMusicBoxRed", 0);
-    auwy.a(this.this$0, localSharedPreferences.getBoolean("showRed", true));
+    auxa.a(this.this$0, localSharedPreferences.getBoolean("showRed", true));
     ThreadManagerV2.getUIHandlerV2().post(new ProfileMusicBox.1.1(this));
   }
 }

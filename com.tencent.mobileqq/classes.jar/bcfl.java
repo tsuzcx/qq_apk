@@ -1,31 +1,14 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bcfl
-  implements TouchWebView.OnScrollChangedListener
+  implements DialogInterface.OnClickListener
 {
-  bcfl(bcfj parambcfj) {}
+  bcfl(bcfh parambcfh, int paramInt, String paramString) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.a > 1000L)
-    {
-      paramInt1 = paramInt2 - paramInt4;
-      if (paramInt1 <= 0) {
-        break label55;
-      }
-      if (Math.abs(paramInt1) > 50)
-      {
-        this.a.b(false);
-        this.a.a = System.currentTimeMillis();
-      }
-    }
-    label55:
-    while (Math.abs(paramInt1) <= 50) {
-      return;
-    }
-    this.a.b(true);
-    this.a.a = System.currentTimeMillis();
+    bcfh.a(this.jdField_a_of_type_Bcfh, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

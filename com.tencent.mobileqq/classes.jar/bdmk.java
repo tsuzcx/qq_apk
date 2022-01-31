@@ -1,69 +1,217 @@
+import android.content.Context;
+import android.os.Environment;
+import com.tencent.apkupdate.ApkUpdateListener;
+import com.tencent.apkupdate.ApkUpdateParam;
+import com.tencent.apkupdate.ApkUpdateSDK;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.export.js.VipDownloadInterface;
+import com.tencent.open.downloadnew.UpdateManager.1;
+import com.tencent.open.downloadnew.UpdateManager.2;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.os.MqqHandler;
 
 public class bdmk
-  implements bdkw
+  implements ApkUpdateListener
 {
-  public bdmk(VipDownloadInterface paramVipDownloadInterface) {}
+  protected static bdmk a;
+  public static final String a;
+  protected ConcurrentLinkedQueue<bdml> a;
   
-  public void a(int paramInt, String paramString)
+  static
   {
-    bdht.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
-    JSONObject localJSONObject = new JSONObject();
+    jdField_a_of_type_JavaLangString = bdmk.class.getName();
+  }
+  
+  protected bdmk()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    ApkUpdateSDK.getInstance().init(bcyb.a().a());
+    ApkUpdateSDK.getInstance().addListener(this);
+  }
+  
+  public static bdmk a()
+  {
     try
     {
-      localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", paramString);
-      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
-      this.a.a(paramString);
-      return;
+      if (jdField_a_of_type_Bdmk == null) {
+        jdField_a_of_type_Bdmk = new bdmk();
+      }
+      bdmk localbdmk = jdField_a_of_type_Bdmk;
+      return localbdmk;
     }
-    catch (JSONException paramString)
+    finally {}
+  }
+  
+  /* Error */
+  public static boolean a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 55	bdmk:jdField_a_of_type_Bdmk	Lbdmk;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnull +10 -> 18
+    //   11: iconst_1
+    //   12: istore_0
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: iload_0
+    //   17: ireturn
+    //   18: iconst_0
+    //   19: istore_0
+    //   20: goto -7 -> 13
+    //   23: astore_1
+    //   24: ldc 2
+    //   26: monitorexit
+    //   27: aload_1
+    //   28: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	8	0	bool	boolean
+    //   6	2	1	localbdmk	bdmk
+    //   23	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	23	finally
+  }
+  
+  public void a()
+  {
+    try
+    {
+      ApkUpdateSDK.getInstance().removeListener(this);
+      ApkUpdateSDK.getInstance().destory();
+    }
+    catch (Exception localException)
     {
       for (;;)
       {
-        paramString.printStackTrace();
+        localException = localException;
+        bdii.a(jdField_a_of_type_JavaLangString, "onDestroy>>>", localException);
       }
+    }
+    finally {}
+  }
+  
+  public void a(bdml parambdml)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambdml);
+      return;
+    }
+    finally
+    {
+      parambdml = finally;
+      throw parambdml;
     }
   }
   
-  public void a(List<DownloadInfo> paramList)
+  public void a(DownloadInfo paramDownloadInfo)
   {
-    bdht.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    String str2 = paramDownloadInfo.e;
+    String str3 = paramDownloadInfo.l;
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    int i;
+    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + bdle.jdField_a_of_type_JavaLangString + "newApkDir";; str1 = bcyb.a().a().getFilesDir().getAbsolutePath())
     {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+      File localFile = new File(str1);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      str1 = str1 + "/" + str2 + ".newGen.apk";
+      bdii.b(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>packageName=" + str2 + ", patchPath=" + str3 + ", newApkPath=" + str1);
+      i = ApkUpdateSDK.getInstance().patchNewApk(str2, str3, str1);
+      if (i != 0) {
+        break label421;
+      }
+      bdii.b(jdField_a_of_type_JavaLangString, ajya.a(2131715918));
+      paramDownloadInfo.l = str1;
+      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (ajud.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
+        paramDownloadInfo.a = false;
+      }
+      if ((!"com.tencent.mobileqq".equals(paramDownloadInfo.e)) || (!bdle.a().b())) {
+        break label403;
+      }
+      paramDownloadInfo.j = bdle.a().a(paramDownloadInfo);
+      if (paramDownloadInfo.j == 0) {
+        break;
+      }
+      bdii.d(jdField_a_of_type_JavaLangString, "updateManager patchNewApk write code fail......");
+      paramDownloadInfo.a(-2);
+      bdle.a().e(paramDownloadInfo);
+      bdle.a().a(paramDownloadInfo, paramDownloadInfo.j, null);
+      return;
+    }
+    paramDownloadInfo.a(4);
+    bdle.a().e(paramDownloadInfo);
+    bdii.c(jdField_a_of_type_JavaLangString, "info.path = " + paramDownloadInfo.l);
+    bdle.a().a(4, paramDownloadInfo);
+    if (paramDownloadInfo.a) {
+      bdle.a().c(paramDownloadInfo);
+    }
+    bdjr.a("300", paramDownloadInfo.h, paramDownloadInfo.c, paramDownloadInfo.o);
+    ThreadManager.getSubThreadHandler().post(new UpdateManager.1(this, str1, paramDownloadInfo));
+    return;
+    label403:
+    ThreadManager.getSubThreadHandler().post(new UpdateManager.2(this, str1, paramDownloadInfo));
+    return;
+    label421:
+    bdii.e(jdField_a_of_type_JavaLangString, ajya.a(2131715919) + i);
+    bdle.a().a(-24, paramDownloadInfo);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    bdii.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
+    ApkUpdateSDK.getInstance().checkUpdate(paramList);
+  }
+  
+  public void b(bdml parambdml)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(parambdml);
+      return;
+    }
+    finally
+    {
+      parambdml = finally;
+      throw parambdml;
+    }
+  }
+  
+  public void b(List<ApkUpdateParam> paramList)
+  {
+    bdii.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
+    ApkUpdateSDK.getInstance().checkUpdateList(paramList);
+  }
+  
+  public void onCheckUpdateFailed(String paramString)
+  {
+    bdii.c(jdField_a_of_type_JavaLangString, "onCheckUpdateFailed>>>errMsg=" + paramString);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (localIterator.hasNext()) {
+      ((bdml)localIterator.next()).a(paramString);
+    }
+  }
+  
+  public void onCheckUpdateSucceed(ArrayList paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      while (localIterator.hasNext()) {
+        ((bdml)localIterator.next()).a(paramArrayList);
       }
     }
-    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
-    bdht.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
-    this.a.a(paramList);
   }
 }
 

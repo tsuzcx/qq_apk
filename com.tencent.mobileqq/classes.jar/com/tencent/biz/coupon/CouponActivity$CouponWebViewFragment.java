@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axqw;
-import bcbv;
+import axqy;
+import bccj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateReq;
@@ -17,7 +17,7 @@ import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
-import mxh;
+import mxe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,7 +29,7 @@ public class CouponActivity$CouponWebViewFragment
   
   private void i()
   {
-    NewIntent localNewIntent = new NewIntent(super.getActivity(), mxh.class);
+    NewIntent localNewIntent = new NewIntent(super.getActivity(), mxe.class);
     localNewIntent.putExtra("cmd", "CouponSvr.coup_markBizupdate");
     localNewIntent.putExtra("data", new CouponProto.MarkBusinessFavourUpdateReq().toByteArray());
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
@@ -43,15 +43,15 @@ public class CouponActivity$CouponWebViewFragment
     int i = super.a(paramBundle);
     if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("source"))
     {
-      this.jdField_a_of_type_Bcbv.a.setVisibility(8);
-      this.jdField_a_of_type_Bcbv.c.setVisibility(0);
-      this.jdField_a_of_type_Bcbv.c.setText(2131696390);
-      this.jdField_a_of_type_Bcbv.c.setOnClickListener(this);
+      this.jdField_a_of_type_Bccj.a.setVisibility(8);
+      this.jdField_a_of_type_Bccj.c.setVisibility(0);
+      this.jdField_a_of_type_Bccj.c.setText(2131696391);
+      this.jdField_a_of_type_Bccj.c.setOnClickListener(this);
       return i;
     }
     this.jdField_a_of_type_AndroidContentIntent.removeExtra("source");
-    this.jdField_a_of_type_Bcbv.a.setVisibility(8);
-    this.jdField_a_of_type_Bcbv.c.setVisibility(8);
+    this.jdField_a_of_type_Bccj.a.setVisibility(8);
+    this.jdField_a_of_type_Bccj.c.setVisibility(8);
     return i;
   }
   
@@ -89,14 +89,14 @@ public class CouponActivity$CouponWebViewFragment
     super.a(this.jdField_a_of_type_AndroidContentIntent, this.h);
     if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("source"))
     {
-      this.jdField_a_of_type_Bcbv.a.setVisibility(8);
-      this.jdField_a_of_type_Bcbv.c.setVisibility(0);
-      this.jdField_a_of_type_Bcbv.c.setText(2131696390);
-      this.jdField_a_of_type_Bcbv.c.setClickable(false);
+      this.jdField_a_of_type_Bccj.a.setVisibility(8);
+      this.jdField_a_of_type_Bccj.c.setVisibility(0);
+      this.jdField_a_of_type_Bccj.c.setText(2131696391);
+      this.jdField_a_of_type_Bccj.c.setClickable(false);
       return;
     }
-    this.jdField_a_of_type_Bcbv.a.setVisibility(8);
-    this.jdField_a_of_type_Bcbv.c.setVisibility(8);
+    this.jdField_a_of_type_Bccj.a.setVisibility(8);
+    this.jdField_a_of_type_Bccj.c.setVisibility(8);
   }
   
   public boolean a(Bundle paramBundle)
@@ -106,7 +106,7 @@ public class CouponActivity$CouponWebViewFragment
     this.jdField_a_of_type_AndroidContentIntent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131696393));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131696394));
       this.jdField_a_of_type_Boolean = true;
       super.a(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -136,7 +136,7 @@ public class CouponActivity$CouponWebViewFragment
       this.jdField_a_of_type_AndroidContentIntent.putExtra("url", paramBundle);
       this.jdField_a_of_type_AndroidContentIntent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
       i();
-      axqw.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
+      axqy.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
       return true;
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("title");
       break;
@@ -145,7 +145,7 @@ public class CouponActivity$CouponWebViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_Bcbv.c)
+    if (paramView == this.jdField_a_of_type_Bccj.c)
     {
       if ((this.jdField_a_of_type_Int & 0x4) != 0)
       {

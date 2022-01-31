@@ -1,18 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.MotionEvent;
+import android.view.View;
 
-class bfxn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface bfxn
 {
-  bfxn(bfxm parambfxm) {}
-  
-  public void onGlobalLayout()
-  {
-    bfxm.a(this.a);
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfxn
  * JD-Core Version:    0.7.0.1
  */

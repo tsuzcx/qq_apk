@@ -1,10 +1,16 @@
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.os.Bundle;
 
-public abstract interface agcg
+class agcg
+  extends atzr
 {
-  public abstract void a();
+  agcg(agcf paramagcf) {}
   
-  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      agcf.a(this.a);
+    }
+  }
 }
 
 

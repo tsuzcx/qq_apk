@@ -1,40 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public class aayn
-  extends BroadcastReceiver
+class aayn
+  implements DialogInterface.OnClickListener
 {
-  public aayn(DirectForwardActivity paramDirectForwardActivity) {}
+  aayn(aaym paramaaym) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bawx.a(paramIntent, paramContext))) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
+      this.a.a.a.dismiss();
     }
   }
 }

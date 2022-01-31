@@ -1,41 +1,66 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.data.AEMaterialMgr.1;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.view.OrientationListener;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 
-public class biqp
-  implements aysa
+public abstract class biqp
 {
-  public biqp(AEMaterialMgr.1 param1, String paramString) {}
+  private int jdField_a_of_type_Int = -1;
+  private Sensor jdField_a_of_type_AndroidHardwareSensor;
+  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private OrientationListener jdField_a_of_type_AndroidViewOrientationListener;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onResp(aysx paramaysx)
+  public biqp(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(biqo.a(), 2, "onResp url: " + this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.packageUrl + " resultcode: " + paramaysx.c);
-    }
-    if (this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a)) {}
-    try
-    {
-      nay.a(new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id), biid.e + File.separator);
-      biqo.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
-      biqo.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).remove(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id);
-      return;
-    }
-    catch (IOException paramaysx)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramaysx.printStackTrace();
+    this(paramContext, 3);
+  }
+  
+  public biqp(Context paramContext, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
+    this.b = paramInt;
+    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
+    if (this.jdField_a_of_type_AndroidHardwareSensor != null) {
+      this.jdField_a_of_type_AndroidHardwareSensorEventListener = new biqq(this);
     }
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  public void a()
   {
-    biqo.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a, (int)(paramLong1 / paramLong2 * 100L));
-    if (!biqo.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).containsKey(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id)) {
-      biqo.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).put(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
+    if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
+      LogUtils.w("MOEL", "Cannot detect sensors. Not enabled");
     }
+    while (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, this.b);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(int paramInt);
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidHardwareSensor != null;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensor == null) {
+      LogUtils.w("MOEL", "Cannot detect sensors. Invalid disable");
+    }
+    while (this.jdField_a_of_type_Boolean != true) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

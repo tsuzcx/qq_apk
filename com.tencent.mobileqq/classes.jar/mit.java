@@ -1,18 +1,93 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class mit
-  extends Animation
+public abstract class mit
 {
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  Context a;
+  public VideoAppInterface a;
+  
+  protected mit(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    if (paramFloat < 0.5F) {}
-    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    QLog.d("ScreenLayout", 1, "ScreenLayout. onCreate." + this);
+  }
+  
+  public static mit a(Context paramContext, VideoAppInterface paramVideoAppInterface, int paramInt, boolean paramBoolean)
+  {
+    Object localObject = null;
+    switch (paramInt)
     {
-      paramTransformation.setAlpha(f);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
+    default: 
+      paramContext = localObject;
     }
+    for (;;)
+    {
+      return paramContext;
+      if (paramBoolean)
+      {
+        try
+        {
+          paramContext = new miz(paramContext, paramVideoAppInterface);
+          continue;
+        }
+        finally {}
+      }
+      else
+      {
+        paramContext = new miw(paramContext, paramVideoAppInterface);
+        continue;
+        if (paramBoolean)
+        {
+          paramContext = new miy(paramContext, paramVideoAppInterface);
+        }
+        else
+        {
+          paramContext = new miu(paramContext, paramVideoAppInterface);
+          continue;
+          if (paramBoolean)
+          {
+            paramContext = new miz(paramContext, paramVideoAppInterface);
+          }
+          else
+          {
+            paramContext = new miv(paramContext, paramVideoAppInterface);
+            continue;
+            if (paramBoolean) {
+              paramContext = new miz(paramContext, paramVideoAppInterface);
+            } else {
+              paramContext = new mix(paramContext, paramVideoAppInterface);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public abstract int a();
+  
+  public void a()
+  {
+    QLog.d("ScreenLayout", 1, "ScreenLayout. onDestroy." + this);
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(int paramInt, Rect paramRect1, Rect paramRect2, HashMap<Long, mlg> paramHashMap) {}
+  
+  public void a(lga paramlga, mdz[] paramArrayOfmdz, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
+  
+  public void a(mdz[] paramArrayOfmdz, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mdz[] paramArrayOfmdz, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public abstract boolean a();
+  
+  public boolean b()
+  {
+    return a() == 2;
   }
 }
 

@@ -1,7 +1,5 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahsa
@@ -11,10 +9,12 @@ public class ahsa
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.a.getText().toString();
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      this.a.b(paramDialogInterface);
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
     }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

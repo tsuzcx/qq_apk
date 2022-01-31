@@ -1,254 +1,159 @@
-import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aukh
-  extends auky
 {
-  public aukh()
-  {
-    this.a = 19;
-  }
+  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public static MessageRecord a(auko paramauko)
   {
-    boolean bool = true;
-    paramBoolean = true;
-    paramaukm = (DiscussionInfo)paramaukm;
-    if (paramaukx == null)
+    if (paramauko != null) {}
+    try
     {
-      paramaukm.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramaukm.infoSeq = paramCursor.getLong(paramCursor.getColumnIndex("infoSeq"));
-      paramaukm.ownerUin = paramCursor.getString(paramCursor.getColumnIndex("ownerUin"));
-      paramaukm.inheritOwnerUin = paramCursor.getString(paramCursor.getColumnIndex("inheritOwnerUin"));
-      paramaukm.discussionName = paramCursor.getString(paramCursor.getColumnIndex("discussionName"));
-      paramaukm.createTime = paramCursor.getLong(paramCursor.getColumnIndex("createTime"));
-      paramaukm.timeSec = paramCursor.getLong(paramCursor.getColumnIndex("timeSec"));
-      paramaukm.faceUinSet = paramCursor.getString(paramCursor.getColumnIndex("faceUinSet"));
-      paramaukm.DiscussionFlag = paramCursor.getLong(paramCursor.getColumnIndex("DiscussionFlag"));
-      paramaukm.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
-      paramaukm.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
-      paramaukm.mOrigin = paramCursor.getLong(paramCursor.getColumnIndex("mOrigin"));
-      paramaukm.mOriginExtra = paramCursor.getLong(paramCursor.getColumnIndex("mOriginExtra"));
-      paramaukm.mSelfRight = paramCursor.getInt(paramCursor.getColumnIndex("mSelfRight"));
-      paramaukm.groupCode = paramCursor.getLong(paramCursor.getColumnIndex("groupCode"));
-      paramaukm.groupUin = paramCursor.getLong(paramCursor.getColumnIndex("groupUin"));
-      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("hasCollect"))) {}
+      paramauko.postRead();
+      paramauko = (MessageRecord)paramauko;
+      return paramauko;
+    }
+    catch (Exception paramauko)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Cursor2EntityConvert", 2, "postRead exception = " + paramauko.getMessage());
+      }
+      return null;
+    }
+    catch (OutOfMemoryError paramauko)
+    {
       for (;;)
       {
-        paramaukm.hasCollect = paramBoolean;
-        paramaukm.createFrom = paramCursor.getInt(paramCursor.getColumnIndex("createFrom"));
-        paramaukm.uiControlFlag = paramCursor.getLong(paramCursor.getColumnIndex("uiControlFlag"));
-        return paramaukm;
-        paramBoolean = false;
+        if (QLog.isColorLevel()) {
+          QLog.e("Cursor2EntityConvert", 2, "postRead OutOfMemoryError");
+        }
       }
     }
-    int i = paramCursor.getColumnIndex("uin");
-    if (i == -1)
+    catch (VerifyError paramauko)
     {
-      paramaukx.a(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("infoSeq");
-      if (i != -1) {
-        break label1045;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Cursor2EntityConvert", 2, "postRead VerifyError");
+        }
       }
-      paramaukx.a(new NoColumnError("infoSeq", Long.TYPE));
-      label438:
-      i = paramCursor.getColumnIndex("ownerUin");
-      if (i != -1) {
-        break label1060;
-      }
-      paramaukx.a(new NoColumnError("ownerUin", String.class));
-      label472:
-      i = paramCursor.getColumnIndex("inheritOwnerUin");
-      if (i != -1) {
-        break label1075;
-      }
-      paramaukx.a(new NoColumnError("inheritOwnerUin", String.class));
-      label506:
-      i = paramCursor.getColumnIndex("discussionName");
-      if (i != -1) {
-        break label1090;
-      }
-      paramaukx.a(new NoColumnError("discussionName", String.class));
-      label540:
-      i = paramCursor.getColumnIndex("createTime");
-      if (i != -1) {
-        break label1105;
-      }
-      paramaukx.a(new NoColumnError("createTime", Long.TYPE));
-      label575:
-      i = paramCursor.getColumnIndex("timeSec");
-      if (i != -1) {
-        break label1120;
-      }
-      paramaukx.a(new NoColumnError("timeSec", Long.TYPE));
-      label610:
-      i = paramCursor.getColumnIndex("faceUinSet");
-      if (i != -1) {
-        break label1135;
-      }
-      paramaukx.a(new NoColumnError("faceUinSet", String.class));
-      label644:
-      i = paramCursor.getColumnIndex("DiscussionFlag");
-      if (i != -1) {
-        break label1150;
-      }
-      paramaukx.a(new NoColumnError("DiscussionFlag", Long.TYPE));
-      label679:
-      i = paramCursor.getColumnIndex("mComparePartInt");
-      if (i != -1) {
-        break label1165;
-      }
-      paramaukx.a(new NoColumnError("mComparePartInt", Integer.TYPE));
-      label714:
-      i = paramCursor.getColumnIndex("mCompareSpell");
-      if (i != -1) {
-        break label1180;
-      }
-      paramaukx.a(new NoColumnError("mCompareSpell", String.class));
-      label748:
-      i = paramCursor.getColumnIndex("mOrigin");
-      if (i != -1) {
-        break label1195;
-      }
-      paramaukx.a(new NoColumnError("mOrigin", Long.TYPE));
-      label783:
-      i = paramCursor.getColumnIndex("mOriginExtra");
-      if (i != -1) {
-        break label1210;
-      }
-      paramaukx.a(new NoColumnError("mOriginExtra", Long.TYPE));
-      label818:
-      i = paramCursor.getColumnIndex("mSelfRight");
-      if (i != -1) {
-        break label1225;
-      }
-      paramaukx.a(new NoColumnError("mSelfRight", Integer.TYPE));
-      label853:
-      i = paramCursor.getColumnIndex("groupCode");
-      if (i != -1) {
-        break label1240;
-      }
-      paramaukx.a(new NoColumnError("groupCode", Long.TYPE));
-      label888:
-      i = paramCursor.getColumnIndex("groupUin");
-      if (i != -1) {
-        break label1255;
-      }
-      paramaukx.a(new NoColumnError("groupUin", Long.TYPE));
-      label923:
-      i = paramCursor.getColumnIndex("hasCollect");
-      if (i != -1) {
-        break label1270;
-      }
-      paramaukx.a(new NoColumnError("hasCollect", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("createFrom");
-      if (i != -1) {
-        break label1298;
-      }
-      paramaukx.a(new NoColumnError("createFrom", Integer.TYPE));
     }
+  }
+  
+  private void a(List<Field> paramList, Cursor paramCursor)
+  {
+    if ((paramList == null) || (paramCursor == null)) {}
     for (;;)
     {
-      i = paramCursor.getColumnIndex("uiControlFlag");
-      if (i != -1) {
-        break label1313;
+      return;
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
       }
-      paramaukx.a(new NoColumnError("uiControlFlag", Long.TYPE));
-      return paramaukm;
-      paramaukm.uin = paramCursor.getString(i);
-      break;
-      label1045:
-      paramaukm.infoSeq = paramCursor.getLong(i);
-      break label438;
-      label1060:
-      paramaukm.ownerUin = paramCursor.getString(i);
-      break label472;
-      label1075:
-      paramaukm.inheritOwnerUin = paramCursor.getString(i);
-      break label506;
-      label1090:
-      paramaukm.discussionName = paramCursor.getString(i);
-      break label540;
-      label1105:
-      paramaukm.createTime = paramCursor.getLong(i);
-      break label575;
-      label1120:
-      paramaukm.timeSec = paramCursor.getLong(i);
-      break label610;
-      label1135:
-      paramaukm.faceUinSet = paramCursor.getString(i);
-      break label644;
-      label1150:
-      paramaukm.DiscussionFlag = paramCursor.getLong(i);
-      break label679;
-      label1165:
-      paramaukm.mComparePartInt = paramCursor.getInt(i);
-      break label714;
-      label1180:
-      paramaukm.mCompareSpell = paramCursor.getString(i);
-      break label748;
-      label1195:
-      paramaukm.mOrigin = paramCursor.getLong(i);
-      break label783;
-      label1210:
-      paramaukm.mOriginExtra = paramCursor.getLong(i);
-      break label818;
-      label1225:
-      paramaukm.mSelfRight = paramCursor.getInt(i);
-      break label853;
-      label1240:
-      paramaukm.groupCode = paramCursor.getLong(i);
-      break label888;
-      label1255:
-      paramaukm.groupUin = paramCursor.getLong(i);
-      break label923;
-      label1270:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = bool;; paramBoolean = false)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramaukm.hasCollect = paramBoolean;
+        String str = ((Field)paramList.next()).getName();
+        int i = paramCursor.getColumnIndex(str);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Integer.valueOf(i));
+      }
+    }
+  }
+  
+  public auko a(Class<? extends auko> paramClass, String paramString, Cursor paramCursor)
+  {
+    if (paramCursor.isBeforeFirst()) {
+      paramCursor.moveToFirst();
+    }
+    try
+    {
+      if (paramCursor.getColumnIndex("_id") >= 0) {}
+      for (l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));; l = -1L)
+      {
+        try
+        {
+          if (paramClass.getName().equals(MessageRecord.class.getName()))
+          {
+            int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
+            byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
+            int j = paramCursor.getInt(paramCursor.getColumnIndex("extLong"));
+            String str = paramCursor.getString(paramCursor.getColumnIndex("extStr"));
+            int k = paramCursor.getInt(paramCursor.getColumnIndex("istroop"));
+            paramClass = axas.a(i, arrayOfByte, j, str, k);
+            paramClass.msgData = arrayOfByte;
+            paramClass._id = l;
+            paramClass.extLong = j;
+            paramClass.extStr = str;
+            paramClass.istroop = k;
+            if (!this.jdField_a_of_type_Boolean)
+            {
+              this.jdField_a_of_type_Boolean = true;
+              a(aulp.b(paramClass), paramCursor);
+            }
+            paramClass.selfuin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("selfuin")).intValue());
+            paramClass.frienduin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("frienduin")).intValue());
+            paramClass.senderuin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("senderuin")).intValue());
+            paramClass.time = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("time")).intValue());
+            paramClass.msgtype = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgtype")).intValue());
+            paramClass.issend = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("issend")).intValue());
+            paramClass.msgseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgseq")).intValue());
+            paramClass.shmsgseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("shmsgseq")).intValue());
+            paramClass.msgId = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgId")).intValue());
+            paramClass.msgUid = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgUid")).intValue());
+            paramClass.uniseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("uniseq")).intValue());
+            paramClass.versionCode = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("versionCode")).intValue());
+            if (paramClass.versionCode <= 0) {
+              paramClass.msg = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msg")).intValue());
+            }
+            if ((l != -1L) && (paramString != null)) {
+              paramClass._status = 1001;
+            } else {
+              paramClass._status = 1002;
+            }
+          }
+        }
+        catch (Exception paramClass)
+        {
+          a();
+          return null;
+        }
+        catch (VerifyError paramClass)
+        {
+          a();
+          return null;
+        }
+        catch (OutOfMemoryError paramClass)
+        {
+          return null;
+        }
+        paramClass = null;
         break;
       }
-      label1298:
-      paramaukm.createFrom = paramCursor.getInt(i);
+      return paramClass;
     }
-    label1313:
-    paramaukm.uiControlFlag = paramCursor.getLong(i);
-    return paramaukm;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l = -1L;
+      }
+    }
   }
   
-  public String a(String paramString)
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,infoSeq INTEGER ,ownerUin TEXT ,inheritOwnerUin TEXT ,discussionName TEXT ,createTime INTEGER ,timeSec INTEGER ,faceUinSet TEXT ,DiscussionFlag INTEGER ,mComparePartInt INTEGER ,mCompareSpell TEXT ,mOrigin INTEGER ,mOriginExtra INTEGER ,mSelfRight INTEGER ,groupCode INTEGER ,groupUin INTEGER ,hasCollect INTEGER ,createFrom INTEGER ,uiControlFlag INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(aukm paramaukm, ContentValues paramContentValues)
-  {
-    paramaukm = (DiscussionInfo)paramaukm;
-    paramContentValues.put("uin", paramaukm.uin);
-    paramContentValues.put("infoSeq", Long.valueOf(paramaukm.infoSeq));
-    paramContentValues.put("ownerUin", paramaukm.ownerUin);
-    paramContentValues.put("inheritOwnerUin", paramaukm.inheritOwnerUin);
-    paramContentValues.put("discussionName", paramaukm.discussionName);
-    paramContentValues.put("createTime", Long.valueOf(paramaukm.createTime));
-    paramContentValues.put("timeSec", Long.valueOf(paramaukm.timeSec));
-    paramContentValues.put("faceUinSet", paramaukm.faceUinSet);
-    paramContentValues.put("DiscussionFlag", Long.valueOf(paramaukm.DiscussionFlag));
-    paramContentValues.put("mComparePartInt", Integer.valueOf(paramaukm.mComparePartInt));
-    paramContentValues.put("mCompareSpell", paramaukm.mCompareSpell);
-    paramContentValues.put("mOrigin", Long.valueOf(paramaukm.mOrigin));
-    paramContentValues.put("mOriginExtra", Long.valueOf(paramaukm.mOriginExtra));
-    paramContentValues.put("mSelfRight", Integer.valueOf(paramaukm.mSelfRight));
-    paramContentValues.put("groupCode", Long.valueOf(paramaukm.groupCode));
-    paramContentValues.put("groupUin", Long.valueOf(paramaukm.groupUin));
-    paramContentValues.put("hasCollect", Boolean.valueOf(paramaukm.hasCollect));
-    paramContentValues.put("createFrom", Integer.valueOf(paramaukm.createFrom));
-    paramContentValues.put("uiControlFlag", Long.valueOf(paramaukm.uiControlFlag));
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+    }
   }
 }
 

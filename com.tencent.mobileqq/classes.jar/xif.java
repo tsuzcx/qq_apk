@@ -6,28 +6,13 @@ import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 public class xif
   extends AnimatorListenerAdapter
 {
-  public xif(SingleLyricView paramSingleLyricView, String paramString) {}
+  public xif(SingleLyricView paramSingleLyricView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
   {
-    super.onAnimationCancel(paramAnimator);
-    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null) {
-      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null)
-    {
-      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
-      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(0.3F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
-  {
-    SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(1.0F);
   }
 }
 

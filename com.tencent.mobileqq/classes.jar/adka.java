@@ -1,143 +1,123 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Paint;
+import android.graphics.Color;
 import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.Display;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import com.tencent.widget.URLThemeImageView;
 
 public class adka
 {
-  private adke jdField_a_of_type_Adke = new adkb(this);
-  private adkf jdField_a_of_type_Adkf;
-  public Context a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public String a;
-  public String b;
-  private String c;
+  private adkc jdField_a_of_type_Adkc;
+  private View jdField_a_of_type_AndroidViewView;
+  private IntimateInfo.MemoryDayInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo;
   
-  public adka(Context paramContext, String paramString)
+  public adka(adjy paramadjy, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramString;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    paramContext = new RelativeLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
-    paramContext = amsk.a();
-    this.jdField_a_of_type_JavaLangString = paramContext.F;
-    this.b = paramContext.G;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559153, null);
   }
   
-  private int a(String paramString, float paramFloat, int paramInt)
+  public View a()
   {
-    int j = 0;
-    Paint localPaint;
-    if (!TextUtils.isEmpty(paramString))
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(adkc paramadkc)
+  {
+    this.jdField_a_of_type_Adkc = paramadkc;
+  }
+  
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  {
+    if (paramMemoryDayInfo != null)
     {
-      localPaint = new Paint();
-      localPaint.setTextSize(TypedValue.applyDimension(2, paramFloat, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = paramMemoryDayInfo;
+      if (this.jdField_a_of_type_AndroidViewView != null) {}
     }
-    for (int i = (int)localPaint.measureText(paramString, 0, paramString.length());; i = 0)
+    else
     {
-      paramString = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-      if (paramString != null) {
-        j = paramString.getDefaultDisplay().getWidth();
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setTag(paramMemoryDayInfo);
+    URLThemeImageView localURLThemeImageView = (URLThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367679);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379499);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369247);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369877);
+    Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362992);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = 686;
+    localURLDrawableOptions.mRequestHeight = 124;
+    localURLDrawableOptions.mRetryCount = 3;
+    localURLDrawableOptions.mPlayGifImage = true;
+    Object localObject1 = this.jdField_a_of_type_Adjy.jdField_a_of_type_JavaLangString;
+    if (localURLThemeImageView != null)
+    {
+      if (localURLThemeImageView.a != null) {
+        localURLThemeImageView.a.a(bfwr.c);
       }
-      return j - paramInt - i;
+      if (paramMemoryDayInfo.iconUrl != null) {
+        localURLThemeImageView.setBackgroundURL(paramMemoryDayInfo.iconUrl);
+      }
     }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    if ((localRelativeLayout != null) && (ThemeUtil.isNowThemeIsNight(null, false, null))) {
+      localObject1 = this.jdField_a_of_type_Adjy.b;
+    }
+    for (;;)
     {
-      QLog.e("intimate_relationship", 2, "jumph5Url strUrl Empty");
-      return;
-    }
-    if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://")))
-    {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("selfSet_leftViewText", ajyc.a(2131706537));
-      paramContext.startActivity(localIntent);
-      return;
-    }
-    QLog.e("intimate_relationship", 2, "jumph5Url strUrl unRecognized " + paramString);
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_Adke = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(adkf paramadkf)
-  {
-    this.jdField_a_of_type_Adkf = paramadkf;
-  }
-  
-  public void a(Context paramContext, ArrayList<IntimateInfo.MemoryDayInfo> paramArrayList)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      ArrayList localArrayList = new ArrayList();
-      Object localObject;
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null)) {
+        ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
+      }
+      for (;;)
       {
-        localObject = new Date(NetConnInfoCenter.getServerTimeMillis());
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
+        if ((localTextView2 != null) && (paramMemoryDayInfo.wording != null))
         {
-          IntimateInfo.MemoryDayInfo localMemoryDayInfo = (IntimateInfo.MemoryDayInfo)paramArrayList.next();
-          if ((localMemoryDayInfo != null) && (localMemoryDayInfo.date != 0L))
+          localTextView2.setText(paramMemoryDayInfo.wording);
+          localObject2 = "";
+          localObject1 = localObject2;
+          if (localTextView1 != null)
           {
-            Date localDate = new Date(localMemoryDayInfo.date);
-            if ((((Date)localObject).getDay() == localDate.getDay()) && (((Date)localObject).getMonth() == localDate.getMonth()) && (((Date)localObject).getYear() == localDate.getYear())) {
-              localArrayList.add(localMemoryDayInfo);
+            localObject1 = localObject2;
+            if (paramMemoryDayInfo.linkWording != null) {
+              localObject1 = paramMemoryDayInfo.linkWording;
             }
           }
-        }
-      }
-      if ((localArrayList != null) && (localArrayList.size() > 0)) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-      while (i < localArrayList.size())
-      {
-        paramArrayList = (IntimateInfo.MemoryDayInfo)localArrayList.get(i);
-        localObject = new adkc(this, paramContext);
-        if (localObject != null)
-        {
-          ((adkc)localObject).a(paramArrayList);
-          ((adkc)localObject).a(this.jdField_a_of_type_Adke);
-          if (((adkc)localObject).a() != null) {
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((adkc)localObject).a());
+          int i = actj.a(95.0F, this.jdField_a_of_type_Adjy.jdField_a_of_type_AndroidContentContext.getResources());
+          i = adjy.a(this.jdField_a_of_type_Adjy, (String)localObject1, 14.0F, i + 80);
+          if (i > 200) {
+            localTextView2.setMaxWidth(i);
           }
         }
-        i += 1;
-        continue;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        else
+        {
+          if ((localTextView1 == null) || (paramMemoryDayInfo.linkWording == null)) {
+            break;
+          }
+          localTextView1.setText(paramMemoryDayInfo.linkWording);
+          if (TextUtils.isEmpty(paramMemoryDayInfo.linkColor)) {}
+        }
+        try
+        {
+          localTextView1.setTextColor(Color.parseColor(paramMemoryDayInfo.linkColor));
+          localTextView1.setOnClickListener(new adkb(this));
+          return;
+          QLog.e("intimate_relationship", 2, " url is empty");
+          continue;
+          localTextView2.setMaxWidth(200);
+        }
+        catch (IllegalArgumentException paramMemoryDayInfo)
+        {
+          for (;;)
+          {
+            QLog.e("intimate_relationship", 2, " color parse err");
+          }
+        }
       }
     }
   }

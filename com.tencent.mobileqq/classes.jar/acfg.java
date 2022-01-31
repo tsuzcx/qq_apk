@@ -1,55 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class acfg
-  extends bbwf
+  implements PopupWindow.OnDismissListener
 {
-  public acfg(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public acfg(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onCancel(bbwg parambbwg)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwg);
-    }
-    super.onCancel(parambbwg);
-  }
-  
-  public void onDone(bbwg parambbwg)
-  {
-    super.onDone(parambbwg);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwg);
-    }
-    if (parambbwg.b()) {}
-    do
+    this.a.b = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
     {
-      return;
-      if (parambbwg.a() == -1)
-      {
-        parambbwg = new Message();
-        parambbwg.what = 17;
-        TextPreviewSettingActivity.a(this.a).sendMessage(parambbwg);
-        return;
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
       }
-      parambbwg = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
-    } while (parambbwg == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambbwg;
-    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwg);
     }
-    return super.onStart(parambbwg);
+    label76:
+    for (int i = 2130844793;; i = 2130845299)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
+    }
   }
 }
 

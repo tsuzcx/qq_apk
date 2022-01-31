@@ -1,57 +1,40 @@
-import android.util.SparseArray;
-import com.tencent.smtt.utils.ByteUtils;
-import java.nio.ByteBuffer;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class lpg
+public abstract interface lpg
 {
-  public static SparseArray<lpf> a(byte[] paramArrayOfByte)
-  {
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-    SparseArray localSparseArray = new SparseArray();
-    int j = 0;
-    while (j < paramArrayOfByte.length)
-    {
-      short s = a(localByteBuffer, j);
-      j += 2;
-      int i = b(localByteBuffer, j);
-      j += 2;
-      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
-      j += i;
-      localSparseArray.put(s, new lpf(s, i, arrayOfByte));
-    }
-    return localSparseArray;
-  }
+  public abstract int a(int paramInt, boolean paramBoolean1, lpx paramlpx, boolean paramBoolean2);
   
-  private static short a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
-  }
+  public abstract void a();
   
-  public static byte[] a(lpf paramlpf)
-  {
-    if (paramlpf != null)
-    {
-      short s1 = paramlpf.a();
-      short s2 = paramlpf.b();
-      paramlpf = paramlpf.a();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
-      localByteBuffer.putShort(s1);
-      localByteBuffer.putShort(s2);
-      localByteBuffer.put(paramlpf);
-      return localByteBuffer.array();
-    }
-    return null;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
-  }
+  public abstract void a(long paramLong);
   
-  private static short b(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
-  }
+  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(FilterDesc paramFilterDesc);
+  
+  public abstract void a(lpu paramlpu, lpx paramlpx);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(lpn paramlpn);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract boolean c();
 }
 
 

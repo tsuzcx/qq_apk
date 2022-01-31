@@ -1,23 +1,23 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbgd
-  implements ArkViewImplement.LoadCallback
+final class bbgd
+  extends akil
 {
-  bbgd(bbgb parambbgb) {}
+  bbgd(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
+    if (paramBoolean) {
+      bbgf.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 

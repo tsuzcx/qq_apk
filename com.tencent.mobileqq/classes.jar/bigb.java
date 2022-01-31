@@ -1,37 +1,32 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit.13;
+import android.content.Context;
+import java.io.File;
 
-public class bigb
-  implements DialogInterface.OnClickListener
+final class bigb
+  implements bifb
 {
-  public bigb(QIMCameraCaptureUnit.13 param13) {}
+  bigb(String paramString1, String paramString2, bigd parambigd, Context paramContext, File paramFile1, File paramFile2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    Activity localActivity = this.a.this$0.jdField_a_of_type_Bjqu.a();
-    if (paramInt == 1)
-    {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCameraPermissionFinish(true);
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
+    if (this.jdField_a_of_type_Bigd != null) {
+      this.jdField_a_of_type_Bigd.a(paramLong, paramFloat);
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  {
+    if (paramBoolean) {
+      biep.a().a(biga.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new bigc(this));
+    }
+    while (this.jdField_a_of_type_Bigd == null) {
       return;
-      localActivity.finish();
     }
+    this.jdField_a_of_type_Bigd.a(paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,15 @@
-public abstract interface avqr
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery;
+
+public class avqr
+  implements bfxa
 {
-  public abstract void a(long paramLong);
+  public avqr(IosTimepicker paramIosTimepicker) {}
+  
+  public void b(VerticalGallery paramVerticalGallery)
+  {
+    IosTimepicker.a(this.a);
+  }
 }
 
 

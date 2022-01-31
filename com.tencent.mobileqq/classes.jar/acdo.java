@@ -1,26 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.SplashActivity.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
 public class acdo
-  extends BroadcastReceiver
+  extends MqqHandler
 {
-  public acdo(SplashActivity.1 param1) {}
+  public acdo(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
     }
-    this.a.this$0.b();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class oli
+  implements INetInfoHandler
 {
-  public BaseArticleInfo a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public void onNetMobile2None() {}
   
-  public oli(BaseArticleInfo paramBaseArticleInfo)
+  public void onNetMobile2Wifi(String paramString)
   {
-    this.a = paramBaseArticleInfo;
+    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(olg.a());
+    olg.a();
   }
   
-  public boolean equals(Object paramObject)
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
   {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof oli)) {
-      return false;
-    }
-    paramObject = (oli)paramObject;
-    return this.a.equals(paramObject.a);
+    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(olg.a());
+    olg.a();
   }
   
-  public int hashCode()
+  public void onNetWifi2Mobile(String paramString)
   {
-    return this.a.hashCode();
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
+    bdle.a().a("101480433");
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
+    bdle.a().a("101480433");
   }
 }
 

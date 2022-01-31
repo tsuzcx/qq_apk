@@ -1,22 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bfls
-  implements PtuFilterResource
+  implements bflz
 {
-  public boolean checkPendantVersionOK()
-  {
-    return axlc.d();
-  }
+  public bfls(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public String getPortraitPathDir()
+  public void a(long paramLong)
   {
-    return getSoPathDir();
-  }
-  
-  public String getSoPathDir()
-  {
-    return axlc.b(BaseApplicationImpl.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
+    }
+    TraeAudioManager.b(paramLong, null, -1L, true);
+    this.a.c(paramLong);
   }
 }
 

@@ -7,7 +7,7 @@ import NS_MINI_REPORT.REPORT.StDcReportReq;
 import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
 import android.os.Handler;
 import android.os.HandlerThread;
-import bazb;
+import bazp;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -409,7 +409,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bazb.a(paramSingleDcData));
+      localStringBuilder.append(bazp.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }
@@ -418,7 +418,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bazb.a(paramSingleDcData));
+      localStringBuilder.append(bazp.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }

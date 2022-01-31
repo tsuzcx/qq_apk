@@ -1,37 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
+import android.view.View;
 
-class mcj
-  extends BroadcastReceiver
+public class mcj
+  extends mcg
 {
-  mcj(mci parammci) {}
+  private View a;
+  public String b;
+  public boolean b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public mcj(int paramInt, View paramView)
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
-    {
-      if (!mci.a(this.a))
-      {
-        mci.a(this.a, true);
-        if (mci.b(this.a)) {
-          mci.a(this.a);
-        }
-      }
-      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
-      lwd.a().a("update", i);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mci.b(this.a)));
-      mci.b(this.a, true);
-    } while (!mci.a(this.a));
-    mci.a(this.a);
+    super(paramInt);
+    this.a = paramView;
+  }
+  
+  public mcj(View paramView)
+  {
+    super(0);
+    this.a = paramView;
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 

@@ -1,12 +1,20 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-public class azzu
+class azzu
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  azzu(azzs paramazzs) {}
   
-  protected azzu(azzt paramazzt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.c();
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).e();
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 

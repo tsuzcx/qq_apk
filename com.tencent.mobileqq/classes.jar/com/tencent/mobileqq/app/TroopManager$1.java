@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import akhq;
-import akhv;
+import akhp;
+import akhu;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -26,8 +26,8 @@ class TroopManager$1
       QLog.e(".troop.survey", 1, "Error: check survey list expire, app is null!");
       return;
     }
-    akhq localakhq = (akhq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localakhq == null)
+    akhp localakhp = (akhp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localakhp == null)
     {
       QLog.e(".troop.survey", 1, "Error: check survey list expire, troop handler is null!");
       return;
@@ -42,7 +42,7 @@ class TroopManager$1
         if (QLog.isColorLevel()) {
           QLog.d(".troop.survey", 2, new Object[] { "group id ", str, "request survey toast, expiredTime: ", Integer.valueOf(localRspBody.toast.expired.get()) });
         }
-        akhv.a(localakhq, str, 0);
+        akhu.a(localakhp, str, 0);
       }
     }
     this.this$0.a();

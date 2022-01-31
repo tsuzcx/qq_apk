@@ -1,10 +1,16 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.SendMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bgmi
-  extends IInterface
+final class bgmi
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(SendMsg paramSendMsg);
+  bgmi(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

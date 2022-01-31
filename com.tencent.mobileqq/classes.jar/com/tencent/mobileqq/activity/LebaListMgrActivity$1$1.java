@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ainm;
+import aink;
 import java.util.List;
 
 class LebaListMgrActivity$1$1

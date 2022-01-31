@@ -1,14 +1,12 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-public class rgg
-  extends ThreadLocal<Boolean>
+public abstract interface rgg
 {
-  public rgg(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
   
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
+  
+  public abstract void m();
 }
 
 

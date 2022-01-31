@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abxs;
-import abxt;
+import abxo;
+import abxp;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -17,11 +17,11 @@ public class QuickLoginActivity
   ListView jdField_a_of_type_AndroidWidgetListView;
   SimpleAdapter jdField_a_of_type_AndroidWidgetSimpleAdapter;
   public ArrayList<HashMap<String, String>> a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abxt(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abxp(this);
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131373491));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131373493));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     c();
     b();
@@ -40,7 +40,7 @@ public class QuickLoginActivity
     }
     this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2131558427, new String[] { "text" }, new int[] { 2131368362 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new abxs(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new abxo(this));
   }
   
   /* Error */

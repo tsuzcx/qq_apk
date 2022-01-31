@@ -13,8 +13,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import bbdh;
-import qzm;
+import bbdv;
+import qzj;
 
 public class BezierSideBarView
   extends View
@@ -51,9 +51,9 @@ public class BezierSideBarView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_b_of_type_Float = ((int)bbdh.a(paramContext, 18.0F));
+    this.jdField_b_of_type_Float = ((int)bbdv.a(paramContext, 18.0F));
     this.jdField_a_of_type_Int = -16777216;
-    this.d = ((int)bbdh.a(paramContext, 18.0F));
+    this.d = ((int)bbdv.a(paramContext, 18.0F));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -62,9 +62,9 @@ public class BezierSideBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130842660);
+    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130842661);
     if (paramAttributeSet != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)bbdh.a(paramContext, 7.0F), (int)bbdh.a(paramContext, 12.0F), true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)bbdv.a(paramContext, 7.0F), (int)bbdv.a(paramContext, 12.0F), true);
     }
   }
   
@@ -142,7 +142,7 @@ public class BezierSideBarView
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new qzm(this, paramAnimatorUpdateListener));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new qzj(this, paramAnimatorUpdateListener));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   

@@ -1,21 +1,22 @@
-public class aiar
+public final class aiar
+  implements aiau
 {
-  public int a;
-  public boolean a;
-  
-  public static int a(int paramInt)
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    case 90: 
-    default: 
-      return 0;
-    case 0: 
-      return 270;
-    case 180: 
-      return 90;
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
     }
-    return 180;
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

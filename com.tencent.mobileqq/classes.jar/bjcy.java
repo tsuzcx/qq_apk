@@ -1,15 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.TemplateData;
 
-class bjcy
-  implements View.OnTouchListener
+public final class bjcy
+  implements Parcelable.Creator<TemplateData>
 {
-  bjcy(bjcx parambjcx) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public TemplateData a(Parcel paramParcel)
   {
-    return true;
+    return new TemplateData(paramParcel);
+  }
+  
+  public TemplateData[] a(int paramInt)
+  {
+    return new TemplateData[paramInt];
   }
 }
 

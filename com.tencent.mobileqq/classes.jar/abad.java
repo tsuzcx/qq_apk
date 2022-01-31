@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abad
-  extends ajtq
+class abad
+  implements DialogInterface.OnClickListener
 {
-  public abad(EditInfoActivity paramEditInfoActivity) {}
+  abad(abac paramabac) {}
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.j) {}
-    do
-    {
-      return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    bbrk.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 

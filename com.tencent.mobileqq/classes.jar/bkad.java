@@ -1,47 +1,43 @@
 import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class bkad
-  extends bkar
+  extends JobSegment<Bitmap, Bitmap>
 {
-  public bkad(DoodleView paramDoodleView)
+  public int a;
+  
+  public bkad()
   {
-    super(paramDoodleView);
+    this.a = 10;
   }
   
-  public String a()
+  public bkad(int paramInt)
   {
-    return "InteractPasterLayer";
+    this.a = paramInt;
   }
   
-  public void a(@NonNull Bitmap paramBitmap, @NonNull Rect[] paramArrayOfRect, String[] paramArrayOfString, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bkat == null)
-    {
-      this.jdField_a_of_type_Bkat = new bkae(this, paramArrayOfString, paramBitmap, new PointF(vzo.a(this.jdField_a_of_type_AndroidContentContext) / 2, vzo.d(this.jdField_a_of_type_AndroidContentContext) / 2), paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramBitmap.getWidth(), paramBitmap.getHeight(), true);
-      this.jdField_a_of_type_Bkat.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
+    if (paramBitmap == null) {
+      return null;
     }
-    for (;;)
+    bbki.a(paramBitmap, paramInt);
+    return paramBitmap;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    long l = System.currentTimeMillis();
+    paramJobContext = a(paramBitmap, this.a, false);
+    ved.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
+    if (paramJobContext == null)
     {
-      this.e = 1;
-      super.k();
+      super.notifyError(new BitmapError("BlurJobSegment", 7));
       return;
-      if (!this.jdField_a_of_type_Bkat.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-        this.jdField_a_of_type_Bkat.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      this.jdField_a_of_type_Bkat.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      this.jdField_a_of_type_Bkat.u = paramBitmap.getWidth();
-      this.jdField_a_of_type_Bkat.v = paramBitmap.getHeight();
-      this.jdField_a_of_type_Bkat.jdField_a_of_type_ArrayOfAndroidGraphicsRect = paramArrayOfRect;
-      this.jdField_a_of_type_Bkat.q = paramFloat1;
-      this.jdField_a_of_type_Bkat.r = paramFloat2;
-      this.jdField_a_of_type_Bkat.s = paramFloat3;
-      this.jdField_a_of_type_Bkat.t = paramFloat4;
-      this.jdField_a_of_type_Bkat.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
     }
+    super.notifyResult(paramJobContext);
   }
 }
 

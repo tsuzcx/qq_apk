@@ -1,55 +1,119 @@
-import BOSSStrategyCenter.tAdvDesc;
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.TextView;
 
 public class bhzn
-  extends ahmr
+  extends bhzo
 {
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
+  private float a;
+  private float b;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
   
-  public bhzn(tAdvDesc paramtAdvDesc)
+  public bhzn(String paramString, View paramView)
   {
-    super(paramtAdvDesc);
+    super(paramString, paramView);
   }
   
-  protected void a()
+  private void a(String paramString)
   {
-    super.a();
-    if ((this.a == null) || (TextUtils.isEmpty(this.a.res_data)))
-    {
-      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
-      return;
-    }
-    String str = this.a.res_data;
     try
     {
-      JSONObject localJSONObject = new JSONObject(str);
-      this.jdField_d_of_type_Int = localJSONObject.optInt("enableCountdown");
-      this.jdField_e_of_type_Int = localJSONObject.optInt("countdownMinute");
-      this.jdField_f_of_type_Int = localJSONObject.optInt("countdownSecond");
-      this.c = localJSONObject.optString("topText");
-      this.jdField_d_of_type_JavaLangString = localJSONObject.optString("bottomText");
-      this.jdField_e_of_type_JavaLangString = localJSONObject.optString("textColor");
-      this.jdField_f_of_type_JavaLangString = localJSONObject.optString("coutdownBgColor");
-      this.g = localJSONObject.optString("coutdownTextColor");
-      this.h = localJSONObject.optString("buttonTitle");
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(0, a(paramString));
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      localException.printStackTrace();
-      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
-      bhkd.a().a(2741, this.a.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+      paramString.printStackTrace();
     }
+  }
+  
+  private int b(String paramString)
+  {
+    int j = 3;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
+    }
+    int i;
+    if ("center".equals(paramString)) {
+      i = 17;
+    }
+    do
+    {
+      do
+      {
+        return i;
+        i = j;
+      } while ("left".equals(paramString));
+      i = j;
+    } while (!"right".equals(paramString));
+    return 5;
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(Color.parseColor(paramString));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {}
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
+        return;
+      }
+      if ("text_color".equals(paramString1))
+      {
+        b(paramString2);
+        return;
+      }
+      if ("text_align".equals(paramString1))
+      {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
+        return;
+      }
+      if ("max_lines".equals(paramString1))
+      {
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
+        return;
+      }
+      if ("shadow_color".equals(paramString1))
+      {
+        this.jdField_c_of_type_Int = Color.parseColor(paramString2);
+        return;
+      }
+      if ("shadow_x".equals(paramString1))
+      {
+        this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
+        return;
+      }
+      if ("shadow_y".equals(paramString1))
+      {
+        this.b = Float.parseFloat(paramString2);
+        return;
+      }
+      if ("shadow_radius".equals(paramString1))
+      {
+        this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
+        return;
+      }
+    } while (!"text_size".equals(paramString1));
+    a(paramString2);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    ((TextView)this.jdField_a_of_type_AndroidViewView).setShadowLayer(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.b, this.jdField_c_of_type_Int);
   }
 }
 

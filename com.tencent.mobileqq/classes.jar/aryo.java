@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
-public class aryo
-  implements View.OnLayoutChangeListener
+public abstract interface aryo
 {
-  public aryo(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  public abstract void a(LocationRoom.Venue paramVenue);
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
-  }
+  public abstract void a(LatLng paramLatLng);
+  
+  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
+  
+  public abstract void a(boolean paramBoolean, Point paramPoint);
+  
+  public abstract void a(boolean paramBoolean, aryp paramaryp);
 }
 
 

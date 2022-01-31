@@ -1,37 +1,23 @@
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.text.TextPaint;
+import android.text.Spanned;
 
-public class bjhw
-  extends bjgg
+class bjhw
+  extends bkda
 {
-  protected float a;
-  protected String a;
-  
-  public bjhw(int paramInt1, int paramInt2, TextPaint paramTextPaint, String paramString, RectF paramRectF, float paramFloat)
+  bjhw(bjhu parambjhu, int paramInt)
   {
-    super(paramInt1, paramInt2, paramTextPaint, paramRectF);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    super(paramInt);
   }
   
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  public int a(CharSequence paramCharSequence)
   {
-    if (paramCanvas == null) {
-      return;
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_JavaLangString.length();
-    float f1 = paramInt1;
-    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-    float f3 = paramInt2;
-    float f4 = this.jdField_a_of_type_Float;
-    paramCanvas.drawText(str, 0, i, f2 + f1, this.jdField_a_of_type_AndroidGraphicsRectF.top + (f3 + f4), this.jdField_a_of_type_AndroidTextTextPaint);
+    return 0;
   }
   
-  public void a(Canvas paramCanvas, bjge parambjge, int paramInt1, int paramInt2)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    parambjge.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF, paramInt1, paramInt2);
+    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
+    this.jdField_a_of_type_Int = (str.length() - bakx.b(str).length() + 20);
+    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 

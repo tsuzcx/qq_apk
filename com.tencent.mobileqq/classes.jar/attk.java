@@ -1,66 +1,45 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Calendar;
 
 class attk
-  implements View.OnClickListener
+  implements amnf
 {
-  attk(atte paramatte) {}
+  attk(attg paramattg) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-    }
-    do
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 1);
-      bfmr.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      if (!bbev.d(BaseApplication.getContext()))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694609));
-        return;
-      }
-    } while (!atte.a(this.a));
-    this.a.b();
-    boolean bool1 = this.a.a();
-    boolean bool2 = ((Boolean)atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(true))).booleanValue();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.godFlag) && (bool1))
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getString(2131694597, new Object[] { this.a.jdField_a_of_type_JavaLangString });
-      paramView = bbcv.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(ajyc.a(2131707270), new attl(this, paramView));
-      paramView.setNegativeButton(ajyc.a(2131707265), new attm(this, paramView));
-      paramView.show();
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
     }
-    if ((bool1) && (bool2))
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      paramView = ajyc.a(2131707294);
-      paramView = bbcv.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, paramView, 0, 0, null, null);
-      paramView.setPositiveButton(ajyc.a(2131707316), new attn(this, paramView));
-      paramView.setNegativeButton(ajyc.a(2131707349), new atto(this, paramView));
-      paramView.show();
-      atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.getCurrentAccountUin(), "nearby_profile_edit_isFirst", Boolean.valueOf(false));
-      return;
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + ajya.a(2131707310);
+    case 1: 
+      return paramInt2 + 1 + ajya.a(2131707302);
     }
-    if (bool1)
-    {
-      this.a.e();
-      paramView = new Intent("tribe_profile_edit_finish");
-      BaseApplicationImpl.getApplication().sendBroadcast(paramView);
-      return;
-    }
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
+    return paramInt2 + 1 + ajya.a(2131707290);
   }
 }
 

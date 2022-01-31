@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asyt;
-import asyu;
-import attz;
+import asyv;
+import asyw;
+import atub;
 
 public class NearbyProfileFragment$2$1
   implements Runnable
 {
-  public NearbyProfileFragment$2$1(attz paramattz, asyt paramasyt) {}
+  public NearbyProfileFragment$2$1(atub paramatub, asyv paramasyv) {}
   
   public void run()
   {
-    asyu.a(this.jdField_a_of_type_Attz.a.a.getAppInterface(), this.jdField_a_of_type_Asyt);
+    asyw.a(this.jdField_a_of_type_Atub.a.a.getAppInterface(), this.jdField_a_of_type_Asyv);
   }
 }
 

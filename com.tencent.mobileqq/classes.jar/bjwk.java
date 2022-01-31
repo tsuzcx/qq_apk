@@ -1,133 +1,81 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.TextView;
-import com.tencent.widget.XEditTextEx;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
 public class bjwk
-  extends bjwu
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  protected ViewStub a;
-  protected TextView a;
-  protected bkiu a;
-  protected String a;
+  private int jdField_a_of_type_Int;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private bjwj jdField_a_of_type_Bjwj;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private boolean jdField_b_of_type_Boolean;
   
-  public bjwk(@NonNull bjww parambjww)
+  public bjwk(bjwj parambjwj)
   {
-    super(parambjww);
+    this.jdField_a_of_type_Bjwj = parambjwj;
   }
   
-  private void d()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    k();
-    if (this.jdField_a_of_type_Bkiu.a() != 0)
+    if (this.jdField_a_of_type_Bjwj == null) {}
+    do
     {
-      this.jdField_a_of_type_Bkiu.a(0);
-      this.jdField_a_of_type_Bkiu.a.requestFocus();
-      bfmr.a(this.jdField_a_of_type_Bkiu.a);
-    }
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_a_of_type_Bkiu != null) && (this.jdField_a_of_type_Bkiu.a() == 0))
-    {
-      this.jdField_a_of_type_Bkiu.a(4);
-      bfmr.b(this.jdField_a_of_type_Bkiu.a);
-      this.jdField_a_of_type_Bkiu.a.clearFocus();
-    }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_Bkiu == null)
-    {
-      this.jdField_a_of_type_Bkiu = new bkiu(this.jdField_a_of_type_AndroidViewViewStub.inflate());
-      this.jdField_a_of_type_Bkiu.a(new bjwm(this));
-      this.jdField_a_of_type_Bkiu.b(new bjwn(this));
-    }
-  }
-  
-  @Nullable
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362109));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new bjwl(this));
-  }
-  
-  public void a(int paramInt, @NonNull bkkm parambkkm)
-  {
-    super.a(paramInt, parambkkm);
-    parambkkm.a.videoLabel = a();
-    bjww localbjww;
-    String str;
-    if (!TextUtils.isEmpty(a()))
-    {
-      paramInt = 1;
-      if (paramInt != 0)
+      do
       {
-        localbjww = this.jdField_a_of_type_Bjww;
-        str = a();
-        if (!this.jdField_a_of_type_Bjww.a()) {
-          break label89;
+        float f;
+        do
+        {
+          do
+          {
+            return true;
+            f = paramMotionEvent.getY();
+            switch (paramMotionEvent.getAction() & 0xFF)
+            {
+            case 3: 
+            case 4: 
+            default: 
+              return true;
+            case 0: 
+              this.jdField_a_of_type_Int = ((int)f);
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+              return true;
+            }
+          } while (paramMotionEvent.getPointerCount() > 2);
+          if (this.jdField_b_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
+            return true;
+          }
+          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bjwj.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
+        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
+        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
+        return true;
+        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
+          this.jdField_a_of_type_Boolean = true;
         }
-      }
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
+      return true;
+    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
+    return true;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bjwj.onClick(paramView);
     }
-    label89:
-    for (parambkkm = "2";; parambkkm = "1")
-    {
-      localbjww.a("pub_tag", 0, 0, new String[] { "1", str, parambkkm });
-      return;
-      paramInt = 0;
-      break;
+    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
+      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
     }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Bkiu != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Bkiu.a() == 0)
-      {
-        this.jdField_a_of_type_Bjww.a(0);
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      j();
-      return;
-    case 0: 
-      j();
-      return;
-    }
-    d();
-  }
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    paramView.getId();
+    this.jdField_a_of_type_Bjwj.a(paramMotionEvent);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
   }
 }
 

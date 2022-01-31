@@ -1,64 +1,20 @@
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkpo
-  extends bjwu
-  implements View.OnClickListener
+class bkpo
+  implements Handler.Callback
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  bkpo(bkpn parambkpn) {}
   
-  public bkpo(@NonNull bkpk parambkpk)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(parambkpk);
-  }
-  
-  private void d()
-  {
-    bbcv.a(a().getActivity(), 230).setMessage(2131718243).setPositiveButton(2131717755, new bkpr(this)).setNegativeButton(2131691035, new bkpq(this)).show();
-  }
-  
-  public bkpk a()
-  {
-    return (bkpk)this.jdField_a_of_type_Bjww;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131374092));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131366436));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bkpp(this));
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.arg1)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
     }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    bkpn.a(this.a, false, null, paramMessage.what);
+    return false;
   }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

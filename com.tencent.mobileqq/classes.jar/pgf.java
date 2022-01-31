@@ -1,22 +1,18 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pgf
-  implements ViewBase.OnClickListener
+  implements poi
 {
-  pgf(pgb parampgb, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  pgf(pgd parampgd, ArticleInfo paramArticleInfo, pau parampau) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
-    if (paramViewBase != null)
-    {
-      qol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      pgb.a(this.jdField_a_of_type_Pgb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
-    }
+    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
+    pgd.a(this.jdField_a_of_type_Pgd, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
+    this.jdField_a_of_type_Pau.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
   }
 }
 

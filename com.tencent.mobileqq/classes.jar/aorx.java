@@ -1,24 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class aorx
-  extends Handler
+  implements View.OnTouchListener
 {
-  public aorx(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aorx(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (paramMotionEvent.getAction() == 4)
     {
-    default: 
-      return;
+      this.a.a.dismiss();
+      return true;
     }
-    FileAssistantActivity.e(this.a);
+    return false;
   }
 }
 

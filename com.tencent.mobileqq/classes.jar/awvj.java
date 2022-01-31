@@ -1,45 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
+import android.text.TextUtils;
 
-class awvj
-  implements Comparator<awoc>
+public class awvj
 {
-  awvj(awvi paramawvi) {}
+  public int a;
+  public String a;
   
-  public int a(awoc paramawoc1, awoc paramawoc2)
+  public awvj(String paramString, int paramInt)
   {
-    int i = -1;
-    paramawoc1 = (awpq)paramawoc1;
-    paramawoc2 = (awpq)paramawoc2;
-    ajxn localajxn = (ajxn)this.a.a.getManager(51);
-    boolean bool1 = localajxn.b((String)paramawoc1.a());
-    boolean bool2 = localajxn.b((String)paramawoc2.a());
-    if ((!bool1) && (!bool2))
-    {
-      bool1 = localajxn.d((String)paramawoc1.a());
-      bool2 = localajxn.d((String)paramawoc2.a());
-      if ((!bool1) && (!bool2)) {
-        return paramawoc2.f() - paramawoc1.f();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return paramawoc2.f() - paramawoc1.f();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString.equals(paramString);
     }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return paramawoc2.f() - paramawoc1.f();
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("keyword:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" status:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

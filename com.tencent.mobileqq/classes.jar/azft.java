@@ -1,24 +1,20 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.3.1;
+import com.tencent.widget.AdapterView;
 
 public class azft
-  implements Animation.AnimationListener
+  implements bfpu
 {
-  public azft(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public azft(TroopAvatarWallPreviewActivity.3.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.b == null) {
-      return;
+    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
+      TroopAvatarWallPreviewActivity.d(this.a.a.this$0);
     }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
+    return true;
   }
 }
 

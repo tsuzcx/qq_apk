@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import bcpw;
+import bcql;
 
 class TroopChatPie$38$1
   implements Runnable
@@ -11,7 +11,7 @@ class TroopChatPie$38$1
   
   public void run()
   {
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext, ajyc.a(2131715261), 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie$38.this$0.a());
+    bcql.a(this.jdField_a_of_type_AndroidContentContext, ajya.a(2131715272), 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie$38.this$0.a());
   }
 }
 

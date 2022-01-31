@@ -1,26 +1,16 @@
-import android.text.TextUtils;
+import android.content.Context;
 
-public class bbpg
-  extends bbpj
+class bbpg
+  extends bbgu
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 20;
-  
-  public bbpg()
+  bbpg(bbpd parambbpd, Context paramContext, int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 100;
+    super(paramContext, paramInt);
   }
   
-  public String a()
+  public void onBackPressed()
   {
-    if (TextUtils.isEmpty(this.a)) {
-      return "";
-    }
-    return this.a;
+    super.onBackPressed();
   }
 }
 

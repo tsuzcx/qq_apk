@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
-import bipe;
-import bipf;
+import bipv;
+import bipw;
 
 public class WaterMarkOnlineUserManager$1$1
   implements Runnable
 {
-  public WaterMarkOnlineUserManager$1$1(bipf parambipf) {}
+  public WaterMarkOnlineUserManager$1$1(bipw parambipw) {}
   
   public void run()
   {
-    bipe.a(this.a.a);
+    bipv.a(this.a.a);
   }
 }
 

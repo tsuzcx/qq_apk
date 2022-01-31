@@ -1,48 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
-class adsp
-  extends ClickableSpan
+public class adsp
+  implements View.OnTouchListener
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
+  public adsp(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
   
-  adsp(adqy paramadqy, QQAppInterface paramQQAppInterface, Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
+    return true;
   }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Context localContext = (Context)this.b.get();
-    if ((paramView == null) || (localContext == null)) {}
-    while (!(localContext instanceof Activity)) {
-      return;
-    }
-    if (!bbev.d(localContext))
-    {
-      bcpw.a(localContext, 2131692321, 0).b(localContext.getResources().getDimensionPixelSize(2131298865));
-      return;
-    }
-    Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
-    localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_Adqy.a.a);
-    localContext.startActivity(localIntent);
-    VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint) {}
 }
 
 

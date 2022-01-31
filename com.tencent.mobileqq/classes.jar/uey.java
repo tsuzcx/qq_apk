@@ -1,365 +1,222 @@
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import android.os.SystemClock;
 import android.util.Log;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.Surface;
 
 @TargetApi(16)
-public abstract class uey
+public class uey
+  extends uev
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  protected String a;
-  private List<uez> jdField_a_of_type_JavaUtilList;
-  private uez jdField_a_of_type_Uez;
-  private ufa jdField_a_of_type_Ufa;
-  private ufc jdField_a_of_type_Ufc;
+  private Surface jdField_a_of_type_AndroidViewSurface;
   private boolean jdField_a_of_type_Boolean;
-  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean jdField_b_of_type_Boolean;
-  private ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean c;
-  private boolean d;
-  private boolean e;
   
-  public uey(ufc paramufc, boolean paramBoolean, int paramInt, ufa paramufa)
+  public uey(uez paramuez, boolean paramBoolean1, int paramInt, uex paramuex, Surface paramSurface, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangString = uey.class.getSimpleName();
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    if ((paramufc == null) || (paramInt == -1)) {
-      throw new IllegalArgumentException("no track specified");
-    }
-    this.jdField_a_of_type_Ufc = paramufc;
-    this.e = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramufc.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Ufa = paramufa;
-    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
-    this.jdField_a_of_type_Long = -9223372036854775808L;
+    super(paramuez, paramBoolean1, paramInt, paramuex);
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    a();
   }
   
-  public long a()
+  @TargetApi(16)
+  private long a(long paramLong, uez paramuez, MediaCodec paramMediaCodec)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  protected final MediaCodec a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaCodec;
-  }
-  
-  protected final MediaFormat a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
-  }
-  
-  public final uez a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return null;
-    }
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 0L);
-    boolean bool;
-    if ((i >= 0) && ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0))
+    paramMediaCodec.flush();
+    paramuez.a(paramLong, 0);
+    if (paramuez.a() == paramLong)
     {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if ((!this.jdField_b_of_type_Boolean) || (!this.c)) {
-        break label85;
+      Log.d(this.jdField_a_of_type_JavaLangString, "skip fastseek, already there");
+      return paramLong;
+    }
+    b();
+    a(false);
+    paramuez.a(paramLong, 0);
+    long l1 = 0L;
+    long l3 = 9223372036854775807L;
+    int i = 0;
+    while ((paramuez.a()) && (i < 20))
+    {
+      long l5 = paramLong - paramuez.a();
+      long l4 = l3;
+      long l2 = l1;
+      if (l5 >= 0L)
+      {
+        l4 = l3;
+        l2 = l1;
+        if (l5 < l3)
+        {
+          l2 = paramuez.a();
+          l4 = l5;
+        }
       }
-      a();
-      this.jdField_b_of_type_Boolean = false;
-      this.c = false;
-      this.d = true;
+      l3 = l4;
+      l1 = l2;
+      if (l5 < 0L)
+      {
+        i += 1;
+        l3 = l4;
+        l1 = l2;
+      }
+    }
+    paramuez.a(l1, 0);
+    while (paramuez.a() != l1) {
+      paramuez.a();
+    }
+    Log.d(this.jdField_a_of_type_JavaLangString, "exact fastseek match:       " + paramuez.a());
+    return l1;
+  }
+  
+  public int a()
+  {
+    MediaFormat localMediaFormat = a();
+    if (localMediaFormat != null)
+    {
+      float f = localMediaFormat.getInteger("height");
+      return (int)(localMediaFormat.getFloat("mpx-dar") * f);
+    }
+    return 0;
+  }
+  
+  protected uew a(ufc paramufc, long paramLong, uez paramuez, MediaCodec paramMediaCodec)
+  {
+    long l1 = -1L;
+    long l2 = paramLong / 1000L;
+    uew localuew2 = super.a(paramufc, paramLong, paramuez, paramMediaCodec);
+    if (localuew2 == null)
+    {
+      paramufc = null;
+      return paramufc;
+    }
+    uew localuew1;
+    if ((paramufc.b() == 3) || (paramufc.b() == 2) || (paramufc.b() == 0) || (paramufc.b() == 1))
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "fast seek to " + paramLong + " arrived at " + localuew2.jdField_a_of_type_Long);
+      paramLong = l2;
+      localuew1 = localuew2;
     }
     for (;;)
     {
-      return null;
-      bool = false;
-      break;
-      label85:
-      Object localObject;
-      if (i >= 0)
+      paramufc = localuew1;
+      if (l1 != paramLong) {
+        break;
+      }
+      Log.d(this.jdField_a_of_type_JavaLangString, "exact seek match!");
+      return localuew1;
+      if (paramufc.b() == 6)
       {
-        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-        if ((localObject != null) && (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0))
-        {
-          ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-          ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+        a(localuew2, false);
+        a(paramLong, paramuez, paramMediaCodec);
+        paramuez = a(true, true);
+        if (paramuez == null) {
+          return null;
         }
-        uez localuez = (uez)this.jdField_a_of_type_JavaUtilList.get(0);
-        localuez.jdField_a_of_type_Int = i;
-        localuez.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
-        localuez.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-        localuez.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-        if (this.d)
-        {
-          this.d = false;
-          localuez.jdField_b_of_type_Boolean = true;
+        Log.d(this.jdField_a_of_type_JavaLangString, "fast_exact seek to " + paramLong + " arrived at " + paramuez.jdField_a_of_type_Long);
+        paramufc = paramuez;
+        if (paramuez.jdField_a_of_type_Long >= paramLong) {
+          break;
         }
-        if (localuez.jdField_a_of_type_Boolean)
+        Log.d(this.jdField_a_of_type_JavaLangString, "presentation is behind...");
+        return paramuez;
+      }
+      if (paramufc.b() != 4)
+      {
+        localuew1 = localuew2;
+        paramLong = l2;
+        if (paramufc.b() != 5) {}
+      }
+      else
+      {
+        paramLong = localuew2.jdField_a_of_type_Long / 1000L;
+        int i = 0;
+        localuew1 = localuew2;
+        l1 = l2;
+        l2 = -1L;
+        while (paramLong < l1)
         {
-          Log.d(this.jdField_a_of_type_JavaLangString, "EOS output");
-          return localuez;
+          if (i == 0) {
+            Log.d(this.jdField_a_of_type_JavaLangString, "skipping frames...");
+          }
+          i += 1;
+          if (b()) {
+            l1 = localuew1.jdField_a_of_type_Long / 1000L;
+          }
+          if (localuew1.jdField_a_of_type_Boolean)
+          {
+            Log.d(this.jdField_a_of_type_JavaLangString, "end of stream reached, seeking to last frame");
+            a(localuew1, false);
+            return a(paramufc, l2, paramuez, paramMediaCodec);
+          }
+          l2 = localuew1.jdField_a_of_type_Long;
+          a(localuew1, false);
+          localuew1 = a(true, true);
+          if (localuew1 == null) {
+            return null;
+          }
+          paramLong = localuew1.jdField_a_of_type_Long / 1000L;
         }
-        this.jdField_a_of_type_Long = localuez.jdField_a_of_type_Long;
-        return localuez;
+        Log.d(this.jdField_a_of_type_JavaLangString, "frame new position:         " + localuew1.jdField_a_of_type_Long);
+        Log.d(this.jdField_a_of_type_JavaLangString, "seeking finished, skipped " + i + " frames");
+        if ((paramufc.b() == 5) && (paramLong > l1))
+        {
+          if (i == 0)
+          {
+            Log.w(this.jdField_a_of_type_JavaLangString, "this should never happen");
+            l2 = paramLong;
+            paramLong = l1;
+            l1 = l2;
+          }
+          else
+          {
+            Log.d(this.jdField_a_of_type_JavaLangString, "exact seek: repeat seek for previous frame at " + l2);
+            a(localuew1, false);
+            return a(paramufc, l2, paramuez, paramMediaCodec);
+          }
+        }
+        else
+        {
+          l2 = paramLong;
+          paramLong = l1;
+          l1 = l2;
+        }
       }
-      if (i == -3)
-      {
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output buffers have changed.");
-      }
-      else if (i == -2)
-      {
-        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output format has changed to " + localObject);
-        a((MediaFormat)localObject);
-      }
-      else if (i != -1) {}
-    }
-  }
-  
-  protected uez a(uff paramuff, long paramLong, ufc paramufc, MediaCodec paramMediaCodec)
-  {
-    if (this.e)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      paramMediaCodec.flush();
-      return null;
-    }
-    Log.d(this.jdField_a_of_type_JavaLangString, "seeking to:                 " + paramLong);
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor current position: " + paramufc.a());
-    paramufc.a(paramLong, paramuff.a());
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor new position:     " + paramufc.a());
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    paramMediaCodec.flush();
-    if (paramufc.c())
-    {
-      a();
-      this.d = true;
-    }
-    return a(true, true);
-  }
-  
-  public final uez a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    while (!this.jdField_b_of_type_Boolean)
-    {
-      uez localuez = a();
-      while (a(paramBoolean1)) {}
-      if (localuez != null) {
-        return localuez;
-      }
-      if (!paramBoolean2) {
-        return null;
-      }
-    }
-    Log.d(this.jdField_a_of_type_JavaLangString, "EOS NULL");
-    return null;
-  }
-  
-  protected final void a()
-  {
-    int i = 0;
-    try
-    {
-      long l = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_Ufc.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      a(this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaFormat);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < this.jdField_b_of_type_ArrayOfJavaNioByteBuffer.length)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(new uez());
-        i += 1;
-      }
-      Log.d(this.jdField_a_of_type_JavaLangString, "reinitCodec " + (SystemClock.elapsedRealtime() - l) + "ms");
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: invalid surface or format");
-      throw localIllegalArgumentException;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: illegal state");
-      throw localIllegalStateException;
     }
   }
   
   protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    paramMediaCodec.configure(paramMediaFormat, null, null, 0);
+    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
   }
   
-  protected void a(MediaFormat paramMediaFormat) {}
-  
-  public void a(uez paramuez)
+  public void a(Surface paramSurface)
   {
-    b(paramuez);
-  }
-  
-  public void a(uez paramuez, long paramLong)
-  {
-    b(paramuez);
-  }
-  
-  public final void a(uff paramuff, long paramLong)
-  {
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    this.jdField_a_of_type_Uez = a(paramuff, paramLong, this.jdField_a_of_type_Ufc, this.jdField_a_of_type_AndroidMediaMediaCodec);
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public final boolean a(boolean paramBoolean)
-  {
-    int j = 4;
-    long l = 0L;
-    if ((this.jdField_a_of_type_Boolean) || (!a())) {}
-    int k;
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if ((this.jdField_a_of_type_Ufc.b() == -1) || (this.jdField_a_of_type_Ufc.b() == this.jdField_a_of_type_Int)) {
-            break;
-          }
-        } while (!paramBoolean);
-        return this.jdField_a_of_type_Ufc.a();
-        k = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(0L);
-      } while (k < 0);
-      localObject = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[k];
-      if (!this.jdField_a_of_type_Ufc.c()) {
-        break;
-      }
-      this.c = true;
-      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(k, 0, 0, 0L, 4);
-    } while ((this.jdField_a_of_type_Ufc.b() <= -1L) || (this.jdField_a_of_type_Ufa == null));
-    this.jdField_a_of_type_Ufa.a(this);
-    return false;
-    if ((this.jdField_a_of_type_Ufc.b() > -1L) && (this.jdField_a_of_type_Ufa != null)) {
-      this.jdField_a_of_type_Ufa.a(this);
+    if (paramSurface == null) {
+      throw new RuntimeException("surface must not be null");
     }
-    int i = this.jdField_a_of_type_Ufc.a((ByteBuffer)localObject, 0);
-    if (i < 0)
-    {
-      Log.d(this.jdField_a_of_type_JavaLangString, "EOS input");
-      this.jdField_a_of_type_Boolean = true;
-      i = 0;
-      paramBoolean = false;
-      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label265;
-      }
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    a();
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void a(uew paramuew, long paramLong)
+  {
+    a(paramuew, true);
+  }
+  
+  public void a(uew paramuew, boolean paramBoolean)
+  {
+    a().releaseOutputBuffer(paramuew.jdField_a_of_type_Int, paramBoolean);
+    c(paramuew);
+  }
+  
+  public int b()
+  {
+    MediaFormat localMediaFormat = a();
+    if (localMediaFormat != null) {
+      return localMediaFormat.getInteger("height");
     }
-    for (;;)
-    {
-      ((MediaCodec)localObject).queueInputBuffer(k, 0, i, l, j);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Ufc.a();
-      }
-      return paramBoolean;
-      l = this.jdField_a_of_type_Ufc.a();
-      paramBoolean = true;
-      break;
-      label265:
-      j = 0;
-    }
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Ufc.b();
-  }
-  
-  public final void b()
-  {
-    if (this.e) {
-      return;
-    }
-    for (;;)
-    {
-      int i = this.jdField_a_of_type_Ufc.b();
-      if ((i == -1) || (i == this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      this.jdField_a_of_type_Ufc.a();
-    }
-  }
-  
-  public void b(uez paramuez)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(paramuez.jdField_a_of_type_Int, false);
-    c(paramuez);
-  }
-  
-  protected final boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Uez != null) {
-      a(this.jdField_a_of_type_Uez, 0L);
-    }
-  }
-  
-  protected final void c(uez paramuez)
-  {
-    paramuez.a();
-    this.jdField_a_of_type_JavaUtilList.add(paramuez);
-  }
-  
-  protected final boolean c()
-  {
-    return this.e;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Uez != null) {
-      a(this.jdField_a_of_type_Uez);
-    }
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Ufc.b();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-    this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-    Log.d(this.jdField_a_of_type_JavaLangString, "decoder released");
+    return 0;
   }
 }
 

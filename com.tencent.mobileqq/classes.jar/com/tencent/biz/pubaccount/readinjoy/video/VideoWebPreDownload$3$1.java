@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
 import java.util.HashMap;
-import ood;
+import ooa;
+import qvt;
+import qvu;
 import qvw;
-import qvx;
-import qvz;
 
 public class VideoWebPreDownload$3$1
   implements Runnable
 {
-  public VideoWebPreDownload$3$1(qvx paramqvx, ood paramood) {}
+  public VideoWebPreDownload$3$1(qvu paramqvu, ooa paramooa) {}
   
   public void run()
   {
-    if (!qvw.a(this.jdField_a_of_type_Qvx.jdField_a_of_type_Qvw, this.jdField_a_of_type_Ood.a, this.jdField_a_of_type_Ood.b, this.jdField_a_of_type_Qvx.jdField_a_of_type_Int)) {
-      qvw.a(this.jdField_a_of_type_Qvx.jdField_a_of_type_Qvw, this.jdField_a_of_type_Ood.a, this.jdField_a_of_type_Ood.b, this.jdField_a_of_type_Qvx.jdField_a_of_type_Long, this.jdField_a_of_type_Qvx.jdField_a_of_type_Int);
+    if (!qvt.a(this.jdField_a_of_type_Qvu.jdField_a_of_type_Qvt, this.jdField_a_of_type_Ooa.a, this.jdField_a_of_type_Ooa.b, this.jdField_a_of_type_Qvu.jdField_a_of_type_Int)) {
+      qvt.a(this.jdField_a_of_type_Qvu.jdField_a_of_type_Qvt, this.jdField_a_of_type_Ooa.a, this.jdField_a_of_type_Ooa.b, this.jdField_a_of_type_Qvu.jdField_a_of_type_Long, this.jdField_a_of_type_Qvu.jdField_a_of_type_Int);
     }
     String str;
     do
@@ -23,10 +23,10 @@ public class VideoWebPreDownload$3$1
       do
       {
         return;
-      } while (qvw.a(this.jdField_a_of_type_Qvx.jdField_a_of_type_Qvw) == null);
-      str = (String)qvw.a(this.jdField_a_of_type_Qvx.jdField_a_of_type_Qvw).get(this.jdField_a_of_type_Ood.b);
+      } while (qvt.a(this.jdField_a_of_type_Qvu.jdField_a_of_type_Qvt) == null);
+      str = (String)qvt.a(this.jdField_a_of_type_Qvu.jdField_a_of_type_Qvt).get(this.jdField_a_of_type_Ooa.b);
     } while (TextUtils.isEmpty(str));
-    qvw.a(this.jdField_a_of_type_Qvx.jdField_a_of_type_Qvw).a(this.jdField_a_of_type_Ood.b, 1, str);
+    qvt.a(this.jdField_a_of_type_Qvu.jdField_a_of_type_Qvt).a(this.jdField_a_of_type_Ooa.b, 1, str);
   }
 }
 

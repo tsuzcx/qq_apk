@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import azmr;
-import aznc;
+import azmt;
 import azne;
+import azng;
 import java.util.List;
 
 public class TroopAioKeywordTipManager$4$1
   implements Runnable
 {
-  public TroopAioKeywordTipManager$4$1(azne paramazne, List paramList) {}
+  public TroopAioKeywordTipManager$4$1(azng paramazng, List paramList) {}
   
   public void run()
   {
-    azmr.a(this.jdField_a_of_type_Azne.a.a, this.jdField_a_of_type_JavaUtilList);
+    azmt.a(this.jdField_a_of_type_Azng.a.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

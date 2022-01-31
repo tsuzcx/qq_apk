@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akhq;
+import akhp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class TroopMemberListActivity$25
@@ -10,7 +10,7 @@ class TroopMemberListActivity$25
   
   public void run()
   {
-    ((akhq)this.this$0.app.a(20)).a(this.this$0.b, this.this$0.i, this.this$0.e);
+    ((akhp)this.this$0.app.a(20)).a(this.this$0.b, this.this$0.i, this.this$0.e);
   }
 }
 

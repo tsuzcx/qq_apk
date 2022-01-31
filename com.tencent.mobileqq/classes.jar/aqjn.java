@@ -1,24 +1,15 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.Switch;
 
 public class aqjn
-  implements RadioGroup.OnCheckedChangeListener
 {
-  public aqjn(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
-  {
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    default: 
-      return;
-    case 2131379429: 
-      axmt.a(0);
-      return;
-    }
-    axmt.a(1);
-  }
+  public CompoundButton.OnCheckedChangeListener a;
+  public TextView a;
+  public URLImageView a;
+  public Switch a;
+  public String a;
 }
 
 

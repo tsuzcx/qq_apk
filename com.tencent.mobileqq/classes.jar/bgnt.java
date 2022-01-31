@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
 
-public class bgnt
+class bgnt
   implements DialogInterface.OnClickListener
 {
-  public bgnt(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  bgnt(bgnk parambgnk, whr paramwhr) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    this.jdField_a_of_type_Whr.a();
     paramDialogInterface.dismiss();
-    this.a.finish();
   }
 }
 

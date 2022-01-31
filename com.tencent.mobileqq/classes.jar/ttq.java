@@ -1,57 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public class ttq
-  extends Handler
+class ttq
+  implements ViewPager.OnPageChangeListener
 {
-  WeakReference<FollowCaptureLauncher> a;
+  ttq(tto paramtto) {}
   
-  public ttq(FollowCaptureLauncher paramFollowCaptureLauncher)
-  {
-    this.a = new WeakReference(paramFollowCaptureLauncher);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    int i = 0;
-    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
-    if (localFollowCaptureLauncher == null) {}
-    for (;;)
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      }
-      while (i != 0)
-      {
-        FollowCaptureLauncher.f(localFollowCaptureLauncher);
-        return;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher);
-        continue;
-        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.c(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.d(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
-        }
-        vel.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
-        FollowCaptureLauncher.e(localFollowCaptureLauncher);
-        continue;
-        localFollowCaptureLauncher.a();
-      }
-    }
+    this.a.a.setSelectedTab(paramInt, true);
   }
 }
 

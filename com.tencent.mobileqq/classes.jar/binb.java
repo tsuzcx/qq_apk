@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.support.annotation.Nullable;
 
 class binb
-  implements CompoundButton.OnCheckedChangeListener
+  implements bjos<biwo>
 {
-  binb(bimz parambimz) {}
+  binb(bina parambina) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(@Nullable biwo parambiwo)
   {
-    paramCompoundButton = bimz.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
+    if (parambiwo == null) {
       return;
     }
+    bina.a(this.a, parambiwo);
+    bina.b(this.a, parambiwo);
   }
 }
 

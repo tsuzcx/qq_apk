@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adug;
-import adur;
-import aduu;
+import adue;
+import adup;
+import adus;
 import android.app.Activity;
-import aobk;
-import askd;
-import axqw;
+import aobp;
+import askf;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
@@ -14,22 +14,22 @@ import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 public class MarketFaceItemBuilder$7$1
   implements Runnable
 {
-  public MarketFaceItemBuilder$7$1(adur paramadur) {}
+  public MarketFaceItemBuilder$7$1(adup paramadup) {}
   
   public void run()
   {
-    Object localObject = (askd)this.a.jdField_a_of_type_Adug.a.getManager(14);
-    if (this.a.jdField_a_of_type_Aduu.a != null) {
-      ((askd)localObject).a(this.a.jdField_a_of_type_Aduu.a.a.epId);
+    Object localObject = (askf)this.a.jdField_a_of_type_Adue.a.getManager(14);
+    if (this.a.jdField_a_of_type_Adus.a != null) {
+      ((askf)localObject).a(this.a.jdField_a_of_type_Adus.a.a.epId);
     }
-    if (this.a.jdField_a_of_type_Aduu.a != null) {
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_Adug.b, this.a.jdField_a_of_type_Adug.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_Aduu.a.a.epId), false, false);
+    if (this.a.jdField_a_of_type_Adus.a != null) {
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_Adue.b, this.a.jdField_a_of_type_Adue.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_Adus.a.a.epId), false, false);
     }
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_Adug.a;
-    if (this.a.jdField_a_of_type_Aduu.a == null) {}
-    for (localObject = "";; localObject = this.a.jdField_a_of_type_Aduu.a.a.epId)
+    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_Adue.a;
+    if (this.a.jdField_a_of_type_Adus.a == null) {}
+    for (localObject = "";; localObject = this.a.jdField_a_of_type_Adus.a.a.epId)
     {
-      axqw.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
+      axqy.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
       return;
     }
   }

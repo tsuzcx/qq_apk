@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import amos;
+import amor;
 import android.os.Message;
-import bfmt;
+import bfnk;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class DeviceFragment$7
   implements Runnable
 {
-  DeviceFragment$7(DeviceFragment paramDeviceFragment, amos paramamos) {}
+  DeviceFragment$7(DeviceFragment paramDeviceFragment, amor paramamor) {}
   
   public void run()
   {

@@ -1,25 +1,32 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-final class axbz
-  implements axcc
+public class axbz
+  extends MSFServlet
 {
-  axbz(BusinessObserver paramBusinessObserver) {}
-  
-  public void a(int paramInt, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
+    paramIntent = (QQAppInterface)getAppRuntime();
+    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      ayxg.a().a(paramFromServiceMsg);
+      if (QLog.isColorLevel()) {
+        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
+      }
+    }
   }
   
-  public void a(String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "getTmpkey");
-    this.a.onReceive(0, true, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
+    }
+    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
+    paramPacket.setTimeout(15000L);
   }
 }
 

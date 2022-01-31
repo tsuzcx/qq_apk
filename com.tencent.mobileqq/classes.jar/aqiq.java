@@ -1,26 +1,49 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqiq
-  extends akup
+  implements atyp
 {
-  public aqiq(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public aqiq(NearbyHybridFragment paramNearbyHybridFragment) {}
+  
+  public boolean a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt != 0)
-    {
-      bcpw.a(this.a.a, 1, ajyc.a(2131707668), 1).a();
-      this.a.f();
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
     }
-    this.a.a(paramSosoLbsInfo);
+    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(str)) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("status", paramInt1);
+      localJSONObject.put("direction", paramInt2);
+      localJSONObject.put("height", paramInt3);
+      if (this.a.jdField_a_of_type_Aqir != null) {
+        this.a.jdField_a_of_type_Aqir.mWebview.callJs(str, new String[] { localJSONObject.toString() });
+      }
+      return false;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
+    }
+    return false;
   }
 }
 

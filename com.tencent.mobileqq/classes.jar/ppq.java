@@ -1,137 +1,80 @@
-import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ppq
 {
-  public static String a(String paramString)
+  public static String a(boolean paramBoolean, List<BaseArticleInfo> paramList)
   {
-    QLog.i("PTSOfflineUtil", 1, "[loadFilePathAsString], path = " + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = new File(paramString);
-    try
-    {
-      if (!paramString.exists())
-      {
-        QLog.i("PTSOfflineUtil", 1, "[loadFilePathAsString], file not exist.");
-        return "";
-      }
-      paramString = new FileInputStream(paramString);
-      byte[] arrayOfByte = new byte[paramString.available()];
-      paramString.read(arrayOfByte);
-      paramString.close();
-      paramString = new String(arrayOfByte);
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      QLog.e("PTSOfflineUtil", 1, "[loadFilePathAsString], e = " + paramString);
-      return "";
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.e("PTSOfflineUtil", 1, "[loadFilePathAsString], t = " + paramString);
-      }
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
+    JSONObject localJSONObject1 = new JSONObject();
     Object localObject;
-    if (!TextUtils.isEmpty(paramString))
+    if (paramBoolean) {
+      localObject = "1";
+    }
+    for (;;)
     {
-      localObject = a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], configStr = " + (String)localObject);
+      try
+      {
+        localJSONObject1.put("success", localObject);
+        localObject = new JSONArray();
+        if ((paramList == null) || (paramList.size() <= 0)) {
+          break label355;
+        }
+        paramList = paramList.iterator();
+        if (!paramList.hasNext()) {
+          break label355;
+        }
+        localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("articleID", localBaseArticleInfo.mArticleID);
+        localJSONObject2.put("rowKey", localBaseArticleInfo.innerUniqueID);
+        localJSONObject2.put("title", localBaseArticleInfo.mTitle);
+        localJSONObject2.put("coverImageUrl", localBaseArticleInfo.mFirstPagePicUrl);
+        localJSONObject2.put("jsonImageUrl", localBaseArticleInfo.mJsonPictureList);
+        localJSONObject2.put("articleContentUrl", localBaseArticleInfo.mArticleContentUrl);
+        localJSONObject2.put("subscribeName", localBaseArticleInfo.mSubscribeName);
+        localJSONObject2.put("channelID", localBaseArticleInfo.mChannelID);
+        localJSONObject2.put("recommendSeq", localBaseArticleInfo.mRecommendSeq);
+        localJSONObject2.put("algorithmID", localBaseArticleInfo.mAlgorithmID);
+        localJSONObject2.put("strategyID", localBaseArticleInfo.mStrategyId);
+        localJSONObject2.put("feedsType", localBaseArticleInfo.mFeedType);
+        localJSONObject2.put("proteusItemData", localBaseArticleInfo.proteusItemsData);
       }
-    }
-    try
-    {
-      localObject = new JSONObject((String)localObject);
-      bool1 = rqm.a(((JSONObject)localObject).optString("min_version", null), ((JSONObject)localObject).optString("max_version", null), ((JSONObject)localObject).optString("min_android_build", null), ((JSONObject)localObject).optString("max_android_build", null));
-      QLog.i("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], res = " + bool1 + ", configPath = " + paramString);
-      return bool1;
-    }
-    catch (JSONException localJSONException)
-    {
+      catch (JSONException paramList)
+      {
+        BaseArticleInfo localBaseArticleInfo;
+        JSONObject localJSONObject2;
+        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e " + paramList);
+      }
+      try
+      {
+        if (!osg.a().a(localBaseArticleInfo.mArticleID)) {
+          break label367;
+        }
+        i = 1;
+        localJSONObject2.put("hasRead", i);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e = " + localException);
+        continue;
+      }
+      ((JSONArray)localObject).put(localJSONObject2);
+      continue;
       for (;;)
       {
-        QLog.i("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], e = " + localJSONException);
-        bool1 = bool2;
+        return localJSONObject1.toString();
+        localObject = "0";
+        break;
+        label355:
+        localJSONObject1.put("data", localObject);
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[checkOfflineVersionIsValid], t = " + localThrowable);
-        bool1 = bool2;
-      }
-    }
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = false;
-    try
-    {
-      boolean bool2 = nas.a(paramString1, paramString2);
-      bool1 = bool2;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[checkOfflineDirIsValid], t = " + localThrowable);
-      }
-    }
-    QLog.i("PTSOfflineUtil", 1, "[checkOfflineDirIsValid], res = " + bool1 + ", bid = " + paramString2 + ", dir = " + paramString1);
-    return bool1;
-  }
-  
-  public static String b(String paramString)
-  {
-    String str4 = "no version";
-    String str1 = str4;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      str1 = a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], configStr = " + str1);
-      }
-    }
-    try
-    {
-      str1 = new JSONObject(str1).optString("pts_version", "no version");
-      QLog.i("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], res = " + str1 + ", configPath = " + paramString);
-      return str1;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], e = " + localJSONException);
-        String str2 = str4;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.i("PTSOfflineUtil", 1, "[getOfflineCurrentVersion], t = " + localThrowable);
-        String str3 = str4;
-      }
+      label367:
+      int i = 0;
     }
   }
 }

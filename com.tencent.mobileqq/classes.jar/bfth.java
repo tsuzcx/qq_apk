@@ -1,18 +1,10 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.NegativeChildrenLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class bfth
-  implements View.OnClickListener
+public abstract interface bfth
 {
-  public bfth(NegativeChildrenLayout paramNegativeChildrenLayout) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
-  }
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 

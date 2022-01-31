@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class aail
-  implements DialogInterface.OnClickListener
+  implements adlm
 {
-  public aail(AddRequestActivity paramAddRequestActivity) {}
+  public aail(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(adlj paramadlj)
   {
-    this.a.a.cancel();
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2130771997, 2130772001);
+    }
+    return false;
+  }
+  
+  public boolean a(adlj paramadlj, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

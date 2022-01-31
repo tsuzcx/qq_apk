@@ -1,24 +1,91 @@
 import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 final class yua
+  extends LinearLayout
+  implements yts
 {
-  public int a = -2147483648;
-  public int b = -2147483648;
-  public int c = -2147483648;
-  public int d = -2147483648;
+  private int jdField_a_of_type_Int = -2147483648;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ytp jdField_a_of_type_Ytp;
+  private int jdField_b_of_type_Int = -2147483648;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public yua(Context paramContext, int paramInt1, int paramInt2)
+  public yua(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      yxs.d("GdtBannerViewWithLetterStyle", "constructor");
+      yxp.d("GdtBannerViewForCreativeSize194", "constructor");
       return;
     }
-    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
-    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
-    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
-    this.d = Double.valueOf(0.16D * paramInt2).intValue();
+    setOrientation(0);
+    setGravity(16);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Ytp = new ytp(paramContext, paramString1);
+    this.jdField_a_of_type_Ytp.setId(2131366951);
+    addView(this.jdField_a_of_type_Ytp);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366954);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131366950);
+    this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
+    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#666666"));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView);
   }
+  
+  public View a()
+  {
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Ytp == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      yxp.d("GdtBannerViewForCreativeSize194", "setSize error");
+      return;
+    }
+    ytx localytx = new ytx(getContext(), paramInt1, paramInt2);
+    paramInt1 = Double.valueOf(1.0D * (paramInt2 - localytx.jdField_b_of_type_Int * 2) / this.jdField_b_of_type_Int * this.jdField_a_of_type_Int + localytx.jdField_b_of_type_Int * 2).intValue();
+    this.jdField_a_of_type_Ytp.setPadding(localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+    this.jdField_a_of_type_Ytp.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.leftMargin = localytx.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localytx.d);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.topMargin = localytx.c;
+    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, localytx.d);
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
 }
 
 

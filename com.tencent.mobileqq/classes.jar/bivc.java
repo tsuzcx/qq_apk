@@ -1,118 +1,50 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import dov.com.qq.im.ae.gif.video.PngsCreateWorkingQueue.1;
-import dov.com.qq.im.ae.gif.video.PngsCreateWorkingQueue.3;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Semaphore;
+import android.text.InputFilter;
+import android.text.Spanned;
 
-public class bivc
+class bivc
+  implements InputFilter
 {
-  private static String jdField_a_of_type_JavaLangString = "PngsCreateWorkingQueue";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private biva jdField_a_of_type_Biva = new biva();
-  private bive jdField_a_of_type_Bive;
-  private bivf jdField_a_of_type_Bivf;
+  private int jdField_a_of_type_Int = 32;
   
-  public bivc(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble, Context paramContext)
-  {
-    this.jdField_a_of_type_Bivf = new bivf(paramString, paramList, paramList1, paramDouble);
-    paramString = new HandlerThread("PngsCreateWorkingQueue");
-    paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public bivc(biur parambiur) {}
   
-  private void a()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    Iterator localIterator = this.jdField_a_of_type_Biva.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "clear frame files, dir = " + str);
-      bbdj.a(str);
+    if (paramCharSequence.equals("\n")) {
+      return "";
     }
-  }
-  
-  private void b(biuz parambiuz)
-  {
-    String[] arrayOfString = new String[1];
-    arrayOfString[0] = "";
-    Semaphore localSemaphore = new Semaphore(0);
-    bism localbism = (bism)bisl.jdField_a_of_type_JavaUtilList.get(bisl.jdField_a_of_type_ArrayOfInt[(parambiuz.jdField_a_of_type_Int % bisl.jdField_a_of_type_ArrayOfInt.length)]);
-    float f1 = 0.81F;
-    float f2 = 0.16F;
-    if (parambiuz.b.contains("\n"))
+    for (;;)
     {
-      f1 = 0.67F;
-      f2 = 0.3F;
-    }
-    int i;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      j = (int)(DeviceUtils.getScreenWidth(this.jdField_a_of_type_AndroidContentContext) * 0.44F) + 1;
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        break label242;
-      }
-      i = bawz.a(this.jdField_a_of_type_AndroidContentContext, 2.0F) * 320 / j;
-      label119:
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        break label248;
-      }
-    }
-    label242:
-    label248:
-    for (int j = bawz.c(this.jdField_a_of_type_AndroidContentContext, 23.0F) * 320 / j;; j = 19)
-    {
-      this.jdField_a_of_type_Bivf.a(parambiuz.b, j, localbism.jdField_a_of_type_JavaLangString, localbism.b, i, 0.0F, f1, 1.0F, f2);
-      this.jdField_a_of_type_Bivf.a(parambiuz.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Bivf.a(new bivd(this, parambiuz, arrayOfString, localSemaphore));
-      try
+      char c;
+      if ((paramInt1 <= this.jdField_a_of_type_Int) && (paramInt2 < paramSpanned.length()))
       {
-        localSemaphore.acquire();
-        if (this.jdField_a_of_type_Bive != null) {
-          this.jdField_a_of_type_Bive.a(parambiuz.jdField_a_of_type_Int, arrayOfString[0]);
+        c = paramSpanned.charAt(paramInt2);
+        paramInt1 += biur.a(this.jdField_a_of_type_Biur, c);
+        paramInt2 += 1;
+      }
+      else
+      {
+        if (paramInt1 > this.jdField_a_of_type_Int) {
+          return paramSpanned.subSequence(0, paramInt2 - 1);
         }
-        return;
+        paramInt3 = 0;
+        paramInt2 = paramInt1;
+        paramInt1 = paramInt3;
+        while ((paramInt2 <= this.jdField_a_of_type_Int) && (paramInt1 < paramCharSequence.length()))
+        {
+          c = paramCharSequence.charAt(paramInt1);
+          paramInt2 = biur.a(this.jdField_a_of_type_Biur, c) + paramInt2;
+          paramInt1 += 1;
+        }
+        paramInt3 = paramInt1;
+        if (paramInt2 > this.jdField_a_of_type_Int) {
+          paramInt3 = paramInt1 - 1;
+        }
+        return paramCharSequence.subSequence(0, paramInt3);
+        paramInt1 = 0;
+        paramInt2 = 0;
       }
-      catch (InterruptedException parambiuz)
-      {
-        parambiuz.printStackTrace();
-      }
-      j = 1920;
-      break;
-      i = 5;
-      break label119;
     }
-  }
-  
-  public biva a()
-  {
-    return this.jdField_a_of_type_Biva;
-  }
-  
-  public void a(biuz parambiuz)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreateWorkingQueue.1(this, parambiuz));
-  }
-  
-  public void a(bive parambive)
-  {
-    this.jdField_a_of_type_Bive = parambive;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "stop, clearFiles = " + paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreateWorkingQueue.3(this, paramBoolean));
-    this.jdField_a_of_type_AndroidContentContext = null;
   }
 }
 

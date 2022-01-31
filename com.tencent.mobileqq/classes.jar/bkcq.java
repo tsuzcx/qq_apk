@@ -1,35 +1,14 @@
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bkcq
-  extends ValueAnimator
+class bkcq
+  implements View.OnClickListener
 {
-  private bkcr jdField_a_of_type_Bkcr;
-  private boolean jdField_a_of_type_Boolean;
+  bkcq(bkcm parambkcm) {}
   
-  public bkcq()
+  public void onClick(View paramView)
   {
-    setInterpolator(new AccelerateDecelerateInterpolator());
-  }
-  
-  public void a(bkcp parambkcp1, bkcp parambkcp2)
-  {
-    setObjectValues(new Object[] { parambkcp1, parambkcp2 });
-    this.jdField_a_of_type_Boolean = bkcp.a(parambkcp1, parambkcp2);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void setObjectValues(Object... paramVarArgs)
-  {
-    super.setObjectValues(paramVarArgs);
-    if (this.jdField_a_of_type_Bkcr == null) {
-      this.jdField_a_of_type_Bkcr = new bkcr();
-    }
-    setEvaluator(this.jdField_a_of_type_Bkcr);
+    this.a.a(false);
   }
 }
 

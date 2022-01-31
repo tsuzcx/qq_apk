@@ -1,39 +1,64 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout.LayoutParams;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
-import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
 
 public class wdo
-  implements ViewPager.OnPageChangeListener
+  extends Dialog
 {
-  public wdo(SlideTabViewPager paramSlideTabViewPager) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public wdo(Context paramContext)
   {
-    if (SlideTabViewPager.a(this.a) == 0)
-    {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
-      SlideTabViewPager localSlideTabViewPager = this.a;
-      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
-    }
-    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setOffset(paramInt2);
-    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-    int i = SlideTabViewPager.a(this.a).getWidth();
-    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
+    super(paramContext);
+    super.requestWindowFeature(1);
+    super.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561195, null);
+    super.setCanceledOnTouchOutside(true);
+    super.setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131367254));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367252));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367282));
+    paramContext = new ScaleAnimation(1.0F, 1.6F, 1.0F, 1.6F, 1, 0.5F, 1, 0.5F);
+    paramContext.setDuration(1000L);
+    paramContext.setRepeatCount(-1);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.8F, 0.0F);
+    localAlphaAnimation.setDuration(1000L);
+    localAlphaAnimation.setRepeatCount(-1);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.addAnimation(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new wdp(this));
   }
   
-  public void onPageSelected(int paramInt)
+  private void a()
   {
-    this.a.a(paramInt);
-    if (SlideTabViewPager.a(this.a) != null) {
-      onPageSelected(paramInt);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(300L);
+    localAlphaAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localAlphaAnimation);
+    localAlphaAnimation.setAnimationListener(new wdq(this));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
 }
 

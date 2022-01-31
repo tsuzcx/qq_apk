@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bjyt;
+import bjzk;
 
 public class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$2
   implements Runnable
 {
-  public HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$2(bjyt parambjyt) {}
+  public HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$2(bjzk parambjzk) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Bjyu.b = null;
-    this.a.jdField_a_of_type_Bjyu.a = true;
+    this.a.jdField_a_of_type_Bjzl.b = null;
+    this.a.jdField_a_of_type_Bjzl.a = true;
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.a);
   }
 }

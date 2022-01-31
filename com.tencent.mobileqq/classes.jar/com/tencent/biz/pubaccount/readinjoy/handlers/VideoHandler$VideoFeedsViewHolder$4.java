@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import oyo;
+import oyl;
 
 public class VideoHandler$VideoFeedsViewHolder$4
   implements Runnable
 {
-  public VideoHandler$VideoFeedsViewHolder$4(oyo paramoyo) {}
+  public VideoHandler$VideoFeedsViewHolder$4(oyl paramoyl) {}
   
   public void run()
   {
-    oyo.a(this.this$0, false);
+    oyl.a(this.this$0, false);
   }
 }
 

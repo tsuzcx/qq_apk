@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webviewplugin;
 
 import android.app.Activity;
-import bcdb;
-import bchy;
+import bcdp;
+import bcim;
 
 public class WebViewJumpPlugin$2
   implements Runnable
 {
-  public WebViewJumpPlugin$2(bchy parambchy) {}
+  public WebViewJumpPlugin$2(bcim parambcim) {}
   
   public void run()
   {

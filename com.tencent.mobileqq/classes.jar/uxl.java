@@ -1,11 +1,9 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommend;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -15,52 +13,49 @@ import java.util.Iterator;
 import java.util.List;
 
 public class uxl
-  extends uxr<HotRecommendFeedItem>
+  extends uxo<ShareGroupFeedItem>
 {
-  public uxl(@NonNull HotRecommendFeedItem paramHotRecommendFeedItem)
+  public uxl(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
   {
-    super(paramHotRecommendFeedItem);
+    super(paramShareGroupFeedItem);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.a(paramStoryVideoItem);
+    paramStoryVideoItem = (ShareGroupFeedItem)a();
+    paramStoryVideoItem.videoCount -= 1;
+    if (((ShareGroupFeedItem)a()).videoCount < 0) {
+      ((ShareGroupFeedItem)a()).videoCount = 0;
+    }
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
+  {
+    super.a(paramStoryVideoItem, paramBoolean);
+    paramStoryVideoItem = (ShareGroupFeedItem)a();
+    paramStoryVideoItem.videoCount += 1;
+    if (((ShareGroupFeedItem)a()).videoCount < 0) {
+      ((ShareGroupFeedItem)a()).videoCount = 0;
+    }
   }
   
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    Object localObject1 = (qqstory_struct.MultiRecommend)paramStoryFeed.multi_recommend_feed.get();
-    ((HotRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.MultiRecommend)localObject1);
-    ((HotRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    paramStoryFeed = (tdo)tdc.a(2);
-    ArrayList localArrayList = new ArrayList();
-    localObject1 = ((qqstory_struct.MultiRecommend)localObject1).recommend_feed.get().iterator();
-    while (((Iterator)localObject1).hasNext())
+    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
+    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Object localObject2 = (qqstory_struct.MultiRecommendItem)((Iterator)localObject1).next();
+      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
       StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("HotRecommendHomeFeed", (qqstory_struct.MultiRecommendItem)localObject2);
-      localArrayList.add(localStoryVideoItem);
-      QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-      localQQUserUIItem.convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
-      localObject2 = paramStoryFeed.a(localQQUserUIItem);
-      localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
-      localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject2).getDisplayName();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    c(localArrayList, true);
-    return !localArrayList.isEmpty();
-  }
-  
-  public void b()
-  {
-    super.b();
-    tdo localtdo = (tdo)tdc.a(2);
-    if (!this.c.isEmpty())
-    {
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
-          localtdo.b(localStoryVideoItem.mOwnerUid);
-        }
-      }
-    }
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 

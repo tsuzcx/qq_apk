@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
-import aesa;
+import aert;
+import aery;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 public class PublicAccountChatPie$13$1
   implements Runnable
 {
-  public PublicAccountChatPie$13$1(aesa paramaesa) {}
+  public PublicAccountChatPie$13$1(aery paramaery) {}
   
   public void run()
   {
     if (this.a.a.o != null) {
       this.a.a.o.clearAnimation();
     }
-    aerv.b(this.a.a).removeView(this.a.a.o);
+    aert.b(this.a.a).removeView(this.a.a.o);
   }
 }
 

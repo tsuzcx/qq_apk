@@ -1,37 +1,17 @@
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewPager;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wvy
-  implements RadioGroup.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public wvy(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  public wvy(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
-      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
-    }
-    while (RelativePersonalBottomView.b(this.a).getId() != paramInt) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = akwg.a(this.a.getContext());; bool = true)
-    {
-      if (!bool)
-      {
-        bbcv.b((PublicFragmentActivity)this.a.getContext());
-        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
-        return;
-      }
-      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
-      return;
-    }
+    wis.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
   }
 }
 

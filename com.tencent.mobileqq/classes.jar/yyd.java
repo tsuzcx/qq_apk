@@ -1,105 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import java.net.URLEncoder;
-import org.json.JSONObject;
+import android.os.SystemClock;
 
 public class yyd
 {
-  public static String a(int paramInt)
-  {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-      ((JSONObject)localObject).put("ps", String.valueOf(1));
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
+  private long a = -1L;
+  private long b = -1L;
+  private long c = -1L;
   
-  public static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
+  private void c()
   {
-    int k = 1;
-    int i;
-    if ((paramLong1 >= 0L) && (paramLong2 == 0L)) {
-      i = 4;
-    }
-    for (;;)
+    if ((this.b >= this.a) && (this.a != -1L) && (this.b != -1L)) {}
+    for (long l = this.b - this.a;; l = -1L)
     {
-      long l = paramLong1;
-      if (paramLong1 <= -1L)
+      if (l != -1L)
       {
-        i = 4;
-        l = 0L;
-      }
-      if (l >= paramLong2) {
-        i = 4;
-      }
-      try
-      {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("bt", l + "");
-        ((JSONObject)localObject).put("et", paramLong2 + "");
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (l > 0L)
-        {
-          j = 0;
-          ((JSONObject)localObject).put("bf", j + "");
-          localStringBuilder = new StringBuilder();
-          if (!paramBoolean) {
-            break label249;
-          }
+        if (this.c == -1L) {
+          this.c = 0L;
         }
-        label249:
-        for (int j = k;; j = 0)
-        {
-          ((JSONObject)localObject).put("ef", j + "");
-          ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
-          ((JSONObject)localObject).put("pa", i + "");
-          localObject = ((JSONObject)localObject).toString();
-          return localObject;
-          j = 1;
-          break;
-        }
-        i = 0;
+        this.c = (l + this.c);
       }
-      catch (Exception localException)
-      {
-        return null;
-      }
+      this.a = -1L;
+      this.b = -1L;
+      return;
     }
   }
   
-  public static void a(GdtAd paramGdtAd, String paramString)
+  public long a()
   {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
-      return;
-    }
-    a(paramGdtAd.getUrlForImpression(), paramString);
+    return this.c;
   }
   
-  public static void a(String paramString)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    yye.a(paramString);
+    this.a = SystemClock.elapsedRealtime();
   }
   
-  private static void a(String paramString1, String paramString2)
+  public void b()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      yye.a(paramString1);
-      return;
-      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
-    }
+    this.b = SystemClock.elapsedRealtime();
+    c();
   }
 }
 

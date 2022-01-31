@@ -1,50 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallUICtr.1.1;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class mel
-  extends BroadcastReceiver
+  extends lgg
 {
-  mel(mek parammek) {}
+  public mel(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    long l = mtm.a(paramIntent);
-    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION")) {
-      if (this.a.b == 1) {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
-      }
-    }
-    do
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      do
-      {
-        do
-        {
-          return;
-          paramContext = ldc.a().a();
-          this.a.a(l, paramContext);
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-        } while (this.a.jdField_a_of_type_Mkl == null);
-        this.a.jdField_a_of_type_Mkl.a();
-        return;
-        if (paramContext.equals("tencent.video.invite.multiaccept"))
-        {
-          paramContext = ldc.a().a();
-          this.a.a(l, paramContext);
-          return;
-        }
-        if (!paramContext.equals("tencent.video.invite.multirefuse")) {
-          break;
-        }
-      } while (this.a.b(0));
-      this.a.a(l, true, null);
-      return;
-    } while (!paramContext.equals("tencent.video.destroyService"));
+      this.a.b("VideoObserver_onClose");
+      this.a.a(paramLong, paramInt);
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
+    }
   }
 }
 

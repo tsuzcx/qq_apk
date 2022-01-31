@@ -1,37 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class acff
-  extends Handler
+  implements audy
 {
-  public acff(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public acff(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, audz paramaudz)
   {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131366561);
-    switch (paramMessage.what)
+    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramaudz.b)))
     {
+      TextPreviewTranslateActivity.a(this.a, paramaudz.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
-    do
-    {
-      do
-      {
-        return;
-        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
-        return;
-      } while (!(paramMessage.obj instanceof Drawable));
-      localImageView.setImageDrawable((Drawable)paramMessage.obj);
-      return;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

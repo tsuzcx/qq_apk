@@ -2,33 +2,33 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.view.View;
 import android.widget.TextView;
-import ascp;
-import asdy;
-import aseb;
+import ascr;
+import asea;
+import ased;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class MagicfaceViewController$7$1
   implements Runnable
 {
-  public MagicfaceViewController$7$1(aseb paramaseb, ascp paramascp) {}
+  public MagicfaceViewController$7$1(ased paramased, ascr paramascr) {}
   
   public void run()
   {
     
-    if (this.jdField_a_of_type_Aseb.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Aseb.jdField_a_of_type_Asdy.c();
+    if (this.jdField_a_of_type_Ased.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Ased.jdField_a_of_type_Asea.c();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aseb.jdField_a_of_type_Asdy.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_Aseb.jdField_a_of_type_Asdy.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      if ((this.jdField_a_of_type_Ascp != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_Ascp.c))) {
-        this.jdField_a_of_type_Aseb.jdField_a_of_type_Asdy.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aM();
+      this.jdField_a_of_type_Ased.jdField_a_of_type_Asea.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.jdField_a_of_type_Ased.jdField_a_of_type_Asea.jdField_b_of_type_AndroidWidgetTextView.setText("");
+      if ((this.jdField_a_of_type_Ascr != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_Ascr.c))) {
+        this.jdField_a_of_type_Ased.jdField_a_of_type_Asea.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aM();
       }
       return;
-      ((View)this.jdField_a_of_type_Aseb.jdField_a_of_type_Asdy.jdField_b_of_type_Asdu).setBackgroundColor(this.jdField_a_of_type_Ascp.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aseb.jdField_a_of_type_Asdy.d();
+      ((View)this.jdField_a_of_type_Ased.jdField_a_of_type_Asea.jdField_b_of_type_Asdw).setBackgroundColor(this.jdField_a_of_type_Ascr.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Ased.jdField_a_of_type_Asea.d();
     }
   }
 }

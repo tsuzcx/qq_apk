@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.text;
 
 import android.text.style.ForegroundColorSpan;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import rrc;
-import rre;
+import rqz;
+import rrb;
 
 public class TopicSpan
   extends ForegroundColorSpan
-  implements rrc, rre
+  implements rqz, rrb
 {
   private final TopicInfo a;
   

@@ -1,125 +1,189 @@
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class beya
 {
-  public static boolean b;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public long e;
-  public long f;
-  public long g;
+  private static beya jdField_a_of_type_Beya = new beya(102400);
+  protected static final Comparator<byte[]> a;
+  private int jdField_a_of_type_Int;
+  private List<byte[]> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private final int jdField_b_of_type_Int;
+  private List<byte[]> jdField_b_of_type_JavaUtilList = new ArrayList(64);
   
-  public beya()
+  static
   {
-    this.jdField_d_of_type_Int = 0;
+    jdField_a_of_type_JavaUtilComparator = new beyb();
   }
   
-  public String a()
+  public beya(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public static beya a()
+  {
+    return jdField_a_of_type_Beya;
+  }
+  
+  private void a()
   {
     try
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("appid", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("engineType", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("reportType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("verType", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("launchId", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("clickTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("loadTime", this.jdField_b_of_type_Long);
-      ((JSONObject)localObject).put("launchTime", this.jdField_c_of_type_Long);
-      ((JSONObject)localObject).put("launchResult", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("activeTime", this.jdField_d_of_type_Long);
-      ((JSONObject)localObject).put("showTime", this.e);
-      ((JSONObject)localObject).put("hideTime", this.f);
-      ((JSONObject)localObject).put("jsError", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("needReportLaunchResult", this.jdField_a_of_type_Boolean);
-      ((JSONObject)localObject).put("hasPkg", this.jdField_c_of_type_Boolean);
-      ((JSONObject)localObject).put("flutterMode", this.jdField_d_of_type_Boolean);
-      ((JSONObject)localObject).put("loadEndTime", this.g);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Throwable localThrowable) {}
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.e = 0L;
-    this.f = 0L;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.g = 0L;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-      this.jdField_a_of_type_Int = paramString.getInt("engineType");
-      this.jdField_b_of_type_Int = paramString.getInt("reportType");
-      this.jdField_c_of_type_Int = paramString.getInt("verType");
-      this.jdField_b_of_type_JavaLangString = paramString.getString("launchId");
-      this.jdField_a_of_type_Long = paramString.getLong("clickTime");
-      this.jdField_b_of_type_Long = paramString.getLong("loadTime");
-      this.jdField_c_of_type_Long = paramString.getLong("launchTime");
-      this.jdField_d_of_type_Int = paramString.getInt("launchResult");
-      this.jdField_d_of_type_Long = paramString.getLong("activeTime");
-      this.e = paramString.getLong("showTime");
-      this.f = paramString.getLong("hideTime");
-      this.jdField_c_of_type_JavaLangString = paramString.getString("jsError");
-      this.jdField_a_of_type_Boolean = paramString.getBoolean("needReportLaunchResult");
-      this.jdField_c_of_type_Boolean = paramString.getBoolean("hasPkg");
-      this.jdField_d_of_type_Boolean = paramString.optBoolean("flutterMode");
-      this.g = paramString.optLong("loadEndTime");
+      if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
+      {
+        byte[] arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.remove(0);
+        this.jdField_b_of_type_JavaUtilList.remove(arrayOfByte);
+        this.jdField_a_of_type_Int -= arrayOfByte.length;
+      }
       return;
     }
-    catch (Throwable paramString) {}
+    finally {}
   }
   
-  public String b()
+  /* Error */
+  public void a(byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SDK_");
-    if (jdField_b_of_type_Boolean)
-    {
-      str = "hasX5";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!this.jdField_c_of_type_Boolean) {
-        break label53;
-      }
-    }
-    label53:
-    for (String str = "_hasPkg";; str = "")
-    {
-      return str;
-      str = "";
-      break;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +16 -> 19
+    //   6: aload_1
+    //   7: arraylength
+    //   8: istore_2
+    //   9: aload_0
+    //   10: getfield 41	beya:jdField_b_of_type_Int	I
+    //   13: istore_3
+    //   14: iload_2
+    //   15: iload_3
+    //   16: if_icmple +6 -> 22
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: getfield 34	beya:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   26: aload_1
+    //   27: invokeinterface 59 2 0
+    //   32: pop
+    //   33: aload_0
+    //   34: getfield 39	beya:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   37: aload_1
+    //   38: getstatic 27	beya:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
+    //   41: invokestatic 65	java/util/Collections:binarySearch	(Ljava/util/List;Ljava/lang/Object;Ljava/util/Comparator;)I
+    //   44: istore_3
+    //   45: iload_3
+    //   46: istore_2
+    //   47: iload_3
+    //   48: ifge +8 -> 56
+    //   51: iload_3
+    //   52: ineg
+    //   53: iconst_1
+    //   54: isub
+    //   55: istore_2
+    //   56: aload_0
+    //   57: getfield 39	beya:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   60: iload_2
+    //   61: aload_1
+    //   62: invokeinterface 68 3 0
+    //   67: aload_0
+    //   68: aload_0
+    //   69: getfield 44	beya:jdField_a_of_type_Int	I
+    //   72: aload_1
+    //   73: arraylength
+    //   74: iadd
+    //   75: putfield 44	beya:jdField_a_of_type_Int	I
+    //   78: aload_0
+    //   79: invokespecial 70	beya:a	()V
+    //   82: goto -63 -> 19
+    //   85: astore_1
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: aload_1
+    //   89: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	90	0	this	beya
+    //   0	90	1	paramArrayOfByte	byte[]
+    //   8	53	2	i	int
+    //   13	39	3	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	14	85	finally
+    //   22	45	85	finally
+    //   56	82	85	finally
   }
   
-  public String toString()
+  /* Error */
+  public byte[] a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.jdField_b_of_type_JavaLangString).append(", appId: ").append(0);
-    return localStringBuilder.toString();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_0
+    //   3: istore_2
+    //   4: iload_2
+    //   5: aload_0
+    //   6: getfield 39	beya:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   9: invokeinterface 75 1 0
+    //   14: if_icmpge +67 -> 81
+    //   17: aload_0
+    //   18: getfield 39	beya:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   21: iload_2
+    //   22: invokeinterface 78 2 0
+    //   27: checkcast 52	[B
+    //   30: astore_3
+    //   31: aload_3
+    //   32: arraylength
+    //   33: iload_1
+    //   34: if_icmplt +40 -> 74
+    //   37: aload_0
+    //   38: aload_0
+    //   39: getfield 44	beya:jdField_a_of_type_Int	I
+    //   42: aload_3
+    //   43: arraylength
+    //   44: isub
+    //   45: putfield 44	beya:jdField_a_of_type_Int	I
+    //   48: aload_0
+    //   49: getfield 39	beya:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   52: iload_2
+    //   53: invokeinterface 50 2 0
+    //   58: pop
+    //   59: aload_0
+    //   60: getfield 34	beya:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   63: aload_3
+    //   64: invokeinterface 55 2 0
+    //   69: pop
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: aload_3
+    //   73: areturn
+    //   74: iload_2
+    //   75: iconst_1
+    //   76: iadd
+    //   77: istore_2
+    //   78: goto -74 -> 4
+    //   81: iload_1
+    //   82: newarray byte
+    //   84: astore_3
+    //   85: goto -15 -> 70
+    //   88: astore_3
+    //   89: aload_0
+    //   90: monitorexit
+    //   91: aload_3
+    //   92: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	93	0	this	beya
+    //   0	93	1	paramInt	int
+    //   3	75	2	i	int
+    //   30	55	3	arrayOfByte	byte[]
+    //   88	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	70	88	finally
+    //   81	85	88	finally
   }
 }
 

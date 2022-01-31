@@ -1,74 +1,23 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-class arca
-  implements INetInfoHandler
+public class arca
+  implements Cloneable
 {
-  arca(arbz paramarbz) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
   
-  public void onNetMobile2None()
+  public arca(arbp paramarbp, int paramInt, long paramLong)
   {
-    Iterator localIterator = arbz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((arcc)localIterator.next()).a(5);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  protected arca a()
   {
-    paramString = arbz.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((arcc)paramString.next()).a(4);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    paramString = arbz.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((arcc)paramString.next()).a(3);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    paramString = arbz.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((arcc)paramString.next()).a(2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    paramString = arbz.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((arcc)paramString.next()).a(1);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    Iterator localIterator = arbz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((arcc)localIterator.next()).a(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
-    }
+    return (arca)super.clone();
   }
 }
 

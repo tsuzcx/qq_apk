@@ -1,38 +1,18 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.widget.XListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class afgi
-  implements awcd
 {
-  public afgi(SearchBaseFragment paramSearchBaseFragment) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.e == 0) && (this.a.a != null))
-      {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof afgl)))
-          {
-            paramBitmap = (afgl)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
-    }
-  }
+  public int a;
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public String c;
+  public TextView d;
 }
 
 

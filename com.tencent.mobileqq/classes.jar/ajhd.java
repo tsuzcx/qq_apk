@@ -1,21 +1,20 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class ajhd
-  implements ajoe
+public class ajhd
+  implements EIPCResultCallback
 {
-  ajhd(ajhc paramajhc) {}
+  public ajhd(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
-    }
-    if (this.a.jdField_a_of_type_Ajod != null) {
-      this.a.jdField_a_of_type_Ajod.a(paramInt);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
+    paramEIPCResult = paramEIPCResult.data;
+    boolean bool1 = paramEIPCResult.getBoolean("isOpen");
+    boolean bool2 = paramEIPCResult.getBoolean("display", false);
+    this.a.a(bool2, bool1, ApolloGameActivity.a(this.a).mTempAIOUin);
   }
 }
 

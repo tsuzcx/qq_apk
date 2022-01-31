@@ -1,81 +1,73 @@
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
 import java.util.List;
 
 public class alyf
-  extends alyc
+  extends alyb
 {
-  private float[] d = new float[4];
+  private float a;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  float[] d = new float[3];
+  private float[] e = new float[16];
   
-  public alyf(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
+  public alyf(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxu);
-    Sensor localSensor;
-    if (paramInt == 5)
+    super(paramContext, paramInt, paramSensorManager, paramalxt);
+    this.jdField_a_of_type_Float = -1.0F;
+    if (paramSensorManager.getDefaultSensor(3) != null)
     {
-      paramInt = 15;
-      paramContext = paramSensorManager.getDefaultSensor(paramInt);
-      localSensor = paramSensorManager.getDefaultSensor(1);
-      paramSensorManager = paramSensorManager.getDefaultSensor(4);
-      if ((paramSensorManager == null) || (paramContext == null) || (Build.VERSION.SDK_INT < 9)) {
-        break label150;
-      }
-      paramalxu.onSensorSupport(4, true);
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
-      QLog.i("OrientationProvider2", 2, "Gyroscope support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-    }
-    for (;;)
-    {
-      if (localSensor == null) {
-        break label298;
-      }
-      paramalxu.onSensorSupport(1, true);
-      this.jdField_a_of_type_JavaUtilList.add(localSensor);
-      return;
-      paramInt = 11;
-      break;
-      label150:
-      paramalxu.onSensorSupport(4, false);
-      if (paramSensorManager == null) {
-        QLog.i("OrientationProvider2", 2, "Gyroscope not support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-      } else if (paramContext == null) {
-        if (Build.VERSION.SDK_INT >= 9) {
-          QLog.i("OrientationProvider2", 2, "Gyroscope not support(rotationVectorSensor),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-        } else {
-          QLog.i("OrientationProvider2", 2, "Gyroscope not support(sdk < 9),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
-        }
-      }
-    }
-    label298:
-    paramalxu.onSensorSupport(1, false);
-  }
-  
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (this.jdField_a_of_type_Alxu == null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
       return;
     }
-    this.jdField_a_of_type_Alxu.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    throw new OrientationProviderNotFound(String.valueOf(3));
   }
   
-  @TargetApi(9)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.jdField_a_of_type_Alxt == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Alxt.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Alxt.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Alxt.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Alxt.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((paramSensorEvent.sensor.getType() == 11) || (paramSensorEvent.sensor.getType() == 15))
+    if (paramSensorEvent.sensor.getType() == 3)
     {
-      SensorManager.getQuaternionFromVector(this.d, paramSensorEvent.values);
-      this.jdField_a_of_type_Alxu.onRotationUpdateQuaternion(this.d);
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      if (this.jdField_a_of_type_Int != 1)
+      {
+        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
+        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
+        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
+        alxv.a(alxv.a(this.d), this.e);
+        super.a(this.e);
+      }
     }
-    while (paramSensorEvent.sensor.getType() != 1) {
+    else
+    {
       return;
     }
-    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
+    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 

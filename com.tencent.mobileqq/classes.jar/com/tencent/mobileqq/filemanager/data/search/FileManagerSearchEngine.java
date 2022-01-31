@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
 import android.text.TextUtils;
-import aoza;
-import apen;
-import apfe;
-import awus;
-import awut;
-import awvg;
-import axqw;
+import aoze;
+import aper;
+import apfi;
+import awuu;
+import awuv;
+import awvi;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class FileManagerSearchEngine
-  implements awus<apfe>
+  implements awuu<apfi>
 {
   int jdField_a_of_type_Int = -1;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -31,17 +31,17 @@ public class FileManagerSearchEngine
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public List<apfe> a(awvg paramawvg)
+  public List<apfi> a(awvi paramawvi)
   {
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramawvg.jdField_a_of_type_JavaLangString);
+    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramawvi.jdField_a_of_type_JavaLangString);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator1 = localMap.keySet().iterator();
     Object localObject;
-    apfe localapfe;
+    apfi localapfi;
     if (localIterator1.hasNext())
     {
       localObject = (String)localIterator1.next();
-      localapfe = new apfe();
+      localapfi = new apfi();
       localObject = (List)localMap.get(localObject);
       Iterator localIterator2 = ((List)localObject).iterator();
       do
@@ -58,18 +58,18 @@ public class FileManagerSearchEngine
         if (this.jdField_a_of_type_Int != 1) {
           break label203;
         }
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A083", "0X800A083", 0, 0, "", "", "", "");
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A083", "0X800A083", 0, 0, "", "", "", "");
       }
       for (;;)
       {
-        localapfe.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-        localapfe.jdField_a_of_type_JavaLangString = paramawvg.jdField_a_of_type_JavaLangString;
-        localapfe.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localArrayList.add(localapfe);
+        localapfi.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+        localapfi.jdField_a_of_type_JavaLangString = paramawvi.jdField_a_of_type_JavaLangString;
+        localapfi.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localArrayList.add(localapfi);
         break;
         label203:
         if (this.jdField_a_of_type_Int == 8) {
-          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A085", "0X800A085", 0, 0, "", "", "", "");
+          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A085", "0X800A085", 0, 0, "", "", "", "");
         }
       }
       return localArrayList;
@@ -81,15 +81,15 @@ public class FileManagerSearchEngine
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
   }
   
-  public void a(awvg paramawvg, awut<apfe> paramawut)
+  public void a(awvi paramawvi, awuv<apfi> paramawuv)
   {
-    if ((paramawvg == null) || (paramawvg.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramawvg.jdField_a_of_type_JavaLangString.trim()))) {
+    if ((paramawvi == null) || (paramawvi.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramawvi.jdField_a_of_type_JavaLangString.trim()))) {
       return;
     }
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awvg = paramawvg;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awut = paramawut;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awvi = paramawvi;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awuv = paramawuv;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable, 64);
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable);
       return;
@@ -100,8 +100,8 @@ public class FileManagerSearchEngine
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awvg = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awut = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awvi = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable.jdField_a_of_type_Awuv = null;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine$SearchRunnable, 64);
       return;
     }

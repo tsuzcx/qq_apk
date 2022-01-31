@@ -1,8 +1,12 @@
+import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class aezu
-  implements aysa
+public class aezu
+  implements BusinessObserver
 {
   private Handler a;
   
@@ -11,31 +15,25 @@ class aezu
     this.a = paramHandler;
   }
   
-  public void onResp(aysx paramaysx)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    paramInt = paramBundle.getInt("ErrorCode");
+    String str1 = paramBundle.getString("UniqueKey");
     if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramaysx);
+      QLog.d("ZhituObserver", 2, aezl.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
     }
-    if (paramaysx.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(aezn.a(paramaysx.jdField_a_of_type_Aysw.c)))
-      {
-        this.a.sendEmptyMessage(100);
-        return;
-      }
+    String str2 = aezl.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!str2.equals(str1)) {
       if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
+        QLog.d("ZhituObserver", 2, aezl.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
       }
-      this.a.sendEmptyMessage(101);
+    }
+    while (this.a == null) {
       return;
     }
-    this.a.sendEmptyMessage(101);
+    paramBundle = this.a.obtainMessage(2, paramBundle);
+    this.a.sendMessage(paramBundle);
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

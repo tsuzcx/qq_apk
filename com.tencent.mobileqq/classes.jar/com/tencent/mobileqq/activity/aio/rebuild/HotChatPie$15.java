@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeqd;
+import aeqb;
 import com.tencent.mobileqq.app.HotChatManager;
 
 public class HotChatPie$15
   implements Runnable
 {
-  public HotChatPie$15(aeqd paramaeqd) {}
+  public HotChatPie$15(aeqb paramaeqb) {}
   
   public void run()
   {

@@ -1,13 +1,16 @@
-import android.os.Bundle;
+import android.util.Pair;
 
-public class bfiv
+final class bfiv
+  implements bfix
 {
-  int jdField_a_of_type_Int;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
+  public Pair<String, String> a(String paramString)
+  {
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
+  }
 }
 
 

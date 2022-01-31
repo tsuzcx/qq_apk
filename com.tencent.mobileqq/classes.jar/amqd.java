@@ -1,71 +1,112 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class amqd
-  extends ampb<amqe>
 {
-  public int a()
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  
+  public amqd() {}
+  
+  public amqd(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    return 537;
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  @NonNull
-  public amqe a(int paramInt)
+  public static amqd a(String paramString)
   {
-    return new amqe();
-  }
-  
-  @Nullable
-  public amqe a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
+    boolean bool5 = false;
+    if (paramString == null) {
+      return null;
     }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    boolean bool1;
+    try
     {
-      paramArrayOfampi = paramArrayOfampi[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfampi);
+      paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+      localNodeList = paramString.getElementsByTagName("shortvideo_troop_auto_play");
+      if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
+        break label401;
       }
-      return amqe.a(paramArrayOfampi);
+      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
+        break label370;
+      }
+      bool1 = true;
     }
-    return new amqe();
-  }
-  
-  public Class a()
-  {
-    return amqe.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
+    catch (Exception paramString)
+    {
+      NodeList localNodeList;
+      label152:
+      QLog.e("AIOVideoPlayConfigProcessor", 1, "onParsed failed" + paramString);
+      return null;
     }
-  }
-  
-  public void a(amqe paramamqe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
+    localNodeList = paramString.getElementsByTagName("shortvideo_not_troop_auto_play");
+    if ((localNodeList != null) && (localNodeList.getLength() > 0)) {
+      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() > 0)
+      {
+        bool1 = true;
+        break label411;
+        localNodeList = paramString.getElementsByTagName("shortvideo_real_troop_auto_play");
+        if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
+          break label390;
+        }
+        if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
+          break label380;
+        }
+        bool1 = true;
+        break label416;
+      }
     }
-    axui.a().a(paramamqe);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    for (;;)
+    {
+      paramString = paramString.getElementsByTagName("shortvideo_real_not_troop_auto_play");
+      if ((paramString != null) && (paramString.getLength() > 0))
+      {
+        bool1 = bool5;
+        if (Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {}
+      }
+      for (bool1 = true;; bool1 = true)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOVideoPlayConfigProcessor", 2, "parse, shortvideo_troop_auto_play = " + bool2 + ", shortvideo_not_troop_auto_play = " + bool3 + ", shortvideo_real_troop_auto_play = " + bool4 + ", shortvideo_real_not_troop_auto_play = " + bool1);
+        }
+        paramString = new amqd(bool2, bool3, bool4, bool1);
+        return paramString;
+        label370:
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label411;
+        label380:
+        bool1 = false;
+        break label416;
+      }
+      label390:
+      boolean bool4 = true;
+      continue;
+      boolean bool3 = true;
+      break label152;
+      label401:
+      boolean bool2 = true;
+      break;
+      bool2 = bool1;
+      break;
+      label411:
+      bool3 = bool1;
+      break label152;
+      label416:
+      bool4 = bool1;
+    }
   }
 }
 

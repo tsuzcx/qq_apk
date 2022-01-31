@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-class aful
-  implements DialogInterface.OnClickListener
+public class aful
+  extends RecyclerView.ViewHolder
 {
-  aful(afuj paramafuj) {}
+  TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aful(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      bbqw.a(afuj.a(this.a), afuj.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", afuj.a(this.a).getApp().getString(2131719964), "");
-    }
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131378492));
   }
 }
 

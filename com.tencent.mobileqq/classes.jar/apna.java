@@ -1,6 +1,18 @@
-public abstract interface apna
+import mqq.os.MqqHandler;
+
+class apna
+  implements apli
 {
-  public abstract void a(String paramString1, String paramString2);
+  apna(apmy paramapmy) {}
+  
+  public void a()
+  {
+    this.a.a = System.currentTimeMillis();
+    apmy.a(this.a).sendEmptyMessageDelayed(8001, apmy.a(this.a));
+    apmy.a(this.a).sendEmptyMessageDelayed(8002, apmy.b(this.a));
+  }
+  
+  public void b() {}
 }
 
 

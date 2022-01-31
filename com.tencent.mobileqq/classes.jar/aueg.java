@@ -1,71 +1,32 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.graphics.Matrix;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public class aueg
-  extends ScaleGestureDetector
+public abstract interface aueg
 {
-  private float a;
-  private float b;
+  public abstract void a(Matrix paramMatrix);
   
-  public aueg(Context paramContext, ScaleGestureDetector.OnScaleGestureListener paramOnScaleGestureListener)
-  {
-    super(paramContext, paramOnScaleGestureListener);
-    a();
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
   
-  private void a()
-  {
-    long l = System.currentTimeMillis();
-    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-    onTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-  }
+  public abstract void a(ScaleGestureDetector paramScaleGestureDetector);
   
-  @TargetApi(19)
-  private boolean a()
-  {
-    return (Build.VERSION.SDK_INT >= 19) && (isQuickScaleEnabled()) && (getCurrentSpan() == getCurrentSpanY());
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public float getScaleFactor()
-  {
-    float f2 = 1.0F;
-    float f3 = super.getScaleFactor();
-    if (a())
-    {
-      float f1;
-      if ((this.a <= this.b) || (f3 <= 1.0F))
-      {
-        f1 = f2;
-        if (this.a < this.b)
-        {
-          f1 = f2;
-          if (f3 >= 1.0F) {}
-        }
-      }
-      else
-      {
-        f1 = Math.max(0.8F, Math.min(f3, 1.25F));
-      }
-      return f1;
-    }
-    return f3;
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    this.b = this.a;
-    this.a = paramMotionEvent.getY();
-    if (paramMotionEvent.getActionMasked() == 0) {
-      this.b = paramMotionEvent.getY();
-    }
-    return bool;
-  }
+  public abstract boolean a(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean b(ScaleGestureDetector paramScaleGestureDetector);
+  
+  public abstract void c(MotionEvent paramMotionEvent);
+  
+  public abstract boolean c(MotionEvent paramMotionEvent);
 }
 
 

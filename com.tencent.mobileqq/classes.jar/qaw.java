@@ -1,17 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-import java.util.List;
-
 public class qaw
 {
   public int a;
   public long a;
-  public String a;
-  public ArrayList<DislikeInfo> a;
-  public List<Long> a;
+  public int b;
   public long b;
-  public long c;
-  public long d;
+  public long c = -1L;
 }
 
 

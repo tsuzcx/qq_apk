@@ -1,27 +1,28 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class aeuu
-  implements baoe
+  extends BroadcastReceiver
 {
   public aeuu(TroopChatPie paramTroopChatPie) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
     {
-      TroopChatPie.b(this.a, true);
-      paramString = (adjr)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
+      }
+      if (TroopChatPie.a(this.a) != null)
+      {
+        TroopChatPie.b(this.a).a(35);
+        amom.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
       }
     }
-    do
-    {
-      return;
-      TroopChatPie.b(this.a, false);
-      paramString = (adjr)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
   }
 }
 

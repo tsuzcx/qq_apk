@@ -1,15 +1,24 @@
+import com.tencent.image.NativeGifImage;
+import java.io.File;
+
 public class bbqf
+  extends NativeGifImage
 {
-  public float a;
-  public int a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
+  private int a = 1;
   
-  public bbqf(bbqe parambbqe) {}
+  public bbqf(File paramFile, boolean paramBoolean, float paramFloat, int paramInt)
+  {
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+    this.a = paramInt;
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == this.a) {
+      return;
+    }
+    super.executeNewTask();
+  }
 }
 
 

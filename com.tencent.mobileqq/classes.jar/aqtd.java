@@ -1,19 +1,17 @@
-import java.util.ArrayList;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-class aqtd
-  extends bbqu
+public class aqtd
+  implements View.OnClickListener
 {
-  aqtd(aqtc paramaqtc) {}
+  public aqtd(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQGameMsgInfo paramQQGameMsgInfo) {}
   
-  protected void onGetGameCenterPubAccountGetFriends(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    super.onGetGameCenterPubAccountGetFriends(paramBoolean, paramObject);
-    if (paramObject == null) {
-      return;
-    }
-    aqtc.a(this.a, (ArrayList)paramObject);
-    aqtc.a(this.a).a(aqtc.a(this.a));
-    aqtc.a(this.a).notifyDataSetChanged();
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId);
   }
 }
 

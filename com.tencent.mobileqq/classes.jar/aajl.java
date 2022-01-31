@@ -1,23 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class aajl
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
   public aajl(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
-    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
-    if (paramBoolean)
-    {
-      axqw.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
-      return;
+    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
+    paramDialogInterface = amzc.c();
+    if (TextUtils.isEmpty(paramDialogInterface.a)) {
+      bbje.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
     }
-    axqw.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      this.a.b();
+      return;
+      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
+      bbje.a(this.a, paramDialogInterface);
+    }
   }
 }
 

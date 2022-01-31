@@ -1,11 +1,15 @@
 public class ayyv
-  extends ayyy
+  extends ayza
 {
-  public String a;
+  public int a;
+  public byte[] a;
   
   public String toString()
   {
-    return this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" msgResId:");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

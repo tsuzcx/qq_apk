@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.troop.activity;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,22 +16,22 @@ import com.tencent.biz.qqstory.view.widget.FullScreenEmptyView;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import tdc;
-import uou;
-import uwa;
-import vat;
-import wcr;
+import tcz;
+import uor;
+import uvx;
+import vaq;
+import wco;
 
 public class TroopStoryMainActivity
   extends QQStoryBaseActivity
-  implements vat
+  implements vaq
 {
   public static final String a;
   protected StoryInputBarView a;
   public TroopStoryListView a;
   public FullScreenEmptyView a;
   protected Runnable a;
-  public uwa a;
+  public uvx a;
   
   static
   {
@@ -53,7 +53,7 @@ public class TroopStoryMainActivity
     return this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView;
   }
   
-  public wcr a(String paramString)
+  public wco a(String paramString)
   {
     return this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(paramString);
   }
@@ -85,11 +85,11 @@ public class TroopStoryMainActivity
   {
     this.mUseOptimizMode = true;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561385);
-    super.setTitle(ajyc.a(2131715790));
-    this.jdField_a_of_type_Uwa = ((uwa)tdc.a(11));
-    this.jdField_a_of_type_Uwa.a.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131373307));
+    super.setContentView(2131561384);
+    super.setTitle(ajya.a(2131715801));
+    this.jdField_a_of_type_Uvx = ((uvx)tcz.a(11));
+    this.jdField_a_of_type_Uvx.a.clear();
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131373309));
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131369318));
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(this, this);
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setDivider(null);
@@ -113,7 +113,7 @@ public class TroopStoryMainActivity
       this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.l();
     }
     this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.d();
-    this.jdField_a_of_type_Uwa.a.clear();
+    this.jdField_a_of_type_Uvx.a.clear();
     ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -151,7 +151,7 @@ public class TroopStoryMainActivity
     default: 
       return;
     }
-    uou.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
+    uor.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
   }
 }

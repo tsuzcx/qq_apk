@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.search;
 
 import android.os.Message;
-import awhp;
 import awhr;
-import bfmt;
+import awht;
+import bfnk;
 import com.tencent.mobileqq.data.SearchHistory;
 
 public class HistorySearchEntryModel$2$1
   implements Runnable
 {
-  public HistorySearchEntryModel$2$1(awhr paramawhr, SearchHistory paramSearchHistory, long paramLong) {}
+  public HistorySearchEntryModel$2$1(awht paramawht, SearchHistory paramSearchHistory, long paramLong) {}
   
   public void run()
   {
-    if (awhp.a(this.jdField_a_of_type_Awhr.a, this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory))
+    if (awhr.a(this.jdField_a_of_type_Awht.a, this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory))
     {
-      Message localMessage = this.jdField_a_of_type_Awhr.a.a.obtainMessage();
+      Message localMessage = this.jdField_a_of_type_Awht.a.a.obtainMessage();
       localMessage.what = 3;
       localMessage.obj = new Long(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Awhr.a.a.sendMessage(localMessage);
+      this.jdField_a_of_type_Awht.a.a.sendMessage(localMessage);
     }
   }
 }

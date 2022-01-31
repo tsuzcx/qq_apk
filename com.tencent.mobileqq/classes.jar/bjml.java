@@ -1,32 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.graphics.PointF;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bjml
-  implements EIPCOnGetConnectionListener
+public class bjml
+  extends lqn
 {
-  bjml(bjmj parambjmj) {}
+  public bjml(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public boolean a(lql paramlql)
   {
-    if (paramEIPCConnection != null) {
-      bjmj.a(this.a, paramEIPCConnection.procName);
-    }
-    bjmj.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bjmj.a(this.a, paramEIPCConnection.procName);
-    }
-    bjmj.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bjmj.a(this.a));
-    }
+    float f1 = paramlql.a().x;
+    float f2 = paramlql.a().y;
+    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
+    return true;
   }
 }
 

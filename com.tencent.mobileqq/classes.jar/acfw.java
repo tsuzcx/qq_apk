@@ -1,24 +1,28 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
 public class acfw
-  implements bfrc
+  extends akil
 {
-  public acfw(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public acfw(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (((aiqd)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
     }
-    axru.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    asfd.a().b(paramString, this.a.app);
+    this.a.c();
+  }
+  
+  protected void b(String paramString)
+  {
+    this.a.c();
   }
 }
 

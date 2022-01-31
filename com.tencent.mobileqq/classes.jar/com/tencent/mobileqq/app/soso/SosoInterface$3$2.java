@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.soso;
 
-import akun;
-import akup;
+import akum;
+import akuo;
 
 public class SosoInterface$3$2
   implements Runnable
 {
-  public SosoInterface$3$2(akun paramakun, akup paramakup) {}
+  public SosoInterface$3$2(akum paramakum, akuo paramakuo) {}
   
   public void run()
   {
-    if (!akup.access$1500(this.a)) {
+    if (!akuo.access$1500(this.a)) {
       SosoInterface.a(this.a);
     }
   }

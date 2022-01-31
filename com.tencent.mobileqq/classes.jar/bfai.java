@@ -1,22 +1,16 @@
 import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarReq;
-import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenRsp;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
 public class bfai
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StSetUserAvatarReq a = new INTERFACE.StSetUserAvatarReq();
+  private INTERFACE.StGetSDKOpenKeyTokenReq a = new INTERFACE.StGetSDKOpenKeyTokenReq();
   
-  public bfai(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public bfai(COMM.StCommonExt paramStCommonExt)
   {
-    this.a.appid.set(paramString1);
-    this.a.uin.set(paramString2);
-    this.a.set_type.set(paramInt);
-    this.a.item_id.set(paramString3);
-    this.a.busi_info.set(paramString4);
     if (paramStCommonExt != null) {
       this.a.extInfo.set(paramStCommonExt);
     }
@@ -24,7 +18,7 @@ public class bfai
   
   protected String a()
   {
-    return "mini_app_userapp";
+    return "mini_program_auth";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -32,19 +26,22 @@ public class bfai
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
+    INTERFACE.StGetSDKOpenKeyTokenRsp localStGetSDKOpenKeyTokenRsp = new INTERFACE.StGetSDKOpenKeyTokenRsp();
     try
     {
-      localStSetUserAvatarRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserAvatarRsp != null) {
-        return new JSONObject();
+      localStGetSDKOpenKeyTokenRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetSDKOpenKeyTokenRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
+        return paramArrayOfByte;
       }
-      besl.a("SetAvatarRequest", "onResponse fail.rsp = null");
+      betc.a("GetSDKOpenKeyTokenRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetSDKOpenKeyTokenRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
@@ -56,7 +53,7 @@ public class bfai
   
   protected String b()
   {
-    return "SetUserAvatar";
+    return "GetSDKOpenKeyToken";
   }
 }
 

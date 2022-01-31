@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bbkx;
-import bhvh;
+import bbll;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,28 +22,28 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import nss;
-import ntk;
-import onk;
-import onr;
+import nsp;
+import nth;
+import onh;
+import ono;
 import org.json.JSONException;
-import osb;
+import ory;
+import osg;
 import osj;
-import osm;
-import otx;
-import rhp;
+import otu;
+import rhm;
 
 public abstract class ReadInJoyBaseFragment
   extends PublicBaseFragment
-  implements osb
+  implements ory
 {
   public static final HashMap<Integer, Integer> a;
   private int jdField_a_of_type_Int = -1;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   protected KandianMergeManager a;
   protected QQAppInterface a;
-  protected otx a;
-  rhp jdField_a_of_type_Rhp;
+  protected otu a;
+  rhm jdField_a_of_type_Rhm;
   protected boolean c;
   int d;
   protected boolean d;
@@ -56,7 +56,7 @@ public abstract class ReadInJoyBaseFragment
   
   public ReadInJoyBaseFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
   }
   
@@ -76,7 +76,7 @@ public abstract class ReadInJoyBaseFragment
   
   private void c(MessageRecord paramMessageRecord)
   {
-    if ((bhvh.j()) && ((getActivity() instanceof SplashActivity))) {
+    if ((bhvy.j()) && ((getActivity() instanceof SplashActivity))) {
       return;
     }
     d(paramMessageRecord);
@@ -86,7 +86,7 @@ public abstract class ReadInJoyBaseFragment
   
   private void d(MessageRecord paramMessageRecord)
   {
-    if ((bhvh.k()) && ((this instanceof ReadInJoyRecommendFeedsFragment))) {
+    if ((bhvy.k()) && ((this instanceof ReadInJoyRecommendFeedsFragment))) {
       ThreadManager.getSubThreadHandler().post(new ReadInJoyBaseFragment.1(this, paramMessageRecord));
     }
   }
@@ -133,14 +133,14 @@ public abstract class ReadInJoyBaseFragment
   
   public void a(Constants.LogoutReason paramLogoutReason) {}
   
-  public void a(otx paramotx)
+  public void a(otu paramotu)
   {
-    this.jdField_a_of_type_Otx = paramotx;
+    this.jdField_a_of_type_Otu = paramotu;
   }
   
-  public void a(rhp paramrhp, int paramInt)
+  public void a(rhm paramrhm, int paramInt)
   {
-    this.jdField_a_of_type_Rhp = paramrhp;
+    this.jdField_a_of_type_Rhm = paramrhm;
     this.jdField_d_of_type_Int = paramInt;
   }
   
@@ -149,7 +149,7 @@ public abstract class ReadInJoyBaseFragment
     QLog.d(ReadInJoyBaseFragment.class.getSimpleName(), 2, getClass().getSimpleName() + " notifyShowSelf");
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.a(this);
@@ -159,8 +159,8 @@ public abstract class ReadInJoyBaseFragment
       j = a();
       if (j != -1)
       {
-        ntk.d(j);
-        paramActivity = ntk.a(j);
+        nth.d(j);
+        paramActivity = nth.a(j);
         if (paramActivity == null) {
           break label180;
         }
@@ -168,8 +168,8 @@ public abstract class ReadInJoyBaseFragment
         QLog.d("ReadInJoyBaseFragment", 2, new Object[] { "notifyShowSelf, channelID = ", Integer.valueOf(j), ", entryPath = ", Integer.valueOf(a(j)) });
       }
     }
-    if (this.jdField_a_of_type_Otx != null) {
-      this.jdField_a_of_type_Otx.a(true);
+    if (this.jdField_a_of_type_Otu != null) {
+      this.jdField_a_of_type_Otu.a(true);
     }
     return;
     label180:
@@ -178,12 +178,12 @@ public abstract class ReadInJoyBaseFragment
     {
       try
       {
-        paramActivity = new onr().a("source", "301").a(j);
-        if (!nss.a()) {
+        paramActivity = new ono().a("source", "301").a(j);
+        if (!nsp.a()) {
           break label259;
         }
         i = 1;
-        ntk.a("0X8009B94", "", paramActivity.b("style", i).a());
+        nth.a("0X8009B94", "", paramActivity.b("style", i).a());
       }
       catch (JSONException paramActivity)
       {
@@ -222,7 +222,7 @@ public abstract class ReadInJoyBaseFragment
     }
     j = i;
     if (i <= 0) {
-      j = bbkx.b(80.5F) + ImmersiveUtils.getStatusBarHeight(getActivity());
+      j = bbll.b(80.5F) + ImmersiveUtils.getStatusBarHeight(getActivity());
     }
     return j;
   }
@@ -234,7 +234,7 @@ public abstract class ReadInJoyBaseFragment
   
   public void b(MessageRecord paramMessageRecord)
   {
-    osj.a().g();
+    osg.a().g();
     c(paramMessageRecord);
   }
   
@@ -296,22 +296,22 @@ public abstract class ReadInJoyBaseFragment
     QLog.d(ReadInJoyBaseFragment.class.getSimpleName(), 2, getClass().getSimpleName() + " notifyHideSelf");
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b(this);
     if (this.jdField_d_of_type_Boolean)
     {
       int i = a();
-      if ((i != -1) && (ntk.b(i))) {
+      if ((i != -1) && (nth.b(i))) {
         i();
       }
       if (i != -1) {
-        ntk.a(i, this.jdField_a_of_type_Int, b());
+        nth.a(i, this.jdField_a_of_type_Int, b());
       }
     }
-    if (this.jdField_a_of_type_Otx != null) {
-      this.jdField_a_of_type_Otx.a(false);
+    if (this.jdField_a_of_type_Otu != null) {
+      this.jdField_a_of_type_Otu.a(false);
     }
   }
   
@@ -331,14 +331,14 @@ public abstract class ReadInJoyBaseFragment
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    osm.a().a(paramConfiguration);
+    osj.a().a(paramConfiguration);
     super.onConfigurationChanged(paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
   }
   

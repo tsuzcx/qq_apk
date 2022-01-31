@@ -1,50 +1,47 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 public class bipe
+  extends biko
 {
-  private static volatile bipe jdField_a_of_type_Bipe;
-  private final int jdField_a_of_type_Int = 2000;
-  private long jdField_a_of_type_Long;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 60000;
-  private long jdField_b_of_type_Long;
-  private final int c = 1000;
-  private int d;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public static bipe a()
+  public bipe(ViewStub paramViewStub)
   {
-    if (jdField_a_of_type_Bipe == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bipe == null) {
-        jdField_a_of_type_Bipe = new bipe();
-      }
-      return jdField_a_of_type_Bipe;
-    }
-    finally {}
+    super(paramViewStub);
   }
   
-  private void b()
+  protected void a(View paramView)
   {
-    AppInterface localAppInterface = QQStoryContext.a();
-    if (localAppInterface != null)
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365839);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365841));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692631);
+  }
+  
+  public void c()
+  {
+    if (a())
     {
-      biqf localbiqf = (biqf)localAppInterface.getBusinessHandler(3);
-      localAppInterface.addObserver(new bipg(this, localAppInterface));
-      localbiqf.c();
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  public void a()
+  public void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      LogicDataManager.getInstance().setOnGetQQNumberEventListener(new bipf(this));
-      this.jdField_a_of_type_Boolean = true;
+    if (!a()) {
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

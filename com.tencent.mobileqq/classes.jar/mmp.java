@@ -1,22 +1,61 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class mmp
-  implements Animator.AnimatorListener
+public class mmp
 {
-  mmp(mmn parammmn) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static int a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    mmn.a(this.a).setVisibility(8);
+    int i = 0;
+    if (paramBoolean2) {
+      if (!paramBoolean1) {
+        break label67;
+      }
+    }
+    label67:
+    for (i = bbzh.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = bbzh.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
+    {
+      if (AudioHelper.e()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, 已经有默认配置, fcId[" + i + "]");
+      }
+      return i;
+    }
+    paramString = BusinessCommonConfig.getInstance(paramAppRuntime);
+    if (paramString != null)
+    {
+      paramAppRuntime = (QAVFunCallHandler)paramString.getConfigHandler(382);
+      paramAppRuntime = paramAppRuntime.getConfigDirect();
+      if (paramAppRuntime == null) {
+        break label174;
+      }
+      i = paramAppRuntime.getActivityFCId();
+    }
+    label174:
+    for (;;)
+    {
+      if (AudioHelper.e()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, fcId[" + i + "]");
+      }
+      return i;
+      paramAppRuntime = new QAVFunCallHandler(paramAppRuntime.getAccount());
+      break;
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.AnnimateDownloadStart");
+    localIntent.setPackage(paramVideoAppInterface.getApp().getPackageName());
+    localIntent.putExtra("callId", paramInt);
+    paramVideoAppInterface.getApp().sendBroadcast(localIntent);
+  }
 }
 
 

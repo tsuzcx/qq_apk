@@ -1,80 +1,36 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
 
 public class afvu
-  extends AsyncTask<String, Void, Boolean>
+  implements Handler.Callback
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  public afvu(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public afvu(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramView != null)
+    switch (paramMessage.what)
     {
-      Context localContext = paramView.getContext();
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-      paramView.setDrawingCacheEnabled(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
-      ScreenCapture.setSnapFile(localContext, false);
+    default: 
+      return false;
+    }
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131378730).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131701616), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131701626), 0).b(this.a.getActivity().getTitleBarHeight());
     }
   }
-  
-  protected Boolean a(String... paramVarArgs)
-  {
-    Boolean localBoolean = Boolean.FALSE;
-    if (isCancelled()) {}
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return localBoolean;
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramVarArgs = new File(paramVarArgs[0]);
-    File localFile = paramVarArgs.getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    try
-    {
-      paramVarArgs = new FileOutputStream(paramVarArgs);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
-      paramVarArgs.flush();
-      paramVarArgs.close();
-      paramVarArgs = Boolean.TRUE;
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
-    return localBoolean;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localView != null)
-      {
-        if (paramBoolean.booleanValue()) {
-          ScreenCapture.setSnapFile(localView.getContext(), true);
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localView.setDrawingCacheEnabled(false);
-        localView.destroyDrawingCache();
-      }
-    }
-  }
-  
-  protected void onCancelled() {}
 }
 
 

@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.widget.RelativeLayout;
-import mpn;
+import mpk;
 
 public class GuideTip2$5
   implements Runnable
 {
-  public GuideTip2$5(mpn parammpn, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
+  public GuideTip2$5(mpk parammpk, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
   
   public void run()
   {

@@ -1,68 +1,133 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class lvj
-  extends lur
+  extends lum
 {
-  public int b;
-  
-  protected float a(int paramInt1, int paramInt2)
-  {
-    return this.b + paramInt1;
-  }
+  public boolean a;
   
   public void a(long paramLong)
   {
-    paramLong -= this.a;
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (paramLong <= 3733L)
-    {
-      paramLong = paramLong * 3L % 2800L / 3L;
-      if ((paramLong < 0L) || (paramLong >= 133L)) {
-        break label65;
+    long l = paramLong - this.jdField_a_of_type_Long;
+    int k = 0;
+    int j = 0;
+    int i;
+    float f;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((l > 0L) && (l < 100L))
+      {
+        i = (int)(255L * l / 100L);
+        if ((l <= 0L) || (l > 200L)) {
+          break label226;
+        }
+        f = -0.0035F * (float)l + 1.5F;
       }
-      f1 = (float)(-3L * paramLong) / 100.0F;
     }
+    label539:
     for (;;)
     {
-      a(f1);
+      QLog.d("RedPacketGameParticleTopWordTip", 2, "WL_DEBUG update duration = " + l + ", alpha = " + i + ", scale = " + f + ", curTime = " + paramLong + ", mStartTime = " + this.jdField_a_of_type_Long);
+      a(i);
+      b(f);
       return;
-      label65:
-      if ((paramLong >= 133L) && (paramLong < 266L))
+      if ((l >= 100L) && (l <= 1200L))
       {
-        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
+        i = 255;
+        break;
       }
-      else if ((paramLong >= 266L) && (paramLong < 400L))
-      {
-        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
+      i = j;
+      if (l <= 1200L) {
+        break;
       }
-      else if ((paramLong >= 400L) && (paramLong < 533L))
+      i = j;
+      if (l >= 1250L) {
+        break;
+      }
+      i = (int)(255L * (l - 1250L) / -50L);
+      break;
+      label226:
+      if ((l > 200L) && (l <= 350L))
       {
-        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
+        f = 0.001333333F * (float)l + 0.5333334F;
+      }
+      else if ((l > 350L) && (l <= 450L))
+      {
+        f = -0.001F * (float)l + 1.35F;
+      }
+      else if ((l > 450L) && (l <= 550L))
+      {
+        f = 0.001F * (float)l + 0.45F;
+      }
+      else if ((l > 550L) && (l <= 1100L))
+      {
+        f = 1.0F;
+      }
+      else if ((l > 1100L) && (l <= 1150L))
+      {
+        f = 0.0016F * (float)l - 0.76F;
+      }
+      else if ((l > 1150L) && (l <= 1250L))
+      {
+        f = -0.0108F * (float)l + 13.5F;
       }
       else
       {
-        f1 = f2;
-        if (paramLong >= 533L)
+        f = 0.0F;
+        continue;
+        if ((l > 0L) && (l < 100L)) {
+          i = (int)(255L * l / 100L);
+        }
+        for (;;)
         {
-          f1 = f2;
-          if (paramLong < 666L) {
-            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          if ((l <= 0L) || (l > 200L)) {
+            break label539;
           }
+          f = -0.0035F * (float)l + 1.5F;
+          break;
+          if ((l >= 100L) && (l <= 700L))
+          {
+            i = 255;
+          }
+          else
+          {
+            i = k;
+            if (l > 700L)
+            {
+              i = k;
+              if (l < 750L) {
+                i = (int)(255L * (l - 750L) / -50L);
+              }
+            }
+          }
+        }
+        if ((l > 200L) && (l <= 350L)) {
+          f = 0.001333333F * (float)l + 0.5333334F;
+        } else if ((l > 350L) && (l <= 450L)) {
+          f = -0.001F * (float)l + 1.35F;
+        } else if ((l > 450L) && (l <= 550L)) {
+          f = 0.001F * (float)l + 0.45F;
+        } else if ((l > 550L) && (l <= 600L)) {
+          f = 1.0F;
+        } else if ((l > 600L) && (l <= 650L)) {
+          f = 0.0016F * (float)l + 0.04F;
+        } else if ((l > 650L) && (l <= 750L)) {
+          f = -0.0108F * (float)l + 8.1F;
+        } else {
+          f = 0.0F;
         }
       }
     }
   }
   
-  protected float b(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    return paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt3 = paramInt1 * 102 / 160;
-    paramInt4 = paramInt1 * 140 / 160;
-    this.b = (paramInt1 * 24 / 160);
-    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
+    paramInt2 = paramInt1 * 39 / 750;
+    paramInt3 = paramInt1 * 59 / 750;
+    a(paramInt2, paramInt3, paramInt1 - paramInt2, paramInt1 * 268 / 750 + paramInt3);
   }
 }
 

@@ -1,107 +1,53 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.ims.QQProtectRisks.RiskInfo;
-import com.tencent.mobileqq.activity.RiskInfoActivity;
-import com.tencent.mobileqq.activity.RiskInfoItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class abzy
-  extends mxm
+  implements View.OnClickListener
 {
-  public abzy(RiskInfoActivity paramRiskInfoActivity) {}
+  public abzy(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool1;
-    boolean bool2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    this.a.a();
+    long l2 = 0L;
+    long l1 = l2;
+    if (this.a.jdField_b_of_type_JavaLangString != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("RiskInfoDetails", 2, "request risks info,onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      l1 = l2;
+      if (!this.a.jdField_b_of_type_JavaLangString.isEmpty()) {
+        l1 = msy.a(this.a.jdField_b_of_type_JavaLangString);
       }
-      bool1 = false;
-      paramBundle = new HashMap();
-      bool2 = bool1;
-      if (!bool1) {}
     }
-    for (;;)
+    paramView = bbkb.e(this.a.jdField_d_of_type_JavaLangString);
+    l2 = paramView.getLong("qav_roomid", 0L);
+    long l3 = paramView.getLong(ldd.g, 0L);
+    axrk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Long, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Long, this.a.jdField_d_of_type_Long, this.a.e, this.a.jdField_a_of_type_Int, l3, l1, l2, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "reportEvent beginTime: " + this.a.jdField_a_of_type_Long + ", endTime: " + this.a.jdField_b_of_type_Long + ", sdkVersion: " + this.a.jdField_a_of_type_Int + ", peerSdkVersion: " + l3 + ", bussinessType: " + this.a.jdField_c_of_type_Long + ", bussinessFlag: " + this.a.jdField_d_of_type_Long + ", ip: " + this.a.jdField_b_of_type_JavaLangString + ", toUin: " + this.a.jdField_c_of_type_JavaLangString + ", score: " + this.a.e + ", problems: " + this.a.jdField_a_of_type_JavaLangString);
+    }
+    paramView.edit().putBoolean(ldd.l, true).commit();
+    if (this.a.f != 0L) {}
+    try
     {
-      try
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_b_of_type_Int, this.a.f);
+      this.a.getActivity().finish();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = 0;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        bool2 = bool1;
-        if (paramInt == 1)
-        {
-          bool2 = bool1;
-          if (localQQProtectRisksResponse.risk_info_list.has())
-          {
-            bool2 = bool1;
-            if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
-            {
-              paramInt = 0;
-              bool2 = bool1;
-              if (paramInt < localQQProtectRisksResponse.risk_info_list.size())
-              {
-                new QQProtectRisks.RiskInfo();
-                paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
-                if ((paramArrayOfByte.uint32_item_type.has()) && (paramArrayOfByte.uint32_item_type.get() == 1)) {
-                  break label511;
-                }
-                RiskInfoItem localRiskInfoItem = new RiskInfoItem();
-                localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
-                localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
-                if ((TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localRiskInfoItem.d))) {
-                  break label511;
-                }
-                localRiskInfoItem.jdField_b_of_type_JavaLangString = paramArrayOfByte.str_right_text.get();
-                localRiskInfoItem.c = paramArrayOfByte.str_desc_text.get();
-                localRiskInfoItem.jdField_a_of_type_Int = paramArrayOfByte.uint32_click_report_id.get();
-                if (paramArrayOfByte.uint32_item_id.has()) {
-                  localRiskInfoItem.jdField_b_of_type_Int = paramArrayOfByte.uint32_item_id.get();
-                }
-                if (paramArrayOfByte.str_right_text_open.has()) {
-                  localRiskInfoItem.e = paramArrayOfByte.str_right_text_open.get();
-                }
-                paramArrayOfByte = String.format("%d", new Object[] { Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int) });
-                if (localRiskInfoItem.jdField_b_of_type_Int == 0) {
-                  paramArrayOfByte = localRiskInfoItem.d;
-                }
-                paramBundle.put(paramArrayOfByte, localRiskInfoItem);
-                QLog.d("RiskInfoDetails", 1, String.format("%s, %s, %s, %s, %d, %d, %s", new Object[] { localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.jdField_b_of_type_JavaLangString, localRiskInfoItem.c, localRiskInfoItem.d, Integer.valueOf(localRiskInfoItem.jdField_a_of_type_Int), Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int), localRiskInfoItem.e }));
-              }
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.w("ScoreActivity", 2, "removeMsgByUniseq : " + paramView);
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.d("RiskInfoDetails", 1, "error protobuf content");
-        bool2 = false;
-        RiskInfoActivity.a(this.a, paramBundle, bool2);
-        return;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        bool2 = bool1;
-        continue;
-      }
-      bool1 = true;
-      break;
-      label511:
-      paramInt += 1;
     }
   }
 }

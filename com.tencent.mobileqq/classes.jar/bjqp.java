@@ -1,102 +1,32 @@
-import dov.com.qq.im.ae.SessionWrap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
 public class bjqp
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  private SessionWrap jdField_a_of_type_DovComQqImAeSessionWrap;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int c;
-  public boolean c;
-  private int d;
-  public boolean d;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = true;
-  private boolean f;
+  public bjqp(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public bjqp(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_d_of_type_Int = 11;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    if (paramInt == 2) {}
-    for (paramInt = i;; paramInt = 1)
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim  140ms end");
     }
+    arqn.a();
+    this.a.a.setImageResource(2130843631);
+    this.a.a.setOnTouchListener(null);
+    this.a.a.setOnTouchListener(new bjqq(this));
+    this.a.b.setStateful(true);
+    this.a.b.setOnClickListener(new bjqr(this));
   }
   
-  public bjqn a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return new bjqn(this, null);
-  }
-  
-  public bjqp a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bjqp a(SessionWrap paramSessionWrap)
-  {
-    this.jdField_a_of_type_DovComQqImAeSessionWrap = paramSessionWrap;
-    if (paramSessionWrap != null) {
-      this.jdField_d_of_type_Int = axcx.a(paramSessionWrap.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startLockLoosenAnim start");
     }
-    return this;
-  }
-  
-  public bjqp a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bjqp a(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bjqp b(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bjqp b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bjqp c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bjqp c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bjqp d(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public bjqp e(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    return this;
   }
 }
 

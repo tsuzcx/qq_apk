@@ -1,6 +1,13 @@
-public abstract interface bhca
+public class bhca
 {
-  public abstract void a(boolean paramBoolean);
+  public static int a;
+  public static int b = 480;
+  public static int c = 360;
+  public static int d = 270;
+  public static int e = 200;
+  public static int f = 150;
+  public static int g = 200;
+  public static int h = 150;
 }
 
 

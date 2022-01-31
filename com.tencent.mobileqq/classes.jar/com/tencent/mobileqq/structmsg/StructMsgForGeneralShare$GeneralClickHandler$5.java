@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.text.TextUtils;
-import axvk;
-import bahx;
+import axvm;
+import bail;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class StructMsgForGeneralShare$GeneralClickHandler$5
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$5(axvk paramaxvk, String paramString, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$5(axvm paramaxvm, String paramString, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    String str2 = bahx.b(this.jdField_a_of_type_JavaLangString, "robot_uin");
+    String str2 = bail.b(this.jdField_a_of_type_JavaLangString, "robot_uin");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "0";
     }
-    bahx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009FA4", str1, "");
+    bail.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009FA4", str1, "");
   }
 }
 

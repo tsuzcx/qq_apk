@@ -1,36 +1,16 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.1;
+import mqq.observer.BusinessObserver;
 
 public class nnv
-  extends AsyncTask<String, Integer, String>
+  implements BusinessObserver
 {
-  String jdField_a_of_type_JavaLangString;
+  public nnv(PublicAccountManager.1 param1) {}
   
-  protected String a(String... paramVarArgs)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (super.isCancelled()) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
+    this.a.a.a();
   }
-  
-  protected void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "{\"r\" : \"-100\"}";
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { nax.a(str), nax.a(this.jdField_a_of_type_JavaLangString) });
-  }
-  
-  protected void a(Integer... paramVarArgs) {}
-  
-  protected void onCancelled()
-  {
-    super.onCancelled();
-  }
-  
-  protected void onPreExecute() {}
 }
 
 

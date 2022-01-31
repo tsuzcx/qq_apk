@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo;
 
+import aisr;
 import aist;
-import aisv;
 import com.tencent.mobileqq.data.ApolloActionPush;
 import mqq.util.WeakReference;
 
 public class ApolloPushManager$2
   implements Runnable
 {
-  public ApolloPushManager$2(aist paramaist, int paramInt, ApolloActionPush paramApolloActionPush) {}
+  public ApolloPushManager$2(aisr paramaisr, int paramInt, ApolloActionPush paramApolloActionPush) {}
   
   public void run()
   {
-    if (aist.a(this.this$0) != null)
+    if (aisr.a(this.this$0) != null)
     {
-      aisv localaisv = (aisv)aist.a(this.this$0).get();
-      if (localaisv != null) {
-        localaisv.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
+      aist localaist = (aist)aisr.a(this.this$0).get();
+      if (localaist != null) {
+        localaist.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
       }
     }
   }

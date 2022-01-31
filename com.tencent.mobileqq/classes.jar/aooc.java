@@ -1,14 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class aooc
-  implements DialogInterface.OnClickListener
+public class aooc
+  implements View.OnClickListener
 {
-  aooc(aooa paramaooa) {}
+  public aooc(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    apuc.a("0X80052CF");
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
+      }
+    }
+    do
+    {
+      return;
+      this.a.e();
+      paramView = (apeo)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+    paramView.putBoolean("last_select_All", true);
+    paramView.commit();
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 

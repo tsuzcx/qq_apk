@@ -1,57 +1,119 @@
-import java.io.File;
+import android.view.View;
+import android.view.ViewStub;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.1;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.2;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.3;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.4;
+import dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.5;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class biks
+  extends biko
 {
-  private static final String a = biks.class.getSimpleName();
+  private VideoFilterViewPager a;
   
-  public static biqt a()
+  public biks(ViewStub paramViewStub)
   {
-    biqt localbiqt = new biqt();
-    localbiqt.d = "http://sqdd.myapp.com/myapp/qqteam/QIM/zhinenglvjingdonghua/AutoAISceneAni.zip";
-    localbiqt.f = "AutoAISceneAni";
-    localbiqt.e = "6f6632b8106fe070a560abcec6051f0d";
-    localbiqt.a = "AutoAISceneAni";
-    localbiqt.n = bihz.c;
-    localbiqt.o = bihz.b;
-    return localbiqt;
+    super(paramViewStub);
   }
   
-  public static void a(biqt parambiqt)
+  public avsw a()
   {
-    try
-    {
-      File localFile = new File(parambiqt.c());
-      if (!localFile.exists()) {
-        return;
-      }
-      nay.a(localFile, parambiqt.b());
+    avsw localavsw = new avsw(null);
+    a(new FilterPagerViewStubHolder.2(this, localavsw));
+    return localavsw;
+  }
+  
+  public void a(int paramInt)
+  {
+    a(new FilterPagerViewStubHolder.5(this, paramInt));
+  }
+  
+  protected void a(View paramView)
+  {
+    this.a = ((VideoFilterViewPager)paramView.findViewById(2131366418));
+  }
+  
+  public void a(bkrk parambkrk, boolean paramBoolean)
+  {
+    a();
+    a(new FilterPagerViewStubHolder.1(this, parambkrk, paramBoolean));
+  }
+  
+  public void a(bkrl parambkrl)
+  {
+    a(new FilterPagerViewStubHolder.4(this, parambkrl));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((!paramBoolean) && (!a())) {
       return;
     }
-    catch (Exception parambiqt) {}
+    a();
+    VideoFilterViewPager localVideoFilterViewPager = this.a;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localVideoFilterViewPager.setVisibility(i);
+      this.a.setEnabled(paramBoolean);
+      return;
+    }
   }
   
-  public static biqt b()
+  public void b()
   {
-    biqt localbiqt = new biqt();
-    localbiqt.d = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/StorySticker/aiScreenAndroid/AISceneLoading.zip";
-    localbiqt.e = "da407ead2fb260d6b2570450f2e1bebd";
-    localbiqt.f = "AISceneLoading";
-    localbiqt.a = "AISceneLoading";
-    localbiqt.n = bihz.c;
-    localbiqt.o = bihz.b;
-    return localbiqt;
+    if (!a()) {
+      return;
+    }
+    this.a.d();
   }
   
-  public static biqt c()
+  public void b(boolean paramBoolean)
   {
-    biqt localbiqt = new biqt();
-    localbiqt.d = "https://qd.myapp.com/myapp/qqteam/shenqidegongneng/AISceneGuide19082601Android.zip";
-    localbiqt.e = "dcb9d44eb8872db03a17fe57ce231a76";
-    localbiqt.f = "AISceneGuide";
-    localbiqt.a = "AISceneGuide";
-    localbiqt.n = bihz.c;
-    localbiqt.o = bihz.b;
-    return localbiqt;
+    boolean bool2 = true;
+    a();
+    VideoFilterViewPager localVideoFilterViewPager;
+    if (this.a != null)
+    {
+      localVideoFilterViewPager = this.a;
+      if (paramBoolean) {
+        break label77;
+      }
+      bool1 = true;
+      localVideoFilterViewPager.setDisableScroll(bool1);
+      localVideoFilterViewPager = this.a;
+      if (paramBoolean) {
+        break label82;
+      }
+    }
+    label77:
+    label82:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoFilterViewPager.a(bool1);
+      if (this.a != null)
+      {
+        this.a.setIsNormalMode(paramBoolean);
+        if (paramBoolean) {
+          break label87;
+        }
+        this.a.a(0);
+      }
+      return;
+      bool1 = false;
+      break;
+    }
+    label87:
+    this.a.a();
+  }
+  
+  public void c() {}
+  
+  public void c(boolean paramBoolean)
+  {
+    a();
+    this.a.post(new FilterPagerViewStubHolder.3(this, paramBoolean));
   }
 }
 

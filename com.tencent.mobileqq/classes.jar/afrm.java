@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class afrm
+class afrm
+  implements View.OnClickListener
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  afrm(afrl paramafrl) {}
   
-  public afrm(PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    switch (paramView.getId())
+    {
     }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    String str;
+    do
+    {
+      return;
+      str = (String)paramView.getTag(-1);
+      paramView = (String)paramView.getTag(-2);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
+    return;
+    naz.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
   }
 }
 

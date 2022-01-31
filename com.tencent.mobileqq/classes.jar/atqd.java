@@ -1,15 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 
 class atqd
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  atqd(atpi paramatpi) {}
+  atqd(atpk paramatpk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.r = false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

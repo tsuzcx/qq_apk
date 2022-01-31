@@ -1,12 +1,19 @@
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
 
-public class qcm
+public final class qcm
+  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
 {
-  public long a;
-  public String a;
-  public ArrayList<qcz> a = new ArrayList();
-  public long b;
-  public long c;
+  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
+  {
+    return new SocializeFeedsInfo.JumpInfo(paramParcel);
+  }
+  
+  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.JumpInfo[paramInt];
+  }
 }
 
 

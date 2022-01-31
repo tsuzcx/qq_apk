@@ -1,38 +1,29 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.widget.FadeIconImageView;
+import android.content.Context;
+import java.util.ArrayList;
 
 public class afyj
-  extends afxr
 {
-  public static final int[] a;
-  public static final int[] b = { 2131364086 };
+  public ArrayList<afyk> a;
+  public int[] a;
+  public String[] a;
   
-  static
+  public afyj()
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690730 };
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public afyj(FragmentActivity paramFragmentActivity)
+  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    super(paramFragmentActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
+    String[] arrayOfString = new String[paramArrayOfInt2.length];
+    int i = 0;
+    while (i < paramArrayOfInt2.length)
+    {
+      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
+      this.jdField_a_of_type_JavaUtilArrayList.add(new afyk(paramArrayOfInt1[i], arrayOfString[i]));
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
   }
 }
 

@@ -1,90 +1,48 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBag.2.1;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.qphone.base.util.QLog;
 
-public class mow
-  extends lgl
+class mow
+  extends lwg
 {
-  mow(mou parammou) {}
+  mow(mov parammov) {}
   
-  protected void a(long paramLong)
+  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
   {
-    int i = this.a.a.a().a().d;
-    if ((i == 2) || (i == 1))
+    this.a.jdField_a_of_type_Moy = new moy();
+    this.a.jdField_a_of_type_Moy.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
+    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
+      this.a.jdField_a_of_type_Moy.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_Moy.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_Moy.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
+    }
+    this.a.a(this.a.jdField_a_of_type_Moy);
+    if ((this.a.jdField_a_of_type_Moy.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
     {
-      mpx.a(this.a.a.a().c());
-      mpx.g();
-      d(3);
-      return;
-    }
-    mpx.a(0L);
-  }
-  
-  protected void b(long paramLong)
-  {
-    mpc localmpc = this.a.a();
-    if (localmpc != null) {
-      localmpc.b("onResumeVideo");
-    }
-  }
-  
-  protected void b(long paramLong, String paramString, boolean paramBoolean)
-  {
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.c(paramBoolean);
-    }
-    mpx.h();
-  }
-  
-  protected void c()
-  {
-    mpc localmpc = this.a.a();
-    if (localmpc != null) {
-      localmpc.b("onPauseVideo");
-    }
-  }
-  
-  protected void c(String paramString, boolean paramBoolean)
-  {
-    paramString = this.a.a();
-    if (paramString == null) {}
-    do
-    {
-      int i;
-      do
+      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_Lwf))
       {
-        return;
-        i = this.a.a.a().a().d;
-      } while ((i != 2) && (i != 1));
-      if (paramBoolean)
-      {
-        if (paramString.a != null) {
-          paramString.a.a("onPeerSwitchTerminal");
-        }
-        paramString.b("onPeerSwitchTerminal");
+        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
         return;
       }
-      paramString.a("onPeerSwitchTerminal");
-    } while (paramString.a == null);
-    paramString.a(paramString.a.b);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (paramInt <= 0) {
+      this.a.b(this.a.jdField_a_of_type_Moy);
       return;
     }
-    mpc localmpc = this.a.a();
-    if (localmpc != null)
-    {
-      localmpc.a("onConnected:" + paramInt);
-      if (localmpc.a != null) {
-        localmpc.a(localmpc.a.b);
-      }
+    this.a.b(this.a.jdField_a_of_type_Moy);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
     }
-    this.a.a.a().postDelayed(new AVRedBag.2.1(this, paramInt), 1100L);
+    this.a.jdField_a_of_type_Moy.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.jdField_a_of_type_Moy.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.jdField_a_of_type_Moy.c = paramBoolean;
+    if (paramBoolean) {
+      mpv.a(paramString1);
+    }
+    this.a.b(this.a.jdField_a_of_type_Moy);
   }
 }
 

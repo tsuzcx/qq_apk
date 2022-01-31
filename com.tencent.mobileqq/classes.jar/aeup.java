@@ -1,46 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeup
-  implements Animation.AnimationListener
+  extends aqup
 {
   public aeup(TroopChatPie paramTroopChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a()
   {
-    this.a.q.setVisibility(8);
-    this.a.r.setVisibility(8);
+    if (((aqui)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      TroopChatPie.c(this.a).a(this.a.jdField_a_of_type_Aexw, new Object[0]);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void b()
   {
-    this.a.d.setBackgroundDrawable(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.a);
-    if (!this.a.I)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130849026);
-      this.a.o.setVisibility(8);
-      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166851);
-      this.a.e.setTextColor(paramAnimation);
+    if (((aqui)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Aexw.a();
     }
-    for (;;)
-    {
-      actn.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout, 2130848770);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130849027);
-      this.a.o.setVisibility(8);
-      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131166852);
-      this.a.e.setTextColor(paramAnimation);
+  }
+  
+  protected void c()
+  {
+    if ((((aqui)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.d(this.a).a() == 14)) {
+      TroopChatPie.e(this.a).a();
     }
   }
 }

@@ -1,29 +1,42 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.Logger;
 
 public class bfmh
+  implements Logger
 {
-  public static boolean a(int paramInt, List paramList)
+  public void d(String paramString1, String paramString2)
   {
-    return (paramList == null) || (paramInt < 0) || (paramInt >= paramList.size());
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public static <T> boolean a(T[] paramArrayOfT, T paramT)
+  public void e(String paramString1, String paramString2)
   {
-    if ((paramArrayOfT == null) || (paramT == null)) {}
-    for (;;)
-    {
-      return false;
-      int j = paramArrayOfT.length;
-      int i = 0;
-      while (i < j)
-      {
-        T ? = paramArrayOfT[i];
-        if ((? != null) && (?.equals(paramT))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
+    QLog.e(paramString1, 2, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString, Throwable paramThrowable)
+  {
+    QLog.e(paramString, 2, paramThrowable, new Object[0]);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 2, paramString2);
+  }
+  
+  public boolean isEnable()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 2, paramString2);
   }
 }
 

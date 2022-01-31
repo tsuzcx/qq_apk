@@ -1,93 +1,164 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.location.window.CanBackFrameLayout;
-import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.util.LocationReportUtil.1;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Random;
+import mqq.app.AppRuntime;
 
 public class arza
 {
-  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131558889, null);
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
-  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365136);
-  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365171);
-  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
-  private final TextView b;
-  private final TextView c;
+  private static int jdField_a_of_type_Int = 0;
+  private static long jdField_a_of_type_Long;
+  private static Handler jdField_a_of_type_AndroidOsHandler;
+  private static Runnable jdField_a_of_type_JavaLangRunnable;
+  private static boolean jdField_a_of_type_Boolean = true;
+  private static long jdField_b_of_type_Long;
+  private static volatile boolean jdField_b_of_type_Boolean;
+  private static boolean c;
   
-  public arza()
+  static
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new arzb(this));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365142));
-    this.b.setOnClickListener(new arzc(this));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365151));
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
+    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  public void a()
+  public static int a(QQAppInterface paramQQAppInterface, arum paramarum)
   {
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
+    if (paramarum == null) {}
+    do
     {
-      localLayoutParams.format = -3;
-      localLayoutParams.height = bbkx.b();
-      localLayoutParams.width = bbkx.a();
-      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
-      return;
+      do
+      {
+        return 0;
+        paramQQAppInterface = arus.a(paramQQAppInterface).a(paramarum);
+      } while (paramQQAppInterface == null);
+      if (paramQQAppInterface.a() == null) {
+        return 1;
+      }
+      if (paramQQAppInterface.a() == -1) {
+        return 2;
+      }
+    } while (paramQQAppInterface.a() == -1);
+    return 3;
+  }
+  
+  public static void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationReportUtil", 2, "onAppForeground: invoked. ");
     }
+    f();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Int = bbkb.G(localBaseApplicationImpl);
+      c = bbkb.e(localBaseApplicationImpl);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationReportUtil", 2, new Object[] { "onAppForeground: invoked. ", " sProcBgAliveTimeSecond: ", Integer.valueOf(jdField_a_of_type_Int), " sProcBgLocationIsReporting: ", Boolean.valueOf(c) });
+      }
+    }
+    bbkb.a(localBaseApplicationImpl, false, 0);
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new arzd(this, paramOnClickListener));
+    return new Random(System.currentTimeMillis()).nextInt(paramInt) == 0;
   }
   
-  public void a(String paramString)
+  public static void b()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365147)).setText(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationReportUtil", 2, "onAppBackground: invoked. ");
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime == null) || (TextUtils.isEmpty(localAppRuntime.getAccount()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationReportUtil", 2, new Object[] { "onAppBackground: invoked. app account null", " rt: ", localAppRuntime });
+      }
+    }
+    do
+    {
+      return;
+      jdField_a_of_type_Boolean = false;
+      jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    boolean bool = arus.a((QQAppInterface)localAppRuntime).a.a();
+    if (jdField_a_of_type_JavaLangRunnable == null) {
+      jdField_a_of_type_JavaLangRunnable = new LocationReportUtil.1(bool);
+    }
+    jdField_b_of_type_Boolean = false;
+    jdField_a_of_type_AndroidOsHandler.post(jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void b()
+  public static void c()
   {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
+    if ((jdField_a_of_type_Boolean) && (jdField_a_of_type_Int != 0))
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localQQAppInterface = (QQAppInterface)localObject;
+        localHashMap = new HashMap();
+        if (!c) {
+          break label131;
+        }
+        localObject = "1";
+        localHashMap.put("sProcBgLocationIsReporting", localObject);
+        if (!c) {
+          break label137;
+        }
+        axrn.a(BaseApplication.getContext()).a(localQQAppInterface.getCurrentAccountUin(), "actLocationBgReportSampling", true, jdField_a_of_type_Int, 0L, localHashMap, "");
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationReportUtil", 2, new Object[] { "reportWhenFirstTimeOnAppForeground: invoked. ", " map: ", localHashMap, " sProcBgAliveTimeSecond: ", Integer.valueOf(jdField_a_of_type_Int) });
+        }
+      }
+    }
+    label131:
+    label137:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        QQAppInterface localQQAppInterface;
+        HashMap localHashMap;
+        return;
+        Object localObject = "0";
+        continue;
+        if (a(1000)) {
+          axrn.a(BaseApplication.getContext()).a(localQQAppInterface.getCurrentAccountUin(), "actLocationBgReportSampling", true, jdField_a_of_type_Int, 0L, localHashMap, "");
+        }
+      }
+    }
+    QLog.d("LocationReportUtil", 2, new Object[] { "report: invoked. no need report", " isFirstTimeOnAppForeground: ", Boolean.valueOf(jdField_a_of_type_Boolean), " sProcBgAliveTimeSecond: ", Integer.valueOf(jdField_a_of_type_Int) });
   }
   
-  public void b(View.OnClickListener paramOnClickListener)
+  public static void d()
   {
-    this.b.setOnClickListener(new arze(this, paramOnClickListener));
+    jdField_b_of_type_Long = System.currentTimeMillis();
   }
   
-  public void b(String paramString)
+  public static void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    long l = (System.currentTimeMillis() - jdField_b_of_type_Long) / 1000L;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationReportUtil", 2, new Object[] { "reportFloatWindowLastExposeDuration: invoked. ", " second: ", Long.valueOf(l) });
+    }
+    axqy.b(null, "CliOper", "", "", "0X800A976", "0X800A976", 0, 0, String.valueOf(l), "0", "0", "");
   }
   
-  public void c()
+  private static void f()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void c(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new arzf(this, paramOnClickListener));
-  }
-  
-  public void c(String paramString)
-  {
-    this.b.setText(paramString);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    jdField_a_of_type_AndroidOsHandler.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    jdField_a_of_type_JavaLangRunnable = null;
+    jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationReportUtil", 2, new Object[] { "stopHandler: invoked. ", " updateLocationBgReportSpRunnable: ", jdField_a_of_type_JavaLangRunnable });
+    }
   }
 }
 

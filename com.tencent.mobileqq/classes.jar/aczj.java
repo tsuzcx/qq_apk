@@ -1,9 +1,4 @@
-public abstract interface aczj
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
+public class aczj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.bean;
 
-import aoga;
+import aogf;
 
 public class MiniAppRecommManager$1
   implements Runnable
 {
   public void run()
   {
-    aoga.a(this.this$0, this.a);
+    aogf.a(this.this$0, this.a);
   }
 }
 

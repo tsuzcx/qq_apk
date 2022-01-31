@@ -1,35 +1,33 @@
-import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class asfw
-  extends PopupWindow
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private PopupWindow.OnDismissListener a;
+  public asfw(MedalGuideView paramMedalGuideView) {}
   
-  public asfw(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView, paramInt1, paramInt2, paramBoolean);
-  }
-  
-  public void a()
-  {
-    super.dismiss();
-  }
-  
-  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
-  {
-    this.a = paramOnDismissListener;
-  }
-  
-  public void dismiss()
-  {
-    if (this.a != null)
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    f = paramValueAnimator.getAnimatedFraction();
+    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
     {
-      this.a.onDismiss();
-      return;
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Bfob.sendEmptyMessage(3);
     }
-    super.dismiss();
+    if (f >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 

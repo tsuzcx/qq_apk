@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
 class aaca
-  implements DialogInterface.OnCancelListener
+  extends asiz<JobSegment>
 {
-  aaca(aabw paramaabw, aabv paramaabv, aabn paramaabn, JSONObject paramJSONObject, aabm paramaabm) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  aaca(aabz paramaabz, JobSegment paramJobSegment)
   {
-    this.jdField_a_of_type_Aabw.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Aabv.a);
-    aabw.c(this.jdField_a_of_type_Aabw, 4, this.jdField_a_of_type_Aabn, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Aabm);
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, asiw paramasiw)
+  {
+    if (paramBoolean)
+    {
+      aabz.a(this.a, paramasiw);
+      return;
+    }
+    aabz.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 

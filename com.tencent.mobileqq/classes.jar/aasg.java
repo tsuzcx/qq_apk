@@ -1,32 +1,6 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
-
-public class aasg
-  implements aptu
+public abstract interface aasg
 {
-  public aasg(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouq paramaouq) {}
-  
-  public void a()
-  {
-    aptv.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692829));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bbdj.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Aouq.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Aouq.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
-    }
-  }
-  
-  public void b() {}
+  public abstract boolean a(boolean paramBoolean);
 }
 
 

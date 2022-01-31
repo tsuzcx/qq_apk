@@ -1,8 +1,12 @@
-public abstract class bhmr
+import android.content.Context;
+
+class bhmr
+  extends bhmp
 {
-  public static bhmr a = new bhms();
-  
-  public abstract int a(String paramString, int paramInt);
+  protected int b(Context paramContext, int[] paramArrayOfInt)
+  {
+    return -3;
+  }
 }
 
 

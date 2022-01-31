@@ -1,0 +1,19 @@
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.Switch;
+
+public class acbw
+{
+  public CompoundButton.OnCheckedChangeListener a;
+  public TextView a;
+  public URLImageView a;
+  public Switch a;
+  public String a;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     acbw
+ * JD-Core Version:    0.7.0.1
+ */

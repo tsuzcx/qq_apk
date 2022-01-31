@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adug;
-import aduu;
-import anvs;
-import aobk;
+import adue;
+import adus;
+import anvx;
+import aobp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import mqq.os.MqqHandler;
@@ -11,11 +11,11 @@ import mqq.os.MqqHandler;
 public class MarketFaceItemBuilder$10
   implements Runnable
 {
-  public MarketFaceItemBuilder$10(adug paramadug, aduu paramaduu, ChatMessage paramChatMessage) {}
+  public MarketFaceItemBuilder$10(adue paramadue, adus paramadus, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    boolean bool = this.this$0.a.a(this.jdField_a_of_type_Aduu.a.a, 8);
+    boolean bool = this.this$0.a.a(this.jdField_a_of_type_Adus.a.a, 8);
     ThreadManager.getUIHandler().post(new MarketFaceItemBuilder.10.1(this, bool));
   }
 }

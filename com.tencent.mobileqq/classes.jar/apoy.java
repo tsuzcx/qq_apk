@@ -1,34 +1,26 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class apoy
-  implements SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener
 {
-  apoy(apox paramapox) {}
+  apoy(apow paramapow) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (this.a.a != null))
+    int i = this.a.a.h();
+    if ((i == 2) || (i == 3))
     {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
+      i = apvm.b(this.a.a.e());
+      axqy.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+      if (this.a.a.a() != null) {
+        this.a.a.a().a();
+      }
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    apox.a(this.a, false);
-    if ((this.a.a != null) && (!this.a.a.b(apox.a(this.a)))) {
-      this.a.a.d();
+    while ((i != 1) || (this.a.a.a() == null)) {
+      return;
     }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    apox.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    this.a.a.a().a();
   }
 }
 

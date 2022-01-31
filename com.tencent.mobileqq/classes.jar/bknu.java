@@ -1,43 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bknu
-  extends syu<tng, tot>
+class bknu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bknu(bknt parambknt) {}
+  bknu(bknr parambknr) {}
   
-  public void a(@NonNull tng paramtng, @Nullable tot paramtot, @NonNull ErrorMessage paramErrorMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    veg.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramtot != null))
-    {
-      veg.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramtot.toString());
-      paramtng = paramtot.jdField_a_of_type_JavaUtilList;
-      if (paramtng.contains(bknt.a(this.a)))
-      {
-        int i = paramtng.indexOf(bknt.a(this.a));
-        bknt.a(this.a, (vvg)paramtng.get(i));
-        bknt.a(this.a).clear();
-        bknt.a(this.a).addAll(paramtng);
-        paramtng = new ArrayList(bknt.a(this.a));
-        bknt.a(this.a, paramtot.jdField_a_of_type_JavaLangString);
-        bknt.a(this.a, paramtot.b);
-        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this, paramtng));
-      }
-    }
-    for (;;)
-    {
-      bknt.a(this.a).a(paramErrorMessage.errorCode, bknt.a(this.a), this.a.a());
-      return;
-      bknt.a(this.a, null);
-      break;
-      veg.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    this.a.invalidateSelf();
   }
 }
 

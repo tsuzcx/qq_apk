@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
-import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
-
-class pat
-  implements qef<oidb_cmd0x977.FollowStatusInfo, qbc>
+public class pat
 {
-  pat(paq parampaq) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public qbc a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
+  public void a()
   {
-    return new qbc(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
   }
 }
 

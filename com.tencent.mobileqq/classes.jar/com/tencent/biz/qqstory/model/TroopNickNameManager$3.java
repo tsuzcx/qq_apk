@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.model;
 
-import tdk;
+import tdh;
 
 public class TroopNickNameManager$3
   implements Runnable
 {
-  public TroopNickNameManager$3(tdk paramtdk) {}
+  public TroopNickNameManager$3(tdh paramtdh) {}
   
   public void run()
   {

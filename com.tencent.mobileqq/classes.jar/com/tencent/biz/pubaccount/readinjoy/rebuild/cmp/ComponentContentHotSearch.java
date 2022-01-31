@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import amvk;
 import amvl;
-import amvm;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aywk;
+import aywm;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -16,17 +16,17 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import pax;
-import pqr;
-import prb;
-import pvt;
-import pvu;
-import qbf;
-import rap;
+import pau;
+import pqo;
+import pqy;
+import pvq;
+import pvr;
+import qbc;
+import ram;
 
 public class ComponentContentHotSearch
   extends RelativeLayout
-  implements pqr
+  implements pqo
 {
   public static final String a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -34,19 +34,19 @@ public class ComponentContentHotSearch
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private MeasureGridView jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView;
-  private pax jdField_a_of_type_Pax;
-  private pvu jdField_a_of_type_Pvu;
-  private rap jdField_a_of_type_Rap;
+  private pau jdField_a_of_type_Pau;
+  private pvr jdField_a_of_type_Pvr;
+  private ram jdField_a_of_type_Ram;
   
   static
   {
     jdField_a_of_type_JavaLangString = ComponentContentHotSearch.class.getSimpleName();
   }
   
-  public ComponentContentHotSearch(Context paramContext, rap paramrap)
+  public ComponentContentHotSearch(Context paramContext, ram paramram)
   {
     super(paramContext);
-    this.jdField_a_of_type_Rap = paramrap;
+    this.jdField_a_of_type_Ram = paramram;
     a(paramContext);
   }
   
@@ -66,17 +66,17 @@ public class ComponentContentHotSearch
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377390));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131370911));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131367637));
-    this.jdField_a_of_type_Pvu = new pvu(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Pvu);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new pvt(this));
+    this.jdField_a_of_type_Pvr = new pvr(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Pvr);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new pvq(this));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      this.jdField_a_of_type_Pax = ((pax)paramObject);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pax.a();
+      this.jdField_a_of_type_Pau = ((pau)paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pau.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {}
     }
     else
@@ -86,8 +86,8 @@ public class ComponentContentHotSearch
     paramObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hotWordInfo;
     if ((paramObject != null) && (paramObject.a != null) && (paramObject.a.size() > 0))
     {
-      this.jdField_a_of_type_Pvu.a(paramObject.a);
-      paramObject = amvm.a();
+      this.jdField_a_of_type_Pvr.a(paramObject.a);
+      paramObject = amvl.a();
       if ((paramObject == null) || (TextUtils.isEmpty(paramObject.b))) {
         break label191;
       }
@@ -95,7 +95,7 @@ public class ComponentContentHotSearch
     label191:
     for (paramObject = paramObject.b;; paramObject = "http://pub.idqqimg.com/pc/misc/files/20180903/eddc885537fc4606a66c93a06854511b.png")
     {
-      Drawable localDrawable = aywk.a;
+      Drawable localDrawable = aywm.a;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
@@ -116,10 +116,10 @@ public class ComponentContentHotSearch
     }
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(paramprb);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampqy);
     }
   }
 }

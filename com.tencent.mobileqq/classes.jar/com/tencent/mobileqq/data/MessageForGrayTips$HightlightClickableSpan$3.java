@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aksf;
+import akse;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -13,10 +13,10 @@ class MessageForGrayTips$HightlightClickableSpan$3
   
   public void run()
   {
-    aksf.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
+    akse.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
     try
     {
-      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(aksf.a);
+      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(akse.a);
       return;
     }
     catch (Exception localException)

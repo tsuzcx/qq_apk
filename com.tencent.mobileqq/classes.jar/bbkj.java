@@ -1,14 +1,54 @@
-import java.util.concurrent.ThreadFactory;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bbkj
-  implements ThreadFactory
+public class bbkj
 {
-  public Thread newThread(Runnable paramRunnable)
+  public static long a;
+  private static ConcurrentHashMap<String, Long> a;
+  
+  static
   {
-    bbki.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + bbki.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+  }
+  
+  public static void a(String paramString, long paramLong) {}
+  
+  public static void a(String paramString1, String paramString2) {}
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("AIO_Start_cost");
+  }
+  
+  public static final void b(String paramString1, String paramString2)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (paramString1 != null)
+    {
+      paramString2 = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+      if (paramString2 != null)
+      {
+        jdField_a_of_type_Long = l - paramString2.longValue();
+        paramString1 = paramString1 + ", cost=" + jdField_a_of_type_Long + "|" + QQAppInterface.b + "|" + acta.a;
+        if (!QLog.isColorLevel()) {
+          break label90;
+        }
+        QLog.i("AutoMonitor", 2, paramString1);
+      }
+    }
+    label90:
+    while (paramString2 == null)
+    {
+      return;
+      Log.i("AutoMonitor", paramString1);
+      return;
+    }
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l));
   }
 }
 

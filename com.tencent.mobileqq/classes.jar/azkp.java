@@ -1,9 +1,9 @@
-import android.widget.TextView;
-
 class azkp
+  implements bfqj
 {
-  public int a;
-  public TextView a;
+  azkp(azkm paramazkm) {}
+  
+  public void a() {}
 }
 
 

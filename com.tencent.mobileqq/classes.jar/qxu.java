@@ -1,60 +1,76 @@
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.view.KeyEvent;
-import android.view.View;
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface qxu
+public class qxu
+  implements qxq
 {
-  @Nullable
-  public abstract VideoInfo a();
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
+  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private nps jdField_a_of_type_Nps;
+  private qxw jdField_a_of_type_Qxw;
+  private qyc jdField_a_of_type_Qyc;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public abstract VideoFeedsPlayManager a();
+  public qxu(Activity paramActivity, ArrayList<VideoInfo> paramArrayList, int paramInt, Bundle paramBundle, qyc paramqyc)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Qyc = paramqyc;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramBundle.getString("VIDEO_COMMON_DATA");
+    this.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("VIDEO_BUSINESS_INFO");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
+    this.jdField_a_of_type_Qxw = new qxw(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Qxw);
+  }
   
-  public abstract ArrayList<VideoInfo> a();
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if (this.jdField_a_of_type_Nps == null) {
+      this.jdField_a_of_type_Nps = ((nps)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(90));
+    }
+    Object localObject2 = this.jdField_a_of_type_Qyc.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new VideoInfo();
+    }
+    if (((VideoInfo)localObject1).a != null) {}
+    for (int i = ((VideoInfo)localObject1).a.jdField_a_of_type_Int;; i = 0)
+    {
+      localObject2 = new ArrayList(this.jdField_a_of_type_Qyc.a());
+      this.jdField_a_of_type_Nps.a(this.jdField_a_of_type_Qxw, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), (VideoInfo)localObject1, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, ((VideoInfo)localObject1).i, -1L, true, i, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null, this.jdField_b_of_type_Int, null, this.jdField_a_of_type_ArrayOfByte, 1, 1, (ArrayList)localObject2);
+      return;
+    }
+  }
   
-  public abstract qky a();
+  public void a(int paramInt)
+  {
+    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size() - 5) {
+      a();
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2);
-  
-  public abstract void a(VideoFeedsRecyclerView paramVideoFeedsRecyclerView, qxb paramqxb, View paramView);
-  
-  public abstract void a(qxs paramqxs);
-  
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
-  
-  public abstract boolean a(qxf paramqxf);
-  
-  public abstract boolean a(qxs paramqxs);
-  
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract void b(VideoInfo paramVideoInfo);
-  
-  public abstract void c();
-  
-  public abstract void c(VideoInfo paramVideoInfo);
-  
-  public abstract void d();
-  
-  public abstract void d(VideoInfo paramVideoInfo);
-  
-  public abstract void e(VideoInfo paramVideoInfo);
-  
-  public abstract void f(VideoInfo paramVideoInfo);
-  
-  public abstract void g();
-  
-  public abstract void g(VideoInfo paramVideoInfo);
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Qxw);
+  }
 }
 
 

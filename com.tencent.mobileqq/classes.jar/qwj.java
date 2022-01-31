@@ -1,103 +1,90 @@
-import android.annotation.SuppressLint;
-import android.net.TrafficStats;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 class qwj
-  implements qwo
+  extends qwm
 {
-  private long jdField_a_of_type_Long;
-  private Method jdField_a_of_type_JavaLangReflectMethod;
-  private long jdField_b_of_type_Long;
-  private Method jdField_b_of_type_JavaLangReflectMethod;
-  private long c;
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private final ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  private qwo jdField_a_of_type_Qwo;
+  private int b;
   
-  @SuppressLint({"DiscouragedPrivateApi"})
-  private final long b()
+  public qwj(float paramFloat)
   {
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangReflectMethod == null)
-      {
-        this.jdField_a_of_type_JavaLangReflectMethod = TrafficStats.class.getDeclaredMethod("getLoopbackRxBytes", new Class[0]);
-        this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-      }
-      long l = ((Long)this.jdField_a_of_type_JavaLangReflectMethod.invoke(null, new Object[0])).longValue();
-      return l;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DefaultBandwidthObtainer", 2, "getLoopbackRxBytesIn28: ", localException);
-      }
-    }
-    return 0L;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = 500;
+    this.jdField_a_of_type_Qwo = new qwo((int)paramFloat);
+    a(this.jdField_a_of_type_Qwo);
   }
   
-  @SuppressLint({"DiscouragedPrivateApi"})
-  private final long c()
+  private void c()
   {
-    try
-    {
-      if (this.jdField_b_of_type_JavaLangReflectMethod == null)
-      {
-        this.jdField_b_of_type_JavaLangReflectMethod = TrafficStats.class.getDeclaredMethod("getRxBytes", new Class[] { String.class });
-        this.jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
-      }
-      long l = ((Long)this.jdField_b_of_type_JavaLangReflectMethod.invoke(null, new Object[] { "lo" })).longValue();
-      return l;
+    int i = (int)(Math.sqrt(this.jdField_a_of_type_Qwo.a) * this.jdField_a_of_type_Float);
+    if (i > 0) {
+      this.b = i;
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DefaultBandwidthObtainer", 2, "getLoopbackRxBytesIn14: ", localException);
-      }
-    }
-    return 0L;
   }
   
-  public long a()
+  public long a(long paramLong)
   {
-    int i = Build.VERSION.SDK_INT;
-    long l4 = SystemClock.elapsedRealtime();
-    long l5 = TrafficStats.getTotalRxBytes();
+    long l2 = 0L;
+    double d = Math.sqrt(paramLong);
     long l1;
-    long l3;
-    if (i >= 28)
+    while ((this.jdField_a_of_type_Int + d > this.b) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      l1 = b();
-      if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_b_of_type_Long <= 0L)) {
-        break label236;
-      }
-      long l6 = l5 - this.jdField_a_of_type_Long;
-      long l7 = l1 - this.jdField_b_of_type_Long;
-      i = (int)Math.max((l4 - this.c) / 1000L, 1L);
-      l3 = Math.max(0L, (l6 - l7) / 1024L) / i;
-      l2 = l3;
-      if (QLog.isColorLevel()) {
-        QLog.d("DefaultBandwidthObtainer", 2, "calculateBandwidth: totalBytes=" + l6 + ", loopbackBytes=" + l7 + ", bandwidth=" + l3 + "kb/s");
-      }
+      l1 = ((Long)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).longValue();
+      this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int - Math.sqrt(l1)));
     }
-    label236:
-    for (long l2 = l3;; l2 = 0L)
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int + d));
+    int i = this.b / 2;
+    Object localObject = (List)this.jdField_a_of_type_JavaUtilArrayList.clone();
+    Collections.sort((List)localObject);
+    Long localLong;
+    if (this.jdField_a_of_type_Int > i)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DefaultBandwidthObtainer", 2, "getCurrentBandwidth: bandwidth=" + l2 + "kb/s");
-      }
-      this.jdField_a_of_type_Long = l5;
-      this.jdField_b_of_type_Long = l1;
-      this.c = l4;
-      return l2;
-      if (i >= 14)
-      {
-        l1 = c();
-        break;
-      }
+      localObject = ((List)localObject).iterator();
       l1 = 0L;
-      break;
+      do
+      {
+        paramLong = l2;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localLong = (Long)((Iterator)localObject).next();
+        paramLong = (l1 + Math.sqrt(localLong.longValue()));
+        l1 = paramLong;
+      } while (paramLong <= i);
     }
+    for (paramLong = localLong.longValue();; paramLong = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue())
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Float) {
+        c();
+      }
+      return paramLong;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+    super.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ExoPredictor(" + this.b + ')';
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class DataJsPlugin$4
   implements AsyncResult
 {
-  DataJsPlugin$4(DataJsPlugin paramDataJsPlugin, beka parambeka) {}
+  DataJsPlugin$4(DataJsPlugin paramDataJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -19,7 +19,7 @@ class DataJsPlugin$4
     }
     long l = paramJSONObject.optLong("retCode");
     String str = paramJSONObject.optString("errMsg");
-    besl.d("DataJsPlugin", "getTcbTicket fail, retCode: " + l + "; errMsg : " + str);
+    betc.d("DataJsPlugin", "getTcbTicket fail, retCode: " + l + "; errMsg : " + str);
     this.val$req.a(paramJSONObject, null);
   }
 }

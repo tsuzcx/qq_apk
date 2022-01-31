@@ -1,44 +1,13 @@
-import com.tencent.qphone.base.util.Cryptor;
-import org.json.JSONObject;
+import java.util.List;
 
 public class lcp
 {
-  public final String a = "uid";
-  public final String b = "ukey";
-  public final String c = "^%QAI$I+j{2HuP0L";
-  public String d;
-  public String e;
+  @arlz(a="testInfos")
+  public List<lcq> a;
   
   public static lcp a(String paramString)
   {
-    lcp locallcp = new lcp();
-    if (locallcp.a(paramString)) {
-      return locallcp;
-    }
-    return null;
-  }
-  
-  private boolean a(String paramString)
-  {
-    try
-    {
-      paramString = bbca.decode(paramString, 0);
-      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
-      if (paramString.has("uid")) {
-        this.d = paramString.getString("uid");
-      }
-      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
-      {
-        this.e = paramString.getString("ukey");
-        return true;
-      }
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
+    return (lcp)arma.a(paramString, lcp.class);
   }
 }
 

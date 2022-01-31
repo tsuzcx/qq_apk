@@ -1,255 +1,85 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenMgr.1;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class azuj
-  implements azuk
+class azuj
+  extends xba
 {
-  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<String, TroopFileThumbnailGenTask> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private LinkedList<TroopFileThumbnailGenTask> b = new LinkedList();
-  private LinkedList<TroopFileThumbnailGenTask> c = new LinkedList();
+  azuj(azui paramazui) {}
   
-  private String a()
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " PRS:" + this.c.size() + " RS:" + this.b.size();
-  }
-  
-  public static String a(UUID paramUUID, int paramInt)
-  {
-    return paramUUID.toString() + "_" + paramInt;
-  }
-  
-  private LinkedList<TroopFileThumbnailGenTask> a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    TroopFileThumbnailGenTask localTroopFileThumbnailGenTask;
-    while (localIterator.hasNext())
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    boolean bool;
+    do
     {
-      localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)((Map.Entry)localIterator.next()).getValue();
-      if ((paramInt == localTroopFileThumbnailGenTask.a()) && (paramString.equalsIgnoreCase(localTroopFileThumbnailGenTask.b())))
+      String str;
+      do
       {
-        localLinkedList.add(localTroopFileThumbnailGenTask);
-        localIterator.remove();
-      }
-    }
-    localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+        return;
+        str = paramBundle.getString("itemKey");
+      } while ((str == null) || (!UUID.fromString(str).equals(this.a.a())) || (this.a.jdField_a_of_type_Boolean));
+      i = paramBundle.getInt("thumbNail");
+      bool = paramBundle.getBoolean("isPreview", false);
+    } while ((i == 0) || (bool) || (i != this.a.jdField_a_of_type_Int));
+    if ((paramDownloadFileRspBody == null) || (!paramBoolean))
     {
-      localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)localIterator.next();
-      if ((paramInt == localTroopFileThumbnailGenTask.a()) && (paramString.equalsIgnoreCase(localTroopFileThumbnailGenTask.b())))
-      {
-        localLinkedList.add(localTroopFileThumbnailGenTask);
-        localIterator.remove();
-      }
-    }
-    return localLinkedList;
-  }
-  
-  private boolean a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      TroopFileThumbnailGenTask localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)localIterator.next();
-      if ((paramInt == localTroopFileThumbnailGenTask.a()) && (paramString.equalsIgnoreCase(localTroopFileThumbnailGenTask.b()))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void d()
-  {
-    if (this.b.size() >= 4) {}
-    label179:
-    for (;;)
-    {
+      azst.a("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult isSuccess:false  errCode:" + paramInt);
+      this.a.c(bamw.A);
       return;
-      for (;;)
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-          break label179;
-        }
-        Object localObject = (String)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localObject = (TroopFileThumbnailGenTask)this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        if (localObject != null) {
-          if (a(((TroopFileThumbnailGenTask)localObject).b(), ((TroopFileThumbnailGenTask)localObject).a()))
-          {
-            azsr.b("TroopFileThumbnailGenMgr", azsr.a, "[" + ((TroopFileThumbnailGenTask)localObject).a() + "] has same task gening. add WD task");
-            this.c.add(localObject);
-            ((TroopFileThumbnailGenTask)localObject).b();
-          }
-          else
-          {
-            this.b.add(localObject);
-            if (((TroopFileThumbnailGenTask)localObject).a()) {
-              break;
-            }
-            azsr.a("TroopFileThumbnailGenMgr", azsr.a, "[" + ((TroopFileThumbnailGenTask)localObject).a() + "] start failed!!");
-            this.b.remove(localObject);
-          }
-        }
-      }
     }
-  }
-  
-  public int a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return -1;
-    }
-    if (paramItem.Id == null) {
-      return -2;
-    }
-    if (paramInt == 0) {
-      return -5;
-    }
-    String str = a(paramItem.Id, paramInt);
-    if (a(str))
+    int i = paramDownloadFileRspBody.int32_ret_code.get();
+    azst.c("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
+    if (i < 0)
     {
-      azsr.c("TroopFileThumbnailGenMgr", azsr.a, "[" + str + "] genFileThumbnail task exsited. ");
-      return -4;
+      if ((i != -103) && (i != -302) && (i != -301)) {
+        break label779;
+      }
+      azst.a("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult  file is not exsit. retCode:" + i);
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.b(4);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ErrorCode = 0;
+      azsd.a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 12);
+      if (this.a.jdField_a_of_type_Azuk != null) {
+        this.a.jdField_a_of_type_Azuk.a(this.a.a(), false, i, this.a);
+      }
     }
-    paramString = TroopFileThumbnailGenTask.a(paramLong, paramItem, paramInt, paramString, this);
-    if (paramString == null) {
-      return -3;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = bbea.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue.toLowerCase();
     }
-    azul.a(paramItem, paramInt);
-    this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(str);
-    azsr.c("TroopFileThumbnailGenMgr", azsr.a, "[" + str + "] genFileThumbnail filePath:" + paramItem.LocalFile + a());
-    d();
-    return 0;
-  }
-  
-  public int a(UUID paramUUID, int paramInt)
-  {
-    if (paramUUID == null) {
-      return -2;
-    }
-    String str = a(paramUUID, paramInt);
-    Object localObject = this.b.iterator();
-    TroopFileThumbnailGenTask localTroopFileThumbnailGenTask;
-    while (((Iterator)localObject).hasNext())
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl = bbea.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp))
     {
-      localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)((Iterator)localObject).next();
-      if (str.equalsIgnoreCase(localTroopFileThumbnailGenTask.a()))
-      {
-        localTroopFileThumbnailGenTask.a();
-        ((Iterator)localObject).remove();
-      }
+      azst.a("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult DownloadIp is null");
+      bamv.a("gfile", "ipnull", "", "", "", "");
     }
-    for (paramInt = 1;; paramInt = 0)
+    i = paramDownloadFileRspBody.uint32_preview_port.get();
+    azst.c("TroopFileDownloadWorker", azst.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult DownloadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " DownloadDNS:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + " videoPort:" + i + " DownloadUrl:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + " cookieValue:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue);
+    if (paramDownloadFileRspBody.uint32_preview_port_https.has()) {}
+    for (paramInt = paramDownloadFileRspBody.uint32_preview_port_https.get();; paramInt = 0)
     {
-      int i = paramInt;
-      if (paramInt == 0)
-      {
-        localObject = this.c.iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          localTroopFileThumbnailGenTask = (TroopFileThumbnailGenTask)((Iterator)localObject).next();
-          if (!str.equalsIgnoreCase(localTroopFileThumbnailGenTask.a())) {
-            break label231;
-          }
-          localTroopFileThumbnailGenTask.a();
-          ((Iterator)localObject).remove();
-          paramInt = 1;
-        }
+      paramBundle = null;
+      if (paramDownloadFileRspBody.str_download_dns_https.has()) {
+        paramBundle = paramDownloadFileRspBody.str_download_dns_https.get();
       }
-      label231:
-      for (;;)
-      {
-        break;
-        localObject = (TroopFileThumbnailGenTask)this.jdField_a_of_type_JavaUtilMap.remove(paramUUID);
-        i = paramInt;
-        if (localObject != null)
-        {
-          ((TroopFileThumbnailGenTask)localObject).a();
-          i = paramInt | 0x1;
-        }
-        boolean bool = this.jdField_a_of_type_JavaUtilLinkedList.remove(paramUUID) | i;
-        if (bool) {
-          azsr.c("TroopFileThumbnailGenMgr", azsr.a, "[" + str + "] stopGen." + a());
-        }
-        d();
-        return 0;
-      }
+      this.a.a(i, paramBundle, paramInt);
+      return;
+      label779:
+      this.a.c(i);
+      break;
     }
-  }
-  
-  public void a() {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask)
-  {
-    azsi.a(new TroopFileThumbnailGenMgr.1(this, paramString, paramBoolean, paramInt, paramTroopFileThumbnailGenTask), false);
-  }
-  
-  protected boolean a(String paramString)
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((TroopFileThumbnailGenTask)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    localIterator = this.c.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase(((TroopFileThumbnailGenTask)localIterator.next()).a())) {
-        return true;
-      }
-    }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void b(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask)
-  {
-    this.b.remove(paramTroopFileThumbnailGenTask);
-    this.c.remove(paramTroopFileThumbnailGenTask);
-    azsr.c("TroopFileThumbnailGenMgr", azsr.a, "[" + paramString + "] onTaskDoneInter.  bSuc:" + paramBoolean + " errCode:" + paramInt + a());
-    LinkedList localLinkedList = a(paramTroopFileThumbnailGenTask.b(), paramTroopFileThumbnailGenTask.a());
-    if ((localLinkedList != null) && (localLinkedList.size() > 0))
-    {
-      azsr.b("TroopFileThumbnailGenMgr", azsr.a, "[" + paramString + "] onTaskDoneInter. " + localLinkedList.size() + " same task passive complete. " + a());
-      paramString = localLinkedList.iterator();
-      while (paramString.hasNext()) {
-        ((TroopFileThumbnailGenTask)paramString.next()).a(paramBoolean, paramInt, paramTroopFileThumbnailGenTask.c());
-      }
-    }
-    d();
-  }
-  
-  protected void c()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((TroopFileThumbnailGenTask)localIterator.next()).a();
-    }
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.c.clear();
-    azsr.c("TroopFileThumbnailGenMgr", azsr.a, "stopAllInter");
   }
 }
 

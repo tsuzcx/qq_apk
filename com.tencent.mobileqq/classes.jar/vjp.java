@@ -1,40 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vjp
-  implements View.OnClickListener
+final class vjp
+  implements Animation.AnimationListener
 {
-  protected long a;
-  protected View a;
-  public vjq a;
+  vjp(View paramView) {}
   
-  public vjp(vjq paramvjq, View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Vjq = paramvjq;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setOnClickListener(this);
+    this.a.setAnimation(null);
   }
   
-  private boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if ((l2 > 0L) && (l2 < 2000L)) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = l1;
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onClick(View paramView)
-  {
-    if (!a())
-    {
-      vel.a("home_page", "clk_shoot", 0, 0, new String[0]);
-      this.jdField_a_of_type_Vjq.a();
-    }
-    ayvn.g();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

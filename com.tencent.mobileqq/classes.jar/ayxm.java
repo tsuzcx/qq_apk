@@ -1,50 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParserException;
+import android.content.res.XmlResourceParser;
+import org.xmlpull.v1.XmlPullParser;
 
 public class ayxm
 {
-  private static ayxl jdField_a_of_type_Ayxl;
-  private static boolean jdField_a_of_type_Boolean;
+  private ayxn jdField_a_of_type_Ayxn;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
   
-  private static ayxl a(Context paramContext)
+  private void a()
   {
-    a(paramContext);
-    return jdField_a_of_type_Ayxl;
+    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
+    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
+    this.jdField_a_of_type_Ayxn.a(str1, str2);
   }
   
-  public static String a(Context paramContext, String paramString)
+  public ayxn a()
   {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.toLowerCase();
+    this.jdField_a_of_type_Ayxn = new ayxn();
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+    if (i != 1)
+    {
+      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+      if (i == 2) {
+        if (!str.equals("MimeTypes")) {}
+      }
+      for (;;)
+      {
+        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
+        break;
+        if (str.equals("type"))
+        {
+          a();
+          continue;
+          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        }
+      }
     }
-    return a(paramContext).a(str);
+    return this.jdField_a_of_type_Ayxn;
   }
   
-  private static void a(Context paramContext)
+  public ayxn a(XmlResourceParser paramXmlResourceParser)
   {
-    ayxk localayxk;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localayxk = new ayxk();
-      paramContext = paramContext.getResources().getXml(2131886084);
-    }
-    try
-    {
-      jdField_a_of_type_Ayxl = localayxk.a(paramContext);
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
-    }
-    catch (IOException paramContext)
-    {
-      throw new RuntimeException("PreselectedChannelsActivity: IOException");
-    }
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
+    return a();
   }
 }
 

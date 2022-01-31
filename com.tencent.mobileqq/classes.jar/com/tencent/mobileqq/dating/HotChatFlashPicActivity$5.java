@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import bbcs;
+import bbdg;
 
 class HotChatFlashPicActivity$5
   implements Runnable
@@ -9,7 +9,7 @@ class HotChatFlashPicActivity$5
   
   public void run()
   {
-    bbcs.a(this.a, HotChatFlashPicActivity.c(this.this$0));
+    bbdg.a(this.a, HotChatFlashPicActivity.c(this.this$0));
   }
 }
 

@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVPbInfo;
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public final class lwf
-  implements Parcelable.Creator<AVPbInfo>
+public abstract interface lwf
+  extends IInterface
 {
-  public AVPbInfo a(Parcel paramParcel)
-  {
-    return new AVPbInfo(paramParcel);
-  }
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public AVPbInfo[] a(int paramInt)
-  {
-    return new AVPbInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 

@@ -1,14 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 
-class vdn
-  implements View.OnClickListener
+public class vdn
+  implements Animation.AnimationListener
 {
-  vdn(vdm paramvdm) {}
+  public vdn(NewMessageYellowBar paramNewMessageYellowBar) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.dismiss();
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setAlpha(1.0F);
   }
 }
 

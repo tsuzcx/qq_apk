@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import ajys;
+import ajyq;
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ class HotChatManager$3
     Object localObject1 = new File(BaseApplicationImpl.getContext().getFilesDir() + File.separator + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "_nearby_hotchat_v_list");
     try
     {
-      localObject1 = bbdj.b((File)localObject1);
+      localObject1 = bbdx.b((File)localObject1);
       this.this$0.jdField_a_of_type_JavaUtilList = new ArrayList();
       if (localObject1 == null) {}
     }
@@ -64,8 +64,8 @@ class HotChatManager$3
         }
       }
       this.this$0.f = false;
-      if (this.this$0.jdField_a_of_type_Ajys != null) {
-        this.this$0.jdField_a_of_type_Ajys.a();
+      if (this.this$0.jdField_a_of_type_Ajyq != null) {
+        this.this$0.jdField_a_of_type_Ajyq.a();
       }
     }
   }

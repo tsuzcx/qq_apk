@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigGroupInfo;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.image.URLImageView;
+import java.lang.ref.WeakReference;
 
 public class bdvd
 {
-  public List<bdve> a;
+  public int a;
+  public String a;
+  public WeakReference<URLImageView> a;
   
-  public bdvd() {}
-  
-  public bdvd(mobileqq_qidian.ConfigGroupInfo paramConfigGroupInfo)
+  public bdvd(URLImageView paramURLImageView, int paramInt, String paramString)
   {
-    if (paramConfigGroupInfo.rpt_msg_config_info.has())
-    {
-      paramConfigGroupInfo = paramConfigGroupInfo.rpt_msg_config_info.get();
-      this.a = new ArrayList(paramConfigGroupInfo.size());
-      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
-      while (paramConfigGroupInfo.hasNext())
-      {
-        mobileqq_qidian.ConfigInfo localConfigInfo = (mobileqq_qidian.ConfigInfo)paramConfigGroupInfo.next();
-        this.a.add(new bdve(localConfigInfo));
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

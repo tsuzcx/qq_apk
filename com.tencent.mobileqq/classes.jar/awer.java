@@ -1,149 +1,164 @@
-import PersonalState.UserProfile;
-import android.annotation.TargetApi;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richstatus.StatusManager.3.1;
-import com.tencent.mobileqq.richstatus.StatusManager.3.2;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import android.os.AsyncTask;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import mqq.os.MqqHandler;
 
-public class awer
-  extends awet
+class awer
+  extends AsyncTask<Void, Integer, Integer>
 {
-  awer(aweo paramaweo) {}
+  awer(aweq paramaweq) {}
   
-  @TargetApi(9)
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  private void a(long paramLong)
   {
-    ThreadManager.getSubThreadHandler().post(new StatusManager.3.1(this, paramBoolean, paramBundle));
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
+    long l = aweq.a(this.a).getLong("k_icon", 0L);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
     }
-    label83:
-    awcg localawcg;
-    if (paramBoolean1)
+    Object localObject;
+    if (l < paramLong)
     {
-      aweo.c(this.a, 0L);
-      aweo.a(this.a, paramBoolean2);
-      if (aweo.b(this.a) == null) {
-        return;
-      }
-      Iterator localIterator = aweo.b(this.a).iterator();
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      localawcg = (awcg)localIterator.next();
-      if (!paramBoolean1) {
-        break label162;
-      }
-    }
-    label162:
-    for (int i = 100;; i = -1)
-    {
-      localawcg.a(i, paramBoolean2);
-      break label83;
-      aweo.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
-      paramBoolean2 = aweo.b(this.a).getBoolean("k_sync_ss", false);
-      break;
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.mate", 2, "onGetStatusMate " + paramBoolean1 + " " + paramBoolean2 + " " + paramInt + " " + paramArrayList.size());
-    }
-    if (paramBoolean1) {
-      aweo.a(this.a, paramArrayOfByte);
-    }
-    for (;;)
-    {
-      if (paramBoolean1) {
-        if (paramBoolean2)
-        {
-          if (aweo.a(this.a) != null)
-          {
-            aweo.a(this.a, paramArrayList);
-            return;
-            if (!paramBoolean2) {
-              continue;
-            }
-            aweo.a(this.a, null);
-            continue;
-          }
-          if (aweo.b(this.a) == null) {
-            aweo.b(this.a, new ArrayList());
-          }
-          paramArrayOfByte = this.a.a(aweo.b(this.a), paramArrayList, paramInt);
-        }
+      localObject = null;
+      if (paramLong <= 104L) {
+        break label180;
       }
     }
     for (;;)
     {
-      label165:
-      if ((aweo.a(this.a) != null) && (aweo.a(this.a).length > 0)) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
-        if (aweo.c(this.a) == null) {
-          break label264;
-        }
-        paramArrayList = aweo.c(this.a).iterator();
-        while (paramArrayList.hasNext()) {
-          ((awcf)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
-        }
-        break;
-        paramArrayOfByte = this.a.a(paramArrayList);
-        break label165;
+        InputStream localInputStream = aweq.a(this.a).getApp().getAssets().open("rich_status.xml");
+        localObject = localInputStream;
       }
-      label264:
-      break;
-      paramArrayOfByte = paramArrayList;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      localObject = (SparseArray)aweq.a(this.a, localObject)[0];
+      if (aweq.a(this.a, (SparseArray)localObject, aweq.a(this.a))) {
+        aweq.a(this.a).edit().putLong("k_icon", paramLong).commit();
+      }
+      return;
+      try
+      {
+        label180:
+        FileInputStream localFileInputStream = new FileInputStream(new File(aweq.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        localObject = localFileInputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        localFileNotFoundException.printStackTrace();
+      }
     }
   }
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  protected Integer a(Void... paramVarArgs)
   {
-    ThreadManager.getSubThreadHandler().post(new StatusManager.3.2(this, paramBoolean));
+    long l = aweq.a(this.a).getLong("k_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
+    }
+    if (l > 104L) {}
+    ArrayList localArrayList;
+    label221:
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new FileInputStream(new File(aweq.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        if (paramVarArgs != null) {
+          break label221;
+        }
+        Object localObject;
+        paramVarArgs = null;
+      }
+      catch (FileNotFoundException paramVarArgs)
+      {
+        try
+        {
+          localObject = aweq.a(this.a).getApp().getAssets().open("rich_status.xml");
+          paramVarArgs = (Void[])localObject;
+          l = 104L;
+          localObject = aweq.a(this.a, paramVarArgs);
+          paramVarArgs = (SparseArray)localObject[0];
+          localArrayList = (ArrayList)localObject[1];
+          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
+            break;
+          }
+          publishProgress(new Integer[] { Integer.valueOf(-1) });
+          a(l);
+          return Integer.valueOf(100);
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+        }
+        paramVarArgs = paramVarArgs;
+        paramVarArgs.printStackTrace();
+      }
+    }
+    for (;;)
+    {
+      synchronized (aweq.a(this.a))
+      {
+        if ((!isCancelled()) && (aweq.a(this.a).size() == 0))
+        {
+          aweq.a(this.a, paramVarArgs);
+          aweq.a(this.a).clear();
+          aweq.a(this.a).addAll(localArrayList);
+          publishProgress(new Integer[] { Integer.valueOf(102) });
+        }
+      }
+      cancel(true);
+    }
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(Integer paramInteger)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
     }
-    label74:
-    awcg localawcg;
-    if (paramBoolean1)
+    aweq.a(this.a, null);
+    if (101 == aweq.a(this.a, false)) {
+      aweq.a(this.a);
+    }
+    this.a.a(false);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    int i = paramVarArgs[0].intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
+    }
+    if (aweq.a(this.a) != null)
     {
-      aweo.a(this.a, paramBoolean2);
-      if (aweo.b(this.a) == null) {
-        return;
-      }
-      Iterator localIterator = aweo.b(this.a).iterator();
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      localawcg = (awcg)localIterator.next();
-      if (!paramBoolean1) {
-        break label134;
+      paramVarArgs = aweq.a(this.a).iterator();
+      while (paramVarArgs.hasNext()) {
+        ((awcd)paramVarArgs.next()).a(i, 300);
       }
     }
-    label134:
-    for (int i = 100;; i = -1)
-    {
-      localawcg.b(i, paramBoolean2);
-      break label74;
-      paramBoolean2 = aweo.b(this.a).getBoolean("k_sync_ss", false);
-      break;
+    hy.a().c(i, 300);
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
     }
+    aweq.a(this.a, null);
   }
 }
 

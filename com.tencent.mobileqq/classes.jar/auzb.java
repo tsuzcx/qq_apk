@@ -1,6 +1,6 @@
 public abstract interface auzb
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
 }
 
 

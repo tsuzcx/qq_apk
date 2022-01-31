@@ -1,6 +1,10 @@
 public abstract interface bctg
 {
-  public abstract void b();
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,42 +1,31 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.ReadConfigTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 public class bbmb
+  implements bbkm
 {
-  public static int a;
-  public static long a;
-  public static boolean a;
-  public static int b;
-  public static long b;
-  public static int c;
-  public static long c;
-  public static int d;
-  public static long d;
-  public static int e;
-  public static long e;
-  public static int f;
-  public static long f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j;
+  public bbmb(NormalConfigHandler paramNormalConfigHandler, NormalConfigHandler.GetConfigListen paramGetConfigListen, AppInterface paramAppInterface) {}
   
-  public static void a()
+  public void a(boolean paramBoolean, ArrayList<bbkl> paramArrayList)
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_d_of_type_Int = 0;
-    jdField_e_of_type_Int = 0;
-    jdField_f_of_type_Int = 0;
-    g = 0;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    h = 0;
-    i = 0;
-    j = 0;
-    jdField_c_of_type_Long = 0L;
-    jdField_d_of_type_Long = 0L;
-    jdField_e_of_type_Long = 0L;
-    jdField_f_of_type_Long = 0L;
-    jdField_a_of_type_Boolean = false;
+    paramArrayList = (ReadConfigTask)paramArrayList.get(0);
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask == paramArrayList))
+    {
+      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.TAG, 1, "异步加载config返回, bsuc[" + paramBoolean + "], TAG[" + paramArrayList.TAG + "], config[" + paramArrayList.mConfigInfo + "]");
+      this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask = null;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler$GetConfigListen != null) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler$GetConfigListen.onGetConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList.mConfigInfo);
+      }
+      return;
+      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.TAG, 1, "异步加载config返回[" + paramArrayList.TAG + "], 但原请求取消了");
+    }
   }
 }
 

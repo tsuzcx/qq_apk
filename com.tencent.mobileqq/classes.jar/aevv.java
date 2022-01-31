@@ -1,22 +1,9 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.annotation.SuppressLint;
 
-public class aevv
-  implements aevs
+class aevv
 {
-  aevv(aevt paramaevt) {}
-  
-  public void a()
-  {
-    aevt.a(this.a, aevt.b(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
-  }
-  
-  public void b()
-  {
-    aevt.b(this.a, aevt.b(this.a));
-  }
+  @SuppressLint({"StaticFieldLeak"})
+  private static aevr a = new aevr(null);
 }
 
 

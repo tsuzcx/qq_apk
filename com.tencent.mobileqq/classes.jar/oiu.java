@@ -1,16 +1,16 @@
 import java.util.List;
 
 class oiu
-  extends ojq
+  extends ojn
 {
-  oiu(oio paramoio, boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  oiu(oil paramoil, boolean paramBoolean, List paramList)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
+    paramojq.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, oil.b(this.jdField_a_of_type_Oil), 3, 3);
   }
 }
 

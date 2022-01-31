@@ -1,21 +1,10 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-class ahuj
-  extends ko
+public abstract interface ahuj
 {
-  private ahuj(ahuh paramahuh) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((ahuh.a(this.a) != null) && (ahuh.a(this.a).hasMessages(paramInt))) {
-      ahuh.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

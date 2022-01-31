@@ -1,76 +1,31 @@
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class ausv
-  extends atny
+  extends RecyclerView.ItemDecoration
 {
-  FriendProfilePicBrowserActivity a;
+  private int jdField_a_of_type_Int;
   
-  public ausv(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, xpm paramxpm)
+  public ausv(CustomCoverFragment paramCustomCoverFragment, int paramInt)
   {
-    super(paramFriendProfilePicBrowserActivity, paramxpm);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = paramFriendProfilePicBrowserActivity;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int a()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (this.jdField_a_of_type_Atoe != null) {
-      return this.jdField_a_of_type_Atoe.b();
+    if (!(paramView.getTag() instanceof auss))
+    {
+      paramRect.left = 0;
+      return;
     }
-    return -1;
-  }
-  
-  protected RelativeLayout a()
-  {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561015, null);
-  }
-  
-  public PicInfo a()
-  {
-    PicInfo localPicInfo = null;
-    if (this.jdField_a_of_type_Atoe.a() != null) {
-      localPicInfo = this.jdField_a_of_type_Atoe.a().a;
-    }
-    return localPicInfo;
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    if (this.jdField_a_of_type_Atnx != null) {
-      this.jdField_a_of_type_Atnx.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.b();
-    }
-  }
-  
-  protected void d(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.c();
-    }
-  }
-  
-  public void u()
-  {
-    if (this.jdField_a_of_type_Atnx != null) {
-      this.jdField_a_of_type_Atnx.a(null);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = null;
+    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
+    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
+    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
+    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
   }
 }
 

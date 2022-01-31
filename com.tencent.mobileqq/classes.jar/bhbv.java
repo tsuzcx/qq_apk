@@ -1,12 +1,18 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.album.QzonePhotoInfo;
 
-final class bhbv
-  implements FilenameFilter
+public final class bhbv
+  implements Parcelable.Creator<QzonePhotoInfo>
 {
-  public boolean accept(File paramFile, String paramString)
+  public QzonePhotoInfo a(Parcel paramParcel)
   {
-    return !paramString.endsWith("OldVersion.version");
+    return new QzonePhotoInfo(paramParcel);
+  }
+  
+  public QzonePhotoInfo[] a(int paramInt)
+  {
+    return new QzonePhotoInfo[paramInt];
   }
 }
 

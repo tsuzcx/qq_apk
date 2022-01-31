@@ -1,17 +1,6 @@
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-
-public class anud
-  implements anwd
+public abstract interface anud
 {
-  public anud(MessengerService paramMessengerService) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      EmojiStickerManager.a().a(this.a.a, paramBoolean);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

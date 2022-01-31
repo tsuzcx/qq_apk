@@ -1,41 +1,19 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
-class bjel
-  implements bjfd
+public class bjel
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private WeakReference<bjej> jdField_a_of_type_JavaLangRefWeakReference;
+  public bjel(HummingActivity paramHummingActivity) {}
   
-  public bjel(bjej parambjej)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjej);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Float = 1.0F;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-        ((bjej)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
-      }
-    }
-    do
-    {
+    if (bjeg.b()) {
       return;
-      this.jdField_a_of_type_Float = 0.0F;
-    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-    ((bjej)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
+    }
+    HummingActivity.a(this.a, 1);
+    HummingActivity.b(this.a);
   }
 }
 

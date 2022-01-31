@@ -1,25 +1,8 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Bundle;
 
-public class bhlf
-  implements DialogInterface.OnClickListener
+public abstract interface bhlf
 {
-  public bhlf(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getIntent());
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
+  public abstract void onWebEvent(String paramString, Bundle paramBundle);
 }
 
 

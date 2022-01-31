@@ -1,7 +1,21 @@
-public abstract interface pca
-  extends pby
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
+
+class pca
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
+  pca(pby parampby) {}
+  
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
+  {
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
+    }
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
+    return 1;
+  }
 }
 
 

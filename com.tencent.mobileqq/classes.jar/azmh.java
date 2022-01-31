@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.JoinGroupInfo;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo;
 
 public final class azmh
-  implements Parcelable.Creator<JoinGroupInfo>
+  implements Parcelable.Creator<InviteToGroupInfo>
 {
-  public JoinGroupInfo a(Parcel paramParcel)
+  public InviteToGroupInfo a(Parcel paramParcel)
   {
-    return new JoinGroupInfo(paramParcel);
+    return new InviteToGroupInfo(paramParcel);
   }
   
-  public JoinGroupInfo[] a(int paramInt)
+  public InviteToGroupInfo[] a(int paramInt)
   {
-    return new JoinGroupInfo[paramInt];
+    return new InviteToGroupInfo[paramInt];
   }
 }
 

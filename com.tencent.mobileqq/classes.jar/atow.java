@@ -1,29 +1,41 @@
-import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17.1;
 import com.tencent.qphone.base.util.QLog;
 
-public class atow
-  implements alys
+class atow
+  implements URLDrawable.URLDrawableListener
 {
-  public atow(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atow(atov paramatov, ImageView paramImageView) {}
   
-  public void a(String paramString, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
     }
   }
   
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
     }
-    this.a.runOnUiThread(new NearbyPeopleProfileActivity.17.1(this, paramString, paramBoolean1));
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
+    }
+    this.jdField_a_of_type_Atov.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 

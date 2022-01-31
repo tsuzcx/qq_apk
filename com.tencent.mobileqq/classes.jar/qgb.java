@@ -1,17 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import java.util.List;
 
 public class qgb
-  implements View.OnTouchListener
+  extends osm
 {
-  public qgb(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public qgb(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void c(List<TagInfo> paramList)
   {
-    ReadInJoyUgcSearchTopicFragment.a(this.a);
-    return false;
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
+    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
+    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
+    if (paramList.isEmpty()) {
+      bcql.a(this.a.getActivity(), 2131718587, 0).a();
+    }
   }
 }
 

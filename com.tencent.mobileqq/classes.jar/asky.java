@@ -1,8 +1,6 @@
 public abstract interface asky
 {
-  public abstract void a(int paramInt, aslk paramaslk, Object paramObject);
-  
-  public abstract void a(aslk paramaslk, Object paramObject);
+  public abstract void a();
 }
 
 

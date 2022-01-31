@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.media.MediaPlayer;
+import android.os.Looper;
 import com.tencent.mobileqq.music.SongInfo;
 
-public final class asvx
-  implements Parcelable.Creator<SongInfo>
+public class asvx
 {
-  public SongInfo a(Parcel paramParcel)
-  {
-    return new SongInfo(paramParcel, null);
-  }
-  
-  public SongInfo[] a(int paramInt)
-  {
-    return new SongInfo[paramInt];
-  }
+  public MediaPlayer a;
+  public Looper a;
+  public SongInfo a;
 }
 
 

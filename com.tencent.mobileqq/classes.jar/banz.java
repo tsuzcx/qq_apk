@@ -1,16 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import android.text.Layout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
 
 public class banz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public banz(RedDotAnimateView paramRedDotAnimateView) {}
+  private int jdField_a_of_type_Int;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public banz(TextView paramTextView, int paramInt)
   {
-    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
-    this.a.invalidate();
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_a_of_type_Int + 1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(false);
+  }
+  
+  public void onGlobalLayout()
+  {
+    int i;
+    String str;
+    CharSequence localCharSequence1;
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() > this.jdField_a_of_type_Int)
+    {
+      i = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      str = "...";
+      localCharSequence1 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    }
+    try
+    {
+      localCharSequence1 = localCharSequence1.subSequence(0, i - 3);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence1);
+      this.jdField_a_of_type_AndroidWidgetTextView.append(str);
+      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        str = "";
+        CharSequence localCharSequence2 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+      }
+    }
   }
 }
 

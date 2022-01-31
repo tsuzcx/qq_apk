@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.View;
-import apij;
+import apin;
 
 public class FileBrowserMiniAIOHelper$1
   implements Runnable
 {
-  public FileBrowserMiniAIOHelper$1(apij paramapij) {}
+  public FileBrowserMiniAIOHelper$1(apin paramapin) {}
   
   public void run()
   {
-    if (apij.a(this.this$0) != null) {
-      apij.a(this.this$0).setVisibility(0);
+    if (apin.a(this.this$0) != null) {
+      apin.a(this.this$0).setVisibility(0);
     }
   }
 }

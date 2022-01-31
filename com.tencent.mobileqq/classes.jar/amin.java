@@ -1,6 +1,13 @@
-public abstract interface amin
+import android.view.View;
+
+public class amin
+  extends amik
 {
-  public abstract void a();
+  public void a(amia paramamia, int paramInt, boolean paramBoolean)
+  {
+    super.a(paramamia, paramInt, paramBoolean);
+    paramamia.b.setBackgroundResource(2130838992);
+  }
 }
 
 

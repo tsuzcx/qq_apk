@@ -5,24 +5,24 @@ import com.tencent.mobileqq.pb.PBField;
 import cooperation.qzone.LocalMultiProcConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
-import slz;
-import yxr;
-import yxs;
-import yys;
-import yyt;
-import yyu;
+import slw;
+import yxo;
+import yxp;
+import yyp;
+import yyq;
+import yyr;
 
 public final class WSRecommendFragmentPresenter$4
   implements Runnable
 {
   public void run()
   {
-    Object localObject1 = new yyt();
-    ((yyt)localObject1).a = "23c763";
-    localObject1 = yys.a(BaseApplicationImpl.getContext(), (yyt)localObject1);
+    Object localObject1 = new yyq();
+    ((yyq)localObject1).a = "23c763";
+    localObject1 = yyp.a(BaseApplicationImpl.getContext(), (yyq)localObject1);
     if (localObject1 != null)
     {
-      localObject1 = ((yyu)localObject1).a;
+      localObject1 = ((yyr)localObject1).a;
       JSONObject localJSONObject = null;
       if (localObject1 == null) {
         localObject1 = localJSONObject;
@@ -31,21 +31,21 @@ public final class WSRecommendFragmentPresenter$4
       {
         try
         {
-          localJSONObject = new JSONObject(slz.a());
+          localJSONObject = new JSONObject(slw.a());
           if ((localObject1 == null) || (localObject1 == JSONObject.NULL)) {
             break label146;
           }
-          slz.a((JSONObject)localObject1, localJSONObject);
-          yxs.d("WSRecommendFragmentPresenter", "setGdtArgs success args =" + slz.a());
+          slw.a((JSONObject)localObject1, localJSONObject);
+          yxp.d("WSRecommendFragmentPresenter", "setGdtArgs success args =" + slw.a());
           return;
         }
         catch (JSONException localJSONException)
         {
           Object localObject2;
-          yxs.a("WSRecommendFragmentPresenter", localJSONException.getMessage());
+          yxp.a("WSRecommendFragmentPresenter", localJSONException.getMessage());
           return;
         }
-        localObject2 = yxr.a((PBField)localObject1);
+        localObject2 = yxo.a((PBField)localObject1);
         localObject1 = localJSONObject;
         if (localObject2 != null)
         {
@@ -56,7 +56,7 @@ public final class WSRecommendFragmentPresenter$4
             LocalMultiProcConfig.putString("cache_key_gdt_args", ((JSONObject)localObject1).toString());
             continue;
             label146:
-            yxs.d("WSRecommendFragmentPresenter", "onResult error");
+            yxp.d("WSRecommendFragmentPresenter", "onResult error");
           }
         }
       }

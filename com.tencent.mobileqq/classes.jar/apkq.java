@@ -1,188 +1,39 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.RegionDrawableData;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import java.net.URL;
-import java.util.List;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class apkq
-  extends BaseAdapter
-  implements agpe
+public abstract interface apkq
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<apmy> jdField_a_of_type_JavaUtilList;
-  private Drawable b;
+  public abstract int a();
   
-  public apkq(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849620);
-    this.b = paramContext.getResources().getDrawable(2130839144);
-  }
+  public abstract RelativeLayout a();
   
-  private void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
-      }
-    }
-    for (;;)
-    {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
-      }
-      return;
-      paramInt = 1;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
-    }
-  }
+  public abstract QQAppInterface a();
   
-  public void a(List<apmy> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
+  public abstract ForwardFileInfo a();
   
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
+  public abstract void a();
   
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
+  public abstract void a(int paramInt);
   
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    apmy localapmy;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560505, null);
-      paramViewGroup = new apks(this, null);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367776));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377315));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372004));
-      paramView.setTag(paramViewGroup);
-      localapmy = (apmy)getItem(paramInt);
-      if (localapmy != null) {
-        break label111;
-      }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    label111:
-    do
-    {
-      return paramView;
-      paramViewGroup = (apks)paramView.getTag();
-      break;
-      URL localURL = localapmy.a();
-      int i = localapmy.a();
-      if (localURL != null)
-      {
-        Object localObject = this.b;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localURLDrawableOptions.mPlayGifImage = true;
-        localURLDrawableOptions.mUseExifOrientation = false;
-        localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-        ((URLDrawable)localObject).setTargetDensity(this.jdField_a_of_type_Int);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-        if (localapmy.a()) {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        }
-        for (;;)
-        {
-          a(paramView, (URLDrawable)localObject, localapmy.b());
-          if ((i != 1) || (!AsyncImageView.a(localURL)) || (!apvb.a(localapmy.b()))) {
-            break;
-          }
-          ((URLDrawable)localObject).setTag(Integer.valueOf(1));
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
-          return paramView;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        }
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-        return paramView;
-      }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    } while (localapmy.b());
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramView.setTag(2131296386, Float.valueOf(1.0F));
-    return paramView;
-  }
+  public abstract void b();
   
-  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
-  }
+  public abstract boolean b();
   
-  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null)
-    {
-      if (paramView.getStatus() == 0) {
-        paramView.cancelDownload(true);
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    }
-  }
+  public abstract boolean c();
   
-  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
-  {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null) {
-      paramView.updateRegionBitmap(paramRegionDrawableData);
-    }
-  }
+  public abstract boolean d();
   
-  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  public abstract void e();
   
-  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean) {}
+  public abstract boolean e();
   
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  public abstract void f();
+  
+  public abstract Activity getActivity();
 }
 
 

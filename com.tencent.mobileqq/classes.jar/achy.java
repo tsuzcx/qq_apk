@@ -1,50 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class achy
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public achy(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
+    QQAppInterface localQQAppInterface = this.a.app;
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.bOwner) {}
+    for (String str1 = "0";; str1 = "1")
     {
-      this.a.c();
-      return;
-    }
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-    {
-    default: 
-      return;
-    case 0: 
-    case 1: 
+      axqy.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
+      paramDialogInterface.dismiss();
       this.a.i();
       return;
     }
-    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
-    {
-      paramView = bbcv.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131693493, new Object[] { this.a.jdField_a_of_type_Long + "" }));
-      paramView.setPositiveButton(this.a.getString(2131693470), new bbdf());
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131693470));
-      paramView.show();
-      return;
-    }
-    paramView = TroopInfoActivity.a(this.a);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.a.a(paramView);
-      return;
-    }
-    TroopInfoActivity.a(this.a);
   }
 }
 

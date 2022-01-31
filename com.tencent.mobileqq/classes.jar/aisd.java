@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.ApolloManager.21;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class aisd
-  implements Comparator<DrawerPushItem>
+public class aisd
+  implements myy
 {
-  aisd(airz paramairz) {}
+  public aisd(ApolloManager.21 param21) {}
   
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  public void loaded(String paramString, int paramInt)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    QLog.d("ApolloManager", 1, new Object[] { "[predownloadForGameCenter] offline pkg bid:", this.a.jdField_a_of_type_JavaLangString, " loaded, param=", paramString, ", code=", Integer.valueOf(paramInt) });
+    if (paramInt == 0) {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(this.a.b, this.a.jdField_a_of_type_Int).commit();
     }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
+    VipUtils.a(this.a.this$0.a, "cmshow", "Apollo", "gamecenter_preload_res_android", 0, paramInt, new String[] { this.a.jdField_a_of_type_JavaLangString, String.valueOf(this.a.jdField_a_of_type_Int) });
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

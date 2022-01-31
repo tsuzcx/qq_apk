@@ -9,7 +9,14 @@ public class aiho
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(this.a.c);
+    }
+    axdq.a = true;
   }
 }
 

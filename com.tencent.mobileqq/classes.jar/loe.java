@@ -2,24 +2,23 @@ import com.tencent.av.gaudio.GaInviteLockActivity;
 import com.tencent.av.ui.QavPanel;
 
 public class loe
-  implements mht
+  implements mho
 {
-  public loe(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public loe(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
   
   public void a()
   {
-    if (this.a.a != null)
+    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
     {
-      this.a.a.setViewEnable(2131372373, false);
-      this.a.a.setViewEnable(2131372372, false);
-      this.a.a.setViewEnable(2131362922, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372374, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131372375, false);
     }
   }
   
   public void b()
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2130772163);
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772163);
   }
 }
 

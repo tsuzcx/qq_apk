@@ -1,6 +1,12 @@
-public abstract interface aybe<T extends ayay>
+import java.util.List;
+
+public abstract interface aybe<T extends ayba>
 {
-  public abstract int c();
+  public abstract <N extends ayba> N a(String paramString);
+  
+  public abstract List<ayba> a();
+  
+  public abstract void a(T paramT);
 }
 
 

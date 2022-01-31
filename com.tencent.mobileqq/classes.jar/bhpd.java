@@ -1,10 +1,13 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
+import java.util.Comparator;
 
-public abstract interface bhpd
+final class bhpd
+  implements Comparator<ShareAppLogHelper.LogFile>
 {
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String paramString, Bitmap paramBitmap);
+  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
+  {
+    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
+  }
 }
 
 

@@ -4,9 +4,16 @@ import android.view.View.OnClickListener;
 class amih
   implements View.OnClickListener
 {
-  amih(amig paramamig) {}
+  amih(amif paramamif) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    amib.a(this.a.a).setVisibility(8);
+    amib.a(this.a.a, null);
+    if (amib.a(this.a.a).getItemCount() == 0) {
+      amib.a(this.a.a);
+    }
+  }
 }
 
 

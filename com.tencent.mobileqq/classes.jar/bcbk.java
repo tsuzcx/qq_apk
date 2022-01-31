@@ -1,334 +1,114 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import tencent.aio.video.aio_video.ErrInfo;
+import tencent.aio.video.aio_video.RspGetUinByOpenId;
 
-public class bcbk
-  extends bcal
-  implements bcbj
+class bcbk
+  extends mxj
 {
-  public static final String TAG = "WebViewBaseBuilder";
-  protected boolean bFitSystemWindow = true;
-  protected boolean bNeedStatusTrans = true;
-  public FrameLayout bottomContainer;
-  public LinearLayout contentContainer;
-  public String leftName;
-  protected AppInterface mAppInterface;
-  protected Context mContext;
-  public Activity mInActivity;
-  protected Intent mIntent;
-  protected SystemBarCompact mSystemBarComp;
-  public bcgg mTitleBar;
-  public View mViewRoot;
-  public View maskView;
-  public FrameLayout titleContainer;
-  public String titleText;
-  public RelativeLayout webviewContainer;
+  bcbk(bcbh parambcbh, bcbn parambcbn) {}
   
-  public bcbk(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mContext = paramContext;
-    this.mInActivity = paramActivity;
-    this.mIntent = paramIntent;
-    this.mAppInterface = paramAppInterface;
-  }
-  
-  @TargetApi(14)
-  private void initLayout()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "initLayout");
+      QLog.i("urlSecMgr", 2, "receive getUinWithOpenID code=" + paramInt);
     }
-    View localView = LayoutInflater.from(this.mContext).inflate(2131562611, null);
-    this.mInActivity.setContentView(localView);
-    this.mViewRoot = localView.findViewById(2131379385);
-    if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
-      this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
-    }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131377386));
-    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363356));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131379400));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131375054));
-    this.maskView = this.mViewRoot.findViewById(2131379403);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131364702));
-    if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
+    Object localObject = "";
+    j = -1;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131372005));
-      this.mProgressBarController = new bcsc();
-      this.mLoadingProgressBar.setController(this.mProgressBarController);
-      if ((this.mIsFirstOnPageStart) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
-        this.mProgressBarController.a((byte)0);
+      i = j;
+      paramBundle = (Bundle)localObject;
+      if (paramArrayOfByte != null) {
+        paramBundle = (Bundle)localObject;
       }
     }
-  }
-  
-  public void addBottomView(View paramView)
-  {
     try
     {
-      this.bottomContainer.removeAllViews();
-      if (paramView.getLayoutParams() == null) {
-        paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
-      }
-      this.bottomContainer.addView(paramView);
-      return;
+      aio_video.RspGetUinByOpenId localRspGetUinByOpenId = new aio_video.RspGetUinByOpenId();
+      paramBundle = (Bundle)localObject;
+      localRspGetUinByOpenId.mergeFrom(paramArrayOfByte);
+      paramBundle = (Bundle)localObject;
+      localObject = localRspGetUinByOpenId.err_info.err_msg.get().toStringUtf8();
+      paramBundle = (Bundle)localObject;
+      i = localRspGetUinByOpenId.err_info.err_code.get();
+      paramBundle = (Bundle)localObject;
     }
-    catch (Exception paramView)
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void addContentView(View paramView)
-  {
-    try
-    {
-      this.contentContainer.addView(paramView);
-      this.contentContainer.setVisibility(0);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void addTitleView(View paramView)
-  {
-    try
-    {
-      this.titleContainer.removeAllViews();
-      if (paramView.getLayoutParams() == null) {
-        paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
-      }
-      this.titleContainer.addView(paramView);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  protected void adjustLayout(boolean paramBoolean, bcbm parambcbm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "adjustLayout");
-    }
-    int i = ImmersiveUtils.getStatusBarHeight(this.mContext);
-    if (paramBoolean)
-    {
-      localLayoutParams = (RelativeLayout.LayoutParams)parambcbm.b.getLayoutParams();
-      localLayoutParams.topMargin = i;
-      parambcbm.b.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)parambcbm.a.getLayoutParams();
-      localLayoutParams.topMargin = 0;
-      localLayoutParams.addRule(3, 0);
-      parambcbm.a.setLayoutParams(localLayoutParams);
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)parambcbm.b.getLayoutParams();
-    localLayoutParams.topMargin = i;
-    parambcbm.b.setLayoutParams(localLayoutParams);
-    localLayoutParams = (RelativeLayout.LayoutParams)parambcbm.a.getLayoutParams();
-    localLayoutParams.topMargin = (i + bawz.a(this.mContext, 50.0F));
-    parambcbm.a.setLayoutParams(localLayoutParams);
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "buildLayout");
-    }
-    initLayout();
-    this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131379397);
-    this.webviewContainer.addView(this.mWebview);
-  }
-  
-  @TargetApi(14)
-  public void buildLayout(Context paramContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "buildLayout...context");
-    }
-    initLayout();
-    this.mWebview = new TouchWebView(paramContext);
-    this.mWebview.setId(2131379397);
-    this.webviewContainer.addView(this.mWebview, 0, new RelativeLayout.LayoutParams(-1, -1));
-  }
-  
-  public void buildTitleBar()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "buildTitleBar");
-    }
-    this.mTitleBar = new bcgg(this.mInActivity, this.mWebview, this.titleContainer);
-    this.titleContainer.setBackgroundResource(2130849026);
-    if (this.mIntent != null)
-    {
-      this.titleText = this.mIntent.getStringExtra("webview_title");
-      this.leftName = this.mIntent.getStringExtra("webview_left_name");
-      if (!TextUtils.isEmpty(this.titleText)) {
-        this.mTitleBar.b(this.titleText);
-      }
-      if (!TextUtils.isEmpty(this.leftName)) {
-        this.mTitleBar.a(this.leftName);
+      for (;;)
+      {
+        label340:
+        i = j;
+        continue;
+        paramArrayOfByte = "";
+        paramInt = 0;
       }
     }
-    this.mTitleBar.a(new bcbl(this));
-  }
-  
-  public final void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-    onWebViewReady();
-  }
-  
-  public void finish() {}
-  
-  public boolean handleMessageImp(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void onBackPressed()
-  {
-    super.doOnBackPressed(this.mAppInterface);
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "onCreate");
-    }
-    if ((this.mIntent != null) && (this.mIntent.getBooleanExtra("window_no_title", true))) {
-      this.mInActivity.requestWindowFeature(1);
-    }
-    if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
+    if (QLog.isColorLevel())
     {
-      this.mInActivity.getWindow().addFlags(67108864);
-      int i = this.mInActivity.getResources().getColor(2131166910);
-      this.mSystemBarComp = new SystemBarCompact(this.mInActivity, true, i);
-      this.mSystemBarComp.init();
-    }
-    super.doOnCreate(this.mIntent);
-  }
-  
-  public void onDestroy()
-  {
-    super.doOnDestroy();
-  }
-  
-  protected void onImmersive(boolean paramBoolean, bcbm parambcbm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "onImmersive");
-    }
-    if (paramBoolean)
-    {
-      if (this.mSystemBarComp != null) {
-        this.mSystemBarComp.setgetStatusBarVisible(false, 0);
+      localObject = new StringBuilder().append("getUinWithOpenID error code=").append(paramInt);
+      if (paramArrayOfByte == null)
+      {
+        paramArrayOfByte = ", data=null";
+        QLog.i("urlSecMgr", 2, paramArrayOfByte);
+        paramArrayOfByte = "";
+        paramInt = 0;
       }
-      parambcbm.b.getBackground().setAlpha(0);
-      return;
-    }
-    if (this.mSystemBarComp != null) {
-      this.mSystemBarComp.setgetStatusBarVisible(true, 0);
-    }
-    parambcbm.b.setBackgroundResource(2130849026);
-    this.mTitleBar.a(255, 0);
-  }
-  
-  public void onNewIntent(Intent paramIntent) {}
-  
-  public void onPause()
-  {
-    super.doOnPause();
-  }
-  
-  @TargetApi(14)
-  public void onResume()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "onResume");
-    }
-    super.doOnResume();
-  }
-  
-  public void onSaveInstanceState(Bundle paramBundle) {}
-  
-  public void onStop() {}
-  
-  public void onWebViewReady()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "onWebViewReady");
-    }
-    if (this.mIntent != null)
-    {
-      String str = this.mIntent.getStringExtra("url");
-      if (!TextUtils.isEmpty(str)) {
-        this.mWebview.loadUrl(str);
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Bcbn != null)
+        {
+          localObject = new Bundle();
+          if (paramInt != 0) {
+            i = 0;
+          }
+          ((Bundle)localObject).putInt("result", i);
+          ((Bundle)localObject).putString("errMsg", paramBundle);
+          ((Bundle)localObject).putString("retUin", paramArrayOfByte);
+          this.jdField_a_of_type_Bcbn.a((Bundle)localObject);
+        }
+        return;
+        paramArrayOfByte = ", msg=" + paramBundle + ", errCode=" + i;
+        break;
+        paramBundle = new aio_video.RspGetUinByOpenId();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          long l = paramBundle.uin.get();
+          paramArrayOfByte = String.valueOf(l);
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle)
+        {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("urlSecMgr", 2, new Object[] { "getUinWithOpenID uin:", Long.valueOf(paramBundle.uin.get()) });
+            }
+            paramInt = 1;
+            i = j;
+            paramBundle = (Bundle)localObject;
+          }
+          catch (InvalidProtocolBufferMicroException paramBundle)
+          {
+            break label340;
+          }
+          paramBundle = paramBundle;
+          paramArrayOfByte = "";
+          if (QLog.isColorLevel()) {
+            QLog.i("urlSecMgr", 2, "parse error", paramBundle);
+          }
+          paramInt = 0;
+          i = j;
+          paramBundle = (Bundle)localObject;
+        }
       }
     }
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean) {}
-  
-  public final void preInitWebviewPlugin()
-  {
-    super.preInitPluginEngine();
-  }
-  
-  public void setContentViewShow(boolean paramBoolean)
-  {
-    LinearLayout localLinearLayout = this.contentContainer;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localLinearLayout.setVisibility(i);
-      return;
-    }
-  }
-  
-  protected final void setTittlebarImmersive(boolean paramBoolean, bcbm parambcbm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewBaseBuilder", 2, "setTittlebarImmersive");
-    }
-    adjustLayout(paramBoolean, parambcbm);
-    onImmersive(paramBoolean, parambcbm);
   }
 }
 

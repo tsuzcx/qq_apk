@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aezm;
+import aezk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bazc;
+import bazq;
 
 public class ZhituImgResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator<ZhituImgResponse> CREATOR = new aezm();
+  public static final Parcelable.Creator<ZhituImgResponse> CREATOR = new aezk();
   public String coord;
   public String md5;
   public String pass;
   public String style;
-  @bazc(a="text-color")
+  @bazq(a="text-color")
   public String textColor;
   public String url;
   

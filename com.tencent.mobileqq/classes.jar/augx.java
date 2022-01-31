@@ -9,7 +9,7 @@ public class augx
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * actn.a(1.5F, this.a.getResources()));
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.a.invalidate();
   }
 }

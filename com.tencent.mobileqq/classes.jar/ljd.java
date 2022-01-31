@@ -1,118 +1,130 @@
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljd
+  extends lja
 {
-  public int a;
-  public long a;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long[] jdField_a_of_type_ArrayOfLong = new long[41];
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  private static int jdField_c_of_type_Int = -1;
+  static long d = 30000L;
+  long jdField_c_of_type_Long = 0L;
   
-  ljd()
+  public ljd(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
+    super(paramVideoAppInterface);
   }
   
-  public String a()
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    String str1 = Build.MODEL;
-    String str2 = String.valueOf(Build.VERSION.SDK_INT);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Android").append('|');
-    localStringBuilder.append(str1).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
-    if (this.jdField_b_of_type_Int != -1) {
-      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
+    return ((liz)paramVideoAppInterface.a(5)).a(2, "ptu_so");
+  }
+  
+  public static boolean b()
+  {
+    return jdField_c_of_type_Int == 1;
+  }
+  
+  private boolean c()
+  {
+    if (d()) {}
+    do
+    {
+      return true;
+      if (this.jdField_a_of_type_Int < 17)
+      {
+        lcg.c("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
+        return false;
+      }
+      if (this.jdField_b_of_type_Int < 4)
+      {
+        lcg.c("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
+        return false;
+      }
+      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
+      {
+        lcg.c("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
+        return false;
+      }
+    } while (this.jdField_b_of_type_Long >= 1073741824L);
+    lcg.c("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
+    return false;
+  }
+  
+  private static boolean d()
+  {
+    String str = Build.MODEL;
+    if (TextUtils.isEmpty(str)) {
+      return false;
     }
+    return str.equals("MI 5");
+  }
+  
+  public int a(String paramString)
+  {
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    if (jdField_c_of_type_Int != 1)
+    {
+      if (axle.a(BaseApplicationImpl.getContext())) {
+        break label138;
+      }
+      long l1 = System.currentTimeMillis();
+      if (l1 <= this.jdField_c_of_type_Long) {
+        break label121;
+      }
+      long l2 = AudioHelper.c();
+      if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g()) {
+        break label114;
+      }
+      jdField_c_of_type_Int = 1;
+      long l3 = AudioHelper.c();
+      QLog.w("SupportPendant", 1, "isDownloadedPTUSO, isFilterSoDownLoadSuc[" + jdField_c_of_type_Int + "], cost[" + (l3 - l2) + "]");
+      this.jdField_c_of_type_Long = (l1 + d);
+    }
+    label138:
     for (;;)
     {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
-      return localStringBuilder.toString();
-      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+      if (jdField_c_of_type_Int != 1) {
+        break label145;
+      }
+      return true;
+      label114:
+      jdField_c_of_type_Int = 0;
+      break;
+      label121:
+      if (QLog.isDevelopLevel())
+      {
+        QLog.w("SupportPendant", 1, "isDownloadedPTUSO, 频繁调用");
+        continue;
+        jdField_c_of_type_Int = 1;
+      }
     }
+    label145:
+    return false;
   }
   
-  public String a(int paramInt, long paramLong)
+  public boolean a(int paramInt, String paramString)
   {
-    if ((paramInt >= 0) && (paramInt < 41))
-    {
-      StringBuilder localStringBuilder;
-      if (paramLong == 1L)
-      {
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
-        localStringBuilder = new StringBuilder();
-        paramInt = 0;
-        label34:
-        if (paramInt >= 41) {
-          break label242;
-        }
-        switch (paramInt)
-        {
-        default: 
-          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break label34;
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-        break;
-        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
-        {
-          this.jdField_a_of_type_JavaLangString = ljb.a();
-          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
-        }
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(0).append('|');
-        continue;
-        if (this.jdField_b_of_type_Long > 0L) {
-          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
-        }
-        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
-      }
-      label242:
-      return localStringBuilder.toString();
-    }
-    lcl.d("VideoNodeReporter", "buildBody report error:" + paramInt);
-    return null;
+    return false;
   }
   
-  public void a(lgf paramlgf, String paramString)
+  public boolean a(String paramString)
   {
-    if (paramlgf != null)
-    {
-      if (paramlgf.j != -1) {
-        this.jdField_a_of_type_Int = paramlgf.j;
-      }
-      if (paramlgf.jdField_d_of_type_Int != 0) {
-        this.jdField_b_of_type_Int = paramlgf.jdField_d_of_type_Int;
-      }
-      if (!TextUtils.isEmpty(paramlgf.jdField_d_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramlgf.jdField_d_of_type_JavaLangString;
-      }
+    if ("ptu_so".equalsIgnoreCase(paramString)) {
+      return a();
     }
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
-    }
+    return c();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

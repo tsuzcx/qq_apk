@@ -1,6 +1,6 @@
 package cooperation.qqfav;
 
-import bgpf;
+import bgpw;
 import com.tencent.qphone.base.util.QLog;
 
 public final class QfavHelper$2
@@ -13,7 +13,7 @@ public final class QfavHelper$2
       if (QLog.isColorLevel()) {
         QLog.i("qqfav", 2, "notify(sPluginInstalled) qqfav.apk");
       }
-      bgpf.a().notifyAll();
+      bgpw.a().notifyAll();
       return;
     }
   }

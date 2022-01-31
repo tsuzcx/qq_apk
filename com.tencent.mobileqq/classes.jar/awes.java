@@ -1,17 +1,42 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 class awes
-  extends akgp
+  extends ajuf
 {
-  awes(aweo paramaweo) {}
+  awes(aweq paramaweq) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    int j = ((Integer)paramObject).intValue();
-    paramObject = hy.a();
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
+    }
+    aweq.a(this.a, 0L);
+    if (paramBoolean)
     {
-      paramObject.b(i, j);
-      return;
+      if (paramInt == 100)
+      {
+        aweq.b(this.a, System.currentTimeMillis());
+        aweq.a(this.a).edit().putLong("k_update_time", aweq.a(this.a)).commit();
+      }
+      this.a.a(true);
+    }
+    if (aweq.a(this.a) != null)
+    {
+      Iterator localIterator = aweq.a(this.a).iterator();
+      if (localIterator.hasNext())
+      {
+        awcd localawcd = (awcd)localIterator.next();
+        if (paramBoolean) {}
+        for (int i = 300;; i = 301)
+        {
+          localawcd.a(paramInt, i);
+          break;
+        }
+      }
     }
   }
 }

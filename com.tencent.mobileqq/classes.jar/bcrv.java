@@ -1,6 +1,14 @@
+import android.view.View;
+
 public abstract interface bcrv
 {
+  public abstract View a();
+  
   public abstract void a();
+  
+  public abstract void a(float paramFloat, int paramInt);
+  
+  public abstract boolean a();
 }
 
 

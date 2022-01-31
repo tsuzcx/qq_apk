@@ -1,38 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.CropBubbleVideoView;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeah
-  extends acun
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ImageView a;
-  public TextView a;
-  public CropBubbleVideoView a;
-  public MessageProgressView a;
-  public ImageView b;
-  public int e;
-  public int f;
+  public aeah(SixCombolEffectView paramSixCombolEffectView, aeaw paramaeaw) {}
   
-  public aeah(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
-  
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView != null)
-    {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.a();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = bbbf.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView.a(true);
-      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformCropBubbleVideoView);
+    this.jdField_a_of_type_Aeaw.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Aeaw.b) && (this.jdField_a_of_type_Aeaw.a < 0.52F)) {
+      this.jdField_a_of_type_Aeaw.b = true;
     }
   }
 }

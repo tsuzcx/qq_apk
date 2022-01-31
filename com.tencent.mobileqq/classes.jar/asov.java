@@ -1,22 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class asov
-  implements View.OnClickListener
+  extends WebViewPlugin
 {
-  public asov(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void onClick(View paramView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131378407);
-    aspy.a -= 1;
-    if (aspy.a < 1) {
-      aspy.a = 1;
+    int i = 0;
+    if ((paramString2 == null) || (!"msgForward".equalsIgnoreCase(paramString2)) || (paramString3 == null)) {}
+    while ((this.mRuntime == null) || (this.mRuntime.a() == null) || (!"showForwardToWXMsg".equalsIgnoreCase(paramString3)) || (paramVarArgs == null)) {
+      return false;
     }
-    paramView.setText(ajyc.a(2131706990) + aspy.a);
-    MultiAIOFragment.c(this.a);
+    if (paramVarArgs.length > 0) {
+      while (i < paramVarArgs.length)
+      {
+        QLog.d("MsgforwardWXWebViewPlugin", 1, paramVarArgs[i]);
+        i += 1;
+      }
+    }
+    paramJsBridgeListener = "0";
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]).optString("rId");
+      paramJsBridgeListener = paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        long l;
+        QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
+      }
+    }
+    paramString1 = this.mRuntime.a();
+    l = paramJsBridgeListener.hashCode();
+    paramString2 = new Intent(paramString1, MultiForwardActivity.class);
+    paramString2.putExtra("chat_subType", 3);
+    paramString2.putExtra("uin", "0");
+    paramString2.putExtra("uintype", 1040);
+    paramString2.putExtra("multi_url", paramJsBridgeListener);
+    paramString2.putExtra("multi_uniseq", l);
+    paramString1.startActivity(paramString2);
+    paramString1.finish();
+    return true;
   }
 }
 

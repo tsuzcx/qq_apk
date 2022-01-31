@@ -1,45 +1,65 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aido
-  implements azlq
+  extends akil
 {
   public aido(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public ArrayList<ResultRecord> a()
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
-  }
-  
-  public void a()
-  {
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getIntent().getStringExtra("group_uin");
+    Object localObject2 = new StringBuilder().append("onUpdateTroopGetMemberList, troopUin[").append(paramString).append("], ftroopUin[").append((String)localObject1).append("], troopMemberInfoList[");
+    if (paramList != null) {}
+    for (paramInt1 = paramList.size();; paramInt1 = -1)
     {
-      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
-      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
+      QLog.w("FriendTeamListInnerFrameNew", 1, paramInt1 + "]");
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals(paramString))) {
+        break;
+      }
+      return;
+    }
+    paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localObject1 = new ArrayList();
+    localObject2 = (bamk)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(203);
+    bduf localbduf = (bduf)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getManager(165);
+    Object localObject3 = (ajxl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        FriendTeamListInnerFrame.a(this.a).a(0);
-        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
-        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
-        if (localGroups1 != null) {
-          this.a.jdField_a_of_type_Azlo.a();
-        }
-        if (localGroups2 != null) {
-          this.a.jdField_a_of_type_Azlo.c();
+        localObject3 = (TroopMemberInfo)paramList.next();
+        if (localObject3 != null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, memberuin[" + ((TroopMemberInfo)localObject3).memberuin + "]");
+          }
+          if (!TextUtils.equals(((TroopMemberInfo)localObject3).memberuin, paramString)) {
+            if ((((bamk)localObject2).b(((TroopMemberInfo)localObject3).memberuin)) || (localbduf.f(((TroopMemberInfo)localObject3).memberuin)))
+            {
+              if (QLog.isDevelopLevel()) {
+                QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, isRobotUin");
+              }
+            }
+            else {
+              ((ArrayList)localObject1).add(localObject3);
+            }
+          }
         }
       }
     }
-  }
-  
-  public ArrayList<String> b()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b((ArrayList)localObject1);
+    FriendTeamListInnerFrame.a(this.a).a((ArrayList)localObject1);
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
   }
 }
 

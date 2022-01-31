@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.camera;
 
-import amfh;
-import amfr;
+import amfg;
+import amfq;
 
 public class CameraManagerImpl$PreviewCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$PreviewCallbackForward$1(amfr paramamfr, byte[] paramArrayOfByte) {}
+  public CameraManagerImpl$PreviewCallbackForward$1(amfq paramamfq, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    amfr.a(this.this$0).a(this.a, amfr.a(this.this$0), 0);
+    amfq.a(this.this$0).a(this.a, amfq.a(this.this$0), 0);
   }
 }
 

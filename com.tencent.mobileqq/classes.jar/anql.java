@@ -1,24 +1,16 @@
-import android.os.Bundle;
+import java.util.List;
 
-public abstract class anql
+class anql
+  implements anqs
 {
-  private static int seed;
-  public int key;
+  anql(anqk paramanqk) {}
   
-  public anql()
+  public void a(List<anyh> paramList)
   {
-    int i = seed;
-    seed = i + 1;
-    this.key = i;
+    if (this.a.a != null) {
+      this.a.a.b(paramList);
+    }
   }
-  
-  public abstract void onBindedToClient();
-  
-  public abstract void onDisconnectWithService();
-  
-  public abstract void onPushMsg(Bundle paramBundle);
-  
-  public abstract void onResponse(Bundle paramBundle);
 }
 
 

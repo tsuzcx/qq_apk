@@ -1,138 +1,39 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
 
 public class lvs
+  extends Handler
 {
-  public lur[] a = new lur[8];
+  WeakReference<RedPacketRollTextView> a;
   
-  public lvs(Context paramContext)
+  public lvs(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    this.a[0] = new lvk();
-    this.a[1] = new lvi(paramContext);
-    this.a[2] = new luw();
-    this.a[3] = new lvn();
-    this.a[4] = new luu();
-    this.a[5] = new lut();
-    this.a[6] = new lus();
-    this.a[7] = new lvg();
+    this.a = new WeakReference(paramRedPacketRollTextView);
   }
   
-  public long a(long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    long l2;
-    if (paramLong < this.a[0].jdField_a_of_type_Long)
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
     {
-      l2 = this.a[0].jdField_a_of_type_Long;
-      l1 = this.a[0].jdField_a_of_type_Long;
-      l2 -= paramLong;
-      paramLong = l1;
-    }
-    for (long l1 = l2;; l1 = 0L)
-    {
-      lur[] arrayOflur = this.a;
-      int j = arrayOflur.length;
-      int i = 0;
-      while (i < j)
+      Bundle localBundle;
+      do
       {
-        arrayOflur[i].jdField_a_of_type_Long = paramLong;
-        i += 1;
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
       }
-      ((lvk)this.a[0]).a = true;
-      ((lvi)this.a[1]).a = true;
-      ((luw)this.a[2]).a = true;
-      return l1;
-    }
-  }
-  
-  public void a()
-  {
-    lur[] arrayOflur = this.a;
-    int j = arrayOflur.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOflur[i].b();
-      i += 1;
-    }
-    this.a = null;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    lur[] arrayOflur = this.a;
-    int j = arrayOflur.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOflur[i].b(paramInt1, paramInt2, paramInt3, paramInt4);
-      i += 1;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a[0].jdField_a_of_type_Long = paramLong;
-    this.a[1].jdField_a_of_type_Long = paramLong;
-    this.a[2].jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    lur[] arrayOflur = this.a;
-    int j = arrayOflur.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOflur[i].a(paramCanvas, paramPaint);
-      i += 1;
-    }
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    this.a[0].jdField_a_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_light_bg.png"));
-    this.a[2].jdField_a_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_cd.png"));
-    this.a[4].jdField_a_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_3.png"));
-    this.a[5].jdField_a_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_2.png"));
-    this.a[6].jdField_a_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_1.png"));
-    this.a[7].jdField_a_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_go.png"));
-  }
-  
-  public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
-  {
-    if (paramBoolean) {}
-    for (this.a[3].jdField_a_of_type_Lvr = null;; this.a[3].jdField_a_of_type_Lvr = null)
-    {
-      ((lvi)this.a[1]).a(paramBoolean, paramAVRedPacketManager);
-      return;
-    }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    boolean bool2 = false;
-    lur[] arrayOflur = this.a;
-    int j = arrayOflur.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOflur[i].a(paramLong);
-      i += 1;
-    }
-    boolean bool1 = bool2;
-    if (this.a[7].jdField_a_of_type_Long != 0L)
-    {
-      bool1 = bool2;
-      if (paramLong - this.a[7].jdField_a_of_type_Long > 5564L) {
-        bool1 = true;
-      }
-    }
-    if (bool1) {
-      this.a[7].jdField_a_of_type_Long = 0L;
-    }
-    return bool1;
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 

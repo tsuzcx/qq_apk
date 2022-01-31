@@ -1,41 +1,32 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.theme.diy.ResData;
+import java.lang.ref.WeakReference;
 
 class anvj
-  extends WtloginObserver
+  implements aymw
 {
-  anvj(anul paramanul, Bundle paramBundle, MessengerService paramMessengerService) {}
+  anvj(anuq paramanuq) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    boolean bool2 = true;
-    paramWUserSigInfo = new Bundle();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    paramResData = (MessengerService)this.a.a.get();
+    Bundle localBundle;
+    if (paramResData != null)
     {
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label90;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label96;
+      localBundle = new Bundle();
+      localBundle.putString("themeId", paramBundle.getString("themeId"));
+      if (paramInt2 != 4) {
+        break label73;
       }
     }
-    label90:
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label73:
+    for (paramInt1 = 0;; paramInt1 = -2)
     {
-      paramWUserSigInfo.putBoolean("allow_set", bool1);
-      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool1 = false;
-      break;
+      localBundle.putInt("themeStatus", paramInt1);
+      paramBundle.putBundle("response", localBundle);
+      paramResData.a(paramBundle);
+      return 1;
     }
   }
 }

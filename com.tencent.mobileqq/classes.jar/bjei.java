@@ -1,61 +1,26 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.image.NativeApngDecoder;
-import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public class bjei
-  implements GifDecoder
+final class bjei
+  implements waj
 {
-  private NativeApngDecoder jdField_a_of_type_ComTencentImageNativeApngDecoder;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bjei(String paramString)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Bitmap getNextGifFrame(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentImageNativeApngDecoder != null) {
-      return this.jdField_a_of_type_ComTencentImageNativeApngDecoder.getNextFrameBitmap(paramLong);
-    }
-    return null;
-  }
-  
-  public void init()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    File localFile;
-    do
-    {
-      do
-      {
-        return;
-        if (bbqj.a().b()) {
-          break;
-        }
-        bbqj.a().a();
-      } while (!QLog.isColorLevel());
-      QLog.d("ApngDecodeWrapper", 2, "so not loaded");
-      return;
-      localFile = new File(this.jdField_a_of_type_JavaLangString);
-    } while ((!localFile.exists()) || (!localFile.isFile()));
-    try
-    {
-      this.jdField_a_of_type_ComTencentImageNativeApngDecoder = new NativeApngDecoder(localFile);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed showFFmpegFormats. message = " + paramString);
     }
   }
   
-  public void release()
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart() {}
+  
+  public void onSuccess(String paramString)
   {
-    this.jdField_a_of_type_ComTencentImageNativeApngDecoder = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onSuccess: invoked. Message: message: showFFmpegFormats ok. " + paramString);
+    }
   }
 }
 

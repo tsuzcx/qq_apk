@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-public final class arul
-  implements Parcelable.Creator<LocationRoom.Venue>
+public abstract interface arul
 {
-  public LocationRoom.Venue a(Parcel paramParcel)
-  {
-    return new LocationRoom.Venue(paramParcel);
-  }
+  public abstract void a();
   
-  public LocationRoom.Venue[] a(int paramInt)
-  {
-    return new LocationRoom.Venue[paramInt];
-  }
+  public abstract void a(LocationRoom.Venue paramVenue);
+  
+  public abstract void a(String paramString);
 }
 
 

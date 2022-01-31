@@ -1,65 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tns
-  extends syv<tpb>
+  extends tly<qqstory_service.ReqGetPromoteTaskList>
 {
-  public static final String a;
-  public List<tlj> a;
-  public String b;
+  public static final String b = sxm.a("StorySvc.get_promote_tasklist");
   
-  static
+  public tns(String paramString)
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_colleciton_view_count");
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
   }
   
-  public tns()
+  public syn a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public syq a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
-    try
-    {
-      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
-      return new tpb(this.b, localRspCollectionViewCount);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        veg.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
-      }
-    }
+    return new tnt(paramArrayOfByte);
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      tlj localtlj = (tlj)localIterator.next();
-      localReqCollectionViewCount.collection_id.add(localtlj.a());
-    }
-    return localReqCollectionViewCount.toByteArray();
+    ved.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
   }
   
   public String toString()
   {
-    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return vyp.a(this.a);
   }
 }
 

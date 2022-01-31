@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class aklv
-  extends ajsg
+  extends ResourcePluginListener
 {
-  private aklv(GetCheckUpdate paramGetCheckUpdate) {}
+  private aklv(GetConfig paramGetConfig) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(byte paramByte)
   {
-    this.a.a(7);
+    if (this.a.b == 44)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      this.a.a.app.c(GetConfig.a(this.a));
+      this.a.a(7);
+    }
+  }
+  
+  public void b(byte paramByte)
+  {
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    this.a.a.app.d(this);
   }
 }
 

@@ -1,19 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-class awiy
-  implements View.OnTouchListener
+public class awiy
+  implements Manager
 {
-  awiy(awix paramawix) {}
+  public static final String a;
+  public static final String b = ajya.a(2131713682);
+  public static final String c = ajya.a(2131713681);
+  public static final String d = ajya.a(2131713684);
+  int jdField_a_of_type_Int = -1;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    jdField_a_of_type_JavaLangString = ajya.a(2131713683);
+  }
+  
+  public awiy(QQAppInterface paramQQAppInterface) {}
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

@@ -1,7 +1,21 @@
-class beql
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.launcher.AppUIProxy.LoadingUI;
+
+public class beql
+  implements Animation.AnimationListener
 {
-  bepw<?> jdField_a_of_type_Bepw;
-  Class<bepv> jdField_a_of_type_JavaLangClass;
+  public beql(AppUIProxy.LoadingUI paramLoadingUI) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    AppUIProxy.LoadingUI.a(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,26 +1,17 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
 public class wqi
-  implements wnu
+  implements View.OnClickListener
 {
-  public wqi(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  public wqi(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
-  }
-  
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
-  {
-    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
-    {
-      bcpw.a(this.a.a(), ajyc.a(2131714638), 0).a();
-      return;
+    if (SubscribeMultiPicFragment.a(this.a) != null) {
+      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
     }
-    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
   }
 }
 

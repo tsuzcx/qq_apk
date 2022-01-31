@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class afqy
-  extends ajxl
+  extends ajto
 {
-  public afqy(DeviceFragment paramDeviceFragment) {}
+  private afqy(FriendFragment paramFriendFragment) {}
   
-  protected void onPullIpad()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a == null) {
-      return;
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    this.a.a.e();
-    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 

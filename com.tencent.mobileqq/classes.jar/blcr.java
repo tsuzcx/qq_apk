@@ -1,24 +1,49 @@
-import android.os.Build.VERSION;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl;
-import java.io.File;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class blcr
 {
-  blcu a;
+  public static String a;
+  private static final String[] a;
+  private static final String[] b = new String[0];
   
-  public blcr()
+  static
   {
-    if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new JBMR2VideoConverterImpl();
-    }
+    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "N1T", "ZTE A2015" };
   }
   
-  public boolean a(File paramFile, blcs paramblcs, boolean paramBoolean)
+  public static boolean a(AppInterface paramAppInterface)
   {
-    if (this.a != null) {
-      return this.a.a(paramFile, paramblcs, paramBoolean);
-    }
-    return false;
+    if (VideoEnvironment.a() == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (ShortVideoUtils.a()) {
+          break;
+        }
+        ShortVideoUtils.a(paramAppInterface);
+      } while (!ShortVideoUtils.a());
+    } while ((axle.a(BaseApplicationImpl.getContext()) == 2) || (!axgr.a().a()) || (axle.a() == 2));
+    return true;
+  }
+  
+  public static boolean b(AppInterface paramAppInterface)
+  {
+    if (VideoEnvironment.a() == null) {}
+    do
+    {
+      return false;
+      if (ShortVideoUtils.a()) {
+        break;
+      }
+      ShortVideoUtils.a(paramAppInterface);
+    } while (!ShortVideoUtils.a());
+    return true;
   }
 }
 

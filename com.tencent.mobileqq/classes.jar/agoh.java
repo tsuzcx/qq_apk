@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class agoh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public agoh(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    if (this.a.y)
+    {
+      PhotoPreviewActivity.a(this.a);
+      return;
     }
-    if (this.a.b != null) {
-      this.a.b.setClickable(true);
-    }
+    this.a.a.toggle();
   }
 }
 

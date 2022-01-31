@@ -1,49 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class ogt
-  implements ojs
+  implements okf
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
   public ogt(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oii> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    QLog.d("ReadInJoyCommentListFragment", 1, "onCommentListLoad anchor");
-    if (!paramBoolean1) {}
-    do
-    {
-      return;
-      paramList = ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).a().a();
-    } while (paramList == null);
-    if (!TextUtils.isEmpty(paramList.b))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(true, paramList.a, paramList.b);
+    if (paramInt != 2) {
+      this.a.d();
     }
-    for (;;)
+    ono localono1 = new ono();
+    ono localono2 = localono1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
+    if (paramInt == 2) {}
+    for (String str = "1";; str = "0")
     {
-      paramList.a(false);
+      localono2.b("result", str);
+      ohf.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localono1);
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
     }
-  }
-  
-  public void onCommentStateError(int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (paramInt == 1001) {
-        wim.a(1, 2131718357);
-      }
-    } while (paramInt != 1003);
-    wim.a(1, 2131718358);
   }
 }
 

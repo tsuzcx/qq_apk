@@ -1,289 +1,264 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardItemFragment;
+import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class asrq
-  implements View.OnLongClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  public Context a;
-  public Bundle a;
-  public FragmentActivity a;
-  public ViewGroup a;
-  public asri a;
-  private asrs jdField_a_of_type_Asrs;
   public QQAppInterface a;
-  private MultiCardCustomLayout jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
-  public WeakReference<MultiCardItemFragment> a;
-  public List<View> a;
-  private boolean jdField_a_of_type_Boolean;
+  private String jdField_a_of_type_JavaLangString;
+  private List<asrl> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, asrk> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, String> b = new HashMap();
   
-  public asrq()
+  public asrq(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public asrq(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private boolean a(View paramView, float paramFloat1, float paramFloat2)
+  public static asrq a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramView == null) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      return false;
-      int[] arrayOfInt = new int[2];
-      paramView.getLocationOnScreen(arrayOfInt);
-      i = arrayOfInt[0];
-      j = arrayOfInt[1];
-      k = paramView.getMeasuredWidth();
-      m = paramView.getMeasuredHeight();
-    } while ((paramFloat2 < j) || (paramFloat2 > m + j) || (paramFloat1 < i) || (paramFloat1 > k + i));
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardContext", 2, "create() called with: app = [" + paramQQAppInterface + "]");
+    }
+    return new asrq(paramQQAppInterface, paramString);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        return 0;
+      }
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      return i;
+    }
+    finally {}
   }
   
-  public Bundle a()
+  public asrk a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilMap == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+        return null;
+      }
+      asrl localasrl = (asrl)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (localasrl != null)
+      {
+        asrk localasrk = (asrk)this.jdField_a_of_type_JavaUtilMap.get(localasrl.a());
+        if ((localasrk != null) && (TextUtils.isEmpty(localasrk.b()))) {
+          localasrk.a((String)this.b.get(localasrl.a()));
+        }
+        return localasrk;
+      }
+    }
+    finally {}
+    return null;
   }
   
-  public View a()
+  public asrl a(int paramInt)
   {
-    return MultiCardItemFragment.a();
-  }
-  
-  public asri a()
-  {
-    return this.jdField_a_of_type_Asri;
-  }
-  
-  public MultiCardCustomLayout a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout;
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilList.size())) {
+        return null;
+      }
+      asrl localasrl = (asrl)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return localasrl;
+    }
+    finally {}
   }
   
   public String a()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      return this.jdField_a_of_type_AndroidOsBundle.getString("troopuin");
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = (String)this.b.get(paramString);
+      return paramString;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public ArrayList<Long> a(int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 28	asrq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   6: ifnull +24 -> 30
+    //   9: aload_0
+    //   10: getfield 28	asrq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   13: invokeinterface 74 1 0
+    //   18: iload_1
+    //   19: if_icmple +11 -> 30
+    //   22: iload_1
+    //   23: iflt +7 -> 30
+    //   26: iload_2
+    //   27: ifgt +7 -> 34
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: aconst_null
+    //   33: areturn
+    //   34: iload_2
+    //   35: istore_3
+    //   36: iload_1
+    //   37: iload_2
+    //   38: iadd
+    //   39: aload_0
+    //   40: getfield 28	asrq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   43: invokeinterface 74 1 0
+    //   48: if_icmple +15 -> 63
+    //   51: aload_0
+    //   52: getfield 28	asrq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   55: invokeinterface 74 1 0
+    //   60: iload_1
+    //   61: isub
+    //   62: istore_3
+    //   63: new 25	java/util/ArrayList
+    //   66: dup
+    //   67: invokespecial 26	java/util/ArrayList:<init>	()V
+    //   70: astore 4
+    //   72: iload_1
+    //   73: istore_2
+    //   74: iload_2
+    //   75: iload_1
+    //   76: iload_3
+    //   77: iadd
+    //   78: if_icmpge +45 -> 123
+    //   81: aload_0
+    //   82: getfield 28	asrq:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   85: iload_2
+    //   86: invokeinterface 79 2 0
+    //   91: checkcast 81	asrl
+    //   94: invokevirtual 83	asrl:a	()Ljava/lang/String;
+    //   97: astore 5
+    //   99: aload 4
+    //   101: aload 5
+    //   103: invokestatic 114	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   106: invokevirtual 118	java/lang/Long:longValue	()J
+    //   109: invokestatic 121	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   112: invokevirtual 125	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   115: pop
+    //   116: iload_2
+    //   117: iconst_1
+    //   118: iadd
+    //   119: istore_2
+    //   120: goto -46 -> 74
+    //   123: aload_0
+    //   124: monitorexit
+    //   125: aload 4
+    //   127: areturn
+    //   128: astore 4
+    //   130: aload_0
+    //   131: monitorexit
+    //   132: aload 4
+    //   134: athrow
+    //   135: astore 5
+    //   137: goto -21 -> 116
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	140	0	this	asrq
+    //   0	140	1	paramInt1	int
+    //   0	140	2	paramInt2	int
+    //   35	43	3	i	int
+    //   70	56	4	localArrayList	ArrayList
+    //   128	5	4	localObject	Object
+    //   97	5	5	str	String
+    //   135	1	5	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	22	128	finally
+    //   30	32	128	finally
+    //   36	63	128	finally
+    //   63	72	128	finally
+    //   81	99	128	finally
+    //   99	116	128	finally
+    //   123	125	128	finally
+    //   130	132	128	finally
+    //   99	116	135	java/lang/Exception
+  }
+  
+  public List<asrl> a(List<Long> paramList)
+  {
+    if (paramList != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = String.valueOf((Long)paramList.next());
+        localArrayList.add(new asrl(str, bbcz.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, str)));
+      }
+      return localArrayList;
     }
     return null;
   }
   
-  public void a()
+  public Map<String, asrk> a(Map<Long, IntimateInfo> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "unInit");
-    }
-    this.jdField_a_of_type_Int = -1;
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
+    if (paramMap != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setDispatchTouchEventOnLongClickListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Asri = null;
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_AndroidOsBundle = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "onCardModeChanged：" + paramInt);
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = ((MultiCardCustomLayout)paramView);
-    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setDispatchTouchEventOnLongClickListener(new asrr(this));
-    }
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void a(ViewGroup paramViewGroup, View paramView)
-  {
-    MultiCardItemFragment.a(paramViewGroup, paramView);
-  }
-  
-  public void a(asri paramasri)
-  {
-    this.jdField_a_of_type_Asri = paramasri;
-  }
-  
-  public void a(asrs paramasrs)
-  {
-    this.jdField_a_of_type_Asrs = paramasrs;
-  }
-  
-  public void a(MultiCardItemFragment paramMultiCardItemFragment)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMultiCardItemFragment);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Asrs != null) {
-      this.jdField_a_of_type_Asrs.a(this);
-    }
-    return true;
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((View)localIterator.next(), paramFloat1, paramFloat2)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "doOnCreate() called");
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int != paramInt)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      a(this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      if (paramView.getParent() != null)
+      HashMap localHashMap = new HashMap();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiCardCustomViewDelegete", 2, "infoview has parent. error!!");
-        }
-        if ((paramView.getParent() instanceof ViewGroup))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiCardCustomViewDelegete", 2, "infoview has parent. remove infoview");
-          }
-          ((ViewGroup)paramView.getParent()).removeView(paramView);
-        }
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localHashMap.put(String.valueOf(localEntry.getKey()), new asrk((IntimateInfo)localEntry.getValue()));
       }
-    } while (this.jdField_a_of_type_AndroidViewViewGroup == null);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView);
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "doOnResume() called");
+      return localHashMap;
     }
+    return null;
   }
   
-  public void c(View paramView)
+  public void a(List<asrl> paramList, Map<String, asrk> paramMap, Map<String, String> paramMap1)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramView)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramView);
+    if (paramList != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (paramMap != null) {
+        this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
+      }
+      if (paramMap1 != null) {
+        this.b.putAll(paramMap1);
+      }
+      return;
     }
+    finally {}
   }
   
-  public void d()
+  public Map<String, String> b(Map<Long, String> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "doOnPause() called");
+    if (paramMap != null)
+    {
+      HashMap localHashMap = new HashMap();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localHashMap.put(String.valueOf(localEntry.getKey()), localEntry.getValue());
+      }
+      return localHashMap;
     }
-  }
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardCustomViewDelegete", 2, "doOnDestroy");
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_Asri = null;
-  }
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void k()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Asrs != null) {
-      this.jdField_a_of_type_Asrs.a(this);
-    }
-    return true;
+    return null;
   }
 }
 

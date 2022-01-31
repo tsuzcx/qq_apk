@@ -1,25 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
 
-public class asav
-  implements Drawable.Callback
+class asav
+  implements View.OnClickListener
 {
-  public asav(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  asav(asar paramasar, Activity paramActivity) {}
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    this.a.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
+    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Asar.a.a, asar.a(this.jdField_a_of_type_Asar));
+    this.jdField_a_of_type_Asar.g();
+    axqy.b(this.jdField_a_of_type_Asar.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
   }
 }
 

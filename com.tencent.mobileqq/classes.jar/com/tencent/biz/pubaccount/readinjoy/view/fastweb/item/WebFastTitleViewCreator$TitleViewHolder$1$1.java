@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import rlq;
+import rln;
 
 class WebFastTitleViewCreator$TitleViewHolder$1$1
   implements Runnable
@@ -11,18 +11,18 @@ class WebFastTitleViewCreator$TitleViewHolder$1$1
   
   public void run()
   {
-    if (!rlq.a(this.a.this$0))
+    if (!rln.a(this.a.this$0))
     {
-      rlq.a(this.a.this$0, rlq.a(this.a.this$0));
-      if ((!this.a.a) && (rlq.a(this.a.this$0).getVisibility() != 0))
+      rln.a(this.a.this$0, rln.a(this.a.this$0));
+      if ((!this.a.a) && (rln.a(this.a.this$0).getVisibility() != 0))
       {
-        rlq.a(this.a.this$0).setVisibility(0);
-        rlq.a(this.a.this$0).setVisibility(0);
+        rln.a(this.a.this$0).setVisibility(0);
+        rln.a(this.a.this$0).setVisibility(0);
       }
       return;
     }
-    rlq.a(this.a.this$0).setVisibility(8);
-    rlq.a(this.a.this$0).setVisibility(8);
+    rln.a(this.a.this$0).setVisibility(8);
+    rln.a(this.a.this$0).setVisibility(8);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeoo;
+import aeom;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class FriendChatPie$4
   implements Runnable
 {
-  public FriendChatPie$4(aeoo paramaeoo) {}
+  public FriendChatPie$4(aeom paramaeom) {}
   
   public void run()
   {

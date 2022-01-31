@@ -1,22 +1,8 @@
-public abstract class ahpv
-  implements ahpx
+public abstract interface ahpv
 {
-  public int a;
-  public long a;
-  public azmk a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public ahpv()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_Azmk = new azmk();
-  }
+  public abstract byte[] a();
 }
 
 

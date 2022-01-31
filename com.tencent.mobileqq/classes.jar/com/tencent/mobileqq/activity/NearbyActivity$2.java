@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akbm;
+import akbl;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 class NearbyActivity$2
@@ -11,7 +11,7 @@ class NearbyActivity$2
   public void run()
   {
     this.this$0.a.c();
-    ((akbm)this.this$0.a.a(3)).a(this.this$0.a.getCurrentAccountUin());
+    ((akbl)this.this$0.a.a(3)).a(this.this$0.a.getCurrentAccountUin());
   }
 }
 

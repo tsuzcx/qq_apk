@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14.1;
 
-class atrc
-  implements View.OnClickListener
+public class atrc
+  extends asyu
 {
-  atrc(atqu paramatqu) {}
+  atrc(atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  public void a(asyv paramasyv)
   {
-    paramView = bfol.a(this.a.a);
-    paramView.a(2131718049, 1);
-    paramView.c(2131690596);
-    paramView.a(new atrd(this, paramView));
-    paramView.show();
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramasyv), 8, null, false);
+    this.a.a = paramasyv;
   }
 }
 

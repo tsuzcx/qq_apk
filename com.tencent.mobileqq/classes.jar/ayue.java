@@ -1,55 +1,21 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-
 public class ayue
+  extends ayuf
 {
-  public static boolean a;
-  private ayug a;
+  private int a = 420000;
+  private int b = 9;
+  private int c = 3;
+  private int d = 15000;
+  private int e = 30000;
+  private int f = 4000;
   
-  public ayue()
+  public int a()
   {
-    this.jdField_a_of_type_Ayug = new ayug();
-    a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name()));
-    a();
+    return this.d;
   }
   
-  private void a()
+  public int b()
   {
-    DeviceProfileManager.a(new ayuf(this));
-  }
-  
-  public ayug a()
-  {
-    return this.jdField_a_of_type_Ayug.a();
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString))) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
-      }
-      paramString = paramString.split("\\|");
-    } while ((paramString == null) || (paramString.length != 6));
-    try
-    {
-      this.jdField_a_of_type_Ayug.d = (Integer.valueOf(paramString[0]).intValue() * 1000);
-      this.jdField_a_of_type_Ayug.e = (Integer.valueOf(paramString[1]).intValue() * 1000);
-      this.jdField_a_of_type_Ayug.f = (Integer.valueOf(paramString[2]).intValue() * 1000);
-      this.jdField_a_of_type_Ayug.a = (Integer.valueOf(paramString[3]).intValue() * 1000);
-      this.jdField_a_of_type_Ayug.b = (Integer.valueOf(paramString[4]).intValue() * 1000);
-      this.jdField_a_of_type_Ayug.c = (Integer.valueOf(paramString[5]).intValue() * 1000);
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return this.e;
   }
 }
 

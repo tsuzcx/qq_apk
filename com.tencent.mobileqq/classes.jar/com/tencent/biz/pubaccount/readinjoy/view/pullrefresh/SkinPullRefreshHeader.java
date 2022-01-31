@@ -17,11 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import xed;
+import xea;
 
 public class SkinPullRefreshHeader
   extends RelativeLayout
-  implements xed
+  implements xea
 {
   int jdField_a_of_type_Int = Color.parseColor("#f7f7f7");
   public long a;
@@ -108,11 +108,11 @@ public class SkinPullRefreshHeader
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       return;
-      localDrawable = getResources().getDrawable(2130848521);
+      localDrawable = getResources().getDrawable(2130848527);
       continue;
-      localDrawable = getResources().getDrawable(2130848519);
+      localDrawable = getResources().getDrawable(2130848525);
       continue;
-      localDrawable = getResources().getDrawable(2130848520);
+      localDrawable = getResources().getDrawable(2130848526);
     }
   }
   
@@ -163,7 +163,7 @@ public class SkinPullRefreshHeader
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719793);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719804);
   }
   
   public void c(long paramLong)
@@ -177,12 +177,12 @@ public class SkinPullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364692));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375054));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375055));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375053));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375050);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131375056);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364691));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375056));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375057));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375055));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375052);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131375058);
     c(0L);
   }
   

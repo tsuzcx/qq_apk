@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azuu;
-import azuv;
+import azuw;
 import azux;
+import azuz;
 import java.util.UUID;
 
 public class TroopFileUploadMgr$6$1
   implements Runnable
 {
-  public TroopFileUploadMgr$6$1(azuv paramazuv, UUID paramUUID, boolean paramBoolean, int paramInt, azux paramazux) {}
+  public TroopFileUploadMgr$6$1(azux paramazux, UUID paramUUID, boolean paramBoolean, int paramInt, azuz paramazuz) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Azuv.a.a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Azux);
+    this.jdField_a_of_type_Azux.a.a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_Azuz);
   }
 }
 

@@ -1,26 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
 class uih
-  implements DialogInterface.OnClickListener
+  extends Job<Object, Object, Object>
 {
-  uih(uhz paramuhz, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  uih(uig paramuig, String paramString, tce paramtce)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    svo.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    vel.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    stb.a().dispatch(this.jdField_a_of_type_Tce);
+    return null;
   }
 }
 

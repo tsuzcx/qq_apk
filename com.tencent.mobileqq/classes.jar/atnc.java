@@ -1,11 +1,10 @@
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
-
-public class atnc
+class atnc
 {
-  public float a;
-  public float[] a;
+  public String a;
+  public String b;
+  public String c;
   
-  private atnc(MetaballView paramMetaballView) {}
+  private atnc(atlw paramatlw) {}
 }
 
 

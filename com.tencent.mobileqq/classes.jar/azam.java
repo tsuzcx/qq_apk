@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-
 public class azam
-  implements bfos
 {
-  public azam(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onDismiss()
-  {
-    TribeVideoListPlayerFragment.a(this.a);
-    this.a.e = false;
-  }
+  public static int a = 100001;
 }
 
 

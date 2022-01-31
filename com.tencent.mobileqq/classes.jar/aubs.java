@@ -1,17 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.TranslateFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.TranslateController;
+import com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aubs
-  implements audw
+  implements alew
 {
-  public aubs(TranslateFragment paramTranslateFragment, auad paramauad) {}
+  public aubs(TranslateController.ImageTranslateTask paramImageTranslateTask, algs paramalgs) {}
   
-  public void a(int paramInt, audx paramaudx)
+  public void a(int paramInt, String paramString, algn paramalgn)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Auad.b)) && (!this.jdField_a_of_type_Auad.b.equals(paramaudx.b))) {
-      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramaudx.b, this.jdField_a_of_type_Auad.c);
+    Object localObject;
+    label82:
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      if (paramalgn != null)
+      {
+        localObject = paramalgn.a;
+        QLog.d("TranslateController", 2, "imageTranslate, retCode:" + paramInt + ",sessionId:" + paramString + ",result: " + localObject);
+      }
     }
-    auab.a("0X800AAF9", auab.a(paramaudx.b));
+    else
+    {
+      int i = 0;
+      if ((paramalgn == null) || (paramalgn.a == null)) {
+        break label241;
+      }
+      paramString = paramalgn.a;
+      i = 1;
+      paramalgn = this.jdField_a_of_type_Algs.a.b;
+      localObject = this.jdField_a_of_type_Algs.a.a;
+      paramString.c = paramalgn;
+      if ((apvd.a((String)localObject)) && (!((String)localObject).equals(paramalgn))) {
+        apvd.c((String)localObject);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
+      if (paramInt != 0) {
+        break label260;
+      }
+      bool = true;
+      label149:
+      TranslateController.a((TranslateController)localObject, bool, paramalgn, paramString);
+      paramalgn = new HashMap();
+      paramalgn.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Algs.c));
+      paramalgn.put("retCode", String.valueOf(paramInt));
+      if (i == 0) {
+        break label266;
+      }
+    }
+    label260:
+    label266:
+    for (paramString = "1";; paramString = "0")
+    {
+      paramalgn.put("hasResult", paramString);
+      axrn.a(BaseApplicationImpl.getContext()).a("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramalgn, "", false);
+      return;
+      localObject = null;
+      break;
+      label241:
+      paramString = new TranslateResult(2);
+      paramString.b = 1002;
+      break label82;
+      bool = false;
+      break label149;
+    }
   }
 }
 

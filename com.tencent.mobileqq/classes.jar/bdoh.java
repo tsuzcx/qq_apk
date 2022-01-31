@@ -1,45 +1,91 @@
-import com.tencent.gamecenter.appointment.GameCenterReceiver;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.open.wadl.WadlConfigCenter.1;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bdoh
+class bdoh
+  extends bdoq
 {
-  static bdoh jdField_a_of_type_Bdoh;
-  static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private HashMap<String, bdof> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  bdoh(bdod parambdod, bdnp parambdnp, bdom parambdom, String paramString, JSONObject paramJSONObject) {}
   
-  private bdoh()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    a();
-    GameCenterReceiver.a();
-  }
-  
-  public static bdoh a()
-  {
-    if (jdField_a_of_type_Bdoh == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bdoh == null) {
-        jdField_a_of_type_Bdoh = new bdoh();
-      }
-      return jdField_a_of_type_Bdoh;
+    bool2 = false;
+    boolean bool3 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.uploadAvatarImage.result:", bdoo.a(paramString1, this.jdField_a_of_type_Bdnp.jdField_a_of_type_JavaLangString) });
     }
-  }
-  
-  public <T> T a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.executeOnFileThread(new WadlConfigCenter.1(this));
+    localObject = null;
+    bool1 = bool2;
+    paramString2 = localObject;
+    i = paramInt;
+    if (paramBoolean) {}
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      i = paramString1.optInt("ErrorCode");
+      if (i != 0) {}
+    }
+    catch (JSONException paramString1)
+    {
+      label102:
+      do
+      {
+        for (;;)
+        {
+          QLog.d("OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.e:", paramString1);
+          bool1 = bool2;
+          paramString2 = localObject;
+          i = paramInt;
+        }
+        bdod.a(this.jdField_a_of_type_Bdod);
+        if (bdod.b(this.jdField_a_of_type_Bdod) < 2) {
+          break;
+        }
+      } while ((this.jdField_a_of_type_Bdom == null) || (this.jdField_a_of_type_Bdom == null));
+      this.jdField_a_of_type_Bdom.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      return;
+      bdod.a(this.jdField_a_of_type_Bdod, this.jdField_a_of_type_Bdnp, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Bdom);
+      return;
+    }
+    try
+    {
+      paramString1 = paramString1.optJSONObject("msg_img_data");
+      if (paramString1 == null) {
+        break label273;
+      }
+      paramString1 = paramString1.optString("str_file_name");
+      paramBoolean = bool3;
+    }
+    catch (JSONException paramString1)
+    {
+      paramInt = i;
+      break label168;
+      paramBoolean = false;
+      paramString1 = null;
+      break label102;
+    }
+    paramInt = i;
+    for (;;)
+    {
+      i = paramInt;
+      paramString2 = paramString1;
+      bool1 = paramBoolean;
+      if (!bool1) {
+        break;
+      }
+      if ((this.jdField_a_of_type_Bdom != null) && (this.jdField_a_of_type_Bdom != null)) {
+        this.jdField_a_of_type_Bdom.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      }
+      return;
+      paramInt = paramString1.optInt("uint32_ret_to_http", i);
+      paramString1 = null;
+      paramBoolean = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdoh
  * JD-Core Version:    0.7.0.1
  */

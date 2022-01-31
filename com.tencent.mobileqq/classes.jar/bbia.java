@@ -1,80 +1,25 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class bbia
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  bbia(bbhz parambbhz) {}
+  bbia(bbhz parambbhz, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558894, null);
-      paramView = new bbif(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131368381));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (bbif)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new bbie(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label207;
-      }
-      paramView.a.setBackgroundResource(2130839270);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label207:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130839271);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130839269);
-      }
-    }
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_Bbhz.hideSoftInputFromWindow();
+    paramView = new aqeb(this.jdField_a_of_type_Bbhz);
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bbhz.addPreviewView(paramView.b());
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbia
  * JD-Core Version:    0.7.0.1
  */

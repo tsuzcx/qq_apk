@@ -1,12 +1,23 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
-public class aeeo
-  extends aeef
+class aeeo
+  implements bfph
 {
-  public TroopSignVideoView a;
-  public View e;
-  public View f;
+  aeeo(aeen paramaeen, MessageForTroopStory paramMessageForTroopStory, bfpc parambfpc) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      vwq.a(this.jdField_a_of_type_Aeen.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
+  }
 }
 
 

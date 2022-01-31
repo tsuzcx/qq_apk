@@ -1,26 +1,24 @@
-import android.widget.LinearLayout;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahai
-  implements agwp
+  extends Handler
 {
   public ahai(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    switch (paramMessage.what)
+    {
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
-    }
+    do
+    {
+      return;
+    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
+    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
   }
 }
 

@@ -1,16 +1,16 @@
-import android.os.Bundle;
-
 public abstract interface aztk
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, bbmu parambbmu);
+  
+  public abstract void a(bbmu parambbmu);
   
   public abstract void a(String paramString);
   
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  public abstract void a(byte[] paramArrayOfByte, long paramLong, String paramString);
   
-  public abstract void b(String paramString);
-  
-  public abstract void d();
+  public abstract void b(bbmu parambbmu);
 }
 
 

@@ -1,80 +1,39 @@
-import android.content.Context;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 
-public abstract class bfyl<M, VH extends bfyo<M>>
-  extends bfyp<M, VH>
+class bfyl
+  extends Handler
 {
-  private List<M> a;
+  bfyl(bfyk parambfyk) {}
   
-  public bfyl(Context paramContext)
+  bfyl(bfyk parambfyk, Handler paramHandler)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramHandler.getLooper());
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public abstract int a(int paramInt);
-  
-  public M a(int paramInt)
-  {
-    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + c())) {
-      return null;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-  }
-  
-  public List<M> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(List<M> paramList)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-    for (int i = 1;; i = 0)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (bool) {
-        notifyDataSetChanged();
-      }
-      return bool;
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
     }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + b();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
-      return 1024;
+    do
+    {
+      return;
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      return;
     }
-    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + c())) {
-      return 1025;
-    }
-    return a(paramInt);
+    this.a.b = true;
   }
 }
 

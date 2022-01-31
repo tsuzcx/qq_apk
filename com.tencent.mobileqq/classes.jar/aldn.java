@@ -1,196 +1,118 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ScanEntranceReport.1;
+import com.tencent.mobileqq.ar.ScanEntranceReport.4;
+import com.tencent.mobileqq.ar.ScanEntranceReport.5;
+import com.tencent.mobileqq.ar.ScanEntranceReport.6;
+import com.tencent.mobileqq.ar.ScanEntranceReport.9;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aldn
 {
-  private static aldn a;
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
+  private static aldn jdField_a_of_type_Aldn;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public static aldn a()
   {
-    if (jdField_a_of_type_Aldn == null)
-    {
+    if (jdField_a_of_type_Aldn == null) {
       jdField_a_of_type_Aldn = new aldn();
-      jdField_a_of_type_Aldn.a();
     }
     return jdField_a_of_type_Aldn;
   }
   
-  private void a()
+  private boolean a(long paramLong)
   {
-    long l = System.currentTimeMillis();
-    b();
-    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-    QLog.d("ScanEntranceDPC", 1, String.format("loadDPC dpcValue=%s", new Object[] { localObject }));
-    int k = -1;
-    m = k;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      j = k;
-    }
-    for (;;)
+    return (paramLong >= 0L) && (paramLong <= 600000L);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (paramLong <= 0L) {}
+    do
     {
-      try
-      {
-        localObject = ((String)localObject).split("\\|");
-        j = k;
-        if (localObject.length < 9) {
-          continue;
-        }
-        j = k;
-        if (Integer.valueOf(localObject[1]).intValue() != 1) {
-          continue;
-        }
-        bool = true;
-        j = k;
-        this.jdField_a_of_type_Boolean = bool;
-        j = k;
-        int i = Integer.valueOf(localObject[2]).intValue();
-        if (i >= 0)
-        {
-          j = k;
-          this.jdField_a_of_type_Int = i;
-        }
-        j = k;
-        float f1 = Float.valueOf(localObject[3]).floatValue();
-        if ((f1 >= 0.05F) && (f1 <= 0.95F))
-        {
-          j = k;
-          this.jdField_a_of_type_Float = f1;
-        }
-        j = k;
-        if (Integer.valueOf(localObject[4]).intValue() != 1) {
-          continue;
-        }
-        bool = true;
-        j = k;
-        this.jdField_b_of_type_Boolean = bool;
-        j = k;
-        i = Integer.valueOf(localObject[5]).intValue();
-        if (i >= 0)
-        {
-          j = k;
-          this.jdField_b_of_type_Int = i;
-        }
-        j = k;
-        if (Integer.valueOf(localObject[6]).intValue() != 1) {
-          continue;
-        }
-        bool = true;
-        j = k;
-        this.jdField_c_of_type_Boolean = bool;
-        j = k;
-        if (Integer.valueOf(localObject[7]).intValue() != 1) {
-          continue;
-        }
-        bool = true;
-        j = k;
-        this.d = bool;
-        j = k;
-        i = Integer.valueOf(localObject[8]).intValue();
-        if ((i >= 0) && (i <= 255))
-        {
-          j = k;
-          this.jdField_c_of_type_Int = i;
-        }
-        j = k;
-        if (localObject.length >= 12)
-        {
-          j = k;
-          if (Integer.valueOf(localObject[11]).intValue() != 1) {
-            continue;
-          }
-          bool = true;
-          j = k;
-          this.e = bool;
-        }
-        i = k;
-        j = k;
-        if (localObject.length > 12)
-        {
-          j = k;
-          i = Integer.valueOf(localObject[12]).intValue();
-        }
-        j = i;
-        if (localObject.length >= 18)
-        {
-          j = i;
-          if (Integer.valueOf(localObject[17]).intValue() != 1) {
-            continue;
-          }
-          bool = true;
-          j = i;
-          this.f = bool;
-        }
-        m = i;
-        j = i;
-        if (localObject.length >= 19)
-        {
-          j = i;
-          if (Integer.valueOf(localObject[18]).intValue() != 1) {
-            continue;
-          }
-          bool = true;
-          j = i;
-          this.g = bool;
-          m = i;
-        }
-      }
-      catch (Exception localException)
-      {
-        boolean bool;
-        QLog.e("ScanEntranceDPC", 1, "loadDPC fail, use default value.", localException);
-        b();
-        m = j;
-        continue;
-      }
-      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC mHighPerfDevice=%s mCameraZoom=%s mScanRectRadio=%s mContinuousFocus=%s mARRecogInterval=%s mRecycleFaceResource=%s mRecordEnable=%s mDarkThreshold=%s mNeonCfgSwitch=%s, disableWorldCup=%s mMiniDecodeSwitch=%s mMiniDetectSwitch=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.d), Integer.valueOf(this.jdField_c_of_type_Int), Boolean.valueOf(this.e), Integer.valueOf(m), Boolean.valueOf(this.f), Boolean.valueOf(this.g) }));
-      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
       return;
-      bool = false;
-      continue;
-      bool = false;
-      continue;
-      bool = false;
-      continue;
-      bool = false;
-      continue;
-      bool = false;
-      continue;
-      bool = false;
-      continue;
-      bool = false;
-      continue;
-      j = k;
-      QLog.e("ScanEntranceDPC", 1, "loadDPC dpc length invalid, use default value.");
-      m = k;
+      paramLong = System.currentTimeMillis() - paramLong;
+    } while (!a(paramLong));
+    QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstSuccess totalTime=%s", new Object[] { Long.valueOf(paramLong) }));
+    ThreadManager.post(new ScanEntranceReport.6(this, paramInt, paramLong), 5, null, false);
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  {
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L) || (paramLong3 <= 0L)) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramLong1 = paramLong2 - paramLong1;
+      paramLong2 = paramLong3 - paramLong2;
+      paramLong3 = l - paramLong3;
+      l = paramLong1 + paramLong2 + paramLong3;
+      if ((!a(paramLong1)) || (!a(paramLong2)) || (!a(paramLong3)) || (!a(l))) {
+        break;
+      }
+      QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstUpload firstInit=%s startDelay=%s firstSelectTime=%s firstUploadDelay=%s totalTime=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(l) }));
+      ThreadManager.post(new ScanEntranceReport.4(this, bool, paramLong1, paramLong2, paramLong3, paramInt, l), 5, null, false);
+      return;
     }
   }
   
-  private void b()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Float = 0.7F;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 500;
-    this.jdField_c_of_type_Boolean = true;
-    this.d = true;
-    this.jdField_c_of_type_Int = 28;
-    this.e = false;
-    this.f = false;
-    this.g = false;
+    QLog.d("ScanEntranceReport", 2, String.format("reportQBarSoLoadFail systemLoadSuccess=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    HashMap localHashMap = new HashMap();
+    axrn.a(BaseApplication.getContext()).a("", "scanner_qbar_so_load_fail", paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramLong <= 0L) {}
+    do
+    {
+      return;
+      paramLong = System.currentTimeMillis() - paramLong;
+    } while (!a(paramLong));
+    QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstResult success=%s totalTime=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
+    ThreadManager.post(new ScanEntranceReport.5(this, paramBoolean, paramLong), 5, null, false);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
+  {
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {}
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      paramLong1 = paramLong2 - paramLong1;
+      paramLong2 = l - paramLong2;
+      l = paramLong1 + paramLong2;
+    } while ((!a(paramLong1)) || (!a(paramLong2)) || (!a(l)));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((paramBoolean) && (paramLong1 > 500L)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.b = paramBoolean;
+      QLog.d("ScanEntranceReport", 2, String.format("reportActivityLaunchTime procExist=%s procRestart=%s procLoadTimeCost=%s activityLaunchTimeCost=%s totalTimeCost=%s source=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), paramString }));
+      ThreadManager.post(new ScanEntranceReport.1(this, paramLong1, paramLong2, paramString, l), 5, null, false);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    QLog.d("ScanEntranceReport", 2, "reportZoomCamera");
+    ThreadManager.post(new ScanEntranceReport.9(this), 5, null, false);
   }
 }
 

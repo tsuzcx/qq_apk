@@ -1,34 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import android.os.Bundle;
 
 public class bgre
-  implements DialogInterface.OnClickListener
 {
-  public bgre(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
-  }
+  public int a;
+  public Bundle a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgre
  * JD-Core Version:    0.7.0.1
  */

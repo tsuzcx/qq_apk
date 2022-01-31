@@ -1,27 +1,18 @@
-import android.text.Spanned;
+import android.support.annotation.NonNull;
 
 class bjic
-  extends bkcj
+  implements bjho
 {
-  bjic(bjib parambjib, int paramInt)
-  {
-    super(paramInt);
-  }
+  bjic(bjia parambjia) {}
   
-  public int a(CharSequence paramCharSequence)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (this.jdField_a_of_type_Bjib.b() == 0) {
-      return super.a(paramCharSequence);
+    String str = paramString;
+    if (paramInt == 0) {
+      str = bakx.b(paramString);
     }
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_Bjib.b() == 0) {}
-    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    }
+    return str;
   }
 }
 

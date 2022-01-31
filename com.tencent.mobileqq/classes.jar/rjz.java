@@ -1,8 +1,21 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
+
 public class rjz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public long a;
-  public String a;
-  public String b;
+  public rjz(ProteusAnimationItemData paramProteusAnimationItemData) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    ProteusAnimationItemData.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if (ProteusAnimationItemData.a(this.a).getLayoutParams() != null) {
+      ProteusAnimationItemData.a(this.a).getLayoutParams().height = ProteusAnimationItemData.a(this.a);
+    }
+    ProteusAnimationItemData.a(this.a).requestLayout();
+  }
 }
 
 

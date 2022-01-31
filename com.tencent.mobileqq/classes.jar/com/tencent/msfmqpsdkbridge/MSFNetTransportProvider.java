@@ -1,11 +1,11 @@
 package com.tencent.msfmqpsdkbridge;
 
-import ajtd;
-import ajtg;
+import ajtb;
+import ajte;
 import android.text.TextUtils;
-import bcwx;
-import bcwy;
-import bcwz;
+import bcxm;
+import bcxn;
+import bcxo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -15,11 +15,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class MSFNetTransportProvider
-  extends ajtd
-  implements bcwx
+  extends ajtb
+  implements bcxm
 {
-  private Map<String, bcwy> mCodecMap;
-  private Map<String, bcwz> mEventListenerMap;
+  private Map<String, bcxn> mCodecMap;
+  private Map<String, bcxo> mEventListenerMap;
   private Map<String, String> mServiceNameMap = new LinkedHashMap();
   
   public MSFNetTransportProvider(QQAppInterface paramQQAppInterface)
@@ -30,7 +30,7 @@ public class MSFNetTransportProvider
     this.mServiceNameMap.put("SecCheckSigSvc.UploadReq", "sig_check");
   }
   
-  public bcwy getCodec(String paramString)
+  public bcxn getCodec(String paramString)
   {
     if (this.mCodecMap == null) {
       this.mCodecMap = new LinkedHashMap();
@@ -38,7 +38,7 @@ public class MSFNetTransportProvider
     Object localObject2;
     if (this.mCodecMap.containsKey(paramString))
     {
-      localObject2 = (bcwy)this.mCodecMap.get(paramString);
+      localObject2 = (bcxn)this.mCodecMap.get(paramString);
       return localObject2;
     }
     Object localObject1;
@@ -73,7 +73,7 @@ public class MSFNetTransportProvider
     }
   }
   
-  public Class<? extends ajtg> observerClass()
+  public Class<? extends ajte> observerClass()
   {
     return null;
   }
@@ -97,7 +97,7 @@ public class MSFNetTransportProvider
         } while (!this.mServiceNameMap.containsKey(paramObject));
         paramObject = (String)this.mServiceNameMap.get(paramObject);
       } while (!this.mEventListenerMap.containsKey(paramObject));
-      paramObject = (bcwz)this.mEventListenerMap.get(paramObject);
+      paramObject = (bcxo)this.mEventListenerMap.get(paramObject);
     } while (paramObject == null);
     paramObject.a(paramToServiceMsg, paramFromServiceMsg);
   }
@@ -110,16 +110,16 @@ public class MSFNetTransportProvider
     return 0;
   }
   
-  public void setNetTransportEventListener(String paramString, bcwz parambcwz)
+  public void setNetTransportEventListener(String paramString, bcxo parambcxo)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (parambcwz == null) {
+    while (parambcxo == null) {
       return;
     }
     if (this.mEventListenerMap == null) {
       this.mEventListenerMap = new LinkedHashMap();
     }
-    this.mEventListenerMap.put(paramString, parambcwz);
+    this.mEventListenerMap.put(paramString, parambcxo);
   }
 }
 

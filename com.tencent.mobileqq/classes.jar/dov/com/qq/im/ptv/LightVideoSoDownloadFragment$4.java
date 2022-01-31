@@ -1,8 +1,8 @@
 package dov.com.qq.im.ptv;
 
-import bbgg;
-import bjox;
-import bjoy;
+import bbgu;
+import bjpo;
+import bjpp;
 
 public class LightVideoSoDownloadFragment$4
   implements Runnable
@@ -11,9 +11,9 @@ public class LightVideoSoDownloadFragment$4
   
   public void run()
   {
-    bjox localbjox = new bjox(this);
-    bjoy localbjoy = new bjoy(this);
-    bbgg.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbjox, localbjox, localbjoy);
+    bjpo localbjpo = new bjpo(this);
+    bjpp localbjpp = new bjpp(this);
+    bbgu.showPermissionSettingDialog(this.this$0.getActivity(), null, this.a, localbjpo, localbjpo, localbjpp);
   }
 }
 

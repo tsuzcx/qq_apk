@@ -1,23 +1,12 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-public class aieq
-  implements DialogInterface.OnClickListener
+public abstract interface aieq
 {
-  public aieq(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  public abstract void a(ResultRecord paramResultRecord, boolean paramBoolean);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ((akhq)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
-    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(String paramString);
 }
 
 

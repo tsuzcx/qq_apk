@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config;
 
-import ahfq;
+import ahfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpringFestivalRedpacketConfigManager$1
   implements Runnable
 {
-  public SpringFestivalRedpacketConfigManager$1(ahfq paramahfq) {}
+  public SpringFestivalRedpacketConfigManager$1(ahfo paramahfo) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class SpringFestivalRedpacketConfigManager$1
       }
       else
       {
-        ahfq.a(this.this$0, localSpringFestivalRedpacketConfBean.htmlOfflineCheckConfig, this.this$0.b(), this.this$0.a());
+        ahfo.a(this.this$0, localSpringFestivalRedpacketConfBean.htmlOfflineCheckConfig, this.this$0.b(), this.this$0.a());
         return;
       }
     }

@@ -1,17 +1,29 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class avyn
-  implements avyo
+  implements Handler.Callback
 {
-  public void a()
-  {
-    veg.b("FlowEdit_NeoVideoFilterPlayView", "onResetAndStart");
-  }
+  public avyn(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean handleMessage(Message paramMessage)
   {
-    veg.a("FlowEdit_NeoVideoFilterPlayView", "onSpeedChange, old=%d, new=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (!NeoVideoFilterPlayView.a(this.a))
+    {
+      this.a.requestRender();
+      return true;
+    }
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    ved.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
-  
-  public void a(long paramLong) {}
 }
 
 

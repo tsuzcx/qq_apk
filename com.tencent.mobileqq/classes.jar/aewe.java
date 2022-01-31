@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract class aewe
-  implements aewi
+public abstract interface aewe
 {
-  protected QQAppInterface a;
+  public abstract int a();
   
-  public aewe(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
-  }
+  public abstract int b();
   
-  public void a() {}
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return aexd.a(paramQQAppInterface).a(paramString);
-  }
+  public abstract int c();
 }
 
 

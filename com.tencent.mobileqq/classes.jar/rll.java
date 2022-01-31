@@ -1,17 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastShareBottomCreator.ViewHolder.ShareCallBack.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class rll
-  implements ViewBase.OnClickListener
+public class rll
+  extends pah
 {
-  rll(rlk paramrlk) {}
+  public ArticleInfo a;
   
-  public void onClick(ViewBase paramViewBase)
+  public rll(rlk paramrlk, ArticleInfo paramArticleInfo)
   {
-    rlh.a(true);
-    rnr.a(this.a.a.a, "0X800974B");
-    onk.a(rlj.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, rmx paramrmx)
+  {
+    super.a(paramBoolean, paramInt, paramrmx);
+    if ((paramBoolean) && (paramrmx != null) && (!TextUtils.isEmpty(paramrmx.a(paramInt)))) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ThreadManager.getUIHandler().post(new WebFastShareBottomCreator.ViewHolder.ShareCallBack.1(this, paramBoolean, paramInt, paramrmx));
+      return;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.av.camera;
 
 import android.content.Context;
-import bcpw;
+import bcql;
 
 public final class QavCameraUsage$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class QavCameraUsage$1
   
   public void run()
   {
-    bcpw.a(this.a, this.a.getString(2131695723), 0).a();
+    bcql.a(this.a, this.a.getString(2131695724), 0).a();
   }
 }
 

@@ -7,7 +7,10 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({java.lang.annotation.ElementType.FIELD})
-public @interface aulv {}
+public @interface aulv
+{
+  int a() default 0;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

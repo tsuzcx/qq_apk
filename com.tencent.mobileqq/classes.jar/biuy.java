@@ -1,8 +1,15 @@
-public abstract interface biuy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class biuy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  biuy(biur parambiur) {}
   
-  public abstract void a(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    biur.a(this.a).dismiss();
+  }
 }
 
 

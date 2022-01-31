@@ -1,18 +1,18 @@
 package cooperation.qzone.webviewplugin;
 
-import bhkl;
-import bhkn;
-import bhsv;
+import bhlc;
+import bhle;
+import bhtm;
 import java.util.ArrayList;
 
 public class QzoneVideoTabJsPlugin$2
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$2(bhsv parambhsv, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public QzoneVideoTabJsPlugin$2(bhtm parambhtm, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    bhkl.a().a().a(this.a, this.b);
+    bhlc.a().a().a(this.a, this.b);
   }
 }
 

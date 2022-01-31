@@ -1,48 +1,94 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
-import com.tencent.mobileqq.hiboom.RichTextPanelView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.etrump.mixlayout.EMEmoticon;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
 
 public class aqxy
-  extends PagerAdapter
+  extends Handler
 {
-  public aqxy(RichTextPanel paramRichTextPanel) {}
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return RichTextPanel.a(this.a).size();
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
+    aqxx localaqxx = (aqxx)paramMessage.obj;
+    if (localaqxx == null) {}
+    label277:
+    label299:
+    label322:
+    label344:
+    label377:
+    label380:
+    label381:
+    for (;;)
+    {
+      return;
+      HiBoomTextView localHiBoomTextView = (HiBoomTextView)aqxx.a(localaqxx).get();
+      if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null)) {
+        switch (paramMessage.what)
+        {
+        case 258: 
+        default: 
+          return;
+        case 257: 
+          if ((localHiBoomTextView.getVisibility() == 0) && (HiBoomTextView.jdField_a_of_type_AndroidOsHandler != null))
+          {
+            HiBoomTextView.jdField_a_of_type_AndroidOsHandler.obtainMessage(258, aqxx.a(localHiBoomTextView)).sendToTarget();
+            return;
+          }
+          break;
+        case 259: 
+          if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null) && (localHiBoomTextView.getVisibility() == 0) && (localaqxx != null) && (HiBoomTextView.a(localHiBoomTextView) == aqxx.a(localaqxx)) && (localHiBoomTextView.jdField_a_of_type_Aqxw.a() == aqxx.a(localaqxx)) && (HiBoomTextView.a(localHiBoomTextView).currentFrameIndex() == aqxx.b(localaqxx)) && (HiBoomTextView.a(localHiBoomTextView) != null) && (HiBoomTextView.a(localHiBoomTextView).equals(aqxx.a(localaqxx))))
+          {
+            localHiBoomTextView.invalidate();
+            boolean bool;
+            int i;
+            if ((HiBoomTextView.b(localHiBoomTextView)) && (!HiBoomTextView.c(localHiBoomTextView)) && (HiBoomTextView.c()))
+            {
+              bool = true;
+              if (!bool) {
+                break label380;
+              }
+              paramMessage = HiBoomTextView.a(localHiBoomTextView);
+              if (!paramMessage.nextFrame()) {
+                break label344;
+              }
+              i = paramMessage.getFrameDelay();
+              long l = System.currentTimeMillis() - aqxx.b(localaqxx);
+              if (l <= 0L) {
+                break label377;
+              }
+              i = (int)(i - l);
+              if (i > 1) {
+                break label322;
+              }
+              sendMessage(obtainMessage(257, aqxx.a(localHiBoomTextView)));
+              bool = true;
+            }
+            for (;;)
+            {
+              if (localHiBoomTextView.d()) {
+                break label381;
+              }
+              HiBoomTextView.b(localHiBoomTextView, bool);
+              return;
+              bool = false;
+              break;
+              sendMessageDelayed(obtainMessage(257, aqxx.a(localHiBoomTextView)), i);
+              break label299;
+              HiBoomTextView.a(localHiBoomTextView, true);
+              HiBoomTextView.b(localHiBoomTextView, false);
+              if (localHiBoomTextView.d()) {
+                localHiBoomTextView.a(true);
+              }
+              bool = false;
+              continue;
+              break label277;
+            }
+          }
+          break;
+        }
+      }
     }
-    ViewParent localViewParent = ((RichTextPanelView)RichTextPanel.a(this.a).get(paramInt)).getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).removeView((View)RichTextPanel.a(this.a).get(paramInt));
-    }
-    paramViewGroup.addView((View)RichTextPanel.a(this.a).get(paramInt));
-    return RichTextPanel.a(this.a).get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 

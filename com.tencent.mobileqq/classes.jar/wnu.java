@@ -1,10 +1,21 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface wnu
+class wnu
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  wnu(wns paramwns, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
+  public void onClick(View paramView)
+  {
+    if (wni.a(this.jdField_a_of_type_Wns.a) != null)
+    {
+      wni.a(this.jdField_a_of_type_Wns.a, wni.a(this.jdField_a_of_type_Wns.a).a(wni.a(this.jdField_a_of_type_Wns.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
+      wni.c(this.jdField_a_of_type_Wns.a, true);
+    }
+    wni.a(this.jdField_a_of_type_Wns.a).dismiss();
+  }
 }
 
 

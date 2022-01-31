@@ -1,47 +1,91 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.vfs.CancellationSignalCompat;
+import com.tencent.mm.vfs.StatisticsCallback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
 
-final class bbvi
-  implements TVK_SDKMgr.OnLogListener
+public class bbvi
+  implements StatisticsCallback
 {
-  public int d(String paramString1, String paramString2)
+  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static boolean jdField_a_of_type_Boolean;
+  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
+  
+  private void a(Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    axpu.a(paramThrowable);
   }
   
-  public int e(String paramString1, String paramString2)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    try
+    {
+      jdField_a_of_type_Boolean = true;
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator2.hasNext())
+      {
+        Map localMap = (Map)localIterator2.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
+        }
+        axrn.a(BaseApplicationImpl.getContext()).a(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
+      }
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
     }
-    return 0;
+    catch (Exception localException)
+    {
+      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
+      return;
+    }
+    Iterator localIterator1 = b.iterator();
+    while (localIterator1.hasNext()) {
+      a((Throwable)localIterator1.next());
+    }
+    b.clear();
   }
   
-  public int i(String paramString1, String paramString2)
+  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
+  
+  public void reportError(Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    if (jdField_a_of_type_Boolean)
+    {
+      a(paramThrowable);
+      return;
     }
-    return 0;
+    b.add(paramThrowable);
   }
   
-  public int v(String paramString1, String paramString2)
+  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    if (paramMap != null) {
+      try
+      {
+        paramMap.put("id", paramString);
+        paramMap.put("phase", String.valueOf(paramInt));
+        if (jdField_a_of_type_Boolean)
+        {
+          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          axrn.a(BaseApplicationImpl.getContext()).a(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
+          return;
+          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
+      }
     }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
   }
 }
 

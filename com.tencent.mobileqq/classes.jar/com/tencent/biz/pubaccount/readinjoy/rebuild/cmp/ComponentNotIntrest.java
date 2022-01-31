@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import onk;
-import pax;
-import pqs;
-import prb;
-import pvb;
+import onh;
+import pau;
+import pqp;
+import pqy;
+import puy;
 
 public class ComponentNotIntrest
   extends FrameLayout
-  implements View.OnClickListener, pqs
+  implements View.OnClickListener, pqp
 {
   public View a;
-  pvb a;
+  puy a;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Pvb = new pvb();
+    this.jdField_a_of_type_Puy = new puy();
     a(paramContext);
     a();
   }
@@ -52,42 +52,42 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559881, this, true).findViewById(2131378620);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559881, this, true).findViewById(2131378625);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      this.jdField_a_of_type_Pvb.a((pax)paramObject);
+      this.jdField_a_of_type_Puy.a((pau)paramObject);
       b();
     }
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
-    this.jdField_a_of_type_Pvb.a(paramprb);
+    this.jdField_a_of_type_Puy.a(parampqy);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Pvb.a())
+    if (this.jdField_a_of_type_Puy.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(actn.a(5.0F, getResources()), actn.a(5.0F, getResources()), actn.a(5.0F, getResources()), actn.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(actj.a(5.0F, getResources()), actj.a(5.0F, getResources()), actj.a(5.0F, getResources()), actj.a(5.0F, getResources()));
       return;
     }
-    if (onk.l(this.jdField_a_of_type_Pvb.jdField_a_of_type_Pax.a()))
+    if (onh.l(this.jdField_a_of_type_Puy.jdField_a_of_type_Pau.a()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(actn.a(5.0F, getResources()), actn.a(5.0F, getResources()), actn.a(9.0F, getResources()), actn.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(actj.a(5.0F, getResources()), actj.a(5.0F, getResources()), actj.a(9.0F, getResources()), actj.a(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(actn.a(12.0F, getResources()), actn.a(9.0F, getResources()), actn.a(12.0F, getResources()), actn.a(9.0F, getResources()));
+    this.jdField_a_of_type_AndroidViewView.setPadding(actj.a(12.0F, getResources()), actj.a(9.0F, getResources()), actj.a(12.0F, getResources()), actj.a(9.0F, getResources()));
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Pvb.jdField_a_of_type_Prb != null) {
-      this.jdField_a_of_type_Pvb.jdField_a_of_type_Prb.a(paramView, null);
+    if (this.jdField_a_of_type_Puy.jdField_a_of_type_Pqy != null) {
+      this.jdField_a_of_type_Puy.jdField_a_of_type_Pqy.a(paramView, null);
     }
   }
 }

@@ -1,67 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amgm
-  extends ampb<amgl>
 {
-  public static amgl a()
+  public static final int a(int paramInt)
   {
-    return (amgl)ampm.a().a(549);
-  }
-  
-  public int a()
-  {
-    return 549;
-  }
-  
-  @NonNull
-  public amgl a(int paramInt)
-  {
-    return new amgl();
-  }
-  
-  @Nullable
-  public amgl a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    switch (paramInt)
     {
-      amgl localamgl = amgl.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      }
-      return localamgl;
+    default: 
+      return 0;
+    case 16842752: 
+      return 3;
+    case 16908288: 
+      return 1;
+    case 17039360: 
+      return 2;
+    case 16908290: 
+      return 4;
+    case 16908289: 
+      return 5;
+    case 16973824: 
+      return 6;
+    case 17104896: 
+      return 7;
+    case 16908292: 
+      return 8;
+    case 16908291: 
+      return 9;
     }
-    return null;
+    return 10;
   }
   
-  public Class a()
+  public static int b(int paramInt)
   {
-    return amgl.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 16908288: 
+      return 1;
+    case 17039360: 
+      return 2;
+    case 16908290: 
+      return 3;
+    case 16908289: 
+      return 4;
     }
-  }
-  
-  public void a(amgl paramamgl) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return 5;
   }
 }
 

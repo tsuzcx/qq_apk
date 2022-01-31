@@ -1,34 +1,17 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
 
-public class aznd
-  extends akhu
+class aznd
 {
-  public aznd(TroopAioKeywordTipManager.2 param2) {}
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public URLThemeImageView a;
+  public TextView b;
   
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
-  {
-    SparseArray localSparseArray;
-    if (paramBoolean)
-    {
-      localSparseArray = this.a.this$0.b;
-      if (paramList != null) {
-        try
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
-            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
-          }
-        }
-        finally {}
-      }
-    }
-  }
+  aznd(azmw paramazmw) {}
 }
 
 

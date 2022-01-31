@@ -1,32 +1,22 @@
 public class axnb
 {
-  axmy jdField_a_of_type_Axmy;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private axna a = new axna();
   
-  public axnb(String paramString, axmy paramaxmy)
+  public axna a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = ("lib" + paramString + ".so");
-    if (paramaxmy != null)
-    {
-      this.jdField_a_of_type_Axmy = paramaxmy;
-      return;
-    }
-    this.jdField_a_of_type_Axmy = new axmz().a();
+    return this.a;
   }
   
-  public boolean a(axnb paramaxnb)
+  public axnb a(String paramString)
   {
-    if (!ahiy.c(paramaxnb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-      return false;
-    }
-    return this.jdField_a_of_type_Axmy.a(paramaxnb.jdField_a_of_type_Axmy);
+    this.a.a = paramString;
+    return this;
   }
   
-  public String toString()
+  public axnb a(boolean paramBoolean)
   {
-    return "LoadItem{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", lops=" + this.jdField_a_of_type_Axmy + '}';
+    this.a.b = paramBoolean;
+    return this;
   }
 }
 

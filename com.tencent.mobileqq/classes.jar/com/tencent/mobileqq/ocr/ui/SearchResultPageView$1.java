@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import audc;
+import aude;
 import com.tencent.widget.XListView;
 
 public class SearchResultPageView$1
   implements Runnable
 {
-  public SearchResultPageView$1(audc paramaudc) {}
+  public SearchResultPageView$1(aude paramaude) {}
   
   public void run()
   {

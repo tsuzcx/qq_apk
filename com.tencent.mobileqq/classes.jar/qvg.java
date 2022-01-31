@@ -1,12 +1,6 @@
-class qvg
-  implements rcb
+public abstract interface qvg
 {
-  qvg(qvd paramqvd) {}
-  
-  public void a()
-  {
-    this.a.e();
-  }
+  public abstract void a(qtv paramqtv, int paramInt1, int paramInt2);
 }
 
 

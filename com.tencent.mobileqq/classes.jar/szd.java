@@ -1,31 +1,42 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class szd
+public final class szd
+  extends MSFServlet
 {
-  public int a;
-  public final long a;
-  public final String a;
-  public final String b;
-  
-  public boolean equals(Object paramObject)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramObject instanceof szd)) {
-      return TextUtils.equals(((szd)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    if (paramIntent == null) {
+      return;
     }
-    return false;
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramIntent = bbma.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
+    }
+    for (;;)
+    {
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
   }
   
-  public String toString()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append("\n");
-    localStringBuilder.append("-t ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("  -dt ");
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bbma.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 

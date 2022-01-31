@@ -1,33 +1,26 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class acao
-  implements aioe
+  implements TextWatcher
 {
-  public acao(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public acao(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramEditable);
+    }
   }
   
-  public void a(String paramString) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(List<MayKnowRecommend> paramList) {}
-  
-  public void b()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acao
  * JD-Core Version:    0.7.0.1
  */

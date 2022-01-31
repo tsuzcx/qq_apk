@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class aglk
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   public aglk(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.b) {
-      axqw.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    this.a.finish();
-    bbbj.a(this.a, true, false);
+    this.a.a = null;
   }
 }
 

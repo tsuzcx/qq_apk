@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.mobileqq.fragment.QUSDebugFragment;
 
-class aqji
+public class aqji
   implements View.OnClickListener
 {
-  aqji(aqjh paramaqjh, String paramString, View paramView) {}
+  public aqji(QUSDebugFragment paramQUSDebugFragment) {}
   
   public void onClick(View paramView)
   {
-    SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqjh.a.getActivity(), this.jdField_a_of_type_AndroidViewView);
+    new bcuz(this.a.getActivity()).show();
   }
 }
 

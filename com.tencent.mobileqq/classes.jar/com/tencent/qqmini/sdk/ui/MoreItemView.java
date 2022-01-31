@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import besl;
+import betc;
 
 public class MoreItemView
   extends LinearLayout
@@ -24,8 +24,8 @@ public class MoreItemView
   private void a()
   {
     View localView = inflate(getContext(), 2131559306, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370419));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370421));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370418));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370420));
   }
   
   public int a()
@@ -37,12 +37,12 @@ public class MoreItemView
   {
     if (paramMoreItem == null)
     {
-      besl.c("MoreItemView", "bind. Failed to bind data. MoreItem is null");
+      betc.c("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
     if ((paramMoreItem.b == 0) || (paramMoreItem.jdField_a_of_type_JavaLangString == null))
     {
-      besl.c("MoreItemView", "bind. Failed to bind data. MoreItem is null");
+      betc.c("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
     this.jdField_a_of_type_Int = paramMoreItem.jdField_a_of_type_Int;

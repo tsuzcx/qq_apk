@@ -1,13 +1,19 @@
-import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 class bikv
-  implements bild
+  implements bjkd
 {
-  bikv(biku parambiku) {}
+  bikv(bikt parambikt) {}
   
-  public void a(int paramInt, AEFilterManager paramAEFilterManager)
+  public void a()
   {
-    this.a.a(paramInt, paramAEFilterManager);
+    bikt.a(this.a).setTouchEnable(true);
+  }
+  
+  public void b()
+  {
+    bikt.a(this.a).o();
+    bikt.a(this.a).setTouchEnable(true);
   }
 }
 

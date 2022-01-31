@@ -1,67 +1,245 @@
+import android.app.PendingIntent;
 import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.support.v4.app.NotificationCompat.BigTextStyle;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.notification.StoryMsgNotification.2;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import mqq.app.MobileQQ;
 
 public class tsd
 {
-  public static void a(Context paramContext, String paramString, tsf paramtsf, bcpq parambcpq)
+  public static SparseArray<StoryPushMsg> a;
+  public static final SparseIntArray a;
+  public static final String a;
+  private static tsd jdField_a_of_type_Tsd;
+  public static final String b;
+  private ArrayList<URLDrawable> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  static
   {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambcpq, paramContext, paramtsf));
+    jdField_a_of_type_JavaLangString = ssf.jdField_a_of_type_JavaLangString + ajya.a(2131714539);
+    jdField_b_of_type_JavaLangString = ssf.jdField_a_of_type_JavaLangString + ajya.a(2131714540);
+    jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 246);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(2, 246);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(3, 247);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(4, 248);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(5, 249);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(6, 250);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(7, 251);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(8, 252);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(9, 253);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(10, 254);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(11, 255);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(12, 246);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(13, 246);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(37, 247);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(38, 256);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(39, 257);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(40, 247);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(41, 258);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(42, 259);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(47, 260);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(46, 261);
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public static tsd a()
   {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
+    if (jdField_a_of_type_Tsd == null) {
+      jdField_a_of_type_Tsd = new tsd();
     }
+    return jdField_a_of_type_Tsd;
   }
   
-  public static void a(HashMap<String, String> paramHashMap)
+  protected int a(int paramInt)
   {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
+    int i;
+    if ((paramInt != 1) && (paramInt != 12))
     {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      i = paramInt;
+      if (paramInt != 13) {}
+    }
+    else
+    {
+      i = 2;
+    }
+    return i;
+  }
+  
+  protected String a(StoryPushMsg paramStoryPushMsg)
+  {
+    String str = jdField_a_of_type_JavaLangString;
+    int i = a(paramStoryPushMsg.jdField_a_of_type_Int);
+    int j = b(i);
+    switch (i)
+    {
+    }
+    do
+    {
+      do
       {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
+        return str;
+        if (j > 100) {
+          return String.format(jdField_b_of_type_JavaLangString, new Object[] { "99+" });
         }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
+      } while (j <= 1);
+      return String.format(jdField_b_of_type_JavaLangString, new Object[] { String.valueOf(j) });
+    } while (TextUtils.isEmpty(paramStoryPushMsg.h));
+    return paramStoryPushMsg.h;
+  }
+  
+  public void a(Context paramContext)
+  {
+    ThreadManager.post(new StoryMsgNotification.2(this), 8, null, true);
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    int i = a(paramInt);
+    jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+    QQNotificationManager.getInstance().cancel("StoryMsgNotification", jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.protocol", 2, "readPushMsgs type = " + paramInt);
+    }
+  }
+  
+  protected void a(StoryPushMsg paramStoryPushMsg)
+  {
+    if (paramStoryPushMsg == null) {}
+    tdl localtdl;
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = a(paramStoryPushMsg.jdField_a_of_type_Int);
+        paramStoryPushMsg.jdField_b_of_type_Int = (b(i) + 1);
+        jdField_a_of_type_AndroidUtilSparseArray.put(i, paramStoryPushMsg);
+      } while (i != 3);
+      localtdl = (tdl)tcz.a(2);
+    } while (localtdl.b(paramStoryPushMsg.a()) != null);
+    QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+    localQQUserUIItem.uid = paramStoryPushMsg.a();
+    localQQUserUIItem.setUnionId(paramStoryPushMsg.c);
+    localtdl.a(localQQUserUIItem);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, StoryPushMsg paramStoryPushMsg)
+  {
+    if ((paramQQAppInterface == null) || (paramStoryPushMsg == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = jdField_a_of_type_AndroidUtilSparseIntArray.get(paramStoryPushMsg.jdField_a_of_type_Int);
+    } while (i == 0);
+    a(paramStoryPushMsg);
+    Object localObject1 = "";
+    if ((paramStoryPushMsg.jdField_a_of_type_Int == 3) || (paramStoryPushMsg.jdField_a_of_type_Int == 9)) {
+      localObject1 = String.valueOf(paramStoryPushMsg.jdField_a_of_type_Long);
+    }
+    if (TextUtils.isEmpty(paramStoryPushMsg.jdField_a_of_type_JavaLangString)) {}
+    for (Object localObject2 = "9999";; localObject2 = paramStoryPushMsg.jdField_a_of_type_JavaLangString)
+    {
+      vei.a("notice_msg", "push_suc_all", 0, 0, new String[] { localObject2, localObject1, "", "" });
+      if (!tsf.a(paramQQAppInterface)) {
+        break label139;
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("Q.qqstory.protocol", 2, "showQQStoryMsgNotification QQIsForeground return--------");
+      return;
     }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
+    label139:
+    if (TextUtils.isEmpty(paramStoryPushMsg.jdField_a_of_type_JavaLangString)) {}
+    NotificationCompat.Builder localBuilder;
+    for (localObject2 = "9999";; localObject2 = paramStoryPushMsg.jdField_a_of_type_JavaLangString)
+    {
+      vei.a("notice_msg", "push_suc", 0, 0, new String[] { localObject2, localObject1, "", "" });
+      tsf.a(paramInt, paramQQAppInterface);
+      String str = a(paramStoryPushMsg);
+      localObject2 = paramStoryPushMsg.jdField_b_of_type_JavaLangString;
+      if (QLog.isColorLevel()) {
+        QLog.w("zivonchen", 2, "showQQStoryMsgNotification line1 = " + str + ", line2 = " + (String)localObject2);
+      }
+      localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
+      localObject1 = localObject2;
+      if (aylc.a((String)localObject2)) {
+        localObject1 = new ayku(axau.b((String)localObject2), 3, 16).a();
+      }
+      localBuilder.setSmallIcon(2130841012).setWhen(System.currentTimeMillis()).setContentTitle(str).setContentText((CharSequence)localObject1).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText((CharSequence)localObject1));
+      if (TextUtils.isEmpty(paramStoryPushMsg.g)) {
+        break label511;
+      }
+      localObject1 = URLDrawable.URLDrawableOptions.obtain();
+      localObject1 = URLDrawable.getDrawable(paramStoryPushMsg.g, (URLDrawable.URLDrawableOptions)localObject1);
+      ((URLDrawable)localObject1).setURLDrawableListener(new tse(this, localBuilder, paramQQAppInterface, paramStoryPushMsg, i));
+      if (((URLDrawable)localObject1).getStatus() != 1) {
+        break;
+      }
+      localObject1 = bbef.a(((URLDrawable)localObject1).getCurrDrawable(), 200, 200);
+      localObject2 = nam.b((Bitmap)localObject1, 1);
+      localBuilder.setLargeIcon((Bitmap)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + ((Bitmap)localObject2).getHeight() + ", " + ((Bitmap)localObject2).getWidth());
+      }
+      a(paramQQAppInterface, paramStoryPushMsg, i, localBuilder);
+      ((Bitmap)localObject1).recycle();
+      return;
     }
+    ((URLDrawable)localObject1).startDownload();
+    this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+    return;
+    label511:
+    a(paramQQAppInterface, paramStoryPushMsg, i, localBuilder);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt, NotificationCompat.Builder paramBuilder)
+  {
+    Intent localIntent1 = new Intent("com.tencent.biz.qqstory.notification.qqstory_jump_activity_notify");
+    localIntent1.putExtra("storyPushMsg", paramStoryPushMsg);
+    localIntent1.setPackage(MobileQQ.getContext().getPackageName());
+    localIntent1.putExtra("param_notifyid", paramInt);
+    paramBuilder.setContentIntent(PendingIntent.getBroadcast(paramQQAppInterface.getApp(), paramInt, localIntent1, 1207959552));
+    paramBuilder = paramBuilder.build();
+    paramBuilder.flags = 16;
+    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+    Intent localIntent2 = new Intent("com.tencent.biz.qqstory.notification.qqstory_delete_notify");
+    localIntent1.putExtra("param_notifyid", paramInt);
+    localIntent2.setPackage(MobileQQ.getContext().getPackageName());
+    localIntent2.putExtra("push_type", paramStoryPushMsg.jdField_a_of_type_Int);
+    paramBuilder.deleteIntent = PendingIntent.getBroadcast(paramQQAppInterface.getApp(), paramInt, localIntent2, 134217728);
+    bfnb.a(paramQQAppInterface.getApp(), 0, paramBuilder);
+    localQQNotificationManager.notify("StoryMsgNotification", paramInt, paramBuilder);
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.protocol", 2, "showQQStoryMsgNotification pushMsg: " + paramStoryPushMsg);
+    }
+  }
+  
+  public int b(int paramInt)
+  {
+    StoryPushMsg localStoryPushMsg = (StoryPushMsg)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localStoryPushMsg == null) {
+      return 0;
+    }
+    return localStoryPushMsg.jdField_b_of_type_Int;
   }
 }
 

@@ -1,9 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.6;
-import com.tencent.qphone.base.util.QLog;
 
 public class aloi
   implements DialogInterface.OnClickListener
@@ -12,26 +9,10 @@ public class aloi
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    alob.a(this.a.this$0, true);
-    biby.a().b(this.a.jdField_a_of_type_Int, this.a.b);
-    axqw.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
-    if ((paramDialogInterface instanceof bbgg))
-    {
-      if (!((bbgg)paramDialogInterface).getCheckBoxState()) {
-        bool = true;
-      }
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool).apply();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("ark.download.module", 1, "continue download sp error : ", paramDialogInterface);
-    }
+    axqy.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
   }
 }
 

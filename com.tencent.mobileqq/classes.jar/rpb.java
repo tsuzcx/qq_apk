@@ -1,248 +1,185 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class rpb
-  extends Drawable
-  implements Sizeable, URLDrawable.URLDrawableListener, pbj
 {
-  private static String jdField_a_of_type_JavaLangString = "AggregateAvatarUrlDrawable";
-  private final float jdField_a_of_type_Float = 0.48F;
+  protected static final Comparator<byte[]> a;
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private int jdField_b_of_type_Int = 1;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private Bitmap c;
-  private volatile Bitmap d;
+  private List<byte[]> jdField_a_of_type_JavaUtilList = new ArrayList(64);
+  private final int b;
   
-  public rpb(Bitmap paramBitmap, int paramInt1, Resources paramResources, String paramString, int paramInt2)
+  static
   {
-    a(paramBitmap, paramInt1, paramResources, paramInt2);
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_AndroidContentResResources = paramResources;
-      try
-      {
-        this.jdField_a_of_type_Long = Long.parseLong(paramString);
-        if (this.jdField_a_of_type_Long <= 0L) {
-          continue;
-        }
-        paramBitmap = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this);
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "[AggregateAvatarUrlDrawable] load aggregate avatar from 0xb81 userinfo success, uin:" + this.jdField_a_of_type_Long);
-        if (paramBitmap == null) {
-          continue;
-        }
-        a(ReadInJoyUserInfoModule.a(paramBitmap));
-        return;
-      }
-      catch (NumberFormatException paramBitmap)
-      {
-        for (;;)
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, paramBitmap.getMessage());
-        }
-      }
-    }
+    jdField_a_of_type_JavaUtilComparator = new rpc();
   }
   
-  public rpb(Bitmap paramBitmap, String paramString, int paramInt1, Resources paramResources, int paramInt2)
+  public rpb(int paramInt)
   {
-    a(paramBitmap, paramInt1, paramResources, paramInt2);
-    a(paramString);
+    this.b = paramInt;
   }
   
-  private void a()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon mode : " + this.jdField_b_of_type_Int);
-    if ((this.d == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "has error !");
-      return;
-    }
-    Bitmap localBitmap3;
-    try
-    {
-      localBitmap3 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844135);
-      if (localBitmap3 == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon: mask is null");
-        return;
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon: ", localOutOfMemoryError);
-      return;
-    }
-    Bitmap localBitmap2;
-    if (this.jdField_b_of_type_Int == 1) {
-      localBitmap2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    for (Bitmap localBitmap1 = this.d;; localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap)
-    {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = bazq.a(localBitmap2, localBitmap3, 0.0F, 1.0F);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int * 0.75F, this.jdField_a_of_type_Int * 0.75F);
-      this.c = localBitmap1;
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, this.c.getWidth(), this.c.getHeight());
-      this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int * 0.52F, this.jdField_a_of_type_Int * 0.52F, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      return;
-      localBitmap2 = this.d;
-    }
-  }
-  
-  private void a(String paramString)
+  private void b()
   {
     try
     {
-      int i = this.jdField_a_of_type_Int;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      float f2 = i;
-      if (this.jdField_b_of_type_Int == 1) {}
-      for (float f1 = 0.52F;; f1 = 0.48F)
+      if (this.jdField_a_of_type_Int > this.b)
       {
-        f1 *= f2;
-        localURLDrawableOptions.mRequestWidth = Math.round(f1);
-        localURLDrawableOptions.mRequestHeight = Math.round(f1);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDecodeHandler(bavi.a);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-        if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
-        {
-          this.d = bbdr.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-          a();
-        }
-        return;
+        byte[] arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.get(0);
+        this.jdField_a_of_type_JavaUtilList.remove(arrayOfByte);
+        this.jdField_a_of_type_Int -= arrayOfByte.length;
       }
       return;
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
     {
-      paramString.printStackTrace();
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-      this.d = null;
-    }
-  }
-  
-  public void a(Bitmap paramBitmap, int paramInt1, Resources paramResources, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-  }
-  
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
+      this.jdField_a_of_type_JavaUtilList.clear();
       return;
     }
-    a(ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadUserInfoFailed");
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    if (this.d != null)
+    finally
     {
-      if ((this.c == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap == null)) {
-        a();
-      }
-      if ((this.c != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != null))
-      {
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawBitmap(this.c, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getByteSize()
-  {
-    return Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888).getByteCount();
-  }
-  
-  public int getOpacity()
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable.getOpacity();
-    }
-    return 0;
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadFailed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadSuccessed");
-    this.d = bbdr.a(paramURLDrawable.getCurrDrawable());
-    a();
-    invalidateSelf();
-  }
-  
-  public void setAlpha(@IntRange(from=0L, to=255L) int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setAlpha(paramInt);
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  /* Error */
+  public void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setColorFilter(paramColorFilter);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +16 -> 19
+    //   6: aload_1
+    //   7: arraylength
+    //   8: istore_2
+    //   9: aload_0
+    //   10: getfield 31	rpb:b	I
+    //   13: istore_3
+    //   14: iload_2
+    //   15: iload_3
+    //   16: if_icmple +6 -> 22
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: getfield 29	rpb:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   26: aload_1
+    //   27: getstatic 20	rpb:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
+    //   30: invokestatic 55	java/util/Collections:binarySearch	(Ljava/util/List;Ljava/lang/Object;Ljava/util/Comparator;)I
+    //   33: istore_3
+    //   34: iload_3
+    //   35: istore_2
+    //   36: iload_3
+    //   37: ifge +8 -> 45
+    //   40: iload_3
+    //   41: ineg
+    //   42: iconst_1
+    //   43: isub
+    //   44: istore_2
+    //   45: aload_0
+    //   46: getfield 29	rpb:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   49: iload_2
+    //   50: aload_1
+    //   51: invokeinterface 59 3 0
+    //   56: aload_0
+    //   57: aload_0
+    //   58: getfield 33	rpb:jdField_a_of_type_Int	I
+    //   61: aload_1
+    //   62: arraylength
+    //   63: iadd
+    //   64: putfield 33	rpb:jdField_a_of_type_Int	I
+    //   67: aload_0
+    //   68: invokespecial 61	rpb:b	()V
+    //   71: goto -52 -> 19
+    //   74: astore_1
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	rpb
+    //   0	79	1	paramArrayOfByte	byte[]
+    //   8	42	2	i	int
+    //   13	28	3	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	14	74	finally
+    //   22	34	74	finally
+    //   45	71	74	finally
+  }
+  
+  /* Error */
+  public byte[] a(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iconst_0
+    //   3: istore_2
+    //   4: iload_2
+    //   5: aload_0
+    //   6: getfield 29	rpb:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   9: invokeinterface 66 1 0
+    //   14: if_icmpge +56 -> 70
+    //   17: aload_0
+    //   18: getfield 29	rpb:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   21: iload_2
+    //   22: invokeinterface 39 2 0
+    //   27: checkcast 41	[B
+    //   30: astore_3
+    //   31: aload_3
+    //   32: arraylength
+    //   33: iload_1
+    //   34: if_icmplt +29 -> 63
+    //   37: aload_0
+    //   38: aload_0
+    //   39: getfield 33	rpb:jdField_a_of_type_Int	I
+    //   42: aload_3
+    //   43: arraylength
+    //   44: isub
+    //   45: putfield 33	rpb:jdField_a_of_type_Int	I
+    //   48: aload_0
+    //   49: getfield 29	rpb:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   52: iload_2
+    //   53: invokeinterface 68 2 0
+    //   58: pop
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_3
+    //   62: areturn
+    //   63: iload_2
+    //   64: iconst_1
+    //   65: iadd
+    //   66: istore_2
+    //   67: goto -63 -> 4
+    //   70: iload_1
+    //   71: newarray byte
+    //   73: astore_3
+    //   74: goto -15 -> 59
+    //   77: astore_3
+    //   78: aload_0
+    //   79: monitorexit
+    //   80: aload_3
+    //   81: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	rpb
+    //   0	82	1	paramInt	int
+    //   3	64	2	i	int
+    //   30	44	3	arrayOfByte	byte[]
+    //   77	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	59	77	finally
+    //   70	74	77	finally
   }
 }
 

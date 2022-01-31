@@ -4,7 +4,7 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 
 public class ef
-  implements bftk
+  implements bfub
 {
   public ef(PrinterActivity paramPrinterActivity) {}
   

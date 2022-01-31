@@ -1,18 +1,44 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class abam
-  implements InputFilter
+  implements View.OnClickListener
 {
   public abam(EditInfoActivity paramEditInfoActivity) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    if (paramCharSequence.toString().contains("\n")) {
-      return paramCharSequence.toString().replace("\n", "");
+    paramView = this.a;
+    if (!this.a.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.e();
+      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837922);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131703642));
+      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      }
+      return;
     }
-    return null;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846988);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131703632));
+    this.a.a();
   }
 }
 

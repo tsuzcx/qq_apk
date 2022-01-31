@@ -1,28 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public final class berd
-  implements Parcelable.Creator<LoginInfo>
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface berd
 {
-  public LoginInfo a(Parcel paramParcel)
-  {
-    LoginInfo localLoginInfo = new LoginInfo();
-    LoginInfo.a(localLoginInfo, paramParcel.readInt());
-    LoginInfo.a(localLoginInfo, paramParcel.readString());
-    LoginInfo.b(localLoginInfo, paramParcel.readString());
-    LoginInfo.c(localLoginInfo, paramParcel.readString());
-    LoginInfo.d(localLoginInfo, paramParcel.readString());
-    LoginInfo.a(localLoginInfo, paramParcel.createByteArray());
-    LoginInfo.e(localLoginInfo, paramParcel.readString());
-    LoginInfo.f(localLoginInfo, paramParcel.readString());
-    return localLoginInfo;
-  }
-  
-  public LoginInfo[] a(int paramInt)
-  {
-    return new LoginInfo[paramInt];
-  }
+  String a();
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abel;
-import ajyc;
-import auuw;
-import bcpw;
+import abeh;
+import ajya;
+import auuy;
+import bcql;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendProfileCardActivity$32$7
   implements Runnable
 {
-  public FriendProfileCardActivity$32$7(abel paramabel) {}
+  public FriendProfileCardActivity$32$7(abeh paramabeh) {}
   
   public void run()
   {
@@ -20,13 +20,13 @@ public class FriendProfileCardActivity$32$7
       this.a.a.n = true;
       if (localPhoneContactManagerImp.b(this.a.a.a.a.k, this.a.a.a.a.a))
       {
-        bcpw.a(this.a.a.getApplicationContext(), 2, ajyc.a(2131704893), 0).a();
+        bcql.a(this.a.a.getApplicationContext(), 2, ajya.a(2131704904), 0).a();
         return;
       }
-      bcpw.a(this.a.a.getApplicationContext(), 1, ajyc.a(2131704923), 0).a();
+      bcql.a(this.a.a.getApplicationContext(), 1, ajya.a(2131704934), 0).a();
       return;
     }
-    bcpw.a(this.a.a.getApplicationContext(), ajyc.a(2131704883), 0).a();
+    bcql.a(this.a.a.getApplicationContext(), ajya.a(2131704894), 0).a();
   }
 }
 

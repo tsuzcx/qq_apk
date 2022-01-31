@@ -1,25 +1,14 @@
-import android.util.Property;
+import android.graphics.Bitmap;
 
 class bkml
-  extends Property<bkmk, Integer>
+  implements alxj
 {
-  bkml(bkmk parambkmk, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bkml(bkmi parambkmi) {}
   
-  public Integer a(bkmk parambkmk)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (parambkmk != null) {
-      return Integer.valueOf(bkmk.a(parambkmk));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bkmk parambkmk, Integer paramInteger)
-  {
-    if (parambkmk != null) {
-      bkmk.a(parambkmk, paramInteger.intValue());
+    if (bkmi.a(this.a) != null) {
+      bkmi.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
     }
   }
 }

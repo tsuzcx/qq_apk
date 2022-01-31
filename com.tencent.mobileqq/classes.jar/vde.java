@@ -1,16 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vde
-  implements uzz
+  extends QQUIEventReceiver<vcp, tce>
 {
-  vde(vcs paramvcs) {}
-  
-  public void a()
+  public vde(@NonNull vcp paramvcp)
   {
-    veg.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
+    super(paramvcp);
+  }
+  
+  public void a(@NonNull vcp paramvcp, @NonNull tce paramtce)
+  {
+    if (paramtce.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      ved.d(this.TAG, "deleted story failed");
+      paramvcp.a(5, paramtce.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    paramvcp.a(paramtce.jdField_a_of_type_JavaLangString);
+    paramvcp.a(new uzy[] { new uzt(uzb.a(vcp.a(paramvcp).a.jdField_a_of_type_JavaLangString)), (uzy)paramvcp.c.a() });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tce.class;
   }
 }
 

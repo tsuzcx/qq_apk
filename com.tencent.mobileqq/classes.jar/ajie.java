@@ -1,6 +1,6 @@
 public abstract interface ajie
 {
-  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

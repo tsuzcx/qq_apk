@@ -14,7 +14,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import qws;
+import qwp;
 
 public class BannerAdapter
   extends BannerView.BannerViewAdapter<DiscoveryBannerInfo, LinearLayout>
@@ -23,7 +23,7 @@ public class BannerAdapter
   private static final String jdField_a_of_type_JavaLangString = BannerAdapter.class.getSimpleName();
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private qws jdField_a_of_type_Qws;
+  private qwp jdField_a_of_type_Qwp;
   private int b;
   
   private void a(LinearLayout paramLinearLayout, int paramInt, DiscoveryBannerInfo paramDiscoveryBannerInfo)
@@ -35,7 +35,7 @@ public class BannerAdapter
       do
       {
         return;
-        paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365232);
+        paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365231);
         localObject = paramLinearLayout.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
         ((ViewGroup.LayoutParams)localObject).height = this.b;
@@ -82,8 +82,8 @@ public class BannerAdapter
     {
       return;
       localObject = paramView.getTag();
-    } while ((localObject == null) || (!(localObject instanceof DiscoveryBannerInfo)) || (this.jdField_a_of_type_Qws == null));
-    this.jdField_a_of_type_Qws.a(paramView, (DiscoveryBannerInfo)localObject);
+    } while ((localObject == null) || (!(localObject instanceof DiscoveryBannerInfo)) || (this.jdField_a_of_type_Qwp == null));
+    this.jdField_a_of_type_Qwp.a(paramView, (DiscoveryBannerInfo)localObject);
   }
 }
 

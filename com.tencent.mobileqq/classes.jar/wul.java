@@ -1,27 +1,6 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
-
-public class wul
-  implements View.OnClickListener
+public abstract interface wul
 {
-  public wul(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (VideoPlayerView.b(this.a)) {
-      VideoPlayerView.c(this.a);
-    }
-    do
-    {
-      return;
-      VideoPlayerView.d(this.a);
-    } while (VideoPlayerView.a(this.a) == null);
-    xhe.b(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).poster.nick.get(), VideoPlayerView.a(this.a).title.get() });
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 

@@ -1,60 +1,95 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.HttpInterface;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdgd
+  implements bdje
 {
-  protected static bdgd a;
-  protected ArrayList<bdiy> a;
+  protected final WebView a;
+  protected final String a;
+  protected final boolean a;
+  protected final String b;
+  protected final String c;
   
-  public static bdgd a()
+  public bdgd(HttpInterface paramHttpInterface, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    try
-    {
-      if (jdField_a_of_type_Bdgd == null)
-      {
-        jdField_a_of_type_Bdgd = new bdgd();
-        jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bdgd localbdgd = jdField_a_of_type_Bdgd;
-      return localbdgd;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(Exception paramException)
+  {
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
     }
-    finally {}
-  }
-  
-  public ArrayList<bdiy> a()
-  {
-    return jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bdiy parambdiy)
-  {
-    int j = jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
+    bdii.c("HttpInterface", "onException >>> ");
+    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    bdgi localbdgi = new bdgi();
+    localbdgi.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    paramException.obj = localbdgi;
+    paramException.arg1 = 0;
+    if (TextUtils.isEmpty(this.b)) {}
+    for (localbdgi.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localbdgi.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
     {
-      if ((bdiy)jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdiy) {
-        return;
-      }
-      i += 1;
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
+      return;
     }
-    jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.add(parambdiy);
   }
   
-  public void b(bdiy parambdiy)
+  public void a(JSONObject paramJSONObject)
   {
-    int j = jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
+    }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    localbdgi = new bdgi();
+    localbdgi.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    localMessage.obj = localbdgi;
+    localMessage.arg1 = 0;
     for (;;)
     {
-      if (i < j)
+      try
       {
-        if ((bdiy)jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdiy) {
-          jdField_a_of_type_Bdgd.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
         }
+        localJSONObject.put("guid", this.c);
+        paramJSONObject = localJSONObject.toString();
+        bdii.a("HttpInterface", "onResult >>> " + paramJSONObject);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          continue;
+        }
+        localbdgi.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
       }
-      else {
-        return;
+      catch (JSONException paramJSONObject)
+      {
+        if (!TextUtils.isEmpty(this.b)) {
+          continue;
+        }
+        localbdgi.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
+        continue;
+        localbdgi.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
+        continue;
       }
-      i += 1;
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
+      return;
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("guid", this.c);
+      paramJSONObject.put("content", localJSONObject.toString());
+      paramJSONObject = paramJSONObject.toString();
+      continue;
+      localbdgi.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
   }
 }

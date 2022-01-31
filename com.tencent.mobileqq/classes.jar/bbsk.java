@@ -1,84 +1,89 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import mqq.app.AppRuntime;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbsk
 {
-  public static File a(Context paramContext)
+  private static bbsk jdField_a_of_type_Bbsk;
+  private final String jdField_a_of_type_JavaLangString = "VipLongMsgShareDomainHelper";
+  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private List<String> b = new CopyOnWriteArrayList();
+  
+  public bbsk()
   {
-    return bbsl.a(paramContext);
+    this.jdField_a_of_type_JavaUtilList.add("vip.qq.com");
   }
   
-  public static String a(Context paramContext)
+  public static bbsk a()
   {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "GLDrawableV828.zip";
-    }
-    return paramContext + File.separator + "GLDrawableV828.zip";
-  }
-  
-  public static void a()
-  {
+    if (jdField_a_of_type_Bbsk == null) {}
     try
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "GLDrawableV828", "GLDrawable");
+      if (jdField_a_of_type_Bbsk == null) {
+        jdField_a_of_type_Bbsk = new bbsk();
       }
-      return;
+      return jdField_a_of_type_Bbsk;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
-  public static void a(Context paramContext, int paramInt)
+  public void a(JSONArray paramJSONArray)
   {
-    if (paramInt == 0) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("VipLongMsgShareDomainHelper", 2, "setConfigData data = " + paramJSONArray);
+    }
+    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
     {
-      File localFile;
-      try
+      int i = 0;
+      for (;;)
       {
-        localFile = a(paramContext);
-        paramContext = a(paramContext);
+        if (i >= paramJSONArray.length()) {
+          return;
+        }
         try
         {
-          String str = localFile.getAbsolutePath() + "_temp";
-          if (new File(str).exists()) {
-            bbdj.a(str, false);
+          Object localObject = paramJSONArray.getJSONObject(i);
+          if (localObject != null)
+          {
+            localObject = ((JSONObject)localObject).optString("domain", "");
+            this.b.add(localObject);
           }
-          bbdj.a(paramContext, str, false);
-          if (localFile.exists()) {
-            bbdj.a(localFile.getAbsolutePath(), false);
-          }
-          bbdj.c(str, localFile.getAbsolutePath());
-          QLog.d("GLDrawable", 1, "unzip succ..." + new File(paramContext).length() + "..." + bdhv.a(paramContext));
         }
-        catch (IOException localIOException)
+        catch (Exception localException)
         {
-          bbsn.a("unzip", localIOException.getMessage());
-          QLog.e("GLDrawable", 1, new Object[] { "unzip error, libDir=" + localFile, " zipPath=" + paramContext, localIOException });
-          continue;
+          for (;;)
+          {
+            QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
+          }
         }
-        return;
+        i += 1;
       }
-      finally {}
-      QLog.e("GLDrawable", 1, "error: " + paramInt);
     }
   }
   
-  public static boolean a(Context paramContext)
+  public boolean a(String paramString)
   {
-    return new File(a(paramContext)).exists();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Object localObject2 = this.b;
+    Object localObject1 = localObject2;
+    if (((List)localObject2).isEmpty()) {
+      localObject1 = this.jdField_a_of_type_JavaUtilList;
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (paramString.endsWith((String)localObject2))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

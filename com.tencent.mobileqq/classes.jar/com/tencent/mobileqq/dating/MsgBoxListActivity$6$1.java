@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.dating;
 
-import ajyc;
-import anmo;
-import bcpw;
+import ajya;
+import anmt;
+import bcql;
 
 public class MsgBoxListActivity$6$1
   implements Runnable
 {
-  public MsgBoxListActivity$6$1(anmo paramanmo, int paramInt) {}
+  public MsgBoxListActivity$6$1(anmt paramanmt, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      bcpw.a(this.jdField_a_of_type_Anmo.a, 2, ajyc.a(2131706933), 1).a();
+      bcql.a(this.jdField_a_of_type_Anmt.a, 2, ajya.a(2131706944), 1).a();
       return;
     }
-    bcpw.a(this.jdField_a_of_type_Anmo.a, 1, ajyc.a(2131706934), 1).a();
+    bcql.a(this.jdField_a_of_type_Anmt.a, 1, ajya.a(2131706945), 1).a();
   }
 }
 

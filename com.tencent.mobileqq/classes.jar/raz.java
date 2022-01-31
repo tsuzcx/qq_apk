@@ -1,18 +1,20 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.widget.AbsListView;
 
 class raz
-  implements PopupWindow.OnDismissListener
+  implements bfos
 {
-  raz(rap paramrap) {}
+  raz(ram paramram) {}
   
-  public void onDismiss()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    rap.a(this.a).a(1.0F);
-    if (this.a.b)
+    switch (paramInt)
     {
-      this.a.a.c();
-      this.a.b = false;
+    default: 
+      return;
     }
+    ram.b(this.a, paramAbsListView);
   }
 }
 

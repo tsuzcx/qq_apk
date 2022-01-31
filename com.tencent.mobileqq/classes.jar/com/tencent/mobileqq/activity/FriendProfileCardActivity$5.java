@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import auuw;
+import auuy;
 
 class FriendProfileCardActivity$5
   implements Runnable

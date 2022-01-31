@@ -1,16 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class akwa
 {
-  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static Object a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
     }
-    switch (paramInt)
-    {
+    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+  }
+  
+  public static byte[] a(Serializable paramSerializable)
+  {
+    if (paramSerializable == null) {
+      return null;
     }
-    return true;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
+    return localByteArrayOutputStream.toByteArray();
   }
 }
 

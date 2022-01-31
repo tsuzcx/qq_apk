@@ -1,6 +1,8 @@
+import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+
 public abstract interface bend
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public abstract void a(NavigationBar paramNavigationBar);
 }
 
 

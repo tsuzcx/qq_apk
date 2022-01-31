@@ -1,108 +1,122 @@
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
-class awxj
-  implements View.OnClickListener
+public class awxj
+  extends awwy
 {
-  awxj(awxi paramawxi) {}
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public ArrayList<awxk> a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void onClick(View paramView)
+  public awxj(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject1 = paramView.getTag(2131376880);
-    Object localObject2 = paramView.getTag(2131376881);
-    Context localContext;
-    Object localObject3;
-    if ((localObject1 != null) && ((localObject1 instanceof String)))
-    {
-      localContext = paramView.getContext();
-      localObject1 = (String)localObject1;
-      localObject3 = paramView.getTag(2131376854);
-      if (!(localObject3 instanceof Integer)) {
-        break label500;
-      }
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  protected void a()
+  {
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365714));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367776));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377350));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376633));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376633));
+    this.d = ((TextView)localView.findViewById(2131365042));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131375279));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368176);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376630));
+  }
+  
+  public void a(awpc paramawpc)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#004080"));
     }
-    label419:
-    label500:
-    for (int i = ((Integer)localObject3).intValue();; i = 0)
+    if ((paramawpc.a == null) || (paramawpc.a.size() == 0))
     {
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = awvv.d(i);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+    int i = 0;
+    label116:
+    awpn localawpn;
+    awxk localawxk;
+    if ((i < paramawpc.a.size()) && (i < 6))
+    {
+      localawpn = (awpn)paramawpc.a.get(i);
+      localawxk = new awxk(this, localContext);
+      if (TextUtils.isEmpty(paramawpc.m)) {
+        break label410;
       }
-      for (localObject1 = awvv.a((String)localObject2, 3, (String)localObject1);; localObject1 = awvv.b((String)localObject1, i))
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = baxn.a(localContext, 16.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = baxn.a(localContext, 16.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "subItemLeftIconUrl";
+      localObject = URLDrawable.getDrawable(paramawpc.m, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setDecodeHandler(bavw.a);
+      localawxk.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      localawxk.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      label279:
+      localawxk.jdField_a_of_type_AndroidViewView.setTag(2131379213, paramawpc);
+      if (TextUtils.isEmpty(localawpn.a)) {
+        break label423;
+      }
+      localawxk.jdField_a_of_type_AndroidWidgetTextView.setText(localawpn.a);
+      localawxk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localawxk.jdField_a_of_type_AndroidViewView.setTag(2131376883, localawpn.a);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(localawpn.b))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NetSearchTemplateNewEntranceView", 2, "open Browser append suffix url = " + (String)localObject1);
-        }
-        if (localObject1 != null) {
-          break;
-        }
-        QLog.e("NetSearchTemplateNewEntranceView", 2, "NetSearchSubView click jumpurl is null");
-        return;
+        localawxk.jdField_a_of_type_AndroidViewView.setTag(2131376882, localawpn.b);
+        localawxk.jdField_a_of_type_AndroidViewView.setTag(2131376856, Integer.valueOf(paramawpc.jdField_c_of_type_Int));
       }
-      awso.a(null, 0, i, "0X8009D5F", 0, 0, null, null);
-      paramView = (awpa)paramView.getTag(2131379208);
-      localObject3 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject3).put("project", awso.a());
-        ((JSONObject)localObject3).put("event_src", "client");
-        ((JSONObject)localObject3).put("experiment_id", awso.b);
-        if (paramView != null)
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list").obj1(paramView.a + "").obj2(paramView.d).ver1(paramView.a()).ver2(awso.a(i));
-          if (localObject2 == null)
-          {
-            paramView = "";
-            awso.a(null, localReportModelDC02528.ver4(paramView).ver7(((JSONObject)localObject3).toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiu.a));
-          }
-        }
-        else
-        {
-          if ((!((String)localObject1).startsWith("https://")) && (!((String)localObject1).startsWith("http://"))) {
-            break label419;
-          }
-          paramView = new Intent(localContext, QQBrowserActivity.class);
-          paramView.putExtra("url", (String)localObject1);
-          localContext.startActivity(paramView);
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("NetSearchTemplateNewEntranceView", 2, "e = " + localJSONException);
-          continue;
-          paramView = localObject2.toString();
-        }
-        if ((localContext instanceof BaseActivity))
-        {
-          paramView = bbej.a(((BaseActivity)localContext).app, localContext, (String)localObject1);
-          if (paramView != null)
-          {
-            paramView.c();
-            return;
-          }
-          localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
-          return;
-        }
-        localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
-        return;
-      }
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localawxk.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localawxk);
+      i += 1;
+      break label116;
+      break;
+      label410:
+      localawxk.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      break label279;
+      label423:
+      localawxk.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
 }

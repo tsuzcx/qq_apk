@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import ajxn;
+import ajxl;
 import com.tencent.mobileqq.data.Card;
 
 class QQSettingSettingActivity$11
   implements Runnable
 {
-  QQSettingSettingActivity$11(QQSettingSettingActivity paramQQSettingSettingActivity, ajxn paramajxn, String paramString) {}
+  QQSettingSettingActivity$11(QQSettingSettingActivity paramQQSettingSettingActivity, ajxl paramajxl, String paramString) {}
   
   public void run()
   {
-    Card localCard = this.jdField_a_of_type_Ajxn.b(this.jdField_a_of_type_JavaLangString);
+    Card localCard = this.jdField_a_of_type_Ajxl.b(this.jdField_a_of_type_JavaLangString);
     this.this$0.runOnUiThread(new QQSettingSettingActivity.11.1(this, localCard));
   }
 }

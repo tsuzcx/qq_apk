@@ -1,22 +1,7 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
-
-class bbog
-  extends anwg
+public class bbog
 {
-  bbog(bboe parambboe) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(257);
-    }
-  }
+  public String a;
+  public String b;
 }
 
 

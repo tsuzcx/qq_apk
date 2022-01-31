@@ -1,21 +1,8 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
-import java.util.concurrent.Future;
-
-class arji
-  implements CustomizedTicket
+public class arji
 {
-  arji(arjh paramarjh) {}
-  
-  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return this.a.a(paramString1, paramString2, paramString3, paramString4);
-  }
-  
-  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
-  {
-    return this.a.a(paramString1, paramString2);
-  }
+  public static int a;
+  public static String a;
+  public static String b;
 }
 
 

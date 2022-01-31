@@ -1,97 +1,56 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amun
+  extends ampa<amum>
 {
-  private long jdField_a_of_type_Long = 2000L;
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = 60000L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = true;
-  private boolean d = false;
-  
-  public static amun a(String paramString)
+  public int a()
   {
-    boolean bool2 = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      amun localamun = new amun();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("useNewLog", 1) == 1)
-      {
-        bool1 = true;
-        localamun.jdField_a_of_type_Boolean = bool1;
-        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
-          break label130;
-        }
-        bool1 = true;
-        label56:
-        localamun.jdField_b_of_type_Boolean = bool1;
-        if (paramString.optInt("enableConsole", 1) != 1) {
-          break label135;
-        }
-        bool1 = true;
-        label74:
-        localamun.c = bool1;
-        if (paramString.optInt("enableCheckPermission", 1) != 1) {
-          break label140;
-        }
-      }
-      label130:
-      label135:
-      label140:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        localamun.d = bool1;
-        localamun.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
-        localamun.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
-        return localamun;
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label56;
-        bool1 = false;
-        break label74;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return 419;
   }
   
-  public long a()
+  @NonNull
+  public amum a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long < 0L) {
-      return 2000L;
-    }
-    return this.jdField_a_of_type_Long;
+    return new amum();
   }
+  
+  @Nullable
+  public amum a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return amum.a(paramArrayOfamph[0].a);
+    }
+    return null;
+  }
+  
+  public Class<amum> a()
+  {
+    return amum.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amum paramamum) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return false;
   }
   
-  public long b()
+  public int b()
   {
-    if (this.jdField_b_of_type_Long < 0L) {
-      return 60000L;
-    }
-    return this.jdField_b_of_type_Long;
+    return 0;
   }
   
   public boolean b()
   {
-    return this.d;
+    return false;
   }
   
-  public String toString()
+  public boolean c()
   {
-    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
+    return true;
   }
 }
 

@@ -1,42 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MainService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.WtloginReporter.1;
 
 public class axsh
 {
-  long a;
-  long b = 0L;
-  
-  public axsh()
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void a()
-  {
-    long l1 = MainService.sReceiverCpuTime;
-    long l2 = aktm.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(aktm.jdField_a_of_type_Int), "]" });
-      this.jdField_a_of_type_Long = l1;
-      this.b = l2;
-      return;
-    }
-    c();
-  }
-  
-  public void b()
-  {
-    c();
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-  }
-  
-  void c()
-  {
-    long l1 = MainService.sReceiverCpuTime;
-    long l2 = aktm.jdField_a_of_type_Long;
-    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.jdField_a_of_type_Long), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(aktm.jdField_a_of_type_Int), "]" });
+    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
   }
 }
 

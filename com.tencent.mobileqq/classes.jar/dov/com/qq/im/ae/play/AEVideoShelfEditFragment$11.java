@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class AEVideoShelfEditFragment$11
@@ -11,7 +11,7 @@ class AEVideoShelfEditFragment$11
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131689805), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131689805), 0).a();
   }
 }
 

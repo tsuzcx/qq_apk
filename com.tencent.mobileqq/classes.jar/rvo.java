@@ -1,68 +1,15 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-public class rvo<T>
+public class rvo
+  implements View.OnClickListener
 {
-  private T jdField_a_of_type_JavaLangObject;
-  private List<rvp<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public rvo(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public rvo(T paramT)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((rvp)localIterator.next()).a(this);
-      }
-    }
-    finally {}
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    a();
-  }
-  
-  public void a(rvp<T> paramrvp)
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramrvp)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramrvp);
-      }
-      return;
-    }
-    finally
-    {
-      paramrvp = finally;
-      throw paramrvp;
-    }
-  }
-  
-  public void b(rvp<T> paramrvp)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramrvp);
-      return;
-    }
-    finally
-    {
-      paramrvp = finally;
-      throw paramrvp;
-    }
+    this.a.a(0, 2);
   }
 }
 

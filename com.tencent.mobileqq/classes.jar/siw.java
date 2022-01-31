@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class siw
-  implements DialogInterface.OnClickListener
+public class siw
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a()
   {
-    paramDialogInterface.dismiss();
+    return "";
   }
 }
 

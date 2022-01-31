@@ -1,32 +1,73 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amwt
+  extends ampa<amws>
 {
-  public int a;
-  
-  public static amwt a(String paramString)
+  public int a()
   {
-    amwt localamwt = new amwt();
-    try
-    {
-      localamwt.a = new JSONObject(paramString).optInt("preloadPskey", 0);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localamwt.toString());
-      return localamwt;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    }
-    return localamwt;
+    return 585;
   }
   
-  public String toString()
+  @NonNull
+  public amws a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
-    return localStringBuilder.toString();
+    return new amws();
+  }
+  
+  @Nullable
+  public amws a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
+    {
+      amws localamws = amws.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localamws;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public Class<amws> a()
+  {
+    return amws.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(amws paramamws)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramamws.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

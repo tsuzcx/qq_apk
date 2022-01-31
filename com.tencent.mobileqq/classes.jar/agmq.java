@@ -1,37 +1,30 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agmq
+  extends Handler
 {
-  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public agmq(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public agmq(PhotoCropActivity paramPhotoCropActivity)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    switch (paramMessage.what)
     {
-      bfol localbfol = (bfol)bfoy.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        localbfol.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
-        i += 1;
-      }
-      localbfol.c(2131690596);
-      localbfol.a(new agmr(this, localbfol));
-      localbfol.show();
     }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131717375);
+    this.a.c();
   }
 }
 

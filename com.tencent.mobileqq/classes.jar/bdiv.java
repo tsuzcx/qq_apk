@@ -1,29 +1,21 @@
+import android.content.Context;
+import java.lang.ref.WeakReference;
+
 public class bdiv
 {
-  public long a;
   public String a;
-  public long b;
+  public WeakReference<Context> a;
   public String b;
-  public long c;
+  public WeakReference<bdjg> b;
   public String c;
   
-  public bdiv()
+  public bdiv(bdiu parambdiu, Context paramContext, String paramString1, String paramString2, String paramString3, bdjg parambdjg)
   {
-    this.jdField_a_of_type_Long = 259200L;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    paramObject = (bdiv)paramObject;
-    if (paramObject != null) {
-      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambdjg);
   }
 }
 

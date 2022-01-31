@@ -10,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import aobj;
-import auzo;
-import auzp;
+import aobo;
+import auzq;
 import auzr;
+import auzt;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import java.util.List;
@@ -25,16 +25,16 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<auzr> a;
-  protected aobj a;
-  protected auzo a;
-  public auzp a;
-  protected auzr a;
+  protected SparseArray<auzt> a;
+  protected aobo a;
+  protected auzq a;
+  public auzr a;
+  protected auzt a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_Aobj = new aobj();
+    this.jdField_a_of_type_Aobo = new aobo();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -56,32 +56,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Auzr = ((auzr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Auzr == null)
+    this.jdField_a_of_type_Auzt = ((auzt)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Auzt == null)
     {
-      this.jdField_a_of_type_Auzr = new auzr(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Auzr);
+      this.jdField_a_of_type_Auzt = new auzt(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Auzt);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Auzr.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Auzr);
+    this.jdField_a_of_type_Auzt.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Auzt);
   }
   
-  public void a(auzo paramauzo)
+  public void a(auzq paramauzq)
   {
-    this.jdField_a_of_type_Auzo = paramauzo;
+    this.jdField_a_of_type_Auzq = paramauzq;
   }
   
-  public void a(auzp paramauzp)
+  public void a(auzr paramauzr)
   {
-    this.jdField_a_of_type_Auzp = paramauzp;
+    this.jdField_a_of_type_Auzr = paramauzr;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_Aobj.a((View)paramObject);
+    this.jdField_a_of_type_Aobo.a((View)paramObject);
   }
   
   public int getCount()
@@ -91,7 +91,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_Aobj.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_Aobo.a();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -113,10 +113,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     paramView = (ProfileLabelInfo)paramView.getTag();
-    auzo localauzo;
+    auzq localauzq;
     if (paramView != null)
     {
-      localauzo = this.jdField_a_of_type_Auzo;
+      localauzq = this.jdField_a_of_type_Auzq;
       if (paramView.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label53;
       }
@@ -124,7 +124,7 @@ public class ProfileLabelPanelAdapter
     label53:
     for (boolean bool = false;; bool = true)
     {
-      localauzo.a(paramView, localToggleButton, Boolean.valueOf(bool));
+      localauzq.a(paramView, localToggleButton, Boolean.valueOf(bool));
       return;
     }
   }

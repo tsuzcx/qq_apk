@@ -4,13 +4,13 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import aywk;
-import bbql;
-import bjzr;
-import bjzt;
-import bjzu;
-import bjzx;
-import bkab;
+import aywm;
+import bbqz;
+import bkai;
+import bkak;
+import bkal;
+import bkao;
+import bkas;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
@@ -21,12 +21,12 @@ import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import veg;
+import ved;
 
 public class DynamicFaceLayer$1
   implements Runnable
 {
-  public DynamicFaceLayer$1(bjzr parambjzr, ArrayList paramArrayList) {}
+  public DynamicFaceLayer$1(bkai parambkai, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -45,17 +45,17 @@ public class DynamicFaceLayer$1
       {
         i += 1;
         break;
-        if ((bjzr.a(this.this$0).a == null) || (!bjzr.b(this.this$0).a.b())) {
+        if ((bkai.a(this.this$0).a == null) || (!bkai.b(this.this$0).a.b())) {
           break label457;
         }
-        localObject1 = bbql.a(BaseApplicationImpl.sApplication.getRuntime(), ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString, "-Dynamic-", aywk.a, new int[] { 13 }, "-Dynamic-", null);
+        localObject1 = bbqz.a(BaseApplicationImpl.sApplication.getRuntime(), ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString, "-Dynamic-", aywm.a, new int[] { 13 }, "-Dynamic-", null);
         if (localObject1 == null) {
           break label437;
         }
         if (((URLDrawable)localObject1).getStatus() != 1) {
           ((URLDrawable)localObject1).restartDownload();
         }
-        ((Drawable)localObject1).setCallback(bjzr.c(this.this$0));
+        ((Drawable)localObject1).setCallback(bkai.c(this.this$0));
         j = (int)((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsRectF.left;
         k = (int)((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsRectF.right;
         m = (int)((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsRectF.top;
@@ -65,30 +65,30 @@ public class DynamicFaceLayer$1
       Object localObject3;
       if (TextUtils.isEmpty(((PasterParcelData)localObject2).jdField_f_of_type_JavaLangString))
       {
-        veg.b("DynamicFaceLayer", "Create Normal FaceItem.");
-        localObject3 = new bkab(((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.x, ((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.y, ((PasterParcelData)localObject2).jdField_a_of_type_Float, ((PasterParcelData)localObject2).jdField_b_of_type_Float, ((PasterParcelData)localObject2).jdField_c_of_type_Float, ((PasterParcelData)localObject2).jdField_d_of_type_Float, (int)((PasterParcelData)localObject2).e, (int)((PasterParcelData)localObject2).jdField_f_of_type_Float);
-        localObject1 = new bjzx(this.this$0, (Drawable)localObject1, (bkab)localObject3, ((PasterParcelData)localObject2).jdField_a_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_b_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_d_of_type_Int);
-        ((bjzx)localObject1).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(((PasterParcelData)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
-        ((bjzx)localObject1).e = 0;
-        if (((bjzx)localObject1).h == 1) {
+        ved.b("DynamicFaceLayer", "Create Normal FaceItem.");
+        localObject3 = new bkas(((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.x, ((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.y, ((PasterParcelData)localObject2).jdField_a_of_type_Float, ((PasterParcelData)localObject2).jdField_b_of_type_Float, ((PasterParcelData)localObject2).jdField_c_of_type_Float, ((PasterParcelData)localObject2).jdField_d_of_type_Float, (int)((PasterParcelData)localObject2).e, (int)((PasterParcelData)localObject2).jdField_f_of_type_Float);
+        localObject1 = new bkao(this.this$0, (Drawable)localObject1, (bkas)localObject3, ((PasterParcelData)localObject2).jdField_a_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_b_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_d_of_type_Int);
+        ((bkao)localObject1).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(((PasterParcelData)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
+        ((bkao)localObject1).e = 0;
+        if (((bkao)localObject1).h == 1) {
           break label673;
         }
-        localObject2 = (bjzt)bjzr.d(this.this$0).a(bjzt.jdField_a_of_type_JavaLangString);
+        localObject2 = (bkak)bkai.d(this.this$0).a(bkak.jdField_a_of_type_JavaLangString);
         if (localObject2 == null) {}
       }
       for (;;)
       {
         try
         {
-          localObject3 = bjzx.class.getDeclaredField("b");
+          localObject3 = bkao.class.getDeclaredField("b");
           ((Field)localObject3).setAccessible(true);
           ((Field)localObject3).set(localObject1, localObject2);
-          ((bjzt)localObject2).jdField_a_of_type_JavaUtilList.add(localObject1);
-          ((bjzt)localObject2).k();
-          if ((bjzr.e(this.this$0).a == null) || (!bjzr.f(this.this$0).a.b())) {
+          ((bkak)localObject2).jdField_a_of_type_JavaUtilList.add(localObject1);
+          ((bkak)localObject2).k();
+          if ((bkai.e(this.this$0).a == null) || (!bkai.f(this.this$0).a.b())) {
             break;
           }
-          ((bjzx)localObject1).c(true);
+          ((bkao)localObject1).c(true);
           break;
           label437:
           if (QLog.isColorLevel()) {
@@ -97,15 +97,15 @@ public class DynamicFaceLayer$1
           localObject1 = null;
           break label136;
           label457:
-          localObject1 = bjzr.a(((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString);
+          localObject1 = bkai.a(((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString);
           ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
           ((PasterParcelData)localObject2).jdField_d_of_type_Int = 0;
-          localObject1 = bjzr.a((String)localObject1);
+          localObject1 = bkai.a((String)localObject1);
           break label136;
-          veg.b("DynamicFaceLayer", "Create FaceAndTextItem with text:" + ((PasterParcelData)localObject2).jdField_f_of_type_JavaLangString);
-          localObject3 = new bkab(((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.x, ((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.y, ((PasterParcelData)localObject2).jdField_a_of_type_Float, ((PasterParcelData)localObject2).jdField_b_of_type_Float, ((PasterParcelData)localObject2).jdField_c_of_type_Float, ((PasterParcelData)localObject2).jdField_d_of_type_Float, (int)((PasterParcelData)localObject2).e, (int)((PasterParcelData)localObject2).jdField_f_of_type_Float, ((PasterParcelData)localObject2).jdField_f_of_type_JavaLangString, ((PasterParcelData)localObject2).g, ((PasterParcelData)localObject2).jdField_f_of_type_Int);
-          localObject1 = new bjzu(this.this$0, (Drawable)localObject1, (bkab)localObject3, ((PasterParcelData)localObject2).jdField_a_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_b_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_d_of_type_Int);
-          ((bjzu)localObject1).a();
+          ved.b("DynamicFaceLayer", "Create FaceAndTextItem with text:" + ((PasterParcelData)localObject2).jdField_f_of_type_JavaLangString);
+          localObject3 = new bkas(((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.x, ((PasterParcelData)localObject2).jdField_a_of_type_AndroidGraphicsPointF.y, ((PasterParcelData)localObject2).jdField_a_of_type_Float, ((PasterParcelData)localObject2).jdField_b_of_type_Float, ((PasterParcelData)localObject2).jdField_c_of_type_Float, ((PasterParcelData)localObject2).jdField_d_of_type_Float, (int)((PasterParcelData)localObject2).e, (int)((PasterParcelData)localObject2).jdField_f_of_type_Float, ((PasterParcelData)localObject2).jdField_f_of_type_JavaLangString, ((PasterParcelData)localObject2).g, ((PasterParcelData)localObject2).jdField_f_of_type_Int);
+          localObject1 = new bkal(this.this$0, (Drawable)localObject1, (bkas)localObject3, ((PasterParcelData)localObject2).jdField_a_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_b_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_c_of_type_JavaLangString, ((PasterParcelData)localObject2).jdField_d_of_type_Int);
+          ((bkal)localObject1).a();
         }
         catch (Exception localException)
         {

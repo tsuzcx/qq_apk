@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afpv;
-import afrf;
-import akbo;
-import akbu;
+import afpt;
+import afrd;
+import akbn;
+import akbt;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import askm;
-import bfnk;
+import asko;
+import bfob;
 import com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,10 +28,10 @@ import mqq.os.MqqHandler;
 
 public class PhoneContactFragment
   extends ContactsBaseFragment
-  implements akbu, askm
+  implements akbt, asko
 {
-  protected afpv a;
-  protected afrf a;
+  protected afpt a;
+  protected afrd a;
   protected Handler a;
   protected View a;
   protected FrameLayout a;
@@ -43,8 +43,8 @@ public class PhoneContactFragment
   
   public PhoneContactFragment()
   {
-    this.jdField_a_of_type_Afrf = new afrf(this, null);
-    this.jdField_a_of_type_AndroidOsHandler = new bfnk(Looper.getMainLooper(), null);
+    this.jdField_a_of_type_Afrd = new afrd(this, null);
+    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), null);
     this.jdField_a_of_type_JavaLangRunnable = new PhoneContactFragment.2(this);
     this.jdField_b_of_type_JavaLangRunnable = new PhoneContactFragment.3(this);
   }
@@ -129,10 +129,10 @@ public class PhoneContactFragment
     if (paramBoolean) {
       d();
     }
-    if (this.jdField_a_of_type_Afpv == null)
+    if (this.jdField_a_of_type_Afpt == null)
     {
-      this.jdField_a_of_type_Afpv = new afpv(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afpv);
+      this.jdField_a_of_type_Afpt = new afpt(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Afpt);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.a();
     ThreadManager.excute(new PhoneContactFragment.1(this), 16, null, true);
@@ -199,10 +199,10 @@ public class PhoneContactFragment
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
       ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
     }
-    while (this.jdField_a_of_type_Afpv == null) {
+    while (this.jdField_a_of_type_Afpt == null) {
       return;
     }
-    this.jdField_a_of_type_Afpv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Afpt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   public void c(int paramInt)
@@ -218,8 +218,8 @@ public class PhoneContactFragment
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_b_of_type_Boolean))
     {
       ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Afrf);
-      ((akbo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Afrd);
+      ((akbn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this);
     }
   }
   
@@ -228,17 +228,17 @@ public class PhoneContactFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).b(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Afrf);
-      ((akbo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).b(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Afrd);
+      ((akbn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).b(this);
     }
     if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(null);
     }
-    if (this.jdField_a_of_type_Afpv != null)
+    if (this.jdField_a_of_type_Afpt != null)
     {
-      this.jdField_a_of_type_Afpv.a();
-      this.jdField_a_of_type_Afpv.c();
-      this.jdField_a_of_type_Afpv = null;
+      this.jdField_a_of_type_Afpt.a();
+      this.jdField_a_of_type_Afpt.c();
+      this.jdField_a_of_type_Afpt = null;
     }
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import onk;
+import onh;
 
 public final class ReadInJoyUtils$10
   implements Runnable
@@ -9,7 +9,7 @@ public final class ReadInJoyUtils$10
   
   public void run()
   {
-    onk.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean);
+    onh.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean);
   }
 }
 

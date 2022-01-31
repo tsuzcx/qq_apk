@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import bify;
+import bigp;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$6
   implements Runnable
 {
-  public QIMCameraCaptureUnit$6(bify parambify) {}
+  public QIMCameraCaptureUnit$6(bigp parambigp) {}
   
   public void run()
   {

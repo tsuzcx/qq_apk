@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.data.HotChatItemData;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 class ajyh
-  implements Comparator<HotChatItemData>
+  implements bcix<oidb_0x8e4.RspBody>
 {
-  ajyh(ajyf paramajyf) {}
+  ajyh(ajyg paramajyg) {}
   
-  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
-    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
-    if (l1 < l2) {
-      return 1;
+    if (paramInt == 0)
+    {
+      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramRspBody))
+      {
+        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
+        atch.a().a(0, paramRspBody, 0L, null);
+      }
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
   }
 }
 

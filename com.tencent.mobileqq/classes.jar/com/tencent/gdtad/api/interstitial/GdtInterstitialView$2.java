@@ -2,8 +2,8 @@ package com.tencent.gdtad.api.interstitial;
 
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
-import yul;
-import yxs;
+import yui;
+import yxp;
 
 public final class GdtInterstitialView$2
   implements Runnable
@@ -18,9 +18,9 @@ public final class GdtInterstitialView$2
     }
     for (;;)
     {
-      yxs.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+      yxp.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      WeakReference localWeakReference = yul.a().a(this.jdField_a_of_type_JavaLangString);
+      WeakReference localWeakReference = yui.a().a(this.jdField_a_of_type_JavaLangString);
       if (localWeakReference != null)
       {
         if (localWeakReference.get() == null)

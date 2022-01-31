@@ -1,35 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.util.Pair;
+import java.util.HashMap;
 
 public class bdts
-  implements View.OnLongClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bdtt(this);
-  public BubblePopupWindow a;
-  public String a;
+  public static HashMap<Long, Pair<Long, Long>> a = new HashMap();
   
-  public bdts(QidianProfileCardActivity paramQidianProfileCardActivity)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public static void a(long paramLong) {}
   
-  public boolean onLongClick(View paramView)
-  {
-    int i = paramView.getId();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
-    bblr localbblr = new bblr();
-    localbblr.a(i, ajyc.a(2131709745));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcc.a(paramView, localbblr, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bdtu(this));
-    return true;
-  }
+  public static void a(long paramLong, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdts
  * JD-Core Version:    0.7.0.1
  */

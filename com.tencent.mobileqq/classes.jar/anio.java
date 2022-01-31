@@ -1,42 +1,26 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
 
-public class anio
-  implements ArkViewImplement.LoadCallback
+public final class anio
+  implements Parcelable.Creator
 {
-  public anio(MessageForArkApp paramMessageForArkApp, altt paramaltt, adlk paramadlk, altp paramaltp, int paramInt) {}
-  
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean) {}
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  public IPSiteModel.GameRich a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
-    }
-    this.jdField_a_of_type_Altt.b.setVisibility(8);
-    if (paramInt == 1)
-    {
-      Object localObject = this.jdField_a_of_type_Adlk.getContainerRect();
-      float f = alta.a();
-      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-      this.jdField_a_of_type_Altp.a(this.jdField_a_of_type_Altt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      if (alta.a)
-      {
-        localObject = this.jdField_a_of_type_Altt.a.getLayoutParams();
-        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
-      }
-    }
-    this.jdField_a_of_type_Altp.a(this.jdField_a_of_type_Adlk, this.jdField_a_of_type_Int);
+    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
+    localGameRich.anchorFaceUrl = paramParcel.readString();
+    localGameRich.anchorId = paramParcel.readString();
+    localGameRich.anchorName = paramParcel.readString();
+    localGameRich.coverUrl = paramParcel.readString();
+    localGameRich.online = paramParcel.readString();
+    localGameRich.title = paramParcel.readString();
+    localGameRich.richJumpUrl = paramParcel.readString();
+    return localGameRich;
+  }
+  
+  public IPSiteModel.GameRich[] a(int paramInt)
+  {
+    return new IPSiteModel.GameRich[paramInt];
   }
 }
 

@@ -1,20 +1,54 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
 public class wty
-  implements bcto
+  implements Handler.Callback
 {
   public wty(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
+    switch (paramMessage.what)
     {
-      VideoPlayerView.d(this.a, false);
-      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
-      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
     }
+    label258:
+    do
+    {
+      do
+      {
+        return false;
+        if (VideoPlayerView.g(this.a)) {}
+        for (int i = paramMessage.arg2 - paramMessage.arg1;; i = paramMessage.arg1)
+        {
+          int j = i / 1000 / 60;
+          i = i / 1000 % 60;
+          if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a).a() > VideoPlayerView.a(this.a).b() / 2L) && (!VideoPlayerView.h(this.a))) {
+            VideoPlayerView.f(this.a);
+          }
+          if (VideoPlayerView.i(this.a)) {
+            break label258;
+          }
+          if (this.a.b != null) {
+            this.a.b.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+          }
+          if ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue())) {
+            break;
+          }
+          VideoPlayerView.a(this.a).a(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }), paramMessage.arg2, paramMessage.arg1);
+          return false;
+        }
+      } while ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue()));
+      VideoPlayerView.a(this.a).onVideoProgressUpdate(paramMessage.arg1);
+      return false;
+      VideoPlayerView.g(this.a);
+      return false;
+    } while (VideoPlayerView.d(this.a) == null);
+    VideoPlayerView.d(this.a).setVisibility(8);
+    return false;
   }
 }
 

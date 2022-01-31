@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aest
-  implements DialogInterface.OnClickListener
+  extends ajxj
 {
-  aest(aerv paramaerv, PublicAccountInfo paramPublicAccountInfo, akdi paramakdi) {}
+  aest(aert paramaert, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Akdi.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Aerv.a(2, null);
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Aert.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bayh.a(this.jdField_a_of_type_Aert.a, paramString, (byte)3));
+    }
   }
 }
 

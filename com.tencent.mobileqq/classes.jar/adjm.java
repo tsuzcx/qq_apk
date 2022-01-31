@@ -1,34 +1,27 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
 
-class adjm
-  extends akfl
+public class adjm
+  implements adif
 {
-  adjm(adjk paramadjk) {}
+  private BaseChatPie a;
   
-  public void a(boolean paramBoolean)
+  public adjm(BaseChatPie paramBaseChatPie)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.a.c();
+    if (!TextUtils.isEmpty(str)) {
+      bbtq.a(this.a.a).a(str);
     }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avpq)adjk.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
-    if (this.a.b == null) {
-      this.a.b = ((ImageView)adjk.a(this.a).c.findViewById(2131375028));
-    }
-    if (this.a.b == null) {
-      return;
-    }
-    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
-    {
-      this.a.b.setVisibility(0);
-      return;
-    }
-    this.a.b.setVisibility(8);
+  }
+  
+  public int[] a()
+  {
+    return new int[6];
   }
 }
 

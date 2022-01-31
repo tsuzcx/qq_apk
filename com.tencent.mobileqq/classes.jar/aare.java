@@ -1,23 +1,35 @@
+import android.text.Editable;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aare
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aare(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  public aare(ChatHistory paramChatHistory) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    if (this.a.d > 1)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838767);
+      paramView = this.a;
+      paramView.d -= 1;
+      if (this.a.d <= 1)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840184);
+      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aarf.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

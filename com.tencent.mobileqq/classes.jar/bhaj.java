@@ -1,45 +1,40 @@
-import android.os.Handler;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
+import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import cooperation.qzone.feed.CertifiedFakeFeed;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bhaj
-  extends bhic
+class bhaj
+  implements EIPCResultCallback
 {
-  private long jdField_a_of_type_Long = -1L;
+  bhaj(bhah parambhah) {}
   
-  public bhaj(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
-  
-  public void a(String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallBegin] pluginId=" + paramString);
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallDownloadProgress] pluginId=" + paramString + " progress=" + paramFloat + " total=" + paramLong);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    ArrayList localArrayList;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
     {
-      QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendMessage(paramString);
+      paramEIPCResult = paramEIPCResult.data;
+      paramEIPCResult.setClassLoader(CertifiedFakeFeed.class.getClassLoader());
+      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
+      if (localArrayList != null) {
+        wpt.a().a(new SubscribeFeedsEvent(localArrayList));
+      }
+      wpt.a().a(new PublishBoxStatusEvent(paramEIPCResult));
+      if (localArrayList != null) {
+        break label93;
+      }
+    }
+    label93:
+    for (int i = 0;; i = localArrayList.size())
+    {
+      QLog.d("QzoneIPCModule", 4, String.format("Get certifed account task list %b", new Object[] { Integer.valueOf(i) }));
       return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallFinish] pluginId=" + paramString);
-    QzoneVerticalVideoDownloadActivity.access$900("vertical_layer", "vertical_layer_time_cost", "plugin_install_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 

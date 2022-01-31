@@ -1,64 +1,59 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
 public class aggd
-  extends aebz
+  implements adif
 {
-  public aggd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  private adga jdField_a_of_type_Adga;
+  private aggw jdField_a_of_type_Aggw;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  aggd(aggw paramaggw)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_Aggw = paramaggw;
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, acun paramacun, int paramInt1, int paramInt2)
+  private ListView a()
   {
-    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramacun, paramInt1, paramInt2);
-    paramContext = (aecg)paramacun;
-    if (paramContext.d != null)
+    return this.jdField_a_of_type_Aggw.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
-        break label109;
-      }
-      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
-        break label95;
-      }
-      paramContext.d.setText(ajyc.a(2131706835));
-    }
-    for (;;)
-    {
-      if (paramContext.b != null) {
-        paramContext.b.setVisibility(8);
-      }
-      if (paramContext.c != null) {
-        paramContext.c.setVisibility(8);
-      }
+    default: 
+    case 2: 
+    case 4: 
+    case 17: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Adga = new adga();
+          return;
+        } while (this.b);
+        this.b = true;
+        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Adga.b(this.jdField_a_of_type_Aggw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
       return;
-      label95:
-      paramContext.d.setText(paramChatMessage.msg);
-      continue;
-      label109:
-      if ((paramChatMessage instanceof MessageForScribble)) {
-        paramContext.d.setText(ajyc.a(2131706834));
-      } else {
-        paramContext.d.setText(ajyc.a(2131706836));
-      }
     }
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Adga = null;
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void b(View paramView)
+  public int[] a()
   {
-    super.b(paramView);
+    return new int[] { 2, 4, 11, 17, 10 };
   }
 }
 

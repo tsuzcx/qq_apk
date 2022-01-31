@@ -1,69 +1,22 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
-public class axzp
-  extends axun
+class axzp
+  implements ayaf
 {
-  public int k;
+  axzp(axzn paramaxzn, CountdownTextView paramCountdownTextView) {}
   
-  public axzp()
+  public void a()
   {
-    this.a = "type";
+    this.jdField_a_of_type_Axzn.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_Axzn.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzn.a(this.jdField_a_of_type_Axzn, 0L));
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  public void a(long paramLong)
   {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "type";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.k = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.k);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "type");
-    paramXmlSerializer.text(this.k + "");
-    paramXmlSerializer.endTag(null, "type");
-  }
-  
-  public boolean a(axwe paramaxwe)
-  {
-    if (paramaxwe == null) {
-      return false;
-    }
-    try
-    {
-      this.k = Integer.valueOf(axas.a(axuy.a(paramaxwe), false)).intValue();
-      return true;
-    }
-    catch (Exception paramaxwe)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("StructMsgItemType", 2, paramaxwe, new Object[0]);
-        }
-      }
-    }
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(axzn.a(this.jdField_a_of_type_Axzn, paramLong));
+    this.jdField_a_of_type_Axzn.jdField_d_of_type_Long = paramLong;
   }
 }
 

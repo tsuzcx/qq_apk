@@ -1,5 +1,10 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class ammj
 {
+  public ImageView a;
+  public TextView a;
   public String a;
 }
 

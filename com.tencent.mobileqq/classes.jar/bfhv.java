@@ -1,17 +1,32 @@
-final class bfhv
+import android.os.Bundle;
+import com.tencent.ims.SafeReport.RspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.common.QSecRptControllerImpl;
+
+public class bfhv
+  extends mxj
 {
-  int jdField_a_of_type_Int;
-  bfik jdField_a_of_type_Bfik;
-  bfil jdField_a_of_type_Bfil;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public bfhv(QSecRptControllerImpl paramQSecRptControllerImpl) {}
   
-  public String toString()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Bfik.toString() + "]";
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new SafeReport.RspBody();
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
+        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

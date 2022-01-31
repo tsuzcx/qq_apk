@@ -1,30 +1,75 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import mqq.manager.Manager;
 
-class qvh
-  implements SeekBar.OnSeekBarChangeListener
+public class qvh
+  implements Manager
 {
-  qvh(qvd paramqvd) {}
+  public static int a;
+  public static int b;
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = true;
+  HashMap<Long, Bundle> b;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  static
   {
-    int i = paramSeekBar.getProgress();
-    int j = qvd.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + qua.a(j));
+    jdField_b_of_type_Int = 1;
+  }
+  
+  public qvh(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(int paramInt) {}
+  
+  public void a(TroopMemberApiService paramTroopMemberApiService)
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
     }
-    if (j == 3) {
-      qvd.a(this.a).a(i * 1000, qvd.a(this.a));
-    }
-    while (j != 5) {
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
       return;
     }
-    qvd.a(this.a).c(i * 1000);
+    if ((TextUtils.isEmpty(paramString)) || (!vyf.b(paramString))) {}
+    for (;;)
+    {
+      qvi localqvi = new qvi(this);
+      aywc localaywc = new aywc();
+      localaywc.jdField_a_of_type_Auoq = new qvj(this);
+      ayvx localayvx = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      localqvi.addFilter(new Class[] { ayou.class });
+      localayvx.a(localqvi);
+      localaywc.i = paramString;
+      localaywc.jdField_a_of_type_Boolean = true;
+      localaywc.jdField_b_of_type_Int = 24;
+      localaywc.jdField_c_of_type_Int = 54;
+      localaywc.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      localaywc.jdField_c_of_type_JavaLangString = "0";
+      localaywc.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      localayvx.a(localaywc);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localaywc.jdField_a_of_type_Long), paramBundle);
+      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localaywc.jdField_a_of_type_Long), paramBundle);
+      return;
+      a(jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
+    }
   }
 }
 

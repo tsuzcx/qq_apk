@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajtk;
-import auiy;
+import ajti;
+import auja;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class MainFragment$19
@@ -11,8 +11,8 @@ class MainFragment$19
   
   public void run()
   {
-    auiy localauiy = (auiy)MainFragment.a(this.this$0).getManager(319);
-    ((ajtk)MainFragment.a(this.this$0).a(2)).C();
+    auja localauja = (auja)MainFragment.a(this.this$0).getManager(319);
+    ((ajti)MainFragment.a(this.this$0).a(2)).C();
   }
 }
 

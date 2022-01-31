@@ -1,66 +1,139 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class avdr
-  implements aysa
 {
-  int jdField_a_of_type_Int;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
-  String d;
-  
-  public avdr(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString4;
-    this.d = paramString2;
-    this.c = paramString3;
+    for (;;)
+    {
+      try
+      {
+        ayxs localayxs = (ayxs)paramQQAppInterface.getManager(193);
+        if (localayxs.a())
+        {
+          int i = 2;
+          String str = "qboss_splash_ad_res_png";
+          if (paramInt == 2)
+          {
+            i = 1;
+            str = "qboss_splash_ad_res_video";
+            j = 10082;
+            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("qbossSplashresAppid", paramString1);
+            a("qbossSplashrequest", localHashMap);
+            localayxs.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new avds(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
+          }
+        }
+        else
+        {
+          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        return;
+      }
+      int j = 10081;
+    }
   }
   
-  public void onResp(aysx paramaysx)
+  public static void a(QQAppInterface paramQQAppInterface, Collection<avdv> paramCollection)
+  {
+    for (;;)
+    {
+      avdv localavdv;
+      try
+      {
+        paramCollection = paramCollection.iterator();
+        if (!paramCollection.hasNext()) {
+          break label156;
+        }
+        localavdv = (avdv)paramCollection.next();
+        if (!localavdv.b())
+        {
+          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
+          continue;
+        }
+        switch (localavdv.a)
+        {
+        }
+      }
+      finally {}
+      a(paramQQAppInterface, localavdv.jdField_b_of_type_JavaLangString, localavdv.e, localavdv.h, 0, localavdv.k);
+      continue;
+      a(paramQQAppInterface, localavdv.jdField_b_of_type_JavaLangString, localavdv.e, localavdv.h, 2, localavdv.k);
+      continue;
+      a(paramQQAppInterface, localavdv.jdField_b_of_type_JavaLangString, localavdv.e, localavdv.h, 1, localavdv.k);
+      continue;
+      label156:
+      return;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    Object localObject = avdq.a(BaseApplicationImpl.getContext(), paramString1);
+    paramString1 = ((SharedPreferences)localObject).edit();
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
+    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
+    if (!bool)
+    {
+      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
+      localObject = avdu.a;
+      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
+        ((avdv)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
+      }
+    }
+    paramString1.apply();
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
     try
     {
-      if (paramaysx.jdField_a_of_type_Int == 0)
+      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
       {
-        QLog.i("QSplash@QbossSplashDownloadManager", 1, "ResFile has download!");
-        if (!TextUtils.isEmpty(this.d))
-        {
-          if (avdt.a(this.d, false))
-          {
-            paramaysx = new File(this.d);
-            paramaysx.renameTo(new File(this.d.substring(0, this.d.lastIndexOf("."))));
-            long l = paramaysx.length();
-            paramaysx = (ayxq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-            if (paramaysx.a())
-            {
-              QLog.i("QSplash@QbossSplashUtil", 1, "preDownloadSuccess");
-              paramaysx.a(this.b, l);
-            }
-            avdp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-          avdp.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          QLog.i("QSplash@QbossSplashUtil", 1, "ResFile check not exist");
+        axrn.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
+        if (QLog.isColorLevel()) {
+          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
         }
-      }
-      else if (paramaysx.jdField_a_of_type_Int == 1)
-      {
-        avdp.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-        QLog.i("QSplash@QbossSplashUtil", 1, "ResFile dowload faield");
       }
       return;
     }
-    catch (Exception paramaysx) {}
+    catch (Exception paramString) {}
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      paramAppInterface = (ayxs)paramAppInterface.getManager(193);
+      if (paramAppInterface.a()) {
+        paramAppInterface.a(paramString1, -1L);
+      }
+      paramString1 = new HashMap();
+      paramString1.put("qbossSplashresAppid", paramString2);
+      a("qbossSplashDownloadFailed", paramString1);
+      return;
+    }
+    catch (Exception paramString1) {}
+  }
 }
 
 

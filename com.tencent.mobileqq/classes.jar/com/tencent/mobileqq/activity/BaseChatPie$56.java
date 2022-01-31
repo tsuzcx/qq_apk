@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class BaseChatPie$56
@@ -10,7 +10,7 @@ class BaseChatPie$56
   
   public void run()
   {
-    bcpw.a(this.this$0.a.getApp(), 2131690023, 1).b(this.this$0.a());
+    bcql.a(this.this$0.a.getApp(), 2131690023, 1).b(this.this$0.a());
   }
 }
 

@@ -1,17 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aaye
+public class aaye
   implements DialogInterface.OnClickListener
 {
-  aaye(aayc paramaayc) {}
+  public aaye(DialogActivity paramDialogActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList conform to setting.");
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent("android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS", Uri.parse("package:" + this.a.getPackageName()));
+    this.a.startActivity(paramDialogInterface);
+    this.a.finish();
   }
 }
 

@@ -1,15 +1,12 @@
-public class bjuw
+import android.view.View;
+import android.widget.ImageView;
+
+class bjuw
 {
-  public final int a;
-  public final long a;
-  public final CharSequence a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public bjuw(long paramLong, int paramInt, CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
+  bjuw(bjuv parambjuv) {}
 }
 
 

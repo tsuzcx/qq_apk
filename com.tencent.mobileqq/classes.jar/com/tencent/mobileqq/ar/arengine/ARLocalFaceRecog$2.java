@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alhe;
-import bcpw;
+import alhd;
+import bcql;
 
 public class ARLocalFaceRecog$2
   implements Runnable
 {
   public void run()
   {
-    bcpw.a(this.this$0.a, "extract face faceFeature failed!", 0).a();
+    bcql.a(this.this$0.a, "extract face faceFeature failed!", 0).a();
   }
 }
 

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
 
 public final class awzi
-  implements Parcelable.Creator<FriendSingleInfo>
+  implements Parcelable.Creator<FriendGroupListInfo>
 {
-  public FriendSingleInfo a(Parcel paramParcel)
+  public FriendGroupListInfo a(Parcel paramParcel)
   {
-    return new FriendSingleInfo(paramParcel);
+    return new FriendGroupListInfo(paramParcel);
   }
   
-  public FriendSingleInfo[] a(int paramInt)
+  public FriendGroupListInfo[] a(int paramInt)
   {
-    return new FriendSingleInfo[paramInt];
+    return new FriendGroupListInfo[paramInt];
   }
 }
 

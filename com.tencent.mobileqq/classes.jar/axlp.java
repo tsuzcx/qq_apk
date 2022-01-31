@@ -1,10 +1,14 @@
-public abstract interface axlp
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
+public class axlp
+  implements FileFilter
 {
-  public abstract void a();
-  
-  public abstract void a(Process paramProcess);
-  
-  public abstract void b();
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

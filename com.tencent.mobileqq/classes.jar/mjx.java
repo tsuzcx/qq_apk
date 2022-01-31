@@ -1,52 +1,106 @@
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageButton;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VideoInviteActivity.3.1;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class mjx
-  extends lfg
+  implements bfph
 {
-  public mjx(VideoInviteActivity paramVideoInviteActivity) {}
+  public mjx(VideoInviteActivity paramVideoInviteActivity, bfpc parambfpc, boolean paramBoolean, long paramLong) {}
   
-  protected void a(long paramLong, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
-    }
-    boolean bool = this.a.i;
-    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
+    this.jdField_a_of_type_Bfpc.dismiss();
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
     {
-      super.a(paramLong);
-      mtt.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.a.a(l);
-      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+    }
+    VideoInviteActivity.3.1 local1;
+    switch (paramInt)
+    {
+    default: 
+      paramView = null;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.jdField_a_of_type_Long, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_e_of_type_Int, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_e_of_type_JavaLangString, paramView, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j);
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j) && (bbjc.a(VideoInviteActivity.d(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity))))
       {
-        paramLong = Long.valueOf(this.a.c).longValue();
-        if (!this.a.h)
-        {
-          this.a.h = true;
-          if (paramInt != 1) {
-            break label255;
-          }
-          this.a.a().a(l, paramLong, 7);
+        paramView = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        local1 = new VideoInviteActivity.3.1(this);
+        if (!GesturePWDUtils.getJumpLock(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) {
+          break label630;
         }
       }
+      break;
     }
-    for (;;)
+    label630:
+    for (long l = 500L;; l = 0L)
     {
-      this.a.e = true;
-      if ((!this.a.l) || (this.a.jdField_a_of_type_Mho == null) || (this.a.f())) {
+      paramView.postDelayed(local1, l);
+      return;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A0";; paramView = "0X80043B2")
+        {
+          axqy.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
+          paramView = VideoInviteActivity.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695966);
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A6";; paramView = "0X80043AC") {
         break;
       }
-      this.a.jdField_a_of_type_Mho.a(new mjy(this));
-      return;
-      label255:
-      if (paramInt == 2) {
-        this.a.a().a(l, paramLong, 2);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A1";; paramView = "0X80043B3")
+        {
+          axqy.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+          paramView = VideoInviteActivity.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695968);
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A7";; paramView = "0X80043AD") {
+        break;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A2";; paramView = "0X80043B4")
+        {
+          axqy.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+          paramView = VideoInviteActivity.c(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131695967);
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A8";; paramView = "0X80043AE") {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.j = true;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+        for (paramView = "0X80043A3";; paramView = "0X80043B5")
+        {
+          axqy.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+          paramView = null;
+          break;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (paramView = "0X80043A9";; paramView = "0X80043AF") {
+        break;
       }
     }
-    this.a.finish();
   }
 }
 

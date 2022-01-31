@@ -1,23 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningData;
 import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aldq
-  implements View.OnTouchListener
+  implements aufu
 {
-  public aldq(ScanningSurfaceView paramScanningSurfaceView) {}
+  public aldq(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
     }
-    for (;;)
-    {
-      return true;
-      ScanningSurfaceView.a(this.a, paramMotionEvent);
-    }
+    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    axqy.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
   }
 }
 

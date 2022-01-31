@@ -1,25 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
 
 public class bcyn
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public bcyn(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bcyn(AuthorityActivity paramAuthorityActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

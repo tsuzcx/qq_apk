@@ -28,7 +28,7 @@ public class adbc
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "playAnimation");
+      QLog.d("LottieAnimController", 2, "playAnimation");
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
@@ -42,7 +42,7 @@ public class adbc
   public void a(View.OnClickListener paramOnClickListener)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "setOnCloseClickListener");
+      QLog.d("LottieAnimController", 2, "setOnCloseClickListener");
     }
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
     if ((this.jdField_a_of_type_AndroidViewView$OnClickListener != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
@@ -53,7 +53,7 @@ public class adbc
   public void a(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "setBackgroundView");
+      QLog.d("LottieAnimController", 2, "setBackgroundView");
     }
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(new adbe(null), new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
@@ -64,7 +64,7 @@ public class adbc
   public void a(FriendShipLayout paramFriendShipLayout)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "setRootContainer");
+      QLog.d("LottieAnimController", 2, "setRootContainer");
     }
     if (paramFriendShipLayout != null)
     {
@@ -72,8 +72,8 @@ public class adbc
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 53;
-      localLayoutParams.topMargin = axli.a(30.0F);
-      localLayoutParams.rightMargin = axli.a(30.0F);
+      localLayoutParams.topMargin = axlk.a(30.0F);
+      localLayoutParams.rightMargin = axlk.a(30.0F);
       paramFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -84,7 +84,7 @@ public class adbc
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "setCloseBtnBitmapPath: " + paramString);
+      QLog.d("LottieAnimController", 2, "setCloseBtnBitmapPath: " + paramString);
     }
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inScaled = true;
@@ -98,18 +98,18 @@ public class adbc
         }
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a(paramString, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a(paramString, localOptions);
       return;
     }
     catch (Exception paramString)
     {
-      QLog.e("AdditionalAnimController", 1, "Decode bitmap error");
+      QLog.e("LottieAnimController", 1, "Decode bitmap error");
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       return;
     }
     catch (OutOfMemoryError paramString)
     {
-      QLog.e("AdditionalAnimController", 1, "Decode bitmap OOM");
+      QLog.e("LottieAnimController", 1, "Decode bitmap OOM");
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
   }
@@ -117,7 +117,7 @@ public class adbc
   public boolean a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "isAnimating");
+      QLog.d("LottieAnimController", 2, "isAnimating");
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
@@ -128,7 +128,7 @@ public class adbc
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "cancelAnimation");
+      QLog.d("LottieAnimController", 2, "cancelAnimation");
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
@@ -142,7 +142,7 @@ public class adbc
   public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "recycleBitmaps");
+      QLog.d("LottieAnimController", 2, "recycleBitmaps");
     }
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
@@ -156,7 +156,7 @@ public class adbc
   public void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "pauseAnimation");
+      QLog.d("LottieAnimController", 2, "pauseAnimation");
     }
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.pause();
@@ -166,7 +166,7 @@ public class adbc
   public void e()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "resumeAnimation");
+      QLog.d("LottieAnimController", 2, "resumeAnimation");
     }
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.resume();

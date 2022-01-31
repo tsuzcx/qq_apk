@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo.PtuTemplate;
 
 import android.app.Activity;
-import bizq;
-import bkyn;
+import bjah;
+import bkze;
 
 public final class PtuTemplateManager$3
   implements Runnable
@@ -11,8 +11,8 @@ public final class PtuTemplateManager$3
   
   public void run()
   {
-    bkyn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    bizq.b("PtuTemplateManager", "【Camera is in Prepareing】toast show");
+    bkze.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    bjah.b("PtuTemplateManager", "【Camera is in Prepareing】toast show");
   }
 }
 

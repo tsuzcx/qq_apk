@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.biz.qrcode.activity.QRCardActivity;
+import java.util.HashMap;
 
 public class wfq
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
   public wfq(QRCardActivity paramQRCardActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.c = false;
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof Integer)) {
+      if (((Integer)localObject).intValue() != 0) {
+        break label101;
+      }
+    }
+    label101:
+    for (String str = (String)((TextView)paramView.findViewById(2131364691)).getText();; str = null)
+    {
+      if (((Integer)localObject).intValue() == 1)
+      {
+        this.a.a((String)this.a.a.d.get(this.a.h));
+        return;
+      }
+      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+      return;
+    }
   }
 }
 

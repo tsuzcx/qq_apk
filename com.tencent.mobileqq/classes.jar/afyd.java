@@ -1,15 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-class afyd
-  implements asun
+public class afyd
+  implements DialogInterface.OnClickListener
 {
-  afyd(afyc paramafyc) {}
+  public afyd(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aasg paramaasg) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Asuu.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Asuu.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
+    this.jdField_a_of_type_Aasg.a(false);
   }
 }
 

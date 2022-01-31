@@ -1,27 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import android.text.TextUtils;
 import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.2.1;
-import com.tencent.widget.XListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class autl
-  implements View.OnClickListener
+  extends ajxj
 {
   public autl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
-    this.a.startActivity(paramView);
-    paramView = PersonalityLabelGalleryActivity.a(this.a);
-    paramView.praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
-    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
-    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new PersonalityLabelGalleryActivity.2.1(this), 500L);
-    axqw.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    }
+    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    {
+      PersonalityLabelGalleryActivity.a(this.a, bbcz.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
+      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
+        PersonalityLabelGalleryActivity.d(this.a);
+      }
+    }
   }
 }
 

@@ -1,8 +1,19 @@
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract interface azoi
+final class azoi
+  implements Comparator<String>
 {
-  public abstract void a(ArrayList<aukm> paramArrayList);
+  public int a(String paramString1, String paramString2)
+  {
+    try
+    {
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
+    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
+  }
 }
 
 

@@ -1,8 +1,26 @@
-import android.view.View;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.image.URLDrawable;
 
-public abstract interface bfuw
+public class bfuw
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public float a;
+  public int a;
+  public BitmapDrawable a;
+  public URLDrawable a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  
+  public bfuw() {}
+  
+  public bfuw(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.b = paramInt2;
+  }
 }
 
 

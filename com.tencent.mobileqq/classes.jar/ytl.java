@@ -1,16 +1,10 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-
-class ytl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class ytl
 {
-  ytl(ytg paramytg, ImageView paramImageView) {}
+  private ytm a;
   
-  public void onGlobalLayout()
+  public void a(ytm paramytm)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    yyb.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.a = paramytm;
   }
 }
 

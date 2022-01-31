@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import anod;
+import anoi;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ComboResource$2
@@ -8,7 +8,7 @@ public final class ComboResource$2
 {
   public void run()
   {
-    anod.a(BaseApplicationImpl.getApplication().getBaseContext());
+    anoi.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 

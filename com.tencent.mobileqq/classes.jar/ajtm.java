@@ -1,26 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
-
-class ajtm
-  extends auyk
+public abstract interface ajtm
 {
-  ajtm(ajtk paramajtk, long paramLong)
-  {
-    super(paramLong);
-  }
+  public abstract void b(byte[] paramArrayOfByte);
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
-  {
-    paramUploadImageSize = auyj.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
-    }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
-  }
+  public abstract void d();
 }
 
 

@@ -1,57 +1,73 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ocs
-  implements INetInfoHandler
+  extends NativeText
 {
-  protected WeakReference<nyr> a;
+  protected String a;
   
-  public ocs(nyr paramnyr)
+  public ocs(VafContext paramVafContext)
   {
-    this.a = new WeakReference(paramnyr);
+    super(paramVafContext);
+    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
   }
   
-  public void onNetMobile2None()
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nyr)this.a.get()).c();
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nyr)this.a.get()).i();
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null))
+    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
+    if (paramInt == 1083)
     {
-      ((nyr)this.a.get()).g();
-      ((nyr)this.a.get()).i();
+      if (paramString != null)
+      {
+        this.a = paramString;
+        setDrawableLeft(null);
+      }
+      return true;
+    }
+    if (paramInt == 1084) {
+      if (paramString != null)
+      {
+        int i = Utils.dp2px(nmh.a(paramString, 0));
+        this.mNative.setCompoundDrawablePadding(i);
+      }
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramString);
+      if (paramInt == 48)
+      {
+        Float localFloat = Utils.toFloat(paramString);
+        if (localFloat != null)
+        {
+          this.mAlpha = localFloat.floatValue();
+          getNativeView().setAlpha(this.mAlpha);
+        }
+        else
+        {
+          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        }
+      }
     }
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void setDrawableLeft(String paramString)
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nyr)this.a.get()).i();
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nyr)this.a.get()).h();
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((nyr)this.a.get()).f();
+    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
+    if (this.drawableLeftPath != null) {}
+    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, (Drawable)null, (Drawable)null);; paramString = null)
+    {
+      if (this.a != null) {}
+      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, (Drawable)null, (Drawable)null);; localDrawable = null)
+      {
+        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, (Drawable)null, localDrawable, (Drawable)null);
+        return;
+      }
     }
   }
 }

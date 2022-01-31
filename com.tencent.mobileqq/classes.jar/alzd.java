@@ -1,34 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.app.BaseActivity2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
 
 public class alzd
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public alzd(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public alzd(DynamicAvatarRecordActivity.11 param11) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
-      }
-      paramContext = BaseActivity2.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366389);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      this.a.finish();
-    }
+    this.a.this$0.finish();
   }
 }
 

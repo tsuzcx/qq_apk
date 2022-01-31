@@ -1,29 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.16;
+import com.tencent.qphone.base.util.QLog;
 
 public class azgj
-  implements View.OnClickListener
+  implements swj
 {
-  public azgj(TroopBarPublishActivity.16 param16) {}
+  public azgj(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString1, long paramLong, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    paramView = new Intent();
-    paramView.putExtra("path", this.a.a);
-    PublicFragmentActivity.a(this.a.this$0, paramView, TribeVideoPreviewFragment.class);
-    this.a.this$0.overridePendingTransition(2130772305, 2130772306);
-    if ((this.a.this$0.b != null) && (this.a.this$0.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
+    vyf.f(this.jdField_a_of_type_JavaLangString);
+    if (paramInt != 0)
     {
-      axqw.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
+      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Long);
       return;
     }
+    TroopBarPublishActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, this.b, this.jdField_a_of_type_Long);
   }
 }
 

@@ -4,72 +4,73 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class azox
-  extends azou
+  extends azow
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
+    int i = 0;
     TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
     if (localTroopFeedItem == null) {
       return null;
     }
-    Object localObject;
-    try
+    for (;;)
     {
-      localObject = paramJSONObject.getJSONArray("content");
-      if (((JSONArray)localObject).length() <= 0) {
-        break label333;
-      }
-      localObject = ((JSONArray)localObject).getJSONObject(0);
-      int i = ((JSONObject)localObject).getInt("type");
-      if (i == 5)
+      JSONObject localJSONObject;
+      try
       {
-        if (((JSONObject)localObject).has("file_path")) {
-          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
+        paramJSONObject = paramJSONObject.getJSONArray("content");
+        if (i >= paramJSONObject.length()) {
+          break label283;
         }
-        localTroopFeedItem.type = 131;
-        if (((JSONObject)localObject).has("sharesize")) {
-          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
-        }
-        boolean bool = ((JSONObject)localObject).has("bus_id");
-        if (bool) {}
-        try
+        localJSONObject = paramJSONObject.getJSONObject(i);
+        int j = localJSONObject.getInt("type");
+        if (j == 5)
         {
-          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
-          if (((JSONObject)localObject).has("sharefile")) {
-            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
+          if (localJSONObject.has("file_path")) {
+            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
           }
-          if (((JSONObject)localObject).has("shareexpire")) {
-            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
+          localTroopFeedItem.type = 0;
+          if (localJSONObject.has("sharesize")) {
+            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
           }
-          if (!((JSONObject)localObject).has("sharefromuin")) {
-            break label333;
-          }
-          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
-        }
-        catch (JSONException paramJSONObject)
-        {
-          for (;;)
+          boolean bool = localJSONObject.has("bus_id");
+          if (bool) {}
+          try
           {
-            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
+            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
+            if (!localJSONObject.has("sharefile")) {
+              break label308;
+            }
+            localTroopFeedItem.title = localJSONObject.getString("sharefile");
+          }
+          catch (JSONException localJSONException)
+          {
+            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
+            continue;
           }
         }
+        if (j != 3) {
+          break label308;
+        }
       }
-      if (i != 4) {
-        break label333;
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
       }
+      if (localJSONObject.has("pic_id"))
+      {
+        localTroopFeedItem.picPath = ("http://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
+        break label308;
+        label283:
+        if ((bbkk.a(localTroopFeedItem.linkUrl)) || (bbkk.a(localTroopFeedItem.content))) {
+          break;
+        }
+        return localTroopFeedItem;
+      }
+      label308:
+      i += 1;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      return null;
-    }
-    localTroopFeedItem.type = 132;
-    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
-    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
-    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
-    label333:
-    return localTroopFeedItem;
   }
 }
 

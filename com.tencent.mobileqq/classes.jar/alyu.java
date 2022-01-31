@@ -1,21 +1,24 @@
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
 
 public class alyu
 {
   public int a;
-  public long a;
+  public String a;
   public ArrayList<alyv> a;
-  public long b;
+  public int b;
+  public int c;
+  public int d;
   
-  public static alyu a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
+  public static alyu a(oidb_0x74b.HeadInfo paramHeadInfo)
   {
     Object localObject;
-    if (paramOneUinHeadInfo == null) {
+    if (paramHeadInfo == null) {
       localObject = null;
     }
     alyu localalyu;
@@ -23,20 +26,28 @@ public class alyu
     {
       return localObject;
       localalyu = new alyu();
-      if (paramOneUinHeadInfo.uint64_uin.has()) {
-        localalyu.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
+      if (paramHeadInfo.uint32_id.has()) {
+        localalyu.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
       }
-      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
-        localalyu.b = paramOneUinHeadInfo.uint64_tinyid.get();
+      if (paramHeadInfo.str_photohead.has()) {
+        localalyu.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
       }
-      localalyu.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+      if (paramHeadInfo.uint32_invalid.has()) {
+        localalyu.b = paramHeadInfo.uint32_invalid.get();
+      }
+      if (paramHeadInfo.uint32_timestamp.has()) {
+        localalyu.c = paramHeadInfo.uint32_timestamp.get();
+      }
+      if (paramHeadInfo.uint32_type.has()) {
+        localalyu.d = paramHeadInfo.uint32_type.get();
+      }
       localObject = localalyu;
-    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
-    localalyu.jdField_a_of_type_JavaUtilArrayList = alyv.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    } while (!paramHeadInfo.rpt_videoheadlist.has());
+    localalyu.jdField_a_of_type_JavaUtilArrayList = alyv.a(paramHeadInfo.rpt_videoheadlist.get());
     return localalyu;
   }
   
-  public static ArrayList<alyu> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  public static ArrayList<alyu> a(List<oidb_0x74b.HeadInfo> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return null;
@@ -45,7 +56,7 @@ public class alyu
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      alyu localalyu = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
+      alyu localalyu = a((oidb_0x74b.HeadInfo)paramList.next());
       if (localalyu != null) {
         localArrayList.add(localalyu);
       }

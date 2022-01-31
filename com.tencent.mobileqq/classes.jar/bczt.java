@@ -1,32 +1,48 @@
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardHeadLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import mqq.observer.BusinessObserver;
 
 public class bczt
-  extends Handler
+  implements BusinessObserver
 {
-  public bczt(CardHeadLayout paramCardHeadLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bczt(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    }
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
     for (;;)
     {
-      super.handleMessage(paramMessage);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CardHeadLayout", 2, "-->handleMessage MSG_UPDATE");
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      if (paramBoolean)
+      {
+        localObject = new GetAppInfoProto.GetAppinfoResponse();
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle != null)
+          {
+            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
+            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
+            {
+              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              paramBundle.what = 3;
+              paramBundle.obj = localObject;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
       }
-      CardHeadLayout.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
 }

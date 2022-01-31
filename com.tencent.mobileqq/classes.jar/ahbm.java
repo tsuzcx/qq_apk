@@ -1,45 +1,54 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
 
 public class ahbm
-  extends bbwf
+  extends Handler
 {
-  public ahbm(PreloadManager paramPreloadManager, ahbp paramahbp) {}
+  private LinkedList<ahbo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onDoneFile(bbwg parambbwg)
+  public ahbm(PreloadManager paramPreloadManager, Looper paramLooper)
   {
-    int i = -5;
-    super.onDoneFile(parambbwg);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadRes|done" + parambbwg.jdField_a_of_type_JavaLangString + "|" + parambbwg.jdField_a_of_type_Int);
-    }
-    Object localObject = parambbwg.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (parambbwg.jdField_a_of_type_Int == 0)
+    super(paramLooper);
+  }
+  
+  private void a()
+  {
+    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
+    ahbo localahbo = (ahbo)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localahbo), 64, null, false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
+    do
     {
-      i = 0;
-      if (localObject != null) {
-        break label146;
-      }
-    }
-    label146:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
-    {
-      this.jdField_a_of_type_Ahbp.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambbwg.jdField_a_of_type_JavaUtilMap.get(parambbwg.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
       return;
-      if (parambbwg.jdField_a_of_type_Int == -5) {
-        break;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        this.jdField_a_of_type_JavaUtilLinkedList.addLast((ahbo)paramMessage.obj);
       }
-      i = -6;
-      break;
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = true;
+    sendEmptyMessage(2);
+    return;
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    {
+      a();
+      return;
     }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

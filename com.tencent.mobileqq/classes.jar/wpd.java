@@ -1,45 +1,17 @@
-import android.os.Handler;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.1;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.2;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.3;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.4;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.5;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.6;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class wpd
-  extends RecyclerView.AdapterDataObserver
+class wpd
+  extends GridLayoutManager.SpanSizeLookup
 {
   wpd(wpc paramwpc) {}
   
-  public void onChanged()
+  public int getSpanSize(int paramInt)
   {
-    wpc.a(this.a).post(new ComponentAdapter.1.1(this));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    wpc.a(this.a).post(new ComponentAdapter.1.2(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    wpc.a(this.a).post(new ComponentAdapter.1.3(this, paramInt1, paramInt2, paramObject));
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    wpc.a(this.a).post(new ComponentAdapter.1.4(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    wpc.a(this.a).post(new ComponentAdapter.1.6(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    wpc.a(this.a).post(new ComponentAdapter.1.5(this, paramInt1, paramInt2));
+    woz localwoz = this.a.b(paramInt);
+    if (localwoz != null) {
+      return localwoz.a(localwoz.b(paramInt));
+    }
+    return 1;
   }
 }
 

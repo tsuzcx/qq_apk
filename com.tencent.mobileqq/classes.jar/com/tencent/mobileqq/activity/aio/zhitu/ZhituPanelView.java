@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import actn;
-import acut;
-import aezn;
-import aezy;
-import aezz;
-import afae;
-import ajyc;
+import actj;
+import acup;
+import aezl;
+import aezw;
+import aezx;
+import afac;
+import ajya;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,9 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apzd;
-import axqw;
-import bbkx;
+import apzf;
+import axqy;
+import bbll;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.hiboom.RichTextPanelView;
@@ -32,9 +32,9 @@ public class ZhituPanelView
 {
   public static int a;
   private static String jdField_a_of_type_JavaLangString = "ZhituManager.PanelView";
-  private static String jdField_b_of_type_JavaLangString = ajyc.a(2131717035);
-  private aezz jdField_a_of_type_Aezz;
-  private afae jdField_a_of_type_Afae;
+  private static String jdField_b_of_type_JavaLangString = ajya.a(2131717046);
+  private aezx jdField_a_of_type_Aezx;
+  private afac jdField_a_of_type_Afac;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
   GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
@@ -55,26 +55,26 @@ public class ZhituPanelView
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_AndroidWidgetButton = paramButton;
     setClipToPadding(false);
-    this.jdField_b_of_type_Int = (bbkx.a() / 3);
-    this.c = (this.jdField_b_of_type_Int - bbkx.b(2.0F));
+    this.jdField_b_of_type_Int = (bbll.a() / 3);
+    this.c = (this.jdField_b_of_type_Int - bbll.b(2.0F));
     a();
   }
   
   private View a()
   {
-    apzd localapzd = apzd.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    jdField_b_of_type_JavaLangString = localapzd.a();
+    apzf localapzf = apzf.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    jdField_b_of_type_JavaLangString = localapzf.a();
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    if (localapzd.b())
+    if (localapzf.b())
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379594);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localapzd.b());
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379599);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(localapzf.b());
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8947849);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, actn.a(8.0F, getResources()), 0, actn.a(6.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, actj.a(8.0F, getResources()), 0, actj.a(6.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
       localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
     }
@@ -85,7 +85,7 @@ public class ZhituPanelView
   private View a(String paramString)
   {
     TextView localTextView = new TextView(getContext());
-    localTextView.setId(2131379592);
+    localTextView.setId(2131379597);
     localTextView.setText(paramString);
     localTextView.setTextColor(Color.parseColor("#878B99"));
     localTextView.setTextSize(2, 14.0F);
@@ -113,39 +113,39 @@ public class ZhituPanelView
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(getContext(), 3);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(3, 2131379594);
+    localLayoutParams.addRule(3, 2131379599);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, localLayoutParams);
-    this.jdField_a_of_type_Aezz = new aezz(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aezz);
+    this.jdField_a_of_type_Aezx = new aezx(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aezx);
     if (localView != null) {
-      this.jdField_a_of_type_Aezz.a(localView);
+      this.jdField_a_of_type_Aezx.a(localView);
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new aezy(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new aezw(this));
   }
   
   public void a(boolean paramBoolean)
   {
-    aezn localaezn = aezn.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    aezl localaezl = aezl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (paramBoolean)
     {
-      localaezn.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView = this;
-      localaezn.jdField_a_of_type_Aezz = this.jdField_a_of_type_Aezz;
-      localaezn.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acut.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(), false);
+      localaezl.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView = this;
+      localaezl.jdField_a_of_type_Aezx = this.jdField_a_of_type_Aezx;
+      localaezl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acup.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(), false);
       return;
     }
-    localaezn.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView = null;
-    localaezn.jdField_a_of_type_Aezz = null;
+    localaezl.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView = null;
+    localaezl.jdField_a_of_type_Aezx = null;
   }
   
   public void b()
   {
-    afae localafae = this.jdField_a_of_type_Afae;
-    if ((localafae == null) || (localafae.jdField_a_of_type_JavaLangString == null) || (localafae.jdField_a_of_type_Afaf == null)) {
+    afac localafac = this.jdField_a_of_type_Afac;
+    if ((localafac == null) || (localafac.jdField_a_of_type_JavaLangString == null) || (localafac.jdField_a_of_type_Afad == null)) {
       return;
     }
-    ThreadManager.post(new ZhituPanelView.1(this, localafae), 8, null, false);
-    aezn.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localafae);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D5", "0X80094D5", 0, 0, "", "", "", "");
+    ThreadManager.post(new ZhituPanelView.1(this, localafac), 8, null, false);
+    aezl.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localafac);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D5", "0X80094D5", 0, 0, "", "", "", "");
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aC();
   }

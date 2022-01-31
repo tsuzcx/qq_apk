@@ -570,6 +570,9 @@ public class VideoEmbeddedWidgetClient
         QLog.e("miniapp-embedded", 1, "handleUpdateXWebVideo  play error.", localThrowable);
         continue;
         QLog.e("miniapp-embedded", 1, "handleUpdateXWebVideo renderer is null!");
+        continue;
+        this.mMediaPlayer.setVolume(1.0F, 1.0F);
+        continue;
       }
       if (paramJSONObject.has("position"))
       {
@@ -582,6 +585,14 @@ public class VideoEmbeddedWidgetClient
         }
         this.renderer.setSurfaceSize(this.width, this.height);
         this.renderer.setVideoSize(this.videoWidth, this.videoHeight, this.objectFit);
+      }
+      if (this.mMediaPlayer != null)
+      {
+        if (!this.muted) {
+          continue;
+        }
+        this.mMediaPlayer.setVolume(0.0F, 0.0F);
+        this.mMediaPlayer.setLooping(this.loop);
       }
       return;
       str = MiniAppFileManager.getInstance().getAbsolutePath(this.filePath);

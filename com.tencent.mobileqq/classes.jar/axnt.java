@@ -1,6 +1,20 @@
-public abstract interface axnt
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.mobileqq.splashad.SplashADView.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
+
+public class axnt
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public abstract void a();
+  public axnt(SplashADView paramSplashADView) {}
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    ThreadManager.getUIHandler().postDelayed(new SplashADView.1.1(this), 200L);
+    this.a.a();
+  }
 }
 
 

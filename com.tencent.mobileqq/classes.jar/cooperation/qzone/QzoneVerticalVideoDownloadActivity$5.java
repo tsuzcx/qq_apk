@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bhhr;
+import bhii;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 

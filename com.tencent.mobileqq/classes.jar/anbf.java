@@ -1,60 +1,64 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anbf
-  extends ampb<anbe>
 {
-  public static anbe a()
-  {
-    return (anbe)ampm.a().a(342);
-  }
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a()
+  public static anbf a(amph[] paramArrayOfamph)
   {
-    return 342;
-  }
-  
-  @NonNull
-  public anbe a(int paramInt)
-  {
-    return new anbe();
-  }
-  
-  @Nullable
-  public anbe a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anbe.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      paramArrayOfamph = null;
     }
-    return null;
+    anbf localanbf;
+    for (;;)
+    {
+      return paramArrayOfamph;
+      localanbf = new anbf();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
+        if (localJSONObject.has("AndroidGroupListJumpURL"))
+        {
+          localanbf.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localanbf.jdField_a_of_type_JavaLangString);
+          }
+        }
+        paramArrayOfamph = localanbf;
+        if (localJSONObject.has("AndroidGroupListWebEnable"))
+        {
+          localanbf.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
+          paramArrayOfamph = localanbf;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localanbf.jdField_a_of_type_Boolean);
+            return localanbf;
+          }
+        }
+      }
+      catch (JSONException paramArrayOfamph)
+      {
+        paramArrayOfamph.printStackTrace();
+      }
+    }
+    return localanbf;
   }
   
-  public Class<anbe> a()
+  public String a()
   {
-    return anbe.class;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anbe paramanbe) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,40 +1,44 @@
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
-class aosh
-  implements bfoq
+public class aosh
+  implements View.OnClickListener
 {
-  aosh(aosg paramaosg, FileInfo paramFileInfo, bfol parambfol) {}
+  public aosh(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!apvb.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (apvb.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
+    if (paramView == null)
     {
-      apue.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-      this.jdField_a_of_type_Aosg.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-    }
-    try
-    {
-      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_Aosg.a.a.a.sendBroadcast(paramView);
-      label104:
-      this.jdField_a_of_type_Aosg.a.a.f();
-      if (this.jdField_a_of_type_Bfol.isShowing()) {
-        this.jdField_a_of_type_Bfol.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
       }
       return;
-      aptv.a(2131692410);
-      return;
     }
-    catch (Exception paramView)
+    FileInfo localFileInfo = (FileInfo)paramView.getTag();
+    if (localFileInfo != null)
     {
-      break label104;
+      if (this.a.jdField_a_of_type_Aoqb != null) {
+        this.a.jdField_a_of_type_Aoqb.a(null);
+      }
+      if (!apvd.c(localFileInfo.c())) {
+        break label99;
+      }
+      this.a.a(localFileInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Aoqb.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.f();
+      return;
+      label99:
+      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692412);
+      aptx.a(apug.d(localFileInfo.d()) + str);
     }
   }
 }

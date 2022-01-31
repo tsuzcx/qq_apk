@@ -1,26 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.WindowManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
 
-class bcoj
-  implements Animator.AnimatorListener
+public class bcoj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bcoj(bcof parambcof) {}
+  public bcoj(ParticipleView paramParticipleView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (bcof.a(this.a) != null)
-    {
-      bcof.a(this.a).removeViewImmediate(bcof.a(this.a));
-      bcof.a(this.a, null);
-    }
+    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

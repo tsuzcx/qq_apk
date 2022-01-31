@@ -1,14 +1,24 @@
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
+
 public class blcd
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
+  public static String a(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
+    }
+  }
+  
+  public static String b(Context paramContext)
+  {
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.a();
+    return paramContext + str;
+  }
 }
 
 

@@ -1,11 +1,14 @@
-final class bfdx
-  implements com.tencent.smtt.sdk.ValueCallback
+class bfdx
+  implements bekt
 {
-  bfdx(android.webkit.ValueCallback paramValueCallback) {}
+  bfdx(bfdw parambfdw, String paramString) {}
   
-  public void onReceiveValue(Object paramObject)
+  public String getNativeLibDir()
   {
-    this.a.onReceiveValue(paramObject);
+    if (beku.a(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return null;
   }
 }
 

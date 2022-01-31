@@ -9,20 +9,8 @@ public class acgb
   
   public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c = false;
-    if (this.a.a != null)
-    {
-      this.a.a.a(4);
-      this.a.d();
-      this.a.c();
-    }
-    if (asfb.a().c()) {
-      asfb.a().f(this.a.app);
-    }
-    TroopAssistantActivity.b(this.a);
+    TroopAssistantActivity.a(this.a);
+    axqy.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
   }
 }
 

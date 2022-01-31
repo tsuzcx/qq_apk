@@ -1,39 +1,23 @@
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video.EglHandlerThreadEx;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-@RequiresApi(api=18)
-public class arcy
-  implements arcg
+class arcy
+  implements EIPCResultCallback
 {
-  private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private vtn jdField_a_of_type_Vtn;
+  arcy(arcx paramarcx) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("identification_yuv", 2, "uninit..");
-    }
-    try
+    arcx.a(paramEIPCResult, "action");
+    switch (paramEIPCResult.code)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx.quitSafely();
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx = null;
-      }
+    default: 
+      return;
+    case -102: 
+      arcx.a(this.a).a(2, paramEIPCResult.data);
       return;
     }
-    finally {}
-  }
-  
-  public void a(vtr paramvtr)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    if (this.jdField_a_of_type_Vtn != null) {
-      this.jdField_a_of_type_Vtn.a(paramvtr);
-    }
+    arcx.a(this.a).a(1, paramEIPCResult.data);
   }
 }
 

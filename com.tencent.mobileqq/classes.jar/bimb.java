@@ -1,6 +1,12 @@
-public abstract interface bimb
+class bimb
+  implements bily
 {
-  public abstract void d();
+  bimb(bima parambima) {}
+  
+  public void a()
+  {
+    bima.a(this.a).a(131076, new Object[0]);
+  }
 }
 
 

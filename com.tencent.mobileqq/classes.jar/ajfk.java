@@ -1,8 +1,10 @@
 public abstract interface ajfk
 {
-  public abstract void a(String paramString, int paramInt);
+  public abstract void a();
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void b();
 }
 
 

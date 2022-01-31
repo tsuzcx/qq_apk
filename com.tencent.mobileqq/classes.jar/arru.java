@@ -1,19 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class arru
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public arru(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, arsq paramarsq) {}
+  public arru(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Arsq.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,43 +1,23 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class abpf
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public WeakReference<NotificationActivity> a;
+  public abpf(NotifyPCActiveActivity paramNotifyPCActiveActivity, ajti paramajti) {}
   
-  public abpf(String paramString, WeakReference<NotificationActivity> paramWeakReference)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
-    {
-      paramView = (NotificationActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      paramView.startActivity(localIntent);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_Ajti.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpf
  * JD-Core Version:    0.7.0.1
  */

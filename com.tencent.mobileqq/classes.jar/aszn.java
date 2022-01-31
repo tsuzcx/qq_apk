@@ -1,161 +1,61 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.oidb_0x8da.oidb_0x8da.RspBody;
+import tencent.im.oidb.oidb_0x8da.oidb_0x8da.TinyInfo;
 
-public class aszn
+class aszn
+  extends mxg
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static int[] jdField_a_of_type_ArrayOfInt;
+  aszn(aszl paramaszl, asyu paramasyu, long paramLong) {}
   
-  public static int a(MessageForStructing paramMessageForStructing)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramMessageForStructing = (AbsShareMsg)paramMessageForStructing.structingMsg;
-    if (paramMessageForStructing.getItemCount() > 0)
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "onResult errorCode=" + paramInt + ", data=" + paramArrayOfByte);
+    }
+    if (paramInt == 0)
     {
-      paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if ((paramMessageForStructing instanceof axwz))
-      {
-        paramMessageForStructing = (axwz)paramMessageForStructing;
-        if (paramMessageForStructing.a.size() > 0)
+      if (paramArrayOfByte != null) {
+        for (;;)
         {
-          paramMessageForStructing = paramMessageForStructing.a.getString("fCount");
-          if (!TextUtils.isEmpty(paramMessageForStructing)) {
-            return Integer.valueOf(paramMessageForStructing).intValue();
+          try
+          {
+            paramBundle = new oidb_0x8da.RspBody();
+            paramBundle.mergeFrom(paramArrayOfByte);
+            paramArrayOfByte = paramBundle.rpt_msg_tiny_info.get().iterator();
+            if (paramArrayOfByte.hasNext())
+            {
+              paramBundle = (oidb_0x8da.TinyInfo)paramArrayOfByte.next();
+              if (paramBundle.uint32_result.get() == 0) {
+                this.jdField_a_of_type_Asyu.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
+              }
+            }
+            else
+            {
+              return;
+            }
           }
+          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("Q..troop.faceScore", 2, "onResult exception=" + paramArrayOfByte.toString());
+            }
+            this.jdField_a_of_type_Asyu.a(this.jdField_a_of_type_Long, -1L);
+          }
+          this.jdField_a_of_type_Asyu.a(this.jdField_a_of_type_Long, -1L);
+          QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin oidb_0x8da onResult  uin=" + paramBundle.uint64_uin.get() + " tinyid=" + paramBundle.uint64_tinyid.get() + " result=" + paramBundle.uint32_result.get());
         }
       }
-    }
-    return 0;
-  }
-  
-  public static String a(MessageForStructing paramMessageForStructing)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramMessageForStructing = (AbsShareMsg)paramMessageForStructing.structingMsg;
-    if (paramMessageForStructing.getItemCount() > 0)
-    {
-      paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if ((paramMessageForStructing instanceof axwz))
-      {
-        Object localObject = (axwz)paramMessageForStructing;
-        if (((axwz)localObject).a.size() > 0)
-        {
-          paramMessageForStructing = ((axwz)localObject).a.getString("sNick");
-          String str = ((axwz)localObject).a.getString("rNick");
-          localObject = ((axwz)localObject).a.getString("cMean");
-          localStringBuilder.append(paramMessageForStructing).append("送给").append(str).append((String)localObject);
-        }
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("icon");
+      this.jdField_a_of_type_Asyu.a(this.jdField_a_of_type_Long, -1L);
       return;
     }
-    catch (JSONException paramString) {}
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (!(paramMessageRecord instanceof ChatMessage)) {
-      return false;
-    }
-    paramMessageRecord = (ChatMessage)paramMessageRecord;
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = (MessageForStructing)paramMessageRecord;
-      if ((paramMessageRecord.structingMsg != null) && ((paramMessageRecord.structingMsg instanceof AbsShareMsg)) && (paramMessageRecord.structingMsg.mMsgServiceID == 52))
-      {
-        paramMessageRecord = (AbsShareMsg)paramMessageRecord.structingMsg;
-        if ((paramMessageRecord.getItemCount() <= 0) || (!(paramMessageRecord.getItemByIndex(0) instanceof axwz))) {}
-      }
-    }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static int[] a(Context paramContext)
-  {
-    if (jdField_a_of_type_ArrayOfInt != null) {
-      return jdField_a_of_type_ArrayOfInt;
-    }
-    paramContext = bbjn.k(paramContext);
-    if (paramContext != null) {
-      b(paramContext);
-    }
-    return jdField_a_of_type_ArrayOfInt;
-  }
-  
-  /* Error */
-  public static void b(String paramString)
-  {
-    // Byte code:
-    //   0: new 84	org/json/JSONObject
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 86	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   8: ldc 118
-    //   10: invokevirtual 122	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   13: astore_0
-    //   14: aload_0
-    //   15: ifnull +47 -> 62
-    //   18: aload_0
-    //   19: invokevirtual 127	org/json/JSONArray:length	()I
-    //   22: newarray int
-    //   24: putstatic 105	aszn:jdField_a_of_type_ArrayOfInt	[I
-    //   27: iconst_0
-    //   28: istore_1
-    //   29: iload_1
-    //   30: aload_0
-    //   31: invokevirtual 127	org/json/JSONArray:length	()I
-    //   34: if_icmpge +28 -> 62
-    //   37: aload_0
-    //   38: iload_1
-    //   39: invokevirtual 130	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   42: astore_3
-    //   43: aload_3
-    //   44: invokestatic 136	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   47: istore_2
-    //   48: getstatic 105	aszn:jdField_a_of_type_ArrayOfInt	[I
-    //   51: iload_1
-    //   52: iload_2
-    //   53: iastore
-    //   54: iload_1
-    //   55: iconst_1
-    //   56: iadd
-    //   57: istore_1
-    //   58: goto -29 -> 29
-    //   61: astore_0
-    //   62: return
-    //   63: astore_3
-    //   64: goto -10 -> 54
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	paramString	String
-    //   28	30	1	i	int
-    //   47	6	2	j	int
-    //   42	2	3	str	String
-    //   63	1	3	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	14	61	org/json/JSONException
-    //   18	27	61	org/json/JSONException
-    //   29	43	61	org/json/JSONException
-    //   43	54	61	org/json/JSONException
-    //   43	54	63	java/lang/Exception
+    this.jdField_a_of_type_Asyu.a(this.jdField_a_of_type_Long, -1L);
   }
 }
 

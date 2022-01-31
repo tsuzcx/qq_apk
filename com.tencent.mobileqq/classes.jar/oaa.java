@@ -1,21 +1,88 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oaa
-  implements zcg
 {
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    if (paramLong == 8589934598L)
+    int k = 1;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
+      try
+      {
+        if (paramAdData.a == null) {
+          return paramJSONObject;
+        }
+        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
+        if (!TextUtils.isEmpty(paramAdData.a.k)) {
+          paramJSONObject.put("id_inner_small_img", new JSONObject());
+        }
+        JSONObject localJSONObject;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
+          paramJSONObject.put("id_inner_title", localJSONObject);
+        }
+        if ((!oai.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.h);
+          paramJSONObject.put("id_inner_category", localJSONObject);
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Nxy.d)) {
+          break label424;
+        }
+        paramJSONObject.put("id_inner_game_img1", new JSONObject());
+        paramJSONObject.put("id_game_img1_container1", new JSONObject());
+        i = 1;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Nxy.e))
+        {
+          paramJSONObject.put("id_inner_game_img2", new JSONObject());
+          paramJSONObject.put("id_game_img2_container2", new JSONObject());
+          i = 1;
+          j = 1;
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Nxy.f)) {
+          break label421;
+        }
+        paramJSONObject.put("id_inner_game_img3", new JSONObject());
+        paramJSONObject.put("id_game_img3_container3", new JSONObject());
+        i = 0;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Nxy.g))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Nxy.g);
+          paramJSONObject.put("id_inner_ad_name", localJSONObject);
+          j = k;
+          if (j != 0) {
+            paramJSONObject.put("id_bottom_operation", new JSONObject());
+          }
+          if (i != 0) {
+            paramJSONObject.put("id_game_img_right_space", new JSONObject());
+          }
+          localJSONObject = new JSONObject();
+          localJSONObject.put("innerGameModel", paramAdData);
+          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
+          return paramJSONObject;
+        }
       }
-      paramString = new Bundle();
-      wxu.a().a(138, paramString);
+      catch (JSONException paramAdData)
+      {
+        paramAdData.printStackTrace();
+        return paramJSONObject;
+      }
+      continue;
+      label421:
+      continue;
+      label424:
+      int i = 0;
+      int j = 0;
     }
-    return false;
   }
 }
 

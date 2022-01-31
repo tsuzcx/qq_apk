@@ -1,9 +1,20 @@
-public abstract interface bjsb
-  extends bjwv
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class bjsb
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt);
+  bjsb(bjry parambjry) {}
   
-  public abstract void b();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    bjry.b(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

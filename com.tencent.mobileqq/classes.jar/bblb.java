@@ -1,48 +1,11 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Rect;
 
-public final class bblb
-  implements URLDrawable.URLDrawableListener
+final class bblb
+  implements bblf<Rect>
 {
-  public bblb(Resources paramResources, String paramString, ImageView paramImageView, Drawable paramDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    int i;
-    if (paramURLDrawable != null)
-    {
-      i = actn.a(15.0F, this.jdField_a_of_type_AndroidContentResResources);
-      j = paramURLDrawable.getIntrinsicHeight();
-      if (j == 0)
-      {
-        boolean bool = new File(bbql.a(this.jdField_a_of_type_JavaLangString)).delete();
-        QLog.e("VipUtils", 1, "onLoadSuccessed drawableHeight=0, deleteSucc=" + bool + " url=" + this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-    }
-    else
-    {
-      return;
-    }
-    int j = paramURLDrawable.getIntrinsicWidth() * i / j;
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.height = i;
-    localLayoutParams.width = j;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
   }
 }
 

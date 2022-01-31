@@ -1,20 +1,19 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 
-public abstract interface besi
+public final class besi
+  implements Parcelable.Creator<ShareChatModel>
 {
-  public abstract Activity a();
+  public ShareChatModel a(Parcel paramParcel)
+  {
+    return new ShareChatModel(paramParcel, null);
+  }
   
-  public abstract beru a();
-  
-  public abstract MiniAppInfo a();
-  
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public ShareChatModel[] a(int paramInt)
+  {
+    return new ShareChatModel[paramInt];
+  }
 }
 
 

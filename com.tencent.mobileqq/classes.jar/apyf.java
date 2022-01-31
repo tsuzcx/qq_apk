@@ -1,73 +1,15 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.6;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
 
-public class apyf
-  extends AsyncTask<Object, Object, Integer>
+class apyf
+  implements DialogInterface.OnClickListener
 {
-  public apyf(SendBottomBar.6 param6) {}
+  apyf(apye paramapye) {}
   
-  protected Integer a(Object... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramVarArgs = apeh.a();
-    Iterator localIterator = paramVarArgs.iterator();
-    int i = 0;
-    VFSFile localVFSFile;
-    for (;;)
-    {
-      FileInfo localFileInfo;
-      if (localIterator.hasNext())
-      {
-        localFileInfo = (FileInfo)localIterator.next();
-        if (!localFileInfo.b()) {}
-      }
-      else
-      {
-        SendBottomBar.a(this.a.this$0).a(paramVarArgs);
-        axty.a().a(true);
-        return Integer.valueOf(i);
-      }
-      if (!SendBottomBar.a(this.a.this$0).a().a(localFileInfo.c())) {
-        try
-        {
-          localVFSFile = new VFSFile(localFileInfo.c());
-          if (!localVFSFile.exists()) {
-            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      localVFSFile.delete();
-      SendBottomBar.a(this.a.this$0, SendBottomBar.a(this.a.this$0) + localException.a());
-      i += 1;
-    }
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.this$0.d();
-    paramInteger = new Intent();
-    paramInteger.putExtra("extra_delete_total_file_size", SendBottomBar.a(this.a.this$0));
-    SendBottomBar.a(this.a.this$0).setResult(-1, paramInteger);
-    apeh.b();
-    this.a.this$0.a();
-    SendBottomBar.a(this.a.this$0).n();
+    SendBottomBar.a(this.a.a);
   }
 }
 

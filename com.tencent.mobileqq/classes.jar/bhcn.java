@@ -1,31 +1,20 @@
-import com.tencent.widget.AbsListView;
-import cooperation.qzone.contentbox.QZoneMsgFragment;
+import java.io.File;
+import java.util.Comparator;
 
-public class bhcn
-  implements bfob
+final class bhcn
+  implements Comparator<File>
 {
-  public bhcn(QZoneMsgFragment paramQZoneMsgFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (QZoneMsgFragment.a(this.a) != null) {
-      QZoneMsgFragment.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    long l1 = paramFile1.lastModified();
+    long l2 = paramFile2.lastModified();
+    if (l1 > l2) {
+      return -1;
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    switch (paramInt)
-    {
+    if (l1 < l2) {
+      return 1;
     }
-    for (;;)
-    {
-      if (QZoneMsgFragment.a(this.a) != null) {
-        QZoneMsgFragment.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      QZoneMsgFragment.a(this.a);
-    }
+    return 0;
   }
 }
 

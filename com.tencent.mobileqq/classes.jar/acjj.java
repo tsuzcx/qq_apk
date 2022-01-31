@@ -2,8 +2,8 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.List;
 
 public class acjj
   implements View.OnClickListener
@@ -12,22 +12,19 @@ public class acjj
   
   public void onClick(View paramView)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
+    vxp.a(this.a.a);
+    vxp.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
+      paramView.add(((acku)this.a.a.a.get(i)).a);
+      i += 1;
     }
-    label159:
-    for (int i = 0;; i = 1)
-    {
-      axqw.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
-      return;
-    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

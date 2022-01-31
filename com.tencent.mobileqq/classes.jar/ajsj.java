@@ -1,36 +1,26 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
-class ajsj
-  implements EIPCResultCallback
+final class ajsj
+  implements Animation.AnimationListener
 {
-  ajsj(ajsh paramajsh) {}
+  ajsj(View paramView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
+    if ((this.a != null) && (this.a.getVisibility() == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
-      }
-      return;
+      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772209);
+      paramAnimation.setAnimationListener(this);
+      this.a.startAnimation(paramAnimation);
     }
-    boolean bool = paramEIPCResult.isSuccess();
-    String str2 = paramEIPCResult.data.getString("key_method_action");
-    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
-    }
-    String str1 = "";
-    if ("setFriendGrouping".equals(str2))
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
-      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
-    }
-    ajsh.a(this.a, str3, str1, str2);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

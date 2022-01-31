@@ -1,22 +1,25 @@
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.10.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.10.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class rer
-  implements bfob
+  implements ory
 {
   public rer(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    this.a.a(new ret(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.10.2(this));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void b(MessageRecord paramMessageRecord)
   {
-    this.a.a(new res(this, "onScrollStateChanged", paramAbsListView, paramInt));
-    if ((onk.a()) && (paramInt != 0)) {
-      aaad.a().a("proteus_family_feeds");
-    }
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.10.1(this));
   }
 }
 

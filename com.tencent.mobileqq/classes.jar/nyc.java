@@ -1,16 +1,4 @@
-public class nyc
-{
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  
-  public nyc() {}
-  
-  public nyc(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
-}
+class nyc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

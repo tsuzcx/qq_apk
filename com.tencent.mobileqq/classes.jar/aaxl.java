@@ -1,15 +1,22 @@
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.activity.Conversation;
 
 public class aaxl
-  extends aoeu
+  implements Handler.Callback
 {
   public aaxl(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    asel.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      this.a.a(1134013, 0L, false);
+      return true;
     }
+    this.a.e(true);
+    return true;
   }
 }
 

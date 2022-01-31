@@ -1,32 +1,15 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
 
-public class bkmj
+class bkmj
+  implements alxj
 {
-  TroopInfo a;
-  public boolean a;
+  bkmj(bkmi parambkmi) {}
   
-  public bkmj(boolean paramBoolean, TroopInfo paramTroopInfo)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-  }
-  
-  public static ArrayList<bkmj> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
-  {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      bkmj localbkmj = new bkmj(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localbkmj.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localbkmj);
-      i += 1;
+    if (bkmi.a(this.a) != null) {
+      bkmi.a(this.a).a(paramString1, 1, paramString2, paramBitmap);
     }
-    return localArrayList;
   }
 }
 

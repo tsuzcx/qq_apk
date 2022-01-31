@@ -1,51 +1,55 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class tmy
-  extends syv<too>
+  extends sys
 {
-  private final String a;
-  public List<String> a;
-  
-  public tmy()
-  {
-    this.jdField_a_of_type_JavaLangString = sxp.a("StorySvc.get_share_group_info");
-  }
+  public List<String> a = new ArrayList();
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return sxm.a("StorySvc.get_date_video_list");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
+    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
     try
     {
-      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
-      return new too(localRspGetShareGroupInfo);
+      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
+      return new too(localRspSimpleInfoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
+      ved.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
     }
     return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
+    ArrayList localArrayList = new ArrayList();
+    if (this.a != null)
     {
-      String str = (String)localIterator.next();
-      localReqGetShareGroupInfo.share_group_id_list.add(str);
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
+      }
     }
-    return localReqGetShareGroupInfo.toByteArray();
+    localReqSimpleInfoList.vid_list.addAll(localArrayList);
+    return localReqSimpleInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
   }
 }
 

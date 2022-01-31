@@ -1,16 +1,17 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class sob
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
   public sob(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    return paramKeyEvent.getKeyCode() == 66;
+    PublicAccountImageCollectionCommentActivity.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
+    PublicAccountImageCollectionCommentActivity.b(this.a, false);
   }
 }
 

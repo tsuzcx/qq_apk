@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.adapter;
 
-import aipt;
-import aipu;
+import aipr;
+import aips;
 
 public class TroopListAdapter2$1$1
   implements Runnable
 {
-  public TroopListAdapter2$1$1(aipu paramaipu) {}
+  public TroopListAdapter2$1$1(aips paramaips) {}
   
   public void run()
   {

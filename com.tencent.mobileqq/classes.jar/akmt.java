@@ -1,27 +1,107 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
+import mqq.manager.Manager;
 
 public class akmt
-  extends akim
+  extends Observable
+  implements Manager
 {
-  private akmt(UpdateTroop paramUpdateTroop) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, SoftReference<akmv>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  protected void a(boolean paramBoolean)
+  public akmt(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private akmv a(String paramString)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = (akmv)((SoftReference)localObject1).get();
+          Object localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = new akmv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new akmu(this));
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
+          }
+          return localObject2;
+        }
+      }
+      Object localObject1 = null;
+    }
+  }
+  
+  public FullMessageSearchResult a(String paramString)
+  {
+    return a(paramString).b();
+  }
+  
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
     }
-    if (!paramBoolean)
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      this.a.a(6);
-      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (SoftReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (akmv)((SoftReference)localObject2).get();
+          if (localObject2 != null) {
+            ((akmv)localObject2).b(2);
+          }
+        }
+      }
     }
-    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (paramString != null)
+        {
+          paramString = (akmv)paramString.get();
+          if (paramString != null) {
+            paramString.a();
+          }
+          return;
+        }
+      }
+      paramString = null;
+    }
+  }
+  
+  public FullMessageSearchResult b(String paramString)
+  {
+    return a(paramString).c();
+  }
+  
+  public void onDestroy()
+  {
+    a();
   }
 }
 

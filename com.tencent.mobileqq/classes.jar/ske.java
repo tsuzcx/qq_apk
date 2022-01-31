@@ -1,57 +1,36 @@
-import android.text.TextUtils;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ske
+  extends sjx
 {
-  public skg a;
-  public skh a;
+  public long a;
+  public boolean a;
   
-  public ske()
+  public ske(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Skh = new skh(null);
-    this.jdField_a_of_type_Skg = new skg(null);
+    super(paramJSONObject);
   }
   
-  private static JSONObject a(String paramString)
+  public static ske a(JSONObject paramJSONObject)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return null;
+    return new ske(paramJSONObject);
   }
   
-  public static ske a()
+  public void a(JSONObject paramJSONObject)
   {
-    return (ske)ampm.a().a(447);
-  }
-  
-  public void a(String paramString)
-  {
-    sne.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
-    paramString = a(paramString);
-    if (paramString == null) {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
       return;
     }
-    this.jdField_a_of_type_Skh = skh.a(paramString.optJSONObject("video_plugin_threshold"));
-    this.jdField_a_of_type_Skg = skg.a(paramString.optJSONObject("trends_tab_strategy"));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 3600L;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Skh).append(", mStrategyConfig=");
-    if (this.jdField_a_of_type_Skg != null) {}
-    for (String str = this.jdField_a_of_type_Skg.a;; str = "null") {
-      return str + '}';
-    }
+    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

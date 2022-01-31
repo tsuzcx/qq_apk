@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.chat;
 
-import amgc;
-import bbbr;
+import amgb;
+import bbcf;
 
 public class MessageNotificationSettingManager$4
   implements Runnable
 {
-  public MessageNotificationSettingManager$4(amgc paramamgc, String paramString) {}
+  public MessageNotificationSettingManager$4(amgb paramamgb, String paramString) {}
   
   public void run()
   {
     try
     {
-      bbbr.a(this.a, false);
+      bbcf.a(this.a, false);
       return;
     }
     catch (Throwable localThrowable) {}

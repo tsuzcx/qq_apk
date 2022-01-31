@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aunj;
-import aunt;
+import aunl;
+import aunv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 final class ForwardUtils$4
   implements Runnable
 {
-  ForwardUtils$4(aunt paramaunt, QQAppInterface paramQQAppInterface) {}
+  ForwardUtils$4(aunv paramaunv, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    aunj.a(this.jdField_a_of_type_Aunt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    aunl.a(this.jdField_a_of_type_Aunv, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

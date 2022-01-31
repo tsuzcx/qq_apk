@@ -1,20 +1,16 @@
-import android.widget.MediaController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class udx
-  implements ufm
+class udx
+  implements DialogInterface.OnClickListener
 {
-  public udx(TextureVideoView paramTextureVideoView) {}
+  udx(udw paramudw) {}
   
-  public void a(ufk paramufk)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Int = 5;
-    this.a.b = 5;
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
-    }
-    if (this.a.jdField_a_of_type_Ufm != null) {
-      this.a.jdField_a_of_type_Ufm.a(this.a.jdField_a_of_type_Ufk);
+    if (this.a.a.jdField_a_of_type_Ufj != null) {
+      this.a.a.jdField_a_of_type_Ufj.a(this.a.a.jdField_a_of_type_Ufh);
     }
   }
 }

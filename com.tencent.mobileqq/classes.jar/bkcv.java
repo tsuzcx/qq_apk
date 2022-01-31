@@ -1,25 +1,27 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.text.EditTextPreView;
 
-public class bkcv
-  extends GestureDetector.SimpleOnGestureListener
+class bkcv
+  implements bkox
 {
-  private bkcv(CropNewView paramCropNewView) {}
+  bkcv(bkcm parambkcm) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(@NonNull bkpe parambkpe)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return CropNewView.a(this.a, paramFloat1, paramFloat2);
+    switch (parambkpe.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    }
+    int i = parambkpe.b;
+    this.a.jdField_a_of_type_Bkbw.jdField_a_of_type_Int = i;
+    this.a.c = i;
+    if ((this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem instanceof bjij))
+    {
+      ((bjij)this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).a(i);
+      this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
+    }
+    vei.a("video_edit_text", "clk_color", 0, 0, new String[] { (String)tau.a().a("EditVideoDTextFace.mSrcFrom"), parambkpe.jdField_a_of_type_JavaLangString, "", "" });
   }
 }
 

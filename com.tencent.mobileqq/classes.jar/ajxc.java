@@ -1,15 +1,6 @@
-import mqq.app.AppRuntime.Status;
-
-public final class ajxc
+public abstract interface ajxc
 {
-  private final long jdField_a_of_type_Long;
-  private final AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
-  
-  private ajxc(AppRuntime.Status paramStatus, long paramLong)
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract void a();
 }
 
 

@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 
 final class qoq
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  qoq(ViewGroup paramViewGroup, int paramInt1, int paramInt2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface.dismiss();
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    localLayoutParams.width = (this.jdField_a_of_type_Int + paramValueAnimator.x);
+    int i = this.b;
+    localLayoutParams.height = (paramValueAnimator.y + i);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
   }
 }
 

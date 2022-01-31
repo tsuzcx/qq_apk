@@ -1,26 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
-public class qok
-  implements ValueAnimator.AnimatorUpdateListener
+final class qok
+  extends ClickableSpan
 {
-  private qok(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  qok(TextView paramTextView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if (VideoFeedsGuideView.a(this.a) == 1)
-    {
-      VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.b(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.c(this.a));
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.d(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.d(this.a));
-    }
+    this.a.performClick();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 

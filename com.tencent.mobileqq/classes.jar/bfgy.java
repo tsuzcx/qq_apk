@@ -1,40 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.HashSet;
+import java.util.Set;
 
 public class bfgy
 {
-  public static int a()
+  private static final Set<Integer> a = new HashSet();
+  
+  static
   {
-    return belj.a("MiniGame", "MiniGameBannerAdMinWidth", 300);
+    a.add(Integer.valueOf(3001));
+    a.add(Integer.valueOf(3002));
+    a.add(Integer.valueOf(3003));
+    a.add(Integer.valueOf(3004));
+    a.add(Integer.valueOf(3005));
+    a.add(Integer.valueOf(3006));
+    a.add(Integer.valueOf(3007));
+    a.add(Integer.valueOf(3008));
+    a.add(Integer.valueOf(3009));
+    a.add(Integer.valueOf(3010));
+    a.add(Integer.valueOf(3011));
+    a.add(Integer.valueOf(3012));
+    a.add(Integer.valueOf(3013));
+    a.add(Integer.valueOf(1001));
+    a.add(Integer.valueOf(1022));
   }
   
-  public static BaseLibInfo a()
+  public static boolean a(MiniAppInfo paramMiniAppInfo)
   {
-    Object localObject = belj.a("MiniGame", "MiniGameBaseLib", "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20190708174635_6988/lib-1.4.7.zip\",\"key2\":\"\",\"key3\":\"1.4.7\",\"key4\": {\"file_length\": 6336933},\"key5\":2}");
-    besl.b("minigame", "MiniEng getWnsGameBaseLibInfo " + (String)localObject);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      try
-      {
-        localObject = BaseLibInfo.fromJSON(new JSONObject((String)localObject));
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        besl.d("minigame", "MiniEng getWnsGameBaseLibInfo failed", localException);
-      }
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    return belj.a("MiniGame", "MiniGameDefaultShareImg", "https://qzonestyle.gtimg.cn/aoi/sola/20190510161934_LYAUVguqnV.png");
-  }
-  
-  public static String a(String paramString)
-  {
-    return belj.a("MiniGame", "MiniGameEngineVersion", paramString);
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (a.contains(Integer.valueOf(paramMiniAppInfo.launchParam.a)));
   }
 }
 

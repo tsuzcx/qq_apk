@@ -1,53 +1,21 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.1;
-import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.2;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bevl
+final class bevl
+  implements bevs
 {
-  private static bevl jdField_a_of_type_Bevl;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  bevl(bevs parambevs) {}
   
-  public static bevl a()
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    if (jdField_a_of_type_Bevl == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bevl == null) {
-        jdField_a_of_type_Bevl = new bevl();
-      }
-      return jdField_a_of_type_Bevl;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (!this.b)
-      {
-        this.b = true;
-        beyo.a().a().post(new GameReportManager.1(this));
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      besl.d("GameReportManager", "onJsError", localThrowable);
+    if (this.a != null) {
+      this.a.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
     }
   }
   
-  public void b()
+  public void onInitGpkgInfo(int paramInt, bevt parambevt, String paramString)
   {
-    try
-    {
-      beyo.a().a().post(new GameReportManager.2(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      besl.d("GameReportManager", "onFirstFrame", localThrowable);
+    if (this.a != null) {
+      this.a.onInitGpkgInfo(paramInt, parambevt, paramString);
     }
   }
 }

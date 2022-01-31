@@ -1,18 +1,17 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
-import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
+import android.view.View;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
 class ariz
-  extends CustomizedDownloader
+  implements CustomizedLoading
 {
-  ariz(arii paramarii) {}
+  ariz(arik paramarik) {}
   
-  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
+  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
   {
-    paramBundle = new Bundle();
-    paramBundle.putString("url", paramString1);
-    paramBundle.putString("path", paramString2);
-    arjh.a().a(paramBundle, paramDownloadCallback);
+    LoadingFragment.a(paramContext, paramBundle, paramView);
   }
 }
 

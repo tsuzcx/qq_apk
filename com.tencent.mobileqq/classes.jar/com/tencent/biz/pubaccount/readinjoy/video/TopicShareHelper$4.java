@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.widgets.ElasticHorScrView;
-import qko;
+import qkl;
 
 public class TopicShareHelper$4
   implements Runnable
 {
-  public TopicShareHelper$4(qko paramqko, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public TopicShareHelper$4(qkl paramqkl, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
   
   public void run()
   {

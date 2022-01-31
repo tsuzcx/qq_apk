@@ -1,125 +1,51 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.ark.open.ArkView;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialView.2;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yut
-  implements ytd
+public class yut
+  implements ysy
 {
-  private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
-  private yum jdField_a_of_type_Yum = new yum();
+  private Activity jdField_a_of_type_AndroidAppActivity;
   
-  public yut(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
+  public yut(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
   {
-    ArkAppNotifyCenter.setNotify(yul.a().a().a, new WeakReference(this.jdField_a_of_type_Yum));
-    this.jdField_a_of_type_ComTencentArkOpenArkView = a(paramContext, paramGdtInterstitialParams);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  private static ArkView a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    WeakReference localWeakReference = new WeakReference(paramContext);
-    if (paramGdtInterstitialParams != null) {}
-    for (String str1 = paramGdtInterstitialParams.a();; str1 = null)
-    {
-      yuf localyuf = yul.a().a();
-      String str2 = a(paramGdtInterstitialParams);
-      yxs.b("GdtInterstitialView", String.format("load appName:%s view:%s minver:%s", new Object[] { localyuf.a, localyuf.b, localyuf.c }));
-      long l = System.currentTimeMillis();
-      ArkView localArkView = new ArkView(paramContext, null);
-      localArkView.setBorderType(0);
-      localArkView.load(localyuf.a, localyuf.b, localyuf.c, str2, null, new yuu(l, str1, localWeakReference, paramGdtInterstitialParams));
-      yyf.a(paramContext, paramGdtInterstitialParams);
-      return localArkView;
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
+    return -2147483648L;
   }
   
-  private static String a(GdtInterstitialParams paramGdtInterstitialParams)
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    if ((paramGdtInterstitialParams == null) || (!paramGdtInterstitialParams.b()))
-    {
-      yxs.d("GdtInterstitialView", "getMetaData error");
-      return null;
-    }
-    String str;
-    if (paramGdtInterstitialParams.jdField_a_of_type_Int == 1) {
-      str = "vertical";
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty(str))
-      {
-        yxs.d("GdtInterstitialView", "getMetaData error");
-        return null;
-        if ((paramGdtInterstitialParams.jdField_a_of_type_Int == 0) || (paramGdtInterstitialParams.jdField_a_of_type_Int == 8)) {
-          str = "horizontal";
-        }
-      }
-      else
-      {
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("screenType", str);
-          paramGdtInterstitialParams = yxr.a(paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.info);
-          if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams != JSONObject.NULL)) {
-            localJSONObject.put("adInfo", paramGdtInterstitialParams);
-          }
-          paramGdtInterstitialParams = new JSONObject();
-          paramGdtInterstitialParams.put("gdt", localJSONObject);
-          paramGdtInterstitialParams = paramGdtInterstitialParams.toString();
-          return paramGdtInterstitialParams;
-        }
-        catch (Throwable paramGdtInterstitialParams)
-        {
-          yxs.d("GdtInterstitialView", "getMetaData", paramGdtInterstitialParams);
-          return null;
-        }
-      }
-      str = null;
-    }
+    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
+    bcql.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    ysu.a().a(paramGdtAd.getAd());
   }
   
-  private static void b(int paramInt1, int paramInt2, String paramString)
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, ysx paramysx)
   {
-    AdThreadManager.INSTANCE.post(new GdtInterstitialView.2(paramString, paramInt1, paramInt2), 0);
+    QLog.e("GdtMotiveVideoAd", 1, "onAdFailedToLoad " + paramysx.a());
   }
   
-  public View a()
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    return this.jdField_a_of_type_ComTencentArkOpenArkView;
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
   
-  public void a(Context paramContext)
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    yxs.b("GdtInterstitialView", "pause");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onPause();
-    }
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
   
-  public void b(Context paramContext)
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    yxs.b("GdtInterstitialView", "resume");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onResume();
-    }
-  }
-  
-  public void c(Context paramContext)
-  {
-    yxs.b("GdtInterstitialView", "destroy");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onDestroy();
-    }
-    ArkAppNotifyCenter.setNotify(yul.a().a().a, null);
+    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 

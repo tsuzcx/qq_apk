@@ -1,67 +1,149 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 
 public class njc
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static njc jdField_a_of_type_Njc;
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new njd(this);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<String> b = new ArrayList();
+  private static njc jdField_a_of_type_Njc = new njc();
+  private long jdField_a_of_type_Long;
+  private nje jdField_a_of_type_Nje = new nje(null);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public static njc a()
   {
-    if (jdField_a_of_type_Njc == null) {
-      jdField_a_of_type_Njc = new njc();
+    try
+    {
+      if (jdField_a_of_type_Njc == null) {
+        jdField_a_of_type_Njc = new njc();
+      }
+      njc localnjc = jdField_a_of_type_Njc;
+      return localnjc;
     }
-    return jdField_a_of_type_Njc;
+    finally {}
   }
   
-  private void a()
+  public static void b(String paramString1, String paramString2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("videoId", paramString2);
+    localHashMap.put("uin", paramString1);
+    axrn.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_VIDEO_PRELOADED_RATE", true, 0L, 0L, localHashMap, "", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, "reportImaxVideoCoverRate:" + paramString2);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Nje.jdField_c_of_type_Long == -1L) {
+      this.jdField_a_of_type_Nje.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+    }
+  }
+  
+  public void a(String paramString, long paramLong, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Nje.a();
+    this.jdField_a_of_type_Long = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, "mClickTime:" + this.jdField_a_of_type_Long + " sToolShowTime:" + BaseApplicationImpl.sToolShowTime);
+    }
+    if ((BaseApplicationImpl.sToolShowTime == 0L) || (BaseApplicationImpl.sToolShowTime > paramLong)) {
+      this.jdField_a_of_type_Nje.jdField_a_of_type_Int = 0;
+    }
+    for (this.jdField_a_of_type_Nje.jdField_b_of_type_Long = (BaseApplicationImpl.sToolShowTime - paramLong);; this.jdField_a_of_type_Nje.jdField_b_of_type_Long = 0L)
     {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = aywk.a(str);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
-        }
+      long l = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Nje.jdField_a_of_type_Long = (l - paramLong);
+      this.jdField_a_of_type_Nje.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Nje.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      this.jdField_a_of_type_Nje.jdField_a_of_type_Int = 1;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_videoLoadErr";
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("adId", paramString1);
+    localHashMap.put("vid", paramString2);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Nje.toString());
+    }
+    axrn.a(BaseApplicationImpl.getContext()).a("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (this.b) {
+      return;
+    }
+    this.b = true;
+    this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_Remind_Dialog_Click";
+    this.jdField_a_of_type_Nje.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Nje.jdField_c_of_type_JavaLangString = paramString2;
+    paramString1 = this.jdField_a_of_type_Nje.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_Nje.toString() + " ok " + paramBoolean);
+    }
+    axrn.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_Nje.jdField_c_of_type_Long, 0L, paramString1, "", false);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Nje.jdField_b_of_type_Int == -1)
+    {
+      this.jdField_a_of_type_Nje.jdField_c_of_type_JavaLangString = paramString;
+      paramString = this.jdField_a_of_type_Nje;
+      if (!paramBoolean) {
+        break label36;
       }
+    }
+    label36:
+    for (int i = 1;; i = 0)
+    {
+      paramString.jdField_b_of_type_Int = i;
       return;
     }
   }
   
-  public void a(ArrayList<String> paramArrayList)
+  public void a(boolean paramBoolean)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label118;
-      }
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        String str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
-          }
-        }
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    a();
-    label118:
+    this.jdField_a_of_type_Boolean = true;
+    HashMap localHashMap = this.jdField_a_of_type_Nje.a();
+    if (paramBoolean) {}
+    for (this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost_ByUsr";; this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost")
+    {
+      axrn.a(BaseApplicationImpl.getContext()).a("", this.jdField_a_of_type_Nje.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Nje.d, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("AdvertisementStatistics", 2, "remindUsr:" + paramBoolean + this.jdField_a_of_type_Nje.toString());
+      return;
+    }
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Nje.d == -1L)
+    {
+      this.jdField_a_of_type_Nje.jdField_c_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Nje.d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+      a(paramBoolean);
+    }
   }
 }
 

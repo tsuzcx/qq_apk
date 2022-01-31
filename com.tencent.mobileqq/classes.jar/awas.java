@@ -1,38 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import java.util.HashMap;
 
-class awas
-  implements awax
+public class awas
 {
-  awas(awar paramawar) {}
-  
-  public void a(long paramLong)
+  public static void a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = awar.a(this.a).iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt1));
+    localHashMap.put("idType", String.valueOf(paramInt2));
+    axrn.a(BaseApplication.getContext()).a(null, "OrderMediaMsgAddTimeout", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(int paramInt, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt));
+    localHashMap.put("totalCost", String.valueOf(paramLong));
+    axrn.a(BaseApplication.getContext()).a(null, "OrderMediaMsgCompleteInfo", true, paramLong, paramInt, localHashMap, "");
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("msgType", String.valueOf(paramInt));
+    axrn localaxrn = axrn.a(BaseApplication.getContext());
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      awam localawam = (awam)localIterator.next();
-      if ((paramLong != localawam.jdField_a_of_type_Long) || (!awar.a(this.a).a(localawam.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
-        break label114;
-      }
-      this.a.a(paramLong);
-      bool = true;
-    }
-    label114:
-    for (;;)
-    {
-      break;
-      QLog.d(awar.a, 1, new Object[] { "notifyCheckStatus uniseq:", Long.valueOf(paramLong), ", invalid:", Boolean.valueOf(bool) });
+      localaxrn.a(null, "OrderMediaMsgSendTimeout", paramBoolean, 0L, 0L, localHashMap, "");
       return;
     }
   }
   
-  public void a(long paramLong, int paramInt)
+  public static void b(int paramInt1, int paramInt2)
   {
-    QLog.d(awar.a, 1, new Object[] { "notifyError uniseq:", Long.valueOf(paramLong), ", errCode:", Integer.valueOf(paramInt) });
-    this.a.a(paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalSize", String.valueOf(paramInt1));
+    localHashMap.put("mediaSize", String.valueOf(paramInt2));
+    axrn localaxrn = axrn.a(BaseApplication.getContext());
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrn.a(null, "OrderMediaMsgMultiSeperate", bool, 0L, paramInt1, localHashMap, "");
+      return;
+    }
   }
 }
 

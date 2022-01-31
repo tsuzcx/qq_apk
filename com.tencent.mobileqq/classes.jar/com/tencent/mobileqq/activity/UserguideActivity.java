@@ -8,7 +8,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import axrl;
+import axrn;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -59,9 +59,9 @@ public class UserguideActivity
         String str1 = ((SharedPreferences)localObject).getString("qq_version", "");
         String str2 = ((SharedPreferences)localObject).getString("qq_version_full", "");
         if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 4440, local build num is " + str1);
+          QLog.e("UserGuide", 2, "pkg build num is 4480, local build num is " + str1);
         }
-        if (!"4440".equals(str1))
+        if (!"4480".equals(str1))
         {
           localHashMap = new HashMap();
           if (!TextUtils.isEmpty(str1)) {
@@ -71,19 +71,19 @@ public class UserguideActivity
             QLog.e("UserGuide", 2, "this is a new install");
           }
           localHashMap.put("userguide_update_type", "2");
-          axrl.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
+          axrn.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
           paramSplashActivity = ((SharedPreferences)localObject).edit();
           localObject = AppSetting.a();
           paramSplashActivity.putString("qq_version_pre", str1);
           paramSplashActivity.putString("qq_version_full_pre", str2);
-          paramSplashActivity.putString("qq_version", "4440");
+          paramSplashActivity.putString("qq_version", "4480");
           paramSplashActivity.putString("qq_version_full", (String)localObject);
           paramSplashActivity.commit();
           if (QLog.isColorLevel()) {
-            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4440", localObject }));
+            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4480", localObject }));
           }
         }
-        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4440");
+        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4480");
       }
       else
       {

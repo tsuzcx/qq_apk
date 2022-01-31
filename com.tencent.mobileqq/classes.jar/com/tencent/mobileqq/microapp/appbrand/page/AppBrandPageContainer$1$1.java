@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.appbrand.page;
 
-import bcpq;
-import bcpw;
+import bcqf;
+import bcql;
 import java.lang.ref.WeakReference;
 
 class AppBrandPageContainer$1$1
@@ -40,7 +40,7 @@ class AppBrandPageContainer$1$1
       {
         localAppBrandPageContainer.launch(this.this$1.val$url, "reLaunch");
         continue;
-        bcpw.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
+        bcql.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
       }
     }
   }

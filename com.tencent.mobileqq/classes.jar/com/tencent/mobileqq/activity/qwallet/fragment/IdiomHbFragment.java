@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import agvz;
+import agvx;
+import agzm;
+import agzn;
 import agzo;
-import agzp;
-import agzq;
-import ahab;
-import ahao;
-import ajyc;
+import agzz;
+import aham;
+import ajya;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -16,11 +16,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import bbay;
-import bbev;
-import bbjw;
-import bgwk;
-import bgwr;
+import bbbm;
+import bbfj;
+import bbkk;
+import bgxb;
+import bgxi;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -38,7 +38,7 @@ public class IdiomHbFragment
 {
   private static long jdField_a_of_type_Long;
   private static final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private agvz jdField_a_of_type_Agvz;
+  private agvx jdField_a_of_type_Agvx;
   private IdiomHbFragment.IdiomHbBundleInfo jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo = new IdiomHbFragment.IdiomHbBundleInfo();
   private String jdField_a_of_type_JavaLangString;
   private List<String> jdField_a_of_type_JavaUtilList;
@@ -67,17 +67,17 @@ public class IdiomHbFragment
           if (this.jdField_a_of_type_JavaUtilList == null)
           {
             this.jdField_a_of_type_JavaUtilList = new ArrayList();
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705708));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705713));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705709));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705714));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705710));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705712));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705706));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705719));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705716));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705718));
-            this.jdField_a_of_type_JavaUtilList.add(ajyc.a(2131705717));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705719));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705724));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705720));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705725));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705721));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705723));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705717));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705730));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705727));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705729));
+            this.jdField_a_of_type_JavaUtilList.add(ajya.a(2131705728));
           }
           i = new Random().nextInt(this.jdField_a_of_type_JavaUtilList.size());
           if (QLog.isColorLevel()) {
@@ -97,7 +97,7 @@ public class IdiomHbFragment
     }
   }
   
-  private void a(agzq paramagzq)
+  private void a(agzo paramagzo)
   {
     int i = 2;
     for (;;)
@@ -111,21 +111,21 @@ public class IdiomHbFragment
           QLog.d("IdiomHbFragment", 2, "is getIdiomListFromSSO...");
         }
         this.jdField_a_of_type_Boolean = true;
-        if (!bgwr.c.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.recv_type)) {
+        if (!bgxi.c.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.recv_type)) {
           break label105;
         }
         if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.recv_type))
         {
-          if (this.jdField_a_of_type_Agvz == null) {
+          if (this.jdField_a_of_type_Agvx == null) {
             break;
           }
-          this.jdField_a_of_type_Agvz.a(new agzp(this, paramagzq), i);
+          this.jdField_a_of_type_Agvx.a(new agzn(this, paramagzo), i);
           return;
         }
       }
-      catch (Throwable paramagzq)
+      catch (Throwable paramagzo)
       {
-        QLog.e("IdiomHbFragment", 1, paramagzq, new Object[0]);
+        QLog.e("IdiomHbFragment", 1, paramagzo, new Object[0]);
         return;
       }
       i = 1;
@@ -139,7 +139,7 @@ public class IdiomHbFragment
   {
     j = 0;
     i = j;
-    if (!bbjw.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.biz_params)) {}
+    if (!bbkk.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.biz_params)) {}
     try
     {
       String str = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.biz_params).optString("idiom", "");
@@ -159,7 +159,7 @@ public class IdiomHbFragment
       }
     }
     if (i == 0) {
-      this.c.setHint(ahao.a(this.channel, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo, this.mActivity.a(), a()));
+      this.c.setHint(aham.a(this.channel, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo, this.mActivity.a(), a()));
     }
   }
   
@@ -177,7 +177,7 @@ public class IdiomHbFragment
     localMap.put("wishing", this.jdField_a_of_type_JavaLangString);
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bgwk.a(str2));
+    localMap.put("total_amount", bgxb.a(str2));
     localMap.put("channel", "" + this.channel);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.skinId)) {
       localMap.put("skin_id", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.skinId);
@@ -187,12 +187,12 @@ public class IdiomHbFragment
   
   public int a()
   {
-    return 2131561511;
+    return 2131561510;
   }
   
   protected String a()
   {
-    return ajyc.a(2131705707);
+    return ajya.a(2131705718);
   }
   
   public void a()
@@ -205,17 +205,17 @@ public class IdiomHbFragment
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    bgwr.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo);
+    bgxi.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo);
     if (QLog.isColorLevel()) {
       QLog.i("IdiomHbFragment", 2, "bizParams:" + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.biz_params);
     }
-    if (bgwr.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.recv_type))
+    if (bgxi.b.contains(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
       this.jdField_a_of_type_AndroidViewView.findViewById(2131377644).setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131368527).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368526).setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      if ((!bbay.d()) && (!bbay.e())) {
+      if ((!bbbm.d()) && (!bbbm.e())) {
         break label307;
       }
     }
@@ -227,12 +227,12 @@ public class IdiomHbFragment
       }
       if (QLog.isColorLevel())
       {
-        QLog.i("IdiomHbFragment", 2, "isFlyMe: " + bbay.d() + " isMeizu:" + bbay.e());
+        QLog.i("IdiomHbFragment", 2, "isFlyMe: " + bbbm.d() + " isMeizu:" + bbbm.e());
         QLog.i("IdiomHbFragment", 2, "biz_params: " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.biz_params);
       }
       return;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.people_num)) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajyc.a(2131705711) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.people_num + ajyc.a(2131705715));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131705722) + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment$IdiomHbBundleInfo.people_num + ajya.a(2131705726));
       }
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       break;
@@ -246,7 +246,7 @@ public class IdiomHbFragment
       {
         String str = this.c.getText().toString().trim();
         this.jdField_a_of_type_JavaLangString = str;
-        if ((str.length() == 4) && (ahao.a(this.jdField_a_of_type_JavaLangString) >= 4)) {}
+        if ((str.length() == 4) && (aham.a(this.jdField_a_of_type_JavaLangString) >= 4)) {}
       }
       else
       {
@@ -275,13 +275,13 @@ public class IdiomHbFragment
     paramView = a(false);
     if (TextUtils.isEmpty(paramView))
     {
-      if (!bbev.g(this.mActivity))
+      if (!bbfj.g(this.mActivity))
       {
         this.c.setText(a(true));
         this.c.setSelection(this.c.getText().length());
         return;
       }
-      a(new agzo(this));
+      a(new agzm(this));
       return;
     }
     this.c.setText(paramView);
@@ -291,7 +291,7 @@ public class IdiomHbFragment
   protected void onLazyLoad()
   {
     super.onLazyLoad();
-    this.jdField_a_of_type_Agvz = ((agvz)this.mQApp.getManager(125));
+    this.jdField_a_of_type_Agvx = ((agvx)this.mQApp.getManager(125));
     if ((jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) || (System.currentTimeMillis() - jdField_a_of_type_Long > 86400000L)) {
       a(null);
     }

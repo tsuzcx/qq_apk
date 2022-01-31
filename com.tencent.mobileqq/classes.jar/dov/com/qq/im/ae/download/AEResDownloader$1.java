@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.download;
 
-import biqz;
-import birb;
+import birq;
+import birs;
 
 public class AEResDownloader$1
   implements Runnable
 {
-  public AEResDownloader$1(biqz parambiqz, int paramInt, birb parambirb, boolean paramBoolean) {}
+  public AEResDownloader$1(birq parambirq, int paramInt, birs parambirs, boolean paramBoolean) {}
   
   public void run()
   {
-    biqz.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Birb, this.jdField_a_of_type_Boolean);
+    birq.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Birs, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,13 +1,13 @@
 import com.tencent.qphone.base.util.QLog;
 
 class ajny
-  extends ajof
+  extends ajod
 {
-  ajny(ajnx paramajnx) {}
+  ajny(ajnv paramajnv) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    QLog.d("ApolloGameUtil", 2, "  onPermission the http retcode = " + paramInt);
+    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
   }
 }
 

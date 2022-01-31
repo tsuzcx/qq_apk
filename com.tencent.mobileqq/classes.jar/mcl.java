@@ -1,37 +1,15 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-
 public class mcl
+  extends mcg
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString = null;
+  public int a;
+  public String b;
   
-  mcl(int paramInt)
+  public mcl(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public long a()
-  {
-    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.d())) {
-      throw new IllegalArgumentException("seq未初始化:" + getClass().getSimpleName());
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    paramVideoAppInterface.a(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this });
+    super(6005);
+    a(paramLong, paramString1);
+    this.a = paramInt;
+    this.b = paramString2;
   }
 }
 

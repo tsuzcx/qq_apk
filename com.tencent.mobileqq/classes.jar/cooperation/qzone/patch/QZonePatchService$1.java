@@ -1,19 +1,19 @@
 package cooperation.qzone.patch;
 
-import ajyc;
-import bhhp;
+import ajya;
+import bhig;
 
 public class QZonePatchService$1
   implements Runnable
 {
-  public QZonePatchService$1(bhhp parambhhp, String paramString1, String paramString2) {}
+  public QZonePatchService$1(bhig parambhig, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bhhp.b(ajyc.a(2131712070));
-    bhhp.b(ajyc.a(2131712071));
-    bhhp.a();
-    bhhp.b(this.a, this.b);
+    bhig.b(ajya.a(2131712081));
+    bhig.b(ajya.a(2131712082));
+    bhig.a();
+    bhig.b(this.a, this.b);
   }
 }
 

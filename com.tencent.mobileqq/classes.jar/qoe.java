@@ -1,11 +1,4 @@
-public abstract interface qoe
-{
-  public abstract long a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract long b();
-}
+public class qoe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

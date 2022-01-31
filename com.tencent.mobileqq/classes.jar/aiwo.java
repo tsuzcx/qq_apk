@@ -1,33 +1,12 @@
-import java.util.ArrayList;
-
 public class aiwo
-  implements Cloneable
 {
   public int a;
-  public long a;
-  public ArrayList<String> a;
   public int b;
-  public int c;
   
-  protected Object clone()
+  public aiwo(int paramInt1, int paramInt2)
   {
-    Object localObject = null;
-    try
-    {
-      aiwo localaiwo = (aiwo)super.clone();
-      localObject = localaiwo;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-      }
-    }
-    if (this.a != null) {
-      localObject.a = ((ArrayList)this.a.clone());
-    }
-    return localObject;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

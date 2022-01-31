@@ -1,27 +1,75 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ovq
-  implements CompoundButton.OnCheckedChangeListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ovq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public ovq(ReadInJoySelfFragment paramReadInJoySelfFragment, ImageView paramImageView, ntz paramntz) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
-    if (paramBoolean)
+    for (;;)
     {
-      bcpw.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131699654), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-      noo.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", onk.c(), false);
-      return;
+      try
+      {
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+          int j = ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getWidth();
+          if (ReadInJoySelfFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment))
+          {
+            i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_Float + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.c + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Float);
+            if (i <= 0) {
+              break;
+            }
+            double d1 = this.jdField_a_of_type_Ntz.c / this.jdField_a_of_type_Ntz.d;
+            double d2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.d;
+            i = (int)(j - i - d1 * d2);
+            if (i <= 0) {
+              break;
+            }
+            Drawable localDrawable = DrawableUtil.getDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), this.jdField_a_of_type_Ntz.b, null, null);
+            if (localDrawable == null) {
+              break;
+            }
+            ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).setMaxWidth(i);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setTag(this.jdField_a_of_type_Ntz);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment);
+            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Boolean) {
+              break;
+            }
+            onh.a(this.jdField_a_of_type_Ntz);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Boolean = true;
+          }
+        }
+        else
+        {
+          ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+          continue;
+        }
+        f1 = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+      }
+      catch (Exception localException)
+      {
+        QLog.d("Q.readinjoy.self.SelfFragment", 1, "showMedal! error, msg=" + localException);
+        return;
+      }
+      float f1;
+      float f2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_Float;
+      float f3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Float;
+      float f4 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.c;
+      int i = (int)(f1 + f2 + f3 + f4);
     }
-    noo.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", onk.c(), false);
   }
 }
 

@@ -1,25 +1,11 @@
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.widget.TextView;
 
 public class adpp
-  extends acun
+  extends actn
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  TextView b;
   
-  public adpp(adpi paramadpi)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  adpp(adpo paramadpo) {}
 }
 
 

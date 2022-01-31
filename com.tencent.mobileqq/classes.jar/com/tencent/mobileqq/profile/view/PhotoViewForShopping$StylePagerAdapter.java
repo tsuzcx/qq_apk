@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import auvp;
-import auzd;
-import auze;
+import auvr;
+import auzf;
+import auzg;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ public class PhotoViewForShopping$StylePagerAdapter
   
   public PhotoViewForShopping$StylePagerAdapter(PhotoViewForShopping paramPhotoViewForShopping, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new auzd(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new auzf(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
@@ -40,7 +40,7 @@ public class PhotoViewForShopping$StylePagerAdapter
       QLog.d("ProfileCard.ProfileShoppingView", 2, "destroyItem, pos = " + paramInt);
     }
     paramObject = (View)paramObject;
-    auze localauze = (auze)paramObject.getTag();
+    auzg localauzg = (auzg)paramObject.getTag();
     paramViewGroup.removeView(paramObject);
   }
   
@@ -55,25 +55,25 @@ public class PhotoViewForShopping$StylePagerAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCard.ProfileShoppingView", 2, "instantiateItem, pos = " + paramInt);
     }
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561631, paramViewGroup, false);
-    auze localauze = new auze(this);
-    localauze.a = ((ProfileCardScrollImageView)localView.findViewById(2131366901));
-    localView.setTag(localauze);
-    localauze.a.setScaleType(ImageView.ScaleType.FIT_XY);
-    Object localObject = (RelativeLayout.LayoutParams)localauze.a.getLayoutParams();
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561630, paramViewGroup, false);
+    auzg localauzg = new auzg(this);
+    localauzg.a = ((ProfileCardScrollImageView)localView.findViewById(2131366901));
+    localView.setTag(localauzg);
+    localauzg.a.setScaleType(ImageView.ScaleType.FIT_XY);
+    Object localObject = (RelativeLayout.LayoutParams)localauzg.a.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.c;
     ((RelativeLayout.LayoutParams)localObject).height = this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.d;
-    localauze.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = ((auvp)this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.get(paramInt)).b;
+    localauzg.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = ((auvr)this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.get(paramInt)).b;
     localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846496);
-    localauze.a.setImageDrawable((Drawable)localObject);
+    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846502);
+    localauzg.a.setImageDrawable((Drawable)localObject);
     localView.setId(paramInt);
     paramViewGroup.addView(localView);
-    localauze.a.setIsScroll(false);
-    paramViewGroup = URLDrawable.getDrawable(((auvp)this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.get(paramInt)).a, this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.d);
-    localauze.a.setImageDrawable(paramViewGroup);
-    localauze.a.setTag(Integer.valueOf(paramInt));
+    localauzg.a.setIsScroll(false);
+    paramViewGroup = URLDrawable.getDrawable(((auvr)this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.get(paramInt)).a, this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.d);
+    localauzg.a.setImageDrawable(paramViewGroup);
+    localauzg.a.setTag(Integer.valueOf(paramInt));
     return localView;
   }
   

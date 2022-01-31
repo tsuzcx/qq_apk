@@ -1,123 +1,40 @@
-import com.tencent.lbssearch.httpresponse.BaseObject;
-import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
-import com.tencent.lbssearch.object.result.SearchResultObject;
-import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
-import com.tencent.lbssearch.object.result.SuggestionResultObject;
-import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 
 public class arxc
-  implements HttpResponseListener<BaseObject>
+  implements TextWatcher
 {
-  arxc(arxb paramarxb) {}
+  public arxc(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
   
-  public void a(int paramInt, BaseObject paramBaseObject)
+  public void afterTextChanged(Editable paramEditable)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    arxb.a(this.a, false);
-    Object localObject2;
-    if ((paramBaseObject instanceof Geo2AddressResultObject))
+    if (paramEditable.length() > 0)
     {
-      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
-      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null))
-      {
-        arxb.a(this.a);
-        localObject1 = paramBaseObject.result.pois.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (Poi)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(arxb.a(this.a).app.c(), (Poi)localObject2);
-          arxb.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.result.poi_count < 20) {
-          break label235;
-        }
-        bool1 = true;
-        arxb.b((arxb)localObject1, bool1);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.b.setVisibility(0);
+      this.c.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramEditable = paramEditable.toString().trim();
+      if (TextUtils.isEmpty(paramEditable)) {
+        break;
       }
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
+      return;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(8);
+      this.c.setVisibility(8);
     }
-    label235:
-    label368:
-    do
-    {
-      do
-      {
-        do
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onSuccess: mVenueList size = " + arxb.a(this.a).size() + ", mHashMore = " + arxb.a(this.a));
-          }
-          if (arxb.a(this.a) != null) {
-            ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
-          }
-          return;
-          bool1 = false;
-          break;
-          if (!(paramBaseObject instanceof SuggestionResultObject)) {
-            break label368;
-          }
-          paramBaseObject = (SuggestionResultObject)paramBaseObject;
-        } while (paramBaseObject.data == null);
-        arxb.a(this.a);
-        localObject1 = paramBaseObject.data.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (SuggestionResultObject.SuggestionData)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(arxb.a(this.a).app.c(), (SuggestionResultObject.SuggestionData)localObject2);
-          arxb.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.count >= 20) {}
-        for (;;)
-        {
-          arxb.b((arxb)localObject1, bool1);
-          break;
-          bool1 = false;
-        }
-      } while (!(paramBaseObject instanceof SearchResultObject));
-      paramBaseObject = (SearchResultObject)paramBaseObject;
-    } while (paramBaseObject.data == null);
-    arxb.a(this.a);
-    Object localObject1 = paramBaseObject.data.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SearchResultObject.SearchResultData)((Iterator)localObject1).next();
-      localObject2 = LocationRoom.Venue.a(arxb.a(this.a).app.c(), (SearchResultObject.SearchResultData)localObject2);
-      arxb.a(this.a).add(localObject2);
-    }
-    localObject1 = this.a;
-    if (paramBaseObject.count >= 20) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      arxb.b((arxb)localObject1, bool1);
-      break;
-    }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
   }
   
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
-  {
-    arxb.a(this.a, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onFailure: mVenueList size = " + arxb.a(this.a).size() + ", mHashMore = " + arxb.a(this.a));
-    }
-    if (arxb.a(this.a) != null) {
-      ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

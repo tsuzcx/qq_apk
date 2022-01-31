@@ -1,235 +1,478 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
+import android.os.Parcel;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
-class ahyf
-  extends awbj
+public class ahyf
+  extends ahyi
 {
-  ahyf(ahyd paramahyd) {}
+  private final int jdField_a_of_type_Int = 4;
+  private ahyy jdField_a_of_type_Ahyy;
+  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
+  private ArrayList<Float> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Map<Long, ArrayList<ahyh>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int jdField_b_of_type_Int = 150;
+  private ahyy jdField_b_of_type_Ahyy;
+  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private Map<Integer, LinkedList<ahyh>> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private int jdField_c_of_type_Int = 92;
+  private ahyy jdField_c_of_type_Ahyy;
+  private int jdField_d_of_type_Int = 136;
+  private ahyy jdField_d_of_type_Ahyy;
+  private int e = 5;
+  private int f = 15;
+  private int g = 25;
+  private int h = 6;
   
-  protected void a(long paramLong, int paramInt)
+  private float a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahyd.a(), 2, "onSessionClose sessionid:" + paramLong + " result:" + paramInt);
-    }
-    synchronized (this.a)
-    {
-      if (ahyd.a(this.a) == null) {
-        return;
-      }
-      if (ahyd.a(this.a).jdField_a_of_type_Long != paramLong) {
-        return;
-      }
-    }
-    ahyd.a(this.a, false);
-    ahyd.a(this.a).jdField_b_of_type_Int = 0;
-    ahyd.c(this.a);
+    return this.jdField_c_of_type_Int * paramInt + this.jdField_d_of_type_Int;
   }
   
-  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
+  private int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahyd.a(), 2, "onTranslate:  sessionid:" + paramLong + " startseq:" + paramInt1 + " endseq:" + paramInt2 + "[" + paramInt2 * 1.0F + "] status:" + paramInt3 + " CN:" + paramString1 + " EN:" + paramString2);
+    if ((paramInt >= 0) && (paramInt < 4) && (this.jdField_b_of_type_JavaUtilMap.size() < 4)) {
+      while (paramInt < 4)
+      {
+        List localList = (List)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if ((localList != null) && (localList.size() > 0)) {
+          paramInt += 1;
+        } else {
+          return paramInt;
+        }
+      }
     }
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    paramInt2 *= 2;
-    ahyg localahyg = null;
-    synchronized (this.a)
+    return -1;
+  }
+  
+  private ArrayList<BarrageParcelItem> a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte != null)
     {
-      if (ahyd.a(this.a) == null) {
-        return;
+      Parcel localParcel = Parcel.obtain();
+      localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+      localParcel.setDataPosition(0);
+      paramArrayOfByte = new ArrayList();
+      localParcel.readTypedList(paramArrayOfByte, BarrageParcelItem.CREATOR);
+      if (localParcel != null) {
+        localParcel.recycle();
       }
+      return paramArrayOfByte;
     }
-    if (ahyd.a(this.a).jdField_a_of_type_Long != paramLong)
+    return new ArrayList();
+  }
+  
+  private void a(long paramLong1, long paramLong2, long paramLong3, String paramString, ArrayList<ahyh> paramArrayList, int paramInt1, float paramFloat1, int paramInt2, float paramFloat2)
+  {
+    LinkedList localLinkedList2 = (LinkedList)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt2));
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ahyd.a(), 2, "onTranslate, session not match:" + paramLong + "-" + ahyd.a(this.a).jdField_a_of_type_Long);
-      }
-      return;
+      localLinkedList1 = new LinkedList();
+      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt2), localLinkedList1);
     }
-    if (!this.a.a()) {
-      return;
-    }
-    if (ahyd.a(this.a).jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localahyg = (ahyg)ahyd.a(this.a).jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(ahyd.a(), 2, "onTranslate, :  localtime:" + ahyd.a(this.a).c);
-    }
-    ahzl localahzl = (ahzl)ahyd.a(this.a).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    long l1;
-    label460:
-    long l2;
-    if (localahzl == null)
+    float f1 = a(paramInt2);
+    float f2 = (int)a(true);
+    paramString = new ahyh(paramLong1, a(paramLong2), a(), b(), paramFloat2, d(), paramString, paramFloat1, paramInt1, f2, f1, -1.0F, this.jdField_c_of_type_Int, this.e, this.jdField_a_of_type_AndroidGraphicsTypeface);
+    paramArrayList.add(paramString);
+    localLinkedList1.add(paramString);
+  }
+  
+  private byte[] a(ArrayList<BarrageParcelItem> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      l1 = (int)(paramInt2 * 1.0F) * 20 * ahyd.a(this.a).jdField_a_of_type_Int - 500;
-      paramLong = System.currentTimeMillis() - ahyd.a(this.a).c - 500L;
-      if (!QLog.isColorLevel()) {
-        break label751;
-      }
-      QLog.d(ahyd.a(), 2, "onTranslate startiem: " + l1 + "-" + paramLong);
-      break label751;
-      localahzl = new ahzl(paramLong, paramInt1, paramInt2);
-      ahyd.a(this.a).jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), localahzl);
-      l1 = paramLong;
-      paramLong = (int)(paramInt2 * 1.0F) * 20 * ahyd.a(this.a).jdField_a_of_type_Int;
-      l2 = System.currentTimeMillis() - ahyd.a(this.a).c - 500L;
-      if (!QLog.isColorLevel()) {
-        break label776;
-      }
-      QLog.d(ahyd.a(), 2, "onTranslate endtime: " + paramLong + "-" + l2);
-      break label776;
+      Parcel localParcel = Parcel.obtain();
+      localParcel.writeTypedList(paramArrayList);
+      paramArrayList = localParcel.marshall();
+      localParcel.recycle();
+      return paramArrayList;
     }
+    return null;
+  }
+  
+  private float c()
+  {
+    if (this.jdField_d_of_type_Ahyy == null) {
+      this.jdField_d_of_type_Ahyy = new ahyy(this.h, 2);
+    }
+    int i = this.jdField_d_of_type_Ahyy.a();
+    if ((this.jdField_a_of_type_ArrayOfFloat != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfFloat.length)) {
+      return this.jdField_a_of_type_ArrayOfFloat[i] * c() / 1000.0F;
+    }
+    return (i + this.g) * this.f * c() / 1000.0F;
+  }
+  
+  private int e()
+  {
+    if (this.jdField_a_of_type_Ahyy == null) {
+      this.jdField_a_of_type_Ahyy = new ahyy(4, 2);
+    }
+    return this.jdField_a_of_type_Ahyy.a();
+  }
+  
+  private int f()
+  {
+    if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.size() == 0)) {
+      return 0;
+    }
+    if (this.jdField_c_of_type_Ahyy == null) {
+      this.jdField_c_of_type_Ahyy = new ahyy(this.jdField_b_of_type_JavaUtilArrayList.size(), 1);
+    }
+    int i = this.jdField_c_of_type_Ahyy.a();
+    return ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(i)).intValue() | 0xFF000000;
+  }
+  
+  private int g()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      return 0;
+    }
+    if (this.jdField_b_of_type_Ahyy == null) {
+      this.jdField_b_of_type_Ahyy = new ahyy(this.jdField_a_of_type_JavaUtilArrayList.size(), 2);
+    }
+    return this.jdField_b_of_type_Ahyy.a();
+  }
+  
+  public int a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      List localList = (List)localIterator.next();
+      if (localList == null) {
+        break label54;
+      }
+      i = localList.size() + i;
+    }
+    label54:
     for (;;)
     {
+      break;
+      return i;
+    }
+  }
+  
+  public void a()
+  {
+    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator1.hasNext())
+    {
+      Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
+      while (localIterator2.hasNext()) {
+        ((ahyh)localIterator2.next()).g();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_b_of_type_JavaUtilMap.clear();
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    if (paramContext != null) {}
+    for (float f1 = paramContext.getResources().getDisplayMetrics().density;; f1 = 1.0F)
+    {
+      f1 = f1 / 2.0F * a();
+      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(32.0F * f1));
+      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(44.0F * f1));
+      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(56.0F * f1));
+      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(60.0F * f1));
+      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(86.0F * f1));
+      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(13405665));
+      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(5756121));
+      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(16763139));
+      this.jdField_c_of_type_Int = ((int)(this.jdField_c_of_type_Int * f1));
+      this.jdField_d_of_type_Int = ((int)(this.jdField_d_of_type_Int * f1));
+      this.e = ((int)(this.e * f1));
+      this.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int * f1));
+      this.f = ((int)(this.f * f1));
+      f1 = f1 * (paramContext.getResources().getDisplayMetrics().widthPixels * 60) / 375.0F;
+      this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F * f1, 1.2F * f1, 1.4F * f1, 1.6F * f1, 1.8F * f1, f1 * 2.0F };
+      this.jdField_a_of_type_AndroidGraphicsTypeface = a(paramString);
+      return;
+    }
+  }
+  
+  public void a(WordingItem paramWordingItem)
+  {
+    if (paramWordingItem == null) {}
+    ArrayList localArrayList;
+    int j;
+    int m;
+    float f1;
+    int i1;
+    int i3;
+    int i2;
+    float f2;
+    int i4;
+    int i;
+    int k;
+    float f3;
+    int n;
+    label417:
+    label462:
+    label613:
+    label630:
+    label639:
+    do
+    {
+      return;
       if (QLog.isColorLevel()) {
-        QLog.d(ahyd.a(), 2, "onTranslate, starttime-endtime: " + l1 + "-" + l2);
+        QLog.d("BaseAnimDrawer", 2, "barrage setText id：" + paramWordingItem.jdField_a_of_type_Long + "  text: " + paramWordingItem.jdField_a_of_type_JavaLangString + " time:" + paramWordingItem.b + "-" + paramWordingItem.c);
       }
-      if (localahyg != null) {
-        if (paramInt3 != 2) {
-          break label739;
-        }
-      }
-      label739:
-      for (boolean bool = true;; bool = false)
+      localArrayList = a(paramWordingItem.jdField_a_of_type_ArrayOfByte);
+      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramWordingItem.jdField_a_of_type_Long));
+      if (localObject == null)
       {
-        localahyg.a(l1, l2, paramString1, paramString2, bool);
-        if (!ahyd.a(this.a)) {
-          break;
+        localObject = new ArrayList();
+        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramWordingItem.jdField_a_of_type_Long), localObject);
+      }
+      int i5;
+      for (;;)
+      {
+        if ((localArrayList == null) || (localArrayList.size() < 3)) {
+          break label417;
         }
-        paramString1 = String.valueOf(System.currentTimeMillis() - ahyd.a(this.a));
-        paramString2 = new HashMap();
-        paramString2.put("startTranslateCost", paramString1);
+        i5 = ((BarrageParcelItem)localArrayList.get(0)).jdField_a_of_type_Int;
+        j = ((BarrageParcelItem)localArrayList.get(0)).jdField_b_of_type_Int;
+        m = ((BarrageParcelItem)localArrayList.get(0)).jdField_c_of_type_Int;
+        f1 = ((BarrageParcelItem)localArrayList.get(0)).jdField_a_of_type_Float;
+        i1 = ((BarrageParcelItem)localArrayList.get(1)).jdField_a_of_type_Int;
+        i3 = ((BarrageParcelItem)localArrayList.get(1)).jdField_b_of_type_Int;
+        i2 = ((BarrageParcelItem)localArrayList.get(1)).jdField_c_of_type_Int;
+        f2 = ((BarrageParcelItem)localArrayList.get(1)).jdField_a_of_type_Float;
+        i4 = ((BarrageParcelItem)localArrayList.get(2)).jdField_a_of_type_Int;
+        i = ((BarrageParcelItem)localArrayList.get(2)).jdField_b_of_type_Int;
+        k = ((BarrageParcelItem)localArrayList.get(2)).jdField_c_of_type_Int;
+        f3 = ((BarrageParcelItem)localArrayList.get(2)).jdField_a_of_type_Float;
+        n = i;
+        i = i5;
+        if (((ArrayList)localObject).size() <= 0) {
+          break label639;
+        }
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((ahyh)((Iterator)localObject).next()).a(paramWordingItem.jdField_a_of_type_JavaLangString);
+        }
+        break;
         if (QLog.isColorLevel()) {
-          QLog.d("PeakAudioTransHandler", 2, "startTranslateCost:" + paramString1);
+          QLog.d("BaseAnimDrawer", 2, "item exsit, update ,size：" + ((ArrayList)localObject).size());
         }
-        axrl.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitleTranslate", true, 0L, 0L, paramString2, null);
-        ahyd.a(this.a, false);
-        return;
-        l1 = localahzl.jdField_a_of_type_Long;
-        break label460;
+      }
+      if (this.jdField_a_of_type_Ahyy == null) {
+        this.jdField_a_of_type_Ahyy = new ahyy(4, 2);
+      }
+      j = a(0);
+      int i6;
+      if (j >= 0)
+      {
+        this.jdField_a_of_type_Ahyy.a(j);
+        i = j;
+        i1 = f();
+        i6 = g();
+        f1 = c();
+        k = a(j + 1);
+        if (k < 0) {
+          break label613;
+        }
+        this.jdField_a_of_type_Ahyy.a(k);
+        m = k;
+        j = k;
+        k = m;
+        i4 = f();
+        i3 = g();
+        f2 = c();
+        k = a(k + 1);
+        if (k < 0) {
+          break label630;
+        }
+        this.jdField_a_of_type_Ahyy.a(k);
       }
       for (;;)
       {
-        break label786;
-        for (;;)
-        {
-          break;
-          label751:
-          if (l1 > paramLong) {
-            l1 = paramLong;
-          }
-        }
-        paramLong = l1;
-        if (l1 >= 0L) {
-          break;
-        }
-        paramLong = 0L;
+        i5 = f();
+        n = g();
+        f3 = c();
+        i2 = j;
+        j = i6;
+        m = i;
+        i = i1;
+        i1 = i4;
+        i4 = i5;
         break;
-        label776:
-        if (paramLong > l2) {
-          paramLong = l2;
-        }
+        i = e();
+        j = 0;
+        break label462;
+        m = e();
+        k = j;
+        j = m;
+        break label515;
+        k = e();
       }
-      label786:
-      l2 = paramLong;
-      if (paramLong <= l1) {
-        l2 = 1000L + l1;
-      }
-    }
+      a(paramWordingItem.jdField_a_of_type_Long, 300L + paramWordingItem.b, paramWordingItem.c, paramWordingItem.jdField_a_of_type_JavaLangString, (ArrayList)localObject, i, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(j)).floatValue(), m, f1);
+      a(paramWordingItem.jdField_a_of_type_Long, paramWordingItem.b + 200L, paramWordingItem.c, paramWordingItem.jdField_a_of_type_JavaLangString, (ArrayList)localObject, i1, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(i3)).floatValue(), i2, f2);
+      a(paramWordingItem.jdField_a_of_type_Long, paramWordingItem.b, paramWordingItem.c, paramWordingItem.jdField_a_of_type_JavaLangString, (ArrayList)localObject, i4, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(n)).floatValue(), k, f3);
+    } while ((localArrayList == null) || (localArrayList.size() != 0));
+    label515:
+    Object localObject = new BarrageParcelItem();
+    ((BarrageParcelItem)localObject).jdField_a_of_type_Int = i;
+    ((BarrageParcelItem)localObject).jdField_c_of_type_Int = m;
+    ((BarrageParcelItem)localObject).jdField_b_of_type_Int = j;
+    ((BarrageParcelItem)localObject).jdField_a_of_type_Float = f1;
+    localArrayList.add(localObject);
+    localObject = new BarrageParcelItem();
+    ((BarrageParcelItem)localObject).jdField_a_of_type_Int = i1;
+    ((BarrageParcelItem)localObject).jdField_c_of_type_Int = i2;
+    ((BarrageParcelItem)localObject).jdField_b_of_type_Int = i3;
+    ((BarrageParcelItem)localObject).jdField_a_of_type_Float = f2;
+    localArrayList.add(localObject);
+    localObject = new BarrageParcelItem();
+    ((BarrageParcelItem)localObject).jdField_a_of_type_Int = i4;
+    ((BarrageParcelItem)localObject).jdField_c_of_type_Int = k;
+    ((BarrageParcelItem)localObject).jdField_b_of_type_Int = n;
+    ((BarrageParcelItem)localObject).jdField_a_of_type_Float = f3;
+    localArrayList.add(localObject);
+    paramWordingItem.jdField_a_of_type_ArrayOfByte = a(localArrayList);
   }
   
-  protected void a(long paramLong, int paramInt1, int paramInt2, avwh paramavwh)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahyd.a(), 2, "onSessionOpen sessionid:" + paramLong + " combineNum:" + paramInt1 + " heratbeat:" + paramInt2 + ",endPoint = " + paramavwh);
-    }
-    synchronized (this.a)
+    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator1.hasNext())
     {
-      if (ahyd.a(this.a) == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(ahyd.a(), 2, "TransContext is null");
-        }
-        return;
-      }
-      if (ahyd.a(this.a).jdField_b_of_type_Int != 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(ahyd.a(), 2, "onSessionOpen state error:" + ahyd.a(this.a).jdField_b_of_type_Int);
-        }
-        return;
+      Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
+      while (localIterator2.hasNext()) {
+        ((ahyh)localIterator2.next()).d();
       }
     }
-    if ((ahyd.a(this.a).jdField_a_of_type_Long != -1L) && (QLog.isColorLevel())) {
-      QLog.d(ahyd.a(), 2, "onSessionOpen, old session not closed " + ahyd.a(this.a).jdField_a_of_type_Long);
+    return true;
+  }
+  
+  public boolean a(Canvas paramCanvas, RenderBuffer paramRenderBuffer, long paramLong1, long paramLong2)
+  {
+    boolean bool2;
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseAnimDrawer", 2, "mID2ItemsMap size is 0.");
+      }
+      bool2 = false;
+      return bool2;
     }
-    ahyd.a(this.a).jdField_a_of_type_Long = paramLong;
-    ahyd.a(this.a).jdField_a_of_type_Int = paramInt1;
-    ahyd.a(this.a).jdField_b_of_type_Int = 3;
-    ahyd.a(this.a).jdField_a_of_type_Avwh = paramavwh;
-    if (ahyd.a(this.a).jdField_b_of_type_Boolean) {
-      ahyd.b(this.a);
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.values().iterator();
+    boolean bool1 = false;
+    Object localObject1;
+    do
+    {
+      bool2 = bool1;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject1 = (LinkedList)localIterator.next();
+    } while ((localObject1 == null) || (((LinkedList)localObject1).size() == 0));
+    Object localObject2 = ((LinkedList)localObject1).iterator();
+    int i = 0;
+    label102:
+    if (((Iterator)localObject2).hasNext())
+    {
+      if (((ahyh)((Iterator)localObject2).next()).a(2) > paramLong1) {
+        break label500;
+      }
+      i += 1;
     }
-    if (ahyd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
-      ahyd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(paramLong, paramInt1);
-    }
+    label500:
     for (;;)
     {
-      ahyd.a(this.a, ahyd.a(this.a), true, paramInt2);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(ahyd.a(), 2, "onSessionOpen encoderunnable error" + paramLong);
-      }
-    }
-  }
-  
-  protected void b(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahyd.a(), 2, "onSessionChanged sessionid:" + paramLong + " combinenum:" + paramInt);
-    }
-    synchronized (this.a)
-    {
-      if (ahyd.a(this.a) == null) {
-        return;
-      }
-      if ((ahyd.a(this.a).jdField_a_of_type_Long == paramLong) && (ahyd.a(this.a).jdField_a_of_type_Int != paramInt))
+      break label102;
+      localObject1 = ((LinkedList)localObject1).iterator();
+      bool2 = bool1;
+      for (;;)
       {
-        ahyd.a(this.a).jdField_a_of_type_Int = paramInt;
-        if (ahyd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
-          ahyd.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(paramLong, paramInt);
+        bool1 = bool2;
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        localObject2 = (ahyh)((Iterator)localObject1).next();
+        if (((ahyh)localObject2).a(2) == paramLong1) {
+          ((ahyh)localObject2).a(6, a(true));
+        }
+        int j = 1;
+        if ((((ahyh)localObject2).a(6) > a(true)) || (((ahyh)localObject2).a(6) + ((ahyh)localObject2).a(3) < 0.0F) || (((ahyh)localObject2).a(2) > paramLong1))
+        {
+          int k = 0;
+          j = k;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("BaseAnimDrawer", 2, "barrage invisible: posx:" + ((ahyh)localObject2).a(6) + "  width:" + ((ahyh)localObject2).a(3) + "  index:" + ((ahyh)localObject2).a(2) + " curindex:" + paramLong1);
+            j = k;
+          }
+        }
+        if ((j == 0) && (((ahyh)localObject2).a(6) < 0.0F))
+        {
+          if (i > 1)
+          {
+            ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(((ahyh)localObject2).a(1)));
+            if (localArrayList != null)
+            {
+              localArrayList.remove(localObject2);
+              if (localArrayList.size() == 0) {
+                this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(((ahyh)localObject2).a(1)));
+              }
+            }
+            ((Iterator)localObject1).remove();
+            ((ahyh)localObject2).g();
+            i -= 1;
+          }
+          else
+          {
+            ((ahyh)localObject2).c();
+          }
+        }
+        else if (((ahyh)localObject2).a(2) <= paramLong1)
+        {
+          if (!c()) {
+            ((ahyh)localObject2).a();
+          }
+          if (paramCanvas != null) {
+            ((ahyh)localObject2).a(paramCanvas);
+          }
+          if (paramRenderBuffer != null) {
+            ((ahyh)localObject2).a(paramRenderBuffer);
+          }
+          bool2 = true;
         }
       }
-      return;
     }
   }
   
-  protected void c(long paramLong, int paramInt)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ahyd.a(), 2, "onSessionError sessionid:" + paramLong + " result:" + paramInt);
-    }
-    synchronized (this.a)
-    {
-      if (ahyd.a(this.a) == null) {
-        return;
-      }
-      if ((ahyd.a(this.a).jdField_a_of_type_Long != -1L) && (ahyd.a(this.a).jdField_a_of_type_Long != paramLong)) {
-        return;
-      }
-    }
-    if ((ahyd.a(this.a).jdField_a_of_type_Long != paramLong) && (ahyd.a(this.a).jdField_a_of_type_JavaLangRefWeakReference == null)) {
-      return;
-    }
-    ahyd.a(this.a).jdField_b_of_type_Int = 0;
-    ahyd.c(this.a);
-    ahyd.a(this.a, paramInt);
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_b_of_type_JavaUtilMap.clear();
+  }
+  
+  public boolean b()
+  {
+    b();
+    return true;
   }
 }
 

@@ -1,47 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bjnp<K, V>
-  extends bjnq<K, V>
+public final class bjnp
 {
-  private HashMap<K, bjnt<K, V>> a = new HashMap();
+  public static final bjnp a;
+  public static final bjnp b = new bjnp(1);
+  public static final bjnp c = new bjnp(2);
+  public static final bjnp d = new bjnp(3);
+  public static final bjnp e = new bjnp(4);
+  public static final bjnp f = new bjnp(5);
+  public static final bjnp g = new bjnp(6);
+  public final int a;
   
-  protected bjnt<K, V> a(K paramK)
+  static
   {
-    return (bjnt)this.a.get(paramK);
+    jdField_a_of_type_Bjnp = new bjnp(0);
   }
   
-  public V a(@NonNull K paramK)
+  public bjnp(int paramInt)
   {
-    Object localObject = super.a(paramK);
-    this.a.remove(paramK);
-    return localObject;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public V a(@NonNull K paramK, @NonNull V paramV)
+  public static bjnp a(int paramInt)
   {
-    bjnt localbjnt = a(paramK);
-    if (localbjnt != null) {
-      return localbjnt.jdField_b_of_type_JavaLangObject;
+    switch (paramInt)
+    {
+    default: 
+      return g;
+    case 0: 
+      return jdField_a_of_type_Bjnp;
+    case 1: 
+      return b;
+    case 2: 
+      return c;
+    case 3: 
+      return d;
+    case 4: 
+      return e;
+    case 5: 
+      return f;
     }
-    this.a.put(paramK, a(paramK, paramV));
-    return null;
-  }
-  
-  public Map.Entry<K, V> a(K paramK)
-  {
-    if (a(paramK)) {
-      return ((bjnt)this.a.get(paramK)).jdField_b_of_type_Bjnt;
-    }
-    return null;
-  }
-  
-  public boolean a(K paramK)
-  {
-    return this.a.containsKey(paramK);
+    return g;
   }
 }
 

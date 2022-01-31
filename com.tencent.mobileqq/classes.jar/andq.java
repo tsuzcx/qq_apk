@@ -1,12 +1,10 @@
-class andq
-  implements bjip
+import java.util.ArrayList;
+
+public class andq
 {
-  andq(ando paramando) {}
-  
-  public void a(String paramString)
-  {
-    bjbt.a(paramString);
-  }
+  public int a;
+  public ArrayList<String> a = new ArrayList();
+  public int b;
 }
 
 

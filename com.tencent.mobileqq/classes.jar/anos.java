@@ -1,68 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PathMeasure;
+import com.tencent.mobileqq.doutu.combo.ComboMasterView;
 
 public class anos
-  extends BitmapDrawable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private float jdField_a_of_type_Float = 1920.0F;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private int b;
-  private int c;
+  public anos(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
   
-  public anos(Resources paramResources, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramResources, paramBitmap);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
-    super.setGravity(17);
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.c >>> 24 != 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    super.draw(paramCanvas);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    if (this.b > 0) {
-      return this.b;
-    }
-    return super.getIntrinsicHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
-    }
-    return super.getIntrinsicWidth();
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-    }
-    super.setAlpha(paramInt);
-  }
-  
-  public void setTargetDensity(int paramInt)
-  {
-    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
-    super.setTargetDensity(paramInt);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
   }
 }
 

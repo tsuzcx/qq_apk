@@ -1,9 +1,4 @@
-import org.json.JSONObject;
-
-public abstract interface arsk
-{
-  public abstract void a(JSONObject paramJSONObject);
-}
+class arsk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

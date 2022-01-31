@@ -1,51 +1,26 @@
-public class bhqk
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+public final class bhqk
+  implements InvocationHandler
 {
-  public static String a;
-  public static String[] a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static final String i;
-  public static final String j;
+  public bhqk(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  static
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    jdField_a_of_type_JavaLangString = "JsFamousShare";
-    b = "famousShareToQQFriend";
-    c = "famousShareToQzone";
-    d = "famousShareToWxFriend";
-    e = "famousShareToWxPengyouquan";
-    f = "famousJubao";
-    g = "setUserHomePageMsgBoardGate";
-    h = "writeMood";
-    i = ajyc.a(2131711923);
-    j = ajyc.a(2131711922);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int m = arrayOfString.length;
-    int k = 0;
+    if (paramMethod.getName().equals("onFailed")) {
+      if (this.a != null) {
+        this.a.onFailed();
+      }
+    }
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (k < m)
-      {
-        if (arrayOfString[k].equalsIgnoreCase(paramString)) {
-          bool1 = true;
-        }
+      return null;
+      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
+        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
       }
-      else {
-        return bool1;
-      }
-      k += 1;
     }
   }
 }

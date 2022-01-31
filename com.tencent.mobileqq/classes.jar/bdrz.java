@@ -1,23 +1,16 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-
-class bdrz
-  implements ServiceConnection
+public abstract interface bdrz
 {
-  bdrz(bdrx parambdrx) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    bdru.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
-    bdrx.a(this.a, lwx.a(paramIBinder));
-  }
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bdru.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
-    bdrx.a(this.a, null);
-  }
+  public abstract void b(byte[] paramArrayOfByte);
+  
+  public abstract void c(byte[] paramArrayOfByte);
+  
+  public abstract void d(byte[] paramArrayOfByte);
+  
+  public abstract void e(byte[] paramArrayOfByte);
 }
 
 

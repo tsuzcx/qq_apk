@@ -1,26 +1,54 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class azbh
-  extends RecyclerView.ViewHolder
+public class azbh
+  implements azce
 {
-  public int a;
-  public SeekBar a;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  public RelativeLayout b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
+  public azbh(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, azcb paramazcb) {}
   
-  public azbh(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  public void a(int paramInt, String paramString, ArrayList<azcb> paramArrayList)
   {
-    super(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "getVideoListReq->onLoaded: retCode = " + paramInt);
+    }
+    if (paramInt == 0) {
+      if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+      {
+        paramString = paramArrayList.iterator();
+        paramInt = 0;
+        if (paramString.hasNext())
+        {
+          paramArrayList = (azcb)paramString.next();
+          if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
+            break label358;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
+          paramInt = 1;
+        }
+      }
+    }
+    label358:
+    for (;;)
+    {
+      break;
+      if (paramInt != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Azbo.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(2);
+        return;
+      }
+      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Azbo.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Azcb.b), this.jdField_a_of_type_Azcb.d }));
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
+      axqy.b(null, "dc00899", "Grp_tribe", "", "video_player", "page_repeat", this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, this.jdField_a_of_type_Azcb.b + "", this.jdField_a_of_type_Azcb.d, this.jdField_a_of_type_Azcb.h + "", "");
+      return;
+      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Azbo.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Azcb.b), this.jdField_a_of_type_Azcb.d }));
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(4);
+      return;
+    }
   }
 }
 

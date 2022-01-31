@@ -1,6 +1,25 @@
-public abstract interface wrh<T>
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+
+public class wrh
+  extends wqx
 {
-  public abstract void a(T... paramVarArgs);
+  private String a;
+  
+  public wrh(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public void a() {}
+  
+  public void a(wrd paramwrd)
+  {
+    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.a, null);
+    paramwrd = new wri(this, paramwrd);
+    localSubscribePersonalDetailRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramwrd);
+  }
 }
 
 

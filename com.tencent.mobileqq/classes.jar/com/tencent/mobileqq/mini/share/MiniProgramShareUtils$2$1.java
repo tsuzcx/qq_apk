@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.app.Activity;
-import bbcv;
-import bbgg;
-import bcpw;
+import bbdj;
+import bbgu;
+import bcql;
 
 class MiniProgramShareUtils$2$1
   implements Runnable
@@ -20,10 +20,10 @@ class MiniProgramShareUtils$2$1
       if (this.this$0.val$listener != null) {
         this.this$0.val$listener.onShared(this.val$finalNeedShareCallback.booleanValue(), false);
       }
-      bbcv.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719480), this.val$finalErrMsg, new MiniProgramShareUtils.2.1.1(this), null).show();
+      bbdj.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719491), this.val$finalErrMsg, new MiniProgramShareUtils.2.1.1(this), null).show();
       return;
     }
-    bcpw.a(this.this$0.val$activity, 1, 2131719480, 0).a();
+    bcql.a(this.this$0.val$activity, 1, 2131719491, 0).a();
   }
 }
 

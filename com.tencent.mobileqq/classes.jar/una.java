@@ -1,16 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class una
-  implements unp
+  implements DialogInterface.OnClickListener
 {
   public una(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(String paramString)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
 import android.text.TextUtils;
-import bcpq;
+import bcqf;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -72,8 +72,8 @@ class HealthBusinessPlugin$3
       }
       finally
       {
-        if (this.this$0.jdField_a_of_type_Bcpq.isShowing()) {
-          this.this$0.jdField_a_of_type_Bcpq.dismiss();
+        if (this.this$0.jdField_a_of_type_Bcqf.isShowing()) {
+          this.this$0.jdField_a_of_type_Bcqf.dismiss();
         }
       }
     }

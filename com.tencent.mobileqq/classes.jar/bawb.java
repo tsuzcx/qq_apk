@@ -1,32 +1,23 @@
 import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
 
 final class bawb
   implements DownloadParams.DecodeHandler
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
-    }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    if (paramBitmap != null)
     {
-      do
+      paramDownloadParams = paramDownloadParams.tag;
+      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bbdr.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
+        int i = ((int[])(int[])paramDownloadParams)[0];
+        GdtSmartBlur.a().a(paramBitmap, i);
+      }
+    }
+    return paramBitmap;
   }
 }
 

@@ -1,17 +1,4 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
-
-public class aivo
-  implements Comparator<aivr>
-{
-  public aivo(ApolloCmdChannel paramApolloCmdChannel) {}
-  
-  public int a(aivr paramaivr1, aivr paramaivr2)
-  {
-    return paramaivr1.a() - paramaivr2.a();
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aivo

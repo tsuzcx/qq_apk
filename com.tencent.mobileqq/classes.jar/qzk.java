@@ -1,27 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class qzk
-  implements Animator.AnimatorListener
+public class qzk
+  implements bfso
 {
-  qzk(qzj paramqzj, boolean paramBoolean) {}
+  public qzk(ChannelClassificationListView paramChannelClassificationListView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onScrollStateChanged(int paramInt)
   {
-    qzj.a(this.jdField_a_of_type_Qzj, this.jdField_a_of_type_Boolean);
+    JSONObject localJSONObject;
+    if (paramInt == 4098) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
+      nol.a(null, onh.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    qzj.a(this.jdField_a_of_type_Qzj, this.jdField_a_of_type_Boolean);
-    qzj.a(this.jdField_a_of_type_Qzj);
-    this.jdField_a_of_type_Qzj.b.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

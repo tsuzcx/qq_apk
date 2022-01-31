@@ -1,15 +1,28 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afoi
-  implements View.OnClickListener
+  implements afjd
 {
   public afoi(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    TroopSuspiciousFragment.b(this.a);
+    if (!(paramViewHolder instanceof afnj)) {}
+    do
+    {
+      return;
+      paramView = (afnj)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopSuspiciousFragment.a(this.a, paramView);
+  }
+  
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    return false;
   }
 }
 

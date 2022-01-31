@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
 public class afnh
-  implements View.OnClickListener
+  extends Handler
 {
-  public afnh(ShowExternalTroopListActivity paramShowExternalTroopListActivity, ImageView paramImageView) {}
+  public afnh(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    bazo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString, 0);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {}
-    for (paramView = "0";; paramView = "1")
+    switch (paramMessage.what)
     {
-      axqw.b(localQQAppInterface, "P_CliOper", "Grp_join", "", "person_data", "Clk_user", 0, 0, str, paramView, "", "");
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
   }
 }

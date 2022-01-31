@@ -1,17 +1,21 @@
-import android.content.Context;
+import java.util.Observable;
 
-class beqc
+public class beqc
+  extends Observable
 {
-  beqa a;
-  
-  public beqc(Context paramContext)
+  public void a(Object paramObject)
   {
-    this.a = new beqa(paramContext, null);
-  }
-  
-  public beqa a()
-  {
-    return this.a;
+    if (paramObject == null) {
+      return;
+    }
+    betc.a("minisdk-start_AppStateManager", "notifyChange msg=" + paramObject);
+    setChanged();
+    if (paramObject != null)
+    {
+      notifyObservers(paramObject);
+      return;
+    }
+    notifyObservers();
   }
 }
 

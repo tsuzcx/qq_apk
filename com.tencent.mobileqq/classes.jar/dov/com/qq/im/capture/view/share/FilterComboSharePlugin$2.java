@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.text.TextUtils;
-import bjls;
+import bjmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class FilterComboSharePlugin$2
     }
     this.this$0.a(true, 3);
     this.this$0.a();
-    bjls.a(this.this$0, this.this$0.jdField_a_of_type_JavaLangString, true);
+    bjmj.a(this.this$0, this.this$0.jdField_a_of_type_JavaLangString, true);
   }
 }
 

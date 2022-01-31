@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.text.TextUtils;
-import beka;
-import bekg;
-import bevc;
-import bevi;
-import bewt;
+import bekr;
+import bekx;
+import bevt;
+import bevz;
+import bexk;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
@@ -19,11 +19,11 @@ public class SubpackageJsPlugin
   private static final String TAG = "SubpackageJsPlugin";
   private AtomicInteger subpackageTaskId = new AtomicInteger(0);
   
-  public String createLoadSubPackageTask(beka parambeka)
+  public String createLoadSubPackageTask(bekr parambekr)
   {
     try
     {
-      localObject = new JSONObject(parambeka.b);
+      localObject = new JSONObject(parambekr.b);
       i = this.subpackageTaskId.getAndIncrement();
       if (localObject != null)
       {
@@ -45,7 +45,7 @@ public class SubpackageJsPlugin
           Object localObject;
           ((JSONObject)localObject).put("loadTaskId", i);
           ((JSONObject)localObject).put("state", "fail");
-          return bekg.b(parambeka.a, (JSONObject)localObject).toString();
+          return bekx.b(parambekr.a, (JSONObject)localObject).toString();
           localThrowable = localThrowable;
           localJSONObject = new JSONObject();
         }
@@ -59,16 +59,16 @@ public class SubpackageJsPlugin
         }
       }
       label103:
-      bevc localbevc = bevi.a().a();
-      if (localbevc != null)
+      bevt localbevt = bevz.a().a();
+      if (localbevt != null)
       {
-        bewt.a().i("SubpackageJsPlugin", "start loadSubPackage:" + localJSONObject + ", gameId:" + localbevc.d + ", gameName:" + localbevc.c);
-        localbevc.a(localJSONObject, new SubpackageJsPlugin.1(this, localJSONObject, i, parambeka));
+        bexk.a().i("SubpackageJsPlugin", "start loadSubPackage:" + localJSONObject + ", gameId:" + localbevt.d + ", gameName:" + localbevt.c);
+        localbevt.a(localJSONObject, new SubpackageJsPlugin.1(this, localJSONObject, i, parambekr));
         localJSONObject = new JSONObject();
         try
         {
           localJSONObject.put("loadTaskId", i);
-          return bekg.a(parambeka.a, localJSONObject).toString();
+          return bekx.a(parambekr.a, localJSONObject).toString();
         }
         catch (JSONException localJSONException2)
         {
@@ -79,7 +79,7 @@ public class SubpackageJsPlugin
         }
       }
     }
-    return bekg.a(parambeka.a, null, "found no miniGamePkg error").toString();
+    return bekx.a(parambekr.a, null, "found no miniGamePkg error").toString();
   }
 }
 

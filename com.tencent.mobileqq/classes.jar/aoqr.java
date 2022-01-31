@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aoqr
-  implements aptu
+public class aoqr
+  implements View.OnLongClickListener
 {
-  aoqr(aoqq paramaoqq, FileManagerEntity paramFileManagerEntity) {}
+  public aoqr(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Aoqq.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    bbmf localbbmf = new bbmf();
+    localbbmf.a(2131364978, paramView.getContext().getString(2131691507));
+    this.a.a = bbcq.a(paramView, localbbmf, new aoqs(this, paramView), new aoqt(this, paramView));
+    return true;
   }
-  
-  public void b() {}
 }
 
 

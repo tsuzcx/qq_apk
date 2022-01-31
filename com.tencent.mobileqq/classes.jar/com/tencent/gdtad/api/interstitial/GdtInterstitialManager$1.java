@@ -2,16 +2,16 @@ package com.tencent.gdtad.api.interstitial;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
-import yul;
+import yui;
 
 public class GdtInterstitialManager$1
   implements Runnable
 {
-  public GdtInterstitialManager$1(yul paramyul) {}
+  public GdtInterstitialManager$1(yui paramyui) {}
   
   public void run()
   {
-    yul.a(this.this$0).register(BaseApplicationImpl.getContext());
+    yui.a(this.this$0).register(BaseApplicationImpl.getContext());
   }
 }
 

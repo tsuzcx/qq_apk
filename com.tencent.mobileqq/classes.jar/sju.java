@@ -1,8 +1,6 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-
-public abstract interface sju
+class sju
 {
-  public abstract void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp);
+  private static final sjs a = new sjs(null);
 }
 
 

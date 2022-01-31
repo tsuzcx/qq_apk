@@ -1,54 +1,47 @@
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
 import com.tencent.av.ui.funchat.zimu.ZimuView;
 import java.lang.ref.WeakReference;
+import java.util.Random;
 
-public abstract class mod
+public class mod
   extends moa
 {
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int i;
+  
   public mod(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
     super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
+    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 4, (int)(paramInt1 / 3.8D), (int)(paramInt1 / 3.6D), (int)(paramInt1 / 3.4D), (int)(paramInt1 / 3.2D), paramInt1 / 3, (int)(paramInt1 / 2.8D), (int)(paramInt1 / 2.6D) };
+    paramInt1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(8);
+    this.i = this.jdField_a_of_type_ArrayOfInt[paramInt1];
   }
   
-  protected abstract int a(int paramInt);
-  
-  public int a(long paramLong)
+  protected int a(int paramInt)
   {
-    int i = 0;
-    if (a())
-    {
-      i = b(paramLong);
-      this.e -= i;
-    }
-    return i;
+    lcg.c(this.jdField_a_of_type_JavaLangString, "getSPEED: " + this.i);
+    return this.i;
   }
   
-  public void a(long paramLong)
+  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    super.a(paramLong);
-    this.e = (b(paramLong) + this.e);
-  }
-  
-  public boolean a()
-  {
-    return this.e + c() > 0;
-  }
-  
-  protected int b(long paramLong)
-  {
-    return (int)(a(this.jdField_a_of_type_Lhh.a.length()) * paramLong / 1000L);
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
-      this.e = this.g;
-    }
-  }
-  
-  public boolean c()
-  {
-    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mnw.b);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Mnw.jdField_a_of_type_Float);
+    float f1 = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
+    paramCanvas.drawText((String)this.jdField_a_of_type_Lhc.a, 0.0F, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mnw.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
+    float f2 = this.jdField_a_of_type_Mnw.jdField_a_of_type_Float / 6.0F;
+    paramCanvas.drawText((String)this.jdField_a_of_type_Lhc.a, 0.0F + f2, f1 - f2, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
 }
 

@@ -1,9 +1,10 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aafc
   implements View.OnClickListener
@@ -12,14 +13,25 @@ public class aafc
   
   public void onClick(View paramView)
   {
-    axqw.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
-    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
-      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "add account");
     }
-    AccountManageActivity.a(this.a.getActivity(), this.a.app);
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
+    if (!aumk.a().a(this.a.app, this.a)) {
+      return;
     }
+    if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
+    {
+      bcql.a(this.a, 2131694031, 0).a();
+      return;
+    }
+    AccountManageActivity.a(this.a, ayaq.a(this.a.app));
+    paramView = new Intent();
+    paramView.setPackage(this.a.getPackageName());
+    paramView.setClass(this.a, AddAccountActivity.class);
+    this.a.startActivityForResult(paramView, 1000);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    ayap.c(this.a.app, this.a);
+    axqy.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 

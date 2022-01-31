@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import agzl;
-import ahao;
-import ahba;
-import ahbb;
-import ajyc;
+import agzj;
+import aham;
+import ahay;
+import ahaz;
+import ajya;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import bgwk;
-import bgwr;
-import bgws;
+import bgxb;
+import bgxi;
+import bgxj;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
@@ -28,21 +28,21 @@ public abstract class BaseHbUIFragment
   public View a;
   protected Button a;
   protected EditText a;
-  public bgws a;
+  public bgxj a;
   private DecimalFormat a;
   protected EditText b;
   public EditText c;
   
   public BaseHbUIFragment()
   {
-    this.jdField_a_of_type_Bgws = new bgws();
+    this.jdField_a_of_type_Bgxj = new bgxj();
     this.jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-    this.jdField_a_of_type_AndroidTextTextWatcher = new agzl(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new agzj(this);
   }
   
   protected float a()
   {
-    return bgwk.a(this.b.getText().toString());
+    return bgxb.a(this.b.getText().toString());
   }
   
   public abstract int a();
@@ -51,22 +51,22 @@ public abstract class BaseHbUIFragment
   
   protected void a()
   {
-    this.c.setHint(ahao.a(this.channel, this.jdField_a_of_type_Bgws, this.mActivity.a(), a()));
+    this.c.setHint(aham.a(this.channel, this.jdField_a_of_type_Bgxj, this.mActivity.a(), a()));
     b();
   }
   
   protected void a(Bundle paramBundle)
   {
-    bgwr.a(paramBundle, this.jdField_a_of_type_Bgws);
+    bgxi.a(paramBundle, this.jdField_a_of_type_Bgxj);
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131370982));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahbb(this.jdField_a_of_type_AndroidWidgetEditText));
-    this.b = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131362530));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahaz(this.jdField_a_of_type_AndroidWidgetEditText));
+    this.b = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131362529));
     this.b.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.b.addTextChangedListener(new ahba(this.b));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364611));
-    this.c = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369876));
+    this.b.addTextChangedListener(new ahay(this.b));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364610));
+    this.c = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369875));
     if (QLog.isColorLevel()) {
-      QLog.i("BaseHbUIFragment", 2, "bundleInfo: " + this.jdField_a_of_type_Bgws);
+      QLog.i("BaseHbUIFragment", 2, "bundleInfo: " + this.jdField_a_of_type_Bgxj);
     }
   }
   
@@ -74,43 +74,43 @@ public abstract class BaseHbUIFragment
   {
     String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     float f = a();
-    if ((bgwk.a(str, 0) <= 0) || (f <= 0.0F))
+    if ((bgxb.a(str, 0) <= 0) || (f <= 0.0F))
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697062));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131697063));
       return false;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(ajyc.a(2131700994), new Object[] { this.jdField_a_of_type_JavaTextDecimalFormat.format(f) }));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(ajya.a(2131701005), new Object[] { this.jdField_a_of_type_JavaTextDecimalFormat.format(f) }));
     return true;
   }
   
   protected String b()
   {
-    return ahao.a(this.c);
+    return aham.a(this.c);
   }
   
   protected void b()
   {
-    QLog.i("BaseHbUIFragment", 2, "recv_type: " + this.jdField_a_of_type_Bgws.recv_type);
-    if (bgwr.b.contains(this.jdField_a_of_type_Bgws.recv_type))
+    QLog.i("BaseHbUIFragment", 2, "recv_type: " + this.jdField_a_of_type_Bgxj.recv_type);
+    if (bgxi.b.contains(this.jdField_a_of_type_Bgxj.recv_type))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText("1");
       ((View)this.jdField_a_of_type_AndroidWidgetEditText.getParent()).setVisibility(8);
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bgws.people_num)) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajyc.a(2131700993) + this.jdField_a_of_type_Bgws.people_num + ajyc.a(2131700995));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bgxj.people_num)) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajya.a(2131701004) + this.jdField_a_of_type_Bgxj.people_num + ajya.a(2131701006));
     }
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
   }
   
   protected boolean b()
   {
-    if (bgwk.a()) {
+    if (bgxb.a()) {
       return false;
     }
-    if (bgwk.a(this.b.getText().toString()) <= 0.0F)
+    if (bgxb.a(this.b.getText().toString()) <= 0.0F)
     {
       QLog.d("BaseHbUIFragment", 2, "amount error, no input!");
       return false;

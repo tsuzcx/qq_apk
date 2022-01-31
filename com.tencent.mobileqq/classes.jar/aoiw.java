@@ -1,28 +1,20 @@
-public abstract interface aoiw
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+
+public class aoiw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract long a();
+  public aoiw(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public void onGlobalLayout()
+  {
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
+  }
 }
 
 

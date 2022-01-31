@@ -1,24 +1,46 @@
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class wrk
-  extends wra
+  extends wro
 {
-  private String a;
+  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
   
-  public wrk(String paramString)
+  public wrk(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.a = paramString;
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
+    }
+    this.a.mBitmap.set(1L);
   }
   
-  public void a() {}
-  
-  public void a(wrg paramwrg)
+  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
   {
-    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(this.a, null);
-    paramwrg = new wrl(this, paramwrg);
-    localSubscribePersonalDetailRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localSubscribePersonalDetailRequest, paramwrg);
+    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
+    try
+    {
+      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+      }
+    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
   }
 }
 

@@ -1,26 +1,15 @@
-import android.view.View;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import android.text.SpannableStringBuilder;
 
 public class wwv
-  implements bfoq
+  extends SpannableStringBuilder
 {
-  public wwv(FollowTextView paramFollowTextView, bfol parambfol) {}
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void OnClick(View paramView, int paramInt)
+  public wwv(CharSequence paramCharSequence)
   {
-    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
-      return;
-    }
-    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
-    }
+    super(paramCharSequence);
   }
 }
 

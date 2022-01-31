@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 
 public abstract interface IJsPlugin
   extends ILifeCycle
 {
-  public abstract boolean onInterceptJsEvent(beka parambeka);
+  public abstract boolean onInterceptJsEvent(bekr parambekr);
 }
 
 

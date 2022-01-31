@@ -1,17 +1,22 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ajup
   extends BroadcastReceiver
 {
-  ajup(ajuo paramajuo) {}
+  ajup(ajum paramajum, QQAppInterface paramQQAppInterface) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      this.a.d(8);
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
+        this.jdField_a_of_type_Ajum.a();
+      }
     }
   }
 }

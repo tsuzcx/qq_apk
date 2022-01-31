@@ -1,38 +1,67 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amwv
+  extends ampa<amwu>
 {
-  public int a;
-  public int b;
-  
-  public static amwv a(String paramString)
+  public int a()
   {
-    if (paramString == null) {}
-    do
+    return 158;
+  }
+  
+  @NonNull
+  public amwu a(int paramInt)
+  {
+    return new amwu();
+  }
+  
+  @Nullable
+  public amwu a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      return null;
-      try
-      {
-        amwv localamwv = new amwv();
-        paramString = new JSONObject(paramString);
-        localamwv.a = paramString.optInt("switch", 0);
-        localamwv.b = paramString.optInt("stoppreload", 0);
-        QLog.d("ConfBean", 2, "confBean = " + localamwv.a);
-        return localamwv;
+      amwu localamwu = amwu.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+      return localamwu;
+    }
     return null;
   }
   
-  public String toString()
+  public Class<amwu> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("result:").append(this.a);
-    localStringBuilder.append(" stoppreload:").append(this.b);
-    return localStringBuilder.toString();
+    return amwu.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amwu paramamwu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramamwu.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

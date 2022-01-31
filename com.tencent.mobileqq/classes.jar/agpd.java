@@ -1,8 +1,23 @@
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
 
-public abstract interface agpd
+public class agpd
+  implements bfpt
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public agpd(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (QzonePhotoPreviewActivity.a(this.a))
+    {
+      this.a.getActivity().finish();
+      bbbx.a(this.a.getActivity(), true, false);
+      return;
+    }
+    this.a.a();
+  }
 }
 
 

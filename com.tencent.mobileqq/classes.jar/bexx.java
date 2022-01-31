@@ -1,15 +1,46 @@
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.report.GdtCgiReportRunnable;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class bexx
+  extends benb
 {
-  public static void a(String paramString)
+  public bexx(behq parambehq)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    super(parambehq);
+  }
+  
+  private void c()
+  {
+    Object localObject = this.a.a();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    {
+      if (!((Activity)localObject).moveTaskToBack(true))
+      {
+        betc.d("GameCapsuleButton", "moveTaskToBack failed, finish the activity.");
+        ((Activity)localObject).finish();
+      }
+      this.a.a(bekc.a(60));
     }
-    beiw.a(new GdtCgiReportRunnable(paramString), 16, null, false);
-    besl.b("GDT_CGI_REPORT", paramString);
+    if (this.a.e())
+    {
+      localObject = this.a.a();
+      if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.f))) {
+        belm.a(((MiniAppInfo)localObject).launchParam.f);
+      }
+    }
+    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonCloseClick(new behr(this.a));
+  }
+  
+  public void a()
+  {
+    betc.b("GameCapsuleButton", "on close click");
+    if ((!bevu.b(this.a, new bexy(this))) && (!bevu.a(this.a, new bexz(this)))) {
+      c();
+    }
   }
 }
 

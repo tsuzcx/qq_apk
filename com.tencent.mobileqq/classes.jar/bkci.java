@@ -1,45 +1,107 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.LayoutChangeListener.1;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import mqq.os.MqqHandler;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import java.io.File;
 
-public class bkci
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bkci
+  extends SimpleJob<DoodleEmojiItem>
+  implements stk
 {
-  private bkci(bkbv parambkbv) {}
+  protected long a;
+  private final DoodleEmojiItem jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+  private final stw jdField_a_of_type_Stw;
+  private long b;
   
-  public void onGlobalLayout()
+  public bkci(DoodleEmojiItem paramDoodleEmojiItem)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout third bottom:" + i + " last:" + this.a.b);
+    super("DownloadAndUnZipJob");
+    if (paramDoodleEmojiItem == null) {
+      throw new IllegalArgumentException("doodleEmojiItem should not be null");
     }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout != null)
+    this.jdField_a_of_type_Stw = new stx();
+    this.jdField_a_of_type_Stw.a(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
+  }
+  
+  protected DoodleEmojiItem a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Stw.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.download_url, bkby.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id), 0L);
+    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    DoodleEmojiItem localDoodleEmojiItem1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+    if (paramInt == 0)
     {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getLocationOnScreen(arrayOfInt);
-      int j = arrayOfInt[1];
-      int k = j - actn.a(62.0F, BaseApplicationImpl.getContext().getResources());
-      if (k < bkbv.b(this.a)) {
-        bkbv.b(this.a, k);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditTextDialog", 2, "max height" + k + "preViewTextMaxHeight" + bkbv.b(this.a) + "y" + j);
+      paramString = bkby.a(localDoodleEmojiItem1.pack_id);
+      String str = bkby.b(localDoodleEmojiItem1.pack_id);
+      ved.b("DoodleEmojiManager", "DownloadListener onDownloadFinish zip = " + paramString);
+      ved.b("DoodleEmojiManager", "DownloadListener onDownloadFinish folder = " + str);
+      for (;;)
+      {
+        int i;
+        try
+        {
+          vyf.d(str);
+          i = nav.a(paramString, str);
+          if (i == 0)
+          {
+            long l1 = SystemClock.uptimeMillis();
+            long l2 = this.jdField_a_of_type_Long;
+            vei.b("edit_video", "face_download_timecost", 0, 0, new String[] { localDoodleEmojiItem1.pack_id, l1 - l2 + "" });
+            vei.b("edit_video", "face_download_success", 0, 0, new String[] { localDoodleEmojiItem1.pack_id });
+            ved.c("DoodleEmojiManager", "DownloadListener onDownloadFinish success, unZip success");
+            localDoodleEmojiItem1.setLocalEmojiFolderPath(str);
+            new File(str).setLastModified(System.currentTimeMillis());
+            stb.a().dispatch(new bkcf(localDoodleEmojiItem1, paramInt, true, 0L, 0L));
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          ved.d("DoodleEmojiManager", "DownloadListener remove folderPath : %s ,error : %s ", new Object[] { str, localException });
+          continue;
+        }
+        finally
+        {
+          new File(paramString).delete();
+        }
+        ved.d("DoodleEmojiManager", "DownloadListener onDownloadFinish unZip failed, treat it as download failed");
+        stb.a().dispatch(new bkcf(localDoodleEmojiItem2, i, false, 0L, 0L));
+        vei.b("edit_video", "face_download_success", 0, i, new String[] { localDoodleEmojiItem2.pack_id });
       }
     }
-    if (i - this.a.b > this.a.jdField_a_of_type_Int)
+    ved.e("DoodleEmojiManager", "DownloadListener onDownloadFinish error = " + paramInt + ", url = " + paramString);
+    stb.a().dispatch(new bkcf(localDoodleEmojiItem2, paramInt, true, 0L, 0L));
+    vei.b("edit_video", "face_download_success", 0, paramInt, new String[] { localDoodleEmojiItem2.pack_id });
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    DoodleEmojiItem localDoodleEmojiItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+    if (!TextUtils.equals(localDoodleEmojiItem.download_url, paramString))
     {
-      this.a.a(false);
-      if (this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null) {
-        this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.d = false;
-      }
+      ved.d("DoodleEmojiManager", "DownloadListener onProgress error : " + localDoodleEmojiItem);
+      ved.d("DoodleEmojiManager", "DownloadListener onProgress error : call back url = " + paramString);
+    }
+    while (paramLong1 <= paramLong2 / 10L + this.b) {
       return;
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.LayoutChangeListener.1(this));
+    ved.a("DoodleEmojiManager", "DownloadListener onProgress " + paramLong1 + " / " + paramLong2);
+    stb.a().dispatch(new bkcf(localDoodleEmojiItem, 0, false, paramLong2, paramLong1));
+    this.b = paramLong1;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    ved.b("DoodleEmojiManager", "onDownloadStart : url = " + paramString1 + ", path = " + paramString2);
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
   }
 }
 

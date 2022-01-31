@@ -1,6 +1,6 @@
 public abstract interface amfc
 {
-  public abstract void a(boolean paramBoolean, amfi paramamfi);
+  public abstract void a(boolean paramBoolean, amfh paramamfh);
 }
 
 

@@ -1,89 +1,61 @@
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import java.io.IOException;
 
-public abstract class bkrd
+public class bkrd
+  implements aysc
 {
-  public abstract void a();
+  bkrd(bkrb parambkrb) {}
   
-  public void a(bkzy parambkzy, boolean paramBoolean, int paramInt1, int paramInt2) {}
-  
-  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct) {}
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
+  public void onResp(aysz paramaysz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoState", 2, "[@] notify called eventId=" + paramInt);
+    boolean bool = false;
+    FilterDesc localFilterDesc = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
+    if (localFilterDesc != null)
+    {
+      if (paramaysz.jdField_a_of_type_Int == 0) {
+        break label96;
+      }
+      QLog.e("VideoFilterListDownloader", 2, "MyListDownloaderListener file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.resurl);
+      bkrb.a(this.a, localFilterDesc, 0L, 5);
     }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if ((paramObject instanceof AudioCapture)) {
-      switch (paramInt)
+    for (;;)
+    {
+      bkrb.a(this.a, localFilterDesc, bool);
+      return;
+      label96:
+      if (!localFilterDesc.resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
       {
+        QLog.e("VideoFilterListDownloader", 2, "MyListDownloaderListener file failed: md5 is not match.");
+        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+      }
+      else
+      {
+        QLog.i("VideoFilterListDownloader", 2, "MyListDownloaderListener resFile success. file: " + localFilterDesc.name + localFilterDesc.resurl);
+        try
+        {
+          String str = bkuv.b;
+          bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, str, false);
+          if (localFilterDesc.bundle == null) {
+            localFilterDesc.bundle = new Bundle();
+          }
+          bkrb.a(this.a, localFilterDesc, bbdx.a(paramaysz.jdField_a_of_type_Aysy.c), 0);
+          bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+          bool = true;
+        }
+        catch (IOException paramaysz)
+        {
+          paramaysz.printStackTrace();
+          QLog.i("VideoFilterListDownloader", 2, "MyListDownloaderListener  unzip file failed.");
+          bkrb.a(this.a, localFilterDesc, 0L, 4);
+        }
       }
     }
-    label304:
-    label332:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localRMVideoStateMgr.c();
-            return;
-          } while (!(paramObject instanceof axid));
-          QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM eventId" + paramInt + ", rmStateMgr:" + localRMVideoStateMgr);
-          if (localRMVideoStateMgr == null) {
-            break label392;
-          }
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 2: 
-            if ((paramVarArgs == null) || (localRMVideoStateMgr.a == null)) {
-              break label332;
-            }
-            if (!(paramVarArgs[0] instanceof axhs)) {
-              break label304;
-            }
-            paramObject = (axhs)paramVarArgs[0];
-            try
-            {
-              localRMVideoStateMgr.a.a(paramObject.a, paramObject.b);
-              QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
-              return;
-            }
-            catch (NullPointerException paramObject)
-            {
-              paramObject.printStackTrace();
-            }
-          }
-        } while (localRMVideoStateMgr == null);
-        QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=" + localRMVideoStateMgr + " viewST=" + localRMVideoStateMgr.a);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("faceuu", 2, "RMVideoState viewST:" + localRMVideoStateMgr.a);
-        }
-      } while (localRMVideoStateMgr.a == null);
-      localRMVideoStateMgr.a.h();
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM: no CustomSize obj[0]=" + paramVarArgs[0]);
-      return;
-      QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:obj=" + paramVarArgs);
-    } while (localRMVideoStateMgr == null);
-    QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[2]:viewST=" + localRMVideoStateMgr.a);
-    return;
-    label392:
-    QLog.d("faceuu", 2, " notify EVENT_SET_CAMERA_PARAM  rmStateMgr==null");
   }
   
-  public void e() {}
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

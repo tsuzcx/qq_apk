@@ -1,28 +1,46 @@
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class aecf
-  extends hl
+class aecf
+  implements bcjp
 {
-  aecf(aebz paramaebz) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Activity> b;
   
-  public void a(ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
+  aecf(aebx paramaebx, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if ((!paramBoolean) && (paramChatMessage != null))
-    {
-      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramActivity);
+  }
+  
+  public void a(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.b.get();
+    if ((localActivity == null) || (localQQAppInterface == null)) {
+      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
     }
-    String str = this.a.a.c();
-    if (paramBoolean) {}
-    for (paramChatMessage = "1";; paramChatMessage = "0")
+    do
     {
-      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
+      return;
+      actj.n = true;
+    } while ((this.jdField_a_of_type_Aebx.a()) || (amnr.a(actj.a(paramView))) || (arqp.a(this.jdField_a_of_type_Aebx.a)) || (paramView.getId() == 2131377248) || (paramView.getId() == 2131370452) || (paramView.getId() == 2131364137));
+    Object localObject = (FragmentActivity)paramView.getContext();
+    if (localObject != null) {}
+    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
+        return;
+      }
+      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Aebx.a.a);
       return;
     }
   }

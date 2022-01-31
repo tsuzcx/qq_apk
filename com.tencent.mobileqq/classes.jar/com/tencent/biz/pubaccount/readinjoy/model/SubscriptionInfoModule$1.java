@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import akdi;
+import akdh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pbu;
-import sdf;
+import pbr;
+import sdc;
 
 public class SubscriptionInfoModule$1
   implements Runnable
 {
-  public SubscriptionInfoModule$1(pbu parampbu) {}
+  public SubscriptionInfoModule$1(pbr parampbr) {}
   
   public void run()
   {
-    ((akdi)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(56)).a();
-    sdf localsdf = sdf.a();
-    localsdf.c((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (localsdf.a((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
-      localsdf.a(this.this$0.jdField_a_of_type_Aukn, (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    ((akdh)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(56)).a();
+    sdc localsdc = sdc.a();
+    localsdc.c((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (localsdc.a((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
+      localsdc.a(this.this$0.jdField_a_of_type_Aukp, (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
   }
 }

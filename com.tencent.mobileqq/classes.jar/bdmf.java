@@ -1,206 +1,155 @@
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.open.downloadnew.common.NoticeParam;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextPaint;
+import android.view.Window;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.MyAppDialog.1;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bdmf
+  extends Dialog
 {
-  public static String a;
-  public static ArrayList<String> a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
+  public ProgressBar a;
+  TextView a;
+  protected final WeakReference<Activity> a;
+  TextView b;
+  public TextView c;
+  TextView d;
+  public TextView e;
   
-  static
+  public bdmf(Activity paramActivity)
   {
-    jdField_a_of_type_JavaLangString = "com.tencent.open.download.start";
-    b = "com.tencent.open.download.pause";
-    c = "com.tencent.open.download.restart";
-    d = "com.tencent.open.download.complete";
-    e = "com.tencent.open.download.open";
-    f = "com.tencent.open.download.yyb";
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(d);
-    jdField_a_of_type_JavaUtilArrayList.add(e);
-    jdField_a_of_type_JavaUtilArrayList.add(b);
-    jdField_a_of_type_JavaUtilArrayList.add(f);
-    jdField_a_of_type_JavaUtilArrayList.add(c);
-    jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_JavaLangString);
+    super(paramActivity);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    requestWindowFeature(1);
+    paramActivity = new ColorDrawable();
+    paramActivity.setAlpha(0);
+    getWindow().setBackgroundDrawable(paramActivity);
+    setContentView(2131559472);
   }
   
-  public static PendingIntent a(int paramInt, NoticeParam paramNoticeParam)
+  public Activity a()
   {
-    Intent localIntent = new Intent();
-    if (paramNoticeParam != null)
-    {
-      localIntent.putExtra("noticeParam", paramNoticeParam);
-      localIntent.putExtra("param_notifyid", bdmb.a().a(paramNoticeParam.f, paramNoticeParam.b, paramNoticeParam.jdField_a_of_type_JavaLangString));
+    Activity localActivity2 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity1 = localActivity2;
+    if (localActivity2 == null) {
+      localActivity1 = null;
     }
-    paramNoticeParam = bdey.r();
-    if (!TextUtils.isEmpty(paramNoticeParam)) {
-      localIntent.putExtra("processName", paramNoticeParam);
-    }
-    paramNoticeParam = paramNoticeParam.replace(":", ".");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      localIntent.setPackage(MobileQQ.getContext().getPackageName());
-      return PendingIntent.getBroadcast(bcxm.a().a(), (int)(System.currentTimeMillis() & 0xFFFFFFF), localIntent, 134217728);
-      localIntent.setAction(b + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(jdField_a_of_type_JavaLangString + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(d + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(f + "." + paramNoticeParam);
-      continue;
-      localIntent.setAction(e + "." + paramNoticeParam);
-    }
+    return localActivity1;
   }
   
-  public static Intent a(Bundle paramBundle)
+  public bdmf a(int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("adapter_action", "action_push_app_detail");
-    localIntent.setClassName("com.tencent.plugin.qappcenter", "com.tencent.open.appcenter.QZoneAppWebViewActivity");
-    localIntent.putExtras(paramBundle);
-    Object localObject1 = new StringBuffer("sd://qapp_center_detail.htm?");
-    Object localObject2 = paramBundle.keySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      str1 = (String)((Iterator)localObject2).next();
-      String str2 = paramBundle.getString(str1);
-      ((StringBuffer)localObject1).append(str1).append("=").append(str2).append("&");
-    }
-    localObject2 = bdey.a(((StringBuffer)localObject1).toString());
-    localObject1 = localObject2[0];
-    localObject2 = "" + localObject2[1];
-    String str1 = paramBundle.getString("from");
-    localIntent.putExtra("uinRestore", bcxm.a().a());
-    localIntent.putExtra("APP_URL_NOTICE", (String)localObject1);
-    if (a(str1)) {}
-    for (localObject1 = a(paramBundle);; localObject1 = localObject2)
-    {
-      localIntent.putExtra("APP_PARAMS_NOTICE", (String)localObject1);
-      bdht.b("IntentFactory", "params=" + (String)localObject2 + "\n pushParams=" + a(paramBundle));
-      if (paramBundle.containsKey("friendUin"))
-      {
-        localIntent.putExtra("friendUin", paramBundle.getString("friendUin"));
-        localIntent.putExtra("isTroop", paramBundle.getInt("isTroop"));
-      }
-      localIntent.addFlags(603979776);
-      return localIntent;
-    }
+    this.b.setTextColor(paramInt);
+    return this;
   }
   
-  public static Intent a(String paramString1, String paramString2, int paramInt)
+  public bdmf a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0)) {
-      return null;
+    if (paramOnClickListener == null)
+    {
+      this.c.setVisibility(8);
+      return this;
     }
-    Object localObject = bdey.a(paramString1);
-    paramString1 = (String)((HashMap)localObject).get("appid");
-    String str1 = (String)((HashMap)localObject).get("sendtime");
-    String str2 = (String)((HashMap)localObject).get("packname");
-    String str3 = (String)((HashMap)localObject).get("packetversion");
-    String str4 = (String)((HashMap)localObject).get("msgtype");
-    String str5 = (String)((HashMap)localObject).get("type");
-    String str6 = (String)((HashMap)localObject).get("downurl");
-    localObject = (String)((HashMap)localObject).get("via");
-    String str7 = bdev.a((String)localObject);
-    bdht.b("IntentFactory", "appid=" + paramString1 + "&sendtime=" + str1 + "&packname=" + str2 + "&packetversion=" + str3 + "&msgtype=" + str4 + "&type=" + str5 + "&downUrl=" + str6 + "&via=" + (String)localObject);
-    int i = bdiw.a(str2);
-    int j = bdiw.b(bdkp.a().a(paramString1));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putString("from", "2458");
-    localBundle.putString("downloadUrl", str6);
-    localBundle.putString("packageName", str2);
-    localBundle.putString("installedVersion", String.valueOf(i));
-    localBundle.putString("localVersion", String.valueOf(j));
-    localBundle.putString("serverApkVersion", str3);
-    localBundle.putString("typeid", str5);
-    localBundle.putString("msgType", str4);
-    localBundle.putString("sendTime", str1);
-    localBundle.putString("via", (String)localObject);
-    localBundle.putString("splitvia", str7);
-    localBundle.putString("friendUin", paramString2);
-    localBundle.putInt("isTroop", paramInt);
-    return a(localBundle);
+    this.c.setText(paramInt1);
+    this.c.setTextColor(paramInt2);
+    this.c.setVisibility(0);
+    this.c.setOnClickListener(new bdmh(this, paramOnClickListener, paramInt1, paramBoolean));
+    return this;
   }
   
-  protected static String a(Bundle paramBundle)
+  public bdmf a(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
-    Object localObject1;
-    if (paramBundle == null)
+    if (paramOnClickListener == null)
     {
-      localObject1 = "";
-      return localObject1;
+      this.c.setVisibility(8);
+      return this;
     }
-    String str3 = paramBundle.getString("id");
-    bdht.b("IntentFactory", "appId=" + str3);
-    String str5;
-    if (!TextUtils.isEmpty(str3))
-    {
-      Object localObject2 = paramBundle.getString("downloadUrl");
-      String str4 = paramBundle.getString("packageName");
-      String str1 = paramBundle.getString("serverApkVersion");
-      localObject1 = str1;
-      if (str1 == null) {
-        localObject1 = "0";
-      }
-      str5 = paramBundle.getString("via");
-      String str2 = paramBundle.getString("splitvia");
-      int j = bdiw.a(str4);
-      int k = bdiw.b(bdkp.a().a(str3));
-      if (bdho.c(bcxm.a().a())) {}
-      for (int i = 1;; i = 0)
-      {
-        try
-        {
-          str1 = URLEncoder.encode((String)localObject2, "utf-8");
-          localObject2 = str1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            continue;
-            paramBundle = paramBundle + "&via=" + str5;
-          }
-        }
-        paramBundle = "&from=-10&id=" + str3 + "&channelId=" + paramBundle.getString("from") + "&installedVersion=" + String.valueOf(j) + "&localVersion=" + k + "&serverApkVersion=" + (String)localObject1 + "&typeId=" + "0" + "&msgType=" + "56" + "&sendTime=" + str3 + "&downloadUrl=" + (String)localObject2 + "&packageName=" + str4 + "&nt=" + i;
-        if (!TextUtils.isEmpty(str5)) {
-          break label357;
-        }
-        localObject1 = paramBundle;
-        if (TextUtils.isEmpty(str2)) {
-          break;
-        }
-        return paramBundle + "&splitvia=" + str2;
-      }
-    }
-    label357:
-    return "";
+    this.c.setText(paramInt);
+    this.c.setVisibility(0);
+    this.c.setOnClickListener(new bdmg(this, paramOnClickListener, paramInt, paramBoolean));
+    return this;
   }
   
-  protected static boolean a(String paramString)
+  public bdmf a(String paramString)
   {
-    return ("2457".equals(paramString)) || ("2458".equals(paramString));
+    if (paramString != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    ThreadManager.getUIHandler().post(new MyAppDialog.1(this, paramInt1, paramInt2));
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable(paramDrawable);
+  }
+  
+  public bdmf b(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(paramInt1);
+    this.d.setTextColor(paramInt2);
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bdmj(this, paramOnClickListener, paramInt1, paramBoolean));
+    return this;
+  }
+  
+  public bdmf b(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(paramInt);
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new bdmi(this, paramOnClickListener, paramInt, paramBoolean));
+    return this;
+  }
+  
+  public bdmf b(String paramString)
+  {
+    if (paramString != null) {
+      this.b.setText(paramString);
+    }
+    return this;
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365150));
+    this.b = ((TextView)findViewById(2131365146));
+    this.c = ((TextView)findViewById(2131365135));
+    this.c.getPaint().setFakeBoldText(true);
+    this.d = ((TextView)findViewById(2131365141));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371995));
+    this.e = ((TextView)findViewById(2131372021));
   }
 }
 

@@ -1,54 +1,29 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
 
 class aovi
-  implements aoup
+  implements aowo
 {
-  aovi(aovh paramaovh, String paramString, aovr paramaovr) {}
+  aovi(aovh paramaovh, ByteStringMicro paramByteStringMicro, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(boolean paramBoolean)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    aouy.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg.jdField_a_of_type_Aouy).a().a(aovg.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg));
+    if (paramBoolean)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovh.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA uploadFile success");
       }
-      this.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_Long, bool2), bool1);
+      this.jdField_a_of_type_Aovh.jdField_a_of_type_Aowt.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray(), 5000, 3, null);
+      aovg.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovv.a(this.jdField_a_of_type_JavaLangString, aovg.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg));
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "2");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aovh.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aovh.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aovh.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aovh.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aovh.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovh.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
-    }
-    this.jdField_a_of_type_Aovr.a(paramString, localBundle);
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild");
+    this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovh.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileMultiMsgManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aovg.jdField_a_of_type_Long, false), true);
   }
 }
 

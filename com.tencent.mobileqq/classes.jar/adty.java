@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class adty
-  implements DialogInterface.OnClickListener
+  implements bcjp
 {
-  adty(adtw paramadtw, MessageForLongMsg paramMessageForLongMsg) {}
+  adty(adtu paramadtu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    aaod.a(this.jdField_a_of_type_Adtw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adtw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adtw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    if (arqp.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      return;
+    }
+    actj.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

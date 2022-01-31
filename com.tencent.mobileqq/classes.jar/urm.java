@@ -1,30 +1,24 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class urm
-  extends QQUIEventReceiver<uqy, tdm>
+  extends ste<uqv, tla>
 {
-  public urm(@NonNull uqy paramuqy)
+  public urm(uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull tdm paramtdm)
+  public void a(@NonNull uqv paramuqv, @NonNull tla paramtla)
   {
-    if (uqy.a(paramuqy) == null)
-    {
-      veg.b(this.TAG, "ignore this troop nick name change event. %s.", paramtdm.toString());
-      return;
-    }
-    veg.a(this.TAG, "receive troop nick name change event. %s.", paramtdm.toString());
-    uqy.a(paramuqy).c();
+    uqv.a(paramuqv, paramtla.a, this.TAG);
   }
   
   public Class acceptEventClass()
   {
-    return tdm.class;
+    return tla.class;
   }
+  
+  public void b(@NonNull uqv paramuqv, @NonNull tla paramtla) {}
 }
 
 

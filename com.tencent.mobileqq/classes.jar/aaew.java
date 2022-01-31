@@ -1,24 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AboutActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class aaew
-  implements View.OnClickListener
+  extends ajuf
 {
-  public aaew(AboutActivity paramAboutActivity, asfa paramasfa) {}
+  public aaew(AboutActivity paramAboutActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Asfa.d))
-    {
-      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Asfa.d);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
-    }
-    this.jdField_a_of_type_Asfa.a();
-    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.app.a();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
 }
 

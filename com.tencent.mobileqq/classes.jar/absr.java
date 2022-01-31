@@ -1,23 +1,9 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
 
 public class absr
-  implements View.OnClickListener
 {
-  public absr(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = this.a.getIntent().getStringExtra("uin");
-    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
-    {
-      ProfileLabelEditorActivity.a(this.a);
-      axqw.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
-    }
-  }
+  public int a;
+  public TextView a;
 }
 
 

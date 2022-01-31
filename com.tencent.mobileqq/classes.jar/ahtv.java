@@ -1,33 +1,26 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
+import android.view.View;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ahtv
-  implements MessageQueue.IdleHandler
+  implements bfph
 {
   public ahtv(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public boolean queueIdle()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (axho.d(axho.b)) {
-      this.a.b(true);
-    }
-    for (;;)
+    switch (paramInt)
     {
-      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.j();
+    default: 
+      return;
     }
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    ahtz.b("", "0X800656F", "0");
   }
 }
 

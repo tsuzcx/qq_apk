@@ -1,14 +1,24 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.widget.HongBaoListView;
 
-class bfsk
-  implements PopupWindow.OnDismissListener
+public abstract interface bfsk
 {
-  bfsk(bfsi parambfsi) {}
+  public abstract void a();
   
-  public void onDismiss()
-  {
-    this.a.a(1.0F);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(HongBaoListView paramHongBaoListView);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(HongBaoListView paramHongBaoListView);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(HongBaoListView paramHongBaoListView);
 }
 
 

@@ -1,132 +1,165 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.activity.history.link.TroopLinkHandler.1;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.1;
+import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.2;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import mqq.app.TicketManagerImpl;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class agbp
-  implements aysa
+  extends agdg
 {
-  private long jdField_a_of_type_Long;
-  @NonNull
-  private agbo jdField_a_of_type_Agbo;
-  private ayry jdField_a_of_type_Ayry;
-  private final ChatHistoryTroopLinkFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public Object a;
+  private SimpleDateFormat a;
+  public List<agep> a;
+  public Set<Long> a;
   
-  public agbp(QQAppInterface paramQQAppInterface, ChatHistoryTroopLinkFragment paramChatHistoryTroopLinkFragment, @NonNull agbo paramagbo)
+  public agbp(Context paramContext, bfnk parambfnk, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment = paramChatHistoryTroopLinkFragment;
-    this.jdField_a_of_type_Ayry = ((aysv)paramQQAppInterface.getManager(21)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-    this.jdField_a_of_type_Agbo = paramagbo;
+    super(paramContext, parambfnk, paramSessionInfo, paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
   }
   
-  private ArrayList<TroopLinkElement> a(JSONObject paramJSONObject)
+  public void a()
   {
-    paramJSONObject = paramJSONObject.optJSONArray("url_list");
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONObject == null) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-      localArrayList.add(TroopLinkElement.mergeFromJson(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment.a(), localJSONObject));
-      i += 1;
-    }
-    return localArrayList;
+    this.b.clear();
+    notifyDataSetChanged();
   }
   
-  private void a(aysx paramaysx)
+  public void a(long paramLong, String paramString, int paramInt)
   {
-    try
+    ThreadManager.post(new TroopAllMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
+  }
+  
+  public void a(List<agep> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    Object localObject;
+    int i;
+    if (QLog.isColorLevel())
     {
-      paramaysx = new JSONObject(new String(paramaysx.jdField_a_of_type_ArrayOfByte));
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopLinkHandler", 2, "resolveResponse: invoked.  json: " + paramaysx);
+      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
+      if (paramList == null)
+      {
+        i = 0;
+        QLog.d("LinkMessageResultAdapter", 2, i);
       }
-      a(true, a(paramaysx));
-      a(paramaysx);
-      return;
     }
-    catch (Exception paramaysx)
+    else
     {
-      QLog.e("TroopLinkHandler", 1, "resolveResponse: failed. ", paramaysx);
-      a(false, new ArrayList());
+      if ((paramInt1 != 1) || (paramInt2 != 0)) {
+        break label98;
+      }
+      this.b = paramList;
     }
+    label98:
+    do
+    {
+      do
+      {
+        return;
+        i = paramList.size();
+        break;
+        if ((paramInt1 == 2) && (paramInt2 == 0))
+        {
+          this.b.addAll(paramList);
+          return;
+        }
+      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
+      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
+        break label237;
+      }
+      localObject = (agep)paramList.get(0);
+      agep localagep = (agep)this.b.get(this.b.size() - 1);
+      if (((agep)localObject).a.time <= localagep.a.time) {
+        break label237;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
+    return;
+    label237:
+    this.b.addAll(paramList);
   }
   
-  private void a(String paramString, long paramLong)
+  public void a(List<agep> paramList, String paramString, long paramLong)
   {
-    ayrv localayrv = new ayrv();
-    localayrv.jdField_a_of_type_JavaLangString = "http://qun.qq.com/cgi-bin/groupchat_url_collect/get_url_collect";
-    localayrv.jdField_a_of_type_Int = 1;
-    localayrv.e = 0;
-    localayrv.jdField_a_of_type_Aysa = this;
-    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(bamn.b(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
+    this.jdField_a_of_type_JavaUtilList.clear();
     if (QLog.isColorLevel()) {
-      QLog.i("TroopLinkHandler", 2, "send: invoked.  postData: " + paramString);
+      QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
     }
-    str = "uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + ";skey=" + str;
-    localayrv.jdField_a_of_type_ArrayOfByte = paramString.getBytes();
-    localayrv.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    localayrv.jdField_a_of_type_JavaUtilHashMap.put("Cookie", str);
-    this.jdField_a_of_type_Ayry.a(localayrv);
+    ThreadManager.post(new TroopAllMessageResultAdapter.2(this, paramString, paramLong, paramList), 8, null, false);
   }
   
-  private void a(JSONObject paramJSONObject)
+  public void a(List<agep> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq");
-    long l = paramJSONObject.optLong("n_all", -1L);
-    if ((this.jdField_a_of_type_Long == 0L) || (l == 0L)) {
-      this.jdField_a_of_type_Agbo.q();
-    }
-  }
-  
-  @UiThread
-  private void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList)
-  {
-    paramList = new TroopLinkHandler.1(this, paramBoolean, paramList);
-    ThreadManager.getUIHandler().post(paramList);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramString, this.jdField_a_of_type_Long);
-      return;
-    }
-    a(paramString, 0L);
-  }
-  
-  public void onResp(aysx paramaysx)
-  {
-    if (paramaysx.c == 200)
-    {
-      a(paramaysx);
+    if ((paramList == null) || (paramList.size() <= 0)) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("TroopLinkHandler", 2, "onResp: invoked.  resp: " + paramaysx);
+      QLog.d("LinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
     }
-    a(false, new ArrayList());
+    this.b.clear();
+    this.b.addAll(paramList);
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    agep localagep = (agep)getItem(paramInt);
+    MessageRecord localMessageRecord;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559216, null);
+      paramViewGroup = new agdh();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377033));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377035));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131368885));
+      paramView.setTag(paramViewGroup);
+      localMessageRecord = localagep.a;
+      localObject = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localagep.a(localMessageRecord.msg, -11353092));
+      if (!localMessageRecord.isSend()) {
+        break label259;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      label155:
+      if (!myb.a(localMessageRecord)) {
+        break label271;
+      }
+      localObject = myb.a(localMessageRecord);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697495) + ((myc)localObject).jdField_b_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(myb.a(((myc)localObject).jdField_b_of_type_Int)));
+    }
+    for (;;)
+    {
+      paramViewGroup.b.setText(localagep.a(localMessageRecord.time));
+      return paramView;
+      paramViewGroup = (agdh)paramView.getTag();
+      break;
+      label259:
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      break label155;
+      label271:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(localagep.a((String)localObject, -11353092));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(bayh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localMessageRecord.senderuin));
+    }
+  }
 }
 
 

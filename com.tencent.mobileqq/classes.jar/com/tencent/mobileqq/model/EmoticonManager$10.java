@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.model;
 
-import askd;
+import askf;
 import java.util.List;
 
 public class EmoticonManager$10
   implements Runnable
 {
-  public EmoticonManager$10(askd paramaskd, List paramList) {}
+  public EmoticonManager$10(askf paramaskf, List paramList) {}
   
   /* Error */
   public void run()
@@ -17,12 +17,12 @@ public class EmoticonManager$10
     //   4: invokespecial 26	java/util/HashSet:<init>	()V
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskd;
-    //   12: getfield 31	askd:jdField_a_of_type_Aukn	Laukn;
-    //   15: invokevirtual 36	aukn:a	()Laukp;
+    //   9: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskf;
+    //   12: getfield 31	askf:jdField_a_of_type_Aukp	Laukp;
+    //   15: invokevirtual 36	aukp:a	()Laukr;
     //   18: astore_1
     //   19: aload_1
-    //   20: invokevirtual 40	aukp:a	()V
+    //   20: invokevirtual 40	aukr:a	()V
     //   23: aload_0
     //   24: getfield 16	com/tencent/mobileqq/model/EmoticonManager$10:a	Ljava/util/List;
     //   27: invokeinterface 46 1 0
@@ -42,13 +42,13 @@ public class EmoticonManager$10
     //   64: invokevirtual 66	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   67: pop
     //   68: aload_0
-    //   69: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskd;
+    //   69: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskf;
     //   72: aload 4
-    //   74: invokestatic 69	askd:a	(Laskd;Lcom/tencent/mobileqq/data/Emoticon;)V
+    //   74: invokestatic 69	askf:a	(Laskf;Lcom/tencent/mobileqq/data/Emoticon;)V
     //   77: aload_0
-    //   78: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskd;
+    //   78: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskf;
     //   81: aload 4
-    //   83: invokestatic 72	askd:a	(Laskd;Laukm;)Z
+    //   83: invokestatic 72	askf:a	(Laskf;Lauko;)Z
     //   86: ifne -53 -> 33
     //   89: ldc 74
     //   91: iconst_1
@@ -82,28 +82,28 @@ public class EmoticonManager$10
     //   157: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   160: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   163: aload_1
-    //   164: invokevirtual 109	aukp:b	()V
+    //   164: invokevirtual 109	aukr:b	()V
     //   167: aload_0
-    //   168: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskd;
-    //   171: getfield 112	askd:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   174: invokestatic 117	aexd:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Laexd;
+    //   168: getfield 14	com/tencent/mobileqq/model/EmoticonManager$10:this$0	Laskf;
+    //   171: getfield 112	askf:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   174: invokestatic 117	aexb:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Laexb;
     //   177: aload_2
-    //   178: invokevirtual 120	aexd:a	(Ljava/util/Collection;)V
+    //   178: invokevirtual 120	aexb:a	(Ljava/util/Collection;)V
     //   181: return
     //   182: aload_1
-    //   183: invokevirtual 123	aukp:c	()V
+    //   183: invokevirtual 123	aukr:c	()V
     //   186: aload_1
-    //   187: invokevirtual 109	aukp:b	()V
+    //   187: invokevirtual 109	aukr:b	()V
     //   190: goto -23 -> 167
     //   193: astore_2
     //   194: aload_1
-    //   195: invokevirtual 109	aukp:b	()V
+    //   195: invokevirtual 109	aukr:b	()V
     //   198: aload_2
     //   199: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	200	0	this	10
-    //   18	177	1	localaukp	aukp
+    //   18	177	1	localaukr	aukr
     //   7	171	2	localHashSet	java.util.HashSet
     //   193	6	2	localObject	Object
     //   32	11	3	localIterator	java.util.Iterator

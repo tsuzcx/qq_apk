@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.statistic.serverip.WebAppIpRecord;
+import android.net.Proxy;
 
-public final class bhmz
-  implements Parcelable.Creator<WebAppIpRecord>
+final class bhmz
+  extends bhmy
 {
-  public WebAppIpRecord a(Parcel paramParcel)
+  public int a()
   {
-    return new WebAppIpRecord(paramParcel);
+    return Proxy.getDefaultPort();
   }
   
-  public WebAppIpRecord[] a(int paramInt)
+  public String a()
   {
-    return new WebAppIpRecord[paramInt];
+    return Proxy.getDefaultHost();
   }
 }
 

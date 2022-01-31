@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aokv;
-import aokw;
+import aola;
+import aolb;
 import java.util.ArrayList;
 
 public class ExtendFriendHorizontalTagsView
@@ -21,7 +21,7 @@ public class ExtendFriendHorizontalTagsView
   implements View.OnClickListener
 {
   public int a;
-  public aokv a;
+  public aola a;
   
   public ExtendFriendHorizontalTagsView(Context paramContext)
   {
@@ -43,19 +43,19 @@ public class ExtendFriendHorizontalTagsView
   
   public void onClick(View paramView)
   {
-    aokw localaokw;
-    if ((paramView.getTag() instanceof aokw))
+    aolb localaolb;
+    if ((paramView.getTag() instanceof aolb))
     {
-      localaokw = (aokw)paramView.getTag();
-      if (localaokw.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
+      localaolb = (aolb)paramView.getTag();
+      if (localaolb.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
     }
     else
     {
       return;
     }
-    this.jdField_a_of_type_Int = localaokw.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Aokv != null) {
-      this.jdField_a_of_type_Aokv.a(localaokw.jdField_a_of_type_JavaLangString, localaokw.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = localaolb.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Aola != null) {
+      this.jdField_a_of_type_Aola.a(localaolb.jdField_a_of_type_JavaLangString, localaolb.jdField_a_of_type_Int);
     }
     int i = 0;
     label64:
@@ -76,9 +76,9 @@ public class ExtendFriendHorizontalTagsView
     }
   }
   
-  public void setOnItemClickListener(aokv paramaokv)
+  public void setOnItemClickListener(aola paramaola)
   {
-    this.jdField_a_of_type_Aokv = paramaokv;
+    this.jdField_a_of_type_Aola = paramaola;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList, int paramInt)
@@ -89,8 +89,8 @@ public class ExtendFriendHorizontalTagsView
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    int m = actn.a(13.0F, getResources());
-    int n = actn.a(26.0F, getResources());
+    int m = actj.a(13.0F, getResources());
+    int n = actj.a(26.0F, getResources());
     int i = 0;
     int j = 0;
     label50:
@@ -105,7 +105,7 @@ public class ExtendFriendHorizontalTagsView
       {
         localTextView = new TextView(getContext());
         localTextView.setText((CharSequence)localObject);
-        localTextView.setTag(new aokw(this, i, (String)localObject));
+        localTextView.setTag(new aolb(this, i, (String)localObject));
         localTextView.setContentDescription((CharSequence)localObject);
         if (i != paramInt) {
           break label261;
@@ -122,11 +122,11 @@ public class ExtendFriendHorizontalTagsView
       localTextView.setClickable(true);
       localTextView.setFocusable(true);
       localTextView.setPadding(m, 0, m, 0);
-      localTextView.setBackgroundResource(2130844345);
+      localTextView.setBackgroundResource(2130844346);
       localTextView.setTextColor(getResources().getColorStateList(2131166219));
       localObject = new LinearLayout.LayoutParams(-2, n);
       if (j > 0) {
-        ((LinearLayout.LayoutParams)localObject).leftMargin = actn.a(8.0F, getResources());
+        ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(8.0F, getResources());
       }
       addView(localTextView, (ViewGroup.LayoutParams)localObject);
       k = j + 1;

@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import java.util.HashSet;
 
 public class aslm
 {
+  public int a;
+  public long a;
+  public asla a;
   public String a;
+  public HashSet<RecentBaseData> a;
   public boolean a;
-  
-  public String a(askz paramaskz, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return paramaskz.a(paramMessageRecord, paramMsgBackupResEntity);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public int b;
+  public long b;
+  public int c;
 }
 
 

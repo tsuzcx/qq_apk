@@ -1,13 +1,15 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class abaj
-  extends bbny
+  implements View.OnLongClickListener
 {
   public abaj(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    EditInfoActivity.a(this.a, EditInfoActivity.b(this.a));
+    return true;
   }
 }
 

@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.support.v4.app.FragmentActivity;
 
 public class afxx
-  implements DialogInterface.OnClickListener
+  extends afxp
 {
-  public afxx(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aask paramaask) {}
+  public static final int[] a = { 2131690735 };
+  public static final int[] b = { 2131364094 };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afxx(FragmentActivity paramFragmentActivity)
   {
-    this.jdField_a_of_type_Aask.a(false);
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

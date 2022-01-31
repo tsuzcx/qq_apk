@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.bless;
 
-import afbj;
-import ajyc;
+import afbh;
+import ajya;
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 
 public class BlessSelectMemberActivity$11$1
   implements Runnable
 {
-  public BlessSelectMemberActivity$11$1(afbj paramafbj) {}
+  public BlessSelectMemberActivity$11$1(afbh paramafbh) {}
   
   public void run()
   {
-    bcpw.a(this.a.a, ajyc.a(2131701152), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298865));
+    bcql.a(this.a.a, ajya.a(2131701163), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

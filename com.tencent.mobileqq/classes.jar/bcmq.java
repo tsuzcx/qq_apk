@@ -1,6 +1,17 @@
-public abstract interface bcmq
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GridListView;
+
+public class bcmq
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString);
+  public bcmq(GridListView paramGridListView) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag(2131361808)).intValue();
+    this.a.a.onItemClick(this.a, paramView, i, 0L);
+  }
 }
 
 

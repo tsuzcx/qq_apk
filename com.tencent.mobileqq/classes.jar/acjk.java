@@ -1,6 +1,9 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acjk
   implements View.OnClickListener
@@ -9,8 +12,19 @@ public class acjk
   
   public void onClick(View paramView)
   {
-    this.a.g();
-    new axra(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    vxp.a(this.a.jdField_a_of_type_Ackw);
+    vxp.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView.add(((acku)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

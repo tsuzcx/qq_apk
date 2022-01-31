@@ -1,23 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class rin
-  implements ogr
+  implements Animation.AnimationListener
 {
-  public rin(FastWebActivity paramFastWebActivity) {}
+  public rin(FastWebActivity paramFastWebActivity, boolean paramBoolean) {}
   
-  public void a(long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (FastWebActivity.a(this.a) != null)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
-      }
-      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
+      FastWebActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, false);
+      FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(0);
+    if (this.jdField_a_of_type_Boolean) {
+      FastWebActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, true);
     }
   }
 }

@@ -1,26 +1,17 @@
-import java.util.Observable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bahe
-  extends Observable
 {
-  private static bahe a;
+  public View a;
+  public ImageView a;
+  TextView a;
+  public String a;
   
-  public static bahe a()
+  public bahe(View paramView)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bahe();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void setChanged()
-  {
-    super.setChanged();
+    this.a = paramView;
   }
 }
 

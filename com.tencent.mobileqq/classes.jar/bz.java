@@ -12,14 +12,14 @@ public class bz
 {
   public bz(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
   
-  DataLineMsgRecord a(ajuo paramajuo, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  DataLineMsgRecord a(ajum paramajum, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramInt1;
     if (paramInt1 == 0) {
-      switch (apue.a(paramString))
+      switch (apug.a(paramString))
       {
       default: 
         i = 0;
@@ -28,8 +28,8 @@ public class bz
     for (;;)
     {
       DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = ajuo.a(i);
-      localDataLineMsgRecord.sessionid = paramajuo.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
+      localDataLineMsgRecord.msgtype = ajum.a(i);
+      localDataLineMsgRecord.sessionid = paramajum.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
       localDataLineMsgRecord.path = paramString;
       localDataLineMsgRecord.thumbPath = null;
       localDataLineMsgRecord.groupId = paramInt2;
@@ -59,14 +59,14 @@ public class bz
   void a(List<String> paramList, int paramInt)
   {
     if (paramList == null) {}
-    ajuo localajuo;
+    ajum localajum;
     int j;
     int i;
     Object localObject;
     for (;;)
     {
       return;
-      localajuo = (ajuo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+      localajum = (ajum)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
       j = paramList.size();
       if (j > 3) {
         break;
@@ -74,9 +74,9 @@ public class bz
       i = 0;
       while (i < j)
       {
-        localObject = a(localajuo, (String)paramList.get(i), paramInt, 0, 0, 0);
+        localObject = a(localajum, (String)paramList.get(i), paramInt, 0, 0, 0);
         if (localObject != null) {
-          localajuo.a((DataLineMsgRecord)localObject, false);
+          localajum.a((DataLineMsgRecord)localObject, false);
         }
         i += 1;
       }
@@ -86,11 +86,11 @@ public class bz
     if ((j > 3) && (j < 50))
     {
       localObject = new ArrayList();
-      int k = localajuo.a();
+      int k = localajum.a();
       i = 0;
       if (i < j)
       {
-        localDataLineMsgRecord = a(localajuo, (String)paramList.get(i), paramInt, k, j, i);
+        localDataLineMsgRecord = a(localajum, (String)paramList.get(i), paramInt, k, j, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -104,7 +104,7 @@ public class bz
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localajuo.a((ArrayList)localObject, false);
+          localajum.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -119,14 +119,14 @@ public class bz
       if (((ArrayList)localObject).size() <= 0) {
         break;
       }
-      localajuo.a((ArrayList)localObject, false);
+      localajum.a((ArrayList)localObject, false);
       return;
       localObject = new ArrayList();
-      j = localajuo.a();
+      j = localajum.a();
       i = 0;
       if (i < 50)
       {
-        localDataLineMsgRecord = a(localajuo, (String)paramList.get(i), paramInt, j, 50, i);
+        localDataLineMsgRecord = a(localajum, (String)paramList.get(i), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -140,7 +140,7 @@ public class bz
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localajuo.a((ArrayList)localObject, false);
+          localajum.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -149,7 +149,7 @@ public class bz
         i += 1;
         break label259;
         if (((ArrayList)localObject).size() > 0) {
-          localajuo.a((ArrayList)localObject, false);
+          localajum.a((ArrayList)localObject, false);
         }
         i = 0;
         while (i < 50)

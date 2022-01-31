@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import nzn;
+import nzk;
 
 class ReadinjoyTabFrame$33
   implements Runnable
@@ -13,7 +13,7 @@ class ReadinjoyTabFrame$33
     if (this.this$0.a == null) {
       return;
     }
-    ((nzn)this.this$0.a.a(163)).a();
+    ((nzk)this.this$0.a.a(163)).a();
   }
 }
 

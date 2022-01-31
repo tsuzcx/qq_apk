@@ -1,10 +1,12 @@
+import java.util.Comparator;
+
 public class sev
+  implements Comparator<seu>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public int a(seu paramseu1, seu paramseu2)
+  {
+    return paramseu2.a - paramseu1.a;
+  }
 }
 
 

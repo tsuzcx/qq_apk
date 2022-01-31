@@ -1,6 +1,6 @@
-public abstract interface axdi
+public class axdi
 {
-  public abstract void l();
+  public void a() {}
 }
 
 

@@ -4,7 +4,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class hx
 {
-  private bfms<CharacterStyle> jdField_a_of_type_Bfms;
+  private bfnj<CharacterStyle> jdField_a_of_type_Bfnj;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   
   public hx(CharSequence paramCharSequence)
@@ -16,15 +16,15 @@ public class hx
       paramCharSequence = (CharacterStyle[])localSpanned.getSpans(0, paramCharSequence.length(), CharacterStyle.class);
       if ((paramCharSequence != null) && (paramCharSequence.length > 0))
       {
-        this.jdField_a_of_type_Bfms = new bfms(paramCharSequence.length);
+        this.jdField_a_of_type_Bfnj = new bfnj(paramCharSequence.length);
         while (i < paramCharSequence.length)
         {
           Object localObject = paramCharSequence[i];
-          if (((localObject instanceof aykp)) || ((localObject instanceof awcz)))
+          if (((localObject instanceof aykr)) || ((localObject instanceof awdb)))
           {
             int j = localSpanned.getSpanStart(localObject);
             int k = localSpanned.getSpanEnd(localObject);
-            this.jdField_a_of_type_Bfms.a(a(j, k), localObject);
+            this.jdField_a_of_type_Bfnj.a(a(j, k), localObject);
           }
           i += 1;
         }
@@ -65,13 +65,13 @@ public class hx
         }
         return -1;
       }
-    } while (this.jdField_a_of_type_Bfms == null);
-    int k = this.jdField_a_of_type_Bfms.a();
+    } while (this.jdField_a_of_type_Bfnj == null);
+    int k = this.jdField_a_of_type_Bfnj.a();
     int j = 0;
     int i = paramInt;
     while (j < k)
     {
-      long l = this.jdField_a_of_type_Bfms.a(j);
+      long l = this.jdField_a_of_type_Bfnj.a(j);
       int m = a(l);
       int n = b(l);
       if (m >= paramInt) {
@@ -105,15 +105,15 @@ public class hx
     int j;
     int i;
     int n;
-    if (this.jdField_a_of_type_Bfms != null)
+    if (this.jdField_a_of_type_Bfnj != null)
     {
-      int m = this.jdField_a_of_type_Bfms.a();
+      int m = this.jdField_a_of_type_Bfnj.a();
       j = 0;
       i = paramInt;
       k = i;
       if (j < m)
       {
-        long l = this.jdField_a_of_type_Bfms.a(j);
+        long l = this.jdField_a_of_type_Bfnj.a(j);
         k = a(l);
         n = b(l);
         if (k < i) {

@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class afbl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public afbl(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
   }
 }
 

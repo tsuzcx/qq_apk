@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bawz;
-import baxt;
+import baxn;
+import bayh;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -62,14 +62,14 @@ public class TroopAppFormItem
         break label174;
       }
       label33:
-      float f3 = i - bawz.a(getContext(), 12.0F) - bawz.a(getContext(), 12.0F) - bawz.a(getContext(), 15.0F);
+      float f3 = i - baxn.a(getContext(), 12.0F) - baxn.a(getContext(), 12.0F) - baxn.a(getContext(), 15.0F);
       if ((this.jdField_a_of_type_Int != -1) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
         break label241;
       }
       if (TextUtils.isEmpty(this.c)) {
         break label192;
       }
-      f1 = i - bawz.a(getContext(), 30.0F) - bawz.a(getContext(), 5.0F) - bawz.a(getContext(), 5.0F) - bawz.a(getContext(), 5.0F) - f1;
+      f1 = i - baxn.a(getContext(), 30.0F) - baxn.a(getContext(), 5.0F) - baxn.a(getContext(), 5.0F) - baxn.a(getContext(), 5.0F) - f1;
     }
     for (;;)
     {
@@ -81,16 +81,16 @@ public class TroopAppFormItem
       this.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString);
       break label33;
       label192:
-      f1 = i - bawz.a(getContext(), 10.0F) - bawz.a(getContext(), 5.0F) - bawz.a(getContext(), 5.0F) - bawz.a(getContext(), 5.0F) - f1;
+      f1 = i - baxn.a(getContext(), 10.0F) - baxn.a(getContext(), 5.0F) - baxn.a(getContext(), 5.0F) - baxn.a(getContext(), 5.0F) - f1;
       continue;
       label241:
       if (!TextUtils.isEmpty(this.c))
       {
-        f1 = i - bawz.a(getContext(), 30.0F) - bawz.a(getContext(), 5.0F) - bawz.a(getContext(), 5.0F) - bawz.a(getContext(), 5.0F) - f1;
+        f1 = i - baxn.a(getContext(), 30.0F) - baxn.a(getContext(), 5.0F) - baxn.a(getContext(), 5.0F) - baxn.a(getContext(), 5.0F) - f1;
       }
       else
       {
-        f1 = bawz.a(getContext(), 5.0F);
+        f1 = baxn.a(getContext(), 5.0F);
         f1 = f2;
       }
     }
@@ -109,7 +109,7 @@ public class TroopAppFormItem
     {
       if (Friends.isValidUin(this.c))
       {
-        paramString1 = baxt.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1, this.c);
+        paramString1 = bayh.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1, this.c);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramString1);
       }
     }
@@ -134,8 +134,8 @@ public class TroopAppFormItem
         paramString2 = URLDrawable.URLDrawableOptions.obtain();
         paramString2.mLoadingDrawable = paramString1;
         paramString2.mFailedDrawable = paramString1;
-        paramString2.mRequestWidth = bawz.a(getContext(), 30.0F);
-        paramString2.mRequestHeight = bawz.a(getContext(), 30.0F);
+        paramString2.mRequestWidth = baxn.a(getContext(), 30.0F);
+        paramString2.mRequestHeight = baxn.a(getContext(), 30.0F);
         paramString1 = URLDrawable.getDrawable(this.c, paramString2);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramString1);
         break;
@@ -164,7 +164,7 @@ public class TroopAppFormItem
   public void a(oidb_0xaf4.TabInfo paramTabInfo, int paramInt)
   {
     if (paramTabInfo.appid.get() == 1106912788L) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bawz.a(getContext(), 30.0F));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(baxn.a(getContext(), 30.0F));
     }
     a(paramTabInfo.name.get(), paramTabInfo.desc.get(), paramTabInfo.pic.get(), paramTabInfo.red_point.get(), paramInt);
   }
@@ -173,11 +173,11 @@ public class TroopAppFormItem
   {
     View localView = LayoutInflater.from(getContext()).inflate(2131560302, this);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370647));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376630));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376632));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369132));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131375296);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131375298);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131367776));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(bawz.a(getContext(), 4.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(baxn.a(getContext(), 4.0F));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367877));
   }
   

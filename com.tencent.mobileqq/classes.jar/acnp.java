@@ -1,17 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acnp
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public acnp(TroopTransferActivity paramTroopTransferActivity) {}
+  private acnp(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.cancel();
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

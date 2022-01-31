@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.theme;
 
-import akhf;
-import aymo;
+import akhe;
+import aymq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ThemeUtil$2$1
   implements Runnable
 {
-  public ThemeUtil$2$1(aymo paramaymo) {}
+  public ThemeUtil$2$1(aymq paramaymq) {}
   
   public void run()
   {
     ThemeUtil.isNowThemeIsAnimate();
-    akhf localakhf = (akhf)this.this$0.a.a(14);
-    if (localakhf != null) {
-      localakhf.a();
+    akhe localakhe = (akhe)this.this$0.a.a(14);
+    if (localakhe != null) {
+      localakhe.a();
     }
   }
 }

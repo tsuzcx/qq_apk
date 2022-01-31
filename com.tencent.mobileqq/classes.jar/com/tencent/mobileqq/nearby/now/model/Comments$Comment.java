@@ -3,12 +3,12 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import athg;
+import athi;
 
 public class Comments$Comment
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comment> CREATOR = new athg();
+  public static final Parcelable.Creator<Comment> CREATOR = new athi();
   public int a;
   public long a;
   public MedalInfo a;

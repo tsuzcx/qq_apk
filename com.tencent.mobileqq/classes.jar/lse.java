@@ -1,14 +1,6 @@
 public abstract interface lse
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(lsc paramlsc, int paramInt1, int paramInt2);
 }
 
 

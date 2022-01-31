@@ -1,22 +1,44 @@
-import android.text.TextUtils;
+import android.content.Context;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aghd
-  extends ajxl
+public class aghd
 {
-  aghd(aggy paramaggy) {}
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public static aggw a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.equals(paramString, this.a.a.a)) {
-      this.a.f();
+    int i = paramSessionInfo.a;
+    Object localObject = null;
+    if (paramSessionInfo.f == 3) {
+      paramSessionInfo = new aghg(paramContext, paramSessionInfo, paramQQAppInterface);
     }
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.f();
+    do
+    {
+      return paramSessionInfo;
+      switch (i)
+      {
+      default: 
+        paramContext = localObject;
+        paramSessionInfo = paramContext;
+      }
+    } while (!QLog.isColorLevel());
+    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
+    if (paramContext == null) {}
+    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
+    {
+      QLog.i("MiniPieFactory", 2, paramSessionInfo);
+      return paramContext;
+      paramContext = new aghe(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aghf(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aghj(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aghi(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new aghh(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+    }
   }
 }
 

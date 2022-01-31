@@ -1,6 +1,6 @@
 package com.tencent.gdtad.aditem;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GdtAd$2
@@ -10,7 +10,7 @@ class GdtAd$2
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.sApplication, 0, this.a, 0).a();
+    bcql.a(BaseApplicationImpl.sApplication, 0, this.a, 0).a();
   }
 }
 

@@ -1,29 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
-public abstract interface ouo<DataType>
+public class ouo
+  extends RecyclerView.OnScrollListener
 {
-  public abstract DataType a(int paramInt);
+  public ouo(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public abstract List<DataType> a();
-  
-  public abstract void a();
-  
-  public abstract void a(DataType paramDataType, int paramInt);
-  
-  public abstract void a(List<DataType> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(List<DataType> paramList);
-  
-  public abstract void c();
-  
-  public abstract void c(List<ChannelCoverInfo> paramList);
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      if (ooq.a()) {
+        osj.a().n();
+      }
+      return;
+      ReadInJoyPicWaterFallFragment.a(this.a);
+    }
+  }
 }
 
 

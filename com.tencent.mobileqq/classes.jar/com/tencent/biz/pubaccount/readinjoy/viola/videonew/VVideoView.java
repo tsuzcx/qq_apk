@@ -22,12 +22,12 @@ import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.view.IVView;
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import ryq;
 import ryt;
-import ryw;
-import ryx;
-import ryy;
-import rzf;
-import rzp;
+import ryu;
+import ryv;
+import rzc;
+import rzm;
 
 public class VVideoView
   extends FrameLayout
@@ -37,8 +37,8 @@ public class VVideoView
   private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
   private VVideo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideo;
   private WeakReference<VVideo> jdField_a_of_type_JavaLangRefWeakReference;
-  private ryx jdField_a_of_type_Ryx;
-  private ryy jdField_a_of_type_Ryy;
+  private ryu jdField_a_of_type_Ryu;
+  private ryv jdField_a_of_type_Ryv;
   private int b;
   private int c = 1;
   
@@ -69,20 +69,20 @@ public class VVideoView
     return null;
   }
   
-  public ryx a()
+  public ryu a()
   {
-    return this.jdField_a_of_type_Ryx;
+    return this.jdField_a_of_type_Ryu;
   }
   
-  public ryy a()
+  public ryv a()
   {
-    return this.jdField_a_of_type_Ryy;
+    return this.jdField_a_of_type_Ryv;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ryx != null) {
-      this.jdField_a_of_type_Ryx.f(this);
+    if (this.jdField_a_of_type_Ryu != null) {
+      this.jdField_a_of_type_Ryu.f(this);
     }
   }
   
@@ -127,14 +127,14 @@ public class VVideoView
       if (paramInt1 != 1) {
         break label147;
       }
-      localObject1 = new ryw(a().getInstance().getActivity(), this, paramInt2);
-      setVideoViewControlListener((ryx)localObject1);
+      localObject1 = new ryt(a().getInstance().getActivity(), this, paramInt2);
+      setVideoViewControlListener((ryu)localObject1);
       localObject2 = (BaseModule)ViolaModuleManager.findModuleMapById(a().getInstance().getInstanceId()).get(BridgeModule.MODULE_NAME);
       if ((localObject2 instanceof BridgeModule))
       {
         localObject2 = ((BridgeModule)localObject2).getField("predownload");
         if ((localObject2 instanceof VideoPreDownloadMgr)) {
-          ((ryw)localObject1).a((VideoPreDownloadMgr)localObject2);
+          ((ryt)localObject1).a((VideoPreDownloadMgr)localObject2);
         }
       }
     }
@@ -143,14 +143,14 @@ public class VVideoView
     if (this.jdField_a_of_type_Int == 1)
     {
       localObject1 = new ViolaVideoView(a().getInstance().getActivity());
-      setVideoViewControlListener(new rzf(a().getInstance().getActivity(), (ryt)localObject1, this));
+      setVideoViewControlListener(new rzc(a().getInstance().getActivity(), (ryq)localObject1, this));
       addView((View)localObject1, -1, -1);
       return;
     }
     Object localObject1 = new ViolaVideoView(a().getInstance().getActivity());
-    Object localObject2 = new rzp(a().getInstance().getActivity(), (ryt)localObject1, this);
-    setVideoViewControlListener((ryx)localObject2);
-    setVideoViewLifeCycleChangeListener((ryy)localObject2);
+    Object localObject2 = new rzm(a().getInstance().getActivity(), (ryq)localObject1, this);
+    setVideoViewControlListener((ryu)localObject2);
+    setVideoViewLifeCycleChangeListener((ryv)localObject2);
     addView((View)localObject1, -1, -1);
   }
   
@@ -166,8 +166,8 @@ public class VVideoView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ryx != null) {
-      this.jdField_a_of_type_Ryx.g(this);
+    if (this.jdField_a_of_type_Ryu != null) {
+      this.jdField_a_of_type_Ryu.g(this);
     }
   }
   
@@ -186,14 +186,14 @@ public class VVideoView
     }
   }
   
-  public void setVideoViewControlListener(ryx paramryx)
+  public void setVideoViewControlListener(ryu paramryu)
   {
-    this.jdField_a_of_type_Ryx = paramryx;
+    this.jdField_a_of_type_Ryu = paramryu;
   }
   
-  public void setVideoViewLifeCycleChangeListener(ryy paramryy)
+  public void setVideoViewLifeCycleChangeListener(ryv paramryv)
   {
-    this.jdField_a_of_type_Ryy = paramryy;
+    this.jdField_a_of_type_Ryv = paramryv;
   }
 }
 

@@ -1,19 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.List;
 
 class tvw
-  implements View.OnClickListener
+  implements twn
 {
-  tvw(tvv paramtvv, tvu paramtvu) {}
+  tvw(tvv paramtvv) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (VideoCoverListBar.a(this.jdField_a_of_type_Tvv.jdField_a_of_type_Tvu.a) != null) {
-      VideoCoverListBar.a(this.jdField_a_of_type_Tvv.jdField_a_of_type_Tvu.a).a(tvv.a(this.jdField_a_of_type_Tvv));
+    tvv.a(this.a, this.a.a.a(tvv.a(this.a), 5));
+    List localList = tvv.a(this.a).a;
+    if ((tvv.a(this.a) == null) && (localList.size() > 0)) {
+      tvv.a(this.a, ((twm)localList.get(0)).a);
     }
-    vel.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", tvv.a(this.jdField_a_of_type_Tvv) });
+    label193:
+    for (;;)
+    {
+      tvv.a(this.a).a(tvv.a(this.a), "");
+      ved.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { tvv.a(this.a) });
+      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label193;
+        }
+        if (((twm)localList.get(i)).a.equals(tvv.a(this.a)))
+        {
+          i -= 1;
+          if (i < 0) {
+            break;
+          }
+          tvv.a(this.a, ((twm)localList.get(i)).a);
+          break;
+        }
+        i += 1;
+      }
+    }
   }
+  
+  public void a(twl paramtwl, String paramString, boolean paramBoolean) {}
 }
 
 

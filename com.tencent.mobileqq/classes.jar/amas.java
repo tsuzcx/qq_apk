@@ -1,68 +1,115 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
+import com.tencent.mobileqq.bigbrother.ServerApi.ReqPreDownloadRecmd;
+import com.tencent.mobileqq.bigbrother.ServerApi.ReqUpdateDownCountRecmd;
+import com.tencent.mobileqq.bigbrother.ServerApi.RspUpdateDownCountRecmd;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
 
 public class amas
+  extends MSFServlet
 {
-  @android.support.annotation.Nullable
-  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return aman.a(localRockDownloaderTask);
-  }
+  private String a = "RockDownloaderServlet";
   
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable amam paramamam)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setQueryAPKListener(paramamam);
-    aman.b(localRockDownloaderTask);
-  }
-  
-  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
-  {
-    if (!bbev.a(BaseApplicationImpl.context))
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a, 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
+    }
+    Object localObject = paramIntent.getStringExtra("BUNDLE_CMD");
+    boolean bool = paramFromServiceMsg.isSuccess();
+    try
     {
-      if (paramRockDownloadListener != null)
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+      paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
+      localByteBuffer.get(paramFromServiceMsg);
+      if ("QQApkSvc.pre_download_apk".equals(localObject))
       {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, ajyc.a(2131713490), 10009);
-        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
+        localObject = new Bundle();
+        ((Bundle)localObject).putByteArray("BUNDLE_KEY_RESPONSE_BYTE", paramFromServiceMsg);
+        if ((paramIntent instanceof NewIntent))
+        {
+          paramIntent = (NewIntent)paramIntent;
+          if (paramIntent.getObserver() != null) {
+            paramIntent.getObserver().onReceive(1, bool, (Bundle)localObject);
+          }
+        }
+      }
+      else if ("QQApkSvc.update_download_count".equals(localObject))
+      {
+        paramIntent = new ServerApi.RspUpdateDownCountRecmd();
+        paramIntent.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = (ServerApi.ErrorInfo)paramIntent.err_info.get();
+        if (paramFromServiceMsg != null)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
+        }
+      }
+    }
+    catch (Exception paramIntent)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d(this.a, 2, paramIntent, new Object[0]);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
+        }
+      }
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a, 2, "onSend");
+    }
+    String str = paramIntent.getStringExtra("BUNDLE_CMD");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a, 2, new Object[] { "cmd=", str });
+    }
+    Object localObject;
+    if ("QQApkSvc.pre_download_apk".equals(str))
+    {
+      localObject = new ServerApi.ReqPreDownloadRecmd();
+      ((ServerApi.ReqPreDownloadRecmd)localObject).platform.set("android");
+      ((ServerApi.ReqPreDownloadRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
+      ((ServerApi.ReqPreDownloadRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
+      ((ServerApi.ReqPreDownloadRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
+      ((ServerApi.ReqPreDownloadRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
+      paramPacket.setSSOCommand(str);
+      paramPacket.putSendData(bbma.a(((ServerApi.ReqPreDownloadRecmd)localObject).toByteArray()));
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "onSendFinish");
       }
       return;
+      if ("QQApkSvc.update_download_count".equals(str))
+      {
+        localObject = new ServerApi.ReqUpdateDownCountRecmd();
+        ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
+        ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
+        ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
+        ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
+        paramPacket.setSSOCommand(str);
+        paramPacket.putSendData(bbma.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
+      }
     }
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
-    aman.a(localRockDownloaderTask);
-  }
-  
-  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return aman.b(localRockDownloaderTask);
-  }
-  
-  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return aman.a(localRockDownloaderTask);
   }
 }
 

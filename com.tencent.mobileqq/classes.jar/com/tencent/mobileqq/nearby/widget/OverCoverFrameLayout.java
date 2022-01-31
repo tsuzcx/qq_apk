@@ -9,8 +9,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import atym;
-import atyn;
+import atyo;
+import atyp;
 import com.tencent.qphone.base.util.QLog;
 
 public class OverCoverFrameLayout
@@ -20,7 +20,7 @@ public class OverCoverFrameLayout
   protected Context a;
   protected GestureDetector a;
   protected Scroller a;
-  public atyn a;
+  public atyp a;
   protected boolean a;
   protected int b;
   protected boolean b;
@@ -52,12 +52,12 @@ public class OverCoverFrameLayout
   protected void a()
   {
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && ((this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int == 0))) {
-      if (this.jdField_a_of_type_Atyn != null)
+      if (this.jdField_a_of_type_Atyp != null)
       {
         if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0)) {
           break label90;
         }
-        this.jdField_a_of_type_Atyn.a(0, 0, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Atyp.a(0, 0, this.jdField_b_of_type_Int);
       }
     }
     for (;;)
@@ -67,7 +67,7 @@ public class OverCoverFrameLayout
       return;
       label90:
       if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_Atyn.a(0, 1, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Atyp.a(0, 1, this.jdField_b_of_type_Int);
       }
     }
   }
@@ -81,7 +81,7 @@ public class OverCoverFrameLayout
     if (QLog.isColorLevel()) {
       QLog.d("OverCoverFrameLayout", 2, "init: minDis=" + this.jdField_d_of_type_Int + ", minVelocity=" + this.e);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new atym(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new atyo(this));
   }
   
   public boolean a()
@@ -97,8 +97,8 @@ public class OverCoverFrameLayout
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_Int, 0, -this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_Atyn != null) {
-      this.jdField_a_of_type_Atyn.a(1, 0, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Atyp != null) {
+      this.jdField_a_of_type_Atyp.a(1, 0, this.jdField_a_of_type_Int);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = false;
@@ -118,8 +118,8 @@ public class OverCoverFrameLayout
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, 0, this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_Atyn != null) {
-      this.jdField_a_of_type_Atyn.a(1, 1, 0);
+    if (this.jdField_a_of_type_Atyp != null) {
+      this.jdField_a_of_type_Atyp.a(1, 1, 0);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = true;
@@ -229,9 +229,9 @@ public class OverCoverFrameLayout
     this.jdField_b_of_type_Int = 0;
   }
   
-  public void setOnActionListener(atyn paramatyn)
+  public void setOnActionListener(atyp paramatyp)
   {
-    this.jdField_a_of_type_Atyn = paramatyn;
+    this.jdField_a_of_type_Atyp = paramatyp;
   }
 }
 

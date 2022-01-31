@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aanu
-  implements aekd
+class aanu
+  implements DialogInterface.OnClickListener
 {
-  public aanu(BaseChatPie paramBaseChatPie) {}
+  aanu(aans paramaans) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.K) {
-      this.a.bc();
-    }
-    ((adiu)this.a.a.a(7)).b(this.a.hashCode());
+    paramDialogInterface.dismiss();
   }
 }
 

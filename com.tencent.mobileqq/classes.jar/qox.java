@@ -1,18 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 final class qox
-  extends AnimatorListenerAdapter
+  implements Animation.AnimationListener
 {
   qox(View paramView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
-    this.a.setTranslationY(0.0F);
+    this.a.setTag(-1, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

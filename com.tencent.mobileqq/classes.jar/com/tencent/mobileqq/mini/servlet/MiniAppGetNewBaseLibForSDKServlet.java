@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -70,7 +70,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetNewBaseLib");
-    paramPacket.putSendData(bblm.a((byte[])localObject));
+    paramPacket.putSendData(bbma.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     QLog.i("MiniAppGetNewBaseLibForSDKServlet", 1, "[MiniEng] GetNewBaseLibServlet send request");
     super.onSend(paramIntent, paramPacket);

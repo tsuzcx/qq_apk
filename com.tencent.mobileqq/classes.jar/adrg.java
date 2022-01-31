@@ -1,30 +1,17 @@
-import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class adrg
-  implements aput
+  extends ClickableSpan
 {
-  adrg(adqy paramadqy, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bbwa parambbwa) {}
+  adrg(adqw paramadqw) {}
   
-  public void onClick(View paramView)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramView = new Bundle();
-    paramView.putString(bbqw.i, this.jdField_a_of_type_JavaLangString);
-    paramView.putString(bbqw.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(bbqw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
-    }
-    bbqw.a(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
-    for (paramView = "0";; paramView = "1")
-    {
-      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bbwa.a(this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
-      return;
-    }
+    paramTextPaint.setColor(-12541697);
   }
 }
 

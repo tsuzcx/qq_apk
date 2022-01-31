@@ -1,94 +1,62 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import android.view.View.OnClickListener;
 
 public class pmp
-  extends ViewBase
+  extends ClickableSpan
+  implements rfp, rrb
 {
-  private static String jdField_a_of_type_JavaLangString = "UsersCommentsView";
-  private NativeUsersCommentsView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView;
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  boolean jdField_a_of_type_Boolean;
+  private int b = -1;
+  private int c = -1;
   
-  public pmp(VafContext paramVafContext)
+  public pmp(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView = new NativeUsersCommentsView(paramVafContext.getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setOrientation(1);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public void clearDynamicData()
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setComments(null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setCommentAllLink(null);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public int getComMeasuredHeight()
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.a();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    if (!super.setAttribute(paramInt, paramObject)) {
-      switch (paramInt)
-      {
-      default: 
-        return false;
-      }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    try
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setComments((JSONArray)paramObject);
-      return true;
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      return;
     }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "UsersCommentsView", paramObject);
-      }
-    }
+    paramView.callOnClick();
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (!super.setAttribute(paramInt, paramString))
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.c);
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
     {
-      switch (paramInt)
-      {
-      default: 
-        return false;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setCommentAllLink(paramString);
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
     }
-    return true;
   }
 }
 

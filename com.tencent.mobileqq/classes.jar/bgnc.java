@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-class bgnc
-  implements DialogInterface.OnClickListener
+public final class bgnc
+  implements Parcelable.Creator<RecvMsg>
 {
-  bgnc(bgmt parambgmt, whu paramwhu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RecvMsg a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Whu.a();
-    paramDialogInterface.dismiss();
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgnc
  * JD-Core Version:    0.7.0.1
  */

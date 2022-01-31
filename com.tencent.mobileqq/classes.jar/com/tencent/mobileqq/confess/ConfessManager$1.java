@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import amno;
-import amoa;
+import amnn;
+import amnz;
 
 public class ConfessManager$1
   implements Runnable
 {
-  public ConfessManager$1(amno paramamno) {}
+  public ConfessManager$1(amnn paramamnn) {}
   
   public void run()
   {

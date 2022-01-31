@@ -1,48 +1,20 @@
-public class bhvq
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+
+class bhvq
+  implements QzoneZipCacheHelperCallBack
 {
-  private static bhvq jdField_a_of_type_Bhvq = new bhvq();
-  private bhvr jdField_a_of_type_Bhvr;
-  bhvs jdField_a_of_type_Bhvs;
+  bhvq(bhvp parambhvp) {}
   
-  public static bhvq a()
+  public void onResult(boolean paramBoolean)
   {
-    return jdField_a_of_type_Bhvq;
+    bhvp.a(this.a, paramBoolean);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Bhvr = null;
-  }
-  
-  public void a(bhvr parambhvr)
-  {
-    this.jdField_a_of_type_Bhvr = parambhvr;
-  }
-  
-  public void a(bhvs parambhvs)
-  {
-    this.jdField_a_of_type_Bhvs = parambhvs;
-  }
-  
-  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bhvr == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bhvr.a(paramString, paramLong1, paramArrayOfLong, paramLong2);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    bhvs localbhvs = this.jdField_a_of_type_Bhvs;
-    if ((localbhvs != null) && (!"0X8009831".equals(paramString1)) && (!"0X8009830".equals(paramString1)) && (!"0X800982E".equals(paramString1)) && (!"0X800982F".equals(paramString1))) {
-      localbhvs.a(paramString2);
-    }
-  }
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhvq
  * JD-Core Version:    0.7.0.1
  */

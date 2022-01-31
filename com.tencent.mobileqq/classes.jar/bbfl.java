@@ -1,68 +1,23 @@
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.ByteArrayOutputStream;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import java.lang.ref.WeakReference;
 
-public class bbfl
-  extends ByteArrayOutputStream
+class bbfl
+  implements DialogInterface.OnKeyListener
 {
-  private final ByteArrayPool a;
+  bbfl(bbfk parambbfk) {}
   
-  public bbfl(ByteArrayPool paramByteArrayPool, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a = paramByteArrayPool;
-    this.buf = this.a.getBuf(Math.max(paramInt, 256));
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.count + paramInt <= this.buf.length) {
-      return;
-    }
-    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
-    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-    this.a.returnBuf(this.buf);
-    this.buf = arrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.buf;
-  }
-  
-  public void close()
-  {
-    this.a.returnBuf(this.buf);
-    this.buf = null;
-    super.close();
-  }
-  
-  public void write(int paramInt)
-  {
-    try
+    if (paramInt == 4)
     {
-      a(1);
-      super.write(paramInt);
-      return;
+      this.a.dismiss();
+      ((Activity)this.a.a.get()).finish();
+      return true;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      a(paramInt2);
-      super.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
+    return false;
   }
 }
 

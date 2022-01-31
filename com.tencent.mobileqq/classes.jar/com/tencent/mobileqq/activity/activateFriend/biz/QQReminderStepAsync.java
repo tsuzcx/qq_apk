@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
-import akjw;
+import akjv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -16,7 +16,7 @@ public class QQReminderStepAsync
     }
     try
     {
-      ((akjw)this.a.app.getManager(85)).e();
+      ((akjv)this.a.app.getManager(85)).e();
       return 7;
     }
     catch (Throwable localThrowable)

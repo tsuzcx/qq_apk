@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajtg;
+import ajte;
 
 public class MiniAppEntryObserver
-  implements ajtg
+  implements ajte
 {
   public void onMiniAppEntryChanged() {}
   

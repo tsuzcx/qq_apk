@@ -1,77 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amqb
-  extends ampb<amqc>
 {
-  public int a()
-  {
-    return 574;
-  }
+  private boolean a;
   
-  @NonNull
-  public amqc a(int paramInt)
+  public static amqb a(String paramString)
   {
-    return new amqc();
-  }
-  
-  @Nullable
-  public amqc a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if (paramString == null) {}
+    for (;;)
     {
-      amqc localamqc = amqc.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfampi[0].a);
+      return null;
+      try
+      {
+        amqb localamqb = new amqb();
+        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localamqb.a = bool;
+          return localamqb;
+        }
+        if (!QLog.isColorLevel()) {}
       }
-      return localamqc;
+      catch (Exception paramString) {}
     }
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
-  }
-  
-  public Class<amqc> a()
-  {
-    return amqc.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amqc paramamqc)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramamqc.a());
-    }
-    ShortVideoUtils.a(paramamqc.a());
   }
   
   public boolean a()
   {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
-    }
-    return super.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 

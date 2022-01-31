@@ -1,46 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ngf
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  ngf(nfu paramnfu, nmv paramnmv, Switch paramSwitch) {}
+  ngf(nfr paramnfr, String paramString, nms paramnms) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Nfu.c)
-    {
-      this.jdField_a_of_type_Nfu.c = true;
-      return;
-    }
-    if (this.jdField_a_of_type_Nmv.f == 1) {
-      this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, paramBoolean);
-    }
-    for (;;)
-    {
-      nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.a);
-      return;
-      if (this.jdField_a_of_type_Nmv.f == 2)
-      {
-        if (paramBoolean) {
-          this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
-        } else {
-          this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, paramBoolean);
-        }
-      }
-      else if (this.jdField_a_of_type_Nmv.f == 3)
-      {
-        if (!paramBoolean) {
-          this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
-        } else {
-          this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, paramBoolean);
-        }
-      }
-      else {
-        this.jdField_a_of_type_Nfu.a(this.jdField_a_of_type_Nmv, paramBoolean);
-      }
-    }
+    nfr.b(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_JavaLangString);
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 

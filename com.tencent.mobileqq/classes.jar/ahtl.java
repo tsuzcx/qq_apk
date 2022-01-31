@@ -1,53 +1,23 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ahtl
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public ahtl(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ahtl(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
-    }
-    do
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.m();
+    if (((!QLog.isColorLevel()) || (!bbdx.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (ahty.a == 1))
     {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
-      }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
+      ahtz.b("", "0X8005F5B", "0");
+      return;
     }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692634);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
-    }
+    ahtz.b("", "0X8005F5B", "1");
   }
 }
 

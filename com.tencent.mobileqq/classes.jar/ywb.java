@@ -1,16 +1,36 @@
-import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.content.Context;
+import android.content.IntentFilter;
 
-class ywb
-  implements yyc
+public class ywb
 {
-  ywb(yvv paramyvv) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ywd jdField_a_of_type_Ywd;
+  private ywe jdField_a_of_type_Ywe;
   
-  public void reportImpression(View paramView)
+  public ywb(Context paramContext)
   {
-    paramView = paramView.getTag(2131379206);
-    if ((paramView != null) && ((paramView instanceof GdtAd))) {
-      yye.a(((GdtAd)paramView).getUrlForImpression());
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Ywd = new ywd(this, null);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Ywd, localIntentFilter);
+  }
+  
+  public void a(ywe paramywe)
+  {
+    this.jdField_a_of_type_Ywe = paramywe;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Ywd != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Ywd);
+      this.jdField_a_of_type_Ywe = null;
     }
   }
 }

@@ -1,8 +1,8 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -12,10 +12,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class tlu
-  extends syq
+  extends syn
 {
   public List<tlv> a;
-  public List<uvr> b = new ArrayList(0);
   
   public tlu(ErrorMessage paramErrorMessage)
   {
@@ -23,28 +22,25 @@ public class tlu
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public tlu(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  public tlu(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
   {
-    super(paramRspBatchFeedComment.result);
+    super(paramRspBatchFeedLike.result);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
-    while (paramRspBatchFeedComment.hasNext())
+    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
+    while (paramRspBatchFeedLike.hasNext())
     {
-      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
+      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
       tlv localtlv = new tlv();
-      localtlv.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
-      localtlv.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
-      localtlv.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
-      localtlv.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
-      if (localtlv.jdField_b_of_type_Int != 1) {
-        this.b.add(new uvr(localtlv.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
-      }
-      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
+      localtlv.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localtlv.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localtlv.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localtlv.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
-        localCommentEntry.feedId = localtlv.jdField_a_of_type_JavaLangString;
-        localtlv.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
+        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
+        localLikeEntry.feedId = localtlv.jdField_a_of_type_JavaLangString;
+        localtlv.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
       }
       this.jdField_a_of_type_JavaUtilList.add(localtlv);
     }

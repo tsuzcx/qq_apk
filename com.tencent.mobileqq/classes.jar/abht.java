@@ -1,19 +1,42 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
 public class abht
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public abht(GeneralSettingActivity paramGeneralSettingActivity) {}
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
   
-  public void onClick(View paramView)
+  public abht(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    paramView = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(paramView);
-    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
   }
 }
 

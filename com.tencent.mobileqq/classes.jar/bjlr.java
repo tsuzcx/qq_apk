@@ -1,31 +1,9 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
-
 public class bjlr
-  implements URLDrawable.URLDrawableListener
 {
-  private final WeakReference<TextView> a;
-  
-  public bjlr(TextView paramTextView)
-  {
-    this.a = new WeakReference(paramTextView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
-    }
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
 }
 
 

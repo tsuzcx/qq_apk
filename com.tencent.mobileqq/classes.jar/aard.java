@@ -1,4 +1,3 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
@@ -10,7 +9,13 @@ public class aard
   
   public void onClick(View paramView)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
+    {
+      this.a.b = l;
+      this.a.b();
+      axqy.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+    }
   }
 }
 

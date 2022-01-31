@@ -1,35 +1,37 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nwq
-  implements qzi
+  implements bcqh
 {
-  public nwq(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public nwq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
-      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == paramInt2) {
-      shx.a(false);
-    }
-    if (paramInt2 == 1) {
-      this.a.getIntent().putExtra("channel_from", 7);
-    }
-    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
     {
-      this.a.a().f();
-      return;
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
+      }
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
+      }
     }
-    this.a.a(paramInt2, 256, null, true);
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((Switch)localObject).setChecked(bool1);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

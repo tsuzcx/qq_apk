@@ -1,21 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
 public class ajha
   implements DialogInterface.OnClickListener
 {
-  public ajha(ApolloGameActivity paramApolloGameActivity) {}
+  public ajha(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, ajob paramajob, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putBoolean("key_open_voice", true);
-    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new ajhb(this));
+    paramDialogInterface.dismiss();
   }
 }
 

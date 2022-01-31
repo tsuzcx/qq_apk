@@ -1,16 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class ateg
   implements View.OnClickListener
 {
-  public ateg(RecentUserInvitePanel paramRecentUserInvitePanel, atel paramatel) {}
+  public ateg(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Atel);
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
+      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     }
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.data;
 import android.text.TextUtils;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.QLog;
-import ytw;
+import ytt;
 
 public class BannerAdPosInfo
 {
@@ -49,7 +49,7 @@ public class BannerAdPosInfo
       return null;
     }
     paramInt1 = calculateLegalWidth(paramBannerAdPosInfo.mAdWidth, paramInt1, paramFloat, paramInt2, paramInt3);
-    paramInt2 = ytw.a(0, paramInt1);
+    paramInt2 = ytt.a(0, paramInt1);
     return new BannerAdPosInfo(paramBannerAdPosInfo.mAdUnitId, paramBannerAdPosInfo.mAdLeft, paramBannerAdPosInfo.mAdTop, paramBannerAdPosInfo.mAdWidth, paramBannerAdPosInfo.mAdHeight, paramInt1, paramInt2);
   }
   

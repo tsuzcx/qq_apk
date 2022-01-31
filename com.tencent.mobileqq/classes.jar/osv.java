@@ -1,8 +1,8 @@
+import android.os.Bundle;
+
 public abstract interface osv
 {
-  public abstract void onError(int paramInt);
-  
-  public abstract void onFinish(int paramInt);
+  public abstract int a(Bundle paramBundle);
 }
 
 

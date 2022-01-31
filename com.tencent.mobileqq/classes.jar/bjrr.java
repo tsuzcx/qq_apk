@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.story.mode.StoryEffectTextMode.6.1;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class bjrr
-  implements mzb
+class bjrr
+  extends QQUIEventReceiver<bjro, bjrq>
 {
-  bjrr(bjrh parambjrh) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public bjrr(@NonNull bjro parambjro)
   {
-    if ((paramInt == 0) && (paramString == null) && (bjrh.a(this.a, bjrh.a(this.a).d))) {
-      ThreadManager.getUIHandler().post(new StoryEffectTextMode.6.1(this));
-    }
-    QLog.i("StoryEffectTextModeQ.qqstory.text_filter", 2, "HtmlOffline.checkUpByBusinessId QG_SO_BID, loaded:code =" + paramInt);
+    super(parambjro);
   }
   
-  public void progress(int paramInt) {}
+  public void a(@NonNull bjro parambjro, @NonNull bjrq parambjrq)
+  {
+    if (bjrq.a(parambjrq))
+    {
+      switch (parambjrq.a())
+      {
+      }
+      for (;;)
+      {
+        bjro.a(parambjro);
+        return;
+        bjro.a(parambjro, true);
+        ved.b("QGEnvironment", "surface created");
+        continue;
+        ved.b("QGEnvironment", "qg so loaded");
+        continue;
+        ved.b("QGEnvironment", "filter manager inited");
+      }
+    }
+    ved.e("QGEnvironment", "QG environment init error :  event type = " + parambjrq.a());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return bjrq.class;
+  }
 }
 
 

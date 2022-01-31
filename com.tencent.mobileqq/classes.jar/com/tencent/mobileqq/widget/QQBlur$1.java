@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.view.View;
-import bcpj;
+import bcpy;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,30 +12,30 @@ public class QQBlur$1
 {
   private int jdField_a_of_type_Int = -1;
   
-  public QQBlur$1(bcpj parambcpj, StackBlurManager paramStackBlurManager) {}
+  public QQBlur$1(bcpy parambcpy, StackBlurManager paramStackBlurManager) {}
   
   public void run()
   {
-    if (bcpj.a(this.this$0)) {
+    if (bcpy.a(this.this$0)) {
       return;
     }
     long l1 = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != bcpj.jdField_a_of_type_Int)) {
-      bcpj.a(this.this$0, this.jdField_a_of_type_Int, bcpj.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != bcpy.jdField_a_of_type_Int)) {
+      bcpy.a(this.this$0, this.jdField_a_of_type_Int, bcpy.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_Int = bcpj.jdField_a_of_type_Int;
-    int i = bcpj.jdField_a_of_type_Int;
-    Object localObject = this.jdField_a_of_type_ComEnriqueStackblurStackBlurManager.process(bcpj.a(this.this$0));
+    this.jdField_a_of_type_Int = bcpy.jdField_a_of_type_Int;
+    int i = bcpy.jdField_a_of_type_Int;
+    Object localObject = this.jdField_a_of_type_ComEnriqueStackblurStackBlurManager.process(bcpy.a(this.this$0));
     if (localObject != null) {
-      bcpj.a(this.this$0, (Bitmap)localObject);
+      bcpy.a(this.this$0, (Bitmap)localObject);
     }
     for (;;)
     {
       long l2 = SystemClock.elapsedRealtime();
-      bcpj.a(this.this$0);
-      bcpj.a(this.this$0, l2 - l1 + bcpj.b(this.this$0));
-      localObject = bcpj.a(this.this$0);
-      if ((localObject == null) || (!bcpj.b(this.this$0))) {
+      bcpy.a(this.this$0);
+      bcpy.a(this.this$0, l2 - l1 + bcpy.b(this.this$0));
+      localObject = bcpy.a(this.this$0);
+      if ((localObject == null) || (!bcpy.b(this.this$0))) {
         break;
       }
       ((View)localObject).postInvalidate();

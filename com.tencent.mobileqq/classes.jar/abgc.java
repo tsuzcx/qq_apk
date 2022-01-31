@@ -1,22 +1,19 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
+import mqq.app.QQPermissionCallback;
 
 public class abgc
-  implements bfpe
+  implements QQPermissionCallback
 {
-  public abgc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public abgc(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramView == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_Abgk.a(paramInt);
-    this.a.a(paramAdapterView, paramInt);
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

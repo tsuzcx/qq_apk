@@ -1,71 +1,200 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.mobileqq.highway.config.ConfigManager;
+import com.tencent.mobileqq.highway.utils.EndPoint;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class apha
 {
-  protected long a;
-  protected apgv a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferOneSlotComplete a;
+  private static apha jdField_a_of_type_Apha;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public apha(QQAppInterface paramQQAppInterface)
+  public static apha a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    try
+    {
+      if (jdField_a_of_type_Apha == null) {
+        jdField_a_of_type_Apha = new apha();
+      }
+      apha localapha = jdField_a_of_type_Apha;
+      return localapha;
+    }
+    finally {}
   }
   
-  protected String a()
+  public long a()
   {
-    return "actGroupPDSlot";
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return 20971520L;
+  }
+  
+  @Deprecated
+  public ExcitingTransferDownloadConfig a()
+  {
+    return ((aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a().a();
+  }
+  
+  public ExcitingTransferHostInfo a()
+  {
+    EndPoint localEndPoint = ConfigManager.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine()).getNextSrvAddr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    if (localEndPoint != null) {
+      return new ExcitingTransferHostInfo(localEndPoint.host, localEndPoint.port);
+    }
+    return new ExcitingTransferHostInfo("", 0);
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo a()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return new ExcitingTransferUploadChnConfigInfo();
+  }
+  
+  public List<ExcitingTransferHostInfo> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = ConfigManager.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine());
+    if (localObject != null)
+    {
+      localObject = ((ConfigManager)localObject).getIpList(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), false);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          EndPoint localEndPoint = (EndPoint)((Iterator)localObject).next();
+          if ((localEndPoint != null) && (!TextUtils.isEmpty(localEndPoint.host))) {
+            localArrayList.add(new ExcitingTransferHostInfo(localEndPoint.host, localEndPoint.port));
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
   
   public void a()
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Apgv == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete == null))
-    {
-      QLog.e("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloaderDataReport err. param err");
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public boolean a()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
     }
-    HashMap localHashMap = this.jdField_a_of_type_Apgv.a();
-    localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete.getReportData());
-    QLog.i("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloaderDataReport:act=" + a() + localHashMap.toString());
-    axrl localaxrl = axrl.a(BaseApplication.getContext());
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    String str2 = a();
-    if (this.jdField_a_of_type_Apgv.jdField_b_of_type_Long == 0L) {}
-    for (;;)
-    {
-      localaxrl.a(str1, str2, bool, 0L, 0L, localHashMap, "");
-      this.jdField_a_of_type_Apgv = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = null;
-      return;
-      bool = false;
+    return false;
+  }
+  
+  public long b()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
     }
+    return 20971520L;
   }
   
-  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
+  public ExcitingTransferDownloadConfig b()
   {
-    this.jdField_a_of_type_Apgv = new apgv();
-    this.jdField_a_of_type_Apgv.jdField_a_of_type_Long = paramInt;
-    this.jdField_a_of_type_Apgv.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Apgv.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Apgv.d = paramLong2;
-    this.jdField_a_of_type_Apgv.c = paramLong3;
-    this.jdField_a_of_type_Apgv.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Apgv.jdField_b_of_type_Int = 1;
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return new ExcitingTransferDownloadConfig();
   }
   
-  public void a(long paramLong)
+  public ExcitingTransferUploadChnConfigInfo b()
   {
-    this.jdField_a_of_type_Long = paramLong;
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return new ExcitingTransferUploadChnConfigInfo();
   }
   
-  public void a(ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
+  public boolean b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = paramExcitingTransferOneSlotComplete;
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return false;
+  }
+  
+  public long c()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return 20971520L;
+  }
+  
+  public ExcitingTransferDownloadConfig c()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return new ExcitingTransferDownloadConfig();
+  }
+  
+  public boolean c()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return false;
+  }
+  
+  public long d()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return 20971520L;
+  }
+  
+  public boolean d()
+  {
+    aoww localaoww = (aoww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317);
+    if (localaoww.a() != null) {
+      return localaoww.a().a();
+    }
+    return false;
+  }
+  
+  public long e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return 0L;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+  }
+  
+  @Deprecated
+  public boolean e()
+  {
+    return false;
   }
 }
 

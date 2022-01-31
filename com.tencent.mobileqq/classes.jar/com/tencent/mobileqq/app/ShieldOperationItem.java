@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import akgj;
+import akgi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new akgj();
+  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new akgi();
   public int a;
   public long[] a;
   public int b;

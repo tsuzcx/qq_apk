@@ -1,43 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ArkAppReportController.1;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class axpp
 {
-  private static String a(axpq paramaxpq)
+  public static String a = "";
+  
+  private static String a(String paramString1, String paramString2, String paramString3, axpq paramaxpq, int paramInt)
   {
-    return paramaxpq.a();
+    QLog.e("AVShortVideoReportController", 1, "getReportingDetail");
+    paramString1 = new StringBuilder(64);
+    paramString1.append(paramString2).append('|');
+    paramString1.append(paramString3).append('|');
+    paramString1.append("${count_unknown}").append('|');
+    paramString1.append(paramaxpq.a).append('|');
+    paramString1.append(paramaxpq.b).append('|');
+    paramString1.append(paramaxpq.c).append('|');
+    paramString1.append(paramaxpq.d).append('|');
+    paramString1.append(paramaxpq.e).append('|');
+    paramString1.append(paramaxpq.f).append('|');
+    paramString1.append(paramaxpq.g).append('|');
+    paramString1.append(paramaxpq.h).append('|');
+    paramString1.append(paramaxpq.i).append('|');
+    paramString1.append(paramaxpq.j).append('|');
+    paramString1.append(paramaxpq.k).append('|');
+    paramString1.append(paramaxpq.l).append('|');
+    paramString1.append(paramaxpq.m).append('|');
+    paramString1.append(paramaxpq.n).append('|');
+    paramString1.append(paramaxpq.o).append('|');
+    paramString1.append(paramaxpq.p).append('|');
+    paramString1.append(paramaxpq.q).append('|');
+    paramString1.append(paramaxpq.r).append('|');
+    paramString1.append(paramaxpq.s).append('|');
+    paramString1.append(paramaxpq.t).append('|');
+    paramString1.append(paramaxpq.u).append('|');
+    paramString1.append(paramaxpq.v).append('|');
+    return paramString1.toString();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  public static void a(String paramString1, String paramString2, String paramString3, axpq paramaxpq)
   {
-    axpq localaxpq = new axpq();
-    localaxpq.jdField_a_of_type_JavaLangString = paramString1;
-    localaxpq.jdField_b_of_type_JavaLangString = paramString2;
-    localaxpq.jdField_c_of_type_JavaLangString = paramString3;
-    localaxpq.jdField_a_of_type_Long = paramLong1;
-    localaxpq.jdField_b_of_type_Long = paramLong2;
-    localaxpq.jdField_d_of_type_Long = paramLong3;
-    localaxpq.f = paramLong4;
-    localaxpq.g = paramLong5;
-    localaxpq.jdField_d_of_type_JavaLangString = paramString4;
-    localaxpq.e = paramString5;
-    localaxpq.jdField_c_of_type_Long = 1L;
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = a(localaxpq);
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
-      }
-      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramQQAppInterface));
-      return;
-    }
-    paramString1 = a(localaxpq);
+    paramString1 = a(paramString2, paramString1, paramString3, paramaxpq, 1);
     if (QLog.isColorLevel()) {
-      QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
+      QLog.i("AVShortVideoReportController", 2, "POST getReportingDetail=" + paramString1);
     }
-    axqw.b(paramQQAppInterface, "dc01616", paramString1, 1);
+    paramString3 = new Intent();
+    paramString3.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+    paramString3.putExtra("reporting_tag", paramString2);
+    paramString3.putExtra("reporting_detail", paramString1);
+    paramString3.putExtra("reporting_count", 1);
+    paramString3.putExtra("is_runtime", 0);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramString3);
   }
 }
 

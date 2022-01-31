@@ -1,193 +1,72 @@
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.cover.RecordThumbnailUtils;
-import java.io.File;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class vsl
+  extends vsn<vsa, vsa>
 {
-  double jdField_a_of_type_Double;
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  double jdField_b_of_type_Double;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean;
-  int d;
-  int e;
-  int f;
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<vhy> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public vsl(int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, int paramInt4, boolean paramBoolean2)
-  {
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.f = paramInt4;
-    this.jdField_c_of_type_Boolean = paramBoolean2;
-  }
-  
-  public vsl(@NonNull Bitmap paramBitmap, @NonNull String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat, double paramDouble1, double paramDouble2, int paramInt4)
+  public vsl(String paramString, vhy paramvhy, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.f = paramInt4;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvhy);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private int a()
+  protected void a(JobContext paramJobContext, vsa paramvsa)
   {
-    int i = 0;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_JavaLangString == null))
-    {
-      veg.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb error. bitmap = null or path = null.");
-      i = 1;
+    ved.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    vsg localvsg = paramvsa.jdField_a_of_type_Vsg;
+    int i = localvsg.c;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (vhy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    for (;;)
+    while (paramJobContext != null)
     {
-      return i;
-      int j;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) {
-        if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int)
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
+      {
+        try
         {
-          j = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = j;
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.b, ".jpg");
+          }
+          i = new vsi(localBitmap, str1, localvsg.jdField_a_of_type_Int, localvsg.jdField_b_of_type_Int, i, localvsg.jdField_a_of_type_Float, localvsg.jdField_a_of_type_Double, localvsg.jdField_b_of_type_Double, paramvsa.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label217;
+          }
+          paramvsa.jdField_a_of_type_JavaLangString = str1;
+          paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(paramvsa);
+          return;
         }
-      }
-      Bitmap localBitmap;
-      for (;;)
-      {
-        localBitmap = vxy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
-        if (localBitmap != null) {
-          break;
-        }
-        veg.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb error. resize thumb bitmap error.");
-        return 1;
-        if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
+        finally
         {
-          j = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = j;
+          paramJobContext.a(localBitmap);
         }
+        paramJobContext = null;
+        continue;
+        label217:
+        ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, ajya.a(2131705687) + this.jdField_a_of_type_Int));
       }
-      if (!vxy.a(localBitmap, this.jdField_a_of_type_JavaLangString))
+      else
       {
-        veg.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb error. compress thumb bitmap to file error.");
-        return 1;
-      }
-      try
-      {
-        bbdr.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-        if (!new File(this.jdField_a_of_type_JavaLangString).exists())
-        {
-          veg.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb, coverFile not exists, vf dir = %s, mThumbPath = %s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString });
-          return 1;
-        }
-      }
-      catch (UnsupportedOperationException localUnsupportedOperationException)
-      {
-        if (this.jdField_a_of_type_JavaLangString == null) {}
+        ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, ajya.a(2131705692) + this.jdField_a_of_type_Int));
+        return;
       }
     }
-    for (boolean bool = new File(this.jdField_a_of_type_JavaLangString).exists();; bool = false)
-    {
-      vel.b("video_edit", "update_LBS_exif_failed", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(bool) });
-      break;
-    }
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int = 320;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / this.jdField_a_of_type_Float));
-    if (this.jdField_b_of_type_Int % 2 > 0) {
-      this.jdField_b_of_type_Int -= 1;
-    }
-    if (this.d > 0) {
-      this.jdField_a_of_type_Int = this.d;
-    }
-    if (this.e > 0) {
-      this.jdField_b_of_type_Int = this.e;
-    }
-    veg.b("Q.qqstory.publish.edit.GenerateThumbTask", "FlowSendTask():mFileDir:" + this.jdField_b_of_type_JavaLangString + ", mThumbWidth: " + this.jdField_a_of_type_Int + ", mThumbHeight:" + this.jdField_b_of_type_Int + ", mThumbOK:" + this.jdField_b_of_type_Boolean + ", mShowLastFrameThumb:" + this.jdField_a_of_type_Boolean + ", mExistThumbPath:" + this.jdField_c_of_type_JavaLangString + ", mExistThumbOk:" + this.jdField_c_of_type_Boolean);
-  }
-  
-  private int b()
-  {
-    int i = 0;
-    if ((this.jdField_a_of_type_Boolean) && (VideoEnvironment.b() >= 21)) {
-      RecordThumbnailUtils.nativeSetLastFrameCover(RecordThumbnailUtils.a(this.jdField_b_of_type_JavaLangString));
-    }
-    this.jdField_a_of_type_JavaLangString = RecordThumbnailUtils.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-    if ((this.jdField_c_of_type_Int == 90) || (this.jdField_c_of_type_Int == 270))
-    {
-      int j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = j;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      veg.e("Q.qqstory.publish.edit.GenerateThumbTask", "generateThumb, getNativeCover result is empty, vf dir = %s", new Object[] { this.jdField_b_of_type_JavaLangString });
-      i = 1;
-    }
-    for (;;)
-    {
-      return i;
-      try
-      {
-        bbdr.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-        if (!new File(this.jdField_a_of_type_JavaLangString).exists())
-        {
-          veg.e("Q.qqstory.publish.edit.GenerateThumbTask", "generateThumb, coverFile not exists, vf dir = %s, mThumbPath = %s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString });
-          return 1;
-        }
-      }
-      catch (UnsupportedOperationException localUnsupportedOperationException)
-      {
-        if (this.jdField_a_of_type_JavaLangString == null) {}
-      }
-    }
-    for (boolean bool = new File(this.jdField_a_of_type_JavaLangString).exists();; bool = false)
-    {
-      vel.b("video_edit", "update_LBS_exif_failed", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(bool) });
-      break;
-    }
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    long l1 = SystemClock.uptimeMillis();
-    a();
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_JavaLangString != null)) {}
-    for (int i = a();; i = b())
-    {
-      long l2 = SystemClock.uptimeMillis();
-      if (i == 0) {
-        vel.b("take_video", "create_thumb_time", 0, 0, new String[] { "" + (l2 - l1) });
-      }
-      vel.b("take_video", "create_thumb_result", 0, i, new String[0]);
-      return Integer.valueOf(i);
-    }
+    ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, ajya.a(2131705688) + this.jdField_a_of_type_Int));
   }
 }
 

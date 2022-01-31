@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import aitd;
+import aitb;
 import android.text.Editable;
 
 public class ApolloRender$17$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$17$1(aitd paramaitd, Editable paramEditable) {}
+  public ApolloRender$17$1(aitb paramaitb, Editable paramEditable) {}
   
   public String a()
   {

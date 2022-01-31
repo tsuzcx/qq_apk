@@ -1,17 +1,13 @@
-import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
 class bimk
-  implements bjob<bivx>
+  implements xez
 {
-  bimk(bimj parambimj) {}
+  bimk(bima parambima) {}
   
-  public void a(@Nullable bivx parambivx)
+  public void a()
   {
-    if (parambivx == null) {
-      return;
-    }
-    bimj.a(this.a, parambivx);
-    bimj.b(this.a, parambivx);
+    bima.a(this.a).setVisibility(0);
   }
 }
 

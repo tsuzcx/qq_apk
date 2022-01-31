@@ -2,17 +2,17 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bbjb;
-import bcpw;
+import bbjp;
+import bcql;
 
 public class SendByFile$1
   implements Runnable
 {
-  public SendByFile$1(bbjb parambbjb, Context paramContext, String paramString) {}
+  public SendByFile$1(bbjp parambbjp, Context paramContext, String paramString) {}
   
   public void run()
   {
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
+    bcql.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

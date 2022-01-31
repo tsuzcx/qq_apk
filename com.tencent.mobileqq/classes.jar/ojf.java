@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-
 class ojf
-  extends ojq
+  extends ojn
 {
-  ojf(oio paramoio, BaseCommentData paramBaseCommentData)
+  ojf(oil paramoil, int paramInt)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentReply(true, new oii(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, oio.a(this.jdField_a_of_type_Oio)));
+    paramojq.onCommentStateError(this.jdField_a_of_type_Int);
   }
 }
 

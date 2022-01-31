@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.ark;
 
-import adll;
-import alqy;
-import alsc;
-import alsj;
+import adlj;
+import alqx;
+import alsb;
+import alsi;
+import alsq;
 import alsr;
 import alss;
 import alst;
 import alsu;
 import alsv;
-import alsw;
-import alta;
+import alsz;
+import altd;
 import alte;
-import altf;
-import alti;
-import altn;
-import alvg;
-import alvt;
-import alwm;
-import alwp;
-import amql;
+import alth;
+import altm;
+import alvf;
+import alvs;
+import alwl;
+import alwo;
+import amqk;
+import amqp;
 import amqq;
-import amqr;
-import amrk;
+import amrj;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -31,8 +31,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import axqw;
-import bfmz;
+import axqy;
+import bfnq;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ark;
@@ -64,39 +64,39 @@ public class ArkAppCenter
   private static boolean e = BaseApplicationImpl.getApplication().getSharedPreferences("arkappmsg_entry", 4).getBoolean("arkapp_pa_nshow", e);
   private static boolean f;
   private final int jdField_a_of_type_Int = 0;
-  private alqy jdField_a_of_type_Alqy;
-  private alsc jdField_a_of_type_Alsc;
-  private alte jdField_a_of_type_Alte;
-  private alti jdField_a_of_type_Alti;
-  private altn jdField_a_of_type_Altn;
-  private alwm jdField_a_of_type_Alwm;
-  private alwp jdField_a_of_type_Alwp;
+  private alqx jdField_a_of_type_Alqx;
+  private alsb jdField_a_of_type_Alsb;
+  private altd jdField_a_of_type_Altd;
+  private alth jdField_a_of_type_Alth;
+  private altm jdField_a_of_type_Altm;
+  private alwl jdField_a_of_type_Alwl;
+  private alwo jdField_a_of_type_Alwo;
   private ArkAppCenter.ProxyChangeNotifier jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$ProxyChangeNotifier = new ArkAppCenter.ProxyChangeNotifier(null);
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new alsr(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new alsq(this);
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private final int jdField_b_of_type_Int = 1;
   private final int jdField_c_of_type_Int = 2;
   
   static
   {
-    alvt.a(true);
-    alvt.a();
+    alvs.a(true);
+    alvs.a();
   }
   
   public ArkAppCenter(QQAppInterface paramQQAppInterface)
   {
     g();
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Alsc = new alsc(paramQQAppInterface);
-    this.jdField_a_of_type_Altn = new altn(paramQQAppInterface);
-    this.jdField_a_of_type_Alte = new alte(paramQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Alsb = new alsb(paramQQAppInterface);
+    this.jdField_a_of_type_Altm = new altm(paramQQAppInterface);
+    this.jdField_a_of_type_Altd = new altd(paramQQAppInterface.getCurrentAccountUin());
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     IntentFilter localIntentFilter = new IntentFilter("android.intent.action.PROXY_CHANGE");
     paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$ProxyChangeNotifier, localIntentFilter);
-    this.jdField_a_of_type_Alqy = new alqy(this);
-    this.jdField_a_of_type_Alti = new alti(paramQQAppInterface);
-    this.jdField_a_of_type_Alwm = new alwm(paramQQAppInterface);
-    this.jdField_a_of_type_Alwp = new alwp(paramQQAppInterface);
+    this.jdField_a_of_type_Alqx = new alqx(this);
+    this.jdField_a_of_type_Alth = new alth(paramQQAppInterface);
+    this.jdField_a_of_type_Alwl = new alwl(paramQQAppInterface);
+    this.jdField_a_of_type_Alwo = new alwo(paramQQAppInterface);
   }
   
   public static ArkDispatchTask a()
@@ -114,10 +114,10 @@ public class ArkAppCenter
   {
     if (paramInt2 == 2)
     {
-      adll.setArkHttpProxy();
+      adlj.setArkHttpProxy();
       return;
     }
-    adll.clearArkHttpProxy();
+    adlj.clearArkHttpProxy();
   }
   
   public static void a(Intent paramIntent)
@@ -224,7 +224,7 @@ public class ArkAppCenter
   
   public static String b()
   {
-    return altf.a().b();
+    return alte.a().b();
   }
   
   public static void b()
@@ -251,12 +251,12 @@ public class ArkAppCenter
       {
         if (!jdField_a_of_type_Boolean)
         {
-          ((ArkEnvironmentManager)localObject1).setThreadCreator(new alst());
-          ((ArkEnvironmentManager)localObject1).setLogCallback(new alsu());
-          ((ArkEnvironmentManager)localObject1).setLibraryLoader(new alsv());
+          ((ArkEnvironmentManager)localObject1).setThreadCreator(new alss());
+          ((ArkEnvironmentManager)localObject1).setLogCallback(new alst());
+          ((ArkEnvironmentManager)localObject1).setLibraryLoader(new alsu());
           ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
           ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
-          ((ArkEnvironmentManager)localObject1).setDataReport(new alsw());
+          ((ArkEnvironmentManager)localObject1).setDataReport(new alsv());
           jdField_a_of_type_Boolean = true;
         }
         if ((paramBoolean) && (!jdField_b_of_type_Boolean))
@@ -264,16 +264,16 @@ public class ArkAppCenter
           ((ArkEnvironmentManager)localObject1).loadLibrary();
           if (jdField_b_of_type_Boolean)
           {
-            boolean bool1 = alqy.a();
+            boolean bool1 = alqx.a();
             ark.SetUseAndroidHTTP(bool1);
-            boolean bool2 = alqy.b();
+            boolean bool2 = alqx.b();
             ark.arkSetAndroid9EmojiFeatureSupport(bool2);
             if (BaseApplicationImpl.getContext() != null)
             {
-              localObject1 = alta.a;
+              localObject1 = alsz.a;
               ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
             }
-            boolean bool3 = "true".equals(alqy.a("ark_engine_multi_thread"));
+            boolean bool3 = "true".equals(alqx.a("ark_engine_multi_thread"));
             localObject1 = ArkEnvironmentManager.getInstance();
             if (bool3) {
               break label244;
@@ -302,14 +302,14 @@ public class ArkAppCenter
   
   public static String c()
   {
-    return altf.a().c();
+    return alte.a().c();
   }
   
   public static void c()
   {
     int i = 0;
     File localFile = new File(ArkEnvironmentManager.getInstance().getCacheDirectory());
-    File[] arrayOfFile = localFile.listFiles(new alss());
+    File[] arrayOfFile = localFile.listFiles(new alsr());
     if (arrayOfFile != null)
     {
       c("ArkApp", String.format(Locale.CHINA, "cleanWebCache, count=%d, path=%s", new Object[] { Integer.valueOf(arrayOfFile.length), localFile.getAbsolutePath() }));
@@ -329,7 +329,7 @@ public class ArkAppCenter
   
   public static boolean c()
   {
-    String str = alvg.a();
+    String str = alvf.a();
     if (a(str, "libjsc_ark.so"))
     {
       ark.arkSetLibraryPath(str, "libjsc_ark.so");
@@ -338,7 +338,7 @@ public class ArkAppCenter
       }
       return true;
     }
-    str = bfmz.a();
+    str = bfnq.a();
     if (str == null)
     {
       QLog.d("ArkApp", 1, "InitJSCLibPath folder path is null.");
@@ -351,7 +351,7 @@ public class ArkAppCenter
   
   public static String d()
   {
-    String str = altf.a().d();
+    String str = alte.a().d();
     File localFile = new File(str);
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -366,12 +366,12 @@ public class ArkAppCenter
   
   public static boolean d()
   {
-    if (a(alvg.a(), "libjsc_ark.so")) {}
+    if (a(alvf.a(), "libjsc_ark.so")) {}
     String str;
     do
     {
       return true;
-      str = bfmz.a();
+      str = bfnq.a();
       if (str == null)
       {
         QLog.d("ArkApp", 1, "isJSCLibExist folder path is null.");
@@ -435,48 +435,48 @@ public class ArkAppCenter
       c();
       return;
     }
-    axqw.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
+    axqy.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
   }
   
   private void g()
   {
-    Object localObject = amqr.b(380).a();
-    if ((localObject != null) && (((amqq)localObject).a() != null))
+    Object localObject = amqq.b(380).a();
+    if ((localObject != null) && (((amqp)localObject).a() != null))
     {
-      QLog.d("ArkApp", 1, "ArkSafe.initGlobalWhiteListAndUrlCheckStatus.loadConfig content = " + ((amqq)localObject).a());
-      localObject = ((amqq)localObject).a();
-      ArkAppConfigMgr.getInstance().initGlobalWhiteListAndUrlCheckStatus(((amrk)localObject).jdField_a_of_type_Boolean, ((amrk)localObject).jdField_b_of_type_JavaUtilArrayList, ((amrk)localObject).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
+      QLog.d("ArkApp", 1, "ArkSafe.initGlobalWhiteListAndUrlCheckStatus.loadConfig content = " + ((amqp)localObject).a());
+      localObject = ((amqp)localObject).a();
+      ArkAppConfigMgr.getInstance().initGlobalWhiteListAndUrlCheckStatus(((amrj)localObject).jdField_a_of_type_Boolean, ((amrj)localObject).jdField_b_of_type_JavaUtilArrayList, ((amrj)localObject).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
     }
   }
   
-  public alqy a()
+  public alqx a()
   {
-    return this.jdField_a_of_type_Alqy;
+    return this.jdField_a_of_type_Alqx;
   }
   
-  public alsc a()
+  public alsb a()
   {
-    return this.jdField_a_of_type_Alsc;
+    return this.jdField_a_of_type_Alsb;
   }
   
-  public alti a()
+  public alth a()
   {
-    return this.jdField_a_of_type_Alti;
+    return this.jdField_a_of_type_Alth;
   }
   
-  public altn a()
+  public altm a()
   {
-    return this.jdField_a_of_type_Altn;
+    return this.jdField_a_of_type_Altm;
   }
   
-  public alwm a()
+  public alwl a()
   {
-    return this.jdField_a_of_type_Alwm;
+    return this.jdField_a_of_type_Alwl;
   }
   
-  public alwp a()
+  public alwo a()
   {
-    return this.jdField_a_of_type_Alwp;
+    return this.jdField_a_of_type_Alwo;
   }
   
   public QQAppInterface a()
@@ -487,17 +487,17 @@ public class ArkAppCenter
   public void a()
   {
     ArkAppMgr.getInstance().updateInstalledApps();
-    if (this.jdField_a_of_type_Alqy != null) {
-      this.jdField_a_of_type_Alqy.b();
+    if (this.jdField_a_of_type_Alqx != null) {
+      this.jdField_a_of_type_Alqx.b();
     }
   }
   
-  public boolean a(String paramString, Object paramObject, alsj paramalsj)
+  public boolean a(String paramString, Object paramObject, alsi paramalsi)
   {
     if ((paramString == null) || (paramString.length() <= 0)) {
       return false;
     }
-    this.jdField_a_of_type_Alsc.a(paramString, paramObject, paramalsj);
+    this.jdField_a_of_type_Alsb.a(paramString, paramObject, paramalsi);
     return true;
   }
   

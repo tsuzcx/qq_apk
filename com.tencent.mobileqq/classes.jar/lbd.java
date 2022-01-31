@@ -1,17 +1,20 @@
-public class lbd
-  extends law
+import org.apache.http.Header;
+import org.json.JSONObject;
+
+class lbd
+  extends laj
 {
-  private String jdField_a_of_type_JavaLangString = "qqi_android";
-  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
+  lbd(lba paramlba, laj paramlaj) {}
   
-  public String a()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Laj.a(paramInt, paramArrayOfHeader, paramJSONObject);
   }
   
-  public String b()
+  public void a(Throwable paramThrowable, String paramString)
   {
-    return a(this.jdField_a_of_type_ArrayOfByte, a());
+    this.jdField_a_of_type_Laj.a(paramThrowable, paramString);
+    super.a(paramThrowable, paramString);
   }
 }
 

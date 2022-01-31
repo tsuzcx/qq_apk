@@ -1,78 +1,77 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class awpq
-  extends awnc
+  implements awoh
 {
-  TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo;
-  String jdField_a_of_type_JavaLangString;
+  public int a;
+  public int b;
+  public int c;
   
-  public awpq(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo, String paramString)
+  public int a()
   {
-    super(paramQQAppInterface, paramInt, paramTroopMemberInfo);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return 0;
   }
   
-  public void a(View paramView)
+  public int a(int paramInt)
   {
-    Context localContext = paramView.getContext();
-    if ((paramView.getId() == 2131375181) && (this.b == 23)) {
-      TroopAddFrdsInnerFrame.a(localContext, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo, this.jdField_a_of_type_JavaLangString, false);
+    int i = -1;
+    switch (paramInt)
+    {
     }
-    while (this.b != 23) {
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      }
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
+    }
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<awoi> a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
       return;
     }
-    Intent localIntent = new Intent(localContext, FriendProfileCardActivity.class);
-    localIntent.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
-    localIntent.putExtra("memberUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
-    localIntent.putExtra("fromFlag", 1);
-    localIntent.putExtra("selfSet_leftViewText", paramView.getContext().getString(2131720513));
-    localIntent.putExtra("custom_leftbackbutton_name", paramView.getContext().getString(2131690572));
-    auvw.a(localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent, 9);
+    this.c = paramInt2;
   }
   
-  public CharSequence c()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ajxn localajxn = (ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localajxn.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin)) {
-      return ajyc.a(2131715252);
-    }
-    if (localajxn.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, false)) {
-      return ajyc.a(2131715253);
-    }
-    return null;
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
   }
   
-  public String c()
-  {
-    return bbcl.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
-  }
+  public void a(View paramView) {}
   
-  public CharSequence d()
+  public String b()
   {
     return null;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt <= 0) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt + ajyc.a(2131715254);
-  }
-  
-  public int f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt < 0) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt;
   }
 }
 

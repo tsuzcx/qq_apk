@@ -1,62 +1,65 @@
-import android.app.Activity;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.video.GdtVideoData;
-import com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAdLoader.1;
+import com.tencent.gdtad.aditem.GdtAdLoader.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import java.lang.ref.WeakReference;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
-public final class ysn
-  implements AdVideoCeilingAdapter
+public class ysn
 {
-  public AdError show(AdVideoCeilingAdapter.Params paramParams)
+  private WeakReference<yso> jdField_a_of_type_JavaLangRefWeakReference;
+  private ysp jdField_a_of_type_Ysp;
+  
+  public ysn(ysp paramysp, WeakReference<yso> paramWeakReference)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    this.jdField_a_of_type_Ysp = paramysp;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+  }
+  
+  private void a()
+  {
+    new Handler(Looper.getMainLooper()).post(new GdtAdLoader.2(this));
+  }
+  
+  private void b(WeakReference<Context> paramWeakReference)
+  {
+    if ((this.jdField_a_of_type_Ysp == null) || (this.jdField_a_of_type_Ysp.a == null))
     {
-      yxs.d("GdtVideoCeilingAdapter", "show error");
-      return new AdError(4);
+      yxp.d("GdtAdLoader", "reportForAnalysis error");
+      return;
     }
-    Object localObject = new GdtVideoData();
-    ((GdtVideoData)localObject).setUrl(paramParams.videoUrl);
-    ((GdtVideoData)localObject).setStartPositionMillis(paramParams.videoStartPositionMillis);
-    ((GdtVideoData)localObject).setLoop(paramParams.videoLoop);
-    ((GdtVideoData)localObject).setDirectPlay(paramParams.videoPlayForced);
-    GdtVideoCeilingData localGdtVideoCeilingData = new GdtVideoCeilingData();
-    localGdtVideoCeilingData.setAd((GdtAd)GdtAd.class.cast(paramParams.ad));
-    localGdtVideoCeilingData.setWebUrl(paramParams.webUrl);
-    localGdtVideoCeilingData.setVideoData((GdtVideoData)localObject);
-    localObject = yzi.a((GdtAd)GdtAd.class.cast(paramParams.ad), paramParams.autodownload);
-    switch (paramParams.style)
-    {
-    default: 
-      return new AdError(4);
-    case 1: 
-      localGdtVideoCeilingData.setStyle(1);
-    }
-    while (!localGdtVideoCeilingData.isValid())
-    {
-      yxs.d("GdtVideoCeilingAdapter", "show error");
-      return new AdError(4);
-      localGdtVideoCeilingData.setStyle(2);
-      continue;
-      localGdtVideoCeilingData.setStyle(3);
-      continue;
-      if ((localObject == null) || (!((GdtCanvasData)localObject).isValid()))
-      {
-        localGdtVideoCeilingData.setStyle(1);
-      }
-      else
-      {
-        localGdtVideoCeilingData.setCanvasData((GdtCanvasData)localObject);
-        localGdtVideoCeilingData.setStyle(4);
+    int i = 0;
+    label27:
+    if (i < this.jdField_a_of_type_Ysp.a.position_info.size()) {
+      if (paramWeakReference == null) {
+        break label90;
       }
     }
-    GdtBaseVideoCeilingFragment.a((Activity)paramParams.activity.get(), GdtVideoCeilingFragmentForJS.class, localGdtVideoCeilingData, paramParams.extrasForIntent);
-    return new AdError(0);
+    label90:
+    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
+    {
+      AdReporterForAnalysis.reportForLoadAd(localContext, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_Ysp.a.position_info.get(i)).pos_id.get());
+      i += 1;
+      break label27;
+      break;
+    }
+  }
+  
+  public ysp a()
+  {
+    return this.jdField_a_of_type_Ysp;
+  }
+  
+  public void a(WeakReference<Context> paramWeakReference)
+  {
+    ThreadManager.post(new GdtAdLoader.1(this, paramWeakReference), 5, null, true);
+    b(paramWeakReference);
   }
 }
 

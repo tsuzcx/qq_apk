@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import akyf;
+import akye;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ARTransferDoorLogicManager$13
   implements Runnable
 {
-  public ARTransferDoorLogicManager$13(akyf paramakyf) {}
+  public ARTransferDoorLogicManager$13(akye paramakye) {}
   
   public void run()
   {

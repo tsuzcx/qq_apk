@@ -1,47 +1,42 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.widget.ListView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
 public class pdo
-  implements pda
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private pax jdField_a_of_type_Pax;
-  private pda jdField_a_of_type_Pda;
-  private rfn jdField_a_of_type_Rfn;
-  private pda b;
-  
-  public pdo(Context paramContext, rbt paramrbt, baxk parambaxk, rap paramrap, bfsc parambfsc, ListView paramListView)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Pda = new pdj(paramContext, parambaxk, paramrap, paramListView, parambfsc);
-    this.b = new pdb(paramContext, paramrbt, paramrap);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(rfn paramrfn, pax parampax, int paramInt)
-  {
-    this.jdField_a_of_type_Rfn = paramrfn;
-    this.jdField_a_of_type_Pax = parampax;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Pda.a(paramrfn, parampax, paramInt);
-    this.b.a(paramrfn, parampax, paramInt);
-    if ((paramrfn != null) && (paramrfn.e != null))
+    JSONObject localJSONObject1 = new JSONObject();
+    if (TextUtils.isEmpty(paramBaseArticleInfo.avatar)) {
+      localJSONObject1.put("avator_url", "default_comment_avatar");
+    }
+    for (;;)
     {
-      if (parampax.h()) {
-        paramrfn.e.setVisibility(8);
+      pek.r(paramBaseArticleInfo, localJSONObject1);
+      pek.a(paramBaseArticleInfo, localJSONObject1, true);
+      oar.b(paramBaseArticleInfo, localJSONObject1);
+      oar.a(paramBaseArticleInfo, localJSONObject1);
+      pek.m(paramBaseArticleInfo, localJSONObject1);
+      pek.e(paramBaseArticleInfo, localJSONObject1);
+      pek.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_brand_optimization_cell");
+      pek.a(localJSONObject1, paramBaseArticleInfo);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+      {
+        pek.d(paramBaseArticleInfo, localJSONObject1);
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("article_model", paramBaseArticleInfo);
+        localJSONObject1.put("id_view_AdBanner", localJSONObject2);
       }
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_article_brand_optimization", localJSONObject2);
+      localJSONObject1.put("id_info_operate_parent", new JSONObject());
+      localJSONObject1.put("id_ad_brand_container", new JSONObject());
+      return localJSONObject1;
+      localJSONObject1.put("avator_url", paramBaseArticleInfo.avatar);
     }
-    else {
-      return;
-    }
-    paramrfn.e.setVisibility(0);
-  }
-  
-  public void a(rfn paramrfn, pax parampax, long paramLong, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_Pda.a(paramrfn, parampax, paramLong, paramBitmap);
   }
 }
 

@@ -1,41 +1,20 @@
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class ubb
-  extends ubc
-  implements View.OnClickListener
+  extends uaz
 {
-  private long a;
+  public final View b;
   
-  public ubb(@NonNull ViewGroup paramViewGroup)
+  public ubb(View paramView)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    super((ViewGroup)paramView.getParent());
+    this.b = paramView;
   }
   
   protected View a(ViewGroup paramViewGroup)
   {
-    return paramViewGroup;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Uav == null) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramView = this.jdField_a_of_type_Uav.a().getVideoLinkInfo();
-    if ((paramView != null) && (paramView.a()) && (paramView.a.a()))
-    {
-      tvf.a(a(), paramView.a.c, paramView.a.b, 1010);
-      vel.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Uav.a });
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    return this.b;
   }
 }
 

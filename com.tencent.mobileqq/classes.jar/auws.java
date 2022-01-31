@@ -1,178 +1,137 @@
-import SummaryCard.TPraiseInfo;
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.util.Pair;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import com.tencent.mobileqq.profile.like.PraiseManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class auws
+  extends bfmx
 {
-  public static int a;
-  public static Vector<String> a;
-  private static AtomicBoolean a;
-  public static int b;
-  public static Vector<auwt> b;
-  public static int c;
+  int a;
+  public Drawable a;
+  public SparseArray<Pair<Point, Integer>> a;
+  public View a;
+  public aqyr a;
+  public boolean a;
+  public Drawable[] a;
+  int b = 0;
   
-  static
+  public auws()
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = 10;
-    jdField_b_of_type_Int = 2000;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public static List<TPraiseInfo> a(List<TPraiseInfo> paramList)
+  public static Animation a(Animation.AnimationListener paramAnimationListener, float paramFloat1, float paramFloat2)
   {
-    Object localObject = paramList;
-    if (c == 0)
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat1, paramFloat2);
+    localScaleAnimation.setRepeatMode(2);
+    localScaleAnimation.setRepeatCount(-1);
+    localScaleAnimation.setDuration(750L);
+    localAlphaAnimation.setRepeatMode(2);
+    localAlphaAnimation.setRepeatCount(-1);
+    localAlphaAnimation.setDuration(750L);
+    localAlphaAnimation.setAnimationListener(paramAnimationListener);
+    localAnimationSet.addAnimation(localScaleAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new auwt());
+    return localAnimationSet;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, HeartLayout paramHeartLayout, Bitmap paramBitmap, auwx paramauwx, int paramInt1, boolean paramBoolean, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    if (axmv.b())
     {
-      localObject = paramList;
-      if (paramList != null)
-      {
-        localObject = paramList;
-        if (!paramList.isEmpty())
-        {
-          localObject = new ArrayList();
-          ArrayList localArrayList = new ArrayList();
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            TPraiseInfo localTPraiseInfo = (TPraiseInfo)paramList.next();
-            if (localTPraiseInfo.uCustomId > 0L) {
-              ((List)localObject).add(localTPraiseInfo);
-            } else {
-              localArrayList.add(localTPraiseInfo);
-            }
-          }
-          ((List)localObject).addAll(localArrayList);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("PraiseManager", 2, "doZanAnim, SimpleUIMode is open now");
       }
+      paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
     }
-    return localObject;
-  }
-  
-  public static void a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {}
-    JSONObject localJSONObject;
-    Object localObject2;
-    label86:
-    int i;
-    Object localObject1;
-    for (;;)
+    do
     {
-      try
+      return;
+      PraiseManager localPraiseManager = (PraiseManager)paramQQAppInterface.getManager(209);
+      if ((paramBoolean) && (localPraiseManager.a.get(Integer.valueOf(paramInt1)) == null))
       {
-        QLog.e("PraiseConfigHelper", 1, "parseJson, app null");
+        localPraiseManager.a(paramauwx);
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
+      }
+      paramauwx = localPraiseManager.a(paramInt1, paramBoolean, "from_nearby_people");
+      if (paramauwx != null)
+      {
+        if ((paramInt2 == 2) && (paramauwx.c != null))
+        {
+          if (this.jdField_a_of_type_Aqyr != null)
+          {
+            paramHeartLayout.a(paramauwx, paramauwx.c, paramQQAppInterface, this.jdField_a_of_type_Aqyr.a(paramInt2, paramHeartLayout.a), paramFloat1 - baxn.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - baxn.a(paramHeartLayout.getContext(), 120.0F), baxn.a(paramHeartLayout.getContext(), 75.0F), baxn.a(paramHeartLayout.getContext(), 65.0F));
+            return;
+          }
+          paramHeartLayout.a(paramauwx, paramauwx.c, paramFloat1, paramFloat2);
+          return;
+        }
+        paramHeartLayout.a(paramauwx, paramauwx.b, paramFloat1, paramFloat2);
         return;
       }
-      finally {}
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "praise.config.json", true, null);
-        if (localJSONObject == null) {
-          break label415;
-        }
-        localObject2 = localJSONObject.optJSONArray("colorEntries");
-        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
-          if (jdField_a_of_type_JavaUtilVector == null)
-          {
-            jdField_a_of_type_JavaUtilVector = new Vector();
-            break label425;
-            if (i < ((JSONArray)localObject2).length())
-            {
-              localObject1 = ((JSONArray)localObject2).optString(i);
-              if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                break label430;
-              }
-              paramAppRuntime = (AppRuntime)localObject1;
-              if (!((String)localObject1).startsWith("http:")) {
-                paramAppRuntime = "http:" + (String)localObject1;
-              }
-              jdField_a_of_type_JavaUtilVector.add(paramAppRuntime);
-              break label430;
-            }
-          }
-          else
-          {
-            jdField_a_of_type_JavaUtilVector.clear();
-            break label425;
-          }
-        }
+    } while (paramBoolean);
+    paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable, Resources paramResources)
+  {
+    Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable1;
+    if (paramBoolean2) {
+      localDrawable1 = nam.a(localDrawable2, paramResources.getColor(2131165636));
+    }
+    while (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable == null)
+    {
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[] { paramDrawable, localDrawable1 };
+      return;
+      localDrawable1 = localDrawable2;
+      if (paramBoolean1) {
+        localDrawable1 = nam.a(localDrawable2, paramResources.getColor(2131165639));
       }
     }
-    paramAppRuntime = localJSONObject.optJSONArray("newEntries");
-    if ((paramAppRuntime != null) && (paramAppRuntime.length() > 0)) {
-      if (jdField_b_of_type_JavaUtilVector == null)
-      {
-        jdField_b_of_type_JavaUtilVector = new Vector();
-        break label437;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = paramDrawable;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = localDrawable1;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_Int % 2 == 0)
+    {
+      this.b = ((this.b + 1) % this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length);
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
+        break label89;
       }
+      ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
     }
     for (;;)
     {
-      label204:
-      int j;
-      if (i < paramAppRuntime.length())
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int / 2 >= auwu.jdField_a_of_type_Int)
       {
-        localObject2 = paramAppRuntime.optJSONObject(i);
-        if (localObject2 == null) {
-          break label449;
-        }
-        localObject1 = new auwt();
-        ((auwt)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("title");
-        ((auwt)localObject1).b = ((JSONObject)localObject2).optString("subtitle");
-        ((auwt)localObject1).c = ((JSONObject)localObject2).optString("bannerLink");
-        ((auwt)localObject1).d = ((JSONObject)localObject2).optString("reportName");
-        ((auwt)localObject1).jdField_a_of_type_JavaUtilVector = new Vector();
-        localObject2 = ((JSONObject)localObject2).optJSONArray("entrys");
-        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
-          j = 0;
-        }
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+        this.jdField_a_of_type_Boolean = false;
       }
-      for (;;)
-      {
-        if (j < ((JSONArray)localObject2).length())
-        {
-          String str = ((JSONArray)localObject2).optJSONObject(j).optString("icon");
-          if (TextUtils.isEmpty(str)) {
-            break label442;
-          }
-          ((auwt)localObject1).jdField_a_of_type_JavaUtilVector.add(str);
-          break label442;
-          jdField_b_of_type_JavaUtilVector.clear();
-        }
-        else
-        {
-          jdField_b_of_type_JavaUtilVector.add(localObject1);
-          break label449;
-          jdField_a_of_type_Int = localJSONObject.optInt("playNum", 10);
-          jdField_b_of_type_Int = (int)(localJSONObject.optDouble("downloadTimeLimit", 2.0D) * 1000.0D);
-          c = localJSONObject.optInt("praiseFlyOrder", 0);
-          label415:
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          break;
-          label425:
-          i = 0;
-          break label86;
-          label430:
-          i += 1;
-          break label86;
-        }
-        label437:
-        i = 0;
-        break label204;
-        label442:
-        j += 1;
-      }
-      label449:
-      i += 1;
+      return;
+      label89:
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
     }
   }
 }

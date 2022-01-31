@@ -1,82 +1,74 @@
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 class ajlb
-  implements ajlg
+  implements AVRoomMulti.EventListener
 {
-  ajlb(ajku paramajku) {}
+  ajlb(ajla paramajla) {}
   
-  public void a()
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_Bega != null) {
-      this.a.jdField_a_of_type_Bega.a();
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Ajle != null) {
+      this.a.jdField_a_of_type_Ajle.a(paramInt, paramArrayOfString);
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void onEnterRoomComplete(int paramInt, String paramString)
   {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
-    if (this.a.jdField_a_of_type_Bega != null) {
-      this.a.jdField_a_of_type_Bega.c(paramInt, paramString);
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    }
+    if (this.a.jdField_a_of_type_Ajld != null) {
+      this.a.jdField_a_of_type_Ajld.a(paramInt, paramString);
     }
   }
   
-  public void a(int paramInt, String[] paramArrayOfString)
+  public void onExitRoomComplete()
   {
-    int k = paramArrayOfString.length;
-    int j = 0;
-    String str;
-    if (j < k)
-    {
-      str = paramArrayOfString[j];
-      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
-      }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
-      {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-        }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
-        }
-      }
-      if (this.a.jdField_a_of_type_Bega != null) {
-        this.a.jdField_a_of_type_Bega.a(paramInt, paramArrayOfString);
-      }
-      return;
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Ajle != null) {
+      this.a.jdField_a_of_type_Ajle.a();
     }
   }
   
-  public void a(String[] paramArrayOfString)
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
   {
-    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_Bega != null) {
-      this.a.jdField_a_of_type_Bega.a(paramArrayOfString);
+    if (this.a.jdField_a_of_type_Ajle != null) {
+      this.a.jdField_a_of_type_Ajle.a(paramInt, paramString);
     }
   }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Ajle != null) {
+      this.a.jdField_a_of_type_Ajle.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

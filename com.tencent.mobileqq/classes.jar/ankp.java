@@ -1,16 +1,18 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import android.content.Intent;
 
 class ankp
   implements DialogInterface.OnClickListener
 {
-  ankp(anki paramanki) {}
+  ankp(ankn paramankn) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.cancel();
-    anki.a(this.a).c();
+    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

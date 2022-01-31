@@ -1,63 +1,22 @@
-public class qij
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract class qij
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  Context jdField_a_of_type_AndroidContentContext;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  qik jdField_a_of_type_Qik;
   
-  private qij(qil paramqil)
+  public qij(Context paramContext, QQAppInterface paramQQAppInterface, qik paramqik)
   {
-    this.jdField_a_of_type_JavaLangString = qil.a(paramqil);
-    this.jdField_b_of_type_JavaLangString = qil.b(paramqil);
-    this.c = qil.c(paramqil);
-    this.d = qil.d(paramqil);
-    this.jdField_a_of_type_Long = qil.a(paramqil);
-    this.e = qil.e(paramqil);
-    this.jdField_b_of_type_Long = qil.b(paramqil);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Qik = paramqik;
   }
   
-  public static qil a()
-  {
-    return new qil(null);
-  }
+  public abstract void a();
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return this.e;
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

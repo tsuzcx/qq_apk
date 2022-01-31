@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public final class annx
-  implements Parcelable.Creator<DoutuData>
+class annx
 {
-  public DoutuData a(Parcel paramParcel)
+  annx(annw paramannw) {}
+  
+  @QQPermissionDenied(1819)
+  public void denied()
   {
-    return new DoutuData(paramParcel);
+    QLog.e("CameraHelper", 1, "checkPermission user denied");
+    annw.a(this.a);
+    annw.a(this.a, false, 1830003);
   }
   
-  public DoutuData[] a(int paramInt)
+  @QQPermissionGrant(1819)
+  public void grant()
   {
-    return new DoutuData[paramInt];
+    QLog.d("CameraHelper", 1, "checkPermission user grant");
+    annw.a(this.a);
+    annw.a(this.a, true, 0);
   }
 }
 

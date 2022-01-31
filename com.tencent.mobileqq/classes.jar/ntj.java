@@ -1,95 +1,26 @@
-import android.content.res.Configuration;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewPagerController.10.1.1;
+import com.tencent.biz.widgets.TabLayout;
 
-class ntj
-  extends osp
+public class ntj
+  implements Animator.AnimatorListener
 {
-  ntj(nth paramnth) {}
+  public ntj(ReadInJoyChannelViewPagerController.10 param10) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramInt);
-    }
+    nth.b(this.a.this$0, false);
+    nth.a(this.a.this$0, nth.a, 0.0F, 0);
+    nth.a(this.a.this$0).postDelayed(new ReadInJoyChannelViewPagerController.10.1.1(this), 0L);
   }
   
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    if ((nth.a(this.a) == 56) && (nth.a(this.a) != null))
-    {
-      nth.a(this.a).d();
-      nth.a(this.a).e();
-    }
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramConfiguration);
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void ap_()
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).q();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((nth.a(this.a) != null) && ((nth.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)nth.a(this.a)).b(paramInt, paramList);
-    }
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

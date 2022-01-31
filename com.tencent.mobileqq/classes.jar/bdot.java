@@ -1,44 +1,45 @@
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdot
-  extends bdof
 {
-  private List<String> a;
-  
-  public bdot()
+  private static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    super.a(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONArray(this.jdField_a_of_type_JavaLangString);
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
-        {
-          this.jdField_a_of_type_JavaUtilList.add(paramString.getString(i));
-          i += 1;
-        }
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
+      str = paramString;
+      if (!paramString.startsWith("##@")) {
+        str = "##@" + paramString;
       }
     }
+    return str;
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    paramString2 = "step" + paramInt + "-->" + paramString2;
+    QLog.d("WadlStep." + paramString1, 2, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, a(paramString2));
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, a(paramString2), paramThrowable);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, a(paramString2));
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, 1, a(paramString2), paramThrowable);
   }
 }
 

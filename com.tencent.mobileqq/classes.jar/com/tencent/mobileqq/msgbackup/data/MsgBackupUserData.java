@@ -3,13 +3,13 @@ package com.tencent.mobileqq.msgbackup.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import asmc;
+import asme;
 import java.util.List;
 
 public class MsgBackupUserData
   implements Parcelable
 {
-  public static final Parcelable.Creator<MsgBackupUserData> CREATOR = new asmc();
+  public static final Parcelable.Creator<MsgBackupUserData> CREATOR = new asme();
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private List<Integer> jdField_a_of_type_JavaUtilList;

@@ -1,15 +1,23 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import mqq.app.MobileQQ;
 
 class anks
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  anks(ankr paramankr) {}
+  anks(ankn paramankn) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    paramDialogInterface.cancel();
+    ankn.a(this.a).b();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().remove(this.a.jdField_a_of_type_JavaLangString + DBFixManager.g).commit();
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, ankn.f, ankn.f, 0, 0, "", "", "", "");
+    ankn.a(this.a).c();
   }
 }
 

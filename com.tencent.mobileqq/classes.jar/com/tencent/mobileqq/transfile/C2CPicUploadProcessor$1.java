@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import aypj;
-import bcpw;
+import aypl;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class C2CPicUploadProcessor$1
   implements Runnable
 {
-  public C2CPicUploadProcessor$1(aypj paramaypj) {}
+  public C2CPicUploadProcessor$1(aypl paramaypl) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
+    bcql.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
   }
 }
 

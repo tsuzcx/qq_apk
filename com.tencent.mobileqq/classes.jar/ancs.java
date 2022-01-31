@@ -1,56 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ancs
-  extends ampb<ancr>
 {
-  public static ancr a()
-  {
-    return (ancr)ampm.a().a(348);
-  }
+  private Map<String, Long> a = new HashMap();
   
-  public int a()
+  public static ancs a(amph[] paramArrayOfamph)
   {
-    return 348;
-  }
-  
-  @NonNull
-  public ancr a(int paramInt)
-  {
-    return new ancr();
-  }
-  
-  @Nullable
-  public ancr a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return ancr.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
+    localancs = new ancs();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
+      Iterator localIterator = paramArrayOfamph.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localancs.a.put(str, Long.valueOf(paramArrayOfamph.getLong(str)));
+      }
+      return localancs;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
+    }
   }
   
-  public Class<ancr> a()
+  public Map<String, Long> a()
   {
-    return ancr.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancr paramancr) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    return this.a;
   }
 }
 

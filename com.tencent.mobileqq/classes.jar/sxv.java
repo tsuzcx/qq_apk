@@ -1,21 +1,11 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.app.Activity;
+import android.os.Bundle;
 
-public class sxv
+public abstract interface sxv<T extends Activity>
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
-  {
-    return syo.a(paramStoryVideoItem);
-  }
+  public abstract void a(T paramT);
   
-  public static boolean a(String paramString)
-  {
-    return syo.a(paramString);
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    return syo.a(paramString, paramBoolean);
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.managers;
 
-import aseo;
-import avdf;
+import aseq;
+import avdh;
 
 public class PushNoticeManager$1
   implements Runnable
 {
-  public PushNoticeManager$1(aseo paramaseo, int paramInt) {}
+  public PushNoticeManager$1(aseq paramaseq, int paramInt) {}
   
   public void run()
   {
-    avdf.a(this.a, 2);
+    avdh.a(this.a, 2);
   }
 }
 

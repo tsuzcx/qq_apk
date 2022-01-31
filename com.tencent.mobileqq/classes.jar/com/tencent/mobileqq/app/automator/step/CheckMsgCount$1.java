@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import akqb;
+import akqa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 

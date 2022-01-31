@@ -1,12 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class arzp
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  arzp(arzl paramarzl) {}
+  arzp(arzo paramarzo) {}
   
-  public void onClick(View paramView) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = false;
+  }
 }
 
 

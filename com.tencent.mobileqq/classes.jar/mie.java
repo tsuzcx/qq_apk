@@ -1,30 +1,54 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.widget.RelativeLayout;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public class mie
-  implements mii
+class mie
+  implements Animator.AnimatorListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  mie(mic parammic, int paramInt, long paramLong) {}
   
-  public mie(QavPanel paramQavPanel) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      mqr.a("0X800A567", 0);
+    int i = 4;
+    if (this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      i = this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+      if (this.jdField_a_of_type_Mic.jdField_a_of_type_Boolean) {
+        break label173;
+      }
+      this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
-    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramRelativeLayout).a(paramLong, paramBoolean);
+    for (;;)
+    {
+      this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
+      QLog.w(this.jdField_a_of_type_Mic.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationEnd, isShow[" + this.jdField_a_of_type_Mic.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "], \nlastObjectAnimator[" + this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidAnimationObjectAnimator + "], \nanimation[" + paramAnimator + "]");
+      if (this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
+        this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      }
+      return;
+      label173:
+      this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (this.jdField_a_of_type_Mic.jdField_a_of_type_Mif != null) {
+        this.jdField_a_of_type_Mic.jdField_a_of_type_Mif.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      }
     }
   }
   
-  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramRelativeLayout).b(paramLong, paramBoolean);
+    int i = 4;
+    if (this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      i = this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+      this.jdField_a_of_type_Mic.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     }
+    QLog.w(this.jdField_a_of_type_Mic.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationStart, height[" + this.jdField_a_of_type_Int + "], isShow[" + this.jdField_a_of_type_Mic.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

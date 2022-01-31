@@ -1,25 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.widget.AdapterView;
 
-class aqop
-  implements Animation.AnimationListener
+public abstract class aqop
 {
-  aqop(aqoo paramaqoo) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
+  public abstract void a(Context paramContext, aqok paramaqok, int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.a.jdField_a_of_type_Aqoi.g()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-  }
+  public abstract void a(AdapterView paramAdapterView, int paramInt);
 }
 
 

@@ -1,17 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
 
 class bfyq
-  implements View.OnClickListener
+  implements RecyclerView.ChildDrawingOrderCallback
 {
-  bfyq(bfyp parambfyp, bfyo parambfyo) {}
+  bfyq(bfyn parambfyn) {}
   
-  public void onClick(View paramView)
+  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_Bfyo.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Bfyp.a.a(this.jdField_a_of_type_Bfyo.itemView, i);
-    }
+    if (this.a.mOverdrawChild == null) {}
+    int i;
+    do
+    {
+      return paramInt2;
+      int j = this.a.mOverdrawChildPosition;
+      i = j;
+      if (j == -1)
+      {
+        i = this.a.mRecyclerView.indexOfChild(this.a.mOverdrawChild);
+        this.a.mOverdrawChildPosition = i;
+      }
+      if (paramInt2 == paramInt1 - 1) {
+        return i;
+      }
+    } while (paramInt2 < i);
+    return paramInt2 + 1;
   }
 }
 

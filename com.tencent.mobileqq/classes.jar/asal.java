@@ -1,23 +1,28 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
+
 public class asal
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public asal(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public asal()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public String toString()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "tryToShowCGLayer drawable onLoadSuccessed");
+    }
+    if (this.a.a != null) {
+      this.a.a.a(paramURLDrawable);
+    }
+    this.a.g();
   }
 }
 

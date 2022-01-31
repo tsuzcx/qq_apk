@@ -1,346 +1,106 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl.2.1;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl.2.2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr.ICallBackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
+import java.util.LinkedHashMap;
+import mqq.os.MqqHandler;
 
 public class apaj
-  implements apap, bbmi
+  implements TVK_IDownloadMgr.ICallBackListener
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private apao jdField_a_of_type_Apao;
-  private bbmg jdField_a_of_type_Bbmg;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
-  private final int jdField_b_of_type_Int;
-  private final long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private final byte[] jdField_b_of_type_ArrayOfByte;
+  apaj(apah paramapah) {}
   
-  private apaj(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, String paramString3)
+  public void downloadCallBack(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramString1);
-    this.jdField_b_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(paramString2);
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString3;
-  }
-  
-  public static apaj a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, String paramString3)
-  {
-    if (paramString1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strCheckSum is null");
-      }
-      return null;
-    }
-    if (paramString1.length() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strCheckSum is empty");
-      }
-      return null;
-    }
-    if (paramString2 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strSHA is null");
-      }
-      return null;
-    }
-    if (paramString2.length() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FtnHttpUploader<FileAssistant>", 2, "getFtnHttpUploader strSHA is empty");
-      }
-      return null;
-    }
-    return new apaj(paramQQAppInterface, paramLong1, paramInt1, paramInt2, paramString1, paramString2, paramLong2, paramBoolean, paramString3);
-  }
-  
-  private void a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
+    int i;
+    int j;
+    long l2;
+    long l1;
     try
     {
-      localDataInputStream.skip(4L);
-      if (localDataInputStream.readInt() != 0) {
-        this.jdField_a_of_type_Apao.a(9001, "httpServer retCode!=0");
+      paramString = apug.a(paramString);
+      i = Integer.parseInt((String)paramString.get("callbacktype"));
+      j = Integer.parseInt((String)paramString.get("playid"));
+      l2 = Long.parseLong((String)paramString.get("offset"));
+      if (this.a.jdField_b_of_type_Int == 0) {
+        this.a.jdField_b_of_type_Int = apah.a(this.a, this.a.jdField_a_of_type_Apll.a());
       }
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        int i;
-        long l1;
-        long l2;
-        localIOException.printStackTrace();
-        QLog.e("FtnHttpUploader<FileAssistant>", 1, "unPackageData exception:" + localIOException.toString());
-        this.jdField_a_of_type_Apao.a(9001, "httpServer flag!=0 flag!=1");
-        try
-        {
-          paramArrayOfByte.close();
-          localDataInputStream.close();
-          return;
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          return;
-        }
-        this.jdField_a_of_type_Apao.a(9001, "httpServer flag!=0 flag!=1");
+      if ((j != this.a.jdField_c_of_type_Int) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration() > 1L) && (l2 > this.a.jdField_a_of_type_Long)) {
+        this.a.jdField_a_of_type_Long = l2;
       }
-    }
-    finally
-    {
-      try
-      {
-        paramArrayOfByte.close();
-        localDataInputStream.close();
-        throw localObject;
+      l1 = l2;
+      if (l2 < this.a.jdField_a_of_type_Long) {
+        l1 = this.a.jdField_a_of_type_Long;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        break label232;
+      if (!this.a.jdField_c_of_type_Boolean) {
+        break label956;
       }
-    }
-    try
-    {
-      paramArrayOfByte.close();
-      localDataInputStream.close();
+      QLog.i("FileVideoManager<FileAssistant>", 4, "[" + this.a.hashCode() + "].[" + this.a.jdField_a_of_type_Apll.a() + "],playid +[" + j + "] download success! igon");
       return;
     }
-    catch (Exception paramArrayOfByte) {}
-    localDataInputStream.skip(8L);
-    i = localDataInputStream.readByte();
-    if (i == 0)
+    catch (Exception paramString)
     {
-      i = localDataInputStream.readInt();
-      l1 = localDataInputStream.readInt();
-      l2 = i;
-      this.jdField_a_of_type_Apao.a(l1 << 32 | l2, null);
-    }
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte.close();
-        localDataInputStream.close();
-        return;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return;
-      }
-      if (i != 1) {
-        break;
-      }
-      this.jdField_a_of_type_Apao.b();
-    }
-    label232:
-  }
-  
-  private byte[] a(long paramLong, byte[] paramArrayOfByte)
-  {
-    int i = this.jdField_a_of_type_ArrayOfByte.length + 2 + 2 + this.jdField_b_of_type_ArrayOfByte.length + 20 + paramArrayOfByte.length;
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(i + 16);
-    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
-    {
-      localDataOutputStream.writeInt(-1412589450);
-      localDataOutputStream.writeInt(1007);
-      localDataOutputStream.writeInt(0);
-      localDataOutputStream.writeInt(i);
-      localDataOutputStream.writeShort(this.jdField_a_of_type_ArrayOfByte.length);
-      localDataOutputStream.write(this.jdField_a_of_type_ArrayOfByte);
-      localDataOutputStream.writeShort(this.jdField_b_of_type_ArrayOfByte.length);
-      localDataOutputStream.write(this.jdField_b_of_type_ArrayOfByte);
-      localDataOutputStream.writeInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
-      localDataOutputStream.writeInt((int)(paramLong & 0xFFFFFFFF));
-      localDataOutputStream.writeInt(paramArrayOfByte.length);
-      localDataOutputStream.writeInt((int)(this.jdField_b_of_type_Long >> 32));
-      localDataOutputStream.writeInt((int)(paramLong >> 32));
-      localDataOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      label255:
-      return paramArrayOfByte;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte = paramArrayOfByte;
-      paramArrayOfByte.printStackTrace();
-      QLog.e("FtnHttpUploader<FileAssistant>", 1, "packageData exception:" + paramArrayOfByte.toString());
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException1)
-      {
-        break label255;
-      }
-    }
-  }
-  
-  protected HttpCommunicator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bbmg != null)
-    {
-      a().a(this.jdField_a_of_type_Bbmg);
-      this.jdField_a_of_type_Bbmg = null;
-    }
-  }
-  
-  public void a(apao paramapao)
-  {
-    this.jdField_a_of_type_Apao = paramapao;
-  }
-  
-  public void a(bbmg parambbmg1, bbmg parambbmg2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (QLog.isColorLevel()) {
-        QLog.e("##########", 2, "nSessionID[" + String.valueOf(this.jdField_a_of_type_Long) + "]已经结束,返回");
-      }
-    }
-    do
-    {
+      paramString.printStackTrace();
       return;
-      if (parambbmg1 == this.jdField_a_of_type_Bbmg) {
-        break;
+    }
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileVideoManager<FileAssistant>", 4, "[" + this.a.hashCode() + "]mDownloadMgr[" + this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "]" + this.a.jdField_a_of_type_Apll.a() + "],playid +[" + j + "] File download over igon");
       }
-      if ((parambbmg1 != null) && (this.jdField_a_of_type_Bbmg != null))
+    }
+    else
+    {
+      l2 = apug.a(this.a.jdField_c_of_type_JavaLangString);
+      if (QLog.isDebugVersion()) {
+        QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a.jdField_a_of_type_Apll.a() + "],playid +[" + j + "],downloadId[" + this.a.jdField_c_of_type_Int + "],pos[" + l1 + "], tmpLen[" + l2 + "],block[" + this.a.jdField_b_of_type_Int + "],bDownloadBlock[" + this.a.jdField_a_of_type_Boolean + "],progress[" + (float)l2 / (float)this.a.jdField_a_of_type_Apll.a() + "]");
+      }
+      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (l1 - l2 > this.a.jdField_b_of_type_Int) && (!this.a.jdField_a_of_type_Boolean))
       {
-        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(parambbmg1.a()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bbmg.a()) + "]");
+        ThreadManager.getUIHandler().post(new FileVideoManager.VideoControl.2.1(this));
+        if (QLog.isColorLevel())
+        {
+          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 4, "[" + this.a.jdField_a_of_type_Apll.a() + "],setRemainTime for playID[" + this.a.jdField_a_of_type_Int + "]");
+          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 4, "[" + this.a.jdField_a_of_type_Apll.a() + "],startDownload for recv block [" + this.a.d + "]");
+        }
+        this.a.jdField_a_of_type_Boolean = true;
         return;
       }
-      if (parambbmg1 != null)
+      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.d > 0) && (l1 - l2 < this.a.jdField_b_of_type_Int))
       {
-        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(parambbmg1.a()) + "]");
-        return;
+        ThreadManager.getUIHandler().post(new FileVideoManager.VideoControl.2.2(this));
+        if (QLog.isColorLevel()) {
+          QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.jdField_a_of_type_Apll.a() + "] block is full will be stop [" + this.a.d + "]");
+        }
+        this.a.jdField_a_of_type_Boolean = false;
       }
-    } while (this.jdField_a_of_type_Bbmg == null);
-    QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bbmg.a()) + "]");
+      float f = (float)l2 / (float)this.a.jdField_a_of_type_Apll.a();
+      this.a.jdField_a_of_type_Apll.a(l2);
+      return;
+      if (apug.a(this.a.jdField_c_of_type_JavaLangString) == this.a.jdField_a_of_type_Apll.a())
+      {
+        apah.a(this.a);
+        return;
+        this.a.jdField_b_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Apll.a(false);
+        if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+        {
+          paramString = (apaf)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramString != null) {
+            paramString.a(201, "");
+          }
+        }
+        apab.a(this.a.jdField_a_of_type_Apll.a());
+      }
+    }
     return;
-    if (parambbmg2.c() == 200) {
-      if (parambbmg2.a("User-ReturnCode") == null) {
-        break label373;
-      }
-    }
-    label373:
-    for (long l = Long.parseLong(parambbmg2.a("User-ReturnCode"));; l = 0L)
+    label956:
+    switch (i)
     {
-      if (0L != l)
-      {
-        this.jdField_a_of_type_Apao.a(parambbmg2.f, parambbmg2.d(), parambbmg2.d);
-        return;
-      }
-      a(parambbmg2.a());
-      return;
-      QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],decode but response Code [" + parambbmg2.c() + "] is not 200");
-      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Apao.a(paramString);
-  }
-  
-  public boolean a(bbmg parambbmg1, bbmg parambbmg2, int paramInt)
-  {
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = a(paramLong, paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FtnHttpUploader<FileAssistant>", 2, "sendData packageData return null");
-      }
-      return false;
-    }
-    this.jdField_a_of_type_Bbmg = new bbmg(paramString, paramArrayOfByte, this);
-    this.jdField_a_of_type_Bbmg.b(false);
-    this.jdField_a_of_type_Bbmg.a("cache-control", "no-cache");
-    paramArrayOfByte = "gprs";
-    if (bbev.b(BaseApplication.getContext()) == 1) {
-      paramArrayOfByte = "wifi";
-    }
-    this.jdField_a_of_type_Bbmg.a("Net-type", paramArrayOfByte);
-    this.jdField_a_of_type_Bbmg.b("POST");
-    this.jdField_a_of_type_Bbmg.b(1);
-    if (this.jdField_a_of_type_Apao != null) {
-      this.jdField_a_of_type_Apao.a(this.jdField_a_of_type_Bbmg);
-    }
-    this.jdField_a_of_type_Bbmg.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Bbmg.c = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bbmg.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Long);
-    paramArrayOfByte = "";
-    if (paramString != null) {
-      paramArrayOfByte = paramString.toLowerCase();
-    }
-    if ((this.jdField_b_of_type_Boolean) && (paramArrayOfByte.startsWith("https")))
-    {
-      this.jdField_a_of_type_Bbmg.j = true;
-      this.jdField_a_of_type_Bbmg.k = apam.a(paramString);
-      this.jdField_a_of_type_Bbmg.e = this.jdField_a_of_type_JavaLangString;
-    }
-    this.jdField_a_of_type_Bbmg.jdField_a_of_type_Ayug = apue.a();
-    a().a(this.jdField_a_of_type_Bbmg);
-    return true;
-  }
-  
-  public void b(bbmg parambbmg1, bbmg parambbmg2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (parambbmg2 != null)
-    {
-      this.jdField_a_of_type_Apao.a(parambbmg2.f, parambbmg2.d(), parambbmg2.d);
-      return;
-    }
-    this.jdField_a_of_type_Apao.a(0, "null", "null");
   }
 }
 

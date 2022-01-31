@@ -1,35 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class adcd
-  implements TextWatcher
+  implements INetInfoHandler
 {
   public adcd(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onNetMobile2None()
   {
-    if (VoiceTextEditPanel.a(this.a).get() == 5)
-    {
-      VoiceTextEditPanel.a(this.a, paramEditable.toString());
-      if (!bbjw.a(VoiceTextEditPanel.a(this.a))) {
-        break label55;
-      }
-      this.a.setSendEnable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
     }
-    for (;;)
-    {
-      this.a.c();
-      return;
-      label55:
-      this.a.setSendEnable(true);
-    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onNetMobile2Wifi(String paramString) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
+  }
 }
 
 

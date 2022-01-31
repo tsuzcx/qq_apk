@@ -1,21 +1,18 @@
-import android.view.MotionEvent;
-import com.tencent.widget.ARMapHongBaoListView;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-public abstract interface bfnu
+public class bfnu
 {
-  public abstract int getMode();
-  
-  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
-  
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
-  
-  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
-  
-  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
+  public static String a(Throwable paramThrowable)
+  {
+    StringWriter localStringWriter = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfnu
  * JD-Core Version:    0.7.0.1
  */

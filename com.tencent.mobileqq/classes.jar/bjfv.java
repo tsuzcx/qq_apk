@@ -1,103 +1,78 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class bjfv
-  implements bjbg
 {
-  public static final String[] a;
-  public int a;
-  public bjbf a;
-  bjfw a;
-  public String a;
-  public int b;
+  private bjfr jdField_a_of_type_Bjfr;
+  private ConcurrentHashMap<String, ArrayList<WeakReference<bjfu>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  static
+  public bjfv(bjfr parambjfr)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "NoNeedDown", "NoFound", "NeedDown" };
+    this.jdField_a_of_type_Bjfr = parambjfr;
   }
   
-  public int a()
+  public void a(@NonNull bkgd parambkgd, bjfu parambjfu)
   {
-    bjbf localbjbf = a();
-    int i;
-    if (localbjbf != null) {
-      if (localbjbf.a() == 2) {
-        i = 2;
-      }
-    }
-    for (;;)
+    String str = parambkgd.e;
+    if ((str == null) || (TextUtils.isEmpty(str)))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QIMPredownManager", 2, String.format("getState %s %s %s %s ", new Object[] { toString(), "" + localbjbf, jdField_a_of_type_ArrayOfJavaLangString[i], bjfx.jdField_a_of_type_ArrayOfJavaLangString[this.b] }));
+        QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicTextRes fontInfo is null or resUrl is empty.");
       }
-      return i;
-      i = 0;
-      continue;
-      i = 1;
+      return;
     }
-  }
-  
-  public bjbf a()
-  {
-    Object localObject1 = this.jdField_a_of_type_Bjbf;
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      switch (this.b)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMInformationPasterManager", 2, "startDownloadDynamicText res url: " + str);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjbf = ((bjbf)localObject1);
-      localObject2 = localObject1;
-      return localObject2;
-      localObject1 = ((bjbk)bjae.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = ((bjbk)bjae.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = bjeq.a(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = bjeq.a("", this.jdField_a_of_type_JavaLangString, "forPredownlaod", 0.0F, 0.0F, 0.0F);
-      continue;
-      localObject1 = bjeq.b(this.jdField_a_of_type_JavaLangString);
-      continue;
-      localObject1 = bjeq.a(this.jdField_a_of_type_JavaLangString, new ArrayList(), 0.0F, 0.0F, 0.0F);
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if (localArrayList != null)
+        {
+          parambkgd = localArrayList.iterator();
+          if (!parambkgd.hasNext()) {
+            break label292;
+          }
+          if (((WeakReference)parambkgd.next()).get() != parambjfu) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            localArrayList.add(new WeakReference(parambjfu));
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("QIMInformationPasterManager", 2, "already put url " + str);
+          }
+          return;
+        }
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new WeakReference(parambjfu));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localArrayList);
+      parambjfu = new ayrx();
+      parambjfu.jdField_a_of_type_Aysc = new bjfw(this);
+      parambjfu.jdField_a_of_type_JavaLangString = str;
+      parambjfu.jdField_a_of_type_Int = 0;
+      parambjfu.jdField_c_of_type_JavaLangString = bjfr.a(parambkgd);
+      parambjfu.jdField_c_of_type_Int = bbfj.a(ayta.a().a());
+      parambjfu.a(parambkgd);
+      lch.a().a(parambjfu);
+      return;
+      label292:
+      int i = 0;
     }
   }
   
-  public void a()
+  public boolean a(String paramString)
   {
-    bjbf localbjbf = a();
-    if (localbjbf != null)
-    {
-      localbjbf.a(this);
-      localbjbf.b();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPredownManager", 2, "starDownload: " + this + localbjbf);
-    }
-  }
-  
-  public void a(bjbf parambjbf) {}
-  
-  public void a(bjbf parambjbf, int paramInt)
-  {
-    this.jdField_a_of_type_Bjfw.a(false, this);
-  }
-  
-  public void a(bjfw parambjfw)
-  {
-    this.jdField_a_of_type_Bjfw = parambjfw;
-  }
-  
-  public void b(bjbf parambjbf)
-  {
-    this.jdField_a_of_type_Bjfw.a(true, this);
-  }
-  
-  public String toString()
-  {
-    return "QIMPredownJob{" + this.jdField_a_of_type_Int + "," + bjfx.jdField_a_of_type_ArrayOfJavaLangString[this.b] + "," + this.jdField_a_of_type_JavaLangString + '}';
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null;
   }
 }
 

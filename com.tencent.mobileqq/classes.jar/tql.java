@@ -1,16 +1,11 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
 class tql
-  extends tpo
+  extends tpv
 {
-  tql(tqk paramtqk, StoryVideoItem paramStoryVideoItem, trq paramtrq)
-  {
-    super(paramStoryVideoItem);
-  }
+  tql(tqh paramtqh, tro paramtro) {}
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trq.a = ((String)a("result"));
+    this.jdField_a_of_type_Tro.a = ((String)a("UploadImageJob_out_image_url"));
     return true;
   }
 }

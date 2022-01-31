@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import abtu;
+import abtq;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bcpw;
+import bcql;
 import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
@@ -19,34 +19,34 @@ import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import noo;
-import onk;
+import nol;
+import onh;
+import osg;
 import osj;
 import osm;
-import osp;
+import qgh;
+import qgi;
+import qgj;
 import qgk;
 import qgl;
 import qgm;
 import qgn;
 import qgo;
-import qgp;
-import qgq;
-import qgr;
 
 public class ReadInJoyVideoTagSelectionFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new qgk(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new qgh(this);
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcpw jdField_a_of_type_Bcpw;
-  private osp jdField_a_of_type_Osp = new qgm(this);
-  private qgp jdField_a_of_type_Qgp;
-  private qgq jdField_a_of_type_Qgq;
-  private DataSetObserver jdField_b_of_type_AndroidDatabaseDataSetObserver = new qgl(this);
+  private bcql jdField_a_of_type_Bcql;
+  private osm jdField_a_of_type_Osm = new qgj(this);
+  private qgm jdField_a_of_type_Qgm;
+  private qgn jdField_a_of_type_Qgn;
+  private DataSetObserver jdField_b_of_type_AndroidDatabaseDataSetObserver = new qgi(this);
   private View jdField_b_of_type_AndroidViewView;
-  private bcpw jdField_b_of_type_Bcpw;
+  private bcql jdField_b_of_type_Bcql;
   private View c;
   
   private void a()
@@ -56,24 +56,24 @@ public class ReadInJoyVideoTagSelectionFragment
   
   private void b()
   {
-    this.c = this.mContentView.findViewById(2131376873);
+    this.c = this.mContentView.findViewById(2131376875);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377218));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131364717);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131364714);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377220));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131364716);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131364713);
     ReadInJoyFlowLayout localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366479);
-    this.jdField_a_of_type_Qgp = new qgp(getActivity(), 2131560042);
-    this.jdField_a_of_type_Qgp.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qgp);
-    localReadInJoyFlowLayout.setOnItemClickListener(new qgn(this));
+    this.jdField_a_of_type_Qgm = new qgm(getActivity(), 2131560042);
+    this.jdField_a_of_type_Qgm.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qgm);
+    localReadInJoyFlowLayout.setOnItemClickListener(new qgk(this));
     localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366480);
-    this.jdField_a_of_type_Qgq = new qgq(getActivity(), 2131560042);
-    this.jdField_a_of_type_Qgq.registerDataSetObserver(this.jdField_b_of_type_AndroidDatabaseDataSetObserver);
-    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qgq);
-    this.jdField_a_of_type_Qgq.notifyDataSetChanged();
-    localReadInJoyFlowLayout.setOnItemClickListener(new qgo(this));
-    this.jdField_a_of_type_Bcpw = bcpw.a(getActivity(), 2131718575, 0);
-    this.jdField_b_of_type_Bcpw = bcpw.a(getActivity(), 2131718574, 0);
+    this.jdField_a_of_type_Qgn = new qgn(getActivity(), 2131560042);
+    this.jdField_a_of_type_Qgn.registerDataSetObserver(this.jdField_b_of_type_AndroidDatabaseDataSetObserver);
+    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qgn);
+    this.jdField_a_of_type_Qgn.notifyDataSetChanged();
+    localReadInJoyFlowLayout.setOnItemClickListener(new qgl(this));
+    this.jdField_a_of_type_Bcql = bcql.a(getActivity(), 2131718586, 0);
+    this.jdField_b_of_type_Bcql = bcql.a(getActivity(), 2131718585, 0);
     c();
   }
   
@@ -95,15 +95,15 @@ public class ReadInJoyVideoTagSelectionFragment
         localObject3 = localObject1;
         if (localArrayList != null)
         {
-          this.jdField_a_of_type_Qgp.addAll(localArrayList);
+          this.jdField_a_of_type_Qgm.addAll(localArrayList);
           localObject3 = localObject1;
         }
-        this.jdField_a_of_type_Qgp.notifyDataSetChanged();
-        osm.a().a(this.jdField_a_of_type_Osp);
+        this.jdField_a_of_type_Qgm.notifyDataSetChanged();
+        osj.a().a(this.jdField_a_of_type_Osm);
         if (localObject3 == null) {
           break label97;
         }
-        osj.a().b(((Long)localObject3).longValue());
+        osg.a().b(((Long)localObject3).longValue());
         return;
       }
       catch (NumberFormatException localNumberFormatException)
@@ -113,7 +113,7 @@ public class ReadInJoyVideoTagSelectionFragment
       Object localObject2 = null;
       continue;
       label97:
-      osj.a().g(null);
+      osg.a().g(null);
       return;
       localObject3 = null;
     }
@@ -125,34 +125,34 @@ public class ReadInJoyVideoTagSelectionFragment
     setRightButton(2131691035, this);
     this.rightViewText.setTextColor(-16265040);
     this.rightViewText.setBackgroundResource(0);
-    setTitle(getString(2131718555));
+    setTitle(getString(2131718566));
     this.leftView.setText(2131690331);
-    qgr.a(this);
+    qgo.a(this);
   }
   
   private void e()
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.putExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", this.jdField_a_of_type_Qgp.a());
-    abtu.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyVideoSearchTagFragment.class, 1000);
+    localIntent.putExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", this.jdField_a_of_type_Qgm.a());
+    abtq.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyVideoSearchTagFragment.class, 1000);
   }
   
   private void f()
   {
     Intent localIntent = new Intent();
     ArrayList localArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_Qgp.getCount();
+    int j = this.jdField_a_of_type_Qgm.getCount();
     int i = 0;
     while (i < j)
     {
-      localArrayList.add(this.jdField_a_of_type_Qgp.getItem(i));
+      localArrayList.add(this.jdField_a_of_type_Qgm.getItem(i));
       i += 1;
     }
     localIntent.putParcelableArrayListExtra("EXTRA_SELECTED_TAG_LIST", localArrayList);
     getActivity().setResult(-1, localIntent);
     getActivity().finish();
-    noo.a(null, "", "0X80092F2", "0X80092F2", 0, 0, Integer.valueOf(localArrayList.size()).toString(), "", "", onk.e(), false);
+    nol.a(null, "", "0X80092F2", "0X80092F2", 0, 0, Integer.valueOf(localArrayList.size()).toString(), "", "", onh.e(), false);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -171,8 +171,8 @@ public class ReadInJoyVideoTagSelectionFragment
     if ((paramInt1 == 1000) && (paramInt2 == -1))
     {
       paramIntent = (TagInfo)paramIntent.getParcelableExtra("SEARCH_TAG_RESULT");
-      if ((paramIntent != null) && (!this.jdField_a_of_type_Qgp.a(paramIntent)) && (!this.jdField_a_of_type_Bcpw.c())) {
-        this.jdField_a_of_type_Bcpw.a();
+      if ((paramIntent != null) && (!this.jdField_a_of_type_Qgm.a(paramIntent)) && (!this.jdField_a_of_type_Bcql.c())) {
+        this.jdField_a_of_type_Bcql.a();
       }
     }
   }
@@ -189,7 +189,7 @@ public class ReadInJoyVideoTagSelectionFragment
     {
     default: 
       return;
-    case 2131376873: 
+    case 2131376875: 
       this.c.setVisibility(8);
       e();
       return;
@@ -200,7 +200,7 @@ public class ReadInJoyVideoTagSelectionFragment
   public void onPause()
   {
     super.onPause();
-    osm.a().b(this.jdField_a_of_type_Osp);
+    osj.a().b(this.jdField_a_of_type_Osm);
   }
   
   public void onResume()

@@ -1,8 +1,15 @@
-public class wen
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+
+public final class wen
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  protected float a;
-  protected int a;
-  protected boolean a;
+  public wen(int paramInt)
+  {
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+  }
 }
 
 

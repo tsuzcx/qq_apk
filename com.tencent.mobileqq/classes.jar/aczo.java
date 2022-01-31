@@ -1,8 +1,11 @@
-import android.widget.RelativeLayout;
-
-public class aczo
+class aczo
 {
-  public RelativeLayout a;
+  String jdField_a_of_type_JavaLangString;
+  
+  public aczo(aczm paramaczm, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

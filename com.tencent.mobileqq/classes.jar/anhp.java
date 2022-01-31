@@ -1,114 +1,43 @@
-import java.util.Comparator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
 public class anhp<T>
 {
-  private int jdField_a_of_type_Int;
-  private final anhq<T> jdField_a_of_type_Anhq;
-  private final anhr jdField_a_of_type_Anhr;
-  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
+  private LruCache<String, T> a = new anhq(this, (int)Runtime.getRuntime().maxMemory() / 32);
   
-  public anhp(Comparator<T> paramComparator, anhr<T> paramanhr)
+  private static int a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Anhr = paramanhr;
-    this.jdField_a_of_type_Anhq = new anhq();
-    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
+    if (paramBitmap == null) {
+      return 0;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
   
-  private void a(long paramLong, List<T> paramList, anhq<T> paramanhq)
+  private int b(T paramT)
   {
-    if ((anfe.a().a().a()) && ((paramList == null) || (paramList.isEmpty())) && (!a()) && ((paramanhq.jdField_a_of_type_JavaLangObject instanceof anfv)))
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
+    }
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
+  }
+  
+  protected int a(T paramT)
+  {
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    try
     {
-      paramList = (anfv)paramanhq.jdField_a_of_type_JavaLangObject;
-      long l = Math.abs(paramList.d() - paramLong);
-      if (l > 60000L) {
-        anhx.d("DanmakuDataSource", "Danmaku upload to screen fail, deltaTime = " + l + " , curTime = " + paramLong + ", curDanmaku = " + paramList);
-      }
+      this.a.trimToSize(paramInt);
+      return;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_Anhq.jdField_a_of_type_Anhq.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public List<T> a(long paramLong, List<T> paramList, int paramInt)
-  {
-    anhq localanhq = this.jdField_a_of_type_Anhq.jdField_a_of_type_Anhq;
-    int j;
-    for (int i = 0; (i < paramInt) && (localanhq != this.jdField_a_of_type_Anhq) && (this.jdField_a_of_type_Anhr.a(localanhq.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
-    {
-      j = i;
-      if (paramList != null)
-      {
-        paramList.add(localanhq.jdField_a_of_type_JavaLangObject);
-        j = i + 1;
-      }
-      this.jdField_a_of_type_Int -= 1;
-      localanhq = localanhq.jdField_a_of_type_Anhq;
-    }
-    a(paramLong, paramList, localanhq);
-    this.jdField_a_of_type_Anhq.jdField_a_of_type_Anhq = localanhq;
-    localanhq.b = this.jdField_a_of_type_Anhq;
-    return paramList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Anhq.jdField_a_of_type_Anhq = this.jdField_a_of_type_Anhq;
-    this.jdField_a_of_type_Anhq.b = this.jdField_a_of_type_Anhq;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Anhq.jdField_a_of_type_Anhq == this.jdField_a_of_type_Anhq;
-  }
-  
-  public boolean a(T paramT)
-  {
-    if (paramT == null) {
-      return false;
-    }
-    for (anhq localanhq = this.jdField_a_of_type_Anhq.b; (localanhq != this.jdField_a_of_type_Anhq) && (this.jdField_a_of_type_JavaUtilComparator.compare(localanhq.jdField_a_of_type_JavaLangObject, paramT) > 0); localanhq = localanhq.b) {}
-    if (paramT.equals(localanhq.jdField_a_of_type_JavaLangObject)) {
-      return false;
-    }
-    paramT = new anhq(paramT, localanhq.jdField_a_of_type_Anhq, localanhq);
-    localanhq.jdField_a_of_type_Anhq.b = paramT;
-    localanhq.jdField_a_of_type_Anhq = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
-  }
-  
-  public T b()
-  {
-    anhq localanhq = this.jdField_a_of_type_Anhq.b;
-    if (localanhq != this.jdField_a_of_type_Anhq) {
-      return localanhq.jdField_a_of_type_JavaLangObject;
-    }
-    return null;
-  }
-  
-  public boolean b(T paramT)
-  {
-    if (paramT == null) {
-      return false;
-    }
-    for (anhq localanhq = this.jdField_a_of_type_Anhq.jdField_a_of_type_Anhq; (localanhq != this.jdField_a_of_type_Anhq) && (this.jdField_a_of_type_JavaUtilComparator.compare(localanhq.jdField_a_of_type_JavaLangObject, paramT) < 0); localanhq = localanhq.jdField_a_of_type_Anhq) {}
-    if (paramT.equals(localanhq.jdField_a_of_type_JavaLangObject)) {
-      return false;
-    }
-    paramT = new anhq(paramT, localanhq, localanhq.b);
-    localanhq.b.jdField_a_of_type_Anhq = paramT;
-    localanhq.b = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
+    finally {}
   }
 }
 

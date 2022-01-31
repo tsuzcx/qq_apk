@@ -1,14 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-class bkou
-  implements CompoundButton.OnCheckedChangeListener
+public class bkou
+  implements AdapterView.OnItemClickListener
 {
-  bkou(bkot parambkot) {}
+  public bkou(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bkot.a(this.a).g = paramBoolean;
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
 }
 

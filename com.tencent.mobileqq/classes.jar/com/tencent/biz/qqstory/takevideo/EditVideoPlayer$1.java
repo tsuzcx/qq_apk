@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.os.Handler;
 import java.util.List;
-import veg;
-import vhz;
-import vjk;
+import ved;
+import vhw;
+import vjh;
 
 public class EditVideoPlayer$1
   implements Runnable
 {
-  public EditVideoPlayer$1(vhz paramvhz, int paramInt1, int paramInt2) {}
+  public EditVideoPlayer$1(vhw paramvhw, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -17,12 +17,12 @@ public class EditVideoPlayer$1
     if ((localList != null) && (this.a < localList.size())) {}
     try
     {
-      ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((vjk)localList.get(this.a));
+      ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((vjh)localList.get(this.a));
       if (this.a > this.b) {
         this.this$0.b.post(new EditVideoPlayer.1.1(this));
       }
       if ((localList != null) && (this.b < localList.size())) {
-        this.this$0.a((vjk)localList.get(this.b));
+        this.this$0.a((vjh)localList.get(this.b));
       }
       return;
     }
@@ -30,7 +30,7 @@ public class EditVideoPlayer$1
     {
       for (;;)
       {
-        veg.c("Q.qqstory.record.EditVideoPlayer", "setCurrentVideoFragment failed", localMultiOperateException);
+        ved.c("Q.qqstory.record.EditVideoPlayer", "setCurrentVideoFragment failed", localMultiOperateException);
       }
     }
   }

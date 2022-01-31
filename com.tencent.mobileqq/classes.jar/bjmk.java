@@ -1,29 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bjmk
-  implements EIPClientConnectListener
+public class bjmk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  bjmk(bjmj parambjmj) {}
+  public bjmk(CropVideoActivity paramCropVideoActivity) {}
   
-  public void connectFailed()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    bjmj.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      bjmj.a(this.a, paramEIPCConnection.procName);
-    }
-    bjmj.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + bjmj.a(this.a));
-    }
+    paramMotionEvent.getX();
+    paramMotionEvent.getY();
+    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
+    return true;
   }
 }
 

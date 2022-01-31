@@ -1,31 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
 
 public class aubx
-  implements View.OnTouchListener
+  implements PopupWindow.OnDismissListener
 {
-  public aubx(ScanOcrActivity paramScanOcrActivity) {}
+  public aubx(TranslateFragment paramTranslateFragment, auaf paramauaf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    switch (paramMotionEvent.getAction())
+    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Auaf.c != null) && (this.jdField_a_of_type_Auaf.c.size() > 1))
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramView == ScanOcrActivity.a(this.a))
-      {
-        paramView.setAlpha(0.7F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        paramView.setAlpha(1.0F);
-      }
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845299);
+      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
   }
 }

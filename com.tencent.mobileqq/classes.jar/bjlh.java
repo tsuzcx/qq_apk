@@ -1,20 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.capture.view.StoryToastView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bjlh
-  extends AnimatorListenerAdapter
+  implements Animation.AnimationListener
 {
-  public bjlh(StoryToastView paramStoryToastView) {}
+  public bjlh(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.setVisibility(8);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.setVisibility(8);
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.a).setVisibility(0);
+    }
   }
 }
 

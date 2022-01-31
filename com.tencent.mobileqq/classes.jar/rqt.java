@@ -1,90 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class rqt
-  extends rqq
+  implements SoundPool.OnLoadCompleteListener
 {
-  private RefreshAnimView a;
+  public rqt(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, long paramLong) {}
   
-  public rqt(Context paramContext)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298572);
-  }
-  
-  public View a(ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Xed == null)
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562308, paramViewGroup, false);
-      paramViewGroup.findViewById(2131375053).getLayoutParams().width = -2;
-      this.jdField_a_of_type_Xed = ((xed)paramViewGroup);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView = ((RefreshAnimView)((PullRefreshHeader)this.jdField_a_of_type_Xed).findViewById(2131375046));
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySkinAnimManager", 1, "setSoundPool onLoadComplete time = " + (l - this.jdField_a_of_type_Long));
     }
-    return (View)this.jdField_a_of_type_Xed;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    this.jdField_a_of_type_Xed.a(0L);
-    this.jdField_a_of_type_Xed.ao_();
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    super.a(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    if (paramInt == 100)
-    {
-      this.jdField_a_of_type_Xed.b(0L);
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Xed.ao_();
-      return;
-    }
-    this.jdField_a_of_type_Xed.c(0L);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / 100.0D);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    this.jdField_a_of_type_Xed.a(0L);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_Xed == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+    axqy.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
+    ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager, true);
   }
 }
 

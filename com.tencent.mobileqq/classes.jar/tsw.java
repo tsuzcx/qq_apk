@@ -1,13 +1,35 @@
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-public final class tsw
-  implements tjy
+final class tsw
+  implements bfph
 {
-  public void a(tjx paramtjx)
+  tsw(QQUserUIItem paramQQUserUIItem, bfpc parambfpc) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramtjx));
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new tkv().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      ved.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
   }
 }
 

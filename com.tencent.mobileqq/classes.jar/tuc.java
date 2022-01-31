@@ -1,17 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.widget.AbsListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class tuc
-  implements bfob
+class tuc
 {
-  public tuc(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  public ImageView a;
+  public TextView a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.a = paramInt1;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  tuc(tub paramtub) {}
 }
 
 

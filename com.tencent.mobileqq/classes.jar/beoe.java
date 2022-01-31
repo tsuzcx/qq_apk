@@ -1,37 +1,8 @@
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnErrorListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
 
-public class beoe
-  implements VideoPlayerProxy.OnErrorListener
+public abstract interface beoe
 {
-  public beoe(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public boolean onError(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
-  {
-    besl.d("MiniAppVideoPlayer", "video onError: m what=" + paramInt1 + " extra=" + paramInt2);
-    if (!this.a.jdField_a_of_type_Begy.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
-      MiniAppVideoPlayer.a(this.a, "error");
-    }
-    for (;;)
-    {
-      return true;
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Begy.a("onVideoError", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        besl.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoError = " + paramVideoPlayerProxy.toString());
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
-  }
+  public abstract void a(View paramView, int paramInt, String paramString);
 }
 
 

@@ -1,31 +1,45 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class abyn
-  implements View.OnFocusChangeListener
+  extends AccountObserver
 {
-  public abyn(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public abyn(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
-      }
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
     }
-    else {
-      return;
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
     }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
   }
 }
 

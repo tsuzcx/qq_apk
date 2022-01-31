@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import auwz;
 import auxb;
+import auxd;
 
 public class ProfileMusicBoxController$2
   implements Runnable
 {
-  public ProfileMusicBoxController$2(auwz paramauwz) {}
+  public ProfileMusicBoxController$2(auxb paramauxb) {}
   
   public void run()
   {
-    if (auwz.a(this.this$0) != null) {
-      auwz.a(this.this$0).a(2);
+    if (auxb.a(this.this$0) != null) {
+      auxb.a(this.this$0).a(2);
     }
     this.this$0.j();
   }

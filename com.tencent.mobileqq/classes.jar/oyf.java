@@ -1,102 +1,28 @@
-import android.os.SystemClock;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
-public class oyf
+class oyf
+  implements View.OnAttachStateChangeListener
 {
-  public static final int[] a = { 0, 1, 2, 3, 4 };
+  oyf(oye paramoye, oyp paramoyp) {}
   
-  public static SparseArray<oya> a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  public void onViewAttachedToWindow(View paramView)
   {
-    SparseArray localSparseArray = new SparseArray();
-    int i = 0;
-    if (i < a.length)
-    {
-      int j = a[i];
-      oya localoya = a(j);
-      if (localoya == null) {
-        QLog.d("HandlerFactory", 2, new Object[] { "create handler fail, id : ", Integer.valueOf(j) });
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localoya.a(paramReadInJoyBaseListViewGroup);
-        localSparseArray.put(j, localoya);
-      }
+    if ((this.jdField_a_of_type_Oye.a().a() != null) && (this.jdField_a_of_type_Oye.a().a().a() != null)) {
+      this.jdField_a_of_type_Oye.a().a().a().b(this.jdField_a_of_type_Oyp);
     }
-    return localSparseArray;
+    osj.a().a(this.jdField_a_of_type_Oyp.a);
   }
   
-  public static Object a(SparseArray<oya> paramSparseArray, oyg paramoyg)
+  public void onViewDetachedFromWindow(View paramView)
   {
-    if (paramoyg == null) {
-      return null;
+    if ((this.jdField_a_of_type_Oye.a().a() != null) && (this.jdField_a_of_type_Oye.a().a().a() != null)) {
+      this.jdField_a_of_type_Oye.a().a().a().c(this.jdField_a_of_type_Oyp);
     }
-    int i = -1;
-    int j = 0;
-    Object localObject = null;
-    long l1;
-    if (j < paramSparseArray.size())
-    {
-      l1 = SystemClock.currentThreadTimeMillis();
-      paramoyg.a((oya)paramSparseArray.valueAt(j));
-      if (paramoyg.a == null) {
-        break label189;
-      }
-      if (localObject == null)
-      {
-        localObject = paramoyg.a;
-        i = ((oya)paramSparseArray.valueAt(j)).a();
-        paramoyg.a = null;
-      }
-    }
-    label189:
-    for (;;)
-    {
-      long l2 = SystemClock.currentThreadTimeMillis();
-      QLog.d("HandlerFactory", 2, new Object[] { "execute with return value handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(j)), ", jobName : ", paramoyg.a(), ", cost : ", Long.valueOf(l2 - l1) });
-      j += 1;
-      break;
-      throw new RuntimeException("has more than one handler return value. preHandlerID : " + i + ", now : " + ((oya)paramSparseArray.valueAt(j)).a());
-      return localObject;
-    }
-  }
-  
-  public static oya a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new nym();
-    case 2: 
-      return new oyc();
-    case 0: 
-      return new oyh();
-    case 3: 
-      return new oyb();
-    }
-    return new oyv();
-  }
-  
-  public static void a(SparseArray<oya> paramSparseArray, oyg paramoyg)
-  {
-    if (paramoyg == null) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramSparseArray.size())
-      {
-        long l1 = SystemClock.currentThreadTimeMillis();
-        paramoyg.a((oya)paramSparseArray.valueAt(i));
-        long l2 = SystemClock.currentThreadTimeMillis();
-        QLog.d("HandlerFactory", 2, new Object[] { "execute handler job , id : ", Integer.valueOf(paramSparseArray.keyAt(i)), ", jobName : ", paramoyg.a(), ", cost : ", Long.valueOf(l2 - l1) });
-        i += 1;
-      }
+    osj.a().b(this.jdField_a_of_type_Oyp.a);
+    if ((this.jdField_a_of_type_Oyp instanceof oyl)) {
+      ((oyl)this.jdField_a_of_type_Oyp).a.removeCallbacksAndMessages(null);
     }
   }
 }

@@ -1,17 +1,15 @@
-import android.text.Editable;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 
-public final class nvo
-  implements asko<char[]>
+public class nvo
+  implements View.OnClickListener
 {
-  public nvo(EditText paramEditText) {}
+  public nvo(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void a(char[] paramArrayOfChar)
+  public void onClick(View paramView)
   {
-    int i = this.a.getSelectionStart();
-    int j = this.a.getSelectionEnd();
-    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
-    this.a.requestFocus();
+    ReadInJoyChannelActivity.a(this.a);
   }
 }
 

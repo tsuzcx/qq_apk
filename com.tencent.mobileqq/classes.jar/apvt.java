@@ -1,5 +1,5 @@
 class apvt
-  implements aptu
+  implements aptw
 {
   apvt(apvs paramapvs) {}
   

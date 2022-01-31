@@ -1,63 +1,34 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Point;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class blbz
 {
-  private static float jdField_a_of_type_Float;
-  public static int a;
-  private static Context jdField_a_of_type_AndroidContentContext = ;
-  private static float b;
-  public static int b;
-  private static float c = 1.34F;
-  
-  static
+  public static void a(int paramInt)
   {
-    jdField_a_of_type_Int = 320;
-    jdField_b_of_type_Int = 480;
-    WindowManager localWindowManager = (WindowManager)jdField_a_of_type_AndroidContentContext.getSystemService("window");
-    jdField_a_of_type_Int = localWindowManager.getDefaultDisplay().getWidth();
-    jdField_b_of_type_Int = localWindowManager.getDefaultDisplay().getHeight();
-    jdField_b_of_type_Float = 1.1F;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("crashKind", "" + paramInt);
+    axrn.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
   }
   
-  public static int a(float paramFloat)
+  public static void a(String paramString, long paramLong)
   {
-    if (jdField_a_of_type_Float == 0.0F) {
-      jdField_a_of_type_Float = jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("time", "" + paramLong);
+    localHashMap.put("filter_id", blca.jdField_a_of_type_JavaLangString);
+    localHashMap.put("front_camera", String.valueOf(blca.jdField_a_of_type_Boolean));
+    axrn.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, blan.c, localHashMap, "");
     if (QLog.isColorLevel()) {
-      QLog.d("ScreenUtil", 2, "[@] ScreenUtil.dip2px DENSITY = " + jdField_a_of_type_Float);
+      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + blca.jdField_a_of_type_JavaLangString + " ; front_camera = " + blca.jdField_a_of_type_Boolean);
     }
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
-  }
-  
-  @TargetApi(13)
-  public static int a(Context paramContext)
-  {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    Point localPoint;
-    if (Build.VERSION.SDK_INT >= 13)
-    {
-      localPoint = new Point();
-      paramContext.getDefaultDisplay().getSize(localPoint);
-    }
-    for (jdField_b_of_type_Int = localPoint.y;; jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight()) {
-      return jdField_b_of_type_Int;
-    }
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2)
-  {
-    float f = paramInt2 * 1.0F / paramInt1;
-    return (f > jdField_b_of_type_Float) && (f < c);
   }
 }
 

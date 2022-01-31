@@ -1,60 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ancq
-  extends ampb<ancp>
 {
-  public static ancp a()
-  {
-    return (ancp)ampm.a().a(335);
-  }
+  private boolean a;
+  private boolean b;
+  private boolean c;
   
-  public int a()
+  public static ancq a(amph[] paramArrayOfamph)
   {
-    return 335;
-  }
-  
-  @NonNull
-  public ancp a(int paramInt)
-  {
-    return new ancp();
-  }
-  
-  @Nullable
-  public ancp a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return ancp.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
+    ancq localancq = new ancq();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
+      localancq.a = paramArrayOfamph.getBoolean("fastload");
+      localancq.b = paramArrayOfamph.getBoolean("prefetch");
+      localancq.c = paramArrayOfamph.getBoolean("preloadWebView");
+      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localancq.a + ", prefetch = " + localancq.b + ", preloadWebView = " + localancq.c);
+      return localancq;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
+    }
+    return localancq;
   }
   
-  public Class<ancp> a()
+  public boolean a()
   {
-    return ancp.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
-  }
-  
-  public void a(ancp paramancp) {}
-  
-  public int b()
-  {
-    return 0;
+    return this.a;
   }
   
   public boolean b()
   {
-    return false;
+    return this.b;
   }
   
   public boolean c()
   {
-    return false;
+    return this.c;
   }
 }
 

@@ -1,30 +1,6 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-
-class anrl
-  extends anta<CustomEmotionData>
+public abstract interface anrl
 {
-  anrl(anrh paramanrh) {}
-  
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    if (((paramInt1 <= 28) || (paramInt2 % 28 == 0)) && (this.a.a != null)) {
-      this.a.a.e();
-    }
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

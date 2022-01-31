@@ -1,46 +1,25 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 class aqey
-  extends SSOAccountObserver
+  implements DialogInterface.OnClickListener
 {
-  WeakReference<aqeq> a;
+  aqey(aqes paramaqes) {}
   
-  public aqey(aqeq paramaqeq)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramaqeq);
-  }
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onFailed--account = ", paramString, ", ret = ", Integer.valueOf(paramInt2) });
-    paramString = (aqeq)this.a.get();
-    if (paramString != null) {
-      aqeq.a(paramString, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
-    }
-    if ((paramString != null) && (!paramString.m) && (aqeq.a(paramString) != null)) {
-      aqeq.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onGetTicketNoPasswd--recv g_t_n_p, account = ", paramString });
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (aqeq)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        aqeq.a(paramArrayOfByte, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
-        paramArrayOfByte.k = paramString;
-        paramArrayOfByte.m = true;
-      }
-      return;
-    }
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    paramDialogInterface.setFlags(268435456);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

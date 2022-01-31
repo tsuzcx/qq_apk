@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abqv;
+import abqr;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class PermisionPrivacyActivity$16$2
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$2(abqv paramabqv) {}
+  public PermisionPrivacyActivity$16$2(abqr paramabqr) {}
   
   public void run()
   {

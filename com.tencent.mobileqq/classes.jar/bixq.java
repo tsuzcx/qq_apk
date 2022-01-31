@@ -1,24 +1,17 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
 import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
 public class bixq
-  extends RecyclerView.ItemDecoration
+  implements DialogInterface.OnDismissListener
 {
-  private int jdField_a_of_type_Int;
+  public bixq(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public bixq(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
-  {
-    super.getItemOffsets(paramRect, paramInt, paramRecyclerView);
-    if (paramInt == 0) {
-      paramRect.left = this.jdField_a_of_type_Int;
-    }
+    AETakeFacePhotoPreviewFragment.a(this.a);
+    AEVideoShelfEditFragment.a(this.a.getActivity(), false);
   }
 }
 

@@ -1,55 +1,14 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginInstallActivity;
-
 public class bgkd
-  implements OnPluginInstallListener
 {
-  public bgkd(HcePluginInstallActivity paramHcePluginInstallActivity) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public IBinder asBinder()
+  public bgkd(int paramInt, String paramString1, String paramString2)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    bcpw.a(this.a.getApplicationContext(), 2131695209, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
-    {
-      HcePluginInstallActivity.a(this.a);
-      return;
-    }
-    bcpw.a(this.a.getApplicationContext(), 2131695209, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 

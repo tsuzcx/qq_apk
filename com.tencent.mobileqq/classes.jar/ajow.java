@@ -1,12 +1,20 @@
-public abstract interface ajow
+import android.content.Context;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class ajow
+  extends ajqd
 {
-  public abstract void a();
+  public ajow(String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    super.a(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo);
+  }
 }
 
 

@@ -1,44 +1,15 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONObject;
 
 final class ajng
-  implements ajnk
+  implements ajic
 {
-  ajng(int paramInt) {}
+  ajng(ajni paramajni, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aiwl paramaiwl, int[] paramArrayOfInt) {}
   
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
+    if (this.jdField_a_of_type_Ajni != null) {
+      this.jdField_a_of_type_Ajni.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aiwl.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
     }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
-    {
-      paramQQAppInterface = ajne.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
-    }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
-    }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    aizw.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

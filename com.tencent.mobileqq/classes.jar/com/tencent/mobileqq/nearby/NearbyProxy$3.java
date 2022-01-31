@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import arii;
-import atat;
+import arik;
+import atav;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyProxy$3
   implements Runnable
 {
-  public NearbyProxy$3(atat paramatat) {}
+  public NearbyProxy$3(atav paramatav) {}
   
   public void run()
   {
-    ((arii)this.this$0.a.getManager(306)).a();
+    ((arik)this.this$0.a.getManager(306)).a();
   }
 }
 

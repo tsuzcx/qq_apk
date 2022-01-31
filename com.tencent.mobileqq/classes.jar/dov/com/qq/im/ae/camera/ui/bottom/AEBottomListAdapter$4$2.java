@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bile;
-import bilg;
-import bili;
-import biqn;
+import bilv;
+import bilx;
+import bilz;
+import bire;
 import java.util.Map;
 
 public class AEBottomListAdapter$4$2
   implements Runnable
 {
-  public AEBottomListAdapter$4$2(bilg parambilg, biqn parambiqn) {}
+  public AEBottomListAdapter$4$2(bilx parambilx, bire parambire) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bilg.a.notifyDataSetChanged();
-    if (bile.a(this.jdField_a_of_type_Bilg.a).get(this.jdField_a_of_type_Biqn.a) != null) {
-      ((bili)bile.a(this.jdField_a_of_type_Bilg.a).get(this.jdField_a_of_type_Biqn.a)).a(2);
+    this.jdField_a_of_type_Bilx.a.notifyDataSetChanged();
+    if (bilv.a(this.jdField_a_of_type_Bilx.a).get(this.jdField_a_of_type_Bire.a) != null) {
+      ((bilz)bilv.a(this.jdField_a_of_type_Bilx.a).get(this.jdField_a_of_type_Bire.a)).a(2);
     }
   }
 }

@@ -1,48 +1,53 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxk
-  extends aoxr
+  extends aoxv
 {
   protected long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
   protected String a;
-  private long b;
   protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  aoxk(aowt paramaowt, MessageRecord paramMessageRecord)
+  aoxk(aowx paramaowx, MessageRecord paramMessageRecord)
   {
-    super(paramaowt);
+    super(paramaowx);
     this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
     this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaowt = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaowt);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
   void a(String paramString, int paramInt) {}
   
-  void a(String paramString, int paramInt, aoxp paramaoxp)
+  void a(String paramString, int paramInt, aoxt paramaoxt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    String str1 = apgp.a(apue.d(this.jdField_b_of_type_JavaLangString));
-    String str2 = apgp.a(apue.a(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_Long = apue.a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    aowt.a(this.jdField_a_of_type_Aowt).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aowt.a(this.jdField_a_of_type_Aowt).getCurrentAccountUin(), new aoxl(this, paramaoxp, str2));
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
+      }
+      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aowx.a(this.jdField_a_of_type_Aowx).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aoxl(this, paramString, paramaoxt));
   }
 }
 

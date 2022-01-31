@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import ajmq;
+import ajmo;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ApolloConfigDataReport$3
@@ -11,7 +11,7 @@ public final class ApolloConfigDataReport$3
     if (QLog.isColorLevel()) {
       QLog.d("ApolloConfigDataReport", 2, "getStoreStabilityWatchURLSet. mStoreStabilityWatchURLSet is null, reparse from file");
     }
-    ajmq.b(ajmq.a(2, ajmq.a()));
+    ajmo.b(ajmo.a(2, ajmo.a()));
   }
 }
 

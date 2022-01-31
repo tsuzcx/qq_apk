@@ -1,84 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amue
-  extends ampb<amud>
 {
+  private int a;
+  private int b;
+  private int c;
+  
+  public static amue a(String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        amue localamue = new amue();
+        paramString = new JSONObject(paramString);
+        localamue.a = paramString.optInt("showVoiceToTextSwitch", -1);
+        localamue.b = paramString.optInt("grayTipShowPerThousand", -1);
+        localamue.c = paramString.optInt("mainSwitch", -1);
+        return localamue;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
   public int a()
   {
-    return 68;
+    return this.b;
   }
   
-  @NonNull
-  public amud a(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new amud();
+    return this.a == 1;
   }
   
-  @Nullable
-  public amud a(ampi[] paramArrayOfampi)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onParsed]");
-    }
-    amud localamud = new amud();
-    localamud.a = paramArrayOfampi;
-    return localamud;
-  }
-  
-  public Class<amud> a()
-  {
-    return amud.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "onReqNoReceive: type=" + a());
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt);
-    }
-  }
-  
-  public void a(amud paramamud)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[onUpdate]");
-    }
-    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(151);
-    localPreloadManager.a(paramamud);
-    localPreloadManager.b();
-    localPreloadManager.b(true);
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadConfProcessor", 2, "[get migrateOldVersion]");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    return "open:" + this.a;
   }
 }
 

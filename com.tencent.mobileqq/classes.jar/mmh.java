@@ -1,23 +1,14 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.view.MotionEvent;
 
-class mmh
-  implements View.OnKeyListener
+public abstract interface mmh
 {
-  mmh(mme parammme) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramKeyEvent.getAction() == 0) {}
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    mme.b(this.a);
-    return true;
-  }
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 

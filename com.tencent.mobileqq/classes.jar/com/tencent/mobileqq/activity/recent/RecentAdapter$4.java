@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahmx;
-import axqw;
-import sbc;
+import ahmv;
+import axqy;
+import saz;
 
 public class RecentAdapter$4
   implements Runnable
 {
-  public RecentAdapter$4(ahmx paramahmx, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  public RecentAdapter$4(ahmv paramahmv, int paramInt, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    axqw.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(sbc.a().a()));
+    axqy.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(saz.a().a()));
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import anql;
-import anqp;
+import anqq;
+import anqu;
 
 class ThemeJsPlugin$1
   implements Runnable
@@ -34,7 +34,7 @@ class ThemeJsPlugin$1
       localBundle.putString("r5", this.val$r5);
       localBundle.putString("path", this.val$path);
     }
-    localBundle = anqp.a("reportTheme", "", this.this$0.mOnRemoteResp.key, localBundle);
+    localBundle = anqu.a("reportTheme", "", this.this$0.mOnRemoteResp.key, localBundle);
     this.this$0.sendRemoteReq(localBundle, false, true);
   }
 }

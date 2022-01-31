@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import aaad;
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -11,16 +10,17 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bfob;
-import bfrr;
+import bfos;
+import bfsi;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
-import ogp;
+import ogm;
+import ogx;
+import ogy;
+import ogz;
 import oha;
-import ohb;
-import ohc;
-import ohd;
+import zzz;
 
 public class ReadInJoyCommentListView
   extends XListView
@@ -29,9 +29,9 @@ public class ReadInJoyCommentListView
   protected ProgressBar a;
   protected RelativeLayout a;
   protected TextView a;
-  private ogp jdField_a_of_type_Ogp;
-  private ohc jdField_a_of_type_Ohc = new oha(this);
-  public ohd a;
+  private ogm jdField_a_of_type_Ogm;
+  private ogz jdField_a_of_type_Ogz = new ogx(this);
+  public oha a;
   public boolean a;
   int jdField_b_of_type_Int;
   boolean jdField_b_of_type_Boolean;
@@ -69,17 +69,17 @@ public class ReadInJoyCommentListView
   
   private void h()
   {
-    setOnScrollListener(this.jdField_a_of_type_Ohc);
+    setOnScrollListener(this.jdField_a_of_type_Ogz);
   }
   
   private void i()
   {
-    if ((a()) && (this.jdField_a_of_type_Ohd != null))
+    if ((a()) && (this.jdField_a_of_type_Oha != null))
     {
       QLog.d("ReadInJoyCommentListView", 2, "loadingMore| hasMore " + this.jdField_a_of_type_Boolean);
       j();
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Ohd.a(this);
+      this.jdField_a_of_type_Oha.a(this);
     }
   }
   
@@ -94,23 +94,23 @@ public class ReadInJoyCommentListView
   
   private void k()
   {
-    if (this.jdField_a_of_type_Ohd != null)
+    if (this.jdField_a_of_type_Oha != null)
     {
       QLog.d("ReadInJoyCommentListView", 2, "preLoadingMore | hasMore " + this.jdField_a_of_type_Boolean);
       j();
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Ohd.a(this);
+      this.jdField_a_of_type_Oha.a(this);
     }
   }
   
   private void l()
   {
     Object localObject = getAdapter();
-    if ((localObject instanceof bfrr))
+    if ((localObject instanceof bfsi))
     {
-      localObject = (bfrr)localObject;
-      if ((((bfrr)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
-        ((BaseAdapter)((bfrr)localObject).getWrappedAdapter()).notifyDataSetChanged();
+      localObject = (bfsi)localObject;
+      if ((((bfsi)localObject).getWrappedAdapter() instanceof BaseAdapter)) {
+        ((BaseAdapter)((bfsi)localObject).getWrappedAdapter()).notifyDataSetChanged();
       }
     }
     while (!(localObject instanceof BaseAdapter)) {
@@ -122,8 +122,8 @@ public class ReadInJoyCommentListView
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559779, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372152));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372153));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372154));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372155));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#A6A6A6"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -131,10 +131,10 @@ public class ReadInJoyCommentListView
     setFooterDividersEnabled(false);
   }
   
-  public void a(bfob parambfob)
+  public void a(bfos parambfos)
   {
-    if (this.jdField_a_of_type_Ohc != null) {
-      this.jdField_a_of_type_Ohc.b(parambfob);
+    if (this.jdField_a_of_type_Ogz != null) {
+      this.jdField_a_of_type_Ogz.b(parambfos);
     }
   }
   
@@ -142,7 +142,7 @@ public class ReadInJoyCommentListView
   {
     if (paramInt == 0)
     {
-      aaad.a().a("list_comment_kandian", false);
+      zzz.a().a("list_comment_kandian", false);
       if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Boolean))
       {
         if (QLog.isColorLevel()) {
@@ -173,7 +173,7 @@ public class ReadInJoyCommentListView
       k();
       return;
     }
-    aaad.a().a("list_comment_kandian");
+    zzz.a().a("list_comment_kandian");
   }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -221,9 +221,9 @@ public class ReadInJoyCommentListView
         QLog.d("ReadInJoyCommentListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131712767));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131712778));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ohb(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ogy(this));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_Int = 0;
     }
@@ -271,25 +271,25 @@ public class ReadInJoyCommentListView
     }
   }
   
-  public void setOnScrollListener(bfob parambfob)
+  public void setOnScrollListener(bfos parambfos)
   {
-    if ((parambfob instanceof ohc)) {
-      super.setOnScrollListener(this.jdField_a_of_type_Ohc);
+    if ((parambfos instanceof ogz)) {
+      super.setOnScrollListener(this.jdField_a_of_type_Ogz);
     }
-    while (this.jdField_a_of_type_Ohc == null) {
+    while (this.jdField_a_of_type_Ogz == null) {
       return;
     }
-    this.jdField_a_of_type_Ohc.a(parambfob);
+    this.jdField_a_of_type_Ogz.a(parambfos);
   }
   
-  public void setOnScrollOffsetYListener(ogp paramogp)
+  public void setOnScrollOffsetYListener(ogm paramogm)
   {
-    this.jdField_a_of_type_Ogp = paramogp;
+    this.jdField_a_of_type_Ogm = paramogm;
   }
   
-  public void setRefreshCallback(ohd paramohd)
+  public void setRefreshCallback(oha paramoha)
   {
-    this.jdField_a_of_type_Ohd = paramohd;
+    this.jdField_a_of_type_Oha = paramoha;
   }
 }
 

@@ -1,253 +1,53 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneClickReport;
-import java.io.File;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.21.1;
 
-class aehd
-  implements AdapterView.OnItemClickListener
+public class aehd
+  implements aegm
 {
-  aehd(aegu paramaegu, AIORichMediaData paramAIORichMediaData, boolean paramBoolean, File paramFile) {}
+  aehd(aegs paramaegs) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aegu.jdField_a_of_type_Bbjc.b();
-    paramAdapterView = ((bbjh)paramAdapterView).a;
-    paramInt = paramAdapterView.c;
-    paramAdapterView = paramAdapterView.b;
-    switch (paramInt)
+    View localView;
+    if (paramInt == 0)
     {
-    case 60: 
-    case 61: 
-    case 62: 
-    case 63: 
-    case 65: 
-    case 66: 
-    case 68: 
-    default: 
-      paramInt = -1;
+      localView = this.a.a().findViewById(2131366905);
+      if (localView != null) {}
     }
-    for (;;)
+    do
     {
-      label130:
-      if (this.jdField_a_of_type_Boolean) {}
-      int i;
-      for (paramAdapterView = "0X8009EF7";; paramAdapterView = "0X8009EFA")
+      do
       {
-        axqw.b(null, "dc00898", "", "", paramAdapterView, paramAdapterView, paramInt, 0, "", "", "", "");
-        return;
-        i = 1;
-        paramInt = i;
-        if (!this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.asBinder().pingBinder()) {
-          break label130;
-        }
-        paramAdapterView = this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Int, 0);
-        if (paramAdapterView == null)
+        do
         {
-          QLog.w("AIOGalleryScene", 1, "getForwardData return null from main process");
           return;
-        }
-        paramAdapterView.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_g_of_type_Int == 1) {}
-        for (paramInt = 1;; paramInt = 0)
-        {
-          if (paramInt != 0) {
-            break label467;
+          localView.setVisibility(0);
+          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+          localAlphaAnimation.setDuration(300L);
+          localView.startAnimation(localAlphaAnimation);
+          localView.postDelayed(new AIOGalleryScene.21.1(this, localView), 8000L);
+          return;
+          if (1 != paramInt) {
+            break;
           }
-          paramAdapterView.putExtra("filepictest", true);
-          paramView = (ForwardFileInfo)paramAdapterView.getParcelableExtra("fileinfo");
-          localObject = paramAdapterView.getStringExtra("forward_filepath");
-          boolean bool1 = paramAdapterView.getBooleanExtra("k_favorites", false);
-          String str = paramAdapterView.getStringExtra("forward_text");
-          boolean bool2 = paramAdapterView.getBooleanExtra("isFromShare", false);
-          paramInt = paramAdapterView.getIntExtra("forward_type", 0);
-          Intent localIntent = new Intent();
-          localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-          Bundle localBundle = new Bundle();
-          localBundle.putInt("forward_type", paramInt);
-          localBundle.putParcelable("fileinfo", paramView);
-          localBundle.putBoolean("not_forward", true);
-          localIntent.putExtras(localBundle);
-          localIntent.putExtra("forward_filepath", (String)localObject);
-          localIntent.putExtra("forward_text", str);
-          localIntent.putExtra("k_favorites", bool1);
-          localIntent.putExtra("isFromShare", bool2);
-          if (AIOFilePicData.class.isInstance(paramAdapterView))
-          {
-            localIntent.putExtra("isPic", true);
-            localIntent.putExtra("direct_send_if_dataline_forward", true);
-          }
-          aqbc.a(aegu.Q(this.jdField_a_of_type_Aegu), paramAdapterView, 103);
-          paramInt = i;
+        } while ((this.a.jdField_a_of_type_Axjs == null) || (((aegs.ai(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aegs.aj(this.a)).b)) || (this.a.c));
+        this.a.c(null);
+        return;
+        if (2 != paramInt) {
           break;
         }
-        label467:
-        aqbc.a(aegu.R(this.jdField_a_of_type_Aegu), paramAdapterView, 21);
-        paramInt = i;
-        break label130;
-        if (LocalMultiProcConfig.getInt4Uin(this.jdField_a_of_type_Aegu.b + "__qzone_pic_permission__" + this.jdField_a_of_type_Aegu.d, -1, Long.valueOf(this.jdField_a_of_type_Aegu.b).longValue()) == 0)
-        {
-          paramAdapterView = new bbgg(aegu.S(this.jdField_a_of_type_Aegu), 2131755791);
-          paramAdapterView.setContentView(2131558906);
-          paramAdapterView.setTitle(aegu.T(this.jdField_a_of_type_Aegu).getString(2131697910));
-          paramAdapterView.setMessage(aegu.U(this.jdField_a_of_type_Aegu).getString(2131697908));
-          paramAdapterView.setNegativeButton(aegu.V(this.jdField_a_of_type_Aegu).getString(2131697909), new aehe(this));
-          paramAdapterView.setCanceledOnTouchOutside(false);
-          paramAdapterView.setCancelable(false);
-          paramAdapterView.show();
-          QZoneClickReport.startReportImediately(this.jdField_a_of_type_Aegu.b, "40", "1");
-          paramInt = 5;
-          break label130;
-        }
-        paramAdapterView = (AIOImageData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-        this.jdField_a_of_type_Aegu.a("Pic_Forward_Grpalbum", 0);
-        aehy.a(aegu.X(this.jdField_a_of_type_Aegu), this.jdField_a_of_type_Aegu.b, this.jdField_a_of_type_Aegu.d, this.jdField_a_of_type_Aegu.e, paramAdapterView.a, paramAdapterView.e, paramAdapterView.c, -1);
-        paramInt = 5;
-        break label130;
-        if (this.jdField_a_of_type_Boolean) {}
-        for (paramInt = 6;; paramInt = 5)
-        {
-          i = paramInt;
-          if (!this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.asBinder().pingBinder()) {
-            break label1773;
-          }
-          this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long);
-          bcpw.a(aegu.Y(this.jdField_a_of_type_Aegu), aegu.Z(this.jdField_a_of_type_Aegu).getString(2131692829), 0).a();
-          break;
-        }
-        if (!this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.asBinder().pingBinder()) {
-          break;
-        }
-        this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long);
-        axqw.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-        bcpw.a(aegu.aa(this.jdField_a_of_type_Aegu), 2, aegu.ab(this.jdField_a_of_type_Aegu).getString(2131692755), 0).a();
-        paramInt = -1;
-        break label130;
-        i = 2;
-        if (AIOFilePicData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
-        {
-          aehy.a(aegu.ac(this.jdField_a_of_type_Aegu), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-          paramInt = i;
-          break label130;
-        }
-        if (AIOFileVideoData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
-        {
-          paramAdapterView = new Bundle();
-          float f = 0.0F;
-          if (agqz.class.isInstance(this.jdField_a_of_type_Aegu.jdField_a_of_type_Agqx)) {
-            f = ((agqz)this.jdField_a_of_type_Aegu.jdField_a_of_type_Agqx).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long);
-          }
-          paramAdapterView.putFloat("progress", f);
-          this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long, 13, paramAdapterView);
-          ((AIOFileVideoData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).d = true;
-          this.jdField_a_of_type_Aegu.jdField_a_of_type_Agqx.h();
-          this.jdField_a_of_type_Aegu.u();
-          paramInt = i;
-          break label130;
-        }
-        paramInt = i;
-        if (!AIOImageData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
-          break label130;
-        }
-        if ((this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists()))
-        {
-          aehy.a(aegu.ad(this.jdField_a_of_type_Aegu), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-          paramInt = i;
-          break label130;
-        }
-        QLog.i("AIOGalleryScene", 1, "menu item click, troop file action AIOGallerysence, but file is null");
-        paramInt = i;
-        break label130;
-        i = 3;
-        if (!this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.asBinder().pingBinder()) {
-          break label1773;
-        }
-        this.jdField_a_of_type_Aegu.jdField_a_of_type_Aejd.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_f_of_type_Long);
-        paramInt = 3;
-        break label130;
-        if (this.jdField_a_of_type_Boolean) {}
-        for (paramInt = 7;; paramInt = 6)
-        {
-          paramView = this.jdField_a_of_type_Aegu.d;
-          paramAdapterView = paramView;
-          if (TextUtils.isEmpty(paramView)) {
-            paramAdapterView = this.jdField_a_of_type_Aegu.c;
-          }
-          aegu.a(aegu.ae(this.jdField_a_of_type_Aegu), this.jdField_a_of_type_Aegu.jdField_g_of_type_Int, this.jdField_a_of_type_Aegu.c, paramAdapterView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_g_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.i, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_g_of_type_Int, false);
-          break;
-        }
-        OCRResultActivity.a(aegu.af(this.jdField_a_of_type_Aegu), this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 1);
-        paramInt = 8;
-        break label130;
-        paramView = new Intent();
-        paramView.putExtra("preResult", paramAdapterView);
-        if (AIOImageData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
-        {
-          paramAdapterView = (AIOImageData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-          this.jdField_a_of_type_Aegu.a(this.jdField_a_of_type_Aegu.f, paramAdapterView.jdField_g_of_type_Int, paramAdapterView.h, paramAdapterView.k, paramAdapterView.f, paramAdapterView.j, paramAdapterView.e, 1, paramView);
-        }
-        while (!AIOFilePicData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
-        {
-          axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A4", "0X80059A4", 0, 0, "", "", "", "");
-          paramInt = 9;
-          break;
-        }
-        Object localObject = (AIOFilePicData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-        if (bbet.a(((AIOFilePicData)localObject).b)) {}
-        for (paramAdapterView = this.jdField_a_of_type_Aegu.b;; paramAdapterView = this.jdField_a_of_type_Aegu.c)
-        {
-          this.jdField_a_of_type_Aegu.a(this.jdField_a_of_type_Aegu.f, ((AIOFilePicData)localObject).a, true, paramAdapterView, null, null, ((AIOFilePicData)localObject).h, 1, paramView);
-          break;
-        }
-        paramView = new Intent();
-        paramView.putExtra("preResult", paramAdapterView);
-        if (AIOImageData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
-        {
-          paramAdapterView = (AIOImageData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-          this.jdField_a_of_type_Aegu.a(this.jdField_a_of_type_Aegu.f, paramAdapterView.jdField_g_of_type_Int, paramAdapterView.h, paramAdapterView.k, paramAdapterView.f, paramAdapterView.j, paramAdapterView.e, 2, paramView);
-        }
-        while (!AIOFilePicData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
-        {
-          paramInt = 10;
-          break;
-        }
-        localObject = (AIOFilePicData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-        if (bbet.a(((AIOFilePicData)localObject).b)) {}
-        for (paramAdapterView = this.jdField_a_of_type_Aegu.b;; paramAdapterView = this.jdField_a_of_type_Aegu.c)
-        {
-          this.jdField_a_of_type_Aegu.a(this.jdField_a_of_type_Aegu.f, ((AIOFilePicData)localObject).a, true, paramAdapterView, null, null, ((AIOFilePicData)localObject).h, 2, paramView);
-          break;
-        }
-        paramInt = 11;
-        paramAdapterView = (AIOFileVideoData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-        apue.b(aegu.ag(this.jdField_a_of_type_Aegu), paramAdapterView.c);
-        break label130;
-        PicShareToWX.a(this.jdField_a_of_type_JavaIoFile.getPath(), aegu.ah(this.jdField_a_of_type_Aegu), 1);
-        axqw.b(null, "dc00898", "", "", "0X800A4FF", "0X800A4FF", 0, 0, "", "", "", "");
-        break;
-      }
-      label1773:
-      paramInt = i;
-    }
+        this.a.a(null);
+      } while ((this.a.jdField_a_of_type_Axjs == null) || (((aegs.ak(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aegs.al(this.a)).b)) || (this.a.c));
+      this.a.jdField_a_of_type_Axjs.b(this.a.jdField_a_of_type_Aeic.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+      return;
+    } while (3 != paramInt);
+    this.a.jdField_a_of_type_Aeic.a().jdField_a_of_type_Aeiz.i = true;
+    this.a.e.setText("");
+    this.a.u();
   }
 }
 

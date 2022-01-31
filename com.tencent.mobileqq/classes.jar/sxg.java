@@ -1,9 +1,16 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-public abstract interface sxg
+public class sxg
+  implements swy
 {
-  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
+  public sxg(StoryVideoUploadTask paramStoryVideoUploadTask, sxe paramsxe) {}
+  
+  public void a(swx paramswx)
+  {
+    this.jdField_a_of_type_Sxe.l = ((sws)paramswx).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+  }
 }
 
 

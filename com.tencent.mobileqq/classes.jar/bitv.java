@@ -1,21 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public class bitv
-  implements View.OnClickListener
+public abstract interface bitv
 {
-  bitv(bitt parambitt) {}
-  
-  public void onClick(View paramView)
-  {
-    bitt.a(this.a);
-    bitt.b(this.a);
-    bitt.a(this.a, new bivm(bitt.a(this.a)));
-    if (!bitt.a(this.a)) {
-      bitt.c(this.a);
-    }
-    bitt.a(this.a).a(new bitw(this));
-  }
+  public abstract void a(birj parambirj);
 }
 
 

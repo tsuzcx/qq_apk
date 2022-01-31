@@ -1,49 +1,20 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
 class aynt
   implements Animation.AnimationListener
 {
-  aynt(aynq paramaynq, AnimatorSet paramAnimatorSet) {}
+  aynt(ayns paramayns) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = 0;
-    while (i < 3)
-    {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Aynq.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Aynq.b.size()))
-      {
-        Object localObject2 = (String)this.jdField_a_of_type_Aynq.b.get(i);
-        Drawable localDrawable = bbdr.a(true);
-        localObject1 = baxt.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof baxt))) {
-          ((baxt)localObject2).a();
-        }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Aynq.d.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Aynq.c.setTranslationX(0.0F);
-    this.jdField_a_of_type_Aynq.c.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
     paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
     paramAnimation.setAnimationListener(new aynu(this));
-    this.jdField_a_of_type_Aynq.d.startAnimation(paramAnimation);
+    this.a.d.startAnimation(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

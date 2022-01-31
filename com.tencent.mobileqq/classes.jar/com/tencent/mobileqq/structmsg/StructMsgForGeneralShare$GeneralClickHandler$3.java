@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.structmsg;
 
-import axqw;
-import axvk;
+import axqy;
+import axvm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class StructMsgForGeneralShare$GeneralClickHandler$3
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$3(axvk paramaxvk, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$3(axvm paramaxvm, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    axqw.b(this.a, "dc00898", "", "", "0X8009305", "0X8009305", 0, 0, "", "", "", "");
+    axqy.b(this.a, "dc00898", "", "", "0X8009305", "0X8009305", 0, 0, "", "", "", "");
   }
 }
 

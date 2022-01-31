@@ -1,17 +1,16 @@
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+
 class bgts
-  implements bgtg
+  extends bgvk
 {
   bgts(bgtr parambgtr) {}
   
-  public void a()
+  public void a(@NonNull bgvj parambgvj)
   {
-    if (bgtr.a(this.a) != null) {
-      bgtr.a(this.a);
-    }
-    while (bgtr.a(this.a) == null) {
-      return;
-    }
-    bgtr.a(this.a, bgtr.a(this.a));
+    parambgvj = parambgvj.a();
+    bgtr.a(this.a, parambgvj);
+    bgwj.a(BaseApplicationImpl.getContext(), parambgvj);
   }
 }
 

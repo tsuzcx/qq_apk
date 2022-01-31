@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import avtj;
-import bijc;
+import avtl;
+import bijt;
 
 public class AECameraGLSurfaceView$12$2
   implements Runnable
@@ -11,7 +11,7 @@ public class AECameraGLSurfaceView$12$2
   
   public void run()
   {
-    new avtj((Activity)this.a.this$0.getContext(), new bijc(this)).a();
+    new avtl((Activity)this.a.this$0.getContext(), new bijt(this)).a();
   }
 }
 

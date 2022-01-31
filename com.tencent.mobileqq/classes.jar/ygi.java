@@ -1,36 +1,26 @@
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.device.qfind.QFindBLEScanMgr;
+import com.tencent.device.qfind.QFindBLEScanMgr.ScanReceiver.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class ygi
+  extends BroadcastReceiver
 {
-  private static int d;
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  
-  public ygi()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    d += 1;
-    this.jdField_a_of_type_Int = d;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.c = 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
+    if (QLog.isColorLevel()) {
+      QLog.i("QFindBLE", 2, "QFindBLEScanMgr alarm is coming " + paramIntent.getAction());
+    }
+    if ((this.a.a == null) || (System.currentTimeMillis() - QFindBLEScanMgr.a(this.a) < this.a.h)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QFindBLE", 2, "QFindBLEScanMgr startScan");
+    }
+    this.a.a.post(new QFindBLEScanMgr.ScanReceiver.1(this));
   }
 }
 

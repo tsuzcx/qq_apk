@@ -1,11 +1,34 @@
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+
 class adab
-  implements aycf
+  implements ImageAssetDelegate
 {
-  adab(adaa paramadaa) {}
+  adab(aczz paramaczz) {}
   
-  public void a(ayck paramayck)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.a.b();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      paramLottieImageAsset = bbef.a(aczz.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
+    }
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
+    }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 

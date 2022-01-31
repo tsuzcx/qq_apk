@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import rje;
+import rjb;
 
 public class FastWebActivity$33$7
   implements Runnable
 {
-  public FastWebActivity$33$7(rje paramrje, String paramString) {}
+  public FastWebActivity$33$7(rjb paramrjb, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (FastWebActivity.a(this.jdField_a_of_type_Rje.a) == null) || (!this.jdField_a_of_type_JavaLangString.equals(FastWebActivity.a(this.jdField_a_of_type_Rje.a).j)))
+    if ((this.jdField_a_of_type_JavaLangString == null) || (FastWebActivity.a(this.jdField_a_of_type_Rjb.a) == null) || (!this.jdField_a_of_type_JavaLangString.equals(FastWebActivity.a(this.jdField_a_of_type_Rjb.a).j)))
     {
-      QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, "handleRelatedSearchWordsResp, msg not match !" + this.jdField_a_of_type_JavaLangString);
+      QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, "handleRelatedSearchWordsResp, msg not match !" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, "get related search words success! notify ui bindData");
+    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, "get related search words success! notify ui bindData");
   }
 }
 

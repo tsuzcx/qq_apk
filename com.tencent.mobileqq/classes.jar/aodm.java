@@ -1,10 +1,16 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
-public class aodm
+class aodm
+  implements askq<Emoticon>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  aodm(aodl paramaodl, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
   
-  public aodm(aodj paramaodj) {}
+  public void a(Emoticon paramEmoticon)
+  {
+    adue.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aodl.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aodl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+  }
 }
 
 

@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class abix
-  extends akgg
+  implements View.OnClickListener
 {
-  public abix(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public abix(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    paramView = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
     }
   }
 }

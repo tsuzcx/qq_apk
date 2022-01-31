@@ -1,30 +1,36 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class vdh
-  extends QQUIEventReceiver<vcs, tch>
+  extends wco
 {
-  public vdh(@NonNull vcs paramvcs)
+  private final String a;
+  
+  public vdh(Context paramContext, String paramString)
   {
-    super(paramvcs);
+    super(paramContext);
+    this.a = paramString;
   }
   
-  public void a(@NonNull vcs paramvcs, @NonNull tch paramtch)
+  public int a()
   {
-    if (paramtch.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      veg.d(this.TAG, "deleted story failed");
-      paramvcs.a(5, paramtch.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    paramvcs.a(paramtch.jdField_a_of_type_JavaLangString);
-    paramvcs.a(new vab[] { new uzw(uze.a(vcs.a(paramvcs).a.jdField_a_of_type_JavaLangString)), (vab)paramvcs.c.a() });
+    return 0;
   }
   
-  public Class acceptEventClass()
+  public View a(int paramInt, vap paramvap, ViewGroup paramViewGroup)
   {
-    return tch.class;
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public vap a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 

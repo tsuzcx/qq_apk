@@ -1,51 +1,12 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import java.io.File;
 
 public class bijb
-  extends bipy
 {
-  public bijb(AECameraGLSurfaceView paramAECameraGLSurfaceView, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (AECameraGLSurfaceView.a(this.a) != null) {
-      AECameraGLSurfaceView.a(this.a).a(paramFloat3);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 0;
-    AECameraGLSurfaceView.a(this.a, paramInt);
-    bijj.a().b(paramInt);
-    if (paramInt == -1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AECameraGLSurfaceView", 2, "OrientationEventListener unknown");
-      }
-    }
-    for (int j = 90;; j = 0)
-    {
-      if ((paramInt > 315) || (paramInt < 45)) {
-        i = 90;
-      }
-      for (;;)
-      {
-        AECameraGLSurfaceView.b(this.a, i);
-        return;
-        if ((paramInt > 45) && (paramInt < 135)) {
-          i = 180;
-        } else if ((paramInt > 135) && (paramInt < 225)) {
-          i = 270;
-        } else if ((paramInt <= 225) || (paramInt >= 315)) {
-          i = j;
-        }
-      }
-    }
-  }
+  public static final String a = biir.a + File.separator + "playshow";
+  public static final String b = biiu.e;
+  public static final String c = a + File.separator + "material_config";
+  public static final String d = a + File.separator + "thumbs";
+  public static final String e = a + File.separator + "videos";
 }
 
 

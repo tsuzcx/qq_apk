@@ -1,45 +1,27 @@
-public final class bgww
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bgww
+  implements View.OnClickListener
 {
-  private static final bgww jdField_a_of_type_Bgww = new bgww();
-  private static volatile bgwz jdField_a_of_type_Bgwz = new bgwy(null);
-  private static volatile boolean jdField_a_of_type_Boolean = true;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
+  bgww(bgwv parambgwv) {}
   
-  public static bgww a()
+  public void onClick(View paramView)
   {
-    if (!jdField_a_of_type_Boolean) {
-      return jdField_a_of_type_Bgww;
+    if (bgwv.a(this.a))
+    {
+      if (bgwv.b(this.a)) {
+        this.a.dismiss();
+      }
+      if (bgwv.a(this.a) != null) {
+        bgwv.a(this.a).onClick(paramView);
+      }
     }
-    return new bgww();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangThrowable = null;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      throw new NullPointerException("closer == null");
-    }
-    if ((this == jdField_a_of_type_Bgww) || (!jdField_a_of_type_Boolean)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangThrowable = new Throwable("Explicit termination method '" + paramString + "' not called");
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_JavaLangThrowable == null) || (!jdField_a_of_type_Boolean)) {
-      return;
-    }
-    jdField_a_of_type_Bgwz.a("A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.", this.jdField_a_of_type_JavaLangThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgww
  * JD-Core Version:    0.7.0.1
  */

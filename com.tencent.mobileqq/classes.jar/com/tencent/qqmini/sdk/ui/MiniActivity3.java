@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.ui;
 
 import android.os.Bundle;
-import bffu;
+import bfgl;
 
 public class MiniActivity3
   extends MiniActivity
 {
   protected void onCreate(Bundle paramBundle)
   {
-    bffu.b(this);
+    bfgl.b(this);
     super.onCreate(paramBundle);
   }
 }

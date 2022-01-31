@@ -1,45 +1,74 @@
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class baid
+  extends baib
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  private String c;
-  public int d;
-  
-  public String a()
+  public baid(String paramString1, String paramString2, baic parambaic, int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
-      return "classteacher";
-    }
-    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
-      return "teacher";
-    }
-    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
-      return "owner";
-    }
-    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
-      return "admin";
-    }
-    return "other";
+    super(paramString1, paramString2, parambaic, paramInt, paramBundle);
   }
   
-  public void a(String paramString)
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
   {
-    this.jdField_c_of_type_JavaLangString = baic.a(paramString, "").trim().replaceAll("\\s+", " ");
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
+    if (isCancelled()) {
+      return null;
+    }
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    {
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    }
+    for (;;)
+    {
+      try
+      {
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Origin");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
+        }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Origin", str3);
+          ((Bundle)localObject).remove("Origin");
+        }
+        paramVarArgs = new JSONObject(naj.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
+    }
   }
 }
 

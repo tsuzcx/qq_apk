@@ -7,14 +7,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import aodv;
-import blbz;
+import aoea;
+import blcq;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private aodv a;
+  private aoea a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,42 +35,42 @@ public class EmotionGallery
     if (paramInt > paramFloat) {}
     for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
     {
-      setMaxScale((float)blbz.a / paramInt);
+      setMaxScale((float)blcq.a / paramInt);
       return paramFloat;
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Aodv != null)
+    if (this.jdField_a_of_type_Aoea != null)
     {
       float f = a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aodv.c(f);
+      this.jdField_a_of_type_Aoea.c(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Aodv != null) {
-      this.jdField_a_of_type_Aodv.b();
+    if (this.jdField_a_of_type_Aoea != null) {
+      this.jdField_a_of_type_Aoea.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Aodv != null)
+    if (this.jdField_a_of_type_Aoea != null)
     {
       float f = a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aodv.b(f);
+      this.jdField_a_of_type_Aoea.b(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(aodv paramaodv)
+  public void setOnScaleChangeListener(aoea paramaoea)
   {
-    this.jdField_a_of_type_Aodv = paramaodv;
+    this.jdField_a_of_type_Aoea = paramaoea;
   }
 }
 

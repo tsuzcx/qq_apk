@@ -1,25 +1,31 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.biz.tribe.TribeVideoPlugin.TVKSDKInstallRunnable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class wxh
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public wxh(TribeVideoPlugin paramTribeVideoPlugin, wxo paramwxo) {}
+  public wxh(TribeVideoPlugin.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onInstallProgress(float paramFloat)
   {
-    QLog.e("TribeVideoPlugin", 2, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " what = " + paramInt2 + " position = " + paramInt3 + " extra = " + paramString);
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(7, wxo.a(this.jdField_a_of_type_Wxo));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = wxo.a(this.jdField_a_of_type_Wxo);
-      paramTVK_IMediaPlayer.what = 7;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
     }
-    return false;
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin success");
+    }
   }
 }
 

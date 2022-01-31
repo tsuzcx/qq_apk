@@ -1,15 +1,15 @@
 package cooperation.qzone;
 
-import ajyc;
+import ajya;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import bcqg;
-import bgkq;
-import bgkz;
-import bgzx;
-import bgzy;
-import bhoq;
+import bcqv;
+import bglh;
+import bglq;
+import bhao;
+import bhap;
+import bhph;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginTab;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 public class QzonePluginProxyActivity$4$1
   implements Runnable
 {
-  public QzonePluginProxyActivity$4$1(bgzx parambgzx, String paramString, boolean paramBoolean1, boolean paramBoolean2, bgkz parambgkz) {}
+  public QzonePluginProxyActivity$4$1(bhao parambhao, String paramString, boolean paramBoolean1, boolean paramBoolean2, bglq parambglq) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class QzonePluginProxyActivity$4$1
     if ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof BasePluginActivity))
     {
       localObject1 = ((BasePluginActivity)this.this$0.jdField_a_of_type_AndroidContentContext).getOutActivity();
-      QLog.w("QzonePluginProxyActivity", 1, ajyc.a(2131712191) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidContentContext);
+      QLog.w("QzonePluginProxyActivity", 1, ajya.a(2131712202) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidContentContext);
       if ((localObject1 != null) && ((localObject1 instanceof PluginTab))) {
         localObject1 = ((PluginTab)localObject1).getOutActivity();
       }
@@ -36,7 +36,7 @@ public class QzonePluginProxyActivity$4$1
       if ((localObject1 == null) || ((localObject1 instanceof BasePluginActivity)))
       {
         QLog.e("QzonePluginProxyActivity", 1, "activity 参数错误，尝试进行兼容失败");
-        bhoq.a(new IllegalArgumentException(ajyc.a(2131712180) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidContentContext), ajyc.a(2131712171));
+        bhph.a(new IllegalArgumentException(ajya.a(2131712191) + this.jdField_a_of_type_JavaLangString + ",context:" + this.this$0.jdField_a_of_type_AndroidContentContext), ajya.a(2131712182));
         return;
       }
       Intent localIntent = null;
@@ -46,9 +46,9 @@ public class QzonePluginProxyActivity$4$1
         localObject2 = localIntent;
         if (!this.b)
         {
-          localObject2 = new bcqg((Context)localObject1, this.this$0.jdField_a_of_type_AndroidContentIntent);
-          ((bcqg)localObject2).a(ajyc.a(2131712178));
-          ((bcqg)localObject2).setOnDismissListener(new bgzy(this));
+          localObject2 = new bcqv((Context)localObject1, this.this$0.jdField_a_of_type_AndroidContentIntent);
+          ((bcqv)localObject2).a(ajya.a(2131712189));
+          ((bcqv)localObject2).setOnDismissListener(new bhap(this));
         }
       }
       localIntent = this.this$0.jdField_a_of_type_AndroidContentIntent;
@@ -56,8 +56,8 @@ public class QzonePluginProxyActivity$4$1
       for (;;)
       {
         localIntent.putExtra("QZoneExtra.Plugin.isloading", bool);
-        this.jdField_a_of_type_Bgkz.a = ((Dialog)localObject2);
-        bgkq.a((Context)localObject1, this.jdField_a_of_type_Bgkz);
+        this.jdField_a_of_type_Bglq.a = ((Dialog)localObject2);
+        bglh.a((Context)localObject1, this.jdField_a_of_type_Bglq);
         return;
         bool = false;
       }

@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pbm;
+import pbj;
 
 class ReadInJoyUserInfoModule$2
   implements Runnable

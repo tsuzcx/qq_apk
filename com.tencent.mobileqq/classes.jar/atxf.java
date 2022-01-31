@@ -1,11 +1,9 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import java.util.List;
-
-abstract interface atxf
+public class atxf
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
-  
-  public abstract void a(List<RedTouchItem> paramList);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 10019) || (paramInt == 10020) || (paramInt == 10021) || (paramInt == 10022) || (paramInt == 10023) || (paramInt == 10024) || (paramInt == 10025) || (paramInt == 10026);
+  }
 }
 
 

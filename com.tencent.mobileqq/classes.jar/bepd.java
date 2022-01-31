@@ -1,10 +1,21 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
 
-public abstract interface bepd
-  extends IInterface
+public class bepd
+  extends bepf
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public bepd(BarrageView paramBarrageView, View paramView, int paramInt)
+  {
+    super(paramBarrageView, paramView, null);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    super.onAnimationEnd(paramAnimation);
+    BarrageView.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView).remove(this.jdField_a_of_type_Int);
+  }
 }
 
 

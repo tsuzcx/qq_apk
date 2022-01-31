@@ -1,34 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.ims.SafeReport.RspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-class bfhu
-  extends Handler
+final class bfhu
+  extends mxj
 {
-  public bfhu(bfhm parambfhm, Looper paramLooper)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new SafeReport.RspBody();
+    }
+    try
     {
-    default: 
-      return;
-    case 1: 
-      bfhm.a(this.a, bfhm.a(this.a, paramMessage.obj));
-      return;
-    case 2: 
-      bfhm.a(this.a, true);
-      bfhm.a(this.a);
-      bfhm.a(this.a, false);
-      return;
-    case 3: 
-      bfhm.a(this.a, paramMessage.obj);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
+        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      }
       return;
     }
-    bfhm.b(this.a, paramMessage.obj);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

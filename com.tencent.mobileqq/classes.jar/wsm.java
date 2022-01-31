@@ -1,35 +1,6 @@
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
-import com.tencent.qphone.base.util.QLog;
-
-class wsm
-  implements xgx<CertifiedAccountWrite.StDoTipOffRsp>
+public abstract interface wsm
 {
-  wsm(wsl paramwsl) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
-  {
-    paramBoolean = true;
-    if (paramLong == 0L)
-    {
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
-      if (this.a.a != null)
-      {
-        paramString = this.a.a;
-        if (paramLong != 0L) {
-          break label78;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramString.a(paramBoolean);
-      return;
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
-      break;
-      label78:
-      paramBoolean = false;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

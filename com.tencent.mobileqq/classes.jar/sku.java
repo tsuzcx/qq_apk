@@ -1,39 +1,16 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import java.util.ArrayList;
 
-@SuppressLint({"HandlerLeak"})
-class sku
-  extends Handler
+abstract interface sku
 {
-  WeakReference<skt> jdField_a_of_type_JavaLangRefWeakReference;
+  public abstract void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
   
-  sku(skt paramskt1, skt paramskt2)
-  {
-    sne.b("WSFallKeyPicMonitor", "init DownloadHandler");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramskt2);
-  }
+  public abstract void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    sne.b("WSFallKeyPicMonitor", "handleMessage to download");
-    if (paramMessage.what == 1)
-    {
-      if (skt.a(this.jdField_a_of_type_Skt) != 4) {
-        break label46;
-      }
-      skt.a(this.jdField_a_of_type_Skt);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Skt.b();
-      return;
-      label46:
-      skt.b(this.jdField_a_of_type_Skt);
-    }
-  }
+  public abstract void a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt);
+  
+  public abstract boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
 }
 
 

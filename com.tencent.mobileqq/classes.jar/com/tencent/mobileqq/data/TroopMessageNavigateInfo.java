@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 
 public class TroopMessageNavigateInfo
-  extends aukm
+  extends auko
 {
   public static int STATUS_ADD = 1;
   public static int STATUS_DELETE = 3;

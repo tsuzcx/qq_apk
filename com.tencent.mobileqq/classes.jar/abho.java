@@ -1,21 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abho
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public abho(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = new Intent();
-    paramView.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
-    axqw.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131719392), "qqsetting_notify_icon_key", paramBoolean);
+      return;
+    }
   }
 }
 

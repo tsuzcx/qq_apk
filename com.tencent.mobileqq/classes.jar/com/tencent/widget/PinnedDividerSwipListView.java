@@ -7,23 +7,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import bcoe;
-import bfob;
-import bftp;
-import bftq;
+import bcot;
+import bfos;
+import bfug;
+import bfuh;
 import java.util.LinkedList;
 
 public class PinnedDividerSwipListView
   extends SwipListView
-  implements bfob
+  implements bfos
 {
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  private bcoe jdField_a_of_type_Bcoe;
-  private bfob jdField_a_of_type_Bfob;
-  private bftp jdField_a_of_type_Bftp;
-  private bftq jdField_a_of_type_Bftq;
+  private bcot jdField_a_of_type_Bcot;
+  private bfos jdField_a_of_type_Bfos;
+  private bfug jdField_a_of_type_Bfug;
+  private bfuh jdField_a_of_type_Bfuh;
   private LinkedList<View> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private int b;
   
@@ -83,7 +83,7 @@ public class PinnedDividerSwipListView
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-      this.jdField_a_of_type_Bftp.a(this.jdField_a_of_type_AndroidViewView, i);
+      this.jdField_a_of_type_Bfug.a(this.jdField_a_of_type_AndroidViewView, i);
     }
     for (;;)
     {
@@ -100,8 +100,8 @@ public class PinnedDividerSwipListView
       label145:
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }
-    if (this.jdField_a_of_type_Bcoe != null) {
-      this.jdField_a_of_type_Bcoe.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Bcot != null) {
+      this.jdField_a_of_type_Bcot.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -123,8 +123,8 @@ public class PinnedDividerSwipListView
         break label351;
       }
       i = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      this.jdField_a_of_type_Bftp.a(this.jdField_a_of_type_AndroidViewView, i);
-      if (this.jdField_a_of_type_Bftp.a(i))
+      this.jdField_a_of_type_Bfug.a(this.jdField_a_of_type_AndroidViewView, i);
+      if (this.jdField_a_of_type_Bfug.a(i))
       {
         this.jdField_a_of_type_Int = 0;
         paramInt1 = 1;
@@ -159,7 +159,7 @@ public class PinnedDividerSwipListView
           paramInt1 = 0;
           break;
         }
-        if (this.jdField_a_of_type_Bftp.a(i + 1))
+        if (this.jdField_a_of_type_Bfug.a(i + 1))
         {
           this.jdField_a_of_type_Int = 1;
           paramInt1 = 0;
@@ -188,11 +188,11 @@ public class PinnedDividerSwipListView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfob != null) {
-        this.jdField_a_of_type_Bfob.onScroll(paramAbsListView, i, paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Bfos != null) {
+        this.jdField_a_of_type_Bfos.onScroll(paramAbsListView, i, paramInt2, paramInt3);
       }
-      if (this.jdField_a_of_type_Bftq != null) {
-        this.jdField_a_of_type_Bftq.onScroll(paramAbsListView, i, paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Bfuh != null) {
+        this.jdField_a_of_type_Bfuh.onScroll(paramAbsListView, i, paramInt2, paramInt3);
       }
       return;
       label338:
@@ -206,10 +206,10 @@ public class PinnedDividerSwipListView
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       j = this.jdField_a_of_type_JavaUtilLinkedList.size();
       i = paramInt1;
-      if (this.jdField_a_of_type_Bftp.getCount() > 0)
+      if (this.jdField_a_of_type_Bfug.getCount() > 0)
       {
         i = paramInt1;
-        if (this.jdField_a_of_type_Bftp.a(0))
+        if (this.jdField_a_of_type_Bfug.a(0))
         {
           i = paramInt1;
           if (j >= paramInt1)
@@ -228,11 +228,11 @@ public class PinnedDividerSwipListView
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bfob != null) {
-      this.jdField_a_of_type_Bfob.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bfos != null) {
+      this.jdField_a_of_type_Bfos.onScrollStateChanged(paramAbsListView, paramInt);
     }
-    if (this.jdField_a_of_type_Bftq != null) {
-      this.jdField_a_of_type_Bftq.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bfuh != null) {
+      this.jdField_a_of_type_Bfuh.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -247,35 +247,35 @@ public class PinnedDividerSwipListView
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof bftp))
+    if ((paramListAdapter instanceof bfug))
     {
-      this.jdField_a_of_type_Bftp = ((bftp)paramListAdapter);
-      int i = this.jdField_a_of_type_Bftp.a();
+      this.jdField_a_of_type_Bfug = ((bfug)paramListAdapter);
+      int i = this.jdField_a_of_type_Bfug.a();
       if (i != 0)
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
         requestLayout();
       }
-      super.setAdapter(this.jdField_a_of_type_Bftp);
+      super.setAdapter(this.jdField_a_of_type_Bfug);
       return;
     }
-    this.jdField_a_of_type_Bftp = null;
+    this.jdField_a_of_type_Bfug = null;
     super.setAdapter(paramListAdapter);
   }
   
-  public void setOnLayoutListener(bcoe parambcoe)
+  public void setOnLayoutListener(bcot parambcot)
   {
-    this.jdField_a_of_type_Bcoe = parambcoe;
+    this.jdField_a_of_type_Bcot = parambcot;
   }
   
-  public void setOnScrollListener(bfob parambfob)
+  public void setOnScrollListener(bfos parambfos)
   {
-    this.jdField_a_of_type_Bfob = parambfob;
+    this.jdField_a_of_type_Bfos = parambfos;
   }
   
-  public void setOnScrollListenerAdapter(bftq parambftq)
+  public void setOnScrollListenerAdapter(bfuh parambfuh)
   {
-    this.jdField_a_of_type_Bftq = parambftq;
+    this.jdField_a_of_type_Bfuh = parambfuh;
   }
 }
 

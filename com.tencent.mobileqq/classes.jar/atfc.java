@@ -1,63 +1,28 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import java.util.ArrayList;
 
 public class atfc
-  implements atfo
+  implements atft
 {
   public atfc(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(InterestTagInfo paramInterestTagInfo)
+  public void a(long paramLong)
   {
-    ChooseInterestTagActivity.a(this.a, 0);
-    bfmr.b(ChooseInterestTagActivity.a(this.a));
-    boolean bool;
-    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
     {
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
-      if (ChooseInterestTagActivity.b(this.a) != -1)
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
       {
-        bool = true;
-        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
-        ChooseInterestTagActivity.a(this.a).setText("");
-        ChooseInterestTagActivity.a(this.a, "");
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
       }
+      i += 1;
     }
-    else
-    {
-      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
-        break label132;
-      }
-      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
-      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
-    }
-    label132:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
-        break label198;
-      }
-    } while (ChooseInterestTagActivity.d(this.a));
-    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
-    ChooseInterestTagActivity.b(this.a, true);
-    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
-    return;
-    label198:
-    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
-    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
-  }
-  
-  public boolean a(InterestTagInfo paramInterestTagInfo)
-  {
-    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 

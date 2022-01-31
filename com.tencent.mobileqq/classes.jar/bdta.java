@@ -1,56 +1,91 @@
-import android.graphics.SurfaceTexture;
+import com.tencent.qg.sdk.log.IQLog;
 
-class bdta
-  implements bdtj
+public class bdta
+  implements IQLog
 {
-  bdta(bdsz parambdsz) {}
-  
-  public void a()
+  private static String a(String paramString, Object... paramVarArgs)
   {
-    veg.b("DefaultMediaPlayer", "decoder -> onDecodeStart");
+    return String.format(null, paramString, paramVarArgs);
   }
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public void a(String paramString1, String paramString2)
   {
-    veg.d("DefaultMediaPlayer", "decoder -> onDecodeError :%d , %s", new Object[] { Integer.valueOf(paramInt), paramThrowable });
+    ved.c(paramString1, paramString2);
   }
   
-  public void a(long paramLong)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (bdsz.a(this.a) == 0)
-    {
-      bdtb.a(this.a.hashCode(), "[Player] on video decode first frame");
-      bdsz.a(this.a, 1);
-    }
+    ved.b(paramString1, paramString2, paramThrowable);
   }
   
-  public void a(SurfaceTexture paramSurfaceTexture)
+  public void d(String paramString1, String paramString2)
   {
-    bdsz.a(this.a, paramSurfaceTexture);
+    ved.b(paramString1, paramString2);
   }
   
-  public void b()
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    veg.d("DefaultMediaPlayer", "decoder -> onDecodeFinish");
-    bdsz.a(this.a);
+    ved.a(paramString1, paramString2, paramThrowable);
   }
   
-  public void b(long paramLong)
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    veg.d("DefaultMediaPlayer", "decoder -> onDecodeSeekTo :%d", new Object[] { Long.valueOf(paramLong) });
+    ved.b(paramString1, a(paramString2, paramVarArgs));
   }
   
-  public void c()
+  public void e(String paramString1, String paramString2)
   {
-    veg.d("DefaultMediaPlayer", "decoder -> onDecodeCancel");
-    bdsz.a(this.a);
+    ved.e(paramString1, paramString2);
   }
   
-  public void d()
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    veg.d("DefaultMediaPlayer", "decoder -> onDecodeRepeat");
-    bdsz.a(this.a);
-    bdsz.b(this.a);
+    ved.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    ved.c(paramString1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ved.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    ved.c(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    ved.a(paramString1, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ved.a(paramString1, paramString2, new Object[] { paramThrowable });
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    ved.c(paramString1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    ved.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    ved.d(paramString1, a(paramString2, paramVarArgs));
+  }
+  
+  public void w(String paramString, Throwable paramThrowable)
+  {
+    ved.b(paramString, "", paramThrowable);
   }
 }
 

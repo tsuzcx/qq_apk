@@ -1,40 +1,15 @@
-import android.content.Context;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import android.os.Bundle;
 
-class apdi
+public class apdi
 {
-  float jdField_a_of_type_Float = 14.0F;
-  int jdField_a_of_type_Int = 0;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  final String jdField_a_of_type_JavaLangString = "SearchForText";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  apdi(apdg paramapdg, Context paramContext)
-  {
-    if (paramContext != null) {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    }
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
+  apdi(apdc paramapdc) {}
 }
 
 

@@ -1,27 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
 import java.lang.ref.WeakReference;
 
 class nui
-  implements reh
+  extends Handler
 {
-  private WeakReference<nud> a;
+  private WeakReference<nug> a;
   
-  nui(nud paramnud)
+  public nui(nug paramnug)
   {
-    this.a = new WeakReference(paramnud);
+    this.a = new WeakReference(paramnug);
   }
   
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  public void handleMessage(Message paramMessage)
   {
-    nud localnud = (nud)this.a.get();
-    if (((localnud == null) || (nud.a(localnud).a())) && (QLog.isColorLevel()))
-    {
-      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+    nug localnug = (nug)this.a.get();
+    if ((localnug == null) || (!localnug.b())) {
       return;
     }
-    localnud.a(paramChannelCoverInfo);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localnug.b();
   }
 }
 

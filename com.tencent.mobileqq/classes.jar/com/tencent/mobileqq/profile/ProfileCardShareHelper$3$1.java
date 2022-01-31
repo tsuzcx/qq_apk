@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile;
 
 import android.graphics.Bitmap;
-import auuz;
-import bcpw;
+import auvb;
+import bcql;
 
 class ProfileCardShareHelper$3$1
   implements Runnable
@@ -14,10 +14,10 @@ class ProfileCardShareHelper$3$1
     this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0.c();
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      auuz.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, auuz.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), auuz.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      auvb.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, auvb.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), auvb.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
       return;
     }
-    bcpw.a(auuz.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131719477, 1).a();
+    bcql.a(auvb.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131719488, 1).a();
   }
 }
 

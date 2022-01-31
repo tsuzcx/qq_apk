@@ -1,14 +1,8 @@
-import org.json.JSONObject;
-
 class sge
-  implements ryg
 {
-  sge(sfn paramsfn) {}
-  
-  public void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  String b;
 }
 
 

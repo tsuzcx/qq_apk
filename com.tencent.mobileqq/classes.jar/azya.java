@@ -1,6 +1,16 @@
-public abstract interface azya
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+
+public class azya
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public azya(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, bfpc parambfpc) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bfpc.dismiss();
+  }
 }
 
 

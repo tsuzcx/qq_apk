@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend;
 
-import abtu;
+import abtq;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -12,7 +12,7 @@ public class ExtendFriendPublicFragmentActivity
 {
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    abtu.a(paramContext, new Intent(), ExtendFriendPublicFragmentActivity.class, ExtendFriendFragment.class);
+    abtq.a(paramContext, new Intent(), ExtendFriendPublicFragmentActivity.class, ExtendFriendFragment.class);
   }
 }
 

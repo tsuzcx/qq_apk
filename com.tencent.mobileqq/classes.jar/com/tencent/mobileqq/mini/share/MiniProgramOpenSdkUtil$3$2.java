@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import bcpw;
+import bcql;
 
 class MiniProgramOpenSdkUtil$3$2
   implements Runnable
@@ -9,7 +9,7 @@ class MiniProgramOpenSdkUtil$3$2
   
   public void run()
   {
-    bcpw.a(this.this$0.val$context, 1, this.val$errMsg, 0).a();
+    bcql.a(this.this$0.val$context, 1, this.val$errMsg, 0).a();
   }
 }
 

@@ -1,17 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afmw
-  implements View.OnClickListener
+  extends bajm
 {
-  public afmw(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
+  public afmw(NotificationView paramNotificationView) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    auvw.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Afmm.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
+    if ((paramBoolean) && (paramBundle != null)) {}
+    while (this.a.jdField_a_of_type_Bcqf == null) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
+        localStructMsg.mergeFrom(paramBundle);
+        NotificationView.a(this.a, 1, localStructMsg);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NotificationView", 2, "structMsg merge error");
+          }
+        } while (this.a.jdField_a_of_type_Bcqf == null);
+        this.a.jdField_a_of_type_Bcqf.dismiss();
+        bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697634), 0).b(this.a.a());
+        return;
+      }
+    }
+    this.a.jdField_a_of_type_Bcqf.dismiss();
+    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697634), 0).b(this.a.a());
   }
 }
 

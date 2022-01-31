@@ -1,32 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class abhg
-  extends xpz
+class abhg
+  implements aylm
 {
-  public abhg(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  abhg(abhf paramabhf, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
   
-  public xpg a(Activity paramActivity, xpm paramxpm)
+  public void onCancel()
   {
-    return super.a(paramActivity, paramxpm);
+    this.jdField_a_of_type_Abhf.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
   }
   
-  public xpi a(Activity paramActivity, xpm paramxpm)
+  public void onConfirm()
   {
-    this.a.a = new ausv((FriendProfilePicBrowserActivity)paramActivity, paramxpm);
-    return this.a.a;
-  }
-  
-  public xpm a(Activity paramActivity)
-  {
-    paramActivity = new atoe(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public xpn a(Activity paramActivity, xpm paramxpm)
-  {
-    return null;
+    this.jdField_a_of_type_Abhf.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Abhf.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

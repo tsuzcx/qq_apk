@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import bbdr;
+import bbef;
 
 public class RedTouchTab
   extends RedTouch
@@ -45,7 +45,7 @@ public class RedTouchTab
       {
         try
         {
-          localTextView.setBackgroundResource(2130849294);
+          localTextView.setBackgroundResource(2130849303);
           localTextView.setLayoutParams(a());
           if (this.b)
           {
@@ -61,17 +61,17 @@ public class RedTouchTab
         }
         catch (OutOfMemoryError paramString)
         {
-          bbdr.a(getResources(), localTextView, 2130849294);
+          bbef.a(getResources(), localTextView, 2130849303);
           continue;
         }
         try
         {
           label185:
-          localTextView.setBackgroundResource(2130849292);
+          localTextView.setBackgroundResource(2130849301);
         }
         catch (OutOfMemoryError paramString)
         {
-          bbdr.a(getResources(), localTextView, 2130849292);
+          bbef.a(getResources(), localTextView, 2130849301);
         }
         continue;
         label210:

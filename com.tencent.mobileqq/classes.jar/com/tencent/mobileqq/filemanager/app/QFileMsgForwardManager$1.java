@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.text.TextUtils;
-import aowt;
-import aoxn;
-import aoxp;
-import aoxq;
-import apey;
-import apue;
-import axqw;
-import bbev;
+import aowx;
+import aoxr;
+import aoxt;
+import aoxu;
+import apfc;
+import apug;
+import axqy;
+import bbfj;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.text.DecimalFormat;
@@ -20,11 +20,11 @@ import java.util.Set;
 public class QFileMsgForwardManager$1
   implements Runnable
 {
-  public QFileMsgForwardManager$1(aowt paramaowt, apey paramapey) {}
+  public QFileMsgForwardManager$1(aowx paramaowx, apfc paramapfc) {}
   
   public void run()
   {
-    boolean bool = bbev.g(null);
+    boolean bool = bbfj.g(null);
     if (QLog.isColorLevel()) {
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, "isNetworkAvailable:" + bool);
     }
@@ -37,7 +37,7 @@ public class QFileMsgForwardManager$1
       this.a.a(0, new ArrayList(), new ArrayList());
       return;
     }
-    aoxq localaoxq = new aoxq(this.this$0, str1, this.a, localHashMap);
+    aoxu localaoxu = new aoxu(this.this$0, str1, this.a, localHashMap);
     Iterator localIterator1 = localHashMap.keySet().iterator();
     long l1 = 0L;
     if (localIterator1.hasNext())
@@ -51,15 +51,15 @@ public class QFileMsgForwardManager$1
           break;
         }
         Object localObject = (MessageRecord)localIterator2.next();
-        if ((apue.a((MessageRecord)localObject)) && (aowt.a(this.this$0, (MessageRecord)localObject)))
+        if ((apug.a((MessageRecord)localObject)) && (aowx.a(this.this$0, (MessageRecord)localObject)))
         {
-          aoxn localaoxn = aowt.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
-          if (localaoxn == null) {
+          aoxr localaoxr = aowx.a(this.this$0, str2, i, str1, (MessageRecord)localObject);
+          if (localaoxr == null) {
             break label301;
           }
-          localaoxq.a(localaoxn);
+          localaoxu.a(localaoxr);
           if (!bool) {
-            localaoxn.a.a("", true);
+            localaoxr.a.a("", true);
           }
           localObject = ((MessageRecord)localObject).getExtInfoFromExtStr("_m_ForwardSize");
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
@@ -72,15 +72,15 @@ public class QFileMsgForwardManager$1
       this.a.a(1, new ArrayList(), new ArrayList());
       return;
     }
-    if (localaoxq.a() > 0)
+    if (localaoxu.a() > 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localaoxq.a() + "]");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : forwardMsgSeq[" + str1 + "] toUin[" + str2 + "] toType[" + i + "] uploadCount[" + localaoxu.a() + "]");
       }
       str2 = new DecimalFormat("0.00").format(l1 / 1024.0D / 1024.0D);
-      axqw.b(aowt.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
-      aowt.a(this.this$0).put(str1, localaoxq);
-      localaoxq.a();
+      axqy.b(aowx.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str2, "");
+      aowx.a(this.this$0).put(str1, localaoxu);
+      localaoxu.a();
       return;
     }
     this.a.a(0, new ArrayList(), new ArrayList());

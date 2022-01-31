@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import omu;
+import omr;
 
 public class DailyTitleBar
   extends FrameLayout
@@ -31,9 +31,9 @@ public class DailyTitleBar
   {
     super(paramContext, paramAttributeSet);
     a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369626);
-    this.b = findViewById(2131369635);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378384));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369625);
+    this.b = findViewById(2131369634);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378389));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131368715));
     this.c = findViewById(2131377449);
   }
@@ -55,10 +55,10 @@ public class DailyTitleBar
         String str = paramAttributeSet.getString(3);
         i = paramAttributeSet.getColor(4, -16777216);
         int j = paramAttributeSet.getResourceId(0, 2131167134);
-        k = paramAttributeSet.getResourceId(2, 2130842419);
-        m = paramAttributeSet.getResourceId(1, 2130842607);
+        k = paramAttributeSet.getResourceId(2, 2130842420);
+        m = paramAttributeSet.getResourceId(1, 2130842608);
         setBackgroundResource(j);
-        localTextView = (TextView)findViewById(2131378384);
+        localTextView = (TextView)findViewById(2131378389);
         localTextView.setText(str);
         localTextView.setTextColor(i);
         if ((i != -1) && (i != 16777215)) {
@@ -75,7 +75,7 @@ public class DailyTitleBar
       }
       localTextView.setVisibility(8);
       findViewById(2131368507).setBackgroundResource(k);
-      findViewById(2131368684).setBackgroundResource(m);
+      findViewById(2131368683).setBackgroundResource(m);
       paramAttributeSet.recycle();
       setClickable(true);
       a(paramContext);
@@ -105,7 +105,7 @@ public class DailyTitleBar
     }
     try
     {
-      omu.a(localKandianUrlImageView, new URL((String)localObject), paramContext);
+      omr.a(localKandianUrlImageView, new URL((String)localObject), paramContext);
       return;
     }
     catch (MalformedURLException paramContext)

@@ -1,15 +1,32 @@
-public class asit
-  extends ssk
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+
+public abstract class asit
 {
-  public int a;
-  public asiu a;
-  public String a;
-  public boolean a;
-  public Object[] a;
+  public asiw a;
+  public MiniAppActivity a;
   
-  public String toString()
+  public asit(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
+  }
+  
+  public abstract void a();
+  
+  public void a(asiw paramasiw)
+  {
+    this.jdField_a_of_type_Asiw = paramasiw;
+    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Asiw = paramasiw;
+    }
+  }
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 

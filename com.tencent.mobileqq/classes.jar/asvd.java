@@ -1,35 +1,48 @@
 import com.tencent.qphone.base.util.QLog;
 
 class asvd
-  extends auom
+  implements auna
 {
-  asvd(asuu paramasuu, String paramString, asup paramasup) {}
+  asvd(asuw paramasuw, asur paramasur) {}
   
-  public void a(int paramInt, aunu paramaunu)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramaunu != null)
+    if (this.jdField_a_of_type_Asur.a != null)
     {
-      str1 = str2;
-      i = j;
-      if (paramaunu.a != null)
+      String str = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Asur.a.a);
+      asus localasus = this.jdField_a_of_type_Asuw.a(str);
+      if ((localasus != null) && (!localasus.a))
       {
-        i = paramaunu.a.a;
-        str1 = paramaunu.a.b;
+        localasus.c = (paramInt / 100);
+        this.jdField_a_of_type_Asuw.a(str, localasus);
+        asuw.a(this.jdField_a_of_type_Asuw, localasus, paramInt / 100);
       }
     }
-    asuu.a(this.jdField_a_of_type_Asuu, this.jdField_a_of_type_Asup, paramInt, i, str1);
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void a(aunb paramaunb)
   {
-    asuu.a(this.jdField_a_of_type_Asuu, this.jdField_a_of_type_Asup, paramInt);
+    int i = 0;
+    String str = "";
+    int k;
+    if (paramaunb != null)
+    {
+      k = paramaunb.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload shortVideoReq result = " + k);
+      }
+      j = k;
+      if (paramaunb.jdField_a_of_type_Aunr != null)
+      {
+        i = paramaunb.jdField_a_of_type_Aunr.jdField_a_of_type_Int;
+        str = paramaunb.jdField_a_of_type_Aunr.b;
+      }
+    }
+    for (int j = k;; j = 0)
+    {
+      this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Asur, j, i, str);
+      return;
+    }
   }
 }
 

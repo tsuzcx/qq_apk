@@ -1,91 +1,44 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.view.Gravity;
+import NS_QQ_STORY_META.META.StStoryFeed;
+import NS_QQ_STORY_META.META.StUser;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.util.StStoryFeedUtil;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class adkm
-  extends Drawable
+class adkm
+  implements View.OnClickListener
 {
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private static final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  adkm(adkl paramadkl, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
   
-  public adkm(int paramInt, float paramFloat)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(paramInt1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    float f1 = 0.0F;
-    int i = getLevel();
-    if (i == 0) {}
-    Rect localRect1;
-    Rect localRect2;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      return;
-      localRect1 = jdField_b_of_type_AndroidGraphicsRect;
-      localRect2 = getBounds();
-      j = localRect2.width();
-      k = localRect2.height();
-      k -= (10000 - i) * k / 10000;
-      m = paramCanvas.getHeight();
-      Gravity.apply(48, j, k, localRect2, localRect1);
-    } while ((j <= 0) || (k <= 0));
-    this.jdField_a_of_type_JavaLangString = (100 - i / 100 + "%");
-    paramCanvas.save();
-    float f2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      f2 = (paramCanvas.getWidth() - this.jdField_a_of_type_AndroidGraphicsRect.width()) / 2;
-      f1 = (this.jdField_a_of_type_AndroidGraphicsRect.height() + m) / 2;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+    long l = System.currentTimeMillis();
+    paramView = (acuo)this.jdField_a_of_type_Adkl.a.getManager(282);
+    if (paramView != null) {
+      paramView.a(4, 7);
     }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
+    if ((localObject != null) && (((META.StStoryFeed)localObject).postUser != null))
     {
-      paramCanvas.clipRect(localRect1);
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect2);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_Boolean) {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      paramCanvas.restore();
-      return;
-      f2 = 0.0F;
+      paramView = new Bundle();
+      paramView.putLong("key_launch_time", l);
+      paramView.putLong("key_current_feeduin", ((META.StStoryFeed)localObject).postUser.uin.get());
+      paramView.putInt("key_request_from", 3);
+      paramView.putInt("key_weishi_entrance_type", 19);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      localObject = StStoryFeedUtil.getConvertDataList(localArrayList);
+      paramView.putInt("key_video_story_jump_position", 0);
+      paramView.putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject);
+      paramView.putInt("key_request_business_type", 7);
+      bbeg.a(paramView);
     }
   }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

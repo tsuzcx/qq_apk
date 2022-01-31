@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.pic;
 
-import ampm;
-import amuc;
+import ampl;
+import amub;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import aunv;
-import aunw;
 import aunx;
 import auny;
-import awvy;
-import axqw;
-import axrl;
-import ayvv;
-import aywa;
-import bcpq;
-import bcpw;
+import aunz;
+import auoa;
+import awwa;
+import axqy;
+import axrn;
+import ayvx;
+import aywc;
+import bcqf;
+import bcql;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
@@ -37,9 +37,9 @@ public class PicShareToWX
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private aunv jdField_a_of_type_Aunv;
-  private aywa jdField_a_of_type_Aywa;
-  public bcpq a;
+  private aunx jdField_a_of_type_Aunx;
+  private aywc jdField_a_of_type_Aywc;
+  public bcqf a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PicShareToWX.TimeoutRunnable jdField_a_of_type_ComTencentMobileqqPicPicShareToWX$TimeoutRunnable;
   private boolean jdField_a_of_type_Boolean;
@@ -68,7 +68,7 @@ public class PicShareToWX
     }
     for (;;)
     {
-      axqw.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       return;
       str = "0X800A501";
       continue;
@@ -95,7 +95,7 @@ public class PicShareToWX
     Bundle localBundle = new Bundle();
     localBundle.putString("param_pic_path", paramString);
     localBundle.putInt("param_from_type", paramInt);
-    paramString = new aunx();
+    paramString = new aunz();
     QIPCClientHelper.getInstance().callServer("PicSTWXQIPCModule", "action_share_pic_to_wx", localBundle, paramString);
     a().a(paramContext);
   }
@@ -112,7 +112,7 @@ public class PicShareToWX
       localHashMap.put("param_errorStep", String.valueOf(paramInt2));
       localHashMap.put("param_FailCode", String.valueOf(paramInt1));
       localHashMap.put("param_fromType", String.valueOf(this.jdField_a_of_type_Int));
-      axrl.a(BaseApplication.getContext()).a(null, "actPicShareToWX", paramBoolean, 0L, 0L, localHashMap, null);
+      axrn.a(BaseApplication.getContext()).a(null, "actPicShareToWX", paramBoolean, 0L, 0L, localHashMap, null);
       return;
       localHashMap.put("param_succ_flag", "0");
     }
@@ -125,22 +125,22 @@ public class PicShareToWX
   
   public void a()
   {
-    this.jdField_a_of_type_Bcpq = null;
-    this.jdField_a_of_type_Aywa = null;
+    this.jdField_a_of_type_Bcqf = null;
+    this.jdField_a_of_type_Aywc = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Aunv = null;
+    this.jdField_a_of_type_Aunx = null;
     this.b = 0;
   }
   
   public void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (this.jdField_a_of_type_Bcpq == null) {
-      this.jdField_a_of_type_Bcpq = new bcpq(paramContext, a(paramContext));
+    if (this.jdField_a_of_type_Bcqf == null) {
+      this.jdField_a_of_type_Bcqf = new bcqf(paramContext, a(paramContext));
     }
-    this.jdField_a_of_type_Bcpq.c(2131698467);
-    this.jdField_a_of_type_Bcpq.show();
+    this.jdField_a_of_type_Bcqf.c(2131698477);
+    this.jdField_a_of_type_Bcqf.show();
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -150,10 +150,10 @@ public class PicShareToWX
     a(paramQQAppInterface, paramString);
   }
   
-  public void a(aunv paramaunv, int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2)
+  public void a(aunx paramaunx, int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2)
   {
     this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Aunv = paramaunv;
+    this.jdField_a_of_type_Aunx = paramaunx;
     this.b = paramInt1;
     a(paramQQAppInterface, paramString);
   }
@@ -161,19 +161,19 @@ public class PicShareToWX
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     this.jdField_a_of_type_Boolean = false;
-    aywa localaywa = new aywa();
-    localaywa.b = 66;
-    localaywa.i = paramString;
+    aywc localaywc = new aywc();
+    localaywc.b = 66;
+    localaywc.i = paramString;
     this.jdField_a_of_type_Long = new File(paramString).length();
-    localaywa.jdField_a_of_type_Auoo = new auny(this, paramString);
-    localaywa.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Aywa = localaywa;
+    localaywc.jdField_a_of_type_Auoq = new auoa(this, paramString);
+    localaywc.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Aywc = localaywc;
     if (paramQQAppInterface != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
       paramQQAppInterface = paramQQAppInterface.a();
       if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(localaywa);
+        paramQQAppInterface.a(localaywc);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX$TimeoutRunnable = new PicShareToWX.TimeoutRunnable(this, null);
@@ -185,42 +185,42 @@ public class PicShareToWX
     if (QLog.isColorLevel()) {
       QLog.d("PicShareToWX", 1, "doShareToWX");
     }
-    amuc localamuc = (amuc)ampm.a().a(530);
-    aunw localaunw = new aunw(this, paramInt);
-    String str = localamuc.jdField_b_of_type_JavaLangString + "url=" + awvy.a(paramString);
-    WXShareHelper.a().a(localaunw);
-    WXShareHelper.a().a(str, paramString, localamuc.jdField_a_of_type_JavaLangString, paramBitmap, localamuc.c, localamuc.d, localamuc.jdField_b_of_type_Boolean, localamuc.jdField_a_of_type_Int);
+    amub localamub = (amub)ampl.a().a(530);
+    auny localauny = new auny(this, paramInt);
+    String str = localamub.jdField_b_of_type_JavaLangString + "url=" + awwa.a(paramString);
+    WXShareHelper.a().a(localauny);
+    WXShareHelper.a().a(str, paramString, localamub.jdField_a_of_type_JavaLangString, paramBitmap, localamub.c, localamub.d, localamub.jdField_b_of_type_Boolean, localamub.jdField_a_of_type_Int);
   }
   
   public boolean a()
   {
-    return ((amuc)ampm.a().a(530)).jdField_a_of_type_Boolean;
+    return ((amub)ampl.a().a(530)).jdField_a_of_type_Boolean;
   }
   
   public boolean a(File paramFile)
   {
-    amuc localamuc = (amuc)ampm.a().a(530);
-    return paramFile.length() < localamuc.jdField_a_of_type_Long;
+    amub localamub = (amub)ampl.a().a(530);
+    return paramFile.length() < localamub.jdField_a_of_type_Long;
   }
   
   public boolean a(String paramString)
   {
     paramString = new File(paramString);
-    amuc localamuc = (amuc)ampm.a().a(530);
-    return paramString.length() < localamuc.jdField_a_of_type_Long;
+    amub localamub = (amub)ampl.a().a(530);
+    return paramString.length() < localamub.jdField_a_of_type_Long;
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_AndroidContentContext != null) {
-      bcpw.a(this.jdField_a_of_type_AndroidContentContext, 2131719477, 0).a();
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2131719488, 0).a();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bcpq != null) {
-      this.jdField_a_of_type_Bcpq.dismiss();
+    if (this.jdField_a_of_type_Bcqf != null) {
+      this.jdField_a_of_type_Bcqf.dismiss();
     }
   }
   

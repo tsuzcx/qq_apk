@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class PrecoverRetryInfo
-  extends aukm
+  extends auko
 {
   public String businessId;
   public int itemRetryCount;
   public String md5;
-  @auma
+  @aumc
   public String pk;
   public long retryUpdateTime;
   public int totalRetryCount;

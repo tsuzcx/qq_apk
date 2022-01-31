@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import ajsf;
-import akpv;
+import ajsd;
+import akpu;
 import android.text.TextUtils;
-import anmr;
 import anmw;
+import annb;
 import appoint.define.appoint_define.RichText;
-import axaq;
-import bbjn;
+import axas;
+import bbkb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -33,7 +33,7 @@ public class MsgBoxInterFollowManager
   public MsgBoxInterFollowManager(QQAppInterface paramQQAppInterface)
   {
     this.app = paramQQAppInterface;
-    this.msgboxUnreadCount = bbjn.Y(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    this.msgboxUnreadCount = bbkb.Y(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
   private void addMessage(MessageForInteractAndFollow paramMessageForInteractAndFollow)
@@ -61,9 +61,9 @@ public class MsgBoxInterFollowManager
     for (;;)
     {
       return;
-      MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)axaq.a(-2055);
+      MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)axas.a(-2055);
       localMessageForInteractAndFollow.rawContext = paramString;
-      localMessageForInteractAndFollow.context = anmw.a(paramString, 14);
+      localMessageForInteractAndFollow.context = annb.a(paramString, 14);
       localMessageForInteractAndFollow.unReadCount = paramInt2;
       localMessageForInteractAndFollow.msgBoxUnreadCount = paramInt1;
       localMessageForInteractAndFollow.timeStamp = paramLong;
@@ -76,9 +76,9 @@ public class MsgBoxInterFollowManager
       localMessageForInteractAndFollow.istroop = 10002;
       if (localMessageForInteractAndFollow.type == 1)
       {
-        paramString = ajsf.al;
+        paramString = ajsd.al;
         localMessageForInteractAndFollow.senderuin = paramString;
-        localMessageForInteractAndFollow.frienduin = ajsf.H;
+        localMessageForInteractAndFollow.frienduin = ajsd.H;
         localMessageForInteractAndFollow.getBytes();
         if (QLog.isColorLevel())
         {
@@ -89,10 +89,10 @@ public class MsgBoxInterFollowManager
         if (localMessageForInteractAndFollow.unReadCount <= 0) {
           break label399;
         }
-        if (bbjn.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
+        if (bbkb.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
           break label434;
         }
-        bbjn.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
+        bbkb.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
         paramInt1 = 1;
       }
       for (;;)
@@ -102,9 +102,9 @@ public class MsgBoxInterFollowManager
         }
         ThreadManager.post(new MsgBoxInterFollowManager.2(this, localMessageForInteractAndFollow), 8, null, true);
         return;
-        paramString = ajsf.am;
+        paramString = ajsd.am;
         break;
-        if (bbjn.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
+        if (bbkb.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
         {
           paramInt1 = 1;
         }
@@ -121,9 +121,9 @@ public class MsgBoxInterFollowManager
   public void addMomentMessage(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     int i = 0;
-    MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)axaq.a(-2055);
+    MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)axas.a(-2055);
     localMessageForInteractAndFollow.rawContext = paramString;
-    localMessageForInteractAndFollow.context = anmw.a(paramString, 14);
+    localMessageForInteractAndFollow.context = annb.a(paramString, 14);
     localMessageForInteractAndFollow.unReadCount = paramInt2;
     localMessageForInteractAndFollow.msgBoxUnreadCount = paramInt1;
     localMessageForInteractAndFollow.timeStamp = paramLong;
@@ -134,8 +134,8 @@ public class MsgBoxInterFollowManager
     localMessageForInteractAndFollow.msgUid = paramLong;
     localMessageForInteractAndFollow.selfuin = this.app.getCurrentAccountUin();
     localMessageForInteractAndFollow.istroop = 1001;
-    localMessageForInteractAndFollow.senderuin = ajsf.an;
-    localMessageForInteractAndFollow.frienduin = ajsf.H;
+    localMessageForInteractAndFollow.senderuin = ajsd.an;
+    localMessageForInteractAndFollow.frienduin = ajsd.H;
     localMessageForInteractAndFollow.getBytes();
     if (QLog.isColorLevel())
     {
@@ -145,10 +145,10 @@ public class MsgBoxInterFollowManager
     }
     if (localMessageForInteractAndFollow.unReadCount > 0)
     {
-      if (bbjn.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
+      if (bbkb.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
         break label371;
       }
-      bbjn.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
+      bbkb.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
       paramInt1 = 1;
     }
     for (;;)
@@ -158,7 +158,7 @@ public class MsgBoxInterFollowManager
       }
       return;
       paramInt1 = i;
-      if (bbjn.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
+      if (bbkb.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
       {
         paramInt1 = 1;
         continue;
@@ -173,8 +173,8 @@ public class MsgBoxInterFollowManager
     if (this.msgboxUnreadCount > 0)
     {
       this.msgboxUnreadCount = 0;
-      anmr.a(this.app, 0, null);
-      bbjn.y(this.app.getApp(), this.app.getCurrentAccountUin(), 0);
+      anmw.a(this.app, 0, null);
+      bbkb.y(this.app.getApp(), this.app.getCurrentAccountUin(), 0);
     }
   }
   
@@ -190,11 +190,11 @@ public class MsgBoxInterFollowManager
       }
       if (localMsgBody.msg_content.bytes_buluo_word.has())
       {
-        paramArrayOfByte.append(anmw.b(anmw.a(localMsgBody.msg_content.bytes_buluo_word.get().toStringUtf8())));
+        paramArrayOfByte.append(annb.b(annb.a(localMsgBody.msg_content.bytes_buluo_word.get().toStringUtf8())));
         if (localMsgBody.uint32_msgbox_unread_count.has())
         {
           this.msgboxUnreadCount = localMsgBody.uint32_msgbox_unread_count.get();
-          bbjn.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_msgbox_unread_count.get());
+          bbkb.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_msgbox_unread_count.get());
         }
         addMessage(paramArrayOfByte.toString(), localMsgBody.uint32_msgbox_unread_count.get(), localMsgBody.uint32_unread_count.get(), localMsgBody.uint64_timestamp.get(), localMsgBody.uint32_type.get());
         return;
@@ -209,7 +209,7 @@ public class MsgBoxInterFollowManager
           QLog.e("Q.msg_box.MsgBoxInterFollowManager", 2, "decode0xd7InteractAndFollowMsg decode failed:" + paramArrayOfByte.toString(), paramArrayOfByte);
           continue;
           if (localMsgBody.msg_content.rich_fresh_word.has()) {
-            paramArrayOfByte.append(anmw.a((appoint_define.RichText)localMsgBody.msg_content.rich_fresh_word.get()));
+            paramArrayOfByte.append(annb.a((appoint_define.RichText)localMsgBody.msg_content.rich_fresh_word.get()));
           } else {
             paramArrayOfByte.append(localMsgBody.msg_content.bytes_plain_text.get().toStringUtf8());
           }
@@ -227,7 +227,7 @@ public class MsgBoxInterFollowManager
       if (localMsgBody.uint32_box_unread_num.has())
       {
         this.msgboxUnreadCount = localMsgBody.uint32_box_unread_num.get();
-        bbjn.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_box_unread_num.get());
+        bbkb.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_box_unread_num.get());
       }
       addMomentMessage(localMsgBody.bytes_wording.get().toStringUtf8(), localMsgBody.uint32_box_unread_num.get(), localMsgBody.uint32_inner_unread_num.get(), localMsgBody.uint32_update_time.get());
       return;

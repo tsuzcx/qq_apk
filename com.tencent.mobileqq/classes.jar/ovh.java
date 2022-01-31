@@ -1,19 +1,16 @@
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class ovh
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  URL jdField_a_of_type_JavaNetURL;
-  int b;
-  int c;
-  int d;
+  public ovh(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[WaterFallPic]--> url=");
-    if (this.jdField_a_of_type_JavaNetURL != null) {}
-    for (String str = this.jdField_a_of_type_JavaNetURL.toString();; str = "") {
-      return str + ",originWidth =" + this.jdField_a_of_type_Int + ",originHeight =" + this.b + ",calcHeight =" + this.c + ",scaleHeight =" + this.d;
+    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
+      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
     }
   }
 }

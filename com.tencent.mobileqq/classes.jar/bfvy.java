@@ -1,37 +1,11 @@
-import android.text.Spanned;
-import android.text.method.NumberKeyListener;
-import com.tencent.widget.TCWNumberPicker;
+import android.view.animation.Interpolator;
 
 public class bfvy
-  extends NumberKeyListener
+  implements Interpolator
 {
-  private bfvy(TCWNumberPicker paramTCWNumberPicker) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public float getInterpolation(float paramFloat)
   {
-    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    CharSequence localCharSequence1 = localCharSequence2;
-    if (localCharSequence2 == null) {
-      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
-    }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
-    if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
-    }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
-      return localCharSequence1;
-    }
-    return "";
-  }
-  
-  protected char[] getAcceptedChars()
-  {
-    return TCWNumberPicker.a();
-  }
-  
-  public int getInputType()
-  {
-    return 2;
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

@@ -1,9 +1,37 @@
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.text.TextPaint;
 import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-public abstract interface mvr
+public class mvr
+  extends View
 {
-  public abstract void a(StageEffectView paramStageEffectView, View paramView, mvs parammvs);
+  public mvr(StageMemberView paramStageMemberView, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    float f;
+    if (StageMemberView.a(this.a) != null)
+    {
+      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
+      if (this.a.a == null) {
+        break label76;
+      }
+      StageMemberView.a(this.a).setColor(this.a.a.a);
+    }
+    for (;;)
+    {
+      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
+      return;
+      label76:
+      StageMemberView.a(this.a).setColor(-1);
+    }
+  }
 }
 
 

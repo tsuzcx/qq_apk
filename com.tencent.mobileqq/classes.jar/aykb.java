@@ -1,17 +1,15 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-class aykb
-  extends aykh
+final class aykb
+  extends Editable.Factory
 {
-  aykb(@NonNull String paramString)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    super(1, paramString);
-  }
-  
-  float a(@NonNull Paint paramPaint)
-  {
-    return paramPaint.measureText(a());
+    if ((paramCharSequence instanceof ayka)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ayka(paramCharSequence, 32);
   }
 }
 

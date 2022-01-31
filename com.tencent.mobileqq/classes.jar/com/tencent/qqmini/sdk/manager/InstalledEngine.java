@@ -7,16 +7,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bekq;
-import besl;
-import besv;
-import beua;
+import belh;
+import betc;
+import betm;
+import beur;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 public class InstalledEngine
   implements Parcelable, Comparable<InstalledEngine>
 {
-  public static final Parcelable.Creator<InstalledEngine> CREATOR = new beua();
+  public static final Parcelable.Creator<InstalledEngine> CREATOR = new beur();
   public int a;
   public EngineVersion a;
   public String a;
@@ -40,10 +40,10 @@ public class InstalledEngine
   {
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      bekq.a(this.jdField_b_of_type_JavaLangString, false);
-      besv.a().edit().remove(this.jdField_b_of_type_JavaLangString).apply();
+      belh.a(this.jdField_b_of_type_JavaLangString, false);
+      betm.a().edit().remove(this.jdField_b_of_type_JavaLangString).apply();
     }
-    besl.b("InstalledEngine", "[MiniEng] delete engine " + this + ", pName=" + MiniAppEnv.g().getContext().getPackageName());
+    betc.b("InstalledEngine", "[MiniEng] delete engine " + this + ", pName=" + MiniAppEnv.g().getContext().getPackageName());
   }
   
   public int describeContents()

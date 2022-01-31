@@ -1,36 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
 class bkcd
-  implements View.OnTouchListener
+  implements syq<tmp, toj>
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  bkcd(bkby parambkby, WeakReference paramWeakReference) {}
   
-  bkcd(bkbv parambkbv) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(@NonNull tmp paramtmp, @Nullable toj paramtoj, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    if (paramtoj == null)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
+      paramtmp = (bkcj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramtmp != null) {
+        paramtmp.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
     }
-    return this.jdField_a_of_type_Boolean;
+    paramtmp = (bkcj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramtmp != null)
+    {
+      paramtmp.a(0, paramtoj.a);
+      return;
+    }
+    ved.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

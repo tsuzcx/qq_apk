@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
 public class wqh
   implements View.OnClickListener
 {
-  public wqh(SubscribeHybirdFragment paramSubscribeHybirdFragment, wkp paramwkp) {}
+  public wqh(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_Wkp);
+    this.a.onBackEvent();
   }
 }
 

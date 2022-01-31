@@ -1,54 +1,42 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
+import java.io.File;
+import java.util.Locale;
 
-public class alrn
-  implements alry
+class alrn
+  implements alrx
 {
-  public alrn(ArkAiDictUpdateMgr.1 param1, amrp paramamrp, alsa paramalsa, amrd paramamrd) {}
+  alrn(alrl paramalrl, alrz paramalrz, alrv paramalrv, String paramString1, alrx paramalrx, String paramString2) {}
   
   public void a(boolean paramBoolean)
   {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { alrm.a(this.jdField_a_of_type_Amrp) }));
-      this.jdField_a_of_type_Alsa.jdField_a_of_type_Boolean = false;
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Alrz.jdField_a_of_type_Boolean = false;
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_Alrz)
     {
-      synchronized (this.jdField_a_of_type_Alsa)
+      alrz localalrz2 = this.jdField_a_of_type_Alrz;
+      int i = localalrz2.jdField_a_of_type_Int - 1;
+      localalrz2.jdField_a_of_type_Int = i;
+      if (i > 0)
       {
-        alsa localalsa2 = this.jdField_a_of_type_Alsa;
-        int i = localalsa2.jdField_a_of_type_Int - 1;
-        localalsa2.jdField_a_of_type_Int = i;
-        if (i != 0) {
-          return;
-        }
-        if (this.jdField_a_of_type_Alsa.jdField_a_of_type_Boolean)
-        {
-          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
-          alrm.a(this.jdField_a_of_type_Amrd);
-          alrm.b(this.jdField_a_of_type_Amrd);
-          alrj.b((AppInterface)alrm.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
-          try
-          {
-            alrm.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-            if (alrm.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
-            {
-              alrm.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
-              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
-            }
-            return;
-          }
-          finally {}
-        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
+        return;
       }
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Alrz.jdField_a_of_type_Boolean) }));
+      if (!this.jdField_a_of_type_Alrz.jdField_a_of_type_Boolean)
+      {
+        bbdx.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Alrx.a(false);
+        return;
+      }
     }
+    if (!alrl.a(alri.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
+      this.jdField_a_of_type_Alrx.a(false);
+      return;
+    }
+    this.jdField_a_of_type_Alrx.a(true);
   }
 }
 

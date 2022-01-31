@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class agdc
-  extends atzo
+class agdc
+  extends akuc
 {
-  agdc(agch paramagch) {}
+  agdc(agcf paramagcf) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
     }
-    else
-    {
-      return;
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
+      this.a.g();
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
-      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
-    }
-    this.a.g();
   }
 }
 

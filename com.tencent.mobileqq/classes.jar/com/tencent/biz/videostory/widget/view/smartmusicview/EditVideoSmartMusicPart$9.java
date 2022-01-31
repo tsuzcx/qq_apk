@@ -3,12 +3,12 @@ package com.tencent.biz.videostory.widget.view.smartmusicview;
 import android.os.Build.VERSION;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import xit;
+import xiq;
 
 public class EditVideoSmartMusicPart$9
   implements Runnable
 {
-  public EditVideoSmartMusicPart$9(xit paramxit) {}
+  public EditVideoSmartMusicPart$9(xiq paramxiq) {}
   
   public void run()
   {

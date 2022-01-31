@@ -1,32 +1,55 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-class balx
-  extends mxm
+public class balx
 {
-  balx(balw parambalw, bame parambame) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static balx a()
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bame.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-    }
+    return new balx();
+  }
+  
+  public balx a(String paramString)
+  {
+    this.a = paramString;
+    return this;
+  }
+  
+  public balx b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public balx c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public balx d(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public balx e(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public balx f(String paramString)
+  {
+    this.j = paramString;
+    return this;
   }
 }
 

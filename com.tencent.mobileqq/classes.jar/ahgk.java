@@ -1,52 +1,27 @@
-public class ahgk
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean.BreathLight;
+import java.util.List;
+
+public abstract interface ahgk
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
+  public abstract void a();
   
-  public ahgk(int paramInt, long paramLong, String paramString)
-  {
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void a(int paramInt);
   
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1001: 
-      return "action_show_entry";
-    case 1002: 
-      return "action_hide_entry";
-    case 2001: 
-      return "action_show_default_pendant";
-    case 2002: 
-      return "action_hide_default_pendant";
-    case 3001: 
-      return "action_show_special_banner";
-    case 3002: 
-      return "action_hide_special_banner";
-    case 4001: 
-      return "action_show_preview";
-    }
-    return "action_hide_preview";
-  }
+  public abstract void a(Bitmap paramBitmap, String paramString, List<Bitmap> paramList);
   
-  public String a()
-  {
-    return a(this.jdField_a_of_type_Int);
-  }
+  public abstract void a(ViewGroup paramViewGroup, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, String paramString4);
   
-  public String toString()
-  {
-    String str = bbkb.b(this.jdField_a_of_type_Long);
-    return String.format("[action:%s,time:%s,id:%s,entryId:%s]", new Object[] { a(), str, this.jdField_a_of_type_JavaLangString, this.b });
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, SpringFestivalRedpakcetPreviewConfBean.BreathLight paramBreathLight);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,309 +1,174 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import com.tencent.common.app.ToolRuntimePeak;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class bjav
-  extends BaseAdapter
 {
-  public static final int a;
-  public static final int b;
-  public static final int c = bbkx.b(10.0F);
-  float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<bjaw> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList(0);
-  public boolean a;
-  float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  int d;
+  private final HashMap<Integer, Object> a;
+  public final bjan[] a;
   
-  static
+  private bjav()
   {
-    jdField_a_of_type_Int = bbkx.b(40.0F);
-    jdField_b_of_type_Int = bbkx.b(5.0F);
+    this.jdField_a_of_type_ArrayOfBjan = new bjan[20];
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public bjav(Context paramContext, int paramInt)
+  public static bjan a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.d = paramInt;
+    return bjax.a.c(paramInt);
   }
   
-  private View a()
+  public static bjav a()
   {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-    if (!this.jdField_a_of_type_Boolean) {
-      localFrameLayout.setPadding(c, c, c, c);
-    }
-    for (;;)
-    {
-      ((RelativeLayout.LayoutParams)localObject1).setMargins(jdField_b_of_type_Int, jdField_b_of_type_Int, jdField_b_of_type_Int, jdField_b_of_type_Int);
-      localRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((URLImageView)localObject1).setId(2131367679);
-      ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
-      Object localObject2 = new FrameLayout.LayoutParams(jdField_a_of_type_Int, jdField_a_of_type_Int);
-      ((FrameLayout.LayoutParams)localObject2).gravity = 49;
-      localFrameLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject2).setId(2131366265);
-      ((TextView)localObject2).setGravity(17);
-      ((TextView)localObject2).setTextSize(2, 12.0F);
-      ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167134));
-      ((TextView)localObject2).setMaxLines(1);
-      ((TextView)localObject2).setLines(1);
-      ((TextView)localObject2).setShadowLayer(3.0F, 0.0F, 0.0F, Color.parseColor("#7F000000"));
-      Object localObject3 = new FrameLayout.LayoutParams(-2, -2);
-      ((FrameLayout.LayoutParams)localObject3).gravity = 81;
-      localFrameLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject3 = new bjaw();
-      ((bjaw)localObject3).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject1);
-      ((bjaw)localObject3).jdField_a_of_type_AndroidViewView = localFrameLayout;
-      ((bjaw)localObject3).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-      ((bjaw)localObject3).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      localRelativeLayout.setTag(localObject3);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-      return localRelativeLayout;
-      localFrameLayout.setPadding(jdField_b_of_type_Int, 0, jdField_b_of_type_Int, jdField_b_of_type_Int);
-    }
+    return bjax.a;
   }
   
-  private void a(ImageView paramImageView, String paramString)
+  public static AppInterface a()
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      try
-      {
-        paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-        if (paramString.getStatus() == 2) {
-          paramString.restartDownload();
-        }
-        paramImageView.setImageDrawable(paramString);
-        return;
-      }
-      catch (Error paramImageView) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("TransitionProviderGridAdapter", 2, "setStaticURLDrawable " + paramImageView.toString());
+    return (AppInterface)a();
   }
   
-  private void b(ImageView paramImageView, String paramString)
+  public static AppRuntime a()
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString))) {
-      throw new Exception("apngUrl null");
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return localAppRuntime;
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getFilesDir() + "/shortvideo_transition_preview/";
-    Object localObject2 = new File((String)localObject1);
-    if (!((File)localObject2).exists()) {
-      ((File)localObject2).mkdir();
+    return BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+  }
+  
+  private void a(int paramInt, bjan parambjan)
+  {
+    this.jdField_a_of_type_ArrayOfBjan[paramInt] = parambjan;
+  }
+  
+  private boolean a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMManager", 2, "check process: " + localAppRuntime);
     }
-    localObject2 = paramString.substring(paramString.lastIndexOf("/") + 1, paramString.lastIndexOf("."));
-    localObject1 = bbql.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1 + (String)localObject2, paramString, null, new int[] { 16 }, "-Transition-", null);
-    if (localObject1 != null)
-    {
-      paramImageView.setImageDrawable((Drawable)localObject1);
-      if (((URLDrawable)localObject1).getStatus() == 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TransitionProviderGridAdapter", 2, "restartDownload apng:" + paramString);
-        }
-        ((URLDrawable)localObject1).restartDownload();
-      }
-      return;
-    }
-    throw new Exception("urlDrawableApng null");
+    return ((localAppRuntime instanceof QQAppInterface)) || ((localAppRuntime instanceof ToolRuntimePeak));
+  }
+  
+  public static bjan b(int paramInt)
+  {
+    return bjax.a.jdField_a_of_type_ArrayOfBjan[paramInt];
   }
   
   public void a()
   {
-    TransitionCategoryItem localTransitionCategoryItem = bkqo.a().a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    bjaw localbjaw;
-    boolean bool2;
-    label66:
-    boolean bool1;
-    if (localIterator.hasNext())
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfBjan.length)
     {
-      localbjaw = (bjaw)localIterator.next();
-      if (localbjaw.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem == null) {
-        break label116;
-      }
-      if (localTransitionCategoryItem == null) {
-        break label111;
-      }
-      bool2 = TextUtils.equals(localTransitionCategoryItem.a, localbjaw.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem.a);
-      bool1 = bool2;
-      if (!bool2)
+      bjan localbjan = this.jdField_a_of_type_ArrayOfBjan[i];
+      ved.b("QIMManager", "destroy manager : %s", localbjan);
+      Object localObject2;
+      synchronized (this.jdField_a_of_type_ArrayOfBjan)
       {
-        if (((localTransitionCategoryItem != null) && (!localTransitionCategoryItem.c())) || (!localbjaw.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem.c())) {
-          break label105;
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new Object());
         }
-        bool1 = true;
+        localObject2 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+        if (localbjan == null) {}
       }
+      try
+      {
+        localbjan.b();
+        this.jdField_a_of_type_ArrayOfBjan[i] = null;
+        i += 1;
+      }
+      finally {}
+    }
+    localObject3 = finally;
+    throw localObject3;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfBjan[paramInt] != null;
+  }
+  
+  public bjan c(int paramInt)
+  {
+    ??? = this.jdField_a_of_type_ArrayOfBjan[paramInt];
+    Object localObject4 = ???;
+    Object localObject6;
+    if (??? == null) {
+      synchronized (this.jdField_a_of_type_ArrayOfBjan)
+      {
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new Object());
+        }
+        localObject6 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      }
+    }
+    try
+    {
+      localObject4 = this.jdField_a_of_type_ArrayOfBjan[paramInt];
+      if (localObject4 != null)
+      {
+        return localObject4;
+        localObject5 = finally;
+        throw localObject5;
+      }
+      if (!a()) {
+        throw new RuntimeException("invalid process");
+      }
+    }
+    finally {}
+    Object localObject3 = localObject5;
+    switch (paramInt)
+    {
+    default: 
+      localObject3 = localObject5;
     }
     for (;;)
     {
-      localbjaw.a(bool1);
-      break;
-      label105:
-      bool1 = false;
+      a(paramInt, (bjan)localObject3);
+      if (localObject3 != null)
+      {
+        ((bjan)localObject3).a();
+        ved.b("QIMManager", "onInit manager : %s", localObject3);
+      }
+      return localObject3;
+      localObject3 = new bjfx();
       continue;
-      return;
-      label111:
-      bool2 = false;
-      break label66;
-      label116:
-      bool1 = false;
-    }
-  }
-  
-  public void a(List<QIMFilterCategoryItem> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TransitionProviderGridAdapter", 2, "onDestroy");
-    }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool3 = false;
-    if ((this.jdField_a_of_type_Float <= 0.0F) && (paramViewGroup != null))
-    {
-      this.jdField_a_of_type_Float = paramViewGroup.getMeasuredWidth();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label105;
-      }
-    }
-    label105:
-    for (this.jdField_b_of_type_Float = ((this.jdField_a_of_type_Float - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 3.2F + 0.5F);; this.jdField_b_of_type_Float = ((this.jdField_a_of_type_Float - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4.0F + 0.5F))
-    {
-      paramViewGroup = paramView;
-      if (paramView == null) {
-        paramViewGroup = a();
-      }
-      if ((paramViewGroup.getTag() != null) && ((paramViewGroup.getTag() instanceof bjaw))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TransitionProviderGridAdapter", 2, "ConvertViewTag null");
-      }
-      return paramViewGroup;
-    }
-    bjaw localbjaw = (bjaw)paramViewGroup.getTag();
-    TextView localTextView = localbjaw.jdField_a_of_type_AndroidWidgetTextView;
-    URLImageView localURLImageView = localbjaw.jdField_a_of_type_ComTencentImageURLImageView;
-    TransitionCategoryItem localTransitionCategoryItem = (TransitionCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localbjaw.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem = localTransitionCategoryItem;
-    paramView = bkqo.a().a();
-    if (paramView != null) {}
-    for (boolean bool1 = TextUtils.equals(paramView.a, localTransitionCategoryItem.a);; bool1 = false)
-    {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        if (paramView != null)
-        {
-          bool1 = bool3;
-          if (!paramView.c()) {}
-        }
-        else
-        {
-          bool1 = bool3;
-          if (localTransitionCategoryItem.c()) {
-            bool1 = true;
-          }
-        }
-        bool2 = bool1;
-      }
-      AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)paramViewGroup.getLayoutParams();
-      paramView = localLayoutParams;
-      if (localLayoutParams == null)
-      {
-        paramView = new AbsListView.LayoutParams(-1, -1);
-        paramViewGroup.setLayoutParams(paramView);
-      }
-      paramView.height = ((int)this.jdField_b_of_type_Float);
-      localbjaw.a(bool2);
-      try
-      {
-        b(localURLImageView, localTransitionCategoryItem.j);
-        localTextView.setText(localTransitionCategoryItem.b);
-        paramViewGroup.setFocusable(true);
-        paramViewGroup.setFocusableInTouchMode(true);
-        paramViewGroup.setContentDescription(localTransitionCategoryItem.b + ajyc.a(2131715063));
-        return paramViewGroup;
-      }
-      catch (Error paramView)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TransitionProviderGridAdapter", 2, "setApngURLDrawable " + paramView.toString());
-          }
-          a(localURLImageView, localTransitionCategoryItem.d);
-        }
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TransitionProviderGridAdapter", 2, "setApngURLDrawable " + paramView.toString());
-          }
-          a(localURLImageView, localTransitionCategoryItem.d);
-        }
-      }
+      localObject3 = new QIMMusicConfigManager();
+      continue;
+      localObject3 = new bkzp();
+      continue;
+      localObject3 = new bjfl();
+      continue;
+      localObject3 = new bjcb();
+      continue;
+      localObject3 = new DynamicTextConfigManager();
+      continue;
+      localObject3 = new bjbo();
+      continue;
+      localObject3 = new bjed();
+      continue;
+      localObject3 = new bjeu();
+      continue;
+      localObject3 = new bjfr();
+      continue;
+      localObject3 = new bigy();
+      continue;
+      localObject3 = new bjgo();
+      continue;
+      localObject3 = new bjck();
+      continue;
+      localObject3 = new bjru();
+      continue;
+      localObject3 = new birb();
+      continue;
+      localObject3 = new bixf();
     }
   }
 }

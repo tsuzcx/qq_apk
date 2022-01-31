@@ -1,27 +1,28 @@
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder.1;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder.1;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.mobileqq.data.QIMFollwerAdd;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import java.util.Locale;
 
 public class aflb
-  extends afjv
+  extends afjt
   implements View.OnClickListener
 {
-  public aflb(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
+  public aflb(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
   {
-    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
-    this.jdField_a_of_type_Bfvm = a(paramContext);
+    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
+    this.jdField_a_of_type_Bfwd = a(paramContext);
+    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297276);
   }
   
   protected int a()
@@ -32,60 +33,88 @@ public class aflb
   public View a(int paramInt, View paramView)
   {
     aflc localaflc;
-    PhoneContactAdd localPhoneContactAdd;
+    QIMFollwerAdd localQIMFollwerAdd;
+    label249:
+    Object localObject;
+    boolean bool;
     if ((paramView == null) || (!(paramView.getTag() instanceof aflc)))
     {
       localaflc = new aflc();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561123, localaflc);
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561122, localaflc);
+      a(paramView, this.b);
       localaflc.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361795));
       localaflc.h = ((TextView)paramView.findViewById(2131370832));
-      localaflc.i = ((TextView)paramView.findViewById(2131375194));
-      localaflc.l = ((TextView)paramView.findViewById(2131362196));
-      localaflc.j = ((TextView)paramView.findViewById(2131376339));
-      localaflc.k = ((TextView)paramView.findViewById(2131375191));
-      localaflc.a = ((Button)paramView.findViewById(2131375181));
+      localaflc.i = ((TextView)paramView.findViewById(2131375196));
+      localaflc.l = ((TextView)paramView.findViewById(2131362195));
+      localaflc.j = ((TextView)paramView.findViewById(2131376341));
+      localaflc.k = ((TextView)paramView.findViewById(2131375193));
+      localaflc.a = ((Button)paramView.findViewById(2131375183));
       b(localaflc.jdField_f_of_type_AndroidWidgetImageView);
       paramView.setTag(localaflc);
       localaflc.g.setTag(localaflc);
       localaflc.g.setOnClickListener(this);
-      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Atyy, localaflc, this);
-      a(localaflc.g, false);
-      localPhoneContactAdd = ((atzh)this.jdField_a_of_type_Atyy).a;
-      if (TextUtils.isEmpty(localPhoneContactAdd.name)) {
-        break label346;
+      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Atza, localaflc, this);
+      localaflc.g.setBackgroundResource(2130839129);
+      localQIMFollwerAdd = ((atzk)this.jdField_a_of_type_Atza).a;
+      if (TextUtils.isEmpty(localQIMFollwerAdd.smartRemark)) {
+        break label470;
       }
       localaflc.h.setVisibility(0);
-      localaflc.h.setText(localPhoneContactAdd.name);
-      label221:
-      localaflc.l.setVisibility(8);
-      localaflc.j.setVisibility(8);
-      if (TextUtils.isEmpty(localPhoneContactAdd.remindInfo)) {
-        break label358;
+      localaflc.h.setText(localQIMFollwerAdd.smartRemark);
+      localObject = localaflc.g;
+      if (this.jdField_a_of_type_Atza.a()) {
+        break label483;
       }
-      localaflc.i.setVisibility(0);
-      localaflc.i.setText(localPhoneContactAdd.remindInfo);
+      bool = true;
+      label268:
+      a((View)localObject, bool);
+      localObject = new StringBuilder(256);
+      a(localaflc.l, localQIMFollwerAdd.gender, 0, (StringBuilder)localObject);
+      if (!TextUtils.isEmpty(localQIMFollwerAdd.longNick)) {
+        break label488;
+      }
+      localaflc.i.setVisibility(8);
+      label323:
+      if (TextUtils.isEmpty(localQIMFollwerAdd.source)) {
+        break label535;
+      }
+      localObject = String.format(Locale.getDefault(), ajya.a(2131709815), new Object[] { localQIMFollwerAdd.source });
+      localaflc.j.setText((CharSequence)localObject);
+      localaflc.j.setVisibility(0);
     }
     for (;;)
     {
-      localaflc.k.setVisibility(0);
-      localaflc.a.setVisibility(8);
-      localaflc.k.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718743));
-      localaflc.jdField_f_of_type_JavaLangString = localPhoneContactAdd.unifiedCode;
-      localaflc.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aipp.a(11, localPhoneContactAdd.unifiedCode));
+      localaflc.k.setVisibility(8);
+      localaflc.a.setText(ajya.a(2131709814));
+      localaflc.a.setVisibility(0);
+      localaflc.a.setOnClickListener(this);
+      localaflc.jdField_f_of_type_JavaLangString = String.valueOf(localQIMFollwerAdd.uin);
+      localaflc.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aipn.a(1, String.valueOf(localQIMFollwerAdd.uin)));
       return paramView;
       localaflc = (aflc)paramView.getTag();
       break;
-      label346:
+      label470:
       localaflc.h.setVisibility(8);
-      break label221;
-      label358:
-      localaflc.i.setVisibility(8);
+      break label249;
+      label483:
+      bool = false;
+      break label268;
+      label488:
+      localaflc.i.setVisibility(0);
+      localaflc.i.setText(localQIMFollwerAdd.longNick);
+      if (!AppSetting.d) {
+        break label323;
+      }
+      ((StringBuilder)localObject).append(",").append(localQIMFollwerAdd.longNick);
+      break label323;
+      label535:
+      localaflc.j.setVisibility(8);
     }
   }
   
   protected void a()
   {
-    ThreadManager.postImmediately(new PhoneContactAddBuilder.1(this), null, true);
+    ThreadManager.postImmediately(new QIMFollowerAddBuilder.1(this), null, true);
   }
   
   public void onClick(View paramView)
@@ -94,33 +123,10 @@ public class aflb
     {
     default: 
       a(paramView);
-    }
-    PhoneContactAdd localPhoneContactAdd;
-    do
-    {
-      do
-      {
-        return;
-        paramView = paramView.getTag();
-      } while ((paramView == null) || (!(paramView instanceof aflc)));
-      localPhoneContactAdd = ((atzh)this.jdField_a_of_type_Atyy).a;
-    } while (localPhoneContactAdd == null);
-    paramView = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    if (paramView.c(localPhoneContactAdd.unifiedCode) == null) {
-      paramView = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
-    }
-    for (;;)
-    {
-      paramView.h = localPhoneContactAdd.name;
-      ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, paramView, 227);
-      ((akbo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).g();
+    case 2131375335: 
       return;
-      if (paramView.h()) {
-        paramView = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 34);
-      } else {
-        paramView = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
-      }
     }
+    ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217)).a(this.jdField_a_of_type_AndroidContentContext, null);
   }
 }
 

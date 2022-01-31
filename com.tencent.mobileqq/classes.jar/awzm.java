@@ -1,48 +1,22 @@
-import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
 
 class awzm
   extends Handler
 {
-  awzm(awzj paramawzj, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
-  {
-    super(paramLooper);
-  }
+  awzm(awzl paramawzl) {}
   
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_Awzj.b = true;
-      if (this.jdField_a_of_type_Awzj.jdField_a_of_type_MqqAppNewIntent != null)
-      {
-        this.jdField_a_of_type_Awzj.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-        this.jdField_a_of_type_Awzj.jdField_a_of_type_MqqAppNewIntent = null;
-      }
+      awzl.a = false;
       if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
       }
-      paramMessage = awzj.a(this.jdField_a_of_type_Awzj.jdField_a_of_type_JavaLangString);
-      bdiw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
-      awzj.jdField_a_of_type_Boolean = false;
-      return;
     }
-    this.jdField_a_of_type_Awzj.b = true;
-    if (this.jdField_a_of_type_Awzj.jdField_a_of_type_MqqAppNewIntent != null)
-    {
-      this.jdField_a_of_type_Awzj.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_Awzj.jdField_a_of_type_MqqAppNewIntent = null;
-    }
-    awzj.a(this.jdField_a_of_type_Awzj, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
   }
 }
 

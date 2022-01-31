@@ -1,26 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class uzj
-  implements syt<uzl, uzm>
+  extends syn
 {
-  private WeakReference<uzi> a;
+  public String a;
+  public int b;
+  public String c;
+  public String d;
+  public String e;
   
-  public uzj(uzi paramuzi)
+  public uzj(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
-    this.a = new WeakReference(paramuzi);
+    if (paramRspGetUserGuide.pic_url.has())
+    {
+      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
+      this.a = ((String)localObject1);
+      if (!paramRspGetUserGuide.word.has()) {
+        break label129;
+      }
+      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
+      label53:
+      this.c = ((String)localObject1);
+      this.b = paramRspGetUserGuide.seqno.get();
+      if (!paramRspGetUserGuide.confirm_word.has()) {
+        break label134;
+      }
+    }
+    label129:
+    label134:
+    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
+    {
+      this.d = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramRspGetUserGuide.cancel_word.has()) {
+        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
+      }
+      this.e = ((String)localObject1);
+      return;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label53;
+    }
   }
   
-  public void a(@NonNull uzl paramuzl, @Nullable uzm paramuzm, @NonNull ErrorMessage paramErrorMessage)
+  public String toString()
   {
-    veg.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    uzi localuzi = (uzi)this.a.get();
-    if (localuzi == null) {
-      return;
-    }
-    localuzi.a(paramuzl, paramuzm, paramErrorMessage);
+    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
   }
 }
 

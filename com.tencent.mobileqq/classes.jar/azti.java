@@ -1,16 +1,22 @@
-public abstract interface azti
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
+import java.util.List;
+
+public class azti
+  extends akil
 {
-  public abstract void a();
+  azti(azth paramazth) {}
   
-  public abstract void a(int paramInt, String paramString1, String paramString2, bbmg parambbmg);
-  
-  public abstract void a(bbmg parambbmg);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(byte[] paramArrayOfByte, long paramLong, String paramString);
-  
-  public abstract void b(bbmg parambbmg);
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  {
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
+    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
+      return;
+    }
+    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
+  }
 }
 
 

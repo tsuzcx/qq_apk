@@ -1,322 +1,496 @@
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.ServiceConnection;
+import android.content.res.Resources;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.HWTroopMemberCard;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.ArrayList;
+import cooperation.plugin.PluginInfo;
+import cooperation.smartdevice.ipc.SmartDeviceProxyService;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.List;
-import mqq.manager.ServerConfigManager.ConfigType;
-import mqq.os.MqqHandler;
+import java.util.Observable;
+import mqq.app.AppRuntime;
 
 public class bhwm
-  extends RemoteCommand
+  extends Observable
+  implements Handler.Callback, PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  QQAppInterface a;
+  private static bhwm jdField_a_of_type_Bhwm;
+  private static String jdField_a_of_type_JavaLangString = "SmartDevicePluginLoader";
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bcqf jdField_a_of_type_Bcqf;
+  private bfnk jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
+  private bglq jdField_a_of_type_Bglq;
+  private PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private bglq jdField_b_of_type_Bglq;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public bhwm(QQAppInterface paramQQAppInterface)
+  public static bhwm a()
   {
-    super("troop.troopmemcard.get_app_interface_data");
-    this.a = paramQQAppInterface;
+    if (jdField_a_of_type_Bhwm == null) {
+      jdField_a_of_type_Bhwm = new bhwm();
+    }
+    return jdField_a_of_type_Bhwm;
   }
   
-  public Bundle a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public static AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    paramOnInvokeFinishLinstener = paramBundle.getString("troopUin");
-    String str2 = paramBundle.getString("memUin");
-    paramBundle = this.a.a().a(paramOnInvokeFinishLinstener, 1, 100);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("chatmsg:");
-    if (!TextUtils.isEmpty(str2)) {}
-    for (int i = 10;; i = 20)
-    {
-      Iterator localIterator = paramBundle.iterator();
-      int j = 0;
-      MessageRecord localMessageRecord;
-      do
-      {
-        if (localIterator.hasNext())
-        {
-          localMessageRecord = (MessageRecord)localIterator.next();
-          if (j <= i) {}
-        }
-        else
-        {
-          paramBundle = "";
-        }
-        try
-        {
-          paramOnInvokeFinishLinstener = URLEncoder.encode(localStringBuilder.toString(), "UTF-8");
-          paramBundle = paramOnInvokeFinishLinstener;
-        }
-        catch (Throwable paramOnInvokeFinishLinstener)
-        {
-          for (;;)
-          {
-            String str1;
-            paramOnInvokeFinishLinstener.printStackTrace();
-          }
-        }
-        paramOnInvokeFinishLinstener = new Bundle();
-        paramOnInvokeFinishLinstener.putString("msgtoupload", paramBundle);
-        return paramOnInvokeFinishLinstener;
-      } while ((localMessageRecord == null) || ((!TextUtils.isEmpty(str2)) && (!TextUtils.equals(localMessageRecord.senderuin, str2))));
-      if ((localMessageRecord instanceof MessageForPic)) {
-        paramOnInvokeFinishLinstener = ((MessageForPic)localMessageRecord).uuid;
-      }
-      for (str1 = "2";; str1 = "1")
-      {
-        paramBundle = paramOnInvokeFinishLinstener;
-        try
-        {
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("\"", "\\\"");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("'", "\\'");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("|", "\\|");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace(":", "\\:");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace(";", "\\;");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("[", "\\[");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("]", "\\]");
-          paramBundle = paramOnInvokeFinishLinstener;
-          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("=", "\\=");
-          paramBundle = paramOnInvokeFinishLinstener;
-        }
-        catch (Throwable paramOnInvokeFinishLinstener)
-        {
-          for (;;)
-          {
-            paramOnInvokeFinishLinstener.printStackTrace();
-          }
-        }
-        localStringBuilder.append("[");
-        localStringBuilder.append("uin=" + localMessageRecord.senderuin);
-        localStringBuilder.append(";");
-        localStringBuilder.append("content=" + paramBundle);
-        localStringBuilder.append(";");
-        localStringBuilder.append("type=" + str1);
-        localStringBuilder.append("]");
-        j += 1;
-        break;
-        if (((!(localMessageRecord instanceof MessageForText)) && (!(localMessageRecord instanceof MessageForLongMsg))) || (localMessageRecord.msgtype != -1000)) {
-          break;
-        }
-        paramOnInvokeFinishLinstener = localMessageRecord.msg;
-      }
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      return null;
     }
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    Bundle localBundle;
-    if (paramBundle == null)
+    try
     {
-      localBundle = null;
-      label7:
-      return localBundle;
-    }
-    int i;
-    Object localObject2;
-    String str1;
-    for (;;)
-    {
-      try
-      {
-        i = paramBundle.getInt("req_sub_cmd");
-        localBundle = new Bundle();
-        switch (i)
-        {
-        case 1001: 
-          localBundle = paramBundle;
-          if (paramOnInvokeFinishLinstener == null) {
-            break label7;
-          }
-          paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
-          return paramBundle;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemCardCmd", 2, "invoke Exception hanppend! ExceptionClass = + " + paramBundle.getClass().getName() + "msg = " + paramBundle.getMessage());
-        }
-        axqw.b(this.a, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "plugin_cmd_exp", 0, 0, paramBundle.getClass().getName(), null, null, null);
+      Class localClass1 = Class.forName("com.tencent.device.app.SmartDeviceAppInterface");
+      if (localClass1 == null) {
         return null;
       }
-      paramBundle = a(paramBundle, paramOnInvokeFinishLinstener);
-      continue;
-      paramBundle = (TroopInfo)paramBundle.getSerializable("troopInfo");
-      ((TroopManager)this.a.getManager(52)).b(paramBundle);
-      paramBundle = localBundle;
-      continue;
-      paramBundle = paramBundle.getString("troopUin");
-      localBundle.putSerializable("troopInfo", ((TroopManager)this.a.getManager(52)).b(paramBundle));
-      paramBundle = localBundle;
-      continue;
-      localObject1 = paramBundle.getString("troopUin");
-      paramBundle = paramBundle.getString("memUin");
-      localBundle.putSerializable("card", ((TroopManager)this.a.getManager(52)).a((String)localObject1, paramBundle));
-      paramBundle = localBundle;
-      continue;
-      localObject1 = paramBundle.getString("troopUin");
-      localObject2 = paramBundle.getString("memUin");
-      paramBundle = (HWTroopMemberCard)paramBundle.getSerializable("card");
-      ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, paramBundle);
-      paramBundle = localBundle;
-      continue;
-      localObject1 = paramBundle.getString("troopUin");
-      localObject2 = paramBundle.getString("memUin");
-      byte b = paramBundle.getByte("flag");
-      localBundle.putBoolean("result", ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, b));
-      paramBundle = localBundle;
-      continue;
-      localObject1 = paramBundle.getString("troopUin");
-      localObject2 = paramBundle.getString("memUin");
-      str1 = paramBundle.getString("uniqueTitle");
-      i = paramBundle.getInt("uniqueTitleExpire");
-      ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, str1, i);
-      paramBundle = localBundle;
-      continue;
-      paramBundle = paramBundle.getString("troopCode");
-      localObject1 = (TroopManager)this.a.getManager(52);
-      this.a.a().a(paramBundle, 1);
-      ((TroopManager)localObject1).a(paramBundle);
-      bbcp.a().a(this.a, paramBundle, this.a.getCurrentAccountUin(), this.a.getApp());
-      paramBundle = localBundle;
-      continue;
-      localObject1 = paramBundle.getString("key");
-      paramBundle = (ServerConfigManager.ConfigType)paramBundle.getSerializable("type");
-      localBundle.putString("result", this.a.a(paramBundle, (String)localObject1));
-      paramBundle = localBundle;
-      continue;
-      paramBundle = paramBundle.getString("uin");
-      localObject1 = (ajxn)this.a.getManager(51);
-      localObject2 = ((ajxn)localObject1).b(paramBundle);
-      if ((localObject2 == null) || (!((Friends)localObject2).isFriend())) {
-        break label1375;
-      }
-      paramBundle = ((ajxn)localObject1).a(paramBundle);
-      if ((paramBundle == null) || (paramBundle.globalSwitch == 0)) {
-        break label1381;
-      }
-      bool = true;
-      label692:
-      localBundle.putBoolean("is_special_care", bool);
-      paramBundle = localBundle;
     }
-    Object localObject1 = paramBundle.getString("uin");
-    boolean bool = paramBundle.getBoolean("do_not_disturb");
-    paramBundle = this.a;
-    if (bool) {}
-    for (long l1 = awzw.a();; l1 = 0L)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      FriendsStatusUtil.a(paramBundle, (String)localObject1, 0, l1, true, false, null, true);
-      paramBundle = localBundle;
-      break;
-      localObject1 = paramBundle.getString("uin");
-      bool = paramBundle.getBoolean("is_gather");
-      paramBundle = (FriendListHandler)this.a.a(1);
-      localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(localObject1);
-      paramBundle.a((short)1, (List)localObject2, bool, true);
-      paramBundle = localBundle;
-      break;
-      paramBundle = paramBundle.getString("uin");
-      ((FriendListHandler)this.a.a(1)).c(paramBundle, (byte)2);
-      localObject1 = this.a.getHandler(ChatActivity.class);
-      if (localObject1 != null) {
-        ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(16711681, paramBundle));
-      }
-      localObject1 = this.a.getHandler(ChatSettingActivity.class);
-      if (localObject1 != null) {
-        ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(16711681, paramBundle));
-      }
-      if (bbbd.b(paramBundle)) {
-        axqw.b(this.a, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-      }
-      localObject1 = new Intent("ACTION_DELETE_FRIEND");
-      ((Intent)localObject1).putExtra("KEY_DELETE_FRIEND_UIN", paramBundle);
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject1);
-      paramBundle = localBundle;
-      break;
-      localObject1 = paramBundle.getString("troopUin");
-      paramBundle = paramBundle.getStringArrayList("memberUins");
-      ((TroopManager)this.a.getManager(52)).c((String)localObject1, (String)paramBundle.get(0));
-      paramBundle = localBundle;
-      break;
-      localObject1 = paramBundle.getString("troopUin");
-      localObject2 = paramBundle.getString("memberUin");
-      str1 = paramBundle.getString("troopNick");
-      i = paramBundle.getInt("level");
-      String str2 = paramBundle.getString("friendNick");
-      String str3 = paramBundle.getString("troopRemark");
-      int j = paramBundle.getInt("age");
-      int k = paramBundle.getInt("sex");
-      int m = paramBundle.getInt("distance");
-      l1 = paramBundle.getLong("msgseq");
-      long l2 = paramBundle.getLong("gagTimeStamp");
-      ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, str1, i, str2, str3, j, k, m, l1, l2);
-      paramBundle = localBundle;
-      break;
-      paramBundle = paramBundle.getString("troopUin");
-      ((akhq)this.a.a(20)).l(paramBundle);
-      paramBundle = localBundle;
-      break;
-      paramBundle = paramBundle.getString("troopUin");
-      ((akhq)this.a.a(20)).k(paramBundle);
-      paramBundle = localBundle;
-      break;
-      localObject1 = paramBundle.getString("uin");
-      paramBundle = "";
-      localObject1 = asxb.a(this.a, (String)localObject1, false);
-      if (localObject1 != null)
+      Class localClass2;
+      try
       {
-        if (((asyb)localObject1).a == 1L) {
-          paramBundle = this.a.getApp().getString(2131693608);
-        }
-        for (;;)
-        {
-          i = ((asyb)localObject1).c;
-          localBundle.putString("bind_name", paramBundle);
-          localBundle.putInt("bind_icon", i);
-          paramBundle = localBundle;
-          break;
-          if (((asyb)localObject1).a == 2L) {
-            paramBundle = this.a.getApp().getString(2131693606);
-          } else if (((asyb)localObject1).a == 3L) {
-            paramBundle = this.a.getApp().getString(2131693607);
-          }
-        }
+        ClassLoader localClassLoader = a(paramBaseApplicationImpl);
+        localClass2 = localClassLoader.loadClass("com.tencent.device.app.SmartDeviceAppInterface");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
       }
-      label1375:
-      paramBundle = localBundle;
-      break;
-      label1381:
-      bool = false;
-      break label692;
+      catch (ClassNotFoundException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+      do
+      {
+        return null;
+        paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { paramBaseApplicationImpl.getClass(), paramString.getClass() }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
+      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
+      return paramBaseApplicationImpl;
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+  }
+  
+  public static ClassLoader a(Context paramContext)
+  {
+    return PluginStatic.getOrCreateClassLoader(paramContext, "qqsmartdevice.apk");
+  }
+  
+  private void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] handleFailed errCode:" + paramInt);
+    }
+    this.jdField_a_of_type_Bglq = null;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_b_of_type_Bglq = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    b(paramInt);
+    String str = ajya.a(2131714224);
+    if (-4 == paramInt) {
+      str = ajya.a(2131714219);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] handleFailed errCode:" + str);
+      }
+      return;
+      if (-5 == paramInt) {
+        str = ajya.a(2131714221);
+      }
+    }
+  }
+  
+  private void a(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo!");
+    }
+    int i = 0;
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
+      i = 1;
+    }
+    if (paramPluginBaseInfo == null)
+    {
+      if (!this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo is no ready and query it");
+        }
+        if (i != 0)
+        {
+          a(-5);
+          return;
+        }
+        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+        return;
+      }
+      a(-1);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
+    }
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bbfj.g(BaseApplicationImpl.getContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    {
+      a(-4);
+      return;
+    }
+    switch (paramPluginBaseInfo.mState)
+    {
+    default: 
+      a(-3);
+      return;
+    case -1: 
+      a(-6);
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
+    case 1: 
+    case 2: 
+      if (i != 0)
+      {
+        a(-5);
+        return;
+      }
+      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+      return;
+    case 3: 
+      if (i != 0)
+      {
+        a(-5);
+        return;
+      }
+      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+      return;
+    case 4: 
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] install plugin success");
+      }
+      this.jdField_a_of_type_Boolean = true;
+      b(0);
+      b();
+      return;
+    }
+    a(-2);
+  }
+  
+  private boolean a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.iterator();
+    while (paramContext.hasNext()) {
+      if ("com.tencent.mobileqq:smartdevice".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    if ((this.c != null) && (this.c.compareToIgnoreCase("openActivity") == 0))
+    {
+      this.c = null;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginActivity delay 2 second");
+      }
+      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1002, 2000L);
+    }
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.compareToIgnoreCase("launchService") == 0))
+    {
+      this.jdField_b_of_type_JavaLangString = null;
+      if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_b_of_type_Bglq != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginService:");
+        }
+        bglh.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Bglq);
+        this.jdField_b_of_type_Bglq = null;
+        this.jdField_a_of_type_AndroidContentContext = null;
+      }
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    super.setChanged();
+    super.notifyObservers(Integer.valueOf(paramInt));
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Int = 0;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((!this.jdField_a_of_type_Boolean) && (!a(localQQAppInterface))) {
+      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
+    }
+  }
+  
+  public void a(Activity paramActivity, AppRuntime paramAppRuntime, String paramString1, Intent paramIntent, String paramString2, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, Class<? extends Activity> paramClass)
+  {
+    boolean bool = a(paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "launchPluingActivityForResult.isPluginInstalled end: " + bool);
+    }
+    paramAppRuntime = new bcqf(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298865));
+    if ((!bool) || (paramOnDismissListener != null))
+    {
+      paramAppRuntime.a(ajya.a(2131714217));
+      paramAppRuntime.setOnDismissListener(new bhwn(this, paramOnDismissListener));
+      if (bool) {
+        paramAppRuntime.setOnShowListener(new bhwo(this, paramAppRuntime));
+      }
+    }
+    for (;;)
+    {
+      paramOnDismissListener = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      ((yah)paramOnDismissListener.a(51)).b();
+      paramIntent.putExtra("userQqResources", 2);
+      paramIntent.putExtra("useSkinEngine", true);
+      paramIntent.putExtra("param_plugin_gesturelock", true);
+      this.jdField_a_of_type_Bglq = new bglq(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bglq.jdField_b_of_type_JavaLangString = "qqsmartdevice.apk";
+      this.jdField_a_of_type_Bglq.d = PluginInfo.e;
+      this.jdField_a_of_type_Bglq.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_a_of_type_Bglq.e = paramString2;
+      this.jdField_a_of_type_Bglq.jdField_a_of_type_JavaLangClass = paramClass;
+      this.jdField_a_of_type_Bglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      this.jdField_a_of_type_Bglq.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_Bglq.jdField_a_of_type_AndroidAppDialog = paramAppRuntime;
+      this.jdField_a_of_type_Bglq.c = 10000;
+      this.jdField_a_of_type_Bglq.f = null;
+      this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = a(paramOnDismissListener);
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginActivity: plugin is installed " + this.jdField_a_of_type_Bglq.e);
+        }
+        if (bool)
+        {
+          bglh.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bglq);
+          this.jdField_a_of_type_AndroidAppActivity = null;
+          this.jdField_a_of_type_Bglq = null;
+          return;
+        }
+        if (this.jdField_a_of_type_Bcqf == null)
+        {
+          this.jdField_a_of_type_Bcqf = new bcqf(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131298865));
+          this.jdField_a_of_type_Bcqf.a(ajya.a(2131714218));
+        }
+        this.jdField_a_of_type_Bcqf.show();
+        this.c = "openActivity";
+        b();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginActivity: waiting for plugin to install " + this.jdField_a_of_type_Bglq.e);
+      }
+      this.c = "openActivity";
+      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
+      return;
+      paramAppRuntime = null;
+    }
+  }
+  
+  public void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  {
+    Intent localIntent = new Intent(paramAppRuntime.getApplication(), SmartDeviceProxyService.class);
+    localIntent.putExtra("userQqResources", 2);
+    localIntent.putExtra("useSkinEngine", true);
+    this.jdField_b_of_type_Bglq = new bglq(this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Bglq.jdField_b_of_type_JavaLangString = "qqsmartdevice.apk";
+    this.jdField_b_of_type_Bglq.d = PluginInfo.e;
+    this.jdField_b_of_type_Bglq.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    this.jdField_b_of_type_Bglq.e = "com.tencent.device.ipc.QQSmartDeviceService";
+    this.jdField_b_of_type_Bglq.jdField_a_of_type_AndroidContentIntent = localIntent;
+    this.jdField_b_of_type_Bglq.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    this.jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginService directly");
+      }
+      bglh.c(paramAppRuntime.getApplication(), this.jdField_b_of_type_Bglq);
+      this.jdField_b_of_type_Bglq = null;
+      this.jdField_a_of_type_AndroidContentContext = null;
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginService: waiting for plugin to install ");
+    }
+    this.jdField_b_of_type_JavaLangString = "launchService";
+    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = (bglh)paramQQAppInterface.getManager(27);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.a("qqsmartdevice.apk");
+      if (paramQQAppInterface != null) {
+        return paramQQAppInterface.mState == 4;
+      }
+    }
+    return false;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  ACTION_QUERY!");
+      }
+      a("qqsmartdevice.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk"));
+      continue;
+      b(0);
+      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_Bglq != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginActivity:" + this.jdField_a_of_type_Bglq.e);
+        }
+        bglh.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bglq);
+      }
+      this.jdField_a_of_type_AndroidAppActivity = null;
+      this.jdField_a_of_type_Bglq = null;
+      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1003, 600L);
+      continue;
+      if (this.jdField_a_of_type_Bcqf != null)
+      {
+        this.jdField_a_of_type_Bcqf.hide();
+        this.jdField_a_of_type_Bcqf = null;
+      }
+    }
+  }
+  
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  {
+    int i = 1;
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient = paramPluginManagerClient;
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded SUPPORT_NETWORKING:true");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient != null)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk");
+      if (paramPluginManagerClient == null) {
+        break label206;
+      }
+      if (paramPluginManagerClient.mState == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] plugin is installed");
+        }
+        this.jdField_a_of_type_Boolean = true;
+        b(0);
+        b();
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1001, 400L);
+      }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded start down or install... retryCount: " + this.jdField_b_of_type_Int);
+      }
+      int j = this.jdField_b_of_type_Int;
+      this.jdField_b_of_type_Int = (j + 1);
+      if (j < 3)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
+        i = 0;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] not support networking");
+        }
+        this.jdField_a_of_type_Boolean = true;
+        b(0);
+        b();
+        return;
+        label206:
+        i = 0;
+      }
     }
   }
 }

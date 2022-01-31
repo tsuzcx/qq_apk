@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.dataprovider;
 
-import two;
-import txk;
+import twl;
+import txh;
 
 public class SimpleDataProvider$3
   implements Runnable
 {
-  public SimpleDataProvider$3(txk paramtxk, two paramtwo) {}
+  public SimpleDataProvider$3(txh paramtxh, twl paramtwl) {}
   
   public void run()
   {
-    txk.a(this.this$0, this.a);
+    txh.a(this.this$0, this.a);
   }
 }
 

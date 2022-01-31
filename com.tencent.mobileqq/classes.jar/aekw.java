@@ -1,26 +1,27 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
-
-public class aekw
-  extends aekt
+public abstract interface aekw
 {
-  public aekw(QQAppInterface paramQQAppInterface, aell paramaell, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvj paramacvj)
-  {
-    super(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
-  }
+  public static final String a = ajya.a(2131705734);
+  public static final String b = ajya.a(2131705731);
+  public static final String c = ajya.a(2131705732);
+  public static final String d = ajya.a(2131705733);
   
-  public boolean b()
-  {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
-    }
-    this.a.b.setVisibility(0);
-    this.a.b.setTextColor(-8947849);
-    this.a.b.setText("QQ企业红包");
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

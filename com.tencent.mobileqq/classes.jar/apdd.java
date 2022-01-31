@@ -1,24 +1,21 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.1;
 
 public class apdd
+  extends BroadcastReceiver
 {
-  public final int a;
-  final long jdField_a_of_type_Long;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  public apwh a;
-  public final String a;
-  final int b;
+  public apdd(UniformDownloadMgr.1 param1) {}
   
-  public apdd(apcy paramapcy, Bundle paramBundle, int paramInt1, apwh paramapwh, long paramLong, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Apwh = paramapwh;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramapwh.a();
-    this.b = paramInt2;
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getBundleExtra("param");
+    paramIntent = paramIntent.getStringExtra("url");
+    apdc.a().a(paramIntent, paramContext);
   }
 }
 

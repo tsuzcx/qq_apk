@@ -1,25 +1,16 @@
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.View.OnClickListener;
 
-public class adwx
-  extends adxa
+class adwx
+  implements View.OnClickListener
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public View c;
-  public int e;
-  public int f;
+  adwx(adww paramadww) {}
   
-  public adwx(adww paramadww)
+  public void onClick(View paramView)
   {
-    super(paramadww);
-    this.jdField_a_of_type_Boolean = true;
+    paramView = this.a.a(paramView);
+    this.a.a.b(paramView);
+    this.a.a.d();
   }
 }
 

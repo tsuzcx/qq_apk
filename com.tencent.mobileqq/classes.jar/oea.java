@@ -1,56 +1,134 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class oea
-  implements View.OnClickListener
 {
-  public oea(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  public String a;
+  public ArrayList<SocializeFeedsInfo.BiuCommentInfo> a;
+  pbg jdField_a_of_type_Pbg = new oeb(this);
+  puy jdField_a_of_type_Puy = new puy();
+  long jdField_b_of_type_Long;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final String jdField_b_of_type_JavaLangString = "5";
+  TextView c;
   
-  public void onClick(View paramView)
+  public oea(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment, Context paramContext)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.doOnBackPressed();
-    Object localObject2;
-    for (Object localObject1 = paramView.getTag();; localObject2 = null) {
-      for (;;)
-      {
-        try
-        {
-          i = Integer.valueOf(localObject1.toString()).intValue();
-          if ((i < 0) || (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-            break;
-          }
-          localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          int i = -1;
-          continue;
-          if (localException == null) {
-            continue;
-          }
-          paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953D", localException.c);
-          return;
-        }
-        if (localException != null)
-        {
-          paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.c, localException.b);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953C", localException.c);
-          return;
+    a(paramContext);
+    this.jdField_a_of_type_AndroidViewView.setTag(this);
+  }
+  
+  private void a(long paramLong)
+  {
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new oec(this, paramLong));
+    String str = ReadInJoyUserInfoModule.a();
+    if (localReadInJoyUserInfo != null) {
+      str = localReadInJoyUserInfo.nick;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+  }
+  
+  private void a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
+  {
+    paramArrayList = SocializeFeedsInfo.a(null, "5", this.jdField_a_of_type_Pbg, paramArrayList);
+    this.c.setSpannableFactory(aykk.a);
+    this.c.setText(paramArrayList);
+  }
+  
+  private boolean a(ArrayList<SocializeFeedsInfo.BiuCommentInfo> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        if (!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)paramArrayList.next()).jdField_a_of_type_JavaLangString)) {
+          return false;
         }
       }
     }
+    return true;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559941, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367405));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370816));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364437));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363290));
+  }
+  
+  public void a(MultiBiuSameContent paramMultiBiuSameContent, int paramInt)
+  {
+    a(paramMultiBiuSameContent.jdField_a_of_type_Long);
+    this.c.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    Object localObject = ong.a(paramMultiBiuSameContent.jdField_b_of_type_Int, true);
+    if (localObject != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(paramMultiBiuSameContent.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Long = paramMultiBiuSameContent.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Int = paramMultiBiuSameContent.c;
+    this.jdField_b_of_type_Long = paramMultiBiuSameContent.jdField_b_of_type_Long;
+    this.c.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment.a);
+    this.jdField_a_of_type_JavaLangString = ReadInjoyFriendsBiuComponentFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, paramMultiBiuSameContent.jdField_a_of_type_Long, paramMultiBiuSameContent.c, paramMultiBiuSameContent.jdField_b_of_type_Long);
+    try
+    {
+      if ((paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList != null) && (!paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList = paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList;
+        if (a(paramMultiBiuSameContent.jdField_a_of_type_JavaUtilArrayList))
+        {
+          this.c.setVisibility(8);
+          return;
+        }
+        a(this.jdField_a_of_type_JavaUtilArrayList);
+        return;
+      }
+    }
+    catch (Exception paramMultiBiuSameContent)
+    {
+      QLog.e("ReadInjoyFriendsBiuComponentFragment", 2, "setData: ", paramMultiBiuSameContent);
+      return;
+    }
+    if (TextUtils.isEmpty(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString))
+    {
+      this.c.setVisibility(8);
+      return;
+    }
+    localObject = new SpannableStringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMultiBiuSameContent.jdField_a_of_type_JavaLangString);
+    ((SpannableStringBuilder)localObject).append(new aykk(localStringBuilder, 7, 16));
+    this.c.setText((CharSequence)localObject);
   }
 }
 

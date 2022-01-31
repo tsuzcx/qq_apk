@@ -1,25 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-
-public class addt
-  implements DialogInterface.OnClickListener
+final class addt
+  implements adeh<adds>
 {
-  public addt(DoodlePanel paramDoodlePanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adds a(adee paramadee)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      axqw.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    axqw.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-    DoodlePanel.a(this.a).b(1);
+    return new adds(paramadee);
   }
 }
 

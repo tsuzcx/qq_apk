@@ -1,22 +1,16 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
-class agow
-  implements adgz
+public class agow
+  implements bfsd
 {
-  agow(agov paramagov) {}
+  public agow(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.a.setResult(-1, new Intent());
-    this.a.a.finish();
+    this.a.m();
   }
   
-  public void b()
-  {
-    this.a.a.setResult(-1, new Intent());
-    this.a.a.finish();
-  }
+  public void b(int paramInt) {}
 }
 
 

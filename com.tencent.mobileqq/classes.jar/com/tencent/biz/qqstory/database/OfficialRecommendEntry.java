@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class OfficialRecommendEntry
-  extends aukm
+  extends auko
 {
   public int bigvColor;
   public String bigvCover;
@@ -19,7 +19,7 @@ public class OfficialRecommendEntry
   public String bigvUserSymbolUrl;
   public String bigvUserUnionId;
   public boolean isMarkRead;
-  @auma
+  @aumc
   public int itemId;
   public int linkColor;
   public String linkCover;

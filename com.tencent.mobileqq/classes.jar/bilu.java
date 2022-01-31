@@ -1,17 +1,8 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.6.1;
-import mqq.os.MqqHandler;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
-public class bilu
-  implements bjob<Boolean>
+public abstract interface bilu
 {
-  bilu(bilj parambilj) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
-  {
-    ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEBottomListPart.6.1(this));
-  }
+  public abstract void a(int paramInt, AEFilterManager paramAEFilterManager);
 }
 
 

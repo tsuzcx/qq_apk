@@ -1,16 +1,45 @@
-class apta
-  implements bbwe
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
+public class apta
 {
-  apta(apsz paramapsz, aptu paramaptu) {}
-  
-  public void callback(int paramInt)
+  public static int a(bgbd parambgbd, long paramLong1, long paramLong2, long paramLong3)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    if (paramLong3 == 0L)
     {
-      this.jdField_a_of_type_Aptu.a();
-      return;
+      if (paramLong1 < parambgbd.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
+      for (;;)
+      {
+        i = (int)paramLong1;
+        int k = bgbg.a(BaseApplication.getContext());
+        int j;
+        if (k != 1)
+        {
+          j = i;
+          if (k != 2) {}
+        }
+        else
+        {
+          j = i;
+          if (i > 16384) {
+            j = 16384;
+          }
+        }
+        i = Math.min(j, 1048576);
+        if (QLog.isColorLevel()) {
+          QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
+        }
+        return i;
+        paramLong1 = 1024L;
+      }
     }
-    this.jdField_a_of_type_Aptu.b();
+    int i = parambgbd.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
+    if (paramLong1 < i + paramLong2) {}
+    for (paramLong1 -= paramLong2;; paramLong1 = i)
+    {
+      i = (int)paramLong1;
+      break;
+    }
   }
 }
 

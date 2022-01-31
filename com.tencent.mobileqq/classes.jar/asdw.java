@@ -1,6 +1,11 @@
 public abstract interface asdw
+  extends asdd
 {
-  public abstract boolean a(int paramInt);
+  public abstract boolean a();
+  
+  public abstract void setIsFullScreen(boolean paramBoolean);
+  
+  public abstract void setSurfaceCreatelistener(asdz paramasdz);
 }
 
 

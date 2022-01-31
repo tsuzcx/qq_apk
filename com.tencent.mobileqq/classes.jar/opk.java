@@ -1,57 +1,65 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class opk
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
-  private static final Set<String> a = ;
-  
-  public static Set<String> a()
-  {
-    return a;
-  }
-  
-  private static Set<String> b()
-  {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bhvh.a("default_feeds_aladdin_keys", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
-    }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      localHashSet.add(localObject[i]);
-      i += 1;
-    }
-    return localHashSet;
-  }
-  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
+    for (;;)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      bhvh.a("default_feeds_aladdin_keys", str2);
+      String str1;
+      String str2;
+      try
+      {
+        paramString = oof.a(paramString);
+        Iterator localIterator = paramString.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.isEmpty(str2)) {
+            break label209;
+          }
+          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
+            bhvy.a(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
+        }
+      }
+      if (TextUtils.equals(str1, "multi_video_feeds_type"))
+      {
+        bhvy.b(Integer.parseInt(str2));
+        continue;
+        label209:
+        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
+      }
     }
-    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
+    super.onWipeConfig(paramInt);
+    bhvy.a(1);
+    bhvy.b(1);
   }
 }
 

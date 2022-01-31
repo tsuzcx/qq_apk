@@ -1,8 +1,28 @@
-public class arjg
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
+
+class arjg
+  implements ActionCallback
 {
-  public static int a;
-  public static String a;
-  public static String b;
+  arjg(arje paramarje) {}
+  
+  public void onResult(String paramString)
+  {
+    try
+    {
+      i = Integer.parseInt(paramString);
+      if (arje.a(this.a) != null) {
+        arje.a(this.a).a(i, "");
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
+  }
 }
 
 

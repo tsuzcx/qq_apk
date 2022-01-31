@@ -1,37 +1,38 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.widget.FadeIconImageView;
 
 public class afyh
-  extends aouj
+  extends afxp
 {
-  private afyh(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  public static final int[] a;
+  public static final int[] b = { 2131364085 };
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  static
   {
-    if ((bici.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131690730 };
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  public afyh(FragmentActivity paramFragmentActivity)
   {
-    if ((bici.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    super(paramFragmentActivity);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bici.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return jdField_a_of_type_ArrayOfInt;
   }
 }
 

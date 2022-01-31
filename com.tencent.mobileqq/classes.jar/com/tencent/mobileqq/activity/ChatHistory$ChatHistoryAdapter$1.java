@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aarj;
-import aart;
+import aarf;
+import aarp;
 import android.widget.TextView;
-import bbcl;
-import bbet;
+import bbcz;
+import bbfh;
 
 public class ChatHistory$ChatHistoryAdapter$1
   implements Runnable
 {
-  public ChatHistory$ChatHistoryAdapter$1(aarj paramaarj, int paramInt, String paramString, aart paramaart, TextView paramTextView) {}
+  public ChatHistory$ChatHistoryAdapter$1(aarf paramaarf, int paramInt, String paramString, aarp paramaarp, TextView paramTextView) {}
   
   public void run()
   {
-    String str = bbcl.a(this.jdField_a_of_type_Aarj.a.app, this.jdField_a_of_type_Aarj.a.a, bbet.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Aart.b.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Aart.jdField_a_of_type_JavaLangString = str;
+    String str = bbcz.a(this.jdField_a_of_type_Aarf.a.app, this.jdField_a_of_type_Aarf.a.a, bbfh.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aarp.b.equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Aarp.jdField_a_of_type_JavaLangString = str;
     }
-    this.jdField_a_of_type_Aarj.a.runOnUiThread(new ChatHistory.ChatHistoryAdapter.1.1(this, str));
+    this.jdField_a_of_type_Aarf.a.runOnUiThread(new ChatHistory.ChatHistoryAdapter.1.1(this, str));
   }
 }
 

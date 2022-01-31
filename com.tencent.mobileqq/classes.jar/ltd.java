@@ -1,24 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class ltd
-  implements DialogInterface.OnClickListener
+  extends ltb
 {
-  public ltd(RandomController paramRandomController) {}
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ltd(RandomWebProtocol paramRandomWebProtocol, ltb paramltb, String paramString, boolean paramBoolean, int paramInt)
   {
-    if (RandomController.a(this.a) == 1) {
-      axqw.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    super(paramRandomWebProtocol, paramltb);
+    this.a = 2;
+    this.c = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramInt;
+    this.d = "[m] RequestMulti";
+  }
+  
+  String a()
+  {
+    this.a = null;
+    try
     {
-      this.a.b();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        axqw.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
+      this.a = new JSONObject().put("session_type", this.c);
+      return super.a();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
       }
     }
   }

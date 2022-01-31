@@ -1,9 +1,32 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public abstract interface ruk
+public class ruk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  private ruk(WordNavView paramWordNavView) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    float f = paramMotionEvent.getY();
+    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
+        if (WordNavView.a(this.a) != null) {
+          WordNavView.a(this.a).a((String)localEntry.getValue());
+        }
+      }
+    }
+    return super.onSingleTapUp(paramMotionEvent);
+  }
 }
 
 

@@ -1,59 +1,40 @@
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.DiscoverBannerPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.TroopAIOPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class txv
+  implements View.OnClickListener
 {
-  public static twl a(Object paramObject)
+  txv(txt paramtxt) {}
+  
+  public void onClick(View paramView)
   {
-    veg.d("Q.qqstory.player.data.SimpleDataProvider", "play info:%s", new Object[] { paramObject });
-    if ((paramObject instanceof HomeFeedPlayInfo)) {
-      return new txk(new twh((HomeFeedPlayInfo)paramObject));
+    if ((txt.a(this.a) != null) && (txt.a(this.a).a()))
+    {
+      txt.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
+      if (!this.a.a()) {
+        break label109;
+      }
+      paramView = "2";
+      label64:
+      if (!this.a.b()) {
+        break label115;
+      }
     }
-    if ((paramObject instanceof TroopAssistantHomeFeedPlayInfo)) {
-      return new txk(new txr((TroopAssistantHomeFeedPlayInfo)paramObject));
+    label109:
+    label115:
+    for (String str = "2";; str = "1")
+    {
+      vei.a("play_video", "close_reply", 0, 1, new String[] { paramView, str });
+      return;
+      this.a.a();
+      break;
+      paramView = "1";
+      break label64;
     }
-    if ((paramObject instanceof ProfileFeedPlayInfo)) {
-      return new txk(new txf((ProfileFeedPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof SingleFeedPlayInfo)) {
-      return new txk(new txq((SingleFeedPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof MsgTabPlayInfo)) {
-      return new txk(new txb((MsgTabPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof MemoriesFeedPlayInfo)) {
-      return new txk(new twx((MemoriesFeedPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof HotRecommendFeedPlayInfo)) {
-      return new txk(new twk((HotRecommendFeedPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof VidListPlayInfo)) {
-      return new txk(new txu((VidListPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof DiscoverBannerPlayInfo)) {
-      return new txk(new twb((DiscoverBannerPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof TroopAIOPlayInfo)) {
-      return new txt(((TroopAIOPlayInfo)paramObject).storyId);
-    }
-    if ((paramObject instanceof ShareFromMemoryPlayInfo)) {
-      return new txk(new txh((ShareFromMemoryPlayInfo)paramObject));
-    }
-    if ((paramObject instanceof MemorySelectVideoPlayInfo)) {
-      return new txk(new txa((MemorySelectVideoPlayInfo)paramObject));
-    }
-    vxs.a("play info unknown", new Object[0]);
-    return null;
   }
 }
 

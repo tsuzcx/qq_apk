@@ -1,18 +1,15 @@
 import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 class adat
-  implements aybh
+  implements aybj
 {
   adat(adas paramadas) {}
   
   public void a()
   {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - bawz.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Ayck.b / 2.0F);
-    int k = (int)(this.a.a.b - bawz.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Ayck.b / 2.0F);
-    aybp localaybp = new aybp(new aybg[] { new aybk(450, i, j, i, k), new aybk(450, i, k, i, j) });
+    aybp localaybp = new aybp(3000, 360, 0);
     localaybp.a = true;
-    this.a.a.jdField_a_of_type_Ayck.a(new aybg[] { localaybp });
+    this.a.a.d.a(new aybi[] { localaybp });
   }
 }
 

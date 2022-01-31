@@ -1,22 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-final class bgoo
-  implements View.OnClickListener
+public class bgoo
+  implements DialogInterface.OnDismissListener
 {
-  bgoo(Dialog paramDialog, String paramString) {}
+  public bgoo(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (QlinkShareJumpActivity.a(this.a))
+    {
+      QlinkShareJumpActivity.a(this.a, false);
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgoo
  * JD-Core Version:    0.7.0.1
  */

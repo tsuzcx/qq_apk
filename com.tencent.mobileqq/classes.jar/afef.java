@@ -1,20 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-class afef
-  implements ValueAnimator.AnimatorUpdateListener
+public class afef
+  implements afhk
 {
-  afef(afec paramafec) {}
+  public afef(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    AddContactsActivity.a(this.a, paramBoolean);
+    ImageView localImageView = AddContactsActivity.a(this.a);
+    if (AddContactsActivity.a(this.a)) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      return;
+    }
   }
 }
 

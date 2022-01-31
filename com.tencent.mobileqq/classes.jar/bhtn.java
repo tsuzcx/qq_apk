@@ -1,39 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
 class bhtn
+  implements QQPermissionCallback
 {
-  public static File a()
+  bhtn(bhtm parambhtm, String[] paramArrayOfString, Activity paramActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      String str = bhbz.b;
-      File localFile1 = new File(str);
-      boolean bool = localFile1.exists();
-      if (!bool) {
-        try
-        {
-          new File(str, ".nomedia").createNewFile();
-          if (!localFile1.mkdirs())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
-            }
-            return null;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localIOException.printStackTrace();
-          }
-        }
-      }
-    }
-    finally {}
-    return localFile2;
+    bbdj.b(bhtm.a(this.jdField_a_of_type_AndroidAppActivity));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhtm.a(this.jdField_a_of_type_Bhtm, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 

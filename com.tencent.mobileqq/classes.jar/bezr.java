@@ -1,24 +1,23 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetSDKOpenKeyTokenRsp;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import org.json.JSONObject;
 
 public class bezr
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetSDKOpenKeyTokenReq a = new INTERFACE.StGetSDKOpenKeyTokenReq();
+  private byte[] a;
   
-  public bezr(COMM.StCommonExt paramStCommonExt)
+  public bezr(byte[] paramArrayOfByte)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    this.a = paramArrayOfByte;
   }
   
   protected String a()
   {
-    return "mini_program_auth";
+    return "mini_app_report_transfer";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -26,34 +25,34 @@ public class bezr
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetSDKOpenKeyTokenRsp localStGetSDKOpenKeyTokenRsp = new INTERFACE.StGetSDKOpenKeyTokenRsp();
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
     try
     {
-      localStGetSDKOpenKeyTokenRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetSDKOpenKeyTokenRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
-        return paramArrayOfByte;
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = new APP_REPORT_TRANSFER.StDataReportRsp();
+      paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      int i = paramArrayOfByte.ret.get();
+      if (i == 0) {
+        return new JSONObject();
       }
-      besl.a("GetSDKOpenKeyTokenRequest", "onResponse fail.rsp = null");
+      betc.a("ProtoBufRequest", "onResponse fail.retCode = " + i);
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetSDKOpenKeyTokenRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  protected byte[] a()
+  public byte[] a()
   {
-    return this.a.toByteArray();
+    return this.a;
   }
   
   protected String b()
   {
-    return "GetSDKOpenKeyToken";
+    return "DataReport";
   }
 }
 

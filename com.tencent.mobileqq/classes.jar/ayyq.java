@@ -1,10 +1,11 @@
 public class ayyq
-  extends ayyy
+  extends ayza
 {
   public int a;
-  public long a;
-  public byte[] a;
+  public String a;
+  public boolean a;
   public int b;
+  public String b;
   public int c;
 }
 

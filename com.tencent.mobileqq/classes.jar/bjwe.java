@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class bjwe
-  implements Parcelable.Creator<EditVideoGame.GameResultItem>
+class bjwe
+  extends QQUIEventReceiver<bjvt, bkch>
 {
-  public EditVideoGame.GameResultItem a(Parcel paramParcel)
+  public bjwe(@NonNull bjvt parambjvt)
   {
-    return new EditVideoGame.GameResultItem(paramParcel);
+    super(parambjvt);
   }
   
-  public EditVideoGame.GameResultItem[] a(int paramInt)
+  public void a(@NonNull bjvt parambjvt, @NonNull bkch parambkch) {}
+  
+  public Class acceptEventClass()
   {
-    return new EditVideoGame.GameResultItem[paramInt];
+    return bkch.class;
   }
 }
 

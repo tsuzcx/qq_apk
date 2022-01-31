@@ -1,51 +1,18 @@
-import android.webkit.ValueCallback;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class beuf
-  implements begy
+class beuf
+  extends beub
 {
-  private int a;
-  public ITTJSRuntime a;
-  
-  public beuf(ITTJSRuntime paramITTJSRuntime, int paramInt)
+  beuf(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime = paramITTJSRuntime;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
   }
   
-  public int a()
+  protected beua a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateCallbackJs(paramInt, paramString);
-      return;
-    }
-    besl.d("[minigame] GameJsRuntime", "evaluateCallbackJs on null realJsRuntime");
-  }
-  
-  public void a(String paramString, ValueCallback paramValueCallback)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateJs(paramString);
-      return;
-    }
-    besl.d("[minigame] GameJsRuntime", "evaluateJs on null realJsRuntime");
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeITTJSRuntime.evaluateSubscribeJs(paramString1, paramString2);
-      return;
-    }
-    besl.d("[minigame] GameJsRuntime", "evaluateSubcribeJS on null realJsRuntime");
+    return new beua(2131694219, new beug(this));
   }
 }
 

@@ -1,35 +1,25 @@
 import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StSetAuthsReq;
-import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
 import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.List;
 import org.json.JSONObject;
 
 public class bfah
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StSetAuthsReq a = new INTERFACE.StSetAuthsReq();
+  private INTERFACE.StGetRobotUinReq a = new INTERFACE.StGetRobotUinReq();
   
-  public bfah(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo)
+  public bfah(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    this.a.appid.set(paramString);
-    if (paramStUserAuthInfo != null)
-    {
-      paramString = new ArrayList();
-      paramString.add(paramStUserAuthInfo);
-      this.a.auths.set(paramString);
-    }
     if (paramStCommonExt != null) {
       this.a.extInfo.set(paramStCommonExt);
     }
+    this.a.appid.set(paramString);
   }
   
   protected String a()
   {
-    return "mini_user_info";
+    return "mini_app_info";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -37,22 +27,22 @@ public class bfah
     if (paramArrayOfByte == null) {
       return null;
     }
+    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
     try
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      if (localStQWebRsp != null)
+      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetRobotUinRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode);
+        paramArrayOfByte.put("robotUin", localStGetRobotUinRsp.uin.get());
         return paramArrayOfByte;
       }
-      besl.a("SetAuthsRequest", "onResponse fail.rsp = null");
+      betc.a("GetRobotUinRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("SetAuthsRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetRobotUinRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
@@ -64,7 +54,7 @@ public class bfah
   
   protected String b()
   {
-    return "SetAuths";
+    return "GetRobotUin";
   }
 }
 

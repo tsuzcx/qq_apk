@@ -1,38 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class abib
-  implements CompoundButton.OnCheckedChangeListener
+  extends ajxj
 {
-  public abib(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public abib(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    int j = 1;
-    paramCompoundButton = this.a;
-    String str = this.a.app.getCurrentAccountUin();
-    if (paramBoolean)
-    {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = j;; i = 0)
-    {
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
       return;
-      i = 1;
-      break;
     }
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

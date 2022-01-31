@@ -1,27 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import java.util.ArrayList;
 
-class andp
-  implements andr
+public class andp
 {
-  andp(ando paramando, QQAppInterface paramQQAppInterface) {}
-  
-  public int a()
-  {
-    return axdw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-  }
-  
-  public void a(int paramInt)
-  {
-    axdw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0)) {
-      axdw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
-    }
-  }
+  public ArrayList<andq> a;
+  public boolean a;
 }
 
 

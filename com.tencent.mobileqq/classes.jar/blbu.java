@@ -1,106 +1,48 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.PointF;
 
 public class blbu
 {
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public final int a;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private blbw jdField_a_of_type_Blbw;
+  private blbx jdField_a_of_type_Blbx = new blbx(this, null);
+  public final int b;
+  private PointF jdField_b_of_type_AndroidGraphicsPointF = new PointF();
+  private blbx jdField_b_of_type_Blbx = new blbx(this, null);
+  public final int c;
+  private PointF c;
+  public final int d;
+  private PointF d;
+  public final int e;
+  private PointF e;
+  public final int f = 5;
+  public final int g = 6;
+  public final int h = -1;
+  public final int i = 50;
+  public final int j = 0;
+  public final int k = 1;
+  public final int l = 2;
+  private final int m = 200;
+  private final int n = 200;
+  private final int o = 200;
+  private final int p = 30;
+  private final int q = 80;
+  private final int r = 400;
+  private final int s = 50;
+  private final int t = 30;
+  private final int u = 8;
   
-  public static byte a(String paramString)
+  blbu(blbw paramblbw)
   {
-    byte b = 0;
-    if (paramString == null) {
-      b = -1;
-    }
-    do
-    {
-      for (;;)
-      {
-        return b;
-        paramString = a() + "/lib" + paramString + ".so";
-        if (QLog.isColorLevel()) {
-          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
-        }
-        File localFile = new File(paramString);
-        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
-          try
-          {
-            System.load(paramString);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
-              return 0;
-            }
-          }
-          catch (UnsatisfiedLinkError paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
-            }
-            return -3;
-          }
-        }
-      }
-      b = -2;
-    } while (!QLog.isColorLevel());
-    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
-    return -2;
-  }
-  
-  public static String a()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/tk";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
-      for (;;)
-      {
-        synchronized (jdField_a_of_type_ArrayOfByte)
-        {
-          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
-          if (str2 != null) {
-            if (str2.equalsIgnoreCase(aurl.a(str1)))
-            {
-              break label221;
-              return bool1;
-            }
-            else
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-              bool1 = bool2;
-            }
-          }
-        }
-        label221:
-        boolean bool1 = true;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Int = 2;
+    this.jdField_d_of_type_Int = 3;
+    this.jdField_e_of_type_Int = 4;
+    this.jdField_c_of_type_AndroidGraphicsPointF = new PointF();
+    this.jdField_d_of_type_AndroidGraphicsPointF = new PointF();
+    this.jdField_e_of_type_AndroidGraphicsPointF = new PointF();
+    this.jdField_a_of_type_Blbw = paramblbw;
   }
 }
 

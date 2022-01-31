@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import bers;
+import besj;
 
 class ShareProxyDefault$5
   implements Runnable
 {
-  ShareProxyDefault$5(ShareProxyDefault paramShareProxyDefault, Activity paramActivity, bers parambers) {}
+  ShareProxyDefault$5(ShareProxyDefault paramShareProxyDefault, Activity paramActivity, besj parambesj) {}
   
   public void run()
   {

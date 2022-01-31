@@ -1,41 +1,51 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmv
-  extends syv
+  extends sys<tol>
 {
-  public String a;
+  private final String a;
+  public List<String> a;
+  
+  public tmv()
+  {
+    this.jdField_a_of_type_JavaLangString = sxm.a("StorySvc.get_share_group_info");
+  }
   
   public String a()
   {
-    return sxp.a("StorySvc.get_profile_year_node_info");
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
+    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
     try
     {
-      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
-      return new tmw(localRspProfileYearNodeList);
+      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
+      return new tol(localRspGetShareGroupInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
-    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqProfileYearNodeList.toByteArray();
+    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqGetShareGroupInfo.share_group_id_list.add(str);
+    }
+    return localReqGetShareGroupInfo.toByteArray();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
-import aizk;
+import aizi;
 import android.text.TextUtils;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,13 +8,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class CmGameTempSessionHandler$1
   implements Runnable
 {
-  public CmGameTempSessionHandler$1(aizk paramaizk) {}
+  public CmGameTempSessionHandler$1(aizi paramaizi) {}
   
   public void run()
   {
-    String str = aizk.a(this.this$0).getCurrentAccountUin();
+    String str = aizi.a(this.this$0).getCurrentAccountUin();
     if (TextUtils.isEmpty((CharSequence)this.this$0.a.get(str))) {
-      this.this$0.a.put(str, aizk.a(this.this$0).getCurrentNickname());
+      this.this$0.a.put(str, aizi.a(this.this$0).getCurrentNickname());
     }
   }
 }

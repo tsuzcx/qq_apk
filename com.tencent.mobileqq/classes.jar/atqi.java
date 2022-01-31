@@ -2,74 +2,50 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import com.tencent.mobileqq.widget.ProgressButton;
 
 class atqi
-  implements bdko
+  extends Handler
 {
-  atqi(atpi paramatpi) {}
+  atqi(atpk paramatpk) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_Int = 4;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (atpi.a(this.a) != null) {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, atpi.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_Atuk != null) {
-      this.a.jdField_a_of_type_Atuk.a(5);
-    }
-    if (atpi.a(this.a) != null) {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, atpi.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((paramList != null) && (paramList.size() > 0))
+    switch (paramMessage.what)
     {
-      paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
-      localMessage.sendToTarget();
-      if ((paramList.f == 0) && (atpi.a(this.a) != null)) {
-        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, atpi.a(this.a).uin, "", "yes", "android");
-      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699330);
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
+        return;
+      } while ((this.a.jdField_a_of_type_Atum == null) || (atpk.a(this.a) == null));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698941);
+      }
+      this.a.jdField_a_of_type_Atum.a(atpk.a(this.a).uRoomid);
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
+      return;
+      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131699327, 0).a();
+      return;
+    } while (this.a.jdField_a_of_type_Atum == null);
+    this.a.jdField_a_of_type_Atum.a();
   }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

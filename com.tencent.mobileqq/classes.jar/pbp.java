@@ -1,11 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 
 public abstract interface pbp
 {
-  public abstract void a(SelectPositionModule.PositionData paramPositionData);
-  
-  public abstract void a(List<pcp> paramList);
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
 }
 
 

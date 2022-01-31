@@ -1,40 +1,85 @@
-import android.os.Handler;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor.CaptureCallback;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
+import android.hardware.camera2.CaptureFailure;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureRequest.Builder;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.TotalCaptureResult;
+import android.support.annotation.NonNull;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
 import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control.ImageSaveServer;
-import java.nio.ByteBuffer;
 
 public class axfw
-  extends SCameraCaptureProcessor.CaptureCallback
+  extends CameraCaptureSession.CaptureCallback
 {
-  public axfw(Camera2Control paramCamera2Control, long paramLong) {}
+  public axfw(Camera2Control paramCamera2Control) {}
   
-  public void onError(int paramInt)
+  private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
   {
-    axgd.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
-  }
-  
-  public void onPictureAvailable(ByteBuffer paramByteBuffer)
-  {
-    axgd.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
-    axgc.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
+    paramCaptureRequest = paramCaptureRequest.getTag();
+    if ((!(paramCaptureRequest instanceof axih)) || (((axih)paramCaptureRequest).jdField_a_of_type_Boolean))
     {
-      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
-      paramByteBuffer.get(arrayOfByte);
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
+      axgf.a(1, "[Camera2] mAfCaptureCallback handled!");
+      Camera2Control.d(this.a, false);
     }
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
-    Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
-    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a(0);
-    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control);
+    do
+    {
+      return;
+      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+      axgf.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
+    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
+    a(true, (axih)paramCaptureRequest);
   }
   
-  public void onShutter()
+  private void a(boolean paramBoolean, axih paramaxih)
   {
-    axgd.a(1, "[Camera2]samsungCapture onShutter!");
+    Camera2Control.d(this.a, false);
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
+    try
+    {
+      axgf.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
+      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {}
+      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
+      {
+        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
+        if ((paramaxih.jdField_a_of_type_Axgd.a == null) || (paramaxih.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        paramaxih.jdField_a_of_type_Boolean = true;
+        paramaxih.jdField_a_of_type_Axgd.a.a(1, paramBoolean);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramaxih)
+    {
+      axgf.a(2, "[Camera2] mAfCaptureCallback e:" + paramaxih);
+    }
+  }
+  
+  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
+  {
+    a(paramTotalCaptureResult, paramCaptureRequest);
+  }
+  
+  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
+  {
+    axgf.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
+    paramCameraCaptureSession = paramCaptureRequest.getTag();
+    if ((!(paramCameraCaptureSession instanceof axih)) || (((axih)paramCameraCaptureSession).jdField_a_of_type_Boolean))
+    {
+      axgf.a(1, "[Camera2] mAfCaptureCallback handled!");
+      Camera2Control.d(this.a, false);
+      return;
+    }
+    a(false, (axih)paramCameraCaptureSession);
+  }
+  
+  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
+  {
+    a(paramCaptureResult, paramCaptureRequest);
   }
 }
 

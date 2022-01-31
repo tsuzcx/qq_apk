@@ -1,13 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-public abstract interface thc
+public class thc
+  implements bcnl
 {
-  public abstract void a(@Nullable tfi paramtfi, Error paramError);
+  public thc(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public abstract void a(@Nullable tfi paramtfi, @NonNull List<StoryVideoItem> paramList);
+  public void a(String paramString)
+  {
+    this.a.a.setVisibility(4);
+  }
 }
 
 

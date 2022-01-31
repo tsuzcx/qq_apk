@@ -1,22 +1,22 @@
 package com.tencent.qidian.controller;
 
-import bduy;
+import bdvp;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 
 public class QidianPubAccountBigDataHandler$3
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$3(bduy parambduy, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
+  public QidianPubAccountBigDataHandler$3(bdvp parambdvp, PubAccountNavigationMenu paramPubAccountNavigationMenu) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 14	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:this$0	Lbduy;
-    //   4: getfield 29	bduy:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   7: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lauko;
-    //   10: invokevirtual 41	auko:createEntityManager	()Laukn;
+    //   1: getfield 14	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:this$0	Lbdvp;
+    //   4: getfield 29	bdvp:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   7: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Laukq;
+    //   10: invokevirtual 41	aukq:createEntityManager	()Laukp;
     //   13: astore_1
     //   14: aload_1
     //   15: ifnull +22 -> 37
@@ -26,9 +26,9 @@ public class QidianPubAccountBigDataHandler$3
     //   25: aload_1
     //   26: aload_0
     //   27: getfield 16	com/tencent/qidian/controller/QidianPubAccountBigDataHandler$3:a	Lcom/tencent/qidian/data/PubAccountNavigationMenu;
-    //   30: invokevirtual 47	aukn:b	(Laukm;)V
+    //   30: invokevirtual 47	aukp:b	(Lauko;)V
     //   33: aload_1
-    //   34: invokevirtual 49	aukn:a	()V
+    //   34: invokevirtual 49	aukp:a	()V
     //   37: return
     //   38: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   41: ifeq -8 -> 33
@@ -41,17 +41,17 @@ public class QidianPubAccountBigDataHandler$3
     //   56: aload_2
     //   57: invokevirtual 66	java/lang/Exception:printStackTrace	()V
     //   60: aload_1
-    //   61: invokevirtual 49	aukn:a	()V
+    //   61: invokevirtual 49	aukp:a	()V
     //   64: return
     //   65: astore_2
     //   66: aload_1
-    //   67: invokevirtual 49	aukn:a	()V
+    //   67: invokevirtual 49	aukp:a	()V
     //   70: aload_2
     //   71: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	72	0	this	3
-    //   13	54	1	localaukn	aukn
+    //   13	54	1	localaukp	aukp
     //   55	2	2	localException	java.lang.Exception
     //   65	6	2	localObject	Object
     // Exception table:

@@ -9,12 +9,12 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vym;
-import vyn;
+import vyj;
+import vyk;
 
 public class JsonORM
 {
-  private static final Map<Class, vyn[]> a = new IdentityHashMap();
+  private static final Map<Class, vyk[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -48,7 +48,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (vyn[])a.get(paramClass);
+    Object localObject2 = (vyk[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -123,7 +123,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (vyn[])a.get(localClass);
+    Object localObject2 = (vyk[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -264,20 +264,20 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<vyn> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<vyk> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      vym localvym = (vym)localField.getAnnotation(vym.class);
-      if (localvym == null) {}
+      vyj localvyj = (vyj)localField.getAnnotation(vyj.class);
+      if (localvyj == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new vyn(localvym.a(), a(localField.getType()), localField));
+        paramArrayList.add(new vyk(localvyj.a(), a(localField.getType()), localField));
       }
     }
   }
@@ -310,7 +310,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static vyn[] a(Class<?> paramClass)
+  private static vyk[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -318,7 +318,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new vyn[localArrayList.size()];
+    paramClass = new vyk[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

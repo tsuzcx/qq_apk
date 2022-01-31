@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import besl;
+import betc;
 
 class BannerAdPlugin$3
   implements Runnable
@@ -10,8 +10,8 @@ class BannerAdPlugin$3
   public void run()
   {
     boolean bool = this.this$0.hideBannerAd();
-    if (besl.a()) {
-      besl.b("BannerAdPlugin", "hideBannerAd " + bool);
+    if (betc.a()) {
+      betc.b("BannerAdPlugin", "hideBannerAd " + bool);
     }
   }
 }

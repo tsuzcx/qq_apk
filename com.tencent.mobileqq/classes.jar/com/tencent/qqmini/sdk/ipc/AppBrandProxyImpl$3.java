@@ -1,26 +1,26 @@
 package com.tencent.qqmini.sdk.ipc;
 
 import android.os.RemoteException;
-import beou;
-import beoy;
-import besl;
+import bepl;
+import bepp;
+import betc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppBrandProxyImpl$3
   implements Runnable
 {
-  public AppBrandProxyImpl$3(beou parambeou, beoy parambeoy, MiniAppInfo paramMiniAppInfo) {}
+  public AppBrandProxyImpl$3(bepl parambepl, bepp parambepp, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
     try
     {
-      this.jdField_a_of_type_Beoy.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+      this.jdField_a_of_type_Bepp.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      besl.d("minisdk-start_AppBrandProxy", "preloadPackage exception.", localRemoteException);
+      betc.d("minisdk-start_AppBrandProxy", "preloadPackage exception.", localRemoteException);
     }
   }
 }

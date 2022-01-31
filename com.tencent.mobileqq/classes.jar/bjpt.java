@@ -1,26 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
+import dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.10;
 
 public class bjpt
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnCancelListener
 {
-  public bjpt(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bjpt(LightWeightCameraCaptureUnit.10 param10) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.d = 5;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
-    }
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

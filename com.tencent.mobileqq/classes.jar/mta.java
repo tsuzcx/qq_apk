@@ -1,74 +1,32 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class mta
+final class mta
+  implements aysb
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public boolean a;
-  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  
-  public void a()
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    c();
-    e();
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_c_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if ((paramaysy == null) || (paramaysz == null)) {}
+    ayrx localayrx;
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
+      do
+      {
+        return;
+      } while (!(paramaysy instanceof ayrx));
+      localayrx = (ayrx)paramaysy;
+      localayrx.jdField_a_of_type_Long += paramaysz.c;
+      paramaysz.c = 0L;
+      paramaysz = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
+      localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+      paramaysz = localayrx.jdField_a_of_type_JavaLangString;
+      if (paramaysz.contains("range="))
+      {
+        paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
+        localayrx.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + localayrx.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((ayrx)paramaysy).jdField_a_of_type_JavaLangString + ", offset=" + localayrx.jdField_a_of_type_Long);
   }
 }
 

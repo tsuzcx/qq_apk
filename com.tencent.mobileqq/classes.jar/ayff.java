@@ -1,56 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class ayff
-  implements WtTicketPromise
+public class ayff
+  implements URLDrawableHandler
 {
-  ayff(ayfe paramayfe, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
+  public ayff(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
   
-  public void Done(Ticket paramTicket)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
-    {
-      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_Ayfe.mApp.getCurrentAccountUin(), "docs.qq.com");
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
-      {
-        ayfe.a(this.jdField_a_of_type_Ayfe, 0);
-        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
-      }
-      ayfe.a(this.jdField_a_of_type_Ayfe, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
-        i = 2;
-      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
-        i = 3;
-      } else {
-        i = 0;
-      }
-    }
+    return false;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void onFileDownloadFailed(int paramInt)
   {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-    ayfe.a(this.jdField_a_of_type_Ayfe, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public void onFileDownloadStarted()
   {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
-    ayfe.a(this.jdField_a_of_type_Ayfe, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
   }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+  }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

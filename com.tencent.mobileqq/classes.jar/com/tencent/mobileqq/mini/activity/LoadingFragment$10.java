@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajyc;
+import ajya;
 import android.os.Handler;
 import android.os.Message;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -26,13 +26,13 @@ class LoadingFragment$10
     }
     for (;;)
     {
-      bcpw.a(localBaseApplication, 1, str, 1).a();
+      bcql.a(localBaseApplication, 1, str, 1).a();
       this.this$0.uiHandler.postDelayed(new LoadingFragment.10.1(this), 1000L);
       return;
       str = null;
       break;
       label68:
-      str = ajyc.a(2131706241);
+      str = ajya.a(2131706252);
     }
   }
 }

@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
 public class atue
-  implements DialogInterface.OnClickListener
+  extends balg
 {
   public atue(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    paramDialogInterface.dismiss();
+    if (paramLong > 0L)
+    {
+      NearbyProfileFragment.a(this.a).setText(String.format(ajya.a(2131707331), new Object[] { Long.valueOf(paramLong) }));
+      return;
+    }
+    NearbyProfileFragment.a(this.a).setText(ajya.a(2131707293));
   }
 }
 

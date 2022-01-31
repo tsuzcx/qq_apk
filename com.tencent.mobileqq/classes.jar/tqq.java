@@ -1,14 +1,11 @@
-import java.util.HashMap;
-
 class tqq
-  extends tpx
+  extends tpv
 {
-  tqq(tqk paramtqk, tro paramtro) {}
+  tqq(tqh paramtqh, trp paramtrp) {}
   
   public boolean b()
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_Tro.a = ((String)localHashMap.get(this.jdField_a_of_type_Tro.a));
+    this.jdField_a_of_type_Trp.e = ((String)a("UploadImageJob_out_image_url"));
     return true;
   }
 }

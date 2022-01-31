@@ -1,31 +1,99 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
+import android.text.TextUtils;
 
-class vxp
-  implements syt<tnh, tni>
+public class vxp
 {
-  vxp(vxo paramvxo, JobContext paramJobContext, Integer paramInteger) {}
-  
-  public void a(@NonNull tnh paramtnh, @Nullable tni paramtni, @NonNull ErrorMessage paramErrorMessage)
+  public static <T> T a(T paramT)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      veg.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
-      return;
+    if (paramT == null) {
+      ved.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
     }
-    if ((paramErrorMessage.isFail()) || (paramtni == null))
-    {
-      veg.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      vxo.a(this.jdField_a_of_type_Vxo, paramErrorMessage);
-      return;
-    }
-    vxo.a(this.jdField_a_of_type_Vxo).a(paramtni.jdField_a_of_type_JavaUtilList, paramtni.jdField_a_of_type_JavaLangString, paramtni.jdField_a_of_type_Boolean);
-    ((uwa)tdc.a(11)).a(paramtni.jdField_a_of_type_JavaUtilList);
-    paramtnh = vxo.a(this.jdField_a_of_type_Vxo).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    vxo.a(this.jdField_a_of_type_Vxo, paramtnh);
+    return paramT;
   }
+  
+  public static String a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label87;
+        }
+        i = localObject.length;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append("\n" + localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label87:
+        paramInt = 2;
+      }
+    }
+  }
+  
+  public static void a() {}
+  
+  public static <T> void a(T paramT)
+  {
+    if (paramT == null)
+    {
+      paramT = vzg.a("StoryAssertUtils Exception!");
+      axpu.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
+      ved.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ved.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    if (paramVarArgs.length == 0) {}
+    for (;;)
+    {
+      ved.e("Q.qqstory.AssertUtils", paramString);
+      return;
+      paramString = String.format(paramString, paramVarArgs);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      ved.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
+    }
+  }
+  
+  public static void a(boolean paramBoolean, @NonNull String paramString)
+  {
+    if (paramBoolean) {
+      return;
+    }
+    ved.e("Q.qqstory.AssertUtils", paramString);
+  }
+  
+  public static void b() {}
 }
 
 

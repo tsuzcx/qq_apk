@@ -9,7 +9,8 @@ public class ahsm
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
   }
 }
 

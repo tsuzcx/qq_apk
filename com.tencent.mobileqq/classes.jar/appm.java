@@ -1,13 +1,15 @@
 import android.view.View;
 
 class appm
-  implements aput
+  implements apuv
 {
-  appm(appk paramappk) {}
+  appm(appl paramappl) {}
   
   public void onClick(View paramView)
   {
-    apue.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c());
+    int i = apvm.b(this.a.a.e());
+    axqy.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
+    this.a.a.h();
   }
 }
 

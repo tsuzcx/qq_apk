@@ -1,49 +1,82 @@
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
 
-final class beuv
-  implements DownloaderProxy.DownloadListener
+public class beuv
+  implements IJSEngine
 {
-  beuv(MiniGamePluginInfo paramMiniGamePluginInfo, beuz parambeuz, File paramFile1, File paramFile2) {}
+  private beuy jdField_a_of_type_Beuy;
+  private JsPluginEngine jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
   
-  public void onDownloadFailed(int paramInt, String paramString)
+  beuv(beuy parambeuy)
   {
-    besl.d("[minigame] GpkgManager", "[Gpkg] download plugin failed " + paramInt + " " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-    this.jdField_a_of_type_Beuz.a(false, null);
+    this.jdField_a_of_type_Beuy = parambeuy;
   }
   
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  public JsPluginEngine a()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.a != 0) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.a != this.jdField_a_of_type_JavaIoFile.length()))
-      {
-        besl.d("[minigame] GpkgManager", "[Gpkg] download plugin file-size mismatch " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-        this.jdField_a_of_type_Beuz.a(false, new RuntimeException("file size mismatch, expected:" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo.a + " got:" + this.jdField_a_of_type_JavaIoFile.length()));
-        return;
-      }
-      bekq.a(this.b.getAbsolutePath(), false);
-      if (!beji.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.b.getAbsolutePath()))
-      {
-        besl.d("[minigame] GpkgManager", "[Gpkg] download plugin unpack failed " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-        this.jdField_a_of_type_Beuz.a(false, new RuntimeException("unpack file failed"));
-        return;
-      }
-      besl.b("[minigame] GpkgManager", "[Gpkg] download plugin success " + this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniGamePluginInfo);
-      this.jdField_a_of_type_Beuz.a(true, null);
-      return;
+    return this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onResume();
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaIoFile.delete();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onPause();
     }
+  }
+  
+  public boolean canHandleEvent(String paramString)
+  {
+    return true;
+  }
+  
+  public ITTJSRuntime getJsRuntime(int paramInt)
+  {
+    if (this.jdField_a_of_type_Beuy.a(paramInt) != null) {
+      return this.jdField_a_of_type_Beuy.a(paramInt).a;
+    }
+    return null;
+  }
+  
+  public void onCreate(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine = new JsPluginEngine(paramContext);
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onCreate(this.jdField_a_of_type_Beuy);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onDestroy();
+    }
+  }
+  
+  public String onScriptCall(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null)
+    {
+      beuw localbeuw = this.jdField_a_of_type_Beuy.a(paramInt2);
+      localObject1 = localObject2;
+      if (localbeuw != null) {
+        localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.handleNativeRequest(paramString1, paramString2, localbeuw, paramInt1);
+      }
+    }
+    paramString1 = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString1 = "{}";
+    }
+    return paramString1;
   }
 }
 

@@ -1,18 +1,64 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.List;
 
 public class vnk
-  implements vvq
+  implements vkt
 {
   public vnk(DoodleLayout paramDoodleLayout) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.c();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 3);
+    if (this.a.jdField_a_of_type_Vno != null) {
+      this.a.jdField_a_of_type_Vno.b(1, paramInt);
     }
+  }
+  
+  public void a(vkn paramvkn)
+  {
+    this.a.jdField_a_of_type_Vkn = paramvkn;
+    if (this.a.jdField_a_of_type_Vno != null)
+    {
+      ved.b("DoodleLayout", "selectLocation: clickItem-->" + paramvkn.toString());
+      this.a.jdField_a_of_type_Vno.a(this.a.jdField_a_of_type_Vkn.a());
+    }
+  }
+  
+  public boolean a(vkq paramvkq)
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+      Object localObject;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
+        ((vpp)localObject).d = false;
+        if (!(localObject instanceof vkq)) {
+          break label120;
+        }
+        vkm localvkm = this.a.a();
+        if (localvkm != null) {
+          localvkm.a.add((vkq)localObject);
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramvkq);
+        paramvkq.d = true;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+        return true;
+        label120:
+        if ((localObject instanceof vlc))
+        {
+          localObject = this.a.a();
+          if (localObject != null) {
+            ((vla)localObject).d();
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

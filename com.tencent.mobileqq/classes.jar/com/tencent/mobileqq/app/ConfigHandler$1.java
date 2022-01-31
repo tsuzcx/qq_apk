@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajuf;
-import bbeh;
+import ajud;
+import bbev;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 public class ConfigHandler$1
   implements Runnable
 {
-  public ConfigHandler$1(ajuf paramajuf, String paramString, long paramLong) {}
+  public ConfigHandler$1(ajud paramajud, String paramString, long paramLong) {}
   
   public void run()
   {
@@ -23,10 +23,10 @@ public class ConfigHandler$1
     }
     if (i == 0)
     {
-      bbeh.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      bbev.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
       return;
     }
-    bbeh.a().a(this.this$0.app.getApplication());
+    bbev.a().a(this.this$0.app.getApplication());
   }
 }
 

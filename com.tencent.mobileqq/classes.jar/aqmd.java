@@ -1,6 +1,19 @@
-class aqmd
+public class aqmd
 {
-  private static final aqmb a = new aqmb(null);
+  private aqmg a;
+  
+  public static aqmd a()
+  {
+    return aqmf.a();
+  }
+  
+  public aqmg a()
+  {
+    if (this.a == null) {
+      this.a = new aqmh();
+    }
+    return this.a;
+  }
 }
 
 

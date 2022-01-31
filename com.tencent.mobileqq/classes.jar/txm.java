@@ -1,21 +1,28 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
-class txm
-  implements tww
+public class txm
+  extends Subscriber.SingleEventSubscriberNoRefect<svv>
 {
-  txm(txl paramtxl) {}
+  txh a;
   
-  public void a(ErrorMessage paramErrorMessage, List<two> paramList)
+  public txm(@NonNull txh paramtxh)
   {
-    this.a.a.a(paramErrorMessage, paramList);
-    this.a.b();
+    this.a = paramtxh;
   }
   
-  public void a(List<twp> paramList, boolean paramBoolean)
+  protected void a(@NonNull svv paramsvv)
   {
-    this.a.a.a(paramList, paramBoolean);
-    this.a.b();
+    if ((paramsvv.b != null) && (paramsvv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      txh.a(this.a, paramsvv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramsvv.b.mVid, paramsvv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return svv.class;
   }
 }
 

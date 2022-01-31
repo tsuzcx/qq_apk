@@ -1,50 +1,32 @@
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONObject;
 
 class ahld
   implements View.OnClickListener
 {
-  ahld(ahkf paramahkf, Bundle paramBundle) {}
+  ahld(ahkd paramahkd, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (ahkf.a(this.jdField_a_of_type_Ahkf) != null)
-    {
-      paramView = ahkf.a(this.jdField_a_of_type_Ahkf).obtainMessage(1134042);
-      ahkf.a(this.jdField_a_of_type_Ahkf).sendMessage(paramView);
-    }
-    paramView = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
+    paramView = new JSONObject();
     try
     {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(ahkf.a(this.jdField_a_of_type_Ahkf).getApplicationContext(), paramView);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        ahkf.a(this.jdField_a_of_type_Ahkf).startActivity(paramView);
-      }
+      paramView.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(ahkd.a(this.jdField_a_of_type_Ahkd), VipComicJumpActivity.class);
+      localIntent.putExtra("options", paramView.toString());
+      ahkd.a(this.jdField_a_of_type_Ahkd).startActivity(localIntent);
+      bghx.a(ahkd.a(this.jdField_a_of_type_Ahkd).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
+      axqy.a(ahkd.a(this.jdField_a_of_type_Ahkd).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
       return;
     }
-    catch (ClassNotFoundException paramView)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        paramView = null;
-      }
+      break label17;
     }
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import ahib;
-import ahic;
-import ahih;
-import ahiy;
+import ahhz;
+import ahia;
+import ahif;
+import ahiw;
 import android.text.TextUtils;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,28 +15,28 @@ public final class SpringHbMonitorReporter$4
   
   public void run()
   {
-    if (ahic.a(this.jdField_a_of_type_JavaLangString))
+    if (ahia.a(this.jdField_a_of_type_JavaLangString))
     {
-      String str = ahiy.c(this.jdField_a_of_type_JavaLangString);
+      String str = ahiw.c(this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(str))
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("ext1", str);
-        localHashMap.put("ext2", ahic.a(539) + "");
-        localHashMap.put("ext3", ahic.b(539) + "");
+        localHashMap.put("ext2", ahia.a(539) + "");
+        localHashMap.put("ext3", ahia.b(539) + "");
         localHashMap.put("ext4", this.jdField_a_of_type_Int + "");
-        ahih.a(ahib.jdField_a_of_type_JavaLangString, 3, this.b, localHashMap);
+        ahif.a(ahhz.jdField_a_of_type_JavaLangString, 3, this.b, localHashMap);
       }
       if (this.b != 0) {
         break label163;
       }
-      ahic.a();
+      ahia.a();
     }
     label163:
     while (this.jdField_a_of_type_Int != 404) {
       return;
     }
-    ahic.a(this.jdField_a_of_type_JavaLangString, 1, true);
+    ahia.a(this.jdField_a_of_type_JavaLangString, 1, true);
   }
 }
 

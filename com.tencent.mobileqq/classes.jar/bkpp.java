@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class bkpp
-  implements View.OnClickListener
+  extends bjpd
 {
-  bkpp(bkpo parambkpo) {}
+  private bkpp(bkpn parambkpn) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    vel.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!this.a.a().g())
-    {
-      bkpo.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
     }
-    this.a.a().f(false);
-    bkpo.a(this.a).setSelected(false);
-    this.a.a().d(3003);
+    if ((bkpn.a(this.a) != null) && (bkpn.a(this.a).hasMessages(paramInt))) {
+      bkpn.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
   }
 }
 

@@ -1,33 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeLabelTextView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
 
-public class baeo
-  extends aimv
+class baeo
+  implements View.OnTouchListener
 {
-  int jdField_a_of_type_Int;
-  final View jdField_a_of_type_AndroidViewView;
-  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public final TextView a;
-  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
-  TextView b;
+  baeo(baem parambaem, View paramView1, View paramView2) {}
   
-  baeo(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.c = ((ImageView)paramView.findViewById(2131368584));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368344));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378262));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370538));
-    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131378255));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378329);
-    this.b = ((TextView)paramView.findViewById(2131378351));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362515));
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
+    }
+    return false;
   }
 }
 

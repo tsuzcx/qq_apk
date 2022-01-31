@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-public class axvn
-  implements View.OnClickListener
+class axvn
+  extends QIPCModule
 {
-  public axvn(StructMsgForHypertext paramStructMsgForHypertext) {}
-  
-  public void onClick(View paramView)
+  axvn(axvm paramaxvm, String paramString)
   {
-    new axuu(null, paramView, this.a.message).a("web", this.a.mSourceUrl, null, null);
-    axqw.b(null, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, this.a.mMsgServiceID + "", "", "", "");
-    axqw.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("receipt_set_read".equals(paramString)) {
+      axvm.a(this.a, paramBundle);
+    }
+    for (;;)
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
+      }
+    }
   }
 }
 

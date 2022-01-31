@@ -1,15 +1,14 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qmc
-  extends ClickableSpan
+public abstract interface qmc
 {
-  qmc(qly paramqly) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(View paramView)
-  {
-    qls.j(this.a.a, true);
-  }
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(qmp paramqmp);
+  
+  public abstract void d();
 }
 
 

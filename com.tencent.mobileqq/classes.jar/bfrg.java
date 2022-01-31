@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
-
-public final class bfrg
-  implements Parcelable.Creator<ExpandableListView.SavedState>
+public abstract interface bfrg
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
+  public abstract void a(int paramInt);
   
-  public ExpandableListView.SavedState[] a(int paramInt)
-  {
-    return new ExpandableListView.SavedState[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

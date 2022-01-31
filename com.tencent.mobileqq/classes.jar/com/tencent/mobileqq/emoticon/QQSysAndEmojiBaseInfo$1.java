@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emoticon;
 
-import anwm;
+import anwr;
 
 final class QQSysAndEmojiBaseInfo$1
   implements Runnable
 {
   public void run()
   {
-    if (anwm.a() != null) {
-      anwm.a().a();
+    if (anwr.a() != null) {
+      anwr.a().a();
     }
   }
 }

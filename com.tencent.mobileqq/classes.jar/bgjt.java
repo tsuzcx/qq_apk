@@ -1,8 +1,18 @@
-import android.os.Bundle;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bgjt
+class bgjt
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public abstract void a(Bundle paramBundle);
+  bgjt(bgjq parambgjq) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
+    }
+  }
 }
 
 

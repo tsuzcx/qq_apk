@@ -1,15 +1,20 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class auzm
   implements View.OnClickListener
 {
-  public auzm(ProfileHeaderView paramProfileHeaderView, auuw paramauuw) {}
+  public auzm(ProfileHeaderView paramProfileHeaderView, View paramView) {}
   
   public void onClick(View paramView)
   {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Auuw);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a.getCurrentAccountUin(), 0).edit().putBoolean("common_topic_friend_list_should_show", false).apply();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

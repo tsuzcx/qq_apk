@@ -1,11 +1,18 @@
-import android.os.IInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface ayll
-  extends IInterface
+final class ayll
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onComplete(String paramString, int paramInt);
+  ayll(aylm paramaylm) {}
   
-  public abstract void onProgress(String paramString, long paramLong1, long paramLong2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aylh.a("0X800A5CA");
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+  }
 }
 
 

@@ -1,40 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginProxyService;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public class bgsk
-  implements bgsq
+public abstract interface bgsk
+  extends IInterface
 {
-  public bgsk(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgsj.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
-    }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgsj.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgsj.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgsj.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
-    }
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

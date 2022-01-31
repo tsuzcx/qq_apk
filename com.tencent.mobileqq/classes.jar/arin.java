@@ -1,15 +1,14 @@
 import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.WebCallHandler;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
+import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
 
 class arin
-  implements CustomizedWebView
+  implements CustomizedShareForQQ
 {
-  arin(arii paramarii) {}
+  arin(arik paramarik) {}
   
-  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
+  public void shareToQQ(Bundle paramBundle)
   {
-    arjh.a().a(paramBundle);
+    arjj.a().b(paramBundle);
   }
 }
 

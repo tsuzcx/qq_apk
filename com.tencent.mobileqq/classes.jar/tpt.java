@@ -1,39 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
-class tpt
-  extends syu<tnq, tnr>
+public class tpt
+  extends tpr
 {
-  tpt(tps paramtps, String[] paramArrayOfString) {}
+  private final String c;
   
-  public void a(@NonNull tnq paramtnq, @Nullable tnr paramtnr, @NonNull ErrorMessage paramErrorMessage)
+  private boolean a(ukk paramukk)
   {
-    if ((paramtnr == null) || (paramtnr.jdField_a_of_type_Int != 0))
+    boolean bool = false;
+    try
     {
-      if (paramtnr != null) {}
-      for (int i = paramtnr.jdField_a_of_type_Int;; i = -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
-        }
-        tps.a(this.jdField_a_of_type_Tps, false);
-        return;
-      }
+      Bitmap localBitmap = Bitmap.createBitmap(paramukk.a(), paramukk.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramukk.a(), 0.0F, 0.0F, null);
+      bbef.a(bbef.a(localBitmap, 100), new File(this.c));
+      bool = true;
     }
-    if (((Boolean)((tcv)tdc.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramtnq = tsa.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], tps.a(this.jdField_a_of_type_Tps));; paramtnq = this.jdField_a_of_type_ArrayOfJavaLangString[1])
+    catch (IOException paramukk)
     {
-      paramtnq = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramtnr.jdField_a_of_type_JavaLangString + "&" + paramtnq;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramtnq });
-      }
-      this.jdField_a_of_type_Tps.a("EncryptUrlJob_coverUrl", paramtnr.c);
-      this.jdField_a_of_type_Tps.a("EncryptUrlJob_encryptedUrl", paramtnq);
-      tps.b(this.jdField_a_of_type_Tps, true);
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramukk, new Object[0]);
+      return false;
     }
+    catch (OutOfMemoryError paramukk)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramukk, new Object[0]);
+    }
+    return bool;
+    return false;
+  }
+  
+  protected void a(Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    }
+  }
+  
+  protected void a(ukk paramukk)
+  {
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramukk), 8, null, true);
   }
 }
 

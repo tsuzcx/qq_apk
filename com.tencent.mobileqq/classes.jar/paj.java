@@ -1,18 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.commonsdk.cache.QQLruCache;
-import java.util.List;
-
-class paj
-  extends QQLruCache<String, List<BaseData>>
+public class paj<T>
 {
-  paj(pai parampai, int paramInt1, int paramInt2, int paramInt3)
+  private long jdField_a_of_type_Long;
+  T jdField_a_of_type_JavaLangObject;
+  public boolean a;
+  private long b;
+  
+  public paj(T paramT)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    this(paramT, localObject, 600000L);
+    if (localObject == null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
   
-  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public paj(T paramT, long paramLong)
   {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
+    this.jdField_a_of_type_JavaLangObject = paramLong;
+    this.b = System.currentTimeMillis();
+    Object localObject;
+    this.jdField_a_of_type_Long = localObject;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.b = System.currentTimeMillis();
+  }
+  
+  public boolean a()
+  {
+    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
   }
 }
 

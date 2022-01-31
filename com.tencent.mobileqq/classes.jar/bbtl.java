@@ -1,36 +1,51 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-
 public class bbtl
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  extends bbtc
 {
-  public bbtl(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public static final bbtl a;
+  private int a;
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
+    jdField_a_of_type_Bbtl = new bbtl();
+  }
+  
+  public void a(bbqp parambbqp)
+  {
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 2) {
+      download(null, 0, parambbqp, false);
     }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramTVK_IMediaPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-      return;
-      paramTVK_IMediaPlayer.start();
-    }
+  }
+  
+  public long getBID()
+  {
+    return 3L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "tintconfig";
+  }
+  
+  public String getScid(int paramInt)
+  {
+    return getScidPrefix();
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "theme_mapping_config_android";
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbtl
  * JD-Core Version:    0.7.0.1
  */

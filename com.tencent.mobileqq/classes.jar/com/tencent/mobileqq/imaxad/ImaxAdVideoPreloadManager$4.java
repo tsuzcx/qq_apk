@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.imaxad;
 
-import ardg;
+import ardi;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nnx;
+import nnu;
 
 public class ImaxAdVideoPreloadManager$4
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$4(ardg paramardg, QQAppInterface paramQQAppInterface) {}
+  public ImaxAdVideoPreloadManager$4(ardi paramardi, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    nnx.a().a(this.a);
+    nnu.a().a(this.a);
   }
 }
 

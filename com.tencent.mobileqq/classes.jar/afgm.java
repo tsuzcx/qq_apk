@@ -1,34 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
-public class afgm
-  implements TextWatcher
+public final class afgm
+  implements MessageQueue.IdleHandler
 {
-  public afgm(SearchContactsActivity paramSearchContactsActivity, boolean paramBoolean) {}
+  final SearchContactsActivity a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public afgm(SearchContactsActivity paramSearchContactsActivity)
   {
-    paramEditable = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    SearchContactsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity, paramEditable);
-    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_AndroidWidgetImageButton;
-    if (paramEditable.equals("")) {}
-    for (int i = 8;; i = 0)
-    {
-      localImageButton.setVisibility(i);
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.h != 1)) {
-        ((SearchContactsFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).c(paramEditable);
-      }
-      return;
-    }
+    this.a = paramSearchContactsActivity;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
+  }
 }
 
 

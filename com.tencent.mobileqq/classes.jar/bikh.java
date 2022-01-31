@@ -1,29 +1,13 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import com.tencent.ttpic.filter.MaterialLoadFinishListener;
 
 class bikh
-  implements bjob<bioz>
+  implements MaterialLoadFinishListener
 {
-  bikh(bikc parambikc) {}
+  bikh(bikg parambikg) {}
   
-  public void a(@Nullable bioz parambioz)
+  public void onLoadFinish(long paramLong)
   {
-    if (parambioz == null) {
-      return;
-    }
-    boolean bool = parambioz.a();
-    if (bool) {
-      bikc.a(this.a);
-    }
-    for (;;)
-    {
-      bikc.a(this.a).a(bool, new biki(this, parambioz));
-      return;
-      if (bikc.a(this.a) != null) {
-        bikc.a(this.a).a();
-      }
-    }
+    bizt.a().a(bikg.a(this.a), paramLong);
   }
 }
 

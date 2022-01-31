@@ -1,5 +1,6 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
@@ -8,26 +9,62 @@ import java.util.Set;
 public class opi
   implements AladdinConfigHandler
 {
+  private final String a = "reset_kandian_configuration";
+  private final String b = "reset_version";
+  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = oof.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "native_article")) {
-        bhvh.a("native_proteus_offline_bid", str2);
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "reset_kandian_configuration"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
       }
     }
-    return true;
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "reset_version"))
+      {
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+        continue;
+        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
+        try
+        {
+          paramInt1 = Integer.valueOf(paramString).intValue();
+          bbkb.q(BaseApplicationImpl.getApplication(), paramInt1, onh.a());
+          return true;
+        }
+        catch (NumberFormatException paramString)
+        {
+          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
+          return true;
+        }
+      }
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+    }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("native_proteus_offline_bid", "0");
+    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 

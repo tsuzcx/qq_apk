@@ -1,27 +1,6 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-
-public class agyt
-  implements PopupWindow.OnDismissListener
+public abstract class agyt
 {
-  public agyt(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
-  
-  public void onDismiss()
-  {
-    RedPacketManager.getInstance().onActiveAccount();
-    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (agyw.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
-    {
-      agyw.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
-      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
-    }
-    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
-      ahiy.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

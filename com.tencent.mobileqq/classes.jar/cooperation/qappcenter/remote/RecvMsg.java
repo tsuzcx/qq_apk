@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgml;
+import bgnc;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new bgml();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new bgnc();
   public int a;
   public Bundle a;
   public String a;

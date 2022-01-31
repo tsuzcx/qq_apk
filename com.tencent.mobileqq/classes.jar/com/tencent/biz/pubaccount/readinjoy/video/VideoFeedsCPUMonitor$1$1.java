@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bbct;
+import bbdh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import noo;
-import onk;
+import nol;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qmv;
-import qmw;
+import qms;
+import qmt;
 
 public class VideoFeedsCPUMonitor$1$1
   implements Runnable
 {
-  public VideoFeedsCPUMonitor$1$1(qmw paramqmw) {}
+  public VideoFeedsCPUMonitor$1$1(qmt paramqmt) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class VideoFeedsCPUMonitor$1$1
         Thread.sleep(10000L);
         localThread.start();
         l1 = System.currentTimeMillis();
-        l2 = qmv.a();
-        if (qmv.a().get() == 2)
+        l2 = qms.a();
+        if (qms.a().get() == 2)
         {
           l3 = System.currentTimeMillis();
-          qmv.b().getAndAdd(1);
+          qms.b().getAndAdd(1);
           if (QLog.isColorLevel()) {
-            QLog.d(qmv.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
+            QLog.d(qms.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
           }
           localJSONObject = new JSONObject();
         }
@@ -45,21 +45,21 @@ public class VideoFeedsCPUMonitor$1$1
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(qmv.a(), 2, "InterruptedException");
+        QLog.d(qms.a(), 2, "InterruptedException");
         continue;
       }
       try
       {
         localJSONObject.put("result", String.valueOf(l2));
         localJSONObject.put("costTime", String.valueOf(l3 - l1));
-        localJSONObject.put("deviceModel", bbct.d());
-        localJSONObject.put("manufactureInfo", bbct.h());
-        localJSONObject.put("uin", onk.a());
-        noo.a(null, null, "0X8009576", "0X8009576", 0, 0, onk.a(), "1", "", localJSONObject.toString(), false);
+        localJSONObject.put("deviceModel", bbdh.d());
+        localJSONObject.put("manufactureInfo", bbdh.h());
+        localJSONObject.put("uin", onh.a());
+        nol.a(null, null, "0X8009576", "0X8009576", 0, 0, onh.a(), "1", "", localJSONObject.toString(), false);
         if (localThread.isAlive()) {
           localThread.interrupt();
         }
-        qmv.a().set(0);
+        qms.a().set(0);
         return;
       }
       catch (JSONException localJSONException)

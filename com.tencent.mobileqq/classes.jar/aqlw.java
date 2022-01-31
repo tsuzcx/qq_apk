@@ -1,46 +1,123 @@
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
 
 public class aqlw
+  implements aqlz
 {
-  public long a;
-  private aqlx a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private aqmj jdField_a_of_type_Aqmj;
+  private aqnf jdField_a_of_type_Aqnf;
+  private aqoi jdField_a_of_type_Aqoi;
   
-  public aqlw(aqlx paramaqlx)
+  public aqlw(Activity paramActivity)
   {
-    this.jdField_a_of_type_Aqlx = paramaqlx;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public aqnf a()
+  {
+    return this.jdField_a_of_type_Aqnf;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aqnf = new aqnf();
+    this.jdField_a_of_type_Aqoi = new aqoi(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqnf);
+    this.jdField_a_of_type_Aqnf.a(this.jdField_a_of_type_Aqoi);
+    this.jdField_a_of_type_Aqmj = new aqmj(true, this.jdField_a_of_type_Aqnf);
+    this.jdField_a_of_type_Aqnf.a(this.jdField_a_of_type_Aqmj);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.a(paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void a(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Aqlx != null)
-    {
-      long l2 = System.currentTimeMillis();
-      this.jdField_a_of_type_Aqlx.a();
-      long l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_Long = (l1 - l2);
-      this.jdField_a_of_type_Aqlx.a(paramIntent);
-      l2 = System.currentTimeMillis();
-      this.b = (l2 - l1);
-      this.jdField_a_of_type_Aqlx.a(null);
-      l1 = System.currentTimeMillis();
-      this.c = (l1 - l2);
-      this.jdField_a_of_type_Aqlx.b();
-      l2 = System.currentTimeMillis();
-      this.d = (l2 - l1);
-      this.jdField_a_of_type_Aqlx.c();
-      this.e = (System.currentTimeMillis() - l2);
-      if (aqmb.a().a().a())
-      {
-        paramIntent = "buildParamsTime : " + this.jdField_a_of_type_Long + ", buildPresenterTime " + this.b + ", buildViewTime " + this.c + ", buildModelTime " + this.d + ", buildCompleteTime " + this.e;
-        aqmb.a().a().a("GalleryDirector", 4, paramIntent);
-      }
-      return;
+    this.jdField_a_of_type_Aqnf.a(paramIntent);
+    this.jdField_a_of_type_Aqoi.a(paramIntent);
+    this.jdField_a_of_type_Aqmj.a(paramIntent);
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.a(paramConfiguration);
     }
-    aqmb.a().a().a("GalleryDirector", 4, "Gallery builder is null!");
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Aqoi.a(paramViewGroup);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.c();
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      return this.jdField_a_of_type_Aqnf.a(paramInt, paramKeyEvent);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aqmj.a();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Aqnf.d();
+    this.jdField_a_of_type_Aqoi.a();
+    this.jdField_a_of_type_Aqmj.b();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.j();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.aI_();
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.aJ_();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.i();
+    }
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Aqnf != null) {
+      this.jdField_a_of_type_Aqnf.l();
+    }
   }
 }
 

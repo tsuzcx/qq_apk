@@ -1,321 +1,109 @@
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
 
 public class avqv
-  extends astx
+  extends avqx
 {
   public avqv(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  private aaok a(MessageForReplyText paramMessageForReplyText, asue paramasue)
+  private HashMap<String, ArrayList<MessageRecord>> a(List<MessageRecord> paramList, ArrayList<ChatMessage> paramArrayList)
   {
-    SessionInfo localSessionInfo = paramasue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    int i = paramasue.g;
-    aaok localaaok = new aaok();
-    localaaok.jdField_c_of_type_Int = bbev.a(BaseApplication.getContext());
-    localaaok.jdField_a_of_type_Long = System.currentTimeMillis();
-    String str1 = paramMessageForReplyText.getExtInfoFromExtStr("sens_reply_special_msg");
-    Object localObject = paramMessageForReplyText.getExtInfoFromExtStr("sens_reply_special_at_list");
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (i <= 0))
+    HashMap localHashMap = new HashMap(1);
+    ArrayList localArrayList = new ArrayList(1);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localaaok.jdField_b_of_type_JavaLangString = ((String)localObject);
-      localObject = MessageForText.getTroopMemberInfoFromExtrJson((String)localObject);
-      String str2 = aaod.a(str1, (ArrayList)localObject);
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = axas.a(str2, true, (ArrayList)localObject);
-      }
-      localaaok.jdField_a_of_type_JavaLangString = str1;
-      paramMessageForReplyText.removeExtInfoToExtStr("sens_reply_special_msg");
-      paramMessageForReplyText.removeExtInfoToExtStr("sens_reply_special_at_list");
-    }
-    if (paramMessageForReplyText.mSourceMsgInfo != null)
-    {
-      localaaok.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = new MessageForReplyText.SourceMsgInfo(paramMessageForReplyText.mSourceMsgInfo);
-      if (paramMessageForReplyText.getSourceMessage() != null) {
-        localaaok.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.packSourceMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForReplyText.getSourceMessage());
-      }
-      if (i > 0)
+      MessageRecord localMessageRecord1 = (MessageRecord)paramList.next();
+      if ((localMessageRecord1 instanceof MessageForMixedMsg))
       {
-        localaaok.jdField_c_of_type_Long = paramMessageForReplyText.uniseq;
-        localaaok.e = i;
-        paramMessageForReplyText.atInfoList = null;
+        Iterator localIterator = ((MessageForMixedMsg)localMessageRecord1).msgElemList.iterator();
+        while (localIterator.hasNext())
+        {
+          MessageRecord localMessageRecord2 = (MessageRecord)localIterator.next();
+          if (((localMessageRecord2 instanceof MessageForReplyText)) && (((MessageForReplyText)localMessageRecord2).getSourceMessage() != null))
+          {
+            localArrayList.add(localMessageRecord2);
+            localHashMap.put(String.valueOf(localMessageRecord1.uniseq), localArrayList);
+          }
+        }
+        paramArrayList.add((ChatMessage)localMessageRecord1);
       }
-      localaaok.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mType = 0;
     }
-    if ((paramMessageForReplyText.istroop == 1) && (localSessionInfo.jdField_a_of_type_Int == 1) && (localSessionInfo.jdField_a_of_type_JavaLangString.equals(paramMessageForReplyText.frienduin))) {}
-    for (i = 1;; i = 0)
-    {
-      if ((!paramasue.jdField_a_of_type_Boolean) || (i != 0))
-      {
-        localaaok.jdField_d_of_type_Boolean = paramMessageForReplyText.isBarrageMsg;
-        localaaok.jdField_b_of_type_Long = paramMessageForReplyText.barrageTimeLocation;
-        localaaok.jdField_d_of_type_Int = paramMessageForReplyText.barrageSourceMsgType;
-      }
-      return localaaok;
-    }
+    return localHashMap;
   }
   
-  private void h(asue paramasue)
+  private void h(asug paramasug)
   {
-    HashMap localHashMap = paramasue.jdField_a_of_type_JavaUtilHashMap;
-    Iterator localIterator1 = localHashMap.keySet().iterator();
-    if (localIterator1.hasNext())
-    {
-      localObject = (ArrayList)localHashMap.get((String)localIterator1.next());
-      if (localObject != null) {}
-    }
-    else
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    for (;;)
     {
       return;
-    }
-    Iterator localIterator2 = ((ArrayList)localObject).iterator();
-    label55:
-    MessageForReplyText localMessageForReplyText;
-    while (localIterator2.hasNext())
-    {
-      localObject = (MessageRecord)localIterator2.next();
-      if ((localObject instanceof MessageForReplyText))
+      Iterator localIterator = paramasug.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        localMessageForReplyText = (MessageForReplyText)localObject;
-        if (((MessageRecord)localObject).msg != null) {
-          break label132;
+        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+        if ((localChatMessage instanceof MessageForMixedMsg)) {
+          ((asju)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(paramasug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForMixedMsg)localChatMessage, false, ((MessageForMixedMsg)localChatMessage).forwardID);
         }
       }
     }
-    label132:
-    for (Object localObject = "";; localObject = ((MessageRecord)localObject).msg)
-    {
-      aaok localaaok = a(localMessageForReplyText, paramasue);
-      aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, paramasue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject, localMessageForReplyText.atInfoList, localaaok);
-      break label55;
-      break;
-    }
   }
   
-  public ArrayList<MessageRecord> a(QQAppInterface paramQQAppInterface, List<? extends MessageRecord> paramList, boolean paramBoolean)
+  protected void c(asug paramasug)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if (paramBoolean)
-      {
-        if (localMessageRecord.msgtype == -1037) {
-          paramList = ((MessageForLongMsg)localMessageRecord).rebuildLongMsg(true);
-        }
-        while (paramList == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ReplyMsgController", 2, "preAddMultiMsg.mrTemp is null ,not normal...");
-          }
-          return null;
-          if (localMessageRecord.msgtype == -1036)
-          {
-            paramList = (MessageForMixedMsg)((MessageForLongMsg)localMessageRecord).rebuildLongMsg();
-          }
-          else if (localMessageRecord.msgtype == -1035)
-          {
-            paramList = ((MessageForMixedMsg)localMessageRecord).rebuildMixedMsg();
-          }
-          else if (localMessageRecord.msgtype == -2011)
-          {
-            paramList = new MessageForStructing(localMessageRecord);
-          }
-          else if (localMessageRecord.msgtype == -1049)
-          {
-            paramList = (MessageRecord)localMessageRecord.deepCopyByReflect();
-            ((MessageForReplyText)paramList).deepCopySourceMsg((MessageForReplyText)localMessageRecord);
-          }
-          else
-          {
-            paramList = (MessageRecord)localMessageRecord.deepCopyByReflect();
-          }
-        }
-        if (!TextUtils.isEmpty(paramList.getExtInfoFromExtStr("troop_at_info_list"))) {
-          paramList.removeExtInfoToExtStr("troop_at_info_list");
-        }
-        if (!TextUtils.isEmpty(paramList.getExtInfoFromExtStr("disc_at_info_list"))) {
-          paramList.removeExtInfoToExtStr("disc_at_info_list");
-        }
-        paramList.atInfoList = null;
-        paramList.extLong = localMessageRecord.extLong;
-      }
-      while (paramList == null)
-      {
-        return null;
-        paramList = localMessageRecord;
-      }
-      paramList.uniseq = localMessageRecord.uniseq;
-      paramList.msgseq = localMessageRecord.msgseq;
-      if (apue.a(paramList)) {
-        paramQQAppInterface.a().a().a(localMessageRecord, paramList);
-      }
-      MessageForReplyText localMessageForReplyText1;
-      MessageForReplyText localMessageForReplyText2;
-      if ((paramList instanceof MessageForReplyText))
-      {
-        localMessageForReplyText1 = (MessageForReplyText)localMessageRecord;
-        localMessageForReplyText2 = (MessageForReplyText)paramList;
-        if ((localMessageForReplyText2.getSourceMessage() != null) && (apue.a(localMessageForReplyText2.getSourceMessage()))) {
-          paramQQAppInterface.a().a().a(localMessageForReplyText1.getSourceMessage(), localMessageForReplyText2.getSourceMessage());
-        }
-      }
-      if ((paramList instanceof MessageForMixedMsg))
-      {
-        localMessageForReplyText1 = ((MessageForMixedMsg)paramList).getReplyMessage(paramQQAppInterface);
-        localMessageForReplyText2 = ((MessageForMixedMsg)localMessageRecord).getReplyMessage(paramQQAppInterface);
-        if ((localMessageForReplyText1 != null) && (localMessageForReplyText2 != null) && (localMessageForReplyText1.getSourceMessage() != null) && (apue.a(localMessageForReplyText1.getSourceMessage()))) {
-          paramQQAppInterface.a().a().a(localMessageForReplyText2.getSourceMessage(), localMessageForReplyText1.getSourceMessage());
-        }
-      }
-      if (paramList.msgtype == -2022) {
-        ((MessageForShortVideo)paramList).redBagType = 0;
-      }
-      localArrayList.add(paramList);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyMsgController", 2, "preAddMultiMsg, MessageRecord:" + localMessageRecord.toString());
-      }
-    }
-    return localArrayList;
+    h(paramasug);
   }
   
-  protected void b(asue paramasue) {}
-  
-  public void b(auop paramauop)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReplyMsgController", 2, "onSend result.data=" + paramauop.a);
-        }
-      } while ((paramauop.a == null) || (!(paramauop.a instanceof String)));
-      paramauop = (String)paramauop.a;
-      paramauop = (asue)this.jdField_a_of_type_JavaUtilMap.get(paramauop);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyMsgController", 2, "onSend request=" + paramauop);
-      }
-    } while (paramauop == null);
-    this.jdField_a_of_type_JavaUtilMap.remove(paramauop.a());
-    h(paramauop);
-  }
-  
-  protected void c(asue paramasue)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReplyMsgController", 2, "onFailed");
-    }
-    auop localauop = new auop();
-    localauop.a = paramasue.a();
-    b(localauop);
-  }
-  
-  protected void d(asue paramasue)
+  protected void d(asug paramasug)
   {
     int i = 0;
-    Object localObject1 = paramasue.jdField_a_of_type_JavaUtilList;
-    Object localObject2 = (HashMap)paramasue.jdField_a_of_type_JavaUtilMap;
+    Object localObject1 = paramasug.jdField_a_of_type_JavaUtilList;
+    ArrayList localArrayList = new ArrayList(1);
+    Object localObject2 = (HashMap)paramasug.jdField_a_of_type_JavaUtilMap;
     localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramasue.jdField_a_of_type_Int != 2) {}
+    if (paramasug.jdField_a_of_type_Int != 2) {}
     for (boolean bool = true;; bool = false)
     {
-      localObject2 = a((QQAppInterface)localObject2, (List)localObject1, bool);
-      localObject1 = new HashMap(1);
-      localObject2 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject2).next();
-        long l = localMessageRecord.uniseq;
-        ArrayList localArrayList = new ArrayList(1);
-        localArrayList.add(localMessageRecord);
-        ((HashMap)localObject1).put(String.valueOf(l), localArrayList);
+      paramasug.jdField_a_of_type_JavaUtilHashMap = a(a((QQAppInterface)localObject2, (List)localObject1, bool), localArrayList);
+      paramasug.jdField_a_of_type_JavaUtilList = localArrayList;
+      if (paramasug.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
+        break;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplyMsgController", 2, "preHandleData dstMsgMap is empty");
+      }
+      h(paramasug);
+      return;
     }
-    paramasue.jdField_a_of_type_JavaUtilHashMap = ((HashMap)localObject1);
-    if (paramasue.jdField_a_of_type_Int == 0) {}
+    if (paramasug.jdField_a_of_type_Int == 0) {}
     for (;;)
     {
       localObject1 = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
-      ((Message)localObject1).obj = paramasue;
+      ((Message)localObject1).obj = paramasug;
       ((Message)localObject1).sendToTarget();
       return;
-      if (paramasue.jdField_a_of_type_Int == 2) {
+      if (paramasug.jdField_a_of_type_Int == 2) {
         i = 1;
       }
     }
   }
   
-  public void e(asue paramasue)
+  protected void g(asug paramasug)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramasue.a())) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramasue.a(), paramasue);
-    }
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(-1);
-    localMessage.obj = paramasue;
-    localMessage.sendToTarget();
-  }
-  
-  public void f(asue paramasue)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      if (paramasue.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ReplyMsgController", 2, "uploadRichMsg dstMsgMap is empty");
-    return;
-    paramasue.a(15);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((astq)localIterator.next()).a(paramasue, paramasue.jdField_a_of_type_JavaUtilHashMap, this);
-    }
-    asuf.b("ReplyMsgController step.uploadRichStart", new Object[0]);
-  }
-  
-  protected void g(asue paramasue)
-  {
-    auop localauop = new auop();
-    localauop.a = paramasue.a();
-    b(localauop);
+    h(paramasug);
   }
 }
 

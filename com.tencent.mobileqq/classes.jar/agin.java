@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agin
-  implements DialogInterface.OnDismissListener
+public abstract interface agin
 {
-  public agin(BaseActivityView paramBaseActivityView) {}
+  public abstract View a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract View b();
+  
+  public abstract TextView b();
+  
+  public abstract TextView c();
+  
+  public abstract TextView d();
 }
 
 

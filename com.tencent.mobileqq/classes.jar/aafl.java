@@ -1,22 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class aafl
-  implements DialogInterface.OnClickListener
+  extends akat
 {
   public aafl(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString, ayay paramayay)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
-    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    this.a.startActivity(paramDialogInterface);
-    axqw.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
-    this.a.d();
+    if (this.a.isFinishing()) {}
+    ayaq localayaq;
+    do
+    {
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localayaq = (ayaq)this.a.app.getManager(62);
+        if (paramayay.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (ayaq.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localayaq.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            paramayay = (Pair)paramString.get(i);
+            localayaq.a(this.a.app, this.a, paramayay, new aafm(this, localayaq, paramayay));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localayaq.a(paramString, 1, true);
   }
 }
 

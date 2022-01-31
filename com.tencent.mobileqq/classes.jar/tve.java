@@ -1,19 +1,36 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
 
-public abstract interface tve
+final class tve
+  implements ttc
 {
-  public abstract Context a();
+  tve(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
   
-  public abstract View a();
-  
-  public abstract void finish();
-  
-  public abstract Activity getActivity();
-  
-  public abstract void startActivity(Intent paramIntent);
+  public void a(int paramInt)
+  {
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
+    {
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label66;
+      }
+    }
+    label66:
+    for (paramInt = i;; paramInt = 2)
+    {
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      localData.mUIStyle.mPlayerRepeatMode = 2;
+      tvc.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+  }
 }
 
 

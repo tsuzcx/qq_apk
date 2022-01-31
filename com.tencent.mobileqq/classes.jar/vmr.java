@@ -1,34 +1,36 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
 class vmr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements TextWatcher
 {
-  private vmr(vmj paramvmj) {}
+  vmr(vmq paramvmq) {}
   
-  public void onGlobalLayout()
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
-    if (this.a.c < 0)
+    if (this.a.jdField_a_of_type_Vmu != null)
     {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Vmq.a();
+      this.a.jdField_a_of_type_Vlp.a = paramEditable.toString();
+      this.a.jdField_a_of_type_Vmu.a(this.a.jdField_a_of_type_Vlp);
     }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_Vmu == null) {}
     do
     {
       do
       {
         return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Vmq == null);
-    this.a.jdField_a_of_type_Vmq.a(true, null);
-    this.a.jdField_a_of_type_Vmq.a(this.a.a());
+      } while (this.a.a(paramCharSequence.toString()) <= 420);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setText(paramCharSequence.subSequence(0, paramInt1));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setSelection(paramInt1);
+    } while (this.a.jdField_a_of_type_Vmu == null);
+    this.a.jdField_a_of_type_Vmu.b(420);
   }
 }
 

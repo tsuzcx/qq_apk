@@ -1,36 +1,31 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Window;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class bfxq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
-  private final boolean b;
+  public bfxq(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  private bfxq(Window paramWindow, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
-    for (;;)
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
     {
-      this.b = bool;
-      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "openAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
       return;
-      bool = false;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfxq
  * JD-Core Version:    0.7.0.1
  */

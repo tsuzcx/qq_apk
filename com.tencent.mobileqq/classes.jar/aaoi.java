@@ -1,51 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aaoi
-  extends atzo
+public final class aaoi
+  implements DialogInterface.OnCancelListener
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
+  public aaoi(aaqb paramaaqb, aaqa paramaaqa) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
-      }
+    if (this.jdField_a_of_type_Aaqb.a) {
+      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
-    return;
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
-      if (paramBundle != null)
-      {
-        paramBundle = xgz.a(bblm.b(paramBundle.getWupBuffer()));
-        if (paramBundle != null) {
-          aaod.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-      return;
+    if (this.jdField_a_of_type_Aaqa != null) {
+      this.jdField_a_of_type_Aaqa.a();
     }
-    catch (Exception paramBundle)
-    {
-      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

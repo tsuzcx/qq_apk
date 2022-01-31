@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import alnh;
+import alng;
+import alnx;
 import alny;
-import alnz;
 
 public class ArkAppDeviceModule$ScanCodeMethod$1$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ScanCodeMethod$1$1(alnz paramalnz, String paramString1, String paramString2) {}
+  public ArkAppDeviceModule$ScanCodeMethod$1$1(alny paramalny, String paramString1, String paramString2) {}
   
   public void run()
   {
-    alnh.a(this.jdField_a_of_type_Alnz.jdField_a_of_type_Alny.a, this.jdField_a_of_type_Alnz.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    alng.a(this.jdField_a_of_type_Alny.jdField_a_of_type_Alnx.a, this.jdField_a_of_type_Alny.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

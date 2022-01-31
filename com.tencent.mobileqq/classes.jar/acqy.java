@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
-class acqy
-  implements View.OnClickListener
+public class acqy
+  implements Comparator<acsl>
 {
-  acqy(acqv paramacqv, acqs paramacqs) {}
+  public acqy(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onClick(View paramView)
+  public int a(acsl paramacsl1, acsl paramacsl2)
   {
-    this.jdField_a_of_type_Acqv.a.a(this.jdField_a_of_type_Acqs);
+    long l = paramacsl2.a - paramacsl1.a;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqy
  * JD-Core Version:    0.7.0.1
  */

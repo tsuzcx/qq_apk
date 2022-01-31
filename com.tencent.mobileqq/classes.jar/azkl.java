@@ -1,16 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.widget.ListView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
 
 class azkl
-  implements View.OnClickListener
+  implements azlz
 {
-  azkl(azkk paramazkk) {}
+  azkl(azkj paramazkj) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    GroupManagerActivity.a((Activity)azkk.a(this.a));
+    if ((paramBoolean) && (paramInt > 0)) {
+      this.a.a.a.a.smoothScrollBy(paramInt, 200);
+    }
   }
 }
 

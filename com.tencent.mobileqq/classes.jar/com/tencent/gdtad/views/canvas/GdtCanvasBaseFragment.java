@@ -13,8 +13,8 @@ import android.view.Window;
 import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import yxs;
-import yze;
+import yxp;
+import yzb;
 
 public abstract class GdtCanvasBaseFragment
   extends PublicBaseFragment
@@ -32,10 +32,10 @@ public abstract class GdtCanvasBaseFragment
   {
     if ((paramActivity == null) || (paramGdtCanvasData == null) || (!paramGdtCanvasData.isValid()))
     {
-      yxs.b("GdtCanvasBaseFragment", "start error");
+      yxp.b("GdtCanvasBaseFragment", "start error");
       return;
     }
-    yxs.b("GdtCanvasBaseFragment", "start");
+    yxp.b("GdtCanvasBaseFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -47,7 +47,7 @@ public abstract class GdtCanvasBaseFragment
     paramGdtCanvasData.putExtra("big_brother_source_key", "biz_src_ads");
     paramGdtCanvasData.putExtras(localBundle);
     if (TextUtils.isEmpty(paramGdtCanvasData.getStringExtra("big_brother_ref_source_key"))) {
-      yxs.d("GdtCanvasBaseFragment", "start gdt empty refId");
+      yxp.d("GdtCanvasBaseFragment", "start gdt empty refId");
     }
     PublicFragmentActivity.a(paramActivity, paramGdtCanvasData, paramClass);
   }
@@ -100,7 +100,7 @@ public abstract class GdtCanvasBaseFragment
       paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
     }
     this.contentView = new GdtCanvasView(getActivity());
-    yze.a(this.contentView);
+    yzb.a(this.contentView);
     this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.contentView.setData(paramLayoutInflater);
     if ((getActivity() != null) && (getActivity().getWindow() != null)) {

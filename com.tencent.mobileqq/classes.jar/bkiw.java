@@ -1,30 +1,52 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class bkiw
-  implements TextWatcher
+  extends bkip
 {
-  public bkiw(bkiu parambkiu) {}
+  public final int c;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bkiw(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    String str = vye.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+    super(paramInt3, paramString, paramInt1);
+    this.c = paramInt2;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  @NonNull
+  public bkiq a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    veg.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Bkix != null) {
-      this.a.jdField_a_of_type_Bkix.a(this.a.jdField_a_of_type_JavaLangString);
+    return new bkix(this, paramContext, paramViewGroup);
+  }
+  
+  @NonNull
+  public Class<? extends bkiq> a()
+  {
+    return bkix.class;
+  }
+  
+  public String toString()
+  {
+    switch (this.a)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return "";
+    case 0: 
+      return "normal";
+    case 3: 
+      return "slow";
+    case 2: 
+      return "fast";
+    case 9: 
+      return "very slow";
+    case 8: 
+      return "little fast";
     }
+    return "rewind";
   }
 }
 

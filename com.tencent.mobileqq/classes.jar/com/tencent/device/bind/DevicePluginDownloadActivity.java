@@ -1,16 +1,16 @@
 package com.tencent.device.bind;
 
-import akwg;
+import akwf;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import bbcl;
-import bbcv;
-import bbgg;
-import bgyu;
-import bhvv;
+import bbcz;
+import bbdj;
+import bbgu;
+import bgzl;
+import bhwm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.DeviceScanner;
@@ -21,11 +21,11 @@ import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import wim;
-import xze;
-import xzf;
-import xzg;
-import ymw;
+import wij;
+import xzb;
+import xzc;
+import xzd;
+import ymt;
 
 public class DevicePluginDownloadActivity
   extends IphoneTitleBarActivity
@@ -50,7 +50,7 @@ public class DevicePluginDownloadActivity
     }
     for (;;)
     {
-      bhvv.a().a(this, super.getAppRuntime(), super.getAppRuntime().getAccount(), this.jdField_a_of_type_AndroidContentIntent, str, 0, null, SmartDevicePluginProxyActivity.class);
+      bhwm.a().a(this, super.getAppRuntime(), super.getAppRuntime().getAccount(), this.jdField_a_of_type_AndroidContentIntent, str, 0, null, SmartDevicePluginProxyActivity.class);
       return;
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("public_device", 0) != 0)
       {
@@ -77,11 +77,11 @@ public class DevicePluginDownloadActivity
         super.setContentView(2131558972);
         super.setTitle(2131691612);
         super.setLeftViewName(2131691612);
-        ymw.a().a(1);
-        ymw.a().jdField_a_of_type_JavaLangString = "";
-        ymw.a().jdField_a_of_type_Int = 0;
+        ymt.a().a(1);
+        ymt.a().jdField_a_of_type_JavaLangString = "";
+        ymt.a().jdField_a_of_type_Int = 0;
         int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("entrance", 1);
-        ymw.a().a(BaseApplicationImpl.getApplication().getRuntime(), "Usr_Entrance", i);
+        ymt.a().a(BaseApplicationImpl.getApplication().getRuntime(), "Usr_Entrance", i);
         DeviceScanner.openDeviceQCodeUrl(this, null, str);
         super.finish();
       }
@@ -99,14 +99,14 @@ public class DevicePluginDownloadActivity
       } while ((TextUtils.isEmpty(this.c)) || (!this.c.equals("share")));
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra(jdField_a_of_type_JavaLangString, -1) == 0)
       {
-        if (!bgyu.a((AppInterface)super.getAppRuntime(), this, this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("data"), null)) {
-          wim.a(1, 2131689512);
+        if (!bgzl.a((AppInterface)super.getAppRuntime(), this, this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("data"), null)) {
+          wij.a(1, 2131689512);
         }
         super.finish();
         return true;
       }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("uinname", bbcl.i(this.app, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")));
-      if (bhvv.a().a((QQAppInterface)super.getAppRuntime()))
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("uinname", bbcz.i(this.app, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")));
+      if (bhwm.a().a((QQAppInterface)super.getAppRuntime()))
       {
         if (QLog.isColorLevel()) {
           QLog.d(b, 2, "start SmartDevicePlugin to goshare");
@@ -118,15 +118,15 @@ public class DevicePluginDownloadActivity
       if (QLog.isColorLevel()) {
         QLog.d(b, 2, "download install SmartDevicePlugin");
       }
-      bhvv.a().addObserver(this);
-      bhvv.a().a();
+      bhwm.a().addObserver(this);
+      bhwm.a().a();
       return true;
       super.setContentView(2131558973);
       super.setTitle(2131691377);
-      bhvv.a().addObserver(this);
+      bhwm.a().addObserver(this);
       this.leftView.setText(2131690331);
-    } while (bhvv.a().a(this.app));
-    bhvv.a().a();
+    } while (bhwm.a().a(this.app));
+    bhwm.a().a();
     return true;
   }
   
@@ -134,8 +134,8 @@ public class DevicePluginDownloadActivity
   {
     super.doOnCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 23) {
-      if (!akwg.a(this)) {
-        akwg.a(this, 3, new xze(this));
+      if (!akwf.a(this)) {
+        akwf.a(this, 3, new xzb(this));
       }
     }
     for (;;)
@@ -150,7 +150,7 @@ public class DevicePluginDownloadActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bhvv.a().deleteObserver(this);
+    bhwm.a().deleteObserver(this);
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -163,9 +163,9 @@ public class DevicePluginDownloadActivity
       }
       if (paramObservable.intValue() != 0)
       {
-        paramObservable = bbcv.a(this, 230);
-        paramObservable.setNegativeButton(2131690596, new xzf(this));
-        paramObservable.setPositiveButton(2131691615, new xzg(this));
+        paramObservable = bbdj.a(this, 230);
+        paramObservable.setNegativeButton(2131690596, new xzc(this));
+        paramObservable.setPositiveButton(2131691615, new xzd(this));
         paramObservable.setTitle(2131691611);
         paramObservable.setMessage(2131691610);
         paramObservable.show();
@@ -187,8 +187,8 @@ public class DevicePluginDownloadActivity
       paramObservable.putExtra("DevicePID", paramObject.getStringExtra("DevicePID"));
       paramObservable.putExtra("DeviceSN", paramObject.getStringExtra("DeviceSN"));
       paramObservable.putExtra("DeviceToken", paramObject.getStringExtra("DeviceToken"));
-      paramObservable.putExtra("DataReportSeq", ymw.a().jdField_a_of_type_Long);
-      bhvv.a().a(this, this.app, this.app.getAccount(), paramObservable, "com.tencent.device.activities.DeviceScanActivity", -1, null, SmartDevicePluginProxyActivity.class);
+      paramObservable.putExtra("DataReportSeq", ymt.a().jdField_a_of_type_Long);
+      bhwm.a().a(this, this.app, this.app.getAccount(), paramObservable, "com.tencent.device.activities.DeviceScanActivity", -1, null, SmartDevicePluginProxyActivity.class);
     }
   }
 }

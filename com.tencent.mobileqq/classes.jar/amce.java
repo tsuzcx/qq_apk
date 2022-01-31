@@ -1,55 +1,70 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class amce
-  extends amcd
+  extends amcc
 {
+  public float a;
+  public float b;
   public boolean b;
-  public Rect c;
-  public Rect d;
+  public float c;
+  public boolean c;
+  public float d;
+  public float e;
   public int e;
-  public String e;
-  public String f = "";
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public float h;
+  public int h;
+  public int i;
+  public int j = 1;
   
   public amce()
   {
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 100;
+    this.jdField_g_of_type_Int = 100;
   }
   
-  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public amce a()
   {
-    if (paramJSONObject != null)
+    amce localamce = new amce();
+    localamce.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
+    localamce.jdField_b_of_type_Float = this.d;
+    localamce.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
+    localamce.d = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_JavaLangString += "reverse";
+    boolean bool;
+    if (!this.jdField_b_of_type_Boolean)
     {
-      super.a(paramInt, paramString, paramJSONObject);
-      paramString = BaseApplicationImpl.getContext();
-      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
-      this.b = paramJSONObject.optBoolean("passive_rotate", false);
-      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-      this.f = paramJSONObject.optString("end_align", "");
-      if (paramJSONObject.has("start_rect"))
-      {
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
-        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
-        this.jdField_c_of_type_AndroidGraphicsRect.left = actn.a(localJSONArray.getInt(0) / 2, paramString.getResources());
-        this.jdField_c_of_type_AndroidGraphicsRect.top = actn.a(localJSONArray.getInt(1) / 2, paramString.getResources());
-        this.jdField_c_of_type_AndroidGraphicsRect.right = actn.a(localJSONArray.getInt(2) / 2, paramString.getResources());
-        this.jdField_c_of_type_AndroidGraphicsRect.bottom = actn.a(localJSONArray.getInt(3) / 2, paramString.getResources());
-        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
+      bool = true;
+      localamce.jdField_b_of_type_Boolean = bool;
+      localamce.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localamce.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localamce.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
+      localamce.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
+      localamce.jdField_h_of_type_Int = this.i;
+      localamce.i = this.jdField_h_of_type_Int;
+      if (!this.jdField_c_of_type_Boolean) {
+        break label214;
       }
-      if (paramJSONObject.has("end_rect"))
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
-        this.d = new Rect();
-        this.d.left = actn.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
-        this.d.top = actn.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
-        this.d.right = actn.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
-        this.d.bottom = actn.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
-      }
+      localamce.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
+      localamce.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
+      localamce.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
+    }
+    for (localamce.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localamce.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
+    {
+      localamce.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
+      localamce.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
+      localamce.j = this.j;
+      localamce.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localamce.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localamce;
+      bool = false;
+      break;
+      label214:
+      localamce.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
+      localamce.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
+      localamce.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
     }
   }
 }

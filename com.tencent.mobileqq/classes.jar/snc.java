@@ -1,30 +1,125 @@
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stLinkStragegyArgs;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import cooperation.qzone.LocalMultiProcConfig;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-class snc
-  extends bhic
+public class snc
 {
-  snc(snb paramsnb) {}
-  
-  public void a(String paramString)
+  private static int a()
   {
-    snb.a = 1;
-    snb.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallBegin  STATE_PRELOAD_BEGIN sPreloadPluginState = " + snb.a);
+    if (!a(b(), c(), 0)) {
+      return 0;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
   }
   
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public static stLinkStragegyArgs a()
   {
-    snb.a = -1;
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallError  STATE_PRELOAD_ERR sPreloadPluginState = " + snb.a);
+    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
+    localstLinkStragegyArgs.hasInstalledWeish = vzw.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    localstLinkStragegyArgs.todayClickCount = b();
+    localstLinkStragegyArgs.todayEnterCount = a();
+    localstLinkStragegyArgs.todayLastLinkId = c();
+    return localstLinkStragegyArgs;
   }
   
-  public void b(String paramString)
+  public static void a()
   {
-    snb.a = 2;
-    snb.a(this.a);
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallFinish  STATE_PRELOAD_FINISH sPreloadPluginState = " + snb.a);
+    a(b(), c());
+  }
+  
+  public static void a(int paramInt)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
+  }
+  
+  private static boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
+    boolean bool = bhof.a(System.currentTimeMillis(), l);
+    if (!bool) {
+      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
+    }
+    return bool;
+  }
+  
+  private static int b()
+  {
+    if (!a(d(), e(), 0)) {
+      return 0;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
+  }
+  
+  private static String b()
+  {
+    return "key_open_recommend_page_count_" + h();
+  }
+  
+  public static void b()
+  {
+    a(d(), e());
+  }
+  
+  private static int c()
+  {
+    if (!a(f(), g(), -1)) {
+      return -1;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
+  }
+  
+  private static String c()
+  {
+    return "key_open_recommend_page_time_" + h();
+  }
+  
+  private static String d()
+  {
+    return "key_click_recommend_card_count_" + h();
+  }
+  
+  private static String e()
+  {
+    return "key_click_recommend_card_time_" + h();
+  }
+  
+  private static String f()
+  {
+    return "key_last_link_type_" + h();
+  }
+  
+  private static String g()
+  {
+    return "key_last_link_time_" + h();
+  }
+  
+  private static String h()
+  {
+    String str2 = "";
+    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String str1 = str2;
+    if (localAppRuntime != null)
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
+        str1 = bdij.a(localAppRuntime.getAccount());
+      }
+    }
+    return str1 + "_" + str3;
   }
 }
 

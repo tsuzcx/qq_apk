@@ -1,24 +1,24 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class AuthJsPlugin$1
   implements AsyncResult
 {
-  AuthJsPlugin$1(AuthJsPlugin paramAuthJsPlugin, beka parambeka) {}
+  AuthJsPlugin$1(AuthJsPlugin paramAuthJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      besl.a("AuthJsPlugin", "call API_LOGIN  code:" + paramJSONObject.toString());
+      betc.a("AuthJsPlugin", "call API_LOGIN  code:" + paramJSONObject.toString());
       this.val$req.a(paramJSONObject);
       return;
     }
-    besl.d("AuthJsPlugin", "call API_LOGIN failed ");
+    betc.d("AuthJsPlugin", "call API_LOGIN failed ");
     this.val$req.b();
   }
 }

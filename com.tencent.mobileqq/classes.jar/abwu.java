@@ -1,17 +1,15 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.activity.QQSettingMe.34.1;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class abwu
-  extends ajuh
+  extends ajzz
 {
   public abwu(QQSettingMe paramQQSettingMe) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void a(Object paramObject)
   {
-    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
-    if (this.a.c) {
-      this.a.o();
-    }
+    this.a.a.runOnUiThread(new QQSettingMe.34.1(this));
   }
 }
 

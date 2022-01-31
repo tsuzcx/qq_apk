@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import acry;
+import acru;
 
 public class QQNotifySettingBaseFragment$1$2
   implements Runnable
 {
-  public QQNotifySettingBaseFragment$1$2(acry paramacry) {}
+  public QQNotifySettingBaseFragment$1$2(acru paramacru) {}
   
   public void run()
   {

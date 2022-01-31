@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.playvideo.dataprovider;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import twq;
-import txk;
+import twn;
+import txh;
 
 public class SimpleDataProvider$5
   implements Runnable
 {
-  public SimpleDataProvider$5(txk paramtxk) {}
+  public SimpleDataProvider$5(txh paramtxh) {}
   
   public void run()
   {
-    Iterator localIterator = txk.a(this.this$0).iterator();
+    Iterator localIterator = txh.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((twq)localIterator.next()).a();
+      ((twn)localIterator.next()).a();
     }
   }
 }

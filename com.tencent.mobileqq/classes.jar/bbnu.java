@@ -1,71 +1,191 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.support.annotation.FloatRange;
+import android.support.annotation.NonNull;
 
-public class bbnu
+public final class bbnu
 {
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  @NonNull
+  public static final bbnu a;
+  @NonNull
+  public static final bbnu b;
+  @NonNull
+  public static final bbnu c;
+  @NonNull
+  public static final bbnu d;
+  @NonNull
+  public static final bbnu e;
+  @NonNull
+  public static final bbnu f;
+  boolean jdField_a_of_type_Boolean = true;
+  final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
+  final float[] b;
+  final float[] c;
   
-  public bbnu(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    jdField_a_of_type_Bbnu = new bbnu();
+    c(jdField_a_of_type_Bbnu);
+    d(jdField_a_of_type_Bbnu);
+    jdField_b_of_type_Bbnu = new bbnu();
+    b(jdField_b_of_type_Bbnu);
+    d(jdField_b_of_type_Bbnu);
+    jdField_c_of_type_Bbnu = new bbnu();
+    a(jdField_c_of_type_Bbnu);
+    d(jdField_c_of_type_Bbnu);
+    d = new bbnu();
+    c(d);
+    e(d);
+    e = new bbnu();
+    b(e);
+    e(e);
+    f = new bbnu();
+    a(f);
+    e(f);
   }
   
-  public JSONObject a(Context paramContext)
+  bbnu()
   {
-    Object localObject = null;
-    for (;;)
+    this.jdField_b_of_type_ArrayOfFloat = new float[3];
+    this.jdField_c_of_type_ArrayOfFloat = new float[3];
+    a(this.jdField_a_of_type_ArrayOfFloat);
+    a(this.jdField_b_of_type_ArrayOfFloat);
+    b();
+  }
+  
+  private static void a(bbnu parambbnu)
+  {
+    parambbnu.jdField_b_of_type_ArrayOfFloat[1] = 0.26F;
+    parambbnu.jdField_b_of_type_ArrayOfFloat[2] = 0.45F;
+  }
+  
+  private static void a(float[] paramArrayOfFloat)
+  {
+    paramArrayOfFloat[0] = 0.0F;
+    paramArrayOfFloat[1] = 0.5F;
+    paramArrayOfFloat[2] = 1.0F;
+  }
+  
+  private void b()
+  {
+    this.jdField_c_of_type_ArrayOfFloat[0] = 0.24F;
+    this.jdField_c_of_type_ArrayOfFloat[1] = 0.52F;
+    this.jdField_c_of_type_ArrayOfFloat[2] = 0.24F;
+  }
+  
+  private static void b(bbnu parambbnu)
+  {
+    parambbnu.jdField_b_of_type_ArrayOfFloat[0] = 0.3F;
+    parambbnu.jdField_b_of_type_ArrayOfFloat[1] = 0.5F;
+    parambbnu.jdField_b_of_type_ArrayOfFloat[2] = 0.7F;
+  }
+  
+  private static void c(bbnu parambbnu)
+  {
+    parambbnu.jdField_b_of_type_ArrayOfFloat[0] = 0.55F;
+    parambbnu.jdField_b_of_type_ArrayOfFloat[1] = 0.74F;
+  }
+  
+  private static void d(bbnu parambbnu)
+  {
+    parambbnu.jdField_a_of_type_ArrayOfFloat[0] = 0.35F;
+    parambbnu.jdField_a_of_type_ArrayOfFloat[1] = 1.0F;
+  }
+  
+  private static void e(bbnu parambbnu)
+  {
+    parambbnu.jdField_a_of_type_ArrayOfFloat[1] = 0.3F;
+    parambbnu.jdField_a_of_type_ArrayOfFloat[2] = 0.4F;
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float a()
+  {
+    return this.jdField_a_of_type_ArrayOfFloat[0];
+  }
+  
+  void a()
+  {
+    int j = 0;
+    int k = this.jdField_c_of_type_ArrayOfFloat.length;
+    int i = 0;
+    float f2;
+    for (float f1 = 0.0F; i < k; f1 = f2)
     {
-      try
-      {
-        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-          return paramContext;
-        }
-        if ((paramContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-        {
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, context or json_name null, context=" + paramContext + ", json_name=" + this.jdField_a_of_type_JavaLangString);
-          paramContext = localObject;
-          continue;
-        }
-        paramContext = new File(paramContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      float f3 = this.jdField_c_of_type_ArrayOfFloat[i];
+      f2 = f1;
+      if (f3 > 0.0F) {
+        f2 = f1 + f3;
       }
-      finally {}
-      if (paramContext.exists()) {
-        paramContext = bbdj.a(paramContext);
-      }
-      try
+      i += 1;
+    }
+    if (f1 != 0.0F)
+    {
+      k = this.jdField_c_of_type_ArrayOfFloat.length;
+      i = j;
+      while (i < k)
       {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
-        paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
+        if (this.jdField_c_of_type_ArrayOfFloat[i] > 0.0F)
         {
-          this.jdField_a_of_type_OrgJsonJSONObject = null;
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, exception=" + MsfSdkUtils.getStackTraceString(paramContext));
+          float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
+          arrayOfFloat[i] /= f1;
         }
+        i += 1;
       }
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float b()
+  {
+    return this.jdField_a_of_type_ArrayOfFloat[1];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float c()
+  {
+    return this.jdField_a_of_type_ArrayOfFloat[2];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float d()
+  {
+    return this.jdField_b_of_type_ArrayOfFloat[0];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float e()
+  {
+    return this.jdField_b_of_type_ArrayOfFloat[1];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float f()
+  {
+    return this.jdField_b_of_type_ArrayOfFloat[2];
+  }
+  
+  public float g()
+  {
+    return this.jdField_c_of_type_ArrayOfFloat[0];
+  }
+  
+  public float h()
+  {
+    return this.jdField_c_of_type_ArrayOfFloat[1];
+  }
+  
+  public float i()
+  {
+    return this.jdField_c_of_type_ArrayOfFloat[2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbnu
  * JD-Core Version:    0.7.0.1
  */

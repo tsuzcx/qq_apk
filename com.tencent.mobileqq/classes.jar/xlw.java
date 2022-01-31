@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
 class xlw
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  xlw(xlv paramxlv) {}
+  xlw(xls paramxls, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.b.setClickable(false);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

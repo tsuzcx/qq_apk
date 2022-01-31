@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import java.util.Map;
 
@@ -15,7 +15,7 @@ class LightVideoItemBuilder$3
       if (LightVideoItemBuilder.a().size() == 0) {
         RMVideoStateMgr.c(this.a);
       }
-      bbdj.a(this.a);
+      bbdx.a(this.a);
     }
   }
 }

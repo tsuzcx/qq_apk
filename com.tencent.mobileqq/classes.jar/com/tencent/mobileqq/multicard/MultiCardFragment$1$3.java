@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import asri;
-import asro;
+import asrk;
+import asrq;
 import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 import java.util.Map;
 
@@ -18,9 +18,9 @@ class MultiCardFragment$1$3
       if ((this.jdField_a_of_type_JavaUtilMap != null) && (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null) && (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0)))
       {
         Object localObject = MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a());
-        if ((localObject != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(((asri)localObject).a())))
+        if ((localObject != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(((asrk)localObject).a())))
         {
-          localObject = MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(((asri)localObject).a());
+          localObject = MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(((asrk)localObject).a());
           MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0, (String)localObject);
         }
       }

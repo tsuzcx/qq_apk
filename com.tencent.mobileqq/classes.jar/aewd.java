@@ -1,105 +1,52 @@
 import android.content.Context;
-import android.graphics.Point;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegateCallbackForAIO.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.net.URL;
 
-public class aewd
-  implements aevw, aewc
+public abstract class aewd
+  implements aewf
 {
-  private aevk jdField_a_of_type_Aevk;
-  private aewb jdField_a_of_type_Aewb;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private boolean a;
   
-  public aewd(Context paramContext, BaseChatPie paramBaseChatPie)
+  public URLDrawable.URLDrawableOptions a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    aevt.a().b(this);
+    return URLDrawable.URLDrawableOptions.obtain();
   }
   
-  public int a()
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    return adwl.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
-  }
-  
-  public int a(float paramFloat1, float paramFloat2)
-  {
-    return 0;
-  }
-  
-  public void a() {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Aevk = aevl.b(aevm.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
-    if (this.jdField_a_of_type_Aevk == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.jdField_a_of_type_Aevk.jdField_a_of_type_JavaLangString;
-    } while (str == null);
-    aevt.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d, this.jdField_a_of_type_AndroidContentContext).a(aevm.b(new Point((int)paramFloat1, (int)paramFloat2), str, paramInt2));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    aevt.a().d(this.jdField_a_of_type_AndroidContentContext).a();
-    aevk localaevk = this.jdField_a_of_type_Aevk;
-    if (localaevk != null)
-    {
-      aevm.a(localaevk, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(null);
-      ThreadManager.post(new StickerBubbleTouchDelegateCallbackForAIO.1(this, localaevk, paramInt2), 10, null, false);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X80091A5", "0X80091A5", localaevk.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
+    if (paramURL == null) {
+      return null;
     }
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
   }
   
-  public void a(aewb paramaewb)
+  public String a()
   {
-    this.jdField_a_of_type_Aewb = paramaewb;
+    return null;
   }
   
-  public boolean a(float paramFloat1, float paramFloat2)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton == null) {}
-    do
-    {
-      return false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getLeft() > paramFloat1) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getRight() < paramFloat1)) {
-        return true;
-      }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getTop() <= paramFloat2) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetImageButton.getBottom() >= paramFloat2));
+    this.a = true;
+  }
+  
+  public boolean a()
+  {
     return true;
   }
   
-  public void b()
+  public boolean b()
   {
-    d();
-    if (this.jdField_a_of_type_Aewb != null) {
-      this.jdField_a_of_type_Aewb.a();
-    }
+    return this.a;
   }
   
-  public void c()
+  public boolean c()
   {
-    aevm.b(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
+    return true;
   }
-  
-  public void d()
-  {
-    aevm.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d);
-  }
-  
-  public void e() {}
 }
 
 

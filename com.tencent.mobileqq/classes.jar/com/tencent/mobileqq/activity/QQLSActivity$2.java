@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbig;
+import bbiu;
 import com.tencent.qphone.base.util.QLog;
 
 class QQLSActivity$2

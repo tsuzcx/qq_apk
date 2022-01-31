@@ -6,7 +6,7 @@ import com.tencent.image.URLImageView;
 class xly
   implements Animation.AnimationListener
 {
-  xly(xlv paramxlv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  xly(xls paramxls, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {

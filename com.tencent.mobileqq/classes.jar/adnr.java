@@ -1,126 +1,86 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.CmGameTipsItemBuilder.ISessionHandler.1;
-import com.tencent.mobileqq.activity.aio.item.CmGameTipsItemBuilder.ISessionHandler.2;
-import com.tencent.mobileqq.activity.aio.item.CmGameTipsItemBuilder.ISessionHandler.3;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import org.json.JSONObject;
 
-public class adnr
-  extends aizl
+class adnr
+  implements View.OnClickListener
 {
-  public int a;
-  private WeakReference<adnm> a;
+  private long jdField_a_of_type_Long;
   
-  public adnr(adnm paramadnm)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramadnm);
-  }
+  adnr(adnq paramadnq) {}
   
-  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong) });
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
     {
-      QLog.e("ChatItemBuilder", 1, "[onQueryVirtualRoomInfo] mCreateRoomReqCode != reqCode");
-      return;
-    }
-    adnm localadnm = (adnm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localadnm == null) || (localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null))
-    {
-      QLog.e("ChatItemBuilder", 1, "[onQueryVirtualRoomInfo] itemBuilder or app null");
-      return;
-    }
-    ApolloGameData localApolloGameData = ((ajmw)localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(paramInt1);
-    if (localApolloGameData == null)
-    {
-      QLog.e("ChatItemBuilder", 1, "[onQueryVirtualRoomInfo] gameData null");
-      return;
-    }
-    if (paramLong == 0L)
-    {
-      aizg.a(localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
-      return;
-    }
-    if (paramLong == -300404L)
-    {
-      adnm.a(localadnm).post(new CmGameTipsItemBuilder.ISessionHandler.1(this, localadnm, localApolloGameData));
-      return;
-    }
-    if (paramLong == -300405L)
-    {
-      adnm.a(localadnm).post(new CmGameTipsItemBuilder.ISessionHandler.2(this, localadnm, localApolloGameData));
-      return;
-    }
-    QLog.e("ChatItemBuilder", 1, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong) });
-    adnm.a(localadnm).post(new CmGameTipsItemBuilder.ISessionHandler.3(this, localadnm));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2)
-  {
-    adnm localadnm = (adnm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localadnm == null) {
-      break label17;
-    }
-    label17:
-    while (localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
-    {
-      QLog.e("ChatItemBuilder", 1, "onCreateRoomId mCreateRoomReqCode != reqCode");
-      return;
-    }
-    if (!paramBoolean)
-    {
-      QLog.e("ChatItemBuilder", 1, "onCreateRoomId createSuccess:false");
-      return;
-    }
-    super.a(paramBoolean, paramInt1, paramLong, paramInt2);
-    ajrf localajrf = new ajrf();
-    Object localObject = (ajmw)localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-    String str = ajyc.a(2131702119);
-    ApolloGameData localApolloGameData = ((ajmw)localObject).a(paramInt1);
-    if ((localApolloGameData != null) && (!TextUtils.isEmpty(localApolloGameData.name)))
-    {
-      localObject = ((ajmw)localObject).a(localApolloGameData.actionId);
-      if (localObject == null) {
-        break label296;
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() != null) && ((paramView.getTag() instanceof JSONObject))) {
+        break label49;
       }
-      str = ((ApolloActionData)localObject).actionName;
     }
-    label296:
-    for (;;)
+    label49:
+    String str;
+    Context localContext;
+    do
     {
-      paramInt2 = localApolloGameData.actionId;
-      localajrf.jdField_b_of_type_JavaLangString = localApolloGameData.name;
-      for (;;)
+      do
       {
-        localajrf.jdField_a_of_type_JavaLangString = str;
-        localajrf.jdField_b_of_type_Int = paramInt2;
-        localajrf.jdField_a_of_type_Long = paramLong;
-        localajrf.jdField_a_of_type_Int = paramInt1;
-        localajrf.d = 3;
-        localajrf.e = 0;
-        if ((localadnm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break;
-        }
-        aizg.a(localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localadnm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localajrf);
-        if (!aizt.a(localadnm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        ((airz)localadnm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(localadnm.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramInt1, paramLong);
         return;
-        localajrf.jdField_b_of_type_JavaLangString = ajyc.a(2131702120);
-        paramInt2 = 0;
+        localObject2 = (JSONObject)paramView.getTag();
+        try
+        {
+          localObject1 = ((JSONObject)localObject2).getString("url");
+          str = ((JSONObject)localObject2).getString("name");
+          localContext = paramView.getContext();
+          if (this.jdField_a_of_type_Adnq.a != null) {
+            MediaPlayerManager.a(this.jdField_a_of_type_Adnq.a).a(true);
+          }
+          if (!QQPlayerService.a(this.jdField_a_of_type_Adnq)) {
+            break;
+          }
+          QQPlayerService.c(localContext);
+          paramView.setContentDescription(localResources.getString(2131690274));
+          return;
+        }
+        catch (Exception paramView) {}
+      } while (!QLog.isColorLevel());
+      QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(paramView));
+      return;
+      if ((this.jdField_a_of_type_Adnq.a == null) || (!this.jdField_a_of_type_Adnq.a.c())) {
+        break;
       }
+    } while (!QLog.isColorLevel());
+    QLog.i("CommonHobbyForAIOShowItemBuilder", 0, "Video Chatting is going on, don't play music.");
+    return;
+    SongInfo localSongInfo = new SongInfo();
+    localSongInfo.a = ((String)localObject1);
+    localSongInfo.b = 4;
+    QQPlayerService.a(new Intent(localContext, MusicPlayerActivity.class));
+    Object localObject2 = QQPlayerService.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new Bundle();
+      QQPlayerService.a((Bundle)localObject1);
     }
+    ((Bundle)localObject1).putString("KEY_SOURCE_NAME", str);
+    QQPlayerService.a(this.jdField_a_of_type_Adnq);
+    QQPlayerService.a(localContext, this.jdField_a_of_type_Adnq.getToken(), localSongInfo);
+    paramView.setContentDescription(localResources.getString(2131690272));
   }
 }
 

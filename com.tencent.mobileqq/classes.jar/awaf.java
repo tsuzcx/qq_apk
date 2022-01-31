@@ -1,83 +1,104 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.media.MediaMetadataRetriever;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import java.util.LinkedList;
 
 public class awaf
+  extends GPUBaseFilter
 {
-  private static String a = "MediaUtil";
+  private float jdField_a_of_type_Float;
+  private avzy jdField_a_of_type_Avzy;
+  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private avzy b;
   
-  @TargetApi(10)
-  public static long a(String paramString)
+  private void a(@NonNull Runnable paramRunnable)
   {
-    long l1 = 0L;
-    localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
+      return;
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      long l2;
-      veg.c(a, "getVideoDuration path=" + paramString + " exists=" + vyi.e(paramString), localRuntimeException);
-      localMediaMetadataRetriever.release();
-      return 0L;
-    }
-    catch (Error localError)
-    {
-      label32:
-      veg.c(a, "getVideoDuration path=" + paramString + " exists=" + vyi.e(paramString), localError);
-      localMediaMetadataRetriever.release();
-      return 0L;
-    }
-    try
-    {
-      l2 = Long.parseLong(paramString);
-      l1 = l2;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-      break label32;
-    }
-    localMediaMetadataRetriever.release();
-    return l1;
   }
   
-  @TargetApi(10)
-  public static Bitmap a(String paramString, int paramInt)
+  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
   {
-    Object localObject = null;
-    if (!vyi.e(paramString))
-    {
-      veg.e(a, "File note exist when getFrameAtTime(). videoPath = " + paramString + " millisecond = " + paramInt);
-      return null;
-    }
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    localMediaMetadataRetriever.setDataSource(paramString);
-    long l = paramInt * 1000;
     try
     {
-      paramString = localMediaMetadataRetriever.getFrameAtTime(l, 0);
-      localMediaMetadataRetriever.release();
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
+      while (!paramLinkedList.isEmpty())
       {
-        veg.c(a, "getFrameAtTime", paramString);
-        paramString = localObject;
+        Runnable localRunnable = (Runnable)paramLinkedList.poll();
+        if (localRunnable != null) {
+          localRunnable.run();
+        }
       }
     }
+    finally {}
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a()
   {
-    paramString1 = a(paramString1, 0);
-    if (paramString1 != null) {
-      vxy.a(paramString1, Bitmap.CompressFormat.JPEG, 80, paramString2);
+    a(this.jdField_a_of_type_JavaUtilLinkedList);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
+  {
+    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!avzw.a(paramInt1)) {
+      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
+    }
+    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Avzy != null) || (this.b != null);
+  }
+  
+  public void destroy()
+  {
+    if (this.jdField_a_of_type_Avzy != null) {
+      this.jdField_a_of_type_Avzy.destroy();
+    }
+    if (this.b != null) {
+      this.b.destroy();
+    }
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (!a())
+    {
+      ved.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
+      return;
+    }
+    if (this.jdField_a_of_type_Avzy != null) {
+      this.jdField_a_of_type_Avzy.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+  }
+  
+  public void init()
+  {
+    if ((this.jdField_a_of_type_Avzy != null) && (!this.jdField_a_of_type_Avzy.isInitialized())) {
+      this.jdField_a_of_type_Avzy.init();
+    }
+    if ((this.b != null) && (!this.b.isInitialized())) {
+      this.b.init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Avzy != null) {
+      this.jdField_a_of_type_Avzy.onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    if (this.b != null) {
+      this.b.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
 }

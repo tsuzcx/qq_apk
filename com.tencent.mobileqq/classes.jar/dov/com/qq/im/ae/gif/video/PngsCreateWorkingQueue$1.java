@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif.video;
 
-import biuz;
-import bivc;
+import bivq;
+import bivt;
 
 public class PngsCreateWorkingQueue$1
   implements Runnable
 {
-  public PngsCreateWorkingQueue$1(bivc parambivc, biuz parambiuz) {}
+  public PngsCreateWorkingQueue$1(bivt parambivt, bivq parambivq) {}
   
   public void run()
   {
-    bivc.a(this.this$0, this.a);
+    bivt.a(this.this$0, this.a);
   }
 }
 

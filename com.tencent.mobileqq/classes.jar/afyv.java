@@ -1,27 +1,29 @@
-import android.view.View;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.2;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class afyv
-  implements bfoq
+  extends xar
 {
-  public afyv(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bfol parambfol) {}
+  public afyv(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    do
-    {
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean1) {
       return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(paramView);
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new afyw(this));
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-    } while (!this.jdField_a_of_type_Bfol.isShowing());
-    this.jdField_a_of_type_Bfol.dismiss();
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.8.1(this, paramInt1));
+    if (paramBoolean2)
+    {
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.2(this), 1000L);
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ChatHistoryTroopFileFragment.8.3(this), 1000L);
   }
 }
 

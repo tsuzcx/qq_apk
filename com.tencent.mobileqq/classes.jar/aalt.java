@@ -1,37 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aalt
-  extends WtloginObserver
+public class aalt
+  implements View.OnTouchListener
 {
-  aalt(aals paramaals) {}
+  public aalt(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel())
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
     }
-    if (paramInt2 == 0) {}
     do
     {
-      return;
-      aals.a(this.a);
-    } while (aals.a(this.a) == null);
-    paramString = new Intent(aals.a(this.a), LoginActivity.class);
-    paramString.putExtra("uin", aals.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.b);
-    paramString.addFlags(131072);
-    aals.a(this.a).startActivity(paramString);
-    aals.a(this.a).finish();
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

@@ -1,14 +1,25 @@
-import com.tencent.TMG.utils.QLog;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import pb.unify.search.UnifySearchCommon.ResultItem;
 import pb.unite.search.DynamicSearch.ResultItem;
 
 public class awpd
-  extends awop
+  extends awor
 {
-  public String a;
+  public static final String a;
+  public List<awmj> a;
+  public String b;
+  public String j;
+  public String k;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = awpd.class.getSimpleName();
+  }
   
   public awpd(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -24,13 +35,47 @@ public class awpd
   {
     try
     {
-      this.a = new JSONObject(paramString).optString("title");
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("askIcon");
+      this.j = paramString.optString("headLine");
+      this.k = paramString.optString("answerNumText");
+      paramString = paramString.optJSONArray("answers");
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
+        {
+          Object localObject2 = paramString.optJSONObject(i);
+          Object localObject1 = ((JSONObject)localObject2).optString("leftIcon");
+          String str1 = ((JSONObject)localObject2).optString("userNameText");
+          String str2 = ((JSONObject)localObject2).optString("praiseText");
+          String str3 = ((JSONObject)localObject2).optString("answerText");
+          int n = ((JSONObject)localObject2).optInt("imageTotalCount");
+          localObject2 = ((JSONObject)localObject2).optJSONArray("imageList");
+          ArrayList localArrayList = new ArrayList();
+          if (localObject2 != null)
+          {
+            int m = 0;
+            while (m < ((JSONArray)localObject2).length())
+            {
+              JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(m);
+              localArrayList.add(new awok(localJSONObject.optString("url"), localJSONObject.optInt("type")));
+              m += 1;
+            }
+          }
+          localObject1 = new awmj((String)localObject1, str1, str2, str3, n, localArrayList);
+          this.jdField_a_of_type_JavaUtilList.add(localObject1);
+          i += 1;
+        }
+      }
       return;
     }
     catch (JSONException paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(c, 0, paramString.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      }
     }
   }
 }

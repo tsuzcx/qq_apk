@@ -1,8 +1,20 @@
-public abstract interface bfed
+class bfed
+  implements besu
 {
-  public abstract void onDateCancel();
+  bfed(bfec parambfec) {}
   
-  public abstract void onDateConfirm(String paramString1, String paramString2, String paramString3);
+  public void a(int paramInt, String paramString, best parambest)
+  {
+    bezi.a(beze.a(), 11, "0");
+    if ((paramInt == 0) && (parambest != null) && (parambest.a()))
+    {
+      bfec.a(this.a, parambest);
+      beys.a = true;
+      this.a.c();
+      return;
+    }
+    this.a.f();
+  }
 }
 
 

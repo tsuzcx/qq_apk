@@ -1,75 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class oxa
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static void a(String paramString)
-  {
-    Object localObject = TVK_SDKMgr.getProxyFactory();
-    if (localObject != null)
-    {
-      localObject = ((TVK_IProxyFactory)localObject).getCacheMgr(BaseApplicationImpl.getContext());
-      if (localObject != null)
-      {
-        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, nmf.a(paramString), "");
-        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
-        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qua.a);
-        ((TVK_ICacheMgr)localObject).preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, localTVK_PlayerVideoInfo);
-      }
-    }
-  }
+  public oxa(VideoView.2 param2) {}
   
-  public static boolean a(String paramString)
+  public void onGlobalLayout()
   {
-    Object localObject1 = TVK_SDKMgr.getProxyFactory();
-    if (localObject1 == null) {
-      return false;
-    }
-    localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(BaseApplicationImpl.getContext());
-    if (localObject1 == null) {
-      return false;
-    }
-    Object localObject2 = nmf.a(paramString);
-    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
-    localObject2 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
-    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_duration", "2");
-    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_servers_type", qua.a);
-    ((TVK_PlayerVideoInfo)localObject2).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
-    String[] arrayOfString = new String[6];
-    arrayOfString[0] = "msd";
-    arrayOfString[1] = "hd";
-    arrayOfString[2] = "fhd";
-    arrayOfString[3] = "mp4";
-    arrayOfString[4] = "shd";
-    arrayOfString[5] = "sd";
-    int m = arrayOfString.length;
-    int j = 0;
-    int i = 0;
-    while (j < m)
+    if ((VideoView.b(this.a.this$0) == VideoView.b) && (!this.a.this$0.a))
     {
-      String str = arrayOfString[j];
-      try
+      if ((this.a.this$0.isShown()) && (VideoView.a(this.a.this$0).get() != 3))
       {
-        int k = ((TVK_ICacheMgr)localObject1).isVideoCached(BaseApplicationImpl.getContext(), paramString, localTVK_UserInfo, (TVK_PlayerVideoInfo)localObject2, str);
-        i = k;
+        VideoView.a(this.a.this$0).set(3);
+        QLog.d("gifvideo.VideoView", 1, "show to play");
+        this.a.this$0.b();
       }
-      catch (Exception localException)
+      if ((!this.a.this$0.isShown()) && (VideoView.a(this.a.this$0).get() != 5))
       {
-        label176:
-        break label176;
-        j += 1;
-      }
-      if ((i == 2) || (i == 1)) {
-        return true;
+        VideoView.a(this.a.this$0).set(5);
+        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
+        this.a.this$0.b();
       }
     }
-    if (QLog.isColorLevel()) {}
-    return false;
   }
 }
 

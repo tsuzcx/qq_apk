@@ -1,15 +1,15 @@
 package cooperation.qzone.statistic.access;
 
 import android.content.Context;
-import bgfp;
-import bhme;
-import bhmf;
-import bhmj;
-import bhmk;
-import bhml;
-import bhmm;
-import bhmt;
-import bhmu;
+import bggg;
+import bhmv;
+import bhmw;
+import bhna;
+import bhnb;
+import bhnc;
+import bhnd;
+import bhnk;
+import bhnl;
 import cooperation.qzone.statistic.access.concept.Collector;
 import cooperation.qzone.statistic.access.concept.Key;
 import cooperation.qzone.statistic.access.concept.Statistic;
@@ -28,17 +28,17 @@ public class WnsCollector
   public WnsCollector()
   {
     this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic = new Statistic(WnsKeys.PublicKeys);
-    bhmm localbhmm = new bhmm(bgfp.d(), bgfp.c(), true);
-    bhmk localbhmk = new bhmk(bgfp.a());
-    bhme localbhme = new bhme();
-    localbhme.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
-    bhml localbhml = new bhml("https://wspeed.qq.com/w.cgi");
-    localbhml.a(true);
-    localbhml.a().a(true);
-    a(localbhmm);
-    a(localbhmk);
-    a(localbhme);
-    a(localbhml);
+    bhnd localbhnd = new bhnd(bggg.d(), bggg.c(), true);
+    bhnb localbhnb = new bhnb(bggg.a());
+    bhmv localbhmv = new bhmv();
+    localbhmv.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
+    bhnc localbhnc = new bhnc("https://wspeed.qq.com/w.cgi");
+    localbhnc.a(true);
+    localbhnc.a().a(true);
+    a(localbhnd);
+    a(localbhnb);
+    a(localbhmv);
+    a(localbhnc);
   }
   
   public static WnsCollector a()
@@ -66,7 +66,7 @@ public class WnsCollector
   
   public void a(Context paramContext)
   {
-    bhmt.a(paramContext);
+    bhnk.a(paramContext);
   }
   
   public void a(String paramString1, String paramString2, String paramString3)

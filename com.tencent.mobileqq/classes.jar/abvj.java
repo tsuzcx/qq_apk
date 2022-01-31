@@ -1,10 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvj
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public abvj(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+    }
+  }
 }
 
 

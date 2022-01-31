@@ -2,25 +2,25 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StModifyFriendInteractiveStorageRsp;
 import android.text.TextUtils;
-import beka;
-import besl;
-import beuf;
-import bewt;
+import bekr;
+import betc;
+import beuw;
+import bexk;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class OpenDataJsPlugin$9
   implements AsyncResult
 {
-  OpenDataJsPlugin$9(OpenDataJsPlugin paramOpenDataJsPlugin, beka parambeka, String paramString1, Boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
+  OpenDataJsPlugin$9(OpenDataJsPlugin paramOpenDataJsPlugin, bekr parambekr, String paramString1, Boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    besl.a("OpenDataJsPlugin", "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    betc.a("OpenDataJsPlugin", "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
-      bewt.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
+      bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
+      bexk.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
       this.val$req.b();
       return;
     }
@@ -46,7 +46,7 @@ class OpenDataJsPlugin$9
           if (!OpenDataJsPlugin.access$200(this.this$0)) {
             break label410;
           }
-          paramJSONObject = (beuf)this.val$req.a;
+          paramJSONObject = (beuw)this.val$req.a;
           if ((paramJSONObject == null) || (paramJSONObject.a() != 1)) {
             break;
           }
@@ -57,8 +57,8 @@ class OpenDataJsPlugin$9
       }
       catch (Exception paramJSONObject)
       {
-        bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
-        bewt.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
+        bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ", paramJSONObject);
+        bexk.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
         this.val$req.b();
         return;
       }
@@ -67,12 +67,12 @@ class OpenDataJsPlugin$9
       label339:
       ((JSONObject)localObject).put("errMsg", paramJSONObject);
       ((JSONObject)localObject).put("errCode", i);
-      bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");
-      bewt.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ret != null");
+      bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ret != null");
+      bexk.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ret != null");
       this.val$req.a((JSONObject)localObject, null);
       return;
-      bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
-      bewt.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
+      bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
+      bexk.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
       this.val$req.b();
       return;
       label410:

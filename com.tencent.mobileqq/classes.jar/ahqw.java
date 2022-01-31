@@ -1,25 +1,14 @@
-import android.os.Parcel;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public abstract class ahqw
+public class ahqw
 {
-  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
-  
-  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  public static ahqu a(Object paramObject)
   {
-    a(paramObject, paramArrayList, paramParcel);
-    if (b(paramObject, paramArrayList, paramParcel)) {
-      b(paramObject, paramArrayList, paramParcel);
+    if ((paramObject instanceof RecentBaseData)) {
+      return new ahqx();
     }
-    return false;
+    return new ahqv();
   }
-  
-  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

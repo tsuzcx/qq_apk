@@ -1,267 +1,53 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.FileChannel;
-import java.util.Map;
-import mqq.app.AccountNotMatchException;
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
 
 public class sfd
-  extends ayrn
+  implements URLDrawableHandler
 {
-  private BaseApplicationImpl a;
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  private sfc jdField_a_of_type_Sfc;
   
-  public sfd(BaseApplicationImpl paramBaseApplicationImpl)
+  public sfd(URLDrawableHandler paramURLDrawableHandler, sfc paramsfc)
   {
-    this.a = paramBaseApplicationImpl;
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+    this.jdField_a_of_type_Sfc = paramsfc;
   }
   
-  public static URL a(String paramString, int paramInt)
+  public sfc a()
   {
-    return a(paramString, paramInt, null);
+    return this.jdField_a_of_type_Sfc;
   }
   
-  public static URL a(String paramString, int paramInt, Object paramObject)
+  public void doCancel()
   {
-    String str;
-    for (;;)
-    {
-      try
-      {
-        if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
-          return new URL(paramString);
-        }
-        paramObject = bfng.a(paramString);
-        if (!paramObject.containsKey("busiType")) {
-          continue;
-        }
-        paramString = paramString.replace("busiType=" + (String)paramObject.get("busiType"), "busiType=" + paramInt);
-        paramString = new URL("pubaccountimage", null, paramString);
-        str = paramString;
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            return str;
-          }
-          QLog.d("PubAccountHttpDownloader", 2, "<--generateURL urlString =" + paramString.toString());
-          return paramString;
-        }
-        catch (MalformedURLException paramObject) {}
-      }
-      catch (MalformedURLException paramObject)
-      {
-        paramString = null;
-        continue;
-      }
-      str = paramString;
-      if (!QLog.isColorLevel()) {
-        return str;
-      }
-      QLog.e("PubAccountHttpDownloader", 2, "<--generateURL urlString", paramObject);
-      return paramString;
-      paramString = bfng.a(paramString, "busiType", paramInt + "");
-    }
-    return str;
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
   }
   
-  private void a(String paramString, long paramLong)
+  public boolean isCancelled()
   {
-    if (bbev.b(BaseApplication.getContext()) == 1) {}
-    for (String[] arrayOfString = { "param_WIFIPublicPlatDownloadFlow", "param_WIFIFlow", "param_Flow" };; arrayOfString = new String[] { "param_XGPublicPlatDownloadFlow", "param_XGFlow", "param_Flow" }) {
-      try
-      {
-        ((QQAppInterface)this.a.getAppRuntime(paramString)).sendAppDataIncerment(paramString, arrayOfString, paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountHttpDownloader", 2, "param_PublicPlatDownloadFlow fileSize: " + paramLong);
-        }
-        return;
-      }
-      catch (AccountNotMatchException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onFileDownloadFailed(int paramInt)
   {
-    String str = paramDownloadParams.urlStr;
-    if (str.startsWith("pubaccountimage")) {
-      str = paramDownloadParams.url.getFile();
-    }
-    label514:
-    for (;;)
-    {
-      Object localObject1 = bfng.a(str);
-      if (((Map)localObject1).get("busiType") != null) {}
-      int i;
-      sff localsff;
-      int j;
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt((String)((Map)localObject1).get("busiType"));
-          paramDownloadParams.url = new URL(str);
-          paramDownloadParams.urlStr = str;
-          localsff = new sff(this.a, i);
-          localsff.a(paramDownloadParams, (Map)localObject1);
-          localObject1 = null;
-          if (paramDownloadParams.headers == null) {
-            break label554;
-          }
-          Header[] arrayOfHeader = paramDownloadParams.headers;
-          j = arrayOfHeader.length;
-          i = 0;
-          if (i >= j) {
-            break;
-          }
-          localObject3 = arrayOfHeader[i];
-          if ("my_uin".equals(((Header)localObject3).getName())) {
-            localObject1 = ((Header)localObject3).getValue();
-          }
-          i += 1;
-          continue;
-          i = -1;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str + "  busiType:" + (String)((Map)localObject1).get("busiType"), localNumberFormatException);
-        }
-      }
-      label414:
-      label551:
-      label554:
-      for (Object localObject3 = localObject1;; localObject3 = null)
-      {
-        sfe localsfe = new sfe(this, paramOutputStream);
-        localObject1 = null;
-        j = 0;
-        int k = 3;
-        i = k - 1;
-        if (k > 0) {
-          j += 1;
-        }
-        for (;;)
-        {
-          Object localObject2;
-          try
-          {
-            localsff.a();
-            File localFile = super.a(localsfe, paramDownloadParams, localsff.a(paramURLDrawableHandler));
-            if (localFile != null) {
-              break label551;
-            }
-            i = -1;
-            if ((i == -1) || (i == 0))
-            {
-              localsff.a(j, paramDownloadParams);
-              localObject1 = localFile;
-              k = i;
-              break;
-            }
-            try
-            {
-              Thread.sleep(5L);
-              localObject1 = localFile;
-            }
-            catch (InterruptedException localInterruptedException1)
-            {
-              localInterruptedException1.printStackTrace();
-              localObject2 = localFile;
-            }
-            continue;
-            label371:
-            if (i != 0) {
-              break label514;
-            }
-          }
-          catch (IOException localIOException)
-          {
-            if (!localIOException.getMessage().contains(" response error! response code: ")) {
-              break label414;
-            }
-            if ((i != 0) && (!"None".equals(sff.a(localsff)))) {
-              break label428;
-            }
-            throw localIOException;
-          }
-          finally
-          {
-            if (i == -1) {}
-          }
-          localsff.a(j, paramDownloadParams);
-          for (;;)
-          {
-            for (;;)
-            {
-              throw paramOutputStream;
-              localsff.a(-1, localIOException.getMessage());
-              break label371;
-              try
-              {
-                label428:
-                ((FileOutputStream)paramOutputStream).getChannel().truncate(0L);
-                if ((i == -1) || (i == 0)) {
-                  localsff.a(j, paramDownloadParams);
-                }
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str, localException);
-                  continue;
-                  try
-                  {
-                    Thread.sleep(5L);
-                  }
-                  catch (InterruptedException localInterruptedException2)
-                  {
-                    localInterruptedException2.printStackTrace();
-                  }
-                }
-              }
-            }
-            break;
-            try
-            {
-              Thread.sleep(5L);
-            }
-            catch (InterruptedException paramDownloadParams)
-            {
-              paramDownloadParams.printStackTrace();
-            }
-          }
-          if (localObject3 != null) {
-            a((String)localObject3, localsfe.a);
-          }
-          return localObject2;
-        }
-      }
-    }
+    this.jdField_a_of_type_Sfc.a(false, paramInt);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
   }
   
-  public void a(HttpResponse paramHttpResponse, String paramString, URLDrawableHandler paramURLDrawableHandler)
+  public void onFileDownloadStarted()
   {
-    if ((paramURLDrawableHandler instanceof sfg))
-    {
-      paramURLDrawableHandler = ((sfg)paramURLDrawableHandler).a();
-      if (paramURLDrawableHandler != null) {
-        paramURLDrawableHandler.a(paramHttpResponse, paramString);
-      }
-    }
+    this.jdField_a_of_type_Sfc.b();
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.jdField_a_of_type_Sfc.a(true, 0);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajyc;
-import bbtt;
-import bcdb;
-import bcpw;
+import ajya;
+import bbuh;
+import bcdp;
+import bcql;
 import com.tencent.biz.pubaccount.CustomWebView;
 
 public class HealthStepCounterPlugin$4
   implements Runnable
 {
-  public HealthStepCounterPlugin$4(bbtt parambbtt) {}
+  public HealthStepCounterPlugin$4(bbuh parambbuh) {}
   
   public void run()
   {
-    bcpw localbcpw = new bcpw(this.this$0.mRuntime.a().getContext());
-    bcpw.a(this.this$0.mRuntime.a().getContext(), ajyc.a(2131705453), 0).b((int)(localbcpw.b() * 2.5D));
+    bcql localbcql = new bcql(this.this$0.mRuntime.a().getContext());
+    bcql.a(this.this$0.mRuntime.a().getContext(), ajya.a(2131705464), 0).b((int)(localbcql.b() * 2.5D));
   }
 }
 

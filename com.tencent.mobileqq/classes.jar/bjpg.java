@@ -1,26 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.poi.PoiInfo;
 
-public class bjpg
-  extends AnimatorListenerAdapter
+public final class bjpg
+  implements Parcelable.Creator<PoiInfo>
 {
-  public bjpg(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public PoiInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
-    }
+    return new PoiInfo(paramParcel, null);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public PoiInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView begin");
-    }
+    return new PoiInfo[paramInt];
   }
 }
 

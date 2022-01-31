@@ -1,31 +1,17 @@
-import android.content.Context;
-import android.util.AttributeSet;
-import io.flutter.plugin.common.BasicMessageChannel;
-import io.flutter.plugin.common.StringCodec;
-import io.flutter.view.FlutterNativeView;
-import io.flutter.view.FlutterView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.runtime.core.page.BrandPageWebview.4;
 
-final class bfbz
-  extends FlutterView
+public class bfbz
+  implements Animation.AnimationListener
 {
-  private final BasicMessageChannel<String> a = new BasicMessageChannel(this, "flutter/lifecycle", StringCodec.INSTANCE);
+  public bfbz(BrandPageWebview.4 param4) {}
   
-  bfbz(Context paramContext, AttributeSet paramAttributeSet, FlutterNativeView paramFlutterNativeView)
-  {
-    super(paramContext, paramAttributeSet, paramFlutterNativeView);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void onFirstFrame()
-  {
-    super.onFirstFrame();
-    setAlpha(1.0F);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onPostResume()
-  {
-    super.onPostResume();
-    this.a.send("AppLifecycleState.resumed");
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

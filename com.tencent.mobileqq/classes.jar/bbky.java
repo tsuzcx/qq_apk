@@ -1,29 +1,202 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.util.Pair;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.Transformation;
+import java.lang.reflect.Field;
 
-public final class bbky
-  implements DialogInterface.OnClickListener
+public class bbky<T>
+  extends Animation
 {
-  public bbky(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  static final bblf jdField_a_of_type_Bblf = new bbkz();
+  static final bblf b;
+  static final bblf c;
+  static final bblf d;
+  static final bblf e = new bbld();
+  private long jdField_a_of_type_Long;
+  protected bble<T> a;
+  protected T a;
+  protected boolean a;
+  private Pair[] jdField_a_of_type_ArrayOfAndroidUtilPair;
+  protected T b;
+  protected boolean b;
+  protected boolean c;
+  protected boolean d;
+  protected bblf<T> f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", String.format(aexn.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
-      paramDialogInterface.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    jdField_b_of_type_Bblf = new bbla();
+    jdField_c_of_type_Bblf = new bblb();
+    jdField_d_of_type_Bblf = new bblc();
+  }
+  
+  public bbky(T paramT1, T paramT2, bble<T> parambble)
+  {
+    this(paramT1, paramT2, parambble, false, false, null);
+  }
+  
+  public bbky(T paramT1, T paramT2, bble<T> parambble, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this(paramT1, paramT2, parambble, paramBoolean1, paramBoolean2, null);
+  }
+  
+  public bbky(T paramT1, T paramT2, bble<T> parambble, boolean paramBoolean1, boolean paramBoolean2, bblf<T> parambblf)
+  {
+    Class localClass = paramT1.getClass();
+    if (parambblf != null) {
+      this.f = parambblf;
     }
     for (;;)
     {
-      axqw.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
+      this.jdField_a_of_type_JavaLangObject = paramT1;
+      this.jdField_b_of_type_JavaLangObject = paramT2;
+      a(parambble);
+      this.jdField_a_of_type_Boolean = paramBoolean1;
+      this.jdField_b_of_type_Boolean = paramBoolean2;
       return;
-      akih.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
+      if (localClass == Integer.class)
+      {
+        this.f = jdField_a_of_type_Bblf;
+      }
+      else if (Float.class == localClass)
+      {
+        this.f = jdField_b_of_type_Bblf;
+      }
+      else if (Rect.class == localClass)
+      {
+        this.f = jdField_c_of_type_Bblf;
+      }
+      else if (Point.class == localClass)
+      {
+        this.f = jdField_d_of_type_Bblf;
+      }
+      else
+      {
+        if (PointF.class != localClass) {
+          break;
+        }
+        this.f = e;
+      }
     }
+    throw new IllegalArgumentException("Can't support type " + paramT1.getClass().getSimpleName());
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_d_of_type_Boolean = true;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(bble<T> parambble)
+  {
+    this.jdField_a_of_type_Bble = parambble;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (this.jdField_a_of_type_Bble != null) {
+      this.jdField_a_of_type_Bble.a(this, paramFloat, this.f.a(paramFloat, this.jdField_a_of_type_JavaLangObject, this.jdField_b_of_type_JavaLangObject), paramTransformation);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_d_of_type_Boolean = false;
+  }
+  
+  public void cancel()
+  {
+    int i = 0;
+    this.jdField_c_of_type_Boolean = true;
+    if (Build.VERSION.SDK_INT >= 8) {
+      super.cancel();
+    }
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_ArrayOfAndroidUtilPair == null) {
+        this.jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair("mEnded", Boolean.valueOf(true)), new Pair("mMore", Boolean.valueOf(false)), new Pair("mOneMoreTime", Boolean.valueOf(false)) };
+      }
+      try
+      {
+        Object localObject1 = getClass().getDeclaredField("mListener");
+        ((Field)localObject1).setAccessible(true);
+        localObject1 = ((Field)localObject1).get(this);
+        if ((localObject1 instanceof Animation.AnimationListener)) {
+          ((Animation.AnimationListener)localObject1).onAnimationEnd(this);
+        }
+        localObject1 = getClass().getDeclaredField("mStartTime");
+        ((Field)localObject1).setAccessible(true);
+        ((Field)localObject1).setLong(this, -9223372036854775808L);
+        localObject1 = this.jdField_a_of_type_ArrayOfAndroidUtilPair;
+        int j = localObject1.length;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          Field localField = getClass().getDeclaredField((String)localObject2.first);
+          localField.setAccessible(true);
+          localField.setBoolean(this, ((Boolean)localObject2.second).booleanValue());
+          i += 1;
+        }
+        return;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localNoSuchFieldException.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean getTransformation(long paramLong, Transformation paramTransformation)
+  {
+    if (this.jdField_d_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Long == 0L) {
+        a(paramLong - getStartTime());
+      }
+      setStartTime(paramLong - this.jdField_a_of_type_Long);
+    }
+    return super.getTransformation(paramLong, paramTransformation);
+  }
+  
+  public void reset()
+  {
+    this.jdField_c_of_type_Boolean = false;
+    super.reset();
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean willChangeTransformationMatrix()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

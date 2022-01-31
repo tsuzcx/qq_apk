@@ -1,35 +1,48 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class bbal
+final class bbal
+  implements URLDrawable.URLDrawableListener
 {
-  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
+  bbal(View paramView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Object[] arrayOfObject = new Object[paramArrayList.size()];
-    int i = 0;
-    Object localObject;
-    while (i < paramArrayList.size())
-    {
-      localObject = (Pair)paramArrayList.get(i);
-      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
-      i += 1;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    Arrays.sort(arrayOfObject, new bbam());
-    paramArrayList.clear();
-    i = 0;
-    while (i < arrayOfObject.length)
-    {
-      localObject = (String[])arrayOfObject[i];
-      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
-      i += 1;
+    if (this.a != null) {
+      this.a.postInvalidate();
     }
-    return paramArrayList;
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (this.a != null) {
+      this.a.postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, vzl.a(BaseApplicationImpl.getContext(), 47.0F), vzl.a(BaseApplicationImpl.getContext(), 14.0F));
+    }
+    if (this.a != null) {
+      this.a.postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbal
  * JD-Core Version:    0.7.0.1
  */

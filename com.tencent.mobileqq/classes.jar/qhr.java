@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.data.Friends;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class qhr
+  extends qht
 {
-  public int a;
-  public Friends a;
-  
-  public qhr(Friends paramFriends, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

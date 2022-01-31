@@ -1,6 +1,10 @@
-public class ahws
+public abstract interface ahws
 {
-  public static final String a = ajyc.a(2131712373) + ssi.a + ajyc.a(2131712374);
+  public abstract void b(int paramInt);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void j();
 }
 
 

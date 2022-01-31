@@ -3,37 +3,37 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import ayeo;
-import ayfh;
-import ayhk;
+import ayeq;
+import ayfj;
+import ayhm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TeamWorkFileImportHandler$7
   implements Runnable
 {
-  public TeamWorkFileImportHandler$7(ayeo paramayeo, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$7(ayeq paramayeq, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a.jdField_f_of_type_JavaLangString))) {
-      ayhk.a("TeamWorkFileImportHandler", "import fail", "srcUrl is null or app is null", this.a.k);
+      ayhm.a("TeamWorkFileImportHandler", "import fail", "srcUrl is null or app is null", this.a.k);
     }
     for (;;)
     {
       return;
-      Object localObject = ayfh.b(this.a, this.this$0.app.getCurrentAccountUin());
+      Object localObject = ayfj.b(this.a, this.this$0.app.getCurrentAccountUin());
       boolean bool = false;
       if (localObject != null) {
-        bool = ayeo.b(this.this$0, (String)localObject, this.a);
+        bool = ayeq.b(this.this$0, (String)localObject, this.a);
       }
-      while ((!bool) && (ayeo.a(this.this$0) != null))
+      while ((!bool) && (ayeq.a(this.this$0) != null))
       {
-        localObject = ayeo.a(this.this$0).obtainMessage(8002);
+        localObject = ayeq.a(this.this$0).obtainMessage(8002);
         ((Message)localObject).obj = this.a;
-        ayeo.a(this.this$0).sendMessage((Message)localObject);
+        ayeq.a(this.this$0).sendMessage((Message)localObject);
         return;
         this.a.jdField_f_of_type_Int = -1000;
-        ayhk.a("TeamWorkFileImportHandler", "import fail", "url2doc network fail", this.a.k);
+        ayhm.a("TeamWorkFileImportHandler", "import fail", "url2doc network fail", this.a.k);
       }
     }
   }

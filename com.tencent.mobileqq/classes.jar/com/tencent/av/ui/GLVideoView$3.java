@@ -1,16 +1,16 @@
 package com.tencent.av.ui;
 
-import axqw;
-import mee;
+import axqy;
+import mdz;
 
 public class GLVideoView$3
   implements Runnable
 {
-  public GLVideoView$3(mee parammee, String paramString, StringBuilder paramStringBuilder) {}
+  public GLVideoView$3(mdz parammdz, String paramString, StringBuilder paramStringBuilder) {}
   
   public void run()
   {
-    axqw.b(null, "CliOper", "", "", "0X8009FCB", "0X8009FCB", 0, 0, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangStringBuilder.toString(), "");
+    axqy.b(null, "CliOper", "", "", "0X8009FCB", "0X8009FCB", 0, 0, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangStringBuilder.toString(), "");
   }
 }
 

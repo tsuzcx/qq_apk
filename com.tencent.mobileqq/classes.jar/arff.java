@@ -1,24 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
 
-class arff
-  implements mrp
+public class arff
+  implements View.OnClickListener
 {
-  arff(arfe paramarfe, String paramString) {}
+  private arff(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
-    }
-    mri.a().a();
-    if (paramInt == 1)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("roomCodeType", 1);
-      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      arfe.a(this.jdField_a_of_type_Arfe, localBundle, 1001L);
-    }
+    GroupVideoLoadingFragment.a(this.a).a(ajya.a(2131705406), ajya.a(2131705410));
+    GroupVideoLoadingFragment.a(this.a).c();
+    GroupVideoLoadingFragment.a(this.a, false);
   }
 }
 

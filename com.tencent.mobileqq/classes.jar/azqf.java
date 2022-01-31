@@ -1,23 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class azqf
   implements DialogInterface.OnClickListener
 {
-  azqf(azpt paramazpt, azpg paramazpg) {}
+  azqf(azpv paramazpv, FileManagerEntity paramFileManagerEntity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
+    if (paramInt == 1) {
+      azpv.a(this.jdField_a_of_type_Azpv, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    if (azpt.a(this.jdField_a_of_type_Azpt) != 0) {
-      bajk.a(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpt.jdField_a_of_type_Long).b(this.jdField_a_of_type_Azpg);
-    }
-    axqw.b(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Azpt.jdField_a_of_type_Long + "", "", "");
   }
 }
 

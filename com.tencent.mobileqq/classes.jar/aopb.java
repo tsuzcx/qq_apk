@@ -1,29 +1,13 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import android.view.View;
 
-public class aopb
-  implements ActionMode.Callback
+class aopb
+  implements bfqj
 {
-  public aopb(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  aopb(aooz paramaooz, View paramView) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

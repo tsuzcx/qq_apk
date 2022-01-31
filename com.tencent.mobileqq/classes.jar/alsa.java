@@ -1,12 +1,33 @@
+import java.util.LinkedHashMap;
+
 public class alsa
 {
-  public volatile int a;
-  public volatile boolean a;
+  public String a;
+  public LinkedHashMap<String, String> a;
+  public String b = "";
+  public String c = "1.0.0.1";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  private alsa()
+  public alsa()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof alsa)) {}
+    do
+    {
+      return false;
+      paramObject = (alsa)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
+    return true;
   }
 }
 

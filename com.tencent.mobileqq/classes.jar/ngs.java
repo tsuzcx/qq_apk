@@ -1,17 +1,18 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.data.AccountDetail;
+import java.lang.ref.WeakReference;
 
 class ngs
   implements View.OnClickListener
 {
-  ngs(nfu paramnfu, String paramString, nmv paramnmv) {}
+  ngs(nfr paramnfr, nms paramnms) {}
   
   public void onClick(View paramView)
   {
-    nfu.c(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_JavaLangString);
-    PublicAccountHandler.a(this.jdField_a_of_type_Nfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nfu.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
-    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
+    xbi.b((Activity)this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbk(this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfr.a(this.jdField_a_of_type_Nfr));
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 

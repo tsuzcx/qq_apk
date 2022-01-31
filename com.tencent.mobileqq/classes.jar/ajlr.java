@@ -1,60 +1,44 @@
+import android.text.TextUtils;
+
 public class ajlr
 {
-  private int jdField_a_of_type_Int;
-  private ajmc jdField_a_of_type_Ajmc;
+  int jdField_a_of_type_Int;
+  private ajma jdField_a_of_type_Ajma;
+  private ajmb jdField_a_of_type_Ajmb;
   private ajmd jdField_a_of_type_Ajmd;
-  private ajmf jdField_a_of_type_Ajmf;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  String jdField_a_of_type_JavaLangString;
+  int b = 30000;
   
-  private ajlr(int paramInt1, String paramString, int paramInt2, ajmf paramajmf, ajmd paramajmd, ajmc paramajmc)
+  public ajlp a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    if (this.jdField_a_of_type_Ajmd == null) {
+      this.jdField_a_of_type_Ajmd = new ajlz();
+    }
+    if (this.jdField_a_of_type_Ajmb == null) {
+      this.jdField_a_of_type_Ajmb = new ajly();
+    }
+    if (this.jdField_a_of_type_Ajma == null) {
+      this.jdField_a_of_type_Ajma = new ajln();
+    }
+    if (this.jdField_a_of_type_Int == 0) {
+      throw new IllegalArgumentException("appId required.");
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      throw new IllegalArgumentException("current account uid is required.");
+    }
+    return new ajlp(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Ajmd, this.jdField_a_of_type_Ajmb, this.jdField_a_of_type_Ajma, null);
+  }
+  
+  public ajlr a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public ajlr a(String paramString)
+  {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Ajmf = paramajmf;
-    this.jdField_a_of_type_Ajmd = paramajmd;
-    this.jdField_a_of_type_Ajmc = paramajmc;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public ajmc a()
-  {
-    return this.jdField_a_of_type_Ajmc;
-  }
-  
-  public ajmd a()
-  {
-    return this.jdField_a_of_type_Ajmd;
-  }
-  
-  public ajmf a()
-  {
-    return this.jdField_a_of_type_Ajmf;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_Ajmc.a(paramInt);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Ajmc.a(paramInt);
-  }
-  
-  public int b()
-  {
-    return this.b;
+    return this;
   }
 }
 

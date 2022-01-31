@@ -1,6 +1,23 @@
-public abstract interface aokx
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+final class aokx
+  implements View.OnTouchListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

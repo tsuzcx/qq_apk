@@ -1,21 +1,17 @@
 import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
 public class acrc
-  implements Comparator<acsp>
+  extends akjy
 {
   public acrc(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public int a(acsp paramacsp1, acsp paramacsp2)
+  public void a()
   {
-    long l = paramacsp2.a - paramacsp1.a;
-    if (l > 0L) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    ActivateFriendActivity.b(this.a);
   }
 }
 

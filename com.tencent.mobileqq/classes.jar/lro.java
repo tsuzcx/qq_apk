@@ -1,19 +1,17 @@
-import android.util.Log;
+import android.opengl.GLES20;
 
-public abstract class lro
+public class lro
+  extends lrp
 {
-  private String a;
-  protected lrn a;
-  
-  public lro()
+  public lro(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
+    super(paramString);
   }
   
-  public void a(lrn paramlrn)
+  public void a(int paramInt)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lrn = paramlrn;
+    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    lsq.a();
   }
 }
 

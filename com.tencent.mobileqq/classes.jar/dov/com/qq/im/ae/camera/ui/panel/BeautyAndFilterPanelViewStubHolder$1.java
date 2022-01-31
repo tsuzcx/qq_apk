@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import avsr;
-import bioi;
+import avst;
+import bioz;
 
 public class BeautyAndFilterPanelViewStubHolder$1
   implements Runnable
 {
-  public BeautyAndFilterPanelViewStubHolder$1(bioi parambioi, avsr paramavsr) {}
+  public BeautyAndFilterPanelViewStubHolder$1(bioz parambioz, avst paramavst) {}
   
   public void run()
   {
     if (this.a != null) {
-      this.a.a(bioi.a(this.this$0));
+      this.a.a(bioz.a(this.this$0));
     }
   }
 }

@@ -1,123 +1,84 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class andc
 {
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = -1;
+  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static andc a(ampi[] paramArrayOfampi)
+  public static andc a(amph[] paramArrayOfamph)
   {
-    Object localObject1;
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0))
     {
-      QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error, confFiles is no-valid.");
-      localObject1 = null;
-      return localObject1;
+      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
+      return null;
     }
     andc localandc = new andc();
-    int j = paramArrayOfampi.length;
+    int k = paramArrayOfamph.length;
     int i = 0;
-    for (;;)
+    while (i < k)
     {
-      localObject1 = localandc;
-      if (i >= j) {
-        break;
-      }
-      localObject1 = paramArrayOfampi[i];
+      Object localObject1 = paramArrayOfamph[i];
       try
       {
-        localObject1 = new JSONObject(((ampi)localObject1).a);
-        if (localObject1 != null)
+        localObject1 = new JSONObject(((amph)localObject1).a);
+        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
         {
-          if (((JSONObject)localObject1).has("has_gray")) {
-            localandc.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("has_gray");
+          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
+          {
+            j = 1;
+            localandc.jdField_a_of_type_Int = j;
           }
-          a((JSONObject)localObject1, localandc.jdField_a_of_type_JavaUtilMap);
         }
-        i += 1;
+        else
+        {
+          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
+            break label189;
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
+          if (localObject1 == null) {
+            break label189;
+          }
+          j = 0;
+          while (j < ((JSONArray)localObject1).length())
+          {
+            String str = ((JSONArray)localObject1).optString(j);
+            if (!TextUtils.isEmpty(str)) {
+              localandc.jdField_a_of_type_JavaUtilList.add(str);
+            }
+            j += 1;
+          }
+        }
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error", localJSONException);
+          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
           Object localObject2 = null;
+          continue;
+          int j = 0;
         }
+        label189:
+        i += 1;
       }
     }
+    return localandc;
   }
   
-  public static void a(JSONObject paramJSONObject, Map<String, String> paramMap)
+  public boolean a()
   {
-    if ((paramJSONObject == null) || (paramMap == null)) {}
-    do
-    {
-      return;
-      if (paramJSONObject.has("facade_plugin_name")) {
-        paramMap.put("facade_plugin_name", paramJSONObject.optString("facade_plugin_name"));
-      }
-      if (paramJSONObject.has("facade_plugin_name_prefix")) {
-        paramMap.put("facade_plugin_name_prefix", paramJSONObject.optString("facade_plugin_name_prefix"));
-      }
-      if (paramJSONObject.has("facade_plugin_url")) {
-        paramMap.put("facade_plugin_url", paramJSONObject.optString("facade_plugin_url"));
-      }
-      if (paramJSONObject.has("facade_plugin_md5")) {
-        paramMap.put("facade_plugin_md5", paramJSONObject.optString("facade_plugin_md5"));
-      }
-      if (paramJSONObject.has("facade_plugin_entry_class")) {
-        paramMap.put("facade_plugin_entry_class", paramJSONObject.optString("facade_plugin_entry_class"));
-      }
-      if (paramJSONObject.has("pre_load_info")) {
-        paramMap.put("pre_load_info", paramJSONObject.optString("pre_load_info"));
-      }
-      if (paramJSONObject.has("global_required_res_info")) {
-        paramMap.put("global_required_res_info", paramJSONObject.optString("global_required_res_info"));
-      }
-      if (paramJSONObject.has("docs_plugin_info")) {
-        paramMap.put("docs_plugin_info", paramJSONObject.optString("docs_plugin_info"));
-      }
-      if (paramJSONObject.has("docs_font_info")) {
-        paramMap.put("docs_font_info", paramJSONObject.optString("docs_font_info"));
-      }
-      if (paramJSONObject.has("sheets_plugin_info")) {
-        paramMap.put("sheets_plugin_info", paramJSONObject.optString("sheets_plugin_info"));
-      }
-      if (paramJSONObject.has("slides_plugin_info")) {
-        paramMap.put("slides_plugin_info", paramJSONObject.optString("slides_plugin_info"));
-      }
-    } while (!paramJSONObject.has("slides_res_info"));
-    paramMap.put("slides_res_info", paramJSONObject.optString("slides_res_info"));
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public static void a(boolean paramBoolean, andc paramandc)
+  public boolean a(String paramString)
   {
-    if (paramandc == null) {
-      QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
-    }
-    int i;
-    do
-    {
-      return;
-      if (!paramandc.jdField_a_of_type_JavaUtilMap.isEmpty()) {}
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          TdsReaderGlobal.a(paramBoolean, paramandc.jdField_a_of_type_JavaUtilMap);
-        }
-        if (!paramandc.jdField_a_of_type_Boolean) {
-          break;
-        }
-        andf.b();
-        return;
-      }
-    } while (i == 0);
-    TdsReaderGlobal.a(true);
+    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
   }
 }
 

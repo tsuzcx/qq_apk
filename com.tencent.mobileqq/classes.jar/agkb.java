@@ -1,19 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class agkb
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public agkb(DialogBaseActivity paramDialogBaseActivity) {}
+  public agkb(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Agki.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      NewStyleCountryActivity.a(this.a).setVisibility(8);
     }
-    this.a.a = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

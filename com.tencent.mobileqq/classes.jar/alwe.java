@@ -1,102 +1,176 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.ark.ModuleRegister;
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.ark.open.security.ArkAppUrlChecker;
-import com.tencent.mobileqq.ark.ArkAppCenterEvent;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.ark.ArkViewImplement.InputCallback;
+import com.tencent.ark.open.ArkView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.BubblePopupWindow;
 
-final class alwe
-  implements ark.ApplicationCallback
+class alwe
+  implements ArkViewImplement.InputCallback
 {
-  public void AppCreate(ark.Application paramApplication)
-  {
-    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
-  }
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private ImageView b;
+  private ImageView c;
   
-  public void AppDestroy(ark.Application paramApplication)
+  private void a(View paramView)
   {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppCenterEvent.a(1, paramApplication, null);
-    alwh.a(paramApplication);
-  }
-  
-  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
-  {
-    paramApplication = paramApplication.GetSpecific("appName");
-    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
-    boolean bool1 = true;
-    int j;
-    int i;
-    boolean bool2;
-    if (localArkAppUrlChecker != null)
+    if (paramView != null)
     {
-      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
-      i = 0;
-      if (j != 0) {
-        break label279;
-      }
-      bool1 = true;
-      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
-      boolean bool4 = alta.a();
-      if ((!bool3) || (bool4)) {
-        break label285;
-      }
-      bool2 = true;
-      label69:
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
-      }
-      if (bool1) {
-        break label291;
-      }
-      i = 1;
-      if (bool2) {
-        break label291;
-      }
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", nax.b(paramString, new String[0]) });
-      bool1 = true;
-      i = 2;
-    }
-    label279:
-    label285:
-    label291:
-    for (;;)
-    {
-      alwh.a(paramApplication, paramString, j, i, "");
-      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", nax.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
-      return bool1;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label69;
+      paramView.clearAnimation();
+      paramView.setVisibility(8);
     }
   }
   
-  public void OutputScriptError(String paramString1, String paramString2)
+  private void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (paramString1 == null) {
-      paramString1 = "";
-    }
-    for (;;)
+    if (paramView != null)
     {
-      if (paramString2 == null) {
-        paramString2 = "";
-      }
-      for (;;)
+      paramView.setVisibility(0);
+      paramView.animate().x(paramInt1).y(paramInt2).setDuration(0L).start();
+    }
+  }
+  
+  public void onFocusChanged(View paramView, boolean paramBoolean)
+  {
+    ArkView localArkView = (ArkView)paramView;
+    paramView = (ViewGroup)paramView.getParent();
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      paramView = this.jdField_a_of_type_AndroidViewViewGroup;
+    }
+    if (paramView == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      Object localObject2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838480);
+      Object localObject1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838479);
+      localArkView.setInputSetSelectHolderSize(((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
+      localArkView.setInputSetCaretHolderSize(((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+      if (this.jdField_a_of_type_AndroidWidgetImageView == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
-        }
-        altd.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
-        return;
+        this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(localArkView.getContext());
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject2);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(-1.0F);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        paramView.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localArkView);
       }
+      if (this.b == null)
+      {
+        this.b = new ImageView(localArkView.getContext());
+        this.b.setBackgroundDrawable((Drawable)localObject2);
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        paramView.addView(this.b, (ViewGroup.LayoutParams)localObject2);
+        this.b.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localArkView);
+      }
+      if (this.c == null)
+      {
+        this.c = new ImageView(localArkView.getContext());
+        this.c.setBackgroundDrawable((Drawable)localObject1);
+        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+        paramView.addView(this.c, (ViewGroup.LayoutParams)localObject1);
+        this.c.setVisibility(8);
+        this.c.setOnTouchListener(localArkView);
+      }
+    }
+    a(this.jdField_a_of_type_AndroidWidgetImageView);
+    a(this.b);
+    a(this.c);
+  }
+  
+  public void onHideMenu(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     }
   }
   
-  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    aloz.a(paramModuleRegister, paramApplication);
+    ArkView localArkView = (ArkView)paramView;
+    paramView = (ViewGroup)paramView.getParent();
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      paramView = this.jdField_a_of_type_AndroidViewViewGroup;
+    }
+    if (paramView == null) {
+      return;
+    }
+    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4)))
+    {
+      int j = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+      int i = j;
+      if (j <= 0) {
+        i = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838480).getIntrinsicWidth();
+      }
+      a(this.jdField_a_of_type_AndroidWidgetImageView, localArkView.getLeft() + paramInt1 - i, localArkView.getTop() + paramInt2);
+      if ((paramInt3 <= 0) || (paramInt4 <= 0) || ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4))) {
+        break label245;
+      }
+      a(this.b, localArkView.getLeft() + paramInt3, localArkView.getTop() + paramInt4);
+    }
+    for (;;)
+    {
+      if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
+        break label256;
+      }
+      paramInt2 = this.c.getWidth();
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 0) {
+        paramInt1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838479).getIntrinsicWidth();
+      }
+      a(this.c, localArkView.getLeft() + paramInt3 - paramInt1 / 2, localArkView.getTop() + paramInt4);
+      return;
+      a(this.jdField_a_of_type_AndroidWidgetImageView);
+      break;
+      label245:
+      a(this.b);
+    }
+    label256:
+    a(this.c);
+  }
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    }
+    bbmf localbbmf = new bbmf();
+    if (paramInt4 == 2)
+    {
+      localbbmf.a(0, ajya.a(2131700714));
+      localbbmf.a(1, ajya.a(2131700709));
+      localbbmf.a(2, ajya.a(2131700715));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcq.a(paramView, paramInt1, paramInt2, paramInt3 + BaseApplicationImpl.getApplication().getResources().getDrawable(2130838479).getIntrinsicHeight(), localbbmf, new alwf(this, paramInt4, (ArkViewImplement.ArkViewInterface)paramView));
+      return;
+      if (paramInt4 == 1)
+      {
+        localbbmf.a(0, ajya.a(2131700708));
+        localbbmf.a(1, ajya.a(2131700710));
+        localbbmf.a(2, ajya.a(2131700711));
+      }
+      else
+      {
+        localbbmf.a(0, ajya.a(2131700713));
+      }
+    }
   }
 }
 

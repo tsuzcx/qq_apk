@@ -1,11 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-public abstract interface njv
+public class njv
+  extends AnimatorListenerAdapter
 {
-  public abstract void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt);
+  public njv(VideoCoverView paramVideoCoverView) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
+  }
 }
 
 

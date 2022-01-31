@@ -1,407 +1,292 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.telephony.CellLocation;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import appoint.define.appoint_define.AppointID;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.dating.DatingUtil.1;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import appoint.define.appoint_define.DateComment;
+import appoint.define.appoint_define.Elem;
+import appoint.define.appoint_define.Face;
+import appoint.define.appoint_define.ReplyInfo;
+import appoint.define.appoint_define.RichText;
+import appoint.define.appoint_define.StrangerInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.NearByMessageType;
 
 public class anmg
 {
-  public static String a = "";
-  public static String b = "";
+  public int a;
+  public long a;
+  public anmk a;
+  public String a;
+  public anmk b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  @aulz
+  public String f;
   
-  public static String a(long paramLong, int paramInt, boolean paramBoolean)
+  public static anmg a(appoint_define.DateComment paramDateComment)
   {
-    Object localObject1 = Long.valueOf(NetConnInfoCenter.getServerTimeMillis());
-    Object localObject2 = Calendar.getInstance();
-    ((Calendar)localObject2).setTimeInMillis(((Long)localObject1).longValue());
-    Long localLong = Long.valueOf(1000L * paramLong);
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(localLong.longValue());
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.set(1970, 0, 1, 0, 0, 0);
-    long l = localCalendar2.getTime().getTime() - 1000L;
-    paramLong = (((Long)localObject1).longValue() - l) / 1000L / 86400L;
-    l = (localLong.longValue() - l) / 1000L / 86400L;
-    int i = -1;
-    int j = 0;
-    if (l == paramLong) {
-      i = 2131720335;
+    if ((paramDateComment == null) || (TextUtils.isEmpty(paramDateComment.str_comment_id.get()))) {
+      return null;
     }
-    while (paramInt == 5) {
-      if (i != -1)
+    anmg localanmg = new anmg();
+    localanmg.jdField_a_of_type_JavaLangString = paramDateComment.str_comment_id.get();
+    localanmg.jdField_b_of_type_JavaLangString = anml.a((appoint_define.AppointID)paramDateComment.msg_appoint_id.get());
+    localanmg.jdField_a_of_type_Long = paramDateComment.uint32_time.get();
+    appoint_define.RichText localRichText;
+    int i;
+    if (paramDateComment.msg_content.has())
+    {
+      localRichText = (appoint_define.RichText)paramDateComment.msg_content.get();
+      localanmg.c = a(localRichText);
+      localanmg.jdField_a_of_type_Anmk = anmk.a((appoint_define.StrangerInfo)paramDateComment.msg_publisher_info.get());
+      if (!paramDateComment.uint32_flag.has()) {
+        break label220;
+      }
+      i = paramDateComment.uint32_flag.get();
+      label131:
+      localanmg.jdField_a_of_type_Int = i;
+      if (!paramDateComment.msg_reply_info.has()) {
+        break label225;
+      }
+    }
+    label220:
+    label225:
+    for (paramDateComment = (appoint_define.ReplyInfo)paramDateComment.msg_reply_info.get();; paramDateComment = null)
+    {
+      if (paramDateComment != null)
       {
-        return BaseApplication.getContext().getResources().getString(i);
-        if (l == 1L + paramLong) {
-          i = 2131720336;
-        } else if (l == 2L + paramLong) {
-          i = 2131689858;
-        } else if (l == paramLong - 1L) {
-          i = 2131720919;
-        } else if (l == paramLong - 2L) {
-          i = 2131690456;
-        } else if (localCalendar1.get(1) == ((Calendar)localObject2).get(1)) {
-          j = 1;
-        } else {
-          j = 0;
+        localanmg.d = paramDateComment.str_comment_id.get();
+        localanmg.jdField_b_of_type_Anmk = anmk.a((appoint_define.StrangerInfo)paramDateComment.msg_stranger_info.get());
+      }
+      localanmg.f = anml.a(localanmg.jdField_a_of_type_Long, true);
+      localanmg.e = anml.a(localanmg.jdField_a_of_type_Long, false);
+      return localanmg;
+      localRichText = null;
+      break;
+      i = 0;
+      break label131;
+    }
+  }
+  
+  public static anmg a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    anmg localanmg = new anmg();
+    try
+    {
+      localanmg.jdField_a_of_type_JavaLangString = paramJSONObject.getString("commentId");
+      localanmg.jdField_b_of_type_JavaLangString = paramJSONObject.getString("datingId");
+      localanmg.c = paramJSONObject.getString("content");
+      localanmg.jdField_a_of_type_Long = paramJSONObject.getLong("time");
+      localanmg.jdField_a_of_type_Anmk = anmk.a(paramJSONObject.getJSONObject("puber"));
+      localanmg.jdField_a_of_type_Int = paramJSONObject.getInt("flag");
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        for (;;)
+        {
+          localanmg.d = paramJSONObject.getString("replyId");
+          try
+          {
+            localanmg.jdField_b_of_type_Anmk = anmk.a(paramJSONObject.getJSONObject("replyer"));
+            return localanmg;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            paramJSONObject.printStackTrace();
+            return localanmg;
+          }
+          localJSONException1 = localJSONException1;
+          localJSONException1.printStackTrace();
         }
       }
-      else
+      catch (JSONException localJSONException2)
       {
-        if (j == 0)
+        for (;;)
         {
-          if (paramBoolean) {}
-          for (localObject1 = "yyyy年M月d日";; localObject1 = "yyyy-MM-dd")
-          {
-            localObject1 = new SimpleDateFormat((String)localObject1);
-            return ((SimpleDateFormat)localObject1).format(localCalendar1.getTime());
+          localJSONException2.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public static String a(appoint_define.RichText paramRichText)
+  {
+    if (paramRichText == null) {
+      return "";
+    }
+    if (paramRichText.rpt_msg_elems.has()) {}
+    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramRichText.iterator();
+    label135:
+    label196:
+    label199:
+    label201:
+    label204:
+    while (localIterator.hasNext())
+    {
+      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
+      if (localElem != null)
+      {
+        if (localElem.str_content.has())
+        {
+          paramRichText = localElem.str_content.get();
+          label106:
+          localStringBuilder.append(paramRichText);
+          if (!localElem.msg_face_info.has()) {
+            break label196;
+          }
+          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
+          if (paramRichText == null) {
+            break label199;
+          }
+          if (!paramRichText.uint32_index.has()) {
+            break label201;
           }
         }
-        if (paramBoolean) {}
-        for (localObject1 = "M月d日";; localObject1 = "MM-dd")
+        for (int i = paramRichText.uint32_index.get();; i = -1)
         {
-          localObject1 = new SimpleDateFormat((String)localObject1);
+          if ((i < 0) || (i >= axau.b.length)) {
+            break label204;
+          }
+          localStringBuilder.append('\024');
+          localStringBuilder.append((char)axau.b[i]);
+          break;
+          paramRichText = "";
+          break label106;
+          paramRichText = null;
+          break label135;
           break;
         }
       }
     }
-    if (i != -1)
-    {
-      localObject2 = BaseApplication.getContext();
-      if (paramBoolean) {}
-      for (localObject1 = ",H点m分";; localObject1 = " HH:mm")
-      {
-        localObject1 = new SimpleDateFormat((String)localObject1);
-        return ((Context)localObject2).getResources().getString(i) + ((SimpleDateFormat)localObject1).format(localCalendar1.getTime());
-      }
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(List<anmg> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return "";
     }
-    if (j == 0)
+    JSONArray localJSONArray = new JSONArray();
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
     {
-      if (paramBoolean) {}
-      for (localObject1 = "yyyy年M月d日,HH点mm分";; localObject1 = "yyyy-MM-dd HH:mm")
-      {
-        localObject1 = new SimpleDateFormat((String)localObject1);
-        return ((SimpleDateFormat)localObject1).format(localCalendar1.getTime());
+      JSONObject localJSONObject = a((anmg)paramList.next());
+      if (localJSONObject == null) {
+        break label83;
       }
+      localJSONArray.put(localJSONObject);
+      i += 1;
     }
-    if (paramBoolean) {}
-    for (localObject1 = "M月d日,H点m分";; localObject1 = "MM-dd HH:mm")
+    label83:
+    for (;;)
     {
-      localObject1 = new SimpleDateFormat((String)localObject1);
+      if (i >= 20) {
+        return localJSONArray.toString();
+      }
       break;
     }
   }
   
-  public static String a(long paramLong, boolean paramBoolean)
+  public static JSONObject a(anmg paramanmg)
   {
-    paramLong = 1000L * paramLong;
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    int i = (int)(l / 86400000L);
-    int j = (int)(paramLong / 86400000L);
-    int k = (int)(l - paramLong) / 86400000;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(l);
-    if (k < 0)
-    {
-      if (paramBoolean) {}
-      for (localObject = "yyyy年M月d日 H点m分";; localObject = "yyyy-MM-dd HH:mm") {
-        return new SimpleDateFormat((String)localObject).format(localCalendar.getTime());
-      }
+    if (paramanmg == null) {
+      return null;
     }
-    if (k == 0)
-    {
-      i = (int)((l - paramLong) / 3600000L);
-      if (i <= 0) {
-        return ajyc.a(2131702854);
-      }
-      return String.format("%d小时前", new Object[] { Integer.valueOf(i) });
-    }
-    if (i == j + 1)
-    {
-      if (paramBoolean) {}
-      for (localObject = "H点m分";; localObject = "HH:mm")
-      {
-        localObject = new SimpleDateFormat((String)localObject).format(localCalendar.getTime());
-        return String.format(ajyc.a(2131702855), new Object[] { localObject });
-      }
-    }
-    if (i == j + 2)
-    {
-      if (paramBoolean) {}
-      for (localObject = "H点m分";; localObject = "HH:mm")
-      {
-        localObject = new SimpleDateFormat((String)localObject).format(localCalendar.getTime());
-        return String.format(ajyc.a(2131702856), new Object[] { localObject });
-      }
-    }
-    if (localCalendar.get(1) == ((Calendar)localObject).get(1))
-    {
-      if (paramBoolean) {}
-      for (localObject = "M月d日 H点m分";; localObject = "MM-dd HH:mm") {
-        return new SimpleDateFormat((String)localObject).format(localCalendar.getTime());
-      }
-    }
-    if (paramBoolean) {}
-    for (localObject = "yyyy年M月d日 H点m分";; localObject = "yyyy-MM-dd HH:mm") {
-      return new SimpleDateFormat((String)localObject).format(localCalendar.getTime());
-    }
-  }
-  
-  public static String a(appoint_define.AppointID paramAppointID)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAppointID != null)
-    {
-      localObject1 = localObject2;
-      if (paramAppointID.str_request_id != null)
-      {
-        localObject1 = localObject2;
-        if (paramAppointID.str_request_id.has()) {
-          localObject1 = paramAppointID.str_request_id.get();
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static im_msg_body.Elem a(MessageRecord paramMessageRecord)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    im_msg_body.NearByMessageType localNearByMessageType;
-    if (paramMessageRecord.istroop != 1010)
-    {
-      localObject1 = localObject2;
-      if (paramMessageRecord.istroop != 1001) {}
-    }
-    else if (paramMessageRecord.msgtype != -1000)
-    {
-      localObject1 = localObject2;
-      if (paramMessageRecord.msgtype != -2000) {}
-    }
-    else
-    {
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("nearby_clearing_msg")))
-      {
-        localNearByMessageType = new im_msg_body.NearByMessageType();
-        if (paramMessageRecord.msgtype != -1000) {
-          break label104;
-        }
-        localNearByMessageType.uint32_type.set(1);
-      }
-    }
-    for (;;)
-    {
-      localObject1 = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject1).near_by_msg.set(localNearByMessageType);
-      label104:
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (paramMessageRecord.msgtype != -2000);
-      localNearByMessageType.uint32_type.set(2);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    paramActivity.runOnUiThread(new DatingUtil.1(paramActivity, paramString));
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (((paramMessageRecord.istroop == 1010) || (paramMessageRecord.istroop == 1001)) && ((paramMessageRecord.msgtype == -1000) || (paramMessageRecord.msgtype == -2000)))
-    {
-      paramMessageRecord.saveExtInfoToExtStr("nearby_clearing_msg", "true");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_bank", 2, "setClearingMessage|istroop:" + paramMessageRecord.istroop + ",msgType:" + paramMessageRecord.msgtype);
-      }
-    }
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs) {}
-  
-  public static boolean a()
-  {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    TelephonyManager localTelephonyManager = (TelephonyManager)localBaseApplication.getSystemService("phone");
-    if (localTelephonyManager != null) {}
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      CellLocation localCellLocation = localTelephonyManager.getCellLocation();
-      int i = localTelephonyManager.getSimState();
-      int j;
-      if (i == 5) {
-        j = 1;
-      }
-      for (;;)
-      {
-        try
-        {
-          bool = TextUtils.isEmpty(bbct.b());
-          if (bool) {
-            continue;
-          }
-          i = 1;
-        }
-        catch (Exception localException2)
-        {
-          boolean bool;
-          i = 1;
-          continue;
-        }
-        if ((j == 0) || (i == 0) || (localCellLocation != null)) {
-          break label95;
-        }
-        bool = a(localBaseApplication);
-        if (bool) {
-          break label95;
-        }
-        return true;
-        j = 0;
-        continue;
-        i = 0;
-      }
-      label95:
-      return false;
+      localJSONObject.put("commentId", paramanmg.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("datingId", paramanmg.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("content", paramanmg.c);
+      localJSONObject.put("time", paramanmg.jdField_a_of_type_Long);
+      localJSONObject.put("replyId", paramanmg.d);
+      localJSONObject.put("puber", anmk.a(paramanmg.jdField_a_of_type_Anmk));
+      localJSONObject.put("replyer", anmk.a(paramanmg.jdField_b_of_type_Anmk));
+      localJSONObject.put("flag", paramanmg.jdField_a_of_type_Int);
+      return localJSONObject;
     }
-    catch (Exception localException1) {}
-    return true;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {}
-    try
+    catch (JSONException paramanmg)
     {
-      int i = Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on");
-      return i == 1;
+      paramanmg.printStackTrace();
     }
-    catch (Settings.SettingNotFoundException paramContext) {}
-    return false;
+    return localJSONObject;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage)
+  public static void a(List<anmg> paramList, String paramString)
   {
-    boolean bool3 = false;
-    if (paramMessage.extStr != null) {}
+    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
     {
+      return;
       try
       {
-        bool1 = new JSONObject(paramMessage.extStr).optBoolean("one_way");
-        paramQQAppInterface = paramQQAppInterface.a();
-        boolean bool2 = bool3;
-        if (paramQQAppInterface != null)
+        paramString = new JSONArray(paramString);
+        int j = paramString.length();
+        int i = 0;
+        while (i < j)
         {
-          bool2 = bool3;
-          if (paramQQAppInterface.a(paramMessage.istroop) > 0)
-          {
-            bool2 = bool3;
-            if (bool1) {
-              bool2 = true;
-            }
+          anmg localanmg = a(paramString.getJSONObject(i));
+          if (localanmg != null) {
+            paramList.add(localanmg);
           }
+          i += 1;
         }
-        return bool2;
+        return;
       }
-      catch (Exception localException)
+      catch (JSONException paramList)
       {
-        localException.printStackTrace();
+        paramList.printStackTrace();
       }
-      boolean bool1 = false;
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public boolean equals(Object paramObject)
   {
-    if (paramQQAppInterface == null) {
-      return true;
-    }
-    return paramQQAppInterface.a().a(paramString, 1010).hasReply;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (paramObject == null) {}
     do
     {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while ((paramQQAppInterface == null) || (paramQQAppInterface.e(paramString, paramInt) <= 0));
+      do
+      {
+        return false;
+        if (paramObject == this) {
+          return true;
+        }
+      } while (paramObject.getClass() != getClass());
+      paramObject = (anmg)paramObject;
+    } while (((this.jdField_a_of_type_JavaLangString != null) || (paramObject.jdField_a_of_type_JavaLangString != null)) && ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))));
     return true;
   }
   
-  public static void b(String paramString, Object... paramVarArgs)
+  public int hashCode()
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString).append(", [");
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(paramVarArgs[i]).append(",");
-        i += 1;
-      }
-      localStringBuilder.append("]");
-      QLog.i("Q.dating", 2, localStringBuilder.toString());
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "".hashCode();
     }
+    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  public String toString()
   {
-    paramString = paramQQAppInterface.a(true).a(paramString);
-    if (paramString != null)
-    {
-      paramQQAppInterface = ((bcic)paramQQAppInterface.a(107)).a("");
-      if ((paramString.isGameRoom) || (paramString.troopUin.equals(paramQQAppInterface.a))) {
-        return true;
-      }
-    }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.c).append(",").append(this.jdField_a_of_type_Long).append(",").append(this.d).append(",").append(this.jdField_a_of_type_Anmk).append(",").append(this.jdField_b_of_type_Anmk).append(",").append(this.jdField_a_of_type_Int).append(",").append("]");
+    return localStringBuilder.toString();
   }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while ((paramQQAppInterface == null) || (paramQQAppInterface.d(paramString, paramInt) <= 0));
-    return true;
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs) {}
 }
 
 

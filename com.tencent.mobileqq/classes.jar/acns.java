@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import android.widget.TextView;
 
 public class acns
-  implements Comparator<acnu>
+  extends aimt
 {
-  private acns(TroopTransferActivity paramTroopTransferActivity) {}
-  
-  public int a(acnu paramacnu1, acnu paramacnu2)
-  {
-    return paramacnu1.f.compareToIgnoreCase(paramacnu2.f);
-  }
+  public acnq a;
+  public TextView a;
 }
 
 

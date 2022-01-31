@@ -1,15 +1,42 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
+import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
+import java.util.Random;
 
-class bipw
-  extends AnimatorListenerAdapter
+public class bipw
+  implements LogicDataManager.OnGetQQNumberEventListener
 {
-  bipw(bipt parambipt) {}
+  bipw(bipv parambipv) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int onGetQQNumber()
   {
-    this.a.a.a().setVisibility(8);
+    long l = System.currentTimeMillis();
+    if (l - bipv.a(this.a) > 60000L)
+    {
+      bipv.a(this.a, l);
+      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
+      if (l - bipv.b(this.a) <= 1000L) {
+        break label168;
+      }
+      bipv.b(this.a, l);
+    }
+    for (;;)
+    {
+      synchronized (bipv.a(this.a))
+      {
+        if (bipv.a(this.a) != 0) {
+          bipv.a(this.a, bipv.a(this.a) - 1000 + new Random().nextInt(2000));
+        }
+        return bipv.a(this.a);
+        if (l - bipv.a(this.a) >= 0L) {
+          break;
+        }
+        bipv.a(this.a, l);
+      }
+      label168:
+      if (l - bipv.b(this.a) < 0L) {
+        bipv.b(this.a, l);
+      }
+    }
   }
 }
 

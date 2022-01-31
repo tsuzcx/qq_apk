@@ -1,54 +1,35 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class aoux
-  implements aoup
+  extends BroadcastReceiver
 {
-  aoux(aouw paramaouw, String paramString, aovr paramaovr) {}
+  private aoux(aouu paramaouu) {}
   
-  public void a(int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    QLog.i("FileManagerEngine<FileAssistant>", 1, "!!!extCard changed[" + paramIntent.getAction() + "]!!!");
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      aptm.a().a("externalSdCard");
     }
-    for (;;)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aouw.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
+      this.a.a.a().a(true);
+      label96:
+      if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_MOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_SCANNER_STARTED"))) {
+        aptm.a().a();
       }
-      this.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Aouw.jdField_a_of_type_Long, bool2), bool1);
+      this.a.a.a().a(true, 3, null);
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aouw.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aouw.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aouw.c);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aouw.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aouw.f);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aouw.jdField_a_of_type_JavaLangString + "] success");
+    catch (Exception paramIntent)
+    {
+      break label96;
     }
-    this.jdField_a_of_type_Aovr.a(paramString, localBundle);
   }
 }
 

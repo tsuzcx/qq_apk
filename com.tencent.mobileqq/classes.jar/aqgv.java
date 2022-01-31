@@ -1,42 +1,133 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class aqgv
-  extends aqgw
+public class aqgv
+  extends RecyclerView.Adapter<aqgy>
 {
-  public ImageView a;
-  public TextView a;
+  float jdField_a_of_type_Float = 1.0F;
+  Context jdField_a_of_type_AndroidContentContext;
+  baxy jdField_a_of_type_Baxy;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public aqgv(View paramView)
+  public aqgv(Context paramContext, baxy parambaxy, float paramFloat)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = aqgp.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368031));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378524));
-    paramView.setTag(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Baxy = parambaxy;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void a(String paramString1, String paramString2, baxk parambaxk)
+  public aqgy a(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new ayki((CharSequence)localObject, 2));
-    localObject = parambaxk.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
+    if (paramInt == aqgr.b)
     {
-      localObject = bbdr.a();
-      paramString2 = (String)localObject;
-      if (!parambaxk.a())
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296976);
+      paramInt = i;
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        paramInt = (int)(i / this.jdField_a_of_type_Float);
+      }
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
+      return new aqgy(paramViewGroup);
+    }
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559069, paramViewGroup, false);
+    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
+    {
+      Object localObject1 = paramViewGroup.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = actj.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = (ImageView)paramViewGroup.findViewById(2131368031);
+      Object localObject2;
+      if (localObject1 != null)
       {
-        parambaxk.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
+        localObject2 = ((ImageView)localObject1).getLayoutParams();
+        if (localObject2 != null)
+        {
+          paramInt = actj.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
+          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
+          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+      }
+      localObject1 = (TextView)paramViewGroup.findViewById(2131378529);
+      if (localObject1 != null)
+      {
+        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
+        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
+        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    return new aqgx(paramViewGroup);
+  }
+  
+  public void a(aqgy paramaqgy, int paramInt)
+  {
+    if (paramaqgy.a == aqgr.b) {}
+    Pair localPair;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramaqgy.a != aqgr.a);
+      paramInt -= 1;
+      if (paramInt < 0) {
+        QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
+      }
+      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    } while (!(paramaqgy instanceof aqgx));
+    ((aqgx)paramaqgy).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Baxy);
+  }
+  
+  public void a(List<Pair<String, String>> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return aqgr.b;
+    }
+    return aqgr.a;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new aqgw(this));
+    }
   }
 }
 

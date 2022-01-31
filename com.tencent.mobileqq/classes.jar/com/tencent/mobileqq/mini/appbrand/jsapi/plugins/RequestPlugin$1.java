@@ -12,6 +12,7 @@ final class RequestPlugin$1
     add("createSocketTask");
     add("operateSocketTask");
     add("wnsCgiRequest");
+    add("wnsGroupRequest");
   }
 }
 

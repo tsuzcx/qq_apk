@@ -1,63 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
-
-class akhb
-  extends SubAccountObserver
+public class akhb
+  implements ajte
 {
-  akhb(akha paramakha, ayaw paramayaw, ayav paramayav, boolean paramBoolean) {}
+  protected void a(boolean paramBoolean, ayay paramayay) {}
   
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  protected void b(boolean paramBoolean, ayay paramayay) {}
+  
+  protected void c(boolean paramBoolean, ayay paramayay) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if ((paramString3 == null) || (paramString2 == null) || (paramString1 == null))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack key is null or ? happen 0 ? =>");
-        if (paramString3 != null) {
-          break label107;
-        }
-        bool1 = true;
-        paramString3 = localStringBuilder.append(bool1);
-        if (paramString2 != null) {
-          break label113;
-        }
-      }
-      label107:
-      label113:
-      for (bool1 = true;; bool1 = false)
-      {
-        paramString2 = paramString3.append(bool1);
-        bool1 = bool2;
-        if (paramString1 == null) {
-          bool1 = true;
-        }
-        QLog.e("SUB_ACCOUNT", 2, bool1);
-        this.jdField_a_of_type_Akha.notifyUI(2, true, this.jdField_a_of_type_Ayaw);
-        return;
-        bool1 = false;
-        break;
-      }
-    }
-    if ((this.jdField_a_of_type_Akha.app != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_Ayaw.c)) && (paramString1.equalsIgnoreCase(this.jdField_a_of_type_Akha.app.getAccount())))
-    {
-      this.jdField_a_of_type_Ayav.a(paramString2, paramString3, this.jdField_a_of_type_Boolean);
-      ayao.a(this.jdField_a_of_type_Akha.app, (byte)1, paramString2);
-      this.jdField_a_of_type_Ayaw.b = true;
-      this.jdField_a_of_type_Akha.notifyUI(2, true, this.jdField_a_of_type_Ayaw);
+    default: 
+      return;
+    case 0: 
+      b(paramBoolean, (ayay)paramObject);
+      return;
+    case 1: 
+      c(paramBoolean, (ayay)paramObject);
       return;
     }
-    if (QLog.isColorLevel())
-    {
-      paramString3 = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
-      if (this.jdField_a_of_type_Akha.app == null) {
-        bool1 = true;
-      }
-      QLog.d("SUB_ACCOUNT", 2, bool1 + " subUin:" + paramString2.equalsIgnoreCase(this.jdField_a_of_type_Ayaw.c) + " mainAccount:" + paramString1.equalsIgnoreCase(this.jdField_a_of_type_Akha.app.getAccount()));
-    }
-    this.jdField_a_of_type_Akha.notifyUI(2, true, this.jdField_a_of_type_Ayaw);
+    a(paramBoolean, (ayay)paramObject);
   }
 }
 

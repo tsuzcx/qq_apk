@@ -1,12 +1,15 @@
-class akit
+public class akit
+  implements ajte
 {
-  public long a;
-  public String a;
+  private final String a = "TroopQZoneUploadAlbumObserver";
   
-  akit(akio paramakio, String paramString, long paramLong)
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramInt == 999) {
+      a(paramBoolean, paramObject);
+    }
   }
 }
 

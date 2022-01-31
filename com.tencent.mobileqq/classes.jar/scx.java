@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class scx
-  implements ViewStub.OnInflateListener
+  implements Animation.AnimationListener
 {
-  scx(scu paramscu) {}
+  scx(scr paramscr) {}
   
-  public void onInflate(ViewStub paramViewStub, View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a = paramView;
-    this.a.e();
+    this.a.a(scr.a(this.a));
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

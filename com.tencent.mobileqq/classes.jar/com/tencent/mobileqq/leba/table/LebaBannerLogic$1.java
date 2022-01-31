@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.leba.table;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import arqf;
-import avpq;
+import arqh;
+import avps;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -18,7 +18,7 @@ import mqq.app.AppRuntime;
 public class LebaBannerLogic$1
   implements Runnable
 {
-  public LebaBannerLogic$1(arqf paramarqf) {}
+  public LebaBannerLogic$1(arqh paramarqh) {}
   
   public void run()
   {
@@ -30,7 +30,7 @@ public class LebaBannerLogic$1
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {}
     Object localObject1;
-    for (BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avpq)localAppRuntime.getManager(36)).a(0, "100000");; localObject1 = null)
+    for (BusinessInfoCheckUpdate.AppInfo localAppInfo = ((avps)localAppRuntime.getManager(36)).a(0, "100000");; localObject1 = null)
     {
       if (localAppInfo != null) {
         for (;;)
@@ -44,7 +44,7 @@ public class LebaBannerLogic$1
             {
               QLog.i("Q.lebatab.LebaBannerLogic", 1, "showBannerView reused");
               localObject2 = this.this$0.a.getChildAt(0);
-              arqf.a(this.this$0, localAppRuntime, localAppInfo, (View)localObject2);
+              arqh.a(this.this$0, localAppRuntime, localAppInfo, (View)localObject2);
               return;
             }
           }
@@ -54,11 +54,11 @@ public class LebaBannerLogic$1
             return;
           }
           QLog.i("Q.lebatab.LebaBannerLogic", 1, "showBannerView new");
-          Object localObject2 = (LayoutInflater)arqf.a(this.this$0).getSystemService("layout_inflater");
-          Resources localResources = arqf.a(this.this$0).getResources();
-          localObject2 = ((LayoutInflater)localObject2).inflate(2131560809, null);
+          Object localObject2 = (LayoutInflater)arqh.a(this.this$0).getSystemService("layout_inflater");
+          Resources localResources = arqh.a(this.this$0).getResources();
+          localObject2 = ((LayoutInflater)localObject2).inflate(2131560808, null);
           this.this$0.a.setOnClickListener(this.this$0);
-          this.this$0.a.setPadding(actn.a(16.0F, localResources), actn.a(12.0F, localResources), actn.a(16.0F, localResources), 0);
+          this.this$0.a.setPadding(actj.a(16.0F, localResources), actj.a(12.0F, localResources), actj.a(16.0F, localResources), 0);
           this.this$0.a.addView((View)localObject2);
         }
       }

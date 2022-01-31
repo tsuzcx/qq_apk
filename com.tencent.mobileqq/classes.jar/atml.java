@@ -1,23 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class atml
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  atml(atlu paramatlu) {}
+  atml(atmi paramatmi) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131364466).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131364466).setAlpha(1.0F);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

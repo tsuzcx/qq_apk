@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import bbds;
-import bcpw;
+import bbeg;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class JumpAction$4
   implements Runnable
 {
-  public JumpAction$4(bbds parambbds) {}
+  public JumpAction$4(bbeg parambbeg) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), 1, 2131699520, 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), 1, 2131699531, 0).a();
   }
 }
 

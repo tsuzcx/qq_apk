@@ -1,16 +1,44 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.utils.SoUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ajky
-  extends AVAudioCtrl.EnableMicCompleteCallback
+  implements AVCallback
 {
-  ajky(ajku paramajku) {}
+  ajky(ajks paramajks) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onComplete(int paramInt, String paramString)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
+    if (paramInt == 0)
+    {
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      if (!this.a.a())
+      {
+        bbdx.d(ajlj.a() + "libqav_graphics.so", ajlj.a() + "libtmg_graphics.so");
+        boolean bool = SoUtil.loadSo("tmg_graphics");
+        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
+        if (!this.a.a())
+        {
+          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
+          ajks.a(this.a, false);
+          this.a.a();
+          paramInt = 1;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
+      }
+      return;
+      ajks.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
+      continue;
+      ajks.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
+      continue;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }

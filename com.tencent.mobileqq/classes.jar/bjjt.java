@@ -1,30 +1,136 @@
-import android.os.Message;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import android.content.res.AssetManager;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.util.QIMFileUtils.1;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import mqq.os.MqqHandler;
 
 public class bjjt
-  implements bjbd
 {
-  public bjjt(MusicFragmentProviderView paramMusicFragmentProviderView) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public static File a()
   {
-    Message localMessage;
-    if (this.a.a != null)
+    return BaseApplicationImpl.getApplication().getCacheDir();
+  }
+  
+  public static String a(File paramFile, String paramString)
+  {
+    paramFile = new File(paramFile + File.separator + paramString);
+    if (paramFile.exists())
     {
-      localMessage = this.a.a.obtainMessage();
-      if (!paramBoolean) {
-        break label61;
+      paramFile = bbdx.a(paramFile);
+      if ((paramFile == null) || (paramFile.length <= 0)) {
+        return null;
+      }
+      if (Build.VERSION.SDK_INT <= 8) {
+        return new String(paramFile);
+      }
+      try
+      {
+        paramFile = new String(paramFile, "UTF-8");
+        return paramFile;
+      }
+      catch (UnsupportedEncodingException paramFile)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramFile.printStackTrace();
+        }
+        return null;
       }
     }
-    label61:
-    for (int i = 1;; i = 0)
+    return "";
+  }
+  
+  public static String a(String paramString)
+  {
+    String str1 = "";
+    Object localObject2 = null;
+    Object localObject1 = null;
+    for (;;)
     {
-      localMessage.arg1 = i;
-      localMessage.obj = paramObject;
-      localMessage.what = 7;
-      this.a.a.sendMessage(localMessage);
-      return;
+      try
+      {
+        paramString = BaseApplication.getContext().getAssets().open(paramString);
+        localObject1 = paramString;
+        localObject2 = paramString;
+        String str2 = nau.a(paramString);
+        localObject1 = str2;
+        localObject2 = localObject1;
+      }
+      catch (IOException paramString)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject2 = localObject1;
+        paramString.printStackTrace();
+        localObject2 = str1;
+        if (localObject1 == null) {
+          continue;
+        }
+        try
+        {
+          ((InputStream)localObject1).close();
+          return "";
+        }
+        catch (Exception paramString)
+        {
+          localObject2 = str1;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString.printStackTrace();
+        return "";
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          break label113;
+        }
+      }
+      try
+      {
+        paramString.close();
+        localObject2 = localObject1;
+      }
+      catch (Exception paramString)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString.printStackTrace();
+        return localObject1;
+      }
     }
+    return localObject2;
+    try
+    {
+      ((InputStream)localObject2).close();
+      label113:
+      throw paramString;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localException.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public static void a(File paramFile, String paramString1, String paramString2)
+  {
+    ThreadManager.getFileThreadHandler().post(new QIMFileUtils.1(paramFile, paramString1, paramString2));
   }
 }
 

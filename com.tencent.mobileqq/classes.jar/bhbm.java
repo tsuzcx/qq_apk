@@ -1,93 +1,202 @@
-import GIFT_MALL_PROTOCOL.DouFuInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1;
-import cooperation.vip.manager.MonitorManager;
-import java.lang.ref.WeakReference;
-import java.util.Set;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class bhbm
 {
-  private static bhbn a = new bhbn();
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<QZoneCountUserInfo> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  private static JSONObject a(DouFuInfo paramDouFuInfo)
+  public bhbm()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("friendUin", paramDouFuInfo.uin);
-      localJSONObject.put("background", paramDouFuInfo.background);
-      localJSONObject.put("time", paramDouFuInfo.birthday);
-      localJSONObject.put("blessing", paramDouFuInfo.blessing);
-      localJSONObject.put("link", paramDouFuInfo.doufu_link);
-      localJSONObject.put("icon", paramDouFuInfo.icon);
-      return localJSONObject;
-    }
-    catch (Exception paramDouFuInfo)
-    {
-      QLog.e("BirthDayNoticeManager", 1, "error convert to json " + paramDouFuInfo);
-      MonitorManager.a().a(19, 4, "convert to json error " + paramDouFuInfo, false);
-    }
-    return localJSONObject;
+    this(0, 0, new ArrayList(), "", "");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public bhbm(int paramInt1, int paramInt2, ArrayList<QZoneCountUserInfo> paramArrayList, String paramString1, String paramString2)
   {
-    String str = paramSessionInfo.a;
-    Set localSet = paramQQAppInterface.a().a();
-    long l1;
-    long l3;
-    if ((localSet != null) && (localSet.contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public bhbm(bhbm parambhbm)
+  {
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = parambhbm.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Int = parambhbm.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (parambhbm.jdField_a_of_type_JavaUtilArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(parambhbm.jdField_a_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_JavaLangString = parambhbm.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_d_of_type_JavaLangString = parambhbm.jdField_d_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = parambhbm.jdField_c_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = parambhbm.jdField_b_of_type_JavaLangString;
+    this.e = parambhbm.e;
+    this.jdField_c_of_type_Int = parambhbm.jdField_c_of_type_Int;
+    this.f = parambhbm.f;
+    this.g = parambhbm.g;
+    this.jdField_b_of_type_Long = parambhbm.jdField_b_of_type_Long;
+    this.jdField_d_of_type_Int = parambhbm.jdField_d_of_type_Int;
+    this.jdField_b_of_type_Boolean = parambhbm.jdField_b_of_type_Boolean;
+  }
+  
+  public static HashMap<Integer, bhbm> a(Cursor paramCursor)
+  {
+    if ((paramCursor == null) || (paramCursor.isClosed())) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramCursor.moveToNext())
     {
-      l1 = paramQQAppInterface.a().b();
-      l3 = System.currentTimeMillis() / 1000L;
-      if (l3 - l1 >= 86400L)
+      bhbm localbhbm = new bhbm();
+      int j = paramCursor.getInt(paramCursor.getColumnIndex("type"));
+      localbhbm.jdField_a_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("icontrol"));
+      localbhbm.jdField_a_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("friendMsg"));
+      localbhbm.jdField_a_of_type_Long = paramCursor.getInt(paramCursor.getColumnIndex("ucount"));
+      localbhbm.jdField_b_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("trace_info"));
+      localbhbm.jdField_b_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("friendsNum"));
+      localbhbm.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      Object localObject1 = paramCursor.getBlob(paramCursor.getColumnIndex("frienduins"));
+      Parcel localParcel;
+      if ((localObject1 != null) && (localObject1.length != 0)) {
+        localParcel = Parcel.obtain();
+      }
+      try
       {
-        QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
-        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), axbq.class);
-        l1 = 0L;
+        localParcel.unmarshall((byte[])localObject1, 0, localObject1.length);
+        localParcel.setDataPosition(0);
+        localObject1 = localParcel.readParcelableArray(QZoneCountUserInfo.class.getClassLoader());
+        if (localObject1 != null)
+        {
+          int k = localObject1.length;
+          int i = 0;
+          while (i < k)
+          {
+            Object localObject2 = localObject1[i];
+            localbhbm.jdField_a_of_type_JavaUtilArrayList.add((QZoneCountUserInfo)localObject2);
+            i += 1;
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          label295:
+          localThrowable.printStackTrace();
+          localParcel.recycle();
+        }
+      }
+      finally
+      {
+        localParcel.recycle();
+      }
+      if (paramCursor.getInt(paramCursor.getColumnIndex("existDL")) == 1)
+      {
+        bool = true;
+        localbhbm.jdField_a_of_type_Boolean = bool;
+        localbhbm.jdField_d_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("pushMsg"));
+        localbhbm.jdField_c_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("schema"));
+        localbhbm.e = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
+        localbhbm.g = paramCursor.getString(paramCursor.getColumnIndex("reportValue"));
+        localbhbm.f = paramCursor.getString(paramCursor.getColumnIndex("showMsg"));
+        localbhbm.jdField_c_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("countID"));
+        localbhbm.jdField_b_of_type_Long = paramCursor.getLong(paramCursor.getColumnIndex("cTime"));
+        localbhbm.jdField_d_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("iShowLevel"));
+        if (paramCursor.getInt(paramCursor.getColumnIndex("hasShow")) != 1) {
+          break label526;
+        }
+      }
+      label526:
+      for (boolean bool = true;; bool = false)
+      {
+        localbhbm.jdField_b_of_type_Boolean = bool;
+        localHashMap.put(Integer.valueOf(j), localbhbm);
+        break;
+        bool = false;
+        break label295;
       }
     }
-    try
+    return localHashMap;
+  }
+  
+  public ContentValues a()
+  {
+    int j = 1;
+    ContentValues localContentValues = new ContentValues(9);
+    localContentValues.put("icontrol", Integer.valueOf(this.jdField_a_of_type_Int));
+    localContentValues.put("ucount", Long.valueOf(this.jdField_a_of_type_Long));
+    localContentValues.put("friendsNum", Integer.valueOf(this.jdField_b_of_type_Int));
+    Parcel localParcel = Parcel.obtain();
+    Object localObject = null;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      long l2 = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
-      l1 = l2;
+      localObject = new QZoneCountUserInfo[this.jdField_a_of_type_JavaUtilArrayList.size()];
+      localParcel.writeParcelableArray((Parcelable[])this.jdField_a_of_type_JavaUtilArrayList.toArray((Object[])localObject), 0);
+      localObject = localParcel.marshall();
     }
-    catch (Exception localException)
+    localParcel.recycle();
+    localContentValues.put("frienduins", (byte[])localObject);
+    localContentValues.put("friendMsg", this.jdField_a_of_type_JavaLangString);
+    localContentValues.put("trace_info", this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean)
     {
-      for (;;)
-      {
-        QLog.e("BirthDayNoticeManager", 1, "get uin error " + localException);
+      i = 1;
+      localContentValues.put("existDL", Integer.valueOf(i));
+      localContentValues.put("pushMsg", this.jdField_d_of_type_JavaLangString);
+      localContentValues.put("schema", this.jdField_c_of_type_JavaLangString);
+      localContentValues.put("iconUrl", this.e);
+      localContentValues.put("showMsg", this.f);
+      localContentValues.put("reportValue", this.g);
+      localContentValues.put("cTime", Long.valueOf(this.jdField_b_of_type_Long));
+      localContentValues.put("iShowLevel", Integer.valueOf(this.jdField_d_of_type_Int));
+      if (!this.jdField_b_of_type_Boolean) {
+        break label269;
       }
     }
-    paramSessionInfo.putExtra("selfuin", l1);
-    a.a = new WeakReference(paramQQAppInterface);
-    paramQQAppInterface.registObserver(a);
-    paramQQAppInterface.startServlet(paramSessionInfo);
-    paramQQAppInterface.a().c(l3);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (asxb.a(paramQQAppInterface, paramString, 5L, false) != null) {}
-    while ((asxb.a(paramQQAppInterface, paramString, 12L, false) != null) || (asxb.a(paramQQAppInterface, paramString, false) != null)) {
-      return true;
+    label269:
+    for (int i = j;; i = 0)
+    {
+      localContentValues.put("hasShow", Integer.valueOf(i));
+      return localContentValues;
+      i = 0;
+      break;
     }
-    return false;
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, DouFuInfo paramDouFuInfo)
+  public boolean a(bhbm parambhbm)
   {
-    JSONObject localJSONObject = a(paramDouFuInfo);
-    long l = FeedsManager.getToken(String.valueOf(paramDouFuInfo.uin));
-    ThreadManager.getSubThreadHandler().post(new BirthDayNoticeManager.1(paramDouFuInfo, paramQQAppInterface, localJSONObject, l));
+    if (parambhbm == null) {}
+    while (((this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_JavaLangString.equals(parambhbm.jdField_b_of_type_JavaLangString))) || ((parambhbm.jdField_b_of_type_JavaLangString != null) && (!parambhbm.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) || ((this.jdField_d_of_type_JavaLangString != null) && (!this.jdField_d_of_type_JavaLangString.equals(parambhbm.jdField_d_of_type_JavaLangString))) || ((this.jdField_d_of_type_JavaLangString == null) && (parambhbm.jdField_d_of_type_JavaLangString != null)) || ((this.jdField_c_of_type_JavaLangString != null) && (!this.jdField_c_of_type_JavaLangString.equals(parambhbm.jdField_c_of_type_JavaLangString))) || ((this.jdField_c_of_type_JavaLangString == null) && (parambhbm.jdField_c_of_type_JavaLangString != null)) || (this.jdField_c_of_type_Int != parambhbm.jdField_c_of_type_Int) || (!String.valueOf(this.e).equals(String.valueOf(parambhbm.e))) || (!String.valueOf(this.f).equals(String.valueOf(parambhbm.f))) || (!String.valueOf(this.g).equals(String.valueOf(this.g))) || (this.jdField_b_of_type_Long != parambhbm.jdField_b_of_type_Long) || (this.jdField_a_of_type_Long != parambhbm.jdField_a_of_type_Long) || (!this.jdField_a_of_type_JavaUtilArrayList.equals(parambhbm.jdField_a_of_type_JavaUtilArrayList))) {
+      return false;
+    }
+    return true;
   }
 }
 

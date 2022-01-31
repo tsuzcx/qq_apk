@@ -1,11 +1,18 @@
-public class lkn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.chatroom.ChatRoomInfo;
+
+public final class lkn
+  implements Parcelable.Creator<ChatRoomInfo>
 {
-  public int a;
-  public byte[] a;
-  
-  public lkn(lkm paramlkm)
+  public ChatRoomInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
+    return new ChatRoomInfo(paramParcel);
+  }
+  
+  public ChatRoomInfo[] a(int paramInt)
+  {
+    return new ChatRoomInfo[paramInt];
   }
 }
 

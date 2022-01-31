@@ -1,39 +1,25 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abic
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public abic(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public abic(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramView.getId())
+    if (paramIntent != null)
     {
-    default: 
-      return;
-    case 2131367016: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      return;
-    case 2131367013: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      return;
-    case 2131367017: 
-      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(paramView);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      }
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
+      }
     }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2130771997, 2130771990);
   }
 }
 

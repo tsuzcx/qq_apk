@@ -1,6 +1,25 @@
-public abstract interface aiss
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.qphone.base.util.QLog;
+
+class aiss
+  implements aist
 {
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  aiss(aisr paramaisr) {}
+  
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  {
+    if ((aisr.a(this.a) != null) && (paramApolloActionPush != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((aisr.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == aisr.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(aisr.a(this.a).jdField_a_of_type_JavaLangString)) && (aisr.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
+    }
+  }
 }
 
 

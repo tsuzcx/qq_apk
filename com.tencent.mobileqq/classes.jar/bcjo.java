@@ -1,9 +1,15 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.widget.BubbleVideoView;
+import com.tencent.mobileqq.widget.AdaptiveLayout;
 
-public abstract interface bcjo
+public class bcjo
 {
-  public abstract void a(BubbleVideoView paramBubbleVideoView, Canvas paramCanvas);
+  public int a;
+  public int b;
+  
+  public bcjo(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

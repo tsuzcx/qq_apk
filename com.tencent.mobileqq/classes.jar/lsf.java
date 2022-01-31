@@ -1,114 +1,292 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.texture.YUVTexture;
-import java.util.List;
+import android.graphics.Rect;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import com.tencent.av.opengl.ui.GLRootView;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class lsf
-  extends YUVTexture
+  extends lsc
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static String b;
-  private static boolean e;
-  private static boolean f;
-  public static int n = 480;
-  private static int o = 1;
-  private lrz jdField_a_of_type_Lrz;
-  private mee jdField_a_of_type_Mee;
+  protected TextureRender a;
+  private ArrayList<lsc> jdField_a_of_type_JavaUtilArrayList;
+  private Comparator<lsc> jdField_a_of_type_JavaUtilComparator = new lsh(this);
+  protected TextureRender b;
+  private lsc jdField_b_of_type_Lsc;
+  private lse jdField_b_of_type_Lse = new lsg(this);
+  protected boolean b;
   
-  public lsf(Context paramContext, mee parammee, String paramString, long paramLong)
+  public lsf(Context paramContext)
   {
-    super(paramContext, paramString, paramLong);
-    this.jdField_a_of_type_Mee = parammee;
+    super(paramContext);
   }
   
-  private static void a(Context paramContext)
+  public lsc a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      throw new ArrayIndexOutOfBoundsException(paramInt);
+    }
+    return (lsc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public void a(lqo paramlqo)
+  {
+    paramlqo.a(b() / 2, c() / 2, 0.0F);
+    c(paramlqo);
+    paramlqo.a(-b() / 2, -c() / 2, 0.0F);
+    e(paramlqo);
+  }
+  
+  public void a(lqo paramlqo, lsc paramlsc)
+  {
+    if (!paramlsc.a()) {
+      return;
+    }
+    int i = -this.e;
+    int j = -this.d;
+    paramlqo.a(i, j);
+    paramlsc.a(paramlqo);
+    paramlqo.a(-i, -j);
+  }
+  
+  public void a(lsc paramlsc)
+  {
+    if (paramlsc.jdField_a_of_type_Lsc != null) {
+      throw new IllegalStateException();
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramlsc);
+    paramlsc.jdField_a_of_type_Lsc = this;
+    paramlsc.a(this.jdField_b_of_type_Lse);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
+      paramlsc.b(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
+    }
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, lsc paramlsc, boolean paramBoolean)
+  {
+    Rect localRect = paramlsc.jdField_a_of_type_AndroidGraphicsRect;
+    if ((!paramBoolean) || (localRect.contains(paramInt1, paramInt2)))
+    {
+      if (paramlsc.b(paramMotionEvent)) {}
+      while ((this.jdField_a_of_type_Lsd != null) && (this.jdField_a_of_type_Lsd.a(paramlsc, paramMotionEvent))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(lsc paramlsc)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (!this.jdField_a_of_type_JavaUtilArrayList.remove(paramlsc)) {
+      return false;
+    }
+    if (this.jdField_b_of_type_Lsc == paramlsc)
+    {
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+      b(localMotionEvent);
+      localMotionEvent.recycle();
+    }
+    paramlsc.d();
+    paramlsc.jdField_a_of_type_Lsc = null;
+    paramlsc.a(null);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    return true;
+  }
+  
+  protected void b(GLRootView paramGLRootView)
+  {
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = paramGLRootView;
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).b(paramGLRootView);
+      i += 1;
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  protected boolean b(MotionEvent paramMotionEvent)
+  {
+    int j = (int)paramMotionEvent.getX();
+    int k = (int)paramMotionEvent.getY();
+    int i = paramMotionEvent.getAction();
+    Object localObject;
+    if (this.jdField_b_of_type_Lsc != null)
+    {
+      if (i == 0)
+      {
+        localObject = MotionEvent.obtain(paramMotionEvent);
+        ((MotionEvent)localObject).setAction(3);
+        a((MotionEvent)localObject, j, k, this.jdField_b_of_type_Lsc, false);
+        this.jdField_b_of_type_Lsc = null;
+      }
+    }
+    else
+    {
+      if (i != 0) {
+        break label151;
+      }
+      i = e() - 1;
+      if (i < 0) {
+        break label151;
+      }
+      localObject = a(i);
+      if (((lsc)localObject).a() == 0) {
+        break label129;
+      }
+    }
+    label129:
+    while (!a(paramMotionEvent, j, k, (lsc)localObject, true))
+    {
+      i -= 1;
+      break;
+      a(paramMotionEvent, j, k, this.jdField_b_of_type_Lsc, false);
+      if ((i == 3) || (i == 1)) {
+        this.jdField_b_of_type_Lsc = null;
+      }
+      return true;
+    }
+    this.jdField_b_of_type_Lsc = ((lsc)localObject);
+    return true;
+    label151:
+    return super.b(paramMotionEvent);
+  }
+  
+  protected void d()
   {
     int i = 0;
-    if (e) {}
+    int j = e();
+    while (i < j)
+    {
+      a(i).d();
+      i += 1;
+    }
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = null;
+  }
+  
+  protected void d(lqo paramlqo) {}
+  
+  protected boolean d()
+  {
+    return false;
+  }
+  
+  public int e()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  protected void e()
+  {
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).e();
+      i += 1;
+    }
+  }
+  
+  protected void e(lqo paramlqo)
+  {
+    if ((this.jdField_b_of_type_Boolean) || (d())) {
+      d(paramlqo);
+    }
     for (;;)
     {
       return;
-      e = true;
-      if (jdField_a_of_type_JavaLangString == null) {
-        jdField_a_of_type_JavaLangString = bbct.c();
-      }
-      paramContext = lpk.a();
-      f = false;
-      if ((paramContext == null) || (paramContext.jdField_a_of_type_Int != 1)) {
-        continue;
-      }
-      n = paramContext.b;
-      o = paramContext.c;
-      jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
-      try
+      int i = 0;
+      int j = e();
+      while (i < j)
       {
-        if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))) {
-          continue;
-        }
-        paramContext = jdField_b_of_type_JavaLangString.split("\\.");
-        String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
-        while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
-        {
-          if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
-          {
-            f = true;
-            return;
-          }
-          if (Integer.valueOf(arrayOfString[i]).intValue() < Integer.valueOf(paramContext[i]).intValue())
-          {
-            f = false;
-            return;
-          }
-          if (i == 2) {
-            f = true;
-          }
-          i += 1;
-        }
-        return;
+        a(paramlqo, a(i));
+        i += 1;
       }
-      catch (Exception paramContext) {}
     }
   }
   
-  public lru[] a(lqt paramlqt)
+  protected void f(int paramInt)
   {
-    if (a() > b())
+    int i = 0;
+    int j = e();
+    while (i < j)
     {
-      i = a();
-      a(this.jdField_a_of_type_AndroidContentContext);
-      if ((!f) || (getImgWidth() > n) || (i <= ((lqu)paramlqt).c() / 3 * 2) || (getImgWidth() >= i) || (getImgWidth() == 0) || (this.jdField_a_of_type_Mee.a().size() != 0) || (VideoController.a().a().d != 2)) {
-        break label211;
+      lsc locallsc = a(i);
+      if (locallsc.a() == 0) {
+        locallsc.f(paramInt);
       }
-    }
-    label211:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        if (this.jdField_a_of_type_Lrz == null) {
-          this.jdField_a_of_type_Lrz = lrz.a();
-        }
-        super.a(paramlqt);
-        if (super.a() != null) {
-          this.jdField_a_of_type_Lrz.a(paramlqt, getImgWidth(), getImgHeight(), ((lqu)paramlqt).c(), ((lqu)paramlqt).d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, o);
-        }
-        return lrs.a(0).a();
-        i = b();
-        break;
-      }
-      return super.a(paramlqt);
+      i += 1;
     }
   }
   
-  public void b()
+  public void h()
   {
-    super.b();
-    if (this.jdField_a_of_type_Lrz != null) {
-      this.jdField_a_of_type_Lrz.a();
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    e = false;
+  }
+  
+  public void i()
+  {
+    int j = e();
+    int i = 0;
+    while (i < j)
+    {
+      lsc locallsc = (lsc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (this.jdField_b_of_type_Lsc == locallsc)
+      {
+        long l = SystemClock.uptimeMillis();
+        MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        b(localMotionEvent);
+        localMotionEvent.recycle();
+      }
+      locallsc.d();
+      locallsc.jdField_a_of_type_Lsc = null;
+      locallsc.a(null);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void j()
+  {
+    f();
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).f();
+      i += 1;
+    }
+  }
+  
+  public void k()
+  {
+    g();
+    int i = 0;
+    int j = e();
+    while (i < j)
+    {
+      a(i).g();
+      i += 1;
+    }
   }
 }
 

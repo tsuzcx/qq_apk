@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcpq;
+import bcqf;
 
 class LoginInfoActivity$5
   implements Runnable
@@ -21,7 +21,7 @@ class LoginInfoActivity$5
             LoginInfoActivity.a(this.this$0).cancel();
             LoginInfoActivity.a(this.this$0, null);
           }
-          LoginInfoActivity.a(this.this$0, new bcpq(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+          LoginInfoActivity.a(this.this$0, new bcqf(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
           int i = this.a;
           switch (i)
           {
@@ -32,14 +32,14 @@ class LoginInfoActivity$5
       {
         localThrowable.printStackTrace();
         continue;
-        LoginInfoActivity.a(this.this$0).c(2131694930);
+        LoginInfoActivity.a(this.this$0).c(2131694931);
         continue;
       }
       if ((LoginInfoActivity.a(this.this$0) != null) && (!LoginInfoActivity.a(this.this$0).isShowing())) {
         LoginInfoActivity.a(this.this$0).show();
       }
       return;
-      LoginInfoActivity.a(this.this$0).c(2131718668);
+      LoginInfoActivity.a(this.this$0).c(2131718679);
     }
   }
 }

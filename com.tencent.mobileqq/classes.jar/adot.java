@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class adot
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  adot(ador paramador) {}
+  adot(adop paramadop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (!bbfj.d(this.a.a))
+    {
+      bcql.a(this.a.a, ajya.a(2131703235), 2000).a();
+      return;
+    }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+    paramView.putExtra("hide_more_button", true);
+    this.a.a.startActivity(paramView);
+  }
 }
 
 

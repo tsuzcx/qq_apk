@@ -1,27 +1,23 @@
-import com.tencent.image.AbstractGifImage;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.widget.AbsListView;
 
 public class aara
-  implements bfob
+  implements Animation.AnimationListener
 {
-  public aara(ChatHistory paramChatHistory) {}
+  public aara(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.m = paramInt;
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

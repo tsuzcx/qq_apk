@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeva;
-import akhq;
+import aeuy;
+import akhp;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class TroopChatPie$InputOnGlobalLayoutListener$1
   implements Runnable
 {
-  public TroopChatPie$InputOnGlobalLayoutListener$1(aeva paramaeva) {}
+  public TroopChatPie$InputOnGlobalLayoutListener$1(aeuy paramaeuy) {}
   
   public void run()
   {
     String str1 = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((akhq)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((akhp)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
     Object localObject = localTroopBatchAddFriendMgr.a(str1);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))

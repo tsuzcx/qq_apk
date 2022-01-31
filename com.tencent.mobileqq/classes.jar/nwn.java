@@ -1,14 +1,35 @@
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
 public class nwn
-  implements pzy
+  implements qzf
 {
   public nwn(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public void a(int paramInt)
   {
-    this.a.a(paramInt, paramString, paramBaseResData);
+    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
+      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      shu.a(false);
+    }
+    if (paramInt2 == 1) {
+      this.a.getIntent().putExtra("channel_from", 7);
+    }
+    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
+    {
+      this.a.a().f();
+      return;
+    }
+    this.a.a(paramInt2, 256, null, true);
   }
 }
 

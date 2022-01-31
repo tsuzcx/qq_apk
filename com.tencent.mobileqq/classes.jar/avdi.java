@@ -1,324 +1,163 @@
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class avdi
 {
-  public static avdg a(Intent paramIntent)
+  public String a;
+  public HashMap<String, String> a = new HashMap();
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public static boolean a()
   {
-    String[] arrayOfString1 = null;
-    int j = 0;
-    if ((paramIntent == null) || (!paramIntent.hasExtra("q_qssistant_str_name"))) {
-      return null;
-    }
-    avdg localavdg = avdh.a(paramIntent.getStringExtra("q_qssistant_openaction"));
-    localavdg.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("q_qssistant_str_name");
-    localavdg.b = paramIntent.getStringExtra("q_qssistant_str_scheme");
-    localavdg.e = paramIntent.getStringExtra("q_qssistant_str_package");
-    localavdg.c = paramIntent.getStringExtra("q_qssistant_str_server");
-    localavdg.d = paramIntent.getStringExtra("q_qssistant_str_action");
-    localavdg.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("q_qssistant_openenable", false);
-    localavdg.g = paramIntent.getStringExtra("q_qssistant_jump_host");
-    if (paramIntent.hasExtra("q_qssistant_extra_field_key"))
-    {
-      String[] arrayOfString2 = paramIntent.getStringArrayExtra("q_qssistant_extra_field_key");
-      int i = j;
-      if (paramIntent.hasExtra("q_qssistant_extra_field_value"))
-      {
-        arrayOfString1 = paramIntent.getStringArrayExtra("q_qssistant_extra_field_value");
-        i = j;
-      }
-      if (i < arrayOfString2.length)
-      {
-        HashMap localHashMap = localavdg.jdField_a_of_type_JavaUtilHashMap;
-        String str = arrayOfString2[i];
-        if ((arrayOfString1 == null) || (arrayOfString1.length <= i)) {}
-        for (paramIntent = "";; paramIntent = arrayOfString1[i])
-        {
-          localHashMap.put(str, paramIntent);
-          i += 1;
-          break;
-        }
-      }
-    }
-    return localavdg;
+    return false;
   }
   
-  public static avdg a(JSONObject paramJSONObject)
+  protected void a(bbeg parambbeg, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  
+  protected void a(QQAppInterface paramQQAppInterface, Context paramContext) {}
+  
+  public boolean a(BaseActivity paramBaseActivity)
   {
-    int i = 0;
-    if ((paramJSONObject == null) || (!paramJSONObject.has("str_name"))) {
-      return null;
-    }
-    Object localObject = paramJSONObject.optString("str_name", "");
-    String str1 = paramJSONObject.optString("str_scheme", "");
-    String str2 = paramJSONObject.optString("str_server", "");
-    String str3 = paramJSONObject.optString("str_action", "");
-    String str4 = paramJSONObject.optString("str_package", "");
-    boolean bool = paramJSONObject.optBoolean("openenable", false);
-    String str5 = paramJSONObject.optString("openaction", "");
-    avdg localavdg = avdh.a(str5);
-    localavdg.jdField_a_of_type_JavaLangString = ((String)localObject);
-    if (!bbjw.a(str1)) {
-      localavdg.b = str1;
-    }
-    if (!bbjw.a(str2)) {
-      localavdg.c = str2;
-    }
-    if (!bbjw.a(str3)) {
-      localavdg.d = str3;
-    }
-    if (!bbjw.a(str4)) {
-      localavdg.e = str4;
-    }
-    localavdg.jdField_a_of_type_Boolean = bool;
-    if (!bbjw.a(str5)) {
-      localavdg.f = str5;
-    }
-    if (paramJSONObject.has("extra_field_key"))
+    return a(paramBaseActivity, a());
+  }
+  
+  public boolean a(BaseActivity paramBaseActivity, boolean paramBoolean)
+  {
+    if (paramBaseActivity == null)
     {
-      localObject = paramJSONObject.optJSONArray("extra_field_key");
-      if (paramJSONObject.has("extra_field_value")) {
-        paramJSONObject = paramJSONObject.optJSONArray("extra_field_value");
-      }
+      avdk.a(this.g, this.f, 100);
+      return false;
+    }
+    Intent localIntent;
+    if (paramBoolean) {
+      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
     }
     for (;;)
     {
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-        if (i < ((JSONArray)localObject).length())
-        {
-          str2 = ((JSONArray)localObject).optString(i, null);
-          if (!bbjw.a(str2)) {
-            if ((paramJSONObject == null) || (paramJSONObject.length() <= i)) {
-              break label288;
-            }
-          }
-        }
-      }
-      label288:
-      for (str1 = paramJSONObject.optString(i, null);; str1 = null)
-      {
-        localavdg.jdField_a_of_type_JavaUtilHashMap.put(str2, str1);
-        i += 1;
-        break;
-        return localavdg;
-      }
-      paramJSONObject = null;
-      continue;
-      paramJSONObject = null;
-      localObject = null;
+      localIntent.setFlags(67108864);
+      avdk.a(this, paramBoolean, localIntent);
+      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant QAssistantConfigItem.Jump item_server = " + this.c + "|" + paramBaseActivity.getClass().toString());
+      paramBaseActivity.startActivity(localIntent);
+      return true;
+      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
+      localIntent.putExtra("tab_index", MainFragment.b);
+      localIntent.putExtra("fragment_id", 1);
     }
   }
   
-  public static String a(QQAppInterface paramQQAppInterface)
+  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("MOBILEQQ_QASSISTANT_CONFIG", 4).getString("QASSISTANT_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), "");
-  }
-  
-  public static List<avdg> a(String paramString, List<String> paramList)
-  {
-    int j = 0;
-    Object localObject1;
-    if (bbjw.a(paramString))
+    if ((paramQQAppInterface == null) || (paramContext == null))
     {
-      localObject1 = null;
-      return localObject1;
+      avdk.a(this.g, this.f, 100);
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigUtils", 2, "parseJson  strJson = " + paramString);
-    }
-    ArrayList localArrayList = new ArrayList();
-    label230:
-    for (;;)
+    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump start");
+    a(paramQQAppInterface, paramContext);
+    if (!b(paramQQAppInterface, paramContext))
     {
-      try
+      avdk.a(this.g, this.f, 3);
+      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant checkIsSupportJump is false");
+      return false;
+    }
+    if ((bbkk.a(this.b)) && (bbkk.a(this.c)))
+    {
+      avdk.a(this.g, this.f, 100);
+      return false;
+    }
+    bbeg localbbeg2;
+    bbeg localbbeg1;
+    if (!bbkk.a(this.b))
+    {
+      localbbeg2 = bbex.a(paramQQAppInterface, paramContext, this.b);
+      localbbeg1 = localbbeg2;
+      if (localbbeg2 != null)
       {
-        Object localObject2 = new JSONObject(paramString);
-        if (((JSONObject)localObject2).has("qassistantconfigs"))
+        localbbeg1 = localbbeg2;
+        if (!bbkk.a(this.e))
         {
-          localObject1 = ((JSONObject)localObject2).getJSONArray("qassistantconfigs");
-          i = 0;
-          if (i < ((JSONArray)localObject1).length())
+          localbbeg1 = localbbeg2;
+          if (!bbkk.a(this.e))
           {
-            avdg localavdg = a(((JSONArray)localObject1).getJSONObject(i));
-            if (localavdg == null) {
-              break label230;
-            }
-            localArrayList.add(localavdg);
-            break label230;
+            localbbeg2.b(this.e);
+            localbbeg1 = localbbeg2;
           }
         }
-        localObject1 = localArrayList;
-        if (!((JSONObject)localObject2).has("qassistantsupporthost")) {
-          break;
-        }
-        localObject1 = localArrayList;
-        if (paramList == null) {
-          break;
-        }
-        paramList.clear();
-        localObject2 = ((JSONObject)localObject2).getJSONArray("qassistantsupporthost");
-        int i = j;
-        localObject1 = localArrayList;
-        if (i >= ((JSONArray)localObject2).length()) {
-          break;
-        }
-        paramList.add(((JSONArray)localObject2).getString(i));
-        i += 1;
-        continue;
-        i += 1;
       }
-      catch (JSONException paramList)
+    }
+    while (localbbeg1 == null)
+    {
+      avdk.a(this.g, this.f, 102);
+      return false;
+      localbbeg2 = new bbeg(paramQQAppInterface, paramContext);
+      localbbeg2.b = this.c;
+      if ((!bbkk.a(this.d)) && (!bbkk.a(this.d))) {
+        localbbeg2.c = this.d;
+      }
+      localbbeg1 = localbbeg2;
+      if (!this.a.isEmpty())
       {
-        paramList.printStackTrace();
-        QLog.e("QAssistantConfigUtils", 2, "parseJson has exception strJson = " + paramString, paramList);
-        return localArrayList;
+        localbbeg2.a(this.a);
+        localbbeg1 = localbbeg2;
       }
+    }
+    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump ready Jump server = " + this.c);
+    a(localbbeg1, paramQQAppInterface, paramContext);
+    if (localbbeg1.c()) {
+      avdk.a(this.g, this.f, 0);
+    }
+    for (;;)
+    {
+      return true;
+      avdk.a(this.g, this.f, 103);
     }
   }
   
-  public static void a(avdg paramavdg, boolean paramBoolean, Intent paramIntent)
+  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramavdg == null) || (paramIntent == null)) {
-      return;
-    }
-    paramIntent.putExtra("q_qssistant_debug_mode", paramBoolean);
-    if (paramavdg.jdField_a_of_type_JavaLangString == null)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.f != null)
     {
-      localObject = "";
-      label28:
-      paramIntent.putExtra("q_qssistant_str_name", (String)localObject);
-      if (paramavdg.b != null) {
-        break label290;
+      if (!this.f.equalsIgnoreCase("ecchat")) {
+        break label79;
       }
-      localObject = "";
-      label48:
-      paramIntent.putExtra("q_qssistant_str_scheme", (String)localObject);
-      if (paramavdg.e != null) {
-        break label299;
+      int i = bbkb.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
+      paramQQAppInterface = (aoeu)paramQQAppInterface.getManager(264);
+      if ((i != 1) || (!paramQQAppInterface.b())) {
+        break label73;
       }
-      localObject = "";
-      label68:
-      paramIntent.putExtra("q_qssistant_str_package", (String)localObject);
-      if (paramavdg.c != null) {
-        break label308;
-      }
-      localObject = "";
-      label88:
-      paramIntent.putExtra("q_qssistant_str_server", (String)localObject);
-      if (paramavdg.d != null) {
-        break label317;
-      }
-      localObject = "";
-      label108:
-      paramIntent.putExtra("q_qssistant_str_action", (String)localObject);
-      paramIntent.putExtra("q_qssistant_openenable", paramavdg.jdField_a_of_type_Boolean);
-      if (paramavdg.f != null) {
-        break label326;
-      }
-      localObject = "";
-      label139:
-      paramIntent.putExtra("q_qssistant_openaction", (String)localObject);
-      if (paramavdg.g != null) {
-        break label335;
-      }
+      bool1 = true;
     }
-    String[] arrayOfString1;
-    String[] arrayOfString2;
-    label290:
-    label299:
-    label308:
-    label317:
-    label326:
-    label335:
-    for (Object localObject = "";; localObject = paramavdg.g)
+    label73:
+    label79:
+    do
     {
-      paramIntent.putExtra("q_qssistant_jump_host", (String)localObject);
-      int i = paramavdg.jdField_a_of_type_JavaUtilHashMap.size();
-      if (i <= 0) {
-        break;
-      }
-      arrayOfString1 = new String[i];
-      arrayOfString2 = new String[i];
-      Iterator localIterator = paramavdg.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      i = 0;
-      while (localIterator.hasNext())
+      do
       {
-        localObject = (Map.Entry)localIterator.next();
-        paramavdg = (String)((Map.Entry)localObject).getKey();
-        localObject = (String)((Map.Entry)localObject).getValue();
-        arrayOfString1[i] = paramavdg;
-        paramavdg = (avdg)localObject;
-        if (localObject == null) {
-          paramavdg = "";
+        for (;;)
+        {
+          return bool1;
+          bool1 = false;
         }
-        arrayOfString2[i] = paramavdg;
-        i += 1;
-      }
-      localObject = paramavdg.jdField_a_of_type_JavaLangString;
-      break label28;
-      localObject = paramavdg.b;
-      break label48;
-      localObject = paramavdg.e;
-      break label68;
-      localObject = paramavdg.c;
-      break label88;
-      localObject = paramavdg.d;
-      break label108;
-      localObject = paramavdg.f;
-      break label139;
-    }
-    paramIntent.putExtra("q_qssistant_extra_field_key", arrayOfString1);
-    paramIntent.putExtra("q_qssistant_extra_field_value", arrayOfString2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ_QASSISTANT_CONFIG", 4).edit();
-    localEditor.putString("QASSISTANT_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), paramString);
-    localEditor.apply();
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigUtils", 2, "reportQAssistantJumpMonitor host: " + paramString1 + " openAction: " + paramString2 + " result: " + paramInt);
-    }
-    HashMap localHashMap = new HashMap();
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    localHashMap.put("host", str);
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    localHashMap.put("openJumpAction", paramString1);
-    localHashMap.put("result", paramInt + "");
-    paramString1 = axrl.a(BaseApplication.getContext());
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramString1.a(null, "qAudioAssistantJumpMonitor", bool, 0L, 0L, localHashMap, null);
-      return;
-    }
+        bool1 = bool2;
+      } while (!this.f.equalsIgnoreCase("confessmsg"));
+      bool1 = bool2;
+    } while (((amnn)paramQQAppInterface.getManager(269)).a() != null);
+    return false;
   }
 }
 

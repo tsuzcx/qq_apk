@@ -1,20 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 class wlv
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public wlv(wlt paramwlt, View paramView)
-  {
-    super(paramView);
-  }
+  wlv(wlu paramwlu) {}
   
-  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  public void onClick(View paramView)
   {
-    if ((this.itemView instanceof SubScribeDraftItemView)) {
-      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
+    if ((!xen.a("SUB_ENTER_FLOAT_MODE")) && (wlu.a(this.a) != null)) {
+      wlu.a(this.a).a();
     }
   }
 }

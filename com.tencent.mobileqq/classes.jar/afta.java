@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
-
-public class afta
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface afta
 {
-  public afta(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
-  }
+  public abstract void a(int paramInt);
 }
 
 

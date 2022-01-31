@@ -1,68 +1,36 @@
-import android.app.Activity;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
 
-public class obs
+class obs
+  implements Handler.Callback
 {
-  @Nullable
-  private obt a;
+  obs(obq paramobq) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-  }
-  
-  public void a(Activity paramActivity, ListView paramListView)
-  {
-    if ((oaw.a().a() == 1) && (oaw.c()))
+    switch (paramMessage.what)
     {
-      str = oaw.a().a();
-      i = oaw.a().b();
-      if (i != 1) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      int i;
-      return;
-      if (apvb.a(str))
+    default: 
+      return false;
+    case 1: 
+      if (System.currentTimeMillis() - obq.a(this.a) > 1500L)
       {
-        this.a = new obt(paramActivity, paramListView, str);
-        this.a.a(i);
-        paramActivity = oaw.a().a();
-        if (paramActivity != null) {
-          nzq.b(paramActivity, true, "no error");
-        }
-        oaw.a().a = this;
+        obq.a(this.a, false);
+        QLog.d("KandianAdPandent", 2, "time up do not update volume");
       }
-      for (;;)
+      if (obq.b(this.a))
       {
-        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + oaw.a().d());
-        oaw.a().a();
-        return;
-        oaw.a().a(3);
-        paramActivity = oaw.a().a();
-        if (paramActivity != null) {
-          nzq.b(paramActivity, false, "apng not exit");
-        }
+        obq.a(this.a).sendEmptyMessageDelayed(1, 300L);
+        this.a.d();
+        return false;
       }
+      obq.a(this.a).removeMessages(1);
+      return false;
     }
-    QLog.i("KandianAdPandentMask", 2, "status: " + oaw.a().a() + " Aladdin: " + oaw.c());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a != null) {
-      this.a.b(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (obt.a(this.a));
+    obq.a(this.a);
+    return false;
   }
 }
 

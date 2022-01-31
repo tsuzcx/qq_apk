@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import ajyc;
+import ajya;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -24,10 +24,10 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bbjn;
-import bcpw;
-import bekc;
-import bekd;
+import bbkb;
+import bcql;
+import bekt;
+import beku;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -126,7 +126,7 @@ public class AppBrandLaunchManager
   private boolean mMiniAppUsed;
   private ConcurrentHashMap<String, String> mPreloadingTask = new ConcurrentHashMap();
   private int mProcessGameMaxCount;
-  private int mProcessMaxCount = bbjn.a(this.mContext, 6);
+  private int mProcessMaxCount = bbkb.a(this.mContext, 6);
   private int mProcessPreloadCount;
   private LruCache<String, AppBrandLaunchManager.MiniAppSubProcessorInfo> mProcessStack;
   private int mStartTimeInterval = 1500;
@@ -186,14 +186,14 @@ public class AppBrandLaunchManager
       }
       label253:
       subProcessorInfoMap.put(sInternalProcessInfo.processName, sInternalProcessInfo);
-      this.mProcessPreloadCount = bbjn.c(this.mContext, 2);
+      this.mProcessPreloadCount = bbkb.c(this.mContext, 2);
       if (this.mProcessPreloadCount < 0) {
         this.mProcessPreloadCount = 2;
       }
       if (this.mProcessPreloadCount > this.mProcessMaxCount) {
         this.mProcessPreloadCount = this.mProcessMaxCount;
       }
-      this.mProcessGameMaxCount = bbjn.b(this.mContext, 3);
+      this.mProcessGameMaxCount = bbkb.b(this.mContext, 3);
       if (this.mProcessGameMaxCount <= 0) {
         this.mProcessGameMaxCount = 3;
       }
@@ -203,8 +203,8 @@ public class AppBrandLaunchManager
       if (this.mProcessGameMaxCount > subGameProcessorInfoMap.size()) {
         this.mProcessGameMaxCount = subGameProcessorInfoMap.size();
       }
-      this.appProcessRecycleTime = bbjn.b(this.mContext, "mini_app_process_recycle_time", 1800000);
-      this.gameProcessRecycleTime = bbjn.b(this.mContext, "mini_game_process_recycle_time", 900000);
+      this.appProcessRecycleTime = bbkb.b(this.mContext, "mini_app_process_recycle_time", 1800000);
+      this.gameProcessRecycleTime = bbkb.b(this.mContext, "mini_game_process_recycle_time", 900000);
     }
     try
     {
@@ -426,7 +426,7 @@ public class AppBrandLaunchManager
       i += 1;
       break;
     }
-    bcpw.a(this.mContext, ajyc.a(2131700594), 0).a();
+    bcql.a(this.mContext, ajya.a(2131700605), 0).a();
   }
   
   private void checkPreload()
@@ -504,7 +504,7 @@ public class AppBrandLaunchManager
     {
       paramMiniAppConfig.isSdkMode = true;
       paramResultReceiver = new Bundle();
-      paramResultReceiver.putString("tissuenativelibdir", bekd.a.getNativeLibDir());
+      paramResultReceiver.putString("tissuenativelibdir", beku.a.getNativeLibDir());
       MiniSdkLauncher.startMiniApp(paramActivity, paramMiniAppConfig, paramResultReceiver);
       return;
     }
@@ -646,10 +646,10 @@ public class AppBrandLaunchManager
     if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_flutter_enable", 1) == 1)
     {
       bool1 = true;
-      if (bekd.a == null) {
-        bekd.a = new TissueEnvImpl();
+      if (beku.a == null) {
+        beku.a = new TissueEnvImpl();
       }
-      if ((TextUtils.isEmpty(bekd.a.getNativeLibDir())) || (!bekd.a(bekd.a.getNativeLibDir()))) {
+      if ((TextUtils.isEmpty(beku.a.getNativeLibDir())) || (!beku.a(beku.a.getNativeLibDir()))) {
         break label115;
       }
     }

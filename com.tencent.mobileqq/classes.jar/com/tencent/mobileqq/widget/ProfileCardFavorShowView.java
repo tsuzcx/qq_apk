@@ -64,9 +64,9 @@ public class ProfileCardFavorShowView
   protected void a()
   {
     LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131375501));
-    this.b = ((ViewGroup)findViewById(2131364557));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377183));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131375503));
+    this.b = ((ViewGroup)findViewById(2131364556));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377185));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367815));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371983));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166854));

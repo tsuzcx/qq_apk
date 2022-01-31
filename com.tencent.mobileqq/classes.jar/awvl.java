@@ -2,24 +2,24 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Comparator;
 
 class awvl
-  implements Comparator<awoc>
+  implements Comparator<awoe>
 {
   awvl(awvk paramawvk) {}
   
-  public int a(awoc paramawoc1, awoc paramawoc2)
+  public int a(awoe paramawoe1, awoe paramawoe2)
   {
     int i = -1;
-    paramawoc1 = (awpq)paramawoc1;
-    paramawoc2 = (awpq)paramawoc2;
-    ajxn localajxn = (ajxn)this.a.a.getManager(51);
-    boolean bool1 = localajxn.b((String)paramawoc1.a());
-    boolean bool2 = localajxn.b((String)paramawoc2.a());
+    paramawoe1 = (awps)paramawoe1;
+    paramawoe2 = (awps)paramawoe2;
+    ajxl localajxl = (ajxl)this.a.a.getManager(51);
+    boolean bool1 = localajxl.b((String)paramawoe1.a());
+    boolean bool2 = localajxl.b((String)paramawoe2.a());
     if ((!bool1) && (!bool2))
     {
-      bool1 = localajxn.d((String)paramawoc1.a());
-      bool2 = localajxn.d((String)paramawoc2.a());
+      bool1 = localajxl.d((String)paramawoe1.a());
+      bool2 = localajxl.d((String)paramawoe2.a());
       if ((!bool1) && (!bool2)) {
-        return paramawoc2.f() - paramawoc1.f();
+        return paramawoe2.f() - paramawoe1.f();
       }
       if (bool1 != bool2)
       {
@@ -28,7 +28,7 @@ class awvl
         }
         return 1;
       }
-      return paramawoc2.f() - paramawoc1.f();
+      return paramawoe2.f() - paramawoe1.f();
     }
     if (bool1 != bool2)
     {
@@ -39,7 +39,7 @@ class awvl
         i = 1;
       }
     }
-    return paramawoc2.f() - paramawoc1.f();
+    return paramawoe2.f() - paramawoe1.f();
   }
 }
 

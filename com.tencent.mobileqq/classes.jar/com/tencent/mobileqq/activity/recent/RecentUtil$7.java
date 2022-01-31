@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.text.TextUtils;
-import axqw;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
@@ -48,7 +48,7 @@ public final class RecentUtil$7
     if (this.jdField_a_of_type_Int == 1)
     {
       localObject = "0X8005C36";
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
       return;
     }
   }

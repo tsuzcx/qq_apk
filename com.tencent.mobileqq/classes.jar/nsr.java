@@ -1,22 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.qphone.base.util.QLog;
 
 class nsr
-  implements ViewBase.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   nsr(nsp paramnsp) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramViewBase.getEventAttachedData() == null) {
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    nsp.a(this.a).setTranslationY(-i);
+    paramValueAnimator = nsp.a(this.a).getLayoutParams();
+    paramValueAnimator.height = (nsp.a(this.a) - i);
+    QLog.d("IconTabController", 1, "hideWithAnimation: " + paramValueAnimator.height);
+    if (paramValueAnimator.height < 0)
+    {
+      actj.a("IconTabController", "", new IllegalStateException("hideWithAnimation" + paramValueAnimator.height));
+      paramValueAnimator.height = 0;
     }
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
-    paramViewBase.getNativeView().getContext().startActivity(localIntent);
+    nsp.a(this.a).setLayoutParams(paramValueAnimator);
+    nsp.a(this.a).setAlpha(paramValueAnimator.height / nsp.a(this.a));
   }
 }
 

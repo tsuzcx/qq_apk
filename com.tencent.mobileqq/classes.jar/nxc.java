@@ -1,55 +1,58 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
 public class nxc
-  implements CompoundButton.OnCheckedChangeListener
+  extends akdn
 {
   public nxc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, long paramLong)
   {
-    ReadInJoySettingActivity.c(this.a, paramBoolean);
-    int i;
-    label51:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      bcpw.a(this.a.getBaseContext(), 2, 2131718571, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131718570);
-      if (!paramBoolean) {
-        break label149;
-      }
-      i = 1;
-      bhvh.e(i);
-      bhvh.a(paramBoolean);
-      bhvh.a(true);
-      localQQAppInterface = this.a.a;
-      if (!paramBoolean) {
-        break label154;
-      }
-      paramCompoundButton = "0X8008236";
-      label80:
-      if (!paramBoolean) {
-        break label160;
-      }
-    }
-    label149:
-    label154:
-    label160:
-    for (String str = "0X8008236";; str = "0X8008235")
-    {
-      noo.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+    if (paramLong != 2171946401L) {
       return;
-      bcpw.a(this.a.getBaseContext(), 2, 2131718569, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131718573);
+    }
+    Object localObject = this.a;
+    ((ReadInJoySettingActivity)localObject).jdField_a_of_type_Int -= 1;
+    if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
+      this.a.jdField_a_of_type_Bcqf.dismiss();
+    }
+    boolean bool;
+    if (paramInt == this.a.b)
+    {
+      bool = ReadInJoySettingActivity.a(this.a);
+      if (!paramBoolean) {
+        break label202;
+      }
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (bool) {
+        break label168;
+      }
+      paramBoolean = true;
+      ((Switch)localObject).setChecked(paramBoolean);
+      if (!bool) {
+        break label173;
+      }
+      nol.a(null, "CliOper", "", "", "0X80067D5", "0X80067D5", 0, 0, "", "", "", onh.c(), false);
+      label147:
+      ReadInJoySettingActivity.a(this.a).a(bool);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      label168:
+      paramBoolean = false;
       break;
-      i = 0;
-      break label51;
-      paramCompoundButton = "0X8008235";
-      break label80;
+      label173:
+      nol.a(null, "CliOper", "", "", "0X800676D", "0X800676D", 0, 0, "", "", "", onh.c(), false);
+      break label147;
+      label202:
+      bcql.a(this.a.getApplicationContext(), 2131699664, 0).a();
+      this.a.c = true;
+      ReadInJoySettingActivity.a(this.a).setChecked(bool);
+      QLog.d("ReadInJoySettingActivity", 1, "handle setkandian recomm failed");
     }
   }
 }

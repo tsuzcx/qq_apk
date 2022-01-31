@@ -1,30 +1,22 @@
-public class alcv
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+
+public abstract interface alcv
 {
-  public int a;
-  public long a;
-  public long[] a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
+  public abstract void a();
   
-  public alcv(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = ((0.9D + paramDouble));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
-  }
+  public abstract void a(int paramInt);
   
-  public String toString()
-  {
-    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract void a(ArEffectConfig paramArEffectConfig);
+  
+  public abstract void b();
 }
 
 

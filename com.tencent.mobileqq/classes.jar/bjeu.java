@@ -1,464 +1,282 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.paster.PasterDataManager.1;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.util.Collection;
-import java.util.Iterator;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjeu
-  extends bjbe
-  implements IEventReceiver, tcc<tdt>, tfa
+  extends bjan
+  implements aysc
 {
-  public static AtomicBoolean a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected Handler a;
-  private bjey jdField_a_of_type_Bjey;
-  protected bjvo a;
-  public bkbs a;
-  protected bkfj a;
-  protected bkfp a;
-  protected Runnable a;
-  public CopyOnWriteArrayList<bkfi> a;
-  private tdq jdField_a_of_type_Tdq;
-  public tfb a;
-  public boolean a;
-  private boolean b;
+  public static boolean a;
+  private float jdField_a_of_type_Float;
+  private aysa jdField_a_of_type_Aysa;
+  private bjef jdField_a_of_type_Bjef;
+  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+  private File jdField_a_of_type_JavaIoFile;
+  private Class<? extends bjef> jdField_a_of_type_JavaLangClass;
   
-  static
+  private MusicItemInfo a()
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    MusicItemInfo localMusicItemInfo = new MusicItemInfo();
+    localMusicItemInfo.mMusicName = ajya.a(2131713258);
+    localMusicItemInfo.mType = 7;
+    return localMusicItemInfo;
   }
   
-  public bjeu()
+  private MusicItemInfo a(FlowMusic paramFlowMusic, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Tfb = null;
-    this.jdField_a_of_type_JavaLangRunnable = new PasterDataManager.1(this);
-    this.jdField_a_of_type_Bkbs = new bjev(this);
-  }
-  
-  private void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if ((paramString1 != null) && (this.jdField_a_of_type_Bkfj != null) && (!paramString1.equals(this.jdField_a_of_type_Bkfj.g))) {
-      this.jdField_a_of_type_Bkfj.g = paramString1;
-    }
-    if ((paramString2 != null) && (this.jdField_a_of_type_Bkfp != null) && (!paramString2.equals(this.jdField_a_of_type_Bkfp.f))) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((this.jdField_a_of_type_Bkfp != null) && (i != 0))
-      {
-        this.jdField_a_of_type_Bkfp.f = paramString2;
-        paramString1 = this.jdField_a_of_type_Bkfp.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString1.hasNext()) {
-          ((bkfq)paramString1.next()).jdField_b_of_type_JavaLangString = paramString2;
-        }
-        if (paramBoolean) {
-          this.jdField_a_of_type_Bjvo.a(this.jdField_a_of_type_Bkfp);
-        }
-      }
-      if (this.jdField_a_of_type_Bkfj != null)
-      {
-        if (i != 0)
-        {
-          this.jdField_a_of_type_Bkfj.f = paramString2;
-          paramString1 = this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilList.iterator();
-          while (paramString1.hasNext())
-          {
-            bkfm localbkfm = (bkfm)paramString1.next();
-            if (localbkfm.jdField_a_of_type_Boolean) {
-              localbkfm.l = paramString2;
-            }
-          }
-        }
-        paramString1 = this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString1.hasNext())
-        {
-          paramString2 = (bkfm)paramString1.next();
-          if ((paramString2.jdField_a_of_type_Int == 7) && (!this.jdField_a_of_type_Bkfj.g.equals(paramString2.i)) && (this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilMap != null)) {
-            a(this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Bkfj.g, paramString2);
-          }
-        }
-        if (paramBoolean) {
-          this.jdField_a_of_type_Bjvo.a(this.jdField_a_of_type_Bkfj);
-        }
-      }
-      return;
-    }
-  }
-  
-  private void a(Map<String, Map<String, bkfk>> paramMap, String paramString, bkfm parambkfm)
-  {
-    if (parambkfm.a() != null) {
-      parambkfm.a().c();
-    }
-    Map localMap = (Map)paramMap.get(parambkfm.h);
-    if (localMap != null)
-    {
-      paramMap = (bkfk)localMap.get(paramString);
-      if (paramMap != null) {
-        break label94;
-      }
-      paramMap = (bkfk)localMap.get("default");
-    }
-    label94:
+    boolean bool = true;
+    String str1 = paramFlowMusic.songName;
+    String str2 = paramFlowMusic.url;
+    String str3 = paramFlowMusic.singerName;
+    int i = paramFlowMusic.songId;
+    String str4 = paramFlowMusic.songMid;
+    int j = paramFlowMusic.tryBegin;
+    int k = paramFlowMusic.tryEnd;
+    int m = paramFlowMusic.duration;
+    if ((paramFlowMusic.playable == 1) && (!TextUtils.isEmpty(paramFlowMusic.url))) {}
     for (;;)
     {
-      if (paramMap != null)
-      {
-        parambkfm.g = paramMap.jdField_a_of_type_JavaLangString;
-        parambkfm.e = paramMap.jdField_b_of_type_JavaLangString;
-        parambkfm.f = paramMap.c;
+      paramFlowMusic = new MusicItemInfo(str1, str2, str3, i, str4, j, k, m, bool);
+      if ((TextUtils.isEmpty(paramFlowMusic.mUrl)) && (QLog.isColorLevel())) {
+        QLog.i("RecognitionManager", 2, "recognitionResultFromFlowMusic: invoked. info: recognitionItem.mUrl = " + paramFlowMusic.mUrl);
       }
-      return;
-    }
-  }
-  
-  private void a(tdt paramtdt)
-  {
-    if (paramtdt != null)
-    {
-      this.jdField_a_of_type_Bkfj.c = paramtdt.jdField_a_of_type_Int;
-      if (paramtdt.jdField_a_of_type_JavaLangString != null)
-      {
-        paramtdt = paramtdt.jdField_a_of_type_JavaLangString.split("\\|");
-        if ((paramtdt != null) && (paramtdt.length == 2))
-        {
-          this.jdField_a_of_type_Bkfj.h = paramtdt[0];
-          this.jdField_a_of_type_Bkfj.i = paramtdt[1];
-        }
-        paramtdt = this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramtdt.hasNext())
-        {
-          bkfm localbkfm = (bkfm)paramtdt.next();
-          if (localbkfm.jdField_a_of_type_Int == 6)
-          {
-            localbkfm.j = this.jdField_a_of_type_Bkfj.h;
-            localbkfm.k = this.jdField_a_of_type_Bkfj.i;
-            localbkfm.c = this.jdField_a_of_type_Bkfj.c;
-          }
-        }
+      paramFlowMusic.mRecognitionOffset = Float.valueOf(paramString).floatValue();
+      paramFlowMusic.musicStart = ((int)(paramFlowMusic.mRecognitionOffset * 1000.0F) + 500);
+      paramFlowMusic.musicEnd = (paramFlowMusic.musicStart + 10000);
+      paramFlowMusic.musicDuration = (paramFlowMusic.musicEnd + 10000);
+      if (QLog.isColorLevel()) {
+        QLog.i("RecognitionManager", 2, "recognitionResultFromFlowMusic: invoked. info: recognitionItem = " + paramFlowMusic);
       }
+      return paramFlowMusic;
+      bool = false;
     }
   }
   
-  private void a(teu paramteu, boolean paramBoolean)
+  private String a(JSONObject paramJSONObject)
   {
-    veg.b("PasterDataManager", "requestPoiList");
-    tev localtev = (tev)tdc.a(9);
-    teu localteu = paramteu;
-    if (paramteu == null) {
-      localteu = tev.a();
-    }
-    if (paramBoolean)
-    {
-      localtev.a(localteu, null, this);
-      return;
-    }
-    localtev.a(localteu, this.jdField_a_of_type_Tfb, this);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    a(null, paramBoolean);
-  }
-  
-  private static void b(bkfs parambkfs, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    parambkfs.jdField_b_of_type_JavaLangString = paramDoodleEmojiItem.name;
-    parambkfs.c = paramDoodleEmojiItem.icon;
-    parambkfs.d = paramDoodleEmojiItem.download_icon;
-    parambkfs.g = paramDoodleEmojiItem.getLocalEmojiFolderPath();
-    parambkfs.e = paramDoodleEmojiItem.download_wording;
-    parambkfs.jdField_a_of_type_Boolean = "1".equals(paramDoodleEmojiItem.random_position);
-    parambkfs.a(paramDoodleEmojiItem.config);
-    parambkfs.jdField_a_of_type_Int = paramDoodleEmojiItem.hide;
-    parambkfs.jdField_b_of_type_Int = paramDoodleEmojiItem.mask;
-  }
-  
-  private void e()
-  {
-    Object localObject = (bkbh)tdc.a(39);
-    ((bkbh)localObject).c();
-    String str;
-    if (this.jdField_a_of_type_Bkfp == null)
-    {
-      this.jdField_a_of_type_Bkfp = new bkfp("0");
-      this.jdField_a_of_type_Bkfp.jdField_b_of_type_Boolean = true;
-      str = bkbh.c((bkbh)localObject, "0");
-      localObject = bkbh.a((bkbh)localObject, "0");
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!bbev.g(this.jdField_a_of_type_AndroidContentContext))) {
-        break label113;
-      }
-      this.jdField_a_of_type_Bkfp.c = ((String)localObject);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkfp.a(str);
-      if (this.jdField_a_of_type_Bkfj == null) {
-        this.jdField_a_of_type_Bkfj = new bkfj("2001");
-      }
-      return;
-      label113:
-      this.jdField_a_of_type_Bkfp.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845696);
-    }
-  }
-  
-  public bjvo a()
-  {
-    return this.jdField_a_of_type_Bjvo;
-  }
-  
-  public bkfi a(String paramString)
-  {
-    return this.jdField_a_of_type_Bjvo.a(paramString);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Bkfp != null) {
-      return this.jdField_a_of_type_Bkfp.f;
-    }
-    return null;
-  }
-  
-  public List<bkfi> a()
-  {
-    return a(false);
-  }
-  
-  @NonNull
-  public List<bkfi> a(boolean paramBoolean)
-  {
-    for (;;)
-    {
-      DoodleEmojiItem localDoodleEmojiItem;
-      Object localObject3;
-      try
-      {
-        if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0)) {
-          break label752;
-        }
-        Object localObject1 = ((bkbh)tdc.a(39)).a();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-        localObject1 = ((Collection)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localDoodleEmojiItem = (DoodleEmojiItem)((Iterator)localObject1).next();
-        if (localDoodleEmojiItem.type == 1)
-        {
-          localObject3 = new bkfs(localDoodleEmojiItem.pack_id);
-          b((bkfs)localObject3, localDoodleEmojiItem);
-          if (("1".equals(((bkfs)localObject3).jdField_a_of_type_JavaLangString)) && (!bbev.g(this.jdField_a_of_type_AndroidContentContext))) {
-            ((bkfs)localObject3).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845553);
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject3);
-          continue;
-        }
-        if (localDoodleEmojiItem.type != 2) {
-          break label398;
-        }
-      }
-      finally {}
-      this.jdField_a_of_type_Bkfp.jdField_b_of_type_JavaLangString = localDoodleEmojiItem.name;
-      if ((!TextUtils.isEmpty(localDoodleEmojiItem.icon)) && (bbev.g(this.jdField_a_of_type_AndroidContentContext))) {
-        this.jdField_a_of_type_Bkfp.c = localDoodleEmojiItem.icon;
-      }
-      Object localObject4;
-      while (localDoodleEmojiItem.mItemList != null)
-      {
-        this.jdField_a_of_type_Bkfp.jdField_a_of_type_JavaUtilList = localDoodleEmojiItem.mItemList;
-        if (localDoodleEmojiItem.mItemList == null) {
-          break;
-        }
-        veg.b("PasterDataManager", "add doodle emoji location item name = " + this.jdField_a_of_type_Bkfp.f);
-        localObject3 = localDoodleEmojiItem.mItemList.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (bkfq)((Iterator)localObject3).next();
-          ((bkfq)localObject4).g = this.jdField_a_of_type_Bkfp.jdField_b_of_type_JavaLangString;
-          ((bkfq)localObject4).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bkfp.f;
-        }
-        this.jdField_a_of_type_Bkfp.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845696);
-      }
-      this.jdField_a_of_type_Bkfp.jdField_a_of_type_Boolean = "1".equals(localDoodleEmojiItem.random_position);
-      this.jdField_a_of_type_Bkfp.jdField_a_of_type_Int = localDoodleEmojiItem.hide;
-      this.jdField_a_of_type_Bkfp.jdField_b_of_type_Int = localDoodleEmojiItem.mask;
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_Bkfp);
-      continue;
-      label398:
-      if (localDoodleEmojiItem.type == 3)
-      {
-        if (this.jdField_a_of_type_Bkfj == null) {
-          this.jdField_a_of_type_Bkfj = new bkfj(localDoodleEmojiItem.pack_id);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Bkfj.jdField_b_of_type_JavaLangString = localDoodleEmojiItem.name;
-          this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilList = localDoodleEmojiItem.mInfoItemList;
-          this.jdField_a_of_type_Bkfj.a(localDoodleEmojiItem.config);
-          this.jdField_a_of_type_Bkfj.jdField_a_of_type_Int = localDoodleEmojiItem.hide;
-          this.jdField_a_of_type_Bkfj.g = "default";
-          this.jdField_a_of_type_Bkfj.c = -999;
-          this.jdField_a_of_type_Bkfj.h = "--";
-          this.jdField_a_of_type_Bkfj.i = "default";
-          if (this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilList == null) {
-            break;
-          }
-          localObject3 = this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilList.iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (bkfm)((Iterator)localObject3).next();
-            ((bkfm)localObject4).m = this.jdField_a_of_type_Bkfj.jdField_b_of_type_JavaLangString;
-            if (bkfn.a(((bkfm)localObject4).jdField_a_of_type_Int)) {
-              ((bkfm)localObject4).l = this.jdField_a_of_type_Bkfj.f;
-            }
-            if ((localDoodleEmojiItem.mCityRes != null) && (((bkfm)localObject4).jdField_a_of_type_Int == 7)) {
-              a(localDoodleEmojiItem.mCityRes, this.jdField_a_of_type_Bkfj.g, (bkfm)localObject4);
-            }
-            if (((bkfm)localObject4).jdField_a_of_type_Int == 6)
-            {
-              ((bkfm)localObject4).c = this.jdField_a_of_type_Bkfj.c;
-              ((bkfm)localObject4).j = this.jdField_a_of_type_Bkfj.h;
-              ((bkfm)localObject4).k = this.jdField_a_of_type_Bkfj.i;
-            }
-          }
-          this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaLangString = localDoodleEmojiItem.pack_id;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_Bkfj);
-        this.jdField_a_of_type_Bkfj.jdField_a_of_type_JavaUtilMap = localDoodleEmojiItem.mCityRes;
-      }
-    }
-    veg.b("PasterDataManager", "getDoodleFacePackages, size = " + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    label752:
-    if (paramBoolean)
-    {
-      StaticStickerProviderView.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    return localCopyOnWriteArrayList;
-  }
-  
-  public void a(int paramInt, tfb paramtfb, List<TroopBarPOI> paramList)
-  {
-    veg.b("PasterDataManager", "onPOIListRequestResult." + paramInt);
-    if ((paramInt == 0) && (paramtfb != null))
-    {
-      this.jdField_a_of_type_Tfb = paramtfb;
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramtfb = ((TroopBarPOI)paramList.get(0)).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("PasterDataManager", 2, "onPOIListRequestResult " + paramtfb);
-        }
-        String str = ShortVideoUtils.c(QQStoryContext.a().getCurrentAccountUin());
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext()) {
-          if (((TroopBarPOI)localIterator.next()).a().equals(str)) {
-            paramtfb = str;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      a(((TroopBarPOI)paramList.get(0)).jdField_b_of_type_JavaLangString, paramtfb, true);
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    a(null, paramString, false);
-  }
-  
-  public void a(teu paramteu)
-  {
-    this.jdField_a_of_type_Tdq = ((tdq)((tcd)tdc.a(20)).a(0));
-    Object localObject = this.jdField_a_of_type_Tdq.a();
+    String str = "0";
+    Object localObject = paramJSONObject.optJSONArray("results");
+    paramJSONObject = str;
     if (localObject != null)
     {
-      veg.b("PasterDataManager", "get weather from cache.");
-      a((tdt)localObject);
-      return;
+      localObject = ((JSONArray)localObject).optJSONObject(0);
+      paramJSONObject = str;
+      if (localObject != null) {
+        paramJSONObject = ((JSONObject)localObject).optString("offset");
+      }
     }
-    veg.b("PasterDataManager", "get weather from net.");
-    localObject = paramteu;
-    if (paramteu == null) {
-      localObject = tev.a();
-    }
-    this.jdField_a_of_type_Tdq.a(this);
-    this.jdField_a_of_type_Tdq.b((teu)localObject);
+    return paramJSONObject;
   }
   
-  public void a(boolean paramBoolean, Activity paramActivity)
+  private List<String> a(JSONObject paramJSONObject)
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bkfj != null) && (!"default".equals(this.jdField_a_of_type_Bkfj.g)) && (!"--".equals(this.jdField_a_of_type_Bkfj.h))) {
-      return;
-    }
-    new avtj(paramActivity, new bjew(this, paramBoolean)).a();
-  }
-  
-  public void a(boolean paramBoolean, tdt paramtdt)
-  {
-    if (paramBoolean) {
-      a(paramtdt);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bjey != null)
+    ArrayList localArrayList = new ArrayList();
+    paramJSONObject = paramJSONObject.optJSONArray("songlist");
+    if (paramJSONObject != null)
     {
-      ste.a().unRegisterSubscriber(this.jdField_a_of_type_Bjey);
-      this.jdField_a_of_type_Bjey = null;
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        if (localJSONObject != null) {
+          localArrayList.add(localJSONObject.optString("songmid"));
+        }
+        i += 1;
+      }
     }
-    if (this.jdField_a_of_type_Tdq != null) {
-      this.jdField_a_of_type_Tdq.b(this);
+    return localArrayList;
+  }
+  
+  private JSONObject a(aysz paramaysz)
+  {
+    do
+    {
+      try
+      {
+        paramaysz = new JSONObject(new String(paramaysz.jdField_a_of_type_ArrayOfByte));
+        aysz localaysz = paramaysz;
+        localaysz = paramaysz;
+      }
+      catch (JSONException localJSONException1)
+      {
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.i("RecognitionManager", 2, "fetchResponseJson: invoked. info: responseJson = " + paramaysz);
+            localaysz = paramaysz;
+          }
+          return localaysz;
+        }
+        catch (JSONException localJSONException2)
+        {
+          continue;
+        }
+        localJSONException1 = localJSONException1;
+        paramaysz = null;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("RecognitionManager", 2, "fetchResponseJson: Failed. info: exception = ", localJSONException1);
+    return paramaysz;
+  }
+  
+  private void a(aysz paramaysz)
+  {
+    Object localObject = a(paramaysz);
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("RecognitionManager", 2, new Object[] { "resolveResponseData: Failed. info: responseJson = ", localObject });
+      }
     }
+    List localList;
+    do
+    {
+      return;
+      paramaysz = a((JSONObject)localObject);
+      localList = a((JSONObject)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("RecognitionManager", 2, "resolveResponseData: invoked. info: songMids = " + localList);
+      }
+      a((JSONObject)localObject);
+      localObject = (QIMMusicConfigManager)bjav.a(2);
+      if (localList.size() != 0) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = a();
+    } while (!this.jdField_a_of_type_JavaLangClass.equals(this.jdField_a_of_type_Bjef.getClass()));
+    d();
+    return;
+    ((QIMMusicConfigManager)localObject).a((String)localList.get(0), new bjev(this, paramaysz));
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecognitionManager", 2, "requestRecognition: invoked. info: postBytes = " + paramArrayOfByte);
+    }
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return;
+    }
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_JavaLangString = ("http://c.y.qq.com/youtu/humming/search?sessionid=" + System.currentTimeMillis());
+    localayrx.jdField_a_of_type_Int = 1;
+    localayrx.e = 0;
+    localayrx.jdField_a_of_type_Aysc = this;
+    localayrx.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Aysa.a(localayrx);
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    return paramJSONObject.optString("is_humming").equals("yes");
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aysa = super.a().getNetEngine(0);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(bjef parambjef)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecognitionManager", 2, "registerObserver: invoked. info: observer = " + parambjef);
+    }
+    this.jdField_a_of_type_Bjef = parambjef;
+  }
+  
+  public void a(File paramFile)
+  {
+    if (((paramFile == null) || (!paramFile.exists())) && (QLog.isColorLevel())) {
+      QLog.e("RecognitionManager", 2, "setTargetAudioFile: invoked. info: audioFile = " + paramFile);
+    }
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
+  
+  public void b() {}
+  
+  public void b(bjef parambjef)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecognitionManager", 2, "unregisterObserver: invoked. info: observer = " + parambjef);
+    }
+    this.jdField_a_of_type_Bjef = null;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_Bjvo = new bjvo();
-    e();
-    this.jdField_a_of_type_Bjey = new bjey(this);
-    ste.a().registerSubscriber(this.jdField_a_of_type_Bjey);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PasterDataManager", 4, "initPasterConfig");
+    this.jdField_a_of_type_JavaLangClass = this.jdField_a_of_type_Bjef.getClass();
+    try
+    {
+      byte[] arrayOfByte = bjeg.a(this.jdField_a_of_type_JavaIoFile);
+      return;
+    }
+    catch (Throwable localThrowable1)
+    {
+      do
+      {
+        try
+        {
+          arrayOfByte = new bjet().a(this.jdField_a_of_type_Float).a(arrayOfByte);
+          a(arrayOfByte);
+          return;
+        }
+        catch (Throwable localThrowable2)
+        {
+          while (!QLog.isColorLevel()) {}
+          QLog.e("RecognitionManager", 2, "performQQMusicInternalMethod: Failed. info: Failed to generate fingerprint. exception = ", localThrowable2);
+        }
+        localThrowable1 = localThrowable1;
+      } while (!QLog.isColorLevel());
+      QLog.e("RecognitionManager", 2, "performQQMusicInternalMethod: Failed. info: Failed to invoke HumUtils.fileToByte. exception = ", localThrowable1);
+      return;
     }
   }
   
   public void d()
   {
-    this.jdField_b_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("RecognitionManager", 2, "notifyObserver: invoked. info: this.mHumObserver = " + this.jdField_a_of_type_Bjef);
+    }
+    if (this.jdField_a_of_type_Bjef != null) {
+      this.jdField_a_of_type_Bjef.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    }
   }
   
-  public boolean isValidate()
+  public void onResp(aysz paramaysz)
   {
-    return true;
+    if (paramaysz != null)
+    {
+      if (paramaysz.c != 200) {
+        break label55;
+      }
+      a(paramaysz);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("RecognitionManager", 2, "onResp: invoked. info: resp.mHttpCode = " + paramaysz.c);
+      }
+      return;
+      label55:
+      bdis.a().a(ajya.a(2131713259) + paramaysz.c);
+    }
   }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

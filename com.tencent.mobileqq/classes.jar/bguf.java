@@ -1,136 +1,85 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import cooperation.qqreader.QRBridgeUtil;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class bguf
-  extends QIPCModule
 {
-  private static bguf a;
-  
-  public bguf(String paramString)
+  public static int a(Context paramContext)
   {
-    super(paramString);
+    return a(paramContext, "QR_USERPREF58", -1);
   }
   
-  public static bguf a()
+  public static int a(@NonNull Context paramContext, String paramString, int paramInt)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bguf("ReaderIPCModule");
-      }
-      return a;
-    }
-    finally {}
+    return paramContext.getSharedPreferences("QR_OUT_SETTING", 0).getInt(paramString, paramInt);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static int a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    bgvo.e("ReaderIPCModule", "action = " + paramString);
-    if (paramBundle == null)
+    int j = 0;
+    int i = j;
+    int k;
+    if (paramQQAppInterface != null)
     {
-      bgvo.e("ReaderIPCModule", "Err params = null, action = " + paramString);
-      return null;
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface))
-    {
-      bgvo.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
-      return null;
-    }
-    localObject = (QQAppInterface)localObject;
-    if ("getRedTouchInfo".equals(paramString))
-    {
-      paramString = (avpq)((QQAppInterface)localObject).getManager(36);
-      localObject = paramBundle.getStringArrayList("pathList");
-      if ((paramString != null) && (localObject != null))
-      {
-        paramBundle = new ArrayList();
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
-          if (localAppInfo != null) {
-            paramBundle.add(avpt.a(localAppInfo));
-          }
-        }
-        paramString = new Bundle();
-        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
-        return EIPCResult.createResult(0, paramString);
+      k = VipUtils.a(paramQQAppInterface, paramString);
+      if ((k & 0x4) == 0) {
+        break label26;
       }
+      i = 2;
     }
-    else if ("getSingleRedTouchInfo".equals(paramString))
-    {
-      paramString = (avpq)((QQAppInterface)localObject).getManager(36);
-      if (paramString != null)
-      {
-        paramString = paramString.a(paramBundle.getString("path"));
-        if (paramString != null)
-        {
-          paramString = avpt.a(paramString);
-          paramBundle = new Bundle();
-          paramBundle.putParcelable("redTouchInfo", paramString);
-          if ((paramString != null) && (paramString.b() == 1)) {
-            bgvo.e("ReaderIPCModule", "path=" + paramString.b());
-          }
-          return EIPCResult.createResult(0, paramBundle);
-        }
-      }
-    }
-    else
-    {
-      if (!"reportRedTouchClick".equals(paramString)) {
-        break label396;
-      }
-      paramString = (avpq)((QQAppInterface)localObject).getManager(36);
-      if (paramString != null)
-      {
-        paramBundle = paramBundle.getString("path");
-        paramString.b(paramBundle);
-      }
-    }
-    label396:
+    label26:
     do
     {
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("service_type", 2);
-        ((JSONObject)localObject).put("act_id", 1002);
-        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
-        return null;
+      return i;
+      i = j;
+    } while ((k & 0x2) == 0);
+    return 1;
+  }
+  
+  public static short a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return VipUtils.a(paramQQAppInterface, paramString);
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    a(paramContext, "QR_USERPREF58", paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    a(paramContext, "QR_USERPREF58", paramInt);
+    a(paramContext, "QR_USERPREF_FROM_NET", paramBoolean);
+  }
+  
+  public static void a(@NonNull Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
+    paramContext.putInt(paramString, paramInt);
+    paramContext.commit();
+  }
+  
+  public static void a(@NonNull Context paramContext, String paramString, boolean paramBoolean)
+  {
+    paramContext = paramContext.getSharedPreferences("QR_OUT_SETTING", 0).edit();
+    paramContext.putBoolean(paramString, paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface != null)
+    {
+      paramAppInterface = (akdh)paramAppInterface.getManager(56);
+      if (paramAppInterface != null) {
+        return paramAppInterface.b("1805987832") != null;
       }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-      if ("download_reader_plugin".equals(paramString))
-      {
-        bgtc.a().a(((QQAppInterface)localObject).getApp());
-        return EIPCResult.createResult(0, new Bundle());
-      }
-      if ("get_skey".equals(paramString))
-      {
-        paramString = new Bundle();
-        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
-        return EIPCResult.createResult(0, paramString);
-      }
-    } while (!"action_get_account".equals(paramString));
-    paramString = new Bundle();
-    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
-    return EIPCResult.createResult(0, paramString);
+    }
+    return false;
   }
 }
 

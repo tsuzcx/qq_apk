@@ -1,25 +1,28 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class upt
-  implements Comparator<CommentEntry>
+  extends ssh
 {
-  public upt(ups paramups) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
+  public upt(ErrorMessage paramErrorMessage, String paramString)
   {
-    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
-      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
-    }
-    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
-    {
-      return -1;
-      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
-        return 1;
-      }
-      return 0;
-    }
-    return 1;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

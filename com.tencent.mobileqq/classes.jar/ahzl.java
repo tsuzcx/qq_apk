@@ -1,14 +1,18 @@
-class ahzl
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+
+public final class ahzl
+  implements Parcelable.Creator<WordingItem>
 {
-  public int a;
-  public long a;
-  public int b;
-  
-  public ahzl(long paramLong, int paramInt1, int paramInt2)
+  public WordingItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
+    return new WordingItem(paramParcel);
+  }
+  
+  public WordingItem[] a(int paramInt)
+  {
+    return new WordingItem[paramInt];
   }
 }
 

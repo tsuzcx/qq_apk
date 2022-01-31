@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.monitor.service;
 
 import android.os.Handler;
-import bexs;
+import beyj;
 
 public final class CPUMonitor$1
   implements Runnable
 {
   public void run()
   {
-    if (!bexs.a())
+    if (!beyj.a())
     {
-      bexs.a();
-      if (bexs.a() != null) {
-        bexs.a().postDelayed(bexs.a(), 1000L);
+      beyj.a();
+      if (beyj.a() != null) {
+        beyj.a().postDelayed(beyj.a(), 1000L);
       }
     }
   }

@@ -1,24 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
 
-class betj
+public final class betj
+  implements Parcelable.Creator<EngineChannel>
 {
-  private final int jdField_a_of_type_Int;
-  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  
-  betj(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  public EngineChannel a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    EngineChannel localEngineChannel = new EngineChannel((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel), null);
+    localEngineChannel.a(paramParcel.readString());
+    return localEngineChannel;
   }
   
-  int a()
+  public EngineChannel[] a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public DialogInterface.OnClickListener a()
-  {
-    return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    return new EngineChannel[paramInt];
   }
 }
 

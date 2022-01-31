@@ -10,29 +10,29 @@ import com.tencent.util.Pair;
 import java.util.HashMap;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nmf;
-import nyg;
-import nzi;
-import qny;
-import qoc;
+import nmc;
+import nyd;
+import nzf;
+import qnv;
+import qnz;
 
 public class VideoFeedsGameAdComManager$2
   implements Runnable
 {
-  public VideoFeedsGameAdComManager$2(qny paramqny) {}
+  public VideoFeedsGameAdComManager$2(qnv paramqnv) {}
   
   public void run()
   {
-    if ((qny.a(this.this$0) != null) && (!TextUtils.isEmpty(qny.a(this.this$0).d)) && (qny.a(this.this$0).t != null)) {
+    if ((qnv.a(this.this$0) != null) && (!TextUtils.isEmpty(qnv.a(this.this$0).d)) && (qnv.a(this.this$0).t != null)) {
       try
       {
         Object localObject = new HashMap();
-        ((HashMap)localObject).put("vid", qny.a(this.this$0));
-        nmf.a(new nyg().a(qny.a(this.this$0)).a(nmf.z).b(nmf.ad).c(nmf.ao).a(qny.a(this.this$0)).d(nmf.a(null, qny.a(this.this$0).mRowKey, qny.b(this.this$0), qny.a(this.this$0).r, qny.a(this.this$0).d, (HashMap)localObject)).e(nzi.a(qny.a(this.this$0).a, nmf.F)).a());
-        localObject = nzi.a(qny.a(this.this$0).d);
-        if (((qny.a(this.this$0) instanceof Activity)) && (((Pair)localObject).first != null) && (((List)((Pair)localObject).first).size() > 0))
+        ((HashMap)localObject).put("vid", qnv.a(this.this$0));
+        nmc.a(new nyd().a(qnv.a(this.this$0)).a(nmc.z).b(nmc.ad).c(nmc.ao).a(qnv.a(this.this$0)).d(nmc.a(null, qnv.a(this.this$0).mRowKey, qnv.b(this.this$0), qnv.a(this.this$0).r, qnv.a(this.this$0).d, (HashMap)localObject)).e(nzf.a(qnv.a(this.this$0).a, nmc.F)).a());
+        localObject = nzf.a(qnv.a(this.this$0).d);
+        if (((qnv.a(this.this$0) instanceof Activity)) && (((Pair)localObject).first != null) && (((List)((Pair)localObject).first).size() > 0))
         {
-          Activity localActivity = qny.a(this.this$0);
+          Activity localActivity = qnv.a(this.this$0);
           localActivity.runOnUiThread(new VideoFeedsGameAdComManager.2.1(this, localActivity, (Pair)localObject));
           return;
         }
@@ -41,7 +41,7 @@ public class VideoFeedsGameAdComManager$2
       }
       catch (Exception localException)
       {
-        QLog.e(qny.a(), 2, localException.getMessage());
+        QLog.e(qnv.a(), 2, localException.getMessage());
       }
     }
   }

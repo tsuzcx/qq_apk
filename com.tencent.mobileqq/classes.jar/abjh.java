@@ -1,27 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
 public class abjh
-  implements TextWatcher
+  extends OvershootInterpolator
 {
-  public abjh(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void afterTextChanged(Editable paramEditable)
+  public abjh(JDHongbaoActivity paramJDHongbaoActivity) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
     {
-      this.a.b.setEnabled(true);
-      return;
+      this.jdField_a_of_type_Boolean = true;
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
     }
-    this.a.b.setEnabled(false);
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

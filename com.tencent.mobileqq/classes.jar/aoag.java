@@ -1,95 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
 
 public class aoag
-  extends anzo
+  implements Animator.AnimatorListener
 {
-  public static int a(QQAppInterface paramQQAppInterface, aoak paramaoak)
+  public aoag(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramaoak == null) {
-      return -1;
+    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
+      this.a.setVisibility(8);
     }
-    int i = paramaoak.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getPanelType type = " + i);
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
     }
-    switch (i)
-    {
-    case 5: 
-    default: 
-      return -1;
-    case 4: 
-      return 4;
-    case 7: 
-      return 1;
-    case 9: 
-      return 5;
-    case 8: 
-      return 3;
-    case 6: 
-      return a(paramQQAppInterface, paramaoak, false);
-    case 10: 
-      return a(paramQQAppInterface, paramaoak, true);
-    }
-    return 13;
   }
   
-  private static int a(QQAppInterface paramQQAppInterface, aoak paramaoak, boolean paramBoolean)
-  {
-    if ((paramQQAppInterface == null) || (paramaoak == null))
-    {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType app or panelinfo is null");
-      return -1;
-    }
-    EmoticonPackage localEmoticonPackage = paramaoak.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-    if (localEmoticonPackage == null)
-    {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType emotionPkg is null; type = " + paramaoak.jdField_a_of_type_Int);
-      return -1;
-    }
-    boolean bool = anzm.a(localEmoticonPackage);
-    int i = localEmoticonPackage.status;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getEmotionPanelType epid = " + localEmoticonPackage.epId + "status = " + i + ";shouldUpdate = " + bool);
-    }
-    if ((!localEmoticonPackage.valid) || (i == 3) || (!a(paramQQAppInterface, localEmoticonPackage)))
-    {
-      if (i == 2) {
-        return 12;
-      }
-      return 7;
-    }
-    if (bool)
-    {
-      if (paramBoolean) {
-        return 9;
-      }
-      return 8;
-    }
-    if (i != 2) {
-      return 7;
-    }
-    if (paramBoolean) {
-      return 2;
-    }
-    return 6;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage)
-  {
-    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
-      return false;
-    }
-    int i = ((akfw)paramQQAppInterface.a(13)).g();
-    if (paramEmoticonPackage.mobileFeetype == 4) {
-      return (i == 1) || (i == 3);
-    }
-    if (paramEmoticonPackage.mobileFeetype == 5) {
-      return i == 3;
-    }
-    return true;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

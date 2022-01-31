@@ -1,9 +1,19 @@
-import android.view.View;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
-public abstract interface prb
+public class prb
+  extends pra
 {
-  public abstract void a(View paramView, Map<String, Object> paramMap);
+  public prb(Context paramContext, baxy parambaxy, ram paramram)
+  {
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 

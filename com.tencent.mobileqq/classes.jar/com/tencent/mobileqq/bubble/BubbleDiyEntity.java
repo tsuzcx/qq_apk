@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import aukm;
-import auma;
+import auko;
+import aumc;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class BubbleDiyEntity
-  extends aukm
+  extends auko
 {
   public String bottomLeftId;
   public String bottomRightId;
   public String diyText = "";
   public String topLeftId;
   public String topRightId;
-  @auma
+  @aumc
   public String uinAndDiyId;
   
   public static void parsePasterMap(BubbleDiyEntity paramBubbleDiyEntity, HashMap<String, String> paramHashMap)

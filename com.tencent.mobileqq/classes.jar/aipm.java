@@ -1,13 +1,11 @@
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class aipm
+  extends bfwe
 {
+  public int a = 1;
   public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  public String a;
 }
 
 

@@ -1,8 +1,6 @@
-import android.graphics.Bitmap;
-
 public abstract interface adeg
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  public abstract void a(adee paramadee, int paramInt);
 }
 
 

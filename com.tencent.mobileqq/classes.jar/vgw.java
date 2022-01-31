@@ -1,23 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 
 class vgw
-  implements syt<tmq, tok>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vgw(vgu paramvgu) {}
+  vgw(vgu paramvgu, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void a(@NonNull tmq paramtmq, @Nullable tok paramtok, @NonNull ErrorMessage paramErrorMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    veg.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramtok != null))
-    {
-      veg.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramtok.toString());
-      paramtmq = new tbx(paramtok.a, paramtok.c, paramtok.d, paramtok.e, paramtok.f, paramtmq.d, paramtmq.e);
-      this.a.a(0, paramtmq);
-      return;
-    }
-    veg.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 

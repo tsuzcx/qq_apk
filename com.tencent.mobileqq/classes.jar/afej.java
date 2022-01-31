@@ -1,25 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
 public class afej
-  implements View.OnTouchListener
+  implements aiob
 {
   public afej(AddContactsView paramAddContactsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
     }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
   }
 }
 

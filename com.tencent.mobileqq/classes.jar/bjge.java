@@ -1,22 +1,28 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
+import com.tencent.widget.AbsListView;
 import java.util.ArrayList;
 
-public abstract class bjge
+class bjge
+  implements bfos
 {
-  protected Paint a = new Paint();
+  int jdField_a_of_type_Int = 0;
   
-  public bjge()
+  bjge(bjgd parambjgd) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.setAntiAlias(true);
-    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
   
-  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
-  
-  public abstract void a(Canvas paramCanvas, ArrayList<bjhw> paramArrayList, int paramInt1, int paramInt2);
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 1) {
+      bfni.b(this.jdField_a_of_type_Bjgd.h);
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Bjgd.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Bjgd.a.size())) {
+      return;
+    }
+    bjgd.a(this.jdField_a_of_type_Bjgd);
+  }
 }
 
 

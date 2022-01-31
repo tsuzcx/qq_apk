@@ -1,19 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-public class agcb
-  extends BroadcastReceiver
+public abstract class agcb
 {
   public agcb(QzoneFrame paramQzoneFrame) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (QzoneFrame.a(this.a) != null) {
-      ((bhbl)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

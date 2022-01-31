@@ -1,24 +1,58 @@
-import cooperation.qzone.util.QZLog;
+import BOSSStrategyCenter.tAdvDesc;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import org.json.JSONObject;
 
 public class biag
+  extends ahmp
 {
-  public static int a = 2;
-  public static int b = 1;
-  public static int c = 4;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public static void a(String paramString1, String paramString2)
+  public biag(tAdvDesc paramtAdvDesc)
   {
-    QZLog.d(paramString1, c, paramString2);
+    super(paramtAdvDesc);
   }
   
-  public static void b(String paramString1, String paramString2)
+  protected void a()
   {
-    QZLog.d(paramString1, b, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QZLog.e(paramString1, paramString2, null);
+    super.a();
+    if ((this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc == null) || (TextUtils.isEmpty(this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data)))
+    {
+      QLog.e("QbossADBannerConfigInfo", 1, "parseJsonFromAdvDesc error with data = null");
+      return;
+    }
+    String str = this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.res_data;
+    try
+    {
+      Object localObject = new JSONObject(str);
+      this.c = ((JSONObject)localObject).optString("topText");
+      this.d = ((JSONObject)localObject).optString("bottomText");
+      this.e = ((JSONObject)localObject).optString("textColor");
+      this.f = ((JSONObject)localObject).optString("cartoon");
+      this.g = ((JSONObject)localObject).optString("cartoon_md5");
+      this.h = ((JSONObject)localObject).optString("cartoonNum");
+      localObject = new biai(this, null);
+      ((ahmq)localObject).a = this.f;
+      ((ahmq)localObject).b = this.g;
+      if (!TextUtils.isEmpty(this.f)) {
+        ((ahmq)localObject).c = (QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.f.hashCode())) + ".zip");
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.e("QbossADBannerConfigInfo", 1, "qboss banner parseJson error msg = " + localException.getMessage());
+      bhku.a().a(2741, this.jdField_a_of_type_BOSSStrategyCenterTAdvDesc.task_id, 102, "CountDownBanner json parseError exception = " + localException.getMessage() + " json string = " + str);
+    }
   }
 }
 

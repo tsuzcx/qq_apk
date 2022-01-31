@@ -1,45 +1,52 @@
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.text.TextUtils;
 
 public class bkzz
+  extends bkzw
 {
-  private static bkzz jdField_a_of_type_Bkzz = new bkzz();
-  private static String jdField_a_of_type_JavaLangString;
-  private blaa jdField_a_of_type_Blaa;
+  public boolean a;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public String h;
+  public String i;
   
-  private bkzz()
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoDownloadInfo");
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
+    localStringBuilder.append("\n |-").append("fileType:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("format:").append(this.d);
+    localStringBuilder.append("\n |-").append("mRequestType:").append(this.f);
+    localStringBuilder.append("\n |-").append("mSceneType:").append(this.g);
+    return localStringBuilder.toString();
   }
   
-  public static bkzz a()
+  public boolean a()
   {
-    return jdField_a_of_type_Bkzz;
-  }
-  
-  private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_Blaa != null)
+    if (TextUtils.isEmpty(this.a))
     {
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Blaa.a(paramInt, paramString, paramBoolean2);
-      }
+      a("ShortVideoDownloadInfo.check", "uuid invaid:" + this.a);
+      return false;
     }
-    else {
-      return;
+    if (this.b == null)
+    {
+      a("ShortVideoDownloadInfo", "selfUin invalid,selfUin:" + this.b);
+      return false;
     }
-    this.jdField_a_of_type_Blaa.b(paramInt, paramString, paramBoolean2);
+    return super.a();
   }
   
-  public boolean a(Object paramObject, int paramInt, String paramString)
+  public String toString()
   {
-    if ((paramObject instanceof AudioCapture)) {}
-    switch (paramInt)
-    {
-    default: 
-      return true;
-    }
-    a(true, 2001, ajyc.a(2131704194) + 2001 + "）", true);
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

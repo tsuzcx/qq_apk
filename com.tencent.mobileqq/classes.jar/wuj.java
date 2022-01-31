@@ -1,22 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.HashMap;
+import java.lang.ref.WeakReference;
 
 public class wuj
-  implements www
+  implements View.OnClickListener
 {
   public wuj(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(View paramView)
   {
-    if (VideoPlayerView.a(this.a) != null)
+    if (xen.a("mLLSkipBackWrapper", 500L))
     {
-      xhe.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
-      VideoPlayerView.a(this.a).poster.followState.set(1);
-      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.b(this.a)), 0, 1, true);
+      if (VideoPlayerView.a(this.a) != null) {
+        this.a.a(VideoPlayerView.a(this.a).a() - 10000L);
+      }
     }
   }
 }

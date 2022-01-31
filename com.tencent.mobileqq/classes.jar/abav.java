@@ -1,35 +1,31 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public abstract class abav
-  extends ClickableSpan
+public class abav
+  implements antt
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public abav(EmosmActivity paramEmosmActivity) {}
   
-  public abav(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
+  public void a_(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    if (paramInt1 != paramInt2)
     {
-      paramTextPaint.setColor(i);
-      paramTextPaint.setUnderlineText(false);
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      anvw.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.d = true;
+      axqy.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if (this.a.b == 1) {
+        axqy.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
+      }
+    }
+    else
+    {
       return;
     }
+    axqy.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
   }
 }
 

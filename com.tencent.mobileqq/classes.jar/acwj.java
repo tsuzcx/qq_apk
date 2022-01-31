@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class acwj
-  implements Parcelable.Creator<ForwardUtils.Section_Pic>
+class acwj
+  implements AdapterView.OnItemClickListener
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  acwj(acwi paramacwi) {}
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    int j = ((bbjs)acwi.a(this.a)[0].get(paramInt)).c;
+    acwi.a(this.a).b();
+    int i = 0;
+    switch (j)
+    {
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        axqy.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
+      }
+      this.a.a(j, acwi.a(this.a));
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
   }
 }
 

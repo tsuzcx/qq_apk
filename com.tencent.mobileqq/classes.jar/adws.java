@@ -1,23 +1,57 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
-class adws
-  implements bgrl
+public class adws
+  extends acuj
 {
-  adws(adwr paramadwr, MessageForPtt paramMessageForPtt) {}
+  public acxj a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public VoicePrintUtils.VoicePrintView a;
+  public BreathAnimationLayout a;
+  public PttAudioChangeView a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public StringBuilder a;
+  private boolean a;
+  public ImageView b;
+  public TextView b;
+  public PttAudioChangeView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a()
   {
-    bgpr.a(this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop);
-    bgpd.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_Adwr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      bgpr.a(this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

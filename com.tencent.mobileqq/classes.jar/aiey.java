@@ -1,9 +1,13 @@
+import android.widget.ImageView;
 import android.widget.TextView;
 
 class aiey
+  extends aifb
 {
-  public int a;
+  public ImageView a;
   public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

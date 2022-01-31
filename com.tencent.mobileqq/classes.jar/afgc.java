@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.EditText;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class afgc
-  implements View.OnClickListener
+  extends Handler
 {
   public afgc(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.h != 1) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
-    }
+    this.a.a.clearFocus();
   }
 }
 

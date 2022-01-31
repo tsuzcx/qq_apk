@@ -1,46 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
 
-public class bcjs
-  implements View.OnTouchListener
+class bcjs
+  extends Handler
 {
-  public bcjs(ClearableEditText paramClearableEditText) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bcjs(bcjr parambcjr, Looper paramLooper)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_Bcjv == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_Bcjv.m();
-          return false;
-          i = 0;
-        }
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - bcjr.a(this.a).getHeight(), true);
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcjs
  * JD-Core Version:    0.7.0.1
  */

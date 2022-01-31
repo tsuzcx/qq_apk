@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aatn
-  extends akfb
+public abstract interface aatn
 {
-  public aatn(ChatSettingActivity paramChatSettingActivity) {}
+  public abstract void a(Activity paramActivity);
   
-  public void a(Object paramObject)
-  {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
-    }
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  
+  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
 }
 
 

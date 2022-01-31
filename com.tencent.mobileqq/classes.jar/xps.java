@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class xps
-  implements View.OnClickListener
+public abstract interface xps
 {
-  xps(xpn paramxpn) {}
+  public abstract void b();
   
-  public void onClick(View paramView)
-  {
-    this.a.m();
-  }
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

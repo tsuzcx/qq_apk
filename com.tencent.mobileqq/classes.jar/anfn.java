@@ -1,58 +1,57 @@
-import android.util.SparseArray;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Field;
 
 public class anfn
+  implements anfm
 {
-  private final SparseArray<BlockingQueue<anfv>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ange jdField_a_of_type_Ange;
-  private final BlockingQueue<anfv> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  private Handler a;
   
-  public anfn(ange paramange)
+  public Resources a()
   {
-    this.jdField_a_of_type_Ange = paramange;
+    return BaseApplicationImpl.getApplication().getResources();
   }
   
-  protected int a()
+  public Handler a()
   {
-    return 300;
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper());
+    }
+    return this.a;
   }
   
-  public anfv a(int paramInt, Object paramObject)
+  public Object a(Class<?> paramClass, String paramString, Object paramObject)
   {
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null) {
-      localObject = new LinkedBlockingQueue();
-    }
-    localObject = (anfv)((BlockingQueue)localObject).poll();
-    if (localObject == null)
+    try
     {
-      localObject = this.jdField_a_of_type_Ange.a(paramInt);
-      anhx.a("DanmakuFactory", new Object[] { localObject, " is created " });
+      paramClass = paramClass.getDeclaredField(paramString);
+      paramClass.setAccessible(true);
+      paramClass = paramClass.get(paramObject);
+      return paramClass;
     }
-    for (;;)
+    catch (Exception paramClass)
     {
-      ((anfv)localObject).e();
-      ((anfv)localObject).a(paramObject);
-      return localObject;
-      anhx.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+      paramClass.printStackTrace();
     }
+    return null;
   }
   
-  public void a(anfv paramanfv)
+  public boolean a()
   {
-    int i = paramanfv.a();
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null)
-    {
-      localObject = new LinkedBlockingQueue();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
-    }
-    if (a() > ((BlockingQueue)localObject).size()) {
-      ((BlockingQueue)localObject).add(paramanfv);
-    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return Build.VERSION.SDK_INT >= 26;
+  }
+  
+  public boolean c()
+  {
+    return Build.VERSION.SDK_INT >= 11;
   }
 }
 

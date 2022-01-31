@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-
-public class ldq
-  implements DialogInterface.OnClickListener
+public abstract interface ldq
 {
-  public ldq(VideoController paramVideoController) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    axqw.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
-  }
+  public abstract void a();
 }
 
 

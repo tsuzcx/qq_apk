@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.ocr.activity;
 
 import android.widget.TextView;
-import aubz;
+import aucb;
 import com.tencent.mobileqq.ocr.view.MaskView;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ScanOcrActivity$6$1
   implements Runnable
 {
-  public ScanOcrActivity$6$1(aubz paramaubz, int paramInt) {}
+  public ScanOcrActivity$6$1(aucb paramaucb, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int != 0)
     {
-      ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).setVisibility(0);
-      ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).setText(2131689917);
-      if (this.jdField_a_of_type_Aubz.a.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Aubz.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
+      ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).setVisibility(0);
+      ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).setText(2131689917);
+      if (this.jdField_a_of_type_Aucb.a.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Aucb.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
       }
       return;
     }
-    if (this.jdField_a_of_type_Aubz.a.jdField_a_of_type_Int != 1) {
-      if (!ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).a())
+    if (this.jdField_a_of_type_Aucb.a.jdField_a_of_type_Int != 1) {
+      if (!ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).a())
       {
-        ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).setVisibility(0);
-        ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).postDelayed(new ScanOcrActivity.6.1.1(this), 500L);
+        ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).setVisibility(0);
+        ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).postDelayed(new ScanOcrActivity.6.1.1(this), 500L);
       }
     }
     for (;;)
     {
-      ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).setVisibility(0);
-      ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a).setText(ScanOcrActivity.a(this.jdField_a_of_type_Aubz.a));
+      ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).setVisibility(0);
+      ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a).setText(ScanOcrActivity.a(this.jdField_a_of_type_Aucb.a));
       return;
-      this.jdField_a_of_type_Aubz.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
+      this.jdField_a_of_type_Aucb.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
     }
   }
 }

@@ -1,186 +1,423 @@
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
-
-public final class bbng
+public class bbng
 {
-  @NonNull
-  public static final bbng a;
-  @NonNull
-  public static final bbng b;
-  @NonNull
-  public static final bbng c;
-  @NonNull
-  public static final bbng d;
-  @NonNull
-  public static final bbng e;
-  @NonNull
-  public static final bbng f;
-  boolean jdField_a_of_type_Boolean = true;
-  final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  final float[] b;
-  final float[] c;
+  private static bbng a;
   
-  static
+  public static bbng a()
   {
-    jdField_a_of_type_Bbng = new bbng();
-    c(jdField_a_of_type_Bbng);
-    d(jdField_a_of_type_Bbng);
-    jdField_b_of_type_Bbng = new bbng();
-    b(jdField_b_of_type_Bbng);
-    d(jdField_b_of_type_Bbng);
-    jdField_c_of_type_Bbng = new bbng();
-    a(jdField_c_of_type_Bbng);
-    d(jdField_c_of_type_Bbng);
-    d = new bbng();
-    c(d);
-    e(d);
-    e = new bbng();
-    b(e);
-    e(e);
-    f = new bbng();
-    a(f);
-    e(f);
-  }
-  
-  bbng()
-  {
-    this.jdField_b_of_type_ArrayOfFloat = new float[3];
-    this.jdField_c_of_type_ArrayOfFloat = new float[3];
-    a(this.jdField_a_of_type_ArrayOfFloat);
-    a(this.jdField_b_of_type_ArrayOfFloat);
-    b();
-  }
-  
-  private static void a(bbng parambbng)
-  {
-    parambbng.jdField_b_of_type_ArrayOfFloat[1] = 0.26F;
-    parambbng.jdField_b_of_type_ArrayOfFloat[2] = 0.45F;
-  }
-  
-  private static void a(float[] paramArrayOfFloat)
-  {
-    paramArrayOfFloat[0] = 0.0F;
-    paramArrayOfFloat[1] = 0.5F;
-    paramArrayOfFloat[2] = 1.0F;
-  }
-  
-  private void b()
-  {
-    this.jdField_c_of_type_ArrayOfFloat[0] = 0.24F;
-    this.jdField_c_of_type_ArrayOfFloat[1] = 0.52F;
-    this.jdField_c_of_type_ArrayOfFloat[2] = 0.24F;
-  }
-  
-  private static void b(bbng parambbng)
-  {
-    parambbng.jdField_b_of_type_ArrayOfFloat[0] = 0.3F;
-    parambbng.jdField_b_of_type_ArrayOfFloat[1] = 0.5F;
-    parambbng.jdField_b_of_type_ArrayOfFloat[2] = 0.7F;
-  }
-  
-  private static void c(bbng parambbng)
-  {
-    parambbng.jdField_b_of_type_ArrayOfFloat[0] = 0.55F;
-    parambbng.jdField_b_of_type_ArrayOfFloat[1] = 0.74F;
-  }
-  
-  private static void d(bbng parambbng)
-  {
-    parambbng.jdField_a_of_type_ArrayOfFloat[0] = 0.35F;
-    parambbng.jdField_a_of_type_ArrayOfFloat[1] = 1.0F;
-  }
-  
-  private static void e(bbng parambbng)
-  {
-    parambbng.jdField_a_of_type_ArrayOfFloat[1] = 0.3F;
-    parambbng.jdField_a_of_type_ArrayOfFloat[2] = 0.4F;
-  }
-  
-  @FloatRange(from=0.0D, to=1.0D)
-  public float a()
-  {
-    return this.jdField_a_of_type_ArrayOfFloat[0];
-  }
-  
-  void a()
-  {
-    int j = 0;
-    int k = this.jdField_c_of_type_ArrayOfFloat.length;
-    int i = 0;
-    float f2;
-    for (float f1 = 0.0F; i < k; f1 = f2)
+    if (a == null) {}
+    try
     {
-      float f3 = this.jdField_c_of_type_ArrayOfFloat[i];
-      f2 = f1;
-      if (f3 > 0.0F) {
-        f2 = f1 + f3;
+      if (a == null) {
+        a = new bbng();
       }
-      i += 1;
+      return a;
     }
-    if (f1 != 0.0F)
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("SCH-N719"))
     {
-      k = this.jdField_c_of_type_ArrayOfFloat.length;
-      i = j;
-      while (i < k)
+      bbnf.b = false;
+      bbnb.jdField_a_of_type_Int = 3;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("GT-I9103"))
       {
-        if (this.jdField_c_of_type_ArrayOfFloat[i] > 0.0F)
-        {
-          float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
-          arrayOfFloat[i] /= f1;
-        }
-        i += 1;
+        bbnf.c = false;
+        return;
       }
+      if (paramString.equalsIgnoreCase("SCH-I779"))
+      {
+        bbnf.f = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GT-S5830"))
+      {
+        bbnf.j = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("SCH-I739"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GT-I9082"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("SCH-I759"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GT-S7562C"))
+      {
+        bbnf.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("i7562"));
+    bbnf.l = true;
+  }
+  
+  public void b(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("HTC T328w"))
+    {
+      bbnf.b = false;
+      bbnb.jdField_a_of_type_Int = 5;
     }
   }
   
-  public boolean a()
+  public void c(String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (paramString.equalsIgnoreCase("MOT-XT788"))
+    {
+      bbnf.jdField_a_of_type_Boolean = false;
+      bbnf.b = false;
+      bbnb.jdField_a_of_type_Int = 2;
+      bbnb.jdField_a_of_type_JavaLangString = "subscription";
+    }
   }
   
-  @FloatRange(from=0.0D, to=1.0D)
-  public float b()
+  public void d(String paramString)
   {
-    return this.jdField_a_of_type_ArrayOfFloat[1];
+    if (paramString.equalsIgnoreCase("HUAWEI C8812")) {
+      bbnf.d = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("HUAWEI C8813"))
+      {
+        bbnf.d = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("HUAWEI U8825D"))
+      {
+        bbnf.d = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("HUAWEI C8812E"))
+      {
+        bbnf.d = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("HUAWEI G520-0000"));
+    bbnf.d = false;
   }
   
-  @FloatRange(from=0.0D, to=1.0D)
-  public float c()
+  public void e(String paramString)
   {
-    return this.jdField_a_of_type_ArrayOfFloat[2];
+    if (paramString.equalsIgnoreCase("ZTE V889D"))
+    {
+      bbnf.b = false;
+      bbnb.jdField_a_of_type_Int = 2;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("ZTE-T U960s"))
+      {
+        bbnf.k = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("ZTE-U V880"))
+      {
+        bbnf.d = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("ZTE U930"));
+    bbnf.i = false;
   }
   
-  @FloatRange(from=0.0D, to=1.0D)
-  public float d()
+  public void f(String paramString)
   {
-    return this.jdField_b_of_type_ArrayOfFloat[0];
+    if (paramString.equalsIgnoreCase("M032")) {
+      bbnf.e = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("M030"))
+      {
+        bbnf.e = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("M040"))
+      {
+        bbnf.e = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("M351"))
+      {
+        bbnf.e = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("M9"));
+    bbnf.e = false;
   }
   
-  @FloatRange(from=0.0D, to=1.0D)
-  public float e()
+  public void g(String paramString)
   {
-    return this.jdField_b_of_type_ArrayOfFloat[1];
+    if (paramString.equalsIgnoreCase("U701")) {
+      bbnf.g = false;
+    }
   }
   
-  @FloatRange(from=0.0D, to=1.0D)
-  public float f()
+  public void h(String paramString)
   {
-    return this.jdField_b_of_type_ArrayOfFloat[2];
+    if (paramString.equalsIgnoreCase("T580")) {
+      bbnf.h = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("K-Touch T619"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("K-Touch T621"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("K-Touch T619+"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("K-Touch C666t"))
+      {
+        bbnf.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("Haier_HT-I600"));
+    bbnf.i = false;
   }
   
-  public float g()
+  public void i(String paramString)
   {
-    return this.jdField_c_of_type_ArrayOfFloat[0];
+    if (paramString.equalsIgnoreCase("8022")) {
+      bbnf.h = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("8150D"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Coolpad 8079"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Coolpad W706"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("8190"))
+      {
+        bbnf.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("Coolpad 8076D"));
+    bbnf.i = false;
   }
   
-  public float h()
+  public void j(String paramString)
   {
-    return this.jdField_c_of_type_ArrayOfFloat[1];
+    if (paramString.equalsIgnoreCase("Lenovo A278t")) {
+      bbnf.h = false;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("Lenovo P700"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Lenovo A750"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Lenovo S880"))
+      {
+        bbnf.i = false;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Lenovo A390t"))
+      {
+        bbnf.m = true;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("Lenovo S890"));
+    bbnf.m = true;
   }
   
-  public float i()
+  public void k(String paramString)
   {
-    return this.jdField_c_of_type_ArrayOfFloat[2];
+    if (paramString.equalsIgnoreCase("vivo S11t")) {
+      bbnf.l = true;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("vivo S7"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo Y11"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S9"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo Y19t"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S12"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo X1"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S3+"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo E5"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S6"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo S11"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("vivo E1"))
+      {
+        bbnf.i = false;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("vivo V1"));
+    bbnf.jdField_a_of_type_Int = 90;
+  }
+  
+  public void l(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("GN800")) {
+      bbnf.l = true;
+    }
+    do
+    {
+      return;
+      if (paramString.equalsIgnoreCase("E3T"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("V182"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if ((paramString.equalsIgnoreCase("GN700W")) || (paramString.equalsIgnoreCase("GiONEE GN700W")))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GN137"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GN700T"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("X805"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("Q1"))
+      {
+        bbnf.l = true;
+        return;
+      }
+      if (paramString.equalsIgnoreCase("GN708T"))
+      {
+        bbnf.l = true;
+        return;
+      }
+    } while (!paramString.equalsIgnoreCase("E6mini"));
+    bbnf.l = true;
+  }
+  
+  public void m(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("T730")) {
+      bbnf.i = false;
+    }
+  }
+  
+  public void n(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("DOOV S1")) {
+      bbnf.l = true;
+    }
+    while (!paramString.equalsIgnoreCase("DOOV D360")) {
+      return;
+    }
+    bbnf.l = true;
+  }
+  
+  public void o(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("LT26i")) {
+      bbnf.m = true;
+    }
+    while (!paramString.equalsIgnoreCase("LT18i")) {
+      return;
+    }
+    bbnf.m = true;
+  }
+  
+  public void p(String paramString)
+  {
+    if ("MI PAD".equalsIgnoreCase(paramString)) {
+      bbnf.i = false;
+    }
   }
 }
 

@@ -1,63 +1,24 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
 
 public class azfv
-  extends AsyncTask<Void, Void, Bundle>
+  implements Animation.AnimationListener
 {
-  public azfv(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public azfv(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  protected Bundle a(Void... paramVarArgs)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(ajsf.bX);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = ajsf.bX + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.l)
-      {
-        localBundle.putString("forward_thumb", paramVarArgs);
-        localBundle.putBoolean("key_flag_from_plugin", true);
-      }
-      return localBundle;
-    }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  protected void a(Bundle paramBundle)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramBundle == null)
-    {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, ajyc.a(2131715211), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
+    if (this.a.b == null) {
       return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    aqbc.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, localIntent, 21);
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
+    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
   }
 }
 

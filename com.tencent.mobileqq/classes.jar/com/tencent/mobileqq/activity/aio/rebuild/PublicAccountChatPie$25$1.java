@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
+import aert;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 

@@ -1,20 +1,36 @@
-import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Window;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public abstract interface bfyh
+public class bfyh
 {
-  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
+  private final boolean b;
   
-  public abstract void a(View paramView);
+  private bfyh(Window paramWindow, boolean paramBoolean)
+  {
+    if (paramWindow.getContext().getResources().getConfiguration().orientation == 1) {}
+    for (;;)
+    {
+      this.b = bool;
+      this.jdField_a_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramWindow.getContext());
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      bool = false;
+    }
+  }
   
-  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
-  
-  public abstract void b(View paramView);
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfyh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import osm;
+import osj;
 
 public final class ReadInJoyCommentUtils$1
   implements Runnable
 {
   public void run()
   {
-    osm.a().b();
+    osj.a().b();
   }
 }
 

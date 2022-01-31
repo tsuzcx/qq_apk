@@ -1,24 +1,35 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class ahku
   implements View.OnClickListener
 {
-  ahku(ahkf paramahkf) {}
+  ahku(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (akva.a().a() == 4) {
-      axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akuz.b(), akva.b(), akva.a(), "0");
-    }
-    for (;;)
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      this.a.a(12, 0);
-      this.a.a(-1, null);
-      return;
-      axqw.b(ahkf.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akuz.b(), akva.b(), akva.a(), "0");
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        this.a.jdField_b_of_type_Boolean = true;
+      }
+      this.a.c();
     }
+    do
+    {
+      return;
+      paramView = new Intent(ahkd.a(this.a), QRLoginMgrActivity.class);
+      paramView.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
+      paramView.putExtra("appType", this.a.jdField_b_of_type_Int);
+      paramView.putExtra("subappid", this.a.a);
+      paramView.putExtra("clientType", this.a.jdField_b_of_type_Long);
+      ahkd.a(this.a).startActivity(paramView);
+      axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
+    } while (this.a.jdField_b_of_type_Long != 77313L);
+    axqy.b(ahkd.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
   }
 }
 

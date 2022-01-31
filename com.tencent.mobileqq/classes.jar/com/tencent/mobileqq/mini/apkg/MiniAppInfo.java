@@ -56,7 +56,7 @@ import java.util.Set;
 import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yxr;
+import yxo;
 
 public class MiniAppInfo
   implements Parcelable, Serializable
@@ -430,7 +430,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(yxr.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(yxo.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)

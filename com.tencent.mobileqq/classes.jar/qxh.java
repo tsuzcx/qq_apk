@@ -1,65 +1,36 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class qxh
-  implements Handler.Callback
+  extends npr
 {
-  qxh(qxf paramqxf) {}
+  private qxh(qxg paramqxg) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qxf.a(), 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    for (;;)
     {
-    default: 
-    case 0: 
-      label175:
-      label181:
-      do
+      return;
+      String str = paramBundle.getString("VALUE_VIDEO_VID");
+      int i = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+      if (!TextUtils.isEmpty(str))
       {
-        return false;
-        qxf.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-        long l2 = this.a.jdField_a_of_type_Qyj.a();
-        long l1;
-        if (this.a.jdField_a_of_type_Boolean)
+        paramBundle = qxg.a(this.a).a().iterator();
+        while (paramBundle.hasNext())
         {
-          l1 = qxf.a(this.a).a();
-          if (l1 <= l2) {
-            break label175;
+          VideoInfo localVideoInfo = (VideoInfo)paramBundle.next();
+          if ((str.equals(localVideoInfo.a)) && (i > 0) && (localVideoInfo.s == 0))
+          {
+            localVideoInfo.s = i;
+            qxg.a(this.a).b(localVideoInfo);
           }
         }
-        for (;;)
-        {
-          l1 = 3000L - (System.currentTimeMillis() - l1);
-          if (l1 <= 0L) {
-            break label181;
-          }
-          qxf.a(this.a).removeMessages(0);
-          qxf.a(this.a).sendEmptyMessageDelayed(0, l1);
-          return false;
-          l1 = this.a.jdField_a_of_type_Qxr.a();
-          break;
-          l1 = l2;
-        }
-      } while (this.a.jdField_a_of_type_Qxu.a() == null);
-      if (this.a.jdField_a_of_type_Qxu.a().d())
-      {
-        qxf.a(this.a, false);
-        return false;
       }
-      qxf.b(this.a, true);
-      return false;
     }
-    qol.b(qxf.a(this.a), 0);
-    qxf.a(this.a).setAlpha(0.2F);
-    return false;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import osj;
+import osg;
 
 public final class VideoFeedsHelper$15
   implements Runnable
@@ -9,7 +9,7 @@ public final class VideoFeedsHelper$15
   
   public void run()
   {
-    osj.a().b(this.a, 2);
+    osg.a().b(this.a, 2);
   }
 }
 

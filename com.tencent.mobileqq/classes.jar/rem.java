@@ -1,6 +1,17 @@
-public abstract interface rem
+import java.util.List;
+
+class rem
+  extends oyd
 {
-  public abstract void a(String paramString);
+  rem(rel paramrel, String paramString, List paramList)
+  {
+    super(paramString);
+  }
+  
+  public void a(oxx paramoxx)
+  {
+    paramoxx.a(this.jdField_a_of_type_JavaUtilList);
+  }
 }
 
 

@@ -1,22 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 class anlp
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  anlp(anlo paramanlo) {}
+  anlp(anlm paramanlm, WindowManager paramWindowManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.d();
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlm.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

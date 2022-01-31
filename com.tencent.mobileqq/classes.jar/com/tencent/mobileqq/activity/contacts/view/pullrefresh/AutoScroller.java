@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
-import aftk;
+import afti;
 import android.widget.Scroller;
 
 public class AutoScroller
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private aftk jdField_a_of_type_Aftk;
+  private afti jdField_a_of_type_Afti;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   private CommonRefreshLayout jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout;
   private boolean jdField_a_of_type_Boolean;
@@ -24,8 +24,8 @@ public class AutoScroller
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.removeCallbacks(this);
-    if ((!this.b) && (this.jdField_a_of_type_Aftk != null)) {
-      this.jdField_a_of_type_Aftk.a();
+    if ((!this.b) && (this.jdField_a_of_type_Afti != null)) {
+      this.jdField_a_of_type_Afti.a();
     }
   }
   
@@ -55,9 +55,9 @@ public class AutoScroller
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(aftk paramaftk)
+  public void a(afti paramafti)
   {
-    this.jdField_a_of_type_Aftk = paramaftk;
+    this.jdField_a_of_type_Afti = paramafti;
   }
   
   public boolean a()
@@ -81,8 +81,8 @@ public class AutoScroller
       return;
     }
     this.jdField_a_of_type_Int = j;
-    if (this.jdField_a_of_type_Aftk != null) {
-      this.jdField_a_of_type_Aftk.a(j - k);
+    if (this.jdField_a_of_type_Afti != null) {
+      this.jdField_a_of_type_Afti.a(j - k);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.post(this);
   }

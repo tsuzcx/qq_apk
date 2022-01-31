@@ -1,146 +1,64 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import java.util.Date;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class avph
+  implements auoq
 {
-  private static bfms<Integer> jdField_a_of_type_Bfms;
-  private static String jdField_a_of_type_JavaLangString = "ReceiptUtil";
-  private static boolean jdField_a_of_type_Boolean;
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public avph(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
   {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
-    }
-    return actb.a;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private static long a(String paramString)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    try
+    return null;
+  }
+  
+  public void a(auor paramauor) {}
+  
+  public void b(auor paramauor)
+  {
+    if (paramauor.jdField_a_of_type_Int == 0)
     {
-      long l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
+      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageForStructing.structingMsg.mResid = paramauor.c;
+      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+        QLog.d("ReceiptMsgManager", 2, "send real struct msg done, uniseq: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
       }
-    }
-    return -1L;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
-    }
-    int i = c(paramQQAppInterface) + 1;
-    a(paramQQAppInterface, i);
-    if (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "increaseSentNum with result:  " + Integer.toString(i));
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setSentNum: " + paramInt);
+      QLog.d("ReceiptMsgManager", 2, "upload receipt msg pack failed, result.errStr=" + paramauor.b + ",result.errStr=" + paramauor.jdField_a_of_type_JavaLangString + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
     }
-    jdField_a_of_type_Bfms.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(paramInt));
-    paramQQAppInterface.getPreferences().edit().putInt("receipt_msg_sent_num", paramInt).apply();
-  }
-  
-  public static boolean a()
-  {
-    return actb.b;
-  }
-  
-  private static boolean a(long paramLong1, long paramLong2)
-  {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong2);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    Date localDate = localCalendar.getTime();
-    localCalendar.setTimeInMillis(paramLong1);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    if (localDate.compareTo(localCalendar.getTime()) == 0) {
-      bool = true;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
+    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    paramauor = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramauor != null) && (paramauor.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+      paramauor.extraflag = 32768;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramLong1 + " and " + paramLong2 + "isToday? " + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null)
-    {
-      bool1 = bool2;
-      if ((paramMessageRecord instanceof MessageForStructing))
-      {
-        bool1 = bool2;
-        if (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 107) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
-    }
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-    long l1 = localSharedPreferences.getLong("receipt_msg_store_time", 0L);
-    long l2 = NetConnInfoCenter.getServerTime() * 1000L;
-    if (!a(l1, l2))
-    {
-      a(paramQQAppInterface, 0);
-      localSharedPreferences.edit().putLong("receipt_msg_store_time", l2).apply();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getLeftNum max is " + a(paramQQAppInterface));
-    }
-    return a(paramQQAppInterface) - c(paramQQAppInterface);
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-    jdField_a_of_type_Bfms = new bfms(1);
-    int i = localSharedPreferences.getInt("receipt_msg_sent_num", 0);
-    jdField_a_of_type_Bfms.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(i));
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  private static int c(QQAppInterface paramQQAppInterface)
-  {
-    int i = ((Integer)jdField_a_of_type_Bfms.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(0))).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getSentNum is " + i);
-    }
-    return i;
+    paramauor = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).notifyUI(MessageHandler.a(this.jdField_a_of_type_Int), false, new Object[] { paramauor, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
 }
 

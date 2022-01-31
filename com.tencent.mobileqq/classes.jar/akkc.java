@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
 class akkc
-  extends ajtq
+  extends ajxj
 {
-  akkc(akkb paramakkb) {}
+  akkc(akka paramakka) {}
   
-  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
+  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
-    }
-    akkb.a(this.a, akkb.a(this.a, paramInt));
-    if ((akkb.a(this.a)) && (akkb.a(this.a) != null)) {
-      this.a.b(akkb.a(this.a).c());
-    }
+    akka.a(this.a, paramBoolean2, paramBundle);
   }
 }
 

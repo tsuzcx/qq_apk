@@ -1,16 +1,15 @@
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aqci
-  extends aqgi
+class aqci
+  implements View.OnClickListener
 {
-  public aqci(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
+  aqci(aqcg paramaqcg) {}
   
-  protected boolean g()
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.D();
+    aqcg.a(this.a);
   }
 }
 

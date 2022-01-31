@@ -1,58 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
 
 public class nxf
-  extends akdo
+  extends Handler
 {
-  public nxf(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong)
+  public nxf(ReadInJoyUploadAvatarActivity paramReadInJoyUploadAvatarActivity, Looper paramLooper)
   {
-    if (paramLong != 2171946401L) {
-      return;
-    }
-    Object localObject = this.a;
-    ((ReadInJoySettingActivity)localObject).jdField_a_of_type_Int -= 1;
-    if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-      this.a.jdField_a_of_type_Bcpq.dismiss();
-    }
-    boolean bool;
-    if (paramInt == this.a.b)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Intent localIntent = this.a.getIntent();
+    Bundle localBundle = new Bundle();
+    switch (paramMessage.what)
     {
-      bool = ReadInJoySettingActivity.a(this.a);
-      if (!paramBoolean) {
-        break label202;
-      }
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (bool) {
-        break label168;
-      }
-      paramBoolean = true;
-      ((Switch)localObject).setChecked(paramBoolean);
-      if (!bool) {
-        break label173;
-      }
-      noo.a(null, "CliOper", "", "", "0X80067D5", "0X80067D5", 0, 0, "", "", "", onk.c(), false);
-      label147:
-      ReadInJoySettingActivity.a(this.a).a(bool);
+    default: 
+      localBundle.putString("msg", ajya.a(2131713034));
+      localBundle.putInt("retCode", 3);
+      localIntent.putExtra("Bundle", localBundle);
+      this.a.setResult(-1, localIntent);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Boolean = false;
+      if (!localIntent.getBooleanExtra("finish", false))
+      {
+        localIntent.setClassName("com.tencent.mobileqq", PublicAccountBrowser.class.getName());
+        localIntent.addFlags(603979776);
+        this.a.startActivity(localIntent);
+      }
+      this.a.finish();
       return;
-      label168:
-      paramBoolean = false;
-      break;
-      label173:
-      noo.a(null, "CliOper", "", "", "0X800676D", "0X800676D", 0, 0, "", "", "", onk.c(), false);
-      break label147;
-      label202:
-      bcpw.a(this.a.getApplicationContext(), 2131699653, 0).a();
-      this.a.c = true;
-      ReadInJoySettingActivity.a(this.a).setChecked(bool);
-      QLog.d("ReadInJoySettingActivity", 1, "handle setkandian recomm failed");
+      localBundle.putString("url", (String)paramMessage.obj);
+      localBundle.putInt("retCode", 0);
+      localBundle.putString("msg", ajya.a(2131713093));
+      localIntent.putExtra("Bundle", localBundle);
+      this.a.setResult(-1, localIntent);
     }
   }
 }

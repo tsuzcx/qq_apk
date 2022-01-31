@@ -1,51 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class azhy
-  implements View.OnClickListener
+  implements bara
 {
-  int jdField_a_of_type_Int = 0;
-  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
-  String jdField_a_of_type_JavaLangString;
+  public azhy(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public azhy(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null) {
-      return;
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
+      TroopBarReplyActivity.a(this.a, false);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
-      }
-      else if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
-        continue;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
-        if (paramView != null) {
-          paramView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-        }
-      }
-    }
+    return false;
   }
 }
 

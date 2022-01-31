@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class oyd
-  implements View.OnClickListener
+public abstract class oyd
 {
-  oyd(oyc paramoyc) {}
+  public Object a;
+  private String a;
   
-  public void onClick(View paramView)
+  public oyd(String paramString)
   {
-    this.a.a(false);
-    ThreadManager.executeOnSubThread(new FrameworkHandler.1.1(this));
+    this.a = paramString;
   }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(oxx paramoxx);
 }
 
 

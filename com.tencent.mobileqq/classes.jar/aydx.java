@@ -1,22 +1,34 @@
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+
 public class aydx
+  extends aykk
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  public aydx(CharSequence paramCharSequence, int paramInt)
+  {
+    super(paramCharSequence, paramInt);
+  }
+  
+  protected void a(View paramView, String paramString)
+  {
+    paramString = Uri.parse(paramString);
+    paramView = paramView.getContext();
+    paramString = new Intent("android.intent.action.VIEW", paramString);
+    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
+    try
+    {
+      paramView.startActivity(paramString);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
+    }
+  }
 }
 
 

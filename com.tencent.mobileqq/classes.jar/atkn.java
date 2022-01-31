@@ -1,18 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-final class atkn
-  implements TVK_ICacheMgr.IPreloadCallback
+public class atkn
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
-  }
+  public int a;
+  public View a;
+  public ViewGroup a;
+  public RelativeLayout a;
+  public VideoData a;
+  public OperationView a;
+  public QQStoryVideoPlayerErrorView a;
+  public ImageDisplayView a;
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
-  }
+  public atkn(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
 }
 
 

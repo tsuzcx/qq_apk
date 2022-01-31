@@ -1,6 +1,6 @@
 package cooperation.qzone.video;
 
-import asyp;
+import asyr;
 import com.tencent.mobileqq.myapp.net.HttpResponseException;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ public class TcSdkDownloadReportServlet$ReportRunnable
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "tcSdkReport, report:" + this.a);
       }
-      asyp.a(this.a, null, "GET", null);
+      asyr.a(this.a, null, "GET", null);
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "report success");
       }

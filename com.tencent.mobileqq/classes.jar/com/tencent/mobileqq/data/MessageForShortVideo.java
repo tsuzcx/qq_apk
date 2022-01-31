@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anjj;
-import axad;
-import axdr;
-import bcpf;
+import anjo;
+import axaf;
+import axdt;
+import bcpu;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -36,7 +36,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new anjj();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new anjo();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -76,7 +76,7 @@ public class MessageForShortVideo
   public long lastModified;
   public String mLocalMd5;
   public boolean mPreUpload;
-  public bcpf mProgressPie;
+  public bcpu mProgressPie;
   public Runnable mShowProgressTask;
   public String mThumbFilePath;
   public String mVideoFileSourceDir;
@@ -273,11 +273,11 @@ public class MessageForShortVideo
     }
     else
     {
-      if (!"1".equals(getExtInfoFromExtStr(axad.n))) {
+      if (!"1".equals(getExtInfoFromExtStr(axaf.n))) {
         break label696;
       }
       this.syncToStory = true;
-      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(axad.z));
+      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(axaf.z));
       return;
     }
   }
@@ -293,22 +293,22 @@ public class MessageForShortVideo
     return this.msgData;
   }
   
-  public axdr getDownloadInfo(int paramInt)
+  public axdt getDownloadInfo(int paramInt)
   {
-    axdr localaxdr = new axdr();
-    localaxdr.jdField_a_of_type_Int = paramInt;
-    localaxdr.jdField_a_of_type_Long = this.uniseq;
-    localaxdr.jdField_b_of_type_Int = this.istroop;
-    localaxdr.jdField_b_of_type_JavaLangString = this.selfuin;
-    localaxdr.jdField_c_of_type_JavaLangString = this.frienduin;
-    localaxdr.jdField_d_of_type_JavaLangString = this.senderuin;
-    localaxdr.jdField_a_of_type_JavaLangString = this.uuid;
-    localaxdr.e = this.md5;
-    localaxdr.jdField_c_of_type_Int = this.videoFileTime;
-    localaxdr.jdField_d_of_type_Int = this.videoFileFormat;
-    localaxdr.jdField_c_of_type_Int = this.videoFileTime;
-    localaxdr.g = this.thumbMD5;
-    return localaxdr;
+    axdt localaxdt = new axdt();
+    localaxdt.jdField_a_of_type_Int = paramInt;
+    localaxdt.jdField_a_of_type_Long = this.uniseq;
+    localaxdt.jdField_b_of_type_Int = this.istroop;
+    localaxdt.jdField_b_of_type_JavaLangString = this.selfuin;
+    localaxdt.jdField_c_of_type_JavaLangString = this.frienduin;
+    localaxdt.jdField_d_of_type_JavaLangString = this.senderuin;
+    localaxdt.jdField_a_of_type_JavaLangString = this.uuid;
+    localaxdt.e = this.md5;
+    localaxdt.jdField_c_of_type_Int = this.videoFileTime;
+    localaxdt.jdField_d_of_type_Int = this.videoFileFormat;
+    localaxdt.jdField_c_of_type_Int = this.videoFileTime;
+    localaxdt.g = this.thumbMD5;
+    return localaxdt;
   }
   
   public String getMd5()
@@ -449,7 +449,7 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return ajyc.a(2131706613);
+      return ajya.a(2131706624);
     }
     return this.msg;
   }

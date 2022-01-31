@@ -1,18 +1,25 @@
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahko
   implements View.OnClickListener
 {
-  ahko(ahkf paramahkf) {}
+  ahko(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    ahkf.a(this.a).app.a().a("0X800474F", 1);
-    bgmt.a(ahkf.a(this.a), 4, null);
-    axqw.a(ahkf.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    bgph.a(ahkd.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 

@@ -1,51 +1,98 @@
-import com.tencent.biz.qqstory.database.PromoteTaskEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.PromoteTask;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tei
 {
   public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  private final String a;
+  public final String[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public final int h;
   
-  public static tei a(qqstory_service.PromoteTask paramPromoteTask)
+  private tei(JSONObject paramJSONObject)
   {
-    tei localtei = new tei();
-    localtei.jdField_a_of_type_Long = paramPromoteTask.uint64_taskid.get();
-    localtei.jdField_a_of_type_Int = paramPromoteTask.uint32_promote_type.get();
-    localtei.jdField_a_of_type_JavaLangString = paramPromoteTask.bytes_union_id.get().toStringUtf8();
-    localtei.jdField_b_of_type_JavaLangString = paramPromoteTask.bytes_feed_id.get().toStringUtf8();
-    localtei.jdField_b_of_type_Long = paramPromoteTask.uint64_limit_count.get();
-    localtei.c = paramPromoteTask.uint64_minimal_video_count.get();
-    localtei.d = paramPromoteTask.uint64_expire_time.get();
-    return localtei;
+    int j;
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
+      this.h = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.b = localJSONArray.getInt(0);
+      this.c = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.d = localJSONArray.getInt(0);
+      this.e = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.f = localJSONArray.getInt(0);
+      this.g = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONArray("c");
+      j = paramJSONObject.length();
+      if (j < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    while (i < j)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
+      i += 1;
+    }
   }
   
-  public PromoteTaskEntry a()
+  public static tei a(@Nullable String paramString)
   {
-    PromoteTaskEntry localPromoteTaskEntry = new PromoteTaskEntry();
-    localPromoteTaskEntry.taskId = this.jdField_a_of_type_Long;
-    localPromoteTaskEntry.type = this.jdField_a_of_type_Int;
-    localPromoteTaskEntry.unionId = this.jdField_a_of_type_JavaLangString;
-    localPromoteTaskEntry.feedId = this.jdField_b_of_type_JavaLangString;
-    localPromoteTaskEntry.limitPromoteCount = this.jdField_b_of_type_Long;
-    localPromoteTaskEntry.minimalVideoCount = this.c;
-    localPromoteTaskEntry.expireTime = this.d;
-    localPromoteTaskEntry.promoteCount = this.e;
-    return localPromoteTaskEntry;
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ved.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      ved.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static tei a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new tei(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      ved.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public String toString()
   {
-    return "PromoteTaskItem{taskId=" + this.jdField_a_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", limitPromoteCount=" + this.jdField_b_of_type_Long + ", minimalVideoCount=" + this.c + ", expireTime=" + this.d + ", promoteCount=" + this.e + '}';
+    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

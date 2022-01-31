@@ -1,6 +1,6 @@
 public abstract interface adnz
 {
-  public abstract void a();
+  public abstract void onUpdate(int paramInt);
 }
 
 

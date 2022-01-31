@@ -1,25 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.widget.RecentDynamicAvatarView;
+import java.util.List;
 
-public class aikt
-  extends RecyclerView.ViewHolder
+class aikt
+  implements View.OnClickListener
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
-  TextView b;
+  aikt(aiks paramaiks, aikr paramaikr, int paramInt) {}
   
-  public aikt(SessionClearFragment paramSessionClearFragment, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364193));
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367679));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-    this.b = ((TextView)paramView.findViewById(2131376248));
+    if (this.jdField_a_of_type_Aikr.a.isChecked()) {}
+    for (((akrl)this.jdField_a_of_type_Aiks.a.get(this.jdField_a_of_type_Int)).a = false;; ((akrl)this.jdField_a_of_type_Aiks.a.get(this.jdField_a_of_type_Int)).a = true)
+    {
+      this.jdField_a_of_type_Aiks.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aiks.a();
+      return;
+    }
   }
 }
 

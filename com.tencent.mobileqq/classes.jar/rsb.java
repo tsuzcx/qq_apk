@@ -1,12 +1,22 @@
-public abstract interface rsb
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+
+public class rsb
+  implements rsi
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public abstract boolean a(int paramInt);
+  public rsb(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
   
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rsc(this, paramInt1, paramInt2));
+  }
 }
 
 

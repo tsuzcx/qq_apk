@@ -2,10 +2,10 @@ package cooperation.qqreader.host.advertisement;
 
 import android.support.annotation.NonNull;
 import android.view.View;
-import yyc;
+import yxz;
 
 public abstract class ReaderGdtSdk$ReportListener
-  implements yyc
+  implements yxz
 {
   private ReaderAdWrapper a;
   
@@ -16,7 +16,7 @@ public abstract class ReaderGdtSdk$ReportListener
   
   public final void reportImpression(View paramView)
   {
-    if (paramView.getTag(2131379206) == this.a.a()) {
+    if (paramView.getTag(2131379211) == this.a.a()) {
       reportImpression(paramView, this.a);
     }
   }

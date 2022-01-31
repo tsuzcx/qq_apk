@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import java.net.URL;
 
 public class soe
-  implements View.OnClickListener
 {
-  public soe(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public int a;
+  public URL a;
+  public int b;
   
-  public void onClick(View paramView)
+  public static soe a(URL paramURL, int paramInt1, int paramInt2)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
-    PublicAccountImageCollectionCommentActivity.b(this.a, false);
+    soe localsoe = new soe();
+    localsoe.jdField_a_of_type_JavaNetURL = paramURL;
+    localsoe.jdField_a_of_type_Int = paramInt1;
+    localsoe.b = paramInt2;
+    return localsoe;
   }
 }
 

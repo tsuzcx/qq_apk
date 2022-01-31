@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
-import bfff;
-import bffu;
+import bffw;
+import bfgl;
 
 public class MiniTranslucentFragmentActivity
   extends MiniFragmentActivity
 {
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass, int paramInt)
   {
-    bfff.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
+    bffw.a(paramActivity, paramIntent, MiniTranslucentFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniBaseFragment> paramClass)
@@ -31,7 +31,7 @@ public class MiniTranslucentFragmentActivity
   public void onCreate(@Nullable Bundle paramBundle)
   {
     getWindow().addFlags(67108864);
-    bffu.b(this);
+    bfgl.b(this);
     super.onCreate(paramBundle);
   }
   

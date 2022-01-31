@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import ajvi;
+import ajvg;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bduw;
+import bdvn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.manager.TicketManager;
-import wfl;
-import wgo;
-import wim;
+import wfi;
+import wgl;
+import wij;
 
 class QRDisplayActivity$3
   implements Runnable
@@ -93,7 +93,7 @@ class QRDisplayActivity$3
       if (this.this$0.jdField_c_of_type_Boolean)
       {
         localObject1 = ((Intent)localObject2).getStringExtra("groupOwner");
-        ((bduw)this.this$0.app.a(85)).b(this.this$0.jdField_c_of_type_JavaLangString, (String)localObject1);
+        ((bdvn)this.this$0.app.a(85)).b(this.this$0.jdField_c_of_type_JavaLangString, (String)localObject1);
         return;
       }
       Object localObject3 = (TicketManager)this.this$0.app.getManager(2);
@@ -101,11 +101,11 @@ class QRDisplayActivity$3
       localObject3 = ((TicketManager)localObject3).getSkey((String)localObject1);
       String str = ((Intent)localObject2).getStringExtra("uin");
       i = ((Intent)localObject2).getIntExtra("type", 1);
-      localObject2 = new wgo(null);
-      ((wgo)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.this$0);
-      ((wgo)localObject2).jdField_a_of_type_Int = i;
-      ((wgo)localObject2).jdField_a_of_type_JavaLangString = str;
-      wim.a(this.this$0.app, this.this$0, str, i, (String)localObject1, (String)localObject3, (wfl)localObject2);
+      localObject2 = new wgl(null);
+      ((wgl)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.this$0);
+      ((wgl)localObject2).jdField_a_of_type_Int = i;
+      ((wgl)localObject2).jdField_a_of_type_JavaLangString = str;
+      wij.a(this.this$0.app, this.this$0, str, i, (String)localObject1, (String)localObject3, (wfi)localObject2);
       continue;
       label732:
       localObject1 = this.this$0.getSharedPreferences("qrcode", 0);
@@ -115,19 +115,19 @@ class QRDisplayActivity$3
       if (this.this$0.jdField_b_of_type_Long - System.currentTimeMillis() / 1000L > 0L) {
         i = 1;
       }
-      this.this$0.findViewById(2131373433).setOnClickListener(this.this$0);
+      this.this$0.findViewById(2131373435).setOnClickListener(this.this$0);
       if ((this.this$0.jdField_d_of_type_JavaLangString == null) || (this.this$0.jdField_e_of_type_JavaLangString == null) || (i == 0)) {
         break label980;
       }
-      ((TextView)this.this$0.findViewById(2131372613)).setText(this.this$0.jdField_d_of_type_JavaLangString);
-      this.this$0.jdField_a_of_type_Ij = wim.a(this.this$0.jdField_d_of_type_JavaLangString, -1);
+      ((TextView)this.this$0.findViewById(2131372615)).setText(this.this$0.jdField_d_of_type_JavaLangString);
+      this.this$0.jdField_a_of_type_Ij = wij.a(this.this$0.jdField_d_of_type_JavaLangString, -1);
       this.this$0.f();
     }
     label980:
     if (QLog.isDevelopLevel()) {
       QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
     }
-    this.this$0.jdField_a_of_type_Ajvi.a(Long.parseLong(this.this$0.jdField_c_of_type_JavaLangString), true);
+    this.this$0.jdField_a_of_type_Ajvg.a(Long.parseLong(this.this$0.jdField_c_of_type_JavaLangString), true);
   }
 }
 

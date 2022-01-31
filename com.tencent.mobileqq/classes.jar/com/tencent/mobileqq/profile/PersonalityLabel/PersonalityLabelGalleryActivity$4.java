@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.text.TextUtils;
-import auoq;
-import autb;
+import auos;
+import autd;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -31,7 +31,7 @@ class PersonalityLabelGalleryActivity$4
       }
       localObject = new CompressInfo((String)localObject, 0);
       ((CompressInfo)localObject).f = 0;
-      auoq.b((CompressInfo)localObject);
+      auos.b((CompressInfo)localObject);
       if (QLog.isColorLevel()) {
         QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
       }
@@ -58,7 +58,7 @@ class PersonalityLabelGalleryActivity$4
       }
     }
     if (localArrayList.size() > 0) {
-      this.this$0.jdField_a_of_type_Autb.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
+      this.this$0.jdField_a_of_type_Autd.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
     }
     this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.3(this));
   }

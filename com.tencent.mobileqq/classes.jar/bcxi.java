@@ -1,31 +1,25 @@
+import android.os.Bundle;
+
 public class bcxi
+  extends bcxh
 {
-  private static bgqr a;
-  
-  private static bgqr a()
+  public bcxi(Bundle paramBundle)
   {
-    try
-    {
-      if (a == null)
-      {
-        a = new bgqr();
-        a.a("OpenLog");
-        a.a(4);
-      }
-      bgqr localbgqr = a;
-      return localbgqr;
-    }
-    finally {}
+    super(paramBundle);
   }
   
-  public static bgqr a(String paramString1, int paramInt, String paramString2)
+  public String a(String paramString1, String paramString2)
   {
-    return a().c(paramString1, paramInt, paramString2);
+    paramString1 = this.a.getBundle(paramString1);
+    if (paramString1 != null) {
+      return paramString1.getString(paramString2);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcxi
  * JD-Core Version:    0.7.0.1
  */

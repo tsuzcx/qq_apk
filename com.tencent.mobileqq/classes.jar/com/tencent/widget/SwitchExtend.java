@@ -2,12 +2,12 @@ package com.tencent.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bfvr;
+import bfwi;
 
 public class SwitchExtend
   extends Switch
 {
-  private bfvr a;
+  private bfwi a;
   
   public SwitchExtend(Context paramContext)
   {
@@ -32,9 +32,9 @@ public class SwitchExtend
     return false;
   }
   
-  public void setOnSwitchListener(bfvr parambfvr)
+  public void setOnSwitchListener(bfwi parambfwi)
   {
-    this.a = parambfvr;
+    this.a = parambfwi;
   }
 }
 

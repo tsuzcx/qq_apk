@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import java.lang.ref.WeakReference;
 
-public class azza
-  implements DialogInterface.OnClickListener
+class azza
+  implements aycd
 {
-  public azza(ReciteRecordLayout paramReciteRecordLayout) {}
+  final WeakReference<SpriteVideoView> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private azza(SpriteVideoView paramSpriteVideoView)
   {
-    this.a.c();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).e();
+    this.a = new WeakReference(paramSpriteVideoView);
+  }
+  
+  public void a()
+  {
+    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
+    if (localSpriteVideoView != null) {
+      localSpriteVideoView.setVisibility(8);
     }
-    paramDialogInterface.dismiss();
   }
 }
 

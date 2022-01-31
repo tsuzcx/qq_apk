@@ -1,9 +1,12 @@
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 
-@Deprecated
 public abstract interface amxo
 {
+  public abstract long a();
+  
   public abstract ExcitingTransferDownloadConfig a();
+  
+  public abstract boolean a();
 }
 
 

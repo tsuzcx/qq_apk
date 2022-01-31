@@ -1,55 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class arbj
-  extends RecyclerView.Adapter
+  implements TVK_SDKMgr.InstallListener
 {
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new arbk(this);
-  aqyv jdField_a_of_type_Aqyv;
+  arbj(arbb paramarbb) {}
   
-  public arbj(@NonNull RecyclerView.Adapter paramAdapter, aqyv paramaqyv)
-  {
-    this.jdField_a_of_type_Aqyv = paramaqyv;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
-  }
+  public void onInstallProgress(float paramFloat) {}
   
-  public int getItemCount()
+  public void onInstalledFailed(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqyv == null) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+    arbb.a = false;
+    this.a.a(ajya.a(2131708410));
+    if (QLog.isColorLevel()) {
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + 1;
   }
   
-  public int getItemViewType(int paramInt)
+  public void onInstalledSuccessed()
   {
-    if ((this.jdField_a_of_type_Aqyv != null) && (paramInt == getItemCount() - 1)) {
-      return 2147483647;
-    }
-    return super.getItemViewType(paramInt);
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aqyv != null) && (paramInt == getItemCount() - 1))
+    arbb.a = false;
+    if (!this.a.c)
     {
-      this.jdField_a_of_type_Aqyv.a(paramViewHolder, paramInt);
-      return;
+      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Aqyv != null) && (2147483647 == paramInt)) {
-      return this.jdField_a_of_type_Aqyv.a(paramViewGroup, paramInt);
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 

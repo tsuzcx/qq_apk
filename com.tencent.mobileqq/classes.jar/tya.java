@@ -1,19 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 class tya
-  implements Animation.AnimationListener
+  extends szr
 {
-  tya(txw paramtxw) {}
+  tya(txy paramtxy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.a.dismiss();
+    ved.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!txt.b(this.a.a)) {
+      txt.a(this.a.a).p();
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  {
+    tbw localtbw = (tbw)tcz.a(17);
+    localtbw.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localtbw.a(paramCommentEntry);
+    return true;
+  }
 }
 
 

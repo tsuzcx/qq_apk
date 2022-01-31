@@ -1,16 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
-import java.util.ArrayList;
 
 public class whc
-  implements wij
+  implements DialogInterface.OnClickListener
 {
   public whc(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void a(ArrayList<wig> paramArrayList)
-  {
-    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,33 +1,69 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
-public final class leu
-  implements les
+public class leu
 {
-  public leu(long paramLong1, int paramInt, let paramlet, lcs paramlcs, VideoAppInterface paramVideoAppInterface, long paramLong2, les paramles) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
   
-  public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
+  public leu()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    paramString2 = DeviceCapabilityExamination.a(this.jdField_a_of_type_Int, paramInt1, paramInt3, this.jdField_a_of_type_Let.a, paramString1, paramInt2, l1 - l2);
-    paramString2.f = this.jdField_a_of_type_Lcs.jdField_a_of_type_Int;
-    paramString2.g = this.jdField_a_of_type_Lcs.b;
-    paramString2.h = this.jdField_a_of_type_Lcs.c;
-    paramString2.i = this.jdField_a_of_type_Lcs.d;
-    if ((paramInt1 == 1) && (this.jdField_a_of_type_Let.a()) && (this.jdField_a_of_type_Lcs.jdField_a_of_type_Boolean)) {
-      new mur(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.b).a(this.jdField_a_of_type_Let.d, new lev(this, paramString2, paramInt1, paramString1, paramInt2, paramInt3));
-    }
-    for (;;)
-    {
-      com.tencent.av.mediacodec.NativeCodec.printLog = false;
-      return;
-      paramString2.j = -10000;
-      DeviceCapabilityExamination.a(paramString2, this.jdField_a_of_type_Int, paramInt1);
-      if (this.jdField_a_of_type_Les != null) {
-        this.jdField_a_of_type_Les.a(paramInt1, paramString1, paramInt2, paramInt3, null);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = Build.HARDWARE;
+    this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
+    this.jdField_c_of_type_JavaLangString = Build.MODEL;
+    this.jdField_d_of_type_JavaLangString = Build.PRODUCT;
+    this.jdField_e_of_type_JavaLangString = Build.FINGERPRINT;
+    this.jdField_f_of_type_JavaLangString = llw.a();
+    this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
+    this.jdField_i_of_type_JavaLangString = "";
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_d_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_e_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_f_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_g_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_h_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_i_of_type_Int).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString).append("|");
+    QLog.w("DeviceCapabilityExamination", 1, "ReportData:" + localStringBuilder.toString());
+    return localStringBuilder.toString();
   }
 }
 

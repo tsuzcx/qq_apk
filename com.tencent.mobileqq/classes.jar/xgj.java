@@ -1,187 +1,244 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class xgj
 {
-  public static String a;
-  private static xgj jdField_a_of_type_Xgj;
-  private Map<String, xgl> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static volatile xgj jdField_a_of_type_Xgj;
+  private HashMap<String, xgm> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private xfr jdField_a_of_type_Xfr;
+  private xft jdField_a_of_type_Xft;
+  private HashMap<String, xgn> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private xfr jdField_b_of_type_Xfr;
+  private xft jdField_b_of_type_Xft;
   
-  private xgj()
-  {
-    a(BaseApplicationImpl.getContext());
-  }
-  
-  private String a(Context paramContext)
-  {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      paramContext = paramContext.getExternalFilesDir("video_story");
-      if (paramContext != null) {
-        jdField_a_of_type_JavaLangString = paramContext.getAbsolutePath();
-      }
-    }
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      paramContext = Environment.getExternalStorageDirectory().getAbsolutePath();
-      jdField_a_of_type_JavaLangString = paramContext + "/Tencent/MobileQQ/" + "video_story";
-    }
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "intDownLoadRoot" + jdField_a_of_type_JavaLangString);
-    return null;
-  }
-  
+  /* Error */
   public static xgj a()
   {
-    try
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 27	xgj:jdField_a_of_type_Xgj	Lxgj;
+    //   6: ifnonnull +25 -> 31
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 27	xgj:jdField_a_of_type_Xgj	Lxgj;
+    //   15: ifnonnull +13 -> 28
+    //   18: new 2	xgj
+    //   21: dup
+    //   22: invokespecial 28	xgj:<init>	()V
+    //   25: putstatic 27	xgj:jdField_a_of_type_Xgj	Lxgj;
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: getstatic 27	xgj:jdField_a_of_type_Xgj	Lxgj;
+    //   34: astore_0
+    //   35: ldc 2
+    //   37: monitorexit
+    //   38: aload_0
+    //   39: areturn
+    //   40: astore_0
+    //   41: ldc 2
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: athrow
+    //   46: astore_0
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_0
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   34	5	0	localxgj	xgj
+    //   40	5	0	localObject1	Object
+    //   46	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	28	40	finally
+    //   28	31	40	finally
+    //   41	44	40	finally
+    //   3	12	46	finally
+    //   31	35	46	finally
+    //   44	46	46	finally
+  }
+  
+  private void a(xfr paramxfr)
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleStyleConfig()");
+    String str;
+    if (paramxfr != null)
     {
-      if (jdField_a_of_type_Xgj == null) {
-        jdField_a_of_type_Xgj = new xgj();
+      str = paramxfr.a();
+      if (TextUtils.isEmpty(str)) {
+        QLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleStyleConfig error!");
       }
-      xgj localxgj = jdField_a_of_type_Xgj;
-      return localxgj;
     }
-    finally {}
+    else
+    {
+      return;
+    }
+    if (xgg.a().a(str))
+    {
+      a(paramxfr, xgg.a().b(str));
+      return;
+    }
+    xgg.a().a(paramxfr.a(), new xgk(this, paramxfr, str));
   }
   
-  public String a(String paramString)
+  private void a(xfr paramxfr, String paramString)
   {
-    try
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "initStyleConfigCache() path:" + paramString);
+    Iterator localIterator = paramxfr.a().keys();
+    while (localIterator.hasNext())
     {
-      paramString = paramString.split("/");
-      paramString = paramString[(paramString.length - 1)];
-      paramString = paramString.substring(0, paramString.indexOf(".zip"));
-      return paramString;
+      String str = (String)localIterator.next();
+      xgm localxgm = new xgm(this, str, paramxfr.a().optJSONObject(str));
+      localxgm.a(paramString);
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, localxgm);
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
   }
   
-  public void a(String paramString, Downloader.DownloadListener paramDownloadListener)
+  private void a(xft paramxft)
   {
-    QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:url is empty" });
-    }
-    String str1;
-    String str2;
-    xgl localxgl;
-    bbwl localbbwl;
-    bbwg localbbwg;
-    Bundle localBundle;
-    do
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleWidgetConfig()");
+    String str;
+    if (paramxft != null)
     {
-      do
+      str = paramxft.a();
+      if (TextUtils.isEmpty(str)) {
+        QLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleWidgetConfig error!");
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (xgg.a().a(str))
+    {
+      a(paramxft, xgg.a().b(str));
+      return;
+    }
+    xgg.a().a(paramxft.a(), new xgl(this, paramxft, str));
+  }
+  
+  private void a(xft paramxft, String paramString)
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "initWidgetConfigCache() path:" + paramString);
+    Object localObject1 = new File(paramString);
+    Object localObject2;
+    if (((File)localObject1).exists())
+    {
+      localObject2 = Arrays.asList(((File)localObject1).list());
+      if (!((List)localObject2).contains("widget@2x.png")) {
+        break label195;
+      }
+    }
+    label195:
+    for (localObject1 = paramString + "/" + "widget@2x.png";; localObject1 = "")
+    {
+      localObject2 = ((List)localObject2).iterator();
+      for (;;)
       {
-        do
+        String str;
+        if (((Iterator)localObject2).hasNext())
+        {
+          str = (String)((Iterator)localObject2).next();
+          if (!"widget@2x.png".equals(str)) {}
+        }
+        else
         {
           return;
-          str1 = a(paramString);
-          if (TextUtils.isEmpty(str1))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:prefixId is empty" });
-            return;
-          }
-          QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:prefixId:" + str1);
-          if (b(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource has download");
-            return;
-          }
-          if (c(str1))
-          {
-            QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByUrl:resource on download");
-            return;
-          }
-          if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-          {
-            QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByUrl:mDownLoadRoot is empty" });
-            return;
-          }
-          str2 = jdField_a_of_type_JavaLangString + "/" + str1 + ".zip";
-        } while (TextUtils.isEmpty(paramString));
-        localxgl = new xgl(this, null);
-        this.jdField_a_of_type_JavaUtilMap.put(str1, localxgl);
-        localbbwl = ((bbwi)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-      } while (localbbwl == null);
-      localbbwg = new bbwg(paramString, new File(str2));
-      localbbwg.b = 1;
-      localBundle = new Bundle();
-    } while (localbbwl == null);
-    localbbwl.a(localbbwg, new xgk(this, paramDownloadListener, str2, localxgl, str1, paramString), localBundle);
-  }
-  
-  public void a(xfu paramxfu)
-  {
-    if (paramxfu != null) {
-      a(paramxfu.a(), null);
-    }
-  }
-  
-  public void a(xfw paramxfw)
-  {
-    if (paramxfw != null) {
-      a(paramxfw.a(), null);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    if (!TextUtils.isEmpty(paramString)) {
-      return b(paramString);
-    }
-    return false;
-  }
-  
-  public String b(String paramString)
-  {
-    return jdField_a_of_type_JavaLangString + "/" + a(paramString);
-  }
-  
-  public boolean b(String paramString)
-  {
-    Object localObject = jdField_a_of_type_JavaLangString + "/" + paramString;
-    if (new File((String)localObject + ".zip").exists())
-    {
-      QZLog.d("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "upZip failed:" + paramString);
-      return false;
-    }
-    boolean bool2;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      bool2 = new File((String)localObject).exists();
-      bool1 = bool2;
-      if (bool2)
-      {
-        localObject = new xgl(this, null);
-        xgl.a((xgl)localObject, 0);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+        }
+        xgn localxgn = new xgn(this, str, paramxft.c());
+        localxgn.a(paramString + "/" + str);
+        localxgn.f = ((String)localObject1);
+        this.jdField_b_of_type_JavaUtilHashMap.put(str, localxgn);
       }
     }
-    for (boolean bool1 = bool2;; bool1 = false) {
-      return bool1;
+  }
+  
+  private void b()
+  {
+    a(this.jdField_b_of_type_Xfr);
+    a(this.jdField_b_of_type_Xft);
+  }
+  
+  private boolean b()
+  {
+    return BaseApplicationImpl.sProcessId == 2;
+  }
+  
+  public xgm a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (xgm)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public xgn a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (xgn)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      String str = (String)xfo.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", "");
+      if (!TextUtils.isEmpty(str))
+      {
+        this.jdField_a_of_type_Xfr = xfr.a(str);
+        if (this.jdField_a_of_type_Xfr != null) {
+          QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "old style config:" + this.jdField_a_of_type_Xfr.toString());
+        }
+      }
+      str = (String)xfo.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", "");
+      if (!TextUtils.isEmpty(str))
+      {
+        this.jdField_a_of_type_Xft = xft.a(str);
+        if (this.jdField_a_of_type_Xft != null) {
+          QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "old widget config:" + this.jdField_a_of_type_Xft.toString());
+        }
+      }
+      this.jdField_b_of_type_Xfr = ((xfr)ampl.a().a(473));
+      if (this.jdField_b_of_type_Xfr != null) {
+        QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "load style config:" + this.jdField_b_of_type_Xfr.toString());
+      }
+      this.jdField_b_of_type_Xft = ((xft)ampl.a().a(474));
+      if (this.jdField_b_of_type_Xft != null) {
+        QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "load widget config:" + this.jdField_b_of_type_Xft.toString());
+      }
+      if (b())
+      {
+        if (this.jdField_a_of_type_Xfr != null) {
+          this.jdField_b_of_type_Xfr = this.jdField_a_of_type_Xfr;
+        }
+        if (this.jdField_a_of_type_Xft != null) {
+          this.jdField_b_of_type_Xft = this.jdField_a_of_type_Xft;
+        }
+      }
+      b();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, new Object[] { "loadConfig error!" + localException.toString() });
     }
   }
   
-  public boolean c(String paramString)
+  public boolean a()
   {
-    paramString = (xgl)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return (xgl.a(paramString) == -1) || (xgl.a(paramString) == 1);
-    }
-    return false;
+    return xfo.a().b();
   }
 }
 

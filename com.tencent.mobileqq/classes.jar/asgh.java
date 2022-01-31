@@ -1,64 +1,40 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.mediafocus.MediaFocusController;
+import com.tencent.mobileqq.mediafocus.MediaFocusController.1;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
 import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.Stack;
 
 public class asgh
-  extends QIPCModule
+  implements EIPCResultCallback
 {
-  public static boolean a;
-  private String a;
-  private boolean b;
+  public asgh(MediaFocusController.1 param1, long paramLong) {}
   
-  private asgh()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super("MediaFocusModuleClient");
-    b();
-  }
-  
-  public static asgh a()
-  {
-    return asgk.a();
-  }
-  
-  public static void a()
-  {
-    asgh localasgh = a();
-    if (!jdField_a_of_type_Boolean)
+    boolean bool1;
+    boolean bool2;
+    long l;
+    if (paramEIPCResult.data != null)
     {
-      QIPCClientHelper.getInstance().register(localasgh);
-      jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private void b()
-  {
-    QIPCClientHelper.getInstance().getClient().connect(new asgi(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new asgj(this));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("actionCheckItemExist".equals(paramString))
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
-      boolean bool = false;
-      if (paramString != null) {
-        bool = asgl.a().a(paramString.a(), paramString.b());
+      bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
+      bool2 = paramEIPCResult.data.getBoolean("isItemExist");
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      if ((!bool1) || (!bool2)) {
+        break label75;
       }
-      localBundle.putBoolean("isItemExist", bool);
-      localBundle.putBoolean("isConnected", this.b);
-      localBundle.putParcelable("focusItem", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged not the same process but existed, cost:", Long.valueOf(l) });
+      }
     }
-    return EIPCResult.createSuccessResult(localBundle);
+    return;
+    label75:
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
+    }
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
   }
 }
 

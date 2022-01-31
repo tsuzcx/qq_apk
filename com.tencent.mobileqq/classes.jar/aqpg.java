@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aqpg
-  implements DialogInterface.OnCancelListener
+  implements EIPCResultCallback
 {
-  aqpg(aqox paramaqox) {}
+  aqpg(aqpf paramaqpf) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.a.d) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    if (-102 == paramEIPCResult.code) {
+      this.a.a.a.finish();
     }
   }
 }

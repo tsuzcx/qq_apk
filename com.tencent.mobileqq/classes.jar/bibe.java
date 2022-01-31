@@ -1,50 +1,26 @@
-import NS_NEW_MOBILE_REPORT.AccessRspHead;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import cooperation.qzone.util.QZLog;
 
-public class bibe
-  extends MSFServlet
+class bibe
+  extends BroadcastReceiver
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("YYBAdvServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = paramFromServiceMsg.getResultCode();
-        if (i != 1000) {
-          break;
-        }
-        paramIntent = bibd.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
-      } while (paramIntent == null);
-      QLog.d("YYBAdvServlet", 2, "handler MobileReport result , resultCode=" + i + " error code " + paramIntent.err_code + " error msg " + paramIntent.err_msg);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("YYBAdvServlet", 2, "MobileReport fail, resultCode=" + i);
-  }
+  bibe(bibd parambibd) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bibd localbibd = new bibd(Long.valueOf(paramIntent.getLongExtra("selfuin", 0L)).longValue());
-    byte[] arrayOfByte = localbibd.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
+    try
     {
-      QLog.e("YYBAdvServlet", 1, "onSend request encode result is null.cmd=" + localbibd.uniKey());
-      paramIntent = new byte[4];
+      paramContext = paramIntent.getAction();
+      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
+      this.a.a(paramIntent);
+      return;
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand(localbibd.getCmdString());
-    paramPacket.putSendData(paramIntent);
+    catch (Exception paramContext)
+    {
+      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
+    }
   }
 }
 

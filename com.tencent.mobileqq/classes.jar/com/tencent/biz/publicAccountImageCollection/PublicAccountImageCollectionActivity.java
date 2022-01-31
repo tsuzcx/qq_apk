@@ -14,11 +14,11 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
+import rpd;
 import rpg;
-import rpj;
-import rpk;
-import rpr;
-import sno;
+import rph;
+import rpo;
+import snl;
 
 public class PublicAccountImageCollectionActivity
   extends BaseActivity
@@ -30,7 +30,7 @@ public class PublicAccountImageCollectionActivity
   
   public PublicAccountImageCollectionActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new sno(this);
+    this.jdField_a_of_type_AndroidOsHandler = new snl(this);
   }
   
   private Drawable a(String paramString, int paramInt1, int paramInt2)
@@ -39,14 +39,14 @@ public class PublicAccountImageCollectionActivity
     try
     {
       paramString = new URL(paramString);
-      Object localObject2 = new rpk();
-      ((rpk)localObject2).jdField_a_of_type_JavaNetURL = paramString;
-      ((rpk)localObject2).jdField_a_of_type_Int = paramInt1;
-      ((rpk)localObject2).b = paramInt2;
-      localObject2 = rpj.a().a((rpk)localObject2);
+      Object localObject2 = new rph();
+      ((rph)localObject2).jdField_a_of_type_JavaNetURL = paramString;
+      ((rph)localObject2).jdField_a_of_type_Int = paramInt1;
+      ((rph)localObject2).b = paramInt2;
+      localObject2 = rpg.a().a((rph)localObject2);
       paramString = localObject1;
       if (localObject2 != null) {
-        paramString = new rpr(((rpg)localObject2).a());
+        paramString = new rpo(((rpd)localObject2).a());
       }
       return paramString;
     }

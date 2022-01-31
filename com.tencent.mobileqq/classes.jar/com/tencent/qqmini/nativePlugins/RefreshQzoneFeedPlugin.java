@@ -3,10 +3,10 @@ package com.tencent.qqmini.nativePlugins;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import begz;
-import beka;
-import bgxy;
-import bgyf;
+import behq;
+import bekr;
+import bgyp;
+import bgyw;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
@@ -15,7 +15,7 @@ public class RefreshQzoneFeedPlugin
 {
   public static final String TAG = "RefreshQzoneFeedPlugin";
   
-  public void refreshQzoneFeed(beka parambeka)
+  public void refreshQzoneFeed(bekr parambekr)
   {
     Activity localActivity = this.mMiniAppContext.a();
     if (localActivity != null)
@@ -24,8 +24,8 @@ public class RefreshQzoneFeedPlugin
       Bundle localBundle = new Bundle();
       localBundle.putString("cmd", "refreshFeed");
       localIntent.putExtras(localBundle);
-      bgxy.a(localActivity, bgyf.a(), localIntent);
-      parambeka.a();
+      bgyp.a(localActivity, bgyw.a(), localIntent);
+      parambekr.a();
       if (QLog.isColorLevel()) {
         QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
       }

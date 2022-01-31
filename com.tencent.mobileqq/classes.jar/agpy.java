@@ -1,22 +1,19 @@
 import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class agpy
-  extends mxm
+final class agpy
+  implements DialogInterface.OnClickListener
 {
-  agpy(agpx paramagpx, long paramLong) {}
+  agpy(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
+    if (paramInt == 0)
+    {
+      agpt.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    if ((this.jdField_a_of_type_Agpx.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
-    while (paramInt != 16) {
-      return;
-    }
-    agpv.b(this.jdField_a_of_type_Agpx.a);
   }
 }
 

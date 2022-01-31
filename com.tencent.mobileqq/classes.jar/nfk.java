@@ -1,16 +1,28 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class nfk
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements TVK_SDKMgr.InstallListener
 {
-  nfk(nfj paramnfj) {}
+  public nfk(AccountDetailVideoManager.5 param5) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.a.start();
-    new Thread(new AccountDetailVideoManager.1.1(this)).start();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    nfg.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    }
+    nfg.a = true;
   }
 }
 

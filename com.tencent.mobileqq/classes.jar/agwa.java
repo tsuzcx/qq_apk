@@ -1,55 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
+import Wallet.GetBroadCastHbIdiomReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
-public class agwa
-  extends Handler
+class agwa
+  implements ahjr
 {
-  agwa(agvz paramagvz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  agwa(agvx paramagvx, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break label56;
-      }
-    }
+    int i = 1;
+    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
+    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
+    localGetBroadCastHbIdiomReq.sKey = paramString;
+    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
     for (;;)
     {
+      localGetBroadCastHbIdiomReq.fromType = i;
+      localGetBroadCastHbIdiomReq.platform = 0;
+      localGetBroadCastHbIdiomReq.qqVersion = "8.3.0";
+      agwt.a(localGetBroadCastHbIdiomReq, new agwb(this));
       return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
-      {
-        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
-        }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
+        i = 2;
+      } else {
+        i = 0;
       }
     }
   }

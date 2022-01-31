@@ -21,21 +21,31 @@ class MiniAppTextArea1$2
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
+    label83:
     JSONObject localJSONObject;
-    if ((paramCharSequence != null) && (paramCharSequence.length() == 0))
+    if (paramInt1 > 0)
     {
-      if (MiniAppTextArea1.access$700(this.this$0) != null)
-      {
-        this.this$0.setTextSize(2, MiniAppTextArea1.access$700(this.this$0).optInt("fontSize"));
-        this.this$0.setTextColor(ColorUtils.parseColor(MiniAppTextArea1.access$700(this.this$0).optString("color")));
+      if (paramInt2 > 0) {
+        MiniAppTextArea1.access$702(this.this$0, paramInt1);
       }
-      MiniAppTextArea1.access$900(this.this$0);
+    }
+    else
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() != 0)) {
+        break label278;
+      }
+      if (MiniAppTextArea1.access$800(this.this$0) != null)
+      {
+        this.this$0.setTextSize(2, MiniAppTextArea1.access$800(this.this$0).optInt("fontSize"));
+        this.this$0.setTextColor(ColorUtils.parseColor(MiniAppTextArea1.access$800(this.this$0).optString("color")));
+      }
       MiniAppTextArea1.access$1000(this.this$0);
       MiniAppTextArea1.access$1100(this.this$0);
-      if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(MiniAppTextArea1.access$1200(this.this$0))))
+      MiniAppTextArea1.access$1200(this.this$0);
+      if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(MiniAppTextArea1.access$1300(this.this$0))))
       {
         localJSONObject = new JSONObject();
-        MiniAppTextArea1.access$1202(this.this$0, paramCharSequence.toString());
+        MiniAppTextArea1.access$1302(this.this$0, paramCharSequence.toString());
       }
     }
     for (;;)
@@ -46,20 +56,26 @@ class MiniAppTextArea1$2
         if (paramInt3 == 0)
         {
           localJSONObject.put("cursor", paramInt1);
-          localJSONObject.put("value", MiniAppTextArea1.access$1200(this.this$0));
+          localJSONObject.put("value", MiniAppTextArea1.access$1300(this.this$0));
           if ((paramInt2 == 0) || (paramInt3 != 0)) {
-            break label338;
+            break label375;
           }
           localJSONObject.put("keyCode", 8);
-          localJSONObject.put("data", MiniAppTextArea1.access$1300(this.this$0));
+          localJSONObject.put("data", MiniAppTextArea1.access$1400(this.this$0));
           this.val$wc.appBrandRuntime.serviceRuntime.evaluateSubcribeJS("onKeyboardValueChange", localJSONObject.toString(), this.val$wc.getPageWebview().pageWebviewId);
           return;
-          if (MiniAppTextArea1.access$800(this.this$0) == null) {
+          if (paramInt3 <= 0) {
             break;
           }
-          this.this$0.setTextSize(2, MiniAppTextArea1.access$800(this.this$0).optInt("fontSize"));
-          this.this$0.setTextColor(ColorUtils.parseColor(MiniAppTextArea1.access$800(this.this$0).optString("color")));
+          MiniAppTextArea1.access$702(this.this$0, paramInt1 + paramInt3);
           break;
+          label278:
+          if (MiniAppTextArea1.access$900(this.this$0) == null) {
+            break label83;
+          }
+          this.this$0.setTextSize(2, MiniAppTextArea1.access$900(this.this$0).optInt("fontSize"));
+          this.this$0.setTextColor(ColorUtils.parseColor(MiniAppTextArea1.access$900(this.this$0).optString("color")));
+          break label83;
         }
         if (paramInt2 != 0)
         {
@@ -75,7 +91,7 @@ class MiniAppTextArea1$2
         return;
       }
       continue;
-      label338:
+      label375:
       localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
     }
   }

@@ -1,15 +1,37 @@
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
 class akso
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  akso(aksl paramaksl) {}
+  akso(aksk paramaksk, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    axqw.b(null, "dc00898", "", "", "0X8009ACD", "0X8009ACD", 0, 0, "", "", "", "");
-    this.a.dismiss();
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 

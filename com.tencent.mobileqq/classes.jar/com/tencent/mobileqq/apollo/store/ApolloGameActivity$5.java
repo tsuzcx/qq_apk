@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
-import ajae;
-import ajch;
+import ajac;
+import ajcf;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 
 class ApolloGameActivity$5
@@ -11,7 +11,7 @@ class ApolloGameActivity$5
   
   public void run()
   {
-    ApolloGameActivity.a(this.this$0, ApolloUtil.a(ajae.a(), ApolloGameActivity.a(this.this$0)));
+    ApolloGameActivity.a(this.this$0, ApolloUtil.a(ajac.a(), ApolloGameActivity.a(this.this$0)));
     if (ApolloGameActivity.a(this.this$0) != null) {
       ApolloGameActivity.a(this.this$0).a(ApolloGameActivity.a(this.this$0));
     }

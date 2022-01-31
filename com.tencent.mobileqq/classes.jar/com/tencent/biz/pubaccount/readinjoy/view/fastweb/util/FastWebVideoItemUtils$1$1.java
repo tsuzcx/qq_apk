@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import osm;
-import rnf;
+import osj;
+import rnc;
 
 public class FastWebVideoItemUtils$1$1
   implements Runnable
 {
-  public FastWebVideoItemUtils$1$1(rnf paramrnf, String paramString, int paramInt1, int paramInt2) {}
+  public FastWebVideoItemUtils$1$1(rnc paramrnc, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    osm.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    osj.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

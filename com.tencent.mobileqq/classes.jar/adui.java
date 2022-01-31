@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 class adui
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  adui(adug paramadug, aduu paramaduu) {}
+  adui(adue paramadue, aobp paramaobp, bfpc parambfpc, MessageForMarketFace paramMessageForMarketFace) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    aaod.a(this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aduu.jdField_a_of_type_Aobk.a, this.jdField_a_of_type_Aduu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (this.jdField_a_of_type_Aobp.a.jobType != 1) {
+        break;
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (this.jdField_a_of_type_Aobp.a.jobType == 3) {}
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_Aobp.a.epId, bool1, bool2);
+        this.jdField_a_of_type_Bfpc.cancel();
+        return;
+      }
+      aanz.a(this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobp.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
+      this.jdField_a_of_type_Bfpc.cancel();
+      return;
+    }
   }
 }
 

@@ -1,58 +1,59 @@
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoPluginInstall.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONObject;
 
 public class owv
+  implements TVK_SDKMgr.InstallListener
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(new oww());
-  private static List<owx> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
+  private Handler a;
   
-  public static void a()
+  public owv(Handler paramHandler)
   {
-    if ((!a()) && (!jdField_a_of_type_Boolean)) {
-      ThreadManager.post(new VideoPluginInstall.1(), 8, null, true);
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
     }
   }
   
-  public static void a(owx paramowx)
+  public void onInstalledFailed(int paramInt)
   {
-    jdField_a_of_type_JavaUtilList.add(paramowx);
-  }
-  
-  public static boolean a()
-  {
-    return TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext());
-  }
-  
-  public static boolean a(owx paramowx)
-  {
-    return jdField_a_of_type_JavaUtilList.contains(paramowx);
-  }
-  
-  private static void c()
-  {
-    TVK_SDKMgr.setOnLogListener(new owz(null));
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!b)
-      {
-        TVK_SDKMgr.setDebugEnable(true);
-        TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-        if (QLog.isColorLevel()) {
-          QLog.e("gifvideo.VideoPluginInstall", 2, "initVideoSDK() finish");
-        }
-        b = true;
+      localJSONObject.put("version", "8.3.0");
+      localJSONObject.put("error_code", paramInt);
+      label25:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
       }
       return;
     }
-    finally {}
+    catch (Exception localException)
+    {
+      break label25;
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.3.0");
+      label17:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 

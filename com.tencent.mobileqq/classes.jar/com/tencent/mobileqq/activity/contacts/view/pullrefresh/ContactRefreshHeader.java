@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
+import aftn;
 import aftp;
-import aftr;
-import afts;
+import aftq;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,16 +18,16 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbkb;
-import xed;
+import bbkp;
+import xea;
 
 public class ContactRefreshHeader
   extends RelativeLayout
-  implements aftr, afts, xed
+  implements aftp, aftq, xea
 {
   private int jdField_a_of_type_Int = 0;
   public long a;
-  private aftp jdField_a_of_type_Aftp;
+  private aftn jdField_a_of_type_Aftn;
   private Context jdField_a_of_type_AndroidContentContext;
   private RotateAnimation jdField_a_of_type_AndroidViewAnimationRotateAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -83,8 +83,8 @@ public class ContactRefreshHeader
   private long b()
   {
     long l = 0L;
-    if (this.jdField_a_of_type_Aftp != null) {
-      l = this.jdField_a_of_type_Aftp.a();
+    if (this.jdField_a_of_type_Aftn != null) {
+      l = this.jdField_a_of_type_Aftn.a();
     }
     return l;
   }
@@ -101,7 +101,7 @@ public class ContactRefreshHeader
     if (paramLong != 0L)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131719789), bbkb.a(paramLong, true, "yyyy-MM-dd") }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131719800), bbkp.a(paramLong, true, "yyyy-MM-dd") }));
       if (this.f >= 0) {
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.f);
       }
@@ -166,14 +166,14 @@ public class ContactRefreshHeader
       b(this.e);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130848521);
-      str = getResources().getString(2131719794);
+      localDrawable = getResources().getDrawable(2130848527);
+      str = getResources().getString(2131719805);
       continue;
-      localDrawable = getResources().getDrawable(2130848519);
-      str = getResources().getString(2131719788);
+      localDrawable = getResources().getDrawable(2130848525);
+      str = getResources().getString(2131719799);
       continue;
-      localDrawable = getResources().getDrawable(2130848520);
-      str = getResources().getString(2131719788);
+      localDrawable = getResources().getDrawable(2130848526);
+      str = getResources().getString(2131719799);
     }
   }
   
@@ -200,11 +200,11 @@ public class ContactRefreshHeader
       b(this.e);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130848521);
+      localDrawable = getResources().getDrawable(2130848527);
       continue;
-      localDrawable = getResources().getDrawable(2130848519);
+      localDrawable = getResources().getDrawable(2130848525);
       continue;
-      localDrawable = getResources().getDrawable(2130848520);
+      localDrawable = getResources().getDrawable(2130848526);
     }
   }
   
@@ -233,7 +233,7 @@ public class ContactRefreshHeader
   {
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719790);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719801);
       b(this.d);
       label18:
       d(paramLong);
@@ -270,7 +270,7 @@ public class ContactRefreshHeader
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719793);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719804);
     b(this.c);
     d(paramLong);
   }
@@ -285,11 +285,11 @@ public class ContactRefreshHeader
     if (this.jdField_a_of_type_Int == 0)
     {
       if (this.g == 0) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848517);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848523);
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719791);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719802);
         b(this.jdField_b_of_type_Int);
         d(paramLong);
         return;
@@ -297,11 +297,11 @@ public class ContactRefreshHeader
       }
     }
     if (this.g == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848518);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848524);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719792);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719803);
       break;
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839166);
     }
@@ -317,7 +317,7 @@ public class ContactRefreshHeader
   public void e()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719791);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719802);
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -332,11 +332,11 @@ public class ContactRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364692));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375054));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375051));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375053));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375060));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364691));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375056));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375053));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375055));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375062));
     if (this.jdField_a_of_type_Int != 0) {
       f();
     }
@@ -381,9 +381,9 @@ public class ContactRefreshHeader
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setRefreshHeaderUpdateListener(aftp paramaftp)
+  public void setRefreshHeaderUpdateListener(aftn paramaftn)
   {
-    this.jdField_a_of_type_Aftp = paramaftp;
+    this.jdField_a_of_type_Aftn = paramaftn;
   }
   
   public void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)

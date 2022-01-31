@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import ajxn;
+import ajxl;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
 final class VipUtils$3
   implements Runnable
 {
-  VipUtils$3(ajxn paramajxn, String paramString, VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask) {}
+  VipUtils$3(ajxl paramajxl, String paramString, VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajxn.e(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ajxl.e(this.jdField_a_of_type_JavaLangString);
     ThreadManagerV2.getUIHandlerV2().post(this.jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$UpdateRecentEfficientVipIconTask);
   }
 }

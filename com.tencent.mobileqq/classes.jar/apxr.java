@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class apxr
-  implements aptu
+  implements aptw
 {
   public apxr(QfileEditBottomBar paramQfileEditBottomBar) {}
   

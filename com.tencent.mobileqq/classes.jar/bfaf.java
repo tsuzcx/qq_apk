@@ -1,23 +1,22 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import org.json.JSONObject;
 
 public class bfaf
-  extends bfad
+  extends bfau
 {
-  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
+  private CloudStorage.StGetPotentialFriendListReq a = new CloudStorage.StGetPotentialFriendListReq();
   
-  public bfaf(String[] paramArrayOfString, String paramString)
+  public bfaf(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramArrayOfString[i];
-      this.a.keyList.add(str);
-      i += 1;
+    if (paramStCommonExt != null) {
+      this.a.ext.set(paramStCommonExt);
     }
     this.a.appid.set(paramString);
   }
@@ -32,19 +31,27 @@ public class bfaf
     if (paramArrayOfByte == null) {
       return null;
     }
-    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
+    CloudStorage.StGetPotentialFriendListRsp localStGetPotentialFriendListRsp = new CloudStorage.StGetPotentialFriendListRsp();
     try
     {
-      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStRemoveUserCloudStorageRsp != null) {
-        return new JSONObject();
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetPotentialFriendListRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetPotentialFriendListRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGetPotentialFriendListRsp);
+        paramArrayOfByte.put("resultCode", 0);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
       }
-      besl.a("ProtoBufRequest", "onResponse fail.rsp = null");
+      betc.a("GetPotentialFriendListRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetPotentialFriendListRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
@@ -56,7 +63,7 @@ public class bfaf
   
   protected String b()
   {
-    return "RemoveUserCloudStorage";
+    return "GetPotentialFriendList";
   }
 }
 

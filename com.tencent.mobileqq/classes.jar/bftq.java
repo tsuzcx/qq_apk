@@ -1,11 +1,12 @@
-import com.tencent.widget.AbsListView;
+import android.widget.EditText;
 
-public class bftq
-  implements bfob
+public abstract interface bftq
 {
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(EditText paramEditText, CharSequence paramCharSequence);
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public abstract void b(EditText paramEditText, CharSequence paramCharSequence);
+  
+  public abstract void c(EditText paramEditText, CharSequence paramCharSequence);
 }
 
 

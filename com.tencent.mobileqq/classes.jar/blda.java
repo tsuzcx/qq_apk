@@ -1,31 +1,20 @@
-import android.graphics.Canvas;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.view.View;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
 
 public class blda
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
-  
-  blda(TCProgressBar paramTCProgressBar)
+  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(paramInt);
+    localScaleAnimation.setFillEnabled(true);
+    localScaleAnimation.setFillBefore(true);
+    localScaleAnimation.setFillAfter(true);
+    if (paramAnimationListener != null) {
+      localScaleAnimation.setAnimationListener(paramAnimationListener);
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    paramView.startAnimation(localScaleAnimation);
   }
 }
 

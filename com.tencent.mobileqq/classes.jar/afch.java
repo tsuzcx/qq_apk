@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
 
-public class afch
-  implements afco
+class afch
 {
-  public afch(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  public TextView a;
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public afch(View paramView)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    this.a = ((TextView)paramView.findViewById(2131377032));
+    paramView.setTag(this);
   }
 }
 

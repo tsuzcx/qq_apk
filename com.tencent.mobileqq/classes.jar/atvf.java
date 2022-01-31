@@ -1,17 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
 
-public class atvf
-  extends atuy
+public abstract interface atvf
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
-  
-  public atvf(atve paramatve)
-  {
-    super(paramatve);
-  }
+  public abstract void a(View paramView);
 }
 
 

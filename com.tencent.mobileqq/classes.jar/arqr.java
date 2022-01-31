@@ -1,17 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-class arqr
-  implements ajvb
+public class arqr
 {
-  arqr(arqq paramarqq) {}
+  public static String a = new File(BaseApplicationImpl.getApplication().getFilesDir(), "ListenTogether_v828").getAbsolutePath();
   
-  public void a(boolean paramBoolean)
+  static
   {
-    if (paramBoolean) {
-      arqq.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    if (bbbm.a())
+    {
+      a = new File(ajsd.aW, "ListenTogether_v828").getAbsolutePath();
+      return;
     }
   }
 }

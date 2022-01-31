@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBottomButton;
 
-public class bhfr
-  implements DialogInterface.OnCancelListener
+public final class bhfr
+  implements Parcelable.Creator<WeishiBottomButton>
 {
-  public bhfr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public WeishiBottomButton a(Parcel paramParcel)
   {
-    this.a.getPlayMode();
+    return new WeishiBottomButton(paramParcel);
+  }
+  
+  public WeishiBottomButton[] a(int paramInt)
+  {
+    return new WeishiBottomButton[paramInt];
   }
 }
 

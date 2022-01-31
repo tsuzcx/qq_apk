@@ -1,14 +1,21 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class ofh
   implements ViewBase.OnClickListener
 {
-  ofh(ofe paramofe) {}
+  ofh(ofb paramofb) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    ((ogq)this.a.jdField_a_of_type_Ohv).a(this.a.jdField_a_of_type_Oii, ofd.a(this.a.jdField_a_of_type_Oii, 0));
+    if (this.a.jdField_a_of_type_Oif.a != null)
+    {
+      onh.a(this.a.jdField_a_of_type_Ohs.a().getContext(), paramViewBase.getEventAttachedData());
+      if (this.a.jdField_a_of_type_Ohs.a() != null) {
+        this.a.jdField_a_of_type_Ohs.a().e(this.a.jdField_a_of_type_Oif);
+      }
+    }
   }
 }
 

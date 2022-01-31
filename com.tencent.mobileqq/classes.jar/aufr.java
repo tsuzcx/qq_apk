@@ -1,6 +1,18 @@
-public abstract interface aufr
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+
+class aufr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(boolean paramBoolean);
+  aufr(aufj paramaufj, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * actj.a(25.0F, aufj.a(this.jdField_a_of_type_Aufj)));
+  }
 }
 
 

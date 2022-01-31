@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-
-public class aefz
-  implements View.OnLongClickListener
+public abstract interface aefz
 {
-  public aefz(PanelIconLinearLayout paramPanelIconLinearLayout) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    if (PanelIconLinearLayout.a(this.a) != null) {
-      PanelIconLinearLayout.a(this.a).a(1);
-    }
-    return true;
-  }
+  public abstract void a(Object paramObject);
 }
 
 

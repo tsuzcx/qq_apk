@@ -1,54 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import tencent.im.troop.homework.ReqSend1V1Msg;
-import tencent.im.troop.homework.RspSend1V1Msg;
+import java.lang.ref.WeakReference;
 
-public class akhw
+class akhw
+  implements mrl
 {
-  public static void a(akhq paramakhq, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private final batf jdField_a_of_type_Batf;
+  private final WeakReference<akhp> jdField_a_of_type_JavaLangRefWeakReference;
+  private final long[] jdField_a_of_type_ArrayOfLong;
+  
+  akhw(akhp paramakhp, batf parambatf, long[] paramArrayOfLong)
   {
-    homework.RspSend1V1Msg localRspSend1V1Msg = new homework.RspSend1V1Msg();
-    homework.ReqSend1V1Msg localReqSend1V1Msg = new homework.ReqSend1V1Msg();
-    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.troopManagerTroopHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond failed, no response, error=", paramFromServiceMsg.getBusinessFailMsg() });
-      }
-      paramakhq.notifyUI(121, false, new Object[] { null, null });
-      return;
-    }
-    try
-    {
-      localRspSend1V1Msg.mergeFrom((byte[])paramObject);
-      paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[paramToServiceMsg.getInt() - 4];
-      paramToServiceMsg.get(paramFromServiceMsg);
-      localReqSend1V1Msg.mergeFrom(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.troopManagerTroopHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond, ", vys.a(localRspSend1V1Msg) });
-      }
-      paramakhq.notifyUI(121, true, new Object[] { localRspSend1V1Msg, localReqSend1V1Msg });
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-    {
-      QLog.e(".troop.troopManagerTroopHandler", 2, "handleTroopBulkSendMessageRespond", paramToServiceMsg);
-      paramakhq.notifyUI(121, false, new Object[] { null, null });
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramakhp);
+    this.jdField_a_of_type_Batf = parambatf;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
-  public static void a(@NonNull akhq paramakhq, @NonNull homework.ReqSend1V1Msg paramReqSend1V1Msg)
+  public void a(int paramInt1, mrn parammrn, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(".troop.troopManagerTroopHandler", 2, "sendTroopBulkSendMessageRequest");
+    parammrn = (akhp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((parammrn != null) && (parammrn.app != null))
+    {
+      if (paramInt1 == 0) {
+        parammrn.app.a().a(1, this.jdField_a_of_type_Batf.a, this.jdField_a_of_type_Batf.b, this.jdField_a_of_type_ArrayOfLong, 2, 0, 0);
+      }
+      return;
     }
-    ToServiceMsg localToServiceMsg = paramakhq.createToServiceMsg("HwSvc.send_msg");
-    localToServiceMsg.putWupBuffer(paramReqSend1V1Msg.toByteArray());
-    paramakhq.a(localToServiceMsg);
+    QLog.e("TroopHandler", 1, "WeakGVideoGrayConfigListener#onResult get weakAppReference " + parammrn);
   }
 }
 

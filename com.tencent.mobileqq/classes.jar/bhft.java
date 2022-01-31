@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiFeedInfo;
 
-public class bhft
-  implements DialogInterface.OnClickListener
+public final class bhft
+  implements Parcelable.Creator<WeishiFeedInfo>
 {
-  public bhft(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public WeishiFeedInfo a(Parcel paramParcel)
   {
-    this.a.stopPlay();
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
+    return new WeishiFeedInfo(paramParcel);
+  }
+  
+  public WeishiFeedInfo[] a(int paramInt)
+  {
+    return new WeishiFeedInfo[paramInt];
   }
 }
 

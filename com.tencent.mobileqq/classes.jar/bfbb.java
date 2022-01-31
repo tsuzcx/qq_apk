@@ -1,66 +1,74 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.1;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.2;
-import java.util.Iterator;
-import java.util.List;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StCurrChannelInfo;
+import NS_MINI_INTERFACE.INTERFACE.StUseUserAppReq;
+import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bfbb
-  implements belg
+  extends bfau
 {
-  public bfbb(AppBrandPageContainer paramAppBrandPageContainer) {}
+  private INTERFACE.StUseUserAppReq a = new INTERFACE.StUseUserAppReq();
   
-  public void onSoftKeyboardClosed()
+  public bfbb(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    besl.d("AppBrandPageContainer", "onSoftKeyboardClosed ");
-    if ((AppBrandPageContainer.a(this.a) != null) && (AppBrandPageContainer.a(this.a).size() > 0))
-    {
-      Iterator localIterator = AppBrandPageContainer.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        belg localbelg = (belg)localIterator.next();
-        if (localbelg != null) {
-          localbelg.onSoftKeyboardClosed();
-        }
-      }
+    this.a.appId.set(paramString1);
+    this.a.verType.set(paramInt1);
+    this.a.source.set(paramInt2);
+    paramString1 = new INTERFACE.StCurrChannelInfo();
+    paramString1.refer.set(paramString2);
+    paramString1.via.set(paramString3);
+    this.a.channelInfo.set(paramString1);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    beiw.a().postDelayed(new AppBrandPageContainer.1.2(this), 50L);
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  protected String a()
   {
-    besl.d("AppBrandPageContainer", "onSoftKeyboardOpened " + paramInt);
-    if (AppBrandPageContainer.a(this.a) != null) {}
-    int i;
-    for (Object localObject = AppBrandPageContainer.a(this.a).a();; localObject = null)
+    return "mini_app_userapp";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StUseUserAppRsp localStUseUserAppRsp = new INTERFACE.StUseUserAppRsp();
+    try
     {
-      i = paramInt;
-      if (localObject != null)
+      localStUseUserAppRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStUseUserAppRsp != null)
       {
-        i = paramInt;
-        if (bffu.a((Context)localObject))
+        if (localStUseUserAppRsp.extInfo != null)
         {
-          i = paramInt;
-          if (bffu.a((Activity)localObject)) {
-            i = paramInt - bffu.c((Context)localObject);
-          }
+          paramArrayOfByte = new JSONObject();
+          paramArrayOfByte.put("ext", localStUseUserAppRsp.extInfo.get());
+          return paramArrayOfByte;
         }
-      }
-      if ((AppBrandPageContainer.a(this.a) == null) || (AppBrandPageContainer.a(this.a).size() <= 0)) {
-        break;
-      }
-      localObject = AppBrandPageContainer.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        belg localbelg = (belg)((Iterator)localObject).next();
-        if (localbelg != null) {
-          localbelg.onSoftKeyboardOpened(i);
-        }
+        betc.a("UseUserAppRequest", "onResponse fail.extInfo = null");
+        return null;
       }
     }
-    beiw.a().postDelayed(new AppBrandPageContainer.1.1(this, i), 50L);
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("UseUserAppRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
+    }
+    betc.a("UseUserAppRequest", "onResponse fail.rsp = null");
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "UseUserApp";
   }
 }
 

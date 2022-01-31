@@ -1,89 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
 
-public class afie
+public abstract interface afie
 {
-  public static void a(long paramLong, List<afif> paramList)
-  {
-    int j = (int)(SystemClock.elapsedRealtime() - paramLong) / 1000;
-    paramList = paramList.iterator();
-    int i = 0;
-    if (paramList.hasNext())
-    {
-      if (!((afif)paramList.next()).a()) {
-        break label99;
-      }
-      i += 1;
-    }
-    label99:
-    for (;;)
-    {
-      break;
-      a("0X800AB63", i + "", j + "", "");
-      return;
-    }
-  }
+  public abstract void a();
   
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-      paramQQAppInterface.putBoolean("face2face_add_contact_guide_tip", true);
-      paramQQAppInterface.commit();
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactUtils", 2, " face2faceReport tValue = " + paramString1 + " r2 = " + paramString2 + " r3 = " + paramString3 + " r4 =" + paramString4);
-    }
-    axqw.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, "");
-  }
+  public abstract void a(String paramString);
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      bool1 = bool2;
-      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_tip", false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
+  public abstract void a(String paramString, List<afid> paramList);
   
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-      paramQQAppInterface.putBoolean("face2face_add_contact_guide_dialog", true);
-      paramQQAppInterface.commit();
-    }
-  }
+  public abstract void a(List<String> paramList);
   
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      bool1 = bool2;
-      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

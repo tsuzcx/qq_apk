@@ -1,41 +1,27 @@
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
 import java.util.ArrayList;
 
 public class abba
-  implements ants
+  implements anwj
 {
   public abba(EmosmActivity paramEmosmActivity) {}
   
-  public void a(int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
   {
-    paramInt -= this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
-    if (paramInt < 0) {
-      return;
-    }
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!bbev.d(this.a))
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject = new bcpw(this.a);
-      ((bcpw)localObject).a(2130839277);
-      ((bcpw)localObject).d(1500);
-      ((bcpw)localObject).a(ajyc.a(2131704032));
-      ((bcpw)localObject).b(0);
-      return;
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
+      }
+      i += 1;
     }
-    this.a.jdField_a_of_type_Bcpq.a(this.a.getString(2131692049));
-    this.a.jdField_a_of_type_Bcpq.show();
-    ((ajvp)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
-    URLDrawable.clearMemoryCache();
-    if (this.a.b == 1)
-    {
-      axqw.b(this.a.app, "dc00898", "", "", "0X800AB12", "0X800AB12", 1, 0, "", "", "", "");
-      return;
-    }
-    axqw.b(this.a.app, "dc00898", "", "", "0X800AB15", "0X800AB15", 0, 0, "", "", "", "");
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

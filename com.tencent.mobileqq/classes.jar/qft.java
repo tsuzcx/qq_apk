@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import java.util.List;
 
 public class qft
-  implements View.OnClickListener
+  extends osm
 {
-  public qft(ReadInJoyPrivacyListView paramReadInJoyPrivacyListView) {}
+  public qft(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onClick(View paramView)
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
   {
-    ReadInJoyPrivacyListView.a(this.a);
+    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
   }
 }
 

@@ -1,14 +1,9 @@
-public class ajid
+import java.util.List;
+
+public abstract interface ajid
+  extends ajic
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  public ajid(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(boolean paramBoolean, String paramString, List<ajib> paramList);
 }
 
 

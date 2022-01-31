@@ -9,29 +9,29 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhvh;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import omu;
-import pax;
-import pqr;
-import prb;
-import pvb;
-import pyn;
-import pyo;
-import qdt;
-import qdv;
+import omr;
+import pau;
+import pqo;
+import pqy;
+import puy;
+import pyk;
+import pyl;
+import qdq;
+import qds;
 
 public class ComponentTopicItemSingle
   extends RelativeLayout
-  implements pqr
+  implements pqo
 {
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  public pvb a;
+  public puy a;
   TextView b;
   
   public ComponentTopicItemSingle(Context paramContext)
@@ -54,7 +54,7 @@ public class ComponentTopicItemSingle
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Pvb = new pvb();
+    this.jdField_a_of_type_Puy = new puy();
     a(paramContext);
     a();
   }
@@ -73,17 +73,17 @@ public class ComponentTopicItemSingle
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364799));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364798));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377350));
-    this.b = ((TextView)findViewById(2131365018));
+    this.b = ((TextView)findViewById(2131365017));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = (pax)paramObject;
-      this.jdField_a_of_type_Pvb.a(paramObject);
+      paramObject = (pau)paramObject;
+      this.jdField_a_of_type_Puy.a(paramObject);
       b();
       paramObject = paramObject.a();
       if ((paramObject != null) && (paramObject.mTopicRecommendFeedsInfo != null) && (paramObject.mTopicRecommendFeedsInfo.a != null) && (paramObject.mTopicRecommendFeedsInfo.a.size() != 0)) {}
@@ -92,17 +92,17 @@ public class ComponentTopicItemSingle
     {
       return;
     }
-    paramObject = (qdv)paramObject.mTopicRecommendFeedsInfo.a.get(0);
+    paramObject = (qds)paramObject.mTopicRecommendFeedsInfo.a.get(0);
     try
     {
       Object localObject = new URL(paramObject.d);
-      omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
+      omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.c + paramObject.a);
-      localObject = String.format(getResources().getString(2131718580), new Object[] { bhvh.a(paramObject.jdField_b_of_type_Int) });
+      localObject = String.format(getResources().getString(2131718591), new Object[] { bhvy.a(paramObject.jdField_b_of_type_Int) });
       this.b.setText((CharSequence)localObject);
       if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new pyn(this, paramObject));
+        setOnClickListener(new pyk(this, paramObject));
         return;
       }
     }
@@ -110,14 +110,14 @@ public class ComponentTopicItemSingle
     {
       for (;;)
       {
-        omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
+        omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         localMalformedURLException.printStackTrace();
       }
-      setOnClickListener(new pyo(this));
+      setOnClickListener(new pyl(this));
     }
   }
   
-  public void a(prb paramprb) {}
+  public void a(pqy parampqy) {}
   
   public void b()
   {

@@ -1,32 +1,73 @@
-import android.os.Handler;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class auwh
-  extends auyn
+  implements ViewPager.OnPageChangeListener
 {
-  public auwh(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  
+  public auwh(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrollStateChanged state = " + paramInt);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
+      this.b = true;
+    }
+    if (paramInt == 2) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (paramInt == 0)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+      }
+      if (this.b)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+        this.b = false;
+      }
+    }
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrolled pos = " + paramInt1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageSelected pos = " + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.d(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x = paramInt;
+    if (((auvg)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).a.o == auvf.h)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "report shopping template = " + paramInt);
+      }
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "Shop_Malltemplate", "0X8005B93", 0, 0, "", "", "", "");
+    }
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app.getCurrentAccountUin()));
   }
 }
 

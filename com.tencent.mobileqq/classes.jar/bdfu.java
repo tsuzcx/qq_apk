@@ -1,29 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.open.appcommon.js.AppInterface.2;
 
 public class bdfu
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public void handleMessage(Message paramMessage)
+  public bdfu(AppInterface.2 param2) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (bdft)paramMessage.obj;
-    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
-    try
-    {
-      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    this.a.this$0.tipDialog = null;
   }
 }
 

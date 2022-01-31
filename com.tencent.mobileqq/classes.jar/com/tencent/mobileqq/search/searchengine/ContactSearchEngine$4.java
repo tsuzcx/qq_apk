@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import awts;
-import awtz;
-import awut;
-import awvg;
-import awvh;
+import awtu;
+import awub;
+import awuv;
+import awvi;
+import awvj;
 import java.util.List;
 
 public class ContactSearchEngine$4
   implements Runnable
 {
-  public ContactSearchEngine$4(awts paramawts, awvg paramawvg) {}
+  public ContactSearchEngine$4(awtu paramawtu, awvi paramawvi) {}
   
   public void run()
   {
-    List localList1 = awts.a(this.this$0, this.a);
-    awut localawut = awts.a(this.this$0);
-    awvh localawvh;
-    if ((localawut != null) && (localList1 != null))
+    List localList1 = awtu.a(this.this$0, this.a);
+    awuv localawuv = awtu.a(this.this$0);
+    awvj localawvj;
+    if ((localawuv != null) && (localList1 != null))
     {
-      localawvh = new awvh(this.a.a, 1);
-      if (awts.a(this.this$0) == null) {
-        localawut.a(localList1, localawvh);
+      localawvj = new awvj(this.a.a, 1);
+      if (awtu.a(this.this$0) == null) {
+        localawuv.a(localList1, localawvj);
       }
     }
     else
     {
       return;
     }
-    localawut.a(localList1);
-    List localList2 = awts.a(this.this$0).a(this.a);
+    localawuv.a(localList1);
+    List localList2 = awtu.a(this.this$0).a(this.a);
     if ((localList2 != null) && (!localList2.isEmpty())) {
       localList1.addAll(localList2);
     }
-    localawut.a(localList1, localawvh);
+    localawuv.a(localList1, localawvj);
   }
 }
 

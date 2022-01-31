@@ -1,18 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.5.1;
-
-public class bjar
-  implements DialogInterface.OnClickListener
+class bjar
+  extends bjch
 {
-  bjar(bjan parambjan) {}
+  bjar(bjao parambjao) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ThreadManager.excute(new QIMPtvTemplateAdapter.5.1(this), 128, null, true);
-    bjkm.a(this.a.a).a();
-    bkqj.a("shortvideo_download_effects", null);
+    super.a();
+    this.a.n();
   }
 }
 

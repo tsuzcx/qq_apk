@@ -1,19 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-
-public class qfe
-  implements View.OnClickListener
-{
-  public qfe(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    ReadInJoyDeliverVideoActivity.b(this.a, true);
-    ReadInJoyDeliverVideoActivity.b(this.a);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfe

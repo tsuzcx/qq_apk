@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ajyc;
-import akdi;
-import akja;
-import akjc;
+import ajya;
+import akdh;
+import akiz;
+import akjb;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import awkc;
-import awkj;
-import awln;
-import awnn;
-import awoe;
+import awke;
+import awkl;
+import awlp;
+import awnp;
 import awog;
-import awpk;
-import awus;
-import awvh;
-import awvy;
-import awwb;
-import bfob;
+import awoi;
+import awpm;
+import awuu;
+import awvj;
+import awwa;
+import awwd;
+import bfos;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -32,16 +32,16 @@ import com.tencent.widget.AbsListView;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import sfh;
+import sfe;
 
 public class PublicAcntSearchFragment
   extends BaseSearchFragment
-  implements bfob
+  implements bfos
 {
   private static int b;
   protected int a;
   private long a;
-  protected akjc a;
+  protected akjb a;
   public String a;
   public boolean a;
   public byte[] a;
@@ -56,7 +56,7 @@ public class PublicAcntSearchFragment
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Akjc = new awln(this);
+    this.jdField_a_of_type_Akjb = new awlp(this);
   }
   
   public static PublicAcntSearchFragment a(int paramInt)
@@ -70,12 +70,12 @@ public class PublicAcntSearchFragment
     return 50;
   }
   
-  protected awkc a()
+  protected awke a()
   {
-    return new awkj(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this, 0);
+    return new awkl(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxy, this, 0);
   }
   
-  protected awus a()
+  protected awuu a()
   {
     return new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_b_of_type_Int);
   }
@@ -83,16 +83,16 @@ public class PublicAcntSearchFragment
   protected String a()
   {
     if (jdField_b_of_type_Int == 12) {
-      return sfh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+      return sfe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
     }
-    return ajyc.a(2131708789);
+    return ajya.a(2131708800);
   }
   
   public void a(List paramList, int paramInt)
   {
     super.a(paramList, paramInt);
     String str;
-    if ((awvy.a(jdField_b_of_type_Int)) && (!this.jdField_b_of_type_Boolean))
+    if ((awwa.a(jdField_b_of_type_Int)) && (!this.jdField_b_of_type_Boolean))
     {
       this.jdField_b_of_type_Boolean = true;
       str = "" + this.jdField_c_of_type_JavaLangString;
@@ -103,18 +103,18 @@ public class PublicAcntSearchFragment
     label143:
     for (paramList = "0";; paramList = "" + paramList.size())
     {
-      awvy.a("all_result", "exp_public_uin_page", new String[] { str, paramList });
+      awwa.a("all_result", "exp_public_uin_page", new String[] { str, paramList });
       if ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.isEmpty())) {
         break label197;
       }
       paramInt = 0;
       while (paramInt < this.jdField_c_of_type_JavaUtilList.size())
       {
-        awwb.a((awog)this.jdField_c_of_type_JavaUtilList.get(paramInt), this.jdField_c_of_type_JavaUtilList.size(), paramInt);
+        awwd.a((awoi)this.jdField_c_of_type_JavaUtilList.get(paramInt), this.jdField_c_of_type_JavaUtilList.size(), paramInt);
         paramInt += 1;
       }
     }
-    this.jdField_c_of_type_JavaUtilList.add(0, new awnn(ajyc.a(2131708739), "", ""));
+    this.jdField_c_of_type_JavaUtilList.add(0, new awnp(ajya.a(2131708750), "", ""));
     label197:
     this.jdField_a_of_type_ArrayOfByte = null;
     if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
@@ -130,15 +130,15 @@ public class PublicAcntSearchFragment
     QLog.i("PublicAcntSearchFragment", 2, "keyword is empty ");
   }
   
-  public void a(List paramList, awvh paramawvh)
+  public void a(List paramList, awvj paramawvj)
   {
-    if (paramawvh.a(this.jdField_c_of_type_JavaLangString)) {
-      a(paramList, paramawvh.jdField_a_of_type_Int);
+    if (paramawvj.a(this.jdField_c_of_type_JavaLangString)) {
+      a(paramList, paramawvj.jdField_a_of_type_Int);
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("PublicAcntSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramawvh.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
+    QLog.d("PublicAcntSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramawvj.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
   }
   
   protected boolean a()
@@ -162,7 +162,7 @@ public class PublicAcntSearchFragment
       QLog.i("PublicAcntSearchFragment", 2, "sendNetPublicAcntRequest ,keyword=" + this.jdField_c_of_type_JavaLangString);
     }
     ThreadManager.getUIHandler().post(new PublicAcntSearchFragment.1(this));
-    Object localObject1 = ((akdi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a();
+    Object localObject1 = ((akdh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a();
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
       if (QLog.isColorLevel()) {
@@ -171,7 +171,7 @@ public class PublicAcntSearchFragment
     }
     for (;;)
     {
-      paramList = (akja)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
+      paramList = (akiz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
       localObject1 = new Bundle();
       ((Bundle)localObject1).putBoolean("isLoadMore", true);
       ((Bundle)localObject1).putInt("fromType", jdField_b_of_type_Int);
@@ -184,15 +184,15 @@ public class PublicAcntSearchFragment
         int i = 0;
         while (i < paramList.size())
         {
-          localObject2 = (awoe)paramList.get(i);
-          if ((localObject2 instanceof awpk))
+          localObject2 = (awog)paramList.get(i);
+          if ((localObject2 instanceof awpm))
           {
-            localObject2 = (awpk)localObject2;
+            localObject2 = (awpm)localObject2;
             int j = 0;
             while (j < ((List)localObject1).size())
             {
               PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((List)localObject1).get(j);
-              if (TextUtils.equals(String.valueOf(localPublicAccountInfo.uin), String.valueOf(((awpk)localObject2).a.uin))) {
+              if (TextUtils.equals(String.valueOf(localPublicAccountInfo.uin), String.valueOf(((awpm)localObject2).a.uin))) {
                 localArrayList.add(Long.valueOf(localPublicAccountInfo.uin));
               }
               j += 1;
@@ -207,7 +207,7 @@ public class PublicAcntSearchFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akjc);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akjb);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -219,28 +219,28 @@ public class PublicAcntSearchFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Awus instanceof PublicAccountSearchEngine)) {
-      ((PublicAccountSearchEngine)this.jdField_a_of_type_Awus).e();
+    if ((this.jdField_a_of_type_Awuu instanceof PublicAccountSearchEngine)) {
+      ((PublicAccountSearchEngine)this.jdField_a_of_type_Awuu).e();
     }
     this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjc);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjb);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Awus.c();
+    this.jdField_a_of_type_Awuu.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Awus.d();
+    this.jdField_a_of_type_Awuu.d();
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_Awkc == null) || (this.jdField_a_of_type_Awkc.getCount() == 0) || (this.jdField_a_of_type_Int == 0)) {}
+    if ((this.jdField_a_of_type_Awke == null) || (this.jdField_a_of_type_Awke.getCount() == 0) || (this.jdField_a_of_type_Int == 0)) {}
     while ((paramInt3 - paramInt1 - paramInt2 >= 10) || (this.jdField_a_of_type_Boolean) || (this.f)) {
       return;
     }

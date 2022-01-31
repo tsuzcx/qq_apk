@@ -1,22 +1,53 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.Calendar;
 
-public class baqh
-  implements bfwk
+class baqh
+  implements baqz
 {
-  private int jdField_a_of_type_Int;
+  baqh(baqg parambaqg) {}
   
-  public baqh(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
+    if (baqg.a(this.a) != null)
+    {
+      if (paramInt1 != 0) {
+        break label212;
+      }
+      if (baqg.a(this.a) == null) {
+        break label288;
+      }
+      paramInt1 = baqg.a(this.a).a(baqg.a(this.a), paramInt2);
+      int i = baqg.a(this.a).a(baqg.a(this.a), paramInt2, paramInt1);
+      paramInt2 = paramInt1;
+      paramInt1 = i;
+    }
+    for (;;)
+    {
+      baqg.a(this.a).setSelection(1, paramInt2);
+      baqg.a(this.a).a(1);
+      baqg.a(this.a).setSelection(2, paramInt1);
+      baqg.a(this.a).a(2);
+      label212:
+      do
+      {
+        baqg.a(this.a, baqg.a(this.a).a(new int[] { baqg.a(this.a).a(0), baqg.a(this.a).a(1), baqg.a(this.a).a(2) }));
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(baqg.a(this.a).a(baqg.a(this.a).getTimeInMillis())));
+        }
+        return;
+      } while (paramInt1 != 1);
+      if (baqg.a(this.a) != null) {}
+      for (paramInt1 = baqg.a(this.a).a(baqg.a(this.a), baqg.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+      {
+        baqg.a(this.a).setSelection(2, paramInt1);
+        baqg.a(this.a).a(2);
+        break;
+      }
+      label288:
+      paramInt1 = 0;
+      paramInt2 = 0;
     }
   }
 }

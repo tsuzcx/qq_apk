@@ -1,70 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class nyz
-  implements ViewBase.OnClickListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  nyz(nyy paramnyy) {}
+  nyz(nyy paramnyy, BaseData paramBaseData, Context paramContext, ViewBase paramViewBase) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onFound(ViewBase paramViewBase)
   {
-    int j = 101;
-    boolean bool2 = false;
-    boolean bool1;
-    int i;
-    if ((nyx.a(this.a.jdField_a_of_type_Nyx) instanceof ProteusItemData))
-    {
-      bool1 = bool2;
-      i = j;
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        bool1 = true;
-        i = -1;
-      }
-    }
-    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (oal.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
-    {
-      oal.b(nyw.a(this.a.jdField_a_of_type_Nyx.a), (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      return;
-      rnn.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bool1 = true;
-      i = 4;
-      continue;
-      bool1 = true;
-      i = 3;
-      continue;
-      i = 5;
-      bool1 = bool2;
-      continue;
-      bool1 = true;
-      i = 8;
-      continue;
-      i = 1000;
-      bool1 = true;
-      continue;
-      i = 102;
-      bool1 = bool2;
-      continue;
-      i = 4;
-      bool1 = bool2;
-      continue;
-      i = 3;
-      bool1 = bool2;
-      continue;
-      bool1 = true;
-      i = j;
-      continue;
-      i = 102;
-      bool1 = true;
-    }
-    nyx.a(this.a.jdField_a_of_type_Nyx, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-    nyw.a(this.a.jdField_a_of_type_Nyx.a);
-    rmt.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)nyx.a(this.a.jdField_a_of_type_Nyx), bool1, i);
+    paramViewBase.setOnClickListener(new nza(this));
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.util;
 
 import android.graphics.Bitmap;
-import bbai;
+import bbaw;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ScreenShotUtil$1
   implements Runnable
 {
-  public ScreenShotUtil$1(bbai parambbai, Bitmap paramBitmap) {}
+  public ScreenShotUtil$1(bbaw parambbaw, Bitmap paramBitmap) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ScreenShotUtil", 2, "ScreenShot Finish Callback");
     }
-    this.jdField_a_of_type_Bbai.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Bbaw.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

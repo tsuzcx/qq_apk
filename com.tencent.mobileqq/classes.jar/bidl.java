@@ -1,12 +1,29 @@
-import com.tencent.weiyun.utils.Singleton;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
 
 final class bidl
-  extends Singleton<bidk, Void>
+  implements aptw
 {
-  protected bidk a(Void paramVoid)
+  bidl(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
+  
+  public void a()
   {
-    return new bidk(null);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
+      apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
+    }
+    if (bidk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int)) {
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692830, 0).b(this.jdField_a_of_type_Int);
+    }
   }
+  
+  public void b() {}
 }
 
 

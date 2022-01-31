@@ -1,36 +1,45 @@
+import android.media.ExifInterface;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 public class ahtw
-  extends akup
+  implements aiai
 {
-  public ahtw(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahtw(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a_(String paramString)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    bbef.a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
+    if (QLog.isColorLevel()) {}
+    try
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (FlowCameraActivity2.a(this.a) != null) {
-        FlowCameraActivity2.a(this.a);
+      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
+      ((Field)localObject).setAccessible(true);
+      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
+      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
+        return;
       }
     }
-    do
+    catch (Exception localException)
     {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,14 +9,14 @@ import org.json.JSONObject;
 class DataJsPlugin$7
   implements AsyncResult
 {
-  DataJsPlugin$7(DataJsPlugin paramDataJsPlugin, beka parambeka) {}
+  DataJsPlugin$7(DataJsPlugin paramDataJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      if (besl.a()) {
-        besl.a("DataJsPlugin", "call checkNavigateRight ： " + paramJSONObject.toString());
+      if (betc.a()) {
+        betc.a("DataJsPlugin", "call checkNavigateRight ： " + paramJSONObject.toString());
       }
       paramJSONObject = new JSONObject();
       JSONObject localJSONObject = new JSONObject();
@@ -24,7 +24,7 @@ class DataJsPlugin$7
       {
         localJSONObject.put("data", "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}");
         paramJSONObject.put("respData", localJSONObject);
-        besl.a("DataJsPlugin", "call checkNavigateRight real： " + paramJSONObject.toString());
+        betc.a("DataJsPlugin", "call checkNavigateRight real： " + paramJSONObject.toString());
         this.val$req.a(paramJSONObject);
         return;
       }
@@ -36,7 +36,7 @@ class DataJsPlugin$7
         }
       }
     }
-    besl.a("DataJsPlugin", "call checkNavigateRight failed. ");
+    betc.a("DataJsPlugin", "call checkNavigateRight failed. ");
     this.val$req.b();
   }
 }

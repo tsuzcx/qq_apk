@@ -3,11 +3,11 @@ import java.util.List;
 
 public abstract interface ajmd
 {
-  public abstract void a(ajme paramajme);
+  public abstract List<TraceData> a();
   
-  public abstract void a(List<TraceData> paramList);
+  public abstract boolean a(List<TraceData> paramList);
   
-  public abstract void b(List<TraceData> paramList);
+  public abstract boolean b(List<TraceData> paramList);
 }
 
 

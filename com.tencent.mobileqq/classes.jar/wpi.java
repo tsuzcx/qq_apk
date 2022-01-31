@@ -1,17 +1,16 @@
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
+
 public class wpi
+  implements SwipeRefreshLayout.OnRefreshListener
 {
-  public Object a;
-  public boolean a;
+  public wpi(ComponentPageView paramComponentPageView) {}
   
-  public wpi(Object paramObject)
+  public void onRefresh()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public wpi(Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

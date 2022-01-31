@@ -1,11 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.util.ArrayList;
 
 public class aieg
-  extends ajxl
+  implements DialogInterface.OnClickListener
 {
-  public aieg(SelectMemberActivity paramSelectMemberActivity) {}
+  public aieg(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

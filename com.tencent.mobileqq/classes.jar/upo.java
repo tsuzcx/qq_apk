@@ -1,24 +1,28 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class upo
-  extends JobSegment<String, ups>
+  extends SimpleObserver<upp>
 {
-  private tlz jdField_a_of_type_Tlz = new tlz();
+  public upo(upk paramupk) {}
   
-  public upo(upn paramupn, @NonNull String paramString)
+  public void a(upp paramupp)
   {
-    this.jdField_a_of_type_Tlz.a = new ArrayList();
-    paramupn = new uvs(paramString, 0, "", "");
-    this.jdField_a_of_type_Tlz.a.add(paramupn);
+    super.onNext(paramupp);
+    upk.a(this.a, paramupp, false, new ErrorMessage());
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void onCancel()
   {
-    syr.a().a(this.jdField_a_of_type_Tlz, new upp(this, paramJobContext));
+    super.onCancel();
+    ved.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    upk.a(this.a, null, false, (ErrorMessage)paramError);
   }
 }
 

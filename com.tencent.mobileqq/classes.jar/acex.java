@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class acex
-  implements View.OnClickListener
+  implements amdf
 {
-  public acex(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public acex(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    if (this.a.jdField_a_of_type_Bcbv != null)
+    amda.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = bbos.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
     {
-      this.a.jdField_a_of_type_Bcbv.jdField_a_of_type_Bcfm.d = false;
-      this.a.jdField_a_of_type_Bcbv.jdField_a_of_type_Bcfm.a = Boolean.valueOf(true);
-      if (this.a.jdField_a_of_type_Bcfj != null) {
-        this.a.jdField_a_of_type_Bcfj.j();
-      }
+      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
+      return;
     }
-    this.a.onClick(this.a.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView);
-    this.a.a(0);
+    this.a.jdField_a_of_type_JavaLangCharSequence = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.i = 0;
   }
 }
 

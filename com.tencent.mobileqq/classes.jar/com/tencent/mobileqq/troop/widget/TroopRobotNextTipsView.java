@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import balw;
+import bamk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -44,12 +44,12 @@ public class TroopRobotNextTipsView
   private TroopRobotNextTipsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i = actn.a(6.0F, getResources());
+    int i = actj.a(6.0F, getResources());
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364134);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841138);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364133);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841135);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
@@ -62,7 +62,7 @@ public class TroopRobotNextTipsView
     if (this.b == null)
     {
       this.b = new TextView(getContext());
-      this.b.setId(2131364135);
+      this.b.setId(2131364134);
       this.b.setBackgroundResource(2130841980);
       this.b.setTextSize(2, 14.0F);
       this.b.setTextColor(jdField_a_of_type_Int);
@@ -73,17 +73,17 @@ public class TroopRobotNextTipsView
       this.b.setPadding(i, 0, i, 0);
       addView(this.b, paramContext);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131715755));
-    this.b.setText(ajyc.a(2131715742));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131715766));
+    this.b.setText(ajya.a(2131715753));
     this.b.setOnClickListener(this);
   }
   
   public void a(ChatMessage paramChatMessage)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    Object localObject = (balw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(203);
-    boolean bool = ((balw)localObject).c(paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory = ((balw)localObject).a(((balw)localObject).a(paramChatMessage));
+    Object localObject = (bamk)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(203);
+    boolean bool = ((bamk)localObject).c(paramChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory = ((bamk)localObject).a(((bamk)localObject).a(paramChatMessage));
     if (this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory != null)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory.name.get();
@@ -107,7 +107,7 @@ public class TroopRobotNextTipsView
           j = BaseChatItemLayout.o;
           i = BaseChatItemLayout.n;
         }
-        setPadding(j, 0, i, actn.a(10.0F, getContext().getResources()));
+        setPadding(j, 0, i, actj.a(10.0F, getContext().getResources()));
         return;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         break;
@@ -127,7 +127,7 @@ public class TroopRobotNextTipsView
     do
     {
       return;
-      paramView = (balw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
+      paramView = (bamk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
       localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
     } while ((localObject == null) || (((ChatFragment)localObject).a() == null));
     Object localObject = ((ChatFragment)localObject).a();

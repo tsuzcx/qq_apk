@@ -1,6 +1,8 @@
-public abstract interface aczl
+import android.widget.RelativeLayout;
+
+public class aczl
 {
-  public abstract void al_();
+  public RelativeLayout a;
 }
 
 

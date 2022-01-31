@@ -1,27 +1,27 @@
-import android.graphics.Bitmap;
+import android.animation.AnimatorSet;
 import android.graphics.Rect;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.HashMap;
 
 public class ambp
 {
-  public int a;
-  public ambq a;
-  public amcs a;
-  public Bitmap a;
+  public long a;
+  public AnimatorSet a;
   public Rect a;
-  public Boolean a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b = "";
-  public boolean b;
-  public int c;
+  public View a;
+  public ImageView a;
+  public MessageRecord a;
+  public HashMap<String, amcc> a;
+  public long b;
+  public Rect b;
+  public MessageRecord b;
   
   public ambp()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
 }
 

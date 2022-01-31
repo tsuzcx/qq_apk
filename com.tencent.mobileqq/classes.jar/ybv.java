@@ -1,8 +1,25 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.device.file.DeviceFileHandler;
 
-public abstract interface ybv
+public class ybv
+  extends Handler
 {
-  public abstract void a(View paramView, ybw paramybw);
+  public ybv(DeviceFileHandler paramDeviceFileHandler, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.notifyUI(103, true, paramMessage.obj);
+  }
 }
 
 

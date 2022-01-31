@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import axrl;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
@@ -12,11 +12,11 @@ import com.tencent.qphone.base.util.QLog;
 public class StatisticCollector$1
   implements Runnable
 {
-  public StatisticCollector$1(axrl paramaxrl) {}
+  public StatisticCollector$1(axrn paramaxrn) {}
   
   public void run()
   {
-    int i = axrl.a();
+    int i = axrn.a();
     Object localObject1;
     if (i > 0)
     {

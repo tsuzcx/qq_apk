@@ -1,13 +1,13 @@
 package dov.com.qq.im.capture.view.share;
 
 import android.app.Activity;
-import bcdb;
-import bjls;
+import bcdp;
+import bjmj;
 
 public class FilterComboSharePlugin$4
   implements Runnable
 {
-  public FilterComboSharePlugin$4(bjls parambjls) {}
+  public FilterComboSharePlugin$4(bjmj parambjmj) {}
   
   public void run()
   {

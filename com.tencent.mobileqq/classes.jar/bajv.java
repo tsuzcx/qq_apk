@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-
 public class bajv
-  implements apac
 {
-  public bajv(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a() {}
-  
-  public void b()
+  public bajv(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    aozx.a(new aplq(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+  }
+  
+  public bajv(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 

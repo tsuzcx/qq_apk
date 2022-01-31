@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
+import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
 
 public class bkwi
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  public bkwi(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bkwi(DragAnimationMgr paramDragAnimationMgr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    int i = DragAnimationMgr.a(this.a).a();
+    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    int i = DragAnimationMgr.a(this.a).a();
+    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
   }
 }
 

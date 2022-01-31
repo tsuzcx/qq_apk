@@ -1,19 +1,25 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import java.util.HashMap;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class ahcj
-  implements ahbu
+public class ahcj
+  implements ahbn
 {
-  ahcj(ahci paramahci, int paramInt) {}
+  public ahcj(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
   
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
+    }
     Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramHashMap);
-    this.jdField_a_of_type_Ahci.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    localBundle.putString("id", paramString1);
+    localBundle.putInt("result", paramInt);
+    localBundle.putString("path", paramString2);
+    localBundle.putSerializable("res_info", paramResourceInfo);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

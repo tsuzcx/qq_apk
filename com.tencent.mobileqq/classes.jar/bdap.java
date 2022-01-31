@@ -1,22 +1,64 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.open.agent.FriendChooser;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
 
 public class bdap
-  implements TextWatcher
+  implements bfph
 {
-  public bdap(FriendChooser paramFriendChooser) {}
+  public bdap(CreateVirtualAccountFragment paramCreateVirtualAccountFragment, bfpc parambfpc) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bfpc.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      paramView = new Intent();
+      paramInt = bbac.b(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity());
+      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      paramView.putExtra("Business_Origin", 103);
+      paramView.putExtra("BUSINESS_ORIGIN_NEW", 103);
+      paramView.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+      paramView.putExtra("fromWhereClick", 11);
+      PhotoUtils.a(paramView, this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), PublicFragmentActivityForOpenSDK.class.getName(), paramInt, paramInt, 1080, 1080, bbac.a());
+      continue;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().checkSelfPermission("android.permission.CAMERA") != 0)
+        {
+          paramInt = 1;
+          if (paramInt != 0) {
+            this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity().requestPermissions(new bdaq(this), 2, new String[] { "android.permission.CAMERA" });
+          }
+        }
+        else
+        {
+          paramInt = 0;
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentOpenAgentCreateVirtualAccountFragment.getActivity(), 257);
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

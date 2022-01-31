@@ -1,22 +1,8 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.mfsdk.collector.ResultObject;
 
-class aaaj
-  extends AsyncTask<Void, Void, Void>
+public abstract interface aaaj
 {
-  aaaj(aaai paramaaai) {}
-  
-  protected Void a(Void... paramVarArgs)
-  {
-    paramVarArgs = aaai.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
-    }
-    aaai.a(this.a).clear();
-    return null;
-  }
+  public abstract boolean a(ResultObject paramResultObject, aaak paramaaak);
 }
 
 

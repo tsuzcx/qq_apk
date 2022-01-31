@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.core.page.swipe;
 
-import bfbv;
+import bfcm;
 
 public class ViewDragHelper$2
   implements Runnable
 {
-  public ViewDragHelper$2(bfbv parambfbv) {}
+  public ViewDragHelper$2(bfcm parambfcm) {}
   
   public void run()
   {

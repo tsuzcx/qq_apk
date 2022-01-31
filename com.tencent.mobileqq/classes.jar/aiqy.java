@@ -1,9 +1,8 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
 public abstract interface aiqy
 {
-  public abstract void a(Canvas paramCanvas, Paint paramPaint);
+  public abstract Object a();
+  
+  public abstract void invalidateSelf();
 }
 
 

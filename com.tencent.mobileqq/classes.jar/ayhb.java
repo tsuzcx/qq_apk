@@ -1,30 +1,55 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.StringTokenizer;
 
-public class ayhb
-  extends aygx
+public abstract class ayhb
 {
-  public ayhb(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ayhd paramayhd)
+  public int a;
+  protected ayhh a;
+  public QQAppInterface a;
+  public DataLineMsgRecord a;
+  public String a;
+  
+  public ayhb(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, ayhh paramayhh)
   {
-    super(paramQQAppInterface, paramChatMessage, paramayhd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
+    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
+    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
+    this.jdField_a_of_type_Ayhh = paramayhh;
   }
   
-  protected String a()
-  {
-    return ((MessageForFile)this.a).fileName;
-  }
+  public abstract String a();
   
-  protected void a(aygy paramaygy)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BuddyFileAIOMsgTips", 1, "getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
+    Object localObject = anbu.a().a();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+      }
     }
-    ThreadManager.getUIHandler().post(new BuddyFileAIOMsgTips.1(this, paramaygy));
+    String str;
+    do
+    {
+      while (!((StringTokenizer)localObject).hasMoreTokens())
+      {
+        do
+        {
+          return false;
+          str = apvd.a(a());
+          localObject = new StringTokenizer((String)localObject, "|");
+          if (((StringTokenizer)localObject).hasMoreTokens()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
+        return false;
+      }
+    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
+    return true;
   }
 }
 

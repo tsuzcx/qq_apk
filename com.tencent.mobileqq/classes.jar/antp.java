@@ -1,13 +1,6 @@
-import android.graphics.Point;
-import android.view.View;
-
 public abstract interface antp
 {
-  public abstract View a(int paramInt);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -3,12 +3,12 @@ package cooperation.qqpim;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgst;
+import bgtk;
 
 public class QQPimTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new bgst();
+  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new bgtk();
   public byte a;
   public int a;
   public String a;

@@ -1,30 +1,11 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import com.tencent.qphone.base.util.QLog;
-
-@TargetApi(11)
 class attw
-  implements View.OnDragListener
+  implements bfpj
 {
-  private int jdField_a_of_type_Int;
+  attw(attg paramattg) {}
   
-  public attw(atte paramatte, int paramInt)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-    }
+    attg.a(this.a, this.a.c, false);
   }
 }
 

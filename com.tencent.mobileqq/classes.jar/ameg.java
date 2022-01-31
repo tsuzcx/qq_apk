@@ -3,17 +3,14 @@ import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 import com.tencent.widget.AdapterView;
 
 public class ameg
-  implements bfpc
+  implements bfpu
 {
   public ameg(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.overridePendingTransition(0, 2130772328);
-      this.a.finish();
-    }
+    this.a.a();
+    return true;
   }
 }
 

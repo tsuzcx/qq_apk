@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
 final class tsx
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  tsx(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  tsx(CommentEntry paramCommentEntry, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    veg.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
-    svo.a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((tdl)tcz.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new tkv().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      ved.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
+    }
   }
 }
 

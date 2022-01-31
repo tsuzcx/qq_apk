@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import aywk;
+import aywm;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.media.image.ImageLoader;
@@ -20,10 +20,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import wva;
-import wvk;
-import wvl;
-import xhe;
+import wux;
+import wvh;
+import wvi;
+import xhb;
 
 public class CommodityItemView
   extends BaseWidgetView
@@ -59,7 +59,7 @@ public class CommodityItemView
   
   public View.OnClickListener a()
   {
-    return new wvl(this);
+    return new wvi(this);
   }
   
   public View a()
@@ -69,11 +69,11 @@ public class CommodityItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131368543));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378104));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378105));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378076);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368549);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131368542));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378107));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378108));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378079);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368548);
     this.jdField_b_of_type_Int = (ImmersiveUtils.a() * 5 / 6);
     if (getLayoutParams() == null) {
       setLayoutParams(new FrameLayout.LayoutParams(this.jdField_b_of_type_Int, ImmersiveUtils.a(132.0F)));
@@ -104,8 +104,8 @@ public class CommodityItemView
       try
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywk.b();
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = aywk.a();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywm.b();
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = aywm.a();
         paramObject = URLDrawable.getDrawable(paramObject, (URLDrawable.URLDrawableOptions)localObject);
         if (paramObject != null) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(paramObject);
@@ -119,7 +119,7 @@ public class CommodityItemView
         }
       }
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-        xhe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + wva.a(a()), "exp_goods", 0, 0, new String[0]);
+        xhb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + wux.a(a()), "exp_goods", 0, 0, new String[0]);
       }
       return;
       localObject = ((CertifiedAccountMeta.StYouZanGood)paramObject).title.get();
@@ -128,7 +128,7 @@ public class CommodityItemView
       break;
     }
     label261:
-    ImageLoader.getInstance().loadImageAsync(paramObject, new wvk(this));
+    ImageLoader.getInstance().loadImageAsync(paramObject, new wvh(this));
   }
   
   public View b()

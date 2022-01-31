@@ -1,73 +1,100 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Array;
+import java.util.Locale;
 
 public class mnm
 {
-  public static boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
+  private static mnm a;
+  public int a;
+  public String a;
+  public int b = 4;
+  public int c = 2000;
+  public int d = 4;
+  public int e = 2150;
+  public int f = 720;
+  public int g = 1;
+  public int h = 5;
+  public int i = 120000;
+  public int j = 1;
+  public int k = 1;
+  public int l = 0;
+  public int m = 0;
+  public int n = 5000;
+  public int o = 0;
+  public int p = 25000;
+  public int q = 1;
+  public int r;
+  public int s;
+  
+  public mnm()
   {
-    int n = 0;
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte3 == null) || (paramInt == 0))
-    {
-      QLog.e("PCMMixer", 1, "mix, dst == null || inputA == null || inputB == null || size == 0");
-      return false;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  private static int a(String[] paramArrayOfString, int paramInt1, int paramInt2)
+  {
+    if ((paramArrayOfString == null) || (paramInt1 >= paramArrayOfString.length)) {
+      return paramInt2;
     }
-    if ((paramArrayOfByte2.length < paramInt) || (paramArrayOfByte3.length < paramInt))
+    try
     {
-      QLog.e("PCMMixer", 1, "mix, inputA.length < size || inputB.length < size");
-      return false;
+      paramInt1 = Integer.parseInt(paramArrayOfString[paramInt1]);
+      return paramInt1;
     }
-    System.currentTimeMillis();
-    int i = paramInt / 2;
-    short[][] arrayOfShort = (short[][])Array.newInstance(Short.TYPE, new int[] { 2, i });
-    i = 0;
-    while (i < paramInt / 2)
+    catch (Exception paramArrayOfString)
     {
-      arrayOfShort[0][i] = ((short)(paramArrayOfByte2[(i * 2)] & 0xFF | (paramArrayOfByte2[(i * 2 + 1)] & 0xFF) << 8));
-      i += 1;
+      paramArrayOfString.printStackTrace();
     }
-    i = 0;
-    while (i < paramInt / 2)
+    return paramInt2;
+  }
+  
+  public static mnm a()
+  {
+    if (jdField_a_of_type_Mnm == null) {
+      jdField_a_of_type_Mnm = b();
+    }
+    return jdField_a_of_type_Mnm;
+  }
+  
+  private static mnm b()
+  {
+    mnm localmnm = new mnm();
+    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.qavDpc.name());
+    localmnm.jdField_a_of_type_JavaLangString = ((String)localObject);
+    if (!TextUtils.isEmpty(localmnm.jdField_a_of_type_JavaLangString))
     {
-      arrayOfShort[1][i] = ((short)(paramArrayOfByte3[(i * 2)] & 0xFF | (paramArrayOfByte3[(i * 2 + 1)] & 0xFF) << 8));
-      i += 1;
+      localObject = ((String)localObject).split("\\|");
+      localmnm.jdField_a_of_type_Int = a((String[])localObject, 0, 1);
+      localmnm.b = a((String[])localObject, 1, 4);
+      localmnm.c = a((String[])localObject, 2, 2000);
+      localmnm.d = a((String[])localObject, 3, 4);
+      localmnm.e = a((String[])localObject, 4, 2150);
+      localmnm.f = a((String[])localObject, 5, 720);
+      localmnm.g = a((String[])localObject, 6, 1);
+      localmnm.h = a((String[])localObject, 7, 5);
+      localmnm.i = a((String[])localObject, 8, 120000);
+      localmnm.j = a((String[])localObject, 9, 1);
+      localmnm.k = a((String[])localObject, 10, 1);
+      localmnm.l = a((String[])localObject, 11, 0);
+      localmnm.m = a((String[])localObject, 12, 0);
+      localmnm.n = a((String[])localObject, 13, 5000);
+      localmnm.o = a((String[])localObject, 14, 0);
+      localmnm.p = a((String[])localObject, 15, 25000);
+      localmnm.q = a((String[])localObject, 16, 1);
     }
-    paramArrayOfByte2 = new short[paramInt / 2];
-    int k = 0;
-    i = n;
-    if (k < paramInt / 2)
-    {
-      int j = 0;
-      int m;
-      for (i = 0; j < 2; i = m)
-      {
-        m = i;
-        if (arrayOfShort[j].length > k) {
-          m = i + arrayOfShort[j][k];
-        }
-        j += 1;
-      }
-      if (i > 32767) {
-        j = 32767;
-      }
-      for (;;)
-      {
-        paramArrayOfByte2[k] = ((short)j);
-        k += 1;
-        break;
-        j = i;
-        if (i < -32767) {
-          j = -32767;
-        }
-      }
+    localmnm.r = bbdh.b();
+    localmnm.s = ((int)(bbdh.b() / 1000L));
+    if (QLog.isColorLevel()) {
+      QLog.d("QavRecordDpc", 2, "init=" + localmnm);
     }
-    while (i < paramInt / 2)
-    {
-      paramArrayOfByte1[(i * 2)] = ((byte)(paramArrayOfByte2[i] & 0xFF));
-      paramArrayOfByte1[(i * 2 + 1)] = ((byte)((paramArrayOfByte2[i] & 0xFF00) >> 8));
-      i += 1;
-    }
-    System.currentTimeMillis();
-    return true;
+    return localmnm;
+  }
+  
+  public String toString()
+  {
+    return String.format(Locale.getDefault(), "QavRecordDpc:dpc=%s, default=%d|%d|%d|%d|%d|%d, value=%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%s|%s|%s, system=%d|%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2000), Integer.valueOf(4), Integer.valueOf(2150), Integer.valueOf(720), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o), Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s) });
   }
 }
 

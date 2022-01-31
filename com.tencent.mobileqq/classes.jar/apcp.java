@@ -1,12 +1,15 @@
 class apcp
+  extends apbu
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  public apcp(apbi paramapbi)
+  {
+    super(paramapbi);
+  }
   
-  apcp(apbe paramapbe) {}
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
+  }
 }
 
 

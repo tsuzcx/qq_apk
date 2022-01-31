@@ -1,19 +1,18 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
 class uku
-  implements ukq
+  implements ukp<Bitmap>
 {
-  uku(ukt paramukt) {}
+  uku(uks paramuks, List paramList, String paramString) {}
   
-  public void a(@NonNull uko paramuko)
+  @NonNull
+  public Stream<Bitmap> a(ukl paramukl)
   {
-    paramuko = paramuko.a();
-    if (paramuko != null) {
-      ukt.a(this.a, paramuko);
-    }
+    return uks.a(this.jdField_a_of_type_Uks, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void b(@NonNull uko paramuko) {}
 }
 
 

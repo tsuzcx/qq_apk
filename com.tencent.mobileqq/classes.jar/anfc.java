@@ -2,6 +2,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.widget.XEditTextEx;
 
 class anfc
@@ -13,8 +14,8 @@ class anfc
   {
     anez.a(this.jdField_a_of_type_Anez).removeCallbacks(anez.a(this.jdField_a_of_type_Anez));
     anez.a(this.jdField_a_of_type_Anez).run();
-    int i = anez.a(this.jdField_a_of_type_Anez).getSelectionStart();
-    paramView = anez.a(this.jdField_a_of_type_Anez).getEditableText();
+    int i = anez.a(this.jdField_a_of_type_Anez).a.getSelectionStart();
+    paramView = anez.a(this.jdField_a_of_type_Anez).a.getEditableText();
     if ((i < 0) || (i >= paramView.length()))
     {
       paramView.append(this.jdField_a_of_type_JavaLangString);

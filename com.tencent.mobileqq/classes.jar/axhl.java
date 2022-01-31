@@ -1,237 +1,167 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodecInfo;
-import android.media.MediaCodecList;
-import android.media.MediaFormat;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.av.mediacodec.DeviceCheck;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
-@SuppressLint({"NewApi"})
 public class axhl
-  extends low
 {
-  public static int e;
-  public static String e;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
   
-  static
+  public axhl()
   {
-    jdField_e_of_type_JavaLangString = "ShortVideoCodec";
-    jdField_e_of_type_Int = -1;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static int a(Context paramContext)
+  /* Error */
+  public int a(String paramString1, int paramInt1, int paramInt2, double paramDouble1, double paramDouble2, String paramString2)
   {
-    if (jdField_e_of_type_Int >= 0) {
-      return jdField_e_of_type_Int;
-    }
-    jdField_e_of_type_Int = 0;
-    if (paramContext == null) {
-      return jdField_e_of_type_Int;
-    }
-    VcControllerImpl.loadLibrary(paramContext);
-    if (Build.VERSION.SDK_INT < 16) {
-      return jdField_e_of_type_Int;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      a();
-      if (!jdField_b_of_type_Boolean)
-      {
-        jdField_e_of_type_Int = 0;
-        return jdField_e_of_type_Int;
-      }
-    }
-    if (DeviceCheck.b())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_e_of_type_JavaLangString, 2, "checkSupportMediaCodecFeature device is in white list.");
-      }
-      if (DeviceCheck.e()) {
-        jdField_e_of_type_Int = 1;
-      }
-      if (!b()) {
-        break label146;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_e_of_type_JavaLangString, 2, "checkSupportMediaCodecFeature device is in white list.");
-      }
-      if (DeviceCheck.f()) {
-        jdField_e_of_type_Int += 2;
-      }
-    }
-    for (;;)
-    {
-      return jdField_e_of_type_Int;
-      if (!DeviceCheck.e()) {
-        break;
-      }
-      jdField_e_of_type_Int = 1;
-      break;
-      label146:
-      if (DeviceCheck.f()) {
-        jdField_e_of_type_Int += 2;
-      }
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  public static List<MediaCodecInfo> a(String paramString, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int k = MediaCodecList.getCodecCount();
-    int i = 0;
-    if (i < k)
-    {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (localMediaCodecInfo.isEncoder()) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((!paramBoolean) || ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE"))))
-        {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static boolean b()
-  {
-    if (Build.VERSION.SDK_INT < 19) {}
-    do
-    {
-      return false;
-      if ((Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) && (Build.MODEL.equalsIgnoreCase("MI 3")) && (Build.PRODUCT.equalsIgnoreCase("pisces"))) {
-        return DeviceCheck.f();
-      }
-      if ((Build.MANUFACTURER.equalsIgnoreCase("OPPO")) && (Build.MODEL.equalsIgnoreCase("N5207")) && (Build.PRODUCT.equalsIgnoreCase("N5207"))) {
-        return DeviceCheck.f();
-      }
-      if ((Build.MANUFACTURER.equalsIgnoreCase("samsung")) && (Build.MODEL.equalsIgnoreCase("GT-I9500"))) {
-        return DeviceCheck.f();
-      }
-      if ((Build.MANUFACTURER.equalsIgnoreCase("Meizu")) && (Build.MODEL.equalsIgnoreCase("MX4"))) {
-        return DeviceCheck.f();
-      }
-    } while ((!Build.MANUFACTURER.equalsIgnoreCase("Meizu")) || (!Build.MODEL.equalsIgnoreCase("MX4 Pro")));
-    return DeviceCheck.f();
-  }
-  
-  public MediaCodec a()
-  {
-    return this.a;
-  }
-  
-  public lox b()
-  {
-    label404:
-    label510:
-    for (;;)
-    {
-      Object localObject1;
-      int i;
-      try
-      {
-        localObject1 = this.a;
-        if (localObject1 == null)
-        {
-          localObject1 = null;
-          return localObject1;
-        }
-        localObject1 = new lox(this);
-        i = this.a.dequeueOutputBuffer(((lox)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, jdField_c_of_type_Int);
-        switch (i)
-        {
-        case -3: 
-          if (i < 0) {
-            break label510;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_e_of_type_JavaLangString, 2, "dequeueOutputBuffer ok,index = " + i + ",BufferInfo[flags = " + ((lox)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags + ",offset=" + ((lox)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + ",size= " + ((lox)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size + ",TimeUs=" + ((lox)localObject1).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs + "]");
-          }
-          if (Build.VERSION.SDK_INT > 20) {
-            break label404;
-          }
-          ((lox)localObject1).jdField_a_of_type_JavaNioByteBuffer = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-          ((lox)localObject1).jdField_a_of_type_Int = i;
-          ((lox)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_e_of_type_JavaLangString, 2, "INFO_OUTPUT_BUFFERS_CHANGED");
-          }
-          this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.a.getOutputBuffers();
-          ((lox)localObject1).jdField_a_of_type_Int = -3;
-        }
-      }
-      finally {}
-      ((lox)localObject1).jdField_a_of_type_Int = -2;
-      this.jdField_b_of_type_AndroidMediaMediaFormat = this.a.getOutputFormat();
-      if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
-      {
-        ((lox)localObject1).jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_b_of_type_AndroidMediaMediaFormat;
-        if (this.d == jdField_b_of_type_Int)
-        {
-          if (this.jdField_b_of_type_AndroidMediaMediaFormat.containsKey("color-format"))
-          {
-            i = this.jdField_b_of_type_AndroidMediaMediaFormat.getInteger("color-format");
-            if (QLog.isColorLevel()) {
-              QLog.e(jdField_e_of_type_JavaLangString, 2, "New color format " + i + "[0x" + Integer.toHexString(i) + "]");
-            }
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.e(jdField_e_of_type_JavaLangString, 2, "EncCodec,INFO_OUTPUT_FORMAT_CHANGED");
-          break label510;
-          if (QLog.isColorLevel()) {
-            QLog.e(jdField_e_of_type_JavaLangString, 2, "dequeueOutputBuffer timed out!");
-          }
-          localObject2.jdField_a_of_type_Int = -1;
-          continue;
-          localObject2.jdField_a_of_type_Int = i;
-          try
-          {
-            localObject2.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)jdField_b_of_type_JavaLangReflectMethod.invoke(this.a, new Object[] { Integer.valueOf(i) }));
-            localObject2.jdField_a_of_type_AndroidMediaMediaFormat = ((MediaFormat)jdField_c_of_type_JavaLangReflectMethod.invoke(this.a, new Object[] { Integer.valueOf(i) }));
-          }
-          catch (IllegalAccessException localIllegalAccessException)
-          {
-            localIllegalAccessException.printStackTrace();
-            localObject2.jdField_a_of_type_Boolean = false;
-          }
-          catch (IllegalArgumentException localIllegalArgumentException)
-          {
-            localIllegalArgumentException.printStackTrace();
-            localObject2.jdField_a_of_type_Boolean = false;
-          }
-          catch (InvocationTargetException localInvocationTargetException)
-          {
-            localInvocationTargetException.printStackTrace();
-            localObject2.jdField_a_of_type_Boolean = false;
-          }
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: iload_2
+    //   2: iload_3
+    //   3: aload 8
+    //   5: iconst_0
+    //   6: getstatic 27	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   9: invokestatic 32	com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:a	(Ljava/lang/String;IILjava/lang/String;ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
+    //   12: astore_1
+    //   13: aload_1
+    //   14: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   17: ifeq +20 -> 37
+    //   20: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: ifeq +11 -> 34
+    //   26: ldc 46
+    //   28: iconst_2
+    //   29: ldc 48
+    //   31: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   34: bipush 254
+    //   36: ireturn
+    //   37: new 54	java/io/File
+    //   40: dup
+    //   41: aload_1
+    //   42: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
+    //   45: astore 9
+    //   47: aload 9
+    //   49: invokevirtual 60	java/io/File:exists	()Z
+    //   52: ifne +6 -> 58
+    //   55: bipush 254
+    //   57: ireturn
+    //   58: aload_1
+    //   59: dload 4
+    //   61: dload 6
+    //   63: invokestatic 65	bbef:a	(Ljava/lang/String;DD)Z
+    //   66: pop
+    //   67: new 67	java/io/FileInputStream
+    //   70: dup
+    //   71: aload_1
+    //   72: invokespecial 68	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   75: astore 8
+    //   77: aload 8
+    //   79: astore_1
+    //   80: aload_0
+    //   81: aload 8
+    //   83: aload 9
+    //   85: invokevirtual 72	java/io/File:length	()J
+    //   88: invokestatic 78	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   91: invokestatic 84	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   94: putfield 86	axhl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   97: aload 8
+    //   99: ifnull +8 -> 107
+    //   102: aload 8
+    //   104: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   107: aload_0
+    //   108: getfield 86	axhl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   111: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   114: ifeq +133 -> 247
+    //   117: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   120: ifeq +11 -> 131
+    //   123: ldc 46
+    //   125: iconst_2
+    //   126: ldc 91
+    //   128: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   131: iconst_m1
+    //   132: ireturn
+    //   133: astore_1
+    //   134: aload_1
+    //   135: invokevirtual 94	java/io/IOException:printStackTrace	()V
+    //   138: goto -31 -> 107
+    //   141: astore 9
+    //   143: aconst_null
+    //   144: astore 8
+    //   146: aload 8
+    //   148: astore_1
+    //   149: aload 9
+    //   151: invokevirtual 95	java/io/FileNotFoundException:printStackTrace	()V
+    //   154: aload 8
+    //   156: ifnull +8 -> 164
+    //   159: aload 8
+    //   161: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   164: aload_0
+    //   165: getfield 86	axhl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   168: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   171: ifeq +76 -> 247
+    //   174: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   177: ifeq +11 -> 188
+    //   180: ldc 46
+    //   182: iconst_2
+    //   183: ldc 91
+    //   185: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   188: iconst_m1
+    //   189: ireturn
+    //   190: astore_1
+    //   191: aload_1
+    //   192: invokevirtual 94	java/io/IOException:printStackTrace	()V
+    //   195: goto -31 -> 164
+    //   198: astore 8
+    //   200: aconst_null
+    //   201: astore_1
+    //   202: aload_1
+    //   203: ifnull +7 -> 210
+    //   206: aload_1
+    //   207: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   210: aload_0
+    //   211: getfield 86	axhl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   214: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   217: ifeq +27 -> 244
+    //   220: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   223: ifeq +11 -> 234
+    //   226: ldc 46
+    //   228: iconst_2
+    //   229: ldc 91
+    //   231: invokestatic 52	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: iconst_m1
+    //   235: ireturn
+    //   236: astore_1
+    //   237: aload_1
+    //   238: invokevirtual 94	java/io/IOException:printStackTrace	()V
+    //   241: goto -31 -> 210
+    //   244: aload 8
+    //   246: athrow
+    //   247: iconst_0
+    //   248: ireturn
+    //   249: astore 8
+    //   251: goto -49 -> 202
+    //   254: astore 9
+    //   256: goto -110 -> 146
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	259	0	this	axhl
+    //   0	259	1	paramString1	String
+    //   0	259	2	paramInt1	int
+    //   0	259	3	paramInt2	int
+    //   0	259	4	paramDouble1	double
+    //   0	259	6	paramDouble2	double
+    //   0	259	8	paramString2	String
+    //   45	39	9	localFile	java.io.File
+    //   141	9	9	localFileNotFoundException1	java.io.FileNotFoundException
+    //   254	1	9	localFileNotFoundException2	java.io.FileNotFoundException
+    // Exception table:
+    //   from	to	target	type
+    //   102	107	133	java/io/IOException
+    //   67	77	141	java/io/FileNotFoundException
+    //   159	164	190	java/io/IOException
+    //   67	77	198	finally
+    //   206	210	236	java/io/IOException
+    //   80	97	249	finally
+    //   149	154	249	finally
+    //   80	97	254	java/io/FileNotFoundException
   }
 }
 

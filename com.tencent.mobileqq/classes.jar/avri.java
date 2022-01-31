@@ -1,132 +1,122 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.RichmediaService;
-import com.tencent.mobileqq.richmedia.RichmediaService.IncomingHandler.1;
+import android.os.Messenger;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PresendPicMgr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.Arrays;
 
-public class avri
-  extends Handler
+class avri
+  extends avrd
 {
-  final WeakReference<RichmediaService> a;
+  avri(avrg paramavrg) {}
   
-  public avri(Looper paramLooper, RichmediaService paramRichmediaService)
+  public Bundle a(int paramInt, Bundle paramBundle)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramRichmediaService);
+    Bundle localBundle = new Bundle();
+    PresendPicMgr localPresendPicMgr;
+    if (paramInt == 16)
+    {
+      avrf.a("PTV.RichmediaClient", "ICallBack.Stub() getData start. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER");
+      localPresendPicMgr = PresendPicMgr.a();
+      Object localObject = null;
+      if ((localPresendPicMgr != null) && (localPresendPicMgr.jdField_a_of_type_Boolean)) {
+        break label113;
+      }
+      paramBundle = localObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER failed, presendMgr is null or disable preCompress,presendMgr = " + localPresendPicMgr);
+        paramBundle = localObject;
+      }
+    }
+    for (;;)
+    {
+      if (paramBundle != null)
+      {
+        localBundle.putParcelable("key_presend_mgr_handler", new BinderWarpper(paramBundle));
+        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.a());
+      }
+      return localBundle;
+      label113:
+      paramBundle = new Messenger(localPresendPicMgr.jdField_a_of_type_Auoh).getBinder();
+      avrf.a("PTV.RichmediaClient", "ICallBack.Stub() getData. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER , b = " + paramBundle);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    RichmediaService localRichmediaService = (RichmediaService)this.a.get();
-    if (localRichmediaService == null) {}
-    Bundle localBundle;
-    label76:
+    avrf.a("PTV.RichmediaClient", "sendRequest. cmd = " + paramInt + ",data = " + paramBundle);
+    if (paramBundle != null)
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      switch (paramInt)
+      {
+      }
+    }
     do
     {
-      return;
-      localBundle = paramMessage.getData();
-      if (localBundle != null)
+      do
       {
-        localBundle.setClassLoader(getClass().getClassLoader());
-        localBundle.getInt("msg_sub_cmd");
-      }
-      switch (paramMessage.what)
-      {
-      default: 
-        if ((localBundle == null) || (paramMessage.what < 200) || (paramMessage.what > 208)) {
-          break label221;
-        }
-      }
-    } while (!QQAppInterface.class.isInstance(RichmediaService.b(localRichmediaService)));
-    long l = localBundle.getLong("vidoe_record_uniseq");
-    int i = localBundle.getInt("video_segment_mode");
-    Object localObject1 = (QQAppInterface)RichmediaService.c(localRichmediaService);
-    Object localObject2 = awba.a((QQAppInterface)localObject1).a(l, i);
-    awbe localawbe = new awbe();
-    switch (paramMessage.what)
-    {
-    case 205: 
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    label221:
-    while (((paramMessage.what == 250) || (paramMessage.what == 1)) && (QQAppInterface.class.isInstance(RichmediaService.d(localRichmediaService))))
-    {
-      for (;;)
-      {
-        switch (paramMessage.what)
+        do
         {
-        default: 
-          super.handleMessage(paramMessage);
+          Object localObject;
+          do
+          {
+            do
+            {
+              return;
+              paramBundle = (BinderWarpper)paramBundle.getParcelable("binder_presendService");
+              if (paramBundle != null)
+              {
+                localObject = PresendPicMgr.a();
+                if (localObject != null) {
+                  ((PresendPicMgr)localObject).b();
+                }
+                paramBundle = PresendPicMgr.b(aund.a(paramBundle.a));
+                avrf.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  presendMgr = " + paramBundle);
+                return;
+              }
+              avrf.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  failed, bw is null ! ");
+              return;
+              localObject = paramBundle.getString("key_presend_path");
+              paramInt = paramBundle.getInt("entrance", 0);
+              paramBundle = PresendPicMgr.a();
+            } while ((localObject == null) || (paramBundle == null));
+            paramBundle.a((String)localObject, 1052, paramInt);
+            return;
+            localObject = paramBundle.getString("key_presend_path");
+            paramInt = paramBundle.getInt("key_presend_cancel_type");
+            paramBundle = PresendPicMgr.a();
+          } while ((localObject == null) || (paramBundle == null));
+          paramBundle.b((String)localObject, paramInt);
           return;
-          avrd.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
-          localRichmediaService.b = paramMessage.replyTo;
-          if (localBundle == null) {
-            break label76;
-          }
-          localObject1 = (BinderWarpper)localBundle.getParcelable("ICallBack_BinderWrapper");
-          if (localObject1 == null) {
-            break label76;
-          }
-          localRichmediaService.a = avrb.a(((BinderWarpper)localObject1).a);
-          localObject1 = new Bundle();
-          localObject2 = aunj.a((QQAppInterface)RichmediaService.a(localRichmediaService));
-          try
-          {
-            ((Bundle)localObject1).putIntArray("key_compress_config", (int[])localObject2);
-            localRichmediaService.a.a(6, (Bundle)localObject1);
-          }
-          catch (RemoteException localRemoteException)
-          {
-            avrd.a("RichmediaService", "ICALLBACK_CMD_INIT_COMPRESS_CONFIG remote error:" + localRemoteException);
-            localRemoteException.printStackTrace();
-          }
-        }
-      }
-      break label76;
-      avrd.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
-      localRichmediaService.b = null;
-      localRichmediaService.a = null;
-      break label76;
-      localawbe.jdField_a_of_type_JavaLangString = localBundle.getString("video_slice_path");
-      localawbe.d = localBundle.getInt("video_slice_index");
-      localawbe.jdField_a_of_type_Int = localBundle.getInt("video_slice_width");
-      localawbe.jdField_b_of_type_Int = localBundle.getInt("video_slice_height");
-      localawbe.jdField_c_of_type_Long = localBundle.getLong("video_slice_timestamp");
-      localawbe.jdField_c_of_type_Int = 1;
-      ((awbf)localObject2).a(localawbe, localBundle);
-      continue;
-      localawbe.jdField_c_of_type_Int = 3;
-      ((awbf)localObject2).a(localawbe, localBundle);
-      continue;
-      localawbe.jdField_c_of_type_Int = 4;
-      ((awbf)localObject2).a(localawbe, localBundle);
-      continue;
-      localawbe.jdField_c_of_type_Int = 5;
-      localawbe.jdField_a_of_type_Int = localBundle.getInt("video_slice_width");
-      localawbe.jdField_b_of_type_Int = localBundle.getInt("video_slice_height");
-      localawbe.e = ((int)localBundle.getLong("video_duration"));
-      ((awbf)localObject2).a(localawbe, localBundle);
-      continue;
-      ((awbf)localObject2).jdField_b_of_type_Int = ((int)localBundle.getLong("video_duration"));
-      ((awbf)localObject2).jdField_b_of_type_Long = localBundle.getLong("video_start_time");
-      ((awbf)localObject2).a();
-      continue;
-      ((awbf)localObject2).b();
-      awba.a(localRemoteException).a((awbf)localObject2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("RichmediaService", 2, "Call RichMediaService: " + paramMessage.what);
-    }
-    ThreadManager.getUIHandler().post(new RichmediaService.IncomingHandler.1(this));
+          paramInt = paramBundle.getInt("key_presend_cancel_type");
+          paramBundle = PresendPicMgr.a();
+        } while (paramBundle == null);
+        paramBundle.a(paramInt);
+        paramBundle.b();
+        return;
+        paramBundle = paramBundle.getIntArray("key_compress_config");
+      } while ((paramBundle == null) || (paramBundle.length < 9));
+      auou.e = paramBundle[0];
+      auou.f = paramBundle[1];
+      auou.g = paramBundle[2];
+      auou.h = paramBundle[3];
+      auou.i = paramBundle[4];
+      auou.j = paramBundle[5];
+      auou.a = paramBundle[6];
+      auou.b = paramBundle[7];
+      auou.c = paramBundle[8];
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_INIT_COMPRESS_CONFIG, compressConfig = " + Arrays.toString(paramBundle));
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
+    avrf.a("PTV.RichmediaClient", "ICallBack.Stub() compress start. info.src = " + paramCompressInfo.c + ",uuid = " + paramCompressInfo.a);
+    auos.a(paramCompressInfo);
+    avrf.a("PTV.RichmediaClient", "ICallBack.Stub() compress finish. info = " + paramCompressInfo);
   }
 }
 

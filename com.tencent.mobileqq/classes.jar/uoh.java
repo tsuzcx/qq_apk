@@ -1,26 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public abstract interface uoh
+class uoh
+  implements uok
 {
-  public abstract View a();
+  uoh(uog paramuog, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public abstract ImageView a();
+  public void a()
+  {
+    ved.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    uog.a(this.jdField_a_of_type_Uog, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
   
-  public abstract TextView a();
-  
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public void b()
+  {
+    ved.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    uog.a(this.jdField_a_of_type_Uog).finish();
+    uog.a(this.jdField_a_of_type_Uog).overridePendingTransition(0, 0);
+  }
 }
 
 

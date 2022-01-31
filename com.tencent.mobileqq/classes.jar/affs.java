@@ -1,21 +1,41 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
 public class affs
-  implements QQPermissionCallback
+  extends Handler
 {
-  public affs(PublicView paramPublicView, AppActivity paramAppActivity) {}
+  private WeakReference<PublicView> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public affs(PublicView paramPublicView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.denied();
-    bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    this.a = new WeakReference(paramPublicView);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.grant();
+    PublicView localPublicView = (PublicView)this.a.get();
+    if (localPublicView == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      return;
+    case 2: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131719799);
+      return;
+    case 3: 
+      PublicView.a(localPublicView, true);
+      return;
+    }
+    PublicView.b(localPublicView);
   }
 }
 

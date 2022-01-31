@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anrs;
-import bbev;
+import anrx;
+import bbfj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class EmoticonMainPanel$20
@@ -11,10 +11,10 @@ class EmoticonMainPanel$20
   
   public void run()
   {
-    if ((!bbev.d(this.this$0.jdField_a_of_type_AndroidContentContext)) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+    if ((!bbfj.d(this.this$0.jdField_a_of_type_AndroidContentContext)) || (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return;
     }
-    ((anrs)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).b();
+    ((anrx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).b();
   }
 }
 

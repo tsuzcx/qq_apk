@@ -1,15 +1,72 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-final class adfr
-  implements ajvb
+class adfr
+  implements bcma
 {
-  public void a(boolean paramBoolean)
+  adfr(adfp paramadfp) {}
+  
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      adfq.a(true);
+    if ((!adfp.a(this.a)) && (paramInt == 1)) {
+      adfp.a(this.a);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    if (adfp.a(this.a)) {
+      this.a.a(paramInt, paramFloat);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    adfp.b(this.a);
+    if (adfp.a(this.a)) {
+      this.a.b(paramInt);
+    }
+  }
+  
+  public void e()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.al();
+    }
+    if (adfp.a(this.a)) {
+      this.a.e();
+    }
+    if (!ajey.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        ajey.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
+      }
+      return;
+    }
+  }
+  
+  public void f()
+  {
+    if (adfp.a(this.a)) {
+      this.a.f();
+    }
+  }
+  
+  public void g()
+  {
+    if (adfp.a(this.a)) {
+      this.a.g();
+    }
+  }
+  
+  public void h()
+  {
+    adfp.c(this.a);
+    if (adfp.a(this.a)) {
+      this.a.h();
+    }
+    if (ajey.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      ajey.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
     }
   }
 }

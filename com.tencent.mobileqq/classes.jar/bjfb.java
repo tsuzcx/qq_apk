@@ -1,21 +1,30 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import java.util.HashMap;
 
-public class bjfb
-  implements bjfd
+class bjfb
+  implements URLDrawable.URLDrawableListener
 {
-  public bjfb(QIMInformationPasterManager.2 param2) {}
+  bjfb(bjfa parambjfa, String paramString, URLDrawable paramURLDrawable, bjcu parambjcu) {}
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
+    bjfa.a.remove(this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambkfm);
+      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
     }
-    if (parambkfm.a() != null) {
-      parambkfm.a().a(paramBoolean);
-    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    bjfa.a.remove(this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    bjfa.a(this.jdField_a_of_type_Bjfa, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Bjcu);
   }
 }
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import biua;
-import biuj;
+import biur;
+import biva;
 
 public class AEGIFTextEditFragment$8$1
   implements Runnable
 {
-  public AEGIFTextEditFragment$8$1(biuj parambiuj) {}
+  public AEGIFTextEditFragment$8$1(biva parambiva) {}
   
   public void run()
   {
-    biua.a(this.a.a, true);
+    biur.a(this.a.a, true);
   }
 }
 

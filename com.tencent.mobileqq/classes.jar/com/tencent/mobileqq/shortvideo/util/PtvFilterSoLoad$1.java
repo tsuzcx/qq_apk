@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import axdc;
-import axlc;
+import axde;
+import axle;
 
 public final class PtvFilterSoLoad$1
   implements Runnable
 {
   public void run()
   {
-    axlc.a();
-    axdc.a();
+    axle.a();
+    axde.a();
   }
 }
 

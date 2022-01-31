@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Dialog;
-import aqft;
+import aqfv;
 
 public class ForwardShareByServerHelper$4
   implements Runnable
 {
-  public ForwardShareByServerHelper$4(aqft paramaqft) {}
+  public ForwardShareByServerHelper$4(aqfv paramaqfv) {}
   
   public void run()
   {
-    aqft.a(this.this$0).dismiss();
+    aqfv.a(this.this$0).dismiss();
   }
 }
 

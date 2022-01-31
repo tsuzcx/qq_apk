@@ -1,10 +1,13 @@
-public class behk
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.TYPE})
+public @interface behk
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  String a();
 }
 
 

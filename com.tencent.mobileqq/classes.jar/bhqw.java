@@ -1,37 +1,40 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bhqw
-  implements bhls
+public class bhqw
+  extends bhsh
 {
-  bhqw(bhqv parambhqv) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i = 1;
-    int j = paramBaseResp.errCode;
-    if (j == 0)
-    {
-      i = 0;
-      paramBaseResp = ajyc.a(2131712345);
-      bhqv.d(this.a, paramBaseResp);
+    if ((!paramString2.equals("qqexplive")) || (this.a == null)) {}
+    while (TextUtils.isEmpty(paramString3)) {
+      return false;
     }
-    for (;;)
+    QLog.i("QZoneECLiveJsPlugin", 2, "ec_live_jsbridge, dispatch method callback linkchain, " + paramString3);
+    try
     {
-      bhqv.a(this.a, bhqv.a(this.a), i, paramBaseResp);
-      return;
-      if (j == -2)
+      paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_EC_LIVE_DISPATCH_EVENT");
+      paramJsBridgeListener.putExtra("event", paramString3);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
-        paramBaseResp = ajyc.a(2131712336);
-        bhqv.d(this.a, paramBaseResp);
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        if (paramString1 != null) {
+          paramJsBridgeListener.putExtra("data", paramString1.toString());
+        }
       }
-      else
-      {
-        paramBaseResp = ajyc.a(2131712333);
-        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
-        i = j;
-      }
+      BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
+      return true;
     }
+    catch (Throwable paramJsBridgeListener)
+    {
+      QLog.e("QZoneECLiveJsPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
+    }
+    return false;
   }
 }
 

@@ -1,20 +1,21 @@
 import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
 public class asjz
-  implements aymu
+  extends bbxa
 {
-  public asjz(ChatBackgroundManager paramChatBackgroundManager) {}
+  public asjz(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
   
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    if (paramInt2 == 4) {
-      BaseApplicationImpl.sImageCache.evictAll();
+    super.a(paramLong, paramInt, paramBundle);
+    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
+    if (new File(paramBundle).exists()) {
+      acur.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.c(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
     }
-    return 0;
   }
 }
 

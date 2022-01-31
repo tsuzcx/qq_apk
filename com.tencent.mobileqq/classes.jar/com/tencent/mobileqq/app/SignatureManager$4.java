@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bbqc;
-import bbqe;
+import bbqq;
+import bbqs;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -11,9 +11,9 @@ class SignatureManager$4
   public void run()
   {
     this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(this.a);
-    bbqe localbbqe = bbqc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
-    if (localbbqe != null) {
-      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localbbqe);
+    bbqs localbbqs = bbqq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
+    if (localbbqs != null) {
+      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localbbqs);
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
   }

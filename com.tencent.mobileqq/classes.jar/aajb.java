@@ -1,13 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aajb
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public aajb(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (!bbfj.d(this.a.getActivity()))
+    {
+      AssistantSettingActivity.a(this.a, 2131694673, 1);
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        AssistantSettingActivity.a(paramCompoundButton, paramBoolean, this);
+        return;
+      }
+    }
+    ((ajti)this.a.app.a(2)).q(paramBoolean);
+  }
 }
 
 

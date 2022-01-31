@@ -1,69 +1,111 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.open.agent.AgentActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.TicketManager;
-import mqq.observer.SSOAccountObserver;
+import mqq.observer.BusinessObserver;
 
 class ayqv
-  extends ayqs
+  extends ayqu
 {
-  private SSOAccountObserver a;
+  private int jdField_a_of_type_Int;
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ayqw(this);
   private AtomicBoolean c = new AtomicBoolean(false);
   
-  ayqv(ayqr paramayqr)
+  ayqv(ayqt paramayqt)
   {
-    super(paramayqr);
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new ayqw(this);
-    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
+    super(paramayqt);
+    this.jdField_a_of_type_JavaLangString = "GetAppInfoStep";
+    AtomicBoolean localAtomicBoolean = this.c;
+    if (ayqt.a(paramayqt).jdField_a_of_type_Int == 1) {}
+    for (;;)
+    {
+      localAtomicBoolean.set(bool);
+      return;
+      bool = false;
+    }
+  }
+  
+  private void g()
+  {
+    Object localObject = this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+    if (((localObject instanceof MessageForStructing)) && ((((MessageForStructing)localObject).structingMsg instanceof AbsShareMsg)))
+    {
+      localObject = (AbsShareMsg)((MessageForStructing)localObject).structingMsg;
+      ((AbsShareMsg)localObject).mSource_A_ActionData = ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_JavaLangString;
+      ((AbsShareMsg)localObject).mSourceName = ayqt.a(this.jdField_b_of_type_Ayqt).b;
+      ((AbsShareMsg)localObject).mSourceIcon = ayqt.a(this.jdField_b_of_type_Ayqt).d;
+      ((AbsShareMsg)localObject).mSourceUrl = ayqt.a(this.jdField_b_of_type_Ayqt).c;
+      ((AbsShareMsg)localObject).shareData.appInfoStatus = 1;
+      this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.c, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Int, this.jdField_b_of_type_Ayqt.jdField_a_of_type_Aywc.jdField_a_of_type_Long, ((AbsShareMsg)localObject).getBytes());
+      this.jdField_b_of_type_Ayqt.d(1002);
+    }
+  }
+  
+  void a(aqas paramaqas)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|useCachedAppInfo=,time=" + (System.currentTimeMillis() - ayqt.b(this.jdField_b_of_type_Ayqt)));
+    }
+    ayqt.a(this.jdField_b_of_type_Ayqt).d = paramaqas.a();
+    ayqt.a(this.jdField_b_of_type_Ayqt).e = paramaqas.e();
+    if (paramaqas.a())
+    {
+      if (!TextUtils.isEmpty(paramaqas.d())) {
+        ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_JavaLangString = paramaqas.d();
+      }
+      if (!TextUtils.isEmpty(paramaqas.c())) {
+        ayqt.a(this.jdField_b_of_type_Ayqt).b = paramaqas.c();
+      }
+      if ((!TextUtils.isEmpty(paramaqas.b())) && (ayqt.a(this.jdField_b_of_type_Ayqt) != Long.parseLong("1103584836"))) {
+        ayqt.a(this.jdField_b_of_type_Ayqt).c = paramaqas.b();
+      }
+    }
+    ayqt.a(this.jdField_b_of_type_Ayqt).jdField_a_of_type_Int = 1;
+    g();
+    this.c.set(true);
+    b();
   }
   
   protected boolean a()
   {
-    return (this.c.get()) && (!TextUtils.isEmpty(ayqr.f(this.jdField_b_of_type_Ayqr)));
+    return this.c.get();
   }
   
   protected void d()
   {
-    String str = this.jdField_b_of_type_Ayqr.a.getCurrentAccountUin();
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + ayqr.a(this.jdField_b_of_type_Ayqr));
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|appId=" + ayqt.a(this.jdField_b_of_type_Ayqt) + ",pkgName=" + ayqt.g(this.jdField_b_of_type_Ayqt) + ",retry=" + this.jdField_a_of_type_Int);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      f();
-    }
-    for (;;)
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
+      f();
       return;
-      if (!this.jdField_b_of_type_Ayqr.e())
-      {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_Ayqr.a);
-        this.jdField_b_of_type_Ayqr.b(9366, "illegal app");
-        c();
-        return;
-      }
-      int i;
-      if (!ayqr.a(this.jdField_b_of_type_Ayqr))
-      {
-        str = ((TicketManager)this.jdField_b_of_type_Ayqr.a.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          ayqr.d(this.jdField_b_of_type_Ayqr, str);
-          this.c.set(true);
-          b();
-        }
-      }
-      while (i != 0)
-      {
-        if (ayqr.b(this.jdField_b_of_type_Ayqr) == 11) {
-          aqgh.a("KEY_SSO_GET_TICKET_NO_PASSWD");
-        }
-        this.jdField_b_of_type_Ayqr.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_Ayqr.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
-        return;
-        i = 1;
-      }
     }
+    ayqt.a(this.jdField_b_of_type_Ayqt, System.currentTimeMillis());
+    switch (ayqt.b(this.jdField_b_of_type_Ayqt))
+    {
+    default: 
+      return;
+    case 2: 
+      xmq.a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ayqt.a(this.jdField_b_of_type_Ayqt), 0L, this.jdField_a_of_type_MqqObserverBusinessObserver, ayqt.g(this.jdField_b_of_type_Ayqt));
+      return;
+    }
+    Object localObject = ((aqfo)this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(350)).a().a(ayqt.a(this.jdField_b_of_type_Ayqt));
+    if (localObject != null)
+    {
+      a((aqas)localObject);
+      return;
+    }
+    long l = ayqt.b(this.jdField_b_of_type_Ayqt) / 1000L;
+    localObject = AgentActivity.a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, ayqt.g(this.jdField_b_of_type_Ayqt), l + "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|sign: " + (String)localObject);
+    }
+    xmq.a(this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Ayqt.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Ayqt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ayqt.a(this.jdField_b_of_type_Ayqt), (String)localObject, l, this.jdField_a_of_type_MqqObserverBusinessObserver, ayqt.g(this.jdField_b_of_type_Ayqt));
   }
 }
 

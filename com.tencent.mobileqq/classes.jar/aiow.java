@@ -1,31 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aiow
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   aiow(aiov paramaiov) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof aipc)))
-    {
-      paramView = (aipc)paramView;
-      bahx.a(aiov.a(this.a), aiov.a(this.a), paramView.a);
-      balw localbalw = (balw)aiov.a(this.a).getManager(203);
-      if ((localbalw != null) && (localbalw.a(aiov.a(this.a), paramView.a, aiov.a(this.a)))) {
-        localbalw.a(aiov.a(this.a), paramView.a);
-      }
-      if (aiov.a(this.a) != null) {}
-    }
-    else
-    {
-      return;
-    }
-    axqw.b(aiov.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, paramView.a, "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

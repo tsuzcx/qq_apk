@@ -1,32 +1,42 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.4;
+import java.io.File;
+import java.io.IOException;
+
 public class bkzq
+  implements aysc
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public bkzq(QIMPtvTemplateManager.4 param4) {}
   
-  bkzq(String paramString)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramaysz.c);
+    }
+    this.a.a.usable = this.a.this$0.a(this.a.a);
+    if (this.a.a.usable) {}
+    try
+    {
+      nav.a(new File(bkzp.a(), this.a.a.name), bkzp.a);
+      if (this.a.this$0.a() != null) {
+        this.a.this$0.a().notifyObservers(bjdt.class, 3, true, null);
+      }
+      return;
+    }
+    catch (IOException paramaysz)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          paramaysz.printStackTrace();
+        }
+      }
+    }
   }
   
-  public int a()
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

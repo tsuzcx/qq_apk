@@ -1,14 +1,14 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class rbl
-  implements ProteusParserWithHotReload.IHotReloadChangedObserver
+  implements View.OnClickListener
 {
-  rbl(rap paramrap) {}
+  rbl(ram paramram, String paramString) {}
   
-  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a.notifyDataSetChanged();
+    nol.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

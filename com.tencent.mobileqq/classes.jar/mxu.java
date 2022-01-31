@@ -1,225 +1,1878 @@
-import mqq.observer.BusinessObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager.1;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-class mxu
-  implements BusinessObserver
+public class mxu
+  implements Manager
 {
-  mxu(mxq parammxq) {}
+  public static final String c = String.valueOf(System.currentTimeMillis());
+  public int a;
+  public QQAppInterface a;
+  final String jdField_a_of_type_JavaLangString = "TroopRedTouchManager2_";
+  oidb_0x791.GetRedDotRes jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+  boolean jdField_a_of_type_Boolean = false;
+  public final String b = mxu.class.getSimpleName();
+  
+  public mxu(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public static String a(oidb_0x791.RedDotInfo paramRedDotInfo)
+  {
+    if (paramRedDotInfo == null) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder("redDotInfo2String, oidb_0x791.RedDotInfo:");
+    localStringBuilder.append("uint32_appid:").append(paramRedDotInfo.uint32_appid.get()).append("|redDotInfo.bool_display_reddot:").append(paramRedDotInfo.bool_display_reddot.get()).append("|uint32_number:").append(paramRedDotInfo.uint32_number.get()).append("|uint32_reason:").append(paramRedDotInfo.uint32_reason.get()).append("|uint32_last_time:").append(paramRedDotInfo.uint32_last_time.get()).append("|uint64_cmd_uin:").append(paramRedDotInfo.uint64_cmd_uin.get()).append("|uint32_cmd_uin_type:").append(paramRedDotInfo.uint32_cmd_uin_type.get()).append("|str_face_url:").append(paramRedDotInfo.str_face_url.get().toStringUtf8()).append("|str_custom_buffer:").append(paramRedDotInfo.str_custom_buffer.get().toStringUtf8()).append("|uint32_expire_time:").append(paramRedDotInfo.uint32_expire_time.get());
+    return localStringBuilder.toString();
+  }
   
   /* Error */
-  public void onReceive(int paramInt, boolean paramBoolean, android.os.Bundle paramBundle)
+  private oidb_0x791.GetRedDotRes a()
   {
     // Byte code:
-    //   0: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +28 -> 31
-    //   6: ldc 28
-    //   8: iconst_2
-    //   9: new 30	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 33
-    //   18: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: iload_2
-    //   22: invokevirtual 40	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: iconst_0
-    //   32: istore 7
-    //   34: iconst_0
-    //   35: istore 6
-    //   37: iconst_0
-    //   38: istore_1
-    //   39: lconst_0
-    //   40: lstore 11
-    //   42: iconst_m1
-    //   43: istore 4
-    //   45: iconst_0
-    //   46: istore 9
-    //   48: iconst_0
-    //   49: istore 8
-    //   51: iconst_0
-    //   52: istore 10
-    //   54: iload 4
-    //   56: istore 5
-    //   58: lload 11
-    //   60: lstore 13
-    //   62: iload_2
-    //   63: ifeq +244 -> 307
-    //   66: aload_3
-    //   67: ldc 50
-    //   69: invokevirtual 56	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   72: astore 15
-    //   74: iload 10
-    //   76: istore_2
-    //   77: iload 4
-    //   79: istore 5
-    //   81: lload 11
-    //   83: lstore 13
-    //   85: aload 15
-    //   87: ifnull +69 -> 156
-    //   90: new 58	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage
-    //   93: dup
-    //   94: invokespecial 59	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:<init>	()V
-    //   97: astore_3
-    //   98: aload_3
-    //   99: aload 15
-    //   101: invokevirtual 63	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   104: pop
-    //   105: aload_3
-    //   106: getfield 67	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:remain_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   109: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   112: istore_1
-    //   113: aload_3
-    //   114: getfield 77	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:image_uid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   117: invokevirtual 82	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   120: lstore 13
-    //   122: aload_3
-    //   123: getfield 85	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:last_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   126: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   129: istore 5
-    //   131: aload_3
-    //   132: getfield 89	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:msg_tab	Lcom/tencent/biz/qqstory/network/pb/qqstory_710_message$ClearMessageResult;
-    //   135: invokevirtual 94	com/tencent/biz/qqstory/network/pb/qqstory_710_message$ClearMessageResult:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   138: checkcast 91	com/tencent/biz/qqstory/network/pb/qqstory_710_message$ClearMessageResult
-    //   141: astore 15
-    //   143: aload_3
-    //   144: getfield 97	com/tencent/biz/qqstory/network/pb/qqstory_710_message$RspClearMessage:msg_dynamic	Lcom/tencent/biz/qqstory/network/pb/qqstory_710_message$ClearMessageResult;
-    //   147: invokevirtual 94	com/tencent/biz/qqstory/network/pb/qqstory_710_message$ClearMessageResult:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   150: checkcast 91	com/tencent/biz/qqstory/network/pb/qqstory_710_message$ClearMessageResult
-    //   153: astore_3
-    //   154: iconst_1
-    //   155: istore_2
-    //   156: aload_0
-    //   157: getfield 12	mxu:a	Lmxq;
-    //   160: getfield 103	mxq:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   163: bipush 70
-    //   165: invokevirtual 109	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   168: checkcast 111	mxx
-    //   171: astore_3
-    //   172: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   175: ifeq +47 -> 222
-    //   178: ldc 113
-    //   180: iconst_2
-    //   181: new 30	java/lang/StringBuilder
-    //   184: dup
-    //   185: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   188: ldc 115
-    //   190: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: iload_2
-    //   194: invokevirtual 40	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   197: ldc 117
-    //   199: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: iload_1
-    //   203: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   206: ldc 122
-    //   208: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: iload 5
-    //   213: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 125	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   222: iload_2
-    //   223: ifeq +98 -> 321
-    //   226: iload_1
-    //   227: ifle +89 -> 316
-    //   230: iconst_1
-    //   231: istore_2
-    //   232: aload_3
-    //   233: iload_2
-    //   234: iload_1
-    //   235: lload 13
-    //   237: iload 5
-    //   239: bipush 52
-    //   241: invokevirtual 128	mxx:a	(ZIJII)Z
-    //   244: pop
-    //   245: aload_0
-    //   246: getfield 12	mxu:a	Lmxq;
-    //   249: bipush 105
-    //   251: iconst_1
-    //   252: aconst_null
-    //   253: invokevirtual 132	mxq:notifyUI	(IZLjava/lang/Object;)V
-    //   256: return
-    //   257: astore_3
-    //   258: iload 7
-    //   260: istore_1
-    //   261: iload 9
-    //   263: istore_2
-    //   264: iload_2
-    //   265: istore 8
-    //   267: iload 4
-    //   269: istore 5
-    //   271: lload 11
-    //   273: lstore 13
-    //   275: iload_1
-    //   276: istore 6
-    //   278: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   281: ifeq +26 -> 307
-    //   284: ldc 28
-    //   286: iconst_2
-    //   287: ldc 134
-    //   289: aload_3
-    //   290: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   293: iload_1
-    //   294: istore 6
-    //   296: lload 11
-    //   298: lstore 13
-    //   300: iload 4
-    //   302: istore 5
-    //   304: iload_2
-    //   305: istore 8
-    //   307: iload 6
-    //   309: istore_1
-    //   310: iload 8
-    //   312: istore_2
-    //   313: goto -157 -> 156
-    //   316: iconst_0
-    //   317: istore_2
-    //   318: goto -86 -> 232
-    //   321: aload_0
-    //   322: getfield 12	mxu:a	Lmxq;
-    //   325: aload_3
-    //   326: bipush 52
-    //   328: invokevirtual 140	mxq:a	(Lmxx;I)V
-    //   331: goto -86 -> 245
-    //   334: astore_3
-    //   335: iload 9
-    //   337: istore_2
-    //   338: goto -74 -> 264
-    //   341: astore_3
-    //   342: lload 13
-    //   344: lstore 11
-    //   346: iload 9
-    //   348: istore_2
-    //   349: goto -85 -> 264
-    //   352: astore_3
-    //   353: iconst_1
-    //   354: istore_2
-    //   355: iload 5
-    //   357: istore 4
-    //   359: lload 13
-    //   361: lstore 11
-    //   363: goto -99 -> 264
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 165	java/io/File
+    //   5: dup
+    //   6: aload_0
+    //   7: getfield 51	mxu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   10: invokevirtual 171	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   13: invokevirtual 177	mqq/app/MobileQQ:getFilesDir	()Ljava/io/File;
+    //   16: new 56	java/lang/StringBuilder
+    //   19: dup
+    //   20: invokespecial 178	java/lang/StringBuilder:<init>	()V
+    //   23: ldc 37
+    //   25: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: aload_0
+    //   29: getfield 51	mxu:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   32: invokevirtual 181	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   35: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokespecial 184	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   44: invokestatic 189	bbdx:a	(Ljava/io/File;)[B
+    //   47: astore_3
+    //   48: new 191	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes
+    //   51: dup
+    //   52: invokespecial 192	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes:<init>	()V
+    //   55: astore_1
+    //   56: aload_1
+    //   57: astore_2
+    //   58: aload_3
+    //   59: ifnull +11 -> 70
+    //   62: aload_1
+    //   63: aload_3
+    //   64: invokevirtual 196	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: pop
+    //   68: aload_1
+    //   69: astore_2
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: aload_2
+    //   73: areturn
+    //   74: astore_2
+    //   75: aconst_null
+    //   76: astore_1
+    //   77: aload_2
+    //   78: invokevirtual 199	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
+    //   81: aload_1
+    //   82: astore_2
+    //   83: goto -13 -> 70
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: aload_1
+    //   90: athrow
+    //   91: astore_2
+    //   92: aconst_null
+    //   93: astore_1
+    //   94: aload_2
+    //   95: invokevirtual 200	java/lang/NullPointerException:printStackTrace	()V
+    //   98: aload_1
+    //   99: astore_2
+    //   100: goto -30 -> 70
+    //   103: astore_2
+    //   104: goto -10 -> 94
+    //   107: astore_2
+    //   108: goto -31 -> 77
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	366	0	this	mxu
-    //   0	366	1	paramInt	int
-    //   0	366	2	paramBoolean	boolean
-    //   0	366	3	paramBundle	android.os.Bundle
-    //   43	315	4	i	int
-    //   56	300	5	j	int
-    //   35	273	6	k	int
-    //   32	227	7	m	int
-    //   49	262	8	bool1	boolean
-    //   46	301	9	bool2	boolean
-    //   52	23	10	bool3	boolean
-    //   40	322	11	l1	long
-    //   60	300	13	l2	long
-    //   72	70	15	localObject	Object
+    //   0	111	0	this	mxu
+    //   55	27	1	localGetRedDotRes1	oidb_0x791.GetRedDotRes
+    //   86	4	1	localObject1	Object
+    //   93	6	1	localObject2	Object
+    //   57	16	2	localGetRedDotRes2	oidb_0x791.GetRedDotRes
+    //   74	4	2	localInvalidProtocolBufferMicroException1	InvalidProtocolBufferMicroException
+    //   82	1	2	localGetRedDotRes3	oidb_0x791.GetRedDotRes
+    //   91	4	2	localNullPointerException1	java.lang.NullPointerException
+    //   99	1	2	localObject3	Object
+    //   103	1	2	localNullPointerException2	java.lang.NullPointerException
+    //   107	1	2	localInvalidProtocolBufferMicroException2	InvalidProtocolBufferMicroException
+    //   47	17	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   66	74	257	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   90	113	257	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   113	122	334	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   122	131	341	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   131	154	352	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   2	56	74	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   2	56	86	finally
+    //   62	68	86	finally
+    //   77	81	86	finally
+    //   94	98	86	finally
+    //   2	56	91	java/lang/NullPointerException
+    //   62	68	103	java/lang/NullPointerException
+    //   62	68	107	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+  }
+  
+  private void a(String paramString, long paramLong, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, boolean paramBoolean)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("faceUrl", paramString);
+      localJSONObject.put("uin", paramLong);
+      localJSONObject.put("isOfficialNotify", paramBoolean);
+      paramRedTypeInfo.red_desc.set(localJSONObject.toString());
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void a(oidb_0x791.GetRedDotRes paramGetRedDotRes)
+  {
+    if (paramGetRedDotRes == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        ThreadManager.post(new TroopRedTouchManager.2(this, paramGetRedDotRes), 5, null, false);
+      }
+      finally {}
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+    }
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      return 0;
+    }
+    int i = 0;
+    int j = 0;
+    if (i < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
+    {
+      oidb_0x791.RedDotInfo localRedDotInfo = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+      int k;
+      if (!localRedDotInfo.bool_display_reddot.get()) {
+        k = j;
+      }
+      for (;;)
+      {
+        i += 1;
+        j = k;
+        break;
+        boolean bool = bbkb.f(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        k = j;
+        if (localRedDotInfo.uint32_number.get() > 0)
+        {
+          k = j;
+          if (7 == localRedDotInfo.uint32_appid.get())
+          {
+            k = j;
+            if (bool) {
+              k = j + localRedDotInfo.uint32_number.get();
+            }
+          }
+        }
+      }
+    }
+    return j;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface)
+  {
+    int m = 0;
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+    }
+    if ((this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) || (paramQQAppInterface == null)) {
+      return 0;
+    }
+    boolean bool3 = aszi.a(paramQQAppInterface);
+    boolean bool4 = a();
+    boolean bool1;
+    boolean bool2;
+    label66:
+    int k;
+    if (!paramQQAppInterface.q)
+    {
+      bool1 = true;
+      if ((!bool1) || (!bool4)) {
+        break label158;
+      }
+      bool2 = true;
+      paramQQAppInterface = a(bool2);
+      if (paramQQAppInterface.jdField_a_of_type_Int == -1) {
+        break label338;
+      }
+      k = paramQQAppInterface.d;
+      bool2 = true;
+    }
+    for (;;)
+    {
+      paramQQAppInterface = new StringBuilder();
+      int i = 0;
+      label100:
+      if (m < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
+      {
+        oidb_0x791.RedDotInfo localRedDotInfo = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(m);
+        if (!localRedDotInfo.bool_display_reddot.get()) {}
+        for (;;)
+        {
+          m += 1;
+          break label100;
+          bool1 = false;
+          break;
+          bool2 = false;
+          break label66;
+          int n = localRedDotInfo.uint32_appid.get();
+          int j;
+          if ((2 != n) && (3 != n) && (4 != n) && (5 != n))
+          {
+            j = i;
+            if (mxm.a(localRedDotInfo))
+            {
+              j = i;
+              if (!b()) {}
+            }
+          }
+          else
+          {
+            j = i + 1;
+            paramQQAppInterface.append(n);
+            paramQQAppInterface.append(",");
+          }
+          i = j;
+        }
+      }
+      label158:
+      QLog.d("nearby.redpoint", 1, "getLebaRedPoint, needShow=" + bool4 + ", isNewTab=" + bool3 + ", redType=" + k + ", isNearbyRedPoint=" + bool2 + ", isNearbyEntryShow=" + bool1 + ", redPointNums=" + i + ", appId=" + paramQQAppInterface.toString());
+      return i;
+      label338:
+      bool2 = false;
+      k = 0;
+    }
+  }
+  
+  public atxe a(boolean paramBoolean)
+  {
+    try
+    {
+      atxe localatxe = a(paramBoolean, true);
+      return localatxe;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public atxe a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject2;
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1;
+    atxe localatxe;
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo2;
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo3;
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo4;
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo5;
+    Object localObject3;
+    Object localObject1;
+    try
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject2 = (mxu)localQQAppInterface.getManager(70);
+      localRedTypeInfo1 = ((mxu)localObject2).a();
+      i = 0;
+      localatxe = new atxe();
+      if (!paramBoolean1) {
+        break label965;
+      }
+      if (!aszi.a(localQQAppInterface)) {
+        break label907;
+      }
+      localRedTypeInfo2 = ((mxu)localObject2).b();
+      localRedTypeInfo3 = ((mxu)localObject2).g();
+      localRedTypeInfo4 = ((mxu)localObject2).i();
+      localRedTypeInfo5 = ((mxu)localObject2).h();
+      localObject3 = ((mxu)localObject2).b();
+      localObject1 = ((mxu)localObject2).a();
+      d();
+      ((mxu)localObject2).e();
+      f();
+      j = i;
+      if (localObject3 == null) {
+        break label233;
+      }
+      j = i;
+      if (((ArrayList)localObject3).size() <= 0) {
+        break label233;
+      }
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((ArrayList)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          String str = ((oidb_0x791.RedDotInfo)((Iterator)localObject3).next()).str_face_url.get().toStringUtf8();
+          if ((!TextUtils.isEmpty(str)) && (!((ArrayList)localObject2).contains(str))) {
+            ((ArrayList)localObject2).add(str);
+          }
+        }
+      }
+      localatxe.a(3);
+    }
+    finally {}
+    localatxe.a((List)localObject2, false);
+    int j = 56;
+    label233:
+    int i = j;
+    if (localObject1 != null)
+    {
+      i = j;
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        i = j;
+        if (aszi.b(localAppInterface))
+        {
+          localObject2 = new ArrayList();
+          if (localObject1 != null)
+          {
+            localObject1 = ((ArrayList)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject3 = ((oidb_0x791.RedDotInfo)((Iterator)localObject1).next()).str_face_url.get().toStringUtf8();
+              if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((ArrayList)localObject2).contains(localObject3))) {
+                ((ArrayList)localObject2).add(localObject3);
+              }
+            }
+          }
+          localatxe.a(3);
+          localatxe.a((List)localObject2, false);
+          i = 61;
+        }
+      }
+    }
+    int k;
+    label514:
+    int m;
+    if (i == 0) {
+      if (aszi.b(localAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("nearby.redpoint", 2, "in memory nearbyMsgBoxUnReadNum=" + this.jdField_a_of_type_Int);
+        }
+        if (paramBoolean2)
+        {
+          ThreadManager.post(new TroopRedTouchManager.1(this, localAppInterface), 8, null, false);
+          j = this.jdField_a_of_type_Int;
+          if (j <= 0) {
+            break label980;
+          }
+          localatxe.a(5);
+          localatxe.b(j);
+          QLog.d("nearby.redpoint", 1, "addRedNum:" + j + ", total=" + localatxe.b + ", type=" + 60);
+          k = 60;
+          j = 2;
+          i = j;
+          m = k;
+          if (localRedTypeInfo3 != null)
+          {
+            i = j;
+            m = k;
+            if (aszi.a(localAppInterface, 1))
+            {
+              if (localRedTypeInfo3.red_type.get() != 0) {
+                break label758;
+              }
+              localatxe.a(0);
+              i = j;
+              break label998;
+            }
+          }
+          label565:
+          j = i;
+          k = m;
+          if (localRedTypeInfo4 != null)
+          {
+            j = i;
+            k = m;
+            if (localRedTypeInfo4.red_type.get() == 5)
+            {
+              localatxe.a(5);
+              localatxe.a(localRedTypeInfo4.red_content.get());
+              bbkb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
+              k = m;
+              j = i;
+            }
+          }
+          label635:
+          m = j;
+          i = k;
+          if (k != 0) {
+            break label1005;
+          }
+          if ((localRedTypeInfo1 == null) || (!aszi.a(localAppInterface, 2))) {
+            break label856;
+          }
+          localatxe.a(0);
+          i = 25;
+          m = j;
+          break label1005;
+        }
+      }
+    }
+    for (;;)
+    {
+      label677:
+      localatxe.c = j;
+      QLog.d("nearby.redpoint", 1, "getNearbyRedPoint, needShow, isNewTab=" + paramBoolean1 + ", redType=" + i + ", redInfo=" + localatxe);
+      for (;;)
+      {
+        localatxe.d = i;
+        return localatxe;
+        this.jdField_a_of_type_Int = MsgBoxListActivity.a(localAppInterface, ajsd.I);
+        break;
+        label758:
+        i = j;
+        if (localRedTypeInfo3.red_type.get() != 5) {
+          break label998;
+        }
+        localatxe.a(5);
+        localatxe.a(localRedTypeInfo3.red_content.get());
+        i = 2;
+        QLog.d("nearby.redpoint", 1, "addRedNum:" + localRedTypeInfo3.red_content.get() + ", total=" + localatxe.b + ", type=" + 38);
+        break label998;
+        label856:
+        if ((localRedTypeInfo2 != null) && (aszi.a(localAppInterface, 3)))
+        {
+          i = 23;
+          localatxe.a(0);
+          m = j;
+          break label1005;
+        }
+        if (localRedTypeInfo5 == null) {
+          break label1014;
+        }
+        localatxe.a(0);
+        i = 42;
+        m = j;
+        break label1005;
+        label907:
+        if (((mxu)localObject2).c() != null)
+        {
+          localatxe.a(0);
+          i = 24;
+          j = 1;
+          paramBoolean1 = false;
+          break label677;
+        }
+        if ((localRedTypeInfo1 == null) || (!aszi.a(localAppInterface, 1001))) {
+          break label1023;
+        }
+        localatxe.a(0);
+        i = 25;
+        j = 1;
+        paramBoolean1 = false;
+        break label677;
+        label965:
+        QLog.d("nearby.redpoint", 1, "getNearbyRedPoint, don't needShow");
+        i = 0;
+      }
+      label980:
+      j = 1;
+      k = i;
+      break label514;
+      j = 1;
+      k = i;
+      break label635;
+      label998:
+      m = 38;
+      break label565;
+      for (;;)
+      {
+        label1005:
+        paramBoolean1 = true;
+        j = m;
+        break;
+        label1014:
+        m = 0;
+        i = k;
+      }
+      label1023:
+      paramBoolean1 = false;
+      j = 0;
+      i = 0;
+    }
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo a()
+  {
+    if (a(25) != null)
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set("");
+      return localRedTypeInfo;
+    }
+    return null;
+  }
+  
+  /* Error */
+  public ArrayList<oidb_0x791.RedDotInfo> a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   6: ifnonnull +11 -> 17
+    //   9: aload_0
+    //   10: aload_0
+    //   11: invokespecial 251	mxu:a	()Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   14: putfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   17: aload_0
+    //   18: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   21: astore_3
+    //   22: aload_3
+    //   23: ifnonnull +9 -> 32
+    //   26: aconst_null
+    //   27: astore_3
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_3
+    //   31: areturn
+    //   32: new 361	java/util/ArrayList
+    //   35: dup
+    //   36: invokespecial 363	java/util/ArrayList:<init>	()V
+    //   39: astore_3
+    //   40: iconst_0
+    //   41: istore_1
+    //   42: iload_1
+    //   43: aload_0
+    //   44: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   47: getfield 255	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes:rpt_msg_reddot_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   50: invokevirtual 260	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   53: if_icmpge +98 -> 151
+    //   56: aload_0
+    //   57: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   60: getfield 255	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes:rpt_msg_reddot_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   63: iload_1
+    //   64: invokevirtual 263	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: checkcast 69	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo
+    //   70: astore 4
+    //   72: aload 4
+    //   74: getfield 101	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint32_number	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   77: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   80: pop
+    //   81: aload 4
+    //   83: getfield 88	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:bool_display_reddot	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   86: invokevirtual 93	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   89: istore_2
+    //   90: aload 4
+    //   92: getfield 117	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint64_cmd_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   95: invokevirtual 121	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   98: pop2
+    //   99: aload 4
+    //   101: getfield 135	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:str_face_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   104: invokevirtual 140	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   107: invokevirtual 145	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   110: astore 5
+    //   112: bipush 61
+    //   114: aload 4
+    //   116: getfield 73	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint32_appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   119: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   122: if_icmpne +22 -> 144
+    //   125: iload_2
+    //   126: ifeq +18 -> 144
+    //   129: aload 5
+    //   131: invokestatic 382	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   134: ifne +10 -> 144
+    //   137: aload_3
+    //   138: aload 4
+    //   140: invokevirtual 389	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   143: pop
+    //   144: iload_1
+    //   145: iconst_1
+    //   146: iadd
+    //   147: istore_1
+    //   148: goto -106 -> 42
+    //   151: goto -123 -> 28
+    //   154: astore_3
+    //   155: aload_0
+    //   156: monitorexit
+    //   157: aload_3
+    //   158: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	this	mxu
+    //   41	107	1	i	int
+    //   89	37	2	bool	boolean
+    //   21	117	3	localObject1	Object
+    //   154	4	3	localObject2	Object
+    //   70	69	4	localRedDotInfo	oidb_0x791.RedDotInfo
+    //   110	20	5	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	154	finally
+    //   17	22	154	finally
+    //   32	40	154	finally
+    //   42	125	154	finally
+    //   129	144	154	finally
+  }
+  
+  public oidb_0x791.RedDotInfo a()
+  {
+    label287:
+    for (;;)
+    {
+      boolean bool1;
+      boolean bool2;
+      oidb_0x791.RedDotInfo localRedDotInfo2;
+      int i;
+      try
+      {
+        if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+        }
+        oidb_0x791.GetRedDotRes localGetRedDotRes = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+        if (localGetRedDotRes == null) {
+          return null;
+        }
+        bool1 = ((tfz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(252)).jdField_a_of_type_Boolean;
+        bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_Boolean;
+        Iterator localIterator = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get().iterator();
+        localGetRedDotRes = null;
+        if (!localIterator.hasNext()) {
+          break label247;
+        }
+        localRedDotInfo2 = (oidb_0x791.RedDotInfo)localIterator.next();
+        if (!localRedDotInfo2.bool_display_reddot.get()) {
+          continue;
+        }
+        i = localRedDotInfo2.uint32_appid.get();
+        if (!mxm.b(i)) {
+          continue;
+        }
+        if ((i == 37) && (localRedDotInfo2.uint32_expire_time.get() < NetConnInfoCenter.getServerTime()))
+        {
+          ved.d(this.b, "%d red dot time out", new Object[] { Integer.valueOf(i) });
+          continue;
+        }
+        if (i != 37) {}
+      }
+      finally {}
+      if ((!bool2) && (i != 48) && ((bool1) || (i != 28)) && ((i != vzd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (localRedDotInfo2.uint32_number.get() > 0))) {
+        if (mxm.a(localRedDotInfo2, localRedDotInfo1) > 0)
+        {
+          Object localObject = localRedDotInfo2;
+          break label287;
+          label247:
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.redPoint", 2, "return:" + a(localObject));
+          }
+        }
+      }
+    }
+  }
+  
+  public oidb_0x791.RedDotInfo a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+        }
+        oidb_0x791.RedDotInfo localRedDotInfo = null;
+        oidb_0x791.GetRedDotRes localGetRedDotRes = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+        if (localGetRedDotRes == null) {
+          return localRedDotInfo;
+        }
+        int i = 0;
+        if (i < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
+        {
+          localRedDotInfo = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+          if (paramInt == localRedDotInfo.uint32_appid.get())
+          {
+            boolean bool = localRedDotInfo.bool_display_reddot.get();
+            if (bool) {}
+          }
+          else
+          {
+            i += 1;
+          }
+        }
+        else
+        {
+          Object localObject2 = null;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public oidb_0x791.RedDotInfo a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+    }
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      return null;
+    }
+    int i = 0;
+    oidb_0x791.RedDotInfo localRedDotInfo2;
+    if (i < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
+    {
+      localRedDotInfo2 = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+      if (paramInt == localRedDotInfo2.uint32_appid.get())
+      {
+        localRedDotInfo1 = localRedDotInfo2;
+        if (paramBoolean) {
+          if (!localRedDotInfo2.bool_display_reddot.get()) {
+            break label94;
+          }
+        }
+      }
+    }
+    for (oidb_0x791.RedDotInfo localRedDotInfo1 = localRedDotInfo2;; localRedDotInfo1 = null)
+    {
+      return localRedDotInfo1;
+      label94:
+      i += 1;
+      break;
+    }
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+        }
+        Object localObject1 = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+        if (localObject1 == null) {
+          return;
+        }
+        localObject1 = new StringBuilder("clearStoryWeakRedPoint==>");
+        i = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size() - 1;
+        if (i >= 0)
+        {
+          oidb_0x791.RedDotInfo localRedDotInfo = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+          if ((!localRedDotInfo.bool_display_reddot.get()) || (!mxm.a(localRedDotInfo.uint32_appid.get()))) {
+            break label209;
+          }
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.remove(i);
+          mxn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRedDotInfo);
+          ((StringBuilder)localObject1).append(a(localRedDotInfo)).append("|");
+        }
+      }
+      finally {}
+      a(this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes);
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_Boolean) {
+        agby.jdField_a_of_type_Int |= 0x2;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d(this.b + "Q.qqstory.redPoint", 2, localObject2.toString());
+        continue;
+        label209:
+        i -= 1;
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    StringBuilder localStringBuilder;
+    int i;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.redpoint", 2, "clearStoryRedPointByAppId：appId=" + paramInt);
+      }
+      if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+        this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+      }
+      Object localObject = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+      if (localObject == null) {
+        return;
+      }
+      localStringBuilder = new StringBuilder("clearStoryRedPointByAppId==>[");
+      if ((paramInt != 56) && (paramInt != 61)) {
+        break label236;
+      }
+      localObject = null;
+      i = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size() - 1;
+      if (i >= 0)
+      {
+        oidb_0x791.RedDotInfo localRedDotInfo3 = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+        if (localRedDotInfo3.uint32_appid.get() != paramInt) {
+          break label330;
+        }
+        this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.remove(i);
+        localStringBuilder.append(a(localRedDotInfo3)).append("] [");
+        localObject = localRedDotInfo3;
+      }
+    }
+    finally {}
+    if (localRedDotInfo1 != null) {
+      mxn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRedDotInfo1);
+    }
+    label187:
+    label330:
+    label342:
+    for (;;)
+    {
+      a(this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(this.b + "Q.qqstory.redPoint", 2, localStringBuilder.toString());
+      break;
+      label236:
+      i = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size() - 1;
+      for (;;)
+      {
+        if (i < 0) {
+          break label342;
+        }
+        oidb_0x791.RedDotInfo localRedDotInfo2 = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+        if ((localRedDotInfo2.bool_display_reddot.get()) && (localRedDotInfo2.uint32_appid.get() == paramInt))
+        {
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.remove(i);
+          mxn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRedDotInfo2);
+          localStringBuilder.append(a(localRedDotInfo2)).append("]");
+          break label187;
+          i -= 1;
+          break;
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
+  {
+    Object localObject;
+    int j;
+    label111:
+    int i;
+    try
+    {
+      if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+        this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+      }
+      localObject = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+      if ((localObject == null) || (paramRedDotInfo == null)) {
+        return;
+      }
+      j = paramRedDotInfo.uint32_appid.get();
+      if (!QLog.isColorLevel()) {
+        break label298;
+      }
+      QLog.d("nearby.redpoint", 2, "set：appId=" + j + ", uin=" + paramRedDotInfo.uint64_cmd_uin.get() + ", hasRed=" + paramRedDotInfo.bool_display_reddot.get());
+    }
+    finally {}
+    if (i < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
+    {
+      localObject = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+      if (((oidb_0x791.RedDotInfo)localObject).uint32_appid.get() == j) {
+        if ((j == 56) || (j == 61))
+        {
+          if (((oidb_0x791.RedDotInfo)localObject).uint64_cmd_uin.get() != paramRedDotInfo.uint64_cmd_uin.get()) {
+            break label286;
+          }
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.set(i, paramRedDotInfo);
+          if (!QLog.isColorLevel()) {
+            break label303;
+          }
+          QLog.d("nearby.redpoint", 2, "APPID_NEARBY_CONCERN_UPDATE, onPush：has same uin reddot, uin=" + paramRedDotInfo.uint64_cmd_uin.get());
+          break label303;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.add(paramRedDotInfo);
+      }
+      a(this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes);
+      break;
+      this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.set(i, paramRedDotInfo);
+      i = 1;
+      continue;
+      label286:
+      i += 1;
+      break label111;
+      i = 0;
+      continue;
+      label298:
+      i = 0;
+      break label111;
+      label303:
+      i = 1;
+    }
+  }
+  
+  public void a(oidb_0x791.RedDotInfo paramRedDotInfo1, oidb_0x791.RedDotInfo paramRedDotInfo2)
+  {
+    Object localObject2 = null;
+    int i;
+    String str;
+    if ((paramRedDotInfo1 != null) && (paramRedDotInfo1.uint32_last_time.has()))
+    {
+      i = paramRedDotInfo1.uint32_last_time.get();
+      if (QLog.isColorLevel()) {
+        QLog.i(this.b, 2, "TENCENT_DOCS_ASSISTANT  show redDot" + paramRedDotInfo2.bool_display_reddot.get());
+      }
+      if (!paramRedDotInfo2.bool_display_reddot.get())
+      {
+        str = "";
+        if (paramRedDotInfo1 == null) {
+          break label334;
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!paramRedDotInfo1.str_custom_buffer.has()) {
+          break label334;
+        }
+        paramRedDotInfo1 = paramRedDotInfo1.str_custom_buffer.get().toStringUtf8();
+        Object localObject1 = str;
+        if (!TextUtils.isEmpty(paramRedDotInfo1))
+        {
+          JSONObject localJSONObject = new JSONObject(paramRedDotInfo1);
+          if (localJSONObject.has("lastMsg"))
+          {
+            paramRedDotInfo1 = localJSONObject.getString("lastMsg");
+            localObject1 = paramRedDotInfo1;
+            if (!localJSONObject.has("lastTime")) {
+              break label322;
+            }
+            i = localJSONObject.getInt("lastTime");
+            localObject1 = localObject2;
+            if (paramRedDotInfo2.str_custom_buffer.has()) {
+              localObject1 = paramRedDotInfo2.str_custom_buffer.get().toStringUtf8();
+            }
+            if (!TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              localObject1 = new JSONObject((String)localObject1);
+              ((JSONObject)localObject1).put("lastMsg", paramRedDotInfo1);
+              ((JSONObject)localObject1).put("lastTime", i);
+              paramRedDotInfo1 = ((JSONObject)localObject1).toString();
+              paramRedDotInfo2.str_custom_buffer.set(ByteStringMicro.copyFromUtf8(paramRedDotInfo1));
+            }
+          }
+          else
+          {
+            paramRedDotInfo1 = str;
+            if (!localJSONObject.has("msg")) {
+              continue;
+            }
+            paramRedDotInfo1 = localJSONObject.getString("msg");
+            continue;
+          }
+          localObject1 = new JSONObject();
+          continue;
+        }
+        paramRedDotInfo1 = (oidb_0x791.RedDotInfo)localObject1;
+      }
+      catch (Exception paramRedDotInfo1)
+      {
+        QLog.e(this.b, 1, "parse tencentDocs redDot info error" + paramRedDotInfo1.getMessage());
+        return;
+      }
+      label322:
+      continue;
+      return;
+      i = 0;
+      break;
+      label334:
+      paramRedDotInfo1 = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("nearby.redpoint", 1, "setNearbyRedState, show=" + paramBoolean);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
+    localEditor.putBoolean("troop_nearby_red_point_state_" + str, paramBoolean);
+    localEditor.commit();
+  }
+  
+  public boolean a()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("troop_nearby_red_point_state_" + str, true);
+  }
+  
+  public boolean a(List<Integer> paramList, oidb_0x791.GetRedDotRes paramGetRedDotRes)
+  {
+    int m = 0;
+    for (;;)
+    {
+      int j;
+      try
+      {
+        int n = paramGetRedDotRes.rpt_msg_reddot_info.size();
+        j = 0;
+        bool = false;
+        if (j < n)
+        {
+          oidb_0x791.RedDotInfo localRedDotInfo1 = (oidb_0x791.RedDotInfo)paramGetRedDotRes.rpt_msg_reddot_info.get(j);
+          if (QLog.isColorLevel()) {
+            QLog.d("nearby.redpoint", 2, "setAllRedDot：appId=" + localRedDotInfo1.uint32_appid.get() + ", uin=" + localRedDotInfo1.uint64_cmd_uin.get() + ", hasRed=" + localRedDotInfo1.bool_display_reddot.get());
+          }
+          paramList.remove(Integer.valueOf(localRedDotInfo1.uint32_appid.get()));
+          if (mxm.c(localRedDotInfo1.uint32_appid.get())) {
+            break label779;
+          }
+          k = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size();
+          i = 0;
+          if (i >= k) {
+            break label771;
+          }
+          oidb_0x791.RedDotInfo localRedDotInfo2 = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+          if (localRedDotInfo2.uint32_appid.get() != localRedDotInfo1.uint32_appid.get()) {
+            break label825;
+          }
+          k = localRedDotInfo1.uint32_appid.get();
+          if (mxm.b(k)) {
+            break label788;
+          }
+          if (mxm.c(k))
+          {
+            break label788;
+            label234:
+            if (localRedDotInfo2.uint64_cmd_uin.get() != localRedDotInfo1.uint64_cmd_uin.get()) {
+              break label766;
+            }
+            if (localRedDotInfo1.uint32_last_time.get() <= localRedDotInfo2.uint32_last_time.get()) {
+              break label763;
+            }
+            this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.set(i, localRedDotInfo1);
+            a(true);
+            if (!QLog.isColorLevel()) {
+              break label805;
+            }
+            QLog.d("nearby.redpoint", 2, "APPID_NEARBY_CONCERN_UPDATE, setAllRedDot：has same uin reddot, uin=" + localRedDotInfo1.uint64_cmd_uin.get());
+            break label805;
+            label334:
+            this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.add(localRedDotInfo1);
+            bool = true;
+            break label779;
+            label352:
+            if (localRedDotInfo1.uint32_last_time.get() <= localRedDotInfo2.uint32_last_time.get()) {
+              break label758;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d(this.b + "Q.qqstory.redPoint", 2, "网络红点比本地红点新，netRedPoint：" + a(localRedDotInfo1) + "|localRedPoint:" + a(localRedDotInfo2));
+            }
+            this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.set(i, localRedDotInfo1);
+            if (!mxm.c(k)) {
+              break label750;
+            }
+            a(true);
+            i = 0;
+            bool = true;
+            break label810;
+          }
+          if (k == 46)
+          {
+            a(localRedDotInfo2, localRedDotInfo1);
+            this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.set(i, localRedDotInfo1);
+            i = 0;
+            bool = true;
+            break label810;
+          }
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.set(i, localRedDotInfo1);
+          i = 0;
+          bool = true;
+          break label810;
+        }
+        j = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size();
+        i = m;
+        if (i < j)
+        {
+          paramGetRedDotRes = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i);
+          if (paramList.contains(Integer.valueOf(paramGetRedDotRes.uint32_appid.get())))
+          {
+            paramGetRedDotRes.bool_display_reddot.set(false);
+            paramGetRedDotRes.uint32_number.set(0);
+            paramGetRedDotRes.uint32_reason.set(0);
+            paramGetRedDotRes.uint64_cmd_uin.set(0L);
+            paramGetRedDotRes.str_face_url.set(ByteStringMicro.EMPTY);
+            paramGetRedDotRes.str_custom_buffer.set(ByteStringMicro.EMPTY);
+            paramGetRedDotRes.uint32_expire_time.set(0);
+            paramGetRedDotRes.uint32_cmd_uin_type.set(0);
+            paramGetRedDotRes.uint32_report_type.set(0);
+            bool = true;
+            break label832;
+          }
+        }
+        else
+        {
+          if (bool) {
+            a(this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d(this.b + "Q.qqstory.redPoint", 2, "setAll==>拉回来的红点数据与本地的做对比，对比uint32_last_time, reult:" + bool);
+          }
+          return bool;
+        }
+      }
+      finally {}
+      break label832;
+      label750:
+      int i = 0;
+      boolean bool = true;
+      break label810;
+      label758:
+      i = 0;
+      break label810;
+      label763:
+      break label808;
+      label766:
+      i = 1;
+      break label810;
+      label771:
+      i = 0;
+      int k = 1;
+      label779:
+      label788:
+      label805:
+      label808:
+      label810:
+      do
+      {
+        j += 1;
+        break;
+        if (k == 56) {
+          break label234;
+        }
+        if (k != 61) {
+          break label352;
+        }
+        break label234;
+        bool = true;
+        i = 0;
+        k = 0;
+        if (k != 0) {
+          break label334;
+        }
+      } while (i == 0);
+      continue;
+      label825:
+      i += 1;
+      continue;
+      label832:
+      i += 1;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  {
+    boolean bool = false;
+    for (;;)
+    {
+      try
+      {
+        localRedDotInfo1 = a(paramInt3);
+        if (localRedDotInfo1 != null) {
+          continue;
+        }
+        paramBoolean = bool;
+      }
+      finally
+      {
+        try
+        {
+          oidb_0x791.RedDotInfo localRedDotInfo1;
+          oidb_0x791.RedDotInfo localRedDotInfo2;
+          localRedDotInfo2.mergeFrom(localRedDotInfo1.toByteArray());
+          if (localRedDotInfo2.uint32_last_time.get() > paramInt2)
+          {
+            paramBoolean = bool;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d(this.b + "Q.qqstory.redPoint", 2, "result is out of date, current:" + paramInt2 + ", last:" + localRedDotInfo2.uint32_last_time.get());
+            paramBoolean = bool;
+            continue;
+          }
+          localRedDotInfo2.bool_display_reddot.set(paramBoolean);
+          localRedDotInfo2.uint32_number.set(paramInt1);
+          localRedDotInfo2.uint64_cmd_uin.set(paramLong);
+          localRedDotInfo2.uint32_last_time.set(paramInt2);
+          a(localRedDotInfo2);
+          if (QLog.isColorLevel()) {
+            QLog.d(this.b + "Q.qqstory.redPoint", 2, "updateStoryMessageRedPoint==>" + a(localRedDotInfo2));
+          }
+          paramBoolean = true;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          paramBoolean = bool;
+        }
+        localObject = finally;
+      }
+      return paramBoolean;
+      localRedDotInfo2 = new oidb_0x791.RedDotInfo();
+    }
+  }
+  
+  public int b()
+  {
+    oidb_0x791.RedDotInfo localRedDotInfo = a();
+    if (localRedDotInfo == null) {
+      return 0;
+    }
+    switch (localRedDotInfo.uint32_appid.get())
+    {
+    default: 
+      return 0;
+    case 8: 
+      return 1;
+    case 35: 
+      return 2;
+    case 52: 
+      return 3;
+    case 11: 
+      return 4;
+    }
+    return 8;
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo b()
+  {
+    Object localObject = a(23);
+    oidb_0x791.RedDotInfo localRedDotInfo = a(26);
+    if (((localObject != null) && (((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get())) || ((localRedDotInfo != null) && (localRedDotInfo.bool_display_reddot.get())))
+    {
+      localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(0);
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set("");
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.set("");
+      return localObject;
+    }
+    return null;
+  }
+  
+  /* Error */
+  public ArrayList<oidb_0x791.RedDotInfo> b()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   6: ifnonnull +11 -> 17
+    //   9: aload_0
+    //   10: aload_0
+    //   11: invokespecial 251	mxu:a	()Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   14: putfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   17: aload_0
+    //   18: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   21: astore_3
+    //   22: aload_3
+    //   23: ifnonnull +9 -> 32
+    //   26: aconst_null
+    //   27: astore_3
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_3
+    //   31: areturn
+    //   32: new 361	java/util/ArrayList
+    //   35: dup
+    //   36: invokespecial 363	java/util/ArrayList:<init>	()V
+    //   39: astore_3
+    //   40: iconst_0
+    //   41: istore_1
+    //   42: iload_1
+    //   43: aload_0
+    //   44: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   47: getfield 255	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes:rpt_msg_reddot_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   50: invokevirtual 260	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   53: if_icmpge +98 -> 151
+    //   56: aload_0
+    //   57: getfield 249	mxu:jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes	Ltencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes;
+    //   60: getfield 255	tencent/im/oidb/cmd0x791/oidb_0x791$GetRedDotRes:rpt_msg_reddot_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   63: iload_1
+    //   64: invokevirtual 263	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: checkcast 69	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo
+    //   70: astore 4
+    //   72: aload 4
+    //   74: getfield 101	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint32_number	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   77: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   80: pop
+    //   81: aload 4
+    //   83: getfield 88	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:bool_display_reddot	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   86: invokevirtual 93	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   89: istore_2
+    //   90: aload 4
+    //   92: getfield 117	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint64_cmd_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   95: invokevirtual 121	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   98: pop2
+    //   99: aload 4
+    //   101: getfield 135	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:str_face_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   104: invokevirtual 140	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   107: invokevirtual 145	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   110: astore 5
+    //   112: bipush 56
+    //   114: aload 4
+    //   116: getfield 73	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo:uint32_appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   119: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   122: if_icmpne +22 -> 144
+    //   125: iload_2
+    //   126: ifeq +18 -> 144
+    //   129: aload 5
+    //   131: invokestatic 382	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   134: ifne +10 -> 144
+    //   137: aload_3
+    //   138: aload 4
+    //   140: invokevirtual 389	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   143: pop
+    //   144: iload_1
+    //   145: iconst_1
+    //   146: iadd
+    //   147: istore_1
+    //   148: goto -106 -> 42
+    //   151: goto -123 -> 28
+    //   154: astore_3
+    //   155: aload_0
+    //   156: monitorexit
+    //   157: aload_3
+    //   158: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	this	mxu
+    //   41	107	1	i	int
+    //   89	37	2	bool	boolean
+    //   21	117	3	localObject1	Object
+    //   154	4	3	localObject2	Object
+    //   70	69	4	localRedDotInfo	oidb_0x791.RedDotInfo
+    //   110	20	5	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	154	finally
+    //   17	22	154	finally
+    //   32	40	154	finally
+    //   42	125	154	finally
+    //   129	144	154	finally
+  }
+  
+  public boolean b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b())) {}
+    oidb_0x791.RedDotInfo localRedDotInfo;
+    do
+    {
+      return false;
+      localRedDotInfo = a();
+    } while ((localRedDotInfo == null) || (localRedDotInfo.uint32_appid.get() == 37));
+    return true;
+  }
+  
+  public int c()
+  {
+    oidb_0x791.RedDotInfo localRedDotInfo = a();
+    if (localRedDotInfo == null) {
+      return 0;
+    }
+    return localRedDotInfo.uint32_report_type.get();
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo c()
+  {
+    Object localObject = a(24);
+    oidb_0x791.RedDotInfo localRedDotInfo = a(27);
+    if (((localObject != null) && (((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get())) || ((localRedDotInfo != null) && (localRedDotInfo.bool_display_reddot.get())))
+    {
+      localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(0);
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_content.set("");
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_desc.set("");
+      return localObject;
+    }
+    return null;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+    }
+    if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+      return 0;
+    }
+    int m = 0;
+    int i = 0;
+    int k;
+    if (m < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
+    {
+      oidb_0x791.RedDotInfo localRedDotInfo = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(m);
+      int j;
+      if (!localRedDotInfo.bool_display_reddot.get()) {
+        j = i;
+      }
+      label134:
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            m += 1;
+            i = j;
+            break;
+            k = localRedDotInfo.uint32_appid.get();
+            if ((6 == k) && (i == 0))
+            {
+              j = k;
+            }
+            else
+            {
+              if ((2 != k) && (3 != k) && (4 != k) && (5 != k)) {
+                break label134;
+              }
+              j = k;
+            }
+          }
+          j = i;
+        } while (localRedDotInfo.uint32_number.get() <= 0);
+        j = i;
+      } while (7 != localRedDotInfo.uint32_appid.get());
+    }
+    for (;;)
+    {
+      return k;
+      k = i;
+    }
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo d()
+  {
+    oidb_0x791.RedDotInfo localRedDotInfo = a(59);
+    if (localRedDotInfo != null)
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set(localRedDotInfo.str_custom_buffer.get().toStringUtf8());
+      return localRedTypeInfo;
+    }
+    return null;
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo e()
+  {
+    if (a(65) != null)
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set("");
+      return localRedTypeInfo;
+    }
+    return null;
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo f()
+  {
+    if (a(60) != null)
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set("");
+      return localRedTypeInfo;
+    }
+    return null;
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo g()
+  {
+    int i;
+    int k;
+    Object localObject8;
+    for (;;)
+    {
+      Object localObject1;
+      Object localObject5;
+      boolean bool1;
+      long l;
+      int m;
+      Object localObject3;
+      boolean bool2;
+      int n;
+      label238:
+      try
+      {
+        if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+        }
+        localObject1 = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+        if (localObject1 == null)
+        {
+          localObject5 = null;
+          return localObject5;
+        }
+        i = 0;
+        bool1 = false;
+        l = 0L;
+        localObject5 = null;
+        localObject1 = null;
+        m = 0;
+        localObject3 = "";
+        bool2 = false;
+        j = 0;
+        if (m >= this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size()) {
+          break label651;
+        }
+        localObject3 = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(m);
+        k = ((oidb_0x791.RedDotInfo)localObject3).uint32_number.get();
+        bool2 = ((oidb_0x791.RedDotInfo)localObject3).bool_display_reddot.get();
+        l = ((oidb_0x791.RedDotInfo)localObject3).uint64_cmd_uin.get();
+        localObject8 = ((oidb_0x791.RedDotInfo)localObject3).str_face_url.get().toStringUtf8();
+        if ((38 != ((oidb_0x791.RedDotInfo)localObject3).uint32_appid.get()) || ((!bool2) && (k <= 0))) {
+          break label644;
+        }
+        if (!((oidb_0x791.RedDotInfo)localObject3).str_custom_buffer.has()) {
+          break label623;
+        }
+        localObject5 = ((oidb_0x791.RedDotInfo)localObject3).str_custom_buffer.get().toStringUtf8();
+      }
+      finally {}
+      label612:
+      try
+      {
+        n = new JSONObject((String)localObject5).optInt("official_topic");
+        j = i;
+        if (n != 1) {
+          break label670;
+        }
+        try
+        {
+          j = ((oidb_0x791.RedDotInfo)localObject3).uint32_number.get();
+          i = j;
+          boolean bool3 = ((oidb_0x791.RedDotInfo)localObject3).bool_display_reddot.get();
+          i = j;
+          bool1 = bool3;
+          localObject1 = localObject3;
+          m += 1;
+          localObject5 = localObject3;
+          localObject3 = localObject8;
+          j = k;
+        }
+        catch (Exception localException3)
+        {
+          localObject1 = localObject3;
+        }
+      }
+      catch (Exception localException4) {}
+    }
+    localException3.printStackTrace();
+    int j = i;
+    for (;;)
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo;
+      for (;;)
+      {
+        if (localObject8 == null) {
+          break label612;
+        }
+        localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+        if (!bool2)
+        {
+          localObject6 = localRedTypeInfo;
+          if (!bool1) {
+            break;
+          }
+        }
+        if (j > 0)
+        {
+          localRedTypeInfo.red_type.set(5);
+          localRedTypeInfo.red_content.set(String.valueOf(j));
+          bool1 = false;
+          bool2 = false;
+          if (((oidb_0x791.RedDotInfo)localObject8).str_custom_buffer.has())
+          {
+            localObject3 = ((oidb_0x791.RedDotInfo)localObject8).str_custom_buffer.get().toStringUtf8();
+            bool2 = bool1;
+          }
+          for (;;)
+          {
+            try
+            {
+              localObject3 = new JSONObject((String)localObject3);
+              bool2 = bool1;
+              if (((JSONObject)localObject3).optInt("official_topic") != 1) {
+                continue;
+              }
+              bool1 = true;
+              bool2 = bool1;
+              if (((JSONObject)localObject3).optInt("red_type") != 0) {
+                continue;
+              }
+              i = 1;
+              bool2 = bool1;
+              if (i == 0)
+              {
+                bool2 = bool1;
+                localRedTypeInfo.red_type.set(0);
+                bool2 = bool1;
+              }
+            }
+            catch (Exception localException1)
+            {
+              localException1.printStackTrace();
+              continue;
+            }
+            a((String)localObject1, l, localRedTypeInfo, bool2);
+            localObject6 = localRedTypeInfo;
+            break;
+            bool1 = false;
+            continue;
+            i = 0;
+          }
+        }
+        if (localException1 != null)
+        {
+          String str2 = localException1.str_custom_buffer.get().toStringUtf8();
+          localRedTypeInfo.red_content.set(String.valueOf(i));
+          try
+          {
+            if (new JSONObject(str2).optInt("red_type") != 0) {
+              localRedTypeInfo.red_type.set(0);
+            }
+            for (;;)
+            {
+              a(str1, l, localRedTypeInfo, true);
+              localObject6 = localRedTypeInfo;
+              break;
+              localRedTypeInfo.red_type.set(5);
+            }
+          }
+          catch (Exception localException2)
+          {
+            for (;;)
+            {
+              localException2.printStackTrace();
+            }
+          }
+        }
+      }
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set("");
+      Object localObject6 = localRedTypeInfo;
+      break;
+      localObject6 = null;
+      break;
+      label623:
+      Object localObject7 = localException2;
+      Object localObject4 = str1;
+      Object localObject2 = localObject8;
+      localObject8 = localObject7;
+      j = k;
+      continue;
+      label644:
+      localObject4 = localObject7;
+      break label238;
+      label651:
+      localObject8 = localObject4;
+      localObject4 = localObject2;
+      localObject2 = localObject8;
+      localObject8 = localObject7;
+      continue;
+      label670:
+      localObject7 = localObject4;
+      i = j;
+      localObject4 = localObject2;
+      localObject2 = localObject8;
+      localObject8 = localObject7;
+      j = k;
+    }
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo h()
+  {
+    if (a(42) != null)
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(0);
+      localRedTypeInfo.red_content.set("");
+      localRedTypeInfo.red_desc.set("");
+      return localRedTypeInfo;
+    }
+    return null;
+  }
+  
+  public BusinessInfoCheckUpdate.RedTypeInfo i()
+  {
+    for (;;)
+    {
+      long l1;
+      int i;
+      boolean bool1;
+      Object localObject6;
+      try
+      {
+        if (this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes == null) {
+          this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes = a();
+        }
+        Object localObject1 = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          return localObject1;
+        }
+        l1 = 0L;
+        int j = 0;
+        i = 0;
+        localObject1 = "";
+        bool1 = false;
+        if (j >= this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size()) {
+          break label365;
+        }
+        oidb_0x791.RedDotInfo localRedDotInfo = (oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(j);
+        i = localRedDotInfo.uint32_number.get();
+        bool1 = localRedDotInfo.bool_display_reddot.get();
+        l1 = localRedDotInfo.uint64_cmd_uin.get();
+        localObject6 = localRedDotInfo.str_face_url.get().toStringUtf8();
+        if (63 == localRedDotInfo.uint32_appid.get())
+        {
+          localObject1 = localRedDotInfo;
+          l2 = l1;
+          localObject5 = localObject6;
+          bool2 = bool1;
+          k = i;
+          if (!bool1)
+          {
+            if ((!bool1) && (i > 0))
+            {
+              k = i;
+              bool2 = bool1;
+              localObject5 = localObject6;
+              l2 = l1;
+              localObject1 = localRedDotInfo;
+            }
+          }
+          else
+          {
+            if (localObject1 == null) {
+              break label359;
+            }
+            localObject6 = new BusinessInfoCheckUpdate.RedTypeInfo();
+            localObject1 = localObject6;
+            if (!bool2) {
+              continue;
+            }
+            if (k <= 0) {
+              break label323;
+            }
+            if (k <= 99) {
+              break label320;
+            }
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject6).red_type.set(5);
+            ((BusinessInfoCheckUpdate.RedTypeInfo)localObject6).red_content.set(String.valueOf(k));
+            try
+            {
+              localObject1 = new JSONObject();
+              ((JSONObject)localObject1).put("faceUrl", localObject5);
+              ((JSONObject)localObject1).put("uin", l2);
+              ((BusinessInfoCheckUpdate.RedTypeInfo)localObject6).red_desc.set(((JSONObject)localObject1).toString());
+              localObject1 = localObject6;
+            }
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+              Object localObject2 = localObject6;
+            }
+            continue;
+          }
+        }
+        j += 1;
+      }
+      finally {}
+      Object localObject4 = localObject6;
+      continue;
+      label320:
+      continue;
+      label323:
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject6).red_type.set(0);
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject6).red_content.set("");
+      ((BusinessInfoCheckUpdate.RedTypeInfo)localObject6).red_desc.set("");
+      localObject4 = localObject6;
+      continue;
+      label359:
+      localObject4 = null;
+      continue;
+      label365:
+      Object localObject5 = localObject4;
+      localObject4 = null;
+      long l2 = l1;
+      boolean bool2 = bool1;
+      int k = i;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    a(this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes);
   }
 }
 

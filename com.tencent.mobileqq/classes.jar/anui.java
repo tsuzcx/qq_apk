@@ -1,14 +1,16 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 
 public class anui
-  extends aikb
+  implements anwi
 {
   public anui(MessengerService paramMessengerService) {}
   
-  public void a(Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    this.a.a(paramBundle);
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    }
   }
 }
 

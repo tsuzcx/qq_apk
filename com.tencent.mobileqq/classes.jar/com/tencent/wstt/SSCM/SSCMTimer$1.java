@@ -1,8 +1,8 @@
 package com.tencent.wstt.SSCM;
 
-import bgan;
-import bgao;
-import bgap;
+import bgbe;
+import bgbf;
+import bgbg;
 import java.util.TimerTask;
 
 public class SSCMTimer$1
@@ -12,34 +12,34 @@ public class SSCMTimer$1
   {
     long l;
     int i;
-    if (bgan.a(this.this$0))
+    if (bgbe.a(this.this$0))
     {
-      l = Long.parseLong(bgap.a());
+      l = Long.parseLong(bgbg.a());
       if (l == -1L)
       {
-        bgan.a(this.this$0, false);
+        bgbe.a(this.this$0, false);
         i = 0;
       }
     }
     for (;;)
     {
       if (i > 0) {
-        bgan.a(this.this$0, 0);
+        bgbe.a(this.this$0, 0);
       }
       do
       {
         do
         {
           return;
-          i = (int)(l - bgan.a(this.this$0));
-          bgan.a(this.this$0, l);
+          i = (int)(l - bgbe.a(this.this$0));
+          bgbe.a(this.this$0, l);
           break;
-          bgan.a(this.this$0, bgan.a(this.this$0) + bgan.b(this.this$0));
-        } while (bgan.a(this.this$0) < 120000);
-        bgan.b(this.this$0, 1);
+          bgbe.a(this.this$0, bgbe.a(this.this$0) + bgbe.b(this.this$0));
+        } while (bgbe.a(this.this$0) < 120000);
+        bgbe.b(this.this$0, 1);
         cancel();
-      } while (bgan.a(this.this$0) == null);
-      bgan.a(this.this$0).b(bgan.a(this.this$0));
+      } while (bgbe.a(this.this$0) == null);
+      bgbe.a(this.this$0).b(bgbe.a(this.this$0));
       return;
       i = 0;
     }

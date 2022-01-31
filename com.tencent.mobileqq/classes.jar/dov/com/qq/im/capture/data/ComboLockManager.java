@@ -1,19 +1,19 @@
 package dov.com.qq.im.capture.data;
 
-import ahwa;
-import ajtk;
-import ajtq;
+import ahvy;
+import ajti;
+import ajto;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbjn;
-import bizu;
-import bjbw;
-import bjbx;
-import bjby;
-import bkqp;
-import bkqq;
+import bbkb;
+import bjal;
+import bjcn;
+import bjco;
+import bjcp;
+import bkrg;
+import bkrh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -29,17 +29,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import ste;
+import stb;
 
 public class ComboLockManager
   implements IEventReceiver
 {
   public static final String a;
   int jdField_a_of_type_Int = -1;
-  ajtq jdField_a_of_type_Ajtq = new bjbx(this);
-  bjby jdField_a_of_type_Bjby;
-  bkqp jdField_a_of_type_Bkqp;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bizu.a();
+  ajto jdField_a_of_type_Ajto = new bjco(this);
+  bjcp jdField_a_of_type_Bjcp;
+  bkrg jdField_a_of_type_Bkrg;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bjal.a();
   public LockedCategory a;
   public QIMFilterCategoryItem a;
   WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
@@ -50,7 +50,7 @@ public class ComboLockManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = ahwa.jdField_a_of_type_JavaLangString + "/tencent/qim/share/";
+    jdField_a_of_type_JavaLangString = ahvy.jdField_a_of_type_JavaLangString + "/tencent/qim/share/";
   }
   
   public ComboLockManager()
@@ -74,13 +74,13 @@ public class ComboLockManager
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bjby == null)
+    if (this.jdField_a_of_type_Bjcp == null)
     {
-      this.jdField_a_of_type_Bjby = new bjby(this);
+      this.jdField_a_of_type_Bjcp = new bjcp(this);
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "registerStoryReceiver");
       }
-      ste.a().registerSubscriber(this.jdField_a_of_type_Bjby);
+      stb.a().registerSubscriber(this.jdField_a_of_type_Bjcp);
     }
   }
   
@@ -91,14 +91,14 @@ public class ComboLockManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bjby != null)
+    if (this.jdField_a_of_type_Bjcp != null)
     {
-      this.jdField_a_of_type_Bjby = new bjby(this);
+      this.jdField_a_of_type_Bjcp = new bjcp(this);
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "unregisterStoryReceiver");
       }
-      ste.a().unRegisterSubscriber(this.jdField_a_of_type_Bjby);
-      this.jdField_a_of_type_Bjby = null;
+      stb.a().unRegisterSubscriber(this.jdField_a_of_type_Bjcp);
+      this.jdField_a_of_type_Bjcp = null;
     }
   }
   
@@ -107,9 +107,9 @@ public class ComboLockManager
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(bkqp parambkqp)
+  public void a(bkrg parambkrg)
   {
-    if (this.jdField_a_of_type_Bkqp == parambkqp) {
+    if (this.jdField_a_of_type_Bkrg == parambkrg) {
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "same data");
       }
@@ -127,12 +127,12 @@ public class ComboLockManager
           QLog.i("ComboLockManager", 2, "updateConfigData first card.snedSrory " + this.jdField_a_of_type_Boolean);
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap = parambkqp.jdField_a_of_type_JavaUtilHashMap;
-      this.jdField_a_of_type_Bkqp = parambkqp;
-      parambkqp = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (parambkqp.hasNext())
+      this.jdField_a_of_type_JavaUtilHashMap = parambkrg.jdField_a_of_type_JavaUtilHashMap;
+      this.jdField_a_of_type_Bkrg = parambkrg;
+      parambkrg = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (parambkrg.hasNext())
       {
-        Object localObject = (String)parambkqp.next();
+        Object localObject = (String)parambkrg.next();
         localObject = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
         ((LockedCategory)localObject).jdField_a_of_type_Boolean = a(((LockedCategory)localObject).jdField_a_of_type_JavaLangString);
         if ((((LockedCategory)localObject).jdField_a_of_type_Boolean) && (((LockedCategory)localObject).jdField_a_of_type_Int == 2))
@@ -213,7 +213,7 @@ public class ComboLockManager
       {
         if (!localLockedCategory.jdField_b_of_type_Boolean)
         {
-          localLockedCategory.jdField_a_of_type_Boolean = bbjn.y(BaseApplicationImpl.getApplication(), paramString);
+          localLockedCategory.jdField_a_of_type_Boolean = bbkb.y(BaseApplicationImpl.getApplication(), paramString);
           localLockedCategory.jdField_b_of_type_Boolean = true;
         }
         bool1 = localLockedCategory.jdField_a_of_type_Boolean;
@@ -257,20 +257,20 @@ public class ComboLockManager
       QLog.i("ComboLockManager", 2, "handleSendStory");
     }
     this.jdField_a_of_type_Boolean = true;
-    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Bjby);
-    Object localObject = (ajtk)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ajtq, true);
+    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Bjcp);
+    Object localObject = (ajti)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ajto, true);
     if (this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory != null)
     {
       localObject = BaseApplicationImpl.getContext();
-      bjbw localbjbw = new bjbw(this, (Context)localObject);
-      ThreadManager.getUIHandler().postDelayed(new ComboLockManager.2(this, (Context)localObject, localbjbw), 1000L);
+      bjcn localbjcn = new bjcn(this, (Context)localObject);
+      ThreadManager.getUIHandler().postDelayed(new ComboLockManager.2(this, (Context)localObject, localbjcn), 1000L);
     }
   }
   
   public void b(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_Bkqp.a(this.jdField_a_of_type_Int).a;
+    Object localObject1 = this.jdField_a_of_type_Bkrg.a(this.jdField_a_of_type_Int).a;
     if (localObject1 != null)
     {
       localObject1 = ((ArrayList)localObject1).iterator();

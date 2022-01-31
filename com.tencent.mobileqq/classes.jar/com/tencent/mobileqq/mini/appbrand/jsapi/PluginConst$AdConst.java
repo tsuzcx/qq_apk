@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi;
 
-import ajyc;
+import ajya;
 import java.util.HashMap;
 
 public class PluginConst$AdConst
@@ -23,7 +23,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = ajyc.a(2131708257);
+  public static final String ERROR_MSG_SERVICE_FAIL = ajya.a(2131708268);
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
   public static final int KErrAdNotFound = -100100007;
@@ -35,14 +35,14 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = ajyc.a(2131708263);
-    ERROR_MSG_INVALID_ADUNITID = ajyc.a(2131708261);
-    ERROR_MSG_INNER_ERROR = ajyc.a(2131708264);
-    ERROR_MSG_NO_AD = ajyc.a(2131708260);
-    ERROR_MSG_IN_REVIEW = ajyc.a(2131708258);
-    ERROR_MSG_REJECTED = ajyc.a(2131708259);
-    ERROR_MSG_BANNED = ajyc.a(2131708262);
-    ERROR_MSG_CLOSED = ajyc.a(2131708256);
+    ERROR_MSG_PARAM_ERROR = ajya.a(2131708274);
+    ERROR_MSG_INVALID_ADUNITID = ajya.a(2131708272);
+    ERROR_MSG_INNER_ERROR = ajya.a(2131708275);
+    ERROR_MSG_NO_AD = ajya.a(2131708271);
+    ERROR_MSG_IN_REVIEW = ajya.a(2131708269);
+    ERROR_MSG_REJECTED = ajya.a(2131708270);
+    ERROR_MSG_BANNED = ajya.a(2131708273);
+    ERROR_MSG_CLOSED = ajya.a(2131708267);
   }
   
   public static int getRetCodeByServerResult(int paramInt)

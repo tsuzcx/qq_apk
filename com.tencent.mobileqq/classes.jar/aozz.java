@@ -1,16 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-class aozz
-  implements DialogInterface.OnClickListener
+public abstract interface aozz
 {
-  aozz(aozx paramaozx, Context paramContext, apac paramapac) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    aozx.b(this.jdField_a_of_type_Aozx, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Apac);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
+  
+  public abstract byte[] a(Bundle paramBundle);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

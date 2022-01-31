@@ -1,25 +1,39 @@
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-public class vwo
+class vwo
+  extends mxh
 {
-  public static void a(@NonNull String paramString, Bundle paramBundle)
+  vwo(vwn paramvwn) {}
+  
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBundle == null)
-    {
-      veg.b(paramString, ", logBundleDetails : null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
     }
-    veg.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      veg.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new qqstory_group.RspGroupVideoDelete();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if (paramArrayOfByte.error_code.has()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
+        }
+        return paramArrayOfByte;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        }
+      }
     }
-    veg.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
+    return null;
   }
 }
 

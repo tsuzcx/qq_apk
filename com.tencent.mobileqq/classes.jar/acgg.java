@@ -1,52 +1,43 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class acgg
-  implements bfoq
+  implements View.OnClickListener
 {
-  public acgg(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, bfol parambfol) {}
+  public acgg(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!bbev.d(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new bcpt(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694609, 1500);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bfol != null) {
-        this.jdField_a_of_type_Bfol.dismiss();
-      }
-      return;
-      int i = -1;
-      switch (paramInt)
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
+      try
       {
-      default: 
-        paramInt = i;
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        switch (paramView.getId())
+        {
+        case 2131377737: 
+          TroopStoryMainActivity.a(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+          }
+          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          }
+          vei.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
+          return;
+        }
       }
-      while (paramInt != this.jdField_a_of_type_Int)
+      catch (Exception paramView)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
+          return;
+        }
       }
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
     }
   }
 }

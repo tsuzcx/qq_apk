@@ -1,74 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.2;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
 public class arms
-  extends WebViewPlugin
+  implements arcn
 {
-  public arms()
+  arms(armr paramarmr) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    this.mPluginNameSpace = "gflivesdk";
+    QLog.e("IdentificationApiPlugin", 1, "getAppConf error, code : " + paramInt + " errorMsg : " + paramString);
+    if (armr.a(this.a) == null)
+    {
+      QLog.e("IdentificationApiPlugin", 1, "getConfFailed, activity is null");
+      return;
+    }
+    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.2(this, paramString));
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(FaceDetectForThirdPartyManager.AppConf paramAppConf)
   {
-    if ("openView".equals(paramString3)) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
-        }
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramString2 = paramString1.optString("viewType");
-        paramJsBridgeListener = paramString1.optString("callback");
-        if ("activity".equals(paramString2))
-        {
-          paramString1 = paramString1.optString("url");
-          paramString2 = this.mRuntime.a();
-          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
-          {
-            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
-            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
-          }
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
-    }
-    for (;;)
+    if (armr.a(this.a) == null)
     {
-      return false;
-      if ("checkSDKInstalled".equals(paramString3))
-      {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
-            break;
-          }
-          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
+      QLog.e("IdentificationApiPlugin", 1, "getConfSuccess, activity is null");
+      return;
     }
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new armt(this, paramJsBridgeListener));
-    return true;
+    ThreadManager.getUIHandler().post(new IdentificationApiPlugin.1.1(this, paramAppConf));
   }
 }
 

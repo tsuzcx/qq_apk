@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bgxr;
+import bgyi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
 import cooperation.qzone.LbsDataV2.GpsInfo;
@@ -216,7 +216,7 @@ public class LpReportInfo_dc00321
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
           localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc00321(i)));
-          localHashMap.put("qua", bgxr.a());
+          localHashMap.put("qua", bgyi.a());
           localHashMap.put("device", "2");
           localHashMap.put("p_x", this.longitude);
           localHashMap.put("p_y", this.latitude);

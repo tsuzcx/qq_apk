@@ -1,32 +1,22 @@
-import android.os.Message;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import mqq.app.AppActivity;
 
 public class abyx
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public abyx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public abyx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramInt == 1)
     {
-    }
-    do
-    {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
-        return;
+      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+    }
   }
 }
 

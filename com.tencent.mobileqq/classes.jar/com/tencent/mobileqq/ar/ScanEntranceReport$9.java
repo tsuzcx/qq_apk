@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar;
 
-import aldo;
-import axrl;
+import aldn;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$9
   implements Runnable
 {
-  public ScanEntranceReport$9(aldo paramaldo) {}
+  public ScanEntranceReport$9(aldn paramaldn) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    axrl.a(BaseApplication.getContext()).a("", "scanner_zoom_camera", true, 0L, 0L, localHashMap, "");
+    axrn.a(BaseApplication.getContext()).a("", "scanner_zoom_camera", true, 0L, 0L, localHashMap, "");
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.TextView;
-import son;
+import sok;
 
 public class PublicAccountImageCollectionMainActivity$3$1
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$1(son paramson, int paramInt) {}
+  public PublicAccountImageCollectionMainActivity$3$1(sok paramsok, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Son.a.b.setText("" + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Sok.a.b.setText("" + this.jdField_a_of_type_Int);
   }
 }
 

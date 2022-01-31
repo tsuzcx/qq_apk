@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
-import java.util.ArrayList;
 
 public class awuz
-  extends ajxl
+  extends akuo
 {
-  public awuz(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
-  
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
+  public awuz(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (this.a.a != null) {
-      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
-    }
-    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
-    do
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt1 != 88) || (paramBoolean2));
-        if (!paramBoolean1) {
-          break;
-        }
-      } while (!(paramObject instanceof ArrayList));
-      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
-      return;
-    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
-    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
+      NetSearchEngine.a = paramSosoLbsInfo.a.a;
+      NetSearchEngine.b = paramSosoLbsInfo.a.b;
+    }
   }
 }
 

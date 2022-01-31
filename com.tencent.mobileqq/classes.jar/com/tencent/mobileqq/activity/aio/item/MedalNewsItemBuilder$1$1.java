@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aduw;
-import adux;
+import aduu;
+import aduv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.MessageForMedalNews;
 
 public class MedalNewsItemBuilder$1$1
   implements Runnable
 {
-  public MedalNewsItemBuilder$1$1(adux paramadux) {}
+  public MedalNewsItemBuilder$1$1(aduv paramaduv) {}
   
   public void run()
   {
-    aduw.a(this.a.jdField_a_of_type_Aduw, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_Aduw.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
+    aduu.a(this.a.jdField_a_of_type_Aduu, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_Aduu.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import asle;
-import asog;
+import aslg;
+import asoi;
 
 public class MsgBackupManager$1
   implements Runnable
 {
-  public MsgBackupManager$1(asle paramasle) {}
+  public MsgBackupManager$1(aslg paramaslg) {}
   
   public void run()
   {
-    asog.a("MsgBackup.BackupAndMigrateManager", "onDestory .....deleteMsgBackupFiles.", new Object[0]);
+    asoi.a("MsgBackup.BackupAndMigrateManager", "onDestory .....deleteMsgBackupFiles.", new Object[0]);
     this.this$0.f();
   }
 }

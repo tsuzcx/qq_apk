@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aylm;
+import aylo;
 
 class QQLevelJsPlugin$1
-  extends aylm
+  extends aylo
 {
   QQLevelJsPlugin$1(QQLevelJsPlugin paramQQLevelJsPlugin, String paramString) {}
   

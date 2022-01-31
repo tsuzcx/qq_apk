@@ -1,15 +1,22 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aban
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
   public aban(EditInfoActivity paramEditInfoActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846988);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131703637));
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import mqq.app.AppRuntime;
-import onk;
+import onh;
 
 class ReadInJoyListViewGroup$43
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInJoyListViewGroup$43
   
   public void run()
   {
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = ((KandianMergeManager)onk.a().getManager(162)).a();
+    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = ((KandianMergeManager)onh.a().getManager(162)).a();
     if (localKandianMsgBoxRedPntInfo == null)
     {
       ReadInJoyListViewGroup.b(this.this$0);

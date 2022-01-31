@@ -1,73 +1,41 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneVideoDownloadActivity;
-import java.util.concurrent.atomic.AtomicBoolean;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
 
 public class bgzf
-  extends Handler
+  extends bhiq
 {
-  public bgzf(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  public bgzf(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1000: 
-            if (QLog.isDevelopLevel()) {
-              QLog.d("QZoneVideoDownloadActivity", 4, "mIsUIInited=" + QZoneVideoDownloadActivity.a(this.a));
-            }
-            break;
-          }
-        } while (QZoneVideoDownloadActivity.a(this.a).get());
-        this.a.setContentView(2131562647);
-        this.a.a();
-        QZoneVideoDownloadActivity.a(this.a).set(true);
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
-      i = paramMessage.arg1;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131712485) + i + ajyc.a(2131712479));
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-      return;
-    } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
-    int i = paramMessage.arg1;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131712521) + i + ajyc.a(2131712476));
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-    return;
-    String str2 = ajyc.a(2131712528);
-    String str1 = str2;
-    if (paramMessage != null)
-    {
-      str1 = str2;
-      if (paramMessage.obj != null)
-      {
-        str1 = str2;
-        if ((paramMessage.obj instanceof String)) {
-          str1 = (String)paramMessage.obj;
-        }
-      }
-    }
-    Toast.makeText(this.a.getApplicationContext(), str1, 1).show();
-    bhpz.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1005", null);
-    this.a.finish();
-    return;
-    Toast.makeText(this.a.getApplicationContext(), ajyc.a(2131712596), 1).show();
-    bhpz.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1006", null);
-    this.a.finish();
+    Message localMessage = Message.obtain();
+    localMessage.what = 1000;
+    localMessage.arg1 = 1;
+    this.a.a.sendMessage(localMessage);
+    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
+    this.a.a.sendEmptyMessageDelayed(1009, i);
   }
+  
+  public void a(float paramFloat)
+  {
+    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.obtainMessage(1008).sendToTarget();
+  }
+  
+  public void b()
+  {
+    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
+  }
+  
+  public void c() {}
 }
 
 

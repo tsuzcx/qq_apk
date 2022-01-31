@@ -1,12 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class axxa
-  implements View.OnClickListener
 {
-  axxa(axwz paramaxwz) {}
-  
-  public void onClick(View paramView) {}
+  View a;
+  View b;
 }
 
 

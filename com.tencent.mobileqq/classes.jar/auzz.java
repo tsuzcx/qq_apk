@@ -1,28 +1,48 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.widget.RatioLayout;
 
 public class auzz
-  implements Animation.AnimationListener
+  implements bble<Integer>
 {
-  public auzz(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
+  public auzz(ProfileTagView paramProfileTagView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, true);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131166439), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131166437));
+    paramTransformation = this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getLayoutParams();
+    if (paramTransformation != null)
+    {
+      paramTransformation.height = paramInteger.intValue();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.setLayoutParams(paramTransformation);
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramInteger = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
+        if ((paramInteger != null) && (paramInteger.getChildCount() > 0))
+        {
+          paramInteger = paramInteger.getChildAt(0);
+          if (paramInteger != null)
+          {
+            paramInteger = paramInteger.getBackground();
+            if ((paramInteger instanceof BitmapDrawable))
+            {
+              int j = (int)(255.0F * paramFloat);
+              int i = j;
+              if (parambbky == this.a.jdField_a_of_type_Bbky) {
+                i = 255 - j;
+              }
+              paramInteger.setAlpha(i);
+            }
+          }
+        }
+      }
     }
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

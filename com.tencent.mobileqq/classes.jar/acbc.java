@@ -1,21 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class acbc
-  implements DialogInterface.OnClickListener
+public class acbc
 {
-  acbc(acaz paramacaz) {}
+  public volatile long a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Bbgg.cancel();
-      this.a.b = true;
-      acaz.a(this.a);
-      this.a.b();
-    }
-  }
+  protected acbc(acav paramacav) {}
 }
 
 

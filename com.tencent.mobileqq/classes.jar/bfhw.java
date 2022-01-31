@@ -1,40 +1,54 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
-
-final class bfhw
-  implements bfil
+public class bfhw
 {
-  private long a;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bfhw(long paramLong)
+  public bfhw()
   {
-    this.a = paramLong;
+    a();
   }
   
-  public void a(int paramInt, bfik parambfik, bfim parambfim)
+  private void a()
   {
-    long l1 = 0L;
-    if (this.a != 0L)
-    {
-      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
-        break label46;
-      }
-      QSecFramework.a(5L, this.a, paramInt, 0L, null, null, null, null);
+    a(",");
+  }
+  
+  private void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
     }
-    label46:
-    while (paramInt != 3) {
-      return;
-    }
-    int i = parambfim.jdField_a_of_type_Int;
-    int j = parambfim.b;
-    int k = parambfim.c;
-    int m = parambfim.d;
-    parambfik = parambfim.jdField_a_of_type_ArrayOfByte;
-    long l2 = this.a;
-    long l3 = paramInt;
-    if (parambfim.jdField_a_of_type_Boolean) {
-      l1 = 1L;
-    }
-    QSecFramework.a(5L, l2, l3, l1, null, null, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), parambfik }, null);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bfhw a()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  public bfhw a(int paramInt)
+  {
+    return a(String.format("%d", new Object[] { Integer.valueOf(paramInt) }));
+  }
+  
+  public bfhw a(String paramString)
+  {
+    a();
+    paramString = paramString.replace(',', ';');
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    return this;
+  }
+  
+  public bfhw a(byte[] paramArrayOfByte)
+  {
+    return a(bbea.a(paramArrayOfByte));
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 

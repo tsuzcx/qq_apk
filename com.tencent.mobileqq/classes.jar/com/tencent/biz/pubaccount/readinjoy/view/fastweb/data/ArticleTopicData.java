@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
 import java.util.List;
-import rjz;
+import rjw;
 
 public class ArticleTopicData
   extends BaseData
 {
-  public List<rjz> a;
+  public List<rjw> a;
   public boolean a;
   
   public ArticleTopicData()

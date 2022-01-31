@@ -1,28 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-public class bjtc
-  implements ThreadExcutor.IThreadListener
+public final class bjtc
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  bjtc(bjtb parambjtb) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    if ((this.a.jdField_a_of_type_Bjye == null) || (this.a.jdField_a_of_type_Bjye.getActivity() == null)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bjye.a().postDelayed(new EditPicSave.1.1(this), 500L);
+    return new EditLocalGifSource(paramParcel);
   }
   
-  public void onPreRun()
+  public EditLocalGifSource[] a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Bjww.a.a() == 14) {
-      bjtb.a(this.a, false);
-    }
+    return new EditLocalGifSource[paramInt];
   }
 }
 

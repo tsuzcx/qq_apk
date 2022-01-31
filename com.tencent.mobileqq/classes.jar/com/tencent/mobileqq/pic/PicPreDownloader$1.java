@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import aune;
+import aung;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class PicPreDownloader$1
@@ -13,7 +13,7 @@ class PicPreDownloader$1
     if (!this.this$0.a.get())
     {
       this.this$0.a.set(true);
-      aune.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.this$0.a.get());
+      aung.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.this$0.a.get());
     }
   }
 }

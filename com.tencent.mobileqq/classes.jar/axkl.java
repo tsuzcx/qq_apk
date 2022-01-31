@@ -1,21 +1,250 @@
-import android.opengl.EGLContext;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.SharedMemWriteFile;
+import com.tencent.mobileqq.shortvideo.util.OffScreenInputSurface.EGLCreateContextException;
+import com.tencent.mobileqq.shortvideo.util.OffScreenInputSurface.EGLCreatePbufferSurfaceException;
+import com.tencent.mobileqq.shortvideo.util.OffScreenInputSurface.EGLMakeCurrentException;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import com.tencent.mobileqq.shortvideo.util.SVOpenglFlipFilter;
+import com.tencent.mobileqq.shortvideo.util.SVOpenglFlipFilter.EGLCreateProgramException;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axkl
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  int b;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  public axkn a;
+  private SVOpenglFlipFilter jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
+  public axkl()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Axkn = new axkn();
+  }
+  
+  @TargetApi(17)
+  private axlj a(axkm paramaxkm, int paramInt)
+  {
+    axlj localaxlj = paramaxkm.jdField_a_of_type_Axli.a();
+    if (localaxlj == null)
     {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[writeSharedMemtoFileDegree]memoryCache=null");
+      }
+      return null;
     }
+    if (localaxlj.a(paramaxkm.jdField_a_of_type_Int, paramaxkm.jdField_b_of_type_Int, paramaxkm.e))
+    {
+      long l1 = SystemClock.elapsedRealtimeNanos();
+      if (PtvFilterUtils.a(paramInt, paramaxkm.jdField_a_of_type_Int, paramaxkm.jdField_b_of_type_Int, paramaxkm.e, localaxlj.jdField_a_of_type_JavaNioByteBuffer, paramaxkm.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct) != 0)
+      {
+        localaxlj.a();
+        return null;
+      }
+      long l2 = SystemClock.elapsedRealtime();
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[getPixelDataToSharedMemory= old time " + paramaxkm.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.vFrameTime + ", new time = " + l2 + ", diff=" + (l2 - paramaxkm.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.vFrameTime));
+      }
+      paramaxkm.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.vFrameTime = l2;
+      l1 = (SystemClock.elapsedRealtimeNanos() - l1) / 1000L;
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[getPixelDataToSharedMemory=" + l1 + "us]");
+      }
+      return localaxlj;
+    }
+    localaxlj.a();
+    return null;
+  }
+  
+  public static CameraFilterGLView.SharedMemWriteFile a(axlj paramaxlj)
+  {
+    if (paramaxlj.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView$SharedMemWriteFile == null) {
+      paramaxlj.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView$SharedMemWriteFile = new CameraFilterGLView.SharedMemWriteFile();
+    }
+    return paramaxlj.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView$SharedMemWriteFile;
+  }
+  
+  private void a(axkm paramaxkm, axlj paramaxlj, int paramInt1, boolean paramBoolean, AVIOStruct paramAVIOStruct, int paramInt2, axin paramaxin)
+  {
+    CameraFilterGLView.SharedMemWriteFile localSharedMemWriteFile = a(paramaxlj);
+    localSharedMemWriteFile.jdField_a_of_type_Int = paramaxkm.jdField_a_of_type_Int;
+    localSharedMemWriteFile.jdField_b_of_type_Int = paramaxkm.jdField_b_of_type_Int;
+    localSharedMemWriteFile.c = paramInt1;
+    localSharedMemWriteFile.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = paramAVIOStruct;
+    localSharedMemWriteFile.jdField_a_of_type_Axlj = paramaxlj;
+    localSharedMemWriteFile.jdField_a_of_type_Boolean = paramBoolean;
+    localSharedMemWriteFile.jdField_b_of_type_Boolean = paramaxkm.jdField_a_of_type_Boolean;
+    localSharedMemWriteFile.jdField_a_of_type_Axli = paramaxkm.jdField_a_of_type_Axli;
+    localSharedMemWriteFile.jdField_a_of_type_Aiak = null;
+    localSharedMemWriteFile.d = paramInt2;
+    localSharedMemWriteFile.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = paramaxkm.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference;
+    localSharedMemWriteFile.jdField_a_of_type_Axin = paramaxin;
+    paramaxkm.jdField_a_of_type_Axli.a(localSharedMemWriteFile);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("glAsyncPostThread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    }
+  }
+  
+  public void a(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMessage);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter != null);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public boolean handleMessage(Message arg1)
+  {
+    switch (???.what)
+    {
+    }
+    do
+    {
+      axlj localaxlj;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return true;
+                synchronized (this.jdField_a_of_type_Axkn.jdField_a_of_type_JavaLangObject)
+                {
+                  if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter != null) && (!this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.a(this.jdField_a_of_type_Axkn.jdField_a_of_type_Int, this.jdField_a_of_type_Axkn.jdField_b_of_type_Int, this.jdField_a_of_type_Axkn.jdField_a_of_type_AndroidOpenglEGLContext)))
+                  {
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.b();
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = null;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("face", 2, "checkIsCanReusedPbuffer = false [release]");
+                    }
+                  }
+                  if (this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter == null)
+                  {
+                    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = new SVOpenglFlipFilter(this.jdField_a_of_type_Axkn.jdField_a_of_type_Int, this.jdField_a_of_type_Axkn.jdField_b_of_type_Int, this.jdField_a_of_type_Axkn.jdField_a_of_type_AndroidOpenglEGLContext);
+                  }
+                }
+                try
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.a();
+                  this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true);
+                  return true;
+                  localObject = finally;
+                  throw localObject;
+                }
+                catch (OffScreenInputSurface.EGLMakeCurrentException localEGLMakeCurrentException)
+                {
+                  for (;;)
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[initPbbufferSurfaceMakeCurrent]" + localEGLMakeCurrentException);
+                    }
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.b();
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = null;
+                  }
+                }
+                catch (OffScreenInputSurface.EGLCreateContextException localEGLCreateContextException)
+                {
+                  for (;;)
+                  {
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = null;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[initPbbufferSurfaceMakeCurrent]" + localEGLCreateContextException);
+                    }
+                  }
+                }
+                catch (OffScreenInputSurface.EGLCreatePbufferSurfaceException localEGLCreatePbufferSurfaceException)
+                {
+                  for (;;)
+                  {
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = null;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[initPbbufferSurfaceMakeCurrent]" + localEGLCreatePbufferSurfaceException);
+                    }
+                  }
+                }
+                catch (SVOpenglFlipFilter.EGLCreateProgramException localEGLCreateProgramException)
+                {
+                  for (;;)
+                  {
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.b();
+                    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = null;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[EGLCreateProgramException]" + localEGLCreateProgramException);
+                    }
+                  }
+                }
+                ??? = (axkm)???.obj;
+                if (axip.jdField_a_of_type_Boolean) {
+                  break;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[FILTER_FLIP_GL_DRAW] ignore because stop capture, frame index = " + ???.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct.pFrameIndex);
+              return true;
+            } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter == null);
+            if (???.d != 180) {
+              break;
+            }
+            localaxlj = a(???, ???.c);
+          } while (localaxlj == null);
+          a(???, localaxlj, 0, false, ???.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct, 0, ???.jdField_a_of_type_Axin);
+          return true;
+          if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (!axlc.jdField_a_of_type_Boolean)) {
+            break;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.a(???.c, ???.jdField_a_of_type_Int, ???.jdField_b_of_type_Int);
+          localaxlj = a(???, 0);
+        } while (localaxlj == null);
+        a(???, localaxlj, 0, false, ???.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct, ???.d, ???.jdField_a_of_type_Axin);
+        return true;
+        localaxlj = a(???, ???.c);
+      } while (localaxlj == null);
+      a(???, localaxlj, 180, true, ???.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct, ???.d, ???.jdField_a_of_type_Axin);
+      return true;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
+    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter == null);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter.b();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilSVOpenglFlipFilter = null;
+    return true;
   }
 }
 

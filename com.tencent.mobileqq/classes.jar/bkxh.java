@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-
 public abstract interface bkxh
 {
-  public abstract int a(int paramInt, long paramLong);
+  public abstract void ae();
   
-  public abstract QQFilterRenderManager a();
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void d(int paramInt);
+  
+  public abstract int j();
 }
 
 

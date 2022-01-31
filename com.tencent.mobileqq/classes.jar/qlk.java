@@ -1,19 +1,40 @@
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 class qlk
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  qlk(qlj paramqlj) {}
+  qlk(qlg paramqlg) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(qlj.a(), 2, "播放器状态回调 onCompletion");
+      QLog.d(qlg.a(), 2, "播放器状态回调 onInfo what = " + paramInt + ", extra = " + paramObject);
     }
-    if (qlj.a(this.a) != null) {
-      qlj.a(this.a).a(1, null, qlj.a(this.a), System.currentTimeMillis() - qlj.a(this.a));
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (qlg.a(this.a) == null);
+      localqlm = qlg.a(this.a);
+      if ((paramObject instanceof String)) {}
+      for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+      {
+        localqlm.a(2, paramTVK_IMediaPlayer, null, 0L);
+        break;
+      }
+    } while (qlg.a(this.a) == null);
+    qlm localqlm = qlg.a(this.a);
+    if ((paramObject instanceof String)) {}
+    for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
+    {
+      localqlm.a(5, paramTVK_IMediaPlayer, null, 0L);
+      break;
     }
   }
 }

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import npl;
+import npi;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdComData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdComData> CREATOR = new npl();
+  public static final Parcelable.Creator<GameAdComData> CREATOR = new npi();
   public String A;
   public int a;
   public VideoInfo.GameAdDownloadInfo a;

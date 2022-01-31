@@ -1,7 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.6;
-import com.tencent.open.downloadnew.DownloadInfo;
 
 public class alqo
   implements DialogInterface.OnClickListener
@@ -10,10 +9,17 @@ public class alqo
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      alql.a(this.a.this$0, this.a.a, this.a.a.g);
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bdhk.a().a(10, this.a.a);
+      return;
     }
-    paramDialogInterface.dismiss();
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

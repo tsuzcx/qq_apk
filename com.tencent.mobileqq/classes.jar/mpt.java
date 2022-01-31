@@ -1,33 +1,94 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
 
-public class mpt
-  extends mqj
+class mpt
+  extends mcf
 {
-  public int a;
-  public lgr a;
-  public boolean a;
-  public boolean b;
+  String jdField_a_of_type_JavaLangString = "AVRedbag_GameMode";
   
-  mpt(mpc parammpc)
+  mpt(mps parammps) {}
+  
+  protected void a(mch parammch)
   {
-    super(parammpc);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Lgr = new mpu(this);
-    parammpc = lgq.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (parammpc != null)
-    {
-      parammpc.a(11, this.jdField_a_of_type_Lgr);
+    AVActivity localAVActivity = this.jdField_a_of_type_Mps.a();
+    if ((!this.jdField_a_of_type_Mps.a()) || (localAVActivity == null)) {
       return;
     }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+    if (parammch.jdField_a_of_type_Int == 1) {
+      mao.a(this.jdField_a_of_type_Mps.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696115);
+    }
+    for (;;)
+    {
+      parammch.jdField_b_of_type_Boolean = true;
+      parammch.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      return;
+      if (parammch.jdField_a_of_type_Int == 2) {
+        mao.a(this.jdField_a_of_type_Mps.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696114);
+      }
+    }
   }
   
-  void a(String paramString)
+  protected void a(mci parammci)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
+    moz localmoz = this.jdField_a_of_type_Mps.a();
+    if (localmoz == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+      } while (!localmoz.a());
+      i = parammci.a().getId();
+    } while ((i != 2131695652) && (i != 2131695653));
+    if (i == 2131695652) {
+      this.jdField_a_of_type_Mps.jdField_a_of_type_Int = parammci.jdField_a_of_type_Int;
+    }
+    parammci.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    parammci.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected void c(mcj parammcj)
+  {
+    AVActivity localAVActivity = this.jdField_a_of_type_Mps.a();
+    if ((!this.jdField_a_of_type_Mps.a()) || (localAVActivity == null)) {
+      return;
+    }
+    mao.a(this.jdField_a_of_type_Mps.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696110);
+    parammcj.jdField_b_of_type_Boolean = true;
+    parammcj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void d(mcj parammcj)
+  {
+    AVActivity localAVActivity = this.jdField_a_of_type_Mps.a();
+    if ((!this.jdField_a_of_type_Mps.a()) || (localAVActivity == null)) {
+      return;
+    }
+    mao.a(this.jdField_a_of_type_Mps.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696112);
+    parammcj.jdField_b_of_type_Boolean = true;
+    parammcj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void e(mcj parammcj)
+  {
+    moz localmoz = this.jdField_a_of_type_Mps.a();
+    if (localmoz == null) {}
+    while ((localmoz.a == null) || (localmoz.a.a == null) || (localmoz.a.a.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Mps.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().j) || (this.jdField_a_of_type_Mps.a() == null) || (!this.jdField_a_of_type_Mps.a())) {
+      return;
+    }
+    mao.a(this.jdField_a_of_type_Mps.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131696111);
+    parammcj.jdField_b_of_type_Boolean = true;
+    parammcj.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void f(mcj parammcj)
+  {
+    parammcj = this.jdField_a_of_type_Mps.a();
+    if ((parammcj != null) && (parammcj.a())) {
+      mpu.d();
     }
   }
 }

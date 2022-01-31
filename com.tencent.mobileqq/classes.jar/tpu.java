@@ -1,44 +1,54 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.TicketManager;
 
 public class tpu
-  extends trj
+  extends trg
 {
-  protected String a;
+  private HashMap<String, String> a;
+  private boolean c;
+  
+  public tpu()
+  {
+    this(null, false);
+  }
+  
+  public tpu(HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    a(false, true);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.c = paramBoolean;
+  }
   
   public void a()
   {
-    ShareGroupItem localShareGroupItem = ((umy)tdc.a(7)).a(this.a);
-    ukv localukv = (ukv)tdc.a(24);
-    ukn localukn = localukv.a(localShareGroupItem.headerUnionIdList);
-    if (localukn == null)
+    Object localObject2 = tsr.a();
+    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
+    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
+    localObject2 = new Bundle();
+    localObject1 = naj.a(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
+    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
     {
-      localukv.a(localShareGroupItem.headerUnionIdList, new tpv(this));
+      if (QLog.isColorLevel()) {
+        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
+      }
+      b(false);
       return;
     }
-    a(localukn);
-  }
-  
-  protected void a(Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarJob", 2, paramError, new Object[0]);
-    }
-    b(false);
+    a("ShortenUrlJob_shortenedUrls", localObject1);
+    b(true);
   }
   
   protected void a(Map<String, Object> paramMap)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
+      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)trx.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
     }
-  }
-  
-  protected void a(ukn paramukn)
-  {
-    a("ShareGroupAvatarJob_sga", paramukn.a());
-    b(true);
   }
 }
 

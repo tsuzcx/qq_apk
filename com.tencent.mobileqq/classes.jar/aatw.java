@@ -1,41 +1,17 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aatw
   implements View.OnClickListener
 {
-  public aatw(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aatw(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131368429: 
-      ChatSettingForTroop.f(this.a);
-      this.a.finish();
-      return;
-    }
-    ChatSettingForTroop.g(this.a);
-    String str2;
-    if (this.a.a.isMember)
-    {
-      paramView = "grpData_admin";
-      str2 = this.a.a.troopUin;
-      if (!this.a.a.isMember) {
-        break label135;
-      }
-    }
-    label135:
-    for (String str1 = bbbb.a(this.a.a);; str1 = "0")
-    {
-      bbbb.a("Grp_set_new", paramView, "clk_upright", 0, 0, new String[] { str2, str1 });
-      return;
-      paramView = "grpData_visitor";
-      break;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

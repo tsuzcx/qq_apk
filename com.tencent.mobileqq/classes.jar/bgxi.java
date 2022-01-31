@@ -1,47 +1,56 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
-import cooperation.qzone.LbsDataV2.PoiInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public final class bgxi
-  implements Parcelable.Creator<LbsDataV2.PoiInfo>
+public class bgxi
 {
-  public LbsDataV2.PoiInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.PoiInfo localPoiInfo = new LbsDataV2.PoiInfo();
-    if (paramParcel != null)
-    {
-      localPoiInfo.poiId = paramParcel.readString();
-      localPoiInfo.poiName = paramParcel.readString();
-      localPoiInfo.poiType = paramParcel.readInt();
-      localPoiInfo.poiTypeName = paramParcel.readString();
-      localPoiInfo.poiDefaultName = paramParcel.readString();
-      localPoiInfo.address = paramParcel.readString();
-      localPoiInfo.districtCode = paramParcel.readInt();
-      localPoiInfo.distance = paramParcel.readInt();
-      localPoiInfo.hotValue = paramParcel.readInt();
-      localPoiInfo.phoneNumber = paramParcel.readString();
-      localPoiInfo.poiOrderType = paramParcel.readInt();
-      localPoiInfo.poiNum = paramParcel.readInt();
-      localPoiInfo.dianPingId = paramParcel.readString();
-      localPoiInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localPoiInfo.show_poi = paramParcel.readInt();
-      localPoiInfo.country = paramParcel.readString();
-      localPoiInfo.province = paramParcel.readString();
-      localPoiInfo.city = paramParcel.readString();
-      localPoiInfo.district = paramParcel.readString();
-    }
-    return localPoiInfo;
-  }
+  public static final List<String> a = new ArrayList(Arrays.asList(new String[] { "4", "5", "7" }));
+  public static final List<String> b = new ArrayList(Arrays.asList(new String[] { "1", "4", "5", "7" }));
+  public static final List<String> c = new ArrayList(Arrays.asList(new String[] { "2", "3", "6", "", null }));
+  public static final List<String> d = new ArrayList(Arrays.asList(new String[] { "2", "3", "", null }));
+  public static final List<String> e = new ArrayList(Arrays.asList(new String[] { "2", "3" }));
+  public static final List<String> f = new ArrayList(Arrays.asList(new String[] { "6" }));
   
-  public LbsDataV2.PoiInfo[] a(int paramInt)
+  public static void a(Bundle paramBundle, bgxj parambgxj)
   {
-    return null;
+    ArrayList localArrayList = new ArrayList();
+    for (Object localObject = parambgxj.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
+      localArrayList.addAll(Arrays.asList(((Class)localObject).getDeclaredFields()));
+    }
+    int i = 0;
+    if (i < localArrayList.size())
+    {
+      localObject = (Field)localArrayList.get(i);
+      String str1 = ((Field)localObject).getName();
+      String str2 = ((Field)localObject).getType().getSimpleName();
+      QLog.i("HbInfo", 2, "key = " + str1 + " tname = " + str2);
+      String str3 = paramBundle.getString(str1);
+      if (str3 == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          QLog.i("HbInfo", 2, "set " + str1 + " = " + str3);
+          if (str2.equals("String")) {
+            ((Field)localObject).set(parambgxj, str3);
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.net.Uri;
-import bchc;
+import bchq;
 
 final class WebSoService$9
   implements Runnable
 {
-  WebSoService$9(String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, bchc parambchc) {}
+  WebSoService$9(String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, bchq parambchq) {}
   
   public void run()
   {
     String str = WebSoService.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Bchc == null) {
+    if (this.jdField_a_of_type_Bchq == null) {
       return;
     }
-    this.jdField_a_of_type_Bchc.a(str);
+    this.jdField_a_of_type_Bchq.a(str);
   }
 }
 

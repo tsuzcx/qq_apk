@@ -1,32 +1,11 @@
+import android.content.Context;
+import com.rookery.translate.type.Language;
+
 public class lbn
 {
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  public lbn(String paramString, boolean paramBoolean)
+  public static final String a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
-  }
-  
-  public Boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangBoolean;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-      return;
-    }
+    return Language.CHINESE_SIMPLIFIED.toString();
   }
 }
 

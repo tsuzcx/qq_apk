@@ -1,41 +1,21 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 
-class ainz
-  extends Animation
+public class ainz
 {
-  ainz(ainv paramainv, View paramView, int paramInt) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-    if (paramFloat <= 0.4F) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramFloat > 0.99F) {
-          break;
-        }
-      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      return;
-    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
-  }
+  public int a = 1;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public String a;
+  public boolean a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

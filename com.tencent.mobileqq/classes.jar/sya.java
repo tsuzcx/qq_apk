@@ -1,103 +1,174 @@
-import android.content.Intent;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class sya
-  extends tcr
 {
-  private boolean a(List<String> paramList)
+  public static Set<Class<?>> a = Collections.synchronizedSet(new HashSet());
+  
+  public static <T> Class<T> a(Class<?> paramClass)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
-    tcv localtcv = (tcv)tdc.a(10);
-    boolean bool;
-    if (paramList.isEmpty())
+    return paramClass;
+  }
+  
+  public static <I> I a(Class<I> paramClass)
+  {
+    if (paramClass.isInterface())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
+      ClassLoader localClassLoader = sya.class.getClassLoader();
+      syb localsyb = new syb();
+      return Proxy.newProxyInstance(localClassLoader, new Class[] { paramClass }, localsyb);
+    }
+    throw new IllegalArgumentException(paramClass.getName() + " should be an interface!", new Throwable());
+  }
+  
+  public static <T> T a(Class<T> paramClass, Object[] paramArrayOfObject)
+  {
+    Class[] arrayOfClass1 = a(paramArrayOfObject);
+    if (arrayOfClass1 == null) {}
+    Constructor localConstructor;
+    for (int j = 0;; j = arrayOfClass1.length)
+    {
+      Constructor[] arrayOfConstructor;
+      try
+      {
+        localConstructor = paramClass.getConstructor(arrayOfClass1);
       }
-      localtcv.b("key_story_msg_tab_show", Boolean.valueOf(false));
-      bool = true;
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        arrayOfConstructor = paramClass.getConstructors();
+        if (arrayOfConstructor != null) {
+          break;
+        }
+      }
+      try
+      {
+        paramArrayOfObject = paramClass.cast(localConstructor.newInstance(paramArrayOfObject));
+        return paramArrayOfObject;
+      }
+      catch (InstantiationException paramArrayOfObject)
+      {
+        int k;
+        Class[] arrayOfClass2;
+        throw new IllegalStateException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ajya.a(2131707687), paramArrayOfObject);
+      }
+      catch (IllegalAccessException paramArrayOfObject)
+      {
+        throw new IllegalStateException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ajya.a(2131707688), paramArrayOfObject);
+      }
+      catch (InvocationTargetException paramArrayOfObject)
+      {
+        throw new IllegalArgumentException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ") InvocationTargetException", paramArrayOfObject);
+      }
+    }
+    for (k = 0;; k = arrayOfConstructor.length)
+    {
+      int m = 0;
+      for (;;)
+      {
+        if (m >= k) {
+          break label494;
+        }
+        localConstructor = arrayOfConstructor[m];
+        arrayOfClass2 = localConstructor.getParameterTypes();
+        if (j == arrayOfClass2.length) {
+          break;
+        }
+        label88:
+        m += 1;
+      }
+    }
+    int i = 0;
+    label107:
+    if (i < j) {
+      if (arrayOfClass1[i] == null)
+      {
+        if (!arrayOfClass2[i].isPrimitive()) {
+          break label293;
+        }
+        i = 0;
+        if (i == 0) {
+          break label492;
+        }
+      }
     }
     for (;;)
     {
-      ((ssv)localQQAppInterface.a(98)).notifyUI(1021, true, null);
-      return bool;
-      paramList = (String)paramList.get(0);
-      if (paramList != null)
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
+        label131:
+        if (localConstructor != null) {
+          break label300;
+        }
+        throw new IllegalStateException(ajya.a(2131707686) + paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ajya.a(2131707689), localNoSuchMethodException);
+        if (arrayOfClass2[i].isPrimitive()) {
+          if (arrayOfClass1[i] == null)
+          {
+            i = 0;
+            break;
+          }
         }
         try
         {
-          paramList = new JSONObject(paramList);
-          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
-          for (bool = true;; bool = false)
-          {
-            localtcv.b("key_story_msg_tab_show", Boolean.valueOf(bool));
-            localtcv.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
-            bool = true;
-            break;
+          Class localClass = (Class)arrayOfClass1[i].getField("TYPE").get(null);
+          boolean bool = arrayOfClass2[i].equals(localClass);
+          if (!bool) {
+            i = 0;
           }
-          bool = false;
         }
-        catch (JSONException paramList)
+        catch (IllegalAccessException localIllegalAccessException)
         {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+          localIllegalAccessException.printStackTrace();
+          if (!arrayOfClass2[i].isAssignableFrom(arrayOfClass1[i])) {
+            i = 0;
+          }
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          for (;;)
+          {
+            localNoSuchFieldException.printStackTrace();
           }
         }
       }
+      label293:
+      i += 1;
+      break label107;
+      label300:
+      ved.e("NullableObjectFactoryImplement", "虽然不是直接匹配, 但是还是找到了" + paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ")的构造函数");
+      break;
+      i = 1;
+      break label131;
+      label492:
+      break label88;
+      label494:
+      localConstructor = null;
     }
   }
   
-  private boolean b(List<String> paramList)
+  public static Class<?>[] a(Object[] paramArrayOfObject)
   {
-    if (paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodePreloaderConfigCmd data is null!!!");
-      }
-      return false;
+    if (paramArrayOfObject == null) {
+      return null;
     }
-    paramList = (String)paramList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
-    }
-    try
+    Class[] arrayOfClass = new Class[paramArrayOfObject.length];
+    int i = 0;
+    if (i < paramArrayOfObject.length)
     {
-      paramList = new JSONObject(paramList);
-      int i = paramList.getInt("MsgTabPrestrainbNum");
-      paramList = paramList.getString("4G");
-      tcv localtcv = (tcv)tdc.a(10);
-      localtcv.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
-      localtcv.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
-      return true;
-    }
-    catch (JSONException paramList)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+      if (paramArrayOfObject[i] == null) {}
+      for (Class localClass = null;; localClass = paramArrayOfObject[i].getClass())
+      {
+        arrayOfClass[i] = localClass;
+        i += 1;
+        break;
       }
     }
-    return false;
-  }
-  
-  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 243: 
-      return a(paramList);
-    }
-    return b(paramList);
+    return arrayOfClass;
   }
 }
 

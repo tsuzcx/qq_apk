@@ -1,79 +1,130 @@
 import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.util.TypedValue;
-import android.view.animation.AlphaAnimation;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.GalleryPageView.3;
-import com.tencent.widget.AdapterView;
 
 public class xqa
-  extends xph
+  implements xpr
 {
-  public int a;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-  public TextView a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new GalleryPageView.3(this);
-  xpi jdField_a_of_type_Xpi;
-  private boolean jdField_a_of_type_Boolean = true;
-  public AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
+  int jdField_a_of_type_Int = 0;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  bcoo jdField_a_of_type_Bcoo;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public xqa()
+  private void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_Int = 3;
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130847644);
+      localObject1 = localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      Object localObject2;
+      label14:
+      break label14;
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);
+    }
+    this.jdField_a_of_type_Bcoo = new bcoo((Bitmap)localObject2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_Bcoo.setLevel(0);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.b) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 4))
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
+        this.jdField_a_of_type_Bcoo.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bcoo);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-  }
-  
-  public void a(Activity paramActivity, xpi paramxpi, int paramInt)
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramxpi.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramActivity);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.addRule(14, -1);
-    localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.jdField_a_of_type_Int, paramActivity.getResources().getDisplayMetrics()) + paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#e6e9e9e9"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366903);
-    localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.b.setDuration(300L);
-    this.jdField_a_of_type_Xpi = paramxpi;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new xqb(this));
-    this.b.setAnimationListener(new xqc(this));
-  }
-  
-  public void a(AdapterView paramAdapterView, int paramInt)
-  {
-    if (paramAdapterView.getCount() > 1)
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = true;
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "/" + paramAdapterView.getCount());
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 4)
+      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
-        return;
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
+        this.jdField_a_of_type_Bcoo.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bcoo);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    if ((paramInt >= 0) && (paramInt < 100))
+    {
+      this.jdField_a_of_type_Bcoo.setLevel(paramInt * 100);
+      this.jdField_a_of_type_Bcoo.invalidateSelf();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_Bcoo.a();
+  }
+  
+  public void a(Activity paramActivity, ImageView paramImageView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    a(paramActivity);
+  }
+  
+  public void a(Activity paramActivity, xpf paramxpf)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramxpf.a()).findViewById(2131372034));
+    a(paramActivity);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= 100))
+    {
+      this.jdField_a_of_type_Bcoo.setLevel(paramInt * 100);
+      this.jdField_a_of_type_Bcoo.invalidateSelf();
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = false;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    }
   }
 }
 

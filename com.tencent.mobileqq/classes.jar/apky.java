@@ -1,22 +1,72 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class apky
-  implements amgw
 {
-  public ColorNote getColorNote()
+  protected int a;
+  protected QQAppInterface a;
+  protected FileManagerEntity a;
+  protected List<apkt> a;
+  private int b;
+  
+  public apky(QQAppInterface paramQQAppInterface)
   {
-    amhc localamhc = new amhc();
-    localamhc.a(17039360);
-    String str = apvk.b(-1, "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public apim a(BaseActivity paramBaseActivity)
+  {
+    return new apkz(this, paramBaseActivity);
+  }
+  
+  public List<apkt> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a(Intent paramIntent, Activity paramActivity)
+  {
+    Object localObject = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
+    if (localObject == null) {
+      return false;
     }
-    localamhc.a(str);
-    localamhc.b("default_file");
-    localamhc.c("0MB");
-    localamhc.d("resdrawable://2130843549");
-    return localamhc.a();
+    if (paramIntent.getBooleanExtra("from_webview", false))
+    {
+      azqv localazqv = bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
+      l1 = ((ForwardFileInfo)localObject).a();
+      localObject = paramIntent.getStringExtra("sender_uin");
+      long l2 = paramIntent.getLongExtra("last_time", 0L);
+      apvm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localazqv, (String)localObject, l2, -1, 0, null, false, false);
+      paramActivity.finish();
+      return false;
+    }
+    long l1 = ((ForwardFileInfo)localObject).b();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
+    this.jdField_a_of_type_JavaUtilList.add(apkm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return true;
+    }
+    this.jdField_a_of_type_Int = 3;
+    return true;
   }
 }
 

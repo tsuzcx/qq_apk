@@ -1,16 +1,29 @@
-import java.util.Comparator;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-class awvo
-  implements Comparator<String>
+public class awvo
 {
-  awvo(awvn paramawvn) {}
+  public static final String a = ajya.a(2131702805);
+  public static final String b = ajya.a(2131702832);
+  public static final String c = ajya.a(2131702804);
+  public static final String d = ajya.a(2131702803);
   
-  public int a(String paramString1, String paramString2)
+  public static String a(long paramLong)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    long l = System.currentTimeMillis() / 1000L - paramLong;
+    if ((l >= 0L) && (l < 60L)) {
+      return a;
     }
-    return paramString2.length() - paramString1.length();
+    if ((l >= 60L) && (l < 3600L)) {
+      return l / 60L + b;
+    }
+    if ((l >= 3600L) && (l < 86400L)) {
+      return l / 3600L + c;
+    }
+    if ((l >= 86400L) && (l < 432000L)) {
+      return l / 86400L + d;
+    }
+    return new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong * 1000L));
   }
 }
 

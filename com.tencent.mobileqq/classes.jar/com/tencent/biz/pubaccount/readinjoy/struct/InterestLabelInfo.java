@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class InterestLabelInfo
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
-  @auma
+  @aumc
   public int mInterestLabelID;
   public String mInterestLabelNme;
   public boolean mIsDefault;

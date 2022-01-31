@@ -1,81 +1,99 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class qqx
-  extends ozi
+  implements qjr, qto, qtp
 {
   private qqx(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public List<qji> a(List<VideoInfo> paramList)
   {
-    VideoFeedsPlayActivity.a("handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    if (TextUtils.isEmpty(paramString1)) {}
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(a((VideoInfo)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public qqy a(VideoInfo paramVideoInfo)
+  {
+    qqy localqqy = new qqy(null);
+    qqy.a(localqqy, paramVideoInfo);
+    localqqy.jdField_b_of_type_Long = 409409L;
+    localqqy.jdField_a_of_type_Int = 0;
+    localqqy.jdField_a_of_type_JavaLangString = paramVideoInfo.c;
+    localqqy.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+    localqqy.c = paramVideoInfo.jdField_a_of_type_JavaLangString;
+    localqqy.jdField_a_of_type_Long = paramVideoInfo.jdField_b_of_type_Long;
+    return localqqy;
+  }
+  
+  public void a()
+  {
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qjo.f(false);
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qth.a(6);
+  }
+  
+  public void a(qji paramqji)
+  {
+    if ((paramqji instanceof qqy))
+    {
+      paramqji = qqy.a((qqy)paramqji);
+      if (paramqji != VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qql.a) {
+        break label54;
+      }
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qql, false);
+    }
+    label54:
+    int i;
     do
     {
       return;
-      paramString1 = VideoFeedsRecommendFragment.a(this.a).a(paramString1);
-    } while (paramString1 == null);
-    if (paramBoolean)
+      i = VideoFeedsRecommendFragment.a(this.a).c;
+      VideoFeedsRecommendFragment.a(this.a).remove(i);
+      VideoFeedsRecommendFragment.a(this.a).add(i, paramqji);
+    } while (!VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Boolean);
+    VideoFeedsRecommendFragment.a(this.a).notifyItemChanged(i);
+  }
+  
+  public void a(qji paramqji1, qji paramqji2, int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = qqy.a((qqy)VideoFeedsRecommendFragment.a(this.a).a());
+    VideoInfo localVideoInfo = VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qql.a;
+    if (VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qql.a != localObject)
     {
-      if (paramInt != 1) {
-        break label235;
+      VideoFeedsRecommendFragment.a(this.a).add(VideoFeedsRecommendFragment.a(this.a).c, localObject);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemInserted(VideoFeedsRecommendFragment.a(this.a).c);
+      if (!VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Boolean) {
+        break label231;
       }
-      paramString1.a.add(paramString2);
-      if (!paramString1.d)
-      {
-        paramString2 = new ArrayList(paramString1.a);
-        oze.a().a(this.a.getActivity(), VideoFeedsRecommendFragment.a(this.a).c(), 2, paramString1.g, paramString2);
-      }
+      localObject = VideoFeedsRecommendFragment.a(this.a);
     }
-    label134:
-    if (paramString1.e)
+    label231:
+    for (((qmp)localObject).jdField_b_of_type_Int += 1;; VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Int = 0)
     {
-      paramString2 = new bcpw(this.a.getActivity().getApplicationContext());
-      paramString2.d(2000);
-      if (!paramBoolean) {
-        break label243;
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((qmp)localObject).c += 1;
+      VideoFeedsRecommendFragment.a(this.a).scrollToPosition(VideoFeedsRecommendFragment.a(this.a).c);
+      if (paramBoolean) {
+        VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qql, false);
       }
-      paramString2.a(bcpw.a(2));
-      paramString2.c(2131692325);
-      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(this.a.getActivity().getApplicationContext(), 5.0F));
-    }
-    for (;;)
-    {
-      paramString1.e = false;
+      nol.a(null, "", "0X8009505", "0X8009505", 0, 0, "", "0", "", new qzb(null, null, localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g).a(409409).a().a(), false);
       return;
-      label235:
-      if (paramInt != 2) {
-        break label134;
-      }
-      break label134;
-      break;
-      label243:
-      paramString2.a(bcpw.a(1));
-      paramString2.c(2131692326);
-      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(this.a.getActivity().getApplicationContext(), 5.0F));
-      paramString1.d = false;
     }
   }
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
+  public void j()
   {
-    VideoFeedsPlayActivity.a("handleFavoriteStatus isSuccess = " + paramBoolean1 + ", rowkey = " + paramString + ", isFavorite = " + paramBoolean2);
-    if ((!paramBoolean1) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      return;
-      paramString = VideoFeedsRecommendFragment.a(this.a).a(paramString);
-    } while (paramString == null);
-    paramString.d = paramBoolean2;
-    paramString.a.addAll(paramArrayList);
+    VideoFeedsRecommendFragment.a(this.a).b();
   }
 }
 

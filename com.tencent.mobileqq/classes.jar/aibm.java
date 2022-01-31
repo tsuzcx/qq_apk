@@ -1,67 +1,35 @@
-import android.graphics.Color;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aibm
-  extends Animation
+  extends aibu
 {
-  private int jdField_a_of_type_Int;
-  private aibn jdField_a_of_type_Aibn;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  protected final BaseChatPie a;
   
-  public aibm(ArrayList<Integer> paramArrayList)
+  public aibm(BaseChatPie paramBaseChatPie)
   {
-    a(paramArrayList);
+    this.a = paramBaseChatPie;
   }
   
-  public int a()
+  void a(bbmf parambbmf, View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ArrayList<Integer> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
-    }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
-    }
-    for (;;)
+    if ((parambbmf != null) && (parambbmf.a() > 0))
     {
-      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
-      i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
+      if (this.a == null) {
+        break label43;
       }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Aibn == null) {
-        break;
+      if (this.a.g() < 8) {
+        a(paramView, paramInt1, paramInt2, parambbmf, paramInt3, false);
       }
-      this.jdField_a_of_type_Aibn.a(i);
-      return;
     }
+    return;
+    label43:
+    a(paramView, paramInt1, paramInt2, parambbmf, paramInt3, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aibm
  * JD-Core Version:    0.7.0.1
  */

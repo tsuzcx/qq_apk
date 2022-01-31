@@ -4,74 +4,240 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.ProtoReqManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import tencent.im.longconn.multimsg.MultiMsg.ExternMsg;
-import tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownReq;
-import tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownRsp;
-import tencent.im.longconn.multimsg.MultiMsg.ReqBody;
-import tencent.im.longconn.multimsg.MultiMsg.RspBody;
+import tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlReq;
+import tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlRsp;
+import tencent.im.cs.cmd0x388.cmd0x388.IPv6Info;
+import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
+import tencent.im.cs.cmd0x388.cmd0x388.RspBody;
 
 public class ayyi
-  extends ayxz
+  extends ayyb
 {
-  int a;
-  
-  private void a(int paramInt, ayyy paramayyy, MultiMsg.ReqBody paramReqBody)
+  void a(int paramInt, ayza paramayza, cmd0x388.ReqBody paramReqBody)
   {
-    paramayyy = (ayyt)paramayyy;
-    MultiMsg.MultiMsgApplyDownReq localMultiMsgApplyDownReq = new MultiMsg.MultiMsgApplyDownReq();
-    localMultiMsgApplyDownReq.setHasFlag(true);
-    localMultiMsgApplyDownReq.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramayyy.jdField_a_of_type_ArrayOfByte));
-    localMultiMsgApplyDownReq.uint32_msg_type.set(ayyj.b(paramayyy.f));
-    localMultiMsgApplyDownReq.uint64_src_uin.set(Long.valueOf(paramayyy.c).longValue());
-    paramReqBody.rpt_multimsg_applydown_req.add(localMultiMsgApplyDownReq);
-    if ((paramayyy.jdField_a_of_type_Int == 0) && (asuf.b)) {
-      paramReqBody.uint32_bu_type.set(2);
+    paramayza = (ayyt)paramayza;
+    cmd0x388.GetPttUrlReq localGetPttUrlReq = new cmd0x388.GetPttUrlReq();
+    localGetPttUrlReq.setHasFlag(true);
+    localGetPttUrlReq.uint64_file_id.set(paramInt);
+    localGetPttUrlReq.uint64_dst_uin.set(Long.valueOf(paramayza.c).longValue());
+    localGetPttUrlReq.uint64_group_code.set(Long.parseLong(paramayza.d));
+    localGetPttUrlReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramayza.jdField_a_of_type_ArrayOfByte));
+    if (paramayza.jdField_a_of_type_Long != 0L) {
+      localGetPttUrlReq.uint64_fileid.set(paramayza.jdField_a_of_type_Long);
+    }
+    localGetPttUrlReq.uint32_req_platform_type.set(9);
+    localGetPttUrlReq.uint32_req_term.set(5);
+    localGetPttUrlReq.uint32_inner_ip.set(0);
+    Object localObject = localGetPttUrlReq.uint32_bu_type;
+    if (paramayza.f == 1) {
+      paramInt = 3;
+    }
+    for (;;)
+    {
+      ((PBUInt32Field)localObject).set(paramInt);
+      localGetPttUrlReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(ayuk.a()));
+      localGetPttUrlReq.uint32_codec.set(paramayza.jdField_a_of_type_Int);
+      if (paramayza.jdField_a_of_type_JavaLangString != null) {}
+      try
+      {
+        localObject = paramayza.jdField_a_of_type_JavaLangString.getBytes("utf-8");
+        localGetPttUrlReq.bytes_file_key.set(ByteStringMicro.copyFrom((byte[])localObject));
+        label207:
+        localGetPttUrlReq.uint32_is_auto.set(paramayza.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.richmedia.GroupPttDownHandler", 2, "constructReqBody GroupPttDownReq = " + paramayza.toString());
+        }
+        paramReqBody.rpt_msg_getptt_url_req.add(localGetPttUrlReq);
+        return;
+        paramInt = 4;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        break label207;
+      }
     }
   }
   
-  private byte[] a(List<ayyy> paramList)
+  public void a(aytl paramaytl, aytk paramaytk)
   {
-    int i = aysy.a().a();
-    this.jdField_a_of_type_Int = i;
-    switch (i)
+    FromServiceMsg localFromServiceMsg = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    byte[] arrayOfByte = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
+    ayyp localayyp = (ayyp)paramaytk.jdField_a_of_type_JavaLangObject;
+    ayze localayze = localayyp.jdField_a_of_type_Ayze;
+    akau localakau = paramaytl.jdField_a_of_type_Akau;
+    int i;
+    if (localFromServiceMsg.getResultCode() != 1000)
     {
-    default: 
-      i = 255;
+      i = localFromServiceMsg.getResultCode();
+      if ((i == 1002) || (i == 1013))
+      {
+        localObject1 = MessageHandler.a(localFromServiceMsg);
+        paramaytk = localFromServiceMsg.getBusinessFailMsg();
+        paramaytl = paramaytk;
+        if (paramaytk == null) {
+          paramaytl = "";
+        }
+        a(-1, 9311, (String)localObject1, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
+      }
+      for (;;)
+      {
+        ayzv.a(localayyp, localayze);
+        return;
+        localObject1 = MessageHandler.a(localFromServiceMsg);
+        paramaytk = localFromServiceMsg.getBusinessFailMsg();
+        paramaytl = paramaytk;
+        if (paramaytk == null) {
+          paramaytl = "";
+        }
+        a(-1, 9044, (String)localObject1, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
+      }
     }
-    Object localObject;
     for (;;)
     {
-      localObject = aysy.a().a();
+      try
+      {
+        Iterator localIterator = ((cmd0x388.RspBody)new cmd0x388.RspBody().mergeFrom(arrayOfByte)).rpt_msg_getptt_url_rsp.get().iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramaytl = (cmd0x388.GetPttUrlRsp)localIterator.next();
+      }
+      catch (Exception paramaytl)
+      {
+        a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakau, localayze.jdField_a_of_type_JavaUtilList);
+      }
+      try
+      {
+        localObject1 = (ayzk)localayze.jdField_a_of_type_JavaUtilList.get((int)paramaytl.uint64_file_id.get());
+        if ((localObject1 != null) && (localFromServiceMsg != null)) {}
+        try
+        {
+          ((ayzk)localObject1).d = ((Boolean)localFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
+          if (QLog.isColorLevel()) {
+            QLog.e("http_sideway", 2, "GroupPttDownHandler.onProtoResp:isSendByQuickHttp=" + ((ayzk)localObject1).d);
+          }
+          i = paramaytl.uint32_result.get();
+          if (i != 0) {
+            break label714;
+          }
+          ((ayzk)localObject1).jdField_a_of_type_JavaLangString = paramaytl.bytes_down_para.get().toStringUtf8();
+          List localList = paramaytl.rpt_uint32_down_ip.get();
+          Object localObject2 = paramaytl.rpt_uint32_down_port.get();
+          i = 0;
+          if (i < localList.size())
+          {
+            ayuq localayuq = new ayuq();
+            localayuq.jdField_a_of_type_JavaLangString = bbmx.a(((Integer)localList.get(i)).intValue() & 0xFFFFFFFF);
+            localayuq.jdField_a_of_type_Int = ((Integer)((List)localObject2).get(i)).intValue();
+            ((ayzk)localObject1).jdField_a_of_type_JavaUtilArrayList.add(i, localayuq);
+            i += 1;
+            continue;
+          }
+          if ((paramaytl.rpt_msg_down_ip6.has()) && (paramaytl.rpt_msg_down_ip6.size() > 0))
+          {
+            localList = paramaytl.rpt_msg_down_ip6.get();
+            i = 0;
+            if (i < localList.size())
+            {
+              localObject2 = new ayuq();
+              ((ayuq)localObject2).jdField_a_of_type_JavaLangString = Inet6Address.getByAddress(((cmd0x388.IPv6Info)localList.get(i)).bytes_ip6.get().toByteArray()).getHostAddress();
+              ((ayuq)localObject2).jdField_a_of_type_Int = ((cmd0x388.IPv6Info)localList.get(i)).uint32_port.get();
+              ((ayuq)localObject2).jdField_a_of_type_Boolean = true;
+              ((ayzk)localObject1).jdField_b_of_type_JavaUtilArrayList.add(i, localObject2);
+              i += 1;
+              continue;
+            }
+          }
+          if (paramaytl.rpt_str_domain.has()) {
+            ((ayzk)localObject1).jdField_b_of_type_JavaLangString = paramaytl.rpt_str_domain.get();
+          }
+          a(0, 0, "", "", localakau, (ayzr)localObject1);
+        }
+        catch (Exception paramaytl) {}
+      }
+      catch (Exception paramaytl)
+      {
+        localObject1 = null;
+        continue;
+      }
+      a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakau, (ayzr)localObject1);
+      continue;
+      break;
+      label714:
+      if (paramaytl.uint32_allow_retry.get() == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.richmedia.BaseHandler", 2, "onProtoResp :group ptt server not allow retry");
+        }
+        ((ayzk)localObject1).e = false;
+      }
+      if (ayyh.a(i))
+      {
+        this.b += 1;
+        if (this.b < 2)
+        {
+          localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramaytk);
+          return;
+        }
+      }
+      a(-1, -9527, aypb.a(i), "", localakau, (ayzr)localObject1);
+    }
+  }
+  
+  public void a(ayyp paramayyp)
+  {
+    if ((paramayyp != null) && (paramayyp.jdField_a_of_type_JavaUtilList != null) && (paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      aytk localaytk = new aytk();
+      localaytk.jdField_a_of_type_JavaLangString = "PttStore.GroupPttDown";
+      localaytk.jdField_a_of_type_ArrayOfByte = a(paramayyp.jdField_a_of_type_JavaUtilList);
+      localaytk.jdField_a_of_type_JavaLangObject = paramayyp;
+      localaytk.jdField_a_of_type_Aytj = this;
+      a(paramayyp, localaytk);
+    }
+  }
+  
+  byte[] a(List<ayza> paramList)
+  {
+    cmd0x388.ReqBody localReqBody = new cmd0x388.ReqBody();
+    localReqBody.setHasFlag(true);
+    localReqBody.uint32_subcmd.set(4);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      a(i, (ayza)paramList.get(i), localReqBody);
+      i += 1;
+    }
+    switch (ayta.a().a())
+    {
+    default: 
+      i = 6;
+    }
+    for (;;)
+    {
+      paramList = ayta.a().a();
       int j = i;
-      if (localObject != null)
+      if (paramList != null)
       {
         j = i;
-        if (((String)localObject).contains("wap")) {
+        if (paramList.contains("wap")) {
           j = 5;
         }
       }
-      localObject = new MultiMsg.ReqBody();
-      ((MultiMsg.ReqBody)localObject).setHasFlag(true);
-      ((MultiMsg.ReqBody)localObject).uint32_subcmd.set(2);
-      ((MultiMsg.ReqBody)localObject).uint32_term_type.set(5);
-      ((MultiMsg.ReqBody)localObject).uint32_platform_type.set(9);
-      ((MultiMsg.ReqBody)localObject).uint32_net_type.set(j);
-      ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(ayui.a()));
-      ((MultiMsg.ReqBody)localObject).uint32_req_channel_type.set(2);
-      i = 0;
-      while (i < paramList.size())
-      {
-        a(i, (ayyy)paramList.get(i), (MultiMsg.ReqBody)localObject);
-        i += 1;
-      }
+      localReqBody.uint32_net_type.set(j);
+      return localReqBody.toByteArray();
       i = 3;
       continue;
       i = 6;
@@ -80,182 +246,17 @@ public class ayyi
       continue;
       i = 8;
     }
-    return ((MultiMsg.ReqBody)localObject).toByteArray();
   }
   
-  public void a(aytj paramaytj, ayti paramayti)
+  void b(ayyp paramayyp)
   {
-    localObject1 = paramaytj.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = paramaytj.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    ayyn localayyn = (ayyn)paramayti.jdField_a_of_type_JavaLangObject;
-    ayzc localayzc = localayyn.jdField_a_of_type_Ayzc;
-    akaw localakaw = paramaytj.jdField_a_of_type_Akaw;
-    if (((FromServiceMsg)localObject1).getResultCode() != 1000)
-    {
-      i = ((FromServiceMsg)localObject1).getResultCode();
-      if ((i == 1002) || (i == 1013)) {
-        a(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localakaw, localayzc.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    List localList;
-    for (;;)
-    {
-      ayzt.a(localayyn, localayzc);
-      return;
-      a(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localakaw, localayzc.jdField_a_of_type_JavaUtilList);
-      continue;
-      try
-      {
-        localList = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte)).rpt_multimsg_applydown_rsp.get();
-        if ((localList != null) && (localList.size() != 0)) {
-          break;
-        }
-        throw new Exception("resps null");
-      }
-      catch (Exception paramaytj)
-      {
-        a(-1, -9527, ayoz.a("P", -9529L), paramaytj.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakaw, localayzc.jdField_a_of_type_JavaUtilList);
-      }
-    }
+    ayze localayze = paramayyp.jdField_a_of_type_Ayze;
+    localayze.jdField_a_of_type_JavaUtilList.clear();
     int i = 0;
-    label231:
-    Object localObject2;
-    if (i < localList.size()) {
-      localObject2 = (MultiMsg.MultiMsgApplyDownRsp)localList.get(i);
-    }
-    try
+    while (i < paramayyp.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject1 = (ayzl)localayzc.jdField_a_of_type_JavaUtilList.get(i);
-      try
-      {
-        j = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).uint32_result.get();
-        if (j != 0) {
-          break label891;
-        }
-        if (((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_thumb_down_para.has()) {
-          break label367;
-        }
-        throw new Exception("bytes_thumb_down_para NOT exists");
-      }
-      catch (Exception paramaytj) {}
-    }
-    catch (Exception paramaytj)
-    {
-      for (;;)
-      {
-        int j;
-        localObject1 = null;
-      }
-    }
-    a(-1, -9527, ayoz.a("P", -9529L), paramaytj.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localakaw, (ayzp)localObject1);
-    for (;;)
-    {
-      i += 1;
-      break label231;
-      break;
-      label367:
-      paramaytj = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_thumb_down_para.get();
-      if (paramaytj == null) {}
-      for (paramaytj = null; (paramaytj == null) || (paramaytj.equals("")); paramaytj = paramaytj.toStringUtf8()) {
-        throw new Exception("urlParam == null || empty");
-      }
-      if (!((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_resid.has()) {
-        throw new Exception("bytes_msg_resid NOT exists");
-      }
-      Object localObject3 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_resid.get().toByteArray();
-      if ((localObject3 == null) || (localObject3.length <= 0)) {
-        throw new Exception("resid_bs == null || empty");
-      }
-      if (!((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_key.has()) {
-        throw new Exception("bytes_msg_key NOT exists");
-      }
-      Object localObject4 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).bytes_msg_key.get().toByteArray();
-      if ((localObject4 == null) || (localObject4.length <= 0)) {
-        throw new Exception("ukey_bs == null || empty");
-      }
-      j = 0;
-      if (((MultiMsg.MultiMsgApplyDownRsp)localObject2).msg_extern_info.has()) {
-        j = ((MultiMsg.ExternMsg)((MultiMsg.MultiMsgApplyDownRsp)localObject2).msg_extern_info.get()).uint32_channel_type.get();
-      }
-      ((ayzl)localObject1).jdField_a_of_type_Int = j;
-      ((ayzl)localObject1).jdField_a_of_type_JavaLangString = paramaytj;
-      ((ayzl)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
-      ((ayzl)localObject1).jdField_b_of_type_ArrayOfByte = ((byte[])localObject4);
-      paramaytj = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_uint32_down_ip.get();
-      localObject3 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_uint32_down_port.get();
-      if ((paramaytj == null) || (paramaytj.size() == 0)) {
-        throw new Exception("check iplist");
-      }
-      if ((paramaytj != null) && (paramaytj.size() > 0))
-      {
-        j = 0;
-        while (j < paramaytj.size())
-        {
-          long l1 = ((Integer)paramaytj.get(j)).intValue();
-          long l2 = ((Integer)((List)localObject3).get(j)).intValue();
-          localObject4 = new ayuo();
-          ((ayuo)localObject4).jdField_a_of_type_JavaLangString = bbmj.a(l1 & 0xFFFFFFFF);
-          ((ayuo)localObject4).jdField_a_of_type_Int = ((int)l2);
-          ((ayzl)localObject1).jdField_a_of_type_JavaUtilArrayList.add(j, localObject4);
-          j += 1;
-        }
-      }
-      paramaytj = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_bytes_down_ip_v6.get();
-      localObject2 = ((MultiMsg.MultiMsgApplyDownRsp)localObject2).rpt_uint32_down_v6_port.get();
-      if ((paramaytj != null) && (paramaytj.size() > 0))
-      {
-        j = 0;
-        while (j < paramaytj.size())
-        {
-          localObject3 = new ayuo();
-          ((ayuo)localObject3).jdField_a_of_type_JavaLangString = Inet6Address.getByAddress(((ByteStringMicro)paramaytj.get(j)).toByteArray()).getHostAddress();
-          ((ayuo)localObject3).jdField_a_of_type_Int = ((int)((Integer)((List)localObject2).get(j)).intValue());
-          ((ayuo)localObject3).jdField_a_of_type_Boolean = true;
-          ((ayzl)localObject1).jdField_b_of_type_JavaUtilArrayList.add(j, localObject3);
-          j += 1;
-        }
-      }
-      a(0, 0, "", "", localakaw, (ayzp)localObject1);
-      continue;
-      label891:
-      if (j == 196) {
-        axqw.b(null, "CliOper", "", "", "0X8006627", "0X8006627", 0, 1, 0, "", "", "", "");
-      }
-      if (ayyf.a(j))
-      {
-        this.b += 1;
-        if (this.b < 2)
-        {
-          localayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(paramayti);
-          return;
-        }
-      }
-      a(-1, -9527, ayoz.a(j), "", localakaw, (ayzp)localObject1);
-    }
-  }
-  
-  public void a(ayyn paramayyn)
-  {
-    if ((paramayyn != null) && (paramayyn.jdField_a_of_type_JavaUtilList != null) && (paramayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      ayti localayti = new ayti();
-      localayti.jdField_a_of_type_JavaLangString = "MultiMsg.ApplyDown";
-      localayti.jdField_a_of_type_ArrayOfByte = a(paramayyn.jdField_a_of_type_JavaUtilList);
-      localayti.jdField_a_of_type_JavaLangObject = paramayyn;
-      localayti.jdField_a_of_type_Ayth = this;
-      a(paramayyn, localayti);
-    }
-  }
-  
-  void b(ayyn paramayyn)
-  {
-    ayzc localayzc = paramayyn.jdField_a_of_type_Ayzc;
-    localayzc.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < paramayyn.jdField_a_of_type_JavaUtilList.size())
-    {
-      ayzl localayzl = new ayzl();
-      localayzc.jdField_a_of_type_JavaUtilList.add(i, localayzl);
+      ayzk localayzk = new ayzk();
+      localayze.jdField_a_of_type_JavaUtilList.add(i, localayzk);
       i += 1;
     }
   }

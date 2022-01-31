@@ -1,17 +1,20 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class adby
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
+  public adby(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public adby(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "ResultBean{rtext='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isFinish=" + this.jdField_a_of_type_Boolean + '}';
+    if ((VoiceTextEditPanel.a(this.a).get() == 1) || (VoiceTextEditPanel.a(this.a).get() == 3)) {
+      bcql.a(this.a.getContext(), ajya.a(2131716867), 0).b(this.a.getContext().getResources().getDimensionPixelSize(2131298865));
+    }
   }
 }
 

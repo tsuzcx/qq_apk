@@ -1,19 +1,21 @@
-import android.support.annotation.Nullable;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 class swd
+  implements xhe
 {
-  private WeakReference<swc> a;
+  swd(swc paramswc, xhf paramxhf, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public swd(swc paramswc)
+  public void a(xhf paramxhf)
   {
-    this.a = new WeakReference(paramswc);
+    this.jdField_a_of_type_Xhf.a(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = 60000;
+    swc.a(this.jdField_a_of_type_Swc, "convertImageToVideo ");
   }
   
-  @Nullable
-  public swc a()
+  public void b(xhf paramxhf)
   {
-    return (swc)this.a.get();
+    this.jdField_a_of_type_Xhf.a(paramxhf.a());
+    swc.a(this.jdField_a_of_type_Swc, "convertImageToVideo ");
   }
 }
 

@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class aomk
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
   public aomk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

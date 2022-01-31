@@ -1,27 +1,15 @@
-import android.animation.AnimatorSet;
-import android.graphics.Rect;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.HashMap;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class ambq
+  implements TypeEvaluator<ambo>
 {
-  public long a;
-  public AnimatorSet a;
-  public Rect a;
-  public View a;
-  public ImageView a;
-  public MessageRecord a;
-  public HashMap<String, amcd> a;
-  public long b;
-  public Rect b;
-  public MessageRecord b;
+  public ambq(ambi paramambi) {}
   
-  public ambq()
+  public ambo a(float paramFloat, ambo paramambo1, ambo paramambo2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+    return paramambo2;
   }
 }
 

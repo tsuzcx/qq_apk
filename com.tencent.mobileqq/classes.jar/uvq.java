@@ -1,38 +1,22 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import java.util.Comparator;
 
-class uvq
-  implements upa
+public class uvq
+  implements Comparator<uvp>
 {
-  uvq(uvp paramuvp, JobContext paramJobContext, uvr paramuvr) {}
-  
-  public void a(upb paramupb)
+  public int a(uvp paramuvp1, uvp paramuvp2)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      veg.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_Uvr });
-      return;
+    if (paramuvp1.a == paramuvp2.a) {
+      if (!paramuvp1.b) {}
     }
-    uvp.a(this.jdField_a_of_type_Uvp);
-    veg.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(uvp.b(this.jdField_a_of_type_Uvp)), paramupb);
-    if (paramupb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    while (paramuvp1.a > paramuvp2.a)
     {
-      uvp.a(this.jdField_a_of_type_Uvp).addAll(paramupb.jdField_a_of_type_JavaUtilList);
-      if ((!paramupb.jdField_a_of_type_Boolean) && (uvp.b(this.jdField_a_of_type_Uvp) < 10))
-      {
-        veg.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(uvp.b(this.jdField_a_of_type_Uvp)));
-        uvp.a(this.jdField_a_of_type_Uvp).c();
-        return;
+      return -1;
+      if (paramuvp2.b) {
+        return 1;
       }
-      paramupb.jdField_a_of_type_JavaUtilList = uvp.a(this.jdField_a_of_type_Uvp);
-      veg.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(uvp.a(this.jdField_a_of_type_Uvp).size()));
-      uvp.a(this.jdField_a_of_type_Uvp, paramupb);
-      return;
+      return 0;
     }
-    paramupb.jdField_a_of_type_JavaUtilList = uvp.a(this.jdField_a_of_type_Uvp);
-    veg.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(uvp.a(this.jdField_a_of_type_Uvp).size()));
-    uvp.b(this.jdField_a_of_type_Uvp, paramupb);
+    return 1;
   }
 }
 

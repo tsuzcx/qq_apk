@@ -1,64 +1,26 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.DownloadListener;
 
-public class bcba
-  extends WebViewPlugin
+class bcba
+  implements DownloadListener
 {
-  public bcba()
-  {
-    this.mPluginNameSpace = "forceHttps";
-  }
+  bcba(bcaz parambcaz) {}
   
-  private boolean a(String paramString)
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    boolean bool2 = false;
-    mvv localmvv = mvv.a();
-    boolean bool1 = bool2;
-    if (localmvv.e(paramString))
-    {
-      bool1 = bool2;
-      if (!localmvv.f(paramString)) {
-        bool1 = true;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "start UniformDownloadActivity");
     }
-    return bool1;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    if (!mvv.a().d()) {
-      return false;
-    }
-    if (("http".equals(paramString2)) && (a(paramString1)))
-    {
-      paramString2 = this.mRuntime.a();
-      if ((paramString2 != null) && (paramString2.a != null)) {
-        paramString2.a.C = true;
-      }
-      paramString2 = "https" + paramString1.substring("http".length());
-      CustomWebView localCustomWebView = this.mRuntime.a();
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("need switch url=").append(nax.b(paramString1, new String[0]));
-        if (localCustomWebView != null) {
-          break label155;
-        }
-      }
-      label155:
-      for (paramString1 = ", view==null";; paramString1 = "")
-      {
-        QLog.i("forceHttps", 2, paramString1);
-        if (localCustomWebView == null) {
-          break;
-        }
-        localCustomWebView.loadUrl(paramString2);
-        return true;
-      }
-    }
-    return false;
+    String str = this.a.mWebview.getUrl();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("_filesize", paramLong);
+    localBundle.putString("param_user_agent", paramString2);
+    localBundle.putString("param_content_des", paramString3);
+    localBundle.putString("param_mime_type", paramString4);
+    localBundle.putString("param_refer_url", str);
+    aoyd.a(this.a.mInActivity, paramString1, localBundle);
   }
 }
 

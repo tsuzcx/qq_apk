@@ -1,132 +1,75 @@
-import android.os.AsyncTask;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
 
 public class abzl
-  extends AsyncTask<Void, Void, Void>
+  extends bbri
 {
-  WeakReference<RegisterVerifyCodeActivity> a = null;
+  public abzl(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public abzl(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity)
+  protected void handlePendantAuth(boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramRegisterVerifyCodeActivity);
-  }
-  
-  protected Void a(Void... paramVarArgs)
-  {
-    boolean bool3 = true;
-    File localFile = new File(BaseApplication.getContext().getFilesDir(), "RegDevLockCfg.xml");
-    if (!HttpDownloadUtil.a(null, "http://dldir1.qq.com/qqfile/qd/RegDevLockCfg.xml?mType=ConfigCheck", localFile))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterVerifyCodeActivity", 2, "download cfg file failed.");
-      }
-      return null;
+    paramObject = (Bundle)paramObject;
+    long l = paramObject.getLong("pendantId");
+    String str = paramObject.getString("uin");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
     }
-    paramVarArgs = DocumentBuilderFactory.newInstance();
-    label524:
-    label530:
-    label536:
-    label542:
-    label547:
-    label553:
-    label558:
-    label563:
+    if ((l == -1L) || (str == null)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      ajxl localajxl = (ajxl)this.a.app.getManager(51);
+      ExtensionInfo localExtensionInfo = localajxl.a(str);
+      paramObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        paramObject = new ExtensionInfo();
+        paramObject.uin = str;
+      }
+      paramObject.pendantId = l;
+      paramObject.timestamp = System.currentTimeMillis();
+      localajxl.a(paramObject);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        bcql.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      this.a.finish();
+      return;
+    }
+    int i = paramObject.getInt("result");
+    if (bbfj.d(this.a))
+    {
+      paramObject = "4";
+      switch (i)
+      {
+      default: 
+        label225:
+        i = -1;
+      }
+    }
     for (;;)
     {
-      try
-      {
-        localObject3 = paramVarArgs.newDocumentBuilder().parse(localFile).getDocumentElement();
-        paramVarArgs = ((Element)localObject3).getElementsByTagName("Enable");
-        if (paramVarArgs.getLength() <= 0) {
-          break label553;
-        }
-        if (Integer.parseInt(((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
-        {
-          bool1 = true;
-          break label558;
-          paramVarArgs = ((Element)localObject3).getElementsByTagName("EnableVersion");
-          if (paramVarArgs.getLength() <= 0) {
-            break label547;
-          }
-          paramVarArgs = ((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue();
-          localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxDefStatus");
-          if (((NodeList)localObject1).getLength() <= 0) {
-            break label542;
-          }
-          if (Integer.parseInt(((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
-          {
-            bool1 = bool3;
-            break label563;
-            localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxWording");
-            if (((NodeList)localObject1).getLength() <= 0) {
-              break label536;
-            }
-            localObject1 = ((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue();
-            localObject2 = ((Element)localObject3).getElementsByTagName("CheckBoxHighlightWording");
-            if (((NodeList)localObject2).getLength() <= 0) {
-              break label530;
-            }
-            localObject2 = ((Text)((Element)((NodeList)localObject2).item(0)).getChildNodes().item(0)).getNodeValue();
-            localObject3 = ((Element)localObject3).getElementsByTagName("IntroductionURL");
-            if (((NodeList)localObject3).getLength() <= 0) {
-              break label524;
-            }
-            localObject3 = ((Text)((Element)((NodeList)localObject3).item(0)).getChildNodes().item(0)).getNodeValue();
-            Bundle localBundle = new Bundle();
-            localBundle.putBoolean("visibility", bool2);
-            localBundle.putString("enableVersion", paramVarArgs);
-            localBundle.putBoolean("checked", bool1);
-            localBundle.putString("openDevLockText", (String)localObject1);
-            localBundle.putString("openDevLockHelpText", (String)localObject2);
-            localBundle.putString("openDevLockHelpURL", (String)localObject3);
-            paramVarArgs = (RegisterVerifyCodeActivity)this.a.get();
-            return null;
-          }
-        }
-        else
-        {
-          bool1 = false;
-          break label558;
-        }
-        bool1 = false;
+      if ((i != -1) && (QLog.isColorLevel())) {
+        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
       }
-      catch (Exception paramVarArgs)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RegisterVerifyCodeActivity", 2, "parse cfg file failed.");
-        }
-        paramVarArgs.printStackTrace();
-        return null;
-      }
-      finally
-      {
-        localFile.delete();
-      }
-      Object localObject3 = null;
+      bcql.a(this.a.app.getApp(), 1, ajya.a(2131713454), 0).a();
+      break;
+      paramObject = "3";
+      break label225;
+      i = 2131717418;
       continue;
-      Object localObject2 = null;
+      paramObject = "0";
+      i = 2131717419;
       continue;
-      Object localObject1 = null;
+      paramObject = "1";
+      i = 2131717420;
       continue;
-      boolean bool1 = false;
-      continue;
-      paramVarArgs = "";
-      continue;
-      boolean bool2 = false;
-      continue;
-      bool2 = bool1;
+      paramObject = "2";
+      i = -1;
     }
   }
 }

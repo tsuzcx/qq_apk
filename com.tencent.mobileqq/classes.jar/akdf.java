@@ -1,13 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-class akdf
-  implements FileFilter
+public class akdf
+  extends RecyclablePool.Recyclable
 {
-  public boolean accept(File paramFile)
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
+  public long d;
+  
+  public void recycle()
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    super.recycle();
   }
 }
 

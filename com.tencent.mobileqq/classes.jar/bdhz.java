@@ -1,260 +1,247 @@
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import java.io.PrintStream;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appstore.report.AppCenterReporter.1;
+import com.tencent.open.appstore.report.AppCenterReporter.2;
+import com.tencent.open.appstore.report.AppCenterReporter.3;
+import com.tencent.open.appstore.report.AppCenterReporter.4;
+import com.tencent.open.appstore.report.AppCenterReporter.5;
+import com.tencent.open.appstore.report.AppCenterReporter.6;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.replacemonitor.MonitorStep;
+import com.tencent.replacemonitor.MonitorTask;
+import com.tencent.replacemonitor.replace.ReplaceMonitor;
+import com.tencent.tmassistant.st.SDKReportManager2;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bdhz
 {
-  public static int a(String paramString)
+  private static MonitorTask a(DownloadInfo paramDownloadInfo)
   {
-    int j = 0;
-    if (paramString == null) {
-      return 0;
-    }
-    int i = 0;
-    if (j < paramString.length())
+    MonitorTask localMonitorTask = new MonitorTask();
+    localMonitorTask.appName = paramDownloadInfo.f;
+    localMonitorTask.packageName = paramDownloadInfo.e;
+    localMonitorTask.versionCode = paramDownloadInfo.jdField_b_of_type_Int;
+    localMonitorTask.fileMd5 = paramDownloadInfo.p;
+    try
     {
-      if (a(paramString.charAt(j))) {
-        i += 2;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i += 1;
-      }
+      localMonitorTask.yybApkId = Long.parseLong(paramDownloadInfo.k);
+      localMonitorTask.yybAppId = Long.parseLong(paramDownloadInfo.c);
+      label62:
+      localMonitorTask.downloadUrl = paramDownloadInfo.d;
+      localMonitorTask.additionalId = paramDownloadInfo.jdField_b_of_type_JavaLangString;
+      localMonitorTask.filePath = paramDownloadInfo.l;
+      localMonitorTask.traceId = paramDownloadInfo.x;
+      localMonitorTask.externalParams = new HashMap();
+      localMonitorTask.externalParams.put("via", paramDownloadInfo.h);
+      return localMonitorTask;
     }
-    return i;
+    catch (Throwable localThrowable)
+    {
+      break label62;
+    }
   }
   
-  public static String a(String paramString)
+  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (paramString == null) {
+    return bdic.a().i(paramString5).k(paramString1).j(paramString2).l(paramString3).m(paramString4).b();
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    bdii.b("AppCenterReporter", "[report] type=" + paramInt + "\ndata=" + paramString);
+    SDKReportManager2.getInstance().postReport(paramInt, paramString);
+  }
+  
+  public static void a(bdic parambdic)
+  {
+    parambdic = parambdic.a();
+    bdii.b("AppCenterReporter", "[reportExposure] type=3002\ndata=" + parambdic);
+    SDKReportManager2.getInstance().postReport(3002, parambdic);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.excute(new AppCenterReporter.1(paramDownloadInfo), 16, null, true);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    ThreadManager.excute(new AppCenterReporter.5(paramDownloadInfo, paramInt), 16, null, true);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt, String paramString)
+  {
+    ThreadManager.excute(new AppCenterReporter.3(paramDownloadInfo, paramInt, paramString), 16, null, true);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5);
+    bdii.b("AppCenterReporter", "[reportNormalExposure] type=3001\ndata=" + paramString1);
+    SDKReportManager2.getInstance().postReport(3001, paramString1);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    bdii.b("AppCenterReporter", ">notifyInstallFinish " + paramString + "|" + paramBoolean);
+    ThreadManager.excute(new AppCenterReporter.6(paramString, paramBoolean), 16, null, true);
+  }
+  
+  private static long b(String paramString)
+  {
+    if (aney.a(paramString, bcyb.a().a())) {}
+    try
+    {
+      long l = new File(GlobalUtil.getInstance().getContext().getPackageManager().getPackageInfo(paramString, 0).applicationInfo.sourceDir).length();
+      return l;
+    }
+    catch (Throwable paramString)
+    {
+      label77:
+      break label77;
+    }
+    bdii.b("AppCenterReporter", "[getInstalledAppFileSize]" + paramString + ": NOT INSTALLED!");
+    return 0L;
+  }
+  
+  public static void b(bdic parambdic)
+  {
+    parambdic = parambdic.a();
+    bdii.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + parambdic);
+    SDKReportManager2.getInstance().postReport(3003, parambdic);
+  }
+  
+  public static void b(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.excute(new AppCenterReporter.2(paramDownloadInfo), 16, null, true);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5) + "|" + bdic.a().d() + "|" + "200";
+    bdii.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + paramString1);
+    SDKReportManager2.getInstance().postReport(3003, paramString1);
+  }
+  
+  private static String c(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
       return "";
     }
-    return paramString.replace("\\n", "\n").replace("&#92;", "\\").replace("&#39;", "'").replace("&quot;", "\"").replace("&gt;", ">").replace("&lt;", "<");
+    return bdic.a().i(paramDownloadInfo.o).k(paramDownloadInfo.t).j(paramDownloadInfo.u).l(paramDownloadInfo.v).m(paramDownloadInfo.h).b();
   }
   
-  public static String a(String paramString, int paramInt)
+  public static void c(DownloadInfo paramDownloadInfo)
   {
-    if (paramString == null) {
+    g(paramDownloadInfo);
+    ThreadManager.excute(new AppCenterReporter.4(paramDownloadInfo), 16, null, true);
+  }
+  
+  private static String d(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    CharBuffer localCharBuffer = Charset.forName("UTF-16").decode(Charset.forName("UTF-16").encode(paramString));
-    int k = localCharBuffer.length();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    if (paramInt < k)
-    {
-      if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
-      {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
-      }
-      for (;;)
-      {
-        j = a(paramString);
-        if (i < j) {
-          break label139;
-        }
-        i -= j;
-        localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
-      }
-      label139:
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      localStringBuilder.append("…");
-    }
-    return localStringBuilder.toString();
+    return bdic.a().a(paramDownloadInfo.f).b(paramDownloadInfo.e).a(paramDownloadInfo.jdField_b_of_type_Int).c(paramDownloadInfo.c).d(paramDownloadInfo.k).e(paramDownloadInfo.r).f(paramDownloadInfo.s).g(paramDownloadInfo.d).h(paramDownloadInfo.q).c();
   }
   
-  public static final String a(String paramString1, int paramInt, String paramString2, String paramString3)
+  public static void d(DownloadInfo paramDownloadInfo)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramString2 = "";
-      return paramString2;
+    bdii.b("AppCenterReporter", ">tryInitMonitorTask info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
+      return;
     }
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (String str = paramString2;; str = "UTF-8")
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    bdii.b("AppCenterReporter", ">tryInitMonitorTask info=" + paramDownloadInfo);
+    if (localMonitorTask == null) {}
+    for (paramDownloadInfo = a(paramDownloadInfo);; paramDownloadInfo = localMonitorTask)
     {
-      paramString2 = paramString1;
-      for (;;)
-      {
-        int j;
-        int k;
-        try
-        {
-          if (paramString1.getBytes(str).length <= paramInt) {
-            break;
-          }
-          j = 0;
-          paramString2 = paramString1;
-          if (i >= paramString1.length()) {
-            break;
-          }
-          k = paramString1.substring(i, i + 1).getBytes(str).length;
-          if (j + k > paramInt)
-          {
-            paramString2 = paramString1.substring(0, i);
-            paramString1 = paramString2;
-            paramString2 = paramString1;
-          }
-        }
-        catch (Exception paramString2) {}
-        try
-        {
-          if (!TextUtils.isEmpty(paramString3)) {
-            paramString2 = paramString1 + paramString3;
-          }
-          return paramString2;
-        }
-        catch (Exception paramString2)
-        {
-          break label136;
-        }
-        j += k;
-        i += 1;
+      ReplaceMonitor.get().addTask(paramDownloadInfo);
+      return;
+      if (TextUtils.isEmpty(localMonitorTask.filePath)) {
+        localMonitorTask.filePath = paramDownloadInfo.l;
       }
-      label136:
-      System.out.println("StructMsg sSubString error : " + paramString2.getMessage());
-      return paramString1;
+      bdii.b("AppCenterReporter", ">tryInitMonitorTask 已有task2:" + localMonitorTask);
     }
   }
   
-  public static String a(String paramString, int paramInt, boolean paramBoolean)
+  public static void e(DownloadInfo paramDownloadInfo)
   {
-    if (paramString == null) {
-      return "";
+    bdii.b("AppCenterReporter", ">downloadSuccCheck info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
+      return;
     }
-    if (!paramBoolean) {
-      return a(paramString, paramInt);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    CharBuffer localCharBuffer = Charset.forName("UTF-16").decode(Charset.forName("UTF-16").encode(paramString));
-    int k = localCharBuffer.length();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    if (paramInt < k)
+    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask1;
+    if (localMonitorTask2 == null)
     {
-      if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
-      {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
-      }
-      for (;;)
-      {
-        j = a(paramString);
-        if (i < j) {
-          break label154;
-        }
-        i -= j;
-        localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
-      }
-      label154:
-      localStringBuilder.append("…");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    CharBuffer localCharBuffer = Charset.forName("UTF-16").decode(Charset.forName("UTF-16").encode(paramString));
-    int k = localCharBuffer.length();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    if (paramInt < k)
-    {
-      if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
-      {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
-      }
-      for (;;)
-      {
-        j = a(paramString);
-        if (i < j) {
-          break label148;
-        }
-        i -= j;
-        localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
-      }
-      label148:
-      if ((!paramBoolean1) || (paramBoolean2)) {
-        break label188;
-      }
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      localStringBuilder.append("…");
+      localMonitorTask1 = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask(localMonitorTask1);
     }
     for (;;)
     {
-      return localStringBuilder.toString();
-      label188:
-      if ((paramBoolean1) && (paramBoolean2)) {
-        localStringBuilder.append("…");
+      bdii.b("AppCenterReporter", ">downloadSuccCheck task:" + localMonitorTask1);
+      if (localMonitorTask1 == null) {
+        break;
       }
-    }
-  }
-  
-  protected static boolean a(char paramChar)
-  {
-    return (paramChar >= 'ÿ') || (paramChar < 0);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (paramString == null) || (paramString.trim().length() == 0);
-  }
-  
-  public static String[] a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString2.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int j;
-    for (int i = 0;; i = paramString2.length() + j)
-    {
-      j = paramString1.indexOf(paramString2, i);
-      if (j < 0)
+      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.DOWNLOADING);
+      return;
+      localMonitorTask1 = localMonitorTask2;
+      if (TextUtils.isEmpty(localMonitorTask2.filePath))
       {
-        localArrayList.add(paramString1.substring(i));
-        i = localArrayList.size() - 1;
-        while ((i >= 0) && (((String)localArrayList.get(i)).length() == 0))
-        {
-          localArrayList.remove(i);
-          i -= 1;
-        }
+        localMonitorTask2.filePath = paramDownloadInfo.l;
+        localMonitorTask1 = localMonitorTask2;
       }
-      localArrayList.add(paramString1.substring(i, j));
     }
-    return (String[])localArrayList.toArray(new String[0]);
   }
   
-  public static String b(String paramString)
+  public static void f(DownloadInfo paramDownloadInfo)
   {
-    if (paramString == null) {
-      return "";
+    bdii.b("AppCenterReporter", ">deleteCheck info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {}
+    do
+    {
+      return;
+      paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    } while (paramDownloadInfo == null);
+    ReplaceMonitor.get().deleteTask(paramDownloadInfo);
+  }
+  
+  public static void g(DownloadInfo paramDownloadInfo)
+  {
+    bdii.b("AppCenterReporter", ">installStartCheck ,info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
+      return;
     }
-    return paramString.replace("%7D", "%257D").replace("%3A;", "%253A").replace("%2C';", "%252C").replace("}", "%7D").replace(":", "%3A").replace(",", "%2C");
+    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask1;
+    if (localMonitorTask2 == null)
+    {
+      localMonitorTask1 = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask(localMonitorTask1);
+    }
+    for (;;)
+    {
+      bdii.b("AppCenterReporter", ">installStartCheck task:" + localMonitorTask1);
+      if (localMonitorTask1 == null) {
+        break;
+      }
+      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.BEFORE_INSTALL);
+      return;
+      localMonitorTask1 = localMonitorTask2;
+      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      {
+        localMonitorTask2.filePath = paramDownloadInfo.l;
+        localMonitorTask1 = localMonitorTask2;
+      }
+    }
   }
 }
 

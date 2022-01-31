@@ -1,21 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import java.net.URL;
 
-class xqc
-  implements Animation.AnimationListener
+public abstract class xqc
+  extends xpv
 {
-  xqc(xqa paramxqa) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public Drawable a()
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(4);
+    return null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract URL a();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract Drawable b();
 }
 
 

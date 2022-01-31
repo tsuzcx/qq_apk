@@ -1,26 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class afew
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
   public afew(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (paramInt)
+    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
+    if (str.equals("")) {}
+    for (int i = 8;; i = 0)
     {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
+      paramEditable.setVisibility(i);
+      if (this.a.f != ClassificationSearchActivity.c) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690596));
+      if (AppSetting.d) {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
+      }
+      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+      {
+        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
+          break label219;
+        }
+        ClassificationSearchActivity.a(this.a);
+      }
       return;
     }
-    paramDialogInterface.dismiss();
+    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
+    if (!str.equals("")) {}
+    for (paramEditable = this.a.getResources().getString(2131719110);; paramEditable = this.a.getResources().getString(2131690596))
+    {
+      localButton.setText(paramEditable);
+      break;
+    }
+    label219:
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

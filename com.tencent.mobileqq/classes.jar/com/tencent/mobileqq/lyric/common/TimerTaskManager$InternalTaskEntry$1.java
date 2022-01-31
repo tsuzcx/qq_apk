@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.lyric.common;
 
-import asay;
+import asba;
 
 public class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(asay paramasay) {}
+  public TimerTaskManager$InternalTaskEntry$1(asba paramasba) {}
   
   public void run()
   {
-    if (asay.a(this.this$0) != null) {
-      asay.a(this.this$0).run();
+    if (asba.a(this.this$0) != null) {
+      asba.a(this.this$0).run();
     }
   }
 }

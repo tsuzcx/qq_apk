@@ -1,32 +1,46 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
 class axzw
-  extends bavi
+  extends URLDrawableDownListener.Adapter
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  axzw(axzs paramaxzs) {}
   
-  public axzw(axzq paramaxzq, int paramInt1, int paramInt2, int paramInt3)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
+    }
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramBitmap == null) {
-      return null;
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
-    int j = this.c;
-    int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return bbdr.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
+    paramView.getLayoutParams().width = i;
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    paramView.requestLayout();
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
     }
   }
 }

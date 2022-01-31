@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osm;
-import pah;
+import osj;
+import pae;
 
 public class DailyDynamicHeaderModule$2
   implements Runnable
 {
-  public DailyDynamicHeaderModule$2(pah parampah) {}
+  public DailyDynamicHeaderModule$2(pae parampae) {}
   
   public void run()
   {
-    osm.a().f(false);
+    osj.a().f(false);
   }
 }
 

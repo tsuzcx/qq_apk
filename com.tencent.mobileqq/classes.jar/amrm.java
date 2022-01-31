@@ -1,6 +1,7 @@
 public class amrm
 {
-  public String a;
+  public amrl a;
+  public amro a;
 }
 
 

@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.widget.ParticipleBottomMenuView;
+import android.graphics.Canvas;
 
-public class bcnr
-  implements bcnw
+public abstract interface bcnr
 {
-  public bcnr(ParticipleBottomMenuView paramParticipleBottomMenuView) {}
+  public abstract void b(Canvas paramCanvas);
   
-  public void a()
-  {
-    this.a.a();
-  }
+  public abstract void c(Canvas paramCanvas);
 }
 
 

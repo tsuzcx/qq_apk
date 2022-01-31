@@ -1,35 +1,96 @@
 import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lbw
-  implements BusinessObserver
+  extends QIPCModule
 {
-  public lbx a;
+  private lby a;
   
-  public lbw(lbx paramlbx)
+  private lbw()
   {
-    this.a = paramlbx;
+    super("AioShareMusicIPCWebClient");
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static lbw a()
   {
-    yxs.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
-    switch (paramInt)
+    return lbz.a();
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("data", paramJSONObject.toString());
+    QIPCClientHelper.getInstance().getClient().callServer("AioShareMusicIPCMainClient", paramString, localBundle, paramEIPCResultCallback);
+  }
+  
+  public void a()
+  {
+    try
     {
-    }
-    do
-    {
-      do
+      this.a = null;
+      if (QIPCClientHelper.getInstance().getClient() != null)
       {
-        return;
-        if (!paramBoolean) {
-          break;
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        if (QLog.isColorLevel()) {
+          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "unregister real");
         }
-      } while (this.a == null);
-      this.a.a(paramBundle);
+      }
       return;
-    } while (this.a == null);
-    this.a.a();
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "unregister ipc module error.", localException);
+    }
+  }
+  
+  public void a(lby paramlby)
+  {
+    if (this.a != null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        lbw locallbw = a();
+        this.a = paramlby;
+        QIPCClientHelper.getInstance().register(locallbw);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "register real");
+          return;
+        }
+      }
+      catch (Exception paramlby)
+      {
+        QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "register ipc module error.", paramlby);
+      }
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    try
+    {
+      paramBundle = new JSONObject(paramBundle.getString("data"));
+      if (this.a != null) {
+        this.a.a(paramString, paramBundle);
+      }
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,118 +1,179 @@
 import android.graphics.Bitmap;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
 
-final class bavw
+public abstract class bavw
   implements DownloadParams.DecodeHandler
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public static final DownloadParams.DecodeHandler a;
+  private static String a;
+  public static final DownloadParams.DecodeHandler b = new bawi();
+  public static final DownloadParams.DecodeHandler c = new bawn();
+  public static final DownloadParams.DecodeHandler d = new bawo();
+  public static final DownloadParams.DecodeHandler e = new bawp();
+  public static final DownloadParams.DecodeHandler f = new bawq();
+  public static final DownloadParams.DecodeHandler g = new bawr();
+  public static final DownloadParams.DecodeHandler h = new baws();
+  public static final DownloadParams.DecodeHandler i = new bawt();
+  public static final DownloadParams.DecodeHandler j = new bavy();
+  public static final DownloadParams.DecodeHandler k = new bavz();
+  public static final DownloadParams.DecodeHandler l = new bawa();
+  public static final DownloadParams.DecodeHandler m = new bawb();
+  public static final DownloadParams.DecodeHandler n = new bawc();
+  public static final DownloadParams.DecodeHandler o = new bawd();
+  public static final DownloadParams.DecodeHandler p = new bawe();
+  public static final DownloadParams.DecodeHandler q = new bawf();
+  public static final DownloadParams.DecodeHandler r = new bawg();
+  public static final DownloadParams.DecodeHandler s = new bawu(10);
+  public static final DownloadParams.DecodeHandler t = new bawu(20);
+  public static final DownloadParams.DecodeHandler u = new bawh();
+  public static final DownloadParams.DecodeHandler v = new bawj();
+  public static final DownloadParams.DecodeHandler w = new bawv();
+  public static final DownloadParams.DecodeHandler x = new bawk();
+  public static final DownloadParams.DecodeHandler y = new bawl();
+  public static final DownloadParams.DecodeHandler z = new bawm();
+  
+  static
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    jdField_a_of_type_JavaLangString = "URLDrawableDecodeHandler";
+    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new bavx();
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap)
+  {
+    int i1 = paramBitmap.getWidth();
+    int i2 = paramBitmap.getHeight();
+    int i3 = i1 * 15 / 16;
+    int i4 = i2 * 16 / 15;
+    if (i2 > i3)
+    {
+      localBitmap = Bitmap.createBitmap(paramBitmap, 0, (i2 - i3) / 2, i1, i3, null, false);
+      paramBitmap.recycle();
     }
-    int n;
-    int i1;
-    int i;
-    int j;
-    int k;
-    int m;
-    int i2;
-    int i3;
-    boolean bool;
-    label128:
-    label380:
     do
     {
-      Object localObject;
-      do
+      return localBitmap;
+      localBitmap = paramBitmap;
+    } while (i1 <= i4);
+    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap, (i1 - i4) / 2, 0, i4, i2, null, false);
+    paramBitmap.recycle();
+    return localBitmap;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
+  {
+    int i3 = paramBitmap.getWidth();
+    int i4 = paramBitmap.getHeight();
+    Object localObject = new int[i3 * i4];
+    paramBitmap.getPixels((int[])localObject, 0, i3, 0, 0, i3, i4);
+    int i5 = (int)Math.ceil(i4 / paramInt);
+    int i6 = (int)Math.ceil(i3 / paramInt);
+    int i1 = 0;
+    while (i1 < i5)
+    {
+      int i2 = 0;
+      while (i2 < i6)
       {
-        do
-        {
-          return paramDownloadParams;
-          localObject = paramDownloadParams.tag;
-          paramDownloadParams = paramBitmap;
-        } while (!(localObject instanceof int[]));
-        paramDownloadParams = paramBitmap;
-      } while (((int[])localObject).length != 6);
-      paramDownloadParams = (int[])localObject;
-      n = paramDownloadParams[0];
-      i1 = paramDownloadParams[1];
-      i = paramDownloadParams[2];
-      j = paramDownloadParams[3];
-      k = paramDownloadParams[4];
-      m = paramDownloadParams[5];
-      i2 = paramBitmap.getHeight();
-      i3 = paramBitmap.getWidth();
-      float f1;
-      if ((n >= 0) && (i1 >= 0) && (i > 0) && (j > 0) && (n < i3) && (i1 < i2))
-      {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i(bavi.a(), 2, String.format("CUSTOM_CLIP_DECODER [%d,%d,%d,%d,%d,%d] valid=%b", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) }));
-        }
-        if ((bool) || (k <= 0) || (m <= 0)) {
-          break label439;
-        }
-        f1 = k / m;
-        float f2 = paramBitmap.getWidth() / paramBitmap.getHeight();
-        localObject = new Rect();
-        if (f1 <= f2) {
-          break label380;
-        }
-        i = paramBitmap.getWidth();
-        j = (int)(i / f1);
-        n = (int)(0.5F * (paramBitmap.getHeight() - j));
-        f1 = paramBitmap.getHeight() - j;
-        ((Rect)localObject).set(0, n, i, (int)(j + 0.5F * f1));
+        a((int[])localObject, i2 * paramInt + 1, i1 * paramInt + 1, paramInt, i3, i4);
+        i2 += 1;
       }
-      for (;;)
-      {
-        paramBitmap = bbdr.a(paramBitmap, (Rect)localObject, agqs.a(k, m, ((Rect)localObject).width(), ((Rect)localObject).height()));
-        paramDownloadParams = paramBitmap;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(bavi.a(), 2, String.format("CUSTOM_CLIP_DECODER centerCrop %s", new Object[] { ((Rect)localObject).toShortString() }));
-        return paramBitmap;
-        bool = false;
-        break label128;
-        i = paramBitmap.getHeight();
-        j = (int)(f1 * i);
-        n = (int)(0.5F * (paramBitmap.getWidth() - j));
-        f1 = paramBitmap.getWidth() - j;
-        ((Rect)localObject).set(n, 0, (int)(j + 0.5F * f1), i);
-      }
-      paramDownloadParams = paramBitmap;
-    } while (!bool);
-    label439:
-    if (n + i > i3) {
-      i = i3 - n;
+      i1 += 1;
     }
+    paramBitmap.recycle();
+    paramBitmap = Bitmap.createBitmap(i3, i4, Bitmap.Config.ARGB_8888);
+    paramBitmap.setPixels((int[])localObject, 0, i3, 0, 0, i3, i4);
+    localObject = new Canvas();
+    ((Canvas)localObject).setBitmap(paramBitmap);
+    ((Canvas)localObject).drawARGB(89, 0, 0, 0);
+    return paramBitmap;
+  }
+  
+  public static void a(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
+  {
+    Matrix localMatrix = paramMatrix;
+    if (paramMatrix == null) {
+      localMatrix = new Matrix();
+    }
+    if (paramInt1 * paramInt4 > paramInt3 * paramInt2) {}
+    for (float f1 = paramInt4 / paramInt2;; f1 = paramInt3 / paramInt1)
+    {
+      float f5 = paramInt3 * 0.5F;
+      float f4 = paramInt4 * 0.5F;
+      float f3 = 0.0F;
+      float f2 = 0.0F;
+      paramInt1 = (int)(paramInt1 * f1);
+      paramInt2 = (int)(paramInt2 * f1);
+      float f7 = paramInt1 * paramFloat1;
+      float f6 = paramInt2 * paramFloat2;
+      paramFloat1 = f3;
+      if (paramInt1 > paramInt3)
+      {
+        paramFloat1 = f3;
+        if (f7 > f5) {
+          paramFloat1 = Math.min(paramInt1 - paramInt3, f7 - f5);
+        }
+      }
+      paramFloat2 = f2;
+      if (paramInt2 > paramInt4)
+      {
+        paramFloat2 = f2;
+        if (f6 > f4) {
+          paramFloat2 = Math.min(paramInt2 - paramInt4, f6 - f4);
+        }
+      }
+      localMatrix.setScale(f1, f1);
+      localMatrix.postTranslate((int)(paramFloat1 + 0.5F) * -1, (int)(paramFloat2 + 0.5F) * -1);
+      return;
+    }
+  }
+  
+  public static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    int i1 = paramInt1 + paramInt3 - 1;
+    int i2 = paramInt2 + paramInt3 - 1;
+    paramInt3 = i1;
+    if (i1 > paramInt4) {
+      paramInt3 = paramInt4;
+    }
+    if (i2 > paramInt5) {}
     for (;;)
     {
-      if (i1 + j > i2) {
-        j = i2 - i1;
-      }
-      for (;;)
+      i2 = paramArrayOfInt[((paramInt3 - paramInt1 + 1) / 2 + paramInt1 + ((paramInt5 - paramInt2 + 1) / 2 + paramInt2 - 1) * paramInt4 - 1)];
+      while (paramInt2 <= paramInt5)
       {
-        paramDownloadParams = new Rect(n, i1, i + n, j + i1);
-        j = 1;
-        i = j;
-        if (k > 0)
+        i1 = paramInt1;
+        while (i1 <= paramInt3)
         {
-          i = j;
-          if (m > 0) {
-            i = agqs.a(k, m, paramDownloadParams.width(), paramDownloadParams.height());
-          }
+          paramArrayOfInt[((paramInt2 - 1) * paramInt4 + i1 - 1)] = i2;
+          i1 += 1;
         }
-        if (QLog.isColorLevel()) {
-          QLog.i(bavi.a(), 2, String.format("CUSTOM_CLIP_DECODER [w,h]=[%d,%d] dstClip=%s sample=%d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramDownloadParams, Integer.valueOf(i) }));
-        }
-        return bbdr.a(paramBitmap, paramDownloadParams, i);
+        paramInt2 += 1;
       }
+      return;
+      paramInt5 = i2;
     }
+  }
+  
+  public static final int[] a(int paramInt1, int paramInt2)
+  {
+    return new int[] { paramInt1, paramInt2 };
+  }
+  
+  public static int[] a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return new int[] { paramInt1, paramInt2, paramInt3 };
+  }
+  
+  public static int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    return new int[] { paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6 };
+  }
+  
+  public static final int[] b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return new int[] { paramInt1, paramInt2, paramInt3 };
   }
 }
 

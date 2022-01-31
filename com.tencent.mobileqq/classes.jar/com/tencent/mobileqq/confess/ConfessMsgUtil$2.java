@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import amoa;
+import amnz;
 
 public final class ConfessMsgUtil$2
   implements Runnable
 {
-  public ConfessMsgUtil$2(amoa paramamoa) {}
+  public ConfessMsgUtil$2(amnz paramamnz) {}
   
   public void run()
   {

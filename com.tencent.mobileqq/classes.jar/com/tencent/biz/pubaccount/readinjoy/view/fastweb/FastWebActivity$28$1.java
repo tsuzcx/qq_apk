@@ -3,27 +3,27 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import java.util.List;
-import onk;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rja;
-import rmu;
-import rnr;
+import rix;
+import rmr;
+import rno;
 
 public class FastWebActivity$28$1
   implements Runnable
 {
-  final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Rja.a);
-  final FastWebArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Rja.a);
+  final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Rix.a);
+  final FastWebArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Rix.a);
   
-  public FastWebActivity$28$1(rja paramrja, long paramLong, List paramList) {}
+  public FastWebActivity$28$1(rix paramrix, long paramLong, List paramList) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)) {
       return;
     }
-    FastWebActivity localFastWebActivity = this.jdField_a_of_type_Rja.a;
+    FastWebActivity localFastWebActivity = this.jdField_a_of_type_Rix.a;
     ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
     Object localObject;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
@@ -31,15 +31,15 @@ public class FastWebActivity$28$1
     }
     for (;;)
     {
-      localObject = onk.a(localFastWebActivity, localArticleInfo, 0, (String)localObject);
+      localObject = onh.a(localFastWebActivity, localArticleInfo, 0, (String)localObject);
       try
       {
         ((JSONObject)localObject).put("open_speed", this.jdField_a_of_type_Long);
-        rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8008997", ((JSONObject)localObject).toString());
-        FastWebActivity.j(this.jdField_a_of_type_Rja.a);
-        FastWebActivity.a(this.jdField_a_of_type_Rja.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-        rnr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaUtilList);
-        rmu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+        rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8008997", ((JSONObject)localObject).toString());
+        FastWebActivity.j(this.jdField_a_of_type_Rix.a);
+        FastWebActivity.a(this.jdField_a_of_type_Rix.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+        rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaUtilList);
+        rmr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
         return;
         localObject = "1";
       }

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apad;
-import apaf;
+import apah;
+import apaj;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 public class FileVideoManager$VideoControl$2$1
   implements Runnable
 {
-  public FileVideoManager$VideoControl$2$1(apaf paramapaf) {}
+  public FileVideoManager$VideoControl$2$1(apaj paramapaj) {}
   
   public void run()
   {
     this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setRemainTime(20160714, this.a.a.jdField_a_of_type_Int, 2147483647);
-    this.a.a.a(this.a.a.jdField_a_of_type_Aplh, true);
+    this.a.a.a(this.a.a.jdField_a_of_type_Apll, true);
   }
 }
 

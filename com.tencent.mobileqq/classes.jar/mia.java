@@ -1,14 +1,24 @@
+import android.widget.RelativeLayout;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
 import com.tencent.av.ui.QavPanel;
 
 public class mia
-  implements mij
+  implements mif
 {
-  public mia(QavPanel paramQavPanel, Runnable paramRunnable) {}
+  public mia(QavPanel paramQavPanel) {}
   
-  public void a()
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((paramBoolean) && ((paramRelativeLayout instanceof QavOperationMenuView)))
+    {
+      paramRelativeLayout = (QavOperationMenuView)paramRelativeLayout;
+      paramRelativeLayout.a(this.a.a.b("BEAUTY_SKIN"));
+      paramRelativeLayout.a();
+    }
   }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
 }
 
 

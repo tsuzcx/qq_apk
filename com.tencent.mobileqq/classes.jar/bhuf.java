@@ -1,42 +1,77 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.webviewwrapper.QzoneWebViewRuntime;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.SurfaceView;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhuf
 {
-  private static bhuf jdField_a_of_type_Bhuf;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private QzoneWebViewRuntime jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
+  private static SurfaceView a;
+  public static String a;
+  private static String b = "";
   
-  public static bhuf a()
+  static
   {
-    if (jdField_a_of_type_Bhuf == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Bhuf == null) {
-        jdField_a_of_type_Bhuf = new bhuf();
-      }
-      return jdField_a_of_type_Bhuf;
-    }
+    jdField_a_of_type_JavaLangString = "";
   }
   
-  public QzoneWebViewRuntime a()
+  public static void a(bcdp parambcdp, String... paramVarArgs)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((parambcdp == null) || (parambcdp.a() == null) || (parambcdp.a() == null)) {}
+    FrameLayout localFrameLayout;
+    do
     {
-      if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime == null)
+      do
       {
-        QzoneWebViewRuntime localQzoneWebViewRuntime = new QzoneWebViewRuntime(BaseApplicationImpl.getApplication(), "qzonelive");
-        localQzoneWebViewRuntime.onCreate(null);
-        this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = localQzoneWebViewRuntime;
-      }
-      return this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime;
-    }
+        return;
+        localFrameLayout = (FrameLayout)parambcdp.a().findViewById(2131379402);
+        if ((jdField_a_of_type_AndroidViewSurfaceView != null) && (jdField_a_of_type_AndroidViewSurfaceView.getParent() == localFrameLayout))
+        {
+          bgyp.b(parambcdp.a(), jdField_a_of_type_AndroidViewSurfaceView);
+          return;
+        }
+        jdField_a_of_type_JavaLangString = parambcdp.a().getUrl();
+        if (paramVarArgs != null) {
+          b = paramVarArgs[0];
+        }
+      } while (TextUtils.isEmpty(b));
+      jdField_a_of_type_AndroidViewSurfaceView = bgyp.a(parambcdp.a(), b);
+    } while (jdField_a_of_type_AndroidViewSurfaceView == null);
+    localFrameLayout.addView(jdField_a_of_type_AndroidViewSurfaceView, new FrameLayout.LayoutParams(-1, -1));
   }
   
-  public void a(QzoneWebViewRuntime paramQzoneWebViewRuntime)
+  public static void b(bcdp parambcdp, String... paramVarArgs)
   {
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewRuntime = paramQzoneWebViewRuntime;
+    if (parambcdp == null) {}
+    do
+    {
+      do
+      {
+        return;
+        parambcdp = parambcdp.a();
+      } while (parambcdp == null);
+      paramVarArgs = (FrameLayout)parambcdp.findViewById(2131379402);
+      if ((paramVarArgs != null) && (jdField_a_of_type_AndroidViewSurfaceView != null)) {
+        paramVarArgs.removeView(jdField_a_of_type_AndroidViewSurfaceView);
+      }
+      bgyp.a(parambcdp, jdField_a_of_type_AndroidViewSurfaceView);
+      jdField_a_of_type_AndroidViewSurfaceView = null;
+      paramVarArgs = new Intent("action_js2qzone");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("cmd", "setFloat");
+      paramVarArgs.putExtras(localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFloatJsHandleLogic", 2, "actionString: " + paramVarArgs.getAction());
+      }
+      bgyp.a(parambcdp, bgyw.a(), paramVarArgs);
+      bhrp.a(parambcdp);
+      parambcdp.finish();
+    } while (!bgyp.f());
+    bdis.a().a(bgyp.b, 1);
   }
 }
 

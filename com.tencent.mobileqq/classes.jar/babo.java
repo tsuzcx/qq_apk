@@ -1,60 +1,93 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract class babo<VH extends RecyclerView.ViewHolder, D extends baas>
-  implements View.OnClickListener
+public class babo
+  implements bhxi
 {
-  public babp a;
-  public XMediaEditor a;
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public babo(XMediaEditor paramXMediaEditor)
+  public babo(babn parambabn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
+    switch (babn.a(parambabn))
+    {
+    default: 
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Float = 1.0F;
+      return;
+    case 1: 
+      this.jdField_a_of_type_Int = 10;
+      this.jdField_a_of_type_Float = 0.85F;
+      return;
+    }
+    this.jdField_a_of_type_Int = 95;
+    this.jdField_a_of_type_Float = 0.05F;
   }
   
-  public abstract VH a(ViewGroup paramViewGroup);
-  
-  public babo a(babp parambabp)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Babp = parambabp;
-    return this;
+    if (this.jdField_a_of_type_Babn.isCanceled())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
+      }
+      this.jdField_a_of_type_Babn.onCancel();
+    }
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn)), ", info hash=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn).hashCode()), ", info status=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn).g), ", progress=", Integer.valueOf(paramInt) });
+      }
+      l = System.currentTimeMillis();
+      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
+    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
+    this.jdField_a_of_type_Long = l;
+    ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.2(this, paramInt));
   }
   
-  public babp a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Babp;
+    if (this.jdField_a_of_type_Babn.isCanceled())
+    {
+      this.jdField_a_of_type_Babn.onCancel();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn)), ", info hash=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn).hashCode()), ", info status=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn).g) });
+    }
+    switch (babn.a(this.jdField_a_of_type_Babn))
+    {
+    }
+    while (!this.jdField_a_of_type_Babn.isCanceled())
+    {
+      babn.a(this.jdField_a_of_type_Babn, babn.a(this.jdField_a_of_type_Babn));
+      return;
+      babr localbabr = (babr)babn.a(this.jdField_a_of_type_Babn);
+      localbabr.e = paramString;
+      ThreadManager.getUIHandler().post(new ImageInfo.UploadMediaSegment.MediaUploadCallback.1(this, localbabr));
+      continue;
+      babn.a(this.jdField_a_of_type_Babn).b = paramString;
+    }
+    this.jdField_a_of_type_Babn.onCancel();
   }
   
-  public void a() {}
-  
-  public void a(VH paramVH) {}
-  
-  public abstract void a(VH paramVH, D paramD, int paramInt);
-  
-  public abstract void a(View paramView, VH paramVH);
-  
-  public void b(VH paramVH) {}
-  
-  public void b(View paramView, VH paramVH)
+  public void b(int paramInt)
   {
-    paramView.setTag(paramVH);
-    paramView.setOnClickListener(this);
-  }
-  
-  public void b(D paramD) {}
-  
-  public void c(VH paramVH) {}
-  
-  public void c(D paramD) {}
-  
-  public void d(D paramD) {}
-  
-  public void onClick(View paramView)
-  {
-    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
+    if (QLog.isColorLevel()) {
+      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn).b()), ", mediaType=", Integer.valueOf(babn.a(this.jdField_a_of_type_Babn)) });
+    }
+    if (babn.a(this.jdField_a_of_type_Babn) == 2)
+    {
+      babn.b(this.jdField_a_of_type_Babn, babn.a(this.jdField_a_of_type_Babn));
+      return;
+    }
+    babn.a(this.jdField_a_of_type_Babn, new Error("-3"));
   }
 }
 

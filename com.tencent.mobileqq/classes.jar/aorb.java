@@ -1,25 +1,15 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class aorb
-  implements Cloneable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
-  public TextView c;
+  public aorb(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public aorb(aora paramaora) {}
+  public void onGlobalLayout()
+  {
+    this.a.av_();
+  }
 }
 
 

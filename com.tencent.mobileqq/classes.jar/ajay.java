@@ -1,30 +1,22 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public abstract interface ajay
+class ajay
+  extends ajxj
 {
-  public abstract int a(int paramInt);
+  ajay(ajax paramajax) {}
   
-  public abstract int a(aivy paramaivy, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
-  
-  public abstract int a(AppInterface paramAppInterface);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, AppInterface paramAppInterface);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt, String paramString);
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+    }
+    if ((ajax.a(this.a) != null) && (ajax.a(this.a).get(paramString + "nick") != null))
+    {
+      int i = ((Integer)ajax.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
+    }
+  }
 }
 
 

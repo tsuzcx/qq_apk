@@ -1,108 +1,39 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AlertReport.ButtonAction;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.ims.signature.SignatureKickData;
+import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class aboq
   implements DialogInterface.OnClickListener
 {
-  public aboq(NotificationActivity paramNotificationActivity, String paramString1, int paramInt, String paramString2) {}
+  public aboq(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    QLog.i("NotificationActivity", 1, "setPositiveButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("password", null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
     try
     {
-      Object localObject;
-      String str;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.getCurrentAccountUin();
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("uin", paramDialogInterface);
-        str = this.jdField_a_of_type_JavaLangString;
-        if (str.indexOf("?") != -1) {
-          break label203;
-        }
-        paramDialogInterface = str + "?uin=" + paramDialogInterface;
-      }
-      for (;;)
-      {
-        ((Intent)localObject).putExtra("url", paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity((Intent)localObject);
-        try
-        {
-          paramDialogInterface = new AlertReport.ButtonAction();
-          paramDialogInterface.uint32_cmd.set(1);
-          paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-          paramDialogInterface.str_package_name.set(bfhb.c());
-          paramDialogInterface.uint32_app_id.set(AppSetting.a());
-          mxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-          axqw.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-          return;
-          label203:
-          paramDialogInterface = str + "&uin=" + paramDialogInterface;
-        }
-        catch (Exception paramDialogInterface)
-        {
-          for (;;)
-          {
-            paramDialogInterface.printStackTrace();
-          }
-        }
-      }
-      try
-      {
-        localObject = new AlertReport.ButtonAction();
-        ((AlertReport.ButtonAction)localObject).uint32_cmd.set(1);
-        ((AlertReport.ButtonAction)localObject).uint32_button_id.set(this.jdField_a_of_type_Int);
-        ((AlertReport.ButtonAction)localObject).str_package_name.set(bfhb.c());
-        ((AlertReport.ButtonAction)localObject).uint32_app_id.set(AppSetting.a());
-        mxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, ((AlertReport.ButtonAction)localObject).toByteArray(), 34, "SecuritySvc.AlertReport");
-        axqw.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-        throw paramDialogInterface;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
+      label106:
+      paramDialogInterface = new Intent("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
     }
     catch (Exception paramDialogInterface)
     {
-      paramDialogInterface = paramDialogInterface;
-      paramDialogInterface.printStackTrace();
-      try
-      {
-        paramDialogInterface = new AlertReport.ButtonAction();
-        paramDialogInterface.uint32_cmd.set(1);
-        paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-        paramDialogInterface.str_package_name.set(bfhb.c());
-        paramDialogInterface.uint32_app_id.set(AppSetting.a());
-        mxi.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-        axqw.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-        return;
-      }
-      catch (Exception paramDialogInterface)
-      {
-        for (;;)
-        {
-          paramDialogInterface.printStackTrace();
-        }
-      }
+      break label106;
     }
-    finally {}
   }
 }
 

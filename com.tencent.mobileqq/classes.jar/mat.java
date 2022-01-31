@@ -1,92 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
-public abstract class mat
+public class mat
+  extends maq
 {
-  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
+  boolean a = false;
+  
+  public mat(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
-    ((ljk)paramVideoAppInterface.a(11)).b();
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.a = paramBoolean;
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  public int a()
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((ljk)paramVideoAppInterface.a(11)).c();
+    return 2;
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  public boolean b()
   {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((ljk)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljk)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljk)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljk)paramVideoAppInterface.a(11)).a(paramInt, paramString);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljk)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if (paramVideoAppInterface == null) {
-      return false;
-    }
-    return ((ljk)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
-  }
-  
-  public static void b(VideoAppInterface paramVideoAppInterface)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((ljk)paramVideoAppInterface.a(11)).d();
+    return this.a;
   }
 }
 

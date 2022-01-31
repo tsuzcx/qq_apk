@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
+import ahbm;
 import ahbo;
-import ahbq;
 import java.lang.ref.WeakReference;
 
 public class PreloadManager$8$1
   implements Runnable
 {
-  public PreloadManager$8$1(ahbo paramahbo, WeakReference paramWeakReference, ahbq paramahbq) {}
+  public PreloadManager$8$1(ahbm paramahbm, WeakReference paramWeakReference, ahbo paramahbo) {}
   
   public void run()
   {
     PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (PreloadManager.a(localPreloadManager)) {
-      this.jdField_a_of_type_Ahbq.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(localPreloadManager, this.jdField_a_of_type_Ahbq.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_Ahbq.jdField_a_of_type_Bbwf);
+      this.jdField_a_of_type_Ahbo.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(localPreloadManager, this.jdField_a_of_type_Ahbo.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_Ahbo.jdField_a_of_type_Bbwt);
     }
   }
 }

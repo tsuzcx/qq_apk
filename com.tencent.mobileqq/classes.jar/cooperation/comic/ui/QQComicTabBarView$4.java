@@ -12,7 +12,7 @@ class QQComicTabBarView$4
   
   public void run()
   {
-    Drawable localDrawable = this.this$0.getResources().getDrawable(2130849677);
+    Drawable localDrawable = this.this$0.getResources().getDrawable(2130849686);
     ThreadManager.getUIHandler().post(new QQComicTabBarView.4.1(this, localDrawable));
   }
 }

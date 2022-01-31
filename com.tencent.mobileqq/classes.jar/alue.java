@@ -1,16 +1,17 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 
 class alue
-  implements ArkAppCacheMgr.OnGetAppIcon
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  alue(aluc paramaluc, Context paramContext) {}
+  alue(alub paramalub, String paramString, Context paramContext) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (paramBitmap != null) {
-      aluc.a(this.jdField_a_of_type_Aluc, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
+    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
+      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new aluf(this));
     }
   }
 }

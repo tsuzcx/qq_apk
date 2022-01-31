@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import bikb;
-import biku;
+import biks;
+import bill;
 
 public class VideoStoryAIScenePart$21
   implements Runnable
 {
-  public VideoStoryAIScenePart$21(biku parambiku) {}
+  public VideoStoryAIScenePart$21(bill parambill) {}
   
   public void run()
   {
-    if ((biku.f(this.this$0) != null) && (biku.a(this.this$0) != null)) {
-      biku.a(this.this$0).a(biku.a(this.this$0));
+    if ((bill.f(this.this$0) != null) && (bill.a(this.this$0) != null)) {
+      bill.a(this.this$0).a(bill.a(this.this$0));
     }
   }
 }

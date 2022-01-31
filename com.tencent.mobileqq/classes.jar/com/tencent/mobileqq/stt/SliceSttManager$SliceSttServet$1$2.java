@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.stt;
 
-import ayae;
-import ayaf;
 import ayag;
-import ayaj;
+import ayah;
+import ayai;
+import ayal;
 
 public class SliceSttManager$SliceSttServet$1$2
   implements Runnable
 {
-  public SliceSttManager$SliceSttServet$1$2(ayag paramayag) {}
+  public SliceSttManager$SliceSttServet$1$2(ayai paramayai) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Ayae.a.a(false, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    this.a.a.jdField_a_of_type_Ayag.a.a(false, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
   }
 }
 

@@ -1,166 +1,90 @@
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.1;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.2;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.3;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.4;
-import com.tencent.mobileqq.colornote.ColorNoteCurd.5;
 import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import mqq.util.WeakReference;
 
-public class amgp
+class amgp
+  extends Handler
 {
-  private amgr jdField_a_of_type_Amgr;
-  private Handler jdField_a_of_type_AndroidOsHandler = new amgq(this);
+  private WeakReference<amgo> a;
   
-  private void b(int paramInt1, String paramString, int paramInt2)
+  amgp(amgo paramamgo)
   {
-    boolean bool = amgs.b(paramInt1, paramString, paramInt2);
-    Message localMessage = Message.obtain();
-    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
-    if (bool) {}
-    for (localMessage.what = 5;; localMessage.what = 6)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
-    }
+    this.a = new WeakReference(paramamgo);
   }
   
-  private void b(int paramInt, String paramString, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    Bundle localBundle = amgs.a(paramInt, paramString, paramBoolean);
-    localBundle.putInt("key_service_type", paramInt);
-    localBundle.putString("key_sub_type", paramString);
-    paramString = Message.obtain();
-    paramString.what = 9;
-    paramString.obj = localBundle;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    boolean bool = amgs.a(paramBundle);
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramBundle;
-    if (bool) {}
-    for (localMessage.what = 3;; localMessage.what = 4)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
-    }
-  }
-  
-  private void c(ColorNote paramColorNote)
-  {
-    Object localObject = paramColorNote.getUniKey();
     boolean bool2 = true;
-    if (paramColorNote.mMainTitle != null) {
-      bool2 = amgs.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);
-    }
-    boolean bool1 = bool2;
-    if (paramColorNote.mSubTitle != null) {
-      bool1 = bool2 & amgs.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
-    }
-    bool2 = bool1;
-    if (paramColorNote.mPicUrl != null) {
-      bool2 = bool1 & amgs.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
-    }
-    localObject = Message.obtain();
-    if (bool2) {}
-    for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
+    boolean bool1 = true;
+    Object localObject1 = (amgo)this.a.get();
+    if (localObject1 == null) {}
+    do
     {
-      ((Message)localObject).obj = paramColorNote;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localObject1 = amgo.a((amgo)localObject1);
+            switch (paramMessage.what)
+            {
+            case 7: 
+            case 8: 
+            default: 
+              return;
+            }
+          } while (localObject1 == null);
+          localObject2 = (Bundle)paramMessage.obj;
+          if (paramMessage.what == 3) {}
+          for (bool1 = true;; bool1 = false)
+          {
+            ((amgq)localObject1).onAddColorNote((Bundle)localObject2, bool1);
+            return;
+          }
+        } while (localObject1 == null);
+        try
+        {
+          localObject2 = (Pair)paramMessage.obj;
+          int i = ((Integer)((Pair)localObject2).first).intValue();
+          localObject2 = (String)((Pair)localObject2).second;
+          if (paramMessage.what != 5)
+          {
+            ((amgq)localObject1).onDeleteColorNote(i, (String)localObject2, bool1);
+            return;
+          }
+        }
+        catch (ClassCastException paramMessage)
+        {
+          for (;;)
+          {
+            QLog.e("ColorNoteCurd", 2, paramMessage, new Object[0]);
+            return;
+            bool1 = false;
+          }
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("ColorNoteCurd", 2, paramMessage, new Object[0]);
+          return;
+        }
+      } while ((localObject1 == null) || (paramMessage.obj == null));
+      paramMessage = (Bundle)paramMessage.obj;
+      ((amgq)localObject1).onUpdateColorNoteState(paramMessage.getInt("key_service_type"), paramMessage.getString("key_sub_type"), paramMessage);
+      return;
+    } while ((localObject1 == null) || (paramMessage.obj == null));
+    Object localObject2 = (ColorNote)paramMessage.obj;
+    if (paramMessage.what == 10) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      ((amgq)localObject1).onUpdateColorNote((ColorNote)localObject2, bool1);
       return;
     }
-  }
-  
-  private boolean c()
-  {
-    return Looper.getMainLooper() == Looper.myLooper();
-  }
-  
-  private void d(ColorNote paramColorNote)
-  {
-    amgs.a(paramColorNote);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    a(paramInt, paramString, 0);
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
-      return;
-    }
-    b(paramInt1, paramString, paramInt2);
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
-      return;
-    }
-    b(paramInt, paramString, paramBoolean);
-  }
-  
-  public void a(amgr paramamgr)
-  {
-    this.jdField_a_of_type_Amgr = paramamgr;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
-      return;
-    }
-    b(paramBundle);
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
-      return;
-    }
-    c(paramColorNote);
-  }
-  
-  public boolean a()
-  {
-    return amhk.a().c();
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return amhk.a().a(paramInt, paramString);
-  }
-  
-  public void b(ColorNote paramColorNote)
-  {
-    if (c())
-    {
-      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
-      return;
-    }
-    d(paramColorNote);
-  }
-  
-  public boolean b()
-  {
-    return amhk.a().b();
   }
 }
 

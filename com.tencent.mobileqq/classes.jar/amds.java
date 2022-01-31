@@ -1,33 +1,94 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class amds
-  extends ajxl
+  extends amdk
 {
   public amds(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramString != null))
-    {
-      String str = bbcl.c(this.a.app, paramString, false);
-      int i = 0;
-      while (i < this.a.c.getChildCount())
-      {
-        Object localObject = this.a.c.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof ameb)) && (paramString.equals(((ameb)((View)localObject).getTag()).a)))
-        {
-          localObject = (TextView)((View)localObject).findViewById(2131370816);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
-          }
-        }
-        i += 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onModifyCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
+    this.a.b();
+    if (paramBoolean)
+    {
+      this.a.b(ajya.a(2131701255));
+      axqy.b(this.a.app, "CliOper", "", "", "0X8007748", "0X8007748", this.a.d, 0, "", "", "", "");
+      return;
+    }
+    bcql.a(this.a.getActivity(), 2, ajya.a(2131701263), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onGetCardInfo isSuccess=%s cardId=%s queryType=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+    }
+    this.a.b();
+    if ((paramBoolean) && (paramString.equals(this.a.jdField_a_of_type_JavaLangString)))
+    {
+      if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Int == 2) && (this.a.c == 1))
+      {
+        this.a.c = 0;
+        this.a.jdField_a_of_type_Amdj.a(false);
+      }
+      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
+        break label190;
+      }
+      this.a.jdField_a_of_type_Amdj.a(paramString);
+      QLog.i("BusinessCard_observer", 4, "after edit and require : cardId = " + paramString);
+      this.a.finish();
+    }
+    label190:
+    do
+    {
+      return;
+      paramString = this.a.jdField_a_of_type_Amdj.a(paramString);
+    } while (paramString == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = paramString;
+    BusinessCardEditActivity.a(this.a, false, true, true);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onDelCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    this.a.b();
+    if (paramBoolean)
+    {
+      bcql.a(this.a.getActivity(), 2, ajya.a(2131701258), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    }
+    bcql.a(this.a.getActivity(), 1, ajya.a(2131701253), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, String.format("onAddCard isSuccess=%s cardId=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+    }
+    this.a.b();
+    Object localObject = this.a.getResources();
+    if (paramBoolean)
+    {
+      localObject = ((Resources)localObject).getString(2131698605);
+      this.a.b((String)localObject);
+      if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
+        this.a.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    paramString = ((Resources)localObject).getString(2131698603);
+    if (paramInt == 66) {
+      paramString = ((Resources)localObject).getString(2131698604);
+    }
+    bcql.a(this.a.getActivity(), 2, paramString, 0).b(this.a.getTitleBarHeight());
   }
 }
 

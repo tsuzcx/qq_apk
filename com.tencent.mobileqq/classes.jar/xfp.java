@@ -1,29 +1,50 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class xfp
-  extends Handler
 {
-  private WeakReference<SquareRoundImageView> a;
+  private String a = xfo.b;
+  private String b = "1";
+  private String c = xfo.a;
   
-  private xfp(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
+  public static xfp a(String paramString)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramSquareRoundImageView);
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      xfp localxfp = new xfp();
+      paramString = new JSONObject(paramString);
+      localxfp.a = paramString.optString("mine_videostory_entrance", xfo.b);
+      localxfp.b = paramString.optString("enable_click_take_picture", "1");
+      localxfp.c = paramString.optString("mine_videostory_drawer_entrance", xfo.a);
+      return localxfp;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    if (paramMessage.what == 1)
-    {
-      paramMessage = (SquareRoundImageView)this.a.get();
-      if (paramMessage != null) {
-        SquareRoundImageView.a(paramMessage);
-      }
-    }
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
   }
 }
 

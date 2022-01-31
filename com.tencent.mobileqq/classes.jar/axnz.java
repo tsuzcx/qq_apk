@@ -1,31 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.startup.step.BroadcastReportRegister;
+import mqq.app.AppCallback;
 
-public final class axnz
-  implements DialogInterface.OnClickListener
+public class axnz
+  implements AppCallback
 {
-  public axnz(AppActivity paramAppActivity, axod paramaxod) {}
+  public axnz(BroadcastReportRegister paramBroadcastReportRegister) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSendBroadcast(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1)
+    try
     {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_MqqAppAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_MqqAppAppActivity.startActivity(paramDialogInterface);
-    }
-    while (this.jdField_a_of_type_Axod == null) {
+      amad.a(paramIntent);
       return;
     }
-    this.jdField_a_of_type_Axod.b();
+    catch (Throwable paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axnz
  * JD-Core Version:    0.7.0.1
  */

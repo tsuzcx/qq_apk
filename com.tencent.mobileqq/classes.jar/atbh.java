@@ -1,44 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
-
 public class atbh
-  extends awyn
 {
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public atbh(NearbyAppInterface paramNearbyAppInterface)
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      super.a(new awzt(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface));
-      super.d();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, atbi.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mTinyID:").append(this.jdField_a_of_type_Long).append(",mPosition:").append(this.jdField_a_of_type_Int).append(",mAlgotithmID:").append(this.b).append(",mEnterCount:").append(this.c).append(",mProfileCardDuration:").append(this.d).append(",mVisitPhotoCount:").append(this.e).append(",mOpflag:").append(this.f).append("|").append(Integer.toBinaryString(this.f));
+    return localStringBuilder.toString();
   }
 }
 

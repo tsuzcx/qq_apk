@@ -1,24 +1,37 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-@Deprecated
-public abstract class amlw
-  extends IBaseActionListener.Stub
+public class amlw
+  extends MSFServlet
 {
-  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
-  
-  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
-  
-  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bbma.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    {
+      new Bundle().putByteArray("data", arrayOfByte);
+      akhp localakhp = (akhp)((QQAppInterface)getAppRuntime()).a(20);
+      if (localakhp != null) {
+        localakhp.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      return;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bbma.a(arrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlw
  * JD-Core Version:    0.7.0.1
  */

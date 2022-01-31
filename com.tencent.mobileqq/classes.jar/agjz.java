@@ -1,29 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 
 public class agjz
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public agjz(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  public agjz(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-      paramDialogInterface.putExtra("main_tab_id", 1);
-      paramDialogInterface.setFlags(603979776);
-      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
-      return;
+    if (this.a.a != null) {
+      this.a.a.setOnDismissListener(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+    this.a.a = null;
   }
 }
 

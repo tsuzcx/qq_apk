@@ -1,240 +1,297 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.util.ProteusReportUtil.1;
-import com.tencent.biz.pubaccount.util.ProteusReportUtil.2;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.net.URL;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
 
 public class sfc
 {
-  private static Set<String> a = ;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "2909288299" };
+  private final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+  private final String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
+  private String h;
+  private String i;
   
-  public static List<String> a(TemplateBean paramTemplateBean)
+  public sfc(BaseApplicationImpl paramBaseApplicationImpl, int paramInt)
   {
-    if (paramTemplateBean == null) {
-      return null;
-    }
-    Object localObject = paramTemplateBean.getDataAttribute(null).get("extra_expose");
-    if (localObject != null)
-    {
-      paramTemplateBean = new ArrayList();
-      try
-      {
-        localObject = (JSONArray)localObject;
-        if (((JSONArray)localObject).length() > 0)
-        {
-          int i = 0;
-          while (i < ((JSONArray)localObject).length())
-          {
-            paramTemplateBean.add(((JSONArray)localObject).getJSONObject(i).getString("view_id"));
-            i += 1;
-          }
-          return paramTemplateBean;
-        }
-      }
-      catch (Exception paramTemplateBean)
-      {
-        QLog.d("ProteusReportUtil", 1, "getReportMultViewId", paramTemplateBean);
-      }
-    }
-    return null;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
+    this.jdField_a_of_type_Int = onh.c();
+    this.jdField_a_of_type_JavaLangString = ("PubAccountHttpDownloader." + this.jdField_a_of_type_Int);
   }
   
-  private static Set<String> a()
+  private boolean a(String paramString)
   {
-    HashSet localHashSet = new HashSet();
-    localHashSet.add("ReadInjoy_double_video_cell");
-    localHashSet.add("ReadInjoy_zhitiao_view");
-    return localHashSet;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new oidb_cmd0x80a.AttributeList();
-    ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
-    ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("action");
-    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(paramInt + "");
-    localArrayList.add(localObject);
-    localObject = new oidb_cmd0x80a.AttributeList();
-    ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
-    ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("bid");
-    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(paramString + "");
-    localArrayList.add(localObject);
-    localObject = mze.a(paramString) + "";
-    if (paramInt != 1)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    String[] arrayOfString;
+    int k;
+    int j;
+    if (paramString != null)
     {
-      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(3);
-      localAttributeList.att_name.set("version");
-      localAttributeList.att_value.set((String)localObject);
-      localArrayList.add(localAttributeList);
-    }
-    paramString = paramString + (String)localObject;
-    if (3 == paramInt)
-    {
-      if (((Boolean)bhvh.a(paramString, Boolean.valueOf(false))).booleanValue()) {
-        return;
-      }
-      bhvh.a(paramString, Boolean.valueOf(true));
-    }
-    sgj.a(200, localArrayList);
-  }
-  
-  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, Map<String, Object> paramMap)
-  {
-    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    Object localObject = onk.c(paramArticleInfo);
-    try
-    {
-      localObject = onk.a(paramArticleInfo.mAlgorithmID, onk.a(paramArticleInfo), paramInt, bbev.h(null), (String)localObject, paramArticleInfo.innerUniqueID, onk.e(paramArticleInfo), 0, onk.d(), paramArticleInfo);
-      if ((paramMap != null) && (paramMap.entrySet() != null))
-      {
-        paramMap = paramMap.entrySet().iterator();
-        while ((paramMap != null) && (paramMap.hasNext()))
-        {
-          Map.Entry localEntry = (Map.Entry)paramMap.next();
-          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue().toString());
-          continue;
-          noo.a(null, onk.c(paramArticleInfo), paramString1, paramString2, 0, 0, rap.a(paramArticleInfo.mFeedId), String.valueOf(paramArticleInfo.mArticleID), Integer.toString(paramArticleInfo.mStrategyId), paramMap, false);
-        }
-      }
-    }
-    catch (Exception paramMap)
-    {
-      actn.a("ProteusReportUtil", "reportClickEvent", new IllegalArgumentException(paramMap));
-      paramMap = null;
+      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      k = arrayOfString.length;
+      j = 0;
     }
     for (;;)
     {
-      sib.a(paramArticleInfo, paramInt);
-      return;
-      paramMap = ((JSONObject)localObject).toString();
+      bool1 = bool2;
+      if (j < k)
+      {
+        if (paramString.equals(arrayOfString[j])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      j += 1;
     }
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo)
+  public URLDrawableHandler a(URLDrawableHandler paramURLDrawableHandler)
   {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mProteusTemplateBean == null) || (paramBaseArticleInfo.mProteusTemplateBean.getData() == null)) {
-      QLog.d("ProteusReportUtil", 1, "ExposeReport UG is null");
-    }
-    do
+    return new sfd(paramURLDrawableHandler, this);
+  }
+  
+  public void a()
+  {
+    this.jdField_c_of_type_Int = 0;
+    this.d = null;
+  }
+  
+  public void a(int paramInt, DownloadParams paramDownloadParams)
+  {
+    Object localObject1;
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey("puin"))
     {
+      localObject1 = (String)this.jdField_a_of_type_JavaUtilMap.get("puin");
+      paramDownloadParams = (String)this.jdField_a_of_type_JavaUtilMap.get("msgid");
+    }
+    for (;;)
+    {
+      if (a((String)localObject1)) {}
+      Object localObject2;
       do
       {
         return;
-        paramBaseArticleInfo = paramBaseArticleInfo.mProteusTemplateBean;
-      } while (paramBaseArticleInfo == null);
-      paramBaseArticleInfo = paramBaseArticleInfo.getDataAttribute(null).get("ug_expose_report_url");
-    } while (!(paramBaseArticleInfo instanceof JSONArray));
-    a((JSONArray)paramBaseArticleInfo);
+        if ((paramDownloadParams.mExtraInfo == null) || (!(paramDownloadParams.mExtraInfo instanceof MessageRecord))) {
+          break label898;
+        }
+        paramDownloadParams = (MessageRecord)paramDownloadParams.mExtraInfo;
+        localObject1 = paramDownloadParams.frienduin;
+        if (((paramDownloadParams instanceof MessageForStructing)) && (((MessageForStructing)paramDownloadParams).structingMsg != null))
+        {
+          paramDownloadParams = "" + ((MessageForStructing)paramDownloadParams).structingMsg.msgId;
+          break;
+        }
+        if ((!(paramDownloadParams instanceof MessageForPubAccount)) || (((MessageForPubAccount)paramDownloadParams).mPAMessage == null)) {
+          break label893;
+        }
+        paramDownloadParams = "" + ((MessageForPubAccount)paramDownloadParams).mPAMessage.mMsgId;
+        break;
+        localObject2 = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime();
+        if ((localObject2 == null) || (!(localObject2 instanceof QQAppInterface))) {
+          break label334;
+        }
+        localObject2 = (QQAppInterface)localObject2;
+        if (localObject1 == null) {
+          break label310;
+        }
+        switch (sgg.a((QQAppInterface)localObject2, (String)localObject1))
+        {
+        }
+      } while (this.jdField_b_of_type_Int == 0);
+      int j = 0;
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_acc_type", "" + j);
+      this.jdField_a_of_type_JavaUtilHashMap.put("param_puin", localObject1);
+      label310:
+      localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
+      if (localObject1 != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_uin", localObject1);
+      }
+      label334:
+      if (paramDownloadParams != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_msgid", paramDownloadParams);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put("AttemptCount", "" + paramInt);
+      this.jdField_a_of_type_JavaUtilHashMap.put("picFormat", this.e);
+      this.jdField_a_of_type_JavaUtilHashMap.put("netType", this.h);
+      this.jdField_a_of_type_JavaUtilHashMap.put("plateform", this.g);
+      this.jdField_a_of_type_JavaUtilHashMap.put("pixDensity", this.i);
+      paramDownloadParams = ayxg.a().a(this.jdField_c_of_type_JavaLangString, 1009);
+      if (paramDownloadParams != null)
+      {
+        paramDownloadParams = TextUtils.join(",", paramDownloadParams);
+        label459:
+        this.jdField_a_of_type_JavaUtilHashMap.put("IPs", paramDownloadParams);
+        this.jdField_a_of_type_JavaUtilHashMap.put("ServerIP", "");
+        this.jdField_a_of_type_JavaUtilHashMap.put("OriginURL", this.jdField_b_of_type_JavaLangString);
+        localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label850;
+        }
+        paramDownloadParams = String.valueOf(1);
+        label514:
+        ((HashMap)localObject1).put("Success", paramDownloadParams);
+        this.jdField_a_of_type_JavaUtilHashMap.put("TotalTime", Long.toString(this.jdField_b_of_type_Long));
+        this.jdField_a_of_type_JavaUtilHashMap.put("picType", this.f);
+        this.jdField_a_of_type_JavaUtilHashMap.put("ReceivedBytes", String.valueOf(this.jdField_c_of_type_Long));
+        this.jdField_a_of_type_JavaUtilHashMap.put("ErrorReason", this.d);
+        this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", this.jdField_c_of_type_Int + "");
+        this.jdField_a_of_type_JavaUtilHashMap.put("Speed", Float.toString((float)this.jdField_c_of_type_Long / ((float)this.jdField_b_of_type_Long / 1000.0F)));
+        paramDownloadParams = "actSubscriptionUnkonw";
+        switch (this.jdField_b_of_type_Int)
+        {
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("reportTag:").append(paramDownloadParams).append(", success:").append(this.jdField_a_of_type_Boolean).append(", time:").append(this.jdField_b_of_type_Long).append(", size:").append(this.jdField_c_of_type_Long).append(", url:").append(this.jdField_b_of_type_JavaLangString).append(", exInfo:").append(this.jdField_a_of_type_JavaUtilHashMap.toString());
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, ((StringBuilder)localObject1).toString());
+        }
+        axrn.a(BaseApplication.getContext()).a(null, paramDownloadParams, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "", true);
+        return;
+        j = 1;
+        break;
+        j = 2;
+        break;
+        j = 3;
+        break;
+        j = 4;
+        break;
+        paramDownloadParams = "";
+        break label459;
+        label850:
+        paramDownloadParams = String.valueOf(0);
+        break label514;
+        paramDownloadParams = "actSubscriptionAIO";
+        continue;
+        paramDownloadParams = "actSubscriptionDetail";
+        continue;
+        paramDownloadParams = "actSubscriptionFolder";
+        continue;
+        paramDownloadParams = "actKandianImage";
+        continue;
+        paramDownloadParams = "actNativeWebImage";
+      }
+      label893:
+      paramDownloadParams = null;
+      continue;
+      label898:
+      paramDownloadParams = null;
+      localObject1 = null;
+    }
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    paramBaseArticleInfo = qah.a(paramBaseArticleInfo);
-    if (paramBaseArticleInfo == null) {}
-    for (;;)
+    if (this.jdField_c_of_type_Int == 0) {
+      this.jdField_c_of_type_Int = paramInt;
+    }
+    this.d = paramString;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+  }
+  
+  public void a(DownloadParams paramDownloadParams, Map<String, String> paramMap)
+  {
+    long l = ayta.a().a();
+    this.h = "None";
+    if ((l > 0L) && (l < ajsd.c.length)) {
+      this.h = ajsd.c[((int)l)];
+    }
+    this.g = ("ANDROID.MOBILE-" + Build.MODEL + ".SDK-" + Build.VERSION.SDK);
+    DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDisplayMetrics();
+    this.i = (localDisplayMetrics.widthPixels + "*" + localDisplayMetrics.heightPixels);
+    this.jdField_b_of_type_JavaLangString = paramDownloadParams.urlStr;
+    this.jdField_c_of_type_JavaLangString = paramDownloadParams.url.getHost();
+    this.e = "none";
+    int j = this.jdField_b_of_type_JavaLangString.lastIndexOf("/");
+    if ((j != -1) && (j + 1 <= this.jdField_b_of_type_JavaLangString.length()) && (j + 1 < this.jdField_b_of_type_JavaLangString.length()))
     {
-      return;
-      paramBaseArticleInfo = paramBaseArticleInfo.iterator();
-      while (paramBaseArticleInfo.hasNext())
-      {
-        String str = (String)paramBaseArticleInfo.next();
-        str = str + "&acttype=" + paramInt;
-        QLog.d("ProteusReportUtil", 1, "UG report url : " + str);
-        ThreadManager.executeOnNetWorkThread(new ProteusReportUtil.2(str));
+      this.e = this.jdField_b_of_type_JavaLangString.substring(j + 1);
+      j = this.e.indexOf("?");
+      if (j != -1) {
+        this.e = this.e.substring(0, j);
       }
     }
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public void a(HttpResponse paramHttpResponse, String paramString)
   {
-    if (a.contains(paramString3)) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("bid", paramString1);
-    localHashMap.put("business_name", paramString2);
-    localHashMap.put("style_id", paramString3);
-    localHashMap.put("uin", onk.a());
-    axrl.a(BaseApplicationImpl.getApplication()).a(null, "actKandianProteusShowFail", false, 0L, 0L, localHashMap, null);
-  }
-  
-  public static void a(Map<String, Object> paramMap)
-  {
-    if (paramMap == null) {
-      QLog.d("ProteusReportUtil", 1, "handleUgClickReport UG is null");
-    }
-    for (;;)
+    if (paramHttpResponse != null)
     {
-      return;
-      if (a()) {}
-      for (paramMap = paramMap.get("ug_click_schema_url"); (paramMap instanceof JSONArray); paramMap = paramMap.get("ug_click_default_url"))
+      paramString = paramHttpResponse.getFirstHeader("Content-Type");
+      this.f = "none";
+      if ((paramString != null) && (paramString.getValue().startsWith("image/"))) {
+        this.f = paramString.getValue().replace("image/", "");
+      }
+      paramHttpResponse = paramHttpResponse.getFirstHeader("Content-Length");
+      if (paramHttpResponse != null) {}
+      try
       {
-        a((JSONArray)paramMap);
+        this.jdField_c_of_type_Long = Long.valueOf(paramHttpResponse.getValue()).longValue();
+        return;
+      }
+      catch (NumberFormatException paramHttpResponse)
+      {
+        paramHttpResponse.printStackTrace();
         return;
       }
     }
+    this.d = paramString;
   }
   
-  private static void a(JSONArray paramJSONArray)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (paramJSONArray == null)
-    {
-      QLog.d("ProteusReportUtil", 1, "handleHttpRequest jsarray is null");
-      return;
-    }
-    ThreadManager.executeOnNetWorkThread(new ProteusReportUtil.1(paramJSONArray));
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "download task finish, ret : " + paramBoolean + ", errCode : " + paramInt);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_b_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
   }
   
-  public static void a(JSONObject paramJSONObject, Map<String, Object> paramMap)
+  public void b()
   {
-    if ((paramMap != null) && (paramMap.entrySet() != null))
-    {
-      paramMap = paramMap.entrySet().iterator();
-      for (;;)
-      {
-        if (paramMap != null) {
-          try
-          {
-            if (paramMap.hasNext())
-            {
-              Map.Entry localEntry = (Map.Entry)paramMap.next();
-              paramJSONObject.put((String)localEntry.getKey(), localEntry.getValue().toString());
-            }
-          }
-          catch (JSONException paramJSONObject)
-          {
-            QLog.d("ProteusReportUtil", 1, "", paramJSONObject);
-          }
-        }
-      }
-    }
-  }
-  
-  private static boolean a()
-  {
-    return bbfd.a(BaseApplicationImpl.getContext(), "com.tencent.weishi");
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "start download pic , url : " + this.jdField_b_of_type_JavaLangString);
   }
 }
 

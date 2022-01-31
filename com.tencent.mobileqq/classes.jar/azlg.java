@@ -1,18 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class azlg
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
   public azlg(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
-    }
+    this.a.finish();
   }
 }
 

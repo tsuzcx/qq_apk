@@ -1,27 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import com.tencent.qphone.base.util.QLog;
 
 class aeqp
-  implements bftk
+  implements myy
 {
-  aeqp(aeqd paramaeqd) {}
+  aeqp(aeqb paramaeqb) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void loaded(String paramString, int paramInt)
   {
-    aeqd.a(this.a).setPullType(0);
-    aeqd.a(this.a).c(aeqd.i);
-    aeqd.a(this.a, 0, this.a.a.a());
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
+    }
+    paramString = this.a;
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aeqb.b(paramString, bool);
+      return;
+    }
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void progress(int paramInt) {}
 }
 
 

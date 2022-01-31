@@ -1,14 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-class vdo
-  implements View.OnClickListener
+public class vdo
+  implements bfsm
 {
-  vdo(vdm paramvdm) {}
+  public vdo(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.dismiss();
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    }
+    ved.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 

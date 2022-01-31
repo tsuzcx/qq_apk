@@ -1,21 +1,91 @@
-class argl
-  implements argn
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
+
+public class argl
 {
-  argl(argk paramargk) {}
+  public static Map<String, argl> a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public void a(int paramInt, String paramString)
+  static
+  {
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {}
+    do
+    {
+      return;
+      paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).getString("pre_monitor" + paramString, null);
+    } while (paramContext == null);
+    a(paramString, paramContext);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_JavaUtilMap.get(paramString1) != null) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit().putString("pre_monitor" + paramString1, paramString2).commit();
+    a(paramString1, paramString2);
+  }
+  
+  private static void a(String paramString1, String paramString2)
   {
     try
     {
-      if (argk.a(this.a) != null) {
-        argk.a(this.a).a(paramInt, paramString);
+      paramString2 = new JSONObject(paramString2);
+      argl localargl = new argl();
+      localargl.jdField_a_of_type_Int = paramString2.optInt("startupId");
+      localargl.b = paramString2.optInt("downloadSucId");
+      localargl.c = paramString2.optInt("downloadFailId");
+      localargl.d = paramString2.optInt("loadSucId");
+      localargl.e = paramString2.optInt("loadFailId");
+      localargl.f = paramString2.optInt("startSucId");
+      localargl.g = paramString2.optInt("firstUserId");
+      localargl.h = paramString2.optInt("exitId");
+      jdField_a_of_type_JavaUtilMap.put(paramString1, localargl);
+      if (QLog.isColorLevel()) {
+        QLog.d("MonitorConfig", 2, paramString1 + localargl);
       }
       return;
     }
-    catch (Exception paramString)
+    catch (Throwable paramString1)
     {
-      paramString.printStackTrace();
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MonitorConfig", 2, "pareMonitorConfig exception :" + paramString1);
     }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
+    {
+      argk.b(String.valueOf(((argl)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorConfig", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
+    }
+    argk.b("3235982");
+    new Handler(Looper.getMainLooper()).postDelayed(new MonitorConfig.1(paramContext, paramString), 1500L);
   }
 }
 

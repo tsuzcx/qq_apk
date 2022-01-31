@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.model;
 
-import askd;
-import aukn;
+import askf;
 import aukp;
+import aukr;
 import com.tencent.mobileqq.data.EmoticonTab;
 import java.util.Iterator;
 import java.util.List;
@@ -10,37 +10,37 @@ import java.util.List;
 public class EmoticonManager$17
   implements Runnable
 {
-  public EmoticonManager$17(askd paramaskd) {}
+  public EmoticonManager$17(askf paramaskf) {}
   
   public void run()
   {
     String str;
     synchronized (this.this$0)
     {
-      this.this$0.jdField_a_of_type_Aukn.a(EmoticonTab.class.getSimpleName());
-      aukp localaukp = this.this$0.jdField_a_of_type_Aukn.a();
+      this.this$0.jdField_a_of_type_Aukp.a(EmoticonTab.class.getSimpleName());
+      aukr localaukr = this.this$0.jdField_a_of_type_Aukp.a();
       try
       {
-        localaukp.a();
+        localaukr.a();
         Iterator localIterator1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator1.hasNext())
         {
           str = (String)localIterator1.next();
-          askd.a(this.this$0, str, true, false);
+          askf.a(this.this$0, str, true, false);
           continue;
           localObject1 = finally;
         }
       }
       finally
       {
-        localaukp.b();
+        localaukr.b();
       }
     }
     Iterator localIterator2 = this.this$0.b.iterator();
     while (localIterator2.hasNext())
     {
       str = (String)localIterator2.next();
-      askd.a(this.this$0, str, false, true);
+      askf.a(this.this$0, str, false, true);
     }
     localObject1.c();
     localObject1.b();

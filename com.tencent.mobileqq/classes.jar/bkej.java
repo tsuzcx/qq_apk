@@ -1,15 +1,36 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class bkej
-  implements View.OnLayoutChangeListener
 {
-  public bkej(GLTextureView paramGLTextureView) {}
+  @NonNull
+  public final bkai a;
+  @NonNull
+  public final bkaj a;
+  @NonNull
+  public final bkak a;
+  @NonNull
+  public final bkat a;
+  @NonNull
+  public final bkaw a;
+  @NonNull
+  public final bkba a;
+  public final ArrayList<bkbm> a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public bkej(@NonNull bkba parambkba, @NonNull bkaw parambkaw, @NonNull bkak parambkak, @NonNull bkai parambkai, @NonNull bkat parambkat, @NonNull bkaj parambkaj)
   {
-    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Bkba = parambkba;
+    this.jdField_a_of_type_Bkaw = parambkaw;
+    this.jdField_a_of_type_Bkak = parambkak;
+    this.jdField_a_of_type_Bkai = parambkai;
+    this.jdField_a_of_type_Bkaj = parambkaj;
+    this.jdField_a_of_type_Bkat = parambkat;
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkak);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkai);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkaw);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkba);
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambkat);
   }
 }
 

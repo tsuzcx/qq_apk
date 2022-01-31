@@ -1,6 +1,6 @@
-class pql
+public class pql
 {
-  private static final pqk a = new pqk();
+  private static final pqj a = new pqj(null);
 }
 
 

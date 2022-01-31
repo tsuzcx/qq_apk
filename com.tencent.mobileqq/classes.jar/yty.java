@@ -1,30 +1,57 @@
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
 final class yty
-  implements View.OnClickListener
+  extends FrameLayout
+  implements yts
 {
-  yty(ytv paramytv, ytu paramytu) {}
+  private int jdField_a_of_type_Int = -2147483648;
+  private ytp jdField_a_of_type_Ytp;
+  private int b = -2147483648;
   
-  public void onClick(View paramView)
+  public yty(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    ytv localytv = this.jdField_a_of_type_Ytv;
-    paramView = ytv.a.onClick(paramView);
-    if (!TextUtils.isEmpty(paramView))
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      this.jdField_a_of_type_Ytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
-      yxs.d("GdtBannerViewBuilder", "onclick:" + this.jdField_a_of_type_Ytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
+      yxp.d("GdtBannerViewForCreativeSize193", "constructor");
+      return;
     }
-    if (this.jdField_a_of_type_Ytu.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
-      this.jdField_a_of_type_Ytu.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
-    }
-    GdtHandler.a(this.jdField_a_of_type_Ytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Ytp = new ytp(paramContext, paramString);
+    this.jdField_a_of_type_Ytp.setId(2131366951);
+    addView(this.jdField_a_of_type_Ytp);
   }
+  
+  public View a()
+  {
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0) || (this.jdField_a_of_type_Ytp == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      yxp.d("GdtBannerViewForCreativeSize193", "setSize error");
+      return;
+    }
+    Object localObject = new ytx(getContext(), paramInt1, paramInt2);
+    paramInt2 = Double.valueOf(1.0D * (paramInt1 - ((ytx)localObject).b * 2) / this.jdField_a_of_type_Int * this.b + ((ytx)localObject).b * 2).intValue();
+    this.jdField_a_of_type_Ytp.setPadding(((ytx)localObject).b, ((ytx)localObject).b, ((ytx)localObject).b, ((ytx)localObject).b);
+    localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+    this.jdField_a_of_type_Ytp.setLayoutParams((ViewGroup.LayoutParams)localObject);
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
 }
 
 

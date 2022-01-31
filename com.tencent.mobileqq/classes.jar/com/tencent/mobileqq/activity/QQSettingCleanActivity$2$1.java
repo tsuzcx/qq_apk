@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import abwe;
-import axqw;
+import abwa;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 
 public class QQSettingCleanActivity$2$1
   implements Runnable
 {
-  public QQSettingCleanActivity$2$1(abwe paramabwe) {}
+  public QQSettingCleanActivity$2$1(abwa paramabwa) {}
   
   public void run()
   {
-    axqw.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
+    axqy.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
     HttpDownloadUtil.a("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", this.a.a);
   }
 }

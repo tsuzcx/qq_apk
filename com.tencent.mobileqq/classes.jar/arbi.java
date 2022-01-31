@@ -1,8 +1,22 @@
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface arbi
+class arbi
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(HotPicData paramHotPicData);
+  arbi(arbb paramarbb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    arbb.jdField_a_of_type_Boolean = false;
+    arbb.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+  }
 }
 
 

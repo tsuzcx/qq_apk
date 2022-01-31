@@ -1,21 +1,44 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimPluginProxyService;
 
-class bgtb
-  extends bgut
+public class bgtb
+  implements bgth
 {
-  bgtb(bgta parambgta) {}
+  public bgtb(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
   
-  public void a(@NonNull bgus parambgus)
+  public void a()
   {
-    parambgus = parambgus.a();
-    bgta.a(this.a, parambgus);
-    bgvs.a(BaseApplicationImpl.getContext(), parambgus);
+    if (QLog.isColorLevel()) {
+      QLog.i(bgta.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    }
+    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bgta.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bgta.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(bgta.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgtb
  * JD-Core Version:    0.7.0.1
  */

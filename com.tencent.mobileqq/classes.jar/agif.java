@@ -1,28 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-
 public class agif
-  implements Animator.AnimatorListener
 {
-  public agif(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.c;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.a;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.d;
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g = 600;
 }
 
 

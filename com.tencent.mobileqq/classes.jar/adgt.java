@@ -1,18 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class adgt
-  implements adgz
+  implements View.OnClickListener
 {
   public adgt(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    this.a.b();
+    AIOLongShotHelper.a(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE6");
   }
 }
 

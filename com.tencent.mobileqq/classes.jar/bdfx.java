@@ -1,92 +1,55 @@
+import com.tencent.open.appcommon.js.DownloadInterface;
 import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bdfx
-  implements bdko
+public class bdfx
+  implements bdll
 {
-  bdfx(bdfv parambdfv) {}
+  public bdfx(DownloadInterface paramDownloadInterface, String paramString) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void a(int paramInt, String paramString)
   {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).installSucceed(paramString1, paramString2);
-    }
+    bdii.e("DownloadInterface", "innerQueryDownloadInfo ERROR");
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void a(List<DownloadInfo> paramList)
   {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).onDownloadCancel(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (arid.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    bdii.c("DownloadInterface", "innerQueryDownloadInfo onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      if (!arid.b().equals(paramDownloadInfo.l))
+      if (i < j)
       {
-        arid.a(paramDownloadInfo.l);
-        paramDownloadInfo.l = arid.b();
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
-      bdkp.a().e(paramDownloadInfo);
     }
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).onDownloadFinish(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).onDownloadPause(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).onDownloadUpdate(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).onDownloadWait(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).packageReplaced(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bdfv.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bdfy)localIterator.next()).uninstallSucceed(paramString1, paramString2);
-    }
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bdii.c("DownloadInterface", "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
   }
 }
 

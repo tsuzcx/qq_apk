@@ -1,18 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-
-class adck
-  implements View.OnTouchListener
+public abstract interface adck
 {
-  adck(adcj paramadcj) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    adcj.a(this.a).a(paramMotionEvent);
-    return true;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

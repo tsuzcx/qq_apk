@@ -1,19 +1,39 @@
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.app.QQPermissionCallback;
+import NS_MOBILE_FEEDS.mobile_online_report_item;
+import NS_MOBILE_FEEDS.mobile_online_report_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bhlh
-  implements QQPermissionCallback
+  extends QzoneExternalRequest
 {
-  public bhlh(QZoneShareActivity paramQZoneShareActivity) {}
+  public JceStruct a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bhlh(long paramLong, ArrayList<mobile_online_report_item> paramArrayList)
   {
-    bbcv.b(this.a);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    mobile_online_report_req localmobile_online_report_req = new mobile_online_report_req();
+    localmobile_online_report_req.appid = 8001;
+    localmobile_online_report_req.type_id = 0;
+    localmobile_online_report_req.uin = paramLong;
+    localmobile_online_report_req.vecOnlineItem = paramArrayList;
+    this.a = localmobile_online_report_req;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String getCmdString()
   {
-    QZoneShareActivity.a(this.a);
+    return "QzoneNewService.reportOnlineTime";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "reportOnlineTime";
   }
 }
 

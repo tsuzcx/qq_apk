@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begz;
-import beka;
-import bekm;
-import bemn;
+import behq;
+import bekr;
+import beld;
+import bene;
 
 class ImageJsPlugin$1
   implements Runnable
 {
-  ImageJsPlugin$1(ImageJsPlugin paramImageJsPlugin, beka parambeka, int paramInt) {}
+  ImageJsPlugin$1(ImageJsPlugin paramImageJsPlugin, bekr parambekr, int paramInt) {}
   
   public void run()
   {
-    bemn localbemn = bekm.a(this.this$0.mMiniAppContext.a(), 230, "图片选择", "请选择获取图片方式", "相册", "拍照", new ImageJsPlugin.1.1(this), new ImageJsPlugin.1.2(this));
-    localbemn.setCanceledOnTouchOutside(false);
-    localbemn.show();
+    bene localbene = beld.a(this.this$0.mMiniAppContext.a(), 230, "图片选择", "请选择获取图片方式", "相册", "拍照", new ImageJsPlugin.1.1(this), new ImageJsPlugin.1.2(this));
+    localbene.setCanceledOnTouchOutside(false);
+    localbene.show();
   }
 }
 

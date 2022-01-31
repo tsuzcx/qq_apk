@@ -1,125 +1,97 @@
-import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginManager.1;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
+import java.io.File;
 
-public class bgkf
-  implements Manager
+class bgkf
 {
-  public bgkg a;
-  private HashSet<String> a;
-  public byte[] a;
+  ayrx jdField_a_of_type_Ayrx;
+  bgkd jdField_a_of_type_Bgkd = null;
+  bgkh jdField_a_of_type_Bgkh;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public bgkf(AppInterface paramAppInterface)
+  boolean a(bgkd parambgkd, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HcePluginManager.1(this);
-  }
-  
-  public static bgkf a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (bgkf)((QQAppInterface)localAppRuntime).getManager(291);
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (BaseApplicationImpl.getApplication().getRuntime() != null)
+    String str1;
+    if (!bgke.b(parambgkd))
     {
-      str1 = str2;
-      if (BaseApplicationImpl.getApplication().getRuntime().getAccount() != null) {
-        str1 = MD5.toMD5(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      String str2 = parambgkd.jdField_a_of_type_JavaLangString;
+      str1 = parambgkd.b;
+      String str3 = bgke.a(parambgkd);
+      ayrx localayrx = new ayrx();
+      localayrx.jdField_a_of_type_Aysc = new bgkg(this, str1, parambgkd);
+      localayrx.a(str1);
+      localayrx.jdField_a_of_type_JavaLangString = str2;
+      localayrx.jdField_a_of_type_Int = 0;
+      localayrx.jdField_c_of_type_JavaLangString = new File(str3).getPath();
+      localayrx.jdField_c_of_type_Int = bbfj.a(ayta.a().a());
+      parambgkd = ajac.a().getNetEngine(0);
+      if (parambgkd == null) {
+        break label206;
       }
+      this.jdField_a_of_type_Ayrx = localayrx;
+      parambgkd.a(this.jdField_a_of_type_Ayrx);
     }
-    return str1;
+    label206:
+    for (boolean bool = true;; bool = false)
+    {
+      if ((!bool) && (this.jdField_a_of_type_Bgkh != null)) {
+        this.jdField_a_of_type_Bgkh.a(3, "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TMG_Downloader", 2, String.format("downloadRes, md5[%s], etr[%s]", new Object[] { str1, Boolean.valueOf(bool) }));
+      }
+      return bool;
+      if (this.jdField_a_of_type_Bgkh != null) {
+        this.jdField_a_of_type_Bgkh.a(0, "So Already Exist!!!");
+      }
+      return false;
+    }
   }
   
-  public int a(byte[] paramArrayOfByte)
+  boolean a(bgkd parambgkd, bgkh parambgkh)
   {
-    if (paramArrayOfByte == null)
+    this.jdField_a_of_type_Bgkh = parambgkh;
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_Bgkd == parambgkd) || (TextUtils.isEmpty(parambgkd.b)) || (parambgkd.b.equals(this.jdField_a_of_type_Bgkd.b))) {
+        break label214;
+      }
+      bool = true;
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("HcePluginManager", 2, "matchAID fail  commandApdu is null");
+        QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
       }
-      return -1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      byte[] arrayOfByte = bgkc.a(str);
-      if (QLog.isColorLevel()) {
-        QLog.i("HcePluginManager", 2, "aidApdu: " + bgkc.a(arrayOfByte) + " commandApdu" + bgkc.a(paramArrayOfByte));
-      }
-      if (Arrays.equals(arrayOfByte, paramArrayOfByte))
+      if (!bool)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("HcePluginManager", 2, "matchAID succ, aid=" + str);
+        return this.jdField_a_of_type_Boolean;
+        bool = true;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Ayrx != null)
+        {
+          parambgkh = ajac.a().getNetEngine(0);
+          if (parambgkh != null)
+          {
+            QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Ayrx.a() }));
+            parambgkh.b(this.jdField_a_of_type_Ayrx);
+          }
         }
-        return 0;
+        this.jdField_a_of_type_Bgkd = parambgkd;
+        this.jdField_a_of_type_Ayrx = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("TMG_Downloader", 2, String.format("DownloadContrl, mInfo[%s]", new Object[] { this.jdField_a_of_type_Bgkd }));
+        }
+        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_Bgkd, 1);
+        return this.jdField_a_of_type_Boolean;
+        label214:
+        bool = false;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("HcePluginManager", 2, "matchAID fail  no match aid");
-    }
-    return -1;
-  }
-  
-  public long a()
-  {
-    String str = bbaj.a(BaseApplicationImpl.getApplication(), "vfcStartTime");
-    if (bbjw.a(str)) {
-      return 0L;
-    }
-    return Long.parseLong(str);
-  }
-  
-  public void a()
-  {
-    bbaj.a(BaseApplicationImpl.getApplication(), "vfcStartTime", System.currentTimeMillis() + "");
-  }
-  
-  public void a(Context paramContext, int paramInt)
-  {
-    if (paramContext != null) {
-      bbaj.a(paramContext, "vfcState", paramInt + "");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HcePluginManager", 2, "onVfcPluginLifecycle state " + paramInt + " Context " + paramContext);
-    }
-  }
-  
-  public boolean a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return (localAppRuntime != null) && (localAppRuntime.isLogin());
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return (paramContext != null) && ("1".equals(bbaj.a(paramContext, "vfcState")));
-  }
-  
-  public boolean a(byte[] paramArrayOfByte)
-  {
-    return (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 0) && (paramArrayOfByte[1] == -92);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Bgkg = null;
   }
 }
 

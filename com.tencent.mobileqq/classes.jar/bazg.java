@@ -1,85 +1,89 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bazg
-  extends baxt
 {
-  ajvz jdField_a_of_type_Ajvz = null;
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  aweq jdField_a_of_type_Aweq;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public bazg(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, baxu parambaxu, boolean paramBoolean2)
+  public bazg(QQAppInterface paramQQAppInterface)
   {
-    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, parambaxu, paramBoolean2);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected Bitmap a(boolean paramBoolean)
+  public Bundle a(Bundle paramBundle)
   {
-    return b();
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Ajvz != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
+    paramBundle = paramBundle.getStringArrayList("key");
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("key", paramBundle);
+    if ((paramBundle == null) || (paramBundle.size() == 0)) {
+      return localBundle;
+    }
+    if (this.jdField_a_of_type_Aweq == null) {
+      this.jdField_a_of_type_Aweq = ((aweq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
+    }
+    if (this.jdField_a_of_type_Aweq == null) {
+      return localBundle;
+    }
+    ArrayList localArrayList = new ArrayList(paramBundle.size());
+    Iterator localIterator = paramBundle.iterator();
+    String str1;
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Ajvz);
-      this.jdField_a_of_type_Ajvz = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
-    super.a();
-  }
-  
-  protected void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
-  }
-  
-  protected boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
-      return false;
-    }
-    FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, this));
-    return true;
-  }
-  
-  protected Bitmap b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) {
-      return null;
-    }
-    String str = FaceInfo.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c);
-    return ((bayd)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(str);
-  }
-  
-  protected void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-    }
-    Bitmap localBitmap = b();
-    if (localBitmap != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap is already in cache...");
+      String str2 = (String)localIterator.next();
+      str1 = "";
+      Object localObject;
+      if (str2 == null)
+      {
+        localObject = null;
+        label124:
+        paramBundle = str1;
+        if (localObject != null)
+        {
+          paramBundle = str1;
+          if (localObject.length != 3) {}
+        }
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, localBitmap);
-      return;
+      for (;;)
+      {
+        try
+        {
+          int j = Integer.parseInt(localObject[0]);
+          String str3 = localObject[1];
+          int i = Integer.parseInt(localObject[2]);
+          paramBundle = str1;
+          if (j == 1)
+          {
+            j = Integer.parseInt(str3);
+            localObject = this.jdField_a_of_type_Aweq.a(j);
+            paramBundle = str1;
+            if (localObject != null)
+            {
+              if (i != 201) {
+                continue;
+              }
+              paramBundle = ((awbm)localObject).a;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+          paramBundle = str1;
+          continue;
+        }
+        atbr.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
+        localArrayList.add(paramBundle);
+        break;
+        localObject = str2.split("_s_");
+        break label124;
+        paramBundle = ((awbm)localObject).b;
+      }
     }
-    if (this.jdField_a_of_type_Ajvz == null)
-    {
-      this.jdField_a_of_type_Ajvz = new bazh(this);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Ajvz);
-    }
-    ((ajvy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    localBundle.putStringArrayList("path", localArrayList);
+    return localBundle;
   }
 }
 

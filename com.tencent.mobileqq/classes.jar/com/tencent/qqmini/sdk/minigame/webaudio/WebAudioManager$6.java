@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.webaudio;
 
-import begy;
-import beka;
-import bexf;
+import behp;
+import bekr;
+import bexw;
 import com.tencent.mobileqq.triton.audio.AudioHandleThread;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class WebAudioManager$6
   implements Runnable
 {
-  public WebAudioManager$6(bexf parambexf, beka parambeka, int paramInt) {}
+  public WebAudioManager$6(bexw parambexw, bekr parambekr, int paramInt) {}
   
   public void run()
   {
@@ -19,8 +19,8 @@ public class WebAudioManager$6
     try
     {
       localJSONObject.put("bufferId", i);
-      if (this.jdField_a_of_type_Beka != null) {
-        this.jdField_a_of_type_Beka.a.a("onWebAudioScriptProcessorAudioProcess", localJSONObject.toString(), 0);
+      if (this.jdField_a_of_type_Bekr != null) {
+        this.jdField_a_of_type_Bekr.a.a("onWebAudioScriptProcessorAudioProcess", localJSONObject.toString(), 0);
       }
       i = this.jdField_a_of_type_Int * 2 * 60 / 44100;
       AudioHandleThread.getInstance().postDelayed(this, i);

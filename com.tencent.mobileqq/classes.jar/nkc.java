@@ -1,37 +1,20 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nkc
-  implements aptu
+class nkc
+  implements DialogInterface.OnClickListener
 {
-  public nkc(VideoCoverView paramVideoCoverView) {}
+  nkc(nkb paramnkb, JsResult paramJsResult) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    if (this.a.jdField_a_of_type_Int == 5) {
-      this.a.d();
-    }
-    for (;;)
-    {
-      njf.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
-      return;
-      this.a.b(VideoCoverView.a(this.a));
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Int = 6;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    this.a.g();
-    njf.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nkc
  * JD-Core Version:    0.7.0.1
  */

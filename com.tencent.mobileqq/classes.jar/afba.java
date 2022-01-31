@@ -1,36 +1,19 @@
-import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
-class afba
-  extends bbwf
+public class afba
+  extends akgj
 {
-  afba(afaz paramafaz, String paramString1, String paramString2) {}
+  public afba(BlessResultActivity paramBlessResultActivity) {}
   
-  public void onCancel(bbwg parambbwg)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    afaz.a(this.jdField_a_of_type_Afaz).remove(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(bbwg parambbwg)
-  {
-    afaz.a(this.jdField_a_of_type_Afaz).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambbwg.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
-      }
-      if ((this.b != null) && (afaz.a(this.jdField_a_of_type_Afaz) != null) && (this.b.equals(afaz.a(this.jdField_a_of_type_Afaz).starVideo))) {
-        afaz.b(this.jdField_a_of_type_Afaz);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
     }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      afaz.a(this.jdField_a_of_type_Afaz);
-      return;
+    if ((paramBoolean) && (paramInt == axjs.a)) {
+      bbdj.a(this.a.getActivity(), 0, null, this.a.getString(2131719591), 2131719593, 2131719592, new afbb(this), new afbc(this)).show();
     }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + parambbwg.b + " code=" + parambbwg.a);
   }
 }
 

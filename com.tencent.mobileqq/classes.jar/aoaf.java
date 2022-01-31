@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class aoaf
-  extends anwf
+public class aoaf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aoaf(aoad paramaoad) {}
+  public aoaf(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.b(paramEmoticonPackage);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionKeywordLayout", 2, "hide:offset=" + f);
+    }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).setTranslationY(f);
+    }
   }
 }
 

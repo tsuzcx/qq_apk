@@ -3,12 +3,12 @@ package com.tencent.open.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdnf;
+import bdnu;
 
 public class VirtualInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VirtualInfo> CREATOR = new bdnf();
+  public static final Parcelable.Creator<VirtualInfo> CREATOR = new bdnu();
   public long a;
   public String a;
   public String b;

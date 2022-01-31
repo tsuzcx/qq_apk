@@ -1,131 +1,61 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.EPRecommendTask.1;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
 public class anvp
+  extends Handler
 {
-  public VasQuickUpdateManager.CallBacker a;
-  Runnable a;
-  public String a;
-  public WeakReference<QQAppInterface> a;
-  public String b;
+  protected Bundle a;
+  private WeakReference<MessengerService> a;
   
-  public anvp(QQAppInterface paramQQAppInterface)
+  public anvp(MessengerService paramMessengerService)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new EPRecommendTask.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new anvq(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
   }
   
-  public static ascx a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    JSONObject localJSONObject = null;
-    try
-    {
-      Object localObject = paramJSONObject.optJSONArray("emojiAioConfig");
-      if (localObject != null)
-      {
-        if (((JSONArray)localObject).length() == 0) {
-          return null;
-        }
-        paramJSONObject = new ascx();
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
       }
-      label116:
-      return null;
     }
-    catch (Exception localException1)
-    {
-      try
-      {
-        localObject = (JSONObject)((JSONArray)localObject).get(0);
-        paramJSONObject.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("hide");
-        paramJSONObject.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("version");
-        paramJSONObject.c = ((JSONObject)localObject).optString("url");
-        localJSONObject = ((JSONObject)localObject).optJSONObject("gifUrl");
-        if (localJSONObject != null) {
-          paramJSONObject.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-        }
-        localObject = ((JSONObject)localObject).optJSONObject("imgUrl");
-        if (localObject != null) {
-          paramJSONObject.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("src");
-        }
-        return paramJSONObject;
-      }
-      catch (Exception localException2)
-      {
-        break label116;
-      }
-      localException1 = localException1;
-      paramJSONObject = localJSONObject;
-      localException1.printStackTrace();
-      return paramJSONObject;
-    }
-  }
-  
-  public anvp a(String paramString1, String paramString2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    return this;
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    SharedPreferences localSharedPreferences;
+    MessengerService localMessengerService;
+    int i;
     do
     {
-      for (;;)
+      do
       {
         return;
-        try
-        {
-          paramJSONObject = a(paramJSONObject);
-          if (paramJSONObject != null)
-          {
-            localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("mobileQQ", 0);
-            localSharedPreferences.edit().putInt("magic_promotion_hide", paramJSONObject.jdField_a_of_type_Int).commit();
-            if (QLog.isColorLevel()) {
-              QLog.d("EPRecommendTask", 2, "promotionInfo:[hide]:" + paramJSONObject.jdField_a_of_type_Int + ",[ver]:" + paramJSONObject.jdField_b_of_type_Int);
-            }
-            if (1 != paramJSONObject.jdField_a_of_type_Int) {
-              if ((TextUtils.isEmpty(paramJSONObject.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramJSONObject.c)))
-              {
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("EPRecommendTask", 2, "promotionInfo: imgUrl = " + paramJSONObject.jdField_b_of_type_JavaLangString + " gifUrl = " + paramJSONObject.jdField_a_of_type_JavaLangString + " jumpUrl = " + paramJSONObject.c);
-              }
-            }
-          }
+        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localMessengerService != null) {
+          break;
         }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-          return;
-        }
+      } while (!QLog.isColorLevel());
+      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
+      return;
+      i = paramMessage.what;
+    } while (i != 4);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("qwallet.type", i);
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      localBundle.putBoolean("qwallet.isSuccess", bool);
+      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+        break;
       }
-      localSharedPreferences.edit().putString("magic_promotion_jump_url", paramJSONObject.c).commit();
-      localSharedPreferences.edit().putString("magic_promotion_imgUrl", "https://gxh.vip.qq.com/xydata/" + paramJSONObject.jdField_b_of_type_JavaLangString).commit();
-      localSharedPreferences.edit().putString("magic_promotion_gifUrl", "https://gxh.vip.qq.com/xydata/" + paramJSONObject.jdField_a_of_type_JavaLangString).commit();
-    } while (localSharedPreferences.getInt("magic_promotion_old_ver_" + anox.a(), -1) >= paramJSONObject.jdField_b_of_type_Int);
-    localSharedPreferences.edit().putBoolean("magic_promotion_is_new_content_" + anox.a(), true).commit();
-    localSharedPreferences.edit().putInt("magic_promotion_old_ver_" + anox.a(), paramJSONObject.jdField_b_of_type_Int).commit();
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool = false;
+    }
   }
 }
 

@@ -1,30 +1,25 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import org.json.JSONException;
 
 public class azwf
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  public azwf(DotStyleNavBar paramDotStyleNavBar) {}
+  public azwf(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    try
+    {
+      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
+      return;
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.setCurrent(paramInt);
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+      vxp.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
     }
   }
 }

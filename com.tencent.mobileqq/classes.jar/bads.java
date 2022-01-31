@@ -1,59 +1,66 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class bads
+  extends ampa<badr>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private long b;
-  
-  public bads(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    return 544;
   }
   
-  private boolean a(TroopInfo paramTroopInfo)
+  @NonNull
+  public badr a(int paramInt)
   {
-    if (paramTroopInfo == null) {}
-    long l;
-    do
-    {
-      do
-      {
-        return true;
-        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
-          return false;
-        }
-        l = System.currentTimeMillis();
-        if (paramTroopInfo.wMemberNum > 500) {
-          break;
-        }
-      } while (l - this.b < 180000L);
-      return false;
-    } while (l - this.b < 1800000L);
-    return false;
+    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new badr();
   }
   
-  public void a(String paramString)
+  @Nullable
+  public badr a(amph[] paramArrayOfamph)
   {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-    akhq localakhq = (akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((localakhq != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localakhq.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
-      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
-      this.b = System.currentTimeMillis();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return badr.a(paramArrayOfamph[0].a);
+    }
+    return null;
+  }
+  
+  public Class<badr> a()
+  {
+    return badr.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public void a(badr parambadr)
+  {
+    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + parambadr);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((badj)((QQAppInterface)localAppRuntime).getManager(346)).a(parambadr, false);
     }
   }
   
-  public boolean a(String paramString)
+  public int b()
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

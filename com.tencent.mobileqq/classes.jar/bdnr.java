@@ -1,25 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.AppInfo;
 
-class bdnr
-  implements bdny
+public final class bdnr
+  implements Parcelable.Creator<AppInfo>
 {
-  bdnr(bdno parambdno, bdny parambdny) {}
-  
-  public void a()
+  public AppInfo a(Parcel paramParcel)
   {
-    QLog.d("OpenSdkVirtualManager", 1, "updatePreAuthFromServer onSuccess");
-    this.jdField_a_of_type_Bdny.a();
+    return new AppInfo(paramParcel);
   }
   
-  public void a(int paramInt, String paramString)
+  public AppInfo[] a(int paramInt)
   {
-    QLog.d("OpenSdkVirtualManager", 1, new Object[] { "updatePreAuthFromServer onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    this.jdField_a_of_type_Bdny.a(paramInt, paramString);
+    return new AppInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnr
  * JD-Core Version:    0.7.0.1
  */

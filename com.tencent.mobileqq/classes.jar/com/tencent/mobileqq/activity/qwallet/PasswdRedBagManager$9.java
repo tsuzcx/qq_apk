@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import agvv;
+import agvw;
 import agvx;
-import agvy;
-import agvz;
 import java.util.Iterator;
 import java.util.List;
 
 public class PasswdRedBagManager$9
   implements Runnable
 {
-  public PasswdRedBagManager$9(agvz paramagvz) {}
+  public PasswdRedBagManager$9(agvx paramagvx) {}
   
   public void run()
   {
-    Iterator localIterator = agvz.a(this.this$0).a().iterator();
+    Iterator localIterator = agvx.a(this.this$0).a().iterator();
     while (localIterator.hasNext())
     {
-      agvy localagvy = (agvy)localIterator.next();
-      agvz.a(this.this$0, localagvy);
-      this.this$0.a(false, localagvy.a, localagvy.b);
+      agvw localagvw = (agvw)localIterator.next();
+      agvx.a(this.this$0, localagvw);
+      this.this$0.a(false, localagvw.a, localagvw.b);
     }
   }
 }

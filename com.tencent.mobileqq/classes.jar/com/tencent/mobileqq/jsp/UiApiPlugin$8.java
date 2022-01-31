@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import arow;
-import bbac;
-import bcdb;
+import aroy;
+import bbaq;
+import bcdp;
 import org.json.JSONObject;
 
 public class UiApiPlugin$8
@@ -13,7 +13,7 @@ public class UiApiPlugin$8
   public void run()
   {
     this.this$0.i = this.a.optString("callback");
-    bbac.a(this.this$0.mRuntime.a(), new arow(this));
+    bbaq.a(this.this$0.mRuntime.a(), new aroy(this));
   }
 }
 

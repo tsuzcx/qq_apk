@@ -1,11 +1,19 @@
+import java.util.HashMap;
+
 class tqo
-  extends tpy
+  extends tpp
 {
-  tqo(tqk paramtqk, trr paramtrr) {}
+  tqo(tqh paramtqh, String paramString1, String paramString2, boolean paramBoolean, trl paramtrl)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
   
   public boolean b()
   {
-    this.jdField_a_of_type_Trr.a = ((String)a("UploadImageJob_out_image_url"));
+    this.jdField_a_of_type_Trl.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Trl.a, this.jdField_a_of_type_Trl.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
     return true;
   }
 }

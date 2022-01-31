@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-final class shz
-  implements Comparator<ArticleInfo>
+public class shz
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public final int a;
+  public long a;
+  public BaseArticleInfo a;
+  
+  public shz(int paramInt)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
   }
 }
 

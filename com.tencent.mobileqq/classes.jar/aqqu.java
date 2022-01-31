@@ -1,67 +1,62 @@
 import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.RedInfo;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class aqqu
-  implements aqri
+class aqqu
+  implements AdapterView.OnItemClickListener
 {
-  public Context a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public FullPopData a;
-  public FullPopVideoView a;
-  private String a;
-  public boolean a;
-  public ImageView b;
-  private String b;
-  public boolean b;
-  public ImageView c;
-  private boolean c;
-  public ImageView d;
+  aqqu(aqqt paramaqqt) {}
   
-  public aqqu(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData = paramFullPopData;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "205929";; str = "205927")
+    paramAdapterView = (FeedsItemData.LabelInfo)this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos.get(paramInt);
+    HashMap localHashMap = new HashMap();
+    yoa.a(localHashMap, paramAdapterView.msgId);
+    localHashMap.put(Integer.valueOf(6), paramAdapterView.reportId);
+    localHashMap.put(Integer.valueOf(2), paramAdapterView.msgId);
+    if (aqsv.a(paramAdapterView.redInfo))
     {
-      aqsp.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str, this.jdField_c_of_type_Boolean);
+      localHashMap.put(Integer.valueOf(3), "1");
+      localHashMap.put(Integer.valueOf(4), "20");
+      yoa.a(ajac.a(), "769", "205614", paramAdapterView.appId, "76903", "1", "160", localHashMap);
+      aqsv.a(paramAdapterView.redInfo.redPointId);
+      ((aqqp)paramView.getTag()).a.setVisibility(8);
+      if (!paramAdapterView.isFriend) {
+        break label281;
+      }
+      new LinearLayout.LayoutParams(-1, -2).gravity = 80;
+      new aqte(this.a.itemView.getContext(), this.a.jdField_a_of_type_Aqqc.a().gameAppId, paramAdapterView.friendType).show();
+      yoa.a(ajac.a(), "769", "205355", this.a.jdField_a_of_type_Aqqc.a().gameAppId, "76902", "1", "160", new String[] { "", "", "20" });
+    }
+    label281:
+    while (TextUtils.isEmpty(paramAdapterView.jumpUrl))
+    {
+      return;
+      localHashMap.put(Integer.valueOf(3), "0");
+      break;
+    }
+    if (paramAdapterView.jumpUrl.startsWith("mqqapi://miniapp/"))
+    {
+      MiniAppLauncher.startMiniApp(this.a.jdField_a_of_type_AndroidContentContext, paramAdapterView.jumpUrl, 2016, null);
       return;
     }
-  }
-  
-  public void a(View... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 6)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVarArgs[0]);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVarArgs[1]);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[2]);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[3]);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[4]);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramVarArgs[5]);
-    this.d = ((ImageView)paramVarArgs[6]);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOnClickListener(new aqqv(this));
+    paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", paramAdapterView.jumpUrl);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
 }
 

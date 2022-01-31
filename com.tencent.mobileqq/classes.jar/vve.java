@@ -1,76 +1,89 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.TagEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class vve
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<vvg> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private vvg jdField_a_of_type_Vvg;
+  public final int a;
+  public final long a;
+  public final String a;
+  public volatile long b;
+  public final String b;
   
-  public vve(Context paramContext)
+  public vve(long paramLong, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  @Nullable
-  public vvg a()
+  public vve(TagEntry paramTagEntry)
   {
-    return this.jdField_a_of_type_Vvg;
+    this.jdField_a_of_type_Long = paramTagEntry.id;
+    this.jdField_a_of_type_JavaLangString = paramTagEntry.name;
+    this.jdField_b_of_type_JavaLangString = paramTagEntry.desc;
+    this.jdField_a_of_type_Int = paramTagEntry.type;
   }
   
-  public void a(List<vvg> paramList)
+  public vve(qqstory_struct.TagInfoBase paramTagInfoBase)
   {
-    if (paramList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
+    this.jdField_a_of_type_Long = paramTagInfoBase.tag_id.get();
+    this.jdField_a_of_type_JavaLangString = paramTagInfoBase.tag_name.get();
+    this.jdField_b_of_type_JavaLangString = paramTagInfoBase.tag_desc.get();
+    this.jdField_a_of_type_Int = paramTagInfoBase.tag_type.get();
+  }
+  
+  public static boolean a(vve paramvve)
+  {
+    return (paramvve != null) && (Math.abs(System.currentTimeMillis() - paramvve.jdField_b_of_type_Long) < 60000L);
+  }
+  
+  public TagEntry a()
+  {
+    return new TagEntry();
+  }
+  
+  public qqstory_struct.TagInfoBase a()
+  {
+    qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
+    localTagInfoBase.tag_id.set(this.jdField_a_of_type_Long);
+    localTagInfoBase.tag_name.set(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localTagInfoBase.tag_desc.set(this.jdField_b_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    localTagInfoBase.tag_type.set(this.jdField_a_of_type_Int);
+    return localTagInfoBase;
   }
   
-  public void a(@Nullable vvg paramvvg)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Vvg = paramvvg;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (this == paramObject) {}
+    do
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561380, null);
-      paramView = new vvf(paramViewGroup);
-      paramViewGroup.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.a((vvg)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Vvg);
-      return paramView.a;
-      paramView = (vvf)paramView.getTag();
-    }
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (vve)paramObject;
+      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + this.jdField_a_of_type_Int;
+  }
+  
+  public String toString()
+  {
+    return "TagInfoBase{id=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", desc='" + this.jdField_b_of_type_JavaLangString + '\'' + ", type=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

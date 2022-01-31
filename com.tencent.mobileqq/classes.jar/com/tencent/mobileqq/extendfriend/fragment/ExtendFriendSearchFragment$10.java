@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aoep;
-import aoif;
+import aoeu;
+import aoik;
 
 class ExtendFriendSearchFragment$10
   implements Runnable

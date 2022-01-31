@@ -1,31 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.LoadingAvatarProgressView;
 
 public class afif
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public afif(LoadingAvatarProgressView paramLoadingAvatarProgressView) {}
   
-  public boolean a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.jdField_a_of_type_Int != 1;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof afif))
-    {
-      paramObject = (afif)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-    }
-    return super.equals(paramObject);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
+    LoadingAvatarProgressView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue() * LoadingAvatarProgressView.a(this.a));
+    this.a.invalidate();
   }
 }
 

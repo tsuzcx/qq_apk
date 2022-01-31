@@ -4,17 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import aque;
-import aquf;
+import aqug;
+import aquh;
 import com.tencent.biz.ui.TouchWebView;
-import vzo;
+import vzl;
 
 public abstract class BaseNestScrollWebView
   extends TouchWebView
 {
   public int a;
-  private aque jdField_a_of_type_Aque;
-  private aquf jdField_a_of_type_Aquf;
+  private aqug jdField_a_of_type_Aqug;
+  private aquh jdField_a_of_type_Aquh;
   public boolean a;
   
   public BaseNestScrollWebView(Context paramContext)
@@ -29,9 +29,9 @@ public abstract class BaseNestScrollWebView
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(aque paramaque)
+  public void a(aqug paramaqug)
   {
-    this.jdField_a_of_type_Aque = paramaque;
+    this.jdField_a_of_type_Aqug = paramaqug;
   }
   
   public boolean a()
@@ -47,8 +47,8 @@ public abstract class BaseNestScrollWebView
   public void loadUrl(String paramString)
   {
     super.loadUrl(paramString);
-    if (((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (this.jdField_a_of_type_Aquf != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Aquf.a(this);
+    if (((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (this.jdField_a_of_type_Aquh != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Aquh.a(this);
     }
   }
   
@@ -67,8 +67,8 @@ public abstract class BaseNestScrollWebView
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Aque != null) && (!this.jdField_a_of_type_Aque.a())) {
-      this.jdField_a_of_type_Aque.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((this.jdField_a_of_type_Aqug != null) && (!this.jdField_a_of_type_Aqug.a())) {
+      this.jdField_a_of_type_Aqug.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     this.jdField_a_of_type_Int = paramInt2;
   }
@@ -77,29 +77,29 @@ public abstract class BaseNestScrollWebView
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Aque != null) && (!this.jdField_a_of_type_Aque.a())) {
-      this.jdField_a_of_type_Aque.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((this.jdField_a_of_type_Aqug != null) && (!this.jdField_a_of_type_Aqug.a())) {
+      this.jdField_a_of_type_Aqug.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void setLoadingView(aquf paramaquf)
+  public void setLoadingView(aquh paramaquh)
   {
-    if (((paramaquf == null) || (!this.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_Aquf != null)) {
-      this.jdField_a_of_type_Aquf.b(this);
+    if (((paramaquh == null) || (!this.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_Aquh != null)) {
+      this.jdField_a_of_type_Aquh.b(this);
     }
-    if (this.jdField_a_of_type_Aquf == null) {
-      this.jdField_a_of_type_Aquf = paramaquf;
+    if (this.jdField_a_of_type_Aquh == null) {
+      this.jdField_a_of_type_Aquh = paramaquh;
     }
-    if (this.jdField_a_of_type_Aquf != null) {
-      this.jdField_a_of_type_Aquf.a(this);
+    if (this.jdField_a_of_type_Aquh != null) {
+      this.jdField_a_of_type_Aquh.a(this);
     }
     this.jdField_a_of_type_Boolean = false;
   }
   
   public void setPaddingTop(int paramInt)
   {
-    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + vzo.a(getContext(), paramInt) + "px';} void 0";
+    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + vzl.a(getContext(), paramInt) + "px';} void 0";
     loadUrl("javascript:" + str);
   }
 }

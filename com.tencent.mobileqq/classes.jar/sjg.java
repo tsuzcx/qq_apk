@@ -1,44 +1,8 @@
-import org.json.JSONObject;
+import UserGrowth.stSimpleMetaFeed;
 
-class sjg
-  implements aabm
+public abstract interface sjg
 {
-  sjg(sjf paramsjf) {}
-  
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    sne.d("WSQQConnectAuthManager", "getOpenIdAndAccessToken onFailure: " + paramInt + " , " + paramString);
-    sjf.a(this.a, false);
-    if (paramInt == 1) {
-      sjf.a(this.a);
-    }
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    sne.b("WSQQConnectAuthManager", "getOpenIdAndAccessToken onPermission: " + paramInt);
-    sjf.a(this.a, false);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    sjf.a(this.a);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    sjf.a(this.a, false);
-    if (paramJSONObject != null)
-    {
-      sne.b("WSQQConnectAuthManager", "getOpenIdAndAccessToken onSuccess: " + paramJSONObject.toString());
-      sjf.a(this.a, paramJSONObject);
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public abstract void a(bfzf<stSimpleMetaFeed> parambfzf);
 }
 
 

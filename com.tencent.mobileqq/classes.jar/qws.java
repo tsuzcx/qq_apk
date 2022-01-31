@@ -1,9 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-public abstract interface qws
+public final class qws
+  implements Parcelable.Creator<DiscoveryBannerInfo>
 {
-  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
+  public DiscoveryBannerInfo a(Parcel paramParcel)
+  {
+    return new DiscoveryBannerInfo(paramParcel);
+  }
+  
+  public DiscoveryBannerInfo[] a(int paramInt)
+  {
+    return new DiscoveryBannerInfo[paramInt];
+  }
 }
 
 

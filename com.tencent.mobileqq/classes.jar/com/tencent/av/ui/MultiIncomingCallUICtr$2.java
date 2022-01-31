@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import mek;
+import mef;
 
 public class MultiIncomingCallUICtr$2
   implements Runnable
 {
-  public MultiIncomingCallUICtr$2(mek parammek, VideoController paramVideoController, String paramString, boolean paramBoolean) {}
+  public MultiIncomingCallUICtr$2(mef parammef, VideoController paramVideoController, String paramString, boolean paramBoolean) {}
   
   public void run()
   {

@@ -1,6 +1,29 @@
-public abstract interface ndl
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class ndl
+  extends Handler
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3);
+  public ndl(NowVideoView paramNowVideoView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Nde == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
+      this.a.jdField_a_of_type_Nde.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+      return;
+    } while ((this.a.jdField_a_of_type_Nde == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
+    this.a.jdField_a_of_type_Nde.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+  }
 }
 
 

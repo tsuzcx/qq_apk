@@ -1,24 +1,13 @@
 import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class afrs
-  extends ajsg
+  extends akat
 {
   public afrs(TroopFragment paramTroopFragment) {}
   
-  protected void a(int paramInt)
+  protected void a()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.c();
+    this.a.h();
   }
 }
 

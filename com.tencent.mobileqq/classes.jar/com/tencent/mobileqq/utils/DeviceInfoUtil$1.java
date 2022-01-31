@@ -3,8 +3,8 @@ package com.tencent.mobileqq.utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import bbct;
-import bfmw;
+import bbdh;
+import bfnn;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -25,15 +25,15 @@ public final class DeviceInfoUtil$1
   
   public void run()
   {
-    bbct.a(System.currentTimeMillis());
-    this.a.edit().putLong("device_perf_level_timestamps", bbct.n()).apply();
+    bbdh.a(System.currentTimeMillis());
+    this.a.edit().putLong("device_perf_level_timestamps", bbdh.n()).apply();
     try
     {
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("pid", "1");
       ((JSONObject)localObject).put("device", URLEncoder.encode(Build.MODEL, "UTF-8"));
       ((JSONObject)localObject).put("version", "1.0.0");
-      ((JSONObject)localObject).put("uin", bfmw.a("a4bd32"));
+      ((JSONObject)localObject).put("uin", bfnn.a("a4bd32"));
       ((JSONObject)localObject).put("userSwitch", "0");
       ((JSONObject)localObject).put("lastSwitch", "0");
       if (QLog.isColorLevel())
@@ -56,7 +56,7 @@ public final class DeviceInfoUtil$1
         if (i != 0)
         {
           this.a.edit().putInt("device_perf_level", i).apply();
-          bbct.a(i);
+          bbdh.a(i);
         }
       }
     }
@@ -69,7 +69,7 @@ public final class DeviceInfoUtil$1
         }
       }
     }
-    bbct.a().set(false);
+    bbdh.a().set(false);
   }
 }
 

@@ -1,30 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
-public final class aavp
-  implements Comparator<PhoneContact>
+public class aavp
+  implements DialogInterface.OnCancelListener
 {
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public aavp(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
-    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
-    {
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
-    }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavp
  * JD-Core Version:    0.7.0.1
  */

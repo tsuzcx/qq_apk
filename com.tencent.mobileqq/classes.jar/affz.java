@@ -1,46 +1,47 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class affz
-  extends afda
+  implements TextView.OnEditorActionListener
 {
-  public affz(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramBoolean);
-  }
+  public affz(SearchBaseActivity paramSearchBaseActivity) {}
   
-  protected int a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return 10028;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.a(paramRecommendTroopItem);
-    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int b()
-  {
-    return 21;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.b(paramRecommendTroopItem);
-    axqw.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int c()
-  {
-    return 10003;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    super.c(paramRecommendTroopItem);
-    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramInt != 3)
+    {
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (paramKeyEvent.getKeyCode() != 66) {}
+      }
+    }
+    else
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if ((!TextUtils.isEmpty(paramTextView)) && (!TextUtils.isEmpty(paramTextView.trim()))) {
+        break label102;
+      }
+      this.a.a(true, this.a.jdField_a_of_type_AndroidWidgetEditText);
+      bcql.a(this.a.getApplicationContext(), ajya.a(2131713616), 0).a();
+      bool1 = true;
+    }
+    return bool1;
+    label102:
+    if (!TextUtils.isEmpty(paramTextView))
+    {
+      awwa.a("add_page", "search", "clk_search_all", this.a.h + 1, 0, new String[] { "", "", paramTextView, "" });
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+    }
+    return true;
   }
 }
 

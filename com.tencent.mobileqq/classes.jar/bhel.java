@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
-
-public final class bhel
-  implements Parcelable.Creator<DiscoverTab>
+public class bhel
 {
-  public DiscoverTab a(Parcel paramParcel)
+  private static String a;
+  
+  public static String a()
   {
-    return new DiscoverTab(paramParcel);
+    if (a != null) {
+      return a;
+    }
+    return "";
   }
   
-  public DiscoverTab[] a(int paramInt)
+  public static void a(String paramString)
   {
-    return new DiscoverTab[paramInt];
+    a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhel
  * JD-Core Version:    0.7.0.1
  */

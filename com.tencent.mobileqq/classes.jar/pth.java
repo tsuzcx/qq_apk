@@ -1,26 +1,18 @@
 import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
 public class pth
-  extends pqt
+  extends ptf
 {
-  public pth(Context paramContext, baxk parambaxk, rap paramrap)
+  public pth(Context paramContext, baxy parambaxy, ram paramram)
   {
-    super(paramContext, parambaxk, paramrap);
+    super(paramContext, parambaxy, paramram);
   }
   
-  public pqt a()
+  public pqq g()
   {
+    this.jdField_a_of_type_Pqp = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
     return this;
-  }
-  
-  public pqt d()
-  {
-    return this;
-  }
-  
-  public pqt e()
-  {
-    return null;
   }
 }
 

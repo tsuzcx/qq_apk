@@ -1,30 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-
-public abstract interface alaf
+public class alaf
+  extends alah
 {
-  public abstract alak a();
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  float[] jdField_a_of_type_ArrayOfFloat;
+  float jdField_b_of_type_Float;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  float c;
   
-  public abstract allg a();
-  
-  public abstract Context a();
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void a(alad paramalad, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, alaf paramalaf);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public alaf(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    super(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat3;
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
+  }
 }
 
 

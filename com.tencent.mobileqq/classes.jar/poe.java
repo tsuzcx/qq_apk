@@ -1,24 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.RecycleViewAdapterHelper.3.2.1;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyShareFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class poe
+class poe
   implements ViewBase.OnClickListener
 {
-  poe(poc parampoc) {}
+  poe(pnz parampnz) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    olr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), paramViewBase.getEventAttachedData());
-    paramViewBase = (String)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getDataAttribute(paramViewBase.getViewId(), "topic_id");
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData().remove("reddot_num");
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.refreshData();
-    pob.a(this.a.jdField_a_of_type_Pob, new RecycleViewAdapterHelper.3.2.1(this));
-    osj.a().i(paramViewBase);
+    olo.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    paramViewBase = pny.a(this.a.jdField_a_of_type_Pny, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData());
+    if (paramViewBase == null)
+    {
+      QLog.e(pny.a(this.a.jdField_a_of_type_Pny), 1, "daily share info is null");
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("share_info_intent", paramViewBase.toString());
+    PublicFragmentActivity.a(pny.a(this.a.jdField_a_of_type_Pny).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
   }
 }
 

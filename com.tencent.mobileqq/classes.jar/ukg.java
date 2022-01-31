@@ -1,15 +1,24 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import android.view.View;
 
 class ukg
+  implements bfph
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  ukg(ukf paramukf, bfpc parambfpc, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  ukg(ukf paramukf) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Bfpc.e();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Ukf.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_Ukf.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+  }
 }
 
 

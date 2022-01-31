@@ -1,102 +1,23 @@
-import android.content.Context;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class airo
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new airp(this);
-  public SurfaceView a;
+  airo(airn paramairn) {}
   
-  public airo(Context paramContext, int paramInt)
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  AVVideoCtrl a()
-  {
-    AVContext localAVContext = ajlc.a(this.jdField_a_of_type_AndroidContentContext).a();
-    if (localAVContext != null) {
-      return localAVContext.getVideoCtrl();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    localLayoutParams.width = 1;
-    localLayoutParams.height = 1;
-    localLayoutParams.flags = 776;
-    localLayoutParams.format = -3;
-    localLayoutParams.windowAnimations = 0;
-    localLayoutParams.gravity = 51;
-    try
+    Object localObject = ajac.a(airm.a(this.a.a));
+    if (localObject == null) {}
+    do
     {
-      if (this.jdField_a_of_type_AndroidViewSurfaceView == null)
-      {
-        this.jdField_a_of_type_AndroidViewSurfaceView = new SurfaceView(this.jdField_a_of_type_AndroidContentContext);
-        SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-        localSurfaceHolder.addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
-        localSurfaceHolder.setType(3);
-        this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
-        localWindowManager.addView(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
-      }
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak initCameraPreview");
       return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
-      {
-        localWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
-        if (QLog.isColorLevel()) {
-          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail: IllegalStateException." + localIllegalStateException);
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail." + localException);
-        }
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewSurfaceView == null)) {
-      return;
-    }
-    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
-    try
-    {
-      localWindowManager.removeView(this.jdField_a_of_type_AndroidViewSurfaceView);
-      this.jdField_a_of_type_AndroidViewSurfaceView = null;
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak unInitCameraaPreview");
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AVCameraCaptureModel", 0, "remove camera view fail.", localException);
-        }
-      }
-    }
+      localObject = ((ajcf)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
   }
 }
 

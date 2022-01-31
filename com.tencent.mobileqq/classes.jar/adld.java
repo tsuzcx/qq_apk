@@ -1,52 +1,44 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class adld
-  extends ayog
+  extends ImageSpan
 {
-  public static final String a(int paramInt)
+  public adld(Drawable paramDrawable)
   {
-    return ajmu.d + paramInt + "/panelGif.gif";
+    super(paramDrawable);
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadStarted();
-    }
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    paramCharSequence = getDrawable();
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = getDrawable().getBounds();
+    if (paramFontMetricsInt != null)
     {
-      paramDownloadParams = (Integer)paramDownloadParams.tag;
-      paramOutputStream = new File(a(paramDownloadParams.intValue()));
-      if (paramOutputStream.exists())
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
-      paramOutputStream.getParentFile().mkdirs();
-      if ((BaseApplicationImpl.sApplication != null) && (!bbev.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-      }
-      paramDownloadParams = new bbwg("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
-      paramDownloadParams.b = 1;
-      paramDownloadParams.p = false;
-      if (bbwi.a(paramDownloadParams, null) == 0)
-      {
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
-        }
-        return paramOutputStream;
-      }
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt2 = paramPaint.bottom - paramPaint.top;
+      int i = paramCharSequence.bottom - paramCharSequence.top;
+      paramInt1 = i / 2 - paramInt2 / 4;
+      i /= 2;
+      paramInt2 = paramInt2 / 4 + i;
+      paramFontMetricsInt.ascent = (-paramInt2);
+      paramFontMetricsInt.top = (-paramInt2);
+      paramFontMetricsInt.bottom = paramInt1;
+      paramFontMetricsInt.descent = paramInt1;
     }
-    if (paramURLDrawableHandler != null) {
-      paramURLDrawableHandler.onFileDownloadFailed(0);
-    }
-    return null;
+    return paramCharSequence.right;
   }
 }
 

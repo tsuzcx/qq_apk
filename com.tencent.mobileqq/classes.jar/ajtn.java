@@ -1,46 +1,36 @@
-import android.os.Message;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
-public class ajtn
-  extends ayvz
+public abstract class ajtn
+  extends mxj
 {
-  WeakReference<ajto> a;
+  public abstract void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList);
   
-  public ajtn(ajto paramajto)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramajto);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if (localayqm.b == 35) {
-      switch (paramMessage.what)
-      {
-      }
+    if (paramArrayOfByte == null) {
+      a(-1, null);
     }
     do
     {
-      do
-      {
-        return;
-        paramMessage = localayqm.a;
-        if ((this.a != null) && (this.a.get() != null))
-        {
-          ((ajto)this.a.get()).b(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
       return;
-      if ((this.a != null) && (this.a.get() != null))
+      try
       {
-        ((ajto)this.a.get()).d();
+        paramBundle = new NowLiveGallary.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = paramBundle.photo_info_list.get();
+        a(paramBundle.errCode.get(), paramArrayOfByte);
         return;
       }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
     } while (!QLog.isColorLevel());
-    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
+    QLog.d("CardHandler", 2, "getNowOnliveGallary exception, e:" + paramArrayOfByte.getStackTrace());
   }
 }
 

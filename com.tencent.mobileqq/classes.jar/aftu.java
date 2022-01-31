@@ -1,28 +1,78 @@
-import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 
-public class aftu
+class aftu
+  extends BaseAdapter
 {
-  private BaseActivity a;
+  private aftu(afts paramafts) {}
   
-  public aftu(BaseActivity paramBaseActivity)
+  public int getCount()
   {
-    this.a = paramBaseActivity;
+    return 6;
   }
   
-  public bfol a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  public Object getItem(int paramInt)
   {
-    bfol localbfol = (bfol)bfoy.a(this.a, null);
-    GridView localGridView = (GridView)View.inflate(this.a, 2131562574, null);
-    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837562));
-    localGridView.setAdapter(new aftw(this, null));
-    localGridView.setOnItemClickListener(paramOnItemClickListener);
-    localbfol.a(localGridView);
-    localbfol.c(2131690596);
-    return localbfol;
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(afts.a(this.a)).inflate(2131562537, null);
+    }
+    int j;
+    int i;
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      j = 2130838750;
+      i = 2131719499;
+      paramInt = 2131720058;
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramViewGroup.findViewById(2131362667);
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131362679);
+      paramView.setImageResource(j);
+      localTextView.setText(i);
+      if (AppSetting.d) {
+        paramViewGroup.setContentDescription(afts.a(this.a).getString(paramInt));
+      }
+      return paramViewGroup;
+      i = 2131719514;
+      j = 2130838754;
+      paramInt = 2131720074;
+      continue;
+      i = 2131719516;
+      j = 2130838755;
+      paramInt = 2131720075;
+      continue;
+      i = 2131719522;
+      j = 2130838758;
+      paramInt = 2131720082;
+      continue;
+      i = 2131719511;
+      j = 2130838752;
+      paramInt = 2131720065;
+      continue;
+      paramInt = 2131717202;
+      i = 2131717202;
+      j = 2130841940;
+    }
   }
 }
 

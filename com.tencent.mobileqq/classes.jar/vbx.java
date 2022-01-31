@@ -1,16 +1,23 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface vbx
+public class vbx
+  extends QQUIEventReceiver<vba, vbw>
 {
-  public abstract void a(String paramString, CommentEntry paramCommentEntry);
+  public vbx(@NonNull vba paramvba)
+  {
+    super(paramvba);
+  }
   
-  public abstract void b();
+  public void a(@NonNull vba paramvba, @NonNull vbw paramvbw)
+  {
+    paramvba.a(paramvbw);
+  }
   
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public Class acceptEventClass()
+  {
+    return vbw.class;
+  }
 }
 
 

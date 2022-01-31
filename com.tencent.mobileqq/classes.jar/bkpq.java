@@ -1,18 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 class bkpq
-  implements DialogInterface.OnClickListener
+  extends akuo
 {
-  bkpq(bkpo parambkpo) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bkpq(bkpn parambkpn, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
   {
-    paramDialogInterface.dismiss();
-    ((bkpk)this.a.a).f(true);
-    bkpo.a(this.a).setSelected(true);
-    ((bkpk)this.a.a).d(3002);
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      double d1 = paramSosoLbsInfo.a.a;
+      double d2 = paramSosoLbsInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      }
+      bkpn.a(this.jdField_a_of_type_Bkpn, d1, d2, this.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      }
+    } while ((bkpn.a(this.jdField_a_of_type_Bkpn) == null) || (!bkpn.a(this.jdField_a_of_type_Bkpn).hasMessages(this.jdField_a_of_type_Int)));
+    bkpn.a(this.jdField_a_of_type_Bkpn, false, null, this.jdField_a_of_type_Int);
   }
 }
 

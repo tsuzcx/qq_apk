@@ -1,42 +1,30 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class anup
-  implements TVK_SDKMgr.InstallListener
+public class anup
+  extends ajxj
 {
-  anup(anul paramanul, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public anup(MessengerService paramMessengerService) {}
   
-  public void onInstallProgress(float paramFloat)
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
   {
-    int i = (int)Math.floor(100.0F * paramFloat);
-    if (i > bbvh.a)
+    if (this.a.b != null)
     {
-      bbvh.a = i;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("status", 1);
-      localBundle.putFloat("progress", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      this.a.b.putString("cmd", "ipc_signature_setlike");
+      paramObject = new Bundle();
+      if (!paramBoolean) {
+        break label81;
+      }
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 2);
-    localBundle.putInt("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 3);
-    localBundle.putBoolean("result", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    label81:
+    for (int i = 0;; i = 101)
+    {
+      paramObject.putInt("result", i);
+      this.a.b.putBundle("response", paramObject);
+      this.a.a(this.a.b);
+      this.a.b = null;
+      return;
+    }
   }
 }
 

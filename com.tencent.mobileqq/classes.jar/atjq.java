@@ -1,21 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.qphone.base.util.QLog;
 
 public class atjq
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public atjq(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
+  public atjq(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    atbp.a(this.jdField_a_of_type_AndroidAppActivity, 302);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
+    for (;;)
+    {
+      return false;
+      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
+    }
   }
 }
 
